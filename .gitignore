@@ -6,5 +6,4 @@ obj/
 local.properties
 *.keystore
 
-TMessagesProj/src/main/java/org/telegram/messenger/BuildVars.java
 TMessagesProj/libs/
