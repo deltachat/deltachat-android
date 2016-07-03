@@ -28,5 +28,13 @@ If you're interested in this project, you can contact me using
 _r10s at b44t dotcom_.
 
 
+Build
+--------------------------------------------------------------------------------
+
+Beside a build in Android Studio, you have to call `ndk-build` in the
+`TMessagesProj` directory.  Moreover, place a copy of your keyfile eg. to
+`TMessagesProj/config/debug.keystore`.
+
+
 Copyright (c) Bjoern Petersen Software Design and Development,
 http://b44t.com and contributors.

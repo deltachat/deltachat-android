@@ -19,3 +19,6 @@ Frequently Asked Questions
 - the receiver will get a normal mail then - if he replies to it, of course,
   you will see the reply in your MailApp
 
+
+Copyright (c) Bjoern Petersen Software Design and Development,
+http://b44t.com and contributors.
