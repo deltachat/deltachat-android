@@ -3,8 +3,8 @@
 <!--https://www.transifex.com/projects/p/telegram/language/pt_PT/members/-->
 
 <resources>
-    <string name="AppName">MailApp</string>
-    <string name="AppNameBeta">MailApp</string>
+    <string name="AppName">$message</string>
+    <string name="AppNameBeta">$message</string>
     <string name="LanguageName">Português (Brasil)</string>
     <string name="LanguageNameInEnglish">Português (Brasil)</string>
     <string name="LanguageCode">pt_BR</string>
@@ -403,7 +403,7 @@
     <!--contacts view-->
     <string name="SelectContact">Selecionar Contato</string>
     <string name="NoContacts">Ainda não há contatos</string>
-    <string name="InviteText">Ei, vamos mudar para o MailApp: https://messenger.b44t.com</string>
+    <string name="InviteText">Ei, vamos mudar para o $message: https://messenger.b44t.com</string>
     <string name="TodayAt">às</string>
     <string name="YesterdayAt">ontem às</string>
     <string name="Online">online</string>
@@ -978,7 +978,7 @@
     <string name="PermissionNoLocationPosition">O Telegram precisa acessar sua localização</string>
     <string name="PermissionOpenSettings">CONFIGURAÇÕES</string>
     <!--Intro view-->
-    <string name="Page1Title">MailApp</string>
+    <string name="Page1Title">$message</string>
     <string name="Page2Title">Rápido</string>
     <string name="Page3Title">Gratuito</string>
     <string name="Page4Title">Seguro</string>
@@ -986,12 +986,12 @@
     <string name="Page6Title">Baseado na nuvem</string>
     <string name="Page7Title">Privado</string>
     <string name="Page1Message">O mais <![CDATA[<b>rápido</b>]]> aplicativo de mensagem do mundo. <![CDATA[<br/>]]>É <![CDATA[<b>gratuito</b>]]> e <![CDATA[<b>seguro</b>]]>.</string>
-    <string name="Page2Message">O <![CDATA[<b>Telegram</b>]]> envia mensagens mais rápido<![CDATA[<br/>]]>que qualquer outro aplicativo.</string>
-    <string name="Page3Message">O <![CDATA[<b>Telegram</b>]]> é grátis para sempre. <![CDATA[<br/>]]>Sem propagandas. Sem taxas.</string>
-    <string name="Page4Message">O <![CDATA[<b>Telegram</b>]]> mantém suas mensagens<![CDATA[<br/>]]>seguras de ataques de hackers.</string>
-    <string name="Page5Message">O <![CDATA[<b>Telegram</b>]]> não possui limites no tamanho<![CDATA[<br/>]]>de seus arquivos e conversas.</string>
-    <string name="Page6Message">O <![CDATA[<b>Telegram</b>]]> permite você acessar suas<![CDATA[<br/>]]> mensagens de múltiplos dispositivos.</string>
-    <string name="Page7Message">O <![CDATA[<b>Telegram</b>]]> possui mensagens fortemente<![CDATA[<br/>]]>encriptadas e podem se auto-destruir.</string>
+    <string name="Page2Message">O <![CDATA[<b>$message</b>]]> envia mensagens mais rápido<![CDATA[<br/>]]>que qualquer outro aplicativo.</string>
+    <string name="Page3Message">O <![CDATA[<b>$message</b>]]> é grátis para sempre. <![CDATA[<br/>]]>Sem propagandas. Sem taxas.</string>
+    <string name="Page4Message">O <![CDATA[<b>$message</b>]]> mantém suas mensagens<![CDATA[<br/>]]>seguras de ataques de hackers.</string>
+    <string name="Page5Message">O <![CDATA[<b>$message</b>]]> não possui limites no tamanho<![CDATA[<br/>]]>de seus arquivos e conversas.</string>
+    <string name="Page6Message">O <![CDATA[<b>$message</b>]]> permite você acessar suas<![CDATA[<br/>]]> mensagens de múltiplos dispositivos.</string>
+    <string name="Page7Message">O <![CDATA[<b>$message</b>]]> possui mensagens fortemente<![CDATA[<br/>]]>encriptadas e podem se auto-destruir.</string>
     <string name="StartMessaging">Comece a conversar</string>
     <!--plural-->
     <string name="Online_zero">%1$d online</string>

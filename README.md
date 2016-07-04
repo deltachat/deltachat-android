@@ -1,17 +1,17 @@
-MailApp
+$message
 ================================================================================
 
-**MailApp** is a project that aims to create a messaging app that is completely
+**$message** is a project that aims to create a messaging app that is completely
 **compatible** to the existing e-mail infrastructure.
 
-So, with MailApp you will get the **ease** of well-known messengers with the
+So, with $message you will get the **ease** of well-known messengers with the
 **reach** of e-mail. Moreover, you'll get **indepentent** from any other
 company.
 
 Some features at a glance
 
 - **Fast** by the use of Push-IMAP
-- **Largest userbase** - receivers _not_ using MailApp can be reached as well
+- **Largest userbase** - receivers _not_ using $message can be reached as well
 - **Elegant** and **simple** user interface
 - **Distributed** system
 - **Trustworthy** - can even be used for business messages

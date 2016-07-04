@@ -3,8 +3,8 @@
 <!--Translation by Borja Campina, Edited by Victor Espinoza and Francisco Vila-->
 
 <resources>
-    <string name="AppName">MailApp</string>
-    <string name="AppNameBeta">MailApp</string>
+    <string name="AppName">$message</string>
+    <string name="AppNameBeta">$message</string>
     <string name="LanguageName">Español</string>
     <string name="LanguageNameInEnglish">Spanish</string>
     <string name="LanguageCode">es</string>
@@ -403,7 +403,7 @@
     <!--contacts view-->
     <string name="SelectContact">Elegir contacto</string>
     <string name="NoContacts">Aún sin contactos</string>
-    <string name="InviteText">¡Oye! Cambiémonos a MailApp: https://messenger.b44t.com</string>
+    <string name="InviteText">¡Oye! Cambiémonos a $message: https://messenger.b44t.com</string>
     <string name="TodayAt">a las</string>
     <string name="YesterdayAt">ayer a las</string>
     <string name="Online">en línea</string>
@@ -978,7 +978,7 @@
     <string name="PermissionNoLocationPosition">Telegram necesita acceso a tu ubicación.</string>
     <string name="PermissionOpenSettings">AJUSTES</string>
     <!--Intro view-->
-    <string name="Page1Title">MailApp</string>
+    <string name="Page1Title">$message</string>
     <string name="Page2Title">Rápida</string>
     <string name="Page3Title">Gratis</string>
     <string name="Page4Title">Segura</string>

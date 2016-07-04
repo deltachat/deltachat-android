@@ -3,8 +3,8 @@
 
 
 <resources>
-    <string name="AppName">MailApp</string>
-    <string name="AppNameBeta">MailApp</string>
+    <string name="AppName">$message</string>
+    <string name="AppNameBeta">$message</string>
     <string name="LanguageName">English</string>
     <string name="LanguageNameInEnglish">English</string>
     <string name="LanguageCode">en</string>
@@ -403,7 +403,7 @@
     <!--contacts view-->
     <string name="SelectContact">Select Contact</string>
     <string name="NoContacts">No contacts yet</string>
-    <string name="InviteText">Hey, let\'s switch to MailApp: https://messenger.b44t.com</string>
+    <string name="InviteText">Hey, let\'s switch to $message: https://messenger.b44t.com</string>
     <string name="TodayAt">at</string>
     <string name="YesterdayAt">yesterday at</string>
     <string name="Online">online</string>
@@ -978,7 +978,7 @@
     <string name="PermissionNoLocationPosition">Telegram needs access to your location.</string>
     <string name="PermissionOpenSettings">SETTINGS</string>
     <!--Intro view-->
-    <string name="Page1Title">MailApp</string>
+    <string name="Page1Title">$message</string>
     <string name="Page2Title">Contact anyone</string>
     <string name="Page3Title">Free</string>
     <string name="Page4Title">Secure</string>
@@ -986,12 +986,12 @@
     <string name="Page6Title">Cloud-Based</string>
     <string name="Page7Title">Private</string>
     <string name="Page1Message">The world\'s <![CDATA[<b>fastest</b>]]> messaging app.<![CDATA[<br/>]]>It is <![CDATA[<b>free</b>]]> and <![CDATA[<b>secure</b>]]>.</string>
-    <string name="Page2Message">With MailApp you reach more users than with any other messenger.</string>
-    <string name="Page3Message"><![CDATA[<b>MailApp</b>]]> is free forever. No ads.<![CDATA[<br/>]]>No subscription fees.</string>
-    <string name="Page4Message"><![CDATA[<b>MailApp</b>]]> keeps your messages safe<![CDATA[<br/>]]>from hacker attacks.</string>
-    <string name="Page5Message"><![CDATA[<b>MailApp</b>]]> has no limits on the size of<![CDATA[<br/>]]>your media and chats.</string>
-    <string name="Page6Message"><![CDATA[<b>MailApp</b>]]> lets you access your messages<![CDATA[<br/>]]>from multiple devices.</string>
-    <string name="Page7Message"><![CDATA[<b>MailApp</b>]]> messages are heavily encrypted<![CDATA[<br/>]]>and can self-destruct.</string>
+    <string name="Page2Message">With $message you reach more users than with any other messenger.</string>
+    <string name="Page3Message"><![CDATA[<b>$message</b>]]> is free forever. No ads.<![CDATA[<br/>]]>No subscription fees.</string>
+    <string name="Page4Message"><![CDATA[<b>$message</b>]]> keeps your messages safe<![CDATA[<br/>]]>from hacker attacks.</string>
+    <string name="Page5Message"><![CDATA[<b>$message</b>]]> has no limits on the size of<![CDATA[<br/>]]>your media and chats.</string>
+    <string name="Page6Message"><![CDATA[<b>$message</b>]]> lets you access your messages<![CDATA[<br/>]]>from multiple devices.</string>
+    <string name="Page7Message"><![CDATA[<b>$message</b>]]> messages are heavily encrypted<![CDATA[<br/>]]>and can self-destruct.</string>
     <string name="StartMessaging">Start Messaging</string>
     <!--plural-->
     <string name="Online_zero">%1$d online</string>

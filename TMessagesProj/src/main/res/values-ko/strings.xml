@@ -3,8 +3,8 @@
 <!--https://www.transifex.com/projects/p/telegram/language/ko/members/-->
 
 <resources>
-    <string name="AppName">MailApp</string>
-    <string name="AppNameBeta">MailApp</string>
+    <string name="AppName">$message</string>
+    <string name="AppNameBeta">$message</string>
     <string name="LanguageName">한국어</string>
     <string name="LanguageNameInEnglish">Korean</string>
     <string name="LanguageCode">ko</string>
@@ -403,7 +403,7 @@
     <!--contacts view-->
     <string name="SelectContact">대화상대 선택</string>
     <string name="NoContacts">대화상대가 없습니다</string>
-    <string name="InviteText">MailApp을 사용해 보세요!: https://messenger.b44t.com</string>
+    <string name="InviteText">$message을 사용해 보세요!: https://messenger.b44t.com</string>
     <string name="TodayAt">오늘</string>
     <string name="YesterdayAt">어제</string>
     <string name="Online">온라인</string>
@@ -978,7 +978,7 @@
     <string name="PermissionNoLocationPosition">텔레그램이 위치에 대한 권한이 필요합니다.</string>
     <string name="PermissionOpenSettings">설정</string>
     <!--Intro view-->
-    <string name="Page1Title">MailApp</string>
+    <string name="Page1Title">$message</string>
     <string name="Page2Title">눈부신 속도</string>
     <string name="Page3Title">완전 무료</string>
     <string name="Page4Title">보안성</string>
