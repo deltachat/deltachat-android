@@ -3,8 +3,8 @@
 <!--Translation by Khalid Alaraifi-->
 
 <resources>
-    <string name="AppName">$message</string>
-    <string name="AppNameBeta">$message</string>
+    <string name="AppName">LibreChat</string>
+    <string name="AppNameBeta">LibreChat</string>
     <string name="LanguageName">العربية</string>
     <string name="LanguageNameInEnglish">Arabic</string>
     <string name="LanguageCode">ar</string>
@@ -978,7 +978,7 @@
     <string name="PermissionNoLocationPosition">تيليجرام يحتاج صلاحية الحصول على موقعك.</string>
     <string name="PermissionOpenSettings">الإعدادات</string>
     <!--Intro view-->
-    <string name="Page1Title">$message</string>
+    <string name="Page1Title">LibreChat</string>
     <string name="Page2Title">سريع</string>
     <string name="Page3Title">مجاني</string>
     <string name="Page4Title">آمن</string>

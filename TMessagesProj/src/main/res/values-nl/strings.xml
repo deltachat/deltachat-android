@@ -3,8 +3,8 @@
 <!--https://www.transifex.com/projects/p/telegram/language/nl/members/-->
 
 <resources>
-    <string name="AppName">$message</string>
-    <string name="AppNameBeta">$message</string>
+    <string name="AppName">LibreChat</string>
+    <string name="AppNameBeta">LibreChat</string>
     <string name="LanguageName">Nederlands</string>
     <string name="LanguageNameInEnglish">Dutch</string>
     <string name="LanguageCode">nl</string>
@@ -403,7 +403,7 @@
     <!--contacts view-->
     <string name="SelectContact">Contact kiezen</string>
     <string name="NoContacts">Nog geen contacten</string>
-    <string name="InviteText">Hey, zullen we overstappen op $message: https://messenger.b44t.com</string>
+    <string name="InviteText">Hey, zullen we overstappen op LibreChat: https://messenger.b44t.com</string>
     <string name="TodayAt">om</string>
     <string name="YesterdayAt">gisteren om</string>
     <string name="Online">online</string>
@@ -978,7 +978,7 @@
     <string name="PermissionNoLocationPosition">Telegram heeft toegang tot je locatie nodig.</string>
     <string name="PermissionOpenSettings">INSTELLINGEN</string>
     <!--Intro view-->
-    <string name="Page1Title">$message</string>
+    <string name="Page1Title">LibreChat</string>
     <string name="Page2Title">Snel</string>
     <string name="Page3Title">Gratis</string>
     <string name="Page4Title">Veilig</string>
@@ -986,12 +986,12 @@
     <string name="Page6Title">In de cloud</string>
     <string name="Page7Title">Privé</string>
     <string name="Page1Message">\'s Werelds <![CDATA[<b>snelste</b>]]> berichtendienst.<![CDATA[<br/>]]>Het is <![CDATA[<b>gratis</b>]]> en <![CDATA[<b>veilig</b>]]>.</string>
-    <string name="Page2Message"><![CDATA[<b>$message</b>]]> bezorgt berichten sneller dan<![CDATA[<br/>]]>elke andere applicatie.</string>
-    <string name="Page3Message"><![CDATA[<b>$message</b>]]> is altijd gratis. Geen advertenties.<![CDATA[<br/>]]>Geen abonnementskosten.</string>
-    <string name="Page4Message"><![CDATA[<b>$message</b>]]> beveiligd je berichten<![CDATA[<br/>]]>tegen aanvallen van hackers.</string>
-    <string name="Page5Message"><![CDATA[<b>$message</b>]]> beperkt je niet in de grootte van<![CDATA[<br/>]]>je media of chats.</string>
-    <string name="Page6Message"><![CDATA[<b>$message</b>]]> biedt toegang tot je berichten<![CDATA[<br/>]]>vanaf meerdere apparaten.</string>
-    <string name="Page7Message"><![CDATA[<b>$message</b>]]> berichten zijn sterk versleuteld<![CDATA[<br/>]]>en kunnen zichzelf vernietigen.</string>
+    <string name="Page2Message"><![CDATA[<b>LibreChat</b>]]> bezorgt berichten sneller dan<![CDATA[<br/>]]>elke andere applicatie.</string>
+    <string name="Page3Message"><![CDATA[<b>LibreChat</b>]]> is altijd gratis. Geen advertenties.<![CDATA[<br/>]]>Geen abonnementskosten.</string>
+    <string name="Page4Message"><![CDATA[<b>LibreChat</b>]]> beveiligd je berichten<![CDATA[<br/>]]>tegen aanvallen van hackers.</string>
+    <string name="Page5Message"><![CDATA[<b>LibreChat</b>]]> beperkt je niet in de grootte van<![CDATA[<br/>]]>je media of chats.</string>
+    <string name="Page6Message"><![CDATA[<b>LibreChat</b>]]> biedt toegang tot je berichten<![CDATA[<br/>]]>vanaf meerdere apparaten.</string>
+    <string name="Page7Message"><![CDATA[<b>LibreChat</b>]]> berichten zijn sterk versleuteld<![CDATA[<br/>]]>en kunnen zichzelf vernietigen.</string>
     <string name="StartMessaging">Begin met chatten</string>
     <!--plural-->
     <string name="Online_zero">%1$d online</string>

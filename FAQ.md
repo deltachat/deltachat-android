@@ -3,27 +3,26 @@ Frequently Asked Questions
 
 **To whom can I write?**
 
-- With $message, you can write to users using $message - or any other existing
+- With LibreChat, you can write to users using LibreChat - or any other existing
   e-mail-client.  This is one of the biggest differences to other messengers:
-  there is no need for the receiver to install the same app as yours.
+  There is no need for the receiver to install the same app as yours.
   
 **But E-Mail ... is so slow**
 
 - This is not true for most accounts. In fact, there are standards as Push-IMAP
   for years, that allow receiving Mails in a second or so.  
-  Unfortunately, many clients does not support these standards - but $message 
+  Unfortunately, many clients does not support these standards - but LibreChat 
   will.
 
-**What, if the receiver does not use $message?**
+**What, if the receiver does not use LibreChat?**
 
 - The receiver will get a normal e-mail then - if he replies to it, you will
-  see the reply in your $message app.
+  see the reply in the LibreChat app.
 
-**$message - why do you chose such an ugly name?**
+**LibreChat - is this the final name?**
 
-- In fact, we've not choosen _any_ name at the moment.  $message is just a 
-  placeholder for the incredible name to come.  Any ideas are welcome eg. at
-  _r10s at b44t dotcom_!
+- Well, currently this is our _best_ name.  Maybe we will change it if we get
+  a great idea posted to _r10s at b44t dotcom_.
 
 
 Copyright (c) Bjoern Petersen Software Design and Development,
