@@ -3,8 +3,8 @@
 <!--Translation by iLLogical2007, DanielGroeger and everyone from https://github.com/DrKLO/Telegram/pull/129 whom I didn't notice -->
 
 <resources>
-    <string name="AppName">$message</string>
-    <string name="AppNameBeta">$message</string>
+    <string name="AppName">Smessage</string>
+    <string name="AppNameBeta">Smessage</string>
     <string name="LanguageName">Deutsch</string>
     <string name="LanguageNameInEnglish">German</string>
     <string name="LanguageCode">de</string>

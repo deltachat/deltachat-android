@@ -3,8 +3,8 @@
 
 
 <resources>
-    <string name="AppName">$message</string>
-    <string name="AppNameBeta">$message</string>
+    <string name="AppName">Smessage</string>
+    <string name="AppNameBeta">Smessage</string>
     <string name="LanguageName">English</string>
     <string name="LanguageNameInEnglish">English</string>
     <string name="LanguageCode">en</string>

@@ -16,8 +16,8 @@
         <item name="android:colorBackground">@android:color/white</item>
         <item name="android:windowBackground">@android:color/white</item>
         <item name="android:windowContentOverlay">@null</item>
-        <item name="android:colorPrimaryDark">#99000b</item>
-        <item name="android:colorPrimary">#ac000c</item>
+        <item name="android:colorPrimaryDark">#06484d</item>
+        <item name="android:colorPrimary">#07585e</item>
     </style>
 
     <style name="Theme.TMessages" parent="@android:style/Theme.Material.Light">
@@ -33,7 +33,7 @@
         <item name="android:editTextStyle">@style/Theme.TMessages.EditText</item>
         <item name="android:actionBarItemBackground">@drawable/bar_selector_style</item>
         <item name="android:colorPrimaryDark">#33000000</item>
-        <item name="android:colorPrimary">#ac000c</item>
+        <item name="android:colorPrimary">#07585e</item>
         <item name="android:alertDialogTheme">@style/Theme.TMessages.Dialog.Alert</item>
         <item name="android:colorControlActivated">#4991cc</item>
     </style>
@@ -54,7 +54,7 @@
     <!--ACTION BAR-->
 
     <style name="ActionBar.Transparent.TMessages.Start" parent="android:style/Widget.Material.Light.ActionBar">
-        <item name="android:background">#ffac000c</item>
+        <item name="android:background">#ff07585e</item>
         <item name="android:logo">@drawable/transparent</item>
         <item name="android:title">""</item>
     </style>
