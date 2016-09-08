@@ -49,7 +49,7 @@ public class ContactsController {
     private boolean contactsBookLoaded = false;
     private String lastContactsVersions = "";
     private ArrayList<Integer> delayedContactsUpdate = new ArrayList<>();
-    //private String inviteText;
+    //private String inviteText; // EDIT BY ME
     //private boolean updatingInviteText = false;
     private HashMap<String, String> sectionsToReplace = new HashMap<>();
 
@@ -166,7 +166,7 @@ public class ContactsController {
         privacyRules = null;
     }
 
-	/*
+	/* // EDIT BY ME
     public void checkInviteText() {
         SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("mainconfig", Activity.MODE_PRIVATE);
         inviteText = preferences.getString("invitetext", null);
@@ -201,10 +201,10 @@ public class ContactsController {
             }, ConnectionsManager.RequestFlagFailOnServerErrors);
         }
     }
-    */
+    EDIT BY ME*/
 
     public String getInviteText() {
-        return /*inviteText != null ? inviteText :*/ LocaleController.getString("InviteText", R.string.InviteText);
+        return /* EDIT BY ME inviteText != null ? inviteText :*/ LocaleController.getString("InviteText", R.string.InviteText);
     }
 
     public void checkAppAccount() {

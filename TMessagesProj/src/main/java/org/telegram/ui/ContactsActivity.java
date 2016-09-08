@@ -116,7 +116,7 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
             needPhonebook = true;
         }
 
-        //ContactsController.getInstance().checkInviteText();
+        //ContactsController.getInstance().checkInviteText(); // EDIT BY ME
 
         return true;
     }

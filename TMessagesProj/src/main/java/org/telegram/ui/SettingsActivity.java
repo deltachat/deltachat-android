@@ -144,9 +144,9 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
     private int sendByEnterRow;
     private int supportSectionRow;
     private int supportSectionRow2;
-    //private int askQuestionRow;
+    //private int askQuestionRow;// EDIT BY ME
     private int telegramFaqRow;
-    //private int privacyPolicyRow;
+    //private int privacyPolicyRow;// EDIT BY ME
     private int sendLogsRow;
     private int clearLogsRow;
     private int switchBackendButtonRow;

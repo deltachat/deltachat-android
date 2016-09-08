@@ -17335,7 +17335,7 @@ public class TLRPC {
 		}
 	}
 
-	/*
+	/* EDIT BY ME
     public static class TL_help_getInviteText extends TLObject {
 		public static int constructor = 0xa4a95186;
 

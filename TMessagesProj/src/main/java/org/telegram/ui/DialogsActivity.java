@@ -153,7 +153,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
 
         if (!dialogsLoaded) {
             MessagesController.getInstance().loadDialogs(0, 100, true);
-            //ContactsController.getInstance().checkInviteText();
+            //ContactsController.getInstance().checkInviteText(); // EDIT BY ME
             dialogsLoaded = true;
         }
         return true;
