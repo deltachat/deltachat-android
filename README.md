@@ -12,6 +12,7 @@ Beside a build in Android Studio, you have to call `ndk-build` in the
 `TMessagesProj` directory.  Moreover, place a copy of your keyfile eg. to
 `TMessagesProj/config/debug.keystore`.
 
+![Logo](https://librechat.org/start-img3.png)
 
 Copyright (c) Bjoern Petersen Software Design and Development,
 http://b44t.com and contributors.
