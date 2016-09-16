@@ -58,6 +58,7 @@ import org.telegram.messenger.AnimatorListenerAdapterProxy;
 import org.telegram.PhoneFormat.PhoneFormat;
 import org.telegram.messenger.ContactsController;
 import org.telegram.messenger.MediaController;
+import org.telegram.messenger.MrMailbox;
 import org.telegram.messenger.UserObject;
 import org.telegram.messenger.ApplicationLoader;
 import org.telegram.messenger.BuildVars;
@@ -1327,6 +1328,7 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
                         PackageInfo pInfo = ApplicationLoader.applicationContext.getPackageManager().getPackageInfo(ApplicationLoader.applicationContext.getPackageName(), 0);
                         int code = pInfo.versionCode / 10;
                         String abi = "";
+                        int testval = MrMailbox.myJnixTest();
                         switch (pInfo.versionCode % 10) {
                             case 0:
                                 abi = "arm";
@@ -1341,7 +1343,8 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
                                 abi = "universal";
                                 break;
                         }
-                        ((TextInfoCell) view).setText(String.format(Locale.US, "Messenger for Android V%s (%d) %s", pInfo.versionName, code, abi)); // EDIT BY ME
+                        ((TextInfoCell) view).setText(String.format(Locale.US, "%d ** Messenger for Android V%s (%d) %s",
+                                testval, pInfo.versionName, code, abi)); // EDIT BY ME
                     } catch (Exception e) {
                         FileLog.e("tmessages", e);
                     }

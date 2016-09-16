@@ -1292,6 +1292,7 @@ LOCAL_SRC_FILES     += \
 ./gifvideo.cpp \
 ./SqliteWrapper.cpp \
 ./TgNetWrapper.cpp \
+./mr_wrapper.c \
 ./NativeLoader.cpp
 
 include $(BUILD_SHARED_LIBRARY)
