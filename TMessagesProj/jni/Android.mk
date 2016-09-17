@@ -1347,6 +1347,19 @@ LOCAL_SRC_FILES     += \
 ./gifvideo.cpp \
 ./SqliteWrapper.cpp \
 ./TgNetWrapper.cpp \
+../../../messenger-backend/src/mrchat.c \
+../../../messenger-backend/src/mrcontact.c \
+../../../messenger-backend/src/mrimap.c \
+../../../messenger-backend/src/mrimfparser.c \
+../../../messenger-backend/src/mrlog.c \
+../../../messenger-backend/src/mrloginparam.c \
+../../../messenger-backend/src/mrmailbox.c \
+../../../messenger-backend/src/mrmimeparser.c \
+../../../messenger-backend/src/mrmsg.c \
+../../../messenger-backend/src/mrosnative.c \
+../../../messenger-backend/src/mrsimplify.c \
+../../../messenger-backend/src/mrsqlite3.c \
+../../../messenger-backend/src/mrtools.c \
 ./mr_wrapper.cpp \
 ./NativeLoader.cpp
 
