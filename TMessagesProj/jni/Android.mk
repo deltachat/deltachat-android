@@ -1,3 +1,9 @@
+
+################################################################################
+# ffmpeg - libav
+################################################################################
+
+
 LOCAL_PATH:= $(call my-dir)
 FFMPEG_PATH:= ./ffmpeg
 
@@ -51,6 +57,11 @@ LOCAL_MODULE_TAGS := optional
 LOCAL_MODULE:= libavformat
 include $(BUILD_STATIC_LIBRARY)
 include $(CLEAR_VARS)
+
+
+################################################################################
+# ffmpeg - libavutil
+################################################################################
 
 
 local_src_files := \
@@ -161,6 +172,11 @@ LOCAL_MODULE_TAGS := optional
 LOCAL_MODULE:= libavutil
 include $(BUILD_STATIC_LIBRARY)
 include $(CLEAR_VARS)
+
+
+################################################################################
+# ffmpeg - libavcodec
+################################################################################
 
 
 local_src_files := \
@@ -312,6 +328,11 @@ LOCAL_MODULE_TAGS := optional
 LOCAL_MODULE:= libavcodec
 include $(BUILD_STATIC_LIBRARY)
 include $(CLEAR_VARS)
+
+
+################################################################################
+# openssl
+################################################################################
 
 
 CRYPTO_PATH:= ./openssl/crypto
@@ -834,6 +855,12 @@ endif
 
 include $(CLEAR_VARS)
 
+
+################################################################################
+# breakpad
+################################################################################
+
+
 LOCAL_CPP_EXTENSION := .cc
 LOCAL_ARM_MODE := arm
 LOCAL_MODULE := breakpad
@@ -870,6 +897,12 @@ include $(BUILD_STATIC_LIBRARY)
 
 include $(CLEAR_VARS)
 
+
+################################################################################
+# tgnet
+################################################################################
+
+
 LOCAL_CPPFLAGS := -Wall -std=c++11 -DANDROID -frtti -DHAVE_PTHREAD -finline-functions -ffast-math -Os
 LOCAL_C_INCLUDES += $(LOCAL_PATH)/openssl/include/
 LOCAL_ARM_MODE := arm
@@ -897,6 +930,12 @@ LOCAL_SRC_FILES := \
 include $(BUILD_STATIC_LIBRARY)
 
 include $(CLEAR_VARS)
+
+
+################################################################################
+# webp
+################################################################################
+
 
 LOCAL_CFLAGS := -Wall -DANDROID -DHAVE_MALLOC_H -DHAVE_PTHREAD -DWEBP_USE_THREAD -finline-functions -ffast-math -ffunction-sections -fdata-sections -Os
 LOCAL_C_INCLUDES += $(LOCAL_PATH)/libwebp/src
@@ -980,6 +1019,13 @@ LOCAL_SRC_FILES := \
 include $(BUILD_STATIC_LIBRARY)
 
 include $(CLEAR_VARS)
+
+
+################################################################################
+# sqlite
+################################################################################
+
+
 ifeq ($(TARGET_ARCH_ABI),armeabi)
 	LOCAL_ARM_MODE  := thumb
 else
@@ -995,6 +1041,13 @@ LOCAL_SRC_FILES     := \
 include $(BUILD_STATIC_LIBRARY)
 
 include $(CLEAR_VARS)
+
+
+################################################################################
+# opus, jpeg, misc.
+################################################################################
+
+
 LOCAL_PRELINK_MODULE := false
 
 LOCAL_MODULE 	:= tmessages.22
@@ -1182,6 +1235,8 @@ $(LOCAL_PATH)/libyuv/include \
 $(LOCAL_PATH)/openssl/include \
 $(LOCAL_PATH)/breakpad/common/android/include \
 $(LOCAL_PATH)/breakpad \
+$(LOCAL_PATH)/sqlite \
+$(LOCAL_PATH)/libetpan/include \
 $(LOCAL_PATH)/ffmpeg
 
 LOCAL_SRC_FILES     += \
@@ -1292,7 +1347,7 @@ LOCAL_SRC_FILES     += \
 ./gifvideo.cpp \
 ./SqliteWrapper.cpp \
 ./TgNetWrapper.cpp \
-./mr_wrapper.c \
+./mr_wrapper.cpp \
 ./NativeLoader.cpp
 
 include $(BUILD_SHARED_LIBRARY)
