@@ -1,10 +1,66 @@
 
+LOCAL_PATH:= $(call my-dir)
+
+################################################################################
+# cyrus sasl
+################################################################################
+
+
+include $(CLEAR_VARS)
+
+LOCAL_MODULE := sasl2
+
+NDK_TOOLCHAIN_VERSION := clang
+LOCAL_C_INCLUDES += \
+	$(LOCAL_PATH)/cyrussasl/include \
+	$(LOCAL_PATH)/cyrussasl/plugins \
+	$(LOCAL_PATH)/openssl/include
+LOCAL_SRC_FILES := \
+	./cyrussasl/lib/auxprop.c \
+	./cyrussasl/lib/canonusr.c \
+	./cyrussasl/lib/checkpw.c \
+	./cyrussasl/lib/client.c \
+	./cyrussasl/lib/common.c \
+	./cyrussasl/lib/config.c \
+	./cyrussasl/lib/dlopen.c \
+	./cyrussasl/lib/external.c \
+	./cyrussasl/lib/getsubopt.c \
+	./cyrussasl/lib/md5.c \
+	./cyrussasl/lib/saslutil.c \
+	./cyrussasl/lib/server.c \
+	./cyrussasl/lib/seterror.c \
+	./cyrussasl/lib/snprintf.c \
+	./cyrussasl/plugins/anonymous.c \
+	./cyrussasl/plugins/anonymous_init.c \
+	./cyrussasl/plugins/cram.c \
+	./cyrussasl/plugins/crammd5_init.c \
+	./cyrussasl/plugins/digestmd5.c \
+	./cyrussasl/plugins/digestmd5_init.c \
+	./cyrussasl/plugins/login.c \
+	./cyrussasl/plugins/login_init.c \
+	./cyrussasl/plugins/ntlm.c \
+	./cyrussasl/plugins/ntlm_init.c \
+	./cyrussasl/plugins/otp.c \
+	./cyrussasl/plugins/otp_init.c \
+	./cyrussasl/plugins/passdss.c \
+	./cyrussasl/plugins/passdss_init.c \
+	./cyrussasl/plugins/plain.c \
+	./cyrussasl/plugins/plain_init.c \
+	./cyrussasl/plugins/plugin_common.c \
+	./cyrussasl/plugins/scram.c \
+	./cyrussasl/plugins/scram_init.c \
+	./cyrussasl/plugins/srp.c \
+	./cyrussasl/plugins/srp_init.c
+
+include $(BUILD_STATIC_LIBRARY)
+include $(CLEAR_VARS)
+
+
 ################################################################################
 # ffmpeg - libav
 ################################################################################
 
 
-LOCAL_PATH:= $(call my-dir)
 FFMPEG_PATH:= ./ffmpeg
 
 local_src_files := \
@@ -1056,7 +1112,7 @@ LOCAL_CFLAGS 	+= -Drestrict='' -D__EMX__ -DOPUS_BUILD -DFIXED_POINT -DUSE_ALLOCA
 LOCAL_CFLAGS 	+= -DANDROID_NDK -DDISABLE_IMPORTGL -fno-strict-aliasing -fprefetch-loop-arrays -DAVOID_TABLES -DANDROID_TILE_BASED_DECODE -DANDROID_ARMV6_IDCT -ffast-math -D__STDC_CONSTANT_MACROS
 LOCAL_CPPFLAGS 	:= -DBSD=1 -ffast-math -Os -funroll-loops -std=c++11
 LOCAL_LDLIBS 	:= -ljnigraphics -llog -lz -latomic
-LOCAL_STATIC_LIBRARIES := webp sqlite tgnet breakpad avformat avcodec avutil
+LOCAL_STATIC_LIBRARIES := sasl2 webp sqlite tgnet breakpad avformat avcodec avutil 
 
 LOCAL_SRC_FILES     := \
 ./opus/src/opus.c \
