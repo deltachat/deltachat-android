@@ -896,20 +896,20 @@ LOCAL_MODULE_TAGS := optional
 LOCAL_MODULE:= libcrypto
 include $(BUILD_STATIC_LIBRARY)
 
-include $(CLEAR_VARS)
+#include $(CLEAR_VARS)
 #LOCAL_MODULE    := crypto
-
-ifeq ($(TARGET_ARCH_ABI),armeabi-v7a)
-    LOCAL_SRC_FILES := ./openssl/obj/local/armeabi-v7a/libcrypto.a
-else
-    ifeq ($(TARGET_ARCH_ABI),armeabi)
-       LOCAL_SRC_FILES := ./openssl/obj/local/armeabi/libcrypto.a
-    else
-        ifeq ($(TARGET_ARCH_ABI),x86)
-           LOCAL_SRC_FILES := ./openssl/obj/local/x86/libcrypto.a
-        endif
-    endif
-endif
+#
+#ifeq ($(TARGET_ARCH_ABI),armeabi-v7a)
+#    LOCAL_SRC_FILES := ./openssl/obj/local/armeabi-v7a/libcrypto.a
+#else
+#    ifeq ($(TARGET_ARCH_ABI),armeabi)
+#       LOCAL_SRC_FILES := ./openssl/obj/local/armeabi/libcrypto.a
+#    else
+#        ifeq ($(TARGET_ARCH_ABI),x86)
+#           LOCAL_SRC_FILES := ./openssl/obj/local/x86/libcrypto.a
+#        endif
+#    endif
+#endif
 
 #include $(PREBUILT_STATIC_LIBRARY)
 
