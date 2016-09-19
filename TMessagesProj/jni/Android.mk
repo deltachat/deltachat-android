@@ -1,206 +1,8 @@
-
 LOCAL_PATH:= $(call my-dir)
 
-
 ################################################################################
-# libetpan
+# ffmpeg - libavformat
 ################################################################################
-
-
-LOCAL_MODULE := etpan
-NDK_TOOLCHAIN_VERSION := clang
-LOCAL_CFLAGS += -DHAVE_CONFIG_H=1
-LOCAL_SRC_FILES := \
-	./libetpan/src/data-types/base64.c \
-	./libetpan/src/data-types/carray.c \
-	./libetpan/src/data-types/charconv.c \
-	./libetpan/src/data-types/chash.c \
-	./libetpan/src/data-types/clist.c \
-	./libetpan/src/data-types/connect.c \
-	./libetpan/src/data-types/mail_cache_db.c \
-	./libetpan/src/data-types/maillock.c \
-	./libetpan/src/data-types/mailsasl.c \
-	./libetpan/src/data-types/mailsem.c \
-	./libetpan/src/data-types/mailstream.c \
-	./libetpan/src/data-types/mailstream_cancel.c \
-	./libetpan/src/data-types/mailstream_cfstream.c \
-	./libetpan/src/data-types/mailstream_compress.c \
-	./libetpan/src/data-types/mailstream_helper.c \
-	./libetpan/src/data-types/mailstream_low.c \
-	./libetpan/src/data-types/mailstream_socket.c \
-	./libetpan/src/data-types/mailstream_ssl.c \
-	./libetpan/src/data-types/md5.c \
-	./libetpan/src/data-types/mmapstring.c \
-	./libetpan/src/data-types/timeutils.c \
-	./libetpan/src/low-level/imap/acl.c \
-	./libetpan/src/low-level/imap/acl_parser.c \
-	./libetpan/src/low-level/imap/acl_sender.c \
-	./libetpan/src/low-level/imap/acl_types.c \
-	./libetpan/src/low-level/imap/annotatemore.c \
-	./libetpan/src/low-level/imap/annotatemore_parser.c \
-	./libetpan/src/low-level/imap/annotatemore_sender.c \
-	./libetpan/src/low-level/imap/annotatemore_types.c \
-	./libetpan/src/low-level/imap/condstore.c \
-	./libetpan/src/low-level/imap/condstore_types.c \
-	./libetpan/src/low-level/imap/enable.c \
-	./libetpan/src/low-level/imap/idle.c \
-	./libetpan/src/low-level/imap/mailimap.c \
-	./libetpan/src/low-level/imap/mailimap_compress.c \
-	./libetpan/src/low-level/imap/mailimap_extension.c \
-	./libetpan/src/low-level/imap/mailimap_helper.c \
-	./libetpan/src/low-level/imap/mailimap_id.c \
-	./libetpan/src/low-level/imap/mailimap_id_parser.c \
-	./libetpan/src/low-level/imap/mailimap_id_sender.c \
-	./libetpan/src/low-level/imap/mailimap_id_types.c \
-	./libetpan/src/low-level/imap/mailimap_keywords.c \
-	./libetpan/src/low-level/imap/mailimap_oauth2.c \
-	./libetpan/src/low-level/imap/mailimap_parser.c \
-	./libetpan/src/low-level/imap/mailimap_print.c \
-	./libetpan/src/low-level/imap/mailimap_sender.c \
-	./libetpan/src/low-level/imap/mailimap_socket.c \
-	./libetpan/src/low-level/imap/mailimap_sort.c \
-	./libetpan/src/low-level/imap/mailimap_sort_types.c \
-	./libetpan/src/low-level/imap/mailimap_ssl.c \
-	./libetpan/src/low-level/imap/mailimap_types.c \
-	./libetpan/src/low-level/imap/mailimap_types_helper.c \
-	./libetpan/src/low-level/imap/namespace.c \
-	./libetpan/src/low-level/imap/namespace_parser.c \
-	./libetpan/src/low-level/imap/namespace_sender.c \
-	./libetpan/src/low-level/imap/namespace_types.c \
-	./libetpan/src/low-level/imap/qresync.c \
-	./libetpan/src/low-level/imap/qresync_types.c \
-	./libetpan/src/low-level/imap/quota.c \
-	./libetpan/src/low-level/imap/quota_parser.c \
-	./libetpan/src/low-level/imap/quota_sender.c \
-	./libetpan/src/low-level/imap/quota_types.c \
-	./libetpan/src/low-level/imap/uidplus.c \
-	./libetpan/src/low-level/imap/uidplus_parser.c \
-	./libetpan/src/low-level/imap/uidplus_sender.c \
-	./libetpan/src/low-level/imap/uidplus_types.c \
-	./libetpan/src/low-level/imap/xgmlabels.c \
-	./libetpan/src/low-level/imap/xgmmsgid.c \
-	./libetpan/src/low-level/imap/xgmthrid.c \
-	./libetpan/src/low-level/imap/xlist.c \
-	./libetpan/src/low-level/imf/mailimf.c \
-	./libetpan/src/low-level/imf/mailimf_types.c \
-	./libetpan/src/low-level/imf/mailimf_types_helper.c \
-	./libetpan/src/low-level/imf/mailimf_write_file.c \
-	./libetpan/src/low-level/imf/mailimf_write_generic.c \
-	./libetpan/src/low-level/imf/mailimf_write_mem.c \
-	./libetpan/src/low-level/mime/mailmime.c \
-	./libetpan/src/low-level/mime/mailmime_content.c \
-	./libetpan/src/low-level/mime/mailmime_decode.c \
-	./libetpan/src/low-level/mime/mailmime_disposition.c \
-	./libetpan/src/low-level/mime/mailmime_types.c \
-	./libetpan/src/low-level/mime/mailmime_types_helper.c \
-	./libetpan/src/low-level/mime/mailmime_write_file.c \
-	./libetpan/src/low-level/mime/mailmime_write_generic.c \
-	./libetpan/src/low-level/mime/mailmime_write_mem.c \
-	./libetpan/src/low-level/nntp/newsnntp.c \
-	./libetpan/src/low-level/nntp/newsnntp_socket.c \
-	./libetpan/src/low-level/nntp/newsnntp_ssl.c \
-	./libetpan/src/low-level/pop3/mailpop3.c \
-	./libetpan/src/low-level/pop3/mailpop3_helper.c \
-	./libetpan/src/low-level/pop3/mailpop3_socket.c \
-	./libetpan/src/low-level/pop3/mailpop3_ssl.c \
-	./libetpan/src/low-level/smtp/mailsmtp.c \
-	./libetpan/src/low-level/smtp/mailsmtp_helper.c \
-	./libetpan/src/low-level/smtp/mailsmtp_oauth2.c \
-	./libetpan/src/low-level/smtp/mailsmtp_socket.c \
-	./libetpan/src/low-level/smtp/mailsmtp_ssl.c \
-	./libetpan/src/main/libetpan_version.c \
-	./libetpan/src/driver/implementation/data-message/data_message_driver.c \
-	./libetpan/src/driver/interface/maildriver.c \
-	./libetpan/src/driver/interface/maildriver_tools.c \
-	./libetpan/src/driver/interface/maildriver_types.c \
-	./libetpan/src/driver/interface/maildriver_types_helper.c \
-	./libetpan/src/driver/interface/mailfolder.c \
-	./libetpan/src/driver/interface/mailmessage.c \
-	./libetpan/src/driver/interface/mailmessage_tools.c \
-	./libetpan/src/driver/interface/mailmessage_types.c \
-	./libetpan/src/driver/interface/mailstorage.c \
-	./libetpan/src/driver/interface/mailstorage_tools.c
-LOCAL_C_INCLUDES = \
-	$(LOCAL_PATH)/libetpan/src \
-	$(LOCAL_PATH)/libetpan/src/data-types \
-	$(LOCAL_PATH)/libetpan/src/low-level \
-	$(LOCAL_PATH)/libetpan/src/low-level/imap \
-	$(LOCAL_PATH)/libetpan/src/low-level/imf \
-	$(LOCAL_PATH)/libetpan/src/low-level/mime \
-	$(LOCAL_PATH)/libetpan/src/low-level/nntp \
-	$(LOCAL_PATH)/libetpan/src/low-level/pop3 \
-	$(LOCAL_PATH)/libetpan/src/low-level/smtp \
-	$(LOCAL_PATH)/libetpan/src/main \
-	$(LOCAL_PATH)/libetpan/src/driver/implementation/data-message \
-	$(LOCAL_PATH)/libetpan/src/driver/interface \
-	$(LOCAL_PATH)/libetpan/include \
-	$(LOCAL_PATH)/libetpan/include/libetpan \
-	$(LOCAL_PATH)/openssl/include \
-	$(LOCAL_PATH)/cyrussasl/include \
-	$(LOCAL_PATH)/cyrussasl/include/sasl
-
-include $(BUILD_STATIC_LIBRARY)
-include $(CLEAR_VARS)
-
-
-################################################################################
-# cyrus sasl
-################################################################################
-
-
-LOCAL_MODULE := sasl2
-
-NDK_TOOLCHAIN_VERSION := clang
-LOCAL_C_INCLUDES += \
-	$(LOCAL_PATH)/cyrussasl/include \
-	$(LOCAL_PATH)/cyrussasl/include/sasl \
-	$(LOCAL_PATH)/cyrussasl/plugins \
-	$(LOCAL_PATH)/openssl/include
-LOCAL_SRC_FILES := \
-	./cyrussasl/lib/auxprop.c \
-	./cyrussasl/lib/canonusr.c \
-	./cyrussasl/lib/checkpw.c \
-	./cyrussasl/lib/client.c \
-	./cyrussasl/lib/common.c \
-	./cyrussasl/lib/config.c \
-	./cyrussasl/lib/dlopen.c \
-	./cyrussasl/lib/external.c \
-	./cyrussasl/lib/getsubopt.c \
-	./cyrussasl/lib/md5.c \
-	./cyrussasl/lib/saslutil.c \
-	./cyrussasl/lib/server.c \
-	./cyrussasl/lib/seterror.c \
-	./cyrussasl/lib/snprintf.c \
-	./cyrussasl/plugins/anonymous.c \
-	./cyrussasl/plugins/anonymous_init.c \
-	./cyrussasl/plugins/cram.c \
-	./cyrussasl/plugins/crammd5_init.c \
-	./cyrussasl/plugins/digestmd5.c \
-	./cyrussasl/plugins/digestmd5_init.c \
-	./cyrussasl/plugins/login.c \
-	./cyrussasl/plugins/login_init.c \
-	./cyrussasl/plugins/ntlm.c \
-	./cyrussasl/plugins/ntlm_init.c \
-	./cyrussasl/plugins/otp.c \
-	./cyrussasl/plugins/otp_init.c \
-	./cyrussasl/plugins/passdss.c \
-	./cyrussasl/plugins/passdss_init.c \
-	./cyrussasl/plugins/plain.c \
-	./cyrussasl/plugins/plain_init.c \
-	./cyrussasl/plugins/plugin_common.c \
-	./cyrussasl/plugins/scram.c \
-	./cyrussasl/plugins/scram_init.c \
-	./cyrussasl/plugins/srp.c \
-	./cyrussasl/plugins/srp_init.c
-
-include $(BUILD_STATIC_LIBRARY)
-include $(CLEAR_VARS)
-
-
-################################################################################
-# ffmpeg - libav
-################################################################################
-
 
 FFMPEG_PATH:= ./ffmpeg
 
@@ -253,13 +55,14 @@ LOCAL_ARM_MODE:= arm
 LOCAL_MODULE_TAGS := optional
 LOCAL_MODULE:= libavformat
 include $(BUILD_STATIC_LIBRARY)
-include $(CLEAR_VARS)
 
 
 ################################################################################
 # ffmpeg - libavutil
 ################################################################################
 
+
+include $(CLEAR_VARS)
 
 local_src_files := \
 	$(FFMPEG_PATH)/libavutil/adler32.c \
@@ -368,12 +171,14 @@ LOCAL_C_INCLUDES += $(local_c_includes)
 LOCAL_MODULE_TAGS := optional
 LOCAL_MODULE:= libavutil
 include $(BUILD_STATIC_LIBRARY)
-include $(CLEAR_VARS)
 
 
 ################################################################################
 # ffmpeg - libavcodec
 ################################################################################
+
+
+include $(CLEAR_VARS)
 
 
 local_src_files := \
@@ -524,13 +329,15 @@ LOCAL_C_INCLUDES += $(local_c_includes)
 LOCAL_MODULE_TAGS := optional
 LOCAL_MODULE:= libavcodec
 include $(BUILD_STATIC_LIBRARY)
+
+################################################################################
+# openssl - libcrypto
+################################################################################
+
 include $(CLEAR_VARS)
 
 
-################################################################################
-# openssl
-################################################################################
-
+CRYPTO_PATH:= ./openssl/crypto
 
 arm_cflags := -DOPENSSL_BN_ASM_MONT -DAES_ASM -DSHA1_ASM -DSHA256_ASM -DSHA512_ASM
 
@@ -1106,13 +913,13 @@ endif
 
 #include $(PREBUILT_STATIC_LIBRARY)
 
-include $(CLEAR_VARS)
-
 
 ################################################################################
 # breakpad
 ################################################################################
 
+
+include $(CLEAR_VARS)
 
 LOCAL_CPP_EXTENSION := .cc
 LOCAL_ARM_MODE := arm
@@ -1148,13 +955,13 @@ LOCAL_SRC_FILES := \
 
 include $(BUILD_STATIC_LIBRARY)
 
-include $(CLEAR_VARS)
-
 
 ################################################################################
 # tgnet
 ################################################################################
 
+
+include $(CLEAR_VARS)
 
 LOCAL_CPPFLAGS := -Wall -std=c++11 -DANDROID -frtti -DHAVE_PTHREAD -finline-functions -ffast-math -Os
 LOCAL_C_INCLUDES += $(LOCAL_PATH)/openssl/include/
@@ -1182,13 +989,13 @@ LOCAL_SRC_FILES := \
 
 include $(BUILD_STATIC_LIBRARY)
 
-include $(CLEAR_VARS)
-
 
 ################################################################################
 # webp
 ################################################################################
 
+
+include $(CLEAR_VARS)
 
 LOCAL_CFLAGS := -Wall -DANDROID -DHAVE_MALLOC_H -DHAVE_PTHREAD -DWEBP_USE_THREAD -finline-functions -ffast-math -ffunction-sections -fdata-sections -Os
 LOCAL_C_INCLUDES += $(LOCAL_PATH)/libwebp/src
@@ -1271,14 +1078,220 @@ LOCAL_SRC_FILES := \
 
 include $(BUILD_STATIC_LIBRARY)
 
+
+################################################################################
+# libetpan
+################################################################################
+
+
+# rough howto:
+# - copy files from original source
+# - create include file links using "./autogen.sh; cd include; make" (or so)
+# - use config.h from libetpan/build-android/include
+# - use libetpan-config.h from local installation 
+
+
 include $(CLEAR_VARS)
 
+LOCAL_MODULE := etpan
+LOCAL_CFLAGS += -DHAVE_CONFIG_H=1
+LOCAL_SRC_FILES := \
+	./libetpan/src/data-types/base64.c \
+	./libetpan/src/data-types/carray.c \
+	./libetpan/src/data-types/charconv.c \
+	./libetpan/src/data-types/chash.c \
+	./libetpan/src/data-types/clist.c \
+	./libetpan/src/data-types/connect.c \
+	./libetpan/src/data-types/mail_cache_db.c \
+	./libetpan/src/data-types/maillock.c \
+	./libetpan/src/data-types/mailsasl.c \
+	./libetpan/src/data-types/mailsem.c \
+	./libetpan/src/data-types/mailstream.c \
+	./libetpan/src/data-types/mailstream_cancel.c \
+	./libetpan/src/data-types/mailstream_cfstream.c \
+	./libetpan/src/data-types/mailstream_compress.c \
+	./libetpan/src/data-types/mailstream_helper.c \
+	./libetpan/src/data-types/mailstream_low.c \
+	./libetpan/src/data-types/mailstream_socket.c \
+	./libetpan/src/data-types/mailstream_ssl.c \
+	./libetpan/src/data-types/md5.c \
+	./libetpan/src/data-types/mmapstring.c \
+	./libetpan/src/data-types/timeutils.c \
+	./libetpan/src/low-level/imap/acl.c \
+	./libetpan/src/low-level/imap/acl_parser.c \
+	./libetpan/src/low-level/imap/acl_sender.c \
+	./libetpan/src/low-level/imap/acl_types.c \
+	./libetpan/src/low-level/imap/annotatemore.c \
+	./libetpan/src/low-level/imap/annotatemore_parser.c \
+	./libetpan/src/low-level/imap/annotatemore_sender.c \
+	./libetpan/src/low-level/imap/annotatemore_types.c \
+	./libetpan/src/low-level/imap/condstore.c \
+	./libetpan/src/low-level/imap/condstore_types.c \
+	./libetpan/src/low-level/imap/enable.c \
+	./libetpan/src/low-level/imap/idle.c \
+	./libetpan/src/low-level/imap/mailimap.c \
+	./libetpan/src/low-level/imap/mailimap_compress.c \
+	./libetpan/src/low-level/imap/mailimap_extension.c \
+	./libetpan/src/low-level/imap/mailimap_helper.c \
+	./libetpan/src/low-level/imap/mailimap_id.c \
+	./libetpan/src/low-level/imap/mailimap_id_parser.c \
+	./libetpan/src/low-level/imap/mailimap_id_sender.c \
+	./libetpan/src/low-level/imap/mailimap_id_types.c \
+	./libetpan/src/low-level/imap/mailimap_keywords.c \
+	./libetpan/src/low-level/imap/mailimap_oauth2.c \
+	./libetpan/src/low-level/imap/mailimap_parser.c \
+	./libetpan/src/low-level/imap/mailimap_print.c \
+	./libetpan/src/low-level/imap/mailimap_sender.c \
+	./libetpan/src/low-level/imap/mailimap_socket.c \
+	./libetpan/src/low-level/imap/mailimap_sort.c \
+	./libetpan/src/low-level/imap/mailimap_sort_types.c \
+	./libetpan/src/low-level/imap/mailimap_ssl.c \
+	./libetpan/src/low-level/imap/mailimap_types.c \
+	./libetpan/src/low-level/imap/mailimap_types_helper.c \
+	./libetpan/src/low-level/imap/namespace.c \
+	./libetpan/src/low-level/imap/namespace_parser.c \
+	./libetpan/src/low-level/imap/namespace_sender.c \
+	./libetpan/src/low-level/imap/namespace_types.c \
+	./libetpan/src/low-level/imap/qresync.c \
+	./libetpan/src/low-level/imap/qresync_types.c \
+	./libetpan/src/low-level/imap/quota.c \
+	./libetpan/src/low-level/imap/quota_parser.c \
+	./libetpan/src/low-level/imap/quota_sender.c \
+	./libetpan/src/low-level/imap/quota_types.c \
+	./libetpan/src/low-level/imap/uidplus.c \
+	./libetpan/src/low-level/imap/uidplus_parser.c \
+	./libetpan/src/low-level/imap/uidplus_sender.c \
+	./libetpan/src/low-level/imap/uidplus_types.c \
+	./libetpan/src/low-level/imap/xgmlabels.c \
+	./libetpan/src/low-level/imap/xgmmsgid.c \
+	./libetpan/src/low-level/imap/xgmthrid.c \
+	./libetpan/src/low-level/imap/xlist.c \
+	./libetpan/src/low-level/imf/mailimf.c \
+	./libetpan/src/low-level/imf/mailimf_types.c \
+	./libetpan/src/low-level/imf/mailimf_types_helper.c \
+	./libetpan/src/low-level/imf/mailimf_write_file.c \
+	./libetpan/src/low-level/imf/mailimf_write_generic.c \
+	./libetpan/src/low-level/imf/mailimf_write_mem.c \
+	./libetpan/src/low-level/mime/mailmime.c \
+	./libetpan/src/low-level/mime/mailmime_content.c \
+	./libetpan/src/low-level/mime/mailmime_decode.c \
+	./libetpan/src/low-level/mime/mailmime_disposition.c \
+	./libetpan/src/low-level/mime/mailmime_types.c \
+	./libetpan/src/low-level/mime/mailmime_types_helper.c \
+	./libetpan/src/low-level/mime/mailmime_write_file.c \
+	./libetpan/src/low-level/mime/mailmime_write_generic.c \
+	./libetpan/src/low-level/mime/mailmime_write_mem.c \
+	./libetpan/src/low-level/nntp/newsnntp.c \
+	./libetpan/src/low-level/nntp/newsnntp_socket.c \
+	./libetpan/src/low-level/nntp/newsnntp_ssl.c \
+	./libetpan/src/low-level/pop3/mailpop3.c \
+	./libetpan/src/low-level/pop3/mailpop3_helper.c \
+	./libetpan/src/low-level/pop3/mailpop3_socket.c \
+	./libetpan/src/low-level/pop3/mailpop3_ssl.c \
+	./libetpan/src/low-level/smtp/mailsmtp.c \
+	./libetpan/src/low-level/smtp/mailsmtp_helper.c \
+	./libetpan/src/low-level/smtp/mailsmtp_oauth2.c \
+	./libetpan/src/low-level/smtp/mailsmtp_socket.c \
+	./libetpan/src/low-level/smtp/mailsmtp_ssl.c \
+	./libetpan/src/main/libetpan_version.c \
+	./libetpan/src/driver/implementation/data-message/data_message_driver.c \
+	./libetpan/src/driver/interface/maildriver.c \
+	./libetpan/src/driver/interface/maildriver_tools.c \
+	./libetpan/src/driver/interface/maildriver_types.c \
+	./libetpan/src/driver/interface/maildriver_types_helper.c \
+	./libetpan/src/driver/interface/mailfolder.c \
+	./libetpan/src/driver/interface/mailmessage.c \
+	./libetpan/src/driver/interface/mailmessage_tools.c \
+	./libetpan/src/driver/interface/mailmessage_types.c \
+	./libetpan/src/driver/interface/mailstorage.c \
+	./libetpan/src/driver/interface/mailstorage_tools.c
+LOCAL_C_INCLUDES = \
+	$(LOCAL_PATH)/libetpan/src \
+	$(LOCAL_PATH)/libetpan/src/data-types \
+	$(LOCAL_PATH)/libetpan/src/low-level \
+	$(LOCAL_PATH)/libetpan/src/low-level/imap \
+	$(LOCAL_PATH)/libetpan/src/low-level/imf \
+	$(LOCAL_PATH)/libetpan/src/low-level/mime \
+	$(LOCAL_PATH)/libetpan/src/low-level/nntp \
+	$(LOCAL_PATH)/libetpan/src/low-level/pop3 \
+	$(LOCAL_PATH)/libetpan/src/low-level/smtp \
+	$(LOCAL_PATH)/libetpan/src/main \
+	$(LOCAL_PATH)/libetpan/src/driver/implementation/data-message \
+	$(LOCAL_PATH)/libetpan/src/driver/interface \
+	$(LOCAL_PATH)/libetpan/include \
+	$(LOCAL_PATH)/libetpan/include/libetpan \
+	$(LOCAL_PATH)/openssl/include \
+	$(LOCAL_PATH)/cyrussasl/include \
+	$(LOCAL_PATH)/cyrussasl/include/sasl
+
+include $(BUILD_STATIC_LIBRARY)
+
+
 
 ################################################################################
-# sqlite
+# cyrus sasl
 ################################################################################
 
 
+# rough howto:
+# - copy files from original source
+# - use config.h from libetpan/build-android/dependencies/cyrus-sasl/build-android/include
+
+include $(CLEAR_VARS)
+
+LOCAL_MODULE := sasl2
+
+LOCAL_C_INCLUDES += \
+	$(LOCAL_PATH)/cyrussasl/include \
+	$(LOCAL_PATH)/cyrussasl/include/sasl \
+	$(LOCAL_PATH)/cyrussasl/plugins \
+	$(LOCAL_PATH)/openssl/include
+LOCAL_SRC_FILES := \
+	./cyrussasl/lib/auxprop.c \
+	./cyrussasl/lib/canonusr.c \
+	./cyrussasl/lib/checkpw.c \
+	./cyrussasl/lib/client.c \
+	./cyrussasl/lib/common.c \
+	./cyrussasl/lib/config.c \
+	./cyrussasl/lib/dlopen.c \
+	./cyrussasl/lib/external.c \
+	./cyrussasl/lib/getsubopt.c \
+	./cyrussasl/lib/md5.c \
+	./cyrussasl/lib/saslutil.c \
+	./cyrussasl/lib/server.c \
+	./cyrussasl/lib/seterror.c \
+	./cyrussasl/lib/snprintf.c \
+	./cyrussasl/plugins/anonymous.c \
+	./cyrussasl/plugins/anonymous_init.c \
+	./cyrussasl/plugins/cram.c \
+	./cyrussasl/plugins/crammd5_init.c \
+	./cyrussasl/plugins/digestmd5.c \
+	./cyrussasl/plugins/digestmd5_init.c \
+	./cyrussasl/plugins/login.c \
+	./cyrussasl/plugins/login_init.c \
+	./cyrussasl/plugins/ntlm.c \
+	./cyrussasl/plugins/ntlm_init.c \
+	./cyrussasl/plugins/otp.c \
+	./cyrussasl/plugins/otp_init.c \
+	./cyrussasl/plugins/passdss.c \
+	./cyrussasl/plugins/passdss_init.c \
+	./cyrussasl/plugins/plain.c \
+	./cyrussasl/plugins/plain_init.c \
+	./cyrussasl/plugins/plugin_common.c \
+	./cyrussasl/plugins/scram.c \
+	./cyrussasl/plugins/scram_init.c \
+	./cyrussasl/plugins/srp.c \
+	./cyrussasl/plugins/srp_init.c
+
+include $(BUILD_STATIC_LIBRARY)
+
+
+################################################################################
+# main shared library as used from Java (includes the static ones)
+################################################################################
+
+
+include $(CLEAR_VARS)
 ifeq ($(TARGET_ARCH_ABI),armeabi)
 	LOCAL_ARM_MODE  := thumb
 else
@@ -1294,13 +1307,6 @@ LOCAL_SRC_FILES     := \
 include $(BUILD_STATIC_LIBRARY)
 
 include $(CLEAR_VARS)
-
-
-################################################################################
-# opus, jpeg, misc.
-################################################################################
-
-
 LOCAL_PRELINK_MODULE := false
 
 LOCAL_MODULE 	:= tmessages.22
@@ -1309,7 +1315,7 @@ LOCAL_CFLAGS 	+= -Drestrict='' -D__EMX__ -DOPUS_BUILD -DFIXED_POINT -DUSE_ALLOCA
 LOCAL_CFLAGS 	+= -DANDROID_NDK -DDISABLE_IMPORTGL -fno-strict-aliasing -fprefetch-loop-arrays -DAVOID_TABLES -DANDROID_TILE_BASED_DECODE -DANDROID_ARMV6_IDCT -ffast-math -D__STDC_CONSTANT_MACROS
 LOCAL_CPPFLAGS 	:= -DBSD=1 -ffast-math -Os -funroll-loops -std=c++11
 LOCAL_LDLIBS 	:= -ljnigraphics -llog -lz -latomic
-LOCAL_STATIC_LIBRARIES := etpan sasl2 webp sqlite tgnet breakpad avformat avcodec avutil 
+LOCAL_STATIC_LIBRARIES := etpan sasl2 webp sqlite tgnet breakpad avformat avcodec avutil
 
 LOCAL_SRC_FILES     := \
 ./opus/src/opus.c \
@@ -1488,9 +1494,9 @@ $(LOCAL_PATH)/libyuv/include \
 $(LOCAL_PATH)/openssl/include \
 $(LOCAL_PATH)/breakpad/common/android/include \
 $(LOCAL_PATH)/breakpad \
-$(LOCAL_PATH)/sqlite \
+$(LOCAL_PATH)/ffmpeg \
 $(LOCAL_PATH)/libetpan/include \
-$(LOCAL_PATH)/ffmpeg
+$(LOCAL_PATH)/sqlite
 
 LOCAL_SRC_FILES     += \
 ./libjpeg/jcapimin.c \
