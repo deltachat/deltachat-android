@@ -1328,7 +1328,7 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
                         PackageInfo pInfo = ApplicationLoader.applicationContext.getPackageManager().getPackageInfo(ApplicationLoader.applicationContext.getPackageName(), 0);
                         int code = pInfo.versionCode / 10;
                         String abi = "";
-                        int testval = MrMailbox.MrMailboxNew();
+                        long testval = MrMailbox.MrMailboxNew ();
                         switch (pInfo.versionCode % 10) {
                             case 0:
                                 abi = "arm";

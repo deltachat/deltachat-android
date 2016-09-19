@@ -1619,7 +1619,7 @@ LOCAL_SRC_FILES     += \
 ../../../messenger-backend/src/mrsimplify.c \
 ../../../messenger-backend/src/mrsqlite3.c \
 ../../../messenger-backend/src/mrtools.c \
-./mr_wrapper.cpp \
+./mr_wrapper.c \
 ./NativeLoader.cpp
 
 include $(BUILD_SHARED_LIBRARY)
