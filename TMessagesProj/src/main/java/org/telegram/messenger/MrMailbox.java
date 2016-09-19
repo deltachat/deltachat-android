@@ -47,5 +47,5 @@ public class MrMailbox {
     // working with chats
     public native static int     MrChatGetId          (long hChat);
     public native static int     MrChatGetType        (long hChat);
-    public native static String  MrChatCetName        (long hChat);
+    public native static String  MrChatGetName        (long hChat);
 }
