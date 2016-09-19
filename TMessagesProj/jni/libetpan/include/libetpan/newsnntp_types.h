@@ -1,0 +1,1 @@
+../../src/low-level/nntp/newsnntp_types.h
