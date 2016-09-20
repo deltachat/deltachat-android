@@ -18,5 +18,7 @@ You'll also need the backend (https://github.com/r10s/messenger-backend), that
 must be placed at `../messenger-backend`, however, there is not need to build
 the backend itself, the android frontend just references the needed files.
 
+The LibreChat Android Frontend is based upon Telegram FOSS.
+
 Copyright (c) Bjoern Petersen Software Design and Development,
 http://b44t.com and contributors.
