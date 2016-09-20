@@ -183,7 +183,7 @@ public class ApplicationLoader extends Application {
     }
 
     public static File getFilesDirFixed() {
-        for (int a = 0; a < 10; a++) {
+        for (int a = 0; a < 10; a++) { // sometimes getFilesDir() returns NULL, see https://code.google.com/p/android/issues/detail?id=8886
             File path = ApplicationLoader.applicationContext.getFilesDir();
             if (path != null) {
                 return path;
@@ -197,7 +197,7 @@ public class ApplicationLoader extends Application {
         } catch (Exception e) {
             FileLog.e("tmessages", e);
         }
-        return new File("/data/data/org.telegram.messenger/files");
+        return new File("/data/data/com.b44t.messenger/files");
     }
 
     public static void postInitApplication() {
