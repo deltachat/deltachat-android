@@ -280,6 +280,10 @@ public class ApplicationLoader extends Application {
 
         ContactsController.getInstance().checkAppAccount();
         MediaController.getInstance();
+
+        // open my sqlite file (you can inspect the file eg. with "Tools / Android Device Monitor / File Explorer")
+        File dbfile = new File(getFilesDirFixed(), "mrmailbox.db");
+        MrMailbox.MrMailboxOpen(ApplicationLoader.hMailbox, dbfile.getAbsolutePath());
     }
 
     @Override
