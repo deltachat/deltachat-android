@@ -41,9 +41,9 @@ JNIEXPORT jlong Java_org_telegram_messenger_MrMailbox_MrMailboxNew(JNIEnv *env, 
 }
 
 
-JNIEXPORT jlong Java_org_telegram_messenger_MrMailbox_MrMailboxDelete(JNIEnv *env, jclass c, jlong hMailbox)
+JNIEXPORT jlong Java_org_telegram_messenger_MrMailbox_MrMailboxUnref(JNIEnv *env, jclass c, jlong hMailbox)
 {
-	mrmailbox_delete((mrmailbox_t*)hMailbox);
+	mrmailbox_unref((mrmailbox_t*)hMailbox);
 }
 
 
@@ -73,4 +73,17 @@ JNIEXPORT jstring Java_org_telegram_messenger_MrMailbox_MrChatGetName(JNIEnv *en
 	return (*env)->NewStringUTF(env, "foobar test");
 }
 
+
+/*******************************************************************************
+ * Tools
+ ******************************************************************************/
+
+
+JNIEXPORT jstring Java_org_telegram_messenger_MrMailbox_MrGetVersionStr(JNIEnv *env, jclass c)
+{
+	char* temp = mr_get_version_str();
+	jstring ret = (*env)->NewStringUTF(env, temp);
+	free(temp);
+	return ret;
+}
 

@@ -34,18 +34,21 @@ public class MrMailbox {
     int dummy = 3; // just a counter that can be increased to force recompiling
 
     // work with mailboxes
-    public native static long    MrMailboxNew         (); // returns hMailbox (Names as mrmailbox_new don't work due to the additional underscore)
-    public native static void    MrMailboxDelete      (long hMailbox);
+    public native static long    MrMailboxNew         (); // returns hMailbox which must be unref'd after usage (Names as mrmailbox_new don't work due to the additional underscore)
+    public native static void    MrMailboxUnref       (long hMailbox);
     public native static int     MrMailboxOpen        (long hMailbox, String dbfile);
     public native static void    MrMailboxClose       (long hMailbox);
-    public native static long    MrMailboxGetChats    (long hMailbox); // returns hChatlist
+    public native static long    MrMailboxGetChats    (long hMailbox); // returns hChatlist which must be unref'd after usage
 
     // working with chatlists
     public native static int     MrChatlistGetCnt     (long hChatlist);
-    public native static int     MrChatlistGetChat    (long hChatlist, int index); // returns hChat
+    public native static int     MrChatlistGetChat    (long hChatlist, int index); // returns hChat which must be unref'd after usage
 
     // working with chats
     public native static int     MrChatGetId          (long hChat);
     public native static int     MrChatGetType        (long hChat);
     public native static String  MrChatGetName        (long hChat);
+
+    // tools
+    public native static String  MrGetVersionStr      ();
 }
