@@ -33,22 +33,30 @@ public class MrMailbox {
 
     int dummy = 3; // just a counter that can be increased to force recompiling
 
-    // work with mailboxes
-    public native static long    MrMailboxNew         (); // returns hMailbox which must be unref'd after usage (Names as mrmailbox_new don't work due to the additional underscore)
-    public native static void    MrMailboxUnref       (long hMailbox);
-    public native static int     MrMailboxOpen        (long hMailbox, String dbfile);
-    public native static void    MrMailboxClose       (long hMailbox);
-    public native static long    MrMailboxGetChats    (long hMailbox); // returns hChatlist which must be unref'd after usage
+    // MrMailbox objects
+    public native static long    MrMailboxNew               (); // returns hMailbox which must be unref'd after usage (Names as mrmailbox_new don't work due to the additional underscore)
+    public native static int     MrMailboxOpen              (long hMailbox, String dbfile);
 
-    // working with chatlists
-    public native static int     MrChatlistGetCnt     (long hChatlist);
-    public native static int     MrChatlistGetChat    (long hChatlist, int index); // returns hChat which must be unref'd after usage
+    public native static void    MrMailboxClose             (long hMailbox);
+    public native static int     MrMailboxConnect           (long hMailbox);
+    public native static void    MrMailboxDisconnect        (long hMailbox);
+    public native static int     MrMailboxFetch             (long hMailbox);
 
-    // working with chats
-    public native static int     MrChatGetId          (long hChat);
-    public native static int     MrChatGetType        (long hChat);
-    public native static String  MrChatGetName        (long hChat);
+    public native static int     MrMailboxGetContactCnt     (long hMailbox);
+    public native static long    MrMailboxGetContactByIndex (long hMailbox);// returns hContact which must be unref'd after usage
 
-    // tools
-    public native static String  MrGetVersionStr      ();
+    public native static int     MrMailboxGetChatCnt        (long hMailbox);
+    public native static long    MrMailboxGetChats          (long hMailbox); // returns hChatlist which must be unref'd after usage
+
+    // MrChatlist objects
+    public native static int     MrChatlistGetCnt           (long hChatlist);
+    public native static int     MrChatlistGetChat          (long hChatlist, int index); // returns hChat which must be unref'd after usage
+
+    // MrChat objects
+    public native static int     MrChatGetId                (long hChat);
+    public native static int     MrChatGetType              (long hChat);
+    public native static String  MrChatGetName              (long hChat);
+
+    // Tools
+    public native static String  MrGetVersionStr            ();
 }
