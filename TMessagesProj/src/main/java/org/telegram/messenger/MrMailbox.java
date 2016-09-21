@@ -31,7 +31,7 @@ package org.telegram.messenger;
 
 public class MrMailbox {
 
-    int dummy = 3; // just a counter that can be increased to force recompiling
+    int dummy = 4; // just a counter that can be increased to force recompiling
 
     // MrMailbox objects
     public native static long    MrMailboxNew               (); // returns hMailbox which must be unref'd after usage (Names as mrmailbox_new don't work due to the additional underscore)

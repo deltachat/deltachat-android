@@ -50,6 +50,7 @@
 
 JNIEXPORT jlong Java_org_telegram_messenger_MrMailbox_MrMailboxNew(JNIEnv *env, jclass c)
 {
+	mrosnative_init_android(env); /*this should be called before any other "important" routine is called*/
 	return (jlong)mrmailbox_new();
 }
 
