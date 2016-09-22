@@ -60,7 +60,6 @@ JNIEXPORT jlong Java_org_telegram_messenger_MrMailbox_MrMailboxNew(JNIEnv *env, 
 JNIEXPORT int Java_org_telegram_messenger_MrMailbox_MrMailboxOpen(JNIEnv *env, jclass c, jlong hMailbox, jstring dbfile)
 {
 	CHAR_REF(dbfile);
-	if( dbfilePtr == NULL ) { return 0; }
 		int ret = mrmailbox_open((mrmailbox_t*)hMailbox, dbfilePtr);
 	CHAR_UNREF(dbfile)
 	return ret;
@@ -202,6 +201,7 @@ JNIEXPORT jlong Java_org_telegram_messenger_MrMailbox_MrChatGetLastMsg(JNIEnv *e
 
 JNIEXPORT jstring Java_org_telegram_messenger_MrMailbox_MrGetVersionStr(JNIEnv *env, jclass c)
 {
+	mrosnative_init_android(env); /*this should be called before any other "important" routine is called*/
 	const char* temp = mr_get_version_str();
 		jstring ret = JSTRING_NEW(temp);
 	free(temp);
