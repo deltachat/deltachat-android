@@ -53,7 +53,7 @@ public class ApplicationLoader extends Application {
     public static volatile boolean isScreenOn = false;
     public static volatile boolean mainInterfacePaused = true;
 
-    public static long hMailbox = 0;
+    public static long hMailbox = 0; // EDIT BY MR
 
     public static boolean isCustomTheme() {
         return isCustomTheme;
@@ -197,7 +197,7 @@ public class ApplicationLoader extends Application {
         } catch (Exception e) {
             FileLog.e("tmessages", e);
         }
-        return new File("/data/data/com.b44t.messenger/files");
+        return new File("/data/data/com.b44t.messenger/files"); // EDIT BY MR
     }
 
     public static void postInitApplication() {
@@ -281,7 +281,7 @@ public class ApplicationLoader extends Application {
         ContactsController.getInstance().checkAppAccount();
         MediaController.getInstance();
 
-        // open my sqlite file (you can inspect the file eg. with "Tools / Android Device Monitor / File Explorer")
+        // EDIT BY MR - open my sqlite file (you can inspect the file eg. with "Tools / Android Device Monitor / File Explorer")
         File dbfile = new File(getFilesDirFixed(), "mrmailbox.db");
         MrMailbox.MrMailboxOpen(ApplicationLoader.hMailbox, dbfile.getAbsolutePath());
     }
@@ -295,7 +295,7 @@ public class ApplicationLoader extends Application {
         ConnectionsManager.native_setJava(Build.VERSION.SDK_INT == 14 || Build.VERSION.SDK_INT == 15);
         new ForegroundDetector(this);
 
-        // create a MrMailbox object; as android stops the App by just killing it, we do never call MrMailboxUnref()
+        // EDIT BY MR - create a MrMailbox object; as android stops the App by just killing it, we do never call MrMailboxUnref()
         // however, we may want to to have a look at onPause() eg. of activities (eg. for flushing data, if needed)
         hMailbox = MrMailbox.MrMailboxNew();
 

@@ -155,7 +155,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
 
         if (!dialogsLoaded) {
             MessagesController.getInstance().loadDialogs(0, 100, true);
-            //ContactsController.getInstance().checkInviteText(); // EDIT BY ME
+            //ContactsController.getInstance().checkInviteText(); // EDIT BY MR
             dialogsLoaded = true;
         }
         return true;
@@ -339,6 +339,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
                 if (listView == null || listView.getAdapter() == null) {
                     return;
                 }
+                // TODO BY MR - handle single click
                 long dialog_id = 0;
                 int message_id = 0;
                 RecyclerView.Adapter adapter = listView.getAdapter();
@@ -480,7 +481,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
                     }
                     return false;
                 }
-                TLRPC.TL_dialog dialog;
+                TLRPC.TL_dialog dialog; // TODO BY MR - handle long clicks
                 ArrayList<TLRPC.TL_dialog> dialogs = getDialogsArray();
                 if (position < 0 || position >= dialogs.size()) {
                     return false;
@@ -686,11 +687,11 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 int firstVisibleItem = layoutManager.findFirstVisibleItemPosition();
                 int visibleItemCount = Math.abs(layoutManager.findLastVisibleItemPosition() - firstVisibleItem) + 1;
-                int totalItemCount = recyclerView.getAdapter().getItemCount();
+                int totalItemCount = recyclerView.getAdapter().getItemCount(); // TODO BY MR - recyclerView.adapter muss angepasst werden?
 
                 if (searching && searchWas) {
                     if (visibleItemCount > 0 && layoutManager.findLastVisibleItemPosition() == totalItemCount - 1 && !dialogsSearchAdapter.isMessagesSearchEndReached()) {
-                        dialogsSearchAdapter.loadMoreSearchMessages();
+                        dialogsSearchAdapter.loadMoreSearchMessages(); // TODO BY MR - what about this issue?
                     }
                     return;
                 }
@@ -937,7 +938,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
                 if (dialogsAdapter.isDataSetChanged()) {
                     dialogsAdapter.notifyDataSetChanged();
                 } else {
-                    updateVisibleRows(MessagesController.UPDATE_MASK_NEW_MESSAGE);
+                    updateVisibleRows(MessagesController.UPDATE_MASK_NEW_MESSAGE); // TODO BY MR?
                 }
             }
             if (dialogsSearchAdapter != null) {

@@ -17916,7 +17916,6 @@ public class TLRPC {
 		}
 	}
 
-	/* EDIT BY ME
 	public static class TL_help_getInviteText extends TLObject {
 		public static int constructor = 0x4d392343;
 
@@ -17929,7 +17928,6 @@ public class TLRPC {
 			stream.writeInt32(constructor);
 		}
 	}
-	*/
 
 	public static class TL_photos_getUserPhotos extends TLObject {
 		public static int constructor = 0x91cd32a8;

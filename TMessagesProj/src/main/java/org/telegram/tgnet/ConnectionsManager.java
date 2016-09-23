@@ -115,6 +115,8 @@ public class ConnectionsManager {
     }
 
     public int sendRequest(final TLObject object, final RequestDelegate onComplete, final QuickAckDelegate onQuickAck, final int flags, final int datacenterId, final int connetionType, final boolean immediate) {
+        return 0; // EDIT BY MR
+        /* EDIT BY MR
         final int requestToken = lastRequestToken.getAndIncrement();
         Utilities.stageQueue.postRunnable(new Runnable() {
             @Override
@@ -164,6 +166,7 @@ public class ConnectionsManager {
             }
         });
         return requestToken;
+        EDIT BY MR */
     }
 
     public void cancelRequest(int token, boolean notifyServer) {
@@ -187,10 +190,13 @@ public class ConnectionsManager {
     }
 
     public int getConnectionState() {
+        return ConnectionStateWaitingForNetwork; // EDIT BY MR - we're always disconnected from the view of the caller
+        /* EDIT BY MR
         if (connectionState == ConnectionStateConnected && isUpdating) {
             return ConnectionStateUpdating;
         }
         return connectionState;
+        EDIT BY MR */
     }
 
     public void setUserId(int id) {
