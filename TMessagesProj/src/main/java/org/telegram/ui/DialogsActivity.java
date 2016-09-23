@@ -687,7 +687,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 int firstVisibleItem = layoutManager.findFirstVisibleItemPosition();
                 int visibleItemCount = Math.abs(layoutManager.findLastVisibleItemPosition() - firstVisibleItem) + 1;
-                int totalItemCount = recyclerView.getAdapter().getItemCount(); // TODO BY MR - recyclerView.adapter muss angepasst werden?
+                int totalItemCount = recyclerView.getAdapter().getItemCount(); // TODO BY MR - recyclerView.adapter muss angepasst werden? ja -> das ist DialogsAdapter.java
 
                 if (searching && searchWas) {
                     if (visibleItemCount > 0 && layoutManager.findLastVisibleItemPosition() == totalItemCount - 1 && !dialogsSearchAdapter.isMessagesSearchEndReached()) {
