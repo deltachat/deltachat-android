@@ -1607,6 +1607,7 @@ LOCAL_SRC_FILES     += \
 ./SqliteWrapper.cpp \
 ./TgNetWrapper.cpp \
 ../../../messenger-backend/src/mrchat.c \
+../../../messenger-backend/src/mrchatlist.c \
 ../../../messenger-backend/src/mrcontact.c \
 ../../../messenger-backend/src/mrimap.c \
 ../../../messenger-backend/src/mrimfparser.c \
@@ -1615,6 +1616,7 @@ LOCAL_SRC_FILES     += \
 ../../../messenger-backend/src/mrmailbox.c \
 ../../../messenger-backend/src/mrmimeparser.c \
 ../../../messenger-backend/src/mrmsg.c \
+../../../messenger-backend/src/mrmsglist.c \
 ../../../messenger-backend/src/mrosnative.c \
 ../../../messenger-backend/src/mrsimplify.c \
 ../../../messenger-backend/src/mrsqlite3.c \
