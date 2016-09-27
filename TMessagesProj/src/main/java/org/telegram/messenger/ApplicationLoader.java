@@ -53,8 +53,6 @@ public class ApplicationLoader extends Application {
     public static volatile boolean isScreenOn = false;
     public static volatile boolean mainInterfacePaused = true;
 
-    public static long hMailbox = 0; // EDIT BY MR
-
     public static boolean isCustomTheme() {
         return isCustomTheme;
     }
@@ -283,7 +281,7 @@ public class ApplicationLoader extends Application {
 
         // EDIT BY MR - open my sqlite file (you can inspect the file eg. with "Tools / Android Device Monitor / File Explorer")
         File dbfile = new File(getFilesDirFixed(), "mrmailbox.db");
-        MrMailbox.MrMailboxOpen(ApplicationLoader.hMailbox, dbfile.getAbsolutePath());
+        MrMailbox.MrMailboxOpen(MrMailbox.hMailbox, dbfile.getAbsolutePath());
     }
 
     @Override
@@ -297,7 +295,7 @@ public class ApplicationLoader extends Application {
 
         // EDIT BY MR - create a MrMailbox object; as android stops the App by just killing it, we do never call MrMailboxUnref()
         // however, we may want to to have a look at onPause() eg. of activities (eg. for flushing data, if needed)
-        hMailbox = MrMailbox.MrMailboxNew();
+        MrMailbox.hMailbox = MrMailbox.MrMailboxNew();
 
         applicationHandler = new Handler(applicationContext.getMainLooper());
 

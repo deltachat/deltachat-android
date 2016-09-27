@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import org.telegram.messenger.AndroidUtilities;
 import org.telegram.messenger.MessagesController;
 import org.telegram.messenger.support.widget.RecyclerView;
+import org.telegram.messenger.MrMailbox;
 import org.telegram.tgnet.TLRPC;
 import org.telegram.ui.Cells.DialogCell;
 import org.telegram.ui.Cells.LoadingCell;
@@ -27,6 +28,7 @@ public class DialogsAdapter extends RecyclerView.Adapter {
     private int dialogsType;
     private long openedDialogId;
     private int currentCount;
+    private long hChatlist = 0; // EDIT BY MR
 
     private class Holder extends RecyclerView.ViewHolder {
 
@@ -38,7 +40,32 @@ public class DialogsAdapter extends RecyclerView.Adapter {
     public DialogsAdapter(Context context, int type) {
         mContext = context;
         dialogsType = type;
+
+        // EDIT BY MR
+        hChatlist = MrMailbox.MrMailboxGetChats(MrMailbox.hMailbox);
+        // /EDIT BY MR
     }
+
+    // EDIT BY MR
+    protected void finalize()
+    {
+        MrMailbox.MrChatlistUnref(hChatlist);
+        hChatlist = 0;
+    }
+
+    private static TLRPC.TL_dialog chat2dialog(long hChat)
+    {
+        return new TLRPC.TL_dialog();
+    }
+
+    private static TLRPC.TL_dialog chatlist2dialog(long hChatlist, int index)
+    {
+        long hChat = MrMailbox.MrChatlistGetChat(hChatlist, index);
+            TLRPC.TL_dialog dlg = chat2dialog(hChat);
+        MrMailbox.MrChatUnref(hChat);
+        return dlg;
+    }
+    // /EDIT BY MR
 
     public void setOpenedDialogId(long id) {
         openedDialogId = id;
@@ -49,6 +76,7 @@ public class DialogsAdapter extends RecyclerView.Adapter {
         return current != getItemCount() || current == 1;
     }
 
+    /* EDIT BY MR
     private ArrayList<TLRPC.TL_dialog> getDialogsArray() {
         if (dialogsType == 0) {
             return MessagesController.getInstance().dialogs;
@@ -59,9 +87,13 @@ public class DialogsAdapter extends RecyclerView.Adapter {
         }
         return null;
     }
+    /EDIT BY MR */
 
     @Override
     public int getItemCount() {
+        // EDIT BY MR
+        int count = MrMailbox.MrMailboxGetChatCnt(MrMailbox.hMailbox);
+        /*
         int count = getDialogsArray().size();
         if (count == 0 && MessagesController.getInstance().loadingDialogs) {
             return 0;
@@ -69,16 +101,24 @@ public class DialogsAdapter extends RecyclerView.Adapter {
         if (!MessagesController.getInstance().dialogsEndReached) {
             count++;
         }
+        */
+        // /EDIT BY MR
         currentCount = count;
         return count;
+
     }
 
     public TLRPC.TL_dialog getItem(int i) {
+        // EDIT BY MR
+        return chatlist2dialog(hChatlist, i);
+        /*
         ArrayList<TLRPC.TL_dialog> arrayList = getDialogsArray();
         if (i < 0 || i >= arrayList.size()) {
             return null;
         }
         return arrayList.get(i);
+        */
+        // /EDIT BY MR
     }
 
     @Override
@@ -122,9 +162,11 @@ public class DialogsAdapter extends RecyclerView.Adapter {
 
     @Override
     public int getItemViewType(int i) {
+        /* EDIT BY MR -- 1 would be the "loading cell" that is not needed by us
         if (i == getDialogsArray().size()) {
             return 1;
         }
+        /EDIT BY MR */
         return 0;
     }
 }

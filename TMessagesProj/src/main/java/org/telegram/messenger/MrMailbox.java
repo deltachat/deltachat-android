@@ -26,12 +26,13 @@
  ******************************************************************************/
 
 
+// EDIT BY MR
 package org.telegram.messenger;
 
 
 public class MrMailbox {
 
-    int dummy = 4; // just a counter that can be increased to force recompiling
+    public static long           hMailbox = 0;
 
     // MrMailbox objects
     public native static long    MrMailboxNew               (); // returns hMailbox which must be unref'd after usage (Names as mrmailbox_new don't work due to the additional underscore)
@@ -49,14 +50,23 @@ public class MrMailbox {
     public native static long    MrMailboxGetChats          (long hMailbox); // returns hChatlist which must be unref'd after usage
 
     // MrChatlist objects
+    public native static void    MrChatlistUnref            (long hChatlist);
     public native static int     MrChatlistGetCnt           (long hChatlist);
     public native static int     MrChatlistGetChat          (long hChatlist, int index); // returns hChat which must be unref'd after usage
 
     // MrChat objects
+    public native static void    MrChatUnref                (long hChat);
     public native static int     MrChatGetId                (long hChat);
     public native static int     MrChatGetType              (long hChat);
     public native static String  MrChatGetName              (long hChat);
 
+    // MrMsglist objects
+    public native static void    MrMsglistUnref             (long hMsglist);
+
+    // MrMsg objects
+    public native static void    MrMsgUnref                 (long hMsg);
+
     // Tools
     public native static String  MrGetVersionStr            ();
 }
+// /EDIT BY MR

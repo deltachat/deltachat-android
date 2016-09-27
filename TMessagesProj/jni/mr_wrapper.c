@@ -149,6 +149,12 @@ JNIEXPORT jstring Java_org_telegram_messenger_MrMailbox_MrMailboxGetConfig(JNIEn
  ******************************************************************************/
 
 
+JNIEXPORT void Java_org_telegram_messenger_MrMailbox_MrChatlistUnref(JNIEnv *env, jclass c, jlong hChatlist)
+{
+	return mrchatlist_unref((mrchatlist_t*)hChatlist);
+}
+
+
 JNIEXPORT int Java_org_telegram_messenger_MrMailbox_MrChatlistGetCnt(JNIEnv *env, jclass c, jlong hChatlist)
 {
 	return mrchatlist_get_cnt((mrchatlist_t*)hChatlist);
@@ -164,6 +170,12 @@ JNIEXPORT jlong Java_org_telegram_messenger_MrMailbox_MrChatlistGetChat(JNIEnv *
 /*******************************************************************************
  * MrChat
  ******************************************************************************/
+
+
+JNIEXPORT void Java_org_telegram_messenger_MrMailbox_MrChatUnref(JNIEnv *env, jclass c, jlong hChat)
+{
+	return mrchat_unref((mrchat_t*)hChat);
+}
 
 
 JNIEXPORT int Java_org_telegram_messenger_MrMailbox_MrChatGetId(JNIEnv *env, jclass c, jlong hChat)
@@ -193,6 +205,27 @@ JNIEXPORT jlong Java_org_telegram_messenger_MrMailbox_MrChatGetLastMsg(JNIEnv *e
 	return mrchat_get_last_msg(ths);
 }
 
+
+/*******************************************************************************
+ * MrMsglist
+ ******************************************************************************/
+
+
+JNIEXPORT void Java_org_telegram_messenger_MrMailbox_MrMsglistUnref(JNIEnv *env, jclass c, jlong hMsglist)
+{
+	return mrmsglist_unref((mrmsglist_t*)hMsglist);
+}
+
+
+/*******************************************************************************
+ * MrMsg
+ ******************************************************************************/
+
+
+JNIEXPORT void Java_org_telegram_messenger_MrMailbox_MrMsgUnref(JNIEnv *env, jclass c, jlong hMsg)
+{
+	return mrmsg_unref((mrmsg_t*)hMsg);
+}
 
 /*******************************************************************************
  * Tools
