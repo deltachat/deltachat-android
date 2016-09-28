@@ -280,7 +280,7 @@ public class ApplicationLoader extends Application {
         MediaController.getInstance();
 
         // EDIT BY MR - open my sqlite file (you can inspect the file eg. with "Tools / Android Device Monitor / File Explorer")
-        File dbfile = new File(getFilesDirFixed(), "mrmailbox.db");
+        File dbfile = new File(getFilesDirFixed(), "messenger.db");
         MrMailbox.MrMailboxOpen(MrMailbox.hMailbox, dbfile.getAbsolutePath());
     }
 
