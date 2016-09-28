@@ -28,7 +28,6 @@ public class DialogsAdapter extends RecyclerView.Adapter {
     private int dialogsType;
     private long openedDialogId;
     private int currentCount;
-    private long hChatlist = 0; // EDIT BY MR
 
     private class Holder extends RecyclerView.ViewHolder {
 
@@ -42,30 +41,10 @@ public class DialogsAdapter extends RecyclerView.Adapter {
         dialogsType = type;
 
         // EDIT BY MR
-        hChatlist = MrMailbox.MrMailboxGetChats(MrMailbox.hMailbox);
+        MrMailbox.MrChatlistUnref(MrMailbox.hCurrChatlist);
+        MrMailbox.hCurrChatlist = MrMailbox.MrMailboxGetChats(MrMailbox.hMailbox);
         // /EDIT BY MR
     }
-
-    // EDIT BY MR
-    protected void finalize()
-    {
-        MrMailbox.MrChatlistUnref(hChatlist);
-        hChatlist = 0;
-    }
-
-    private static TLRPC.TL_dialog chat2dialog(long hChat)
-    {
-        return new TLRPC.TL_dialog();
-    }
-
-    private static TLRPC.TL_dialog chatlist2dialog(long hChatlist, int index)
-    {
-        long hChat = MrMailbox.MrChatlistGetChat(hChatlist, index);
-            TLRPC.TL_dialog dlg = chat2dialog(hChat);
-        MrMailbox.MrChatUnref(hChat);
-        return dlg;
-    }
-    // /EDIT BY MR
 
     public void setOpenedDialogId(long id) {
         openedDialogId = id;
@@ -110,7 +89,7 @@ public class DialogsAdapter extends RecyclerView.Adapter {
 
     public TLRPC.TL_dialog getItem(int i) {
         // EDIT BY MR
-        return chatlist2dialog(hChatlist, i);
+        return MrMailbox.chatlist2dialog(MrMailbox.hCurrChatlist, i);
         /*
         ArrayList<TLRPC.TL_dialog> arrayList = getDialogsArray();
         if (i < 0 || i >= arrayList.size()) {

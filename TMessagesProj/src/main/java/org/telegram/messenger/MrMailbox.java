@@ -30,9 +30,30 @@
 package org.telegram.messenger;
 
 
+import org.telegram.tgnet.TLRPC;
+
 public class MrMailbox {
 
     public static long           hMailbox = 0;
+    public static long           hCurrChatlist = 0;
+
+
+    // tools
+    public static TLRPC.TL_dialog chat2dialog(long hChat)
+    {
+        TLRPC.TL_dialog ret = new TLRPC.TL_dialog();
+        ret.id = MrMailbox.MrChatGetId(hChat);
+        return ret;
+    }
+
+    public static TLRPC.TL_dialog chatlist2dialog(long hChatlist, int index)
+    {
+        long hChat = MrMailbox.MrChatlistGetChat(hChatlist, index);
+        TLRPC.TL_dialog dlg = chat2dialog(hChat);
+        MrMailbox.MrChatUnref(hChat);
+        return dlg;
+    }
+
 
     // MrMailbox objects
     public native static long    MrMailboxNew               (); // returns hMailbox which must be unref'd after usage (Names as mrmailbox_new don't work due to the additional underscore)

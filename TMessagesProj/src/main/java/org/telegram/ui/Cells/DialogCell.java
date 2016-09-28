@@ -27,6 +27,7 @@ import org.telegram.PhoneFormat.PhoneFormat;
 import org.telegram.messenger.ChatObject;
 import org.telegram.messenger.LocaleController;
 import org.telegram.messenger.MessageObject;
+import org.telegram.messenger.MrMailbox;
 import org.telegram.messenger.UserObject;
 import org.telegram.messenger.FileLog;
 import org.telegram.messenger.query.DraftQuery;
@@ -261,7 +262,9 @@ public class DialogCell extends BaseCell {
         CharSequence messageString = "";
         CharSequence printingString = null;
         if (isDialogCell) {
+            /* EDIT BY MR -- we currently do not support stuff as "ist just typing", "uploads an images" etc.
             printingString = MessagesController.getInstance().printingStrings.get(currentDialogId);
+            /EDIT BY MR */
         }
         TextPaint currentNamePaint = namePaint;
         TextPaint currentMessagePaint = messagePaint;
@@ -715,6 +718,7 @@ public class DialogCell extends BaseCell {
         isSelected = value;
     }
 
+    /* EDIT BY MR
     private ArrayList<TLRPC.TL_dialog> getDialogsArray() {
         if (dialogsType == 0) {
             return MessagesController.getInstance().dialogs;
@@ -725,10 +729,11 @@ public class DialogCell extends BaseCell {
         }
         return null;
     }
+    /EDIT BY MR */
 
     public void checkCurrentDialogIndex() {
-        if (index < getDialogsArray().size()) {
-            TLRPC.TL_dialog dialog = getDialogsArray().get(index);
+        if (index < MrMailbox.MrChatlistGetCnt(MrMailbox.hCurrChatlist)) { // EDIT BY MR - was: index < getDialogsArray().size()
+            TLRPC.TL_dialog dialog = MrMailbox.chatlist2dialog(MrMailbox.hCurrChatlist, index); // EDIT BY MR - was: getDialogsArray().get(index);
             TLRPC.DraftMessage newDraftMessage = DraftQuery.getDraft(currentDialogId);
             MessageObject newMessageObject = MessagesController.getInstance().dialogMessage.get(dialog.id);
             if (currentDialogId != dialog.id ||

@@ -2226,6 +2226,7 @@ public class MessagesController implements NotificationCenter.NotificationCenter
         }
     }
 
+    /* EDIT BY MR
     private String getUserNameForTyping(TLRPC.User user) {
         if (user == null) {
             return "";
@@ -2237,8 +2238,10 @@ public class MessagesController implements NotificationCenter.NotificationCenter
         }
         return "";
     }
+    /EDIT BY MR */
 
     private void updatePrintingStrings() {
+        /* EDIT BY MR
         final HashMap<Long, CharSequence> newPrintingStrings = new HashMap<>();
         final HashMap<Long, Integer> newPrintingStringsTypes = new HashMap<>();
 
@@ -2338,16 +2341,20 @@ public class MessagesController implements NotificationCenter.NotificationCenter
                 printingStringsTypes = newPrintingStringsTypes;
             }
         });
+        /EDIT BY MR */
     }
 
     public void cancelTyping(int action, long dialog_id) {
+        /* EDIT BY MR
         HashMap<Long, Boolean> typings = sendingTypings.get(action);
         if (typings != null) {
             typings.remove(dialog_id);
         }
+        /EDIT BY MR */
     }
 
     public void sendTyping(final long dialog_id, final int action, int classGuid) {
+        /* EDIT BY MR
         if (dialog_id == 0) {
             return;
         }
@@ -2439,6 +2446,7 @@ public class MessagesController implements NotificationCenter.NotificationCenter
                 }
             }
         }
+        /EDIT BY MR */
     }
 
     public void loadMessages(final long dialog_id, final int count, final int max_id, boolean fromCache, int midDate, final int classGuid, final int load_type, final int last_message_id, final boolean isChannel, final int loadIndex) {
