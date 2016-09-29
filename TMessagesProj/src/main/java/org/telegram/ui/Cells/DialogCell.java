@@ -70,7 +70,7 @@ public class DialogCell extends BaseCell {
 
     private long currentDialogId;
     private int currentEditDate;
-    private boolean isDialogCell;
+    private boolean isDialogCell; // EDIT BY MR -- if it is no dialog cell, it is a search cell ...
     private int lastMessageDate;
     private int unreadCount;
     private boolean lastUnreadState;
@@ -85,7 +85,7 @@ public class DialogCell extends BaseCell {
 
     private TLRPC.User user = null;
     private TLRPC.Chat chat = null;
-    private TLRPC.EncryptedChat encryptedChat = null;
+    private Object encryptedChat = false; // EDIT BY MR - was: TLRPC.EncryptedChat
     private CharSequence lastPrintString = null;
     private TLRPC.DraftMessage draftMessage;
 
@@ -131,6 +131,8 @@ public class DialogCell extends BaseCell {
     private int avatarTop = AndroidUtilities.dp(10);
 
     private boolean isSelected;
+
+    private long hChat = 0; // EDIT BY MR
 
     public DialogCell(Context context) {
         super(context);
@@ -191,15 +193,27 @@ public class DialogCell extends BaseCell {
         avatarDrawable = new AvatarDrawable();
     }
 
-    public void setDialog(TLRPC.TL_dialog dialog, int i, int type) {
+    public void setDialog(TLRPC.TL_dialog dialog, int i, int type) { // called for the chats overview
         currentDialogId = dialog.id;
         isDialogCell = true;
         index = i;
         dialogsType = type;
+
+        // EDIT BY MR
+        MrMailbox.MrChatUnref(hChat);
+        hChat = MrMailbox.MrChatlistGetChat(MrMailbox.hCurrChatlist, i); // TODO: maybe this should move to update() - in general, how are updates handled?
+        // /EDIT BY MR
+
         update(0);
     }
 
-    public void setDialog(long dialog_id, MessageObject messageObject, int date) {
+    @Override protected void finalize()
+    {
+        MrMailbox.MrChatUnref(hChat);
+        hChat = 0;
+    }
+
+    public void setDialog(long dialog_id, MessageObject messageObject, int date) { // used to display the search result [sic!]
         currentDialogId = dialog_id;
         message = messageObject;
         isDialogCell = false;
@@ -261,11 +275,11 @@ public class DialogCell extends BaseCell {
         String countString = null;
         CharSequence messageString = "";
         CharSequence printingString = null;
+        /* EDIT BY MR -- we currently do not support stuff as "ist just typing", "uploads an images" etc.
         if (isDialogCell) {
-            /* EDIT BY MR -- we currently do not support stuff as "ist just typing", "uploads an images" etc.
             printingString = MessagesController.getInstance().printingStrings.get(currentDialogId);
-            /EDIT BY MR */
         }
+        */
         TextPaint currentNamePaint = namePaint;
         TextPaint currentMessagePaint = messagePaint;
         boolean checkMessage = true;
@@ -327,6 +341,7 @@ public class DialogCell extends BaseCell {
             }
         }
 
+        /* EDIT BY MR
         int lastDate = lastMessageDate;
         if (lastMessageDate == 0 && message != null) {
             lastDate = message.messageOwner.date;
@@ -453,8 +468,10 @@ public class DialogCell extends BaseCell {
                     }
                 }
             }
-        }
+        }*/
+        messageString = MrMailbox.MrChatGetSummary(hChat);
 
+        /* EDIT BY MR
         if (draftMessage != null) {
             timeString = LocaleController.stringForMessageListDate(draftMessage.date);
         } else if (lastMessageDate != 0) {
@@ -462,14 +479,16 @@ public class DialogCell extends BaseCell {
         } else if (message != null) {
             timeString = LocaleController.stringForMessageListDate(message.messageOwner.date);
         }
+        */
+        timeString = LocaleController.stringForMessageListDate(MrMailbox.MrChatGetLastTimestamp(hChat)); // EDIT BY MR
 
-        if (message == null) {
+        /* EDIT BY MR -- if (message == null) { */
             drawCheck1 = false;
             drawCheck2 = false;
             drawClock = false;
             drawCount = false;
             drawError = false;
-        } else {
+        /* EDIT BY MR -- } else { */
             if (unreadCount != 0) {
                 drawCount = true;
                 countString = String.format("%d", unreadCount);
@@ -477,6 +496,14 @@ public class DialogCell extends BaseCell {
                 drawCount = false;
             }
 
+            switch( MrMailbox.MrChatGetLastState(hChat) ) {
+                case MrMailbox.MR_OUT_ERROR: drawError = true; break;
+                case MrMailbox.MR_OUT_PENDING: drawClock = true; break;
+                case MrMailbox.MR_OUT_DELIVERED: drawCheck2 = true; break;
+                case MrMailbox.MR_OUT_READ: drawCheck1 = true; drawCheck2 = true; break;
+            }
+
+        /* EDIT BY MR
             if (message.isOut() && draftMessage == null) {
                 if (message.isSending()) {
                     drawCheck1 = false;
@@ -502,6 +529,7 @@ public class DialogCell extends BaseCell {
                 drawError = false;
             }
         }
+        */
 
         int timeWidth = (int) Math.ceil(timePaint.measureText(timeString));
         timeLayout = new StaticLayout(timeString, timePaint, timeWidth, Layout.Alignment.ALIGN_NORMAL, 1.0f, 0.0f, false);
@@ -511,6 +539,7 @@ public class DialogCell extends BaseCell {
             timeLeft = AndroidUtilities.dp(15);
         }
 
+        /* EDIT BY MR
         if (chat != null) {
             nameString = chat.title;
         } else if (user != null) {
@@ -527,10 +556,14 @@ public class DialogCell extends BaseCell {
             } else {
                 nameString = UserObject.getUserName(user);
             }
+        */
             if (encryptedChat != null) {
                 currentNamePaint = nameEncryptedPaint;
             }
+        /* EDIT BY MR
         }
+        */
+        nameString = MrMailbox.MrChatGetName(hChat); // EDIT BY MR
         if (nameString.length() == 0) {
             nameString = LocaleController.getString("HiddenName", R.string.HiddenName);
         }
@@ -729,7 +762,7 @@ public class DialogCell extends BaseCell {
         }
         return null;
     }
-    /EDIT BY MR */
+    */
 
     public void checkCurrentDialogIndex() {
         if (index < MrMailbox.MrChatlistGetCnt(MrMailbox.hCurrChatlist)) { // EDIT BY MR - was: index < getDialogsArray().size()
@@ -750,6 +783,7 @@ public class DialogCell extends BaseCell {
 
     public void update(int mask) {
         if (isDialogCell) {
+            /* EDIT BY MR
             TLRPC.TL_dialog dialog = MessagesController.getInstance().dialogs_dict.get(currentDialogId);
             if (dialog != null && mask == 0) {
                 message = MessagesController.getInstance().dialogMessage.get(dialog.id);
@@ -761,6 +795,9 @@ public class DialogCell extends BaseCell {
                     lastSendState = message.messageOwner.send_state;
                 }
             }
+            */
+
+            unreadCount = MrMailbox.MrChatGetUnreadCount(hChat);
         }
 
         if (mask != 0) {
@@ -841,13 +878,22 @@ public class DialogCell extends BaseCell {
                 }
             }
         } else {
+            /* EDIT BY MR
             encryptedChat = MessagesController.getInstance().getEncryptedChat(high_id);
             if (encryptedChat != null) {
                 user = MessagesController.getInstance().getUser(encryptedChat.user_id);
             }
+            */
         }
 
+        /* EDIT BY MR */
+        if( MrMailbox.MrChatGetType(hChat) == MrMailbox.MR_CHAT_ENCRYPTED ) {
+            encryptedChat = new Object();
+        }
+        /* /EDIT BY MR */
+
         TLRPC.FileLocation photo = null;
+        /* EDIT BY MR
         if (user != null) {
             if (user.photo != null) {
                 photo = user.photo.photo_small;
@@ -859,6 +905,9 @@ public class DialogCell extends BaseCell {
             }
             avatarDrawable.setInfo(chat);
         }
+        */
+        avatarDrawable.setInfo(MrMailbox.MrChatGetId(hChat), MrMailbox.MrChatGetName(hChat), null, false); // TODO: read photos from address book
+
         avatarImage.setImage(photo, "50_50", avatarDrawable, null, false);
 
         if (getMeasuredWidth() != 0 || getMeasuredHeight() != 0) {

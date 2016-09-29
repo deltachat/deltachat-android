@@ -180,31 +180,41 @@ JNIEXPORT void Java_org_telegram_messenger_MrMailbox_MrChatUnref(JNIEnv *env, jc
 
 JNIEXPORT int Java_org_telegram_messenger_MrMailbox_MrChatGetId(JNIEnv *env, jclass c, jlong hChat)
 {
-	mrchat_t* ths = (mrchat_t*)hChat;
+	mrchat_t* ths = (mrchat_t*)hChat; if( ths == NULL ) { return 0; }
 	return ths->m_id;
 }
 
 
 JNIEXPORT int Java_org_telegram_messenger_MrMailbox_MrChatGetType(JNIEnv *env, jclass c, jlong hChat)
 {
-	mrchat_t* ths = (mrchat_t*)hChat;
+	mrchat_t* ths = (mrchat_t*)hChat; if( ths == NULL ) { return 0; }
 	return ths->m_type;
 }
 
 
 JNIEXPORT jstring Java_org_telegram_messenger_MrMailbox_MrChatGetName(JNIEnv *env, jclass c, jlong hChat)
 {
-	mrchat_t* ths = (mrchat_t*)hChat;
+	mrchat_t* ths = (mrchat_t*)hChat; if( ths == NULL ) { return JSTRING_NEW(NULL); }
 	return JSTRING_NEW(ths->m_name);
 }
 
 
-JNIEXPORT jlong Java_org_telegram_messenger_MrMailbox_MrChatGetLastMsg(JNIEnv *env, jclass c, jlong hChat)
+JNIEXPORT jstring Java_org_telegram_messenger_MrMailbox_MrChatGetSummary(JNIEnv *env, jclass c, jlong hChat)
 {
-	mrchat_t* ths = (mrchat_t*)hChat;
-	return mrchat_get_last_msg(ths);
+	const char* temp = mrchat_get_summary((mrchat_t*)hChat); /* mrchat_get_summary() checks for nullpointers */
+		jstring ret = JSTRING_NEW(temp);
+	free(temp);
+	return ret;
 }
 
+
+JNIEXPORT jstring Java_org_telegram_messenger_MrMailbox_MrChatGetSubtitle(JNIEnv *env, jclass c, jlong hChat)
+{
+	const char* temp = mrchat_get_subtitle((mrchat_t*)hChat); /* mrchat_get_subtitle() checks for nullpointers */
+		jstring ret = JSTRING_NEW(temp);
+	free(temp);
+	return ret;
+}
 
 /*******************************************************************************
  * MrMsglist
@@ -213,7 +223,7 @@ JNIEXPORT jlong Java_org_telegram_messenger_MrMailbox_MrChatGetLastMsg(JNIEnv *e
 
 JNIEXPORT void Java_org_telegram_messenger_MrMailbox_MrMsglistUnref(JNIEnv *env, jclass c, jlong hMsglist)
 {
-	return mrmsglist_unref((mrmsglist_t*)hMsglist);
+	return mrmsglist_unref((mrmsglist_t*)hMsglist); /* mrmsglist_unref() checks for nullpointers */
 }
 
 

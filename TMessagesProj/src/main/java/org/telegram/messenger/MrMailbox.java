@@ -80,6 +80,11 @@ public class MrMailbox {
     public native static int     MrChatGetId                (long hChat);
     public native static int     MrChatGetType              (long hChat);
     public native static String  MrChatGetName              (long hChat);
+    public native static String  MrChatGetSubtitle          (long hChat);
+    public native static String  MrChatGetSummary           (long hChat);
+    public static int            MrChatGetLastState         (long hChat) { return MR_OUT_READ; }
+    public static long           MrChatGetLastTimestamp     (long hChat) { return 1468584927; }
+    public static int            MrChatGetUnreadCount       (long hChat) { return 1; }
 
     // MrMsglist objects
     public native static void    MrMsglistUnref             (long hMsglist);
@@ -89,5 +94,20 @@ public class MrMailbox {
 
     // Tools
     public native static String  MrGetVersionStr            ();
+
+    public final static int      MR_CHAT_UNDEFINED          = 0;
+    public final static int      MR_CHAT_NORMAL             = 100;
+    public final static int      MR_CHAT_ENCRYPTED          = 110;
+    public final static int      MR_CHAT_GROUP              = 120;
+    public final static int      MR_CHAT_FEED               = 130;
+
+    public final static int      MR_STATE_UNDEFINED         = 0;
+    public final static int      MR_IN_UNREAD               = 1;
+    public final static int      MR_IN_READ                 = 3;
+    public final static int      MR_OUT_PENDING             = 5;
+    public final static int      MR_OUT_ERROR               = 6;
+    public final static int      MR_OUT_DELIVERED           = 7;
+    public final static int      MR_OUT_READ                = 9;
+
 }
 // /EDIT BY MR
