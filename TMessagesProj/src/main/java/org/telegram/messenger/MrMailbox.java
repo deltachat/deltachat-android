@@ -99,6 +99,7 @@ public class MrMailbox {
     public native static String  MrPoortextGetText          (long hPoortext);
 
     // Tools
+    public native static void    MrStockAddStr              (int id, String str);
     public native static String  MrGetVersionStr            ();
 
     public final static int      MR_CHAT_UNDEFINED          = 0;

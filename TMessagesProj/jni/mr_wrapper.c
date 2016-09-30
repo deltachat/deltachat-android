@@ -57,10 +57,10 @@ JNIEXPORT jlong Java_org_telegram_messenger_MrMailbox_MrMailboxNew(JNIEnv *env, 
 
 /* MrMailbox - open/close/connect/fetch */
 
-JNIEXPORT int Java_org_telegram_messenger_MrMailbox_MrMailboxOpen(JNIEnv *env, jclass c, jlong hMailbox, jstring dbfile)
+JNIEXPORT jint Java_org_telegram_messenger_MrMailbox_MrMailboxOpen(JNIEnv *env, jclass c, jlong hMailbox, jstring dbfile)
 {
 	CHAR_REF(dbfile);
-		int ret = mrmailbox_open((mrmailbox_t*)hMailbox, dbfilePtr);
+		jint ret = mrmailbox_open((mrmailbox_t*)hMailbox, dbfilePtr);
 	CHAR_UNREF(dbfile)
 	return ret;
 }
@@ -72,7 +72,7 @@ JNIEXPORT void Java_org_telegram_messenger_MrMailbox_MrMailboxClose(JNIEnv *env,
 }
 
 
-JNIEXPORT int Java_org_telegram_messenger_MrMailbox_MrMailboxConnect(JNIEnv *env, jclass c, jlong hMailbox)
+JNIEXPORT jint Java_org_telegram_messenger_MrMailbox_MrMailboxConnect(JNIEnv *env, jclass c, jlong hMailbox)
 {
 	return mrmailbox_connect((mrmailbox_t*)hMailbox);
 }
@@ -84,7 +84,7 @@ JNIEXPORT void Java_org_telegram_messenger_MrMailbox_MrMailboxDisconnect(JNIEnv 
 }
 
 
-JNIEXPORT int Java_org_telegram_messenger_MrMailbox_MrMailboxFetch(JNIEnv *env, jclass c, jlong hMailbox)
+JNIEXPORT jint Java_org_telegram_messenger_MrMailbox_MrMailboxFetch(JNIEnv *env, jclass c, jlong hMailbox)
 {
 	return mrmailbox_fetch((mrmailbox_t*)hMailbox);
 }
@@ -92,13 +92,13 @@ JNIEXPORT int Java_org_telegram_messenger_MrMailbox_MrMailboxFetch(JNIEnv *env, 
 
 /* MrMailbox - handle contacts */
 
-JNIEXPORT int Java_org_telegram_messenger_MrMailbox_MrMailboxGetContactCnt(JNIEnv *env, jclass c, jlong hMailbox)
+JNIEXPORT jint Java_org_telegram_messenger_MrMailbox_MrMailboxGetContactCnt(JNIEnv *env, jclass c, jlong hMailbox)
 {
-	return (int)mrmailbox_get_contact_cnt((mrmailbox_t*)hMailbox);
+	return (jint)mrmailbox_get_contact_cnt((mrmailbox_t*)hMailbox);
 }
 
 
-JNIEXPORT jlong Java_org_telegram_messenger_MrMailbox_MrMailboxGetContactByIndex(JNIEnv *env, jclass c, long hMailbox, int i)
+JNIEXPORT jlong Java_org_telegram_messenger_MrMailbox_MrMailboxGetContactByIndex(JNIEnv *env, jclass c, long hMailbox, jint i)
 {
 	return (jlong)mrmailbox_get_contact_by_index((mrmailbox_t*)hMailbox, i);
 }
@@ -106,9 +106,9 @@ JNIEXPORT jlong Java_org_telegram_messenger_MrMailbox_MrMailboxGetContactByIndex
 
 /* MrMailbox - handle chats */
 
-JNIEXPORT int Java_org_telegram_messenger_MrMailbox_MrMailboxGetChatCnt(JNIEnv *env, jclass c, jlong hMailbox)
+JNIEXPORT jint Java_org_telegram_messenger_MrMailbox_MrMailboxGetChatCnt(JNIEnv *env, jclass c, jlong hMailbox)
 {
-	return (int)mrmailbox_get_chat_cnt((mrmailbox_t*)hMailbox);
+	return (jint)mrmailbox_get_chat_cnt((mrmailbox_t*)hMailbox);
 }
 
 
@@ -120,11 +120,11 @@ JNIEXPORT jlong Java_org_telegram_messenger_MrMailbox_MrMailboxGetChats(JNIEnv *
 
 /* MrMailbox - handle config */
 
-JNIEXPORT int Java_org_telegram_messenger_MrMailbox_MrMailboxSetConfig(JNIEnv *env, jclass c, jlong hMailbox, jstring key, jstring value)
+JNIEXPORT jint Java_org_telegram_messenger_MrMailbox_MrMailboxSetConfig(JNIEnv *env, jclass c, jlong hMailbox, jstring key, jstring value)
 {
 	CHAR_REF(key);
 	CHAR_REF(value);
-		int ret = (jlong)mrmailbox_set_config((mrmailbox_t*)hMailbox, keyPtr, valuePtr);
+		jint ret = (jlong)mrmailbox_set_config((mrmailbox_t*)hMailbox, keyPtr, valuePtr);
 	CHAR_UNREF(key);
 	CHAR_UNREF(value);
 	return ret;
@@ -155,13 +155,13 @@ JNIEXPORT void Java_org_telegram_messenger_MrMailbox_MrChatlistUnref(JNIEnv *env
 }
 
 
-JNIEXPORT int Java_org_telegram_messenger_MrMailbox_MrChatlistGetCnt(JNIEnv *env, jclass c, jlong hChatlist)
+JNIEXPORT jint Java_org_telegram_messenger_MrMailbox_MrChatlistGetCnt(JNIEnv *env, jclass c, jlong hChatlist)
 {
 	return mrchatlist_get_cnt((mrchatlist_t*)hChatlist);
 }
 
 
-JNIEXPORT jlong Java_org_telegram_messenger_MrMailbox_MrChatlistGetChat(JNIEnv *env, jclass c, jlong hChatlist, int index)
+JNIEXPORT jlong Java_org_telegram_messenger_MrMailbox_MrChatlistGetChat(JNIEnv *env, jclass c, jlong hChatlist, jint index)
 {
 	return (jlong)mrchatlist_get_chat((mrchatlist_t*)hChatlist, index);
 }
@@ -178,14 +178,14 @@ JNIEXPORT void Java_org_telegram_messenger_MrMailbox_MrChatUnref(JNIEnv *env, jc
 }
 
 
-JNIEXPORT int Java_org_telegram_messenger_MrMailbox_MrChatGetId(JNIEnv *env, jclass c, jlong hChat)
+JNIEXPORT jint Java_org_telegram_messenger_MrMailbox_MrChatGetId(JNIEnv *env, jclass c, jlong hChat)
 {
 	mrchat_t* ths = (mrchat_t*)hChat; if( ths == NULL ) { return 0; }
 	return ths->m_id;
 }
 
 
-JNIEXPORT int Java_org_telegram_messenger_MrMailbox_MrChatGetType(JNIEnv *env, jclass c, jlong hChat)
+JNIEXPORT jint Java_org_telegram_messenger_MrMailbox_MrChatGetType(JNIEnv *env, jclass c, jlong hChat)
 {
 	mrchat_t* ths = (mrchat_t*)hChat; if( ths == NULL ) { return 0; }
 	return ths->m_type;
@@ -208,7 +208,7 @@ JNIEXPORT jstring Java_org_telegram_messenger_MrMailbox_MrChatGetSubtitle(JNIEnv
 }
 
 
-JNIEXPORT int Java_org_telegram_messenger_MrMailbox_MrChatGetUnreadCount(JNIEnv *env, jclass c, jlong hChat)
+JNIEXPORT jint Java_org_telegram_messenger_MrMailbox_MrChatGetUnreadCount(JNIEnv *env, jclass c, jlong hChat)
 {
 	return mrchat_get_unread_count((mrchat_t*)hChat); /* mrchat_get_unread_count() checks for nullpointers */
 }
@@ -220,7 +220,7 @@ JNIEXPORT jlong Java_org_telegram_messenger_MrMailbox_MrChatGetLastSummary(JNIEn
 }
 
 
-JNIEXPORT int Java_org_telegram_messenger_MrMailbox_MrChatGetLastState(JNIEnv *env, jclass c, jlong hChat)
+JNIEXPORT jint Java_org_telegram_messenger_MrMailbox_MrChatGetLastState(JNIEnv *env, jclass c, jlong hChat)
 {
 	return mrchat_get_last_state((mrchat_t*)hChat);
 }
@@ -272,7 +272,7 @@ JNIEXPORT jstring Java_org_telegram_messenger_MrMailbox_MrPoortextGetTitle(JNIEn
 }
 
 
-JNIEXPORT int Java_org_telegram_messenger_MrMailbox_MrPoortextGetTitleMeaning(JNIEnv *env, jclass c, jlong hPoortext)
+JNIEXPORT jint Java_org_telegram_messenger_MrMailbox_MrPoortextGetTitleMeaning(JNIEnv *env, jclass c, jlong hPoortext)
 {
 	mrpoortext_t* ths = (mrpoortext_t*)hPoortext; if( ths == NULL ) { return 0; }
 	return ths->m_title_meaning;
@@ -291,6 +291,14 @@ JNIEXPORT jstring Java_org_telegram_messenger_MrMailbox_MrPoortextGetText(JNIEnv
  ******************************************************************************/
 
 
+JNIEXPORT void Java_org_telegram_messenger_MrMailbox_MrStockAddStr(JNIEnv* env, jclass c, jint id, jstring str)
+{
+	CHAR_REF(str);
+		mrstock_add_str(id, strPtr);
+	CHAR_UNREF(str)
+}
+
+
 JNIEXPORT jstring Java_org_telegram_messenger_MrMailbox_MrGetVersionStr(JNIEnv *env, jclass c)
 {
 	mrosnative_init_android(env); /*this should be called before any other "important" routine is called*/
@@ -299,4 +307,5 @@ JNIEXPORT jstring Java_org_telegram_messenger_MrMailbox_MrGetVersionStr(JNIEnv *
 	free(temp);
 	return ret;
 }
+
 
