@@ -199,15 +199,6 @@ JNIEXPORT jstring Java_org_telegram_messenger_MrMailbox_MrChatGetName(JNIEnv *en
 }
 
 
-JNIEXPORT jstring Java_org_telegram_messenger_MrMailbox_MrChatGetSummary(JNIEnv *env, jclass c, jlong hChat)
-{
-	const char* temp = mrchat_get_summary((mrchat_t*)hChat); /* mrchat_get_summary() checks for nullpointers */
-		jstring ret = JSTRING_NEW(temp);
-	free(temp);
-	return ret;
-}
-
-
 JNIEXPORT jstring Java_org_telegram_messenger_MrMailbox_MrChatGetSubtitle(JNIEnv *env, jclass c, jlong hChat)
 {
 	const char* temp = mrchat_get_subtitle((mrchat_t*)hChat); /* mrchat_get_subtitle() checks for nullpointers */
@@ -215,6 +206,31 @@ JNIEXPORT jstring Java_org_telegram_messenger_MrMailbox_MrChatGetSubtitle(JNIEnv
 	free(temp);
 	return ret;
 }
+
+
+JNIEXPORT int Java_org_telegram_messenger_MrMailbox_MrChatGetUnreadCount(JNIEnv *env, jclass c, jlong hChat)
+{
+	return mrchat_get_unread_count((mrchat_t*)hChat); /* mrchat_get_unread_count() checks for nullpointers */
+}
+
+
+JNIEXPORT jlong Java_org_telegram_messenger_MrMailbox_MrChatGetLastSummary(JNIEnv *env, jclass c, jlong hChat)
+{
+	return (jlong)mrchat_get_last_summary((mrchat_t*)hChat);
+}
+
+
+JNIEXPORT int Java_org_telegram_messenger_MrMailbox_MrChatGetLastState(JNIEnv *env, jclass c, jlong hChat)
+{
+	return mrchat_get_last_state((mrchat_t*)hChat);
+}
+
+
+JNIEXPORT jlong Java_org_telegram_messenger_MrMailbox_MrChatGetLastTimestamp(JNIEnv *env, jclass c, jlong hChat)
+{
+	return (jlong)mrchat_get_last_timestamp((mrchat_t*)hChat); /* mrchat_get_last_timestamp() checks for nullpointers */
+}
+
 
 /*******************************************************************************
  * MrMsglist
@@ -236,6 +252,39 @@ JNIEXPORT void Java_org_telegram_messenger_MrMailbox_MrMsgUnref(JNIEnv *env, jcl
 {
 	return mrmsg_unref((mrmsg_t*)hMsg);
 }
+
+
+/*******************************************************************************
+ * MrPoortext
+ ******************************************************************************/
+
+
+JNIEXPORT void Java_org_telegram_messenger_MrMailbox_MrPoortextUnref(JNIEnv *env, jclass c, jlong hPoortext)
+{
+	return mrpoortext_unref((mrpoortext_t*)hPoortext);
+}
+
+
+JNIEXPORT jstring Java_org_telegram_messenger_MrMailbox_MrPoortextGetTitle(JNIEnv *env, jclass c, jlong hPoortext)
+{
+	mrpoortext_t* ths = (mrpoortext_t*)hPoortext; if( ths == NULL ) { return JSTRING_NEW(NULL); }
+	return JSTRING_NEW(ths->m_title);
+}
+
+
+JNIEXPORT int Java_org_telegram_messenger_MrMailbox_MrPoortextGetTitleMeaning(JNIEnv *env, jclass c, jlong hPoortext)
+{
+	mrpoortext_t* ths = (mrpoortext_t*)hPoortext; if( ths == NULL ) { return 0; }
+	return ths->m_title_meaning;
+}
+
+
+JNIEXPORT jstring Java_org_telegram_messenger_MrMailbox_MrPoortextGetText(JNIEnv *env, jclass c, jlong hPoortext)
+{
+	mrpoortext_t* ths = (mrpoortext_t*)hPoortext; if( ths == NULL ) { return JSTRING_NEW(NULL); }
+	return JSTRING_NEW(ths->m_text);
+}
+
 
 /*******************************************************************************
  * Tools

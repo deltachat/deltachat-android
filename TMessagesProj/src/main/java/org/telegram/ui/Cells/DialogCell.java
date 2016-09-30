@@ -469,7 +469,34 @@ public class DialogCell extends BaseCell {
                 }
             }
         }*/
-        messageString = MrMailbox.MrChatGetSummary(hChat);
+
+        {
+            long hPoortext = MrMailbox.MrChatGetLastSummary(hChat);
+
+                checkMessage = false;
+                String mess = MrMailbox.MrPoortextGetText(hPoortext);
+                if (mess.length() > 150) {
+                    mess = mess.substring(0, 150);
+                }
+                String title = MrMailbox.MrPoortextGetTitle(hPoortext);
+                if( !title.isEmpty() )
+                {
+                    int title_meaning = MrMailbox.MrPoortextGetTitleMeaning(hPoortext);
+                    int title_color = Theme.DIALOGS_NAME_TEXT_COLOR;
+                    switch( title_meaning ) {
+                        case MrMailbox.MR_TITLE_DRAFT: title_color = Theme.DIALOGS_DRAFT_TEXT_COLOR; break;
+                    }
+                    SpannableStringBuilder stringBuilder = SpannableStringBuilder.valueOf(String.format("%s: %s", title, mess));
+                    stringBuilder.setSpan(new ForegroundColorSpan(title_color), 0, title.length() + 1, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                    messageString = Emoji.replaceEmoji(stringBuilder, messagePaint.getFontMetricsInt(), AndroidUtilities.dp(20), false);
+                }
+                else
+                {
+                    messageString = mess;
+                }
+
+            MrMailbox.MrPoortextUnref(hPoortext);
+        }
 
         /* EDIT BY MR
         if (draftMessage != null) {

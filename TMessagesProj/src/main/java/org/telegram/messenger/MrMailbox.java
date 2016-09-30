@@ -81,16 +81,22 @@ public class MrMailbox {
     public native static int     MrChatGetType              (long hChat);
     public native static String  MrChatGetName              (long hChat);
     public native static String  MrChatGetSubtitle          (long hChat);
-    public native static String  MrChatGetSummary           (long hChat);
-    public static int            MrChatGetLastState         (long hChat) { return MR_OUT_READ; }
-    public static long           MrChatGetLastTimestamp     (long hChat) { return 1468584927; }
-    public static int            MrChatGetUnreadCount       (long hChat) { return 1; }
+    public native static int     MrChatGetUnreadCount       (long hChat);
+    public native static long    MrChatGetLastSummary       (long hChat); // returns hPoortext
+    public native static int     MrChatGetLastState         (long hChat);
+    public native static long    MrChatGetLastTimestamp     (long hChat);
 
     // MrMsglist objects
     public native static void    MrMsglistUnref             (long hMsglist);
 
     // MrMsg objects
     public native static void    MrMsgUnref                 (long hMsg);
+
+    // MrPoortext objects
+    public native static void    MrPoortextUnref            (long hPoortext);
+    public native static String  MrPoortextGetTitle         (long hPoortext);
+    public native static int     MrPoortextGetTitleMeaning  (long hPoortext);
+    public native static String  MrPoortextGetText          (long hPoortext);
 
     // Tools
     public native static String  MrGetVersionStr            ();
@@ -108,6 +114,10 @@ public class MrMailbox {
     public final static int      MR_OUT_ERROR               = 6;
     public final static int      MR_OUT_DELIVERED           = 7;
     public final static int      MR_OUT_READ                = 9;
+
+    public final static int      MR_TITLE_NORMAL            = 0;
+    public final static int      MR_TITLE_DRAFT             = 1;
+    public final static int      MR_TITLE_USERNAME          = 2;
 
 }
 // /EDIT BY MR
