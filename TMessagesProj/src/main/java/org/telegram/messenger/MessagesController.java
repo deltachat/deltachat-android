@@ -2238,7 +2238,7 @@ public class MessagesController implements NotificationCenter.NotificationCenter
         }
         return "";
     }
-    /EDIT BY MR */
+    */
 
     private void updatePrintingStrings() {
         /* EDIT BY MR
@@ -2341,7 +2341,7 @@ public class MessagesController implements NotificationCenter.NotificationCenter
                 printingStringsTypes = newPrintingStringsTypes;
             }
         });
-        /EDIT BY MR */
+        */
     }
 
     public void cancelTyping(int action, long dialog_id) {
@@ -2350,7 +2350,7 @@ public class MessagesController implements NotificationCenter.NotificationCenter
         if (typings != null) {
             typings.remove(dialog_id);
         }
-        /EDIT BY MR */
+        */
     }
 
     public void sendTyping(final long dialog_id, final int action, int classGuid) {
@@ -2446,7 +2446,7 @@ public class MessagesController implements NotificationCenter.NotificationCenter
                 }
             }
         }
-        /EDIT BY MR */
+        */
     }
 
     public void loadMessages(final long dialog_id, final int count, final int max_id, boolean fromCache, int midDate, final int classGuid, final int load_type, final int last_message_id, final boolean isChannel, final int loadIndex) {

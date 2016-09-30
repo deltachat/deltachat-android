@@ -166,7 +166,7 @@ public class ConnectionsManager {
             }
         });
         return requestToken;
-        EDIT BY MR */
+        */
     }
 
     public void cancelRequest(int token, boolean notifyServer) {
@@ -196,7 +196,7 @@ public class ConnectionsManager {
             return ConnectionStateUpdating;
         }
         return connectionState;
-        EDIT BY MR */
+        */
     }
 
     public void setUserId(int id) {

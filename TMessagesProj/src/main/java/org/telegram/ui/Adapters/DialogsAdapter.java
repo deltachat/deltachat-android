@@ -15,7 +15,7 @@ import android.view.ViewGroup;
 import org.telegram.messenger.AndroidUtilities;
 import org.telegram.messenger.MessagesController;
 import org.telegram.messenger.support.widget.RecyclerView;
-import org.telegram.messenger.MrMailbox;
+import org.telegram.messenger.MrMailbox; // EDIT BY MR
 import org.telegram.tgnet.TLRPC;
 import org.telegram.ui.Cells.DialogCell;
 import org.telegram.ui.Cells.LoadingCell;
@@ -66,7 +66,7 @@ public class DialogsAdapter extends RecyclerView.Adapter {
         }
         return null;
     }
-    /EDIT BY MR */
+    */
 
     @Override
     public int getItemCount() {
@@ -145,7 +145,7 @@ public class DialogsAdapter extends RecyclerView.Adapter {
         if (i == getDialogsArray().size()) {
             return 1;
         }
-        /EDIT BY MR */
+        */
         return 0;
     }
 }

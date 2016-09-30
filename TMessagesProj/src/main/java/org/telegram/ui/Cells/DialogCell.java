@@ -27,7 +27,7 @@ import org.telegram.PhoneFormat.PhoneFormat;
 import org.telegram.messenger.ChatObject;
 import org.telegram.messenger.LocaleController;
 import org.telegram.messenger.MessageObject;
-import org.telegram.messenger.MrMailbox;
+import org.telegram.messenger.MrMailbox; // EDIT BY MR
 import org.telegram.messenger.UserObject;
 import org.telegram.messenger.FileLog;
 import org.telegram.messenger.query.DraftQuery;
@@ -470,7 +470,7 @@ public class DialogCell extends BaseCell {
             }
         }*/
 
-        {
+        { // EDIT BY MR
             long hPoortext = MrMailbox.MrChatGetLastSummary(hChat);
 
                 checkMessage = false;
@@ -496,7 +496,7 @@ public class DialogCell extends BaseCell {
                 }
 
             MrMailbox.MrPoortextUnref(hPoortext);
-        }
+        } // /EDIT BY MR
 
         /* EDIT BY MR
         if (draftMessage != null) {
@@ -523,7 +523,7 @@ public class DialogCell extends BaseCell {
                 drawCount = false;
             }
 
-            switch( MrMailbox.MrChatGetLastState(hChat) ) {
+            switch( MrMailbox.MrChatGetLastState(hChat) ) { // EDIT BY MR
                 case MrMailbox.MR_OUT_ERROR: drawError = true; break;
                 case MrMailbox.MR_OUT_PENDING: drawClock = true; break;
                 case MrMailbox.MR_OUT_DELIVERED: drawCheck2 = true; break;
