@@ -444,9 +444,10 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
                             presentFragment(new ChatActivity(args));
                         }
                     } else {
-                        if (MessagesController.checkCanOpenChat(args, DialogsActivity.this)) {
-                            presentFragment(new ChatActivity(args));
-                        }
+                        //if (MessagesController.checkCanOpenChat(args, DialogsActivity.this)) { -- EDIT MY MR
+                            presentFragment(new ChatActivity(args)); // TODO: What is the difference between user_id and chat_id?
+                            // TOOD: step into presetFragment - why does it not come up?
+                        //} -- EDIT BY MR
                     }
                 }
             }
