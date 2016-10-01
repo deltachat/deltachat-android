@@ -22,6 +22,7 @@ import org.telegram.messenger.ChatObject;
 import org.telegram.messenger.FileLog;
 import org.telegram.messenger.LocaleController;
 import org.telegram.messenger.MessagesController;
+import org.telegram.messenger.MrMailbox;
 import org.telegram.messenger.R;
 import org.telegram.messenger.UserConfig;
 import org.telegram.tgnet.ConnectionsManager;
@@ -205,6 +206,9 @@ public class ChatAvatarContainer extends FrameLayout {
     }
 
     public void updateSubtitle() {
+        String text = MrMailbox.MrChatGetSubtitle(parentFragment.m_hChat); // EDIT BY MR
+        subtitleTextView.setText(text); // EDIT BY MR
+        /* EDIT BY MR
         TLRPC.User user = parentFragment.getCurrentUser();
         TLRPC.Chat chat = parentFragment.getCurrentChat();
         CharSequence printString = MessagesController.getInstance().printingStrings.get(parentFragment.getDialogId());
@@ -273,10 +277,12 @@ public class ChatAvatarContainer extends FrameLayout {
             subtitleTextView.setText(printString);
             setTypingAnimation(true);
         }
+        */
     }
 
     public void checkAndUpdateAvatar() {
         TLRPC.FileLocation newPhoto = null;
+        /*
         TLRPC.User user = parentFragment.getCurrentUser();
         TLRPC.Chat chat = parentFragment.getCurrentChat();
         if (user != null) {
@@ -290,6 +296,9 @@ public class ChatAvatarContainer extends FrameLayout {
             }
             avatarDrawable.setInfo(chat);
         }
+        */
+        avatarDrawable.setInfo(MrMailbox.MrChatGetId(parentFragment.m_hChat), MrMailbox.MrChatGetName(parentFragment.m_hChat), null, false); // EDIT BY MR
+
         if (avatarImageView != null) {
             avatarImageView.setImage(newPhoto, "50_50", avatarDrawable);
         }

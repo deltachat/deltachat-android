@@ -71,7 +71,7 @@ public class DialogsAdapter extends RecyclerView.Adapter {
     @Override
     public int getItemCount() {
         // EDIT BY MR
-        int count = MrMailbox.MrMailboxGetChatCnt(MrMailbox.hMailbox);
+        int count = MrMailbox.MrChatlistGetCnt(MrMailbox.hCurrChatlist);
         /*
         int count = getDialogsArray().size();
         if (count == 0 && MessagesController.getInstance().loadingDialogs) {

@@ -64,6 +64,7 @@ import org.telegram.messenger.Emoji;
 import org.telegram.messenger.LocaleController;
 import org.telegram.messenger.MediaController;
 import org.telegram.messenger.MessagesStorage;
+import org.telegram.messenger.MrMailbox;
 import org.telegram.messenger.NotificationsController;
 import org.telegram.messenger.SecretChatHelper;
 import org.telegram.messenger.SendMessagesHelper;
@@ -148,7 +149,10 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
     protected TLRPC.Chat currentChat;
     protected TLRPC.User currentUser;
     protected TLRPC.EncryptedChat currentEncryptedChat;
+
     private boolean userBlocked = false;
+
+    public long m_hChat = 0; // EDIT BY MR
 
     private ArrayList<ChatMessageCell> chatMessageCellsCache = new ArrayList<>();
 
@@ -353,6 +357,11 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
 
     private final static int id_chat_compose_panel = 1000;
 
+    protected void finalize()
+    {
+        MrMailbox.MrChatUnref(m_hChat);
+    }
+
     RecyclerListView.OnItemLongClickListener onItemLongClickListener = new RecyclerListView.OnItemLongClickListener() {
         @Override
         public boolean onItemClick(View view, int position) {
@@ -381,15 +390,26 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
 
     @Override
     public boolean onFragmentCreate() {
+        /* EDIT BY MR
         final int chatId = arguments.getInt("chat_id", 0);
         final int userId = arguments.getInt("user_id", 0);
         final int encId = arguments.getInt("enc_id", 0);
+        */
+
+        // EDIT BY MR -- set up the values so that the activity gets usable
+        dialog_id = arguments.getInt("chat_id", 0);
+        m_hChat = MrMailbox.MrMailboxGetChatById(MrMailbox.hMailbox, (int)dialog_id);
+        currentChat = new TLRPC.Chat();
+        currentChat.id = (int)dialog_id;
+        // /EDIT BY MR
+
         inlineReturn = arguments.getLong("inline_return", 0);
         String inlineQuery = arguments.getString("inline_query");
         startLoadFromMessageId = arguments.getInt("message_id", 0);
         int migrated_to = arguments.getInt("migrated_to", 0);
         scrollToTopOnResume = arguments.getBoolean("scrollToTopOnResume", false);
 
+        /* EDIT BY MR
         if (chatId != 0) {
             currentChat = MessagesController.getInstance().getChat(chatId);
             if (currentChat == null) {
@@ -498,6 +518,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         } else {
             return false;
         }
+        */
 
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.messagesDidLoaded);
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.emojiDidLoaded);
@@ -544,6 +565,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
             BotQuery.loadBotKeyboard(dialog_id);
         }
 
+        /* EDIT BY MR -- TODO: LoadMessages bracuht man wohl...
         loading = true;
         MessagesController.getInstance().loadPeerSettings(dialog_id, currentUser, currentChat);
         MessagesController.getInstance().setLastCreatedDialogId(dialog_id, true);
@@ -560,7 +582,9 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
             waitingForLoad.add(lastLoadIndex);
             MessagesController.getInstance().loadMessages(dialog_id, AndroidUtilities.isTablet() ? 30 : 20, 0, true, 0, classGuid, 2, 0, ChatObject.isChannel(currentChat), lastLoadIndex++);
         }
+        */
 
+        /* EDIT BY MR
         if (currentChat != null) {
             Semaphore semaphore = null;
             if (isBroadcast) {
@@ -591,6 +615,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         if (currentUser != null) {
             userBlocked = MessagesController.getInstance().blockedUsers.contains(currentUser.id);
         }
+        */
 
         if (AndroidUtilities.isTablet()) {
             NotificationCenter.getInstance().postNotificationName(NotificationCenter.openedChatChanged, dialog_id, false);
@@ -955,6 +980,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         if (currentEncryptedChat != null) {
             timeItem2 = headerItem.addSubItem(chat_enc_timer, LocaleController.getString("SetTimer", R.string.SetTimer), 0);
         }
+        /* EDIT BY MR -- it's not yet clear how messages should be deleted and/or chats can be leaved; disable this for the moment
         if (!ChatObject.isChannel(currentChat)) {
             headerItem.addSubItem(clear_history, LocaleController.getString("ClearHistory", R.string.ClearHistory), 0);
             if (currentChat != null && !isBroadcast) {
@@ -963,6 +989,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 headerItem.addSubItem(delete_chat, LocaleController.getString("DeleteChatUser", R.string.DeleteChatUser), 0);
             }
         }
+        */
         muteItem = headerItem.addSubItem(mute, null, 0);
         if (currentUser != null && currentEncryptedChat == null && currentUser.bot) {
             headerItem.addSubItem(bot_settings, LocaleController.getString("BotSettings", R.string.BotSettings), 0);
@@ -4224,6 +4251,8 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         if (avatarContainer == null) {
             return;
         }
+        avatarContainer.setTitle(MrMailbox.MrChatGetName(m_hChat)); // EDIT BY MR -- realize the title from m_hChat
+        /* EDIT BY MR
         if (currentChat != null) {
             avatarContainer.setTitle(currentChat.title);
         } else if (currentUser != null) {
@@ -4237,6 +4266,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 avatarContainer.setTitle(UserObject.getUserName(currentUser));
             }
         }
+        */
     }
 
     private void updateBotButtons() {
@@ -4287,6 +4317,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
     }
 
     private void checkAndUpdateAvatar() {
+        /* EDIT BY MR - getUser()/getChat() will fail and is not needed
         if (currentUser != null) {
             TLRPC.User user = MessagesController.getInstance().getUser(currentUser.id);
             if (user == null) {
@@ -4300,6 +4331,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
             }
             currentChat = chat;
         }
+        */
         if (avatarContainer != null) {
             avatarContainer.checkAndUpdateAvatar();
         }

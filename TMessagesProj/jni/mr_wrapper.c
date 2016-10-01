@@ -106,15 +106,15 @@ JNIEXPORT jlong Java_org_telegram_messenger_MrMailbox_MrMailboxGetContactByIndex
 
 /* MrMailbox - handle chats */
 
-JNIEXPORT jint Java_org_telegram_messenger_MrMailbox_MrMailboxGetChatCnt(JNIEnv *env, jclass c, jlong hMailbox)
-{
-	return (jint)mrmailbox_get_chat_cnt((mrmailbox_t*)hMailbox);
-}
-
-
 JNIEXPORT jlong Java_org_telegram_messenger_MrMailbox_MrMailboxGetChats(JNIEnv *env, jclass c, jlong hMailbox)
 {
 	return (jlong)mrmailbox_get_chats((mrmailbox_t*)hMailbox);
+}
+
+
+JNIEXPORT jlong Java_org_telegram_messenger_MrMailbox_MrMailboxGetChatById(JNIEnv *env, jclass c, jlong hMailbox, jint id)
+{
+	return (jlong)mrmailbox_get_chat_by_id((mrmailbox_t*)hMailbox, id);
 }
 
 
@@ -161,9 +161,9 @@ JNIEXPORT jint Java_org_telegram_messenger_MrMailbox_MrChatlistGetCnt(JNIEnv *en
 }
 
 
-JNIEXPORT jlong Java_org_telegram_messenger_MrMailbox_MrChatlistGetChat(JNIEnv *env, jclass c, jlong hChatlist, jint index)
+JNIEXPORT jlong Java_org_telegram_messenger_MrMailbox_MrChatlistGetChatByIndex(JNIEnv *env, jclass c, jlong hChatlist, jint index)
 {
-	return (jlong)mrchatlist_get_chat((mrchatlist_t*)hChatlist, index);
+	return (jlong)mrchatlist_get_chat_by_index((mrchatlist_t*)hChatlist, index);
 }
 
 

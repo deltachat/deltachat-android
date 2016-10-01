@@ -48,7 +48,7 @@ public class MrMailbox {
 
     public static TLRPC.TL_dialog chatlist2dialog(long hChatlist, int index)
     {
-        long hChat = MrMailbox.MrChatlistGetChat(hChatlist, index);
+        long hChat = MrMailbox.MrChatlistGetChatByIndex(hChatlist, index);
         TLRPC.TL_dialog dlg = chat2dialog(hChat);
         MrMailbox.MrChatUnref(hChat);
         return dlg;
@@ -67,13 +67,13 @@ public class MrMailbox {
     public native static int     MrMailboxGetContactCnt     (long hMailbox);
     public native static long    MrMailboxGetContactByIndex (long hMailbox);// returns hContact which must be unref'd after usage
 
-    public native static int     MrMailboxGetChatCnt        (long hMailbox);
     public native static long    MrMailboxGetChats          (long hMailbox); // returns hChatlist which must be unref'd after usage
+    public native static long    MrMailboxGetChatById       (long hMailbox, int id); // return hChat which must be unref'd after usage
 
     // MrChatlist objects
     public native static void    MrChatlistUnref            (long hChatlist);
     public native static int     MrChatlistGetCnt           (long hChatlist);
-    public native static int     MrChatlistGetChat          (long hChatlist, int index); // returns hChat which must be unref'd after usage
+    public native static int     MrChatlistGetChatByIndex   (long hChatlist, int index); // returns hChat which must be unref'd after usage
 
     // MrChat objects
     public native static void    MrChatUnref                (long hChat);

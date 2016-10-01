@@ -339,7 +339,8 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
                 if (listView == null || listView.getAdapter() == null) {
                     return;
                 }
-                // TODO BY MR - handle single click
+
+                // handle single click
                 long dialog_id = 0;
                 int message_id = 0;
                 RecyclerView.Adapter adapter = listView.getAdapter();
@@ -400,6 +401,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
                     didSelectResult(dialog_id, true, false);
                 } else {
                     Bundle args = new Bundle();
+                    /*
                     int lower_part = (int) dialog_id;
                     int high_id = (int) (dialog_id >> 32);
                     if (lower_part != 0) {
@@ -422,6 +424,9 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
                     } else {
                         args.putInt("enc_id", high_id);
                     }
+                    */
+                    args.putInt("chat_id", (int)dialog_id);
+
                     if (message_id != 0) {
                         args.putInt("message_id", message_id);
                     } else {
@@ -429,6 +434,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
                             actionBar.closeSearchField();
                         }
                     }
+
                     if (AndroidUtilities.isTablet()) {
                         if (openedDialogId == dialog_id && adapter != dialogsSearchAdapter) {
                             return;
@@ -444,10 +450,9 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
                             presentFragment(new ChatActivity(args));
                         }
                     } else {
-                        //if (MessagesController.checkCanOpenChat(args, DialogsActivity.this)) { -- EDIT MY MR
-                            presentFragment(new ChatActivity(args)); // TODO: What is the difference between user_id and chat_id?
-                            // TOOD: step into presetFragment - why does it not come up?
-                        //} -- EDIT BY MR
+                        if (MessagesController.checkCanOpenChat(args, DialogsActivity.this)) {
+                            presentFragment(new ChatActivity(args));
+                        }
                     }
                 }
             }

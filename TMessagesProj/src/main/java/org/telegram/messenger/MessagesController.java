@@ -7262,6 +7262,7 @@ public class MessagesController implements NotificationCenter.NotificationCenter
     }
 
     public static boolean checkCanOpenChat(Bundle bundle, BaseFragment fragment) {
+        /* EDIT BY MR
         if (bundle == null || fragment == null) {
             return true;
         }
@@ -7287,6 +7288,7 @@ public class MessagesController implements NotificationCenter.NotificationCenter
             showCantOpenAlert(fragment, reason);
             return false;
         }
+        */
         return true;
     }
 

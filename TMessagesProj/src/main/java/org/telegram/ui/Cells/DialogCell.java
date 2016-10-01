@@ -201,7 +201,7 @@ public class DialogCell extends BaseCell {
 
         // EDIT BY MR
         MrMailbox.MrChatUnref(hChat);
-        hChat = MrMailbox.MrChatlistGetChat(MrMailbox.hCurrChatlist, i); // TODO: maybe this should move to update() - in general, how are updates handled?
+        hChat = MrMailbox.MrChatlistGetChatByIndex(MrMailbox.hCurrChatlist, i); // TODO: maybe this should move to update() - in general, how are updates handled?
         // /EDIT BY MR
 
         update(0);
