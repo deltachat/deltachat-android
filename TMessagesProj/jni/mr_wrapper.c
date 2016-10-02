@@ -234,6 +234,12 @@ JNIEXPORT jlong Java_org_telegram_messenger_MrMailbox_MrChatGetLastTimestamp(JNI
 }
 
 
+JNIEXPORT jlong Java_org_telegram_messenger_MrMailbox_MrChatGetMsgs(JNIEnv *env, jclass c, jlong hChat, jint offset, jint amount)
+{
+	return (jlong)mrchat_get_msgs((mrchat_t*)hChat, offset, amount);
+}
+
+
 /*******************************************************************************
  * MrMsglist
  ******************************************************************************/
@@ -242,6 +248,18 @@ JNIEXPORT jlong Java_org_telegram_messenger_MrMailbox_MrChatGetLastTimestamp(JNI
 JNIEXPORT void Java_org_telegram_messenger_MrMailbox_MrMsglistUnref(JNIEnv *env, jclass c, jlong hMsglist)
 {
 	return mrmsglist_unref((mrmsglist_t*)hMsglist); /* mrmsglist_unref() checks for nullpointers */
+}
+
+
+JNIEXPORT jint Java_org_telegram_messenger_MrMailbox_MrMsglistGetCnt(JNIEnv *env, jclass c, jlong hMsglist)
+{
+	return mrmsglist_get_cnt((mrmsglist_t*)hMsglist);
+}
+
+
+JNIEXPORT jlong Java_org_telegram_messenger_MrMailbox_MrMsglistGetMsgByIndex(JNIEnv *env, jclass c, jlong hMsglist, jint index)
+{
+	return (jlong)mrmsglist_get_msg_by_index((mrmsglist_t*)hMsglist, index);
 }
 
 

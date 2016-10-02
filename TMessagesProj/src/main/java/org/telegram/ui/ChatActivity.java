@@ -153,6 +153,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
     private boolean userBlocked = false;
 
     public long m_hChat = 0; // EDIT BY MR
+    public long m_hMsglist = 0; // EDIT BY MR
 
     private ArrayList<ChatMessageCell> chatMessageCellsCache = new ArrayList<>();
 
@@ -359,6 +360,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
 
     protected void finalize()
     {
+        MrMailbox.MrMsglistUnref(m_hMsglist);
         MrMailbox.MrChatUnref(m_hChat);
     }
 
@@ -565,7 +567,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
             BotQuery.loadBotKeyboard(dialog_id);
         }
 
-        /* EDIT BY MR -- TODO: LoadMessages bracuht man wohl...
+        /* EDIT BY MR
         loading = true;
         MessagesController.getInstance().loadPeerSettings(dialog_id, currentUser, currentChat);
         MessagesController.getInstance().setLastCreatedDialogId(dialog_id, true);
@@ -583,6 +585,25 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
             MessagesController.getInstance().loadMessages(dialog_id, AndroidUtilities.isTablet() ? 30 : 20, 0, true, 0, classGuid, 2, 0, ChatObject.isChannel(currentChat), lastLoadIndex++);
         }
         */
+
+        // EDIT BY MR
+        m_hMsglist = MrMailbox.MrChatGetMsgs(m_hChat, 0, 100);
+        {
+            int count = 0;
+            ArrayList<MessageObject> objects = new ArrayList<>();
+            boolean isCache = true;
+            int first_unread_final = Integer.MAX_VALUE;
+            int unread_count = 0;
+            int last_date = 0;
+            int load_type = 0;
+            boolean isEnd = false;
+            int loadIndex = 0;
+            NotificationCenter.getInstance().postNotificationName(
+                    NotificationCenter.messagesDidLoaded, // this is a synchronous call -- however, this should not make much difference
+                    dialog_id, count, objects, isCache, first_unread_final, last_message_id, unread_count,
+                    last_date, load_type, isEnd, classGuid, loadIndex);
+        }
+        // /EDIT BY MR
 
         /* EDIT BY MR
         if (currentChat != null) {
@@ -4683,7 +4704,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     MessagesQuery.loadReplyMessagesForMessages(messArr, dialog_id);
                 }
                 int approximateHeightSum = 0;
-                for (int a = 0; a < messArr.size(); a++) {
+                for (int a = 0; a < messArr.size(); a++) { //   -------- add loop ------------
                     MessageObject obj = messArr.get(a);
                     approximateHeightSum += obj.getApproximateHeight();
                     if (currentUser != null && currentUser.bot && obj.isOut()) {
@@ -4782,7 +4803,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                             scrollToMessagePosition = -9000;
                         }
                     }
-                }
+                } //   -------- /add loop ------------
                 if (load_type == 0 && newRowsCount == 0) {
                     loadsCount--;
                 }

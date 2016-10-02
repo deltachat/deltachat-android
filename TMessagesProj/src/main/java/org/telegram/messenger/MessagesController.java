@@ -1245,6 +1245,7 @@ public class MessagesController implements NotificationCenter.NotificationCenter
     }
 
     public void loadPeerSettings(final long dialogId, TLRPC.User currentUser, TLRPC.Chat currentChat) {
+        /* EDIT BY MR
         if (loadingPeerSettings.containsKey(dialogId) || currentUser == null && currentChat == null) {
             return;
         }
@@ -1308,6 +1309,7 @@ public class MessagesController implements NotificationCenter.NotificationCenter
                 });
             }
         });
+        */
     }
 
     protected void processNewChannelDifferenceParams(int pts, int pts_count, int channelId) {
@@ -2454,6 +2456,7 @@ public class MessagesController implements NotificationCenter.NotificationCenter
     }
 
     public void loadMessages(final long dialog_id, final int count, final int max_id, boolean fromCache, int midDate, final int classGuid, final int load_type, final int last_message_id, final boolean isChannel, final int loadIndex, final int first_unread, final int unread_count, final int last_date, final boolean queryFromServer) {
+        /* EDIT BY MR
         FileLog.e("tmessages", "load messages in chat " + dialog_id + " count " + count + " max_id " + max_id + " cache " + fromCache + " mindate = " + midDate + " guid " + classGuid + " load_type " + load_type + " last_message_id " + last_message_id + " index " + loadIndex + " firstUnread " + first_unread + " underad count " + unread_count + " last_date " + last_date + " queryFromServer " + queryFromServer);
         int lower_part = (int) dialog_id;
         if (fromCache || lower_part == 0) {
@@ -2492,6 +2495,7 @@ public class MessagesController implements NotificationCenter.NotificationCenter
             });
             ConnectionsManager.getInstance().bindRequestToGuid(reqId, classGuid);
         }
+        */
     }
 
     public void reloadWebPages(final long dialog_id, HashMap<String, ArrayList<MessageObject>> webpagesToReload) {
@@ -2549,6 +2553,7 @@ public class MessagesController implements NotificationCenter.NotificationCenter
 
     public void processLoadedMessages(final TLRPC.messages_Messages messagesRes, final long dialog_id, final int count, final int max_id, final boolean isCache, final int classGuid,
                                       final int first_unread, final int last_message_id, final int unread_count, final int last_date, final int load_type, final boolean isChannel, final boolean isEnd, final int loadIndex, final boolean queryFromServer) {
+        /* EDIT BY MR
         FileLog.e("tmessages", "processLoadedMessages size " + messagesRes.messages.size() + " in chat " + dialog_id + " count " + count + " max_id " + max_id + " cache " + isCache + " guid " + classGuid + " load_type " + load_type + " last_message_id " + last_message_id + " isChannel " + isChannel + " index " + loadIndex + " firstUnread " + first_unread + " underad count " + unread_count + " last_date " + last_date + " queryFromServer " + queryFromServer);
         Utilities.stageQueue.postRunnable(new Runnable() {
             @Override
@@ -2696,6 +2701,7 @@ public class MessagesController implements NotificationCenter.NotificationCenter
                 });
             }
         });
+        */
     }
 
     public void loadDialogs(final int offset, final int count, boolean fromCache) {

@@ -85,9 +85,12 @@ public class MrMailbox {
     public native static long    MrChatGetLastSummary       (long hChat); // returns hPoortext
     public native static int     MrChatGetLastState         (long hChat);
     public native static long    MrChatGetLastTimestamp     (long hChat);
+    public native static long    MrChatGetMsgs              (long hChat, int offset, int amount); // returns hMsglist
 
     // MrMsglist objects
     public native static void    MrMsglistUnref             (long hMsglist);
+    public native static int     MrMsglistGetCnt            (long hMsglist);
+    public native static int     MrMsglistGetMsgByIndex     (long hMsglist, int index); // returns hMsg which must be unref'd after usage
 
     // MrMsg objects
     public native static void    MrMsgUnref                 (long hMsg);
