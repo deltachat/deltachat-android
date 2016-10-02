@@ -57,7 +57,7 @@ public class MrMailbox {
 
     // MrMailbox objects
     public native static long    MrMailboxNew               (); // returns hMailbox which must be unref'd after usage (Names as mrmailbox_new don't work due to the additional underscore)
-    public native static int     MrMailboxOpen              (long hMailbox, String dbfile);
+    public native static int     MrMailboxOpen              (long hMailbox, String dbfile, String blobdir);
 
     public native static void    MrMailboxClose             (long hMailbox);
     public native static int     MrMailboxConnect           (long hMailbox);

@@ -980,7 +980,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         if (currentEncryptedChat != null) {
             timeItem2 = headerItem.addSubItem(chat_enc_timer, LocaleController.getString("SetTimer", R.string.SetTimer), 0);
         }
-        /* EDIT BY MR -- it's not yet clear how messages should be deleted and/or chats can be leaved; disable this for the moment
+        /* EDIT BY MR -- it's not yet clear if and how messages can be deleted and/or chats can be leaved; disable this for the moment
         if (!ChatObject.isChannel(currentChat)) {
             headerItem.addSubItem(clear_history, LocaleController.getString("ClearHistory", R.string.ClearHistory), 0);
             if (currentChat != null && !isBroadcast) {

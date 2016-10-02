@@ -57,10 +57,12 @@ JNIEXPORT jlong Java_org_telegram_messenger_MrMailbox_MrMailboxNew(JNIEnv *env, 
 
 /* MrMailbox - open/close/connect/fetch */
 
-JNIEXPORT jint Java_org_telegram_messenger_MrMailbox_MrMailboxOpen(JNIEnv *env, jclass c, jlong hMailbox, jstring dbfile)
+JNIEXPORT jint Java_org_telegram_messenger_MrMailbox_MrMailboxOpen(JNIEnv *env, jclass c, jlong hMailbox, jstring dbfile, jstring blobdir)
 {
 	CHAR_REF(dbfile);
-		jint ret = mrmailbox_open((mrmailbox_t*)hMailbox, dbfilePtr);
+	CHAR_REF(blobdir);
+		jint ret = mrmailbox_open((mrmailbox_t*)hMailbox, dbfilePtr, blobdirPtr);
+	CHAR_UNREF(blobdir);
 	CHAR_UNREF(dbfile)
 	return ret;
 }
