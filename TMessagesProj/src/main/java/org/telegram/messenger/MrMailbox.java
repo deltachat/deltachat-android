@@ -58,14 +58,12 @@ public class MrMailbox {
     // MrMailbox objects
     public native static long    MrMailboxNew               (); // returns hMailbox which must be unref'd after usage (Names as mrmailbox_new don't work due to the additional underscore)
     public native static int     MrMailboxOpen              (long hMailbox, String dbfile, String blobdir);
-
     public native static void    MrMailboxClose             (long hMailbox);
     public native static int     MrMailboxConnect           (long hMailbox);
     public native static void    MrMailboxDisconnect        (long hMailbox);
     public native static int     MrMailboxFetch             (long hMailbox);
 
-    public native static int     MrMailboxGetContactCnt     (long hMailbox);
-    public native static long    MrMailboxGetContactByIndex (long hMailbox);// returns hContact which must be unref'd after usage
+    public native static long    MrMailboxGetContactById    (long hMailbox);// returns hContact which must be unref'd after usage
 
     public native static long    MrMailboxGetChatlist       (long hMailbox); // returns hChatlist which must be unref'd after usage
     public native static long    MrMailboxGetChatById       (long hMailbox, int id); // return hChat which must be unref'd after usage

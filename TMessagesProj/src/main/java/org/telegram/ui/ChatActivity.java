@@ -600,8 +600,8 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
             int loadIndex = 0;
             NotificationCenter.getInstance().postNotificationName(
                     NotificationCenter.messagesDidLoaded, // this is a synchronous call -- however, this should not make much difference
-                    dialog_id, count, objects, isCache, first_unread_final, last_message_id, unread_count,
-                    last_date, load_type, isEnd, classGuid, loadIndex);
+                    dialog_id, count, objects /*arg#2*/, isCache, first_unread_final, last_message_id, unread_count,
+                    last_date, load_type, isEnd, classGuid /*arg#10*/, loadIndex);
         }
         // /EDIT BY MR
 
@@ -1296,11 +1296,13 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
 
         if (currentEncryptedChat == null) {
             TextView emptyView = new TextView(context);
+            /* EDIT BY MR
             if (currentUser != null && currentUser.id != 777000 && currentUser.id != 429000 && (currentUser.id / 1000 == 333 || currentUser.id % 1000 == 0)) {
                 emptyView.setText(LocaleController.getString("GotAQuestion", R.string.GotAQuestion));
             } else {
+            */
                 emptyView.setText(LocaleController.getString("NoMessages", R.string.NoMessages));
-            }
+            //} EDIT BY MR
             emptyView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
             emptyView.setGravity(Gravity.CENTER);
             emptyView.setTextColor(Theme.CHAT_EMPTY_VIEW_TEXT_COLOR);
@@ -4609,10 +4611,14 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         if (id == NotificationCenter.messagesDidLoaded) {
             int guid = (Integer) args[10];
             if (guid == classGuid) {
+
+                // define the animations that we want to receive during the opening animation -- EDIT BY MR
                 if (!openAnimationEnded) {
                     NotificationCenter.getInstance().setAllowedNotificationsDutingAnimation(new int[]{NotificationCenter.chatInfoDidLoaded, NotificationCenter.dialogsNeedReload,
                             NotificationCenter.closeChats, NotificationCenter.botKeyboardDidLoaded/*, NotificationCenter.botInfoDidLoaded*/});
                 }
+
+                /* EDIT BY MR -- not sure what this is for
                 int queryLoadIndex = (Integer) args[11];
                 int index = waitingForLoad.indexOf(queryLoadIndex);
                 if (index == -1) {
@@ -4620,7 +4626,14 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 } else {
                     waitingForLoad.remove(index);
                 }
+                */
+
+
+                /* EDIT BY MR -- messArr are the message objects to show
                 ArrayList<MessageObject> messArr = (ArrayList<MessageObject>) args[2];
+                */
+
+                /* EDIT BY MR -- scroll to a specific message
                 if (waitingForReplyMessageLoad) {
                     boolean found = false;
                     for (int a = 0; a < messArr.size(); a++) {
@@ -4639,6 +4652,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     startLoadFromMessageId = startLoadFrom;
                     needSelectFromMessageId = needSelect;
                 }
+                */
 
                 loadsCount++;
                 long did = (Long) args[0];
@@ -4665,9 +4679,11 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     minMessageId[0] = 0;
                 }
 
+                /* EDIT BY MR
                 if (loadsCount == 1 && messArr.size() > 20) {
                     loadsCount++;
                 }
+                */
 
                 if (firstLoading) {
                     if (!forwardEndReached[loadIndex]) {
@@ -4697,29 +4713,43 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     });
                 }
 
+                /* EDIT BY MR
                 if (load_type == 1) {
                     Collections.reverse(messArr);
                 }
+
                 if (currentEncryptedChat == null) {
                     MessagesQuery.loadReplyMessagesForMessages(messArr, dialog_id);
                 }
+                */
+
                 int approximateHeightSum = 0;
-                for (int a = 0; a < messArr.size(); a++) { //   -------- add loop ------------
+                int mrCount = MrMailbox.MrMsglistGetCnt(m_hMsglist);
+                for (int a = 0; a < mrCount /*EDIT BY MR -- was: messArr.size()*/; a++) {
+
+
+                    /* EDIT BY MR -- the add loop
                     MessageObject obj = messArr.get(a);
+
                     approximateHeightSum += obj.getApproximateHeight();
+
                     if (currentUser != null && currentUser.bot && obj.isOut()) {
                         obj.setIsRead();
                     }
+
                     if (messagesDict[loadIndex].containsKey(obj.getId())) {
                         continue;
                     }
+
                     if (loadIndex == 1) {
                         obj.setIsRead();
                     }
+
                     if (loadIndex == 0 && ChatObject.isChannel(currentChat) && obj.getId() == 1) {
                         endReached[loadIndex] = true;
                         cacheEndReached[loadIndex] = true;
                     }
+
                     if (obj.getId() > 0) {
                         maxMessageId[loadIndex] = Math.min(obj.getId(), maxMessageId[loadIndex]);
                         minMessageId[loadIndex] = Math.max(obj.getId(), minMessageId[loadIndex]);
@@ -4741,6 +4771,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     if (!obj.isOut() && obj.isUnread()) {
                         wasUnread = true;
                     }
+
                     messagesDict[loadIndex].put(obj.getId(), obj);
                     ArrayList<MessageObject> dayArray = messagesByDays.get(obj.dateKey);
 
@@ -4803,7 +4834,12 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                             scrollToMessagePosition = -9000;
                         }
                     }
-                } //   -------- /add loop ------------
+                    */
+
+                }
+
+
+
                 if (load_type == 0 && newRowsCount == 0) {
                     loadsCount--;
                 }
@@ -4820,6 +4856,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 }
 
                 if (load_type == 1) {
+                    /* EDIT BY MR
                     if (messArr.size() != count && !isCache) {
                         forwardEndReached[loadIndex] = true;
                         if (loadIndex != 1) {
@@ -4830,6 +4867,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                         }
                         startLoadFromMessageId = 0;
                     }
+                    */
                     if (newRowsCount > 0) {
                         int firstVisPos = chatLayoutManager.findLastVisibleItemPosition();
                         int top = 0;
@@ -4846,6 +4884,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     }
                     loadingForward = false;
                 } else {
+                    /* EDIT BY MR
                     if (messArr.size() < count && load_type != 3) {
                         if (isCache) {
                             if (currentEncryptedChat != null || isBroadcast) {
@@ -4858,6 +4897,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                             endReached[loadIndex] = true;// TODO if < 7 from unread
                         }
                     }
+                    */
                     loading = false;
 
                     if (chatListView != null) {

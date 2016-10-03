@@ -94,15 +94,9 @@ JNIEXPORT jint Java_org_telegram_messenger_MrMailbox_MrMailboxFetch(JNIEnv *env,
 
 /* MrMailbox - handle contacts */
 
-JNIEXPORT jint Java_org_telegram_messenger_MrMailbox_MrMailboxGetContactCnt(JNIEnv *env, jclass c, jlong hMailbox)
+JNIEXPORT jlong Java_org_telegram_messenger_MrMailbox_MrMailboxGetContactById(JNIEnv *env, jclass c, long hMailbox, jint id)
 {
-	return (jint)mrmailbox_get_contact_cnt((mrmailbox_t*)hMailbox);
-}
-
-
-JNIEXPORT jlong Java_org_telegram_messenger_MrMailbox_MrMailboxGetContactByIndex(JNIEnv *env, jclass c, long hMailbox, jint i)
-{
-	return (jlong)mrmailbox_get_contact_by_index((mrmailbox_t*)hMailbox, i);
+	return (jlong)mrmailbox_get_contact_by_id((mrmailbox_t*)hMailbox, id);
 }
 
 
