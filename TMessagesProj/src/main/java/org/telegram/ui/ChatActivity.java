@@ -64,7 +64,7 @@ import org.telegram.messenger.Emoji;
 import org.telegram.messenger.LocaleController;
 import org.telegram.messenger.MediaController;
 import org.telegram.messenger.MessagesStorage;
-import org.telegram.messenger.MrMailbox;
+import org.telegram.messenger.MrMailbox; // EDIT BY MR
 import org.telegram.messenger.NotificationsController;
 import org.telegram.messenger.SecretChatHelper;
 import org.telegram.messenger.SendMessagesHelper;
@@ -136,6 +136,7 @@ import org.telegram.ui.Components.WebFrameLayout;
 
 import java.io.File;
 import java.net.URLDecoder;
+import java.util.AbstractMap;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -153,7 +154,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
     private boolean userBlocked = false;
 
     public long m_hChat = 0; // EDIT BY MR
-    public long m_hMsglist = 0; // EDIT BY MR
 
     private ArrayList<ChatMessageCell> chatMessageCellsCache = new ArrayList<>();
 
@@ -360,7 +360,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
 
     protected void finalize()
     {
-        MrMailbox.MrMsglistUnref(m_hMsglist);
         MrMailbox.MrChatUnref(m_hChat);
     }
 
@@ -586,23 +585,28 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         }
         */
 
-        // EDIT BY MR
-        m_hMsglist = MrMailbox.MrChatGetMsglist(m_hChat, 0, 100);
-        {
-            int count = 0;
-            ArrayList<MessageObject> objects = new ArrayList<>();
-            boolean isCache = true;
-            int first_unread_final = Integer.MAX_VALUE;
-            int unread_count = 0;
-            int last_date = 0;
-            int load_type = 0;
-            boolean isEnd = false;
-            int loadIndex = 0;
-            NotificationCenter.getInstance().postNotificationName(
-                    NotificationCenter.messagesDidLoaded, // this is a synchronous call -- however, this should not make much difference
-                    dialog_id, count, objects /*arg#2*/, isCache, first_unread_final, last_message_id, unread_count,
-                    last_date, load_type, isEnd, classGuid /*arg#10*/, loadIndex);
-        }
+        // EDIT BY MR -- runOnUIThread() seems to be needed as otherwise the objects needed to build the view are not constructed.
+		// (runOnUIThread() seems to delay the construction - the same is done by the original implementation in loadMessages())
+        AndroidUtilities.runOnUIThread(new Runnable() {
+           @Override
+           public void run() {
+
+               int count = 0;
+               ArrayList<MessageObject> objects = new ArrayList<>();
+               boolean isCache = true;
+               int first_unread_final = Integer.MAX_VALUE;
+               int unread_count = 0;
+               int last_date = 0;
+               int load_type = 0;
+               boolean isEnd = false;
+               int loadIndex = 0;
+               NotificationCenter.getInstance().postNotificationName(
+                       NotificationCenter.messagesDidLoaded, // this is a synchronous call -- however, this should not make much difference
+                       dialog_id, count, objects /*arg#2*/, isCache, first_unread_final, last_message_id, unread_count,
+                       last_date, load_type, isEnd, classGuid /*arg#10*/, loadIndex);
+
+           }
+       });
         // /EDIT BY MR
 
         /* EDIT BY MR
@@ -1294,7 +1298,9 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
             }
         });
 
+        /* EDIT BY MR
         if (currentEncryptedChat == null) {
+        */
             TextView emptyView = new TextView(context);
             /* EDIT BY MR
             if (currentUser != null && currentUser.id != 777000 && currentUser.id != 429000 && (currentUser.id / 1000 == 333 || currentUser.id % 1000 == 0)) {
@@ -1302,7 +1308,9 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
             } else {
             */
                 emptyView.setText(LocaleController.getString("NoMessages", R.string.NoMessages));
-            //} EDIT BY MR
+            /* EDIT BY MR
+            }
+            */
             emptyView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
             emptyView.setGravity(Gravity.CENTER);
             emptyView.setTextColor(Theme.CHAT_EMPTY_VIEW_TEXT_COLOR);
@@ -1311,6 +1319,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
             emptyView.setTypeface(AndroidUtilities.getTypeface("fonts/rmedium.ttf"));
             emptyView.setPadding(AndroidUtilities.dp(10), AndroidUtilities.dp(2), AndroidUtilities.dp(10), AndroidUtilities.dp(3));
             emptyViewContainer.addView(emptyView, new FrameLayout.LayoutParams(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER));
+        /* EDIT BY MR
         } else {
             LinearLayout secretChatPlaceholder = new LinearLayout(context);
             secretChatPlaceholder.setBackgroundResource(R.drawable.system);
@@ -1377,6 +1386,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 }
             }
         }
+        */
 
         if (chatActivityEnterView != null) {
             chatActivityEnterView.onDestroy();
@@ -4723,12 +4733,22 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 }
                 */
 
+                long hMsglist  = MrMailbox.MrChatGetMsglist(m_hChat, 0, 100);
+                int mrCount = MrMailbox.MrMsglistGetCnt(hMsglist);
+                for (int a = 0; a < mrCount; a++ ) {
+                    long hMsg = MrMailbox.MrMsglistGetMsgByIndex(hMsglist, a);
+                        MessageObject mo = new MessageObject(MrMailbox.msg2msg(hMsg), null, true);
+                        messages.add(mo);
+                    MrMailbox.MrMsgUnref(hMsg);
+                }
+                MrMailbox.MrMsglistUnref(hMsglist);
+
+                
                 int approximateHeightSum = 0;
-                int mrCount = MrMailbox.MrMsglistGetCnt(m_hMsglist);
-                for (int a = 0; a < mrCount /*EDIT BY MR -- was: messArr.size()*/; a++) {
+                /* EDIT BY MR -- the add loop
+                for (int a = 0; a < messArr.size(); a++) {
 
 
-                    /* EDIT BY MR -- the add loop
                     MessageObject obj = messArr.get(a);
 
                     approximateHeightSum += obj.getApproximateHeight();
@@ -4834,9 +4854,9 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                             scrollToMessagePosition = -9000;
                         }
                     }
-                    */
 
                 }
+                */
 
 
 

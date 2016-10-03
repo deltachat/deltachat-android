@@ -282,7 +282,7 @@ public class ChatAvatarContainer extends FrameLayout {
 
     public void checkAndUpdateAvatar() {
         TLRPC.FileLocation newPhoto = null;
-        /*
+        /* EDIT BY MR
         TLRPC.User user = parentFragment.getCurrentUser();
         TLRPC.Chat chat = parentFragment.getCurrentChat();
         if (user != null) {

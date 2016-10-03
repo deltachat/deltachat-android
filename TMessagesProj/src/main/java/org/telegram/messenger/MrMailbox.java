@@ -54,6 +54,16 @@ public class MrMailbox {
         return dlg;
     }
 
+    public static TLRPC.Message msg2msg(long hMsg)
+    {
+        TLRPC.Message ret = new TLRPC.Message();
+        ret.to_id = new TLRPC.TL_peerUser();
+        ret.to_id.user_id = -1; // self
+        ret.from_id = 1;
+        ret.message = "foox";
+        return ret;
+    }
+
 
     // MrMailbox objects
     public native static long    MrMailboxNew               (); // returns hMailbox which must be unref'd after usage (Names as mrmailbox_new don't work due to the additional underscore)

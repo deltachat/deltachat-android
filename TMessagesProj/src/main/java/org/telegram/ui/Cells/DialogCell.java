@@ -529,7 +529,7 @@ public class DialogCell extends BaseCell {
             drawClock = false;
             drawCount = false;
             drawError = false;
-        EDIT BY MR -- } else { */
+        } else { */
             if (unreadCount != 0) {
                 drawCount = true;
                 countString = String.format("%d", unreadCount);
