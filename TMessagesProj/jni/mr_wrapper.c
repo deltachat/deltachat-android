@@ -108,9 +108,9 @@ JNIEXPORT jlong Java_org_telegram_messenger_MrMailbox_MrMailboxGetContactByIndex
 
 /* MrMailbox - handle chats */
 
-JNIEXPORT jlong Java_org_telegram_messenger_MrMailbox_MrMailboxGetChats(JNIEnv *env, jclass c, jlong hMailbox)
+JNIEXPORT jlong Java_org_telegram_messenger_MrMailbox_MrMailboxGetChatlist(JNIEnv *env, jclass c, jlong hMailbox)
 {
-	return (jlong)mrmailbox_get_chats((mrmailbox_t*)hMailbox);
+	return (jlong)mrmailbox_get_chatlist((mrmailbox_t*)hMailbox);
 }
 
 
@@ -234,9 +234,9 @@ JNIEXPORT jlong Java_org_telegram_messenger_MrMailbox_MrChatGetLastTimestamp(JNI
 }
 
 
-JNIEXPORT jlong Java_org_telegram_messenger_MrMailbox_MrChatGetMsgs(JNIEnv *env, jclass c, jlong hChat, jint offset, jint amount)
+JNIEXPORT jlong Java_org_telegram_messenger_MrMailbox_MrChatGetMsglist(JNIEnv *env, jclass c, jlong hChat, jint offset, jint amount)
 {
-	return (jlong)mrchat_get_msgs((mrchat_t*)hChat, offset, amount);
+	return (jlong)mrchat_get_msglist((mrchat_t*)hChat, offset, amount);
 }
 
 

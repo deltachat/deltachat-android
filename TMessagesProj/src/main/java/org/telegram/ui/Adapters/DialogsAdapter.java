@@ -42,7 +42,7 @@ public class DialogsAdapter extends RecyclerView.Adapter {
 
         // EDIT BY MR
         MrMailbox.MrChatlistUnref(MrMailbox.hCurrChatlist);
-        MrMailbox.hCurrChatlist = MrMailbox.MrMailboxGetChats(MrMailbox.hMailbox);
+        MrMailbox.hCurrChatlist = MrMailbox.MrMailboxGetChatlist(MrMailbox.hMailbox);
         // /EDIT BY MR
     }
 

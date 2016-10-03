@@ -67,7 +67,7 @@ public class MrMailbox {
     public native static int     MrMailboxGetContactCnt     (long hMailbox);
     public native static long    MrMailboxGetContactByIndex (long hMailbox);// returns hContact which must be unref'd after usage
 
-    public native static long    MrMailboxGetChats          (long hMailbox); // returns hChatlist which must be unref'd after usage
+    public native static long    MrMailboxGetChatlist       (long hMailbox); // returns hChatlist which must be unref'd after usage
     public native static long    MrMailboxGetChatById       (long hMailbox, int id); // return hChat which must be unref'd after usage
 
     // MrChatlist objects
@@ -85,7 +85,7 @@ public class MrMailbox {
     public native static long    MrChatGetLastSummary       (long hChat); // returns hPoortext
     public native static int     MrChatGetLastState         (long hChat);
     public native static long    MrChatGetLastTimestamp     (long hChat);
-    public native static long    MrChatGetMsgs              (long hChat, int offset, int amount); // returns hMsglist
+    public native static long    MrChatGetMsglist           (long hChat, int offset, int amount); // returns hMsglist
 
     // MrMsglist objects
     public native static void    MrMsglistUnref             (long hMsglist);

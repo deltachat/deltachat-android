@@ -587,7 +587,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         */
 
         // EDIT BY MR
-        m_hMsglist = MrMailbox.MrChatGetMsgs(m_hChat, 0, 100);
+        m_hMsglist = MrMailbox.MrChatGetMsglist(m_hChat, 0, 100);
         {
             int count = 0;
             ArrayList<MessageObject> objects = new ArrayList<>();
