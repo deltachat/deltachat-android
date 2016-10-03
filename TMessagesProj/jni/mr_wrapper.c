@@ -210,21 +210,9 @@ JNIEXPORT jint Java_org_telegram_messenger_MrMailbox_MrChatGetUnreadCount(JNIEnv
 }
 
 
-JNIEXPORT jlong Java_org_telegram_messenger_MrMailbox_MrChatGetLastSummary(JNIEnv *env, jclass c, jlong hChat)
+JNIEXPORT jlong Java_org_telegram_messenger_MrMailbox_MrChatGetSummary(JNIEnv *env, jclass c, jlong hChat)
 {
-	return (jlong)mrchat_get_last_summary((mrchat_t*)hChat);
-}
-
-
-JNIEXPORT jint Java_org_telegram_messenger_MrMailbox_MrChatGetLastState(JNIEnv *env, jclass c, jlong hChat)
-{
-	return mrchat_get_last_state((mrchat_t*)hChat);
-}
-
-
-JNIEXPORT jlong Java_org_telegram_messenger_MrMailbox_MrChatGetLastTimestamp(JNIEnv *env, jclass c, jlong hChat)
-{
-	return (jlong)mrchat_get_last_timestamp((mrchat_t*)hChat); /* mrchat_get_last_timestamp() checks for nullpointers */
+	return (jlong)mrchat_get_summary((mrchat_t*)hChat);
 }
 
 
@@ -297,6 +285,20 @@ JNIEXPORT jstring Java_org_telegram_messenger_MrMailbox_MrPoortextGetText(JNIEnv
 {
 	mrpoortext_t* ths = (mrpoortext_t*)hPoortext; if( ths == NULL ) { return JSTRING_NEW(NULL); }
 	return JSTRING_NEW(ths->m_text);
+}
+
+
+JNIEXPORT jlong Java_org_telegram_messenger_MrMailbox_MrPoortextGetTimestamp(JNIEnv *env, jclass c, jlong hPoortext)
+{
+	mrpoortext_t* ths = (mrpoortext_t*)hPoortext; if( ths == NULL ) { return 0; }
+	return ths->m_timestamp;
+}
+
+
+JNIEXPORT jint Java_org_telegram_messenger_MrMailbox_MrPoortextGetState(JNIEnv *env, jclass c, jlong hPoortext)
+{
+	mrpoortext_t* ths = (mrpoortext_t*)hPoortext; if( ths == NULL ) { return 0; }
+	return ths->m_state;
 }
 
 

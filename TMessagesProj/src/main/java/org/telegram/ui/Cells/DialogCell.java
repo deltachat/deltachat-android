@@ -471,7 +471,7 @@ public class DialogCell extends BaseCell {
         }*/
 
         { // EDIT BY MR
-            long hPoortext = MrMailbox.MrChatGetLastSummary(hChat);
+            long hPoortext = MrMailbox.MrChatGetSummary(hChat);
 
                 checkMessage = false;
                 String mess = MrMailbox.MrPoortextGetText(hPoortext);
@@ -495,6 +495,20 @@ public class DialogCell extends BaseCell {
                     messageString = mess;
                 }
 
+                timeString = LocaleController.stringForMessageListDate(MrMailbox.MrPoortextGetTimestamp(hPoortext));
+
+                drawCheck1 = false;
+                drawCheck2 = false;
+                drawClock = false;
+                drawCount = false;
+                drawError = false;
+                switch( MrMailbox.MrPoortextGetState(hChat) ) {
+                    case MrMailbox.MR_OUT_ERROR: drawError = true; break;
+                    case MrMailbox.MR_OUT_PENDING: drawClock = true; break;
+                    case MrMailbox.MR_OUT_DELIVERED: drawCheck2 = true; break;
+                    case MrMailbox.MR_OUT_READ: drawCheck1 = true; drawCheck2 = true; break;
+                }
+
             MrMailbox.MrPoortextUnref(hPoortext);
         } // /EDIT BY MR
 
@@ -507,27 +521,20 @@ public class DialogCell extends BaseCell {
             timeString = LocaleController.stringForMessageListDate(message.messageOwner.date);
         }
         */
-        timeString = LocaleController.stringForMessageListDate(MrMailbox.MrChatGetLastTimestamp(hChat)); // EDIT BY MR
 
-        /* EDIT BY MR -- if (message == null) { */
+        /* EDIT BY MR
+        if (message == null) {
             drawCheck1 = false;
             drawCheck2 = false;
             drawClock = false;
             drawCount = false;
             drawError = false;
-        /* EDIT BY MR -- } else { */
+        EDIT BY MR -- } else { */
             if (unreadCount != 0) {
                 drawCount = true;
                 countString = String.format("%d", unreadCount);
             } else {
                 drawCount = false;
-            }
-
-            switch( MrMailbox.MrChatGetLastState(hChat) ) { // EDIT BY MR
-                case MrMailbox.MR_OUT_ERROR: drawError = true; break;
-                case MrMailbox.MR_OUT_PENDING: drawClock = true; break;
-                case MrMailbox.MR_OUT_DELIVERED: drawCheck2 = true; break;
-                case MrMailbox.MR_OUT_READ: drawCheck1 = true; drawCheck2 = true; break;
             }
 
         /* EDIT BY MR

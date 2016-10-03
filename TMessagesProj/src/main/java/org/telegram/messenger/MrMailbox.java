@@ -80,9 +80,7 @@ public class MrMailbox {
     public native static String  MrChatGetName              (long hChat);
     public native static String  MrChatGetSubtitle          (long hChat);
     public native static int     MrChatGetUnreadCount       (long hChat);
-    public native static long    MrChatGetLastSummary       (long hChat); // returns hPoortext
-    public native static int     MrChatGetLastState         (long hChat);
-    public native static long    MrChatGetLastTimestamp     (long hChat);
+    public native static long    MrChatGetSummary           (long hChat); // returns hPoortext
     public native static long    MrChatGetMsglist           (long hChat, int offset, int amount); // returns hMsglist
 
     // MrMsglist objects
@@ -98,6 +96,8 @@ public class MrMailbox {
     public native static String  MrPoortextGetTitle         (long hPoortext);
     public native static int     MrPoortextGetTitleMeaning  (long hPoortext);
     public native static String  MrPoortextGetText          (long hPoortext);
+    public native static long    MrPoortextGetTimestamp     (long hPoortext);
+    public native static int     MrPoortextGetState         (long hPoortext);
 
     // Tools
     public native static void    MrStockAddStr              (int id, String str);
