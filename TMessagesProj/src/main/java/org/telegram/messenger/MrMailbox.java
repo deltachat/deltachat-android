@@ -56,11 +56,18 @@ public class MrMailbox {
 
     public static TLRPC.Message msg2msg(long hMsg)
     {
-        TLRPC.Message ret = new TLRPC.Message();
+        TLRPC.Message ret = new TLRPC.Message(); // TL_messageService is used to display messages as "You joined the group"
+
+        ret.from_id = (int)MrMailbox.MrMsgGetFromId(hMsg);
+        if( ret.from_id == 0 ) {
+            ret.from_id = -1; // from us
+        }
+
         ret.to_id = new TLRPC.TL_peerUser();
-        ret.to_id.user_id = -1; // self
-        ret.from_id = 1;
-        ret.message = "foox";
+        ret.to_id.user_id = -1; // to chat
+
+        ret.message = "fooxyy";
+        ret.date = (int)MrMsgGetTimestamp(hMsg);
         return ret;
     }
 
@@ -100,6 +107,11 @@ public class MrMailbox {
 
     // MrMsg objects
     public native static void    MrMsgUnref                 (long hMsg);
+    public native static long    MrMsgGetText               (long hMsg);
+    public native static long    MrMsgGetTimestamp          (long hMsg);
+    public native static int     MrMsgGetType               (long hMsg);
+    public native static int     MrMsgGetState              (long hMsg);
+    public native static int     MrMsgGetFromId             (long hMsg); // returns user ID, 0=self
 
     // MrPoortext objects
     public native static void    MrPoortextUnref            (long hPoortext);
