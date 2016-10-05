@@ -56,7 +56,9 @@ public class MrMailbox {
 
     public static TLRPC.Message msg2msg(long hMsg)
     {
-        TLRPC.Message ret = new TLRPC.Message(); // TL_messageService is used to display messages as "You joined the group"
+        TLRPC.Message ret = new TLRPC.TL_message(); // the class derived from TLRPC.Message defines the basic type:
+                                                    //  TLRPC.TL_messageService is used to display messages as "You joined the group"
+                                                    //  TLRPC.TL_message is a normal message (also photos?)
 
         ret.from_id = (int)MrMailbox.MrMsgGetFromId(hMsg);
         if( ret.from_id == 0 ) {
@@ -66,7 +68,7 @@ public class MrMailbox {
         ret.to_id = new TLRPC.TL_peerUser();
         ret.to_id.user_id = -1; // to chat
 
-        ret.message = "fooxyy";
+        ret.message = MrMailbox.MrMsgGetText(hMsg);
         ret.date = (int)MrMsgGetTimestamp(hMsg);
 
         // MessageObject.contentType - ?
@@ -109,7 +111,7 @@ public class MrMailbox {
 
     // MrMsg objects
     public native static void    MrMsgUnref                 (long hMsg);
-    public native static long    MrMsgGetText               (long hMsg);
+    public native static String  MrMsgGetText               (long hMsg);
     public native static long    MrMsgGetTimestamp          (long hMsg);
     public native static int     MrMsgGetType               (long hMsg);
     public native static int     MrMsgGetState              (long hMsg);
