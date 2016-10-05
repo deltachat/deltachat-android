@@ -10056,9 +10056,11 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
 
         void assertLayoutStep(int accepted) {
             if ((accepted & mLayoutStep) == 0) {
+                /* EDIT BY MR
                 throw new IllegalStateException("Layout state should be one of "
                         + Integer.toBinaryString(accepted) + " but it is "
                         + Integer.toBinaryString(mLayoutStep));
+                */
             }
         }
 

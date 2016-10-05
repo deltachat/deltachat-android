@@ -88,27 +88,6 @@ public class MessageObject {
 
     public ArrayList<TextLayoutBlock> textLayoutBlocks;
 
-    // EDIT BY MR
-    /*
-    public MessageObject(long hMsg)
-    {
-        // init object
-        TLRPC.Message m = new TLRPC.Message();
-        m.to_id = new TLRPC.TL_peerUser();
-        m.to_id.user_id = -1; // self
-        m.from_id = 1;//MrMailbox.MrMsgGetFromId(hMsg);
-        m.message = "foox";
-
-        messageText = "foo";
-        type = 0; // 0 = text, 1000 = headline
-        contentType = 1;
-
-        AbstractMap<Integer, TLRPC.User> users;
-        MessageObject(m, users, null, true);
-    }
-    */
-    // /EDIT BY MR
-
     public MessageObject(TLRPC.Message message, AbstractMap<Integer, TLRPC.User> users, boolean generateLayout) {
         this(message, users, null, generateLayout);
     }

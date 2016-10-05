@@ -68,6 +68,8 @@ public class MrMailbox {
 
         ret.message = "fooxyy";
         ret.date = (int)MrMsgGetTimestamp(hMsg);
+
+        // MessageObject.contentType - ?
         return ret;
     }
 
