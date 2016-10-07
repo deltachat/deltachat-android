@@ -31,11 +31,10 @@
 
 
 #define CHAR_REF(a) \
-	const char* a##Ptr = (*env)->GetStringUTFChars(env, (a), 0); \
-	if( a##Ptr == NULL ) { return 0; }
+	const char* a##Ptr = (a)? (*env)->GetStringUTFChars(env, (a), 0) : NULL; /* passing a NULL-jstring results in a NULL-ptr */
 
 #define CHAR_UNREF(a) \
-	(*env)->ReleaseStringUTFChars(env, (a), a##Ptr);
+	if(a) { (*env)->ReleaseStringUTFChars(env, (a), a##Ptr); }
 
 #define JSTRING_NEW(a) \
 	(*env)->NewStringUTF(env, a? a : "") /*should handle NULL arguments!*/
@@ -137,6 +136,18 @@ JNIEXPORT jstring Java_org_telegram_messenger_MrMailbox_MrMailboxGetConfig(JNIEn
 	CHAR_UNREF(key);
 	CHAR_UNREF(def);
 	return ret;
+}
+
+
+JNIEXPORT jlong Java_org_telegram_messenger_MrMailbox_MrMailboxSuggestConfig(JNIEnv *env, jclass c, jlong hMailbox)
+{
+	return (jlong)mrmailbox_suggest_config((mrmailbox_t*)hMailbox);
+}
+
+
+JNIEXPORT jint Java_org_telegram_messenger_MrMailbox_MrMailboxIsConfigured(JNIEnv *env, jclass c, jlong hMailbox)
+{
+	return (jint)mrmailbox_is_configured((mrmailbox_t*)hMailbox);
 }
 
 
@@ -334,6 +345,81 @@ JNIEXPORT jint Java_org_telegram_messenger_MrMailbox_MrPoortextGetState(JNIEnv *
 {
 	mrpoortext_t* ths = (mrpoortext_t*)hPoortext; if( ths == NULL ) { return 0; }
 	return ths->m_state;
+}
+
+
+/*******************************************************************************
+ * MrLoginparam
+ ******************************************************************************/
+
+
+JNIEXPORT void Java_org_telegram_messenger_MrMailbox_MrLoginparamUnref(JNIEnv *env, jclass c, jlong hLoginparam)
+{
+	return mrloginparam_unref((mrloginparam_t*)hLoginparam);
+}
+
+
+JNIEXPORT jstring Java_org_telegram_messenger_MrMailbox_MrLoginparamGetAddr(JNIEnv *env, jclass c, jlong hLoginparam)
+{
+	mrloginparam_t* ths = (mrloginparam_t*)hLoginparam; if( ths == NULL ) { return JSTRING_NEW(NULL); }
+	return JSTRING_NEW(ths->m_addr);
+}
+
+
+JNIEXPORT jstring Java_org_telegram_messenger_MrMailbox_MrLoginparamGetMailServer(JNIEnv *env, jclass c, jlong hLoginparam)
+{
+	mrloginparam_t* ths = (mrloginparam_t*)hLoginparam; if( ths == NULL ) { return JSTRING_NEW(NULL); }
+	return JSTRING_NEW(ths->m_mail_server);
+}
+
+
+JNIEXPORT jstring Java_org_telegram_messenger_MrMailbox_MrLoginparamGetMailUser(JNIEnv *env, jclass c, jlong hLoginparam)
+{
+	mrloginparam_t* ths = (mrloginparam_t*)hLoginparam; if( ths == NULL ) { return JSTRING_NEW(NULL); }
+	return JSTRING_NEW(ths->m_mail_user);
+}
+
+
+
+JNIEXPORT jstring Java_org_telegram_messenger_MrMailbox_MrLoginparamGetMailPw(JNIEnv *env, jclass c, jlong hLoginparam)
+{
+	mrloginparam_t* ths = (mrloginparam_t*)hLoginparam; if( ths == NULL ) { return JSTRING_NEW(NULL); }
+	return JSTRING_NEW(ths->m_mail_pw);
+}
+
+
+JNIEXPORT jint Java_org_telegram_messenger_MrMailbox_MrLoginparamGetMailPort(JNIEnv *env, jclass c, jlong hLoginparam)
+{
+	mrloginparam_t* ths = (mrloginparam_t*)hLoginparam; if( ths == NULL ) { return JSTRING_NEW(NULL); }
+	return (jint)ths->m_mail_port;
+}
+
+
+JNIEXPORT jstring Java_org_telegram_messenger_MrMailbox_MrLoginparamGetSendServer(JNIEnv *env, jclass c, jlong hLoginparam)
+{
+	mrloginparam_t* ths = (mrloginparam_t*)hLoginparam; if( ths == NULL ) { return JSTRING_NEW(NULL); }
+	return JSTRING_NEW(ths->m_send_server);
+}
+
+
+JNIEXPORT jstring Java_org_telegram_messenger_MrMailbox_MrLoginparamGetSendUser(JNIEnv *env, jclass c, jlong hLoginparam)
+{
+	mrloginparam_t* ths = (mrloginparam_t*)hLoginparam; if( ths == NULL ) { return JSTRING_NEW(NULL); }
+	return JSTRING_NEW(ths->m_send_user);
+}
+
+
+JNIEXPORT jstring Java_org_telegram_messenger_MrMailbox_MrLoginparamGetSendPw(JNIEnv *env, jclass c, jlong hLoginparam)
+{
+	mrloginparam_t* ths = (mrloginparam_t*)hLoginparam; if( ths == NULL ) { return JSTRING_NEW(NULL); }
+	return JSTRING_NEW(ths->m_send_pw);
+}
+
+
+JNIEXPORT jint Java_org_telegram_messenger_MrMailbox_MrLoginparamGetSendPort(JNIEnv *env, jclass c, jlong hLoginparam)
+{
+	mrloginparam_t* ths = (mrloginparam_t*)hLoginparam; if( ths == NULL ) { return JSTRING_NEW(NULL); }
+	return (jint)ths->m_send_port;
 }
 
 

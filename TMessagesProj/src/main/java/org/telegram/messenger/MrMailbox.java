@@ -89,6 +89,11 @@ public class MrMailbox {
     public native static long    MrMailboxGetChatlist       (long hMailbox); // returns hChatlist which must be unref'd after usage
     public native static long    MrMailboxGetChatById       (long hMailbox, int id); // return hChat which must be unref'd after usage
 
+    public native static int     MrMailboxSetConfig         (long hMailbox, String key, String value); // value may be NULL
+    public native static String  MrMailboxGetConfig         (long hMailbox, String key, String def); // def may be NULL, returns empty string as NULL
+    public native static long    MrMailboxSuggestConfig     (long hMailbox); // return hLoginparam which must be unref'd after usage
+    public native static int     MrMailboxIsConfigured      (long hMailbox);
+
     // MrChatlist objects
     public native static void    MrChatlistUnref            (long hChatlist);
     public native static int     MrChatlistGetCnt           (long hChatlist);
@@ -124,6 +129,18 @@ public class MrMailbox {
     public native static String  MrPoortextGetText          (long hPoortext);
     public native static long    MrPoortextGetTimestamp     (long hPoortext);
     public native static int     MrPoortextGetState         (long hPoortext);
+
+    // MrLoginparam objects
+    public native static void    MrLoginparamUnref          (long hLoginparam);
+    public native static String  MrLoginparamGetAddr        (long hLoginparam);
+    public native static String  MrLoginparamGetMailServer  (long hLoginparam);
+    public native static String  MrLoginparamGetMailUser    (long hLoginparam);
+    public native static String  MrLoginparamGetMailPw      (long hLoginparam);
+    public native static int     MrLoginparamGetMailPort    (long hLoginparam);
+    public native static String  MrLoginparamGetSendServer  (long hLoginparam);
+    public native static String  MrLoginparamGetSendUser    (long hLoginparam);
+    public native static String  MrLoginparamGetSendPw      (long hLoginparam);
+    public native static int     MrLoginparamGetSendPort    (long hLoginparam);
 
     // Tools
     public native static void    MrStockAddStr              (int id, String str);
