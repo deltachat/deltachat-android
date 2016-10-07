@@ -305,14 +305,18 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
         if (AndroidUtilities.isTablet()) {
             actionBar.setOccupyStatusBar(false);
         }
+
         actionBar.setActionBarMenuOnItemClick(new ActionBar.ActionBarMenuOnItemClick() {
             @Override
             public void onItemClick(int id) {
                 if (id == -1) {
                     finishFragment();
                 } else if (id == edit_name) {
+                    /* EDIT BY MR
                     presentFragment(new ChangeNameActivity());
+                    */
                 } else if (id == logout) {
+                    /* EDIT BY MR
                     if (getParentActivity() == null) {
                         return;
                     }
@@ -327,13 +331,16 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
                     });
                     builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
                     showDialog(builder.create());
+                    */
                 }
             }
         });
+        /*
         ActionBarMenu menu = actionBar.createMenu();
         ActionBarMenuItem item = menu.addItem(0, R.drawable.ic_ab_other);
         item.addSubItem(edit_name, LocaleController.getString("EditName", R.string.EditName), 0);
         item.addSubItem(logout, LocaleController.getString("LogOut", R.string.LogOut), 0);
+        */
 
         listAdapter = new ListAdapter(context);
 

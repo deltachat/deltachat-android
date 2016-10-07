@@ -16676,6 +16676,7 @@ public class TLRPC {
 		}
 	}
 
+	/* EDIT BY MR
 	public static class TL_auth_logOut extends TLObject {
 		public static int constructor = 0x5717da40;
 
@@ -16688,6 +16689,7 @@ public class TLRPC {
 			stream.writeInt32(constructor);
 		}
 	}
+	*/
 
 	public static class TL_auth_resetAuthorizations extends TLObject {
 		public static int constructor = 0x9fab0d1a;

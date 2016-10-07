@@ -79,16 +79,16 @@ public class PrivacySettingsActivity extends BaseFragment implements Notificatio
         groupsDetailRow = rowCount++;
         securitySectionRow = rowCount++;
         passcodeRow = rowCount++;
-        passwordRow = rowCount++;
-        sessionsRow = rowCount++;
+        passwordRow = -1; // EDIT BY MR -- rowCount++;
+        sessionsRow = -1; // EDIT BY MR -- rowCount++;
         sessionsDetailRow = rowCount++;
-        deleteAccountSectionRow = rowCount++;
-        deleteAccountRow = rowCount++;
-        deleteAccountDetailRow = rowCount++;
+        deleteAccountSectionRow = -1; // EDIT BY MR -- rowCount++;
+        deleteAccountRow = -1; // EDIT BY MR -- rowCount++;
+        deleteAccountDetailRow = -1; // EDIT BY MR -- rowCount++;
         if (MessagesController.getInstance().secretWebpagePreview != 1) {
             secretSectionRow = rowCount++;
             secretWebpageRow = rowCount++;
-            secretDetailRow = rowCount++;
+            secretDetailRow = -1; // EDIT BY MR -- rowCount++;
         } else {
             secretSectionRow = -1;
             secretWebpageRow = -1;
@@ -139,8 +139,9 @@ public class PrivacySettingsActivity extends BaseFragment implements Notificatio
                 if (i == blockedRow) {
                     presentFragment(new BlockedUsersActivity());
                 } else if (i == sessionsRow) {
-                    presentFragment(new SessionsActivity());
+                    //presentFragment(new SessionsActivity()); EDIT BY MR
                 } else if (i == deleteAccountRow) {
+                    /*
                     if (getParentActivity() == null) {
                         return;
                     }
@@ -196,6 +197,7 @@ public class PrivacySettingsActivity extends BaseFragment implements Notificatio
                     });
                     builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
                     showDialog(builder.create());
+                    */
                 } else if (i == lastSeenRow) {
                     presentFragment(new PrivacyControlActivity(false));
                 } else if (i == groupsRow) {
@@ -394,7 +396,7 @@ public class PrivacySettingsActivity extends BaseFragment implements Notificatio
                     ((TextInfoPrivacyCell) view).setText(LocaleController.getString("GroupsAndChannelsHelp", R.string.GroupsAndChannelsHelp));
                     view.setBackgroundResource(R.drawable.greydivider);
                 } else if (i == sessionsDetailRow) {
-                    ((TextInfoPrivacyCell) view).setText(LocaleController.getString("SessionsInfo", R.string.SessionsInfo));
+                    ((TextInfoPrivacyCell) view).setText(LocaleController.getString("EnterNewPasscode", R.string.EnterNewPasscode));
                     view.setBackgroundResource(R.drawable.greydivider);
                 } else if (i == secretDetailRow) {
                     ((TextInfoPrivacyCell) view).setText("");
