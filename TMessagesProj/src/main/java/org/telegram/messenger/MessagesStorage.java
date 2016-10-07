@@ -1041,6 +1041,7 @@ public class MessagesStorage {
         });
     }
 
+    /* EDIT BY MR
     public void getWallpapers() {
         storageQueue.postRunnable(new Runnable() {
             @Override
@@ -1069,6 +1070,7 @@ public class MessagesStorage {
             }
         });
     }
+    */
 
     public void getBlockedUsers() {
         storageQueue.postRunnable(new Runnable() {

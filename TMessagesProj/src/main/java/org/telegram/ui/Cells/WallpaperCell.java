@@ -75,6 +75,14 @@ public class WallpaperCell extends FrameLayout {
                         size = obj;
                     }
                 }
+
+                // EDIT BY MR
+                if( wallpaper.id==1000001 ) {
+                    imageView.setImageResource(R.drawable.background_hd);
+                    size = null;
+                }
+                // /EDIT BY MR
+
                 if (size != null && size.location != null) {
                     imageView.setImage(size.location, "100_100", (Drawable) null);
                 }

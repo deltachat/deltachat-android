@@ -6,6 +6,12 @@
  * Copyright Nikolai Kudashov, 2013-2016.
  */
 
+/*
+ * EDIT BY MR: some hints:
+ * - the default wallpaper has the ID 1000001
+ * - the original flow: MessagesStorage..getWallpapers(); -> wallpapersDidLoaded -> loadWallpapers() -> TLRPC.TL_account_getWallPapers()
+ */
+
 package org.telegram.ui;
 
 import android.app.Activity;
@@ -87,7 +93,13 @@ public class WallpapersActivity extends BaseFragment implements NotificationCent
         SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("mainconfig", Activity.MODE_PRIVATE);
         selectedBackground = preferences.getInt("selectedBackground", 1000001);
         selectedColor = preferences.getInt("selectedColor", 0);
-        MessagesStorage.getInstance().getWallpapers();
+
+        //MessagesStorage.getInstance().getWallpapers(); -- EDIT BY MR
+        TLRPC.WallPaper wo = new TLRPC.WallPaper();
+        wo.id = 1000001;
+        wallPapers.add(wo);
+        // EDIT BY MR
+
         File toFile = new File(ApplicationLoader.getFilesDirFixed(), "wallpaper-temp.jpg");
         toFile.delete();
         return true;
@@ -418,6 +430,7 @@ public class WallpapersActivity extends BaseFragment implements NotificationCent
                 loadingSize = null;
             }
         } else if (id == NotificationCenter.wallpapersDidLoaded) {
+            /* EDIT BY MR
             wallPapers = (ArrayList<TLRPC.WallPaper>) args[0];
             wallpappersByIds.clear();
             for (TLRPC.WallPaper wallPaper : wallPapers) {
@@ -430,9 +443,11 @@ public class WallpapersActivity extends BaseFragment implements NotificationCent
                 processSelectedBackground();
             }
             loadWallpapers();
+            */
         }
     }
 
+    /* EDIT BY MR
     private void loadWallpapers() {
         TLRPC.TL_account_getWallPapers req = new TLRPC.TL_account_getWallPapers();
         int reqId = ConnectionsManager.getInstance().sendRequest(req, new RequestDelegate() {
@@ -464,6 +479,7 @@ public class WallpapersActivity extends BaseFragment implements NotificationCent
         });
         ConnectionsManager.getInstance().bindRequestToGuid(reqId, classGuid);
     }
+    */
 
     @Override
     public void onResume() {
