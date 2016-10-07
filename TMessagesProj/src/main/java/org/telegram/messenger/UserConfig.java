@@ -119,15 +119,21 @@ public class UserConfig {
     }
 
     public static boolean isClientActivated() {
+        return true; // EDIT BY MR -- for "real" checking, call MrMailbox.MrMailboxIsConfigured()
+        /* EDIT BY MR
         synchronized (sync) {
             return currentUser != null;
         }
+        */
     }
 
     public static int getClientUserId() {
+        return 1; // we are user #1 by definition
+        /* EDIT BY MR
         synchronized (sync) {
             return currentUser != null ? currentUser.id : 0;
         }
+        */
     }
 
     public static TLRPC.User getCurrentUser() {

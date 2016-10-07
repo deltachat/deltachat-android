@@ -332,6 +332,7 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
                                 args.putBoolean("allowBots", false);
                                 presentFragment(new ContactsActivity(args), false);
                             } else if (row == 2) {
+                                /* EDIT BY MR
                                 if (!MessagesController.isFeatureEnabled("broadcast_create", ContactsActivity.this)) {
                                     return;
                                 }
@@ -344,6 +345,7 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
                                     presentFragment(new ChannelIntroActivity());
                                     preferences.edit().putBoolean("channel_intro", true).commit();
                                 }
+                                */
                             }
                         }
                     } else {

@@ -292,13 +292,13 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                if (position == 2) {
+                if (position == DrawerLayoutAdapter.iNewGroup) {
                     if (!MessagesController.isFeatureEnabled("chat_create", actionBarLayout.fragmentsStack.get(actionBarLayout.fragmentsStack.size() - 1))) {
                         return;
                     }
                     presentFragment(new GroupCreateActivity());
                     drawerLayoutContainer.closeDrawer(false);
-                } else if (position == 3) {
+                } else if (position == DrawerLayoutAdapter.iNewSecretChat) {
                     Bundle args = new Bundle();
                     args.putBoolean("onlyUsers", true);
                     args.putBoolean("destroyAfterSelect", true);
@@ -306,7 +306,8 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                     args.putBoolean("allowBots", false);
                     presentFragment(new ContactsActivity(args));
                     drawerLayoutContainer.closeDrawer(false);
-                } else if (position == 4) {
+                } else if (position == DrawerLayoutAdapter.iNewChannel) {
+                    /* EDIT BY MR
                     if (!MessagesController.isFeatureEnabled("broadcast_create", actionBarLayout.fragmentsStack.get(actionBarLayout.fragmentsStack.size() - 1))) {
                         return;
                     }
@@ -320,10 +321,11 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                         preferences.edit().putBoolean("channel_intro", true).commit();
                     }
                     drawerLayoutContainer.closeDrawer(false);
-                } else if (position == 6) {
+                    */
+                } else if (position == DrawerLayoutAdapter.iContacts) {
                     presentFragment(new ContactsActivity(null));
                     drawerLayoutContainer.closeDrawer(false);
-                } else if (position == 7) {
+                } else if (position == DrawerLayoutAdapter.iInviteFriends) {
                     try {
                         Intent intent = new Intent(Intent.ACTION_SEND);
                         intent.setType("text/plain");
@@ -333,10 +335,10 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                         FileLog.e("tmessages", e);
                     }
                     drawerLayoutContainer.closeDrawer(false);
-                } else if (position == 8) {
+                } else if (position == DrawerLayoutAdapter.iSettings) {
                     presentFragment(new SettingsActivity());
                     drawerLayoutContainer.closeDrawer(false);
-                } else if (position == 9) {
+                } else if (position == DrawerLayoutAdapter.iFaq) {
                     Browser.openUrl(LaunchActivity.this, LocaleController.getString("TelegramFaqUrl", R.string.TelegramFaqUrl));
                     drawerLayoutContainer.closeDrawer(false);
                 }
@@ -405,20 +407,24 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                                 }
                                 break;
                             case "channel":
+                                /* EDIT BY MR
                                 if (args != null) {
                                     ChannelCreateActivity channel = new ChannelCreateActivity(args);
                                     if (actionBarLayout.addFragmentToStack(channel)) {
                                         channel.restoreSelfArgs(savedInstanceState);
                                     }
                                 }
+                                */
                                 break;
                             case "edit":
+                                /* EDIT BY MR
                                 if (args != null) {
                                     ChannelEditActivity channel = new ChannelEditActivity(args);
                                     if (actionBarLayout.addFragmentToStack(channel)) {
                                         channel.restoreSelfArgs(savedInstanceState);
                                     }
                                 }
+                                */
                                 break;
                             case "chat_profile":
                                 if (args != null) {
@@ -1750,6 +1756,7 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
     @SuppressWarnings("unchecked")
     public void didReceivedNotification(int id, Object... args) {
         if (id == NotificationCenter.appDidLogout) {
+            /* EDIT BY MR
             if (drawerLayoutAdapter != null) {
                 drawerLayoutAdapter.notifyDataSetChanged();
             }
@@ -1771,6 +1778,7 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
             startActivity(intent2);
             onFinish();
             finish();
+            */
         } else if (id == NotificationCenter.closeOtherAppActivities) {
             if (args[0] != this) {
                 onFinish();
@@ -1941,12 +1949,14 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                 } else if (lastFragment instanceof ProfileActivity && ((ProfileActivity) lastFragment).isChat() && args != null) {
                     outState.putBundle("args", args);
                     outState.putString("fragment", "chat_profile");
+                /* EDIT BY MR
                 } else if (lastFragment instanceof ChannelCreateActivity && args != null && args.getInt("step") == 0) {
                     outState.putBundle("args", args);
                     outState.putString("fragment", "channel");
                 } else if (lastFragment instanceof ChannelEditActivity && args != null) {
                     outState.putBundle("args", args);
                     outState.putString("fragment", "edit");
+                */
                 }
                 lastFragment.saveSelfArgs(outState);
             }

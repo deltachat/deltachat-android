@@ -84,7 +84,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
     private DialogsAdapter dialogsAdapter;
     private DialogsSearchAdapter dialogsSearchAdapter;
     private EmptyTextProgressView searchEmptyView;
-    private ProgressBar progressView;
+    //private ProgressBar progressView;
     private LinearLayout emptyView;
     private ActionBarMenuItem passcodeItem;
     private ImageView floatingButton;
@@ -208,7 +208,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
                 if (listView != null) {
                     if (searchString != null) {
                         listView.setEmptyView(searchEmptyView);
-                        progressView.setVisibility(View.GONE);
+                        //progressView.setVisibility(View.GONE);
                         emptyView.setVisibility(View.GONE);
                     }
                     if (!onlySelect) {
@@ -233,11 +233,14 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
                 searchWas = false;
                 if (listView != null) {
                     searchEmptyView.setVisibility(View.GONE);
+                    /*)
                     if (MessagesController.getInstance().loadingDialogs && MessagesController.getInstance().dialogs.isEmpty()) {
                         emptyView.setVisibility(View.GONE);
                         listView.setEmptyView(progressView);
-                    } else {
-                        progressView.setVisibility(View.GONE);
+                    } else
+                    */
+                    {
+                        //progressView.setVisibility(View.GONE);
                         listView.setEmptyView(emptyView);
                     }
                     if (!onlySelect) {
@@ -268,7 +271,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
                     }
                     if (searchEmptyView != null && listView.getEmptyView() != searchEmptyView) {
                         emptyView.setVisibility(View.GONE);
-                        progressView.setVisibility(View.GONE);
+                        //progressView.setVisibility(View.GONE);
                         searchEmptyView.showTextView();
                         listView.setEmptyView(searchEmptyView);
                     }
@@ -649,9 +652,11 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
         textView.setLineSpacing(AndroidUtilities.dp(2), 1);
         emptyView.addView(textView, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT));
 
+        /*
         progressView = new ProgressBar(context);
         progressView.setVisibility(View.GONE);
         frameLayout.addView(progressView, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER));
+        */
 
         floatingButton = new ImageView(context);
         floatingButton.setVisibility(onlySelect ? View.GONE : View.VISIBLE);
@@ -814,13 +819,16 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
             }
         });
 
+        /* EDIT BY MR -- avoid rotating wheel
         if (MessagesController.getInstance().loadingDialogs && MessagesController.getInstance().dialogs.isEmpty()) {
             searchEmptyView.setVisibility(View.GONE);
             emptyView.setVisibility(View.GONE);
             listView.setEmptyView(progressView);
-        } else {
+        } else
+        */
+        {
             searchEmptyView.setVisibility(View.GONE);
-            progressView.setVisibility(View.GONE);
+            //progressView.setVisibility(View.GONE);
             listView.setEmptyView(emptyView);
         }
         if (searchString != null) {
@@ -952,12 +960,15 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
             }
             if (listView != null) {
                 try {
+                    /*
                     if (MessagesController.getInstance().loadingDialogs && MessagesController.getInstance().dialogs.isEmpty()) {
                         searchEmptyView.setVisibility(View.GONE);
                         emptyView.setVisibility(View.GONE);
                         listView.setEmptyView(progressView);
-                    } else {
-                        progressView.setVisibility(View.GONE);
+                    } else
+                    */
+                    {
+                        //progressView.setVisibility(View.GONE);
                         if (searching && searchWas) {
                             emptyView.setVisibility(View.GONE);
                             listView.setEmptyView(searchEmptyView);

@@ -533,6 +533,7 @@ public class ActionBar extends FrameLayout {
     }
 
     public void setTitleOverlayText(String text) {
+        /* EDIT BY MR
         if (!allowOverlayTitle || parentFragment.parentLayout == null) {
             return;
         }
@@ -544,6 +545,7 @@ public class ActionBar extends FrameLayout {
             titleTextView.setVisibility(textToSet != null && !isSearchFieldVisible ? VISIBLE : INVISIBLE);
             titleTextView.setText(textToSet);
         }
+        */
     }
 
     public boolean isSearchFieldVisible() {

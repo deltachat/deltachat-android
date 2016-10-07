@@ -608,7 +608,11 @@ public class MessagesController implements NotificationCenter.NotificationCenter
     }
 
     public TLRPC.User getUser(Integer id) {
-        return users.get(id);
+        // EDIT BY MR
+        TLRPC.User u = new TLRPC.User();
+        u.id = id;
+        return u;
+        //return users.get(id); -- /EDIT BY MR
     }
 
     public TLRPC.User getUser(String username) {
@@ -4411,6 +4415,7 @@ public class MessagesController implements NotificationCenter.NotificationCenter
         }
     }
 
+    /* EDIT BY MR
     public void performLogout(boolean byUser) {
         SharedPreferences.Editor editor = ApplicationLoader.applicationContext.getSharedPreferences("Notifications", Activity.MODE_PRIVATE).edit();
         editor.clear().commit();
@@ -4437,6 +4442,7 @@ public class MessagesController implements NotificationCenter.NotificationCenter
         cleanup();
         ContactsController.getInstance().deleteAllAppAccounts();
     }
+    */
 
     public void generateUpdateMessage() {
         if (BuildVars.DEBUG_VERSION || UserConfig.lastUpdateVersion == null || UserConfig.lastUpdateVersion.equals(BuildVars.BUILD_VERSION_STRING)) {

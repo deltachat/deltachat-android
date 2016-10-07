@@ -201,7 +201,9 @@ public class PrivacySettingsActivity extends BaseFragment implements Notificatio
                 } else if (i == groupsRow) {
                     presentFragment(new PrivacyControlActivity(true));
                 } else if (i == passwordRow) {
+                    /* EDIT BY MR
                     presentFragment(new TwoStepVerificationActivity(0));
+                    */
                 } else if (i == passcodeRow) {
                     if (UserConfig.passcodeHash.length() > 0) {
                         presentFragment(new PasscodeActivity(2));

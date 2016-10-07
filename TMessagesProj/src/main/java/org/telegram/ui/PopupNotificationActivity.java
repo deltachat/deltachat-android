@@ -1150,8 +1150,10 @@ public class PopupNotificationActivity extends Activity implements NotificationC
     @Override
     public void didReceivedNotification(int id, Object... args) {
         if (id == NotificationCenter.appDidLogout) {
+            /* EDIT BY MR
             onFinish();
             finish();
+            */
         } else if (id == NotificationCenter.pushMessagesUpdated) {
             getNewMessage();
         } else if (id == NotificationCenter.updateInterfaces) {

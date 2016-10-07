@@ -445,11 +445,13 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                     args.putInt("chat_id", chat_id);
                     presentFragment(new ChangeChatNameActivity(args));
                 } else if (id == edit_channel) {
+                    /* EDIT BY MR
                     Bundle args = new Bundle();
                     args.putInt("chat_id", chat_id);
                     ChannelEditActivity fragment = new ChannelEditActivity(args);
                     fragment.setInfo(info);
                     presentFragment(fragment);
+                    */
                 } else if (id == invite_to_group) {
                     final TLRPC.User user = MessagesController.getInstance().getUser(user_id);
                     if (user == null) {
@@ -650,6 +652,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                 } else if (position == leaveChannelRow) {
                     leaveChatPressed();
                 } else if (position == membersRow || position == blockedUsersRow || position == managementRow) {
+                    /* EDIT BY MR
                     Bundle args = new Bundle();
                     args.putInt("chat_id", chat_id);
                     if (position == blockedUsersRow) {
@@ -660,6 +663,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                         args.putInt("type", 2);
                     }
                     presentFragment(new ChannelUsersActivity(args));
+                    */
                 } else if (position == convertRow) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
                     builder.setMessage(LocaleController.getString("ConvertGroupAlert", R.string.ConvertGroupAlert));

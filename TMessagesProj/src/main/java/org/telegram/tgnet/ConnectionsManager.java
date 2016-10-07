@@ -321,6 +321,7 @@ public class ConnectionsManager {
     }
 
     public static void onLogout() {
+        /*
         AndroidUtilities.runOnUIThread(new Runnable() {
             @Override
             public void run() {
@@ -330,6 +331,7 @@ public class ConnectionsManager {
                 }
             }
         });
+        */
     }
 
     public static void onUpdateConfig(int address) {

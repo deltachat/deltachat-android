@@ -120,7 +120,7 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
     private int overscrollRow;
     private int emptyRow;
     private int numberSectionRow;
-    private int numberRow;
+    //private int numberRow; -- EDIT BY MR
     private int usernameRow;
     private int settingsSectionRow;
     private int settingsSectionRow2;
@@ -237,7 +237,7 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
         overscrollRow = rowCount++;
         emptyRow = rowCount++;
         numberSectionRow = rowCount++;
-        numberRow = rowCount++;
+        //numberRow = rowCount++; -- EDIT BY MR
         usernameRow = rowCount++;
         settingsSectionRow = rowCount++;
         settingsSectionRow2 = rowCount++;
@@ -322,7 +322,7 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
                     builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
-                            MessagesController.getInstance().performLogout(true);
+                            //MessagesController.getInstance().performLogout(true); // EDIT BY MR
                         }
                     });
                     builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
@@ -641,8 +641,10 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
                     showDialog(builder.create());
                 } else if (i == usernameRow) {
                     presentFragment(new ChangeUsernameActivity());
+                /* EDIT BY MR
                 } else if (i == numberRow) {
                     presentFragment(new ChangePhoneHelpActivity());
+                */
                 } else if (i == stickersRow) {
                     presentFragment(new StickersActivity());
                 } else if (i == cacheRow) {
@@ -1187,7 +1189,7 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
 
         @Override
         public boolean isEnabled(int i) {
-            return i == textSizeRow || i == enableAnimationsRow || i == notificationRow || i == backgroundRow || i == numberRow ||
+            return i == textSizeRow || i == enableAnimationsRow || i == notificationRow || i == backgroundRow /*|| i == numberRow*/ ||
                     /* EDIT BY MR i == askQuestionRow ||*/ i == sendLogsRow || i == sendByEnterRow || i == autoplayGifsRow || i == privacyRow || i == wifiDownloadRow ||
                     i == mobileDownloadRow || i == clearLogsRow || i == roamingDownloadRow || i == languageRow || i == usernameRow ||
                     i == switchBackendButtonRow || i == telegramFaqRow || i == contactsSortRow || i == contactsReimportRow || i == saveToGalleryRow ||
@@ -1406,6 +1408,7 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
                         text = LocaleController.getString("NoMediaAutoDownload", R.string.NoMediaAutoDownload);
                     }
                     textCell.setTextAndValue(value, text, true);
+                /* EDIT BY MR
                 } else if (i == numberRow) {
                     TLRPC.User user = UserConfig.getCurrentUser();
                     String value;
@@ -1415,6 +1418,7 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
                         value = LocaleController.getString("NumberUnknown", R.string.NumberUnknown);
                     }
                     textCell.setTextAndValue(value, LocaleController.getString("Phone", R.string.Phone), true);
+                */
                 } else if (i == usernameRow) {
                     TLRPC.User user = UserConfig.getCurrentUser();
                     String value;
@@ -1442,7 +1446,7 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
                 return 2;
             } else if (i == versionRow) {
                 return 5;
-            } else if (i == wifiDownloadRow || i == mobileDownloadRow || i == roamingDownloadRow || i == numberRow || i == usernameRow) {
+            } else if (i == wifiDownloadRow || i == mobileDownloadRow || i == roamingDownloadRow /*|| i == numberRow EDIT BY MR*/ || i == usernameRow) {
                 return 6;
             } else if (i == settingsSectionRow2 || i == messagesSectionRow2 || i == supportSectionRow2 || i == numberSectionRow || i == mediaDownloadSection2) {
                 return 4;
