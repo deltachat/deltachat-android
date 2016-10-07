@@ -192,6 +192,7 @@ public class LocaleController {
         sortedLanguages.add(localeInfo);
         languagesDict.put(localeInfo.shortName, localeInfo);
 
+        /* EDIT BY MR
         localeInfo = new LocaleInfo();
         localeInfo.name = "العربية";
         localeInfo.nameEnglish = "Arabic";
@@ -199,15 +200,17 @@ public class LocaleController {
         localeInfo.pathToFile = null;
         sortedLanguages.add(localeInfo);
         languagesDict.put(localeInfo.shortName, localeInfo);
+        */
 
         localeInfo = new LocaleInfo();
-        localeInfo.name = "Português (Brasil)";
-        localeInfo.nameEnglish = "Portuguese (Brazil)";
-        localeInfo.shortName = "pt_BR";
+        localeInfo.name = "Português";
+        localeInfo.nameEnglish = "Portuguese";
+        localeInfo.shortName = "pt";
         localeInfo.pathToFile = null;
         sortedLanguages.add(localeInfo);
         languagesDict.put(localeInfo.shortName, localeInfo);
 
+        /* EDIT BY MR
         localeInfo = new LocaleInfo();
         localeInfo.name = "Português (Portugal)";
         localeInfo.nameEnglish = "Portuguese (Portugal)";
@@ -223,6 +226,7 @@ public class LocaleController {
         localeInfo.pathToFile = null;
         sortedLanguages.add(localeInfo);
         languagesDict.put(localeInfo.shortName, localeInfo);
+        */
 
         loadOtherLanguages();
 
