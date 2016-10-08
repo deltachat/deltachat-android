@@ -72,28 +72,28 @@ public class PrivacySettingsActivity extends BaseFragment implements Notificatio
         ContactsController.getInstance().loadPrivacySettings();
 
         rowCount = 0;
-        privacySectionRow = rowCount++;
+        privacySectionRow = -1; // EDIT BY MR -- rowCount++;
         blockedRow = rowCount++;
-        lastSeenRow = rowCount++;
-        groupsRow = rowCount++;
-        groupsDetailRow = rowCount++;
-        securitySectionRow = rowCount++;
+        lastSeenRow = -1; // EDIT BY MR -- rowCount++;
+        groupsRow = -1; // EDIT BY MR -- rowCount++;
+        groupsDetailRow = -1; // EDIT BY MR -- rowCount++;
+        securitySectionRow = -1; // EDIT BY MR -- rowCount++;
         passcodeRow = rowCount++;
         passwordRow = -1; // EDIT BY MR -- rowCount++;
         sessionsRow = -1; // EDIT BY MR -- rowCount++;
-        sessionsDetailRow = rowCount++;
+        sessionsDetailRow = -1; // EDIT BY MR --  rowCount++;
         deleteAccountSectionRow = -1; // EDIT BY MR -- rowCount++;
         deleteAccountRow = -1; // EDIT BY MR -- rowCount++;
         deleteAccountDetailRow = -1; // EDIT BY MR -- rowCount++;
-        if (MessagesController.getInstance().secretWebpagePreview != 1) {
-            secretSectionRow = rowCount++;
+        //if (MessagesController.getInstance().secretWebpagePreview != 1) { EDIT BY MR
+            secretSectionRow = -1; // EDIT BY MR -- rowCount++;
             secretWebpageRow = rowCount++;
             secretDetailRow = -1; // EDIT BY MR -- rowCount++;
-        } else {
-            secretSectionRow = -1;
-            secretWebpageRow = -1;
-            secretDetailRow = -1;
-        }
+        //} else { EDIT BY MR
+        //    secretSectionRow = -1;
+        //    secretWebpageRow = -1;
+        //    secretDetailRow = -1;
+        //} /EDIT BY MR
 
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.privacyRulesUpdated);
 
@@ -199,9 +199,13 @@ public class PrivacySettingsActivity extends BaseFragment implements Notificatio
                     showDialog(builder.create());
                     */
                 } else if (i == lastSeenRow) {
+                    /* EDIT BY MR
                     presentFragment(new PrivacyControlActivity(false));
+                    */
                 } else if (i == groupsRow) {
+                    /* EDIT BY MR
                     presentFragment(new PrivacyControlActivity(true));
+                    */
                 } else if (i == passwordRow) {
                     /* EDIT BY MR
                     presentFragment(new TwoStepVerificationActivity(0));
@@ -396,7 +400,7 @@ public class PrivacySettingsActivity extends BaseFragment implements Notificatio
                     ((TextInfoPrivacyCell) view).setText(LocaleController.getString("GroupsAndChannelsHelp", R.string.GroupsAndChannelsHelp));
                     view.setBackgroundResource(R.drawable.greydivider);
                 } else if (i == sessionsDetailRow) {
-                    ((TextInfoPrivacyCell) view).setText(LocaleController.getString("EnterNewPasscode", R.string.EnterNewPasscode));
+                    ((TextInfoPrivacyCell) view).setText(LocaleController.getString("SessionsInfo", R.string.SessionsInfo));
                     view.setBackgroundResource(R.drawable.greydivider);
                 } else if (i == secretDetailRow) {
                     ((TextInfoPrivacyCell) view).setText("");
