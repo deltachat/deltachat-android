@@ -643,7 +643,7 @@
     <string name="LocalCache">Other files</string>
     <string name="CacheEmpty">Empty</string>
     <string name="KeepMedia">Keep Media</string>
-    <string name="KeepMediaInfo">Photos, videos and other files from cloud chats that you have <![CDATA[<b>not accessed</b>]]> during this period will be removed from this device to save disk space.\n\nAll media will stay in the Telegram cloud and can be re-downloaded if you need it again.</string>
+    <string name="KeepMediaInfo">Photos, videos and other files from cloud chats that you have <![CDATA[<b>not accessed</b>]]> during this period will be removed from this device to save disk space.</string>
     <string name="KeepMediaForever">Forever</string>
     <!--sessions view-->
     <string name="SessionsTitle">Active Sessions</string>

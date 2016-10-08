@@ -643,7 +643,7 @@
     <string name="LocalCache">Sonstige Dateien</string>
     <string name="CacheEmpty">Leer</string>
     <string name="KeepMedia">Medien behalten</string>
-    <string name="KeepMediaInfo">Bilder, Videos und andere Dateien, auf die du während dieser Zeit <![CDATA[<b>nicht zugegriffen</b>]]> hast, werden von diesem Gerät gelöscht, um Speicherplatz zu sparen.\n\nAlle Medien bleiben in der Telegram Cloud gespeichert und können jederzeit wieder heruntergeladen werden.</string>
+    <string name="KeepMediaInfo">Bilder, Videos und andere Dateien, auf die du während dieser Zeit <![CDATA[<b>nicht zugegriffen</b>]]> hast, werden von diesem Gerät gelöscht, um Speicherplatz zu sparen.</string>
     <string name="KeepMediaForever">Dauerhaft</string>
     <!--sessions view-->
     <string name="SessionsTitle">Sitzungen</string>

@@ -84,11 +84,11 @@ public class CacheControlActivity extends BaseFragment {
         rowCount = 0;
         keepMediaRow = rowCount++;
         keepMediaInfoRow = rowCount++;
-        cacheRow = rowCount++;
-        cacheInfoRow = rowCount++;
+        cacheRow = -1; // EDIT BY MR -- rowCount++;
+        cacheInfoRow = -1; // EDIT BY MR -- rowCount++;
 
-        databaseRow = rowCount++;
-        databaseInfoRow = rowCount++;
+        databaseRow = -1; // EDIT BY MR -- was: rowCount++;
+        databaseInfoRow = -1; // EDIT BY MR -- was: rowCount++;
 
         File file = new File(ApplicationLoader.getFilesDirFixed(), "cache4.db");
         databaseSize = file.length();
@@ -354,6 +354,7 @@ public class CacheControlActivity extends BaseFragment {
                     });
                     showDialog(builder.create());
                 } else if (i == databaseRow) {
+                    /* EDIT BY MR
                     AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
                     builder.setTitle(LocaleController.getString("AppName", R.string.AppName));
                     builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
@@ -463,7 +464,9 @@ public class CacheControlActivity extends BaseFragment {
                         }
                     });
                     showDialog(builder.create());
+                    */
                 } else if (i == cacheRow) {
+                    /* EDIT BY MR
                     if (totalSize <= 0 || getParentActivity() == null) {
                         return;
                     }
@@ -534,6 +537,7 @@ public class CacheControlActivity extends BaseFragment {
                     linearLayout.addView(cell, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 48));
                     builder.setCustomView(linearLayout);
                     showDialog(builder.create());
+                    */
                 }
             }
         });

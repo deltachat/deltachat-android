@@ -643,7 +643,7 @@
     <string name="LocalCache">Otros archivos</string>
     <string name="CacheEmpty">Vacío</string>
     <string name="KeepMedia">Conservar multimedia</string>
-    <string name="KeepMediaInfo">Las fotos, los vídeos y los archivos de los chats en la nube a los que <![CDATA[<b>no accedas</b>]]> durante ese periodo de tiempo se eliminarán del dispositivo para liberar espacio.\n\nToda la multimedia permanecerá en la nube de Telegram y podrás volver a descargarla si la necesitas.</string>
+    <string name="KeepMediaInfo">Las fotos, los vídeos y los archivos de los chats en la nube a los que <![CDATA[<b>no accedas</b>]]> durante ese periodo de tiempo se eliminarán del dispositivo para liberar espacio.</string>
     <string name="KeepMediaForever">Siempre</string>
     <!--sessions view-->
     <string name="SessionsTitle">Sesiones activas</string>
