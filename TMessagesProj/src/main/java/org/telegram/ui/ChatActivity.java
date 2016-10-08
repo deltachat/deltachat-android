@@ -109,7 +109,7 @@ import org.telegram.ui.ActionBar.ActionBarMenuItem;
 import org.telegram.ui.Cells.ChatMessageCell;
 import org.telegram.ui.Cells.ChatUnreadCell;
 import org.telegram.ui.Cells.CheckBoxCell;
-import org.telegram.ui.Components.AlertsCreator;
+//import org.telegram.ui.Components.AlertsCreator; -- EDIT BY MR
 import org.telegram.ui.Components.BackupImageView;
 import org.telegram.ui.ActionBar.BaseFragment;
 import org.telegram.ui.Cells.BotHelpCell;
@@ -883,7 +883,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 } else if (id == mute) {
                     toggleMute(false);
                 } else if (id == report) {
-                    showDialog(AlertsCreator.createReportAlert(getParentActivity(), dialog_id, ChatActivity.this));
+                    //showDialog(AlertsCreator.createReportAlert(getParentActivity(), dialog_id, ChatActivity.this)); -- EDIT BY MR
                 } else if (id == reply) {
                     MessageObject messageObject = null;
                     for (int a = 1; a >= 0; a--) {
@@ -3813,7 +3813,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 NotificationsController.updateServerNotificationsSettings(dialog_id);
                 NotificationsController.getInstance().removeNotificationsForDialog(dialog_id);
             } else {
-                showDialog(AlertsCreator.createMuteAlert(getParentActivity(), dialog_id));
+                // showDialog(AlertsCreator.createMuteAlert(getParentActivity(), dialog_id)); -- EDIT BY MR
             }
         } else {
             SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("Notifications", Activity.MODE_PRIVATE);

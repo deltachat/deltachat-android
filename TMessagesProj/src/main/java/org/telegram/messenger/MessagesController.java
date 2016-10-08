@@ -34,7 +34,7 @@ import org.telegram.tgnet.TLObject;
 import org.telegram.tgnet.TLRPC;
 import org.telegram.ui.ActionBar.BaseFragment;
 import org.telegram.ui.ChatActivity;
-import org.telegram.ui.Components.AlertsCreator;
+//import org.telegram.ui.Components.AlertsCreator; -- EDIT BY MR
 import org.telegram.ui.ProfileActivity;
 
 import java.util.ArrayList;
@@ -3813,11 +3813,13 @@ public class MessagesController implements NotificationCenter.NotificationCenter
                         AndroidUtilities.runOnUIThread(new Runnable() {
                             @Override
                             public void run() {
+                                /* EDIT BY MR
                                 if (error.text.startsWith("FLOOD_WAIT")) {
                                     AlertsCreator.showFloodWaitAlert(error.text, fragment);
                                 } else {
                                     AlertsCreator.showAddUserAlert(error.text, fragment, false);
                                 }
+                                */
                                 NotificationCenter.getInstance().postNotificationName(NotificationCenter.chatDidFailCreate);
                             }
                         });
@@ -3855,9 +3857,11 @@ public class MessagesController implements NotificationCenter.NotificationCenter
                         AndroidUtilities.runOnUIThread(new Runnable() {
                             @Override
                             public void run() {
+                                /* EDUT BY MR
                                 if (error.text.startsWith("FLOOD_WAIT")) {
                                     AlertsCreator.showFloodWaitAlert(error.text, fragment);
                                 }
+                                */
                                 NotificationCenter.getInstance().postNotificationName(NotificationCenter.chatDidFailCreate);
                             }
                         });
@@ -3962,7 +3966,7 @@ public class MessagesController implements NotificationCenter.NotificationCenter
                         @Override
                         public void run() {
                             if (fragment != null) {
-                                AlertsCreator.showAddUserAlert(error.text, fragment, true);
+                                // AlertsCreator.showAddUserAlert(error.text, fragment, true); -- EDIT BY MR
                             } else if (error.text.equals("PEER_FLOOD")) {
                                 NotificationCenter.getInstance().postNotificationName(NotificationCenter.needShowAlert, 1);
                             }
@@ -4182,7 +4186,7 @@ public class MessagesController implements NotificationCenter.NotificationCenter
                             @Override
                             public void run() {
                                 if (fragment != null) {
-                                    AlertsCreator.showAddUserAlert(error.text, fragment, isChannel && !isMegagroup);
+                                    // AlertsCreator.showAddUserAlert(error.text, fragment, isChannel && !isMegagroup); -- EDIT BY MR
                                 } else {
                                     if (error.text.equals("PEER_FLOOD")) {
                                         NotificationCenter.getInstance().postNotificationName(NotificationCenter.needShowAlert, 1);

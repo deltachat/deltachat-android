@@ -80,7 +80,7 @@ import org.telegram.ui.Cells.UserCell;
 import org.telegram.ui.ActionBar.ActionBar;
 import org.telegram.ui.ActionBar.ActionBarMenu;
 import org.telegram.ui.ActionBar.ActionBarMenuItem;
-import org.telegram.ui.Components.AlertsCreator;
+//import org.telegram.ui.Components.AlertsCreator; -- EDIT BY MR
 import org.telegram.ui.Components.AvatarDrawable;
 import org.telegram.ui.Components.AvatarUpdater;
 import org.telegram.ui.Components.BackupImageView;
@@ -507,9 +507,11 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                     presentFragment(fragment);
                     */
                 } else if (id == convert_to_supergroup) {
+                    /* EDIT BY MR
                     Bundle args = new Bundle();
                     args.putInt("chat_id", chat_id);
                     presentFragment(new ConvertGroupActivity(args));
+                    */
                 } else if (id == add_shortcut) {
                     try {
                         long did;
@@ -762,7 +764,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                                                 AndroidUtilities.runOnUIThread(new Runnable() {
                                                     @Override
                                                     public void run() {
-                                                        AlertsCreator.showAddUserAlert(error.text, ProfileActivity.this, false);
+                                                        // AlertsCreator.showAddUserAlert(error.text, ProfileActivity.this, false); -- EDIT BY MR
                                                     }
                                                 });
                                             }
