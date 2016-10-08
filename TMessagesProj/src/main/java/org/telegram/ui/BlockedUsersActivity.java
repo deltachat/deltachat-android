@@ -20,7 +20,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.FrameLayout;
 import android.widget.ListView;
-import android.widget.ProgressBar;
+//import android.widget.ProgressBar; -- EDIT BY MR
 import android.widget.TextView;
 
 import org.telegram.PhoneFormat.PhoneFormat;
@@ -41,7 +41,7 @@ public class BlockedUsersActivity extends BaseFragment implements NotificationCe
 
     private ListView listView;
     private ListAdapter listViewAdapter;
-    private FrameLayout progressView;
+    //private FrameLayout progressView; -- EDIT BY MR
     private TextView emptyTextView;
     private int selectedUserId;
 
@@ -106,11 +106,13 @@ public class BlockedUsersActivity extends BaseFragment implements NotificationCe
             }
         });
 
+        /* EDIT BY MR
         progressView = new FrameLayout(context);
         frameLayout.addView(progressView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.MATCH_PARENT));
 
         ProgressBar progressBar = new ProgressBar(context);
         progressView.addView(progressBar, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER));
+        */
 
         listView = new ListView(context);
         listView.setEmptyView(emptyTextView);
@@ -156,14 +158,16 @@ public class BlockedUsersActivity extends BaseFragment implements NotificationCe
             }
         });
 
+        /* EDIT BY MR
         if (MessagesController.getInstance().loadingBlockedUsers) {
             progressView.setVisibility(View.VISIBLE);
             emptyTextView.setVisibility(View.GONE);
             listView.setEmptyView(null);
         } else {
             progressView.setVisibility(View.GONE);
+        */
             listView.setEmptyView(emptyTextView);
-        }
+        //} EDIT BY MR
         return fragmentView;
     }
 
@@ -175,9 +179,11 @@ public class BlockedUsersActivity extends BaseFragment implements NotificationCe
                 updateVisibleRows(mask);
             }
         } else if (id == NotificationCenter.blockedUsersDidLoaded) {
+            /* EDIT BY MR
             if (progressView != null) {
                 progressView.setVisibility(View.GONE);
             }
+            */
             if (listView != null && listView.getEmptyView() == null) {
                 listView.setEmptyView(emptyTextView);
             }
