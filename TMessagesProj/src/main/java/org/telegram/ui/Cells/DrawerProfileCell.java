@@ -148,8 +148,7 @@ public class DrawerProfileCell extends FrameLayout {
         }
 
         /* EDIT BY MR */
-
-        String displayname = MrMailbox.MrMailboxGetConfig(MrMailbox.hMailbox, "displayname", LocaleController.getString("YourAccount", R.string.YourAccount));
+        String displayname = MrMailbox.MrMailboxGetConfig(MrMailbox.hMailbox, "displayname", LocaleController.getString("MyAccount", R.string.MyAccount));
         String addr;
         if( MrMailbox.MrMailboxIsConfigured(MrMailbox.hMailbox)!=0) {
             addr = MrMailbox.MrMailboxGetConfig(MrMailbox.hMailbox, "addr", "");
@@ -159,7 +158,6 @@ public class DrawerProfileCell extends FrameLayout {
         }
         nameTextView.setText(displayname);
         phoneTextView.setText(addr);
-
         /*
         nameTextView.setText(UserObject.getUserName(user));
         phoneTextView.setText(PhoneFormat.getInstance().format("+" + user.phone));

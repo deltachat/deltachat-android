@@ -1374,7 +1374,7 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
                 } else if (i == mediaDownloadSection2) {
                     ((HeaderCell) view).setText(LocaleController.getString("AutomaticMediaDownload", R.string.AutomaticMediaDownload));
                 } else if (i == numberSectionRow) {
-                    ((HeaderCell) view).setText(LocaleController.getString("YourAccount", R.string.YourAccount));
+                    ((HeaderCell) view).setText(LocaleController.getString("MyAccount", R.string.MyAccount)); // EDIT BY MR
                 }
             } else if (type == 5) {
                 if (view == null) {

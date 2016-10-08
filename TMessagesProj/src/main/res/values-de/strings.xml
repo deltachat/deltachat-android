@@ -39,7 +39,7 @@
     <string name="Yesterday">gestern</string>
     <string name="NoResult">Keine Ergebnisse</string>
     <string name="NoChats">Noch keine Chats…</string>
-    <string name="NoChatsHelp">Tippe unten auf den Stift für deine erste\nChatnachricht oder auf den Menüknopf\num die restlichen Optionen zu öffnen.</string>
+    <string name="NoChatsHelp">Tippe unten auf den Stift für die erste\nChatnachricht oder auf den Menüknopf\num die restlichen Optionen zu öffnen.</string>
     <string name="WaitingForNetwork">Warte auf Netzwerk...</string>
     <string name="Connecting">Verbinde…</string>
     <string name="Updating">Aktualisiere…</string>
@@ -492,7 +492,7 @@
     <string name="Phone">Telefon</string>
     <!--usernames-->
     <string name="Username">Benutzername</string>
-    <string name="UsernamePlaceholder">Dein Benutzername</string>
+    <string name="UsernamePlaceholder">Mein Name</string>
     <string name="UsernameInUse">Leider ist dieser Benutzername vergeben.</string>
     <string name="UsernameInvalid">Benutzername leider nicht erlaubt.</string>
     <string name="UsernameInvalidShort">Ein Benutzername benötigt mindestens 5 Zeichen.</string>
@@ -1203,6 +1203,6 @@
     <string name="formatterDay12H">h:mm a</string>
     <string name="formatDateAtTime">%1$s um %2$s</string>
     <string name="NotLoggedIn">Nicht angemeldet</string>
-    <string name="YourAccount">Ihr Konto</string>
     <string name="AccountSettings">Kontoeinstellungen</string>
+    <string name="MyAccount">Mein Konto</string>
 </resources>

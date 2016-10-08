@@ -492,7 +492,7 @@
     <string name="Phone">Phone</string>
     <!--usernames-->
     <string name="Username">Username</string>
-    <string name="UsernamePlaceholder">Your Username</string>
+    <string name="UsernamePlaceholder">My username</string>
     <string name="UsernameInUse">Sorry, this username is already taken.</string>
     <string name="UsernameInvalid">Sorry, this username is invalid.</string>
     <string name="UsernameInvalidShort">A username must have at least 5 characters.</string>
@@ -1203,7 +1203,7 @@
     <string name="formatterDay24H">HH:mm</string>
     <string name="formatterDay12H">h:mm a</string>
     <string name="formatDateAtTime">%1$s at %2$s</string>
-    <string name="YourAccount">Your account</string>
     <string name="NotLoggedIn">Not logged in</string>
     <string name="AccountSettings">Account settings</string>
+    <string name="MyAccount">My account</string>
 </resources>

@@ -72,7 +72,7 @@ public class PrivacySettingsActivity extends BaseFragment implements Notificatio
         ContactsController.getInstance().loadPrivacySettings();
 
         rowCount = 0;
-        privacySectionRow = -1; // EDIT BY MR -- rowCount++;
+        privacySectionRow = rowCount++;
         blockedRow = rowCount++;
         lastSeenRow = -1; // EDIT BY MR -- rowCount++;
         groupsRow = -1; // EDIT BY MR -- rowCount++;
@@ -88,7 +88,7 @@ public class PrivacySettingsActivity extends BaseFragment implements Notificatio
         //if (MessagesController.getInstance().secretWebpagePreview != 1) { EDIT BY MR
             secretSectionRow = -1; // EDIT BY MR -- rowCount++;
             secretWebpageRow = rowCount++;
-            secretDetailRow = -1; // EDIT BY MR -- rowCount++;
+            secretDetailRow = rowCount++; // EDIT BY MR -- rowCount++;
         //} else { EDIT BY MR
         //    secretSectionRow = -1;
         //    secretWebpageRow = -1;
@@ -412,7 +412,7 @@ public class PrivacySettingsActivity extends BaseFragment implements Notificatio
                     view.setBackgroundColor(0xffffffff);
                 }
                 if (i == privacySectionRow) {
-                    ((HeaderCell) view).setText(LocaleController.getString("PrivacyTitle", R.string.PrivacyTitle));
+                    ((HeaderCell) view).setText(LocaleController.getString("Settings", R.string.Settings)); // EDIT BY MR -- was: "PrivacyTitle"
                 } else if (i == securitySectionRow) {
                     ((HeaderCell) view).setText(LocaleController.getString("SecurityTitle", R.string.SecurityTitle));
                 } else if (i == deleteAccountSectionRow) {

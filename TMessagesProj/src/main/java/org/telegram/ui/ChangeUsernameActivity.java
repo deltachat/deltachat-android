@@ -63,7 +63,7 @@ public class ChangeUsernameActivity extends BaseFragment {
     public View createView(Context context) {
         actionBar.setBackButtonImage(R.drawable.ic_ab_back);
         actionBar.setAllowOverlayTitle(true);
-        actionBar.setTitle(LocaleController.getString("Username", R.string.Username));
+        actionBar.setTitle(LocaleController.getString("MyAccount", R.string.MyAccount)); // EDIT BY MR -- was "Username"
         actionBar.setActionBarMenuOnItemClick(new ActionBar.ActionBarMenuOnItemClick() {
             @Override
             public void onItemClick(int id) {
