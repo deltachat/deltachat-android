@@ -156,7 +156,6 @@
     <string name="ChannelLeaveAlert">Kanaal echt verlaten?</string>
     <string name="ChannelDeleteInfo">Je raakt alle berichten in dit kanaal kwijt.</string>
     <string name="ChannelEdit">Wijzig</string>
-    <string name="MegaWasPrivateAlert">Als je een publieke link voor je groep instelt kan iedereen deze vinden en lid worden via de zoekfunctie.\n\nStel geen link in als je je supergroep privé wilt houden.</string>
     <string name="ChannelWasPrivateAlert">Als je een publieke link voor je kanaal instelt kan iedereen deze vinden en lid worden via de zoekfunctie.\n\nStel geen link in als je je kanaal privé wilt houden.</string>
     <string name="ChannelPublicEmptyUsername">Stel een link in voor je publieke kanaal, om deze vindbaar te maken via de zoekfunctie en te delen met anderen.\n\nWil je dit niet dan kun je een privé-kanaal aanmaken.</string>
     <string name="ActionCreateChannel">Kanaal gemaakt</string>
@@ -219,11 +218,8 @@
     <string name="ChannelMessageStickerEmoji">%1$s plaatste een %2$s sticker</string>
     <string name="WhoCanAddMembers">Wie kan leden toevoegen?</string>
     <string name="WhoCanAddMembersAllMembers">Alle leden</string>
-    <string name="WhoCanAddMembersAdmins">Alleen beheerders</string>
     <string name="ChannelNotifyMembersInfoOn">Berichtgeving voor leden</string>
     <string name="ChannelNotifyMembersInfoOff">Geen berichtgeving voor leden</string>
-    <string name="ChannelSignMessages">Ondertekenen</string>
-    <string name="ChannelSignMessagesInfo">Beheerdersnaam bij alle uitgaande berichten.</string>
     <!--broadcasts-->
     <string name="NewBroadcastList">Nieuwe verzendlijst</string>
     <string name="EnterListName">Naam van lijst</string>
@@ -265,7 +261,6 @@
     <string name="SendingPhoto">foto versturen</string>
     <string name="SendingVideoStatus">video versturen</string>
     <string name="SendingFile">bestand versturen</string>
-    <string name="GotAQuestion">Heb je een vraag\nover Telegram?</string>
     <string name="ChatTakePhoto">Foto maken</string>
     <string name="ChatGallery">Galerij</string>
     <string name="ChatLocation">Locatie</string>
@@ -314,7 +309,6 @@
     <string name="ReportSpamAlertChannel">Spam van dit kanaal echt melden? </string>
     <string name="NobodyLikesSpam1">Je kunt momenteel alleen berichten sturen aan onderlingen contacten.</string>
     <string name="NobodyLikesSpam2">Je kunt momenteel alleen onderlinge contacten aan groepen toevoegen</string>
-    <string name="NobodyLikesSpamUrl">https://telegram.org/faq#can-39t-send-messages-to-non-contacts</string>
     <string name="MoreInfo">Meer informatie</string>
     <string name="ShareSendTo">Versturen naar...</string>
     <string name="TapHereGifs">Tik hier om opgeslagen GIF\'s te bekijken</string>
@@ -328,11 +322,6 @@
     <string name="DeleteAllFrom">Alles verwijderen van %1$s</string>
     <string name="ClearRecentEmoji">Recente emoji\'s wissen?</string>
     <string name="ReportChat">Melden</string>
-    <string name="ReportChatSpam">Spam</string>
-    <string name="ReportChatViolence">Geweld</string>
-    <string name="ReportChatPornography">Pornografie</string>
-    <string name="ReportChatOther">Overig</string>
-    <string name="ReportChatDescription">Beschrijving</string>
     <string name="PinnedMessage">Vastgezet bericht</string>
     <string name="EditedMessage">bewerkt</string>
     <string name="AttachBotsHelp">Scrollen voor bots</string>
@@ -448,10 +437,6 @@
     <string name="ShareLink">Link delen</string>
     <string name="LinkInfo">Andere Telegram-gebruikers kunnen lid worden van je groep door deze link te openen.</string>
     <!--set admins view-->
-    <string name="SetAdminsTitle">Beheerders</string>
-    <string name="SetAdminsAll">Iedereen is beheerder</string>
-    <string name="SetAdminsAllInfo">Iedereen mag leden toevoegen en de groepsfoto of naam wijzigen.</string>
-    <string name="SetAdminsNotAllInfo">Beheerders mogen leden beheren en de groepsfoto of naam wijzigen.</string>
     <!--group info view-->
     <string name="SharedMedia">Gedeelde media</string>
     <string name="SETTINGS">Instellingen</string>
@@ -461,13 +446,10 @@
     <string name="Notifications">Meldingen</string>
     <string name="KickFromGroup">Verwijderen uit groep</string>
     <string name="UpgradeGroup">Opwaarderen naar supergroep</string>
-    <string name="ConvertGroup">Opwaarderen naar supergroep</string>
     <string name="ConvertGroupMenu">Opwaarderen naar supergroep</string>
     <string name="ConvertGroupAlertWarning">Waarschuwing</string>
     <string name="ConvertGroupAlert">Groep echt omzetten naar supergroep? Je kunt dit niet ongedaan maken.</string>
     <string name="ConvertGroupInfo"><![CDATA[<b>]]>Ledenlimiet bereikt.<![CDATA[</b>]]>\n\nWil je extra functies en een hogere limiet? Waardeer op naar een supergroep:\n\n• Supergroepen hebben tot %1$s\n• Nieuwe leden zien de hele geschiedenis\n•Gewiste berichten gelden voor iedereen\n• Maker kan een publieke groepslink instellen</string>
-    <string name="ConvertGroupInfo2"><![CDATA[<b>]]>Supergroepen:<![CDATA[</b>]]>\n\n• Nieuwe leden zien de hele geschiedenis\n• Gewiste berichten gelden voor iedereen\n• Maker kan een publieke groepslink instellen</string>
-    <string name="ConvertGroupInfo3"><![CDATA[<b>]]>Let op:<![CDATA[</b>]]> Je kunt dit niet ongedaan maken.</string>
     <!--contact info view-->
     <string name="ShareContact">Delen</string>
     <string name="AddContact">Toevoegen</string>
@@ -560,7 +542,6 @@
     <string name="TelegramFaq">Veelgestelde vragen</string>
     <string name="TelegramFaqUrl">https://telegram.org/faq</string>
     <string name="PrivacyPolicy">Privacybeleid</string>
-    <string name="PrivacyPolicyUrl">https://telegram.org/privacy</string>
     <string name="DeleteLocalization">Vertaling verwijderen?</string>
     <string name="IncorrectLocalization">Ongeldig vertalingsbestand</string>
     <string name="Enabled">Inschakelen</string>
@@ -600,7 +581,6 @@
     <string name="NotificationsPriorityMax">Max</string>
     <string name="RepeatNotificationsNever">Nooit</string>
     <string name="RepeatNotifications">Meldingen herhalen</string>
-    <string name="PhoneNumberHelp">Je kan je telefoonnummer hier wijzigen. Al je clouddata — berichten, bestanden, groepen, contacten, etc. zullen worden gekopieërd naar je nieuwe nummer.\n\n<![CDATA[<b>Let op:</b>]]> al je Telegram-contacten krijgen je  <![CDATA[<b>nieuwe nummer</b>]]> in hun adresboek, ervan uitgaande dat ze je oude nummer hadden en je hen niet had geblokkeerd in Telegram.</string>
     <string name="PhoneNumberAlert">Al je Telegram-contacten krijgen je nieuwe nummer in hun adresboek, ervan uitgaande dat ze je oude nummer hadden en je hen niet had geblokkeerd in Telegram.</string>
     <string name="PhoneNumberChange">NUMMER WIJZIGEN</string>
     <string name="ChangePhoneNewNumber">Nieuw nummer</string>

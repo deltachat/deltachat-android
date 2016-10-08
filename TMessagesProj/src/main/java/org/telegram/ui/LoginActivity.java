@@ -543,6 +543,7 @@ public class LoginActivity extends BaseFragment {
             countryButton.setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View view) {
+                    /*
                     CountrySelectActivity fragment = new CountrySelectActivity();
                     fragment.setCountrySelectActivityDelegate(new CountrySelectActivity.CountrySelectActivityDelegate() {
                         @Override
@@ -559,6 +560,7 @@ public class LoginActivity extends BaseFragment {
                         }
                     });
                     presentFragment(fragment);
+                    */
                 }
             });
 

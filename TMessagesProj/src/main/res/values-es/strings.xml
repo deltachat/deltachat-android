@@ -156,7 +156,6 @@
     <string name="ChannelLeaveAlert">¿Quieres dejar este canal?</string>
     <string name="ChannelDeleteInfo">Perderás todos los mensajes en este canal.</string>
     <string name="ChannelEdit">Editar</string>
-    <string name="MegaWasPrivateAlert">Ten en cuenta que, si eliges un enlace público para tu grupo, cualquiera podrá encontrarlo en la búsqueda y unirse.\n\nNo crees este enlace si quieres que tu supergrupo sea privado.</string>
     <string name="ChannelWasPrivateAlert">Ten en cuenta que, si eliges un enlace público para tu canal, cualquiera podrá encontrarlo en la búsqueda y unirse.\n\nNo crees este enlace si quieres que tu canal sea privado.</string>
     <string name="ChannelPublicEmptyUsername">Por favor, elige un enlace para tu canal público. Así, las personas podrán encontrarlo en la búsqueda y compartirlo con otros.\n\nSi no estás interesado, te sugerimos crear un canal privado.</string>
     <string name="ActionCreateChannel">Canal creado</string>
@@ -219,11 +218,8 @@
     <string name="ChannelMessageStickerEmoji">%1$s publicó un %2$s sticker</string>
     <string name="WhoCanAddMembers">¿Quién puede invitar?</string>
     <string name="WhoCanAddMembersAllMembers">Todos</string>
-    <string name="WhoCanAddMembersAdmins">Administradores</string>
     <string name="ChannelNotifyMembersInfoOn">Tu publicación será notificada</string>
     <string name="ChannelNotifyMembersInfoOff">Tu publicación no será notificada</string>
-    <string name="ChannelSignMessages">Firmar los mensajes</string>
-    <string name="ChannelSignMessagesInfo">Añadir los nombres de los administradores a sus publicaciones.</string>
     <!--broadcasts-->
     <string name="NewBroadcastList">Nueva difusión</string>
     <string name="EnterListName">Nombre de la lista</string>
@@ -265,7 +261,6 @@
     <string name="SendingPhoto">enviando foto...</string>
     <string name="SendingVideoStatus">enviando vídeo...</string>
     <string name="SendingFile">enviando archivo...</string>
-    <string name="GotAQuestion">¿Tienes preguntas\nsobre Telegram?</string>
     <string name="ChatTakePhoto">Hacer foto</string>
     <string name="ChatGallery">Galería</string>
     <string name="ChatLocation">Ubicación</string>
@@ -314,7 +309,6 @@
     <string name="ReportSpamAlertChannel">¿Quieres reportar spam de este canal?</string>
     <string name="NobodyLikesSpam1">Lo sentimos, por ahora puedes enviar mensajes sólo a contactos mutuos.</string>
     <string name="NobodyLikesSpam2">Lo sentimos, por ahora sólo puedes añadir contactos mutuos a un grupo.</string>
-    <string name="NobodyLikesSpamUrl">https://telegram.org/faq/es#no-puedo-enviar-mensajes-a-quienes-no-son-mis-contactos</string>
     <string name="MoreInfo">Más información</string>
     <string name="ShareSendTo">Enviar a...</string>
     <string name="TapHereGifs">Toca y ve los GIF guardados</string>
@@ -328,11 +322,6 @@
     <string name="DeleteAllFrom">Eliminar todo lo de %1$s</string>
     <string name="ClearRecentEmoji">¿Borrar los emojis recientes?</string>
     <string name="ReportChat">Reportar</string>
-    <string name="ReportChatSpam">Spam</string>
-    <string name="ReportChatViolence">Violencia</string>
-    <string name="ReportChatPornography">Pornografía</string>
-    <string name="ReportChatOther">Otros</string>
-    <string name="ReportChatDescription">Descripción</string>
     <string name="PinnedMessage">Mensaje anclado</string>
     <string name="EditedMessage">editado</string>
     <string name="AttachBotsHelp">Ve abajo para los bots</string>
@@ -448,10 +437,6 @@
     <string name="ShareLink">Compartir enlace</string>
     <string name="LinkInfo">Cualquiera que tenga Telegram instalada podrá unirse a tu grupo siguiendo este enlace.</string>
     <!--set admins view-->
-    <string name="SetAdminsTitle">Administradores</string>
-    <string name="SetAdminsAll">Todos son administradores</string>
-    <string name="SetAdminsAllInfo">Todos pueden añadir nuevos miembros, editar el nombre y la foto del grupo.</string>
-    <string name="SetAdminsNotAllInfo">Sólo los administradores pueden añadir y eliminar miembros, editar el nombre y la foto del grupo.</string>
     <!--group info view-->
     <string name="SharedMedia">Multimedia</string>
     <string name="SETTINGS">Ajustes</string>
@@ -461,13 +446,10 @@
     <string name="Notifications">Notificaciones</string>
     <string name="KickFromGroup">Eliminar del grupo</string>
     <string name="UpgradeGroup">Convertir en supergrupo</string>
-    <string name="ConvertGroup">Convertir en supergrupo</string>
     <string name="ConvertGroupMenu">Convertir en supergrupo</string>
     <string name="ConvertGroupAlertWarning">Advertencia</string>
     <string name="ConvertGroupAlert">Esta acción es irreversible. No puedes convertir un supergrupo en un grupo normal.</string>
     <string name="ConvertGroupInfo"><![CDATA[<b>]]>Límite de miembros alcanzado.<![CDATA[</b>]]>\n\nPara superar el límite y tener características adicionales, conviértelo en un supergrupo:\n\n Permiten hasta %1$s\n• Nuevos miembros ven todo el historial\n• Un mensaje eliminado se borra para todos\n• El creador puede generar un enlace público</string>
-    <string name="ConvertGroupInfo2"><![CDATA[<b>]]>En los supergrupos:<![CDATA[</b>]]>\n\n• Los nuevos miembros ven todo el historial\n• Un mensaje eliminado se borra para todos\n• El creador puede generar un enlace público</string>
-    <string name="ConvertGroupInfo3"><![CDATA[<b>]]>Importante:<![CDATA[</b>]]> Esta acción no se puede deshacer.</string>
     <!--contact info view-->
     <string name="ShareContact">Compartir</string>
     <string name="AddContact">Añadir</string>
@@ -560,7 +542,6 @@
     <string name="TelegramFaq">Preguntas frecuentes</string>
     <string name="TelegramFaqUrl">https://telegram.org/faq/es</string>
     <string name="PrivacyPolicy">Política de privacidad</string>
-    <string name="PrivacyPolicyUrl">https://telegram.org/privacy</string>
     <string name="DeleteLocalization">¿Eliminar traducción?</string>
     <string name="IncorrectLocalization">Archivo de traducción incorrecto</string>
     <string name="Enabled">Activadas</string>
@@ -600,7 +581,6 @@
     <string name="NotificationsPriorityMax">Máxima</string>
     <string name="RepeatNotificationsNever">Nunca</string>
     <string name="RepeatNotifications">Repetir notificaciones</string>
-    <string name="PhoneNumberHelp">Puedes cambiar tu número de Telegram aquí. Tu cuenta y todos tus datos de la nube, mensajes, archivos, grupos, contactos, etc., se moverán al nuevo número.\n\n<![CDATA[<b>Importante:</b>]]> Todos tus contactos de Telegram tendrán tu <![CDATA[<b>nuevo número</b>]]> añadido a sus agendas de contactos, siempre que hayan tenido tu número viejo y no los hayas bloqueado en Telegram.</string>
     <string name="PhoneNumberAlert">Todos tus contactos de Telegram tendrán tu número nuevo añadido a sus agendas de contactos, siempre que hayan tenido tu número viejo y no los hayas bloqueado en Telegram.</string>
     <string name="PhoneNumberChange">CAMBIAR NÚMERO</string>
     <string name="ChangePhoneNewNumber">Nuevo número</string>
