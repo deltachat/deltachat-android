@@ -28,19 +28,21 @@ import android.widget.TextView;
 
 import org.telegram.PhoneFormat.PhoneFormat;
 import org.telegram.messenger.AndroidUtilities;
+import org.telegram.messenger.LocaleController;
+import org.telegram.messenger.MrMailbox;
 import org.telegram.messenger.UserObject;
 import org.telegram.messenger.ApplicationLoader;
 import org.telegram.messenger.FileLog;
 import org.telegram.messenger.R;
 import org.telegram.tgnet.TLRPC;
-import org.telegram.ui.Components.AvatarDrawable;
+//import org.telegram.ui.Components.AvatarDrawable; -- EDIT BY MR
 import org.telegram.ui.Components.BackupImageView;
 import org.telegram.ui.Components.LayoutHelper;
 import org.telegram.ui.ActionBar.Theme;
 
 public class DrawerProfileCell extends FrameLayout {
 
-    private BackupImageView avatarImageView;
+    //private BackupImageView avatarImageView; -- EDIT BY MR
     private TextView nameTextView;
     private TextView phoneTextView;
     private ImageView shadowView;
@@ -57,15 +59,17 @@ public class DrawerProfileCell extends FrameLayout {
         shadowView.setVisibility(INVISIBLE);
         shadowView.setScaleType(ImageView.ScaleType.FIT_XY);
         shadowView.setImageResource(R.drawable.bottom_shadow);
-        addView(shadowView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, 70, Gravity.LEFT | Gravity.BOTTOM));
+        addView(shadowView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, 100/*EDIT BY MR, was 70*/, Gravity.LEFT | Gravity.BOTTOM));
 
+        /* EDIT BY MR
         avatarImageView = new BackupImageView(context);
         avatarImageView.getImageReceiver().setRoundRadius(AndroidUtilities.dp(32));
         addView(avatarImageView, LayoutHelper.createFrame(64, 64, Gravity.LEFT | Gravity.BOTTOM, 16, 0, 0, 67));
+        */
 
         nameTextView = new TextView(context);
         nameTextView.setTextColor(0xffffffff);
-        nameTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 15);
+        nameTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 22 /*EDIT BY MR, was 15*/);
         nameTextView.setTypeface(AndroidUtilities.getTypeface("fonts/rmedium.ttf"));
         nameTextView.setLines(1);
         nameTextView.setMaxLines(1);
@@ -86,13 +90,14 @@ public class DrawerProfileCell extends FrameLayout {
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        int mrHeight = 180; // EDIT BY MR -- was: 148
         if (Build.VERSION.SDK_INT >= 21) {
-            super.onMeasure(widthMeasureSpec, MeasureSpec.makeMeasureSpec(AndroidUtilities.dp(148) + AndroidUtilities.statusBarHeight, MeasureSpec.EXACTLY));
+            super.onMeasure(widthMeasureSpec, MeasureSpec.makeMeasureSpec(AndroidUtilities.dp(mrHeight) + AndroidUtilities.statusBarHeight, MeasureSpec.EXACTLY));
         } else {
             try {
-                super.onMeasure(widthMeasureSpec, MeasureSpec.makeMeasureSpec(AndroidUtilities.dp(148), MeasureSpec.EXACTLY));
+                super.onMeasure(widthMeasureSpec, MeasureSpec.makeMeasureSpec(AndroidUtilities.dp(mrHeight), MeasureSpec.EXACTLY));
             } catch (Exception e) {
-                setMeasuredDimension(MeasureSpec.getSize(widthMeasureSpec), AndroidUtilities.dp(148));
+                setMeasuredDimension(MeasureSpec.getSize(widthMeasureSpec), AndroidUtilities.dp(mrHeight));
                 FileLog.e("tmessages", e);
             }
         }
@@ -107,7 +112,7 @@ public class DrawerProfileCell extends FrameLayout {
             shadowView.getDrawable().setColorFilter(new PorterDuffColorFilter(color | 0xff000000, PorterDuff.Mode.MULTIPLY));
         }
 
-        if (ApplicationLoader.isCustomTheme() && backgroundDrawable != null) {
+        if (/*ApplicationLoader.isCustomTheme() && EDIT BY MR -- also show the default wallpaper in drawer*/ backgroundDrawable != null) {
             phoneTextView.setTextColor(0xffffffff);
             shadowView.setVisibility(VISIBLE);
             if (backgroundDrawable instanceof ColorDrawable) {
@@ -141,10 +146,27 @@ public class DrawerProfileCell extends FrameLayout {
         if (user.photo != null) {
             photo = user.photo.photo_small;
         }
+
+        /* EDIT BY MR */
+
+        String displayname = MrMailbox.MrMailboxGetConfig(MrMailbox.hMailbox, "displayname", LocaleController.getString("YourAccount", R.string.YourAccount));
+        String addr;
+        if( MrMailbox.MrMailboxIsConfigured(MrMailbox.hMailbox)!=0) {
+            addr = MrMailbox.MrMailboxGetConfig(MrMailbox.hMailbox, "addr", "");
+        }
+        else {
+            addr = LocaleController.getString("NotLoggedIn", R.string.NotLoggedIn);
+        }
+        nameTextView.setText(displayname);
+        phoneTextView.setText(addr);
+
+        /*
         nameTextView.setText(UserObject.getUserName(user));
         phoneTextView.setText(PhoneFormat.getInstance().format("+" + user.phone));
+
         AvatarDrawable avatarDrawable = new AvatarDrawable(user);
         avatarDrawable.setColor(Theme.ACTION_BAR_MAIN_AVATAR_COLOR);
         avatarImageView.setImage(photo, "50_50", avatarDrawable);
+        /EDIT BY MR */
     }
 }

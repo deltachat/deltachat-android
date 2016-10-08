@@ -499,11 +499,13 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                         FileLog.e("tmessages", e);
                     }
                 } else if (id == set_admins) {
+                    /* EDIT BY MR
                     Bundle args = new Bundle();
                     args.putInt("chat_id", chat_id);
                     SetAdminsActivity fragment = new SetAdminsActivity(args);
                     fragment.setChatInfo(info);
                     presentFragment(fragment);
+                    */
                 } else if (id == convert_to_supergroup) {
                     Bundle args = new Bundle();
                     args.putInt("chat_id", chat_id);

@@ -32,17 +32,19 @@ public class DrawerLayoutAdapter extends BaseAdapter {
     public final static int iEmptyBelowProfile = 1;
     public final static int iNewGroup          = 2;
     public final static int iNewSecretChat     = 3;
-    public final static int iNewChannel        = 4;
-    public final static int iDivider           = 5;
-    public final static int iContacts          = 6;
-    public final static int iInviteFriends     = 7;
-    public final static int iSettings          = 8;
-    public final static int iFaq               = 9;
-    public final static int iCount             = 10;
+    public final static int iNewChannel        = -1;
+    public final static int iContacts          = 4;
+    public final static int iInviteFriends     = 5;
+    public final static int iDivider           = 6;
+    public final static int iSettings          = 7;
+    public final static int iFaq               = 8;
+    public final static int iCount             = 9;
 
-    // disabled:
-
-    // EDIT BY MR
+    public final static int typeProfile = 0;
+    public final static int typeEmpty = 1;
+    public final static int typeDivider = 2;
+    public final static int typeButton = 3;
+    // /EDIT BY MR
 
     public DrawerLayoutAdapter(Context context) {
         mContext = context;
@@ -81,20 +83,20 @@ public class DrawerLayoutAdapter extends BaseAdapter {
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
         int type = getItemViewType(i);
-        if (type == 0) {
+        if (type == typeProfile) {
             if (view == null) {
                 view = new DrawerProfileCell(mContext);
             }
             ((DrawerProfileCell) view).setUser(MessagesController.getInstance().getUser(UserConfig.getClientUserId()));
-        } else if (type == 1) {
+        } else if (type == typeEmpty) {
             if (view == null) {
                 view = new EmptyCell(mContext, AndroidUtilities.dp(8));
             }
-        } else if (type == 2) {
+        } else if (type == typeDivider) {
             if (view == null) {
                 view = new DividerCell(mContext);
             }
-        } else if (type == 3) {
+        } else if (type == typeButton) {
             if (view == null) {
                 view = new DrawerActionCell(mContext);
             }
@@ -122,13 +124,13 @@ public class DrawerLayoutAdapter extends BaseAdapter {
     @Override
     public int getItemViewType(int i) {
         if (i == iProfile) {
-            return 0;
+            return typeProfile;
         } else if (i == iEmptyBelowProfile) {
-            return 1;
+            return typeEmpty;
         } else if (i == iDivider) {
-            return 2;
+            return typeDivider;
         }
-        return 3;
+        return typeButton;
     }
 
     @Override

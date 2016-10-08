@@ -130,7 +130,7 @@ JNIEXPORT jstring Java_org_telegram_messenger_MrMailbox_MrMailboxGetConfig(JNIEn
 {
 	CHAR_REF(key);
 	CHAR_REF(def);
-		const char* temp = (jlong)mrmailbox_get_config((mrmailbox_t*)hMailbox, keyPtr, def);
+		char* temp = mrmailbox_get_config((mrmailbox_t*)hMailbox, keyPtr, defPtr);
 			jstring ret = JSTRING_NEW(temp);
 		free(temp);
 	CHAR_UNREF(key);

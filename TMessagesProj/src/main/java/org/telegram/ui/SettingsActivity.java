@@ -1374,7 +1374,7 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
                 } else if (i == mediaDownloadSection2) {
                     ((HeaderCell) view).setText(LocaleController.getString("AutomaticMediaDownload", R.string.AutomaticMediaDownload));
                 } else if (i == numberSectionRow) {
-                    ((HeaderCell) view).setText(LocaleController.getString("Info", R.string.Info));
+                    ((HeaderCell) view).setText(LocaleController.getString("YourAccount", R.string.YourAccount));
                 }
             } else if (type == 5) {
                 if (view == null) {
@@ -1473,6 +1473,7 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
                     textCell.setTextAndValue(value, LocaleController.getString("Phone", R.string.Phone), true);
                 */
                 } else if (i == usernameRow) {
+                    /* EDIT BY MR
                     TLRPC.User user = UserConfig.getCurrentUser();
                     String value;
                     if (user != null && user.username != null && user.username.length() != 0) {
@@ -1480,7 +1481,22 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
                     } else {
                         value = LocaleController.getString("UsernameEmpty", R.string.UsernameEmpty);
                     }
-                    textCell.setTextAndValue(value, LocaleController.getString("Username", R.string.Username), false);
+                    textCell.setTextAndValue("foo", LocaleController.getString("Username", R.string.Username), false);
+                    */
+
+                    // EDIT BY MR
+                    String subtitle;
+                    if( MrMailbox.MrMailboxIsConfigured(MrMailbox.hMailbox)!=0) {
+                        subtitle = MrMailbox.MrMailboxGetConfig(MrMailbox.hMailbox, "displayname", "");
+                        if( !subtitle.isEmpty()) { subtitle += ", ";}
+                        subtitle += MrMailbox.MrMailboxGetConfig(MrMailbox.hMailbox, "addr", "");
+                    }
+                    else {
+                        subtitle = LocaleController.getString("NotLoggedIn", R.string.NotLoggedIn);
+                    }
+
+                    textCell.setTextAndValue(LocaleController.getString("AccountSettings", R.string.AccountSettings), subtitle, false);
+                    // /EDIT BY MR
                 }
             }
             return view;

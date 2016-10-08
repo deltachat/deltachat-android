@@ -1203,4 +1203,7 @@
     <string name="formatterDay24H">HH:mm</string>
     <string name="formatterDay12H">h:mm a</string>
     <string name="formatDateAtTime">%1$s at %2$s</string>
+    <string name="YourAccount">Your account</string>
+    <string name="NotLoggedIn">Not logged in</string>
+    <string name="AccountSettings">Account settings</string>
 </resources>
