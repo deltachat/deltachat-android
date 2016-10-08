@@ -77,7 +77,7 @@ import org.telegram.messenger.ApplicationLoader;
 import org.telegram.ui.ActionBar.Theme;
 import org.telegram.ui.ChatActivity;
 import org.telegram.ui.DialogsActivity;
-import org.telegram.ui.StickersActivity;
+//import org.telegram.ui.StickersActivity; // EDIT BY MR
 
 import java.io.File;
 import java.lang.reflect.Field;
@@ -2178,7 +2178,7 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
             @Override
             public void onStickersSettingsClick() {
                 if (parentFragment != null) {
-                    parentFragment.presentFragment(new StickersActivity());
+                    //parentFragment.presentFragment(new StickersActivity()); -- EDIT BY MR
                 }
             }
 

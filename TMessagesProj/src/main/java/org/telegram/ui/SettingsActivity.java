@@ -266,7 +266,7 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
             directShareRow = rowCount++;
         }
         textSizeRow = rowCount++;
-        stickersRow = rowCount++;
+        stickersRow = -1; // EDIT BY MR --was: rowCount++;
         cacheRow = rowCount++;
         raiseToSpeakRow = rowCount++;
         sendByEnterRow = rowCount++;
@@ -679,7 +679,7 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
                     presentFragment(new ChangePhoneHelpActivity());
                 */
                 } else if (i == stickersRow) {
-                    presentFragment(new StickersActivity());
+                    //presentFragment(new StickersActivity()); // EDIT BY MR
                 } else if (i == cacheRow) {
                     presentFragment(new CacheControlActivity());
                 }
