@@ -39,22 +39,22 @@ public class MrMailbox {
 
 
     // tools
-    public static TLRPC.TL_dialog chat2dialog(long hChat)
+    public static TLRPC.TL_dialog hChat2dialog(long hChat)
     {
         TLRPC.TL_dialog ret = new TLRPC.TL_dialog();
         ret.id = MrMailbox.MrChatGetId(hChat);
         return ret;
     }
 
-    public static TLRPC.TL_dialog chatlist2dialog(long hChatlist, int index)
+    public static TLRPC.TL_dialog hChatlist2dialog(long hChatlist, int index)
     {
         long hChat = MrMailbox.MrChatlistGetChatByIndex(hChatlist, index);
-        TLRPC.TL_dialog dlg = chat2dialog(hChat);
+        TLRPC.TL_dialog dlg = hChat2dialog(hChat);
         MrMailbox.MrChatUnref(hChat);
         return dlg;
     }
 
-    public static TLRPC.Message msg2msg(long hMsg)
+    public static TLRPC.Message hMsg2Message(long hMsg)
     {
         TLRPC.Message ret = new TLRPC.TL_message(); // the class derived from TLRPC.Message defines the basic type:
                                                     //  TLRPC.TL_messageService is used to display messages as "You joined the group"
@@ -75,6 +75,12 @@ public class MrMailbox {
         return ret;
     }
 
+    public static TLRPC.User contactId2user(int id)
+    {
+        TLRPC.User ret = new TLRPC.User();
+        ret.id = id;
+        return ret;
+    }
 
     // MrMailbox objects
     public native static long    MrMailboxNew               (); // returns hMailbox which must be unref'd after usage (Names as mrmailbox_new don't work due to the additional underscore)

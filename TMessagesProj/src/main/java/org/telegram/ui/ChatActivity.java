@@ -4737,7 +4737,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 int mrCount = MrMailbox.MrMsglistGetCnt(hMsglist);
                 for (int a = 0; a < mrCount; a++ ) {
                     long hMsg = MrMailbox.MrMsglistGetMsgByIndex(hMsglist, a);
-                        MessageObject mo = new MessageObject(MrMailbox.msg2msg(hMsg), null, true);
+                        MessageObject mo = new MessageObject(MrMailbox.hMsg2Message(hMsg), null, true);
                         messages.add(mo);
                     MrMailbox.MrMsgUnref(hMsg);
                 }

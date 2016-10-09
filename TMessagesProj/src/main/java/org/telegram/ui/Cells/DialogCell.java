@@ -800,7 +800,7 @@ public class DialogCell extends BaseCell {
 
     public void checkCurrentDialogIndex() {
         if (index < MrMailbox.MrChatlistGetCnt(MrMailbox.hCurrChatlist)) { // EDIT BY MR - was: index < getDialogsArray().size()
-            TLRPC.TL_dialog dialog = MrMailbox.chatlist2dialog(MrMailbox.hCurrChatlist, index); // EDIT BY MR - was: getDialogsArray().get(index);
+            TLRPC.TL_dialog dialog = MrMailbox.hChatlist2dialog(MrMailbox.hCurrChatlist, index); // EDIT BY MR - was: getDialogsArray().get(index);
             TLRPC.DraftMessage newDraftMessage = DraftQuery.getDraft(currentDialogId);
             MessageObject newMessageObject = MessagesController.getInstance().dialogMessage.get(dialog.id);
             if (currentDialogId != dialog.id ||

@@ -89,7 +89,7 @@ public class DialogsAdapter extends RecyclerView.Adapter {
 
     public TLRPC.TL_dialog getItem(int i) {
         // EDIT BY MR
-        return MrMailbox.chatlist2dialog(MrMailbox.hCurrChatlist, i);
+        return MrMailbox.hChatlist2dialog(MrMailbox.hCurrChatlist, i);
         /*
         ArrayList<TLRPC.TL_dialog> arrayList = getDialogsArray();
         if (i < 0 || i >= arrayList.size()) {

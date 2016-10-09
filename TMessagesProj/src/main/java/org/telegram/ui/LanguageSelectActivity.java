@@ -31,8 +31,10 @@ import org.telegram.messenger.Utilities;
 import org.telegram.ui.Adapters.BaseFragmentAdapter;
 import org.telegram.ui.Cells.TextSettingsCell;
 import org.telegram.ui.ActionBar.ActionBar;
+/* EDIT BY MR
 import org.telegram.ui.ActionBar.ActionBarMenu;
 import org.telegram.ui.ActionBar.ActionBarMenuItem;
+*/
 import org.telegram.ui.ActionBar.BaseFragment;
 import org.telegram.ui.Components.LayoutHelper;
 
@@ -43,18 +45,24 @@ import java.util.TimerTask;
 public class LanguageSelectActivity extends BaseFragment {
     private BaseFragmentAdapter listAdapter;
     private ListView listView;
+    /* EDIT BY MR
     private boolean searchWas;
     private boolean searching;
     private BaseFragmentAdapter searchListViewAdapter;
+    */
     private TextView emptyTextView;
 
+    /* EDIT BY MR
     private Timer searchTimer;
     public ArrayList<LocaleController.LocaleInfo> searchResult;
+    */
 
     @Override
     public View createView(Context context) {
+        /* EDUT BY MR
         searching = false;
         searchWas = false;
+        */
 
         actionBar.setBackButtonImage(R.drawable.ic_ab_back);
         actionBar.setAllowOverlayTitle(true);
@@ -69,6 +77,7 @@ public class LanguageSelectActivity extends BaseFragment {
             }
         });
 
+        /* EDIT BY MR -- search is not needed
         ActionBarMenu menu = actionBar.createMenu();
         ActionBarMenuItem item = menu.addItem(0, R.drawable.ic_ab_search).setIsSearchField(true).setActionBarMenuItemSearchListener(new ActionBarMenuItem.ActionBarMenuItemSearchListener() {
             @Override
@@ -100,9 +109,12 @@ public class LanguageSelectActivity extends BaseFragment {
             }
         });
         item.getSearchField().setHint(LocaleController.getString("Search", R.string.Search));
+        */
 
         listAdapter = new ListAdapter(context);
+        /* EDIT BY MR
         searchListViewAdapter = new SearchAdapter(context);
+        */
 
         fragmentView = new FrameLayout(context);
 
@@ -158,11 +170,14 @@ public class LanguageSelectActivity extends BaseFragment {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 LocaleController.LocaleInfo localeInfo = null;
+                /* EDIT BY MR
                 if (searching && searchWas) {
                     if (i >= 0 && i < searchResult.size()) {
                         localeInfo = searchResult.get(i);
                     }
-                } else {
+                } else
+                */
+                {
                     if (i >= 0 && i < LocaleController.getInstance().sortedLanguages.size()) {
                         localeInfo = LocaleController.getInstance().sortedLanguages.get(i);
                     }
@@ -179,11 +194,14 @@ public class LanguageSelectActivity extends BaseFragment {
             @Override
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
                 LocaleController.LocaleInfo localeInfo = null;
+                /* EDIT BY MR
                 if (searching && searchWas) {
                     if (i >= 0 && i < searchResult.size()) {
                         localeInfo = searchResult.get(i);
                     }
-                } else {
+                } else
+                */
+                {
                     if (i >= 0 && i < LocaleController.getInstance().sortedLanguages.size()) {
                         localeInfo = LocaleController.getInstance().sortedLanguages.get(i);
                     }
@@ -199,15 +217,19 @@ public class LanguageSelectActivity extends BaseFragment {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         if (LocaleController.getInstance().deleteLanguage(finalLocaleInfo)) {
+                            /* EDIT BY MR
                             if (searchResult != null) {
                                 searchResult.remove(finalLocaleInfo);
                             }
+                            */
                             if (listAdapter != null) {
                                 listAdapter.notifyDataSetChanged();
                             }
+                            /* EDIT BY MR
                             if (searchListViewAdapter != null) {
                                 searchListViewAdapter.notifyDataSetChanged();
                             }
+                            */
                         }
                     }
                 });
@@ -217,6 +239,7 @@ public class LanguageSelectActivity extends BaseFragment {
             }
         });
 
+        /* EDIT BY MR
         listView.setOnScrollListener(new AbsListView.OnScrollListener() {
             @Override
             public void onScrollStateChanged(AbsListView absListView, int i) {
@@ -229,6 +252,7 @@ public class LanguageSelectActivity extends BaseFragment {
             public void onScroll(AbsListView absListView, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
             }
         });
+        */
 
         return fragmentView;
     }
@@ -241,6 +265,7 @@ public class LanguageSelectActivity extends BaseFragment {
         }
     }
 
+    /* EDIT BY MR -- search not needed
     public void search(final String query) {
         if (query == null) {
             searchResult = null;
@@ -369,6 +394,7 @@ public class LanguageSelectActivity extends BaseFragment {
             return searchResult == null || searchResult.size() == 0;
         }
     }
+    */
 
     private class ListAdapter extends BaseFragmentAdapter {
         private Context mContext;
