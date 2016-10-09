@@ -135,10 +135,10 @@ public class NotificationsSettingsActivity extends BaseFragment implements Notif
             inappPriorityRow = -1;
         }
         eventsSectionRow2 = rowCount++;
-        eventsSectionRow = rowCount++;
-        contactJoinedRow = rowCount++;
-        pinnedMessageRow = rowCount++;
-        otherSectionRow2 = rowCount++;
+        eventsSectionRow = -1; // EDIT BY MT -- rowCount++;
+        contactJoinedRow = -1; // EDIT BY MR -- rowCount++;
+        pinnedMessageRow = -1; // EDIT BY MR -- rowCount++;
+        otherSectionRow2 = -1; // EDIT BY MR -- rowCount++;
         otherSectionRow = rowCount++;
         notificationsServiceRow = rowCount++;
         notificationsServiceConnectionRow = rowCount++;
@@ -315,18 +315,22 @@ public class NotificationsSettingsActivity extends BaseFragment implements Notif
                     editor.putBoolean("EnableInAppPriority", !enabled);
                     editor.commit();
                 } else if (i == contactJoinedRow) {
+                    /* EDIT BY MR
                     SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("Notifications", Activity.MODE_PRIVATE);
                     SharedPreferences.Editor editor = preferences.edit();
                     enabled = preferences.getBoolean("EnableContactJoined", true);
                     MessagesController.getInstance().enableJoined = !enabled;
                     editor.putBoolean("EnableContactJoined", !enabled);
                     editor.commit();
+                    */
                 } else if (i == pinnedMessageRow) {
+                    /* EDIT BY MR
                     SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("Notifications", Activity.MODE_PRIVATE);
                     SharedPreferences.Editor editor = preferences.edit();
                     enabled = preferences.getBoolean("PinnedMessages", true);
                     editor.putBoolean("PinnedMessages", !enabled);
                     editor.commit();
+                    */
                 } else if (i == androidAutoAlertRow) {
                     SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("Notifications", Activity.MODE_PRIVATE);
                     SharedPreferences.Editor editor = preferences.edit();
@@ -703,9 +707,13 @@ public class NotificationsSettingsActivity extends BaseFragment implements Notif
                 } else if (i == inappPriorityRow) {
                     checkCell.setTextAndCheck(LocaleController.getString("NotificationsPriority", R.string.NotificationsPriority), preferences.getBoolean("EnableInAppPriority", false), false);
                 } else if (i == contactJoinedRow) {
+                    /* EDIT BY MR
                     checkCell.setTextAndCheck(LocaleController.getString("ContactJoined", R.string.ContactJoined), preferences.getBoolean("EnableContactJoined", true), true);
+                    */
                 } else if (i == pinnedMessageRow) {
+                    /* EDIT BY MR
                     checkCell.setTextAndCheck(LocaleController.getString("PinnedMessages", R.string.PinnedMessages), preferences.getBoolean("PinnedMessages", true), false);
+                    */
                 } else if (i == androidAutoAlertRow) {
                     checkCell.setTextAndCheck("Android Auto", preferences.getBoolean("EnableAutoNotifications", false), true);
                 } else if (i == notificationsServiceRow) {

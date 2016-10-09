@@ -352,9 +352,13 @@ public class PrivacySettingsActivity extends BaseFragment implements Notificatio
                 if (i == blockedRow) {
                     textCell.setText(LocaleController.getString("BlockedUsers", R.string.BlockedUsers), true);
                 } else if (i == sessionsRow) {
+                    /* EDIT BY MR
                     textCell.setText(LocaleController.getString("SessionsTitle", R.string.SessionsTitle), false);
+                    */
                 } else if (i == passwordRow) {
+                    /* EDIT BY MR
                     textCell.setText(LocaleController.getString("TwoStepVerification", R.string.TwoStepVerification), true);
+                    */
                 } else if (i == passcodeRow) {
                     textCell.setText(LocaleController.getString("Passcode", R.string.Passcode), true);
                 } else if (i == lastSeenRow) {
