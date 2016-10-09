@@ -50,6 +50,7 @@ import org.telegram.messenger.AndroidUtilities;
 import org.telegram.messenger.LocaleController;
 import org.telegram.messenger.MessagesController;
 import org.telegram.messenger.MessagesStorage;
+import org.telegram.messenger.MrMailbox;
 import org.telegram.messenger.NotificationCenter;
 import org.telegram.messenger.ApplicationLoader;
 import org.telegram.messenger.FileLog;
@@ -68,13 +69,30 @@ import java.util.ArrayList;
 
 public class MrAccountSettingsActivity extends BaseFragment {
 
-    private EditText firstNameField;
-    private View doneButton;
+    // with chance, the following two settings are sufficient
+    private EditText addrWidget;
+    private EditText mailPwWidget;
+
+    // the name would be nice
+    private EditText displaynameWidget;
+
+    // advanced settings, may be needed
+    private EditText mailServerWidget;
+    private EditText mailPortWidget;
+    private EditText mailUserWidget;
+
+    private EditText sendServerWidget;
+    private EditText sendPortWidget;
+    private EditText sendUserWidget;
+    private EditText sendPwWidget;
+
+    // misc.
+    private View     doneButton;
     private TextView checkTextView;
-    private int checkReqId = 0;
-    private String lastCheckName = null;
+    private int      checkReqId = 0;
+    private String   lastCheckName = null;
     private Runnable checkRunnable = null;
-    private boolean lastNameAvailable = false;
+    private boolean  lastNameAvailable = false;
 
     private final static int done_button = 1;
 
@@ -82,25 +100,20 @@ public class MrAccountSettingsActivity extends BaseFragment {
     public View createView(Context context) {
         actionBar.setBackButtonImage(R.drawable.ic_ab_back);
         actionBar.setAllowOverlayTitle(true);
-        actionBar.setTitle(LocaleController.getString("MyAccount", R.string.MyAccount)); // EDIT BY MR -- was "Username"
+        actionBar.setTitle(LocaleController.getString("AccountSettings", R.string.AccountSettings));
         actionBar.setActionBarMenuOnItemClick(new ActionBar.ActionBarMenuOnItemClick() {
             @Override
             public void onItemClick(int id) {
                 if (id == -1) {
                     finishFragment();
                 } else if (id == done_button) {
-                    saveName();
+                    saveData();
                 }
             }
         });
 
         ActionBarMenu menu = actionBar.createMenu();
         doneButton = menu.addItemWithWidth(done_button, R.drawable.ic_done, AndroidUtilities.dp(56));
-
-        TLRPC.User user = MessagesController.getInstance().getUser(UserConfig.getClientUserId());
-        if (user == null) {
-            user = UserConfig.getCurrentUser();
-        }
 
         fragmentView = new LinearLayout(context);
         ((LinearLayout) fragmentView).setOrientation(LinearLayout.VERTICAL);
@@ -111,20 +124,71 @@ public class MrAccountSettingsActivity extends BaseFragment {
             }
         });
 
-        firstNameField = new EditText(context);
-        firstNameField.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 18);
-        firstNameField.setHintTextColor(0xff979797);
-        firstNameField.setTextColor(0xff212121);
-        firstNameField.setMaxLines(1);
-        firstNameField.setLines(1);
-        firstNameField.setPadding(0, 0, 0, 0);
-        firstNameField.setSingleLine(true);
-        firstNameField.setGravity(LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT);
-        firstNameField.setInputType(InputType.TYPE_TEXT_FLAG_CAP_SENTENCES | InputType.TYPE_TEXT_FLAG_MULTI_LINE | InputType.TYPE_TEXT_FLAG_AUTO_CORRECT);
-        firstNameField.setImeOptions(EditorInfo.IME_ACTION_DONE);
-        firstNameField.setHint(LocaleController.getString("UsernamePlaceholder", R.string.UsernamePlaceholder));
-        AndroidUtilities.clearCursorDrawable(firstNameField);
-        firstNameField.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+        // load data
+        String addr = MrMailbox.MrMailboxGetConfig(MrMailbox.hMailbox, "addr", "");
+        String mail_pw = MrMailbox.MrMailboxGetConfig(MrMailbox.hMailbox, "mail_pw", "");
+        String displayname = MrMailbox.MrMailboxGetConfig(MrMailbox.hMailbox, "displayname", "");
+
+        // create widgets
+        addrWidget = createTextWidget(context);
+        addrWidget.setInputType(InputType.TYPE_TEXT_FLAG_CAP_SENTENCES | InputType.TYPE_TEXT_FLAG_MULTI_LINE | InputType.TYPE_TEXT_FLAG_AUTO_CORRECT);
+        addrWidget.setImeOptions(EditorInfo.IME_ACTION_DONE);
+        addrWidget.setHint("E-Mail-Adresse");
+        addrWidget.setText(addr);
+        addrWidget.setSelection(addr.length());
+        ((LinearLayout) fragmentView).addView(addrWidget, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 36, 24, 24, 24, 0));
+
+
+        mailPwWidget = createTextWidget(context);
+        mailPwWidget.setInputType(InputType.TYPE_TEXT_FLAG_CAP_SENTENCES | InputType.TYPE_TEXT_FLAG_MULTI_LINE | InputType.TYPE_TEXT_FLAG_AUTO_CORRECT);
+        mailPwWidget.setImeOptions(EditorInfo.IME_ACTION_DONE);
+        mailPwWidget.setHint("Passwort");
+        mailPwWidget.setText(mail_pw);
+        mailPwWidget.setSelection(mail_pw.length());
+        ((LinearLayout) fragmentView).addView(mailPwWidget, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 36, 24, 24, 24, 0));
+
+
+
+        // the following widget is displayed on errors/warnings
+        checkTextView = new TextView(context);
+        checkTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 15);
+        checkTextView.setGravity(LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT);
+        ((LinearLayout) fragmentView).addView(checkTextView, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT, 24, 12, 24, 0));
+
+        // some text below
+        TextView helpTextView = new TextView(context);
+        helpTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 15);
+        helpTextView.setTextColor(0xff6d6d72);
+        helpTextView.setGravity(LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT);
+        helpTextView.setText("Die E-Mail-Adresse und das Passwort werden nur für den Login auf dem E-Mail-Server benötigt.\n\nIhr Name:");
+        ((LinearLayout) fragmentView).addView(helpTextView, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT, 24, 10, 24, 0));
+        checkTextView.setVisibility(View.GONE);
+
+        displaynameWidget = createTextWidget(context);
+        displaynameWidget.setInputType(InputType.TYPE_TEXT_FLAG_CAP_SENTENCES | InputType.TYPE_TEXT_FLAG_MULTI_LINE | InputType.TYPE_TEXT_FLAG_AUTO_CORRECT);
+        displaynameWidget.setImeOptions(EditorInfo.IME_ACTION_DONE);
+        displaynameWidget.setHint("Mein Name");
+        displaynameWidget.setText(displayname);
+        displaynameWidget.setSelection(displayname.length());
+        ((LinearLayout) fragmentView).addView(displaynameWidget, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 36, 24, 24, 24, 0));
+
+
+        return fragmentView;
+    }
+
+    public EditText createTextWidget(Context context)
+    {
+        EditText e;
+        e = new EditText(context);
+        e.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 18);
+        e.setHintTextColor(0xff979797);
+        e.setTextColor(0xff212121);
+        e.setMaxLines(1);
+        e.setLines(1);
+        e.setPadding(0, 0, 0, 0);
+        e.setSingleLine(true);
+        e.setGravity(LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT);
+        e.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
                 if (i == EditorInfo.IME_ACTION_DONE && doneButton != null) {
@@ -134,26 +198,8 @@ public class MrAccountSettingsActivity extends BaseFragment {
                 return false;
             }
         });
-
-        ((LinearLayout) fragmentView).addView(firstNameField, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 36, 24, 24, 24, 0));
-
-        if (user != null && user.username != null && user.username.length() > 0) {
-            firstNameField.setText(user.username);
-            firstNameField.setSelection(firstNameField.length());
-        }
-
-        checkTextView = new TextView(context);
-        checkTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 15);
-        checkTextView.setGravity(LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT);
-        ((LinearLayout) fragmentView).addView(checkTextView, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT, 24, 12, 24, 0));
-
-        TextView helpTextView = new TextView(context);
-        helpTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 15);
-        helpTextView.setTextColor(0xff6d6d72);
-        helpTextView.setGravity(LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT);
-        helpTextView.setText(AndroidUtilities.replaceTags(LocaleController.getString("UsernameHelp", R.string.UsernameHelp)));
-        ((LinearLayout) fragmentView).addView(helpTextView, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT, 24, 10, 24, 0));
-
+        AndroidUtilities.clearCursorDrawable(e);
+        /*
         firstNameField.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i2, int i3) {
@@ -170,10 +216,8 @@ public class MrAccountSettingsActivity extends BaseFragment {
 
             }
         });
-
-        checkTextView.setVisibility(View.GONE);
-
-        return fragmentView;
+        */
+        return e;
     }
 
     @Override
@@ -182,8 +226,8 @@ public class MrAccountSettingsActivity extends BaseFragment {
         SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("mainconfig", Activity.MODE_PRIVATE);
         boolean animations = preferences.getBoolean("view_animations", true);
         if (!animations) {
-            firstNameField.requestFocus();
-            AndroidUtilities.showKeyboard(firstNameField);
+            addrWidget.requestFocus();
+            AndroidUtilities.showKeyboard(addrWidget);
         }
     }
 
@@ -324,6 +368,14 @@ public class MrAccountSettingsActivity extends BaseFragment {
         return true;
     }
 
+    private void saveData() {
+        MrMailbox.MrMailboxSetConfig(MrMailbox.hMailbox, "addr", addrWidget.getText().toString());
+        MrMailbox.MrMailboxSetConfig(MrMailbox.hMailbox, "mail_pw", mailPwWidget.getText().toString());
+        MrMailbox.MrMailboxSetConfig(MrMailbox.hMailbox, "displayname", displaynameWidget.getText().toString());
+        finishFragment();
+    }
+
+    /*
     private void saveName() {
         if (!checkUserName(firstNameField.getText().toString(), true)) {
             return;
@@ -402,12 +454,13 @@ public class MrAccountSettingsActivity extends BaseFragment {
         });
         progressDialog.show();
     }
+    */
 
     @Override
     public void onTransitionAnimationEnd(boolean isOpen, boolean backward) {
         if (isOpen) {
-            firstNameField.requestFocus();
-            AndroidUtilities.showKeyboard(firstNameField);
+            addrWidget.requestFocus();
+            AndroidUtilities.showKeyboard(addrWidget);
         }
     }
 }
