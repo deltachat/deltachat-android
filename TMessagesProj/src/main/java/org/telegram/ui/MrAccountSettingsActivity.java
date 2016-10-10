@@ -40,6 +40,7 @@ import android.widget.ListView;
 import org.telegram.messenger.AndroidUtilities;
 import org.telegram.messenger.LocaleController;
 import org.telegram.messenger.MrMailbox;
+import org.telegram.messenger.NotificationCenter;
 import org.telegram.messenger.R;
 import org.telegram.ui.ActionBar.ActionBar;
 import org.telegram.ui.ActionBar.ActionBarMenu;
@@ -235,6 +236,8 @@ public class MrAccountSettingsActivity extends BaseFragment {
             v = sendPwCell.getValue().trim();
             MrMailbox.MrMailboxSetConfig(MrMailbox.hMailbox, "send_pw", v.isEmpty() ? null : v);
         }
+
+        NotificationCenter.getInstance().postNotificationName(NotificationCenter.mainUserInfoChanged);
     }
 
     private boolean isModified(){
