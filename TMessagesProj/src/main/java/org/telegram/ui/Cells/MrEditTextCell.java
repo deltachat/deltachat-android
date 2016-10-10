@@ -77,7 +77,7 @@ public class MrEditTextCell extends FrameLayout {
         editView.setLines(1);
         editView.setMaxLines(1);
         editView.setSingleLine(true);
-        editView.setHintTextColor(0xff979797);
+        editView.setHintTextColor(0xffBBBBBB); // was: 0xff979797
         editView.setGravity(LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT);
         //editView.setInputType(0);
         editView.setImeOptions(EditorInfo.IME_ACTION_NEXT);
@@ -110,7 +110,7 @@ public class MrEditTextCell extends FrameLayout {
         originalValue = value;
 
         editView.setText(value);
-        editView.setHint(hint);
+        editView.setHint("<"+hint+">");
         editView.setSelection(value.length());
 
         if( label.isEmpty()) {

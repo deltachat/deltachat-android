@@ -265,37 +265,37 @@ public class MrAccountSettingsActivity extends BaseFragment {
                 else if (i == rowMailServer) {
                     mailServerCell = editTextCell;
                     editTextCell.setValueHintAndLabel(MrMailbox.MrMailboxGetConfig(MrMailbox.hMailbox, "mail_server", ""),
-                            "", "IMAP-/POP-Server", false);
+                            "automatisch ermitteln", "IMAP-Server", false);
                 }
                 else if (i == rowMailPort) {
                     mailPortCell = editTextCell;
                     editTextCell.setValueHintAndLabel(MrMailbox.MrMailboxGetConfig(MrMailbox.hMailbox, "mail_port", ""),
-                            "", "IMAP-/POP-Port", false);
+                            "Standard", "IMAP-Port", false);
                 }
                 else if (i == rowMailUser) {
                     mailUserCell = editTextCell;
                     editTextCell.setValueHintAndLabel(MrMailbox.MrMailboxGetConfig(MrMailbox.hMailbox, "mail_user", ""),
-                            "", "IMAP-/POP-Loginname", false);
+                            "aus E-Mail-Adresse von oben", "IMAP-Loginname", false);
                 }
                 else if (i == rowSendServer) {
                     sendServerCell = editTextCell;
                     editTextCell.setValueHintAndLabel(MrMailbox.MrMailboxGetConfig(MrMailbox.hMailbox, "send_server", ""),
-                            "", "SMTP-Server", false);
+                            "automatisch ermitteln", "SMTP-Server", false);
                 }
                 else if (i == rowSendPort) {
                     sendPortCell = editTextCell;
                     editTextCell.setValueHintAndLabel(MrMailbox.MrMailboxGetConfig(MrMailbox.hMailbox, "send_port", ""),
-                            "", "SMTP-Port", false);
+                            "Standard", "SMTP-Port", false);
                 }
                 else if (i == rowSendUser) {
                     sendUserCell = editTextCell;
                     editTextCell.setValueHintAndLabel(MrMailbox.MrMailboxGetConfig(MrMailbox.hMailbox, "send_user", ""),
-                            "", "SMTP-Loginname", false);
+                            "aus E-Mail-Adresse von oben", "SMTP-Loginname", false);
                 }
                 else if (i == rowSendPw) {
                     sendPwCell = editTextCell;
                     editTextCell.setValueHintAndLabel(MrMailbox.MrMailboxGetConfig(MrMailbox.hMailbox, "send_pw", ""),
-                            "", "SMTP-Passwort", false);
+                            "dasselbe wie oben", "SMTP-Passwort", false);
                 }
             }
             else if (type == typeSection) {
@@ -326,7 +326,7 @@ public class MrAccountSettingsActivity extends BaseFragment {
                     view.setBackgroundResource(R.drawable.greydivider); // has shadow top+bottom
                 }
                 else if( i==rowInfoBelowSendPw) {
-                    ((TextInfoPrivacyCell) view).setText("Bei Problemen kann vielleicht Ihr E-Mail-Provider oder ein Bekannter weiterhelfen.");
+                    ((TextInfoPrivacyCell) view).setText("Unter Umständen muss die IMAP-/SMTP-Funktion zunächst für Ihre E-Mail-Adresse eingeschaltet werden. Sie finden entsprechende Funktionen z.B. in der E-Mail-Weboberfläche.\n\nBei Problemen kann vielleicht Ihr E-Mail-Provider oder ein Bekannter weiterhelfen.");
                     view.setBackgroundResource(R.drawable.greydivider_bottom);
                 }
             }
