@@ -61,7 +61,6 @@ public class MrNameSettingsActivity extends BaseFragment {
 
     private final int   typeInfo      = 0; // no gaps here!
     private final int   typeTextEntry = 1;
-    private final int   typeCount     = 2; // /no gaps here!
 
     MrEditTextCell      displaynameCell; // warning all these objects may be null!
 
@@ -209,18 +208,15 @@ public class MrNameSettingsActivity extends BaseFragment {
 
         @Override
         public View getView(int i, View view, ViewGroup viewGroup) {
-            int type = getItemViewType(i);
+            int type = getItemViewType__(i);
             if (type == typeTextEntry) {
-                if (view == null) {
-                    view = new MrEditTextCell(mContext);
-                    view.setBackgroundColor(0xffffffff);
-
-                }
-                MrEditTextCell editTextCell = (MrEditTextCell) view;
                 if (i == rowDisplayname) {
-                    displaynameCell = editTextCell;
-                    editTextCell.setValueHintAndLabel(MrMailbox.MrMailboxGetConfig(MrMailbox.hMailbox, "displayname", ""),
-                            "", "Mein Name", true);
+                    if(displaynameCell==null) {
+                        displaynameCell = new MrEditTextCell(mContext);
+                        displaynameCell.setValueHintAndLabel(MrMailbox.MrMailboxGetConfig(MrMailbox.hMailbox, "displayname", ""),
+                                "", "Mein Name", true);
+                    }
+                    view = displaynameCell;
                 }
             } else if (type == typeInfo) {
                 if (view == null) {
@@ -236,15 +232,20 @@ public class MrNameSettingsActivity extends BaseFragment {
 
         @Override
         public int getItemViewType(int i) {
+            return IGNORE_ITEM_VIEW_TYPE;
+        }
+
+        private int getItemViewType__(int i) {
             if (i == rowDisplayname) {
                 return typeTextEntry;
             }
             return typeInfo;
         }
 
+
         @Override
         public int getViewTypeCount() {
-            return typeCount;
+            return 1;
         }
 
         @Override

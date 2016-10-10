@@ -81,7 +81,7 @@ public class MrEditTextCell extends FrameLayout {
         editView.setHintTextColor(0xffBBBBBB); // was: 0xff979797
         editView.setGravity(LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT);
         editView.setInputType(InputType.TYPE_CLASS_TEXT|InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
-        editView.setImeOptions(EditorInfo.IME_ACTION_NEXT);
+        editView.setImeOptions(EditorInfo.IME_ACTION_DONE); // just close the keyboard, NEXT would not work as the other entries nay not yet loaded
         AndroidUtilities.clearCursorDrawable(editView);
         /*
         e.setPadding(0, 0, 0, 0);
@@ -100,6 +100,7 @@ public class MrEditTextCell extends FrameLayout {
         addView(editView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, (LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT) | Gravity.TOP,
                 17, 25, 17, 0));
 
+        setBackgroundColor(0xffffffff);
     }
 
     @Override

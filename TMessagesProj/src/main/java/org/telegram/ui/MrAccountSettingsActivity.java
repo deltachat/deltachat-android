@@ -80,7 +80,6 @@ public class MrAccountSettingsActivity extends BaseFragment {
     private final int   typeTextEntry     = 1;
     private final int   typeShadowSection = 2;
     private final int   typeSection       = 3;
-    private final int   typeCount         = 4; // /no gaps here!
 
     MrEditTextCell      addrCell;  // warning all these objects may be null!
     MrEditTextCell      mailPwCell;
@@ -305,59 +304,81 @@ public class MrAccountSettingsActivity extends BaseFragment {
 
         @Override
         public View getView(int i, View view, ViewGroup viewGroup) {
-            int type = getItemViewType(i);
+            int type = getItemViewType__(i);
             if (type == typeTextEntry) {
-                if (view == null) {
-                    view = new MrEditTextCell(mContext);
-                    view.setBackgroundColor(0xffffffff);
-                }
-                MrEditTextCell editTextCell = (MrEditTextCell) view;
                 if (i == rowAddr) {
-                    addrCell = editTextCell;
-                    editTextCell.setValueHintAndLabel(MrMailbox.MrMailboxGetConfig(MrMailbox.hMailbox, "addr", ""),
-                            "", "Meine E-Mail-Adresse", false);
+                    if( addrCell==null) {
+                        addrCell = new MrEditTextCell(mContext);
+                        addrCell.setValueHintAndLabel(MrMailbox.MrMailboxGetConfig(MrMailbox.hMailbox, "addr", ""),
+                                "", "Meine E-Mail-Adresse", false);
+                    }
+                    view = addrCell;
                 }
                 else if (i == rowMailPw) {
-                    mailPwCell = editTextCell;
-                    editTextCell.setValueHintAndLabel(MrMailbox.MrMailboxGetConfig(MrMailbox.hMailbox, "mail_pw", ""),
-                            "", "Passwort", false);
-                    mailPwCell.getEditTextView().setInputType(InputType.TYPE_CLASS_TEXT|InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS|InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                    if( mailPwCell==null) {
+                        mailPwCell = new MrEditTextCell(mContext);
+                        mailPwCell.setValueHintAndLabel(MrMailbox.MrMailboxGetConfig(MrMailbox.hMailbox, "mail_pw", ""),
+                                "", "Passwort", false);
+                        mailPwCell.getEditTextView().setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                    }
+                    view = mailPwCell;
                 }
                 else if (i == rowMailServer) {
-                    mailServerCell = editTextCell;
-                    editTextCell.setValueHintAndLabel(MrMailbox.MrMailboxGetConfig(MrMailbox.hMailbox, "mail_server", ""),
-                            "automatisch ermitteln", "IMAP-Server", false);
+                    if( mailServerCell==null) {
+                        mailServerCell = new MrEditTextCell(mContext);
+                        mailServerCell.setValueHintAndLabel(MrMailbox.MrMailboxGetConfig(MrMailbox.hMailbox, "mail_server", ""),
+                                "automatisch ermitteln", "IMAP-Server", false);
+                    }
+                    view = mailServerCell;
                 }
                 else if (i == rowMailPort) {
-                    mailPortCell = editTextCell;
-                    editTextCell.setValueHintAndLabel(MrMailbox.MrMailboxGetConfig(MrMailbox.hMailbox, "mail_port", ""),
-                            "Standard", "IMAP-Port", false);
+                    if( mailPortCell==null) {
+                        mailPortCell = new MrEditTextCell(mContext);
+                        mailPortCell.setValueHintAndLabel(MrMailbox.MrMailboxGetConfig(MrMailbox.hMailbox, "mail_port", ""),
+                                "Standard", "IMAP-Port", false);
+                    }
+                    view = mailPortCell;
                 }
                 else if (i == rowMailUser) {
-                    mailUserCell = editTextCell;
-                    editTextCell.setValueHintAndLabel(MrMailbox.MrMailboxGetConfig(MrMailbox.hMailbox, "mail_user", ""),
-                            "aus E-Mail-Adresse von oben", "IMAP-Loginname", false);
+                    if( mailUserCell==null) {
+                        mailUserCell = new MrEditTextCell(mContext);
+                        mailUserCell.setValueHintAndLabel(MrMailbox.MrMailboxGetConfig(MrMailbox.hMailbox, "mail_user", ""),
+                                "aus E-Mail-Adresse von oben", "IMAP-Loginname", false);
+                    }
+                    view = mailUserCell;
                 }
                 else if (i == rowSendServer) {
-                    sendServerCell = editTextCell;
-                    editTextCell.setValueHintAndLabel(MrMailbox.MrMailboxGetConfig(MrMailbox.hMailbox, "send_server", ""),
-                            "automatisch ermitteln", "SMTP-Server", false);
+                    if( sendServerCell==null) {
+                        sendServerCell = new MrEditTextCell(mContext);
+                        sendServerCell.setValueHintAndLabel(MrMailbox.MrMailboxGetConfig(MrMailbox.hMailbox, "send_server", ""),
+                                "automatisch ermitteln", "SMTP-Server", false);
+                    }
+                    view = sendServerCell;
                 }
                 else if (i == rowSendPort) {
-                    sendPortCell = editTextCell;
-                    editTextCell.setValueHintAndLabel(MrMailbox.MrMailboxGetConfig(MrMailbox.hMailbox, "send_port", ""),
-                            "Standard", "SMTP-Port", false);
+                    if( sendPortCell==null) {
+                        sendPortCell = new MrEditTextCell(mContext);
+                        sendPortCell.setValueHintAndLabel(MrMailbox.MrMailboxGetConfig(MrMailbox.hMailbox, "send_port", ""),
+                                "Standard", "SMTP-Port", false);
+                    }
+                    view = sendPortCell;
                 }
                 else if (i == rowSendUser) {
-                    sendUserCell = editTextCell;
-                    editTextCell.setValueHintAndLabel(MrMailbox.MrMailboxGetConfig(MrMailbox.hMailbox, "send_user", ""),
-                            "aus E-Mail-Adresse von oben", "SMTP-Loginname", false);
+                    if( sendUserCell==null) {
+                        sendUserCell = new MrEditTextCell(mContext);
+                        sendUserCell.setValueHintAndLabel(MrMailbox.MrMailboxGetConfig(MrMailbox.hMailbox, "send_user", ""),
+                                "aus E-Mail-Adresse von oben", "SMTP-Loginname", false);
+                    }
+                    view = sendUserCell;
                 }
                 else if (i == rowSendPw) {
-                    sendPwCell = editTextCell;
-                    editTextCell.setValueHintAndLabel(MrMailbox.MrMailboxGetConfig(MrMailbox.hMailbox, "send_pw", ""),
-                            "dasselbe wie oben", "SMTP-Passwort", false);
-                    mailPwCell.getEditTextView().setInputType(InputType.TYPE_CLASS_TEXT|InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS|InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                    if( sendPwCell==null) {
+                        sendPwCell = new MrEditTextCell(mContext);
+                        sendPwCell.setValueHintAndLabel(MrMailbox.MrMailboxGetConfig(MrMailbox.hMailbox, "send_pw", ""),
+                                "dasselbe wie oben", "SMTP-Passwort", false);
+                        mailPwCell.getEditTextView().setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                    }
+                    view = mailPwCell;
                 }
             }
             else if (type == typeSection) {
@@ -369,7 +390,6 @@ public class MrAccountSettingsActivity extends BaseFragment {
                     ((HeaderCell) view).setText("Grundeinstellungen");
                 } else if (i == rowSectionMail) {
                     ((HeaderCell) view).setText("Posteingangs-Einstellungen");
-                    //view.setBackgroundResource(R.drawable.greydivider_top);
                 } else if (i == rowSectionSend) {
                     ((HeaderCell) view).setText("Postausgangs-Einstellungen");
                 }
@@ -397,6 +417,10 @@ public class MrAccountSettingsActivity extends BaseFragment {
 
         @Override
         public int getItemViewType(int i) {
+            return IGNORE_ITEM_VIEW_TYPE;
+        }
+
+        private int getItemViewType__(int i) {
             if (i == rowAddr || i==rowMailPw || i==rowMailServer || i==rowMailPort|| i==rowMailUser
                      || i==rowSendServer || i==rowSendPort || i==rowSendUser || i== rowSendPw ) {
                 return typeTextEntry;
@@ -412,7 +436,7 @@ public class MrAccountSettingsActivity extends BaseFragment {
 
         @Override
         public int getViewTypeCount() {
-            return typeCount;
+            return 1;
         }
 
         @Override
