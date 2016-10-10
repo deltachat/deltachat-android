@@ -214,8 +214,8 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
         emptyRow = rowCount++;
         */
         numberSectionRow = rowCount++;
-        numberRow = -1; // EDIT BY MR -- rowCount++;
-        usernameRow = rowCount++;
+        usernameRow = rowCount++; // EDIT BY MR
+        numberRow = rowCount++; // EDIT BY MR -- these are the account settings
         settingsSectionRow = rowCount++;
         settingsSectionRow2 = rowCount++;
         notificationRow = rowCount++;
@@ -420,8 +420,9 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
                 } else if (i == backgroundRow) {
                     presentFragment(new WallpapersActivity());
                 } 
-                /* EDIT BY MR
+
                 else if (i == askQuestionRow) {
+                    /* EDIT BY MR
                     if (getParentActivity() == null) {
                         return;
                     }
@@ -442,8 +443,8 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
                     });
                     builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
                     showDialog(builder.create());
-                } 
-                EDIT BY MR */
+                    */
+                }
                 else if (i == sendLogsRow) {
                     sendLogs();
                 } else if (i == clearLogsRow) {
@@ -504,14 +505,15 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
                 } else if (i == telegramFaqRow) {
                     Browser.openUrl(getParentActivity(), LocaleController.getString("TelegramFaqUrl", R.string.TelegramFaqUrl));
                 } 
-                /* EDIT BY MR
                 else if (i == privacyPolicyRow) {
+                    /* EDIT BY MR
                     Browser.openUrl(getParentActivity(), LocaleController.getString("PrivacyPolicyUrl", R.string.PrivacyPolicyUrl));
+                    */
                 }
-                EDIT BY MR */ 
                 else if (i == contactsReimportRow) {
                     //not implemented
                 } else if (i == contactsSortRow) {
+                    /*
                     if (getParentActivity() == null) {
                         return;
                     }
@@ -535,6 +537,7 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
                     });
                     builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
                     showDialog(builder.create());
+                    */
                 } else if (i == wifiDownloadRow || i == mobileDownloadRow || i == roamingDownloadRow) {
                     if (getParentActivity() == null) {
                         return;
@@ -644,11 +647,9 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
                     builder.setCustomView(linearLayout);
                     showDialog(builder.create());
                 } else if (i == usernameRow) {
-                    presentFragment(new MrAccountSettingsActivity());
-                /* EDIT BY MR
+                    presentFragment(new MrNameSettingsActivity()); // EDIT BY MR
                 } else if (i == numberRow) {
-                    presentFragment(new ChangePhoneHelpActivity());
-                */
+                    presentFragment(new MrAccountSettingsActivity()); // EDIT BY MR
                 } else if (i == stickersRow) {
                     //presentFragment(new StickersActivity()); // EDIT BY MR
                 } else if (i == cacheRow) {
@@ -1268,6 +1269,7 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
                 } else if (i == languageRow) {
                     textCell.setTextAndValue(LocaleController.getString("Language", R.string.Language), LocaleController.getCurrentLanguageName(), true);
                 } else if (i == contactsSortRow) {
+                    /* EDIT BY MR
                     String value;
                     SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("mainconfig", Activity.MODE_PRIVATE);
                     int sort = preferences.getInt("sortContactsBy", 0);
@@ -1279,6 +1281,7 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
                         value = LocaleController.getString("LastName", R.string.SortLastName);
                     }
                     textCell.setTextAndValue(LocaleController.getString("SortBy", R.string.SortBy), value, true);
+                    */
                 } else if (i == notificationRow) {
                     textCell.setText(LocaleController.getString("NotificationsAndSounds", R.string.NotificationsAndSounds), true);
                 } else if (i == backgroundRow) {
@@ -1432,8 +1435,8 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
                         text = LocaleController.getString("NoMediaAutoDownload", R.string.NoMediaAutoDownload);
                     }
                     textCell.setTextAndValue(value, text, true);
-                /* EDIT BY MR
                 } else if (i == numberRow) {
+                    /* EDIT BY MR
                     TLRPC.User user = UserConfig.getCurrentUser();
                     String value;
                     if (user != null && user.phone != null && user.phone.length() != 0) {
@@ -1442,7 +1445,18 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
                         value = LocaleController.getString("NumberUnknown", R.string.NumberUnknown);
                     }
                     textCell.setTextAndValue(value, LocaleController.getString("Phone", R.string.Phone), true);
-                */
+                    */
+                    // EDIT BY MR
+                    String subtitle;
+                    if( MrMailbox.MrMailboxIsConfigured(MrMailbox.hMailbox)!=0) {
+                        subtitle = MrMailbox.MrMailboxGetConfig(MrMailbox.hMailbox, "addr", "");
+                    }
+                    else {
+                        subtitle = LocaleController.getString("NotLoggedIn", R.string.NotLoggedIn);
+                    }
+
+                    textCell.setTextAndValue(LocaleController.getString("AccountSettings", R.string.AccountSettings), subtitle, false);
+                    // /EDIT BY MR
                 } else if (i == usernameRow) {
                     /* EDIT BY MR
                     TLRPC.User user = UserConfig.getCurrentUser();
@@ -1456,17 +1470,11 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
                     */
 
                     // EDIT BY MR
-                    String subtitle;
-                    if( MrMailbox.MrMailboxIsConfigured(MrMailbox.hMailbox)!=0) {
-                        subtitle = MrMailbox.MrMailboxGetConfig(MrMailbox.hMailbox, "displayname", "");
-                        if( !subtitle.isEmpty()) { subtitle += ", ";}
-                        subtitle += MrMailbox.MrMailboxGetConfig(MrMailbox.hMailbox, "addr", "");
+                    String subtitle = MrMailbox.MrMailboxGetConfig(MrMailbox.hMailbox, "displayname", "");
+                    if( subtitle.isEmpty()) {
+                        subtitle = "Nicht gesetzt";
                     }
-                    else {
-                        subtitle = LocaleController.getString("NotLoggedIn", R.string.NotLoggedIn);
-                    }
-
-                    textCell.setTextAndValue(LocaleController.getString("AccountSettings", R.string.AccountSettings), subtitle, false);
+                    textCell.setTextAndValue("Mein Name", subtitle, true);
                     // /EDIT BY MR
                 }
             }

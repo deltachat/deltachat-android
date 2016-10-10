@@ -632,7 +632,7 @@ public class CacheControlActivity extends BaseFragment {
                     view.setBackgroundResource(R.drawable.greydivider);
                 } else if (i == keepMediaInfoRow) {
                     ((TextInfoPrivacyCell) view).setText(AndroidUtilities.replaceTags(LocaleController.getString("KeepMediaInfo", R.string.KeepMediaInfo)));
-                    view.setBackgroundResource(R.drawable.greydivider);
+                    view.setBackgroundResource(R.drawable.greydivider_bottom);
                 }
             }
             return view;
