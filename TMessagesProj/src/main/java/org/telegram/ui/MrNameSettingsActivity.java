@@ -63,7 +63,7 @@ public class MrNameSettingsActivity extends BaseFragment {
     private final int   typeTextEntry = 1;
     private final int   typeCount     = 2; // /no gaps here!
 
-    MrEditTextCell      displaynameCell;
+    MrEditTextCell      displaynameCell; // warning all these objects may be null!
 
     // misc.
     private View             doneButton;
@@ -96,7 +96,7 @@ public class MrNameSettingsActivity extends BaseFragment {
             @Override
             public void onItemClick(int id) {
                 if (id == -1) {
-                    if( displaynameCell.isValueModified() ) { // TODO: maybe we should also ask if the user presses the "back" button
+                    if( isModified() ) { // TODO: maybe we should also ask if the user presses the "back" button
                         AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
                         builder.setTitle(LocaleController.getString("AppName", R.string.AppName));
                         builder.setMessage("Änderungen verwerfen?");
@@ -147,8 +147,17 @@ public class MrNameSettingsActivity extends BaseFragment {
     }
 
     private void saveData() {
-        MrMailbox.MrMailboxSetConfig(MrMailbox.hMailbox, "displayname", displaynameCell.getValue());
+        if( displaynameCell != null ) {
+            String v = displaynameCell.getValue().trim();
+            MrMailbox.MrMailboxSetConfig(MrMailbox.hMailbox, "displayname", v.isEmpty() ? null : v);
+        }
 
+    }
+
+    private boolean isModified()
+    {
+        if( displaynameCell!=null && displaynameCell.isModified()) { return true; }
+        return false;
     }
 
     @Override

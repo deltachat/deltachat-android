@@ -30,6 +30,7 @@ package org.telegram.ui;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.text.InputType;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -81,7 +82,7 @@ public class MrAccountSettingsActivity extends BaseFragment {
     private final int   typeSection       = 3;
     private final int   typeCount         = 4; // /no gaps here!
 
-    MrEditTextCell      addrCell;
+    MrEditTextCell      addrCell;  // warning all these objects may be null!
     MrEditTextCell      mailPwCell;
     MrEditTextCell      mailServerCell;
     MrEditTextCell      mailPortCell;
@@ -137,8 +138,7 @@ public class MrAccountSettingsActivity extends BaseFragment {
             @Override
             public void onItemClick(int id) {
                 if (id == -1) {
-                    /*
-                    if( addrCell.isValueModified() ) { // TODO: maybe we should also ask if the user presses the "back" button
+                    if( isModified() ) { // TODO: maybe we should also ask if the user presses the "back" button
                         AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
                         builder.setTitle(LocaleController.getString("AppName", R.string.AppName));
                         builder.setMessage("Änderungen verwerfen?");
@@ -151,9 +151,7 @@ public class MrAccountSettingsActivity extends BaseFragment {
                         builder.setNegativeButton(LocaleController.getString("No", R.string.No), null);
                         showDialog(builder.create());
                     }
-                    else
-                    */
-                    {
+                    else {
                         finishFragment();
                     }
                 } else if (id == done_button) {
@@ -191,8 +189,70 @@ public class MrAccountSettingsActivity extends BaseFragment {
     }
 
     private void saveData() {
-        MrMailbox.MrMailboxSetConfig(MrMailbox.hMailbox, "addr", addrCell.getValue());
+        // Warning: the widgets are created as needed and may not be present!
+        String v;
 
+        if( addrCell!=null) {
+            v = addrCell.getValue().trim();
+            MrMailbox.MrMailboxSetConfig(MrMailbox.hMailbox, "addr", v.isEmpty() ? null : v);
+        }
+
+        if( mailPwCell!=null) {
+            v = mailPwCell.getValue().trim();
+            MrMailbox.MrMailboxSetConfig(MrMailbox.hMailbox, "mail_pw", v.isEmpty() ? null : v);
+        }
+
+        if( mailServerCell!=null) {
+            v = mailServerCell.getValue().trim();
+            MrMailbox.MrMailboxSetConfig(MrMailbox.hMailbox, "mail_server", v.isEmpty() ? null : v);
+        }
+
+        if( mailPortCell!=null ) {
+            v = mailPortCell.getValue().trim();
+            MrMailbox.MrMailboxSetConfig(MrMailbox.hMailbox, "mail_port", v.isEmpty() ? null : v);
+        }
+
+        if( mailUserCell!=null) {
+            v = mailUserCell.getValue().trim();
+            MrMailbox.MrMailboxSetConfig(MrMailbox.hMailbox, "mail_user", v.isEmpty() ? null : v);
+        }
+
+        if( sendServerCell!=null ) {
+            v = sendServerCell.getValue().trim();
+            MrMailbox.MrMailboxSetConfig(MrMailbox.hMailbox, "send_server", v.isEmpty() ? null : v);
+        }
+
+        if( sendPortCell!=null ) {
+            v = sendPortCell.getValue().trim();
+            MrMailbox.MrMailboxSetConfig(MrMailbox.hMailbox, "send_port", v.isEmpty() ? null : v);
+        }
+
+        if(sendUserCell!=null) {
+            v = sendUserCell.getValue().trim();
+            MrMailbox.MrMailboxSetConfig(MrMailbox.hMailbox, "send_user", v.isEmpty() ? null : v);
+        }
+
+        if( sendPwCell!=null ) {
+            v = sendPwCell.getValue().trim();
+            MrMailbox.MrMailboxSetConfig(MrMailbox.hMailbox, "send_pw", v.isEmpty() ? null : v);
+        }
+    }
+
+    private boolean isModified(){
+        // Warning: the widgets are created as needed and may not be present!
+        if( addrCell!=null && addrCell.isModified()) { return true; }
+        if( mailPwCell!=null && mailPwCell.isModified()) { return true; }
+
+        if( mailServerCell!=null && mailServerCell.isModified()) { return true; }
+        if( mailPortCell!=null && mailPortCell.isModified()) { return true; }
+        if( mailUserCell!=null && mailUserCell.isModified()) { return true; }
+
+        if( sendServerCell!=null && sendServerCell.isModified()) { return true; }
+        if( sendPortCell!=null && sendPortCell.isModified()) { return true; }
+        if( sendUserCell!=null && sendUserCell.isModified()) { return true; }
+        if( sendPwCell!=null && sendPwCell.isModified()) { return true; }
+
+        return false;
     }
 
     @Override
@@ -261,6 +321,7 @@ public class MrAccountSettingsActivity extends BaseFragment {
                     mailPwCell = editTextCell;
                     editTextCell.setValueHintAndLabel(MrMailbox.MrMailboxGetConfig(MrMailbox.hMailbox, "mail_pw", ""),
                             "", "Passwort", false);
+                    mailPwCell.getEditTextView().setInputType(InputType.TYPE_CLASS_TEXT|InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS|InputType.TYPE_TEXT_VARIATION_PASSWORD);
                 }
                 else if (i == rowMailServer) {
                     mailServerCell = editTextCell;
@@ -296,6 +357,7 @@ public class MrAccountSettingsActivity extends BaseFragment {
                     sendPwCell = editTextCell;
                     editTextCell.setValueHintAndLabel(MrMailbox.MrMailboxGetConfig(MrMailbox.hMailbox, "send_pw", ""),
                             "dasselbe wie oben", "SMTP-Passwort", false);
+                    mailPwCell.getEditTextView().setInputType(InputType.TYPE_CLASS_TEXT|InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS|InputType.TYPE_TEXT_VARIATION_PASSWORD);
                 }
             }
             else if (type == typeSection) {
@@ -322,11 +384,11 @@ public class MrAccountSettingsActivity extends BaseFragment {
                     view = new TextInfoPrivacyCell(mContext);
                 }
                 if( i==rowInfoBelowMailPw2) {
-                    ((TextInfoPrivacyCell) view).setText("LibreChat versucht aus den eingegebenen Grundeinstellungen die restlichen Einstellungen automatisch zu ermitteln.\n\nWenn dies nicht gelingt, müssen in den folgenden Felder die notwendigen Daten eingegeben werden:");
+                    ((TextInfoPrivacyCell) view).setText("Für bekannte E-Mail-Anbieter können alle weiteren Einstellungen automatisch ermittelt werden.\n\nAnsonsten müssen in den folgenden Felder die notwendigen Daten eingegeben werden:");
                     view.setBackgroundResource(R.drawable.greydivider); // has shadow top+bottom
                 }
                 else if( i==rowInfoBelowSendPw) {
-                    ((TextInfoPrivacyCell) view).setText("Unter Umständen muss die IMAP-/SMTP-Funktion zunächst für Ihre E-Mail-Adresse eingeschaltet werden. Sie finden entsprechende Funktionen z.B. in der E-Mail-Weboberfläche.\n\nBei Problemen kann vielleicht Ihr E-Mail-Provider oder ein Bekannter weiterhelfen.");
+                    ((TextInfoPrivacyCell) view).setText("Unter Umständen muss die IMAP-/SMTP-Funktion zunächst für Ihre E-Mail-Adresse eingeschaltet werden. Sie finden entsprechende Funktionen z.B. in der E-Mail-Weboberfläche.\n\nBei Problemen kann vielleicht Ihr E-Mail-Anbieter oder ein Bekannter weiterhelfen.");
                     view.setBackgroundResource(R.drawable.greydivider_bottom);
                 }
             }

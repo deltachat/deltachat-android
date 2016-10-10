@@ -31,6 +31,7 @@ package org.telegram.ui.Cells;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
+import android.text.InputType;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.inputmethod.EditorInfo;
@@ -79,7 +80,7 @@ public class MrEditTextCell extends FrameLayout {
         editView.setSingleLine(true);
         editView.setHintTextColor(0xffBBBBBB); // was: 0xff979797
         editView.setGravity(LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT);
-        //editView.setInputType(0);
+        editView.setInputType(InputType.TYPE_CLASS_TEXT|InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
         editView.setImeOptions(EditorInfo.IME_ACTION_NEXT);
         AndroidUtilities.clearCursorDrawable(editView);
         /*
@@ -110,8 +111,9 @@ public class MrEditTextCell extends FrameLayout {
         originalValue = value;
 
         editView.setText(value);
-        editView.setHint("<"+hint+">");
         editView.setSelection(value.length());
+
+        editView.setHint(hint.isEmpty()? "" : ("<"+hint+">"));
 
         if( label.isEmpty()) {
             labelTextView.setVisibility(INVISIBLE);
@@ -130,7 +132,7 @@ public class MrEditTextCell extends FrameLayout {
         return editView.getText().toString();
     }
 
-    public boolean isValueModified()
+    public boolean isModified()
     {
         return !originalValue.equals(getValue());
     }
