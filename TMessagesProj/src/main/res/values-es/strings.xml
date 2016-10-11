@@ -660,8 +660,6 @@
     <string name="VideoCaption">Comentario de vídeo</string>
     <string name="Caption">Comentario</string>
     <!--password view-->
-    <string name="TwoStepVerification">Verificación en dos pasos</string>
-    <string name="SetAdditionalPasswordInfo">Puedes poner una contraseña, que será requerida cuando inicies sesión en un nuevo dispositivo, además del código que recibes vía SMS.</string>
     <string name="YourPassword">Tu contraseña</string>
     <string name="PleaseEnterCurrentPassword">Por favor, pon tu contraseña</string>
     <string name="RestorePasswordNoEmailTitle">Lo sentimos</string>

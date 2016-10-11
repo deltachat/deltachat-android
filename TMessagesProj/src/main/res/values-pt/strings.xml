@@ -660,8 +660,6 @@
     <string name="VideoCaption">Legenda do Vídeo</string>
     <string name="Caption">Legenda</string>
     <!--password view-->
-    <string name="TwoStepVerification">Verificação em duas etapas</string>
-    <string name="SetAdditionalPasswordInfo">Você pode configurar uma senha que será requisitada quando você entrar em um novo aparelho, além do código que você receberá por SMS. </string>
     <string name="YourPassword">Sua senha</string>
     <string name="PleaseEnterCurrentPassword">Por favor, digite a sua senha</string>
     <string name="RestorePasswordNoEmailTitle">Desculpe</string>

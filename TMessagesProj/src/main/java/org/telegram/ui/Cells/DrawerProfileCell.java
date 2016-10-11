@@ -154,7 +154,7 @@ public class DrawerProfileCell extends FrameLayout {
             addr = MrMailbox.MrMailboxGetConfig(MrMailbox.hMailbox, "addr", "");
         }
         else {
-            addr = LocaleController.getString("NotLoggedIn", R.string.NotLoggedIn);
+            addr = LocaleController.getString("AccountNotConfigured", R.string.AccountNotConfigured);
         }
         nameTextView.setText(displayname);
         phoneTextView.setText(addr);

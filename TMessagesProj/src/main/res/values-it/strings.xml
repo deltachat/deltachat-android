@@ -660,8 +660,6 @@
     <string name="VideoCaption">Didascalia video</string>
     <string name="Caption">Didascalia</string>
     <!--password view-->
-    <string name="TwoStepVerification">Verifica in due passaggi</string>
-    <string name="SetAdditionalPasswordInfo">Puoi impostare una password che ti verrà richiesta quando ti connetti da un nuovo dispositivo in aggiunta al codice che riceverai via SMS.</string>
     <string name="YourPassword">La tua password</string>
     <string name="PleaseEnterCurrentPassword">Inserisci la tua password</string>
     <string name="RestorePasswordNoEmailTitle">Spiacenti</string>

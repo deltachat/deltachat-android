@@ -660,8 +660,6 @@
     <string name="VideoCaption">Video-onderschrift</string>
     <string name="Caption">Onderschrift</string>
     <!--password view-->
-    <string name="TwoStepVerification">Twee-staps-verificatie</string>
-    <string name="SetAdditionalPasswordInfo">Naast de code die je per SMS ontvangt kun je een extra wachtwoord instellen voor als je inlogt op een nieuw apparaat.</string>
     <string name="YourPassword">Je wachtwoord</string>
     <string name="PleaseEnterCurrentPassword">Wachtwoord invoeren</string>
     <string name="RestorePasswordNoEmailTitle">Sorry</string>

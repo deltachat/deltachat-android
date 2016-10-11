@@ -660,8 +660,6 @@
     <string name="VideoCaption">Video Caption</string>
     <string name="Caption">Caption</string>
     <!--password view-->
-    <string name="TwoStepVerification">Two-Step Verification</string>
-    <string name="SetAdditionalPasswordInfo">You can set a password that will be required when you log in on a new device in addition to the code you get in the SMS.</string>
     <string name="YourPassword">Your Password</string>
     <string name="PleaseEnterCurrentPassword">Please enter your password</string>
     <string name="RestorePasswordNoEmailTitle">Sorry</string>
@@ -1077,7 +1075,6 @@
     <string name="formatterDay24H">HH:mm</string>
     <string name="formatterDay12H">h:mm a</string>
     <string name="formatDateAtTime">%1$s at %2$s</string>
-    <string name="NotLoggedIn">Not logged in</string>
     <string name="AccountSettings">Account settings</string>
     <string name="MyAccount">My account</string>
     <string name="Yes">Yes</string>
@@ -1100,4 +1097,5 @@
     <string name="BasicSettings">Basic settings</string>
     <string name="MyAccountExplain">For known e-mail providers, the following settings are determinated automatically.</string>
     <string name="MyAccountExplain2" >Sometimes, IMAP/SMPT needs to be enabled in the e-mail web frontend.\n\nOn problems, ask your e-mail-provider or your friends.</string>
+    <string name="AccountNotConfigured">Account not configured</string>
 </resources>

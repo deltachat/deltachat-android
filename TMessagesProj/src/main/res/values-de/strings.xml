@@ -660,8 +660,6 @@
     <string name="VideoCaption">Videobeschriftung</string>
     <string name="Caption">Beschriftung</string>
     <!--password view-->
-    <string name="TwoStepVerification">Zweistufige Bestätigung</string>
-    <string name="SetAdditionalPasswordInfo">Du kannst ein eigenes Kennwort festlegen, um dich an einem neuen Gerät anzumelden, zusätzlich zum SMS-Code.</string>
     <string name="YourPassword">Dein Kennwort</string>
     <string name="PleaseEnterCurrentPassword">Bitte aktuelles Kennwort eingeben</string>
     <string name="RestorePasswordNoEmailTitle">Tut uns leid</string>
@@ -1076,7 +1074,6 @@
     <string name="formatterDay24H">HH:mm</string>
     <string name="formatterDay12H">h:mm a</string>
     <string name="formatDateAtTime">%1$s um %2$s</string>
-    <string name="NotLoggedIn">Nicht angemeldet</string>
     <string name="AccountSettings">Kontoeinstellungen</string>
     <string name="MyAccount">Mein Konto</string>
     <string name="No">Nein</string>
@@ -1100,4 +1097,5 @@
     <string name="InboxHeadline">Posteingang</string>
     <string name="MyAccountExplain">Für bekannte E-Mail-Anbieter werden die weiteren Einstellungen automatisch ermittelt.</string>
     <string name="MyAccountExplain2">Manchmal muss die IMAP-/SMTP-Funktion noch in der E-Mail-Weboberfläche eingeschaltet werden.\n\nBei Problemen kann der E-Mail-Anbieter oder ein Bekannter weiterhelfen.</string>
+    <string name="AccountNotConfigured">Konto nicht konfiguriert</string>
 </resources>

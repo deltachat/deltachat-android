@@ -237,6 +237,8 @@ public class MrAccountSettingsActivity extends BaseFragment {
             MrMailbox.MrMailboxSetConfig(MrMailbox.hMailbox, "send_pw", v.isEmpty() ? null : v);
         }
 
+        MrMailbox.MrMailboxConfigure(MrMailbox.hMailbox);
+
         NotificationCenter.getInstance().postNotificationName(NotificationCenter.mainUserInfoChanged);
     }
 

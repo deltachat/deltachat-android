@@ -1452,7 +1452,7 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
                         subtitle = MrMailbox.MrMailboxGetConfig(MrMailbox.hMailbox, "addr", "");
                     }
                     else {
-                        subtitle = LocaleController.getString("NotLoggedIn", R.string.NotLoggedIn);
+                        subtitle = LocaleController.getString("AccountNotConfigured", R.string.AccountNotConfigured);
                     }
 
                     textCell.setTextAndValue(LocaleController.getString("AccountSettings", R.string.AccountSettings), subtitle, false);
