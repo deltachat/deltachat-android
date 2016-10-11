@@ -156,7 +156,6 @@ public class MrAccountSettingsActivity extends BaseFragment {
                     }
                 } else if (id == done_button) {
                     saveData();
-                    finishFragment();
                 }
             }
         });
@@ -191,6 +190,11 @@ public class MrAccountSettingsActivity extends BaseFragment {
     private void saveData() {
         // Warning: the widgets are created as needed and may not be present!
         String v;
+
+        if( !isModified() && MrMailbox.MrMailboxIsConfigured(MrMailbox.hMailbox)!=0 ) {
+            finishFragment();
+            return; // nothing to do
+        }
 
         if( addrCell!=null) {
             v = addrCell.getValue().trim();
@@ -238,6 +242,18 @@ public class MrAccountSettingsActivity extends BaseFragment {
         }
 
         MrMailbox.MrMailboxConfigure(MrMailbox.hMailbox);
+
+        // show dialog
+        AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
+        builder.setTitle(LocaleController.getString("AppName", R.string.AppName));
+        builder.setMessage("Testing the server connection, this may take a moment.");
+        builder.setNeutralButton(LocaleController.getString("Cancel", R.string.Cancel), new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                finishFragment();
+            }
+        });
+        showDialog(builder.create());
 
         NotificationCenter.getInstance().postNotificationName(NotificationCenter.mainUserInfoChanged);
     }
