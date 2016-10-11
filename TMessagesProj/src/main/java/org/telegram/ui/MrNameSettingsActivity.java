@@ -91,7 +91,7 @@ public class MrNameSettingsActivity extends BaseFragment {
         // create action bar
         actionBar.setBackButtonImage(R.drawable.ic_ab_back);
         actionBar.setAllowOverlayTitle(true);
-        actionBar.setTitle("Mein Name");
+        actionBar.setTitle(LocaleController.getString("MyName", R.string.MyName));
         actionBar.setActionBarMenuOnItemClick(new ActionBar.ActionBarMenuOnItemClick() {
             @Override
             public void onItemClick(int id) {
@@ -99,7 +99,7 @@ public class MrNameSettingsActivity extends BaseFragment {
                     if( isModified() ) { // TODO: maybe we should also ask if the user presses the "back" button
                         AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
                         builder.setTitle(LocaleController.getString("AppName", R.string.AppName));
-                        builder.setMessage("Änderungen verwerfen?");
+                        builder.setMessage(LocaleController.getString("DiscardChanges", R.string.DiscardChanges));
                         builder.setPositiveButton(LocaleController.getString("Yes", R.string.Yes), new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
@@ -216,7 +216,7 @@ public class MrNameSettingsActivity extends BaseFragment {
                     if(displaynameCell==null) {
                         displaynameCell = new MrEditTextCell(mContext);
                         displaynameCell.setValueHintAndLabel(MrMailbox.MrMailboxGetConfig(MrMailbox.hMailbox, "displayname", ""),
-                                "", "Mein Name", true);
+                                "", LocaleController.getString("MyName", R.string.MyName), true);
                     }
                     view = displaynameCell;
                 }
@@ -225,7 +225,7 @@ public class MrNameSettingsActivity extends BaseFragment {
                     view = new TextInfoPrivacyCell(mContext);
                 }
                 if( i==rowDisplaynameInfo) {
-                    ((TextInfoPrivacyCell) view).setText("Der Name erscheint in allen ausgehenden Nachrichten. Wenn kein Name angegeben wird, erhält der Empfänger nur die E-Mail-Adresse aus den Kontoeinstellungen.");
+                    ((TextInfoPrivacyCell) view).setText(LocaleController.getString("MyNameExplain", R.string.MyNameExplain));
                 }
                 view.setBackgroundResource(R.drawable.greydivider_bottom);
             }

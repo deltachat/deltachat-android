@@ -1082,4 +1082,22 @@
     <string name="MyAccount">My account</string>
     <string name="Yes">Yes</string>
     <string name="No">No</string>
+    <string name="MyName">My name</string>
+    <string name="MyNameExplain">The name appears in all outging messages.\\n\\nIf you do not enter a name here, the receiver will only get your e-mail-address from the account settings.</string>
+    <string name="MyEmailAddress">My e-mail address</string>
+    <string name="Password">Password</string>
+    <string name="SmtpPassword">SMTP password</string>
+    <string name="FromAbove">from above</string>
+    <string name="SmtpLoginname">SMTP loginname</string>
+    <string name="SmtpPort">SMTP port</string>
+    <string name="Automatic">automatic</string>
+    <string name="ImapServer">IMAP server</string>
+    <string name="ImapLoginname">IMAP loginname</string>
+    <string name="SmtpServer">SMTP server</string>
+    <string name="ImapPort">IMAP port</string>
+    <string name="InboxHeadline">Inbox</string>
+    <string name="OutboxHeadline">Outbox</string>
+    <string name="BasicSettings">Basic settings</string>
+    <string name="MyAccountExplain">For known e-mail providers, the following settings are determinated automatically.</string>
+    <string name="MyAccountExplain2" >Sometimes, IMAP/SMPT needs to be enabled in the e-mail web frontend.\n\nOn problems, ask your e-mail-provider or your friends.</string>
 </resources>

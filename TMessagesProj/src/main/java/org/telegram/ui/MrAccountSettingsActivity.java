@@ -108,15 +108,15 @@ public class MrAccountSettingsActivity extends BaseFragment {
 
         rowSectionMail = rowCount++;
         rowMailServer = rowCount++;
-        rowMailPort = rowCount++;
         rowMailUser = rowCount++;
+        rowMailPort = rowCount++;
         rowBreak2 = rowCount++;
 
         rowSectionSend = rowCount++;
         rowSendServer = rowCount++;
-        rowSendPort = rowCount++;
         rowSendUser = rowCount++;
         rowSendPw = rowCount++;
+        rowSendPort = rowCount++;
         rowInfoBelowSendPw = rowCount++;
 
         return true;
@@ -133,7 +133,7 @@ public class MrAccountSettingsActivity extends BaseFragment {
         // create action bar
         actionBar.setBackButtonImage(R.drawable.ic_ab_back);
         actionBar.setAllowOverlayTitle(true);
-        actionBar.setTitle("Kontoeinstellungen");
+        actionBar.setTitle(LocaleController.getString("AccountSettings", R.string.AccountSettings));
         actionBar.setActionBarMenuOnItemClick(new ActionBar.ActionBarMenuOnItemClick() {
             @Override
             public void onItemClick(int id) {
@@ -141,7 +141,7 @@ public class MrAccountSettingsActivity extends BaseFragment {
                     if( isModified() ) { // TODO: maybe we should also ask if the user presses the "back" button
                         AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
                         builder.setTitle(LocaleController.getString("AppName", R.string.AppName));
-                        builder.setMessage("Änderungen verwerfen?");
+                        builder.setMessage(LocaleController.getString("DiscardChanges", R.string.DiscardChanges));
                         builder.setPositiveButton(LocaleController.getString("Yes", R.string.Yes), new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
@@ -313,7 +313,7 @@ public class MrAccountSettingsActivity extends BaseFragment {
                     if( addrCell==null) {
                         addrCell = new MrEditTextCell(mContext);
                         addrCell.setValueHintAndLabel(MrMailbox.MrMailboxGetConfig(MrMailbox.hMailbox, "addr", ""),
-                                "", "Meine E-Mail-Adresse", false);
+                                "", LocaleController.getString("MyEmailAddress", R.string.MyEmailAddress), false);
                     }
                     view = addrCell;
                 }
@@ -321,7 +321,7 @@ public class MrAccountSettingsActivity extends BaseFragment {
                     if( mailPwCell==null) {
                         mailPwCell = new MrEditTextCell(mContext);
                         mailPwCell.setValueHintAndLabel(MrMailbox.MrMailboxGetConfig(MrMailbox.hMailbox, "mail_pw", ""),
-                                "", "Passwort", false);
+                                "", LocaleController.getString("Password", R.string.Password), false);
                         mailPwCell.getEditTextView().setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS | InputType.TYPE_TEXT_VARIATION_PASSWORD);
                     }
                     view = mailPwCell;
@@ -330,7 +330,7 @@ public class MrAccountSettingsActivity extends BaseFragment {
                     if( mailServerCell==null) {
                         mailServerCell = new MrEditTextCell(mContext);
                         mailServerCell.setValueHintAndLabel(MrMailbox.MrMailboxGetConfig(MrMailbox.hMailbox, "mail_server", ""),
-                                "automatisch ermitteln", "IMAP-Server", false);
+                                LocaleController.getString("Automatic", R.string.Automatic), LocaleController.getString("ImapServer", R.string.ImapServer), false);
                     }
                     view = mailServerCell;
                 }
@@ -338,7 +338,7 @@ public class MrAccountSettingsActivity extends BaseFragment {
                     if( mailPortCell==null) {
                         mailPortCell = new MrEditTextCell(mContext);
                         mailPortCell.setValueHintAndLabel(MrMailbox.MrMailboxGetConfig(MrMailbox.hMailbox, "mail_port", ""),
-                                "Standard", "IMAP-Port", false);
+                                LocaleController.getString("Default", R.string.Default), LocaleController.getString("ImapPort", R.string.ImapPort), false);
                     }
                     view = mailPortCell;
                 }
@@ -346,7 +346,7 @@ public class MrAccountSettingsActivity extends BaseFragment {
                     if( mailUserCell==null) {
                         mailUserCell = new MrEditTextCell(mContext);
                         mailUserCell.setValueHintAndLabel(MrMailbox.MrMailboxGetConfig(MrMailbox.hMailbox, "mail_user", ""),
-                                "aus E-Mail-Adresse von oben", "IMAP-Loginname", false);
+                                LocaleController.getString("FromAbove", R.string.FromAbove), LocaleController.getString("ImapLoginname", R.string.ImapLoginname), false);
                     }
                     view = mailUserCell;
                 }
@@ -354,7 +354,7 @@ public class MrAccountSettingsActivity extends BaseFragment {
                     if( sendServerCell==null) {
                         sendServerCell = new MrEditTextCell(mContext);
                         sendServerCell.setValueHintAndLabel(MrMailbox.MrMailboxGetConfig(MrMailbox.hMailbox, "send_server", ""),
-                                "automatisch ermitteln", "SMTP-Server", false);
+                                LocaleController.getString("Automatic", R.string.Automatic), LocaleController.getString("SmtpServer", R.string.SmtpServer), false);
                     }
                     view = sendServerCell;
                 }
@@ -362,7 +362,7 @@ public class MrAccountSettingsActivity extends BaseFragment {
                     if( sendPortCell==null) {
                         sendPortCell = new MrEditTextCell(mContext);
                         sendPortCell.setValueHintAndLabel(MrMailbox.MrMailboxGetConfig(MrMailbox.hMailbox, "send_port", ""),
-                                "Standard", "SMTP-Port", false);
+                                LocaleController.getString("Default", R.string.Default), LocaleController.getString("SmtpPort", R.string.SmtpPort), false);
                     }
                     view = sendPortCell;
                 }
@@ -370,7 +370,7 @@ public class MrAccountSettingsActivity extends BaseFragment {
                     if( sendUserCell==null) {
                         sendUserCell = new MrEditTextCell(mContext);
                         sendUserCell.setValueHintAndLabel(MrMailbox.MrMailboxGetConfig(MrMailbox.hMailbox, "send_user", ""),
-                                "aus E-Mail-Adresse von oben", "SMTP-Loginname", false);
+                                LocaleController.getString("FromAbove", R.string.FromAbove), LocaleController.getString("SmtpLoginname", R.string.SmtpLoginname), false);
                     }
                     view = sendUserCell;
                 }
@@ -378,10 +378,10 @@ public class MrAccountSettingsActivity extends BaseFragment {
                     if( sendPwCell==null) {
                         sendPwCell = new MrEditTextCell(mContext);
                         sendPwCell.setValueHintAndLabel(MrMailbox.MrMailboxGetConfig(MrMailbox.hMailbox, "send_pw", ""),
-                                "dasselbe wie oben", "SMTP-Passwort", false);
-                        mailPwCell.getEditTextView().setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                                LocaleController.getString("FromAbove", R.string.FromAbove), LocaleController.getString("SmtpPassword", R.string.SmtpPassword), false);
+                        sendPwCell.getEditTextView().setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS | InputType.TYPE_TEXT_VARIATION_PASSWORD);
                     }
-                    view = mailPwCell;
+                    view = sendPwCell;
                 }
             }
             else if (type == typeSection) {
@@ -390,11 +390,11 @@ public class MrAccountSettingsActivity extends BaseFragment {
                     view.setBackgroundColor(0xffffffff);
                 }
                 if (i == rowSectionBasic) {
-                    ((HeaderCell) view).setText("Grundeinstellungen");
+                    ((HeaderCell) view).setText(LocaleController.getString("BasicSettings", R.string.BasicSettings));
                 } else if (i == rowSectionMail) {
-                    ((HeaderCell) view).setText("Posteingangs-Einstellungen");
+                    ((HeaderCell) view).setText(LocaleController.getString("InboxHeadline", R.string.InboxHeadline));
                 } else if (i == rowSectionSend) {
-                    ((HeaderCell) view).setText("Postausgangs-Einstellungen");
+                    ((HeaderCell) view).setText(LocaleController.getString("OutboxHeadline", R.string.OutboxHeadline));
                 }
             }
             else if (type == typeShadowSection) {
@@ -407,11 +407,11 @@ public class MrAccountSettingsActivity extends BaseFragment {
                     view = new TextInfoPrivacyCell(mContext);
                 }
                 if( i==rowInfoBelowMailPw2) {
-                    ((TextInfoPrivacyCell) view).setText("Für bekannte E-Mail-Anbieter können alle weiteren Einstellungen automatisch ermittelt werden.\n\nAnsonsten müssen in den folgenden Felder die notwendigen Daten eingegeben werden:");
+                    ((TextInfoPrivacyCell) view).setText(LocaleController.getString("MyAccoutExplain", R.string.MyAccountExplain));
                     view.setBackgroundResource(R.drawable.greydivider); // has shadow top+bottom
                 }
                 else if( i==rowInfoBelowSendPw) {
-                    ((TextInfoPrivacyCell) view).setText("Unter Umständen muss die IMAP-/SMTP-Funktion zunächst für Ihre E-Mail-Adresse eingeschaltet werden. Sie finden entsprechende Funktionen z.B. in der E-Mail-Weboberfläche.\n\nBei Problemen kann vielleicht Ihr E-Mail-Anbieter oder ein Bekannter weiterhelfen.");
+                    ((TextInfoPrivacyCell) view).setText(LocaleController.getString("MyAccountExplain2", R.string.MyAccountExplain2));
                     view.setBackgroundResource(R.drawable.greydivider_bottom);
                 }
             }

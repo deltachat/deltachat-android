@@ -1081,4 +1081,23 @@
     <string name="MyAccount">Mein Konto</string>
     <string name="No">Nein</string>
     <string name="Yes">Ja</string>
+    <string name="MyName">Mein Name</string>
+    <string name="MyNameExplain">Der Name erscheint in allen ausgehenden Nachrichten.\n\nWenn kein Name angegeben wird, erhält der Empfänger nur die E-Mail-Adresse aus den Kontoeinstellungen.</string>
+    <string name="MyEmailAddress">Meine E-Mail-Adresse</string>
+    <string name="Password">Passwort</string>
+    <string name="Page2Title">Jeden kontatkieren</string>
+    <string name="SmtpPassword">SMTP-Passwort</string>
+    <string name="FromAbove">wie oben</string>
+    <string name="SmtpLoginname">SMTP-Loginname</string>
+    <string name="SmtpPort">SMTP-Port</string>
+    <string name="SmtpServer">SMTP-Server</string>
+    <string name="Automatic">automatisch</string>
+    <string name="ImapLoginname">IMAP-Loginname</string>
+    <string name="ImapPort">IMAP-Port</string>
+    <string name="ImapServer">IMAP-Server</string>
+    <string name="BasicSettings">Grundeinstellungen</string>
+    <string name="OutboxHeadline">Postausgang</string>
+    <string name="InboxHeadline">Posteingang</string>
+    <string name="MyAccountExplain">Für bekannte E-Mail-Anbieter werden die weiteren Einstellungen automatisch ermittelt.</string>
+    <string name="MyAccountExplain2">Manchmal muss die IMAP-/SMTP-Funktion noch in der E-Mail-Weboberfläche eingeschaltet werden.\n\nBei Problemen kann der E-Mail-Anbieter oder ein Bekannter weiterhelfen.</string>
 </resources>
