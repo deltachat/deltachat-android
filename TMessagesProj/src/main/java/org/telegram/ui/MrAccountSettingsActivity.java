@@ -191,10 +191,12 @@ public class MrAccountSettingsActivity extends BaseFragment {
         // Warning: the widgets are created as needed and may not be present!
         String v;
 
+        /*
         if( !isModified() && MrMailbox.MrMailboxIsConfigured(MrMailbox.hMailbox)!=0 ) {
             finishFragment();
             return; // nothing to do
         }
+        */
 
         if( addrCell!=null) {
             v = addrCell.getValue().trim();
@@ -242,8 +244,12 @@ public class MrAccountSettingsActivity extends BaseFragment {
         }
 
         MrMailbox.MrMailboxConfigure(MrMailbox.hMailbox);
+        if( MrMailbox.MrMailboxConnect(MrMailbox.hMailbox)!=0 ) {
+            MrMailbox.MrMailboxFetch(MrMailbox.hMailbox);
+        }
 
         // show dialog
+        /*
         AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
         builder.setTitle(LocaleController.getString("AppName", R.string.AppName));
         builder.setMessage("Testing the server connection, this may take a moment.");
@@ -254,6 +260,9 @@ public class MrAccountSettingsActivity extends BaseFragment {
             }
         });
         showDialog(builder.create());
+        */
+
+        finishFragment(); // disable this when a dialog is used
 
         NotificationCenter.getInstance().postNotificationName(NotificationCenter.mainUserInfoChanged);
     }
@@ -457,7 +466,7 @@ public class MrAccountSettingsActivity extends BaseFragment {
 
         @Override
         public int getViewTypeCount() {
-            return 1;
+            return 1; /* SIC! internally, we ingnore the type, each row has its own type--otherwise text entry stuff would not work */
         }
 
         @Override

@@ -470,7 +470,7 @@
     <string name="Events">Eventos</string>
     <string name="Language">Idioma</string>
     <string name="TelegramFaq">Preguntas frecuentes</string>
-    <string name="TelegramFaqUrl">https://telegram.org/faq/es</string>
+    <string name="TelegramFaqUrl">https://messenger.b44t.com/help</string>
     <string name="PrivacyPolicy">Política de privacidad</string>
     <string name="DeleteLocalization">¿Eliminar traducción?</string>
     <string name="IncorrectLocalization">Archivo de traducción incorrecto</string>
@@ -551,20 +551,12 @@
     <string name="KeepMediaInfo">Las fotos, los vídeos y los archivos de los chats en la nube a los que <![CDATA[<b>no accedas</b>]]> durante ese periodo de tiempo se eliminarán del dispositivo para liberar espacio.</string>
     <string name="KeepMediaForever">Siempre</string>
     <!--sessions view-->
-    <string name="SessionsTitle">Sesiones activas</string>
-    <string name="CurrentSession">Sesión actual</string>
-    <string name="NoOtherSessions">Sin otras sesiones activas</string>
-    <string name="NoOtherSessionsInfo">Puedes iniciar sesión en Telegram desde otro móvil, tablet o computador, usando el mismo número de teléfono. Todos tus datos se sincronizarán al instante.</string>
-    <string name="OtherSessions">Sesiones activas</string>
     <string name="SessionsInfo">Controla tus sesiones en otros dispositivos.</string>
-    <string name="TerminateSessionInfo">Toca una sesión para cerrarla.</string>
-    <string name="TerminateSessionQuestion">¿Cerrar esta sesión?</string>
     <string name="UnofficialApp">aplicación no oficial</string>
     <!--passcode view-->
     <string name="Passcode">Código de acceso</string>
     <string name="ChangePasscode">Cambiar código de acceso</string>
     <string name="ChangePasscodeInfo">Cuando configuras un código, aparece un candado en la pantalla de chats. Toca sobre él para bloquear y desbloquear la aplicación.\n\nNota: si olvidas el código, tendrás que eliminar y reinstalar la aplicación. Perderás todos los chats secretos.</string>
-    <string name="ChangePasscodeAlert">Ahora verás un candado en la pantalla de chats. Púlsalo para bloquear tu Telegram con tu nuevo código.</string>
     <string name="PasscodePIN">PIN</string>
     <string name="PasscodePassword">Contraseña</string>
     <string name="EnterCurrentPasscode">Pon tu código de acceso actual</string>
@@ -572,7 +564,6 @@
     <string name="EnterNewPasscode">Pon tu nuevo código de acceso</string>
     <string name="EnterYourPasscode">Pon tu código de acceso</string>
     <string name="ReEnterYourPasscode">Pon, otra vez, tu nuevo código</string>
-    <string name="InvalidPasscode">Código de acceso inválido</string>
     <string name="PasscodeDoNotMatch">Los códigos de acceso no coinciden</string>
     <string name="AutoLock">Bloqueo automático</string>
     <string name="AutoLockInfo">El bloqueo se activará transcurrido este tiempo.</string>
@@ -660,8 +651,6 @@
     <string name="VideoCaption">Comentario de vídeo</string>
     <string name="Caption">Comentario</string>
     <!--password view-->
-    <string name="YourPassword">Tu contraseña</string>
-    <string name="PleaseEnterCurrentPassword">Por favor, pon tu contraseña</string>
     <string name="RestorePasswordNoEmailTitle">Lo sentimos</string>
     <string name="RestorePasswordNoEmailText">Como no estableciste un e-mail de recuperación cuando configuraste tu contraseña, las opciones restantes son recordar tu contraseña o restablecer tu cuenta.</string>
     <string name="RestoreEmailSent">Enviamos un código de recuperación al e-mail que nos diste:\n\n%1$s</string>
@@ -818,7 +807,6 @@
     <string name="SendMessagesTo">¿Enviar mensajes a %1$s?</string>
     <string name="SendContactTo">¿Enviar contacto a %1$s?</string>
     <string name="AreYouSureLogout">¿Quieres cerrar sesión?\n\nConsidera que puedes usar Telegram en todos tus dispositivos a la vez.\n\nRecuerda que, al cerrar sesión, eliminas todos tus chats secretos.</string>
-    <string name="AreYouSureSessions">¿Quieres terminar todas las otras sesiones?</string>
     <string name="AreYouSureDeleteAndExit">¿Quieres eliminar y dejar el grupo?</string>
     <string name="AreYouSureDeleteThisChat">¿Quieres eliminar este chat?</string>
     <string name="ShareYouLocationTitle">¿Compartir tu ubicación?</string>

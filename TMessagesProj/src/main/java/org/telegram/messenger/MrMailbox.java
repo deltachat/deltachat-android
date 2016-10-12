@@ -87,6 +87,7 @@ public class MrMailbox {
     public native static int     MrMailboxOpen              (long hMailbox, String dbfile, String blobdir);
     public native static void    MrMailboxClose             (long hMailbox);
     public native static int     MrMailboxConfigure         (long hMailbox);
+    public native static int     MrMailboxIsConfigured      (long hMailbox);
     public native static int     MrMailboxConnect           (long hMailbox);
     public native static void    MrMailboxDisconnect        (long hMailbox);
     public native static int     MrMailboxFetch             (long hMailbox);
@@ -98,7 +99,8 @@ public class MrMailbox {
 
     public native static int     MrMailboxSetConfig         (long hMailbox, String key, String value); // value may be NULL
     public native static String  MrMailboxGetConfig         (long hMailbox, String key, String def); // def may be NULL, returns empty string as NULL
-    public native static int     MrMailboxIsConfigured      (long hMailbox);
+
+    public native static String  MrMailboxGetInfo           (long hMailbox);
 
     // MrChatlist objects
     public native static void    MrChatlistUnref            (long hChatlist);

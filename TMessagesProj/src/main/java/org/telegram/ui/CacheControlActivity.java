@@ -45,6 +45,7 @@ import org.telegram.ui.ActionBar.BaseFragment;
 import org.telegram.ui.ActionBar.BottomSheet;
 import org.telegram.ui.Adapters.BaseFragmentAdapter;
 import org.telegram.ui.Cells.CheckBoxCell;
+import org.telegram.ui.Cells.HeaderCell;
 import org.telegram.ui.Cells.TextInfoPrivacyCell;
 import org.telegram.ui.Cells.TextSettingsCell;
 import org.telegram.ui.Components.LayoutHelper;
@@ -56,6 +57,7 @@ public class CacheControlActivity extends BaseFragment {
 
     private ListAdapter listAdapter;
 
+    private int headlineRow; // EDIT BY MR -- added
     private int databaseRow;
     private int databaseInfoRow;
     private int keepMediaRow;
@@ -63,6 +65,11 @@ public class CacheControlActivity extends BaseFragment {
     private int cacheRow;
     private int cacheInfoRow;
     private int rowCount;
+
+    private int typeTextSetting  = 0; // EDIT BY MR -- no gaps, please
+    private int typeTextInfo     = 1;
+    private int typeSectionTitle = 2;
+    private int typeCount        = 3; // /EDIT BY MR -- no gaps, please
 
     private long databaseSize = -1;
     private long cacheSize = -1;
@@ -82,6 +89,7 @@ public class CacheControlActivity extends BaseFragment {
         super.onFragmentCreate();
 
         rowCount = 0;
+        headlineRow = -1;// rowCount++; // EDIT BY MR -- added
         keepMediaRow = rowCount++;
         keepMediaInfoRow = rowCount++;
         cacheRow = -1; // EDIT BY MR -- rowCount++;
@@ -592,8 +600,17 @@ public class CacheControlActivity extends BaseFragment {
 
         @Override
         public View getView(int i, View view, ViewGroup viewGroup) {
-            int type = getItemViewType(i);
-            if (type == 0) {
+            int type_ = getItemViewType(i);
+            if (type_ == typeSectionTitle) {
+                if (view == null) {
+                    view = new HeaderCell(mContext);
+                    view.setBackgroundColor(0xffffffff);
+                }
+                if (i == headlineRow) {
+                    ((HeaderCell) view).setText(LocaleController.getString("Settings", R.string.Settings));
+                }
+            }
+            else if (type_ == typeTextSetting) {
                 if (view == null) {
                     view = new TextSettingsCell(mContext);
                     view.setBackgroundColor(0xffffffff);
@@ -620,7 +637,7 @@ public class CacheControlActivity extends BaseFragment {
                     }
                     textCell.setTextAndValue(LocaleController.getString("KeepMedia", R.string.KeepMedia), value, false);
                 }
-            } else if (type == 1) {
+            } else if (type_ == typeTextInfo) {
                 if (view == null) {
                     view = new TextInfoPrivacyCell(mContext);
                 }
@@ -641,16 +658,19 @@ public class CacheControlActivity extends BaseFragment {
         @Override
         public int getItemViewType(int i) {
             if (i == databaseRow || i == cacheRow || i == keepMediaRow) {
-                return 0;
+                return typeTextSetting;
             } else if (i == databaseInfoRow || i == cacheInfoRow || i == keepMediaInfoRow) {
-                return 1;
+                return typeTextInfo;
             }
-            return 0;
+            else if(i==headlineRow) {
+                return typeSectionTitle;
+            }
+            return typeTextSetting;
         }
 
         @Override
         public int getViewTypeCount() {
-            return 2;
+            return typeCount;
         }
 
         @Override

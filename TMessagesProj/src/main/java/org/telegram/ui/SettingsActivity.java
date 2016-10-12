@@ -59,6 +59,7 @@ import org.telegram.ui.Cells.HeaderCell;
 import org.telegram.ui.Cells.ShadowSectionCell;
 import org.telegram.ui.Cells.TextCheckCell;
 import org.telegram.ui.Cells.TextDetailSettingsCell;
+import org.telegram.ui.Cells.TextInfoPrivacyCell;
 import org.telegram.ui.Cells.TextSettingsCell;
 import org.telegram.ui.ActionBar.ActionBar;
 //import org.telegram.ui.ActionBar.ActionBarMenu; -- EDIT BY MR
@@ -246,19 +247,17 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
         askQuestionRow = -1; // EDIT BY MR -- rowCount++;
         telegramFaqRow = rowCount++;
         privacyPolicyRow = -1; // EDIT BY MR -- rowCount++;
+        sendLogsRow = -1; // EDIT BY MR
+        clearLogsRow = -1; // EDIT BY MR
+        switchBackendButtonRow = -1; // EDIT BY MR
+        /* EDIT BY MR
         if (BuildVars.DEBUG_VERSION) {
             sendLogsRow = rowCount++;
             clearLogsRow = rowCount++;
             switchBackendButtonRow = rowCount++;
         }
-        // EDIT BY MR
-        else {
-            sendLogsRow = -1;
-            clearLogsRow = -1;
-            switchBackendButtonRow = -1;
-        }
-        // /EDIT BY MR
-        versionRow = rowCount++;
+        */
+        versionRow = -1; // EDIT BY MR -- rowCount++;
         contactsSectionRow = -1; // EDIT BY MR - rowCount++;
         contactsReimportRow = -1; // EDIT BY MR -rowCount++;
         contactsSortRow = -1; // EDIT BY MR -- rowCount++;
@@ -446,9 +445,13 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
                     */
                 }
                 else if (i == sendLogsRow) {
+                    /* EDIT BY MR
                     sendLogs();
+                    */
                 } else if (i == clearLogsRow) {
+                    /* EDIT BY MR
                     FileLog.cleanupLogs();
+                    */
                 } else if (i == sendByEnterRow) {
                     SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("mainconfig", Activity.MODE_PRIVATE);
                     boolean send = preferences.getBoolean("send_by_enter", false);
@@ -488,6 +491,7 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
                 } else if (i == languageRow) {
                     presentFragment(new LanguageSelectActivity());
                 } else if (i == switchBackendButtonRow) {
+                    /* EDIT BY MR
                     if (getParentActivity() == null) {
                         return;
                     }
@@ -502,9 +506,24 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
                     });
                     builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
                     showDialog(builder.create());
+                    */
                 } else if (i == telegramFaqRow) {
+                    /* EDIT BY MR
                     Browser.openUrl(getParentActivity(), LocaleController.getString("TelegramFaqUrl", R.string.TelegramFaqUrl));
-                } 
+                    */
+                    // EDIT BY MR
+                    AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
+                    builder.setTitle(LocaleController.getString("AppName", R.string.AppName) + " " + getVersion());
+                    builder.setMessage(MrMailbox.MrMailboxGetInfo(MrMailbox.hMailbox)+" Frontend based upon Telegram for Android.");
+                    builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                        ;
+                        }
+                    });
+                    showDialog(builder.create());
+                    // /EDIT BY MR
+                }
                 else if (i == privacyPolicyRow) {
                     /* EDIT BY MR
                     Browser.openUrl(getParentActivity(), LocaleController.getString("PrivacyPolicyUrl", R.string.PrivacyPolicyUrl));
@@ -664,6 +683,7 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
 
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                /* EDIT BY MR
                 if (position == versionRow) {
                     pressCount++;
                     if (pressCount >= 2) {
@@ -693,6 +713,7 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
                     }
                     return true;
                 }
+                */
                 return false;
             }
         });
@@ -841,6 +862,34 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
 
         return fragmentView;
     }
+
+    // EDIT BY MR
+    private String getVersion()
+    {
+        try {
+            PackageInfo pInfo = ApplicationLoader.applicationContext.getPackageManager().getPackageInfo(ApplicationLoader.applicationContext.getPackageName(), 0);
+            int code = pInfo.versionCode / 10;
+            String abi = "";
+            switch (pInfo.versionCode % 10) {
+                case 0:
+                    abi = "arm";
+                    break;
+                case 1:
+                    abi = "arm-v7a";
+                    break;
+                case 2:
+                    abi = "x86";
+                    break;
+                case 3:
+                    abi = "universal";
+                    break;
+            }
+            return String.format(Locale.US, "V%s-%s", pInfo.versionName, abi);
+        } catch (Exception e) {
+            return "ErrVersion";
+        }
+    }
+    // /EDIT BY MR
 
     @Override
     protected void onDialogDismiss(Dialog dialog) {
@@ -1173,6 +1222,7 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
         */
     }
 
+    /* EDIT BY MR
     private void sendLogs() {
         try {
             ArrayList<Uri> uris = new ArrayList<>();
@@ -1196,6 +1246,7 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
             e.printStackTrace();
         }
     }
+    */
 
     private class ListAdapter extends BaseFragmentAdapter {
         private Context mContext;
@@ -1300,7 +1351,7 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
                 } else if (i == switchBackendButtonRow) {
                     textCell.setText("Switch Backend", true);
                 } else if (i == telegramFaqRow) {
-                    textCell.setText(LocaleController.getString("TelegramFAQ", R.string.TelegramFaq), true);
+                    textCell.setText(LocaleController.getString("AboutThisProgram", R.string.AboutThisProgram), true);
                 } else if (i == contactsReimportRow) {
                     textCell.setText(LocaleController.getString("ImportContacts", R.string.ImportContacts), true);
                 } else if (i == stickersRow) {
@@ -1342,7 +1393,7 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
                 if (i == settingsSectionRow2) {
                     ((HeaderCell) view).setText(LocaleController.getString("SETTINGS", R.string.SETTINGS));
                 } else if (i == supportSectionRow2) {
-                    ((HeaderCell) view).setText(LocaleController.getString("Support", R.string.Support));
+                    ((HeaderCell) view).setText(LocaleController.getString("Info", R.string.Info)); // EDIT BY MR -- was: Support
                 } else if (i == messagesSectionRow2) {
                     ((HeaderCell) view).setText(LocaleController.getString("MessagesSettings", R.string.MessagesSettings));
                 } else if (i == mediaDownloadSection2) {
@@ -1352,7 +1403,8 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
                 }
             } else if (type == 5) {
                 if (view == null) {
-                    view = new TextInfoCell(mContext);
+                    view = new TextInfoPrivacyCell(mContext);
+					/* EDIT BY MR
                     try {
                         PackageInfo pInfo = ApplicationLoader.applicationContext.getPackageManager().getPackageInfo(ApplicationLoader.applicationContext.getPackageName(), 0);
                         int code = pInfo.versionCode / 10;
@@ -1371,11 +1423,11 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
                                 abi = "universal";
                                 break;
                         }
-                        ((TextInfoCell) view).setText(String.format(Locale.US, "V%s (%d), Backend V%s (%s)",
-                                pInfo.versionName, code, MrMailbox.MrGetVersionStr(), abi)); // EDIT BY MR
+                        ((TextInfoCell) view).setText(String.format(Locale.US, "Telegram for Android v%s (%d) %s", pInfo.versionName, code, abi));
                     } catch (Exception e) {
                         FileLog.e("tmessages", e);
                     }
+                    */
                 }
             } else if (type == 6) {
                 if (view == null) {

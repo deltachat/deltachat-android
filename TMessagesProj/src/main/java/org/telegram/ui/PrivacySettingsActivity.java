@@ -72,7 +72,7 @@ public class PrivacySettingsActivity extends BaseFragment implements Notificatio
         ContactsController.getInstance().loadPrivacySettings();
 
         rowCount = 0;
-        privacySectionRow = rowCount++;
+        privacySectionRow = -1; //rowCount++;
         blockedRow = rowCount++;
         lastSeenRow = -1; // EDIT BY MR -- rowCount++;
         groupsRow = -1; // EDIT BY MR -- rowCount++;

@@ -45,6 +45,7 @@ import org.telegram.ui.ActionBar.ActionBar;
 import org.telegram.ui.ActionBar.ActionBarMenu;
 import org.telegram.ui.ActionBar.BaseFragment;
 import org.telegram.ui.Adapters.BaseFragmentAdapter;
+import org.telegram.ui.Cells.HeaderCell;
 import org.telegram.ui.Cells.MrEditTextCell;
 import org.telegram.ui.Cells.TextInfoPrivacyCell;
 import org.telegram.ui.Cells.TextSettingsCell;
@@ -56,12 +57,14 @@ public class MrNameSettingsActivity extends BaseFragment {
     // the list
     private ListAdapter listAdapter;
 
+    private int         rowNameTitle;
     private int         rowDisplayname;
     private int         rowDisplaynameInfo;
     private int         rowCount;
 
     private final int   typeInfo      = 0; // no gaps here!
     private final int   typeTextEntry = 1;
+    private final int   typeSection   = 2;
 
     MrEditTextCell      displaynameCell; // warning all these objects may be null!
 
@@ -74,6 +77,7 @@ public class MrNameSettingsActivity extends BaseFragment {
         super.onFragmentCreate();
 
         rowCount = 0;
+        rowNameTitle = -1; // rowCount++;
         rowDisplayname = rowCount++;
         rowDisplaynameInfo = rowCount++;
 
@@ -211,12 +215,21 @@ public class MrNameSettingsActivity extends BaseFragment {
         @Override
         public View getView(int i, View view, ViewGroup viewGroup) {
             int type = getItemViewType__(i);
-            if (type == typeTextEntry) {
+            if (type == typeSection) {
+                if (view == null) {
+                    view = new HeaderCell(mContext);
+                    view.setBackgroundColor(0xffffffff);
+                }
+                if (i == rowNameTitle) {
+                    ((HeaderCell) view).setText(LocaleController.getString("MyName", R.string.MyName));
+                }
+            }
+            else if (type == typeTextEntry) {
                 if (i == rowDisplayname) {
                     if(displaynameCell==null) {
                         displaynameCell = new MrEditTextCell(mContext);
                         displaynameCell.setValueHintAndLabel(MrMailbox.MrMailboxGetConfig(MrMailbox.hMailbox, "displayname", ""),
-                                "", LocaleController.getString("MyName", R.string.MyName), true);
+                                "", "", true);
                     }
                     view = displaynameCell;
                 }
@@ -241,13 +254,16 @@ public class MrNameSettingsActivity extends BaseFragment {
             if (i == rowDisplayname) {
                 return typeTextEntry;
             }
+            else if(i==rowNameTitle) {
+                return typeSection;
+            }
             return typeInfo;
         }
 
 
         @Override
         public int getViewTypeCount() {
-            return 1;
+            return 1; /* SIC! internally, we ingnore the type, each row has its own type--otherwise text entry stuff would not work */
         }
 
         @Override

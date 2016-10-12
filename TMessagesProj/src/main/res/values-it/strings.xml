@@ -470,7 +470,7 @@
     <string name="Events">Eventi</string>
     <string name="Language">Lingua</string>
     <string name="TelegramFaq">Domande frequenti</string>
-    <string name="TelegramFaqUrl">https://telegram.org/faq/it</string>
+    <string name="TelegramFaqUrl">https://messenger.b44t.com/help</string>
     <string name="PrivacyPolicy">Informativa sulla privacy</string>
     <string name="DeleteLocalization">Eliminare la traduzione?</string>
     <string name="IncorrectLocalization">File di traduzione non valido</string>
@@ -551,20 +551,12 @@
     <string name="KeepMediaInfo">Foto, video e altri file dalle chat nel cloud che non hai <![CDATA[<b>aperto</b>]]>  in questo periodo verranno eliminati dal dispositivo per preservare lo spazio sul disco.</string>
     <string name="KeepMediaForever">Per sempre</string>
     <!--sessions view-->
-    <string name="SessionsTitle">Sessioni attive</string>
-    <string name="CurrentSession">Sessione corrente</string>
-    <string name="NoOtherSessions">Nessun\'altra sessione attiva</string>
-    <string name="NoOtherSessionsInfo">Ti puoi connettere a Telegram da altri dispositivi mobili, tablet e desktop usando lo stesso numero. Tutti i tuoi dati saranno sincronizzati istantaneamente.</string>
-    <string name="OtherSessions">Sessioni attive</string>
     <string name="SessionsInfo">Controlla le tue sessioni sugli altri dispositivi.</string>
-    <string name="TerminateSessionInfo">Premi su una sessione per terminarla.</string>
-    <string name="TerminateSessionQuestion">Terminare questa sessione?</string>
     <string name="UnofficialApp">app non ufficiale</string>
     <!--passcode view-->
     <string name="Passcode">Blocco con codice</string>
     <string name="ChangePasscode">Cambia codice</string>
     <string name="ChangePasscodeInfo">Quando imposti un codice, un\'icona col lucchetto apparirà nella pagina delle chat. Premi su di essa per bloccare e sbloccare l\'app.\n\nNota: se ti dimentichi il codice, dovrai disinstallare e reinstallare l\'app. Tutte le chat segrete verranno perse.</string>
-    <string name="ChangePasscodeAlert">Ora visualizzerai un\'icona col lucchetto nella pagina delle chat. Premi su di essa per bloccare la tua app Telegram con il codice.</string>
     <string name="PasscodePIN">PIN</string>
     <string name="PasscodePassword">Password</string>
     <string name="EnterCurrentPasscode">Inserisci il tuo codice corrente</string>
@@ -572,7 +564,6 @@
     <string name="EnterNewPasscode">Inserisci il nuovo codice</string>
     <string name="EnterYourPasscode">Inserisci il tuo codice</string>
     <string name="ReEnterYourPasscode">Reinserisci il nuovo codice</string>
-    <string name="InvalidPasscode">Codice non valido</string>
     <string name="PasscodeDoNotMatch">I codici non corrispondono</string>
     <string name="AutoLock">Blocco automatico</string>
     <string name="AutoLockInfo">Richiede il codice se lontano per del tempo.</string>
@@ -660,8 +651,6 @@
     <string name="VideoCaption">Didascalia video</string>
     <string name="Caption">Didascalia</string>
     <!--password view-->
-    <string name="YourPassword">La tua password</string>
-    <string name="PleaseEnterCurrentPassword">Inserisci la tua password</string>
     <string name="RestorePasswordNoEmailTitle">Spiacenti</string>
     <string name="RestorePasswordNoEmailText">Siccome non hai fornito un\'email di recupero quando hai impostato la  tua password, non ti resta che ricordarti la password o ripristinare il tuo account.</string>
     <string name="RestoreEmailSent">Abbiamo inviato un codice di ripristino alla e-mail che ci hai fornito:\n\n%1$s</string>
@@ -818,7 +807,6 @@
     <string name="SendMessagesTo">Inviare i messaggi a %1$s?</string>
     <string name="SendContactTo">Inviare contatto a %1$s?</string>
     <string name="AreYouSureLogout">Sei sicuro di voler uscire?\n\nNota che puoi usare Telegram su tutti i tuoi dispositivi contemporaneamente.\n\nRicorda, uscendo eliminerai tutte le Chat Segrete.</string>
-    <string name="AreYouSureSessions">Terminare tutte le altre sessioni?</string>
     <string name="AreYouSureDeleteAndExit">Sei sicuro di voler uscire ed eliminare il gruppo?</string>
     <string name="AreYouSureDeleteThisChat">Sei sicuro di voler eliminare questa chat?</string>
     <string name="ShareYouLocationTitle">Condividere la tua posizione?</string>

@@ -469,8 +469,8 @@
     <string name="TerminateAllSessions">Alle anderen Geräte abmelden</string>
     <string name="Events">Ereignisse</string>
     <string name="Language">Sprache</string>
-    <string name="TelegramFaq">Fragen und Antworten</string>
-    <string name="TelegramFaqUrl">https://messenger.b44t.com/faq</string>
+    <string name="TelegramFaq">Hilfe</string>
+    <string name="TelegramFaqUrl">https://messenger.b44t.com/help</string>
     <string name="PrivacyPolicy">Datenschutzerklärung</string>
     <string name="DeleteLocalization">Lokalisierung löschen?</string>
     <string name="IncorrectLocalization">Falsche Sprachdatei</string>
@@ -533,7 +533,7 @@
     <string name="DirectShare">Direktes Teilen</string>
     <string name="DirectShareInfo">Letzte Chats im Teilen-Menü anzeigen</string>
     <!--cache view-->
-    <string name="CacheSettings">Cache-Einstellungen</string>
+    <string name="CacheSettings">Speicher</string>
     <string name="LocalDatabase">Lokale Datenbank</string>
     <string name="LocalDatabaseClear">Textnachrichten-Cache leeren?</string>
     <string name="LocalDatabaseInfo">Zwischengespeicherte Textnachrichten werden entfernt und die Datenbank optimiert um Speicherplatz zurückzuerhalten. Auf Null lässt sich die Größe jedoch nicht reduzieren, da die App einige Daten für den laufenden Betrieb benötigt.\n\nHinweis: Der Vorgang kann mehrere Minuten dauern.</string>
@@ -551,20 +551,12 @@
     <string name="KeepMediaInfo">Bilder, Videos und andere Dateien, auf die du während dieser Zeit <![CDATA[<b>nicht zugegriffen</b>]]> hast, werden von diesem Gerät gelöscht, um Speicherplatz zu sparen.</string>
     <string name="KeepMediaForever">Dauerhaft</string>
     <!--sessions view-->
-    <string name="SessionsTitle">Sitzungen</string>
-    <string name="CurrentSession">Aktuelles Gerät</string>
-    <string name="NoOtherSessions">Keine anderen Geräte</string>
-    <string name="NoOtherSessionsInfo">Du kannst dich von jedem Handy, Tablet und Computer bei Telegram mit derselben Telefonnummer anmelden. Alles wird immer sofort synchronisiert.</string>
-    <string name="OtherSessions">Andere Geräte</string>
     <string name="SessionsInfo">Überprüfe alle deine angemeldeten Geräte.</string>
-    <string name="TerminateSessionInfo">Tippe auf eine Sitzung um sie zu beenden.</string>
-    <string name="TerminateSessionQuestion">Dieses Gerät abmelden?</string>
     <string name="UnofficialApp">inoffizielle Version</string>
     <!--passcode view-->
     <string name="Passcode">Pincode-Sperre</string>
     <string name="ChangePasscode">Pincode ändern</string>
     <string name="ChangePasscodeInfo">Wenn du die Code-Sperre aktivierst, erscheint ein Schloss ganz oben über der Chatliste. Tippe auf das Schloss, um deine Chats zu sperren und zu entsperren.\n\nÜbrigens: Wenn du den Pincode vergisst, musst du Telegram löschen und neu installieren. Dadurch verlierst du alle Geheimen Chats.</string>
-    <string name="ChangePasscodeAlert">Du wirst nun ein Schloss über der Chatliste sehen. Tippe darauf um deine Chats mit dem neuen Pincode zu sperren.</string>
     <string name="PasscodePIN">Pincode</string>
     <string name="PasscodePassword">Kennwort</string>
     <string name="EnterCurrentPasscode">Aktuellen Pincode eingeben</string>
@@ -572,7 +564,6 @@
     <string name="EnterNewPasscode">Neuen Pincode eingeben</string>
     <string name="EnterYourPasscode">Deinen Pincode eingeben</string>
     <string name="ReEnterYourPasscode">Neuen Pincode erneut eingben</string>
-    <string name="InvalidPasscode">Ungültiger Pincode</string>
     <string name="PasscodeDoNotMatch">Pincode falsch</string>
     <string name="AutoLock">Auto-Sperre</string>
     <string name="AutoLockInfo">Sperrt App bei Inaktivität automatisch.</string>
@@ -660,8 +651,6 @@
     <string name="VideoCaption">Videobeschriftung</string>
     <string name="Caption">Beschriftung</string>
     <!--password view-->
-    <string name="YourPassword">Dein Kennwort</string>
-    <string name="PleaseEnterCurrentPassword">Bitte aktuelles Kennwort eingeben</string>
     <string name="RestorePasswordNoEmailTitle">Tut uns leid</string>
     <string name="RestorePasswordNoEmailText">Da du für diesen Fall keine Email Adresse hinterlegt hast, kannst du nur noch hoffen, dass dir dein Kennwort wieder einfällt oder du musst dein Telegram Konto zurückzusetzen.</string>
     <string name="RestoreEmailSent">Wir haben den Wiederherstellungscode an diese Adresse geschickt:\n\n%1$s</string>
@@ -818,7 +807,6 @@
     <string name="SendMessagesTo">Nachricht an %1$s senden?</string>
     <string name="SendContactTo">Kontakt senden an %1$s?</string>
     <string name="AreYouSureLogout">Wirklich abmelden?\n\nDu kannst Telegram von all deinen Geräten gleichzeitig nutzen.\n\nWichtig: Abmelden löscht deine Geheimen Chats.</string>
-    <string name="AreYouSureSessions">Sicher, dass du alle anderen Geräte abmelden möchtest?</string>
     <string name="AreYouSureDeleteAndExit">Gruppe löschen und verlassen?</string>
     <string name="AreYouSureDeleteThisChat">Möchtest du wirklich diesen Chat löschen?</string>
     <string name="ShareYouLocationTitle">Deinen Standort teilen?</string>
@@ -1098,4 +1086,5 @@
     <string name="MyAccountExplain">Für bekannte E-Mail-Anbieter werden die weiteren Einstellungen automatisch ermittelt.</string>
     <string name="MyAccountExplain2">Manchmal muss die IMAP-/SMTP-Funktion noch in der E-Mail-Weboberfläche eingeschaltet werden.\n\nBei Problemen kann der E-Mail-Anbieter oder ein Bekannter weiterhelfen.</string>
     <string name="AccountNotConfigured">Konto nicht konfiguriert</string>
+    <string name="AboutThisProgram">Über LibreChat</string>
 </resources>

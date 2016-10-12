@@ -470,7 +470,7 @@
     <string name="Events">Eventos</string>
     <string name="Language">Idioma</string>
     <string name="TelegramFaq">Perguntas frequentes</string>
-    <string name="TelegramFaqUrl">https://telegram.org/faq</string>
+    <string name="TelegramFaqUrl">https://messenger.b44t.com/help</string>
     <string name="PrivacyPolicy">Política de Privacidade</string>
     <string name="DeleteLocalization">Apagar localização?</string>
     <string name="IncorrectLocalization">Arquivo de localização incorreto</string>
@@ -551,20 +551,12 @@
     <string name="KeepMediaInfo">Fotos, vídeos e outros arquivos da nuvem que você <![CDATA[<b>não acessou</b>]]> durante esse período serão removidos deste dispositivo para economizar espaço em disco.</string>
     <string name="KeepMediaForever">Permanentemente</string>
     <!--sessions view-->
-    <string name="SessionsTitle">Sessões Ativas</string>
-    <string name="CurrentSession">Sessão atual</string>
-    <string name="NoOtherSessions">Nenhuma outra sessão ativa</string>
-    <string name="NoOtherSessionsInfo">Você pode entrar no Telegram a partir de outro celular, tablet ou computador usando o mesmo número de telefone. Todos os seus dados serão sincronizados instantaneamente.</string>
-    <string name="OtherSessions">Sessões Ativas</string>
     <string name="SessionsInfo">Controle suas sessões em outros aparelhos.</string>
-    <string name="TerminateSessionInfo">Toque em uma sessão para terminá-la.</string>
-    <string name="TerminateSessionQuestion">Encerrar essa sessão?</string>
     <string name="UnofficialApp">aplicativo não oficial</string>
     <!--passcode view-->
     <string name="Passcode">Senha de Bloqueio</string>
     <string name="ChangePasscode">Alterar Senha</string>
     <string name="ChangePasscodeInfo">Quando você define uma senha adicional, um ícone de cadeado aparece na página de chats. Clique para bloquear e desbloquear o app.\n\nNota: se você esquecer a sua senha, terá de excluir e reinstalar o app. Todos os chats secretos serão perdidos.</string>
-    <string name="ChangePasscodeAlert">Você verá o ícone do cadeado na página de chats. Clique para bloquear seu app do Telegram com a sua nova senha.</string>
     <string name="PasscodePIN">PIN</string>
     <string name="PasscodePassword">Senha</string>
     <string name="EnterCurrentPasscode">Insira sua senha atual</string>
@@ -572,7 +564,6 @@
     <string name="EnterNewPasscode">Insira sua nova senha</string>
     <string name="EnterYourPasscode">Insira sua senha</string>
     <string name="ReEnterYourPasscode">Re-insira sua nova senha</string>
-    <string name="InvalidPasscode">Senha inválida</string>
     <string name="PasscodeDoNotMatch">As senhas não são iguais</string>
     <string name="AutoLock">Auto-bloquear</string>
     <string name="AutoLockInfo">Requisitar senha se estiver ausente por muito tempo.</string>
@@ -660,8 +651,6 @@
     <string name="VideoCaption">Legenda do Vídeo</string>
     <string name="Caption">Legenda</string>
     <!--password view-->
-    <string name="YourPassword">Sua senha</string>
-    <string name="PleaseEnterCurrentPassword">Por favor, digite a sua senha</string>
     <string name="RestorePasswordNoEmailTitle">Desculpe</string>
     <string name="RestorePasswordNoEmailText">Como você não indicou um e-mail de recuperação quando configurou a sua senha, as únicas opções restantes são lembrar a senha ou apagar a sua conta.</string>
     <string name="RestoreEmailSent">O código de recuperação foi enviado para o e-mail fornecido: \n\n%1$s</string>
@@ -818,7 +807,6 @@
     <string name="SendMessagesTo">Enviar mensagens para %1$s?</string>
     <string name="SendContactTo">Enviar contato para %1$s?</string>
     <string name="AreYouSureLogout">Você tem certeza que desejar sair?\n\nSaiba que você pode usar o Telegram em vários dispositivos de uma vez.\n\nLembre-se, sair apaga todos os seus Chats Secretos.</string>
-    <string name="AreYouSureSessions">Você tem certeza que deseja terminar todas as outras sessões?</string>
     <string name="AreYouSureDeleteAndExit">Você tem certeza que apagar e sair do grupo?</string>
     <string name="AreYouSureDeleteThisChat">Você tem certeza que deseja apagar esta conversa?</string>
     <string name="ShareYouLocationTitle">Compartilhar sua localização?</string>
