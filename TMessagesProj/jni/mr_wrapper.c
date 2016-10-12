@@ -27,6 +27,7 @@
  
  
 #include <jni.h>
+#include <android/log.h>
 #include "../../../messenger-backend/src/mrmailbox.h"
 
 
@@ -40,6 +41,38 @@
 	(*env)->NewStringUTF(env, a? a : "") /*should handle NULL arguments!*/
 
 
+/* our log handler */
+
+void mr_android_log_callback_(int type, const char* msg)
+{
+	int prio;
+	
+	switch( type ) {
+		case 'd': prio = ANDROID_LOG_DEBUG; break;
+		case 'i': prio = ANDROID_LOG_INFO;  break;
+		case 'w': prio = ANDROID_LOG_WARN;  break;
+		default:  prio = ANDROID_LOG_ERROR; break;
+	}
+	__android_log_print(ANDROID_LOG_ERROR, "LibreChat", "%s\n", msg); /* on problems, add `-llog` to `Android.mk` */
+}
+
+
+/* globl stuff */
+
+static void s_init_globals(JNIEnv *env)
+{
+	/* make sure, the intialisation is done only once */
+	static bool s_global_init_done = 0;
+	if( s_global_init_done ) { return; }
+	s_global_init_done = 1;
+	
+	/* init globals */
+	mrlog_set_handler(mr_android_log_callback_);
+	
+	mrosnative_init_android(env); /*this should be called before any other "important" routine is called*/
+}
+
+
 /*******************************************************************************
  * MrMailbox
  ******************************************************************************/
@@ -47,9 +80,10 @@
 
 /* MrMailbox - new/delete */
 
+
 JNIEXPORT jlong Java_org_telegram_messenger_MrMailbox_MrMailboxNew(JNIEnv *env, jclass c)
 {
-	mrosnative_init_android(env); /*this should be called before any other "important" routine is called*/
+	s_init_globals(env);
 	return (jlong)mrmailbox_new();
 }
 
@@ -374,7 +408,7 @@ JNIEXPORT void Java_org_telegram_messenger_MrMailbox_MrStockAddStr(JNIEnv* env, 
 
 JNIEXPORT jstring Java_org_telegram_messenger_MrMailbox_MrGetVersionStr(JNIEnv *env, jclass c)
 {
-	mrosnative_init_android(env); /*this should be called before any other "important" routine is called*/
+	s_init_globals(env);
 	const char* temp = mr_get_version_str();
 		jstring ret = JSTRING_NEW(temp);
 	free(temp);
