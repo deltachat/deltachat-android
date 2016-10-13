@@ -53,7 +53,7 @@ void mr_android_log_callback_(int type, const char* msg)
 		case 'w': prio = ANDROID_LOG_WARN;  break;
 		default:  prio = ANDROID_LOG_ERROR; break;
 	}
-	__android_log_print(ANDROID_LOG_ERROR, "LibreChat", "%s\n", msg); /* on problems, add `-llog` to `Android.mk` */
+	__android_log_print(prio, "LibreChat", "%s\n", msg); /* on problems, add `-llog` to `Android.mk` */
 }
 
 
