@@ -1067,7 +1067,7 @@
     <string name="No">Nein</string>
     <string name="Yes">Ja</string>
     <string name="MyName">Mein Name</string>
-    <string name="MyNameExplain">Der Name erscheint in allen ausgehenden Nachrichten.\n\nWenn kein Name angegeben wird, erhält der Empfänger nur die E-Mail-Adresse aus den Kontoeinstellungen.</string>
+    <string name="MyNameExplain">Hier den Namen eingeben, wie er den Empfängern von Nachrichten gezeigt werden soll.\n\nWenn kein Name angegeben wird, erhält der Empfänger nur die E-Mail-Adresse aus den Kontoeinstellungen.</string>
     <string name="MyEmailAddress">Meine E-Mail-Adresse</string>
     <string name="Password">Passwort</string>
     <string name="Page2Title">Jeden kontatkieren</string>

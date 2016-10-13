@@ -245,22 +245,23 @@ public class MrAccountSettingsActivity extends BaseFragment {
 
         MrMailbox.MrMailboxConfigure(MrMailbox.hMailbox);
         if( MrMailbox.MrMailboxConnect(MrMailbox.hMailbox)!=0 ) {
-            MrMailbox.MrMailboxFetch(MrMailbox.hMailbox);
+
         }
 
         // show dialog
-        /*
+
         AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
         builder.setTitle(LocaleController.getString("AppName", R.string.AppName));
         builder.setMessage("Testing the server connection, this may take a moment.");
         builder.setNeutralButton(LocaleController.getString("Cancel", R.string.Cancel), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
+                MrMailbox.MrMailboxFetch(MrMailbox.hMailbox);
                 finishFragment();
             }
         });
         showDialog(builder.create());
-        */
+
 
         finishFragment(); // disable this when a dialog is used
 

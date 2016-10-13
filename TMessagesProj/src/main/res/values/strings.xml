@@ -1068,7 +1068,7 @@
     <string name="Yes">Yes</string>
     <string name="No">No</string>
     <string name="MyName">My name</string>
-    <string name="MyNameExplain">The name appears in all outging messages.\\n\\nIf you do not enter a name here, the receiver will only get your e-mail-address from the account settings.</string>
+    <string name="MyNameExplain">Your name, as shown to the receivers.\n\nIf you do not enter a name here, the receivers will only get your e-mail-address from the account settings.</string>
     <string name="MyEmailAddress">My e-mail address</string>
     <string name="Password">Password</string>
     <string name="SmtpPassword">SMTP password</string>
