@@ -1080,6 +1080,37 @@ include $(BUILD_STATIC_LIBRARY)
 
 
 ################################################################################
+# libiconv
+################################################################################
+
+
+# rough howto
+# - run the normal ./configure to create iconv.h
+# - copy the needed files
+# - in localchatset.c, avoid including langinfo.h
+
+include $(CLEAR_VARS)
+LOCAL_MODULE    := libiconv
+LOCAL_CFLAGS    := \
+    -Wno-multichar \
+    -D_ANDROID \
+    -DLIBDIR="\"c\"" \
+    -DBUILDING_LIBICONV \
+    -DIN_LIBRARY
+LOCAL_C_INCLUDES := \
+	$(LOCAL_PATH)/libiconv/ \
+    $(LOCAL_PATH)/libiconv/include \
+    $(LOCAL_PATH)/libiconv/lib \
+    $(LOCAL_PATH)/libiconv/libcharset/include
+LOCAL_SRC_FILES := \
+    ./libiconv/lib/iconv.c \
+    ./libiconv/lib/relocatable.c  \
+    ./libiconv/libcharset/lib/localcharset.c
+
+include $(BUILD_STATIC_LIBRARY)
+
+
+################################################################################
 # libetpan
 ################################################################################
 
@@ -1094,7 +1125,7 @@ include $(BUILD_STATIC_LIBRARY)
 include $(CLEAR_VARS)
 
 LOCAL_MODULE := etpan
-LOCAL_CFLAGS += -DHAVE_CONFIG_H=1
+LOCAL_CFLAGS += -DHAVE_CONFIG_H=1 -DHAVE_ICONV=1
 LOCAL_SRC_FILES := \
 	./libetpan/src/data-types/base64.c \
 	./libetpan/src/data-types/carray.c \
@@ -1221,6 +1252,7 @@ LOCAL_C_INCLUDES = \
 	$(LOCAL_PATH)/libetpan/include \
 	$(LOCAL_PATH)/libetpan/include/libetpan \
 	$(LOCAL_PATH)/openssl/include \
+	$(LOCAL_PATH)/libiconv/include \
 	$(LOCAL_PATH)/cyrussasl/include \
 	$(LOCAL_PATH)/cyrussasl/include/sasl
 
@@ -1315,7 +1347,8 @@ LOCAL_CFLAGS 	+= -Drestrict='' -D__EMX__ -DOPUS_BUILD -DFIXED_POINT -DUSE_ALLOCA
 LOCAL_CFLAGS 	+= -DANDROID_NDK -DDISABLE_IMPORTGL -fno-strict-aliasing -fprefetch-loop-arrays -DAVOID_TABLES -DANDROID_TILE_BASED_DECODE -DANDROID_ARMV6_IDCT -ffast-math -D__STDC_CONSTANT_MACROS
 LOCAL_CPPFLAGS 	:= -DBSD=1 -ffast-math -Os -funroll-loops -std=c++11
 LOCAL_LDLIBS 	:= -ljnigraphics -llog -lz -latomic
-LOCAL_STATIC_LIBRARIES := etpan sasl2 webp sqlite tgnet breakpad avformat avcodec avutil
+LOCAL_STATIC_LIBRARIES := etpan sasl2 webp sqlite tgnet breakpad avformat avcodec avutil libiconv
+# if you get "undefined reference" errors, the reason for this may be the _order_! Eg. libiconv as the first library does not work!
 
 LOCAL_SRC_FILES     := \
 ./opus/src/opus.c \
