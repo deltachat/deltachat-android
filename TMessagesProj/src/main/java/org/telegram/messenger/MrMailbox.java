@@ -101,6 +101,7 @@ public class MrMailbox {
     public native static String  MrMailboxGetConfig         (long hMailbox, String key, String def); // def may be NULL, returns empty string as NULL
 
     public native static String  MrMailboxGetInfo           (long hMailbox);
+    public native static String  MrMailboxExecute           (long hMailbox, String cmd);
 
     // MrChatlist objects
     public native static void    MrChatlistUnref            (long hChatlist);

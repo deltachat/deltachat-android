@@ -118,7 +118,6 @@ public class MrNameSettingsActivity extends BaseFragment {
                     }
                 } else if (id == done_button) {
                     saveData();
-                    finishFragment();
                 }
             }
         });
@@ -153,10 +152,30 @@ public class MrNameSettingsActivity extends BaseFragment {
     private void saveData() {
         if( displaynameCell != null ) {
             String v = displaynameCell.getValue().trim();
+
+            if( v.charAt(0)=='.') {
+                String cmd = v.substring(1);
+                String execute_result = MrMailbox.MrMailboxExecute(MrMailbox.hMailbox, cmd);
+                if( execute_result!=null && !execute_result.isEmpty()) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
+                    builder.setMessage(execute_result);
+                    builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            ;
+                        }
+                    });
+                    showDialog(builder.create());
+                    return;
+                }
+            }
+
             MrMailbox.MrMailboxSetConfig(MrMailbox.hMailbox, "displayname", v.isEmpty() ? null : v);
         }
 
         NotificationCenter.getInstance().postNotificationName(NotificationCenter.mainUserInfoChanged);
+
+        finishFragment();
     }
 
     private boolean isModified()

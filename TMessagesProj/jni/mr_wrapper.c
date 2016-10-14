@@ -196,6 +196,17 @@ JNIEXPORT jstring Java_org_telegram_messenger_MrMailbox_MrMailboxGetInfo(JNIEnv 
 }
 
 
+JNIEXPORT jstring Java_org_telegram_messenger_MrMailbox_MrMailboxExecute(JNIEnv *env, jclass c, jlong hMailbox, jstring cmd)
+{
+	CHAR_REF(cmd);
+		char* temp = mrmailbox_execute((mrmailbox_t*)hMailbox, cmdPtr);
+			jstring ret = JSTRING_NEW(temp);
+		free(temp);
+	CHAR_UNREF(cmd);
+	return ret;
+}
+
+
 /*******************************************************************************
  * MrChatlist
  ******************************************************************************/
