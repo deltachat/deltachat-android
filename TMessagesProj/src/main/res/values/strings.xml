@@ -1087,4 +1087,5 @@
     <string name="MyAccountExplain2" >Sometimes, IMAP/SMPT needs to be enabled in the e-mail web frontend.\n\nOn problems, ask your e-mail-provider or your friends.</string>
     <string name="AccountNotConfigured">Account not configured</string>
     <string name="AboutThisProgram">About LibreChat</string>
+    <string name="NotSet">Not set</string>
 </resources>

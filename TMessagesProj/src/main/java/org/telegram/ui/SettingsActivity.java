@@ -1524,9 +1524,9 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
                     // EDIT BY MR
                     String subtitle = MrMailbox.MrMailboxGetConfig(MrMailbox.hMailbox, "displayname", "");
                     if( subtitle.isEmpty()) {
-                        subtitle = "Nicht gesetzt";
+                        subtitle = LocaleController.getString("NotSet", R.string.NotSet);
                     }
-                    textCell.setTextAndValue("Mein Name", subtitle, true);
+                    textCell.setTextAndValue(LocaleController.getString("MyName", R.string.MyName), subtitle, true);
                     // /EDIT BY MR
                 }
             }

@@ -1087,4 +1087,5 @@
     <string name="MyAccountExplain2">Manchmal muss die IMAP-/SMTP-Funktion noch in der E-Mail-Weboberfläche eingeschaltet werden.\n\nBei Problemen kann der E-Mail-Anbieter oder ein Bekannter weiterhelfen.</string>
     <string name="AccountNotConfigured">Konto nicht konfiguriert</string>
     <string name="AboutThisProgram">Über LibreChat</string>
+    <string name="NotSet">Nicht gesetzt</string>
 </resources>
