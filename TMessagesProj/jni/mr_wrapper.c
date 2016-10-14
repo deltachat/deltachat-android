@@ -203,7 +203,7 @@ JNIEXPORT jstring Java_org_telegram_messenger_MrMailbox_MrMailboxGetInfo(JNIEnv 
 
 JNIEXPORT void Java_org_telegram_messenger_MrMailbox_MrChatlistUnref(JNIEnv *env, jclass c, jlong hChatlist)
 {
-	return mrchatlist_unref((mrchatlist_t*)hChatlist);
+	mrchatlist_unref((mrchatlist_t*)hChatlist);
 }
 
 
@@ -226,7 +226,7 @@ JNIEXPORT jlong Java_org_telegram_messenger_MrMailbox_MrChatlistGetChatByIndex(J
 
 JNIEXPORT void Java_org_telegram_messenger_MrMailbox_MrChatUnref(JNIEnv *env, jclass c, jlong hChat)
 {
-	return mrchat_unref((mrchat_t*)hChat);
+	mrchat_unref((mrchat_t*)hChat);
 }
 
 
@@ -285,7 +285,7 @@ JNIEXPORT jlong Java_org_telegram_messenger_MrMailbox_MrChatGetMsglist(JNIEnv *e
 
 JNIEXPORT void Java_org_telegram_messenger_MrMailbox_MrMsglistUnref(JNIEnv *env, jclass c, jlong hMsglist)
 {
-	return mrmsglist_unref((mrmsglist_t*)hMsglist); /* mrmsglist_unref() checks for nullpointers */
+	mrmsglist_unref((mrmsglist_t*)hMsglist); /* mrmsglist_unref() checks for nullpointers */
 }
 
 
@@ -308,7 +308,7 @@ JNIEXPORT jlong Java_org_telegram_messenger_MrMailbox_MrMsglistGetMsgByIndex(JNI
 
 JNIEXPORT void Java_org_telegram_messenger_MrMailbox_MrMsgUnref(JNIEnv *env, jclass c, jlong hMsg)
 {
-	return mrmsg_unref((mrmsg_t*)hMsg);
+	mrmsg_unref((mrmsg_t*)hMsg);
 }
 
 
@@ -354,7 +354,7 @@ JNIEXPORT jint Java_org_telegram_messenger_MrMailbox_MrMsgGetFromId(JNIEnv *env,
 
 JNIEXPORT void Java_org_telegram_messenger_MrMailbox_MrPoortextUnref(JNIEnv *env, jclass c, jlong hPoortext)
 {
-	return mrpoortext_unref((mrpoortext_t*)hPoortext);
+	mrpoortext_unref((mrpoortext_t*)hPoortext);
 }
 
 

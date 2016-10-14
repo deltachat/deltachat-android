@@ -940,7 +940,8 @@ public class DialogCell extends BaseCell {
             avatarDrawable.setInfo(chat);
         }
         */
-        avatarDrawable.setInfo(MrMailbox.MrChatGetId(hChat), MrMailbox.MrChatGetName(hChat), null, false); // TODO: read photos from address book
+        String cname = MrMailbox.MrChatGetName(hChat);
+        avatarDrawable.setInfo(MrMailbox.MrChatGetId(hChat), cname, null, false); // TODO: read photos from address book
 
         avatarImage.setImage(photo, "50_50", avatarDrawable, null, false);
 

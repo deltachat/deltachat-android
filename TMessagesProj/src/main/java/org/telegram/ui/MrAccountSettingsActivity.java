@@ -263,7 +263,7 @@ public class MrAccountSettingsActivity extends BaseFragment {
         showDialog(builder.create());
 
 
-        finishFragment(); // disable this when a dialog is used
+        //finishFragment(); // disable this when a dialog is used
 
         NotificationCenter.getInstance().postNotificationName(NotificationCenter.mainUserInfoChanged);
     }
