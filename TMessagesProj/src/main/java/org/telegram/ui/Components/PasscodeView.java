@@ -445,7 +445,7 @@ public class PasscodeView extends FrameLayout {
 
         ImageView imageView = new ImageView(context);
         imageView.setScaleType(ImageView.ScaleType.FIT_XY);
-        imageView.setImageResource(R.drawable.passcode_logo);
+        imageView.setImageResource(R.drawable.ic_launcher /* EDIT BY MR -- was: passcode_logo */);
         passwordFrameLayout.addView(imageView);
         layoutParams = (LayoutParams) imageView.getLayoutParams();
         if (AndroidUtilities.density < 1) {
