@@ -439,7 +439,7 @@
     <string name="ResetNotificationsText">Alle Einstellungen für Mitteilungen zurücksetzen</string>
     <string name="TextSize">Textgröße für Nachrichten</string>
     <string name="AskAQuestion">Eine Frage stellen</string>
-    <string name="EnableAnimations">Animationen aktivieren</string>
+    <string name="EnableAnimations">Übergänge animieren</string>
     <string name="Unblock">Freigeben</string>
     <string name="UnblockText">Gedrückt halten um freizugeben.</string>
     <string name="NoBlocked">Keine blockierten Benutzer</string>

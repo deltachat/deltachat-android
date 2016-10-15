@@ -439,7 +439,7 @@
     <string name="ResetNotificationsText">Reset all notification settings to default</string>
     <string name="TextSize">Messages Text Size</string>
     <string name="AskAQuestion">Ask a Question</string>
-    <string name="EnableAnimations">Enable Animations</string>
+    <string name="EnableAnimations">Transition animation</string>
     <string name="Unblock">Unblock</string>
     <string name="UnblockText">Tap and hold on user to unblock.</string>
     <string name="NoBlocked">No blocked users yet</string>
