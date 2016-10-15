@@ -59,7 +59,7 @@ static void s_log_callback_(int type, const char* msg)
 
 /* globl stuff */
 
-static JNIEnv*   s_env = NULL;
+static JavaVM*   s_jvm = NULL;
 static jclass    s_MrMailbox_class = NULL;
 static jmethodID s_MrCallback_methodID = NULL;
 
@@ -73,11 +73,11 @@ static void s_init_globals(JNIEnv *env, jclass MrMailbox_class)
 	/* init global callback */
 	mrlog_set_handler(s_log_callback_);
 
-	/* get a global pointer to the MrMailbox class and to the MrCallback method; note that this may _not_ work from other-than-java-main threads */
-	s_env = env;
+	/* prepare calling back a Java function */
+	(*env)->GetJavaVM(env, &s_jvm); /* JNIEnv cannot be shared between threads, so we share the JavaVM object */
 	s_MrMailbox_class =  (*env)->NewGlobalRef(env, MrMailbox_class);
 	s_MrCallback_methodID = (*env)->GetStaticMethodID(env, MrMailbox_class, "MrCallback","(IJJ)J" /*signature as "(param)ret" with I=int, J=long*/ );
-	
+
 	/* system-specific backend initialisations */
 	mrosnative_init_android(env); /*this should be called before any other "important" routine is called*/
 }
@@ -92,14 +92,21 @@ static void s_init_globals(JNIEnv *env, jclass MrMailbox_class)
 
 static uintptr_t s_mailbox_callback_(mrmailbox_t* mailbox, int event, uintptr_t data1, uintptr_t data2)
 {
-	jlong l;
+	jlong   l;
+	JNIEnv* env;
 
-	if( s_env==NULL || s_MrMailbox_class==NULL || s_MrCallback_methodID==NULL ) {
-		s_log_callback_('e', "Callback called but JNI not ready.");
+	if( s_jvm==NULL || s_MrMailbox_class==NULL || s_MrCallback_methodID==NULL ) {
+		s_log_callback_('e', "Callback called but JavaVM not ready.");
 		return 0;
 	}
 
-	l = (*s_env)->CallStaticLongMethod(s_env, s_MrMailbox_class, s_MrCallback_methodID, (jint)event, (jlong)data1, (jlong)data2);
+	(*s_jvm)->GetEnv(s_jvm, &env, JNI_VERSION_1_6); /* as this function may be called from _any_ thread, we cannot use a static pointer to JNIEnv */
+	if( env==NULL ) {
+		s_log_callback_('e', "Callback called but cannot get JNIEnv.");
+		return 0;
+	}
+
+	l = (*env)->CallStaticLongMethod(env, s_MrMailbox_class, s_MrCallback_methodID, (jint)event, (jlong)data1, (jlong)data2);
 	return (uintptr_t)l;
 }
 

@@ -84,7 +84,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
     private DialogsAdapter dialogsAdapter;
     private DialogsSearchAdapter dialogsSearchAdapter;
     private EmptyTextProgressView searchEmptyView;
-    //private ProgressBar progressView;
+    //private ProgressBar progressView; // EDIT BY MR
     private LinearLayout emptyView;
     private ActionBarMenuItem passcodeItem;
     private ImageView floatingButton;
@@ -208,7 +208,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
                 if (listView != null) {
                     if (searchString != null) {
                         listView.setEmptyView(searchEmptyView);
-                        //progressView.setVisibility(View.GONE);
+                        //progressView.setVisibility(View.GONE); // EDIT BY MR
                         emptyView.setVisibility(View.GONE);
                     }
                     if (!onlySelect) {
@@ -233,14 +233,14 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
                 searchWas = false;
                 if (listView != null) {
                     searchEmptyView.setVisibility(View.GONE);
-                    /*)
+                    /* EDIT BY MR
                     if (MessagesController.getInstance().loadingDialogs && MessagesController.getInstance().dialogs.isEmpty()) {
                         emptyView.setVisibility(View.GONE);
                         listView.setEmptyView(progressView);
                     } else
                     */
                     {
-                        //progressView.setVisibility(View.GONE);
+                        //progressView.setVisibility(View.GONE); // EDIT BY MR
                         listView.setEmptyView(emptyView);
                     }
                     if (!onlySelect) {
@@ -271,7 +271,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
                     }
                     if (searchEmptyView != null && listView.getEmptyView() != searchEmptyView) {
                         emptyView.setVisibility(View.GONE);
-                        //progressView.setVisibility(View.GONE);
+                        //progressView.setVisibility(View.GONE); // EDIT BY MR
                         searchEmptyView.showTextView();
                         listView.setEmptyView(searchEmptyView);
                     }
@@ -404,7 +404,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
                     didSelectResult(dialog_id, true, false);
                 } else {
                     Bundle args = new Bundle();
-                    /*
+                    /* EDIT BY MR
                     int lower_part = (int) dialog_id;
                     int high_id = (int) (dialog_id >> 32);
                     if (lower_part != 0) {
@@ -490,7 +490,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
                     }
                     return false;
                 }
-                TLRPC.TL_dialog dialog; // TODO BY MR - handle long clicks
+                TLRPC.TL_dialog dialog;
                 ArrayList<TLRPC.TL_dialog> dialogs = getDialogsArray();
                 if (position < 0 || position >= dialogs.size()) {
                     return false;
@@ -652,7 +652,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
         textView.setLineSpacing(AndroidUtilities.dp(2), 1);
         emptyView.addView(textView, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT));
 
-        /*
+        /* EDIT BY MR
         progressView = new ProgressBar(context);
         progressView.setVisibility(View.GONE);
         frameLayout.addView(progressView, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER));
@@ -698,11 +698,11 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 int firstVisibleItem = layoutManager.findFirstVisibleItemPosition();
                 int visibleItemCount = Math.abs(layoutManager.findLastVisibleItemPosition() - firstVisibleItem) + 1;
-                int totalItemCount = recyclerView.getAdapter().getItemCount(); // TODO BY MR - recyclerView.adapter muss angepasst werden? ja -> das ist DialogsAdapter.java
+                int totalItemCount = recyclerView.getAdapter().getItemCount();
 
                 if (searching && searchWas) {
                     if (visibleItemCount > 0 && layoutManager.findLastVisibleItemPosition() == totalItemCount - 1 && !dialogsSearchAdapter.isMessagesSearchEndReached()) {
-                        dialogsSearchAdapter.loadMoreSearchMessages(); // TODO BY MR - what about this issue?
+                        dialogsSearchAdapter.loadMoreSearchMessages(); // TODO BY MR - implement searching
                     }
                     return;
                 }
@@ -828,7 +828,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
         */
         {
             searchEmptyView.setVisibility(View.GONE);
-            //progressView.setVisibility(View.GONE);
+            //progressView.setVisibility(View.GONE); // EDIT BY MR
             listView.setEmptyView(emptyView);
         }
         if (searchString != null) {
@@ -952,7 +952,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
                 if (dialogsAdapter.isDataSetChanged()) {
                     dialogsAdapter.notifyDataSetChanged();
                 } else {
-                    updateVisibleRows(MessagesController.UPDATE_MASK_NEW_MESSAGE); // TODO BY MR?
+                    updateVisibleRows(MessagesController.UPDATE_MASK_NEW_MESSAGE); // TODO BY MR
                 }
             }
             if (dialogsSearchAdapter != null) {
@@ -960,7 +960,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
             }
             if (listView != null) {
                 try {
-                    /*
+                    /* EDIT BY MR
                     if (MessagesController.getInstance().loadingDialogs && MessagesController.getInstance().dialogs.isEmpty()) {
                         searchEmptyView.setVisibility(View.GONE);
                         emptyView.setVisibility(View.GONE);
@@ -968,7 +968,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
                     } else
                     */
                     {
-                        //progressView.setVisibility(View.GONE);
+                        //progressView.setVisibility(View.GONE); -- EDIT BY MR
                         if (searching && searchWas) {
                             emptyView.setVisibility(View.GONE);
                             listView.setEmptyView(searchEmptyView);

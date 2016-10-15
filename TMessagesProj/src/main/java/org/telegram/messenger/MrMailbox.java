@@ -30,12 +30,15 @@
 package org.telegram.messenger;
 
 
+import android.util.Log;
+
 import org.telegram.tgnet.TLRPC;
 
 public class MrMailbox {
 
     public static long           hMailbox = 0;
     public static long           hCurrChatlist = 0;
+    private static final String  TAG = "LibreChat";
 
 
     // tools
@@ -83,8 +86,22 @@ public class MrMailbox {
     }
 
     // this function is called from within the C-wrapper
+    public final static int MR_EVENT_MSGS_UPDATED = 2000;
     public static long MrCallback(int event, long data1, long data2)
     {
+        switch(event) {
+            case MR_EVENT_MSGS_UPDATED:
+                Log.i(TAG, "Received MR_EVENT_MSGS_UPDATED!");
+                AndroidUtilities.runOnUIThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        MrChatlistUnref(hCurrChatlist); // it's not optimal running this on the UI thread, maybe we should lock it and run it in a separate thread
+                        hCurrChatlist = MrMailboxGetChatlist(hMailbox);
+                        NotificationCenter.getInstance().postNotificationName(NotificationCenter.dialogsNeedReload);
+                    }
+                });
+                return 0;
+        }
         return 0;
     }
 
