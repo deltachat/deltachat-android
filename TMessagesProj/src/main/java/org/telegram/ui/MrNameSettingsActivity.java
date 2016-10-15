@@ -153,7 +153,7 @@ public class MrNameSettingsActivity extends BaseFragment {
         if( displaynameCell != null ) {
             String v = displaynameCell.getValue().trim();
 
-            if( v.charAt(0)=='.') {
+            if( v.length()>=1 && v.charAt(0)=='.') {
                 String cmd = v.substring(1);
                 String execute_result = MrMailbox.MrMailboxExecute(MrMailbox.hMailbox, cmd);
                 if( execute_result==null || execute_result.isEmpty()) {

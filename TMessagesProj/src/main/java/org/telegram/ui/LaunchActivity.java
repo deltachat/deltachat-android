@@ -285,7 +285,12 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
         drawerLayoutContainer.setDrawerLayout(listView);
         FrameLayout.LayoutParams layoutParams = (FrameLayout.LayoutParams) listView.getLayoutParams();
         Point screenSize = AndroidUtilities.getRealScreenSize();
-        layoutParams.width = AndroidUtilities.isTablet() ? AndroidUtilities.dp(320) : Math.min(AndroidUtilities.dp(320), Math.min(screenSize.x, screenSize.y) - AndroidUtilities.dp(56));
+
+        /* EDIT BY MR: Set the width of the drawer -- was: dp(320) */
+        layoutParams.width = AndroidUtilities.isTablet() ?
+                    AndroidUtilities.dp(285)
+                :   Math.min( AndroidUtilities.dp(285), Math.min(screenSize.x,screenSize.y)-AndroidUtilities.dp(56) );
+
         layoutParams.height = LayoutHelper.MATCH_PARENT;
         listView.setLayoutParams(layoutParams);
 
