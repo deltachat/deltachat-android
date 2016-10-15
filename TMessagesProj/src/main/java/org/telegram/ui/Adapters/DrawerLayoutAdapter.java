@@ -31,14 +31,14 @@ public class DrawerLayoutAdapter extends BaseAdapter {
     public final static int iProfile           = 0;
     public final static int iEmptyBelowProfile = 1;
     public final static int iNewGroup          = 2;
-    public final static int iNewSecretChat     = 3;
+    public final static int iNewSecretChat     = -1;
     public final static int iNewChannel        = -1;
-    public final static int iContacts          = 4;
-    public final static int iInviteFriends     = 5;
-    public final static int iDivider           = 6;
-    public final static int iSettings          = 7;
-    public final static int iFaq               = 8;
-    public final static int iCount             = 9;
+    public final static int iContacts          = 3;
+    public final static int iInviteFriends     = 4;
+    public final static int iDivider           = 5;
+    public final static int iSettings          = 6;
+    public final static int iFaq               = 7;
+    public final static int iCount             = 8;
 
     public final static int typeProfile = 0;
     public final static int typeEmpty = 1;
