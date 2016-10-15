@@ -82,6 +82,12 @@ public class MrMailbox {
         return ret;
     }
 
+    // this function is called from within the C-wrapper
+    public static long MrCallback(int event, long data1, long data2)
+    {
+        return 0;
+    }
+
     // MrMailbox objects
     public native static long    MrMailboxNew               (); // returns hMailbox which must be unref'd after usage (Names as mrmailbox_new don't work due to the additional underscore)
     public native static int     MrMailboxOpen              (long hMailbox, String dbfile, String blobdir);

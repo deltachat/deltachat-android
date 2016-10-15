@@ -43,7 +43,7 @@
 
 /* our log handler */
 
-void mr_android_log_callback_(int type, const char* msg)
+static void s_log_callback_(int type, const char* msg)
 {
 	int prio;
 	
@@ -59,16 +59,26 @@ void mr_android_log_callback_(int type, const char* msg)
 
 /* globl stuff */
 
-static void s_init_globals(JNIEnv *env)
+static JNIEnv*   s_env = NULL;
+static jclass    s_MrMailbox_class = NULL;
+static jmethodID s_MrCallback_methodID = NULL;
+
+static void s_init_globals(JNIEnv *env, jclass MrMailbox_class)
 {
 	/* make sure, the intialisation is done only once */
 	static bool s_global_init_done = 0;
 	if( s_global_init_done ) { return; }
 	s_global_init_done = 1;
 	
-	/* init globals */
-	mrlog_set_handler(mr_android_log_callback_);
+	/* init global callback */
+	mrlog_set_handler(s_log_callback_);
+
+	/* get a global pointer to the MrMailbox class and to the MrCallback method; note that this may _not_ work from other-than-java-main threads */
+	s_env = env;
+	s_MrMailbox_class =  (*env)->NewGlobalRef(env, MrMailbox_class);
+	s_MrCallback_methodID = (*env)->GetStaticMethodID(env, MrMailbox_class, "MrCallback","(IJJ)J" /*signature as "(param)ret" with I=int, J=long*/ );
 	
+	/* system-specific backend initialisations */
 	mrosnative_init_android(env); /*this should be called before any other "important" routine is called*/
 }
 
@@ -80,11 +90,24 @@ static void s_init_globals(JNIEnv *env)
 
 /* MrMailbox - new/delete */
 
+static uintptr_t s_mailbox_callback_(mrmailbox_t* mailbox, int event, uintptr_t data1, uintptr_t data2)
+{
+	jlong l;
+
+	if( s_env==NULL || s_MrMailbox_class==NULL || s_MrCallback_methodID==NULL ) {
+		s_log_callback_('e', "Callback called but JNI not ready.");
+		return 0;
+	}
+
+	l = (*s_env)->CallStaticLongMethod(s_env, s_MrMailbox_class, s_MrCallback_methodID, (jint)event, (jlong)data1, (jlong)data2);
+	return (uintptr_t)l;
+}
+
 
 JNIEXPORT jlong Java_org_telegram_messenger_MrMailbox_MrMailboxNew(JNIEnv *env, jclass c)
 {
-	s_init_globals(env);
-	return (jlong)mrmailbox_new();
+	s_init_globals(env, c);
+	return (jlong)mrmailbox_new(s_mailbox_callback_, NULL);
 }
 
 
@@ -419,7 +442,7 @@ JNIEXPORT void Java_org_telegram_messenger_MrMailbox_MrStockAddStr(JNIEnv* env, 
 
 JNIEXPORT jstring Java_org_telegram_messenger_MrMailbox_MrGetVersionStr(JNIEnv *env, jclass c)
 {
-	s_init_globals(env);
+	s_init_globals(env, c);
 	const char* temp = mr_get_version_str();
 		jstring ret = JSTRING_NEW(temp);
 	free(temp);

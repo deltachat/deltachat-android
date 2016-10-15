@@ -157,7 +157,7 @@ public class MrNameSettingsActivity extends BaseFragment {
                 String cmd = v.substring(1);
                 String execute_result = MrMailbox.MrMailboxExecute(MrMailbox.hMailbox, cmd);
                 if( execute_result==null || execute_result.isEmpty()) {
-                    execute_result = "ERROR: Unknwon command.";
+                    execute_result = "ERROR: Unknown command.";
                 }
                 AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
                 builder.setMessage(execute_result);

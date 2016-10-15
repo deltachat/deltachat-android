@@ -295,6 +295,7 @@ public class ApplicationLoader extends Application {
 
         // EDIT BY MR - create a MrMailbox object; as android stops the App by just killing it, we do never call MrMailboxUnref()
         // however, we may want to to have a look at onPause() eg. of activities (eg. for flushing data, if needed)
+        MrMailbox.MrCallback(0, 0, 0); // do not remove this call; this makes sure, the function is not removed from build or warnings are printed!
         MrMailbox.hMailbox = MrMailbox.MrMailboxNew();
         MrMailbox.MrStockAddStr(2, LocaleController.getString("FromYou", R.string.FromYou));
 
