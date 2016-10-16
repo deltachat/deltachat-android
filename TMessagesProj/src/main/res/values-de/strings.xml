@@ -55,7 +55,6 @@
     <string name="HiddenName">Gelöschtes Konto</string>
     <string name="SelectChat">Chat auswählen</string>
     <string name="PhotoTip">Tippen und Halten</string>
-    <string name="CompatibilityChat">%1$s benutzt eine ältere Version von Telegram, sodass Bilder in Geheimen Chats im Kompatibilitätsmodus angezeigt werden.\n\nSobald %2$s Telegram aktualisiert, werden Bilder mit Timern von 1 Minute und kürzer per \"Tippen und Halten\" angezeigt. Du wirst benachrichtigt, sobald dein Chatpartner ein Bildschirmfoto macht.</string>
     <string name="SearchMessages">NACHRICHTEN</string>
     <string name="Search">Suche</string>
     <string name="MuteNotifications">Stummschalten</string>
@@ -510,15 +509,12 @@
     <string name="LocalCache">Sonstige Dateien</string>
     <string name="CacheEmpty">Leer</string>
     <string name="KeepMedia">Medien behalten</string>
-    <string name="KeepMediaInfo">Bilder, Videos und andere Dateien, auf die du während dieser Zeit <![CDATA[<b>nicht zugegriffen</b>]]> hast, werden von diesem Gerät gelöscht, um Speicherplatz zu sparen.</string>
+    <string name="KeepMediaInfo">Bilder, Videos und andere Dateien, auf die während dieser Zeit <![CDATA[<b>nicht zugegriffen</b>]]> wurde, werden von diesem Gerät gelöscht, um Speicherplatz zu sparen.</string>
     <string name="KeepMediaForever">Dauerhaft</string>
-    <!--sessions view-->
-    <string name="SessionsInfo">Überprüfe alle deine angemeldeten Geräte.</string>
-    <string name="UnofficialApp">inoffizielle Version</string>
     <!--passcode view-->
     <string name="Passcode">Pincode-Sperre</string>
     <string name="ChangePasscode">Pincode ändern</string>
-    <string name="ChangePasscodeInfo">Wenn du die Code-Sperre aktivierst, erscheint ein Schloss ganz oben über der Chatliste. Tippe auf das Schloss, um deine Chats zu sperren und zu entsperren.\n\nÜbrigens: Wenn du den Pincode vergisst, musst du Telegram löschen und neu installieren. Dadurch verlierst du alle Geheimen Chats.</string>
+    <string name="ChangePasscodeInfo">Wenn die Code-Sperre aktiviert ist, erscheint ein Schloss ganz oben über der Chatliste. Ein Tipp auf das Schloss, sperrt bzw. entsperrt die Chats.\n\nÜbrigens: Wenn der Pincode vergessen wird, muss die App gelöscht und neu installiert werden.</string>
     <string name="PasscodePIN">Pincode</string>
     <string name="PasscodePassword">Kennwort</string>
     <string name="EnterCurrentPasscode">Aktuellen Pincode eingeben</string>
@@ -767,7 +763,6 @@
     <string name="ForwardMessagesTo">Nachrichten an %1$s weiterleiten?</string>
     <string name="SendMessagesTo">Nachricht an %1$s senden?</string>
     <string name="SendContactTo">Kontakt senden an %1$s?</string>
-    <string name="AreYouSureLogout">Wirklich abmelden?\n\nDu kannst Telegram von all deinen Geräten gleichzeitig nutzen.\n\nWichtig: Abmelden löscht deine Geheimen Chats.</string>
     <string name="AreYouSureDeleteAndExit">Gruppe löschen und verlassen?</string>
     <string name="AreYouSureDeleteThisChat">Möchtest du wirklich diesen Chat löschen?</string>
     <string name="ShareYouLocationTitle">Deinen Standort teilen?</string>

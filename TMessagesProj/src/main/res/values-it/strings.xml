@@ -56,7 +56,6 @@
     <string name="HiddenName">Account eliminato</string>
     <string name="SelectChat">Seleziona chat</string>
     <string name="PhotoTip">Tieni premuto per vedere</string>
-    <string name="CompatibilityChat">%1$s sta usando una versione vecchia di Telegram, quindi le foto segrete verranno visualizzate in modalità di compatibilità.\n\nUna volta che %2$s avrà aggiornato Telegram, le foto con il timer minore di 1 minuto funzioneranno in modalità \'Tieni premuto per vedere\' , e verrai notificato ogni volta che l\'altro esegue uno screenshot.</string>
     <string name="SearchMessages">MESSAGGI</string>
     <string name="Search">Cerca</string>
     <string name="MuteNotifications">Silenzia notifiche</string>
@@ -513,13 +512,10 @@
     <string name="KeepMedia">Mantieni media</string>
     <string name="KeepMediaInfo">Foto, video e altri file dalle chat nel cloud che non hai <![CDATA[<b>aperto</b>]]>  in questo periodo verranno eliminati dal dispositivo per preservare lo spazio sul disco.</string>
     <string name="KeepMediaForever">Per sempre</string>
-    <!--sessions view-->
-    <string name="SessionsInfo">Controlla le tue sessioni sugli altri dispositivi.</string>
-    <string name="UnofficialApp">app non ufficiale</string>
     <!--passcode view-->
     <string name="Passcode">Blocco con codice</string>
     <string name="ChangePasscode">Cambia codice</string>
-    <string name="ChangePasscodeInfo">Quando imposti un codice, un\'icona col lucchetto apparirà nella pagina delle chat. Premi su di essa per bloccare e sbloccare l\'app.\n\nNota: se ti dimentichi il codice, dovrai disinstallare e reinstallare l\'app. Tutte le chat segrete verranno perse.</string>
+    <string name="ChangePasscodeInfo">Quando imposti un codice, un\'icona col lucchetto apparirà nella pagina delle chat. Premi su di essa per bloccare e sbloccare l\'app.\n\nNota: se ti dimentichi il codice, dovrai disinstallare e reinstallare l\'app.</string>
     <string name="PasscodePIN">PIN</string>
     <string name="PasscodePassword">Password</string>
     <string name="EnterCurrentPasscode">Inserisci il tuo codice corrente</string>
@@ -768,7 +764,6 @@
     <string name="ForwardMessagesTo">Vuoi inoltrare i messaggi a %1$s?</string>
     <string name="SendMessagesTo">Inviare i messaggi a %1$s?</string>
     <string name="SendContactTo">Inviare contatto a %1$s?</string>
-    <string name="AreYouSureLogout">Sei sicuro di voler uscire?\n\nNota che puoi usare Telegram su tutti i tuoi dispositivi contemporaneamente.\n\nRicorda, uscendo eliminerai tutte le Chat Segrete.</string>
     <string name="AreYouSureDeleteAndExit">Sei sicuro di voler uscire ed eliminare il gruppo?</string>
     <string name="AreYouSureDeleteThisChat">Sei sicuro di voler eliminare questa chat?</string>
     <string name="ShareYouLocationTitle">Condividere la tua posizione?</string>

@@ -404,8 +404,10 @@ public class PrivacySettingsActivity extends BaseFragment implements Notificatio
                     ((TextInfoPrivacyCell) view).setText(LocaleController.getString("GroupsAndChannelsHelp", R.string.GroupsAndChannelsHelp));
                     view.setBackgroundResource(R.drawable.greydivider);
                 } else if (i == sessionsDetailRow) {
+                    /* EDIT BY MR
                     ((TextInfoPrivacyCell) view).setText(LocaleController.getString("SessionsInfo", R.string.SessionsInfo));
                     view.setBackgroundResource(R.drawable.greydivider);
+                    */
                 } else if (i == secretDetailRow) {
                     ((TextInfoPrivacyCell) view).setText("");
                     view.setBackgroundResource(R.drawable.greydivider_bottom);

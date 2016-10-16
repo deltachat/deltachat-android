@@ -6,8 +6,8 @@
     <string name="AppName">LibreChat</string>
     <string name="AppNameBeta">LibreChat</string>
     <string name="LanguageName">English</string>
-    <string name="LanguageNameInEnglish">English</string>
-    <string name="LanguageCode">en</string>
+    <string name="LanguageNameInEnglish" tools:keep="@string/LanguageNameInEnglish">English</string>
+    <string name="LanguageCode" tools:keep="@string/LanguageCode">en</string>
     <!--signin view-->
     <string name="YourPhone">Your phone</string>
     <string name="StartText">Please confirm your country code and enter your phone number.</string>
@@ -56,7 +56,6 @@
     <string name="HiddenName">Deleted Account</string>
     <string name="SelectChat">Select Chat</string>
     <string name="PhotoTip">Tap and hold to view</string>
-    <string name="CompatibilityChat">%1$s is using an older version of Telegram, so secret photos will be shown in compatibility mode.\n\nOnce %2$s updates Telegram, photos with timers for 1 minute or less will start working in \'Tap and hold to view\' mode, and you will be notified whenever the other party takes a screenshot.</string>
     <string name="SearchMessages">MESSAGES</string>
     <string name="Search">Search</string>
     <string name="MuteNotifications">Mute notifications</string>
@@ -513,13 +512,10 @@
     <string name="KeepMedia">Keep Media</string>
     <string name="KeepMediaInfo">Photos, videos and other files from cloud chats that you have <![CDATA[<b>not accessed</b>]]> during this period will be removed from this device to save disk space.</string>
     <string name="KeepMediaForever">Forever</string>
-    <!--sessions view-->
-    <string name="SessionsInfo">Control your sessions on other devices.</string>
-    <string name="UnofficialApp">unofficial app</string>
     <!--passcode view-->
     <string name="Passcode">Passcode Lock</string>
     <string name="ChangePasscode">Change Passcode</string>
-    <string name="ChangePasscodeInfo">When you set up an additional passcode, a lock icon will appear on the chats page. Tap it to lock and unlock your Telegram app.\n\nNote: if you forget the passcode, you\'ll need to delete and reinstall the app. All secret chats will be lost.</string>
+    <string name="ChangePasscodeInfo">When you set up an additional passcode, a lock icon will appear on the chats page. Tap it to lock and unlock your Telegram app.\n\nNote: if you forget the passcode, you\'ll need to delete and reinstall the app.</string>
     <string name="PasscodePIN">PIN</string>
     <string name="PasscodePassword">Password</string>
     <string name="EnterCurrentPasscode">Enter your current passcode</string>
@@ -768,7 +764,6 @@
     <string name="ForwardMessagesTo">Forward messages to %1$s?</string>
     <string name="SendMessagesTo">Send messages to %1$s?</string>
     <string name="SendContactTo">Send contact to %1$s?</string>
-    <string name="AreYouSureLogout">Are you sure you want to log out?\n\nNote that you can seamlessly use Telegram on all your devices at once.\n\nRemember, logging out kills all your Secret Chats.</string>
     <string name="AreYouSureDeleteAndExit">Are you sure you want to delete and leave the group?</string>
     <string name="AreYouSureDeleteThisChat">Are you sure you want to delete this chat?</string>
     <string name="ShareYouLocationTitle">Share your location?</string>

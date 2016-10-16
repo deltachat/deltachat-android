@@ -56,7 +56,6 @@
     <string name="HiddenName">Conta Excluída</string>
     <string name="SelectChat">Selecione um Chat</string>
     <string name="PhotoTip">Toque e segure para ver</string>
-    <string name="CompatibilityChat">%1$s está usando uma versão mais antiga do Telegram, por isso fotos secretas serão mostradas em modo de compatibilidade.\n\nAssim que %2$s atualizar o Telegram, fotos com timers de 1 minuto ou menos passarão a funcionar no modo ‘Toque e segure para ver’, e você será notificado caso a outra pessoa salve a tela.</string>
     <string name="SearchMessages">MENSAGENS</string>
     <string name="Search">Busca</string>
     <string name="MuteNotifications">Silenciar notificações</string>
@@ -513,13 +512,10 @@
     <string name="KeepMedia">Manter Mídias</string>
     <string name="KeepMediaInfo">Fotos, vídeos e outros arquivos da nuvem que você <![CDATA[<b>não acessou</b>]]> durante esse período serão removidos deste dispositivo para economizar espaço em disco.</string>
     <string name="KeepMediaForever">Permanentemente</string>
-    <!--sessions view-->
-    <string name="SessionsInfo">Controle suas sessões em outros aparelhos.</string>
-    <string name="UnofficialApp">aplicativo não oficial</string>
     <!--passcode view-->
     <string name="Passcode">Senha de Bloqueio</string>
     <string name="ChangePasscode">Alterar Senha</string>
-    <string name="ChangePasscodeInfo">Quando você define uma senha adicional, um ícone de cadeado aparece na página de chats. Clique para bloquear e desbloquear o app.\n\nNota: se você esquecer a sua senha, terá de excluir e reinstalar o app. Todos os chats secretos serão perdidos.</string>
+    <string name="ChangePasscodeInfo">Quando você define uma senha adicional, um ícone de cadeado aparece na página de chats. Clique para bloquear e desbloquear o app.\n\nNota: se você esquecer a sua senha, terá de excluir e reinstalar o app.</string>
     <string name="PasscodePIN">PIN</string>
     <string name="PasscodePassword">Senha</string>
     <string name="EnterCurrentPasscode">Insira sua senha atual</string>
@@ -768,7 +764,6 @@
     <string name="ForwardMessagesTo">Encaminhar mensagem para %1$s?</string>
     <string name="SendMessagesTo">Enviar mensagens para %1$s?</string>
     <string name="SendContactTo">Enviar contato para %1$s?</string>
-    <string name="AreYouSureLogout">Você tem certeza que desejar sair?\n\nSaiba que você pode usar o Telegram em vários dispositivos de uma vez.\n\nLembre-se, sair apaga todos os seus Chats Secretos.</string>
     <string name="AreYouSureDeleteAndExit">Você tem certeza que apagar e sair do grupo?</string>
     <string name="AreYouSureDeleteThisChat">Você tem certeza que deseja apagar esta conversa?</string>
     <string name="ShareYouLocationTitle">Compartilhar sua localização?</string>
