@@ -3463,6 +3463,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
     }
 
     public void showReplyPanel(boolean show, MessageObject messageObjectToReply, ArrayList<MessageObject> messageObjectsToForward, TLRPC.WebPage webPage, boolean cancel, boolean animated) {
+        /* EDIT BY MR
         if (chatActivityEnterView == null) {
             return;
         }
@@ -3705,6 +3706,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
             forwardingMessages = null;
             replyImageLocation = null;
         }
+        */
     }
 
     private void moveScrollToLastMessage() {
