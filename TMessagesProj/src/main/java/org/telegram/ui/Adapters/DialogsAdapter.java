@@ -50,12 +50,12 @@ public class DialogsAdapter extends RecyclerView.Adapter {
         openedDialogId = id;
     }
 
+    /* EDIT BY MR
     public boolean isDataSetChanged() {
         int current = currentCount;
         return current != getItemCount() || current == 1;
     }
 
-    /* EDIT BY MR
     private ArrayList<TLRPC.TL_dialog> getDialogsArray() {
         if (dialogsType == 0) {
             return MessagesController.getInstance().dialogs;

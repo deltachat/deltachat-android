@@ -8,32 +8,11 @@
 
 package org.telegram.messenger.query;
 
-import android.app.Activity;
-import android.content.SharedPreferences;
 import android.text.TextUtils;
-
-import org.telegram.SQLite.SQLiteCursor;
-import org.telegram.messenger.AndroidUtilities;
-import org.telegram.messenger.ApplicationLoader;
-import org.telegram.messenger.ChatObject;
-import org.telegram.messenger.FileLog;
-import org.telegram.messenger.MessagesController;
-import org.telegram.messenger.MessagesStorage;
 import org.telegram.messenger.MrMailbox;
-import org.telegram.messenger.NotificationCenter;
-import org.telegram.messenger.UserConfig;
-import org.telegram.messenger.Utilities;
-import org.telegram.tgnet.ConnectionsManager;
-import org.telegram.tgnet.NativeByteBuffer;
-import org.telegram.tgnet.RequestDelegate;
-import org.telegram.tgnet.SerializedData;
-import org.telegram.tgnet.TLObject;
 import org.telegram.tgnet.TLRPC;
-
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Locale;
-import java.util.Map;
+
 
 public class DraftQuery {
 
@@ -143,10 +122,11 @@ public class DraftQuery {
 
     public static void saveDraft(long did, CharSequence message, ArrayList<TLRPC.MessageEntity> entities, TLRPC.Message replyToMessage, boolean noWebpage, boolean clean) {
         if( message == null || TextUtils.isEmpty(message) ) {
-            saveDraft__(did, message.toString(), 0);
+            saveDraft__(did, null, 0);
         }
         else {
-            saveDraft__(did, null, 0);
+            saveDraft__(did, message.toString(), 0);
+
         }
         /* EDIT BY MR
         TLRPC.DraftMessage draftMessage;
@@ -314,8 +294,8 @@ public class DraftQuery {
         */
     }
 
+    /* EDIT BY MR
     private static void saveDraftReplyMessage(final long did, final TLRPC.Message message) {
-        /* EDIT BY MR
         if (message == null) {
             return;
         }
@@ -332,8 +312,8 @@ public class DraftQuery {
                 }
             }
         });
-        */
     }
+    */
 
     public static void cleanDraft(long did, boolean replyOnly) {
         saveDraft__(did, null, 0);

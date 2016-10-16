@@ -949,11 +949,14 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
     public void didReceivedNotification(int id, Object... args) {
         if (id == NotificationCenter.dialogsNeedReload) {
             if (dialogsAdapter != null) {
+                dialogsAdapter.notifyDataSetChanged();
+                /* EDIT BY MR
                 if (dialogsAdapter.isDataSetChanged()) {
                     dialogsAdapter.notifyDataSetChanged();
                 } else {
-                    updateVisibleRows(MessagesController.UPDATE_MASK_NEW_MESSAGE); // TODO BY MR
+                    updateVisibleRows(MessagesController.UPDATE_MASK_NEW_MESSAGE);
                 }
+                */
             }
             if (dialogsSearchAdapter != null) {
                 dialogsSearchAdapter.notifyDataSetChanged();

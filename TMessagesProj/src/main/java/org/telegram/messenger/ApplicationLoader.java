@@ -298,6 +298,7 @@ public class ApplicationLoader extends Application {
         MrMailbox.MrCallback(0, 0, 0); // do not remove this call; this makes sure, the function is not removed from build or warnings are printed!
         MrMailbox.hMailbox = MrMailbox.MrMailboxNew();
         MrMailbox.MrStockAddStr(2, LocaleController.getString("FromYou", R.string.FromYou));
+        MrMailbox.MrStockAddStr(3, LocaleController.getString("Draft", R.string.Draft));
 
         applicationHandler = new Handler(applicationContext.getMainLooper());
 
