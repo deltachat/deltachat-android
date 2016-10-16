@@ -976,4 +976,5 @@
     <string name="AccountNotConfigured">Account not configured</string>
     <string name="AboutThisProgram">About LibreChat</string>
     <string name="NotSet">Not set</string>
+    <string name="NewChat">New chat</string>
 </resources>

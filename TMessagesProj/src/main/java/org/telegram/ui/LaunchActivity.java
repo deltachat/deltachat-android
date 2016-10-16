@@ -303,13 +303,8 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                     }
                     presentFragment(new GroupCreateActivity());
                     drawerLayoutContainer.closeDrawer(false);
-                } else if (position == DrawerLayoutAdapter.iNewSecretChat) {
-                    Bundle args = new Bundle();
-                    args.putBoolean("onlyUsers", true);
-                    args.putBoolean("destroyAfterSelect", true);
-                    args.putBoolean("createSecretChat", true);
-                    args.putBoolean("allowBots", false);
-                    presentFragment(new ContactsActivity(args));
+                } else if (position == DrawerLayoutAdapter.iNewChat) { // EDIT BY MR ...
+                    presentFragment(new ContactsActivity(null));
                     drawerLayoutContainer.closeDrawer(false);
                 } else if (position == DrawerLayoutAdapter.iNewChannel) {
                     /* EDIT BY MR
@@ -331,6 +326,7 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                     presentFragment(new ContactsActivity(null));
                     drawerLayoutContainer.closeDrawer(false);
                 } else if (position == DrawerLayoutAdapter.iInviteFriends) {
+                    /* EDIT BY MR
                     try {
                         Intent intent = new Intent(Intent.ACTION_SEND);
                         intent.setType("text/plain");
@@ -340,6 +336,7 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                         FileLog.e("tmessages", e);
                     }
                     drawerLayoutContainer.closeDrawer(false);
+                    */
                 } else if (position == DrawerLayoutAdapter.iSettings) {
                     presentFragment(new SettingsActivity());
                     drawerLayoutContainer.closeDrawer(false);

@@ -30,11 +30,11 @@ public class DrawerLayoutAdapter extends BaseAdapter {
     // EDIT BY MR
     public final static int iProfile           = 0;
     public final static int iEmptyBelowProfile = 1;
-    public final static int iNewGroup          = 2;
-    public final static int iNewSecretChat     = -1;
+    public final static int iNewChat           = 2;
+    public final static int iNewGroup          = 3;
     public final static int iNewChannel        = -1;
-    public final static int iContacts          = 3;
-    public final static int iInviteFriends     = 4;
+    public final static int iContacts          = 4;
+    public final static int iInviteFriends     = -1;
     public final static int iDivider           = 5;
     public final static int iSettings          = 6;
     public final static int iFaq               = 7;
@@ -103,8 +103,8 @@ public class DrawerLayoutAdapter extends BaseAdapter {
             DrawerActionCell actionCell = (DrawerActionCell) view;
             if (i == iNewGroup) {
                 actionCell.setTextAndIcon(LocaleController.getString("NewGroup", R.string.NewGroup), R.drawable.menu_newgroup);
-            } else if (i == iNewSecretChat) {
-                actionCell.setTextAndIcon(LocaleController.getString("NewSecretChat", R.string.NewSecretChat), R.drawable.menu_secret);
+            } else if (i == iNewChat) {
+                actionCell.setTextAndIcon(LocaleController.getString("NewChat", R.string.NewChat), R.drawable.menu_newchat);
             } else if (i == iNewChannel) {
                 actionCell.setTextAndIcon(LocaleController.getString("NewChannel", R.string.NewChannel), R.drawable.menu_broadcast);
             } else if (i == iContacts) {

@@ -43,7 +43,6 @@
     <string name="WaitingForNetwork">Warte auf Netzwerk...</string>
     <string name="Connecting">Verbinde…</string>
     <string name="Updating">Aktualisiere…</string>
-    <string name="NewSecretChat">Neuer Geheimer Chat</string>
     <string name="AwaitingEncryption">Warte, bis %s online geht…</string>
     <string name="EncryptionRejected">Geheimer Chat beendet</string>
     <string name="EncryptionProcessing">Tausche Schlüssel aus…</string>
@@ -976,4 +975,6 @@
     <string name="AccountNotConfigured">Konto nicht konfiguriert</string>
     <string name="AboutThisProgram">Über LibreChat</string>
     <string name="NotSet">Nicht gesetzt</string>
+    <string name="NewChat">Neuer Chat</string>
+    <string name="NewSecretChat">Neuer geheimer Chat</string>
 </resources>
