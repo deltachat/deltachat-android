@@ -32,7 +32,7 @@
 
 
 #define CHAR_REF(a) \
-	const char* a##Ptr = (a)? (*env)->GetStringUTFChars(env, (a), 0) : NULL; /* passing a NULL-jstring results in a NULL-ptr */
+	const char* a##Ptr = (a)? (*env)->GetStringUTFChars(env, (a), 0) : NULL; /* passing a NULL-jstring results in a NULL-ptr - this is needed eg. for mrchat_save_draft() and many others */
 
 #define CHAR_UNREF(a) \
 	if(a) { (*env)->ReleaseStringUTFChars(env, (a), a##Ptr); }
@@ -195,7 +195,7 @@ JNIEXPORT jint Java_org_telegram_messenger_MrMailbox_MrMailboxSetConfig(JNIEnv *
 {
 	CHAR_REF(key);
 	CHAR_REF(value);
-		jint ret = (jlong)mrmailbox_set_config((mrmailbox_t*)hMailbox, keyPtr, valuePtr);
+		jint ret = (jint)mrmailbox_set_config((mrmailbox_t*)hMailbox, keyPtr, valuePtr);
 	CHAR_UNREF(key);
 	CHAR_UNREF(value);
 	return ret;
@@ -301,6 +301,30 @@ JNIEXPORT jstring Java_org_telegram_messenger_MrMailbox_MrChatGetSubtitle(JNIEnv
 }
 
 
+JNIEXPORT jstring Java_org_telegram_messenger_MrMailbox_MrChatGetDraft(JNIEnv *env, jclass c, jlong hChat) /* returns NULL for "no draft" */
+{
+	mrchat_t* ths = (mrchat_t*)hChat;
+	if( ths && ths->m_draft_text ) {
+		return JSTRING_NEW(ths->m_draft_text);
+	}
+	return NULL; /* no draft */
+}
+
+
+JNIEXPORT jlong Java_org_telegram_messenger_MrMailbox_MrChatGetDraftTimestamp(JNIEnv *env, jclass c, jlong hChat)
+{
+	mrchat_t* ths = (mrchat_t*)hChat; if( ths == NULL ) { return 0; }
+	return ths->m_draft_timestamp;
+}
+
+
+JNIEXPORT jint Java_org_telegram_messenger_MrMailbox_MrChatGetDraftReplyToMsgId(JNIEnv *env, jclass c, jlong hChat)
+{
+	mrchat_t* ths = (mrchat_t*)hChat; if( ths == NULL ) { return 0; }
+	return 0;
+}
+
+
 JNIEXPORT jint Java_org_telegram_messenger_MrMailbox_MrChatGetUnreadCount(JNIEnv *env, jclass c, jlong hChat)
 {
 	return mrchat_get_unread_count((mrchat_t*)hChat); /* mrchat_get_unread_count() checks for nullpointers */
@@ -316,6 +340,15 @@ JNIEXPORT jlong Java_org_telegram_messenger_MrMailbox_MrChatGetSummary(JNIEnv *e
 JNIEXPORT jlong Java_org_telegram_messenger_MrMailbox_MrChatGetMsglist(JNIEnv *env, jclass c, jlong hChat, jint offset, jint amount)
 {
 	return (jlong)mrchat_get_msglist((mrchat_t*)hChat, offset, amount);
+}
+
+
+JNIEXPORT jint Java_org_telegram_messenger_MrMailbox_MrChatSaveDraft(JNIEnv *env, jclass c, jlong hChat, jstring draft /* NULL=delete */, jint replyToMsgId)
+{
+	CHAR_REF(draft);
+		jint ret = (jint)mrchat_save_draft((mrchat_t*)hChat, draftPtr /* NULL=delete */);
+	CHAR_UNREF(draft);
+	return ret;
 }
 
 

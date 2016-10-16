@@ -65,7 +65,7 @@ public class MrMailbox {
 
         ret.from_id = (int)MrMailbox.MrMsgGetFromId(hMsg);
         if( ret.from_id == 0 ) {
-            ret.from_id = -1; // from us
+            ret.from_id = 1; // from us
         }
 
         ret.to_id = new TLRPC.TL_peerUser();
@@ -137,9 +137,13 @@ public class MrMailbox {
     public native static int     MrChatGetType              (long hChat);
     public native static String  MrChatGetName              (long hChat);
     public native static String  MrChatGetSubtitle          (long hChat);
+    public native static String  MrChatGetDraft             (long hChat); // returns null for "no draft"
+    public native static long    MrChatGetDraftTimestamp    (long hChat); // returns 0 for "no draft"
+    public native static int     MrChatGetDraftReplyToMsgId (long hChat); // returns 0 for "no draft"
     public native static int     MrChatGetUnreadCount       (long hChat);
     public native static long    MrChatGetSummary           (long hChat); // returns hPoortext
     public native static long    MrChatGetMsglist           (long hChat, int offset, int amount); // returns hMsglist
+    public native static int     MrChatSaveDraft            (long hChat, String draft/*NULL=delete*/, long replyToMsgId);
 
     // MrMsglist objects
     public native static void    MrMsglistUnref             (long hMsglist);
