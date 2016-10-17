@@ -472,6 +472,17 @@ JNIEXPORT jint Java_org_telegram_messenger_MrMailbox_MrPoortextGetState(JNIEnv *
  ******************************************************************************/
 
 
+JNIEXPORT jstring Java_org_telegram_messenger_MrMailbox_CPtr2String(JNIEnv *env, jclass c, jlong hStr)
+{
+	/* the callback may return a long that represents a pointer to a C-String; this function creates a Java-string from such values. */
+	if( hStr == 0 ) {
+		return NULL;
+	}
+	const char* ptr = (const char*)hStr;
+	return JSTRING_NEW(ptr);
+}
+
+
 JNIEXPORT void Java_org_telegram_messenger_MrMailbox_MrStockAddStr(JNIEnv* env, jclass c, jint id, jstring str)
 {
 	CHAR_REF(str);
@@ -488,5 +499,7 @@ JNIEXPORT jstring Java_org_telegram_messenger_MrMailbox_MrGetVersionStr(JNIEnv *
 	free(temp);
 	return ret;
 }
+
+
 
 

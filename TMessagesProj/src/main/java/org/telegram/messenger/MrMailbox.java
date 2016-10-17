@@ -63,10 +63,7 @@ public class MrMailbox {
                                                     //  TLRPC.TL_messageService is used to display messages as "You joined the group"
                                                     //  TLRPC.TL_message is a normal message (also photos?)
 
-        ret.from_id = (int)MrMailbox.MrMsgGetFromId(hMsg);
-        if( ret.from_id == 0 ) {
-            ret.from_id = 1; // from us
-        }
+        ret.from_id = (int)MrMailbox.MrMsgGetFromId(hMsg); // 1=from us
 
         ret.to_id = new TLRPC.TL_peerUser();
         ret.to_id.user_id = -1; // to chat
@@ -74,7 +71,7 @@ public class MrMailbox {
         ret.message = MrMailbox.MrMsgGetText(hMsg);
         ret.date = (int)MrMsgGetTimestamp(hMsg);
 
-        // MessageObject.contentType - ?
+        // MessageObject.contentType - ??
         return ret;
     }
 
@@ -86,7 +83,8 @@ public class MrMailbox {
     }
 
     // this function is called from within the C-wrapper
-    public final static int MR_EVENT_MSGS_UPDATED = 2000;
+    public final static int MR_EVENT_MSGS_UPDATED   = 2000;
+    public final static int MR_EVENT_IS_EMAIL_KNOWN = 2010;
     public static long MrCallback(int event, long data1, long data2)
     {
         switch(event) {
@@ -100,6 +98,10 @@ public class MrMailbox {
                         NotificationCenter.getInstance().postNotificationName(NotificationCenter.dialogsNeedReload);
                     }
                 });
+                return 0;
+
+            case MR_EVENT_IS_EMAIL_KNOWN:
+                String emailAdr = CPtr2String(data1);
                 return 0;
         }
         return 0;
@@ -169,6 +171,7 @@ public class MrMailbox {
     // Tools
     public native static void    MrStockAddStr              (int id, String str);
     public native static String  MrGetVersionStr            ();
+    public native static String  CPtr2String                (long hString); // get strings eg. from data1 from the callback
 
     public final static int      MR_CHAT_UNDEFINED          = 0;
     public final static int      MR_CHAT_NORMAL             = 100;
