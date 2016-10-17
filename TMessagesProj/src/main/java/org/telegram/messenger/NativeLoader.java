@@ -192,6 +192,6 @@ public class NativeLoader {
         }
     }
 
-    private static native void init(String path, boolean enable);
+    private static native void init(String path, boolean enable); // EDIT BY MR -- the function currently just does nothing, however, maybe we'll need it in the future. Maybe it is also needed to force linking?
     //public static native void crash();
 }
