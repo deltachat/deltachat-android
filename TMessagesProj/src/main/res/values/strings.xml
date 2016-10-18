@@ -978,5 +978,5 @@
     <string name="ContactPl">_ contacts</string>
     <string name="Stranger">Unknown senders</string>
     <string name="Strangers">Unknown users</string>
-    <string name="StrangersExplain">Show messages from unknown addresses</string>
+    <string name="StrangersExplain">Show messages from unknown useres</string>
 </resources>

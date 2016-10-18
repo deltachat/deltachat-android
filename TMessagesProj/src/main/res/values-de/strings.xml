@@ -978,5 +978,5 @@
     <string name="MemberPl">_ Mitglieder</string>
     <string name="Stranger">Unbekannte Absender</string>
     <string name="Strangers">Unbekannte Benutzer</string>
-    <string name="StrangersExplain">Nachrichten von unbekannten Adressen anzeigen</string>
+    <string name="StrangersExplain">Nachrichten von unbekannten Benutzern anzeigen</string>
 </resources>
