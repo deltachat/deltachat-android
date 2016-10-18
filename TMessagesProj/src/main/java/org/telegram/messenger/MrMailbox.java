@@ -124,6 +124,7 @@ public class MrMailbox {
 
     public native static int     MrMailboxSetConfig         (long hMailbox, String key, String value); // value may be NULL
     public native static String  MrMailboxGetConfig         (long hMailbox, String key, String def); // def may be NULL, returns empty string as NULL
+    public native static int     MrMailboxGetConfigInt      (long hMailbox, String key, int def); // def may be NULL, returns empty string as NULL
 
     public native static String  MrMailboxGetInfo           (long hMailbox);
     public native static String  MrMailboxExecute           (long hMailbox, String cmd);

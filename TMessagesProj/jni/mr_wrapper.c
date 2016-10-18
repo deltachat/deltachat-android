@@ -215,6 +215,15 @@ JNIEXPORT jstring Java_org_telegram_messenger_MrMailbox_MrMailboxGetConfig(JNIEn
 }
 
 
+JNIEXPORT jint Java_org_telegram_messenger_MrMailbox_MrMailboxGetConfigInt(JNIEnv *env, jclass c, jlong hMailbox, jstring key, jint def)
+{
+	CHAR_REF(key);
+		jint ret = mrmailbox_get_config_int((mrmailbox_t*)hMailbox, keyPtr, def);
+	CHAR_UNREF(key);
+	return ret;
+}
+
+
 /* MrMailbox - misc. */
 
 JNIEXPORT jstring Java_org_telegram_messenger_MrMailbox_MrMailboxGetInfo(JNIEnv *env, jclass c, jlong hMailbox)

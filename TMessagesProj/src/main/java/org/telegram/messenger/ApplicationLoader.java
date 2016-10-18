@@ -299,6 +299,11 @@ public class ApplicationLoader extends Application {
         MrMailbox.hMailbox = MrMailbox.MrMailboxNew();
         MrMailbox.MrStockAddStr(2, LocaleController.getString("FromYou", R.string.FromYou));
         MrMailbox.MrStockAddStr(3, LocaleController.getString("Draft", R.string.Draft));
+        MrMailbox.MrStockAddStr(4, LocaleController.getString("MemberSg", R.string.MemberSg));
+        MrMailbox.MrStockAddStr(5, LocaleController.getString("MemberPl", R.string.MemberPl));
+        MrMailbox.MrStockAddStr(6, LocaleController.getString("ContactSg", R.string.ContactSg));
+        MrMailbox.MrStockAddStr(7, LocaleController.getString("ContactPl", R.string.ContactPl));
+        MrMailbox.MrStockAddStr(8, LocaleController.getString("Strangers", R.string.Strangers));
 
         applicationHandler = new Handler(applicationContext.getMainLooper());
 

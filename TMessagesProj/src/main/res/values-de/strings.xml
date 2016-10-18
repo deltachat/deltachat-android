@@ -972,4 +972,11 @@
     <string name="NotSet">Nicht gesetzt</string>
     <string name="NewChat">Neuer Chat</string>
     <string name="NewSecretChat">Neuer geheimer Chat</string>
+    <string name="ContactPl">_ Kontakte</string>
+    <string name="ContactSg">_ Kontakt</string>
+    <string name="MemberSg">_ Mitglied</string>
+    <string name="MemberPl">_ Mitglieder</string>
+    <string name="Stranger">Unbekannte Absender</string>
+    <string name="Strangers">Unbekannte Benutzer</string>
+    <string name="StrangersExplain">Nachrichten von unbekannten Adressen anzeigen</string>
 </resources>

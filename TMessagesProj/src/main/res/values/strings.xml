@@ -972,4 +972,11 @@
     <string name="AboutThisProgram">About LibreChat</string>
     <string name="NotSet">Not set</string>
     <string name="NewChat">New chat</string>
+    <string name="MemberSg">_ member</string>
+    <string name="MemberPl">_ members</string>
+    <string name="ContactSg">_ contact</string>
+    <string name="ContactPl">_ contacts</string>
+    <string name="Stranger">Unknown senders</string>
+    <string name="Strangers">Unknown users</string>
+    <string name="StrangersExplain">Show messages from unknown addresses</string>
 </resources>

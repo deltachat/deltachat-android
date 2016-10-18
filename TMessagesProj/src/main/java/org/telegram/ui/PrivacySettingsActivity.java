@@ -9,27 +9,20 @@
 package org.telegram.ui;
 
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.FrameLayout;
 import android.widget.ListView;
 
-import org.telegram.messenger.AndroidUtilities;
 import org.telegram.messenger.ApplicationLoader;
 import org.telegram.messenger.ContactsController;
 import org.telegram.messenger.LocaleController;
 import org.telegram.messenger.MessagesController;
+import org.telegram.messenger.MrMailbox;
 import org.telegram.messenger.NotificationCenter;
-import org.telegram.messenger.FileLog;
 import org.telegram.messenger.R;
-import org.telegram.tgnet.ConnectionsManager;
-import org.telegram.tgnet.RequestDelegate;
-import org.telegram.tgnet.TLObject;
 import org.telegram.tgnet.TLRPC;
 import org.telegram.messenger.UserConfig;
 import org.telegram.ui.ActionBar.ActionBar;
@@ -49,6 +42,7 @@ public class PrivacySettingsActivity extends BaseFragment implements Notificatio
 
     private int privacySectionRow;
     private int blockedRow;
+    private int showUnknownSendersRow;
     private int lastSeenRow;
     private int groupsRow;
     private int groupsDetailRow;
@@ -65,35 +59,34 @@ public class PrivacySettingsActivity extends BaseFragment implements Notificatio
     private int secretDetailRow;
     private int rowCount;
 
+    private int typeTextCheck = 3;
+
     @Override
     public boolean onFragmentCreate() {
         super.onFragmentCreate();
 
         ContactsController.getInstance().loadPrivacySettings();
 
+        // EDIT BY MR
         rowCount = 0;
-        privacySectionRow = -1; //rowCount++;
-        blockedRow = rowCount++;
-        lastSeenRow = -1; // EDIT BY MR -- rowCount++;
-        groupsRow = -1; // EDIT BY MR -- rowCount++;
-        groupsDetailRow = -1; // EDIT BY MR -- rowCount++;
-        securitySectionRow = -1; // EDIT BY MR -- rowCount++;
-        passcodeRow = rowCount++;
-        passwordRow = -1; // EDIT BY MR -- rowCount++;
-        sessionsRow = -1; // EDIT BY MR -- rowCount++;
-        sessionsDetailRow = -1; // EDIT BY MR --  rowCount++;
-        deleteAccountSectionRow = -1; // EDIT BY MR -- rowCount++;
-        deleteAccountRow = -1; // EDIT BY MR -- rowCount++;
-        deleteAccountDetailRow = -1; // EDIT BY MR -- rowCount++;
-        //if (MessagesController.getInstance().secretWebpagePreview != 1) { EDIT BY MR
-            secretSectionRow = -1; // EDIT BY MR -- rowCount++;
-            secretWebpageRow = rowCount++;
-            secretDetailRow = rowCount++; // EDIT BY MR -- rowCount++;
-        //} else { EDIT BY MR
-        //    secretSectionRow = -1;
-        //    secretWebpageRow = -1;
-        //    secretDetailRow = -1;
-        //} /EDIT BY MR
+        privacySectionRow       = -1;
+        passcodeRow             = rowCount++;
+        blockedRow              = rowCount++;
+        showUnknownSendersRow   = rowCount++;
+        lastSeenRow             = -1;
+        groupsRow               = -1;
+        groupsDetailRow         = -1;
+        securitySectionRow      = -1;
+        passwordRow             = -1;
+        sessionsRow             = -1;
+        sessionsDetailRow       = -1;
+        deleteAccountSectionRow = -1;
+        deleteAccountRow        = -1;
+        deleteAccountDetailRow  = -1;
+        secretSectionRow        = -1;
+        secretWebpageRow        = rowCount++;
+        secretDetailRow         = rowCount++;
+        // /EDIT BY MR
 
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.privacyRulesUpdated);
 
@@ -227,6 +220,19 @@ public class PrivacySettingsActivity extends BaseFragment implements Notificatio
                         ((TextCheckCell) view).setChecked(MessagesController.getInstance().secretWebpagePreview == 1);
                     }
                 }
+                else if( i==showUnknownSendersRow) {
+                    int oldval = MrMailbox.MrMailboxGetConfigInt(MrMailbox.hMailbox, "show_strangers", 0);
+                    if( oldval == 1 ) {
+                        MrMailbox.MrMailboxSetConfig(MrMailbox.hMailbox, "show_strangers", "0");
+                    }
+                    else {
+                        MrMailbox.MrMailboxSetConfig(MrMailbox.hMailbox, "show_strangers", "1");
+                    }
+                    MrMailbox.MrCallback(MrMailbox.MR_EVENT_MSGS_UPDATED, 0, 0);
+                    if (view instanceof TextCheckCell) {
+                        ((TextCheckCell) view).setChecked(oldval == 0);
+                    }
+                }
             }
         });
 
@@ -315,6 +321,7 @@ public class PrivacySettingsActivity extends BaseFragment implements Notificatio
         @Override
         public boolean isEnabled(int i) {
             return i == passcodeRow || i == passwordRow || i == blockedRow || i == sessionsRow || i == secretWebpageRow ||
+                    i==showUnknownSendersRow ||
                     i == groupsRow && !ContactsController.getInstance().getLoadingGroupInfo() ||
                     i == lastSeenRow && !ContactsController.getInstance().getLoadingLastSeenInfo() ||
                     i == deleteAccountRow && !ContactsController.getInstance().getLoadingDeleteInfo();
@@ -426,7 +433,7 @@ public class PrivacySettingsActivity extends BaseFragment implements Notificatio
                 } else if (i == secretSectionRow) {
                     ((HeaderCell) view).setText(LocaleController.getString("SecretChat", R.string.SecretChat));
                 }
-            } else if (type == 3) {
+            } else if (type == typeTextCheck) {
                 if (view == null) {
                     view = new TextCheckCell(mContext);
                     view.setBackgroundColor(0xffffffff);
@@ -434,6 +441,12 @@ public class PrivacySettingsActivity extends BaseFragment implements Notificatio
                 TextCheckCell textCell = (TextCheckCell) view;
                 if (i == secretWebpageRow) {
                     textCell.setTextAndCheck(LocaleController.getString("SecretWebPage", R.string.SecretWebPage), MessagesController.getInstance().secretWebpagePreview == 1, true);
+                }
+                else if( i==showUnknownSendersRow) {
+                    textCell.setTextAndValueAndCheck(LocaleController.getString("Strangers", R.string.Strangers),
+                            LocaleController.getString("StrangersExplain", R.string.StrangersExplain),
+                            MrMailbox.MrMailboxGetConfigInt(MrMailbox.hMailbox, "show_strangers", 0)==0? false : true,
+                            false, true);
                 }
             }
             return view;
@@ -447,8 +460,8 @@ public class PrivacySettingsActivity extends BaseFragment implements Notificatio
                 return 1;
             } else if (i == securitySectionRow || i == deleteAccountSectionRow || i == privacySectionRow || i == secretSectionRow) {
                 return 2;
-            } else if (i == secretWebpageRow) {
-                return 3;
+            } else if (i == secretWebpageRow || i==showUnknownSendersRow) {
+                return typeTextCheck;
             }
             return 0;
         }
