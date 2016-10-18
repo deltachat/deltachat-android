@@ -236,8 +236,6 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
 
         messagesSectionRow = rowCount++;
         messagesSectionRow2 = rowCount++;
-        sendByEnterRow = rowCount++; // outgoing message
-        raiseToSpeakRow = rowCount++;
         textSizeRow = rowCount++; // incoming messages
         customTabsRow = rowCount++;
         stickersRow = -1; // EDIT BY MR --was: rowCount++;
@@ -247,6 +245,8 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
         else {
             directShareRow = -1;
         }
+        raiseToSpeakRow = rowCount++; // outgoing message
+        sendByEnterRow = rowCount++;
 
         supportSectionRow = rowCount++;
         supportSectionRow2 = rowCount++;
@@ -1380,7 +1380,7 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
                 if (i == enableAnimationsRow) {
                     textCell.setTextAndCheck(LocaleController.getString("EnableAnimations", R.string.EnableAnimations), preferences.getBoolean("view_animations", true), true);
                 } else if (i == sendByEnterRow) {
-                    textCell.setTextAndCheck(LocaleController.getString("SendByEnter", R.string.SendByEnter), preferences.getBoolean("send_by_enter", false), true);
+                    textCell.setTextAndCheck(LocaleController.getString("SendByEnter", R.string.SendByEnter), preferences.getBoolean("send_by_enter", false), false);
                 } else if (i == saveToGalleryRow) {
                     textCell.setTextAndCheck(LocaleController.getString("SaveToGallerySettings", R.string.SaveToGallerySettings), MediaController.getInstance().canSaveToGallery(), true);
                 } else if (i == autoplayGifsRow) {
@@ -1390,7 +1390,7 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
                 } else if (i == customTabsRow) {
                     textCell.setTextAndValueAndCheck(LocaleController.getString("ChromeCustomTabs", R.string.ChromeCustomTabs), LocaleController.getString("ChromeCustomTabsInfo", R.string.ChromeCustomTabsInfo), MediaController.getInstance().canCustomTabs(), false, true);
                 } else if (i == directShareRow) {
-                    textCell.setTextAndValueAndCheck(LocaleController.getString("DirectShare", R.string.DirectShare), LocaleController.getString("DirectShareInfo", R.string.DirectShareInfo), MediaController.getInstance().canDirectShare(), false, false);
+                    textCell.setTextAndValueAndCheck(LocaleController.getString("DirectShare", R.string.DirectShare), LocaleController.getString("DirectShareInfo", R.string.DirectShareInfo), MediaController.getInstance().canDirectShare(), false, true);
                 }
             } else if (type == 4) {
                 if (view == null) {
