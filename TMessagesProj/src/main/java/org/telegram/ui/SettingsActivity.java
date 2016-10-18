@@ -219,29 +219,35 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
         numberRow = rowCount++; // EDIT BY MR -- these are the account settings
         settingsSectionRow = rowCount++;
         settingsSectionRow2 = rowCount++;
-        notificationRow = rowCount++;
         privacyRow = rowCount++;
+        notificationRow = rowCount++;
         backgroundRow = rowCount++;
-        languageRow = rowCount++;
         enableAnimationsRow = rowCount++;
+        languageRow = rowCount++;
+
         mediaDownloadSection = rowCount++;
         mediaDownloadSection2 = rowCount++;
-        mobileDownloadRow = rowCount++;
-        wifiDownloadRow = rowCount++;
-        roamingDownloadRow = rowCount++;
         autoplayGifsRow = rowCount++;
+        mobileDownloadRow = -1;//rowCount++;
+        wifiDownloadRow = -1;//rowCount++;
+        roamingDownloadRow = -1;//rowCount++;
         saveToGalleryRow = rowCount++;
+        cacheRow = rowCount++;
+
         messagesSectionRow = rowCount++;
         messagesSectionRow2 = rowCount++;
+        sendByEnterRow = rowCount++; // outgoing message
+        raiseToSpeakRow = rowCount++;
+        textSizeRow = rowCount++; // incoming messages
         customTabsRow = rowCount++;
+        stickersRow = -1; // EDIT BY MR --was: rowCount++;
         if (Build.VERSION.SDK_INT >= 23) {
             directShareRow = rowCount++;
         }
-        textSizeRow = rowCount++;
-        stickersRow = -1; // EDIT BY MR --was: rowCount++;
-        cacheRow = rowCount++;
-        raiseToSpeakRow = rowCount++;
-        sendByEnterRow = rowCount++;
+        else {
+            directShareRow = -1;
+        }
+
         supportSectionRow = rowCount++;
         supportSectionRow2 = rowCount++;
         askQuestionRow = -1; // EDIT BY MR -- rowCount++;
@@ -1318,7 +1324,7 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
                     int size = preferences.getInt("fons_size", AndroidUtilities.isTablet() ? 18 : 16);
                     textCell.setTextAndValue(LocaleController.getString("TextSize", R.string.TextSize), String.format("%d", size), true);
                 } else if (i == languageRow) {
-                    textCell.setTextAndValue(LocaleController.getString("Language", R.string.Language), LocaleController.getCurrentLanguageName(), true);
+                    textCell.setTextAndValue(LocaleController.getString("Language", R.string.Language), LocaleController.getCurrentLanguageName(), false);
                 } else if (i == contactsSortRow) {
                     /* EDIT BY MR
                     String value;
@@ -1372,11 +1378,11 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
 
                 SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("mainconfig", Activity.MODE_PRIVATE);
                 if (i == enableAnimationsRow) {
-                    textCell.setTextAndCheck(LocaleController.getString("EnableAnimations", R.string.EnableAnimations), preferences.getBoolean("view_animations", true), false);
+                    textCell.setTextAndCheck(LocaleController.getString("EnableAnimations", R.string.EnableAnimations), preferences.getBoolean("view_animations", true), true);
                 } else if (i == sendByEnterRow) {
-                    textCell.setTextAndCheck(LocaleController.getString("SendByEnter", R.string.SendByEnter), preferences.getBoolean("send_by_enter", false), false);
+                    textCell.setTextAndCheck(LocaleController.getString("SendByEnter", R.string.SendByEnter), preferences.getBoolean("send_by_enter", false), true);
                 } else if (i == saveToGalleryRow) {
-                    textCell.setTextAndCheck(LocaleController.getString("SaveToGallerySettings", R.string.SaveToGallerySettings), MediaController.getInstance().canSaveToGallery(), false);
+                    textCell.setTextAndCheck(LocaleController.getString("SaveToGallerySettings", R.string.SaveToGallerySettings), MediaController.getInstance().canSaveToGallery(), true);
                 } else if (i == autoplayGifsRow) {
                     textCell.setTextAndCheck(LocaleController.getString("AutoplayGifs", R.string.AutoplayGifs), MediaController.getInstance().canAutoplayGifs(), true);
                 } else if (i == raiseToSpeakRow) {
@@ -1384,7 +1390,7 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
                 } else if (i == customTabsRow) {
                     textCell.setTextAndValueAndCheck(LocaleController.getString("ChromeCustomTabs", R.string.ChromeCustomTabs), LocaleController.getString("ChromeCustomTabsInfo", R.string.ChromeCustomTabsInfo), MediaController.getInstance().canCustomTabs(), false, true);
                 } else if (i == directShareRow) {
-                    textCell.setTextAndValueAndCheck(LocaleController.getString("DirectShare", R.string.DirectShare), LocaleController.getString("DirectShareInfo", R.string.DirectShareInfo), MediaController.getInstance().canDirectShare(), false, true);
+                    textCell.setTextAndValueAndCheck(LocaleController.getString("DirectShare", R.string.DirectShare), LocaleController.getString("DirectShareInfo", R.string.DirectShareInfo), MediaController.getInstance().canDirectShare(), false, false);
                 }
             } else if (type == 4) {
                 if (view == null) {
@@ -1397,7 +1403,7 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
                 } else if (i == messagesSectionRow2) {
                     ((HeaderCell) view).setText(LocaleController.getString("MessagesSettings", R.string.MessagesSettings));
                 } else if (i == mediaDownloadSection2) {
-                    ((HeaderCell) view).setText(LocaleController.getString("AutomaticMediaDownload", R.string.AutomaticMediaDownload));
+                    ((HeaderCell) view).setText(LocaleController.getString("Media", R.string.Media));
                 } else if (i == numberSectionRow) {
                     ((HeaderCell) view).setText(LocaleController.getString("MyAccount", R.string.MyAccount)); // EDIT BY MR
                 }

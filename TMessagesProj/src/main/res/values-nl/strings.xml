@@ -946,4 +946,5 @@
     <string name="formatterDay12H">h:mm a</string>
     <string name="formatDateAtTime">%1$s om %2$s</string>
     <string name="NewChat">Nieuwe chat</string>
+    <string name="Media">Media</string>
 </resources>

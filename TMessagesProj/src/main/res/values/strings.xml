@@ -979,4 +979,5 @@
     <string name="Stranger">Unknown senders</string>
     <string name="Strangers">Unknown users</string>
     <string name="StrangersExplain">Show messages from unknown useres</string>
+    <string name="Media">Media</string>
 </resources>
