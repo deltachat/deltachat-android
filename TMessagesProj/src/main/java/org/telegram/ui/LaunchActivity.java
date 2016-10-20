@@ -1145,7 +1145,7 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                                         BaseFragment lastFragment = !mainFragmentsStack.isEmpty() ? mainFragmentsStack.get(mainFragmentsStack.size() - 1) : null;
                                         if (lastFragment == null || MessagesController.checkCanOpenChat(args, lastFragment)) {
                                             if (isBot && lastFragment != null && lastFragment instanceof ChatActivity && ((ChatActivity) lastFragment).getDialogId() == dialog_id) {
-                                                ((ChatActivity) lastFragment).setBotUser(botUser);
+                                                //((ChatActivity) lastFragment).setBotUser(botUser);
                                             } else {
                                                 ChatActivity fragment = new ChatActivity(args);
                                                 NotificationCenter.getInstance().postNotificationName(NotificationCenter.closeChats);

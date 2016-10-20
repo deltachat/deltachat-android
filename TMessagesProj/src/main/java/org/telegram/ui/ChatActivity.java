@@ -148,7 +148,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         PhotoViewer.PhotoViewerProvider {
 
     protected TLRPC.Chat currentChat;
-    protected TLRPC.User currentUser;
+    protected TLRPC.User currentUser; // originally currentChat<->currentUser was used to differ between normal or group chats
     protected TLRPC.EncryptedChat currentEncryptedChat;
 
     private boolean userBlocked = false;
@@ -719,9 +719,11 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 FileLog.e("tmessages", e);
             }
         }
+        /*
         if (currentUser != null) {
             MessagesController.getInstance().cancelLoadFullUser(currentUser.id);
         }
+        */
         AndroidUtilities.removeAdjustResize(getParentActivity(), classGuid);
         if (stickersAdapter != null) {
             stickersAdapter.onDestroy();
@@ -1020,11 +1022,13 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         }
         */
         muteItem = headerItem.addSubItem(mute, null, 0);
+        /*
         if (currentUser != null && currentEncryptedChat == null && currentUser.bot) {
             headerItem.addSubItem(bot_settings, LocaleController.getString("BotSettings", R.string.BotSettings), 0);
             headerItem.addSubItem(bot_help, LocaleController.getString("BotHelp", R.string.BotHelp), 0);
             updateBotButtons();
         }
+        */
 
         updateTitle();
         avatarContainer.updateOnlineCount();
@@ -2701,9 +2705,9 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
 
     private void checkBotCommands() {
         URLSpanBotCommand.enabled = false;
-        if (currentUser != null && currentUser.bot) {
+        /*if (currentUser != null && currentUser.bot) {
             URLSpanBotCommand.enabled = true;
-        } else if (info instanceof TLRPC.TL_chatFull) {
+        } else */if (info instanceof TLRPC.TL_chatFull) {
             for (int a = 0; a < info.participants.participants.size(); a++) {
                 TLRPC.ChatParticipant participant = info.participants.participants.get(a);
                 TLRPC.User user = MessagesController.getInstance().getUser(participant.user_id);
@@ -2804,6 +2808,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         return dialog_id;
     }
 
+    /*
     public void setBotUser(String value) {
         if (inlineReturn != 0) {
             MessagesController.getInstance().sendBotStart(currentUser, value);
@@ -2812,6 +2817,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
             updateBottomOverlay();
         }
     }
+    */
 
     public boolean playFirstUnreadVoiceMessage() {
         for (int a = messages.size() - 1; a >= 0; a--) {
@@ -8486,7 +8492,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
 
                 if (view instanceof ChatMessageCell) {
                     ChatMessageCell messageCell = (ChatMessageCell) view;
-                    messageCell.isChat = currentChat != null;
+                    messageCell.isChat = MrMailbox.MrChatGetType(m_hChat)==MrMailbox.MR_CHAT_GROUP;//currentChat != null;
                     messageCell.setMessageObject(message);
                     messageCell.setCheckPressed(!disableSelection, disableSelection && selected);
                     if (view instanceof ChatMessageCell && MediaController.getInstance().canDownloadMedia(MediaController.AUTODOWNLOAD_MASK_AUDIO)) {
