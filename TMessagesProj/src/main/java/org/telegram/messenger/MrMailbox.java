@@ -139,6 +139,7 @@ public class MrMailbox {
     public native static int     MrChatGetId                (long hChat);
     public native static int     MrChatGetType              (long hChat);
     public native static String  MrChatGetName              (long hChat);
+    public static int            MrChatIsEncrypted          (long hChat) { return 0; }
     public native static String  MrChatGetSubtitle          (long hChat);
     public native static String  MrChatGetDraft             (long hChat); // returns null for "no draft"
     public native static long    MrChatGetDraftTimestamp    (long hChat); // returns 0 for "no draft"
@@ -176,9 +177,7 @@ public class MrMailbox {
 
     public final static int      MR_CHAT_UNDEFINED          = 0;
     public final static int      MR_CHAT_NORMAL             = 100;
-    public final static int      MR_CHAT_ENCRYPTED          = 110;
     public final static int      MR_CHAT_GROUP              = 120;
-    public final static int      MR_CHAT_FEED               = 130;
 
     public final static int      MR_STATE_UNDEFINED         = 0;
     public final static int      MR_IN_UNREAD               = 1;

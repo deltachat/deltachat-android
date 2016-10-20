@@ -23,30 +23,24 @@ import android.text.style.ForegroundColorSpan;
 import android.view.MotionEvent;
 
 import org.telegram.messenger.AndroidUtilities;
-import org.telegram.PhoneFormat.PhoneFormat;
-import org.telegram.messenger.ChatObject;
 import org.telegram.messenger.LocaleController;
 import org.telegram.messenger.MessageObject;
 import org.telegram.messenger.MrMailbox; // EDIT BY MR
-import org.telegram.messenger.UserObject;
 import org.telegram.messenger.FileLog;
 import org.telegram.messenger.query.DraftQuery;
 import org.telegram.tgnet.TLRPC;
-import org.telegram.messenger.ContactsController;
 import org.telegram.messenger.Emoji;
 import org.telegram.messenger.MessagesController;
 import org.telegram.messenger.R;
-import org.telegram.messenger.UserConfig;
 import org.telegram.messenger.ImageReceiver;
 import org.telegram.ui.ActionBar.Theme;
 import org.telegram.ui.Components.AvatarDrawable;
 
-import java.util.ArrayList;
 
 public class DialogCell extends BaseCell {
 
     private static TextPaint namePaint;
-    private static TextPaint nameEncryptedPaint;
+    //private static TextPaint nameEncryptedPaint; -- EDIT BY MR
     private static TextPaint messagePaint;
     private static TextPaint messagePrintingPaint;
     private static TextPaint timePaint;
@@ -56,12 +50,12 @@ public class DialogCell extends BaseCell {
     private static Drawable halfCheckDrawable;
     private static Drawable clockDrawable;
     private static Drawable errorDrawable;
-    private static Drawable lockDrawable;
+    //private static Drawable lockDrawable;
     private static Drawable countDrawable;
     private static Drawable countDrawableGrey;
     private static Drawable groupDrawable;
-    private static Drawable broadcastDrawable;
-    private static Drawable botDrawable;
+    //private static Drawable broadcastDrawable;
+    //private static Drawable botDrawable;
     private static Drawable muteDrawable;
     private static Drawable verifiedDrawable;
 
@@ -71,21 +65,21 @@ public class DialogCell extends BaseCell {
     private long currentDialogId;
     private int currentEditDate;
     private boolean isDialogCell; // EDIT BY MR -- if it is no dialog cell, it is a search cell ...
-    private int lastMessageDate;
+    //private int lastMessageDate;
     private int unreadCount;
     private boolean lastUnreadState;
     private int lastSendState;
     private boolean dialogMuted;
     private MessageObject message;
     private int index;
-    private int dialogsType;
+    //private int dialogsType;
 
     private ImageReceiver avatarImage;
     private AvatarDrawable avatarDrawable;
 
     private TLRPC.User user = null;
     private TLRPC.Chat chat = null;
-    private Object encryptedChat = false; // EDIT BY MR - was: TLRPC.EncryptedChat
+    //private TLRPC.EncryptedChat encryptedChat = null; // EDIT BY MR
     private CharSequence lastPrintString = null;
     private TLRPC.DraftMessage draftMessage;
 
@@ -93,10 +87,10 @@ public class DialogCell extends BaseCell {
 
     private int nameLeft;
     private StaticLayout nameLayout;
-    private boolean drawNameLock;
+    //private boolean drawNameLock;
     private boolean drawNameGroup;
-    private boolean drawNameBroadcast;
-    private boolean drawNameBot;
+    //private boolean drawNameBroadcast;
+    //private boolean drawNameBot;
     private int nameMuteLeft;
     private int nameLockLeft;
     private int nameLockTop;
@@ -143,10 +137,12 @@ public class DialogCell extends BaseCell {
             namePaint.setColor(0xff212121);
             namePaint.setTypeface(AndroidUtilities.getTypeface("fonts/rmedium.ttf"));
 
+            /* EDIT BY MR
             nameEncryptedPaint = new TextPaint(TextPaint.ANTI_ALIAS_FLAG);
             nameEncryptedPaint.setTextSize(AndroidUtilities.dp(17));
             nameEncryptedPaint.setColor(0xff00a60e);
             nameEncryptedPaint.setTypeface(AndroidUtilities.getTypeface("fonts/rmedium.ttf"));
+            */
 
             messagePaint = new TextPaint(TextPaint.ANTI_ALIAS_FLAG);
             messagePaint.setTextSize(AndroidUtilities.dp(16));
@@ -172,7 +168,7 @@ public class DialogCell extends BaseCell {
             countPaint.setColor(0xffffffff);
             countPaint.setTypeface(AndroidUtilities.getTypeface("fonts/rmedium.ttf"));
 
-            lockDrawable = getResources().getDrawable(R.drawable.list_secret);
+            //lockDrawable = getResources().getDrawable(R.drawable.list_secret);
             checkDrawable = getResources().getDrawable(R.drawable.dialogs_check);
             halfCheckDrawable = getResources().getDrawable(R.drawable.dialogs_halfcheck);
             clockDrawable = getResources().getDrawable(R.drawable.msg_clock);
@@ -180,10 +176,10 @@ public class DialogCell extends BaseCell {
             countDrawable = getResources().getDrawable(R.drawable.dialogs_badge);
             countDrawableGrey = getResources().getDrawable(R.drawable.dialogs_badge2);
             groupDrawable = getResources().getDrawable(R.drawable.list_group);
-            broadcastDrawable = getResources().getDrawable(R.drawable.list_broadcast);
+            //broadcastDrawable = getResources().getDrawable(R.drawable.list_broadcast);
             muteDrawable = getResources().getDrawable(R.drawable.mute_grey);
             verifiedDrawable = getResources().getDrawable(R.drawable.check_list);
-            botDrawable = getResources().getDrawable(R.drawable.bot_list);
+            //botDrawable = getResources().getDrawable(R.drawable.bot_list);
         }
 
         setBackgroundResource(R.drawable.list_selector);
@@ -197,7 +193,7 @@ public class DialogCell extends BaseCell {
         currentDialogId = dialog.id;
         isDialogCell = true;
         index = i;
-        dialogsType = type;
+        //dialogsType = type;
 
         // EDIT BY MR
         MrMailbox.MrChatUnref(hChat);
@@ -207,17 +203,18 @@ public class DialogCell extends BaseCell {
         update(0);
     }
 
-    @Override protected void finalize()
+    @Override protected void finalize() throws Throwable
     {
         MrMailbox.MrChatUnref(hChat);
         hChat = 0;
+        super.finalize();
     }
 
     public void setDialog(long dialog_id, MessageObject messageObject, int date) { // used to display the search result [sic!]
         currentDialogId = dialog_id;
         message = messageObject;
         isDialogCell = false;
-        lastMessageDate = date;
+        //lastMessageDate = date;
         currentEditDate = messageObject != null ? messageObject.messageOwner.edit_date : 0;
         unreadCount = 0;
         lastUnreadState = messageObject != null && messageObject.isUnread();
@@ -285,11 +282,12 @@ public class DialogCell extends BaseCell {
         boolean checkMessage = true;
 
         drawNameGroup = false;
-        drawNameBroadcast = false;
-        drawNameLock = false;
-        drawNameBot = false;
+        //drawNameBroadcast = false;
+        //drawNameLock = false;
+        //drawNameBot = false;
         drawVerified = false;
 
+        /* EDIT BY MR
         if (encryptedChat != null) {
             drawNameLock = true;
             nameLockTop = AndroidUtilities.dp(16.5f);
@@ -300,22 +298,24 @@ public class DialogCell extends BaseCell {
                 nameLockLeft = getMeasuredWidth() - AndroidUtilities.dp(AndroidUtilities.leftBaseline) - lockDrawable.getIntrinsicWidth();
                 nameLeft = AndroidUtilities.dp(14);
             }
-        } else {
-            if (chat != null) {
-                if (chat.id < 0 || ChatObject.isChannel(chat) && !chat.megagroup) {
-                    drawNameBroadcast = true;
-                    nameLockTop = AndroidUtilities.dp(16.5f);
-                } else {
+        } else
+        */
+        {
+            if (MrMailbox.MrChatGetType(hChat)==MrMailbox.MR_CHAT_GROUP) { // EDIT BY MR
+                //if (chat.id < 0 || ChatObject.isChannel(chat) && !chat.megagroup) {
+                //    drawNameBroadcast = true;
+                //    nameLockTop = AndroidUtilities.dp(16.5f);
+                //} else {
                     drawNameGroup = true;
                     nameLockTop = AndroidUtilities.dp(17.5f);
-                }
-                drawVerified = chat.verified;
+                //}
+                //drawVerified = chat.verified; -- /EDIT BY MR
 
                 if (!LocaleController.isRTL) {
                     nameLockLeft = AndroidUtilities.dp(AndroidUtilities.leftBaseline);
-                    nameLeft = AndroidUtilities.dp(AndroidUtilities.leftBaseline + 4) + (drawNameGroup ? groupDrawable.getIntrinsicWidth() : broadcastDrawable.getIntrinsicWidth());
+                    nameLeft = AndroidUtilities.dp(AndroidUtilities.leftBaseline + 4) + (groupDrawable.getIntrinsicWidth());
                 } else {
-                    nameLockLeft = getMeasuredWidth() - AndroidUtilities.dp(AndroidUtilities.leftBaseline) - (drawNameGroup ? groupDrawable.getIntrinsicWidth() : broadcastDrawable.getIntrinsicWidth());
+                    nameLockLeft = getMeasuredWidth() - AndroidUtilities.dp(AndroidUtilities.leftBaseline) - (groupDrawable.getIntrinsicWidth());
                     nameLeft = AndroidUtilities.dp(14);
                 }
             } else {
@@ -324,6 +324,7 @@ public class DialogCell extends BaseCell {
                 } else {
                     nameLeft = AndroidUtilities.dp(14);
                 }
+                /* EDIT BY MR
                 if (user != null) {
                     if (user.bot) {
                         drawNameBot = true;
@@ -338,6 +339,7 @@ public class DialogCell extends BaseCell {
                     }
                     drawVerified = user.verified;
                 }
+                */
             }
         }
 
@@ -502,12 +504,13 @@ public class DialogCell extends BaseCell {
                 drawClock = false;
                 drawCount = false;
                 drawError = false;
-                switch( MrMailbox.MrPoortextGetState(hChat) ) {
+                switch( MrMailbox.MrPoortextGetState(hPoortext) ) {
                     case MrMailbox.MR_OUT_ERROR: drawError = true; break;
                     case MrMailbox.MR_OUT_PENDING: drawClock = true; break;
                     case MrMailbox.MR_OUT_DELIVERED: drawCheck2 = true; break;
                     case MrMailbox.MR_OUT_READ: drawCheck1 = true; drawCheck2 = true; break;
                 }
+                drawVerified = MrMailbox.MrChatIsEncrypted(hChat)!=0; // we use the "verified" check as an icon for "encryted" and "verified"
 
             MrMailbox.MrPoortextUnref(hPoortext);
         } // /EDIT BY MR
@@ -590,11 +593,9 @@ public class DialogCell extends BaseCell {
             } else {
                 nameString = UserObject.getUserName(user);
             }
-        */
             if (encryptedChat != null) {
                 currentNamePaint = nameEncryptedPaint;
             }
-        /* EDIT BY MR
         }
         */
         nameString = MrMailbox.MrChatGetName(hChat); // EDIT BY MR
@@ -610,15 +611,21 @@ public class DialogCell extends BaseCell {
             nameWidth = getMeasuredWidth() - nameLeft - AndroidUtilities.dp(AndroidUtilities.leftBaseline) - timeWidth;
             nameLeft += timeWidth;
         }
+
+        /* EDIT BY MR
         if (drawNameLock) {
             nameWidth -= AndroidUtilities.dp(4) + lockDrawable.getIntrinsicWidth();
-        } else if (drawNameGroup) {
+        } else */
+        if (drawNameGroup) {
             nameWidth -= AndroidUtilities.dp(4) + groupDrawable.getIntrinsicWidth();
-        } else if (drawNameBroadcast) {
+        }
+        /* EDIT BY MR
+        else if (drawNameBroadcast) {
             nameWidth -= AndroidUtilities.dp(4) + broadcastDrawable.getIntrinsicWidth();
         } else if (drawNameBot) {
             nameWidth -= AndroidUtilities.dp(4) + botDrawable.getIntrinsicWidth();
         }
+        */
         if (drawClock) {
             int w = clockDrawable.getIntrinsicWidth() + AndroidUtilities.dp(5);
             nameWidth -= w;
@@ -891,7 +898,7 @@ public class DialogCell extends BaseCell {
         dialogMuted = isDialogCell && MessagesController.getInstance().isDialogMuted(currentDialogId);
         user = null;
         chat = null;
-        encryptedChat = null;
+        //encryptedChat = null; -- EDIT BY MR
 
         int lower_id = (int)currentDialogId;
         int high_id = (int)(currentDialogId >> 32);
@@ -911,20 +918,15 @@ public class DialogCell extends BaseCell {
                     user = MessagesController.getInstance().getUser(lower_id);
                 }
             }
-        } else {
-            /* EDIT BY MR
+        }
+        /* EDIT BY MR
+        else {
             encryptedChat = MessagesController.getInstance().getEncryptedChat(high_id);
             if (encryptedChat != null) {
                 user = MessagesController.getInstance().getUser(encryptedChat.user_id);
             }
-            */
         }
-
-        /* EDIT BY MR */
-        if( MrMailbox.MrChatGetType(hChat) == MrMailbox.MR_CHAT_ENCRYPTED ) {
-            encryptedChat = new Object();
-        }
-        /* /EDIT BY MR */
+        */
 
         TLRPC.FileLocation photo = null;
         /* EDIT BY MR
@@ -964,19 +966,23 @@ public class DialogCell extends BaseCell {
             canvas.drawRect(0, 0, getMeasuredWidth(), getMeasuredHeight(), backPaint);
         }
 
+        /*
         if (drawNameLock) {
             setDrawableBounds(lockDrawable, nameLockLeft, nameLockTop);
             lockDrawable.draw(canvas);
-        } else if (drawNameGroup) {
+        } else
+        */
+        if (drawNameGroup) {
             setDrawableBounds(groupDrawable, nameLockLeft, nameLockTop);
             groupDrawable.draw(canvas);
-        } else if (drawNameBroadcast) {
+        }
+        /* else if (drawNameBroadcast) {
             setDrawableBounds(broadcastDrawable, nameLockLeft, nameLockTop);
             broadcastDrawable.draw(canvas);
         } else if (drawNameBot) {
             setDrawableBounds(botDrawable, nameLockLeft, nameLockTop);
             botDrawable.draw(canvas);
-        }
+        } */
 
         if (nameLayout != null) {
             canvas.save();
