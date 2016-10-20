@@ -46,8 +46,6 @@
     <string name="AwaitingEncryption">Warte, bis %s online geht…</string>
     <string name="EncryptionRejected">Geheimer Chat beendet</string>
     <string name="EncryptionProcessing">Tausche Schlüssel aus…</string>
-    <string name="EncryptedChatStartedOutgoing">%s ist deinem geheimen Chat beigetreten.</string>
-    <string name="EncryptedChatStartedIncoming">Du bist dem geheimen Chat beigetreten.</string>
     <string name="ClearHistory">Verlauf löschen</string>
     <string name="ClearHistoryCache">Cache leeren</string>
     <string name="DeleteChat">Löschen und beenden</string>

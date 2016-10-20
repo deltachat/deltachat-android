@@ -47,8 +47,6 @@
     <string name="AwaitingEncryption">Esperando %s se conectar...</string>
     <string name="EncryptionRejected">Chat secreto cancelado</string>
     <string name="EncryptionProcessing">Trocando chaves de criptografia...</string>
-    <string name="EncryptedChatStartedOutgoing">%s entrou no chat secreto</string>
-    <string name="EncryptedChatStartedIncoming">Você entrou no chat secreto</string>
     <string name="ClearHistory">Limpar histórico</string>
     <string name="ClearHistoryCache">Apagar do cache</string>
     <string name="DeleteChat">Apagar e sair</string>

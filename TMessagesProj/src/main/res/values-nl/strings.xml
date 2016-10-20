@@ -47,8 +47,6 @@
     <string name="AwaitingEncryption">Wachten tot %s online komt</string>
     <string name="EncryptionRejected">Geheime chat geannuleerd</string>
     <string name="EncryptionProcessing">Encryptiesleutels uitwisselen</string>
-    <string name="EncryptedChatStartedOutgoing">%s neemt deel aan je geheime chat.</string>
-    <string name="EncryptedChatStartedIncoming">Toegevoegd aan de geheime chat.</string>
     <string name="ClearHistory">Geschiedenis wissen</string>
     <string name="ClearHistoryCache">Cache opschonen</string>
     <string name="DeleteChat">Verwijder en verlaat</string>
