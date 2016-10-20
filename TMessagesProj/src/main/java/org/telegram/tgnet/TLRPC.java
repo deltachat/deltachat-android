@@ -3717,7 +3717,7 @@ public class TLRPC {
 			ReplyMarkup result = null;
 			switch(constructor) {
 				case 0x48a30254:
-					result = new TL_replyInlineMarkup();
+					//result = new TL_replyInlineMarkup();
 					break;
 				case 0xa03e5b85:
 					result = new TL_replyKeyboardHide();
@@ -3739,6 +3739,7 @@ public class TLRPC {
 		}
 	}
 
+	/*
 	public static class TL_replyInlineMarkup extends ReplyMarkup {
 		public static int constructor = 0x48a30254;
 
@@ -3771,6 +3772,7 @@ public class TLRPC {
 			}
 		}
 	}
+	*/
 
 	public static class TL_replyKeyboardHide extends ReplyMarkup {
 		public static int constructor = 0xa03e5b85;

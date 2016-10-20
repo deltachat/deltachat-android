@@ -63,14 +63,19 @@ public class MrMailbox {
                                                     //  TLRPC.TL_messageService is used to display messages as "You joined the group"
                                                     //  TLRPC.TL_message is a normal message (also photos?)
 
+        int state = MrMsgGetState(hMsg);
+
         ret.from_id       = MrMailbox.MrMsgGetFromId(hMsg);
         ret.to_id         = new TLRPC.TL_peerUser();
         ret.to_id.user_id = MrMailbox.MrMsgGetToId(hMsg);
         ret.message       = MrMailbox.MrMsgGetText(hMsg);
         ret.date          = (int)MrMsgGetTimestamp(hMsg);
         ret.dialog_id     = MrMsgGetChatId(hMsg);
-        ret.unread        = false;
+        ret.unread        = state==MR_IN_UNREAD;
+        ret.media_unread  = ret.unread;
         ret.flags         = 0;
+        ret.post          = false; // ? true=avatar wird in gruppen nicht angezeigt
+        ret.out           = ret.from_id==1; // true=outgoing message, read eg. in MessageObject.isOutOwner()
 
         // MessageObject.contentType - ??
         return ret;

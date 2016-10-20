@@ -60,14 +60,14 @@ public class MessageObject {
     public ArrayList<TLRPC.PhotoSize> photoThumbs;
     public VideoEditedInfo videoEditedInfo;
     public boolean viewsReloaded;
-    public int wantedBotKeyboardWidth;
+    //public int wantedBotKeyboardWidth;
     public boolean attachPathExists;
     public boolean mediaExists;
 
     public boolean forceUpdate;
 
     private static TextPaint textPaint;
-    private static TextPaint botButtonPaint;
+    //private static TextPaint botButtonPaint;
     public int lastLineWidth;
     public int textWidth;
     public int textHeight;
@@ -313,7 +313,7 @@ public class MessageObject {
                 } else if (message.action instanceof TLRPC.TL_messageActionChannelMigrateFrom) {
                     messageText = LocaleController.getString("ActionMigrateFromGroup", R.string.ActionMigrateFromGroup);
                 } else if (message.action instanceof TLRPC.TL_messageActionPinMessage) {
-                    generatePinMessageText(fromUser, fromUser == null ? chats.get(message.to_id.channel_id) : null);
+                    //generatePinMessageText(fromUser, fromUser == null ? chats.get(message.to_id.channel_id) : null);
                 } else if (message.action instanceof TLRPC.TL_messageActionHistoryClear) {
                     messageText = LocaleController.getString("HistoryCleared", R.string.HistoryCleared);
                 }
@@ -360,7 +360,7 @@ public class MessageObject {
         }
 
         setType();
-        measureInlineBotButtons();
+        //measureInlineBotButtons();
 
         Calendar rightNow = new GregorianCalendar();
         rightNow.setTimeInMillis((long) (messageOwner.date) * 1000);
@@ -397,6 +397,7 @@ public class MessageObject {
         return textPaint;
     }
 
+    /*
     public void generatePinMessageText(TLRPC.User fromUser, TLRPC.Chat chat) {
         if (fromUser == null && chat == null) {
             if (messageOwner.from_id > 0) {
@@ -439,7 +440,9 @@ public class MessageObject {
             }
         }
     }
+    */
 
+    /*
     private void measureInlineBotButtons() {
         wantedBotKeyboardWidth = 0;
         if (!(messageOwner.reply_markup instanceof TLRPC.TL_replyInlineMarkup)) {
@@ -464,6 +467,7 @@ public class MessageObject {
             wantedBotKeyboardWidth = Math.max(wantedBotKeyboardWidth, (maxButtonSize + AndroidUtilities.dp(12)) * size + AndroidUtilities.dp(5) * (size - 1));
         }
     }
+    */
 
     public void setType() {
         int oldType = type;
@@ -1141,11 +1145,11 @@ public class MessageObject {
         return messageOwner.out;
     }
 
-    public boolean isOutOwner() {
+    public boolean isOutOwner() { // is the message an outgoing message?
         return messageOwner.out && messageOwner.from_id > 0 && !messageOwner.post;
     }
 
-    public boolean isFromUser() {
+    public boolean isFromUser() { // is the message from any user? send or received?
         return messageOwner.from_id > 0 && !messageOwner.post;
     }
 

@@ -426,9 +426,9 @@ public class MessagesQuery {
                         for (int b = 0; b < arrayList.size(); b++) {
                             MessageObject m = arrayList.get(b);
                             m.replyMessageObject = messageObject;
-                            if (m.messageOwner.action instanceof TLRPC.TL_messageActionPinMessage) {
-                                m.generatePinMessageText(null, null);
-                            }
+                            //if (m.messageOwner.action instanceof TLRPC.TL_messageActionPinMessage) {
+                            //    m.generatePinMessageText(null, null);
+                            //}
                         }
                         changed = true;
                     }

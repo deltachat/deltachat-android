@@ -2723,6 +2723,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                 botButtonsByData.clear();
             }
 
+            /* EDIT BY MR
             if (messageObject.messageOwner.reply_markup instanceof TLRPC.TL_replyInlineMarkup) {
                 int rows = messageObject.messageOwner.reply_markup.rows.size();
                 substractBackgroundHeight = keyboardHeight = dp(44 + 4) * rows + dp(1);
@@ -2772,7 +2773,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                     }
                 }
                 widthForButtons = maxButtonsWidth;
-            } else {
+            } else */ {
                 substractBackgroundHeight = 0;
                 keyboardHeight = 0;
             }

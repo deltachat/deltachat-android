@@ -5147,9 +5147,9 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                                 }
                             } else if (messageObject.messageOwner.reply_to_msg_id != 0 && messageObject.replyMessageObject == null) {
                                 messageObject.replyMessageObject = messagesDict[0].get(messageObject.messageOwner.reply_to_msg_id);
-                                if (messageObject.messageOwner.action instanceof TLRPC.TL_messageActionPinMessage) {
-                                    messageObject.generatePinMessageText(null, null);
-                                }
+                                //if (messageObject.messageOwner.action instanceof TLRPC.TL_messageActionPinMessage) {
+                                //    messageObject.generatePinMessageText(null, null);
+                                //}
                             }
                         } else if (inlineReturn != 0) {
                             if (messageObject.messageOwner.reply_markup != null) {
