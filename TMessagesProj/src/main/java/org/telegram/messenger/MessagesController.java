@@ -515,7 +515,7 @@ public class MessagesController implements NotificationCenter.NotificationCenter
         MediaController.getInstance().cleanup();
         NotificationsController.getInstance().cleanup();
         SendMessagesHelper.getInstance().cleanup();
-        SecretChatHelper.getInstance().cleanup();
+        //SecretChatHelper.getInstance().cleanup();
         StickersQuery.cleanup();
         SearchQuery.cleanup();
         DraftQuery.cleanup();
@@ -1785,7 +1785,7 @@ public class MessagesController implements NotificationCenter.NotificationCenter
             });
         } else {
             if (randoms != null && encryptedChat != null && !randoms.isEmpty()) {
-                SecretChatHelper.getInstance().sendMessagesDeleteMessage(encryptedChat, randoms, null);
+                //SecretChatHelper.getInstance().sendMessagesDeleteMessage(encryptedChat, randoms, null);
             }
             TLRPC.TL_messages_deleteMessages req = new TLRPC.TL_messages_deleteMessages();
             req.id = toSend;
@@ -1969,9 +1969,9 @@ public class MessagesController implements NotificationCenter.NotificationCenter
             }, ConnectionsManager.RequestFlagInvokeAfter);
         } else {
             if (onlyHistory == 1) {
-                SecretChatHelper.getInstance().sendClearHistoryMessage(getEncryptedChat(high_id), null);
+                //SecretChatHelper.getInstance().sendClearHistoryMessage(getEncryptedChat(high_id), null);
             } else {
-                SecretChatHelper.getInstance().declineSecretChat(high_id);
+                //SecretChatHelper.getInstance().declineSecretChat(high_id);
             }
         }
     }
@@ -3094,9 +3094,11 @@ public class MessagesController implements NotificationCenter.NotificationCenter
                         if (encChats != null) {
                             for (int a = 0; a < encChats.size(); a++) {
                                 TLRPC.EncryptedChat encryptedChat = encChats.get(a);
+                                /*
                                 if (encryptedChat instanceof TLRPC.TL_encryptedChat && AndroidUtilities.getMyLayerVersion(encryptedChat.layer) < SecretChatHelper.CURRENT_SECRET_CHAT_LAYER) {
                                     SecretChatHelper.getInstance().sendNotifyLayerMessage(encryptedChat, null);
                                 }
+                                */
                                 putEncryptedChat(encryptedChat, true);
                             }
                         }
@@ -3618,7 +3620,7 @@ public class MessagesController implements NotificationCenter.NotificationCenter
         }
         ArrayList<Long> random_ids = new ArrayList<>();
         random_ids.add(random_id);
-        SecretChatHelper.getInstance().sendMessagesReadMessage(chat, random_ids, null);
+        //SecretChatHelper.getInstance().sendMessagesReadMessage(chat, random_ids, null);
         if (ttl > 0) {
             int time = ConnectionsManager.getInstance().getCurrentTime();
             MessagesStorage.getInstance().createTaskForSecretChat(chat.id, time, time, 0, random_ids);
@@ -5172,6 +5174,7 @@ public class MessagesController implements NotificationCenter.NotificationCenter
                                 public void run() {
                                     if (!res.new_messages.isEmpty() || !res.new_encrypted_messages.isEmpty()) {
                                         final HashMap<Long, ArrayList<MessageObject>> messages = new HashMap<>();
+                                        /*
                                         for (TLRPC.EncryptedMessage encryptedMessage : res.new_encrypted_messages) {
                                             ArrayList<TLRPC.Message> decryptedMessages = SecretChatHelper.getInstance().decryptMessage(encryptedMessage);
                                             if (decryptedMessages != null && !decryptedMessages.isEmpty()) {
@@ -5180,6 +5183,7 @@ public class MessagesController implements NotificationCenter.NotificationCenter
                                                 }
                                             }
                                         }
+                                        */
 
                                         ImageLoader.saveMessagesThumbs(res.new_messages);
 
@@ -5258,7 +5262,7 @@ public class MessagesController implements NotificationCenter.NotificationCenter
                                             }
                                         });
 
-                                        SecretChatHelper.getInstance().processPendingEncMessages();
+                                        //SecretChatHelper.getInstance().processPendingEncMessages();
                                     }
 
                                     if (!res.other_updates.isEmpty()) {
@@ -5901,7 +5905,7 @@ public class MessagesController implements NotificationCenter.NotificationCenter
                 MessagesStorage.lastPtsValue = updates.pts;
             }
         }
-        SecretChatHelper.getInstance().processPendingEncMessages();
+        //SecretChatHelper.getInstance().processPendingEncMessages();
         if (!fromQueue) {
             ArrayList<Integer> keys = new ArrayList<>(updatesQueueChannels.keySet());
             for (int a = 0; a < keys.size(); a++) {
@@ -6323,6 +6327,7 @@ public class MessagesController implements NotificationCenter.NotificationCenter
             } else if (update instanceof TLRPC.TL_updateNewGeoChatMessage) {
                 //DEPRECATED
             } else if (update instanceof TLRPC.TL_updateNewEncryptedMessage) {
+                /*
                 ArrayList<TLRPC.Message> decryptedMessages = SecretChatHelper.getInstance().decryptMessage(((TLRPC.TL_updateNewEncryptedMessage) update).message);
                 if (decryptedMessages != null && !decryptedMessages.isEmpty()) {
                     int cid = ((TLRPC.TL_updateNewEncryptedMessage) update).message.chat_id;
@@ -6341,6 +6346,7 @@ public class MessagesController implements NotificationCenter.NotificationCenter
                         pushMessages.add(obj);
                     }
                 }
+                */
             } else if (update instanceof TLRPC.TL_updateEncryptedChatTyping) {
                 TLRPC.EncryptedChat encryptedChat = getEncryptedChatDB(update.chat_id);
                 if (encryptedChat != null) {
@@ -6380,7 +6386,7 @@ public class MessagesController implements NotificationCenter.NotificationCenter
             } else if (update instanceof TLRPC.TL_updateDcOptions) {
                 ConnectionsManager.getInstance().updateDcSettings();
             } else if (update instanceof TLRPC.TL_updateEncryption) {
-                SecretChatHelper.getInstance().processUpdateEncryption((TLRPC.TL_updateEncryption) update, usersDict);
+                //SecretChatHelper.getInstance().processUpdateEncryption((TLRPC.TL_updateEncryption) update, usersDict);
             } else if (update instanceof TLRPC.TL_updateUserBlocked) {
                 final TLRPC.TL_updateUserBlocked finalUpdate = (TLRPC.TL_updateUserBlocked) update;
                 if (finalUpdate.blocked) {

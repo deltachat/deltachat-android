@@ -305,7 +305,7 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
                         }
                         message.sendEncryptedRequest.media.key = (byte[]) args[3];
                         message.sendEncryptedRequest.media.iv = (byte[]) args[4];
-                        SecretChatHelper.getInstance().performSendEncryptedRequest(message.sendEncryptedRequest, message.obj.messageOwner, message.encryptedChat, encryptedFile, message.originalPath, message.obj);
+                        //SecretChatHelper.getInstance().performSendEncryptedRequest(message.sendEncryptedRequest, message.obj.messageOwner, message.encryptedChat, encryptedFile, message.originalPath, message.obj);
                         arr.remove(a);
                         a--;
                     }
@@ -555,6 +555,7 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
             if (messageObject.messageOwner.random_id == 0) {
                 messageObject.messageOwner.random_id = getNextRandomId();
             }
+            /*
             if (messageObject.messageOwner.action.encryptedAction instanceof TLRPC.TL_decryptedMessageActionSetMessageTTL) {
                 SecretChatHelper.getInstance().sendTTLMessage(encryptedChat, messageObject.messageOwner);
             } else if (messageObject.messageOwner.action.encryptedAction instanceof TLRPC.TL_decryptedMessageActionDeleteMessages) {
@@ -582,6 +583,7 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
             } else if (messageObject.messageOwner.action.encryptedAction instanceof TLRPC.TL_decryptedMessageActionNoop) {
                 SecretChatHelper.getInstance().sendNoopMessage(encryptedChat, messageObject.messageOwner);
             }
+            */
             return true;
         }
         if (unsent) {
@@ -1528,7 +1530,7 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
                     } else {
                         reqSend.media = new TLRPC.TL_decryptedMessageMediaEmpty();
                     }
-                    SecretChatHelper.getInstance().performSendEncryptedRequest(reqSend, newMsgObj.messageOwner, encryptedChat, null, null, newMsgObj);
+                    //SecretChatHelper.getInstance().performSendEncryptedRequest(reqSend, newMsgObj.messageOwner, encryptedChat, null, null, newMsgObj);
                     if (retryMessageObject == null) {
                         DraftQuery.cleanDraft(peer, false);
                     }
@@ -1759,7 +1761,7 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
                         }
                         reqSend.media.lat = location.geo.lat;
                         reqSend.media._long = location.geo._long;
-                        SecretChatHelper.getInstance().performSendEncryptedRequest(reqSend, newMsgObj.messageOwner, encryptedChat, null, null, newMsgObj);
+                        //SecretChatHelper.getInstance().performSendEncryptedRequest(reqSend, newMsgObj.messageOwner, encryptedChat, null, null, newMsgObj);
                     } else if (type == 2 || type == 9 && photo != null) {
                         TLRPC.PhotoSize small = photo.sizes.get(0);
                         TLRPC.PhotoSize big = photo.sizes.get(photo.sizes.size() - 1);
@@ -1804,7 +1806,7 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
                             encryptedFile.access_hash = big.location.secret;
                             reqSend.media.key = big.location.key;
                             reqSend.media.iv = big.location.iv;
-                            SecretChatHelper.getInstance().performSendEncryptedRequest(reqSend, newMsgObj.messageOwner, encryptedChat, encryptedFile, null, newMsgObj);
+                            //SecretChatHelper.getInstance().performSendEncryptedRequest(reqSend, newMsgObj.messageOwner, encryptedChat, encryptedFile, null, newMsgObj);
                         }
                     } else if (type == 3) {
                         ImageLoader.fillPhotoSizeWithBytes(document.thumb);
@@ -1860,7 +1862,7 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
                             encryptedFile.access_hash = document.access_hash;
                             reqSend.media.key = document.key;
                             reqSend.media.iv = document.iv;
-                            SecretChatHelper.getInstance().performSendEncryptedRequest(reqSend, newMsgObj.messageOwner, encryptedChat, encryptedFile, null, newMsgObj);
+                            //SecretChatHelper.getInstance().performSendEncryptedRequest(reqSend, newMsgObj.messageOwner, encryptedChat, encryptedFile, null, newMsgObj);
                         }
                     } else if (type == 6) {
                         reqSend.media = new TLRPC.TL_decryptedMessageMediaContact();
@@ -1868,7 +1870,7 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
                         reqSend.media.first_name = user.first_name;
                         reqSend.media.last_name = user.last_name;
                         reqSend.media.user_id = user.id;
-                        SecretChatHelper.getInstance().performSendEncryptedRequest(reqSend, newMsgObj.messageOwner, encryptedChat, null, null, newMsgObj);
+                        //SecretChatHelper.getInstance().performSendEncryptedRequest(reqSend, newMsgObj.messageOwner, encryptedChat, null, null, newMsgObj);
                     } else if (type == 7 || type == 9 && document != null) {
                         if (MessageObject.isStickerDocument(document)) {
                             reqSend.media = new TLRPC.TL_decryptedMessageMediaExternalDocument();
@@ -1885,7 +1887,7 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
                             } else {
                                 ((TLRPC.TL_decryptedMessageMediaExternalDocument) reqSend.media).thumb = document.thumb;
                             }
-                            SecretChatHelper.getInstance().performSendEncryptedRequest(reqSend, newMsgObj.messageOwner, encryptedChat, null, null, newMsgObj);
+                            //SecretChatHelper.getInstance().performSendEncryptedRequest(reqSend, newMsgObj.messageOwner, encryptedChat, null, null, newMsgObj);
                         } else {
                             ImageLoader.fillPhotoSizeWithBytes(document.thumb);
                             if (AndroidUtilities.getPeerLayerVersion(encryptedChat.layer) >= 46) {
@@ -1935,7 +1937,7 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
                                 encryptedFile.access_hash = document.access_hash;
                                 reqSend.media.key = document.key;
                                 reqSend.media.iv = document.iv;
-                                SecretChatHelper.getInstance().performSendEncryptedRequest(reqSend, newMsgObj.messageOwner, encryptedChat, encryptedFile, null, newMsgObj);
+                                //SecretChatHelper.getInstance().performSendEncryptedRequest(reqSend, newMsgObj.messageOwner, encryptedChat, encryptedFile, null, newMsgObj);
                             }
                         }
                     } else if (type == 8) {

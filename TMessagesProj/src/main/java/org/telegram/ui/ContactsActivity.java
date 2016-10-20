@@ -38,7 +38,7 @@ import org.telegram.messenger.AndroidUtilities;
 import org.telegram.messenger.ApplicationLoader;
 import org.telegram.messenger.LocaleController;
 import org.telegram.messenger.MessagesStorage;
-import org.telegram.messenger.SecretChatHelper;
+//import org.telegram.messenger.SecretChatHelper;
 import org.telegram.messenger.UserConfig;
 import org.telegram.messenger.UserObject;
 import org.telegram.tgnet.TLRPC;
@@ -287,7 +287,7 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
                                 return;
                             }
                             creatingChat = true;
-                            SecretChatHelper.getInstance().startSecretChat(getParentActivity(), user);
+                            //SecretChatHelper.getInstance().startSecretChat(getParentActivity(), user);
                         } else {
                             Bundle args = new Bundle();
                             args.putInt("user_id", user.id);
@@ -361,7 +361,7 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
                             } else {
                                 if (createSecretChat) {
                                     creatingChat = true;
-                                    SecretChatHelper.getInstance().startSecretChat(getParentActivity(), user);
+                                    //SecretChatHelper.getInstance().startSecretChat(getParentActivity(), user);
                                 } else {
                                     Bundle args = new Bundle();
                                     args.putInt("user_id", user.id);

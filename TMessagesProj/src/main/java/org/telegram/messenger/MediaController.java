@@ -1185,7 +1185,7 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
             }
         }
         if (send) {
-            SecretChatHelper.getInstance().sendScreenshotMessage(lastSecretChat, lastSecretChatVisibleMessages, null);
+            //SecretChatHelper.getInstance().sendScreenshotMessage(lastSecretChat, lastSecretChatVisibleMessages, null);
         }
     }
 
