@@ -160,7 +160,7 @@ public class MrMailbox {
     public native static long    MrMsgGetTimestamp          (long hMsg);
     public native static int     MrMsgGetType               (long hMsg);
     public native static int     MrMsgGetState              (long hMsg);
-    public native static int     MrMsgGetFromId             (long hMsg); // returns user ID, 0=self
+    public native static int     MrMsgGetFromId             (long hMsg); // returns user ID, 1=self
 
     // MrPoortext objects
     public native static void    MrPoortextUnref            (long hPoortext);
