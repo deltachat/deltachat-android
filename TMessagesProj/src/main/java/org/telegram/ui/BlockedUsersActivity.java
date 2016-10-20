@@ -23,7 +23,6 @@ import android.widget.ListView;
 //import android.widget.ProgressBar; -- EDIT BY MR
 import android.widget.TextView;
 
-import org.telegram.PhoneFormat.PhoneFormat;
 import org.telegram.messenger.LocaleController;
 import org.telegram.tgnet.TLRPC;
 import org.telegram.messenger.MessagesController;
@@ -275,7 +274,7 @@ public class BlockedUsersActivity extends BaseFragment implements NotificationCe
                     if (user.bot) {
                         number = LocaleController.getString("Bot", R.string.Bot).substring(0, 1).toUpperCase() + LocaleController.getString("Bot", R.string.Bot).substring(1);
                     } else if (user.phone != null && user.phone.length() != 0) {
-                        number = PhoneFormat.getInstance().format("+" + user.phone);
+                        number = "";//PhoneFormat.getInstance().format("+" + user.phone);
                     } else {
                         number = LocaleController.getString("NumberUnknown", R.string.NumberUnknown);
                     }

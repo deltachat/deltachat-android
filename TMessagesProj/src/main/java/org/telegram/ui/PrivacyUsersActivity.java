@@ -21,7 +21,6 @@ import android.widget.FrameLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import org.telegram.PhoneFormat.PhoneFormat;
 import org.telegram.messenger.LocaleController;
 import org.telegram.messenger.MessagesController;
 import org.telegram.messenger.NotificationCenter;
@@ -285,7 +284,7 @@ public class PrivacyUsersActivity extends BaseFragment implements NotificationCe
                     view = new UserCell(mContext, 1, 0, false);
                 }
                 TLRPC.User user = MessagesController.getInstance().getUser(uidArray.get(i));
-                ((UserCell)view).setData(user, null, user.phone != null && user.phone.length() != 0 ? PhoneFormat.getInstance().format("+" + user.phone) : LocaleController.getString("NumberUnknown", R.string.NumberUnknown), 0);
+                ((UserCell)view).setData(user, null, user.phone != null && user.phone.length() != 0 ? ""/*PhoneFormat.getInstance().format("+" + user.phone)*/ : LocaleController.getString("NumberUnknown", R.string.NumberUnknown), 0);
             } else if (type == 1) {
                 if (view == null) {
                     view = new TextInfoCell(mContext);

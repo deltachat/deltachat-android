@@ -8,7 +8,6 @@
 
 package org.telegram.messenger;
 
-import org.telegram.PhoneFormat.PhoneFormat;
 import org.telegram.tgnet.TLRPC;
 
 public class UserObject {
@@ -30,7 +29,7 @@ public class UserObject {
             return LocaleController.getString("HiddenName", R.string.HiddenName);
         }
         String name = ContactsController.formatName(user.first_name, user.last_name);
-        return name.length() != 0 || user.phone == null || user.phone.length() == 0 ? name : PhoneFormat.getInstance().format("+" + user.phone);
+        return name.length() != 0 || user.phone == null || user.phone.length() == 0 ? name : ""/*PhoneFormat.getInstance().format("+" + user.phone)*/;
     }
 
     public static String getFirstName(TLRPC.User user) {

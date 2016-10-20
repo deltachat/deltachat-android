@@ -41,7 +41,6 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 
 import org.telegram.messenger.AndroidUtilities;
-import org.telegram.PhoneFormat.PhoneFormat;
 import org.telegram.messenger.AnimatorListenerAdapterProxy;
 import org.telegram.messenger.ChatObject;
 import org.telegram.messenger.LocaleController;
@@ -2050,7 +2049,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                 }
                 if (a == 0 && user.phone != null && user.phone.length() != 0 && user.id / 1000 != 777 && user.id / 1000 != 333 && ContactsController.getInstance().contactsDict.get(user.id) == null &&
                         (ContactsController.getInstance().contactsDict.size() != 0 || !ContactsController.getInstance().isLoadingContacts())) {
-                    String phoneString = PhoneFormat.getInstance().format("+" + user.phone);
+                    String phoneString = "";//PhoneFormat.getInstance().format("+" + user.phone);
                     if (!nameTextView[a].getText().equals(phoneString)) {
                         nameTextView[a].setText(phoneString);
                     }
@@ -2404,7 +2403,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                         String text;
                         final TLRPC.User user = MessagesController.getInstance().getUser(user_id);
                         if (user.phone != null && user.phone.length() != 0) {
-                            text = PhoneFormat.getInstance().format("+" + user.phone);
+                            text = "";//PhoneFormat.getInstance().format("+" + user.phone);
                         } else {
                             text = LocaleController.getString("NumberUnknown", R.string.NumberUnknown);
                         }

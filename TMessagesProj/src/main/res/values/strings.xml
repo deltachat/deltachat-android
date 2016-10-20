@@ -44,9 +44,6 @@
     <string name="Connecting">Connecting...</string>
     <string name="Updating">Updating...</string>
     <string name="NewSecretChat">New Secret Chat</string>
-    <string name="AwaitingEncryption">Waiting for %s to get online...</string>
-    <string name="EncryptionRejected">Secret chat cancelled</string>
-    <string name="EncryptionProcessing">Exchanging encryption keys...</string>
     <string name="ClearHistory">Clear history</string>
     <string name="ClearHistoryCache">Delete from cache</string>
     <string name="DeleteChat">Delete and exit</string>
@@ -675,7 +672,6 @@
     <string name="Bot">bot</string>
     <string name="BotShare">Share</string>
     <string name="BotInvite">Add to group</string>
-    <string name="BotSettings">Settings</string>
     <string name="BotHelp">Help</string>
     <string name="BotStatusRead">has access to messages</string>
     <string name="BotStatusCantRead">has no access to messages</string>
@@ -769,10 +765,6 @@
     <string name="ShareYouLocationUnable">App was unable to determine your current location</string>
     <string name="ShareYouLocationUnableManually">Choose manually</string>
     <string name="ShareYouLocationInline">This bot would like to know your location each time you send it a request. This can be used to provide location-specific results.</string>
-    <string name="ShareYouPhoneNumberTitle">Share your phone number?</string>
-    <string name="AreYouSureShareMyContactInfoBot">The bot will know your phone number. This can be useful for integration with other services.</string>
-    <string name="AreYouSureShareMyContactInfoUser">Are you sure you want to share your phone number %1$s with <![CDATA[<b>]]>%2$s<![CDATA[</b>]]>?</string>
-    <string name="AreYouSureShareMyContactInfo">Are you sure you want to share your phone number?</string>
     <string name="AreYouSureBlockContact">Are you sure you want to block this contact?</string>
     <string name="AreYouSureUnblockContact">Are you sure you want to unblock this contact?</string>
     <string name="AreYouSureDeleteContact">Are you sure you want to delete this contact?</string>
@@ -974,7 +966,6 @@
     <string name="MemberPl">_ members</string>
     <string name="ContactSg">_ contact</string>
     <string name="ContactPl">_ contacts</string>
-    <string name="Stranger">Unknown senders</string>
     <string name="Strangers">Unknown users</string>
     <string name="StrangersExplain">Show messages from unknown useres</string>
     <string name="Media">Media</string>

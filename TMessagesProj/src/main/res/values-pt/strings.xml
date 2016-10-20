@@ -44,9 +44,6 @@
     <string name="Connecting">Conectando...</string>
     <string name="Updating">Atualizando...</string>
     <string name="NewSecretChat">Novo Chat Secreto</string>
-    <string name="AwaitingEncryption">Esperando %s se conectar...</string>
-    <string name="EncryptionRejected">Chat secreto cancelado</string>
-    <string name="EncryptionProcessing">Trocando chaves de criptografia...</string>
     <string name="ClearHistory">Limpar histórico</string>
     <string name="ClearHistoryCache">Apagar do cache</string>
     <string name="DeleteChat">Apagar e sair</string>
@@ -675,7 +672,6 @@
     <string name="Bot">bot</string>
     <string name="BotShare">Compartilhar</string>
     <string name="BotInvite">Adicionar Ao Grupo</string>
-    <string name="BotSettings">Configurações</string>
     <string name="BotHelp">Ajuda</string>
     <string name="BotStatusRead">tem acesso às mensagens</string>
     <string name="BotStatusCantRead">não tem acesso às mensagens</string>
@@ -769,10 +765,6 @@
     <string name="ShareYouLocationUnable">O aplicativo foi impossibilitado de determinar sua localização atual.</string>
     <string name="ShareYouLocationUnableManually">Escolher manualmente</string>
     <string name="ShareYouLocationInline">Esse bot gostaria de saber sua localização todas as vezes que você enviá-lo uma mensagem. Isso pode ser utilizado para providenciar resultados específicos de localização.</string>
-    <string name="ShareYouPhoneNumberTitle">Compartilhar seu número de telefone?</string>
-    <string name="AreYouSureShareMyContactInfoBot">O bot saberá seu número de telefone. Isso pode ser útil para a integração com outros serviços.</string>
-    <string name="AreYouSureShareMyContactInfoUser">Tem certeza que deseja compartilhar seu número de telefone %1$s com <![CDATA[<b>]]>%2$s<![CDATA[</b>]]>?</string>
-    <string name="AreYouSureShareMyContactInfo">Tem certeza que deseja compartilhar seu número de telefone?</string>
     <string name="AreYouSureBlockContact">Você tem certeza que deseja bloquear este contato?</string>
     <string name="AreYouSureUnblockContact">Você tem certeza que deseja desbloquear este contato?</string>
     <string name="AreYouSureDeleteContact">Você tem certeza que deseja apagar este contato?</string>

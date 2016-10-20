@@ -31,7 +31,6 @@ import android.view.MotionEvent;
 import android.view.SoundEffectConstants;
 import android.view.ViewStructure;
 
-import org.telegram.PhoneFormat.PhoneFormat;
 import org.telegram.messenger.AndroidUtilities;
 import org.telegram.messenger.ContactsController;
 import org.telegram.messenger.Emoji;
@@ -2297,7 +2296,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
 
                 String phone = messageObject.messageOwner.media.phone_number;
                 if (phone != null && phone.length() != 0) {
-                    phone = PhoneFormat.getInstance().format(phone);
+                    phone = "";//PhoneFormat.getInstance().format(phone);
                 } else {
                     phone = LocaleController.getString("NumberUnknown", R.string.NumberUnknown);
                 }

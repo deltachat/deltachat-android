@@ -27,7 +27,6 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 
 import org.telegram.messenger.AndroidUtilities;
-import org.telegram.PhoneFormat.PhoneFormat;
 import org.telegram.messenger.ContactsController;
 import org.telegram.messenger.LocaleController;
 import org.telegram.messenger.ApplicationLoader;
@@ -248,7 +247,7 @@ public class ContactAddActivity extends BaseFragment implements NotificationCent
         if (user != null) {
             if (user.phone == null) {
                 if (phone != null) {
-                    user.phone = PhoneFormat.stripExceptNumbers(phone);
+                    user.phone = "";//PhoneFormat.stripExceptNumbers(phone);
                 }
             }
             firstNameField.setText(user.first_name);
@@ -267,7 +266,7 @@ public class ContactAddActivity extends BaseFragment implements NotificationCent
         if (user == null) {
             return;
         }
-        nameTextView.setText(PhoneFormat.getInstance().format("+" + user.phone));
+        nameTextView.setText(""/*PhoneFormat.getInstance().format("+" + user.phone)*/);
         onlineTextView.setText(LocaleController.formatUserStatus(user));
 
         TLRPC.FileLocation photo = null;

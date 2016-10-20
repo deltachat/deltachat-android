@@ -37,7 +37,6 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import org.telegram.messenger.AndroidUtilities;
-import org.telegram.PhoneFormat.PhoneFormat;
 import org.telegram.messenger.ChatObject;
 import org.telegram.messenger.LocaleController;
 import org.telegram.messenger.UserObject;
@@ -469,7 +468,7 @@ public class GroupCreateActivity extends BaseFragment implements NotificationCen
         TextView text = (TextView)textView.findViewById(R.id.bubble_text_view);
         String name = UserObject.getUserName(user);
         if (name.length() == 0 && user.phone != null && user.phone.length() != 0) {
-            name = PhoneFormat.getInstance().format("+" + user.phone);
+            name = "";//PhoneFormat.getInstance().format("+" + user.phone);
         }
         text.setText(name + ", ");
 

@@ -2056,7 +2056,7 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
         } else if (button instanceof TLRPC.TL_keyboardButtonUrl) {
             parentFragment.showOpenUrlAlert(button.url);
         } else if (button instanceof TLRPC.TL_keyboardButtonRequestPhone) {
-            parentFragment.shareMyContact(messageObject);
+            //parentFragment.shareMyContact(messageObject);
         } else if (button instanceof TLRPC.TL_keyboardButtonRequestGeoLocation) {
             AlertDialog.Builder builder = new AlertDialog.Builder(parentActivity);
             builder.setTitle(LocaleController.getString("ShareYouLocationTitle", R.string.ShareYouLocationTitle));

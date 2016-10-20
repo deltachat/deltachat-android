@@ -14,7 +14,6 @@ import android.text.TextUtils;
 import android.util.SparseArray;
 import android.util.SparseIntArray;
 
-import org.telegram.PhoneFormat.PhoneFormat;
 import org.telegram.SQLite.SQLiteCursor;
 import org.telegram.SQLite.SQLiteDatabase;
 import org.telegram.SQLite.SQLitePreparedStatement;
@@ -2228,7 +2227,7 @@ public class MessagesStorage {
                             continue;
                         }
                         if (sphone.length() == 8 && phone.length() != 8) {
-                            sphone = PhoneFormat.stripExceptNumbers(phone);
+                            sphone = "";//PhoneFormat.stripExceptNumbers(phone);
                         }
                         contact.shortPhones.add(sphone);
                         contact.phoneDeleted.add(cursor.intValue(5));

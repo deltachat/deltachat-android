@@ -48,7 +48,6 @@ import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
-import org.telegram.PhoneFormat.PhoneFormat;
 import org.telegram.messenger.AndroidUtilities;
 import org.telegram.messenger.ContactsController;
 import org.telegram.messenger.MessagesController;
@@ -609,7 +608,7 @@ public class LoginActivity extends BaseFragment {
                         return;
                     }
                     ignoreOnTextChange = true;
-                    String text = PhoneFormat.stripExceptNumbers(codeField.getText().toString());
+                    String text = "";//PhoneFormat.stripExceptNumbers(codeField.getText().toString());
                     codeField.setText(text);
                     if (text.length() == 0) {
                         countryButton.setText(LocaleController.getString("ChooseCountry", R.string.ChooseCountry));
@@ -932,7 +931,7 @@ public class LoginActivity extends BaseFragment {
 
             ConnectionsManager.getInstance().cleanup();
             final TLRPC.TL_auth_sendCode req = new TLRPC.TL_auth_sendCode();
-            String phone = PhoneFormat.stripExceptNumbers("" + codeField.getText() + phoneField.getText());
+            String phone = "";//PhoneFormat.stripExceptNumbers("" + codeField.getText() + phoneField.getText());
             ConnectionsManager.getInstance().applyCountryPortNumber(phone);
             req.api_hash = BuildVars.APP_HASH;
             req.api_id = BuildVars.APP_ID;
@@ -946,7 +945,7 @@ public class LoginActivity extends BaseFragment {
             final Bundle params = new Bundle();
             params.putString("phone", "+" + codeField.getText() + phoneField.getText());
             try {
-                params.putString("ephone", "+" + PhoneFormat.stripExceptNumbers(codeField.getText().toString()) + " " + PhoneFormat.stripExceptNumbers(phoneField.getText().toString()));
+                params.putString("ephone", "+"  /*+PhoneFormat.stripExceptNumbers(codeField.getText().toString()) + " " + PhoneFormat.stripExceptNumbers(phoneField.getText().toString())*/);
             } catch (Exception e) {
                 FileLog.e("tmessages", e);
                 params.putString("ephone", "+" + phone);
@@ -1330,7 +1329,7 @@ public class LoginActivity extends BaseFragment {
                 return;
             }
 
-            String number = PhoneFormat.getInstance().format(phone);
+            String number = "";//PhoneFormat.getInstance().format(phone);
             CharSequence str = "";
             if (currentType == 1) {
                 str = AndroidUtilities.replaceTags(LocaleController.getString("SentAppCode", R.string.SentAppCode));

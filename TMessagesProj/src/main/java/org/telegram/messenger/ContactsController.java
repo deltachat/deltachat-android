@@ -25,7 +25,6 @@ import android.provider.ContactsContract;
 import android.text.TextUtils;
 import android.util.SparseArray;
 
-import org.telegram.PhoneFormat.PhoneFormat;
 import org.telegram.tgnet.ConnectionsManager;
 import org.telegram.tgnet.RequestDelegate;
 import org.telegram.tgnet.TLObject;
@@ -376,7 +375,7 @@ public class ContactsController {
                         if (number == null || number.length() == 0) {
                             continue;
                         }
-                        number = PhoneFormat.stripExceptNumbers(number, true);
+                        number = "";//PhoneFormat.stripExceptNumbers(number, true);
                         if (number.length() == 0) {
                             continue;
                         }

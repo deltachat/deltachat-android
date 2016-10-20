@@ -58,7 +58,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import org.telegram.messenger.AndroidUtilities;
-import org.telegram.PhoneFormat.PhoneFormat;
 import org.telegram.messenger.ChatObject;
 import org.telegram.messenger.Emoji;
 import org.telegram.messenger.LocaleController;
@@ -884,7 +883,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                         args.putBoolean("addContact", true);
                         presentFragment(new ContactAddActivity(args));
                     } else {
-                        shareMyContact(replyingMessageObject);
+                        //shareMyContact(replyingMessageObject);
                     }
                 } else if (id == mute) {
                     toggleMute(false);
@@ -2907,6 +2906,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         });
     }
 
+    /*
     public void shareMyContact(final MessageObject messageObject) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
         builder.setTitle(LocaleController.getString("ShareYouPhoneNumberTitle", R.string.ShareYouPhoneNumberTitle));
@@ -2930,6 +2930,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
         showDialog(builder.create());
     }
+    */
 
     private void showGifHint() {
         SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("mainconfig", Activity.MODE_PRIVATE);

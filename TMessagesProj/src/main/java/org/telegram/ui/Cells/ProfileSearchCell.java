@@ -19,7 +19,6 @@ import android.text.TextPaint;
 import android.text.TextUtils;
 import android.view.MotionEvent;
 
-import org.telegram.PhoneFormat.PhoneFormat;
 import org.telegram.messenger.AndroidUtilities;
 import org.telegram.messenger.ChatObject;
 import org.telegram.messenger.ImageReceiver;
@@ -268,7 +267,7 @@ public class ProfileSearchCell extends BaseCell {
         }
         if (nameString.length() == 0) {
             if (user != null && user.phone != null && user.phone.length() != 0) {
-                nameString = PhoneFormat.getInstance().format("+" + user.phone);
+                nameString = "";//PhoneFormat.getInstance().format("+" + user.phone);
             } else {
                 nameString = LocaleController.getString("HiddenName", R.string.HiddenName);
             }

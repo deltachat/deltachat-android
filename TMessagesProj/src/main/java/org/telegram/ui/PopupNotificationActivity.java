@@ -42,7 +42,6 @@ import org.telegram.messenger.ContactsController;
 import org.telegram.messenger.LocaleController;
 import org.telegram.messenger.MediaController;
 import org.telegram.messenger.MessagesController;
-import org.telegram.PhoneFormat.PhoneFormat;
 import org.telegram.messenger.NotificationsController;
 import org.telegram.messenger.UserObject;
 import org.telegram.messenger.ApplicationLoader;
@@ -1034,7 +1033,7 @@ public class PopupNotificationActivity extends Activity implements NotificationC
         }
         if (currentUser.id / 1000 != 777 && currentUser.id / 1000 != 333 && ContactsController.getInstance().contactsDict.get(currentUser.id) == null && (ContactsController.getInstance().contactsDict.size() != 0 || !ContactsController.getInstance().isLoadingContacts())) {
             if (currentUser.phone != null && currentUser.phone.length() != 0) {
-                nameTextView.setText(PhoneFormat.getInstance().format("+" + currentUser.phone));
+                nameTextView.setText(""/*PhoneFormat.getInstance().format("+" + currentUser.phone)*/);
             } else {
                 nameTextView.setText(UserObject.getUserName(currentUser));
             }

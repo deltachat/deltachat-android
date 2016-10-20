@@ -44,7 +44,6 @@ import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import org.telegram.messenger.AndroidUtilities;
-import org.telegram.PhoneFormat.PhoneFormat;
 import org.telegram.messenger.ChatObject;
 import org.telegram.messenger.ContactsController;
 import org.telegram.messenger.ImageLoader;
@@ -604,7 +603,7 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                                                 }
                                             }
                                         } else if (args[0].startsWith("TEL")) {
-                                            String phone = PhoneFormat.stripExceptNumbers(args[1], true);
+                                            String phone = "";//PhoneFormat.stripExceptNumbers(args[1], true);
                                             if (phone.length() > 0) {
                                                 currentData.phones.add(phone);
                                             }

@@ -43,9 +43,6 @@
     <string name="WaitingForNetwork">Warte auf Netzwerk...</string>
     <string name="Connecting">Verbinde…</string>
     <string name="Updating">Aktualisiere…</string>
-    <string name="AwaitingEncryption">Warte, bis %s online geht…</string>
-    <string name="EncryptionRejected">Geheimer Chat beendet</string>
-    <string name="EncryptionProcessing">Tausche Schlüssel aus…</string>
     <string name="ClearHistory">Verlauf löschen</string>
     <string name="ClearHistoryCache">Cache leeren</string>
     <string name="DeleteChat">Löschen und beenden</string>
@@ -674,7 +671,6 @@
     <string name="Bot">Bot</string>
     <string name="BotShare">Teilen</string>
     <string name="BotInvite">Zu einer Gruppe hinzufügen</string>
-    <string name="BotSettings">Einstellungen</string>
     <string name="BotHelp">Hilfe</string>
     <string name="BotStatusRead">Zugriff auf Nachrichten</string>
     <string name="BotStatusCantRead">kein Zugriff auf Nachrichten</string>
@@ -768,10 +764,6 @@
     <string name="ShareYouLocationUnable">App kann deinen aktuellen Standort nicht bestimmen</string>
     <string name="ShareYouLocationUnableManually">Selbst wählen</string>
     <string name="ShareYouLocationInline">Dieser Bot möchte bei jeder Anfrage deinen Standort wissen. Das kann für standortabhängig aufbereitete Informationen benutzt werden.</string>
-    <string name="ShareYouPhoneNumberTitle">Deine Telefonnummer teilen?</string>
-    <string name="AreYouSureShareMyContactInfoBot">Der Bot wird deine Nummer sehen. Das kann für verschiedene Dienste nützlich sein.</string>
-    <string name="AreYouSureShareMyContactInfoUser">Möchtest du wirklich deine Nummer %1$s mit <![CDATA[<b>]]>%2$s<![CDATA[</b>]]> teilen?</string>
-    <string name="AreYouSureShareMyContactInfo">Möchtest du wirklich deine Telefonnummer teilen?</string>
     <string name="AreYouSureBlockContact">Diesen Kontakt wirklich blockieren?</string>
     <string name="AreYouSureUnblockContact">Blockierung für diesen Kontakt wirklich aufheben?</string>
     <string name="AreYouSureDeleteContact">Diesen Kontakt wirklich löschen?</string>
@@ -974,7 +966,6 @@
     <string name="ContactSg">_ Kontakt</string>
     <string name="MemberSg">_ Mitglied</string>
     <string name="MemberPl">_ Mitglieder</string>
-    <string name="Stranger">Unbekannte Absender</string>
     <string name="Strangers">Unbekannte Benutzer</string>
     <string name="StrangersExplain">Nachrichten von unbekannten Benutzern anzeigen</string>
     <string name="Media">Medien</string>
