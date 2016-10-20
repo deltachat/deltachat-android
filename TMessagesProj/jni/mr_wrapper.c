@@ -395,6 +395,13 @@ JNIEXPORT void Java_org_telegram_messenger_MrMailbox_MrMsgUnref(JNIEnv *env, jcl
 }
 
 
+JNIEXPORT jint Java_org_telegram_messenger_MrMailbox_MrMsgGetId(JNIEnv *env, jclass c, jlong hMsg)
+{
+	mrmsg_t* ths = (mrmsg_t*)hMsg; if( ths == NULL ) { return 0; }
+	return ths->m_id;
+}
+
+
 JNIEXPORT jstring Java_org_telegram_messenger_MrMailbox_MrMsgGetText(JNIEnv *env, jclass c, jlong hMsg)
 {
 	mrmsg_t* ths = (mrmsg_t*)hMsg; if( ths == NULL ) { return JSTRING_NEW(NULL); }

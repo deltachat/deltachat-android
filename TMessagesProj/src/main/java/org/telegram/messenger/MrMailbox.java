@@ -64,14 +64,21 @@ public class MrMailbox {
                                                     //  TLRPC.TL_message is a normal message (also photos?)
 
         int state = MrMsgGetState(hMsg);
+        switch( state ) {
+            case MR_OUT_DELIVERED: ret.send_state = MessageObject.MESSAGE_SEND_STATE_SENT; break;
+            case MR_OUT_ERROR:     ret.send_state = MessageObject.MESSAGE_SEND_STATE_SEND_ERROR; break;
+            case MR_OUT_PENDING:   ret.send_state = MessageObject.MESSAGE_SEND_STATE_SENDING; break;
+            case MR_OUT_READ:      ret.send_state = MessageObject.MESSAGE_SEND_STATE_SENT; break;
+        }
 
+        ret.id            = MrMailbox.MrMsgGetId(hMsg);
         ret.from_id       = MrMailbox.MrMsgGetFromId(hMsg);
         ret.to_id         = new TLRPC.TL_peerUser();
         ret.to_id.user_id = MrMailbox.MrMsgGetToId(hMsg);
         ret.message       = MrMailbox.MrMsgGetText(hMsg);
         ret.date          = (int)MrMsgGetTimestamp(hMsg);
         ret.dialog_id     = MrMsgGetChatId(hMsg);
-        ret.unread        = state==MR_IN_UNREAD;
+        ret.unread        = state!=MR_OUT_READ; // the state of outgoing messages
         ret.media_unread  = ret.unread;
         ret.flags         = 0;
         ret.post          = false; // ? true=avatar wird in gruppen nicht angezeigt
@@ -162,6 +169,7 @@ public class MrMailbox {
 
     // MrMsg objects
     public native static void    MrMsgUnref                 (long hMsg);
+    public native static int     MrMsgGetId                 (long hMsg);
     public native static String  MrMsgGetText               (long hMsg);
     public native static long    MrMsgGetTimestamp          (long hMsg);
     public native static int     MrMsgGetType               (long hMsg);

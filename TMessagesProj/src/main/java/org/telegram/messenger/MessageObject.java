@@ -1246,15 +1246,15 @@ public class MessageObject {
     }
 
     public boolean isSending() {
-        return messageOwner.send_state == MESSAGE_SEND_STATE_SENDING && messageOwner.id < 0;
+        return messageOwner.send_state == MESSAGE_SEND_STATE_SENDING /*&& messageOwner.id < 0-- EDIT BY MR, the ID is always set by us*/;
     }
 
     public boolean isSendError() {
-        return messageOwner.send_state == MESSAGE_SEND_STATE_SEND_ERROR && messageOwner.id < 0;
+        return messageOwner.send_state == MESSAGE_SEND_STATE_SEND_ERROR /*&& messageOwner.id < 0-- EDIT BY MR, the ID is always set by us*/;
     }
 
     public boolean isSent() {
-        return messageOwner.send_state == MESSAGE_SEND_STATE_SENT || messageOwner.id > 0;
+        return messageOwner.send_state == MESSAGE_SEND_STATE_SENT /*|| messageOwner.id > 0 -- EDIT BY MR, the ID is always set by us*/;
     }
 
     public String getSecretTimeString() {
