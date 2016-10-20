@@ -423,10 +423,24 @@ JNIEXPORT jint Java_org_telegram_messenger_MrMailbox_MrMsgGetState(JNIEnv *env, 
 }
 
 
+JNIEXPORT jint Java_org_telegram_messenger_MrMailbox_MrMsgGetChatId(JNIEnv *env, jclass c, jlong hMsg)
+{
+	mrmsg_t* ths = (mrmsg_t*)hMsg; if( ths == NULL ) { return 0; }
+	return ths->m_chat_id;
+}
+
+
 JNIEXPORT jint Java_org_telegram_messenger_MrMailbox_MrMsgGetFromId(JNIEnv *env, jclass c, jlong hMsg)
 {
 	mrmsg_t* ths = (mrmsg_t*)hMsg; if( ths == NULL ) { return 0; }
 	return ths->m_from_id;
+}
+
+
+JNIEXPORT jint Java_org_telegram_messenger_MrMailbox_MrMsgGetToId(JNIEnv *env, jclass c, jlong hMsg)
+{
+	mrmsg_t* ths = (mrmsg_t*)hMsg; if( ths == NULL ) { return 0; }
+	return ths->m_to_id;
 }
 
 

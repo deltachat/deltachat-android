@@ -63,13 +63,14 @@ public class MrMailbox {
                                                     //  TLRPC.TL_messageService is used to display messages as "You joined the group"
                                                     //  TLRPC.TL_message is a normal message (also photos?)
 
-        ret.from_id = (int)MrMailbox.MrMsgGetFromId(hMsg); // 1=from us
-
-        ret.to_id = new TLRPC.TL_peerUser();
-        ret.to_id.user_id = -1; // to chat
-
-        ret.message = MrMailbox.MrMsgGetText(hMsg);
-        ret.date = (int)MrMsgGetTimestamp(hMsg);
+        ret.from_id       = MrMailbox.MrMsgGetFromId(hMsg);
+        ret.to_id         = new TLRPC.TL_peerUser();
+        ret.to_id.user_id = MrMailbox.MrMsgGetToId(hMsg);
+        ret.message       = MrMailbox.MrMsgGetText(hMsg);
+        ret.date          = (int)MrMsgGetTimestamp(hMsg);
+        ret.dialog_id     = MrMsgGetChatId(hMsg);
+        ret.unread        = false;
+        ret.flags         = 0;
 
         // MessageObject.contentType - ??
         return ret;
@@ -160,7 +161,9 @@ public class MrMailbox {
     public native static long    MrMsgGetTimestamp          (long hMsg);
     public native static int     MrMsgGetType               (long hMsg);
     public native static int     MrMsgGetState              (long hMsg);
-    public native static int     MrMsgGetFromId             (long hMsg); // returns user ID, 1=self
+    public native static int     MrMsgGetChatId             (long hMsg);
+    public native static int     MrMsgGetFromId             (long hMsg);
+    public native static int     MrMsgGetToId               (long hMsg);
 
     // MrPoortext objects
     public native static void    MrPoortextUnref            (long hPoortext);
