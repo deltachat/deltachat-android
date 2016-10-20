@@ -204,10 +204,12 @@ public class MessagesStorage {
                         FileLog.e("tmessages", e2);
                     }
                 }
+                /*
                 int version = database.executeInt("PRAGMA user_version");
                 if (version < 34) {
                     updateDbToLastVersion(version);
                 }
+                */
             }
         } catch (Exception e) {
             FileLog.e("tmessages", e);
@@ -216,6 +218,7 @@ public class MessagesStorage {
         loadPendingTasks();
     }
 
+    /*
     public void updateDbToLastVersion(final int currentVersion) {
         storageQueue.postRunnable(new Runnable() {
             @Override
@@ -333,11 +336,11 @@ public class MessagesStorage {
                         database.executeFast("PRAGMA user_version = 7").stepThis().dispose();
                         version = 7;
                     }
-                    /*if (version == 7 && version < 8) {
-                        database.executeFast("CREATE TABLE IF NOT EXISTS secret_holes(uid INTEGER, seq_in INTEGER, seq_out INTEGER, data BLOB, PRIMARY KEY (uid, seq_in, seq_out));").stepThis().dispose();
-                        database.executeFast("PRAGMA user_version = 8").stepThis().dispose();
-                        version = 8;
-                    }*/
+                    //if (version == 7 && version < 8) {
+                    //    database.executeFast("CREATE TABLE IF NOT EXISTS secret_holes(uid INTEGER, seq_in INTEGER, seq_out INTEGER, data BLOB, PRIMARY KEY (uid, seq_in, seq_out));").stepThis().dispose();
+                    //    database.executeFast("PRAGMA user_version = 8").stepThis().dispose();
+                    //    version = 8;
+                    //}
                     if (version == 7 || version == 8 || version == 9) {
                         database.executeFast("ALTER TABLE enc_chats ADD COLUMN use_count INTEGER default 0").stepThis().dispose();
                         database.executeFast("ALTER TABLE enc_chats ADD COLUMN exchange_id INTEGER default 0").stepThis().dispose();
@@ -523,6 +526,7 @@ public class MessagesStorage {
             }
         });
     }
+    */
 
     public void cleanup(final boolean isLogin) {
         storageQueue.cleanupQueue();
