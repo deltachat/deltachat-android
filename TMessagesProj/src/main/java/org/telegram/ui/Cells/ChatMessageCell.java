@@ -302,9 +302,11 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
     private String currentTimeString;
     private boolean drawTime = true;
 
+    /* EDIT BY MR
     private StaticLayout viewsLayout;
     private int viewsTextWidth;
     private String currentViewsString;
+    */
 
     private TLRPC.User currentUser;
     private TLRPC.Chat currentChat;
@@ -2814,11 +2816,13 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                 }
             }
 
+            /* EDIT BY MR
             if ((currentMessageObject.messageOwner.flags & TLRPC.MESSAGE_FLAG_HAS_VIEWS) != 0) {
                 viewsLayout = new StaticLayout(currentViewsString, timePaint, viewsTextWidth, Layout.Alignment.ALIGN_NORMAL, 1.0f, 0.0f, false);
             } else {
                 viewsLayout = null;
             }
+            */
 
             if (isAvatarVisible) {
                 avatarImage.setImageCoords(dp(6), layoutHeight - dp(44), dp(42), dp(42));
@@ -3873,11 +3877,15 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
             currentTimeString = timeString;
         }
         timeTextWidth = timeWidth = (int) Math.ceil(timePaint.measureText(currentTimeString));
+
+        /* EDIT BY MR
         if ((messageObject.messageOwner.flags & TLRPC.MESSAGE_FLAG_HAS_VIEWS) != 0) {
             currentViewsString = String.format("%s", LocaleController.formatShortNumber(Math.max(1, messageObject.messageOwner.views), null));
             viewsTextWidth = (int) Math.ceil(timePaint.measureText(currentViewsString));
             timeWidth += viewsTextWidth + Theme.viewsCountDrawable[0].getIntrinsicWidth() + dp(10);
         }
+        */
+
         if (hasSign) {
             if (availableTimeWidth == 0) {
                 availableTimeWidth = dp(1000);
@@ -4422,12 +4430,14 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                         setDrawableBounds(countDrawable, timeX, layoutHeight - dp(9.5f) - timeLayout.getHeight());
                         countDrawable.draw(canvas);
 
+                        /* EDIT BY MR
                         if (viewsLayout != null) {
                             canvas.save();
                             canvas.translate(timeX + countDrawable.getIntrinsicWidth() + dp(3), layoutHeight - dp(11.3f) - timeLayout.getHeight());
                             viewsLayout.draw(canvas);
                             canvas.restore();
                         }
+                        */
                     }
                 }
 
@@ -4460,12 +4470,14 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                             Theme.viewsOutCountDrawable.draw(canvas);
                         }
 
+                        /* EDIT BY MR
                         if (viewsLayout != null) {
                             canvas.save();
                             canvas.translate(timeX + Theme.viewsOutCountDrawable.getIntrinsicWidth() + dp(3), layoutHeight - dp(6.5f) - timeLayout.getHeight());
                             viewsLayout.draw(canvas);
                             canvas.restore();
                         }
+                        */
                     }
                 }
 
