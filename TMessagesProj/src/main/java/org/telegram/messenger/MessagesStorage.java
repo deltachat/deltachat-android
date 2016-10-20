@@ -18,7 +18,7 @@ import org.telegram.PhoneFormat.PhoneFormat;
 import org.telegram.SQLite.SQLiteCursor;
 import org.telegram.SQLite.SQLiteDatabase;
 import org.telegram.SQLite.SQLitePreparedStatement;
-import org.telegram.messenger.query.BotQuery;
+//import org.telegram.messenger.query.BotQuery; -- EDIT BY MR
 import org.telegram.messenger.query.MessagesQuery;
 import org.telegram.messenger.query.SharedMediaQuery;
 import org.telegram.tgnet.ConnectionsManager;
@@ -1308,7 +1308,7 @@ public class MessagesStorage {
                             database.executeFast("DELETE FROM media_counts_v2 WHERE uid = " + did).stepThis().dispose();
                             database.executeFast("DELETE FROM media_v2 WHERE uid = " + did).stepThis().dispose();
                             database.executeFast("DELETE FROM media_holes_v2 WHERE uid = " + did).stepThis().dispose();
-                            BotQuery.clearBotKeyboard(did, null);
+                            //BotQuery.clearBotKeyboard(did, null); -- EDIT BY MR
 
                             SQLitePreparedStatement state5 = database.executeFast("REPLACE INTO messages_holes VALUES(?, ?, ?)");
                             SQLitePreparedStatement state6 = database.executeFast("REPLACE INTO media_holes_v2 VALUES(?, ?, ?, ?)");
@@ -1329,7 +1329,7 @@ public class MessagesStorage {
                     database.executeFast("DELETE FROM media_v2 WHERE uid = " + did).stepThis().dispose();
                     database.executeFast("DELETE FROM messages_holes WHERE uid = " + did).stepThis().dispose();
                     database.executeFast("DELETE FROM media_holes_v2 WHERE uid = " + did).stepThis().dispose();
-                    BotQuery.clearBotKeyboard(did, null);
+                    //BotQuery.clearBotKeyboard(did, null); -- EDIT BY MR
                     AndroidUtilities.runOnUIThread(new Runnable() {
                         @Override
                         public void run() {
@@ -3771,7 +3771,7 @@ public class MessagesStorage {
                     database.executeFast("DELETE FROM media_v2 WHERE uid = " + did).stepThis().dispose();
                     database.executeFast("DELETE FROM messages_holes WHERE uid = " + did).stepThis().dispose();
                     database.executeFast("DELETE FROM media_holes_v2 WHERE uid = " + did).stepThis().dispose();
-                    BotQuery.clearBotKeyboard(did, null);
+                    //BotQuery.clearBotKeyboard(did, null); -- EDIT BY MR
 
                     TLRPC.TL_messages_dialogs dialogs = new TLRPC.TL_messages_dialogs();
                     dialogs.chats.addAll(difference.chats);
@@ -3844,9 +3844,11 @@ public class MessagesStorage {
         });
     }
 
+    /* EDIT BY MR
     private boolean isValidKeyboardToSave(TLRPC.Message message) {
         return message.reply_markup != null && !(message.reply_markup instanceof TLRPC.TL_replyInlineMarkup) && (!message.reply_markup.selective || message.mentioned);
     }
+    */
 
     private void putMessagesInternal(final ArrayList<TLRPC.Message> messages, final boolean withTransaction, final boolean doNotUpdateDialogDate, final int downloadMask, boolean ifNoLastMessage) {
         try {
@@ -3942,17 +3944,21 @@ public class MessagesStorage {
                     messagesMediaIdsMap.put(messageId, message.dialog_id);
                     mediaTypes.put(messageId, SharedMediaQuery.getMediaType(message));
                 }
+                /* EDIT BY MR
                 if (isValidKeyboardToSave(message)) {
                     TLRPC.Message oldMessage = botKeyboards.get(message.dialog_id);
                     if (oldMessage == null || oldMessage.id < message.id) {
                         botKeyboards.put(message.dialog_id, message);
                     }
                 }
+                */
             }
 
+            /* EDIT BY MR
             for (HashMap.Entry<Long, TLRPC.Message> entry : botKeyboards.entrySet()) {
                 BotQuery.putBotKeyboard(entry.getKey(), entry.getValue());
             }
+            */
 
             if (messageMediaIds != null) {
                 SQLiteCursor cursor = database.queryFinalized("SELECT mid FROM media_v2 WHERE mid IN(" + messageMediaIds.toString() + ")");
@@ -4746,7 +4752,7 @@ public class MessagesStorage {
             database.executeFast(String.format(Locale.US, "DELETE FROM messages_seq WHERE mid IN(%s)", ids)).stepThis().dispose();
             database.executeFast(String.format(Locale.US, "DELETE FROM media_v2 WHERE mid IN(%s)", ids)).stepThis().dispose();
             database.executeFast("DELETE FROM media_counts_v2 WHERE 1").stepThis().dispose();
-            BotQuery.clearBotKeyboard(0, messages);
+            //BotQuery.clearBotKeyboard(0, messages); -- EDIT BY MR
         } catch (Exception e) {
             FileLog.e("tmessages", e);
         }
@@ -5245,20 +5251,25 @@ public class MessagesStorage {
                             state5.step();
                         }
 
+                        /* EDIT BY MR
                         if (load_type == 0 && isValidKeyboardToSave(message)) {
                             if (botKeyboard == null || botKeyboard.id < message.id) {
                                 botKeyboard = message;
                             }
                         }
+                        */
                     }
                     state.dispose();
                     state2.dispose();
                     if (state5 != null) {
                         state5.dispose();
                     }
+
+                    /* EDIT BY MR
                     if (botKeyboard != null) {
                         BotQuery.putBotKeyboard(dialog_id, botKeyboard);
                     }
+                    */
 
                     putUsersInternal(messages.users);
                     putChatsInternal(messages.chats);
@@ -5548,9 +5559,11 @@ public class MessagesStorage {
                     if (message != null) {
                         messageDate = Math.max(message.date, messageDate);
 
+                        /* EDIT BY MR
                         if (isValidKeyboardToSave(message)) {
                             BotQuery.putBotKeyboard(dialog.id, message);
                         }
+                        */
 
                         fixUnsupportedMedia(message);
                         NativeByteBuffer data = new NativeByteBuffer(message.getObjectSize());

@@ -2721,6 +2721,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
             if (messageIdChanged) {
                 botButtonsByData.clear();
             }
+
             if (messageObject.messageOwner.reply_markup instanceof TLRPC.TL_replyInlineMarkup) {
                 int rows = messageObject.messageOwner.reply_markup.rows.size();
                 substractBackgroundHeight = keyboardHeight = dp(44 + 4) * rows + dp(1);

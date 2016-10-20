@@ -72,7 +72,7 @@ import org.telegram.messenger.UserObject;
 import org.telegram.messenger.Utilities;
 import org.telegram.messenger.VideoEditedInfo;
 import org.telegram.messenger.browser.Browser;
-import org.telegram.messenger.query.BotQuery;
+//import org.telegram.messenger.query.BotQuery; -- EDIT BY MR
 import org.telegram.messenger.query.DraftQuery;
 import org.telegram.messenger.query.MessagesSearchQuery;
 import org.telegram.messenger.query.MessagesQuery;
@@ -562,9 +562,11 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
 
         super.onFragmentCreate();
 
+        /* EDIT BY MR
         if (currentEncryptedChat == null && !isBroadcast) {
             BotQuery.loadBotKeyboard(dialog_id);
         }
+        */
 
         /* EDIT BY MR
         loading = true;
@@ -5718,11 +5720,13 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     for (int a = 0; a < info.participants.participants.size(); a++) {
                         TLRPC.ChatParticipant participant = info.participants.participants.get(a);
                         TLRPC.User user = MessagesController.getInstance().getUser(participant.user_id);
+                        /* EDIT BY MR
                         if (user != null && user.bot) {
                             URLSpanBotCommand.enabled = true;
                             botsCount++;
                             BotQuery.loadBotInfo(user.id, true, classGuid);
                         }
+                        */
                     }
                     if (chatListView != null) {
                         chatListView.invalidateViews();
@@ -6110,6 +6114,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 updateBotButtons();
             }
         } else if (id == NotificationCenter.botKeyboardDidLoaded) {
+            /* EDIT BY MR
             if (dialog_id == (Long) args[1]) {
                 TLRPC.Message message = (TLRPC.Message) args[0];
                 if (message != null && !userBlocked) {
@@ -6141,6 +6146,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     }
                 }
             }
+            */
         } else if (id == NotificationCenter.chatSearchResultsAvailable) {
             if (classGuid == (Integer) args[0]) {
                 int messageId = (Integer) args[1];

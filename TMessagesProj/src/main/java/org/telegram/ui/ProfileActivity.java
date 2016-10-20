@@ -49,7 +49,7 @@ import org.telegram.messenger.MessagesStorage;
 import org.telegram.messenger.SecretChatHelper;
 import org.telegram.messenger.SendMessagesHelper;
 import org.telegram.messenger.UserObject;
-import org.telegram.messenger.query.BotQuery;
+//import org.telegram.messenger.query.BotQuery; -- EDIT BY MR
 import org.telegram.messenger.query.SharedMediaQuery;
 import org.telegram.messenger.ApplicationLoader;
 import org.telegram.messenger.support.widget.LinearLayoutManager;
@@ -241,9 +241,11 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                 NotificationCenter.getInstance().addObserver(this, NotificationCenter.didReceivedNewMessages);
             }
             userBlocked = MessagesController.getInstance().blockedUsers.contains(user_id);
+            /* EDIT BY MR
             if (user.bot) {
                 BotQuery.loadBotInfo(user.id, true, classGuid);
             }
+            */
             MessagesController.getInstance().loadFullUser(MessagesController.getInstance().getUser(user_id), classGuid, true);
             participantsMap = null;
         } else if (chat_id != 0) {

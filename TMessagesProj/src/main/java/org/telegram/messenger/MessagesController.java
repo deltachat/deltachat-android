@@ -21,7 +21,7 @@ import android.util.SparseIntArray;
 import android.widget.Toast;
 
 import org.telegram.SQLite.SQLiteCursor;
-import org.telegram.messenger.query.BotQuery;
+//import org.telegram.messenger.query.BotQuery; -- EDIT BY MR
 import org.telegram.messenger.query.DraftQuery;
 import org.telegram.messenger.query.MessagesQuery;
 import org.telegram.messenger.query.SearchQuery;
@@ -1007,10 +1007,12 @@ public class MessagesController implements NotificationCenter.NotificationCenter
                         @Override
                         public void run() {
                             applyDialogNotificationsSettings(-chat_id, res.full_chat.notify_settings);
+                            /* EDIT BY MR
                             for (int a = 0; a < res.full_chat.bot_info.size(); a++) {
                                 TLRPC.BotInfo botInfo = res.full_chat.bot_info.get(a);
                                 BotQuery.putBotInfo(botInfo);
                             }
+                            */
                             exportedChats.put(chat_id, res.full_chat.exported_invite);
                             loadingFullChats.remove((Integer) chat_id);
                             loadedFullChats.add(chat_id);
@@ -1056,9 +1058,11 @@ public class MessagesController implements NotificationCenter.NotificationCenter
                         public void run() {
                             TLRPC.TL_userFull userFull = (TLRPC.TL_userFull) response;
                             applyDialogNotificationsSettings(user.id, userFull.notify_settings);
+                            /* EDIT BY MR
                             if (userFull.bot_info instanceof TLRPC.TL_botInfo) {
                                 BotQuery.putBotInfo(userFull.bot_info);
                             }
+                            */
                             if (userFull.about != null && userFull.about.length() > 0) {
                                 fullUsersAbout.put(user.id, userFull.about);
                             } else {
