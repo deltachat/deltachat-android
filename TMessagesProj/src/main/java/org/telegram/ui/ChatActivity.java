@@ -66,7 +66,7 @@ import org.telegram.messenger.MediaController;
 import org.telegram.messenger.MessagesStorage;
 import org.telegram.messenger.MrMailbox; // EDIT BY MR
 import org.telegram.messenger.NotificationsController;
-import org.telegram.messenger.SecretChatHelper;
+//import org.telegram.messenger.SecretChatHelper; // EDIT BY MR
 import org.telegram.messenger.SendMessagesHelper;
 import org.telegram.messenger.UserObject;
 import org.telegram.messenger.Utilities;
@@ -648,9 +648,11 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
             NotificationCenter.getInstance().postNotificationName(NotificationCenter.openedChatChanged, dialog_id, false);
         }
 
+        /* EDIT BY MR
         if (currentEncryptedChat != null && AndroidUtilities.getMyLayerVersion(currentEncryptedChat.layer) != SecretChatHelper.CURRENT_SECRET_CHAT_LAYER) {
             SecretChatHelper.getInstance().sendNotifyLayerMessage(currentEncryptedChat, null);
         }
+        */
 
         return true;
     }
@@ -2656,7 +2658,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
 
         updateContactStatus();
         updateBottomOverlay();
-        updateSecretStatus();
+        //updateSecretStatus(); -- EDIT BY MR
         updateSpamView();
         updatePinnedMessageView(true);
 
@@ -3956,6 +3958,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         }
     }
 
+    /* EDIT BY MR
     private void updateSecretStatus() {
         if (bottomOverlay == null) {
             return;
@@ -3991,6 +3994,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         }
         checkActionBarMenu();
     }
+    */
 
     @Override
     public void onRequestPermissionsResultFragment(int requestCode, String[] permissions, int[] grantResults) {
@@ -5802,7 +5806,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
             if (currentEncryptedChat != null && chat.id == currentEncryptedChat.id) {
                 currentEncryptedChat = chat;
                 updateContactStatus();
-                updateSecretStatus();
+                //updateSecretStatus(); -- EDIT BY MR
                 initStickers();
                 if (chatActivityEnterView != null) {
                     chatActivityEnterView.setAllowStickersAndGifs(currentEncryptedChat == null || AndroidUtilities.getPeerLayerVersion(currentEncryptedChat.layer) >= 23, currentEncryptedChat == null || AndroidUtilities.getPeerLayerVersion(currentEncryptedChat.layer) >= 46);
