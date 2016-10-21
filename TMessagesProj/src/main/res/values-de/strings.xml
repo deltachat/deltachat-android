@@ -39,7 +39,7 @@
     <string name="Yesterday">gestern</string>
     <string name="NoResult">Keine Ergebnisse</string>
     <string name="NoChats">Noch keine Chats.</string>
-    <string name="NoChatsHelp">Tippe unten auf den Stift für die erste\nChatnachricht oder auf den Menüknopf\num die restlichen Optionen zu öffnen.</string>
+    <string name="NoChatsHelp">Unten unten auf den Stift für die erste\nChatnachricht tippen; der Menüknopf\nöffnet die restlichen Optionen.</string>
     <string name="WaitingForNetwork">Warte auf Netzwerk...</string>
     <string name="Connecting">Verbinde…</string>
     <string name="Updating">Aktualisiere…</string>

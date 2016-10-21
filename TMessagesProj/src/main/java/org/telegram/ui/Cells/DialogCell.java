@@ -126,7 +126,7 @@ public class DialogCell extends BaseCell {
 
     private boolean isSelected;
 
-    private long hChat = 0; // EDIT BY MR
+    private long m_hChat = 0; // EDIT BY MR
 
     public DialogCell(Context context) {
         super(context);
@@ -196,8 +196,8 @@ public class DialogCell extends BaseCell {
         //dialogsType = type;
 
         // EDIT BY MR
-        MrMailbox.MrChatUnref(hChat);
-        hChat = MrMailbox.MrChatlistGetChatByIndex(MrMailbox.hCurrChatlist, i); // TODO: maybe this should move to update() - in general, how are updates handled?
+        MrMailbox.MrChatUnref(m_hChat);
+        m_hChat = MrMailbox.MrChatlistGetChatByIndex(MrMailbox.hCurrChatlist, i); // TODO: maybe this should move to update() - in general, how are updates handled?
         // /EDIT BY MR
 
         update(0);
@@ -205,8 +205,8 @@ public class DialogCell extends BaseCell {
 
     @Override protected void finalize() throws Throwable
     {
-        MrMailbox.MrChatUnref(hChat);
-        hChat = 0;
+        MrMailbox.MrChatUnref(m_hChat);
+        m_hChat = 0;
         super.finalize();
     }
 
@@ -301,7 +301,7 @@ public class DialogCell extends BaseCell {
         } else
         */
         {
-            if (MrMailbox.MrChatGetType(hChat)==MrMailbox.MR_CHAT_GROUP) { // EDIT BY MR
+            if (MrMailbox.MrChatGetType(m_hChat)==MrMailbox.MR_CHAT_GROUP) { // EDIT BY MR
                 //if (chat.id < 0 || ChatObject.isChannel(chat) && !chat.megagroup) {
                 //    drawNameBroadcast = true;
                 //    nameLockTop = AndroidUtilities.dp(16.5f);
@@ -473,7 +473,7 @@ public class DialogCell extends BaseCell {
         }*/
 
         { // EDIT BY MR
-            long hPoortext = MrMailbox.MrChatGetSummary(hChat);
+            long hPoortext = MrMailbox.MrChatGetSummary(m_hChat);
 
                 checkMessage = false;
                 String mess = MrMailbox.MrPoortextGetText(hPoortext);
@@ -510,7 +510,7 @@ public class DialogCell extends BaseCell {
                     case MrMailbox.MR_OUT_DELIVERED: drawCheck2 = true; break;
                     case MrMailbox.MR_OUT_READ: drawCheck1 = true; drawCheck2 = true; break;
                 }
-                drawVerified = MrMailbox.MrChatIsEncrypted(hChat)!=0; // we use the "verified" check as an icon for "encryted" and "verified"
+                drawVerified = MrMailbox.MrChatIsEncrypted(m_hChat)!=0; // we use the "verified" check as an icon for "encryted" and "verified"
 
             MrMailbox.MrPoortextUnref(hPoortext);
         } // /EDIT BY MR
@@ -598,7 +598,7 @@ public class DialogCell extends BaseCell {
             }
         }
         */
-        nameString = MrMailbox.MrChatGetName(hChat); // EDIT BY MR
+        nameString = MrMailbox.MrChatGetName(m_hChat); // EDIT BY MR
         if (nameString.length() == 0) {
             nameString = LocaleController.getString("HiddenName", R.string.HiddenName);
         }
@@ -838,7 +838,7 @@ public class DialogCell extends BaseCell {
             }
             */
 
-            unreadCount = MrMailbox.MrChatGetUnreadCount(hChat);
+            unreadCount = MrMailbox.MrChatGetUnreadCount(m_hChat);
         }
 
         if (mask != 0) {
@@ -942,8 +942,8 @@ public class DialogCell extends BaseCell {
             avatarDrawable.setInfo(chat);
         }
         */
-        String cname = MrMailbox.MrChatGetName(hChat);
-        avatarDrawable.setInfo(MrMailbox.MrChatGetId(hChat), cname, null, false); // TODO: read photos from address book
+        String cname = MrMailbox.MrChatGetName(m_hChat);
+        avatarDrawable.setInfo(MrMailbox.MrChatGetId(m_hChat), cname, null, false); // TODO: read photos from address book
 
         avatarImage.setImage(photo, "50_50", avatarDrawable, null, false);
 
@@ -1022,7 +1022,7 @@ public class DialogCell extends BaseCell {
             }
         }
 
-        if (dialogMuted && !drawVerified) {
+        if (dialogMuted && !drawVerified) { // TODO: if we enable encrypted chats and show the verified logo, we may show both, muted and verivied
             setDrawableBounds(muteDrawable, nameMuteLeft, AndroidUtilities.dp(16.5f));
             muteDrawable.draw(canvas);
         } else if (drawVerified) {

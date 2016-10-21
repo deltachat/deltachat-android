@@ -352,10 +352,10 @@ JNIEXPORT jlong Java_org_telegram_messenger_MrMailbox_MrChatGetMsglist(JNIEnv *e
 }
 
 
-JNIEXPORT jint Java_org_telegram_messenger_MrMailbox_MrChatSaveDraft(JNIEnv *env, jclass c, jlong hChat, jstring draft /* NULL=delete */, jint replyToMsgId)
+JNIEXPORT jint Java_org_telegram_messenger_MrMailbox_MrChatSetDraft(JNIEnv *env, jclass c, jlong hChat, jstring draft /* NULL=delete */, jint replyToMsgId)
 {
 	CHAR_REF(draft);
-		jint ret = (jint)mrchat_save_draft((mrchat_t*)hChat, draftPtr /* NULL=delete */);
+		jint ret = (jint)mrchat_set_draft((mrchat_t*)hChat, draftPtr /* NULL=delete */);
 	CHAR_UNREF(draft);
 	return ret;
 }

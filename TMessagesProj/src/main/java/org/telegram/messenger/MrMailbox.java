@@ -157,10 +157,10 @@ public class MrMailbox {
     public native static String  MrChatGetDraft             (long hChat); // returns null for "no draft"
     public native static long    MrChatGetDraftTimestamp    (long hChat); // returns 0 for "no draft"
     public native static int     MrChatGetDraftReplyToMsgId (long hChat); // returns 0 for "no draft"
+    public native static int     MrChatSetDraft             (long hChat, String draft/*NULL=delete*/, long replyToMsgId);
     public native static int     MrChatGetUnreadCount       (long hChat);
     public native static long    MrChatGetSummary           (long hChat); // returns hPoortext
     public native static long    MrChatGetMsglist           (long hChat, int offset, int amount); // returns hMsglist
-    public native static int     MrChatSaveDraft            (long hChat, String draft/*NULL=delete*/, long replyToMsgId);
 
     // MrMsglist objects
     public native static void    MrMsglistUnref             (long hMsglist);
