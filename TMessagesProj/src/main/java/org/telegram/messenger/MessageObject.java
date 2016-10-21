@@ -1631,6 +1631,7 @@ public class MessageObject {
         return message == null || message.media == null || message.media instanceof TLRPC.TL_messageMediaEmpty || message.media instanceof TLRPC.TL_messageMediaWebPage;
     }
 
+    /*
     public boolean canEditMessage(TLRPC.Chat chat) {
         return canEditMessage(messageOwner, chat);
     }
@@ -1663,6 +1664,7 @@ public class MessageObject {
         }
         return false;
     }
+    */
 
     public boolean canDeleteMessage(TLRPC.Chat chat) {
         return canDeleteMessage(messageOwner, chat);

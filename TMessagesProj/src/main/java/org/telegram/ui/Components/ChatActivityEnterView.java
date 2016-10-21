@@ -94,7 +94,7 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
         void onAttachButtonShow();
         void onWindowSizeChanged(int size);
         void onStickersTab(boolean opened);
-        void onMessageEditEnd(boolean loading);
+        //void onMessageEditEnd(boolean loading);
     }
 
     private class SeekBarWaveformView extends View {
@@ -1257,6 +1257,7 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
     }
 
     private void updateFieldHint() {
+        /* EDIT BY MR
         boolean isChannel = false;
         if ((int) dialog_id < 0) {
             TLRPC.Chat chat = MessagesController.getInstance().getChat(-(int) dialog_id);
@@ -1272,7 +1273,7 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
                     messageEditText.setHint(LocaleController.getString("ChannelBroadcast", R.string.ChannelBroadcast));
                 }
             }
-        } else {
+        } else*/ {
             messageEditText.setHint(LocaleController.getString("TypeMessage", R.string.TypeMessage));
         }
     }
@@ -1366,6 +1367,7 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
         }
     }
 
+    /*
     public void doneEditingMessage() {
         if (editingMessageObject != null) {
             delegate.onMessageEditEnd(true);
@@ -1378,6 +1380,7 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
             });
         }
     }
+    */
 
     public boolean processSendingText(CharSequence text) {
         text = AndroidUtilities.getTrimmedString(text);
@@ -1779,6 +1782,7 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
         }
     }
 
+    /*
     public void setEditingMessageObject(MessageObject messageObject, boolean caption) {
         if (audioToSend != null || editingMessageObject == messageObject) {
             return;
@@ -1852,6 +1856,7 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
         }
         updateFieldHint();
     }
+    */
 
     public void setFieldText(CharSequence text) {
         if (messageEditText == null) {

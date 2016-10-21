@@ -774,9 +774,9 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                             selectedMessagesCanCopyIds[a].clear();
                         }
                         cantDeleteMessagesCount = 0;
-                        if (chatActivityEnterView.isEditingMessage()) {
+                        /*if (chatActivityEnterView.isEditingMessage()) {
                             chatActivityEnterView.setEditingMessageObject(null, false);
-                        } else {
+                        } else*/ {
                             actionBar.hideActionMode();
                             updatePinnedMessageView(true);
                         }
@@ -816,9 +816,11 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     updatePinnedMessageView(true);
                     updateVisibleRows();
                 } else if (id == edit_done) {
+                    /*
                     if (chatActivityEnterView != null && (chatActivityEnterView.isEditingCaption() || chatActivityEnterView.hasText())) {
                         chatActivityEnterView.doneEditingMessage();
                     }
+                    */
                 } else if (id == delete) {
                     if (getParentActivity() == null) {
                         return;
@@ -2342,6 +2344,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 }
             }
 
+            /*
             @Override
             public void onMessageEditEnd(boolean loading) {
                 if (loading) {
@@ -2365,6 +2368,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     updateVisibleRows();
                 }
             }
+            */
 
             @Override
             public void onWindowSizeChanged(int size) {
@@ -7100,9 +7104,9 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         updatePinnedMessageView(true);
 
         boolean allowChatActions = true;
-        boolean allowPin = message.getDialogId() != mergeDialogId && message.getId() > 0 && ChatObject.isChannel(currentChat) && currentChat.megagroup && (currentChat.creator || currentChat.editor) && (message.messageOwner.action == null || message.messageOwner.action instanceof TLRPC.TL_messageActionEmpty);
-        boolean allowUnpin = message.getDialogId() != mergeDialogId && info != null && info.pinned_msg_id == message.getId() && (currentChat.creator || currentChat.editor);
-        boolean allowEdit = message.canEditMessage(currentChat) && !chatActivityEnterView.hasAudioToSend() && message.getDialogId() != mergeDialogId;
+        //boolean allowPin = message.getDialogId() != mergeDialogId && message.getId() > 0 && ChatObject.isChannel(currentChat) && currentChat.megagroup && (currentChat.creator || currentChat.editor) && (message.messageOwner.action == null || message.messageOwner.action instanceof TLRPC.TL_messageActionEmpty);
+        //boolean allowUnpin = message.getDialogId() != mergeDialogId && info != null && info.pinned_msg_id == message.getId() && (currentChat.creator || currentChat.editor);
+        //boolean allowEdit = message.canEditMessage(currentChat) && !chatActivityEnterView.hasAudioToSend() && message.getDialogId() != mergeDialogId;
         if (currentEncryptedChat != null && AndroidUtilities.getPeerLayerVersion(currentEncryptedChat.layer) < 46 || type == 1 && message.getDialogId() == mergeDialogId || currentEncryptedChat == null && message.getId() < 0 || isBroadcast || currentChat != null && (ChatObject.isNotInChat(currentChat) || ChatObject.isChannel(currentChat) && !currentChat.creator && !currentChat.editor && !currentChat.megagroup)) {
             allowChatActions = false;
         }
@@ -7129,6 +7133,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                             items.add(LocaleController.getString("Reply", R.string.Reply));
                             options.add(8);
                         }
+                        /*
                         if (allowUnpin) {
                             items.add(LocaleController.getString("UnpinMessage", R.string.UnpinMessage));
                             options.add(14);
@@ -7140,6 +7145,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                             items.add(LocaleController.getString("Edit", R.string.Edit));
                             options.add(12);
                         }
+                        */
                         if (message.canDeleteMessage(currentChat)) {
                             items.add(LocaleController.getString("Delete", R.string.Delete));
                             options.add(1);
@@ -7226,6 +7232,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                         }
                         items.add(LocaleController.getString("Forward", R.string.Forward));
                         options.add(2);
+                        /*
                         if (allowUnpin) {
                             items.add(LocaleController.getString("UnpinMessage", R.string.UnpinMessage));
                             options.add(14);
@@ -7237,6 +7244,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                             items.add(LocaleController.getString("Edit", R.string.Edit));
                             options.add(12);
                         }
+                        */
                         if (message.canDeleteMessage(currentChat)) {
                             items.add(LocaleController.getString("Delete", R.string.Delete));
                             options.add(1);
@@ -7594,6 +7602,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 break;
             }
             case 12: {
+                /* EDIT BY MR -- we do not allow to edit messages that are "sent"
                 if (getParentActivity() == null) {
                     selectedObject = null;
                     return;
@@ -7659,9 +7668,11 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                         });
                     }
                 });
+                */
                 break;
             }
             case 13: {
+                /*  EDIT BY MR -- pinning not supported
                 final int mid = selectedObject.getId();
                 AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
                 builder.setMessage(LocaleController.getString("PinMessageAlert", R.string.PinMessageAlert));
@@ -7694,9 +7705,11 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 builder.setTitle(LocaleController.getString("AppName", R.string.AppName));
                 builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
                 showDialog(builder.create());
+                */
                 break;
             }
             case 14: {
+                /* EDIT BY MR -- unpinning not supported
                 AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
                 builder.setMessage(LocaleController.getString("UnpinMessageAlert", R.string.UnpinMessageAlert));
                 builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), new DialogInterface.OnClickListener() {
@@ -7708,6 +7721,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 builder.setTitle(LocaleController.getString("AppName", R.string.AppName));
                 builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
                 showDialog(builder.create());
+                */
                 break;
             }
             case 15: {
@@ -7808,7 +7822,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 selectedMessagesIds[a].clear();
                 selectedMessagesCanCopyIds[a].clear();
             }
-            chatActivityEnterView.setEditingMessageObject(null, false);
+            //chatActivityEnterView.setEditingMessageObject(null, false);
             actionBar.hideActionMode();
             updatePinnedMessageView(true);
             cantDeleteMessagesCount = 0;

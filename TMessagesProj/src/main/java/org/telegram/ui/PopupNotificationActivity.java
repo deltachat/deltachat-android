@@ -308,10 +308,12 @@ public class PopupNotificationActivity extends Activity implements NotificationC
 
             }
 
+            /*
             @Override
             public void onMessageEditEnd(boolean loading) {
 
             }
+            */
 
             @Override
             public void needSendTyping() {
