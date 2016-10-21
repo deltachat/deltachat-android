@@ -7979,7 +7979,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         messageObjects.add(startMessageObject);
         int messageId = startMessageObject.getId();
         if (messageId != 0) {
-            boolean started = false;
+            //boolean started = false;
             for (int a = messages.size() - 1; a >= 0; a--) {
                 MessageObject messageObject = messages.get(a);
                 if ((currentEncryptedChat == null && messageObject.getId() > messageId || currentEncryptedChat != null && messageObject.getId() < messageId) && messageObject.isVoice() && (!playingUnreadMedia || messageObject.isContentUnread() && !messageObject.isOut())) {
@@ -8026,9 +8026,9 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
 
     }
 
-    public boolean isSecretChat() {
-        return currentEncryptedChat != null;
-    }
+    //public boolean isSecretChat() {
+    //    return currentEncryptedChat != null;
+    //}
 
     public TLRPC.User getCurrentUser() {
         return currentUser;
