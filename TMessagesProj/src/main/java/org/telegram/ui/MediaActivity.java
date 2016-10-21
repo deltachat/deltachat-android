@@ -101,7 +101,7 @@ public class MediaActivity extends BaseFragment implements NotificationCenter.No
     private SectionsListView listView;
     private LinearLayout progressView;
     private TextView emptyTextView;
-    private ImageView emptyImageView;
+    //private ImageView emptyImageView;
     private LinearLayout emptyView;
     private TextView dropDown;
     private ActionBarMenuItem dropDownContainer;
@@ -587,8 +587,8 @@ public class MediaActivity extends BaseFragment implements NotificationCenter.No
             }
         });
 
-        emptyImageView = new ImageView(context);
-        emptyView.addView(emptyImageView, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT));
+        //emptyImageView = new ImageView(context); -- EDIT BY MR
+        //emptyView.addView(emptyImageView, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT));
 
         emptyTextView = new TextView(context);
         emptyTextView.setTextColor(0xff8a8a8a);
@@ -891,15 +891,15 @@ public class MediaActivity extends BaseFragment implements NotificationCenter.No
             if (emptyTextView != null) {
                 emptyTextView.setText(LocaleController.getString("NoResult", R.string.NoResult));
                 emptyTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
-                emptyImageView.setVisibility(View.GONE);
+                //emptyImageView.setVisibility(View.GONE);
             }
         } else {
             emptyTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 17);
-            emptyImageView.setVisibility(View.VISIBLE);
+            //emptyImageView.setVisibility(View.VISIBLE);
             if (selectedMode == 0) {
                 listView.setAdapter(photoVideoAdapter);
                 dropDown.setText(LocaleController.getString("SharedMediaTitle", R.string.SharedMediaTitle));
-                emptyImageView.setImageResource(R.drawable.tip1);
+                //emptyImageView.setImageResource(R.drawable.tip1);
                 if ((int) dialog_id == 0) {
                     emptyTextView.setText(LocaleController.getString("NoMediaSecret", R.string.NoMediaSecret));
                 } else {
@@ -920,7 +920,7 @@ public class MediaActivity extends BaseFragment implements NotificationCenter.No
                 if (selectedMode == 1) {
                     listView.setAdapter(documentsAdapter);
                     dropDown.setText(LocaleController.getString("DocumentsTitle", R.string.DocumentsTitle));
-                    emptyImageView.setImageResource(R.drawable.tip2);
+                    //emptyImageView.setImageResource(R.drawable.tip2);
                     if ((int) dialog_id == 0) {
                         emptyTextView.setText(LocaleController.getString("NoSharedFilesSecret", R.string.NoSharedFilesSecret));
                     } else {
@@ -929,7 +929,7 @@ public class MediaActivity extends BaseFragment implements NotificationCenter.No
                 } else if (selectedMode == 4) {
                     listView.setAdapter(audioAdapter);
                     dropDown.setText(LocaleController.getString("AudioTitle", R.string.AudioTitle));
-                    emptyImageView.setImageResource(R.drawable.tip4);
+                    //emptyImageView.setImageResource(R.drawable.tip4);
                     if ((int) dialog_id == 0) {
                         emptyTextView.setText(LocaleController.getString("NoSharedAudioSecret", R.string.NoSharedAudioSecret));
                     } else {
@@ -954,7 +954,7 @@ public class MediaActivity extends BaseFragment implements NotificationCenter.No
             } else if (selectedMode == 3) {
                 listView.setAdapter(linksAdapter);
                 dropDown.setText(LocaleController.getString("LinksTitle", R.string.LinksTitle));
-                emptyImageView.setImageResource(R.drawable.tip3);
+                //emptyImageView.setImageResource(R.drawable.tip3);
                 if ((int) dialog_id == 0) {
                     emptyTextView.setText(LocaleController.getString("NoSharedLinksSecret", R.string.NoSharedLinksSecret));
                 } else {

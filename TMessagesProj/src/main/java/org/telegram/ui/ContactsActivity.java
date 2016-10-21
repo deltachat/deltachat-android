@@ -427,14 +427,14 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
             if (getParentActivity() == null) {
                 return;
             }
-            if (user.bot && user.bot_nochats) {
+            /*if (user.bot && user.bot_nochats) {
                 try {
                     Toast.makeText(getParentActivity(), LocaleController.getString("BotCantJoinGroups", R.string.BotCantJoinGroups), Toast.LENGTH_SHORT).show();
                 } catch (Exception e) {
                     FileLog.e("tmessages", e);
                 }
                 return;
-            }
+            }*/
             AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
             builder.setTitle(LocaleController.getString("AppName", R.string.AppName));
             String message = LocaleController.formatStringSimple(selectAlertString, UserObject.getUserName(user));

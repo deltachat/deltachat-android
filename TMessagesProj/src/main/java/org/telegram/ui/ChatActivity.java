@@ -2026,7 +2026,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                             mentionLayoutManager.scrollToPositionWithOffset(0, 10000);
                         }
                         if (allowStickersPanel && (!mentionsAdapter.isBotContext() || (allowContextBotPanel || allowContextBotPanelSecond))) {
-                            if (currentEncryptedChat != null && mentionsAdapter.isBotContext()) {
+                            /*if (currentEncryptedChat != null && mentionsAdapter.isBotContext()) {
                                 SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("mainconfig", Activity.MODE_PRIVATE);
                                 if (!preferences.getBoolean("secretbot", false)) {
                                     AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
@@ -2036,7 +2036,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                                     showDialog(builder.create());
                                     preferences.edit().putBoolean("secretbot", true).commit();
                                 }
-                            }
+                            }*/
                             mentionContainer.setVisibility(View.VISIBLE);
                             mentionContainer.setTag(null);
                             mentionListAnimation = new AnimatorSet();

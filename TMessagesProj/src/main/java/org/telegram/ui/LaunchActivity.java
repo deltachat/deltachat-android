@@ -178,7 +178,7 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
 
             backgroundTablet = new ImageView(this);
             backgroundTablet.setScaleType(ImageView.ScaleType.CENTER_CROP);
-            backgroundTablet.setImageResource(R.drawable.cats);
+            backgroundTablet.setImageResource(R.drawable.background_hd);
             launchLayout.addView(backgroundTablet);
             RelativeLayout.LayoutParams relativeLayoutParams = (RelativeLayout.LayoutParams) backgroundTablet.getLayoutParams();
             relativeLayoutParams.width = LayoutHelper.MATCH_PARENT;
@@ -1094,7 +1094,7 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                                     MessagesController.getInstance().putChats(res.chats, false);
                                     MessagesStorage.getInstance().putUsersAndChats(res.users, res.chats, false, true);
 
-                                    if (botChat != null) {
+                                    /*if (botChat != null) {
                                         final TLRPC.User user = !res.users.isEmpty() ? res.users.get(0) : null;
                                         if (user == null || user.bot && user.bot_nochats) {
                                             try {
@@ -1123,7 +1123,7 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                                             }
                                         });
                                         presentFragment(fragment);
-                                    } else {
+                                    } else */ {
                                         long dialog_id;
                                         boolean isBot = false;
                                         Bundle args = new Bundle();

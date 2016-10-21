@@ -199,6 +199,8 @@ public class MrMailbox {
     public final static int      MR_CHAT_NORMAL             = 100;
     public final static int      MR_CHAT_GROUP              = 120;
 
+    public final static int      MR_CHAT_ID_STRANGERS       = 1;
+
     public final static int      MR_STATE_UNDEFINED         = 0;
     public final static int      MR_IN_UNREAD               = 1;
     public final static int      MR_IN_READ                 = 3;

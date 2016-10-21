@@ -82,7 +82,7 @@ public class ManageSpaceActivity extends Activity implements ActionBarLayout.Act
 
             ImageView backgroundTablet = new ImageView(this);
             backgroundTablet.setScaleType(ImageView.ScaleType.CENTER_CROP);
-            backgroundTablet.setImageResource(R.drawable.cats);
+            backgroundTablet.setImageResource(R.drawable.background_hd);
             launchLayout.addView(backgroundTablet);
             RelativeLayout.LayoutParams relativeLayoutParams = (RelativeLayout.LayoutParams) backgroundTablet.getLayoutParams();
             relativeLayoutParams.width = LayoutHelper.MATCH_PARENT;

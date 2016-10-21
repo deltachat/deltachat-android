@@ -308,12 +308,12 @@ public class MessageObject {
                     } else {
                         messageText = LocaleController.getString("ActionCreateChannel", R.string.ActionCreateChannel);
                     }
-                } else if (message.action instanceof TLRPC.TL_messageActionChatMigrateTo) {
+                /*} else if (message.action instanceof TLRPC.TL_messageActionChatMigrateTo) {
                     messageText = LocaleController.getString("ActionMigrateFromGroup", R.string.ActionMigrateFromGroup);
                 } else if (message.action instanceof TLRPC.TL_messageActionChannelMigrateFrom) {
                     messageText = LocaleController.getString("ActionMigrateFromGroup", R.string.ActionMigrateFromGroup);
                 } else if (message.action instanceof TLRPC.TL_messageActionPinMessage) {
-                    //generatePinMessageText(fromUser, fromUser == null ? chats.get(message.to_id.channel_id) : null);
+                    generatePinMessageText(fromUser, fromUser == null ? chats.get(message.to_id.channel_id) : null);*/
                 } else if (message.action instanceof TLRPC.TL_messageActionHistoryClear) {
                     messageText = LocaleController.getString("HistoryCleared", R.string.HistoryCleared);
                 }
