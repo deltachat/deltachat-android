@@ -42,6 +42,7 @@ import org.telegram.messenger.FileLoader;
 import org.telegram.messenger.FileLog;
 import org.telegram.messenger.MessageObject;
 import org.telegram.messenger.MessagesController;
+import org.telegram.messenger.MrMailbox;
 import org.telegram.messenger.R;
 import org.telegram.messenger.SendMessagesHelper;
 import org.telegram.messenger.UserObject;
@@ -3981,6 +3982,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
 
         String viaUsername = null;
         CharSequence viaString = null;
+        /*EDIT BY MR
         if (messageObject.messageOwner.via_bot_id != 0) {
             TLRPC.User botUser = MessagesController.getInstance().getUser(messageObject.messageOwner.via_bot_id);
             if (botUser != null && botUser.username != null && botUser.username.length() > 0) {
@@ -3994,6 +3996,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
             viaString = replaceTags(String.format(" via <b>%s</b>", viaUsername));
             viaWidth = (int) Math.ceil(replyNamePaint.measureText(viaString, 0, viaString.length()));
         }
+        */
 
         boolean authorName = drawName && isChat && !currentMessageObject.isOutOwner();
         boolean viaBot = (messageObject.messageOwner.fwd_from == null || messageObject.type == 14) && viaUsername != null;
@@ -4006,7 +4009,11 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
 
             if (authorName) {
                 if (currentUser != null) {
-                    currentNameString = UserObject.getUserName(currentUser);
+                    // EDIT BY MR
+                    long hContact= MrMailbox.MrMailboxGetContactById(MrMailbox.hMailbox, currentUser.id);
+                        currentNameString = MrMailbox.MrContactGetDisplayName(hContact);
+                    MrMailbox.MrContactUnref(hContact);
+                    // /EDIT BY MR
                 } else if (currentChat != null) {
                     currentNameString = currentChat.title;
                 } else {

@@ -130,7 +130,7 @@ public class MrMailbox {
     public native static void    MrMailboxDisconnect        (long hMailbox);
     public native static int     MrMailboxFetch             (long hMailbox);
 
-    public native static long    MrMailboxGetContactById    (long hMailbox);// returns hContact which must be unref'd after usage
+    public native static long    MrMailboxGetContactById    (long hMailbox, int id);// returns hContact which must be unref'd after usage
 
     public native static long    MrMailboxGetChatlist       (long hMailbox); // returns hChatlist which must be unref'd after usage
     public native static long    MrMailboxGetChatById       (long hMailbox, int id); // return hChat which must be unref'd after usage
@@ -177,6 +177,10 @@ public class MrMailbox {
     public native static int     MrMsgGetChatId             (long hMsg);
     public native static int     MrMsgGetFromId             (long hMsg);
     public native static int     MrMsgGetToId               (long hMsg);
+
+    // MrContact objects
+    public native static void    MrContactUnref             (long hContact);
+    public native static String  MrContactGetDisplayName    (long hContact);
 
     // MrPoortext objects
     public native static void    MrPoortextUnref            (long hPoortext);

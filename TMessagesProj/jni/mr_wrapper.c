@@ -169,7 +169,7 @@ JNIEXPORT jint Java_org_telegram_messenger_MrMailbox_MrMailboxFetch(JNIEnv *env,
 
 /* MrMailbox - handle contacts */
 
-JNIEXPORT jlong Java_org_telegram_messenger_MrMailbox_MrMailboxGetContactById(JNIEnv *env, jclass c, long hMailbox, jint id)
+JNIEXPORT jlong Java_org_telegram_messenger_MrMailbox_MrMailboxGetContactById(JNIEnv *env, jclass c, jlong hMailbox, jint id)
 {
 	return (jlong)mrmailbox_get_contact_by_id((mrmailbox_t*)hMailbox, id);
 }
@@ -448,6 +448,29 @@ JNIEXPORT jint Java_org_telegram_messenger_MrMailbox_MrMsgGetToId(JNIEnv *env, j
 {
 	mrmsg_t* ths = (mrmsg_t*)hMsg; if( ths == NULL ) { return 0; }
 	return ths->m_to_id;
+}
+
+
+/*******************************************************************************
+ * MrContact
+ ******************************************************************************/
+
+
+JNIEXPORT void Java_org_telegram_messenger_MrMailbox_MrContactUnref(JNIEnv *env, jclass c, jlong hContact)
+{
+	mrcontact_unref((mrcontact_t*)hContact);
+}
+
+
+JNIEXPORT jstring Java_org_telegram_messenger_MrMailbox_MrContactGetDisplayName(JNIEnv *env, jclass c, jlong hContact)
+{
+	mrcontact_t* ths = (mrcontact_t*)hContact; if( ths == NULL ) { return JSTRING_NEW(NULL); }
+	if( ths->m_name && ths->m_name[0] ) {
+		return JSTRING_NEW(ths->m_name);
+	}
+	else {
+		return JSTRING_NEW(ths->m_addr);
+	}
 }
 
 
