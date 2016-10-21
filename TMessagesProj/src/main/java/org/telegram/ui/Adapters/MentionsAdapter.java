@@ -174,9 +174,11 @@ public class MentionsAdapter extends BaseSearchAdapterRecycler {
         botInfo = info;
     }
 
+    /*
     public void setBotsCount(int count) {
         botsCount = count;
     }
+    */
 
     @Override
     public void clearRecentHashtags() {

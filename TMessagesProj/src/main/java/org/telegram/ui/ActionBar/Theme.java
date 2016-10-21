@@ -209,11 +209,11 @@ public class Theme {
     public static Drawable broadcastMediaDrawable;
     public static Drawable errorDrawable;
     public static Drawable systemDrawable;
-    public static Drawable backgroundBluePressed;
+    //public static Drawable backgroundBluePressed;
     public static Drawable timeBackgroundDrawable;
     public static Drawable timeStickerBackgroundDrawable;
-    public static Drawable botLink;
-    public static Drawable botInline;
+    //public static Drawable botLink;
+    //public static Drawable botInline;
     public static Drawable[] clockChannelDrawable = new Drawable[2];
 
     public static Drawable[] cornerOuter = new Drawable[4];
@@ -270,8 +270,8 @@ public class Theme {
             broadcastDrawable = context.getResources().getDrawable(R.drawable.broadcast3);
             broadcastMediaDrawable = context.getResources().getDrawable(R.drawable.broadcast4);
             systemDrawable = context.getResources().getDrawable(R.drawable.system);
-            botLink = context.getResources().getDrawable(R.drawable.bot_link);
-            botInline = context.getResources().getDrawable(R.drawable.bot_lines);
+            //botLink = context.getResources().getDrawable(R.drawable.bot_link);
+            //botInline = context.getResources().getDrawable(R.drawable.bot_lines);
 
             viewsCountDrawable[0] = context.getResources().getDrawable(R.drawable.post_views);
             viewsCountDrawable[1] = context.getResources().getDrawable(R.drawable.post_views_s);

@@ -316,10 +316,10 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
     private HashMap<Integer, TLRPC.BotInfo> botInfo = new HashMap<>();
     private String botUser;
     private long inlineReturn;
-    private MessageObject botButtons;
-    private MessageObject botReplyButtons;
-    private int botsCount;
-    private boolean hasBotsCommands;
+    //private MessageObject botButtons;
+    //private MessageObject botReplyButtons;
+    //private int botsCount;
+    //private boolean hasBotsCommands;
     private long chatEnterTime = 0;
     private long chatLeaveTime = 0;
 
@@ -1550,9 +1550,9 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         chatListView.setOnInterceptTouchListener(new RecyclerListView.OnInterceptTouchListener() {
             @Override
             public boolean onInterceptTouchEvent(MotionEvent event) {
-                if (chatActivityEnterView != null && chatActivityEnterView.isEditingMessage()) {
+                /*if (chatActivityEnterView != null && chatActivityEnterView.isEditingMessage()) {
                     return true;
-                }
+                }*/
                 if (actionBar.isActionModeShowed()) {
                     return false;
                 }
@@ -2134,7 +2134,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
             mentionsAdapter.setChatInfo(info);
             mentionsAdapter.setNeedUsernames(currentChat != null);
             mentionsAdapter.setNeedBotContext(currentEncryptedChat == null || AndroidUtilities.getPeerLayerVersion(currentEncryptedChat.layer) >= 46);
-            mentionsAdapter.setBotsCount(currentChat != null ? botsCount : 1);
+            //mentionsAdapter.setBotsCount(currentChat != null ? botsCount : 1);
             mentionListView.setOnItemClickListener(mentionsOnItemClickListener = new RecyclerListView.OnItemClickListener() {
                 @Override
                 public void onItemClick(View view, int position) {
@@ -2275,7 +2275,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         chatActivityEnterView.setDialogId(dialog_id);
         chatActivityEnterView.addToAttachLayout(menuItem);
         chatActivityEnterView.setId(id_chat_compose_panel);
-        chatActivityEnterView.setBotsCount(botsCount, hasBotsCommands);
+        //chatActivityEnterView.setBotsCount(botsCount, hasBotsCommands);
         chatActivityEnterView.setAllowStickersAndGifs(currentEncryptedChat == null || AndroidUtilities.getPeerLayerVersion(currentEncryptedChat.layer) >= 23, currentEncryptedChat == null || AndroidUtilities.getPeerLayerVersion(currentEncryptedChat.layer) >= 46);
         contentView.addView(chatActivityEnterView, contentView.getChildCount() - 1, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.LEFT | Gravity.BOTTOM));
         chatActivityEnterView.setDelegate(new ChatActivityEnterView.ChatActivityEnterViewDelegate() {
@@ -2663,7 +2663,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
             chatListView.setEmptyView(emptyViewContainer);
         }
 
-        chatActivityEnterView.setButtons(userBlocked ? null : botButtons);
+        //chatActivityEnterView.setButtons(userBlocked ? null : botButtons);
 
         if (!AndroidUtilities.isTablet() || AndroidUtilities.isSmallTablet()) {
             contentView.addView(playerView = new PlayerView(context, this), LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, 39, Gravity.TOP | Gravity.LEFT, 0, -36, 0, 0));
@@ -4374,6 +4374,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         */
     }
 
+    /*
     private void updateBotButtons() {
         if (headerItem == null || currentUser == null || currentEncryptedChat != null || !currentUser.bot) {
             return;
@@ -4407,6 +4408,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
             headerItem.hideSubItem(bot_settings);
         }
     }
+    */
 
     private void updateTitleIcons() {
         if (avatarContainer == null) {
@@ -5656,12 +5658,12 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     MessagesController.getInstance().loadMessages(dialog_id, 30, 0, !cacheEndReached[0], minDate[0], classGuid, 0, 0, ChatObject.isChannel(currentChat), lastLoadIndex++);
                     loading = true;
                 } else {
-                    if (botButtons != null) {
+                    /*if (botButtons != null) {
                         botButtons = null;
                         if (chatActivityEnterView != null) {
                             chatActivityEnterView.setButtons(null, false);
                         }
-                    }
+                    }*/
                     if (currentEncryptedChat == null && currentUser != null && currentUser.bot && botUser == null) {
                         botUser = "";
                         updateBottomOverlay();
@@ -5781,9 +5783,9 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     SendMessagesHelper.getInstance().setCurrentChatInfo(info);
                 }
                 if (info instanceof TLRPC.TL_chatFull) {
-                    hasBotsCommands = false;
+                    //hasBotsCommands = false;
                     botInfo.clear();
-                    botsCount = 0;
+                    //botsCount = 0;
                     URLSpanBotCommand.enabled = false;
                     for (int a = 0; a < info.participants.participants.size(); a++) {
                         TLRPC.ChatParticipant participant = info.participants.participants.get(a);
@@ -5800,18 +5802,18 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                         chatListView.invalidateViews();
                     }
                 } else if (info instanceof TLRPC.TL_channelFull) {
-                    hasBotsCommands = false;
+                    //hasBotsCommands = false;
                     botInfo.clear();
-                    botsCount = 0;
+                    //botsCount = 0;
                     URLSpanBotCommand.enabled = !info.bot_info.isEmpty();
-                    botsCount = info.bot_info.size();
+                    /*botsCount = info.bot_info.size();
                     for (int a = 0; a < info.bot_info.size(); a++) {
                         TLRPC.BotInfo bot = info.bot_info.get(a);
                         if (!bot.commands.isEmpty() && (!ChatObject.isChannel(currentChat) || currentChat != null && currentChat.megagroup)) {
                             hasBotsCommands = true;
                         }
                         botInfo.put(bot.user_id, bot);
-                    }
+                    }*/
                     if (chatListView != null) {
                         chatListView.invalidateViews();
                     }
@@ -5819,12 +5821,12 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                         mentionsAdapter.setBotInfo(botInfo);
                     }
                 }
-                if (chatActivityEnterView != null) {
+                /*if (chatActivityEnterView != null) {
                     chatActivityEnterView.setBotsCount(botsCount, hasBotsCommands);
-                }
-                if (mentionsAdapter != null) {
+                }*/
+                /*if (mentionsAdapter != null) {
                     mentionsAdapter.setBotsCount(botsCount);
-                }
+                }*/
                 if (ChatObject.isChannel(currentChat) && mergeDialogId == 0 && info.migrated_from_chat_id != 0) {
                     mergeDialogId = -info.migrated_from_chat_id;
                     maxMessageId[1] = info.migrated_from_max_id;
@@ -5954,12 +5956,12 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 actionBar.hideActionMode();
                 updatePinnedMessageView(true);
 
-                if (botButtons != null) {
+                /*if (botButtons != null) {
                     botButtons = null;
                     if (chatActivityEnterView != null) {
                         chatActivityEnterView.setButtons(null, false);
                     }
-                }
+                }*/
                 if (currentEncryptedChat == null && currentUser != null && currentUser.bot && botUser == null) {
                     botUser = "";
                     updateBottomOverlay();
@@ -6161,6 +6163,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 updateVisibleRows();
             }
         } else if (id == NotificationCenter.botInfoDidLoaded) {
+            /*
             int guid = (Integer) args[1];
             if (classGuid == guid) {
                 TLRPC.BotInfo info = (TLRPC.BotInfo) args[0];
@@ -6181,6 +6184,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 }
                 updateBotButtons();
             }
+            */
         } else if (id == NotificationCenter.botKeyboardDidLoaded) {
             /* EDIT BY MR
             if (dialog_id == (Long) args[1]) {
@@ -6378,7 +6382,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 } else {
                     bottomOverlayChatText.setText(LocaleController.getString("Unblock", R.string.Unblock));
                 }
-                if (botButtons != null) {
+                /*if (botButtons != null) {
                     botButtons = null;
                     if (chatActivityEnterView != null) {
                         if (replyingMessageObject != null && botReplyButtons == replyingMessageObject) {
@@ -6387,7 +6391,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                         }
                         chatActivityEnterView.setButtons(botButtons, false);
                     }
-                }
+                }*/
             } else if (botUser != null && currentUser.bot) {
                 bottomOverlayChatText.setText(LocaleController.getString("BotStart", R.string.BotStart));
                 chatActivityEnterView.hidePopup(false);
@@ -7904,7 +7908,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
             return;
         }
         int count = chatListView.getChildCount();
-        MessageObject editingMessageObject = chatActivityEnterView != null ? chatActivityEnterView.getEditingMessageObject() : null;
+        //MessageObject editingMessageObject = chatActivityEnterView != null ? chatActivityEnterView.getEditingMessageObject() : null;
         for (int a = 0; a < count; a++) {
             View view = chatListView.getChildAt(a);
             if (view instanceof ChatMessageCell) {
@@ -7914,7 +7918,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 boolean selected = false;
                 if (actionBar.isActionModeShowed()) {
                     MessageObject messageObject = cell.getMessageObject();
-                    if (messageObject == editingMessageObject || selectedMessagesIds[messageObject.getDialogId() == dialog_id ? 0 : 1].containsKey(messageObject.getId())) {
+                    if (/*messageObject == editingMessageObject ||*/ selectedMessagesIds[messageObject.getDialogId() == dialog_id ? 0 : 1].containsKey(messageObject.getId())) {
                         view.setBackgroundColor(Theme.MSG_SELECTED_BACKGROUND_COLOR);
                         selected = true;
                     } else {
@@ -8315,6 +8319,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                         }
                     }
 
+                    /*
                     @Override
                     public void didPressedBotButton(ChatMessageCell cell, TLRPC.KeyboardButton button) {
                         if (getParentActivity() == null || bottomOverlayChat.getVisibility() == View.VISIBLE && !(button instanceof TLRPC.TL_keyboardButtonCallback) && !(button instanceof TLRPC.TL_keyboardButtonUrl)) {
@@ -8322,6 +8327,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                         }
                         chatActivityEnterView.didPressedBotButton(button, cell.getMessageObject(), cell.getMessageObject());
                     }
+                    */
 
                     @Override
                     public void didPressedCancelSendButton(ChatMessageCell cell) {
@@ -8559,8 +8565,8 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 boolean selected = false;
                 boolean disableSelection = false;
                 if (actionBar.isActionModeShowed()) {
-                    MessageObject messageObject = chatActivityEnterView != null ? chatActivityEnterView.getEditingMessageObject() : null;
-                    if (messageObject == message || selectedMessagesIds[message.getDialogId() == dialog_id ? 0 : 1].containsKey(message.getId())) {
+                    //MessageObject messageObject = chatActivityEnterView != null ? chatActivityEnterView.getEditingMessageObject() : null;
+                    if (/*messageObject == message ||*/ selectedMessagesIds[message.getDialogId() == dialog_id ? 0 : 1].containsKey(message.getId())) {
                         view.setBackgroundColor(Theme.MSG_SELECTED_BACKGROUND_COLOR);
                         selected = true;
                     } else {

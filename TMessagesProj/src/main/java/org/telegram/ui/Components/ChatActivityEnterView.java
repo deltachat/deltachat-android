@@ -28,10 +28,8 @@ import android.os.Bundle;
 import android.os.PowerManager;
 import android.os.SystemClock;
 import android.text.Editable;
-import android.text.InputFilter;
 import android.text.Layout;
 import android.text.SpannableStringBuilder;
-import android.text.Spanned;
 import android.text.StaticLayout;
 import android.text.TextPaint;
 import android.text.TextUtils;
@@ -50,7 +48,6 @@ import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -305,16 +302,16 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
     private LinearLayout textFieldContainer;
     private FrameLayout sendButtonContainer;
     private View topView;
-    private PopupWindow botKeyboardPopup;
-    private BotKeyboardView botKeyboardView;
+    //private PopupWindow botKeyboardPopup;
+    //private BotKeyboardView botKeyboardView;
     private ImageView notifyButton;
     private RecordCircle recordCircle;
     private CloseProgressDrawable2 progressDrawable;
     private Drawable backgroundDrawable;
 
-    private MessageObject editingMessageObject;
-    private int editingMessageReqId;
-    private boolean editingCaption;
+    //private MessageObject editingMessageObject;
+    //private int editingMessageReqId;
+    //private boolean editingCaption;
 
     private int currentPopupContentType = -1;
 
@@ -324,10 +321,10 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
     private boolean isPaused = true;
     private boolean showKeyboardOnResume;
 
-    private MessageObject botButtonsMessageObject;
-    private TLRPC.TL_replyKeyboardMarkup botReplyMarkup;
-    private int botCount;
-    private boolean hasBotCommands;
+    //private MessageObject botButtonsMessageObject;
+    //private TLRPC.TL_replyKeyboardMarkup botReplyMarkup;
+    //private int botCount;
+    //private boolean hasBotCommands;
 
     private PowerManager.WakeLock mWakeLock;
     private AnimatorSet runningAnimation;
@@ -359,7 +356,7 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
     private boolean ignoreTextChange;
     private int innerTextChange;
     private MessageObject replyingMessageObject;
-    private MessageObject botMessageObject;
+    //private MessageObject botMessageObject;
     private TLRPC.WebPage messageWebPage;
     private boolean messageWebPageSearch = true;
     private ChatActivityEnterViewDelegate delegate;
@@ -580,10 +577,10 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
             public boolean onKey(View view, int i, KeyEvent keyEvent) {
                 if (i == KeyEvent.KEYCODE_BACK && !keyboardVisible && isPopupShowing()) {
                     if (keyEvent.getAction() == 1) {
-                        if (currentPopupContentType == 1 && botButtonsMessageObject != null) {
+                        /*if (currentPopupContentType == 1 && botButtonsMessageObject != null) {
                             SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("mainconfig", Activity.MODE_PRIVATE);
                             preferences.edit().putInt("hidekeyboard_" + dialog_id, botButtonsMessageObject.getId()).commit();
-                        }
+                        }*/
                         showPopup(0, 0);
                         removeGifFromInputField();
                     }
@@ -645,7 +642,7 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
                 if (innerTextChange != 2 && before != count && (count - before) > 1) {
                     processChange = true;
                 }
-                if (editingMessageObject == null && !canWriteToChannel && message.length() != 0 && lastTypingTimeSend < System.currentTimeMillis() - 5000 && !ignoreTextChange) {
+                if (/*editingMessageObject == null &&*/ !canWriteToChannel && message.length() != 0 && lastTypingTimeSend < System.currentTimeMillis() - 5000 && !ignoreTextChange) {
                     int currentTime = ConnectionsManager.getInstance().getCurrentTime();
                     TLRPC.User currentUser = null;
                     if ((int) dialog_id > 0) {
@@ -705,6 +702,7 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
             botButton.setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    /*
                     if (botReplyMarkup != null) {
                         if (!isPopupShowing() || currentPopupContentType != 1) {
                             showPopup(1, 1);
@@ -721,6 +719,7 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
                         setFieldText("/");
                         openKeyboard();
                     }
+                    */
                 }
             });
 
@@ -1278,6 +1277,7 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
         }
     }
 
+    /*
     public void setReplyingMessageObject(MessageObject messageObject) {
         if (messageObject != null) {
             if (botMessageObject == null && botButtonsMessageObject != replyingMessageObject) {
@@ -1293,6 +1293,7 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
             replyingMessageObject = messageObject;
         }
     }
+    */
 
     public void setWebPage(TLRPC.WebPage webPage, boolean searchWebPages) {
         messageWebPage = webPage;
@@ -1396,9 +1397,9 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
     }
 
     private void checkSendButton(boolean animated) {
-        if (editingMessageObject != null) {
+        /*if (editingMessageObject != null) {
             return;
-        }
+        }*/
         if (isPaused) {
             animated = false;
         }
@@ -1631,7 +1632,7 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
     }
 
     private void updateFieldRight(int attachVisible) {
-        if (messageEditText == null || editingMessageObject != null) {
+        if (messageEditText == null /*|| editingMessageObject != null*/) {
             return;
         }
         FrameLayout.LayoutParams layoutParams = (FrameLayout.LayoutParams) messageEditText.getLayoutParams();
@@ -1757,9 +1758,9 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
         if (longPress) {
             String text = messageEditText.getText().toString();
             TLRPC.User user = messageObject != null && (int) dialog_id < 0 ? MessagesController.getInstance().getUser(messageObject.messageOwner.from_id) : null;
-            if ((botCount != 1 || username) && user != null && user.bot && !command.contains("@")) {
+            /*if ((botCount != 1 || username) && user != null && user.bot && !command.contains("@")) {
                 text = String.format(Locale.US, "%s@%s", command, user.username) + " " + text.replaceFirst("^/[a-zA-Z@\\d_]{1,255}(\\s|$)", "");
-            } else {
+            } else */ {
                 text = command + " " + text.replaceFirst("^/[a-zA-Z@\\d_]{1,255}(\\s|$)", "");
             }
             ignoreTextChange = true;
@@ -1774,9 +1775,9 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
             }
         } else {
             TLRPC.User user = messageObject != null && (int) dialog_id < 0 ? MessagesController.getInstance().getUser(messageObject.messageOwner.from_id) : null;
-            if ((botCount != 1 || username) && user != null && user.bot && !command.contains("@")) {
+            /*if ((botCount != 1 || username) && user != null && user.bot && !command.contains("@")) {
                 SendMessagesHelper.getInstance().sendMessage(String.format(Locale.US, "%s@%s", command, user.username), dialog_id, null, null, false, null, null, null);
-            } else {
+            } else*/ {
                 SendMessagesHelper.getInstance().sendMessage(command, dialog_id, null, null, false, null, null, null);
             }
         }
@@ -1896,6 +1897,7 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
         }
     }
 
+    /*
     public void setFieldFocused() {
         if (messageEditText != null) {
             try {
@@ -1905,6 +1907,7 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
             }
         }
     }
+    */
 
     public void setFieldFocused(boolean focus) {
         if (messageEditText == null) {
@@ -1957,6 +1960,7 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
         attachButton.addView(view, LayoutHelper.createLinear(48, 48));
     }
 
+    /*
     private void updateBotButton() {
         if (botButton == null) {
             return;
@@ -2051,7 +2055,9 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
         }
         updateBotButton();
     }
+    */
 
+    /*
     public void didPressedBotButton(final TLRPC.KeyboardButton button, final MessageObject replyMessageObject, final MessageObject messageObject) {
         if (button == null || messageObject == null) {
             return;
@@ -2134,9 +2140,10 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
             parentFragment.presentFragment(fragment);
         }
     }
+    */
 
     public boolean isPopupView(View view) {
-        return view == botKeyboardView || view == emojiView;
+        return /*view == botKeyboardView ||*/ view == emojiView;
     }
 
     public boolean isRecordCircle(View view) {
@@ -2252,7 +2259,7 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
         emojiView.addRecentSticker(sticker);
     }
 
-    private void showPopup(int show, int contentType) {
+    private void showPopup(int show, int contentType /*0=emojiView, 1=botKeyboardView*/ ) {
         if (show == 1) {
             if (contentType == 0 && emojiView == null) {
                 if (parentActivity == null) {
@@ -2264,17 +2271,17 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
             View currentView = null;
             if (contentType == 0) {
                 emojiView.setVisibility(VISIBLE);
-                if (botKeyboardView != null && botKeyboardView.getVisibility() != GONE) {
+                /*if (botKeyboardView != null && botKeyboardView.getVisibility() != GONE) {
                     botKeyboardView.setVisibility(GONE);
-                }
+                }*/
                 currentView = emojiView;
-            } else if (contentType == 1) {
+            } /*else if (contentType == 1) {
                 if (emojiView != null && emojiView.getVisibility() != GONE) {
                     emojiView.setVisibility(GONE);
                 }
                 botKeyboardView.setVisibility(VISIBLE);
                 currentView = botKeyboardView;
-            }
+            } */
             currentPopupContentType = contentType;
 
             if (keyboardHeight <= 0) {
@@ -2284,12 +2291,12 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
                 keyboardHeightLand = ApplicationLoader.applicationContext.getSharedPreferences("emoji", Context.MODE_PRIVATE).getInt("kbd_height_land3", AndroidUtilities.dp(200));
             }
             int currentHeight = AndroidUtilities.displaySize.x > AndroidUtilities.displaySize.y ? keyboardHeightLand : keyboardHeight;
-            if (contentType == 1) {
+            /*if (contentType == 1) {
                 currentHeight = Math.min(botKeyboardView.getKeyboardHeight(), currentHeight);
             }
             if (botKeyboardView != null) {
                 botKeyboardView.setPanelHeight(currentHeight);
-            }
+            }*/
 
             FrameLayout.LayoutParams layoutParams = (FrameLayout.LayoutParams) currentView.getLayoutParams();
             layoutParams.width = AndroidUtilities.displaySize.x;
@@ -2304,7 +2311,7 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
                 } else if (contentType == 1) {
                     emojiButton.setImageResource(R.drawable.ic_msg_panel_smiles);
                 }
-                updateBotButton();
+                //updateBotButton();
                 onWindowSizeChanged();
             }
         } else {
@@ -2315,9 +2322,9 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
             if (emojiView != null) {
                 emojiView.setVisibility(GONE);
             }
-            if (botKeyboardView != null) {
+            /*if (botKeyboardView != null) {
                 botKeyboardView.setVisibility(GONE);
-            }
+            }*/
             if (sizeNotifierLayout != null) {
                 if (show == 0) {
                     emojiPadding = 0;
@@ -2325,16 +2332,16 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
                 sizeNotifierLayout.requestLayout();
                 onWindowSizeChanged();
             }
-            updateBotButton();
+            //updateBotButton();
         }
     }
 
     public void hidePopup(boolean byBackButton) {
         if (isPopupShowing()) {
-            if (currentPopupContentType == 1 && byBackButton && botButtonsMessageObject != null) {
+            /*if (currentPopupContentType == 1 && byBackButton && botButtonsMessageObject != null) {
                 SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("mainconfig", Activity.MODE_PRIVATE);
                 preferences.edit().putInt("hidekeyboard_" + dialog_id, botButtonsMessageObject.getId()).commit();
-            }
+            }*/
             showPopup(0, 0);
             removeGifFromInputField();
         }
@@ -2361,16 +2368,21 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
         }
     }
 
+
     public boolean isEditingMessage() {
-        return editingMessageObject != null;
+        return false;
+        //return editingMessageObject != null;
     }
 
+    /*
     public MessageObject getEditingMessageObject() {
         return editingMessageObject;
     }
+    */
 
     public boolean isEditingCaption() {
-        return editingCaption;
+        return false;
+        //return editingCaption;
     }
 
     public boolean hasAudioToSend() {
@@ -2386,7 +2398,7 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
     }
 
     public boolean isPopupShowing() {
-        return emojiView != null && emojiView.getVisibility() == VISIBLE || botKeyboardView != null && botKeyboardView.getVisibility() == VISIBLE;
+        return emojiView != null && emojiView.getVisibility() == VISIBLE /*|| botKeyboardView != null && botKeyboardView.getVisibility() == VISIBLE*/;
     }
 
     public boolean isKeyboardVisible() {
@@ -2414,19 +2426,19 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
 
         if (isPopupShowing()) {
             int newHeight = isWidthGreater ? keyboardHeightLand : keyboardHeight;
-            if (currentPopupContentType == 1 && !botKeyboardView.isFullSize()) {
+            /*if (currentPopupContentType == 1 && !botKeyboardView.isFullSize()) {
                 newHeight = Math.min(botKeyboardView.getKeyboardHeight(), newHeight);
-            }
+            }*/
 
             View currentView = null;
             if (currentPopupContentType == 0) {
                 currentView = emojiView;
-            } else if (currentPopupContentType == 1) {
+            } /*else if (currentPopupContentType == 1) {
                 currentView = botKeyboardView;
-            }
-            if (botKeyboardView != null) {
+            }*/
+            /*if (botKeyboardView != null) {
                 botKeyboardView.setPanelHeight(newHeight);
-            }
+            }*/
 
             FrameLayout.LayoutParams layoutParams = (FrameLayout.LayoutParams) currentView.getLayoutParams();
             if (layoutParams.width != AndroidUtilities.displaySize.x || layoutParams.height != newHeight) {
@@ -2482,9 +2494,9 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
             if (emojiView != null) {
                 emojiView.invalidateViews();
             }
-            if (botKeyboardView != null) {
+            /*if (botKeyboardView != null) {
                 botKeyboardView.invalidateViews();
-            }
+            }*/
         } else if (id == NotificationCenter.recordProgressChanged) {
             long t = (Long) args[0];
             Long time = t / 1000;
