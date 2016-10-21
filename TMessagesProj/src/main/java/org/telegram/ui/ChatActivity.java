@@ -332,7 +332,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
     private final static int copy = 10;
     private final static int forward = 11;
     private final static int delete = 12;
-    private final static int chat_enc_timer = 13;
+    //private final static int chat_enc_timer = 13;
     private final static int chat_menu_attach = 14;
     private final static int clear_history = 15;
     private final static int delete_chat = 16;
@@ -708,6 +708,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         if (AndroidUtilities.isTablet()) {
             NotificationCenter.getInstance().postNotificationName(NotificationCenter.openedChatChanged, dialog_id, true);
         }
+        /*
         if (currentEncryptedChat != null) {
             MediaController.getInstance().stopMediaObserver();
             try {
@@ -718,6 +719,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 FileLog.e("tmessages", e);
             }
         }
+        */
         /*
         if (currentUser != null) {
             MessagesController.getInstance().cancelLoadFullUser(currentUser.id);
@@ -833,11 +835,13 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     DialogsActivity fragment = new DialogsActivity(args);
                     fragment.setDelegate(ChatActivity.this);
                     presentFragment(fragment);
+                /*
                 } else if (id == chat_enc_timer) {
                     if (getParentActivity() == null) {
                         return;
                     }
                     showDialog(AndroidUtilities.buildTTLAlert(getParentActivity(), currentEncryptedChat).create());
+                */
                 } else if (id == clear_history || id == delete_chat) {
                     if (getParentActivity() == null) {
                         return;
@@ -1009,9 +1013,11 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         if (currentUser != null) {
             addContactItem = headerItem.addSubItem(share_contact, "", 0);
         }
+        /*
         if (currentEncryptedChat != null) {
             timeItem2 = headerItem.addSubItem(chat_enc_timer, LocaleController.getString("SetTimer", R.string.SetTimer), 0);
         }
+        */
         /* EDIT BY MR -- it's not yet clear if and how messages can be deleted and/or chats can be leaved; disable this for the moment
         if (!ChatObject.isChannel(currentChat)) {
             headerItem.addSubItem(clear_history, LocaleController.getString("ClearHistory", R.string.ClearHistory), 0);
@@ -2669,6 +2675,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         updateSpamView();
         updatePinnedMessageView(true);
 
+        /*
         try {
             if (currentEncryptedChat != null && Build.VERSION.SDK_INT >= 23) {
                 getParentActivity().getWindow().setFlags(WindowManager.LayoutParams.FLAG_SECURE, WindowManager.LayoutParams.FLAG_SECURE);
@@ -2676,6 +2683,8 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         } catch (Throwable e) {
             FileLog.e("tmessages", e);
         }
+        */
+
         fixLayoutInternal();
 
         return fragmentView;
@@ -3392,6 +3401,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     textToCheck = charSequence;
                 }
 
+                /*
                 if (currentEncryptedChat != null && MessagesController.getInstance().secretWebpagePreview == 2) {
                     AndroidUtilities.runOnUIThread(new Runnable() {
                         @Override
@@ -3417,6 +3427,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     });
                     return;
                 }
+                */
 
                 final TLRPC.TL_messages_getWebPagePreview req = new TLRPC.TL_messages_getWebPagePreview();
                 if (textToCheck instanceof String) {
@@ -3438,9 +3449,9 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                                             if (foundWebPage instanceof TLRPC.TL_webPagePending) {
                                                 pendingLinkSearchString = req.message;
                                             }
-                                            if (currentEncryptedChat != null && foundWebPage instanceof TLRPC.TL_webPagePending) {
+                                            /*if (currentEncryptedChat != null && foundWebPage instanceof TLRPC.TL_webPagePending) {
                                                 foundWebPage.url = req.message;
-                                            }
+                                            }*/
                                             showReplyPanel(true, null, null, foundWebPage, false, true);
                                         } else {
                                             if (foundWebPage != null) {
@@ -3748,13 +3759,13 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         chatListView.setEmptyView(null);
         for (int a = 0; a < 2; a++) {
             messagesDict[a].clear();
-            if (currentEncryptedChat == null) {
+            /*if (currentEncryptedChat == null)*/ {
                 maxMessageId[a] = Integer.MAX_VALUE;
                 minMessageId[a] = Integer.MIN_VALUE;
-            } else {
+            } /*else {
                 maxMessageId[a] = Integer.MIN_VALUE;
                 minMessageId[a] = Integer.MAX_VALUE;
-            }
+            }*/
             maxDate[a] = Integer.MIN_VALUE;
             minDate[a] = 0;
             endReached[a] = false;
@@ -7115,7 +7126,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         showDialog(builder.create());
     }
 
-    private void createMenu(View v, boolean single) {
+    private void createMenu(View v, boolean single) { // single=false: long click
         if (actionBar.isActionModeShowed()) {
             return;
         }
@@ -7129,7 +7140,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         if (message == null) {
             return;
         }
-        final int type = getMessageType(message);
+        final int type = getMessageType(message); // 3=normal text message
         if (single && message.messageOwner.action instanceof TLRPC.TL_messageActionPinMessage) {
             scrollToMessageId(message.messageOwner.reply_to_msg_id, 0, true, 0);
             return;
@@ -7206,7 +7217,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     items.add(LocaleController.getString("Delete", R.string.Delete));
                     options.add(1);
                 } else {
-                    if (currentEncryptedChat == null) {
+                    /*if (currentEncryptedChat == null)*/ {
                         if (allowChatActions) {
                             items.add(LocaleController.getString("Reply", R.string.Reply));
                             options.add(8);
@@ -7291,7 +7302,8 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                             items.add(LocaleController.getString("Delete", R.string.Delete));
                             options.add(1);
                         }
-                    } else {
+
+                    } /*else {
                         if (allowChatActions) {
                             items.add(LocaleController.getString("Reply", R.string.Reply));
                             options.add(8);
@@ -7329,6 +7341,13 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                         }
                         items.add(LocaleController.getString("Delete", R.string.Delete));
                         options.add(1);
+                    } */
+
+                    if( type == 3 ) {
+                        // EDIT BY MR: type=3 is a normal message; we do not want a menu on a single click here:
+                        // this distubs and the approach does not work for images (they're enlarged on single clicks).
+                        // So, it is better to force learning the user to do a long click, which works for all message types equally.
+                        options.clear();
                     }
                 }
 
@@ -7352,6 +7371,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
             return;
         }
 
+        // handle long clicks
         final ActionBarMenu actionMode = actionBar.createActionMode();
         View item = actionMode.getItem(forward);
         if (item != null) {
