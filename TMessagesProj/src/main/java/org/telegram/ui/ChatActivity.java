@@ -165,9 +165,9 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
     private ActionBarMenuItem attachItem;
     private ActionBarMenuItem headerItem;
     private ActionBarMenuItem searchItem;
-    private ActionBarMenuItem editDoneItem;
-    private ContextProgressView editDoneItemProgress;
-    private AnimatorSet editDoneItemAnimation;
+    //private ActionBarMenuItem editDoneItem;
+    //private ContextProgressView editDoneItemProgress;
+    //private AnimatorSet editDoneItemAnimation;
     private TextView addContactItem;
     private RecyclerListView chatListView;
     private LinearLayoutManager chatLayoutManager;
@@ -1120,23 +1120,23 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         actionModeSubTextView.setTextColor(Theme.ACTION_BAR_ACTION_MODE_TEXT_COLOR);
         actionModeTitleContainer.addView(actionModeSubTextView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.MATCH_PARENT));
 
-        if (currentEncryptedChat == null) {
-            if (!isBroadcast) {
-                actionModeViews.add(actionMode.addItem(reply, R.drawable.ic_ab_reply, Theme.ACTION_BAR_MODE_SELECTOR_COLOR, null, AndroidUtilities.dp(54)));
-            }
+        /*if (currentEncryptedChat == null) {*/
+            //if (!isBroadcast) {
+            actionModeViews.add(actionMode.addItem(reply, R.drawable.ic_ab_reply, Theme.ACTION_BAR_MODE_SELECTOR_COLOR, null, AndroidUtilities.dp(54)));
+            //}
             actionModeViews.add(actionMode.addItem(copy, R.drawable.ic_ab_fwd_copy, Theme.ACTION_BAR_MODE_SELECTOR_COLOR, null, AndroidUtilities.dp(54)));
-            actionModeViews.add(actionMode.addItem(forward, R.drawable.ic_ab_fwd_forward, Theme.ACTION_BAR_MODE_SELECTOR_COLOR, null, AndroidUtilities.dp(54)));
             actionModeViews.add(actionMode.addItem(delete, R.drawable.ic_ab_fwd_delete, Theme.ACTION_BAR_MODE_SELECTOR_COLOR, null, AndroidUtilities.dp(54)));
-            actionModeViews.add(editDoneItem = actionMode.addItem(edit_done, R.drawable.check_blue, Theme.ACTION_BAR_MODE_SELECTOR_COLOR, null, AndroidUtilities.dp(54)));
-            editDoneItem.setVisibility(View.GONE);
-            editDoneItemProgress = new ContextProgressView(context);
-            editDoneItem.addView(editDoneItemProgress, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.MATCH_PARENT));
-            editDoneItemProgress.setVisibility(View.INVISIBLE);
-        } else {
+            actionModeViews.add(actionMode.addItem(forward, R.drawable.ic_ab_fwd_forward, Theme.ACTION_BAR_MODE_SELECTOR_COLOR, null, AndroidUtilities.dp(54)));
+            //actionModeViews.add(editDoneItem = actionMode.addItem(edit_done, R.drawable.check_blue, Theme.ACTION_BAR_MODE_SELECTOR_COLOR, null, AndroidUtilities.dp(54)));
+            //editDoneItem.setVisibility(View.GONE);
+            //editDoneItemProgress = new ContextProgressView(context);
+            //editDoneItem.addView(editDoneItemProgress, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.MATCH_PARENT));
+            //editDoneItemProgress.setVisibility(View.INVISIBLE);
+        /*} else {
             actionModeViews.add(actionMode.addItem(reply, R.drawable.ic_ab_reply, Theme.ACTION_BAR_MODE_SELECTOR_COLOR, null, AndroidUtilities.dp(54)));
             actionModeViews.add(actionMode.addItem(copy, R.drawable.ic_ab_fwd_copy, Theme.ACTION_BAR_MODE_SELECTOR_COLOR, null, AndroidUtilities.dp(54)));
             actionModeViews.add(actionMode.addItem(delete, R.drawable.ic_ab_fwd_delete, Theme.ACTION_BAR_MODE_SELECTOR_COLOR, null, AndroidUtilities.dp(54)));
-        }
+        }*/
         actionMode.getItem(copy).setVisibility(selectedMessagesCanCopyIds[0].size() + selectedMessagesCanCopyIds[1].size() != 0 ? View.VISIBLE : View.GONE);
         actionMode.getItem(delete).setVisibility(cantDeleteMessagesCount == 0 ? View.VISIBLE : View.GONE);
         checkActionBarMenu();
@@ -7381,9 +7381,9 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         if (item != null) {
             item.setVisibility(View.VISIBLE);
         }
-        if (editDoneItem != null) {
-            editDoneItem.setVisibility(View.GONE);
-        }
+        //if (editDoneItem != null) {
+        //    editDoneItem.setVisibility(View.GONE);
+        //}
 
         actionBar.showActionMode();
         updatePinnedMessageView(true);
@@ -7404,6 +7404,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         updateVisibleRows();
     }
 
+    /*
     private void showEditDoneProgress(final boolean show, boolean animated) {
         if (editDoneItemAnimation != null) {
             editDoneItemAnimation.cancel();
@@ -7477,6 +7478,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
             editDoneItemAnimation.start();
         }
     }
+    */
 
     private String getMessageContent(MessageObject messageObject, int previousUid, boolean name) {
         String str = "";
@@ -7938,6 +7940,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         }
     }
 
+    /*
     private void checkEditTimer() {
         if (chatActivityEnterView == null) {
             return;
@@ -7965,10 +7968,11 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 }
             }, 1000);
         } else {
-            editDoneItem.setVisibility(View.GONE);
+            //editDoneItem.setVisibility(View.GONE);
             actionModeSubTextView.setText(LocaleController.formatString("TimeToEditExpired", R.string.TimeToEditExpired));
         }
     }
+    */
 
     private ArrayList<MessageObject> createVoiceMessagesPlaylist(MessageObject startMessageObject, boolean playingUnreadMedia) {
         ArrayList<MessageObject> messageObjects = new ArrayList<>();
