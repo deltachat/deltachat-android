@@ -2276,7 +2276,10 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         chatActivityEnterView.addToAttachLayout(menuItem);
         chatActivityEnterView.setId(id_chat_compose_panel);
         //chatActivityEnterView.setBotsCount(botsCount, hasBotsCommands);
-        chatActivityEnterView.setAllowStickersAndGifs(currentEncryptedChat == null || AndroidUtilities.getPeerLayerVersion(currentEncryptedChat.layer) >= 23, currentEncryptedChat == null || AndroidUtilities.getPeerLayerVersion(currentEncryptedChat.layer) >= 46);
+
+        //chatActivityEnterView.setAllowStickersAndGifs(currentEncryptedChat == null || AndroidUtilities.getPeerLayerVersion(currentEncryptedChat.layer) >= 23, currentEncryptedChat == null || AndroidUtilities.getPeerLayerVersion(currentEncryptedChat.layer) >= 46);
+        chatActivityEnterView.setAllowStickersAndGifs(false, false); // for the moment, LibreChat has no stickers
+
         contentView.addView(chatActivityEnterView, contentView.getChildCount() - 1, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.LEFT | Gravity.BOTTOM));
         chatActivityEnterView.setDelegate(new ChatActivityEnterView.ChatActivityEnterViewDelegate() {
             @Override
@@ -5867,12 +5870,12 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
             if (avatarContainer != null) {
                 avatarContainer.updateSubtitle();
             }
-        } else if (id == NotificationCenter.encryptedChatUpdated) {
+        /*} else if (id == NotificationCenter.encryptedChatUpdated) {
             TLRPC.EncryptedChat chat = (TLRPC.EncryptedChat) args[0];
             if (currentEncryptedChat != null && chat.id == currentEncryptedChat.id) {
                 currentEncryptedChat = chat;
                 updateContactStatus();
-                //updateSecretStatus(); -- EDIT BY MR
+                updateSecretStatus();
                 initStickers();
                 if (chatActivityEnterView != null) {
                     chatActivityEnterView.setAllowStickersAndGifs(currentEncryptedChat == null || AndroidUtilities.getPeerLayerVersion(currentEncryptedChat.layer) >= 23, currentEncryptedChat == null || AndroidUtilities.getPeerLayerVersion(currentEncryptedChat.layer) >= 46);
@@ -5896,7 +5899,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     }
                 }
                 updateVisibleRows();
-            }
+            }*/
         } else if (id == NotificationCenter.audioDidReset || id == NotificationCenter.audioPlayStateChanged) {
             if (chatListView != null) {
                 int count = chatListView.getChildCount();

@@ -16,7 +16,7 @@ public class NotificationCenter {
 
     private static int totalEvents = 1;
 
-    public static final int didReceivedNewMessages = totalEvents++;
+    public static final int didReceivedNewMessages = totalEvents++; // I'm not sure if Telegram uses the resulting codes here and there, so better leave the values alone
     public static final int updateInterfaces = totalEvents++;
     public static final int dialogsNeedReload = totalEvents++;
     public static final int closeChats = totalEvents++;
