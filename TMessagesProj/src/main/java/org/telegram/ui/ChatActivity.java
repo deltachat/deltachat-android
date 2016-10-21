@@ -735,9 +735,9 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         if (messageObject != null && !messageObject.isMusic()) {
             MediaController.getInstance().stopAudio();
         }*/
-        if (ChatObject.isChannel(currentChat)) {
+        /*if (ChatObject.isChannel(currentChat)) {
             MessagesController.getInstance().startShortPoll(currentChat.id, true);
-        }
+        }*/
     }
 
     @Override
@@ -6300,12 +6300,12 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         }
     }
 
-    private void updateBottomOverlay() {
+    private void updateBottomOverlay() { // the bottom overlay is also used for going through search results
         if (bottomOverlayChatText == null) {
             return;
         }
         if (currentChat != null) {
-            if (ChatObject.isChannel(currentChat) && !(currentChat instanceof TLRPC.TL_channelForbidden)) {
+            /*if (ChatObject.isChannel(currentChat) && !(currentChat instanceof TLRPC.TL_channelForbidden)) {
                 if (ChatObject.isNotInChat(currentChat)) {
                     bottomOverlayChatText.setText(LocaleController.getString("ChannelJoin", R.string.ChannelJoin));
                 } else {
@@ -6315,7 +6315,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                         bottomOverlayChatText.setText(LocaleController.getString("ChannelUnmute", R.string.ChannelUnmute));
                     }
                 }
-            } else {
+            } else*/ {
                 bottomOverlayChatText.setText(LocaleController.getString("DeleteThisGroup", R.string.DeleteThisGroup));
             }
         } else {

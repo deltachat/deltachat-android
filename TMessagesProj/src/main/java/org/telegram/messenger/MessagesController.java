@@ -4777,6 +4777,7 @@ public class MessagesController implements NotificationCenter.NotificationCenter
         });
     }
 
+    /*
     public void startShortPoll(final int channelId, final boolean stop) {
         Utilities.stageQueue.postRunnable(new Runnable() {
             @Override
@@ -4792,6 +4793,7 @@ public class MessagesController implements NotificationCenter.NotificationCenter
             }
         });
     }
+    */
 
     private void getChannelDifference(final int channelId) {
         getChannelDifference(channelId, 0, 0);
