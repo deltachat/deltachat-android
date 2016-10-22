@@ -917,7 +917,6 @@
     <string name="MemberSg">_ Mitglied</string>
     <string name="MemberPl">_ Mitglieder</string>
     <string name="Strangers">Unbekannte Benutzer</string>
-    <string name="StrangersExplain">Nachrichten von unbekannten Benutzern anzeigen</string>
     <string name="Media">Medien</string>
     <string name="StrangersInChatlist">Unbekannte Benutzer in Chatliste </string>
 </resources>

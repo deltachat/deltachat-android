@@ -917,7 +917,6 @@
     <string name="ContactSg">_ contact</string>
     <string name="ContactPl">_ contacts</string>
     <string name="Strangers">Unknown users</string>
-    <string name="StrangersExplain">Show messages from unknown useres</string>
     <string name="Media">Media</string>
     <string name="StrangersInChatlist">Show unknown users in chatlist</string>
 </resources>

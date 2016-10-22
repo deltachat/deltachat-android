@@ -1637,7 +1637,6 @@ LOCAL_SRC_FILES     += \
 ./image.c \
 ./video.c \
 ./gifvideo.cpp \
-./SqliteWrapper.cpp \
 ./TgNetWrapper.cpp \
 ../../../messenger-backend/src/mrchat.c \
 ../../../messenger-backend/src/mrchatlist.c \
