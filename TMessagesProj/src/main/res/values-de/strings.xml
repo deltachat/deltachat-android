@@ -919,4 +919,5 @@
     <string name="Strangers">Unbekannte Benutzer</string>
     <string name="Media">Medien</string>
     <string name="StrangersInChatlist">Unbekannte Benutzer in Chatliste </string>
+    <string name="MuteAlways">Dauerhaft stumm</string>
 </resources>

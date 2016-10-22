@@ -1838,7 +1838,10 @@ public class NotificationsController {
     }
 
     public static void updateServerNotificationsSettings(long dialog_id) {
+        // the following command is needed to reflect the changes in the GUI
         NotificationCenter.getInstance().postNotificationName(NotificationCenter.notificationsSettingsUpdated);
+
+        /*
         if ((int) dialog_id == 0) {
             return;
         }
@@ -1862,5 +1865,6 @@ public class NotificationsController {
 
             }
         });
+        */
     }
 }

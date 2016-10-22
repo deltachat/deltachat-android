@@ -10,6 +10,7 @@ package org.telegram.ui;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -232,6 +233,12 @@ public class PrivacySettingsActivity extends BaseFragment implements Notificatio
                     if (view instanceof TextCheckCell) {
                         ((TextCheckCell) view).setChecked(oldval == 0);
                     }
+
+                    // if showing strangers is disabled, also disable notifications for this chat (cannot be displayed otherwise)
+                    SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("Notifications", Activity.MODE_PRIVATE);
+                    SharedPreferences.Editor editor = preferences.edit();
+                    editor.putInt("notify2_" + MrMailbox.MR_CHAT_ID_STRANGERS, oldval==1? 2 /*always muted*/ : 0);
+                    editor.commit();
                 }
             }
         });

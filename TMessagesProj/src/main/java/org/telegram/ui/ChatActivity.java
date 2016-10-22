@@ -187,6 +187,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
     private StickersAdapter stickersAdapter;
     private FrameLayout stickersPanel;
     private TextView muteItem;
+    private boolean m_canMute;
     private FrameLayout pagedownButton;
     private boolean pagedownButtonShowedByScroll;
     private TextView pagedownButtonCounter;
@@ -1026,7 +1027,18 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
             }
         }
         */
-        muteItem = headerItem.addSubItem(mute, null, 0);
+
+        m_canMute = true;
+        if( MrMailbox.MrChatGetId(m_hChat)==MrMailbox.MR_CHAT_ID_STRANGERS
+                && MrMailbox.MrMailboxGetConfigInt(MrMailbox.hMailbox, "show_strangers", 0)==0 ) {
+            m_canMute = false;
+        }
+
+        if( m_canMute ) {
+            muteItem = headerItem.addSubItem(mute, null, 0);
+        }
+
+
         /*
         if (currentUser != null && currentEncryptedChat == null && currentUser.bot) {
             headerItem.addSubItem(bot_settings, LocaleController.getString("BotSettings", R.string.BotSettings), 0);
@@ -3835,7 +3847,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     LocaleController.formatString("MuteFor", R.string.MuteFor, LocaleController.formatPluralString("Hours", 1)),
                     LocaleController.formatString("MuteFor", R.string.MuteFor, LocaleController.formatPluralString("Hours", 8)),
                     LocaleController.formatString("MuteFor", R.string.MuteFor, LocaleController.formatPluralString("Days", 2)),
-                    LocaleController.getString("MuteDisable", R.string.MuteDisable)
+                    LocaleController.getString("MuteAlways", R.string.MuteAlways)
             };
             builder.setItems(items, new DialogInterface.OnClickListener() {
                         @Override
@@ -3848,23 +3860,20 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
 
                             SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("Notifications", Activity.MODE_PRIVATE);
                             SharedPreferences.Editor editor = preferences.edit();
-                            //long flags;
                             if (i == 3) {
                                 editor.putInt("notify2_" + dialog_id, 2);
-                                //flags = 1;
                             } else {
                                 editor.putInt("notify2_" + dialog_id, 3);
                                 editor.putInt("notifyuntil_" + dialog_id, untilTime);
-                                //flags = ((long) untilTime << 32) | 1;
                             }
-                            NotificationsController.getInstance().removeNotificationsForDialog(dialog_id);
-                            //MessagesStorage.getInstance().setDialogFlags(dialog_id, flags);
                             editor.commit();
+                            /*NotificationsController.getInstance().removeNotificationsForDialog(dialog_id);
                             TLRPC.TL_dialog dialog = MessagesController.getInstance().dialogs_dict.get(dialog_id);
                             if (dialog != null) {
                                 dialog.notify_settings = new TLRPC.TL_peerNotifySettings();
                                 dialog.notify_settings.mute_until = untilTime;
                             }
+                            */
                             NotificationsController.updateServerNotificationsSettings(dialog_id);
                         }
                     }
@@ -3875,12 +3884,12 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
             SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("Notifications", Activity.MODE_PRIVATE);
             SharedPreferences.Editor editor = preferences.edit();
             editor.putInt("notify2_" + dialog_id, 0);
-            //MessagesStorage.getInstance().setDialogFlags(dialog_id, 0);
             editor.commit();
-            TLRPC.TL_dialog dialog = MessagesController.getInstance().dialogs_dict.get(dialog_id);
+            /*TLRPC.TL_dialog dialog = MessagesController.getInstance().dialogs_dict.get(dialog_id);
             if (dialog != null) {
                 dialog.notify_settings = new TLRPC.TL_peerNotifySettings();
             }
+            */
             NotificationsController.updateServerNotificationsSettings(dialog_id);
         }
     }
@@ -4400,12 +4409,19 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         if (avatarContainer == null) {
             return;
         }
-        int rightIcon = MessagesController.getInstance().isDialogMuted(dialog_id) ? R.drawable.mute_fixed : 0;
+
+        int rightIcon = 0;
+        if( m_canMute && MessagesController.getInstance().isDialogMuted(dialog_id) ) {
+            rightIcon = R.drawable.mute_fixed;
+        }
+
         avatarContainer.setTitleIcons(currentEncryptedChat != null ? R.drawable.ic_lock_header : 0, rightIcon);
-        if (rightIcon != 0) {
-            muteItem.setText(LocaleController.getString("UnmuteNotifications", R.string.UnmuteNotifications));
-        } else {
-            muteItem.setText(LocaleController.getString("MuteNotifications", R.string.MuteNotifications));
+        if( muteItem != null ) {
+            if (rightIcon != 0) {
+                muteItem.setText(LocaleController.getString("UnmuteNotifications", R.string.UnmuteNotifications));
+            } else {
+                muteItem.setText(LocaleController.getString("MuteNotifications", R.string.MuteNotifications));
+            }
         }
     }
 
@@ -6399,7 +6415,9 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
             if (currentChat != null && (ChatObject.isNotInChat(currentChat) || !ChatObject.canWriteToChat(currentChat)) ||
                     currentUser != null && (UserObject.isDeleted(currentUser) || userBlocked)) {
                 bottomOverlayChat.setVisibility(View.VISIBLE);
-                muteItem.setVisibility(View.GONE);
+                if (muteItem!=null){
+                    muteItem.setVisibility(View.GONE);
+                }
                 chatActivityEnterView.setFieldFocused(false);
                 chatActivityEnterView.setVisibility(View.INVISIBLE);
             } else {
@@ -6410,7 +6428,9 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     chatActivityEnterView.setVisibility(View.VISIBLE);
                     bottomOverlayChat.setVisibility(View.INVISIBLE);
                 }
-                muteItem.setVisibility(View.VISIBLE);
+                if(muteItem!=null) {
+                    muteItem.setVisibility(View.VISIBLE);
+                }
             }
         }
         checkRaiseSensors();

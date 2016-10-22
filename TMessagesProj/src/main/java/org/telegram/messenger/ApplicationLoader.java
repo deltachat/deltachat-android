@@ -264,6 +264,13 @@ public class ApplicationLoader extends Application {
         SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("Notifications", Activity.MODE_PRIVATE);
         boolean enablePushConnection = preferences.getBoolean("pushConnection", true);
 
+        if( preferences.getInt("notify2_"+MrMailbox.MR_CHAT_ID_STRANGERS, 666)==666 ) {
+            // make sure, the notifications for the "strangers" dialog are muted by default
+            SharedPreferences.Editor editor = preferences.edit();
+            editor.putInt("notify2_"+MrMailbox.MR_CHAT_ID_STRANGERS, 2);
+            editor.commit();
+        }
+
         MessagesController.getInstance();
         ConnectionsManager.getInstance().init(BuildVars.BUILD_VERSION, TLRPC.LAYER, BuildVars.APP_ID, deviceModel, systemVersion, appVersion, langCode, configPath, FileLog.getNetworkLogPath(), UserConfig.getClientUserId(), enablePushConnection);
         if (UserConfig.getCurrentUser() != null) {

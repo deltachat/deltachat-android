@@ -57,7 +57,7 @@
     <string name="MuteFor">Mute for %1$s</string>
     <string name="UnmuteNotifications">Unmute</string>
     <string name="WillUnmuteIn">In %1$s</string>
-    <string name="MuteDisable">Disable</string>
+    <string name="MuteDisable">Always muted</string>
     <string name="Hashtags">HASHTAGS</string>
     <string name="Recent">RECENT</string>
     <string name="ChatHints">CHATS</string>
@@ -919,4 +919,5 @@
     <string name="Strangers">Unknown users</string>
     <string name="Media">Media</string>
     <string name="StrangersInChatlist">Show unknown users in chatlist</string>
+    <string name="MuteAlways">Always muted</string>
 </resources>
