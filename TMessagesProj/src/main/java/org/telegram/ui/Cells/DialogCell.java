@@ -497,7 +497,13 @@ public class DialogCell extends BaseCell {
                     messageString = mess;
                 }
 
-                timeString = LocaleController.stringForMessageListDate(MrMailbox.MrPoortextGetTimestamp(hPoortext));
+                long timestmp = MrMailbox.MrPoortextGetTimestamp(hPoortext);
+                if( timestmp!=0 ) {
+                    timeString = LocaleController.stringForMessageListDate(timestmp);
+                }
+                else {
+                    timeString = "";
+                }
 
                 drawCheck1 = false;
                 drawCheck2 = false;

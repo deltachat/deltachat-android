@@ -920,4 +920,6 @@
     <string name="Media">Medien</string>
     <string name="StrangersInChatlist">Unbekannte Benutzer in Chatliste </string>
     <string name="MuteAlways">Dauerhaft stumm</string>
+    <string name="AskStartChatWith">Chat mit <![CDATA[<b>]]>%1$s<![CDATA[</b>]]> starten?</string>
+    <string name="StrangersHint">Ein Klick auf die Antwort-Pfeile statet einen Chat.</string>
 </resources>

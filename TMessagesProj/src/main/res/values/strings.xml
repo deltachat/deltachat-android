@@ -920,4 +920,7 @@
     <string name="Media">Media</string>
     <string name="StrangersInChatlist">Show unknown users in chatlist</string>
     <string name="MuteAlways">Always muted</string>
+    <string name="AskCreateChatByStrangersMsg">Start a chat with the unknown user NAME?</string>
+    <string name="AskStartChatWith">Start a chat with <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>?</string>
+    <string name="StrangersHint">To start a chat, click on the reply-arrows.</string>
 </resources>
