@@ -6411,7 +6411,11 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 chatActivityEnterView.setVisibility(View.INVISIBLE);
             } else {
                 if (MrMailbox.MrChatGetId(m_hChat)==MrMailbox.MR_CHAT_ID_STRANGERS) {
-                    bottomOverlayChatText.setText(LocaleController.getString("StrangersHint", R.string.StrangersHint));
+                    if( messages.isEmpty()) {
+                        bottomOverlayChatText.setText(LocaleController.getString("NoMessages", R.string.NoMessages));
+                    } else {
+                        bottomOverlayChatText.setText(LocaleController.getString("StrangersHint", R.string.StrangersHint));
+                    }
                     bottomOverlayChat.setVisibility(View.VISIBLE);
                     chatActivityEnterView.setVisibility(View.INVISIBLE);
                 } else {
