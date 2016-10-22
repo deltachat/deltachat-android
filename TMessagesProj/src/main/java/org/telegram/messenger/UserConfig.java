@@ -162,9 +162,9 @@ public class UserConfig {
                     if (ver == 1) {
                         int constructor = data.readInt32(false);
                         currentUser = TLRPC.User.TLdeserialize(data, constructor, false);
-                        MessagesStorage.lastDateValue = data.readInt32(false);
-                        MessagesStorage.lastPtsValue = data.readInt32(false);
-                        MessagesStorage.lastSeqValue = data.readInt32(false);
+                        //MessagesStorage.lastDateValue = data.readInt32(false);
+                        //MessagesStorage.lastPtsValue = data.readInt32(false);
+                        //MessagesStorage.lastSeqValue = data.readInt32(false);
                         registeredForPush = data.readBool(false);
                         pushString = data.readString(false);
                         lastSendMessageId = data.readInt32(false);
@@ -172,13 +172,13 @@ public class UserConfig {
                         contactsHash = data.readString(false);
                         data.readString(false);
                         saveIncomingPhotos = data.readBool(false);
-                        MessagesStorage.lastQtsValue = data.readInt32(false);
-                        MessagesStorage.lastSecretVersion = data.readInt32(false);
+                        //MessagesStorage.lastQtsValue = data.readInt32(false);
+                        //MessagesStorage.lastSecretVersion = data.readInt32(false);
                         int val = data.readInt32(false);
-                        if (val == 1) {
-                            MessagesStorage.secretPBytes = data.readByteArray(false);
-                        }
-                        MessagesStorage.secretG = data.readInt32(false);
+                        //if (val == 1) {
+                        //    MessagesStorage.secretPBytes = data.readByteArray(false);
+                        //}
+                        //MessagesStorage.secretG = data.readInt32(false);
                         Utilities.stageQueue.postRunnable(new Runnable() {
                             @Override
                             public void run() {

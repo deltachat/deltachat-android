@@ -25,7 +25,6 @@ import org.telegram.messenger.ApplicationLoader;
 import org.telegram.messenger.LocaleController;
 import org.telegram.messenger.MessageObject;
 import org.telegram.messenger.MessagesController;
-import org.telegram.messenger.MessagesStorage;
 import org.telegram.messenger.R;
 import org.telegram.messenger.SendMessagesHelper;
 import org.telegram.messenger.UserObject;
@@ -300,7 +299,7 @@ public class MentionsAdapter extends BaseSearchAdapterRecycler {
                                             TLRPC.User user = res.users.get(0);
                                             if (user.bot && user.bot_inline_placeholder != null) {
                                                 MessagesController.getInstance().putUser(user, false);
-                                                MessagesStorage.getInstance().putUsersAndChats(res.users, null, true, true);
+                                                //MessagesStorage.getInstance().putUsersAndChats(res.users, null, true, true);
                                                 foundContextBot = user;
                                                 if (foundContextBot.bot_inline_geo) {
                                                     SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("Notifications", Activity.MODE_PRIVATE);

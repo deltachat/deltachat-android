@@ -10,15 +10,12 @@ package org.telegram.messenger.query;
 
 import android.text.TextUtils;
 
-import org.telegram.SQLite.SQLiteCursor;
-import org.telegram.SQLite.SQLiteDatabase;
-import org.telegram.SQLite.SQLitePreparedStatement;
+
 import org.telegram.messenger.AndroidUtilities;
 import org.telegram.messenger.ChatObject;
 import org.telegram.messenger.ImageLoader;
 import org.telegram.messenger.MessageObject;
 import org.telegram.messenger.MessagesController;
-import org.telegram.messenger.MessagesStorage;
 import org.telegram.messenger.NotificationCenter;
 import org.telegram.messenger.FileLog;
 import org.telegram.tgnet.ConnectionsManager;
@@ -117,7 +114,7 @@ public class SharedMediaQuery {
                 public void run(TLObject response, TLRPC.TL_error error) {
                     if (error == null) {
                         final TLRPC.messages_Messages res = (TLRPC.messages_Messages) response;
-                        MessagesStorage.getInstance().putUsersAndChats(res.users, res.chats, true, true);
+                        //MessagesStorage.getInstance().putUsersAndChats(res.users, res.chats, true, true);
                         int count;
                         if (res instanceof TLRPC.TL_messages_messages) {
                             count = res.messages.size();
@@ -193,7 +190,7 @@ public class SharedMediaQuery {
         } else {
             if (!fromCache) {
                 ImageLoader.saveMessagesThumbs(res.messages);
-                MessagesStorage.getInstance().putUsersAndChats(res.users, res.chats, true, true);
+                //MessagesStorage.getInstance().putUsersAndChats(res.users, res.chats, true, true);
                 putMediaDatabase(uid, type, res.messages, max_id, topReached);
             }
 
@@ -238,6 +235,7 @@ public class SharedMediaQuery {
     }
 
     private static void putMediaCountDatabase(final long uid, final int type, final int count) {
+        /*
         MessagesStorage.getInstance().getStorageQueue().postRunnable(new Runnable() {
             @Override
             public void run() {
@@ -254,9 +252,11 @@ public class SharedMediaQuery {
                 }
             }
         });
+        */
     }
 
     private static void getMediaCountDatabase(final long uid, final int type, final int classGuid) {
+        /*
         MessagesStorage.getInstance().getStorageQueue().postRunnable(new Runnable() {
             @Override
             public void run() {
@@ -285,9 +285,11 @@ public class SharedMediaQuery {
                 }
             }
         });
+        */
     }
 
     private static void loadMediaDatabase(final long uid, final int offset, final int count, final int max_id, final int type, final int classGuid, final boolean isChannel) {
+        /*
         MessagesStorage.getInstance().getStorageQueue().postRunnable(new Runnable() {
             @Override
             public void run() {
@@ -399,10 +401,10 @@ public class SharedMediaQuery {
                     cursor.dispose();
 
                     if (!usersToLoad.isEmpty()) {
-                        MessagesStorage.getInstance().getUsersInternal(TextUtils.join(",", usersToLoad), res.users);
+                        //MessagesStorage.getInstance().getUsersInternal(TextUtils.join(",", usersToLoad), res.users);
                     }
                     if (!chatsToLoad.isEmpty()) {
-                        MessagesStorage.getInstance().getChatsInternal(TextUtils.join(",", chatsToLoad), res.chats);
+                        //MessagesStorage.getInstance().getChatsInternal(TextUtils.join(",", chatsToLoad), res.chats);
                     }
                     if (res.messages.size() > count) {
                         topReached = false;
@@ -420,9 +422,11 @@ public class SharedMediaQuery {
                 }
             }
         });
+        */
     }
 
     private static void putMediaDatabase(final long uid, final int type, final ArrayList<TLRPC.Message> messages, final int max_id, final boolean topReached) {
+        /*
         MessagesStorage.getInstance().getStorageQueue().postRunnable(new Runnable() {
             @Override
             public void run() {
@@ -470,9 +474,11 @@ public class SharedMediaQuery {
                 }
             }
         });
+        */
     }
 
     public static void loadMusic(final long uid, final int max_id) {
+        /*
         MessagesStorage.getInstance().getStorageQueue().postRunnable(new Runnable() {
             @Override
             public void run() {
@@ -504,5 +510,6 @@ public class SharedMediaQuery {
                 });
             }
         });
+        */
     }
 }

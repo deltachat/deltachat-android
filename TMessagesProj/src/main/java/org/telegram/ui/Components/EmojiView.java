@@ -46,7 +46,6 @@ import org.telegram.messenger.Emoji;
 import org.telegram.messenger.EmojiData;
 import org.telegram.messenger.LocaleController;
 import org.telegram.messenger.MediaController;
-import org.telegram.messenger.MessagesStorage;
 import org.telegram.messenger.NotificationCenter;
 import org.telegram.messenger.Utilities;
 import org.telegram.messenger.query.StickersQuery;
@@ -722,7 +721,7 @@ public class EmojiView extends FrameLayout implements NotificationCenter.Notific
 
                                     }
                                 });
-                                MessagesStorage.getInstance().removeWebRecent(searchImage);
+                                //MessagesStorage.getInstance().removeWebRecent(searchImage);
                                 if (gifsAdapter != null) {
                                     gifsAdapter.notifyDataSetChanged();
                                 }
@@ -1497,7 +1496,7 @@ public class EmojiView extends FrameLayout implements NotificationCenter.Notific
 
     public void loadGifRecent() {
         if (showGifs && gifsAdapter != null && !loadingRecent) {
-            MessagesStorage.getInstance().loadWebRecent(2);
+            //MessagesStorage.getInstance().loadWebRecent(2);
             loadingRecent = true;
         }
     }
@@ -1577,7 +1576,7 @@ public class EmojiView extends FrameLayout implements NotificationCenter.Notific
                         searchImage.date = size - a;
                         searchImage.id = "" + searchImage.document.id;
                         arrayList.add(searchImage);
-                        MessagesStorage.getInstance().putWebRecent(arrayList);
+                        //MessagesStorage.getInstance().putWebRecent(arrayList);
                     }
                 }
                 final ArrayList<MediaController.SearchImage> arrayListFinal = arrayList;

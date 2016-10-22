@@ -31,7 +31,6 @@ import android.widget.ListView;
 import org.telegram.messenger.AndroidUtilities;
 import org.telegram.messenger.ChatObject;
 import org.telegram.messenger.LocaleController;
-import org.telegram.messenger.MessagesStorage;
 import org.telegram.tgnet.ConnectionsManager;
 import org.telegram.tgnet.TLRPC;
 import org.telegram.messenger.FileLog;
@@ -95,6 +94,7 @@ public class GroupCreateFinalActivity extends BaseFragment implements Notificati
         if (!usersToLoad.isEmpty()) {
             final Semaphore semaphore = new Semaphore(0);
             final ArrayList<TLRPC.User> users = new ArrayList<>();
+            /*
             MessagesStorage.getInstance().getStorageQueue().postRunnable(new Runnable() {
                 @Override
                 public void run() {
@@ -102,6 +102,7 @@ public class GroupCreateFinalActivity extends BaseFragment implements Notificati
                     semaphore.release();
                 }
             });
+            */
             try {
                 semaphore.acquire();
             } catch (Exception e) {

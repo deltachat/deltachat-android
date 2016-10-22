@@ -37,7 +37,7 @@ import android.widget.Toast;
 import org.telegram.messenger.AndroidUtilities;
 import org.telegram.messenger.ApplicationLoader;
 import org.telegram.messenger.LocaleController;
-import org.telegram.messenger.MessagesStorage;
+//import org.telegram.messenger.MessagesStorage;
 //import org.telegram.messenger.SecretChatHelper;
 import org.telegram.messenger.UserConfig;
 import org.telegram.messenger.UserObject;
@@ -273,8 +273,8 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
                     if (searchListViewAdapter.isGlobalSearch(i)) {
                         ArrayList<TLRPC.User> users = new ArrayList<>();
                         users.add(user);
-                        MessagesController.getInstance().putUsers(users, false);
-                        MessagesStorage.getInstance().putUsersAndChats(users, null, false, true);
+                        //MessagesController.getInstance().putUsers(users, false);
+                        //MessagesStorage.getInstance().putUsersAndChats(users, null, false, true);
                     }
                     if (returnAsResult) {
                         if (ignoreUsers != null && ignoreUsers.containsKey(user.id)) {
@@ -291,9 +291,9 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
                         } else {
                             Bundle args = new Bundle();
                             args.putInt("user_id", user.id);
-                            if (MessagesController.checkCanOpenChat(args, ContactsActivity.this)) {
+                            //if (MessagesController.checkCanOpenChat(args, ContactsActivity.this)) {
                                 presentFragment(new ChatActivity(args), true);
-                            }
+                            //}
                         }
                     }
                 } else {

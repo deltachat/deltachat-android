@@ -32,7 +32,6 @@ import android.widget.TextView;
 
 import org.telegram.messenger.AndroidUtilities;
 import org.telegram.messenger.MessagesController;
-import org.telegram.messenger.MessagesStorage;
 import org.telegram.messenger.NotificationsController;
 import org.telegram.messenger.ApplicationLoader;
 import org.telegram.messenger.FileLog;
@@ -179,7 +178,7 @@ public class ProfileNotificationsActivity extends BaseFragment implements Notifi
                             if (which == 2) {
                                 NotificationsController.getInstance().removeNotificationsForDialog(dialog_id);
                             }
-                            MessagesStorage.getInstance().setDialogFlags(dialog_id, which == 2 ? 1 : 0);
+                            //MessagesStorage.getInstance().setDialogFlags(dialog_id, which == 2 ? 1 : 0);
                             editor.commit();
                             TLRPC.TL_dialog dialog = MessagesController.getInstance().dialogs_dict.get(dialog_id);
                             if (dialog != null) {

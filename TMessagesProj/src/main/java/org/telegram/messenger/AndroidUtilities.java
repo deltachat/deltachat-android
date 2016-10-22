@@ -665,7 +665,7 @@ public class AndroidUtilities {
                 }
                 if (oldValue != encryptedChat.ttl) {
                     //SecretChatHelper.getInstance().sendTTLMessage(encryptedChat, null);
-                    MessagesStorage.getInstance().updateEncryptedChatTTL(encryptedChat);
+                    //MessagesStorage.getInstance().updateEncryptedChatTTL(encryptedChat);
                 }
             }
         });

@@ -10,14 +10,10 @@ package org.telegram.messenger.query;
 
 import android.text.Spannable;
 import android.text.TextUtils;
-
-import org.telegram.SQLite.SQLiteCursor;
-import org.telegram.SQLite.SQLitePreparedStatement;
 import org.telegram.messenger.AndroidUtilities;
 import org.telegram.messenger.ImageLoader;
 import org.telegram.messenger.MessageObject;
 import org.telegram.messenger.MessagesController;
-import org.telegram.messenger.MessagesStorage;
 import org.telegram.messenger.NotificationCenter;
 import org.telegram.messenger.FileLog;
 import org.telegram.messenger.Utilities;
@@ -36,12 +32,14 @@ public class MessagesQuery {
 
     public static MessageObject loadPinnedMessage(final int channelId, final int mid, boolean useQueue) {
         if (useQueue) {
+            /*
             MessagesStorage.getInstance().getStorageQueue().postRunnable(new Runnable() {
                 @Override
                 public void run() {
                     loadPinnedMessageInternal(channelId, mid, false);
                 }
             });
+            */
         } else {
             return loadPinnedMessageInternal(channelId, mid, true);
         }
@@ -49,6 +47,7 @@ public class MessagesQuery {
     }
 
     private static MessageObject loadPinnedMessageInternal(final int channelId, final int mid, boolean returnValue) {
+        /*
         try {
             long messageId = ((long) mid) | ((long) channelId) << 32;
 
@@ -103,7 +102,7 @@ public class MessagesQuery {
                             if (!messagesRes.messages.isEmpty()) {
                                 ImageLoader.saveMessagesThumbs(messagesRes.messages);
                                 broadcastPinnedMessage(messagesRes.messages.get(0), messagesRes.users, messagesRes.chats, false, false);
-                                MessagesStorage.getInstance().putUsersAndChats(messagesRes.users, messagesRes.chats, true, true);
+                                //MessagesStorage.getInstance().putUsersAndChats(messagesRes.users, messagesRes.chats, true, true);
                                 savePinnedMessage(messagesRes.messages.get(0));
                                 ok = true;
                             }
@@ -118,10 +117,10 @@ public class MessagesQuery {
                     return broadcastPinnedMessage(result, users, chats, true, returnValue);
                 } else {
                     if (!usersToLoad.isEmpty()) {
-                        MessagesStorage.getInstance().getUsersInternal(TextUtils.join(",", usersToLoad), users);
+                        //MessagesStorage.getInstance().getUsersInternal(TextUtils.join(",", usersToLoad), users);
                     }
                     if (!chatsToLoad.isEmpty()) {
-                        MessagesStorage.getInstance().getChatsInternal(TextUtils.join(",", chatsToLoad), chats);
+                        //MessagesStorage.getInstance().getChatsInternal(TextUtils.join(",", chatsToLoad), chats);
                     }
                     broadcastPinnedMessage(result, users, chats, true, false);
                 }
@@ -129,10 +128,12 @@ public class MessagesQuery {
         } catch (Exception e) {
             FileLog.e("tmessages", e);
         }
+        */
         return null;
     }
 
     private static void savePinnedMessage(final TLRPC.Message result) {
+        /*
         MessagesStorage.getInstance().getStorageQueue().postRunnable(new Runnable() {
             @Override
             public void run() {
@@ -154,8 +155,10 @@ public class MessagesQuery {
                 }
             }
         });
+        */
     }
 
+    /*
     private static MessageObject broadcastPinnedMessage(final TLRPC.Message result, final ArrayList<TLRPC.User> users, final ArrayList<TLRPC.Chat> chats, final boolean isCache, boolean returnValue) {
         final HashMap<Integer, TLRPC.User> usersDict = new HashMap<>();
         for (int a = 0; a < users.size(); a++) {
@@ -181,6 +184,7 @@ public class MessagesQuery {
         }
         return null;
     }
+    */
 
     public static void loadReplyMessagesForMessages(final ArrayList<MessageObject> messages, final long dialogId) {
         if ((int) dialogId == 0) {
@@ -210,6 +214,7 @@ public class MessagesQuery {
                 return;
             }
 
+            /*
             MessagesStorage.getInstance().getStorageQueue().postRunnable(new Runnable() {
                 @Override
                 public void run() {
@@ -255,6 +260,7 @@ public class MessagesQuery {
                     }
                 }
             });
+            */
         } else {
             final ArrayList<Integer> replyMessages = new ArrayList<>();
             final HashMap<Integer, ArrayList<MessageObject>> replyMessageOwners = new HashMap<>();
@@ -289,6 +295,7 @@ public class MessagesQuery {
             }
 
             final int channelIdFinal = channelId;
+            /*
             MessagesStorage.getInstance().getStorageQueue().postRunnable(new Runnable() {
                 @Override
                 public void run() {
@@ -316,10 +323,10 @@ public class MessagesQuery {
                         cursor.dispose();
 
                         if (!usersToLoad.isEmpty()) {
-                            MessagesStorage.getInstance().getUsersInternal(TextUtils.join(",", usersToLoad), users);
+                            //MessagesStorage.getInstance().getUsersInternal(TextUtils.join(",", usersToLoad), users);
                         }
                         if (!chatsToLoad.isEmpty()) {
-                            MessagesStorage.getInstance().getChatsInternal(TextUtils.join(",", chatsToLoad), chats);
+                            //MessagesStorage.getInstance().getChatsInternal(TextUtils.join(",", chatsToLoad), chats);
                         }
                         broadcastReplyMessages(result, replyMessageOwners, users, chats, dialogId, true);
 
@@ -335,7 +342,7 @@ public class MessagesQuery {
                                             TLRPC.messages_Messages messagesRes = (TLRPC.messages_Messages) response;
                                             ImageLoader.saveMessagesThumbs(messagesRes.messages);
                                             broadcastReplyMessages(messagesRes.messages, replyMessageOwners, messagesRes.users, messagesRes.chats, dialogId, false);
-                                            MessagesStorage.getInstance().putUsersAndChats(messagesRes.users, messagesRes.chats, true, true);
+                                            //MessagesStorage.getInstance().putUsersAndChats(messagesRes.users, messagesRes.chats, true, true);
                                             saveReplyMessages(replyMessageOwners, messagesRes.messages);
                                         }
                                     }
@@ -350,7 +357,7 @@ public class MessagesQuery {
                                             TLRPC.messages_Messages messagesRes = (TLRPC.messages_Messages) response;
                                             ImageLoader.saveMessagesThumbs(messagesRes.messages);
                                             broadcastReplyMessages(messagesRes.messages, replyMessageOwners, messagesRes.users, messagesRes.chats, dialogId, false);
-                                            MessagesStorage.getInstance().putUsersAndChats(messagesRes.users, messagesRes.chats, true, true);
+                                            //MessagesStorage.getInstance().putUsersAndChats(messagesRes.users, messagesRes.chats, true, true);
                                             saveReplyMessages(replyMessageOwners, messagesRes.messages);
                                         }
                                     }
@@ -362,9 +369,11 @@ public class MessagesQuery {
                     }
                 }
             });
+            */
         }
     }
 
+    /*
     private static void saveReplyMessages(final HashMap<Integer, ArrayList<MessageObject>> replyMessageOwners, final ArrayList<TLRPC.Message> result) {
         MessagesStorage.getInstance().getStorageQueue().postRunnable(new Runnable() {
             @Override
@@ -400,7 +409,9 @@ public class MessagesQuery {
             }
         });
     }
+    */
 
+    /*
     private static void broadcastReplyMessages(final ArrayList<TLRPC.Message> result, final HashMap<Integer, ArrayList<MessageObject>> replyMessageOwners, final ArrayList<TLRPC.User> users, final ArrayList<TLRPC.Chat> chats, final long dialog_id, final boolean isCache) {
         final HashMap<Integer, TLRPC.User> usersDict = new HashMap<>();
         for (int a = 0; a < users.size(); a++) {
@@ -439,6 +450,7 @@ public class MessagesQuery {
             }
         });
     }
+    */
 
     public static ArrayList<TLRPC.MessageEntity> getEntities(CharSequence message) {
         if (message == null) {

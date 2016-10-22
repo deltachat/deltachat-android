@@ -11,7 +11,6 @@ package org.telegram.messenger.query;
 import org.telegram.messenger.AndroidUtilities;
 import org.telegram.messenger.MessageObject;
 import org.telegram.messenger.MessagesController;
-import org.telegram.messenger.MessagesStorage;
 import org.telegram.messenger.NotificationCenter;
 import org.telegram.tgnet.ConnectionsManager;
 import org.telegram.tgnet.RequestDelegate;
@@ -168,7 +167,7 @@ public class MessagesSearchQuery {
                             reqId = 0;
                             if (response != null) {
                                 TLRPC.messages_Messages res = (TLRPC.messages_Messages) response;
-                                MessagesStorage.getInstance().putUsersAndChats(res.users, res.chats, true, true);
+                                //MessagesStorage.getInstance().putUsersAndChats(res.users, res.chats, true, true);
                                 MessagesController.getInstance().putUsers(res.users, false);
                                 MessagesController.getInstance().putChats(res.chats, false);
                                 if (req.max_id == 0 && queryWithDialogFinal == dialog_id) {

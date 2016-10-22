@@ -8,10 +8,7 @@
 
 package org.telegram.ui.Adapters;
 
-import org.telegram.SQLite.SQLiteCursor;
-import org.telegram.SQLite.SQLitePreparedStatement;
 import org.telegram.messenger.AndroidUtilities;
-import org.telegram.messenger.MessagesStorage;
 import org.telegram.messenger.support.widget.RecyclerView;
 import org.telegram.messenger.FileLog;
 import org.telegram.tgnet.ConnectionsManager;
@@ -87,6 +84,7 @@ public abstract class BaseSearchAdapterRecycler extends RecyclerView.Adapter {
     }
 
     public void loadRecentHashtags() {
+        /*
         MessagesStorage.getInstance().getStorageQueue().postRunnable(new Runnable() {
             @Override
             public void run() {
@@ -125,6 +123,7 @@ public abstract class BaseSearchAdapterRecycler extends RecyclerView.Adapter {
                 }
             }
         });
+        */
     }
 
     public void addHashtagsFromMessage(CharSequence message) {
@@ -163,6 +162,7 @@ public abstract class BaseSearchAdapterRecycler extends RecyclerView.Adapter {
     }
 
     private void putRecentHashtags(final ArrayList<HashtagObject> arrayList) {
+        /*
         MessagesStorage.getInstance().getStorageQueue().postRunnable(new Runnable() {
             @Override
             public void run() {
@@ -193,11 +193,13 @@ public abstract class BaseSearchAdapterRecycler extends RecyclerView.Adapter {
                 }
             }
         });
+        */
     }
 
     public void clearRecentHashtags() {
         hashtags = new ArrayList<>();
         hashtagsByText = new HashMap<>();
+        /*
         MessagesStorage.getInstance().getStorageQueue().postRunnable(new Runnable() {
             @Override
             public void run() {
@@ -208,6 +210,7 @@ public abstract class BaseSearchAdapterRecycler extends RecyclerView.Adapter {
                 }
             }
         });
+        */
     }
 
     protected void setHashtags(ArrayList<HashtagObject> arrayList, HashMap<String, HashtagObject> hashMap) {

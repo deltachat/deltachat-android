@@ -44,11 +44,8 @@ import org.telegram.messenger.AndroidUtilities;
 import org.telegram.messenger.AnimatorListenerAdapterProxy;
 import org.telegram.messenger.ChatObject;
 import org.telegram.messenger.LocaleController;
-import org.telegram.messenger.MessagesStorage;
-//import org.telegram.messenger.SecretChatHelper;
 import org.telegram.messenger.SendMessagesHelper;
 import org.telegram.messenger.UserObject;
-//import org.telegram.messenger.query.BotQuery; -- EDIT BY MR
 import org.telegram.messenger.query.SharedMediaQuery;
 import org.telegram.messenger.ApplicationLoader;
 import org.telegram.messenger.support.widget.LinearLayoutManager;
@@ -251,6 +248,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
             currentChat = MessagesController.getInstance().getChat(chat_id);
             if (currentChat == null) {
                 final Semaphore semaphore = new Semaphore(0);
+                /*
                 MessagesStorage.getInstance().getStorageQueue().postRunnable(new Runnable() {
                     @Override
                     public void run() {
@@ -258,6 +256,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                         semaphore.release();
                     }
                 });
+                */
                 try {
                     semaphore.acquire();
                 } catch (Exception e) {
@@ -1116,8 +1115,8 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                             if (req.offset == 0) {
                                 participantsMap.clear();
                                 info.participants = new TLRPC.TL_chatParticipants();
-                                MessagesStorage.getInstance().putUsersAndChats(res.users, null, true, true);
-                                MessagesStorage.getInstance().updateChannelUsers(chat_id, res.participants);
+                                //MessagesStorage.getInstance().putUsersAndChats(res.users, null, true, true);
+                                //MessagesStorage.getInstance().updateChannelUsers(chat_id, res.participants);
                             }
                             for (int a = 0; a < res.participants.size(); a++) {
                                 TLRPC.TL_chatChannelParticipant participant = new TLRPC.TL_chatChannelParticipant();

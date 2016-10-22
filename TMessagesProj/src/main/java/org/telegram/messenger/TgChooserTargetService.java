@@ -8,6 +8,9 @@
 
 package org.telegram.messenger;
 
+// ChooserTargetService, see https://developer.android.com/reference/android/service/chooser/ChooserTargetService.html
+
+
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.ComponentName;
@@ -28,7 +31,6 @@ import android.service.chooser.ChooserTarget;
 import android.service.chooser.ChooserTargetService;
 import android.text.TextUtils;
 
-import org.telegram.SQLite.SQLiteCursor;
 import org.telegram.tgnet.TLRPC;
 import org.telegram.ui.LaunchActivity;
 
@@ -58,6 +60,7 @@ public class TgChooserTargetService extends ChooserTargetService {
         ImageLoader imageLoader = ImageLoader.getInstance();
         final Semaphore semaphore = new Semaphore(0);
         final ComponentName componentName = new ComponentName(getPackageName(), LaunchActivity.class.getCanonicalName());
+        /*
         MessagesStorage.getInstance().getStorageQueue().postRunnable(new Runnable() {
             @Override
             public void run() {
@@ -98,10 +101,10 @@ public class TgChooserTargetService extends ChooserTargetService {
                     }
                     cursor.dispose();
                     if (!chatsToLoad.isEmpty()) {
-                        MessagesStorage.getInstance().getChatsInternal(TextUtils.join(",", chatsToLoad), chats);
+                        //MessagesStorage.getInstance().getChatsInternal(TextUtils.join(",", chatsToLoad), chats);
                     }
                     if (!usersToLoad.isEmpty()) {
-                        MessagesStorage.getInstance().getUsersInternal(TextUtils.join(",", usersToLoad), users);
+                        //MessagesStorage.getInstance().getUsersInternal(TextUtils.join(",", usersToLoad), users);
                     }
                 } catch (Exception e) {
                     FileLog.e("tmessages", e);
@@ -150,6 +153,7 @@ public class TgChooserTargetService extends ChooserTargetService {
                 semaphore.release();
             }
         });
+        */
         try {
             semaphore.acquire();
         } catch (Exception e) {

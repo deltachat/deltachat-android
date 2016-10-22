@@ -686,7 +686,7 @@ public class ContactsController {
                     }
                     if (request && !contactHashMap.isEmpty() && !contactsMap.isEmpty()) {
                         if (toImport.isEmpty()) {
-                            MessagesStorage.getInstance().putCachedPhoneBook(contactsMap);
+                            //MessagesStorage.getInstance().putCachedPhoneBook(contactsMap);
                         }
                         if (!disableDeletion && !contactHashMap.isEmpty()) {
                             AndroidUtilities.runOnUIThread(new Runnable() {
@@ -807,7 +807,7 @@ public class ContactsController {
                                         }
 
                                         if (completedRequestsCount == count && !contactsMapToSave.isEmpty()) {
-                                            MessagesStorage.getInstance().putCachedPhoneBook(contactsMapToSave);
+                                            //MessagesStorage.getInstance().putCachedPhoneBook(contactsMapToSave);
                                         }
 
                                         /*if (BuildVars.DEBUG_VERSION) {
@@ -815,7 +815,7 @@ public class ContactsController {
                                                 FileLog.e("tmessages", "received user " + user.first_name + " " + user.last_name + " " + user.phone);
                                             }
                                         }*/
-                                        MessagesStorage.getInstance().putUsersAndChats(res.users, null, true, true);
+                                        //MessagesStorage.getInstance().putUsersAndChats(res.users, null, true, true);
                                         ArrayList<TLRPC.TL_contact> cArr = new ArrayList<>();
                                         for (int a = 0; a < res.imported.size(); a++) {
                                             TLRPC.TL_contact contact = new TLRPC.TL_contact();
@@ -890,7 +890,7 @@ public class ContactsController {
                         }
                     });
                     if (!contactsMap.isEmpty()) {
-                        MessagesStorage.getInstance().putCachedPhoneBook(contactsMap);
+                        //MessagesStorage.getInstance().putCachedPhoneBook(contactsMap);
                     }
                 }
             }
@@ -909,7 +909,7 @@ public class ContactsController {
         }
         if (fromCache) {
             FileLog.e("tmessages", "load contacts from cache");
-            MessagesStorage.getInstance().getContacts();
+            //MessagesStorage.getInstance().getContacts();
         } else {
             FileLog.e("tmessages", "load contacts from server");
             TLRPC.TL_contacts_getContacts req = new TLRPC.TL_contacts_getContacts();
@@ -998,8 +998,8 @@ public class ContactsController {
                         }
 
                         if (from != 1) {
-                            MessagesStorage.getInstance().putUsersAndChats(usersArr, null, true, true);
-                            MessagesStorage.getInstance().putContacts(contactsArr, from != 2);
+                            //MessagesStorage.getInstance().putUsersAndChats(usersArr, null, true, true);
+                            //MessagesStorage.getInstance().putContacts(contactsArr, from != 2);
                             Collections.sort(contactsArr, new Comparator<TLRPC.TL_contact>() {
                                 @Override
                                 public int compare(TLRPC.TL_contact tl_contact, TLRPC.TL_contact tl_contact2) {
@@ -1162,7 +1162,7 @@ public class ContactsController {
                                         return;
                                     }
                                     contactsSyncInProgress = true;
-                                    MessagesStorage.getInstance().getCachedPhoneBook();
+                                    //MessagesStorage.getInstance().getCachedPhoneBook();
                                 }
                             });
                         } else {
@@ -1465,7 +1465,7 @@ public class ContactsController {
         }
 
         if (toAdd.length() != 0 || toDelete.length() != 0) {
-            MessagesStorage.getInstance().applyPhoneBookUpdates(toAdd.toString(), toDelete.toString());
+            //MessagesStorage.getInstance().applyPhoneBookUpdates(toAdd.toString(), toDelete.toString());
         }
 
         if (reloadContacts) {
@@ -1533,10 +1533,10 @@ public class ContactsController {
             }
         }
         if (!contactsToDelete.isEmpty()) {
-            MessagesStorage.getInstance().deleteContacts(contactsToDelete);
+            //MessagesStorage.getInstance().deleteContacts(contactsToDelete);
         }
         if (!newContacts.isEmpty()) {
-            MessagesStorage.getInstance().putContacts(newContacts, false);
+            //MessagesStorage.getInstance().putContacts(newContacts, false);
         }
         if (!contactsLoaded || !contactsBookLoaded) {
             delayedContactsUpdate.addAll(ids);
@@ -1675,7 +1675,7 @@ public class ContactsController {
                     return;
                 }
                 final TLRPC.TL_contacts_importedContacts res = (TLRPC.TL_contacts_importedContacts) response;
-                MessagesStorage.getInstance().putUsersAndChats(res.users, null, true, true);
+                //MessagesStorage.getInstance().putUsersAndChats(res.users, null, true, true);
 
                 /*if (BuildVars.DEBUG_VERSION) {
                     for (TLRPC.User user : res.users) {
@@ -1695,11 +1695,11 @@ public class ContactsController {
                     newContact.user_id = u.id;
                     ArrayList<TLRPC.TL_contact> arrayList = new ArrayList<>();
                     arrayList.add(newContact);
-                    MessagesStorage.getInstance().putContacts(arrayList, false);
+                    //MessagesStorage.getInstance().putContacts(arrayList, false);
 
                     if (u.phone != null && u.phone.length() > 0) {
                         CharSequence name = formatName(u.first_name, u.last_name);
-                        MessagesStorage.getInstance().applyPhoneBookUpdates(u.phone, "");
+                        //MessagesStorage.getInstance().applyPhoneBookUpdates(u.phone, "");
                         Contact contact = contactsBookSPhones.get(u.phone);
                         if (contact != null) {
                             int index = contact.shortPhones.indexOf(u.phone);
@@ -1750,7 +1750,7 @@ public class ContactsController {
                 if (error != null) {
                     return;
                 }
-                MessagesStorage.getInstance().deleteContacts(uids);
+                //MessagesStorage.getInstance().deleteContacts(uids);
                 Utilities.phoneBookQueue.postRunnable(new Runnable() {
                     @Override
                     public void run() {
@@ -1763,7 +1763,7 @@ public class ContactsController {
                 for (TLRPC.User user : users) {
                     if (user.phone != null && user.phone.length() > 0) {
                         CharSequence name = UserObject.getUserName(user);
-                        MessagesStorage.getInstance().applyPhoneBookUpdates(user.phone, "");
+                        //MessagesStorage.getInstance().applyPhoneBookUpdates(user.phone, "");
                         Contact contact = contactsBookSPhones.get(user.phone);
                         if (contact != null) {
                             int index = contact.shortPhones.indexOf(user.phone);
@@ -1837,7 +1837,7 @@ public class ContactsController {
                                     toDbUser.status = status.status;
                                     dbUsersStatus.add(toDbUser);
                                 }
-                                MessagesStorage.getInstance().updateUsers(dbUsersStatus, true, true, true);
+                                //MessagesStorage.getInstance().updateUsers(dbUsersStatus, true, true, true);
                             }
                             NotificationCenter.getInstance().postNotificationName(NotificationCenter.updateInterfaces, MessagesController.UPDATE_MASK_STATUS);
                         }

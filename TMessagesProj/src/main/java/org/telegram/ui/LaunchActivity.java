@@ -49,7 +49,7 @@ import org.telegram.messenger.ContactsController;
 import org.telegram.messenger.ImageLoader;
 import org.telegram.messenger.MessageObject;
 import org.telegram.messenger.MessagesController;
-import org.telegram.messenger.MessagesStorage;
+import org.telegram.messenger.MrMailbox;
 import org.telegram.messenger.SendMessagesHelper;
 import org.telegram.messenger.UserObject;
 import org.telegram.messenger.Utilities;
@@ -321,8 +321,10 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                     }
                     drawerLayoutContainer.closeDrawer(false);
                     */
-                } else if (position == DrawerLayoutAdapter.iContacts) {
-                    presentFragment(new ContactsActivity(null));
+                } else if (position == DrawerLayoutAdapter.iStrangers) {
+                    Bundle args = new Bundle();
+                    args.putInt("chat_id", (int) MrMailbox.MR_CHAT_ID_STRANGERS);
+                    presentFragment(new ChatActivity(args));
                     drawerLayoutContainer.closeDrawer(false);
                 } else if (position == DrawerLayoutAdapter.iInviteFriends) {
                     /* EDIT BY MR
@@ -1092,7 +1094,7 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                                     final TLRPC.TL_contacts_resolvedPeer res = (TLRPC.TL_contacts_resolvedPeer) response;
                                     MessagesController.getInstance().putUsers(res.users, false);
                                     MessagesController.getInstance().putChats(res.chats, false);
-                                    MessagesStorage.getInstance().putUsersAndChats(res.users, res.chats, false, true);
+                                    //MessagesStorage.getInstance().putUsersAndChats(res.users, res.chats, false, true);
 
                                     /*if (botChat != null) {
                                         final TLRPC.User user = !res.users.isEmpty() ? res.users.get(0) : null;
@@ -1186,7 +1188,7 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                                             MessagesController.getInstance().putChat(invite.chat, false);
                                             ArrayList<TLRPC.Chat> chats = new ArrayList<>();
                                             chats.add(invite.chat);
-                                            MessagesStorage.getInstance().putUsersAndChats(null, chats, false, true);
+                                            //MessagesStorage.getInstance().putUsersAndChats(null, chats, false, true);
                                             Bundle args = new Bundle();
                                             args.putInt("chat_id", invite.chat.id);
                                             if (mainFragmentsStack.isEmpty() || MessagesController.checkCanOpenChat(args, mainFragmentsStack.get(mainFragmentsStack.size() - 1))) {

@@ -10,12 +10,10 @@ package org.telegram.messenger.query;
 
 import android.text.TextUtils;
 
-import org.telegram.SQLite.SQLiteCursor;
-import org.telegram.SQLite.SQLitePreparedStatement;
+
 import org.telegram.messenger.AndroidUtilities;
 import org.telegram.messenger.FileLog;
 import org.telegram.messenger.MessagesController;
-import org.telegram.messenger.MessagesStorage;
 import org.telegram.messenger.NotificationCenter;
 import org.telegram.messenger.UserConfig;
 import org.telegram.tgnet.ConnectionsManager;
@@ -56,6 +54,7 @@ public class SearchQuery {
                 return;
             }
             loading = true;
+            /*
             MessagesStorage.getInstance().getStorageQueue().postRunnable(new Runnable() {
                 @Override
                 public void run() {
@@ -91,11 +90,11 @@ public class SearchQuery {
                         }
                         cursor.dispose();
                         if (!usersToLoad.isEmpty()) {
-                            MessagesStorage.getInstance().getUsersInternal(TextUtils.join(",", usersToLoad), users);
+                            //MessagesStorage.getInstance().getUsersInternal(TextUtils.join(",", usersToLoad), users);
                         }
 
                         if (!chatsToLoad.isEmpty()) {
-                            MessagesStorage.getInstance().getChatsInternal(TextUtils.join(",", chatsToLoad), chats);
+                            //MessagesStorage.getInstance().getChatsInternal(TextUtils.join(",", chatsToLoad), chats);
                         }
                         AndroidUtilities.runOnUIThread(new Runnable() {
                             @Override
@@ -119,6 +118,7 @@ public class SearchQuery {
                     }
                 }
             });
+            */
             loaded = true;
         } else {
             loading = true;
@@ -152,6 +152,7 @@ public class SearchQuery {
                                 NotificationCenter.getInstance().postNotificationName(NotificationCenter.reloadHints);
                                 NotificationCenter.getInstance().postNotificationName(NotificationCenter.reloadInlineHints);
                                 final HashMap<Integer, Integer> inlineDatesCopy = new HashMap<>(inlineDates);
+                                /*
                                 MessagesStorage.getInstance().getStorageQueue().postRunnable(new Runnable() {
                                     @Override
                                     public void run() {
@@ -204,6 +205,7 @@ public class SearchQuery {
                                         }
                                     }
                                 });
+                                */
                             }
                         });
                     }
@@ -307,6 +309,7 @@ public class SearchQuery {
         if (user == null || user.bot/*&& chat == null || ChatObject.isChannel(chat) && !chat.megagroup*/) {
             return;
         }
+        /*
         MessagesStorage.getInstance().getStorageQueue().postRunnable(new Runnable() {
             @Override
             public void run() {
@@ -373,9 +376,11 @@ public class SearchQuery {
                 });
             }
         });
+        */
     }
 
     private static void savePeer(final int did, final int type, final double rating) {
+        /*
         MessagesStorage.getInstance().getStorageQueue().postRunnable(new Runnable() {
             @Override
             public void run() {
@@ -393,9 +398,11 @@ public class SearchQuery {
                 }
             }
         });
+        */
     }
 
     private static void deletePeer(final int did, final int type) {
+        /*
         MessagesStorage.getInstance().getStorageQueue().postRunnable(new Runnable() {
             @Override
             public void run() {
@@ -406,5 +413,6 @@ public class SearchQuery {
                 }
             }
         });
+        */
     }
 }

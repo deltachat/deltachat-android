@@ -62,7 +62,6 @@ import org.telegram.messenger.ChatObject;
 import org.telegram.messenger.Emoji;
 import org.telegram.messenger.LocaleController;
 import org.telegram.messenger.MediaController;
-import org.telegram.messenger.MessagesStorage;
 import org.telegram.messenger.MrMailbox; // EDIT BY MR
 import org.telegram.messenger.NotificationsController;
 //import org.telegram.messenger.SecretChatHelper; // EDIT BY MR
@@ -891,7 +890,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                         //shareMyContact(replyingMessageObject);
                     }
                 } else if (id == mute) {
-                    toggleMute(false);
+                    toggleMute();
                 } else if (id == report) {
                     //showDialog(AlertsCreator.createReportAlert(getParentActivity(), dialog_id, ChatActivity.this)); -- EDIT BY MR
                 } else if (id == reply) {
@@ -2400,7 +2399,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 }
 
                 allowContextBotPanel = !chatActivityEnterView.isPopupShowing();
-                checkContextBotPanel();
+                //checkContextBotPanel();
             }
 
             @Override
@@ -2409,7 +2408,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     emojiButtonRed.setVisibility(View.GONE);
                 }
                 allowContextBotPanelSecond = !opened;
-                checkContextBotPanel();
+                //checkContextBotPanel();
             }
         });
 
@@ -2624,13 +2623,13 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     botUser = null;
                     updateBottomOverlay();
                 } else {
-                    if (ChatObject.isChannel(currentChat) && !(currentChat instanceof TLRPC.TL_channelForbidden)) {
+                    /*if (ChatObject.isChannel(currentChat) && !(currentChat instanceof TLRPC.TL_channelForbidden)) {
                         if (ChatObject.isNotInChat(currentChat)) {
                             MessagesController.getInstance().addUserToChat(currentChat.id, UserConfig.getCurrentUser(), null, 0, null, null);
                         } else {
-                            toggleMute(true);
+                            toggleMute(true); -- true: was without asking (instant)
                         }
-                    } else {
+                    } else */ {
                         builder = new AlertDialog.Builder(getParentActivity());
                         builder.setMessage(LocaleController.getString("AreYouSureDeleteThisChat", R.string.AreYouSureDeleteThisChat));
                         builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), new DialogInterface.OnClickListener() {
@@ -3018,6 +3017,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         AnimatorSet.start();
     }
 
+    /*
     private void checkContextBotPanel() {
         if (allowStickersPanel && mentionsAdapter != null && mentionsAdapter.isBotContext()) {
             if (!allowContextBotPanel && !allowContextBotPanelSecond) {
@@ -3082,6 +3082,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
             }
         }
     }
+    */
 
     private void checkScrollForLoad(boolean scroll) {
         if (chatLayoutManager == null || paused) {
@@ -3824,74 +3825,57 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         }
     }
 
-    private void toggleMute(boolean instant) {
+    private void toggleMute() {
         boolean muted = MessagesController.getInstance().isDialogMuted(dialog_id);
         if (!muted) {
-            if (instant) {
-                long flags;
-                SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("Notifications", Activity.MODE_PRIVATE);
-                SharedPreferences.Editor editor = preferences.edit();
-                editor.putInt("notify2_" + dialog_id, 2);
-                flags = 1;
-                MessagesStorage.getInstance().setDialogFlags(dialog_id, flags);
-                editor.commit();
-                TLRPC.TL_dialog dialog = MessagesController.getInstance().dialogs_dict.get(dialog_id);
-                if (dialog != null) {
-                    dialog.notify_settings = new TLRPC.TL_peerNotifySettings();
-                    dialog.notify_settings.mute_until = Integer.MAX_VALUE;
-                }
-                NotificationsController.updateServerNotificationsSettings(dialog_id);
-                NotificationsController.getInstance().removeNotificationsForDialog(dialog_id);
-            } else {
-                // EDIT BY MR
-                AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity()); // was: BottomSheet.Builder
-                //builder.setTitle(LocaleController.getString("Notifications", R.string.Notifications)); -- a title seems more confusing than helping -- the user has clicked "mute" before and there are several options all starting with "mute...", I think, this is very clear
-                CharSequence[] items = new CharSequence[]{
-                        LocaleController.formatString("MuteFor", R.string.MuteFor, LocaleController.formatPluralString("Hours", 1)),
-                        LocaleController.formatString("MuteFor", R.string.MuteFor, LocaleController.formatPluralString("Hours", 8)),
-                        LocaleController.formatString("MuteFor", R.string.MuteFor, LocaleController.formatPluralString("Days", 2)),
-                        LocaleController.getString("MuteDisable", R.string.MuteDisable)
-                };
-                builder.setItems(items, new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
-                                int untilTime = ConnectionsManager.getInstance().getCurrentTime();
-                                     if (i == 0) { untilTime += 60 * 60; }
-                                else if (i == 1) { untilTime += 60 * 60 * 8;  }
-                                else if (i == 2) { untilTime += 60 * 60 * 48; }
-                                else if (i == 3) { untilTime = Integer.MAX_VALUE; }
+            // EDIT BY MR
+            AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity()); // was: BottomSheet.Builder
+            //builder.setTitle(LocaleController.getString("Notifications", R.string.Notifications)); -- a title seems more confusing than helping -- the user has clicked "mute" before and there are several options all starting with "mute...", I think, this is very clear
+            CharSequence[] items = new CharSequence[]{
+                    LocaleController.formatString("MuteFor", R.string.MuteFor, LocaleController.formatPluralString("Hours", 1)),
+                    LocaleController.formatString("MuteFor", R.string.MuteFor, LocaleController.formatPluralString("Hours", 8)),
+                    LocaleController.formatString("MuteFor", R.string.MuteFor, LocaleController.formatPluralString("Days", 2)),
+                    LocaleController.getString("MuteDisable", R.string.MuteDisable)
+            };
+            builder.setItems(items, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            int untilTime = ConnectionsManager.getInstance().getCurrentTime();
+                                 if (i == 0) { untilTime += 60 * 60; }
+                            else if (i == 1) { untilTime += 60 * 60 * 8;  }
+                            else if (i == 2) { untilTime += 60 * 60 * 48; }
+                            else if (i == 3) { untilTime = Integer.MAX_VALUE; }
 
-                                SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("Notifications", Activity.MODE_PRIVATE);
-                                SharedPreferences.Editor editor = preferences.edit();
-                                long flags;
-                                if (i == 3) {
-                                    editor.putInt("notify2_" + dialog_id, 2);
-                                    flags = 1;
-                                } else {
-                                    editor.putInt("notify2_" + dialog_id, 3);
-                                    editor.putInt("notifyuntil_" + dialog_id, untilTime);
-                                    flags = ((long) untilTime << 32) | 1;
-                                }
-                                NotificationsController.getInstance().removeNotificationsForDialog(dialog_id);
-                                MessagesStorage.getInstance().setDialogFlags(dialog_id, flags);
-                                editor.commit();
-                                TLRPC.TL_dialog dialog = MessagesController.getInstance().dialogs_dict.get(dialog_id);
-                                if (dialog != null) {
-                                    dialog.notify_settings = new TLRPC.TL_peerNotifySettings();
-                                    dialog.notify_settings.mute_until = untilTime;
-                                }
-                                NotificationsController.updateServerNotificationsSettings(dialog_id);
+                            SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("Notifications", Activity.MODE_PRIVATE);
+                            SharedPreferences.Editor editor = preferences.edit();
+                            //long flags;
+                            if (i == 3) {
+                                editor.putInt("notify2_" + dialog_id, 2);
+                                //flags = 1;
+                            } else {
+                                editor.putInt("notify2_" + dialog_id, 3);
+                                editor.putInt("notifyuntil_" + dialog_id, untilTime);
+                                //flags = ((long) untilTime << 32) | 1;
                             }
+                            NotificationsController.getInstance().removeNotificationsForDialog(dialog_id);
+                            //MessagesStorage.getInstance().setDialogFlags(dialog_id, flags);
+                            editor.commit();
+                            TLRPC.TL_dialog dialog = MessagesController.getInstance().dialogs_dict.get(dialog_id);
+                            if (dialog != null) {
+                                dialog.notify_settings = new TLRPC.TL_peerNotifySettings();
+                                dialog.notify_settings.mute_until = untilTime;
+                            }
+                            NotificationsController.updateServerNotificationsSettings(dialog_id);
                         }
-                );
-                showDialog(builder.create());
-                // EDIT BY MR
-            }
+                    }
+            );
+            showDialog(builder.create());
+            // EDIT BY MR
         } else {
             SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("Notifications", Activity.MODE_PRIVATE);
             SharedPreferences.Editor editor = preferences.edit();
             editor.putInt("notify2_" + dialog_id, 0);
-            MessagesStorage.getInstance().setDialogFlags(dialog_id, 0);
+            //MessagesStorage.getInstance().setDialogFlags(dialog_id, 0);
             editor.commit();
             TLRPC.TL_dialog dialog = MessagesController.getInstance().dialogs_dict.get(dialog_id);
             if (dialog != null) {
@@ -3950,9 +3934,9 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         }
 
         if (query) {
-            if (currentEncryptedChat != null && !MessagesStorage.getInstance().checkMessageId(dialog_id, startLoadFromMessageId)) {
+            /*if (currentEncryptedChat != null && !MessagesStorage.getInstance().checkMessageId(dialog_id, startLoadFromMessageId)) {
                 return;
-            }
+            }*/
             /*clearChatData();
             loadsCount = 0;
             unread_to_load = 0;
@@ -4814,7 +4798,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 for (int a = 0; a < mrCount; a++ ) {
                     long hMsg = MrMailbox.MrMsglistGetMsgByIndex(hMsglist, a);
                         MessageObject mo = new MessageObject(MrMailbox.hMsg2Message(hMsg), null, true);
-                        messages.add(mo);
+                        messages.add(0, mo);
                     MrMailbox.MrMsgUnref(hMsg);
                 }
                 MrMailbox.MrMsglistUnref(hMsglist);
@@ -5617,7 +5601,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 if (loadIndex == 0 && info != null && info.pinned_msg_id == ids) {
                     pinnedMessageObject = null;
                     info.pinned_msg_id = 0;
-                    MessagesStorage.getInstance().updateChannelPinnedMessage(channelId, 0);
+                    //MessagesStorage.getInstance().updateChannelPinnedMessage(channelId, 0);
                     updatePinnedMessageView(true);
                 }
                 if (obj != null) {

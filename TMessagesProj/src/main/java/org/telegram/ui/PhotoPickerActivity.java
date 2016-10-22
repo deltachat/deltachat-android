@@ -36,7 +36,6 @@ import org.telegram.messenger.AndroidUtilities;
 import org.telegram.messenger.FileLoader;
 import org.telegram.messenger.LocaleController;
 import org.telegram.messenger.MediaController;
-import org.telegram.messenger.MessagesStorage;
 import org.telegram.messenger.NotificationCenter;
 import org.telegram.messenger.volley.AuthFailureError;
 import org.telegram.messenger.volley.Request;
@@ -139,7 +138,7 @@ public class PhotoPickerActivity extends BaseFragment implements NotificationCen
         if (selectedAlbum == null) {
             requestQueue = Volley.newRequestQueue(ApplicationLoader.applicationContext);
             if (recentImages.isEmpty()) {
-                MessagesStorage.getInstance().loadWebRecent(type);
+                //MessagesStorage.getInstance().loadWebRecent(type);
                 loadingRecent = true;
             }
         }

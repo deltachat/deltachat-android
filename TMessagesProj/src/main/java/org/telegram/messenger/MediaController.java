@@ -936,25 +936,25 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
 
         int mask = getAutodownloadMask();
         if (mask == 0) {
-            MessagesStorage.getInstance().clearDownloadQueue(0);
+            //MessagesStorage.getInstance().clearDownloadQueue(0);
         } else {
             if ((mask & AUTODOWNLOAD_MASK_PHOTO) == 0) {
-                MessagesStorage.getInstance().clearDownloadQueue(AUTODOWNLOAD_MASK_PHOTO);
+                //MessagesStorage.getInstance().clearDownloadQueue(AUTODOWNLOAD_MASK_PHOTO);
             }
             if ((mask & AUTODOWNLOAD_MASK_AUDIO) == 0) {
-                MessagesStorage.getInstance().clearDownloadQueue(AUTODOWNLOAD_MASK_AUDIO);
+                //MessagesStorage.getInstance().clearDownloadQueue(AUTODOWNLOAD_MASK_AUDIO);
             }
             if ((mask & AUTODOWNLOAD_MASK_VIDEO) == 0) {
-                MessagesStorage.getInstance().clearDownloadQueue(AUTODOWNLOAD_MASK_VIDEO);
+                //MessagesStorage.getInstance().clearDownloadQueue(AUTODOWNLOAD_MASK_VIDEO);
             }
             if ((mask & AUTODOWNLOAD_MASK_DOCUMENT) == 0) {
-                MessagesStorage.getInstance().clearDownloadQueue(AUTODOWNLOAD_MASK_DOCUMENT);
+                //MessagesStorage.getInstance().clearDownloadQueue(AUTODOWNLOAD_MASK_DOCUMENT);
             }
             if ((mask & AUTODOWNLOAD_MASK_MUSIC) == 0) {
-                MessagesStorage.getInstance().clearDownloadQueue(AUTODOWNLOAD_MASK_MUSIC);
+                //MessagesStorage.getInstance().clearDownloadQueue(AUTODOWNLOAD_MASK_MUSIC);
             }
             if ((mask & AUTODOWNLOAD_MASK_GIF) == 0) {
-                MessagesStorage.getInstance().clearDownloadQueue(AUTODOWNLOAD_MASK_GIF);
+                //MessagesStorage.getInstance().clearDownloadQueue(AUTODOWNLOAD_MASK_GIF);
             }
         }
     }
@@ -1023,22 +1023,22 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
     protected void newDownloadObjectsAvailable(int downloadMask) {
         int mask = getCurrentDownloadMask();
         if ((mask & AUTODOWNLOAD_MASK_PHOTO) != 0 && (downloadMask & AUTODOWNLOAD_MASK_PHOTO) != 0 && photoDownloadQueue.isEmpty()) {
-            MessagesStorage.getInstance().getDownloadQueue(AUTODOWNLOAD_MASK_PHOTO);
+            //MessagesStorage.getInstance().getDownloadQueue(AUTODOWNLOAD_MASK_PHOTO);
         }
         if ((mask & AUTODOWNLOAD_MASK_AUDIO) != 0 && (downloadMask & AUTODOWNLOAD_MASK_AUDIO) != 0 && audioDownloadQueue.isEmpty()) {
-            MessagesStorage.getInstance().getDownloadQueue(AUTODOWNLOAD_MASK_AUDIO);
+            //MessagesStorage.getInstance().getDownloadQueue(AUTODOWNLOAD_MASK_AUDIO);
         }
         if ((mask & AUTODOWNLOAD_MASK_VIDEO) != 0 && (downloadMask & AUTODOWNLOAD_MASK_VIDEO) != 0 && videoDownloadQueue.isEmpty()) {
-            MessagesStorage.getInstance().getDownloadQueue(AUTODOWNLOAD_MASK_VIDEO);
+            //MessagesStorage.getInstance().getDownloadQueue(AUTODOWNLOAD_MASK_VIDEO);
         }
         if ((mask & AUTODOWNLOAD_MASK_DOCUMENT) != 0 && (downloadMask & AUTODOWNLOAD_MASK_DOCUMENT) != 0 && documentDownloadQueue.isEmpty()) {
-            MessagesStorage.getInstance().getDownloadQueue(AUTODOWNLOAD_MASK_DOCUMENT);
+            //MessagesStorage.getInstance().getDownloadQueue(AUTODOWNLOAD_MASK_DOCUMENT);
         }
         if ((mask & AUTODOWNLOAD_MASK_MUSIC) != 0 && (downloadMask & AUTODOWNLOAD_MASK_MUSIC) != 0 && musicDownloadQueue.isEmpty()) {
-            MessagesStorage.getInstance().getDownloadQueue(AUTODOWNLOAD_MASK_MUSIC);
+            //MessagesStorage.getInstance().getDownloadQueue(AUTODOWNLOAD_MASK_MUSIC);
         }
         if ((mask & AUTODOWNLOAD_MASK_GIF) != 0 && (downloadMask & AUTODOWNLOAD_MASK_GIF) != 0 && gifDownloadQueue.isEmpty()) {
-            MessagesStorage.getInstance().getDownloadQueue(AUTODOWNLOAD_MASK_GIF);
+            //MessagesStorage.getInstance().getDownloadQueue(AUTODOWNLOAD_MASK_GIF);
         }
     }
 
@@ -1047,7 +1047,7 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
         if (downloadObject != null) {
             downloadQueueKeys.remove(fileName);
             if (state == 0 || state == 2) {
-                MessagesStorage.getInstance().removeFromDownloadQueue(downloadObject.id, downloadObject.type, false /*state != 0*/);
+                //MessagesStorage.getInstance().removeFromDownloadQueue(downloadObject.id, downloadObject.type, false /*state != 0*/);
             }
             if (downloadObject.type == AUTODOWNLOAD_MASK_PHOTO) {
                 photoDownloadQueue.remove(downloadObject);
@@ -2660,7 +2660,7 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
                             }
                             TLRPC.TL_messages_messages messagesRes = new TLRPC.TL_messages_messages();
                             messagesRes.messages.add(messageObject.messageOwner);
-                            MessagesStorage.getInstance().putMessages(messagesRes, messageObject.getDialogId(), -1, 0, false);
+                            //MessagesStorage.getInstance().putMessages(messagesRes, messageObject.getDialogId(), -1, 0, false);
                             ArrayList<MessageObject> arrayList = new ArrayList<>();
                             arrayList.add(messageObject);
                             NotificationCenter.getInstance().postNotificationName(NotificationCenter.replaceMessagesObjects, messageObject.getDialogId(), arrayList);

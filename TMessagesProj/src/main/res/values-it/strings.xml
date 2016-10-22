@@ -165,7 +165,7 @@
     <string name="ChatVideo">Video</string>
     <string name="ChatDocument">File</string>
     <string name="ChatCamera">Foto</string>
-    <string name="NoMessages">Ancora nessun messaggio qui…</string>
+    <string name="NoMessages">Ancora nessun messaggio qui.</string>
     <string name="ForwardedMessage">Messaggio inoltrato</string>
     <string name="From">Da</string>
     <string name="NoRecent">Nessun recente</string>

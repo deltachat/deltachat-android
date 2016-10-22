@@ -36,7 +36,6 @@ import android.os.SystemClock;
 import android.service.media.MediaBrowserService;
 import android.text.TextUtils;
 
-import org.telegram.SQLite.SQLiteCursor;
 import org.telegram.messenger.audioinfo.AudioInfo;
 import org.telegram.messenger.query.SharedMediaQuery;
 import org.telegram.tgnet.NativeByteBuffer;
@@ -153,6 +152,7 @@ public class MusicBrowserService extends MediaBrowserService implements Notifica
                 return;
             }
             loadingChats = true;
+            /*
             MessagesStorage.getInstance().getStorageQueue().postRunnable(new Runnable() {
                 @Override
                 public void run() {
@@ -205,7 +205,7 @@ public class MusicBrowserService extends MediaBrowserService implements Notifica
                             cursor.dispose();
                             if (!usersToLoad.isEmpty()) {
                                 ArrayList<TLRPC.User> usersArrayList = new ArrayList<>();
-                                MessagesStorage.getInstance().getUsersInternal(TextUtils.join(",", usersToLoad), usersArrayList);
+                                //MessagesStorage.getInstance().getUsersInternal(TextUtils.join(",", usersToLoad), usersArrayList);
                                 for (int a = 0; a < usersArrayList.size(); a++) {
                                     TLRPC.User user = usersArrayList.get(a);
                                     users.put(user.id, user);
@@ -213,7 +213,7 @@ public class MusicBrowserService extends MediaBrowserService implements Notifica
                             }
                             if (!chatsToLoad.isEmpty()) {
                                 ArrayList<TLRPC.Chat> chatsArrayList = new ArrayList<>();
-                                MessagesStorage.getInstance().getChatsInternal(TextUtils.join(",", chatsToLoad), chatsArrayList);
+                                //MessagesStorage.getInstance().getChatsInternal(TextUtils.join(",", chatsToLoad), chatsArrayList);
                                 for (int a = 0; a < chatsArrayList.size(); a++) {
                                     TLRPC.Chat chat = chatsArrayList.get(a);
                                     chats.put(chat.id, chat);
@@ -265,6 +265,7 @@ public class MusicBrowserService extends MediaBrowserService implements Notifica
                     });
                 }
             });
+            */
         } else {
             loadChildrenImpl(parentMediaId, result);
         }

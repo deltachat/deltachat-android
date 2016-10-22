@@ -57,7 +57,6 @@ import android.widget.TextView;
 import org.telegram.messenger.AndroidUtilities;
 import org.telegram.messenger.Emoji;
 import org.telegram.messenger.ImageLoader;
-import org.telegram.messenger.MessagesStorage;
 import org.telegram.messenger.UserObject;
 import org.telegram.messenger.exoplayer.AspectRatioFrameLayout;
 import org.telegram.messenger.exoplayer.ExoPlayer;
@@ -1197,7 +1196,7 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
                                     inputPhoto.id = photo.id;
                                     inputPhoto.access_hash = photo.access_hash;
                                     MessagesController.getInstance().deleteUserPhoto(inputPhoto);
-                                    MessagesStorage.getInstance().clearUserPhoto(avatarsDialogId, photo.id);
+                                    //MessagesStorage.getInstance().clearUserPhoto(avatarsDialogId, photo.id);
                                     imagesArrLocations.remove(currentIndex);
                                     imagesArrLocationsSizes.remove(currentIndex);
                                     avatarsArr.remove(currentIndex);

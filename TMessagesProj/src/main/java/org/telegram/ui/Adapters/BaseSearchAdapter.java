@@ -8,10 +8,7 @@
 
 package org.telegram.ui.Adapters;
 
-import org.telegram.SQLite.SQLiteCursor;
-import org.telegram.SQLite.SQLitePreparedStatement;
 import org.telegram.messenger.AndroidUtilities;
-import org.telegram.messenger.MessagesStorage;
 import org.telegram.messenger.FileLog;
 import org.telegram.tgnet.ConnectionsManager;
 import org.telegram.tgnet.RequestDelegate;
@@ -88,6 +85,7 @@ public class BaseSearchAdapter extends BaseFragmentAdapter {
         }, ConnectionsManager.RequestFlagFailOnServerErrors);
     }
 
+    /*
     public void loadRecentHashtags() {
         MessagesStorage.getInstance().getStorageQueue().postRunnable(new Runnable() {
             @Override
@@ -128,7 +126,9 @@ public class BaseSearchAdapter extends BaseFragmentAdapter {
             }
         });
     }
+    */
 
+    /*
     public void addHashtagsFromMessage(String message) {
         if (message == null) {
             return;
@@ -163,7 +163,9 @@ public class BaseSearchAdapter extends BaseFragmentAdapter {
             putRecentHashtags(hashtags);
         }
     }
+    */
 
+    /*
     private void putRecentHashtags(final ArrayList<HashtagObject> arrayList) {
         MessagesStorage.getInstance().getStorageQueue().postRunnable(new Runnable() {
             @Override
@@ -196,7 +198,9 @@ public class BaseSearchAdapter extends BaseFragmentAdapter {
             }
         });
     }
+    */
 
+    /*
     public void clearRecentHashtags() {
         hashtags = new ArrayList<>();
         hashtagsByText = new HashMap<>();
@@ -211,10 +215,13 @@ public class BaseSearchAdapter extends BaseFragmentAdapter {
             }
         });
     }
+    */
 
+    /*
     protected void setHashtags(ArrayList<HashtagObject> arrayList, HashMap<String, HashtagObject> hashMap) {
         hashtags = arrayList;
         hashtagsByText = hashMap;
         hashtagsLoadedFromDb = true;
     }
+    */
 }

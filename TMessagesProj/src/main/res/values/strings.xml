@@ -165,7 +165,7 @@
     <string name="ChatVideo">Video</string>
     <string name="ChatDocument">File</string>
     <string name="ChatCamera">Camera</string>
-    <string name="NoMessages">No messages here yet...</string>
+    <string name="NoMessages">No messages.</string>
     <string name="ForwardedMessage">Forwarded message</string>
     <string name="From">From</string>
     <string name="NoRecent">No recent</string>
@@ -919,4 +919,5 @@
     <string name="Strangers">Unknown users</string>
     <string name="StrangersExplain">Show messages from unknown useres</string>
     <string name="Media">Media</string>
+    <string name="StrangersInChatlist">Show unknown users in chatlist</string>
 </resources>

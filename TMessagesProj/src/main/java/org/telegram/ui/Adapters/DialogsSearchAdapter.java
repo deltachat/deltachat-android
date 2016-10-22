@@ -14,15 +14,12 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 
-import org.telegram.SQLite.SQLiteCursor;
-import org.telegram.SQLite.SQLitePreparedStatement;
 import org.telegram.messenger.AndroidUtilities;
 import org.telegram.messenger.ChatObject;
 import org.telegram.messenger.ContactsController;
 import org.telegram.messenger.LocaleController;
 import org.telegram.messenger.MessageObject;
 import org.telegram.messenger.MessagesController;
-import org.telegram.messenger.MessagesStorage;
 import org.telegram.messenger.query.SearchQuery;
 import org.telegram.messenger.support.widget.LinearLayoutManager;
 import org.telegram.messenger.support.widget.RecyclerView;
@@ -222,7 +219,7 @@ public class DialogsSearchAdapter extends BaseSearchAdapterRecycler {
                         if (currentReqId == lastReqId) {
                             if (error == null) {
                                 TLRPC.messages_Messages res = (TLRPC.messages_Messages) response;
-                                MessagesStorage.getInstance().putUsersAndChats(res.users, res.chats, true, true);
+                                //MessagesStorage.getInstance().putUsersAndChats(res.users, res.chats, true, true);
                                 MessagesController.getInstance().putUsers(res.users, false);
                                 MessagesController.getInstance().putChats(res.chats, false);
                                 if (req.offset_id == 0) {
@@ -235,7 +232,7 @@ public class DialogsSearchAdapter extends BaseSearchAdapterRecycler {
                                     ConcurrentHashMap<Long, Integer> read_max = message.out ? MessagesController.getInstance().dialogs_read_outbox_max : MessagesController.getInstance().dialogs_read_inbox_max;
                                     Integer value = read_max.get(dialog_id);
                                     if (value == null) {
-                                        value = MessagesStorage.getInstance().getDialogReadMax(message.out, dialog_id);
+                                        value = 0;//MessagesStorage.getInstance().getDialogReadMax(message.out, dialog_id);
                                         read_max.put(dialog_id, value);
                                     }
                                     message.unread = value < message.id;
@@ -263,6 +260,7 @@ public class DialogsSearchAdapter extends BaseSearchAdapterRecycler {
     }
 
     public void loadRecentSearch() {
+        /*
         MessagesStorage.getInstance().getStorageQueue().postRunnable(new Runnable() {
             @Override
             public void run() {
@@ -330,7 +328,7 @@ public class DialogsSearchAdapter extends BaseSearchAdapterRecycler {
 
                     if (!chatsToLoad.isEmpty()) {
                         ArrayList<TLRPC.Chat> chats = new ArrayList<>();
-                        MessagesStorage.getInstance().getChatsInternal(TextUtils.join(",", chatsToLoad), chats);
+                        //MessagesStorage.getInstance().getChatsInternal(TextUtils.join(",", chatsToLoad), chats);
                         for (int a = 0; a < chats.size(); a++) {
                             TLRPC.Chat chat = chats.get(a);
                             long did;
@@ -351,7 +349,7 @@ public class DialogsSearchAdapter extends BaseSearchAdapterRecycler {
                     }
 
                     if (!usersToLoad.isEmpty()) {
-                        MessagesStorage.getInstance().getUsersInternal(TextUtils.join(",", usersToLoad), users);
+                        //MessagesStorage.getInstance().getUsersInternal(TextUtils.join(",", usersToLoad), users);
                         for (int a = 0; a < users.size(); a++) {
                             TLRPC.User user = users.get(a);
                             RecentSearchObject recentSearchObject = hashMap.get((long) user.id);
@@ -384,6 +382,7 @@ public class DialogsSearchAdapter extends BaseSearchAdapterRecycler {
                 }
             }
         });
+        */
     }
 
 
@@ -401,6 +400,7 @@ public class DialogsSearchAdapter extends BaseSearchAdapterRecycler {
         recentSearchObject.object = object;
         recentSearchObject.date = (int) (System.currentTimeMillis() / 1000);
         notifyDataSetChanged();
+        /*
         MessagesStorage.getInstance().getStorageQueue().postRunnable(new Runnable() {
             @Override
             public void run() {
@@ -416,12 +416,14 @@ public class DialogsSearchAdapter extends BaseSearchAdapterRecycler {
                 }
             }
         });
+        */
     }
 
     public void clearRecentSearch() {
         recentSearchObjectsById = new HashMap<>();
         recentSearchObjects = new ArrayList<>();
         notifyDataSetChanged();
+        /*
         MessagesStorage.getInstance().getStorageQueue().postRunnable(new Runnable() {
             @Override
             public void run() {
@@ -432,6 +434,7 @@ public class DialogsSearchAdapter extends BaseSearchAdapterRecycler {
                 }
             }
         });
+        */
     }
 
     private void setRecentSearch(ArrayList<RecentSearchObject> arrayList, HashMap<Long, RecentSearchObject> hashMap) {
@@ -454,6 +457,7 @@ public class DialogsSearchAdapter extends BaseSearchAdapterRecycler {
         if (needMessagesSearch == 2) {
             return;
         }
+        /*
         MessagesStorage.getInstance().getStorageQueue().postRunnable(new Runnable() {
             @Override
             public void run() {
@@ -745,6 +749,7 @@ public class DialogsSearchAdapter extends BaseSearchAdapterRecycler {
                 }
             }
         });
+        */
     }
 
     private void updateSearchResults(final ArrayList<TLObject> result, final ArrayList<CharSequence> names, final ArrayList<TLRPC.User> encUsers, final int searchId) {

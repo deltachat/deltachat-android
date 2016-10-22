@@ -53,7 +53,6 @@ import org.telegram.messenger.FileLog;
 import org.telegram.tgnet.TLRPC;
 import org.telegram.messenger.ContactsController;
 import org.telegram.messenger.MessagesController;
-import org.telegram.messenger.MessagesStorage;
 import org.telegram.messenger.NotificationCenter;
 import org.telegram.messenger.R;
 import org.telegram.messenger.UserConfig;
@@ -361,7 +360,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
                             ArrayList<TLRPC.User> users = new ArrayList<>();
                             users.add((TLRPC.User) obj);
                             MessagesController.getInstance().putUsers(users, false);
-                            MessagesStorage.getInstance().putUsersAndChats(users, null, false, true);
+                            //MessagesStorage.getInstance().putUsersAndChats(users, null, false, true);
                         }
                         if (!onlySelect) {
                             dialogsSearchAdapter.putRecentSearch(dialog_id, (TLRPC.User) obj);
@@ -371,7 +370,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
                             ArrayList<TLRPC.Chat> chats = new ArrayList<>();
                             chats.add((TLRPC.Chat) obj);
                             MessagesController.getInstance().putChats(chats, false);
-                            MessagesStorage.getInstance().putUsersAndChats(null, chats, false, true);
+                            //MessagesStorage.getInstance().putUsersAndChats(null, chats, false, true);
                         }
                         if (((TLRPC.Chat) obj).id > 0) {
                             dialog_id = -((TLRPC.Chat) obj).id;
@@ -448,14 +447,14 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
                         }
                     }
                     if (searchString != null) {
-                        if (MessagesController.checkCanOpenChat(args, DialogsActivity.this)) {
+                        //if (MessagesController.checkCanOpenChat(args, DialogsActivity.this)) {
                             NotificationCenter.getInstance().postNotificationName(NotificationCenter.closeChats);
                             presentFragment(new ChatActivity(args));
-                        }
+                        //}
                     } else {
-                        if (MessagesController.checkCanOpenChat(args, DialogsActivity.this)) {
+                        //if (MessagesController.checkCanOpenChat(args, DialogsActivity.this)) {
                             presentFragment(new ChatActivity(args));
-                        }
+                        //}
                     }
                 }
             }

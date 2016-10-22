@@ -11,11 +11,8 @@ package org.telegram.messenger.query;
 import android.content.Context;
 import android.widget.Toast;
 
-import org.telegram.SQLite.SQLiteCursor;
-import org.telegram.SQLite.SQLitePreparedStatement;
 import org.telegram.messenger.AndroidUtilities;
 import org.telegram.messenger.LocaleController;
-import org.telegram.messenger.MessagesStorage;
 import org.telegram.messenger.NotificationCenter;
 import org.telegram.messenger.FileLog;
 import org.telegram.messenger.R;
@@ -172,6 +169,7 @@ public class StickersQuery {
         }
         loadingStickers = true;
         if (cache) {
+            /*
             MessagesStorage.getInstance().getStorageQueue().postRunnable(new Runnable() {
                 @Override
                 public void run() {
@@ -205,6 +203,7 @@ public class StickersQuery {
                     processLoadedStickers(newStickerArray, true, date, hash);
                 }
             });
+            */
         } else {
             final TLRPC.TL_messages_getAllStickers req = new TLRPC.TL_messages_getAllStickers();
             req.hash = force ? 0 : loadHash;
@@ -273,6 +272,7 @@ public class StickersQuery {
 
     private static void putStickersToCache(ArrayList<TLRPC.TL_messages_stickerSet> stickers, final int date, final int hash) {
         final ArrayList<TLRPC.TL_messages_stickerSet> stickersFinal = stickers != null ? new ArrayList<>(stickers) : null;
+        /*
         MessagesStorage.getInstance().getStorageQueue().postRunnable(new Runnable() {
             @Override
             public void run() {
@@ -308,6 +308,7 @@ public class StickersQuery {
                 }
             }
         });
+        */
     }
 
     public static String getStickerSetName(long setId) {

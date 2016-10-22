@@ -29,7 +29,6 @@ import android.widget.TextView;
 import org.telegram.messenger.AndroidUtilities;
 import org.telegram.messenger.LocaleController;
 import org.telegram.messenger.MediaController;
-import org.telegram.messenger.MessagesStorage;
 import org.telegram.messenger.NotificationCenter;
 import org.telegram.messenger.ApplicationLoader;
 import org.telegram.messenger.R;
@@ -403,10 +402,10 @@ public class PhotoAlbumPickerActivity extends BaseFragment implements Notificati
             }
         }
         if (webChange) {
-            MessagesStorage.getInstance().putWebRecent(recentWebImages);
+            //MessagesStorage.getInstance().putWebRecent(recentWebImages);
         }
         if (gifChanged) {
-            MessagesStorage.getInstance().putWebRecent(recentGifImages);
+            //MessagesStorage.getInstance().putWebRecent(recentGifImages);
         }
 
         delegate.didSelectPhotos(photos, captions, webPhotos);

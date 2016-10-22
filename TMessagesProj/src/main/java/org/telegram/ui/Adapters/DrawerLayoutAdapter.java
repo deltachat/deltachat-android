@@ -33,7 +33,7 @@ public class DrawerLayoutAdapter extends BaseAdapter {
     public final static int iNewChat           = 2;
     public final static int iNewGroup          = 3;
     public final static int iNewChannel        = -1;
-    public final static int iContacts          = 4;
+    public final static int iStrangers         = 4;
     public final static int iInviteFriends     = -1;
     public final static int iDivider           = 5;
     public final static int iSettings          = 6;
@@ -107,8 +107,8 @@ public class DrawerLayoutAdapter extends BaseAdapter {
                 actionCell.setTextAndIcon(LocaleController.getString("NewChat", R.string.NewChat), R.drawable.menu_newchat);
             } else if (i == iNewChannel) {
                 actionCell.setTextAndIcon(LocaleController.getString("NewChannel", R.string.NewChannel), R.drawable.menu_broadcast);
-            } else if (i == iContacts) {
-                actionCell.setTextAndIcon(LocaleController.getString("Contacts", R.string.Contacts), R.drawable.menu_contacts);
+            } else if (i == iStrangers) {
+                actionCell.setTextAndIcon(LocaleController.getString("Strangers", R.string.Strangers), R.drawable.menu_contacts);
             } else if (i == iInviteFriends) {
                 actionCell.setTextAndIcon(LocaleController.getString("InviteFriends", R.string.InviteFriends), R.drawable.menu_invite);
             } else if (i == iSettings) {

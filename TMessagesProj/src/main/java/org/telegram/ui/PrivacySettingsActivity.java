@@ -443,10 +443,9 @@ public class PrivacySettingsActivity extends BaseFragment implements Notificatio
                     textCell.setTextAndCheck(LocaleController.getString("SecretWebPage", R.string.SecretWebPage), MessagesController.getInstance().secretWebpagePreview == 1, true);
                 }
                 else if( i==showUnknownSendersRow) {
-                    textCell.setTextAndValueAndCheck(LocaleController.getString("Strangers", R.string.Strangers),
-                            LocaleController.getString("StrangersExplain", R.string.StrangersExplain),
+                    textCell.setTextAndCheck(LocaleController.getString("StrangersInChatlist", R.string.StrangersInChatlist),
                             MrMailbox.MrMailboxGetConfigInt(MrMailbox.hMailbox, "show_strangers", 0)==0? false : true,
-                            false, true);
+                            true);
                 }
             }
             return view;
