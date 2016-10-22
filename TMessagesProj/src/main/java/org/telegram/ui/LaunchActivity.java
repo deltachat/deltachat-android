@@ -1828,7 +1828,7 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                 @Override
                 public void onClick(DialogInterface dialogInterface, int i) {
                     /*Telegram FOSS: manual Location selection not available */
-                    Toast.makeText(getApplicationContext(),"Telegram-FOSS: Disabled for now.", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(),"Disabled for now.", Toast.LENGTH_LONG).show();
                     /*
                     if (mainFragmentsStack.isEmpty()) {
                         return;

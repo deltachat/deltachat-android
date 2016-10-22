@@ -122,7 +122,6 @@ import org.telegram.ui.Components.PlayerView;
 import org.telegram.ui.Components.LayoutHelper;
 import org.telegram.ui.Components.NumberTextView;
 import org.telegram.ui.Components.RecyclerListView;
-import org.telegram.ui.Components.ShareAlert;
 import org.telegram.ui.Components.Size;
 import org.telegram.ui.Components.SizeNotifierFrameLayout;
 import org.telegram.ui.Components.StickersAlert;
@@ -3230,9 +3229,9 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
             } catch (Exception e) {
                 FileLog.e("tmessages", e);
             }
-        } else if (which == attach_location) {
+        } else if (which == attach_location ) {
             /* Telegram-FOSS  Disabled for now.*/
-            Toast.makeText(getParentActivity(), "Telegram-FOSS: Disabled for now.\nYou can share locations from OSMAnd.", Toast.LENGTH_LONG).show();
+            Toast.makeText(getParentActivity(), "Disabled for now.", Toast.LENGTH_LONG).show();
             /*AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
             builder.setTitle(LocaleController.getString("AppName", R.string.AppName));
             builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), new DialogInterface.OnClickListener() {
@@ -8269,7 +8268,8 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                         if (chatActivityEnterView != null) {
                             chatActivityEnterView.closeKeyboard();
                         }
-                        showDialog(new ShareAlert(mContext, cell.getMessageObject(), ChatObject.isChannel(currentChat) && !currentChat.megagroup && currentChat.username != null && currentChat.username.length() > 0));
+                        //showDialog(new ShareAlert(mContext, cell.getMessageObject(), ChatObject.isChannel(currentChat) && !currentChat.megagroup && currentChat.username != null && currentChat.username.length() > 0));
+                        Toast.makeText(mContext,"Reply to unknown user is not yet implemented.", Toast.LENGTH_LONG).show();
                     }
 
                     @Override

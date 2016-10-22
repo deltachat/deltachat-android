@@ -3915,6 +3915,13 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
     }
 
     private boolean checkNeedDrawShareButton(MessageObject messageObject) {
+        // LibreChat uses the "Share" button as a reply button: in the "strangers" group it is very usul to reply
+        // to a message, so we use this as a shortcut to "long press -> reply"
+        if( messageObject.getDialogId()==MrMailbox.MR_CHAT_ID_STRANGERS) {
+            return true;
+        }
+        return false;
+        /*
         if (messageObject.type == 13) {
             return false;
         } else if (messageObject.messageOwner.fwd_from != null && messageObject.messageOwner.fwd_from.channel_id != 0 && !messageObject.isOut()) {
@@ -3936,7 +3943,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                 return true;
             }
         }
-        return false;
+        */
     }
 
     private void setMessageObjectInternal(MessageObject messageObject) {
