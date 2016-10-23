@@ -321,7 +321,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
     private final static int id_delete_messages = 12;
     private final static int chat_menu_attach = 14;
     private final static int clear_history = 15;
-    private final static int delete_chat = 16;
+    private final static int id_delete_chat = 16;
     private final static int share_contact = 17;
     private final static int mute = 18;
     private final static int id_reply = 19;
@@ -826,7 +826,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     */
                     actionBar.hideActionMode();
                     updateVisibleRows();
-                } else if (id == clear_history || id == delete_chat) {
+                } else if (id == clear_history || id == id_delete_chat) {
                     if (getParentActivity() == null) {
                         return;
                     }
@@ -1021,9 +1021,10 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
             addContactItem = headerItem.addSubItem(share_contact, "", 0);
         }
 
+
+        boolean isChatWithStrangers = MrMailbox.MrChatGetId(m_hChat)==MrMailbox.MR_CHAT_ID_STRANGERS;
         m_canMute = true;
-        if( MrMailbox.MrChatGetId(m_hChat)==MrMailbox.MR_CHAT_ID_STRANGERS
-                && MrMailbox.MrMailboxGetConfigInt(MrMailbox.hMailbox, "show_strangers", 0)==0 ) {
+        if( isChatWithStrangers && MrMailbox.MrMailboxGetConfigInt(MrMailbox.hMailbox, "show_strangers", 0)==0 ) {
             m_canMute = false;
         }
 
@@ -1033,10 +1034,12 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
 
         headerItem.addSubItem(clear_history, LocaleController.getString("ClearHistory", R.string.ClearHistory), 0);
 
-        if (MrMailbox.MrChatGetType(m_hChat)==MrMailbox.MR_CHAT_GROUP) {
-            headerItem.addSubItem(delete_chat, LocaleController.getString("DeleteAndExit", R.string.DeleteAndExit), 0);
-        } else {
-            headerItem.addSubItem(delete_chat, LocaleController.getString("DeleteChat", R.string.DeleteChat), 0);
+        if( !isChatWithStrangers ) {
+            if (MrMailbox.MrChatGetType(m_hChat) == MrMailbox.MR_CHAT_GROUP) {
+                headerItem.addSubItem(id_delete_chat, LocaleController.getString("DeleteAndExit", R.string.DeleteAndExit), 0);
+            } else {
+                headerItem.addSubItem(id_delete_chat, LocaleController.getString("DeleteChat", R.string.DeleteChat), 0);
+            }
         }
 
 
