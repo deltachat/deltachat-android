@@ -348,6 +348,12 @@ JNIEXPORT jint Java_org_telegram_messenger_MrMailbox_MrChatGetDraftReplyToMsgId(
 }
 
 
+JNIEXPORT jint Java_org_telegram_messenger_MrMailbox_MrChatGetTotalMsgCount(JNIEnv *env, jclass c, jlong hChat)
+{
+	return mrchat_get_total_msg_count((mrchat_t*)hChat); /* mrchat_get_unread_count() checks for nullpointers */
+}
+
+
 JNIEXPORT jint Java_org_telegram_messenger_MrMailbox_MrChatGetUnreadCount(JNIEnv *env, jclass c, jlong hChat)
 {
 	return mrchat_get_unread_count((mrchat_t*)hChat); /* mrchat_get_unread_count() checks for nullpointers */

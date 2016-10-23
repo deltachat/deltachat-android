@@ -45,8 +45,7 @@
     <string name="Updating">Bijwerken</string>
     <string name="NewSecretChat">Nieuwe geheime chat</string>
     <string name="ClearHistory">Geschiedenis wissen</string>
-    <string name="ClearHistoryCache">Cache opschonen</string>
-    <string name="DeleteChat">Verwijder en verlaat</string>
+    <string name="DeleteChat">Chat verwijderen</string>
     <string name="DeleteChatUser">Chat verwijderen</string>
     <string name="HiddenName">Verwijderd account</string>
     <string name="SelectChat">Kies een chat</string>
@@ -599,9 +598,6 @@
     <string name="AlwaysShareWithPlaceholder">Altijd delen met gebruikers</string>
     <string name="NeverShareWithTitle">Nooit delen</string>
     <string name="NeverShareWithPlaceholder">Nooit delen met gebruikers</string>
-    <string name="EmpryUsersPlaceholder">Toevoegen</string>
-    <string name="PrivacyFloodControlError">Sorry, te veel verzoeken. Momenteel is het niet mogelijk om de privacyinstellingen te wijzigen, even geduld alsjeblieft.</string>
-    <string name="ClearOtherSessionsHelp">Logt alle apparaten behalve deze uit.</string>
     <string name="RemoveFromListText">Gebruiker vasthouden om te verwijderen.</string>
     <string name="GroupsAndChannels">Groepen</string>
     <string name="WhoCanAddMe">Wie kan me toevoegen aan groepchats?</string>
@@ -723,8 +719,6 @@
     <string name="AreYouSureSecretChat">Weet je zeker dat je een geheime chat wilt starten?</string>
     <string name="AreYouSureRegistration">Weet je zeker dat je de registratie wilt annuleren?</string>
     <string name="AreYouSureClearHistory">Geschiedenis echt wissen? </string>
-    <string name="AreYouSureClearHistoryChannel">Kanaalcache opschonen?</string>
-    <string name="AreYouSureClearHistorySuper">Groepscache echt opschonen?</string>
     <string name="AreYouSureDeleteMessages">%1$s echt verwijderen?</string>
     <string name="SendMessagesToGroup">Berichten naar %1$s versturen?</string>
     <string name="SendContactToGroup">Contact delen met %1$s?</string>

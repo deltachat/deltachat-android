@@ -45,8 +45,7 @@
     <string name="Updating">Atualizando...</string>
     <string name="NewSecretChat">Novo Chat Secreto</string>
     <string name="ClearHistory">Limpar histórico</string>
-    <string name="ClearHistoryCache">Apagar do cache</string>
-    <string name="DeleteChat">Apagar e sair</string>
+    <string name="DeleteChat">Apagar conversa</string>
     <string name="DeleteChatUser">Apagar conversa</string>
     <string name="HiddenName">Conta Excluída</string>
     <string name="SelectChat">Selecione um Chat</string>
@@ -599,9 +598,6 @@
     <string name="AlwaysShareWithPlaceholder">Sempre compartilhar para os usuários...</string>
     <string name="NeverShareWithTitle">Nunca Mostrar</string>
     <string name="NeverShareWithPlaceholder">Nunca mostrar para os usuários...</string>
-    <string name="EmpryUsersPlaceholder">Adicionar Usuários</string>
-    <string name="PrivacyFloodControlError">Desculpe, muitas solicitações. Impossível alterar os ajustes de privacidade agora, por favor aguarde.</string>
-    <string name="ClearOtherSessionsHelp">Sair de todos os dispositivos, exceto este.</string>
     <string name="RemoveFromListText">Toque e segure no usuário para remover.</string>
     <string name="GroupsAndChannels">Grupos</string>
     <string name="WhoCanAddMe">Quem pode me adicionar em grupos?</string>
@@ -723,8 +719,6 @@
     <string name="AreYouSureSecretChat">Você tem certeza que deseja começar um chat secreto?</string>
     <string name="AreYouSureRegistration">Você tem certeza que deseja cancelar o registro?</string>
     <string name="AreYouSureClearHistory">Você tem certeza que deseja limpar o histórico?</string>
-    <string name="AreYouSureClearHistoryChannel">Apagar todos os textos e mídias em cache desse canal?</string>
-    <string name="AreYouSureClearHistorySuper">Apagar todos os textos e mídias em cache desse grupo?</string>
     <string name="AreYouSureDeleteMessages">Você tem certeza que deseja apagar %1$s?</string>
     <string name="SendMessagesToGroup">Enviar mensagens para %1$s?</string>
     <string name="SendContactToGroup">Enviar contato para %1$s?</string>

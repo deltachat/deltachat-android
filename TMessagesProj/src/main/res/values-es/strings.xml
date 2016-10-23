@@ -45,8 +45,7 @@
     <string name="Updating">Actualizando...</string>
     <string name="NewSecretChat">Nuevo chat secreto</string>
     <string name="ClearHistory">Borrar historial</string>
-    <string name="ClearHistoryCache">Eliminar de la caché</string>
-    <string name="DeleteChat">Eliminar y salir</string>
+    <string name="DeleteChat">Eliminar chat</string>
     <string name="DeleteChatUser">Eliminar chat</string>
     <string name="HiddenName">Cuenta eliminada</string>
     <string name="SelectChat">Elige el chat</string>
@@ -599,9 +598,6 @@
     <string name="AlwaysShareWithPlaceholder">Siempre compartir con...</string>
     <string name="NeverShareWithTitle">Nunca compartir</string>
     <string name="NeverShareWithPlaceholder">Nunca compartir con...</string>
-    <string name="EmpryUsersPlaceholder">Añadir usuarios</string>
-    <string name="PrivacyFloodControlError">Lo sentimos, hay demasiadas solicitudes. Es imposible cambiar los ajustes de privacidad ahora. Por favor, espera.</string>
-    <string name="ClearOtherSessionsHelp">Salir de todos los dispositivos, excepto este.</string>
     <string name="RemoveFromListText">Mantén pulsado sobre un usuario para eliminarlo.</string>
     <string name="GroupsAndChannels">Grupos</string>
     <string name="WhoCanAddMe">¿Quién puede añadirme a grupos?</string>
@@ -723,8 +719,6 @@
     <string name="AreYouSureSecretChat">¿Quieres iniciar un chat secreto?</string>
     <string name="AreYouSureRegistration">¿Quieres cancelar el registro?</string>
     <string name="AreYouSureClearHistory">¿Quieres eliminar el historial?</string>
-    <string name="AreYouSureClearHistoryChannel">¿Eliminar de la caché los mensajes y multimedia de este canal?</string>
-    <string name="AreYouSureClearHistorySuper">¿Eliminar de la caché los mensajes y multimedia de este grupo?</string>
     <string name="AreYouSureDeleteMessages">¿Quieres eliminar %1$s?</string>
     <string name="SendMessagesToGroup">¿Enviar mensajes a %1$s?</string>
     <string name="SendContactToGroup">¿Enviar contacto a %1$s?</string>

@@ -43,9 +43,8 @@
     <string name="WaitingForNetwork">Warte auf Netzwerk...</string>
     <string name="Connecting">Verbinde…</string>
     <string name="Updating">Aktualisiere…</string>
-    <string name="ClearHistory">Verlauf löschen</string>
-    <string name="ClearHistoryCache">Cache leeren</string>
-    <string name="DeleteChat">Löschen und beenden</string>
+    <string name="ClearHistory">Alle Nachrichten löschen</string>
+    <string name="DeleteChat">Chat löschen</string>
     <string name="DeleteChatUser">Chat löschen</string>
     <string name="HiddenName">Gelöschtes Konto</string>
     <string name="SelectChat">Chat auswählen</string>
@@ -56,7 +55,6 @@
     <string name="MuteFor">Stumm für %1$s</string>
     <string name="UnmuteNotifications">Stumm aus</string>
     <string name="WillUnmuteIn">In %1$s</string>
-    <string name="MuteDisable">Dauerhaft Stumm</string>
     <string name="Hashtags">HASHTAGS</string>
     <string name="Recent">LETZTE</string>
     <string name="ChatHints">CHATS</string>
@@ -599,9 +597,6 @@
     <string name="AlwaysShareWithPlaceholder">Immer teilen mit...</string>
     <string name="NeverShareWithTitle">Niemals teilen</string>
     <string name="NeverShareWithPlaceholder">Niemals teilen mit...</string>
-    <string name="EmpryUsersPlaceholder">Hinzufügen</string>
-    <string name="PrivacyFloodControlError">Du hast zu oft probiert, deine Einstellungen zu ändern; bitte warte kurz.</string>
-    <string name="ClearOtherSessionsHelp">Alle Geräte außer diesem werden abgemeldet.</string>
     <string name="RemoveFromListText">Auf Nutzer tippen und halten um zu löschen.</string>
     <string name="GroupsAndChannels">Gruppen</string>
     <string name="WhoCanAddMe">Wer kann mich in Gruppen einladen?</string>
@@ -722,10 +717,8 @@
     <string name="AreYouSureDeleteContact">Diesen Kontakt wirklich löschen?</string>
     <string name="AreYouSureSecretChat">Geheimen Chat starten?</string>
     <string name="AreYouSureRegistration">Bist du dir sicher, dass du die Registrierung abbrechen willst?</string>
-    <string name="AreYouSureClearHistory">Möchtest du wirklich den Verlauf löschen?</string>
-    <string name="AreYouSureClearHistoryChannel">Cache des Kanals wirklich löschen?</string>
-    <string name="AreYouSureClearHistorySuper">Cache dieser Gruppe wirklich löschen?</string>
-    <string name="AreYouSureDeleteMessages">Sicher, dass du %1$s löschen willst?</string>
+    <string name="AreYouSureClearHistory">Wirklich alle Nachrichten in diesem Chat löschen?\n\nHiermit werden auch die entsprechenden Nachrichten auf dem Server gelöscht.</string>
+    <string name="AreYouSureDeleteMessages">Wirklich %1$s löschen?\n\nHiermit werden die Nachrichten auch auf dem Server gelöscht.</string>
     <string name="SendMessagesToGroup">Nachricht an %1$s senden?</string>
     <string name="SendContactToGroup">Kontakt senden an %1$s?</string>
     <string name="ForwardMessagesToGroup">Weiterleiten an %1$s?</string>
@@ -922,4 +915,5 @@
     <string name="MuteAlways">Dauerhaft stumm</string>
     <string name="AskStartChatWith">Chat mit <![CDATA[<b>]]>%1$s<![CDATA[</b>]]> starten?</string>
     <string name="StrangersHint">Ein Klick auf die Antwort-Pfeile startet einen Chat.</string>
+    <string name="NotYetImplemented">Diese Funktion ist in dieser Version noch nicht eingebaut.</string>
 </resources>
