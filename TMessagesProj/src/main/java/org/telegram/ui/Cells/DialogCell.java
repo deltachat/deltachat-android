@@ -605,9 +605,6 @@ public class DialogCell extends BaseCell {
         }
         */
         nameString = MrMailbox.MrChatGetName(m_hChat); // EDIT BY MR
-        if (nameString.length() == 0) {
-            nameString = LocaleController.getString("HiddenName", R.string.HiddenName);
-        }
 
         int nameWidth;
 

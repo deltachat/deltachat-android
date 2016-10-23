@@ -45,8 +45,6 @@
     <string name="Updating">Aktualisiere…</string>
     <string name="ClearHistory">Alle Nachrichten löschen</string>
     <string name="DeleteChat">Chat löschen</string>
-    <string name="DeleteChatUser">Chat löschen</string>
-    <string name="HiddenName">Gelöschtes Konto</string>
     <string name="SelectChat">Chat auswählen</string>
     <string name="PhotoTip">Tippen und Halten</string>
     <string name="SearchMessages">NACHRICHTEN</string>
@@ -63,33 +61,18 @@
     <string name="Draft">Entwurf</string>
     <string name="HistoryCleared">Verlauf wurde gelöscht</string>
     <!--channels-->
-    <string name="GroupType">Gruppenart</string>
     <string name="SetAsAdmin">Zum Admin machen</string>
-    <string name="DescriptionInfoMega">Beschreibe deine Gruppe (optional).</string>
-    <string name="LeaveMega">Gruppe verlassen</string>
-    <string name="DeleteMega">Gruppe Löschen</string>
-    <string name="LeaveMegaMenu">Gruppe verlassen</string>
-    <string name="DeleteMegaMenu">Gruppe löschen</string>
-    <string name="MegaDeleteAlert">Wenn du diese Gruppe löschst, werden alle Mitglieder und alle Nachrichten entfernt. Wirklich löschen?</string>
     <string name="ActionCreateMega">Gruppe erstellt</string>
     <string name="MegaAddedBy">un1 hat dich hinzugefügt</string>
-    <string name="MegaLeaveAlert">Möchtest du wirklich diese Gruppe verlassen?</string>
-    <string name="GroupUserCantAdd">Du kannst diesen Nutzer nicht hinzufügen.</string>
     <string name="GroupUserLeftError">Dieser Nutzer hat die Gruppe verlassen, deshalb kannst du ihn nicht wieder einladen.</string>
-    <string name="ActionMigrateFromGroupNotify">%1$s wurde in eine Supergruppe geändert</string>
     <string name="NewChannel">Neuer Kanal</string>
     <string name="ChannelPublic">öffentlich</string>
     <string name="ChannelPrivate">privat</string>
     <string name="LeaveChannel">Kanal verlassen</string>
-    <string name="LeaveChannelMenu">Kanal verlassen</string>
-    <string name="ChannelJoin">BEITRETEN</string>
     <string name="ChannelMembers">Mitglieder</string>
     <string name="ChannelBlockedUsers">Blockierte Nutzer</string>
     <string name="ChannelAdministrators">Administratoren</string>
-    <string name="ChannelDeleteMenu">Kanal löschen</string>
-    <string name="ChannelDeleteAlert">Wenn du diesen Kanal löschst, werden alle Mitglieder und alle Nachrichten entfernt. Wirklich löschen?</string>
     <string name="ChannelLeaveAlert">Möchtest du wirklich diesen Kanal verlassen?</string>
-    <string name="ChannelEdit">Bearbeiten</string>
     <string name="ActionCreateChannel">Kanal erstellt</string>
     <string name="ActionChannelChangedPhoto">Bild geändert</string>
     <string name="ActionChannelRemovedPhoto">Bild gelöscht</string>
@@ -182,7 +165,6 @@
     <string name="ShareFile">Teilen</string>
     <string name="ApplyLocalizationFile">Sprachdatei benutzen</string>
     <string name="UnsupportedAttachment">Nicht unterstützte Datei</string>
-    <string name="SetTimer">Selbstzerstörungs-Timer setzen</string>
     <string name="ServiceNotifications">Servicemeldungen</string>
     <string name="GettingLinkInfo">Lade Linkvorschau...</string>
     <string name="OpenInBrowser">ÖFFNEN MIT...</string>
@@ -201,9 +183,6 @@
     <string name="ShareSendTo">Sende an...</string>
     <string name="TapHereGifs">Hier tippen um gespeicherte GIFs zu sehen</string>
     <string name="UnpinMessageAlert">Angeheftete Nachricht wieder entfernen?</string>
-    <string name="DeleteBanUser">Nutzer sperren</string>
-    <string name="DeleteReportSpam">Spam melden</string>
-    <string name="DeleteAllFrom">Lösche alles von %1$s</string>
     <string name="ClearRecentEmoji">Zuletzt benutzte Emoji leeren?</string>
     <string name="ReportChat">Melden</string>
     <string name="PinnedMessage">Angeheftete Nachricht</string>
@@ -641,7 +620,6 @@
     <string name="Call">Anrufen</string>
     <string name="Copy">Kopieren</string>
     <string name="Delete">Löschen</string>
-    <string name="DeleteAndStop">Löschen und Anhalten</string>
     <string name="Forward">Weiterleiten</string>
     <string name="Retry">Erneut versuchen</string>
     <string name="FromCamera">Von der Kamera</string>
@@ -705,8 +683,8 @@
     <string name="ForwardMessagesTo">Nachrichten an %1$s weiterleiten?</string>
     <string name="SendMessagesTo">Nachricht an %1$s senden?</string>
     <string name="SendContactTo">Kontakt senden an %1$s?</string>
-    <string name="AreYouSureDeleteAndExit">Gruppe löschen und verlassen?</string>
-    <string name="AreYouSureDeleteThisChat">Möchtest du wirklich diesen Chat löschen?</string>
+    <string name="AreYouSureDeleteAndExit">Gruppe verlassen? Es werden dann keine Nachrichten dieser Gruppe mehr empfangen.</string>
+    <string name="AreYouSureDeleteThisChat">Chat löschen? Der Chat wird dann nicht mehr in der Chatliste angezeigt.</string>
     <string name="ShareYouLocationTitle">Deinen Standort teilen?</string>
     <string name="ShareYouLocationInfo">Teilt deinen aktuellen Standort mit dem Bot.</string>
     <string name="ShareYouLocationUnable">App kann deinen aktuellen Standort nicht bestimmen</string>
@@ -717,8 +695,7 @@
     <string name="AreYouSureDeleteContact">Diesen Kontakt wirklich löschen?</string>
     <string name="AreYouSureSecretChat">Geheimen Chat starten?</string>
     <string name="AreYouSureRegistration">Bist du dir sicher, dass du die Registrierung abbrechen willst?</string>
-    <string name="AreYouSureClearHistory">Wirklich alle Nachrichten in diesem Chat löschen?\n\nHiermit werden auch die entsprechenden Nachrichten auf dem Server gelöscht.</string>
-    <string name="AreYouSureDeleteMessages">Wirklich %1$s löschen?\n\nHiermit werden die Nachrichten auch auf dem Server gelöscht.</string>
+    <string name="AreYouSureDeleteMessages">%1$s löschen? Die Nachrichten werden auch auf dem Server gelöscht.</string>
     <string name="SendMessagesToGroup">Nachricht an %1$s senden?</string>
     <string name="SendContactToGroup">Kontakt senden an %1$s?</string>
     <string name="ForwardMessagesToGroup">Weiterleiten an %1$s?</string>
@@ -728,7 +705,6 @@
     <string name="AllowReadSms">Bitte erlaube Telegram den Zugriff auf SMS, so dass wir den Code automatisch in der App für dich eingeben können.</string>
     <string name="AllowReadCall">Bitte erlaube Telegram den Zugriff auf Anrufe, so dass wir den Code automatisch in der App eingeben können.</string>
     <string name="AllowReadCallAndSms">Bitte erlaube Telegram den Zugriff auf SMS und Anrufe, so dass wir den Code automatisch in der App eingeben können.</string>
-    <string name="UserRestricted">Du kannst diese Aktion nicht durchführen.</string>
     <!--permissions-->
     <string name="PermissionContacts">LibreChat benötigt Zugriff auf deine Kontakte um dich auf all denen Geräten mit deinen Freunden zu verbinden. </string>
     <string name="PermissionStorage">LibreChat benötigt Zugriff auf deinen Speicher, damit du Bilder, Videos und Musik senden und speichern kannst.</string>

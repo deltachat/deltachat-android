@@ -842,18 +842,20 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     } else {
                         if (MrMailbox.MrChatGetType(m_hChat)==MrMailbox.MR_CHAT_GROUP) {
                             builder.setTitle(LocaleController.getString("DeleteAndExit", R.string.DeleteAndExit));
-                            messageText += "\n\n" + LocaleController.getString("AreYouSureDeleteAndExit", R.string.AreYouSureDeleteAndExit);
+                            messageText = "- " + messageText + "\n\n - " + LocaleController.getString("AreYouSureDeleteAndExit", R.string.AreYouSureDeleteAndExit);
                         } else {
                             builder.setTitle(LocaleController.getString("DeleteChat", R.string.DeleteChat));
+                            messageText = "- " + messageText + "\n\n- " + LocaleController.getString("AreYouSureDeleteThisChat", R.string.AreYouSureDeleteThisChat);
                         }
                     }
 
                     builder.setMessage(messageText);
 
-
                     builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
+                            Toast.makeText(getParentActivity(), LocaleController.getString("NotYetImplemented", R.string.NotYetImplemented), Toast.LENGTH_LONG).show();
+                            /*
                             if (id != clear_history) {
                                 if (isChat) {
                                     if (ChatObject.isNotInChat(currentChat)) {
@@ -868,6 +870,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                             } else {
                                 MessagesController.getInstance().deleteDialog(dialog_id, 1);
                             }
+                            */
                         }
                     });
                     builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);

@@ -46,8 +46,6 @@
     <string name="NewSecretChat">Nuevo chat secreto</string>
     <string name="ClearHistory">Borrar historial</string>
     <string name="DeleteChat">Eliminar chat</string>
-    <string name="DeleteChatUser">Eliminar chat</string>
-    <string name="HiddenName">Cuenta eliminada</string>
     <string name="SelectChat">Elige el chat</string>
     <string name="PhotoTip">Mantén pulsado para ver</string>
     <string name="SearchMessages">MENSAJES</string>
@@ -64,33 +62,18 @@
     <string name="Draft">Borrador</string>
     <string name="HistoryCleared">Historial borrado</string>
     <!--channels-->
-    <string name="GroupType">Tipo de grupo</string>
     <string name="SetAsAdmin">Nombrar como administrador</string>
-    <string name="DescriptionInfoMega">Puedes poner una descripción para tu grupo.</string>
-    <string name="LeaveMega">Dejar el grupo</string>
-    <string name="DeleteMega">Eliminar grupo</string>
-    <string name="LeaveMegaMenu">Dejar el grupo</string>
-    <string name="DeleteMegaMenu">Eliminar grupo</string>
-    <string name="MegaDeleteAlert">¡Espera! Al eliminar este grupo, todos los miembros y los mensajes se perderán. ¿Quieres eliminarlo?</string>
     <string name="ActionCreateMega">Grupo creado</string>
     <string name="MegaAddedBy">un1 te añadió a este grupo</string>
-    <string name="MegaLeaveAlert">¿Quieres dejar el grupo?</string>
-    <string name="GroupUserCantAdd">Lo sentimos, no puedes añadir este usuario a grupos.</string>
     <string name="GroupUserLeftError">Lo sentimos, este usuario decidió dejar el grupo, así que no puedes invitarlo otra vez.</string>
-    <string name="ActionMigrateFromGroupNotify">%1$s fue convertido en un supergrupo</string>
     <string name="NewChannel">Nuevo canal</string>
     <string name="ChannelPublic">Canal público</string>
     <string name="ChannelPrivate">Canal privado</string>
     <string name="LeaveChannel">Dejar canal</string>
-    <string name="LeaveChannelMenu">Dejar el canal</string>
-    <string name="ChannelJoin">UNIRME</string>
     <string name="ChannelMembers">Miembros</string>
     <string name="ChannelBlockedUsers">Bloqueados</string>
     <string name="ChannelAdministrators">Administradores</string>
-    <string name="ChannelDeleteMenu">Eliminar canal</string>
-    <string name="ChannelDeleteAlert">¡Espera! Al eliminar este canal, todos los miembros y los mensajes se perderán. ¿Quieres eliminarlo?</string>
     <string name="ChannelLeaveAlert">¿Quieres dejar este canal?</string>
-    <string name="ChannelEdit">Editar</string>
     <string name="ActionCreateChannel">Canal creado</string>
     <string name="ActionChannelChangedPhoto">Foto del canal cambiada</string>
     <string name="ActionChannelRemovedPhoto">Foto del canal eliminada</string>
@@ -183,7 +166,6 @@
     <string name="ShareFile">Compartir</string>
     <string name="ApplyLocalizationFile">Aplicar traducción</string>
     <string name="UnsupportedAttachment">Adjunto no soportado</string>
-    <string name="SetTimer">Establecer autodestrucción</string>
     <string name="ServiceNotifications">Servicio de notificaciones</string>
     <string name="GettingLinkInfo">Obteniendo información...</string>
     <string name="OpenInBrowser">ABRIR EN...</string>
@@ -202,9 +184,6 @@
     <string name="ShareSendTo">Enviar a...</string>
     <string name="TapHereGifs">Toca y ve los GIF guardados</string>
     <string name="UnpinMessageAlert">¿Quieres desanclar este mensaje?</string>
-    <string name="DeleteBanUser">Suspender usuario</string>
-    <string name="DeleteReportSpam">Reportar spam</string>
-    <string name="DeleteAllFrom">Eliminar todo lo de %1$s</string>
     <string name="ClearRecentEmoji">¿Borrar los emojis recientes?</string>
     <string name="ReportChat">Reportar</string>
     <string name="PinnedMessage">Mensaje anclado</string>
@@ -642,7 +621,6 @@
     <string name="Call">Llamar</string>
     <string name="Copy">Copiar</string>
     <string name="Delete">Eliminar</string>
-    <string name="DeleteAndStop">Eliminar y detener</string>
     <string name="Forward">Reenviar</string>
     <string name="Retry">Reintentar</string>
     <string name="FromCamera">Desde la cámara</string>
@@ -718,7 +696,6 @@
     <string name="AreYouSureDeleteContact">¿Quieres eliminar este contacto?</string>
     <string name="AreYouSureSecretChat">¿Quieres iniciar un chat secreto?</string>
     <string name="AreYouSureRegistration">¿Quieres cancelar el registro?</string>
-    <string name="AreYouSureClearHistory">¿Quieres eliminar el historial?</string>
     <string name="AreYouSureDeleteMessages">¿Quieres eliminar %1$s?</string>
     <string name="SendMessagesToGroup">¿Enviar mensajes a %1$s?</string>
     <string name="SendContactToGroup">¿Enviar contacto a %1$s?</string>
@@ -729,7 +706,6 @@
     <string name="AllowReadSms">Por favor, permite a Telegram recibir SMS, para ingresar el código automáticamente.</string>
     <string name="AllowReadCall">Por favor, permite a Telegram recibir llamadas, para ingresar el código automáticamente.</string>
     <string name="AllowReadCallAndSms">Por favor, permite a Telegram recibir llamadas y SMS, para ingresar el código automáticamente.</string>
-    <string name="UserRestricted">Lo sentimos, no estás autorizado para hacer esto.</string>
     <!--permissions-->
     <string name="PermissionContacts">Telegram necesita el acceso a tus contactos, para que puedas comunicarte con ellos en todos tus dispositivos.</string>
     <string name="PermissionStorage">Telegram necesita acceso a tu almacenamiento, para que puedas enviar y guardar fotos, vídeos, música y otros archivos.</string>

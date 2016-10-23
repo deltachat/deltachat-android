@@ -2211,7 +2211,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                         writeButton.setPadding(0, 0, 0, 0);
                     }
                 }
-                if (ChatObject.isChannel(chat)) {
+                /*if (ChatObject.isChannel(chat)) {
                     if (chat.creator || chat.megagroup && chat.editor) {
                         item = menu.addItem(10, R.drawable.ic_ab_other);
                         item.addSubItem(edit_channel, LocaleController.getString("ChannelEdit", R.string.ChannelEdit), 0);
@@ -2222,7 +2222,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                         }
                         item.addSubItem(leave_group, LocaleController.getString("LeaveMegaMenu", R.string.LeaveMegaMenu), 0);
                     }
-                } else {
+                } else*/ {
                     item = menu.addItem(10, R.drawable.ic_ab_other);
                     if (chat.creator && chat_id > 0) {
                         item.addSubItem(set_admins, LocaleController.getString("SetAdmins", R.string.SetAdmins), 0);

@@ -46,8 +46,7 @@
     <string name="NewSecretChat">New Secret Chat</string>
     <string name="ClearHistory">Delete all messages</string>
     <string name="DeleteChat">Delete chat</string>
-    <string name="DeleteChatUser">Delete chat</string>
-    <string name="HiddenName">Deleted Account</string>
+    <string name="sed">Deleted Account</string>
     <string name="SelectChat">Select Chat</string>
     <string name="PhotoTip">Tap and hold to view</string>
     <string name="SearchMessages">MESSAGES</string>
@@ -64,33 +63,18 @@
     <string name="Draft">Draft</string>
     <string name="HistoryCleared">History was cleared</string>
     <!--channels-->
-    <string name="GroupType">Group Type</string>
     <string name="SetAsAdmin">Promote to admin</string>
-    <string name="DescriptionInfoMega">You can provide an optional description for your group.</string>
-    <string name="LeaveMega">Leave Group</string>
-    <string name="DeleteMega">Delete Group</string>
-    <string name="LeaveMegaMenu">Leave group</string>
-    <string name="DeleteMegaMenu">Delete group</string>
-    <string name="MegaDeleteAlert">Wait! Deleting this group will remove all members and all messages will be lost. Delete the group anyway?</string>
     <string name="ActionCreateMega">Group created</string>
     <string name="MegaAddedBy">un1 added you to this group</string>
-    <string name="MegaLeaveAlert">Are you sure you want to leave the group?</string>
-    <string name="GroupUserCantAdd">Sorry, you can\'t add this user to groups.</string>
     <string name="GroupUserLeftError">Sorry, this user decided to leave this group, so you cannot invite them back here.</string>
-    <string name="ActionMigrateFromGroupNotify">%1$s was upgraded to a supergroup</string>
     <string name="NewChannel">New Channel</string>
     <string name="ChannelPublic">Public Channel</string>
     <string name="ChannelPrivate">Private Channel</string>
     <string name="LeaveChannel">Leave Channel</string>
-    <string name="LeaveChannelMenu">Leave channel</string>
-    <string name="ChannelJoin">JOIN</string>
     <string name="ChannelMembers">Members</string>
     <string name="ChannelBlockedUsers">Blocked users</string>
     <string name="ChannelAdministrators">Administrators</string>
-    <string name="ChannelDeleteMenu">Delete channel</string>
-    <string name="ChannelDeleteAlert">Wait! Deleting this channel will remove all members and all messages will be lost. Delete the channel anyway?</string>
     <string name="ChannelLeaveAlert">Are you sure you want to leave the channel?</string>
-    <string name="ChannelEdit">Edit</string>
     <string name="ActionCreateChannel">Channel created</string>
     <string name="ActionChannelChangedPhoto">Channel photo changed</string>
     <string name="ActionChannelRemovedPhoto">Channel photo removed</string>
@@ -183,7 +167,6 @@
     <string name="ShareFile">Share</string>
     <string name="ApplyLocalizationFile">Apply localization file</string>
     <string name="UnsupportedAttachment">Unsupported attachment</string>
-    <string name="SetTimer">Set self-destruct timer</string>
     <string name="ServiceNotifications">Service notifications</string>
     <string name="GettingLinkInfo">Getting Link Info...</string>
     <string name="OpenInBrowser">OPEN IN...</string>
@@ -202,9 +185,6 @@
     <string name="ShareSendTo">Send to...</string>
     <string name="TapHereGifs">Tap here to access saved GIFs</string>
     <string name="UnpinMessageAlert">Do you want to unpin this message?</string>
-    <string name="DeleteBanUser">Ban user</string>
-    <string name="DeleteReportSpam">Report spam</string>
-    <string name="DeleteAllFrom">Delete all from %1$s</string>
     <string name="ClearRecentEmoji">Clear recent emoji?</string>
     <string name="ReportChat">Report</string>
     <string name="PinnedMessage">Pinned Message</string>
@@ -642,7 +622,6 @@
     <string name="Call">Call</string>
     <string name="Copy">Copy</string>
     <string name="Delete">Delete</string>
-    <string name="DeleteAndStop">Delete and stop</string>
     <string name="Forward">Forward</string>
     <string name="Retry">Retry</string>
     <string name="FromCamera">From camera</string>
@@ -706,8 +685,8 @@
     <string name="ForwardMessagesTo">Forward messages to %1$s?</string>
     <string name="SendMessagesTo">Send messages to %1$s?</string>
     <string name="SendContactTo">Send contact to %1$s?</string>
-    <string name="AreYouSureDeleteAndExit">Are you sure you want to delete and leave the group?</string>
-    <string name="AreYouSureDeleteThisChat">Are you sure you want to delete this chat?</string>
+    <string name="AreYouSureDeleteAndExit">Leave the group? You will no longer receive messages from the group.</string>
+    <string name="AreYouSureDeleteThisChat">Delete this chat? The chat will no longer be shown in the chat list.</string>
     <string name="ShareYouLocationTitle">Share your location?</string>
     <string name="ShareYouLocationInfo">This will send your current location to the bot.</string>
     <string name="ShareYouLocationUnable">App was unable to determine your current location</string>
@@ -718,8 +697,7 @@
     <string name="AreYouSureDeleteContact">Are you sure you want to delete this contact?</string>
     <string name="AreYouSureSecretChat">Are you sure you want to start a secret chat?</string>
     <string name="AreYouSureRegistration">Are you sure you want to cancel registration?</string>
-    <string name="AreYouSureClearHistory">Really delete all messages in this chat?\n\nThis will also delete them on the server</string>
-    <string name="AreYouSureDeleteMessages">Really delete %1$s?\n\nThis also deletes the messages from the server.</string>
+    <string name="AreYouSureDeleteMessages">Delete %1$s? The messages will also be deleted from the server.</string>
     <string name="SendMessagesToGroup">Send messages to %1$s?</string>
     <string name="SendContactToGroup">Send contact to %1$s?</string>
     <string name="ForwardMessagesToGroup">Forward messages to %1$s?</string>
@@ -729,7 +707,6 @@
     <string name="AllowReadSms">Please allow Telegram to receive SMS so that we can automatically enter your code for you.</string>
     <string name="AllowReadCall">Please allow Telegram to receive calls so that we can automatically enter your code for you.</string>
     <string name="AllowReadCallAndSms">Please allow Telegram to receive calls and SMS so that we can automatically enter your code for you.</string>
-    <string name="UserRestricted">Sorry, you are not allowed to do this.</string>
     <!--permissions-->
     <string name="PermissionContacts">Telegram needs access to your contacts so that you can connect with your friends across all your devices.</string>
     <string name="PermissionStorage">Telegram needs access to your storage so that you can send and save photos, videos, music and other media.</string>

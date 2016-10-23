@@ -267,6 +267,7 @@ public class ContactsController {
         }
     }
 
+    /*
     public void deleteAllAppAccounts() {
         try {
             AccountManager am = AccountManager.get(ApplicationLoader.applicationContext);
@@ -278,6 +279,7 @@ public class ContactsController {
             e.printStackTrace();
         }
     }
+    */
 
     public void checkContacts() {
         Utilities.globalQueue.postRunnable(new Runnable() {
@@ -291,6 +293,7 @@ public class ContactsController {
         });
     }
 
+    /*
     public void forceImportContacts() {
         Utilities.globalQueue.postRunnable(new Runnable() {
             @Override
@@ -299,6 +302,7 @@ public class ContactsController {
             }
         });
     }
+    */
 
     private boolean checkContactsInternal() {
         boolean reload = false;
@@ -1508,6 +1512,7 @@ public class ContactsController {
         }
     }
 
+    /*
     public void processContactsUpdates(ArrayList<Integer> ids, ConcurrentHashMap<Integer, TLRPC.User> userDict) {
         final ArrayList<TLRPC.TL_contact> newContacts = new ArrayList<>();
         final ArrayList<Integer> contactsToDelete = new ArrayList<>();
@@ -1545,6 +1550,7 @@ public class ContactsController {
             applyContactsUpdates(ids, userDict, newContacts, contactsToDelete);
         }
     }
+    */
 
     public long addContactToPhoneBook(TLRPC.User user, boolean check) {
         if (currentAccount == null || user == null || user.phone == null || user.phone.length() == 0) {
@@ -1631,6 +1637,7 @@ public class ContactsController {
         }
     }
 
+    /*
     protected void markAsContacted(final String contactId) {
         if (contactId == null) {
             return;
@@ -1646,6 +1653,7 @@ public class ContactsController {
             }
         });
     }
+    */
 
     public void addContact(TLRPC.User user) {
         if (user == null || user.phone == null) {
@@ -1921,9 +1929,11 @@ public class ContactsController {
         NotificationCenter.getInstance().postNotificationName(NotificationCenter.privacyRulesUpdated);
     }
 
+    /*
     public void setDeleteAccountTTL(int ttl) {
         deleteAccountTTL = ttl;
     }
+    */
 
     public int getDeleteAccountTTL() {
         return deleteAccountTTL;
@@ -1949,6 +1959,7 @@ public class ContactsController {
         }
     }
 
+    /*
     public void setPrivacyRules(ArrayList<TLRPC.PrivacyRule> rules, boolean isGroup) {
         if (isGroup) {
             groupPrivacyRules = rules;
@@ -1958,11 +1969,10 @@ public class ContactsController {
         NotificationCenter.getInstance().postNotificationName(NotificationCenter.privacyRulesUpdated);
         reloadContactsStatuses();
     }
+    */
 
     public static String formatName(String firstName, String lastName) {
-        /*if ((firstName == null || firstName.length() == 0) && (lastName == null || lastName.length() == 0)) {
-            return LocaleController.getString("HiddenName", R.string.HiddenName);
-        }*/
+
         if (firstName != null) {
             firstName = firstName.trim();
         }

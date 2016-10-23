@@ -46,8 +46,6 @@
     <string name="NewSecretChat">Nieuwe geheime chat</string>
     <string name="ClearHistory">Geschiedenis wissen</string>
     <string name="DeleteChat">Chat verwijderen</string>
-    <string name="DeleteChatUser">Chat verwijderen</string>
-    <string name="HiddenName">Verwijderd account</string>
     <string name="SelectChat">Kies een chat</string>
     <string name="PhotoTip">Druk en houd ingedrukt</string>
     <string name="SearchMessages">BERICHTEN</string>
@@ -64,33 +62,18 @@
     <string name="Draft">Concept</string>
     <string name="HistoryCleared">Geschiedenis gewist</string>
     <!--channels-->
-    <string name="GroupType">Groepsvorm</string>
     <string name="SetAsAdmin">Promoveren tot beheerder</string>
-    <string name="DescriptionInfoMega">Optioneel kun je een groepsbeschrijving geven.</string>
-    <string name="LeaveMega">Groep verlaten</string>
-    <string name="DeleteMega">Groep verwijderen</string>
-    <string name="LeaveMegaMenu">Groep verlaten</string>
-    <string name="DeleteMegaMenu">Groep verwijderen</string>
-    <string name="MegaDeleteAlert">Groep echt verwijderen? Berichten worden gewist en alle leden verwijderd.</string>
     <string name="ActionCreateMega">Groep gemaakt</string>
     <string name="MegaAddedBy">un1 heeft je toegevoegd aan deze groep</string>
-    <string name="MegaLeaveAlert">Groep echt verlaten?</string>
-    <string name="GroupUserCantAdd">Je kunt deze gebruiker niet toevoegen aan groepen.</string>
     <string name="GroupUserLeftError">Deze gebruiker heeft de groep verlaten. Je kunt hem/haar niet meer uitnodigen.</string>
-    <string name="ActionMigrateFromGroupNotify">%1$s is opgewaardeerd naar een supergroep</string>
     <string name="NewChannel">Nieuw kanaal</string>
     <string name="ChannelPublic">Publiek kanaal</string>
     <string name="ChannelPrivate">Privé-kanaal</string>
     <string name="LeaveChannel">Kanaal verlaten</string>
-    <string name="LeaveChannelMenu">Kanaal verlaten</string>
-    <string name="ChannelJoin">LID WORDEN</string>
     <string name="ChannelMembers">Leden</string>
     <string name="ChannelBlockedUsers">Geblokkeerde gebruikers</string>
     <string name="ChannelAdministrators">Beheerders</string>
-    <string name="ChannelDeleteMenu">Kanaal verwijderen</string>
-    <string name="ChannelDeleteAlert">Kanaal echt verwijderen? Berichten worden gewist en alle leden verwijderd.</string>
     <string name="ChannelLeaveAlert">Kanaal echt verlaten?</string>
-    <string name="ChannelEdit">Wijzig</string>
     <string name="ActionCreateChannel">Kanaal gemaakt</string>
     <string name="ActionChannelChangedPhoto">Kanaalfoto bijgewerkt</string>
     <string name="ActionChannelRemovedPhoto">Kanaalfoto verwijderd</string>
@@ -183,7 +166,6 @@
     <string name="ShareFile">Delen</string>
     <string name="ApplyLocalizationFile">Vertaling toepassen</string>
     <string name="UnsupportedAttachment">Bestandstype niet ondersteund</string>
-    <string name="SetTimer">Zelfvernietigingstimer instellen</string>
     <string name="ServiceNotifications">Servicemeldingen</string>
     <string name="GettingLinkInfo">Link-preview ophalen...</string>
     <string name="OpenInBrowser">OPENEN IN...</string>
@@ -202,9 +184,6 @@
     <string name="ShareSendTo">Versturen naar...</string>
     <string name="TapHereGifs">Tik hier om opgeslagen GIF\'s te bekijken</string>
     <string name="UnpinMessageAlert">Wil je dit bericht losmaken?</string>
-    <string name="DeleteBanUser">Blacklist gebruiker</string>
-    <string name="DeleteReportSpam">Spam melden</string>
-    <string name="DeleteAllFrom">Alles verwijderen van %1$s</string>
     <string name="ClearRecentEmoji">Recente emoji\'s wissen?</string>
     <string name="ReportChat">Melden</string>
     <string name="PinnedMessage">Vastgezet bericht</string>
@@ -642,7 +621,6 @@
     <string name="Call">Bellen</string>
     <string name="Copy">Kopieer</string>
     <string name="Delete">Verwijder</string>
-    <string name="DeleteAndStop">Verwijderen en stoppen</string>
     <string name="Forward">Doorsturen</string>
     <string name="Retry">Opnieuw proberen</string>
     <string name="FromCamera">Van camera</string>
@@ -718,7 +696,6 @@
     <string name="AreYouSureDeleteContact">Contact echt verwijderen?</string>
     <string name="AreYouSureSecretChat">Weet je zeker dat je een geheime chat wilt starten?</string>
     <string name="AreYouSureRegistration">Weet je zeker dat je de registratie wilt annuleren?</string>
-    <string name="AreYouSureClearHistory">Geschiedenis echt wissen? </string>
     <string name="AreYouSureDeleteMessages">%1$s echt verwijderen?</string>
     <string name="SendMessagesToGroup">Berichten naar %1$s versturen?</string>
     <string name="SendContactToGroup">Contact delen met %1$s?</string>
@@ -729,7 +706,6 @@
     <string name="AllowReadSms">Sta het ontvangen van SMS toe zodat we automatisch je inlogcode kunnen invoeren.</string>
     <string name="AllowReadCall">Sta het ontvangen van oproepen toe zodat we automatisch je inlogcode kunnen invoeren.</string>
     <string name="AllowReadCallAndSms">Sta het ontvangen van oproepen en SMS toe zodat we automatisch je inlogcode kunnen invoeren.</string>
-    <string name="UserRestricted">Je mag deze actie niet uitvoeren.</string>
     <!--permissions-->
     <string name="PermissionContacts">Telegram heeft toegang tot je contacten nodig zodat je kan chatten met je vrienden vanaf al je apparaten.</string>
     <string name="PermissionStorage">Telegram heeft toegang tot je opslaggeheugen nodig zodat je foto\'s, video\'s, muziek en andere media kunt opslaan en versturen.</string>

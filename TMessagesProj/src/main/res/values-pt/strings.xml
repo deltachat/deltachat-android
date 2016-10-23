@@ -46,8 +46,6 @@
     <string name="NewSecretChat">Novo Chat Secreto</string>
     <string name="ClearHistory">Limpar histórico</string>
     <string name="DeleteChat">Apagar conversa</string>
-    <string name="DeleteChatUser">Apagar conversa</string>
-    <string name="HiddenName">Conta Excluída</string>
     <string name="SelectChat">Selecione um Chat</string>
     <string name="PhotoTip">Toque e segure para ver</string>
     <string name="SearchMessages">MENSAGENS</string>
@@ -64,33 +62,18 @@
     <string name="Draft">Rascunho</string>
     <string name="HistoryCleared">O histórico foi apagado</string>
     <!--channels-->
-    <string name="GroupType">Tipo de Grupo</string>
     <string name="SetAsAdmin">Promover a administrador</string>
-    <string name="DescriptionInfoMega">Você pode fornecer uma descrição opcional para seu grupo.</string>
-    <string name="LeaveMega">Sair do Grupo</string>
-    <string name="DeleteMega">Apagar Grupo</string>
-    <string name="LeaveMegaMenu">Sair do Grupo</string>
-    <string name="DeleteMegaMenu">Apagar Grupo</string>
-    <string name="MegaDeleteAlert">Espere! Apagar este grupo removerá todos os membros e todas as mensagens serão perdidas. Apagar o grupo mesmo assim?</string>
     <string name="ActionCreateMega">Grupo criado</string>
     <string name="MegaAddedBy">un1 adicionou você ao grupo</string>
-    <string name="MegaLeaveAlert">Você tem certeza que deseja sair do grupo?</string>
-    <string name="GroupUserCantAdd">Desculpe, você não pode adicionar este usuário a grupos.</string>
     <string name="GroupUserLeftError">Desculpe, este usuário decidiu sair deste grupo, de maneira que você não pode convidá-lo de volta.</string>
-    <string name="ActionMigrateFromGroupNotify">%1$s foi convertido a um supergrupo</string>
     <string name="NewChannel">Novo Canal</string>
     <string name="ChannelPublic">Canal Público</string>
     <string name="ChannelPrivate">Canal Privado</string>
     <string name="LeaveChannel">Sair do Canal</string>
-    <string name="LeaveChannelMenu">Sair do Canal</string>
-    <string name="ChannelJoin">ENTRAR</string>
     <string name="ChannelMembers">Membros</string>
     <string name="ChannelBlockedUsers">Usuários bloqueados</string>
     <string name="ChannelAdministrators">Administradores</string>
-    <string name="ChannelDeleteMenu">Apagar Canal</string>
-    <string name="ChannelDeleteAlert">Espere! Apagando esse canal removerá todos os membros e todas as mensagens serão perdidas. Apagar assim mesmo?</string>
     <string name="ChannelLeaveAlert">Você tem certeza que deseja sair do canal?</string>
-    <string name="ChannelEdit">Editar</string>
     <string name="ActionCreateChannel">Canal criado</string>
     <string name="ActionChannelChangedPhoto">Foto do canal alterada</string>
     <string name="ActionChannelRemovedPhoto">Foto do canal removida</string>
@@ -183,7 +166,6 @@
     <string name="ShareFile">Compartilhar</string>
     <string name="ApplyLocalizationFile">Aplicar arquivo de localização</string>
     <string name="UnsupportedAttachment">Anexo não suportado</string>
-    <string name="SetTimer">Definir timer de autodestruição</string>
     <string name="ServiceNotifications">Notificações de serviço</string>
     <string name="GettingLinkInfo">Obtendo informações...</string>
     <string name="OpenInBrowser">ABRIR EM...</string>
@@ -202,9 +184,6 @@
     <string name="ShareSendTo">Enviar para...</string>
     <string name="TapHereGifs">Toque aqui para acessar os GIFs salvos</string>
     <string name="UnpinMessageAlert">Você deseja desafixar essa mensagem?</string>
-    <string name="DeleteBanUser">Banir usuário</string>
-    <string name="DeleteReportSpam">Reportar spam</string>
-    <string name="DeleteAllFrom">Apagar tudo de %1$s</string>
     <string name="ClearRecentEmoji">Limpar emojis recentes?</string>
     <string name="ReportChat">Reportar</string>
     <string name="PinnedMessage">Mensagem Fixada</string>
@@ -642,7 +621,6 @@
     <string name="Call">Ligar</string>
     <string name="Copy">Copiar</string>
     <string name="Delete">Apagar</string>
-    <string name="DeleteAndStop">Apagar e parar</string>
     <string name="Forward">Encaminhar</string>
     <string name="Retry">Tentar novamente</string>
     <string name="FromCamera">Câmera</string>
@@ -718,7 +696,6 @@
     <string name="AreYouSureDeleteContact">Você tem certeza que deseja apagar este contato?</string>
     <string name="AreYouSureSecretChat">Você tem certeza que deseja começar um chat secreto?</string>
     <string name="AreYouSureRegistration">Você tem certeza que deseja cancelar o registro?</string>
-    <string name="AreYouSureClearHistory">Você tem certeza que deseja limpar o histórico?</string>
     <string name="AreYouSureDeleteMessages">Você tem certeza que deseja apagar %1$s?</string>
     <string name="SendMessagesToGroup">Enviar mensagens para %1$s?</string>
     <string name="SendContactToGroup">Enviar contato para %1$s?</string>
@@ -729,7 +706,6 @@
     <string name="AllowReadSms">Permita o acesso às SMS ao Telegram, assim podemos automaticamente adicionar o código para você.</string>
     <string name="AllowReadCall">Permita o acesso às ligações ao Telegram, assim podemos automaticamente adicionar o código para você.</string>
     <string name="AllowReadCallAndSms">Permita o acesso às SMS e ligações ao Telegram, assim podemos automaticamente adicionar o código para você.</string>
-    <string name="UserRestricted">Você não tem permissão para isso.</string>
     <!--permissions-->
     <string name="PermissionContacts">Telegram precisa acessar seus contatos para que você possa se conectar aos seus amigos em todos os seus dispositivos.</string>
     <string name="PermissionStorage">Telegram precisa acessar seu armazenamento para que você possa enviar e salvar fotos, vídeos, músicas e outras mídias.</string>

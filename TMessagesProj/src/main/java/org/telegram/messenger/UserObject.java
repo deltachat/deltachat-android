@@ -26,7 +26,7 @@ public class UserObject {
 
     public static String getUserName(TLRPC.User user) {
         if (user == null || isDeleted(user)) {
-            return LocaleController.getString("HiddenName", R.string.HiddenName);
+            return "ErrName";
         }
         String name = ContactsController.formatName(user.first_name, user.last_name);
         return name.length() != 0 || user.phone == null || user.phone.length() == 0 ? name : ""/*PhoneFormat.getInstance().format("+" + user.phone)*/;
@@ -40,6 +40,6 @@ public class UserObject {
         if (name == null || name.length() == 0) {
             name = user.last_name;
         }
-        return name != null && name.length() > 0 ? name : LocaleController.getString("HiddenName", R.string.HiddenName);
+        return name != null && name.length() > 0 ? name : "ErrFirstName";
     }
 }

@@ -265,13 +265,7 @@ public class ProfileSearchCell extends BaseCell {
             }
             nameString = nameString2.replace('\n', ' ');
         }
-        if (nameString.length() == 0) {
-            if (user != null && user.phone != null && user.phone.length() != 0) {
-                nameString = "";//PhoneFormat.getInstance().format("+" + user.phone);
-            } else {
-                nameString = LocaleController.getString("HiddenName", R.string.HiddenName);
-            }
-        }
+
         if (encryptedChat != null) {
             currentNamePaint = nameEncryptedPaint;
         } else {
