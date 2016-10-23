@@ -416,7 +416,7 @@ public class ProfileSearchCell extends BaseCell {
             }
             avatarDrawable.setInfo(chat);
         } else {
-            avatarDrawable.setInfo(0, null, null, false);
+            avatarDrawable.setInfo(null, null, false);
         }
 
         if (mask != 0) {

@@ -297,7 +297,9 @@ public class ChatAvatarContainer extends FrameLayout {
             avatarDrawable.setInfo(chat);
         }
         */
-        avatarDrawable.setInfo(MrMailbox.MrChatGetId(parentFragment.m_hChat), MrMailbox.MrChatGetName(parentFragment.m_hChat), null, false); // EDIT BY MR
+
+        // MrAvatar ...
+        avatarDrawable.setInfo(MrMailbox.MrChatGetName(parentFragment.m_hChat), null, false);
 
         if (avatarImageView != null) {
             avatarImageView.setImage(newPhoto, "50_50", avatarDrawable);

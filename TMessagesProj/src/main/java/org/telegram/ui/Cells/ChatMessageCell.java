@@ -3886,8 +3886,16 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
             currentChat = MessagesController.getInstance().getChat(currentMessageObject.messageOwner.to_id.channel_id);
         }
 
+        String cname = "";
+        if(currentUser!=null && isChat) {
+            long hContact = MrMailbox.MrMailboxGetContactById(MrMailbox.hMailbox, currentUser.id);
+            cname = MrMailbox.MrContactGetDisplayName(hContact);
+            MrMailbox.MrContactUnref(hContact);
+        }
+
         if (isChat && !messageObject.isOutOwner() && messageObject.isFromUser()) {
             isAvatarVisible = true;
+            /*
             if (currentUser != null) {
                 if (currentUser.photo != null) {
                     currentPhoto = currentUser.photo.photo_small;
@@ -3906,6 +3914,10 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                 currentPhoto = null;
                 avatarDrawable.setInfo(messageObject.messageOwner.from_id, null, null, false);
             }
+            */
+
+            // MrAvatar ...
+            avatarDrawable.setInfo(cname, null, false);
             avatarImage.setImage(currentPhoto, "50_50", avatarDrawable, null, false);
         }
 
@@ -3944,9 +3956,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
             if (authorName) {
                 if (currentUser != null) {
                     // EDIT BY MR
-                    long hContact= MrMailbox.MrMailboxGetContactById(MrMailbox.hMailbox, currentUser.id);
-                        currentNameString = MrMailbox.MrContactGetDisplayName(hContact);
-                    MrMailbox.MrContactUnref(hContact);
+                    currentNameString = cname;
                     // /EDIT BY MR
                 } else if (currentChat != null) {
                     currentNameString = currentChat.title;
