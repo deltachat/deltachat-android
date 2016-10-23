@@ -83,7 +83,6 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
         void didPressedImage(ChatMessageCell cell);
         void didPressedShare(ChatMessageCell cell);
         void didPressedOther(ChatMessageCell cell);
-        //void didPressedBotButton(ChatMessageCell cell, TLRPC.KeyboardButton button);
         boolean needPlayAudio(MessageObject messageObject);
         boolean canPerformActions();
     }
@@ -95,20 +94,6 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
     private final static int DOCUMENT_ATTACH_TYPE_VIDEO = 4;
     private final static int DOCUMENT_ATTACH_TYPE_MUSIC = 5;
     private final static int DOCUMENT_ATTACH_TYPE_STICKER = 6;
-
-    /*
-    private class BotButton {
-        private int x;
-        private int y;
-        private int width;
-        private int height;
-        private StaticLayout title;
-        private TLRPC.KeyboardButton button;
-        private int angle;
-        private float progressAlpha;
-        private long lastUpdateTime;
-    }
-    */
 
     private int textX;
     private int textY;
@@ -221,12 +206,6 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
     private StaticLayout performerLayout;
     private int performerX;
 
-    //private ArrayList<BotButton> botButtons = new ArrayList<>();
-    //private HashMap<String, BotButton> botButtonsByData = new HashMap<>();
-    //private int widthForButtons;
-    //private int pressedBotButton;
-
-    //
     private int TAG;
 
     public boolean isChat;
@@ -303,12 +282,6 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
     private int timeX;
     private String currentTimeString;
     private boolean drawTime = true;
-
-    /* EDIT BY MR
-    private StaticLayout viewsLayout;
-    private int viewsTextWidth;
-    private String currentViewsString;
-    */
 
     private TLRPC.User currentUser;
     private TLRPC.Chat currentChat;
@@ -897,47 +870,6 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
         return result;
     }
 
-    /*
-    private boolean checkBotButtonMotionEvent(MotionEvent event) {
-        if (botButtons.isEmpty()) {
-            return false;
-        }
-
-        int x = (int) event.getX();
-        int y = (int) event.getY();
-
-        boolean result = false;
-        if (event.getAction() == MotionEvent.ACTION_DOWN) {
-            int addX;
-            if (currentMessageObject.isOutOwner()) {
-                addX = getMeasuredWidth() - widthForButtons - dp(10);
-            } else {
-                addX = currentBackgroundDrawable.getBounds().left + dp(mediaBackground ? 1 : 7);
-            }
-            for (int a = 0; a < botButtons.size(); a++) {
-                BotButton button = botButtons.get(a);
-                int y2 = button.y + layoutHeight - dp(2);
-                if (x >= button.x + addX && x <= button.x + addX + button.width && y >= y2 && y <= y2 + button.height) {
-                    pressedBotButton = a;
-                    invalidate();
-                    result = true;
-                    break;
-                }
-            }
-        } else {
-            if (event.getAction() == MotionEvent.ACTION_UP) {
-                if (pressedBotButton != -1) {
-                    playSoundEffect(SoundEffectConstants.CLICK);
-                    delegate.didPressedBotButton(this, botButtons.get(pressedBotButton).button);
-                    pressedBotButton = -1;
-                    invalidate();
-                }
-            }
-        }
-        return result;
-    }
-    */
-
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         if (currentMessageObject == null || !delegate.canPerformActions()) {
@@ -962,13 +894,9 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
         if (!result) {
             result = checkPhotoImageMotionEvent(event);
         }
-        /*if (!result) {
-            result = checkBotButtonMotionEvent(event);
-        }*/
 
         if (event.getAction() == MotionEvent.ACTION_CANCEL) {
             buttonPressed = 0;
-            //pressedBotButton = -1;
             linkPreviewPressed = false;
             otherPressed = false;
             imagePressed = false;
@@ -1449,9 +1377,8 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
             return;
         }
         resetPressedLink(-1);
-        if (buttonPressed != 0 /*|| pressedBotButton != -1*/) {
+        if (buttonPressed != 0 ) {
             buttonPressed = 0;
-            //pressedBotButton = -1;
             invalidate();
         }
         if (delegate != null) {
@@ -1758,7 +1685,6 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
             hasLinkPreview = false;
             linkPreviewPressed = false;
             buttonPressed = 0;
-            //pressedBotButton = -1;
             linkPreviewHeight = 0;
             mediaOffsetY = 0;
             documentAttachType = DOCUMENT_ATTACH_TYPE_NONE;
@@ -2722,11 +2648,6 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                     FileLog.e("tmessages", e);
                 }
             }
-
-            /*botButtons.clear();
-            if (messageIdChanged) {
-                botButtonsByData.clear();
-            }*/
 
             /* EDIT BY MR
             if (messageObject.messageOwner.reply_markup instanceof TLRPC.TL_replyInlineMarkup) {
