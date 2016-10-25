@@ -3836,7 +3836,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
     }
 
     private boolean checkNeedDrawShareButton(MessageObject messageObject) {
-        // LibreChat uses the "Share" button as a reply button: in the "strangers" group it is very usul to reply
+        // we use the "Share" button as a reply button: in the "strangers" group it is very usul to reply
         // to a message, so we use this as a shortcut to "long press -> reply"
         if( messageObject.getDialogId()==MrMailbox.MR_CHAT_ID_STRANGERS) {
             return true;

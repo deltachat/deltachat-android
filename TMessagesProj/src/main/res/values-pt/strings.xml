@@ -15,10 +15,6 @@
     <string name="WrongCountry">Código do país incorreto</string>
     <!--code enter view-->
     <string name="YourCode">Verificação do tel.</string>
-    <string name="SentSmsCode">Enviamos uma SMS com um código de ativação para <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>.</string>
-    <string name="SentAppCode">Nós enviamos o código para o aplicativo do <![CDATA[<b>]]>Telegram<![CDATA[</b>]]> em seu outro dispositivo.</string>
-    <string name="SentCallCode">Enviamos uma ligação de ativação para <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>.\n\nNão atenda, o Telegram processará automaticamente.</string>
-    <string name="SentCallOnly">Nós te ligaremos em <![CDATA[<b>]]>%1$s<![CDATA[</b>]]> para ditar o código.</string>
     <string name="CallText">Vamos te ligar em %1$d:%2$02d</string>
     <string name="SmsText">Vamos te enviar uma SMS em %1$d:%2$02d</string>
     <string name="Calling">Estamos te ligando...</string>
@@ -301,7 +297,6 @@
     <string name="PhoneOther">Outro</string>
     <string name="PhoneMain">Principal</string>
     <string name="StartEncryptedChat">Iniciar Chat Secreto</string>
-    <string name="CreateEncryptedChatError">Ocorreu um erro.</string>
     <string name="EncryptionKey">Chave criptográfica</string>
     <string name="MessageLifetime">Tempo de autodestruição</string>
     <string name="ShortMessageLifetimeForever">Desativado</string>
@@ -360,8 +355,7 @@
     <string name="SendByEnter">Enviar usando \'Enter\'</string>
     <string name="Events">Eventos</string>
     <string name="Language">Idioma</string>
-    <string name="TelegramFaq">Perguntas frequentes</string>
-    <string name="TelegramFaqUrl">https://messenger.b44t.com/help</string>
+    <string name="Help">Perguntas frequentes</string>
     <string name="DeleteLocalization">Apagar localização?</string>
     <string name="IncorrectLocalization">Arquivo de localização incorreto</string>
     <string name="Enabled">Ativado</string>
@@ -369,7 +363,7 @@
     <string name="NotificationsService">Serviço Manter-Ativo</string>
     <string name="NotificationsServiceInfo">Reiniciar o app quando desligado pelo usuário ou pelo sistema. Isso irá garantir que o app mostre as notificações.</string>
     <string name="NotificationsServiceConnection">Conexão em Segundo Plano</string>
-    <string name="NotificationsServiceConnectionInfo">Manter uma conexão de baixo impacto para o Telegram receber notificações. Habilite para notificações mais confiáveis.</string>
+    <string name="NotificationsServiceConnectionInfo">Manter uma conexão de baixo impacto para receber notificações. Habilite para notificações mais confiáveis.</string>
     <string name="ImportContacts">Importar Contatos</string>
     <string name="LedColor">Cor do LED</string>
     <string name="PopupNotification">Notificações Pop-up</string>
@@ -700,18 +694,17 @@
     <string name="SendMessagesToGroup">Enviar mensagens para %1$s?</string>
     <string name="SendContactToGroup">Enviar contato para %1$s?</string>
     <string name="ForwardMessagesToGroup">Encaminhar mensagem para %1$s?</string>
-    <string name="NoUsernameFound">Não há conta do Telegram com esse nome de usuário</string>
     <string name="RaiseToSpeakAlert">Gostaria de habilitar o \"Levantar para Falar\" para mensagens de voz?</string>
     <string name="EditMessageError">Desculpe, você não pode editar essa mensagem.</string>
     <string name="AllowReadSms">Permita o acesso às SMS ao Telegram, assim podemos automaticamente adicionar o código para você.</string>
     <string name="AllowReadCall">Permita o acesso às ligações ao Telegram, assim podemos automaticamente adicionar o código para você.</string>
     <string name="AllowReadCallAndSms">Permita o acesso às SMS e ligações ao Telegram, assim podemos automaticamente adicionar o código para você.</string>
     <!--permissions-->
-    <string name="PermissionContacts">Telegram precisa acessar seus contatos para que você possa se conectar aos seus amigos em todos os seus dispositivos.</string>
-    <string name="PermissionStorage">Telegram precisa acessar seu armazenamento para que você possa enviar e salvar fotos, vídeos, músicas e outras mídias.</string>
-    <string name="PermissionNoAudio">Telegram precisa acessar seu microfone para que você possa enviar mensagens de voz.</string>
-    <string name="PermissionNoLocation">Telegram precisa acessar sua localização para que você possa compartilhar com seus amigos.</string>
-    <string name="PermissionNoLocationPosition">O Telegram precisa acessar sua localização</string>
+    <string name="PermissionContacts">LibreChat precisa acessar seus contatos para que você possa se conectar aos seus amigos em todos os seus dispositivos.</string>
+    <string name="PermissionStorage">LibreChat precisa acessar seu armazenamento para que você possa enviar e salvar fotos, vídeos, músicas e outras mídias.</string>
+    <string name="PermissionNoAudio">LibreChat precisa acessar seu microfone para que você possa enviar mensagens de voz.</string>
+    <string name="PermissionNoLocation">LibreChat precisa acessar sua localização para que você possa compartilhar com seus amigos.</string>
+    <string name="PermissionNoLocationPosition">O LibreChat precisa acessar sua localização</string>
     <string name="PermissionOpenSettings">CONFIGURAÇÕES</string>
     <!--Intro view-->
     <string name="Page1Title">Telegram</string>

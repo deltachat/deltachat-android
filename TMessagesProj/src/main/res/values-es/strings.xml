@@ -15,10 +15,6 @@
     <string name="WrongCountry">Código de país incorrecto</string>
     <!--code enter view-->
     <string name="YourCode">Verificación</string>
-    <string name="SentSmsCode">Enviamos un SMS con el código de activación al <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>.</string>
-    <string name="SentAppCode">Enviamos el código a la aplicación <![CDATA[<b>]]>Telegram<![CDATA[</b>]]> en tu otro dispositivo.</string>
-    <string name="SentCallCode">Enviamos una llamada de activación al <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>.\n\nNo la contestes. Telegram hará todo el proceso automáticamente.</string>
-    <string name="SentCallOnly">Estamos llamando al <![CDATA[<b>]]>%1$s<![CDATA[</b>]]> para dictar un código.</string>
     <string name="CallText">Te llamaremos en %1$d:%2$02d</string>
     <string name="SmsText">Te enviaremos un SMS en %1$d:%2$02d</string>
     <string name="Calling">Llamándote...</string>
@@ -301,7 +297,6 @@
     <string name="PhoneOther">Otro</string>
     <string name="PhoneMain">Principal</string>
     <string name="StartEncryptedChat">Iniciar chat secreto</string>
-    <string name="CreateEncryptedChatError">Ocurrió un error.</string>
     <string name="EncryptionKey">Clave de cifrado</string>
     <string name="MessageLifetime">Autodestrucción</string>
     <string name="ShortMessageLifetimeForever">Apagada</string>
@@ -360,8 +355,7 @@
     <string name="SendByEnter">Enviar con “Intro”</string>
     <string name="Events">Eventos</string>
     <string name="Language">Idioma</string>
-    <string name="TelegramFaq">Preguntas frecuentes</string>
-    <string name="TelegramFaqUrl">https://messenger.b44t.com/help</string>
+    <string name="Help">Preguntas frecuentes</string>
     <string name="DeleteLocalization">¿Eliminar traducción?</string>
     <string name="IncorrectLocalization">Archivo de traducción incorrecto</string>
     <string name="Enabled">Activadas</string>
@@ -700,18 +694,17 @@
     <string name="SendMessagesToGroup">¿Enviar mensajes a %1$s?</string>
     <string name="SendContactToGroup">¿Enviar contacto a %1$s?</string>
     <string name="ForwardMessagesToGroup">¿Reenviar mensajes a %1$s?</string>
-    <string name="NoUsernameFound">No hay ninguna cuenta de Telegram con este alias.</string>
     <string name="RaiseToSpeakAlert">¿Quieres habilitar “Elevar para hablar” para mensajes de voz?</string>
     <string name="EditMessageError">No puedes editar este mensaje.</string>
     <string name="AllowReadSms">Por favor, permite a Telegram recibir SMS, para ingresar el código automáticamente.</string>
     <string name="AllowReadCall">Por favor, permite a Telegram recibir llamadas, para ingresar el código automáticamente.</string>
     <string name="AllowReadCallAndSms">Por favor, permite a Telegram recibir llamadas y SMS, para ingresar el código automáticamente.</string>
     <!--permissions-->
-    <string name="PermissionContacts">Telegram necesita el acceso a tus contactos, para que puedas comunicarte con ellos en todos tus dispositivos.</string>
-    <string name="PermissionStorage">Telegram necesita acceso a tu almacenamiento, para que puedas enviar y guardar fotos, vídeos, música y otros archivos.</string>
-    <string name="PermissionNoAudio">Telegram necesita acceso a tu micrófono, para que puedas enviar mensajes de voz.</string>
-    <string name="PermissionNoLocation">Telegram necesita acceso a tu ubicación, para que puedas compartirla con tus amigos.</string>
-    <string name="PermissionNoLocationPosition">Telegram necesita acceso a tu ubicación.</string>
+    <string name="PermissionContacts">LibreChat necesita el acceso a tus contactos, para que puedas comunicarte con ellos en todos tus dispositivos.</string>
+    <string name="PermissionStorage">LibreChat necesita acceso a tu almacenamiento, para que puedas enviar y guardar fotos, vídeos, música y otros archivos.</string>
+    <string name="PermissionNoAudio">LibreChat necesita acceso a tu micrófono, para que puedas enviar mensajes de voz.</string>
+    <string name="PermissionNoLocation">LibreChat necesita acceso a tu ubicación, para que puedas compartirla con tus amigos.</string>
+    <string name="PermissionNoLocationPosition">LibreChat necesita acceso a tu ubicación.</string>
     <string name="PermissionOpenSettings">AJUSTES</string>
     <!--Intro view-->
     <string name="Page1Title">Telegram</string>

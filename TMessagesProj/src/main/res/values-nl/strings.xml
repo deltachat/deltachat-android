@@ -15,10 +15,6 @@
     <string name="WrongCountry">Onjuist landnummer</string>
     <!--code enter view-->
     <string name="YourCode">Telefoonverificatie</string>
-    <string name="SentSmsCode">We hebben een sms-bericht met activatiecode verzonden naar <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>.</string>
-    <string name="SentAppCode">We hebben de code naar je andere  <![CDATA[<b>]]>Telegram<![CDATA[</b>]]>-app gestuurd.</string>
-    <string name="SentCallCode">We doen een activatie-oproep naar <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>.\n\nNeem niet op, Telegram verwerkt de oproep automatisch.</string>
-    <string name="SentCallOnly">We bellen je op <![CDATA[<b>]]>%1$s<![CDATA[</b>]]> om een code te dicteren.</string>
     <string name="CallText">We bellen je over %1$d:%2$02d</string>
     <string name="SmsText">We sturen je een SMS over %1$d:%2$02d</string>
     <string name="Calling">We bellen je</string>
@@ -301,7 +297,6 @@
     <string name="PhoneOther">Overig</string>
     <string name="PhoneMain">Hoofd</string>
     <string name="StartEncryptedChat">Geheime chat starten</string>
-    <string name="CreateEncryptedChatError">Er is een fout opgetreden.</string>
     <string name="EncryptionKey">Encryptiesleutel</string>
     <string name="MessageLifetime">Zelfvernietigingstimer</string>
     <string name="ShortMessageLifetimeForever">Uit</string>
@@ -360,8 +355,7 @@
     <string name="SendByEnter">Versturen met Enter</string>
     <string name="Events">Gebeurtenissen</string>
     <string name="Language">Taal</string>
-    <string name="TelegramFaq">Veelgestelde vragen</string>
-    <string name="TelegramFaqUrl">https://messenger.b44t.com/help</string>
+    <string name="Help">Veelgestelde vragen</string>
     <string name="DeleteLocalization">Vertaling verwijderen?</string>
     <string name="IncorrectLocalization">Ongeldig vertalingsbestand</string>
     <string name="Enabled">Inschakelen</string>
@@ -700,18 +694,17 @@
     <string name="SendMessagesToGroup">Berichten naar %1$s versturen?</string>
     <string name="SendContactToGroup">Contact delen met %1$s?</string>
     <string name="ForwardMessagesToGroup">Berichten doorsturen naar %1$s?</string>
-    <string name="NoUsernameFound">Er is geen Telegram-account met deze gebruikersnaam.</string>
     <string name="RaiseToSpeakAlert">Wil je \"Houd bij oor\" inschakelen voor spraakberichten?</string>
     <string name="EditMessageError">Je mag dit bericht niet bewerken.</string>
     <string name="AllowReadSms">Sta het ontvangen van SMS toe zodat we automatisch je inlogcode kunnen invoeren.</string>
     <string name="AllowReadCall">Sta het ontvangen van oproepen toe zodat we automatisch je inlogcode kunnen invoeren.</string>
     <string name="AllowReadCallAndSms">Sta het ontvangen van oproepen en SMS toe zodat we automatisch je inlogcode kunnen invoeren.</string>
     <!--permissions-->
-    <string name="PermissionContacts">Telegram heeft toegang tot je contacten nodig zodat je kan chatten met je vrienden vanaf al je apparaten.</string>
-    <string name="PermissionStorage">Telegram heeft toegang tot je opslaggeheugen nodig zodat je foto\'s, video\'s, muziek en andere media kunt opslaan en versturen.</string>
-    <string name="PermissionNoAudio">Telegram heeft toegang tot je microfoon nodig om spraakberichten te kunnen verzenden.</string>
-    <string name="PermissionNoLocation">Telegram heeft toegang tot je locatie nodig om deze te kunnen delen met je vrienden.</string>
-    <string name="PermissionNoLocationPosition">Telegram heeft toegang tot je locatie nodig.</string>
+    <string name="PermissionContacts">LibreChat heeft toegang tot je contacten nodig zodat je kan chatten met je vrienden vanaf al je apparaten.</string>
+    <string name="PermissionStorage">LibreChat heeft toegang tot je opslaggeheugen nodig zodat je foto\'s, video\'s, muziek en andere media kunt opslaan en versturen.</string>
+    <string name="PermissionNoAudio">LibreChat heeft toegang tot je microfoon nodig om spraakberichten te kunnen verzenden.</string>
+    <string name="PermissionNoLocation">LibreChat heeft toegang tot je locatie nodig om deze te kunnen delen met je vrienden.</string>
+    <string name="PermissionNoLocationPosition">LibreChat heeft toegang tot je locatie nodig.</string>
     <string name="PermissionOpenSettings">INSTELLINGEN</string>
     <!--Intro view-->
     <string name="Page1Title">Telegram</string>

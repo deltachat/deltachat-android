@@ -1330,6 +1330,7 @@ public class LoginActivity extends BaseFragment {
 
             String number = "";//PhoneFormat.getInstance().format(phone);
             CharSequence str = "";
+            /*
             if (currentType == 1) {
                 str = AndroidUtilities.replaceTags(LocaleController.getString("SentAppCode", R.string.SentAppCode));
             } else if (currentType == 2) {
@@ -1339,6 +1340,7 @@ public class LoginActivity extends BaseFragment {
             } else if (currentType == 4) {
                 str = AndroidUtilities.replaceTags(LocaleController.formatString("SentCallOnly", R.string.SentCallOnly, number));
             }
+            */
             confirmTextView.setText(str);
 
             if (currentType != 3) {

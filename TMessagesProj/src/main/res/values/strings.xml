@@ -15,10 +15,6 @@
     <string name="WrongCountry">Wrong country code</string>
     <!--code enter view-->
     <string name="YourCode">Phone verification</string>
-    <string name="SentSmsCode">We\'ve sent an SMS with an activation code to your phone <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>.</string>
-    <string name="SentAppCode">We\'ve sent the code to the <![CDATA[<b>]]>Telegram<![CDATA[</b>]]> app on your other device.</string>
-    <string name="SentCallCode">We\'ve sent an activation call to your phone <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>.\n\nDon\'t take it, Telegram will process everything automatically.</string>
-    <string name="SentCallOnly">We are calling your phone <![CDATA[<b>]]>%1$s<![CDATA[</b>]]> to dictate a code.</string>
     <string name="CallText">We will call you in %1$d:%2$02d</string>
     <string name="SmsText">We will send you an SMS in %1$d:%2$02d</string>
     <string name="Calling">Calling you...</string>
@@ -46,7 +42,6 @@
     <string name="NewSecretChat">New Secret Chat</string>
     <string name="ClearHistory">Delete all messages</string>
     <string name="DeleteChat">Delete chat</string>
-    <string name="sed">Deleted Account</string>
     <string name="SelectChat">Select Chat</string>
     <string name="PhotoTip">Tap and hold to view</string>
     <string name="SearchMessages">MESSAGES</string>
@@ -302,7 +297,6 @@
     <string name="PhoneOther">Other</string>
     <string name="PhoneMain">Main</string>
     <string name="StartEncryptedChat">Start Secret Chat</string>
-    <string name="CreateEncryptedChatError">An error occurred.</string>
     <string name="EncryptionKey">Encryption Key</string>
     <string name="MessageLifetime">Self-Destruct Timer</string>
     <string name="ShortMessageLifetimeForever">Off</string>
@@ -361,16 +355,15 @@
     <string name="SendByEnter">Send by Enter</string>
     <string name="Events">Events</string>
     <string name="Language">Language</string>
-    <string name="TelegramFaq">Help</string>
-    <string name="TelegramFaqUrl">https://messenger.b44t.com/help</string>
+    <string name="Help">Help</string>
     <string name="DeleteLocalization">Delete localization?</string>
     <string name="IncorrectLocalization">Incorrect localization file</string>
     <string name="Enabled">Enabled</string>
-    <string name="Disabled">Disabled</string>
+    <string name="Disabled" tools:keep="@string/Disabled">Disabled</string>
     <string name="NotificationsService">Keep-Alive Service</string>
     <string name="NotificationsServiceInfo">Relaunch app when shut down by user or system. This will ensure app can show notifications.</string>
     <string name="NotificationsServiceConnection">Background Connection</string>
-    <string name="NotificationsServiceConnectionInfo">Keep a low impact background connection to Telegram to receive notifications. Enable for reliable notifications.</string>
+    <string name="NotificationsServiceConnectionInfo">Keep a low impact background connection to receive notifications. Enable for reliable notifications.</string>
     <string name="ImportContacts">Import Contacts</string>
     <string name="LedColor">LED Color</string>
     <string name="PopupNotification">Popup Notifications</string>
@@ -424,7 +417,7 @@
     <string name="CacheSettings">Storage</string>
     <string name="LocalDatabase">Local Database</string>
     <string name="LocalDatabaseClear">Clear cached text messages?</string>
-    <string name="LocalDatabaseInfo">Clearing the local database will delete the texts of cached messages and compress the database to save internal disk space. Telegram needs some data to work, so database size will not reach zero.\n\nThis operation can take a few minutes to complete.</string>
+    <string name="LocalDatabaseInfo">Clearing the local database will delete the texts of cached messages and compress the database to save internal disk space. The app needs some data to work, so database size will not reach zero.\n\nThis operation can take a few minutes to complete.</string>
     <string name="ClearMediaCache">Clear Cache</string>
     <string name="CacheClear">Clear</string>
     <string name="CalculatingSize">Calculating...</string>
@@ -441,7 +434,7 @@
     <!--passcode view-->
     <string name="Passcode">Passcode Lock</string>
     <string name="ChangePasscode">Change Passcode</string>
-    <string name="ChangePasscodeInfo">When you set up an additional passcode, a lock icon will appear on the chats page. Tap it to lock and unlock your Telegram app.\n\nNote: if you forget the passcode, you\'ll need to delete and reinstall the app.</string>
+    <string name="ChangePasscodeInfo">When you set up an additional passcode, a lock icon will appear on the chats page. Tap it to lock and unlock the app.\n\nNote: if you forget the passcode, you\'ll need to delete and reinstall the app.</string>
     <string name="PasscodePIN">PIN</string>
     <string name="PasscodePassword">Password</string>
     <string name="EnterCurrentPasscode">Enter your current passcode</string>
@@ -652,7 +645,7 @@
     <string name="ActionAddUserSelf">un1 returned to the group</string>
     <string name="ActionAddUserSelfMega">un1 joined the group</string>
     <string name="ActionAddUserSelfYou">You returned to the group</string>
-    <string name="UnsupportedMedia">This message is not supported on your version of Telegram. Update the app to view: https://telegram.org/update</string>
+    <string name="UnsupportedMedia">This message is not supported on your version of the app.</string>
     <string name="AttachPhoto">Photo</string>
     <string name="AttachVideo">Video</string>
     <string name="AttachGif">GIF</string>
@@ -676,7 +669,7 @@
     <string name="NoPlayerInstalled">You don\'t have a video player, please install one to continue</string>
     <string name="NoMailInstalled">Please send an email to sms@stel.com and tell us about your problem.</string>
     <string name="NoHandleAppInstalled">You don\'t have applications that can handle the file type \'%1$s\', please install one to continue</string>
-    <string name="InviteUser">This user does not have Telegram yet, send an invitation?</string>
+    <string name="InviteUser">This user does not have LibreChat yet, send an invitation?</string>
     <string name="AreYouSure">Are you sure?</string>
     <string name="AddToTheGroupTitle">Add %1$s to the chat %2$s?</string>
     <string name="AddToTheGroupForwardCount">Number of last messages to forward:</string>
@@ -701,18 +694,17 @@
     <string name="SendMessagesToGroup">Send messages to %1$s?</string>
     <string name="SendContactToGroup">Send contact to %1$s?</string>
     <string name="ForwardMessagesToGroup">Forward messages to %1$s?</string>
-    <string name="NoUsernameFound">There is no Telegram account with this username.</string>
     <string name="RaiseToSpeakAlert">Would you like to enable "Raise to speak" for voice messages?</string>
     <string name="EditMessageError">Sorry, you can\'t edit this message.</string>
     <string name="AllowReadSms">Please allow Telegram to receive SMS so that we can automatically enter your code for you.</string>
     <string name="AllowReadCall">Please allow Telegram to receive calls so that we can automatically enter your code for you.</string>
     <string name="AllowReadCallAndSms">Please allow Telegram to receive calls and SMS so that we can automatically enter your code for you.</string>
     <!--permissions-->
-    <string name="PermissionContacts">Telegram needs access to your contacts so that you can connect with your friends across all your devices.</string>
+    <string name="PermissionContacts">LibreChat needs access to your contacts so that you can connect with your friends across all your devices.</string>
     <string name="PermissionStorage">Telegram needs access to your storage so that you can send and save photos, videos, music and other media.</string>
-    <string name="PermissionNoAudio">Telegram needs access to your microphone so that you can send voice messages.</string>
-    <string name="PermissionNoLocation">Telegram needs access to your location so that you can share it with your friends.</string>
-    <string name="PermissionNoLocationPosition">Telegram needs access to your location.</string>
+    <string name="PermissionNoAudio">LibreChat needs access to your microphone so that you can send voice messages.</string>
+    <string name="PermissionNoLocation">LibreChat needs access to your location so that you can share it with your friends.</string>
+    <string name="PermissionNoLocationPosition">LibreChat needs access to your location.</string>
     <string name="PermissionOpenSettings">SETTINGS</string>
     <!--Intro view-->
     <string name="Page1Title">LibreChat</string>

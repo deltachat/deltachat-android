@@ -342,7 +342,7 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                     presentFragment(new SettingsActivity());
                     drawerLayoutContainer.closeDrawer(false);
                 } else if (position == DrawerLayoutAdapter.iFaq) {
-                    Browser.openUrl(LaunchActivity.this, LocaleController.getString("TelegramFaqUrl", R.string.TelegramFaqUrl));
+                    Browser.openUrl(LaunchActivity.this, "https://messenger.b44t.com/help");
                     drawerLayoutContainer.closeDrawer(false);
                 }
             }
@@ -1155,11 +1155,13 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                                         }
                                     }
                                 } else {
+                                    /*
                                     try {
                                         Toast.makeText(LaunchActivity.this, LocaleController.getString("NoUsernameFound", R.string.NoUsernameFound), Toast.LENGTH_SHORT).show();
                                     } catch (Exception e) {
                                         FileLog.e("tmessages", e);
                                     }
+                                    */
                                 }
                             }
                         }

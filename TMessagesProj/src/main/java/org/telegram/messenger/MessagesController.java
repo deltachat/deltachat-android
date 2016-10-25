@@ -7413,11 +7413,13 @@ public class MessagesController implements NotificationCenter.NotificationCenter
                                 }
                             } else {
                                 if (fragment != null && fragment.getParentActivity() != null) {
+                                    /*
                                     try {
                                         Toast.makeText(fragment.getParentActivity(), LocaleController.getString("NoUsernameFound", R.string.NoUsernameFound), Toast.LENGTH_SHORT).show();
                                     } catch (Exception e) {
                                         FileLog.e("tmessages", e);
                                     }
+                                    */
                                 }
                             }
                         }

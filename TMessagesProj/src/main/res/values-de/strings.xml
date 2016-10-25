@@ -15,10 +15,6 @@
     <string name="WrongCountry">Falsche Landesvorwahl</string>
     <!--code enter view-->
     <string name="YourCode">Nummer verifizieren</string>
-    <string name="SentSmsCode">Wir haben dir eine SMS mit Aktivierungscode an <![CDATA[<b>]]>%1$s<![CDATA[</b>]]> gesendet.</string>
-    <string name="SentAppCode">Code wurde dir per <![CDATA[<b>]]>Telegram<![CDATA[</b>]]> an deine aktive App geschickt.</string>
-    <string name="SentCallCode">Wir rufen dich jetzt unter <![CDATA[<b>]]>%1$s<![CDATA[</b>]]> an.  Bitte den Anruf nicht annehmen, Telegram kümmert sich um alles.</string>
-    <string name="SentCallOnly">Wir rufen <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>an, um dir einen Code zu diktieren.</string>
     <string name="CallText">Wir rufen dich an in %1$d:%2$02d</string>
     <string name="SmsText">Wir senden Dir eine SMS in %1$d:%2$02d</string>
     <string name="Calling">Wir rufen dich an…</string>
@@ -300,7 +296,6 @@
     <string name="PhoneOther">Sonstiges</string>
     <string name="PhoneMain">Hauptnummer</string>
     <string name="StartEncryptedChat">Geheimen Chat starten</string>
-    <string name="CreateEncryptedChatError">Es ist ein Fehler aufgetreten.</string>
     <string name="EncryptionKey">Geheimer Schlüssel</string>
     <string name="MessageLifetime">Selbstzerstörungs-Timer</string>
     <string name="ShortMessageLifetimeForever">Aus</string>
@@ -359,8 +354,7 @@
     <string name="SendByEnter">Mit Enter senden</string>
     <string name="Events">Ereignisse</string>
     <string name="Language">Sprache</string>
-    <string name="TelegramFaq">Hilfe</string>
-    <string name="TelegramFaqUrl">https://messenger.b44t.com/help</string>
+    <string name="Help">Hilfe</string>
     <string name="DeleteLocalization">Lokalisierung löschen?</string>
     <string name="IncorrectLocalization">Falsche Sprachdatei</string>
     <string name="Enabled">Aktiviert</string>
@@ -368,7 +362,7 @@
     <string name="NotificationsService">Keep-Alive-Dienst</string>
     <string name="NotificationsServiceInfo">Sofern die App beendet wurde, diese automatisch neu starten, um Benachrichtigungen zu gewährleisten.</string>
     <string name="NotificationsServiceConnection">Hintergrundverbindung</string>
-    <string name="NotificationsServiceConnectionInfo">Nutzt eine batterieschonende Hintergrundverbindung zu Telegram, um Benachrichtigungen zu gewährleisten.</string>
+    <string name="NotificationsServiceConnectionInfo">Nutzt eine batterieschonende Hintergrundverbindung, um Benachrichtigungen zu gewährleisten.</string>
     <string name="ImportContacts">Kontakte importieren</string>
     <string name="LedColor">LED-Farbe</string>
     <string name="PopupNotification">Popup Mitteilungen</string>
@@ -699,7 +693,6 @@
     <string name="SendMessagesToGroup">Nachricht an %1$s senden?</string>
     <string name="SendContactToGroup">Kontakt senden an %1$s?</string>
     <string name="ForwardMessagesToGroup">Weiterleiten an %1$s?</string>
-    <string name="NoUsernameFound">Kein Konto mit diesem Benutzernamen</string>
     <string name="RaiseToSpeakAlert">Möchtest du \"Zum Sprechen ans Ohr\" für Sprachnachrichten aktivieren?</string>
     <string name="EditMessageError">Du kannst diese Nachricht nicht bearbeiten.</string>
     <string name="AllowReadSms">Bitte erlaube Telegram den Zugriff auf SMS, so dass wir den Code automatisch in der App für dich eingeben können.</string>

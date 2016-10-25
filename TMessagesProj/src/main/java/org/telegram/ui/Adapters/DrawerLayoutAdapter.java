@@ -114,7 +114,7 @@ public class DrawerLayoutAdapter extends BaseAdapter {
             } else if (i == iSettings) {
                 actionCell.setTextAndIcon(LocaleController.getString("Settings", R.string.Settings), R.drawable.menu_settings);
             } else if (i == iFaq) {
-                actionCell.setTextAndIcon(LocaleController.getString("TelegramFaq", R.string.TelegramFaq), R.drawable.menu_help);
+                actionCell.setTextAndIcon(LocaleController.getString("Help", R.string.Help), R.drawable.menu_help);
             }
         }
 
