@@ -6475,7 +6475,7 @@ public class TLRPC {
 					result = new TL_messageActionChatCreate();
 					break;
 				case 0x51bdb021:
-					result = new TL_messageActionChatMigrateTo();
+					//result = new TL_messageActionChatMigrateTo();
 					break;
 				case 0x9fbab604:
 					result = new TL_messageActionHistoryClear();
@@ -6603,6 +6603,7 @@ public class TLRPC {
 		}
 	}
 
+	/*
 	public static class TL_messageActionChatMigrateTo extends MessageAction {
 		public static int constructor = 0x51bdb021;
 
@@ -6616,6 +6617,7 @@ public class TLRPC {
 			stream.writeInt32(channel_id);
 		}
 	}
+	*/
 
 	public static class TL_messageActionHistoryClear extends MessageAction {
 		public static int constructor = 0x9fbab604;
@@ -20095,13 +20097,13 @@ public class TLRPC {
         public String attachPath = ""; //custom
 		public HashMap<String, String> params; //custom
         public long random_id; //custom
-        public int local_id = 0; //custom
+        //public int local_id = 0; //custom
         public long dialog_id; //custom
         public int ttl; //custom
         public int destroyTime; //custom
         public int layer; //custom
-        public int seq_in; //custom
-        public int seq_out; //custom
+        //public int seq_in; //custom
+        //public int seq_out; //custom
         public TLRPC.Message replyMessage; //custom
 
         public static Message TLdeserialize(AbstractSerializedData stream, int constructor, boolean exception) {

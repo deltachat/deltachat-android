@@ -437,6 +437,7 @@ public class DialogsSearchAdapter extends BaseSearchAdapterRecycler {
         */
     }
 
+    /*
     private void setRecentSearch(ArrayList<RecentSearchObject> arrayList, HashMap<Long, RecentSearchObject> hashMap) {
         recentSearchObjects = arrayList;
         recentSearchObjectsById = hashMap;
@@ -452,6 +453,7 @@ public class DialogsSearchAdapter extends BaseSearchAdapterRecycler {
         }
         notifyDataSetChanged();
     }
+    */
 
     private void searchDialogsInternal(final String query, final int searchId) {
         if (needMessagesSearch == 2) {
@@ -767,10 +769,10 @@ public class DialogsSearchAdapter extends BaseSearchAdapterRecycler {
                     } else if (obj instanceof TLRPC.Chat) {
                         TLRPC.Chat chat = (TLRPC.Chat) obj;
                         MessagesController.getInstance().putChat(chat, true);
-                    } else if (obj instanceof TLRPC.EncryptedChat) {
+                    } /*else if (obj instanceof TLRPC.EncryptedChat) {
                         TLRPC.EncryptedChat chat = (TLRPC.EncryptedChat) obj;
                         MessagesController.getInstance().putEncryptedChat(chat, true);
-                    }
+                    }*/
                 }
                 MessagesController.getInstance().putUsers(encUsers, true);
                 searchResult = result;

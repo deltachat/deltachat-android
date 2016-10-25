@@ -67,7 +67,7 @@ public class GroupInviteActivity extends BaseFragment implements NotificationCen
         super.onFragmentCreate();
 
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.chatInfoDidLoaded);
-        MessagesController.getInstance().loadFullChat(chat_id, classGuid, true);
+        //MessagesController.getInstance().loadFullChat(chat_id, classGuid, true);
         loading = true;
 
         rowCount = 0;

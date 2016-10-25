@@ -554,7 +554,7 @@ public class NotificationsController {
     public void processLoadedUnreadMessages(final HashMap<Long, Integer> dialogs, final ArrayList<TLRPC.Message> messages, final ArrayList<TLRPC.User> users, final ArrayList<TLRPC.Chat> chats, final ArrayList<TLRPC.EncryptedChat> encryptedChats) {
         MessagesController.getInstance().putUsers(users, true);
         MessagesController.getInstance().putChats(chats, true);
-        MessagesController.getInstance().putEncryptedChats(encryptedChats, true);
+        //MessagesController.getInstance().putEncryptedChats(encryptedChats, true);
 
         notificationsQueue.postRunnable(new Runnable() {
             @Override

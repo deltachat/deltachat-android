@@ -242,7 +242,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                 BotQuery.loadBotInfo(user.id, true, classGuid);
             }
             */
-            MessagesController.getInstance().loadFullUser(MessagesController.getInstance().getUser(user_id), classGuid, true);
+            //MessagesController.getInstance().loadFullUser(MessagesController.getInstance().getUser(user_id), classGuid, true);
             participantsMap = null;
         } else if (chat_id != 0) {
             currentChat = MessagesController.getInstance().getChat(chat_id);
@@ -290,9 +290,9 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
             };
             avatarUpdater.parentFragment = this;
 
-            if (ChatObject.isChannel(currentChat)) {
+            /*if (ChatObject.isChannel(currentChat)) {
                 MessagesController.getInstance().loadFullChat(chat_id, classGuid, true);
-            }
+            }*/
         } else {
             return false;
         }
@@ -329,7 +329,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
             NotificationCenter.getInstance().removeObserver(this, NotificationCenter.blockedUsersDidLoaded);
             NotificationCenter.getInstance().removeObserver(this, NotificationCenter.botInfoDidLoaded);
             NotificationCenter.getInstance().removeObserver(this, NotificationCenter.userInfoDidLoaded);
-            MessagesController.getInstance().cancelLoadFullUser(user_id);
+            //MessagesController.getInstance().cancelLoadFullUser(user_id);
             if (currentEncryptedChat != null) {
                 NotificationCenter.getInstance().removeObserver(this, NotificationCenter.didReceivedNewMessages);
             }
@@ -738,6 +738,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
                                 if (i == 0) {
+                                    /*
                                     TLRPC.TL_chatChannelParticipant channelParticipant = ((TLRPC.TL_chatChannelParticipant) user);
 
                                     channelParticipant.channelParticipant = new TLRPC.TL_channelParticipantEditor();
@@ -764,12 +765,13 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                                                 AndroidUtilities.runOnUIThread(new Runnable() {
                                                     @Override
                                                     public void run() {
-                                                        // AlertsCreator.showAddUserAlert(error.text, ProfileActivity.this, false); -- EDIT BY MR
+                                                        AlertsCreator.showAddUserAlert(error.text, ProfileActivity.this, false); -- EDIT BY MR
                                                     }
                                                 });
                                             }
                                         }
                                     });
+                                    */
                                 } else if (i == 1) {
                                     kickUser(selectedUser);
                                 }

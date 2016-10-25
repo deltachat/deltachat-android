@@ -1672,7 +1672,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                         builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
-                                MessagesController.getInstance().pinChannelMessage(currentChat, 0, false);
+                                //MessagesController.getInstance().pinChannelMessage(currentChat, 0, false);
                             }
                         });
                         builder.setTitle(LocaleController.getString("AppName", R.string.AppName));
@@ -1753,7 +1753,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                         if (currentUser != null) {
                             MessagesController.getInstance().blockUser(currentUser.id);
                         }
-                        MessagesController.getInstance().reportSpam(dialog_id, currentUser, currentChat);
+                        //MessagesController.getInstance().reportSpam(dialog_id, currentUser, currentChat);
                         updateSpamView();
                         if (currentChat != null) {
                             if (ChatObject.isNotInChat(currentChat)) {
@@ -1779,7 +1779,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         closeReportSpam.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                MessagesController.getInstance().hideReportSpam(dialog_id, currentUser, currentChat);
+                //MessagesController.getInstance().hideReportSpam(dialog_id, currentUser, currentChat);
                 updateSpamView();
             }
         });
@@ -5212,7 +5212,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     }
                 }
 
-                boolean reloadMegagroup = false;
+                //boolean reloadMegagroup = false;
                 if (!forwardEndReached[0]) {
                     int currentMaxDate = Integer.MIN_VALUE;
                     int currentMinMsgId = Integer.MIN_VALUE;
@@ -5229,7 +5229,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                         if (avatarContainer != null && currentEncryptedChat != null && obj.messageOwner.action != null && obj.messageOwner.action instanceof TLRPC.TL_messageEncryptedAction && obj.messageOwner.action.encryptedAction instanceof TLRPC.TL_decryptedMessageActionSetMessageTTL) {
                             avatarContainer.setTime(((TLRPC.TL_decryptedMessageActionSetMessageTTL) obj.messageOwner.action.encryptedAction).ttl_seconds);
                         }
-                        if (obj.messageOwner.action instanceof TLRPC.TL_messageActionChatMigrateTo) {
+                        /*if (obj.messageOwner.action instanceof TLRPC.TL_messageActionChatMigrateTo) {
                             final Bundle bundle = new Bundle();
                             bundle.putInt("chat_id", obj.messageOwner.action.channel_id);
                             final BaseFragment lastFragment = parentLayout.fragmentsStack.size() > 0 ? parentLayout.fragmentsStack.get(parentLayout.fragmentsStack.size() - 1) : null;
@@ -5254,7 +5254,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                             return;
                         } else if (currentChat != null && currentChat.megagroup && (obj.messageOwner.action instanceof TLRPC.TL_messageActionChatAddUser || obj.messageOwner.action instanceof TLRPC.TL_messageActionChatDeleteUser)) {
                             reloadMegagroup = true;
-                        }
+                        }*/
                         if (obj.isOut() && obj.isSending()) {
                             scrollToLastMessage(false);
                             return;
@@ -5353,7 +5353,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                             arrayList.add(obj);
                         }
                         obj.checkLayout();
-                        if (obj.messageOwner.action instanceof TLRPC.TL_messageActionChatMigrateTo) {
+                        /*if (obj.messageOwner.action instanceof TLRPC.TL_messageActionChatMigrateTo) {
                             final Bundle bundle = new Bundle();
                             bundle.putInt("chat_id", obj.messageOwner.action.channel_id);
                             final BaseFragment lastFragment = parentLayout.fragmentsStack.size() > 0 ? parentLayout.fragmentsStack.get(parentLayout.fragmentsStack.size() - 1) : null;
@@ -5378,7 +5378,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                             return;
                         } else if (currentChat != null && currentChat.megagroup && (obj.messageOwner.action instanceof TLRPC.TL_messageActionChatAddUser || obj.messageOwner.action instanceof TLRPC.TL_messageActionChatDeleteUser)) {
                             reloadMegagroup = true;
-                        }
+                        }*/
                         if (minDate[0] == 0 || obj.messageOwner.date < minDate[0]) {
                             minDate[0] = obj.messageOwner.date;
                         }
@@ -5522,9 +5522,9 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     updateTitle();
                     checkAndUpdateAvatar();
                 }
-                if (reloadMegagroup) {
+                /*if (reloadMegagroup) {
                     MessagesController.getInstance().loadFullChat(currentChat.id, 0, true);
-                }
+                }*/
             }
         } else if (id == NotificationCenter.closeChats) {
             if (args != null && args.length > 0) {
@@ -6320,7 +6320,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         if (isOpen) {
             openAnimationEnded = true;
             if (currentUser != null) {
-                MessagesController.getInstance().loadFullUser(currentUser, classGuid, false);
+                //MessagesController.getInstance().loadFullUser(currentUser, classGuid, false);
             }
             if (Build.VERSION.SDK_INT >= 21) {
                 createChatAttachView();

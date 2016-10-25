@@ -268,7 +268,7 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
         contactsReimportRow = -1; // EDIT BY MR -rowCount++;
         contactsSortRow = -1; // EDIT BY MR -- rowCount++;
 
-        MessagesController.getInstance().loadFullUser(UserConfig.getCurrentUser(), classGuid, true);
+        //MessagesController.getInstance().loadFullUser(UserConfig.getCurrentUser(), classGuid, true);
 
         return true;
     }
@@ -281,7 +281,7 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
             avatarImage.setImageDrawable(null);
         }
         */
-        MessagesController.getInstance().cancelLoadFullUser(UserConfig.getClientUserId());
+        //MessagesController.getInstance().cancelLoadFullUser(UserConfig.getClientUserId());
         NotificationCenter.getInstance().removeObserver(this, NotificationCenter.updateInterfaces);
         /* EDIT BY MR
         avatarUpdater.clear();
