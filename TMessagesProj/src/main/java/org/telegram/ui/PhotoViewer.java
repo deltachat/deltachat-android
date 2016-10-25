@@ -1644,10 +1644,12 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
                 }
             }
 
+            /*
             @Override
             public void onContextSearch(boolean searching) {
 
             }
+            */
 
             @Override
             public void onContextClick(TLRPC.BotInlineResult result) {

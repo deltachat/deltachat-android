@@ -1346,7 +1346,7 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
             if (playing != null && playing == audioToSendMessageObject) {
                 MediaController.getInstance().cleanupPlayer(true, true);
             }
-            SendMessagesHelper.getInstance().sendMessage(audioToSend, null, audioToSendPath, dialog_id, replyingMessageObject, null, null);
+            SendMessagesHelper.getInstance().sendMessageDocument(audioToSend, null, audioToSendPath, dialog_id, replyingMessageObject, null, null);
             if (delegate != null) {
                 delegate.onMessageSend(null);
             }
@@ -1386,11 +1386,11 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
     public boolean processSendingText(CharSequence text) {
         text = AndroidUtilities.getTrimmedString(text);
         if (text.length() != 0) {
-            int count = (int) Math.ceil(text.length() / 4096.0f);
-            for (int a = 0; a < count; a++) {
-                CharSequence mess = text.subSequence(a * 4096, Math.min((a + 1) * 4096, text.length()));
-                SendMessagesHelper.getInstance().sendMessage(mess.toString(), dialog_id, replyingMessageObject, messageWebPage, messageWebPageSearch, MessagesQuery.getEntities(mess), null, null);
-            }
+            //int count = (int) Math.ceil(text.length() / 4096.0f);
+            //for (int a = 0; a < count; a++) {
+            //    CharSequence mess = text.subSequence(a * 4096, Math.min((a + 1) * 4096, text.length()));
+                SendMessagesHelper.getInstance().sendMessageText(text.toString(), dialog_id, replyingMessageObject, messageWebPage, messageWebPageSearch, MessagesQuery.getEntities(text), null, null);
+            //}
             return true;
         }
         return false;
@@ -1751,6 +1751,7 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
         this.delegate = delegate;
     }
 
+    /*
     public void setCommand(MessageObject messageObject, String command, boolean longPress, boolean username) {
         if (command == null || getVisibility() != VISIBLE) {
             return;
@@ -1758,9 +1759,9 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
         if (longPress) {
             String text = messageEditText.getText().toString();
             TLRPC.User user = messageObject != null && (int) dialog_id < 0 ? MessagesController.getInstance().getUser(messageObject.messageOwner.from_id) : null;
-            /*if ((botCount != 1 || username) && user != null && user.bot && !command.contains("@")) {
+            if ((botCount != 1 || username) && user != null && user.bot && !command.contains("@")) {
                 text = String.format(Locale.US, "%s@%s", command, user.username) + " " + text.replaceFirst("^/[a-zA-Z@\\d_]{1,255}(\\s|$)", "");
-            } else */ {
+            } else {
                 text = command + " " + text.replaceFirst("^/[a-zA-Z@\\d_]{1,255}(\\s|$)", "");
             }
             ignoreTextChange = true;
@@ -1775,13 +1776,14 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
             }
         } else {
             TLRPC.User user = messageObject != null && (int) dialog_id < 0 ? MessagesController.getInstance().getUser(messageObject.messageOwner.from_id) : null;
-            /*if ((botCount != 1 || username) && user != null && user.bot && !command.contains("@")) {
+            if ((botCount != 1 || username) && user != null && user.bot && !command.contains("@")) {
                 SendMessagesHelper.getInstance().sendMessage(String.format(Locale.US, "%s@%s", command, user.username), dialog_id, null, null, false, null, null, null);
-            } else*/ {
+            } else {
                 SendMessagesHelper.getInstance().sendMessage(command, dialog_id, null, null, false, null, null, null);
             }
         }
     }
+    */
 
     /*
     public void setEditingMessageObject(MessageObject messageObject, boolean caption) {
@@ -2605,9 +2607,11 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
     public void onRequestPermissionsResultFragment(int requestCode, String[] permissions, int[] grantResults) {
         if (requestCode == 2) {
             if (pendingLocationButton != null) {
+                /*
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     SendMessagesHelper.getInstance().sendCurrentLocation(pendingMessageObject, pendingLocationButton);
                 }
+                */
                 pendingLocationButton = null;
                 pendingMessageObject = null;
             }

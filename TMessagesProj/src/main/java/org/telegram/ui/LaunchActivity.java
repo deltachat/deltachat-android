@@ -1445,7 +1445,7 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                 }
                 if (contactsToSend != null && !contactsToSend.isEmpty()) {
                     for (TLRPC.User user : contactsToSend) {
-                        SendMessagesHelper.getInstance().sendMessage(user, dialog_id, null, null, null);
+                        SendMessagesHelper.getInstance().sendMessageContact(user, dialog_id, null, null, null);
                     }
                 }
             }

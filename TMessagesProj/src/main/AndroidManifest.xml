@@ -157,11 +157,13 @@
             </intent-filter>
         </receiver>
 
+        <!--
         <receiver android:name=".CallReceiver" >
             <intent-filter>
                 <action android:name="android.intent.action.PHONE_STATE" />
             </intent-filter>
         </receiver>
+        -->
 
         <service android:name=".AuthenticatorService" android:exported="true">
             <intent-filter>
@@ -221,7 +223,7 @@
         </receiver>
 
         <receiver android:name=".WearReplyReceiver" android:enabled="true"/>
-        <receiver android:name=".NetworkAlarm" android:enabled="true"/>
+        <!-- <receiver android:name=".NetworkAlarm" android:enabled="true"/> -->
 
         <receiver android:name=".ShareBroadcastReceiver" android:enabled="true"/>
 

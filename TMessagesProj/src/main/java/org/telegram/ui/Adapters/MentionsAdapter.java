@@ -9,30 +9,19 @@
 package org.telegram.ui.Adapters;
 
 import android.Manifest;
-import android.app.Activity;
-import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
-import android.location.Location;
 import android.os.Build;
 import android.view.View;
 import android.view.ViewGroup;
 
 import org.telegram.messenger.AndroidUtilities;
-import org.telegram.messenger.ApplicationLoader;
-import org.telegram.messenger.LocaleController;
 import org.telegram.messenger.MessageObject;
 import org.telegram.messenger.MessagesController;
-import org.telegram.messenger.R;
-import org.telegram.messenger.SendMessagesHelper;
 import org.telegram.messenger.UserObject;
 import org.telegram.messenger.query.SearchQuery;
 import org.telegram.messenger.support.widget.RecyclerView;
 import org.telegram.tgnet.ConnectionsManager;
-import org.telegram.tgnet.RequestDelegate;
-import org.telegram.tgnet.TLObject;
 import org.telegram.tgnet.TLRPC;
 import org.telegram.ui.ActionBar.BaseFragment;
 import org.telegram.ui.Cells.BotSwitchCell;
@@ -48,7 +37,6 @@ public class MentionsAdapter extends BaseSearchAdapterRecycler {
 
     public interface MentionsAdapterDelegate {
         void needChangePanelVisibility(boolean show);
-        void onContextSearch(boolean searching);
         void onContextClick(TLRPC.BotInlineResult result);
     }
 
@@ -92,10 +80,11 @@ public class MentionsAdapter extends BaseSearchAdapterRecycler {
     private TLRPC.User foundContextBot;
     private boolean contextMedia;
     private Runnable contextQueryRunnable;
-    private Location lastKnownLocation;
+    //private Location lastKnownLocation;
 
     private BaseFragment parentFragment;
 
+    /*
     private SendMessagesHelper.LocationProvider locationProvider = new SendMessagesHelper.LocationProvider(new SendMessagesHelper.LocationProvider.LocationProviderDelegate() {
         @Override
         public void onLocationAcquired(Location location) {
@@ -116,6 +105,7 @@ public class MentionsAdapter extends BaseSearchAdapterRecycler {
             lastKnownLocation = null;
         }
     };
+    */
 
     public MentionsAdapter(Context context, boolean darkTheme, long did, MentionsAdapterDelegate mentionsAdapterDelegate) {
         mContext = context;
@@ -125,9 +115,9 @@ public class MentionsAdapter extends BaseSearchAdapterRecycler {
     }
 
     public void onDestroy() {
-        if (locationProvider != null) {
+        /*if (locationProvider != null) {
             locationProvider.stop();
-        }
+        }*/
         if (contextQueryRunnable != null) {
             AndroidUtilities.cancelRunOnUIThread(contextQueryRunnable);
             contextQueryRunnable = null;
@@ -197,6 +187,7 @@ public class MentionsAdapter extends BaseSearchAdapterRecycler {
         }
     }
 
+    /*
     public TLRPC.TL_inlineBotSwitchPM getBotContextSwitch() {
         return searchResultBotContextSwitch;
     }
@@ -237,7 +228,7 @@ public class MentionsAdapter extends BaseSearchAdapterRecycler {
             foundContextBot = null;
             searchingContextUsername = null;
             searchingContextQuery = null;
-            locationProvider.stop();
+            //locationProvider.stop();
             noUserName = false;
             if (delegate != null) {
                 delegate.onContextSearch(false);
@@ -299,7 +290,7 @@ public class MentionsAdapter extends BaseSearchAdapterRecycler {
                                             TLRPC.User user = res.users.get(0);
                                             if (user.bot && user.bot_inline_placeholder != null) {
                                                 MessagesController.getInstance().putUser(user, false);
-                                                //MessagesStorage.getInstance().putUsersAndChats(res.users, null, true, true);
+                                                MessagesStorage.getInstance().putUsersAndChats(res.users, null, true, true);
                                                 foundContextBot = user;
                                                 if (foundContextBot.bot_inline_geo) {
                                                     SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("Notifications", Activity.MODE_PRIVATE);
@@ -339,7 +330,7 @@ public class MentionsAdapter extends BaseSearchAdapterRecycler {
                                         if (delegate != null) {
                                             delegate.onContextSearch(true);
                                         }
-                                        //searchForContextBotResults(foundContextBot, searchingContextQuery, "");
+                                        searchForContextBotResults(foundContextBot, searchingContextQuery, "");
                                     }
                                 }
                             });
@@ -351,15 +342,18 @@ public class MentionsAdapter extends BaseSearchAdapterRecycler {
         };
         AndroidUtilities.runOnUIThread(contextQueryRunnable, 400);
     }
+    */
 
+    /*
     private void onLocationUnavailable() {
         if (foundContextBot != null && foundContextBot.bot_inline_geo) {
             lastKnownLocation = new Location("network");
             lastKnownLocation.setLatitude(-1000);
             lastKnownLocation.setLongitude(-1000);
-            //searchForContextBotResults(foundContextBot, searchingContextQuery, "");
+            searchForContextBotResults(foundContextBot, searchingContextQuery, "");
         }
     }
+    */
 
     private void checkLocationPermissionsOrStart() {
         if (parentFragment == null || parentFragment.getParentActivity() == null) {
@@ -369,9 +363,9 @@ public class MentionsAdapter extends BaseSearchAdapterRecycler {
             parentFragment.getParentActivity().requestPermissions(new String[]{Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION}, 2);
             return;
         }
-        if (foundContextBot != null && foundContextBot.bot_inline_geo) {
+        /*if (foundContextBot != null && foundContextBot.bot_inline_geo) {
             locationProvider.start();
-        }
+        }*/
     }
 
     public String getBotCaption() {
@@ -483,7 +477,7 @@ public class MentionsAdapter extends BaseSearchAdapterRecycler {
 
     public void searchUsernameOrHashtag(String text, int position, ArrayList<MessageObject> messageObjects) {
         if (text == null || text.length() == 0) {
-            searchForContextBot(null, null);
+            //searchForContextBot(null, null);
             delegate.needChangePanelVisibility(false);
             lastText = null;
             return;
@@ -496,7 +490,7 @@ public class MentionsAdapter extends BaseSearchAdapterRecycler {
         StringBuilder result = new StringBuilder();
         int foundType = -1;
         boolean hasIllegalUsernameCharacters = false;
-        if (needBotContext && text.charAt(0) == '@') {
+        /*if (needBotContext && text.charAt(0) == '@') {
             int index = text.indexOf(' ');
             if (index > 0) {
                 String username = text.substring(1, index);
@@ -520,8 +514,8 @@ public class MentionsAdapter extends BaseSearchAdapterRecycler {
             } else {
                 searchForContextBot(null, null);
             }
-        } else {
-            searchForContextBot(null, null);
+        } else*/ {
+            //searchForContextBot(null, null);
         }
         int dogPostion = -1;
         for (int a = searchPostion; a >= 0; a--) {
@@ -782,9 +776,9 @@ public class MentionsAdapter extends BaseSearchAdapterRecycler {
         return searchResultHashtags != null || searchResultCommands != null;
     }
 
-    public boolean isBotCommands() {
+    /*public boolean isBotCommands() {
         return searchResultCommands != null;
-    }
+    }*/
 
     public boolean isBotContext() {
         return searchResultBotContext != null;
@@ -841,6 +835,7 @@ public class MentionsAdapter extends BaseSearchAdapterRecycler {
 
     public void onRequestPermissionsResultFragment(int requestCode, String[] permissions, int[] grantResults) {
         if (requestCode == 2) {
+            /*
             if (foundContextBot != null && foundContextBot.bot_inline_geo) {
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     locationProvider.start();
@@ -848,6 +843,7 @@ public class MentionsAdapter extends BaseSearchAdapterRecycler {
                     onLocationUnavailable();
                 }
             }
+            */
         }
     }
 }

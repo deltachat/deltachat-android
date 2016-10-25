@@ -372,7 +372,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                     if (user == null) {
                         return;
                     }
-                    if (!user.bot) {
+                    /*if (!user.bot)*/ {
                         AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
                         if (!userBlocked) {
                             builder.setMessage(LocaleController.getString("AreYouSureBlockContact", R.string.AreYouSureBlockContact));
@@ -392,7 +392,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                         });
                         builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
                         showDialog(builder.create());
-                    } else {
+                    } /* else {
                         if (!userBlocked) {
                             MessagesController.getInstance().blockUser(user_id);
                         } else {
@@ -400,7 +400,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                             SendMessagesHelper.getInstance().sendMessage("/start", user_id, null, null, false, null, null, null);
                             finishFragment();
                         }
-                    }
+                    }*/
                 } else if (id == add_contact) {
                     TLRPC.User user = MessagesController.getInstance().getUser(user_id);
                     Bundle args = new Bundle();
@@ -2277,7 +2277,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
             presentFragment(new ChatActivity(args), true);
             removeSelfFromStack();
             TLRPC.User user = MessagesController.getInstance().getUser(user_id);
-            SendMessagesHelper.getInstance().sendMessage(user, dialog_id, null, null, null);
+            SendMessagesHelper.getInstance().sendMessageContact(user, dialog_id, null, null, null);
         }
     }
 
@@ -2369,13 +2369,13 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                                 fragment.setSearchString(url);
                                 presentFragment(fragment);
                             } else if (url.startsWith("/")) {
-                                if (parentLayout.fragmentsStack.size() > 1) {
+                                /*if (parentLayout.fragmentsStack.size() > 1) {
                                     BaseFragment previousFragment = parentLayout.fragmentsStack.get(parentLayout.fragmentsStack.size() - 2);
                                     if (previousFragment instanceof ChatActivity) {
                                         finishFragment();
                                         ((ChatActivity) previousFragment).chatActivityEnterView.setCommand(null, url, false, false);
                                     }
-                                }
+                                }*/
                             }
                         }
                     });

@@ -3464,15 +3464,15 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                 MediaController.getInstance().addLoadingFileObserver(currentMessageObject.messageOwner.attachPath, currentMessageObject, this);
                 buttonState = 4;
                 radialProgress.setBackground(getDrawableForCurrentState(), !fromBot, animated);
-                if (!fromBot) {
+                /*if (!fromBot)*/ {
                     Float progress = ImageLoader.getInstance().getFileProgress(currentMessageObject.messageOwner.attachPath);
                     if (progress == null && SendMessagesHelper.getInstance().isSendingMessage(currentMessageObject.getId())) {
                         progress = 1.0f;
                     }
                     radialProgress.setProgress(progress != null ? progress : 0, false);
-                } else {
+                } /*else {
                     radialProgress.setProgress(0, false);
-                }
+                }*/
             } else {
                 if (fileExists) {
                     MediaController.getInstance().removeLoadingFileObserver(this);
