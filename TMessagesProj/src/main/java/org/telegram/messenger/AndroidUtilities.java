@@ -602,6 +602,7 @@ public class AndroidUtilities {
         }
     }
 
+    /*
     public static AlertDialog.Builder buildTTLAlert(final Context context, final TLRPC.EncryptedChat encryptedChat) {
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         builder.setTitle(LocaleController.getString("MessageLifetime", R.string.MessageLifetime));
@@ -671,6 +672,7 @@ public class AndroidUtilities {
         });
         return builder;
     }
+    */
 
     public static void clearCursorDrawable(EditText editText) {
         if (editText == null) {

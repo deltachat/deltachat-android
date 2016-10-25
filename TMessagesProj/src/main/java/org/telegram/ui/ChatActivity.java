@@ -139,7 +139,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
 
     protected TLRPC.Chat currentChat;
     protected TLRPC.User currentUser; // originally currentChat<->currentUser was used to differ between normal or group chats
-    protected TLRPC.EncryptedChat currentEncryptedChat;
+    private TLRPC.EncryptedChat currentEncryptedChat; // always NULL, not needed
 
     private boolean userBlocked = false;
 
@@ -258,7 +258,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
     private boolean scrollToTopUnReadOnResume;
     private long dialog_id;
     private int lastLoadIndex;
-    private boolean isBroadcast;
+    private boolean isBroadcast; // always false
     private HashMap<Integer, MessageObject>[] selectedMessagesIds = new HashMap[]{new HashMap<>(), new HashMap<>()};
     private HashMap<Integer, MessageObject>[] selectedMessagesCanCopyIds = new HashMap[]{new HashMap<>(), new HashMap<>()};
     private int cantDeleteMessagesCount;
@@ -327,9 +327,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
     private final static int id_reply = 19;
     private final static int edit_done = 20;
     private final static int report = 21;
-
-    private final static int bot_help = 30;
-    private final static int bot_settings = 31;
 
     private final static int attach_photo = 0;
     private final static int attach_gallery = 1;
@@ -931,17 +928,13 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     }
                     chatAttachAlert.init(ChatActivity.this);
                     showDialog(chatAttachAlert);
-                } else if (id == bot_help) {
-                    SendMessagesHelper.getInstance().sendMessage("/help", dialog_id, null, null, false, null, null, null);
-                } else if (id == bot_settings) {
-                    SendMessagesHelper.getInstance().sendMessage("/settings", dialog_id, null, null, false, null, null, null);
                 } else if (id == search) {
                     openSearchWithText(null);
                 }
             }
         });
 
-        avatarContainer = new ChatAvatarContainer(context, this, currentEncryptedChat != null);
+        avatarContainer = new ChatAvatarContainer(context, this);
         actionBar.addView(avatarContainer, 0, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.MATCH_PARENT, Gravity.TOP | Gravity.LEFT, 56, 0, 40, 0));
 
         if (currentChat != null) {
@@ -958,7 +951,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
 
         ActionBarMenu menu = actionBar.createMenu();
 
-        if (currentEncryptedChat == null && !isBroadcast) {
+        /*if (currentEncryptedChat == null && !isBroadcast)*/ {
             searchItem = menu.addItem(0, R.drawable.ic_ab_search).setIsSearchField(true).setActionBarMenuItemSearchListener(new ActionBarMenuItem.ActionBarMenuItemSearchListener() {
 
                 @Override
@@ -1937,7 +1930,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                         i++;
                     }
                     Object object = mentionsAdapter.getItem(i);
-                    if (object instanceof TLRPC.BotInlineResult) {
+                    /*if (object instanceof TLRPC.BotInlineResult) {
                         TLRPC.BotInlineResult inlineResult = (TLRPC.BotInlineResult) object;
                         if (inlineResult.document != null) {
                             size.width = inlineResult.document.thumb != null ? inlineResult.document.thumb.w : 100;
@@ -1954,7 +1947,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                             size.width = inlineResult.w;
                             size.height = inlineResult.h;
                         }
-                    }
+                    }*/
                     return size;
                 }
 
@@ -2160,7 +2153,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                         } else {
                             chatActivityEnterView.replaceWithText(start, len, object + " ");
                         }
-                    } else if (object instanceof TLRPC.BotInlineResult) {
+                    } /*else if (object instanceof TLRPC.BotInlineResult) {
                         if (chatActivityEnterView.getFieldText() == null) {
                             return;
                         }
@@ -2175,7 +2168,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                         chatActivityEnterView.setFieldText("");
                         showReplyPanel(false, null, null, null, false, true);
                         SearchQuery.increaseInlineRaiting(uid);
-                    }
+                    }*/
                 }
             });
 
@@ -3424,6 +3417,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         });
     }
 
+    /*
     private void forwardMessages(ArrayList<MessageObject> arrayList, boolean fromMyName) {
         if (arrayList == null || arrayList.isEmpty()) {
             return;
@@ -3436,6 +3430,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
             }
         }
     }
+    */
 
     public void showReplyPanel(boolean show, MessageObject messageObjectToReply, ArrayList<MessageObject> messageObjectsToForward, TLRPC.WebPage webPage, boolean cancel, boolean animated) {
         /* EDIT BY MR
@@ -7527,9 +7522,11 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         }
         switch (option) {
             case 0: {
+                /*
                 if (SendMessagesHelper.getInstance().retrySendMessage(selectedObject, false)) {
                     moveScrollToLastMessage();
                 }
+                */
                 break;
             }
             case 1: {
@@ -8052,9 +8049,11 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         return currentChat;
     }
 
+    /*
     public TLRPC.EncryptedChat getCurrentEncryptedChat() {
         return currentEncryptedChat;
     }
+    */
 
     public TLRPC.ChatFull getCurrentChatInfo() {
         return info;

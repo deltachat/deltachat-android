@@ -101,7 +101,7 @@ public class MentionsAdapter extends BaseSearchAdapterRecycler {
         public void onLocationAcquired(Location location) {
             if (foundContextBot != null && foundContextBot.bot_inline_geo) {
                 lastKnownLocation = location;
-                searchForContextBotResults(foundContextBot, searchingContextQuery, "");
+                //searchForContextBotResults(foundContextBot, searchingContextQuery, "");
             }
         }
 
@@ -277,7 +277,7 @@ public class MentionsAdapter extends BaseSearchAdapterRecycler {
                     if (noUserName) {
                         return;
                     }
-                    searchForContextBotResults(foundContextBot, query, "");
+                    //searchForContextBotResults(foundContextBot, query, "");
                 } else {
                     TLRPC.TL_contacts_resolveUsername req = new TLRPC.TL_contacts_resolveUsername();
                     req.username = searchingContextUsername = username;
@@ -339,7 +339,7 @@ public class MentionsAdapter extends BaseSearchAdapterRecycler {
                                         if (delegate != null) {
                                             delegate.onContextSearch(true);
                                         }
-                                        searchForContextBotResults(foundContextBot, searchingContextQuery, "");
+                                        //searchForContextBotResults(foundContextBot, searchingContextQuery, "");
                                     }
                                 }
                             });
@@ -357,7 +357,7 @@ public class MentionsAdapter extends BaseSearchAdapterRecycler {
             lastKnownLocation = new Location("network");
             lastKnownLocation.setLatitude(-1000);
             lastKnownLocation.setLongitude(-1000);
-            searchForContextBotResults(foundContextBot, searchingContextQuery, "");
+            //searchForContextBotResults(foundContextBot, searchingContextQuery, "");
         }
     }
 
@@ -387,9 +387,10 @@ public class MentionsAdapter extends BaseSearchAdapterRecycler {
         if (contextQueryReqid != 0 || nextQueryOffset == null || nextQueryOffset.length() == 0 || foundContextBot == null || searchingContextQuery == null) {
             return;
         }
-        searchForContextBotResults(foundContextBot, searchingContextQuery, nextQueryOffset);
+        //searchForContextBotResults(foundContextBot, searchingContextQuery, nextQueryOffset);
     }
 
+    /*
     private void searchForContextBotResults(TLRPC.User user, final String query, final String offset) {
         if (contextQueryReqid != 0) {
             ConnectionsManager.getInstance().cancelRequest(contextQueryReqid, true);
@@ -478,6 +479,7 @@ public class MentionsAdapter extends BaseSearchAdapterRecycler {
             }
         }, ConnectionsManager.RequestFlagFailOnServerErrors);
     }
+    */
 
     public void searchUsernameOrHashtag(String text, int position, ArrayList<MessageObject> messageObjects) {
         if (text == null || text.length() == 0) {

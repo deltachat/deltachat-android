@@ -1346,6 +1346,7 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
             }
             listenerInProgress = false;
             processLaterArrays();
+            /*
             try {
                 ArrayList<SendMessagesHelper.DelayedMessage> delayedMessages = SendMessagesHelper.getInstance().getDelayedMessages(fileName);
                 if (delayedMessages != null) {
@@ -1370,6 +1371,7 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
             } catch (Exception e) {
                 FileLog.e("tmessages", e);
             }
+            */
         } else if (id == NotificationCenter.messagesDeleted) {
             int channelId = (Integer) args[1];
             ArrayList<Integer> markAsDeletedMessages = (ArrayList<Integer>) args[0];

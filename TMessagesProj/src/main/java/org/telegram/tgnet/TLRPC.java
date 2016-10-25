@@ -14,6 +14,7 @@ import java.util.HashMap;
 @SuppressWarnings("unchecked")
 public class TLRPC {
 
+    /*
     public static final int USER_FLAG_ACCESS_HASH           = 0x00000001;
     public static final int USER_FLAG_FIRST_NAME            = 0x00000002;
     public static final int USER_FLAG_LAST_NAME             = 0x00000004;
@@ -24,6 +25,7 @@ public class TLRPC {
     public static final int USER_FLAG_UNUSED                = 0x00000080;
     public static final int USER_FLAG_UNUSED2               = 0x00000100;
     public static final int USER_FLAG_UNUSED3               = 0x00000200;
+    */
     //public static final int USER_FLAG_SELF                  = 0x00000400;
     //public static final int USER_FLAG_CONTACT               = 0x00000800;
     //public static final int USER_FLAG_MUTUAL_CONTACT        = 0x00001000;
@@ -379,6 +381,7 @@ public class TLRPC {
 		}
 	}
 
+    /*
 	public static class TL_auth_checkedPhone extends TLObject {
 		public static int constructor = 0x811ea28e;
 
@@ -406,6 +409,7 @@ public class TLRPC {
 			stream.writeBool(phone_registered);
 		}
 	}
+	*/
 
 	public static class TL_messages_chatFull extends TLObject {
 		public static int constructor = 0xe5d7d19c;
@@ -9110,7 +9114,7 @@ public class TLRPC {
 					result = new TL_updatePrivacy();
 					break;
 				case 0x2cbd95af:
-					result = new TL_updateInlineBotCallbackQuery();
+					//result = new TL_updateInlineBotCallbackQuery();
 					break;
 				case 0x25d6c9c7:
 					result = new TL_updateReadChannelOutbox();
@@ -9149,7 +9153,7 @@ public class TLRPC {
 					result = new TL_updateUserName();
 					break;
 				case 0xe48f964:
-					result = new TL_updateBotInlineSend();
+					//result = new TL_updateBotInlineSend();
 					break;
 				case 0xe40370a3:
 					result = new TL_updateEditMessage();
@@ -9618,6 +9622,7 @@ public class TLRPC {
 		}
 	}
 
+    /*
 	public static class TL_updateInlineBotCallbackQuery extends Update {
 		public static int constructor = 0x2cbd95af;
 
@@ -9638,6 +9643,7 @@ public class TLRPC {
 			stream.writeByteArray(data);
 		}
 	}
+	*/
 
 	public static class TL_updateReadChannelOutbox extends Update {
 		public static int constructor = 0x25d6c9c7;
@@ -9855,6 +9861,7 @@ public class TLRPC {
 		}
 	}
 
+    /*
 	public static class TL_updateBotInlineSend extends Update {
 		public static int constructor = 0xe48f964;
 
@@ -9888,6 +9895,7 @@ public class TLRPC {
 			}
 		}
 	}
+	*/
 
 	public static class TL_updateEditMessage extends Update {
 		public static int constructor = 0xe40370a3;
@@ -11933,6 +11941,7 @@ public class TLRPC {
         }
     }
 
+    /*
 	public static class TL_messages_botResults extends TLObject {
 		public static int constructor = 0x256709a6;
 
@@ -12036,6 +12045,7 @@ public class TLRPC {
 			stream.writeInt64(access_hash);
 		}
 	}
+	*/
 
 	public static class TL_messages_foundGifs extends TLObject {
 		public static int constructor = 0x450a1c0a;
@@ -16594,6 +16604,7 @@ public class TLRPC {
 		}
 	}
 
+    /*
 	public static class TL_auth_checkPhone extends TLObject {
 		public static int constructor = 0x6fe51dfb;
 
@@ -16608,6 +16619,7 @@ public class TLRPC {
 			stream.writeString(phone_number);
 		}
 	}
+	*/
 
 	public static class TL_auth_sendCode extends TLObject {
 		public static int constructor = 0x86aef0ec;
@@ -16693,6 +16705,7 @@ public class TLRPC {
 	}
 	*/
 
+    /*
 	public static class TL_auth_resetAuthorizations extends TLObject {
 		public static int constructor = 0x9fab0d1a;
 
@@ -16759,7 +16772,9 @@ public class TLRPC {
 			stream.writeByteArray(bytes);
 		}
 	}
+	*/
 
+    /*
 	public static class TL_auth_bindTempAuthKey extends TLObject {
 		public static int constructor = 0xcdd42a05;
 
@@ -16780,6 +16795,7 @@ public class TLRPC {
 			stream.writeByteArray(encrypted_message);
         }
     }
+    */
 
 	public static class TL_account_registerDevice extends TLObject {
 		public static int constructor = 0x637ea878;
@@ -16815,6 +16831,7 @@ public class TLRPC {
 		}
 	}
 
+    /*
 	public static class TL_account_updateNotifySettings extends TLObject {
 		public static int constructor = 0x84be5b93;
 
@@ -16831,7 +16848,9 @@ public class TLRPC {
 			settings.serializeToStream(stream);
 		}
 	}
+	*/
 
+    /*
 	public static class TL_account_getNotifySettings extends TLObject {
 		public static int constructor = 0x12b3ad31;
 
@@ -16846,6 +16865,7 @@ public class TLRPC {
 			peer.serializeToStream(stream);
 		}
 	}
+	*/
 
 	public static class TL_account_resetNotifySettings extends TLObject {
 		public static int constructor = 0xdb7e1747;
@@ -16860,6 +16880,7 @@ public class TLRPC {
 		}
 	}
 
+    /*
 	public static class TL_account_updateProfile extends TLObject {
 		public static int constructor = 0x78515775;
 
@@ -16886,6 +16907,7 @@ public class TLRPC {
 			}
 		}
 	}
+	*/
 
 	public static class TL_account_updateStatus extends TLObject {
 		public static int constructor = 0x6628562c;
@@ -16902,6 +16924,7 @@ public class TLRPC {
 		}
 	}
 
+    /*
 	public static class TL_account_getWallPapers extends TLObject {
 		public static int constructor = 0xc04cfac2;
 
@@ -16923,7 +16946,9 @@ public class TLRPC {
 			stream.writeInt32(constructor);
 		}
 	}
+	*/
 
+    /*
 	public static class TL_users_getUsers extends TLObject {
 		public static int constructor = 0xd91a548;
 
@@ -16952,7 +16977,9 @@ public class TLRPC {
 			}
 		}
 	}
+	*/
 
+    /*
 	public static class TL_account_reportPeer extends TLObject {
 		public static int constructor = 0xae189d5f;
 
@@ -16969,6 +16996,7 @@ public class TLRPC {
 			reason.serializeToStream(stream);
 		}
 	}
+	*/
 
 	public static class TL_users_getFullUser extends TLObject {
 		public static int constructor = 0xca30a5b1;
@@ -19024,6 +19052,7 @@ public class TLRPC {
 		}
 	}
 
+    /*
 	public static class TL_messages_getInlineBotResults extends TLObject {
 		public static int constructor = 0x514e999d;
 
@@ -19050,7 +19079,9 @@ public class TLRPC {
 			stream.writeString(offset);
 		}
 	}
+	*/
 
+    /*
 	public static class TL_messages_sendInlineBotResult extends TLObject {
 		public static int constructor = 0xb16e06fe;
 
@@ -19083,7 +19114,9 @@ public class TLRPC {
 			stream.writeString(id);
 		}
 	}
+	*/
 
+    /*
 	public static class TL_messages_getMessageEditData extends TLObject {
 		public static int constructor = 0xfda68d36;
 
@@ -19100,6 +19133,7 @@ public class TLRPC {
 			stream.writeInt32(id);
 		}
 	}
+	*/
 
 	public static class TL_messages_editMessage extends TLObject {
 		public static int constructor = 0xce91e4ca;
@@ -19201,6 +19235,7 @@ public class TLRPC {
 		}
 	}
 
+    /*
 	public static class TL_messages_editInlineBotMessage extends TLObject {
 		public static int constructor = 0x130c2c85;
 
@@ -19236,7 +19271,9 @@ public class TLRPC {
 			}
 		}
 	}
+	*/
 
+    /*
 	public static class TL_messages_saveDraft extends TLObject {
 		public static int constructor = 0xbc39e14b;
 
@@ -19270,7 +19307,9 @@ public class TLRPC {
 			}
 		}
 	}
+	*/
 
+    /*
 	public static class TL_messages_getAllDrafts extends TLObject {
 		public static int constructor = 0x6a3f8d65;
 
@@ -19283,6 +19322,7 @@ public class TLRPC {
 			stream.writeInt32(constructor);
 		}
 	}
+	*/
 
 	public static class TL_help_getAppChangelog extends TLObject {
 		public static int constructor = 0xb921197a;

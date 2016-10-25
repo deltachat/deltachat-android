@@ -603,7 +603,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                     args.putInt("chat_id", (int) (dialog_id >> 32));
                     presentFragment(new IdenticonActivity(args));
                 } else if (position == settingsTimerRow) {
-                    showDialog(AndroidUtilities.buildTTLAlert(getParentActivity(), currentEncryptedChat).create());
+                    //showDialog(AndroidUtilities.buildTTLAlert(getParentActivity(), currentEncryptedChat).create());
                 } else if (position == settingsNotificationsRow) {
                     Bundle args = new Bundle();
                     if (user_id != 0) {

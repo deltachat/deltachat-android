@@ -48,7 +48,7 @@ public class ChatAvatarContainer extends FrameLayout {
 
     private int onlineCount = -1;
 
-    public ChatAvatarContainer(Context context, ChatActivity chatActivity, boolean needTime) {
+    public ChatAvatarContainer(Context context, ChatActivity chatActivity /*, boolean needTime*/) {
         super(context);
         parentFragment = chatActivity;
 
@@ -71,6 +71,7 @@ public class ChatAvatarContainer extends FrameLayout {
         subtitleTextView.setGravity(Gravity.LEFT);
         addView(subtitleTextView);
 
+        /*
         if (needTime) {
             timeItem = new ImageView(context);
             timeItem.setPadding(AndroidUtilities.dp(10), AndroidUtilities.dp(10), AndroidUtilities.dp(5), AndroidUtilities.dp(5));
@@ -84,6 +85,7 @@ public class ChatAvatarContainer extends FrameLayout {
                 }
             });
         }
+        */
 
         setOnClickListener(new View.OnClickListener() {
             @Override

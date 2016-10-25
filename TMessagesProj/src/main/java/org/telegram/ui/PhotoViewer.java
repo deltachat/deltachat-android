@@ -2605,7 +2605,7 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
             canShowBottom = false;
             Object obj = imagesArrLocals.get(index);
             cropItem.setVisibility(obj instanceof MediaController.PhotoEntry || obj instanceof MediaController.SearchImage && ((MediaController.SearchImage) obj).type == 0 ? View.VISIBLE : View.GONE);
-            if (parentChatActivity != null && (parentChatActivity.currentEncryptedChat == null || AndroidUtilities.getPeerLayerVersion(parentChatActivity.currentEncryptedChat.layer) >= 46)) {
+            if (parentChatActivity != null /*&& (parentChatActivity.currentEncryptedChat == null || AndroidUtilities.getPeerLayerVersion(parentChatActivity.currentEncryptedChat.layer) >= 46)*/) {
                 mentionsAdapter.setChatInfo(parentChatActivity.info);
                 mentionsAdapter.setNeedUsernames(parentChatActivity.currentChat != null);
                 mentionsAdapter.setNeedBotContext(false);

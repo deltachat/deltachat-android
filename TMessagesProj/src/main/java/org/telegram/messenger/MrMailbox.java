@@ -165,6 +165,7 @@ public class MrMailbox {
     public native static int     MrChatGetTotalMsgCount     (long hChat);
     public native static long    MrChatGetSummary           (long hChat); // returns hPoortext
     public native static long    MrChatGetMsglist           (long hChat, int offset, int amount); // returns hMsglist
+    public native static int     MrChatSendMsg              (long hChat, String text); // returns message id
 
     // MrMsglist objects
     public native static void    MrMsglistUnref             (long hMsglist);
@@ -206,12 +207,13 @@ public class MrMailbox {
     public final static int      MR_CHAT_ID_STRANGERS       = 1;
 
     public final static int      MR_STATE_UNDEFINED         = 0;
-    public final static int      MR_IN_UNREAD               = 1;
-    public final static int      MR_IN_READ                 = 3;
-    public final static int      MR_OUT_PENDING             = 5;
-    public final static int      MR_OUT_ERROR               = 6;
-    public final static int      MR_OUT_DELIVERED           = 7;
-    public final static int      MR_OUT_READ                = 9;
+    public final static int      MR_IN_UNREAD               = 10;
+    public final static int      MR_IN_READ                 = 16;
+    public final static int      MR_OUT_PENDING             = 20;
+    public final static int      MR_OUT_SENDING             = 22;
+    public final static int      MR_OUT_ERROR               = 24;
+    public final static int      MR_OUT_DELIVERED           = 26;
+    public final static int      MR_OUT_READ                = 28;
 
     public final static int      MR_TITLE_NORMAL            = 0;
     public final static int      MR_TITLE_DRAFT             = 1;
