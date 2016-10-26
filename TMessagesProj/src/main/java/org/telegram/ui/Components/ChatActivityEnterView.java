@@ -370,8 +370,8 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
     private boolean allowShowTopView;
     private AnimatorSet currentTopViewAnimation;
 
-    private MessageObject pendingMessageObject;
-    private TLRPC.KeyboardButton pendingLocationButton;
+    //private MessageObject pendingMessageObject;
+    //private TLRPC.KeyboardButton pendingLocationButton;
 
     private boolean waitingForKeyboardOpen;
     private Runnable openKeyboardRunnable = new Runnable() {
@@ -2605,16 +2605,14 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
     }
 
     public void onRequestPermissionsResultFragment(int requestCode, String[] permissions, int[] grantResults) {
-        if (requestCode == 2) {
+        /*if (requestCode == 2) {
             if (pendingLocationButton != null) {
-                /*
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     SendMessagesHelper.getInstance().sendCurrentLocation(pendingMessageObject, pendingLocationButton);
                 }
-                */
                 pendingLocationButton = null;
                 pendingMessageObject = null;
             }
-        }
+        }*/
     }
 }

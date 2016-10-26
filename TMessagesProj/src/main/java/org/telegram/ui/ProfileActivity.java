@@ -706,7 +706,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                     }
                     selectedUser = user.user_id;
 
-                    if (ChatObject.isChannel(currentChat)) {
+                    /*if (ChatObject.isChannel(currentChat)) {
                         TLRPC.ChannelParticipant channelParticipant = ((TLRPC.TL_chatChannelParticipant) user).channelParticipant;
                         if (user.user_id != UserConfig.getClientUserId()) {
                             if (currentChat.creator) {
@@ -719,7 +719,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                         }
                         TLRPC.User u = MessagesController.getInstance().getUser(user.user_id);
                         allowSetAdmin = channelParticipant instanceof TLRPC.TL_channelParticipant && !u.bot;
-                    } else {
+                    } else */ {
                         if (user.user_id != UserConfig.getClientUserId()) {
                             if (currentChat.creator) {
                                 allowKick = true;
@@ -1093,6 +1093,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
     }
 
     private void getChannelParticipants(boolean reload) {
+        /*
         if (loadingUsers || participantsMap == null || info == null) {
             return;
         }
@@ -1145,6 +1146,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
             }
         });
         ConnectionsManager.getInstance().bindRequestToGuid(reqId, classGuid);
+        */
     }
 
     private void openAddMember() {
@@ -1845,7 +1847,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
         if (uid != 0) {
             MessagesController.getInstance().deleteUserFromChat(chat_id, MessagesController.getInstance().getUser(uid), info);
             if (currentChat.megagroup && info != null && info.participants != null) {
-                boolean changed = false;
+                /*boolean changed = false;
                 for (int a = 0; a < info.participants.participants.size(); a++) {
                     TLRPC.ChannelParticipant p = ((TLRPC.TL_chatChannelParticipant) info.participants.participants.get(a)).channelParticipant;
                     if (p.user_id == uid) {
@@ -1871,7 +1873,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                     updateOnlineCount();
                     updateRowsIds();
                     listAdapter.notifyDataSetChanged();
-                }
+                }*/
             }
         } else {
             NotificationCenter.getInstance().removeObserver(this, NotificationCenter.closeChats);
@@ -2502,7 +2504,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                         part = info.participants.participants.get(i - emptyRowChat2 - 1);
                     }
                     if (part != null) {
-                        if (part instanceof TLRPC.TL_chatChannelParticipant) {
+                        /*if (part instanceof TLRPC.TL_chatChannelParticipant) {
                             TLRPC.ChannelParticipant channelParticipant = ((TLRPC.TL_chatChannelParticipant) part).channelParticipant;
                             if (channelParticipant instanceof TLRPC.TL_channelParticipantCreator) {
                                 userCell.setIsAdmin(1);
@@ -2511,7 +2513,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                             } else {
                                 userCell.setIsAdmin(0);
                             }
-                        } else {
+                        } else*/ {
                             if (part instanceof TLRPC.TL_chatParticipantCreator) {
                                 userCell.setIsAdmin(1);
                             } else if (currentChat.admins_enabled && part instanceof TLRPC.TL_chatParticipantAdmin) {

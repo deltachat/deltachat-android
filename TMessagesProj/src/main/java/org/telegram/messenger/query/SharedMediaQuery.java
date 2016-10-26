@@ -166,23 +166,6 @@ public class SharedMediaQuery {
         return -1;
     }
 
-    public static boolean canAddMessageToMedia(TLRPC.Message message) {
-        if (message instanceof TLRPC.TL_message_secret && message.media instanceof TLRPC.TL_messageMediaPhoto && message.ttl != 0 && message.ttl <= 60) {
-            return false;
-        } else if (message.media instanceof TLRPC.TL_messageMediaPhoto ||
-                message.media instanceof TLRPC.TL_messageMediaDocument && !MessageObject.isGifDocument(message.media.document)) {
-            return true;
-        } else if (!message.entities.isEmpty()) {
-            for (int a = 0; a < message.entities.size(); a++) {
-                TLRPC.MessageEntity entity = message.entities.get(a);
-                if (entity instanceof TLRPC.TL_messageEntityUrl || entity instanceof TLRPC.TL_messageEntityTextUrl || entity instanceof TLRPC.TL_messageEntityEmail) {
-                    return true;
-                }
-            }
-        }
-        return false;
-    }
-
     private static void processLoadedMedia(final TLRPC.messages_Messages res, final long uid, int offset, int count, int max_id, final int type, final boolean fromCache, final int classGuid, final boolean isChannel, final boolean topReached) {
         int lower_part = (int)uid;
         if (fromCache && res.messages.isEmpty() && lower_part != 0) {

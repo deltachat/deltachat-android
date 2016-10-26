@@ -1077,18 +1077,18 @@ public class MessagesController implements NotificationCenter.NotificationCenter
         //MessagesStorage.getInstance().updateDialogsWithDeletedMessages(messages, true, channelId);
         NotificationCenter.getInstance().postNotificationName(NotificationCenter.messagesDeleted, messages, channelId);
         if (channelId != 0) {
-            TLRPC.TL_channels_deleteMessages req = new TLRPC.TL_channels_deleteMessages();
+            /*TLRPC.TL_channels_deleteMessages req = new TLRPC.TL_channels_deleteMessages();
             req.id = toSend;
             req.channel = getInputChannel(channelId);
             ConnectionsManager.getInstance().sendRequest(req, new RequestDelegate() {
                 @Override
                 public void run(TLObject response, TLRPC.TL_error error) {
                     if (error == null) {
-                        //TLRPC.TL_messages_affectedMessages res = (TLRPC.TL_messages_affectedMessages) response;
-                        //processNewChannelDifferenceParams(res.pts, res.pts_count, channelId);
+                        TLRPC.TL_messages_affectedMessages res = (TLRPC.TL_messages_affectedMessages) response;
+                        processNewChannelDifferenceParams(res.pts, res.pts_count, channelId);
                     }
                 }
-            });
+            });*/
         } else {
             /*
             if (randoms != null && encryptedChat != null && !randoms.isEmpty()) {
@@ -1139,37 +1139,6 @@ public class MessagesController implements NotificationCenter.NotificationCenter
             }
         });
         return searchImage;
-    }
-
-    public void loadChannelParticipants(final Integer chat_id) {
-        if (loadingFullParticipants.contains(chat_id) || loadedFullParticipants.contains(chat_id)) {
-            return;
-        }
-        loadingFullParticipants.add(chat_id);
-
-        final TLRPC.TL_channels_getParticipants req = new TLRPC.TL_channels_getParticipants();
-        req.channel = getInputChannel(chat_id);
-        req.filter = new TLRPC.TL_channelParticipantsRecent();
-        req.offset = 0;
-        req.limit = 32;
-        ConnectionsManager.getInstance().sendRequest(req, new RequestDelegate() {
-            @Override
-            public void run(final TLObject response, final TLRPC.TL_error error) {
-                AndroidUtilities.runOnUIThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        if (error == null) {
-                            TLRPC.TL_channels_channelParticipants res = (TLRPC.TL_channels_channelParticipants) response;
-                            putUsers(res.users, false);
-                            //MessagesStorage.getInstance().putUsersAndChats(res.users, null, true, true);
-                            //MessagesStorage.getInstance().updateChannelUsers(chat_id, res.participants);
-                            loadedFullParticipants.add(chat_id);
-                        }
-                        loadingFullParticipants.remove(chat_id);
-                    }
-                });
-            }
-        });
     }
 
     public void loadChatInfo(final int chat_id, Semaphore semaphore, boolean force) {
@@ -1872,7 +1841,7 @@ public class MessagesController implements NotificationCenter.NotificationCenter
                     });
                 }
             }, ConnectionsManager.RequestFlagFailOnServerErrors);
-        } else if (type == ChatObject.CHAT_TYPE_CHANNEL || type == ChatObject.CHAT_TYPE_MEGAGROUP) {
+        } /*else if (type == ChatObject.CHAT_TYPE_CHANNEL || type == ChatObject.CHAT_TYPE_MEGAGROUP) {
             TLRPC.TL_channels_createChannel req = new TLRPC.TL_channels_createChannel();
             req.title = title;
             req.about = about;
@@ -1888,11 +1857,9 @@ public class MessagesController implements NotificationCenter.NotificationCenter
                         AndroidUtilities.runOnUIThread(new Runnable() {
                             @Override
                             public void run() {
-                                /* EDUT BY MR
                                 if (error.text.startsWith("FLOOD_WAIT")) {
                                     AlertsCreator.showFloodWaitAlert(error.text, fragment);
                                 }
-                                */
                                 NotificationCenter.getInstance().postNotificationName(NotificationCenter.chatDidFailCreate);
                             }
                         });
@@ -1914,7 +1881,7 @@ public class MessagesController implements NotificationCenter.NotificationCenter
                     });
                 }
             }, ConnectionsManager.RequestFlagFailOnServerErrors);
-        }
+        }*/
         return 0;
     }
 
@@ -1929,7 +1896,7 @@ public class MessagesController implements NotificationCenter.NotificationCenter
 
     public void changeChatAvatar(int chat_id, TLRPC.InputFile uploadedAvatar) {
         TLObject request;
-        if (ChatObject.isChannel(chat_id)) {
+        /*if (ChatObject.isChannel(chat_id)) {
             TLRPC.TL_channels_editPhoto req = new TLRPC.TL_channels_editPhoto();
             req.channel = getInputChannel(chat_id);
             if (uploadedAvatar != null) {
@@ -1940,7 +1907,7 @@ public class MessagesController implements NotificationCenter.NotificationCenter
                 req.photo = new TLRPC.TL_inputChatPhotoEmpty();
             }
             request = req;
-        } else {
+        } else*/ {
             TLRPC.TL_messages_editChatPhoto req = new TLRPC.TL_messages_editChatPhoto();
             req.chat_id = chat_id;
             if (uploadedAvatar != null) {

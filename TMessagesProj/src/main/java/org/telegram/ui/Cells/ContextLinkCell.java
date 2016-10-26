@@ -226,11 +226,11 @@ public class ContextLinkCell extends View implements MediaController.FileDownloa
             }
         }
         if (url == null && currentPhotoObject == null && currentPhotoObjectThumb == null) {
-            if (inlineResult.send_message instanceof TLRPC.TL_botInlineMessageMediaVenue || inlineResult.send_message instanceof TLRPC.TL_botInlineMessageMediaGeo) {
+            /*if (inlineResult.send_message instanceof TLRPC.TL_botInlineMessageMediaVenue || inlineResult.send_message instanceof TLRPC.TL_botInlineMessageMediaGeo) {
                 double lat = inlineResult.send_message.geo.lat;
                 double lon = inlineResult.send_message.geo._long;
                 url = String.format(Locale.US, "https://maps.googleapis.com/maps/api/staticmap?center=%f,%f&zoom=15&size=72x72&maptype=roadmap&scale=%d&markers=color:red|size:small|%f,%f&sensor=false", lat, lon, Math.min(2, (int) Math.ceil(AndroidUtilities.density)), lat, lon);
-            }
+            }*/
         }
 
         int width;
@@ -500,7 +500,7 @@ public class ContextLinkCell extends View implements MediaController.FileDownloa
                 letterDrawable.draw(canvas);
             }
         } else {
-            if (inlineResult != null && (inlineResult.send_message instanceof TLRPC.TL_botInlineMessageMediaGeo || inlineResult.send_message instanceof TLRPC.TL_botInlineMessageMediaVenue)) {
+            /*if (inlineResult != null && (inlineResult.send_message instanceof TLRPC.TL_botInlineMessageMediaGeo || inlineResult.send_message instanceof TLRPC.TL_botInlineMessageMediaVenue)) {
                 int w = Theme.inlineLocationDrawable.getIntrinsicWidth();
                 int h = Theme.inlineLocationDrawable.getIntrinsicHeight();
                 int x = linkImageView.getImageX() + (linkImageView.getImageWidth() - w) / 2;
@@ -508,7 +508,7 @@ public class ContextLinkCell extends View implements MediaController.FileDownloa
                 canvas.drawRect(linkImageView.getImageX(), linkImageView.getImageY(), linkImageView.getImageX() + linkImageView.getImageWidth(), linkImageView.getImageY() + linkImageView.getImageHeight(), LetterDrawable.paint);
                 Theme.inlineLocationDrawable.setBounds(x, y, x + w, y + h);
                 Theme.inlineLocationDrawable.draw(canvas);
-            }
+            }*/
         }
         if (drawLinkImageView) {
             canvas.save();

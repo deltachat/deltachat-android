@@ -909,12 +909,12 @@ public class MessageObject {
         }
 
         boolean useManualParse = !hasEntities && (
-                messageOwner instanceof TLRPC.TL_message_old ||
+                //messageOwner instanceof TLRPC.TL_message_old ||
                 //messageOwner instanceof TLRPC.TL_message_old2 ||
                 //messageOwner instanceof TLRPC.TL_message_old3 ||
                 //messageOwner instanceof TLRPC.TL_message_old4 ||
-                messageOwner instanceof TLRPC.TL_messageForwarded_old ||
-                messageOwner instanceof TLRPC.TL_messageForwarded_old2 ||
+                //messageOwner instanceof TLRPC.TL_messageForwarded_old ||
+                //messageOwner instanceof TLRPC.TL_messageForwarded_old2 ||
                 messageOwner instanceof TLRPC.TL_message_secret ||
                 isOut() && messageOwner.send_state != MESSAGE_SEND_STATE_SENT ||
                 messageOwner.id < 0 || messageOwner.media instanceof TLRPC.TL_messageMediaUnsupported);

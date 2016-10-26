@@ -5735,7 +5735,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
             TLRPC.ChatFull chatFull = (TLRPC.ChatFull) args[0];
             if (currentChat != null && chatFull.id == currentChat.id) {
                 if (chatFull instanceof TLRPC.TL_channelFull) {
-                    if (currentChat.megagroup) {
+                    /*if (currentChat.megagroup) {
                         int lastDate = 0;
                         if (chatFull.participants != null) {
                             for (int a = 0; a < chatFull.participants.participants.size(); a++) {
@@ -5745,7 +5745,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                         if (lastDate == 0 || Math.abs(System.currentTimeMillis() / 1000 - lastDate) > 60 * 60) {
                             MessagesController.getInstance().loadChannelParticipants(currentChat.id);
                         }
-                    }
+                    }*/
                     if (chatFull.participants == null && info != null) {
                         chatFull.participants = info.participants;
                     }
@@ -6244,45 +6244,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 applyDraftMaybe();
             }
         }
-    }
-
-    public boolean processSwitchButton(TLRPC.TL_keyboardButtonSwitchInline button) {
-        if (inlineReturn == 0) {
-            return false;
-        }
-        String query = "@" + currentUser.username + " " + button.query;
-        if (inlineReturn == dialog_id) {
-            inlineReturn = 0;
-            chatActivityEnterView.setFieldText(query);
-        } else {
-            DraftQuery.saveDraft(inlineReturn, query, null, null, false);
-            if (parentLayout.fragmentsStack.size() > 1) {
-                BaseFragment prevFragment = parentLayout.fragmentsStack.get(parentLayout.fragmentsStack.size() - 2);
-                if (prevFragment instanceof ChatActivity && ((ChatActivity) prevFragment).dialog_id == inlineReturn) {
-                    finishFragment();
-                } else {
-                    Bundle bundle = new Bundle();
-                    int lower_part = (int) inlineReturn;
-                    int high_part = (int) (inlineReturn >> 32);
-                    if (lower_part != 0) {
-                        if (lower_part > 0) {
-                            bundle.putInt("user_id", lower_part);
-                        } else if (lower_part < 0) {
-                            bundle.putInt("chat_id", -lower_part);
-                        }
-                    } else {
-                        bundle.putInt("enc_id", high_part);
-                    }
-                    /*ActionBarLayout parentLayout = ChatActivity.this.parentLayout;
-                    if (lastFragment != null) {
-                        NotificationCenter.getInstance().removeObserver(lastFragment, NotificationCenter.closeChats);
-                    }
-                    NotificationCenter.getInstance().postNotificationName(NotificationCenter.closeChats);*/
-                    presentFragment(new ChatActivity(bundle), true);
-                }
-            }
-        }
-        return true;
     }
 
     private void updateSearchButtons(int mask, int num, int count) {
