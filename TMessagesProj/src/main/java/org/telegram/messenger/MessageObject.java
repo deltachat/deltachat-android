@@ -471,7 +471,7 @@ public class MessageObject {
 
     public void setType() {
         int oldType = type;
-        if (messageOwner instanceof TLRPC.TL_message || messageOwner instanceof TLRPC.TL_messageForwarded_old2) {
+        if (messageOwner instanceof TLRPC.TL_message /*|| messageOwner instanceof TLRPC.TL_messageForwarded_old2*/) {
             if (isMediaEmpty()) {
                 type = 0;
                 if (messageText == null || messageText.length() == 0) {
@@ -910,9 +910,9 @@ public class MessageObject {
 
         boolean useManualParse = !hasEntities && (
                 messageOwner instanceof TLRPC.TL_message_old ||
-                messageOwner instanceof TLRPC.TL_message_old2 ||
-                messageOwner instanceof TLRPC.TL_message_old3 ||
-                messageOwner instanceof TLRPC.TL_message_old4 ||
+                //messageOwner instanceof TLRPC.TL_message_old2 ||
+                //messageOwner instanceof TLRPC.TL_message_old3 ||
+                //messageOwner instanceof TLRPC.TL_message_old4 ||
                 messageOwner instanceof TLRPC.TL_messageForwarded_old ||
                 messageOwner instanceof TLRPC.TL_messageForwarded_old2 ||
                 messageOwner instanceof TLRPC.TL_message_secret ||

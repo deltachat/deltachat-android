@@ -2281,7 +2281,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
             presentFragment(new ChatActivity(args), true);
             removeSelfFromStack();
             TLRPC.User user = MessagesController.getInstance().getUser(user_id);
-            SendMessagesHelper.getInstance().sendMessageContact(user, dialog_id, null, null, null);
+            SendMessagesHelper.getInstance().sendMessageContact(user, dialog_id, null, null);
         }
     }
 

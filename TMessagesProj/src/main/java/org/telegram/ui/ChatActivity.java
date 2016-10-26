@@ -4618,7 +4618,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                             user.first_name = name;
                             user.last_name = "";
                             user.phone = number;
-                            SendMessagesHelper.getInstance().sendMessageContact(user, dialog_id, replyingMessageObject, null, null);
+                            SendMessagesHelper.getInstance().sendMessageContact(user, dialog_id, replyingMessageObject, null);
                         }
                         if (sent) {
                             showReplyPanel(false, null, null, null, false, true);
@@ -5196,7 +5196,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                                 //}
                             }
                         } else if (inlineReturn != 0) {
-                            if (messageObject.messageOwner.reply_markup != null) {
+                            /*if (messageObject.messageOwner.reply_markup != null) {
                                 for (int b = 0; b < messageObject.messageOwner.reply_markup.rows.size(); b++) {
                                     TLRPC.TL_keyboardButtonRow row = messageObject.messageOwner.reply_markup.rows.get(b);
                                     for (int c = 0; c < row.buttons.size(); c++) {
@@ -5207,7 +5207,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                                         }
                                     }
                                 }
-                            }
+                            }*/
                         }
                     }
                 }
