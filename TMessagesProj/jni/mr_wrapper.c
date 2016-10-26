@@ -381,7 +381,23 @@ JNIEXPORT jint Java_org_telegram_messenger_MrMailbox_MrChatSetDraft(JNIEnv *env,
 }
 
 
-JNIEXPORT jint Java_org_telegram_messenger_MrMailbox_MrChatSendMsg(JNIEnv *env, jclass c, jlong hChat, jstring text)
+JNIEXPORT jint Java_org_telegram_messenger_MrMailbox_MrChatSendText(JNIEnv *env, jclass c, jlong hChat, jstring text)
+{
+	jint msg_id = 0;
+	if( text ) {
+		mrmsg_t* msg = mrmsg_new();
+			msg->m_type = MR_MSG_TEXT;
+			CHAR_REF(text);
+				msg->m_text = strdup(textPtr);
+			CHAR_UNREF(text);
+			msg_id = mrchat_send_msg((mrchat_t*)hChat, msg);
+		mrmsg_unref(msg);
+	}
+	return msg_id;
+}
+
+
+JNIEXPORT jint Java_org_telegram_messenger_MrMailbox_MrChatSendMedia(JNIEnv *env, jclass c, jlong hChat, jint type, jstring file, jint w, jint h, jint ms)
 {
 	jint msg_id = 0;
 	if( text ) {

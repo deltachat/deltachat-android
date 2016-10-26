@@ -183,7 +183,7 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
     }
     */
 
-    
+
     protected class DelayedMessage {
         public TLObject sendRequest;
         public TLRPC.TL_decryptedMessage sendEncryptedRequest;
@@ -1516,7 +1516,7 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
 
             if (type == 0 /*|| type == 9 && message != null && encryptedChat != null*/ )
             {
-                newMsg.id = MrMailbox.MrChatSendMsg(hChat, newMsg.message);
+                newMsg.id = MrMailbox.MrChatSendText(hChat, newMsg.message);
                 DraftQuery.cleanDraft(peer, false);
             }
             else if (type >= 1 && type <= 3 || type >= 5 && type <= 8 /*|| type == 9 && encryptedChat != null*/) {
@@ -1640,6 +1640,7 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
                         }
                     }
 
+                    /*
                     TLObject reqSend;
 
                     {
@@ -1688,6 +1689,7 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
                             performSendMessageRequest(reqSend, newMsgObj, null);
                         }
                     }
+                    */
                 }
             } else if (type == 4) {
                 /*
@@ -1791,8 +1793,8 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
         return isSending;
     }
 
+    /*
     private void performSendMessageRequest(final TLObject req, final MessageObject msgObj, final String originalPath) {
-        /*
         final TLRPC.Message newMsgObj = msgObj.messageOwner;
         putToSendingMessages(newMsgObj);
         ConnectionsManager.getInstance().sendRequest(req, new RequestDelegate() {
@@ -1943,8 +1945,8 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
                 });
             }
         }, ConnectionsManager.RequestFlagCanCompress | ConnectionsManager.RequestFlagInvokeAfter | (req instanceof TLRPC.TL_messages_sendMessage ? ConnectionsManager.RequestFlagNeedQuickAck : 0));
-        */
     }
+    */
 
     /*
     private void updateMediaPaths(MessageObject newMsgObj, TLRPC.Message sentMessage, String originalPath, boolean post) {

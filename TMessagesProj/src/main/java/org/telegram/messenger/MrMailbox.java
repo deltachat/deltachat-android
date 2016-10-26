@@ -165,7 +165,8 @@ public class MrMailbox {
     public native static int     MrChatGetTotalMsgCount     (long hChat);
     public native static long    MrChatGetSummary           (long hChat); // returns hPoortext
     public native static long    MrChatGetMsglist           (long hChat, int offset, int amount); // returns hMsglist
-    public native static int     MrChatSendMsg              (long hChat, String text); // returns message id
+    public native static int     MrChatSendText             (long hChat, String text); // returns message id
+    public native static int     MrChatSendMedia            (long hChat, int type, String file, int w, int h, int ms);
 
     // MrMsglist objects
     public native static void    MrMsglistUnref             (long hMsglist);
@@ -200,13 +201,20 @@ public class MrMailbox {
     public native static String  MrGetVersionStr            ();
     public native static String  CPtr2String                (long hString); // get strings eg. from data1 from the callback
 
-    public final static int      MR_CHAT_UNDEFINED          = 0;
+    public final static int      MR_CHAT_UNDEFINED          =   0;
     public final static int      MR_CHAT_NORMAL             = 100;
     public final static int      MR_CHAT_GROUP              = 120;
 
     public final static int      MR_CHAT_ID_STRANGERS       = 1;
 
-    public final static int      MR_STATE_UNDEFINED         = 0;
+    public final static int      MR_MSG_UNDEFINED           =  0;
+    public final static int      MR_MSG_TEXT                = 10;
+    public final static int      MR_MSG_IMAGE               = 20;
+    public final static int      MR_MSG_AUDIO               = 40;
+    public final static int      MR_MSG_VIDEO               = 50;
+    public final static int      MR_MSG_FILE                = 60;
+
+    public final static int      MR_STATE_UNDEFINED         =  0;
     public final static int      MR_IN_UNREAD               = 10;
     public final static int      MR_IN_READ                 = 16;
     public final static int      MR_OUT_PENDING             = 20;

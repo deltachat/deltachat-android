@@ -3732,6 +3732,7 @@ public class MessagesController implements NotificationCenter.NotificationCenter
         return 0;
     }
 
+    /*
     public void convertToMegaGroup(final Context context, int chat_id) {
         TLRPC.TL_messages_migrateChat req = new TLRPC.TL_messages_migrateChat();
         req.chat_id = chat_id;
@@ -3795,6 +3796,7 @@ public class MessagesController implements NotificationCenter.NotificationCenter
             //don't promt
         }
     }
+    */
 
      public void addUserToChat(final int chat_id, final TLRPC.User user, final TLRPC.ChatFull info, int count_fwd, String botHash, final BaseFragment fragment) {
         /*
@@ -5068,10 +5070,10 @@ public class MessagesController implements NotificationCenter.NotificationCenter
                 update instanceof TLRPC.TL_updateReadHistoryOutbox || update instanceof TLRPC.TL_updateDeleteMessages || update instanceof TLRPC.TL_updateWebPage ||
                 update instanceof TLRPC.TL_updateEditMessage) {
             return 0;
-        } else if (update instanceof TLRPC.TL_updateNewEncryptedMessage) {
+        /*} else if (update instanceof TLRPC.TL_updateNewEncryptedMessage) {
             return 1;
         } else if (update instanceof TLRPC.TL_updateNewChannelMessage || update instanceof TLRPC.TL_updateDeleteChannelMessages || update instanceof TLRPC.TL_updateEditChannelMessage) {
-            return 2;
+            return 2;*/
         } else {
             return 3;
         }
