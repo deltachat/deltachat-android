@@ -4024,6 +4024,7 @@ public class MessagesController implements NotificationCenter.NotificationCenter
     }
 
     public void changeChatTitle(int chat_id, String title) {
+        /*
         if (chat_id > 0) {
             TLObject request;
             if (ChatObject.isChannel(chat_id)) {
@@ -4055,6 +4056,7 @@ public class MessagesController implements NotificationCenter.NotificationCenter
             NotificationCenter.getInstance().postNotificationName(NotificationCenter.dialogsNeedReload);
             NotificationCenter.getInstance().postNotificationName(NotificationCenter.updateInterfaces, UPDATE_MASK_CHAT_NAME);
         }
+        */
     }
 
     public void changeChatAvatar(int chat_id, TLRPC.InputFile uploadedAvatar) {

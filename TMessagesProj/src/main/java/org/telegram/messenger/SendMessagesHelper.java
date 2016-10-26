@@ -600,9 +600,7 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
         sendMessage(messageObject);
         return true;
     }
-    */
 
-    /*
     protected void processSentMessage(int id) {
         int prevSize = unsentMessages.size();
         unsentMessages.remove(id);
@@ -610,9 +608,7 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
             checkUnsentMessages();
         }
     }
-    */
 
-    /*
     public void processForwardFromMyName(MessageObject messageObject, long did) {
         if (messageObject == null) {
             return;
@@ -966,55 +962,7 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
             }
         }
     }
-    */
 
-    /*
-    public int editMessage(MessageObject messageObject, String message, boolean searchLinks, final BaseFragment fragment, ArrayList<TLRPC.MessageEntity> entities, final Runnable callback) {
-        if (fragment == null || fragment.getParentActivity() == null || callback == null) {
-            return 0;
-        }
-
-        TLRPC.TL_messages_editMessage req = new TLRPC.TL_messages_editMessage();
-        req.peer = MessagesController.getInputPeer((int) messageObject.getDialogId());
-        req.message = message;
-        req.flags |= 2048;
-        req.id = messageObject.getId();
-        req.no_webpage = !searchLinks;
-        if (entities != null) {
-            req.entities = entities;
-            req.flags |= 8;
-        }
-        return ConnectionsManager.getInstance().sendRequest(req, new RequestDelegate() {
-            @Override
-            public void run(TLObject response, TLRPC.TL_error error) {
-                AndroidUtilities.runOnUIThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        callback.run();
-                    }
-                });
-                if (error == null) {
-                    MessagesController.getInstance().processUpdates((TLRPC.Updates) response, false);
-                } else {
-                    if (!error.text.equals("MESSAGE_NOT_MODIFIED")) {
-                        AndroidUtilities.runOnUIThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                AlertDialog.Builder builder = new AlertDialog.Builder(fragment.getParentActivity());
-                                builder.setTitle(LocaleController.getString("AppName", R.string.AppName));
-                                builder.setMessage(LocaleController.getString("EditMessageError", R.string.EditMessageError));
-                                builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), null);
-                                fragment.showDialog(builder.create());
-                            }
-                        });
-                    }
-                }
-            }
-        });
-    }
-    */
-
-    /*
     private void sendLocation(Location location) {
         TLRPC.TL_messageMediaGeo mediaGeo = new TLRPC.TL_messageMediaGeo();
         mediaGeo.geo = new TLRPC.TL_geoPoint();
@@ -1025,23 +973,17 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
             SendMessagesHelper.getInstance().sendMessage(mediaGeo, messageObject.getDialogId(), messageObject, null, null);
         }
     }
-    */
 
-    /*
     public void sendCurrentLocation(final MessageObject messageObject, final TLRPC.KeyboardButton button) {
         final String key = messageObject.getId() + "_" + Utilities.bytesToHex(button.data);
         waitingForLocation.put(key, messageObject);
         //locationProvider.start();
     }
-    */
 
-    /*
     public boolean isSendingCurrentLocation(MessageObject messageObject, TLRPC.KeyboardButton button) {
         return !(messageObject == null || button == null) && waitingForLocation.containsKey(messageObject.getId() + "_" + Utilities.bytesToHex(button.data));
     }
-    */
 
-    /*
     public void sendCallback(final MessageObject messageObject, final TLRPC.KeyboardButton button, final ChatActivity parentFragment) {
         if (messageObject == null || button == null || parentFragment == null) {
             return;
@@ -1089,15 +1031,11 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
             }
         }, ConnectionsManager.RequestFlagFailOnServerErrors);
     }
-    */
 
-    /*
     public boolean isSendingCallback(MessageObject messageObject, TLRPC.KeyboardButton button) {
         return !(messageObject == null || button == null) && waitingForCallback.containsKey(messageObject.getId() + "_" + Utilities.bytesToHex(button.data));
     }
-    */
 
-    /*
     public void sendMessage(MessageObject retryMessageObject) {
         sendMessage__(null, null, null, null, null, null, retryMessageObject.getDialogId(), retryMessageObject.messageOwner.attachPath, null, null, true,
             retryMessageObject, null, retryMessageObject.messageOwner.reply_markup, retryMessageObject.messageOwner.params);
@@ -1304,11 +1242,7 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
                         type = 6;
                     }
                 } else if (document != null) {
-                    /*if (encryptedChat != null && AndroidUtilities.getPeerLayerVersion(encryptedChat.layer) >= 17) {
-                        newMsg = new TLRPC.TL_message_secret();
-                    } else*/ {
-                        newMsg = new TLRPC.TL_message();
-                    }
+                    newMsg = new TLRPC.TL_message();
                     newMsg.media = new TLRPC.TL_messageMediaDocument();
                     newMsg.media.caption = document.caption != null ? document.caption : "";
                     newMsg.media.document = document;
@@ -1326,94 +1260,27 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
                     } else {
                         newMsg.message = videoEditedInfo.getString();
                     }
-                    /*if (encryptedChat != null && document.dc_id > 0 && !MessageObject.isStickerDocument(document)) {
-                        newMsg.attachPath = FileLoader.getPathToAttach(document).toString();
-                    } else*/ {
-                        newMsg.attachPath = path;
-                    }
-                    /*if (encryptedChat != null && MessageObject.isStickerDocument(document)) {
-                        for (int a = 0; a < document.attributes.size(); a++) {
-                            TLRPC.DocumentAttribute attribute = document.attributes.get(a);
-                            if (attribute instanceof TLRPC.TL_documentAttributeSticker) {
-                                if (AndroidUtilities.getPeerLayerVersion(encryptedChat.layer) < 46) {
-                                    document.attributes.remove(a);
-                                    document.attributes.add(new TLRPC.TL_documentAttributeSticker_old());
-                                } else {
-                                    if (attribute.stickerset != null) {
-                                        String name = StickersQuery.getStickerSetName(attribute.stickerset.id);
-                                        if (name != null && name.length() > 0) {
-                                            attribute.stickerset = new TLRPC.TL_inputStickerSetShortName();
-                                            attribute.stickerset.short_name = name;
-                                        } else {
-                                            attribute.stickerset = new TLRPC.TL_inputStickerSetEmpty();
-                                        }
-                                    } else {
-                                        attribute.stickerset = new TLRPC.TL_inputStickerSetEmpty();
-                                    }
-                                }
-                                break;
-                            }
-                        }
-                    }*/
+                    newMsg.attachPath = path;
                 }
                 if (newMsg.attachPath == null) {
                     newMsg.attachPath = "";
                 }
                 /*newMsg.local_id =*/ newMsg.id = UserConfig.getNewMessageId();
                 newMsg.out = true;
-                /*if (isChannel && sendToPeer != null) {
-                    newMsg.from_id = -sendToPeer.channel_id;
-                } else*/ {
-                    newMsg.from_id = UserConfig.getClientUserId();
-                    newMsg.flags |= TLRPC.MESSAGE_FLAG_HAS_FROM_ID;
-                }
+                newMsg.from_id = UserConfig.getClientUserId();
+                newMsg.flags |= TLRPC.MESSAGE_FLAG_HAS_FROM_ID;
                 UserConfig.saveConfig(false);
             }
             if (newMsg.random_id == 0) {
                 newMsg.random_id = getNextRandomId();
             }
-            /*if (params != null && params.containsKey("bot")) {
-                if (encryptedChat != null) {
-                    newMsg.via_bot_name = params.get("bot_name");
-                    if (newMsg.via_bot_name == null) {
-                        newMsg.via_bot_name = "";
-                    }
-                } else {
-                    newMsg.via_bot_id = Utilities.parseInt(params.get("bot"));
-                }
-                newMsg.flags |= TLRPC.MESSAGE_FLAG_HAS_BOT_ID;
-            }*/
             newMsg.params = params;
             newMsg.date = ConnectionsManager.getInstance().getCurrentTime();
             newMsg.flags |= TLRPC.MESSAGE_FLAG_HAS_MEDIA;
-            /*if (sendToPeer instanceof TLRPC.TL_inputPeerChannel) {
-                if (isChannel) {
-                    newMsg.views = 1;
-                    newMsg.flags |= TLRPC.MESSAGE_FLAG_HAS_VIEWS;
-                }
-                TLRPC.Chat chat = MessagesController.getInstance().getChat(sendToPeer.channel_id);
-                if (chat != null) {
-                    if (chat.megagroup) {
-                        newMsg.flags |= TLRPC.MESSAGE_FLAG_MEGAGROUP;
-                        newMsg.unread = true;
-                    } else {
-                        newMsg.post = true;
-                        if (chat.signatures) {
-                            newMsg.from_id = UserConfig.getClientUserId();
-                        }
-                    }
-                }
-            } else*/ {
-                newMsg.unread = true;
-            }
+            newMsg.unread = true;
             newMsg.dialog_id = peer;
             if (reply_to_msg != null) {
-                /*if (encryptedChat != null && reply_to_msg.messageOwner.random_id != 0) {
-                    newMsg.reply_to_random_id = reply_to_msg.messageOwner.random_id;
-                    newMsg.flags |= TLRPC.MESSAGE_FLAG_REPLY;
-                } else*/ {
-                    newMsg.flags |= TLRPC.MESSAGE_FLAG_REPLY;
-                }
+                newMsg.flags |= TLRPC.MESSAGE_FLAG_REPLY;
                 newMsg.reply_to_msg_id = reply_to_msg.getId();
             }
             if (replyMarkup != null /*&& encryptedChat == null*/) {
@@ -1502,11 +1369,6 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
             MessagesController.getInstance().updateInterfaceWithMessages(peer, objArr);
             NotificationCenter.getInstance().postNotificationName(NotificationCenter.dialogsNeedReload);
 
-            /*if (BuildVars.DEBUG_VERSION) {
-                if (sendToPeer != null) {
-                    FileLog.e("tmessages", "send message user_id = " + sendToPeer.user_id + " chat_id = " + sendToPeer.chat_id + " channel_id = " + sendToPeer.channel_id + " access_hash = " + sendToPeer.access_hash);
-                }
-            }*/
 
 
             // SEND MESSAGE
@@ -1520,177 +1382,181 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
                 DraftQuery.cleanDraft(peer, false);
             }
             else if (type >= 1 && type <= 3 || type >= 5 && type <= 8 /*|| type == 9 && encryptedChat != null*/) {
-                {
-                    TLRPC.InputMedia inputMedia = null;
-                    DelayedMessage delayedMessage = null;
-                    if (type == 1) {
-                        if (location instanceof TLRPC.TL_messageMediaVenue) {
-                            inputMedia = new TLRPC.TL_inputMediaVenue();
-                            inputMedia.address = location.address;
-                            inputMedia.title = location.title;
-                            inputMedia.provider = location.provider;
-                            inputMedia.venue_id = location.venue_id;
+                TLRPC.InputMedia inputMedia = null;
+                DelayedMessage delayedMessage = null;
+                if (type == 1) {
+                    if (location instanceof TLRPC.TL_messageMediaVenue) {
+                        inputMedia = new TLRPC.TL_inputMediaVenue();
+                        inputMedia.address = location.address;
+                        inputMedia.title = location.title;
+                        inputMedia.provider = location.provider;
+                        inputMedia.venue_id = location.venue_id;
+                    } else {
+                        inputMedia = new TLRPC.TL_inputMediaGeoPoint();
+                    }
+                    inputMedia.geo_point = new TLRPC.TL_inputGeoPoint();
+                    inputMedia.geo_point.lat = location.geo.lat;
+                    inputMedia.geo_point._long = location.geo._long;
+                } else if (type == 2 || type == 9 && photo != null) {
+                    if (photo.access_hash == 0) {
+                        inputMedia = new TLRPC.TL_inputMediaUploadedPhoto();
+                        inputMedia.caption = photo.caption != null ? photo.caption : "";
+                        delayedMessage = new DelayedMessage();
+                        delayedMessage.originalPath = originalPath;
+                        delayedMessage.type = 0;
+                        delayedMessage.obj = newMsgObj;
+                        if (path != null && path.length() > 0 && path.startsWith("http")) {
+                            delayedMessage.httpLocation = path;
                         } else {
-                            inputMedia = new TLRPC.TL_inputMediaGeoPoint();
+                            delayedMessage.location = photo.sizes.get(photo.sizes.size() - 1).location;
                         }
-                        inputMedia.geo_point = new TLRPC.TL_inputGeoPoint();
-                        inputMedia.geo_point.lat = location.geo.lat;
-                        inputMedia.geo_point._long = location.geo._long;
-                    } else if (type == 2 || type == 9 && photo != null) {
-                        if (photo.access_hash == 0) {
-                            inputMedia = new TLRPC.TL_inputMediaUploadedPhoto();
-                            inputMedia.caption = photo.caption != null ? photo.caption : "";
-                            delayedMessage = new DelayedMessage();
-                            delayedMessage.originalPath = originalPath;
-                            delayedMessage.type = 0;
-                            delayedMessage.obj = newMsgObj;
-                            if (path != null && path.length() > 0 && path.startsWith("http")) {
-                                delayedMessage.httpLocation = path;
-                            } else {
-                                delayedMessage.location = photo.sizes.get(photo.sizes.size() - 1).location;
+                    } else {
+                        TLRPC.TL_inputMediaPhoto media = new TLRPC.TL_inputMediaPhoto();
+                        media.id = new TLRPC.TL_inputPhoto();
+                        media.caption = photo.caption != null ? photo.caption : "";
+                        media.id.id = photo.id;
+                        media.id.access_hash = photo.access_hash;
+                        inputMedia = media;
+                    }
+                } else if (type == 3) {
+                    if (document.access_hash == 0) {
+                        if (document.thumb.location != null) {
+                            inputMedia = new TLRPC.TL_inputMediaUploadedThumbDocument();
+                        } else {
+                            inputMedia = new TLRPC.TL_inputMediaUploadedDocument();
+                        }
+                        inputMedia.caption = document.caption != null ? document.caption : "";
+                        inputMedia.mime_type = document.mime_type;
+                        inputMedia.attributes = document.attributes;
+                        delayedMessage = new DelayedMessage();
+                        delayedMessage.originalPath = originalPath;
+                        delayedMessage.type = 1;
+                        delayedMessage.obj = newMsgObj;
+                        delayedMessage.location = document.thumb.location;
+                        delayedMessage.documentLocation = document;
+                        delayedMessage.videoEditedInfo = videoEditedInfo;
+                    } else {
+                        TLRPC.TL_inputMediaDocument media = new TLRPC.TL_inputMediaDocument();
+                        media.id = new TLRPC.TL_inputDocument();
+                        media.caption = document.caption != null ? document.caption : "";
+                        media.id.id = document.id;
+                        media.id.access_hash = document.access_hash;
+                        inputMedia = media;
+                    }
+                } else if (type == 6) {
+                    inputMedia = new TLRPC.TL_inputMediaContact();
+                    inputMedia.phone_number = user.phone;
+                    inputMedia.first_name = user.first_name;
+                    inputMedia.last_name = user.last_name;
+                } else if (type == 7 || type == 9) {
+                    if (document.access_hash == 0) {
+                        if (/*encryptedChat == null &&*/ originalPath != null && originalPath.length() > 0 && originalPath.startsWith("http") && params != null) {
+                            inputMedia = new TLRPC.TL_inputMediaGifExternal();
+                            String args[] = params.get("url").split("\\|");
+                            if (args.length == 2) {
+                                inputMedia.url = args[0];
+                                inputMedia.q = args[1];
                             }
                         } else {
-                            TLRPC.TL_inputMediaPhoto media = new TLRPC.TL_inputMediaPhoto();
-                            media.id = new TLRPC.TL_inputPhoto();
-                            media.caption = photo.caption != null ? photo.caption : "";
-                            media.id.id = photo.id;
-                            media.id.access_hash = photo.access_hash;
-                            inputMedia = media;
-                        }
-                    } else if (type == 3) {
-                        if (document.access_hash == 0) {
-                            if (document.thumb.location != null) {
+                            if (document.thumb.location != null && document.thumb.location instanceof TLRPC.TL_fileLocation) {
                                 inputMedia = new TLRPC.TL_inputMediaUploadedThumbDocument();
                             } else {
                                 inputMedia = new TLRPC.TL_inputMediaUploadedDocument();
                             }
-                            inputMedia.caption = document.caption != null ? document.caption : "";
-                            inputMedia.mime_type = document.mime_type;
-                            inputMedia.attributes = document.attributes;
                             delayedMessage = new DelayedMessage();
                             delayedMessage.originalPath = originalPath;
-                            delayedMessage.type = 1;
+                            delayedMessage.type = 2;
                             delayedMessage.obj = newMsgObj;
+                            delayedMessage.documentLocation = document;
                             delayedMessage.location = document.thumb.location;
-                            delayedMessage.documentLocation = document;
-                            delayedMessage.videoEditedInfo = videoEditedInfo;
-                        } else {
-                            TLRPC.TL_inputMediaDocument media = new TLRPC.TL_inputMediaDocument();
-                            media.id = new TLRPC.TL_inputDocument();
-                            media.caption = document.caption != null ? document.caption : "";
-                            media.id.id = document.id;
-                            media.id.access_hash = document.access_hash;
-                            inputMedia = media;
                         }
-                    } else if (type == 6) {
-                        inputMedia = new TLRPC.TL_inputMediaContact();
-                        inputMedia.phone_number = user.phone;
-                        inputMedia.first_name = user.first_name;
-                        inputMedia.last_name = user.last_name;
-                    } else if (type == 7 || type == 9) {
-                        if (document.access_hash == 0) {
-                            if (/*encryptedChat == null &&*/ originalPath != null && originalPath.length() > 0 && originalPath.startsWith("http") && params != null) {
-                                inputMedia = new TLRPC.TL_inputMediaGifExternal();
-                                String args[] = params.get("url").split("\\|");
-                                if (args.length == 2) {
-                                    inputMedia.url = args[0];
-                                    inputMedia.q = args[1];
-                                }
-                            } else {
-                                if (document.thumb.location != null && document.thumb.location instanceof TLRPC.TL_fileLocation) {
-                                    inputMedia = new TLRPC.TL_inputMediaUploadedThumbDocument();
-                                } else {
-                                    inputMedia = new TLRPC.TL_inputMediaUploadedDocument();
-                                }
-                                delayedMessage = new DelayedMessage();
-                                delayedMessage.originalPath = originalPath;
-                                delayedMessage.type = 2;
-                                delayedMessage.obj = newMsgObj;
-                                delayedMessage.documentLocation = document;
-                                delayedMessage.location = document.thumb.location;
-                            }
-                            inputMedia.mime_type = document.mime_type;
-                            inputMedia.attributes = document.attributes;
-                            inputMedia.caption = document.caption != null ? document.caption : "";
-                        } else {
-                            TLRPC.TL_inputMediaDocument media = new TLRPC.TL_inputMediaDocument();
-                            media.id = new TLRPC.TL_inputDocument();
-                            media.id.id = document.id;
-                            media.id.access_hash = document.access_hash;
-                            media.caption = document.caption != null ? document.caption : "";
-                            inputMedia = media;
-                        }
-                    } else if (type == 8) {
-                        if (document.access_hash == 0) {
-                            inputMedia = new TLRPC.TL_inputMediaUploadedDocument();
-                            inputMedia.mime_type = document.mime_type;
-                            inputMedia.attributes = document.attributes;
-                            inputMedia.caption = document.caption != null ? document.caption : "";
-                            delayedMessage = new DelayedMessage();
-                            delayedMessage.type = 3;
-                            delayedMessage.obj = newMsgObj;
-                            delayedMessage.documentLocation = document;
-                        } else {
-                            TLRPC.TL_inputMediaDocument media = new TLRPC.TL_inputMediaDocument();
-                            media.id = new TLRPC.TL_inputDocument();
-                            media.caption = document.caption != null ? document.caption : "";
-                            media.id.id = document.id;
-                            media.id.access_hash = document.access_hash;
-                            inputMedia = media;
-                        }
+                        inputMedia.mime_type = document.mime_type;
+                        inputMedia.attributes = document.attributes;
+                        inputMedia.caption = document.caption != null ? document.caption : "";
+                    } else {
+                        TLRPC.TL_inputMediaDocument media = new TLRPC.TL_inputMediaDocument();
+                        media.id = new TLRPC.TL_inputDocument();
+                        media.id.id = document.id;
+                        media.id.access_hash = document.access_hash;
+                        media.caption = document.caption != null ? document.caption : "";
+                        inputMedia = media;
                     }
-
-                    /*
-                    TLObject reqSend;
-
-                    {
-                        TLRPC.TL_messages_sendMedia request = new TLRPC.TL_messages_sendMedia();
-                        request.peer = null;//sendToPeer;
-                        if (newMsg.to_id instanceof TLRPC.TL_peerChannel) {
-                            request.silent = ApplicationLoader.applicationContext.getSharedPreferences("Notifications", Activity.MODE_PRIVATE).getBoolean("silent_" + peer, false);
-                        }
-                        request.random_id = newMsg.random_id;
-                        request.media = inputMedia;
-                        if (reply_to_msg != null) {
-                            request.flags |= 1;
-                            request.reply_to_msg_id = reply_to_msg.getId();
-                        }
-                        if (delayedMessage != null) {
-                            delayedMessage.sendRequest = request;
-                        }
-                        reqSend = request;
+                } else if (type == 8) {
+                    if (document.access_hash == 0) {
+                        inputMedia = new TLRPC.TL_inputMediaUploadedDocument();
+                        inputMedia.mime_type = document.mime_type;
+                        inputMedia.attributes = document.attributes;
+                        inputMedia.caption = document.caption != null ? document.caption : "";
+                        delayedMessage = new DelayedMessage();
+                        delayedMessage.type = 3;
+                        delayedMessage.obj = newMsgObj;
+                        delayedMessage.documentLocation = document;
+                    } else {
+                        TLRPC.TL_inputMediaDocument media = new TLRPC.TL_inputMediaDocument();
+                        media.id = new TLRPC.TL_inputDocument();
+                        media.caption = document.caption != null ? document.caption : "";
+                        media.id.id = document.id;
+                        media.id.access_hash = document.access_hash;
+                        inputMedia = media;
                     }
-                    if (type == 1) {
-                        performSendMessageRequest(reqSend, newMsgObj, null);
-                    } else if (type == 2) {
-                        if (photo.access_hash == 0) {
-                            performSendDelayedMessage(delayedMessage);
-                        } else {
-                            performSendMessageRequest(reqSend, newMsgObj, null);
-                        }
-                    } else if (type == 3) {
-                        if (document.access_hash == 0) {
-                            performSendDelayedMessage(delayedMessage);
-                        } else {
-                            performSendMessageRequest(reqSend, newMsgObj, null);
-                        }
-                    } else if (type == 6) {
-                        performSendMessageRequest(reqSend, newMsgObj, null);
-                    } else if (type == 7) {
-                        if (document.access_hash == 0 && delayedMessage != null) {
-                            performSendDelayedMessage(delayedMessage);
-                        } else {
-                            performSendMessageRequest(reqSend, newMsgObj, originalPath);
-                        }
-                    } else if (type == 8) {
-                        if (document.access_hash == 0) {
-                            performSendDelayedMessage(delayedMessage);
-                        } else {
-                            performSendMessageRequest(reqSend, newMsgObj, null);
-                        }
-                    }
-                    */
                 }
+
+                if( type == 2 ) {
+                    MrMailbox.MrChatSendMedia(hChat, MrMailbox.MR_MSG_IMAGE, originalPath, 0, 0, 0);
+                }
+
+
+
+                /*
+                TLObject reqSend;
+
+                {
+                    TLRPC.TL_messages_sendMedia request = new TLRPC.TL_messages_sendMedia();
+                    request.peer = null;//sendToPeer;
+                    if (newMsg.to_id instanceof TLRPC.TL_peerChannel) {
+                        request.silent = ApplicationLoader.applicationContext.getSharedPreferences("Notifications", Activity.MODE_PRIVATE).getBoolean("silent_" + peer, false);
+                    }
+                    request.random_id = newMsg.random_id;
+                    request.media = inputMedia;
+                    if (reply_to_msg != null) {
+                        request.flags |= 1;
+                        request.reply_to_msg_id = reply_to_msg.getId();
+                    }
+                    if (delayedMessage != null) {
+                        delayedMessage.sendRequest = request;
+                    }
+                    reqSend = request;
+                }
+                if (type == 1) {
+                    performSendMessageRequest(reqSend, newMsgObj, null);
+                } else if (type == 2) {
+                    if (photo.access_hash == 0) {
+                        performSendDelayedMessage(delayedMessage);
+                    } else {
+                        performSendMessageRequest(reqSend, newMsgObj, null);
+                    }
+                } else if (type == 3) {
+                    if (document.access_hash == 0) {
+                        performSendDelayedMessage(delayedMessage);
+                    } else {
+                        performSendMessageRequest(reqSend, newMsgObj, null);
+                    }
+                } else if (type == 6) {
+                    performSendMessageRequest(reqSend, newMsgObj, null);
+                } else if (type == 7) {
+                    if (document.access_hash == 0 && delayedMessage != null) {
+                        performSendDelayedMessage(delayedMessage);
+                    } else {
+                        performSendMessageRequest(reqSend, newMsgObj, originalPath);
+                    }
+                } else if (type == 8) {
+                    if (document.access_hash == 0) {
+                        performSendDelayedMessage(delayedMessage);
+                    } else {
+                        performSendMessageRequest(reqSend, newMsgObj, null);
+                    }
+                }
+                */
             } else if (type == 4) {
                 /*
                 TLRPC.TL_messages_forwardMessages reqSend = new TLRPC.TL_messages_forwardMessages();
@@ -1750,9 +1616,6 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
             //processSentMessage(newMsg.id);
         }
 
-    }
-
-    private void performSendDelayedMessage(final DelayedMessage message) {
     }
 
     protected void stopVideoService(final String path) {
@@ -1946,9 +1809,7 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
             }
         }, ConnectionsManager.RequestFlagCanCompress | ConnectionsManager.RequestFlagInvokeAfter | (req instanceof TLRPC.TL_messages_sendMessage ? ConnectionsManager.RequestFlagNeedQuickAck : 0));
     }
-    */
 
-    /*
     private void updateMediaPaths(MessageObject newMsgObj, TLRPC.Message sentMessage, String originalPath, boolean post) {
         TLRPC.Message newMsg = newMsgObj.messageOwner;
         if (sentMessage == null) {
@@ -2079,9 +1940,7 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
             newMsg.media = sentMessage.media;
         }
     }
-    */
 
-    /*
     private void putToDelayedMessages(String location, DelayedMessage message) {
         ArrayList<DelayedMessage> arrayList = delayedMessages.get(location);
         if (arrayList == null) {
@@ -2452,237 +2311,6 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
         }
         prepareSendingPhotos(paths, uris, dialog_id, reply_to_msg, captions);
     }
-
-    /*
-    public static void prepareSendingBotContextResult(final TLRPC.BotInlineResult result, final HashMap<String, String> params, final long dialog_id, final MessageObject reply_to_msg) {
-        if (result == null) {
-            return;
-        }
-        if (result.send_message instanceof TLRPC.TL_botInlineMessageMediaAuto) {
-            new Thread(new Runnable() {
-                @Override
-                public void run() {
-                    String finalPath = null;
-                    TLRPC.TL_document document = null;
-                    TLRPC.TL_photo photo = null;
-                    if (result instanceof TLRPC.TL_botInlineMediaResult) {
-                        if (result.document != null) {
-                            if (result.document instanceof TLRPC.TL_document) {
-                                document = (TLRPC.TL_document) result.document;
-                            }
-                        } else if (result.photo != null) {
-                            if (result.photo instanceof TLRPC.TL_photo) {
-                                photo = (TLRPC.TL_photo) result.photo;
-                            }
-                        }
-                    } else {
-                        if (result.content_url != null) {
-                            File f = new File(FileLoader.getInstance().getDirectory(FileLoader.MEDIA_DIR_CACHE), Utilities.MD5(result.content_url) + "." + ImageLoader.getHttpUrlExtension(result.content_url, "file"));
-                            if (f.exists()) {
-                                finalPath = f.getAbsolutePath();
-                            } else {
-                                finalPath = result.content_url;
-                            }
-                            switch (result.type) {
-                                case "audio":
-                                case "voice":
-                                case "file":
-                                case "video":
-                                case "sticker":
-                                case "gif": {
-                                    document = new TLRPC.TL_document();
-                                    document.id = 0;
-                                    document.size = 0;
-                                    document.dc_id = 0;
-                                    document.mime_type = result.content_type;
-                                    document.date = ConnectionsManager.getInstance().getCurrentTime();
-                                    TLRPC.TL_documentAttributeFilename fileName = new TLRPC.TL_documentAttributeFilename();
-                                    document.attributes.add(fileName);
-
-                                    switch (result.type) {
-                                        case "gif": {
-                                            fileName.file_name = "animation.gif";
-                                            if (finalPath.endsWith("mp4")) {
-                                                document.mime_type = "video/mp4";
-                                                document.attributes.add(new TLRPC.TL_documentAttributeAnimated());
-                                            } else {
-                                                document.mime_type = "image/gif";
-                                            }
-                                            try {
-                                                Bitmap bitmap;
-                                                if (finalPath.endsWith("mp4")) {
-                                                    bitmap = ThumbnailUtils.createVideoThumbnail(finalPath, MediaStore.Video.Thumbnails.MINI_KIND);
-                                                } else {
-                                                    bitmap = ImageLoader.loadBitmap(finalPath, null, 90, 90, true);
-                                                }
-                                                if (bitmap != null) {
-                                                    document.thumb = ImageLoader.scaleAndSaveImage(bitmap, 90, 90, 55, false);
-                                                    bitmap.recycle();
-                                                }
-                                            } catch (Throwable e) {
-                                                FileLog.e("tmessages", e);
-                                            }
-                                            break;
-                                        }
-                                        case "voice": {
-                                            TLRPC.TL_documentAttributeAudio audio = new TLRPC.TL_documentAttributeAudio();
-                                            audio.duration = result.duration;
-                                            audio.voice = true;
-                                            fileName.file_name = "audio.ogg";
-                                            document.attributes.add(audio);
-
-                                            document.thumb = new TLRPC.TL_photoSizeEmpty();
-                                            document.thumb.type = "s";
-
-                                            break;
-                                        }
-                                        case "audio": {
-                                            TLRPC.TL_documentAttributeAudio audio = new TLRPC.TL_documentAttributeAudio();
-                                            audio.duration = result.duration;
-                                            audio.title = result.title;
-                                            audio.flags |= 1;
-                                            if (result.description != null) {
-                                                audio.performer = result.description;
-                                                audio.flags |= 2;
-                                            }
-                                            fileName.file_name = "audio.mp3";
-                                            document.attributes.add(audio);
-
-                                            document.thumb = new TLRPC.TL_photoSizeEmpty();
-                                            document.thumb.type = "s";
-
-                                            break;
-                                        }
-                                        case "file": {
-                                            int idx = result.content_type.indexOf('/');
-                                            if (idx != -1) {
-                                                fileName.file_name = "file." + result.content_type.substring(idx + 1);
-                                            } else {
-                                                fileName.file_name = "file";
-                                            }
-                                            break;
-                                        }
-                                        case "video": {
-                                            fileName.file_name = "video.mp4";
-                                            TLRPC.TL_documentAttributeVideo attributeVideo = new TLRPC.TL_documentAttributeVideo();
-                                            attributeVideo.w = result.w;
-                                            attributeVideo.h = result.h;
-                                            attributeVideo.duration = result.duration;
-                                            document.attributes.add(attributeVideo);
-                                            try {
-                                                String thumbPath = new File(FileLoader.getInstance().getDirectory(FileLoader.MEDIA_DIR_CACHE), Utilities.MD5(result.thumb_url) + "." + ImageLoader.getHttpUrlExtension(result.thumb_url, "jpg")).getAbsolutePath();
-                                                Bitmap bitmap = ImageLoader.loadBitmap(thumbPath, null, 90, 90, true);
-                                                if (bitmap != null) {
-                                                    document.thumb = ImageLoader.scaleAndSaveImage(bitmap, 90, 90, 55, false);
-                                                    bitmap.recycle();
-                                                }
-                                            } catch (Throwable e) {
-                                                FileLog.e("tmessages", e);
-                                            }
-                                            break;
-                                        }
-                                        case "sticker": {
-                                            TLRPC.TL_documentAttributeSticker attributeSticker = new TLRPC.TL_documentAttributeSticker();
-                                            attributeSticker.alt = "";
-                                            attributeSticker.stickerset = new TLRPC.TL_inputStickerSetEmpty();
-                                            document.attributes.add(attributeSticker);
-                                            TLRPC.TL_documentAttributeImageSize attributeImageSize = new TLRPC.TL_documentAttributeImageSize();
-                                            attributeImageSize.w = result.w;
-                                            attributeImageSize.h = result.h;
-                                            document.attributes.add(attributeImageSize);
-                                            fileName.file_name = "sticker.webp";
-                                            try {
-                                                String thumbPath = new File(FileLoader.getInstance().getDirectory(FileLoader.MEDIA_DIR_CACHE), Utilities.MD5(result.thumb_url) + "." + ImageLoader.getHttpUrlExtension(result.thumb_url, "webp")).getAbsolutePath();
-                                                Bitmap bitmap = ImageLoader.loadBitmap(thumbPath, null, 90, 90, true); //TODO support on old androids
-                                                if (bitmap != null) {
-                                                    document.thumb = ImageLoader.scaleAndSaveImage(bitmap, 90, 90, 55, false);
-                                                    bitmap.recycle();
-                                                }
-                                            } catch (Throwable e) {
-                                                FileLog.e("tmessages", e);
-                                            }
-                                            break;
-                                        }
-                                    }
-                                    if (fileName.file_name == null) {
-                                        fileName.file_name = "file";
-                                    }
-                                    if (document.mime_type == null) {
-                                        document.mime_type = "application/octet-stream";
-                                    }
-                                    if (document.thumb == null) {
-                                        document.thumb = new TLRPC.TL_photoSize();
-                                        document.thumb.w = result.w;
-                                        document.thumb.h = result.h;
-                                        document.thumb.size = 0;
-                                        document.thumb.location = new TLRPC.TL_fileLocationUnavailable();
-                                        document.thumb.type = "x";
-                                    }
-                                    break;
-                                }
-                                case "photo": {
-                                    if (f.exists()) {
-                                        photo = SendMessagesHelper.getInstance().generatePhotoSizes(finalPath, null);
-                                    }
-                                    if (photo == null) {
-                                        photo = new TLRPC.TL_photo();
-                                        photo.date = ConnectionsManager.getInstance().getCurrentTime();
-                                        TLRPC.TL_photoSize photoSize = new TLRPC.TL_photoSize();
-                                        photoSize.w = result.w;
-                                        photoSize.h = result.h;
-                                        photoSize.size = 1;
-                                        photoSize.location = new TLRPC.TL_fileLocationUnavailable();
-                                        photoSize.type = "x";
-                                        photo.sizes.add(photoSize);
-                                    }
-                                    break;
-                                }
-                            }
-                        }
-                    }
-                    final String finalPathFinal = finalPath;
-                    final TLRPC.TL_document finalDocument = document;
-                    final TLRPC.TL_photo finalPhoto = photo;
-                    if (params != null && result.content_url != null) {
-                        params.put("originalPath", result.content_url);
-                    }
-                    AndroidUtilities.runOnUIThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            if (finalDocument != null) {
-                                finalDocument.caption = result.send_message.caption;
-                                SendMessagesHelper.getInstance().sendMessage(finalDocument, null, finalPathFinal, dialog_id, reply_to_msg, result.send_message.reply_markup, params);
-                            } else if (finalPhoto != null) {
-                                finalPhoto.caption = result.send_message.caption;
-                                SendMessagesHelper.getInstance().sendMessage(finalPhoto, result.content_url, dialog_id, reply_to_msg, result.send_message.reply_markup, params);
-                            }
-                        }
-                    });
-                }
-            }).run();
-        } else if (result.send_message instanceof TLRPC.TL_botInlineMessageText) {
-            SendMessagesHelper.getInstance().sendMessage(result.send_message.message, dialog_id, reply_to_msg, null, !result.send_message.no_webpage, result.send_message.entities, result.send_message.reply_markup, params);
-        } else if (result.send_message instanceof TLRPC.TL_botInlineMessageMediaVenue) {
-            TLRPC.TL_messageMediaVenue venue = new TLRPC.TL_messageMediaVenue();
-            venue.geo = result.send_message.geo;
-            venue.address = result.send_message.address;
-            venue.title = result.send_message.title;
-            venue.provider = result.send_message.provider;
-            venue.venue_id = result.send_message.venue_id;
-            SendMessagesHelper.getInstance().sendMessage(venue, dialog_id, reply_to_msg, result.send_message.reply_markup, params);
-        } else if (result.send_message instanceof TLRPC.TL_botInlineMessageMediaGeo) {
-            TLRPC.TL_messageMediaGeo location = new TLRPC.TL_messageMediaGeo();
-            location.geo = result.send_message.geo;
-            SendMessagesHelper.getInstance().sendMessage(location, dialog_id, reply_to_msg, result.send_message.reply_markup, params);
-        } else if (result.send_message instanceof TLRPC.TL_botInlineMessageMediaContact) {
-            TLRPC.User user = new TLRPC.TL_user();
-            user.phone = result.send_message.phone_number;
-            user.first_name = result.send_message.first_name;
-            user.last_name = result.send_message.last_name;
-            SendMessagesHelper.getInstance().sendMessage(user, dialog_id, reply_to_msg, result.send_message.reply_markup, params);
-        }
-    }
-    */
 
     public static void prepareSendingPhotosSearch(final ArrayList<MediaController.SearchImage> photos, final long dialog_id, final MessageObject reply_to_msg) {
         if (photos == null || photos.isEmpty()) {

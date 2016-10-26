@@ -197,6 +197,7 @@ public class GroupInviteActivity extends BaseFragment implements NotificationCen
     }
 
     private void generateLink(final boolean newRequest) {
+        /*
         loading = true;
         TLObject request;
         if (ChatObject.isChannel(chat_id)) {
@@ -237,6 +238,7 @@ public class GroupInviteActivity extends BaseFragment implements NotificationCen
         if (listAdapter != null) {
             listAdapter.notifyDataSetChanged();
         }
+        */
     }
 
     private class ListAdapter extends BaseFragmentAdapter {
