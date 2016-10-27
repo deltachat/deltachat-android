@@ -97,7 +97,7 @@ public class FileLoadOperation {
 
     public FileLoadOperation(TLRPC.Document documentLocation) {
         try {
-            if (documentLocation instanceof TLRPC.TL_documentEncrypted) {
+            /*if (documentLocation instanceof TLRPC.TL_documentEncrypted) {
                 location = new TLRPC.TL_inputEncryptedFileLocation();
                 location.id = documentLocation.id;
                 location.access_hash = documentLocation.access_hash;
@@ -105,7 +105,7 @@ public class FileLoadOperation {
                 iv = new byte[32];
                 System.arraycopy(documentLocation.iv, 0, iv, 0, iv.length);
                 key = documentLocation.key;
-            } else if (documentLocation instanceof TLRPC.TL_document) {
+            } else*/ if (documentLocation instanceof TLRPC.TL_document) {
                 location = new TLRPC.TL_inputDocumentFileLocation();
                 location.id = documentLocation.id;
                 location.access_hash = documentLocation.access_hash;
