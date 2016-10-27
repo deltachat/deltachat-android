@@ -64,6 +64,7 @@ public class MrMailbox {
                                                     //  TLRPC.TL_message is a normal message (also photos?)
 
         int state = MrMsgGetState(hMsg);
+        int type  = MrMsgGetType(hMsg);
         switch( state ) {
             case MR_OUT_DELIVERED: ret.send_state = MessageObject.MESSAGE_SEND_STATE_SENT; break;
             case MR_OUT_ERROR:     ret.send_state = MessageObject.MESSAGE_SEND_STATE_SEND_ERROR; break;
@@ -75,14 +76,43 @@ public class MrMailbox {
         ret.from_id       = MrMailbox.MrMsgGetFromId(hMsg);
         ret.to_id         = new TLRPC.TL_peerUser();
         ret.to_id.user_id = MrMailbox.MrMsgGetToId(hMsg);
-        ret.message       = MrMailbox.MrMsgGetText(hMsg);
         ret.date          = (int)MrMsgGetTimestamp(hMsg);
         ret.dialog_id     = MrMsgGetChatId(hMsg);
         ret.unread        = state!=MR_OUT_READ; // the state of outgoing messages
         ret.media_unread  = ret.unread;
-        ret.flags         = 0;
+        ret.flags         = 0; // posible flags: TLRPC.MESSAGE_FLAG_HAS_FROM_ID, however, this seems to be read only
         ret.post          = false; // ? true=avatar wird in gruppen nicht angezeigt
         ret.out           = ret.from_id==1; // true=outgoing message, read eg. in MessageObject.isOutOwner()
+
+        if( type == MrMailbox.MR_MSG_TEXT ) {
+            ret.message       = MrMailbox.MrMsgGetText(hMsg);
+        }
+        else if( type == MrMailbox.MR_MSG_IMAGE ) {
+            String path = MrMailbox.MrMsgGetParam(hMsg, 'f', "");
+            TLRPC.TL_photo photo = null;
+            if( !path.isEmpty() ) {
+                try {
+                    // TODO: It is very inefficient to load all photos on dialog loading! FIX ME!
+                    photo = SendMessagesHelper.getInstance().generatePhotoSizes(path, null); // TODO: does this degrade image quality?
+                } catch (Exception e) {
+                    // the most common reason is a simple "file not found error"
+                }
+            }
+
+            if(photo!=null) {
+                ret.message = "-1";
+                ret.media = new TLRPC.TL_messageMediaPhoto();
+                ret.media.photo = photo;
+            }
+            else {
+                ret.message = "<" + LocaleController.getString("CannotLoadFile", R.string.CannotLoadFile) + ">";
+            }
+        }
+        else {
+            ret.message = "Messages of this type are not yet supported.";
+        }
+        // ret.attachPath
+        // +obj.attachPathExists
 
         // MessageObject.contentType - ??
         return ret;
@@ -93,6 +123,12 @@ public class MrMailbox {
         TLRPC.User ret = new TLRPC.User();
         ret.id = id;
         return ret;
+    }
+
+    public static void reloadMainChatlist()
+    {
+        MrChatlistUnref(hCurrChatlist); // it's not optimal running this on the UI thread, maybe we should lock it and run it in a separate thread
+        hCurrChatlist = MrMailboxGetChatlist(hMailbox);
     }
 
     // this function is called from within the C-wrapper
@@ -106,8 +142,7 @@ public class MrMailbox {
                 AndroidUtilities.runOnUIThread(new Runnable() {
                     @Override
                     public void run() {
-                        MrChatlistUnref(hCurrChatlist); // it's not optimal running this on the UI thread, maybe we should lock it and run it in a separate thread
-                        hCurrChatlist = MrMailboxGetChatlist(hMailbox);
+                        reloadMainChatlist();
                         NotificationCenter.getInstance().postNotificationName(NotificationCenter.dialogsNeedReload);
                     }
                 });
@@ -166,7 +201,7 @@ public class MrMailbox {
     public native static long    MrChatGetSummary           (long hChat); // returns hPoortext
     public native static long    MrChatGetMsglist           (long hChat, int offset, int amount); // returns hMsglist
     public native static int     MrChatSendText             (long hChat, String text); // returns message id
-    public native static int     MrChatSendMedia            (long hChat, int type, String file, int w, int h, int ms);
+    public native static int     MrChatSendMedia            (long hChat, int type, String file, String mime, int w, int h, int time_ms);
 
     // MrMsglist objects
     public native static void    MrMsglistUnref             (long hMsglist);
@@ -183,6 +218,9 @@ public class MrMailbox {
     public native static int     MrMsgGetChatId             (long hMsg);
     public native static int     MrMsgGetFromId             (long hMsg);
     public native static int     MrMsgGetToId               (long hMsg);
+    public native static String  MrMsgGetParam              (long hMsg, int key, String def);
+    public native static int     MrMsgGetParamInt           (long hMsg, int key, int def);
+
 
     // MrContact objects
     public native static void    MrContactUnref             (long hContact);

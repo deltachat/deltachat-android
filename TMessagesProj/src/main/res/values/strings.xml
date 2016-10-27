@@ -264,7 +264,6 @@
     <string name="InviteToGroupByLink">Invite to Group via Link</string>
     <string name="InviteLink">Invite Link</string>
     <string name="RevokeAlert">Are you sure you want to revoke this link? Once the link is revoked, no one will be able to join using it.</string>
-    <string name="RevokeAlertNewLink">The previous invite link is now inactive. A new link has been generated.</string>
     <string name="RevokeButton">Revoke</string>
     <string name="RevokeLink">Revoke Link</string>
     <string name="CopyLink">Copy Link</string>
@@ -281,8 +280,6 @@
     <string name="KickFromGroup">Remove from group</string>
     <string name="UpgradeGroup">Upgrade to Supergroup</string>
     <string name="ConvertGroupMenu">Convert to supergroup</string>
-    <string name="ConvertGroupAlertWarning">Warning</string>
-    <string name="ConvertGroupAlert">This action is irreversible. It is not possible to downgrade a supergroup to a regular group.</string>
     <string name="ConvertGroupInfo"><![CDATA[<b>]]>Members limit reached.<![CDATA[</b>]]>\n\nTo go over the limit and get additional features, upgrade to a supergroup:\n\n• Supergroups can get up to %1$s\n• New members can see the full message history\n• Deleted messages will disappear for all members\n• Admins can pin important messages\n• Creator can set a public link for the group</string>
     <!--contact info view-->
     <string name="ShareContact">Share</string>
@@ -546,7 +543,7 @@
     <string name="PasswordCode">Code</string>
     <!--privacy settings-->
     <string name="PrivacySettings">Privacy and Security</string>
-    <string name="PrivacyTitle">Privacy</string>
+    <string name="PrivacyTitle" tools:keep="@string/PrivacyTitle">Privacy</string>
     <string name="PrivacyLastSeen">Last Seen</string>
     <string name="LastSeenEverybody">Everybody</string>
     <string name="LastSeenContacts">My Contacts</string>
@@ -695,7 +692,6 @@
     <string name="SendContactToGroup">Send contact to %1$s?</string>
     <string name="ForwardMessagesToGroup">Forward messages to %1$s?</string>
     <string name="RaiseToSpeakAlert">Would you like to enable "Raise to speak" for voice messages?</string>
-    <string name="EditMessageError">Sorry, you can\'t edit this message.</string>
     <string name="AllowReadSms">Please allow Telegram to receive SMS so that we can automatically enter your code for you.</string>
     <string name="AllowReadCall">Please allow Telegram to receive calls so that we can automatically enter your code for you.</string>
     <string name="AllowReadCallAndSms">Please allow Telegram to receive calls and SMS so that we can automatically enter your code for you.</string>
@@ -885,4 +881,5 @@
     <string name="AskStartChatWith">Start a chat with <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>?</string>
     <string name="StrangersHint">To start a chat, click on the reply-arrows.</string>
     <string name="NotYetImplemented">This function is not yet available in this version.</string>
+    <string name="CannotLoadFile">Cannot load file.</string>
 </resources>

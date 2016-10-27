@@ -264,7 +264,6 @@
     <string name="InviteToGroupByLink">Convidar para o Grupo via Link</string>
     <string name="InviteLink">Link de Convite</string>
     <string name="RevokeAlert">Você tem certeza que deseja desativar o link? Uma vez feito, ninguém conseguirá entrar usando-o.</string>
-    <string name="RevokeAlertNewLink">Este link de convite está inativo. Um novo link foi gerado.</string>
     <string name="RevokeButton">Desativar</string>
     <string name="RevokeLink">Desativar Link</string>
     <string name="CopyLink">Copiar Link</string>
@@ -281,8 +280,6 @@
     <string name="KickFromGroup">Remover do grupo</string>
     <string name="UpgradeGroup">Converter a Supergrupo</string>
     <string name="ConvertGroupMenu">Converter a supergrupo</string>
-    <string name="ConvertGroupAlertWarning">Atenção</string>
-    <string name="ConvertGroupAlert">Essa ação é irreversível. Não é possível voltar de um supergrupo para um grupo normal.</string>
     <string name="ConvertGroupInfo"><![CDATA[<b>]]>Limite de membros atingido.<![CDATA[</b>]]>\n\nPara ir além do limite e ter funções adcionais, converta para um supergrupo:\n\n• Supergrupos podem ter até %1$s\n• Novos membros veêm todo o histórico de conversas\n• Administradores deletam mensagens para todos\n• O criador pode definir um link público para o grupo</string>
     <!--contact info view-->
     <string name="ShareContact">Compartilhar</string>
@@ -695,7 +692,6 @@
     <string name="SendContactToGroup">Enviar contato para %1$s?</string>
     <string name="ForwardMessagesToGroup">Encaminhar mensagem para %1$s?</string>
     <string name="RaiseToSpeakAlert">Gostaria de habilitar o \"Levantar para Falar\" para mensagens de voz?</string>
-    <string name="EditMessageError">Desculpe, você não pode editar essa mensagem.</string>
     <string name="AllowReadSms">Permita o acesso às SMS ao Telegram, assim podemos automaticamente adicionar o código para você.</string>
     <string name="AllowReadCall">Permita o acesso às ligações ao Telegram, assim podemos automaticamente adicionar o código para você.</string>
     <string name="AllowReadCallAndSms">Permita o acesso às SMS e ligações ao Telegram, assim podemos automaticamente adicionar o código para você.</string>

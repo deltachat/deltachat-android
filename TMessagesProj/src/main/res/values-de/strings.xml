@@ -263,7 +263,6 @@
     <string name="InviteToGroupByLink">Per Link zur Gruppe einladen</string>
     <string name="InviteLink">Einladungslink</string>
     <string name="RevokeAlert">Bist du sicher, dass du diesen Link widerrufen willst? Dadurch kann ihn niemand mehr nutzen.</string>
-    <string name="RevokeAlertNewLink">Der vorige Link ist nun inaktiv. Ein neuer Einladungslink wurde gerade erstellt.</string>
     <string name="RevokeButton">Widerrufen</string>
     <string name="RevokeLink">Link widerrufen</string>
     <string name="CopyLink">Link kopieren</string>
@@ -280,8 +279,6 @@
     <string name="KickFromGroup">Aus der Gruppe entfernen</string>
     <string name="UpgradeGroup">In Supergruppe ändern</string>
     <string name="ConvertGroupMenu">In Supergruppe ändern</string>
-    <string name="ConvertGroupAlertWarning">Warnung</string>
-    <string name="ConvertGroupAlert">Du kannst die Supergruppe nicht mehr in eine normale Gruppe ändern.</string>
     <string name="ConvertGroupInfo"><![CDATA[<b>]]>Gruppenlimit erreicht.<![CDATA[</b>]]>\n\nFür weitere Funktionen und um das Limit aufzuheben in Supergruppe ändern:\n\n• Bis zu %1$s sind nun möglich\n• Neue Mitglieder sehen gesamten Verlauf\n• Gelöschte Nachrichten werden bei allen Mitgliedern entfernt\n•Gruppenersteller kann die Gruppe öffentlich machen</string>
     <!--contact info view-->
     <string name="ShareContact">Teilen</string>
@@ -694,7 +691,6 @@
     <string name="SendContactToGroup">Kontakt senden an %1$s?</string>
     <string name="ForwardMessagesToGroup">Weiterleiten an %1$s?</string>
     <string name="RaiseToSpeakAlert">Möchtest du \"Zum Sprechen ans Ohr\" für Sprachnachrichten aktivieren?</string>
-    <string name="EditMessageError">Du kannst diese Nachricht nicht bearbeiten.</string>
     <string name="AllowReadSms">Bitte erlaube Telegram den Zugriff auf SMS, so dass wir den Code automatisch in der App für dich eingeben können.</string>
     <string name="AllowReadCall">Bitte erlaube Telegram den Zugriff auf Anrufe, so dass wir den Code automatisch in der App eingeben können.</string>
     <string name="AllowReadCallAndSms">Bitte erlaube Telegram den Zugriff auf SMS und Anrufe, so dass wir den Code automatisch in der App eingeben können.</string>

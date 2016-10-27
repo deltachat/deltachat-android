@@ -264,7 +264,6 @@
     <string name="InviteToGroupByLink">Uitnodigingslink sturen</string>
     <string name="InviteLink">Uitnodigingslink</string>
     <string name="RevokeAlert">Deze link echt intrekken? Na intrekken kan niemand meer lid worden met de oude link.</string>
-    <string name="RevokeAlertNewLink">De oude link is nu inactief. Een nieuwe link is aangemaakt.</string>
     <string name="RevokeButton">Intrekken</string>
     <string name="RevokeLink">Link intrekken</string>
     <string name="CopyLink">Link kopiëren</string>
@@ -281,8 +280,6 @@
     <string name="KickFromGroup">Verwijderen uit groep</string>
     <string name="UpgradeGroup">Opwaarderen naar supergroep</string>
     <string name="ConvertGroupMenu">Opwaarderen naar supergroep</string>
-    <string name="ConvertGroupAlertWarning">Waarschuwing</string>
-    <string name="ConvertGroupAlert">Groep echt omzetten naar supergroep? Je kunt dit niet ongedaan maken.</string>
     <string name="ConvertGroupInfo"><![CDATA[<b>]]>Ledenlimiet bereikt.<![CDATA[</b>]]>\n\nWil je extra functies en een hogere limiet? Waardeer op naar een supergroep:\n\n• Supergroepen hebben tot %1$s\n• Nieuwe leden zien de hele geschiedenis\n•Gewiste berichten gelden voor iedereen\n• Maker kan een publieke groepslink instellen</string>
     <!--contact info view-->
     <string name="ShareContact">Delen</string>
@@ -695,7 +692,6 @@
     <string name="SendContactToGroup">Contact delen met %1$s?</string>
     <string name="ForwardMessagesToGroup">Berichten doorsturen naar %1$s?</string>
     <string name="RaiseToSpeakAlert">Wil je \"Houd bij oor\" inschakelen voor spraakberichten?</string>
-    <string name="EditMessageError">Je mag dit bericht niet bewerken.</string>
     <string name="AllowReadSms">Sta het ontvangen van SMS toe zodat we automatisch je inlogcode kunnen invoeren.</string>
     <string name="AllowReadCall">Sta het ontvangen van oproepen toe zodat we automatisch je inlogcode kunnen invoeren.</string>
     <string name="AllowReadCallAndSms">Sta het ontvangen van oproepen en SMS toe zodat we automatisch je inlogcode kunnen invoeren.</string>

@@ -394,13 +394,16 @@ JNIEXPORT jint Java_org_telegram_messenger_MrMailbox_MrChatSendText(JNIEnv *env,
 }
 
 
-JNIEXPORT jint Java_org_telegram_messenger_MrMailbox_MrChatSendMedia(JNIEnv *env, jclass c, jlong hChat, jint type, jstring file, jint w, jint h, jint ms)
+JNIEXPORT jint Java_org_telegram_messenger_MrMailbox_MrChatSendMedia(JNIEnv *env, jclass c, jlong hChat, jint type, jstring file, jstring mime, jint w, jint h, jint ms)
 {
 	mrmsg_t* msg = mrmsg_new();
-		msg->m_type = MR_MSG_TEXT;
+		msg->m_type = type;
+		CHAR_REF(mime);
+			mrparam_set(msg->m_param, 'm', mimePtr);
+		CHAR_UNREF(mime);
 		CHAR_REF(file);
 			mrparam_set(msg->m_param, 'f', filePtr);
-		CHAR_UNREF(file);
+		CHAR_UNREF(file);		
 		if( type == MR_MSG_IMAGE || type == MR_MSG_VIDEO ) {
 			mrparam_set_int(msg->m_param, 'w', w);
 			mrparam_set_int(msg->m_param, 'h', h);
@@ -501,6 +504,26 @@ JNIEXPORT jint Java_org_telegram_messenger_MrMailbox_MrMsgGetToId(JNIEnv *env, j
 {
 	mrmsg_t* ths = (mrmsg_t*)hMsg; if( ths == NULL ) { return 0; }
 	return ths->m_to_id;
+}
+
+
+JNIEXPORT jstring Java_org_telegram_messenger_MrMailbox_MrMsgGetParam(JNIEnv *env, jclass c, jlong hMsg, jint key, jstring def)
+{
+	mrmsg_t* ths = (mrmsg_t*)hMsg;
+	CHAR_REF(def);
+		char* temp = mrparam_get(ths? ths->m_param:NULL, key, defPtr);
+			jstring ret = JSTRING_NEW(temp);
+			mrlog_info(" got %s", temp);
+		free(temp);
+	CHAR_UNREF(def);
+	return ret;
+}
+
+
+JNIEXPORT jint Java_org_telegram_messenger_MrMailbox_MrMsgGetParamInt(JNIEnv *env, jclass c, jlong hMsg, jint key, jint def)
+{
+	mrmsg_t* ths = (mrmsg_t*)hMsg;
+	return  mrparam_get_int(ths? ths->m_param:NULL, key, def);
 }
 
 

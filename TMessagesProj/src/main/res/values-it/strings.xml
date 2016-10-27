@@ -264,7 +264,6 @@
     <string name="InviteToGroupByLink">Invita nel gruppo via link</string>
     <string name="InviteLink">Link di invito</string>
     <string name="RevokeAlert">Sei sicuro di voler revocare questo link? Una volta fatto, nessuno potrà unirsi utilizzandolo.</string>
-    <string name="RevokeAlertNewLink">Il precedente link di invito è inattivo. Ne è appena stato creato uno nuovo.</string>
     <string name="RevokeButton">Revoca</string>
     <string name="RevokeLink">Revoca link</string>
     <string name="CopyLink">Copia link</string>
@@ -281,8 +280,6 @@
     <string name="KickFromGroup">Rimuovi dal gruppo</string>
     <string name="UpgradeGroup">Aggiorna a supergruppo</string>
     <string name="ConvertGroupMenu">Converti in supergruppo</string>
-    <string name="ConvertGroupAlertWarning">Attenzione</string>
-    <string name="ConvertGroupAlert">Questa azione è irreversibile. Non è possibile trasformare un supergruppo in un gruppo normale.</string>
     <string name="ConvertGroupInfo"><![CDATA[<b>]]>Limite membri raggiunto.<![CDATA[</b>]]>\n\nPer superare il limite e sbloccare nuove funzioni, aggiorna a supergruppo:\n\n• Il supergruppi hanno massimo %1$s\n• I nuovi membri vedono tutta la cronologia\n• I messaggi eliminati scompaiono per tutti\n• Il creatore può creare un link pubblico per il gruppo</string>
     <!--contact info view-->
     <string name="ShareContact">Condividi</string>
@@ -695,7 +692,6 @@
     <string name="SendContactToGroup">Inviare contatto a %1$s?</string>
     <string name="ForwardMessagesToGroup">Inoltra messaggi a %1$s?</string>
     <string name="RaiseToSpeakAlert">Vuoi attivare \"Alza per parlare\" per i messaggi vocali?</string>
-    <string name="EditMessageError">Spiacenti, non puoi modificare questo messaggio.</string>
     <string name="AllowReadSms">Per favore consenti a Telegram di ricevere SMS così potremo inserire in automatico il codice per te.</string>
     <string name="AllowReadCall">Per favore consenti a Telegram di ricevere chiamate così potremo inserire in automatico il codice per te.</string>
     <string name="AllowReadCallAndSms">Per favore consenti a Telegram di ricevere chiamate ed SMS così potremo inserire in automatico il codice per te.</string>

@@ -594,23 +594,19 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
     }
 
     public void sendMessageContact(TLRPC.User user, long peer, MessageObject reply_to_msg, HashMap<String, String> params) {
-        sendMessage__(null, null, null, null, user, null, peer, null, reply_to_msg, null, true,
-                null, params);
+        sendMessage__(null, null, null, null, user, null, peer, null, reply_to_msg, null, null, params);
     }
 
     public void sendMessageDocument(TLRPC.TL_document document, VideoEditedInfo videoEditedInfo, String path, long peer, MessageObject reply_to_msg, HashMap<String, String> params) {
-        sendMessage__(null, null, null, videoEditedInfo, null, document, peer, path, reply_to_msg, null, true,
-                null, params);
+        sendMessage__(null, null, null, videoEditedInfo, null, document, peer, path, reply_to_msg, null, null, params);
     }
 
     public void sendMessageText(String message, long peer, MessageObject reply_to_msg, TLRPC.WebPage webPage, boolean searchLinks, ArrayList<TLRPC.MessageEntity> entities, HashMap<String, String> params) {
-        sendMessage__(message, null, null, null, null, null, peer, null, reply_to_msg, webPage, searchLinks,
-                entities, params);
+        sendMessage__(message, null, null, null, null, null, peer, null, reply_to_msg, webPage, entities, params);
     }
 
     public void sendMessagePhoto(TLRPC.TL_photo photo, String path, long peer, MessageObject reply_to_msg, HashMap<String, String> params) {
-        sendMessage__(null, null, photo, null, null, null, peer, path, reply_to_msg, null, true, null,
-                params);
+        sendMessage__(null, null, photo, null, null, null, peer, path, reply_to_msg, null, null, params);
     }
 
     private void sendMessage__(String message,
@@ -623,7 +619,6 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
                              String path,
                              MessageObject reply_to_msg,
                              TLRPC.WebPage webPage,
-                             boolean searchLinks,
                              ArrayList<TLRPC.MessageEntity> entities,
                              HashMap<String, String> params) {
         if (peer == 0) { // peer == dialog id
@@ -725,6 +720,7 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
                         type = 6;
                     }
                 } else if (document != null) {
+                    // AUDIO, VIDEO etc.
                     newMsg = new TLRPC.TL_message();
                     newMsg.media = new TLRPC.TL_messageMediaDocument();
                     newMsg.media.caption = document.caption != null ? document.caption : "";
@@ -812,6 +808,8 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
             {
                 newMsg.id = MrMailbox.MrChatSendText(hChat, newMsg.message);
                 DraftQuery.cleanDraft(peer, false);
+
+                MrMailbox.reloadMainChatlist();
             }
             else if (type >= 1 && type <= 3 || type >= 5 && type <= 8 /*|| type == 9 && encryptedChat != null*/) {
                 TLRPC.InputMedia inputMedia = null;
@@ -933,9 +931,55 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
                     }
                 }
 
-                if( type == 2 ) {
-                    MrMailbox.MrChatSendMedia(hChat, MrMailbox.MR_MSG_IMAGE, originalPath, 0, 0, 0);
+
+                // perform sending
+                if( type == 2 )
+                {
+                    // SEND IMAGE
+                    TLRPC.PhotoSize size1 = photo.sizes.get(photo.sizes.size() - 1);
+
+                    MrMailbox.MrChatSendMedia(hChat, MrMailbox.MR_MSG_IMAGE,
+                                newMsg.attachPath, null, size1.w, size1.h, 0);
                 }
+                else if( type == 3 )
+                {
+                    // SEND VIDEO
+                    int width = 0, height = 0, time_ms = 0;
+                    for (int i = 0; i < document.attributes.size(); i++) {
+                        TLRPC.DocumentAttribute a = document.attributes.get(i);
+                        if (a instanceof TLRPC.TL_documentAttributeVideo) {
+                            time_ms = a.duration*1000;
+                            width   = a.w;
+                            height  = a.h;
+                            break;
+                        }
+                    }
+                    if( videoEditedInfo!=null ) {
+                        width  = videoEditedInfo.resultWidth; // overwrite original attributes with edited size
+                        height = videoEditedInfo.resultHeight;
+                    }
+                    MrMailbox.MrChatSendMedia(hChat, MrMailbox.MR_MSG_VIDEO,
+                            newMsg.attachPath, document.mime_type, width, height, time_ms);
+                }
+                else if( type == 7 )
+                {
+                    // SEND FILE
+                    MrMailbox.MrChatSendMedia(hChat, MrMailbox.MR_MSG_FILE,
+                            newMsg.attachPath, document.mime_type, 0, 0, 0);
+                }
+                else if( type == 8 )
+                {
+                    // SEND AUDIO
+                    int time_ms = 0;
+                    if( params.get("mr_time_ms") != null ) {
+                        time_ms = Integer.parseInt(params.get("mr_time_ms"));
+                    }
+
+                    MrMailbox.MrChatSendMedia(hChat, MrMailbox.MR_MSG_AUDIO,
+                                newMsg.attachPath, document.mime_type, 0, 0, time_ms);
+                }
+
+                MrMailbox.reloadMainChatlist();
 
 
 
@@ -1047,7 +1091,6 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
             NotificationCenter.getInstance().postNotificationName(NotificationCenter.messageSendError, newMsg.id);
             //processSentMessage(newMsg.id);
         }
-
     }
 
     protected void stopVideoService(final String path) {

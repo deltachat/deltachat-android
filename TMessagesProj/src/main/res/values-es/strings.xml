@@ -264,7 +264,6 @@
     <string name="InviteToGroupByLink">Invitar al grupo con un enlace</string>
     <string name="InviteLink">Enlace de invitación</string>
     <string name="RevokeAlert">¿Quieres anular este enlace? Una vez anulado, nadie podrá unirse a través de él.</string>
-    <string name="RevokeAlertNewLink">El enlace de invitación anterior está inactivo. Ha sido creado uno nuevo.</string>
     <string name="RevokeButton">Anular</string>
     <string name="RevokeLink">Anular enlace</string>
     <string name="CopyLink">Copiar enlace</string>
@@ -281,8 +280,6 @@
     <string name="KickFromGroup">Eliminar del grupo</string>
     <string name="UpgradeGroup">Convertir en supergrupo</string>
     <string name="ConvertGroupMenu">Convertir en supergrupo</string>
-    <string name="ConvertGroupAlertWarning">Advertencia</string>
-    <string name="ConvertGroupAlert">Esta acción es irreversible. No puedes convertir un supergrupo en un grupo normal.</string>
     <string name="ConvertGroupInfo"><![CDATA[<b>]]>Límite de miembros alcanzado.<![CDATA[</b>]]>\n\nPara superar el límite y tener características adicionales, conviértelo en un supergrupo:\n\n Permiten hasta %1$s\n• Nuevos miembros ven todo el historial\n• Un mensaje eliminado se borra para todos\n• El creador puede generar un enlace público</string>
     <!--contact info view-->
     <string name="ShareContact">Compartir</string>
@@ -695,7 +692,6 @@
     <string name="SendContactToGroup">¿Enviar contacto a %1$s?</string>
     <string name="ForwardMessagesToGroup">¿Reenviar mensajes a %1$s?</string>
     <string name="RaiseToSpeakAlert">¿Quieres habilitar “Elevar para hablar” para mensajes de voz?</string>
-    <string name="EditMessageError">No puedes editar este mensaje.</string>
     <string name="AllowReadSms">Por favor, permite a Telegram recibir SMS, para ingresar el código automáticamente.</string>
     <string name="AllowReadCall">Por favor, permite a Telegram recibir llamadas, para ingresar el código automáticamente.</string>
     <string name="AllowReadCallAndSms">Por favor, permite a Telegram recibir llamadas y SMS, para ingresar el código automáticamente.</string>

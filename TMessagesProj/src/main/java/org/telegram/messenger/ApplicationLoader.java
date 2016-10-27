@@ -312,6 +312,10 @@ public class ApplicationLoader extends Application {
         MrMailbox.MrStockAddStr(6, LocaleController.getString("ContactSg", R.string.ContactSg));
         MrMailbox.MrStockAddStr(7, LocaleController.getString("ContactPl", R.string.ContactPl));
         MrMailbox.MrStockAddStr(8, LocaleController.getString("Strangers", R.string.Strangers));
+        MrMailbox.MrStockAddStr(9, LocaleController.getString("AttachPhoto", R.string.AttachPhoto));
+        MrMailbox.MrStockAddStr(10, LocaleController.getString("AttachVideo", R.string.AttachVideo));
+        MrMailbox.MrStockAddStr(11, LocaleController.getString("AttachAudio", R.string.AttachAudio));
+        MrMailbox.MrStockAddStr(12, LocaleController.getString("AttachDocument", R.string.AttachDocument));
 
         applicationHandler = new Handler(applicationContext.getMainLooper());
 
