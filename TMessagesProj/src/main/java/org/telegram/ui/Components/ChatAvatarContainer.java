@@ -39,7 +39,6 @@ public class ChatAvatarContainer extends FrameLayout {
     private SimpleTextView titleTextView;
     private SimpleTextView subtitleTextView;
     private ImageView timeItem;
-    private TimerDrawable timerDrawable;
     private ChatActivity parentFragment;
     private TypingDotsDrawable typingDotsDrawable;
     private RecordStatusDrawable recordStatusDrawable;
@@ -161,10 +160,12 @@ public class ChatAvatarContainer extends FrameLayout {
     }
 
     public void setTime(int value) {
+        /*
         if (timerDrawable == null) {
             return;
         }
         timerDrawable.setTime(value);
+        */
     }
 
     public void setTitleIcons(int leftIcon, int rightIcon) {

@@ -60,14 +60,12 @@ public class MessageObject {
     public ArrayList<TLRPC.PhotoSize> photoThumbs;
     public VideoEditedInfo videoEditedInfo;
     public boolean viewsReloaded;
-    //public int wantedBotKeyboardWidth;
     public boolean attachPathExists;
     public boolean mediaExists;
 
     public boolean forceUpdate;
 
     private static TextPaint textPaint;
-    //private static TextPaint botButtonPaint;
     public int lastLineWidth;
     public int textWidth;
     public int textHeight;
@@ -396,78 +394,6 @@ public class MessageObject {
         }
         return textPaint;
     }
-
-    /*
-    public void generatePinMessageText(TLRPC.User fromUser, TLRPC.Chat chat) {
-        if (fromUser == null && chat == null) {
-            if (messageOwner.from_id > 0) {
-                fromUser = MessagesController.getInstance().getUser(messageOwner.from_id);
-            }
-            if (fromUser == null) {
-                chat = MessagesController.getInstance().getChat(messageOwner.to_id.channel_id);
-            }
-        }
-        if (replyMessageObject == null) {
-            messageText = replaceWithLink(LocaleController.getString("ActionPinnedNoText", R.string.ActionPinnedNoText), "un1", fromUser != null ? fromUser : chat);
-        } else {
-            if (replyMessageObject.isMusic()) {
-                messageText = replaceWithLink(LocaleController.getString("ActionPinnedMusic", R.string.ActionPinnedMusic), "un1", fromUser != null ? fromUser : chat);
-            } else if (replyMessageObject.isVideo()) {
-                messageText = replaceWithLink(LocaleController.getString("ActionPinnedVideo", R.string.ActionPinnedVideo), "un1", fromUser != null ? fromUser : chat);
-            } else if (replyMessageObject.isGif()) {
-                messageText = replaceWithLink(LocaleController.getString("ActionPinnedGif", R.string.ActionPinnedGif), "un1", fromUser != null ? fromUser : chat);
-            } else if (replyMessageObject.isVoice()) {
-                messageText = replaceWithLink(LocaleController.getString("ActionPinnedVoice", R.string.ActionPinnedVoice), "un1", fromUser != null ? fromUser : chat);
-            } else if (replyMessageObject.isSticker()) {
-                messageText = replaceWithLink(LocaleController.getString("ActionPinnedSticker", R.string.ActionPinnedSticker), "un1", fromUser != null ? fromUser : chat);
-            } else if (replyMessageObject.messageOwner.media instanceof TLRPC.TL_messageMediaDocument) {
-                messageText = replaceWithLink(LocaleController.getString("ActionPinnedFile", R.string.ActionPinnedFile), "un1", fromUser != null ? fromUser : chat);
-            } else if (replyMessageObject.messageOwner.media instanceof TLRPC.TL_messageMediaGeo) {
-                messageText = replaceWithLink(LocaleController.getString("ActionPinnedGeo", R.string.ActionPinnedGeo), "un1", fromUser != null ? fromUser : chat);
-            } else if (replyMessageObject.messageOwner.media instanceof TLRPC.TL_messageMediaContact) {
-                messageText = replaceWithLink(LocaleController.getString("ActionPinnedContact", R.string.ActionPinnedContact), "un1", fromUser != null ? fromUser : chat);
-            } else if (replyMessageObject.messageOwner.media instanceof TLRPC.TL_messageMediaPhoto) {
-                messageText = replaceWithLink(LocaleController.getString("ActionPinnedPhoto", R.string.ActionPinnedPhoto), "un1", fromUser != null ? fromUser : chat);
-            } else if (replyMessageObject.messageText != null && replyMessageObject.messageText.length() > 0) {
-                CharSequence mess = replyMessageObject.messageText;
-                if (mess.length() > 20) {
-                    mess = mess.subSequence(0, 20) + "...";
-                }
-                mess = Emoji.replaceEmoji(mess, textPaint.getFontMetricsInt(), AndroidUtilities.dp(20), false);
-                messageText = replaceWithLink(LocaleController.formatString("ActionPinnedText", R.string.ActionPinnedText, mess), "un1", fromUser != null ? fromUser : chat);
-            } else {
-                messageText = replaceWithLink(LocaleController.getString("ActionPinnedNoText", R.string.ActionPinnedNoText), "un1", fromUser != null ? fromUser : chat);
-            }
-        }
-    }
-    */
-
-    /*
-    private void measureInlineBotButtons() {
-        wantedBotKeyboardWidth = 0;
-        if (!(messageOwner.reply_markup instanceof TLRPC.TL_replyInlineMarkup)) {
-            return;
-        }
-        if (botButtonPaint == null) {
-            botButtonPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
-            botButtonPaint.setTextSize(AndroidUtilities.dp(15));
-            botButtonPaint.setTypeface(AndroidUtilities.getTypeface("fonts/rmedium.ttf"));
-        }
-        for (int a = 0; a < messageOwner.reply_markup.rows.size(); a++) {
-            TLRPC.TL_keyboardButtonRow row = messageOwner.reply_markup.rows.get(a);
-            int maxButtonSize = 0;
-            int size = row.buttons.size();
-            for (int b = 0; b < size; b++) {
-                CharSequence text = Emoji.replaceEmoji(row.buttons.get(b).text, botButtonPaint.getFontMetricsInt(), AndroidUtilities.dp(15), false);
-                StaticLayout staticLayout = new StaticLayout(text, botButtonPaint, AndroidUtilities.dp(2000), Layout.Alignment.ALIGN_NORMAL, 1.0f, 0.0f, false);
-                if (staticLayout.getLineCount() > 0) {
-                    maxButtonSize = Math.max(maxButtonSize, (int) Math.ceil(staticLayout.getLineWidth(0) - staticLayout.getLineLeft(0)) + AndroidUtilities.dp(4));
-                }
-            }
-            wantedBotKeyboardWidth = Math.max(wantedBotKeyboardWidth, (maxButtonSize + AndroidUtilities.dp(12)) * size + AndroidUtilities.dp(5) * (size - 1));
-        }
-    }
-    */
 
     public void setType() {
         int oldType = type;
@@ -1215,7 +1141,7 @@ public class MessageObject {
     }
 
     public static boolean isMegagroup(TLRPC.Message message) {
-        return (message.flags & TLRPC.MESSAGE_FLAG_MEGAGROUP) != 0;
+        return false;
     }
 
     public static boolean isOut(TLRPC.Message message) {

@@ -13,11 +13,7 @@ import org.telegram.tgnet.TLRPC;
 public class UserObject {
 
     public static boolean isDeleted(TLRPC.User user) {
-        return user == null || user instanceof TLRPC.TL_userDeleted_old2 || user instanceof TLRPC.TL_userEmpty || user.deleted;
-    }
-
-    public static boolean isContact(TLRPC.User user) {
-        return user instanceof TLRPC.TL_userContact_old2 || user.contact || user.mutual_contact;
+        return user == null /*|| user instanceof TLRPC.TL_userDeleted_old2*/ || user instanceof TLRPC.TL_userEmpty || user.deleted;
     }
 
     public static boolean isUserSelf(TLRPC.User user) {

@@ -209,11 +209,8 @@ public class Theme {
     public static Drawable broadcastMediaDrawable;
     public static Drawable errorDrawable;
     public static Drawable systemDrawable;
-    //public static Drawable backgroundBluePressed;
     public static Drawable timeBackgroundDrawable;
     public static Drawable timeStickerBackgroundDrawable;
-    //public static Drawable botLink;
-    //public static Drawable botInline;
     public static Drawable[] clockChannelDrawable = new Drawable[2];
 
     public static Drawable[] cornerOuter = new Drawable[4];
@@ -221,10 +218,6 @@ public class Theme {
 
     public static Drawable shareDrawable;
     public static Drawable shareIconDrawable;
-
-    public static Drawable[] viewsCountDrawable = new Drawable[2];
-    public static Drawable viewsOutCountDrawable;
-    public static Drawable viewsMediaCountDrawable;
 
     public static Drawable geoInDrawable;
     public static Drawable geoOutDrawable;
@@ -270,13 +263,6 @@ public class Theme {
             broadcastDrawable = context.getResources().getDrawable(R.drawable.broadcast3);
             broadcastMediaDrawable = context.getResources().getDrawable(R.drawable.broadcast4);
             systemDrawable = context.getResources().getDrawable(R.drawable.system);
-            //botLink = context.getResources().getDrawable(R.drawable.bot_link);
-            //botInline = context.getResources().getDrawable(R.drawable.bot_lines);
-
-            viewsCountDrawable[0] = context.getResources().getDrawable(R.drawable.post_views);
-            viewsCountDrawable[1] = context.getResources().getDrawable(R.drawable.post_views_s);
-            viewsOutCountDrawable = context.getResources().getDrawable(R.drawable.post_viewsg);
-            viewsMediaCountDrawable = context.getResources().getDrawable(R.drawable.post_views_w);
 
             fileStatesDrawable[0][0] = context.getResources().getDrawable(R.drawable.play_g);
             fileStatesDrawable[0][1] = context.getResources().getDrawable(R.drawable.play_g_s);

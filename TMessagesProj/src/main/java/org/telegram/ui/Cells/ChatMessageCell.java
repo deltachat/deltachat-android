@@ -46,7 +46,6 @@ import org.telegram.messenger.MrMailbox;
 import org.telegram.messenger.R;
 import org.telegram.messenger.SendMessagesHelper;
 import org.telegram.messenger.UserObject;
-import org.telegram.messenger.Utilities;
 import org.telegram.messenger.browser.Browser;
 import org.telegram.tgnet.ConnectionsManager;
 import org.telegram.tgnet.TLRPC;
@@ -2742,14 +2741,6 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                 }
             }
 
-            /* EDIT BY MR
-            if ((currentMessageObject.messageOwner.flags & TLRPC.MESSAGE_FLAG_HAS_VIEWS) != 0) {
-                viewsLayout = new StaticLayout(currentViewsString, timePaint, viewsTextWidth, Layout.Alignment.ALIGN_NORMAL, 1.0f, 0.0f, false);
-            } else {
-                viewsLayout = null;
-            }
-            */
-
             if (isAvatarVisible) {
                 avatarImage.setImageCoords(dp(6), layoutHeight - dp(44), dp(42), dp(42));
             }
@@ -3303,70 +3294,6 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
         if (drawImageButton && photoImage.getVisible()) {
             radialProgress.draw(canvas);
         }
-
-        /*
-        if (!botButtons.isEmpty()) {
-            int addX;
-            if (currentMessageObject.isOutOwner()) {
-                addX = getMeasuredWidth() - widthForButtons - dp(10);
-            } else {
-                addX = currentBackgroundDrawable.getBounds().left + dp(mediaBackground ? 1 : 7);
-            }
-            for (int a = 0; a < botButtons.size(); a++) {
-                BotButton button = botButtons.get(a);
-                int y = button.y + layoutHeight - dp(2);
-                Theme.systemDrawable.setColorFilter(a == pressedBotButton ? Theme.colorPressedFilter : Theme.colorFilter);
-                Theme.systemDrawable.setBounds(button.x + addX, y, button.x + addX + button.width, y + button.height);
-                Theme.systemDrawable.draw(canvas);
-                canvas.save();
-                canvas.translate(button.x + addX + dp(5), y + (dp(44) - button.title.getLineBottom(button.title.getLineCount() - 1)) / 2);
-                button.title.draw(canvas);
-                canvas.restore();
-                if (button.button instanceof TLRPC.TL_keyboardButtonUrl) {
-                    int x = button.x + button.width - dp(3) - Theme.botLink.getIntrinsicWidth() + addX;
-                    setDrawableBounds(Theme.botLink, x, y + dp(3));
-                    Theme.botLink.draw(canvas);
-                } else if (button.button instanceof TLRPC.TL_keyboardButtonSwitchInline) {
-                    int x = button.x + button.width - dp(3) - Theme.botInline.getIntrinsicWidth() + addX;
-                    setDrawableBounds(Theme.botInline, x, y + dp(3));
-                    Theme.botInline.draw(canvas);
-                } else if (button.button instanceof TLRPC.TL_keyboardButtonCallback || button.button instanceof TLRPC.TL_keyboardButtonRequestGeoLocation) {
-                    boolean drawProgress = button.button instanceof TLRPC.TL_keyboardButtonCallback && SendMessagesHelper.getInstance().isSendingCallback(currentMessageObject, button.button) ||
-                            button.button instanceof TLRPC.TL_keyboardButtonRequestGeoLocation && SendMessagesHelper.getInstance().isSendingCurrentLocation(currentMessageObject, button.button);
-                    if (drawProgress || !drawProgress && button.progressAlpha != 0) {
-                        botProgressPaint.setAlpha(Math.min(255, (int) (button.progressAlpha * 255)));
-                        int x = button.x + button.width - dp(9 + 3) + addX;
-                        rect.set(x, y + dp(4), x + dp(8), y + dp(8 + 4));
-                        canvas.drawArc(rect, button.angle, 220, false, botProgressPaint);
-                        invalidate((int) rect.left - dp(2), (int) rect.top - dp(2), (int) rect.right + dp(2), (int) rect.bottom + dp(2));
-                        long newTime = System.currentTimeMillis();
-                        if (Math.abs(button.lastUpdateTime - System.currentTimeMillis()) < 1000) {
-                            long delta = (newTime - button.lastUpdateTime);
-                            float dt = 360 * delta / 2000.0f;
-                            button.angle += dt;
-                            button.angle -= 360 * (button.angle / 360);
-                            if (drawProgress) {
-                                if (button.progressAlpha < 1.0f) {
-                                    button.progressAlpha += delta / 200.0f;
-                                    if (button.progressAlpha > 1.0f) {
-                                        button.progressAlpha = 1.0f;
-                                    }
-                                }
-                            } else {
-                                if (button.progressAlpha > 0.0f) {
-                                    button.progressAlpha -= delta / 200.0f;
-                                    if (button.progressAlpha < 0.0f) {
-                                        button.progressAlpha = 0.0f;
-                                    }
-                                }
-                            }
-                        }
-                        button.lastUpdateTime = newTime;
-                    }
-                }
-            }
-        }
-        */
     }
 
     private Drawable getDrawableForCurrentState() {
@@ -3806,14 +3733,6 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
         }
         timeTextWidth = timeWidth = (int) Math.ceil(timePaint.measureText(currentTimeString));
 
-        /* EDIT BY MR
-        if ((messageObject.messageOwner.flags & TLRPC.MESSAGE_FLAG_HAS_VIEWS) != 0) {
-            currentViewsString = String.format("%s", LocaleController.formatShortNumber(Math.max(1, messageObject.messageOwner.views), null));
-            viewsTextWidth = (int) Math.ceil(timePaint.measureText(currentViewsString));
-            timeWidth += viewsTextWidth + Theme.viewsCountDrawable[0].getIntrinsicWidth() + dp(10);
-        }
-        */
-
         if (hasSign) {
             if (availableTimeWidth == 0) {
                 availableTimeWidth = dp(1000);
@@ -3868,15 +3787,6 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
     }
 
     private void setMessageObjectInternal(MessageObject messageObject) {
-        if ((messageObject.messageOwner.flags & TLRPC.MESSAGE_FLAG_HAS_VIEWS) != 0) {
-            if (currentMessageObject.isContentUnread() && !currentMessageObject.isOut()) {
-                MessagesController.getInstance().addToViewsQueue(currentMessageObject.messageOwner, false);
-                currentMessageObject.setContentIsRead();
-            } else if (!currentMessageObject.viewsReloaded) {
-                MessagesController.getInstance().addToViewsQueue(currentMessageObject.messageOwner, true);
-                currentMessageObject.viewsReloaded = true;
-            }
-        }
 
         if (currentMessageObject.isFromUser()) {
             currentUser = MessagesController.getInstance().getUser(currentMessageObject.messageOwner.from_id);
@@ -4363,34 +4273,6 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                 drawable.draw(canvas);
 
                 int additionalX = 0;
-                if ((currentMessageObject.messageOwner.flags & TLRPC.MESSAGE_FLAG_HAS_VIEWS) != 0) {
-                    additionalX = (int) (timeWidth - timeLayout.getLineWidth(0));
-
-                    if (currentMessageObject.isSending()) {
-                        if (!currentMessageObject.isOutOwner()) {
-                            setDrawableBounds(Theme.clockMediaDrawable, timeX + dp(11), layoutHeight - dp(13.0f) - Theme.clockMediaDrawable.getIntrinsicHeight());
-                            Theme.clockMediaDrawable.draw(canvas);
-                        }
-                    } else if (currentMessageObject.isSendError()) {
-                        if (!currentMessageObject.isOutOwner()) {
-                            setDrawableBounds(Theme.errorDrawable, timeX + dp(11), layoutHeight - dp(12.5f) - Theme.errorDrawable.getIntrinsicHeight());
-                            Theme.errorDrawable.draw(canvas);
-                        }
-                    } else {
-                        Drawable countDrawable = Theme.viewsMediaCountDrawable;
-                        setDrawableBounds(countDrawable, timeX, layoutHeight - dp(9.5f) - timeLayout.getHeight());
-                        countDrawable.draw(canvas);
-
-                        /* EDIT BY MR
-                        if (viewsLayout != null) {
-                            canvas.save();
-                            canvas.translate(timeX + countDrawable.getIntrinsicWidth() + dp(3), layoutHeight - dp(11.3f) - timeLayout.getHeight());
-                            viewsLayout.draw(canvas);
-                            canvas.restore();
-                        }
-                        */
-                    }
-                }
 
                 canvas.save();
                 canvas.translate(timeX + additionalX, layoutHeight - dp(11.3f) - timeLayout.getHeight());
@@ -4398,39 +4280,6 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                 canvas.restore();
             } else {
                 int additionalX = 0;
-                if ((currentMessageObject.messageOwner.flags & TLRPC.MESSAGE_FLAG_HAS_VIEWS) != 0) {
-                    additionalX = (int) (timeWidth - timeLayout.getLineWidth(0));
-
-                    if (currentMessageObject.isSending()) {
-                        if (!currentMessageObject.isOutOwner()) {
-                            Drawable clockDrawable = Theme.clockChannelDrawable[isDrawSelectedBackground() ? 1 : 0];
-                            setDrawableBounds(clockDrawable, timeX + dp(11), layoutHeight - dp(8.5f) - clockDrawable.getIntrinsicHeight());
-                            clockDrawable.draw(canvas);
-                        }
-                    } else if (currentMessageObject.isSendError()) {
-                        if (!currentMessageObject.isOutOwner()) {
-                            setDrawableBounds(Theme.errorDrawable, timeX + dp(11), layoutHeight - dp(6.5f) - Theme.errorDrawable.getIntrinsicHeight());
-                            Theme.errorDrawable.draw(canvas);
-                        }
-                    } else {
-                        if (!currentMessageObject.isOutOwner()) {
-                            setDrawableBounds(Theme.viewsCountDrawable[isDrawSelectedBackground() ? 1 : 0], timeX, layoutHeight - dp(4.5f) - timeLayout.getHeight());
-                            Theme.viewsCountDrawable[isDrawSelectedBackground() ? 1 : 0].draw(canvas);
-                        } else {
-                            setDrawableBounds(Theme.viewsOutCountDrawable, timeX, layoutHeight - dp(4.5f) - timeLayout.getHeight());
-                            Theme.viewsOutCountDrawable.draw(canvas);
-                        }
-
-                        /* EDIT BY MR
-                        if (viewsLayout != null) {
-                            canvas.save();
-                            canvas.translate(timeX + Theme.viewsOutCountDrawable.getIntrinsicWidth() + dp(3), layoutHeight - dp(6.5f) - timeLayout.getHeight());
-                            viewsLayout.draw(canvas);
-                            canvas.restore();
-                        }
-                        */
-                    }
-                }
 
                 canvas.save();
                 canvas.translate(timeX + additionalX, layoutHeight - dp(6.5f) - timeLayout.getHeight());
@@ -4444,7 +4293,6 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                 boolean drawCheck2 = false;
                 boolean drawClock = false;
                 boolean drawError = false;
-                boolean isBroadcast = (int)(currentMessageObject.getDialogId() >> 32) == 1;
 
                 if (currentMessageObject.isSending()) {
                     drawCheck1 = false;
@@ -4477,7 +4325,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                         Theme.clockMediaDrawable.draw(canvas);
                     }
                 }
-                if (isBroadcast) {
+                /*if (isBroadcast) {
                     if (drawCheck1 || drawCheck2) {
                         if (!mediaBackground) {
                             setDrawableBounds(Theme.broadcastDrawable, layoutWidth - dp(20.5f) - Theme.broadcastDrawable.getIntrinsicWidth(), layoutHeight - dp(8.0f) - Theme.broadcastDrawable.getIntrinsicHeight());
@@ -4487,7 +4335,8 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                             Theme.broadcastMediaDrawable.draw(canvas);
                         }
                     }
-                } else {
+                } else */
+                {
                     if (drawCheck2) {
                         if (!mediaBackground) {
                             if (drawCheck1) {

@@ -21,10 +21,8 @@ public class TLRPC {
     public static final int MESSAGE_FLAG_HAS_ENTITIES       = 0x00000080;
     public static final int MESSAGE_FLAG_HAS_FROM_ID        = 0x00000100;
     public static final int MESSAGE_FLAG_HAS_MEDIA          = 0x00000200;
-    public static final int MESSAGE_FLAG_HAS_VIEWS          = 0x00000400;
 	public static final int MESSAGE_FLAG_HAS_BOT_ID         = 0x00000800;
 	public static final int MESSAGE_FLAG_EDITED             = 0x00008000;
-	public static final int MESSAGE_FLAG_MEGAGROUP          = 0x80000000;
 
     public static final int LAYER = 53;
 
@@ -998,7 +996,6 @@ public class TLRPC {
 		public int duration;
 		public Photo photo;
 		public Document document;
-		public long query_id;
 
 		public static BotInlineResult TLdeserialize(AbstractSerializedData stream, int constructor, boolean exception) {
 			BotInlineResult result = null;
@@ -2017,26 +2014,6 @@ public class TLRPC {
 		}
 	}
 
-	public static class TL_userDeleted_old2 extends User {
-		public static int constructor = 0xd6016d7a;
-
-
-		public void readParams(AbstractSerializedData stream, boolean exception) {
-            id = stream.readInt32(exception);
-			first_name = stream.readString(exception);
-			last_name = stream.readString(exception);
-			username = stream.readString(exception);
-		}
-
-        public void serializeToStream(AbstractSerializedData stream) {
-			stream.writeInt32(constructor);
-			stream.writeInt32(id);
-			stream.writeString(first_name);
-			stream.writeString(last_name);
-			stream.writeString(username);
-		}
-	}
-
 	public static class TL_userEmpty extends User {
 		public static int constructor = 0x200250ba;
 
@@ -2512,38 +2489,6 @@ public class TLRPC {
 		public static Video TLdeserialize(AbstractSerializedData stream, int constructor, boolean exception) {
 			Video result = null;
 			return result;
-		}
-	}
-
-	public static class TL_video_layer45 extends Video {
-		public static int constructor = 0xf72887d3;
-
-
-		public void readParams(AbstractSerializedData stream, boolean exception) {
-			id = stream.readInt64(exception);
-			access_hash = stream.readInt64(exception);
-			date = stream.readInt32(exception);
-			duration = stream.readInt32(exception);
-			mime_type = stream.readString(exception);
-			size = stream.readInt32(exception);
-			thumb = PhotoSize.TLdeserialize(stream, stream.readInt32(exception), exception);
-			dc_id = stream.readInt32(exception);
-			w = stream.readInt32(exception);
-			h = stream.readInt32(exception);
-		}
-
-		public void serializeToStream(AbstractSerializedData stream) {
-			stream.writeInt32(constructor);
-			stream.writeInt64(id);
-			stream.writeInt64(access_hash);
-			stream.writeInt32(date);
-			stream.writeInt32(duration);
-			stream.writeString(mime_type);
-			stream.writeInt32(size);
-			thumb.serializeToStream(stream);
-			stream.writeInt32(dc_id);
-			stream.writeInt32(w);
-			stream.writeInt32(h);
 		}
 	}
 
@@ -4251,37 +4196,6 @@ public class TLRPC {
 		}
 	}
 
-    public static class TL_messageRange extends TLObject {
-        public static int constructor = 0xae30253;
-
-        public int min_id;
-        public int max_id;
-
-        public static TL_messageRange TLdeserialize(AbstractSerializedData stream, int constructor, boolean exception) {
-            if (TL_messageRange.constructor != constructor) {
-                if (exception) {
-                    throw new RuntimeException(String.format("can't parse magic %x in TL_messageRange", constructor));
-                } else {
-                    return null;
-                }
-            }
-            TL_messageRange result = new TL_messageRange();
-            result.readParams(stream, exception);
-            return result;
-        }
-
-        public void readParams(AbstractSerializedData stream, boolean exception) {
-            min_id = stream.readInt32(exception);
-            max_id = stream.readInt32(exception);
-        }
-
-        public void serializeToStream(AbstractSerializedData stream) {
-            stream.writeInt32(constructor);
-            stream.writeInt32(min_id);
-            stream.writeInt32(max_id);
-        }
-    }
-
     public static class TL_contacts_resolvedPeer extends TLObject {
         public static int constructor = 0x7f077ad9;
 
@@ -4643,9 +4557,6 @@ public class TLRPC {
 		public boolean min;
 		public InputChannel migrated_to;
 		public String address;
-		public String venue;
-		public GeoPoint geo;
-		public boolean checked_in;
 
 		public static Chat TLdeserialize(AbstractSerializedData stream, int constructor, boolean exception) {
 			Chat result = null;

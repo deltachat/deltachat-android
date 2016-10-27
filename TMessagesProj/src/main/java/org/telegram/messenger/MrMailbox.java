@@ -32,6 +32,7 @@ package org.telegram.messenger;
 
 import android.util.Log;
 
+import org.telegram.tgnet.ConnectionsManager;
 import org.telegram.tgnet.TLRPC;
 
 public class MrMailbox {
@@ -80,7 +81,7 @@ public class MrMailbox {
         ret.dialog_id     = MrMsgGetChatId(hMsg);
         ret.unread        = state!=MR_OUT_READ; // the state of outgoing messages
         ret.media_unread  = ret.unread;
-        ret.flags         = 0; // posible flags: TLRPC.MESSAGE_FLAG_HAS_FROM_ID, however, this seems to be read only
+        ret.flags         = 0; // posible flags: MESSAGE_FLAG_HAS_FROM_ID, however, this seems to be read only
         ret.post          = false; // ? true=avatar wird in gruppen nicht angezeigt
         ret.out           = ret.from_id==1; // true=outgoing message, read eg. in MessageObject.isOutOwner()
 
@@ -89,24 +90,31 @@ public class MrMailbox {
         }
         else if( type == MrMailbox.MR_MSG_IMAGE ) {
             String path = MrMailbox.MrMsgGetParam(hMsg, 'f', "");
-            TLRPC.TL_photo photo = null;
             if( !path.isEmpty() ) {
                 try {
-                    // TODO: It is very inefficient to load all photos on dialog loading! FIX ME!
-                    photo = SendMessagesHelper.getInstance().generatePhotoSizes(path, null); // TODO: does this degrade image quality?
+                    //TLRPC.TL_photo photo;
+                    //photo = SendMessagesHelper.getInstance().generatePhotoSizes(path, null); // TODO: does this degrade image quality?
+
+                    //ret.message = "-1";
+                    //ret.attachPath = new TLRPC.TL_messageMediaPhoto();
+                    //ret.media.photo = photo;// search for TL_messageMediaPhoto
+
+                    /*
+                    photo = new TLRPC.TL_photo();
+                    TLRPC.TL_photoSize photoSize = new TLRPC.TL_photoSize();
+                    photoSize.w = MrMailbox.MrMsgGetParamInt(hMsg, 'w', 800);
+                    photoSize.h = MrMailbox.MrMsgGetParamInt(hMsg, 'w', 800);
+                    photoSize.size = 0;
+                    photoSize.location.mr_path = path;
+                    photoSize.type = "x";
+                    photo.sizes.add(photoSize);
+                                  */
+
                 } catch (Exception e) {
                     // the most common reason is a simple "file not found error"
                 }
             }
 
-            if(photo!=null) {
-                ret.message = "-1";
-                ret.media = new TLRPC.TL_messageMediaPhoto();
-                ret.media.photo = photo;
-            }
-            else {
-                ret.message = "<" + LocaleController.getString("CannotLoadFile", R.string.CannotLoadFile) + ">";
-            }
         }
         else {
             ret.message = "Messages of this type are not yet supported.";
