@@ -1673,7 +1673,12 @@ public class ImageLoader {
                         }
 
                         if (cacheFile == null) {
-                            if (cacheOnly || size == 0 || httpLocation != null) {
+                            if( imageLocation != null
+                             && imageLocation instanceof TLRPC.FileLocation
+                             && ((TLRPC.FileLocation) imageLocation).mr_path != null ) {
+                                cacheFile = new File(((TLRPC.FileLocation) imageLocation).mr_path);
+                            }
+                            else if (cacheOnly || size == 0 || httpLocation != null) {
                                 cacheFile = new File(FileLoader.getInstance().getDirectory(FileLoader.MEDIA_DIR_CACHE), url);
                             } else if (imageLocation instanceof TLRPC.Document) {
                                 cacheFile = new File(FileLoader.getInstance().getDirectory(FileLoader.MEDIA_DIR_DOCUMENT), url);

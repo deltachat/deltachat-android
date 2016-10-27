@@ -2559,13 +2559,13 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                     if (messageObject.type == 1) {
                         if (currentPhotoObject != null) {
                             boolean photoExist = true;
-                            String fileName = FileLoader.getAttachFileName(currentPhotoObject);
+                            //String fileName = FileLoader.getAttachFileName(currentPhotoObject);
                             if (messageObject.mediaExists) {
                                 MediaController.getInstance().removeLoadingFileObserver(this);
                             } else {
                                 photoExist = false;
                             }
-                            if (photoExist || MediaController.getInstance().canDownloadMedia(MediaController.AUTODOWNLOAD_MASK_PHOTO) || FileLoader.getInstance().isLoadingFile(fileName)) {
+                            if (photoExist || MediaController.getInstance().canDownloadMedia(MediaController.AUTODOWNLOAD_MASK_PHOTO) /*|| FileLoader.getInstance().isLoadingFile(fileName)*/) {
                                 photoImage.setImage(currentPhotoObject.location, currentPhotoFilter, currentPhotoObjectThumb != null ? currentPhotoObjectThumb.location : null, currentPhotoFilter, noSize ? 0 : currentPhotoObject.size, null, false);
                             } else {
                                 photoNotSet = true;

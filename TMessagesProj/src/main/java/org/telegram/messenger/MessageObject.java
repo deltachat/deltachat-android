@@ -1641,9 +1641,11 @@ public class MessageObject {
             }
         }
 
-        if( mediaExists && !attachPathExists && messageOwner.created_by_mr ) {
-            attachPathExists = true; // EDIT BY MR: we use the attachPath for the normal images
-            mediaExists = false;
+        // EDIT BY MR: we use the attachPath for the normal images
+        if( (mediaExists || attachPathExists) && messageOwner.created_by_mr ) {
+            attachPathExists = true;
+            mediaExists = true;
         }
+        // /EDIT BY MR
     }
 }
