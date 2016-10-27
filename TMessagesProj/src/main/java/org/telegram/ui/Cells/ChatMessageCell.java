@@ -2648,57 +2648,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                 }
             }
 
-            /* EDIT BY MR
-            if (messageObject.messageOwner.reply_markup instanceof TLRPC.TL_replyInlineMarkup) {
-                int rows = messageObject.messageOwner.reply_markup.rows.size();
-                substractBackgroundHeight = keyboardHeight = dp(44 + 4) * rows + dp(1);
-
-                widthForButtons = backgroundWidth;
-                boolean fullWidth = false;
-                if (messageObject.wantedBotKeyboardWidth > widthForButtons) {
-                    int maxButtonWidth = -dp(isChat && messageObject.isFromUser() && !messageObject.isOutOwner() ? 62 : 10);
-                    if (isTablet()) {
-                        maxButtonWidth += getMinTabletSide();
-                    } else {
-                        maxButtonWidth += Math.min(displaySize.x, displaySize.y);
-                    }
-                    widthForButtons = Math.max(backgroundWidth, Math.min(messageObject.wantedBotKeyboardWidth, maxButtonWidth));
-                    fullWidth = true;
-                }
-
-                int maxButtonsWidth = 0;
-                for (int a = 0; a < rows; a++) {
-                    TLRPC.TL_keyboardButtonRow row = messageObject.messageOwner.reply_markup.rows.get(a);
-                    int buttonsCount = row.buttons.size();
-                    int buttonWidth = (widthForButtons - (dp(5) * (buttonsCount - 1)) - dp(!fullWidth && mediaBackground ? 0 : 9) - dp(2)) / buttonsCount;
-                    for (int b = 0; b < row.buttons.size(); b++) {
-                        BotButton botButton = new BotButton();
-                        botButton.button = row.buttons.get(b);
-                        String key = Utilities.bytesToHex(botButton.button.data);
-                        BotButton oldButton = botButtonsByData.get(key);
-                        if (oldButton != null) {
-                            botButton.progressAlpha = oldButton.progressAlpha;
-                            botButton.angle = oldButton.angle;
-                            botButton.lastUpdateTime = oldButton.lastUpdateTime;
-                        } else {
-                            botButton.lastUpdateTime = System.currentTimeMillis();
-                        }
-                        botButtonsByData.put(key, botButton);
-                        botButton.x = b * (buttonWidth + dp(5));
-                        botButton.y = a * dp(44 + 4) + dp(5);
-                        botButton.width = buttonWidth;
-                        botButton.height = dp(44);
-                        CharSequence buttonText = Emoji.replaceEmoji(botButton.button.text, botButtonPaint.getFontMetricsInt(), dp(15), false);
-                        buttonText = TextUtils.ellipsize(buttonText, botButtonPaint, buttonWidth - dp(10), TextUtils.TruncateAt.END);
-                        botButton.title = new StaticLayout(buttonText, botButtonPaint, buttonWidth - dp(10), Layout.Alignment.ALIGN_CENTER, 1.0f, 0.0f, false);
-                        botButtons.add(botButton);
-                        if (b == row.buttons.size() - 1) {
-                            maxButtonsWidth = Math.max(maxButtonsWidth, botButton.x + botButton.width);
-                        }
-                    }
-                }
-                widthForButtons = maxButtonsWidth;
-            } else */ {
+            {
                 substractBackgroundHeight = 0;
                 keyboardHeight = 0;
             }
@@ -3838,21 +3788,6 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
 
         String viaUsername = null;
         CharSequence viaString = null;
-        /*EDIT BY MR
-        if (messageObject.messageOwner.via_bot_id != 0) {
-            TLRPC.User botUser = MessagesController.getInstance().getUser(messageObject.messageOwner.via_bot_id);
-            if (botUser != null && botUser.username != null && botUser.username.length() > 0) {
-                viaUsername = "@" + botUser.username;
-                viaString = replaceTags(String.format(" via <b>%s</b>", viaUsername));
-                viaWidth = (int) Math.ceil(replyNamePaint.measureText(viaString, 0, viaString.length()));
-                currentViaBotUser = botUser;
-            }
-        } else if (messageObject.messageOwner.via_bot_name != null && messageObject.messageOwner.via_bot_name.length() > 0) {
-            viaUsername = "@" + messageObject.messageOwner.via_bot_name;
-            viaString = replaceTags(String.format(" via <b>%s</b>", viaUsername));
-            viaWidth = (int) Math.ceil(replyNamePaint.measureText(viaString, 0, viaString.length()));
-        }
-        */
 
         boolean authorName = drawName && isChat && !currentMessageObject.isOutOwner();
         boolean viaBot = (messageObject.messageOwner.fwd_from == null || messageObject.type == 14) && viaUsername != null;
@@ -3865,9 +3800,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
 
             if (authorName) {
                 if (currentUser != null) {
-                    // EDIT BY MR
                     currentNameString = cname;
-                    // /EDIT BY MR
                 } else if (currentChat != null) {
                     currentNameString = currentChat.title;
                 } else {

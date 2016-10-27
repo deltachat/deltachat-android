@@ -6889,13 +6889,11 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
             public void onClick(DialogInterface dialogInterface, int i) {
                 ArrayList<Integer> ids = null;
                 for (int a = 1; a >= 0; a--) {
-
                     for (HashMap.Entry<Integer, MessageObject> entry : selectedMessagesIds[a].entrySet()) {
                         MessageObject msg = entry.getValue();
                         int id_to_del = msg.messageOwner.id;
                         MrMailbox.MrMailboxDeleteMsgById(MrMailbox.hMailbox, id_to_del);
                     }
-
                 }
 
                 actionBar.hideActionMode();
@@ -6904,30 +6902,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
 
                 MrMailbox.reloadMainChatlist();
                 NotificationCenter.getInstance().postNotificationName(NotificationCenter.dialogsNeedReload);
-
-
-                /*
-                if (userFinal != null) {
-                    if (checks[0]) {
-                        MessagesController.getInstance().deleteUserFromChat(currentChat.id, userFinal, info);
-                    }
-                    if (checks[1]) {
-                        TLRPC.TL_channels_reportSpam req = new TLRPC.TL_channels_reportSpam();
-                        req.channel = MessagesController.getInputChannel(currentChat);
-                        req.user_id = MessagesController.getInputUser(userFinal);
-                        req.id = ids;
-                        ConnectionsManager.getInstance().sendRequest(req, new RequestDelegate() {
-                            @Override
-                            public void run(TLObject response, TLRPC.TL_error error) {
-
-                            }
-                        });
-                    }
-                    if (checks[2]) {
-                        MessagesController.getInstance().deleteUserChannelHistory(currentChat, userFinal, 0);
-                    }
-                }
-                */
             }
         });
         builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
