@@ -4325,17 +4325,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                         Theme.clockMediaDrawable.draw(canvas);
                     }
                 }
-                /*if (isBroadcast) {
-                    if (drawCheck1 || drawCheck2) {
-                        if (!mediaBackground) {
-                            setDrawableBounds(Theme.broadcastDrawable, layoutWidth - dp(20.5f) - Theme.broadcastDrawable.getIntrinsicWidth(), layoutHeight - dp(8.0f) - Theme.broadcastDrawable.getIntrinsicHeight());
-                            Theme.broadcastDrawable.draw(canvas);
-                        } else {
-                            setDrawableBounds(Theme.broadcastMediaDrawable, layoutWidth - dp(24.0f) - Theme.broadcastMediaDrawable.getIntrinsicWidth(), layoutHeight - dp(13.0f) - Theme.broadcastMediaDrawable.getIntrinsicHeight());
-                            Theme.broadcastMediaDrawable.draw(canvas);
-                        }
-                    }
-                } else */
+
                 {
                     if (drawCheck2) {
                         if (!mediaBackground) {

@@ -4787,8 +4787,11 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     int mrCount = MrMailbox.MrMsglistGetCnt(hMsglist);
                     for (int a = 0; a < mrCount; a++ ) {
                         long hMsg = MrMailbox.MrMsglistGetMsgByIndex(hMsglist, a);
-                            MessageObject mo = new MessageObject(MrMailbox.hMsg2Message(hMsg), null, true);
-                            messages.add(0, mo);
+                            TLRPC.Message msg = MrMailbox.hMsg2Message(hMsg);
+                            MessageObject msgDrawObj = new MessageObject(msg, null, true);
+                            //msgDrawObj.attachPathExists = true;
+
+                            messages.add(0, msgDrawObj);
                         MrMailbox.MrMsgUnref(hMsg);
                     }
 
@@ -6385,81 +6388,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         checkRaiseSensors();
     }
 
-    public void showAlert(TLRPC.User user, String message) {
-        if (alertView == null || user == null || message == null) {
-            return;
-        }
-
-        if (alertView.getTag() != null) {
-            alertView.setTag(null);
-            if (alertViewAnimator != null) {
-                alertViewAnimator.cancel();
-                alertViewAnimator = null;
-            }
-
-            alertView.setVisibility(View.VISIBLE);
-            alertViewAnimator = new AnimatorSet();
-            alertViewAnimator.playTogether(ObjectAnimator.ofFloat(alertView, "translationY", 0));
-            alertViewAnimator.setDuration(200);
-            alertViewAnimator.addListener(new AnimatorListenerAdapterProxy() {
-                @Override
-                public void onAnimationEnd(Animator animation) {
-                    if (alertViewAnimator != null && alertViewAnimator.equals(animation)) {
-                        alertViewAnimator = null;
-                    }
-                }
-
-                @Override
-                public void onAnimationCancel(Animator animation) {
-                    if (alertViewAnimator != null && alertViewAnimator.equals(animation)) {
-                        alertViewAnimator = null;
-                    }
-                }
-            });
-            alertViewAnimator.start();
-        }
-        alertNameTextView.setText(ContactsController.formatName(user.first_name, user.last_name));
-        alertTextView.setText(Emoji.replaceEmoji(message.replace('\n', ' '), alertTextView.getPaint().getFontMetricsInt(), AndroidUtilities.dp(14), false));
-        if (hideAlertViewRunnable != null) {
-            AndroidUtilities.cancelRunOnUIThread(hideAlertViewRunnable);
-        }
-        AndroidUtilities.runOnUIThread(hideAlertViewRunnable = new Runnable() {
-            @Override
-            public void run() {
-                if (hideAlertViewRunnable != this) {
-                    return;
-                }
-                if (alertView.getTag() == null) {
-                    alertView.setTag(1);
-                    if (alertViewAnimator != null) {
-                        alertViewAnimator.cancel();
-                        alertViewAnimator = null;
-                    }
-                    alertViewAnimator = new AnimatorSet();
-                    alertViewAnimator.playTogether(ObjectAnimator.ofFloat(alertView, "translationY", -AndroidUtilities.dp(50)));
-                    alertViewAnimator.setDuration(200);
-                    alertViewAnimator.addListener(new AnimatorListenerAdapterProxy() {
-                        @Override
-                        public void onAnimationEnd(Animator animation) {
-                            if (alertViewAnimator != null && alertViewAnimator.equals(animation)) {
-                                alertView.setVisibility(View.GONE);
-                                alertViewAnimator = null;
-                            }
-                        }
-
-                        @Override
-                        public void onAnimationCancel(Animator animation) {
-                            if (alertViewAnimator != null && alertViewAnimator.equals(animation)) {
-                                alertViewAnimator = null;
-                            }
-                        }
-                    });
-                    alertViewAnimator.start();
-                }
-            }
-        }, 3000);
-    }
-
     private void hidePinnedMessageView(boolean animated) {
         if (pinnedMessageView.getTag() == null) {
             pinnedMessageView.setTag(1);
@@ -6956,119 +6884,28 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
     private void createDeleteMessagesAlert(final MessageObject finalSelectedObject) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
         builder.setMessage(LocaleController.formatString("AreYouSureDeleteMessages", R.string.AreYouSureDeleteMessages, LocaleController.formatPluralString("messages", finalSelectedObject != null ? 1 : selectedMessagesIds[0].size() + selectedMessagesIds[1].size())));
-
-        //final boolean[] checks = new boolean[3];
-        //TLRPC.User user = null;
-        /*
-        if (currentChat != null && currentChat.megagroup) {
-            if (finalSelectedObject != null) {
-                if (finalSelectedObject.messageOwner.action == null || finalSelectedObject.messageOwner.action instanceof TLRPC.TL_messageActionEmpty) {
-                    user = MessagesController.getInstance().getUser(finalSelectedObject.messageOwner.from_id);
-                }
-            } else {
-                int from_id = -1;
-                for (int a = 1; a >= 0; a--) {
-                    int channelId = 0;
-                    for (HashMap.Entry<Integer, MessageObject> entry : selectedMessagesIds[a].entrySet()) {
-                        MessageObject msg = entry.getValue();
-                        if (from_id == -1) {
-                            from_id = msg.messageOwner.from_id;
-                        }
-                        if (from_id < 0 || from_id != msg.messageOwner.from_id) {
-                            from_id = -2;
-                            break;
-                        }
-                    }
-                    if (from_id == -2) {
-                        break;
-                    }
-                }
-                if (from_id != -1) {
-                    user = MessagesController.getInstance().getUser(from_id);
-                }
-            }
-            if (user != null && user.id != UserConfig.getClientUserId()) {
-                FrameLayout frameLayout = new FrameLayout(getParentActivity());
-                if (Build.VERSION.SDK_INT >= 21) {
-                    frameLayout.setPadding(0, AndroidUtilities.dp(8), 0, 0);
-                }
-                for (int a = 0; a < 3; a++) {
-                    CheckBoxCell cell = new CheckBoxCell(getParentActivity());
-                    cell.setBackgroundResource(R.drawable.list_selector);
-                    cell.setTag(a);
-                    if (a == 0) {
-                        cell.setText(LocaleController.getString("DeleteBanUser", R.string.DeleteBanUser), "", false, false);
-                    } else if (a == 1) {
-                        cell.setText(LocaleController.getString("DeleteReportSpam", R.string.DeleteReportSpam), "", false, false);
-                    } else if (a == 2) {
-                        cell.setText(LocaleController.formatString("DeleteAllFrom", R.string.DeleteAllFrom, ContactsController.formatName(user.first_name, user.last_name)), "", false, false);
-                    }
-                    cell.setPadding(LocaleController.isRTL ? AndroidUtilities.dp(8) : 0, 0, LocaleController.isRTL ? 0 : AndroidUtilities.dp(8), 0);
-                    frameLayout.addView(cell, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, 48, Gravity.TOP | Gravity.LEFT, 8, 48 * a, 8, 0));
-                    cell.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            CheckBoxCell cell = (CheckBoxCell) v;
-                            Integer num = (Integer) cell.getTag();
-                            checks[num] = !checks[num];
-                            cell.setChecked(checks[num], true);
-                        }
-                    });
-                }
-                builder.setView(frameLayout);
-            } else {
-                user = null;
-            }
-        }
-        */
-        //final TLRPC.User userFinal = user;
         builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                Toast.makeText(getParentActivity(), LocaleController.getString("NotYetImplemented", R.string.NotYetImplemented), Toast.LENGTH_LONG).show();
-
                 ArrayList<Integer> ids = null;
-                if (finalSelectedObject != null) {
-                    // delete a single selected message by the single-click-message menu (we don't use this approach)
-                    /*
-                    ids = new ArrayList<>();
-                    ids.add(finalSelectedObject.getId());
-                    ArrayList<Long> random_ids = null;
-                    if (currentEncryptedChat != null && finalSelectedObject.messageOwner.random_id != 0 && finalSelectedObject.type != 10) {
-                        random_ids = new ArrayList<>();
-                        random_ids.add(finalSelectedObject.messageOwner.random_id);
+                for (int a = 1; a >= 0; a--) {
+
+                    for (HashMap.Entry<Integer, MessageObject> entry : selectedMessagesIds[a].entrySet()) {
+                        MessageObject msg = entry.getValue();
+                        int id_to_del = msg.messageOwner.id;
+                        MrMailbox.MrMailboxDeleteMsgById(MrMailbox.hMailbox, id_to_del);
                     }
-                    MessagesController.getInstance().deleteMessages(ids, random_ids, currentEncryptedChat, finalSelectedObject.messageOwner.to_id.channel_id);
-                    */
-                } else {
-                    // delete all selected messages
-                    /*
-                    for (int a = 1; a >= 0; a--) {
-                        ids = new ArrayList<>(selectedMessagesIds[a].keySet());
-                        ArrayList<Long> random_ids = null;
-                        int channelId = 0;
-                        if (!ids.isEmpty()) {
-                            MessageObject msg = selectedMessagesIds[a].get(ids.get(0));
-                            if (channelId == 0 && msg.messageOwner.to_id.channel_id != 0) {
-                                channelId = msg.messageOwner.to_id.channel_id;
-                            }
-                        }
-                        if (currentEncryptedChat != null) {
-                            random_ids = new ArrayList<>();
-                            for (HashMap.Entry<Integer, MessageObject> entry : selectedMessagesIds[a].entrySet()) {
-                                MessageObject msg = entry.getValue();
-                                if (msg.messageOwner.random_id != 0 && msg.type != 10) {
-                                    random_ids.add(msg.messageOwner.random_id);
-                                }
-                            }
-                        }
-                        MessagesController.getInstance().deleteMessages(ids, random_ids, currentEncryptedChat, channelId);
-                    }
-                    */
-                    actionBar.hideActionMode();
-                    updatePinnedMessageView(true);
-                    updateVisibleRows();
+
                 }
+
+                actionBar.hideActionMode();
+                updatePinnedMessageView(true);
+                updateVisibleRows();
+
+                MrMailbox.reloadMainChatlist();
+                NotificationCenter.getInstance().postNotificationName(NotificationCenter.dialogsNeedReload);
+
+
                 /*
                 if (userFinal != null) {
                     if (checks[0]) {

@@ -203,6 +203,12 @@ JNIEXPORT jlong Java_org_telegram_messenger_MrMailbox_MrMailboxGetMsgById(JNIEnv
 }
 
 
+JNIEXPORT void Java_org_telegram_messenger_MrMailbox_MrMailboxDeleteMsgById(JNIEnv *env, jclass c, jlong hMailbox, jint id)
+{
+	mrmailbox_delete_msg_by_id((mrmailbox_t*)hMailbox, id);
+}
+
+
 /* MrMailbox - handle config */
 
 JNIEXPORT jint Java_org_telegram_messenger_MrMailbox_MrMailboxSetConfig(JNIEnv *env, jclass c, jlong hMailbox, jstring key, jstring value)

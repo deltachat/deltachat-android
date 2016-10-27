@@ -4805,7 +4805,7 @@ public class TLRPC {
 		public int dc_id;
 		public long volume_id;
 		public int local_id;
-        public long secret;
+		public String mr_path; // if set, this superseeds the calculation of the path from dc_id/volume_id/local_id
 		public byte[] key;
         public byte[] iv;
 
@@ -6858,10 +6858,10 @@ public class TLRPC {
         //public int seq_in; //custom
         //public int seq_out; //custom
         public TLRPC.Message replyMessage; //custom
+		public boolean created_by_mr;
 
         public static Message TLdeserialize(AbstractSerializedData stream, int constructor, boolean exception) {
-            Message result = null;
-            return result;
+            return null;
         }
     }
 

@@ -84,40 +84,49 @@ public class MrMailbox {
         ret.flags         = 0; // posible flags: MESSAGE_FLAG_HAS_FROM_ID, however, this seems to be read only
         ret.post          = false; // ? true=avatar wird in gruppen nicht angezeigt
         ret.out           = ret.from_id==1; // true=outgoing message, read eg. in MessageObject.isOutOwner()
+        ret. created_by_mr= true;
 
         if( type == MrMailbox.MR_MSG_TEXT ) {
             ret.message       = MrMailbox.MrMsgGetText(hMsg);
         }
         else if( type == MrMailbox.MR_MSG_IMAGE ) {
             String path = MrMailbox.MrMsgGetParam(hMsg, 'f', "");
+            TLRPC.TL_photo photo = null;
             if( !path.isEmpty() ) {
                 try {
-                    //TLRPC.TL_photo photo;
+                    // TODO: It is very inefficient to load all photos on dialog loading! FIX ME!
                     //photo = SendMessagesHelper.getInstance().generatePhotoSizes(path, null); // TODO: does this degrade image quality?
 
-                    //ret.message = "-1";
-                    //ret.attachPath = new TLRPC.TL_messageMediaPhoto();
-                    //ret.media.photo = photo;// search for TL_messageMediaPhoto
-
-                    /*
-                    photo = new TLRPC.TL_photo();
                     TLRPC.TL_photoSize photoSize = new TLRPC.TL_photoSize();
                     photoSize.w = MrMailbox.MrMsgGetParamInt(hMsg, 'w', 800);
-                    photoSize.h = MrMailbox.MrMsgGetParamInt(hMsg, 'w', 800);
+                    photoSize.h = MrMailbox.MrMsgGetParamInt(hMsg, 'h', 800);
                     photoSize.size = 0;
+                    photoSize.location = new TLRPC.TL_fileLocation();
                     photoSize.location.mr_path = path;
+                    photoSize.location.local_id = -ret.id;
                     photoSize.type = "x";
+
+
+                    photo = new TLRPC.TL_photo();
                     photo.sizes.add(photoSize);
-                                  */
 
                 } catch (Exception e) {
                     // the most common reason is a simple "file not found error"
                 }
             }
 
+            if(photo!=null) {
+                ret.message = "-1";
+                ret.media = new TLRPC.TL_messageMediaPhoto();
+                ret.media.photo = photo;
+                ret.attachPath = path;
+            }
+            else {
+                ret.message = "<cannot load file>";
+            }
         }
         else {
-            ret.message = "Messages of this type are not yet supported.";
+            ret.message = "<unsupported message type.>";
         }
         // ret.attachPath
         // +obj.attachPathExists
@@ -151,7 +160,7 @@ public class MrMailbox {
                     @Override
                     public void run() {
                         reloadMainChatlist();
-                        NotificationCenter.getInstance().postNotificationName(NotificationCenter.dialogsNeedReload);
+
                     }
                 });
                 return 0;
@@ -180,7 +189,7 @@ public class MrMailbox {
     public native static int     MrMailboxCreateChatByContactId(long hMailbox, int contact_id); // returns chat_id
 
     public native static long    MrMailboxGetMsgById        (long hMailbox, int id); // return hMsg which must be unref'd after usage
-
+    public native static void    MrMailboxDeleteMsgById     (long hMailbox, int id);
     public native static int     MrMailboxSetConfig         (long hMailbox, String key, String value); // value may be NULL
     public native static String  MrMailboxGetConfig         (long hMailbox, String key, String def); // def may be NULL, returns empty string as NULL
     public native static int     MrMailboxGetConfigInt      (long hMailbox, String key, int def); // def may be NULL, returns empty string as NULL

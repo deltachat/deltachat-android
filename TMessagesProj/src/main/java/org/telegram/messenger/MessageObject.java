@@ -1648,7 +1648,10 @@ public class MessageObject {
         if (type == 1) {
             TLRPC.PhotoSize currentPhotoObject = FileLoader.getClosestPhotoSizeWithSize(photoThumbs, AndroidUtilities.getPhotoSize());
             if (currentPhotoObject != null) {
-                mediaExists = FileLoader.getPathToMessage(messageOwner).exists();
+                File f = FileLoader.getPathToMessage(messageOwner);
+                if( f != null ) {
+                    mediaExists = f.exists();
+                }
             }
         } else if (type == 8 || type == 3 || type == 9 || type == 2 || type == 14) {
             if (messageOwner.attachPath != null && messageOwner.attachPath.length() > 0) {
@@ -1671,6 +1674,11 @@ public class MessageObject {
                     mediaExists = FileLoader.getPathToAttach(currentPhotoObject, true).exists();
                 }
             }
+        }
+
+        if( mediaExists && !attachPathExists && messageOwner.created_by_mr ) {
+            attachPathExists = true; // EDIT BY MR: we use the attachPath for the normal images
+            mediaExists = false;
         }
     }
 }

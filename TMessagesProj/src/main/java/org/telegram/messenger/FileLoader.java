@@ -598,6 +598,7 @@ public class FileLoader {
 
     public static File getPathToAttach(TLObject attach, String ext, boolean forceCache) {
         File dir = null;
+        String mr_path = null;
         if (forceCache) {
             dir = getInstance().getDirectory(MEDIA_DIR_CACHE);
         } else {
@@ -616,7 +617,10 @@ public class FileLoader {
                 }
             } else if (attach instanceof TLRPC.PhotoSize) {
                 TLRPC.PhotoSize photoSize = (TLRPC.PhotoSize) attach;
-                if (photoSize.location == null || photoSize.location.key != null || photoSize.location.volume_id == Integer.MIN_VALUE && photoSize.location.local_id < 0 || photoSize.size < 0) {
+                if( photoSize.location != null && photoSize.location.mr_path != null ) {
+                    mr_path = photoSize.location.mr_path;
+                }
+                else if (photoSize.location == null || photoSize.location.key != null || photoSize.location.volume_id == Integer.MIN_VALUE && photoSize.location.local_id < 0 || photoSize.size < 0) {
                     dir = getInstance().getDirectory(MEDIA_DIR_CACHE);
                 } else {
                     dir = getInstance().getDirectory(MEDIA_DIR_IMAGE);
@@ -630,10 +634,24 @@ public class FileLoader {
                 }
             }
         }
-        if (dir == null) {
-            return new File("");
+
+        File f = null;
+        if( mr_path!=null ) {
+            try {
+                f = new File(mr_path);
+            }
+            catch (Exception e) {
+
+            }
         }
-        return new File(dir, getAttachFileName(attach, ext));
+        else if (dir == null) {
+            f = new File("");
+        }
+        else {
+            f = new File(dir, getAttachFileName(attach, ext));
+        }
+
+        return f;
     }
 
     public static TLRPC.PhotoSize getClosestPhotoSizeWithSize(ArrayList<TLRPC.PhotoSize> sizes, int side) {
