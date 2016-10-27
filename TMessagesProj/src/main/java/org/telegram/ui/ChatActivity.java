@@ -6909,6 +6909,8 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
     }
 
     private void createMenu(View v, boolean single) { // single=false: long click
+        boolean mr_no_menu = false;
+
         if (actionBar.isActionModeShowed()) {
             return;
         }
@@ -6939,9 +6941,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         updatePinnedMessageView(true);
 
         boolean allowChatActions = true;
-        //boolean allowPin = message.getDialogId() != mergeDialogId && message.getId() > 0 && ChatObject.isChannel(currentChat) && currentChat.megagroup && (currentChat.creator || currentChat.editor) && (message.messageOwner.action == null || message.messageOwner.action instanceof TLRPC.TL_messageActionEmpty);
-        //boolean allowUnpin = message.getDialogId() != mergeDialogId && info != null && info.pinned_msg_id == message.getId() && (currentChat.creator || currentChat.editor);
-        //boolean allowEdit = message.canEditMessage(currentChat) && !chatActivityEnterView.hasAudioToSend() && message.getDialogId() != mergeDialogId;
         if (currentEncryptedChat != null && AndroidUtilities.getPeerLayerVersion(currentEncryptedChat.layer) < 46 || type == 1 && message.getDialogId() == mergeDialogId || currentEncryptedChat == null && message.getId() < 0 || isBroadcast || currentChat != null && (ChatObject.isNotInChat(currentChat) || ChatObject.isChannel(currentChat) && !currentChat.creator && !currentChat.editor && !currentChat.megagroup)) {
             allowChatActions = false;
         }
@@ -6968,19 +6967,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                             items.add(LocaleController.getString("Reply", R.string.Reply));
                             options.add(8);
                         }
-                        /*
-                        if (allowUnpin) {
-                            items.add(LocaleController.getString("UnpinMessage", R.string.UnpinMessage));
-                            options.add(14);
-                        } else if (allowPin) {
-                            items.add(LocaleController.getString("PinMessage", R.string.PinMessage));
-                            options.add(13);
-                        }
-                        if (allowEdit) {
-                            items.add(LocaleController.getString("Edit", R.string.Edit));
-                            options.add(12);
-                        }
-                        */
                         if (message.canDeleteMessage(currentChat)) {
                             items.add(LocaleController.getString("Delete", R.string.Delete));
                             options.add(1);
@@ -6999,7 +6985,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     items.add(LocaleController.getString("Delete", R.string.Delete));
                     options.add(1);
                 } else {
-                    /*if (currentEncryptedChat == null)*/ {
+                    {
                         if (allowChatActions) {
                             items.add(LocaleController.getString("Reply", R.string.Reply));
                             options.add(8);
@@ -7015,15 +7001,9 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                             }
                         } else if (type == 4) {
                             if (selectedObject.isVideo()) {
-                                items.add(LocaleController.getString("SaveToGallery", R.string.SaveToGallery));
-                                options.add(4);
-                                items.add(LocaleController.getString("ShareFile", R.string.ShareFile));
-                                options.add(6);
+                                mr_no_menu = true; // no menu for videos, use the long click
                             } else if (selectedObject.isMusic()) {
-                                items.add(LocaleController.getString("SaveToMusic", R.string.SaveToMusic));
-                                options.add(10);
-                                items.add(LocaleController.getString("ShareFile", R.string.ShareFile));
-                                options.add(6);
+                                mr_no_menu = true; // no menu for audio, use the long click
                             } else if (selectedObject.getDocument() != null) {
                                 if (MessageObject.isNewGifDocument(selectedObject.getDocument())) {
                                     items.add(LocaleController.getString("SaveToGIFs", R.string.SaveToGIFs));
@@ -7034,8 +7014,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                                 items.add(LocaleController.getString("ShareFile", R.string.ShareFile));
                                 options.add(6);
                             } else {
-                                items.add(LocaleController.getString("SaveToGallery", R.string.SaveToGallery));
-                                options.add(4);
+                                mr_no_menu = true; // no menu for images, use the long click
                             }
                         } else if (type == 5) {
                             items.add(LocaleController.getString("ApplyLocalizationFile", R.string.ApplyLocalizationFile));
@@ -7067,65 +7046,15 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                         }
                         items.add(LocaleController.getString("Forward", R.string.Forward));
                         options.add(2);
-                        /*
-                        if (allowUnpin) {
-                            items.add(LocaleController.getString("UnpinMessage", R.string.UnpinMessage));
-                            options.add(14);
-                        } else if (allowPin) {
-                            items.add(LocaleController.getString("PinMessage", R.string.PinMessage));
-                            options.add(13);
-                        }
-                        if (allowEdit) {
-                            items.add(LocaleController.getString("Edit", R.string.Edit));
-                            options.add(12);
-                        }
-                        */
+
                         if (message.canDeleteMessage(currentChat)) {
                             items.add(LocaleController.getString("Delete", R.string.Delete));
                             options.add(1);
                         }
 
-                    } /*else {
-                        if (allowChatActions) {
-                            items.add(LocaleController.getString("Reply", R.string.Reply));
-                            options.add(8);
-                        }
-                        if (selectedObject.type == 0 || selectedObject.caption != null) {
-                            items.add(LocaleController.getString("Copy", R.string.Copy));
-                            options.add(3);
-                        }
-                        if (type == 4) {
-                            if (selectedObject.isVideo()) {
-                                items.add(LocaleController.getString("SaveToGallery", R.string.SaveToGallery));
-                                options.add(4);
-                                items.add(LocaleController.getString("ShareFile", R.string.ShareFile));
-                                options.add(6);
-                            } else if (selectedObject.isMusic()) {
-                                items.add(LocaleController.getString("SaveToMusic", R.string.SaveToMusic));
-                                options.add(10);
-                                items.add(LocaleController.getString("ShareFile", R.string.ShareFile));
-                                options.add(6);
-                            } else if (!selectedObject.isVideo() && selectedObject.getDocument() != null) {
-                                items.add(LocaleController.getString("SaveToDownloads", R.string.SaveToDownloads));
-                                options.add(10);
-                                items.add(LocaleController.getString("ShareFile", R.string.ShareFile));
-                                options.add(6);
-                            } else {
-                                items.add(LocaleController.getString("SaveToGallery", R.string.SaveToGallery));
-                                options.add(4);
-                            }
-                        } else if (type == 5) {
-                            items.add(LocaleController.getString("ApplyLocalizationFile", R.string.ApplyLocalizationFile));
-                            options.add(5);
-                        } else if (type == 7) {
-                            items.add(LocaleController.getString("AddToStickers", R.string.AddToStickers));
-                            options.add(9);
-                        }
-                        items.add(LocaleController.getString("Delete", R.string.Delete));
-                        options.add(1);
-                    } */
+                    }
 
-                    if( type == 3 ) {
+                    if( type == 3 || mr_no_menu ) {
                         // EDIT BY MR: type=3 is a normal message; we do not want a menu on a single click here:
                         // this distubs and the approach does not work for images (they're enlarged on single clicks).
                         // So, it is better to force learning the user to do a long click, which works for all message types equally.
@@ -7163,9 +7092,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         if (item != null) {
             item.setVisibility(View.VISIBLE);
         }
-        //if (editDoneItem != null) {
-        //    editDoneItem.setVisibility(View.GONE);
-        //}
 
         actionBar.showActionMode();
         updatePinnedMessageView(true);
@@ -7185,82 +7111,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         selectedMessagesCountTextView.setNumber(1, false);
         updateVisibleRows();
     }
-
-    /*
-    private void showEditDoneProgress(final boolean show, boolean animated) {
-        if (editDoneItemAnimation != null) {
-            editDoneItemAnimation.cancel();
-        }
-        if (!animated) {
-            if (show) {
-                editDoneItem.getImageView().setScaleX(0.1f);
-                editDoneItem.getImageView().setScaleY(0.1f);
-                editDoneItem.getImageView().setAlpha(0.0f);
-                editDoneItemProgress.setScaleX(1.0f);
-                editDoneItemProgress.setScaleY(1.0f);
-                editDoneItemProgress.setAlpha(1.0f);
-                editDoneItem.getImageView().setVisibility(View.INVISIBLE);
-                editDoneItemProgress.setVisibility(View.VISIBLE);
-                editDoneItem.setEnabled(false);
-            } else {
-                editDoneItemProgress.setScaleX(0.1f);
-                editDoneItemProgress.setScaleY(0.1f);
-                editDoneItemProgress.setAlpha(0.0f);
-                editDoneItem.getImageView().setScaleX(1.0f);
-                editDoneItem.getImageView().setScaleY(1.0f);
-                editDoneItem.getImageView().setAlpha(1.0f);
-                editDoneItem.getImageView().setVisibility(View.VISIBLE);
-                editDoneItemProgress.setVisibility(View.INVISIBLE);
-                editDoneItem.setEnabled(true);
-            }
-        } else {
-            editDoneItemAnimation = new AnimatorSet();
-            if (show) {
-                editDoneItemProgress.setVisibility(View.VISIBLE);
-                editDoneItem.setEnabled(false);
-                editDoneItemAnimation.playTogether(
-                        ObjectAnimator.ofFloat(editDoneItem.getImageView(), "scaleX", 0.1f),
-                        ObjectAnimator.ofFloat(editDoneItem.getImageView(), "scaleY", 0.1f),
-                        ObjectAnimator.ofFloat(editDoneItem.getImageView(), "alpha", 0.0f),
-                        ObjectAnimator.ofFloat(editDoneItemProgress, "scaleX", 1.0f),
-                        ObjectAnimator.ofFloat(editDoneItemProgress, "scaleY", 1.0f),
-                        ObjectAnimator.ofFloat(editDoneItemProgress, "alpha", 1.0f));
-            } else {
-                editDoneItem.getImageView().setVisibility(View.VISIBLE);
-                editDoneItem.setEnabled(true);
-                editDoneItemAnimation.playTogether(
-                        ObjectAnimator.ofFloat(editDoneItemProgress, "scaleX", 0.1f),
-                        ObjectAnimator.ofFloat(editDoneItemProgress, "scaleY", 0.1f),
-                        ObjectAnimator.ofFloat(editDoneItemProgress, "alpha", 0.0f),
-                        ObjectAnimator.ofFloat(editDoneItem.getImageView(), "scaleX", 1.0f),
-                        ObjectAnimator.ofFloat(editDoneItem.getImageView(), "scaleY", 1.0f),
-                        ObjectAnimator.ofFloat(editDoneItem.getImageView(), "alpha", 1.0f));
-
-            }
-            editDoneItemAnimation.addListener(new AnimatorListenerAdapterProxy() {
-                @Override
-                public void onAnimationEnd(Animator animation) {
-                    if (editDoneItemAnimation != null && editDoneItemAnimation.equals(animation)) {
-                        if (!show) {
-                            editDoneItemProgress.setVisibility(View.INVISIBLE);
-                        } else {
-                            editDoneItem.getImageView().setVisibility(View.INVISIBLE);
-                        }
-                    }
-                }
-
-                @Override
-                public void onAnimationCancel(Animator animation) {
-                    if (editDoneItemAnimation != null && editDoneItemAnimation.equals(animation)) {
-                        editDoneItemAnimation = null;
-                    }
-                }
-            });
-            editDoneItemAnimation.setDuration(150);
-            editDoneItemAnimation.start();
-        }
-    }
-    */
 
     private String getMessageContent(MessageObject messageObject, int previousUid, boolean name) {
         String str = "";
@@ -7450,126 +7300,15 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 break;
             }
             case 12: {
-                /* EDIT BY MR -- we do not allow to edit messages that are "sent"
-                if (getParentActivity() == null) {
-                    selectedObject = null;
-                    return;
-                }
-                if (searchItem != null && actionBar.isSearchFieldVisible()) {
-                    actionBar.closeSearchField();
-                    chatActivityEnterView.setFieldFocused();
-                }
-
-                mentionsAdapter.setNeedBotContext(false);
-                chatListView.setOnItemLongClickListener(null);
-                chatListView.setOnItemClickListener(null);
-                chatListView.setClickable(false);
-                chatListView.setLongClickable(false);
-                chatActivityEnterView.setEditingMessageObject(selectedObject, !selectedObject.isMediaEmpty());
-                if (chatActivityEnterView.isEditingCaption()) {
-                    mentionsAdapter.setAllowNewMentions(false);
-                }
-                actionModeTitleContainer.setVisibility(View.VISIBLE);
-                selectedMessagesCountTextView.setVisibility(View.GONE);
-                checkEditTimer();
-
-                chatActivityEnterView.setAllowStickersAndGifs(false, false);
-                final ActionBarMenu actionMode = actionBar.createActionMode();
-                actionMode.getItem(reply).setVisibility(View.GONE);
-                actionMode.getItem(copy).setVisibility(View.GONE);
-                actionMode.getItem(forward).setVisibility(View.GONE);
-                actionMode.getItem(delete).setVisibility(View.GONE);
-                if (editDoneItemAnimation != null) {
-                    editDoneItemAnimation.cancel();
-                    editDoneItemAnimation = null;
-                }
-                editDoneItem.setVisibility(View.VISIBLE);
-                showEditDoneProgress(true, false);
-                actionBar.showActionMode();
-                updatePinnedMessageView(true);
-                updateVisibleRows();
-
-                TLRPC.TL_messages_getMessageEditData req = new TLRPC.TL_messages_getMessageEditData();
-                req.peer = MessagesController.getInputPeer((int) dialog_id);
-                req.id = selectedObject.getId();
-                editingMessageObjectReqId = ConnectionsManager.getInstance().sendRequest(req, new RequestDelegate() {
-                    @Override
-                    public void run(final TLObject response, TLRPC.TL_error error) {
-                        AndroidUtilities.runOnUIThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                editingMessageObjectReqId = 0;
-                                if (response == null) {
-                                    AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
-                                    builder.setTitle(LocaleController.getString("AppName", R.string.AppName));
-                                    builder.setMessage(LocaleController.getString("EditMessageError", R.string.EditMessageError));
-                                    builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), null);
-                                    showDialog(builder.create());
-
-                                    if (chatActivityEnterView != null) {
-                                        chatActivityEnterView.setEditingMessageObject(null, false);
-                                    }
-                                } else {
-                                    showEditDoneProgress(false, true);
-                                }
-                            }
-                        });
-                    }
-                });
-                */
+                // was: edit messages
                 break;
             }
             case 13: {
-                /*  EDIT BY MR -- pinning not supported
-                final int mid = selectedObject.getId();
-                AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
-                builder.setMessage(LocaleController.getString("PinMessageAlert", R.string.PinMessageAlert));
-
-                final boolean[] checks = new boolean[]{true};
-                FrameLayout frameLayout = new FrameLayout(getParentActivity());
-                if (Build.VERSION.SDK_INT >= 21) {
-                    frameLayout.setPadding(0, AndroidUtilities.dp(8), 0, 0);
-                }
-                CheckBoxCell cell = new CheckBoxCell(getParentActivity());
-                cell.setBackgroundResource(R.drawable.list_selector);
-                cell.setText(LocaleController.getString("PinNotify", R.string.PinNotify), "", true, false);
-                cell.setPadding(LocaleController.isRTL ? AndroidUtilities.dp(8) : 0, 0, LocaleController.isRTL ? 0 : AndroidUtilities.dp(8), 0);
-                frameLayout.addView(cell, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, 48, Gravity.TOP | Gravity.LEFT, 8, 0, 8, 0));
-                cell.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        CheckBoxCell cell = (CheckBoxCell) v;
-                        checks[0] = !checks[0];
-                        cell.setChecked(checks[0], true);
-                    }
-                });
-                builder.setView(frameLayout);
-                builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        MessagesController.getInstance().pinChannelMessage(currentChat, mid, checks[0]);
-                    }
-                });
-                builder.setTitle(LocaleController.getString("AppName", R.string.AppName));
-                builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
-                showDialog(builder.create());
-                */
+                // was: pinning
                 break;
             }
             case 14: {
-                /* EDIT BY MR -- unpinning not supported
-                AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
-                builder.setMessage(LocaleController.getString("UnpinMessageAlert", R.string.UnpinMessageAlert));
-                builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        MessagesController.getInstance().pinChannelMessage(currentChat, 0, false);
-                    }
-                });
-                builder.setTitle(LocaleController.getString("AppName", R.string.AppName));
-                builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
-                showDialog(builder.create());
-                */
+                // was: unpinning
                 break;
             }
             case 15: {
@@ -8096,15 +7835,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                         }
                     }
 
-                    /*
-                    @Override
-                    public void didPressedBotButton(ChatMessageCell cell, TLRPC.KeyboardButton button) {
-                        if (getParentActivity() == null || bottomOverlayChat.getVisibility() == View.VISIBLE && !(button instanceof TLRPC.TL_keyboardButtonCallback) && !(button instanceof TLRPC.TL_keyboardButtonUrl)) {
-                            return;
-                        }
-                        chatActivityEnterView.didPressedBotButton(button, cell.getMessageObject(), cell.getMessageObject());
-                    }
-                    */
 
                     @Override
                     public void didPressedCancelSendButton(ChatMessageCell cell) {
@@ -8305,23 +8035,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
             } else if (viewType == 2) {
                 view = new ChatUnreadCell(mContext);
             } else if (viewType == 3) {
-                /*
-                view = new BotHelpCell(mContext);
-                ((BotHelpCell) view).setDelegate(new BotHelpCell.BotHelpCellDelegate() {
-                    @Override
-                    public void didPressUrl(String url) {
-                        if (url.startsWith("@")) {
-                            MessagesController.openByUserName(url.substring(1), ChatActivity.this, 0);
-                        } else if (url.startsWith("#")) {
-                            DialogsActivity fragment = new DialogsActivity(null);
-                            fragment.setSearchString(url);
-                            presentFragment(fragment);
-                        } else if (url.startsWith("/")) {
-                            chatActivityEnterView.setCommand(null, url, false, false);
-                        }
-                    }
-                });
-                */
+                // was: BotHelpCell
             } else if (viewType == 4) {
                 view = new ChatLoadingCell(mContext);
             }
