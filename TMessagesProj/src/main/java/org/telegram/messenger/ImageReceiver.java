@@ -741,16 +741,8 @@ public class ImageReceiver implements NotificationCenter.NotificationCenterDeleg
         return imageX;
     }
 
-    public int getImageX2() {
-        return imageX + imageW;
-    }
-
     public int getImageY() {
         return imageY;
-    }
-
-    public int getImageY2() {
-        return imageY + imageH;
     }
 
     public int getImageWidth() {

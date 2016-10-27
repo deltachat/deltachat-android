@@ -1827,22 +1827,6 @@ public class TLRPC {
 		}
 	}
 
-	public static class TL_inputEncryptedFileLocation extends InputFileLocation {
-		public static int constructor = 0xf5235d55;
-
-
-		public void readParams(AbstractSerializedData stream, boolean exception) {
-			id = stream.readInt64(exception);
-			access_hash = stream.readInt64(exception);
-		}
-
-		public void serializeToStream(AbstractSerializedData stream) {
-			stream.writeInt32(constructor);
-			stream.writeInt64(id);
-			stream.writeInt64(access_hash);
-		}
-	}
-
 	public static class TL_inputDocumentFileLocation extends InputFileLocation {
         public static int constructor = 0x4e45abe9;
 
@@ -4367,8 +4351,6 @@ public class TLRPC {
 		public String first_name;
 		public String last_name;
 		public int user_id;
-		public int thumb_w;
-		public int thumb_h;
 		public ArrayList<DocumentAttribute> attributes = new ArrayList<>();
 		public String caption;
 		public String url;
@@ -4841,7 +4823,6 @@ public class TLRPC {
 			dc_id = stream.readInt32(exception);
 			volume_id = stream.readInt64(exception);
 			local_id = stream.readInt32(exception);
-			secret = stream.readInt64(exception);
 		}
 
 		public void serializeToStream(AbstractSerializedData stream) {
@@ -4849,7 +4830,6 @@ public class TLRPC {
 			stream.writeInt32(dc_id);
 			stream.writeInt64(volume_id);
 			stream.writeInt32(local_id);
-			stream.writeInt64(secret);
 		}
 	}
 
@@ -4860,14 +4840,12 @@ public class TLRPC {
 		public void readParams(AbstractSerializedData stream, boolean exception) {
             volume_id = stream.readInt64(exception);
 			local_id = stream.readInt32(exception);
-			secret = stream.readInt64(exception);
 		}
 
 		public void serializeToStream(AbstractSerializedData stream) {
             stream.writeInt32(constructor);
             stream.writeInt64(volume_id);
 			stream.writeInt32(local_id);
-			stream.writeInt64(secret);
 		}
 	}
 
@@ -5627,16 +5605,6 @@ public class TLRPC {
         public void serializeToStream(AbstractSerializedData stream) {
 			stream.writeInt32(constructor);
 			stream.writeInt32(days);
-		}
-	}
-
-	public static class messages_Stickers extends TLObject {
-		public String hash;
-		public ArrayList<Document> stickers = new ArrayList<>();
-
-		public static messages_Stickers TLdeserialize(AbstractSerializedData stream, int constructor, boolean exception) {
-			messages_Stickers result = null;
-			return result;
 		}
 	}
 

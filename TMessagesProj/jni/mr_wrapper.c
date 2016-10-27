@@ -513,7 +513,7 @@ JNIEXPORT jstring Java_org_telegram_messenger_MrMailbox_MrMsgGetParam(JNIEnv *en
 	CHAR_REF(def);
 		char* temp = mrparam_get(ths? ths->m_param:NULL, key, defPtr);
 			jstring ret = JSTRING_NEW(temp);
-			mrlog_info(" got %s", temp);
+			mrlog_info("  MrMsgGetParam(): got %s", temp);
 		free(temp);
 	CHAR_UNREF(def);
 	return ret;

@@ -2119,23 +2119,6 @@ public class ImageLoader {
         return b;
     }
 
-    public static void fillPhotoSizeWithBytes(TLRPC.PhotoSize photoSize) {
-        if (photoSize == null || photoSize.bytes != null) {
-            return;
-        }
-        File file = FileLoader.getPathToAttach(photoSize, true);
-        try {
-            RandomAccessFile f = new RandomAccessFile(file, "r");
-            int len = (int) f.length();
-            if (len < 20000) {
-                photoSize.bytes = new byte[(int) f.length()];
-                f.readFully(photoSize.bytes, 0, photoSize.bytes.length);
-            }
-        } catch (Throwable e) {
-            FileLog.e("tmessages", e);
-        }
-    }
-
     private static TLRPC.PhotoSize scaleAndSaveImageInternal(Bitmap bitmap, int w, int h, float photoW, float photoH, float scaleFactor, int quality, boolean cache, boolean scaleAnyway) throws Exception {
         Bitmap scaledBitmap;
         if (scaleFactor > 1 || scaleAnyway) {

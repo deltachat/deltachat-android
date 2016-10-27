@@ -87,7 +87,6 @@ public class FileLoadOperation {
         } else*/ if (photoLocation instanceof TLRPC.TL_fileLocation) {
             location = new TLRPC.TL_inputFileLocation();
             location.volume_id = photoLocation.volume_id;
-            location.secret = photoLocation.secret;
             location.local_id = photoLocation.local_id;
             datacenter_id = photoLocation.dc_id;
         }

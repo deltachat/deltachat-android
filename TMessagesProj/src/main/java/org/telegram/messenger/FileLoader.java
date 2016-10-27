@@ -763,40 +763,4 @@ public class FileLoader {
         }
         return "";
     }
-
-    public void deleteFiles(final ArrayList<File> files, final int type) {
-        if (files == null || files.isEmpty()) {
-            return;
-        }
-        fileLoaderQueue.postRunnable(new Runnable() {
-            @Override
-            public void run() {
-                for (int a = 0; a < files.size(); a++) {
-                    File file = files.get(a);
-                    if (file.exists()) {
-                        try {
-                            if (!file.delete()) {
-                                file.deleteOnExit();
-                            }
-                        } catch (Exception e) {
-                            FileLog.e("tmessages", e);
-                        }
-                    }
-                    try {
-                        File qFile = new File(file.getParentFile(), "q_" + file.getName());
-                        if (qFile.exists()) {
-                            if (!qFile.delete()) {
-                                qFile.deleteOnExit();
-                            }
-                        }
-                    } catch (Exception e) {
-                        FileLog.e("tmessages", e);
-                    }
-                }
-                if (type == 2) {
-                    ImageLoader.getInstance().clearMemory();
-                }
-            }
-        });
-    }
 }
