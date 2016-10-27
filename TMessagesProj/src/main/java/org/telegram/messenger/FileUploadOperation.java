@@ -392,9 +392,9 @@ public class FileUploadOperation {
                                 cleanup();
                             } else {
                                 TLRPC.InputEncryptedFile result;
-                                if (isBigFile) {
+                                /*if (isBigFile) {
                                     result = new TLRPC.TL_inputEncryptedFileBigUploaded();
-                                } else {
+                                } else */ {
                                     result = new TLRPC.TL_inputEncryptedFileUploaded();
                                     result.md5_checksum = String.format(Locale.US, "%32s", new BigInteger(1, mdEnc.digest()).toString(16)).replace(' ', '0');
                                 }

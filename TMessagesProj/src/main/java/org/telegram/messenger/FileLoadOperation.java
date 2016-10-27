@@ -74,7 +74,7 @@ public class FileLoadOperation {
     }
 
     public FileLoadOperation(TLRPC.FileLocation photoLocation, String extension, int size) {
-        if (photoLocation instanceof TLRPC.TL_fileEncryptedLocation) {
+        /*if (photoLocation instanceof TLRPC.TL_fileEncryptedLocation) {
             location = new TLRPC.TL_inputEncryptedFileLocation();
             location.id = photoLocation.volume_id;
             location.volume_id = photoLocation.volume_id;
@@ -84,7 +84,7 @@ public class FileLoadOperation {
             System.arraycopy(photoLocation.iv, 0, iv, 0, iv.length);
             key = photoLocation.key;
             datacenter_id = photoLocation.dc_id;
-        } else if (photoLocation instanceof TLRPC.TL_fileLocation) {
+        } else*/ if (photoLocation instanceof TLRPC.TL_fileLocation) {
             location = new TLRPC.TL_inputFileLocation();
             location.volume_id = photoLocation.volume_id;
             location.secret = photoLocation.secret;

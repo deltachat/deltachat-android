@@ -142,9 +142,9 @@ public class ImageReceiver implements NotificationCenter.NotificationCenterDeleg
 
         if ((fileLocation == null && httpUrl == null && thumbLocation == null)
                 || (fileLocation != null && !(fileLocation instanceof TLRPC.TL_fileLocation)
-                && !(fileLocation instanceof TLRPC.TL_fileEncryptedLocation)
+                /*&& !(fileLocation instanceof TLRPC.TL_fileEncryptedLocation)*/
                 && !(fileLocation instanceof TLRPC.TL_document)
-                && !(fileLocation instanceof TLRPC.TL_documentEncrypted))) {
+                /*&& !(fileLocation instanceof TLRPC.TL_documentEncrypted)*/)) {
             recycleBitmap(null, false);
             recycleBitmap(null, true);
             currentKey = null;

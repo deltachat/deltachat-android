@@ -99,27 +99,6 @@ public class FileLoader {
         return dir;
     }
 
-    public void cancelUploadFile(final String location, final boolean enc) {
-        fileLoaderQueue.postRunnable(new Runnable() {
-            @Override
-            public void run() {
-                FileUploadOperation operation;
-                if (!enc) {
-                    operation = uploadOperationPaths.get(location);
-                } else {
-                    operation = uploadOperationPathsEnc.get(location);
-                }
-                uploadSizes.remove(location);
-                if (operation != null) {
-                    uploadOperationPathsEnc.remove(location);
-                    uploadOperationQueue.remove(operation);
-                    uploadSmallOperationQueue.remove(operation);
-                    operation.cancel();
-                }
-            }
-        });
-    }
-
     public void checkUploadNewDataAvailable(final String location, final boolean encrypted, final long finalSize) {
         fileLoaderQueue.postRunnable(new Runnable() {
             @Override
