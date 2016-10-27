@@ -778,9 +778,9 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                 }
             }
             if (imagePressed) {
-                if (currentMessageObject.isSecretPhoto()) {
+                /*if (currentMessageObject.isSecretPhoto()) {
                     imagePressed = false;
-                } else if (currentMessageObject.isSendError()) {
+                } else*/ if (currentMessageObject.isSendError()) {
                     imagePressed = false;
                     result = false;
                 } else if (currentMessageObject.type == 8 && buttonState == -1 && MediaController.getInstance().canAutoplayGifs() && photoImage.getAnimation() == null) {
@@ -1220,20 +1220,6 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
         }
     }
 
-    private void updateSecretTimeText(MessageObject messageObject) {
-        if (messageObject == null || messageObject.isOut()) {
-            return;
-        }
-        String str = messageObject.getSecretTimeString();
-        if (str == null) {
-            return;
-        }
-        infoWidth = (int) Math.ceil(infoPaint.measureText(str));
-        CharSequence str2 = TextUtils.ellipsize(str, infoPaint, infoWidth, TextUtils.TruncateAt.END);
-        infoLayout = new StaticLayout(str2, infoPaint, infoWidth, Layout.Alignment.ALIGN_NORMAL, 1.0f, 0.0f, false);
-        invalidate();
-    }
-
     private boolean isPhotoDataChanged(MessageObject object) {
         if (object.type == 0 || object.type == 14) {
             return false;
@@ -1653,7 +1639,6 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
     }
 
     public void setMessageObject(MessageObject messageObject) {
-        boolean messageIdChanged = currentMessageObject == null || currentMessageObject.getId() != messageObject.getId();
         boolean messageChanged = currentMessageObject != messageObject || messageObject.forceUpdate;
         boolean dataChanged = currentMessageObject == messageObject && (isUserDataChanged() || photoNotSet);
         if (messageChanged || dataChanged || isPhotoDataChanged(messageObject)) {
@@ -2429,7 +2414,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                     }
 
                     if (messageObject.type == 1) { //photo
-                        updateSecretTimeText(messageObject);
+                        //updateSecretTimeText(messageObject);
                         currentPhotoObjectThumb = FileLoader.getClosestPhotoSizeWithSize(messageObject.photoThumbs, 80);
                     } else if (messageObject.type == 3) { //video
                         createDocumentLayout(0, messageObject);
@@ -2524,13 +2509,13 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                         w = timeWidthTotal;
                     }
 
-                    if (messageObject.isSecretPhoto()) {
+                    /*if (messageObject.isSecretPhoto()) {
                         if (isTablet()) {
                             w = h = (int) (getMinTabletSide() * 0.5f);
                         } else {
                             w = h = (int) (Math.min(displaySize.x, displaySize.y) * 0.5f);
                         }
-                    }
+                    }*/
 
                     photoWidth = w;
                     photoHeight = h;
@@ -2556,9 +2541,9 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
 
                     currentPhotoFilter = String.format(Locale.US, "%d_%d", (int) (w / density), (int) (h / density));
                     if (messageObject.photoThumbs != null && messageObject.photoThumbs.size() > 1 || messageObject.type == 3 || messageObject.type == 8) {
-                        if (messageObject.isSecretPhoto()) {
+                        /*if (messageObject.isSecretPhoto()) {
                             currentPhotoFilter += "_b2";
-                        } else {
+                        } else */ {
                             currentPhotoFilter += "_b";
                         }
                     }
@@ -2961,7 +2946,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
             drawTime = photoImage.getVisible();
         }
 
-        if (buttonState == -1 && currentMessageObject.isSecretPhoto()) {
+        /*if (buttonState == -1 && currentMessageObject.isSecretPhoto()) {
             int drawable = 4;
             if (currentMessageObject.messageOwner.destroyTime != 0) {
                 if (currentMessageObject.isOutOwner()) {
@@ -2983,7 +2968,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                 }
                 updateSecretTimeText(currentMessageObject);
             }
-        }
+        }*/
 
         if (documentAttachType == DOCUMENT_ATTACH_TYPE_GIF || currentMessageObject.type == 8) {
             if (photoImage.getVisible()) {

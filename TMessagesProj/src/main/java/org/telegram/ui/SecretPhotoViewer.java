@@ -82,23 +82,6 @@ public class SecretPhotoViewer implements NotificationCenter.NotificationCenterD
             drawable = getResources().getDrawable(R.drawable.circle1);
         }
 
-        private void updateSecretTimeText() {
-            if (currentMessageObject == null) {
-                return;
-            }
-            String str = currentMessageObject.getSecretTimeString();
-            if (str == null) {
-                return;
-            }
-            if (currentInfoString == null || !currentInfoString.equals(str)) {
-                currentInfoString = str;
-                infoWidth = (int)Math.ceil(infoPaint.measureText(currentInfoString));
-                CharSequence str2 = TextUtils.ellipsize(currentInfoString, infoPaint, infoWidth, TextUtils.TruncateAt.END);
-                infoLayout = new StaticLayout(str2, infoPaint, infoWidth, Layout.Alignment.ALIGN_NORMAL, 1.0f, 0.0f, false);
-                invalidate();
-            }
-        }
-
         @Override
         protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
             super.onMeasure(widthMeasureSpec, heightMeasureSpec);
@@ -123,7 +106,7 @@ public class SecretPhotoViewer implements NotificationCenter.NotificationCenterD
                 int offset = AndroidUtilities.dp(2);
                 invalidate((int)deleteProgressRect.left - offset, (int)deleteProgressRect.top - offset, (int)deleteProgressRect.right + offset * 2, (int)deleteProgressRect.bottom + offset * 2);
             }
-            updateSecretTimeText();
+            //updateSecretTimeText();
 
             if (infoLayout != null) {
                 canvas.save();

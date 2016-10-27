@@ -1091,10 +1091,6 @@ public class MessageObject {
         messageOwner.unread = false;
     }
 
-    public int getUnradFlags() {
-        return getUnreadFlags(messageOwner);
-    }
-
     public static int getUnreadFlags(TLRPC.Message message) {
         int flags = 0;
         if (!message.unread) {
@@ -1115,25 +1111,11 @@ public class MessageObject {
     }
 
     public boolean isSecretPhoto() {
-        return messageOwner instanceof TLRPC.TL_message_secret && messageOwner.media instanceof TLRPC.TL_messageMediaPhoto && messageOwner.ttl > 0 && messageOwner.ttl <= 60;
+        return false;
     }
 
     public boolean isSecretMedia() {
-        return messageOwner instanceof TLRPC.TL_message_secret &&
-                (messageOwner.media instanceof TLRPC.TL_messageMediaPhoto && messageOwner.ttl > 0 && messageOwner.ttl <= 60 || isVoice() || isVideo());
-    }
-
-    public static void setUnreadFlags(TLRPC.Message message, int flag) {
-        message.unread = (flag & 1) == 0;
-        message.media_unread = (flag & 2) == 0;
-    }
-
-    public static boolean isUnread(TLRPC.Message message) {
-        return message.unread;
-    }
-
-    public static boolean isContentUnread(TLRPC.Message message) {
-        return message.media_unread;
+        return false;
     }
 
     public boolean isMegagroup() {
@@ -1181,23 +1163,6 @@ public class MessageObject {
 
     public boolean isSent() {
         return messageOwner.send_state == MESSAGE_SEND_STATE_SENT /*|| messageOwner.id > 0 -- EDIT BY MR, the ID is always set by us*/;
-    }
-
-    public String getSecretTimeString() {
-        if (!isSecretMedia()) {
-            return null;
-        }
-        int secondsLeft = messageOwner.ttl;
-        if (messageOwner.destroyTime != 0) {
-            secondsLeft = Math.max(0, messageOwner.destroyTime - ConnectionsManager.getInstance().getCurrentTime());
-        }
-        String str;
-        if (secondsLeft < 60) {
-            str = secondsLeft + "s";
-        } else {
-            str = secondsLeft / 60 + "m";
-        }
-        return str;
     }
 
     public String getDocumentName() {
@@ -1396,13 +1361,13 @@ public class MessageObject {
                 } else if (h < AndroidUtilities.dp(120)) {
                     h = AndroidUtilities.dp(120);
                 }
-                if (isSecretPhoto()) {
+                /*if (isSecretPhoto()) {
                     if (AndroidUtilities.isTablet()) {
                         h = (int) (AndroidUtilities.getMinTabletSide() * 0.5f);
                     } else {
                         h = (int) (Math.min(AndroidUtilities.displaySize.x, AndroidUtilities.displaySize.y) * 0.5f);
                     }
-                }
+                }*/
                 photoHeight = h;
             }
             return photoHeight + AndroidUtilities.dp(14);
