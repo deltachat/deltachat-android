@@ -264,7 +264,7 @@ public class Theme {
             broadcastMediaDrawable = context.getResources().getDrawable(R.drawable.broadcast4);
             systemDrawable = context.getResources().getDrawable(R.drawable.system);
 
-            fileStatesDrawable[0][0] = context.getResources().getDrawable(R.drawable.play_g);
+            fileStatesDrawable[0][0] = context.getResources().getDrawable(R.drawable.play_g);         // self
             fileStatesDrawable[0][1] = context.getResources().getDrawable(R.drawable.play_g_s);
             fileStatesDrawable[1][0] = context.getResources().getDrawable(R.drawable.pause_g);
             fileStatesDrawable[1][1] = context.getResources().getDrawable(R.drawable.pause_g_s);
@@ -274,7 +274,7 @@ public class Theme {
             fileStatesDrawable[3][1] = context.getResources().getDrawable(R.drawable.file_g_s);
             fileStatesDrawable[4][0] = context.getResources().getDrawable(R.drawable.file_g_cancel);
             fileStatesDrawable[4][1] = context.getResources().getDrawable(R.drawable.file_g_cancel_s);
-            fileStatesDrawable[5][0] = context.getResources().getDrawable(R.drawable.play_b);
+            fileStatesDrawable[5][0] = context.getResources().getDrawable(R.drawable.play_b);         // from other = self+5
             fileStatesDrawable[5][1] = context.getResources().getDrawable(R.drawable.play_b_s);
             fileStatesDrawable[6][0] = context.getResources().getDrawable(R.drawable.pause_b);
             fileStatesDrawable[6][1] = context.getResources().getDrawable(R.drawable.pause_b_s);

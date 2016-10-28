@@ -134,7 +134,7 @@ public class RadialProgress {
         parent.invalidate((int)progressRect.left - offset, (int)progressRect.top - offset, (int)progressRect.right + offset * 2, (int)progressRect.bottom + offset * 2);
     }
 
-    public void setBackground(Drawable drawable, boolean withRound, boolean animated) {
+    public void setBackground(Drawable drawable /*may be null*/, boolean withRound, boolean animated) {
         lastUpdateTime = System.currentTimeMillis();
         if (animated && currentDrawable != drawable) {
             previousDrawable = currentDrawable;
@@ -154,7 +154,7 @@ public class RadialProgress {
         }
     }
 
-    public boolean swapBackground(Drawable drawable) {
+    public boolean swapBackground(Drawable drawable /*may be null*/) {
         if (currentDrawable != drawable) {
             currentDrawable = drawable;
             return true;
