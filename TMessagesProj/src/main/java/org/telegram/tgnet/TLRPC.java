@@ -2573,6 +2573,7 @@ public class TLRPC {
 		public byte[] iv;
 		public String caption;
 		public ArrayList<DocumentAttribute> attributes = new ArrayList<>();
+		public String mr_path;
 
 		public static Document TLdeserialize(AbstractSerializedData stream, int constructor, boolean exception) {
 			Document result = null;

@@ -84,7 +84,7 @@ public class MrMailbox {
         ret.flags         = 0; // posible flags: MESSAGE_FLAG_HAS_FROM_ID, however, this seems to be read only
         ret.post          = false; // ? true=avatar wird in gruppen nicht angezeigt
         ret.out           = ret.from_id==1; // true=outgoing message, read eg. in MessageObject.isOutOwner()
-        ret. created_by_mr= true;
+        ret.created_by_mr = true;
 
         if( type == MrMailbox.MR_MSG_TEXT ) {
             ret.message       = MrMailbox.MrMsgGetText(hMsg);
@@ -94,22 +94,16 @@ public class MrMailbox {
             TLRPC.TL_photo photo = null;
             if( !path.isEmpty() ) {
                 try {
-                    // TODO: It is very inefficient to load all photos on dialog loading! FIX ME!
-                    //photo = SendMessagesHelper.getInstance().generatePhotoSizes(path, null); // TODO: does this degrade image quality?
-
                     TLRPC.TL_photoSize photoSize = new TLRPC.TL_photoSize();
                     photoSize.w = MrMailbox.MrMsgGetParamInt(hMsg, 'w', 800);
                     photoSize.h = MrMailbox.MrMsgGetParamInt(hMsg, 'h', 800);
                     photoSize.size = 0;
                     photoSize.location = new TLRPC.TL_fileLocation();
                     photoSize.location.mr_path = path;
-                    photoSize.location.local_id = -ret.id;
+                    photoSize.location.local_id = -ret.id; // this forces the document to be searched in the cache dir
                     photoSize.type = "x";
-
-
                     photo = new TLRPC.TL_photo();
                     photo.sizes.add(photoSize);
-
                 } catch (Exception e) {
                     // the most common reason is a simple "file not found error"
                 }
@@ -119,19 +113,43 @@ public class MrMailbox {
                 ret.message = "-1";
                 ret.media = new TLRPC.TL_messageMediaPhoto();
                 ret.media.photo = photo;
-                ret.attachPath = path;
+                ret.attachPath = path; // ret.attachPathExists set later in MessageObject.checkMediaExistance()
             }
             else {
-                ret.message = "<cannot load file>";
+                ret.message = "<cannot load image>";
+            }
+        }
+        else if( type == MrMailbox.MR_MSG_AUDIO || type == MrMailbox.MR_MSG_VIDEO ) {
+            String path = MrMailbox.MrMsgGetParam(hMsg, 'f', "");
+            if( !path.isEmpty()) {
+                ret.message = "-1"; // may be misused for video editing information
+                ret.media = new TLRPC.TL_messageMediaDocument();
+                ret.media.caption = "";
+                ret.media.document = new TLRPC.TL_document();
+                ret.media.document.mr_path = path;
+                if( type == MrMailbox.MR_MSG_AUDIO ) {
+                    TLRPC.TL_documentAttributeAudio attr = new TLRPC.TL_documentAttributeAudio();
+                    attr.voice = true; // !voice = music
+                    attr.duration = MrMailbox.MrMsgGetParamInt(hMsg, 't', 0) / 1000;
+                    ret.media.document.attributes.add(attr);
+                }
+                else if( type == MrMailbox.MR_MSG_VIDEO) {
+                    TLRPC.TL_documentAttributeVideo attr = new TLRPC.TL_documentAttributeVideo();
+                    attr.duration = MrMailbox.MrMsgGetParamInt(hMsg, 't', 0) / 1000;
+                    attr.w = MrMailbox.MrMsgGetParamInt(hMsg, 'w', 0);
+                    attr.h = MrMailbox.MrMsgGetParamInt(hMsg, 'h', 0);
+                    ret.media.document.attributes.add(attr);
+                }
+
+            }
+            else {
+                ret.message = "<path missing>";
             }
         }
         else {
             ret.message = "<unsupported message type.>";
         }
-        // ret.attachPath
-        // +obj.attachPathExists
 
-        // MessageObject.contentType - ??
         return ret;
     }
 

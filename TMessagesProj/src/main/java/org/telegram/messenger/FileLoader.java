@@ -604,7 +604,10 @@ public class FileLoader {
         } else {
             if (attach instanceof TLRPC.Document) {
                 TLRPC.Document document = (TLRPC.Document) attach;
-                if (document.key != null) {
+                if( document.mr_path!=null ) {
+                    mr_path = document.mr_path;
+                }
+                else if (document.key != null) {
                     dir = getInstance().getDirectory(MEDIA_DIR_CACHE);
                 } else {
                     if (MessageObject.isVoiceDocument(document)) {
