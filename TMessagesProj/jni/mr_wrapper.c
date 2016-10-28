@@ -629,7 +629,7 @@ JNIEXPORT void Java_org_telegram_messenger_MrMailbox_MrStockAddStr(JNIEnv* env, 
 JNIEXPORT jstring Java_org_telegram_messenger_MrMailbox_MrGetVersionStr(JNIEnv *env, jclass c)
 {
 	s_init_globals(env, c);
-	const char* temp = mr_get_version_str();
+	const char* temp = mrmailbox_get_version_str();
 		jstring ret = JSTRING_NEW(temp);
 	free(temp);
 	return ret;
