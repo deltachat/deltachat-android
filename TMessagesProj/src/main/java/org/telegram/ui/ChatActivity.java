@@ -810,7 +810,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     if (getParentActivity() == null) {
                         return;
                     }
-                    createDeleteMessagesAlert(null);
+                    createDeleteMessagesAlert();
                 } else if (id == id_forward) {
                     Toast.makeText(getParentActivity(), LocaleController.getString("NotYetImplemented", R.string.NotYetImplemented), Toast.LENGTH_LONG).show();
                     /*
@@ -4789,9 +4789,8 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                         long hMsg = MrMailbox.MrMsglistGetMsgByIndex(hMsglist, a);
                             TLRPC.Message msg = MrMailbox.hMsg2Message(hMsg);
                             MessageObject msgDrawObj = new MessageObject(msg, null, true);
-                            //msgDrawObj.attachPathExists = true;
-
                             messages.add(0, msgDrawObj);
+                            messagesDict[loadIndex].put(msg.id, msgDrawObj);
                         MrMailbox.MrMsgUnref(hMsg);
                     }
 
@@ -6869,18 +6868,21 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         fixLayout();
     }
 
-    private void createDeleteMessagesAlert(final MessageObject finalSelectedObject) {
+    private void createDeleteMessagesAlert() {
         AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
-        builder.setMessage(LocaleController.formatString("AreYouSureDeleteMessages", R.string.AreYouSureDeleteMessages, LocaleController.formatPluralString("messages", finalSelectedObject != null ? 1 : selectedMessagesIds[0].size() + selectedMessagesIds[1].size())));
+        builder.setMessage(LocaleController.formatString("AreYouSureDeleteMessages", R.string.AreYouSureDeleteMessages, LocaleController.formatPluralString("messages", selectedMessagesIds[0].size() + selectedMessagesIds[1].size())));
         builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                ArrayList<Integer> ids = null;
                 for (int a = 1; a >= 0; a--) {
-                    for (HashMap.Entry<Integer, MessageObject> entry : selectedMessagesIds[a].entrySet()) {
-                        MessageObject msg = entry.getValue();
-                        int id_to_del = msg.messageOwner.id;
-                        MrMailbox.MrMailboxDeleteMsgById(MrMailbox.hMailbox, id_to_del);
+                    ArrayList<Integer> ids = new ArrayList<>(selectedMessagesIds[a].keySet());
+                    if( ids.size()>0) {
+                        for (HashMap.Entry<Integer, MessageObject> entry : selectedMessagesIds[a].entrySet()) {
+                            MessageObject msg = entry.getValue();
+                            int id_to_del = msg.messageOwner.id;
+                            MrMailbox.MrMailboxDeleteMsgById(MrMailbox.hMailbox, id_to_del);
+                        }
+                        NotificationCenter.getInstance().postNotificationName(NotificationCenter.messagesDeleted, ids, 0);
                     }
                 }
 
@@ -7141,11 +7143,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 break;
             }
             case 1: {
-                if (getParentActivity() == null) {
-                    selectedObject = null;
-                    return;
-                }
-                createDeleteMessagesAlert(selectedObject);
+                // delete by context menu; this is not supported by us, the user shall use the long-click
                 break;
             }
             case 2: {
