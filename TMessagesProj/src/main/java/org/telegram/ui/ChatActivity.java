@@ -1416,7 +1416,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
             protected void onLayout(boolean changed, int l, int t, int r, int b) {
                 super.onLayout(changed, l, t, r, b);
                 forceScrollToTop = false;
-                if (chatAdapter.isBot) {
+                /*if (chatAdapter.isBot) {
                     int childCount = getChildCount();
                     for (int a = 0; a < childCount; a++) {
                         View child = getChildAt(a);
@@ -1429,7 +1429,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                             break;
                         }
                     }
-                }
+                }*/
             }
         };
         chatListView.setTag(1);
@@ -5161,8 +5161,8 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 boolean updateChat = false;
                 boolean hasFromMe = false;
                 ArrayList<MessageObject> arr = (ArrayList<MessageObject>) args[1];
-                if (currentEncryptedChat != null && arr.size() == 1) {
-                    MessageObject obj = arr.get(0);
+                //if (currentEncryptedChat != null && arr.size() == 1) {
+                //    MessageObject obj = arr.get(0);
 
                     /* EDIT BY MR
                     if (currentEncryptedChat != null && obj.isOut() && obj.messageOwner.action != null && obj.messageOwner.action instanceof TLRPC.TL_messageEncryptedAction &&
@@ -5176,7 +5176,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                         }
                     }
                     */
-                }
+                //}
                 if (currentChat != null || inlineReturn != 0) {
                     for (int a = 0; a < arr.size(); a++) {
                         MessageObject messageObject = arr.get(a);
@@ -5344,7 +5344,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                         if (obj.type < 0 || messagesDict[0].containsKey(obj.getId())) {
                             continue;
                         }
-                        if (currentEncryptedChat != null && obj.messageOwner.media instanceof TLRPC.TL_messageMediaWebPage && obj.messageOwner.media.webpage instanceof TLRPC.TL_webPageUrlPending) {
+                        /*if (currentEncryptedChat != null && obj.messageOwner.media instanceof TLRPC.TL_messageMediaWebPage && obj.messageOwner.media.webpage instanceof TLRPC.TL_webPageUrlPending) {
                             if (webpagesToReload == null) {
                                 webpagesToReload = new HashMap<>();
                             }
@@ -5354,7 +5354,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                                 webpagesToReload.put(obj.messageOwner.media.webpage.url, arrayList);
                             }
                             arrayList.add(obj);
-                        }
+                        }*/
                         obj.checkLayout();
                         /*if (obj.messageOwner.action instanceof TLRPC.TL_messageActionChatMigrateTo) {
                             final Bundle bundle = new Bundle();
@@ -5394,10 +5394,10 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                         if (obj.getId() > 0) {
                             maxMessageId[0] = Math.min(obj.getId(), maxMessageId[0]);
                             minMessageId[0] = Math.max(obj.getId(), minMessageId[0]);
-                        } else if (currentEncryptedChat != null) {
+                        } /*else if (currentEncryptedChat != null) {
                             maxMessageId[0] = Math.max(obj.getId(), maxMessageId[0]);
                             minMessageId[0] = Math.min(obj.getId(), minMessageId[0]);
-                        }
+                        }*/
                         maxDate[0] = Math.max(maxDate[0], obj.messageOwner.date);
                         messagesDict[0].put(obj.getId(), obj);
                         ArrayList<MessageObject> dayArray = messagesByDays.get(obj.dateKey);
@@ -5483,9 +5483,9 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                         if (endReached[0]) {
                             lastVisible++;
                         }
-                        if (chatAdapter.isBot) {
+                        /*if (chatAdapter.isBot) {
                             oldCount++;
-                        }
+                        }*/
                         if (lastVisible >= oldCount || hasFromMe) {
                             newUnreadMessageCount = 0;
                             if (!firstLoading) {
@@ -5517,10 +5517,10 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                         }
                     }
                 }
-                if (!messages.isEmpty() && botUser != null && botUser.length() == 0) {
+                /*if (!messages.isEmpty() && botUser != null && botUser.length() == 0) {
                     botUser = null;
                     updateBottomOverlay();
-                }
+                }*/
                 if (updateChat) {
                     updateTitle();
                     checkAndUpdateAvatar();
@@ -5583,29 +5583,17 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
             }
         } else if (id == NotificationCenter.messagesDeleted) {
             ArrayList<Integer> markAsDeletedMessages = (ArrayList<Integer>) args[0];
-            int channelId = (Integer) args[1];
             int loadIndex = 0;
-            if (ChatObject.isChannel(currentChat)) {
-                if (channelId == 0 && mergeDialogId != 0) {
-                    loadIndex = 1;
-                } else if (channelId == currentChat.id) {
-                    loadIndex = 0;
-                } else {
-                    return;
-                }
-            } else if (channelId != 0) {
-                return;
-            }
             boolean updated = false;
             for (int a = 0; a < markAsDeletedMessages.size(); a++) {
                 Integer ids = markAsDeletedMessages.get(a);
                 MessageObject obj = messagesDict[loadIndex].get(ids);
-                if (loadIndex == 0 && info != null && info.pinned_msg_id == ids) {
+                /*if (loadIndex == 0 && info != null && info.pinned_msg_id == ids) {
                     pinnedMessageObject = null;
                     info.pinned_msg_id = 0;
-                    //MessagesStorage.getInstance().updateChannelPinnedMessage(channelId, 0);
+                    MessagesStorage.getInstance().updateChannelPinnedMessage(channelId, 0);
                     updatePinnedMessageView(true);
-                }
+                }*/
                 if (obj != null) {
                     int index = messages.indexOf(obj);
                     if (index != -1) {

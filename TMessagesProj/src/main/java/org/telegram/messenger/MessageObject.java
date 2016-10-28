@@ -59,7 +59,6 @@ public class MessageObject {
     public int audioProgressSec;
     public ArrayList<TLRPC.PhotoSize> photoThumbs;
     public VideoEditedInfo videoEditedInfo;
-    public boolean viewsReloaded;
     public boolean attachPathExists;
     public boolean mediaExists;
 
