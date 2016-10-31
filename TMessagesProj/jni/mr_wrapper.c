@@ -415,7 +415,7 @@ JNIEXPORT jint Java_org_telegram_messenger_MrMailbox_MrChatSendMedia(JNIEnv *env
 			mrparam_set_int(msg->m_param, 'h', h);
 		}
 		if( type == MR_MSG_AUDIO || type == MR_MSG_VIDEO ) {
-			mrparam_set_int(msg->m_param, 't', ms);
+			mrparam_set_int(msg->m_param, 'd', ms);
 		}
 		jint msg_id = mrchat_send_msg((mrchat_t*)hChat, msg);
 	mrmsg_unref(msg);

@@ -31,15 +31,13 @@ package org.telegram.messenger;
 
 
 import android.util.Log;
-
-import org.telegram.tgnet.ConnectionsManager;
 import org.telegram.tgnet.TLRPC;
 
 public class MrMailbox {
 
     public static long           hMailbox = 0;
     public static long           hCurrChatlist = 0;
-    private static final String  TAG = "LibreChat";
+    private static final String  TAG = "LibreChat"; // TAG is an Android convention
 
 
     // tools
@@ -130,12 +128,12 @@ public class MrMailbox {
                 if( type == MrMailbox.MR_MSG_AUDIO ) {
                     TLRPC.TL_documentAttributeAudio attr = new TLRPC.TL_documentAttributeAudio();
                     attr.voice = true; // !voice = music
-                    attr.duration = MrMailbox.MrMsgGetParamInt(hMsg, 't', 0) / 1000;
+                    attr.duration = MrMailbox.MrMsgGetParamInt(hMsg, 'd', 0) / 1000;
                     ret.media.document.attributes.add(attr);
                 }
                 else if( type == MrMailbox.MR_MSG_VIDEO) {
                     TLRPC.TL_documentAttributeVideo attr = new TLRPC.TL_documentAttributeVideo();
-                    attr.duration = MrMailbox.MrMsgGetParamInt(hMsg, 't', 0) / 1000;
+                    attr.duration = MrMailbox.MrMsgGetParamInt(hMsg, 'd', 0) / 1000;
                     attr.w = MrMailbox.MrMsgGetParamInt(hMsg, 'w', 0);
                     attr.h = MrMailbox.MrMsgGetParamInt(hMsg, 'h', 0);
                     ret.media.document.attributes.add(attr);
