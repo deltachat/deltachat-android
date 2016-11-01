@@ -3,8 +3,8 @@
 <!--Translation by iLLogical2007, DanielGroeger and everyone from https://github.com/DrKLO/Telegram/pull/129 whom I didn't notice -->
 
 <resources>
-    <string name="AppName">LibreChat</string>
-    <string name="AppNameBeta">LibreChat</string>
+    <string name="AppName">Delta Chat</string>
+    <string name="AppNameBeta">Delta Chat</string>
     <string name="LanguageName">Deutsch</string>
     <string name="LanguageNameInEnglish">German</string>
     <string name="LanguageCode">de</string>
@@ -866,7 +866,7 @@
     <string name="MyAccountExplain">Für bekannte E-Mail-Anbieter werden die weiteren Einstellungen automatisch ermittelt.</string>
     <string name="MyAccountExplain2">Manchmal muss die IMAP-/SMTP-Funktion noch in der E-Mail-Weboberfläche eingeschaltet werden.\n\nBei Problemen kann der E-Mail-Anbieter oder ein Bekannter weiterhelfen.</string>
     <string name="AccountNotConfigured">Konto nicht konfiguriert</string>
-    <string name="AboutThisProgram">Über LibreChat</string>
+    <string name="AboutThisProgram">Über Delta Chat</string>
     <string name="NotSet">Nicht gesetzt</string>
     <string name="NewChat">Neuer Chat</string>
     <string name="NewSecretChat">Neuer geheimer Chat</string>

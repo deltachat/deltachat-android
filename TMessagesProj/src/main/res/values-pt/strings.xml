@@ -3,8 +3,8 @@
 <!--https://www.transifex.com/projects/p/telegram/language/pt_PT/members/-->
 
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <string name="AppName">LibreChat</string>
-    <string name="AppNameBeta">LibreChat</string>
+    <string name="AppName">Delta Chat</string>
+    <string name="AppNameBeta">Delta Chat</string>
     <string name="LanguageName">Português</string>
     <string name="LanguageNameInEnglish">Portuguese</string>
     <string name="LanguageCode">pt</string>

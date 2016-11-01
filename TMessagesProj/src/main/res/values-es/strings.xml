@@ -3,8 +3,8 @@
 <!--Translation by Borja Campina, Edited by Victor Espinoza and Francisco Vila-->
 
 <resources>
-    <string name="AppName">LibreChat</string>
-    <string name="AppNameBeta">LibreChat</string>
+    <string name="AppName">Delta Chat</string>
+    <string name="AppNameBeta">Delta Chat</string>
     <string name="LanguageName">Español</string>
     <string name="LanguageNameInEnglish">Spanish</string>
     <string name="LanguageCode">es</string>

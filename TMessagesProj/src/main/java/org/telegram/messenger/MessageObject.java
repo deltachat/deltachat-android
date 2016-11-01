@@ -1090,6 +1090,7 @@ public class MessageObject {
         messageOwner.unread = false;
     }
 
+    /*
     public static int getUnreadFlags(TLRPC.Message message) {
         int flags = 0;
         if (!message.unread) {
@@ -1100,6 +1101,7 @@ public class MessageObject {
         }
         return flags;
     }
+    */
 
     public void setContentIsRead() {
         messageOwner.media_unread = false;

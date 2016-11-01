@@ -3,8 +3,8 @@
 
 
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <string name="AppName">LibreChat</string>
-    <string name="AppNameBeta">LibreChat</string>
+    <string name="AppName">Delta Chat</string>
+    <string name="AppNameBeta">Delta Chat</string>
     <string name="LanguageName">English</string>
     <string name="LanguageNameInEnglish" tools:keep="@string/LanguageNameInEnglish">English</string>
     <string name="LanguageCode" tools:keep="@string/LanguageCode">en</string>
@@ -867,7 +867,7 @@
     <string name="MyAccountExplain">For known e-mail providers, the following settings are determinated automatically.</string>
     <string name="MyAccountExplain2" >Sometimes, IMAP/SMPT needs to be enabled in the e-mail web frontend.\n\nOn problems, ask your e-mail-provider or your friends.</string>
     <string name="AccountNotConfigured">Account not configured</string>
-    <string name="AboutThisProgram">About LibreChat</string>
+    <string name="AboutThisProgram">AboutDelta Chat</string>
     <string name="NotSet">Not set</string>
     <string name="NewChat">New chat</string>
     <string name="MemberSg">_ member</string>

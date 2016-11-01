@@ -5538,6 +5538,10 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 removeSelfFromStack();
             }
         } else if (id == NotificationCenter.messagesRead) {
+            int back_id = MrMailbox.MrChatGetId(m_hChat);
+            MrMailbox.MrChatUnref(m_hChat);
+            MrMailbox.MrMailboxGetChatById(MrMailbox.hMailbox, back_id);
+
             SparseArray<Long> inbox = (SparseArray<Long>) args[0];
             SparseArray<Long> outbox = (SparseArray<Long>) args[1];
             boolean updated = false;
@@ -5567,11 +5571,12 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 }
                 for (int a = 0; a < messages.size(); a++) {
                     MessageObject obj = messages.get(a);
-                    if (obj.isOut() && obj.getId() > 0 && obj.getId() <= messageId) {
-                        if (!obj.isUnread()) {
+                    if (obj.isOut() && obj.getId() > 0 && obj.getId() == messageId) {
+                        /*if (!obj.isUnread()) {
                             break;
-                        }
-                        obj.setIsRead();
+                        }*/
+                        obj.messageOwner.send_state = MessageObject.MESSAGE_SEND_STATE_SENT;
+                        //obj.setIsRead();
                         updated = true;
                     }
                 }
@@ -6075,9 +6080,9 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
             }
         } else if (id == NotificationCenter.notificationsSettingsUpdated) {
             updateTitleIcons();
-            if (ChatObject.isChannel(currentChat)) {
+            /*if (ChatObject.isChannel(currentChat)) {
                 updateBottomOverlay();
-            }
+            }*/
         } else if (id == NotificationCenter.didLoadedReplyMessages) {
             long did = (Long) args[0];
             if (did == dialog_id) {
