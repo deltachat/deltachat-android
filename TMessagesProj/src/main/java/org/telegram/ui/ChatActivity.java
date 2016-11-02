@@ -508,7 +508,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.updateInterfaces);
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.didReceivedNewMessages);
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.closeChats);
-        NotificationCenter.getInstance().addObserver(this, NotificationCenter.messagesRead);
+        NotificationCenter.getInstance().addObserver(this, NotificationCenter.messagesSentOrRead);
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.messagesDeleted);
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.messageReceivedByServer);
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.messageReceivedByAck);
@@ -654,7 +654,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         NotificationCenter.getInstance().removeObserver(this, NotificationCenter.updateInterfaces);
         NotificationCenter.getInstance().removeObserver(this, NotificationCenter.didReceivedNewMessages);
         NotificationCenter.getInstance().removeObserver(this, NotificationCenter.closeChats);
-        NotificationCenter.getInstance().removeObserver(this, NotificationCenter.messagesRead);
+        NotificationCenter.getInstance().removeObserver(this, NotificationCenter.messagesSentOrRead);
         NotificationCenter.getInstance().removeObserver(this, NotificationCenter.messagesDeleted);
         NotificationCenter.getInstance().removeObserver(this, NotificationCenter.messageReceivedByServer);
         NotificationCenter.getInstance().removeObserver(this, NotificationCenter.messageReceivedByAck);
@@ -5537,50 +5537,27 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
             } else {
                 removeSelfFromStack();
             }
-        } else if (id == NotificationCenter.messagesRead) {
+        } else if (id == NotificationCenter.messagesSentOrRead) {
             int back_id = MrMailbox.MrChatGetId(m_hChat);
             MrMailbox.MrChatUnref(m_hChat);
             MrMailbox.MrMailboxGetChatById(MrMailbox.hMailbox, back_id);
 
-            SparseArray<Long> inbox = (SparseArray<Long>) args[0];
-            SparseArray<Long> outbox = (SparseArray<Long>) args[1];
+            int evt_read = (int)args[0];
+            int evt_chat_id = (int)args[1];
+            int evt_msg_id = (int)args[2];
             boolean updated = false;
-            for (int b = 0; b < inbox.size(); b++) {
-                int key = inbox.keyAt(b);
-                long messageId = inbox.get(key);
-                if (key != dialog_id) {
-                    continue;
-                }
+            if (evt_chat_id == dialog_id) {
                 for (int a = 0; a < messages.size(); a++) {
                     MessageObject obj = messages.get(a);
-                    if (!obj.isOut() && obj.getId() > 0 && obj.getId() <= (int) messageId) {
-                        if (!obj.isUnread()) {
-                            break;
-                        }
-                        obj.setIsRead();
-                        updated = true;
-                    }
-                }
-                break;
-            }
-            for (int b = 0; b < outbox.size(); b++) {
-                int key = outbox.keyAt(b);
-                int messageId = (int) ((long) outbox.get(key));
-                if (key != dialog_id) {
-                    continue;
-                }
-                for (int a = 0; a < messages.size(); a++) {
-                    MessageObject obj = messages.get(a);
-                    if (obj.isOut() && obj.getId() > 0 && obj.getId() == messageId) {
-                        /*if (!obj.isUnread()) {
-                            break;
-                        }*/
+                    if (obj.isOut() && obj.getId() == evt_msg_id) {
                         obj.messageOwner.send_state = MessageObject.MESSAGE_SEND_STATE_SENT;
-                        //obj.setIsRead();
+                        if (evt_read==MrMailbox.MR_EVENT_MSG_READ) {
+                            obj.setIsRead();
+                        }
                         updated = true;
+                        break;
                     }
                 }
-                break;
             }
             if (updated) {
                 updateVisibleRows();

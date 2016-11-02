@@ -31,8 +31,6 @@ package org.telegram.messenger;
 
 
 import android.util.Log;
-import android.util.SparseArray;
-
 import org.telegram.tgnet.TLRPC;
 
 public class MrMailbox {
@@ -170,7 +168,8 @@ public class MrMailbox {
     public final static int MR_EVENT_MSGS_UPDATED   = 2000;
     public final static int MR_EVENT_IS_EMAIL_KNOWN = 2010;
     public final static int MR_EVENT_MSG_DELIVERED  = 3000;
-    public static long MrCallback(int event, final long data1, final long data2)
+    public final static int MR_EVENT_MSG_READ       = 3010;
+    public static long MrCallback(final int event, final long data1, final long data2)
     {
         switch(event) {
             case MR_EVENT_MSGS_UPDATED:
@@ -185,15 +184,13 @@ public class MrMailbox {
                 return 0;
 
             case MR_EVENT_MSG_DELIVERED:
+            case MR_EVENT_MSG_READ:
                 AndroidUtilities.runOnUIThread(new Runnable() {
                     @Override
                     public void run() {
                         reloadMainChatlist();
-
-                        SparseArray<Long> inbox = new SparseArray<>();
-                        SparseArray<Long> outbox = new SparseArray<>();
-                        outbox.put((int)data1, data2);
-                        NotificationCenter.getInstance().postNotificationName(NotificationCenter.messagesRead, inbox, outbox);
+                        NotificationCenter.getInstance().postNotificationName(NotificationCenter.messagesSentOrRead, event, (int)data1, (int)data2);
+                        NotificationCenter.getInstance().postNotificationName(NotificationCenter.dialogsNeedReload);
                     }
                 });
                 return 0;

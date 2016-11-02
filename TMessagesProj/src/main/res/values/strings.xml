@@ -867,7 +867,7 @@
     <string name="MyAccountExplain">For known e-mail providers, the following settings are determinated automatically.</string>
     <string name="MyAccountExplain2" >Sometimes, IMAP/SMPT needs to be enabled in the e-mail web frontend.\n\nOn problems, ask your e-mail-provider or your friends.</string>
     <string name="AccountNotConfigured">Account not configured</string>
-    <string name="AboutThisProgram">AboutDelta Chat</string>
+    <string name="AboutThisProgram">About Delta Chat</string>
     <string name="NotSet">Not set</string>
     <string name="NewChat">New chat</string>
     <string name="MemberSg">_ member</string>
@@ -882,5 +882,5 @@
     <string name="StrangersHint">To start a chat, click on the reply-arrows.</string>
     <string name="NotYetImplemented">This function is not yet available in this version.</string>
     <string name="CannotLoadFile">Cannot load file.</string>
-    <string name="SendDefaultStatus">Send with my Delta Chat Messenger</string>
+    <string name="DefaultStatusText">Sent with my Delta Chat Messenger</string>
 </resources>
