@@ -74,7 +74,6 @@
     <string name="ActionChannelChangedPhoto">Kanaalfoto bijgewerkt</string>
     <string name="ActionChannelRemovedPhoto">Kanaalfoto verwijderd</string>
     <string name="ActionChannelChangedTitle">Kanaalnaam gewijzigd naar un2</string>
-    <string name="ChannelLinkInfo">Andere Telegram-gebruikers kunnen lid worden van je groep door deze link te openen.</string>
     <string name="ChannelJoinTo">Lid worden van kanaal \'%1$s\'?</string>
     <string name="ChannelCantOpenPrivate">Sorry, deze chat is niet beschikbaar.</string>
     <string name="ChannelCantOpenBanned">Helaas ben je geblokkeerd van deelname in publieke groepen.</string>
@@ -226,8 +225,6 @@
     <string name="NotificationGroupKickMember">%1$s heeft %3$s verwijderd uit de groep %2$s</string>
     <string name="NotificationGroupKickYou">%1$s heeft je verwijderd uit de groep %2$s</string>
     <string name="NotificationGroupLeftMember">%1$s heeft de groep %2$s verlaten</string>
-    <string name="NotificationContactJoined">%1$s heeft nu Telegram!</string>
-    <string name="NotificationUnrecognizedDevice">%1$s,\nEr is op je account ingelogd vanaf een nieuw apparaat op %2$s\n\nApparaat: %3$s\nLocatie: %4$s\n\nAls jij dit niet was, kun je die sessie beëindigen via Instellingen - Privacy en veiligheid - Sessies.\n\nAls je dat denkt dat iemand anders zonder jouw toestemming is ingelogd kun je twee-staps-verificatie activeren via instellingen - privacy en veiligheid.\n\nBedankt,\nHet Telegram-team</string>
     <string name="NotificationContactNewPhoto">%1$s heeft zijn/haar profielfoto gewijzigd</string>
     <string name="NotificationInvitedToGroupByLink">%1$s is nu lid van de groep %2$s via uitnodigingslink</string>
     <string name="Reply">Antwoord</string>
@@ -237,7 +234,7 @@
     <!--contacts view-->
     <string name="SelectContact">Contact kiezen</string>
     <string name="NoContacts">Nog geen contacten</string>
-    <string name="InviteText">Hey, zullen we overstappen op Telegram: https://telegram.org/dl</string>
+    <string name="InviteText">Hey, zullen we overstappen op Delta Chat: https://messenger.b44t.com</string>
     <string name="TodayAt">om</string>
     <string name="YesterdayAt">gisteren om</string>
     <string name="Online">online</string>
@@ -268,7 +265,6 @@
     <string name="RevokeLink">Link intrekken</string>
     <string name="CopyLink">Link kopiëren</string>
     <string name="ShareLink">Link delen</string>
-    <string name="LinkInfo">Andere Telegram-gebruikers kunnen lid worden van je groep door deze link te openen.</string>
     <!--set admins view-->
     <!--group info view-->
     <string name="SharedMedia">Gedeelde media</string>
@@ -297,8 +293,6 @@
     <string name="EncryptionKey">Encryptiesleutel</string>
     <string name="MessageLifetime">Zelfvernietigingstimer</string>
     <string name="ShortMessageLifetimeForever">Uit</string>
-    <string name="EncryptionKeyDescription">Deze afbeelding en tekst zijn afgeleid van de encryptiesleutel voor deze geheime chat met <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>.<![CDATA[<br><br>]]>Als dit er hetzelfde uitziet op het apparaat van <![CDATA[<b>]]>%2$s<![CDATA[</b>]]>, dan is end-to-end-encryptie gegarandeerd.<![CDATA[<br><br>]]>Lees meer op telegram.org</string>
-    <string name="EncryptionKeyLink">https://telegram.org/faq#secret-chats</string>
     <string name="NumberUnknown">Onbekend</string>
     <string name="Info">Info</string>
     <!--usernames-->
@@ -414,7 +408,7 @@
     <string name="CacheSettings">Cache-instellingen</string>
     <string name="LocalDatabase">Lokale database</string>
     <string name="LocalDatabaseClear">Gecachet tekstberichten wissen?</string>
-    <string name="LocalDatabaseInfo">Het opschonen van de lokale database zal de tekst van gecachet berichten verwijderen en de database comprimeren om ruimte te besparen. Telegram heeft wat ruimte nodig om te kunnen functioneren, dus de databasegrootte zal nooit nul worden.\n\nDit kan enkele minuten duren.</string>
+    <string name="LocalDatabaseInfo">Het opschonen van de lokale database zal de tekst van gecachet berichten verwijderen en de database comprimeren om ruimte te besparen. Delta Chat heeft wat ruimte nodig om te kunnen functioneren, dus de databasegrootte zal nooit nul worden.\n\nDit kan enkele minuten duren.</string>
     <string name="ClearMediaCache">Cache opschonen</string>
     <string name="CacheClear">Opschonen</string>
     <string name="CalculatingSize">Berekenen...</string>
@@ -431,7 +425,7 @@
     <!--passcode view-->
     <string name="Passcode">Toegangscode-vergrendeling</string>
     <string name="ChangePasscode">Toegangscode wijzigen</string>
-    <string name="ChangePasscodeInfo">Als je een toegangscode instelt verschijnt er een slotje op de chatspagina. Tik erop om Telegram te vergrendelen of te ontgrendelen.\n\nLet op: vergeet je de toegangscode dan zul je de app moeten verwijderen en herinstalleren.</string>
+    <string name="ChangePasscodeInfo">Als je een toegangscode instelt verschijnt er een slotje op de chatspagina. Tik erop om Delta Chat te vergrendelen of te ontgrendelen.\n\nLet op: vergeet je de toegangscode dan zul je de app moeten verwijderen en herinstalleren.</string>
     <string name="PasscodePIN">PIN</string>
     <string name="PasscodePassword">Wachtwoord</string>
     <string name="EnterCurrentPasscode">Huidige toegangscode invoeren</string>
@@ -526,12 +520,8 @@
     <string name="VideoCaption">Video-onderschrift</string>
     <string name="Caption">Onderschrift</string>
     <!--password view-->
-    <string name="RestorePasswordNoEmailTitle">Sorry</string>
-    <string name="RestorePasswordNoEmailText">Omdat je geen herstel-e-mailadres hebt opgegeven voor je wachtwoord zul je bij verlies van je wachtwoord je account moeten resetten.</string>
-    <string name="RestoreEmailSent">We hebben een herstelcode naar je opgegeven e-mailadres gestuurd:\n\n%1$s</string>
     <string name="RestoreEmailSentInfo">Controleer je e-mail en geef de 6-cijferige code in die we je hebben gestuurd.</string>
     <string name="RestoreEmailTrouble">Kun je je e-mail niet benaderen %1$s?</string>
-    <string name="RestoreEmailTroubleText">Bij verlies van je wachtwoord zul je je account moeten resetten.</string>
     <string name="ResetMyAccount">ACCOUNT RESETTEN</string>
     <string name="ResetMyAccountText">Al je chats, berichten en alle andere data gaan verloren als je verder gaat met de account-reset.</string>
     <string name="ResetMyAccountWarning">Waarschuwing</string>
@@ -642,7 +632,6 @@
     <string name="ActionAddUserSelf">un1 is terug in de groep</string>
     <string name="ActionAddUserSelfMega">un1 is lid van de groep</string>
     <string name="ActionAddUserSelfYou">Je keerde terug naar de groep</string>
-    <string name="UnsupportedMedia">Dit bericht wordt niet ondersteund door jouw versie van Telegram. Werk Telegram bij om dit bericht te bekijken: https://telegram.org/update</string>
     <string name="AttachPhoto">Foto</string>
     <string name="AttachVideo">Video</string>
     <string name="AttachGif">GIF</string>
@@ -666,7 +655,7 @@
     <string name="NoPlayerInstalled">Je hebt geen mediaspeler. Installeer een mediaspeler om door te gaan.</string>
     <string name="NoMailInstalled">E-mail ons op sms@stel.com en vertel ons over je probleem.</string>
     <string name="NoHandleAppInstalled">Je hebt geen apps die bestandstype \'%1$s\' kunnen verwerken, gelieve een compatibele app te installeren</string>
-    <string name="InviteUser">Deze gebruiker heeft nog geen Telegram. Wil je een uitnodiging sturen?</string>
+    <string name="InviteUser">Deze gebruiker heeft nog geen Delta Chat. Wil je een uitnodiging sturen?</string>
     <string name="AreYouSure">Weet je het zeker?</string>
     <string name="AddToTheGroupTitle">%1$s toevoegen aan de groep %2$s?</string>
     <string name="AddToTheGroupForwardCount">Aantal recente berichten om door te sturen:</string>
@@ -692,30 +681,27 @@
     <string name="SendContactToGroup">Contact delen met %1$s?</string>
     <string name="ForwardMessagesToGroup">Berichten doorsturen naar %1$s?</string>
     <string name="RaiseToSpeakAlert">Wil je \"Houd bij oor\" inschakelen voor spraakberichten?</string>
-    <string name="AllowReadSms">Sta het ontvangen van SMS toe zodat we automatisch je inlogcode kunnen invoeren.</string>
-    <string name="AllowReadCall">Sta het ontvangen van oproepen toe zodat we automatisch je inlogcode kunnen invoeren.</string>
-    <string name="AllowReadCallAndSms">Sta het ontvangen van oproepen en SMS toe zodat we automatisch je inlogcode kunnen invoeren.</string>
     <!--permissions-->
-    <string name="PermissionContacts">LibreChat heeft toegang tot je contacten nodig zodat je kan chatten met je vrienden vanaf al je apparaten.</string>
-    <string name="PermissionStorage">LibreChat heeft toegang tot je opslaggeheugen nodig zodat je foto\'s, video\'s, muziek en andere media kunt opslaan en versturen.</string>
-    <string name="PermissionNoAudio">LibreChat heeft toegang tot je microfoon nodig om spraakberichten te kunnen verzenden.</string>
-    <string name="PermissionNoLocation">LibreChat heeft toegang tot je locatie nodig om deze te kunnen delen met je vrienden.</string>
-    <string name="PermissionNoLocationPosition">LibreChat heeft toegang tot je locatie nodig.</string>
+    <string name="PermissionContacts">Delta Chat heeft toegang tot je contacten nodig zodat je kan chatten met je vrienden vanaf al je apparaten.</string>
+    <string name="PermissionStorage">Delta Chat heeft toegang tot je opslaggeheugen nodig zodat je foto\'s, video\'s, muziek en andere media kunt opslaan en versturen.</string>
+    <string name="PermissionNoAudio">Delta Chat heeft toegang tot je microfoon nodig om spraakberichten te kunnen verzenden.</string>
+    <string name="PermissionNoLocation">Delta Chat heeft toegang tot je locatie nodig om deze te kunnen delen met je vrienden.</string>
+    <string name="PermissionNoLocationPosition">Delta Chat heeft toegang tot je locatie nodig.</string>
     <string name="PermissionOpenSettings">INSTELLINGEN</string>
     <!--Intro view-->
-    <string name="Page1Title">Telegram</string>
+    <string name="Page1Title">Delta Chat</string>
     <string name="Page3Title">Gratis</string>
     <string name="Page4Title">Veilig</string>
     <string name="Page5Title">Krachtig</string>
     <string name="Page6Title">In de cloud</string>
     <string name="Page7Title">Privé</string>
     <string name="Page1Message">\'s Werelds <![CDATA[<b>snelste</b>]]> berichtendienst.<![CDATA[<br/>]]>Het is <![CDATA[<b>gratis</b>]]> en <![CDATA[<b>veilig</b>]]>.</string>
-    <string name="Page2Message"><![CDATA[<b>Telegram</b>]]> bezorgt berichten sneller dan<![CDATA[<br/>]]>elke andere applicatie.</string>
-    <string name="Page3Message"><![CDATA[<b>Telegram</b>]]> is altijd gratis. Geen advertenties.<![CDATA[<br/>]]>Geen abonnementskosten.</string>
-    <string name="Page4Message"><![CDATA[<b>Telegram</b>]]> beveiligd je berichten<![CDATA[<br/>]]>tegen aanvallen van hackers.</string>
-    <string name="Page5Message"><![CDATA[<b>Telegram</b>]]> beperkt je niet in de grootte van<![CDATA[<br/>]]>je media of chats.</string>
-    <string name="Page6Message"><![CDATA[<b>Telegram</b>]]> biedt toegang tot je berichten<![CDATA[<br/>]]>vanaf meerdere apparaten.</string>
-    <string name="Page7Message"><![CDATA[<b>Telegram</b>]]> berichten zijn sterk versleuteld<![CDATA[<br/>]]>en kunnen zichzelf vernietigen.</string>
+    <string name="Page2Message"><![CDATA[<b>Delta Chat</b>]]> bezorgt berichten sneller dan<![CDATA[<br/>]]>elke andere applicatie.</string>
+    <string name="Page3Message"><![CDATA[<b>Delta Chat</b>]]> is altijd gratis. Geen advertenties.<![CDATA[<br/>]]>Geen abonnementskosten.</string>
+    <string name="Page4Message"><![CDATA[<b>Delta Chat</b>]]> beveiligd je berichten<![CDATA[<br/>]]>tegen aanvallen van hackers.</string>
+    <string name="Page5Message"><![CDATA[<b>Delta Chat</b>]]> beperkt je niet in de grootte van<![CDATA[<br/>]]>je media of chats.</string>
+    <string name="Page6Message"><![CDATA[<b>Delta Chat</b>]]> biedt toegang tot je berichten<![CDATA[<br/>]]>vanaf meerdere apparaten.</string>
+    <string name="Page7Message"><![CDATA[<b>Delta Chat</b>]]> berichten zijn sterk versleuteld<![CDATA[<br/>]]>en kunnen zichzelf vernietigen.</string>
     <string name="StartMessaging">Begin met chatten</string>
     <!--plural-->
     <string name="Members_zero">%1$d leden</string>

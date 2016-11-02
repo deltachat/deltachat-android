@@ -74,7 +74,6 @@
     <string name="ActionChannelChangedPhoto">Foto do canal alterada</string>
     <string name="ActionChannelRemovedPhoto">Foto do canal removida</string>
     <string name="ActionChannelChangedTitle">Nome do canal alterado para un2</string>
-    <string name="ChannelLinkInfo">Qualquer um com Telegram instalado poderá entrar no seu canal abrindo este link.</string>
     <string name="ChannelJoinTo">Você deseja entrar no canal \'%1$s\'?</string>
     <string name="ChannelCantOpenPrivate">Desculpe, esta conversa não pode mais ser acessada.</string>
     <string name="ChannelCantOpenBanned">Infelizmente você foi banido de participar de grupos públicos.</string>
@@ -226,8 +225,6 @@
     <string name="NotificationGroupKickMember">%1$s removeu %3$s do grupo %2$s</string>
     <string name="NotificationGroupKickYou">%1$s removeu você do grupo %2$s</string>
     <string name="NotificationGroupLeftMember">%1$s saiu do grupo %2$s</string>
-    <string name="NotificationContactJoined">%1$s entrou para o Telegram!</string>
-    <string name="NotificationUnrecognizedDevice">%1$s,\nNós detectamos que alguém acessou a sua conta a partir de um novo aparelho em %2$s\n\nAparelho: %3$s\nLocalização: %4$s\n\nSe não foi você, você pode ir em Configurações - Privacidade e Segurança - Sessões, e terminar aquela sessão.\n\nSe você acha que alguém acessou a sua conta contra a sua vontade, você pode habilitar a verificação em duas etapas nas configurações de Privacidade e Segurança.\n\nAtenciosamente,\nEquipe Telegram</string>
     <string name="NotificationContactNewPhoto">%1$s atualizou a foto do perfil</string>
     <string name="NotificationInvitedToGroupByLink">%1$s entrou para o grupo %2$s via link de convite</string>
     <string name="Reply">Responder</string>
@@ -237,7 +234,7 @@
     <!--contacts view-->
     <string name="SelectContact">Selecionar Contato</string>
     <string name="NoContacts">Ainda não há contatos</string>
-    <string name="InviteText">Ei, vamos mudar para o Telegram: https://telegram.org/dl</string>
+    <string name="InviteText">Ei, vamos mudar para o Delta Chat: https://messenger.b44t.com</string>
     <string name="TodayAt">às</string>
     <string name="YesterdayAt">ontem às</string>
     <string name="Online">online</string>
@@ -268,7 +265,6 @@
     <string name="RevokeLink">Desativar Link</string>
     <string name="CopyLink">Copiar Link</string>
     <string name="ShareLink">Compartilhar Link</string>
-    <string name="LinkInfo">Qualquer um com Telegram instalado poderá entrar no seu grupo abrindo este link.</string>
     <!--set admins view-->
     <!--group info view-->
     <string name="SharedMedia">Mídia Compartilhada</string>
@@ -297,8 +293,6 @@
     <string name="EncryptionKey">Chave criptográfica</string>
     <string name="MessageLifetime">Tempo de autodestruição</string>
     <string name="ShortMessageLifetimeForever">Desativado</string>
-    <string name="EncryptionKeyDescription">Essa imagem e texto foram derivadas da chave criptográfica para este chat secreto com <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>.<![CDATA[<br><br>]]>Se você vê o mesmo no dispositivo de <![CDATA[<b>]]>%2$s\'s<![CDATA[</b>]]>, a criptografia ponta a ponta está garantida.<![CDATA[<br><br>]]>Leia mais em telegram.org</string>
-    <string name="EncryptionKeyLink">https://telegram.org/faq/br#chats-secretos</string>
     <string name="NumberUnknown">Desconhecido</string>
     <string name="Info">Info</string>
     <!--usernames-->
@@ -414,7 +408,7 @@
     <string name="CacheSettings">Configurações de Cache</string>
     <string name="LocalDatabase">Banco de Dados Local</string>
     <string name="LocalDatabaseClear">Limpar todos os textos em cache?</string>
-    <string name="LocalDatabaseInfo">Limpar o banco de dados local apagará todos os textos das mensagens em cache e compactará o banco de dados para economizar espaço. O Telegram precisa de alguns dados para trabalhar, então o tamanho do banco não vai chegar a zero.\n\nEssa operação pode demorar alguns minutos para ser concluída.</string>
+    <string name="LocalDatabaseInfo">Limpar o banco de dados local apagará todos os textos das mensagens em cache e compactará o banco de dados para economizar espaço. O Delta Chat precisa de alguns dados para trabalhar, então o tamanho do banco não vai chegar a zero.\n\nEssa operação pode demorar alguns minutos para ser concluída.</string>
     <string name="ClearMediaCache">Limpar Cache</string>
     <string name="CacheClear">Limpar</string>
     <string name="CalculatingSize">Calculando...</string>
@@ -526,12 +520,8 @@
     <string name="VideoCaption">Legenda do Vídeo</string>
     <string name="Caption">Legenda</string>
     <!--password view-->
-    <string name="RestorePasswordNoEmailTitle">Desculpe</string>
-    <string name="RestorePasswordNoEmailText">Como você não indicou um e-mail de recuperação quando configurou a sua senha, as únicas opções restantes são lembrar a senha ou apagar a sua conta.</string>
-    <string name="RestoreEmailSent">O código de recuperação foi enviado para o e-mail fornecido: \n\n%1$s</string>
     <string name="RestoreEmailSentInfo">Por favor, verifique o seu e-mail e digite aqui o código de 6 dígitos recebido.</string>
     <string name="RestoreEmailTrouble">Está tendo problemas para acessar seu e-mail %1$s?</string>
-    <string name="RestoreEmailTroubleText">Se você não puder acessar o seu e-mail, as suas únicas opções são lembrar a senha ou apagar a sua conta.</string>
     <string name="ResetMyAccount">APAGAR MINHA CONTA</string>
     <string name="ResetMyAccountText">Se você prosseguir e apagar a sua conta, você perderá todos os seus chats e mensagens, assim como todas as suas mídias e arquivos compartilhados.</string>
     <string name="ResetMyAccountWarning">Aviso</string>
@@ -642,7 +632,6 @@
     <string name="ActionAddUserSelf">un1 retornou ao grupo</string>
     <string name="ActionAddUserSelfMega">un1 entrou no grupo</string>
     <string name="ActionAddUserSelfYou">Você retornou ao grupo</string>
-    <string name="UnsupportedMedia">Esta mensagem não é suportada na sua versão do Telegram. Para visualizá-la atualize seu aplicativo em https://telegram.org/update</string>
     <string name="AttachPhoto">Foto</string>
     <string name="AttachVideo">Vídeo</string>
     <string name="AttachGif">GIF</string>
@@ -666,7 +655,7 @@
     <string name="NoPlayerInstalled">Você não possui um reprodutor de vídeo, instale um para continuar</string>
     <string name="NoMailInstalled">Por favor, envie um email para sms@stel.com e conte-nos sobre seu problema.</string>
     <string name="NoHandleAppInstalled">Você não possui um aplicativo que suporte o tipo de arquivo \'%1$s\', por favor instale um para continuar</string>
-    <string name="InviteUser">Este usuário ainda não possui Telegram, deseja enviar um convite?</string>
+    <string name="InviteUser">Este usuário ainda não possui Delta Chat, deseja enviar um convite?</string>
     <string name="AreYouSure">Você tem certeza?</string>
     <string name="AddToTheGroupTitle">Adcione %1$s ao chat %2$s?</string>
     <string name="AddToTheGroupForwardCount">Número de mensagens antigas para encaminhar:</string>
@@ -692,30 +681,27 @@
     <string name="SendContactToGroup">Enviar contato para %1$s?</string>
     <string name="ForwardMessagesToGroup">Encaminhar mensagem para %1$s?</string>
     <string name="RaiseToSpeakAlert">Gostaria de habilitar o \"Levantar para Falar\" para mensagens de voz?</string>
-    <string name="AllowReadSms">Permita o acesso às SMS ao Telegram, assim podemos automaticamente adicionar o código para você.</string>
-    <string name="AllowReadCall">Permita o acesso às ligações ao Telegram, assim podemos automaticamente adicionar o código para você.</string>
-    <string name="AllowReadCallAndSms">Permita o acesso às SMS e ligações ao Telegram, assim podemos automaticamente adicionar o código para você.</string>
     <!--permissions-->
-    <string name="PermissionContacts">LibreChat precisa acessar seus contatos para que você possa se conectar aos seus amigos em todos os seus dispositivos.</string>
-    <string name="PermissionStorage">LibreChat precisa acessar seu armazenamento para que você possa enviar e salvar fotos, vídeos, músicas e outras mídias.</string>
-    <string name="PermissionNoAudio">LibreChat precisa acessar seu microfone para que você possa enviar mensagens de voz.</string>
-    <string name="PermissionNoLocation">LibreChat precisa acessar sua localização para que você possa compartilhar com seus amigos.</string>
-    <string name="PermissionNoLocationPosition">O LibreChat precisa acessar sua localização</string>
+    <string name="PermissionContacts">Delta Chat precisa acessar seus contatos para que você possa se conectar aos seus amigos em todos os seus dispositivos.</string>
+    <string name="PermissionStorage">Delta Chat precisa acessar seu armazenamento para que você possa enviar e salvar fotos, vídeos, músicas e outras mídias.</string>
+    <string name="PermissionNoAudio">Delta Chat precisa acessar seu microfone para que você possa enviar mensagens de voz.</string>
+    <string name="PermissionNoLocation">Delta Chat precisa acessar sua localização para que você possa compartilhar com seus amigos.</string>
+    <string name="PermissionNoLocationPosition">O Delta Chat precisa acessar sua localização</string>
     <string name="PermissionOpenSettings">CONFIGURAÇÕES</string>
     <!--Intro view-->
-    <string name="Page1Title">Telegram</string>
+    <string name="Page1Title">Delta Chat</string>
     <string name="Page3Title">Gratuito</string>
     <string name="Page4Title">Seguro</string>
     <string name="Page5Title">Poderoso</string>
     <string name="Page6Title">Baseado na nuvem</string>
     <string name="Page7Title">Privado</string>
     <string name="Page1Message">O mais <![CDATA[<b>rápido</b>]]> aplicativo de mensagem do mundo. <![CDATA[<br/>]]>É <![CDATA[<b>gratuito</b>]]> e <![CDATA[<b>seguro</b>]]>.</string>
-    <string name="Page2Message">O <![CDATA[<b>Telegram</b>]]> envia mensagens mais rápido<![CDATA[<br/>]]>que qualquer outro aplicativo.</string>
-    <string name="Page3Message">O <![CDATA[<b>Telegram</b>]]> é grátis para sempre. <![CDATA[<br/>]]>Sem propagandas. Sem taxas.</string>
-    <string name="Page4Message">O <![CDATA[<b>Telegram</b>]]> mantém suas mensagens<![CDATA[<br/>]]>seguras de ataques de hackers.</string>
-    <string name="Page5Message">O <![CDATA[<b>Telegram</b>]]> não possui limites no tamanho<![CDATA[<br/>]]>de seus arquivos e conversas.</string>
-    <string name="Page6Message">O <![CDATA[<b>Telegram</b>]]> permite você acessar suas<![CDATA[<br/>]]> mensagens de múltiplos dispositivos.</string>
-    <string name="Page7Message">O <![CDATA[<b>Telegram</b>]]> possui mensagens fortemente<![CDATA[<br/>]]>encriptadas e podem se auto-destruir.</string>
+    <string name="Page2Message">O <![CDATA[<b>Delta Chat</b>]]> envia mensagens mais rápido<![CDATA[<br/>]]>que qualquer outro aplicativo.</string>
+    <string name="Page3Message">O <![CDATA[<b>Delta Chat</b>]]> é grátis para sempre. <![CDATA[<br/>]]>Sem propagandas. Sem taxas.</string>
+    <string name="Page4Message">O <![CDATA[<b>Delta Chat</b>]]> mantém suas mensagens<![CDATA[<br/>]]>seguras de ataques de hackers.</string>
+    <string name="Page5Message">O <![CDATA[<b>Delta Chat</b>]]> não possui limites no tamanho<![CDATA[<br/>]]>de seus arquivos e conversas.</string>
+    <string name="Page6Message">O <![CDATA[<b>Delta Chat</b>]]> permite você acessar suas<![CDATA[<br/>]]> mensagens de múltiplos dispositivos.</string>
+    <string name="Page7Message">O <![CDATA[<b>Delta Chat</b>]]> possui mensagens fortemente<![CDATA[<br/>]]>encriptadas e podem se auto-destruir.</string>
     <string name="StartMessaging">Comece a conversar</string>
     <!--plural-->
     <string name="Members_zero">%1$d membros</string>

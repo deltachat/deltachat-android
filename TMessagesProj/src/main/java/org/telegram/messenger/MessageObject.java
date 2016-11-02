@@ -251,7 +251,7 @@ public class MessageObject {
                             messageText = LocaleController.formatString("MessageLifetimeRemoved", R.string.MessageLifetimeRemoved, UserObject.getFirstName(fromUser));
                         }
                     }
-                } else if (message.action instanceof TLRPC.TL_messageActionLoginUnknownLocation) {
+                /*} else if (message.action instanceof TLRPC.TL_messageActionLoginUnknownLocation) {
                     String date;
                     long time = ((long) message.date) * 1000;
                     if (LocaleController.getInstance().formatterDay != null && LocaleController.getInstance().formatterYear != null) {
@@ -271,7 +271,7 @@ public class MessageObject {
                     String name = to_user != null ? UserObject.getFirstName(to_user) : "";
                     messageText = LocaleController.formatString("NotificationUnrecognizedDevice", R.string.NotificationUnrecognizedDevice, name, date, message.action.title, message.action.address);
                 } else if (message.action instanceof TLRPC.TL_messageActionUserJoined) {
-                    messageText = LocaleController.formatString("NotificationContactJoined", R.string.NotificationContactJoined, UserObject.getUserName(fromUser));
+                    messageText = LocaleController.formatString("NotificationContactJoined", R.string.NotificationContactJoined, UserObject.getUserName(fromUser));*/
                 } else if (message.action instanceof TLRPC.TL_messageActionUserUpdatedPhoto) {
                     messageText = LocaleController.formatString("NotificationContactNewPhoto", R.string.NotificationContactNewPhoto, UserObject.getUserName(fromUser));
                 } else if (message.action instanceof TLRPC.TL_messageEncryptedAction) {
@@ -326,8 +326,8 @@ public class MessageObject {
                 messageText = LocaleController.getString("AttachLocation", R.string.AttachLocation);
             } else if (message.media instanceof TLRPC.TL_messageMediaContact) {
                 messageText = LocaleController.getString("AttachContact", R.string.AttachContact);
-            } else if (message.media instanceof TLRPC.TL_messageMediaUnsupported) {
-                messageText = LocaleController.getString("UnsupportedMedia", R.string.UnsupportedMedia);
+            /*} else if (message.media instanceof TLRPC.TL_messageMediaUnsupported) {
+                messageText = LocaleController.getString("UnsupportedMedia", R.string.UnsupportedMedia);*/
             } else if (message.media instanceof TLRPC.TL_messageMediaDocument) {
                 if (isSticker()) {
                     String sch = getStrickerChar();
@@ -414,8 +414,8 @@ public class MessageObject {
                 type = 14;
             } else if (messageOwner.media instanceof TLRPC.TL_messageMediaContact) {
                 type = 12;
-            } else if (messageOwner.media instanceof TLRPC.TL_messageMediaUnsupported) {
-                type = 0;
+            /*} else if (messageOwner.media instanceof TLRPC.TL_messageMediaUnsupported) {
+                type = 0;*/
             } else if (messageOwner.media instanceof TLRPC.TL_messageMediaDocument) {
                 if (messageOwner.media.document.mime_type != null) {
                     if (isGifDocument(messageOwner.media.document)) {
@@ -842,7 +842,7 @@ public class MessageObject {
                 //messageOwner instanceof TLRPC.TL_messageForwarded_old2 ||
                 messageOwner instanceof TLRPC.TL_message_secret ||
                 isOut() && messageOwner.send_state != MESSAGE_SEND_STATE_SENT ||
-                messageOwner.id < 0 || messageOwner.media instanceof TLRPC.TL_messageMediaUnsupported);
+                messageOwner.id < 0 /*|| messageOwner.media instanceof TLRPC.TL_messageMediaUnsupported*/);
 
         if (useManualParse) {
             addLinks(messageText);

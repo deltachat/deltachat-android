@@ -20,14 +20,12 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Typeface;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Vibrator;
-import android.telephony.TelephonyManager;
 import android.text.Editable;
 import android.text.InputFilter;
 import android.text.InputType;
@@ -43,7 +41,6 @@ import android.view.inputmethod.EditorInfo;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.FrameLayout;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
@@ -810,6 +807,7 @@ public class LoginActivity extends BaseFragment {
 
             String country = null;
 
+            /*
             try {
                 TelephonyManager telephonyManager = (TelephonyManager) ApplicationLoader.applicationContext.getSystemService(Context.TELEPHONY_SERVICE);
                 if (telephonyManager != null) {
@@ -818,6 +816,7 @@ public class LoginActivity extends BaseFragment {
             } catch (Exception e) {
                 FileLog.e("tmessages", e);
             }
+            */
 
             if (country != null) {
                 String countryName = languageMap.get(country);
@@ -876,6 +875,7 @@ public class LoginActivity extends BaseFragment {
 
         @Override
         public void onNextPressed() {
+            /*
             if (getParentActivity() == null || nextPressed) {
                 return;
             }
@@ -944,7 +944,7 @@ public class LoginActivity extends BaseFragment {
             final Bundle params = new Bundle();
             params.putString("phone", "+" + codeField.getText() + phoneField.getText());
             try {
-                params.putString("ephone", "+"  /*+PhoneFormat.stripExceptNumbers(codeField.getText().toString()) + " " + PhoneFormat.stripExceptNumbers(phoneField.getText().toString())*/);
+                params.putString("ephone", "+"  +PhoneFormat.stripExceptNumbers(codeField.getText().toString()) + " " + PhoneFormat.stripExceptNumbers(phoneField.getText().toString()));
             } catch (Exception e) {
                 FileLog.e("tmessages", e);
                 params.putString("ephone", "+" + phone);
@@ -981,6 +981,7 @@ public class LoginActivity extends BaseFragment {
                     });
                 }
             }, ConnectionsManager.RequestFlagFailOnServerErrors | ConnectionsManager.RequestFlagWithoutLogin | ConnectionsManager.RequestFlagTryDifferentDc | ConnectionsManager.RequestFlagEnableUnauthorized);
+            */
         }
 
         @Override
@@ -1796,6 +1797,7 @@ public class LoginActivity extends BaseFragment {
             cancelButton.setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View view) {
+                    /*
                     if (has_recovery) {
                         needShowProgress();
                         TLRPC.TL_auth_requestPasswordRecovery req = new TLRPC.TL_auth_requestPasswordRecovery();
@@ -1848,6 +1850,7 @@ public class LoginActivity extends BaseFragment {
                         AndroidUtilities.hideKeyboard(codeField);
                         needShowAlert(LocaleController.getString("RestorePasswordNoEmailTitle", R.string.RestorePasswordNoEmailTitle), LocaleController.getString("RestorePasswordNoEmailText", R.string.RestorePasswordNoEmailText));
                     }
+                    */
                 }
             });
 
@@ -2136,6 +2139,7 @@ public class LoginActivity extends BaseFragment {
             cancelButton.setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View view) {
+                    /*
                     AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
                     builder.setMessage(LocaleController.getString("RestoreEmailTroubleText", R.string.RestoreEmailTroubleText));
                     builder.setTitle(LocaleController.getString("RestorePasswordNoEmailTitle", R.string.RestorePasswordNoEmailTitle));
@@ -2150,6 +2154,7 @@ public class LoginActivity extends BaseFragment {
                         dialog.setCanceledOnTouchOutside(false);
                         dialog.setCancelable(false);
                     }
+                    */
                 }
             });
         }

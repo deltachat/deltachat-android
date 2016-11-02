@@ -599,9 +599,9 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                     fragment.setChatInfo(info);
                     presentFragment(fragment);
                 } else if (position == settingsKeyRow) {
-                    Bundle args = new Bundle();
-                    args.putInt("chat_id", (int) (dialog_id >> 32));
-                    presentFragment(new IdenticonActivity(args));
+                    //Bundle args = new Bundle();
+                    //args.putInt("chat_id", (int) (dialog_id >> 32));
+                    //presentFragment(new IdenticonActivity(args));
                 } else if (position == settingsTimerRow) {
                     //showDialog(AndroidUtilities.buildTTLAlert(getParentActivity(), currentEncryptedChat).create());
                 } else if (position == settingsNotificationsRow) {

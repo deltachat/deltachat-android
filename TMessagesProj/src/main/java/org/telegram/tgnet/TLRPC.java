@@ -810,15 +810,6 @@ public class TLRPC {
 		}
 	}
 
-	public static class TL_messageMediaUnsupported extends MessageMedia {
-		public static int constructor = 0x9f84f49e;
-
-
-		public void serializeToStream(AbstractSerializedData stream) {
-			stream.writeInt32(constructor);
-		}
-	}
-
 	public static class TL_messageMediaEmpty extends MessageMedia {
 		public static int constructor = 0x3ded6320;
 

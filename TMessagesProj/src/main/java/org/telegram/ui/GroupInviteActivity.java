@@ -302,12 +302,13 @@ public class GroupInviteActivity extends BaseFragment implements NotificationCen
                     ((TextInfoPrivacyCell) view).setText("");
                     view.setBackgroundResource(R.drawable.greydivider_bottom);
                 } else if (i == linkInfoRow) {
-                    TLRPC.Chat chat = MessagesController.getInstance().getChat(chat_id);
+                    /*TLRPC.Chat chat = MessagesController.getInstance().getChat(chat_id);
                     if (ChatObject.isChannel(chat) && !chat.megagroup) {
                         ((TextInfoPrivacyCell) view).setText(LocaleController.getString("ChannelLinkInfo", R.string.ChannelLinkInfo));
                     } else {
                         ((TextInfoPrivacyCell) view).setText(LocaleController.getString("LinkInfo", R.string.LinkInfo));
-                    }
+                    }*/
+                    ((TextInfoPrivacyCell) view).setText(LocaleController.getString("NotYetImplemented", R.string.NotYetImplemented));
                     view.setBackgroundResource(R.drawable.greydivider);
                 }
             } else if (type == 2) {
