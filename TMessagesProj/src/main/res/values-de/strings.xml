@@ -868,4 +868,5 @@
     <string name="StrangersHint">Ein Klick auf die Antwort-Pfeile startet einen Chat.</string>
     <string name="NotYetImplemented">Diese Funktion ist in dieser Version noch nicht eingebaut.</string>
     <string name="DefaultStatusText">Mit meinem Delta Chat Messenger gesendet</string>
+    <string name="SubjectPrefix">Kurznachricht</string>
 </resources>

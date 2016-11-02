@@ -317,6 +317,7 @@ public class ApplicationLoader extends Application {
         MrMailbox.MrStockAddStr(11, LocaleController.getString("AttachAudio", R.string.AttachAudio));
         MrMailbox.MrStockAddStr(12, LocaleController.getString("AttachDocument", R.string.AttachDocument));
         MrMailbox.MrStockAddStr(13, LocaleController.getString("DefaultStatusText", R.string.DefaultStatusText));
+        MrMailbox.MrStockAddStr(14, LocaleController.getString("SubjectPrefix", R.string.SubjectPrefix));
 
         applicationHandler = new Handler(applicationContext.getMainLooper());
 
