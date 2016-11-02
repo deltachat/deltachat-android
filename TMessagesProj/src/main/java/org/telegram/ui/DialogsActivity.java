@@ -29,19 +29,17 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewOutlineProvider;
 import android.view.ViewTreeObserver;
-import android.view.animation.AccelerateDecelerateInterpolator;
+//import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import org.telegram.messenger.AndroidUtilities;
 import org.telegram.messenger.BuildVars;
 import org.telegram.messenger.ChatObject;
-import org.telegram.messenger.DialogObject;
 import org.telegram.messenger.ImageLoader;
 import org.telegram.messenger.LocaleController;
 import org.telegram.messenger.MessageObject;
@@ -56,7 +54,6 @@ import org.telegram.messenger.MessagesController;
 import org.telegram.messenger.NotificationCenter;
 import org.telegram.messenger.R;
 import org.telegram.messenger.UserConfig;
-import org.telegram.ui.ActionBar.BottomSheet;
 import org.telegram.ui.Adapters.DialogsAdapter;
 import org.telegram.ui.Adapters.DialogsSearchAdapter;
 import org.telegram.ui.Cells.HintDialogCell;
@@ -86,15 +83,15 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
     //private ProgressBar progressView; // EDIT BY MR
     private LinearLayout emptyView;
     private ActionBarMenuItem passcodeItem;
-    private ImageView floatingButton;
+    //private ImageView floatingButton;
 
     private AlertDialog permissionDialog;
 
-    private int prevPosition;
-    private int prevTop;
-    private boolean scrollUpdated;
-    private boolean floatingHidden;
-    private final AccelerateDecelerateInterpolator floatingInterpolator = new AccelerateDecelerateInterpolator();
+    //private int prevPosition;
+    //private int prevTop;
+    //private boolean scrollUpdated;
+    //private boolean floatingHidden;
+    //private final AccelerateDecelerateInterpolator floatingInterpolator = new AccelerateDecelerateInterpolator();
 
     private boolean checkPermission = true;
 
@@ -210,9 +207,9 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
                         //progressView.setVisibility(View.GONE); // EDIT BY MR
                         emptyView.setVisibility(View.GONE);
                     }
-                    if (!onlySelect) {
+                    /*if (!onlySelect) {
                         floatingButton.setVisibility(View.GONE);
-                    }
+                    }*/
                 }
                 updatePasscodeButton();
             }
@@ -242,12 +239,12 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
                         //progressView.setVisibility(View.GONE); // EDIT BY MR
                         listView.setEmptyView(emptyView);
                     }
-                    if (!onlySelect) {
+                    /*if (!onlySelect) {
                         floatingButton.setVisibility(View.VISIBLE);
                         floatingHidden = true;
                         floatingButton.setTranslationY(AndroidUtilities.dp(100));
                         hideFloatingButton(false);
-                    }
+                    }*/
                     if (listView.getAdapter() != dialogsAdapter) {
                         listView.setAdapter(dialogsAdapter);
                         dialogsAdapter.notifyDataSetChanged();
@@ -504,7 +501,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
         frameLayout.addView(progressView, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER));
         */
 
-        floatingButton = new ImageView(context);
+        /*floatingButton = new ImageView(context);
         floatingButton.setVisibility(onlySelect ? View.GONE : View.VISIBLE);
         floatingButton.setScaleType(ImageView.ScaleType.CENTER);
         floatingButton.setBackgroundResource(R.drawable.floating_states);
@@ -530,7 +527,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
                 args.putBoolean("destroyAfterSelect", true);
                 presentFragment(new ContactsActivity(args));
             }
-        });
+        });*/
 
         listView.setOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
@@ -558,7 +555,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
                     }
                 }
 
-                if (floatingButton.getVisibility() != View.GONE) {
+                /*if (floatingButton.getVisibility() != View.GONE) {
                     final View topChild = recyclerView.getChildAt(0);
                     int firstViewTop = 0;
                     if (topChild != null) {
@@ -579,7 +576,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
                     prevPosition = firstVisibleItem;
                     prevTop = firstViewTop;
                     scrollUpdated = true;
-                }
+                }*/
             }
         });
 
@@ -753,6 +750,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
+        /*
         if (!onlySelect && floatingButton != null) {
             floatingButton.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
                 @Override
@@ -769,6 +767,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
                 }
             });
         }
+        */
     }
 
     @Override
@@ -902,6 +901,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
         }
     }
 
+    /*
     private void hideFloatingButton(boolean hide) {
         if (floatingHidden == hide) {
             return;
@@ -912,6 +912,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
         floatingButton.setClickable(!hide);
         animator.start();
     }
+    */
 
     private void updateVisibleRows(int mask) {
         if (listView == null) {
