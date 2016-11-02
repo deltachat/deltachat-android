@@ -650,69 +650,75 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                                     text = textSequence.toString();
                                 }
                             }
-                            String subject = intent.getStringExtra(Intent.EXTRA_SUBJECT);
-                            Pattern r = Pattern.compile("geo: ?(-?\\d+\\.\\d+),(-?\\d+\\.\\d+)(,|\\?z=)(-?\\d+)");
-                            Matcher m = r.matcher(text);
-                            if(m.find()){
-                                sendingLocation = new TLRPC.TL_messageMediaGeo();
-                                sendingLocation.geo = new TLRPC.TL_geoPoint();
-                                sendingLocation.geo.lat = Double.parseDouble(m.group(1));
-                                sendingLocation.geo._long = Double.parseDouble(m.group(2));
+                            if( text == null )
+                            {
+                                // added by MR, the Telegram-FOSS crashes on selecing an image in the gallery - why?
+                                Toast.makeText(this, LocaleController.getString("NotYetImplemented", R.string.NotYetImplemented), Toast.LENGTH_LONG).show();
                             }
-                            else if (text != null && text.length() != 0) {
-                                if ((text.startsWith("http://") || text.startsWith("https://")) && subject != null && subject.length() != 0) {
-                                    text = subject + "\n" + text;
+                            else {
+                                String subject = intent.getStringExtra(Intent.EXTRA_SUBJECT);
+                                Pattern r = Pattern.compile("geo: ?(-?\\d+\\.\\d+),(-?\\d+\\.\\d+)(,|\\?z=)(-?\\d+)");
+                                Matcher m = r.matcher(text);
+                                if (m.find()) {
+                                    sendingLocation = new TLRPC.TL_messageMediaGeo();
+                                    sendingLocation.geo = new TLRPC.TL_geoPoint();
+                                    sendingLocation.geo.lat = Double.parseDouble(m.group(1));
+                                    sendingLocation.geo._long = Double.parseDouble(m.group(2));
+                                } else if (text != null && text.length() != 0) {
+                                    if ((text.startsWith("http://") || text.startsWith("https://")) && subject != null && subject.length() != 0) {
+                                        text = subject + "\n" + text;
+                                    }
+                                    sendingText = text;
+                                } else if (subject != null && subject.length() > 0) {
+                                    sendingText = subject;
                                 }
-                                sendingText = text;
-                            } else if (subject != null && subject.length() > 0) {
-                                sendingText = subject;
-                            }
 
-                            Parcelable parcelable = intent.getParcelableExtra(Intent.EXTRA_STREAM);
-                            if (parcelable != null) {
-                                String path;
-                                if (!(parcelable instanceof Uri)) {
-                                    parcelable = Uri.parse(parcelable.toString());
-                                }
-                                Uri uri = (Uri) parcelable;
-                                if (uri != null) {
-                                    if (AndroidUtilities.isInternalUri(uri)) {
-                                        error = true;
+                                Parcelable parcelable = intent.getParcelableExtra(Intent.EXTRA_STREAM);
+                                if (parcelable != null) {
+                                    String path;
+                                    if (!(parcelable instanceof Uri)) {
+                                        parcelable = Uri.parse(parcelable.toString());
                                     }
-                                }
-                                if (!error) {
-                                    if (uri != null && (type != null && type.startsWith("image/") || uri.toString().toLowerCase().endsWith(".jpg"))) {
-                                        if (photoPathsArray == null) {
-                                            photoPathsArray = new ArrayList<>();
+                                    Uri uri = (Uri) parcelable;
+                                    if (uri != null) {
+                                        if (AndroidUtilities.isInternalUri(uri)) {
+                                            error = true;
                                         }
-                                        photoPathsArray.add(uri);
-                                    } else {
-                                        path = AndroidUtilities.getPath(uri);
-                                        if (path != null) {
-                                            if (path.startsWith("file:")) {
-                                                path = path.replace("file://", "");
+                                    }
+                                    if (!error) {
+                                        if (uri != null && (type != null && type.startsWith("image/") || uri.toString().toLowerCase().endsWith(".jpg"))) {
+                                            if (photoPathsArray == null) {
+                                                photoPathsArray = new ArrayList<>();
                                             }
-                                            if (type != null && type.startsWith("video/")) {
-                                                videoPath = path;
-                                            } else {
-                                                if (documentsPathsArray == null) {
-                                                    documentsPathsArray = new ArrayList<>();
-                                                    documentsOriginalPathsArray = new ArrayList<>();
-                                                }
-                                                documentsPathsArray.add(path);
-                                                documentsOriginalPathsArray.add(uri.toString());
-                                            }
+                                            photoPathsArray.add(uri);
                                         } else {
-                                            if (documentsUrisArray == null) {
-                                                documentsUrisArray = new ArrayList<>();
+                                            path = AndroidUtilities.getPath(uri);
+                                            if (path != null) {
+                                                if (path.startsWith("file:")) {
+                                                    path = path.replace("file://", "");
+                                                }
+                                                if (type != null && type.startsWith("video/")) {
+                                                    videoPath = path;
+                                                } else {
+                                                    if (documentsPathsArray == null) {
+                                                        documentsPathsArray = new ArrayList<>();
+                                                        documentsOriginalPathsArray = new ArrayList<>();
+                                                    }
+                                                    documentsPathsArray.add(path);
+                                                    documentsOriginalPathsArray.add(uri.toString());
+                                                }
+                                            } else {
+                                                if (documentsUrisArray == null) {
+                                                    documentsUrisArray = new ArrayList<>();
+                                                }
+                                                documentsUrisArray.add(uri);
+                                                documentsMimeType = type;
                                             }
-                                            documentsUrisArray.add(uri);
-                                            documentsMimeType = type;
                                         }
                                     }
+                                } else if (sendingText == null && sendingLocation == null) {
+                                    error = true;
                                 }
-                            } else if (sendingText == null && sendingLocation == null) {
-                                error = true;
                             }
                         }
                         if (error) {
