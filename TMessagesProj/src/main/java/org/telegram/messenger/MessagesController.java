@@ -201,7 +201,6 @@ public class MessagesController implements NotificationCenter.NotificationCenter
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.FileDidLoaded);
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.FileDidFailedLoad);
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.messageReceivedByServer);
-        addSupportUser();
         SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("Notifications", Activity.MODE_PRIVATE);
         enableJoined = preferences.getBoolean("EnableContactJoined", true);
 
@@ -289,26 +288,6 @@ public class MessagesController implements NotificationCenter.NotificationCenter
             }
         }
         return true;
-    }
-
-    public void addSupportUser() {
-        TLRPC.TL_userForeign_old2 user = new TLRPC.TL_userForeign_old2();
-        user.phone = "333";
-        user.id = 333000;
-        user.first_name = "Telegram";
-        user.last_name = "";
-        user.status = null;
-        user.photo = new TLRPC.TL_userProfilePhotoEmpty();
-        putUser(user, true);
-
-        user = new TLRPC.TL_userForeign_old2();
-        user.phone = "42777";
-        user.id = 777000;
-        user.first_name = "Telegram";
-        user.last_name = "Notifications";
-        user.status = null;
-        user.photo = new TLRPC.TL_userProfilePhotoEmpty();
-        putUser(user, true);
     }
 
     public static TLRPC.InputUser getInputUser(TLRPC.User user) {
@@ -560,7 +539,6 @@ public class MessagesController implements NotificationCenter.NotificationCenter
             currentDeleteTaskRunnable = null;
         }
 
-        addSupportUser();
         NotificationCenter.getInstance().postNotificationName(NotificationCenter.dialogsNeedReload);
     }
 

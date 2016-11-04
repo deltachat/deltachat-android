@@ -51,7 +51,6 @@ public class LocaleController {
     public FastDateFormat formatterMonth;
     public FastDateFormat formatterYear;
     public FastDateFormat formatterMonthYear;
-    public FastDateFormat formatterYearMax;
     public FastDateFormat chatDate;
     public FastDateFormat chatFullDate;
 
@@ -822,8 +821,7 @@ public class LocaleController {
         nameDisplayOrder = lang.toLowerCase().equals("ko") ? 2 : 1;
 
         formatterMonth = createFormatter(locale, getStringInternal("formatterMonth", R.string.formatterMonth), "dd MMM");
-        formatterYear = createFormatter(locale, getStringInternal("formatterYear", R.string.formatterYear), "dd.MM.yy");
-        formatterYearMax = createFormatter(locale, getStringInternal("formatterYearMax", R.string.formatterYearMax), "dd.MM.yyyy");
+        formatterYear = createFormatter(locale, getStringInternal("formatterYear", R.string.formatterYear), "dd.MM.yyyy");
         chatDate = createFormatter(locale, getStringInternal("chatDate", R.string.chatDate), "d MMMM");
         chatFullDate = createFormatter(locale, getStringInternal("chatFullDate", R.string.chatFullDate), "d MMMM yyyy");
         formatterWeek = createFormatter(locale, getStringInternal("formatterWeek", R.string.formatterWeek), "EEE");

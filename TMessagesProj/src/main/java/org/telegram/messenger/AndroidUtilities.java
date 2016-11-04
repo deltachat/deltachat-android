@@ -1104,7 +1104,7 @@ public class AndroidUtilities {
         }
         File storageDir = null;
         if (Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())) {
-            storageDir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), "Telegram");
+            storageDir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), "Delta Chat");
             if (!storageDir.mkdirs()) {
                 if (!storageDir.exists()){
                     FileLog.d("tmessages", "failed to create directory");

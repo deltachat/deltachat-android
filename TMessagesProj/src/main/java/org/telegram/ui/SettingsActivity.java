@@ -121,7 +121,7 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
     private int supportSectionRow;
     private int supportSectionRow2;
     private int askQuestionRow;
-    private int telegramFaqRow;
+    private int helpRow;
     private int privacyPolicyRow;
     private int sendLogsRow;
     private int clearLogsRow;
@@ -231,7 +231,7 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
         mobileDownloadRow = -1;//rowCount++;
         wifiDownloadRow = -1;//rowCount++;
         roamingDownloadRow = -1;//rowCount++;
-        saveToGalleryRow = rowCount++;
+        saveToGalleryRow = -1;//rowCount++; -- for now, we do not use this option, this results in confusing folders ("AppName" and "AppName Images" etc.); instead, for now, the user can use the option to manually save a media
         cacheRow = rowCount++;
 
         messagesSectionRow = rowCount++;
@@ -251,7 +251,7 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
         supportSectionRow = rowCount++;
         supportSectionRow2 = rowCount++;
         askQuestionRow = -1; // EDIT BY MR -- rowCount++;
-        telegramFaqRow = rowCount++;
+        helpRow = rowCount++;
         privacyPolicyRow = -1; // EDIT BY MR -- rowCount++;
         sendLogsRow = -1; // EDIT BY MR
         clearLogsRow = -1; // EDIT BY MR
@@ -513,11 +513,7 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
                     builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
                     showDialog(builder.create());
                     */
-                } else if (i == telegramFaqRow) {
-                    /* EDIT BY MR
-                    Browser.openUrl(getParentActivity(), LocaleController.getString("TelegramFaqUrl", R.string.TelegramFaqUrl));
-                    */
-                    // EDIT BY MR
+                } else if (i == helpRow) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
                     builder.setTitle(LocaleController.getString("AppName", R.string.AppName) + " " + getVersion());
                     builder.setMessage(MrMailbox.MrMailboxGetInfo(MrMailbox.hMailbox)+" Frontend based upon Telegram for Android.");
@@ -528,7 +524,6 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
                         }
                     });
                     showDialog(builder.create());
-                    // /EDIT BY MR
                 }
                 else if (i == privacyPolicyRow) {
                     /* EDIT BY MR
@@ -1271,7 +1266,7 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
             return i == textSizeRow || i == enableAnimationsRow || i == notificationRow || i == backgroundRow || i == numberRow ||
                     i == askQuestionRow || i == sendLogsRow || i == sendByEnterRow || i == autoplayGifsRow || i == privacyRow || i == wifiDownloadRow ||
                     i == mobileDownloadRow || i == clearLogsRow || i == roamingDownloadRow || i == languageRow || i == usernameRow ||
-                    i == switchBackendButtonRow || i == telegramFaqRow || i == contactsSortRow || i == contactsReimportRow || i == saveToGalleryRow ||
+                    i == switchBackendButtonRow || i == helpRow || i == contactsSortRow || i == contactsReimportRow || i == saveToGalleryRow ||
                     i == stickersRow || i == cacheRow || i == raiseToSpeakRow || i == privacyPolicyRow || i == customTabsRow || i == directShareRow || i == versionRow;
         }
 
@@ -1356,7 +1351,7 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
                     textCell.setText(LocaleController.getString("PrivacySettings", R.string.PrivacySettings), true);
                 } else if (i == switchBackendButtonRow) {
                     textCell.setText("Switch Backend", true);
-                } else if (i == telegramFaqRow) {
+                } else if (i == helpRow) {
                     textCell.setText(LocaleController.getString("AboutThisProgram", R.string.AboutThisProgram), true);
                 } else if (i == contactsReimportRow) {
                     textCell.setText(LocaleController.getString("ImportContacts", R.string.ImportContacts), true);
@@ -1551,7 +1546,7 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
                 return 1;
             } else if (i == enableAnimationsRow || i == sendByEnterRow || i == saveToGalleryRow || i == autoplayGifsRow || i == raiseToSpeakRow || i == customTabsRow || i == directShareRow) {
                 return 3;
-            } else if (i == notificationRow || i == backgroundRow || i == askQuestionRow || i == sendLogsRow || i == privacyRow || i == clearLogsRow || i == switchBackendButtonRow || i == telegramFaqRow || i == contactsReimportRow || i == textSizeRow || i == languageRow || i == contactsSortRow || i == stickersRow || i == cacheRow || i == privacyPolicyRow) {
+            } else if (i == notificationRow || i == backgroundRow || i == askQuestionRow || i == sendLogsRow || i == privacyRow || i == clearLogsRow || i == switchBackendButtonRow || i == helpRow || i == contactsReimportRow || i == textSizeRow || i == languageRow || i == contactsSortRow || i == stickersRow || i == cacheRow || i == privacyPolicyRow) {
                 return 2;
             } else if (i == versionRow) {
                 return 5;

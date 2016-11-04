@@ -507,8 +507,6 @@
     <string name="BlurOff">Aus</string>
     <string name="BlurLinear">Linear</string>
     <string name="BlurRadial">Radial</string>
-    <string name="AreYouSureDeletePhoto">Möchtest du wirklich dieses Bild löschen?</string>
-    <string name="AreYouSureDeleteVideo">Möchtest du wirklich dieses Video löschen?</string>
     <string name="DiscardChanges">Änderungen verwerfen?</string>
     <string name="ClearSearch">Suchverlauf löschen?</string>
     <string name="ClearButton">Löschen</string>
@@ -820,8 +818,7 @@
     <!--date formatters-->
     <string name="formatterMonthYear">MMMM yyyy</string>
     <string name="formatterMonth">dd MMM</string>
-    <string name="formatterYear">dd.MM.yy</string>
-    <string name="formatterYearMax">dd.MM.yyyy</string>
+    <string name="formatterYear">dd.MM.yyyy</string>
     <string name="chatDate">d MMMM</string>
     <string name="chatFullDate">d MMMM, yyyy</string>
     <string name="formatterWeek">EEE</string>
@@ -868,5 +865,5 @@
     <string name="StrangersHint">Ein Klick auf die Antwort-Pfeile startet einen Chat.</string>
     <string name="NotYetImplemented">Diese Funktion ist in dieser Version noch nicht eingebaut.</string>
     <string name="DefaultStatusText">Mit meinem Delta Chat Messenger gesendet</string>
-    <string name="SubjectPrefix">Kurznachricht</string>
+    <string name="SubjectPrefix">Sofortnachricht</string>
 </resources>

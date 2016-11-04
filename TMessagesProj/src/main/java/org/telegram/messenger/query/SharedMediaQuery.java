@@ -16,8 +16,10 @@ import org.telegram.messenger.ChatObject;
 import org.telegram.messenger.ImageLoader;
 import org.telegram.messenger.MessageObject;
 import org.telegram.messenger.MessagesController;
+import org.telegram.messenger.MrMailbox;
 import org.telegram.messenger.NotificationCenter;
 import org.telegram.messenger.FileLog;
+import org.telegram.messenger.Utilities;
 import org.telegram.tgnet.ConnectionsManager;
 import org.telegram.tgnet.NativeByteBuffer;
 import org.telegram.tgnet.RequestDelegate;
@@ -85,6 +87,25 @@ public class SharedMediaQuery {
     }
 
     public static void getMediaCount(final long uid, final int type, final int classGuid, boolean fromCache) {
+
+        Utilities.globalQueue.postRunnable(new Runnable() {
+            @Override
+            public void run() {
+
+                int[] media = new int[0];
+                if( type == SharedMediaQuery.MEDIA_PHOTOVIDEO ) {
+                    media = MrMailbox.MrMailboxGetChatMedia(MrMailbox.hMailbox, (int)uid, MrMailbox.MR_MSG_IMAGE, MrMailbox.MR_MSG_VIDEO);
+                }
+
+                NotificationCenter.getInstance().postNotificationName(NotificationCenter.mediaCountDidLoaded,
+                            uid, media.length, false /*not from cache*/, type, media);
+
+
+            }
+        });
+
+
+        /*
         int lower_part = (int)uid;
         if (fromCache || lower_part == 0) {
             getMediaCountDatabase(uid, type, classGuid);
@@ -135,6 +156,7 @@ public class SharedMediaQuery {
             });
             ConnectionsManager.getInstance().bindRequestToGuid(reqId, classGuid);
         }
+        */
     }
 
     public static int getMediaType(TLRPC.Message message) {
@@ -200,23 +222,6 @@ public class SharedMediaQuery {
         }
     }
 
-    private static void processLoadedMediaCount(final int count, final long uid, final int type, final int classGuid, final boolean fromCache) {
-        AndroidUtilities.runOnUIThread(new Runnable() {
-            @Override
-            public void run() {
-                int lower_part = (int) uid;
-                if (fromCache && count == -1 && lower_part != 0) {
-                    getMediaCount(uid, type, classGuid, false);
-                } else {
-                    if (!fromCache) {
-                        putMediaCountDatabase(uid, type, count);
-                    }
-                    NotificationCenter.getInstance().postNotificationName(NotificationCenter.mediaCountDidLoaded, uid, (fromCache && count == -1 ? 0 : count), fromCache, type);
-                }
-            }
-        });
-    }
-
     private static void putMediaCountDatabase(final long uid, final int type, final int count) {
         /*
         MessagesStorage.getInstance().getStorageQueue().postRunnable(new Runnable() {
@@ -230,39 +235,6 @@ public class SharedMediaQuery {
                     state2.bindInteger(3, count);
                     state2.step();
                     state2.dispose();
-                } catch (Exception e) {
-                    FileLog.e("tmessages", e);
-                }
-            }
-        });
-        */
-    }
-
-    private static void getMediaCountDatabase(final long uid, final int type, final int classGuid) {
-        /*
-        MessagesStorage.getInstance().getStorageQueue().postRunnable(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    int count = -1;
-                    SQLiteCursor cursor = MessagesStorage.getInstance().getDatabase().queryFinalized(String.format(Locale.US, "SELECT count FROM media_counts_v2 WHERE uid = %d AND type = %d LIMIT 1", uid, type));
-                    if (cursor.next()) {
-                        count = cursor.intValue(0);
-                    }
-                    cursor.dispose();
-                    int lower_part = (int)uid;
-                    if (count == -1 && lower_part == 0) {
-                        cursor = MessagesStorage.getInstance().getDatabase().queryFinalized(String.format(Locale.US, "SELECT COUNT(mid) FROM media_v2 WHERE uid = %d AND type = %d LIMIT 1", uid, type));
-                        if (cursor.next()) {
-                            count = cursor.intValue(0);
-                        }
-                        cursor.dispose();
-
-                        if (count != -1) {
-                            putMediaCountDatabase(uid, type, count);
-                        }
-                    }
-                    processLoadedMediaCount(count, uid, type, classGuid, true);
                 } catch (Exception e) {
                     FileLog.e("tmessages", e);
                 }

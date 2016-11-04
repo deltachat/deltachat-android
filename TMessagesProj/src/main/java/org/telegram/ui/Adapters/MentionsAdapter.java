@@ -55,9 +55,9 @@ public class MentionsAdapter extends BaseSearchAdapterRecycler {
     private ArrayList<String> searchResultCommands;
     private ArrayList<String> searchResultCommandsHelp;
     private ArrayList<TLRPC.User> searchResultCommandsUsers;
-    private ArrayList<TLRPC.BotInlineResult> searchResultBotContext;
-    private TLRPC.TL_inlineBotSwitchPM searchResultBotContextSwitch;
-    private HashMap<String, TLRPC.BotInlineResult> searchResultBotContextById;
+    //private ArrayList<TLRPC.BotInlineResult> searchResultBotContext;
+    //private TLRPC.TL_inlineBotSwitchPM searchResultBotContextSwitch;
+    //private HashMap<String, TLRPC.BotInlineResult> searchResultBotContextById;
     private MentionsAdapterDelegate delegate;
     private HashMap<Integer, TLRPC.BotInfo> botInfo;
     private int resultStartPosition;
@@ -709,9 +709,9 @@ public class MentionsAdapter extends BaseSearchAdapterRecycler {
 
     @Override
     public int getItemCount() {
-        if (searchResultBotContext != null) {
+        /*if (searchResultBotContext != null) {
             return searchResultBotContext.size() + (searchResultBotContextSwitch != null ? 1 : 0);
-        } else if (searchResultUsernames != null) {
+        } else */ if (searchResultUsernames != null) {
             return searchResultUsernames.size();
         } else if (searchResultHashtags != null) {
             return searchResultHashtags.size();
@@ -723,18 +723,18 @@ public class MentionsAdapter extends BaseSearchAdapterRecycler {
 
     @Override
     public int getItemViewType(int position) {
-        if (searchResultBotContext != null) {
+        /*if (searchResultBotContext != null) {
             if (position == 0 && searchResultBotContextSwitch != null) {
                 return 2;
             }
             return 1;
-        } else {
+        } else */ {
             return 0;
         }
     }
 
     public Object getItem(int i) {
-        if (searchResultBotContext != null) {
+        /*if (searchResultBotContext != null) {
             if (searchResultBotContextSwitch != null) {
                 if (i == 0) {
                     return searchResultBotContextSwitch;
@@ -746,7 +746,7 @@ public class MentionsAdapter extends BaseSearchAdapterRecycler {
                 return null;
             }
             return searchResultBotContext.get(i);
-        } else if (searchResultUsernames != null) {
+        } else */ if (searchResultUsernames != null) {
             if (i < 0 || i >= searchResultUsernames.size()) {
                 return null;
             }
@@ -781,7 +781,7 @@ public class MentionsAdapter extends BaseSearchAdapterRecycler {
     }*/
 
     public boolean isBotContext() {
-        return searchResultBotContext != null;
+        return false; //searchResultBotContext != null;
     }
 
     public boolean isMediaLayout() {
@@ -810,7 +810,7 @@ public class MentionsAdapter extends BaseSearchAdapterRecycler {
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        if (searchResultBotContext != null) {
+        /*if (searchResultBotContext != null) {
             boolean hasTop = searchResultBotContextSwitch != null;
             if (holder.getItemViewType() == 2) {
                 if (hasTop) {
@@ -822,7 +822,7 @@ public class MentionsAdapter extends BaseSearchAdapterRecycler {
                 }
                 ((ContextLinkCell) holder.itemView).setLink(searchResultBotContext.get(position), contextMedia, position != searchResultBotContext.size() - 1, hasTop && position == 0);
             }
-        } else {
+        } else*/ {
             if (searchResultUsernames != null) {
                 ((MentionCell) holder.itemView).setUser(searchResultUsernames.get(position));
             } else if (searchResultHashtags != null) {

@@ -508,8 +508,6 @@
     <string name="BlurOff">Desativado</string>
     <string name="BlurLinear">Linear</string>
     <string name="BlurRadial">Radial</string>
-    <string name="AreYouSureDeletePhoto">Você tem certeza que deseja apagar esta foto?</string>
-    <string name="AreYouSureDeleteVideo">Você tem certeza que deseja apagar este vídeo?</string>
     <string name="DiscardChanges">Descartar mudanças?</string>
     <string name="ClearSearch">Limpar histórico de busca?</string>
     <string name="ClearButton">Limpar</string>
@@ -821,8 +819,7 @@
     <!--date formatters-->
     <string name="formatterMonthYear">MMMM yyyy</string>
     <string name="formatterMonth">dd MMM</string>
-    <string name="formatterYear">dd.MM.yy</string>
-    <string name="formatterYearMax">dd.MM.yyyy</string>
+    <string name="formatterYear">dd.MM.yyyy</string>
     <string name="chatDate">d MMMM</string>
     <string name="chatFullDate">d MMMM, yyyy</string>
     <string name="formatterWeek">EEE</string>

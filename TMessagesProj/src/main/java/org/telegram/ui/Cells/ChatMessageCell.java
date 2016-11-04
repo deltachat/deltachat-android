@@ -776,10 +776,10 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
             if (imagePressed) {
                 /*if (currentMessageObject.isSecretPhoto()) {
                     imagePressed = false;
-                } else*/ if (currentMessageObject.isSendError()) {
+                } else if (currentMessageObject.isSendError()) {
                     imagePressed = false;
                     result = false;
-                } else if (currentMessageObject.type == 8 && buttonState == -1 && MediaController.getInstance().canAutoplayGifs() && photoImage.getAnimation() == null) {
+                } else*/ if (currentMessageObject.type == 8 && buttonState == -1 && MediaController.getInstance().canAutoplayGifs() && photoImage.getAnimation() == null) {
                     imagePressed = false;
                     result = false;
                 }
@@ -888,6 +888,9 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
         }
         if (!result) {
             result = checkPhotoImageMotionEvent(event);
+            if( result ) {
+                result = true;
+            }
         }
 
         if (event.getAction() == MotionEvent.ACTION_CANCEL) {
@@ -3280,7 +3283,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
         boolean fromBot = currentMessageObject.messageOwner.params != null && currentMessageObject.messageOwner.params.containsKey("query_id");
 
         if (documentAttachType == DOCUMENT_ATTACH_TYPE_AUDIO || documentAttachType == DOCUMENT_ATTACH_TYPE_MUSIC) {
-            if (currentMessageObject.isOut() && currentMessageObject.isSending() || currentMessageObject.isSendError() && fromBot) {
+            /*if ((currentMessageObject.isOut() && currentMessageObject.isSending()) || (currentMessageObject.isSendError() && fromBot)) {
                 MediaController.getInstance().addLoadingFileObserver(currentMessageObject.messageOwner.attachPath, currentMessageObject, this);
                 buttonState = 4;
                 radialProgress.setBackground(getDrawableForCurrentState(), !fromBot, animated);
@@ -3290,7 +3293,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                     progress = 1.0f;
                 }
                 radialProgress.setProgress(progress != null ? progress : 0, false);
-            } else {
+            } else*/ {
                 if (fileExists) {
                     MediaController.getInstance().removeLoadingFileObserver(this);
                     boolean playing = MediaController.getInstance().isPlayingAudio(currentMessageObject);
@@ -3356,7 +3359,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                 invalidate();
             }
         } else {
-            if (currentMessageObject.isOut() && currentMessageObject.isSending()) {
+            /*if (currentMessageObject.isOut() && currentMessageObject.isSending()) {
                 if (currentMessageObject.messageOwner.attachPath != null && currentMessageObject.messageOwner.attachPath.length() > 0) {
                     MediaController.getInstance().addLoadingFileObserver(currentMessageObject.messageOwner.attachPath, currentMessageObject, this);
                     boolean needProgress = currentMessageObject.messageOwner.attachPath == null || !currentMessageObject.messageOwner.attachPath.startsWith("http");
@@ -3379,7 +3382,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                     }
                     invalidate();
                 }
-            } else {
+            } else*/ {
                 if (currentMessageObject.messageOwner.attachPath != null && currentMessageObject.messageOwner.attachPath.length() != 0) {
                     MediaController.getInstance().removeLoadingFileObserver(this);
                 }

@@ -80,7 +80,7 @@ public class MrMailbox {
         ret.unread        = state!=MR_OUT_READ; // the state of outgoing messages
         ret.media_unread  = ret.unread;
         ret.flags         = 0; // posible flags: MESSAGE_FLAG_HAS_FROM_ID, however, this seems to be read only
-        ret.post          = false; // ? true=avatar wird in gruppen nicht angezeigt
+        ret.post          = false; // ? true=avatar wird in gruppen nicht angezeigt, wird aber in isFromUser() auch überprüft...
         ret.out           = ret.from_id==1; // true=outgoing message, read eg. in MessageObject.isOutOwner()
         ret.created_by_mr = true;
 
@@ -217,7 +217,7 @@ public class MrMailbox {
     public native static long    MrMailboxGetChatlist       (long hMailbox); // returns hChatlist which must be unref'd after usage
     public native static long    MrMailboxGetChatById       (long hMailbox, int id); // return hChat which must be unref'd after usage
     public native static int     MrMailboxCreateChatByContactId(long hMailbox, int contact_id); // returns chat_id
-
+    public native static int[]   MrMailboxGetChatMedia      (long hMailbox, int chat_id, int msg_type, int or_msg_type);
     public native static long    MrMailboxGetMsgById        (long hMailbox, int id); // return hMsg which must be unref'd after usage
     public native static void    MrMailboxDeleteMsgById     (long hMailbox, int id);
     public native static int     MrMailboxSetConfig         (long hMailbox, String key, String value); // value may be NULL

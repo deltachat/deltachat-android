@@ -3060,37 +3060,6 @@ public class TLRPC {
 		}
 	}
 
-	public static class TL_inlineBotSwitchPM extends TLObject {
-		public static int constructor = 0x3c20629f;
-
-		public String text;
-		public String start_param;
-
-		public static TL_inlineBotSwitchPM TLdeserialize(AbstractSerializedData stream, int constructor, boolean exception) {
-			if (TL_inlineBotSwitchPM.constructor != constructor) {
-				if (exception) {
-					throw new RuntimeException(String.format("can't parse magic %x in TL_inlineBotSwitchPM", constructor));
-				} else {
-					return null;
-				}
-			}
-			TL_inlineBotSwitchPM result = new TL_inlineBotSwitchPM();
-			result.readParams(stream, exception);
-			return result;
-		}
-
-		public void readParams(AbstractSerializedData stream, boolean exception) {
-			text = stream.readString(exception);
-			start_param = stream.readString(exception);
-		}
-
-		public void serializeToStream(AbstractSerializedData stream) {
-			stream.writeInt32(constructor);
-			stream.writeString(text);
-			stream.writeString(start_param);
-		}
-	}
-
 	public static class Update extends TLObject {
 		public int chat_id;
 		public int user_id;

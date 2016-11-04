@@ -71,7 +71,6 @@ import org.telegram.messenger.browser.Browser;
 import org.telegram.messenger.query.DraftQuery;
 import org.telegram.messenger.query.MessagesSearchQuery;
 import org.telegram.messenger.query.MessagesQuery;
-import org.telegram.messenger.query.SearchQuery;
 import org.telegram.messenger.query.StickersQuery;
 import org.telegram.messenger.support.widget.GridLayoutManager;
 import org.telegram.messenger.support.widget.LinearLayoutManager;
@@ -89,7 +88,6 @@ import org.telegram.messenger.MessagesController;
 import org.telegram.messenger.NotificationCenter;
 import org.telegram.messenger.R;
 import org.telegram.messenger.UserConfig;
-import org.telegram.ui.ActionBar.ActionBarLayout;
 import org.telegram.ui.ActionBar.BackDrawable;
 import org.telegram.ui.ActionBar.BottomSheet;
 import org.telegram.ui.ActionBar.SimpleTextView;
@@ -103,7 +101,6 @@ import org.telegram.ui.ActionBar.ActionBarMenu;
 import org.telegram.ui.ActionBar.ActionBarMenuItem;
 import org.telegram.ui.Cells.ChatMessageCell;
 import org.telegram.ui.Cells.ChatUnreadCell;
-import org.telegram.ui.Cells.CheckBoxCell;
 import org.telegram.ui.Components.BackupImageView;
 import org.telegram.ui.ActionBar.BaseFragment;
 import org.telegram.ui.Cells.BotHelpCell;
@@ -166,7 +163,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
     private ArrayList<View> actionModeViews = new ArrayList<>();
     private ChatAvatarContainer avatarContainer;
     private TextView bottomOverlayText;
-    private TextView secretViewStatusTextView;
     private NumberTextView selectedMessagesCountTextView;
     private FrameLayout actionModeTitleContainer;
     private SimpleTextView actionModeTextView;
@@ -205,10 +201,10 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
     private SimpleTextView pinnedMessageNameTextView;
     private SimpleTextView pinnedMessageTextView;
     private FrameLayout alertView;
-    private Runnable hideAlertViewRunnable;
+    //private Runnable hideAlertViewRunnable;
     private TextView alertNameTextView;
     private TextView alertTextView;
-    private AnimatorSet alertViewAnimator;
+    //private AnimatorSet alertViewAnimator;
     private FrameLayout searchContainer;
     private ImageView searchUpButton;
     private ImageView searchDownButton;
@@ -312,9 +308,9 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
 
     private String startVideoEdit = null;
 
-    private Runnable openSecretPhotoRunnable = null;
-    private float startX = 0;
-    private float startY = 0;
+    //private Runnable openSecretPhotoRunnable = null;
+    //private float startX = 0;
+    //private float startY = 0;
 
     private final static int copy = 10;
     private final static int id_forward = 11;
@@ -1497,6 +1493,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 updateMessagesVisisblePart();
             }
         });
+        /* -- seems to be needed only for the secrect photo stuff
         chatListView.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
@@ -1548,6 +1545,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 return false;
             }
         });
+        */
         chatListView.setOnInterceptTouchListener(new RecyclerListView.OnInterceptTouchListener() {
             @Override
             public boolean onInterceptTouchEvent(MotionEvent event) {
@@ -1573,8 +1571,10 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                         }
                         final ChatMessageCell cell = (ChatMessageCell) view;
                         final MessageObject messageObject = cell.getMessageObject();
-                        if (messageObject == null || messageObject.isSending() || !messageObject.isSecretPhoto() || !cell.getPhotoImage().isInsideImage(x, y - top)) {
+                        //if (messageObject == null || messageObject.isSending() || !messageObject.isSecretPhoto() || !cell.getPhotoImage().isInsideImage(x, y - top)) {
+                        // the condition above is always true due to !messageObject.isSecretPhoto(), however, the loop is important, note the continue above
                             break;
+                        /*
                         }
                         File file = FileLoader.getPathToMessage(messageObject.messageOwner);
                         if (!file.exists()) {
@@ -1602,6 +1602,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                         };
                         AndroidUtilities.runOnUIThread(openSecretPhotoRunnable, 100);
                         return true;
+                        */
                     }
                 }
                 return false;
@@ -1961,10 +1962,10 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
             mentionGridLayoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
                 @Override
                 public int getSpanSize(int position) {
-                    Object object = mentionsAdapter.getItem(position);
-                    if (object instanceof TLRPC.TL_inlineBotSwitchPM) {
+                    //Object object = mentionsAdapter.getItem(position);
+                    /*if (object instanceof TLRPC.TL_inlineBotSwitchPM) {
                         return 100;
-                    } else {
+                    } else*/ {
                         /*if (mentionsAdapter.getBotContextSwitch() != null) {
                             position--;
                         }*/
@@ -4142,9 +4143,9 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 }
             }
         } else {
-            if (messageObject.isSending()) {
+            /*if (messageObject.isSending()) {
                 return -1;
-            }
+            }*/
             if (messageObject.type == 6) {
                 return -1;
             } else if (messageObject.isSendError()) {
@@ -4154,7 +4155,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     return 20;
                 }
             } else if (messageObject.type == 10 || messageObject.type == 11) {
-                if (messageObject.getId() == 0 || messageObject.isSending()) {
+                if (messageObject.getId() == 0 /*|| messageObject.isSending()*/) {
                     return -1;
                 } else {
                     return 1;
@@ -7341,9 +7342,9 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     } else if (lower_part < 0) {
                         args.putInt("chat_id", -lower_part);
                     }
-                    if (!MessagesController.checkCanOpenChat(args, activity)) {
+                    /*if (!MessagesController.checkCanOpenChat(args, activity)) {
                         return;
-                    }
+                    }*/
 
                     ChatActivity chatActivity = new ChatActivity(args);
                     if (presentFragment(chatActivity, true)) {
@@ -7777,9 +7778,9 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                             if (postId != 0) {
                                 args.putInt("message_id", postId);
                             }
-                            if (MessagesController.checkCanOpenChat(args, ChatActivity.this)) {
+                            //if (MessagesController.checkCanOpenChat(args, ChatActivity.this)) {
                                 presentFragment(new ChatActivity(args), true);
-                            }
+                            //}
                         }
                     }
 
@@ -7905,12 +7906,12 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     @Override
                     public void didPressedImage(ChatMessageCell cell) {
                         MessageObject message = cell.getMessageObject();
-                        if (message.isSendError()) {
+                        /*if (message.isSendError()) { -- for our Messenger, sending is completely asynchrounous - as soon as there is a GUI object, it can be accessed
                             createMenu(cell, false);
                             return;
                         } else if (message.isSending()) {
                             return;
-                        }
+                        }*/
                         if (message.type == 13) {
                             showDialog(new StickersAlert(getParentActivity(), message.getInputStickerSet(), null, bottomOverlayChat.getVisibility() != View.VISIBLE ? chatActivityEnterView : null));
                         } else if (Build.VERSION.SDK_INT >= 16 && message.isVideo() || message.type == 1 || message.type == 0 && !message.isWebpageDocument() || message.isGif()) {
@@ -7985,9 +7986,9 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                         if (uid < 0) {
                             Bundle args = new Bundle();
                             args.putInt("chat_id", -uid);
-                            if (MessagesController.checkCanOpenChat(args, ChatActivity.this)) {
+                            //if (MessagesController.checkCanOpenChat(args, ChatActivity.this)) {
                                 presentFragment(new ChatActivity(args), true);
-                            }
+                            //}
                         } else if (uid != UserConfig.getClientUserId()) {
                             Bundle args = new Bundle();
                             args.putInt("user_id", uid);

@@ -38,7 +38,7 @@
 	if(a) { (*env)->ReleaseStringUTFChars(env, (a), a##Ptr); }
 
 #define JSTRING_NEW(a) \
-	(*env)->NewStringUTF(env, a? a : "") /*should handle NULL arguments!*/
+	(*env)->NewStringUTF(env, a? a : "") /*should handle NULL arguments, does not return NULL!*/
 
 
 /* our log handler */
@@ -53,7 +53,7 @@ static void s_log_callback_(int type, const char* msg)
 		case 'w': prio = ANDROID_LOG_WARN;  break;
 		default:  prio = ANDROID_LOG_ERROR; break;
 	}
-	__android_log_print(prio, "LibreChat", "%s\n", msg); /* on problems, add `-llog` to `Android.mk` */
+	__android_log_print(prio, "DeltaChat", "%s\n", msg); /* on problems, add `-llog` to `Android.mk` */
 }
 
 
@@ -423,6 +423,28 @@ JNIEXPORT jint Java_org_telegram_messenger_MrMailbox_MrChatSendMedia(JNIEnv *env
 }
 
 
+JNIEXPORT jintArray Java_org_telegram_messenger_MrMailbox_MrMailboxGetChatMedia(JNIEnv *env, jclass c, jlong hMailbox, jint chat_id, jint msg_type, jint or_msg_type)
+{
+	carray* ca = mrmailbox_get_chat_media((mrmailbox_t*)hMailbox, chat_id, msg_type, or_msg_type);
+	if( ca == NULL ) { return NULL; }
+
+	int i, icnt = carray_count(ca);
+	jintArray ret = (*env)->NewIntArray(env, icnt); if (ret == NULL) { return NULL; }
+	
+	if( icnt ) {
+		void** ca_data = carray_data(ca);
+		jint* temp = calloc(icnt, sizeof(jint));
+			for( i = 0; i < icnt; i++ ) {
+				temp[i] = (jint)ca_data[i];
+			}
+			(*env)->SetIntArrayRegion(env, ret, 0, icnt, temp);
+		free(temp);
+	}
+		
+	return ret;
+}
+
+
 /*******************************************************************************
  * MrMsglist
  ******************************************************************************/
@@ -519,7 +541,6 @@ JNIEXPORT jstring Java_org_telegram_messenger_MrMailbox_MrMsgGetParam(JNIEnv *en
 	CHAR_REF(def);
 		char* temp = mrparam_get(ths? ths->m_param:NULL, key, defPtr);
 			jstring ret = JSTRING_NEW(temp);
-			mrlog_info("  MrMsgGetParam(): got %s", temp);
 		free(temp);
 	CHAR_UNREF(def);
 	return ret;

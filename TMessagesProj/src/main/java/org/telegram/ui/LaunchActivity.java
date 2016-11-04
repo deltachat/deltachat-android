@@ -1709,7 +1709,7 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
     @Override
     protected void onDestroy() {
         PhotoViewer.getInstance().destroyPhotoViewer();
-        SecretPhotoViewer.getInstance().destroyPhotoViewer();
+        //SecretPhotoViewer.getInstance().destroyPhotoViewer();
         StickerPreviewViewer.getInstance().destroy();
         try {
             if (visibleDialog != null) {
