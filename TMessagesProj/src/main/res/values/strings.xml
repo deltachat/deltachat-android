@@ -863,7 +863,7 @@
     <string name="MuteAlways">Always muted</string>
     <string name="AskStartChatWith">Start a chat with <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>?</string>
     <string name="StrangersHint">To start a chat, click on the reply-arrows.</string>
-    <string name="NotYetImplemented">This function is not yet available in this version.</string>
+    <string name="NotYetImplemented">This function is not yet available.</string>
     <string name="CannotLoadFile">Cannot load file.</string>
     <string name="DefaultStatusText">Sent with my Delta Chat Messenger</string>
     <string name="SubjectPrefix">Instant message</string>

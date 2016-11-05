@@ -273,10 +273,11 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
     //private TLRPC.FileLocation currentUserAvatarLocation = null;
 
     private final static int gallery_menu_save = 1;
-    private final static int gallery_menu_showall = 2;
+    //private final static int gallery_menu_showall = 2;
     private final static int gallery_menu_send = 3;
     private final static int gallery_menu_crop = 4;
-    //private final static int gallery_menu_delete = 6;-- for now, the user should use the long-click in the cat view
+    private final static int gallery_menu_forward = 5;
+    private final static int gallery_menu_delete = 6;
     private final static int gallery_menu_tune = 7;
     //private final static int gallery_menu_caption = 8;-- currently, we do not allow messages along images; KISS: just use a separate message
     //private final static int gallery_menu_caption_done = 9;
@@ -1082,9 +1083,8 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
                         builder.setMessage(LocaleController.getString("PleaseDownload", R.string.PleaseDownload));
                         showAlertDialog(builder);
                     }
-                } else if (id == gallery_menu_showall) {
-                    Toast.makeText(parentActivity, LocaleController.getString("NotYetImplemented", R.string.NotYetImplemented), Toast.LENGTH_LONG).show();
-                    /*
+                }
+                /*else if (id == gallery_menu_showall) {
                     if (opennedFromMedia) {
                         closePhoto(true, false);
                     } else if (currentDialogId != 0) {
@@ -1094,8 +1094,9 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
                         args2.putLong("dialog_id", currentDialogId);
                         ((LaunchActivity) parentActivity).presentFragment(new MediaActivity(args2), false, true);
                     }
-                    */
-                } else if (id == gallery_menu_send) {
+                }
+                */
+                else if (id == gallery_menu_send) {
                     /*Intent intent = new Intent(this, MessagesActivity.class);
                     intent.putExtra("onlySelect", true);
                     startActivityForResult(intent, 10);
@@ -1133,7 +1134,12 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
                 } else if (id == gallery_menu_tune) {
                     switchToEditMode(2);
                 }
-                /* else if (id == gallery_menu_delete) {
+                else if (id == gallery_menu_forward) {
+                    Toast.makeText(parentActivity, LocaleController.getString("NotYetImplemented", R.string.NotYetImplemented), Toast.LENGTH_LONG).show();
+                }
+                else if (id == gallery_menu_delete) {
+                    Toast.makeText(parentActivity, LocaleController.getString("NotYetImplemented", R.string.NotYetImplemented), Toast.LENGTH_LONG).show();
+                    /*
                     if (parentActivity == null) {
                         return;
                     }
@@ -1217,7 +1223,8 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
                     });
                     builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
                     showAlertDialog(builder);
-                } */
+                    */
+                }
                 /*else if (id == gallery_menu_caption) {
                     if (imageMoveAnimation != null || changeModeAnimation != null) {
                         return;
@@ -1279,10 +1286,11 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
             str = str.substring(0,1).toUpperCase() + str.substring(1).toLowerCase();
         }
         menuItem.addSubItem(gallery_menu_openin, str, 0);
-        menuItem.addSubItem(gallery_menu_showall, LocaleController.getString("ShowAllMedia", R.string.ShowAllMedia), 0);
-        menuItem.addSubItem(gallery_menu_share, LocaleController.getString("ShareFile", R.string.ShareFile), 0);
         menuItem.addSubItem(gallery_menu_save, LocaleController.getString("SaveToGallery", R.string.SaveToGallery), 0);
-        //menuItem.addSubItem(gallery_menu_delete, LocaleController.getString("Delete", R.string.Delete), 0); -- for now, the user should use the long-click in the cat view
+        //menuItem.addSubItem(gallery_menu_showall, LocaleController.getString("ShowAllMedia", R.string.ShowAllMedia), 0);
+        menuItem.addSubItem(gallery_menu_share, LocaleController.getString("ShareFile", R.string.ShareFile), 0);
+        menuItem.addSubItem(gallery_menu_forward, LocaleController.getString("Forward", R.string.Forward), 0);
+        menuItem.addSubItem(gallery_menu_delete, LocaleController.getString("Delete", R.string.Delete), 0);
 
         //captionDoneItem = menu.addItemWithWidth(gallery_menu_caption_done, R.drawable.ic_done, AndroidUtilities.dp(56));
         //captionItem = menu.addItemWithWidth(gallery_menu_caption, R.drawable.photo_text, AndroidUtilities.dp(56));
@@ -2541,7 +2549,7 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
         menuItem.setVisibility(View.VISIBLE);
         bottomLayout.setVisibility(View.VISIBLE);
         //shareButton.setVisibility(View.GONE);
-        menuItem.hideSubItem(gallery_menu_showall);
+        //menuItem.hideSubItem(gallery_menu_showall);
         //menuItem.hideSubItem(gallery_menu_share);
         menuItem.hideSubItem(gallery_menu_openin);
         actionBar.setTranslationY(0);
@@ -2579,7 +2587,7 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
             } else if (!(messageObject.messageOwner.media instanceof TLRPC.TL_messageMediaWebPage) && (messageObject.messageOwner.action == null || messageObject.messageOwner.action instanceof TLRPC.TL_messageActionEmpty)) {
                 needSearchImageInArr = true;
                 imagesByIds[0].put(messageObject.getId(), messageObject);
-                menuItem.showSubItem(gallery_menu_showall);
+                //menuItem.showSubItem(gallery_menu_showall);
             }
             setImageIndex(0, true);
         } else if (fileLocation != null) {
@@ -2588,7 +2596,7 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
             imagesArrLocationsSizes.add(object.size);
             avatarsArr.add(new TLRPC.TL_photoEmpty());
             //shareButton.setVisibility(videoPlayerControlFrameLayout == null || videoPlayerControlFrameLayout.getVisibility() != View.VISIBLE ? View.VISIBLE : View.GONE);
-            menuItem.hideSubItem(gallery_menu_showall);
+            //menuItem.hideSubItem(gallery_menu_showall);
             /*if (shareButton.getVisibility() == View.VISIBLE) {
                 menuItem.hideSubItem(gallery_menu_share);
             } else*/ {
@@ -2597,7 +2605,7 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
             setImageIndex(0, true);
             //currentUserAvatarLocation = fileLocation;
         } else if (messages != null) {
-            menuItem.showSubItem(gallery_menu_showall);
+            //menuItem.showSubItem(gallery_menu_showall);
             opennedFromMedia = true;
             imagesArr.addAll(messages);
             if (!opennedFromMedia) {
@@ -2739,9 +2747,11 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
             if (currentAnimation != null) {
                 menuItem.hideSubItem(gallery_menu_save);
                 menuItem.hideSubItem(gallery_menu_share);
+                /*
                 if (!currentMessageObject.canDeleteMessage(null)) {
                     menuItem.setVisibility(View.GONE);
                 }
+                */
                 //shareButton.setVisibility(View.VISIBLE);
                 actionBar.setTitle(LocaleController.getString("AttachGif", R.string.AttachGif));
             } else {

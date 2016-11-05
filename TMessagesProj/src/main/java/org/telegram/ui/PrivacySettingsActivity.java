@@ -85,7 +85,7 @@ public class PrivacySettingsActivity extends BaseFragment implements Notificatio
         deleteAccountRow        = -1;
         deleteAccountDetailRow  = -1;
         secretSectionRow        = -1;
-        secretWebpageRow        = rowCount++;
+        secretWebpageRow        = -1; // not needed, for privacy reasons, we won't generate a preview (may be used to track users); however, an idea may be to generate the preview by the sender.
         secretDetailRow         = rowCount++;
         // /EDIT BY MR
 
