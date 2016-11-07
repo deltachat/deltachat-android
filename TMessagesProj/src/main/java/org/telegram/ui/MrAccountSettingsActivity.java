@@ -243,20 +243,17 @@ public class MrAccountSettingsActivity extends BaseFragment {
             MrMailbox.MrMailboxSetConfig(MrMailbox.hMailbox, "send_pw", v.isEmpty() ? null : v);
         }
 
+        MrMailbox.MrMailboxDisconnect(MrMailbox.hMailbox);
         MrMailbox.MrMailboxConfigure(MrMailbox.hMailbox);
-        if( MrMailbox.MrMailboxConnect(MrMailbox.hMailbox)!=0 ) {
-
-        }
+        MrMailbox.MrMailboxConnect(MrMailbox.hMailbox);
 
         // show dialog
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
-        builder.setTitle(LocaleController.getString("AppName", R.string.AppName));
         builder.setMessage("Testing the server connection, this may take a moment.");
-        builder.setNeutralButton(LocaleController.getString("Cancel", R.string.Cancel), new DialogInterface.OnClickListener() {
+        builder.setNeutralButton(LocaleController.getString("OK", R.string.OK), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                MrMailbox.MrMailboxFetch(MrMailbox.hMailbox);
                 finishFragment();
             }
         });

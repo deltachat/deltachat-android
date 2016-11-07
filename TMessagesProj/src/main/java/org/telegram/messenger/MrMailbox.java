@@ -216,6 +216,7 @@ public class MrMailbox {
 
     public native static long    MrMailboxGetChatlist       (long hMailbox); // returns hChatlist which must be unref'd after usage
     public native static long    MrMailboxGetChatById       (long hMailbox, int id); // return hChat which must be unref'd after usage
+    public native static int     MrMailboxMarkseenChatById  (long hMailbox, int id);
     public native static int     MrMailboxCreateChatByContactId(long hMailbox, int contact_id); // returns chat_id
     public native static int[]   MrMailboxGetChatMedia      (long hMailbox, int chat_id, int msg_type, int or_msg_type);
     public native static long    MrMailboxGetMsgById        (long hMailbox, int id); // return hMsg which must be unref'd after usage
@@ -243,7 +244,7 @@ public class MrMailbox {
     public native static long    MrChatGetDraftTimestamp    (long hChat); // returns 0 for "no draft"
     public native static int     MrChatGetDraftReplyToMsgId (long hChat); // returns 0 for "no draft"
     public native static int     MrChatSetDraft             (long hChat, String draft/*NULL=delete*/, long replyToMsgId);
-    public native static int     MrChatGetUnreadCount       (long hChat);
+    public native static int     MrChatGetUnseenCount       (long hChat);
     public native static int     MrChatGetTotalMsgCount     (long hChat);
     public native static long    MrChatGetSummary           (long hChat); // returns hPoortext
     public native static long    MrChatGetMsglist           (long hChat, int offset, int amount); // returns hMsglist

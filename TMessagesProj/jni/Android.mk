@@ -1643,7 +1643,6 @@ LOCAL_SRC_FILES     += \
 ../../../messenger-backend/src/mrcontact.c \
 ../../../messenger-backend/src/mrcontactlist.c \
 ../../../messenger-backend/src/mrimap.c \
-../../../messenger-backend/src/mrimfparser.c \
 ../../../messenger-backend/src/mrjob.c \
 ../../../messenger-backend/src/mrlog.c \
 ../../../messenger-backend/src/mrloginparam.c \

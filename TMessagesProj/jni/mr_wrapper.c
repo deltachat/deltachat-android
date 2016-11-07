@@ -189,6 +189,12 @@ JNIEXPORT jlong Java_org_telegram_messenger_MrMailbox_MrMailboxGetChatById(JNIEn
 }
 
 
+JNIEXPORT jint Java_org_telegram_messenger_MrMailbox_MrMailboxMarkseenChatById(JNIEnv *env, jclass c, jlong hMailbox, jint chat_id)
+{
+	return (jlong)mrmailbox_markseen_chat_by_id((mrmailbox_t*)hMailbox, chat_id);
+}
+
+
 JNIEXPORT jint Java_org_telegram_messenger_MrMailbox_MrMailboxCreateChatByContactId(JNIEnv *env, jclass c, jlong hMailbox, jint contact_id)
 {
 	return (jint)mrmailbox_create_chat_by_contact_id((mrmailbox_t*)hMailbox, contact_id);
@@ -356,13 +362,13 @@ JNIEXPORT jint Java_org_telegram_messenger_MrMailbox_MrChatGetDraftReplyToMsgId(
 
 JNIEXPORT jint Java_org_telegram_messenger_MrMailbox_MrChatGetTotalMsgCount(JNIEnv *env, jclass c, jlong hChat)
 {
-	return mrchat_get_total_msg_count((mrchat_t*)hChat); /* mrchat_get_unread_count() checks for nullpointers */
+	return mrchat_get_total_msg_count((mrchat_t*)hChat);
 }
 
 
-JNIEXPORT jint Java_org_telegram_messenger_MrMailbox_MrChatGetUnreadCount(JNIEnv *env, jclass c, jlong hChat)
+JNIEXPORT jint Java_org_telegram_messenger_MrMailbox_MrChatGetUnseenCount(JNIEnv *env, jclass c, jlong hChat)
 {
-	return mrchat_get_unread_count((mrchat_t*)hChat); /* mrchat_get_unread_count() checks for nullpointers */
+	return mrchat_get_unseen_count((mrchat_t*)hChat); /* mrchat_get_unseen_count() checks for nullpointers */
 }
 
 

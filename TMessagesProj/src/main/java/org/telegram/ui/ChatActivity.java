@@ -377,6 +377,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
 
         // EDIT BY MR -- set up the values so that the activity gets usable
         dialog_id = arguments.getInt("chat_id", 0);
+        MrMailbox.MrMailboxMarkseenChatById(MrMailbox.hMailbox, (int)dialog_id);
         m_hChat = MrMailbox.MrMailboxGetChatById(MrMailbox.hMailbox, (int)dialog_id);
         currentChat = new TLRPC.Chat();
         currentChat.id = (int)dialog_id;

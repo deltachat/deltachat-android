@@ -841,7 +841,7 @@ public class DialogCell extends BaseCell {
             }
             */
 
-            unreadCount = MrMailbox.MrChatGetUnreadCount(m_hChat);
+            unreadCount = MrMailbox.MrChatGetUnseenCount(m_hChat);
         }
 
         if (mask != 0) {
