@@ -4787,7 +4787,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 long hMsglist  = MrMailbox.MrChatGetMsglist(m_hChat, 0, 100);
 
                     int mrCount = MrMailbox.MrMsglistGetCnt(hMsglist);
-                    for (int a = 0; a < mrCount; a++ ) {
+                    for (int a = mrCount-1; a >= 0 ; a-- ) {
                         long hMsg = MrMailbox.MrMsglistGetMsgByIndex(hMsglist, a);
                             TLRPC.Message msg = MrMailbox.hMsg2Message(hMsg);
                             MessageObject msgDrawObj = new MessageObject(msg, null, true);
@@ -5162,6 +5162,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 boolean updateChat = false;
                 boolean hasFromMe = false;
                 ArrayList<MessageObject> arr = (ArrayList<MessageObject>) args[1];
+
                 //if (currentEncryptedChat != null && arr.size() == 1) {
                 //    MessageObject obj = arr.get(0);
 
