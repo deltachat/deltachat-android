@@ -312,6 +312,7 @@ public class MrMailbox {
     public final static int      MR_TITLE_NORMAL            = 0;
     public final static int      MR_TITLE_DRAFT             = 1;
     public final static int      MR_TITLE_USERNAME          = 2;
+    public final static int      MR_TITLE_SELF              = 3;
 
 }
 // /EDIT BY MR

@@ -40,7 +40,6 @@ import org.telegram.ui.Components.AvatarDrawable;
 public class DialogCell extends BaseCell {
 
     private static TextPaint namePaint;
-    //private static TextPaint nameEncryptedPaint; -- EDIT BY MR
     private static TextPaint messagePaint;
     private static TextPaint messagePrintingPaint;
     private static TextPaint timePaint;
@@ -54,8 +53,6 @@ public class DialogCell extends BaseCell {
     private static Drawable countDrawable;
     private static Drawable countDrawableGrey;
     private static Drawable groupDrawable;
-    //private static Drawable broadcastDrawable;
-    //private static Drawable botDrawable;
     private static Drawable muteDrawable;
     private static Drawable verifiedDrawable;
 
@@ -64,7 +61,7 @@ public class DialogCell extends BaseCell {
 
     private long currentDialogId;
     private int currentEditDate;
-    private boolean isDialogCell; // EDIT BY MR -- if it is no dialog cell, it is a search cell ...
+    private boolean isDialogCell; // if it is no dialog cell, it is a search cell ...
     //private int lastMessageDate;
     private int unreadCount;
     private boolean lastUnreadState;
@@ -79,7 +76,6 @@ public class DialogCell extends BaseCell {
 
     private TLRPC.User user = null;
     private TLRPC.Chat chat = null;
-    //private TLRPC.EncryptedChat encryptedChat = null; // EDIT BY MR
     private CharSequence lastPrintString = null;
     private TLRPC.DraftMessage draftMessage;
 
@@ -89,8 +85,6 @@ public class DialogCell extends BaseCell {
     private StaticLayout nameLayout;
     //private boolean drawNameLock;
     private boolean drawNameGroup;
-    //private boolean drawNameBroadcast;
-    //private boolean drawNameBot;
     private int nameMuteLeft;
     private int nameLockLeft;
     private int nameLockTop;
@@ -134,15 +128,8 @@ public class DialogCell extends BaseCell {
         if (namePaint == null) {
             namePaint = new TextPaint(TextPaint.ANTI_ALIAS_FLAG);
             namePaint.setTextSize(AndroidUtilities.dp(17));
-            namePaint.setColor(0xff212121);
+            namePaint.setColor(Theme.DIALOGS_TITLE_TEXT_COLOR);
             namePaint.setTypeface(AndroidUtilities.getTypeface("fonts/rmedium.ttf"));
-
-            /* EDIT BY MR
-            nameEncryptedPaint = new TextPaint(TextPaint.ANTI_ALIAS_FLAG);
-            nameEncryptedPaint.setTextSize(AndroidUtilities.dp(17));
-            nameEncryptedPaint.setColor(0xff00a60e);
-            nameEncryptedPaint.setTypeface(AndroidUtilities.getTypeface("fonts/rmedium.ttf"));
-            */
 
             messagePaint = new TextPaint(TextPaint.ANTI_ALIAS_FLAG);
             messagePaint.setTextSize(AndroidUtilities.dp(16));
@@ -324,155 +311,10 @@ public class DialogCell extends BaseCell {
                 } else {
                     nameLeft = AndroidUtilities.dp(14);
                 }
-                /* EDIT BY MR
-                if (user != null) {
-                    if (user.bot) {
-                        drawNameBot = true;
-                        nameLockTop = AndroidUtilities.dp(16.5f);
-                        if (!LocaleController.isRTL) {
-                            nameLockLeft = AndroidUtilities.dp(AndroidUtilities.leftBaseline);
-                            nameLeft = AndroidUtilities.dp(AndroidUtilities.leftBaseline + 4) + botDrawable.getIntrinsicWidth();
-                        } else {
-                            nameLockLeft = getMeasuredWidth() - AndroidUtilities.dp(AndroidUtilities.leftBaseline) - botDrawable.getIntrinsicWidth();
-                            nameLeft = AndroidUtilities.dp(14);
-                        }
-                    }
-                    drawVerified = user.verified;
-                }
-                */
             }
         }
 
-        /* EDIT BY MR
-        int lastDate = lastMessageDate;
-        if (lastMessageDate == 0 && message != null) {
-            lastDate = message.messageOwner.date;
-        }
-
-        if (isDialogCell) {
-            draftMessage = DraftQuery.getDraft(currentDialogId);
-            if (draftMessage != null && (TextUtils.isEmpty(draftMessage.message) && draftMessage.reply_to_msg_id == 0 || lastDate > draftMessage.date && unreadCount != 0) ||
-                    ChatObject.isChannel(chat) && !chat.megagroup && !chat.creator && !chat.editor ||
-                    chat != null && (chat.left || chat.kicked)) {
-                draftMessage = null;
-            }
-        } else {
-            draftMessage = null;
-        }
-
-        if (printingString != null) {
-            lastPrintString = messageString = printingString;
-            currentMessagePaint = messagePrintingPaint;
-        } else {
-            lastPrintString = null;
-
-            if (draftMessage != null) {
-                checkMessage = false;
-                if (TextUtils.isEmpty(draftMessage.message)) {
-                    String draftString = LocaleController.getString("Draft", R.string.Draft);
-                    SpannableStringBuilder stringBuilder = SpannableStringBuilder.valueOf(draftString);
-                    stringBuilder.setSpan(new ForegroundColorSpan(Theme.DIALOGS_DRAFT_TEXT_COLOR), 0, draftString.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-                    messageString = stringBuilder;
-                } else {
-                    String mess = draftMessage.message;
-                    if (mess.length() > 150) {
-                        mess = mess.substring(0, 150);
-                    }
-                    String draftString = LocaleController.getString("Draft", R.string.Draft);
-                    SpannableStringBuilder stringBuilder = SpannableStringBuilder.valueOf(String.format("%s: %s", draftString, mess.replace('\n', ' ')));
-                    stringBuilder.setSpan(new ForegroundColorSpan(Theme.DIALOGS_DRAFT_TEXT_COLOR), 0, draftString.length() + 1, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-                    messageString = Emoji.replaceEmoji(stringBuilder, messagePaint.getFontMetricsInt(), AndroidUtilities.dp(20), false);
-                }
-            } else {
-                if (message == null) {
-                    if (encryptedChat != null) {
-                        currentMessagePaint = messagePrintingPaint;
-                        if (encryptedChat instanceof TLRPC.TL_encryptedChatRequested) {
-                            messageString = LocaleController.getString("EncryptionProcessing", R.string.EncryptionProcessing);
-                        } else if (encryptedChat instanceof TLRPC.TL_encryptedChatWaiting) {
-                            if (user != null && user.first_name != null) {
-                                messageString = LocaleController.formatString("AwaitingEncryption", R.string.AwaitingEncryption, user.first_name);
-                            } else {
-                                messageString = LocaleController.formatString("AwaitingEncryption", R.string.AwaitingEncryption, "");
-                            }
-                        } else if (encryptedChat instanceof TLRPC.TL_encryptedChatDiscarded) {
-                            messageString = LocaleController.getString("EncryptionRejected", R.string.EncryptionRejected);
-                        } else if (encryptedChat instanceof TLRPC.TL_encryptedChat) {
-                            if (encryptedChat.admin_id == UserConfig.getClientUserId()) {
-                                if (user != null && user.first_name != null) {
-                                    messageString = LocaleController.formatString("EncryptedChatStartedOutgoing", R.string.EncryptedChatStartedOutgoing, user.first_name);
-                                } else {
-                                    messageString = LocaleController.formatString("EncryptedChatStartedOutgoing", R.string.EncryptedChatStartedOutgoing, "");
-                                }
-                            } else {
-                                messageString = LocaleController.getString("EncryptedChatStartedIncoming", R.string.EncryptedChatStartedIncoming);
-                            }
-                        }
-                    }
-                } else {
-                    TLRPC.User fromUser = null;
-                    TLRPC.Chat fromChat = null;
-                    if (message.isFromUser()) {
-                        fromUser = MessagesController.getInstance().getUser(message.messageOwner.from_id);
-                    } else {
-                        fromChat = MessagesController.getInstance().getChat(message.messageOwner.to_id.channel_id);
-                    }
-                    if (message.messageOwner instanceof TLRPC.TL_messageService) {
-                        messageString = message.messageText;
-                        currentMessagePaint = messagePrintingPaint;
-                    } else {
-                        if (chat != null && chat.id > 0 && fromChat == null) {
-                            String name;
-                            if (message.isOutOwner()) {
-                                name = LocaleController.getString("FromYou", R.string.FromYou);
-                            } else if (fromUser != null) {
-                                name = UserObject.getFirstName(fromUser).replace("\n", "");
-                            } else if (fromChat != null) {
-                                name = fromChat.title.replace("\n", "");
-                            } else {
-                                name = "DELETED";
-                            }
-                            checkMessage = false;
-                            SpannableStringBuilder stringBuilder;
-                            if (message.caption != null) {
-                                String mess = message.caption.toString();
-                                if (mess.length() > 150) {
-                                    mess = mess.substring(0, 150);
-                                }
-                                stringBuilder = SpannableStringBuilder.valueOf(String.format("%s: %s", name, mess.replace('\n', ' ')));
-                            } else if (message.messageOwner.media != null && !message.isMediaEmpty()) {
-                                currentMessagePaint = messagePrintingPaint;
-                                stringBuilder = SpannableStringBuilder.valueOf(String.format("%s: %s", name, message.messageText));
-                                stringBuilder.setSpan(new ForegroundColorSpan(Theme.DIALOGS_ATTACH_TEXT_COLOR), name.length() + 2, stringBuilder.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-                            } else if (message.messageOwner.message != null) {
-                                String mess = message.messageOwner.message;
-                                if (mess.length() > 150) {
-                                    mess = mess.substring(0, 150);
-                                }
-                                stringBuilder = SpannableStringBuilder.valueOf(String.format("%s: %s", name, mess.replace('\n', ' ')));
-                            } else {
-                                stringBuilder = SpannableStringBuilder.valueOf("");
-                            }
-                            if (stringBuilder.length() > 0) {
-                                stringBuilder.setSpan(new ForegroundColorSpan(Theme.DIALOGS_NAME_TEXT_COLOR), 0, name.length() + 1, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-                            }
-                            messageString = Emoji.replaceEmoji(stringBuilder, messagePaint.getFontMetricsInt(), AndroidUtilities.dp(20), false);
-                        } else {
-                            if (message.caption != null) {
-                                messageString = message.caption;
-                            } else {
-                                messageString = message.messageText;
-                                if (message.messageOwner.media != null && !message.isMediaEmpty()) {
-                                    currentMessagePaint = messagePrintingPaint;
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }*/
-
-        { // EDIT BY MR
+        {
             long hPoortext = MrMailbox.MrChatGetSummary(m_hChat);
 
                 checkMessage = false;
@@ -486,6 +328,7 @@ public class DialogCell extends BaseCell {
                     int title_meaning = MrMailbox.MrPoortextGetTitleMeaning(hPoortext);
                     int title_color = Theme.DIALOGS_NAME_TEXT_COLOR;
                     switch( title_meaning ) {
+                        case MrMailbox.MR_TITLE_SELF:  title_color = Theme.DIALOGS_SELF_TEXT_COLOR; break;
                         case MrMailbox.MR_TITLE_DRAFT: title_color = Theme.DIALOGS_DRAFT_TEXT_COLOR; break;
                     }
                     SpannableStringBuilder stringBuilder = SpannableStringBuilder.valueOf(String.format("%s: %s", title, mess));
@@ -519,60 +362,14 @@ public class DialogCell extends BaseCell {
                 drawVerified = MrMailbox.MrChatIsEncrypted(m_hChat)!=0; // we use the "verified" check as an icon for "encryted" and "verified"
 
             MrMailbox.MrPoortextUnref(hPoortext);
-        } // /EDIT BY MR
-
-        /* EDIT BY MR
-        if (draftMessage != null) {
-            timeString = LocaleController.stringForMessageListDate(draftMessage.date);
-        } else if (lastMessageDate != 0) {
-            timeString = LocaleController.stringForMessageListDate(lastMessageDate);
-        } else if (message != null) {
-            timeString = LocaleController.stringForMessageListDate(message.messageOwner.date);
         }
-        */
 
-        /* EDIT BY MR
-        if (message == null) {
-            drawCheck1 = false;
-            drawCheck2 = false;
-            drawClock = false;
+        if (unreadCount != 0) {
+            drawCount = true;
+            countString = String.format("%d", unreadCount);
+        } else {
             drawCount = false;
-            drawError = false;
-        } else { */
-            if (unreadCount != 0) {
-                drawCount = true;
-                countString = String.format("%d", unreadCount);
-            } else {
-                drawCount = false;
-            }
-
-        /* EDIT BY MR
-            if (message.isOut() && draftMessage == null) {
-                if (message.isSending()) {
-                    drawCheck1 = false;
-                    drawCheck2 = false;
-                    drawClock = true;
-                    drawError = false;
-                } else if (message.isSendError()) {
-                    drawCheck1 = false;
-                    drawCheck2 = false;
-                    drawClock = false;
-                    drawError = true;
-                    drawCount = false;
-                } else if (message.isSent()) {
-                    drawCheck1 = !message.isUnread() || ChatObject.isChannel(chat) && !chat.megagroup;
-                    drawCheck2 = true;
-                    drawClock = false;
-                    drawError = false;
-                }
-            } else {
-                drawCheck1 = false;
-                drawCheck2 = false;
-                drawClock = false;
-                drawError = false;
-            }
         }
-        */
 
         int timeWidth = (int) Math.ceil(timePaint.measureText(timeString));
         timeLayout = new StaticLayout(timeString, timePaint, timeWidth, Layout.Alignment.ALIGN_NORMAL, 1.0f, 0.0f, false);
@@ -582,28 +379,6 @@ public class DialogCell extends BaseCell {
             timeLeft = AndroidUtilities.dp(15);
         }
 
-        /* EDIT BY MR
-        if (chat != null) {
-            nameString = chat.title;
-        } else if (user != null) {
-            if (user.id / 1000 != 777 && user.id / 1000 != 333 && ContactsController.getInstance().contactsDict.get(user.id) == null) {
-                if (ContactsController.getInstance().contactsDict.size() == 0 && (!ContactsController.getInstance().contactsLoaded || ContactsController.getInstance().isLoadingContacts())) {
-                    nameString = UserObject.getUserName(user);
-                } else {
-                    if (user.phone != null && user.phone.length() != 0) {
-                        nameString = PhoneFormat.getInstance().format("+" + user.phone);
-                    } else {
-                        nameString = UserObject.getUserName(user);
-                    }
-                }
-            } else {
-                nameString = UserObject.getUserName(user);
-            }
-            if (encryptedChat != null) {
-                currentNamePaint = nameEncryptedPaint;
-            }
-        }
-        */
         nameString = MrMailbox.MrChatGetName(m_hChat); // EDIT BY MR
 
         int nameWidth;
@@ -615,20 +390,10 @@ public class DialogCell extends BaseCell {
             nameLeft += timeWidth;
         }
 
-        /* EDIT BY MR
-        if (drawNameLock) {
-            nameWidth -= AndroidUtilities.dp(4) + lockDrawable.getIntrinsicWidth();
-        } else */
         if (drawNameGroup) {
             nameWidth -= AndroidUtilities.dp(4) + groupDrawable.getIntrinsicWidth();
         }
-        /* EDIT BY MR
-        else if (drawNameBroadcast) {
-            nameWidth -= AndroidUtilities.dp(4) + broadcastDrawable.getIntrinsicWidth();
-        } else if (drawNameBot) {
-            nameWidth -= AndroidUtilities.dp(4) + botDrawable.getIntrinsicWidth();
-        }
-        */
+
         if (drawClock) {
             int w = clockDrawable.getIntrinsicWidth() + AndroidUtilities.dp(5);
             nameWidth -= w;
@@ -827,20 +592,6 @@ public class DialogCell extends BaseCell {
 
     public void update(int mask) {
         if (isDialogCell) {
-            /* EDIT BY MR
-            TLRPC.TL_dialog dialog = MessagesController.getInstance().dialogs_dict.get(currentDialogId);
-            if (dialog != null && mask == 0) {
-                message = MessagesController.getInstance().dialogMessage.get(dialog.id);
-                lastUnreadState = message != null && message.isUnread();
-                unreadCount = dialog.unread_count;
-                currentEditDate = message != null ? message.messageOwner.edit_date : 0;
-                lastMessageDate = dialog.last_message_date;
-                if (message != null) {
-                    lastSendState = message.messageOwner.send_state;
-                }
-            }
-            */
-
             unreadCount = MrMailbox.MrChatGetUnseenCount(m_hChat);
         }
 
@@ -901,7 +652,6 @@ public class DialogCell extends BaseCell {
         dialogMuted = isDialogCell && MessagesController.getInstance().isDialogMuted(currentDialogId);
         user = null;
         chat = null;
-        //encryptedChat = null; -- EDIT BY MR
 
         int lower_id = (int)currentDialogId;
         int high_id = (int)(currentDialogId >> 32);
@@ -922,14 +672,6 @@ public class DialogCell extends BaseCell {
                 }
             }
         }
-        /* EDIT BY MR
-        else {
-            encryptedChat = MessagesController.getInstance().getEncryptedChat(high_id);
-            if (encryptedChat != null) {
-                user = MessagesController.getInstance().getUser(encryptedChat.user_id);
-            }
-        }
-        */
 
         TLRPC.FileLocation photo = null;
         /* EDIT BY MR

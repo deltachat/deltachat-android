@@ -57,9 +57,10 @@ public class Theme {
 
     public static final int ATTACH_SHEET_TEXT_COLOR = 0xff757575;
 
+    public static final int DIALOGS_TITLE_TEXT_COLOR = 0xff212121;
     public static final int DIALOGS_MESSAGE_TEXT_COLOR = 0xff8f8f8f;
-    public static final int DIALOGS_NAME_TEXT_COLOR = 0xff4d83b3;
-    public static final int DIALOGS_ATTACH_TEXT_COLOR = 0xff4d83b3;
+    public static final int DIALOGS_NAME_TEXT_COLOR = 0xff555555;
+    public static final int DIALOGS_SELF_TEXT_COLOR = 0xff00a60e; // from encrypted chat title: 0xff00a60e, alternative: 0xff3c912e
     public static final int DIALOGS_PRINTING_TEXT_COLOR = 0xff4d83b3;
     public static final int DIALOGS_DRAFT_TEXT_COLOR = 0xffdd4b39;
 
