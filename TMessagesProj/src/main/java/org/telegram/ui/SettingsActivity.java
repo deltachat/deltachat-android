@@ -290,10 +290,6 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
 
     @Override
     public View createView(Context context) {
-        /* EDIT BY MR
-        actionBar.setBackgroundColor(AvatarDrawable.getProfileBackColorForId(5));
-        actionBar.setItemsBackgroundColor(AvatarDrawable.getButtonColorForId(5));
-        */
         actionBar.setBackButtonImage(R.drawable.ic_ab_back);
         /* EDIT BY MR */
         actionBar.setAllowOverlayTitle(true);
@@ -380,7 +376,7 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
         listView.setDivider(null);
         listView.setDividerHeight(0);
         listView.setVerticalScrollBarEnabled(false);
-        AndroidUtilities.setListViewEdgeEffectColor(listView, AvatarDrawable.getProfileBackColorForId(5));
+        AndroidUtilities.setListViewEdgeEffectColor(listView, Theme.ACTION_BAR_COLOR);
         frameLayout.addView(listView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.MATCH_PARENT, Gravity.TOP | Gravity.LEFT));
         listView.setAdapter(listAdapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -724,7 +720,6 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
         /* EDIT BY MR
         extraHeightView = new View(context);
         extraHeightView.setPivotY(0);
-        extraHeightView.setBackgroundColor(AvatarDrawable.getProfileBackColorForId(5));
         frameLayout.addView(extraHeightView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, 88));
 
         shadowView = new View(context);

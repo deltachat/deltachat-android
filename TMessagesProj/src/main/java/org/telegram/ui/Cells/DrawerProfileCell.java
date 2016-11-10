@@ -52,7 +52,7 @@ public class DrawerProfileCell extends FrameLayout {
 
     public DrawerProfileCell(Context context) {
         super(context);
-        setBackgroundColor(Theme.ACTION_BAR_PROFILE_COLOR);
+        setBackgroundColor(Theme.ACTION_BAR_COLOR);
 
         shadowView = new ImageView(context);
         shadowView.setVisibility(INVISIBLE);

@@ -31,12 +31,11 @@ public class AvatarDrawable extends Drawable {
     private static Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
     private static TextPaint namePaint;
     private static TextPaint namePaintSmall;
-    private static int[] arrColors = {0xffe56555, 0xfff28c48, 0xff8e85ee, 0xff76c84d, 0xff5fbed5, 0xff549cdd, 0xff8e85ee, 0xff8cdc99};
-    private static int[] arrColorsProfiles = {0xffd86f65, 0xfff69d61, 0xff8c79d2, 0xff67b35d, 0xff56a2bb, Theme.ACTION_BAR_MAIN_AVATAR_COLOR, 0xff8c79d2, 0xfff37fa6};
-    private static int[] arrColorsProfilesBack = {Theme.ACTION_BAR_PROFILE_COLOR, Theme.ACTION_BAR_PROFILE_COLOR, Theme.ACTION_BAR_PROFILE_COLOR, Theme.ACTION_BAR_PROFILE_COLOR, Theme.ACTION_BAR_PROFILE_COLOR, Theme.ACTION_BAR_PROFILE_COLOR, Theme.ACTION_BAR_PROFILE_COLOR, Theme.ACTION_BAR_PROFILE_COLOR};
+    private static int[] arrColors             = {0xffe56555, 0xfff28c48, 0xff8e85ee, 0xff76c84d, 0xff5fbed5, 0xff549cdd, 0xff8e85ee, 0xff8cdc99};
+    private static int[] arrColorsProfiles     = {0xffd86f65, 0xfff69d61, 0xff8c79d2, 0xff67b35d, 0xff56a2bb, Theme.ACTION_BAR_MAIN_AVATAR_COLOR, 0xff8c79d2, 0xfff37fa6};
     private static int[] arrColorsProfilesText = {0xfff9cbc5, 0xfffdddc8, 0xffcdc4ed, 0xffc0edba, 0xffb8e2f0, Theme.ACTION_BAR_PROFILE_SUBTITLE_COLOR, 0xffcdc4ed, 0xffb3d7f7};
-    private static int[] arrColorsNames = {0xffca5650, 0xffd87b29, 0xff4e92cc, 0xff50b232, 0xff42b1a8, 0xff4e92cc, 0xff4e92cc, 0xff4e92cc};
-    private static int[] arrColorsButtons = {Theme.ACTION_BAR_RED_SELECTOR_COLOR, Theme.ACTION_BAR_ORANGE_SELECTOR_COLOR, Theme.ACTION_BAR_VIOLET_SELECTOR_COLOR,
+    private static int[] arrColorsNames        = {0xffca5650, 0xffd87b29, 0xff4e92cc, 0xff50b232, 0xff42b1a8, 0xff4e92cc, 0xff4e92cc, 0xff4e92cc};
+    private static int[] arrColorsButtons      = {Theme.ACTION_BAR_RED_SELECTOR_COLOR, Theme.ACTION_BAR_ORANGE_SELECTOR_COLOR, Theme.ACTION_BAR_VIOLET_SELECTOR_COLOR,
             Theme.ACTION_BAR_GREEN_SELECTOR_COLOR, Theme.ACTION_BAR_CYAN_SELECTOR_COLOR, Theme.ACTION_BAR_BLUE_SELECTOR_COLOR, Theme.ACTION_BAR_VIOLET_SELECTOR_COLOR, Theme.ACTION_BAR_BLUE_SELECTOR_COLOR};
 
     private static Drawable broadcastDrawable;
@@ -102,29 +101,6 @@ public class AvatarDrawable extends Drawable {
     }
 
     public static int getColorIndex(int id) {
-        if (id >= 0 && id < 8) {
-            return id;
-        }
-        /*try {
-            String str;
-            if (id >= 0) {
-                str = String.format(Locale.US, "%d%d", id, UserConfig.getClientUserId());
-            } else {
-                str = String.format(Locale.US, "%d", id);
-            }
-            if (str.length() > 15) {
-                str = str.substring(0, 15);
-            }
-            java.security.MessageDigest md = java.security.MessageDigest.getInstance("MD5");
-            byte[] digest = md.digest(str.getBytes());
-            int b = digest[Math.abs(id % 16)];
-            if (b < 0) {
-                b += 256;
-            }
-            return Math.abs(b) % arrColors.length;
-        } catch (Exception e) {
-            FileLog.e("tmessages", e);
-        }*/
         return Math.abs(id % arrColors.length);
     }
 
@@ -142,10 +118,6 @@ public class AvatarDrawable extends Drawable {
 
     public static int getProfileTextColorForId(int id) {
         return arrColorsProfilesText[getColorIndex(id)];
-    }
-
-    public static int getProfileBackColorForId(int id) {
-        return arrColorsProfilesBack[getColorIndex(id)];
     }
 
     public static int getNameColorForId(int id) {

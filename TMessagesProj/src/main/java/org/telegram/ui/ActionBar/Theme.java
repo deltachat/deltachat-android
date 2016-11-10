@@ -30,11 +30,9 @@ public class Theme {
     public static final int ACTION_BAR_COLOR = 0xff415e6b;
     public static final int ACTION_BAR_PHOTO_VIEWER_COLOR = 0x7f000000;
     public static final int ACTION_BAR_MEDIA_PICKER_COLOR = 0xff333333;
-    public static final int ACTION_BAR_CHANNEL_INTRO_COLOR = 0xffffffff;
     public static final int ACTION_BAR_PLAYER_COLOR = 0xffffffff;
     public static final int ACTION_BAR_TITLE_COLOR = 0xffffffff;
     public static final int ACTION_BAR_SUBTITLE_COLOR = 0xffd5e8f7;
-    public static final int ACTION_BAR_PROFILE_COLOR = 0xff415e6b;
     public static final int ACTION_BAR_PROFILE_SUBTITLE_COLOR = 0xffd7eafa;
     public static final int ACTION_BAR_MAIN_AVATAR_COLOR = 0xff5085b1;
     public static final int ACTION_BAR_ACTION_MODE_TEXT_COLOR = 0xff737373;
@@ -68,7 +66,6 @@ public class Theme {
     public static final int CHAT_ADD_CONTACT_TEXT_COLOR = 0xff4a82b5;
     public static final int CHAT_REPORT_SPAM_TEXT_COLOR = 0xffcf5957;
     public static final int CHAT_BOTTOM_OVERLAY_TEXT_COLOR = 0xff7f7f7f;
-    public static final int CHAT_BOTTOM_CHAT_OVERLAY_TEXT_COLOR = 0xff3a8ccf;
     public static final int CHAT_GIF_HINT_TEXT_COLOR = 0xffffffff;
     public static final int CHAT_EMPTY_VIEW_TEXT_COLOR = 0xffffffff;
     public static final int CHAT_SEARCH_COUNT_TEXT_COLOR = 0xff4e9ad4;
@@ -84,13 +81,6 @@ public class Theme {
     public static final int ALERT_PANEL_MESSAGE_TEXT_COLOR = 0xff999999;
 
     public static final int AUTODOWNLOAD_SHEET_SAVE_TEXT_COLOR = 0xff3a8ccf;
-
-    public static final int SHARE_SHEET_COPY_TEXT_COLOR = 0xff3a8ccf;
-    public static final int SHARE_SHEET_SEND_TEXT_COLOR = 0xff3ec1f9;
-    public static final int SHARE_SHEET_SEND_DISABLED_TEXT_COLOR = 0xffb3b3b3;
-    public static final int SHARE_SHEET_EDIT_TEXT_COLOR = 0xff212121;
-    public static final int SHARE_SHEET_EDIT_PLACEHOLDER_TEXT_COLOR = 0xff979797;
-    public static final int SHARE_SHEET_BADGE_TEXT_COLOR = 0xffffffff;
 
     public static final int STICKERS_SHEET_TITLE_TEXT_COLOR = 0xff212121;
     public static final int STICKERS_SHEET_SEND_TEXT_COLOR = 0xff3a8ccf;

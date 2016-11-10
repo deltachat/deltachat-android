@@ -578,7 +578,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
         };
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         listView.setLayoutManager(layoutManager);
-        listView.setGlowColor(AvatarDrawable.getProfileBackColorForId(user_id != 0 || ChatObject.isChannel(chat_id) && !currentChat.megagroup ? 5 : chat_id));
+        listView.setGlowColor(Theme.ACTION_BAR_COLOR);
         frameLayout.addView(listView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.MATCH_PARENT, Gravity.TOP | Gravity.LEFT));
 
         listView.setAdapter(listAdapter);
@@ -799,7 +799,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
         });
 
         topView = new TopView(context);
-        topView.setBackgroundColor(AvatarDrawable.getProfileBackColorForId(user_id != 0 || ChatObject.isChannel(chat_id) && !currentChat.megagroup ? 5 : chat_id));
+        topView.setBackgroundColor(Theme.ACTION_BAR_COLOR);
         frameLayout.addView(topView);
 
         frameLayout.addView(actionBar);
@@ -1545,7 +1545,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
         listView.setAlpha(progress);
 
         listView.setTranslationX(AndroidUtilities.dp(48) - AndroidUtilities.dp(48) * progress);
-        int color = AvatarDrawable.getProfileBackColorForId(user_id != 0 || ChatObject.isChannel(chat_id) && !currentChat.megagroup ? 5 : chat_id);
+        int color = Theme.ACTION_BAR_COLOR;
 
         int r = Color.red(Theme.ACTION_BAR_COLOR);
         int g = Color.green(Theme.ACTION_BAR_COLOR);
