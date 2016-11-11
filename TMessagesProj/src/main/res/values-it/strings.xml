@@ -637,7 +637,7 @@
     <string name="AttachDocument">File</string>
     <string name="AttachSticker">Sticker</string>
     <string name="AttachAudio">Messaggio vocale</string>
-    <string name="FromYou">Tu</string>
+    <string name="FromSelf">Tu</string>
     <string name="ActionTakeScreenshootYou">Hai fatto uno screenshot!</string>
     <string name="ActionTakeScreenshoot">un1 ha fatto uno screenshot!</string>
     <!--Alert messages-->

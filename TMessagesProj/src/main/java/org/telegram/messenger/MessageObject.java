@@ -1470,7 +1470,7 @@ public class MessageObject {
             if (attribute instanceof TLRPC.TL_documentAttributeAudio) {
                 if (attribute.voice) {
                     if (isOutOwner() || messageOwner.fwd_from != null && messageOwner.fwd_from.from_id == UserConfig.getClientUserId()) {
-                        return LocaleController.getString("FromYou", R.string.FromYou);
+                        return LocaleController.getString("FromSelf", R.string.FromSelf);
                     }
                     TLRPC.User user = null;
                     TLRPC.Chat chat = null;

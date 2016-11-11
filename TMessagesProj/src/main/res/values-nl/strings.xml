@@ -637,7 +637,7 @@
     <string name="AttachDocument">Bestand</string>
     <string name="AttachSticker">Sticker</string>
     <string name="AttachAudio">Spraakbericht</string>
-    <string name="FromYou">Jij</string>
+    <string name="FromSelf">Jij</string>
     <string name="ActionTakeScreenshootYou">Schermafdruk gemaakt!</string>
     <string name="ActionTakeScreenshoot">un1 heeft een schermafdruk gemaakt!</string>
     <!--Alert messages-->
