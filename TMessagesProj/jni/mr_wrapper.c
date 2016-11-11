@@ -209,6 +209,15 @@ JNIEXPORT jlong Java_org_telegram_messenger_MrMailbox_MrMailboxGetMsgById(JNIEnv
 }
 
 
+JNIEXPORT jstring Java_org_telegram_messenger_MrMailbox_MrMailboxGetTxtRawById(JNIEnv *env, jclass c, jlong hMailbox, jint msg_id)
+{
+	char* temp = mrmailbox_get_txt_raw_by_id((mrmailbox_t*)hMailbox, msg_id);
+		jstring ret = JSTRING_NEW(temp);
+	free(temp);
+	return ret;
+}
+
+
 JNIEXPORT void Java_org_telegram_messenger_MrMailbox_MrMailboxDeleteMsgById(JNIEnv *env, jclass c, jlong hMailbox, jint id)
 {
 	mrmailbox_delete_msg_by_id((mrmailbox_t*)hMailbox, id);

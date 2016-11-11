@@ -220,6 +220,7 @@ public class MrMailbox {
     public native static int     MrMailboxCreateChatByContactId(long hMailbox, int contact_id); // returns chat_id
     public native static int[]   MrMailboxGetChatMedia      (long hMailbox, int chat_id, int msg_type, int or_msg_type);
     public native static long    MrMailboxGetMsgById        (long hMailbox, int id); // return hMsg which must be unref'd after usage
+    public native static String  MrMailboxGetTxtRawById     (long hMailbox, int id);
     public native static void    MrMailboxDeleteMsgById     (long hMailbox, int id);
     public native static int     MrMailboxSetConfig         (long hMailbox, String key, String value); // value may be NULL
     public native static String  MrMailboxGetConfig         (long hMailbox, String key, String def); // def may be NULL, returns empty string as NULL

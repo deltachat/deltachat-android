@@ -1559,35 +1559,7 @@ public class MessageObject {
     */
 
     public boolean canDeleteMessage(TLRPC.Chat chat) {
-        return canDeleteMessage(messageOwner, chat);
-    }
-
-    public static boolean canDeleteMessage(TLRPC.Message message, TLRPC.Chat chat) {
-        if (message.id < 0) {
-            return true;
-        }
-        if (chat == null && message.to_id.channel_id != 0) {
-            chat = MessagesController.getInstance().getChat(message.to_id.channel_id);
-        }
-        if (ChatObject.isChannel(chat)) {
-            if (message.id == 1) {
-                return false;
-            }
-            if (chat.creator) {
-                return true;
-            } else if (chat.editor) {
-                if (isOut(message) || message.from_id > 0 && !message.post) {
-                    return true;
-                }
-            } else if (chat.moderator) {
-                if (message.from_id > 0 && !message.post) {
-                    return true;
-                }
-            } else if (isOut(message) && message.from_id > 0) {
-                return true;
-            }
-        }
-        return isOut(message) || !ChatObject.isChannel(chat);
+        return true;
     }
 
     public String getForwardedName() {
