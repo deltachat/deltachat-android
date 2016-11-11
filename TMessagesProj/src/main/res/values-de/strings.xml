@@ -636,7 +636,7 @@
     <string name="AttachDocument">Datei</string>
     <string name="AttachSticker">Sticker</string>
     <string name="AttachAudio">Sprachnachricht</string>
-    <string name="FromYou">Du</string>
+    <string name="FromYou">Ich</string>
     <string name="ActionTakeScreenshootYou">Du hast ein Bildschirmfoto gemacht!</string>
     <string name="ActionTakeScreenshoot">un1 hat ein Bildschirmfoto gemacht!</string>
     <!--Alert messages-->
