@@ -35,7 +35,6 @@
     <string name="Yesterday">ieri</string>
     <string name="NoResult">Nessun risultato</string>
     <string name="NoChats">Ancora nessuna chat.</string>
-    <string name="NoChatsHelp">Inizia a chattare premendo il tasto\nnuovo messaggio nell\'angolo in basso a destra\no apri il menu per avere più opzioni.</string>
     <string name="WaitingForNetwork">Attendo la rete...</string>
     <string name="Connecting">Connetto…</string>
     <string name="Updating">Aggiorno…</string>

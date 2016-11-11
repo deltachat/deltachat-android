@@ -483,6 +483,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
         textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
         emptyView.addView(textView, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT));
 
+        /*
         textView = new TextView(context);
         String help = LocaleController.getString("NoChatsHelp", R.string.NoChatsHelp);
         if (AndroidUtilities.isTablet() && !AndroidUtilities.isSmallTablet()) {
@@ -495,6 +496,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
         textView.setPadding(AndroidUtilities.dp(8), AndroidUtilities.dp(6), AndroidUtilities.dp(8), 0);
         textView.setLineSpacing(AndroidUtilities.dp(2), 1);
         emptyView.addView(textView, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT));
+        */
 
         /* EDIT BY MR
         progressView = new ProgressBar(context);

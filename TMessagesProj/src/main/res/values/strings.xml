@@ -35,7 +35,6 @@
     <string name="Yesterday">yesterday</string>
     <string name="NoResult">No results</string>
     <string name="NoChats">No chats yet.</string>
-    <string name="NoChatsHelp">Start messaging by pressing the\nnew message button in the bottom right corner\nor tap the menu button for more options.</string>
     <string name="WaitingForNetwork">Waiting for network...</string>
     <string name="Connecting">Connecting...</string>
     <string name="Updating">Updating...</string>

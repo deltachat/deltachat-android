@@ -512,7 +512,7 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
                 } else if (i == helpRow) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
                     builder.setTitle(LocaleController.getString("AppName", R.string.AppName) + " " + getVersion());
-                    builder.setMessage(MrMailbox.MrMailboxGetInfo(MrMailbox.hMailbox)+" Frontend based upon Telegram for Android.");
+                    builder.setMessage(MrMailbox.MrMailboxGetInfo(MrMailbox.hMailbox));
                     builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {

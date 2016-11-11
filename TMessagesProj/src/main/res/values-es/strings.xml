@@ -35,7 +35,6 @@
     <string name="Yesterday">ayer</string>
     <string name="NoResult">Sin resultados</string>
     <string name="NoChats">Aún sin chats.</string>
-    <string name="NoChatsHelp">Envía mensajes tocando el botón para\nredactar, en la parte inferior derecha,\no pulsa el botón menú para más opciones.</string>
     <string name="WaitingForNetwork">Esperando red...</string>
     <string name="Connecting">Conectando...</string>
     <string name="Updating">Actualizando...</string>

@@ -35,7 +35,6 @@
     <string name="Yesterday">gisteren</string>
     <string name="NoResult">Geen resultaten</string>
     <string name="NoChats">Nog geen chats.</string>
-    <string name="NoChatsHelp">Begin een gesprek door op de\nopstelknop rechtsonder te drukken\nof druk op de menuknop voor meer opties.</string>
     <string name="WaitingForNetwork">Wachten op netwerk</string>
     <string name="Connecting">Verbinden</string>
     <string name="Updating">Bijwerken</string>
