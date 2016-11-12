@@ -966,16 +966,6 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
     }
 
     private void didSelectResult(final long dialog_id, boolean useAlert, final boolean param) {
-        if (addToGroupAlertString == null) {
-            if ((int) dialog_id < 0 && ChatObject.isChannel(-(int) dialog_id) && !ChatObject.isCanWriteToChannel(-(int) dialog_id)) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
-                builder.setTitle(LocaleController.getString("AppName", R.string.AppName));
-                builder.setMessage(LocaleController.getString("ChannelCantSendMessage", R.string.ChannelCantSendMessage));
-                builder.setNegativeButton(LocaleController.getString("OK", R.string.OK), null);
-                showDialog(builder.create());
-                return;
-            }
-        }
         if (useAlert && (selectAlertString != null && selectAlertStringGroup != null || addToGroupAlertString != null)) {
             if (getParentActivity() == null) {
                 return;
