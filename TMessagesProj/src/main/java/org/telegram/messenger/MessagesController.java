@@ -543,11 +543,10 @@ public class MessagesController implements NotificationCenter.NotificationCenter
     }
 
     public TLRPC.User getUser(Integer id) {
-        // EDIT BY MR
+        // EDIT BY MR - additional information should be loaded as needed by the caller
         TLRPC.User u = new TLRPC.User();
         u.id = id;
         return u;
-        //return users.get(id); -- /EDIT BY MR
     }
 
     public TLRPC.User getUser(String username) {

@@ -6966,17 +6966,9 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         String str = "";
         if (name) {
             if (previousUid != messageObject.messageOwner.from_id) {
-                if (messageObject.messageOwner.from_id > 0) {
-                    TLRPC.User user = MessagesController.getInstance().getUser(messageObject.messageOwner.from_id);
-                    if (user != null) {
-                        str = ContactsController.formatName(user.first_name, user.last_name) + ":\n";
-                    }
-                } else if (messageObject.messageOwner.from_id < 0) {
-                    TLRPC.Chat chat = MessagesController.getInstance().getChat(-messageObject.messageOwner.from_id);
-                    if (chat != null) {
-                        str = chat.title + ":\n";
-                    }
-                }
+                long hContact = MrMailbox.MrMailboxGetContactById(MrMailbox.hMailbox, messageObject.messageOwner.from_id);
+                    str += MrMailbox.MrContactGetDisplayName(hContact) + ":\n";
+                MrMailbox.MrContactUnref(hContact);
             }
         }
         if (messageObject.type == 0 && messageObject.messageOwner.message != null) {
