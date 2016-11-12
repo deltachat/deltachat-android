@@ -3765,7 +3765,14 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         long hContact = MrMailbox.MrMailboxGetContactById(MrMailbox.hMailbox, fromId);
         if( hContact==0 )  { MrMailbox.MrMsgUnref(hMsg); return; }
 
-        String name = MrMailbox.MrContactGetDisplayName(hContact);
+        String name = MrMailbox.MrContactGetName(hContact);
+        if( name.isEmpty() ) {
+            name =  MrMailbox.MrContactGetAddr(hContact);
+        }
+        else {
+            name += " (" + MrMailbox.MrContactGetAddr(hContact) + ")";
+        }
+
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
         builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), new DialogInterface.OnClickListener() {

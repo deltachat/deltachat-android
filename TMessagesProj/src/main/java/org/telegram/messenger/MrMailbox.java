@@ -273,7 +273,9 @@ public class MrMailbox {
 
     // MrContact objects
     public native static void    MrContactUnref             (long hContact);
-    public native static String  MrContactGetDisplayName    (long hContact);
+    public native static String  MrContactGetName           (long hContact);
+    public native static String  MrContactGetAddr           (long hContact);
+    public static String         MrContactGetDisplayName    (long hContact) { String s=MrContactGetName(hContact); if(s.isEmpty()) {s=MrContactGetAddr(hContact);} return s; }
 
     // MrPoortext objects
     public native static void    MrPoortextUnref            (long hPoortext);

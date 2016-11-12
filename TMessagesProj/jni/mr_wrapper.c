@@ -580,15 +580,17 @@ JNIEXPORT void Java_org_telegram_messenger_MrMailbox_MrContactUnref(JNIEnv *env,
 }
 
 
-JNIEXPORT jstring Java_org_telegram_messenger_MrMailbox_MrContactGetDisplayName(JNIEnv *env, jclass c, jlong hContact)
+JNIEXPORT jstring Java_org_telegram_messenger_MrMailbox_MrContactGetName(JNIEnv *env, jclass c, jlong hContact)
 {
 	mrcontact_t* ths = (mrcontact_t*)hContact; if( ths == NULL ) { return JSTRING_NEW(NULL); }
-	if( ths->m_name && ths->m_name[0] ) {
-		return JSTRING_NEW(ths->m_name);
-	}
-	else {
-		return JSTRING_NEW(ths->m_addr);
-	}
+	return JSTRING_NEW(ths->m_name);
+}
+
+
+JNIEXPORT jstring Java_org_telegram_messenger_MrMailbox_MrContactGetAddr(JNIEnv *env, jclass c, jlong hContact)
+{
+	mrcontact_t* ths = (mrcontact_t*)hContact; if( ths == NULL ) { return JSTRING_NEW(NULL); }
+	return JSTRING_NEW(ths->m_addr);
 }
 
 
