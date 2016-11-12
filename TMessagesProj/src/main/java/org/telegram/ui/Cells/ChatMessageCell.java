@@ -2196,23 +2196,14 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                     if (user.photo != null) {
                         currentPhoto = user.photo.photo_small;
                     }
-                    contactAvatarDrawable.setInfo(user);
+                    contactAvatarDrawable.setInfoByUser(user);
                 }
                 photoImage.setImage(currentPhoto, "50_50", user != null ? contactAvatarDrawable : Theme.contactDrawable[messageObject.isOutOwner() ? 1 : 0], null, false);
 
-                String phone = messageObject.messageOwner.media.phone_number;
-                if (phone != null && phone.length() != 0) {
-                    phone = "";//PhoneFormat.getInstance().format(phone);
-                } else {
-                    phone = LocaleController.getString("NumberUnknown", R.string.NumberUnknown);
-                }
-
                 CharSequence currentNameString = ContactsController.formatName(messageObject.messageOwner.media.first_name, messageObject.messageOwner.media.last_name).replace('\n', ' ');
-                if (currentNameString.length() == 0) {
-                    currentNameString = phone;
-                }
+
                 titleLayout = new StaticLayout(TextUtils.ellipsize(currentNameString, contactNamePaint, maxWidth, TextUtils.TruncateAt.END), contactNamePaint, maxWidth + dp(2), Layout.Alignment.ALIGN_NORMAL, 1.0f, 0.0f, false);
-                docTitleLayout = new StaticLayout(TextUtils.ellipsize(phone.replace('\n', ' '), contactPhonePaint, maxWidth, TextUtils.TruncateAt.END), contactPhonePaint, maxWidth + dp(2), Layout.Alignment.ALIGN_NORMAL, 1.0f, 0.0f, false);
+                docTitleLayout = new StaticLayout(TextUtils.ellipsize("", contactPhonePaint, maxWidth, TextUtils.TruncateAt.END), contactPhonePaint, maxWidth + dp(2), Layout.Alignment.ALIGN_NORMAL, 1.0f, 0.0f, false);
 
                 setMessageObjectInternal(messageObject);
 
@@ -3697,7 +3688,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
             */
 
             // MrAvatar ...
-            avatarDrawable.setInfo(cname, null, false);
+            avatarDrawable.setInfoByName(cname);
             avatarImage.setImage(currentPhoto, "50_50", avatarDrawable, null, false);
         }
 
@@ -3999,7 +3990,6 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
 
             if (currentMessageObject.type == 13) {
                 namePaint.setColor(Theme.MSG_STICKER_NAME_TEXT_COLOR);
-                int backWidth;
                 if (currentMessageObject.isOutOwner()) {
                     nameX = dp(28);
                 } else {
@@ -4015,13 +4005,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                 } else {
                     nameX = currentBackgroundDrawable.getBounds().left + dp(17) - nameOffsetX;
                 }
-                if (currentUser != null) {
-                    namePaint.setColor(AvatarDrawable.getNameColorForId(currentUser.id));
-                } else if (currentChat != null) {
-                    namePaint.setColor(AvatarDrawable.getNameColorForId(currentChat.id));
-                } else {
-                    namePaint.setColor(AvatarDrawable.getNameColorForId(0));
-                }
+                namePaint.setColor(AvatarDrawable.getNameColor(currentNameString));
                 nameY = dp(10);
             }
             canvas.translate(nameX, nameY);

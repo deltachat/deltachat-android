@@ -85,7 +85,7 @@ public class ShareDialogCell extends FrameLayout {
             } else {
                 nameTextView.setText("");
             }
-            avatarDrawable.setInfo(user);
+            avatarDrawable.setInfoByUser(user);
             if (user != null && user.photo != null) {
                 photo = user.photo.photo_small;
             }
@@ -98,7 +98,7 @@ public class ShareDialogCell extends FrameLayout {
             } else {
                 nameTextView.setText("");
             }
-            avatarDrawable.setInfo(chat);
+            avatarDrawable.setInfoByChat(chat);
             if (chat != null && chat.photo != null) {
                 photo = chat.photo.photo_small;
             }

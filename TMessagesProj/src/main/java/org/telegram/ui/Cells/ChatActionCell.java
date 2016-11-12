@@ -106,7 +106,7 @@ public class ChatActionCell extends BaseCell {
                     }
                 }
             }
-            avatarDrawable.setInfo(null, null, false);
+            avatarDrawable.setInfoByName(null);
             if (currentMessageObject.messageOwner.action instanceof TLRPC.TL_messageActionUserUpdatedPhoto) {
                 imageReceiver.setImage(currentMessageObject.messageOwner.action.newUserPhoto.photo_small, "50_50", avatarDrawable, null, false);
             } else {

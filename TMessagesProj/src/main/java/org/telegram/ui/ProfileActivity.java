@@ -1577,7 +1577,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
             rD = (int) ((Color.red(color) - Color.red(color2)) * progress);
             gD = (int) ((Color.green(color) - Color.green(color2)) * progress);
             bD = (int) ((Color.blue(color) - Color.blue(color2)) * progress);
-            avatarDrawable.setColor(Color.rgb(Color.red(color2) + rD, Color.green(color2) + gD, Color.blue(color2) + bD));
+            avatarDrawable.setColor_(Color.rgb(Color.red(color2) + rD, Color.green(color2) + gD, Color.blue(color2) + bD));
             avatarImage.invalidate();
         }
 
@@ -2036,7 +2036,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                 photo = user.photo.photo_small;
                 photoBig = user.photo.photo_big;
             }
-            avatarDrawable.setInfo(user);
+            avatarDrawable.setInfoByUser(user);
             avatarImage.setImage(photo, "50_50", avatarDrawable);
 
             String newString = UserObject.getUserName(user);
@@ -2161,7 +2161,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                 photo = chat.photo.photo_small;
                 photoBig = chat.photo.photo_big;
             }
-            avatarDrawable.setInfo(chat);
+            avatarDrawable.setInfoByChat(chat);
             avatarImage.setImage(photo, "50_50", avatarDrawable);
             avatarImage.getImageReceiver().setVisible(!PhotoViewer.getInstance().isShowingImage(photoBig), false);
         }

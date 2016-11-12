@@ -205,14 +205,14 @@ public class UserCell extends FrameLayout {
         }
 
         if (currentUser != null) {
-            avatarDrawable.setInfo(currentUser);
+            avatarDrawable.setInfoByUser(currentUser);
             if (currentUser.status != null) {
                 lastStatus = currentUser.status.expires;
             } else {
                 lastStatus = 0;
             }
         } else {
-            avatarDrawable.setInfo(currentChat);
+            avatarDrawable.setInfoByChat(currentChat);
         }
 
         if (currentName != null) {

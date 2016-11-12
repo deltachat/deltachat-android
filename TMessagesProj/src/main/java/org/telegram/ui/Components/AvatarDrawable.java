@@ -31,14 +31,12 @@ public class AvatarDrawable extends Drawable {
     private static Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
     private static TextPaint namePaint;
     private static TextPaint namePaintSmall;
-    private static int[] arrColors             = {0xffe56555, 0xfff28c48, 0xff8e85ee, 0xff76c84d, 0xff5fbed5, 0xff549cdd, 0xff8e85ee, 0xff8cdc99};
+    private static int[] arrColors             = {0xffe56555, 0xfff28c48, 0xff8e85ee, 0xff76c84d, 0xff5bb6cc, 0xff549cdd, 0xffd25c99, 0xffb37800}; /* the colors should contrast to typical action bar colors as well as to white (more important, is used as text color)*/
     private static int[] arrColorsProfiles     = {0xffd86f65, 0xfff69d61, 0xff8c79d2, 0xff67b35d, 0xff56a2bb, Theme.ACTION_BAR_MAIN_AVATAR_COLOR, 0xff8c79d2, 0xfff37fa6};
     private static int[] arrColorsProfilesText = {0xfff9cbc5, 0xfffdddc8, 0xffcdc4ed, 0xffc0edba, 0xffb8e2f0, Theme.ACTION_BAR_PROFILE_SUBTITLE_COLOR, 0xffcdc4ed, 0xffb3d7f7};
-    private static int[] arrColorsNames        = {0xffca5650, 0xffd87b29, 0xff4e92cc, 0xff50b232, 0xff42b1a8, 0xff4e92cc, 0xff4e92cc, 0xff4e92cc};
     private static int[] arrColorsButtons      = {Theme.ACTION_BAR_RED_SELECTOR_COLOR, Theme.ACTION_BAR_ORANGE_SELECTOR_COLOR, Theme.ACTION_BAR_VIOLET_SELECTOR_COLOR,
             Theme.ACTION_BAR_GREEN_SELECTOR_COLOR, Theme.ACTION_BAR_CYAN_SELECTOR_COLOR, Theme.ACTION_BAR_BLUE_SELECTOR_COLOR, Theme.ACTION_BAR_VIOLET_SELECTOR_COLOR, Theme.ACTION_BAR_BLUE_SELECTOR_COLOR};
 
-    private static Drawable broadcastDrawable;
     private static Drawable photoDrawable;
 
     private int color;
@@ -47,7 +45,6 @@ public class AvatarDrawable extends Drawable {
     private float textHeight;
     private float textLeft;
     private boolean isProfile;
-    private boolean drawBrodcast;
     private boolean drawPhoto;
     private boolean smallStyle;
     private StringBuilder stringBuilder = new StringBuilder(5);
@@ -63,8 +60,6 @@ public class AvatarDrawable extends Drawable {
             namePaintSmall = new TextPaint(Paint.ANTI_ALIAS_FLAG);
             namePaintSmall.setColor(0xffffffff);
             namePaintSmall.setTextSize(AndroidUtilities.dp(14));
-
-            broadcastDrawable = ApplicationLoader.applicationContext.getResources().getDrawable(R.drawable.broadcast_w);
         }
     }
 
@@ -80,7 +75,7 @@ public class AvatarDrawable extends Drawable {
         this();
         isProfile = profile;
         if (user != null) {
-            setInfo(user.first_name, user.last_name, false);
+            setInfoByName(user.first_name+" "+ user.last_name);
         }
     }
 
@@ -88,7 +83,7 @@ public class AvatarDrawable extends Drawable {
         this();
         isProfile = profile;
         if (chat != null) {
-            setInfo(chat.title, null, chat.id < 0);
+            setInfoByName(chat.title);
         }
     }
 
@@ -120,27 +115,28 @@ public class AvatarDrawable extends Drawable {
         return arrColorsProfilesText[getColorIndex(id)];
     }
 
-    public static int getNameColorForId(int id) {
-        return arrColorsNames[getColorIndex(id)];
+    public static int getNameColor(String name) {
+        int id = strChecksum(name);
+        return arrColors[getColorIndex(id)];
     }
 
-    public void setInfo(TLRPC.User user) {
+    public void setInfoByUser(TLRPC.User user) {
         if (user != null) {
-            setInfo(user.first_name, user.last_name, false);
+            setInfoByName(user.first_name +" "+ user.last_name);
         }
     }
 
-    public void setInfo(TLRPC.Chat chat) {
+    public void setInfoByChat(TLRPC.Chat chat) {
         if (chat != null) {
-            setInfo(chat.title, null, chat.id < 0);
+            setInfoByName(chat.title);
         }
     }
 
-    public void setColor(int value) {
+    public void setColor_(int value) {
         color = value;
     }
 
-    private int strChecksum(String str) {
+    private static int strChecksum(String str) {
         int ret = 0;
         if( str!=null ) {
             int i;
@@ -152,16 +148,16 @@ public class AvatarDrawable extends Drawable {
         return ret;
     }
 
-    public void setInfo(String firstName, String lastName, boolean isBroadcast) {
-        int id = strChecksum(firstName) + strChecksum(lastName);
+    public void setInfoByName(String firstName) {
+        String lastName = null;
+
+        int id = strChecksum(firstName);
 
         if (isProfile) {
             color = arrColorsProfiles[getColorIndex(id)];
         } else {
             color = arrColors[getColorIndex(id)];
         }
-
-        drawBrodcast = isBroadcast;
 
         if (firstName == null || firstName.length() == 0) {
             firstName = lastName;
@@ -234,22 +230,16 @@ public class AvatarDrawable extends Drawable {
         canvas.translate(bounds.left, bounds.top);
         canvas.drawCircle(size / 2, size / 2, size / 2, paint);
 
-        if (drawBrodcast && broadcastDrawable != null) {
-            int x = (size - broadcastDrawable.getIntrinsicWidth()) / 2;
-            int y = (size - broadcastDrawable.getIntrinsicHeight()) / 2;
-            broadcastDrawable.setBounds(x, y, x + broadcastDrawable.getIntrinsicWidth(), y + broadcastDrawable.getIntrinsicHeight());
-            broadcastDrawable.draw(canvas);
-        } else {
-            if (textLayout != null) {
-                canvas.translate((size - textWidth) / 2 - textLeft, (size - textHeight) / 2);
-                textLayout.draw(canvas);
-            } else if (drawPhoto && photoDrawable != null) {
-                int x = (size - photoDrawable.getIntrinsicWidth()) / 2;
-                int y = (size - photoDrawable.getIntrinsicHeight()) / 2;
-                photoDrawable.setBounds(x, y, x + photoDrawable.getIntrinsicWidth(), y + photoDrawable.getIntrinsicHeight());
-                photoDrawable.draw(canvas);
-            }
+        if (textLayout != null) {
+            canvas.translate((size - textWidth) / 2 - textLeft, (size - textHeight) / 2);
+            textLayout.draw(canvas);
+        } else if (drawPhoto && photoDrawable != null) {
+            int x = (size - photoDrawable.getIntrinsicWidth()) / 2;
+            int y = (size - photoDrawable.getIntrinsicHeight()) / 2;
+            photoDrawable.setBounds(x, y, x + photoDrawable.getIntrinsicWidth(), y + photoDrawable.getIntrinsicHeight());
+            photoDrawable.draw(canvas);
         }
+
         canvas.restore();
     }
 

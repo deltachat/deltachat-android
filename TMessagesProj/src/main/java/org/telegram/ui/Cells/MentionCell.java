@@ -86,7 +86,7 @@ public class MentionCell extends LinearLayout {
             imageView.setImageDrawable(null);
             return;
         }
-        avatarDrawable.setInfo(user);
+        avatarDrawable.setInfoByUser(user);
         if (user.photo != null && user.photo.photo_small != null) {
             imageView.setImage(user.photo.photo_small, "50_50", avatarDrawable);
         } else {
@@ -111,7 +111,7 @@ public class MentionCell extends LinearLayout {
     public void setBotCommand(String command, String help, TLRPC.User user) {
         if (user != null) {
             imageView.setVisibility(VISIBLE);
-            avatarDrawable.setInfo(user);
+            avatarDrawable.setInfoByUser(user);
             if (user.photo != null && user.photo.photo_small != null) {
                 imageView.setImage(user.photo.photo_small, "50_50", avatarDrawable);
             } else {

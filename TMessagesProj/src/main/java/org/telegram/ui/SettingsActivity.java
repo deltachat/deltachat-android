@@ -1204,7 +1204,7 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
         }
         AvatarDrawable avatarDrawable = new AvatarDrawable(user, true);
 
-        avatarDrawable.setColor(Theme.ACTION_BAR_MAIN_AVATAR_COLOR);
+        avatarDrawable.setColor_(Theme.ACTION_BAR_MAIN_AVATAR_COLOR);
         /*  EDIT BY MR
         if (avatarImage != null) {
             avatarImage.setImage(photo, "50_50", avatarDrawable);

@@ -212,7 +212,7 @@ public class GroupCreateFinalActivity extends BaseFragment implements Notificati
 
         avatarImage = new BackupImageView(context);
         avatarImage.setRoundRadius(AndroidUtilities.dp(32));
-        avatarDrawable.setInfo(null, null, chatType == ChatObject.CHAT_TYPE_BROADCAST);
+        avatarDrawable.setInfoByName(null);
         avatarImage.setImageDrawable(avatarDrawable);
         frameLayout.addView(avatarImage);
         FrameLayout.LayoutParams layoutParams1 = (FrameLayout.LayoutParams) avatarImage.getLayoutParams();
@@ -301,7 +301,7 @@ public class GroupCreateFinalActivity extends BaseFragment implements Notificati
 
                 @Override
                 public void afterTextChanged(Editable s) {
-                    avatarDrawable.setInfo(nameTextView.length() > 0 ? nameTextView.getText().toString() : null, null, false);
+                    avatarDrawable.setInfoByName(nameTextView.length() > 0 ? nameTextView.getText().toString() : null);
                     avatarImage.invalidate();
                 }
             });

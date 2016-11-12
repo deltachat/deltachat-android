@@ -409,14 +409,14 @@ public class ProfileSearchCell extends BaseCell {
             if (user.photo != null) {
                 photo = user.photo.photo_small;
             }
-            avatarDrawable.setInfo(user);
+            avatarDrawable.setInfoByUser(user);
         } else if (chat != null) {
             if (chat.photo != null) {
                 photo = chat.photo.photo_small;
             }
-            avatarDrawable.setInfo(chat);
+            avatarDrawable.setInfoByChat(chat);
         } else {
-            avatarDrawable.setInfo(null, null, false);
+            avatarDrawable.setInfoByName(null);
         }
 
         if (mask != 0) {

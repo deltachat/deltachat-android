@@ -240,7 +240,7 @@ public class ChatAttachAlert extends BottomSheet implements NotificationCenter.N
             currentUser = user;
             TLRPC.FileLocation photo = null;
             nameTextView.setText(ContactsController.formatName(user.first_name, user.last_name));
-            avatarDrawable.setInfo(user);
+            avatarDrawable.setInfoByUser(user);
             if (user != null && user.photo != null) {
                 photo = user.photo.photo_small;
             }

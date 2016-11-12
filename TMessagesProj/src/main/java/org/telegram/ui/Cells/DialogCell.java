@@ -690,7 +690,7 @@ public class DialogCell extends BaseCell {
 
         // MrAvatar
         String cname = MrMailbox.MrChatGetName(m_hChat);
-        avatarDrawable.setInfo(cname, null, false);
+        avatarDrawable.setInfoByName(cname);
 
         avatarImage.setImage(photo, "50_50", avatarDrawable, null, false);
 
