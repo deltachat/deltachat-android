@@ -3639,7 +3639,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
     }
 
     private boolean checkNeedDrawShareButton(MessageObject messageObject) {
-        // we use the "Share" button as a reply button: in the "strangers" group it is very usul to reply
+        // we use the "Share" button as a reply button: in the "strangers" group it is very useful to reply
         // to a message, so we use this as a shortcut to "long press -> reply"
         if( messageObject.getDialogId()==MrMailbox.MR_CHAT_ID_STRANGERS) {
             return true;
@@ -3973,15 +3973,9 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
         drawContent(canvas);
 
         if (drawShareButton) {
-            Theme.shareDrawable.setColorFilter(sharePressed ? Theme.colorPressedFilter : Theme.colorFilter);
-            if (currentMessageObject.isOutOwner()) {
-                shareStartX = currentBackgroundDrawable.getBounds().left - dp(8) - Theme.shareDrawable.getIntrinsicWidth();
-            } else {
-                shareStartX = currentBackgroundDrawable.getBounds().right + dp(8);
-            }
-            setDrawableBounds(Theme.shareDrawable, shareStartX, shareStartY = layoutHeight - dp(41));
-            Theme.shareDrawable.draw(canvas);
-            setDrawableBounds(Theme.shareIconDrawable, shareStartX + dp(9), shareStartY + dp(9));
+            shareStartX = currentBackgroundDrawable.getBounds().right - dp(34);
+            shareStartY = dp(4);
+            setDrawableBounds(Theme.shareIconDrawable, shareStartX, shareStartY);
             Theme.shareIconDrawable.draw(canvas);
         }
 

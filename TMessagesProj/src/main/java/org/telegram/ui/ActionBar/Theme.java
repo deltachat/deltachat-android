@@ -207,7 +207,6 @@ public class Theme {
     public static Drawable[] cornerOuter = new Drawable[4];
     public static Drawable[] cornerInner = new Drawable[4];
 
-    public static Drawable shareDrawable;
     public static Drawable shareIconDrawable;
 
     public static Drawable geoInDrawable;
@@ -311,8 +310,7 @@ public class Theme {
             contactDrawable[0] = context.getResources().getDrawable(R.drawable.contact_blue);
             contactDrawable[1] = context.getResources().getDrawable(R.drawable.contact_green);
 
-            shareDrawable = context.getResources().getDrawable(R.drawable.share_round);
-            shareIconDrawable = context.getResources().getDrawable(R.drawable.share_arrow);
+            shareIconDrawable = context.getResources().getDrawable(R.drawable.ic_ab_reply);
 
             geoInDrawable = context.getResources().getDrawable(R.drawable.location_b);
             geoOutDrawable = context.getResources().getDrawable(R.drawable.location_g);
