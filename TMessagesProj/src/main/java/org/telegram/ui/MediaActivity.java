@@ -1563,7 +1563,7 @@ public class MediaActivity extends BaseFragment implements NotificationCenter.No
                 return;
             }
             final int currentReqId = ++lastReqId;
-            reqId = ConnectionsManager.getInstance().sendRequest(req, new RequestDelegate() {
+            reqId = 0; /*ConnectionsManager.getInstance().sendRequest(req, new RequestDelegate() {
                 @Override
                 public void run(TLObject response, TLRPC.TL_error error) {
                     final ArrayList<MessageObject> messageObjects = new ArrayList<>();
@@ -1588,7 +1588,7 @@ public class MediaActivity extends BaseFragment implements NotificationCenter.No
                         }
                     });
                 }
-            }, ConnectionsManager.RequestFlagFailOnServerErrors);
+            }, ConnectionsManager.RequestFlagFailOnServerErrors);*/
             ConnectionsManager.getInstance().bindRequestToGuid(reqId, classGuid);
         }
 

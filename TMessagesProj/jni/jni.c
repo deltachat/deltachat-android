@@ -9,7 +9,7 @@
 #include "utils.h"
 #include "image.h"
 
-int registerNativeTgNetFunctions(JavaVM *vm, JNIEnv *env);
+//int registerNativeTgNetFunctions(JavaVM *vm, JNIEnv *env);
 int gifvideoOnJNILoad(JavaVM *vm, JNIEnv *env);
 
 jint JNI_OnLoad(JavaVM *vm, void *reserved) {
@@ -28,9 +28,11 @@ jint JNI_OnLoad(JavaVM *vm, void *reserved) {
         return -1;
     }
 
+    /*
     if (registerNativeTgNetFunctions(vm, env) != JNI_TRUE) {
         return -1;
     }
+    */
     
 	return JNI_VERSION_1_6;
 }
@@ -39,6 +41,7 @@ void JNI_OnUnload(JavaVM *vm, void *reserved) {
 
 }
 
+/*
 JNIEXPORT void Java_org_telegram_messenger_Utilities_aesIgeEncryption(JNIEnv *env, jclass class, jobject buffer, jbyteArray key, jbyteArray iv, jboolean encrypt, int offset, int length) {
     jbyte *what = (*env)->GetDirectBufferAddress(env, buffer) + offset;
     unsigned char *keyBuff = (unsigned char *)(*env)->GetByteArrayElements(env, key, NULL);
@@ -55,6 +58,7 @@ JNIEXPORT void Java_org_telegram_messenger_Utilities_aesIgeEncryption(JNIEnv *en
     (*env)->ReleaseByteArrayElements(env, key, keyBuff, JNI_ABORT);
     (*env)->ReleaseByteArrayElements(env, iv, ivBuff, 0);
 }
+*/
 
 JNIEXPORT jstring Java_org_telegram_messenger_Utilities_readlink(JNIEnv *env, jclass class, jstring path) {
     static char buf[1000];

@@ -710,7 +710,7 @@ public class EmojiView extends FrameLayout implements NotificationCenter.Notific
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
                                 recentImages.remove(searchImage);
-                                TLRPC.TL_messages_saveGif req = new TLRPC.TL_messages_saveGif();
+                                /*TLRPC.TL_messages_saveGif req = new TLRPC.TL_messages_saveGif();
                                 req.id = new TLRPC.TL_inputDocument();
                                 req.id.id = searchImage.document.id;
                                 req.id.access_hash = searchImage.document.access_hash;
@@ -720,7 +720,7 @@ public class EmojiView extends FrameLayout implements NotificationCenter.Notific
                                     public void run(TLObject response, TLRPC.TL_error error) {
 
                                     }
-                                });
+                                });*/
                                 //MessagesStorage.getInstance().removeWebRecent(searchImage);
                                 if (gifsAdapter != null) {
                                     gifsAdapter.notifyDataSetChanged();
@@ -1559,7 +1559,7 @@ public class EmojiView extends FrameLayout implements NotificationCenter.Notific
             return;
         }
         loadingRecentGifs = true;
-        TLRPC.TL_messages_getSavedGifs req = new TLRPC.TL_messages_getSavedGifs();
+        /*TLRPC.TL_messages_getSavedGifs req = new TLRPC.TL_messages_getSavedGifs();
         req.hash = calcGifsHash(recentImages);
         ConnectionsManager.getInstance().sendRequest(req, new RequestDelegate() {
             @Override
@@ -1600,7 +1600,7 @@ public class EmojiView extends FrameLayout implements NotificationCenter.Notific
                     }
                 });
             }
-        });
+        });*/
     }
 
     @SuppressWarnings("unchecked")

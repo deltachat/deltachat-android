@@ -24,7 +24,6 @@ public class FileLoadOperation {
     private static class RequestInfo {
         private int requestToken;
         private int offset;
-        private TLRPC.TL_upload_file response;
     }
 
     private final static int stateIdle = 0;
@@ -345,10 +344,10 @@ public class FileLoadOperation {
         if (delayedRequestInfos != null) {
             for (int a = 0; a < delayedRequestInfos.size(); a++) {
                 RequestInfo requestInfo = delayedRequestInfos.get(a);
-                if (requestInfo.response != null) {
+                /*if (requestInfo.response != null) {
                     requestInfo.response.disableFree = false;
                     requestInfo.response.freeResources();
-                }
+                }*/
             }
             delayedRequestInfos.clear();
         }
@@ -394,109 +393,7 @@ public class FileLoadOperation {
         delegate.didFinishLoadingFile(FileLoadOperation.this, cacheFileFinal);
     }
 
-    private void processRequestResult(RequestInfo requestInfo, TLRPC.TL_error error) {
-        requestInfos.remove(requestInfo);
-        if (error == null) {
-            try {
-                if (downloadedBytes != requestInfo.offset) {
-                    if (state == stateDownloading) {
-                        delayedRequestInfos.add(requestInfo);
-                        requestInfo.response.disableFree = true;
-                    }
-                    return;
-                }
 
-                if (requestInfo.response.bytes == null || requestInfo.response.bytes.limit() == 0) {
-                    onFinishLoadingFile();
-                    return;
-                }
-                int currentBytesSize = requestInfo.response.bytes.limit();
-                downloadedBytes += currentBytesSize;
-                boolean finishedDownloading = currentBytesSize != currentDownloadChunkSize || (totalBytesCount == downloadedBytes || downloadedBytes % currentDownloadChunkSize != 0) && (totalBytesCount <= 0 || totalBytesCount <= downloadedBytes);
-
-                if (key != null) {
-                    Utilities.aesIgeEncryption(requestInfo.response.bytes.buffer, key, iv, false, true, 0, requestInfo.response.bytes.limit());
-                    if (finishedDownloading && bytesCountPadding != 0) {
-                        requestInfo.response.bytes.limit(requestInfo.response.bytes.limit() - bytesCountPadding);
-                    }
-                }
-                if (fileOutputStream != null) {
-                    FileChannel channel = fileOutputStream.getChannel();
-                    channel.write(requestInfo.response.bytes.buffer);
-                }
-                if (fiv != null) {
-                    fiv.seek(0);
-                    fiv.write(iv);
-                }
-                if (totalBytesCount > 0 && state == stateDownloading) {
-                    delegate.didChangedLoadProgress(FileLoadOperation.this, Math.min(1.0f, (float) downloadedBytes / (float) totalBytesCount));
-                }
-
-                for (int a = 0; a < delayedRequestInfos.size(); a++) {
-                    RequestInfo delayedRequestInfo = delayedRequestInfos.get(a);
-                    if (downloadedBytes == delayedRequestInfo.offset) {
-                        delayedRequestInfos.remove(a);
-                        processRequestResult(delayedRequestInfo, null);
-                        delayedRequestInfo.response.disableFree = false;
-                        delayedRequestInfo.response.freeResources();
-                        break;
-                    }
-                }
-
-                if (finishedDownloading) {
-                    onFinishLoadingFile();
-                } else {
-                    startDownloadRequest();
-                }
-            } catch (Exception e) {
-                cleanup();
-                delegate.didFailedLoadingFile(FileLoadOperation.this, 0);
-                FileLog.e("tmessages", e);
-            }
-        } else {
-            if (error.text.contains("FILE_MIGRATE_")) {
-                String errorMsg = error.text.replace("FILE_MIGRATE_", "");
-                Scanner scanner = new Scanner(errorMsg);
-                scanner.useDelimiter("");
-                Integer val;
-                try {
-                    val = scanner.nextInt();
-                } catch (Exception e) {
-                    val = null;
-                }
-                if (val == null) {
-                    cleanup();
-                    delegate.didFailedLoadingFile(FileLoadOperation.this, 0);
-                } else {
-                    datacenter_id = val;
-                    nextDownloadOffset = 0;
-                    startDownloadRequest();
-                }
-            } else if (error.text.contains("OFFSET_INVALID")) {
-                if (downloadedBytes % currentDownloadChunkSize == 0) {
-                    try {
-                        onFinishLoadingFile();
-                    } catch (Exception e) {
-                        FileLog.e("tmessages", e);
-                        cleanup();
-                        delegate.didFailedLoadingFile(FileLoadOperation.this, 0);
-                    }
-                } else {
-                    cleanup();
-                    delegate.didFailedLoadingFile(FileLoadOperation.this, 0);
-                }
-            } else if (error.text.contains("RETRY_LIMIT")) {
-                cleanup();
-                delegate.didFailedLoadingFile(FileLoadOperation.this, 2);
-            } else {
-                if (location != null) {
-                    FileLog.e("tmessages", "" + location + " id = " + location.id + " local_id = " + location.local_id + " access_hash = " + location.access_hash + " volume_id = " + location.volume_id + " secret = " + location.secret);
-                }
-                cleanup();
-                delegate.didFailedLoadingFile(FileLoadOperation.this, 0);
-            }
-        }
-    }
 
     private void startDownloadRequest() {
         if (state != stateDownloading || totalBytesCount > 0 && nextDownloadOffset >= totalBytesCount || requestInfos.size() + delayedRequestInfos.size() >= currentMaxDownloadRequests) {
@@ -512,22 +409,22 @@ public class FileLoadOperation {
                 break;
             }
             boolean isLast = totalBytesCount <= 0 || a == count - 1 || totalBytesCount > 0 && nextDownloadOffset + currentDownloadChunkSize >= totalBytesCount;
-            TLRPC.TL_upload_getFile req = new TLRPC.TL_upload_getFile();
-            req.location = location;
-            req.offset = nextDownloadOffset;
-            req.limit = currentDownloadChunkSize;
+            //TLRPC.TL_upload_getFile req = new TLRPC.TL_upload_getFile();
+            //req.location = location;
+            //req.offset = nextDownloadOffset;
+            //req.limit = currentDownloadChunkSize;
             nextDownloadOffset += currentDownloadChunkSize;
 
             final RequestInfo requestInfo = new RequestInfo();
             requestInfos.add(requestInfo);
-            requestInfo.offset = req.offset;
-            requestInfo.requestToken = ConnectionsManager.getInstance().sendRequest(req, new RequestDelegate() {
+            requestInfo.offset = nextDownloadOffset;
+            requestInfo.requestToken = 0;/*ConnectionsManager.getInstance().sendRequest(req, new RequestDelegate() {
                 @Override
                 public void run(TLObject response, TLRPC.TL_error error) {
                     requestInfo.response = (TLRPC.TL_upload_file) response;
                     processRequestResult(requestInfo, error);
                 }
-            }, null, (isForceRequest ? ConnectionsManager.RequestFlagForceDownload : 0) | ConnectionsManager.RequestFlagFailOnServerErrors, datacenter_id, requestsCount % 2 == 0 ? ConnectionsManager.ConnectionTypeDownload : ConnectionsManager.ConnectionTypeDownload2, isLast);
+            }, null, (isForceRequest ? ConnectionsManager.RequestFlagForceDownload : 0) | ConnectionsManager.RequestFlagFailOnServerErrors, datacenter_id, requestsCount % 2 == 0 ? ConnectionsManager.ConnectionTypeDownload : ConnectionsManager.ConnectionTypeDownload2, isLast);*/
             requestsCount++;
         }
     }

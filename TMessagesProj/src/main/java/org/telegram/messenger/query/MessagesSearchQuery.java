@@ -119,7 +119,7 @@ public class MessagesSearchQuery {
                 req.limit = 1;
                 req.q = query;
                 req.filter = new TLRPC.TL_inputMessagesFilterEmpty();
-                mergeReqId = ConnectionsManager.getInstance().sendRequest(req, new RequestDelegate() {
+                mergeReqId = 0;/*ConnectionsManager.getInstance().sendRequest(req, new RequestDelegate() {
                     @Override
                     public void run(final TLObject response, final TLRPC.TL_error error) {
                         AndroidUtilities.runOnUIThread(new Runnable() {
@@ -137,7 +137,7 @@ public class MessagesSearchQuery {
                             }
                         });
                     }
-                }, ConnectionsManager.RequestFlagFailOnServerErrors);
+                }, ConnectionsManager.RequestFlagFailOnServerErrors);*/
                 return;
             } else {
                 lastMergeDialogId = 0;
@@ -157,7 +157,7 @@ public class MessagesSearchQuery {
         final int currentReqId = ++lastReqId;
         lastSearchQuery = query;
         final long queryWithDialogFinal = queryWithDialog;
-        reqId = ConnectionsManager.getInstance().sendRequest(req, new RequestDelegate() {
+        reqId = 0; /* ConnectionsManager.getInstance().sendRequest(req, new RequestDelegate() {
             @Override
             public void run(final TLObject response, final TLRPC.TL_error error) {
                 AndroidUtilities.runOnUIThread(new Runnable() {
@@ -202,7 +202,7 @@ public class MessagesSearchQuery {
                     }
                 });
             }
-        }, ConnectionsManager.RequestFlagFailOnServerErrors);
+        }, ConnectionsManager.RequestFlagFailOnServerErrors);*/
     }
 
     public static String getLastSearchQuery() {

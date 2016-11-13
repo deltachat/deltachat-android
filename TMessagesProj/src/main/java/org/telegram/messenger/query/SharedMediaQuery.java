@@ -8,9 +8,6 @@
 
 package org.telegram.messenger.query;
 
-import android.text.TextUtils;
-
-
 import org.telegram.messenger.AndroidUtilities;
 import org.telegram.messenger.ChatObject;
 import org.telegram.messenger.ImageLoader;
@@ -18,17 +15,12 @@ import org.telegram.messenger.MessageObject;
 import org.telegram.messenger.MessagesController;
 import org.telegram.messenger.MrMailbox;
 import org.telegram.messenger.NotificationCenter;
-import org.telegram.messenger.FileLog;
 import org.telegram.messenger.Utilities;
 import org.telegram.tgnet.ConnectionsManager;
-import org.telegram.tgnet.NativeByteBuffer;
-import org.telegram.tgnet.RequestDelegate;
-import org.telegram.tgnet.TLObject;
 import org.telegram.tgnet.TLRPC;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Locale;
 
 public class SharedMediaQuery {
 
@@ -66,7 +58,7 @@ public class SharedMediaQuery {
             if (req.peer == null) {
                 return;
             }
-            int reqId = ConnectionsManager.getInstance().sendRequest(req, new RequestDelegate() {
+            int reqId = 0; /*ConnectionsManager.getInstance().sendRequest(req, new RequestDelegate() {
                 @Override
                 public void run(TLObject response, TLRPC.TL_error error) {
                     if (error == null) {
@@ -81,7 +73,7 @@ public class SharedMediaQuery {
                         processLoadedMedia(res, uid, offset, count, max_id, type, false, classGuid, isChannel, topReached);
                     }
                 }
-            });
+            });*/
             ConnectionsManager.getInstance().bindRequestToGuid(reqId, classGuid);
         }
     }

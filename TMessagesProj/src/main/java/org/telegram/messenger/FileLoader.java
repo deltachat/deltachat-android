@@ -99,6 +99,7 @@ public class FileLoader {
         return dir;
     }
 
+    /*
     public void checkUploadNewDataAvailable(final String location, final boolean encrypted, final long finalSize) {
         fileLoaderQueue.postRunnable(new Runnable() {
             @Override
@@ -117,6 +118,7 @@ public class FileLoader {
             }
         });
     }
+    */
 
     public void uploadFile(final String location, final boolean encrypted, final boolean small) {
         uploadFile(location, encrypted, small, 0);

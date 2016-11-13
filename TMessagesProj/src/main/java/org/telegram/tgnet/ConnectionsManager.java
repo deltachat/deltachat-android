@@ -15,10 +15,8 @@ import org.telegram.messenger.BuildVars;
 import org.telegram.messenger.ContactsController;
 import org.telegram.messenger.ApplicationLoader;
 import org.telegram.messenger.FileLog;
-import org.telegram.messenger.MessagesController;
+import org.telegram.messenger.MrMailbox;
 import org.telegram.messenger.NotificationCenter;
-import org.telegram.messenger.UserConfig;
-import org.telegram.messenger.Utilities;
 
 import java.net.Inet4Address;
 import java.net.Inet6Address;
@@ -27,38 +25,21 @@ import java.net.InterfaceAddress;
 import java.net.NetworkInterface;
 import java.util.Enumeration;
 import java.util.List;
-import java.util.concurrent.atomic.AtomicInteger;
 
 public class ConnectionsManager {
 
-    public final static int ConnectionTypeGeneric = 1;
-    public final static int ConnectionTypeDownload = 2;
-    public final static int ConnectionTypeUpload = 4;
-    public final static int ConnectionTypePush = 8;
-    public final static int ConnectionTypeDownload2 = ConnectionTypeDownload | (1 << 16);
-
-    public final static int RequestFlagEnableUnauthorized = 1;
     public final static int RequestFlagFailOnServerErrors = 2;
-    public final static int RequestFlagCanCompress = 4;
-    public final static int RequestFlagWithoutLogin = 8;
-    public final static int RequestFlagTryDifferentDc = 16;
-    public final static int RequestFlagForceDownload = 32;
-    public final static int RequestFlagInvokeAfter = 64;
-    public final static int RequestFlagNeedQuickAck = 128;
 
     public final static int ConnectionStateConnecting = 1;
     public final static int ConnectionStateWaitingForNetwork = 2;
     public final static int ConnectionStateConnected = 3;
     public final static int ConnectionStateUpdating = 4;
 
-    public final static int DEFAULT_DATACENTER_ID = Integer.MAX_VALUE;
-
     private long lastPauseTime = System.currentTimeMillis();
     private boolean appPaused = true;
     private int lastClassGuid = 1;
     private boolean isUpdating = false;
-    private int connectionState = native_getConnectionState();
-    private AtomicInteger lastRequestToken = new AtomicInteger(1);
+    //private int connectionState = native_getConnectionState();
     private PowerManager.WakeLock wakeLock = null;
 
     private static volatile ConnectionsManager Instance = null;
@@ -87,17 +68,14 @@ public class ConnectionsManager {
     }
 
     public long getCurrentTimeMillis() {
-        return native_getCurrentTimeMillis();
+        return MrMailbox.getCurrentTimeMillis();
     }
 
     public int getCurrentTime() {
-        return native_getCurrentTime();
+        return MrMailbox.getCurrentTime();
     }
 
-    public int getTimeDifference() {
-        return native_getTimeDifference();
-    }
-
+    /*
     public int sendRequest(TLObject object, RequestDelegate completionBlock) {
         return sendRequest(object, completionBlock, null, 0);
     }
@@ -115,78 +93,24 @@ public class ConnectionsManager {
     }
 
     public int sendRequest(final TLObject object, final RequestDelegate onComplete, final QuickAckDelegate onQuickAck, final int flags, final int datacenterId, final int connetionType, final boolean immediate) {
-        return 0; // EDIT BY MR
-        /* EDIT BY MR
-        final int requestToken = lastRequestToken.getAndIncrement();
-        Utilities.stageQueue.postRunnable(new Runnable() {
-            @Override
-            public void run() {
-                FileLog.d("tmessages", "send request " + object + " with token = " + requestToken);
-                try {
-                    NativeByteBuffer buffer = new NativeByteBuffer(object.getObjectSize());
-                    object.serializeToStream(buffer);
-                    object.freeResources();
-
-                    native_sendRequest(buffer.address, new RequestDelegateInternal() {
-                        @Override
-                        public void run(int response, int errorCode, String errorText) {
-                            try {
-                                TLObject resp = null;
-                                TLRPC.TL_error error = null;
-                                if (response != 0) {
-                                    NativeByteBuffer buff = NativeByteBuffer.wrap(response);
-                                    buff.reused = true;
-                                    resp = object.deserializeResponse(buff, buff.readInt32(true), true);
-                                } else if (errorText != null) {
-                                    error = new TLRPC.TL_error();
-                                    error.code = errorCode;
-                                    error.text = errorText;
-                                    FileLog.e("tmessages", object + " got error " + error.code + " " + error.text);
-                                }
-                                FileLog.d("tmessages", "java received " + resp + " error = " + error);
-                                final TLObject finalResponse = resp;
-                                final TLRPC.TL_error finalError = error;
-                                Utilities.stageQueue.postRunnable(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        onComplete.run(finalResponse, finalError);
-                                        if (finalResponse != null) {
-                                            finalResponse.freeResources();
-                                        }
-                                    }
-                                });
-                            } catch (Exception e) {
-                                FileLog.e("tmessages", e);
-                            }
-                        }
-                    }, onQuickAck, flags, datacenterId, connetionType, immediate, requestToken);
-                } catch (Exception e) {
-                    FileLog.e("tmessages", e);
-                }
-            }
-        });
-        return requestToken;
-        */
+        return 0; // this is the old Telegram function to send a request, no longer needed
     }
+    */
 
     public void cancelRequest(int token, boolean notifyServer) {
-        native_cancelRequest(token, notifyServer);
+        //native_cancelRequest(token, notifyServer);
     }
 
     public void cleanup() {
-        native_cleanUp();
+        //native_cleanUp();
     }
 
     public void cancelRequestsForGuid(int guid) {
-        native_cancelRequestsForGuid(guid);
+        //native_cancelRequestsForGuid(guid);
     }
 
     public void bindRequestToGuid(int requestToken, int guid) {
-        native_bindRequestToGuid(requestToken, guid);
-    }
-
-    public void applyDatacenterAddress(int datacenterId, String ipAddress, int port) {
-        native_applyDatacenterAddress(datacenterId, ipAddress, port);
+        //native_bindRequestToGuid(requestToken, guid);
     }
 
     public int getConnectionState() {
@@ -200,20 +124,20 @@ public class ConnectionsManager {
     }
 
     public void setUserId(int id) {
-        native_setUserId(id);
+        //native_setUserId(id);
     }
 
     private void checkConnection() {
-        native_setUseIpv6(useIpv6Address());
-        native_setNetworkAvailable(isNetworkOnline());
+        //native_setUseIpv6(useIpv6Address());
+        //native_setNetworkAvailable(isNetworkOnline());
     }
 
     public void setPushConnectionEnabled(boolean value) {
-        native_setPushConnectionEnabled(value);
+        //native_setPushConnectionEnabled(value);
     }
 
     public void init(int version, int layer, int apiId, String deviceModel, String systemVersion, String appVersion, String langCode, String configPath, String logPath, int userId, boolean enablePushConnection) {
-        native_init(version, layer, apiId, deviceModel, systemVersion, appVersion, langCode, configPath, logPath, userId, enablePushConnection);
+        //native_init(version, layer, apiId, deviceModel, systemVersion, appVersion, langCode, configPath, logPath, userId, enablePushConnection);
         checkConnection();
         BroadcastReceiver networkStateReceiver = new BroadcastReceiver() {
             @Override
@@ -226,19 +150,11 @@ public class ConnectionsManager {
     }
 
     public void switchBackend() {
-        native_switchBackend();
+        //native_switchBackend();
     }
 
     public void resumeNetworkMaybe() {
-        native_resumeNetwork(true);
-    }
-
-    public void updateDcSettings() {
-        native_updateDcSettings();
-    }
-
-    public long getPauseTime() {
-        return lastPauseTime;
+        //native_resumeNetwork(true);
     }
 
     public void setAppPaused(final boolean value, final boolean byScreenState) {
@@ -250,7 +166,7 @@ public class ConnectionsManager {
             if (lastPauseTime == 0) {
                 lastPauseTime = System.currentTimeMillis();
             }
-            native_pauseNetwork();
+            //native_pauseNetwork();
         } else {
             if (appPaused) {
                 return;
@@ -260,134 +176,9 @@ public class ConnectionsManager {
                 ContactsController.getInstance().checkContacts();
             }
             lastPauseTime = 0;
-            native_resumeNetwork(false);
+            //native_resumeNetwork(false);
         }
     }
-
-    public static void onUnparsedMessageReceived(int address) {
-        try {
-            NativeByteBuffer buff = NativeByteBuffer.wrap(address);
-            buff.reused = true;
-            final TLObject message = TLClassStore.Instance().TLdeserialize(buff, buff.readInt32(true), true);
-            if (message instanceof TLRPC.Updates) {
-                FileLog.d("tmessages", "java received " + message);
-                AndroidUtilities.runOnUIThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        if (getInstance().wakeLock.isHeld()) {
-                            FileLog.d("tmessages", "release wakelock");
-                            getInstance().wakeLock.release();
-                        }
-                    }
-                });
-                Utilities.stageQueue.postRunnable(new Runnable() {
-                    @Override
-                    public void run() {
-                        MessagesController.getInstance().processUpdates((TLRPC.Updates) message, false);
-                    }
-                });
-            }
-        } catch (Exception e) {
-            FileLog.e("tmessages", e);
-        }
-    }
-
-    public static void onUpdate() {
-        Utilities.stageQueue.postRunnable(new Runnable() {
-            @Override
-            public void run() {
-                MessagesController.getInstance().updateTimerProc();
-            }
-        });
-    }
-
-    public static void onSessionCreated() {
-        Utilities.stageQueue.postRunnable(new Runnable() {
-            @Override
-            public void run() {
-                MessagesController.getInstance().getDifference();
-            }
-        });
-    }
-
-    public static void onConnectionStateChanged(final int state) {
-        AndroidUtilities.runOnUIThread(new Runnable() {
-            @Override
-            public void run() {
-                getInstance().connectionState = state;
-                NotificationCenter.getInstance().postNotificationName(NotificationCenter.didUpdatedConnectionState);
-            }
-        });
-    }
-
-    public static void onLogout() {
-        /*
-        AndroidUtilities.runOnUIThread(new Runnable() {
-            @Override
-            public void run() {
-                if (UserConfig.getClientUserId() != 0) {
-                    UserConfig.clearConfig();
-                    MessagesController.getInstance().performLogout(false);
-                }
-            }
-        });
-        */
-    }
-
-    public static void onUpdateConfig(int address) {
-        try {
-            NativeByteBuffer buff = NativeByteBuffer.wrap(address);
-            buff.reused = true;
-            final TLRPC.TL_config message = TLRPC.TL_config.TLdeserialize(buff, buff.readInt32(true), true);
-            if (message != null) {
-                Utilities.stageQueue.postRunnable(new Runnable() {
-                    @Override
-                    public void run() {
-                        MessagesController.getInstance().updateConfig(message);
-                    }
-                });
-            }
-        } catch (Exception e) {
-            FileLog.e("tmessages", e);
-        }
-    }
-
-    public static void onInternalPushReceived() {
-        AndroidUtilities.runOnUIThread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    if (!getInstance().wakeLock.isHeld()) {
-                        getInstance().wakeLock.acquire(10000);
-                        FileLog.d("tmessages", "acquire wakelock");
-                    }
-                } catch (Exception e) {
-                    FileLog.e("tmessages", e);
-                }
-            }
-        });
-    }
-
-    public static native void native_switchBackend();
-    public static native void native_pauseNetwork();
-    public static native void native_setUseIpv6(boolean value);
-    public static native void native_updateDcSettings();
-    public static native void native_setNetworkAvailable(boolean value);
-    public static native void native_resumeNetwork(boolean partial);
-    public static native long native_getCurrentTimeMillis();
-    public static native int native_getCurrentTime();
-    public static native int native_getTimeDifference();
-    public static native void native_sendRequest(int object, RequestDelegateInternal onComplete, QuickAckDelegate onQuickAck, int flags, int datacenterId, int connetionType, boolean immediate, int requestToken);
-    public static native void native_cancelRequest(int token, boolean notifyServer);
-    public static native void native_cleanUp();
-    public static native void native_cancelRequestsForGuid(int guid);
-    public static native void native_bindRequestToGuid(int requestToken, int guid);
-    public static native void native_applyDatacenterAddress(int datacenterId, String ipAddress, int port);
-    public static native int native_getConnectionState();
-    public static native void native_setUserId(int id);
-    public static native void native_init(int version, int layer, int apiId, String deviceModel, String systemVersion, String appVersion, String langCode, String configPath, String logPath, int userId, boolean enablePushConnection);
-    public static native void native_setJava(boolean useJavaByteBuffers);
-    public static native void native_setPushConnectionEnabled(boolean value);
 
     public int generateClassGuid() {
         return lastClassGuid++;
@@ -417,25 +208,6 @@ public class ConnectionsManager {
             FileLog.e("tmessages", e);
         }
         return false;
-    }
-
-    public void applyCountryPortNumber(String number) {
-
-    }
-
-    public void setIsUpdating(final boolean value) {
-        AndroidUtilities.runOnUIThread(new Runnable() {
-            @Override
-            public void run() {
-                if (isUpdating == value) {
-                    return;
-                }
-                isUpdating = value;
-                if (connectionState == ConnectionStateConnected) {
-                    NotificationCenter.getInstance().postNotificationName(NotificationCenter.didUpdatedConnectionState);
-                }
-            }
-        });
     }
 
     @SuppressLint("NewApi")

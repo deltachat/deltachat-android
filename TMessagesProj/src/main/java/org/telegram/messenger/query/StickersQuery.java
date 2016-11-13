@@ -17,7 +17,6 @@ import org.telegram.messenger.NotificationCenter;
 import org.telegram.messenger.FileLog;
 import org.telegram.messenger.R;
 import org.telegram.tgnet.ConnectionsManager;
-import org.telegram.tgnet.NativeByteBuffer;
 import org.telegram.tgnet.RequestDelegate;
 import org.telegram.tgnet.TLObject;
 import org.telegram.tgnet.TLRPC;
@@ -205,7 +204,7 @@ public class StickersQuery {
             });
             */
         } else {
-            final TLRPC.TL_messages_getAllStickers req = new TLRPC.TL_messages_getAllStickers();
+            /*final TLRPC.TL_messages_getAllStickers req = new TLRPC.TL_messages_getAllStickers();
             req.hash = force ? 0 : loadHash;
             ConnectionsManager.getInstance().sendRequest(req, new RequestDelegate() {
                 @Override
@@ -266,7 +265,7 @@ public class StickersQuery {
                         }
                     });
                 }
-            });
+            });*/
         }
     }
 
@@ -477,7 +476,7 @@ public class StickersQuery {
             loadHash = calcStickersHash(stickerSets);
             putStickersToCache(stickerSets, loadDate, loadHash);
             NotificationCenter.getInstance().postNotificationName(NotificationCenter.stickersDidLoaded);
-            TLRPC.TL_messages_installStickerSet req = new TLRPC.TL_messages_installStickerSet();
+            /*TLRPC.TL_messages_installStickerSet req = new TLRPC.TL_messages_installStickerSet();
             req.stickerset = stickerSetID;
             req.disabled = hide == 1;
             ConnectionsManager.getInstance().sendRequest(req, new RequestDelegate() {
@@ -490,9 +489,9 @@ public class StickersQuery {
                         }
                     }, 1000);
                 }
-            });
+            });*/
         } else {
-            TLRPC.TL_messages_uninstallStickerSet req = new TLRPC.TL_messages_uninstallStickerSet();
+            /*TLRPC.TL_messages_uninstallStickerSet req = new TLRPC.TL_messages_uninstallStickerSet();
             req.stickerset = stickerSetID;
             ConnectionsManager.getInstance().sendRequest(req, new RequestDelegate() {
                 @Override
@@ -513,7 +512,7 @@ public class StickersQuery {
                         }
                     });
                 }
-            });
+            });*/
         }
     }
 }

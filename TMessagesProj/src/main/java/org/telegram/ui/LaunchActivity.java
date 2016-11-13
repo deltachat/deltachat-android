@@ -1082,6 +1082,7 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
         int requestId = 0;
 
         if (username != null) {
+            /*
             TLRPC.TL_contacts_resolveUsername req = new TLRPC.TL_contacts_resolveUsername();
             req.username = username;
             requestId = ConnectionsManager.getInstance().sendRequest(req, new RequestDelegate() {
@@ -1102,7 +1103,7 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                                     MessagesController.getInstance().putChats(res.chats, false);
                                     //MessagesStorage.getInstance().putUsersAndChats(res.users, res.chats, false, true);
 
-                                    /*if (botChat != null) {
+                                    if (botChat != null) {
                                         final TLRPC.User user = !res.users.isEmpty() ? res.users.get(0) : null;
                                         if (user == null || user.bot && user.bot_nochats) {
                                             try {
@@ -1131,7 +1132,7 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                                             }
                                         });
                                         presentFragment(fragment);
-                                    } else */ {
+                                    } else  {
                                         long dialog_id;
                                         boolean isBot = false;
                                         Bundle args = new Bundle();
@@ -1161,24 +1162,22 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                                         }
                                     }
                                 } else {
-                                    /*
                                     try {
                                         Toast.makeText(LaunchActivity.this, LocaleController.getString("NoUsernameFound", R.string.NoUsernameFound), Toast.LENGTH_SHORT).show();
                                     } catch (Exception e) {
                                         FileLog.e("tmessages", e);
                                     }
-                                    */
                                 }
                             }
                         }
                     });
                 }
-            });
+            }); */
         } else if (group != null) {
             if (state == 0) {
                 final TLRPC.TL_messages_checkChatInvite req = new TLRPC.TL_messages_checkChatInvite();
                 req.hash = group;
-                requestId = ConnectionsManager.getInstance().sendRequest(req, new RequestDelegate() {
+                requestId = 0; /* ConnectionsManager.getInstance().sendRequest(req, new RequestDelegate() {
                     @Override
                     public void run(final TLObject response, final TLRPC.TL_error error) {
                         AndroidUtilities.runOnUIThread(new Runnable() {
@@ -1236,10 +1235,11 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                             }
                         });
                     }
-                }, ConnectionsManager.RequestFlagFailOnServerErrors);
+                }, ConnectionsManager.RequestFlagFailOnServerErrors); */
             } else if (state == 1) {
                 TLRPC.TL_messages_importChatInvite req = new TLRPC.TL_messages_importChatInvite();
                 req.hash = group;
+                /*
                 ConnectionsManager.getInstance().sendRequest(req, new RequestDelegate() {
                     @Override
                     public void run(final TLObject response, final TLRPC.TL_error error) {
@@ -1291,7 +1291,7 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                             }
                         });
                     }
-                }, ConnectionsManager.RequestFlagFailOnServerErrors);
+                }, ConnectionsManager.RequestFlagFailOnServerErrors); */
             }
         } else if (sticker != null) {
             if (!mainFragmentsStack.isEmpty()) {

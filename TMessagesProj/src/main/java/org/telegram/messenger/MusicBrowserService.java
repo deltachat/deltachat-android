@@ -34,11 +34,8 @@ import android.os.Message;
 import android.os.Process;
 import android.os.SystemClock;
 import android.service.media.MediaBrowserService;
-import android.text.TextUtils;
 
 import org.telegram.messenger.audioinfo.AudioInfo;
-import org.telegram.messenger.query.SharedMediaQuery;
-import org.telegram.tgnet.NativeByteBuffer;
 import org.telegram.tgnet.TLRPC;
 import org.telegram.ui.LaunchActivity;
 
@@ -47,7 +44,6 @@ import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Locale;
 
 @TargetApi(Build.VERSION_CODES.LOLLIPOP)
 public class MusicBrowserService extends MediaBrowserService implements NotificationCenter.NotificationCenterDelegate {

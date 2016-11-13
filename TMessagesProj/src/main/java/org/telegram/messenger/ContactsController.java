@@ -787,13 +787,13 @@ public class ContactsController {
                             }
                         }*/
 
-                        final HashMap<Integer, Contact> contactsMapToSave = new HashMap<>(contactsMap);
+                        //final HashMap<Integer, Contact> contactsMapToSave = new HashMap<>(contactsMap);
                         completedRequestsCount = 0;
                         final int count = (int) Math.ceil(toImport.size() / 500.0f);
                         for (int a = 0; a < count; a++) {
                             ArrayList<TLRPC.TL_inputPhoneContact> finalToImport = new ArrayList<>();
                             finalToImport.addAll(toImport.subList(a * 500, Math.min((a + 1) * 500, toImport.size())));
-                            TLRPC.TL_contacts_importContacts req = new TLRPC.TL_contacts_importContacts();
+                            /*TLRPC.TL_contacts_importContacts req = new TLRPC.TL_contacts_importContacts();
                             req.contacts = finalToImport;
                             req.replace = false;
                             ConnectionsManager.getInstance().sendRequest(req, new RequestDelegate() {
@@ -811,15 +811,15 @@ public class ContactsController {
                                         }
 
                                         if (completedRequestsCount == count && !contactsMapToSave.isEmpty()) {
-                                            //MessagesStorage.getInstance().putCachedPhoneBook(contactsMapToSave);
+                                            MessagesStorage.getInstance().putCachedPhoneBook(contactsMapToSave);
                                         }
 
-                                        /*if (BuildVars.DEBUG_VERSION) {
+                                        if (BuildVars.DEBUG_VERSION) {
                                             for (TLRPC.User user : res.users) {
                                                 FileLog.e("tmessages", "received user " + user.first_name + " " + user.last_name + " " + user.phone);
                                             }
-                                        }*/
-                                        //MessagesStorage.getInstance().putUsersAndChats(res.users, null, true, true);
+                                        }
+                                        MessagesStorage.getInstance().putUsersAndChats(res.users, null, true, true);
                                         ArrayList<TLRPC.TL_contact> cArr = new ArrayList<>();
                                         for (int a = 0; a < res.imported.size(); a++) {
                                             TLRPC.TL_contact contact = new TLRPC.TL_contact();
@@ -849,7 +849,7 @@ public class ContactsController {
                                         });
                                     }
                                 }
-                            }, ConnectionsManager.RequestFlagFailOnServerErrors | ConnectionsManager.RequestFlagCanCompress);
+                            }, ConnectionsManager.RequestFlagFailOnServerErrors | ConnectionsManager.RequestFlagCanCompress);*/
                         }
                     } else {
                         Utilities.stageQueue.postRunnable(new Runnable() {
@@ -916,7 +916,7 @@ public class ContactsController {
             //MessagesStorage.getInstance().getContacts();
         } else {
             FileLog.e("tmessages", "load contacts from server");
-            TLRPC.TL_contacts_getContacts req = new TLRPC.TL_contacts_getContacts();
+            /*TLRPC.TL_contacts_getContacts req = new TLRPC.TL_contacts_getContacts();
             req.hash = cacheEmpty ? "" : UserConfig.contactsHash;
             ConnectionsManager.getInstance().sendRequest(req, new RequestDelegate() {
                 @Override
@@ -944,7 +944,7 @@ public class ContactsController {
                         processLoadedContacts(res.contacts, res.users, 0);
                     }
                 }
-            });
+            });*/
         }
     }
 
@@ -1676,20 +1676,20 @@ public class ContactsController {
         /*if (BuildVars.DEBUG_VERSION) {
             FileLog.e("tmessages", "add contact " + user.first_name + " " + user.last_name + " " + user.phone);
         }*/
-        ConnectionsManager.getInstance().sendRequest(req, new RequestDelegate() {
+        /*ConnectionsManager.getInstance().sendRequest(req, new RequestDelegate() {
             @Override
             public void run(TLObject response, TLRPC.TL_error error) {
                 if (error != null) {
                     return;
                 }
                 final TLRPC.TL_contacts_importedContacts res = (TLRPC.TL_contacts_importedContacts) response;
-                //MessagesStorage.getInstance().putUsersAndChats(res.users, null, true, true);
+                MessagesStorage.getInstance().putUsersAndChats(res.users, null, true, true);
 
-                /*if (BuildVars.DEBUG_VERSION) {
+                if (BuildVars.DEBUG_VERSION) {
                     for (TLRPC.User user : res.users) {
                         FileLog.e("tmessages", "received user " + user.first_name + " " + user.last_name + " " + user.phone);
                     }
-                }*/
+                }
 
                 for (int a = 0; a < res.users.size(); a++) {
                     final TLRPC.User u = res.users.get(a);
@@ -1735,7 +1735,7 @@ public class ContactsController {
                     }
                 });
             }
-        }, ConnectionsManager.RequestFlagFailOnServerErrors | ConnectionsManager.RequestFlagCanCompress);
+        }, ConnectionsManager.RequestFlagFailOnServerErrors | ConnectionsManager.RequestFlagCanCompress);*/
     }
 
     public void deleteContact(final ArrayList<TLRPC.User> users) {
@@ -1752,7 +1752,7 @@ public class ContactsController {
             uids.add(user.id);
             req.id.add(inputUser);
         }
-        ConnectionsManager.getInstance().sendRequest(req, new RequestDelegate() {
+        /*ConnectionsManager.getInstance().sendRequest(req, new RequestDelegate() {
             @Override
             public void run(TLObject response, TLRPC.TL_error error) {
                 if (error != null) {
@@ -1802,7 +1802,7 @@ public class ContactsController {
                     }
                 });
             }
-        });
+        });*/
     }
 
     public void reloadContactsStatuses() {
@@ -1811,7 +1811,7 @@ public class ContactsController {
         SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("mainconfig", Activity.MODE_PRIVATE);
         final SharedPreferences.Editor editor = preferences.edit();
         editor.putBoolean("needGetStatuses", true).commit();
-        TLRPC.TL_contacts_getStatuses req = new TLRPC.TL_contacts_getStatuses();
+        /*TLRPC.TL_contacts_getStatuses req = new TLRPC.TL_contacts_getStatuses();
         ConnectionsManager.getInstance().sendRequest(req, new RequestDelegate() {
             @Override
             public void run(final TLObject response, TLRPC.TL_error error) {
@@ -1852,13 +1852,13 @@ public class ContactsController {
                     });
                 }
             }
-        });
+        });*/
     }
 
     public void loadPrivacySettings() {
         if (loadingDeleteInfo == 0) {
             loadingDeleteInfo = 1;
-            TLRPC.TL_account_getAccountTTL req = new TLRPC.TL_account_getAccountTTL();
+            /*TLRPC.TL_account_getAccountTTL req = new TLRPC.TL_account_getAccountTTL();
             ConnectionsManager.getInstance().sendRequest(req, new RequestDelegate() {
                 @Override
                 public void run(final TLObject response, final TLRPC.TL_error error) {
@@ -1876,11 +1876,11 @@ public class ContactsController {
                         }
                     });
                 }
-            });
+            });*/
         }
         if (loadingLastSeenInfo == 0) {
             loadingLastSeenInfo = 1;
-            TLRPC.TL_account_getPrivacy req = new TLRPC.TL_account_getPrivacy();
+            /*TLRPC.TL_account_getPrivacy req = new TLRPC.TL_account_getPrivacy();
             req.key = new TLRPC.TL_inputPrivacyKeyStatusTimestamp();
             ConnectionsManager.getInstance().sendRequest(req, new RequestDelegate() {
                 @Override
@@ -1900,11 +1900,11 @@ public class ContactsController {
                         }
                     });
                 }
-            });
+            });*/
         }
         if (loadingGroupInfo == 0) {
             loadingGroupInfo = 1;
-            TLRPC.TL_account_getPrivacy req = new TLRPC.TL_account_getPrivacy();
+            /*TLRPC.TL_account_getPrivacy req = new TLRPC.TL_account_getPrivacy();
             req.key = new TLRPC.TL_inputPrivacyKeyChatInvite();
             ConnectionsManager.getInstance().sendRequest(req, new RequestDelegate() {
                 @Override
@@ -1924,7 +1924,7 @@ public class ContactsController {
                         }
                     });
                 }
-            });
+            });*/
         }
         NotificationCenter.getInstance().postNotificationName(NotificationCenter.privacyRulesUpdated);
     }

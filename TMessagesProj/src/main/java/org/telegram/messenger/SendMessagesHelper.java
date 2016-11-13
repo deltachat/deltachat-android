@@ -356,7 +356,7 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
             String finalPath = (String) args[1];
             long finalSize = (Long) args[2];
             boolean isEncrypted = ((int) messageObject.getDialogId()) == 0;
-            FileLoader.getInstance().checkUploadNewDataAvailable(finalPath, isEncrypted, finalSize);
+            //FileLoader.getInstance().checkUploadNewDataAvailable(finalPath, isEncrypted, finalSize);
             if (finalSize != 0) {
                 /*
                 ArrayList<DelayedMessage> arr = delayedMessages.get(messageObject.messageOwner.attachPath);

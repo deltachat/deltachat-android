@@ -8,23 +8,13 @@ public abstract class AbstractSerializedData {
 
     public abstract void writeBool(boolean value);
 
-    public abstract void writeBytes(byte[] b);
-
     public abstract void writeBytes(byte[] b, int offset, int count);
 
-    public abstract void writeByte(int i);
-
-    public abstract void writeByte(byte b);
-
     public abstract void writeString(String s);
-
-    public abstract void writeByteArray(byte[] b, int offset, int count);
 
     public abstract void writeByteArray(byte[] b);
 
     public abstract void writeDouble(double d);
-
-    public abstract void writeByteBuffer(NativeByteBuffer buffer);
 
     public abstract int readInt32(boolean exception);
 
@@ -39,8 +29,6 @@ public abstract class AbstractSerializedData {
     public abstract String readString(boolean exception);
 
     public abstract byte[] readByteArray(boolean exception);
-
-    public abstract NativeByteBuffer readByteBuffer(boolean exception);
 
     public abstract double readDouble(boolean exception);
 

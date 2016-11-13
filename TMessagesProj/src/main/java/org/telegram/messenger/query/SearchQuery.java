@@ -122,6 +122,7 @@ public class SearchQuery {
             loaded = true;
         } else {
             loading = true;
+            /*
             TLRPC.TL_contacts_getTopPeers req = new TLRPC.TL_contacts_getTopPeers();
             req.hash = 0;
             req.bots_pm = false;
@@ -152,7 +153,6 @@ public class SearchQuery {
                                 NotificationCenter.getInstance().postNotificationName(NotificationCenter.reloadHints);
                                 NotificationCenter.getInstance().postNotificationName(NotificationCenter.reloadInlineHints);
                                 final HashMap<Integer, Integer> inlineDatesCopy = new HashMap<>(inlineDates);
-                                /*
                                 MessagesStorage.getInstance().getStorageQueue().postRunnable(new Runnable() {
                                     @Override
                                     public void run() {
@@ -205,12 +205,11 @@ public class SearchQuery {
                                         }
                                     }
                                 });
-                                */
                             }
                         });
                     }
                 }
-            });
+            });*/
         }
     }
 
@@ -261,7 +260,7 @@ public class SearchQuery {
         for (int a = 0; a < inlineBots.size(); a++) {
             if (inlineBots.get(a).peer.user_id == uid) {
                 inlineBots.remove(a);
-                TLRPC.TL_contacts_resetTopPeerRating req = new TLRPC.TL_contacts_resetTopPeerRating();
+                /*TLRPC.TL_contacts_resetTopPeerRating req = new TLRPC.TL_contacts_resetTopPeerRating();
                 req.category = new TLRPC.TL_topPeerCategoryBotsInline();
                 req.peer = MessagesController.getInputPeer(uid);
                 ConnectionsManager.getInstance().sendRequest(req, new RequestDelegate() {
@@ -271,6 +270,7 @@ public class SearchQuery {
                     }
                 });
                 deletePeer(uid, 1);
+                */
                 NotificationCenter.getInstance().postNotificationName(NotificationCenter.reloadInlineHints);
                 return;
             }
@@ -283,7 +283,7 @@ public class SearchQuery {
             if (hints.get(a).peer.user_id == uid) {
                 hints.remove(a);
                 NotificationCenter.getInstance().postNotificationName(NotificationCenter.reloadHints);
-                TLRPC.TL_contacts_resetTopPeerRating req = new TLRPC.TL_contacts_resetTopPeerRating();
+                /*TLRPC.TL_contacts_resetTopPeerRating req = new TLRPC.TL_contacts_resetTopPeerRating();
                 req.category = new TLRPC.TL_topPeerCategoryCorrespondents();
                 req.peer = MessagesController.getInputPeer(uid);
                 deletePeer(uid, 0);
@@ -292,7 +292,7 @@ public class SearchQuery {
                     public void run(TLObject response, TLRPC.TL_error error) {
 
                     }
-                });
+                });*/
                 return;
             }
         }
@@ -393,21 +393,6 @@ public class SearchQuery {
                     state.bindInteger(4, (int) System.currentTimeMillis() / 1000);
                     state.step();
                     state.dispose();
-                } catch (Exception e) {
-                    FileLog.e("tmessages", e);
-                }
-            }
-        });
-        */
-    }
-
-    private static void deletePeer(final int did, final int type) {
-        /*
-        MessagesStorage.getInstance().getStorageQueue().postRunnable(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    MessagesStorage.getInstance().getDatabase().executeFast(String.format(Locale.US, "DELETE FROM chat_hints WHERE did = %d AND type = %d", did, type)).stepThis().dispose();
                 } catch (Exception e) {
                     FileLog.e("tmessages", e);
                 }

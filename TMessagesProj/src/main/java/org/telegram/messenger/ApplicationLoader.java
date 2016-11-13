@@ -275,7 +275,7 @@ public class ApplicationLoader extends Application {
         ConnectionsManager.getInstance().init(BuildVars.BUILD_VERSION, TLRPC.LAYER, BuildVars.APP_ID, deviceModel, systemVersion, appVersion, langCode, configPath, FileLog.getNetworkLogPath(), UserConfig.getClientUserId(), enablePushConnection);
         if (UserConfig.getCurrentUser() != null) {
             MessagesController.getInstance().putUser(UserConfig.getCurrentUser(), true);
-            ConnectionsManager.getInstance().applyCountryPortNumber(UserConfig.getCurrentUser().phone);
+            //ConnectionsManager.getInstance().applyCountryPortNumber(UserConfig.getCurrentUser().phone);
             MessagesController.getInstance().getBlockedUsers(true);
             SendMessagesHelper.getInstance().checkUnsentMessages();
         }
@@ -298,7 +298,7 @@ public class ApplicationLoader extends Application {
 
         applicationContext = getApplicationContext();
         NativeLoader.initNativeLibs(ApplicationLoader.applicationContext);
-        ConnectionsManager.native_setJava(Build.VERSION.SDK_INT == 14 || Build.VERSION.SDK_INT == 15);
+        //ConnectionsManager.native_setJava(Build.VERSION.SDK_INT == 14 || Build.VERSION.SDK_INT == 15);
         new ForegroundDetector(this);
 
         // EDIT BY MR - create a MrMailbox object; as android stops the App by just killing it, we do never call MrMailboxUnref()

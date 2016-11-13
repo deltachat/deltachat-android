@@ -674,5 +674,14 @@ JNIEXPORT jstring Java_org_telegram_messenger_MrMailbox_MrGetVersionStr(JNIEnv *
 }
 
 
+#include <time.h>
+JNIEXPORT jlong Java_org_telegram_messenger_MrMailbox_getCurrentTimeMillis(JNIEnv *env, jclass c) {
+	struct timespec ts;
+    clock_gettime(CLOCK_REALTIME, &ts);
+    return (jlong) ts.tv_sec * 1000 + (int64_t) ts.tv_nsec / 1000000;
+}
+JNIEXPORT jint Java_org_telegram_messenger_MrMailbox_getCurrentTime(JNIEnv *env, jclass c) {
+    return (jint) (Java_org_telegram_messenger_MrMailbox_getCurrentTimeMillis(env, c) / 1000);
+}
 
 

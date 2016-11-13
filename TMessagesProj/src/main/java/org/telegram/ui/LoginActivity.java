@@ -1223,7 +1223,7 @@ public class LoginActivity extends BaseFragment {
             wrongNumber.setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    TLRPC.TL_auth_cancelCode req = new TLRPC.TL_auth_cancelCode();
+                    /*TLRPC.TL_auth_cancelCode req = new TLRPC.TL_auth_cancelCode();
                     req.phone_number = requestPhone;
                     req.phone_code_hash = phoneHash;
                     ConnectionsManager.getInstance().sendRequest(req, new RequestDelegate() {
@@ -1231,7 +1231,7 @@ public class LoginActivity extends BaseFragment {
                         public void run(TLObject response, TLRPC.TL_error error) {
 
                         }
-                    }, ConnectionsManager.RequestFlagFailOnServerErrors | ConnectionsManager.RequestFlagWithoutLogin);
+                    }, ConnectionsManager.RequestFlagFailOnServerErrors | ConnectionsManager.RequestFlagWithoutLogin);*/
                     onBackPressed();
                     setPage(0, true, null, true);
                 }
@@ -1247,7 +1247,7 @@ public class LoginActivity extends BaseFragment {
             nextPressed = true;
             needShowProgress();
 
-            TLRPC.TL_auth_resendCode req = new TLRPC.TL_auth_resendCode();
+            /*TLRPC.TL_auth_resendCode req = new TLRPC.TL_auth_resendCode();
             req.phone_number = requestPhone;
             req.phone_code_hash = phoneHash;
             ConnectionsManager.getInstance().sendRequest(req, new RequestDelegate() {
@@ -1280,7 +1280,7 @@ public class LoginActivity extends BaseFragment {
                         }
                     });
                 }
-            }, ConnectionsManager.RequestFlagFailOnServerErrors | ConnectionsManager.RequestFlagWithoutLogin);
+            }, ConnectionsManager.RequestFlagFailOnServerErrors | ConnectionsManager.RequestFlagWithoutLogin);*/
         }
 
         @Override
@@ -1463,7 +1463,7 @@ public class LoginActivity extends BaseFragment {
                                     if (nextType == 4) {
                                         timeText.setText(LocaleController.getString("Calling", R.string.Calling));
                                         createCodeTimer();
-                                        TLRPC.TL_auth_resendCode req = new TLRPC.TL_auth_resendCode();
+                                        /*TLRPC.TL_auth_resendCode req = new TLRPC.TL_auth_resendCode();
                                         req.phone_number = requestPhone;
                                         req.phone_code_hash = phoneHash;
                                         ConnectionsManager.getInstance().sendRequest(req, new RequestDelegate() {
@@ -1478,7 +1478,7 @@ public class LoginActivity extends BaseFragment {
                                                     });
                                                 }
                                             }
-                                        }, ConnectionsManager.RequestFlagFailOnServerErrors | ConnectionsManager.RequestFlagWithoutLogin);
+                                        }, ConnectionsManager.RequestFlagFailOnServerErrors | ConnectionsManager.RequestFlagWithoutLogin);*/
                                     } else if (nextType == 3) {
                                         AndroidUtilities.setWaitingForSms(false);
                                         NotificationCenter.getInstance().removeObserver(this, NotificationCenter.didReceiveSmsCode);
@@ -1521,13 +1521,13 @@ public class LoginActivity extends BaseFragment {
                 NotificationCenter.getInstance().removeObserver(this, NotificationCenter.didReceiveCall);
             }
             waitingForEvent = false;
-            final TLRPC.TL_auth_signIn req = new TLRPC.TL_auth_signIn();
+            /*final TLRPC.TL_auth_signIn req = new TLRPC.TL_auth_signIn();
             req.phone_number = requestPhone;
             req.phone_code = codeField.getText().toString();
-            req.phone_code_hash = phoneHash;
+            req.phone_code_hash = phoneHash;*/
             destroyTimer();
             needShowProgress();
-            ConnectionsManager.getInstance().sendRequest(req, new RequestDelegate() {
+            /*ConnectionsManager.getInstance().sendRequest(req, new RequestDelegate() {
                 @Override
                 public void run(final TLObject response, final TLRPC.TL_error error) {
                     AndroidUtilities.runOnUIThread(new Runnable() {
@@ -1626,7 +1626,7 @@ public class LoginActivity extends BaseFragment {
                         }
                     });
                 }
-            }, ConnectionsManager.RequestFlagFailOnServerErrors | ConnectionsManager.RequestFlagWithoutLogin);
+            }, ConnectionsManager.RequestFlagFailOnServerErrors | ConnectionsManager.RequestFlagWithoutLogin);*/
         }
 
         @Override
@@ -1874,7 +1874,7 @@ public class LoginActivity extends BaseFragment {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
                             needShowProgress();
-                            TLRPC.TL_account_deleteAccount req = new TLRPC.TL_account_deleteAccount();
+                            /*TLRPC.TL_account_deleteAccount req = new TLRPC.TL_account_deleteAccount();
                             req.reason = "Forgot password";
                             ConnectionsManager.getInstance().sendRequest(req, new RequestDelegate() {
                                 @Override
@@ -1895,7 +1895,7 @@ public class LoginActivity extends BaseFragment {
                                         }
                                     });
                                 }
-                            }, ConnectionsManager.RequestFlagWithoutLogin | ConnectionsManager.RequestFlagFailOnServerErrors);
+                            }, ConnectionsManager.RequestFlagWithoutLogin | ConnectionsManager.RequestFlagFailOnServerErrors);*/
                         }
                     });
                     builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
@@ -1991,7 +1991,7 @@ public class LoginActivity extends BaseFragment {
             System.arraycopy(oldPasswordBytes, 0, hash, current_salt.length, oldPasswordBytes.length);
             System.arraycopy(current_salt, 0, hash, hash.length - current_salt.length, current_salt.length);
 
-            final TLRPC.TL_auth_checkPassword req = new TLRPC.TL_auth_checkPassword();
+            /*final TLRPC.TL_auth_checkPassword req = new TLRPC.TL_auth_checkPassword();
             req.password_hash = Utilities.computeSHA256(hash, 0, hash.length);
             ConnectionsManager.getInstance().sendRequest(req, new RequestDelegate() {
                 @Override
@@ -2035,7 +2035,7 @@ public class LoginActivity extends BaseFragment {
                         }
                     });
                 }
-            }, ConnectionsManager.RequestFlagFailOnServerErrors | ConnectionsManager.RequestFlagWithoutLogin);
+            }, ConnectionsManager.RequestFlagFailOnServerErrors | ConnectionsManager.RequestFlagWithoutLogin);*/
         }
 
         @Override
@@ -2216,7 +2216,7 @@ public class LoginActivity extends BaseFragment {
                 return;
             }
             needShowProgress();
-            TLRPC.TL_auth_recoverPassword req = new TLRPC.TL_auth_recoverPassword();
+            /*TLRPC.TL_auth_recoverPassword req = new TLRPC.TL_auth_recoverPassword();
             req.code = code;
             ConnectionsManager.getInstance().sendRequest(req, new RequestDelegate() {
                 @Override
@@ -2260,7 +2260,7 @@ public class LoginActivity extends BaseFragment {
                         }
                     });
                 }
-            }, ConnectionsManager.RequestFlagFailOnServerErrors | ConnectionsManager.RequestFlagWithoutLogin);
+            }, ConnectionsManager.RequestFlagFailOnServerErrors | ConnectionsManager.RequestFlagWithoutLogin);*/
         }
 
         @Override
@@ -2431,7 +2431,7 @@ public class LoginActivity extends BaseFragment {
             req.first_name = firstNameField.getText().toString();
             req.last_name = lastNameField.getText().toString();
             needShowProgress();
-            ConnectionsManager.getInstance().sendRequest(req, new RequestDelegate() {
+            /*ConnectionsManager.getInstance().sendRequest(req, new RequestDelegate() {
                 @Override
                 public void run(final TLObject response, final TLRPC.TL_error error) {
                     AndroidUtilities.runOnUIThread(new Runnable() {
@@ -2473,7 +2473,7 @@ public class LoginActivity extends BaseFragment {
                         }
                     });
                 }
-            }, ConnectionsManager.RequestFlagWithoutLogin | ConnectionsManager.RequestFlagFailOnServerErrors);
+            }, ConnectionsManager.RequestFlagWithoutLogin | ConnectionsManager.RequestFlagFailOnServerErrors);*/
         }
 
         @Override

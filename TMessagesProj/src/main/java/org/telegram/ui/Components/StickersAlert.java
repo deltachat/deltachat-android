@@ -367,7 +367,7 @@ public class StickersAlert extends BottomSheet implements NotificationCenter.Not
             stickerSet = StickersQuery.getStickerSetById(inputStickerSet.id);
         }
         if (stickerSet == null) {
-            TLRPC.TL_messages_getStickerSet req = new TLRPC.TL_messages_getStickerSet();
+            /*TLRPC.TL_messages_getStickerSet req = new TLRPC.TL_messages_getStickerSet();
             req.stickerset = inputStickerSet;
             ConnectionsManager.getInstance().sendRequest(req, new RequestDelegate() {
                 @Override
@@ -387,7 +387,7 @@ public class StickersAlert extends BottomSheet implements NotificationCenter.Not
                         }
                     });
                 }
-            });
+            });*/
         }
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.emojiDidLoaded);
         updateFields();
@@ -405,7 +405,7 @@ public class StickersAlert extends BottomSheet implements NotificationCenter.Not
                     @Override
                     public void onClick(View v) {
                         dismiss();
-                        TLRPC.TL_messages_installStickerSet req = new TLRPC.TL_messages_installStickerSet();
+                        /*TLRPC.TL_messages_installStickerSet req = new TLRPC.TL_messages_installStickerSet();
                         req.stickerset = inputStickerSet;
                         ConnectionsManager.getInstance().sendRequest(req, new RequestDelegate() {
                             @Override
@@ -430,7 +430,7 @@ public class StickersAlert extends BottomSheet implements NotificationCenter.Not
                                     }
                                 });
                             }
-                        });
+                        });*/
                     }
                 }, LocaleController.getString("AddStickers", R.string.AddStickers), Theme.STICKERS_SHEET_ADD_TEXT_COLOR, true);
             } else {

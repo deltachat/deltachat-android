@@ -464,14 +464,4 @@ public class SerializedData extends AbstractSerializedData {
         }
         return 0;
     }
-
-    @Override
-    public void writeByteBuffer(NativeByteBuffer buffer) {
-
-    }
-
-    @Override
-    public NativeByteBuffer readByteBuffer(boolean exception) {
-        return null;
-    }
 }

@@ -50,11 +50,11 @@ public abstract class BaseSearchAdapterRecycler extends RecyclerView.Adapter {
             notifyDataSetChanged();
             return;
         }
-        TLRPC.TL_contacts_search req = new TLRPC.TL_contacts_search();
+        /*TLRPC.TL_contacts_search req = new TLRPC.TL_contacts_search();
         req.q = query;
-        req.limit = 50;
-        final int currentReqId = ++lastReqId;
-        reqId = ConnectionsManager.getInstance().sendRequest(req, new RequestDelegate() {
+        req.limit = 50;*/
+        /*final int currentReqId =*/ ++lastReqId;
+        reqId = 0; /*ConnectionsManager.getInstance().sendRequest(req, new RequestDelegate() {
             @Override
             public void run(final TLObject response, final TLRPC.TL_error error) {
                 AndroidUtilities.runOnUIThread(new Runnable() {
@@ -80,7 +80,7 @@ public abstract class BaseSearchAdapterRecycler extends RecyclerView.Adapter {
                     }
                 });
             }
-        }, ConnectionsManager.RequestFlagFailOnServerErrors);
+        }, ConnectionsManager.RequestFlagFailOnServerErrors);*/
     }
 
     public void loadRecentHashtags() {

@@ -26,7 +26,6 @@
  ******************************************************************************/
 
 
-// EDIT BY MR
 package org.telegram.messenger;
 
 
@@ -317,5 +316,7 @@ public class MrMailbox {
     public final static int      MR_TITLE_USERNAME          = 2;
     public final static int      MR_TITLE_SELF              = 3;
 
+    // some rest of Telegram ...
+    public native static long    getCurrentTimeMillis       ();
+    public native static int     getCurrentTime             ();
 }
-// /EDIT BY MR

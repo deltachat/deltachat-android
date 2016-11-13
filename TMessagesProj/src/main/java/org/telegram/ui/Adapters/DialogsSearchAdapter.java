@@ -9,13 +9,11 @@
 package org.telegram.ui.Adapters;
 
 import android.content.Context;
-import android.text.TextUtils;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 
 import org.telegram.messenger.AndroidUtilities;
-import org.telegram.messenger.ChatObject;
 import org.telegram.messenger.ContactsController;
 import org.telegram.messenger.LocaleController;
 import org.telegram.messenger.MessageObject;
@@ -26,8 +24,6 @@ import org.telegram.messenger.support.widget.RecyclerView;
 import org.telegram.messenger.FileLog;
 import org.telegram.messenger.R;
 import org.telegram.tgnet.ConnectionsManager;
-import org.telegram.tgnet.NativeByteBuffer;
-import org.telegram.tgnet.RequestDelegate;
 import org.telegram.tgnet.TLObject;
 import org.telegram.tgnet.TLRPC;
 import org.telegram.ui.Cells.DialogCell;
@@ -39,13 +35,9 @@ import org.telegram.ui.Cells.ProfileSearchCell;
 import org.telegram.ui.Components.RecyclerListView;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.HashMap;
-import java.util.Locale;
 import java.util.Timer;
 import java.util.TimerTask;
-import java.util.concurrent.ConcurrentHashMap;
 
 public class DialogsSearchAdapter extends BaseSearchAdapterRecycler {
 
@@ -206,11 +198,11 @@ public class DialogsSearchAdapter extends BaseSearchAdapterRecycler {
             req.offset_peer = new TLRPC.TL_inputPeerEmpty();
         }
         lastMessagesSearchString = query;
-        final int currentReqId = ++lastReqId;
+        /*final int currentReqId =*/ ++lastReqId;
         if (delegate != null) {
             delegate.searchStateChanged(true);
         }
-        reqId = ConnectionsManager.getInstance().sendRequest(req, new RequestDelegate() {
+        reqId = 0;/*ConnectionsManager.getInstance().sendRequest(req, new RequestDelegate() {
             @Override
             public void run(final TLObject response, final TLRPC.TL_error error) {
                 AndroidUtilities.runOnUIThread(new Runnable() {
@@ -248,7 +240,7 @@ public class DialogsSearchAdapter extends BaseSearchAdapterRecycler {
                     }
                 });
             }
-        }, ConnectionsManager.RequestFlagFailOnServerErrors);
+        }, ConnectionsManager.RequestFlagFailOnServerErrors);*/
     }
 
     public boolean hasRecentRearch() {

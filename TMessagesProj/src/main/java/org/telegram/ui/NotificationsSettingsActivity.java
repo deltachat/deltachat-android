@@ -259,7 +259,7 @@ public class NotificationsSettingsActivity extends BaseFragment implements Notif
                         return;
                     }
                     reseting = true;
-                    TLRPC.TL_account_resetNotifySettings req = new TLRPC.TL_account_resetNotifySettings();
+                    /*TLRPC.TL_account_resetNotifySettings req = new TLRPC.TL_account_resetNotifySettings();
                     ConnectionsManager.getInstance().sendRequest(req, new RequestDelegate() {
                         @Override
                         public void run(TLObject response, TLRPC.TL_error error) {
@@ -282,7 +282,7 @@ public class NotificationsSettingsActivity extends BaseFragment implements Notif
                                 }
                             });
                         }
-                    });
+                    });*/
                 } else if (i == inappSoundRow) {
                     SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("Notifications", Activity.MODE_PRIVATE);
                     SharedPreferences.Editor editor = preferences.edit();

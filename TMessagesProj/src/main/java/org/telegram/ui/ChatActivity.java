@@ -3122,13 +3122,15 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     textToCheck = charSequence;
                 }
 
+                /*
                 final TLRPC.TL_messages_getWebPagePreview req = new TLRPC.TL_messages_getWebPagePreview();
                 if (textToCheck instanceof String) {
                     req.message = (String) textToCheck;
                 } else {
                     req.message = textToCheck.toString();
                 }
-                linkSearchRequestId = ConnectionsManager.getInstance().sendRequest(req, new RequestDelegate() {
+                */
+                linkSearchRequestId = 0; /*ConnectionsManager.getInstance().sendRequest(req, new RequestDelegate() {
                     @Override
                     public void run(final TLObject response, final TLRPC.TL_error error) {
                         AndroidUtilities.runOnUIThread(new Runnable() {
@@ -3156,7 +3158,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                             }
                         });
                     }
-                });
+                });*/
                 ConnectionsManager.getInstance().bindRequestToGuid(linkSearchRequestId, classGuid);
             }
         });
