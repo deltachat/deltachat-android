@@ -279,7 +279,6 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
     private boolean saveToGallery = true;
     private boolean autoplayGifs = true;
     private boolean raiseToSpeak = true;
-    private boolean customTabs = true;
     private boolean directShare = true;
     private boolean shuffleMusic;
     private int repeatMode;
@@ -610,7 +609,6 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
         saveToGallery = preferences.getBoolean("save_gallery", false);
         autoplayGifs = preferences.getBoolean("autoplay_gif", true);
         raiseToSpeak = preferences.getBoolean("raise_to_speak", true);
-        customTabs = preferences.getBoolean("custom_tabs", true);
         directShare = preferences.getBoolean("direct_share", true);
         shuffleMusic = preferences.getBoolean("shuffleMusic", false);
         repeatMode = preferences.getInt("repeatMode", 0);
@@ -3032,14 +3030,6 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
         editor.commit();
     }
 
-    public void toggleCustomTabs() {
-        customTabs = !customTabs;
-        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("mainconfig", Activity.MODE_PRIVATE);
-        SharedPreferences.Editor editor = preferences.edit();
-        editor.putBoolean("custom_tabs", customTabs);
-        editor.commit();
-    }
-
     public void toggleDirectShare() {
         directShare = !directShare;
         SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("mainconfig", Activity.MODE_PRIVATE);
@@ -3086,10 +3076,6 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
 
     public boolean canRaiseToSpeak() {
         return raiseToSpeak;
-    }
-
-    public boolean canCustomTabs() {
-        return customTabs;
     }
 
     public boolean canDirectShare() {

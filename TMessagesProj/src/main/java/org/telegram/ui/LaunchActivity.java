@@ -1697,13 +1697,13 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
     @Override
     protected void onStart() {
         super.onStart();
-        Browser.bindCustomTabsService(this);
+        //Browser.bindCustomTabsService(this);
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        Browser.unbindCustomTabsService(this);
+        //Browser.unbindCustomTabsService(this);
     }
 
     @Override

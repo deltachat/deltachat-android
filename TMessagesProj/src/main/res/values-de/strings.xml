@@ -52,7 +52,6 @@
     <string name="Recent">LETZTE</string>
     <string name="ChatHints">CHATS</string>
     <string name="ChatHintsDelete">Lösche %1$s aus Vorschlägen?</string>
-    <string name="LinkPreview">Linkvorschau</string>
     <string name="Draft">Entwurf</string>
     <string name="HistoryCleared">Verlauf wurde gelöscht</string>
     <!--channels-->
@@ -79,7 +78,6 @@
     <string name="ChannelAddedBy">un1 hat dich hinzugefügt</string>
     <string name="ChannelJoined">Du bist dem Kanal beigetreten</string>
     <string name="ChannelMegaJoined">Du bist der Gruppe beigetreten</string>
-    <string name="ChannelCantSendMessage">Du darfst in diesem Kanal nichts schreiben.</string>
     <string name="ChannelAddedByNotification">%1$s hat dich dem Kanal %2$s hinzugefügt</string>
     <string name="ChannelPhotoEditNotification">Kanal %1$s hat das Bild geändert</string>
     <string name="ChannelMessageGroupNoText">%1$s hat eine Nachricht an den Kanal %2$s gesendet</string>
@@ -398,8 +396,6 @@
     <string name="SmartNotificationsMinutes">Minuten</string>
     <string name="SecretWebPage">Linkvorschau</string>
     <string name="SecretChat">Geheime Chats</string>
-    <string name="ChromeCustomTabs">In-App Browser</string>
-    <string name="ChromeCustomTabsInfo">Externe Links innerhalb der App öffnen</string>
     <string name="DirectShare">Direktes Teilen</string>
     <string name="DirectShareInfo">Letzte Chats im Teilen-Menü anzeigen</string>
     <!--cache view-->

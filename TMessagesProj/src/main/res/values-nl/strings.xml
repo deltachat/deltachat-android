@@ -53,7 +53,6 @@
     <string name="Recent">RECENT</string>
     <string name="ChatHints">CHATS</string>
     <string name="ChatHintsDelete">%1$s uit suggesties verwijderen?</string>
-    <string name="LinkPreview">Link-voorvertoning</string>
     <string name="Draft">Concept</string>
     <string name="HistoryCleared">Geschiedenis gewist</string>
     <!--channels-->
@@ -80,7 +79,6 @@
     <string name="ChannelAddedBy">un1 heeft je toegevoegd aan dit kanaal</string>
     <string name="ChannelJoined">Je bent nu lid van dit kanaal</string>
     <string name="ChannelMegaJoined">Je bent nu lid van deze groep</string>
-    <string name="ChannelCantSendMessage">Je hebt alleen leesrechten in dit kanaal.</string>
     <string name="ChannelAddedByNotification">%1$s heeft je toegevoegd aan het kanaal %2$s</string>
     <string name="ChannelPhotoEditNotification">Kanaalfoto van %1$s bijgewerkt</string>
     <string name="ChannelMessageGroupNoText">%1$s heeft een bericht gestuurd naar het kanaal %2$s</string>
@@ -399,8 +397,6 @@
     <string name="SmartNotificationsMinutes">minuten</string>
     <string name="SecretWebPage">Linkvoorvertoningen</string>
     <string name="SecretChat">Geheime chats</string>
-    <string name="ChromeCustomTabs">In-app browser</string>
-    <string name="ChromeCustomTabsInfo">Externe links in de app openen</string>
     <string name="DirectShare">Snel delen</string>
     <string name="DirectShareInfo">Recente chats in snel delen weergeven</string>
     <!--cache view-->

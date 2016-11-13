@@ -111,7 +111,6 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
     private int saveToGalleryRow;
     private int messagesSectionRow;
     private int messagesSectionRow2;
-    private int customTabsRow;
     private int directShareRow;
     private int textSizeRow;
     private int stickersRow;
@@ -237,7 +236,6 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
         messagesSectionRow = rowCount++;
         messagesSectionRow2 = rowCount++;
         textSizeRow = rowCount++; // incoming messages
-        customTabsRow = rowCount++;
         stickersRow = -1; // EDIT BY MR --was: rowCount++;
         if (Build.VERSION.SDK_INT >= 23) {
             directShareRow = rowCount++;
@@ -477,11 +475,6 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
                     MediaController.getInstance().toggleSaveToGallery();
                     if (view instanceof TextCheckCell) {
                         ((TextCheckCell) view).setChecked(MediaController.getInstance().canSaveToGallery());
-                    }
-                } else if (i == customTabsRow) {
-                    MediaController.getInstance().toggleCustomTabs();
-                    if (view instanceof TextCheckCell) {
-                        ((TextCheckCell) view).setChecked(MediaController.getInstance().canCustomTabs());
                     }
                 } else if(i == directShareRow) {
                     MediaController.getInstance().toggleDirectShare();
@@ -1262,7 +1255,7 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
                     i == askQuestionRow || i == sendLogsRow || i == sendByEnterRow || i == autoplayGifsRow || i == privacyRow || i == wifiDownloadRow ||
                     i == mobileDownloadRow || i == clearLogsRow || i == roamingDownloadRow || i == languageRow || i == usernameRow ||
                     i == switchBackendButtonRow || i == helpRow || i == contactsSortRow || i == contactsReimportRow || i == saveToGalleryRow ||
-                    i == stickersRow || i == cacheRow || i == raiseToSpeakRow || i == privacyPolicyRow || i == customTabsRow || i == directShareRow || i == versionRow;
+                    i == stickersRow || i == cacheRow || i == raiseToSpeakRow || i == privacyPolicyRow || i == directShareRow || i == versionRow;
         }
 
         @Override
@@ -1377,8 +1370,6 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
                     textCell.setTextAndCheck(LocaleController.getString("AutoplayGifs", R.string.AutoplayGifs), MediaController.getInstance().canAutoplayGifs(), true);
                 } else if (i == raiseToSpeakRow) {
                     textCell.setTextAndCheck(LocaleController.getString("RaiseToSpeak", R.string.RaiseToSpeak), MediaController.getInstance().canRaiseToSpeak(), true);
-                } else if (i == customTabsRow) {
-                    textCell.setTextAndValueAndCheck(LocaleController.getString("ChromeCustomTabs", R.string.ChromeCustomTabs), LocaleController.getString("ChromeCustomTabsInfo", R.string.ChromeCustomTabsInfo), MediaController.getInstance().canCustomTabs(), false, true);
                 } else if (i == directShareRow) {
                     textCell.setTextAndValueAndCheck(LocaleController.getString("DirectShare", R.string.DirectShare), LocaleController.getString("DirectShareInfo", R.string.DirectShareInfo), MediaController.getInstance().canDirectShare(), false, true);
                 }
@@ -1539,7 +1530,7 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
 
             if (i == settingsSectionRow || i == supportSectionRow || i == messagesSectionRow || i == mediaDownloadSection || i == contactsSectionRow) {
                 return 1;
-            } else if (i == enableAnimationsRow || i == sendByEnterRow || i == saveToGalleryRow || i == autoplayGifsRow || i == raiseToSpeakRow || i == customTabsRow || i == directShareRow) {
+            } else if (i == enableAnimationsRow || i == sendByEnterRow || i == saveToGalleryRow || i == autoplayGifsRow || i == raiseToSpeakRow || i == directShareRow) {
                 return 3;
             } else if (i == notificationRow || i == backgroundRow || i == askQuestionRow || i == sendLogsRow || i == privacyRow || i == clearLogsRow || i == switchBackendButtonRow || i == helpRow || i == contactsReimportRow || i == textSizeRow || i == languageRow || i == contactsSortRow || i == stickersRow || i == cacheRow || i == privacyPolicyRow) {
                 return 2;
