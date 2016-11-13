@@ -46,19 +46,12 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 
 import org.telegram.messenger.AndroidUtilities;
-import org.telegram.messenger.ContactsController;
-import org.telegram.messenger.MessagesController;
 import org.telegram.messenger.NotificationCenter;
 import org.telegram.messenger.ApplicationLoader;
-import org.telegram.messenger.BuildVars;
 import org.telegram.messenger.FileLog;
 import org.telegram.messenger.LocaleController;
 import org.telegram.messenger.R;
-import org.telegram.tgnet.ConnectionsManager;
-import org.telegram.tgnet.RequestDelegate;
-import org.telegram.tgnet.TLObject;
 import org.telegram.tgnet.TLRPC;
-import org.telegram.messenger.UserConfig;
 import org.telegram.messenger.Utilities;
 import org.telegram.ui.ActionBar.ActionBar;
 import org.telegram.ui.ActionBar.ActionBarMenu;
@@ -459,46 +452,6 @@ public class LoginActivity extends BaseFragment {
             editor.commit();
         } catch (Exception e) {
             FileLog.e("tmessages", e);
-        }
-    }
-
-    private void needFinishActivity() {
-        clearCurrentState();
-        presentFragment(new DialogsActivity(null), true);
-        NotificationCenter.getInstance().postNotificationName(NotificationCenter.mainUserInfoChanged);
-    }
-
-    private void fillNextCodeParams(Bundle params, TLRPC.TL_auth_sentCode res) {
-        params.putString("phoneHash", res.phone_code_hash);
-        if (res.next_type instanceof TLRPC.TL_auth_codeTypeCall) {
-            params.putInt("nextType", 4);
-        } else if (res.next_type instanceof TLRPC.TL_auth_codeTypeFlashCall) {
-            params.putInt("nextType", 3);
-        } else if (res.next_type instanceof TLRPC.TL_auth_codeTypeSms) {
-            params.putInt("nextType", 2);
-        }
-        if (res.type instanceof TLRPC.TL_auth_sentCodeTypeApp) {
-            params.putInt("type", 1);
-            params.putInt("length", res.type.length);
-            setPage(1, true, params, false);
-        } else {
-            if (res.timeout == 0) {
-                res.timeout = 60;
-            }
-            params.putInt("timeout", res.timeout * 1000);
-            if (res.type instanceof TLRPC.TL_auth_sentCodeTypeCall) {
-                params.putInt("type", 4);
-                params.putInt("length", res.type.length);
-                setPage(4, true, params, false);
-            } else if (res.type instanceof TLRPC.TL_auth_sentCodeTypeFlashCall) {
-                params.putInt("type", 3);
-                params.putString("pattern", res.type.pattern);
-                setPage(3, true, params, false);
-            } else if (res.type instanceof TLRPC.TL_auth_sentCodeTypeSms) {
-                params.putInt("type", 2);
-                params.putInt("length", res.type.length);
-                setPage(2, true, params, false);
-            }
         }
     }
 

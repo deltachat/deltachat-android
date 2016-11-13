@@ -874,9 +874,6 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
                         } else {
                             action = "pm_upload_audio";
                         }
-                        if (!MessagesController.isFeatureEnabled(action, parentFragment)) {
-                            return false;
-                        }
                     }
                     startedDraggingX = -1;
                     MediaController.getInstance().startRecording(dialog_id, replyingMessageObject);
@@ -1336,9 +1333,6 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
                 }
             } else {
                 action = "pm_message";
-            }
-            if (!MessagesController.isFeatureEnabled(action, parentFragment)) {
-                return;
             }
         }
         if (audioToSend != null) {

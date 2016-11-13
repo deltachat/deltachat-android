@@ -151,7 +151,7 @@ public class BaseFragment {
     }
 
     public void onFragmentDestroy() {
-        ConnectionsManager.getInstance().cancelRequestsForGuid(classGuid);
+        //ConnectionsManager.getInstance().cancelRequestsForGuid(classGuid);
         isFinished = true;
         if (actionBar != null) {
             actionBar.setEnabled(false);

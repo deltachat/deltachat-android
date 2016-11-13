@@ -320,9 +320,6 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
                             }
                         } else {
                             if (row == 0) {
-                                if (!MessagesController.isFeatureEnabled("chat_create", ContactsActivity.this)) {
-                                    return;
-                                }
                                 presentFragment(new GroupCreateActivity(), false);
                             } else if (row == 1) {
                                 Bundle args = new Bundle();

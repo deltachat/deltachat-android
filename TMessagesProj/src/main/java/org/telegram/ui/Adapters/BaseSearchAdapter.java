@@ -8,35 +8,22 @@
 
 package org.telegram.ui.Adapters;
 
-import org.telegram.messenger.AndroidUtilities;
-import org.telegram.messenger.FileLog;
 import org.telegram.tgnet.ConnectionsManager;
-import org.telegram.tgnet.RequestDelegate;
 import org.telegram.tgnet.TLObject;
-import org.telegram.tgnet.TLRPC;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.HashMap;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class BaseSearchAdapter extends BaseFragmentAdapter {
 
     protected static class HashtagObject {
-        String hashtag;
-        int date;
     }
 
     protected ArrayList<TLObject> globalSearch = new ArrayList<>();
     private int reqId = 0;
-    private int lastReqId;
     protected String lastFoundUsername = null;
 
     protected ArrayList<HashtagObject> hashtags;
-    protected HashMap<String, HashtagObject> hashtagsByText;
-    protected boolean hashtagsLoadedFromDb = false;
 
     public void queryServerSearch(final String query, final boolean allowChats, final boolean allowBots) {
         if (reqId != 0) {
@@ -45,15 +32,13 @@ public class BaseSearchAdapter extends BaseFragmentAdapter {
         }
         if (query == null || query.length() < 5) {
             globalSearch.clear();
-            lastReqId = 0;
             notifyDataSetChanged();
             return;
         }
         /*TLRPC.TL_contacts_search req = new TLRPC.TL_contacts_search();
         req.q = query;
         req.limit = 50;*/
-        /*final int currentReqId =*/
-        ++lastReqId;
+        /*final int currentReqId = ++lastReqId; */
         reqId = 0; /* ConnectionsManager.getInstance().sendRequest(req, new RequestDelegate() {
             @Override
             public void run(final TLObject response, final TLRPC.TL_error error) {

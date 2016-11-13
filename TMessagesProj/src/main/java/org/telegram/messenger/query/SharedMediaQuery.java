@@ -8,19 +8,15 @@
 
 package org.telegram.messenger.query;
 
-import org.telegram.messenger.AndroidUtilities;
 import org.telegram.messenger.ChatObject;
-import org.telegram.messenger.ImageLoader;
 import org.telegram.messenger.MessageObject;
 import org.telegram.messenger.MessagesController;
 import org.telegram.messenger.MrMailbox;
 import org.telegram.messenger.NotificationCenter;
 import org.telegram.messenger.Utilities;
-import org.telegram.tgnet.ConnectionsManager;
 import org.telegram.tgnet.TLRPC;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class SharedMediaQuery {
 
@@ -58,7 +54,7 @@ public class SharedMediaQuery {
             if (req.peer == null) {
                 return;
             }
-            int reqId = 0; /*ConnectionsManager.getInstance().sendRequest(req, new RequestDelegate() {
+            /*int reqId = ConnectionsManager.getInstance().sendRequest(req, new RequestDelegate() {
                 @Override
                 public void run(TLObject response, TLRPC.TL_error error) {
                     if (error == null) {
@@ -73,8 +69,8 @@ public class SharedMediaQuery {
                         processLoadedMedia(res, uid, offset, count, max_id, type, false, classGuid, isChannel, topReached);
                     }
                 }
-            });*/
-            ConnectionsManager.getInstance().bindRequestToGuid(reqId, classGuid);
+            });
+            ConnectionsManager.getInstance().bindRequestToGuid(reqId, classGuid);*/
         }
     }
 
@@ -180,6 +176,7 @@ public class SharedMediaQuery {
         return -1;
     }
 
+    /*
     private static void processLoadedMedia(final TLRPC.messages_Messages res, final long uid, int offset, int count, int max_id, final int type, final boolean fromCache, final int classGuid, final boolean isChannel, final boolean topReached) {
         int lower_part = (int)uid;
         if (fromCache && res.messages.isEmpty() && lower_part != 0) {
@@ -213,27 +210,7 @@ public class SharedMediaQuery {
             });
         }
     }
-
-    private static void putMediaCountDatabase(final long uid, final int type, final int count) {
-        /*
-        MessagesStorage.getInstance().getStorageQueue().postRunnable(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    SQLitePreparedStatement state2 = MessagesStorage.getInstance().getDatabase().executeFast("REPLACE INTO media_counts_v2 VALUES(?, ?, ?)");
-                    state2.requery();
-                    state2.bindLong(1, uid);
-                    state2.bindInteger(2, type);
-                    state2.bindInteger(3, count);
-                    state2.step();
-                    state2.dispose();
-                } catch (Exception e) {
-                    FileLog.e("tmessages", e);
-                }
-            }
-        });
-        */
-    }
+    */
 
     private static void loadMediaDatabase(final long uid, final int offset, final int count, final int max_id, final int type, final int classGuid, final boolean isChannel) {
         /*
@@ -441,7 +418,7 @@ public class SharedMediaQuery {
                             if (MessageObject.isMusicMessage(message)) {
                                 message.id = cursor.intValue(1);
                                 message.dialog_id = uid;
-                                arrayList.add(0, new MessageObject(message, null, false));
+                                arrayList.add(0, new MessageObject(mess age, null, false));
                             }
                         }
                     }

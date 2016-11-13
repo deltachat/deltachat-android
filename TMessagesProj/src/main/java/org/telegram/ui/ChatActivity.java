@@ -78,8 +78,6 @@ import org.telegram.messenger.support.widget.RecyclerView;
 import org.telegram.messenger.ApplicationLoader;
 import org.telegram.messenger.FileLoader;
 import org.telegram.tgnet.ConnectionsManager;
-import org.telegram.tgnet.RequestDelegate;
-import org.telegram.tgnet.TLObject;
 import org.telegram.tgnet.TLRPC;
 import org.telegram.messenger.ContactsController;
 import org.telegram.messenger.FileLog;
@@ -2870,9 +2868,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     action = "pm_upload_document";
                 }
             }
-            if (!MessagesController.isFeatureEnabled(action, ChatActivity.this)) {
-                return;
-            }
         }
 
         if (which == attach_photo) {
@@ -3158,8 +3153,8 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                             }
                         });
                     }
-                });*/
-                ConnectionsManager.getInstance().bindRequestToGuid(linkSearchRequestId, classGuid);
+                });
+                ConnectionsManager.getInstance().bindRequestToGuid(linkSearchRequestId, classGuid);*/
             }
         });
     }

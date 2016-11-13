@@ -12,7 +12,6 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.util.Base64;
 
-import org.telegram.tgnet.SerializedData;
 import org.telegram.tgnet.TLRPC;
 
 import java.io.File;
@@ -96,6 +95,7 @@ public class UserConfig {
                     editor.putLong("migrateOffsetAccess", migrateOffsetAccess);
                 }
 
+                /*
                 if (currentUser != null) {
                     if (withFile) {
                         SerializedData data = new SerializedData();
@@ -107,6 +107,7 @@ public class UserConfig {
                 } else {
                     editor.remove("user");
                 }
+                */
 
                 editor.commit();
                 if (oldFile != null) {
@@ -148,12 +149,12 @@ public class UserConfig {
     public static void setCurrentUser(TLRPC.User user) {
         synchronized (sync) {
             currentUser = MrMailbox.contactId2user(1); // EDIT BY MR - force the current user to be user #1, normally this function should not be called at all
-            //currentUser = user; EDIT BY MR
         }
     }
 
     public static void loadConfig() {
         synchronized (sync) {
+            /*
             final File configFile = new File(ApplicationLoader.getFilesDirFixed(), "user.dat");
             if (configFile.exists()) {
                 try {
@@ -162,9 +163,9 @@ public class UserConfig {
                     if (ver == 1) {
                         int constructor = data.readInt32(false);
                         currentUser = TLRPC.User.TLdeserialize(data, constructor, false);
-                        //MessagesStorage.lastDateValue = data.readInt32(false);
-                        //MessagesStorage.lastPtsValue = data.readInt32(false);
-                        //MessagesStorage.lastSeqValue = data.readInt32(false);
+                        MessagesStorage.lastDateValue = data.readInt32(false);
+                        MessagesStorage.lastPtsValue = data.readInt32(false);
+                        MessagesStorage.lastSeqValue = data.readInt32(false);
                         registeredForPush = data.readBool(false);
                         pushString = data.readString(false);
                         lastSendMessageId = data.readInt32(false);
@@ -213,7 +214,9 @@ public class UserConfig {
                 } catch (Exception e) {
                     FileLog.e("tmessages", e);
                 }
-            } else {
+            } else
+            */
+            {
                 SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("userconfing", Context.MODE_PRIVATE);
                 registeredForPush = preferences.getBoolean("registeredForPush", false);
                 pushString = preferences.getString("pushString2", "");
@@ -243,6 +246,7 @@ public class UserConfig {
                     migrateOffsetAccess = preferences.getLong("migrateOffsetAccess", 0);
                 }
 
+                /*
                 String user = preferences.getString("user", null);
                 if (user != null) {
                     byte[] userBytes = Base64.decode(user, Base64.DEFAULT);
@@ -252,6 +256,9 @@ public class UserConfig {
                         data.cleanup();
                     }
                 }
+                */
+                setCurrentUser(null);
+
                 String passcodeSaltString = preferences.getString("passcodeSalt", "");
                 if (passcodeSaltString.length() > 0) {
                     passcodeSalt = Base64.decode(passcodeSaltString, Base64.DEFAULT);
@@ -295,34 +302,5 @@ public class UserConfig {
             }
         }
         return false;
-    }
-
-    public static void clearConfig() {
-        currentUser = null;
-        registeredForPush = false;
-        contactsHash = "";
-        lastSendMessageId = -210000;
-        lastBroadcastId = -1;
-        saveIncomingPhotos = false;
-        blockedUsersLoaded = false;
-        migrateOffsetId = -1;
-        migrateOffsetDate = -1;
-        migrateOffsetUserId = -1;
-        migrateOffsetChatId = -1;
-        migrateOffsetChannelId = -1;
-        migrateOffsetAccess = -1;
-        appLocked = false;
-        passcodeType = 0;
-        passcodeHash = "";
-        passcodeSalt = new byte[0];
-        autoLockIn = 60 * 60;
-        lastPauseTime = 0;
-        useFingerprint = true;
-        draftsLoaded = true;
-        isWaitingForPasscodeEnter = false;
-        lastUpdateVersion = BuildVars.BUILD_VERSION_STRING;
-        lastContactsSyncTime = (int) (System.currentTimeMillis() / 1000) - 23 * 60 * 60;
-        lastHintsSyncTime = (int) (System.currentTimeMillis() / 1000) - 25 * 60 * 60;
-        saveConfig(true);
     }
 }

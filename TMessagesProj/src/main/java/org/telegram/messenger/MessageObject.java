@@ -297,7 +297,7 @@ public class MessageObject {
                             }
                         }
                     }
-                } else if (message.action instanceof TLRPC.TL_messageActionCreatedBroadcastList) {
+                /*} else if (message.action instanceof TLRPC.TL_messageActionCreatedBroadcastList) {
                     messageText = LocaleController.formatString("YouCreatedBroadcastList", R.string.YouCreatedBroadcastList);
                 } else if (message.action instanceof TLRPC.TL_messageActionChannelCreate) {
                     if (isMegagroup()) {
@@ -305,7 +305,7 @@ public class MessageObject {
                     } else {
                         messageText = LocaleController.getString("ActionCreateChannel", R.string.ActionCreateChannel);
                     }
-                /*} else if (message.action instanceof TLRPC.TL_messageActionChatMigrateTo) {
+                } else if (message.action instanceof TLRPC.TL_messageActionChatMigrateTo) {
                     messageText = LocaleController.getString("ActionMigrateFromGroup", R.string.ActionMigrateFromGroup);
                 } else if (message.action instanceof TLRPC.TL_messageActionChannelMigrateFrom) {
                     messageText = LocaleController.getString("ActionMigrateFromGroup", R.string.ActionMigrateFromGroup);
@@ -430,9 +430,10 @@ public class MessageObject {
                 }
             }
         } else if (messageOwner instanceof TLRPC.TL_messageService) {
-            if (messageOwner.action instanceof TLRPC.TL_messageActionLoginUnknownLocation) {
+            /*if (messageOwner.action instanceof TLRPC.TL_messageActionLoginUnknownLocation) {
                 type = 0;
-            } else if (messageOwner.action instanceof TLRPC.TL_messageActionChatEditPhoto || messageOwner.action instanceof TLRPC.TL_messageActionUserUpdatedPhoto) {
+            } else */
+            if (messageOwner.action instanceof TLRPC.TL_messageActionChatEditPhoto || messageOwner.action instanceof TLRPC.TL_messageActionUserUpdatedPhoto) {
                 contentType = 1;
                 type = 11;
             } else if (messageOwner.action instanceof TLRPC.TL_messageEncryptedAction) {

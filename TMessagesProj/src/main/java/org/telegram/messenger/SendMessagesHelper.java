@@ -355,7 +355,7 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
             MessageObject messageObject = (MessageObject) args[0];
             String finalPath = (String) args[1];
             long finalSize = (Long) args[2];
-            boolean isEncrypted = ((int) messageObject.getDialogId()) == 0;
+            //boolean isEncrypted = false;//((int) messageObject.getDialogId()) == 0;
             //FileLoader.getInstance().checkUploadNewDataAvailable(finalPath, isEncrypted, finalSize);
             if (finalSize != 0) {
                 /*
@@ -1199,8 +1199,8 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
             return false;
         }
 
-        boolean isEncrypted = (int) dialog_id == 0;
-        boolean allowSticker = !isEncrypted;
+        final boolean isEncrypted = false;//(int) dialog_id == 0;
+        final boolean allowSticker = !isEncrypted;
 
         String name = f.getName();
         String ext = "";
@@ -1211,7 +1211,7 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
         if (ext.toLowerCase().equals("mp3") || ext.toLowerCase().equals("m4a")) {
             AudioInfo audioInfo = AudioInfo.getAudioInfo(f);
             if (audioInfo != null && audioInfo.getDuration() != 0) {
-                if (isEncrypted) {
+                /*if (isEncrypted) {
                     int high_id = (int) (dialog_id >> 32);
                     TLRPC.EncryptedChat encryptedChat = MessagesController.getInstance().getEncryptedChat(high_id);
                     if (encryptedChat == null) {
@@ -1222,7 +1222,7 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
                     } else {
                         attributeAudio = new TLRPC.TL_documentAttributeAudio_old();
                     }
-                } else {
+                } else*/ {
                     attributeAudio = new TLRPC.TL_documentAttributeAudio();
                 }
                 attributeAudio.duration = (int) (audioInfo.getDuration() / 1000);
@@ -1247,9 +1247,9 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
         }
 
         TLRPC.TL_document document = null;
-        if (!isEncrypted) {
+        /*if (!isEncrypted)*/ {
             document = null;//(TLRPC.TL_document) MessagesStorage.getInstance().getSentFile(originalPath, !isEncrypted ? 1 : 4);
-            if (document == null && !path.equals(originalPath) && !isEncrypted) {
+            if (document == null && !path.equals(originalPath) /*&& !isEncrypted*/) {
                 document = null;//(TLRPC.TL_document) MessagesStorage.getInstance().getSentFile(path + f.length(), !isEncrypted ? 1 : 4);
             }
         }
@@ -1360,7 +1360,7 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
                     String originalPath = messageObject.messageOwner.attachPath;
                     final File f = new File(originalPath);
 
-                    boolean isEncrypted = (int) dialog_id == 0;
+                    final boolean isEncrypted = false;//(int) dialog_id == 0;
 
 
                     if (originalPath != null) {
@@ -1368,14 +1368,14 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
                     }
 
                     TLRPC.TL_document document = null;
-                    if (!isEncrypted) {
+                    /*if (!isEncrypted)*/ {
                         document = null;//(TLRPC.TL_document) MessagesStorage.getInstance().getSentFile(originalPath, !isEncrypted ? 1 : 4);
                     }
                     if (document == null) {
                         document = null;//(TLRPC.TL_document) messageObject.messageOwner.media.document;
                     }
 
-                    if (isEncrypted) {
+                    /*if (isEncrypted) {
                         int high_id = (int) (dialog_id >> 32);
                         TLRPC.EncryptedChat encryptedChat = MessagesController.getInstance().getEncryptedChat(high_id);
                         if (encryptedChat == null) {
@@ -1392,7 +1392,7 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
                                 }
                             }
                         }
-                    }
+                    }*/
 
                     final HashMap<String, String> params = new HashMap<>();
                     if (originalPath != null) {
@@ -1475,7 +1475,7 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
         new Thread(new Runnable() {
             @Override
             public void run() {
-                boolean isEncrypted = (int) dialog_id == 0;
+                final boolean isEncrypted = false;//(int) dialog_id == 0;
                 for (int a = 0; a < photos.size(); a++) {
                     final MediaController.SearchImage searchImage = photos.get(a);
                     if (searchImage.type == 1) {
@@ -1486,7 +1486,7 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
                             document = (TLRPC.TL_document) searchImage.document;
                             cacheFile = FileLoader.getPathToAttach(document, true);
                         } else {
-                            if (!isEncrypted) {
+                            /*if (!isEncrypted)*/ {
                                 TLRPC.Document doc = null;//(TLRPC.Document) MessagesStorage.getInstance().getSentFile(searchImage.imageUrl, !isEncrypted ? 1 : 4);
                                 if (doc instanceof TLRPC.TL_document) {
                                     document = (TLRPC.TL_document) doc;
@@ -1570,8 +1570,8 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
                     } else {
                         boolean needDownloadHttp = true;
                         TLRPC.TL_photo photo = null;
-                        if (!isEncrypted) {
-                            photo = (TLRPC.TL_photo) null;//MessagesStorage.getInstance().getSentFile(searchImage.imageUrl, !isEncrypted ? 0 : 3);
+                        /*if (!isEncrypted)*/ {
+                            photo = null;//MessagesStorage.getInstance().getSentFile(searchImage.imageUrl, !isEncrypted ? 0 : 3);
                         }
                         if (photo == null) {
                             String md5 = Utilities.MD5(searchImage.imageUrl) + "." + ImageLoader.getHttpUrlExtension(searchImage.imageUrl, "jpg");
@@ -1683,7 +1683,7 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
         new Thread(new Runnable() {
             @Override
             public void run() {
-                boolean isEncrypted = (int) dialog_id == 0;
+                final boolean isEncrypted = false;//(int) dialog_id == 0;
 
                 ArrayList<String> sendAsDocuments = null;
                 ArrayList<String> sendAsDocumentsOriginal = null;
@@ -1745,10 +1745,10 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
                             originalPath = null;
                         }
                         TLRPC.TL_photo photo = null;
-                        if (!isEncrypted) {
-                            photo = (TLRPC.TL_photo) null;//MessagesStorage.getInstance().getSentFile(originalPath, !isEncrypted ? 0 : 3);
+                        /*if (!isEncrypted)*/ {
+                            photo = null;//MessagesStorage.getInstance().getSentFile(originalPath, !isEncrypted ? 0 : 3);
                             if (photo == null && uri != null) {
-                                photo = (TLRPC.TL_photo) null;//MessagesStorage.getInstance().getSentFile(AndroidUtilities.getPath(uri), !isEncrypted ? 0 : 3);
+                                photo = null;//MessagesStorage.getInstance().getSentFile(AndroidUtilities.getPath(uri), !isEncrypted ? 0 : 3);
                             }
                         }
                         if (photo == null) {
@@ -1789,7 +1789,7 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
             @Override
             public void run() {
 
-                boolean isEncrypted = (int) dialog_id == 0;
+                final boolean isEncrypted = false;//(int) dialog_id == 0;
 
                 if (videoEditedInfo != null || videoPath.endsWith("mp4")) {
                     String path = videoPath;
@@ -1803,7 +1803,7 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
                         }
                     }
                     TLRPC.TL_document document = null;
-                    if (!isEncrypted) {
+                    /*if (!isEncrypted)*/ {
                         //document = (TLRPC.TL_document) MessagesStorage.getInstance().getSentFile(originalPath, !isEncrypted ? 2 : 5);
                     }
                     if (document == null) {

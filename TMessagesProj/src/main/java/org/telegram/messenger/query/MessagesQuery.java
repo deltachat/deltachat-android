@@ -9,23 +9,14 @@
 package org.telegram.messenger.query;
 
 import android.text.Spannable;
-import android.text.TextUtils;
-import org.telegram.messenger.AndroidUtilities;
-import org.telegram.messenger.ImageLoader;
 import org.telegram.messenger.MessageObject;
 import org.telegram.messenger.MessagesController;
-import org.telegram.messenger.NotificationCenter;
-import org.telegram.messenger.FileLog;
 import org.telegram.messenger.Utilities;
-import org.telegram.tgnet.ConnectionsManager;
-import org.telegram.tgnet.RequestDelegate;
-import org.telegram.tgnet.TLObject;
 import org.telegram.tgnet.TLRPC;
 import org.telegram.ui.Components.URLSpanUserMention;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Locale;
 
 public class MessagesQuery {
 
@@ -129,32 +120,6 @@ public class MessagesQuery {
         }
         */
         return null;
-    }
-
-    private static void savePinnedMessage(final TLRPC.Message result) {
-        /*
-        MessagesStorage.getInstance().getStorageQueue().postRunnable(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    MessagesStorage.getInstance().getDatabase().beginTransaction();
-                    SQLitePreparedStatement state = MessagesStorage.getInstance().getDatabase().executeFast("REPLACE INTO chat_pinned VALUES(?, ?, ?)");
-                    NativeByteBuffer data = new NativeByteBuffer(result.getObjectSize());
-                    result.serializeToStream(data);
-                    state.requery();
-                    state.bindInteger(1, result.to_id.channel_id);
-                    state.bindInteger(2, result.id);
-                    state.bindByteBuffer(3, data);
-                    state.step();
-                    data.reuse();
-                    state.dispose();
-                    MessagesStorage.getInstance().getDatabase().commitTransaction();
-                } catch (Exception e) {
-                    FileLog.e("tmessages", e);
-                }
-            }
-        });
-        */
     }
 
     /*
@@ -293,8 +258,8 @@ public class MessagesQuery {
                 return;
             }
 
-            final int channelIdFinal = channelId;
             /*
+            final int channelIdFinal = channelId;
             MessagesStorage.getInstance().getStorageQueue().postRunnable(new Runnable() {
                 @Override
                 public void run() {

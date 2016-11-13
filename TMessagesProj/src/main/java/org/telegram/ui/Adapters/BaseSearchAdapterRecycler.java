@@ -8,17 +8,11 @@
 
 package org.telegram.ui.Adapters;
 
-import org.telegram.messenger.AndroidUtilities;
 import org.telegram.messenger.support.widget.RecyclerView;
-import org.telegram.messenger.FileLog;
 import org.telegram.tgnet.ConnectionsManager;
-import org.telegram.tgnet.RequestDelegate;
 import org.telegram.tgnet.TLObject;
-import org.telegram.tgnet.TLRPC;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.HashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -32,7 +26,6 @@ public abstract class BaseSearchAdapterRecycler extends RecyclerView.Adapter {
 
     protected ArrayList<TLObject> globalSearch = new ArrayList<>();
     private int reqId = 0;
-    private int lastReqId;
     protected String lastFoundUsername = null;
 
     protected ArrayList<HashtagObject> hashtags;
@@ -46,14 +39,13 @@ public abstract class BaseSearchAdapterRecycler extends RecyclerView.Adapter {
         }
         if (query == null || query.length() < 5) {
             globalSearch.clear();
-            lastReqId = 0;
             notifyDataSetChanged();
             return;
         }
         /*TLRPC.TL_contacts_search req = new TLRPC.TL_contacts_search();
         req.q = query;
         req.limit = 50;*/
-        /*final int currentReqId =*/ ++lastReqId;
+        /*final int currentReqId = ++lastReqId; =*/
         reqId = 0; /*ConnectionsManager.getInstance().sendRequest(req, new RequestDelegate() {
             @Override
             public void run(final TLObject response, final TLRPC.TL_error error) {

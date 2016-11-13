@@ -28,7 +28,6 @@ import android.os.PowerManager;
 import android.util.Base64;
 
 import org.telegram.tgnet.ConnectionsManager;
-import org.telegram.tgnet.SerializedData;
 import org.telegram.tgnet.TLRPC;
 import org.telegram.ui.Components.ForegroundDetector;
 
@@ -137,49 +136,6 @@ public class ApplicationLoader extends Application {
         }
     }
 
-    private static void convertConfig() {
-        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("dataconfig", Context.MODE_PRIVATE);
-        if (preferences.contains("currentDatacenterId")) {
-            SerializedData buffer = new SerializedData(32 * 1024);
-            buffer.writeInt32(2);
-            buffer.writeBool(preferences.getInt("datacenterSetId", 0) != 0);
-            buffer.writeBool(true);
-            buffer.writeInt32(preferences.getInt("currentDatacenterId", 0));
-            buffer.writeInt32(preferences.getInt("timeDifference", 0));
-            buffer.writeInt32(preferences.getInt("lastDcUpdateTime", 0));
-            buffer.writeInt64(preferences.getLong("pushSessionId", 0));
-            buffer.writeBool(false);
-            buffer.writeInt32(0);
-            try {
-                String datacentersString = preferences.getString("datacenters", null);
-                if (datacentersString != null) {
-                    byte[] datacentersBytes = Base64.decode(datacentersString, Base64.DEFAULT);
-                    if (datacentersBytes != null) {
-                        SerializedData data = new SerializedData(datacentersBytes);
-                        buffer.writeInt32(data.readInt32(false));
-                        buffer.writeBytes(datacentersBytes, 4, datacentersBytes.length - 4);
-                        data.cleanup();
-                    }
-                }
-            } catch (Exception e) {
-                FileLog.e("tmessages", e);
-            }
-
-            try {
-                File file = new File(getFilesDirFixed(), "tgnet.dat");
-                RandomAccessFile fileOutputStream = new RandomAccessFile(file, "rws");
-                byte[] bytes = buffer.toByteArray();
-                fileOutputStream.writeInt(Integer.reverseBytes(bytes.length));
-                fileOutputStream.write(bytes);
-                fileOutputStream.close();
-            } catch (Exception e) {
-                FileLog.e("tmessages", e);
-            }
-            buffer.cleanup();
-            preferences.edit().clear().commit();
-        }
-    }
-
     public static File getFilesDirFixed() {
         for (int a = 0; a < 10; a++) { // sometimes getFilesDir() returns NULL, see https://code.google.com/p/android/issues/detail?id=8886
             File path = ApplicationLoader.applicationContext.getFilesDir();
@@ -204,7 +160,7 @@ public class ApplicationLoader extends Application {
         }
 
         applicationInited = true;
-        convertConfig();
+        //convertConfig();
 
         try {
             LocaleController.getInstance();

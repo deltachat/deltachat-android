@@ -51,8 +51,6 @@ import org.telegram.messenger.ApplicationLoader;
 import org.telegram.messenger.FileLoader;
 import org.telegram.messenger.FileLog;
 import org.telegram.tgnet.ConnectionsManager;
-import org.telegram.tgnet.RequestDelegate;
-import org.telegram.tgnet.TLObject;
 import org.telegram.tgnet.TLRPC;
 import org.telegram.messenger.MessageObject;
 import org.telegram.messenger.NotificationCenter;
@@ -1588,8 +1586,8 @@ public class MediaActivity extends BaseFragment implements NotificationCenter.No
                         }
                     });
                 }
-            }, ConnectionsManager.RequestFlagFailOnServerErrors);*/
-            ConnectionsManager.getInstance().bindRequestToGuid(reqId, classGuid);
+            }, ConnectionsManager.RequestFlagFailOnServerErrors);
+            ConnectionsManager.getInstance().bindRequestToGuid(reqId, classGuid);*/
         }
 
         public void search(final String query) {

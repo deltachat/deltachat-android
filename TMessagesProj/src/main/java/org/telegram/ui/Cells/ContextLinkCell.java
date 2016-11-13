@@ -337,23 +337,6 @@ public class ContextLinkCell extends View implements MediaController.FileDownloa
         }
     }
 
-    public void setLink(TLRPC.BotInlineResult contextResult, boolean media, boolean divider, boolean shadow) {
-        needDivider = divider;
-        needShadow = shadow;
-        if (needShadow && shadowDrawable == null) {
-            shadowDrawable = getContext().getResources().getDrawable(R.drawable.header_shadow);
-        }
-        inlineResult = contextResult;
-        if (inlineResult != null && inlineResult.document != null) {
-            documentAttach = inlineResult.document;
-        } else {
-            documentAttach = null;
-        }
-        mediaWebpage = media;
-        requestLayout();
-        updateButtonState(false);
-    }
-
     public void setGif(TLRPC.Document document, boolean divider) {
         needDivider = divider;
         needShadow = false;

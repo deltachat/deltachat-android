@@ -9,15 +9,11 @@
 package org.telegram.messenger;
 
 import org.telegram.tgnet.ConnectionsManager;
-import org.telegram.tgnet.RequestDelegate;
-import org.telegram.tgnet.TLObject;
 import org.telegram.tgnet.TLRPC;
 
 import java.io.RandomAccessFile;
 import java.io.File;
-import java.nio.channels.FileChannel;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class FileLoadOperation {
 

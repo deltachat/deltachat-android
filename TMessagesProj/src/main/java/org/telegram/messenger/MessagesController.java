@@ -14,7 +14,6 @@ import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Base64;
 import android.util.SparseArray;
 import android.util.SparseIntArray;
 
@@ -23,7 +22,6 @@ import org.telegram.messenger.query.MessagesQuery;
 import org.telegram.messenger.query.SearchQuery;
 import org.telegram.messenger.query.StickersQuery;
 import org.telegram.tgnet.ConnectionsManager;
-import org.telegram.tgnet.SerializedData;
 import org.telegram.tgnet.TLObject;
 import org.telegram.tgnet.TLRPC;
 import org.telegram.ui.ActionBar.BaseFragment;
@@ -87,9 +85,6 @@ public class MessagesController implements NotificationCenter.NotificationCenter
     private ArrayList<TLRPC.Updates> updatesQueueSeq = new ArrayList<>();
     private ArrayList<TLRPC.Updates> updatesQueuePts = new ArrayList<>();
     private ArrayList<TLRPC.Updates> updatesQueueQts = new ArrayList<>();
-    private long updatesStartWaitTimeSeq = 0;
-    private long updatesStartWaitTimePts = 0;
-    private long updatesStartWaitTimeQts = 0;
     private HashMap<Integer, String> fullUsersAbout = new HashMap<>();
     private ArrayList<Integer> loadingFullUsers = new ArrayList<>();
     private ArrayList<Integer> loadedFullUsers = new ArrayList<>();
@@ -117,7 +112,6 @@ public class MessagesController implements NotificationCenter.NotificationCenter
 
     public int secretWebpagePreview = 2;
 
-    private long lastStatusUpdateTime = 0;
     private int statusRequest = 0;
     private int statusSettingState = 0;
     private boolean offlineSent = false;
@@ -132,7 +126,6 @@ public class MessagesController implements NotificationCenter.NotificationCenter
     public int maxEditTime = 172800;
     public int groupBigSize;
     public int ratingDecay;
-    private ArrayList<TLRPC.TL_disabledFeature> disabledFeatures = new ArrayList<>();
 
     public static final int UPDATE_MASK_NAME = 1;
     public static final int UPDATE_MASK_AVATAR = 2;
@@ -205,43 +198,6 @@ public class MessagesController implements NotificationCenter.NotificationCenter
         groupBigSize = preferences.getInt("groupBigSize", 10);
         ratingDecay = preferences.getInt("ratingDecay", 2419200);
         fontSize = preferences.getInt("fons_size", AndroidUtilities.isTablet() ? 18 : 16);
-        String disabledFeaturesString = preferences.getString("disabledFeatures", null);
-        if (disabledFeaturesString != null && disabledFeaturesString.length() != 0) {
-            try {
-                byte[] bytes = Base64.decode(disabledFeaturesString, Base64.DEFAULT);
-                if (bytes != null) {
-                    SerializedData data = new SerializedData(bytes);
-                    int count = data.readInt32(false);
-                    for (int a = 0; a < count; a++) {
-                        TLRPC.TL_disabledFeature feature = TLRPC.TL_disabledFeature.TLdeserialize(data, data.readInt32(false), false);
-                        if (feature != null && feature.feature != null && feature.description != null) {
-                            disabledFeatures.add(feature);
-                        }
-                    }
-                }
-            } catch (Exception e) {
-                FileLog.e("tmessages", e);
-            }
-        }
-    }
-
-    public static boolean isFeatureEnabled(String feature, BaseFragment fragment) {
-        if (feature == null || feature.length() == 0 || getInstance().disabledFeatures.isEmpty() || fragment == null) {
-            return true;
-        }
-        for (TLRPC.TL_disabledFeature disabledFeature : getInstance().disabledFeatures) {
-            if (disabledFeature.feature.equals(feature)) {
-                if (fragment.getParentActivity() != null) {
-                    AlertDialog.Builder builder = new AlertDialog.Builder(fragment.getParentActivity());
-                    builder.setTitle("Oops!");
-                    builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), null);
-                    builder.setMessage(disabledFeature.description);
-                    fragment.showDialog(builder.create());
-                }
-                return false;
-            }
-        }
-        return true;
     }
 
     public static TLRPC.InputUser getInputUser(TLRPC.User user) {
@@ -432,9 +388,6 @@ public class MessagesController implements NotificationCenter.NotificationCenter
                 updatesQueuePts.clear();
                 updatesQueueQts.clear();
                 gettingUnknownChannels.clear();
-                updatesStartWaitTimeSeq = 0;
-                updatesStartWaitTimePts = 0;
-                updatesStartWaitTimeQts = 0;
                 createdDialogIds.clear();
                 gettingDifference = false;
             }
@@ -457,7 +410,6 @@ public class MessagesController implements NotificationCenter.NotificationCenter
         loadingBlockedUsers = false;
         firstGettingTask = false;
         updatingState = false;
-        lastStatusUpdateTime = 0;
         offlineSent = false;
         registeringForPush = false;
         uploadingAvatar = null;
@@ -714,8 +666,8 @@ public class MessagesController implements NotificationCenter.NotificationCenter
                             processLoadedUserPhotos(res, did, offset, count, max_id, false, classGuid);
                         }
                     }
-                });*/
-                ConnectionsManager.getInstance().bindRequestToGuid(reqId, classGuid);
+                });
+                ConnectionsManager.getInstance().bindRequestToGuid(reqId, classGuid);*/
             } else if (did < 0) {
                 TLRPC.TL_messages_search req = new TLRPC.TL_messages_search();
                 req.filter = new TLRPC.TL_inputMessagesFilterChatPhotos();
@@ -742,8 +694,8 @@ public class MessagesController implements NotificationCenter.NotificationCenter
                             processLoadedUserPhotos(res, did, offset, count, max_id, false, classGuid);
                         }
                     }
-                });*/
-                ConnectionsManager.getInstance().bindRequestToGuid(reqId, classGuid);
+                });
+                ConnectionsManager.getInstance().bindRequestToGuid(reqId, classGuid);*/
             }
         }
     }
@@ -993,6 +945,7 @@ public class MessagesController implements NotificationCenter.NotificationCenter
     }
 
     public int createChat(String title, ArrayList<Integer> selectedContacts, final String about, int type, final BaseFragment fragment) {
+        /*
         if (type == ChatObject.CHAT_TYPE_BROADCAST) {
             TLRPC.TL_chat chat = new TLRPC.TL_chat();
             chat.id = UserConfig.lastBroadcastId;
@@ -1005,7 +958,7 @@ public class MessagesController implements NotificationCenter.NotificationCenter
             putChat(chat, false);
             ArrayList<TLRPC.Chat> chatsArrays = new ArrayList<>();
             chatsArrays.add(chat);
-            //MessagesStorage.getInstance().putUsersAndChats(null, chatsArrays, true, true);
+            MessagesStorage.getInstance().putUsersAndChats(null, chatsArrays, true, true);
 
             TLRPC.TL_chatFull chatFull = new TLRPC.TL_chatFull();
             chatFull.id = chat.id;
@@ -1027,7 +980,7 @@ public class MessagesController implements NotificationCenter.NotificationCenter
 
             TLRPC.TL_messageService newMsg = new TLRPC.TL_messageService();
             newMsg.action = new TLRPC.TL_messageActionCreatedBroadcastList();
-            /*newMsg.local_id =*/ newMsg.id = UserConfig.getNewMessageId();
+            newMsg.local_id = newMsg.id = UserConfig.getNewMessageId();
             newMsg.from_id = UserConfig.getClientUserId();
             newMsg.dialog_id = AndroidUtilities.makeBroadcastId(chat.id);
             newMsg.to_id = new TLRPC.TL_peerChat();
@@ -1059,7 +1012,7 @@ public class MessagesController implements NotificationCenter.NotificationCenter
                 }
                 req.users.add(getInputUser(user));
             }
-            return 0; /*ConnectionsManager.getInstance().sendRequest(req, new RequestDelegate() {
+            return ConnectionsManager.getInstance().sendRequest(req, new RequestDelegate() {
                 @Override
                 public void run(TLObject response, final TLRPC.TL_error error) {
                     if (error != null) {
@@ -1091,8 +1044,9 @@ public class MessagesController implements NotificationCenter.NotificationCenter
                         }
                     });
                 }
-            }, ConnectionsManager.RequestFlagFailOnServerErrors); */
+            }, ConnectionsManager.RequestFlagFailOnServerErrors);
         }
+        */
         return 0;
     }
 
