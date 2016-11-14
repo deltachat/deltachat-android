@@ -56,41 +56,29 @@ public class ChatAvatarContainer extends FrameLayout {
         subtitleTextView.setGravity(Gravity.LEFT);
         addView(subtitleTextView);
 
-        /*
-        if (needTime) {
-            timeItem = new ImageView(context);
-            timeItem.setPadding(AndroidUtilities.dp(10), AndroidUtilities.dp(10), AndroidUtilities.dp(5), AndroidUtilities.dp(5));
-            timeItem.setScaleType(ImageView.ScaleType.CENTER);
-            timeItem.setImageDrawable(timerDrawable = new TimerDrawable(context));
-            addView(timeItem);
-            timeItem.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    parentFragment.showDialog(AndroidUtilities.buildTTLAlert(getContext(), parentFragment.getCurrentEncryptedChat()).create());
-                }
-            });
-        }
-        */
-
         setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                TLRPC.User user = parentFragment.getCurrentUser();
-                TLRPC.Chat chat = parentFragment.getCurrentChat();
-                if (user != null) {
-                    Bundle args = new Bundle();
-                    args.putInt("user_id", user.id);
-                    ProfileActivity fragment = new ProfileActivity(args);
-                    fragment.setPlayProfileAnimation(true);
-                    parentFragment.presentFragment(fragment);
-                } else if (chat != null) {
-                    Bundle args = new Bundle();
-                    args.putInt("chat_id", chat.id);
-                    ProfileActivity fragment = new ProfileActivity(args);
-                    fragment.setChatInfo(parentFragment.getCurrentChatInfo());
-                    fragment.setPlayProfileAnimation(true);
-                    parentFragment.presentFragment(fragment);
+                Bundle args = new Bundle();
+                boolean setChatInfo = false;
+                if( MrMailbox.MrChatGetType(parentFragment.m_hChat)==MrMailbox.MR_CHAT_GROUP ) {
+                    args.putInt("chat_id",  MrMailbox.MrChatGetId(parentFragment.m_hChat));
+                    setChatInfo = true;
                 }
+                else {
+                    int[] contact_ids = MrMailbox.MrMailboxGetChatContacts(MrMailbox.hMailbox, MrMailbox.MrChatGetId(parentFragment.m_hChat));
+                    if( contact_ids.length==0) {
+                        return; // should not happen
+                    }
+                    args.putInt("user_id", contact_ids[0]);
+                }
+
+                ProfileActivity fragment = new ProfileActivity(args);
+                if( setChatInfo ) {
+                    fragment.setChatInfo(parentFragment.getCurrentChatInfo());
+                }
+                fragment.setPlayProfileAnimation(true);
+                parentFragment.presentFragment(fragment);
             }
         });
     }

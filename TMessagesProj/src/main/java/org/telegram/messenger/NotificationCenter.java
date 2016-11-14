@@ -29,8 +29,6 @@ public class NotificationCenter {
     public static final int contactsDidLoaded = totalEvents++;
     public static final int chatDidCreated = totalEvents++;
     public static final int chatDidFailCreate = totalEvents++;
-    public static final int chatInfoDidLoaded = totalEvents++;
-    public static final int chatInfoCantLoad = totalEvents++;
     public static final int mediaDidLoaded = totalEvents++;
     public static final int mediaCountDidLoaded = totalEvents++;
     public static final int dialogPhotosLoaded = totalEvents++;
@@ -49,7 +47,6 @@ public class NotificationCenter {
     public static final int didSetPasscode = totalEvents++;
     public static final int screenStateChanged = totalEvents++;
     public static final int didLoadedReplyMessages = totalEvents++;
-    public static final int didLoadedPinnedMessage = totalEvents++;
     public static final int didReceivedWebpages = totalEvents++;
     public static final int didReceivedWebpagesInUpdates = totalEvents++;
     public static final int stickersDidLoaded = totalEvents++;

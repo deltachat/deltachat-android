@@ -438,25 +438,39 @@ JNIEXPORT jint Java_org_telegram_messenger_MrMailbox_MrChatSendMedia(JNIEnv *env
 }
 
 
+static jintArray carray2jintArray_n_carray_free(JNIEnv *env, const carray* ca)
+{
+	int i, icnt = ca? carray_count(ca) : 0;
+	jintArray ret = (*env)->NewIntArray(env, icnt); if (ret == NULL) { return NULL; }
+	
+	if( ca ) {
+		if( icnt ) {
+			void** ca_data = carray_data(ca);
+			jint* temp = calloc(icnt, sizeof(jint));
+				for( i = 0; i < icnt; i++ ) {
+					temp[i] = (jint)ca_data[i];
+				}
+				(*env)->SetIntArrayRegion(env, ret, 0, icnt, temp);
+			free(temp);
+		}
+		carray_free(ca);
+	}
+
+	return ret;
+}
+
+
 JNIEXPORT jintArray Java_org_telegram_messenger_MrMailbox_MrMailboxGetChatMedia(JNIEnv *env, jclass c, jlong hMailbox, jint chat_id, jint msg_type, jint or_msg_type)
 {
 	carray* ca = mrmailbox_get_chat_media((mrmailbox_t*)hMailbox, chat_id, msg_type, or_msg_type);
-	if( ca == NULL ) { return NULL; }
+	return carray2jintArray_n_carray_free(env, ca);
+}
 
-	int i, icnt = carray_count(ca);
-	jintArray ret = (*env)->NewIntArray(env, icnt); if (ret == NULL) { return NULL; }
-	
-	if( icnt ) {
-		void** ca_data = carray_data(ca);
-		jint* temp = calloc(icnt, sizeof(jint));
-			for( i = 0; i < icnt; i++ ) {
-				temp[i] = (jint)ca_data[i];
-			}
-			(*env)->SetIntArrayRegion(env, ret, 0, icnt, temp);
-		free(temp);
-	}
-		
-	return ret;
+
+JNIEXPORT jintArray Java_org_telegram_messenger_MrMailbox_MrMailboxGetChatContacts(JNIEnv *env, jclass c, jlong hMailbox, jint chat_id)
+{
+	carray* ca = mrmailbox_get_chat_contacts((mrmailbox_t*)hMailbox, chat_id);
+	return carray2jintArray_n_carray_free(env, ca);
 }
 
 

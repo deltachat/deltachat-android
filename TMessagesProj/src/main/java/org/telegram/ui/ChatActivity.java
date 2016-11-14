@@ -822,18 +822,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         avatarContainer = new ChatAvatarContainer(context, this);
         actionBar.addView(avatarContainer, 0, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.MATCH_PARENT, Gravity.TOP | Gravity.LEFT, 56, 0, 40, 0));
 
-        if (currentChat != null) {
-            if (!ChatObject.isChannel(currentChat)) {
-                int count = currentChat.participants_count;
-                if (info != null) {
-                    count = info.participants.participants.size();
-                }
-                if ((count == 0) || currentChat.deactivated || currentChat.left || ((info != null) && (info.participants instanceof TLRPC.TL_chatParticipantsForbidden))) {
-                    avatarContainer.setEnabled(false);
-                }
-            }
-        }
-
         ActionBarMenu menu = actionBar.createMenu();
 
         {
