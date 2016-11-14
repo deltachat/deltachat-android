@@ -68,11 +68,9 @@
     <string name="ChannelBlockedUsers">Geblokkeerde gebruikers</string>
     <string name="ChannelAdministrators">Beheerders</string>
     <string name="ChannelLeaveAlert">Kanaal echt verlaten?</string>
-    <string name="ActionCreateChannel">Kanaal gemaakt</string>
     <string name="ActionChannelChangedPhoto">Kanaalfoto bijgewerkt</string>
     <string name="ActionChannelRemovedPhoto">Kanaalfoto verwijderd</string>
     <string name="ActionChannelChangedTitle">Kanaalnaam gewijzigd naar un2</string>
-    <string name="ChannelJoinTo">Lid worden van kanaal \'%1$s\'?</string>
     <string name="ChannelCantOpenPrivate">Sorry, deze chat is niet beschikbaar.</string>
     <string name="ChannelCantOpenBanned">Helaas ben je geblokkeerd van deelname in publieke groepen.</string>
     <string name="ChannelCantOpenNa">Sorry, deze chat is niet beschikbaar.</string>
@@ -108,7 +106,6 @@
     <!--broadcasts-->
     <string name="NewBroadcastList">Nieuwe verzendlijst</string>
     <string name="EnterListName">Naam van lijst</string>
-    <string name="YouCreatedBroadcastList">Je hebt een verzendlijst gemaakt</string>
     <string name="AddRecipient">Ontvanger toevoegen</string>
     <string name="KickFromBroadcast">Verwijder van verzendlijst</string>
     <!--audio view-->
@@ -177,7 +174,6 @@
     <string name="TapHereGifs">Tik hier om opgeslagen GIF\'s te bekijken</string>
     <string name="UnpinMessageAlert">Wil je dit bericht losmaken?</string>
     <string name="ClearRecentEmoji">Recente emoji\'s wissen?</string>
-    <string name="ReportChat">Melden</string>
     <string name="PinnedMessage">Vastgezet bericht</string>
     <string name="EditedMessage">bewerkt</string>
     <string name="AttachBotsHelp">Scrollen voor bots</string>
@@ -252,7 +248,6 @@
     <string name="GroupName">Groepsnaam</string>
     <string name="MembersCount">%1$d/%2$d leden</string>
     <string name="JoinToGroup">Wil je lid worden van de groep \"%1$s\"?</string>
-    <string name="JoinToGroupErrorFull">Sorry, deze groep is al vol.</string>
     <string name="JoinToGroupErrorNotExist">Sorry, deze groep bestaat niet.</string>
     <string name="LinkCopied">Link gekopieerd naar klembord.</string>
     <string name="InviteToGroupByLink">Uitnodigingslink sturen</string>
@@ -312,7 +307,6 @@
     <string name="SendSticker">STICKER STUREN</string>
     <string name="TooMuchStickersets">Je hebt het maximale aantal stickerbundels bereikt.</string>
     <!--settings view-->
-    <string name="ResetNotificationsText">Meldingen gereset</string>
     <string name="TextSize">Tekstgrootte berichten</string>
     <string name="EnableAnimations">Animaties</string>
     <string name="Unblock">Deblokkeer</string>
@@ -395,8 +389,6 @@
     <string name="SmartNotificationsTimes">keer</string>
     <string name="SmartNotificationsWithin">binnen</string>
     <string name="SmartNotificationsMinutes">minuten</string>
-    <string name="SecretWebPage">Linkvoorvertoningen</string>
-    <string name="SecretChat">Geheime chats</string>
     <string name="DirectShare">Snel delen</string>
     <string name="DirectShareInfo">Recente chats in snel delen weergeven</string>
     <!--cache view-->
@@ -641,9 +633,6 @@
     <string name="CodeExpired">Code verlopen. Log opnieuw in.</string>
     <string name="FloodWait">Te veel pogingen. Probeer het later opnieuw.</string>
     <string name="FloodWaitTime">Te veel pogingen, probeer het over %1$s opnieuw</string>
-    <string name="InvalidCode">Ongeldige code</string>
-    <string name="InvalidFirstName">Ongeldige voornaam</string>
-    <string name="InvalidLastName">Ongeldige achternaam</string>
     <string name="Loading">Bezig met laden</string>
     <string name="NoPlayerInstalled">Je hebt geen mediaspeler. Installeer een mediaspeler om door te gaan.</string>
     <string name="NoMailInstalled">E-mail ons op sms@stel.com en vertel ons over je probleem.</string>

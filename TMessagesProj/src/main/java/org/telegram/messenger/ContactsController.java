@@ -14,7 +14,6 @@ import android.app.Activity;
 import android.content.ContentProviderOperation;
 import android.content.ContentProviderResult;
 import android.content.ContentResolver;
-import android.content.ContentValues;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
@@ -45,14 +44,8 @@ public class ContactsController {
     private boolean contactsBookLoaded = false;
     private String lastContactsVersions = "";
     private ArrayList<Integer> delayedContactsUpdate = new ArrayList<>();
-    //private String inviteText; // EDIT BY MR
-    //private boolean updatingInviteText = false; // EDIT BY MR
     private HashMap<String, String> sectionsToReplace = new HashMap<>();
 
-    private int loadingDeleteInfo = 0;
-    private int deleteAccountTTL;
-    private int loadingLastSeenInfo = 0;
-    private int loadingGroupInfo = 0;
     private ArrayList<TLRPC.PrivacyRule> privacyRules = null;
     private ArrayList<TLRPC.PrivacyRule> groupPrivacyRules = null;
 
@@ -158,10 +151,6 @@ public class ContactsController {
         contactsLoaded = false;
         contactsBookLoaded = false;
         lastContactsVersions = "";
-        loadingDeleteInfo = 0;
-        deleteAccountTTL = 0;
-        loadingLastSeenInfo = 0;
-        loadingGroupInfo = 0;
         Utilities.globalQueue.postRunnable(new Runnable() {
             @Override
             public void run() {
@@ -170,43 +159,6 @@ public class ContactsController {
         });
         privacyRules = null;
     }
-
-	/* // EDIT BY MR
-    public void checkInviteText() {
-        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("mainconfig", Activity.MODE_PRIVATE);
-        inviteText = preferences.getString("invitetext", null);
-        int time = preferences.getInt("invitetexttime", 0);
-        if (!updatingInviteText && (inviteText == null || time + 86400 < (int) (System.currentTimeMillis() / 1000))) {
-            updatingInviteText = true;
-            TLRPC.TL_help_getInviteText req = new TLRPC.TL_help_getInviteText();
-            req.lang_code = LocaleController.getLocaleStringIso639();
-            if (req.lang_code.length() == 0) {
-                req.lang_code = "en";
-            }
-            ConnectionsManager.getInstance().sendRequest(req, new RequestDelegate() {
-                @Override
-                public void run(TLObject response, TLRPC.TL_error error) {
-                    if (response != null) {
-                        final TLRPC.TL_help_inviteText res = (TLRPC.TL_help_inviteText) response;
-                        if (res.message.length() != 0) {
-                            AndroidUtilities.runOnUIThread(new Runnable() {
-                                @Override
-                                public void run() {
-                                    updatingInviteText = false;
-                                    SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("mainconfig", Activity.MODE_PRIVATE);
-                                    SharedPreferences.Editor editor = preferences.edit();
-                                    editor.putString("invitetext", res.message);
-                                    editor.putInt("invitetexttime", (int) (System.currentTimeMillis() / 1000));
-                                    editor.commit();
-                                }
-                            });
-                        }
-                    }
-                }
-            }, ConnectionsManager.RequestFlagFailOnServerErrors);
-        }
-    }
-    EDIT BY MR*/
 
     public String getInviteText() {
         return /* EDIT BY MR inviteText != null ? inviteText :*/ LocaleController.getString("InviteText", R.string.InviteText);
@@ -1571,99 +1523,7 @@ public class ContactsController {
     }
 
     public void loadPrivacySettings() {
-        if (loadingDeleteInfo == 0) {
-            loadingDeleteInfo = 1;
-            /*TLRPC.TL_account_getAccountTTL req = new TLRPC.TL_account_getAccountTTL();
-            ConnectionsManager.getInstance().sendRequest(req, new RequestDelegate() {
-                @Override
-                public void run(final TLObject response, final TLRPC.TL_error error) {
-                    AndroidUtilities.runOnUIThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            if (error == null) {
-                                TLRPC.TL_accountDaysTTL ttl = (TLRPC.TL_accountDaysTTL) response;
-                                deleteAccountTTL = ttl.days;
-                                loadingDeleteInfo = 2;
-                            } else {
-                                loadingDeleteInfo = 0;
-                            }
-                            NotificationCenter.getInstance().postNotificationName(NotificationCenter.privacyRulesUpdated);
-                        }
-                    });
-                }
-            });*/
-        }
-        if (loadingLastSeenInfo == 0) {
-            loadingLastSeenInfo = 1;
-            /*TLRPC.TL_account_getPrivacy req = new TLRPC.TL_account_getPrivacy();
-            req.key = new TLRPC.TL_inputPrivacyKeyStatusTimestamp();
-            ConnectionsManager.getInstance().sendRequest(req, new RequestDelegate() {
-                @Override
-                public void run(final TLObject response, final TLRPC.TL_error error) {
-                    AndroidUtilities.runOnUIThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            if (error == null) {
-                                TLRPC.TL_account_privacyRules rules = (TLRPC.TL_account_privacyRules) response;
-                                MessagesController.getInstance().putUsers(rules.users, false);
-                                privacyRules = rules.rules;
-                                loadingLastSeenInfo = 2;
-                            } else {
-                                loadingLastSeenInfo = 0;
-                            }
-                            NotificationCenter.getInstance().postNotificationName(NotificationCenter.privacyRulesUpdated);
-                        }
-                    });
-                }
-            });*/
-        }
-        if (loadingGroupInfo == 0) {
-            loadingGroupInfo = 1;
-            /*TLRPC.TL_account_getPrivacy req = new TLRPC.TL_account_getPrivacy();
-            req.key = new TLRPC.TL_inputPrivacyKeyChatInvite();
-            ConnectionsManager.getInstance().sendRequest(req, new RequestDelegate() {
-                @Override
-                public void run(final TLObject response, final TLRPC.TL_error error) {
-                    AndroidUtilities.runOnUIThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            if (error == null) {
-                                TLRPC.TL_account_privacyRules rules = (TLRPC.TL_account_privacyRules) response;
-                                MessagesController.getInstance().putUsers(rules.users, false);
-                                groupPrivacyRules = rules.rules;
-                                loadingGroupInfo = 2;
-                            } else {
-                                loadingGroupInfo = 0;
-                            }
-                            NotificationCenter.getInstance().postNotificationName(NotificationCenter.privacyRulesUpdated);
-                        }
-                    });
-                }
-            });*/
-        }
         NotificationCenter.getInstance().postNotificationName(NotificationCenter.privacyRulesUpdated);
-    }
-
-    /*
-    public void setDeleteAccountTTL(int ttl) {
-        deleteAccountTTL = ttl;
-    }
-    */
-
-    public int getDeleteAccountTTL() {
-        return deleteAccountTTL;
-    }
-
-    public boolean getLoadingDeleteInfo() {
-        return loadingDeleteInfo != 2;
-    }
-
-    public boolean getLoadingLastSeenInfo() {
-        return loadingLastSeenInfo != 2;
-    }
-
-    public boolean getLoadingGroupInfo() {
-        return loadingGroupInfo != 2;
     }
 
     public ArrayList<TLRPC.PrivacyRule> getPrivacyRules(boolean isGroup) {

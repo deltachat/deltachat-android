@@ -68,11 +68,9 @@
     <string name="ChannelBlockedUsers">Utenti bloccati</string>
     <string name="ChannelAdministrators">Amministratori</string>
     <string name="ChannelLeaveAlert">Sei sicuro di voler lasciare il canale?</string>
-    <string name="ActionCreateChannel">Canale creato</string>
     <string name="ActionChannelChangedPhoto">Foto del canale cambiata</string>
     <string name="ActionChannelRemovedPhoto">Foto del canale rimossa</string>
     <string name="ActionChannelChangedTitle">Nome del canale cambiato in un2</string>
-    <string name="ChannelJoinTo">Vuoi unirti al canale \'%1$s\'?</string>
     <string name="ChannelCantOpenPrivate">Spiacenti, questa chat non è più accessibile.</string>
     <string name="ChannelCantOpenBanned">Sfortunatamente, non ti è permesso partecipare ai gruppi pubblici.</string>
     <string name="ChannelCantOpenNa">Spiacenti, questa chat non è più accessibile.</string>
@@ -108,7 +106,6 @@
     <!--broadcasts-->
     <string name="NewBroadcastList">Nuova lista broadcast</string>
     <string name="EnterListName">Inserisci il nome della lista</string>
-    <string name="YouCreatedBroadcastList">Hai creato una lista broadcast</string>
     <string name="AddRecipient">Aggiungi destinatario</string>
     <string name="KickFromBroadcast">Rimuovi dalla lista broadcast</string>
     <!--audio view-->
@@ -177,7 +174,6 @@
     <string name="TapHereGifs">Premi qui per accedere alle GIF salvate</string>
     <string name="UnpinMessageAlert">Vuoi togliere questo messaggio?</string>
     <string name="ClearRecentEmoji">Cancellare le emoji recenti?</string>
-    <string name="ReportChat">Segnala</string>
     <string name="PinnedMessage">Messaggio fissato</string>
     <string name="EditedMessage">modificato</string>
     <string name="AttachBotsHelp">Scorri verso il basso per i bot</string>
@@ -252,7 +248,6 @@
     <string name="GroupName">Nome gruppo</string>
     <string name="MembersCount">%1$d/%2$d membri</string>
     <string name="JoinToGroup">Vuoi unirti alla chat \'%1$s\'?</string>
-    <string name="JoinToGroupErrorFull">Spiacenti, questo gruppo è già pieno.</string>
     <string name="JoinToGroupErrorNotExist">Spiacenti, sembra che questa chat non esista.</string>
     <string name="LinkCopied">Link copiato negli appunti</string>
     <string name="InviteToGroupByLink">Invita nel gruppo via link</string>
@@ -312,7 +307,6 @@
     <string name="SendSticker">INVIA STICKER</string>
     <string name="TooMuchStickersets">Spiacenti, hai raggiunto il numero massimo di set di sticker.</string>
     <!--settings view-->
-    <string name="ResetNotificationsText">Ripristina tutte le impostazioni di notifica predefinite</string>
     <string name="TextSize">Dimensione testo messaggi</string>
     <string name="EnableAnimations">Abilita animazioni</string>
     <string name="Unblock">Sblocca</string>
@@ -395,8 +389,6 @@
     <string name="SmartNotificationsTimes">volte</string>
     <string name="SmartNotificationsWithin">in</string>
     <string name="SmartNotificationsMinutes">minuti</string>
-    <string name="SecretWebPage">Anteprime link</string>
-    <string name="SecretChat">Chat segrete</string>
     <string name="DirectShare">Condivisione diretta</string>
     <string name="DirectShareInfo">Mostra le chat recenti nel menu condividi</string>
     <!--cache view-->
@@ -641,9 +633,6 @@
     <string name="CodeExpired">Codice scaduto, effettua di nuovo l\'accesso</string>
     <string name="FloodWait">Troppi tentativi, riprova più tardi</string>
     <string name="FloodWaitTime">Troppi tentativi, per favore riprova di nuovo tra %1$s</string>
-    <string name="InvalidCode">Codice non valido</string>
-    <string name="InvalidFirstName">Nome non valido</string>
-    <string name="InvalidLastName">Cognome non valido</string>
     <string name="Loading">Caricamento…</string>
     <string name="NoPlayerInstalled">Non hai un lettore video, per favore installane uno per continuare</string>
     <string name="NoMailInstalled">Invia un’email a sms@stel.com spiegandoci il problema.</string>

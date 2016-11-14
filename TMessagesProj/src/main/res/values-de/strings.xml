@@ -67,11 +67,9 @@
     <string name="ChannelBlockedUsers">Blockierte Nutzer</string>
     <string name="ChannelAdministrators">Administratoren</string>
     <string name="ChannelLeaveAlert">Möchtest du wirklich diesen Kanal verlassen?</string>
-    <string name="ActionCreateChannel">Kanal erstellt</string>
     <string name="ActionChannelChangedPhoto">Bild geändert</string>
     <string name="ActionChannelRemovedPhoto">Bild gelöscht</string>
     <string name="ActionChannelChangedTitle">Kanalname zu un2 geändert</string>
-    <string name="ChannelJoinTo">Möchtest du dem Kanal \'%1$s\' beitreten?</string>
     <string name="ChannelCantOpenPrivate">Dieser Chat ist nicht mehr zugänglich.</string>
     <string name="ChannelCantOpenBanned">Du wurdest gesperrt und kannst öffentliche Gruppen nicht betreten.</string>
     <string name="ChannelCantOpenNa">Dieser Chat ist nicht mehr zugänglich.</string>
@@ -107,7 +105,6 @@
     <!--broadcasts-->
     <string name="NewBroadcastList">Neue Broadcast Liste</string>
     <string name="EnterListName">Listenname</string>
-    <string name="YouCreatedBroadcastList">Du hast eine Broadcast Liste erstellt</string>
     <string name="AddRecipient">Empfänger hinzufügen</string>
     <string name="KickFromBroadcast">Aus Broadcast Liste entfernen</string>
     <!--audio view-->
@@ -176,7 +173,6 @@
     <string name="TapHereGifs">Hier tippen um gespeicherte GIFs zu sehen</string>
     <string name="UnpinMessageAlert">Angeheftete Nachricht wieder entfernen?</string>
     <string name="ClearRecentEmoji">Zuletzt benutzte Emoji leeren?</string>
-    <string name="ReportChat">Melden</string>
     <string name="PinnedMessage">Angeheftete Nachricht</string>
     <string name="EditedMessage">bearbeitet</string>
     <string name="AttachBotsHelp">Runterscrollen für Bots</string>
@@ -251,7 +247,6 @@
     <string name="GroupName">Gruppenname</string>
     <string name="MembersCount">%1$d/%2$d Mitglieder</string>
     <string name="JoinToGroup">Möchtest du dem Chat \'%1$s\' beitreten?</string>
-    <string name="JoinToGroupErrorFull">Leider ist diese Gruppe schon voll.</string>
     <string name="JoinToGroupErrorNotExist">Leider gibt es diesen Chat nicht.</string>
     <string name="LinkCopied">Link in die Zwischenablage kopiert</string>
     <string name="InviteToGroupByLink">Per Link zur Gruppe einladen</string>
@@ -311,7 +306,6 @@
     <string name="SendSticker">STICKER SENDEN</string>
     <string name="TooMuchStickersets">Leider hast du die maximale Anzahl an Stickerpaketen erreicht.</string>
     <!--settings view-->
-    <string name="ResetNotificationsText">Alle Einstellungen für Mitteilungen zurücksetzen</string>
     <string name="TextSize">Textgröße für Nachrichten</string>
     <string name="EnableAnimations">Übergänge animieren</string>
     <string name="Unblock">Freigeben</string>
@@ -394,8 +388,6 @@
     <string name="SmartNotificationsTimes">Mal</string>
     <string name="SmartNotificationsWithin">innerhalb von</string>
     <string name="SmartNotificationsMinutes">Minuten</string>
-    <string name="SecretWebPage">Linkvorschau</string>
-    <string name="SecretChat">Geheime Chats</string>
     <string name="DirectShare">Direktes Teilen</string>
     <string name="DirectShareInfo">Letzte Chats im Teilen-Menü anzeigen</string>
     <!--cache view-->
@@ -640,9 +632,6 @@
     <string name="CodeExpired">Code ist abgelaufen, bitte melde dich erneut an</string>
     <string name="FloodWait">Zu viele Versuche in zu kurzer Zeit, versuche es bitte später erneut.</string>
     <string name="FloodWaitTime">Zu viele Versuche, bitte erneut in %1$s versuchen</string>
-    <string name="InvalidCode">Ungültiger Code</string>
-    <string name="InvalidFirstName">Ungültiger Vorname</string>
-    <string name="InvalidLastName">Ungültiger Nachname</string>
     <string name="Loading">Lädt…</string>
     <string name="NoPlayerInstalled">Du hast keinen Videoplayer. Bitte installiere einen um fortzufahren.</string>
     <string name="NoMailInstalled">Bitte sende eine Email an sms@stel.com mit einer Beschreibung des Problems.</string>

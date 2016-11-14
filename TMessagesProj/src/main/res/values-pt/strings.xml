@@ -68,11 +68,9 @@
     <string name="ChannelBlockedUsers">Usuários bloqueados</string>
     <string name="ChannelAdministrators">Administradores</string>
     <string name="ChannelLeaveAlert">Você tem certeza que deseja sair do canal?</string>
-    <string name="ActionCreateChannel">Canal criado</string>
     <string name="ActionChannelChangedPhoto">Foto do canal alterada</string>
     <string name="ActionChannelRemovedPhoto">Foto do canal removida</string>
     <string name="ActionChannelChangedTitle">Nome do canal alterado para un2</string>
-    <string name="ChannelJoinTo">Você deseja entrar no canal \'%1$s\'?</string>
     <string name="ChannelCantOpenPrivate">Desculpe, esta conversa não pode mais ser acessada.</string>
     <string name="ChannelCantOpenBanned">Infelizmente você foi banido de participar de grupos públicos.</string>
     <string name="ChannelCantOpenNa">Desculpe, esse chat não está mais acessível.</string>
@@ -108,7 +106,6 @@
     <!--broadcasts-->
     <string name="NewBroadcastList">Nova Lista de Transmissão</string>
     <string name="EnterListName">Digite o nome da lista</string>
-    <string name="YouCreatedBroadcastList">Você criou uma lista de transmissão</string>
     <string name="AddRecipient">Adicionar destinatário</string>
     <string name="KickFromBroadcast">Remover da lista de transmissão</string>
     <!--audio view-->
@@ -177,7 +174,6 @@
     <string name="TapHereGifs">Toque aqui para acessar os GIFs salvos</string>
     <string name="UnpinMessageAlert">Você deseja desafixar essa mensagem?</string>
     <string name="ClearRecentEmoji">Limpar emojis recentes?</string>
-    <string name="ReportChat">Reportar</string>
     <string name="PinnedMessage">Mensagem Fixada</string>
     <string name="EditedMessage">editado</string>
     <string name="AttachBotsHelp">Desça para ver os bots</string>
@@ -252,7 +248,6 @@
     <string name="GroupName">Nome do grupo</string>
     <string name="MembersCount">%1$d/%2$d membros</string>
     <string name="JoinToGroup">Você deseja entrar no chat \'%1$s\'?</string>
-    <string name="JoinToGroupErrorFull">Desculpe, este grupo já está lotado.</string>
     <string name="JoinToGroupErrorNotExist">Desculpe, esse chat não existe.</string>
     <string name="LinkCopied">Link copiado para área de transferência</string>
     <string name="InviteToGroupByLink">Convidar para o Grupo via Link</string>
@@ -312,7 +307,6 @@
     <string name="SendSticker">ENVIAR STICKER</string>
     <string name="TooMuchStickersets">Desculpe, você alcançou o limite máximo de pacotes de sticker.</string>
     <!--settings view-->
-    <string name="ResetNotificationsText">Restaurar todas as configurações de notificação</string>
     <string name="TextSize">Tamanho do texto nas mensagens</string>
     <string name="EnableAnimations">Permitir Animações</string>
     <string name="Unblock">Desbloquear</string>
@@ -395,8 +389,6 @@
     <string name="SmartNotificationsTimes">vezes</string>
     <string name="SmartNotificationsWithin">a cada</string>
     <string name="SmartNotificationsMinutes">minutos</string>
-    <string name="SecretWebPage">Pré-visualização de Link</string>
-    <string name="SecretChat">Chats secretos</string>
     <string name="DirectShare">Compartilhamento Direto</string>
     <string name="DirectShareInfo">Mostrar chats recentes no menu compartilhar</string>
     <!--cache view-->
@@ -641,9 +633,6 @@
     <string name="CodeExpired">O código expirou. Por favor, identifique-se novamente.</string>
     <string name="FloodWait">Muitas tentativas. Por favor, tente novamente mais tarde.</string>
     <string name="FloodWaitTime">Muitas tentativas, por favor tente novamente em %1$s</string>
-    <string name="InvalidCode">Código inválido</string>
-    <string name="InvalidFirstName">Nome inválido</string>
-    <string name="InvalidLastName">Sobrenome inválido</string>
     <string name="Loading">Carregando...</string>
     <string name="NoPlayerInstalled">Você não possui um reprodutor de vídeo, instale um para continuar</string>
     <string name="NoMailInstalled">Por favor, envie um email para sms@stel.com e conte-nos sobre seu problema.</string>
