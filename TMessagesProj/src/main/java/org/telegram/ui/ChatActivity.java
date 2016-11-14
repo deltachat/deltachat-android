@@ -7017,6 +7017,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
 
                     @Override
                     public void didPressedUserAvatar(ChatMessageCell cell, TLRPC.User user) {
+                        // press on the avatar beside the message
                         if (actionBar.isActionModeShowed()) {
                             processRowSelect(cell);
                             return;
