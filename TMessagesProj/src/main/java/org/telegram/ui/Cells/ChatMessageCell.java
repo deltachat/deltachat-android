@@ -56,7 +56,6 @@ import org.telegram.ui.Components.SeekBarWaveform;
 import org.telegram.ui.Components.StaticLayoutEx;
 import org.telegram.ui.ActionBar.Theme;
 import org.telegram.ui.Components.TypefaceSpan;
-import org.telegram.ui.Components.URLSpanBotCommand;
 import org.telegram.ui.Components.URLSpanNoUnderline;
 import org.telegram.ui.PhotoViewer;
 
@@ -465,7 +464,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                         Spannable buffer = (Spannable) currentMessageObject.messageText;
                         ClickableSpan[] link = buffer.getSpans(off, off, ClickableSpan.class);
                         boolean ignore = false;
-                        if (link.length == 0 || link.length != 0 && link[0] instanceof URLSpanBotCommand && !URLSpanBotCommand.enabled) {
+                        if ( link.length == 0 ) {
                             ignore = true;
                         }
                         if (!ignore) {
@@ -558,7 +557,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                             Spannable buffer = (Spannable) currentMessageObject.caption;
                             ClickableSpan[] link = buffer.getSpans(off, off, ClickableSpan.class);
                             boolean ignore = false;
-                            if (link.length == 0 || link.length != 0 && link[0] instanceof URLSpanBotCommand && !URLSpanBotCommand.enabled) {
+                            if (link.length == 0 ) {
                                 ignore = true;
                             }
                             if (!ignore) {
@@ -626,7 +625,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                             Spannable buffer = (Spannable) currentMessageObject.linkDescription;
                             ClickableSpan[] link = buffer.getSpans(off, off, ClickableSpan.class);
                             boolean ignore = false;
-                            if (link.length == 0 || link.length != 0 && link[0] instanceof URLSpanBotCommand && !URLSpanBotCommand.enabled) {
+                            if (link.length == 0 ) {
                                 ignore = true;
                             }
                             if (!ignore) {

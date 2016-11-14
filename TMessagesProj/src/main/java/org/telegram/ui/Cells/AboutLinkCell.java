@@ -95,7 +95,7 @@ public class AboutLinkCell extends FrameLayout {
         }
         oldText = text;
         stringBuilder = new SpannableStringBuilder(oldText);
-        MessageObject.addLinks(stringBuilder, false);
+        MessageObject.addLinks(stringBuilder);
         Emoji.replaceEmoji(stringBuilder, textPaint.getFontMetricsInt(), AndroidUtilities.dp(20), false);
         requestLayout();
         if (resId == 0) {

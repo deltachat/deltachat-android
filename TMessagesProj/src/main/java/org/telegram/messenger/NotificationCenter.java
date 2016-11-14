@@ -16,7 +16,7 @@ public class NotificationCenter {
 
     private static int totalEvents = 1;
 
-    public static final int didReceivedNewMessages = totalEvents++; // I'm not sure if Telegram uses the resulting codes here and there, so better leave the values alone
+    public static final int didReceivedNewMessages = totalEvents++;
     public static final int updateInterfaces = totalEvents++;
     public static final int dialogsNeedReload = totalEvents++;
     public static final int closeChats = totalEvents++;
@@ -50,19 +50,15 @@ public class NotificationCenter {
     public static final int recentImagesDidLoaded = totalEvents++;
     public static final int replaceMessagesObjects = totalEvents++;
     public static final int didSetPasscode = totalEvents++;
-    public static final int didSetTwoStepPassword = totalEvents++;
     public static final int screenStateChanged = totalEvents++;
     public static final int didLoadedReplyMessages = totalEvents++;
     public static final int didLoadedPinnedMessage = totalEvents++;
-    public static final int newSessionReceived = totalEvents++;
     public static final int didReceivedWebpages = totalEvents++;
     public static final int didReceivedWebpagesInUpdates = totalEvents++;
     public static final int stickersDidLoaded = totalEvents++;
     public static final int didReplacedPhotoInMemCache = totalEvents++;
     public static final int messagesReadContent = totalEvents++;
-    public static final int botInfoDidLoaded = totalEvents++;
     public static final int userInfoDidLoaded = totalEvents++;
-    public static final int botKeyboardDidLoaded = totalEvents++;
     public static final int chatSearchResultsAvailable = totalEvents++;
     public static final int musicDidLoaded = totalEvents++;
     public static final int needShowAlert = totalEvents++;

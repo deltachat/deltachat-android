@@ -214,13 +214,6 @@ public class TLRPC {
 		public byte[] iv;
 	}
 
-	public static class BotInfo extends TLObject {
-		public int user_id;
-		public String description;
-		public ArrayList<TL_botCommand> commands = new ArrayList<>();
-		public int version;
-	}
-
 	public static class ChatFull extends TLObject {
 		public int flags;
 		public boolean can_view_participants;
@@ -229,7 +222,6 @@ public class TLRPC {
 		public int participants_count;
 		public int admins_count;
 		public int kicked_count;
-		public ArrayList<BotInfo> bot_info = new ArrayList<>();
 		public int migrated_from_chat_id;
 		public int migrated_from_max_id;
 		public int pinned_msg_id;
@@ -583,9 +575,6 @@ public class TLRPC {
 	}
 
 	public static class TL_messageEntityTextUrl extends MessageEntity {
-	}
-
-	public static class TL_messageEntityBotCommand extends MessageEntity {
 	}
 
 	public static class TL_messageEntityEmail extends MessageEntity {

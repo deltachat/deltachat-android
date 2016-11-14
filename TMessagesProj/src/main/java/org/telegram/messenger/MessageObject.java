@@ -20,12 +20,10 @@ import android.text.TextUtils;
 import android.text.style.URLSpan;
 import android.text.util.Linkify;
 
-import org.telegram.tgnet.ConnectionsManager;
 import org.telegram.tgnet.TLObject;
 import org.telegram.tgnet.TLRPC;
 import org.telegram.ui.ActionBar.Theme;
 import org.telegram.ui.Components.TypefaceSpan;
-import org.telegram.ui.Components.URLSpanBotCommand;
 import org.telegram.ui.Components.URLSpanNoUnderline;
 import org.telegram.ui.Components.URLSpanNoUnderlineBold;
 import org.telegram.ui.Components.URLSpanReplacement;
@@ -755,12 +753,12 @@ public class MessageObject {
                 } catch (Exception e) {
                     FileLog.e("tmessages", e);
                 }
-                addUsernamesAndHashtags(caption, true);
+                addUsernamesAndHashtags(caption);
             }
         }
     }
 
-    private static void addUsernamesAndHashtags(CharSequence charSequence, boolean botCommands) {
+    private static void addUsernamesAndHashtags(CharSequence charSequence) {
         try {
             if (urlPattern == null) {
                 urlPattern = Pattern.compile("(^|\\s)/[a-zA-Z@\\d_]{1,255}|(^|\\s)@[a-zA-Z\\d_]{1,32}|(^|\\s)#[\\w\\.]+");
@@ -774,9 +772,7 @@ public class MessageObject {
                 }
                 URLSpanNoUnderline url = null;
                 if (charSequence.charAt(start) == '/') {
-                    if (botCommands) {
-                        url = new URLSpanBotCommand(charSequence.subSequence(start, end).toString());
-                    }
+                    ;
                 } else {
                     url = new URLSpanNoUnderline(charSequence.subSequence(start, end).toString());
                 }
@@ -789,12 +785,7 @@ public class MessageObject {
         }
     }
 
-
     public static void addLinks(CharSequence messageText) {
-        addLinks(messageText, true);
-    }
-
-    public static void addLinks(CharSequence messageText, boolean botCommands) {
         if (messageText instanceof Spannable && containsUrls(messageText)) {
             if (messageText.length() < 200) {
                 try {
@@ -809,7 +800,7 @@ public class MessageObject {
                     FileLog.e("tmessages", e);
                 }
             }
-            addUsernamesAndHashtags(messageText, botCommands);
+            addUsernamesAndHashtags(messageText);
         }
     }
 
@@ -893,9 +884,7 @@ public class MessageObject {
                     spannable.setSpan(new URLSpanUserMention("" + ((TLRPC.TL_inputMessageEntityMentionName) entity).user_id.user_id), entity.offset, entity.offset + entity.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
                 } else if (!useManualParse) {
                     String url = messageOwner.message.substring(entity.offset, entity.offset + entity.length);
-                    if (entity instanceof TLRPC.TL_messageEntityBotCommand) {
-                        spannable.setSpan(new URLSpanBotCommand(url), entity.offset, entity.offset + entity.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-                    } else if (entity instanceof TLRPC.TL_messageEntityHashtag || entity instanceof TLRPC.TL_messageEntityMention) {
+                    if (entity instanceof TLRPC.TL_messageEntityHashtag || entity instanceof TLRPC.TL_messageEntityMention) {
                         spannable.setSpan(new URLSpanNoUnderline(url), entity.offset, entity.offset + entity.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
                     } else if (entity instanceof TLRPC.TL_messageEntityEmail) {
                         spannable.setSpan(new URLSpanReplacement("mailto:" + url), entity.offset, entity.offset + entity.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);

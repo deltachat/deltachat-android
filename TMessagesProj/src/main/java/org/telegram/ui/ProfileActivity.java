@@ -128,7 +128,6 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
 
     private TLRPC.EncryptedChat currentEncryptedChat;
     private TLRPC.Chat currentChat;
-    private TLRPC.BotInfo botInfo;
 
     private int totalMediaCount = -1;
     private int totalMediaCountMerge = -1;
@@ -228,7 +227,6 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
             NotificationCenter.getInstance().addObserver(this, NotificationCenter.encryptedChatCreated);
             NotificationCenter.getInstance().addObserver(this, NotificationCenter.encryptedChatUpdated);
             NotificationCenter.getInstance().addObserver(this, NotificationCenter.blockedUsersDidLoaded);
-            NotificationCenter.getInstance().addObserver(this, NotificationCenter.botInfoDidLoaded);
             NotificationCenter.getInstance().addObserver(this, NotificationCenter.userInfoDidLoaded);
             if (currentEncryptedChat != null) {
                 NotificationCenter.getInstance().addObserver(this, NotificationCenter.didReceivedNewMessages);
@@ -324,7 +322,6 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
             NotificationCenter.getInstance().removeObserver(this, NotificationCenter.encryptedChatCreated);
             NotificationCenter.getInstance().removeObserver(this, NotificationCenter.encryptedChatUpdated);
             NotificationCenter.getInstance().removeObserver(this, NotificationCenter.blockedUsersDidLoaded);
-            NotificationCenter.getInstance().removeObserver(this, NotificationCenter.botInfoDidLoaded);
             NotificationCenter.getInstance().removeObserver(this, NotificationCenter.userInfoDidLoaded);
             //MessagesController.getInstance().cancelLoadFullUser(user_id);
             if (currentEncryptedChat != null) {
@@ -485,10 +482,10 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                         }
                         Intent intent = new Intent(Intent.ACTION_SEND);
                         intent.setType("text/plain");
-                        String about = MessagesController.getInstance().getUserAbout(botInfo.user_id);
+                        /*String about = MessagesController.getInstance().getUserAbout(botInfo.user_id);
                         if (botInfo != null && about != null) {
                             intent.putExtra(Intent.EXTRA_TEXT, String.format("%s https://telegram.me/%s", about, user.username));
-                        } else {
+                        } else*/ {
                             intent.putExtra(Intent.EXTRA_TEXT, String.format("https://telegram.me/%s", user.username));
                         }
                         startActivityForResult(Intent.createChooser(intent, LocaleController.getString("BotShare", R.string.BotShare)), 500);
@@ -1022,12 +1019,12 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                 @Override
                 public void onClick(DialogInterface dialogInterface, int i) {
                     try {
-                        String about;
+                        String about = null;
                         if (position == channelInfoRow) {
                             about = info.about;
-                        } else {
+                        } /*else {
                             about = MessagesController.getInstance().getUserAbout(botInfo.user_id);
-                        }
+                        }*/
                         if (about == null) {
                             return;
                         }
@@ -1465,15 +1462,6 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
             }
         } else if (id == NotificationCenter.closeChats) {
             removeSelfFromStack();
-        } else if (id == NotificationCenter.botInfoDidLoaded) {
-            TLRPC.BotInfo info = (TLRPC.BotInfo) args[0];
-            if (info.user_id == user_id) {
-                botInfo = info;
-                updateRowsIds();
-                if (listAdapter != null) {
-                    listAdapter.notifyDataSetChanged();
-                }
-            }
         } else if (id == NotificationCenter.userInfoDidLoaded) {
             int uid = (Integer) args[0];
             if (uid == user_id) {

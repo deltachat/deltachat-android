@@ -24,7 +24,6 @@ import org.telegram.messenger.support.widget.RecyclerView;
 import org.telegram.tgnet.ConnectionsManager;
 import org.telegram.tgnet.TLRPC;
 import org.telegram.ui.ActionBar.BaseFragment;
-import org.telegram.ui.Cells.BotSwitchCell;
 import org.telegram.ui.Cells.ContextLinkCell;
 import org.telegram.ui.Cells.MentionCell;
 
@@ -59,7 +58,7 @@ public class MentionsAdapter extends BaseSearchAdapterRecycler {
     //private TLRPC.TL_inlineBotSwitchPM searchResultBotContextSwitch;
     //private HashMap<String, TLRPC.BotInlineResult> searchResultBotContextById;
     private MentionsAdapterDelegate delegate;
-    private HashMap<Integer, TLRPC.BotInfo> botInfo;
+    //private HashMap<Integer, TLRPC.BotInfo> botInfo;
     private int resultStartPosition;
     private boolean allowNewMentions = true;
     private int resultLength;
@@ -158,16 +157,6 @@ public class MentionsAdapter extends BaseSearchAdapterRecycler {
     public void setNeedBotContext(boolean value) {
         needBotContext = value;
     }
-
-    public void setBotInfo(HashMap<Integer, TLRPC.BotInfo> info) {
-        botInfo = info;
-    }
-
-    /*
-    public void setBotsCount(int count) {
-        botsCount = count;
-    }
-    */
 
     @Override
     public void clearRecentHashtags() {
@@ -557,12 +546,12 @@ public class MentionsAdapter extends BaseSearchAdapterRecycler {
                     resultLength = result.length() + 1;
                     result.insert(0, ch);
                     break;
-                } else if (a == 0 && botInfo != null && ch == '/') {
+                } /*else if (a == 0 && botInfo != null && ch == '/') {
                     foundType = 2;
                     resultStartPosition = a;
                     resultLength = result.length() + 1;
                     break;
-                }
+                }*/
             }
             if (!(ch >= '0' && ch <= '9' || ch >= 'a' && ch <= 'z' || ch >= 'A' && ch <= 'Z' || ch == '_')) {
                 hasIllegalUsernameCharacters = true;
@@ -678,7 +667,7 @@ public class MentionsAdapter extends BaseSearchAdapterRecycler {
             ArrayList<String> newResultHelp = new ArrayList<>();
             ArrayList<TLRPC.User> newResultUsers = new ArrayList<>();
             String command = result.toString().toLowerCase();
-            for (HashMap.Entry<Integer, TLRPC.BotInfo> entry : botInfo.entrySet()) {
+            /*for (HashMap.Entry<Integer, TLRPC.BotInfo> entry : botInfo.entrySet()) {
                 TLRPC.BotInfo botInfo = entry.getValue();
                 for (int a = 0; a < botInfo.commands.size(); a++) {
                     TLRPC.TL_botCommand botCommand = botInfo.commands.get(a);
@@ -688,7 +677,7 @@ public class MentionsAdapter extends BaseSearchAdapterRecycler {
                         newResultUsers.add(MessagesController.getInstance().getUser(botInfo.user_id));
                     }
                 }
-            }
+            }*/
             searchResultHashtags = null;
             searchResultUsernames = null;
             searchResultCommands = newResult;
@@ -799,8 +788,8 @@ public class MentionsAdapter extends BaseSearchAdapterRecycler {
                     delegate.onContextClick(cell.getResult());
                 }
             });
-        } else if (viewType == 2) {
-            view = new BotSwitchCell(mContext);
+        //} else if (viewType == 2) {
+        //    view = new BotSwitchCell(mContext);
         } else {
             view = new MentionCell(mContext);
             ((MentionCell) view).setIsDarkTheme(isDarkTheme);

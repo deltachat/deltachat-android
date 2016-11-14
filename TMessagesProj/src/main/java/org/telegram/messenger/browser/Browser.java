@@ -19,21 +19,13 @@ import org.telegram.ui.LaunchActivity;
 public class Browser {
 
     public static void openUrl(Context context, String url) {
-        openUrl(context, Uri.parse(url), true);
-    }
-
-    public static void openUrl(Context context, Uri uri) {
-        openUrl(context, uri, true);
-    }
-
-    public static void openUrl(Context context, String url, boolean allowCustom) {
         if (context == null || url == null) {
             return;
         }
-        openUrl(context, Uri.parse(url), allowCustom);
+        openUrl(context, Uri.parse(url));
     }
 
-    public static void openUrl(Context context, Uri uri, boolean allowCustom) {
+    public static void openUrl(Context context, Uri uri) {
         if (context == null || uri == null) {
             return;
         }
