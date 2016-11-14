@@ -16,11 +16,11 @@ public class ChatObject {
     public static final int CHAT_TYPE_BROADCAST = 1;
 
     public static boolean isLeftFromChat(TLRPC.Chat chat) {
-        return chat == null || chat instanceof TLRPC.TL_chatEmpty || chat instanceof TLRPC.TL_chatForbidden || chat instanceof TLRPC.TL_channelForbidden || chat.left || chat.deactivated;
+        return chat == null || chat instanceof TLRPC.TL_chatEmpty || chat.left || chat.deactivated;
     }
 
     public static boolean isNotInChat(TLRPC.Chat chat) {
-        return chat == null || chat instanceof TLRPC.TL_chatEmpty || chat instanceof TLRPC.TL_chatForbidden || chat instanceof TLRPC.TL_channelForbidden || chat.left || chat.kicked || chat.deactivated;
+        return chat == null || chat instanceof TLRPC.TL_chatEmpty || chat.left || chat.kicked || chat.deactivated;
     }
 
     public static boolean isChannel(TLRPC.Chat chat) {

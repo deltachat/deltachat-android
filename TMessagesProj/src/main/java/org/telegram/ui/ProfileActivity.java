@@ -892,7 +892,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                             finishFragment();
                         } else {
                             TLRPC.User user = MessagesController.getInstance().getUser(user_id);
-                            if (user == null || user instanceof TLRPC.TL_userEmpty) {
+                            if (user == null ) {
                                 return;
                             }
                             Bundle args = new Bundle();
@@ -1488,12 +1488,14 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                 ArrayList<MessageObject> arr = (ArrayList<MessageObject>) args[1];
                 for (int a = 0; a < arr.size(); a++) {
                     MessageObject obj = arr.get(a);
+                    /*
                     if (currentEncryptedChat != null && obj.messageOwner.action != null && obj.messageOwner.action instanceof TLRPC.TL_messageEncryptedAction && obj.messageOwner.action.encryptedAction instanceof TLRPC.TL_decryptedMessageActionSetMessageTTL) {
                         TLRPC.TL_decryptedMessageActionSetMessageTTL action = (TLRPC.TL_decryptedMessageActionSetMessageTTL) obj.messageOwner.action.encryptedAction;
                         if (listAdapter != null) {
                             listAdapter.notifyDataSetChanged();
                         }
                     }
+                    */
                 }
             }
         }
@@ -1937,10 +1939,12 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
             sectionRow = rowCount++;
             settingsNotificationsRow = rowCount++;
             sharedMediaRow = rowCount++;
+            /*
             if (currentEncryptedChat instanceof TLRPC.TL_encryptedChat) {
                 settingsTimerRow = rowCount++;
                 settingsKeyRow = rowCount++;
             }
+            */
             if (user != null && !user.bot && currentEncryptedChat == null && user.id != UserConfig.getClientUserId()) {
                 startSecretChatRow = rowCount++;
             }
@@ -2511,13 +2515,13 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                                 userCell.setIsAdmin(0);
                             }
                         } else*/ {
-                            if (part instanceof TLRPC.TL_chatParticipantCreator) {
+                            /*if (part instanceof TLRPC.TL_chatParticipantCreator) {
                                 userCell.setIsAdmin(1);
                             } else if (currentChat.admins_enabled && part instanceof TLRPC.TL_chatParticipantAdmin) {
                                 userCell.setIsAdmin(2);
-                            } else {
+                            } else {*/
                                 userCell.setIsAdmin(0);
-                            }
+                            /*}*/
                         }
                         userCell.setData(MessagesController.getInstance().getUser(part.user_id), null, null, i == emptyRowChat2 + 1 ? R.drawable.menu_newgroup : 0);
                     }

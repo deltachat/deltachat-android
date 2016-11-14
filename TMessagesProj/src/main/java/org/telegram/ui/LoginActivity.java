@@ -2377,12 +2377,12 @@ public class LoginActivity extends BaseFragment {
                 return;
             }
             nextPressed = true;
-            TLRPC.TL_auth_signUp req = new TLRPC.TL_auth_signUp();
+            /*TLRPC.TL_auth_signUp req = new TLRPC.TL_auth_signUp();
             req.phone_code = phoneCode;
             req.phone_code_hash = phoneHash;
             req.phone_number = requestPhone;
             req.first_name = firstNameField.getText().toString();
-            req.last_name = lastNameField.getText().toString();
+            req.last_name = lastNameField.getText().toString();*/
             needShowProgress();
             /*ConnectionsManager.getInstance().sendRequest(req, new RequestDelegate() {
                 @Override

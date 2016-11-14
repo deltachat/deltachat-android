@@ -332,12 +332,6 @@ public class TLRPC {
 	public static class TL_userContact_old2 extends User {
 	}
 
-	public static class TL_userSelf_old3 extends User {
-	}
-
-	public static class TL_userEmpty extends User {
-	}
-
 	public static class MessageAction extends TLObject {
 		public String title;
 		public String address;
@@ -695,12 +689,6 @@ public class TLRPC {
 	public static class TL_chatParticipant extends ChatParticipant {
 	}
 
-	public static class TL_chatParticipantCreator extends ChatParticipant {
-	}
-
-	public static class TL_chatParticipantAdmin extends ChatParticipant {
-	}
-
 	public static class Chat extends TLObject {
 		public int flags;
 		public boolean creator;
@@ -720,7 +708,6 @@ public class TLRPC {
 		public boolean verified;
 		public boolean megagroup;
 		public boolean left;
-		public long access_hash;
 		public String username;
 		public boolean restricted;
 		public boolean democracy;
@@ -729,12 +716,6 @@ public class TLRPC {
 		public boolean min;
 		public InputChannel migrated_to;
 		public String address;
-	}
-
-	public static class TL_channelForbidden extends Chat {
-	}
-
-	public static class TL_chatForbidden extends Chat {
 	}
 
 	public static class StickerSet extends TLObject {
@@ -898,13 +879,7 @@ public class TLRPC {
 	public static class TL_inputPeerUser extends InputPeer {
 	}
 
-	public static class TL_inputPeerChat extends InputPeer {
-	}
-
 	public static class TL_inputPeerEmpty extends InputPeer {
-	}
-
-	public static class TL_inputPeerChannel extends InputPeer {
 	}
 
 	public static class TL_topPeer extends TLObject {
@@ -918,14 +893,6 @@ public class TLRPC {
 	}
 
 	public static class TL_inputPhotoCropAuto extends InputPhotoCrop {
-	}
-
-	public static class TL_auth_signUp extends TLObject {
-		public String phone_number;
-		public String phone_code_hash;
-		public String phone_code;
-		public String first_name;
-		public String last_name;
 	}
 
 	public static class TL_contacts_importContacts extends TLObject {

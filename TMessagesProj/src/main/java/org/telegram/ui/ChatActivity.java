@@ -852,7 +852,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 if (info != null) {
                     count = info.participants.participants.size();
                 }
-                if (count == 0 || currentChat.deactivated || currentChat.left || currentChat instanceof TLRPC.TL_chatForbidden || info != null && info.participants instanceof TLRPC.TL_chatParticipantsForbidden) {
+                if ((count == 0) || currentChat.deactivated || currentChat.left || ((info != null) && (info.participants instanceof TLRPC.TL_chatParticipantsForbidden))) {
                     avatarContainer.setEnabled(false);
                 }
             }

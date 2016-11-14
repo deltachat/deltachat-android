@@ -80,7 +80,7 @@ public class MrMailbox {
         ret.media_unread  = ret.unread;
         ret.flags         = 0; // posible flags: MESSAGE_FLAG_HAS_FROM_ID, however, this seems to be read only
         ret.post          = false; // ? true=avatar wird in gruppen nicht angezeigt, wird aber in isFromUser() auch überprüft...
-        ret.out           = ret.from_id==1; // true=outgoing message, read eg. in MessageObject.isOutOwner()
+        ret.out           = ret.from_id==MR_CONTACT_ID_SELF; // true=outgoing message, read eg. in MessageObject.isOutOwner()
         ret.created_by_mr = true;
 
         if( type == MrMailbox.MR_MSG_TEXT ) {
@@ -293,6 +293,7 @@ public class MrMailbox {
     public final static int      MR_CHAT_NORMAL             = 100;
     public final static int      MR_CHAT_GROUP              = 120;
 
+    public final static int      MR_CONTACT_ID_SELF         = 1;
     public final static int      MR_CHAT_ID_STRANGERS       = 1;
 
     public final static int      MR_MSG_UNDEFINED           =  0;

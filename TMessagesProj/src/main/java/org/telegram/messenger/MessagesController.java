@@ -222,7 +222,7 @@ public class MessagesController implements NotificationCenter.NotificationCenter
 
     public static TLRPC.InputPeer getInputPeer(int id) {
         TLRPC.InputPeer inputPeer;
-        if (id < 0) {
+        /*if (id < 0) {
             TLRPC.Chat chat = getInstance().getChat(-id);
             if (ChatObject.isChannel(chat)) {
                 inputPeer = new TLRPC.TL_inputPeerChannel();
@@ -232,7 +232,7 @@ public class MessagesController implements NotificationCenter.NotificationCenter
                 inputPeer = new TLRPC.TL_inputPeerChat();
                 inputPeer.chat_id = -id;
             }
-        } else {
+        } else */ {
             TLRPC.User user = getInstance().getUser(id);
             inputPeer = new TLRPC.TL_inputPeerUser();
             inputPeer.user_id = id;
