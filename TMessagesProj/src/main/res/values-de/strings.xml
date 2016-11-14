@@ -801,7 +801,7 @@
     <string name="LastSeenHours_other">zul. online vor %1$d Stunden</string>
     <!--date formatters-->
     <string name="formatterMonthYear">MMMM yyyy</string>
-    <string name="formatterMonth">dd MMM</string>
+    <string name="formatterMonth">d. MMM</string>
     <string name="formatterYear">dd.MM.yyyy</string>
     <string name="chatDate">d MMMM</string>
     <string name="chatFullDate">d MMMM, yyyy</string>
