@@ -59,10 +59,8 @@ import org.telegram.ui.Components.BackupImageView;
 import org.telegram.ui.Components.ChatActivityEnterView;
 import org.telegram.ui.Components.LayoutHelper;
 import org.telegram.ui.Components.PopupAudioView;
-import org.telegram.ui.Components.RecordStatusDrawable;
 import org.telegram.ui.Components.SizeNotifierFrameLayout;
 import org.telegram.ui.ActionBar.Theme;
-import org.telegram.ui.Components.TypingDotsDrawable;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -86,8 +84,8 @@ public class PopupNotificationActivity extends Activity implements NotificationC
     private ArrayList<ViewGroup> imageViews = new ArrayList<>();
     private ArrayList<ViewGroup> audioViews = new ArrayList<>();
     private VelocityTracker velocityTracker = null;
-    private TypingDotsDrawable typingDotsDrawable;
-    private RecordStatusDrawable recordStatusDrawable;
+    //private TypingDotsDrawable typingDotsDrawable;
+    //private RecordStatusDrawable recordStatusDrawable;
 
     private int classGuid;
     private TLRPC.User currentUser;
@@ -175,14 +173,14 @@ public class PopupNotificationActivity extends Activity implements NotificationC
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.contactsDidLoaded);
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.emojiDidLoaded);
 
-        typingDotsDrawable = new TypingDotsDrawable();
-        recordStatusDrawable = new RecordStatusDrawable();
+        //typingDotsDrawable = new TypingDotsDrawable();
+        //recordStatusDrawable = new RecordStatusDrawable();
 
         SizeNotifierFrameLayout contentView = new SizeNotifierFrameLayout(this) {
             @Override
             protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-                int widthMode = MeasureSpec.getMode(widthMeasureSpec);
-                int heightMode = MeasureSpec.getMode(heightMeasureSpec);
+                //int widthMode = MeasureSpec.getMode(widthMeasureSpec);
+                //int heightMode = MeasureSpec.getMode(heightMeasureSpec);
                 int widthSize = MeasureSpec.getSize(widthMeasureSpec);
                 int heightSize = MeasureSpec.getSize(heightMeasureSpec);
 
@@ -1045,7 +1043,7 @@ public class PopupNotificationActivity extends Activity implements NotificationC
         CharSequence printString = MessagesController.getInstance().printingStrings.get(currentMessageObject.getDialogId());
         if (printString == null || printString.length() == 0) {
             lastPrintString = null;
-            setTypingAnimation(false);
+            //setTypingAnimation(false);
             TLRPC.User user = MessagesController.getInstance().getUser(currentUser.id);
             if (user != null) {
                 currentUser = user;
@@ -1054,7 +1052,7 @@ public class PopupNotificationActivity extends Activity implements NotificationC
         } else {
             lastPrintString = printString;
             onlineTextView.setText(printString);
-            setTypingAnimation(true);
+            //setTypingAnimation(true);
         }
     }
 
@@ -1087,6 +1085,7 @@ public class PopupNotificationActivity extends Activity implements NotificationC
         }
     }
 
+    /*
     private void setTypingAnimation(boolean start) {
         if (actionBar == null) {
             return;
@@ -1115,6 +1114,7 @@ public class PopupNotificationActivity extends Activity implements NotificationC
             recordStatusDrawable.stop();
         }
     }
+    */
 
     @Override
     public void onBackPressed() {
