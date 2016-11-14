@@ -278,11 +278,6 @@ public class TLRPC {
     public static class TL_webPage extends WebPage {
     }
 
-	public static class TL_botCommand extends TLObject {
-		public String command;
-		public String description;
-	}
-
     public static class InputFileLocation extends TLObject {
 		public long id;
 		public long access_hash;
@@ -622,9 +617,6 @@ public class TLRPC {
 	}
 
 	public static class TL_photoEmpty extends Photo {
-	}
-
-	public static class TL_encryptedChat extends EncryptedChat {
 	}
 
 	public static class TL_contact extends TLObject {

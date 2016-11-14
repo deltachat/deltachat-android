@@ -33,9 +33,6 @@ public class NotificationCenter {
     public static final int chatInfoCantLoad = totalEvents++;
     public static final int mediaDidLoaded = totalEvents++;
     public static final int mediaCountDidLoaded = totalEvents++;
-    public static final int encryptedChatUpdated = totalEvents++;
-    public static final int messagesReadEncrypted = totalEvents++;
-    public static final int encryptedChatCreated = totalEvents++;
     public static final int dialogPhotosLoaded = totalEvents++;
     public static final int removeAllMessagesFromDialog = totalEvents++;
     public static final int notificationsSettingsUpdated = totalEvents++;

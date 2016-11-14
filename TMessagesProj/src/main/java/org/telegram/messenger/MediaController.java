@@ -1155,43 +1155,13 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
                     @Override
                     public void run() {
                         NotificationCenter.getInstance().postNotificationName(NotificationCenter.screenshotTook);
-                        checkScreenshots(screenshotDates);
+                        //checkScreenshots(screenshotDates);
                     }
                 });
             }
         } catch (Exception e) {
             FileLog.e("tmessages", e);
         }
-    }
-
-    private void checkScreenshots(ArrayList<Long> dates) {
-        if (dates == null || dates.isEmpty() || lastSecretChatEnterTime == 0 || lastSecretChat == null || !(lastSecretChat instanceof TLRPC.TL_encryptedChat)) {
-            return;
-        }
-        long dt = 2000;
-        boolean send = false;
-        for (Long date : dates) {
-            if (lastMediaCheckTime != 0 && date <= lastMediaCheckTime) {
-                continue;
-            }
-
-            if (date >= lastSecretChatEnterTime) {
-                if (lastSecretChatLeaveTime == 0 || date <= lastSecretChatLeaveTime + dt) {
-                    lastMediaCheckTime = Math.max(lastMediaCheckTime, date);
-                    send = true;
-                }
-            }
-        }
-        if (send) {
-            //SecretChatHelper.getInstance().sendScreenshotMessage(lastSecretChat, lastSecretChatVisibleMessages, null);
-        }
-    }
-
-    public void setLastEncryptedChatParams(long enterTime, long leaveTime, TLRPC.EncryptedChat encryptedChat, ArrayList<Long> visibleMessages) {
-        lastSecretChatEnterTime = enterTime;
-        lastSecretChatLeaveTime = leaveTime;
-        lastSecretChat = encryptedChat;
-        lastSecretChatVisibleMessages = visibleMessages;
     }
 
     public int generateObserverTag() {

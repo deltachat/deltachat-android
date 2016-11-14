@@ -99,7 +99,6 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
         super.onFragmentCreate();
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.contactsDidLoaded);
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.updateInterfaces);
-        NotificationCenter.getInstance().addObserver(this, NotificationCenter.encryptedChatCreated);
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.closeChats);
         if (arguments != null) {
             onlyUsers = getArguments().getBoolean("onlyUsers", false);
@@ -115,8 +114,6 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
             needPhonebook = true;
         }
 
-        //ContactsController.getInstance().checkInviteText(); // EDIT BY MR
-
         return true;
     }
 
@@ -125,7 +122,6 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
         super.onFragmentDestroy();
         NotificationCenter.getInstance().removeObserver(this, NotificationCenter.contactsDidLoaded);
         NotificationCenter.getInstance().removeObserver(this, NotificationCenter.updateInterfaces);
-        NotificationCenter.getInstance().removeObserver(this, NotificationCenter.encryptedChatCreated);
         NotificationCenter.getInstance().removeObserver(this, NotificationCenter.closeChats);
         delegate = null;
     }
@@ -537,14 +533,6 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
             int mask = (Integer)args[0];
             if ((mask & MessagesController.UPDATE_MASK_AVATAR) != 0 || (mask & MessagesController.UPDATE_MASK_NAME) != 0 || (mask & MessagesController.UPDATE_MASK_STATUS) != 0) {
                 updateVisibleRows(mask);
-            }
-        } else if (id == NotificationCenter.encryptedChatCreated) {
-            if (createSecretChat && creatingChat) {
-                TLRPC.EncryptedChat encryptedChat = (TLRPC.EncryptedChat)args[0];
-                Bundle args2 = new Bundle();
-                args2.putInt("enc_id", encryptedChat.id);
-                NotificationCenter.getInstance().postNotificationName(NotificationCenter.closeChats);
-                presentFragment(new ChatActivity(args2), true);
             }
         } else if (id == NotificationCenter.closeChats) {
             if (!creatingChat) {

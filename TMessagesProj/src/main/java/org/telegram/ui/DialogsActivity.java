@@ -135,7 +135,6 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
             NotificationCenter.getInstance().addObserver(this, NotificationCenter.dialogsNeedReload);
             NotificationCenter.getInstance().addObserver(this, NotificationCenter.emojiDidLoaded);
             NotificationCenter.getInstance().addObserver(this, NotificationCenter.updateInterfaces);
-            NotificationCenter.getInstance().addObserver(this, NotificationCenter.encryptedChatUpdated);
             NotificationCenter.getInstance().addObserver(this, NotificationCenter.contactsDidLoaded);
             NotificationCenter.getInstance().addObserver(this, NotificationCenter.appDidLogout);
             NotificationCenter.getInstance().addObserver(this, NotificationCenter.openedChatChanged);
@@ -165,7 +164,6 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
             NotificationCenter.getInstance().removeObserver(this, NotificationCenter.dialogsNeedReload);
             NotificationCenter.getInstance().removeObserver(this, NotificationCenter.emojiDidLoaded);
             NotificationCenter.getInstance().removeObserver(this, NotificationCenter.updateInterfaces);
-            NotificationCenter.getInstance().removeObserver(this, NotificationCenter.encryptedChatUpdated);
             NotificationCenter.getInstance().removeObserver(this, NotificationCenter.contactsDidLoaded);
             NotificationCenter.getInstance().removeObserver(this, NotificationCenter.appDidLogout);
             NotificationCenter.getInstance().removeObserver(this, NotificationCenter.openedChatChanged);
@@ -836,8 +834,6 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
             updateVisibleRows((Integer) args[0]);
         } else if (id == NotificationCenter.appDidLogout) {
             dialogsLoaded = false;
-        } else if (id == NotificationCenter.encryptedChatUpdated) {
-            updateVisibleRows(0);
         } else if (id == NotificationCenter.contactsDidLoaded) {
             updateVisibleRows(0);
         } else if (id == NotificationCenter.openedChatChanged) {

@@ -1031,13 +1031,13 @@ public class PopupNotificationActivity extends Activity implements NotificationC
         if (currentChat != null || currentUser == null) {
             return;
         }
-        if (currentUser.id / 1000 != 777 && currentUser.id / 1000 != 333 && ContactsController.getInstance().contactsDict.get(currentUser.id) == null && (ContactsController.getInstance().contactsDict.size() != 0 || !ContactsController.getInstance().isLoadingContacts())) {
+        /*if ( currentUser.id / 1000 != 777 && currentUser.id / 1000 != 333 && ContactsController.getInstance().contactsDict.get(currentUser.id) == null && (ContactsController.getInstance().contactsDict.size() != 0 || !ContactsController.getInstance().isLoadingContacts())) {
             if (currentUser.phone != null && currentUser.phone.length() != 0) {
-                nameTextView.setText(""/*PhoneFormat.getInstance().format("+" + currentUser.phone)*/);
+                nameTextView.setText(PhoneFormat.getInstance().format("+" + currentUser.phone));
             } else {
                 nameTextView.setText(UserObject.getUserName(currentUser));
             }
-        } else {
+        } else*/ {
             nameTextView.setText(UserObject.getUserName(currentUser));
         }
         CharSequence printString = MessagesController.getInstance().printingStrings.get(currentMessageObject.getDialogId());

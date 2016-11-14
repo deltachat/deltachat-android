@@ -226,8 +226,6 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
             }
             NotificationCenter.getInstance().addObserver(this, NotificationCenter.updateInterfaces);
             NotificationCenter.getInstance().addObserver(this, NotificationCenter.contactsDidLoaded);
-            NotificationCenter.getInstance().addObserver(this, NotificationCenter.encryptedChatCreated);
-            NotificationCenter.getInstance().addObserver(this, NotificationCenter.encryptedChatUpdated);
             NotificationCenter.getInstance().addObserver(this, NotificationCenter.blockedUsersDidLoaded);
             NotificationCenter.getInstance().addObserver(this, NotificationCenter.userInfoDidLoaded);
             if (currentEncryptedChat != null) {
@@ -321,8 +319,6 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
         NotificationCenter.getInstance().removeObserver(this, NotificationCenter.closeChats);
         if (user_id != 0) {
             NotificationCenter.getInstance().removeObserver(this, NotificationCenter.contactsDidLoaded);
-            NotificationCenter.getInstance().removeObserver(this, NotificationCenter.encryptedChatCreated);
-            NotificationCenter.getInstance().removeObserver(this, NotificationCenter.encryptedChatUpdated);
             NotificationCenter.getInstance().removeObserver(this, NotificationCenter.blockedUsersDidLoaded);
             NotificationCenter.getInstance().removeObserver(this, NotificationCenter.userInfoDidLoaded);
             //MessagesController.getInstance().cancelLoadFullUser(user_id);
@@ -1401,29 +1397,6 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                             break;
                         }
                     }
-                }
-            }
-        } else if (id == NotificationCenter.encryptedChatCreated) {
-            if (creatingChat) {
-                AndroidUtilities.runOnUIThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        NotificationCenter.getInstance().removeObserver(ProfileActivity.this, NotificationCenter.closeChats);
-                        NotificationCenter.getInstance().postNotificationName(NotificationCenter.closeChats);
-                        TLRPC.EncryptedChat encryptedChat = (TLRPC.EncryptedChat) args[0];
-                        Bundle args2 = new Bundle();
-                        args2.putInt("enc_id", encryptedChat.id);
-                        presentFragment(new ChatActivity(args2), true);
-                    }
-                });
-            }
-        } else if (id == NotificationCenter.encryptedChatUpdated) {
-            TLRPC.EncryptedChat chat = (TLRPC.EncryptedChat) args[0];
-            if (currentEncryptedChat != null && chat.id == currentEncryptedChat.id) {
-                currentEncryptedChat = chat;
-                updateRowsIds();
-                if (listAdapter != null) {
-                    listAdapter.notifyDataSetChanged();
                 }
             }
         } else if (id == NotificationCenter.blockedUsersDidLoaded) {

@@ -70,7 +70,6 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
 
     public interface ChatMessageCellDelegate {
         void didPressedUserAvatar(ChatMessageCell cell, TLRPC.User user);
-        void didPressedViaBot(ChatMessageCell cell, String username);
         void didPressedChannelAvatar(ChatMessageCell cell, TLRPC.Chat chat, int postId);
         void didPressedCancelSendButton(ChatMessageCell cell);
         void didLongPressed(ChatMessageCell cell);
@@ -285,7 +284,6 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
     private String currentNameString;
 
     private TLRPC.User currentForwardUser;
-    private TLRPC.User currentViaBotUser;
     private TLRPC.Chat currentForwardChannel;
     private String currentForwardNameString;
 
@@ -978,25 +976,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                         }
                     }
                 } else if (forwardBotPressed) {
-                    if (event.getAction() == MotionEvent.ACTION_UP) {
-                        forwardBotPressed = false;
-                        playSoundEffect(SoundEffectConstants.CLICK);
-                        if (delegate != null) {
-                            delegate.didPressedViaBot(this, currentViaBotUser != null ? currentViaBotUser.username : currentMessageObject.messageOwner.via_bot_name);
-                        }
-                    } else if (event.getAction() == MotionEvent.ACTION_CANCEL) {
-                        forwardBotPressed = false;
-                    } else if (event.getAction() == MotionEvent.ACTION_MOVE) {
-                        if (drawForwardedName && forwardedNameLayout[0] != null) {
-                            if (!(x >= forwardNameX && x <= forwardNameX + forwardedNameWidth && y >= forwardNameY && y <= forwardNameY + dp(32))) {
-                                forwardBotPressed = false;
-                            }
-                        } else {
-                            if (!(x >= nameX + viaNameWidth && x <= nameX + viaNameWidth + viaWidth && y >= nameY - dp(4) && y <= nameY + dp(20))) {
-                                forwardBotPressed = false;
-                            }
-                        }
-                    }
+                    forwardBotPressed = false;
                 } else if (replyPressed) {
                     if (event.getAction() == MotionEvent.ACTION_UP) {
                         replyPressed = false;
@@ -1658,7 +1638,6 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
             currentReplyPhoto = null;
             currentUser = null;
             currentChat = null;
-            currentViaBotUser = null;
             drawNameLayout = false;
 
             resetPressedLink(-1);
