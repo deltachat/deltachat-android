@@ -729,9 +729,6 @@ public class TLRPC {
 	public static class TL_inputMessagesFilterMusic extends MessagesFilter {
 	}
 
-	public static class TL_inputMessagesFilterChatPhotos extends MessagesFilter {
-	}
-
 	public static class TL_inputMessagesFilterUrl extends MessagesFilter {
 	}
 
@@ -941,13 +938,6 @@ public class TLRPC {
         public String caption;
 		public InputGeoPoint geo_point;
 		public InputPhotoCrop crop;
-	}
-
-	public static class TL_photos_getUserPhotos extends TLObject {
-		public InputUser user_id;
-		public int offset;
-		public long max_id;
-		public int limit;
 	}
 
     public static class TL_contacts_resolveUsername extends TLObject {

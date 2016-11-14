@@ -740,7 +740,7 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
             int guid = (Integer) args[4];
             int did = (Integer) args[0];
             if (avatarsDialogId == did && classGuid == guid) {
-                boolean fromCache = (Boolean) args[3];
+                //boolean fromCache = (Boolean) args[3];
 
                 int setToImage = -1;
                 ArrayList<TLRPC.Photo> photos = (ArrayList<TLRPC.Photo>) args[5];
@@ -788,9 +788,9 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
                     imagesArrLocationsSizes.add(0, 0);
                     setImageIndex(0, true);
                 }
-                if (fromCache) {
-                    MessagesController.getInstance().loadDialogPhotos(avatarsDialogId, 0, 80, 0, false, classGuid);
-                }
+                //if (fromCache) {
+                //    MessagesController.getInstance().loadDialogPhotos(avatarsDialogId, 0, 80, 0, false, classGuid);
+                //}
             }
         } else if (id == NotificationCenter.mediaCountDidLoaded) {
             long uid = (Long) args[0];
@@ -2653,7 +2653,7 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
                     SharedMediaQuery.getMediaCount(mergeDialogId, SharedMediaQuery.MEDIA_PHOTOVIDEO, classGuid, true);
                 }
             } else if (avatarsDialogId != 0) {
-                MessagesController.getInstance().loadDialogPhotos(avatarsDialogId, 0, 80, 0, true, classGuid);
+                //MessagesController.getInstance().loadDialogPhotos(avatarsDialogId, 0, 80, 0, true, classGuid);
             }
         }
         if (currentMessageObject != null && currentMessageObject.isVideo()) {

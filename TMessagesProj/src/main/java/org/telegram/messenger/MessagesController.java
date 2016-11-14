@@ -82,10 +82,6 @@ public class MessagesController implements NotificationCenter.NotificationCenter
     private HashMap<Integer, Boolean> gettingUnknownChannels = new HashMap<>();
     private HashMap<Integer, Boolean> checkingLastMessagesDialogs = new HashMap<>();
 
-    private ArrayList<TLRPC.Updates> updatesQueueSeq = new ArrayList<>();
-    private ArrayList<TLRPC.Updates> updatesQueuePts = new ArrayList<>();
-    private ArrayList<TLRPC.Updates> updatesQueueQts = new ArrayList<>();
-    private HashMap<Integer, String> fullUsersAbout = new HashMap<>();
     private ArrayList<Integer> loadingFullUsers = new ArrayList<>();
     private ArrayList<Integer> loadedFullUsers = new ArrayList<>();
     private ArrayList<Integer> loadingFullChats = new ArrayList<>();
@@ -361,9 +357,7 @@ public class MessagesController implements NotificationCenter.NotificationCenter
         dialogs_read_inbox_max.clear();
         dialogs_read_outbox_max.clear();
         exportedChats.clear();
-        fullUsersAbout.clear();
         dialogs.clear();
-        //joiningToChannels.clear();
         channelViewsToSend.clear();
         channelViewsToReload.clear();
         dialogsServerOnly.clear();
@@ -384,9 +378,6 @@ public class MessagesController implements NotificationCenter.NotificationCenter
         Utilities.stageQueue.postRunnable(new Runnable() {
             @Override
             public void run() {
-                updatesQueueSeq.clear();
-                updatesQueuePts.clear();
-                updatesQueueQts.clear();
                 gettingUnknownChannels.clear();
                 createdDialogIds.clear();
                 gettingDifference = false;
@@ -634,19 +625,15 @@ public class MessagesController implements NotificationCenter.NotificationCenter
         }
     }
 
-    public String getUserAbout(int uid) {
-        return fullUsersAbout.get(uid);
-    }
-
-
     protected void clearFullUsers() {
         loadedFullUsers.clear();
         loadedFullChats.clear();
     }
 
+    /*
     public void loadDialogPhotos(final int did, final int offset, final int count, final long max_id, final boolean fromCache, final int classGuid) {
         if (fromCache) {
-            //MessagesStorage.getInstance().getDialogPhotos(did, offset, count, max_id, classGuid);
+            MessagesStorage.getInstance().getDialogPhotos(did, offset, count, max_id, classGuid);
         } else {
             if (did > 0) {
                 TLRPC.User user = getUser(did);
@@ -658,7 +645,7 @@ public class MessagesController implements NotificationCenter.NotificationCenter
                 req.offset = offset;
                 req.max_id = (int) max_id;
                 req.user_id = getInputUser(user);
-                int reqId = 0; /*ConnectionsManager.getInstance().sendRequest(req, new RequestDelegate() {
+                int reqId = ConnectionsManager.getInstance().sendRequest(req, new RequestDelegate() {
                     @Override
                     public void run(TLObject response, TLRPC.TL_error error) {
                         if (error == null) {
@@ -667,7 +654,7 @@ public class MessagesController implements NotificationCenter.NotificationCenter
                         }
                     }
                 });
-                ConnectionsManager.getInstance().bindRequestToGuid(reqId, classGuid);*/
+                ConnectionsManager.getInstance().bindRequestToGuid(reqId, classGuid);
             } else if (did < 0) {
                 TLRPC.TL_messages_search req = new TLRPC.TL_messages_search();
                 req.filter = new TLRPC.TL_inputMessagesFilterChatPhotos();
@@ -676,7 +663,7 @@ public class MessagesController implements NotificationCenter.NotificationCenter
                 req.max_id = (int) max_id;
                 req.q = "";
                 req.peer = MessagesController.getInputPeer(did);
-                int reqId = 0;/*ConnectionsManager.getInstance().sendRequest(req, new RequestDelegate() {
+                int reqId = ConnectionsManager.getInstance().sendRequest(req, new RequestDelegate() {
                     @Override
                     public void run(TLObject response, TLRPC.TL_error error) {
                         if (error == null) {
@@ -695,10 +682,11 @@ public class MessagesController implements NotificationCenter.NotificationCenter
                         }
                     }
                 });
-                ConnectionsManager.getInstance().bindRequestToGuid(reqId, classGuid);*/
+                ConnectionsManager.getInstance().bindRequestToGuid(reqId, classGuid);
             }
         }
     }
+    */
 
     public void blockUser(int user_id) {
         final TLRPC.User user = getUser(user_id);

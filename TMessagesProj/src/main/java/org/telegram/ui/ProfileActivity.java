@@ -146,6 +146,8 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
     private final static int convert_to_supergroup = 13;
     private final static int add_shortcut = 14;
 
+    private final static int typeAbout = 8;
+
     private int emptyRow;
     private int emptyRowChat;
     private int emptyRowChat2;
@@ -1916,11 +1918,11 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
             if (user != null && user.username != null && user.username.length() > 0) {
                 usernameRow = rowCount++;
             }
-            String about = MessagesController.getInstance().getUserAbout(user.id);
+            /*String about = MessagesController.getInstance().getUserAbout(user.id);
             if (about != null) {
                 userSectionRow = rowCount++;
                 userInfoRow = rowCount++;
-            } else {
+            } else*/ {
                 userSectionRow = -1;
                 userInfoRow = -1;
             }
@@ -2514,18 +2516,10 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                         userCell.setData(MessagesController.getInstance().getUser(part.user_id), null, null, i == emptyRowChat2 + 1 ? R.drawable.menu_newgroup : 0);
                     }
                     break;
-                case 8:
+                case typeAbout:
                     AboutLinkCell aboutLinkCell = (AboutLinkCell) holder.itemView;
-                    if (i == userInfoRow) {
-                        String about = MessagesController.getInstance().getUserAbout(user_id);
-                        aboutLinkCell.setTextAndIcon(about, R.drawable.bot_info);
-                    } else if (i == channelInfoRow) {
-                        String text = info.about;
-                        while (text.contains("\n\n\n")) {
-                            text = text.replace("\n\n\n", "\n\n");
-                        }
-                        aboutLinkCell.setTextAndIcon(text, R.drawable.bot_info);
-                    }
+                    String about = "ErrAbout";
+                    aboutLinkCell.setTextAndIcon(about, R.drawable.bot_info);
                     break;
                 default:
                     checkBackground = false;
@@ -2576,7 +2570,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
             } else if (i == loadMoreMembersRow) {
                 return 7;
             } else if (i == userInfoRow || i == channelInfoRow) {
-                return 8;
+                return typeAbout;
             }
             return 0;
         }
