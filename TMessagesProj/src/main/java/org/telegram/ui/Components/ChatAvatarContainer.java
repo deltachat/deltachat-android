@@ -40,9 +40,6 @@ public class ChatAvatarContainer extends FrameLayout {
     private SimpleTextView subtitleTextView;
     private ImageView timeItem;
     private ChatActivity parentFragment;
-    private TypingDotsDrawable typingDotsDrawable;
-    private RecordStatusDrawable recordStatusDrawable;
-    private SendingFileExDrawable sendingFileDrawable;
     private AvatarDrawable avatarDrawable = new AvatarDrawable();
 
     private int onlineCount = -1;
@@ -112,12 +109,6 @@ public class ChatAvatarContainer extends FrameLayout {
         });
 
         TLRPC.Chat chat = parentFragment.getCurrentChat();
-        typingDotsDrawable = new TypingDotsDrawable();
-        typingDotsDrawable.setIsChat(chat != null);
-        recordStatusDrawable = new RecordStatusDrawable();
-        recordStatusDrawable.setIsChat(chat != null);
-        sendingFileDrawable = new SendingFileExDrawable();
-        sendingFileDrawable.setIsChat(chat != null);
     }
 
     @Override
@@ -175,37 +166,6 @@ public class ChatAvatarContainer extends FrameLayout {
 
     public void setTitle(CharSequence value) {
         titleTextView.setText(value);
-    }
-
-    private void setTypingAnimation(boolean start) {
-        if (start) {
-            try {
-                Integer type = MessagesController.getInstance().printingStringsTypes.get(parentFragment.getDialogId());
-                if (type == 0) {
-                    subtitleTextView.setLeftDrawable(typingDotsDrawable);
-                    typingDotsDrawable.start();
-                    recordStatusDrawable.stop();
-                    sendingFileDrawable.stop();
-                } else if (type == 1) {
-                    subtitleTextView.setLeftDrawable(recordStatusDrawable);
-                    recordStatusDrawable.start();
-                    typingDotsDrawable.stop();
-                    sendingFileDrawable.stop();
-                } else if (type == 2) {
-                    subtitleTextView.setLeftDrawable(sendingFileDrawable);
-                    sendingFileDrawable.start();
-                    typingDotsDrawable.stop();
-                    recordStatusDrawable.stop();
-                }
-            } catch (Exception e) {
-                FileLog.e("tmessages", e);
-            }
-        } else {
-            subtitleTextView.setLeftDrawable(null);
-            typingDotsDrawable.stop();
-            recordStatusDrawable.stop();
-            sendingFileDrawable.stop();
-        }
     }
 
     public void updateSubtitle() {

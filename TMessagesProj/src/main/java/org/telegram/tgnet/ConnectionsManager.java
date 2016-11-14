@@ -93,10 +93,6 @@ public class ConnectionsManager {
         */
     }
 
-    public void setUserId(int id) {
-        //native_setUserId(id);
-    }
-
     private void checkConnection() {
         //native_setUseIpv6(useIpv6Address());
         //native_setNetworkAvailable(isNetworkOnline());
