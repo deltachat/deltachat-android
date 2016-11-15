@@ -314,8 +314,9 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
 
     private final static int id_chat_compose_panel = 1000;
 
-    protected void finalize()
+    @Override protected void finalize() throws Throwable
     {
+        super.finalize();
         MrMailbox.MrChatUnref(m_hChat);
     }
 
