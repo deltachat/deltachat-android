@@ -278,7 +278,7 @@ public class BlockedUsersActivity extends BaseFragment implements NotificationCe
                     } else {
                         number = LocaleController.getString("NumberUnknown", R.string.NumberUnknown);
                     }
-                    ((UserCell) view).setData(user, null, number, 0);
+                    ((UserCell) view).setData(123, 0, "ErrUserName", "ErrUserStatus", 0);
                 }
             } else if (type == 1) {
                 if (view == null) {

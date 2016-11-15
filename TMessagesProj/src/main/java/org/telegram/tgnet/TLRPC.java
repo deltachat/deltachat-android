@@ -13,7 +13,6 @@ import java.util.HashMap;
 
 public class TLRPC {
 
-    public static final int CHAT_FLAG_IS_PUBLIC             = 0x00000040;
     public static final int MESSAGE_FLAG_FWD                = 0x00000004;
     public static final int MESSAGE_FLAG_REPLY              = 0x00000008;
     public static final int MESSAGE_FLAG_HAS_FROM_ID        = 0x00000100;
@@ -216,22 +215,13 @@ public class TLRPC {
 
 	public static class ChatFull extends TLObject {
 		public int flags;
-		public boolean can_view_participants;
 		public int id;
 		public String about;
-		public int participants_count;
-		public int admins_count;
-		public int kicked_count;
-		public int migrated_from_chat_id;
-		public int migrated_from_max_id;
 		public int pinned_msg_id;
 		public ChatParticipants participants;
 	}
 
 	public static class TL_channelFull extends ChatFull {
-	}
-
-	public static class TL_chatFull extends ChatFull {
 	}
 
 	public static class TL_topPeerCategoryPeers extends TLObject {
@@ -307,8 +297,6 @@ public class TLRPC {
 		public boolean mutual_contact;
 		public boolean deleted;
 		public boolean bot;
-		public boolean bot_chat_history;
-		public boolean bot_nochats;
 		public boolean verified;
 		public boolean restricted;
 		public boolean min;
@@ -369,17 +357,6 @@ public class TLRPC {
 	}
 
 	public static class TL_messageActionEmpty extends MessageAction {
-	}
-
-	public static class DecryptedMessage extends TLObject {
-		public int ttl;
-		public String message;
-		public DecryptedMessageMedia media;
-		public DecryptedMessageAction action;
-		public int flags;
-	}
-
-	public static class TL_decryptedMessage extends DecryptedMessage {
 	}
 
 	public static class Video extends TLObject {
@@ -635,47 +612,15 @@ public class TLRPC {
 		public int version;
 	}
 
-	public static class TL_chatParticipantsForbidden extends ChatParticipants {
-	}
-
-	public static class DecryptedMessageMedia extends TLObject {
-		public int duration;
-		public String mime_type;
-		public int size;
-		public byte[] key;
-		public byte[] iv;
-		public String first_name;
-		public String last_name;
-		public int user_id;
-		public ArrayList<DocumentAttribute> attributes = new ArrayList<>();
-		public String caption;
-		public String url;
-		public int w;
-		public int h;
-		public String file_name;
-		public String title;
-		public String address;
-		public String provider;
-		public long id;
-		public int date;
-		public int dc_id;
-	}
-
 	public static class ChatParticipant extends TLObject {
 		public int user_id;
-		public int inviter_id;
 		public int date;
-	}
-
-	public static class TL_chatParticipant extends ChatParticipant {
 	}
 
 	public static class Chat extends TLObject {
 		public int flags;
 		public boolean creator;
 		public boolean kicked;
-		public boolean admins_enabled;
-		public boolean admin;
 		public boolean deactivated;
 		public int id;
 		public String title;
@@ -684,7 +629,6 @@ public class TLRPC {
 		public int date;
 		public int version;
 		public boolean editor;
-		public boolean moderator;
 		public boolean broadcast;
 		public boolean verified;
 		public boolean megagroup;
@@ -777,9 +721,6 @@ public class TLRPC {
 
 	public static class ExportedChatInvite extends TLObject {
 		public String link;
-	}
-
-    public static class TL_chatInviteExported extends ExportedChatInvite {
 	}
 
 	public static class InputFile extends TLObject {
@@ -1011,9 +952,6 @@ public class TLRPC {
 	}
 
 	public static class TL_message extends Message {
-	}
-
-	public static class TL_message_secret extends TL_message {
 	}
 
 	public static class TL_messageService extends Message {

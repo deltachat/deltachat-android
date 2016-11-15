@@ -51,7 +51,6 @@ import org.telegram.messenger.query.SharedMediaQuery;
 import org.telegram.messenger.ApplicationLoader;
 import org.telegram.messenger.support.widget.LinearLayoutManager;
 import org.telegram.messenger.support.widget.RecyclerView;
-import org.telegram.tgnet.ConnectionsManager;
 import org.telegram.tgnet.TLRPC;
 import org.telegram.messenger.ContactsController;
 import org.telegram.messenger.FileLog;
@@ -59,8 +58,6 @@ import org.telegram.messenger.MessagesController;
 import org.telegram.messenger.NotificationCenter;
 import org.telegram.messenger.R;
 import org.telegram.messenger.MessageObject;
-import org.telegram.messenger.UserConfig;
-import org.telegram.messenger.Utilities;
 import org.telegram.ui.ActionBar.BackDrawable;
 import org.telegram.ui.ActionBar.SimpleTextView;
 import org.telegram.ui.Cells.DividerCell;
@@ -81,9 +78,7 @@ import org.telegram.ui.Components.RecyclerListView;
 import org.telegram.ui.ActionBar.Theme;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.HashMap;
+
 
 public class ProfileActivity extends BaseFragment implements NotificationCenter.NotificationCenterDelegate, DialogsActivity.DialogsActivityDelegate, PhotoViewer.PhotoViewerProvider {
 
@@ -119,10 +114,8 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
     private float animationProgress;
 
     private AvatarUpdater avatarUpdater;
-    private TLRPC.ChatFull info;
     private int selectedUser;
-    private int onlineCount = -1;
-    private ArrayList<Integer> sortedUsers;
+    private int[] sortedUserIds;
 
     private final TLRPC.EncryptedChat currentEncryptedChat = null;
     private TLRPC.Chat currentChat;
@@ -143,6 +136,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
     private int emptyRowChat2 = -1;
     private int addMemberRow = -1;
     private int membersEndRow = -1;
+    private int membersSectionRow = -1;
 
     private int rowCount = 0;
 
@@ -198,8 +192,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
         } else if (chat_id != 0) {
             currentChat = MrMailbox.chatId2chat(chat_id);
 
-            sortedUsers = new ArrayList<>();
-            updateOnlineCount();
+            sortedUserIds = MrMailbox.MrMailboxGetChatContacts(MrMailbox.hMailbox, chat_id);
 
             avatarUpdater = new AvatarUpdater();
             avatarUpdater.delegate = new AvatarUpdater.AvatarUpdaterDelegate() {
@@ -449,18 +442,13 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                     builder.setMessage(AndroidUtilities.replaceTags(LocaleController.formatString("AskStartChatWith", R.string.AskStartChatWith, name)));
                     showDialog(builder.create());
                 } else if (position > emptyRowChat2 && position < membersEndRow) {
-                    int user_id;
-                    if (!sortedUsers.isEmpty()) {
-                        user_id = info.participants.participants.get(sortedUsers.get(position - emptyRowChat2 - 1)).user_id;
-                    } else {
-                        user_id = info.participants.participants.get(position - emptyRowChat2 - 1).user_id;
+                    int curr_user_index = position - emptyRowChat2 - 1;
+                    if(curr_user_index>=0 && curr_user_index<sortedUserIds.length) {
+                        int curr_user_id = sortedUserIds[curr_user_index];
+                        Bundle args = new Bundle();
+                        args.putInt("user_id", curr_user_id);
+                        presentFragment(new ProfileActivity(args));
                     }
-                    if (user_id == UserConfig.getClientUserId()) {
-                        return;
-                    }
-                    Bundle args = new Bundle();
-                    args.putInt("user_id", user_id);
-                    presentFragment(new ProfileActivity(args));
                 } else if (position == addMemberRow) {
                     openAddMember();
                 } else {
@@ -473,6 +461,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
             @Override
             public boolean onItemClick(View view, int position) {
                 if (position > emptyRowChat2 && position < membersEndRow) {
+                    /*
                     if (getParentActivity() == null) {
                         return false;
                     }
@@ -525,6 +514,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                         });
                     }
                     showDialog(builder.create());
+                    */
                     return true;
                 } else {
                     return processOnClickOrPress(position);
@@ -661,9 +651,6 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
         return false;
     }
 
-    private void leaveChatPressed() {
-    }
-
     @Override
     public void saveSelfArgs(Bundle args) {
         if (chat_id != 0) {
@@ -691,6 +678,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
     }
 
     private void openAddMember() {
+        /*
         Bundle args = new Bundle();
         args.putBoolean("onlyUsers", true);
         args.putBoolean("destroyAfterSelect", true);
@@ -718,6 +706,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
             fragment.setIgnoreUsers(users);
         }
         presentFragment(fragment);
+        */
     }
 
     private void checkListViewScroll() {
@@ -889,7 +878,6 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                     }
                 }
                 if ((mask & MessagesController.UPDATE_MASK_CHANNEL) != 0 || (mask & MessagesController.UPDATE_MASK_CHAT_AVATAR) != 0 || (mask & MessagesController.UPDATE_MASK_CHAT_NAME) != 0 || (mask & MessagesController.UPDATE_MASK_CHAT_MEMBERS) != 0 || (mask & MessagesController.UPDATE_MASK_STATUS) != 0) {
-                    updateOnlineCount();
                     updateProfileData();
                 }
                 if ((mask & MessagesController.UPDATE_MASK_CHANNEL) != 0) {
@@ -1177,140 +1165,6 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
     @Override
     public int getSelectedCount() { return 0; }
 
-    private void updateOnlineCount() {
-        onlineCount = 0;
-        int currentTime = ConnectionsManager.getInstance().getCurrentTime();
-        sortedUsers.clear();
-        if (info instanceof TLRPC.TL_chatFull || info instanceof TLRPC.TL_channelFull && info.participants_count <= 200 && info.participants != null) {
-            for (int a = 0; a < info.participants.participants.size(); a++) {
-                TLRPC.ChatParticipant participant = info.participants.participants.get(a);
-                TLRPC.User user = MessagesController.getInstance().getUser(participant.user_id);
-                if (user != null && user.status != null && (user.status.expires > currentTime || user.id == UserConfig.getClientUserId()) && user.status.expires > 10000) {
-                    onlineCount++;
-                }
-                sortedUsers.add(a);
-            }
-
-            try {
-                Collections.sort(sortedUsers, new Comparator<Integer>() {
-                    @Override
-                    public int compare(Integer lhs, Integer rhs) {
-                        TLRPC.User user1 = MessagesController.getInstance().getUser(info.participants.participants.get(rhs).user_id);
-                        TLRPC.User user2 = MessagesController.getInstance().getUser(info.participants.participants.get(lhs).user_id);
-                        int status1 = 0;
-                        int status2 = 0;
-                        if (user1 != null && user1.status != null) {
-                            if (user1.id == UserConfig.getClientUserId()) {
-                                status1 = ConnectionsManager.getInstance().getCurrentTime() + 50000;
-                            } else {
-                                status1 = user1.status.expires;
-                            }
-                        }
-                        if (user2 != null && user2.status != null) {
-                            if (user2.id == UserConfig.getClientUserId()) {
-                                status2 = ConnectionsManager.getInstance().getCurrentTime() + 50000;
-                            } else {
-                                status2 = user2.status.expires;
-                            }
-                        }
-                        if (status1 > 0 && status2 > 0) {
-                            if (status1 > status2) {
-                                return 1;
-                            } else if (status1 < status2) {
-                                return -1;
-                            }
-                            return 0;
-                        } else if (status1 < 0 && status2 < 0) {
-                            if (status1 > status2) {
-                                return 1;
-                            } else if (status1 < status2) {
-                                return -1;
-                            }
-                            return 0;
-                        } else if (status1 < 0 && status2 > 0 || status1 == 0 && status2 != 0) {
-                            return -1;
-                        } else if (status2 < 0 && status1 > 0 || status2 == 0 && status1 != 0) {
-                            return 1;
-                        }
-                        return 0;
-                    }
-                });
-            } catch (Exception e) {
-                FileLog.e("tmessages", e);
-            }
-
-            if (listAdapter != null) {
-                listAdapter.notifyItemRangeChanged(emptyRowChat2 + 1, sortedUsers.size());
-            }
-        }
-    }
-
-    /*
-    public void setChatInfo(TLRPC.ChatFull chatInfo) {
-        info = chatInfo;
-        if (info != null && info.migrated_from_chat_id != 0) {
-            mergeDialogId = -info.migrated_from_chat_id;
-        }
-        fetchUsersFromChannelInfo();
-    }
-    */
-
-    /*
-    private void fetchUsersFromChannelInfo() {
-        if (info instanceof TLRPC.TL_channelFull && info.participants != null) {
-            for (int a = 0; a < info.participants.participants.size(); a++) {
-                TLRPC.ChatParticipant chatParticipant = info.participants.participants.get(a);
-                participantsMap.put(chatParticipant.user_id, chatParticipant);
-            }
-        }
-    }
-    */
-
-    private void kickUser(int uid) {
-        if (uid != 0) {
-            MessagesController.getInstance().deleteUserFromChat(chat_id, MessagesController.getInstance().getUser(uid), info);
-            if (currentChat.megagroup && info != null && info.participants != null) {
-                /*boolean changed = false;
-                for (int a = 0; a < info.participants.participants.size(); a++) {
-                    TLRPC.ChannelParticipant p = ((TLRPC.TL_chatChannelParticipant) info.participants.participants.get(a)).channelParticipant;
-                    if (p.user_id == uid) {
-                        if (info != null) {
-                            info.participants_count--;
-                        }
-                        info.participants.participants.remove(a);
-                        changed = true;
-                        break;
-                    }
-                }
-                if (info != null && info.participants != null) {
-                    for (int a = 0; a < info.participants.participants.size(); a++) {
-                        TLRPC.ChatParticipant p = info.participants.participants.get(a);
-                        if (p.user_id == uid) {
-                            info.participants.participants.remove(a);
-                            changed = true;
-                            break;
-                        }
-                    }
-                }
-                if (changed) {
-                    updateOnlineCount();
-                    updateRowsIds();
-                    listAdapter.notifyDataSetChanged();
-                }*/
-            }
-        } else {
-            NotificationCenter.getInstance().removeObserver(this, NotificationCenter.closeChats);
-            if (AndroidUtilities.isTablet()) {
-                NotificationCenter.getInstance().postNotificationName(NotificationCenter.closeChats, -(long) chat_id);
-            } else {
-                NotificationCenter.getInstance().postNotificationName(NotificationCenter.closeChats);
-            }
-            MessagesController.getInstance().deleteUserFromChat(chat_id, MessagesController.getInstance().getUser(UserConfig.getClientUserId()), info);
-            playProfileAnimation = false;
-            finishFragment();
-        }
-    }
-
     public boolean isChat() {
         return chat_id != 0;
     }
@@ -1332,12 +1186,14 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
             addMemberRow = rowCount++;
         }
 
+        //sectionRow = rowCount++;
+
         if( chat_id != 0 ) {
-            /*
+            emptyRowChat = rowCount++;
+            membersSectionRow = rowCount++;
             emptyRowChat2 = rowCount++;
-            rowCount += 10;
+            rowCount += sortedUserIds.length;
             membersEndRow = rowCount;
-            */
         }
 
 
@@ -1540,7 +1396,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                     if (i == emptyRowChat || i == emptyRowChat2) {
                         ((EmptyCell) holder.itemView).setHeight(AndroidUtilities.dp(8));
                     } else {
-                        ((EmptyCell) holder.itemView).setHeight(AndroidUtilities.dp(36));
+                        ((EmptyCell) holder.itemView).setHeight(AndroidUtilities.dp(14)); // was 36 when we used the "writeButton" for taking photos etc.
                     }
                     break;
                 case typeTextDetailCell:
@@ -1554,22 +1410,21 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                     } else if (i == startChatRow) {
                         textCell.setText(LocaleController.getString("NewChat", R.string.NewChat));
                     } else if (i == settingsNotificationsRow) {
-                        textCell.setTextAndIcon(LocaleController.getString("NotificationsAndSounds", R.string.NotificationsAndSounds), R.drawable.profile_list);
+                        textCell.setTextAndIcon(LocaleController.getString("NotificationsAndSounds", R.string.NotificationsAndSounds), R.drawable.menu_settings);
                     } else if (i == addMemberRow) {
                         textCell.setText(LocaleController.getString("AddMember", R.string.AddMember));
                     }
                     break;
                 case typeContactCell:
                     UserCell userCell = ((UserCell) holder.itemView);
-                    TLRPC.ChatParticipant part;
-                    if (!sortedUsers.isEmpty()) {
-                        part = info.participants.participants.get(sortedUsers.get(i - emptyRowChat2 - 1));
-                    } else {
-                        part = info.participants.participants.get(i - emptyRowChat2 - 1);
-                    }
-                    if (part != null) {
-                        userCell.setIsAdmin(0);
-                        userCell.setData(MessagesController.getInstance().getUser(part.user_id), null, null, i == emptyRowChat2 + 1 ? R.drawable.menu_newgroup : 0);
+                    int curr_user_index = i - emptyRowChat2 - 1;
+                    if(curr_user_index>=0 && curr_user_index<sortedUserIds.length) {
+                        int curr_user_id = sortedUserIds[curr_user_index];
+                        long hContact = MrMailbox.MrMailboxGetContact(MrMailbox.hMailbox, curr_user_id);
+                            userCell.setData(curr_user_id, 0, MrMailbox.MrContactGetDisplayName(hContact),
+                                    MrMailbox.MrContactGetAddr(hContact),
+                                    curr_user_index==0? R.drawable.menu_newgroup : 0);
+                        MrMailbox.MrContactUnref(hContact);
                     }
                     break;
 
@@ -1612,6 +1467,9 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                 return typeTextCell;
             } else if (i > emptyRowChat2 && i < membersEndRow) {
                 return typeContactCell;
+            }
+            else if(i==membersSectionRow) {
+                return typeSection;
             }
             return 0;
         }

@@ -454,7 +454,7 @@ public class GroupCreateFinalActivity extends BaseFragment implements Notificati
             }
 
             TLRPC.User user = MessagesController.getInstance().getUser(selectedContacts.get(i));
-            ((UserCell) view).setData(user, null, null, 0);
+            ((UserCell) view).setData(123, 0, "erruser", "errstatus", 0);
             return view;
         }
 

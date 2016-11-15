@@ -246,7 +246,7 @@ public class ContactsAdapter extends BaseSectionsAdapter {
 
             ArrayList<TLRPC.TL_contact> arr = usersSectionsDict.get(sortedUsersSectionsArray.get(section - (onlyUsers != 0 && !isAdmin ? 0 : 1)));
             TLRPC.User user = MessagesController.getInstance().getUser(arr.get(position).user_id);
-            ((UserCell) convertView).setData(user, null, null, 0);
+            ((UserCell) convertView).setData(123, 0, "ErrUserName2", "ErrUserStatus2", 0);
             if (checkedMap != null) {
                 ((UserCell) convertView).setChecked(checkedMap.containsKey(user.id), !scrolling);
             }

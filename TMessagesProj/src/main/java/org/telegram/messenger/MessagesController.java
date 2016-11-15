@@ -42,8 +42,6 @@ public class MessagesController implements NotificationCenter.NotificationCenter
     private ConcurrentHashMap<Integer, TLRPC.User> users = new ConcurrentHashMap<>(100, 1.0f, 2);
     private ConcurrentHashMap<String, TLRPC.User> usersByUsernames = new ConcurrentHashMap<>(100, 1.0f, 2);
 
-    private HashMap<Integer, TLRPC.ExportedChatInvite> exportedChats = new HashMap<>();
-
     public ArrayList<TLRPC.TL_dialog> dialogs = new ArrayList<>();
     public ArrayList<TLRPC.TL_dialog> dialogsServerOnly = new ArrayList<>();
     public ArrayList<TLRPC.TL_dialog> dialogsGroupsOnly = new ArrayList<>();
@@ -355,7 +353,6 @@ public class MessagesController implements NotificationCenter.NotificationCenter
         dialogs_dict.clear();
         dialogs_read_inbox_max.clear();
         dialogs_read_outbox_max.clear();
-        exportedChats.clear();
         dialogs.clear();
         channelViewsToSend.clear();
         channelViewsToReload.clear();
@@ -464,10 +461,6 @@ public class MessagesController implements NotificationCenter.NotificationCenter
                 }
             }
         });
-    }
-
-    public TLRPC.ExportedChatInvite getExportedInvite(int chat_id) {
-        return exportedChats.get(chat_id);
     }
 
     public boolean putUser(TLRPC.User user, boolean fromCache) {

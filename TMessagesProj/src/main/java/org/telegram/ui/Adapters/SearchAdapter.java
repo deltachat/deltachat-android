@@ -283,7 +283,7 @@ public class SearchAdapter extends BaseSearchAdapter {
                 }
 
                 if (useUserCell) {
-                    ((UserCell) view).setData(object, name, username, 0);
+                    ((UserCell) view).setData(123, 0, "ErrUserName", "ErrStatus", 0);
                     if (checkedMap != null) {
                         ((UserCell) view).setChecked(checkedMap.containsKey(id), false);
                     }
