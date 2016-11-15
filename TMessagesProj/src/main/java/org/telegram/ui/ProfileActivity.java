@@ -1415,7 +1415,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
             String newString;
             String newString2;
 
-            long hContact = MrMailbox.MrMailboxGetContactById(MrMailbox.hMailbox, user_id);
+            long hContact = MrMailbox.MrMailboxGetContact(MrMailbox.hMailbox, user_id);
                 newString  = MrMailbox.MrContactGetDisplayName(hContact);
                 newString2 = MrMailbox.MrContactGetAddr(hContact);
             MrMailbox.MrContactUnref(hContact);

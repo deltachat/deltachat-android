@@ -800,7 +800,7 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
             // SEND MESSAGE
             // -------------------------------------------------------------------------------------
 
-            long hChat = MrMailbox.MrMailboxGetChatById(MrMailbox.hMailbox, (int)peer);
+            long hChat = MrMailbox.MrMailboxGetChat(MrMailbox.hMailbox, (int)peer);
 
             if (type == 0 /*|| type == 9 && message != null && encryptedChat != null*/ )
             {
@@ -1120,7 +1120,7 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
     public boolean isSendingMessage(int mid) {
         //return sendingMessages.containsKey(mid);
         boolean isSending = false;
-        long hMsg = MrMailbox.MrMailboxGetMsgById(MrMailbox.hMailbox, mid);
+        long hMsg = MrMailbox.MrMailboxGetMsg(MrMailbox.hMailbox, mid);
             int state = MrMailbox.MrMsgGetState(hMsg);
             if( state == MrMailbox.MR_OUT_PENDING || state == MrMailbox.MR_OUT_SENDING ) {
                 isSending = true;

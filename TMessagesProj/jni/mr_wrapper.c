@@ -169,9 +169,9 @@ JNIEXPORT jint Java_org_telegram_messenger_MrMailbox_MrMailboxFetch(JNIEnv *env,
 
 /* MrMailbox - handle contacts */
 
-JNIEXPORT jlong Java_org_telegram_messenger_MrMailbox_MrMailboxGetContactById(JNIEnv *env, jclass c, jlong hMailbox, jint id)
+JNIEXPORT jlong Java_org_telegram_messenger_MrMailbox_MrMailboxGetContact(JNIEnv *env, jclass c, jlong hMailbox, jint id)
 {
-	return (jlong)mrmailbox_get_contact_by_id((mrmailbox_t*)hMailbox, id);
+	return (jlong)mrmailbox_get_contact((mrmailbox_t*)hMailbox, id);
 }
 
 
@@ -183,15 +183,15 @@ JNIEXPORT jlong Java_org_telegram_messenger_MrMailbox_MrMailboxGetChatlist(JNIEn
 }
 
 
-JNIEXPORT jlong Java_org_telegram_messenger_MrMailbox_MrMailboxGetChatById(JNIEnv *env, jclass c, jlong hMailbox, jint id)
+JNIEXPORT jlong Java_org_telegram_messenger_MrMailbox_MrMailboxGetChat(JNIEnv *env, jclass c, jlong hMailbox, jint id)
 {
-	return (jlong)mrmailbox_get_chat_by_id((mrmailbox_t*)hMailbox, id);
+	return (jlong)mrmailbox_get_chat((mrmailbox_t*)hMailbox, id);
 }
 
 
-JNIEXPORT jint Java_org_telegram_messenger_MrMailbox_MrMailboxMarkseenChatById(JNIEnv *env, jclass c, jlong hMailbox, jint chat_id)
+JNIEXPORT jint Java_org_telegram_messenger_MrMailbox_MrMailboxMarkseenChat(JNIEnv *env, jclass c, jlong hMailbox, jint chat_id)
 {
-	return (jlong)mrmailbox_markseen_chat_by_id((mrmailbox_t*)hMailbox, chat_id);
+	return (jlong)mrmailbox_markseen_chat((mrmailbox_t*)hMailbox, chat_id);
 }
 
 
@@ -203,24 +203,24 @@ JNIEXPORT jint Java_org_telegram_messenger_MrMailbox_MrMailboxCreateChatByContac
 
 /* MrMailbox - handle messages */
 
-JNIEXPORT jlong Java_org_telegram_messenger_MrMailbox_MrMailboxGetMsgById(JNIEnv *env, jclass c, jlong hMailbox, jint id)
+JNIEXPORT jlong Java_org_telegram_messenger_MrMailbox_MrMailboxGetMsg(JNIEnv *env, jclass c, jlong hMailbox, jint id)
 {
-	return (jlong)mrmailbox_get_msg_by_id((mrmailbox_t*)hMailbox, id);
+	return (jlong)mrmailbox_get_msg((mrmailbox_t*)hMailbox, id);
 }
 
 
-JNIEXPORT jstring Java_org_telegram_messenger_MrMailbox_MrMailboxGetTxtRawById(JNIEnv *env, jclass c, jlong hMailbox, jint msg_id)
+JNIEXPORT jstring Java_org_telegram_messenger_MrMailbox_MrMailboxGetMsgInfo(JNIEnv *env, jclass c, jlong hMailbox, jint msg_id)
 {
-	char* temp = mrmailbox_get_txt_raw_by_id((mrmailbox_t*)hMailbox, msg_id);
+	char* temp = mrmailbox_get_msg_info((mrmailbox_t*)hMailbox, msg_id);
 		jstring ret = JSTRING_NEW(temp);
 	free(temp);
 	return ret;
 }
 
 
-JNIEXPORT void Java_org_telegram_messenger_MrMailbox_MrMailboxDeleteMsgById(JNIEnv *env, jclass c, jlong hMailbox, jint id)
+JNIEXPORT void Java_org_telegram_messenger_MrMailbox_MrMailboxDeleteMsg(JNIEnv *env, jclass c, jlong hMailbox, jint id)
 {
-	mrmailbox_delete_msg_by_id((mrmailbox_t*)hMailbox, id);
+	mrmailbox_delete_msg((mrmailbox_t*)hMailbox, id);
 }
 
 

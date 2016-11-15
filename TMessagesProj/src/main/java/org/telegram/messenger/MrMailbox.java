@@ -218,17 +218,17 @@ public class MrMailbox {
     public native static void    MrMailboxDisconnect        (long hMailbox);
     public native static int     MrMailboxFetch             (long hMailbox);
 
-    public native static long    MrMailboxGetContactById    (long hMailbox, int id);// returns hContact which must be unref'd after usage
+    public native static long    MrMailboxGetContact        (long hMailbox, int id);// returns hContact which must be unref'd after usage
 
     public native static long    MrMailboxGetChatlist       (long hMailbox); // returns hChatlist which must be unref'd after usage
-    public native static long    MrMailboxGetChatById       (long hMailbox, int id); // return hChat which must be unref'd after usage
-    public native static int     MrMailboxMarkseenChatById  (long hMailbox, int id);
+    public native static long    MrMailboxGetChat           (long hMailbox, int id); // return hChat which must be unref'd after usage
+    public native static int     MrMailboxMarkseenChat      (long hMailbox, int id);
     public native static int     MrMailboxCreateChatByContactId(long hMailbox, int contact_id); // returns chat_id
     public native static int[]   MrMailboxGetChatMedia      (long hMailbox, int chat_id, int msg_type, int or_msg_type);
     public native static int[]   MrMailboxGetChatContacts   (long hMailbox, int chat_id);
-    public native static long    MrMailboxGetMsgById        (long hMailbox, int id); // return hMsg which must be unref'd after usage
-    public native static String  MrMailboxGetTxtRawById     (long hMailbox, int id);
-    public native static void    MrMailboxDeleteMsgById     (long hMailbox, int id);
+    public native static long    MrMailboxGetMsg            (long hMailbox, int id); // return hMsg which must be unref'd after usage
+    public native static String  MrMailboxGetMsgInfo        (long hMailbox, int id);
+    public native static void    MrMailboxDeleteMsg         (long hMailbox, int id);
     public native static int     MrMailboxSetConfig         (long hMailbox, String key, String value); // value may be NULL
     public native static String  MrMailboxGetConfig         (long hMailbox, String key, String def); // def may be NULL, returns empty string as NULL
     public native static int     MrMailboxGetConfigInt      (long hMailbox, String key, int def); // def may be NULL, returns empty string as NULL

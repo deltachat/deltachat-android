@@ -86,7 +86,7 @@ public class DraftQuery {
     }
 
     public static TLRPC.DraftMessage getDraft(long did) { // returns null for "no draft"
-        long hChat = MrMailbox.MrMailboxGetChatById(MrMailbox.hMailbox, (int)did);
+        long hChat = MrMailbox.MrMailboxGetChat(MrMailbox.hMailbox, (int)did);
         if( hChat == 0 ) {
             return null;
         }
@@ -98,7 +98,7 @@ public class DraftQuery {
     }
 
     public static TLRPC.Message getDraftMessage(long did) { // returns null for "no draft"
-        long hChat = MrMailbox.MrMailboxGetChatById(MrMailbox.hMailbox, (int)did);
+        long hChat = MrMailbox.MrMailboxGetChat(MrMailbox.hMailbox, (int)did);
         if( hChat == 0 ) {
             return null;
         }
@@ -111,7 +111,7 @@ public class DraftQuery {
 
     private static void saveDraft__(long did, String message, long replyToMessageId) // message may be null
     {
-        long hChat = MrMailbox.MrMailboxGetChatById(MrMailbox.hMailbox, (int)did);
+        long hChat = MrMailbox.MrMailboxGetChat(MrMailbox.hMailbox, (int)did);
         MrMailbox.MrChatSetDraft(hChat, message, replyToMessageId);
         MrMailbox.MrChatUnref(hChat);
     }

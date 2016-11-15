@@ -355,8 +355,8 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
 
         // EDIT BY MR -- set up the values so that the activity gets usable
         dialog_id = arguments.getInt("chat_id", 0);
-        MrMailbox.MrMailboxMarkseenChatById(MrMailbox.hMailbox, (int)dialog_id);
-        m_hChat = MrMailbox.MrMailboxGetChatById(MrMailbox.hMailbox, (int)dialog_id);
+        MrMailbox.MrMailboxMarkseenChat(MrMailbox.hMailbox, (int)dialog_id);
+        m_hChat = MrMailbox.MrMailboxGetChat(MrMailbox.hMailbox, (int)dialog_id);
         currentChat = new TLRPC.Chat();
         currentChat.id = (int)dialog_id;
         // /EDIT BY MR
@@ -781,7 +781,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 } else if (id == id_info) {
                     if( selectedMessagesIds[0]!=null && selectedMessagesIds[0].size()==1) {
                         ArrayList<Integer> ids = new ArrayList<>(selectedMessagesIds[0].keySet());
-                        String info_str = MrMailbox.MrMailboxGetTxtRawById(MrMailbox.hMailbox, ids.get(0));
+                        String info_str = MrMailbox.MrMailboxGetMsgInfo(MrMailbox.hMailbox, ids.get(0));
 
                         AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
                         builder.setMessage(info_str);
@@ -3514,11 +3514,11 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
             chatActivityEnterView.closeKeyboard();
         }
 
-        long hMsg = MrMailbox.MrMailboxGetMsgById(MrMailbox.hMailbox, messageId);
+        long hMsg = MrMailbox.MrMailboxGetMsg(MrMailbox.hMailbox, messageId);
         if( hMsg==0 )  { return; }
 
         final int fromId = MrMailbox.MrMsgGetFromId(hMsg);
-        long hContact = MrMailbox.MrMailboxGetContactById(MrMailbox.hMailbox, fromId);
+        long hContact = MrMailbox.MrMailboxGetContact(MrMailbox.hMailbox, fromId);
         if( hContact==0 )  { MrMailbox.MrMsgUnref(hMsg); return; }
 
         String name = MrMailbox.MrContactGetName(hContact);
@@ -4987,7 +4987,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         } else if (id == NotificationCenter.messagesSentOrRead) {
             int back_id = MrMailbox.MrChatGetId(m_hChat);
             MrMailbox.MrChatUnref(m_hChat);
-            MrMailbox.MrMailboxGetChatById(MrMailbox.hMailbox, back_id);
+            MrMailbox.MrMailboxGetChat(MrMailbox.hMailbox, back_id);
 
             int evt_read = (int)args[0];
             int evt_chat_id = (int)args[1];
@@ -6111,7 +6111,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                         for (HashMap.Entry<Integer, MessageObject> entry : selectedMessagesIds[a].entrySet()) {
                             MessageObject msg = entry.getValue();
                             int id_to_del = msg.messageOwner.id;
-                            MrMailbox.MrMailboxDeleteMsgById(MrMailbox.hMailbox, id_to_del);
+                            MrMailbox.MrMailboxDeleteMsg(MrMailbox.hMailbox, id_to_del);
                         }
                         NotificationCenter.getInstance().postNotificationName(NotificationCenter.messagesDeleted, ids, 0);
                     }
@@ -6328,7 +6328,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         String str = "";
         if (name) {
             if (previousUid != messageObject.messageOwner.from_id) {
-                long hContact = MrMailbox.MrMailboxGetContactById(MrMailbox.hMailbox, messageObject.messageOwner.from_id);
+                long hContact = MrMailbox.MrMailboxGetContact(MrMailbox.hMailbox, messageObject.messageOwner.from_id);
                     str += MrMailbox.MrContactGetDisplayName(hContact) + ":\n";
                 MrMailbox.MrContactUnref(hContact);
             }

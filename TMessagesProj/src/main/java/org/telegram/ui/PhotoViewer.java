@@ -2711,7 +2711,7 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
 
             if( currentMessageObject!=null && currentMessageObject.messageOwner!=null )
             {
-                long hContact = MrMailbox.MrMailboxGetContactById(MrMailbox.hMailbox, currentMessageObject.messageOwner.from_id);
+                long hContact = MrMailbox.MrMailboxGetContact(MrMailbox.hMailbox, currentMessageObject.messageOwner.from_id);
                 nameTextView.setText(MrMailbox.MrContactGetDisplayName(hContact));
                 MrMailbox.MrContactUnref(hContact);
             }

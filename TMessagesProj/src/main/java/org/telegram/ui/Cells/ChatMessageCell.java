@@ -3637,7 +3637,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
 
         String cname = "";
         if(currentUser!=null && isChat) {
-            long hContact = MrMailbox.MrMailboxGetContactById(MrMailbox.hMailbox, currentUser.id);
+            long hContact = MrMailbox.MrMailboxGetContact(MrMailbox.hMailbox, currentUser.id);
             cname = MrMailbox.MrContactGetDisplayName(hContact);
             MrMailbox.MrContactUnref(hContact);
         }
