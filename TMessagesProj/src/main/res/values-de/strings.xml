@@ -652,8 +652,8 @@
     <string name="ShareYouLocationUnable">App kann deinen aktuellen Standort nicht bestimmen</string>
     <string name="ShareYouLocationUnableManually">Selbst wählen</string>
     <string name="ShareYouLocationInline">Dieser Bot möchte bei jeder Anfrage deinen Standort wissen. Das kann für standortabhängig aufbereitete Informationen benutzt werden.</string>
-    <string name="AreYouSureBlockContact">Diesen Kontakt wirklich blockieren?</string>
-    <string name="AreYouSureUnblockContact">Blockierung für diesen Kontakt wirklich aufheben?</string>
+    <string name="AreYouSureBlockContact">Diesen Benutzer wirklich blockieren?</string>
+    <string name="AreYouSureUnblockContact">Blockierung für diesen Benutzer wirklich aufheben?</string>
     <string name="AreYouSureDeleteContact">Diesen Kontakt wirklich löschen?</string>
     <string name="AreYouSureSecretChat">Geheimen Chat starten?</string>
     <string name="AreYouSureRegistration">Bist du dir sicher, dass du die Registrierung abbrechen willst?</string>

@@ -6712,18 +6712,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
 
     }
 
-    public TLRPC.User getCurrentUser() {
-        return currentUser;
-    }
-
-    public TLRPC.Chat getCurrentChat() {
-        return currentChat;
-    }
-
-    public TLRPC.ChatFull getCurrentChatInfo() {
-        return info;
-    }
-
     @Override
     public PhotoViewer.PlaceProviderObject getPlaceForPhoto(MessageObject messageObject, TLRPC.FileLocation fileLocation, int index) {
         int count = chatListView.getChildCount();

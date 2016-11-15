@@ -38,6 +38,7 @@ import android.view.animation.AccelerateInterpolator;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import org.telegram.messenger.AndroidUtilities;
 import org.telegram.messenger.AnimatorListenerAdapterProxy;
@@ -279,39 +280,18 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                 if (id == -1) {
                     finishFragment();
                 } else if (id == block_contact) {
-                    TLRPC.User user = MessagesController.getInstance().getUser(user_id);
-                    if (user == null) {
-                        return;
-                    }
-                    /*if (!user.bot)*/ {
-                        AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
-                        if (!userBlocked) {
-                            builder.setMessage(LocaleController.getString("AreYouSureBlockContact", R.string.AreYouSureBlockContact));
-                        } else {
-                            builder.setMessage(LocaleController.getString("AreYouSureUnblockContact", R.string.AreYouSureUnblockContact));
+
+                    AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
+                    builder.setMessage(userBlocked? LocaleController.getString("AreYouSureUnblockContact", R.string.AreYouSureUnblockContact) : LocaleController.getString("AreYouSureBlockContact", R.string.AreYouSureBlockContact));
+                    builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                        Toast.makeText(getParentActivity(), LocaleController.getString("NotYetImplemented", R.string.NotYetImplemented), Toast.LENGTH_LONG).show();
                         }
-                        builder.setTitle(LocaleController.getString("AppName", R.string.AppName));
-                        builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
-                                if (!userBlocked) {
-                                    MessagesController.getInstance().blockUser(user_id);
-                                } else {
-                                    MessagesController.getInstance().unblockUser(user_id);
-                                }
-                            }
-                        });
-                        builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
-                        showDialog(builder.create());
-                    } /* else {
-                        if (!userBlocked) {
-                            MessagesController.getInstance().blockUser(user_id);
-                        } else {
-                            MessagesController.getInstance().unblockUser(user_id);
-                            SendMessagesHelper.getInstance().sendMessage("/start", user_id, null, null, false, null, null, null);
-                            finishFragment();
-                        }
-                    }*/
+                    });
+                    builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
+                    showDialog(builder.create());
+
                 } else if (id == add_contact) {
                     TLRPC.User user = MessagesController.getInstance().getUser(user_id);
                     Bundle args = new Bundle();

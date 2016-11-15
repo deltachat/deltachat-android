@@ -186,14 +186,12 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
 
     protected class DelayedMessage {
         public TLObject sendRequest;
-        public TLRPC.TL_decryptedMessage sendEncryptedRequest;
         public int type;
         public String originalPath;
         public TLRPC.FileLocation location;
         public TLRPC.TL_document documentLocation;
         public String httpLocation;
         public MessageObject obj;
-        public TLRPC.EncryptedChat encryptedChat;
         public VideoEditedInfo videoEditedInfo;
     }
 
@@ -352,12 +350,12 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
             }
             */
         } else if (id == NotificationCenter.FileNewChunkAvailable) {
-            MessageObject messageObject = (MessageObject) args[0];
-            String finalPath = (String) args[1];
-            long finalSize = (Long) args[2];
+            //MessageObject messageObject = (MessageObject) args[0];
+            //String finalPath = (String) args[1];
+            //long finalSize = (Long) args[2];
             //boolean isEncrypted = false;//((int) messageObject.getDialogId()) == 0;
             //FileLoader.getInstance().checkUploadNewDataAvailable(finalPath, isEncrypted, finalSize);
-            if (finalSize != 0) {
+            //if (finalSize != 0) {
                 /*
                 ArrayList<DelayedMessage> arr = delayedMessages.get(messageObject.messageOwner.attachPath);
                 if (arr != null) {
@@ -379,10 +377,10 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
                     }
                 }
                 */
-            }
+            //}
         } else if (id == NotificationCenter.FilePreparingFailed) {
             MessageObject messageObject = (MessageObject) args[0];
-            String finalPath = (String) args[1];
+            //String finalPath = (String) args[1];
             stopVideoService(messageObject.messageOwner.attachPath);
             /*
             ArrayList<DelayedMessage> arr = delayedMessages.get(finalPath);
