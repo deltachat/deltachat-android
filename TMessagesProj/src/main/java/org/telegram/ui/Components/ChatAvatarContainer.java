@@ -60,10 +60,8 @@ public class ChatAvatarContainer extends FrameLayout {
             @Override
             public void onClick(View v) {
                 Bundle args = new Bundle();
-                boolean setChatInfo = false;
                 if( MrMailbox.MrChatGetType(parentFragment.m_hChat)==MrMailbox.MR_CHAT_GROUP ) {
                     args.putInt("chat_id",  MrMailbox.MrChatGetId(parentFragment.m_hChat));
-                    setChatInfo = true;
                 }
                 else {
                     int[] contact_ids = MrMailbox.MrMailboxGetChatContacts(MrMailbox.hMailbox, MrMailbox.MrChatGetId(parentFragment.m_hChat));
@@ -74,9 +72,6 @@ public class ChatAvatarContainer extends FrameLayout {
                 }
 
                 ProfileActivity fragment = new ProfileActivity(args);
-                if( setChatInfo ) {
-                    fragment.setChatInfo(parentFragment.getCurrentChatInfo());
-                }
                 fragment.setPlayProfileAnimation(true);
                 parentFragment.presentFragment(fragment);
             }

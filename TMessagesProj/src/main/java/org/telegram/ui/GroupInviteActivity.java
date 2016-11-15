@@ -61,7 +61,7 @@ public class GroupInviteActivity extends BaseFragment implements NotificationCen
     public boolean onFragmentCreate() {
         super.onFragmentCreate();
 
-        NotificationCenter.getInstance().addObserver(this, NotificationCenter.chatInfoDidLoaded);
+        //NotificationCenter.getInstance().addObserver(this, NotificationCenter.chatInfoDidLoaded);
         //MessagesController.getInstance().loadFullChat(chat_id, classGuid, true);
         loading = true;
 
@@ -78,7 +78,7 @@ public class GroupInviteActivity extends BaseFragment implements NotificationCen
 
     @Override
     public void onFragmentDestroy() {
-        NotificationCenter.getInstance().removeObserver(this, NotificationCenter.chatInfoDidLoaded);
+        //NotificationCenter.getInstance().removeObserver(this, NotificationCenter.chatInfoDidLoaded);
     }
 
     @Override
@@ -166,7 +166,7 @@ public class GroupInviteActivity extends BaseFragment implements NotificationCen
 
     @Override
     public void didReceivedNotification(int id, Object... args) {
-        if (id == NotificationCenter.chatInfoDidLoaded) {
+        /*if (id == NotificationCenter.chatInfoDidLoaded) {
             TLRPC.ChatFull info = (TLRPC.ChatFull) args[0];
             int guid = (int) args[1];
             if (info.id == chat_id && guid == classGuid) {
@@ -180,7 +180,7 @@ public class GroupInviteActivity extends BaseFragment implements NotificationCen
                     }
                 }
             }
-        }
+        }*/
     }
 
     @Override

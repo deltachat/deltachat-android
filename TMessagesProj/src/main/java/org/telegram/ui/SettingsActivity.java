@@ -1188,27 +1188,6 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
     }
 
     private void updateUserData() {
-        TLRPC.User user = MessagesController.getInstance().getUser(UserConfig.getClientUserId());
-        TLRPC.FileLocation photo = null;
-        TLRPC.FileLocation photoBig = null;
-        if (user.photo != null) {
-            photo = user.photo.photo_small;
-            photoBig = user.photo.photo_big;
-        }
-        AvatarDrawable avatarDrawable = new AvatarDrawable(user, true);
-
-        avatarDrawable.setColor_(Theme.ACTION_BAR_MAIN_AVATAR_COLOR);
-        /*  EDIT BY MR
-        if (avatarImage != null) {
-            avatarImage.setImage(photo, "50_50", avatarDrawable);
-            avatarImage.getImageReceiver().setVisible(!PhotoViewer.getInstance().isShowingImage(photoBig), false);
-
-            nameTextView.setText(UserObject.getUserName(user));
-            onlineTextView.setText(LocaleController.getString("Online", R.string.Online));
-
-            avatarImage.getImageReceiver().setVisible(!PhotoViewer.getInstance().isShowingImage(photoBig), false);
-        }
-        */
     }
 
     /* EDIT BY MR

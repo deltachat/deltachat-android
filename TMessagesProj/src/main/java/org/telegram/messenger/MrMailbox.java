@@ -157,6 +157,13 @@ public class MrMailbox {
         return ret;
     }
 
+    public static TLRPC.Chat chatId2chat(int id)
+    {
+        TLRPC.Chat ret = new TLRPC.Chat();
+        ret.id = id;
+        return ret;
+    }
+
     public static void reloadMainChatlist()
     {
         MrChatlistUnref(hCurrChatlist); // it's not optimal running this on the UI thread, maybe we should lock it and run it in a separate thread

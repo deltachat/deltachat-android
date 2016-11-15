@@ -32,7 +32,6 @@ public class AvatarDrawable extends Drawable {
     private static TextPaint namePaint;
     private static TextPaint namePaintSmall;
     private static int[] arrColors             = {0xffe56555, 0xfff28c48, 0xff8e85ee, 0xff76c84d, 0xff5bb6cc, 0xff549cdd, 0xffd25c99, 0xffb37800}; /* the colors should contrast to typical action bar colors as well as to white (more important, is used as text color)*/
-    private static int[] arrColorsProfiles     = {0xffd86f65, 0xfff69d61, 0xff8c79d2, 0xff67b35d, 0xff56a2bb, Theme.ACTION_BAR_MAIN_AVATAR_COLOR, 0xff8c79d2, 0xfff37fa6};
     private static int[] arrColorsProfilesText = {0xfff9cbc5, 0xfffdddc8, 0xffcdc4ed, 0xffc0edba, 0xffb8e2f0, Theme.ACTION_BAR_PROFILE_SUBTITLE_COLOR, 0xffcdc4ed, 0xffb3d7f7};
     private static int[] arrColorsButtons      = {Theme.ACTION_BAR_RED_SELECTOR_COLOR, Theme.ACTION_BAR_ORANGE_SELECTOR_COLOR, Theme.ACTION_BAR_VIOLET_SELECTOR_COLOR,
             Theme.ACTION_BAR_GREEN_SELECTOR_COLOR, Theme.ACTION_BAR_CYAN_SELECTOR_COLOR, Theme.ACTION_BAR_BLUE_SELECTOR_COLOR, Theme.ACTION_BAR_VIOLET_SELECTOR_COLOR, Theme.ACTION_BAR_BLUE_SELECTOR_COLOR};
@@ -44,7 +43,6 @@ public class AvatarDrawable extends Drawable {
     private float textWidth;
     private float textHeight;
     private float textLeft;
-    private boolean isProfile;
     private boolean drawPhoto;
     private boolean smallStyle;
     private StringBuilder stringBuilder = new StringBuilder(5);
@@ -64,31 +62,17 @@ public class AvatarDrawable extends Drawable {
     }
 
     public AvatarDrawable(TLRPC.User user) {
-        this(user, false);
-    }
-
-    public AvatarDrawable(TLRPC.Chat chat) {
-        this(chat, false);
-    }
-
-    public AvatarDrawable(TLRPC.User user, boolean profile) {
         this();
-        isProfile = profile;
         if (user != null) {
             setInfoByName(user.first_name+" "+ user.last_name);
         }
     }
 
-    public AvatarDrawable(TLRPC.Chat chat, boolean profile) {
+    public AvatarDrawable(TLRPC.Chat chat) {
         this();
-        isProfile = profile;
         if (chat != null) {
             setInfoByName(chat.title);
         }
-    }
-
-    public void setProfile(boolean value) {
-        isProfile = value;
     }
 
     public void setSmallStyle(boolean value) {
@@ -105,10 +89,6 @@ public class AvatarDrawable extends Drawable {
 
     public static int getButtonColorForId(int id) {
         return arrColorsButtons[getColorIndex(id)];
-    }
-
-    public static int getProfileColorForId(int id) {
-        return arrColorsProfiles[getColorIndex(id)];
     }
 
     public static int getProfileTextColorForId(int id) {
@@ -153,11 +133,7 @@ public class AvatarDrawable extends Drawable {
 
         int id = strChecksum(firstName);
 
-        if (isProfile) {
-            color = arrColorsProfiles[getColorIndex(id)];
-        } else {
-            color = arrColors[getColorIndex(id)];
-        }
+        color = arrColors[getColorIndex(id)];
 
         if (firstName == null || firstName.length() == 0) {
             firstName = lastName;

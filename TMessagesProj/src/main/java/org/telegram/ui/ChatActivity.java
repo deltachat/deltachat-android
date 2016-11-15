@@ -441,7 +441,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.messageReceivedByServer);
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.messageReceivedByAck);
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.messageSendError);
-        NotificationCenter.getInstance().addObserver(this, NotificationCenter.chatInfoDidLoaded);
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.contactsDidLoaded);
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.removeAllMessagesFromDialog);
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.audioProgressDidChanged);
@@ -461,8 +460,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.messagesReadContent);
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.chatSearchResultsAvailable);
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.didUpdatedMessagesViews);
-        NotificationCenter.getInstance().addObserver(this, NotificationCenter.chatInfoCantLoad);
-        NotificationCenter.getInstance().addObserver(this, NotificationCenter.didLoadedPinnedMessage);
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.peerSettingsDidLoaded);
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.newDraftReceived);
 
@@ -561,7 +558,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         NotificationCenter.getInstance().removeObserver(this, NotificationCenter.messageReceivedByServer);
         NotificationCenter.getInstance().removeObserver(this, NotificationCenter.messageReceivedByAck);
         NotificationCenter.getInstance().removeObserver(this, NotificationCenter.messageSendError);
-        NotificationCenter.getInstance().removeObserver(this, NotificationCenter.chatInfoDidLoaded);
         NotificationCenter.getInstance().removeObserver(this, NotificationCenter.removeAllMessagesFromDialog);
         NotificationCenter.getInstance().removeObserver(this, NotificationCenter.contactsDidLoaded);
         NotificationCenter.getInstance().removeObserver(this, NotificationCenter.audioProgressDidChanged);
@@ -581,8 +577,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         NotificationCenter.getInstance().removeObserver(this, NotificationCenter.chatSearchResultsAvailable);
         NotificationCenter.getInstance().removeObserver(this, NotificationCenter.audioPlayStateChanged);
         NotificationCenter.getInstance().removeObserver(this, NotificationCenter.didUpdatedMessagesViews);
-        NotificationCenter.getInstance().removeObserver(this, NotificationCenter.chatInfoCantLoad);
-        NotificationCenter.getInstance().removeObserver(this, NotificationCenter.didLoadedPinnedMessage);
         NotificationCenter.getInstance().removeObserver(this, NotificationCenter.peerSettingsDidLoaded);
         NotificationCenter.getInstance().removeObserver(this, NotificationCenter.newDraftReceived);
 
@@ -4210,7 +4204,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
 
                 // define the animations that we want to receive during the opening animation -- EDIT BY MR
                 if (!openAnimationEnded) {
-                    NotificationCenter.getInstance().setAllowedNotificationsDutingAnimation(new int[]{NotificationCenter.chatInfoDidLoaded, NotificationCenter.dialogsNeedReload,
+                    NotificationCenter.getInstance().setAllowedNotificationsDutingAnimation(new int[]{NotificationCenter.dialogsNeedReload,
                             NotificationCenter.closeChats});
                 }
 
@@ -5143,11 +5137,11 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 obj.messageOwner.send_state = MessageObject.MESSAGE_SEND_STATE_SEND_ERROR;
                 updateVisibleRows();
             }
-        } else if (id == NotificationCenter.chatInfoDidLoaded) {
+        /*} else if (id == NotificationCenter.chatInfoDidLoaded) {
             TLRPC.ChatFull chatFull = (TLRPC.ChatFull) args[0];
             if (currentChat != null && chatFull.id == currentChat.id) {
                 if (chatFull instanceof TLRPC.TL_channelFull) {
-                    /*if (currentChat.megagroup) {
+                    if (currentChat.megagroup) {
                         int lastDate = 0;
                         if (chatFull.participants != null) {
                             for (int a = 0; a < chatFull.participants.participants.size(); a++) {
@@ -5157,7 +5151,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                         if (lastDate == 0 || Math.abs(System.currentTimeMillis() / 1000 - lastDate) > 60 * 60) {
                             MessagesController.getInstance().loadChannelParticipants(currentChat.id);
                         }
-                    }*/
+                    }
                     if (chatFull.participants == null && info != null) {
                         chatFull.participants = info.participants;
                     }
@@ -5176,22 +5170,22 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     avatarContainer.updateSubtitle();
                 }
                 if (info instanceof TLRPC.TL_chatFull) {
-                    //for (int a = 0; a < info.participants.participants.size(); a++) {
-                    //    TLRPC.ChatParticipant participant = info.participants.participants.get(a);
-                    //    TLRPC.User user = MessagesController.getInstance().getUser(participant.user_id);
-                    //}
+                    for (int a = 0; a < info.participants.participants.size(); a++) {
+                        TLRPC.ChatParticipant participant = info.participants.participants.get(a);
+                        TLRPC.User user = MessagesController.getInstance().getUser(participant.user_id);
+                    }
                     if (chatListView != null) {
                         chatListView.invalidateViews();
                     }
                 } else if (info instanceof TLRPC.TL_channelFull) {
-                    //botInfo.clear();
-                    //URLSpanBotCommand.enabled = !info.bot_info.isEmpty();
+                    botInfo.clear();
+                    URLSpanBotCommand.enabled = !info.bot_info.isEmpty();
                     if (chatListView != null) {
                         chatListView.invalidateViews();
                     }
-                    //if (mentionsAdapter != null && (!ChatObject.isChannel(currentChat) || currentChat != null && currentChat.megagroup)) {
-                    //    mentionsAdapter.setBotInfo(botInfo);
-                    //}
+                    if (mentionsAdapter != null && (!ChatObject.isChannel(currentChat) || currentChat != null && currentChat.megagroup)) {
+                        mentionsAdapter.setBotInfo(botInfo);
+                    }
                 }
             }
         } else if (id == NotificationCenter.chatInfoCantLoad) {
@@ -5221,6 +5215,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     chatAdapter.notifyDataSetChanged();
                 }
             }
+        */
         } else if (id == NotificationCenter.contactsDidLoaded) {
             updateContactStatus();
             if (avatarContainer != null) {
@@ -5427,13 +5422,14 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
             if (did == dialog_id) {
                 updateVisibleRows();
             }
-        } else if (id == NotificationCenter.didLoadedPinnedMessage) {
+        /*} else if (id == NotificationCenter.didLoadedPinnedMessage) {
             MessageObject message = (MessageObject) args[0];
             if (message.getDialogId() == dialog_id && info != null && info.pinned_msg_id == message.getId()) {
                 pinnedMessageObject = message;
                 loadingPinnedMessage = 0;
                 updatePinnedMessageView(true);
             }
+        */
         } else if (id == NotificationCenter.didReceivedWebpages) {
             ArrayList<TLRPC.Message> arrayList = (ArrayList<TLRPC.Message>) args[0];
             boolean updated = false;
@@ -5544,7 +5540,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
 
     @Override
     public void onTransitionAnimationStart(boolean isOpen, boolean backward) {
-        NotificationCenter.getInstance().setAllowedNotificationsDutingAnimation(new int[]{NotificationCenter.chatInfoDidLoaded, NotificationCenter.dialogsNeedReload,
+        NotificationCenter.getInstance().setAllowedNotificationsDutingAnimation(new int[]{NotificationCenter.dialogsNeedReload,
                 NotificationCenter.closeChats, NotificationCenter.messagesDidLoaded});
         NotificationCenter.getInstance().setAnimationInProgress(true);
         if (isOpen) {

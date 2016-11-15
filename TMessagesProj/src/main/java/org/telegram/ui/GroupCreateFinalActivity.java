@@ -92,7 +92,7 @@ public class GroupCreateFinalActivity extends BaseFragment implements Notificati
             }
         }
         if (!usersToLoad.isEmpty()) {
-            final Semaphore semaphore = new Semaphore(0);
+            //final Semaphore semaphore = new Semaphore(0);
             final ArrayList<TLRPC.User> users = new ArrayList<>();
             /*
             MessagesStorage.getInstance().getStorageQueue().postRunnable(new Runnable() {
@@ -103,11 +103,11 @@ public class GroupCreateFinalActivity extends BaseFragment implements Notificati
                 }
             });
             */
-            try {
+            /*try {
                 semaphore.acquire();
             } catch (Exception e) {
                 FileLog.e("tmessages", e);
-            }
+            }*/
             if (usersToLoad.size() != users.size()) {
                 return false;
             }
