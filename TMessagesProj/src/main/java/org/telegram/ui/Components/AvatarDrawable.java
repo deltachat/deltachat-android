@@ -32,7 +32,6 @@ public class AvatarDrawable extends Drawable {
     private static TextPaint namePaint;
     private static TextPaint namePaintSmall;
     private static int[] arrColors             = {0xffe56555, 0xfff28c48, 0xff8e85ee, 0xff76c84d, 0xff5bb6cc, 0xff549cdd, 0xffd25c99, 0xffb37800}; /* the colors should contrast to typical action bar colors as well as to white (more important, is used as text color)*/
-    private static int[] arrColorsProfilesText = {0xfff9cbc5, 0xfffdddc8, 0xffcdc4ed, 0xffc0edba, 0xffb8e2f0, Theme.ACTION_BAR_PROFILE_SUBTITLE_COLOR, 0xffcdc4ed, 0xffb3d7f7};
     private static int[] arrColorsButtons      = {Theme.ACTION_BAR_RED_SELECTOR_COLOR, Theme.ACTION_BAR_ORANGE_SELECTOR_COLOR, Theme.ACTION_BAR_VIOLET_SELECTOR_COLOR,
             Theme.ACTION_BAR_GREEN_SELECTOR_COLOR, Theme.ACTION_BAR_CYAN_SELECTOR_COLOR, Theme.ACTION_BAR_BLUE_SELECTOR_COLOR, Theme.ACTION_BAR_VIOLET_SELECTOR_COLOR, Theme.ACTION_BAR_BLUE_SELECTOR_COLOR};
 
@@ -89,10 +88,6 @@ public class AvatarDrawable extends Drawable {
 
     public static int getButtonColorForId(int id) {
         return arrColorsButtons[getColorIndex(id)];
-    }
-
-    public static int getProfileTextColorForId(int id) {
-        return arrColorsProfilesText[getColorIndex(id)];
     }
 
     public static int getNameColor(String name) {

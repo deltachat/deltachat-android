@@ -340,15 +340,11 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                     presentFragment(fragment);
                 } else if (id == add_shortcut) {
                     try {
-                        long did;
-                        if (user_id != 0) {
-                            did = user_id;
-                        } else if (chat_id != 0) {
-                            did = -chat_id;
-                        } else {
-                            return;
+                        int install_chat_id = chat_id;
+                        if (install_chat_id == 0) {
+                            install_chat_id = MrMailbox.MrMailboxGetChatIdByContactId(MrMailbox.hMailbox, user_id);
                         }
-                        AndroidUtilities.installShortcut(did);
+                        AndroidUtilities.installShortcut(install_chat_id);
                         Toast.makeText(getParentActivity(), LocaleController.getString("ShortcutAdded", R.string.ShortcutAdded), Toast.LENGTH_LONG).show();
                     } catch (Exception e) {
                         FileLog.e("tmessages", e);
@@ -571,7 +567,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                 continue;
             }
             nameTextView[a] = new SimpleTextView(context);
-            nameTextView[a].setTextColor(0xffffffff);
+            nameTextView[a].setTextColor(Theme.ACTION_BAR_TITLE_COLOR);
             nameTextView[a].setTextSize(18);
             nameTextView[a].setGravity(Gravity.LEFT);
             nameTextView[a].setTypeface(AndroidUtilities.getTypeface("fonts/rmedium.ttf"));
@@ -582,13 +578,13 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
             frameLayout.addView(nameTextView[a], LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.LEFT | Gravity.TOP, 118, 0, a == 0 ? 48 : 0, 0));
 
             onlineTextView[a] = new SimpleTextView(context);
-            onlineTextView[a].setTextColor(AvatarDrawable.getProfileTextColorForId(user_id != 0 || ChatObject.isChannel(chat_id) && !currentChat.megagroup ? 5 : chat_id));
+            onlineTextView[a].setTextColor(Theme.ACTION_BAR_SUBTITLE_COLOR);
             onlineTextView[a].setTextSize(14);
             onlineTextView[a].setGravity(Gravity.LEFT);
             frameLayout.addView(onlineTextView[a], LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.LEFT | Gravity.TOP, 118, 0, a == 0 ? 48 : 8, 0));
         }
 
-        if (user_id != 0 || chat_id >= 0 && !ChatObject.isLeftFromChat(currentChat)) {
+        if ( chat_id != 0 && chat_id!=MrMailbox.MR_CHAT_ID_STRANGERS ) {
             writeButton = new ImageView(context);
             try {
                 writeButton.setBackgroundResource(R.drawable.floating_user_states);
@@ -596,12 +592,8 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                 FileLog.e("tmessages", e);
             }
             writeButton.setScaleType(ImageView.ScaleType.CENTER);
-            if (user_id != 0) {
-                writeButton.setImageResource(R.drawable.floating_message);
-                writeButton.setPadding(0, AndroidUtilities.dp(3), 0, 0);
-            } else if (chat_id != 0) {
-                writeButton.setImageResource(R.drawable.floating_camera);
-            }
+            writeButton.setImageResource(R.drawable.floating_camera);
+
             frameLayout.addView(writeButton, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.RIGHT | Gravity.TOP, 0, 0, 16, 0));
             if (Build.VERSION.SDK_INT >= 21) {
                 StateListAnimator animator = new StateListAnimator();
@@ -622,48 +614,28 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                     if (getParentActivity() == null) {
                         return;
                     }
-                    if (user_id != 0) {
-                        ; // the button is not used in user profile - for creating a new chat, we use a text (more clearer) and changing photos should be done in the contact-app
-                    } else if (chat_id != 0) {
-                        boolean isChannel = ChatObject.isChannel(currentChat);
-                        if (isChannel && !currentChat.creator && (!currentChat.megagroup || !currentChat.editor) || !isChannel && !currentChat.admin && !currentChat.creator && currentChat.admins_enabled) {
-                            if (playProfileAnimation && parentLayout.fragmentsStack.get(parentLayout.fragmentsStack.size() - 2) instanceof ChatActivity) {
-                                finishFragment();
-                            } else {
-                                Bundle args = new Bundle();
-                                args.putInt("chat_id", currentChat.id);
-                                if (!MessagesController.checkCanOpenChat(args, ProfileActivity.this)) {
-                                    return;
-                                }
-                                NotificationCenter.getInstance().removeObserver(ProfileActivity.this, NotificationCenter.closeChats);
-                                NotificationCenter.getInstance().postNotificationName(NotificationCenter.closeChats);
-                                presentFragment(new ChatActivity(args), true);
-                            }
-                        } else {
-                            AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
-                            CharSequence[] items;
-                            TLRPC.Chat chat = MrMailbox.chatId2chat(chat_id);
-                            if (chat.photo == null || chat.photo.photo_big == null || chat.photo instanceof TLRPC.TL_chatPhotoEmpty) {
-                                items = new CharSequence[]{LocaleController.getString("FromCamera", R.string.FromCamera), LocaleController.getString("FromGalley", R.string.FromGalley)};
-                            } else {
-                                items = new CharSequence[]{LocaleController.getString("FromCamera", R.string.FromCamera), LocaleController.getString("FromGalley", R.string.FromGalley), LocaleController.getString("DeletePhoto", R.string.DeletePhoto)};
-                            }
-
-                            builder.setItems(items, new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialogInterface, int i) {
-                                    if (i == 0) {
-                                        avatarUpdater.openCamera();
-                                    } else if (i == 1) {
-                                        avatarUpdater.openGallery();
-                                    } else if (i == 2) {
-                                        MessagesController.getInstance().changeChatAvatar(chat_id, null);
-                                    }
-                                }
-                            });
-                            showDialog(builder.create());
-                        }
+                    AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
+                    CharSequence[] items;
+                    TLRPC.Chat chat = MrMailbox.chatId2chat(chat_id);
+                    if (chat.photo == null || chat.photo.photo_big == null || chat.photo instanceof TLRPC.TL_chatPhotoEmpty) {
+                        items = new CharSequence[]{LocaleController.getString("FromCamera", R.string.FromCamera), LocaleController.getString("FromGalley", R.string.FromGalley)};
+                    } else {
+                        items = new CharSequence[]{LocaleController.getString("FromCamera", R.string.FromCamera), LocaleController.getString("FromGalley", R.string.FromGalley), LocaleController.getString("DeletePhoto", R.string.DeletePhoto)};
                     }
+
+                    builder.setItems(items, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            if (i == 0) {
+                                avatarUpdater.openCamera();
+                            } else if (i == 1) {
+                                avatarUpdater.openGallery();
+                            } else if (i == 2) {
+                                MessagesController.getInstance().changeChatAvatar(chat_id, null);
+                            }
+                        }
+                    });
+                    showDialog(builder.create());
                 }
             });
         }
@@ -1002,7 +974,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
         int gD = (int) ((Color.green(color) - g) * progress);
         int bD = (int) ((Color.blue(color) - b) * progress);
         topView.setBackgroundColor(Color.rgb(r + rD, g + gD, b + bD));
-        color = AvatarDrawable.getProfileTextColorForId(user_id != 0 || ChatObject.isChannel(chat_id) && !currentChat.megagroup ? 5 : chat_id);
+        color = Theme.ACTION_BAR_SUBTITLE_COLOR;
 
         r = Color.red(Theme.ACTION_BAR_SUBTITLE_COLOR);
         g = Color.green(Theme.ACTION_BAR_SUBTITLE_COLOR);
@@ -1349,130 +1321,91 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
 
         emptyRow = rowCount++;
         settingsNotificationsRow = rowCount++;
-        changeNameRow = rowCount++;
+
+        if( user_id!=0 || chat_id!=MrMailbox.MR_CHAT_ID_STRANGERS) {
+            changeNameRow = rowCount++;
+        }
 
         if (user_id != 0) {
             startChatRow = rowCount++;;
-        } else if (chat_id != 0) {
+        } else if (chat_id != 0 && chat_id!=MrMailbox.MR_CHAT_ID_STRANGERS ) {
             addMemberRow = rowCount++;
         }
+
+        if( chat_id != 0 ) {
+            /*
+            emptyRowChat2 = rowCount++;
+            rowCount += 10;
+            membersEndRow = rowCount;
+            */
+        }
+
+
     }
 
     private void updateProfileData() {
         if (avatarImage == null || nameTextView == null) {
             return;
         }
-        if (user_id != 0) {
-            TLRPC.User user = MessagesController.getInstance().getUser(user_id);
-            TLRPC.FileLocation photo = null;
-            TLRPC.FileLocation photoBig = null;
-            if (user.photo != null) {
-                photo = user.photo.photo_small;
-                photoBig = user.photo.photo_big;
-            }
-            avatarDrawable.setInfoByUser(user);
-            avatarImage.setImage(photo, "50_50", avatarDrawable);
 
-            String newString;
-            String newString2;
+        TLRPC.User user = MessagesController.getInstance().getUser(user_id);
+        TLRPC.FileLocation photo = null;
+        TLRPC.FileLocation photoBig = null;
+        if (user.photo != null) {
+            photo = user.photo.photo_small;
+            photoBig = user.photo.photo_big;
+        }
+        avatarDrawable.setInfoByUser(user);
+        avatarImage.setImage(photo, "50_50", avatarDrawable);
 
+        String newString;
+        String newString2;
+
+        if( user_id!=0 ) {
             long hContact = MrMailbox.MrMailboxGetContact(MrMailbox.hMailbox, user_id);
-                newString  = MrMailbox.MrContactGetDisplayName(hContact);
+                newString = MrMailbox.MrContactGetDisplayName(hContact);
                 newString2 = MrMailbox.MrContactGetAddr(hContact);
             MrMailbox.MrContactUnref(hContact);
-
-            for (int a = 0; a < 2; a++) {
-                if (nameTextView[a] == null) {
-                    continue;
-                }
-                if (a == 0 && user.phone != null && user.phone.length() != 0 && user.id / 1000 != 777 && user.id / 1000 != 333 && ContactsController.getInstance().contactsDict.get(user.id) == null &&
-                        (ContactsController.getInstance().contactsDict.size() != 0 || !ContactsController.getInstance().isLoadingContacts())) {
-                    String phoneString = "";//PhoneFormat.getInstance().format("+" + user.phone);
-                    if (!nameTextView[a].getText().equals(phoneString)) {
-                        nameTextView[a].setText(phoneString);
-                    }
-                } else {
-                    if (!nameTextView[a].getText().equals(newString)) {
-                        nameTextView[a].setText(newString);
-                    }
-                }
-                if (!onlineTextView[a].getText().equals(newString2)) {
-                    onlineTextView[a].setText(newString2);
-                }
-                int leftIcon = currentEncryptedChat != null ? R.drawable.ic_lock_header : 0;
-                int rightIcon = 0;
-                if (a == 0) {
-                    rightIcon = MessagesController.getInstance().isDialogMuted(dialog_id != 0 ? dialog_id : (long) user_id) ? R.drawable.mute_fixed : 0;
-                } else if (user.verified) {
-                    rightIcon = R.drawable.check_profile_fixed;
-                }
-                nameTextView[a].setLeftDrawable(leftIcon);
-                nameTextView[a].setRightDrawable(rightIcon);
-            }
-
-            avatarImage.getImageReceiver().setVisible(!PhotoViewer.getInstance().isShowingImage(photoBig), false);
-            avatarDrawable.setInfoByName(newString);
-        } else if (chat_id != 0) {
-            TLRPC.Chat chat = MrMailbox.chatId2chat(chat_id);
-            if (chat != null) {
-                currentChat = chat;
-            } else {
-                chat = currentChat;
-            }
-
-            String newString;
-            int count = chat.participants_count;
-            if (info != null) {
-                count = info.participants.participants.size();
-            }
-            if (count != 0 && onlineCount > 1) {
-                newString = String.format("%s, %s", LocaleController.formatPluralString("Members", count), LocaleController.formatPluralString("Online", onlineCount));
-            } else {
-                newString = LocaleController.formatPluralString("Members", count);
-            }
-
-            for (int a = 0; a < 2; a++) {
-                if (nameTextView[a] == null) {
-                    continue;
-                }
-                if (chat.title != null && !nameTextView[a].getText().equals(chat.title)) {
-                    nameTextView[a].setText(chat.title);
-                }
-                nameTextView[a].setLeftDrawable(null);
-                if (a != 0) {
-                    if (chat.verified) {
-                        nameTextView[a].setRightDrawable(R.drawable.check_profile_fixed);
-                    } else {
-                        nameTextView[a].setRightDrawable(null);
-                    }
-                } else {
-                    nameTextView[a].setRightDrawable(MessagesController.getInstance().isDialogMuted((long) -chat_id) ? R.drawable.mute_fixed : 0);
-                }
-                if (currentChat.megagroup && info != null && info.participants_count <= 200 && onlineCount > 0) {
-                    if (!onlineTextView[a].getText().equals(newString)) {
-                        onlineTextView[a].setText(newString);
-                    }
-                } else if (a == 0 && ChatObject.isChannel(currentChat) && info != null && info.participants_count != 0 && (currentChat.megagroup || currentChat.broadcast)) {
-                    int result[] = new int[1];
-                    String shortNumber = LocaleController.formatShortNumber(info.participants_count, result);
-                    onlineTextView[a].setText(LocaleController.formatPluralString("Members", result[0]).replace(String.format("%d", result[0]), shortNumber));
-                } else {
-                    if (!onlineTextView[a].getText().equals(newString)) {
-                        onlineTextView[a].setText(newString);
-                    }
-                }
-            }
-
-            TLRPC.FileLocation photo = null;
-            TLRPC.FileLocation photoBig = null;
-            if (chat.photo != null) {
-                photo = chat.photo.photo_small;
-                photoBig = chat.photo.photo_big;
-            }
-            avatarDrawable.setInfoByChat(chat);
-            avatarImage.setImage(photo, "50_50", avatarDrawable);
-            avatarImage.getImageReceiver().setVisible(!PhotoViewer.getInstance().isShowingImage(photoBig), false);
         }
+        else {
+            long hChat = MrMailbox.MrMailboxGetChat(MrMailbox.hMailbox, chat_id);
+                newString = MrMailbox.MrChatGetName(hChat);
+                newString2 = MrMailbox.MrChatGetSubtitle(hChat);
+            MrMailbox.MrChatUnref(hChat);
+        }
+
+        for (int a = 0; a < 2; a++) {
+            if (nameTextView[a] == null) {
+                continue;
+            }
+            if (a == 0 && user.phone != null && user.phone.length() != 0 && user.id / 1000 != 777 && user.id / 1000 != 333 && ContactsController.getInstance().contactsDict.get(user.id) == null &&
+                    (ContactsController.getInstance().contactsDict.size() != 0 || !ContactsController.getInstance().isLoadingContacts())) {
+                String phoneString = "";//PhoneFormat.getInstance().format("+" + user.phone);
+                if (!nameTextView[a].getText().equals(phoneString)) {
+                    nameTextView[a].setText(phoneString);
+                }
+            } else {
+                if (!nameTextView[a].getText().equals(newString)) {
+                    nameTextView[a].setText(newString);
+                }
+            }
+            if (!onlineTextView[a].getText().equals(newString2)) {
+                onlineTextView[a].setText(newString2);
+            }
+            int leftIcon = currentEncryptedChat != null ? R.drawable.ic_lock_header : 0;
+            int rightIcon = 0;
+            if (a == 0) {
+                rightIcon = MessagesController.getInstance().isDialogMuted(dialog_id != 0 ? dialog_id : (long) user_id) ? R.drawable.mute_fixed : 0;
+            } else if (user.verified) {
+                rightIcon = R.drawable.check_profile_fixed;
+            }
+            nameTextView[a].setLeftDrawable(leftIcon);
+            nameTextView[a].setRightDrawable(rightIcon);
+        }
+
+        avatarImage.getImageReceiver().setVisible(!PhotoViewer.getInstance().isShowingImage(photoBig), false);
+        avatarDrawable.setInfoByName(newString);
+
     }
 
     private void createActionBarMenu() {
@@ -1486,7 +1419,10 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
         } else if (chat_id != 0) {
             ;
         }
-        item.addSubItem(add_shortcut, LocaleController.getString("AddShortcut", R.string.AddShortcut), 0);
+
+        if( chat_id!=0 || MrMailbox.MrMailboxGetChatIdByContactId(MrMailbox.hMailbox, user_id)!=0 ) {
+            item.addSubItem(add_shortcut, LocaleController.getString("AddShortcut", R.string.AddShortcut), 0);
+        }
     }
 
     @Override
