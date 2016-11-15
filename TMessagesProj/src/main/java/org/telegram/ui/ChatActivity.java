@@ -3520,15 +3520,9 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
 
         final int fromId = MrMailbox.MrMsgGetFromId(hMsg);
         long hContact = MrMailbox.MrMailboxGetContact(MrMailbox.hMailbox, fromId);
-        if( hContact==0 )  { MrMailbox.MrMsgUnref(hMsg); return; }
-
-        String name = MrMailbox.MrContactGetName(hContact);
-        if( name.isEmpty() ) {
-            name =  MrMailbox.MrContactGetAddr(hContact);
-        }
-        else {
-            name += " (" + MrMailbox.MrContactGetAddr(hContact) + ")";
-        }
+            if( hContact==0 )  { MrMailbox.MrMsgUnref(hMsg); return; }
+            String name = MrMailbox.MrContactGetNameNAddr(hContact);
+        MrMailbox.MrContactUnref(hContact);
 
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
@@ -3550,7 +3544,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         builder.setMessage(AndroidUtilities.replaceTags(LocaleController.formatString("AskStartChatWith", R.string.AskStartChatWith, name)));
         showDialog(builder.create());
 
-        MrMailbox.MrContactUnref(hContact);
         MrMailbox.MrMsgUnref(hMsg);
     }
 

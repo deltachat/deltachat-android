@@ -129,11 +129,8 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
 
     private final static int add_contact = 1;
     private final static int block_contact = 2;
-    private final static int share_contact = 3;
-    private final static int edit_contact = 4;
     private final static int delete_contact = 5;
     private final static int invite_to_group = 9;
-    private final static int share = 10;
     private final static int add_shortcut = 14;
 
     private int emptyRow = -1;
@@ -151,7 +148,6 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
 
     private class TopView extends View {
 
-        private int currentColor;
         private Paint paint = new Paint();
 
         public TopView(Context context) {
@@ -165,10 +161,8 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
 
         @Override
         public void setBackgroundColor(int color) {
-            if (color != currentColor) {
-                paint.setColor(color);
-                invalidate();
-            }
+            paint.setColor(color);
+            invalidate();
         }
 
         @Override
@@ -199,7 +193,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
             NotificationCenter.getInstance().addObserver(this, NotificationCenter.updateInterfaces);
             NotificationCenter.getInstance().addObserver(this, NotificationCenter.contactsDidLoaded);
             NotificationCenter.getInstance().addObserver(this, NotificationCenter.userInfoDidLoaded);
-            userBlocked = MessagesController.getInstance().blockedUsers.contains(user_id);
+            userBlocked = false; //MessagesController.getInstance().blockedUsers.contains(user_id);
 
         } else if (chat_id != 0) {
             currentChat = MrMailbox.chatId2chat(chat_id);
@@ -298,19 +292,6 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                     args.putInt("user_id", user.id);
                     args.putBoolean("addContact", true);
                     presentFragment(new ContactAddActivity(args));
-                } else if (id == share_contact) {
-                    Bundle args = new Bundle();
-                    args.putBoolean("onlySelect", true);
-                    args.putInt("dialogsType", 1);
-                    args.putString("selectAlertString", LocaleController.getString("SendContactTo", R.string.SendContactTo));
-                    args.putString("selectAlertStringGroup", LocaleController.getString("SendContactToGroup", R.string.SendContactToGroup));
-                    DialogsActivity fragment = new DialogsActivity(args);
-                    fragment.setDelegate(ProfileActivity.this);
-                    presentFragment(fragment);
-                } else if (id == edit_contact) {
-                    Bundle args = new Bundle();
-                    args.putInt("user_id", user_id);
-                    presentFragment(new ContactAddActivity(args));
                 } else if (id == delete_contact) {
                     final TLRPC.User user = MessagesController.getInstance().getUser(user_id);
                     if (user == null || getParentActivity() == null) {
@@ -357,24 +338,6 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                         }
                     });
                     presentFragment(fragment);
-                } else if (id == share) {
-                    try {
-                        TLRPC.User user = MessagesController.getInstance().getUser(user_id);
-                        if (user == null) {
-                            return;
-                        }
-                        Intent intent = new Intent(Intent.ACTION_SEND);
-                        intent.setType("text/plain");
-                        /*String about = MessagesController.getInstance().getUserAbout(botInfo.user_id);
-                        if (botInfo != null && about != null) {
-                            intent.putExtra(Intent.EXTRA_TEXT, String.format("%s https://telegram.me/%s", about, user.username));
-                        } else*/ {
-                            intent.putExtra(Intent.EXTRA_TEXT, String.format("https://telegram.me/%s", user.username));
-                        }
-                        startActivityForResult(Intent.createChooser(intent, LocaleController.getString("BotShare", R.string.BotShare)), 500);
-                    } catch (Exception e) {
-                        FileLog.e("tmessages", e);
-                    }
                 } else if (id == add_shortcut) {
                     try {
                         long did;
@@ -386,11 +349,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                             return;
                         }
                         AndroidUtilities.installShortcut(did);
-                        /*try {
-                            Toast.makeText(getParentActivity(), LocaleController.getString("ShortcutAdded", R.string.ShortcutAdded), Toast.LENGTH_SHORT).show();
-                        } catch (Exception e) {
-                            FileLog.e("tmessages", e);
-                        }*/
+                        Toast.makeText(getParentActivity(), LocaleController.getString("ShortcutAdded", R.string.ShortcutAdded), Toast.LENGTH_LONG).show();
                     } catch (Exception e) {
                         FileLog.e("tmessages", e);
                     }
@@ -451,11 +410,48 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                 if (position == settingsNotificationsRow) {
                     Bundle args = new Bundle();
                     if (user_id != 0) {
-                        args.putLong("dialog_id", dialog_id == 0 ? user_id : dialog_id);
+                        args.putLong("dialog_id", user_id);
                     } else if (chat_id != 0) {
                         args.putLong("dialog_id", -chat_id);
                     }
                     presentFragment(new ProfileNotificationsActivity(args));
+                }
+                else if(position==changeNameRow) {
+                    Toast.makeText(getParentActivity(), LocaleController.getString("NotYetImplemented", R.string.NotYetImplemented), Toast.LENGTH_LONG).show();
+                }
+                else if(position==startChatRow) {
+                    int belonging_chat_id = MrMailbox.MrMailboxGetChatIdByContactId(MrMailbox.hMailbox, user_id);
+                    if( belonging_chat_id != 0 ) {
+                        Bundle args = new Bundle();
+                        args.putInt("chat_id", belonging_chat_id);
+                        NotificationCenter.getInstance().removeObserver(ProfileActivity.this, NotificationCenter.closeChats);
+                        NotificationCenter.getInstance().postNotificationName(NotificationCenter.closeChats);
+                        presentFragment(new ChatActivity(args), true /*remove last*/);
+                        return;
+                    }
+
+                    long hContact = MrMailbox.MrMailboxGetContact(MrMailbox.hMailbox, user_id);
+                        String name = MrMailbox.MrContactGetNameNAddr(hContact);
+                    MrMailbox.MrContactUnref(hContact);
+
+                    AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
+                    builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            int belonging_chat_id = MrMailbox.MrMailboxCreateChatByContactId(MrMailbox.hMailbox, user_id);
+                            if( belonging_chat_id != 0 ) {
+                                Bundle args = new Bundle();
+                                args.putInt("chat_id", belonging_chat_id);
+                                NotificationCenter.getInstance().removeObserver(ProfileActivity.this, NotificationCenter.closeChats);
+                                NotificationCenter.getInstance().postNotificationName(NotificationCenter.closeChats);
+                                presentFragment(new ChatActivity(args), true /*remove last*/);
+                                return;
+                            }
+                        }
+                    });
+                    builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
+                    builder.setMessage(AndroidUtilities.replaceTags(LocaleController.formatString("AskStartChatWith", R.string.AskStartChatWith, name)));
+                    showDialog(builder.create());
                 } else if (position > emptyRowChat2 && position < membersEndRow) {
                     int user_id;
                     if (!sortedUsers.isEmpty()) {
@@ -627,22 +623,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                         return;
                     }
                     if (user_id != 0) {
-                        if (playProfileAnimation && parentLayout.fragmentsStack.get(parentLayout.fragmentsStack.size() - 2) instanceof ChatActivity) {
-                            finishFragment();
-                        } else {
-                            TLRPC.User user = MessagesController.getInstance().getUser(user_id);
-                            if (user == null ) {
-                                return;
-                            }
-                            Bundle args = new Bundle();
-                            args.putInt("user_id", user_id);
-                            if (!MessagesController.checkCanOpenChat(args, ProfileActivity.this)) {
-                                return;
-                            }
-                            NotificationCenter.getInstance().removeObserver(ProfileActivity.this, NotificationCenter.closeChats);
-                            NotificationCenter.getInstance().postNotificationName(NotificationCenter.closeChats);
-                            presentFragment(new ChatActivity(args), true);
-                        }
+                        ; // the button is not used in user profile - for creating a new chat, we use a text (more clearer) and changing photos should be done in the contact-app
                     } else if (chat_id != 0) {
                         boolean isChannel = ChatObject.isChannel(currentChat);
                         if (isChannel && !currentChat.creator && (!currentChat.megagroup || !currentChat.editor) || !isChannel && !currentChat.admin && !currentChat.creator && currentChat.admins_enabled) {

@@ -183,9 +183,15 @@ JNIEXPORT jlong Java_org_telegram_messenger_MrMailbox_MrMailboxGetChatlist(JNIEn
 }
 
 
-JNIEXPORT jlong Java_org_telegram_messenger_MrMailbox_MrMailboxGetChat(JNIEnv *env, jclass c, jlong hMailbox, jint id)
+JNIEXPORT jlong Java_org_telegram_messenger_MrMailbox_MrMailboxGetChat(JNIEnv *env, jclass c, jlong hMailbox, jint chat_id)
 {
-	return (jlong)mrmailbox_get_chat((mrmailbox_t*)hMailbox, id);
+	return (jlong)mrmailbox_get_chat((mrmailbox_t*)hMailbox, chat_id);
+}
+
+
+JNIEXPORT jint Java_org_telegram_messenger_MrMailbox_MrMailboxGetChatIdByContactId(JNIEnv *env, jclass c, jlong hMailbox, jint contact_id)
+{
+	return (jint)mrmailbox_get_chat_id_by_contact_id((mrmailbox_t*)hMailbox, contact_id);
 }
 
 

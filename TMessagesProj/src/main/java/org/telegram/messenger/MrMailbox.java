@@ -221,8 +221,9 @@ public class MrMailbox {
     public native static long    MrMailboxGetContact        (long hMailbox, int id);// returns hContact which must be unref'd after usage
 
     public native static long    MrMailboxGetChatlist       (long hMailbox); // returns hChatlist which must be unref'd after usage
-    public native static long    MrMailboxGetChat           (long hMailbox, int id); // return hChat which must be unref'd after usage
+    public native static long    MrMailboxGetChat           (long hMailbox, int chat_id); // return hChat which must be unref'd after usage
     public native static int     MrMailboxMarkseenChat      (long hMailbox, int id);
+    public native static int     MrMailboxGetChatIdByContactId (long hMailbox, int chat_id);
     public native static int     MrMailboxCreateChatByContactId(long hMailbox, int contact_id); // returns chat_id
     public native static int[]   MrMailboxGetChatMedia      (long hMailbox, int chat_id, int msg_type, int or_msg_type);
     public native static int[]   MrMailboxGetChatContacts   (long hMailbox, int chat_id);
@@ -283,6 +284,7 @@ public class MrMailbox {
     public native static String  MrContactGetName           (long hContact);
     public native static String  MrContactGetAddr           (long hContact);
     public static String         MrContactGetDisplayName    (long hContact) { String s=MrContactGetName(hContact); if(s.isEmpty()) {s=MrContactGetAddr(hContact);} return s; }
+    public static String         MrContactGetNameNAddr      (long hContact) { String s=MrContactGetName(hContact); if(s.isEmpty()) {s=MrContactGetAddr(hContact);} else { s+=" ("+MrContactGetAddr(hContact)+")"; } return s; }
 
     // MrPoortext objects
     public native static void    MrPoortextUnref            (long hPoortext);
