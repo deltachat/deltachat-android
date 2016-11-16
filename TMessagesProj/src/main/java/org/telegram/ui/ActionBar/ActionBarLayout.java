@@ -208,9 +208,11 @@ public class ActionBarLayout extends FrameLayout {
         invalidate();
     }
 
+    /*
     public float getInnerTranslationX() {
         return innerTranslationX;
     }
+    */
 
     public void onResume() {
         if (transitionAnimationInProgress) {

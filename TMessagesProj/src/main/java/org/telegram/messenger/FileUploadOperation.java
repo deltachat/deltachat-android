@@ -8,17 +8,10 @@
 
 package org.telegram.messenger;
 
-import android.app.Activity;
-import android.content.SharedPreferences;
-
 import org.telegram.tgnet.ConnectionsManager;
-import org.telegram.tgnet.TLObject;
 import org.telegram.tgnet.TLRPC;
 
-import java.io.File;
 import java.io.FileInputStream;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 
 public class FileUploadOperation {
 

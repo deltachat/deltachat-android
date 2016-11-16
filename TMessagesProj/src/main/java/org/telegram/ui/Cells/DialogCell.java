@@ -1,4 +1,6 @@
 /*
+ * This part of the Delta Chat fronted is based on Telegram which is covered by the following note:
+ *
  * This is the source code of Telegram for Android v. 1.3.x.
  * It is licensed under GNU GPL v. 2 or later.
  * You should have received a copy of the license in this archive (see LICENSE).
@@ -258,7 +260,7 @@ public class DialogCell extends BaseCell {
         String timeString = "";
         String countString = null;
         CharSequence messageString = "";
-        CharSequence printingString = null;
+        //CharSequence printingString = null;
         /* EDIT BY MR -- we currently do not support stuff as "ist just typing", "uploads an images" etc.
         if (isDialogCell) {
             printingString = MessagesController.getInstance().printingStrings.get(currentDialogId);

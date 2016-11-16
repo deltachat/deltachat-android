@@ -195,7 +195,6 @@
     <string name="GroupName">Nome do grupo</string>
     <string name="MembersCount">%1$d/%2$d membros</string>
     <string name="JoinToGroup">Você deseja entrar no chat \'%1$s\'?</string>
-    <string name="JoinToGroupErrorNotExist">Desculpe, esse chat não existe.</string>
     <string name="LinkCopied">Link copiado para área de transferência</string>
     <string name="InviteToGroupByLink">Convidar para o Grupo via Link</string>
     <string name="InviteLink">Link de Convite</string>
@@ -209,13 +208,9 @@
     <string name="SharedMedia">Mídia Compartilhada</string>
     <string name="SETTINGS">Configurações</string>
     <string name="AddMember">Adicionar membro</string>
-    <string name="SetAdmins">Definir administradores</string>
     <string name="DeleteAndExit">Apagar e sair do grupo</string>
     <string name="Notifications">Notificações</string>
     <string name="KickFromGroup">Remover do grupo</string>
-    <string name="UpgradeGroup">Converter a Supergrupo</string>
-    <string name="ConvertGroupMenu">Converter a supergrupo</string>
-    <string name="ConvertGroupInfo"><![CDATA[<b>]]>Limite de membros atingido.<![CDATA[</b>]]>\n\nPara ir além do limite e ter funções adcionais, converta para um supergrupo:\n\n• Supergrupos podem ter até %1$s\n• Novos membros veêm todo o histórico de conversas\n• Administradores deletam mensagens para todos\n• O criador pode definir um link público para o grupo</string>
     <!--contact info view-->
     <string name="ShareContact">Compartilhar</string>
     <string name="AddContact">Adicionar</string>
@@ -506,16 +501,7 @@
     <string name="CompressVideo">Compactar Vídeo</string>
     <!--bot-->
     <string name="Bot">bot</string>
-    <string name="BotShare">Compartilhar</string>
-    <string name="BotInvite">Adicionar Ao Grupo</string>
     <string name="BotHelp">Ajuda</string>
-    <string name="BotStatusRead">tem acesso às mensagens</string>
-    <string name="BotStatusCantRead">não tem acesso às mensagens</string>
-    <string name="BotInfoTitle">O que esse bot pode fazer?</string>
-    <string name="BotStart">COMEÇAR</string>
-    <string name="BotUnblock">REINICIAR</string>
-    <string name="BotStop">Parar bot</string>
-    <string name="BotRestart">Reiniciar bot</string>
     <!--button titles-->
     <string name="Next">Próximo</string>
     <string name="Back">Voltar</string>

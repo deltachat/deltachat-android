@@ -195,7 +195,6 @@
     <string name="GroupName">Nombre del grupo</string>
     <string name="MembersCount">%1$d/%2$d miembros</string>
     <string name="JoinToGroup">¿Quieres unirte al chat “%1$s”?</string>
-    <string name="JoinToGroupErrorNotExist">Lo sentimos, este chat no existe.</string>
     <string name="LinkCopied">Enlace copiado al portapapeles</string>
     <string name="InviteToGroupByLink">Invitar al grupo con un enlace</string>
     <string name="InviteLink">Enlace de invitación</string>
@@ -209,13 +208,9 @@
     <string name="SharedMedia">Multimedia</string>
     <string name="SETTINGS">Ajustes</string>
     <string name="AddMember">Añadir miembro</string>
-    <string name="SetAdmins">Nombrar administradores</string>
     <string name="DeleteAndExit">Eliminar y dejar el grupo</string>
     <string name="Notifications">Notificaciones</string>
     <string name="KickFromGroup">Eliminar del grupo</string>
-    <string name="UpgradeGroup">Convertir en supergrupo</string>
-    <string name="ConvertGroupMenu">Convertir en supergrupo</string>
-    <string name="ConvertGroupInfo"><![CDATA[<b>]]>Límite de miembros alcanzado.<![CDATA[</b>]]>\n\nPara superar el límite y tener características adicionales, conviértelo en un supergrupo:\n\n Permiten hasta %1$s\n• Nuevos miembros ven todo el historial\n• Un mensaje eliminado se borra para todos\n• El creador puede generar un enlace público</string>
     <!--contact info view-->
     <string name="ShareContact">Compartir</string>
     <string name="AddContact">Añadir</string>
@@ -506,16 +501,7 @@
     <string name="CompressVideo">Comprimir Vídeo</string>
     <!--bot-->
     <string name="Bot">bot</string>
-    <string name="BotShare">Compartir</string>
-    <string name="BotInvite">Añadir a un grupo</string>
     <string name="BotHelp">Ayuda</string>
-    <string name="BotStatusRead">tiene acceso a los mensajes</string>
-    <string name="BotStatusCantRead">no tiene acceso a los mensajes</string>
-    <string name="BotInfoTitle">¿Qué puede hacer este bot?</string>
-    <string name="BotStart">INICIAR</string>
-    <string name="BotUnblock">REINICIAR</string>
-    <string name="BotStop">Detener bot</string>
-    <string name="BotRestart">Reiniciar bot</string>
     <!--button titles-->
     <string name="Next">Siguiente</string>
     <string name="Back">Atrás</string>

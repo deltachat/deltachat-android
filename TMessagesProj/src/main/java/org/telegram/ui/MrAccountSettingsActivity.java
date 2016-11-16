@@ -140,7 +140,6 @@ public class MrAccountSettingsActivity extends BaseFragment {
                 if (id == -1) {
                     if( isModified() ) { // TODO: maybe we should also ask if the user presses the "back" button
                         AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
-                        builder.setTitle(LocaleController.getString("AppName", R.string.AppName));
                         builder.setMessage(LocaleController.getString("DiscardChanges", R.string.DiscardChanges));
                         builder.setPositiveButton(LocaleController.getString("Yes", R.string.Yes), new DialogInterface.OnClickListener() {
                             @Override

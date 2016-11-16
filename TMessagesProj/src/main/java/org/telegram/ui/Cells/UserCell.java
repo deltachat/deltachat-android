@@ -1,4 +1,6 @@
 /*
+ * This part of the Delta Chat fronted is based on Telegram which is covered by the note below.
+ *
  * This is the source code of Telegram for Android v. 3.x.x.
  * It is licensed under GNU GPL v. 2 or later.
  * You should have received a copy of the license in this archive (see LICENSE).
@@ -15,13 +17,8 @@ import android.widget.ImageView;
 
 import org.telegram.messenger.AndroidUtilities;
 import org.telegram.messenger.LocaleController;
-import org.telegram.messenger.MessagesController;
-import org.telegram.messenger.UserObject;
 import org.telegram.messenger.R;
-import org.telegram.tgnet.ConnectionsManager;
-import org.telegram.tgnet.TLObject;
 import org.telegram.tgnet.TLRPC;
-import org.telegram.messenger.UserConfig;
 import org.telegram.ui.Components.AvatarDrawable;
 import org.telegram.ui.Components.BackupImageView;
 import org.telegram.ui.Components.CheckBox;
@@ -52,7 +49,6 @@ public class UserCell extends FrameLayout {
     private TLRPC.FileLocation lastAvatar;
 
     private int statusColor = 0xffa8a8a8;
-    private int statusOnlineColor = 0xff3b84c0;
 
     public UserCell(Context context, int padding, int checkbox, boolean admin) {
         super(context);
@@ -94,19 +90,6 @@ public class UserCell extends FrameLayout {
         }
     }
 
-    public void setIsAdmin(int value) {
-        if (adminImage == null) {
-            return;
-        }
-        adminImage.setVisibility(value != 0 ? VISIBLE : GONE);
-        nameTextView.setPadding(LocaleController.isRTL && value != 0 ? AndroidUtilities.dp(16) : 0, 0, !LocaleController.isRTL && value != 0 ? AndroidUtilities.dp(16) : 0, 0);
-        if (value == 1) {
-            adminImage.setImageResource(R.drawable.admin_star);
-        } else if (value == 2) {
-            adminImage.setImageResource(R.drawable.admin_star2);
-        }
-    }
-
     public void setData(int new_user_id, int new_chat_id, CharSequence name, CharSequence status, int resId) {
         currentStatus = null;
         currentStatus = status;
@@ -142,9 +125,8 @@ public class UserCell extends FrameLayout {
         super.onMeasure(MeasureSpec.makeMeasureSpec(MeasureSpec.getSize(widthMeasureSpec), MeasureSpec.EXACTLY), MeasureSpec.makeMeasureSpec(AndroidUtilities.dp(64), MeasureSpec.EXACTLY));
     }
 
-    public void setStatusColors(int color, int onlineColor) {
+    public void setStatusColors(int color) {
         statusColor = color;
-        statusOnlineColor = onlineColor;
     }
 
     public void update(int mask) {

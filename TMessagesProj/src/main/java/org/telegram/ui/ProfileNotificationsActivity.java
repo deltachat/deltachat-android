@@ -46,7 +46,6 @@ import org.telegram.ui.Cells.TextColorCell;
 import org.telegram.ui.Cells.TextDetailSettingsCell;
 import org.telegram.ui.ActionBar.ActionBar;
 import org.telegram.ui.ActionBar.BaseFragment;
-import org.telegram.ui.Components.AvatarDrawable;
 import org.telegram.ui.Components.ColorPickerView;
 import org.telegram.ui.Components.LayoutHelper;
 import org.telegram.ui.Components.NumberPicker;
@@ -165,7 +164,6 @@ public class ProfileNotificationsActivity extends BaseFragment implements Notifi
                         return;
                     }
                     AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
-                    builder.setTitle(LocaleController.getString("AppName", R.string.AppName));
                     builder.setItems(new CharSequence[]{
                             LocaleController.getString("Default", R.string.Default),
                             LocaleController.getString("Enabled", R.string.Enabled),

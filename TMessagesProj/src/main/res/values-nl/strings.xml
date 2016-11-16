@@ -195,7 +195,6 @@
     <string name="GroupName">Groepsnaam</string>
     <string name="MembersCount">%1$d/%2$d leden</string>
     <string name="JoinToGroup">Wil je lid worden van de groep \"%1$s\"?</string>
-    <string name="JoinToGroupErrorNotExist">Sorry, deze groep bestaat niet.</string>
     <string name="LinkCopied">Link gekopieerd naar klembord.</string>
     <string name="InviteToGroupByLink">Uitnodigingslink sturen</string>
     <string name="InviteLink">Uitnodigingslink</string>
@@ -209,13 +208,9 @@
     <string name="SharedMedia">Gedeelde media</string>
     <string name="SETTINGS">Instellingen</string>
     <string name="AddMember">Lid toevoegen</string>
-    <string name="SetAdmins">Beheerders instellen</string>
     <string name="DeleteAndExit">Groep verwijderen en verlaten</string>
     <string name="Notifications">Meldingen</string>
     <string name="KickFromGroup">Verwijderen uit groep</string>
-    <string name="UpgradeGroup">Opwaarderen naar supergroep</string>
-    <string name="ConvertGroupMenu">Opwaarderen naar supergroep</string>
-    <string name="ConvertGroupInfo"><![CDATA[<b>]]>Ledenlimiet bereikt.<![CDATA[</b>]]>\n\nWil je extra functies en een hogere limiet? Waardeer op naar een supergroep:\n\n• Supergroepen hebben tot %1$s\n• Nieuwe leden zien de hele geschiedenis\n•Gewiste berichten gelden voor iedereen\n• Maker kan een publieke groepslink instellen</string>
     <!--contact info view-->
     <string name="ShareContact">Delen</string>
     <string name="AddContact">Toevoegen</string>
@@ -506,16 +501,7 @@
     <string name="CompressVideo">Video comprimeren</string>
     <!--bot-->
     <string name="Bot">bot</string>
-    <string name="BotShare">Delen</string>
-    <string name="BotInvite">Groepslid maken</string>
     <string name="BotHelp">Help</string>
-    <string name="BotStatusRead">toegang tot berichten</string>
-    <string name="BotStatusCantRead">geen toegang tot berichten</string>
-    <string name="BotInfoTitle">Wat kan deze bot?</string>
-    <string name="BotStart">BEGIN</string>
-    <string name="BotUnblock">HERSTART</string>
-    <string name="BotStop">Bot stoppen</string>
-    <string name="BotRestart">Bot herstarten</string>
     <!--button titles-->
     <string name="Next">Volgende</string>
     <string name="Back">Vorige</string>

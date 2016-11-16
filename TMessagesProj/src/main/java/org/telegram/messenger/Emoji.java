@@ -22,10 +22,6 @@ import android.graphics.PixelFormat;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.text.Spannable;
-import android.text.style.ImageSpan;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
 
 public class Emoji {
     private static HashMap<CharSequence, DrawableInfo> rects = new HashMap<>();

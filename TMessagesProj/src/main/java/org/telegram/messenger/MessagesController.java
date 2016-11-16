@@ -338,6 +338,7 @@ public class MessagesController implements NotificationCenter.NotificationCenter
         }
     }
 
+    /*
     public void cleanup() {
         ContactsController.getInstance().cleanup();
         MediaController.getInstance().cleanup();
@@ -423,6 +424,7 @@ public class MessagesController implements NotificationCenter.NotificationCenter
 
         NotificationCenter.getInstance().postNotificationName(NotificationCenter.dialogsNeedReload);
     }
+    */
 
     public TLRPC.User getUser(Integer id) {
         // EDIT BY MR - additional information should be loaded as needed by the caller
@@ -1036,8 +1038,10 @@ public class MessagesController implements NotificationCenter.NotificationCenter
     public void deleteUserFromChat(final int chat_id, final TLRPC.User user, final TLRPC.ChatFull info) {
     }
 
+    /*
     public void changeChatTitle(int chat_id, String title) {
     }
+    */
 
     public void changeChatAvatar(int chat_id, TLRPC.InputFile uploadedAvatar) {
         TLObject request;
@@ -1229,7 +1233,6 @@ public class MessagesController implements NotificationCenter.NotificationCenter
 
     private static void showCantOpenAlert(BaseFragment fragment, String reason) {
         AlertDialog.Builder builder = new AlertDialog.Builder(fragment.getParentActivity());
-        builder.setTitle(LocaleController.getString("AppName", R.string.AppName));
         builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), null);
         builder.setMessage(reason);
         fragment.showDialog(builder.create());

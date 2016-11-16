@@ -38,7 +38,7 @@ import java.io.File;
 
 public class AudioPlayerActivity extends BaseFragment implements NotificationCenter.NotificationCenterDelegate, MediaController.FileDownloadProgressListener {
 
-    private MessageObject lastMessageObject;
+    //private MessageObject lastMessageObject;
     private ImageView placeholder;
     private ImageView playButton;
     private ImageView nextButton;

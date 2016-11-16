@@ -27,7 +27,6 @@ import android.os.Handler;
 import android.os.PowerManager;
 
 import org.telegram.tgnet.ConnectionsManager;
-import org.telegram.tgnet.TLRPC;
 import org.telegram.ui.Components.ForegroundDetector;
 
 import java.io.File;

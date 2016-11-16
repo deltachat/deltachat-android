@@ -11,7 +11,6 @@ package org.telegram.ui;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.MotionEvent;
@@ -20,7 +19,6 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.FrameLayout;
 import android.widget.ListView;
-//import android.widget.ProgressBar; -- EDIT BY MR
 import android.widget.TextView;
 
 import org.telegram.messenger.LocaleController;
@@ -270,14 +268,14 @@ public class BlockedUsersActivity extends BaseFragment implements NotificationCe
                 }
                 TLRPC.User user = MessagesController.getInstance().getUser(MessagesController.getInstance().blockedUsers.get(i));
                 if (user != null) {
-                    String number;
+                    /*String number;
                     if (user.bot) {
                         number = LocaleController.getString("Bot", R.string.Bot).substring(0, 1).toUpperCase() + LocaleController.getString("Bot", R.string.Bot).substring(1);
                     } else if (user.phone != null && user.phone.length() != 0) {
-                        number = "";//PhoneFormat.getInstance().format("+" + user.phone);
+                        number = PhoneFormat.getInstance().format("+" + user.phone);
                     } else {
                         number = LocaleController.getString("NumberUnknown", R.string.NumberUnknown);
-                    }
+                    }*/
                     ((UserCell) view).setData(123, 0, "ErrUserName", "ErrUserStatus", 0);
                 }
             } else if (type == 1) {

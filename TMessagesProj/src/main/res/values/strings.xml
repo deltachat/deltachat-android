@@ -195,7 +195,6 @@
     <string name="GroupName">Group name</string>
     <string name="MembersCount">%1$d/%2$d members</string>
     <string name="JoinToGroup">Do you want to join the chat \'%1$s\'?</string>
-    <string name="JoinToGroupErrorNotExist">Sorry, this chat does not seem to exist.</string>
     <string name="LinkCopied">Link copied to clipboard</string>
     <string name="InviteToGroupByLink">Invite to Group via Link</string>
     <string name="InviteLink">Invite Link</string>
@@ -209,13 +208,9 @@
     <string name="SharedMedia">Shared Media</string>
     <string name="SETTINGS">Settings</string>
     <string name="AddMember">Add member</string>
-    <string name="SetAdmins">Set admins</string>
     <string name="DeleteAndExit">Delete and leave group</string>
     <string name="Notifications">Notifications</string>
     <string name="KickFromGroup">Remove from group</string>
-    <string name="UpgradeGroup">Upgrade to Supergroup</string>
-    <string name="ConvertGroupMenu">Convert to supergroup</string>
-    <string name="ConvertGroupInfo"><![CDATA[<b>]]>Members limit reached.<![CDATA[</b>]]>\n\nTo go over the limit and get additional features, upgrade to a supergroup:\n\n• Supergroups can get up to %1$s\n• New members can see the full message history\n• Deleted messages will disappear for all members\n• Admins can pin important messages\n• Creator can set a public link for the group</string>
     <!--contact info view-->
     <string name="ShareContact">Share</string>
     <string name="AddContact">Add</string>
@@ -506,16 +501,7 @@
     <string name="CompressVideo">Compress Video</string>
     <!--bot-->
     <string name="Bot">bot</string>
-    <string name="BotShare">Share</string>
-    <string name="BotInvite">Add to group</string>
     <string name="BotHelp">Help</string>
-    <string name="BotStatusRead">has access to messages</string>
-    <string name="BotStatusCantRead">has no access to messages</string>
-    <string name="BotInfoTitle">What can this bot do?</string>
-    <string name="BotStart">START</string>
-    <string name="BotUnblock">RESTART</string>
-    <string name="BotStop">Stop bot</string>
-    <string name="BotRestart">Restart bot</string>
     <!--button titles-->
     <string name="Next">Next</string>
     <string name="Back">Back</string>

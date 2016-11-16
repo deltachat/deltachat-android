@@ -291,9 +291,9 @@ public class TLRPC {
 		public boolean contact;
 		public boolean mutual_contact;
 		public boolean deleted;
-		public boolean bot;
+		public final boolean bot = false;
 		public boolean verified;
-		public boolean restricted;
+		public boolean restricted_;
 		public boolean min;
 		public String restriction_reason;
 		public String bot_inline_placeholder;

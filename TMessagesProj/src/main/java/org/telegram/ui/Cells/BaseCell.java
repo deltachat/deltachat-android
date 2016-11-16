@@ -55,9 +55,11 @@ public class BaseCell extends View {
         setDrawableBounds(drawable, x, y, drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight());
     }
 
+    /*
     protected void setDrawableBounds(Drawable drawable, float x, float y) {
         setDrawableBounds(drawable, (int) x, (int) y, drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight());
     }
+    */
 
     protected void setDrawableBounds(Drawable drawable, int x, int y, int w, int h) {
         if (drawable != null) {

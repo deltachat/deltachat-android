@@ -16,8 +16,6 @@ import android.app.Activity;
 import android.content.ComponentName;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
-import android.graphics.Paint;
-import android.graphics.RectF;
 import android.os.Build;
 import android.service.chooser.ChooserTarget;
 import android.service.chooser.ChooserTargetService;

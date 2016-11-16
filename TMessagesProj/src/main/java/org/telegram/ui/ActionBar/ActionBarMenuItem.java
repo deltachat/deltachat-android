@@ -175,9 +175,11 @@ public class ActionBarMenuItem extends FrameLayout {
         return super.onTouchEvent(event);
     }
 
+    /*
     public void setDelegate(ActionBarMenuItemDelegate delegate) {
         this.delegate = delegate;
     }
+    */
 
     /*
     public void setShowFromBottom(boolean value) {
@@ -368,9 +370,11 @@ public class ActionBarMenuItem extends FrameLayout {
         iconView.setImageResource(resId);
     }
 
+    /*
     public ImageView getImageView() {
         return iconView;
     }
+    */
 
     public EditText getSearchField() {
         return searchField;

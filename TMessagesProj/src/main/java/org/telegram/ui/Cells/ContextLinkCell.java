@@ -21,7 +21,6 @@ import android.text.TextUtils;
 import android.view.MotionEvent;
 import android.view.SoundEffectConstants;
 import android.view.View;
-import android.view.animation.AccelerateInterpolator;
 
 import org.telegram.messenger.AndroidUtilities;
 import org.telegram.messenger.Emoji;
@@ -94,7 +93,7 @@ public class ContextLinkCell extends View implements MediaController.FileDownloa
     private boolean scaled;
     private float scale;
     private long time = 0;
-    private static AccelerateInterpolator interpolator = new AccelerateInterpolator(0.5f);
+    //private static AccelerateInterpolator interpolator = new AccelerateInterpolator(0.5f);
 
     private ContextLinkCellDelegate delegate;
 

@@ -68,7 +68,6 @@ public class MentionsAdapter extends BaseSearchAdapterRecycler {
     private boolean needUsernames = true;
     private boolean needBotContext = true;
     private boolean isDarkTheme;
-    private final int botsCount = 0;
 
     private String searchingContextUsername;
     private String searchingContextQuery;
@@ -344,6 +343,7 @@ public class MentionsAdapter extends BaseSearchAdapterRecycler {
     }
     */
 
+    /*
     private void checkLocationPermissionsOrStart() {
         if (parentFragment == null || parentFragment.getParentActivity() == null) {
             return;
@@ -352,11 +352,13 @@ public class MentionsAdapter extends BaseSearchAdapterRecycler {
             parentFragment.getParentActivity().requestPermissions(new String[]{Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION}, 2);
             return;
         }
-        /*if (foundContextBot != null && foundContextBot.bot_inline_geo) {
+        if (foundContextBot != null && foundContextBot.bot_inline_geo) {
             locationProvider.start();
-        }*/
+        }
     }
+    */
 
+    /*
     public String getBotCaption() {
         if (foundContextBot != null) {
             return foundContextBot.bot_inline_placeholder;
@@ -365,6 +367,7 @@ public class MentionsAdapter extends BaseSearchAdapterRecycler {
         }
         return null;
     }
+    */
 
     public void searchForContextBotForNextOffset() {
         if (contextQueryReqid != 0 || nextQueryOffset == null || nextQueryOffset.length() == 0 || foundContextBot == null || searchingContextQuery == null) {

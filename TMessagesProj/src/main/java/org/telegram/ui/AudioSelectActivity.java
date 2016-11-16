@@ -310,7 +310,7 @@ public class AudioSelectActivity extends BaseFragment implements NotificationCen
 
         @Override
         public View getView(int i, View view, ViewGroup viewGroup) {
-            int type = getItemViewType(i);
+            //int type = getItemViewType(i);
             if (view == null) {
                 view = new AudioCell(mContext);
                 ((AudioCell) view).setDelegate(new AudioCell.AudioCellDelegate() {

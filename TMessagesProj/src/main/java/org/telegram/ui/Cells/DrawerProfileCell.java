@@ -1,4 +1,6 @@
 /*
+ * This part of the Delta Chat fronted is based on Telegram which is covered by the following note:
+ *
  * This is the source code of Telegram for Android v. 3.x.x.
  * It is licensed under GNU GPL v. 2 or later.
  * You should have received a copy of the license in this archive (see LICENSE).
@@ -29,21 +31,17 @@ import android.widget.TextView;
 import org.telegram.messenger.AndroidUtilities;
 import org.telegram.messenger.LocaleController;
 import org.telegram.messenger.MrMailbox;
-import org.telegram.messenger.UserObject;
 import org.telegram.messenger.ApplicationLoader;
 import org.telegram.messenger.FileLog;
 import org.telegram.messenger.R;
 import org.telegram.tgnet.TLRPC;
-//import org.telegram.ui.Components.AvatarDrawable; -- EDIT BY MR
-import org.telegram.ui.Components.BackupImageView;
 import org.telegram.ui.Components.LayoutHelper;
 import org.telegram.ui.ActionBar.Theme;
 
 public class DrawerProfileCell extends FrameLayout {
 
-    //private BackupImageView avatarImageView; -- EDIT BY MR
     private TextView nameTextView;
-    private TextView phoneTextView;
+    private TextView subtitleTextView;
     private ImageView shadowView;
     private Rect srcRect = new Rect();
     private Rect destRect = new Rect();
@@ -60,12 +58,6 @@ public class DrawerProfileCell extends FrameLayout {
         shadowView.setImageResource(R.drawable.bottom_shadow);
         addView(shadowView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, 100/*EDIT BY MR, was 70*/, Gravity.LEFT | Gravity.BOTTOM));
 
-        /* EDIT BY MR
-        avatarImageView = new BackupImageView(context);
-        avatarImageView.getImageReceiver().setRoundRadius(AndroidUtilities.dp(32));
-        addView(avatarImageView, LayoutHelper.createFrame(64, 64, Gravity.LEFT | Gravity.BOTTOM, 16, 0, 0, 67));
-        */
-
         nameTextView = new TextView(context);
         nameTextView.setTextColor(0xffffffff);
         nameTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 22 /*EDIT BY MR, was 15*/);
@@ -77,14 +69,14 @@ public class DrawerProfileCell extends FrameLayout {
         nameTextView.setEllipsize(TextUtils.TruncateAt.END);
         addView(nameTextView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.LEFT | Gravity.BOTTOM, 16, 0, 16, 28));
 
-        phoneTextView = new TextView(context);
-        phoneTextView.setTextColor(0xffc2e5ff);
-        phoneTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13);
-        phoneTextView.setLines(1);
-        phoneTextView.setMaxLines(1);
-        phoneTextView.setSingleLine(true);
-        phoneTextView.setGravity(Gravity.LEFT);
-        addView(phoneTextView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.LEFT | Gravity.BOTTOM, 16, 0, 16, 9));
+        subtitleTextView = new TextView(context);
+        subtitleTextView.setTextColor(0xffc2e5ff);
+        subtitleTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13);
+        subtitleTextView.setLines(1);
+        subtitleTextView.setMaxLines(1);
+        subtitleTextView.setSingleLine(true);
+        subtitleTextView.setGravity(Gravity.LEFT);
+        addView(subtitleTextView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.LEFT | Gravity.BOTTOM, 16, 0, 16, 9));
     }
 
     @Override
@@ -111,8 +103,8 @@ public class DrawerProfileCell extends FrameLayout {
             shadowView.getDrawable().setColorFilter(new PorterDuffColorFilter(color | 0xff000000, PorterDuff.Mode.MULTIPLY));
         }
 
-        if (/*ApplicationLoader.isCustomTheme() && EDIT BY MR -- also show the default wallpaper in drawer*/ backgroundDrawable != null) {
-            phoneTextView.setTextColor(0xffffffff);
+        if ( backgroundDrawable != null) {
+            subtitleTextView.setTextColor(0xffffffff);
             shadowView.setVisibility(VISIBLE);
             if (backgroundDrawable instanceof ColorDrawable) {
                 backgroundDrawable.setBounds(0, 0, getMeasuredWidth(), getMeasuredHeight());
@@ -132,7 +124,7 @@ public class DrawerProfileCell extends FrameLayout {
             }
         } else {
             shadowView.setVisibility(INVISIBLE);
-            phoneTextView.setTextColor(0xffc2e5ff);
+            subtitleTextView.setTextColor(0xffc2e5ff);
             super.onDraw(canvas);
         }
     }
@@ -141,12 +133,7 @@ public class DrawerProfileCell extends FrameLayout {
         if (user == null) {
             return;
         }
-        TLRPC.FileLocation photo = null;
-        if (user.photo != null) {
-            photo = user.photo.photo_small;
-        }
 
-        /* EDIT BY MR */
         String displayname = MrMailbox.MrMailboxGetConfig(MrMailbox.hMailbox, "displayname", LocaleController.getString("MyAccount", R.string.MyAccount));
         String addr;
         if( MrMailbox.MrMailboxIsConfigured(MrMailbox.hMailbox)!=0) {
@@ -156,14 +143,6 @@ public class DrawerProfileCell extends FrameLayout {
             addr = LocaleController.getString("AccountNotConfigured", R.string.AccountNotConfigured);
         }
         nameTextView.setText(displayname);
-        phoneTextView.setText(addr);
-        /*
-        nameTextView.setText(UserObject.getUserName(user));
-        phoneTextView.setText(PhoneFormat.getInstance().format("+" + user.phone));
-
-        AvatarDrawable avatarDrawable = new AvatarDrawable(user);
-        avatarDrawable.setColor(Theme.ACTION_BAR_MAIN_AVATAR_COLOR);
-        avatarImageView.setImage(photo, "50_50", avatarDrawable);
-        /EDIT BY MR */
+        subtitleTextView.setText(addr);
     }
 }

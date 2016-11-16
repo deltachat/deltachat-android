@@ -194,7 +194,6 @@
     <string name="GroupName">Gruppenname</string>
     <string name="MembersCount">%1$d/%2$d Mitglieder</string>
     <string name="JoinToGroup">Möchtest du dem Chat \'%1$s\' beitreten?</string>
-    <string name="JoinToGroupErrorNotExist">Leider gibt es diesen Chat nicht.</string>
     <string name="LinkCopied">Link in die Zwischenablage kopiert</string>
     <string name="InviteToGroupByLink">Per Link zur Gruppe einladen</string>
     <string name="InviteLink">Einladungslink</string>
@@ -208,13 +207,9 @@
     <string name="SharedMedia">Geteilte Medien</string>
     <string name="SETTINGS">Einstellungen</string>
     <string name="AddMember">Mitglied hinzufügen</string>
-    <string name="SetAdmins">Administratoren</string>
     <string name="DeleteAndExit">Löschen und Gruppe verlassen</string>
     <string name="Notifications">Mitteilungen</string>
     <string name="KickFromGroup">Aus der Gruppe entfernen</string>
-    <string name="UpgradeGroup">In Supergruppe ändern</string>
-    <string name="ConvertGroupMenu">In Supergruppe ändern</string>
-    <string name="ConvertGroupInfo"><![CDATA[<b>]]>Gruppenlimit erreicht.<![CDATA[</b>]]>\n\nFür weitere Funktionen und um das Limit aufzuheben in Supergruppe ändern:\n\n• Bis zu %1$s sind nun möglich\n• Neue Mitglieder sehen gesamten Verlauf\n• Gelöschte Nachrichten werden bei allen Mitgliedern entfernt\n•Gruppenersteller kann die Gruppe öffentlich machen</string>
     <!--contact info view-->
     <string name="ShareContact">Teilen</string>
     <string name="AddContact">Hinzufügen</string>
@@ -505,16 +500,7 @@
     <string name="CompressVideo">Video komprimieren</string>
     <!--bot-->
     <string name="Bot">Bot</string>
-    <string name="BotShare">Teilen</string>
-    <string name="BotInvite">Zu einer Gruppe hinzufügen</string>
     <string name="BotHelp">Hilfe</string>
-    <string name="BotStatusRead">Zugriff auf Nachrichten</string>
-    <string name="BotStatusCantRead">kein Zugriff auf Nachrichten</string>
-    <string name="BotInfoTitle">Was kann dieser Bot?</string>
-    <string name="BotStart">STARTEN</string>
-    <string name="BotUnblock">NEU STARTEN</string>
-    <string name="BotStop">Bot Anhalten</string>
-    <string name="BotRestart">Bot Neu Starten</string>
     <!--button titles-->
     <string name="Next">Weiter</string>
     <string name="Back">Zurück</string>

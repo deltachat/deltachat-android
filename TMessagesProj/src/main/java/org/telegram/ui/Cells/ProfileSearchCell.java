@@ -328,9 +328,9 @@ public class ProfileSearchCell extends BaseCell {
             if (subLabel != null) {
                 onlineString = subLabel;
             } else if (user != null) {
-                if (user.bot) {
+                /*if (user.bot) {
                     onlineString = LocaleController.getString("Bot", R.string.Bot);
-                } else {
+                } else*/ {
                     onlineString = LocaleController.formatUserStatus(user);
                     if (user != null && (user.id == UserConfig.getClientUserId() || user.status != null && user.status.expires > ConnectionsManager.getInstance().getCurrentTime())) {
                         currentOnlinePaint = onlinePaint;

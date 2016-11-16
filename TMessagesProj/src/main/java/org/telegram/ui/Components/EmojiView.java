@@ -19,7 +19,6 @@ import android.graphics.Paint;
 import android.graphics.RectF;
 import android.graphics.drawable.Drawable;
 import android.graphics.Color;
-import android.os.Build;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.TypedValue;
@@ -701,7 +700,6 @@ public class EmojiView extends FrameLayout implements NotificationCenter.Notific
                         }
                         final MediaController.SearchImage searchImage = recentImages.get(position);
                         AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
-                        builder.setTitle(LocaleController.getString("AppName", R.string.AppName));
                         builder.setMessage(LocaleController.getString("DeleteGif", R.string.DeleteGif));
                         builder.setPositiveButton(LocaleController.getString("OK", R.string.OK).toUpperCase(), new DialogInterface.OnClickListener() {
                             @Override

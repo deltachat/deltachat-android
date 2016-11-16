@@ -96,9 +96,11 @@ public class PhotoAttachPhotoCell extends FrameLayout {
         checkBox.setChecked(value, animated);
     }
 
+    /*
     public void setOnCheckClickLisnener(OnClickListener onCheckClickLisnener) {
         checkFrame.setOnClickListener(onCheckClickLisnener);
     }
+    */
 
     public void setDelegate(PhotoAttachPhotoCellDelegate delegate) {
         this.delegate = delegate;

@@ -509,6 +509,7 @@ public class MessageObject {
         return source;
     }
 
+    /*
     public String getExtension() {
         String fileName = getFileName();
         int idx = fileName.lastIndexOf('.');
@@ -525,6 +526,7 @@ public class MessageObject {
         ext = ext.toUpperCase();
         return ext;
     }
+    */
 
     public String getFileName() {
         if (messageOwner.media instanceof TLRPC.TL_messageMediaDocument) {
@@ -1038,12 +1040,14 @@ public class MessageObject {
         return messageOwner.send_state == MESSAGE_SEND_STATE_SENT /*|| messageOwner.id > 0 -- EDIT BY MR, the ID is always set by us*/;
     }
 
+    /*
     public String getDocumentName() {
         if (messageOwner.media != null && messageOwner.media.document != null) {
             return FileLoader.getDocumentFileName(messageOwner.media.document);
         }
         return "";
     }
+    */
 
     public static boolean isStickerDocument(TLRPC.Document document) {
         if (document != null) {

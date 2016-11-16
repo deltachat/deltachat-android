@@ -12,7 +12,6 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.view.Gravity;
 import android.view.View;
-import android.view.animation.AccelerateInterpolator;
 import android.widget.FrameLayout;
 
 import org.telegram.messenger.AndroidUtilities;
@@ -29,7 +28,7 @@ public class StickerCell extends FrameLayout {
     private boolean scaled;
     private float scale;
     private long time = 0;
-    private static AccelerateInterpolator interpolator = new AccelerateInterpolator(0.5f);
+    //private static AccelerateInterpolator interpolator = new AccelerateInterpolator(0.5f);
 
     public StickerCell(Context context) {
         super(context);

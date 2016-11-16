@@ -11,7 +11,6 @@ package org.telegram.ui.Cells;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
-import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
 import android.util.TypedValue;
 import android.view.Gravity;
@@ -27,14 +26,12 @@ import org.telegram.messenger.MediaController;
 import org.telegram.messenger.MessageObject;
 import org.telegram.messenger.FileLoader;
 import org.telegram.messenger.R;
-import org.telegram.tgnet.TLRPC;
 import org.telegram.ui.Components.BackupImageView;
 import org.telegram.ui.Components.CheckBox;
 import org.telegram.ui.Components.LayoutHelper;
 import org.telegram.ui.Components.LineProgressView;
 
 import java.io.File;
-import java.util.Date;
 
 public class SharedDocumentCell extends FrameLayout implements MediaController.FileDownloadProgressListener {
 
@@ -198,6 +195,7 @@ public class SharedDocumentCell extends FrameLayout implements MediaController.F
         checkBox.setChecked(checked, animated);
     }
 
+    /*
     public void setDocument(MessageObject messageObject, boolean divider) {
         needDivider = divider;
         message = messageObject;
@@ -255,6 +253,7 @@ public class SharedDocumentCell extends FrameLayout implements MediaController.F
         progressView.setProgress(0, false);
         updateFileExistIcon();
     }
+    */
 
     public void updateFileExistIcon() {
         if (message != null && message.messageOwner.media != null) {

@@ -12,7 +12,6 @@ import org.telegram.tgnet.ConnectionsManager;
 import org.telegram.tgnet.TLObject;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class BaseSearchAdapter extends BaseFragmentAdapter {
 
