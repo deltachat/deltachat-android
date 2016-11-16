@@ -113,14 +113,12 @@ public class DrawerLayoutContainer extends FrameLayout {
         lp.bottomMargin = wi.getSystemWindowInsetBottom();
     }
 
-    /*
-    private int getTopInset(Object insets) {
+    private int getTopInset(Object insets) { /* not sure, if this or one of the other unsed methods is called indirectly somewhere; however, at the moment, I do not habe the time tp check this. */
         if (Build.VERSION.SDK_INT >= 21) {
             return insets != null ? ((WindowInsets) insets).getSystemWindowInsetTop() : 0;
         }
         return 0;
     }
-    */
 
     public void setDrawerLayout(ViewGroup layout) {
         drawerLayout = layout;
@@ -150,11 +148,9 @@ public class DrawerLayoutContainer extends FrameLayout {
         setScrimOpacity(drawerPosition / (float) drawerLayout.getMeasuredWidth());
     }
 
-    /*
-    public float getDrawerPosition() {
+    public float getDrawerPosition() { /* not sure, if this or one of the other unsed methods is called indirectly somewhere; however, at the moment, I do not habe the time tp check this. */
         return drawerPosition;
     }
-    */
 
     public void cancelCurrentAnimation() {
         if (currentAnimation != null) {
@@ -226,17 +222,13 @@ public class DrawerLayoutContainer extends FrameLayout {
         invalidate();
     }
 
-    /*
-    private float getScrimOpacity() {
+    private float getScrimOpacity() { /* not sure, if this or one of the other unsed methods is called indirectly somewhere; however, at the moment, I do not habe the time tp check this. */
         return scrimOpacity;
     }
-    */
 
-    /*
-    public View getDrawerLayout() {
+    public View getDrawerLayout() { /* not sure, if this or one of the other unsed methods is called indirectly somewhere; however, at the moment, I do not habe the time tp check this. */
         return drawerLayout;
     }
-    */
 
     public void setParentActionBarLayout(ActionBarLayout layout) {
         parentActionBarLayout = layout;
