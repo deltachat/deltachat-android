@@ -341,15 +341,6 @@ public class TLRPC {
 	public static class TL_messageActionUserUpdatedPhoto extends MessageAction {
 	}
 
-	public static class TL_messageActionChatJoinedByLink extends MessageAction {
-	}
-
-	public static class TL_messageActionTTLChange extends MessageAction {
-	}
-
-	public static class TL_messageActionPinMessage extends MessageAction {
-	}
-
 	public static class TL_messageActionChatDeletePhoto extends MessageAction {
 	}
 

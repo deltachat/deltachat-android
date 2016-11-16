@@ -6140,10 +6140,10 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
             return;
         }
         final int type = getMessageType(message); // 3=normal text message
-        if (single && message.messageOwner.action instanceof TLRPC.TL_messageActionPinMessage) {
+        /*if (single && message.messageOwner.action instanceof TLRPC.TL_messageActionPinMessage) {
             scrollToMessageId(message.messageOwner.reply_to_msg_id, 0, true, 0);
             return;
-        }
+        }*/
 
         selectedObject = null;
         forwaringMessage = null;
