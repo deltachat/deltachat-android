@@ -56,58 +56,12 @@
     <string name="Draft">Concept</string>
     <string name="HistoryCleared">Geschiedenis gewist</string>
     <!--channels-->
-    <string name="SetAsAdmin">Promoveren tot beheerder</string>
-    <string name="ActionCreateMega">Groep gemaakt</string>
-    <string name="MegaAddedBy">un1 heeft je toegevoegd aan deze groep</string>
-    <string name="GroupUserLeftError">Deze gebruiker heeft de groep verlaten. Je kunt hem/haar niet meer uitnodigen.</string>
     <string name="NewChannel">Nieuw kanaal</string>
-    <string name="ChannelPublic">Publiek kanaal</string>
-    <string name="ChannelPrivate">Privé-kanaal</string>
-    <string name="LeaveChannel">Kanaal verlaten</string>
-    <string name="ChannelMembers">Leden</string>
-    <string name="ChannelBlockedUsers">Geblokkeerde gebruikers</string>
-    <string name="ChannelAdministrators">Beheerders</string>
-    <string name="ChannelLeaveAlert">Kanaal echt verlaten?</string>
-    <string name="ActionChannelChangedPhoto">Kanaalfoto bijgewerkt</string>
-    <string name="ActionChannelRemovedPhoto">Kanaalfoto verwijderd</string>
-    <string name="ActionChannelChangedTitle">Kanaalnaam gewijzigd naar un2</string>
-    <string name="ChannelCantOpenPrivate">Sorry, deze chat is niet beschikbaar.</string>
-    <string name="ChannelCantOpenBanned">Helaas ben je geblokkeerd van deelname in publieke groepen.</string>
-    <string name="ChannelCantOpenNa">Sorry, deze chat is niet beschikbaar.</string>
-    <string name="ChannelAddedBy">un1 heeft je toegevoegd aan dit kanaal</string>
-    <string name="ChannelJoined">Je bent nu lid van dit kanaal</string>
-    <string name="ChannelMegaJoined">Je bent nu lid van deze groep</string>
-    <string name="ChannelAddedByNotification">%1$s heeft je toegevoegd aan het kanaal %2$s</string>
-    <string name="ChannelPhotoEditNotification">Kanaalfoto van %1$s bijgewerkt</string>
-    <string name="ChannelMessageGroupNoText">%1$s heeft een bericht gestuurd naar het kanaal %2$s</string>
-    <string name="ChannelMessageGroupPhoto">%1$s heeft een foto gestuurd naar het kanaal %2$s</string>
-    <string name="ChannelMessageGroupVideo">%1$s heeft een video gestuurd naar het kanaal %2$s</string>
-    <string name="ChannelMessageGroupContact">%1$s heeft een contact gedeeld met het kanaal %2$s</string>
-    <string name="ChannelMessageGroupMap">%1$s heeft een locatie gestuurd naar het kanaal %2$s</string>
-    <string name="ChannelMessageGroupDocument">%1$s heeft een bestand gestuurd naar het kanaal %2$s</string>
-    <string name="ChannelMessageGroupGif">%1$s heeft een GIF gestuurd naar het kanaal %2$s</string>
-    <string name="ChannelMessageGroupAudio">%1$s heeft een spraakbericht gestuurd naar het kanaal %2$s</string>
-    <string name="ChannelMessageGroupMusic">%1$s heeft een muziekbestand gestuurd naar het kanaal %2$s</string>
-    <string name="ChannelMessageGroupSticker">%1$s heeft een sticker gestuurd naar het kanaal %2$s</string>
-    <string name="ChannelMessageGroupStickerEmoji">%1$s heeft een %3$s sticker gestuurd naar kanaal %2$s</string>
-    <string name="ChannelMessageNoText">%1$s plaatste een bericht</string>
-    <string name="ChannelMessagePhoto">%1$s plaatste een foto</string>
-    <string name="ChannelMessageVideo">%1$s plaatste een video</string>
-    <string name="ChannelMessageContact">%1$s plaatste een contact</string>
-    <string name="ChannelMessageMap">%1$s plaatste een locatie</string>
-    <string name="ChannelMessageDocument">%1$s plaatste een bestand</string>
-    <string name="ChannelMessageGIF">%1$s plaatste een GIF</string>
-    <string name="ChannelMessageAudio">%1$s plaatste een spraakbericht</string>
-    <string name="ChannelMessageMusic">%1$s plaatste een muziekbestand</string>
-    <string name="ChannelMessageSticker">%1$s plaatste een sticker</string>
-    <string name="ChannelMessageStickerEmoji">%1$s plaatste een %2$s sticker</string>
     <string name="ChannelNotifyMembersInfoOn">Berichtgeving voor leden</string>
     <string name="ChannelNotifyMembersInfoOff">Geen berichtgeving voor leden</string>
     <!--broadcasts-->
     <string name="NewBroadcastList">Nieuwe verzendlijst</string>
     <string name="EnterListName">Naam van lijst</string>
-    <string name="AddRecipient">Ontvanger toevoegen</string>
-    <string name="KickFromBroadcast">Verwijder van verzendlijst</string>
     <!--audio view-->
     <string name="NoAudio">Voeg bestanden toe aan de muziekbibliotheek op je apparaat om ze hier te zien.</string>
     <string name="AttachMusic">Muziek</string>
@@ -155,8 +109,6 @@
     <string name="ShareFile">Delen</string>
     <string name="ApplyLocalizationFile">Vertaling toepassen</string>
     <string name="UnsupportedAttachment">Bestandstype niet ondersteund</string>
-    <string name="ServiceNotifications">Servicemeldingen</string>
-    <string name="GettingLinkInfo">Link-preview ophalen...</string>
     <string name="OpenInBrowser">OPENEN IN...</string>
     <string name="CopyUrl">Link kopiëren</string>
     <string name="SendItems">%1$s versturen</string>
@@ -172,7 +124,6 @@
     <string name="MoreInfo">Meer informatie</string>
     <string name="ShareSendTo">Versturen naar...</string>
     <string name="TapHereGifs">Tik hier om opgeslagen GIF\'s te bekijken</string>
-    <string name="UnpinMessageAlert">Wil je dit bericht losmaken?</string>
     <string name="ClearRecentEmoji">Recente emoji\'s wissen?</string>
     <string name="PinnedMessage">Vastgezet bericht</string>
     <string name="EditedMessage">bewerkt</string>
@@ -180,10 +131,6 @@
     <string name="AddShortcut">Snelkoppeling toevoegen</string>
     <string name="ShortcutAdded">Snelkoppeling aan startscherm toegevoegd</string>
     <!--notification-->
-    <string name="MessageLifetimeChanged">%1$s heeft de zelfvernietigingstimer ingesteld op %2$s</string>
-    <string name="MessageLifetimeChangedOutgoing">Je hebt de zelfvernietigingstimer ingesteld op %1$s</string>
-    <string name="MessageLifetimeRemoved">%1$s heeft de zelfvernietigingstimer uitgeschakeld</string>
-    <string name="MessageLifetimeYouRemoved">Je hebt de zelfvernietigingstimer uitgeschakeld</string>
     <string name="YouHaveNewMessage">Je hebt een nieuw bericht</string>
     <string name="NotificationMessageText">%1$s: %2$s</string>
     <string name="NotificationMessageNoText">%1$s heeft je een bericht gestuurd</string>
@@ -281,10 +228,6 @@
     <string name="PhoneWork">Werk</string>
     <string name="PhoneOther">Overig</string>
     <string name="PhoneMain">Hoofd</string>
-    <string name="StartEncryptedChat">Geheime chat starten</string>
-    <string name="EncryptionKey">Encryptiesleutel</string>
-    <string name="MessageLifetime">Zelfvernietigingstimer</string>
-    <string name="ShortMessageLifetimeForever">Uit</string>
     <string name="NumberUnknown">Onbekend</string>
     <string name="Info">Info</string>
     <!--usernames-->

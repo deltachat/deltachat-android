@@ -56,58 +56,12 @@
     <string name="Draft">Bozza</string>
     <string name="HistoryCleared">Cronologia eliminata</string>
     <!--channels-->
-    <string name="SetAsAdmin">Rendi amministratore</string>
-    <string name="ActionCreateMega">Gruppo creato</string>
-    <string name="MegaAddedBy">un1 ti ha aggiunto a questo gruppo</string>
-    <string name="GroupUserLeftError">Spiacenti, questo utente ha deciso di lasciare il gruppo, quindi non puoi reinvitarlo.</string>
     <string name="NewChannel">Nuovo canale</string>
-    <string name="ChannelPublic">Canale pubblico</string>
-    <string name="ChannelPrivate">Canale privato</string>
-    <string name="LeaveChannel">Lascia il canale</string>
-    <string name="ChannelMembers">Membri</string>
-    <string name="ChannelBlockedUsers">Utenti bloccati</string>
-    <string name="ChannelAdministrators">Amministratori</string>
-    <string name="ChannelLeaveAlert">Sei sicuro di voler lasciare il canale?</string>
-    <string name="ActionChannelChangedPhoto">Foto del canale cambiata</string>
-    <string name="ActionChannelRemovedPhoto">Foto del canale rimossa</string>
-    <string name="ActionChannelChangedTitle">Nome del canale cambiato in un2</string>
-    <string name="ChannelCantOpenPrivate">Spiacenti, questa chat non è più accessibile.</string>
-    <string name="ChannelCantOpenBanned">Sfortunatamente, non ti è permesso partecipare ai gruppi pubblici.</string>
-    <string name="ChannelCantOpenNa">Spiacenti, questa chat non è più accessibile.</string>
-    <string name="ChannelAddedBy">un1 ti ha aggiunto a questo canale</string>
-    <string name="ChannelJoined">Ti sei unito a questo canale</string>
-    <string name="ChannelMegaJoined">Ti sei unito a questo gruppo</string>
-    <string name="ChannelAddedByNotification">%1$s ti ha aggiunto al canale %2$s</string>
-    <string name="ChannelPhotoEditNotification">Il canale %1$s ha aggiornato la foto</string>
-    <string name="ChannelMessageGroupNoText">%1$s ha inviato un messaggio al canale %2$s</string>
-    <string name="ChannelMessageGroupPhoto">%1$s ha inviato una foto al canale %2$s</string>
-    <string name="ChannelMessageGroupVideo">%1$s ha inviato un video al canale %2$s</string>
-    <string name="ChannelMessageGroupContact">%1$s ha condiviso un contatto con il canale%2$s</string>
-    <string name="ChannelMessageGroupMap">%1$s ha inviato una posizione al canale %2$s</string>
-    <string name="ChannelMessageGroupDocument">%1$s ha inviato un file al canale %2$s</string>
-    <string name="ChannelMessageGroupGif">%1$s ha inviato una GIF al canale %2$s</string>
-    <string name="ChannelMessageGroupAudio">%1$s ha inviato un messaggio vocale al canale %2$s</string>
-    <string name="ChannelMessageGroupMusic">%1$s ha inviato una traccia al canale %2$s</string>
-    <string name="ChannelMessageGroupSticker">%1$s ha inviato uno sticker al canale %2$s</string>
-    <string name="ChannelMessageGroupStickerEmoji">%1$s ha inviato uno %3$s sticker al canale %2$s</string>
-    <string name="ChannelMessageNoText">%1$s ha pubblicato un messaggio</string>
-    <string name="ChannelMessagePhoto">%1$s ha pubblicato una foto</string>
-    <string name="ChannelMessageVideo">%1$s ha pubblicato un video</string>
-    <string name="ChannelMessageContact">%1$s ha pubblicato un contatto</string>
-    <string name="ChannelMessageMap">%1$s ha pubblicato una posizione</string>
-    <string name="ChannelMessageDocument">%1$s ha pubblicato un file</string>
-    <string name="ChannelMessageGIF">%1$s ha pubblicato una GIF</string>
-    <string name="ChannelMessageAudio">%1$s ha pubblicato un messaggio vocale</string>
-    <string name="ChannelMessageMusic">%1$s ha pubblicato una traccia</string>
-    <string name="ChannelMessageSticker">%1$s ha pubblicato uno sticker</string>
-    <string name="ChannelMessageStickerEmoji">%1$s ha pubblicato uno %2$s sticker</string>
     <string name="ChannelNotifyMembersInfoOn">I post saranno notificati ai membri</string>
     <string name="ChannelNotifyMembersInfoOff">I post non saranno notificati ai membri</string>
     <!--broadcasts-->
     <string name="NewBroadcastList">Nuova lista broadcast</string>
     <string name="EnterListName">Inserisci il nome della lista</string>
-    <string name="AddRecipient">Aggiungi destinatario</string>
-    <string name="KickFromBroadcast">Rimuovi dalla lista broadcast</string>
     <!--audio view-->
     <string name="NoAudio">Aggiungi file nella libreria musicale del tuo dispositivo per vederli qui.</string>
     <string name="AttachMusic">Musica</string>
@@ -155,8 +109,6 @@
     <string name="ShareFile">Condividi</string>
     <string name="ApplyLocalizationFile">Applica traduzione</string>
     <string name="UnsupportedAttachment">Allegato non supportato</string>
-    <string name="ServiceNotifications">Notifiche di servizio</string>
-    <string name="GettingLinkInfo">Recupero le info del link...</string>
     <string name="OpenInBrowser">APRI IN...</string>
     <string name="CopyUrl">Copia URL</string>
     <string name="SendItems">Invia %1$s</string>
@@ -172,7 +124,6 @@
     <string name="MoreInfo">Maggiori info</string>
     <string name="ShareSendTo">Invia a...</string>
     <string name="TapHereGifs">Premi qui per accedere alle GIF salvate</string>
-    <string name="UnpinMessageAlert">Vuoi togliere questo messaggio?</string>
     <string name="ClearRecentEmoji">Cancellare le emoji recenti?</string>
     <string name="PinnedMessage">Messaggio fissato</string>
     <string name="EditedMessage">modificato</string>
@@ -180,10 +131,6 @@
     <string name="AddShortcut">Aggiungi scorciatoia</string>
     <string name="ShortcutAdded">Scorciatoia aggiunta alla schermata home</string>
     <!--notification-->
-    <string name="MessageLifetimeChanged">%1$s ha impostato il timer di autodistruzione a %2$s</string>
-    <string name="MessageLifetimeChangedOutgoing">Hai impostato il timer di autodistruzione a %1$s</string>
-    <string name="MessageLifetimeRemoved">%1$s ha disattivato il timer di autodistruzione</string>
-    <string name="MessageLifetimeYouRemoved">Hai disattivato il timer di autodistruzione</string>
     <string name="YouHaveNewMessage">Hai un nuovo messaggio</string>
     <string name="NotificationMessageText">%1$s: %2$s</string>
     <string name="NotificationMessageNoText">%1$s ti ha inviato un messaggio</string>
@@ -281,10 +228,6 @@
     <string name="PhoneWork">Lavoro</string>
     <string name="PhoneOther">Altro</string>
     <string name="PhoneMain">Principale</string>
-    <string name="StartEncryptedChat">Inizia chat segreta</string>
-    <string name="EncryptionKey">Chiave di crittografia</string>
-    <string name="MessageLifetime">Timer di autodistruzione</string>
-    <string name="ShortMessageLifetimeForever">Spento</string>
     <string name="NumberUnknown">Sconosciuto</string>
     <string name="Info">Info</string>
     <!--usernames-->

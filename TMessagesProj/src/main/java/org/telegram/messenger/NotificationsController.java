@@ -798,9 +798,6 @@ public class NotificationsController {
                                 singleUserId = messageObject.messageOwner.action.users.get(0);
                             }
                             if (singleUserId != 0) {
-                                if (messageObject.messageOwner.to_id.channel_id != 0 && !messageObject.isMegagroup()) {
-                                    msg = LocaleController.formatString("ChannelAddedByNotification", R.string.ChannelAddedByNotification, name, chat.title);
-                                } else {
                                     if (singleUserId == UserConfig.getClientUserId()) {
                                         msg = LocaleController.formatString("NotificationInvitedToGroup", R.string.NotificationInvitedToGroup, name, chat.title);
                                     } else {
@@ -818,7 +815,6 @@ public class NotificationsController {
                                             msg = LocaleController.formatString("NotificationGroupAddMember", R.string.NotificationGroupAddMember, name, chat.title, UserObject.getUserName(u2));
                                         }
                                     }
-                                }
                             } else {
                                 StringBuilder names = new StringBuilder("");
                                 for (int a = 0; a < messageObject.messageOwner.action.users.size(); a++) {
@@ -834,11 +830,7 @@ public class NotificationsController {
                                 msg = LocaleController.formatString("NotificationGroupAddMember", R.string.NotificationGroupAddMember, name, chat.title, names.toString());
                             }
                         } else if (messageObject.messageOwner.action instanceof TLRPC.TL_messageActionChatEditPhoto || messageObject.messageOwner.action instanceof TLRPC.TL_messageActionChatDeletePhoto) {
-                            if (messageObject.messageOwner.to_id.channel_id != 0 && !messageObject.isMegagroup()) {
-                                msg = LocaleController.formatString("ChannelPhotoEditNotification", R.string.ChannelPhotoEditNotification, chat.title);
-                            } else {
                                 msg = LocaleController.formatString("NotificationEditedGroupPhoto", R.string.NotificationEditedGroupPhoto, name, chat.title);
-                            }
                         } else if (messageObject.messageOwner.action instanceof TLRPC.TL_messageActionChatDeleteUser) {
                             if (messageObject.messageOwner.action.user_id == UserConfig.getClientUserId()) {
                                 msg = LocaleController.formatString("NotificationGroupKickYou", R.string.NotificationGroupKickYou, name, chat.title);
@@ -959,11 +951,7 @@ public class NotificationsController {
                         }
                     }
                 } else {
-                    if (ChatObject.isChannel(chat) && !chat.megagroup) {
-                        msg = LocaleController.formatString("ChannelMessageNoText", R.string.ChannelMessageNoText, name, chat.title);
-                    } else {
-                        msg = LocaleController.formatString("NotificationMessageGroupNoText", R.string.NotificationMessageGroupNoText, name, chat.title);
-                    }
+                    msg = LocaleController.formatString("NotificationMessageGroupNoText", R.string.NotificationMessageGroupNoText, name, chat.title);
                 }
             }
         }

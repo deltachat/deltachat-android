@@ -158,34 +158,16 @@ public class MessageObject {
                             whoUser = MessagesController.getInstance().getUser(singleUserId);
                         }
                         if (singleUserId == message.from_id) {
-                            if (message.to_id.channel_id != 0 && !isMegagroup()) {
-                                messageText = LocaleController.getString("ChannelJoined", R.string.ChannelJoined);
-                            } else {
-                                if (message.to_id.channel_id != 0 && isMegagroup()) {
-                                    if (singleUserId == UserConfig.getClientUserId()) {
-                                        messageText = LocaleController.getString("ChannelMegaJoined", R.string.ChannelMegaJoined);
-                                    } else {
-                                        messageText = replaceWithLink(LocaleController.getString("ActionAddUserSelfMega", R.string.ActionAddUserSelfMega), "un1", fromUser);
-                                    }
-                                } else if (isOut()) {
+                                if (isOut()) {
                                     messageText = LocaleController.getString("ActionAddUserSelfYou", R.string.ActionAddUserSelfYou);
                                 } else {
                                     messageText = replaceWithLink(LocaleController.getString("ActionAddUserSelf", R.string.ActionAddUserSelf), "un1", fromUser);
                                 }
-                            }
                         } else {
                             if (isOut()) {
                                 messageText = replaceWithLink(LocaleController.getString("ActionYouAddUser", R.string.ActionYouAddUser), "un2", whoUser);
                             } else if (singleUserId == UserConfig.getClientUserId()) {
-                                if (message.to_id.channel_id != 0) {
-                                    if (isMegagroup()) {
-                                        messageText = replaceWithLink(LocaleController.getString("MegaAddedBy", R.string.MegaAddedBy), "un1", fromUser);
-                                    } else {
-                                        messageText = replaceWithLink(LocaleController.getString("ChannelAddedBy", R.string.ChannelAddedBy), "un1", fromUser);
-                                    }
-                                } else {
-                                    messageText = replaceWithLink(LocaleController.getString("ActionAddUserYou", R.string.ActionAddUserYou), "un1", fromUser);
-                                }
+                                messageText = replaceWithLink(LocaleController.getString("ActionAddUserYou", R.string.ActionAddUserYou), "un1", fromUser);
                             } else {
                                 messageText = replaceWithLink(LocaleController.getString("ActionAddUser", R.string.ActionAddUser), "un2", whoUser);
                                 messageText = replaceWithLink(messageText, "un1", fromUser);
@@ -200,35 +182,23 @@ public class MessageObject {
                         }
                     }
                 } else if (message.action instanceof TLRPC.TL_messageActionChatEditPhoto) {
-                    if (message.to_id.channel_id != 0 && !isMegagroup()) {
-                        messageText = LocaleController.getString("ActionChannelChangedPhoto", R.string.ActionChannelChangedPhoto);
-                    } else {
                         if (isOut()) {
                             messageText = LocaleController.getString("ActionYouChangedPhoto", R.string.ActionYouChangedPhoto);
                         } else {
                             messageText = replaceWithLink(LocaleController.getString("ActionChangedPhoto", R.string.ActionChangedPhoto), "un1", fromUser);
                         }
-                    }
                 } else if (message.action instanceof TLRPC.TL_messageActionChatEditTitle) {
-                    if (message.to_id.channel_id != 0 && !isMegagroup()) {
-                        messageText = LocaleController.getString("ActionChannelChangedTitle", R.string.ActionChannelChangedTitle).replace("un2", message.action.title);
-                    } else {
                         if (isOut()) {
                             messageText = LocaleController.getString("ActionYouChangedTitle", R.string.ActionYouChangedTitle).replace("un2", message.action.title);
                         } else {
                             messageText = replaceWithLink(LocaleController.getString("ActionChangedTitle", R.string.ActionChangedTitle).replace("un2", message.action.title), "un1", fromUser);
                         }
-                    }
                 } else if (message.action instanceof TLRPC.TL_messageActionChatDeletePhoto) {
-                    if (message.to_id.channel_id != 0 && !isMegagroup()) {
-                        messageText = LocaleController.getString("ActionChannelRemovedPhoto", R.string.ActionChannelRemovedPhoto);
-                    } else {
                         if (isOut()) {
                             messageText = LocaleController.getString("ActionYouRemovedPhoto", R.string.ActionYouRemovedPhoto);
                         } else {
                             messageText = replaceWithLink(LocaleController.getString("ActionRemovedPhoto", R.string.ActionRemovedPhoto), "un1", fromUser);
                         }
-                    }
                 } else if (message.action instanceof TLRPC.TL_messageActionUserUpdatedPhoto) {
                     messageText = LocaleController.formatString("NotificationContactNewPhoto", R.string.NotificationContactNewPhoto, UserObject.getUserName(fromUser));
                 } else if (message.action instanceof TLRPC.TL_messageActionHistoryClear) {
@@ -356,14 +326,14 @@ public class MessageObject {
             if (messageOwner.action instanceof TLRPC.TL_messageActionChatEditPhoto || messageOwner.action instanceof TLRPC.TL_messageActionUserUpdatedPhoto) {
                 contentType = 1;
                 type = 11;
-            } else if (messageOwner.action instanceof TLRPC.TL_messageEncryptedAction) {
+            /*} else if (messageOwner.action instanceof TLRPC.TL_messageEncryptedAction) {
                 if (messageOwner.action.encryptedAction instanceof TLRPC.TL_decryptedMessageActionScreenshotMessages || messageOwner.action.encryptedAction instanceof TLRPC.TL_decryptedMessageActionSetMessageTTL) {
                     contentType = 1;
                     type = 10;
                 } else {
                     contentType = -1;
                     type = -1;
-                }
+                }*/
             } else if (messageOwner.action instanceof TLRPC.TL_messageActionHistoryClear) {
                 contentType = -1;
                 type = -1;
@@ -1047,8 +1017,6 @@ public class MessageObject {
                 } else {
                     message.dialog_id = -message.to_id.chat_id;
                 }
-            } else if (message.to_id.channel_id != 0) {
-                message.dialog_id = -message.to_id.channel_id;
             } else if (isOut(message)) {
                 message.dialog_id = message.to_id.user_id;
             } else {
@@ -1427,53 +1395,9 @@ public class MessageObject {
         return message == null || message.media == null || message.media instanceof TLRPC.TL_messageMediaEmpty || message.media instanceof TLRPC.TL_messageMediaWebPage;
     }
 
-    /*
-    public boolean canEditMessage(TLRPC.Chat chat) {
-        return canEditMessage(messageOwner, chat);
-    }
-
-    public static boolean canEditMessage(TLRPC.Message message, TLRPC.Chat chat) {
-        if (message == null || message.to_id == null || message.action != null && !(message.action instanceof TLRPC.TL_messageActionEmpty) || isForwardedMessage(message) || message.via_bot_id != 0 || message.id < 0 || Math.abs(message.date - ConnectionsManager.getInstance().getCurrentTime()) > MessagesController.getInstance().maxEditTime) {
-            return false;
-        }
-        if (message.to_id.channel_id == 0) {
-            return message.out && (message.media instanceof TLRPC.TL_messageMediaPhoto ||
-                    message.media instanceof TLRPC.TL_messageMediaDocument && !isStickerMessage(message) ||
-                    message.media instanceof TLRPC.TL_messageMediaEmpty ||
-                    message.media instanceof TLRPC.TL_messageMediaWebPage ||
-                    message.media == null);
-        }
-        if (chat == null && message.to_id.channel_id != 0) {
-            chat = MessagesController.getInstance().getChat(message.to_id.channel_id);
-            if (chat == null) {
-                return false;
-            }
-        }
-        if (chat.megagroup && message.out || !chat.megagroup && (chat.creator || chat.editor && isOut(message)) && message.post) {
-            if (message.media instanceof TLRPC.TL_messageMediaPhoto ||
-                    message.media instanceof TLRPC.TL_messageMediaDocument && !isStickerMessage(message) ||
-                    message.media instanceof TLRPC.TL_messageMediaEmpty ||
-                    message.media instanceof TLRPC.TL_messageMediaWebPage ||
-                    message.media == null) {
-                return true;
-            }
-        }
-        return false;
-    }
-    */
-
-    public boolean canDeleteMessage(TLRPC.Chat chat) {
-        return true;
-    }
-
     public String getForwardedName() {
         if (messageOwner.fwd_from != null) {
-            if (messageOwner.fwd_from.channel_id != 0) {
-                TLRPC.Chat chat = MessagesController.getInstance().getChat(messageOwner.fwd_from.channel_id);
-                if (chat != null) {
-                    return chat.title;
-                }
-            } else if (messageOwner.fwd_from.from_id != 0) {
+            if (messageOwner.fwd_from.from_id != 0) {
                 TLRPC.User user = MessagesController.getInstance().getUser(messageOwner.fwd_from.from_id);
                 if (user != null) {
                     return UserObject.getUserName(user);

@@ -56,58 +56,12 @@
     <string name="Draft">Draft</string>
     <string name="HistoryCleared">History was cleared</string>
     <!--channels-->
-    <string name="SetAsAdmin">Promote to admin</string>
-    <string name="ActionCreateMega">Group created</string>
-    <string name="MegaAddedBy">un1 added you to this group</string>
-    <string name="GroupUserLeftError">Sorry, this user decided to leave this group, so you cannot invite them back here.</string>
     <string name="NewChannel">New Channel</string>
-    <string name="ChannelPublic">Public Channel</string>
-    <string name="ChannelPrivate">Private Channel</string>
-    <string name="LeaveChannel">Leave Channel</string>
-    <string name="ChannelMembers">Members</string>
-    <string name="ChannelBlockedUsers">Blocked users</string>
-    <string name="ChannelAdministrators">Administrators</string>
-    <string name="ChannelLeaveAlert">Are you sure you want to leave the channel?</string>
-    <string name="ActionChannelChangedPhoto">Channel photo changed</string>
-    <string name="ActionChannelRemovedPhoto">Channel photo removed</string>
-    <string name="ActionChannelChangedTitle">Channel name changed to un2</string>
-    <string name="ChannelCantOpenPrivate">Sorry, this chat is no longer accessible.</string>
-    <string name="ChannelCantOpenBanned">Unfortunately, you were banned from participating in public groups.</string>
-    <string name="ChannelCantOpenNa">Sorry, this chat is no longer accessible.</string>
-    <string name="ChannelAddedBy">un1 added you to this channel</string>
-    <string name="ChannelJoined">You joined this channel</string>
-    <string name="ChannelMegaJoined">You joined this group</string>
-    <string name="ChannelAddedByNotification">%1$s added you to the channel %2$s</string>
-    <string name="ChannelPhotoEditNotification">Channel %1$s updated photo</string>
-    <string name="ChannelMessageGroupNoText">%1$s sent a message to the channel %2$s</string>
-    <string name="ChannelMessageGroupPhoto">%1$s sent a photo to the channel %2$s</string>
-    <string name="ChannelMessageGroupVideo">%1$s sent a video to the channel %2$s</string>
-    <string name="ChannelMessageGroupContact">%1$s shared a contact in the channel %2$s</string>
-    <string name="ChannelMessageGroupMap">%1$s sent a location to the channel %2$s</string>
-    <string name="ChannelMessageGroupDocument">%1$s sent a file to the channel %2$s</string>
-    <string name="ChannelMessageGroupGif">%1$s sent a GIF to the channel %2$s</string>
-    <string name="ChannelMessageGroupAudio">%1$s sent a voice message to the channel %2$s</string>
-    <string name="ChannelMessageGroupMusic">%1$s sent a track to the channel %2$s</string>
-    <string name="ChannelMessageGroupSticker">%1$s sent a sticker to the channel %2$s</string>
-    <string name="ChannelMessageGroupStickerEmoji">%1$s sent a %3$s sticker to the channel %2$s</string>
-    <string name="ChannelMessageNoText">%1$s posted a message</string>
-    <string name="ChannelMessagePhoto">%1$s posted a photo</string>
-    <string name="ChannelMessageVideo">%1$s posted a video</string>
-    <string name="ChannelMessageContact">%1$s posted a contact</string>
-    <string name="ChannelMessageMap">%1$s posted a location</string>
-    <string name="ChannelMessageDocument">%1$s posted a file</string>
-    <string name="ChannelMessageGIF">%1$s posted a GIF</string>
-    <string name="ChannelMessageAudio">%1$s posted a voice message</string>
-    <string name="ChannelMessageMusic">%1$s posted a track</string>
-    <string name="ChannelMessageSticker">%1$s posted a sticker</string>
-    <string name="ChannelMessageStickerEmoji">%1$s posted a %2$s sticker</string>
     <string name="ChannelNotifyMembersInfoOn">Members will be notified when you post</string>
     <string name="ChannelNotifyMembersInfoOff">Members will not be notified when you post</string>
     <!--broadcasts-->
     <string name="NewBroadcastList">New Broadcast List</string>
     <string name="EnterListName">Enter list name</string>
-    <string name="AddRecipient">Add recipient</string>
-    <string name="KickFromBroadcast">Remove from broadcast list</string>
     <!--audio view-->
     <string name="NoAudio">Please add files to the music library on your device to see them here.</string>
     <string name="AttachMusic">Music</string>
@@ -155,8 +109,6 @@
     <string name="ShareFile">Share</string>
     <string name="ApplyLocalizationFile">Apply localization file</string>
     <string name="UnsupportedAttachment">Unsupported attachment</string>
-    <string name="ServiceNotifications">Service notifications</string>
-    <string name="GettingLinkInfo">Getting Link Info...</string>
     <string name="OpenInBrowser">OPEN IN...</string>
     <string name="CopyUrl">Copy URL</string>
     <string name="SendItems">Send %1$s</string>
@@ -172,7 +124,6 @@
     <string name="MoreInfo">More info</string>
     <string name="ShareSendTo">Send to...</string>
     <string name="TapHereGifs">Tap here to access saved GIFs</string>
-    <string name="UnpinMessageAlert">Do you want to unpin this message?</string>
     <string name="ClearRecentEmoji">Clear recent emoji?</string>
     <string name="PinnedMessage">Pinned Message</string>
     <string name="EditedMessage">edited</string>
@@ -180,10 +131,6 @@
     <string name="AddShortcut">Add widget</string>
     <string name="ShortcutAdded">Widget added to home screen</string>
     <!--notification-->
-    <string name="MessageLifetimeChanged">%1$s set the self-destruct timer to %2$s</string>
-    <string name="MessageLifetimeChangedOutgoing">You set the self-destruct timer to %1$s</string>
-    <string name="MessageLifetimeRemoved">%1$s disabled the self-destruct timer</string>
-    <string name="MessageLifetimeYouRemoved">You disabled the self-destruct timer</string>
     <string name="YouHaveNewMessage">You have a new message</string>
     <string name="NotificationMessageText">%1$s: %2$s</string>
     <string name="NotificationMessageNoText">%1$s sent you a message</string>
@@ -281,10 +228,6 @@
     <string name="PhoneWork">Work</string>
     <string name="PhoneOther">Other</string>
     <string name="PhoneMain">Main</string>
-    <string name="StartEncryptedChat">Start Secret Chat</string>
-    <string name="EncryptionKey">Encryption Key</string>
-    <string name="MessageLifetime">Self-Destruct Timer</string>
-    <string name="ShortMessageLifetimeForever">Off</string>
     <string name="NumberUnknown">Unknown</string>
     <string name="Info">Info</string>
     <!--usernames-->

@@ -88,7 +88,7 @@ public class TLRPC {
     }
 
 	public static class Peer extends TLObject {
-		public int channel_id;
+		public final int channel_id = 0;
 		public int user_id;
 		public int chat_id;
 	}
@@ -310,17 +310,12 @@ public class TLRPC {
 	public static class MessageAction extends TLObject {
 		public String title;
 		public String address;
-		public DecryptedMessageAction encryptedAction;
 		public ArrayList<Integer> users = new ArrayList<>();
-		public int channel_id;
+		public final int channel_id = 0;
 		public Photo photo;
 		public int chat_id;
 		public int user_id;
 		public UserProfilePhoto newUserPhoto;
-		public int ttl;
-	}
-
-	public static class TL_messageEncryptedAction extends MessageAction {
 	}
 
 	public static class TL_messageActionChatCreate extends MessageAction {
@@ -512,17 +507,6 @@ public class TLRPC {
 		public long id;
 		public int parts;
 	}
-
-	public static class DecryptedMessageAction extends TLObject {
-		public int layer;
-		public SendMessageAction action;
-	}
-
-	public static class TL_decryptedMessageActionSetMessageTTL extends DecryptedMessageAction {
-	}
-
-	public static class TL_decryptedMessageActionScreenshotMessages extends DecryptedMessageAction {
-    }
 
 	public static class UserProfilePhoto extends TLObject {
 		public FileLocation photo_small;

@@ -55,58 +55,12 @@
     <string name="Draft">Entwurf</string>
     <string name="HistoryCleared">Verlauf wurde gelöscht</string>
     <!--channels-->
-    <string name="SetAsAdmin">Zum Admin machen</string>
-    <string name="ActionCreateMega">Gruppe erstellt</string>
-    <string name="MegaAddedBy">un1 hat dich hinzugefügt</string>
-    <string name="GroupUserLeftError">Dieser Nutzer hat die Gruppe verlassen, deshalb kannst du ihn nicht wieder einladen.</string>
     <string name="NewChannel">Neuer Kanal</string>
-    <string name="ChannelPublic">öffentlich</string>
-    <string name="ChannelPrivate">privat</string>
-    <string name="LeaveChannel">Kanal verlassen</string>
-    <string name="ChannelMembers">Mitglieder</string>
-    <string name="ChannelBlockedUsers">Blockierte Nutzer</string>
-    <string name="ChannelAdministrators">Administratoren</string>
-    <string name="ChannelLeaveAlert">Möchtest du wirklich diesen Kanal verlassen?</string>
-    <string name="ActionChannelChangedPhoto">Bild geändert</string>
-    <string name="ActionChannelRemovedPhoto">Bild gelöscht</string>
-    <string name="ActionChannelChangedTitle">Kanalname zu un2 geändert</string>
-    <string name="ChannelCantOpenPrivate">Dieser Chat ist nicht mehr zugänglich.</string>
-    <string name="ChannelCantOpenBanned">Du wurdest gesperrt und kannst öffentliche Gruppen nicht betreten.</string>
-    <string name="ChannelCantOpenNa">Dieser Chat ist nicht mehr zugänglich.</string>
-    <string name="ChannelAddedBy">un1 hat dich hinzugefügt</string>
-    <string name="ChannelJoined">Du bist dem Kanal beigetreten</string>
-    <string name="ChannelMegaJoined">Du bist der Gruppe beigetreten</string>
-    <string name="ChannelAddedByNotification">%1$s hat dich dem Kanal %2$s hinzugefügt</string>
-    <string name="ChannelPhotoEditNotification">Kanal %1$s hat das Bild geändert</string>
-    <string name="ChannelMessageGroupNoText">%1$s hat eine Nachricht an den Kanal %2$s gesendet</string>
-    <string name="ChannelMessageGroupPhoto">%1$s hat ein Bild an den Kanal %2$s gesendet</string>
-    <string name="ChannelMessageGroupVideo">%1$s hat ein Video an den Kanal %2$s gesendet</string>
-    <string name="ChannelMessageGroupContact">%1$s hat einen Kontakt an den Kanal %2$s gesendet</string>
-    <string name="ChannelMessageGroupMap">%1$s hat einen Standort an den Kanal %2$s gesendet</string>
-    <string name="ChannelMessageGroupDocument">%1$s hat eine Datei an den Kanal %2$s gesendet</string>
-    <string name="ChannelMessageGroupGif">%1$s hat ein GIF an den Kanal %2$s gesendet</string>
-    <string name="ChannelMessageGroupAudio">%1$s hat eine Sprachnachricht an den Kanal %2$s gesendet</string>
-    <string name="ChannelMessageGroupMusic">%1$s hat ein Musikstück an den Kanal %2$s gesendet</string>
-    <string name="ChannelMessageGroupSticker">%1$s hat einen Sticker an den Kanal %2$s gesendet</string>
-    <string name="ChannelMessageGroupStickerEmoji">%1$s hat einen %3$s Sticker an den Kanal %2$s gesendet</string>
-    <string name="ChannelMessageNoText">%1$s hat eine Nachricht gesendet</string>
-    <string name="ChannelMessagePhoto">%1$s hat ein Bild gesendet</string>
-    <string name="ChannelMessageVideo">%1$s hat ein Video gesendet</string>
-    <string name="ChannelMessageContact">%1$s hat einen Kontakt gesendet</string>
-    <string name="ChannelMessageMap">%1$s hat einen Standort gesendet</string>
-    <string name="ChannelMessageDocument">%1$s hat eine Datei gesendet</string>
-    <string name="ChannelMessageGIF">%1$s hat ein GIF gesendet</string>
-    <string name="ChannelMessageAudio">%1$s hat eine Sprachnachricht gesendet</string>
-    <string name="ChannelMessageMusic">%1$s hat ein Musikstück gesendet</string>
-    <string name="ChannelMessageSticker">%1$s hat einen Sticker gesendet</string>
-    <string name="ChannelMessageStickerEmoji">%1$s hat einen %2$s Sticker gesendet</string>
     <string name="ChannelNotifyMembersInfoOn">Mitglieder werden benachrichtigt</string>
     <string name="ChannelNotifyMembersInfoOff">Mitglieder werden nicht benachrichtigt</string>
     <!--broadcasts-->
     <string name="NewBroadcastList">Neue Broadcast Liste</string>
     <string name="EnterListName">Listenname</string>
-    <string name="AddRecipient">Empfänger hinzufügen</string>
-    <string name="KickFromBroadcast">Aus Broadcast Liste entfernen</string>
     <!--audio view-->
     <string name="NoAudio">Bitte füge Musikdateien einfach deiner Android Musikbibliothek hinzu, um sie hier zu sehen.</string>
     <string name="AttachMusic">Musik</string>
@@ -154,8 +108,6 @@
     <string name="ShareFile">Teilen</string>
     <string name="ApplyLocalizationFile">Sprachdatei benutzen</string>
     <string name="UnsupportedAttachment">Nicht unterstützte Datei</string>
-    <string name="ServiceNotifications">Servicemeldungen</string>
-    <string name="GettingLinkInfo">Lade Linkvorschau...</string>
     <string name="OpenInBrowser">ÖFFNEN MIT...</string>
     <string name="CopyUrl">URL kopieren</string>
     <string name="SendItems">%1$s senden</string>
@@ -171,7 +123,6 @@
     <string name="MoreInfo">Mehr Infos</string>
     <string name="ShareSendTo">Sende an...</string>
     <string name="TapHereGifs">Hier tippen um gespeicherte GIFs zu sehen</string>
-    <string name="UnpinMessageAlert">Angeheftete Nachricht wieder entfernen?</string>
     <string name="ClearRecentEmoji">Zuletzt benutzte Emoji leeren?</string>
     <string name="PinnedMessage">Angeheftete Nachricht</string>
     <string name="EditedMessage">bearbeitet</string>
@@ -179,10 +130,6 @@
     <string name="AddShortcut">Widget hinzufügen</string>
     <string name="ShortcutAdded">Widget zum Startbildschirm hinzugefügt</string>
     <!--notification-->
-    <string name="MessageLifetimeChanged">%1$s hat den Selbstzerstörungs-Timer auf %2$s gesetzt</string>
-    <string name="MessageLifetimeChangedOutgoing">Du hast den Selbstzerstörungs-Timer auf %1$s gesetzt</string>
-    <string name="MessageLifetimeRemoved">%1$s hat den Selbstzerstörungs-Timer deaktiviert</string>
-    <string name="MessageLifetimeYouRemoved">Du hast den Selbstzerstörungs-Timer deaktiviert</string>
     <string name="YouHaveNewMessage">Du hast eine neue Nachricht</string>
     <string name="NotificationMessageText">%1$s: %2$s</string>
     <string name="NotificationMessageNoText">%1$s hat dir eine Nachricht gesendet</string>
@@ -280,10 +227,6 @@
     <string name="PhoneWork">Arbeit</string>
     <string name="PhoneOther">Sonstiges</string>
     <string name="PhoneMain">Hauptnummer</string>
-    <string name="StartEncryptedChat">Geheimen Chat starten</string>
-    <string name="EncryptionKey">Geheimer Schlüssel</string>
-    <string name="MessageLifetime">Selbstzerstörungs-Timer</string>
-    <string name="ShortMessageLifetimeForever">Aus</string>
     <string name="NumberUnknown">Unbekannt</string>
     <string name="Info">Info</string>
     <!--usernames-->
