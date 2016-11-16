@@ -144,7 +144,7 @@ public class MrMailbox {
             }
         }
         else {
-            ret.message = "<unsupported message type.>";
+            ret.message = String.format("<unsupported message type #%d for id #%d>", type, ret.id);
         }
 
         return ret;
