@@ -111,13 +111,10 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
     private boolean allowProfileAnimation = true;
     private int extraHeight;
     private int initialAnimationExtraHeight;
-    private float animationProgress;
 
     private AvatarUpdater avatarUpdater;
-    private int selectedUser;
     private int[] sortedUserIds;
 
-    private final TLRPC.EncryptedChat currentEncryptedChat = null;
     private TLRPC.Chat currentChat;
 
     private final static int add_contact = 1;
@@ -132,11 +129,15 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
     private int settingsNotificationsRow = -1;
     private int changeNameRow = -1;
     private int startChatRow = -1;
-    private int emptyRowChat = -1;
-    private int emptyRowChat2 = -1;
     private int addMemberRow = -1;
-    private int membersEndRow = -1;
+
+    private int emptyRowChat = -1;
     private int membersSectionRow = -1;
+    private int emptyRowChat2 = -1;
+
+    private int firstMemberRow = -1;
+    private int lastMemberRow = -1;
+
 
     private int rowCount = 0;
 
@@ -292,7 +293,6 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                     }
                     AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
                     builder.setMessage(LocaleController.getString("AreYouSureDeleteContact", R.string.AreYouSureDeleteContact));
-                    builder.setTitle(LocaleController.getString("AppName", R.string.AppName));
                     builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
@@ -441,16 +441,16 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                     builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
                     builder.setMessage(AndroidUtilities.replaceTags(LocaleController.formatString("AskStartChatWith", R.string.AskStartChatWith, name)));
                     showDialog(builder.create());
-                } else if (position > emptyRowChat2 && position < membersEndRow) {
-                    int curr_user_index = position - emptyRowChat2 - 1;
+                } else if (position == addMemberRow) {
+                    openAddMember();
+                } else if (position >= firstMemberRow && position <= lastMemberRow) {
+                    int curr_user_index = position - firstMemberRow;
                     if(curr_user_index>=0 && curr_user_index<sortedUserIds.length) {
                         int curr_user_id = sortedUserIds[curr_user_index];
                         Bundle args = new Bundle();
                         args.putInt("user_id", curr_user_id);
                         presentFragment(new ProfileActivity(args));
                     }
-                } else if (position == addMemberRow) {
-                    openAddMember();
                 } else {
                     processOnClickOrPress(position);
                 }
@@ -460,7 +460,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
         listView.setOnItemLongClickListener(new RecyclerListView.OnItemLongClickListener() {
             @Override
             public boolean onItemClick(View view, int position) {
-                if (position > emptyRowChat2 && position < membersEndRow) {
+                if (position >= firstMemberRow && position <= lastMemberRow) {
                     /*
                     if (getParentActivity() == null) {
                         return false;
@@ -948,7 +948,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
     }
 
     public void setAnimationProgress(float progress) {
-        animationProgress = progress;
+        //animationProgress = progress;
         listView.setAlpha(progress);
 
         listView.setTranslationX(AndroidUtilities.dp(48) - AndroidUtilities.dp(48) * progress);
@@ -1181,7 +1181,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
         }
 
         if (user_id != 0) {
-            startChatRow = rowCount++;;
+            startChatRow = rowCount++;
         } else if (chat_id != 0 && chat_id!=MrMailbox.MR_CHAT_ID_STRANGERS ) {
             addMemberRow = rowCount++;
         }
@@ -1192,11 +1192,11 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
             emptyRowChat = rowCount++;
             membersSectionRow = rowCount++;
             emptyRowChat2 = rowCount++;
+
+            firstMemberRow = rowCount;
             rowCount += sortedUserIds.length;
-            membersEndRow = rowCount;
+            lastMemberRow = rowCount-1;
         }
-
-
     }
 
     private void updateProfileData() {
@@ -1248,7 +1248,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
             if (!onlineTextView[a].getText().equals(newString2)) {
                 onlineTextView[a].setText(newString2);
             }
-            int leftIcon = currentEncryptedChat != null ? R.drawable.ic_lock_header : 0;
+            int leftIcon = 0;//currentEncryptedChat != null ? R.drawable.ic_lock_header : 0;
             int rightIcon = 0;
             if (a == 0) {
                 rightIcon = MessagesController.getInstance().isDialogMuted(dialog_id != 0 ? dialog_id : (long) user_id) ? R.drawable.mute_fixed : 0;
@@ -1272,8 +1272,6 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
         ActionBarMenuItem item = menu.addItem(10, R.drawable.ic_ab_other);
         if (user_id != 0) {
             item.addSubItem(block_contact, !userBlocked ? LocaleController.getString("BlockContact", R.string.BlockContact) : LocaleController.getString("Unblock", R.string.Unblock), 0);
-        } else if (chat_id != 0) {
-            ;
         }
 
         if( chat_id!=0 || MrMailbox.MrMailboxGetChatIdByContactId(MrMailbox.hMailbox, user_id)!=0 ) {
@@ -1417,7 +1415,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                     break;
                 case typeContactCell:
                     UserCell userCell = ((UserCell) holder.itemView);
-                    int curr_user_index = i - emptyRowChat2 - 1;
+                    int curr_user_index = i - firstMemberRow;
                     if(curr_user_index>=0 && curr_user_index<sortedUserIds.length) {
                         int curr_user_id = sortedUserIds[curr_user_index];
                         long hContact = MrMailbox.MrMailboxGetContact(MrMailbox.hMailbox, curr_user_id);
@@ -1434,11 +1432,14 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
             if (checkBackground) {
                 boolean enabled = false;
                 if (user_id != 0) {
-                    enabled = i == settingsNotificationsRow ||
-                            i == changeNameRow || i == startChatRow ;
+                    enabled =  i == settingsNotificationsRow
+                            || i == changeNameRow
+                            || i == startChatRow;
                 } else if (chat_id != 0) {
-                    enabled = i == settingsNotificationsRow || (i > emptyRowChat2 && i < membersEndRow) ||
-                            i == addMemberRow;
+                    enabled =  i == settingsNotificationsRow
+                            || i == changeNameRow
+                            || i == addMemberRow
+                            || (i >= firstMemberRow && i <= lastMemberRow);
                 }
                 if (enabled) {
                     if (holder.itemView.getBackground() == null) {
@@ -1465,10 +1466,9 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                 return typeDivider;
             } else if ( i == changeNameRow || i==startChatRow || i == settingsNotificationsRow || i == addMemberRow) {
                 return typeTextCell;
-            } else if (i > emptyRowChat2 && i < membersEndRow) {
+            } else if (i >= firstMemberRow && i <= lastMemberRow) {
                 return typeContactCell;
-            }
-            else if(i==membersSectionRow) {
+            } else if(i==membersSectionRow) {
                 return typeSection;
             }
             return 0;

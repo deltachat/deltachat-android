@@ -177,8 +177,8 @@
     <string name="PinnedMessage">Pinned Message</string>
     <string name="EditedMessage">edited</string>
     <string name="AttachBotsHelp">Scroll down for bots</string>
-    <string name="AddShortcut">Add shortcut</string>
-    <string name="ShortcutAdded">Shortcut added to home screen</string>
+    <string name="AddShortcut">Add widget</string>
+    <string name="ShortcutAdded">Widget added to home screen</string>
     <!--notification-->
     <string name="MessageLifetimeChanged">%1$s set the self-destruct timer to %2$s</string>
     <string name="MessageLifetimeChangedOutgoing">You set the self-destruct timer to %1$s</string>

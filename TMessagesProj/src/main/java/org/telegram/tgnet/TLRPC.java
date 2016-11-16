@@ -514,7 +514,6 @@ public class TLRPC {
 	}
 
 	public static class DecryptedMessageAction extends TLObject {
-		public int ttl_seconds;
 		public int layer;
 		public SendMessageAction action;
 	}

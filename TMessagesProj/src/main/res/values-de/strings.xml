@@ -176,8 +176,8 @@
     <string name="PinnedMessage">Angeheftete Nachricht</string>
     <string name="EditedMessage">bearbeitet</string>
     <string name="AttachBotsHelp">Runterscrollen für Bots</string>
-    <string name="AddShortcut">Verknüpfung hinzufügen</string>
-    <string name="ShortcutAdded">Zum Startbildschirm hinzugefügt</string>
+    <string name="AddShortcut">Widget hinzufügen</string>
+    <string name="ShortcutAdded">Widget zum Startbildschirm hinzugefügt</string>
     <!--notification-->
     <string name="MessageLifetimeChanged">%1$s hat den Selbstzerstörungs-Timer auf %2$s gesetzt</string>
     <string name="MessageLifetimeChangedOutgoing">Du hast den Selbstzerstörungs-Timer auf %1$s gesetzt</string>
