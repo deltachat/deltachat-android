@@ -113,12 +113,14 @@ public class DrawerLayoutContainer extends FrameLayout {
         lp.bottomMargin = wi.getSystemWindowInsetBottom();
     }
 
+    /*
     private int getTopInset(Object insets) {
         if (Build.VERSION.SDK_INT >= 21) {
             return insets != null ? ((WindowInsets) insets).getSystemWindowInsetTop() : 0;
         }
         return 0;
     }
+    */
 
     public void setDrawerLayout(ViewGroup layout) {
         drawerLayout = layout;
@@ -148,9 +150,11 @@ public class DrawerLayoutContainer extends FrameLayout {
         setScrimOpacity(drawerPosition / (float) drawerLayout.getMeasuredWidth());
     }
 
+    /*
     public float getDrawerPosition() {
         return drawerPosition;
     }
+    */
 
     public void cancelCurrentAnimation() {
         if (currentAnimation != null) {
@@ -222,13 +226,17 @@ public class DrawerLayoutContainer extends FrameLayout {
         invalidate();
     }
 
+    /*
     private float getScrimOpacity() {
         return scrimOpacity;
     }
+    */
 
+    /*
     public View getDrawerLayout() {
         return drawerLayout;
     }
+    */
 
     public void setParentActionBarLayout(ActionBarLayout layout) {
         parentActionBarLayout = layout;

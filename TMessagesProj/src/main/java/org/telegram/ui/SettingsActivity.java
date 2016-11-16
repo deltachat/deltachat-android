@@ -124,7 +124,6 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
     private int privacyPolicyRow;
     private int sendLogsRow;
     private int clearLogsRow;
-    private int switchBackendButtonRow;
     private int versionRow;
     private int contactsSectionRow;
     private int contactsReimportRow;
@@ -134,18 +133,6 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
 
     private final static int edit_name = 1;
     private final static int logout = 2;
-
-    private static class LinkMovementMethodMy extends LinkMovementMethod {
-        @Override
-        public boolean onTouchEvent(@NonNull TextView widget, @NonNull Spannable buffer, @NonNull MotionEvent event) {
-            try {
-                return super.onTouchEvent(widget, buffer, event);
-            } catch (Exception e) {
-                FileLog.e("tmessages", e);
-            }
-            return false;
-        }
-    }
 
     @Override
     public boolean onFragmentCreate() {
@@ -253,12 +240,10 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
         privacyPolicyRow = -1; // EDIT BY MR -- rowCount++;
         sendLogsRow = -1; // EDIT BY MR
         clearLogsRow = -1; // EDIT BY MR
-        switchBackendButtonRow = -1; // EDIT BY MR
         /* EDIT BY MR
         if (BuildVars.DEBUG_VERSION) {
             sendLogsRow = rowCount++;
             clearLogsRow = rowCount++;
-            switchBackendButtonRow = rowCount++;
         }
         */
         versionRow = -1; // EDIT BY MR -- rowCount++;
@@ -485,23 +470,6 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
                     presentFragment(new PrivacySettingsActivity());
                 } else if (i == languageRow) {
                     presentFragment(new LanguageSelectActivity());
-                } else if (i == switchBackendButtonRow) {
-                    /* EDIT BY MR
-                    if (getParentActivity() == null) {
-                        return;
-                    }
-                    AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
-                    builder.setMessage(LocaleController.getString("AreYouSure", R.string.AreYouSure));
-                    builder.setTitle(LocaleController.getString("AppName", R.string.AppName));
-                    builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            ConnectionsManager.getInstance().switchBackend();
-                        }
-                    });
-                    builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
-                    showDialog(builder.create());
-                    */
                 } else if (i == helpRow) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
                     builder.setTitle(LocaleController.getString("AppName", R.string.AppName) + " " + getVersion());
@@ -669,41 +637,8 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
 
         listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
 
-            private int pressCount = 0;
-
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-                /* EDIT BY MR
-                if (position == versionRow) {
-                    pressCount++;
-                    if (pressCount >= 2) {
-                        AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
-                        builder.setTitle("Debug Menu");
-                        builder.setItems(new CharSequence[]{
-                                "Import Contacts",
-                                "Reload Contacts"
-                        }, new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                if (which == 0) {
-                                    ContactsController.getInstance().forceImportContacts();
-                                } else if (which == 1) {
-                                    ContactsController.getInstance().loadContacts(false, true);
-                                }
-                            }
-                        });
-                        builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
-                        showDialog(builder.create());
-                    } else {
-                        try {
-                            Toast.makeText(getParentActivity(), "¯\\_(ツ)_/¯", Toast.LENGTH_SHORT).show();
-                        } catch (Exception e) {
-                            FileLog.e("tmessages", e);
-                        }
-                    }
-                    return true;
-                }
-                */
                 return false;
             }
         });
@@ -1233,7 +1168,7 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
             return i == textSizeRow || i == enableAnimationsRow || i == notificationRow || i == backgroundRow || i == numberRow ||
                     i == askQuestionRow || i == sendLogsRow || i == sendByEnterRow || i == autoplayGifsRow || i == privacyRow || i == wifiDownloadRow ||
                     i == mobileDownloadRow || i == clearLogsRow || i == roamingDownloadRow || i == languageRow || i == usernameRow ||
-                    i == switchBackendButtonRow || i == helpRow || i == contactsSortRow || i == contactsReimportRow || i == saveToGalleryRow ||
+                    i == helpRow || i == contactsSortRow || i == contactsReimportRow || i == saveToGalleryRow ||
                     i == stickersRow || i == cacheRow || i == raiseToSpeakRow || i == privacyPolicyRow || i == directShareRow || i == versionRow;
         }
 
@@ -1316,8 +1251,6 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
                 EDIT BY MR*/
                 else if (i == privacyRow) {
                     textCell.setText(LocaleController.getString("PrivacySettings", R.string.PrivacySettings), true);
-                } else if (i == switchBackendButtonRow) {
-                    textCell.setText("Switch Backend", true);
                 } else if (i == helpRow) {
                     textCell.setText(LocaleController.getString("AboutThisProgram", R.string.AboutThisProgram), true);
                 } else if (i == contactsReimportRow) {
@@ -1511,7 +1444,7 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
                 return 1;
             } else if (i == enableAnimationsRow || i == sendByEnterRow || i == saveToGalleryRow || i == autoplayGifsRow || i == raiseToSpeakRow || i == directShareRow) {
                 return 3;
-            } else if (i == notificationRow || i == backgroundRow || i == askQuestionRow || i == sendLogsRow || i == privacyRow || i == clearLogsRow || i == switchBackendButtonRow || i == helpRow || i == contactsReimportRow || i == textSizeRow || i == languageRow || i == contactsSortRow || i == stickersRow || i == cacheRow || i == privacyPolicyRow) {
+            } else if (i == notificationRow || i == backgroundRow || i == askQuestionRow || i == sendLogsRow || i == privacyRow || i == clearLogsRow || i == helpRow || i == contactsReimportRow || i == textSizeRow || i == languageRow || i == contactsSortRow || i == stickersRow || i == cacheRow || i == privacyPolicyRow) {
                 return 2;
             } else if (i == versionRow) {
                 return 5;

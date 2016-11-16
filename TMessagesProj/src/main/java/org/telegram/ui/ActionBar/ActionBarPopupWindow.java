@@ -39,7 +39,7 @@ public class ActionBarPopupWindow extends PopupWindow {
 
     private static final Field superListenerField;
     private static final boolean animationEnabled = Build.VERSION.SDK_INT >= 18;
-    private static DecelerateInterpolator decelerateInterpolator = new DecelerateInterpolator();
+    //private static DecelerateInterpolator decelerateInterpolator = new DecelerateInterpolator();
     private AnimatorSet windowAnimatorSet;
     static {
         Field f = null;
@@ -116,6 +116,7 @@ public class ActionBarPopupWindow extends PopupWindow {
             mOnDispatchKeyEventListener = listener;
         }
 
+        /*
         public void setBackAlpha(int value) {
             backAlpha = value;
         }
@@ -180,12 +181,14 @@ public class ActionBarPopupWindow extends PopupWindow {
                 animatorSet.start();
             }
         }
+        */
 
         @Override
         public void addView(View child) {
             linearLayout.addView(child);
         }
 
+        /*
         public float getBackScaleX() {
             return backScaleX;
         }
@@ -193,6 +196,7 @@ public class ActionBarPopupWindow extends PopupWindow {
         public float getBackScaleY() {
             return backScaleY;
         }
+        */
 
         @Override
         public boolean dispatchKeyEvent(KeyEvent event) {
@@ -230,6 +234,7 @@ public class ActionBarPopupWindow extends PopupWindow {
         }
     }
 
+    /*
     public ActionBarPopupWindow() {
         super();
         init();
@@ -254,6 +259,7 @@ public class ActionBarPopupWindow extends PopupWindow {
         super(contentView, width, height, focusable);
         init();
     }
+    */
 
     public ActionBarPopupWindow(View contentView, int width, int height) {
         super(contentView, width, height);

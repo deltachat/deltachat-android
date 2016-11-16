@@ -13,8 +13,6 @@ import org.telegram.messenger.NotificationCenter;
 import org.telegram.tgnet.TLRPC;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.HashMap;
 
 public class SearchQuery {
@@ -203,48 +201,6 @@ public class SearchQuery {
         }
     }
 
-    public static void increaseInlineRaiting(final int uid) {
-        Integer time = inlineDates.get(uid);
-        int dt;
-        if (time != null) {
-            dt = Math.max(1, ((int) (System.currentTimeMillis() / 1000)) - time);
-        } else {
-            dt = 60;
-        }
-
-        TLRPC.TL_topPeer peer = null;
-        for (int a = 0; a < inlineBots.size(); a++) {
-            TLRPC.TL_topPeer p = inlineBots.get(a);
-            if (p.peer.user_id == uid) {
-                peer = p;
-                break;
-            }
-        }
-        if (peer == null) {
-            peer = new TLRPC.TL_topPeer();
-            peer.peer = new TLRPC.TL_peerUser();
-            peer.peer.user_id = uid;
-            inlineBots.add(peer);
-        }
-        peer.rating += Math.exp(dt / MessagesController.getInstance().ratingDecay);
-        Collections.sort(inlineBots, new Comparator<TLRPC.TL_topPeer>() {
-            @Override
-            public int compare(TLRPC.TL_topPeer lhs, TLRPC.TL_topPeer rhs) {
-                if (lhs.rating > rhs.rating) {
-                    return -1;
-                } else if (lhs.rating < rhs.rating) {
-                    return 1;
-                }
-                return 0;
-            }
-        });
-        if (inlineBots.size() > 20) {
-            inlineBots.remove(inlineBots.size() - 1);
-        }
-        savePeer(uid, 1, peer.rating);
-        NotificationCenter.getInstance().postNotificationName(NotificationCenter.reloadInlineHints);
-    }
-
     public static void removeInline(final int uid) {
         TLRPC.TL_topPeerCategoryPeers category = null;
         for (int a = 0; a < inlineBots.size(); a++) {
@@ -364,28 +320,6 @@ public class SearchQuery {
                         NotificationCenter.getInstance().postNotificationName(NotificationCenter.reloadHints);
                     }
                 });
-            }
-        });
-        */
-    }
-
-    private static void savePeer(final int did, final int type, final double rating) {
-        /*
-        MessagesStorage.getInstance().getStorageQueue().postRunnable(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    SQLitePreparedStatement state = MessagesStorage.getInstance().getDatabase().executeFast("REPLACE INTO chat_hints VALUES(?, ?, ?, ?)");
-                    state.requery();
-                    state.bindInteger(1, did);
-                    state.bindInteger(2, type);
-                    state.bindDouble(3, rating);
-                    state.bindInteger(4, (int) System.currentTimeMillis() / 1000);
-                    state.step();
-                    state.dispose();
-                } catch (Exception e) {
-                    FileLog.e("tmessages", e);
-                }
             }
         });
         */

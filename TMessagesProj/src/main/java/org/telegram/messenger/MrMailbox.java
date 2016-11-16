@@ -32,6 +32,8 @@ package org.telegram.messenger;
 import android.util.Log;
 import org.telegram.tgnet.TLRPC;
 
+import java.util.Locale;
+
 public class MrMailbox {
 
     public static long           hMailbox = 0;

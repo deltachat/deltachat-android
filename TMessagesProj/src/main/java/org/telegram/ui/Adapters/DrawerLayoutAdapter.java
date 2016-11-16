@@ -1,4 +1,6 @@
 /*
+ * This part of the Delta Chat fronted is based on Telegram which is covered by the following note:
+ *
  * This is the source code of Telegram for Android v. 3.x.x.
  * It is licensed under GNU GPL v. 2 or later.
  * You should have received a copy of the license in this archive (see LICENSE).
@@ -27,14 +29,11 @@ public class DrawerLayoutAdapter extends BaseAdapter {
 
     private Context mContext;
 
-    // EDIT BY MR
     public final static int iProfile           = 0;
     public final static int iEmptyBelowProfile = 1;
     public final static int iNewChat           = 2;
     public final static int iNewGroup          = 3;
-    public final static int iNewChannel        = -1;
     public final static int iStrangers         = 4;
-    public final static int iInviteFriends     = -1;
     public final static int iDivider           = 5;
     public final static int iSettings          = 6;
     public final static int iFaq               = 7;
@@ -44,7 +43,6 @@ public class DrawerLayoutAdapter extends BaseAdapter {
     public final static int typeEmpty = 1;
     public final static int typeDivider = 2;
     public final static int typeButton = 3;
-    // /EDIT BY MR
 
     public DrawerLayoutAdapter(Context context) {
         mContext = context;
@@ -62,7 +60,7 @@ public class DrawerLayoutAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return UserConfig.isClientActivated() ? iCount : 0;
+        return iCount;
     }
 
     @Override
@@ -101,16 +99,12 @@ public class DrawerLayoutAdapter extends BaseAdapter {
                 view = new DrawerActionCell(mContext);
             }
             DrawerActionCell actionCell = (DrawerActionCell) view;
-            if (i == iNewGroup) {
-                actionCell.setTextAndIcon(LocaleController.getString("NewGroup", R.string.NewGroup), R.drawable.menu_newgroup);
-            } else if (i == iNewChat) {
+            if (i == iNewChat) {
                 actionCell.setTextAndIcon(LocaleController.getString("NewChat", R.string.NewChat), R.drawable.menu_newchat);
-            } else if (i == iNewChannel) {
-                actionCell.setTextAndIcon(LocaleController.getString("NewChannel", R.string.NewChannel), R.drawable.menu_broadcast);
+            } else if (i == iNewGroup) {
+                actionCell.setTextAndIcon(LocaleController.getString("NewGroup", R.string.NewGroup), R.drawable.menu_newgroup);
             } else if (i == iStrangers) {
                 actionCell.setTextAndIcon(LocaleController.getString("Strangers", R.string.Strangers), R.drawable.menu_contacts);
-            } else if (i == iInviteFriends) {
-                actionCell.setTextAndIcon(LocaleController.getString("InviteFriends", R.string.InviteFriends), R.drawable.menu_invite);
             } else if (i == iSettings) {
                 actionCell.setTextAndIcon(LocaleController.getString("Settings", R.string.Settings), R.drawable.menu_settings);
             } else if (i == iFaq) {

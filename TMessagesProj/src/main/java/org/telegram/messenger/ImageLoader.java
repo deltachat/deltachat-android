@@ -895,6 +895,7 @@ public class ImageLoader {
         }
     }
 
+    /*
     public class VMRuntimeHack {
         private Object runtime = null;
         private Method trackAllocation = null;
@@ -941,6 +942,7 @@ public class ImageLoader {
             }
         }
     }
+    */
 
     private class CacheImage {
         protected String key;

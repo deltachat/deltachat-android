@@ -599,9 +599,11 @@ public class LocaleController {
         recreateFormatters();
     }
 
+    /*
     private void loadCurrentLocale() {
         localeValues.clear();
     }
+    */
 
     public static String getCurrentLanguageName() {
         return getString("LanguageName", R.string.LanguageName);
@@ -856,6 +858,7 @@ public class LocaleController {
         return "LOC_ERR";
     }
 
+    /*
     public static String formatShortNumber(int number, int[] rounded) {
         String K = "";
         int lastDec = 0;
@@ -885,6 +888,7 @@ public class LocaleController {
             return String.format(Locale.US, "%d%s", number, K);
         }
     }
+    */
 
     public static String formatUserStatus(TLRPC.User user) {
         if (user != null && user.status != null && user.status.expires == 0) {

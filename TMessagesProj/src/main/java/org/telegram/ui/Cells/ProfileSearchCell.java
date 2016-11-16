@@ -20,7 +20,6 @@ import android.text.TextUtils;
 import android.view.MotionEvent;
 
 import org.telegram.messenger.AndroidUtilities;
-import org.telegram.messenger.ChatObject;
 import org.telegram.messenger.ImageReceiver;
 import org.telegram.messenger.LocaleController;
 import org.telegram.messenger.MessagesController;
@@ -214,10 +213,10 @@ public class ProfileSearchCell extends BaseCell {
                     nameLockTop = AndroidUtilities.dp(28.5f);
                 } else {
                     dialog_id = -chat.id;
-                    if (ChatObject.isChannel(chat) && !chat.megagroup) {
+                    /*if (ChatObject.isChannel(chat) && !chat.megagroup) {
                         drawNameBroadcast = true;
                         nameLockTop = AndroidUtilities.dp(28.5f);
-                    } else {
+                    } else*/ {
                         drawNameGroup = true;
                         nameLockTop = AndroidUtilities.dp(30);
                     }

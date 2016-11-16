@@ -50,33 +50,6 @@ public class DraftQuery {
     }
     */
 
-    public static void loadDrafts() {
-        /* EDIT BY MR
-        if (UserConfig.draftsLoaded || loadingDrafts) {
-            return;
-        }
-        loadingDrafts = true;
-        TLRPC.TL_messages_getAllDrafts req = new TLRPC.TL_messages_getAllDrafts();
-        ConnectionsManager.getInstance().sendRequest(req, new RequestDelegate() {
-            @Override
-            public void run(TLObject response, TLRPC.TL_error error) {
-                if (error != null) {
-                    return;
-                }
-                MessagesController.getInstance().processUpdates((TLRPC.Updates) response, false);
-                AndroidUtilities.runOnUIThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        UserConfig.draftsLoaded = true;
-                        loadingDrafts = false;
-                        UserConfig.saveConfig(false);
-                    }
-                });
-            }
-        });
-        */
-    }
-
     public static void cleanup() {
         /* EDIT BY MR
         drafts.clear();

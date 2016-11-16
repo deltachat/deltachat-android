@@ -25,14 +25,12 @@ import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Handler;
 import android.os.PowerManager;
-import android.util.Base64;
 
 import org.telegram.tgnet.ConnectionsManager;
 import org.telegram.tgnet.TLRPC;
 import org.telegram.ui.Components.ForegroundDetector;
 
 import java.io.File;
-import java.io.RandomAccessFile;
 
 public class ApplicationLoader extends Application {
     private static PendingIntent pendingIntent;
@@ -52,13 +50,17 @@ public class ApplicationLoader extends Application {
     public static volatile boolean isScreenOn = false;
     public static volatile boolean mainInterfacePaused = true;
 
+    /*
     public static boolean isCustomTheme() {
         return isCustomTheme;
     }
+    */
 
+    /*
     public static int getSelectedColor() {
         return selectedColor;
     }
+    */
 
     public static void reloadWallpaper() {
         cachedWallpaper = null;
@@ -228,7 +230,7 @@ public class ApplicationLoader extends Application {
         }
 
         MessagesController.getInstance();
-        ConnectionsManager.getInstance().init(BuildVars.BUILD_VERSION, TLRPC.LAYER, BuildVars.APP_ID, deviceModel, systemVersion, appVersion, langCode, configPath, FileLog.getNetworkLogPath(), UserConfig.getClientUserId(), enablePushConnection);
+        ConnectionsManager.getInstance().init(deviceModel, systemVersion, appVersion, langCode, configPath, FileLog.getNetworkLogPath(), UserConfig.getClientUserId(), enablePushConnection);
         if (UserConfig.getCurrentUser() != null) {
             MessagesController.getInstance().putUser(UserConfig.getCurrentUser(), true);
             //ConnectionsManager.getInstance().applyCountryPortNumber(UserConfig.getCurrentUser().phone);

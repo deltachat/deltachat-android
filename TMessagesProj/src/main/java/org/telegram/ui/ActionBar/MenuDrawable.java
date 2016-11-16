@@ -22,7 +22,7 @@ public class MenuDrawable extends Drawable {
     private Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
     private boolean reverseAngle = false;
     private long lastFrameTime;
-    private boolean animationInProgress;
+    //private boolean animationInProgress;
     private float finalRotation;
     private float currentRotation;
     private int currentAnimationTime;

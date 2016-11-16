@@ -1,4 +1,6 @@
 /*
+ * This part of the Delta Chat fronted is based on Telegram which is covered by the following note:
+ *
  * This is the source code of Telegram for Android v. 3.x.x.
  * It is licensed under GNU GPL v. 2 or later.
  * You should have received a copy of the license in this archive (see LICENSE).
@@ -13,21 +15,17 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import org.telegram.messenger.AndroidUtilities;
-import org.telegram.messenger.MessagesController;
 import org.telegram.messenger.support.widget.RecyclerView;
-import org.telegram.messenger.MrMailbox; // EDIT BY MR
+import org.telegram.messenger.MrMailbox;
 import org.telegram.tgnet.TLRPC;
 import org.telegram.ui.Cells.DialogCell;
-import org.telegram.ui.Cells.LoadingCell;
 
-import java.util.ArrayList;
 
 public class DialogsAdapter extends RecyclerView.Adapter {
 
     private Context mContext;
     private int dialogsType;
     private long openedDialogId;
-    private int currentCount;
 
     private class Holder extends RecyclerView.ViewHolder {
 
@@ -40,64 +38,21 @@ public class DialogsAdapter extends RecyclerView.Adapter {
         mContext = context;
         dialogsType = type;
 
-        // EDIT BY MR
         MrMailbox.MrChatlistUnref(MrMailbox.hCurrChatlist);
         MrMailbox.hCurrChatlist = MrMailbox.MrMailboxGetChatlist(MrMailbox.hMailbox);
-        // /EDIT BY MR
     }
 
     public void setOpenedDialogId(long id) {
         openedDialogId = id;
     }
 
-    /* EDIT BY MR
-    public boolean isDataSetChanged() {
-        int current = currentCount;
-        return current != getItemCount() || current == 1;
-    }
-
-    private ArrayList<TLRPC.TL_dialog> getDialogsArray() {
-        if (dialogsType == 0) {
-            return MessagesController.getInstance().dialogs;
-        } else if (dialogsType == 1) {
-            return MessagesController.getInstance().dialogsServerOnly;
-        } else if (dialogsType == 2) {
-            return MessagesController.getInstance().dialogsGroupsOnly;
-        }
-        return null;
-    }
-    */
-
     @Override
     public int getItemCount() {
-        // EDIT BY MR
-        int count = MrMailbox.MrChatlistGetCnt(MrMailbox.hCurrChatlist);
-        /*
-        int count = getDialogsArray().size();
-        if (count == 0 && MessagesController.getInstance().loadingDialogs) {
-            return 0;
-        }
-        if (!MessagesController.getInstance().dialogsEndReached) {
-            count++;
-        }
-        */
-        // /EDIT BY MR
-        currentCount = count;
-        return count;
-
+        return MrMailbox.MrChatlistGetCnt(MrMailbox.hCurrChatlist);
     }
 
     public TLRPC.TL_dialog getItem(int i) {
-        // EDIT BY MR
         return MrMailbox.hChatlist2dialog(MrMailbox.hCurrChatlist, i);
-        /*
-        ArrayList<TLRPC.TL_dialog> arrayList = getDialogsArray();
-        if (i < 0 || i >= arrayList.size()) {
-            return null;
-        }
-        return arrayList.get(i);
-        */
-        // /EDIT BY MR
     }
 
     @Override
@@ -114,12 +69,7 @@ public class DialogsAdapter extends RecyclerView.Adapter {
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
-        View view = null;
-        if (viewType == 0) {
-            view = new DialogCell(mContext);
-        } else if (viewType == 1) {
-            view = new LoadingCell(mContext);
-        }
+        View view = new DialogCell(mContext);
         view.setLayoutParams(new RecyclerView.LayoutParams(RecyclerView.LayoutParams.MATCH_PARENT, RecyclerView.LayoutParams.WRAP_CONTENT));
         return new Holder(view);
     }
@@ -141,11 +91,6 @@ public class DialogsAdapter extends RecyclerView.Adapter {
 
     @Override
     public int getItemViewType(int i) {
-        /* EDIT BY MR -- 1 would be the "loading cell" that is not needed by us
-        if (i == getDialogsArray().size()) {
-            return 1;
-        }
-        */
         return 0;
     }
 }

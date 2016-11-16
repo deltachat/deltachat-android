@@ -222,6 +222,7 @@ public class IntroActivity extends Activity {
                 finish();
             }
         });
+        /*
         if (BuildVars.DEBUG_VERSION) {
             startMessagingButton.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
@@ -231,6 +232,7 @@ public class IntroActivity extends Activity {
                 }
             });
         }
+        */
 
         justCreated = true;
     }

@@ -14,7 +14,6 @@ import android.graphics.Paint;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.text.Layout;
-import android.text.SpannableStringBuilder;
 import android.text.StaticLayout;
 import android.text.TextPaint;
 import android.text.TextUtils;
@@ -29,7 +28,7 @@ public class SimpleTextView extends View implements Drawable.Callback {
     private TextPaint textPaint;
     private int gravity = Gravity.LEFT | Gravity.TOP;
     private CharSequence text;
-    private SpannableStringBuilder spannableStringBuilder;
+    //private SpannableStringBuilder spannableStringBuilder;
     private Drawable leftDrawable;
     private Drawable rightDrawable;
     private int drawablePadding = AndroidUtilities.dp(4);
@@ -152,9 +151,11 @@ public class SimpleTextView extends View implements Drawable.Callback {
         wasLayout = true;
     }
 
+    /*
     public int getTextWidth() {
         return textWidth;
     }
+    */
 
     public int getTextHeight() {
         return textHeight;
@@ -216,6 +217,7 @@ public class SimpleTextView extends View implements Drawable.Callback {
         recreateLayoutMaybe();
     }
 
+    /*
     public void setDrawablePadding(int value) {
         if (drawablePadding == value) {
             return;
@@ -225,6 +227,7 @@ public class SimpleTextView extends View implements Drawable.Callback {
             invalidate();
         }
     }
+    */
 
     private boolean recreateLayoutMaybe() {
         if (wasLayout) {

@@ -1114,7 +1114,7 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
     }
 
 
-
+    /*
     public boolean isSendingMessage(int mid) {
         //return sendingMessages.containsKey(mid);
         boolean isSending = false;
@@ -1126,6 +1126,7 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
         MrMailbox.MrMsgUnref(hMsg);
         return isSending;
     }
+    */
 
     protected long getNextRandomId() {
         long val = 0;

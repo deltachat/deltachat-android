@@ -316,7 +316,7 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
     private int currentPopupContentType = -1;
 
     private boolean silent;
-    private boolean canWriteToChannel;
+    private final boolean canWriteToChannel = false;
 
     private boolean isPaused = true;
     private boolean showKeyboardOnResume;
@@ -1240,7 +1240,7 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
         if ((int) dialog_id < 0) {
             TLRPC.Chat currentChat = MessagesController.getInstance().getChat(-(int) dialog_id);
             silent = ApplicationLoader.applicationContext.getSharedPreferences("Notifications", Activity.MODE_PRIVATE).getBoolean("silent_" + dialog_id, false);
-            canWriteToChannel = ChatObject.isChannel(currentChat) && (currentChat.creator || currentChat.editor) && !currentChat.megagroup;
+            //canWriteToChannel = ChatObject.isChannel(currentChat) && (currentChat.creator || currentChat.editor) && !currentChat.megagroup;
             if (notifyButton != null) {
                 notifyButton.setVisibility(canWriteToChannel ? VISIBLE : GONE);
                 notifyButton.setImageResource(silent ? R.drawable.notify_members_off : R.drawable.notify_members_on);

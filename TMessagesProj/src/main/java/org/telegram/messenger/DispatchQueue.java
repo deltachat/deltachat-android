@@ -10,7 +10,6 @@ package org.telegram.messenger;
 
 import android.os.Handler;
 import android.os.Looper;
-import android.os.Message;
 
 import java.util.concurrent.CountDownLatch;
 
@@ -24,6 +23,7 @@ public class DispatchQueue extends Thread {
         start();
     }
 
+    /*
     private void sendMessage(Message msg, int delay) {
         try {
             syncLatch.await();
@@ -36,6 +36,7 @@ public class DispatchQueue extends Thread {
             FileLog.e("tmessages", e);
         }
     }
+    */
 
     public void cancelRunnable(Runnable runnable) {
         try {
@@ -63,6 +64,7 @@ public class DispatchQueue extends Thread {
         }
     }
 
+    /*
     public void cleanupQueue() {
         try {
             syncLatch.await();
@@ -71,6 +73,7 @@ public class DispatchQueue extends Thread {
             FileLog.e("tmessages", e);
         }
     }
+    */
 
     @Override
     public void run() {

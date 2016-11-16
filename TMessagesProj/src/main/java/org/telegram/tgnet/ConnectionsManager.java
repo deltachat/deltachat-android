@@ -1,30 +1,17 @@
 package org.telegram.tgnet;
 
-import android.annotation.SuppressLint;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.os.Build;
 import android.os.PowerManager;
 
-import org.telegram.messenger.AndroidUtilities;
-import org.telegram.messenger.BuildVars;
 import org.telegram.messenger.ContactsController;
 import org.telegram.messenger.ApplicationLoader;
 import org.telegram.messenger.FileLog;
 import org.telegram.messenger.MrMailbox;
-import org.telegram.messenger.NotificationCenter;
-
-import java.net.Inet4Address;
-import java.net.Inet6Address;
-import java.net.InetAddress;
-import java.net.InterfaceAddress;
-import java.net.NetworkInterface;
-import java.util.Enumeration;
-import java.util.List;
 
 public class ConnectionsManager {
 
@@ -38,8 +25,6 @@ public class ConnectionsManager {
     private long lastPauseTime = System.currentTimeMillis();
     private boolean appPaused = true;
     private int lastClassGuid = 1;
-    private boolean isUpdating = false;
-    //private int connectionState = native_getConnectionState();
     private PowerManager.WakeLock wakeLock = null;
 
     private static volatile ConnectionsManager Instance = null;
@@ -93,30 +78,21 @@ public class ConnectionsManager {
         */
     }
 
-    private void checkConnection() {
-        //native_setUseIpv6(useIpv6Address());
-        //native_setNetworkAvailable(isNetworkOnline());
-    }
-
     public void setPushConnectionEnabled(boolean value) {
         //native_setPushConnectionEnabled(value);
     }
 
-    public void init(int version, int layer, int apiId, String deviceModel, String systemVersion, String appVersion, String langCode, String configPath, String logPath, int userId, boolean enablePushConnection) {
+    public void init(String deviceModel, String systemVersion, String appVersion, String langCode, String configPath, String logPath, int userId, boolean enablePushConnection) {
         //native_init(version, layer, apiId, deviceModel, systemVersion, appVersion, langCode, configPath, logPath, userId, enablePushConnection);
-        checkConnection();
+        //checkConnection();
         BroadcastReceiver networkStateReceiver = new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
-                checkConnection();
+                //checkConnection();
             }
         };
         IntentFilter filter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
         ApplicationLoader.applicationContext.registerReceiver(networkStateReceiver, filter);
-    }
-
-    public void switchBackend() {
-        //native_switchBackend();
     }
 
     public void resumeNetworkMaybe() {

@@ -10,15 +10,10 @@ package org.telegram.messenger.query;
 
 import android.content.Context;
 
-import org.telegram.messenger.AndroidUtilities;
 import org.telegram.messenger.NotificationCenter;
-import org.telegram.messenger.FileLog;
 import org.telegram.tgnet.TLRPC;
-import org.telegram.messenger.Utilities;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.HashMap;
 
 public class StickersQuery {
@@ -53,9 +48,11 @@ public class StickersQuery {
         }
     }
 
+    /*
     public static boolean isLoadingStickers() {
         return loadingStickers;
     }
+    */
 
     public static TLRPC.Document getStickerById(long id) {
         TLRPC.Document document = stickersById.get(id);
@@ -98,6 +95,7 @@ public class StickersQuery {
         return value != null ? value : "";
     }
 
+    /*
     public static void reorderStickers(final ArrayList<Long> order) {
         Collections.sort(stickerSets, new Comparator<TLRPC.TL_messages_stickerSet>() {
             @Override
@@ -116,11 +114,15 @@ public class StickersQuery {
         NotificationCenter.getInstance().postNotificationName(NotificationCenter.stickersDidLoaded);
         StickersQuery.loadStickers(false, true);
     }
+    */
 
+    /*
     public static void calcNewHash() {
         loadHash = calcStickersHash(stickerSets);
     }
+    */
 
+    /*
     public static void addNewStickerSet(final TLRPC.TL_messages_stickerSet set) {
         if (stickerSetsById.containsKey(set.set.id) || stickerSetsByName.containsKey(set.set.short_name)) {
             return;
@@ -155,6 +157,7 @@ public class StickersQuery {
         NotificationCenter.getInstance().postNotificationName(NotificationCenter.stickersDidLoaded);
         StickersQuery.loadStickers(false, true);
     }
+    */
 
     public static void loadStickers(boolean cache, boolean force) {
         if (loadingStickers) {
@@ -304,10 +307,12 @@ public class StickersQuery {
         */
     }
 
+    /*
     public static String getStickerSetName(long setId) {
         TLRPC.TL_messages_stickerSet stickerSet = stickerSetsById.get(setId);
         return stickerSet != null ? stickerSet.set.short_name : null;
     }
+    */
 
     public static long getStickerSetId(TLRPC.Document document) {
         for (int a = 0; a < document.attributes.size(); a++) {
@@ -334,6 +339,7 @@ public class StickersQuery {
         return (int) acc;
     }
 
+    /*
     private static void processLoadedStickers(final ArrayList<TLRPC.TL_messages_stickerSet> res, final boolean cache, final int date, final int hash) {
         AndroidUtilities.runOnUIThread(new Runnable() {
             @Override
@@ -442,6 +448,7 @@ public class StickersQuery {
             }
         });
     }
+    */
 
     public static void removeStickersSet(final Context context, TLRPC.StickerSet stickerSet, int hide) {
         TLRPC.TL_inputStickerSetID stickerSetID = new TLRPC.TL_inputStickerSetID();

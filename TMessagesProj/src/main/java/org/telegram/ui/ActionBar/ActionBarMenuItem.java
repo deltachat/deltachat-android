@@ -179,12 +179,14 @@ public class ActionBarMenuItem extends FrameLayout {
         this.delegate = delegate;
     }
 
+    /*
     public void setShowFromBottom(boolean value) {
         showFromBottom = value;
         if (popupLayout != null) {
             popupLayout.setShowedFromBotton(showFromBottom);
         }
     }
+    */
 
     public void setSubMenuOpenSide(int side) {
         subMenuOpenSide = side;

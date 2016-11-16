@@ -9,14 +9,11 @@
 package org.telegram.messenger.query;
 
 import org.telegram.messenger.ChatObject;
-import org.telegram.messenger.MessageObject;
 import org.telegram.messenger.MessagesController;
 import org.telegram.messenger.MrMailbox;
 import org.telegram.messenger.NotificationCenter;
 import org.telegram.messenger.Utilities;
 import org.telegram.tgnet.TLRPC;
-
-import java.util.ArrayList;
 
 public class SharedMediaQuery {
 
@@ -147,6 +144,7 @@ public class SharedMediaQuery {
         */
     }
 
+    /*
     public static int getMediaType(TLRPC.Message message) {
         if (message == null) {
             return -1;
@@ -175,6 +173,7 @@ public class SharedMediaQuery {
         }
         return -1;
     }
+    */
 
     /*
     private static void processLoadedMedia(final TLRPC.messages_Messages res, final long uid, int offset, int count, int max_id, final int type, final boolean fromCache, final int classGuid, final boolean isChannel, final boolean topReached) {
@@ -349,8 +348,8 @@ public class SharedMediaQuery {
         */
     }
 
+    /*
     private static void putMediaDatabase(final long uid, final int type, final ArrayList<TLRPC.Message> messages, final int max_id, final boolean topReached) {
-        /*
         MessagesStorage.getInstance().getStorageQueue().postRunnable(new Runnable() {
             @Override
             public void run() {
@@ -398,8 +397,8 @@ public class SharedMediaQuery {
                 }
             }
         });
-        */
     }
+    */
 
     public static void loadMusic(final long uid, final int max_id) {
         /*

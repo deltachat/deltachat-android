@@ -1138,7 +1138,7 @@ public class MessagesController implements NotificationCenter.NotificationCenter
                 dialog.unread_count = 0;
                 dialog.top_message = lastMessage.getId();
                 dialog.last_message_date = lastMessage.messageOwner.date;
-                dialog.flags = ChatObject.isChannel(chat) ? 1 : 0;
+                //dialog.flags = ChatObject.isChannel(chat) ? 1 : 0;
                 dialogs_dict.put(uid, dialog);
                 dialogs.add(dialog);
                 dialogMessage.put(uid, lastMessage);
@@ -1193,12 +1193,12 @@ public class MessagesController implements NotificationCenter.NotificationCenter
             int lower_id = (int) d.id;
             if (lower_id != 0 && high_id != 1) {
                 dialogsServerOnly.add(d);
-                if (DialogObject.isChannel(d)) {
+                /*if (DialogObject.isChannel(d)) {
                     TLRPC.Chat chat = getChat(-lower_id);
                     if (chat != null && (chat.megagroup && chat.editor || chat.creator)) {
                         dialogsGroupsOnly.add(d);
                     }
-                } else if (lower_id < 0) {
+                } else*/ if (lower_id < 0) {
                     if (chatsDict != null) {
                         TLRPC.Chat chat = chatsDict.get(-lower_id);
                         if (chat != null && chat.migrated_to != null) {

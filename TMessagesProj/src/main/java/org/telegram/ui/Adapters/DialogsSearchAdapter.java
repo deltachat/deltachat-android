@@ -67,11 +67,13 @@ public class DialogsSearchAdapter extends BaseSearchAdapterRecycler {
         }
     }
 
+    /*
     private class DialogSearchResult {
         public TLObject object;
         public int date;
         public CharSequence name;
     }
+    */
 
     protected static class RecentSearchObject {
         TLObject object;
@@ -103,7 +105,7 @@ public class DialogsSearchAdapter extends BaseSearchAdapterRecycler {
             HintDialogCell cell = (HintDialogCell) holder.itemView;
 
             TLRPC.TL_topPeer peer = SearchQuery.hints.get(position);
-            TLRPC.TL_dialog dialog = new TLRPC.TL_dialog();
+            //TLRPC.TL_dialog dialog = new TLRPC.TL_dialog();
             TLRPC.Chat chat = null;
             TLRPC.User user = null;
             int did = 0;
@@ -411,11 +413,11 @@ public class DialogsSearchAdapter extends BaseSearchAdapterRecycler {
         */
     }
 
+    /*
     public void clearRecentSearch() {
         recentSearchObjectsById = new HashMap<>();
         recentSearchObjects = new ArrayList<>();
         notifyDataSetChanged();
-        /*
         MessagesStorage.getInstance().getStorageQueue().postRunnable(new Runnable() {
             @Override
             public void run() {
@@ -426,8 +428,8 @@ public class DialogsSearchAdapter extends BaseSearchAdapterRecycler {
                 }
             }
         });
-        */
     }
+    */
 
     /*
     private void setRecentSearch(ArrayList<RecentSearchObject> arrayList, HashMap<Long, RecentSearchObject> hashMap) {
@@ -746,6 +748,7 @@ public class DialogsSearchAdapter extends BaseSearchAdapterRecycler {
         */
     }
 
+    /*
     private void updateSearchResults(final ArrayList<TLObject> result, final ArrayList<CharSequence> names, final ArrayList<TLRPC.User> encUsers, final int searchId) {
         AndroidUtilities.runOnUIThread(new Runnable() {
             @Override
@@ -761,10 +764,10 @@ public class DialogsSearchAdapter extends BaseSearchAdapterRecycler {
                     } else if (obj instanceof TLRPC.Chat) {
                         TLRPC.Chat chat = (TLRPC.Chat) obj;
                         MessagesController.getInstance().putChat(chat, true);
-                    } /*else if (obj instanceof TLRPC.EncryptedChat) {
+                    } else if (obj instanceof TLRPC.EncryptedChat) {
                         TLRPC.EncryptedChat chat = (TLRPC.EncryptedChat) obj;
                         MessagesController.getInstance().putEncryptedChat(chat, true);
-                    }*/
+                    }
                 }
                 MessagesController.getInstance().putUsers(encUsers, true);
                 searchResult = result;
@@ -773,6 +776,7 @@ public class DialogsSearchAdapter extends BaseSearchAdapterRecycler {
             }
         });
     }
+    */
 
     public boolean isGlobalSearch(int i) {
         return i > searchResult.size() && i <= globalSearch.size() + searchResult.size();

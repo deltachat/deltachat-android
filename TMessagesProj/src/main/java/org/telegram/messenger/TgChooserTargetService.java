@@ -16,35 +16,20 @@ import android.app.Activity;
 import android.content.ComponentName;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.BitmapShader;
-import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.RectF;
-import android.graphics.Shader;
-import android.graphics.drawable.Icon;
 import android.os.Build;
-import android.os.Bundle;
 import android.service.chooser.ChooserTarget;
 import android.service.chooser.ChooserTargetService;
-import android.text.TextUtils;
 
-import org.telegram.tgnet.TLRPC;
 import org.telegram.ui.LaunchActivity;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 import java.util.concurrent.Semaphore;
 
 @TargetApi(Build.VERSION_CODES.M)
 public class TgChooserTargetService extends ChooserTargetService {
-
-    private Paint roundPaint;
-    private RectF bitmapRect;
 
     @Override
     public List<ChooserTarget> onGetChooserTargets(ComponentName targetActivityName, IntentFilter matchedFilter) {
@@ -162,6 +147,7 @@ public class TgChooserTargetService extends ChooserTargetService {
         return targets;
     }
 
+    /*
     private Icon createRoundBitmap(File path) {
         try {
             Bitmap bitmap = BitmapFactory.decodeFile(path.toString());
@@ -184,4 +170,5 @@ public class TgChooserTargetService extends ChooserTargetService {
         }
         return null;
     }
+    */
 }

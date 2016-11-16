@@ -22,8 +22,6 @@ import android.graphics.PixelFormat;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.text.Spannable;
-import android.text.Spanned;
-import android.text.style.DynamicDrawableSpan;
 import android.text.style.ImageSpan;
 import android.view.View;
 import android.view.ViewGroup;
@@ -153,6 +151,7 @@ public class Emoji {
         }
     }
 
+    /*
     public static void invalidateAll(View view) {
         if (view instanceof ViewGroup) {
             ViewGroup g = (ViewGroup) view;
@@ -163,6 +162,7 @@ public class Emoji {
             view.invalidate();
         }
     }
+    */
 
     public static String fixEmoji(String emoji) {
         char ch;
@@ -206,6 +206,7 @@ public class Emoji {
         return ed;
     }
 
+    /*
     public static Drawable getEmojiBigDrawable(String code) {
         EmojiDrawable ed = getEmojiDrawable(code);
         if (ed == null) {
@@ -215,6 +216,7 @@ public class Emoji {
         ed.fullSize = true;
         return ed;
     }
+    */
 
     public static class EmojiDrawable extends Drawable {
         private DrawableInfo info;
@@ -226,9 +228,11 @@ public class Emoji {
             info = i;
         }
 
+        /*
         public DrawableInfo getDrawableInfo() {
             return info;
         }
+        */
 
         public Rect getDrawRect() {
             Rect original = getBounds();
@@ -298,6 +302,7 @@ public class Emoji {
         }
     }
 
+    /*
     private static boolean inArray(char c, char[] a) {
         for (char cc : a) {
             if (cc == c) {
@@ -306,6 +311,7 @@ public class Emoji {
         }
         return false;
     }
+    */
 
     public static CharSequence replaceEmoji(CharSequence cs, Paint.FontMetricsInt fontMetrics, int size, boolean createNew) {
         if (cs == null || cs.length() == 0) {
@@ -423,6 +429,7 @@ public class Emoji {
         return s;
     }
 
+    /*
     public static class EmojiSpan extends ImageSpan {
         private Paint.FontMetricsInt fontMetrics = null;
         private int size = AndroidUtilities.dp(20);
@@ -471,4 +478,5 @@ public class Emoji {
             }
         }
     }
+    */
 }

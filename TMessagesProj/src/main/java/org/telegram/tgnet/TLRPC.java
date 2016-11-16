@@ -19,8 +19,6 @@ public class TLRPC {
     public static final int MESSAGE_FLAG_HAS_MEDIA          = 0x00000200;
 	public static final int MESSAGE_FLAG_EDITED             = 0x00008000;
 
-    public static final int LAYER = 53;
-
 	public static class DraftMessage extends TLObject {
 		public int flags;
 		public boolean no_webpage;
@@ -221,9 +219,6 @@ public class TLRPC {
 		public ChatParticipants participants;
 	}
 
-	public static class TL_channelFull extends ChatFull {
-	}
-
 	public static class TL_topPeerCategoryPeers extends TLObject {
 		public TopPeerCategory category;
 		public int count;
@@ -387,9 +382,6 @@ public class TLRPC {
 		public String caption;
 		public ArrayList<DocumentAttribute> attributes = new ArrayList<>();
 		public String mr_path;
-	}
-
-	public static class TL_documentEmpty extends Document {
 	}
 
 	public static class TL_document extends Document {
@@ -621,7 +613,6 @@ public class TLRPC {
 		public long id;
 		public long access_hash;
 		public String title;
-		public String short_name;
 		public int flags;
 		public boolean installed;
 		public boolean disabled;
@@ -738,7 +729,6 @@ public class TLRPC {
 	}
 
 	public static class TL_stickerPack extends TLObject {
-		public String emoticon;
 		public ArrayList<Long> documents = new ArrayList<>();
 	}
 
@@ -777,7 +767,6 @@ public class TLRPC {
 
 	public static class TL_topPeer extends TLObject {
 		public Peer peer;
-		public double rating;
 	}
 
 	public static class InputPhotoCrop extends TLObject {
@@ -932,7 +921,7 @@ public class TLRPC {
 	}
 
 	public static class TL_dialog extends TLObject {
-		public int flags;
+		final public int flags = 0;
 		public Peer peer;
 		public int top_message;
 		public int unread_count;

@@ -187,6 +187,7 @@ public class NotificationsController {
         });
     }
 
+    /*
     public void setLastOnlineFromOtherDevice(final int time) {
         notificationsQueue.postRunnable(new Runnable() {
             @Override
@@ -196,6 +197,7 @@ public class NotificationsController {
             }
         });
     }
+    */
 
     public void removeNotificationsForDialog(long did) {
         NotificationsController.getInstance().processReadMessages(null, did, 0, Integer.MAX_VALUE, false);
@@ -204,6 +206,7 @@ public class NotificationsController {
         NotificationsController.getInstance().processDialogsUpdateRead(dialogsToUpdate);
     }
 
+    /*
     public void removeDeletedMessagesFromNotifications(final SparseArray<ArrayList<Integer>> deletedMessages) {
         final ArrayList<MessageObject> popupArray = popupMessages.isEmpty() ? null : new ArrayList<>(popupMessages);
         notificationsQueue.postRunnable(new Runnable() {
@@ -277,6 +280,7 @@ public class NotificationsController {
             }
         });
     }
+    */
 
     public void processReadMessages(final SparseArray<Long> inbox, final long dialog_id, final int max_date, final int max_id, final boolean isPopup) {
         final ArrayList<MessageObject> popupArray = popupMessages.isEmpty() ? null : new ArrayList<>(popupMessages);
@@ -549,6 +553,7 @@ public class NotificationsController {
         });
     }
 
+    /*
     public void processLoadedUnreadMessages(final HashMap<Long, Integer> dialogs, final ArrayList<TLRPC.Message> messages, final ArrayList<TLRPC.User> users, final ArrayList<TLRPC.Chat> chats, final ArrayList<TLRPC.EncryptedChat> encryptedChats) {
         MessagesController.getInstance().putUsers(users, true);
         MessagesController.getInstance().putChats(chats, true);
@@ -636,6 +641,7 @@ public class NotificationsController {
             }
         });
     }
+    */
 
     public void setBadgeEnabled(boolean enabled) {
         setBadge(enabled ? total_unread_count : 0);

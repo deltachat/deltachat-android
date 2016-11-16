@@ -143,9 +143,9 @@ public class GroupCreateFinalActivity extends BaseFragment implements Notificati
     public View createView(Context context) {
         actionBar.setBackButtonImage(R.drawable.ic_ab_back);
         actionBar.setAllowOverlayTitle(true);
-        if (chatType == ChatObject.CHAT_TYPE_BROADCAST) {
+        /*if (chatType == ChatObject.CHAT_TYPE_BROADCAST) {
             actionBar.setTitle(LocaleController.getString("NewBroadcastList", R.string.NewBroadcastList));
-        } else {
+        } else*/ {
             actionBar.setTitle(LocaleController.getString("NewGroup", R.string.NewGroup));
         }
 
@@ -163,9 +163,9 @@ public class GroupCreateFinalActivity extends BaseFragment implements Notificati
                     }
                     donePressed = true;
 
-                    if (chatType == ChatObject.CHAT_TYPE_BROADCAST) {
+                    /*if (chatType == ChatObject.CHAT_TYPE_BROADCAST) {
                         MessagesController.getInstance().createChat(nameTextView.getText().toString(), selectedContacts, null, chatType, GroupCreateFinalActivity.this);
-                    } else {
+                    } else*/ {
                         if (avatarUpdater.uploadingAvatar != null) {
                             createAfterUpload = true;
                         } else {
@@ -224,7 +224,7 @@ public class GroupCreateFinalActivity extends BaseFragment implements Notificati
         layoutParams1.rightMargin = LocaleController.isRTL ? AndroidUtilities.dp(16) : 0;
         layoutParams1.gravity = Gravity.TOP | (LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT);
         avatarImage.setLayoutParams(layoutParams1);
-        if (chatType != ChatObject.CHAT_TYPE_BROADCAST) {
+        /*if (chatType != ChatObject.CHAT_TYPE_BROADCAST)*/ {
             avatarDrawable.setDrawPhoto(true);
             avatarImage.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -287,7 +287,7 @@ public class GroupCreateFinalActivity extends BaseFragment implements Notificati
         layoutParams1.rightMargin = LocaleController.isRTL ? AndroidUtilities.dp(96) : AndroidUtilities.dp(16);
         layoutParams1.gravity = Gravity.CENTER_VERTICAL;
         nameTextView.setLayoutParams(layoutParams1);
-        if (chatType != ChatObject.CHAT_TYPE_BROADCAST) {
+        /*if (chatType != ChatObject.CHAT_TYPE_BROADCAST)*/ {
             nameTextView.addTextChangedListener(new TextWatcher() {
                 @Override
                 public void beforeTextChanged(CharSequence s, int start, int count, int after) {

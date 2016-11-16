@@ -25,7 +25,7 @@ public class NativeLoader {
     private final static String LIB_NAME = "tmessages." + LIB_VERSION;
     private final static String LIB_SO_NAME = "lib" + LIB_NAME + ".so";
     private final static String LOCALE_LIB_SO_NAME = "lib" + LIB_NAME + "loc.so";
-    private String crashPath = "";
+    //private String crashPath = "";
 
     private static volatile boolean nativeLoaded = false;
 

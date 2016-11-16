@@ -33,8 +33,6 @@ public class Theme {
     public static final int ACTION_BAR_PLAYER_COLOR = 0xffffffff;
     public static final int ACTION_BAR_TITLE_COLOR = 0xffffffff;
     public static final int ACTION_BAR_SUBTITLE_COLOR = 0xffd5e8f7;
-    public static final int ACTION_BAR_PROFILE_SUBTITLE_COLOR = 0xffd7eafa;
-    public static final int ACTION_BAR_MAIN_AVATAR_COLOR = 0xff5085b1;
     public static final int ACTION_BAR_ACTION_MODE_TEXT_COLOR = 0xff737373;
     public static final int ACTION_BAR_SELECTOR_COLOR = 0xff406d94;
 
@@ -42,16 +40,13 @@ public class Theme {
     public static final int ACTION_BAR_PICKER_SELECTOR_COLOR = 0xff3d3d3d;
     public static final int ACTION_BAR_WHITE_SELECTOR_COLOR = 0x40ffffff;
     public static final int ACTION_BAR_AUDIO_SELECTOR_COLOR = 0x2f000000;
-    public static final int ACTION_BAR_CHANNEL_INTRO_SELECTOR_COLOR = 0x2f000000;
     public static final int ACTION_BAR_MODE_SELECTOR_COLOR = 0xfff0f0f0;
     public static final int ACTION_BAR_BLUE_SELECTOR_COLOR = 0xff4981ad;
     public static final int ACTION_BAR_CYAN_SELECTOR_COLOR = 0xff39849d;
     public static final int ACTION_BAR_GREEN_SELECTOR_COLOR = 0xff48953d;
     public static final int ACTION_BAR_ORANGE_SELECTOR_COLOR = 0xffe67429;
-    public static final int ACTION_BAR_PINK_SELECTOR_COLOR = 0xffd44e7b;
     public static final int ACTION_BAR_RED_SELECTOR_COLOR = 0xffbc4b41;
     public static final int ACTION_BAR_VIOLET_SELECTOR_COLOR = 0xff735fbe;
-    public static final int ACTION_BAR_YELLOW_SELECTOR_COLOR = 0xffef9f09;
 
     public static final int ATTACH_SHEET_TEXT_COLOR = 0xff757575;
 
@@ -87,11 +82,6 @@ public class Theme {
     public static final int STICKERS_SHEET_ADD_TEXT_COLOR = 0xff3a8ccf;
     public static final int STICKERS_SHEET_CLOSE_TEXT_COLOR = 0xff3a8ccf;
     public static final int STICKERS_SHEET_REMOVE_TEXT_COLOR = 0xffcd5a5a;
-
-    public static final int PINNED_PANEL_NAME_TEXT_COLOR = 0xff3a8ccf;
-    public static final int PINNED_PANEL_MESSAGE_TEXT_COLOR = 0xff999999;
-
-    public static final int SECRET_CHAT_INFO_TEXT_COLOR = 0xffffffff;
 
     public static final int MSG_SELECTED_BACKGROUND_COLOR = 0x6633b5e5;
     public static final int MSG_WEB_PREVIEW_DURATION_TEXT_COLOR = 0xffffffff;

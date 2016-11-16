@@ -47,7 +47,7 @@ public class MentionsAdapter extends BaseSearchAdapterRecycler {
     }
 
     private Context mContext;
-    private long dialog_id;
+    //private long dialog_id;
     private TLRPC.ChatFull info;
     private ArrayList<TLRPC.User> searchResultUsernames;
     private ArrayList<String> searchResultHashtags;
@@ -68,7 +68,7 @@ public class MentionsAdapter extends BaseSearchAdapterRecycler {
     private boolean needUsernames = true;
     private boolean needBotContext = true;
     private boolean isDarkTheme;
-    private int botsCount;
+    private final int botsCount = 0;
 
     private String searchingContextUsername;
     private String searchingContextQuery;
@@ -110,7 +110,7 @@ public class MentionsAdapter extends BaseSearchAdapterRecycler {
         mContext = context;
         delegate = mentionsAdapterDelegate;
         isDarkTheme = darkTheme;
-        dialog_id = did;
+        //dialog_id = did;
     }
 
     public void onDestroy() {
@@ -749,7 +749,7 @@ public class MentionsAdapter extends BaseSearchAdapterRecycler {
             if (i < 0 || i >= searchResultCommands.size()) {
                 return null;
             }
-            if (searchResultCommandsUsers != null && (botsCount != 1 || info instanceof TLRPC.TL_channelFull)) {
+            if (searchResultCommandsUsers != null /*&& (botsCount != 1 || info instanceof TLRPC.TL_channelFull)*/) {
                 if (searchResultCommandsUsers.get(i) != null) {
                     return String.format("%s@%s", searchResultCommands.get(i), searchResultCommandsUsers.get(i) != null ? searchResultCommandsUsers.get(i).username : "");
                 } else {

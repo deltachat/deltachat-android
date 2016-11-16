@@ -300,42 +300,14 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                     }*/
                     presentFragment(new GroupCreateActivity());
                     drawerLayoutContainer.closeDrawer(false);
-                } else if (position == DrawerLayoutAdapter.iNewChat) { // EDIT BY MR ...
+                } else if (position == DrawerLayoutAdapter.iNewChat) {
                     presentFragment(new ContactsActivity(null));
                     drawerLayoutContainer.closeDrawer(false);
-                } else if (position == DrawerLayoutAdapter.iNewChannel) {
-                    /* EDIT BY MR
-                    if (!MessagesController.isFeatureEnabled("broadcast_create", actionBarLayout.fragmentsStack.get(actionBarLayout.fragmentsStack.size() - 1))) {
-                        return;
-                    }
-                    SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("mainconfig", Activity.MODE_PRIVATE);
-                    if (preferences.getBoolean("channel_intro", false)) {
-                        Bundle args = new Bundle();
-                        args.putInt("step", 0);
-                        presentFragment(new ChannelCreateActivity(args));
-                    } else {
-                        presentFragment(new ChannelIntroActivity());
-                        preferences.edit().putBoolean("channel_intro", true).commit();
-                    }
-                    drawerLayoutContainer.closeDrawer(false);
-                    */
                 } else if (position == DrawerLayoutAdapter.iStrangers) {
                     Bundle args = new Bundle();
                     args.putInt("chat_id", (int) MrMailbox.MR_CHAT_ID_STRANGERS);
                     presentFragment(new ChatActivity(args));
                     drawerLayoutContainer.closeDrawer(false);
-                } else if (position == DrawerLayoutAdapter.iInviteFriends) {
-                    /* EDIT BY MR
-                    try {
-                        Intent intent = new Intent(Intent.ACTION_SEND);
-                        intent.setType("text/plain");
-                        intent.putExtra(Intent.EXTRA_TEXT, ContactsController.getInstance().getInviteText());
-                        startActivityForResult(Intent.createChooser(intent, LocaleController.getString("InviteFriends", R.string.InviteFriends)), 500);
-                    } catch (Exception e) {
-                        FileLog.e("tmessages", e);
-                    }
-                    drawerLayoutContainer.closeDrawer(false);
-                    */
                 } else if (position == DrawerLayoutAdapter.iSettings) {
                     presentFragment(new SettingsActivity());
                     drawerLayoutContainer.closeDrawer(false);
