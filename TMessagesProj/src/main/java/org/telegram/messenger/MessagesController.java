@@ -14,13 +14,10 @@ import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.SparseArray;
-import android.util.SparseIntArray;
 
 import org.telegram.messenger.query.DraftQuery;
 import org.telegram.messenger.query.MessagesQuery;
 import org.telegram.messenger.query.SearchQuery;
-import org.telegram.messenger.query.StickersQuery;
 import org.telegram.tgnet.ConnectionsManager;
 import org.telegram.tgnet.TLObject;
 import org.telegram.tgnet.TLRPC;
@@ -46,79 +43,29 @@ public class MessagesController implements NotificationCenter.NotificationCenter
     public ArrayList<TLRPC.TL_dialog> dialogsServerOnly = new ArrayList<>();
     public ArrayList<TLRPC.TL_dialog> dialogsGroupsOnly = new ArrayList<>();
     public int nextDialogsCacheOffset;
-    public ConcurrentHashMap<Long, Integer> dialogs_read_inbox_max = new ConcurrentHashMap<>(100, 1.0f, 2);
-    public ConcurrentHashMap<Long, Integer> dialogs_read_outbox_max = new ConcurrentHashMap<>(100, 1.0f, 2);
     public ConcurrentHashMap<Long, TLRPC.TL_dialog> dialogs_dict = new ConcurrentHashMap<>(100, 1.0f, 2);
     public HashMap<Long, MessageObject> dialogMessage = new HashMap<>();
     public HashMap<Long, MessageObject> dialogMessagesByRandomIds = new HashMap<>();
     public HashMap<Integer, MessageObject> dialogMessagesByIds = new HashMap<>();
-    public ConcurrentHashMap<Long, ArrayList<PrintingUser>> printingUsers = new ConcurrentHashMap<>(20, 1.0f, 2);
     public HashMap<Long, CharSequence> printingStrings = new HashMap<>();
-    public HashMap<Long, Integer> printingStringsTypes = new HashMap<>();
-    public HashMap<Integer, HashMap<Long, Boolean>> sendingTypings = new HashMap<>();
     public ConcurrentHashMap<Integer, Integer> onlinePrivacy = new ConcurrentHashMap<>(20, 1.0f, 2);
-    private int lastPrintingStringCount = 0;
-
-    private HashMap<Long, Boolean> loadingPeerSettings = new HashMap<>();
 
     private ArrayList<Long> createdDialogIds = new ArrayList<>();
 
-    private SparseIntArray shortPollChannels = new SparseIntArray();
-    private SparseIntArray needShortPollChannels = new SparseIntArray();
-
-    public boolean loadingBlockedUsers = false;
-    public ArrayList<Integer> blockedUsers = new ArrayList<>();
-
-    private SparseArray<ArrayList<Integer>> channelViewsToSend = new SparseArray<>();
-    private SparseArray<ArrayList<Integer>> channelViewsToReload = new SparseArray<>();
-
-    private HashMap<Integer, ArrayList<TLRPC.Updates>> updatesQueueChannels = new HashMap<>();
-    private HashMap<Integer, Long> updatesStartWaitTimeChannels = new HashMap<>();
-    private HashMap<Integer, Integer> channelsPts = new HashMap<>();
-    private HashMap<Integer, Boolean> gettingDifferenceChannels = new HashMap<>();
-
-    private HashMap<Integer, Boolean> gettingUnknownChannels = new HashMap<>();
-    private HashMap<Integer, Boolean> checkingLastMessagesDialogs = new HashMap<>();
-
-    private ArrayList<Integer> loadingFullUsers = new ArrayList<>();
     private ArrayList<Integer> loadedFullUsers = new ArrayList<>();
-    private ArrayList<Integer> loadingFullChats = new ArrayList<>();
-    private ArrayList<Integer> loadingFullParticipants = new ArrayList<>();
-    private ArrayList<Integer> loadedFullParticipants = new ArrayList<>();
     private ArrayList<Integer> loadedFullChats = new ArrayList<>();
 
     private HashMap<String, ArrayList<MessageObject>> reloadingWebpages = new HashMap<>();
-    private HashMap<Long, ArrayList<MessageObject>> reloadingWebpagesPending = new HashMap<>();
-
-    private HashMap<Long, ArrayList<Integer>> reloadingMessages = new HashMap<>();
-
-    private boolean gettingNewDeleteTask = false;
-    private int currentDeletingTaskTime = 0;
-    private ArrayList<Integer> currentDeletingTaskMids = null;
-    private Runnable currentDeleteTaskRunnable = null;
 
     public boolean loadingDialogs = false;
     public boolean dialogsEndReached = false;
-    public boolean gettingDifference = false;
-    public boolean updatingState = false;
-    public boolean firstGettingTask = false;
-    public boolean registeringForPush = false;
 
     public int secretWebpagePreview = 2;
 
-    private int statusRequest = 0;
-    private int statusSettingState = 0;
-    private boolean offlineSent = false;
     private String uploadingAvatar = null;
 
     public boolean enableJoined = true;
     public int fontSize = AndroidUtilities.dp(16);
-    public int maxGroupCount = 200;
-    public int maxBroadcastCount = 100;
-    public int maxMegagroupCount = 5000;
-    public int minGroupConvertSize = 200;
-    public int maxEditTime = 172800;
-    public int groupBigSize;
     public int ratingDecay;
 
     public static final int UPDATE_MASK_NAME = 1;
@@ -135,11 +82,6 @@ public class MessagesController implements NotificationCenter.NotificationCenter
     public static final int UPDATE_MASK_SEND_STATE = 4096;
     public static final int UPDATE_MASK_CHANNEL = 8192;
     public static final int UPDATE_MASK_CHAT_ADMINS = 16384;
-
-    public static class PrintingUser {
-        public int userId;
-        public TLRPC.SendMessageAction action;
-    }
 
     private static volatile MessagesController Instance = null;
 
@@ -185,10 +127,6 @@ public class MessagesController implements NotificationCenter.NotificationCenter
 
         preferences = ApplicationLoader.applicationContext.getSharedPreferences("mainconfig", Activity.MODE_PRIVATE);
         secretWebpagePreview = preferences.getInt("secretWebpage2", 2);
-        maxGroupCount = preferences.getInt("maxGroupCount", 200);
-        maxMegagroupCount = preferences.getInt("maxMegagroupCount", 1000);
-        maxEditTime = preferences.getInt("maxEditTime", 3600);
-        groupBigSize = preferences.getInt("groupBigSize", 10);
         ratingDecay = preferences.getInt("ratingDecay", 2419200);
         fontSize = preferences.getInt("fons_size", AndroidUtilities.isTablet() ? 18 : 16);
     }
@@ -239,16 +177,9 @@ public class MessagesController implements NotificationCenter.NotificationCenter
     public static TLRPC.Peer getPeer(int id) {
         TLRPC.Peer inputPeer;
         if (id < 0) {
-            TLRPC.Chat chat = getInstance().getChat(-id);
-            /*if (chat instanceof TLRPC.TL_channel || chat instanceof TLRPC.TL_channelForbidden) {
-                inputPeer = new TLRPC.TL_peerChannel();
-                inputPeer.channel_id = -id;
-            } else*/ {
-                inputPeer = new TLRPC.TL_peerChat();
-                inputPeer.chat_id = -id;
-            }
+            inputPeer = new TLRPC.TL_peerChat();
+            inputPeer.chat_id = -id;
         } else {
-            TLRPC.User user = getInstance().getUser(id);
             inputPeer = new TLRPC.TL_peerUser();
             inputPeer.user_id = id;
         }
@@ -682,80 +613,6 @@ public class MessagesController implements NotificationCenter.NotificationCenter
     }
     */
 
-    public void blockUser(int user_id) {
-        final TLRPC.User user = getUser(user_id);
-        if (user == null || blockedUsers.contains(user_id)) {
-            return;
-        }
-        blockedUsers.add(user_id);
-        if (user.bot) {
-            SearchQuery.removeInline(user_id);
-        } else {
-            SearchQuery.removePeer(user_id);
-        }
-        NotificationCenter.getInstance().postNotificationName(NotificationCenter.blockedUsersDidLoaded);
-        TLRPC.TL_contacts_block req = new TLRPC.TL_contacts_block();
-        req.id = getInputUser(user);
-        /*ConnectionsManager.getInstance().sendRequest(req, new RequestDelegate() {
-            @Override
-            public void run(TLObject response, TLRPC.TL_error error) {
-                if (error == null) {
-                    ArrayList<Integer> ids = new ArrayList<>();
-                    ids.add(user.id);
-                    //MessagesStorage.getInstance().putBlockedUsers(ids, false);
-                }
-            }
-        });*/
-    }
-
-    public void unblockUser(int user_id) {
-        TLRPC.TL_contacts_unblock req = new TLRPC.TL_contacts_unblock();
-        final TLRPC.User user = getUser(user_id);
-        if (user == null) {
-            return;
-        }
-        blockedUsers.remove((Integer) user.id);
-        req.id = getInputUser(user);
-        NotificationCenter.getInstance().postNotificationName(NotificationCenter.blockedUsersDidLoaded);
-        /*ConnectionsManager.getInstance().sendRequest(req, new RequestDelegate() {
-            @Override
-            public void run(TLObject response, TLRPC.TL_error error) {
-                //MessagesStorage.getInstance().deleteBlockedUser(user.id);
-            }
-        });*/
-    }
-
-    public void getBlockedUsers(boolean cache) {
-        if (!UserConfig.isClientActivated() || loadingBlockedUsers) {
-            return;
-        }
-        loadingBlockedUsers = true;
-        if (cache) {
-            //MessagesStorage.getInstance().getBlockedUsers();
-        } else {
-            TLRPC.TL_contacts_getBlocked req = new TLRPC.TL_contacts_getBlocked();
-            req.offset = 0;
-            req.limit = 200;
-            /*ConnectionsManager.getInstance().sendRequest(req, new RequestDelegate() {
-                @Override
-                public void run(TLObject response, TLRPC.TL_error error) {
-                    ArrayList<Integer> blocked = new ArrayList<>();
-                    ArrayList<TLRPC.User> users = null;
-                    if (error == null) {
-                        final TLRPC.contacts_Blocked res = (TLRPC.contacts_Blocked) response;
-                        for (TLRPC.TL_contactBlocked contactBlocked : res.blocked) {
-                            blocked.add(contactBlocked.user_id);
-                        }
-                        users = res.users;
-                        //MessagesStorage.getInstance().putUsersAndChats(res.users, null, true, true);
-                        //MessagesStorage.getInstance().putBlockedUsers(blocked, true);
-                    }
-                    processLoadedBlockedUsers(blocked, users, false);
-                }
-            });*/
-        }
-    }
-
     public void deleteMessages(ArrayList<Integer> messages, ArrayList<Long> randoms, TLRPC.EncryptedChat encryptedChat, final int channelId) {
 
     }
@@ -1034,14 +891,6 @@ public class MessagesController implements NotificationCenter.NotificationCenter
 
     public void addUserToChat(final int chat_id, final TLRPC.User user, final TLRPC.ChatFull info, int count_fwd, String botHash, final BaseFragment fragment) {
     }
-
-    public void deleteUserFromChat(final int chat_id, final TLRPC.User user, final TLRPC.ChatFull info) {
-    }
-
-    /*
-    public void changeChatTitle(int chat_id, String title) {
-    }
-    */
 
     public void changeChatAvatar(int chat_id, TLRPC.InputFile uploadedAvatar) {
         TLObject request;

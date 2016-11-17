@@ -172,6 +172,7 @@ public class MrMailbox {
 
     // this function is called from within the C-wrapper
     public final static int MR_EVENT_MSGS_UPDATED   = 2000;
+    public final static int MR_EVENT_BLOCKING_CHANGED = 2020;
     public final static int MR_EVENT_IS_EMAIL_KNOWN = 2010;
     public final static int MR_EVENT_MSG_DELIVERED  = 3000;
     public final static int MR_EVENT_MSG_READ       = 3010;
@@ -179,7 +180,6 @@ public class MrMailbox {
     {
         switch(event) {
             case MR_EVENT_MSGS_UPDATED:
-                Log.i(TAG, "Received MR_EVENT_MSGS_UPDATED!");
                 AndroidUtilities.runOnUIThread(new Runnable() {
                     @Override
                     public void run() {
@@ -196,6 +196,17 @@ public class MrMailbox {
                     public void run() {
                         reloadMainChatlist();
                         NotificationCenter.getInstance().postNotificationName(NotificationCenter.messagesSentOrRead, event, (int)data1, (int)data2);
+                        NotificationCenter.getInstance().postNotificationName(NotificationCenter.dialogsNeedReload);
+                    }
+                });
+                return 0;
+
+            case MR_EVENT_BLOCKING_CHANGED:
+                AndroidUtilities.runOnUIThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        reloadMainChatlist();
+                        NotificationCenter.getInstance().postNotificationName(NotificationCenter.blockedUsersDidLoaded);
                         NotificationCenter.getInstance().postNotificationName(NotificationCenter.dialogsNeedReload);
                     }
                 });
@@ -219,7 +230,9 @@ public class MrMailbox {
     public native static int     MrMailboxFetch             (long hMailbox);
 
     public native static int[]   MrMailboxGetKnownContacts  (long hMailbox);
+    public native static int[]   MrMailboxGetBlockedContacts(long hMailbox);
     public native static long    MrMailboxGetContact        (long hMailbox, int id);// returns hContact which must be unref'd after usage
+    public native static int     MrMailboxBlockContact      (long hMailbox, int id, int block);
 
     public native static long    MrMailboxGetChatlist       (long hMailbox); // returns hChatlist which must be unref'd after usage
     public native static long    MrMailboxGetChat           (long hMailbox, int chat_id); // return hChat which must be unref'd after usage
@@ -279,13 +292,13 @@ public class MrMailbox {
     public native static String  MrMsgGetParam              (long hMsg, int key, String def);
     public native static int     MrMsgGetParamInt           (long hMsg, int key, int def);
 
-
     // MrContact objects
     public native static void    MrContactUnref             (long hContact);
     public native static String  MrContactGetName           (long hContact);
     public native static String  MrContactGetAddr           (long hContact);
     public static String         MrContactGetDisplayName    (long hContact) { String s=MrContactGetName(hContact); if(s.isEmpty()) {s=MrContactGetAddr(hContact);} return s; }
     public static String         MrContactGetNameNAddr      (long hContact) { String s=MrContactGetName(hContact); if(s.isEmpty()) {s=MrContactGetAddr(hContact);} else { s+=" ("+MrContactGetAddr(hContact)+")"; } return s; }
+    public native static int     MrContactIsBlocked         (long hContact);
 
     // MrPoortext objects
     public native static void    MrPoortextUnref            (long hPoortext);

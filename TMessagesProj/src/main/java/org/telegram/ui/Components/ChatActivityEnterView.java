@@ -860,9 +860,9 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
                         TLRPC.Chat currentChat;
                         if ((int) dialog_id < 0) {
                             currentChat = MessagesController.getInstance().getChat(-(int) dialog_id);
-                            if (currentChat != null && currentChat.participants_count > MessagesController.getInstance().groupBigSize) {
+                            /*if (currentChat != null && currentChat.participants_count > MessagesController.getInstance().groupBigSize) {
                                 action = "bigchat_upload_audio";
-                            } else {
+                            } else*/ {
                                 action = "chat_upload_audio";
                             }
                         } else {
@@ -1320,9 +1320,9 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
             TLRPC.Chat currentChat;
             if ((int) dialog_id < 0) {
                 currentChat = MessagesController.getInstance().getChat(-(int) dialog_id);
-                if (currentChat != null && currentChat.participants_count > MessagesController.getInstance().groupBigSize) {
+                /*if (currentChat != null && currentChat.participants_count > MessagesController.getInstance().groupBigSize) {
                     action = "bigchat_message";
-                } else {
+                } else*/ {
                     action = "chat_message";
                 }
             } else {

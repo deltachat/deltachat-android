@@ -204,9 +204,23 @@ JNIEXPORT jintArray Java_org_telegram_messenger_MrMailbox_MrMailboxGetKnownConta
 	return carray2jintArray_n_carray_free(env, ca);
 }
 
-JNIEXPORT jlong Java_org_telegram_messenger_MrMailbox_MrMailboxGetContact(JNIEnv *env, jclass c, jlong hMailbox, jint id)
+
+JNIEXPORT jintArray Java_org_telegram_messenger_MrMailbox_MrMailboxGetBlockedContacts(JNIEnv *env, jclass c, jlong hMailbox)
 {
-	return (jlong)mrmailbox_get_contact((mrmailbox_t*)hMailbox, id);
+	carray* ca = mrmailbox_get_blocked_contacts((mrmailbox_t*)hMailbox);
+	return carray2jintArray_n_carray_free(env, ca);
+}
+
+
+JNIEXPORT jlong Java_org_telegram_messenger_MrMailbox_MrMailboxGetContact(JNIEnv *env, jclass c, jlong hMailbox, jint contact_id)
+{
+	return (jlong)mrmailbox_get_contact((mrmailbox_t*)hMailbox, contact_id);
+}
+
+
+JNIEXPORT jint Java_org_telegram_messenger_MrMailbox_MrMailboxBlockContact(JNIEnv *env, jclass c, jlong hMailbox, jint contact_id, jint block)
+{
+	return (jint)mrmailbox_block_contact((mrmailbox_t*)hMailbox, contact_id, block);
 }
 
 
@@ -624,6 +638,13 @@ JNIEXPORT jstring Java_org_telegram_messenger_MrMailbox_MrContactGetAddr(JNIEnv 
 {
 	mrcontact_t* ths = (mrcontact_t*)hContact; if( ths == NULL ) { return JSTRING_NEW(NULL); }
 	return JSTRING_NEW(ths->m_addr);
+}
+
+
+JNIEXPORT jint Java_org_telegram_messenger_MrMailbox_MrContactIsBlocked(JNIEnv *env, jclass c, jlong hContact)
+{
+	mrcontact_t* ths = (mrcontact_t*)hContact; if( ths == NULL ) { return 0; }
+	return (jint)ths->m_blocked;
 }
 
 

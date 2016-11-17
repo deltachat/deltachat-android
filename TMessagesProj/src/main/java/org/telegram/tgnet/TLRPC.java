@@ -584,7 +584,6 @@ public class TLRPC {
 		public int id;
 		public String title;
 		public ChatPhoto photo;
-		public int participants_count;
 		public int date;
 		public int version;
 		public boolean editor;
@@ -675,10 +674,6 @@ public class TLRPC {
 
 
 	public static class TL_photoCachedSize extends PhotoSize {
-	}
-
-	public static class ExportedChatInvite extends TLObject {
-		public String link;
 	}
 
 	public static class InputFile extends TLObject {
@@ -777,19 +772,6 @@ public class TLRPC {
 
 	public static class TL_contacts_deleteContacts extends TLObject {
 		public ArrayList<InputUser> id = new ArrayList<>();
-	}
-
-	public static class TL_contacts_block extends TLObject {
-		public InputUser id;
-	}
-
-	public static class TL_contacts_unblock extends TLObject {
-		public InputUser id;
-	}
-
-	public static class TL_contacts_getBlocked extends TLObject {
-		public int offset;
-		public int limit;
 	}
 
 	public static class TL_messages_getDialogs extends TLObject {

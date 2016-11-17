@@ -173,12 +173,14 @@ public class GroupCreateActivity extends BaseFragment implements NotificationCen
         listViewAdapter.setCheckedMap(selectedContacts);
 
         fragmentView = new LinearLayout(context);
+
         LinearLayout linearLayout = (LinearLayout) fragmentView;
         linearLayout.setOrientation(LinearLayout.VERTICAL);
 
         FrameLayout frameLayout = new FrameLayout(context);
         linearLayout.addView(frameLayout, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT));
 
+        // START SEARCH FIELD
         userSelectEditText = new EditText(context);
         userSelectEditText.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
         userSelectEditText.setHintTextColor(0xff979797);
@@ -291,6 +293,9 @@ public class GroupCreateActivity extends BaseFragment implements NotificationCen
                 }
             }
         });
+        // END SEARCH FIELD
+
+
 
         LinearLayout emptyTextLayout = new LinearLayout(context);
         emptyTextLayout.setVisibility(View.INVISIBLE);
@@ -354,13 +359,6 @@ public class GroupCreateActivity extends BaseFragment implements NotificationCen
                         FileLog.e("tmessages", e);
                     }
                 } else {
-                    if (chatType == ChatObject.CHAT_TYPE_CHAT && selectedContacts.size() == MessagesController.getInstance().maxGroupCount - 1) {
-                        AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
-                        builder.setMessage(LocaleController.getString("SoftUserLimitAlert", R.string.SoftUserLimitAlert));
-                        builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), null);
-                        showDialog(builder.create());
-                        return;
-                    }
                     ignoreChange = true;
                     ChipSpan span = createAndPutChipForUser(user);
                     span.uid = user.id;

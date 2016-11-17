@@ -228,8 +228,6 @@ public class ApplicationLoader extends Application {
         ConnectionsManager.getInstance().init(deviceModel, systemVersion, appVersion, langCode, configPath, FileLog.getNetworkLogPath(), UserConfig.getClientUserId(), enablePushConnection);
         if (UserConfig.getCurrentUser() != null) {
             MessagesController.getInstance().putUser(UserConfig.getCurrentUser(), true);
-            //ConnectionsManager.getInstance().applyCountryPortNumber(UserConfig.getCurrentUser().phone);
-            MessagesController.getInstance().getBlockedUsers(true);
             SendMessagesHelper.getInstance().checkUnsentMessages();
         }
 

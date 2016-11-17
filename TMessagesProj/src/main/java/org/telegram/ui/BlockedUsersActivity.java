@@ -1,4 +1,6 @@
 /*
+ * This part of the Delta Chat fronted is based on Telegram which is covered by the following note:
+ *
  * This is the source code of Telegram for Android v. 3.x.x.
  * It is licensed under GNU GPL v. 2 or later.
  * You should have received a copy of the license in this archive (see LICENSE).
@@ -22,12 +24,12 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import org.telegram.messenger.LocaleController;
+import org.telegram.messenger.MrMailbox;
 import org.telegram.tgnet.TLRPC;
 import org.telegram.messenger.MessagesController;
 import org.telegram.messenger.NotificationCenter;
 import org.telegram.messenger.R;
 import org.telegram.ui.Adapters.BaseFragmentAdapter;
-import org.telegram.ui.Cells.TextInfoCell;
 import org.telegram.ui.Cells.UserCell;
 import org.telegram.ui.ActionBar.ActionBar;
 import org.telegram.ui.ActionBar.ActionBarMenu;
@@ -38,19 +40,19 @@ public class BlockedUsersActivity extends BaseFragment implements NotificationCe
 
     private ListView listView;
     private ListAdapter listViewAdapter;
-    //private FrameLayout progressView; -- EDIT BY MR
     private TextView emptyTextView;
     private int selectedUserId;
 
-
     private final static int block_user = 1;
+
+    private int[] blockedUserIds;
 
     @Override
     public boolean onFragmentCreate() {
         super.onFragmentCreate();
+        blockedUserIds = MrMailbox.MrMailboxGetBlockedContacts(MrMailbox.hMailbox);
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.updateInterfaces);
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.blockedUsersDidLoaded);
-        MessagesController.getInstance().getBlockedUsers(false);
         return true;
     }
 
@@ -73,8 +75,7 @@ public class BlockedUsersActivity extends BaseFragment implements NotificationCe
                     finishFragment();
                 } else if (id == block_user) {
                     Bundle args = new Bundle();
-                    args.putBoolean("onlyUsers", true);
-                    args.putBoolean("returnAsResult", true);
+                    args.putInt("do_what", ContactsActivity.SELECT_CONTACT_TO_BLOCK);
                     ContactsActivity fragment = new ContactsActivity(args);
                     fragment.setDelegate(BlockedUsersActivity.this);
                     presentFragment(fragment);
@@ -102,14 +103,6 @@ public class BlockedUsersActivity extends BaseFragment implements NotificationCe
             }
         });
 
-        /* EDIT BY MR
-        progressView = new FrameLayout(context);
-        frameLayout.addView(progressView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.MATCH_PARENT));
-
-        ProgressBar progressBar = new ProgressBar(context);
-        progressView.addView(progressBar, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER));
-        */
-
         listView = new ListView(context);
         listView.setEmptyView(emptyTextView);
         listView.setVerticalScrollBarEnabled(false);
@@ -122,9 +115,9 @@ public class BlockedUsersActivity extends BaseFragment implements NotificationCe
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                if (i < MessagesController.getInstance().blockedUsers.size()) {
+                if (i>=0 && i < blockedUserIds.length) {
                     Bundle args = new Bundle();
-                    args.putInt("user_id", MessagesController.getInstance().blockedUsers.get(i));
+                    args.putInt("user_id", blockedUserIds[i]);
                     presentFragment(new ProfileActivity(args));
                 }
             }
@@ -133,37 +126,27 @@ public class BlockedUsersActivity extends BaseFragment implements NotificationCe
         listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
-                if (i < 0 || i >= MessagesController.getInstance().blockedUsers.size() || getParentActivity() == null) {
+                if (i < 0 || i >= blockedUserIds.length || getParentActivity() == null) {
                     return true;
                 }
-                selectedUserId = MessagesController.getInstance().blockedUsers.get(i);
+                selectedUserId = blockedUserIds[i];
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
-                CharSequence[] items = new CharSequence[]{LocaleController.getString("Unblock", R.string.Unblock)};
+                CharSequence[] items = new CharSequence[]{LocaleController.getString("UnblockContact", R.string.UnblockContact)};
                 builder.setItems(items, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         if (i == 0) {
-                            MessagesController.getInstance().unblockUser(selectedUserId);
+                            MrMailbox.MrMailboxBlockContact(MrMailbox.hMailbox, selectedUserId, 0);
                         }
                     }
                 });
                 showDialog(builder.create());
-
                 return true;
             }
         });
 
-        /* EDIT BY MR
-        if (MessagesController.getInstance().loadingBlockedUsers) {
-            progressView.setVisibility(View.VISIBLE);
-            emptyTextView.setVisibility(View.GONE);
-            listView.setEmptyView(null);
-        } else {
-            progressView.setVisibility(View.GONE);
-        */
-            listView.setEmptyView(emptyTextView);
-        //} EDIT BY MR
+        listView.setEmptyView(emptyTextView);
         return fragmentView;
     }
 
@@ -175,11 +158,7 @@ public class BlockedUsersActivity extends BaseFragment implements NotificationCe
                 updateVisibleRows(mask);
             }
         } else if (id == NotificationCenter.blockedUsersDidLoaded) {
-            /* EDIT BY MR
-            if (progressView != null) {
-                progressView.setVisibility(View.GONE);
-            }
-            */
+            blockedUserIds = MrMailbox.MrMailboxGetBlockedContacts(MrMailbox.hMailbox);
             if (listView != null && listView.getEmptyView() == null) {
                 listView.setEmptyView(emptyTextView);
             }
@@ -215,7 +194,7 @@ public class BlockedUsersActivity extends BaseFragment implements NotificationCe
         if (user == null) {
             return;
         }
-        MessagesController.getInstance().blockUser(user.id);
+        MrMailbox.MrMailboxBlockContact(MrMailbox.hMailbox, user.id, 1);
     }
 
     private class ListAdapter extends BaseFragmentAdapter {
@@ -232,15 +211,12 @@ public class BlockedUsersActivity extends BaseFragment implements NotificationCe
 
         @Override
         public boolean isEnabled(int i) {
-            return i != MessagesController.getInstance().blockedUsers.size();
+            return true;
         }
 
         @Override
         public int getCount() {
-            if (MessagesController.getInstance().blockedUsers.isEmpty()) {
-                return 0;
-            }
-            return MessagesController.getInstance().blockedUsers.size() + 1;
+            return blockedUserIds.length;
         }
 
         @Override
@@ -260,48 +236,30 @@ public class BlockedUsersActivity extends BaseFragment implements NotificationCe
 
         @Override
         public View getView(int i, View view, ViewGroup viewGroup) {
-            int type = getItemViewType(i);
-            if (type == 0) {
-                if (view == null) {
-                    view = new UserCell(mContext, 1, 0);
-                }
-                TLRPC.User user = MessagesController.getInstance().getUser(MessagesController.getInstance().blockedUsers.get(i));
-                if (user != null) {
-                    /*String number;
-                    if (user.bot) {
-                        number = LocaleController.getString("Bot", R.string.Bot).substring(0, 1).toUpperCase() + LocaleController.getString("Bot", R.string.Bot).substring(1);
-                    } else if (user.phone != null && user.phone.length() != 0) {
-                        number = PhoneFormat.getInstance().format("+" + user.phone);
-                    } else {
-                        number = LocaleController.getString("NumberUnknown", R.string.NumberUnknown);
-                    }*/
-                    ((UserCell) view).setData(123, 0, "ErrUserName", "ErrUserStatus", 0);
-                }
-            } else if (type == 1) {
-                if (view == null) {
-                    view = new TextInfoCell(mContext);
-                    ((TextInfoCell) view).setText(LocaleController.getString("UnblockText", R.string.UnblockText));
-                }
+            if (view == null) {
+                view = new UserCell(mContext, 1, 0);
+            }
+            if (i>=0 && i<blockedUserIds.length) {
+                long hContact = MrMailbox.MrMailboxGetContact(MrMailbox.hMailbox, blockedUserIds[i]);
+                    ((UserCell) view).setData(blockedUserIds[i], 0, MrMailbox.MrContactGetDisplayName(hContact), MrMailbox.MrContactGetAddr(hContact), 0);
+                MrMailbox.MrContactUnref(hContact);
             }
             return view;
         }
 
         @Override
         public int getItemViewType(int i) {
-            if(i == MessagesController.getInstance().blockedUsers.size()) {
-                return 1;
-            }
             return 0;
         }
 
         @Override
         public int getViewTypeCount() {
-            return 2;
+            return 1;
         }
 
         @Override
         public boolean isEmpty() {
-            return MessagesController.getInstance().blockedUsers.isEmpty();
+            return blockedUserIds.length==0;
         }
     }
 }

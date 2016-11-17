@@ -40,6 +40,7 @@ import android.view.animation.AccelerateInterpolator;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import org.telegram.messenger.AndroidUtilities;
@@ -104,6 +105,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
     private AvatarDrawable avatarDrawable;
     private ActionBarMenuItem animatingItem;
     private TopView topView;
+    private TextView blockTextView;
 
     private long dialog_id;
     private boolean userBlocked;
@@ -190,7 +192,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
             NotificationCenter.getInstance().addObserver(this, NotificationCenter.updateInterfaces);
             NotificationCenter.getInstance().addObserver(this, NotificationCenter.contactsDidLoaded);
             NotificationCenter.getInstance().addObserver(this, NotificationCenter.userInfoDidLoaded);
-            userBlocked = false; //MessagesController.getInstance().blockedUsers.contains(user_id);
+
 
         } else if (chat_id != 0) {
             currentChat = MrMailbox.chatId2chat(chat_id);
@@ -270,17 +272,23 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                 if (id == -1) {
                     finishFragment();
                 } else if (id == block_contact) {
-
-                    AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
-                    builder.setMessage(userBlocked? LocaleController.getString("AreYouSureUnblockContact", R.string.AreYouSureUnblockContact) : LocaleController.getString("AreYouSureBlockContact", R.string.AreYouSureBlockContact));
-                    builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                        Toast.makeText(getParentActivity(), LocaleController.getString("NotYetImplemented", R.string.NotYetImplemented), Toast.LENGTH_LONG).show();
-                        }
-                    });
-                    builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
-                    showDialog(builder.create());
+                    if( userBlocked ) {
+                        MrMailbox.MrMailboxBlockContact(MrMailbox.hMailbox, user_id, 0);
+                        finishFragment(); /* got to the parent, this is important eg. when editing blocking in the BlockedUserActivitiy. Moreover, this saves us updating all the states in the profile */
+                    }
+                    else {
+                        AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
+                        builder.setMessage(LocaleController.getString("AreYouSureBlockContact", R.string.AreYouSureBlockContact));
+                        builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                MrMailbox.MrMailboxBlockContact(MrMailbox.hMailbox, user_id, 1);
+                                finishFragment(); /* got to the parent, this is important eg. when editing blocking in the BlockedUserActivitiy. Moreover, this saves us updating all the states in the profile */
+                            }
+                        });
+                        builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
+                        showDialog(builder.create());
+                    }
 
                 } else if (id == add_contact) {
                     TLRPC.User user = MessagesController.getInstance().getUser(user_id);
@@ -1222,6 +1230,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
             long hContact = MrMailbox.MrMailboxGetContact(MrMailbox.hMailbox, user_id);
                 newString = MrMailbox.MrContactGetDisplayName(hContact);
                 newString2 = MrMailbox.MrContactGetAddr(hContact);
+                userBlocked = MrMailbox.MrContactIsBlocked(hContact)!=0;
             MrMailbox.MrContactUnref(hContact);
         }
         else {
@@ -1229,6 +1238,10 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                 newString = MrMailbox.MrChatGetName(hChat);
                 newString2 = MrMailbox.MrChatGetSubtitle(hChat);
             MrMailbox.MrChatUnref(hChat);
+        }
+
+        if( blockTextView != null ) {
+            blockTextView.setText(!userBlocked ? LocaleController.getString("BlockContact", R.string.BlockContact) : LocaleController.getString("UnblockContact", R.string.UnblockContact));
         }
 
         for (int a = 0; a < 2; a++) {
@@ -1272,7 +1285,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
 
         ActionBarMenuItem item = menu.addItem(10, R.drawable.ic_ab_other);
         if (user_id != 0) {
-            item.addSubItem(block_contact, !userBlocked ? LocaleController.getString("BlockContact", R.string.BlockContact) : LocaleController.getString("Unblock", R.string.Unblock), 0);
+            blockTextView = item.addSubItem(block_contact, "X", 0);
         }
 
         if( chat_id!=0 || MrMailbox.MrMailboxGetChatIdByContactId(MrMailbox.hMailbox, user_id)!=0 ) {

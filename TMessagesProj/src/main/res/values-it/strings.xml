@@ -247,8 +247,7 @@
     <!--settings view-->
     <string name="TextSize">Dimensione testo messaggi</string>
     <string name="EnableAnimations">Abilita animazioni</string>
-    <string name="Unblock">Sblocca</string>
-    <string name="UnblockText">Tieni premuto sull’utente per sbloccarlo.</string>
+    <string name="UnblockContact">Sblocca</string>
     <string name="NoBlocked">Ancora nessun utente bloccato</string>
     <string name="MessageNotifications">Notifiche messaggio</string>
     <string name="Alert">Avviso</string>

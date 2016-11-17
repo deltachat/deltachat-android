@@ -292,26 +292,29 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                if (position == DrawerLayoutAdapter.iNewGroup) {
-                    /*if (!MessagesController.isFeatureEnabled("chat_create", actionBarLayout.fragmentsStack.get(actionBarLayout.fragmentsStack.size() - 1))) {
-                        return;
-                    }*/
-                    presentFragment(new GroupCreateActivity());
-                    drawerLayoutContainer.closeDrawer(false);
-                } else if (position == DrawerLayoutAdapter.iNewChat) {
+                if (position == DrawerLayoutAdapter.iNewChat) {
                     Bundle args = new Bundle();
-                    args.putBoolean("do_create_new_chat", true);
+                    args.putInt("do_what", ContactsActivity.SELECT_CONTACT_FOR_NEW_CHAT);
                     presentFragment(new ContactsActivity(args));
                     drawerLayoutContainer.closeDrawer(false);
-                } else if (position == DrawerLayoutAdapter.iStrangers) {
+                }
+                else if (position == DrawerLayoutAdapter.iNewGroup) {
+                    Bundle args = new Bundle();
+                    args.putInt("do_what", ContactsActivity.SELECT_CONTACTS_FOR_NEW_GROUP);
+                    presentFragment(new ContactsActivity(args));
+                    drawerLayoutContainer.closeDrawer(false);
+                }
+                else if (position == DrawerLayoutAdapter.iStrangers) {
                     Bundle args = new Bundle();
                     args.putInt("chat_id", (int) MrMailbox.MR_CHAT_ID_STRANGERS);
                     presentFragment(new ChatActivity(args));
                     drawerLayoutContainer.closeDrawer(false);
-                } else if (position == DrawerLayoutAdapter.iSettings) {
+                }
+                else if (position == DrawerLayoutAdapter.iSettings) {
                     presentFragment(new SettingsActivity());
                     drawerLayoutContainer.closeDrawer(false);
-                } else if (position == DrawerLayoutAdapter.iFaq) {
+                }
+                else if (position == DrawerLayoutAdapter.iFaq) {
                     Browser.openUrl(LaunchActivity.this, "https://messenger.b44t.com/help");
                     drawerLayoutContainer.closeDrawer(false);
                 }

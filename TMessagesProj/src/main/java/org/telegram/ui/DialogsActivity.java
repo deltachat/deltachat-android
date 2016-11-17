@@ -525,7 +525,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
             @Override
             public void onClick(View v) {
                 Bundle args = new Bundle();
-                args.putBoolean("do_create_new_chat", true);
+                args.putInt("do_what", ContactsActivity.SELECT_CONTACT_FOR_NEW_CHAT);
                 presentFragment(new ContactsActivity(args));
             }
         });

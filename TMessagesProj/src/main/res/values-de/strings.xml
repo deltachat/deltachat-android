@@ -214,7 +214,7 @@
     <string name="ShareContact">Teilen</string>
     <string name="AddContact">Hinzufügen</string>
     <string name="AddContactTitle">Kontakt hinzufügen</string>
-    <string name="BlockContact">Blockieren</string>
+    <string name="BlockContact">Benutzer blockieren</string>
     <string name="EditContact">Bearbeiten</string>
     <string name="DeleteContact">Löschen</string>
     <string name="PhoneHome">Festnetz</string>
@@ -246,8 +246,7 @@
     <!--settings view-->
     <string name="TextSize">Textgröße für Nachrichten</string>
     <string name="EnableAnimations">Übergänge animieren</string>
-    <string name="Unblock">Freigeben</string>
-    <string name="UnblockText">Gedrückt halten um freizugeben.</string>
+    <string name="UnblockContact">Benutzer nicht mehr blockieren</string>
     <string name="NoBlocked">Keine blockierten Benutzer</string>
     <string name="MessageNotifications">Nachrichten</string>
     <string name="Alert">Benachrichtigung</string>

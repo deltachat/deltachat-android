@@ -215,7 +215,7 @@
     <string name="ShareContact">Share</string>
     <string name="AddContact">Add</string>
     <string name="AddContactTitle">Add contact</string>
-    <string name="BlockContact">Block</string>
+    <string name="BlockContact">Block contact</string>
     <string name="EditContact">Edit</string>
     <string name="DeleteContact">Delete</string>
     <string name="PhoneHome">Home</string>
@@ -247,8 +247,7 @@
     <!--settings view-->
     <string name="TextSize">Messages Text Size</string>
     <string name="EnableAnimations">Transition animation</string>
-    <string name="Unblock">Unblock</string>
-    <string name="UnblockText">Tap and hold on user to unblock.</string>
+    <string name="UnblockContact">Unblock contact</string>
     <string name="NoBlocked">No blocked users yet</string>
     <string name="MessageNotifications">Message notifications</string>
     <string name="Alert">Alert</string>
@@ -264,7 +263,7 @@
     <string name="ResetAllNotifications">Reset All Notifications</string>
     <string name="UndoAllCustom">Undo all custom notification settings for all your contacts and groups</string>
     <string name="NotificationsAndSounds">Notifications and Sounds</string>
-    <string name="BlockedUsers">Blocked Users</string>
+    <string name="BlockedUsers">Blocked contacts</string>
     <string name="LogOut">Log out</string>
     <string name="NoSound">No sound</string>
     <string name="Default">Default</string>

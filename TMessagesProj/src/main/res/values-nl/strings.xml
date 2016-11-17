@@ -247,8 +247,7 @@
     <!--settings view-->
     <string name="TextSize">Tekstgrootte berichten</string>
     <string name="EnableAnimations">Animaties</string>
-    <string name="Unblock">Deblokkeer</string>
-    <string name="UnblockText">Gebruiker vasthouden om te deblokkeren.</string>
+    <string name="UnblockContact">Deblokkeer</string>
     <string name="NoBlocked">Geen geblokkeerde gebruikers</string>
     <string name="MessageNotifications">Berichtmeldingen</string>
     <string name="Alert">Waarschuwing</string>

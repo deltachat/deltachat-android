@@ -2790,13 +2790,13 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         if (which == attach_photo || which == attach_gallery || which == attach_document || which == attach_video) {
             String action;
             if (currentChat != null) {
-                if (currentChat.participants_count > MessagesController.getInstance().groupBigSize) {
+                /*if (currentChat.participants_count > MessagesController.getInstance().groupBigSize) {
                     if (which == attach_photo || which == attach_gallery) {
                         action = "bigchat_upload_photo";
                     } else {
                         action = "bigchat_upload_document";
                     }
-                } else {
+                } else*/ {
                     if (which == attach_photo || which == attach_gallery) {
                         action = "chat_upload_photo";
                     } else {
@@ -5304,7 +5304,11 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         } else if (id == NotificationCenter.blockedUsersDidLoaded) {
             if (currentUser != null) {
                 boolean oldValue = userBlocked;
-                userBlocked = MessagesController.getInstance().blockedUsers.contains(currentUser.id);
+
+                long hContact = MrMailbox.MrMailboxGetContact(MrMailbox.hMailbox, currentUser.id);
+                    userBlocked = MrMailbox.MrContactIsBlocked(hContact)!=0;
+                MrMailbox.MrContactUnref(hContact);
+
                 if (oldValue != userBlocked) {
                     updateBottomOverlay();
                 }
@@ -5575,7 +5579,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 /*if (currentUser.bot) {
                     bottomOverlayChatText.setText(LocaleController.getString("BotUnblock", R.string.BotUnblock));
                 } else*/ {
-                    bottomOverlayChatText.setText(LocaleController.getString("Unblock", R.string.Unblock));
+                    bottomOverlayChatText.setText(LocaleController.getString("UnblockContact", R.string.UnblockContact));
                 }
             }
             /*else if (botUser != null && currentUser.bot) {
@@ -7129,9 +7133,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                         } else if (uid != UserConfig.getClientUserId()) {
                             Bundle args = new Bundle();
                             args.putInt("user_id", uid);
-                            /*if (currentEncryptedChat != null && uid == currentUser.id) {
-                                args.putLong("dialog_id", dialog_id);
-                            }*/
                             ProfileActivity fragment = new ProfileActivity(args);
                             fragment.setPlayProfileAnimation(currentUser != null && currentUser.id == uid);
                             presentFragment(fragment);

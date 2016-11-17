@@ -13,8 +13,6 @@ package org.telegram.ui;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.InputType;
@@ -46,7 +44,6 @@ import org.telegram.messenger.R;
 import org.telegram.messenger.Utilities;
 import org.telegram.ui.Adapters.BaseFragmentAdapter;
 import org.telegram.ui.Adapters.ContactsAdapter;
-import org.telegram.ui.Adapters.SearchAdapter;
 import org.telegram.ui.Cells.UserCell;
 import org.telegram.ui.ActionBar.ActionBar;
 import org.telegram.ui.ActionBar.ActionBarMenu;
@@ -60,23 +57,28 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
     private BaseFragmentAdapter listViewAdapter;
     private TextView emptyTextView;
     private ListView listView;
+    private EditText userSelectEditText;
+
+    private int             do_what = 0;
+    public final static int SELECT_CONTACT_FOR_NEW_CHAT   = 1;
+    public final static int SELECT_CONTACTS_FOR_NEW_GROUP = 2;
+    public final static int ADD_CONTACTS_TO_GROUP         = 3;
+    public final static int SELECT_CONTACT_TO_BLOCK       = 4;
+
+    boolean createNewChatOnItemClick;
 
     //private SearchAdapter searchListViewAdapter;
     //private boolean searchWas;
     //private boolean searching;
 
-    private boolean returnAsResult;
-    private boolean needForwardCount = true;
-    private int chat_id;
-    private String selectAlertString = null;
-    private boolean allowUsernameSearch = true;
     private ContactsActivityDelegate delegate;
 
     private String title;
     private String subtitle;
 
     private final static int id_add_contact = 2;
-    private final static int id_new_group   = 3;
+    private final static int id_done_button = 3;
+    private final static int id_toggle      = 4;
 
     public interface ContactsActivityDelegate {
         void didSelectContact(TLRPC.User user, String param);
@@ -84,30 +86,37 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
 
     public ContactsActivity(Bundle args) {
         super(args);
+        if( args != null ) {
+            do_what = args.getInt("do_what", 0);
+        }
     }
 
-    @SuppressWarnings("unchecked")
     @Override
     public boolean onFragmentCreate() {
         super.onFragmentCreate();
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.contactsDidLoaded);
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.updateInterfaces);
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.closeChats);
-        if (arguments != null) {
 
-            returnAsResult = arguments.getBoolean("returnAsResult", false);
-            selectAlertString = arguments.getString("selectAlertString");
-            allowUsernameSearch = arguments.getBoolean("allowUsernameSearch", true);
-            needForwardCount = arguments.getBoolean("needForwardCount", true);
-            chat_id = arguments.getInt("chat_id", 0);
-
-            if( arguments.getBoolean("do_create_new_chat", false) ) {
-                title = LocaleController.getString("NewChat", R.string.NewChat);
-                subtitle = LocaleController.getString("SendMessageTo", R.string.SendMessageTo);
-            }
-
-
+        if( do_what == SELECT_CONTACT_FOR_NEW_CHAT  )
+        {
+            title                    = LocaleController.getString("NewChat", R.string.NewChat);
+            subtitle                 = LocaleController.getString("SendMessageTo", R.string.SendMessageTo);
+            createNewChatOnItemClick = true;
         }
+        else if( do_what == SELECT_CONTACTS_FOR_NEW_GROUP )
+        {
+            title = LocaleController.getString("NewGroup", R.string.NewGroup);
+        }
+        else if( do_what == ADD_CONTACTS_TO_GROUP )
+        {
+            ;
+        }
+        else if( do_what == SELECT_CONTACT_TO_BLOCK )
+        {
+            title = LocaleController.getString("BlockContact", R.string.BlockContact);
+        }
+
         return true;
     }
 
@@ -138,68 +147,41 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
         actionBar.setActionBarMenuOnItemClick(new ActionBar.ActionBarMenuOnItemClick() {
             @Override
             public void onItemClick(int id) {
-                if (id == -1) {
+                if (id == -1)
+                {
                     finishFragment();
                 }
-                else if( id == id_new_group ) {
-                    presentFragment(new GroupCreateActivity(), true);
+                else if( id == id_toggle )
+                {
+                    Bundle args = new Bundle();
+                    args.putInt("do_what", do_what==SELECT_CONTACTS_FOR_NEW_GROUP? SELECT_CONTACT_FOR_NEW_CHAT : SELECT_CONTACTS_FOR_NEW_GROUP);
+                    presentFragment(new ContactsActivity(args), true);
                 }
-                else if( id == id_add_contact ) {
+                else if( id == id_add_contact )
+                {
                     Toast.makeText(getParentActivity(), LocaleController.getString("NotYetImplemented", R.string.NotYetImplemented), Toast.LENGTH_LONG).show();
+                }
+                else if( id == id_done_button )
+                {
+
                 }
             }
         });
 
         ActionBarMenu menu = actionBar.createMenu();
-        ActionBarMenuItem item = menu.addItem(10, R.drawable.ic_ab_other);
-        item.addSubItem(id_add_contact, LocaleController.getString("AddContactTitle", R.string.AddContactTitle), 0);
-        item.addSubItem(id_new_group, LocaleController.getString("NewGroup", R.string.NewGroup), 0);
-        /*
-        ActionBarMenuItem item = menu.addItem(0, R.drawable.ic_ab_search).setIsSearchField(true).setActionBarMenuItemSearchListener(new ActionBarMenuItem.ActionBarMenuItemSearchListener() {
-            @Override
-            public void onSearchExpand() {
-                searching = true;
-            }
 
-            @Override
-            public void onSearchCollapse() {
-                searchListViewAdapter.searchDialogs(null);
-                searching = false;
-                searchWas = false;
-                listView.setAdapter(listViewAdapter);
-                listViewAdapter.notifyDataSetChanged();
-                listView.setFastScrollAlwaysVisible(true);
-                listView.setFastScrollEnabled(true);
-                listView.setVerticalScrollBarEnabled(false);
-                emptyTextView.setText(LocaleController.getString("NoContacts", R.string.NoContacts));
-            }
+        if( do_what == SELECT_CONTACTS_FOR_NEW_GROUP || do_what == ADD_CONTACTS_TO_GROUP ) {
+            menu.addItem(id_done_button, R.drawable.ic_done);
+        }
 
-            @Override
-            public void onTextChanged(EditText editText) {
-                if (searchListViewAdapter == null) {
-                    return;
-                }
-                String text = editText.getText().toString();
-                if (text.length() != 0) {
-                    searchWas = true;
-                    if (listView != null) {
-                        listView.setAdapter(searchListViewAdapter);
-                        searchListViewAdapter.notifyDataSetChanged();
-                        listView.setFastScrollAlwaysVisible(false);
-                        listView.setFastScrollEnabled(false);
-                        listView.setVerticalScrollBarEnabled(true);
-                    }
-                    if (emptyTextView != null) {
-                        emptyTextView.setText(LocaleController.getString("NoResult", R.string.NoResult));
-                    }
-                }
-                searchListViewAdapter.searchDialogs(text);
+        if( do_what != SELECT_CONTACT_TO_BLOCK ) {
+            ActionBarMenuItem item = menu.addItem(10, R.drawable.ic_ab_other);
+            if (do_what == SELECT_CONTACT_FOR_NEW_CHAT || do_what == SELECT_CONTACTS_FOR_NEW_GROUP) {
+                item.addSubItem(id_toggle, do_what == SELECT_CONTACT_FOR_NEW_CHAT ? LocaleController.getString("NewGroup", R.string.NewGroup) : LocaleController.getString("NewChat", R.string.NewChat), 0);
             }
-        });
-        item.getSearchField().setHint(LocaleController.getString("Search", R.string.Search));
+            item.addSubItem(id_add_contact, LocaleController.getString("AddContactTitle", R.string.AddContactTitle), 0);
+        }
 
-        searchListViewAdapter = new SearchAdapter(context, null, allowUsernameSearch, false, false, true);
-        */
         listViewAdapter = new ContactsAdapter(context);
 
         fragmentView = new FrameLayout(context);
@@ -259,61 +241,44 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                /*
-                if (searching && searchWas) {
-                    TLRPC.User user = (TLRPC.User) searchListViewAdapter.getItem(i);
-                    if (user == null) {
-                        return;
-                    }
-                    if (searchListViewAdapter.isGlobalSearch(i)) {
-                        ArrayList<TLRPC.User> users = new ArrayList<>();
-                        users.add(user);
-                        //MessagesController.getInstance().putUsers(users, false);
-                        //MessagesStorage.getInstance().putUsersAndChats(users, null, false, true);
-                    }
-                    if (returnAsResult) {
-                        didSelectResult(user, true, null);
-                    } else {
-                        Bundle args = new Bundle();
-                        args.putInt("user_id", user.id);
-                        presentFragment(new ChatActivity(args), true);
-                    }
-                } else*/ {
-                    Object item = listViewAdapter.getItem(i);
-                    if (item instanceof TLRPC.User) {
-                        final TLRPC.User user = (TLRPC.User) item;
-                        if (returnAsResult) {
-                            didSelectResult(user, true, null);
-                        } else {
-                            int belonging_chat_id = MrMailbox.MrMailboxGetChatIdByContactId(MrMailbox.hMailbox, user.id);
-                            if( belonging_chat_id!=0 ) {
-                                Bundle args = new Bundle();
-                                args.putInt("chat_id", belonging_chat_id);
-                                presentFragment(new ChatActivity(args), true);
-                                return;
-                            }
-
-                            long hContact = MrMailbox.MrMailboxGetContact(MrMailbox.hMailbox, user.id);
-                                String name = MrMailbox.MrContactGetNameNAddr(hContact);
-                            MrMailbox.MrContactUnref(hContact);
-
-                            AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
-                            builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialogInterface, int i) {
-                                    int belonging_chat_id = MrMailbox.MrMailboxCreateChatByContactId(MrMailbox.hMailbox, user.id);
-                                    if( belonging_chat_id != 0 ) {
-                                        Bundle args = new Bundle();
-                                        args.putInt("chat_id", belonging_chat_id);
-                                        presentFragment(new ChatActivity(args), true);
-                                        return;
-                                    }
-                                }
-                            });
-                            builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
-                            builder.setMessage(AndroidUtilities.replaceTags(LocaleController.formatString("AskStartChatWith", R.string.AskStartChatWith, name)));
-                            showDialog(builder.create());
+                // a single click on an contact item
+                Object item = listViewAdapter.getItem(i);
+                if (item instanceof TLRPC.User) {
+                    final TLRPC.User user = (TLRPC.User) item;
+                    if( do_what == SELECT_CONTACT_FOR_NEW_CHAT ) {
+                        int belonging_chat_id = MrMailbox.MrMailboxGetChatIdByContactId(MrMailbox.hMailbox, user.id);
+                        if( belonging_chat_id!=0 ) {
+                            Bundle args = new Bundle();
+                            args.putInt("chat_id", belonging_chat_id);
+                            presentFragment(new ChatActivity(args), true);
+                            return;
                         }
+
+                        long hContact = MrMailbox.MrMailboxGetContact(MrMailbox.hMailbox, user.id);
+                            String name = MrMailbox.MrContactGetNameNAddr(hContact);
+                        MrMailbox.MrContactUnref(hContact);
+
+                        AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
+                        builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                int belonging_chat_id = MrMailbox.MrMailboxCreateChatByContactId(MrMailbox.hMailbox, user.id);
+                                if( belonging_chat_id != 0 ) {
+                                    Bundle args = new Bundle();
+                                    args.putInt("chat_id", belonging_chat_id);
+                                    presentFragment(new ChatActivity(args), true);
+                                    return;
+                                }
+                            }
+                        });
+                        builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
+                        builder.setMessage(AndroidUtilities.replaceTags(LocaleController.formatString("AskStartChatWith", R.string.AskStartChatWith, name)));
+                        showDialog(builder.create());
+                    }
+                    else if (delegate != null) {
+                        delegate.didSelectContact(user, null);
+                        delegate = null;
+                        finishFragment();
                     }
                 }
             }
@@ -336,90 +301,6 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
         });
 
         return fragmentView;
-    }
-
-    private void didSelectResult(final TLRPC.User user, boolean useAlert, String param) {
-        if (useAlert && selectAlertString != null) {
-            if (getParentActivity() == null) {
-                return;
-            }
-
-            AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
-            String message = LocaleController.formatStringSimple(selectAlertString, UserObject.getUserName(user));
-            EditText editText = null;
-            if ( needForwardCount ) {
-                message = String.format("%s\n\n%s", message, LocaleController.getString("AddToTheGroupForwardCount", R.string.AddToTheGroupForwardCount));
-                editText = new EditText(getParentActivity());
-                editText.setTextSize(18);
-                editText.setText("50");
-                editText.setGravity(Gravity.CENTER);
-                editText.setInputType(InputType.TYPE_CLASS_NUMBER);
-                editText.setImeOptions(EditorInfo.IME_ACTION_DONE);
-                final EditText editTextFinal = editText;
-                editText.addTextChangedListener(new TextWatcher() {
-                    @Override
-                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-                    }
-
-                    @Override
-                    public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-                    }
-
-                    @Override
-                    public void afterTextChanged(Editable s) {
-                        try {
-                            String str = s.toString();
-                            if (str.length() != 0) {
-                                int value = Utilities.parseInt(str);
-                                if (value < 0) {
-                                    editTextFinal.setText("0");
-                                    editTextFinal.setSelection(editTextFinal.length());
-                                } else if (value > 300) {
-                                    editTextFinal.setText("300");
-                                    editTextFinal.setSelection(editTextFinal.length());
-                                } else if (!str.equals("" + value)) {
-                                    editTextFinal.setText("" + value);
-                                    editTextFinal.setSelection(editTextFinal.length());
-                                }
-                            }
-                        } catch (Exception e) {
-                            FileLog.e("tmessages", e);
-                        }
-                    }
-
-                });
-                builder.setView(editText);
-            }
-            builder.setMessage(message);
-            final EditText finalEditText = editText;
-            builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialogInterface, int i) {
-                    didSelectResult(user, false, finalEditText != null ? finalEditText.getText().toString() : "0");
-                }
-            });
-            builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
-            showDialog(builder.create());
-            if (editText != null) {
-                ViewGroup.MarginLayoutParams layoutParams = (ViewGroup.MarginLayoutParams) editText.getLayoutParams();
-                if (layoutParams != null) {
-                    if (layoutParams instanceof FrameLayout.LayoutParams) {
-                        ((FrameLayout.LayoutParams) layoutParams).gravity = Gravity.CENTER_HORIZONTAL;
-                    }
-                    layoutParams.rightMargin = layoutParams.leftMargin = AndroidUtilities.dp(10);
-                    editText.setLayoutParams(layoutParams);
-                }
-                editText.setSelection(editText.getText().length());
-            }
-        } else {
-            if (delegate != null) {
-                delegate.didSelectContact(user, param);
-                delegate = null;
-            }
-            finishFragment();
-        }
     }
 
     @Override
