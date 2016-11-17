@@ -73,6 +73,7 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
     private ContactsActivityDelegate delegate;
 
     private String title;
+    private String subtitle;
 
     public interface ContactsActivityDelegate {
         void didSelectContact(TLRPC.User user, String param);
@@ -100,6 +101,7 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
 
             if( arguments.getBoolean("do_create_new_chat", false) ) {
                 title = LocaleController.getString("NewChat", R.string.NewChat);
+                subtitle = LocaleController.getString("SendMessageTo", R.string.SendMessageTo);
             }
 
 
@@ -126,6 +128,9 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
         actionBar.setAllowOverlayTitle(true);
         if( title != null ) {
             actionBar.setTitle(title);
+            if( subtitle != null ) {
+                actionBar.setSubtitle(subtitle);
+            }
         }
 
         actionBar.setActionBarMenuOnItemClick(new ActionBar.ActionBarMenuOnItemClick() {

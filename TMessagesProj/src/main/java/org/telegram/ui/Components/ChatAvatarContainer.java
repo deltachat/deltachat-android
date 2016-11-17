@@ -51,7 +51,7 @@ public class ChatAvatarContainer extends FrameLayout {
 
         subtitleTextView = new SimpleTextView(context);
         subtitleTextView.setTextColor(Theme.ACTION_BAR_SUBTITLE_COLOR);
-        subtitleTextView.setTextSize(14);
+        subtitleTextView.setTextSize(Theme.ACTION_BAR_SUBTITLE_TEXT_SIZE);
         subtitleTextView.setGravity(Gravity.LEFT);
         addView(subtitleTextView);
 

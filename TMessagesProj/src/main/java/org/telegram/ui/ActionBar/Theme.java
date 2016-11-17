@@ -35,6 +35,7 @@ public class Theme {
     public static final int ACTION_BAR_SUBTITLE_COLOR = 0xffd5e8f7;
     public static final int ACTION_BAR_ACTION_MODE_TEXT_COLOR = 0xff737373;
     public static final int ACTION_BAR_SELECTOR_COLOR = 0xff406d94;
+    public static final int ACTION_BAR_SUBTITLE_TEXT_SIZE = 14;
 
     public static final int INPUT_FIELD_SELECTOR_COLOR = 0xffd6d6d6;
     public static final int ACTION_BAR_PICKER_SELECTOR_COLOR = 0xff3d3d3d;

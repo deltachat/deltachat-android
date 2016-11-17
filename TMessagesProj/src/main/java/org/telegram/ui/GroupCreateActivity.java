@@ -75,7 +75,6 @@ public class GroupCreateActivity extends BaseFragment implements NotificationCen
     private int beforeChangeIndex;
     private boolean ignoreChange;
     private CharSequence changeString;
-    private int maxCount = 5000;
     private int chatType = ChatObject.CHAT_TYPE_CHAT;
     private boolean isAlwaysShare;
     private boolean isNeverShare;
@@ -97,7 +96,6 @@ public class GroupCreateActivity extends BaseFragment implements NotificationCen
         isAlwaysShare = args.getBoolean("isAlwaysShare", false);
         isNeverShare = args.getBoolean("isNeverShare", false);
         isGroup = args.getBoolean("isGroup", false);
-        maxCount = chatType == ChatObject.CHAT_TYPE_CHAT ? MessagesController.getInstance().maxMegagroupCount : MessagesController.getInstance().maxBroadcastCount;
     }
 
     @Override
@@ -136,8 +134,8 @@ public class GroupCreateActivity extends BaseFragment implements NotificationCen
                 actionBar.setTitle(LocaleController.getString("NeverShareWithTitle", R.string.NeverShareWithTitle));
             }
         } else {
-            actionBar.setTitle(chatType == ChatObject.CHAT_TYPE_CHAT ? LocaleController.getString("NewGroup", R.string.NewGroup) : LocaleController.getString("NewBroadcastList", R.string.NewBroadcastList));
-            actionBar.setSubtitle(LocaleController.formatString("MembersCount", R.string.MembersCount, selectedContacts.size(), maxCount));
+            actionBar.setTitle(LocaleController.getString("NewGroup", R.string.NewGroup));
+            actionBar.setSubtitle(LocaleController.formatPluralString("Members", selectedContacts.size()));
         }
 
         actionBar.setActionBarMenuOnItemClick(new ActionBar.ActionBarMenuOnItemClick() {
@@ -253,7 +251,7 @@ public class GroupCreateActivity extends BaseFragment implements NotificationCen
                                 }
                             }
                             if (!isAlwaysShare && !isNeverShare) {
-                                actionBar.setSubtitle(LocaleController.formatString("MembersCount", R.string.MembersCount, selectedContacts.size(), maxCount));
+                                actionBar.setSubtitle(LocaleController.formatPluralString("Members", selectedContacts.size()));
                             }
                             listView.invalidateViews();
                         } else {
@@ -356,9 +354,6 @@ public class GroupCreateActivity extends BaseFragment implements NotificationCen
                         FileLog.e("tmessages", e);
                     }
                 } else {
-                    if (maxCount != 0 && selectedContacts.size() == maxCount) {
-                        return;
-                    }
                     if (chatType == ChatObject.CHAT_TYPE_CHAT && selectedContacts.size() == MessagesController.getInstance().maxGroupCount - 1) {
                         AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
                         builder.setMessage(LocaleController.getString("SoftUserLimitAlert", R.string.SoftUserLimitAlert));
@@ -372,7 +367,7 @@ public class GroupCreateActivity extends BaseFragment implements NotificationCen
                     ignoreChange = false;
                 }
                 if (!isAlwaysShare && !isNeverShare) {
-                    actionBar.setSubtitle(LocaleController.formatString("MembersCount", R.string.MembersCount, selectedContacts.size(), maxCount));
+                    actionBar.setSubtitle(LocaleController.formatPluralString("Members", selectedContacts.size()));
                 }
                 if (searching || searchWas) {
                     ignoreChange = true;
