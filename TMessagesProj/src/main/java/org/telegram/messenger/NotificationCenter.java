@@ -155,11 +155,11 @@ public class NotificationCenter {
         }
     }
 
-    /*
+
     public boolean isAnimationInProgress() {
         return animationInProgress;
     }
-    */
+
 
     public void postNotificationName(int id, Object... args) {
         boolean allowDuringAnimation = false;

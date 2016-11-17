@@ -151,11 +151,9 @@ public class SimpleTextView extends View implements Drawable.Callback {
         wasLayout = true;
     }
 
-    /*
     public int getTextWidth() {
         return textWidth;
     }
-    */
 
     public int getTextHeight() {
         return textHeight;
@@ -217,7 +215,6 @@ public class SimpleTextView extends View implements Drawable.Callback {
         recreateLayoutMaybe();
     }
 
-    /*
     public void setDrawablePadding(int value) {
         if (drawablePadding == value) {
             return;
@@ -227,7 +224,6 @@ public class SimpleTextView extends View implements Drawable.Callback {
             invalidate();
         }
     }
-    */
 
     private boolean recreateLayoutMaybe() {
         if (wasLayout) {

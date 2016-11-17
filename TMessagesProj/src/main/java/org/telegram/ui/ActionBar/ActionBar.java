@@ -361,7 +361,6 @@ public class ActionBar extends FrameLayout {
         }
     }
 
-    /*
     public void setInterceptTouches(boolean value) {
         interceptTouches = value;
     }
@@ -369,7 +368,6 @@ public class ActionBar extends FrameLayout {
     public void setExtraHeight(int value) {
         extraHeight = value;
     }
-    */
 
     public void closeSearchField() {
         if (!isSearchFieldVisible || menu == null) {
