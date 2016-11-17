@@ -290,7 +290,7 @@
     <string name="OnlyWhenScreenOn">Nur wenn Bildschirm „an“</string>
     <string name="OnlyWhenScreenOff">Nur wenn Bildschirm „aus“</string>
     <string name="AlwaysShowPopup">Popups immer anzeigen</string>
-    <string name="BadgeNumber">Kennzeichensymbol</string>
+    <string name="BadgeNumber">Anzahl in Popup anzeigen</string>
     <string name="Short">Kurz</string>
     <string name="Long">Lang</string>
     <string name="SystemDefault">Systemvorgabe</string>
