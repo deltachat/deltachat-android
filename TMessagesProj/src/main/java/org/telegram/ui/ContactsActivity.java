@@ -32,12 +32,13 @@ import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.telegram.messenger.AndroidUtilities;
 import org.telegram.messenger.LocaleController;
+import org.telegram.messenger.MrMailbox;
 import org.telegram.messenger.UserObject;
 import org.telegram.tgnet.TLRPC;
-import org.telegram.messenger.ContactsController;
 import org.telegram.messenger.FileLog;
 import org.telegram.messenger.MessagesController;
 import org.telegram.messenger.NotificationCenter;
@@ -53,18 +54,17 @@ import org.telegram.ui.ActionBar.ActionBarMenuItem;
 import org.telegram.ui.ActionBar.BaseFragment;
 import org.telegram.ui.Components.LayoutHelper;
 
-import java.util.ArrayList;
 
 public class ContactsActivity extends BaseFragment implements NotificationCenter.NotificationCenterDelegate {
 
     private BaseFragmentAdapter listViewAdapter;
     private TextView emptyTextView;
     private ListView listView;
-    private SearchAdapter searchListViewAdapter;
 
-    private boolean searchWas;
-    private boolean searching;
-    private boolean onlyUsers;
+    //private SearchAdapter searchListViewAdapter;
+    //private boolean searchWas;
+    //private boolean searching;
+
     private boolean returnAsResult;
     private boolean needForwardCount = true;
     private int chat_id;
@@ -74,6 +74,9 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
 
     private String title;
     private String subtitle;
+
+    private final static int id_add_contact = 2;
+    private final static int id_new_group   = 3;
 
     public interface ContactsActivityDelegate {
         void didSelectContact(TLRPC.User user, String param);
@@ -92,7 +95,6 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.closeChats);
         if (arguments != null) {
 
-            onlyUsers = arguments.getBoolean("onlyUsers", false);
             returnAsResult = arguments.getBoolean("returnAsResult", false);
             selectAlertString = arguments.getString("selectAlertString");
             allowUsernameSearch = arguments.getBoolean("allowUsernameSearch", true);
@@ -121,8 +123,8 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
     @Override
     public View createView(Context context) {
 
-        searching = false;
-        searchWas = false;
+        //searching = false;
+        //searchWas = false;
 
         actionBar.setBackButtonImage(R.drawable.ic_ab_back);
         actionBar.setAllowOverlayTitle(true);
@@ -139,10 +141,20 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
                 if (id == -1) {
                     finishFragment();
                 }
+                else if( id == id_new_group ) {
+                    presentFragment(new GroupCreateActivity(), true);
+                }
+                else if( id == id_add_contact ) {
+                    Toast.makeText(getParentActivity(), LocaleController.getString("NotYetImplemented", R.string.NotYetImplemented), Toast.LENGTH_LONG).show();
+                }
             }
         });
 
         ActionBarMenu menu = actionBar.createMenu();
+        ActionBarMenuItem item = menu.addItem(10, R.drawable.ic_ab_other);
+        item.addSubItem(id_add_contact, LocaleController.getString("AddContactTitle", R.string.AddContactTitle), 0);
+        item.addSubItem(id_new_group, LocaleController.getString("NewGroup", R.string.NewGroup), 0);
+        /*
         ActionBarMenuItem item = menu.addItem(0, R.drawable.ic_ab_search).setIsSearchField(true).setActionBarMenuItemSearchListener(new ActionBarMenuItem.ActionBarMenuItemSearchListener() {
             @Override
             public void onSearchExpand() {
@@ -186,7 +198,8 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
         });
         item.getSearchField().setHint(LocaleController.getString("Search", R.string.Search));
 
-        searchListViewAdapter = new SearchAdapter(context, null /*ignoreUsers*/, allowUsernameSearch, false, false, true /*allowBots/allowChats*/);
+        searchListViewAdapter = new SearchAdapter(context, null, allowUsernameSearch, false, false, true);
+        */
         listViewAdapter = new ContactsAdapter(context);
 
         fragmentView = new FrameLayout(context);
@@ -246,6 +259,7 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                /*
                 if (searching && searchWas) {
                     TLRPC.User user = (TLRPC.User) searchListViewAdapter.getItem(i);
                     if (user == null) {
@@ -264,16 +278,41 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
                         args.putInt("user_id", user.id);
                         presentFragment(new ChatActivity(args), true);
                     }
-                } else {
+                } else*/ {
                     Object item = listViewAdapter.getItem(i);
                     if (item instanceof TLRPC.User) {
-                        TLRPC.User user = (TLRPC.User) item;
+                        final TLRPC.User user = (TLRPC.User) item;
                         if (returnAsResult) {
                             didSelectResult(user, true, null);
                         } else {
-                            Bundle args = new Bundle();
-                            args.putInt("user_id", user.id);
-                            presentFragment(new ChatActivity(args), true);
+                            int belonging_chat_id = MrMailbox.MrMailboxGetChatIdByContactId(MrMailbox.hMailbox, user.id);
+                            if( belonging_chat_id!=0 ) {
+                                Bundle args = new Bundle();
+                                args.putInt("chat_id", belonging_chat_id);
+                                presentFragment(new ChatActivity(args), true);
+                                return;
+                            }
+
+                            long hContact = MrMailbox.MrMailboxGetContact(MrMailbox.hMailbox, user.id);
+                                String name = MrMailbox.MrContactGetNameNAddr(hContact);
+                            MrMailbox.MrContactUnref(hContact);
+
+                            AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
+                            builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    int belonging_chat_id = MrMailbox.MrMailboxCreateChatByContactId(MrMailbox.hMailbox, user.id);
+                                    if( belonging_chat_id != 0 ) {
+                                        Bundle args = new Bundle();
+                                        args.putInt("chat_id", belonging_chat_id);
+                                        presentFragment(new ChatActivity(args), true);
+                                        return;
+                                    }
+                                }
+                            });
+                            builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
+                            builder.setMessage(AndroidUtilities.replaceTags(LocaleController.formatString("AskStartChatWith", R.string.AskStartChatWith, name)));
+                            showDialog(builder.create());
                         }
                     }
                 }
@@ -283,9 +322,9 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
         listView.setOnScrollListener(new AbsListView.OnScrollListener() {
             @Override
             public void onScrollStateChanged(AbsListView absListView, int i) {
-                if (i == SCROLL_STATE_TOUCH_SCROLL && searching && searchWas) {
+                /*if (i == SCROLL_STATE_TOUCH_SCROLL && searching && searchWas) {
                     AndroidUtilities.hideKeyboard(getParentActivity().getCurrentFocus());
-                }
+                }*/
             }
 
             @Override
