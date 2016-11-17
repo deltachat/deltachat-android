@@ -299,7 +299,9 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                     presentFragment(new GroupCreateActivity());
                     drawerLayoutContainer.closeDrawer(false);
                 } else if (position == DrawerLayoutAdapter.iNewChat) {
-                    presentFragment(new ContactsActivity(null));
+                    Bundle args = new Bundle();
+                    args.putBoolean("do_create_new_chat", true);
+                    presentFragment(new ContactsActivity(args));
                     drawerLayoutContainer.closeDrawer(false);
                 } else if (position == DrawerLayoutAdapter.iStrangers) {
                     Bundle args = new Bundle();

@@ -172,7 +172,7 @@ public class GroupCreateActivity extends BaseFragment implements NotificationCen
         searchListViewAdapter = new SearchAdapter(context, null, false, false, false, false);
         searchListViewAdapter.setCheckedMap(selectedContacts);
         searchListViewAdapter.setUseUserCell(true);
-        listViewAdapter = new ContactsAdapter(context, 1, false, null, false);
+        listViewAdapter = new ContactsAdapter(context);
         listViewAdapter.setCheckedMap(selectedContacts);
 
         fragmentView = new LinearLayout(context);

@@ -683,7 +683,6 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
         /*
         Bundle args = new Bundle();
         args.putBoolean("onlyUsers", true);
-        args.putBoolean("destroyAfterSelect", true);
         args.putBoolean("returnAsResult", true);
         args.putBoolean("needForwardCount", !ChatObject.isChannel(currentChat));
         //args.putBoolean("allowUsernameSearch", false);

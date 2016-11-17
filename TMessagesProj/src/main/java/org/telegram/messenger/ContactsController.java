@@ -38,7 +38,7 @@ public class ContactsController {
     private boolean loadingContacts = false;
     private static final Object loadContactsSync = new Object();
     private boolean ignoreChanges = false;
-    private boolean contactsSyncInProgress = false;
+    private final boolean contactsSyncInProgress = false;
     private final Object observerLock = new Object();
     public boolean contactsLoaded = false;
     private boolean contactsBookLoaded = false;
@@ -83,7 +83,6 @@ public class ContactsController {
     public ArrayList<String> sortedUsersSectionsArray = new ArrayList<>();
 
     public HashMap<String, ArrayList<TLRPC.TL_contact>> usersMutualSectionsDict = new HashMap<>();
-    public ArrayList<String> sortedUsersMutualSectionsArray = new ArrayList<>();
 
     public HashMap<String, TLRPC.TL_contact> contactsByPhone = new HashMap<>();
 
@@ -142,12 +141,10 @@ public class ContactsController {
         usersSectionsDict.clear();
         usersMutualSectionsDict.clear();
         sortedUsersSectionsArray.clear();
-        sortedUsersMutualSectionsArray.clear();
         delayedContactsUpdate.clear();
         contactsByPhone.clear();
 
         loadingContacts = false;
-        contactsSyncInProgress = false;
         contactsLoaded = false;
         contactsBookLoaded = false;
         lastContactsVersions = "";
@@ -806,7 +803,6 @@ public class ContactsController {
                             public void run() {
                                 contactsBookSPhones = contactsBookShort;
                                 contactsBook = contactsMap;
-                                contactsSyncInProgress = false;
                                 contactsBookLoaded = true;
                                 if (first) {
                                     contactsLoaded = true;
@@ -831,7 +827,6 @@ public class ContactsController {
                         public void run() {
                             contactsBookSPhones = contactsBookShort;
                             contactsBook = contactsMap;
-                            contactsSyncInProgress = false;
                             contactsBookLoaded = true;
                             if (first) {
                                 contactsLoaded = true;
@@ -952,76 +947,6 @@ public class ContactsController {
         });
 
         phoneBookContacts = sortedPhoneBookContacts;
-    }
-
-    private void buildContactsSectionsArrays(boolean sort) {
-        if (sort) {
-            Collections.sort(contacts, new Comparator<TLRPC.TL_contact>() {
-                @Override
-                public int compare(TLRPC.TL_contact tl_contact, TLRPC.TL_contact tl_contact2) {
-                    TLRPC.User user1 = MessagesController.getInstance().getUser(tl_contact.user_id);
-                    TLRPC.User user2 = MessagesController.getInstance().getUser(tl_contact2.user_id);
-                    String name1 = UserObject.getFirstName(user1);
-                    String name2 = UserObject.getFirstName(user2);
-                    return name1.compareTo(name2);
-                }
-            });
-        }
-
-        StringBuilder ids = new StringBuilder();
-        final HashMap<String, ArrayList<TLRPC.TL_contact>> sectionsDict = new HashMap<>();
-        final ArrayList<String> sortedSectionsArray = new ArrayList<>();
-
-        for (TLRPC.TL_contact value : contacts) {
-            TLRPC.User user = MessagesController.getInstance().getUser(value.user_id);
-            if (user == null) {
-                continue;
-            }
-
-            String key = UserObject.getFirstName(user);
-            if (key.length() > 1) {
-                key = key.substring(0, 1);
-            }
-            if (key.length() == 0) {
-                key = "#";
-            } else {
-                key = key.toUpperCase();
-            }
-            String replace = sectionsToReplace.get(key);
-            if (replace != null) {
-                key = replace;
-            }
-            ArrayList<TLRPC.TL_contact> arr = sectionsDict.get(key);
-            if (arr == null) {
-                arr = new ArrayList<>();
-                sectionsDict.put(key, arr);
-                sortedSectionsArray.add(key);
-            }
-            arr.add(value);
-            if (ids.length() != 0) {
-                ids.append(",");
-            }
-            ids.append(value.user_id);
-        }
-        UserConfig.contactsHash = Utilities.MD5(ids.toString());
-        UserConfig.saveConfig(false);
-
-        Collections.sort(sortedSectionsArray, new Comparator<String>() {
-            @Override
-            public int compare(String s, String s2) {
-                char cv1 = s.charAt(0);
-                char cv2 = s2.charAt(0);
-                if (cv1 == '#') {
-                    return 1;
-                } else if (cv2 == '#') {
-                    return -1;
-                }
-                return s.compareTo(s2);
-            }
-        });
-
-        usersSectionsDict = sectionsDict;
-        sortedUsersSectionsArray = sortedSectionsArray;
     }
 
     private boolean hasContactsPermission() {
@@ -1212,7 +1137,6 @@ public class ContactsController {
                         performWriteContactsToPhoneBook();
                     }
                     performSyncPhoneBook(getContactsCopy(contactsBook), false, false, false, false);
-                    buildContactsSectionsArrays(!newContacts.isEmpty());
                     NotificationCenter.getInstance().postNotificationName(NotificationCenter.contactsDidLoaded);
                 }
             });
@@ -1234,7 +1158,7 @@ public class ContactsController {
         if (check) {
             try {
                 Uri rawContactUri = ContactsContract.RawContacts.CONTENT_URI.buildUpon().appendQueryParameter(ContactsContract.CALLER_IS_SYNCADAPTER, "true").appendQueryParameter(ContactsContract.RawContacts.ACCOUNT_NAME, currentAccount.name).appendQueryParameter(ContactsContract.RawContacts.ACCOUNT_TYPE, currentAccount.type).build();
-                int value = contentResolver.delete(rawContactUri, ContactsContract.RawContacts.SYNC2 + " = " + user.id, null);
+                contentResolver.delete(rawContactUri, ContactsContract.RawContacts.SYNC2 + " = " + user.id, null);
             } catch (Exception e) {
                 FileLog.e("tmessages", e);
             }
@@ -1295,7 +1219,7 @@ public class ContactsController {
         try {
             ContentResolver contentResolver = ApplicationLoader.applicationContext.getContentResolver();
             Uri rawContactUri = ContactsContract.RawContacts.CONTENT_URI.buildUpon().appendQueryParameter(ContactsContract.CALLER_IS_SYNCADAPTER, "true").appendQueryParameter(ContactsContract.RawContacts.ACCOUNT_NAME, currentAccount.name).appendQueryParameter(ContactsContract.RawContacts.ACCOUNT_TYPE, currentAccount.type).build();
-            int value = contentResolver.delete(rawContactUri, ContactsContract.RawContacts.SYNC2 + " = " + uid, null);
+            contentResolver.delete(rawContactUri, ContactsContract.RawContacts.SYNC2 + " = " + uid, null);
         } catch (Exception e) {
             FileLog.e("tmessages", e);
         }

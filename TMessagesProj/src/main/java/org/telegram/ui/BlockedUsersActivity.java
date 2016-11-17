@@ -74,7 +74,6 @@ public class BlockedUsersActivity extends BaseFragment implements NotificationCe
                 } else if (id == block_user) {
                     Bundle args = new Bundle();
                     args.putBoolean("onlyUsers", true);
-                    args.putBoolean("destroyAfterSelect", true);
                     args.putBoolean("returnAsResult", true);
                     ContactsActivity fragment = new ContactsActivity(args);
                     fragment.setDelegate(BlockedUsersActivity.this);
