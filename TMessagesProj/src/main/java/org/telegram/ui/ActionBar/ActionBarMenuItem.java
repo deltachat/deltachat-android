@@ -129,7 +129,7 @@ public class ActionBarMenuItem extends FrameLayout {
                 popupLayout.getLocationOnScreen(location);
                 x -= location[0];
                 y -= location[1];
-                selectedMenuView = null;
+                selectedMenuView  = null;
                 for (int a = 0; a < popupLayout.getItemsCount(); a++) {
                     View child = popupLayout.getItemAt(a);
                     child.getHitRect(rect);
@@ -175,20 +175,16 @@ public class ActionBarMenuItem extends FrameLayout {
         return super.onTouchEvent(event);
     }
 
-    /*
     public void setDelegate(ActionBarMenuItemDelegate delegate) {
         this.delegate = delegate;
     }
-    */
 
-    /*
-    public void setShowFromBottom(boolean value) {
+    public void setShowFromBottom(boolean value) { /*  */
         showFromBottom = value;
         if (popupLayout != null) {
             popupLayout.setShowedFromBotton(showFromBottom);
         }
     }
-    */
 
     public void setSubMenuOpenSide(int side) {
         subMenuOpenSide = side;
@@ -370,11 +366,9 @@ public class ActionBarMenuItem extends FrameLayout {
         iconView.setImageResource(resId);
     }
 
-    /*
     public ImageView getImageView() {
         return iconView;
     }
-    */
 
     public EditText getSearchField() {
         return searchField;

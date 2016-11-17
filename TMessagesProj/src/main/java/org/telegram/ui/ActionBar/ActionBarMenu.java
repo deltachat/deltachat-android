@@ -49,11 +49,9 @@ public class ActionBarMenu extends LinearLayout {
         return view;
     }
 
-    /*
-    public ActionBarMenuItem addItem(int id, Drawable drawable) {
+    public ActionBarMenuItem addItem(int id, Drawable drawable) { /*  */
         return addItem(id, 0, parentActionBar.itemsBackgroundColor, drawable, AndroidUtilities.dp(48));
     }
-    */
 
     public ActionBarMenuItem addItem(int id, int icon) {
         return addItem(id, icon, parentActionBar.itemsBackgroundColor);
@@ -69,6 +67,7 @@ public class ActionBarMenu extends LinearLayout {
 
     public ActionBarMenuItem addItem(int id, int icon, int backgroundColor, Drawable drawable, int width) {
         ActionBarMenuItem menuItem = new ActionBarMenuItem(getContext(), this, backgroundColor);
+
         menuItem.setTag(id);
         if (drawable != null) {
             menuItem.iconView.setImageDrawable(drawable);

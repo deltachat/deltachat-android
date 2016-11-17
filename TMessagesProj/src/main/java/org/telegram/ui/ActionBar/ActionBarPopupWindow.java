@@ -21,6 +21,7 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
+import android.view.animation.DecelerateInterpolator;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
@@ -38,7 +39,7 @@ public class ActionBarPopupWindow extends PopupWindow {
 
     private static final Field superListenerField;
     private static final boolean animationEnabled = Build.VERSION.SDK_INT >= 18;
-    //private static DecelerateInterpolator decelerateInterpolator = new DecelerateInterpolator();
+    private static DecelerateInterpolator decelerateInterpolator = new DecelerateInterpolator();
     private AnimatorSet windowAnimatorSet;
     static {
         Field f = null;
@@ -115,7 +116,7 @@ public class ActionBarPopupWindow extends PopupWindow {
             mOnDispatchKeyEventListener = listener;
         }
 
-        /*
+
         public void setBackAlpha(int value) {
             backAlpha = value;
         }
@@ -180,14 +181,13 @@ public class ActionBarPopupWindow extends PopupWindow {
                 animatorSet.start();
             }
         }
-        */
+
 
         @Override
         public void addView(View child) {
             linearLayout.addView(child);
         }
 
-        /*
         public float getBackScaleX() {
             return backScaleX;
         }
@@ -195,7 +195,6 @@ public class ActionBarPopupWindow extends PopupWindow {
         public float getBackScaleY() {
             return backScaleY;
         }
-        */
 
         @Override
         public boolean dispatchKeyEvent(KeyEvent event) {

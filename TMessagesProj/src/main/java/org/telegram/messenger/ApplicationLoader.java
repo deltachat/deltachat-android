@@ -49,17 +49,13 @@ public class ApplicationLoader extends Application {
     public static volatile boolean isScreenOn = false;
     public static volatile boolean mainInterfacePaused = true;
 
-    /*
     public static boolean isCustomTheme() {
         return isCustomTheme;
     }
-    */
 
-    /*
     public static int getSelectedColor() {
         return selectedColor;
     }
-    */
 
     public static void reloadWallpaper() {
         cachedWallpaper = null;
