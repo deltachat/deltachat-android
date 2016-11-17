@@ -43,7 +43,7 @@ import org.telegram.messenger.MessagesController;
 import org.telegram.messenger.NotificationCenter;
 import org.telegram.messenger.R;
 import org.telegram.messenger.Utilities;
-import org.telegram.ui.Adapters.BaseSectionsAdapter;
+import org.telegram.ui.Adapters.BaseFragmentAdapter;
 import org.telegram.ui.Adapters.ContactsAdapter;
 import org.telegram.ui.Adapters.SearchAdapter;
 import org.telegram.ui.Cells.UserCell;
@@ -52,15 +52,14 @@ import org.telegram.ui.ActionBar.ActionBarMenu;
 import org.telegram.ui.ActionBar.ActionBarMenuItem;
 import org.telegram.ui.ActionBar.BaseFragment;
 import org.telegram.ui.Components.LayoutHelper;
-import org.telegram.ui.Components.LetterSectionsListView;
 
 import java.util.ArrayList;
 
 public class ContactsActivity extends BaseFragment implements NotificationCenter.NotificationCenterDelegate {
 
-    private BaseSectionsAdapter listViewAdapter;
+    private BaseFragmentAdapter listViewAdapter;
     private TextView emptyTextView;
-    private LetterSectionsListView listView;
+    private ListView listView;
     private SearchAdapter searchListViewAdapter;
 
     private boolean searchWas;
@@ -223,7 +222,7 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
         layoutParams1.weight = 0.5f;
         frameLayout.setLayoutParams(layoutParams1);
 
-        listView = new LetterSectionsListView(context);
+        listView = new ListView(context);
         listView.setEmptyView(emptyTextLayout);
         listView.setVerticalScrollBarEnabled(false);
         listView.setDivider(null);
@@ -261,65 +260,15 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
                         presentFragment(new ChatActivity(args), true);
                     }
                 } else {
-                    int section = listViewAdapter.getSectionForPosition(i);
-                    int row = listViewAdapter.getPositionInSectionForPosition(i);
-                    if (row < 0 || section < 0) {
-                        return;
-                    }
-                    if ((!onlyUsers || chat_id != 0) && section == 0) {
-                        if (chat_id != 0) {
-                            if (row == 0) {
-                                presentFragment(new GroupInviteActivity(chat_id));
-                            }
+                    Object item = listViewAdapter.getItem(i);
+                    if (item instanceof TLRPC.User) {
+                        TLRPC.User user = (TLRPC.User) item;
+                        if (returnAsResult) {
+                            didSelectResult(user, true, null);
                         } else {
-                            if (row == 0) {
-                                presentFragment(new GroupCreateActivity(), false);
-                            } else if (row == 1) {
-                                Bundle args = new Bundle();
-                                args.putBoolean("onlyUsers", true);
-                                presentFragment(new ContactsActivity(args), false);
-                            } else if (row == 2) {
-                                // was: play channel intro
-                            }
-                        }
-                    } else {
-                        Object item = listViewAdapter.getItem(section, row);
-
-                        if (item instanceof TLRPC.User) {
-                            TLRPC.User user = (TLRPC.User) item;
-                            if (returnAsResult) {
-                                didSelectResult(user, true, null);
-                            } else {
-                                Bundle args = new Bundle();
-                                args.putInt("user_id", user.id);
-                                presentFragment(new ChatActivity(args), true);
-                            }
-                        } else if (item instanceof ContactsController.Contact) {
-                            ContactsController.Contact contact = (ContactsController.Contact) item;
-                            String usePhone = null;
-                            if (!contact.phones.isEmpty()) {
-                                usePhone = contact.phones.get(0);
-                            }
-                            if (usePhone == null || getParentActivity() == null) {
-                                return;
-                            }
-                            AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
-                            builder.setMessage(LocaleController.getString("InviteUser", R.string.InviteUser));
-                            final String arg1 = usePhone;
-                            builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialogInterface, int i) {
-                                    try {
-                                        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.fromParts("sms", arg1, null));
-                                        intent.putExtra("sms_body", LocaleController.getString("InviteText", R.string.InviteText));
-                                        getParentActivity().startActivityForResult(intent, 500);
-                                    } catch (Exception e) {
-                                        FileLog.e("tmessages", e);
-                                    }
-                                }
-                            });
-                            builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
-                            showDialog(builder.create());
+                            Bundle args = new Bundle();
+                            args.putInt("user_id", user.id);
+                            presentFragment(new ChatActivity(args), true);
                         }
                     }
                 }

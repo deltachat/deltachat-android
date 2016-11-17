@@ -1367,7 +1367,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                     };
                     break;
                 case typeContactCell:
-                    view = new UserCell(mContext, 61, 0, true) {
+                    view = new UserCell(mContext, 61, 0) {
                         @Override
                         public boolean onTouchEvent(MotionEvent event) {
                             if (Build.VERSION.SDK_INT >= 21 && getBackground() != null) {

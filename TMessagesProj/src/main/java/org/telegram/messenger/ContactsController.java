@@ -44,7 +44,6 @@ public class ContactsController {
     private boolean contactsBookLoaded = false;
     private String lastContactsVersions = "";
     private ArrayList<Integer> delayedContactsUpdate = new ArrayList<>();
-    private HashMap<String, String> sectionsToReplace = new HashMap<>();
 
     private ArrayList<TLRPC.PrivacyRule> privacyRules = null;
     private ArrayList<TLRPC.PrivacyRule> groupPrivacyRules = null;
@@ -79,14 +78,8 @@ public class ContactsController {
 
     public ArrayList<TLRPC.TL_contact> contacts = new ArrayList<>();
     public SparseArray<TLRPC.TL_contact> contactsDict = new SparseArray<>();
-    public HashMap<String, ArrayList<TLRPC.TL_contact>> usersSectionsDict = new HashMap<>();
-    public ArrayList<String> sortedUsersSectionsArray = new ArrayList<>();
-
-    public HashMap<String, ArrayList<TLRPC.TL_contact>> usersMutualSectionsDict = new HashMap<>();
 
     public HashMap<String, TLRPC.TL_contact> contactsByPhone = new HashMap<>();
-
-    private int completedRequestsCount;
 
     private static volatile ContactsController Instance = null;
 
@@ -108,28 +101,6 @@ public class ContactsController {
         if (preferences.getBoolean("needGetStatuses", false)) {
             reloadContactsStatuses();
         }
-
-        sectionsToReplace.put("À", "A");
-        sectionsToReplace.put("Á", "A");
-        sectionsToReplace.put("Ä", "A");
-        sectionsToReplace.put("Ù", "U");
-        sectionsToReplace.put("Ú", "U");
-        sectionsToReplace.put("Ü", "U");
-        sectionsToReplace.put("Ì", "I");
-        sectionsToReplace.put("Í", "I");
-        sectionsToReplace.put("Ï", "I");
-        sectionsToReplace.put("È", "E");
-        sectionsToReplace.put("É", "E");
-        sectionsToReplace.put("Ê", "E");
-        sectionsToReplace.put("Ë", "E");
-        sectionsToReplace.put("Ò", "O");
-        sectionsToReplace.put("Ó", "O");
-        sectionsToReplace.put("Ö", "O");
-        sectionsToReplace.put("Ç", "C");
-        sectionsToReplace.put("Ñ", "N");
-        sectionsToReplace.put("Ÿ", "Y");
-        sectionsToReplace.put("Ý", "Y");
-        sectionsToReplace.put("Ţ", "Y");
     }
 
     public void cleanup() {
@@ -138,9 +109,6 @@ public class ContactsController {
         phoneBookContacts.clear();
         contacts.clear();
         contactsDict.clear();
-        usersSectionsDict.clear();
-        usersMutualSectionsDict.clear();
-        sortedUsersSectionsArray.clear();
         delayedContactsUpdate.clear();
         contactsByPhone.clear();
 
@@ -148,12 +116,6 @@ public class ContactsController {
         contactsLoaded = false;
         contactsBookLoaded = false;
         lastContactsVersions = "";
-        Utilities.globalQueue.postRunnable(new Runnable() {
-            @Override
-            public void run() {
-                completedRequestsCount = 0;
-            }
-        });
         privacyRules = null;
     }
 
@@ -734,7 +696,6 @@ public class ContactsController {
                         }*/
 
                         //final HashMap<Integer, Contact> contactsMapToSave = new HashMap<>(contactsMap);
-                        completedRequestsCount = 0;
                         final int count = (int) Math.ceil(toImport.size() / 500.0f);
                         for (int a = 0; a < count; a++) {
                             ArrayList<TLRPC.TL_inputPhoneContact> finalToImport = new ArrayList<>();

@@ -54,7 +54,6 @@ import org.telegram.ui.ActionBar.BaseFragment;
 import org.telegram.ui.Cells.UserCell;
 import org.telegram.ui.Components.ChipSpan;
 import org.telegram.ui.Components.LayoutHelper;
-import org.telegram.ui.Components.LetterSectionsListView;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -68,7 +67,7 @@ public class GroupCreateActivity extends BaseFragment implements NotificationCen
     private ContactsAdapter listViewAdapter;
     private TextView emptyTextView;
     private EditText userSelectEditText;
-    private LetterSectionsListView listView;
+    private ListView listView;
     private SearchAdapter searchListViewAdapter;
 
     private GroupCreateActivityDelegate delegate;
@@ -316,7 +315,7 @@ public class GroupCreateActivity extends BaseFragment implements NotificationCen
         FrameLayout frameLayout2 = new FrameLayout(context);
         emptyTextLayout.addView(frameLayout2, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.MATCH_PARENT, 0.5f));
 
-        listView = new LetterSectionsListView(context);
+        listView = new ListView(context);
         listView.setEmptyView(emptyTextLayout);
         listView.setVerticalScrollBarEnabled(false);
         listView.setDivider(null);
@@ -334,12 +333,7 @@ public class GroupCreateActivity extends BaseFragment implements NotificationCen
                 if (searching && searchWas) {
                     user = (TLRPC.User) searchListViewAdapter.getItem(i);
                 } else {
-                    int section = listViewAdapter.getSectionForPosition(i);
-                    int row = listViewAdapter.getPositionInSectionForPosition(i);
-                    if (row < 0 || section < 0) {
-                        return;
-                    }
-                    user = (TLRPC.User) listViewAdapter.getItem(section, row);
+                    user = (TLRPC.User) listViewAdapter.getItem(i);
                 }
                 if (user == null) {
                     return;

@@ -238,7 +238,7 @@ public class SearchAdapter extends BaseSearchAdapter {
         } else {
             if (view == null) {
                 if (useUserCell) {
-                    view = new UserCell(mContext, 1, 1, false);
+                    view = new UserCell(mContext, 1, 1);
                     if (checkedMap != null) {
                         ((UserCell) view).setChecked(false, false);
                     }
