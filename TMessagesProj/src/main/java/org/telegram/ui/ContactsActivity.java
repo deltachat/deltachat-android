@@ -69,7 +69,7 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
     private boolean needPhonebook;
     private boolean destroyAfterSelect;
     private boolean returnAsResult;
-    private boolean createSecretChat;
+    private final boolean createSecretChat = false;
     private boolean creatingChat = false;
     private boolean allowBots = true;
     private boolean needForwardCount = true;
@@ -98,7 +98,6 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
             onlyUsers = getArguments().getBoolean("onlyUsers", false);
             destroyAfterSelect = arguments.getBoolean("destroyAfterSelect", false);
             returnAsResult = arguments.getBoolean("returnAsResult", false);
-            createSecretChat = arguments.getBoolean("createSecretChat", false);
             selectAlertString = arguments.getString("selectAlertString");
             allowUsernameSearch = arguments.getBoolean("allowUsernameSearch", true);
             needForwardCount = arguments.getBoolean("needForwardCount", true);
@@ -132,9 +131,9 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
             if (returnAsResult) {
                 actionBar.setTitle(LocaleController.getString("SelectContact", R.string.SelectContact));
             } else {
-                if (createSecretChat) {
+                /*if (createSecretChat) {
                     actionBar.setTitle(LocaleController.getString("NewSecretChat", R.string.NewSecretChat));
-                } else {
+                } else*/ {
                     actionBar.setTitle(LocaleController.getString("NewMessageTitle", R.string.NewMessageTitle));
                 }
             }

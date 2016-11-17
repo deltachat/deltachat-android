@@ -218,6 +218,7 @@ public class MrMailbox {
     public native static void    MrMailboxDisconnect        (long hMailbox);
     public native static int     MrMailboxFetch             (long hMailbox);
 
+    public native static int[]   MrMailboxGetKnownContacts  (long hMailbox);
     public native static long    MrMailboxGetContact        (long hMailbox, int id);// returns hContact which must be unref'd after usage
 
     public native static long    MrMailboxGetChatlist       (long hMailbox); // returns hChatlist which must be unref'd after usage

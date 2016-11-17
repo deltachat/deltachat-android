@@ -83,6 +83,35 @@ static void s_init_globals(JNIEnv *env, jclass MrMailbox_class)
 }
 
 
+/* tools */
+
+static jintArray carray2jintArray_n_carray_free(JNIEnv *env, const carray* ca)
+{
+	int i, icnt = ca? carray_count(ca) : 0;
+	jintArray ret = (*env)->NewIntArray(env, icnt); if (ret == NULL) { return NULL; }
+	
+	if( ca ) {
+		if( icnt ) {
+			void** ca_data = carray_data(ca);
+			if( sizeof(void*)==sizeof(jint) ) {
+				(*env)->SetIntArrayRegion(env, ret, 0, icnt, (jint*)ca_data);
+			}
+			else {
+				jint* temp = calloc(icnt, sizeof(jint));
+					for( i = 0; i < icnt; i++ ) {
+						temp[i] = (jint)ca_data[i];
+					}
+					(*env)->SetIntArrayRegion(env, ret, 0, icnt, temp);
+				free(temp);
+			}
+		}
+		carray_free(ca);
+	}
+
+	return ret;
+}
+
+
 /*******************************************************************************
  * MrMailbox
  ******************************************************************************/
@@ -168,6 +197,12 @@ JNIEXPORT jint Java_org_telegram_messenger_MrMailbox_MrMailboxFetch(JNIEnv *env,
 
 
 /* MrMailbox - handle contacts */
+
+JNIEXPORT jintArray Java_org_telegram_messenger_MrMailbox_MrMailboxGetKnownContacts(JNIEnv *env, jclass c, jlong hMailbox)
+{
+	carray* ca = mrmailbox_get_known_contacts((mrmailbox_t*)hMailbox);
+	return carray2jintArray_n_carray_free(env, ca);
+}
 
 JNIEXPORT jlong Java_org_telegram_messenger_MrMailbox_MrMailboxGetContact(JNIEnv *env, jclass c, jlong hMailbox, jint id)
 {
@@ -441,28 +476,6 @@ JNIEXPORT jint Java_org_telegram_messenger_MrMailbox_MrChatSendMedia(JNIEnv *env
 		jint msg_id = mrchat_send_msg((mrchat_t*)hChat, msg);
 	mrmsg_unref(msg);
 	return msg_id;
-}
-
-
-static jintArray carray2jintArray_n_carray_free(JNIEnv *env, const carray* ca)
-{
-	int i, icnt = ca? carray_count(ca) : 0;
-	jintArray ret = (*env)->NewIntArray(env, icnt); if (ret == NULL) { return NULL; }
-	
-	if( ca ) {
-		if( icnt ) {
-			void** ca_data = carray_data(ca);
-			jint* temp = calloc(icnt, sizeof(jint));
-				for( i = 0; i < icnt; i++ ) {
-					temp[i] = (jint)ca_data[i];
-				}
-				(*env)->SetIntArrayRegion(env, ret, 0, icnt, temp);
-			free(temp);
-		}
-		carray_free(ca);
-	}
-
-	return ret;
 }
 
 

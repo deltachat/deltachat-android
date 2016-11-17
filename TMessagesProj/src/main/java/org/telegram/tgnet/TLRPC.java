@@ -36,11 +36,6 @@ public class TLRPC {
 	public static class TL_chatPhotoEmpty extends ChatPhoto {
 	}
 
-	public static class TL_error extends TLObject {
-		public int code;
-		public String text;
-	}
-
 	public static class DocumentAttribute extends TLObject {
 		public int w;
 		public int h;
@@ -293,10 +288,8 @@ public class TLRPC {
 		public boolean deleted;
 		public final boolean bot = false;
 		public boolean verified;
-		public boolean restricted_;
 		public boolean min;
 		public String restriction_reason;
-		public String bot_inline_placeholder;
     }
 
 	public static class TL_userContact_old2 extends User {
