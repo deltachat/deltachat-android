@@ -821,6 +821,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
     }
 
     private void hideFloatingButton(boolean hide) {
+        /* -- Disable the floating hiding action for now; I'm not sure if it is really useful.
         if (floatingHidden == hide) {
             return;
         }
@@ -829,6 +830,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
         animator.setInterpolator(floatingInterpolator);
         floatingButton.setClickable(!hide);
         animator.start();
+        */
     }
 
     private void updateVisibleRows(int mask) {
