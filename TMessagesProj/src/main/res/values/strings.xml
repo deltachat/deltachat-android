@@ -719,4 +719,5 @@
     <string name="SeachUser">Search user</string>
     <string name="Name" >Name</string>
     <string name="EmailAddress">E-mail address</string>
+    <string name="MeAnd">Me and</string>
 </resources>

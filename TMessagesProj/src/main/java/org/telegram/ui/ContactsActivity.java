@@ -120,7 +120,7 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
         else if( do_what == SELECT_CONTACTS_FOR_NEW_GROUP )
         {
             title      = LocaleController.getString("NewGroup", R.string.NewGroup);
-            subtitle   = LocaleController.formatPluralString("Members", 0);
+            subtitle   = LocaleController.getString("MeAnd", R.string.MeAnd) + " " + LocaleController.formatPluralString("Members", 0);
         }
         else if( do_what == ADD_CONTACTS_TO_GROUP )
         {
@@ -403,7 +403,7 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
                             span.uid = user.id;
                             ignoreChange = false;
                         }
-                        actionBar.setSubtitle(LocaleController.formatPluralString("Members", selectedContacts.size()));
+                        actionBar.setSubtitle(LocaleController.getString("MeAnd", R.string.MeAnd) + " " + LocaleController.formatPluralString("Members", selectedContacts.size()));
                         if (searching || searchWas) {
                             ignoreChange = true;
                             SpannableStringBuilder ssb = new SpannableStringBuilder("");
