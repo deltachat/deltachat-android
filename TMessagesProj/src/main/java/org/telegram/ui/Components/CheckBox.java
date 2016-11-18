@@ -26,7 +26,6 @@ public class CheckBox extends View {
     private static Paint paint;
     private static Paint eraser;
     private static Paint eraser2;
-    private static Paint checkPaint;
     private static Paint backgroundPaint;
 
     private Bitmap drawBitmap;

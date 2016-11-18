@@ -22,7 +22,6 @@ import org.telegram.tgnet.TLRPC;
 import org.telegram.ui.Components.AvatarDrawable;
 import org.telegram.ui.Components.BackupImageView;
 import org.telegram.ui.Components.CheckBox;
-import org.telegram.ui.Components.CheckBoxSquare;
 import org.telegram.ui.Components.LayoutHelper;
 import org.telegram.ui.ActionBar.SimpleTextView;
 
@@ -33,7 +32,6 @@ public class UserCell extends FrameLayout {
     private SimpleTextView statusTextView;
     private ImageView imageView;
     private CheckBox checkBox;
-    private CheckBoxSquare checkBoxBig;
 
     private AvatarDrawable avatarDrawable;
     private int user_id;
@@ -45,7 +43,7 @@ public class UserCell extends FrameLayout {
 
     private int statusColor = 0xffa8a8a8;
 
-    public UserCell(Context context, int padding, int checkbox) {
+    public UserCell(Context context, int padding, int useCheckboxes) {
         super(context);
 
         avatarDrawable = new AvatarDrawable();
@@ -58,7 +56,7 @@ public class UserCell extends FrameLayout {
         nameTextView.setTextColor(0xff212121);
         nameTextView.setTextSize(16); /*same size as in TextCell */
         nameTextView.setGravity((LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT) | Gravity.TOP);
-        addView(nameTextView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, 20, (LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT) | Gravity.TOP, LocaleController.isRTL ? 28 + (checkbox == 2 ? 18 : 0) : (68 + padding), 11.5f, LocaleController.isRTL ? (68 + padding) : 28 + (checkbox == 2 ? 18 : 0), 0));
+        addView(nameTextView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, 20, (LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT) | Gravity.TOP, LocaleController.isRTL ? 28 + (useCheckboxes == 2 ? 18 : 0) : (68 + padding), 11.5f, LocaleController.isRTL ? (68 + padding) : 28 + (useCheckboxes == 2 ? 18 : 0), 0));
 
         statusTextView = new SimpleTextView(context);
         statusTextView.setTextSize(14);
@@ -70,10 +68,7 @@ public class UserCell extends FrameLayout {
         imageView.setVisibility(GONE);
         addView(imageView, LayoutHelper.createFrame(LayoutParams.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, (LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT) | Gravity.CENTER_VERTICAL, LocaleController.isRTL ? 0 : 16, 0, LocaleController.isRTL ? 16 : 0, 0));
 
-        if (checkbox == 2) {
-            checkBoxBig = new CheckBoxSquare(context);
-            addView(checkBoxBig, LayoutHelper.createFrame(18, 18, (LocaleController.isRTL ? Gravity.LEFT : Gravity.RIGHT) | Gravity.CENTER_VERTICAL, LocaleController.isRTL ? 19 : 0, 0, LocaleController.isRTL ? 0 : 19, 0));
-        } else if (checkbox == 1) {
+        if( useCheckboxes == 1 ) {
             checkBox = new CheckBox(context, R.drawable.round_check2);
             checkBox.setVisibility(INVISIBLE);
             addView(checkBox, LayoutHelper.createFrame(22, 22, (LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT) | Gravity.TOP, LocaleController.isRTL ? 0 : 37 + padding, 38, LocaleController.isRTL ? 37 + padding : 0, 0));
@@ -91,22 +86,11 @@ public class UserCell extends FrameLayout {
     }
 
     public void setChecked(boolean checked, boolean animated) {
-        if (checkBox != null) {
+        if( checkBox!=null ) {
             if (checkBox.getVisibility() != VISIBLE) {
                 checkBox.setVisibility(VISIBLE);
             }
             checkBox.setChecked(checked, animated);
-        } else if (checkBoxBig != null) {
-            if (checkBoxBig.getVisibility() != VISIBLE) {
-                checkBoxBig.setVisibility(VISIBLE);
-            }
-            checkBoxBig.setChecked(checked, animated);
-        }
-    }
-
-    public void setCheckDisabled(boolean disabled) {
-        if (checkBoxBig != null) {
-            checkBoxBig.setDisabled(disabled);
         }
     }
 
