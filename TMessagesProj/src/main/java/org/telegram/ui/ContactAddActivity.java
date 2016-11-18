@@ -238,7 +238,7 @@ public class ContactAddActivity extends BaseFragment implements NotificationCent
             emailTextView.setTextColor(0xff212121);
             emailTextView.setMaxLines(4);
             emailTextView.setGravity(LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT);
-            emailTextView.setInputType(InputType.TYPE_TEXT_FLAG_CAP_SENTENCES);
+            emailTextView.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS | InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
             emailTextView.setImeOptions(EditorInfo.IME_FLAG_NO_EXTRACT_UI);
             emailTextView.setPadding(0, 0, 0, AndroidUtilities.dp(8));
             emailTextView.setHint(LocaleController.getString("EmailAddress", R.string.EmailAddress));

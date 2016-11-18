@@ -338,6 +338,7 @@ public class MrAccountSettingsActivity extends BaseFragment {
                         addrCell = new MrEditTextCell(mContext);
                         addrCell.setValueHintAndLabel(MrMailbox.MrMailboxGetConfig(MrMailbox.hMailbox, "addr", ""),
                                 "", LocaleController.getString("MyEmailAddress", R.string.MyEmailAddress), false);
+                        addrCell.getEditTextView().setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS | InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
                     }
                     view = addrCell;
                 }
