@@ -178,8 +178,6 @@
     <!--group create view-->
     <string name="SendMessageTo">Bericht versturen naar</string>
     <string name="EnterGroupNamePlaceholder">Groepsnaam</string>
-    <string name="GroupName">Groepsnaam</string>
-    <string name="MembersCount">%1$d/%2$d leden</string>
     <string name="JoinToGroup">Wil je lid worden van de groep \"%1$s\"?</string>
     <string name="LinkCopied">Link gekopieerd naar klembord.</string>
     <string name="ShareLink">Link delen</string>

@@ -359,9 +359,9 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
                         }
                         if (((TLRPC.Chat) obj).id > 0) {
                             dialog_id = -((TLRPC.Chat) obj).id;
-                        } else {
+                        } /*else {
                             dialog_id = AndroidUtilities.makeBroadcastId(((TLRPC.Chat) obj).id);
-                        }
+                        }*/
                         if (!onlySelect) {
                             dialogsSearchAdapter.putRecentSearch(dialog_id, (TLRPC.Chat) obj);
                         }

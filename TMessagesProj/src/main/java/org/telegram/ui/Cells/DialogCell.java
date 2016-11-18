@@ -165,10 +165,8 @@ public class DialogCell extends BaseCell {
             countDrawable = getResources().getDrawable(R.drawable.dialogs_badge);
             countDrawableGrey = getResources().getDrawable(R.drawable.dialogs_badge2);
             groupDrawable = getResources().getDrawable(R.drawable.list_group);
-            //broadcastDrawable = getResources().getDrawable(R.drawable.list_broadcast);
             muteDrawable = getResources().getDrawable(R.drawable.mute_grey);
             verifiedDrawable = getResources().getDrawable(R.drawable.check_list);
-            //botDrawable = getResources().getDrawable(R.drawable.bot_list);
         }
 
         setBackgroundResource(R.drawable.list_selector);
@@ -725,13 +723,6 @@ public class DialogCell extends BaseCell {
             setDrawableBounds(groupDrawable, nameLockLeft, nameLockTop);
             groupDrawable.draw(canvas);
         }
-        /* else if (drawNameBroadcast) {
-            setDrawableBounds(broadcastDrawable, nameLockLeft, nameLockTop);
-            broadcastDrawable.draw(canvas);
-        } else if (drawNameBot) {
-            setDrawableBounds(botDrawable, nameLockLeft, nameLockTop);
-            botDrawable.draw(canvas);
-        } */
 
         if (nameLayout != null) {
             canvas.save();

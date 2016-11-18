@@ -88,13 +88,8 @@ public class Theme {
     public static final int MSG_WEB_PREVIEW_DURATION_TEXT_COLOR = 0xffffffff;
     public static final int MSG_SECRET_TIME_TEXT_COLOR = 0xffe4e2e0;
     public static final int MSG_STICKER_NAME_TEXT_COLOR = 0xffffffff;
-    public static final int MSG_BOT_BUTTON_TEXT_COLOR = 0xffffffff;
-    public static final int MSG_BOT_PROGRESS_COLOR = 0xffffffff;
     public static final int MSG_IN_FORDWARDED_NAME_TEXT_COLOR = 0xff3886c7;
     public static final int MSG_OUT_FORDWARDED_NAME_TEXT_COLOR = 0xff55ab4f;
-    public static final int MSG_IN_VIA_BOT_NAME_TEXT_COLOR = 0xff3a8ccf;
-    public static final int MSG_OUT_VIA_BOT_NAME_TEXT_COLOR = 0xff55ab4f;
-    public static final int MSG_STICKER_VIA_BOT_NAME_TEXT_COLOR = 0xffffffff;
     public static final int MSG_IN_REPLY_LINE_COLOR = 0xff70b4e8;
     public static final int MSG_OUT_REPLY_LINE_COLOR = 0xff88c97b;
     public static final int MSG_STICKER_REPLY_LINE_COLOR = 0xffffffff;
@@ -184,11 +179,9 @@ public class Theme {
     public static Drawable checkDrawable;
     public static Drawable halfCheckDrawable;
     public static Drawable clockDrawable;
-    public static Drawable broadcastDrawable;
     public static Drawable checkMediaDrawable;
     public static Drawable halfCheckMediaDrawable;
     public static Drawable clockMediaDrawable;
-    public static Drawable broadcastMediaDrawable;
     public static Drawable errorDrawable;
     public static Drawable systemDrawable;
     public static Drawable timeBackgroundDrawable;
@@ -202,10 +195,6 @@ public class Theme {
 
     public static Drawable geoInDrawable;
     public static Drawable geoOutDrawable;
-
-    public static Drawable inlineDocDrawable;
-    public static Drawable inlineAudioDrawable;
-    public static Drawable inlineLocationDrawable;
 
     public static Drawable[] contactDrawable = new Drawable[2];
     public static Drawable[][] fileStatesDrawable = new Drawable[10][2];
@@ -241,8 +230,6 @@ public class Theme {
             errorDrawable = context.getResources().getDrawable(R.drawable.msg_warning);
             timeBackgroundDrawable = context.getResources().getDrawable(R.drawable.phototime2_b);
             timeStickerBackgroundDrawable = context.getResources().getDrawable(R.drawable.phototime2);
-            broadcastDrawable = context.getResources().getDrawable(R.drawable.broadcast3);
-            broadcastMediaDrawable = context.getResources().getDrawable(R.drawable.broadcast4);
             systemDrawable = context.getResources().getDrawable(R.drawable.system);
 
             fileStatesDrawable[0][0] = context.getResources().getDrawable(R.drawable.play_g);         // self
@@ -315,10 +302,6 @@ public class Theme {
             cornerInner[1] = context.getResources().getDrawable(R.drawable.corner_in_tl);
             cornerInner[2] = context.getResources().getDrawable(R.drawable.corner_in_br);
             cornerInner[3] = context.getResources().getDrawable(R.drawable.corner_in_bl);
-
-            inlineDocDrawable = context.getResources().getDrawable(R.drawable.bot_file);
-            inlineAudioDrawable = context.getResources().getDrawable(R.drawable.bot_music);
-            inlineLocationDrawable = context.getResources().getDrawable(R.drawable.bot_location);
         }
 
         int color = ApplicationLoader.getServiceMessageColor();

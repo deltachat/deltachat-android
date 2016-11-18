@@ -178,8 +178,6 @@
     <!--group create view-->
     <string name="SendMessageTo">Enviar mensagem para...</string>
     <string name="EnterGroupNamePlaceholder">Digite o nome do grupo</string>
-    <string name="GroupName">Nome do grupo</string>
-    <string name="MembersCount">%1$d/%2$d membros</string>
     <string name="JoinToGroup">Você deseja entrar no chat \'%1$s\'?</string>
     <string name="LinkCopied">Link copiado para área de transferência</string>
     <string name="ShareLink">Compartilhar Link</string>

@@ -162,7 +162,6 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
     private static TextPaint docNamePaint;
     private static Paint docBackPaint;
     private static Paint deleteProgressPaint;
-    private static Paint botProgressPaint;
     private static TextPaint locationTitlePaint;
     private static TextPaint locationAddressPaint;
     private static Paint urlPaint;
@@ -190,7 +189,6 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
     private static TextPaint audioTimePaint;
     private static TextPaint audioTitlePaint;
     private static TextPaint audioPerformerPaint;
-    private static TextPaint botButtonPaint;
     private static TextPaint contactNamePaint;
     private static TextPaint contactPhonePaint;
 
@@ -308,12 +306,6 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
             deleteProgressPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
             deleteProgressPaint.setColor(Theme.MSG_SECRET_TIME_TEXT_COLOR);
 
-            botProgressPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-            botProgressPaint.setColor(Theme.MSG_BOT_PROGRESS_COLOR);
-            botProgressPaint.setStrokeCap(Paint.Cap.ROUND);
-            botProgressPaint.setStyle(Paint.Style.STROKE);
-            botProgressPaint.setStrokeWidth(dp(2));
-
             locationTitlePaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
             locationTitlePaint.setTextSize(dp(15));
             locationTitlePaint.setTypeface(getTypeface("fonts/rmedium.ttf"));
@@ -336,11 +328,6 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
 
             audioPerformerPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
             audioPerformerPaint.setTextSize(dp(15));
-
-            botButtonPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
-            botButtonPaint.setTextSize(dp(15));
-            botButtonPaint.setColor(Theme.MSG_BOT_BUTTON_TEXT_COLOR);
-            botButtonPaint.setTypeface(getTypeface("fonts/rmedium.ttf"));
 
             contactNamePaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
             contactNamePaint.setTextSize(dp(15));
@@ -3697,7 +3684,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                 currentNameString = "";
             }
             CharSequence nameStringFinal = TextUtils.ellipsize(currentNameString.replace('\n', ' '), namePaint, nameWidth - (viaBot ? viaWidth : 0), TextUtils.TruncateAt.END);
-            if (viaBot) {
+            /*if (viaBot) {
                 viaNameWidth = (int) Math.ceil(namePaint.measureText(nameStringFinal, 0, nameStringFinal.length()));
                 if (viaNameWidth != 0) {
                     viaNameWidth += dp(4);
@@ -3720,7 +3707,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                     nameStringFinal = stringBuilder;
                 }
                 nameStringFinal = TextUtils.ellipsize(nameStringFinal, namePaint, nameWidth, TextUtils.TruncateAt.END);
-            }
+            }*/
             try {
                 nameLayout = new StaticLayout(nameStringFinal, namePaint, nameWidth + dp(2), Layout.Alignment.ALIGN_NORMAL, 1.0f, 0.0f, false);
                 if (nameLayout != null && nameLayout.getLineCount() > 0) {

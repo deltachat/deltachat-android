@@ -75,7 +75,7 @@ public class ContextLinkCell extends View implements MediaController.FileDownloa
     private int descriptionY = AndroidUtilities.dp(27);
     private StaticLayout descriptionLayout;
 
-    private TLRPC.BotInlineResult inlineResult;
+    private final TLRPC.BotInlineResult inlineResult = null;
     private TLRPC.Document documentAttach;
     private int documentAttachType;
     private boolean mediaWebpage;
@@ -339,7 +339,7 @@ public class ContextLinkCell extends View implements MediaController.FileDownloa
     public void setGif(TLRPC.Document document, boolean divider) {
         needDivider = divider;
         needShadow = false;
-        inlineResult = null;
+        //inlineResult = null;
         documentAttach = document;
         mediaWebpage = true;
         requestLayout();
@@ -454,7 +454,7 @@ public class ContextLinkCell extends View implements MediaController.FileDownloa
         }
 
         if (!mediaWebpage) {
-            if (inlineResult != null && inlineResult.type.equals("file")) {
+            /*if (inlineResult != null && inlineResult.type.equals("file")) {
                 int w = Theme.inlineDocDrawable.getIntrinsicWidth();
                 int h = Theme.inlineDocDrawable.getIntrinsicHeight();
                 int x = linkImageView.getImageX() + (AndroidUtilities.dp(52) - w) / 2;
@@ -478,7 +478,7 @@ public class ContextLinkCell extends View implements MediaController.FileDownloa
                 canvas.drawRect(linkImageView.getImageX(), linkImageView.getImageY(), linkImageView.getImageX() + AndroidUtilities.dp(52), linkImageView.getImageY() + AndroidUtilities.dp(52), LetterDrawable.paint);
                 Theme.inlineLocationDrawable.setBounds(x, y, x + w, y + h);
                 Theme.inlineLocationDrawable.draw(canvas);
-            } else {
+            } else*/ {
                 letterDrawable.draw(canvas);
             }
         } else {
@@ -590,7 +590,7 @@ public class ContextLinkCell extends View implements MediaController.FileDownloa
     }
 
     public TLRPC.BotInlineResult getResult() {
-        return inlineResult;
+        return null;
     }
 
     @Override

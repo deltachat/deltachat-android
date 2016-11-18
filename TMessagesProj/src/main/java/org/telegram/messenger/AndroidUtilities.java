@@ -504,24 +504,8 @@ public class AndroidUtilities {
         return (cm / 2.54f) * (isX ? displayMetrics.xdpi : displayMetrics.ydpi);
     }
 
-    public static long makeBroadcastId(int id) {
-        return 0x0000000100000000L | ((long)id & 0x00000000FFFFFFFFL);
-    }
-
-    public static int getMyLayerVersion(int layer) {
-        return layer & 0xffff;
-    }
-
     public static int getPeerLayerVersion(int layer) {
         return (layer >> 16) & 0xffff;
-    }
-
-    public static int setMyLayerVersion(int layer, int version) {
-        return layer & 0xffff0000 | version;
-    }
-
-    public static int setPeerLayerVersion(int layer, int version) {
-        return layer & 0x0000ffff | (version << 16);
     }
 
     public static void runOnUIThread(Runnable runnable) {
@@ -793,15 +777,15 @@ public class AndroidUtilities {
                 addIntent.putExtra(Intent.EXTRA_SHORTCUT_ICON, bitmap);
             } else {
                 if (user != null) {
-                    if (user.bot) {
+                    /*if (user.bot) {
                         addIntent.putExtra(Intent.EXTRA_SHORTCUT_ICON_RESOURCE, Intent.ShortcutIconResource.fromContext(ApplicationLoader.applicationContext, R.drawable.book_bot));
-                    } else {
+                    } else*/ {
                         addIntent.putExtra(Intent.EXTRA_SHORTCUT_ICON_RESOURCE, Intent.ShortcutIconResource.fromContext(ApplicationLoader.applicationContext, R.drawable.book_user));
                     }
                 } else if (chat != null) {
-                    if (ChatObject.isChannel(chat) && !chat.megagroup) {
+                    /*if (ChatObject.isChannel(chat) && !chat.megagroup) {
                         addIntent.putExtra(Intent.EXTRA_SHORTCUT_ICON_RESOURCE, Intent.ShortcutIconResource.fromContext(ApplicationLoader.applicationContext, R.drawable.book_channel));
-                    } else {
+                    } else*/ {
                         addIntent.putExtra(Intent.EXTRA_SHORTCUT_ICON_RESOURCE, Intent.ShortcutIconResource.fromContext(ApplicationLoader.applicationContext, R.drawable.book_group));
                     }
                 }
