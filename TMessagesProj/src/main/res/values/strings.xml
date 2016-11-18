@@ -30,7 +30,6 @@
     <string name="CancelRegistration">Cancel registration</string>
     <!--chats view-->
     <string name="Settings">Settings</string>
-    <string name="Contacts">Contacts</string>
     <string name="NewGroup">New group</string>
     <string name="Yesterday">yesterday</string>
     <string name="NoResult">No results</string>
@@ -38,7 +37,6 @@
     <string name="WaitingForNetwork">Waiting for network...</string>
     <string name="Connecting">Connecting...</string>
     <string name="Updating">Updating...</string>
-    <string name="NewSecretChat">New Secret Chat</string>
     <string name="ClearHistory">Delete all messages</string>
     <string name="DeleteChat">Delete chat</string>
     <string name="SelectChat">Select chat</string>
@@ -165,36 +163,25 @@
     <string name="ReplyToUser">Reply to %1$s</string>
     <string name="NotificationMessagesPeopleDisplayOrder">%1$s %2$s</string>
     <!--contacts view-->
-    <string name="SelectContact">Select Contact</string>
     <string name="NoContacts">No contacts yet</string>
-    <string name="InviteText">Hey, let\'s switch to Delta Chat: https://messenger.b44t.com</string>
     <string name="TodayAt">at</string>
     <string name="YesterdayAt">yesterday at</string>
     <string name="Online">online</string>
     <string name="LastSeen">last seen</string>
     <string name="LastSeenDate">last seen</string>
     <string name="LastSeenNow">last seen just now</string>
-    <string name="InviteFriends">Invite Friends</string>
     <string name="GlobalSearch">GLOBAL SEARCH</string>
     <string name="Lately">last seen recently</string>
     <string name="WithinAWeek">last seen within a week</string>
     <string name="WithinAMonth">last seen within a month</string>
     <string name="ALongTimeAgo">last seen a long time ago</string>
-    <string name="NewMessageTitle">New Message</string>
     <!--group create view-->
     <string name="SendMessageTo">Send message to...</string>
-    <string name="SoftUserLimitAlert">You will be able to add more users after you finish creating the group and convert it to a supergroup.</string>
     <string name="EnterGroupNamePlaceholder">Enter group name</string>
     <string name="GroupName">Group name</string>
     <string name="MembersCount">%1$d/%2$d members</string>
     <string name="JoinToGroup">Do you want to join the chat \'%1$s\'?</string>
     <string name="LinkCopied">Link copied to clipboard</string>
-    <string name="InviteToGroupByLink">Invite to Group via Link</string>
-    <string name="InviteLink">Invite Link</string>
-    <string name="RevokeAlert">Are you sure you want to revoke this link? Once the link is revoked, no one will be able to join using it.</string>
-    <string name="RevokeButton">Revoke</string>
-    <string name="RevokeLink">Revoke Link</string>
-    <string name="CopyLink">Copy Link</string>
     <string name="ShareLink">Share Link</string>
     <!--set admins view-->
     <!--group info view-->
@@ -235,7 +222,6 @@
     <string name="StickersRemove">Remove</string>
     <string name="NoStickers">No stickers yet</string>
     <string name="SendSticker">SEND STICKER</string>
-    <string name="TooMuchStickersets">Sorry, you have reached the maximum number of sticker sets.</string>
     <!--settings view-->
     <string name="TextSize">Messages Text Size</string>
     <string name="EnableAnimations">Transition animation</string>
@@ -259,7 +245,6 @@
     <string name="LogOut">Log out</string>
     <string name="NoSound">No sound</string>
     <string name="Default">Default</string>
-    <string name="Support">Support</string>
     <string name="OnlyIfSilent">Only if silent</string>
     <string name="ChatBackground">Chat Background</string>
     <string name="MessagesSettings">Messages</string>
@@ -458,31 +443,8 @@
     <string name="LastSeenContactsMinusPlus">My Contacts (-%1$d, +%2$d)</string>
     <string name="LastSeenNobodyPlus">Nobody (+%1$d)</string>
     <string name="SecurityTitle">Security</string>
-    <string name="DeleteAccountTitle">Account self-destructs</string>
-    <string name="DeleteAccountIfAwayFor">If you\'re away for</string>
-    <string name="DeleteAccountHelp">If you do not log in at least once within this period, your account will be deleted along with all groups, messages and contacts.</string>
     <string name="LastSeenHelp">Change who can see your Last Seen time.</string>
     <string name="LastSeenTitle">Who can see your Last Seen time?</string>
-    <string name="AddExceptions">Add exceptions</string>
-    <string name="CustomHelp">Important: you won\'t be able to see Last Seen times for people with whom you don\'t share your Last Seen time. Approximate last seen will be shown instead (recently, within a week, within a month).</string>
-    <string name="AlwaysShareWith">Always Share With</string>
-    <string name="NeverShareWith">Never Share With</string>
-    <string name="CustomShareSettingsHelp">These settings will override the values above.</string>
-    <string name="AlwaysShareWithTitle">Always Share</string>
-    <string name="AlwaysShareWithPlaceholder">Always share with users...</string>
-    <string name="NeverShareWithTitle">Never Share</string>
-    <string name="NeverShareWithPlaceholder">Never share with users...</string>
-    <string name="RemoveFromListText">Tap and hold on user to delete.</string>
-    <string name="GroupsAndChannels">Groups</string>
-    <string name="WhoCanAddMe">Who can add me to group chats?</string>
-    <string name="WhoCanAddMeInfo">You can restrict who can add you to groups and channels with granular precision.</string>
-    <string name="AlwaysAllow">Always Allow</string>
-    <string name="NeverAllow">Never Allow</string>
-    <string name="AlwaysAllowPlaceholder">Always allow...</string>
-    <string name="NeverAllowPlaceholder">Never allow...</string>
-    <string name="CustomShareInfo">These users will or will not be able to add you to groups and channels regardless of the settings above.</string>
-    <string name="GroupsAndChannelsHelp">Change who can add you to groups and channels.</string>
-    <string name="InviteToGroupError">Sorry, you can\'t add this user to groups because of user\'s privacy settings.</string>
     <string name="CreateGroupError">Sorry, you can\'t create a group with these users because of their privacy settings.</string>
     <!--edit video view-->
     <string name="EditVideo">Edit Video</string>
@@ -502,7 +464,6 @@
     <string name="Add">Add</string>
     <string name="Edit">Edit</string>
     <string name="Send">Send</string>
-    <string name="Call">Call</string>
     <string name="Copy">Copy</string>
     <string name="Delete">Delete</string>
     <string name="Forward">Forward</string>

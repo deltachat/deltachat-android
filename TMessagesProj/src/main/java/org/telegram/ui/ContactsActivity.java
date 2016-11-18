@@ -32,7 +32,6 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
@@ -54,7 +53,6 @@ import org.telegram.messenger.MessagesController;
 import org.telegram.messenger.NotificationCenter;
 import org.telegram.messenger.R;
 import org.telegram.ui.Adapters.ContactsAdapter;
-import org.telegram.ui.Adapters.SearchAdapter;
 import org.telegram.ui.Cells.UserCell;
 import org.telegram.ui.ActionBar.ActionBar;
 import org.telegram.ui.ActionBar.ActionBarMenu;
@@ -81,7 +79,6 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
     private boolean searching;
     private HashMap<Integer, ChipSpan> selectedContacts = new HashMap<>();
     private ArrayList<ChipSpan> allSpans = new ArrayList<>();
-    private SearchAdapter searchListViewAdapter;
 
     private int             do_what = 0;
     public final static int SELECT_CONTACT_FOR_NEW_CHAT   = 1;
@@ -183,17 +180,10 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
                     }
                     ArrayList<Integer> result = new ArrayList<>();
                     result.addAll(selectedContacts.keySet());
-                    /*if (isAlwaysShare || isNeverShare) {
-                        if (delegate != null) {
-                            delegate.didSelectUsers(result);
-                        }
-                        finishFragment();
-                    } else*/ {
-                        Bundle args = new Bundle();
-                        args.putIntegerArrayList("result", result);
-                        args.putInt("chatType", ChatObject.CHAT_TYPE_CHAT);
-                        presentFragment(new GroupCreateFinalActivity(args));
-                    }
+                    Bundle args = new Bundle();
+                    args.putIntegerArrayList("result", result);
+                    args.putInt("chatType", ChatObject.CHAT_TYPE_CHAT);
+                    presentFragment(new GroupCreateFinalActivity(args));
                 }
             }
         });
@@ -210,15 +200,10 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
         }
         item.addSubItem(id_add_contact, LocaleController.getString("NewContactTitle", R.string.NewContactTitle), 0);
 
-        searchListViewAdapter = new SearchAdapter(context, null, false, false, false, false);
-        searchListViewAdapter.setCheckedMap(selectedContacts);
-        searchListViewAdapter.setUseUserCell(true);
-
         listViewAdapter = new ContactsAdapter(context);
         listViewAdapter.setCheckedMap(selectedContacts);
 
 
-        ///////fragmentView = new FrameLayout(context);
         fragmentView = new LinearLayout(context);
 
         LinearLayout linearLayout = (LinearLayout) fragmentView;
@@ -285,9 +270,6 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
                                     selectedContacts.remove(sp.uid);
                                 }
                             }
-                            /*if (!isAlwaysShare && !isNeverShare) {
-                                actionBar.setSubtitle(LocaleController.formatPluralString("Members", selectedContacts.size()));
-                            }*/
                             listView.invalidateViews();
                         } else {
                             search = true;
@@ -301,8 +283,6 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
                             searching = true;
                             searchWas = true;
                             if (listView != null) {
-                                listView.setAdapter(searchListViewAdapter);
-                                searchListViewAdapter.notifyDataSetChanged();
                                 listView.setFastScrollAlwaysVisible(false);
                                 listView.setFastScrollEnabled(false);
                                 listView.setVerticalScrollBarEnabled(true);
@@ -310,12 +290,12 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
                             if (emptyTextView != null) {
                                 emptyTextView.setText(LocaleController.getString("NoResult", R.string.NoResult));
                             }
-                            searchListViewAdapter.searchDialogs(text);
+                            listViewAdapter.search(text);
+                            listViewAdapter.notifyDataSetChanged();
                         } else {
-                            searchListViewAdapter.searchDialogs(null);
+                            listViewAdapter.search(null);
                             searching = false;
                             searchWas = false;
-                            listView.setAdapter(listViewAdapter);
                             listViewAdapter.notifyDataSetChanged();
                             listView.setFastScrollAlwaysVisible(true);
                             listView.setFastScrollEnabled(true);
@@ -422,9 +402,7 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
                             span.uid = user.id;
                             ignoreChange = false;
                         }
-                        //if (!isAlwaysShare && !isNeverShare) {
-                            actionBar.setSubtitle(LocaleController.formatPluralString("Members", selectedContacts.size()));
-                        //}
+                        actionBar.setSubtitle(LocaleController.formatPluralString("Members", selectedContacts.size()));
                         if (searching || searchWas) {
                             ignoreChange = true;
                             SpannableStringBuilder ssb = new SpannableStringBuilder("");
@@ -436,10 +414,9 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
                             userSelectEditText.setSelection(ssb.length());
                             ignoreChange = false;
 
-                            searchListViewAdapter.searchDialogs(null);
+                            listViewAdapter.search(null);
                             searching = false;
                             searchWas = false;
-                            listView.setAdapter(listViewAdapter);
                             listViewAdapter.notifyDataSetChanged();
                             listView.setFastScrollAlwaysVisible(true);
                             listView.setFastScrollEnabled(true);

@@ -30,7 +30,7 @@ public class ContactsAdapter extends BaseFragmentAdapter {
 
     public ContactsAdapter(Context context) {
         mContext = context;
-        contactIds = MrMailbox.MrMailboxGetKnownContacts(MrMailbox.hMailbox);
+        contactIds = MrMailbox.MrMailboxGetKnownContacts(MrMailbox.hMailbox, null);
     }
 
     public void setCheckedMap(HashMap<Integer, ?> map) {
@@ -39,6 +39,10 @@ public class ContactsAdapter extends BaseFragmentAdapter {
 
     public void setIsScrolling(boolean value) {
         scrolling = value;
+    }
+
+    public void search(String query) {
+        contactIds = MrMailbox.MrMailboxGetKnownContacts(MrMailbox.hMailbox, query);
     }
 
     @Override

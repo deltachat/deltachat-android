@@ -30,7 +30,6 @@
     <string name="CancelRegistration">Cancelar registro</string>
     <!--chats view-->
     <string name="Settings">Configurações</string>
-    <string name="Contacts">Contatos</string>
     <string name="NewGroup">Novo Grupo</string>
     <string name="Yesterday">ontem</string>
     <string name="NoResult">Nenhum resultado</string>
@@ -38,7 +37,6 @@
     <string name="WaitingForNetwork">Aguardando rede...</string>
     <string name="Connecting">Conectando...</string>
     <string name="Updating">Atualizando...</string>
-    <string name="NewSecretChat">Novo Chat Secreto</string>
     <string name="ClearHistory">Limpar histórico</string>
     <string name="DeleteChat">Apagar conversa</string>
     <string name="SelectChat">Selecione um Chat</string>
@@ -165,36 +163,25 @@
     <string name="ReplyToUser">Responder para %1$s</string>
     <string name="NotificationMessagesPeopleDisplayOrder">%1$s %2$s</string>
     <!--contacts view-->
-    <string name="SelectContact">Selecionar Contato</string>
     <string name="NoContacts">Ainda não há contatos</string>
-    <string name="InviteText">Ei, vamos mudar para o Delta Chat: https://messenger.b44t.com</string>
     <string name="TodayAt">às</string>
     <string name="YesterdayAt">ontem às</string>
     <string name="Online">online</string>
     <string name="LastSeen">visto</string>
     <string name="LastSeenDate">visto</string>
     <string name="LastSeenNow">visto agora mesmo</string>
-    <string name="InviteFriends">Convidar Amigos</string>
     <string name="GlobalSearch">BUSCA GLOBAL</string>
     <string name="Lately">visto recentemente</string>
     <string name="WithinAWeek">visto na última semana</string>
     <string name="WithinAMonth">visto no último mês</string>
     <string name="ALongTimeAgo">visto há muito tempo</string>
-    <string name="NewMessageTitle">Nova Mensagem</string>
     <!--group create view-->
     <string name="SendMessageTo">Enviar mensagem para...</string>
-    <string name="SoftUserLimitAlert">Você poderá adicionar mais usuários após finalizar a criação do grupo e convertê-lo em um supergrupo.</string>
     <string name="EnterGroupNamePlaceholder">Digite o nome do grupo</string>
     <string name="GroupName">Nome do grupo</string>
     <string name="MembersCount">%1$d/%2$d membros</string>
     <string name="JoinToGroup">Você deseja entrar no chat \'%1$s\'?</string>
     <string name="LinkCopied">Link copiado para área de transferência</string>
-    <string name="InviteToGroupByLink">Convidar para o Grupo via Link</string>
-    <string name="InviteLink">Link de Convite</string>
-    <string name="RevokeAlert">Você tem certeza que deseja desativar o link? Uma vez feito, ninguém conseguirá entrar usando-o.</string>
-    <string name="RevokeButton">Desativar</string>
-    <string name="RevokeLink">Desativar Link</string>
-    <string name="CopyLink">Copiar Link</string>
     <string name="ShareLink">Compartilhar Link</string>
     <!--set admins view-->
     <!--group info view-->
@@ -235,7 +222,6 @@
     <string name="StickersRemove">Remover</string>
     <string name="NoStickers">Nenhum sticker</string>
     <string name="SendSticker">ENVIAR STICKER</string>
-    <string name="TooMuchStickersets">Desculpe, você alcançou o limite máximo de pacotes de sticker.</string>
     <!--settings view-->
     <string name="TextSize">Tamanho do texto nas mensagens</string>
     <string name="EnableAnimations">Permitir Animações</string>
@@ -259,7 +245,6 @@
     <string name="LogOut">Sair</string>
     <string name="NoSound">Sem som</string>
     <string name="Default">Padrão</string>
-    <string name="Support">Suporte</string>
     <string name="OnlyIfSilent">Somente no silencioso </string>
     <string name="ChatBackground">Papel de Parede</string>
     <string name="MessagesSettings">Mensagens</string>
@@ -458,31 +443,8 @@
     <string name="LastSeenContactsMinusPlus">Meus Contatos (-%1$d, +%2$d)</string>
     <string name="LastSeenNobodyPlus">Nenhum (+%1$d)</string>
     <string name="SecurityTitle">Segurança</string>
-    <string name="DeleteAccountTitle">Auto-destruição da conta</string>
-    <string name="DeleteAccountIfAwayFor">Se você estiver inativo por</string>
-    <string name="DeleteAccountHelp">Se você não acessar sua conta ao menos uma vez neste período, sua conta será excluída com seus grupos, mensagens e contatos.</string>
     <string name="LastSeenHelp">Alterar quem pode ver o seu Último Acesso.</string>
     <string name="LastSeenTitle">Quem pode ver o seu Último Acesso?</string>
-    <string name="AddExceptions">Adicionar exceções</string>
-    <string name="CustomHelp">Importante: você não poderá ver quando foi o Último Acesso das pessoas com quem você não compartilha o seu Último Acesso. Você visualizará o Último acesso aproximado (recentemente, dentro de uma semana, dentro de um mês).</string>
-    <string name="AlwaysShareWith">Sempre Mostrar Para</string>
-    <string name="NeverShareWith">Nunca Mostrar Para</string>
-    <string name="CustomShareSettingsHelp">Estas configurações irão substituir os valores anteriores.</string>
-    <string name="AlwaysShareWithTitle">Sempre Mostrar</string>
-    <string name="AlwaysShareWithPlaceholder">Sempre compartilhar para os usuários...</string>
-    <string name="NeverShareWithTitle">Nunca Mostrar</string>
-    <string name="NeverShareWithPlaceholder">Nunca mostrar para os usuários...</string>
-    <string name="RemoveFromListText">Toque e segure no usuário para remover.</string>
-    <string name="GroupsAndChannels">Grupos</string>
-    <string name="WhoCanAddMe">Quem pode me adicionar em grupos?</string>
-    <string name="WhoCanAddMeInfo">Você pode restringir quem pode te adicionar em grupos ou canais com precisão.</string>
-    <string name="AlwaysAllow">Sempre Permitir</string>
-    <string name="NeverAllow">Nunca Permitir</string>
-    <string name="AlwaysAllowPlaceholder">Sempre permitir...</string>
-    <string name="NeverAllowPlaceholder">Nunca permitir...</string>
-    <string name="CustomShareInfo">Esses usuários poderão ou não te adicionar em grupos e canais, dependendo de suas configurações.</string>
-    <string name="GroupsAndChannelsHelp">Alterar quem pode te adicionar em grupos ou canais.</string>
-    <string name="InviteToGroupError">Desculpe, você não pode adicionar esse usuário a grupos devido às configurações de privacidade dele.</string>
     <string name="CreateGroupError">Você não pode criar um grupo com esses usuários devido as configurações de privacidade deles.</string>
     <!--edit video view-->
     <string name="EditVideo">Editar Vídeo</string>
@@ -502,7 +464,6 @@
     <string name="Add">Adicionar</string>
     <string name="Edit">Editar</string>
     <string name="Send">Enviar</string>
-    <string name="Call">Ligar</string>
     <string name="Copy">Copiar</string>
     <string name="Delete">Apagar</string>
     <string name="Forward">Encaminhar</string>

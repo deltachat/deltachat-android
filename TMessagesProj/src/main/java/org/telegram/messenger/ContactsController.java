@@ -119,10 +119,6 @@ public class ContactsController {
         privacyRules = null;
     }
 
-    public String getInviteText() {
-        return /* EDIT BY MR inviteText != null ? inviteText :*/ LocaleController.getString("InviteText", R.string.InviteText);
-    }
-
     public void checkAppAccount() {
         AccountManager am = AccountManager.get(ApplicationLoader.applicationContext);
         Account[] accounts;

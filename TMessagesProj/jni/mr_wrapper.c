@@ -198,9 +198,11 @@ JNIEXPORT jint Java_org_telegram_messenger_MrMailbox_MrMailboxFetch(JNIEnv *env,
 
 /* MrMailbox - handle contacts */
 
-JNIEXPORT jintArray Java_org_telegram_messenger_MrMailbox_MrMailboxGetKnownContacts(JNIEnv *env, jclass c, jlong hMailbox)
+JNIEXPORT jintArray Java_org_telegram_messenger_MrMailbox_MrMailboxGetKnownContacts(JNIEnv *env, jclass c, jlong hMailbox, jstring query)
 {
-	carray* ca = mrmailbox_get_known_contacts((mrmailbox_t*)hMailbox);
+    CHAR_REF(query);
+	    carray* ca = mrmailbox_get_known_contacts((mrmailbox_t*)hMailbox, queryPtr);
+	CHAR_UNREF(query);
 	return carray2jintArray_n_carray_free(env, ca);
 }
 

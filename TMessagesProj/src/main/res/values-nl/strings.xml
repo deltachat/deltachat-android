@@ -30,7 +30,6 @@
     <string name="CancelRegistration">Registratie annuleren</string>
     <!--chats view-->
     <string name="Settings">Instellingen</string>
-    <string name="Contacts">Contacten</string>
     <string name="NewGroup">Nieuwe groep</string>
     <string name="Yesterday">gisteren</string>
     <string name="NoResult">Geen resultaten</string>
@@ -38,7 +37,6 @@
     <string name="WaitingForNetwork">Wachten op netwerk</string>
     <string name="Connecting">Verbinden</string>
     <string name="Updating">Bijwerken</string>
-    <string name="NewSecretChat">Nieuwe geheime chat</string>
     <string name="ClearHistory">Geschiedenis wissen</string>
     <string name="DeleteChat">Chat verwijderen</string>
     <string name="SelectChat">Kies een chat</string>
@@ -165,36 +163,25 @@
     <string name="ReplyToUser">Antwoord op %1$s</string>
     <string name="NotificationMessagesPeopleDisplayOrder">%1$s %2$s</string>
     <!--contacts view-->
-    <string name="SelectContact">Contact kiezen</string>
     <string name="NoContacts">Nog geen contacten</string>
-    <string name="InviteText">Hey, zullen we overstappen op Delta Chat: https://messenger.b44t.com</string>
     <string name="TodayAt">om</string>
     <string name="YesterdayAt">gisteren om</string>
     <string name="Online">online</string>
     <string name="LastSeen">gezien</string>
     <string name="LastSeenDate">gezien</string>
     <string name="LastSeenNow">laatst gezien zojuist</string>
-    <string name="InviteFriends">Vrienden uitnodigen</string>
     <string name="GlobalSearch">WERELDWIJD ZOEKEN</string>
     <string name="Lately">recent gezien</string>
     <string name="WithinAWeek">afgelopen week gezien</string>
     <string name="WithinAMonth">afgelopen maand gezien</string>
     <string name="ALongTimeAgo">lang geleden gezien</string>
-    <string name="NewMessageTitle">Nieuw bericht</string>
     <!--group create view-->
     <string name="SendMessageTo">Bericht versturen naar</string>
-    <string name="SoftUserLimitAlert">Nadat je de groep hebt aangemaakt kun je meer gebruikers toevoegen en omzetten naar een supergroep.</string>
     <string name="EnterGroupNamePlaceholder">Groepsnaam</string>
     <string name="GroupName">Groepsnaam</string>
     <string name="MembersCount">%1$d/%2$d leden</string>
     <string name="JoinToGroup">Wil je lid worden van de groep \"%1$s\"?</string>
     <string name="LinkCopied">Link gekopieerd naar klembord.</string>
-    <string name="InviteToGroupByLink">Uitnodigingslink sturen</string>
-    <string name="InviteLink">Uitnodigingslink</string>
-    <string name="RevokeAlert">Deze link echt intrekken? Na intrekken kan niemand meer lid worden met de oude link.</string>
-    <string name="RevokeButton">Intrekken</string>
-    <string name="RevokeLink">Link intrekken</string>
-    <string name="CopyLink">Link kopiëren</string>
     <string name="ShareLink">Link delen</string>
     <!--set admins view-->
     <!--group info view-->
@@ -235,7 +222,6 @@
     <string name="StickersRemove">Verwijder</string>
     <string name="NoStickers">Nog geen stickers</string>
     <string name="SendSticker">STICKER STUREN</string>
-    <string name="TooMuchStickersets">Je hebt het maximale aantal stickerbundels bereikt.</string>
     <!--settings view-->
     <string name="TextSize">Tekstgrootte berichten</string>
     <string name="EnableAnimations">Animaties</string>
@@ -259,7 +245,6 @@
     <string name="LogOut">Uitloggen</string>
     <string name="NoSound">Geen geluid</string>
     <string name="Default">Standaard</string>
-    <string name="Support">Ondersteuning</string>
     <string name="OnlyIfSilent">Alleen indien stil</string>
     <string name="ChatBackground">Achtergrond kiezen</string>
     <string name="MessagesSettings">Berichten</string>
@@ -458,31 +443,8 @@
     <string name="LastSeenContactsMinusPlus">Mijn contacten (-%1$d, +%2$d)</string>
     <string name="LastSeenNobodyPlus">Niemand (+%1$d)</string>
     <string name="SecurityTitle">Veiligheid</string>
-    <string name="DeleteAccountTitle">Account verwijderen</string>
-    <string name="DeleteAccountIfAwayFor">Indien afwezig voor</string>
-    <string name="DeleteAccountHelp">Als je binnen deze periode niet minimaal één keer ingelogd bent geweest zal je account worden verwijderd, inclusief alle data.</string>
     <string name="LastSeenHelp">Wijzig wie je laatst gezien tijd kan zien.</string>
     <string name="LastSeenTitle">Wie kan mijn laatst gezien tijd zien?</string>
-    <string name="AddExceptions">Uitzonderingen toevoegen</string>
-    <string name="CustomHelp">Let op: van mensen waarmee je je laatst gezien tijd niet deelt is deze voor jou ook niet zichtbaar. In plaats daarvan krijg je tijden bij benadering te zien (recent, afgelopen week, afgelopen maand).</string>
-    <string name="AlwaysShareWith">Altijd delen met</string>
-    <string name="NeverShareWith">Nooit delen met</string>
-    <string name="CustomShareSettingsHelp">Deze instelling overschrijft de bovenstaande.</string>
-    <string name="AlwaysShareWithTitle">Altijd delen</string>
-    <string name="AlwaysShareWithPlaceholder">Altijd delen met gebruikers</string>
-    <string name="NeverShareWithTitle">Nooit delen</string>
-    <string name="NeverShareWithPlaceholder">Nooit delen met gebruikers</string>
-    <string name="RemoveFromListText">Gebruiker vasthouden om te verwijderen.</string>
-    <string name="GroupsAndChannels">Groepen</string>
-    <string name="WhoCanAddMe">Wie kan me toevoegen aan groepchats?</string>
-    <string name="WhoCanAddMeInfo">Je kunt met precisie bepalen wie je aan groepen en kanalen mag toevoegen.</string>
-    <string name="AlwaysAllow">Altijd toestaan</string>
-    <string name="NeverAllow">Nooit toestaan</string>
-    <string name="AlwaysAllowPlaceholder">Altijd toestaan...</string>
-    <string name="NeverAllowPlaceholder">Nooit toestaan...</string>
-    <string name="CustomShareInfo">Deze gebruikers altijd toestaan of verbieden je aan groepen en kanalen toe te voegen.</string>
-    <string name="GroupsAndChannelsHelp">Wijzig wie je aan groepen en kanalen kan toevoegen.</string>
-    <string name="InviteToGroupError">Je kunt deze gebruiker niet toevoegen aan groepen vanwege de privacyinstellingen van deze gebruiker.</string>
     <string name="CreateGroupError">Je kan geen groep maken met deze gebruikers vanwege de privacyinstellingen van deze gebruikers.</string>
     <!--edit video view-->
     <string name="EditVideo">Video bewerken</string>
@@ -502,7 +464,6 @@
     <string name="Add">Toevoegen</string>
     <string name="Edit">Wijzig</string>
     <string name="Send">Stuur</string>
-    <string name="Call">Bellen</string>
     <string name="Copy">Kopieer</string>
     <string name="Delete">Verwijder</string>
     <string name="Forward">Doorsturen</string>

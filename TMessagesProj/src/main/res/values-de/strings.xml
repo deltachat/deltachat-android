@@ -30,7 +30,6 @@
     <string name="CancelRegistration">Registrierung abbrechen</string>
     <!--chats view-->
     <string name="Settings">Einstellungen</string>
-    <string name="Contacts">Kontakte</string>
     <string name="NewGroup">Neue Gruppe</string>
     <string name="Yesterday">gestern</string>
     <string name="NoResult">Keine Ergebnisse</string>
@@ -164,36 +163,25 @@
     <string name="ReplyToUser">%1$s antworten</string>
     <string name="NotificationMessagesPeopleDisplayOrder">%1$s %2$s</string>
     <!--contacts view-->
-    <string name="SelectContact">Kontakt auswählen</string>
     <string name="NoContacts">Noch keine Kontakte</string>
-    <string name="InviteText">Hey, komm auch zu Delta Chat: https://messenger.b44t.com</string>
     <string name="TodayAt">um</string>
     <string name="YesterdayAt">gestern um</string>
     <string name="Online">online</string>
     <string name="LastSeen">zul. online</string>
     <string name="LastSeenDate">zul. online</string>
     <string name="LastSeenNow">zul. online gerade eben</string>
-    <string name="InviteFriends">Freunde einladen</string>
     <string name="GlobalSearch">GLOBALE SUCHE</string>
     <string name="Lately">zuletzt kürzlich gesehen</string>
     <string name="WithinAWeek">innerhalb einer Woche</string>
     <string name="WithinAMonth">innerhalb eines Monats</string>
     <string name="ALongTimeAgo">vor langer Zeit gesehen</string>
-    <string name="NewMessageTitle">Neue Nachricht</string>
     <!--group create view-->
     <string name="SendMessageTo">Sende Nachricht an…</string>
-    <string name="SoftUserLimitAlert">Sobald du diese Gruppe zu einer Supergruppe erweitert hast, kannst du mehr Nutzer einladen.</string>
     <string name="EnterGroupNamePlaceholder">Gruppenname</string>
     <string name="GroupName">Gruppenname</string>
     <string name="MembersCount">%1$d/%2$d Mitglieder</string>
     <string name="JoinToGroup">Möchtest du dem Chat \'%1$s\' beitreten?</string>
     <string name="LinkCopied">Link in die Zwischenablage kopiert</string>
-    <string name="InviteToGroupByLink">Per Link zur Gruppe einladen</string>
-    <string name="InviteLink">Einladungslink</string>
-    <string name="RevokeAlert">Bist du sicher, dass du diesen Link widerrufen willst? Dadurch kann ihn niemand mehr nutzen.</string>
-    <string name="RevokeButton">Widerrufen</string>
-    <string name="RevokeLink">Link widerrufen</string>
-    <string name="CopyLink">Link kopieren</string>
     <string name="ShareLink">Link teilen</string>
     <!--set admins view-->
     <!--group info view-->
@@ -234,7 +222,6 @@
     <string name="StickersRemove">Entfernen</string>
     <string name="NoStickers">Noch keine Sticker</string>
     <string name="SendSticker">STICKER SENDEN</string>
-    <string name="TooMuchStickersets">Leider hast du die maximale Anzahl an Stickerpaketen erreicht.</string>
     <!--settings view-->
     <string name="TextSize">Textgröße für Nachrichten</string>
     <string name="EnableAnimations">Übergänge animieren</string>
@@ -258,7 +245,6 @@
     <string name="LogOut">Abmelden</string>
     <string name="NoSound">Kein Ton</string>
     <string name="Default">Standard</string>
-    <string name="Support">Support</string>
     <string name="OnlyIfSilent">Wenn lautlos</string>
     <string name="ChatBackground">Chat-Hintergrundbild</string>
     <string name="MessagesSettings">Nachrichten</string>
@@ -457,31 +443,8 @@
     <string name="LastSeenContactsMinusPlus">Meine Kontakte (-%1$d, +%2$d)</string>
     <string name="LastSeenNobodyPlus">Niemand (+%1$d)</string>
     <string name="SecurityTitle">Sicherheit</string>
-    <string name="DeleteAccountTitle">Automatische Kontolöschung</string>
-    <string name="DeleteAccountIfAwayFor">Wenn inaktiv für</string>
-    <string name="DeleteAccountHelp">Wenn du dich innerhalb dieser Zeit nicht anmeldest, wird dein Konto mit allen Nachrichten, Gruppen und Kontakten gelöscht.</string>
     <string name="LastSeenHelp">Bearbeite wer deinen Online Status sieht.</string>
     <string name="LastSeenTitle">Wer kann deinen Online Status sehen?</string>
-    <string name="AddExceptions">Ausnahmen hinzufügen</string>
-    <string name="CustomHelp">Wichtig: Du kannst den \"zuletzt gesehen\" Status nur von Personen sehen, mit denen du auch deinen teilst. Ansonsten wird die ungefähre Zeit angezeigt (kürzlich, innerhalb einer Woche, innerhalb eines Monats).</string>
-    <string name="AlwaysShareWith">Immer teilen mit</string>
-    <string name="NeverShareWith">Niemals teilen mit</string>
-    <string name="CustomShareSettingsHelp">Hier kannst du Kontakte hinzufügen, für die eine Ausnahme gemacht werden soll.</string>
-    <string name="AlwaysShareWithTitle">Immer teilen</string>
-    <string name="AlwaysShareWithPlaceholder">Immer teilen mit...</string>
-    <string name="NeverShareWithTitle">Niemals teilen</string>
-    <string name="NeverShareWithPlaceholder">Niemals teilen mit...</string>
-    <string name="RemoveFromListText">Auf Nutzer tippen und halten um zu löschen.</string>
-    <string name="GroupsAndChannels">Gruppen</string>
-    <string name="WhoCanAddMe">Wer kann mich in Gruppen einladen?</string>
-    <string name="WhoCanAddMeInfo">Du kannst bestimmen, wer dich in Gruppen oder Kanäle einladen darf.</string>
-    <string name="AlwaysAllow">Immer erlauben</string>
-    <string name="NeverAllow">Niemals erlauben</string>
-    <string name="AlwaysAllowPlaceholder">Immer erlauben...</string>
-    <string name="NeverAllowPlaceholder">Niemals erlauben...</string>
-    <string name="CustomShareInfo">Hier kannst du Nutzer hinzufügen, für die eine Ausnahme gemacht werden soll.</string>
-    <string name="GroupsAndChannelsHelp">Ändere, wer dich in Gruppen und Kanäle einladen kann.</string>
-    <string name="InviteToGroupError">Du kannst diesen Nutzer nicht hinzufügen, weil er das nicht erlaubt.</string>
     <string name="CreateGroupError">Du kannst mit diesen Nutzern keine Gruppe erstellen, weil sie es nicht erlauben.</string>
     <!--edit video view-->
     <string name="EditVideo">Video bearbeiten</string>
@@ -501,7 +464,6 @@
     <string name="Add">Hinzufügen</string>
     <string name="Edit">Bearbeiten</string>
     <string name="Send">Senden</string>
-    <string name="Call">Anrufen</string>
     <string name="Copy">Kopieren</string>
     <string name="Delete">Löschen</string>
     <string name="Forward">Weiterleiten</string>
@@ -740,7 +702,6 @@
     <string name="AboutThisProgram">Über Delta Chat</string>
     <string name="NotSet">Nicht gesetzt</string>
     <string name="NewChat">Neuer Chat</string>
-    <string name="NewSecretChat">Neuer geheimer Chat</string>
     <string name="ContactPl">_ Kontakte</string>
     <string name="ContactSg">_ Kontakt</string>
     <string name="MemberSg">_ Mitglied</string>
