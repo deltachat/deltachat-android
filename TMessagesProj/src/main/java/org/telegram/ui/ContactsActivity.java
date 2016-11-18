@@ -248,7 +248,7 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
         AndroidUtilities.clearCursorDrawable(userSelectEditText);
         frameLayout.addView(userSelectEditText, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.TOP | Gravity.LEFT, 10, 0, 10, 0));
 
-        userSelectEditText.setHint(LocaleController.getString("SeachUser", R.string.SeachUser);
+        userSelectEditText.setHint(LocaleController.getString("SeachUser", R.string.SeachUser));
         userSelectEditText.setTextIsSelectable(false);
         userSelectEditText.addTextChangedListener(new TextWatcher() {
             @Override
