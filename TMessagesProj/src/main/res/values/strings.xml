@@ -56,11 +56,9 @@
     <string name="Draft">Draft</string>
     <string name="HistoryCleared">History was cleared</string>
     <!--channels-->
-    <string name="NewChannel">New Channel</string>
     <string name="ChannelNotifyMembersInfoOn">Members will be notified when you post</string>
     <string name="ChannelNotifyMembersInfoOff">Members will not be notified when you post</string>
     <!--broadcasts-->
-    <string name="NewBroadcastList">New Broadcast List</string>
     <string name="EnterListName">Enter list name</string>
     <!--audio view-->
     <string name="NoAudio">Please add files to the music library on your device to see them here.</string>
@@ -113,12 +111,7 @@
     <string name="CopyUrl">Copy URL</string>
     <string name="SendItems">Send %1$s</string>
     <string name="OpenUrlAlert">Open url %1$s?</string>
-    <string name="ReportSpam">REPORT SPAM</string>
-    <string name="ReportSpamAndLeave">REPORT SPAM AND LEAVE</string>
     <string name="AddContactChat">ADD CONTACT</string>
-    <string name="ReportSpamAlert">Are you sure you want to report spam from this user?</string>
-    <string name="ReportSpamAlertGroup">Are you sure you want to report spam from this group?</string>
-    <string name="ReportSpamAlertChannel">Are you sure you want to report spam from this channel?</string>
     <string name="NobodyLikesSpam1">Sorry, you can only send messages to mutual contacts at the moment.</string>
     <string name="NobodyLikesSpam2">Sorry, you can only add mutual contacts to groups at the moment.</string>
     <string name="MoreInfo">More info</string>
@@ -223,7 +216,6 @@
     <string name="PhoneWork">Work</string>
     <string name="PhoneOther">Other</string>
     <string name="PhoneMain">Main</string>
-    <string name="NumberUnknown">Unknown</string>
     <string name="Info">Info</string>
     <!--usernames-->
     <string name="Username">Username</string>
@@ -499,8 +491,6 @@
     <string name="SendingVideo">Sending video...</string>
     <string name="CompressVideo">Compress Video</string>
     <!--bot-->
-    <string name="Bot">bot</string>
-    <string name="BotHelp">Help</string>
     <!--button titles-->
     <string name="Next">Next</string>
     <string name="Back">Back</string>
@@ -524,8 +514,6 @@
     <string name="OK">OK</string>
     <string name="Crop">CROP</string>
     <!--messages-->
-    <string name="ActionInviteYou">You joined the group via invite link</string>
-    <string name="ActionInviteUser">un1 joined the group via invite link</string>
     <string name="ActionKickUser">un1 removed un2</string>
     <string name="ActionLeftUser">un1 left the group</string>
     <string name="ActionAddUser">un1 added un2</string>
@@ -543,7 +531,6 @@
     <string name="ActionKickUserYou">un1 removed you</string>
     <string name="ActionAddUserYou">un1 added you</string>
     <string name="ActionAddUserSelf">un1 returned to the group</string>
-    <string name="ActionAddUserSelfMega">un1 joined the group</string>
     <string name="ActionAddUserSelfYou">You returned to the group</string>
     <string name="AttachPhoto">Photo</string>
     <string name="AttachVideo">Video</string>
@@ -554,21 +541,12 @@
     <string name="AttachSticker">Sticker</string>
     <string name="AttachAudio">Voice message</string>
     <string name="FromSelf">Me</string>
-    <string name="ActionTakeScreenshootYou">You took a screenshot!</string>
-    <string name="ActionTakeScreenshoot">un1 took a screenshot!</string>
     <!--Alert messages-->
-    <string name="InvalidPhoneNumber">Invalid phone number</string>
-    <string name="CodeExpired">Code expired, please login again</string>
-    <string name="FloodWait">Too many attempts, please try again later</string>
-    <string name="FloodWaitTime">Too many attempts, please try again in %1$s</string>
     <string name="Loading">Loading...</string>
     <string name="NoPlayerInstalled">You don\'t have a video player, please install one to continue</string>
     <string name="NoMailInstalled">Please send an email to sms@stel.com and tell us about your problem.</string>
     <string name="NoHandleAppInstalled">You don\'t have applications that can handle the file type \'%1$s\', please install one to continue</string>
-    <string name="InviteUser">This user does not have Delta Chat yet, send an invitation?</string>
-    <string name="AreYouSure">Are you sure?</string>
     <string name="AddToTheGroupTitle">Add %1$s to the chat %2$s?</string>
-    <string name="AddToTheGroupForwardCount">Number of last messages to forward:</string>
     <string name="AddToTheGroup">Add %1$s to the group?</string>
     <string name="UserAlreadyInGroup">This user is already in this group</string>
     <string name="ForwardMessagesTo">Forward messages to %1$s?</string>
@@ -582,9 +560,7 @@
     <string name="ShareYouLocationUnableManually">Choose manually</string>
     <string name="ShareYouLocationInline">This bot would like to know your location each time you send it a request. This can be used to provide location-specific results.</string>
     <string name="AreYouSureBlockContact">Are you sure you want to block this contact?</string>
-    <string name="AreYouSureUnblockContact">Are you sure you want to unblock this contact?</string>
     <string name="AreYouSureDeleteContact">Are you sure you want to delete this contact?</string>
-    <string name="AreYouSureSecretChat">Are you sure you want to start a secret chat?</string>
     <string name="AreYouSureRegistration">Are you sure you want to cancel registration?</string>
     <string name="AreYouSureDeleteMessages">Delete %1$s? The messages will also be deleted from the server.</string>
     <string name="SendMessagesToGroup">Send messages to %1$s?</string>
@@ -779,4 +755,5 @@
     <string name="CannotLoadFile">Cannot load file.</string>
     <string name="DefaultStatusText">Sent with my Delta Chat Messenger</string>
     <string name="SubjectPrefix">Instant message</string>
+    <string name="SeachUser">Search user</string>
 </resources>

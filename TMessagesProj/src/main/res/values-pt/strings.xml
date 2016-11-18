@@ -56,11 +56,9 @@
     <string name="Draft">Rascunho</string>
     <string name="HistoryCleared">O histórico foi apagado</string>
     <!--channels-->
-    <string name="NewChannel">Novo Canal</string>
     <string name="ChannelNotifyMembersInfoOn">Os membros serão notificados quando você postar</string>
     <string name="ChannelNotifyMembersInfoOff">Os membros não serão notificados quando você postar</string>
     <!--broadcasts-->
-    <string name="NewBroadcastList">Nova Lista de Transmissão</string>
     <string name="EnterListName">Digite o nome da lista</string>
     <!--audio view-->
     <string name="NoAudio">Por favor, adicione arquivos à biblioteca de música de seu dispositivo para vê-los aqui.</string>
@@ -113,12 +111,7 @@
     <string name="CopyUrl">Copiar URL</string>
     <string name="SendItems">Enviar %1$s</string>
     <string name="OpenUrlAlert">Abrir URL em %1$s?</string>
-    <string name="ReportSpam">REPORTAR SPAM</string>
-    <string name="ReportSpamAndLeave">REPORTAR SPAM E SAIR</string>
     <string name="AddContactChat">ADICIONAR CONTATO</string>
-    <string name="ReportSpamAlert">Você tem certeza que deseja reportar esse usuário por spam?</string>
-    <string name="ReportSpamAlertGroup">Você tem certeza que deseja reportar esse grupo por spam?</string>
-    <string name="ReportSpamAlertChannel">Você tem certeza que deseja reportar esse canal por spam?</string>
     <string name="NobodyLikesSpam1">Desculpe, você pode enviar mensagens somente para contatos mútuos no momento.</string>
     <string name="NobodyLikesSpam2">Desculpe, você só pode adicionar contatos mútuos à grupos no momento.</string>
     <string name="MoreInfo">Mais informações</string>
@@ -223,7 +216,6 @@
     <string name="PhoneWork">Trabalho</string>
     <string name="PhoneOther">Outro</string>
     <string name="PhoneMain">Principal</string>
-    <string name="NumberUnknown">Desconhecido</string>
     <string name="Info">Info</string>
     <!--usernames-->
     <string name="Username">Nome de Usuário</string>
@@ -499,8 +491,6 @@
     <string name="SendingVideo">Enviando vídeo...</string>
     <string name="CompressVideo">Compactar Vídeo</string>
     <!--bot-->
-    <string name="Bot">bot</string>
-    <string name="BotHelp">Ajuda</string>
     <!--button titles-->
     <string name="Next">Próximo</string>
     <string name="Back">Voltar</string>
@@ -524,8 +514,6 @@
     <string name="OK">OK</string>
     <string name="Crop">CORTAR</string>
     <!--messages-->
-    <string name="ActionInviteYou">Você entrou para o grupo via link de convite</string>
-    <string name="ActionInviteUser">un1 entrou para o grupo via link de convite</string>
     <string name="ActionKickUser">un1 removeu un2</string>
     <string name="ActionLeftUser">un1 deixou o grupo</string>
     <string name="ActionAddUser">un1 adicionou un2</string>
@@ -543,7 +531,6 @@
     <string name="ActionKickUserYou">un1 removeu você</string>
     <string name="ActionAddUserYou">un1 adicionou você</string>
     <string name="ActionAddUserSelf">un1 retornou ao grupo</string>
-    <string name="ActionAddUserSelfMega">un1 entrou no grupo</string>
     <string name="ActionAddUserSelfYou">Você retornou ao grupo</string>
     <string name="AttachPhoto">Foto</string>
     <string name="AttachVideo">Vídeo</string>
@@ -554,21 +541,12 @@
     <string name="AttachSticker">Sticker</string>
     <string name="AttachAudio">Mensagem de voz</string>
     <string name="FromSelf">Você</string>
-    <string name="ActionTakeScreenshootYou">Você realizou uma captura da tela!</string>
-    <string name="ActionTakeScreenshoot">un1 realizou uma captura da tela!</string>
     <!--Alert messages-->
-    <string name="InvalidPhoneNumber">Número de telefone inválido</string>
-    <string name="CodeExpired">O código expirou. Por favor, identifique-se novamente.</string>
-    <string name="FloodWait">Muitas tentativas. Por favor, tente novamente mais tarde.</string>
-    <string name="FloodWaitTime">Muitas tentativas, por favor tente novamente em %1$s</string>
     <string name="Loading">Carregando...</string>
     <string name="NoPlayerInstalled">Você não possui um reprodutor de vídeo, instale um para continuar</string>
     <string name="NoMailInstalled">Por favor, envie um email para sms@stel.com e conte-nos sobre seu problema.</string>
     <string name="NoHandleAppInstalled">Você não possui um aplicativo que suporte o tipo de arquivo \'%1$s\', por favor instale um para continuar</string>
-    <string name="InviteUser">Este usuário ainda não possui Delta Chat, deseja enviar um convite?</string>
-    <string name="AreYouSure">Você tem certeza?</string>
     <string name="AddToTheGroupTitle">Adcione %1$s ao chat %2$s?</string>
-    <string name="AddToTheGroupForwardCount">Número de mensagens antigas para encaminhar:</string>
     <string name="AddToTheGroup">Adicionar %1$s no grupo?</string>
     <string name="UserAlreadyInGroup">Este usuário já está neste grupo</string>
     <string name="ForwardMessagesTo">Encaminhar mensagem para %1$s?</string>
@@ -582,9 +560,7 @@
     <string name="ShareYouLocationUnableManually">Escolher manualmente</string>
     <string name="ShareYouLocationInline">Esse bot gostaria de saber sua localização todas as vezes que você enviá-lo uma mensagem. Isso pode ser utilizado para providenciar resultados específicos de localização.</string>
     <string name="AreYouSureBlockContact">Você tem certeza que deseja bloquear este contato?</string>
-    <string name="AreYouSureUnblockContact">Você tem certeza que deseja desbloquear este contato?</string>
     <string name="AreYouSureDeleteContact">Você tem certeza que deseja apagar este contato?</string>
-    <string name="AreYouSureSecretChat">Você tem certeza que deseja começar um chat secreto?</string>
     <string name="AreYouSureRegistration">Você tem certeza que deseja cancelar o registro?</string>
     <string name="AreYouSureDeleteMessages">Você tem certeza que deseja apagar %1$s?</string>
     <string name="SendMessagesToGroup">Enviar mensagens para %1$s?</string>
@@ -740,4 +716,5 @@
     <string name="formatDateAtTime">%1$s às %2$s</string>
     <string name="NewChat">Novo Chat</string>
     <string name="Media">Mídias</string>
+    <string name="SeachUser">Busca</string>
 </resources>

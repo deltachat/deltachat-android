@@ -55,11 +55,9 @@
     <string name="Draft">Entwurf</string>
     <string name="HistoryCleared">Verlauf wurde gelöscht</string>
     <!--channels-->
-    <string name="NewChannel">Neuer Kanal</string>
     <string name="ChannelNotifyMembersInfoOn">Mitglieder werden benachrichtigt</string>
     <string name="ChannelNotifyMembersInfoOff">Mitglieder werden nicht benachrichtigt</string>
     <!--broadcasts-->
-    <string name="NewBroadcastList">Neue Broadcast Liste</string>
     <string name="EnterListName">Listenname</string>
     <!--audio view-->
     <string name="NoAudio">Bitte füge Musikdateien einfach deiner Android Musikbibliothek hinzu, um sie hier zu sehen.</string>
@@ -112,12 +110,7 @@
     <string name="CopyUrl">URL kopieren</string>
     <string name="SendItems">%1$s senden</string>
     <string name="OpenUrlAlert">URL %1$s öffnen?</string>
-    <string name="ReportSpam">SPAM MELDEN</string>
-    <string name="ReportSpamAndLeave">SPAM MELDEN UND VERLASSEN</string>
     <string name="AddContactChat">KONTAKT HINZUFÜGEN</string>
-    <string name="ReportSpamAlert">Sicher, dass du Spam von diesem Nutzer melden willst?</string>
-    <string name="ReportSpamAlertGroup">Sicher, dass du Spam von dieser Gruppe melden willst?</string>
-    <string name="ReportSpamAlertChannel">Sicher. dass du Spam von diesem Kanal melden möchtest?</string>
     <string name="NobodyLikesSpam1">Derzeit kannst du nur Kontakten schreiben, die auch deine Nummer haben.</string>
     <string name="NobodyLikesSpam2">Derzeit kannst du nur Kontakte hinzufügen, die auch deine Nummer haben.</string>
     <string name="MoreInfo">Mehr Infos</string>
@@ -222,7 +215,6 @@
     <string name="PhoneWork">Arbeit</string>
     <string name="PhoneOther">Sonstiges</string>
     <string name="PhoneMain">Hauptnummer</string>
-    <string name="NumberUnknown">Unbekannt</string>
     <string name="Info">Info</string>
     <!--usernames-->
     <string name="Username">Benutzername</string>
@@ -498,8 +490,6 @@
     <string name="SendingVideo">Sende Video...</string>
     <string name="CompressVideo">Video komprimieren</string>
     <!--bot-->
-    <string name="Bot">Bot</string>
-    <string name="BotHelp">Hilfe</string>
     <!--button titles-->
     <string name="Next">Weiter</string>
     <string name="Back">Zurück</string>
@@ -523,8 +513,6 @@
     <string name="OK">OK</string>
     <string name="Crop">SCHNEIDEN</string>
     <!--messages-->
-    <string name="ActionInviteYou">Du bist der Gruppe per Link beigetreten</string>
-    <string name="ActionInviteUser">un1 ist der Gruppe per Link beigetreten</string>
     <string name="ActionKickUser">un1 hat un2 aus der Gruppe entfernt</string>
     <string name="ActionLeftUser">un1 hat die Gruppe verlassen</string>
     <string name="ActionAddUser">un1 hat un2 hinzugefügt</string>
@@ -542,7 +530,6 @@
     <string name="ActionKickUserYou">un1 hat dich aus der Gruppe entfernt</string>
     <string name="ActionAddUserYou">un1 hat dich hinzugefügt</string>
     <string name="ActionAddUserSelf">un1 ist in die Gruppe zurückgekehrt</string>
-    <string name="ActionAddUserSelfMega">un1 ist der Gruppe beigetreten</string>
     <string name="ActionAddUserSelfYou">Du bist in die Gruppe zurückgekehrt</string>
     <string name="AttachPhoto">Bild</string>
     <string name="AttachVideo">Video</string>
@@ -553,21 +540,12 @@
     <string name="AttachSticker">Sticker</string>
     <string name="AttachAudio">Sprachnachricht</string>
     <string name="FromSelf">Ich</string>
-    <string name="ActionTakeScreenshootYou">Du hast ein Bildschirmfoto gemacht!</string>
-    <string name="ActionTakeScreenshoot">un1 hat ein Bildschirmfoto gemacht!</string>
     <!--Alert messages-->
-    <string name="InvalidPhoneNumber">Ungültige Telefonnummer</string>
-    <string name="CodeExpired">Code ist abgelaufen, bitte melde dich erneut an</string>
-    <string name="FloodWait">Zu viele Versuche in zu kurzer Zeit, versuche es bitte später erneut.</string>
-    <string name="FloodWaitTime">Zu viele Versuche, bitte erneut in %1$s versuchen</string>
     <string name="Loading">Lädt…</string>
     <string name="NoPlayerInstalled">Du hast keinen Videoplayer. Bitte installiere einen um fortzufahren.</string>
     <string name="NoMailInstalled">Bitte sende eine Email an sms@stel.com mit einer Beschreibung des Problems.</string>
     <string name="NoHandleAppInstalled">Du hast keine Applikationen, die den Dateityp \'%1$s\' öffnen könnten. Bitte installiere eine entsprechende Anwendung um fortzufahren.</string>
-    <string name="InviteUser">Dieser Benutzer hat noch kein Delta Chat. Möchtest du ihn einladen?</string>
-    <string name="AreYouSure">Bist du sicher?</string>
     <string name="AddToTheGroupTitle">%1$s dem Chat %2$s hinzufügen?</string>
-    <string name="AddToTheGroupForwardCount">Wieviele der letzten Nachrichten willst du weiterleiten?</string>
     <string name="AddToTheGroup">%1$s zur Gruppe hinzufügen?</string>
     <string name="UserAlreadyInGroup">Nutzer befindet sich schon in der Gruppe</string>
     <string name="ForwardMessagesTo">Nachrichten an %1$s weiterleiten?</string>
@@ -581,9 +559,7 @@
     <string name="ShareYouLocationUnableManually">Selbst wählen</string>
     <string name="ShareYouLocationInline">Dieser Bot möchte bei jeder Anfrage deinen Standort wissen. Das kann für standortabhängig aufbereitete Informationen benutzt werden.</string>
     <string name="AreYouSureBlockContact">Diesen Benutzer wirklich blockieren?</string>
-    <string name="AreYouSureUnblockContact">Blockierung für diesen Benutzer wirklich aufheben?</string>
     <string name="AreYouSureDeleteContact">Diesen Kontakt wirklich löschen?</string>
-    <string name="AreYouSureSecretChat">Geheimen Chat starten?</string>
     <string name="AreYouSureRegistration">Bist du dir sicher, dass du die Registrierung abbrechen willst?</string>
     <string name="AreYouSureDeleteMessages">%1$s löschen? Die Nachrichten werden auch auf dem Server gelöscht.</string>
     <string name="SendMessagesToGroup">Nachricht an %1$s senden?</string>
@@ -778,4 +754,5 @@
     <string name="NotYetImplemented">Diese Funktion ist noch nicht eingebaut.</string>
     <string name="DefaultStatusText">Mit meinem Delta Chat Messenger gesendet</string>
     <string name="SubjectPrefix">Sofortnachricht</string>
+    <string name="SeachUser">Benutzer suchen</string>
 </resources>

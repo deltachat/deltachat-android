@@ -86,8 +86,6 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
     private ArrayList<ChipSpan> allSpans = new ArrayList<>();
     private SearchAdapter searchListViewAdapter;
 
-    private String searchHint;
-
     private int             do_what = 0;
     public final static int SELECT_CONTACT_FOR_NEW_CHAT   = 1;
     public final static int SELECT_CONTACTS_FOR_NEW_GROUP = 2;
@@ -124,22 +122,20 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
         if( do_what == SELECT_CONTACT_FOR_NEW_CHAT  )
         {
             title      = LocaleController.getString("NewChat", R.string.NewChat);
-            searchHint = LocaleController.getString("SendMessageTo", R.string.SendMessageTo);
+            subtitle   = LocaleController.getString("SendMessageTo", R.string.SendMessageTo);
         }
         else if( do_what == SELECT_CONTACTS_FOR_NEW_GROUP )
         {
             title      = LocaleController.getString("NewGroup", R.string.NewGroup);
             subtitle   = LocaleController.formatPluralString("Members", 0);
-            searchHint = LocaleController.getString("SendMessageTo", R.string.SendMessageTo);
         }
         else if( do_what == ADD_CONTACTS_TO_GROUP )
         {
-            searchHint = LocaleController.getString("SendMessageTo", R.string.SendMessageTo);;
+            title = LocaleController.getString("AddContact", R.string.AddContact);;
         }
         else if( do_what == SELECT_CONTACT_TO_BLOCK )
         {
             title = LocaleController.getString("BlockContact", R.string.BlockContact);
-            searchHint = title + "...";
         }
 
         return true;
@@ -252,9 +248,7 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
         AndroidUtilities.clearCursorDrawable(userSelectEditText);
         frameLayout.addView(userSelectEditText, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.TOP | Gravity.LEFT, 10, 0, 10, 0));
 
-        if( searchHint != null )  {
-            userSelectEditText.setHint(searchHint);
-        }
+        userSelectEditText.setHint(LocaleController.getString("SeachUser", R.string.SeachUser);
         userSelectEditText.setTextIsSelectable(false);
         userSelectEditText.addTextChangedListener(new TextWatcher() {
             @Override

@@ -56,11 +56,9 @@
     <string name="Draft">Concept</string>
     <string name="HistoryCleared">Geschiedenis gewist</string>
     <!--channels-->
-    <string name="NewChannel">Nieuw kanaal</string>
     <string name="ChannelNotifyMembersInfoOn">Berichtgeving voor leden</string>
     <string name="ChannelNotifyMembersInfoOff">Geen berichtgeving voor leden</string>
     <!--broadcasts-->
-    <string name="NewBroadcastList">Nieuwe verzendlijst</string>
     <string name="EnterListName">Naam van lijst</string>
     <!--audio view-->
     <string name="NoAudio">Voeg bestanden toe aan de muziekbibliotheek op je apparaat om ze hier te zien.</string>
@@ -113,12 +111,7 @@
     <string name="CopyUrl">Link kopiëren</string>
     <string name="SendItems">%1$s versturen</string>
     <string name="OpenUrlAlert">URL %1$s openen?</string>
-    <string name="ReportSpam">SPAM MELDEN</string>
-    <string name="ReportSpamAndLeave">SPAM MELDEN EN VERLATEN</string>
     <string name="AddContactChat">CONTACT TOEVOEGEN</string>
-    <string name="ReportSpamAlert">Spam van deze gebruiker echt melden? </string>
-    <string name="ReportSpamAlertGroup">Spam van deze groep echt melden? </string>
-    <string name="ReportSpamAlertChannel">Spam van dit kanaal echt melden? </string>
     <string name="NobodyLikesSpam1">Je kunt momenteel alleen berichten sturen aan onderlingen contacten.</string>
     <string name="NobodyLikesSpam2">Je kunt momenteel alleen onderlinge contacten aan groepen toevoegen</string>
     <string name="MoreInfo">Meer informatie</string>
@@ -223,7 +216,6 @@
     <string name="PhoneWork">Werk</string>
     <string name="PhoneOther">Overig</string>
     <string name="PhoneMain">Hoofd</string>
-    <string name="NumberUnknown">Onbekend</string>
     <string name="Info">Info</string>
     <!--usernames-->
     <string name="Username">Gebruikersnaam</string>
@@ -499,8 +491,6 @@
     <string name="SendingVideo">Video versturen</string>
     <string name="CompressVideo">Video comprimeren</string>
     <!--bot-->
-    <string name="Bot">bot</string>
-    <string name="BotHelp">Help</string>
     <!--button titles-->
     <string name="Next">Volgende</string>
     <string name="Back">Vorige</string>
@@ -524,8 +514,6 @@
     <string name="OK">OK</string>
     <string name="Crop">BIJSNIJDEN</string>
     <!--messages-->
-    <string name="ActionInviteYou">Je bent nu lid van de groep via uitnodigingslink</string>
-    <string name="ActionInviteUser">un1 is nu lid van de groep via uitnodigingslink</string>
     <string name="ActionKickUser">un1 heeft un2 verwijderd</string>
     <string name="ActionLeftUser">un1 heeft de groep verlaten</string>
     <string name="ActionAddUser">un1 heeft un2 toegevoegd</string>
@@ -543,7 +531,6 @@
     <string name="ActionKickUserYou">un1 heeft je verwijderd</string>
     <string name="ActionAddUserYou">un1 heeft je toegevoegd</string>
     <string name="ActionAddUserSelf">un1 is terug in de groep</string>
-    <string name="ActionAddUserSelfMega">un1 is lid van de groep</string>
     <string name="ActionAddUserSelfYou">Je keerde terug naar de groep</string>
     <string name="AttachPhoto">Foto</string>
     <string name="AttachVideo">Video</string>
@@ -554,21 +541,12 @@
     <string name="AttachSticker">Sticker</string>
     <string name="AttachAudio">Spraakbericht</string>
     <string name="FromSelf">Jij</string>
-    <string name="ActionTakeScreenshootYou">Schermafdruk gemaakt!</string>
-    <string name="ActionTakeScreenshoot">un1 heeft een schermafdruk gemaakt!</string>
     <!--Alert messages-->
-    <string name="InvalidPhoneNumber">Ongeldig telefoonnummer</string>
-    <string name="CodeExpired">Code verlopen. Log opnieuw in.</string>
-    <string name="FloodWait">Te veel pogingen. Probeer het later opnieuw.</string>
-    <string name="FloodWaitTime">Te veel pogingen, probeer het over %1$s opnieuw</string>
     <string name="Loading">Bezig met laden</string>
     <string name="NoPlayerInstalled">Je hebt geen mediaspeler. Installeer een mediaspeler om door te gaan.</string>
     <string name="NoMailInstalled">E-mail ons op sms@stel.com en vertel ons over je probleem.</string>
     <string name="NoHandleAppInstalled">Je hebt geen apps die bestandstype \'%1$s\' kunnen verwerken, gelieve een compatibele app te installeren</string>
-    <string name="InviteUser">Deze gebruiker heeft nog geen Delta Chat. Wil je een uitnodiging sturen?</string>
-    <string name="AreYouSure">Weet je het zeker?</string>
     <string name="AddToTheGroupTitle">%1$s toevoegen aan de groep %2$s?</string>
-    <string name="AddToTheGroupForwardCount">Aantal recente berichten om door te sturen:</string>
     <string name="AddToTheGroup">%1$s toevoegen aan de groep?</string>
     <string name="UserAlreadyInGroup">Gebruiker is al een groepslid</string>
     <string name="ForwardMessagesTo">Berichten doorsturen naar %1$s?</string>
@@ -582,9 +560,7 @@
     <string name="ShareYouLocationUnableManually">Handmatig kiezen</string>
     <string name="ShareYouLocationInline">Deze bot wil toegang tot je locatie voor ieder verzoek dat je stuurt. Dit kan gebruikt worden voor locatiespecifieke resultaten.</string>
     <string name="AreYouSureBlockContact">Weet je zeker dat je deze persoon wilt blokkeren?</string>
-    <string name="AreYouSureUnblockContact">Weet je zeker dat je deze persoon wilt deblokkeren?</string>
     <string name="AreYouSureDeleteContact">Contact echt verwijderen?</string>
-    <string name="AreYouSureSecretChat">Weet je zeker dat je een geheime chat wilt starten?</string>
     <string name="AreYouSureRegistration">Weet je zeker dat je de registratie wilt annuleren?</string>
     <string name="AreYouSureDeleteMessages">%1$s echt verwijderen?</string>
     <string name="SendMessagesToGroup">Berichten naar %1$s versturen?</string>
@@ -740,4 +716,5 @@
     <string name="formatDateAtTime">%1$s om %2$s</string>
     <string name="NewChat">Nieuwe chat</string>
     <string name="Media">Media</string>
+    <string name="SeachUser">Zoeken</string>
 </resources>
