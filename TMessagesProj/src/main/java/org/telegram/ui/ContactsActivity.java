@@ -48,14 +48,11 @@ import org.telegram.messenger.ApplicationLoader;
 import org.telegram.messenger.ChatObject;
 import org.telegram.messenger.LocaleController;
 import org.telegram.messenger.MrMailbox;
-import org.telegram.messenger.UserObject;
 import org.telegram.tgnet.TLRPC;
 import org.telegram.messenger.FileLog;
 import org.telegram.messenger.MessagesController;
 import org.telegram.messenger.NotificationCenter;
 import org.telegram.messenger.R;
-import org.telegram.messenger.Utilities;
-import org.telegram.ui.Adapters.BaseFragmentAdapter;
 import org.telegram.ui.Adapters.ContactsAdapter;
 import org.telegram.ui.Adapters.SearchAdapter;
 import org.telegram.ui.Cells.UserCell;
@@ -131,7 +128,7 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
         }
         else if( do_what == ADD_CONTACTS_TO_GROUP )
         {
-            title = LocaleController.getString("AddContact", R.string.AddContact);;
+            title = LocaleController.getString("AddContact", R.string.AddContact);
         }
         else if( do_what == SELECT_CONTACT_TO_BLOCK )
         {
@@ -395,7 +392,6 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
                                     Bundle args = new Bundle();
                                     args.putInt("chat_id", belonging_chat_id);
                                     presentFragment(new ChatActivity(args), true);
-                                    return;
                                 }
                             }
                         });
