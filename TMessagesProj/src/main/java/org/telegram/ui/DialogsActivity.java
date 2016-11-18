@@ -83,7 +83,6 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
     private DialogsAdapter dialogsAdapter;
     private DialogsSearchAdapter dialogsSearchAdapter;
     private EmptyTextProgressView searchEmptyView;
-    //private ProgressBar progressView; // EDIT BY MR
     private LinearLayout emptyView;
     private ActionBarMenuItem passcodeItem;
     private ImageView floatingButton;
@@ -152,7 +151,6 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
 
         if (!dialogsLoaded) {
             MessagesController.getInstance().loadDialogs(0, 100, true);
-            //ContactsController.getInstance().checkInviteText(); // EDIT BY MR
             dialogsLoaded = true;
         }
         return true;
@@ -204,7 +202,6 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
                 if (listView != null) {
                     if (searchString != null) {
                         listView.setEmptyView(searchEmptyView);
-                        //progressView.setVisibility(View.GONE); // EDIT BY MR
                         emptyView.setVisibility(View.GONE);
                     }
                     if (!onlySelect) {
@@ -230,16 +227,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
                 searchWas = false;
                 if (listView != null) {
                     searchEmptyView.setVisibility(View.GONE);
-                    /* EDIT BY MR
-                    if (MessagesController.getInstance().loadingDialogs && MessagesController.getInstance().dialogs.isEmpty()) {
-                        emptyView.setVisibility(View.GONE);
-                        listView.setEmptyView(progressView);
-                    } else
-                    */
-                    {
-                        //progressView.setVisibility(View.GONE); // EDIT BY MR
-                        listView.setEmptyView(emptyView);
-                    }
+                    listView.setEmptyView(emptyView);
                     if (!onlySelect) {
                         floatingButton.setVisibility(View.VISIBLE);
                         floatingHidden = true;
@@ -268,7 +256,6 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
                     }
                     if (searchEmptyView != null && listView.getEmptyView() != searchEmptyView) {
                         emptyView.setVisibility(View.GONE);
-                        //progressView.setVisibility(View.GONE); // EDIT BY MR
                         searchEmptyView.showTextView();
                         listView.setEmptyView(searchEmptyView);
                     }
@@ -378,11 +365,6 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
                         if (!onlySelect) {
                             dialogsSearchAdapter.putRecentSearch(dialog_id, (TLRPC.Chat) obj);
                         }
-                    } else if (obj instanceof TLRPC.EncryptedChat) {
-                        dialog_id = ((long) ((TLRPC.EncryptedChat) obj).id) << 32;
-                        if (!onlySelect) {
-                            dialogsSearchAdapter.putRecentSearch(dialog_id, (TLRPC.EncryptedChat) obj);
-                        }
                     } else if (obj instanceof MessageObject) {
                         MessageObject messageObject = (MessageObject) obj;
                         dialog_id = messageObject.getDialogId();
@@ -401,32 +383,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
                     didSelectResult(dialog_id, true, false);
                 } else {
                     Bundle args = new Bundle();
-                    /* EDIT BY MR
-                    int lower_part = (int) dialog_id;
-                    int high_id = (int) (dialog_id >> 32);
-                    if (lower_part != 0) {
-                        if (high_id == 1) {
-                            args.putInt("chat_id", lower_part);
-                        } else {
-                            if (lower_part > 0) {
-                                args.putInt("user_id", lower_part);
-                            } else if (lower_part < 0) {
-                                if (message_id != 0) {
-                                    TLRPC.Chat chat = MessagesController.getInstance().getChat(-lower_part);
-                                    if (chat != null && chat.migrated_to != null) {
-                                        args.putInt("migrated_to", lower_part);
-                                        lower_part = -chat.migrated_to.channel_id;
-                                    }
-                                }
-                                args.putInt("chat_id", -lower_part);
-                            }
-                        }
-                    } else {
-                        args.putInt("enc_id", high_id);
-                    }
-                    */
                     args.putInt("chat_id", (int)dialog_id);
-
                     if (message_id != 0) {
                         args.putInt("message_id", message_id);
                     } else {
@@ -445,14 +402,10 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
                         }
                     }
                     if (searchString != null) {
-                        //if (MessagesController.checkCanOpenChat(args, DialogsActivity.this)) {
                             NotificationCenter.getInstance().postNotificationName(NotificationCenter.closeChats);
                             presentFragment(new ChatActivity(args));
-                        //}
                     } else {
-                        //if (MessagesController.checkCanOpenChat(args, DialogsActivity.this)) {
                             presentFragment(new ChatActivity(args));
-                        //}
                     }
                 }
             }
@@ -482,27 +435,6 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
         textView.setGravity(Gravity.CENTER);
         textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
         emptyView.addView(textView, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT));
-
-        /*
-        textView = new TextView(context);
-        String help = LocaleController.getString("NoChatsHelp", R.string.NoChatsHelp);
-        if (AndroidUtilities.isTablet() && !AndroidUtilities.isSmallTablet()) {
-            help = help.replace('\n', ' ');
-        }
-        textView.setText(help);
-        textView.setTextColor(0xff959595);
-        textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 15);
-        textView.setGravity(Gravity.CENTER);
-        textView.setPadding(AndroidUtilities.dp(8), AndroidUtilities.dp(6), AndroidUtilities.dp(8), 0);
-        textView.setLineSpacing(AndroidUtilities.dp(2), 1);
-        emptyView.addView(textView, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT));
-        */
-
-        /* EDIT BY MR
-        progressView = new ProgressBar(context);
-        progressView.setVisibility(View.GONE);
-        frameLayout.addView(progressView, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER));
-        */
 
         floatingButton = new ImageView(context);
         floatingButton.setVisibility(onlySelect ? View.GONE : View.VISIBLE);
@@ -664,18 +596,9 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
             }
         });
 
-        /* EDIT BY MR -- avoid rotating wheel
-        if (MessagesController.getInstance().loadingDialogs && MessagesController.getInstance().dialogs.isEmpty()) {
-            searchEmptyView.setVisibility(View.GONE);
-            emptyView.setVisibility(View.GONE);
-            listView.setEmptyView(progressView);
-        } else
-        */
-        {
-            searchEmptyView.setVisibility(View.GONE);
-            //progressView.setVisibility(View.GONE); // EDIT BY MR
-            listView.setEmptyView(emptyView);
-        }
+        searchEmptyView.setVisibility(View.GONE);
+        listView.setEmptyView(emptyView);
+
         if (searchString != null) {
             actionBar.openSearchField(searchString);
         }
