@@ -42,12 +42,6 @@ public class Theme {
     public static final int ACTION_BAR_WHITE_SELECTOR_COLOR = 0x40ffffff;
     public static final int ACTION_BAR_AUDIO_SELECTOR_COLOR = 0x2f000000;
     public static final int ACTION_BAR_MODE_SELECTOR_COLOR = 0xfff0f0f0;
-    public static final int ACTION_BAR_BLUE_SELECTOR_COLOR = 0xff4981ad;
-    public static final int ACTION_BAR_CYAN_SELECTOR_COLOR = 0xff39849d;
-    public static final int ACTION_BAR_GREEN_SELECTOR_COLOR = 0xff48953d;
-    public static final int ACTION_BAR_ORANGE_SELECTOR_COLOR = 0xffe67429;
-    public static final int ACTION_BAR_RED_SELECTOR_COLOR = 0xffbc4b41;
-    public static final int ACTION_BAR_VIOLET_SELECTOR_COLOR = 0xff735fbe;
 
     public static final int ATTACH_SHEET_TEXT_COLOR = 0xff757575;
 
@@ -186,7 +180,6 @@ public class Theme {
     public static Drawable systemDrawable;
     public static Drawable timeBackgroundDrawable;
     public static Drawable timeStickerBackgroundDrawable;
-    public static Drawable[] clockChannelDrawable = new Drawable[2];
 
     public static Drawable[] cornerOuter = new Drawable[4];
     public static Drawable[] cornerInner = new Drawable[4];
@@ -225,8 +218,6 @@ public class Theme {
             checkMediaDrawable = context.getResources().getDrawable(R.drawable.msg_check_w);
             halfCheckMediaDrawable = context.getResources().getDrawable(R.drawable.msg_halfcheck_w);
             clockMediaDrawable = context.getResources().getDrawable(R.drawable.msg_clock_photo);
-            clockChannelDrawable[0] = context.getResources().getDrawable(R.drawable.msg_clock2);
-            clockChannelDrawable[1] = context.getResources().getDrawable(R.drawable.msg_clock2_s);
             errorDrawable = context.getResources().getDrawable(R.drawable.msg_warning);
             timeBackgroundDrawable = context.getResources().getDrawable(R.drawable.phototime2_b);
             timeStickerBackgroundDrawable = context.getResources().getDrawable(R.drawable.phototime2);

@@ -560,10 +560,6 @@ public class TLRPC {
 		public boolean mutual;
 	}
 
-    public static class InputChannel extends TLObject {
-        public int channel_id;
-    }
-
 	public static class ChatParticipants extends TLObject {
 		public int flags;
 		public int chat_id;
@@ -587,9 +583,9 @@ public class TLRPC {
 		public int date;
 		public int version;
 		public boolean editor;
-		public boolean broadcast;
+		public final boolean broadcast = false;
 		public boolean verified;
-		public boolean megagroup;
+		public final boolean megagroup = false;
 		public boolean left;
 		public String username;
 		public boolean restricted;
@@ -597,7 +593,6 @@ public class TLRPC {
 		public boolean signatures;
 		public String restriction_reason;
 		public boolean min;
-		public InputChannel migrated_to;
 		public String address;
 	}
 

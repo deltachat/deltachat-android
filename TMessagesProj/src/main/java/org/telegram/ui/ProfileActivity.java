@@ -250,7 +250,6 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                 return super.onTouchEvent(event);
             }
         };
-        actionBar.setItemsBackgroundColor(AvatarDrawable.getButtonColorForId(user_id != 0 || ChatObject.isChannel(chat_id) && !currentChat.megagroup ? 5 : chat_id));
         actionBar.setBackButtonDrawable(new BackDrawable(false));
         actionBar.setCastShadows(false);
         actionBar.setAddToContainer(false);

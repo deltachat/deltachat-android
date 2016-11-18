@@ -496,9 +496,9 @@ public class MessagesController implements NotificationCenter.NotificationCenter
                 if (!fromCache) {
                     oldChat.title = chat.title;
                     oldChat.photo = chat.photo;
-                    oldChat.broadcast = chat.broadcast;
+                    //oldChat.broadcast = chat.broadcast;
                     oldChat.verified = chat.verified;
-                    oldChat.megagroup = chat.megagroup;
+                    //oldChat.megagroup = chat.megagroup;
                     oldChat.democracy = chat.democracy;
                     if (chat.username != null) {
                         oldChat.username = chat.username;
@@ -523,9 +523,9 @@ public class MessagesController implements NotificationCenter.NotificationCenter
                 chat.min = false;
                 chat.title = oldChat.title;
                 chat.photo = oldChat.photo;
-                chat.broadcast = oldChat.broadcast;
+                //chat.broadcast = oldChat.broadcast;
                 chat.verified = oldChat.verified;
-                chat.megagroup = oldChat.megagroup;
+                //chat.megagroup = oldChat.megagroup;
                 chat.democracy = oldChat.democracy;
                 if (oldChat.username != null) {
                     chat.username = oldChat.username;
@@ -1052,14 +1052,14 @@ public class MessagesController implements NotificationCenter.NotificationCenter
                         dialogsGroupsOnly.add(d);
                     }
                 } else*/ if (lower_id < 0) {
-                    if (chatsDict != null) {
+                    /*if (chatsDict != null) {
                         TLRPC.Chat chat = chatsDict.get(-lower_id);
                         if (chat != null && chat.migrated_to != null) {
                             dialogs.remove(a);
                             a--;
                             continue;
                         }
-                    }
+                    }*/
                     dialogsGroupsOnly.add(d);
                 }
             }

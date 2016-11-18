@@ -661,12 +661,12 @@ public class DialogCell extends BaseCell {
             } else {
                 if (lower_id < 0) {
                     chat = MessagesController.getInstance().getChat(-lower_id);
-                    if (!isDialogCell && chat != null && chat.migrated_to != null) {
+                    /*if (!isDialogCell && chat != null && chat.migrated_to != null) {
                         TLRPC.Chat chat2 = MessagesController.getInstance().getChat(chat.migrated_to.channel_id);
                         if (chat2 != null) {
                             chat = chat2;
                         }
-                    }
+                    }*/
                 } else {
                     user = MessagesController.getInstance().getUser(lower_id);
                 }
