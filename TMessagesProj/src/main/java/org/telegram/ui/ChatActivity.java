@@ -859,6 +859,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                         public void run() {
                             searchItem.getSearchField().requestFocus();
                             AndroidUtilities.showKeyboard(searchItem.getSearchField());
+                            Toast.makeText(getParentActivity(), LocaleController.getString("NotYetImplemented", R.string.NotYetImplemented), Toast.LENGTH_LONG).show();
                         }
                     }, 300);
                 }
@@ -6246,17 +6247,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                             items.add(LocaleController.getString("AddToStickers", R.string.AddToStickers));
                             options.add(9);
                         } else if (type == 8) {
-                            TLRPC.User user = MessagesController.getInstance().getUser(selectedObject.messageOwner.media.user_id);
-                            if (user != null && user.id != UserConfig.getClientUserId() && ContactsController.getInstance().contactsDict.get(user.id) == null) {
-                                items.add(LocaleController.getString("AddContactTitle", R.string.AddContactTitle));
-                                options.add(15);
-                            }
-                            if (selectedObject.messageOwner.media.phone_number != null || selectedObject.messageOwner.media.phone_number.length() != 0) {
-                                items.add(LocaleController.getString("Copy", R.string.Copy));
-                                options.add(16);
-                                items.add(LocaleController.getString("Call", R.string.Call));
-                                options.add(17);
-                            }
+                            // type=8=contact (?)
                         }
                         items.add(LocaleController.getString("Forward", R.string.Forward));
                         options.add(2);

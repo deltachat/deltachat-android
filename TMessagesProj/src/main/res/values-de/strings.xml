@@ -206,7 +206,7 @@
     <!--contact info view-->
     <string name="ShareContact">Teilen</string>
     <string name="AddContact">Hinzufügen</string>
-    <string name="AddContactTitle">Benutzer hinzufügen</string>
+    <string name="NewContactTitle">Neuer Benutzer</string>
     <string name="BlockContact">Benutzer blockieren</string>
     <string name="EditContact">Bearbeiten</string>
     <string name="DeleteContact">Löschen</string>

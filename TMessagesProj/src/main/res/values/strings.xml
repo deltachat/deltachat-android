@@ -31,7 +31,7 @@
     <!--chats view-->
     <string name="Settings">Settings</string>
     <string name="Contacts">Contacts</string>
-    <string name="NewGroup">New Group</string>
+    <string name="NewGroup">New group</string>
     <string name="Yesterday">yesterday</string>
     <string name="NoResult">No results</string>
     <string name="NoChats">No chats yet.</string>
@@ -41,7 +41,7 @@
     <string name="NewSecretChat">New Secret Chat</string>
     <string name="ClearHistory">Delete all messages</string>
     <string name="DeleteChat">Delete chat</string>
-    <string name="SelectChat">Select Chat</string>
+    <string name="SelectChat">Select chat</string>
     <string name="PhotoTip">Tap and hold to view</string>
     <string name="SearchMessages">MESSAGES</string>
     <string name="Search">Search</string>
@@ -207,7 +207,7 @@
     <!--contact info view-->
     <string name="ShareContact">Share</string>
     <string name="AddContact">Add</string>
-    <string name="AddContactTitle">Add contact</string>
+    <string name="NewContactTitle">New contact</string>
     <string name="BlockContact">Block contact</string>
     <string name="EditContact">Edit</string>
     <string name="DeleteContact">Delete</string>

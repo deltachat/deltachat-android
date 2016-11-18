@@ -173,7 +173,7 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
                 {
                     Bundle args = new Bundle();
                     args.putInt("do_what", do_what==SELECT_CONTACTS_FOR_NEW_GROUP? SELECT_CONTACT_FOR_NEW_CHAT : SELECT_CONTACTS_FOR_NEW_GROUP);
-                    presentFragment(new ContactsActivity(args), true);
+                    presentFragment(new ContactsActivity(args), true /*removeLast*/, true /*forceWithoutAnimation*/);
                 }
                 else if( id == id_add_contact )
                 {
@@ -211,7 +211,7 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
         if (do_what == SELECT_CONTACT_FOR_NEW_CHAT || do_what == SELECT_CONTACTS_FOR_NEW_GROUP) {
             item.addSubItem(id_toggle, do_what == SELECT_CONTACT_FOR_NEW_CHAT ? LocaleController.getString("NewGroup", R.string.NewGroup) : LocaleController.getString("NewChat", R.string.NewChat), 0);
         }
-        item.addSubItem(id_add_contact, LocaleController.getString("AddContactTitle", R.string.AddContactTitle), 0);
+        item.addSubItem(id_add_contact, LocaleController.getString("NewContactTitle", R.string.NewContactTitle), 0);
 
         searchListViewAdapter = new SearchAdapter(context, null, false, false, false, false);
         searchListViewAdapter.setCheckedMap(selectedContacts);

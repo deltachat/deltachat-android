@@ -207,7 +207,7 @@
     <!--contact info view-->
     <string name="ShareContact">Condividi</string>
     <string name="AddContact">Aggiungi</string>
-    <string name="AddContactTitle">Aggiungi contatto</string>
+    <string name="NewContactTitle">Aggiungi contatto</string>
     <string name="BlockContact">Blocca</string>
     <string name="EditContact">Modifica</string>
     <string name="DeleteContact">Elimina</string>
