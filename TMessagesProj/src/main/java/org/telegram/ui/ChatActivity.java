@@ -1328,17 +1328,8 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         addToContactsButton.setMaxLines(1);
         addToContactsButton.setPadding(AndroidUtilities.dp(4), 0, AndroidUtilities.dp(4), 0);
         addToContactsButton.setGravity(Gravity.CENTER);
-        addToContactsButton.setText(LocaleController.getString("AddContactChat", R.string.AddContactChat));
+        addToContactsButton.setText("foo bar");
         reportSpamView.addView(addToContactsButton, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.MATCH_PARENT, 0.5f, Gravity.LEFT | Gravity.TOP, 0, 0, 0, AndroidUtilities.dp(1)));
-        addToContactsButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Bundle args = new Bundle();
-                args.putInt("user_id", currentUser.id);
-                args.putBoolean("addContact", true);
-                presentFragment(new ContactAddActivity(args));
-            }
-        });
 
         reportSpamContainer = new FrameLayout(context);
         reportSpamView.addView(reportSpamContainer, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.MATCH_PARENT, 1.0f, Gravity.LEFT | Gravity.TOP, 0, 0, 0, AndroidUtilities.dp(1)));
@@ -5678,40 +5669,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 MediaController.SearchImage searchImage = MessagesController.getInstance().saveGif(selectedObject.getDocument());
                 showGifHint();
                 chatActivityEnterView.addRecentGif(searchImage);
-                break;
-            }
-            case 12: {
-                // was: edit messages
-                break;
-            }
-            case 13: {
-                // was: pinning
-                break;
-            }
-            case 14: {
-                // was: unpinning
-                break;
-            }
-            case 15: {
-                Bundle args = new Bundle();
-                args.putInt("user_id", selectedObject.messageOwner.media.user_id);
-                args.putString("phone", selectedObject.messageOwner.media.phone_number);
-                args.putBoolean("addContact", true);
-                presentFragment(new ContactAddActivity(args));
-                break;
-            }
-            case 16: {
-                AndroidUtilities.addToClipboard(selectedObject.messageOwner.media.phone_number);
-                break;
-            }
-            case 17: {
-                try {
-                    Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + selectedObject.messageOwner.media.phone_number));
-                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    getParentActivity().startActivityForResult(intent, 500);
-                } catch (Exception e) {
-                    FileLog.e("tmessages", e);
-                }
                 break;
             }
         }

@@ -520,8 +520,8 @@
     <string name="ShareYouLocationUnable">App was unable to determine your current location</string>
     <string name="ShareYouLocationUnableManually">Choose manually</string>
     <string name="ShareYouLocationInline">This bot would like to know your location each time you send it a request. This can be used to provide location-specific results.</string>
-    <string name="AreYouSureBlockContact">Are you sure you want to block this contact?</string>
-    <string name="AreYouSureDeleteContact">Are you sure you want to delete this contact?</string>
+    <string name="AreYouSureBlockContact">Are you sure you want to block this user?</string>
+    <string name="AreYouSureDeleteContact">Are you sure you want to delete this user?</string>
     <string name="AreYouSureRegistration">Are you sure you want to cancel registration?</string>
     <string name="AreYouSureDeleteMessages">Delete %1$s? The messages will also be deleted from the server.</string>
     <string name="SendMessagesToGroup">Send messages to %1$s?</string>
@@ -717,4 +717,6 @@
     <string name="DefaultStatusText">Sent with my Delta Chat Messenger</string>
     <string name="SubjectPrefix">Instant message</string>
     <string name="SeachUser">Search user</string>
+    <string name="Name" >Name</string>
+    <string name="EmailAddress">E-mail address</string>
 </resources>

@@ -40,7 +40,6 @@ import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import org.telegram.messenger.AndroidUtilities;
 import org.telegram.messenger.ApplicationLoader;
@@ -171,7 +170,9 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
                 }
                 else if( id == id_add_contact )
                 {
-                    Toast.makeText(getParentActivity(), LocaleController.getString("NotYetImplemented", R.string.NotYetImplemented), Toast.LENGTH_LONG).show();
+                    Bundle args = new Bundle();
+                    args.putInt("do_what", ContactAddActivity.CREATE_CONTACT);
+                    presentFragment(new ContactAddActivity(args));
                 }
                 else if( id == id_done_button )
                 {

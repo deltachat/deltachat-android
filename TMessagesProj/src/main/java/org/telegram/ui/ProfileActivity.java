@@ -121,7 +121,6 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
 
     private TLRPC.Chat currentChat;
 
-    private final static int add_contact = 1;
     private final static int block_contact = 2;
     private final static int delete_contact = 5;
     private final static int invite_to_group = 9;
@@ -289,13 +288,6 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                         builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
                         showDialog(builder.create());
                     }
-
-                } else if (id == add_contact) {
-                    TLRPC.User user = MessagesController.getInstance().getUser(user_id);
-                    Bundle args = new Bundle();
-                    args.putInt("user_id", user.id);
-                    args.putBoolean("addContact", true);
-                    presentFragment(new ContactAddActivity(args));
                 } else if (id == delete_contact) {
                     final TLRPC.User user = MessagesController.getInstance().getUser(user_id);
                     if (user == null || getParentActivity() == null) {
@@ -416,7 +408,10 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                     presentFragment(new ProfileNotificationsActivity(args));
                 }
                 else if(position==changeNameRow) {
-                    Toast.makeText(getParentActivity(), LocaleController.getString("NotYetImplemented", R.string.NotYetImplemented), Toast.LENGTH_LONG).show();
+                    Bundle args = new Bundle();
+                    args.putInt("do_what", ContactAddActivity.EDIT_NAME);
+                    args.putInt("user_id", user_id);
+                    presentFragment(new ContactAddActivity(args));
                 }
                 else if(position==startChatRow) {
                     int belonging_chat_id = MrMailbox.MrMailboxGetChatIdByContactId(MrMailbox.hMailbox, user_id);

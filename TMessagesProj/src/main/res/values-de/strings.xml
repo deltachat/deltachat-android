@@ -521,7 +521,7 @@
     <string name="ShareYouLocationUnableManually">Selbst wählen</string>
     <string name="ShareYouLocationInline">Dieser Bot möchte bei jeder Anfrage deinen Standort wissen. Das kann für standortabhängig aufbereitete Informationen benutzt werden.</string>
     <string name="AreYouSureBlockContact">Diesen Benutzer wirklich blockieren?</string>
-    <string name="AreYouSureDeleteContact">Diesen Kontakt wirklich löschen?</string>
+    <string name="AreYouSureDeleteContact">Diesen Benutzer wirklich löschen?</string>
     <string name="AreYouSureRegistration">Bist du dir sicher, dass du die Registrierung abbrechen willst?</string>
     <string name="AreYouSureDeleteMessages">%1$s löschen? Die Nachrichten werden auch auf dem Server gelöscht.</string>
     <string name="SendMessagesToGroup">Nachricht an %1$s senden?</string>
@@ -716,4 +716,6 @@
     <string name="DefaultStatusText">Mit meinem Delta Chat Messenger gesendet</string>
     <string name="SubjectPrefix">Sofortnachricht</string>
     <string name="SeachUser">Benutzer suchen</string>
+    <string name="Name">Name</string>
+    <string name="EmailAddress">E-Mail-Adresse</string>
 </resources>
