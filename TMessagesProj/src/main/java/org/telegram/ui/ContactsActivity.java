@@ -111,6 +111,7 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
         super.onFragmentCreate();
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.contactsDidLoaded);
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.updateInterfaces);
+        NotificationCenter.getInstance().addObserver(this, NotificationCenter.chatDidCreated);
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.closeChats);
 
         if( do_what == SELECT_CONTACT_FOR_NEW_CHAT  )
@@ -140,6 +141,7 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
         super.onFragmentDestroy();
         NotificationCenter.getInstance().removeObserver(this, NotificationCenter.contactsDidLoaded);
         NotificationCenter.getInstance().removeObserver(this, NotificationCenter.updateInterfaces);
+        NotificationCenter.getInstance().removeObserver(this, NotificationCenter.chatDidCreated);
         NotificationCenter.getInstance().removeObserver(this, NotificationCenter.closeChats);
         delegate = null;
     }
@@ -517,6 +519,8 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
                 updateVisibleRows(mask);
             }
         } else if (id == NotificationCenter.closeChats) {
+            removeSelfFromStack();
+        } else if (id == NotificationCenter.chatDidCreated) {
             removeSelfFromStack();
         }
     }

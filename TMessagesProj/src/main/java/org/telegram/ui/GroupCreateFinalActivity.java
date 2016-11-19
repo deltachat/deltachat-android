@@ -9,7 +9,6 @@
 package org.telegram.ui;
 
 import android.app.AlertDialog;
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -32,9 +31,8 @@ import android.widget.Toast;
 import org.telegram.messenger.AndroidUtilities;
 import org.telegram.messenger.ChatObject;
 import org.telegram.messenger.LocaleController;
-import org.telegram.tgnet.ConnectionsManager;
+import org.telegram.messenger.MrMailbox;
 import org.telegram.tgnet.TLRPC;
-import org.telegram.messenger.FileLog;
 import org.telegram.messenger.MessagesController;
 import org.telegram.messenger.NotificationCenter;
 import org.telegram.messenger.R;
@@ -61,10 +59,7 @@ public class GroupCreateFinalActivity extends BaseFragment implements Notificati
     private ArrayList<Integer> selectedContacts;
     private BackupImageView avatarImage;
     private AvatarDrawable avatarDrawable;
-    private boolean createAfterUpload;
-    private boolean donePressed;
     private AvatarUpdater avatarUpdater = new AvatarUpdater();
-    private ProgressDialog progressDialog = null;
     private String nameToSet = null;
     private int chatType = ChatObject.CHAT_TYPE_CHAT;
 
@@ -93,22 +88,7 @@ public class GroupCreateFinalActivity extends BaseFragment implements Notificati
             }
         }
         if (!usersToLoad.isEmpty()) {
-            //final Semaphore semaphore = new Semaphore(0);
             final ArrayList<TLRPC.User> users = new ArrayList<>();
-            /*
-            MessagesStorage.getInstance().getStorageQueue().postRunnable(new Runnable() {
-                @Override
-                public void run() {
-                    users.addAll(MessagesStorage.getInstance().getUsers(usersToLoad));
-                    semaphore.release();
-                }
-            });
-            */
-            /*try {
-                semaphore.acquire();
-            } catch (Exception e) {
-                FileLog.e("messenger", e);
-            }*/
             if (usersToLoad.size() != users.size()) {
                 return false;
             }
@@ -144,32 +124,20 @@ public class GroupCreateFinalActivity extends BaseFragment implements Notificati
     public View createView(Context context) {
         actionBar.setBackButtonImage(R.drawable.ic_ab_back);
         actionBar.setAllowOverlayTitle(true);
-        /*if (chatType == ChatObject.CHAT_TYPE_BROADCAST) {
-            actionBar.setTitle(LocaleController.getString("NewBroadcastList", R.string.NewBroadcastList));
-        } else*/ {
-            actionBar.setTitle(LocaleController.getString("NewGroup", R.string.NewGroup));
-        }
-
+        actionBar.setTitle(LocaleController.getString("NewGroup", R.string.NewGroup));
         actionBar.setActionBarMenuOnItemClick(new ActionBar.ActionBarMenuOnItemClick() {
             @Override
             public void onItemClick(int id) {
                 if (id == -1) {
                     finishFragment();
                 } else if (id == done_button) {
-                    if (donePressed) {
-                        return;
-                    }
                     if (nameTextView.getText().length() == 0) {
                         return;
                     }
-                    donePressed = true;
-
-                    /*if (chatType == ChatObject.CHAT_TYPE_BROADCAST) {
-                        MessagesController.getInstance().createChat(nameTextView.getText().toString(), selectedContacts, null, chatType, GroupCreateFinalActivity.this);
-                    } else*/ {
-                        if (avatarUpdater.uploadingAvatar != null) {
-                            createAfterUpload = true;
-                        } else {
+                    Toast.makeText(getParentActivity(), LocaleController.getString("NotYetImplemented", R.string.NotYetImplemented), Toast.LENGTH_LONG).show();
+                    return;
+                    /*NotificationCenter.getInstance().postNotificationName(NotificationCenter.chatDidCreated, chat_id);
+                    {
                             progressDialog = new ProgressDialog(getParentActivity());
                             progressDialog.setMessage(LocaleController.getString("Loading", R.string.Loading));
                             progressDialog.setCanceledOnTouchOutside(false);
@@ -190,8 +158,8 @@ public class GroupCreateFinalActivity extends BaseFragment implements Notificati
                                 }
                             });
                             progressDialog.show();
-                        }
                     }
+                    */
                 }
             }
         });
@@ -213,7 +181,7 @@ public class GroupCreateFinalActivity extends BaseFragment implements Notificati
 
         avatarImage = new BackupImageView(context);
         avatarImage.setRoundRadius(AndroidUtilities.dp(32));
-        avatarDrawable.setInfoByName(null);
+        avatarDrawable.setInfoByName("?");
         avatarImage.setImageDrawable(avatarDrawable);
         frameLayout.addView(avatarImage);
         FrameLayout.LayoutParams layoutParams1 = (FrameLayout.LayoutParams) avatarImage.getLayoutParams();
@@ -225,7 +193,7 @@ public class GroupCreateFinalActivity extends BaseFragment implements Notificati
         layoutParams1.rightMargin = LocaleController.isRTL ? AndroidUtilities.dp(16) : 0;
         layoutParams1.gravity = Gravity.TOP | (LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT);
         avatarImage.setLayoutParams(layoutParams1);
-        /*if (chatType != ChatObject.CHAT_TYPE_BROADCAST)*/ {
+        {
             avatarDrawable.setDrawPhoto(true);
             avatarImage.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -288,7 +256,7 @@ public class GroupCreateFinalActivity extends BaseFragment implements Notificati
         layoutParams1.rightMargin = LocaleController.isRTL ? AndroidUtilities.dp(96) : AndroidUtilities.dp(16);
         layoutParams1.gravity = Gravity.CENTER_VERTICAL;
         nameTextView.setLayoutParams(layoutParams1);
-        /*if (chatType != ChatObject.CHAT_TYPE_BROADCAST)*/ {
+        {
             nameTextView.addTextChangedListener(new TextWatcher() {
                 @Override
                 public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -302,14 +270,16 @@ public class GroupCreateFinalActivity extends BaseFragment implements Notificati
 
                 @Override
                 public void afterTextChanged(Editable s) {
-                    avatarDrawable.setInfoByName(nameTextView.length() > 0 ? nameTextView.getText().toString() : null);
+                    avatarDrawable.setInfoByName(nameTextView.length() > 0 ? nameTextView.getText().toString() : "?");
                     avatarImage.invalidate();
                 }
             });
         }
 
         GreySectionCell sectionCell = new GreySectionCell(context);
-        sectionCell.setText(LocaleController.formatPluralString("Members", selectedContacts.size()));
+        sectionCell.setText(
+                LocaleController.getString("MeAnd", R.string.MeAnd) + " " +
+                LocaleController.formatPluralString("Members", selectedContacts.size()));
         linearLayout.addView(sectionCell);
 
         listView = new ListView(context);
@@ -394,6 +364,7 @@ public class GroupCreateFinalActivity extends BaseFragment implements Notificati
                 updateVisibleRows(mask);
             }
         } else if (id == NotificationCenter.chatDidFailCreate) {
+            /*
             if (progressDialog != null) {
                 try {
                     progressDialog.dismiss();
@@ -401,8 +372,9 @@ public class GroupCreateFinalActivity extends BaseFragment implements Notificati
                     FileLog.e("messenger", e);
                 }
             }
-            donePressed = false;
+            */
         } else if (id == NotificationCenter.chatDidCreated) {
+            /*
             if (progressDialog != null) {
                 try {
                     progressDialog.dismiss();
@@ -410,6 +382,8 @@ public class GroupCreateFinalActivity extends BaseFragment implements Notificati
                     FileLog.e("messenger", e);
                 }
             }
+            */
+            /*
             int chat_id = (Integer)args[0];
             NotificationCenter.getInstance().postNotificationName(NotificationCenter.closeChats);
             Bundle args2 = new Bundle();
@@ -418,6 +392,7 @@ public class GroupCreateFinalActivity extends BaseFragment implements Notificati
             if (uploadedAvatar != null) {
                 MessagesController.getInstance().changeChatAvatar(chat_id, uploadedAvatar);
             }
+            */
         }
     }
 
@@ -457,8 +432,13 @@ public class GroupCreateFinalActivity extends BaseFragment implements Notificati
                 view = new UserCell(mContext, 1, 0);
             }
 
-            TLRPC.User user = MessagesController.getInstance().getUser(selectedContacts.get(i));
-            ((UserCell) view).setData(123, 0, "erruser", "errstatus", 0);
+            int curr_user_id = selectedContacts.get(i);
+
+            long hContact = MrMailbox.MrMailboxGetContact(MrMailbox.hMailbox, curr_user_id);
+
+            ((UserCell) view).setData(curr_user_id, 0, MrMailbox.MrContactGetDisplayName(hContact), MrMailbox.MrContactGetAddr(hContact), 0);
+
+            MrMailbox.MrContactUnref(hContact);
             return view;
         }
 
