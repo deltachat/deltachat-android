@@ -592,9 +592,9 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
                     builder.setCustomView(linearLayout);
                     showDialog(builder.create());
                 } else if (i == usernameRow) {
-                    presentFragment(new MrNameSettingsActivity()); // EDIT BY MR
+                    presentFragment(new NameSettingsActivity());
                 } else if (i == numberRow) {
-                    presentFragment(new MrAccountSettingsActivity()); // EDIT BY MR
+                    presentFragment(new AccountSettingsActivity());
                 } else if (i == stickersRow) {
                     //presentFragment(new StickersActivity()); // EDIT BY MR
                 } else if (i == cacheRow) {

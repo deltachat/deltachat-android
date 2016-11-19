@@ -19,7 +19,7 @@
  *
  *******************************************************************************
  *
- * File:    MrNameSettingsActivity.java
+ * File:    NameSettingsActivity.java
  * Authors: Björn Petersen
  * Purpose: Let the user configure his name
  *
@@ -52,7 +52,7 @@ import org.telegram.ui.Cells.TextSettingsCell;
 import org.telegram.ui.Components.LayoutHelper;
 
 
-public class MrNameSettingsActivity extends BaseFragment {
+public class NameSettingsActivity extends BaseFragment {
 
     // the list
     private ListAdapter listAdapter;

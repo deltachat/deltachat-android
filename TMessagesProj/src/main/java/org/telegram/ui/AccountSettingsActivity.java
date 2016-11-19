@@ -53,7 +53,7 @@ import org.telegram.ui.Cells.TextInfoPrivacyCell;
 import org.telegram.ui.Components.LayoutHelper;
 
 
-public class MrAccountSettingsActivity extends BaseFragment {
+public class AccountSettingsActivity extends BaseFragment {
 
     // the list
     private ListAdapter listAdapter;
