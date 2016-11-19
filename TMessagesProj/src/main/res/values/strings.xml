@@ -721,4 +721,5 @@
     <string name="BadEmailAddress">Bad e-mail address.</string>
     <string name="ContactDeleted">User deleted.</string>
     <string name="ContactCreated">User created.</string>
+    <string name="ViewProfile">View profile</string>
 </resources>

@@ -446,21 +446,14 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
                 if (item instanceof TLRPC.User) {
                     final TLRPC.User user = (TLRPC.User) item;
                     AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
-                    CharSequence[] items = new CharSequence[]{
-                            LocaleController.getString("BlockContact", R.string.BlockContact),
-                            LocaleController.getString("DeleteContact", R.string.DeleteContact)
-                    };
+                    CharSequence[] items = new CharSequence[]{LocaleController.getString("ViewProfile", R.string.ViewProfile)};
                     builder.setItems(items, new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
-                            if (i == 0) {
-                                MrMailbox.MrMailboxBlockContact(MrMailbox.hMailbox, user.id, 1);
-                            }
-                            else if (i == 1) {
-                                if( MrMailbox.MrMailboxDeleteContact(MrMailbox.hMailbox, user.id) == 0 ) {
-                                    Toast.makeText(getParentActivity(), LocaleController.getString("CannotDeleteContact", R.string.CannotDeleteContact), Toast.LENGTH_LONG).show();
-                                }
-                            }
+                            Bundle args = new Bundle();
+                            args.putInt("user_id", user.id);
+                            ProfileActivity fragment = new ProfileActivity(args);
+                            presentFragment(fragment);
                         }
                     });
                     showDialog(builder.create());

@@ -721,4 +721,5 @@
     <string name="BadEmailAddress">Ungültige E-Mail-Adresse.</string>
     <string name="ContactDeleted">Benutzer gelöscht.</string>
     <string name="ContactCreated">Benutzer angelegt.</string>
+    <string name="ViewProfile">Profil anzeigen</string>
 </resources>

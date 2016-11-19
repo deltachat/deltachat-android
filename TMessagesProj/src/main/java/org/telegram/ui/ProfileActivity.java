@@ -288,18 +288,17 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                         showDialog(builder.create());
                     }
                 } else if (id == delete_contact) {
-                    final TLRPC.User user = MessagesController.getInstance().getUser(user_id);
-                    if (user == null || getParentActivity() == null) {
-                        return;
-                    }
                     AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
                     builder.setMessage(LocaleController.getString("AreYouSureDeleteContact", R.string.AreYouSureDeleteContact));
                     builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
-                            ArrayList<TLRPC.User> arrayList = new ArrayList<>();
-                            arrayList.add(user);
-                            ContactsController.getInstance().deleteContact(arrayList);
+                            if( MrMailbox.MrMailboxDeleteContact(MrMailbox.hMailbox, user_id)==0 ) {
+                                Toast.makeText(getParentActivity(), LocaleController.getString("CannotDeleteContact", R.string.CannotDeleteContact), Toast.LENGTH_LONG).show();
+                            }
+                            else {
+                                finishFragment();
+                            }
                         }
                     });
                     builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
@@ -1278,13 +1277,17 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
         animatingItem = null;
 
         ActionBarMenuItem item = menu.addItem(10, R.drawable.ic_ab_other);
-        if (user_id != 0) {
-            blockTextView = item.addSubItem(block_contact, "X", 0);
-        }
 
         if( chat_id!=0 || MrMailbox.MrMailboxGetChatIdByContactId(MrMailbox.hMailbox, user_id)!=0 ) {
             item.addSubItem(add_shortcut, LocaleController.getString("AddShortcut", R.string.AddShortcut), 0);
         }
+
+        if (user_id != 0) {
+            blockTextView = item.addSubItem(block_contact, "X", 0);
+            item.addSubItem(delete_contact, LocaleController.getString("DeleteContact", R.string.DeleteContact), 0);
+        }
+
+
     }
 
     @Override

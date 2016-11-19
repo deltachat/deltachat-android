@@ -133,21 +133,11 @@ public class BlockedUsersActivity extends BaseFragment implements NotificationCe
                 selectedUserId = blockedUserIds[i];
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
-                CharSequence[] items = new CharSequence[]{
-                        LocaleController.getString("UnblockContact", R.string.UnblockContact),
-                        LocaleController.getString("DeleteContact", R.string.DeleteContact)
-                };
+                CharSequence[] items = new CharSequence[]{LocaleController.getString("UnblockContact", R.string.UnblockContact)};
                 builder.setItems(items, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        if (i == 0) {
-                            MrMailbox.MrMailboxBlockContact(MrMailbox.hMailbox, selectedUserId, 0);
-                        }
-                        else if( i==1 ) {
-                            if( MrMailbox.MrMailboxDeleteContact(MrMailbox.hMailbox, selectedUserId) == 0 ) {
-                                Toast.makeText(getParentActivity(), LocaleController.getString("CannotDeleteContact", R.string.CannotDeleteContact), Toast.LENGTH_LONG).show();
-                            }
-                        }
+                        MrMailbox.MrMailboxBlockContact(MrMailbox.hMailbox, selectedUserId, 0);
                     }
                 });
                 showDialog(builder.create());
