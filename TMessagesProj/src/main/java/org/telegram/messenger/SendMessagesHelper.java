@@ -1082,7 +1082,7 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
 
 
             MrMailbox.MrChatUnref(hChat);
-            hChat = null;
+            hChat = 0;
 
 
 
