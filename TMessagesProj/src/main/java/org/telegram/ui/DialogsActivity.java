@@ -89,9 +89,10 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
 
     private AlertDialog permissionDialog;
 
-    private int prevPosition;
-    private int prevTop;
-    private boolean scrollUpdated;
+    //private int prevPosition; -- Disable the floating hiding action for now; I'm not sure if it is really useful.
+    //private int prevTop;
+    //private boolean scrollUpdated;
+
     private boolean floatingHidden;
     private final AccelerateDecelerateInterpolator floatingInterpolator = new AccelerateDecelerateInterpolator();
 
@@ -490,6 +491,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
                     }
                 }
 
+                /* -- Disable the floating hiding action for now; I'm not sure if it is really useful.
                 if (floatingButton.getVisibility() != View.GONE) {
                     final View topChild = recyclerView.getChildAt(0);
                     int firstViewTop = 0;
@@ -512,6 +514,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
                     prevTop = firstViewTop;
                     scrollUpdated = true;
                 }
+                */
             }
         });
 
@@ -821,7 +824,6 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
     }
 
     private void hideFloatingButton(boolean hide) {
-        /* -- Disable the floating hiding action for now; I'm not sure if it is really useful.
         if (floatingHidden == hide) {
             return;
         }
@@ -830,7 +832,6 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
         animator.setInterpolator(floatingInterpolator);
         floatingButton.setClickable(!hide);
         animator.start();
-        */
     }
 
     private void updateVisibleRows(int mask) {
