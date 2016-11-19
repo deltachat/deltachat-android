@@ -59,6 +59,7 @@ public class ContactAddActivity extends BaseFragment implements NotificationCent
     private AvatarUpdater avatarUpdater = new AvatarUpdater();
     private String nameToSet = null;
     private int user_id;
+    private boolean create_chat_when_done;
 
     private final static int done_button = 1;
 
@@ -76,6 +77,7 @@ public class ContactAddActivity extends BaseFragment implements NotificationCent
         avatarUpdater.returnOnly = true;
         do_what = getArguments().getInt("do_what", 0);
         user_id = getArguments().getInt("user_id", 0);
+        create_chat_when_done = getArguments().getBoolean("create_chat_when_done", false);
         return super.onFragmentCreate();
     }
 
@@ -123,12 +125,26 @@ public class ContactAddActivity extends BaseFragment implements NotificationCent
                         MrMailbox.MrContactUnref(hContact);
                     }
 
-                    if( MrMailbox.MrMailboxCreateContact(MrMailbox.hMailbox, name, addr)==0 ) {
+                    int new_user_id;
+                    if( (new_user_id=MrMailbox.MrMailboxCreateContact(MrMailbox.hMailbox, name, addr))==0 ) {
                         Toast.makeText(getParentActivity(), LocaleController.getString("BadEmailAddress", R.string.BadEmailAddress), Toast.LENGTH_LONG).show();
                         return;
                     }
                     else if (do_what==CREATE_CONTACT) {
-                        Toast.makeText(getParentActivity(), LocaleController.getString("ContactCreated", R.string.ContactCreated), Toast.LENGTH_LONG).show();
+                        if(create_chat_when_done) {
+                            int belonging_chat_id = MrMailbox.MrMailboxCreateChatByContactId(MrMailbox.hMailbox, new_user_id);
+                            if( belonging_chat_id != 0 ) {
+                                Bundle args = new Bundle();
+                                args.putInt("chat_id", belonging_chat_id);
+                                presentFragment(new ChatActivity(args), true);
+                                NotificationCenter.getInstance().postNotificationName(NotificationCenter.chatDidCreated, belonging_chat_id); /*this will remove the contact list from stack */
+                                NotificationCenter.getInstance().postNotificationName(NotificationCenter.updateInterfaces, MessagesController.UPDATE_MASK_NAME);
+                                return;
+                            }
+                        }
+                        else {
+                            Toast.makeText(getParentActivity(), LocaleController.getString("ContactCreated", R.string.ContactCreated), Toast.LENGTH_LONG).show();
+                        }
                     }
 
                     finishFragment();
