@@ -317,6 +317,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
     {
         super.finalize();
         MrMailbox.MrChatUnref(m_hChat);
+        m_hChat = 0;
     }
 
     RecyclerListView.OnItemLongClickListener onItemLongClickListener = new RecyclerListView.OnItemLongClickListener() {
@@ -3986,7 +3987,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         } else if (id == NotificationCenter.updateInterfaces) {
             int updateMask = (Integer) args[0];
             if ((updateMask & MessagesController.UPDATE_MASK_NAME) != 0 || (updateMask & MessagesController.UPDATE_MASK_CHAT_NAME) != 0) {
-                if (currentChat != null) {
+                /*if (currentChat != null) {
                     TLRPC.Chat chat = MessagesController.getInstance().getChat(currentChat.id);
                     if (chat != null) {
                         currentChat = chat;
@@ -3996,7 +3997,11 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     if (user != null) {
                         currentUser = user;
                     }
-                }
+                }*/
+                int back_id = MrMailbox.MrChatGetId(m_hChat);
+                MrMailbox.MrChatUnref(m_hChat);
+                m_hChat = MrMailbox.MrMailboxGetChat(MrMailbox.hMailbox, back_id);
+
                 updateTitle();
             }
             boolean updateSubtitle = false;
@@ -4305,7 +4310,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         } else if (id == NotificationCenter.messagesSentOrRead) {
             int back_id = MrMailbox.MrChatGetId(m_hChat);
             MrMailbox.MrChatUnref(m_hChat);
-            MrMailbox.MrMailboxGetChat(MrMailbox.hMailbox, back_id);
+            m_hChat = MrMailbox.MrMailboxGetChat(MrMailbox.hMailbox, back_id);
 
             int evt_read = (int)args[0];
             int evt_chat_id = (int)args[1];

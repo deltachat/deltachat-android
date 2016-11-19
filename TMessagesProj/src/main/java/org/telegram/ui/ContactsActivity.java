@@ -460,9 +460,6 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
                                 if( MrMailbox.MrMailboxDeleteContact(MrMailbox.hMailbox, user.id) == 0 ) {
                                     Toast.makeText(getParentActivity(), LocaleController.getString("CannotDeleteContact", R.string.CannotDeleteContact), Toast.LENGTH_LONG).show();
                                 }
-                                else {
-                                    Toast.makeText(getParentActivity(), LocaleController.getString("ContactDeleted", R.string.ContactDeleted), Toast.LENGTH_LONG).show();
-                                }
                             }
                         }
                     });

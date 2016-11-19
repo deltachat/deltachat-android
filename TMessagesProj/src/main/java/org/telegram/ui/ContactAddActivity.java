@@ -94,12 +94,16 @@ public class ContactAddActivity extends BaseFragment implements NotificationCent
 
     @Override
     public View createView(Context context) {
+
         actionBar.setBackButtonImage(R.drawable.ic_ab_back);
         actionBar.setAllowOverlayTitle(true);
         if (do_what==CREATE_CONTACT) {
             actionBar.setTitle(LocaleController.getString("NewContactTitle", R.string.NewContactTitle));
         } else {
             actionBar.setTitle(LocaleController.getString("EditName", R.string.EditName));
+            long hContact = MrMailbox.MrMailboxGetContact(MrMailbox.hMailbox, user_id);
+                nameToSet = MrMailbox.MrContactGetDisplayName(hContact);
+            MrMailbox.MrContactUnref(hContact);
         }
 
         actionBar.setActionBarMenuOnItemClick(new ActionBar.ActionBarMenuOnItemClick() {
@@ -108,20 +112,25 @@ public class ContactAddActivity extends BaseFragment implements NotificationCent
                 if (id == -1) {
                     finishFragment();
                 } else if (id == done_button) {
+                    String name = nameTextView.getText().toString();
+                    String addr = "";
                     if (do_what==CREATE_CONTACT) {
-                        String name = nameTextView.getText().toString();
-                        String addr = emailTextView.getText().toString();
-                        if( MrMailbox.MrMailboxCreateContact(MrMailbox.hMailbox, name, addr)==0 ) {
-                            Toast.makeText(getParentActivity(), LocaleController.getString("BadEmailAddress", R.string.BadEmailAddress), Toast.LENGTH_LONG).show();
-                            return;
-                        }
-                        else {
-                            Toast.makeText(getParentActivity(), LocaleController.getString("ContactCreated", R.string.ContactCreated), Toast.LENGTH_LONG).show();
-                        }
+                        addr = emailTextView.getText().toString();
                     }
-                    else if(do_what == EDIT_NAME) {
+                    else {
+                        long hContact = MrMailbox.MrMailboxGetContact(MrMailbox.hMailbox, user_id);
+                            addr = MrMailbox.MrContactGetAddr(hContact);
+                        MrMailbox.MrContactUnref(hContact);
+                    }
 
+                    if( MrMailbox.MrMailboxCreateContact(MrMailbox.hMailbox, name, addr)==0 ) {
+                        Toast.makeText(getParentActivity(), LocaleController.getString("BadEmailAddress", R.string.BadEmailAddress), Toast.LENGTH_LONG).show();
+                        return;
                     }
+                    else if (do_what==CREATE_CONTACT) {
+                        Toast.makeText(getParentActivity(), LocaleController.getString("ContactCreated", R.string.ContactCreated), Toast.LENGTH_LONG).show();
+                    }
+
                     finishFragment();
                     NotificationCenter.getInstance().postNotificationName(NotificationCenter.updateInterfaces, MessagesController.UPDATE_MASK_NAME);
                 }
@@ -145,7 +154,7 @@ public class ContactAddActivity extends BaseFragment implements NotificationCent
 
         avatarImage = new BackupImageView(context);
         avatarImage.setRoundRadius(AndroidUtilities.dp(32));
-        avatarDrawable.setInfoByName("?");
+        avatarDrawable.setInfoByName(nameToSet!=null? nameToSet : "?");
         avatarImage.setImageDrawable(avatarDrawable);
         frameLayout.addView(avatarImage);
         FrameLayout.LayoutParams layoutParams1 = (FrameLayout.LayoutParams) avatarImage.getLayoutParams();
@@ -198,7 +207,6 @@ public class ContactAddActivity extends BaseFragment implements NotificationCent
         nameTextView.setHint(LocaleController.getString("Name", R.string.Name));
         if (nameToSet != null) {
             nameTextView.setText(nameToSet);
-            nameToSet = null;
         }
         nameTextView.setMaxLines(4);
         nameTextView.setGravity(Gravity.CENTER_VERTICAL | (LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT));
@@ -263,6 +271,7 @@ public class ContactAddActivity extends BaseFragment implements NotificationCent
             emailTextView.setLayoutParams(layoutParams2);
         }
 
+        nameToSet = null;
         return fragmentView;
     }
 
