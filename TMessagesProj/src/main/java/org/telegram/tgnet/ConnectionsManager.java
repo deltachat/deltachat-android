@@ -114,9 +114,9 @@ public class ConnectionsManager {
                 return;
             }
             FileLog.e("messenger", "reset app pause time");
-            if (lastPauseTime != 0 && System.currentTimeMillis() - lastPauseTime > 5000) {
+            /*if (lastPauseTime != 0 && System.currentTimeMillis() - lastPauseTime > 5000) {
                 ContactsController.getInstance().checkContacts();
-            }
+            }*/
             lastPauseTime = 0;
             //native_resumeNetwork(false);
         }

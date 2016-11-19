@@ -40,7 +40,6 @@ public class NotificationCenter {
     public static final int stopEncodingService = totalEvents++;
     public static final int didCreatedNewDeleteTask = totalEvents++;
     public static final int mainUserInfoChanged = totalEvents++;
-    public static final int privacyRulesUpdated = totalEvents++;
     public static final int updateMessageMedia = totalEvents++;
     public static final int recentImagesDidLoaded = totalEvents++;
     public static final int replaceMessagesObjects = totalEvents++;

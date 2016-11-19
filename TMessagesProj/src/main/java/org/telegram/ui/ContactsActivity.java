@@ -45,8 +45,10 @@ import android.widget.Toast;
 import org.telegram.messenger.AndroidUtilities;
 import org.telegram.messenger.ApplicationLoader;
 import org.telegram.messenger.ChatObject;
+import org.telegram.messenger.ContactsController;
 import org.telegram.messenger.LocaleController;
 import org.telegram.messenger.MrMailbox;
+import org.telegram.messenger.Utilities;
 import org.telegram.tgnet.TLRPC;
 import org.telegram.messenger.FileLog;
 import org.telegram.messenger.MessagesController;
@@ -132,6 +134,14 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
         {
             title = LocaleController.getString("BlockContact", R.string.BlockContact);
         }
+
+        // sync phone book
+        Utilities.globalQueue.postRunnable(new Runnable() {
+            @Override
+            public void run() {
+                HashMap<String, ContactsController.Contact> pbcontacts = ContactsController.getInstance().readContactsFromPhoneBook();
+            }
+        });
 
         return true;
     }

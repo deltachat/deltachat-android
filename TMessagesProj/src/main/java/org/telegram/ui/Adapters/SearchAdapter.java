@@ -102,7 +102,7 @@ public class SearchAdapter extends BaseSearchAdapter {
                     queryServerSearch(query, allowChats, allowBots);
                 }
                 final ArrayList<TLRPC.TL_contact> contactsCopy = new ArrayList<>();
-                contactsCopy.addAll(ContactsController.getInstance().contacts);
+                //contactsCopy.addAll(ContactsController.getInstance().contacts);
                 Utilities.searchQueue.postRunnable(new Runnable() {
                     @Override
                     public void run() {

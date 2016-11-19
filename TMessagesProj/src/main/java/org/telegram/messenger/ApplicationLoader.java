@@ -234,7 +234,7 @@ public class ApplicationLoader extends Application {
         ApplicationLoader app = (ApplicationLoader)ApplicationLoader.applicationContext;
         FileLog.e("messenger", "app initied");
 
-        ContactsController.getInstance().checkAppAccount();
+        //ContactsController.getInstance().checkAppAccount();
         MediaController.getInstance();
 
         // EDIT BY MR - open my sqlite file (you can inspect the file eg. with "Tools / Android Device Monitor / File Explorer")

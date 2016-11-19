@@ -21,12 +21,10 @@ import android.widget.FrameLayout;
 import android.widget.ListView;
 
 import org.telegram.messenger.ApplicationLoader;
-import org.telegram.messenger.ContactsController;
 import org.telegram.messenger.LocaleController;
 import org.telegram.messenger.MrMailbox;
 import org.telegram.messenger.NotificationCenter;
 import org.telegram.messenger.R;
-import org.telegram.tgnet.TLRPC;
 import org.telegram.messenger.UserConfig;
 import org.telegram.ui.ActionBar.ActionBar;
 import org.telegram.ui.ActionBar.BaseFragment;
@@ -36,8 +34,6 @@ import org.telegram.ui.Cells.TextCheckCell;
 import org.telegram.ui.Cells.TextInfoPrivacyCell;
 import org.telegram.ui.Cells.TextSettingsCell;
 import org.telegram.ui.Components.LayoutHelper;
-
-import java.util.ArrayList;
 
 public class PrivacySettingsActivity extends BaseFragment implements NotificationCenter.NotificationCenterDelegate {
 
@@ -57,7 +53,7 @@ public class PrivacySettingsActivity extends BaseFragment implements Notificatio
     public boolean onFragmentCreate() {
         super.onFragmentCreate();
 
-        ContactsController.getInstance().loadPrivacySettings();
+        //ContactsController.getInstance().loadPrivacySettings();
 
         rowCount = 0;
         privacySectionRow       = -1;
@@ -67,7 +63,7 @@ public class PrivacySettingsActivity extends BaseFragment implements Notificatio
         securitySectionRow      = -1;
         secretDetailRow         = rowCount++;
 
-        NotificationCenter.getInstance().addObserver(this, NotificationCenter.privacyRulesUpdated);
+        //NotificationCenter.getInstance().addObserver(this, NotificationCenter.privacyRulesUpdated);
 
         return true;
     }
@@ -75,7 +71,7 @@ public class PrivacySettingsActivity extends BaseFragment implements Notificatio
     @Override
     public void onFragmentDestroy() {
         super.onFragmentDestroy();
-        NotificationCenter.getInstance().removeObserver(this, NotificationCenter.privacyRulesUpdated);
+        //NotificationCenter.getInstance().removeObserver(this, NotificationCenter.privacyRulesUpdated);
     }
 
     @Override
@@ -143,13 +139,14 @@ public class PrivacySettingsActivity extends BaseFragment implements Notificatio
 
     @Override
     public void didReceivedNotification(int id, Object... args) {
-        if (id == NotificationCenter.privacyRulesUpdated) {
+        /*if (id == NotificationCenter.privacyRulesUpdated) {
             if (listAdapter != null) {
                 listAdapter.notifyDataSetChanged();
             }
-        }
+        }*/
     }
 
+    /*
     private String formatRulesString(boolean isGroup) {
         ArrayList<TLRPC.PrivacyRule> privacyRules = ContactsController.getInstance().getPrivacyRules(isGroup);
         if (privacyRules.size() == 0) {
@@ -199,6 +196,7 @@ public class PrivacySettingsActivity extends BaseFragment implements Notificatio
         }
         return "unknown";
     }
+    */
 
     @Override
     public void onResume() {

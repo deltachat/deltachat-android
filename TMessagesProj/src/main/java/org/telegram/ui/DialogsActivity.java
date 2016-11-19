@@ -703,7 +703,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
                 }
                 switch (permissions[a]) {
                     case Manifest.permission.READ_CONTACTS:
-                        ContactsController.getInstance().readContacts();
+                        //ContactsController.getInstance().readContacts();
                         break;
                     case Manifest.permission.WRITE_EXTERNAL_STORAGE:
                         ImageLoader.getInstance().checkMediaPaths();

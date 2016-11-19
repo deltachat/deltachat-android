@@ -1594,9 +1594,9 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 if (requestCode == 4) {
                     ImageLoader.getInstance().checkMediaPaths();
-                } else if (requestCode == 5) {
+                } /*else if (requestCode == 5) {
                     ContactsController.getInstance().readContacts();
-                }
+                }*/
                 return;
             }
             AlertDialog.Builder builder = new AlertDialog.Builder(this);

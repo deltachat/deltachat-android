@@ -105,7 +105,6 @@ public class TLRPC {
 	}
 
 	public static class TL_inputPhoneContact extends TLObject {
-		public long client_id;
 		public String phone;
 		public String first_name;
 		public String last_name;
@@ -114,18 +113,6 @@ public class TLRPC {
 	public static class PrivacyRule extends TLObject {
 		public ArrayList<Integer> users = new ArrayList<>();
 
-	}
-
-	public static class TL_privacyValueAllowUsers extends PrivacyRule {
-	}
-
-	public static class TL_privacyValueDisallowAll extends PrivacyRule {
-	}
-
-	public static class TL_privacyValueAllowAll extends PrivacyRule {
-	}
-
-	public static class TL_privacyValueDisallowUsers extends PrivacyRule {
 	}
 
 	public static class TL_messageMediaEmpty extends MessageMedia {
@@ -758,15 +745,6 @@ public class TLRPC {
 	}
 
 	public static class TL_inputPhotoCropAuto extends InputPhotoCrop {
-	}
-
-	public static class TL_contacts_importContacts extends TLObject {
-		public ArrayList<TL_inputPhoneContact> contacts = new ArrayList<>();
-		public boolean replace;
-	}
-
-	public static class TL_contacts_deleteContacts extends TLObject {
-		public ArrayList<InputUser> id = new ArrayList<>();
 	}
 
 	public static class TL_messages_getDialogs extends TLObject {
