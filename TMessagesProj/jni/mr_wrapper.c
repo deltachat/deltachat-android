@@ -355,6 +355,16 @@ JNIEXPORT jstring Java_org_telegram_messenger_MrMailbox_MrMailboxExecute(JNIEnv 
 }
 
 
+JNIEXPORT jint Java_org_telegram_messenger_MrMailbox_MrMailboxAddAddressBook(JNIEnv *env, jclass c, jlong hMailbox, jstring adrbook)
+{
+	CHAR_REF(adrbook);
+		int modify_count = mrmailbox_add_address_book((mrmailbox_t*)hMailbox, adrbookPtr);
+	CHAR_UNREF(adrbook);
+	return modify_count;
+}
+
+
+
 /*******************************************************************************
  * MrChatlist
  ******************************************************************************/

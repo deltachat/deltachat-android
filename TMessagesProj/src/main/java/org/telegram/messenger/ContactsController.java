@@ -23,9 +23,6 @@ public class ContactsController {
     }
 
     private String[] projectionNames = {
-            ContactsContract.CommonDataKinds.StructuredName.GIVEN_NAME,
-            ContactsContract.CommonDataKinds.StructuredName.MIDDLE_NAME,
-            ContactsContract.CommonDataKinds.StructuredName.FAMILY_NAME,
             ContactsContract.Data.DISPLAY_NAME,
             ContactsContract.CommonDataKinds.Email.ADDRESS
     };
@@ -48,50 +45,35 @@ public class ContactsController {
     public ContactsController() {
     }
 
-    public HashMap<String, Contact> readContactsFromPhoneBook() {
-        HashMap<String, Contact> contactsMap = new HashMap<>();
+    public String readContactsFromPhoneBook() {
+        HashMap<String, String> contactsMap = new HashMap<String, String>();
+        String allContacts = "";
         try {
             if (!hasContactsPermission()) {
-                return contactsMap;
+                return "";
             }
             ContentResolver cr = ApplicationLoader.applicationContext.getContentResolver();
             Cursor pCur = cr.query(ContactsContract.CommonDataKinds.Email.CONTENT_URI, projectionNames, null, null, null);
             if (pCur != null && pCur.getCount() > 0) {
                 while (pCur.moveToNext()) {
-                    String given_name   = pCur.getString(0);
-                    String middle_name  = pCur.getString(1);
-                    String family_name  = pCur.getString(2);
-                    String display_name = pCur.getString(3);
-                    String email        = pCur.getString(4);
+                    String display_name = pCur.getString(0);
+                    String email        = pCur.getString(1);
                     if( email!=null && !email.isEmpty() && contactsMap.get(email)==null ) {
                         String nameToAdd = display_name!=null? display_name : "";
                         if( nameToAdd.isEmpty()) {
-                            if( given_name!=null ) {
-                                nameToAdd += given_name;
-                            }
-                            if( middle_name!=null ) {
-                                nameToAdd += nameToAdd.isEmpty()? "" : " ";
-                                nameToAdd += middle_name;
-                            }
-                            if( family_name!=null ) {
-                                nameToAdd += nameToAdd.isEmpty()? "" : " ";
-                                nameToAdd += family_name;
-                            }
+                            nameToAdd = email;
                         }
 
-                        Contact contact = new Contact();
-                        contact.name=nameToAdd;
-                        contact.email = email;
-                        contactsMap.put(email, contact);
+                        allContacts += nameToAdd + "\n" + email + "\n";
+                        contactsMap.put(email, nameToAdd);
                     }
                 }
                 pCur.close();
             }
         } catch (Exception e) {
             FileLog.e("messenger", e);
-            contactsMap.clear();
         }
-        return contactsMap;
+        return allContacts;
     }
 
     private boolean hasContactsPermission() {

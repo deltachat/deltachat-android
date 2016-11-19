@@ -28,7 +28,7 @@ public class Utilities {
     public static volatile DispatchQueue stageQueue = new DispatchQueue("stageQueue");
     public static volatile DispatchQueue globalQueue = new DispatchQueue("globalQueue");
     public static volatile DispatchQueue searchQueue = new DispatchQueue("searchQueue");
-    public static volatile DispatchQueue phoneBookQueue = new DispatchQueue("photoBookQueue");
+    //public static volatile DispatchQueue phoneBookQueue = new DispatchQueue("photoBookQueue");
 
     final protected static char[] hexArray = "0123456789ABCDEF".toCharArray();
 

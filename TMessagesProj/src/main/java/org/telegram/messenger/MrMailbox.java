@@ -237,6 +237,7 @@ public class MrMailbox {
     public native static int     MrMailboxCreateContact     (long hMailbox, String name, String addr);
     public native static int     MrMailboxBlockContact      (long hMailbox, int id, int block);
     public native static int     MrMailboxDeleteContact     (long hMailbox, int id); // returns 0 if the contact could not be deleted (eg. it is in use, maybe by strangers)
+    public native static int     MrMailboxAddAddressBook    (long hMailbox, String adrbook);
 
     public native static long    MrMailboxGetChatlist       (long hMailbox); // returns hChatlist which must be unref'd after usage
     public native static long    MrMailboxGetChat           (long hMailbox, int chat_id); // return hChat which must be unref'd after usage

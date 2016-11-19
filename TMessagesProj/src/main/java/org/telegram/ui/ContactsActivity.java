@@ -135,14 +135,6 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
             title = LocaleController.getString("BlockContact", R.string.BlockContact);
         }
 
-        // sync phone book
-        Utilities.globalQueue.postRunnable(new Runnable() {
-            @Override
-            public void run() {
-                HashMap<String, ContactsController.Contact> pbcontacts = ContactsController.getInstance().readContactsFromPhoneBook();
-            }
-        });
-
         return true;
     }
 
@@ -164,9 +156,36 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
         if( title != null ) {
             actionBar.setTitle(title);
             if( subtitle != null ) {
-                actionBar.setSubtitle(subtitle);
+                actionBar.setSubtitle("Synchronizing, please wait ...");
             }
         }
+
+        // sync phone book (the globalQueue is in the main thread)
+        Utilities.searchQueue.postRunnable(new Runnable() {
+            @Override
+            public void run() {
+                String pbcontacts = ContactsController.getInstance().readContactsFromPhoneBook();
+                if( !pbcontacts.isEmpty() ) {
+                    if( MrMailbox.MrMailboxAddAddressBook(MrMailbox.hMailbox, pbcontacts) > 0 ) {
+                        AndroidUtilities.runOnUIThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                NotificationCenter.getInstance().postNotificationName(NotificationCenter.contactsDidLoaded);
+                            }
+                        });
+                    }
+                }
+
+                AndroidUtilities.runOnUIThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        if( subtitle != null ) {
+                            actionBar.setSubtitle(subtitle);
+                        }
+                    }
+                });
+            }
+        });
 
         actionBar.setActionBarMenuOnItemClick(new ActionBar.ActionBarMenuOnItemClick() {
             @Override
