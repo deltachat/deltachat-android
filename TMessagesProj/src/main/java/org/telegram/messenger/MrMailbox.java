@@ -50,8 +50,9 @@ public class MrMailbox {
     public static TLRPC.TL_dialog hChatlist2dialog(long hChatlist, int index)
     {
         long hChat = MrMailbox.MrChatlistGetChatByIndex(hChatlist, index);
-        TLRPC.TL_dialog dlg = hChat2dialog(hChat);
+            TLRPC.TL_dialog dlg = hChat2dialog(hChat);
         MrMailbox.MrChatUnref(hChat);
+
         return dlg;
     }
 

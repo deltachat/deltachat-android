@@ -180,12 +180,9 @@ public class DialogCell extends BaseCell {
         currentDialogId = dialog.id;
         isDialogCell = true;
         index = i;
-        //dialogsType = type;
 
-        // EDIT BY MR
         MrMailbox.MrChatUnref(m_hChat);
-        m_hChat = MrMailbox.MrChatlistGetChatByIndex(MrMailbox.hCurrChatlist, i); // TODO: maybe this should move to update() - in general, how are updates handled?
-        // /EDIT BY MR
+        m_hChat = MrMailbox.MrChatlistGetChatByIndex(MrMailbox.hCurrChatlist, i);
 
         update(0);
     }

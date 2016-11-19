@@ -2895,7 +2895,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
 
         final int fromId = MrMailbox.MrMsgGetFromId(hMsg);
         long hContact = MrMailbox.MrMailboxGetContact(MrMailbox.hMailbox, fromId);
-            if( hContact==0 )  { MrMailbox.MrMsgUnref(hMsg); return; }
             String name = MrMailbox.MrContactGetNameNAddr(hContact);
         MrMailbox.MrContactUnref(hContact);
 
@@ -3669,24 +3668,26 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     MessagesQuery.loadReplyMessagesForMessages(messArr, dialog_id);
                 }
                 */
+                {
+                    long hMsglist = MrMailbox.MrChatGetMsglist(m_hChat, 0, 100);
 
-                long hMsglist  = MrMailbox.MrChatGetMsglist(m_hChat, 0, 100);
+                        int mrCount = MrMailbox.MrMsglistGetCnt(hMsglist);
+                        for (int a = mrCount - 1; a >= 0; a--) {
+                            long hMsg = MrMailbox.MrMsglistGetMsgByIndex(hMsglist, a);
+                                TLRPC.Message msg = MrMailbox.hMsg2Message(hMsg);
+                                MessageObject msgDrawObj = new MessageObject(msg, null, true);
+                                messages.add(0, msgDrawObj);
+                                messagesDict[loadIndex].put(msg.id, msgDrawObj);
+                            MrMailbox.MrMsgUnref(hMsg);
+                        }
 
-                    int mrCount = MrMailbox.MrMsglistGetCnt(hMsglist);
-                    for (int a = mrCount-1; a >= 0 ; a-- ) {
-                        long hMsg = MrMailbox.MrMsglistGetMsgByIndex(hMsglist, a);
-                            TLRPC.Message msg = MrMailbox.hMsg2Message(hMsg);
-                            MessageObject msgDrawObj = new MessageObject(msg, null, true);
-                            messages.add(0, msgDrawObj);
-                            messagesDict[loadIndex].put(msg.id, msgDrawObj);
-                        MrMailbox.MrMsgUnref(hMsg);
-                    }
+                        if (MrMailbox.MrChatGetId(m_hChat) == MrMailbox.MR_CHAT_ID_STRANGERS) {
+                            updateBottomOverlay();
+                        }
 
-                    if( MrMailbox.MrChatGetId(m_hChat)==MrMailbox.MR_CHAT_ID_STRANGERS ) {
-                        updateBottomOverlay();
-                    }
+                    MrMailbox.MrMsglistUnref(hMsglist);
+                }
 
-                MrMailbox.MrMsglistUnref(hMsglist);
 
                 /* EDIT BY MR -- the add loop
                 int approximateHeightSum = 0;

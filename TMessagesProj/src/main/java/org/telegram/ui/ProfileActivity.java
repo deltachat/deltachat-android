@@ -411,9 +411,12 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                         return;
                     }
 
-                    long hContact = MrMailbox.MrMailboxGetContact(MrMailbox.hMailbox, user_id);
-                        String name = MrMailbox.MrContactGetNameNAddr(hContact);
-                    MrMailbox.MrContactUnref(hContact);
+                    String name = "";
+                    {
+                        long hContact = MrMailbox.MrMailboxGetContact(MrMailbox.hMailbox, user_id);
+                            name = MrMailbox.MrContactGetNameNAddr(hContact);
+                        MrMailbox.MrContactUnref(hContact);
+                    }
 
                     AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
                     builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), new DialogInterface.OnClickListener() {
@@ -1191,7 +1194,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
         boolean blocked = false;
         if( user_id!=0 ) {
             long hContact = MrMailbox.MrMailboxGetContact(MrMailbox.hMailbox, user_id);
-            blocked = MrMailbox.MrContactIsBlocked(hContact)!=0;
+                blocked = MrMailbox.MrContactIsBlocked(hContact)!=0;
             MrMailbox.MrContactUnref(hContact);
         }
         return blocked;

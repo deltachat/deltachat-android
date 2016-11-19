@@ -361,9 +361,12 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
                             return;
                         }
 
-                        long hContact = MrMailbox.MrMailboxGetContact(MrMailbox.hMailbox, user.id);
-                            String name = MrMailbox.MrContactGetNameNAddr(hContact);
-                        MrMailbox.MrContactUnref(hContact);
+                        String name = "";
+                        {
+                            long hContact = MrMailbox.MrMailboxGetContact(MrMailbox.hMailbox, user.id);
+                                name = MrMailbox.MrContactGetNameNAddr(hContact);
+                            MrMailbox.MrContactUnref(hContact);
+                        }
 
                         AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
                         builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), new DialogInterface.OnClickListener() {
@@ -539,9 +542,12 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
         View textView = lf.inflate(R.layout.group_create_bubble, null);
         TextView text = (TextView)textView.findViewById(R.id.bubble_text_view);
 
-        long hContact = MrMailbox.MrMailboxGetContact(MrMailbox.hMailbox, user.id);
-            String name = MrMailbox.MrContactGetDisplayName(hContact);
-        MrMailbox.MrContactUnref(hContact);
+        String name ="";
+        {
+            long hContact = MrMailbox.MrMailboxGetContact(MrMailbox.hMailbox, user.id);
+                name = MrMailbox.MrContactGetDisplayName(hContact);
+            MrMailbox.MrContactUnref(hContact);
+        }
 
 
         text.setText(name + ", ");

@@ -85,7 +85,7 @@ public class DraftQuery {
     private static void saveDraft__(long did, String message, long replyToMessageId) // message may be null
     {
         long hChat = MrMailbox.MrMailboxGetChat(MrMailbox.hMailbox, (int)did);
-        MrMailbox.MrChatSetDraft(hChat, message, replyToMessageId);
+            MrMailbox.MrChatSetDraft(hChat, message, replyToMessageId);
         MrMailbox.MrChatUnref(hChat);
     }
 
