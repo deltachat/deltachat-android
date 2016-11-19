@@ -40,12 +40,10 @@ import android.view.animation.AccelerateInterpolator;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import org.telegram.messenger.AndroidUtilities;
 import org.telegram.messenger.AnimatorListenerAdapterProxy;
-import org.telegram.messenger.ChatObject;
 import org.telegram.messenger.LocaleController;
 import org.telegram.messenger.MrMailbox;
 import org.telegram.messenger.SendMessagesHelper;
@@ -105,10 +103,8 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
     private AvatarDrawable avatarDrawable;
     private ActionBarMenuItem animatingItem;
     private TopView topView;
-    private TextView blockTextView;
 
     private long dialog_id;
-    private boolean userBlocked;
 
     private boolean openAnimationInProgress;
     private boolean playProfileAnimation;
@@ -118,8 +114,6 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
 
     private AvatarUpdater avatarUpdater;
     private int[] sortedUserIds;
-
-    private TLRPC.Chat currentChat;
 
     private final static int block_contact = 2;
     private final static int delete_contact = 5;
@@ -194,8 +188,6 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
 
 
         } else if (chat_id != 0) {
-            currentChat = MrMailbox.chatId2chat(chat_id);
-
             sortedUserIds = MrMailbox.MrMailboxGetChatContacts(MrMailbox.hMailbox, chat_id);
 
             avatarUpdater = new AvatarUpdater();
@@ -270,7 +262,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                 if (id == -1) {
                     finishFragment();
                 } else if (id == block_contact) {
-                    if( userBlocked ) {
+                    if( userBlocked() ) {
                         MrMailbox.MrMailboxBlockContact(MrMailbox.hMailbox, user_id, 0);
                         finishFragment(); /* got to the parent, this is important eg. when editing blocking in the BlockedUserActivitiy. Moreover, this saves us updating all the states in the profile */
                     }
@@ -319,9 +311,6 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                             Bundle args = new Bundle();
                             args.putBoolean("scrollToTopOnResume", true);
                             args.putInt("chat_id", -(int) did);
-                            if (!MessagesController.checkCanOpenChat(args, fragment)) {
-                                return;
-                            }
 
                             NotificationCenter.getInstance().removeObserver(ProfileActivity.this, NotificationCenter.closeChats);
                             NotificationCenter.getInstance().postNotificationName(NotificationCenter.closeChats);
@@ -869,14 +858,10 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                 }
             } else if (chat_id != 0) {
                 if ((mask & MessagesController.UPDATE_MASK_CHAT_ADMINS) != 0) {
-                    TLRPC.Chat newChat = MrMailbox.chatId2chat(chat_id);
-                    if (newChat != null) {
-                        currentChat = newChat;
-                        createActionBarMenu();
-                        updateRowsIds();
-                        if (listAdapter != null) {
-                            listAdapter.notifyDataSetChanged();
-                        }
+                    createActionBarMenu();
+                    updateRowsIds();
+                    if (listAdapter != null) {
+                        listAdapter.notifyDataSetChanged();
                     }
                 }
                 if ((mask & MessagesController.UPDATE_MASK_CHANNEL) != 0 || (mask & MessagesController.UPDATE_MASK_CHAT_AVATAR) != 0 || (mask & MessagesController.UPDATE_MASK_CHAT_NAME) != 0 || (mask & MessagesController.UPDATE_MASK_CHAT_MEMBERS) != 0 || (mask & MessagesController.UPDATE_MASK_STATUS) != 0) {
@@ -1201,6 +1186,17 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
         }
     }
 
+    private boolean userBlocked()
+    {
+        boolean blocked = false;
+        if( user_id!=0 ) {
+            long hContact = MrMailbox.MrMailboxGetContact(MrMailbox.hMailbox, user_id);
+            blocked = MrMailbox.MrContactIsBlocked(hContact)!=0;
+            MrMailbox.MrContactUnref(hContact);
+        }
+        return blocked;
+    }
+
     private void updateProfileData() {
         if (avatarImage == null || nameTextView == null) {
             return;
@@ -1223,7 +1219,6 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
             long hContact = MrMailbox.MrMailboxGetContact(MrMailbox.hMailbox, user_id);
                 newString = MrMailbox.MrContactGetDisplayName(hContact);
                 newString2 = MrMailbox.MrContactGetAddr(hContact);
-                userBlocked = MrMailbox.MrContactIsBlocked(hContact)!=0;
             MrMailbox.MrContactUnref(hContact);
         }
         else {
@@ -1231,10 +1226,6 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                 newString = MrMailbox.MrChatGetName(hChat);
                 newString2 = MrMailbox.MrChatGetSubtitle(hChat);
             MrMailbox.MrChatUnref(hChat);
-        }
-
-        if( blockTextView != null ) {
-            blockTextView.setText(!userBlocked ? LocaleController.getString("BlockContact", R.string.BlockContact) : LocaleController.getString("UnblockContact", R.string.UnblockContact));
         }
 
         for (int a = 0; a < 2; a++) {
@@ -1283,7 +1274,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
         }
 
         if (user_id != 0) {
-            blockTextView = item.addSubItem(block_contact, "X", 0);
+            item.addSubItem(block_contact, userBlocked()? LocaleController.getString("UnblockContact", R.string.UnblockContact) : LocaleController.getString("BlockContact", R.string.BlockContact), 0);
             item.addSubItem(delete_contact, LocaleController.getString("DeleteContact", R.string.DeleteContact), 0);
         }
 
@@ -1311,9 +1302,6 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                 }
             } else {
                 args.putInt("enc_id", (int) (dialog_id >> 32));
-            }
-            if (!MessagesController.checkCanOpenChat(args, fragment)) {
-                return;
             }
 
             NotificationCenter.getInstance().removeObserver(this, NotificationCenter.closeChats);
