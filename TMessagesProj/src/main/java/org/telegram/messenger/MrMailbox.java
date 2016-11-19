@@ -171,11 +171,11 @@ public class MrMailbox {
     }
 
     // this function is called from within the C-wrapper
-    public final static int MR_EVENT_MSGS_UPDATED   = 2000;
-    public final static int MR_EVENT_BLOCKING_CHANGED = 2020;
-    public final static int MR_EVENT_IS_EMAIL_KNOWN = 2010;
-    public final static int MR_EVENT_MSG_DELIVERED  = 3000;
-    public final static int MR_EVENT_MSG_READ       = 3010;
+    public final static int MR_EVENT_MSGS_UPDATED     = 2000;
+    public final static int MR_EVENT_CONTACTS_CHANGED = 2030;
+    public final static int MR_EVENT_IS_EMAIL_KNOWN   = 2010;
+    public final static int MR_EVENT_MSG_DELIVERED    = 3000;
+    public final static int MR_EVENT_MSG_READ         = 3010;
     public static long MrCallback(final int event, final long data1, final long data2)
     {
         switch(event) {
@@ -201,11 +201,12 @@ public class MrMailbox {
                 });
                 return 0;
 
-            case MR_EVENT_BLOCKING_CHANGED:
+            case MR_EVENT_CONTACTS_CHANGED:
                 AndroidUtilities.runOnUIThread(new Runnable() {
                     @Override
                     public void run() {
                         reloadMainChatlist();
+                        NotificationCenter.getInstance().postNotificationName(NotificationCenter.contactsDidLoaded);
                         NotificationCenter.getInstance().postNotificationName(NotificationCenter.blockedUsersDidLoaded);
                         NotificationCenter.getInstance().postNotificationName(NotificationCenter.dialogsNeedReload);
                     }
@@ -232,7 +233,9 @@ public class MrMailbox {
     public native static int[]   MrMailboxGetKnownContacts  (long hMailbox, String query);
     public native static int[]   MrMailboxGetBlockedContacts(long hMailbox);
     public native static long    MrMailboxGetContact        (long hMailbox, int id);// returns hContact which must be unref'd after usage
+    public native static int     MrMailboxCreateContact     (long hMailbox, String name, String addr);
     public native static int     MrMailboxBlockContact      (long hMailbox, int id, int block);
+    public native static int     MrMailboxDeleteContact     (long hMailbox, int id); // returns 0 if the contact could not be deleted (eg. it is in use, maybe by strangers)
 
     public native static long    MrMailboxGetChatlist       (long hMailbox); // returns hChatlist which must be unref'd after usage
     public native static long    MrMailboxGetChat           (long hMailbox, int chat_id); // return hChat which must be unref'd after usage

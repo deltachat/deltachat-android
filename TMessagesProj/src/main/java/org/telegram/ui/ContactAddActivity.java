@@ -26,9 +26,11 @@ import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import org.telegram.messenger.AndroidUtilities;
 import org.telegram.messenger.LocaleController;
+import org.telegram.messenger.MrMailbox;
 import org.telegram.tgnet.TLRPC;
 import org.telegram.messenger.MessagesController;
 import org.telegram.messenger.NotificationCenter;
@@ -54,7 +56,6 @@ public class ContactAddActivity extends BaseFragment implements NotificationCent
     private TLRPC.InputFile uploadedAvatar;
     private BackupImageView avatarImage;
     private AvatarDrawable avatarDrawable;
-    private boolean createAfterUpload;
     private AvatarUpdater avatarUpdater = new AvatarUpdater();
     private String nameToSet = null;
     private int user_id;
@@ -72,6 +73,7 @@ public class ContactAddActivity extends BaseFragment implements NotificationCent
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.updateInterfaces);
         avatarUpdater.parentFragment = this;
         avatarUpdater.delegate = this;
+        avatarUpdater.returnOnly = true;
         do_what = getArguments().getInt("do_what", 0);
         user_id = getArguments().getInt("user_id", 0);
         return super.onFragmentCreate();
@@ -109,9 +111,16 @@ public class ContactAddActivity extends BaseFragment implements NotificationCent
                     if (do_what==CREATE_CONTACT) {
                         String name = nameTextView.getText().toString();
                         String addr = emailTextView.getText().toString();
-                        //MrMailbox.MrMailboxCreateContact(MrMailbox.hMailbox, name, addr);
+                        if( MrMailbox.MrMailboxCreateContact(MrMailbox.hMailbox, name, addr)==0 ) {
+                            Toast.makeText(getParentActivity(), LocaleController.getString("BadEmailAddress", R.string.BadEmailAddress), Toast.LENGTH_LONG).show();
+                            return;
+                        }
+                        else {
+                            Toast.makeText(getParentActivity(), LocaleController.getString("ContactCreated", R.string.ContactCreated), Toast.LENGTH_LONG).show();
+                        }
                     }
                     else if(do_what == EDIT_NAME) {
+
                     }
                     finishFragment();
                     NotificationCenter.getInstance().postNotificationName(NotificationCenter.updateInterfaces, MessagesController.UPDATE_MASK_NAME);
@@ -136,7 +145,7 @@ public class ContactAddActivity extends BaseFragment implements NotificationCent
 
         avatarImage = new BackupImageView(context);
         avatarImage.setRoundRadius(AndroidUtilities.dp(32));
-        avatarDrawable.setInfoByName(null);
+        avatarDrawable.setInfoByName("?");
         avatarImage.setImageDrawable(avatarDrawable);
         frameLayout.addView(avatarImage);
         FrameLayout.LayoutParams layoutParams1 = (FrameLayout.LayoutParams) avatarImage.getLayoutParams();
@@ -225,7 +234,7 @@ public class ContactAddActivity extends BaseFragment implements NotificationCent
 
                 @Override
                 public void afterTextChanged(Editable s) {
-                    avatarDrawable.setInfoByName(nameTextView.length() > 0 ? nameTextView.getText().toString() : null);
+                    avatarDrawable.setInfoByName(nameTextView.length() > 0 ? nameTextView.getText().toString() : "?");
                     avatarImage.invalidate();
                 }
             });
@@ -259,6 +268,7 @@ public class ContactAddActivity extends BaseFragment implements NotificationCent
 
     @Override
     public void didUploadedPhoto(final TLRPC.InputFile file, final TLRPC.PhotoSize small, final TLRPC.PhotoSize big) {
+        Toast.makeText(getParentActivity(), LocaleController.getString("NotYetImplemented", R.string.NotYetImplemented), Toast.LENGTH_LONG).show();
     }
 
     @Override

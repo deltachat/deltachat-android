@@ -27,6 +27,7 @@ import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import org.telegram.messenger.AndroidUtilities;
 import org.telegram.messenger.ChatObject;
@@ -83,6 +84,7 @@ public class GroupCreateFinalActivity extends BaseFragment implements Notificati
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.chatDidFailCreate);
         avatarUpdater.parentFragment = this;
         avatarUpdater.delegate = this;
+        avatarUpdater.returnOnly = true;
         selectedContacts = getArguments().getIntegerArrayList("result");
         final ArrayList<Integer> usersToLoad = new ArrayList<>();
         for (Integer uid : selectedContacts) {
@@ -326,6 +328,8 @@ public class GroupCreateFinalActivity extends BaseFragment implements Notificati
 
     @Override
     public void didUploadedPhoto(final TLRPC.InputFile file, final TLRPC.PhotoSize small, final TLRPC.PhotoSize big) {
+        Toast.makeText(getParentActivity(), LocaleController.getString("NotYetImplemented", R.string.NotYetImplemented), Toast.LENGTH_LONG).show();
+        /*
         AndroidUtilities.runOnUIThread(new Runnable() {
             @Override
             public void run() {
@@ -338,6 +342,7 @@ public class GroupCreateFinalActivity extends BaseFragment implements Notificati
                 }
             }
         });
+        */
     }
 
     @Override

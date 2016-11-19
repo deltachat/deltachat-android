@@ -25,6 +25,7 @@ public class ContactsAdapter extends BaseFragmentAdapter {
     private Context mContext;
     private HashMap<Integer, ?> checkedMap;
     private boolean scrolling;
+    private String lastQuery;
 
     private int[] contactIds;
 
@@ -43,6 +44,11 @@ public class ContactsAdapter extends BaseFragmentAdapter {
 
     public void search(String query) {
         contactIds = MrMailbox.MrMailboxGetKnownContacts(MrMailbox.hMailbox, query);
+        lastQuery = query;
+    }
+
+    public void searchAgain() {
+        contactIds = MrMailbox.MrMailboxGetKnownContacts(MrMailbox.hMailbox, lastQuery);
     }
 
     @Override

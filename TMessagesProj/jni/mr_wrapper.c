@@ -220,9 +220,26 @@ JNIEXPORT jlong Java_org_telegram_messenger_MrMailbox_MrMailboxGetContact(JNIEnv
 }
 
 
+JNIEXPORT jint Java_org_telegram_messenger_MrMailbox_MrMailboxCreateContact(JNIEnv *env, jclass c, jlong hMailbox, jstring name, jstring addr)
+{
+	CHAR_REF(name);
+	CHAR_REF(addr);
+		jint ret = (jint)mrmailbox_create_contact((mrmailbox_t*)hMailbox, namePtr, addrPtr);
+	CHAR_UNREF(addr);
+	CHAR_UNREF(name);
+	return ret;
+}
+
+
 JNIEXPORT jint Java_org_telegram_messenger_MrMailbox_MrMailboxBlockContact(JNIEnv *env, jclass c, jlong hMailbox, jint contact_id, jint block)
 {
 	return (jint)mrmailbox_block_contact((mrmailbox_t*)hMailbox, contact_id, block);
+}
+
+
+JNIEXPORT jint Java_org_telegram_messenger_MrMailbox_MrMailboxDeleteContact(JNIEnv *env, jclass c, jlong hMailbox, jint contact_id)
+{
+	return (jint)mrmailbox_delete_contact((mrmailbox_t*)hMailbox, contact_id);
 }
 
 

@@ -195,7 +195,7 @@
     <string name="NewContactTitle">Neuer Benutzer</string>
     <string name="BlockContact">Benutzer blockieren</string>
     <string name="EditContact">Bearbeiten</string>
-    <string name="DeleteContact">Löschen</string>
+    <string name="DeleteContact">Benutzer löschen</string>
     <string name="PhoneHome">Festnetz</string>
     <string name="PhoneMobile">Mobil</string>
     <string name="PhoneWork">Arbeit</string>
@@ -717,4 +717,8 @@
     <string name="Name">Name</string>
     <string name="EmailAddress">E-Mail-Adresse</string>
     <string name="MeAnd">Ich und</string>
+    <string name="CannotDeleteContact">Der Benutzer kann nicht gelöscht werden, da er verwendet wird; er kann aber blockiert werden.</string>
+    <string name="BadEmailAddress">Ungültige E-Mail-Adresse.</string>
+    <string name="ContactDeleted">Benutzer gelöscht.</string>
+    <string name="ContactCreated">Benutzer angelegt.</string>
 </resources>

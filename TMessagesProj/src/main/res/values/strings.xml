@@ -195,7 +195,7 @@
     <string name="NewContactTitle">New contact</string>
     <string name="BlockContact">Block contact</string>
     <string name="EditContact">Edit</string>
-    <string name="DeleteContact">Delete</string>
+    <string name="DeleteContact">Delete user</string>
     <string name="PhoneHome">Home</string>
     <string name="PhoneMobile">Mobile</string>
     <string name="PhoneWork">Work</string>
@@ -717,4 +717,8 @@
     <string name="Name" >Name</string>
     <string name="EmailAddress">E-mail address</string>
     <string name="MeAnd">Me and</string>
+    <string name="CannotDeleteContact">Cannot delete users in use, block user instead.</string>
+    <string name="BadEmailAddress">Bad e-mail address.</string>
+    <string name="ContactDeleted">User deleted.</string>
+    <string name="ContactCreated">User created.</string>
 </resources>

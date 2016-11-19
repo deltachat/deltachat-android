@@ -40,6 +40,7 @@ import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.telegram.messenger.AndroidUtilities;
 import org.telegram.messenger.ApplicationLoader;
@@ -438,6 +439,39 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
             }
         });
 
+        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Object item = listViewAdapter.getItem(i);
+                if (item instanceof TLRPC.User) {
+                    final TLRPC.User user = (TLRPC.User) item;
+                    AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
+                    CharSequence[] items = new CharSequence[]{
+                            LocaleController.getString("BlockContact", R.string.BlockContact),
+                            LocaleController.getString("DeleteContact", R.string.DeleteContact)
+                    };
+                    builder.setItems(items, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            if (i == 0) {
+                                MrMailbox.MrMailboxBlockContact(MrMailbox.hMailbox, user.id, 1);
+                            }
+                            else if (i == 1) {
+                                if( MrMailbox.MrMailboxDeleteContact(MrMailbox.hMailbox, user.id) == 0 ) {
+                                    Toast.makeText(getParentActivity(), LocaleController.getString("CannotDeleteContact", R.string.CannotDeleteContact), Toast.LENGTH_LONG).show();
+                                }
+                                else {
+                                    Toast.makeText(getParentActivity(), LocaleController.getString("ContactDeleted", R.string.ContactDeleted), Toast.LENGTH_LONG).show();
+                                }
+                            }
+                        }
+                    });
+                    showDialog(builder.create());
+                }
+                return true;
+            }
+        });
+
         listView.setOnScrollListener(new AbsListView.OnScrollListener() {
             @Override
             public void onScrollStateChanged(AbsListView absListView, int i) {
@@ -478,8 +512,10 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
 
     @Override
     public void didReceivedNotification(int id, Object... args) {
-        if (id == NotificationCenter.contactsDidLoaded) {
+        if (id == NotificationCenter.contactsDidLoaded ) {
+
             if (listViewAdapter != null) {
+                listViewAdapter.searchAgain();
                 listViewAdapter.notifyDataSetChanged();
             }
         } else if (id == NotificationCenter.updateInterfaces) {
