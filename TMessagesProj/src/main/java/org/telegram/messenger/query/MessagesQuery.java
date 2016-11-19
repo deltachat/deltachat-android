@@ -116,7 +116,7 @@ public class MessagesQuery {
                 }
             }
         } catch (Exception e) {
-            FileLog.e("tmessages", e);
+            FileLog.e("messenger", e);
         }
         */
         return null;
@@ -220,7 +220,7 @@ public class MessagesQuery {
                             }
                         });
                     } catch (Exception e) {
-                        FileLog.e("tmessages", e);
+                        FileLog.e("messenger", e);
                     }
                 }
             });
@@ -329,7 +329,7 @@ public class MessagesQuery {
                             }
                         }
                     } catch (Exception e) {
-                        FileLog.e("tmessages", e);
+                        FileLog.e("messenger", e);
                     }
                 }
             });
@@ -368,7 +368,7 @@ public class MessagesQuery {
                     state.dispose();
                     MessagesStorage.getInstance().getDatabase().commitTransaction();
                 } catch (Exception e) {
-                    FileLog.e("tmessages", e);
+                    FileLog.e("messenger", e);
                 }
             }
         });

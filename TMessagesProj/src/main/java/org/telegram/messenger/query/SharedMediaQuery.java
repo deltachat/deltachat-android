@@ -339,7 +339,7 @@ public class SharedMediaQuery {
                     res.messages.clear();
                     res.chats.clear();
                     res.users.clear();
-                    FileLog.e("tmessages", e);
+                    FileLog.e("messenger", e);
                 } finally {
                     processLoadedMedia(res, uid, offset, count, max_id, type, true, classGuid, isChannel, topReached);
                 }
@@ -393,7 +393,7 @@ public class SharedMediaQuery {
                     }
                     MessagesStorage.getInstance().getDatabase().commitTransaction();
                 } catch (Exception e) {
-                    FileLog.e("tmessages", e);
+                    FileLog.e("messenger", e);
                 }
             }
         });
@@ -423,7 +423,7 @@ public class SharedMediaQuery {
                     }
                     cursor.dispose();
                 } catch (Exception e) {
-                    FileLog.e("tmessages", e);
+                    FileLog.e("messenger", e);
                 }
                 AndroidUtilities.runOnUIThread(new Runnable() {
                     @Override

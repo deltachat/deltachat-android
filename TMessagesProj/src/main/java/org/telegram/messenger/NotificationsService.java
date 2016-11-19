@@ -17,7 +17,7 @@ public class NotificationsService extends Service {
 
     @Override
     public void onCreate() {
-        FileLog.e("tmessages", "service started");
+        FileLog.e("messenger", "service started");
         ApplicationLoader.postInitApplication();
     }
 
@@ -32,7 +32,7 @@ public class NotificationsService extends Service {
     }
 
     public void onDestroy() {
-        FileLog.e("tmessages", "service destroyed");
+        FileLog.e("messenger", "service destroyed");
 
         SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("Notifications", MODE_PRIVATE);
         if (preferences.getBoolean("pushService", true)) {

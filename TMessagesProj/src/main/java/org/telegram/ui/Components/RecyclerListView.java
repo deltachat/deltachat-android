@@ -151,7 +151,7 @@ public class RecyclerListView extends RecyclerView {
                         mGestureDetector.onTouchEvent(event);
                     }
                 } catch (Exception e) {
-                    FileLog.e("tmessages", e);
+                    FileLog.e("messenger", e);
                 }
             }
 
@@ -251,7 +251,7 @@ public class RecyclerListView extends RecyclerView {
             initializeScrollbars.invoke(this, a);
             a.recycle();
         } catch (Throwable e) {
-            FileLog.e("tmessages", e);
+            FileLog.e("messenger", e);
         }
 
         super.setOnScrollListener(new OnScrollListener() {
@@ -266,7 +266,7 @@ public class RecyclerListView extends RecyclerView {
                     try {
                         mGestureDetector.onTouchEvent(event);
                     } catch (Exception e) {
-                        FileLog.e("tmessages", e);
+                        FileLog.e("messenger", e);
                     }
                     currentChildView.onTouchEvent(event);
                     event.recycle();

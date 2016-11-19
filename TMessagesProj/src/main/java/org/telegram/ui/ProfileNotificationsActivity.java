@@ -221,7 +221,7 @@ public class ProfileNotificationsActivity extends BaseFragment implements Notifi
                         tmpIntent.putExtra(RingtoneManager.EXTRA_RINGTONE_EXISTING_URI, currentSound);
                         startActivityForResult(tmpIntent, 12);
                     } catch (Exception e) {
-                        FileLog.e("tmessages", e);
+                        FileLog.e("messenger", e);
                     }
                 } else if (i == settingsLedRow) {
                     if (getParentActivity() == null) {

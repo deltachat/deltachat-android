@@ -113,7 +113,7 @@ public class VideoEditorActivity extends BaseFragment implements TextureView.Sur
                         playerCheck = videoPlayer != null && videoPlayer.isPlaying();
                     } catch (Exception e) {
                         playerCheck = false;
-                        FileLog.e("tmessages", e);
+                        FileLog.e("messenger", e);
                     }
                 }
                 if (!playerCheck) {
@@ -140,7 +140,7 @@ public class VideoEditorActivity extends BaseFragment implements TextureView.Sur
                                     videoPlayer.pause();
                                     onPlayComplete();
                                 } catch (Exception e) {
-                                    FileLog.e("tmessages", e);
+                                    FileLog.e("messenger", e);
                                 }
                             }
                         }
@@ -149,7 +149,7 @@ public class VideoEditorActivity extends BaseFragment implements TextureView.Sur
                 try {
                     Thread.sleep(50);
                 } catch (Exception e) {
-                    FileLog.e("tmessages", e);
+                    FileLog.e("messenger", e);
                 }
             }
             synchronized (sync) {
@@ -196,7 +196,7 @@ public class VideoEditorActivity extends BaseFragment implements TextureView.Sur
             videoPlayer.setDataSource(videoPath);
             videoPlayer.prepareAsync();
         } catch (Exception e) {
-            FileLog.e("tmessages", e);
+            FileLog.e("messenger", e);
             return false;
         }
 
@@ -217,7 +217,7 @@ public class VideoEditorActivity extends BaseFragment implements TextureView.Sur
                 videoPlayer.release();
                 videoPlayer = null;
             } catch (Exception e) {
-                FileLog.e("tmessages", e);
+                FileLog.e("messenger", e);
             }
         }
         NotificationCenter.getInstance().removeObserver(this, NotificationCenter.closeChats);
@@ -243,7 +243,7 @@ public class VideoEditorActivity extends BaseFragment implements TextureView.Sur
                                 videoPlayer.release();
                                 videoPlayer = null;
                             } catch (Exception e) {
-                                FileLog.e("tmessages", e);
+                                FileLog.e("messenger", e);
                             }
                         }
                     }
@@ -307,7 +307,7 @@ public class VideoEditorActivity extends BaseFragment implements TextureView.Sur
                 }
             } catch (Exception e) {
                 compressVideo.setVisibility(View.GONE);
-                FileLog.e("tmessages", e);
+                FileLog.e("messenger", e);
             }
         }
 
@@ -332,7 +332,7 @@ public class VideoEditorActivity extends BaseFragment implements TextureView.Sur
                     videoPlayer.setOnSeekCompleteListener(null);
                     videoPlayer.seekTo((int) (videoDuration * progress));
                 } catch (Exception e) {
-                    FileLog.e("tmessages", e);
+                    FileLog.e("messenger", e);
                 }
                 needSeek = true;
                 videoSeekBarView.setProgress(videoTimelineView.getLeftProgress());
@@ -352,7 +352,7 @@ public class VideoEditorActivity extends BaseFragment implements TextureView.Sur
                     videoPlayer.setOnSeekCompleteListener(null);
                     videoPlayer.seekTo((int) (videoDuration * progress));
                 } catch (Exception e) {
-                    FileLog.e("tmessages", e);
+                    FileLog.e("messenger", e);
                 }
                 needSeek = true;
                 videoSeekBarView.setProgress(videoTimelineView.getLeftProgress());
@@ -379,7 +379,7 @@ public class VideoEditorActivity extends BaseFragment implements TextureView.Sur
                         videoPlayer.seekTo((int) (videoDuration * progress));
                         lastProgress = progress;
                     } catch (Exception e) {
-                        FileLog.e("tmessages", e);
+                        FileLog.e("messenger", e);
                     }
                 } else {
                     lastProgress = progress;
@@ -423,7 +423,7 @@ public class VideoEditorActivity extends BaseFragment implements TextureView.Sur
                 videoPlayer.seekTo((int) (videoTimelineView.getLeftProgress() * videoDuration));
             }
         } catch (Exception e) {
-            FileLog.e("tmessages", e);
+            FileLog.e("messenger", e);
         }
     }
 
@@ -477,7 +477,7 @@ public class VideoEditorActivity extends BaseFragment implements TextureView.Sur
                 }
             }
         } catch (Exception e) {
-            FileLog.e("tmessages", e);
+            FileLog.e("messenger", e);
         }
     }
 
@@ -691,7 +691,7 @@ public class VideoEditorActivity extends BaseFragment implements TextureView.Sur
                     }
                 }
             } catch (Exception e) {
-                FileLog.e("tmessages", e);
+                FileLog.e("messenger", e);
             }
         }
     }
@@ -739,7 +739,7 @@ public class VideoEditorActivity extends BaseFragment implements TextureView.Sur
                     videoDuration = (float) mediaHeaderBox.getDuration() / (float) mediaHeaderBox.getTimescale();
                     trackBitrate = (int) (sampleSizes * 8 / videoDuration);
                 } catch (Exception e) {
-                    FileLog.e("tmessages", e);
+                    FileLog.e("messenger", e);
                 }
                 TrackHeaderBox headerBox = trackBox.getTrackHeaderBox();
                 if (headerBox.getWidth() != 0 && headerBox.getHeight() != 0) {
@@ -782,7 +782,7 @@ public class VideoEditorActivity extends BaseFragment implements TextureView.Sur
                 return false;
             }
         } catch (Exception e) {
-            FileLog.e("tmessages", e);
+            FileLog.e("messenger", e);
             return false;
         }
 

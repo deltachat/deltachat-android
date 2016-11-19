@@ -465,7 +465,7 @@ public class ImageReceiver implements NotificationCenter.NotificationCenterDeleg
                             currentThumbKey = null;
                         }
                         setImage(currentImageLocation, currentHttpUrl, currentFilter, currentThumb, currentThumbLocation, currentThumbFilter, currentSize, currentExt, currentCacheOnly);
-                        FileLog.e("tmessages", e);
+                        FileLog.e("messenger", e);
                     }
                     canvas.restore();
                 } else {
@@ -510,7 +510,7 @@ public class ImageReceiver implements NotificationCenter.NotificationCenterDeleg
                                     currentThumbKey = null;
                                 }
                                 setImage(currentImageLocation, currentHttpUrl, currentFilter, currentThumb, currentThumbLocation, currentThumbFilter, currentSize, currentExt, currentCacheOnly);
-                                FileLog.e("tmessages", e);
+                                FileLog.e("messenger", e);
                             }
                         }
 
@@ -547,7 +547,7 @@ public class ImageReceiver implements NotificationCenter.NotificationCenterDeleg
                                     currentThumbKey = null;
                                 }
                                 setImage(currentImageLocation, currentHttpUrl, currentFilter, currentThumb, currentThumbLocation, currentThumbFilter, currentSize, currentExt, currentCacheOnly);
-                                FileLog.e("tmessages", e);
+                                FileLog.e("messenger", e);
                             }
                         }
                         canvas.restore();
@@ -562,7 +562,7 @@ public class ImageReceiver implements NotificationCenter.NotificationCenterDeleg
                     drawable.setAlpha(alpha);
                     drawable.draw(canvas);
                 } catch (Exception e) {
-                    FileLog.e("tmessages", e);
+                    FileLog.e("messenger", e);
                 }
             }
         }
@@ -644,7 +644,7 @@ public class ImageReceiver implements NotificationCenter.NotificationCenterDeleg
                 checkAlphaAnimation(animationNotReady);
             }
         } catch (Exception e) {
-            FileLog.e("tmessages", e);
+            FileLog.e("messenger", e);
         }
         return false;
     }

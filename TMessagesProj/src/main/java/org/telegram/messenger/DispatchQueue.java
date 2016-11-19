@@ -33,7 +33,7 @@ public class DispatchQueue extends Thread {
                 handler.sendMessageDelayed(msg, delay);
             }
         } catch (Exception e) {
-            FileLog.e("tmessages", e);
+            FileLog.e("messenger", e);
         }
     }
     */
@@ -43,7 +43,7 @@ public class DispatchQueue extends Thread {
             syncLatch.await();
             handler.removeCallbacks(runnable);
         } catch (Exception e) {
-            FileLog.e("tmessages", e);
+            FileLog.e("messenger", e);
         }
     }
 
@@ -60,7 +60,7 @@ public class DispatchQueue extends Thread {
                 handler.postDelayed(runnable, delay);
             }
         } catch (Exception e) {
-            FileLog.e("tmessages", e);
+            FileLog.e("messenger", e);
         }
     }
 
@@ -70,7 +70,7 @@ public class DispatchQueue extends Thread {
             syncLatch.await();
             handler.removeCallbacksAndMessages(null);
         } catch (Exception e) {
-            FileLog.e("tmessages", e);
+            FileLog.e("messenger", e);
         }
     }
     */

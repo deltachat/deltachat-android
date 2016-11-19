@@ -309,7 +309,7 @@ public class FileLoader {
         try {
             semaphore.acquire();
         } catch (Exception e) {
-            FileLog.e("tmessages", e);
+            FileLog.e("messenger", e);
         }
         return result[0];
     }

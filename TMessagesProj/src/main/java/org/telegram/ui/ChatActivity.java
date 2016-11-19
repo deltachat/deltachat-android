@@ -374,7 +374,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 try {
                     semaphore.acquire();
                 } catch (Exception e) {
-                    FileLog.e("tmessages", e);
+                    FileLog.e("messenger", e);
                 }
                 if (currentChat != null) {
                     MessagesController.getInstance().putChat(currentChat, true);
@@ -405,7 +405,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 try {
                     semaphore.acquire();
                 } catch (Exception e) {
-                    FileLog.e("tmessages", e);
+                    FileLog.e("messenger", e);
                 }
                 if (currentUser != null) {
                     MessagesController.getInstance().putUser(currentUser, true);
@@ -2497,7 +2497,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 }
                 startActivityForResult(takePictureIntent, 0);
             } catch (Exception e) {
-                FileLog.e("tmessages", e);
+                FileLog.e("messenger", e);
             }
         } else if (which == attach_gallery) {
             if (Build.VERSION.SDK_INT >= 23 && getParentActivity().checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
@@ -2529,7 +2529,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
 
                         startActivityForResult(chooserIntent, 1);
                     } catch (Exception e) {
-                        FileLog.e("tmessages", e);
+                        FileLog.e("messenger", e);
                     }
                 }
 
@@ -2559,7 +2559,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 }
                 startActivityForResult(takeVideoIntent, 2);
             } catch (Exception e) {
-                FileLog.e("tmessages", e);
+                FileLog.e("messenger", e);
             }
         } else if (which == attach_location ) {
             /* Telegram-FOSS  Disabled for now.*/
@@ -2601,7 +2601,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                         photoPickerIntent.setType("*/*");
                         startActivityForResult(photoPickerIntent, 21);
                     } catch (Exception e) {
-                        FileLog.e("tmessages", e);
+                        FileLog.e("messenger", e);
                     }
                 }
             });
@@ -2633,7 +2633,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 intent.setType(ContactsContract.CommonDataKinds.Phone.CONTENT_TYPE);
                 startActivityForResult(intent, 31);
             } catch (Exception e) {
-                FileLog.e("tmessages", e);
+                FileLog.e("messenger", e);
             }
         }
     }
@@ -2713,7 +2713,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     }
                     textToCheck = TextUtils.join(" ", urls);
                 } catch (Exception e) {
-                    FileLog.e("tmessages", e);
+                    FileLog.e("messenger", e);
                     String text = charSequence.toString().toLowerCase();
                     if (charSequence.length() < 13 || !text.contains("http://") && !text.contains("https://")) {
                         AndroidUtilities.runOnUIThread(new Runnable() {
@@ -3379,7 +3379,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                             break;
                     }
                 } catch (Exception e) {
-                    FileLog.e("tmessages", e);
+                    FileLog.e("messenger", e);
                 }
                 arrayList.add(new MediaController.PhotoEntry(0, 0, 0, currentPicturePath, orientation, false));
 
@@ -3402,7 +3402,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     try {
                         videoPath = AndroidUtilities.getPath(uri);
                     } catch (Exception e) {
-                        FileLog.e("tmessages", e);
+                        FileLog.e("messenger", e);
                     }
                     if (videoPath == null) {
                         showAttachmentError();
@@ -3423,7 +3423,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 DraftQuery.cleanDraft(dialog_id, true);
             } else if (requestCode == 2) {
                 String videoPath = null;
-                FileLog.d("tmessages", "pic path " + currentPicturePath);
+                FileLog.d("messenger", "pic path " + currentPicturePath);
                 if (data != null && currentPicturePath != null) {
                     if (new File(currentPicturePath).exists()) {
                         data = null;
@@ -3432,9 +3432,9 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 if (data != null) {
                     Uri uri = data.getData();
                     if (uri != null) {
-                        FileLog.d("tmessages", "video record uri " + uri.toString());
+                        FileLog.d("messenger", "video record uri " + uri.toString());
                         videoPath = AndroidUtilities.getPath(uri);
-                        FileLog.d("tmessages", "resolved path = " + videoPath);
+                        FileLog.d("messenger", "resolved path = " + videoPath);
                         if (!(new File(videoPath).exists())) {
                             videoPath = currentPicturePath;
                         }
@@ -3480,7 +3480,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                             uri = Uri.parse(secondExtraction);
                         }
                     } catch (Exception e) {
-                        FileLog.e("tmessages", e);
+                        FileLog.e("messenger", e);
                     }
                 }
                 String tempPath = AndroidUtilities.getPath(uri);
@@ -3528,7 +3528,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                             c.close();
                         }
                     } catch (Exception e) {
-                        FileLog.e("tmessages", e);
+                        FileLog.e("messenger", e);
                     }
                 }
             }
@@ -4420,7 +4420,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 try {
                     mediaUpdated = obj.messageOwner.params != null && obj.messageOwner.params.containsKey("query_id") || newMsgObj.media != null && obj.messageOwner.media != null && !newMsgObj.media.getClass().equals(obj.messageOwner.media.getClass());
                 } catch (Exception e) { //TODO
-                    FileLog.e("tmessages", e);
+                    FileLog.e("messenger", e);
                 }
                 if (newMsgObj != null) {
                     obj.messageOwner = newMsgObj;
@@ -5071,7 +5071,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                         chatLayoutManager.scrollToPositionWithOffset(firstVisPos, top);
                     }
                 } catch (Exception e) {
-                    FileLog.e("tmessages", e);
+                    FileLog.e("messenger", e);
                 }
             }
         });
@@ -6242,7 +6242,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                                 }
                                 catch (Exception e){
                                     Toast.makeText(getParentActivity(), "Error handling geo: intent", Toast.LENGTH_SHORT).show();
-                                    FileLog.e("tmessages", e);
+                                    FileLog.e("messenger", e);
                                 }
                             }
                         } else if (message.type == 9 || message.type == 0) {
@@ -6404,7 +6404,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
             try {
                 super.notifyDataSetChanged();
             } catch (Exception e) {
-                FileLog.e("tmessages", e);
+                FileLog.e("messenger", e);
             }
         }
 
@@ -6414,7 +6414,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
             try {
                 super.notifyItemChanged(position);
             } catch (Exception e) {
-                FileLog.e("tmessages", e);
+                FileLog.e("messenger", e);
             }
         }
 
@@ -6424,7 +6424,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
             try {
                 super.notifyItemRangeChanged(positionStart, itemCount);
             } catch (Exception e) {
-                FileLog.e("tmessages", e);
+                FileLog.e("messenger", e);
             }
         }
 
@@ -6434,7 +6434,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
             try {
                 super.notifyItemInserted(position);
             } catch (Exception e) {
-                FileLog.e("tmessages", e);
+                FileLog.e("messenger", e);
             }
         }
 
@@ -6444,7 +6444,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
             try {
                 super.notifyItemMoved(fromPosition, toPosition);
             } catch (Exception e) {
-                FileLog.e("tmessages", e);
+                FileLog.e("messenger", e);
             }
         }
 
@@ -6454,7 +6454,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
             try {
                 super.notifyItemRangeInserted(positionStart, itemCount);
             } catch (Exception e) {
-                FileLog.e("tmessages", e);
+                FileLog.e("messenger", e);
             }
         }
 
@@ -6464,7 +6464,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
             try {
                 super.notifyItemRemoved(position);
             } catch (Exception e) {
-                FileLog.e("tmessages", e);
+                FileLog.e("messenger", e);
             }
         }
 
@@ -6474,7 +6474,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
             try {
                 super.notifyItemRangeRemoved(positionStart, itemCount);
             } catch (Exception e) {
-                FileLog.e("tmessages", e);
+                FileLog.e("messenger", e);
             }
         }
     }

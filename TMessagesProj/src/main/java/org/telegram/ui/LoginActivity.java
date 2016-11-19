@@ -93,7 +93,7 @@ public class LoginActivity extends BaseFragment {
             try {
                 progressDialog.dismiss();
             } catch (Exception e) {
-                FileLog.e("tmessages", e);
+                FileLog.e("messenger", e);
             }
             progressDialog = null;
         }
@@ -195,7 +195,7 @@ public class LoginActivity extends BaseFragment {
                 }
             }
         } catch (Exception e) {
-            FileLog.e("tmessages", e);
+            FileLog.e("messenger", e);
         }
     }
 
@@ -239,7 +239,7 @@ public class LoginActivity extends BaseFragment {
             }
             return bundle;
         } catch (Exception e) {
-            FileLog.e("tmessages", e);
+            FileLog.e("messenger", e);
         }
         return null;
     }
@@ -359,7 +359,7 @@ public class LoginActivity extends BaseFragment {
         try {
             progressDialog.dismiss();
         } catch (Exception e) {
-            FileLog.e("tmessages", e);
+            FileLog.e("messenger", e);
         }
         progressDialog = null;
     }
@@ -449,7 +449,7 @@ public class LoginActivity extends BaseFragment {
             putBundleToEditor(bundle, editor, null);
             editor.commit();
         } catch (Exception e) {
-            FileLog.e("tmessages", e);
+            FileLog.e("messenger", e);
         }
     }
 
@@ -746,7 +746,7 @@ public class LoginActivity extends BaseFragment {
                 }
                 reader.close();
             } catch (Exception e) {
-                FileLog.e("tmessages", e);
+                FileLog.e("messenger", e);
             }
 
             Collections.sort(countriesArray, new Comparator<String>() {
@@ -765,7 +765,7 @@ public class LoginActivity extends BaseFragment {
                     country = telephonyManager.getSimCountryIso().toUpperCase();
                 }
             } catch (Exception e) {
-                FileLog.e("tmessages", e);
+                FileLog.e("messenger", e);
             }
             */
 
@@ -896,7 +896,7 @@ public class LoginActivity extends BaseFragment {
             try {
                 params.putString("ephone", "+"  +PhoneFormat.stripExceptNumbers(codeField.getText().toString()) + " " + PhoneFormat.stripExceptNumbers(phoneField.getText().toString()));
             } catch (Exception e) {
-                FileLog.e("tmessages", e);
+                FileLog.e("messenger", e);
                 params.putString("ephone", "+" + phone);
             }
             params.putString("phoneFormated", phone);
@@ -1365,7 +1365,7 @@ public class LoginActivity extends BaseFragment {
                     }
                 }
             } catch (Exception e) {
-                FileLog.e("tmessages", e);
+                FileLog.e("messenger", e);
             }
         }
 
@@ -1453,7 +1453,7 @@ public class LoginActivity extends BaseFragment {
                     }
                 }
             } catch (Exception e) {
-                FileLog.e("tmessages", e);
+                FileLog.e("messenger", e);
             }
         }
 
@@ -1931,7 +1931,7 @@ public class LoginActivity extends BaseFragment {
             try {
                 oldPasswordBytes = oldPassword.getBytes("UTF-8");
             } catch (Exception e) {
-                FileLog.e("tmessages", e);
+                FileLog.e("messenger", e);
             }
 
             needShowProgress();

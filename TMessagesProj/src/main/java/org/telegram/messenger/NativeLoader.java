@@ -53,7 +53,7 @@ public class NativeLoader {
                 file.delete();
             }
         } catch (Exception e) {
-            FileLog.e("tmessages", e);
+            FileLog.e("messenger", e);
         }
 
         ZipFile zipFile = null;
@@ -84,24 +84,24 @@ public class NativeLoader {
                 init(context.getCacheDir().getAbsolutePath(), BuildVars.DEBUG_VERSION);
                 nativeLoaded = true;
             } catch (Error e) {
-                FileLog.e("tmessages", e);
+                FileLog.e("messenger", e);
             }
             return true;
         } catch (Exception e) {
-            FileLog.e("tmessages", e);
+            FileLog.e("messenger", e);
         } finally {
             if (stream != null) {
                 try {
                     stream.close();
                 } catch (Exception e) {
-                    FileLog.e("tmessages", e);
+                    FileLog.e("messenger", e);
                 }
             }
             if (zipFile != null) {
                 try {
                     zipFile.close();
                 } catch (Exception e) {
-                    FileLog.e("tmessages", e);
+                    FileLog.e("messenger", e);
                 }
             }
         }
@@ -128,10 +128,10 @@ public class NativeLoader {
                     folder = "mips";
                 } else {
                     folder = "armeabi";
-                    FileLog.e("tmessages", "Unsupported arch: " + Build.CPU_ABI);
+                    FileLog.e("messenger", "Unsupported arch: " + Build.CPU_ABI);
                 }
             } catch (Exception e) {
-                FileLog.e("tmessages", e);
+                FileLog.e("messenger", e);
                 folder = "armeabi";
             }
 
@@ -145,14 +145,14 @@ public class NativeLoader {
             if (destFile != null) {
                 destFile = new File(destFile, LIB_SO_NAME);
                 if (destFile.exists()) {
-                    FileLog.d("tmessages", "load normal lib");
+                    FileLog.d("messenger", "load normal lib");
                     try {
                         System.loadLibrary(LIB_NAME);
                         init(crashDir, BuildVars.DEBUG_VERSION);
                         nativeLoaded = true;
                         return;
                     } catch (Error e) {
-                        FileLog.e("tmessages", e);
+                        FileLog.e("messenger", e);
                     }
                 }
             }
@@ -163,18 +163,18 @@ public class NativeLoader {
             File destLocalFile = new File(destDir, LOCALE_LIB_SO_NAME);
             if (destLocalFile.exists()) {
                 try {
-                    FileLog.d("tmessages", "Load local lib");
+                    FileLog.d("messenger", "Load local lib");
                     System.load(destLocalFile.getAbsolutePath());
                     init(crashDir, BuildVars.DEBUG_VERSION);
                     nativeLoaded = true;
                     return;
                 } catch (Error e) {
-                    FileLog.e("tmessages", e);
+                    FileLog.e("messenger", e);
                 }
                 destLocalFile.delete();
             }
 
-            FileLog.e("tmessages", "Library not found, arch = " + folder);
+            FileLog.e("messenger", "Library not found, arch = " + folder);
 
             if (loadFromZip(context, destDir, destLocalFile, folder)) {
                 return;
@@ -188,7 +188,7 @@ public class NativeLoader {
             init(crashDir, BuildVars.DEBUG_VERSION);
             nativeLoaded = true;
         } catch (Error e) {
-            FileLog.e("tmessages", e);
+            FileLog.e("messenger", e);
         }
     }
 

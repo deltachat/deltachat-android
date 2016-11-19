@@ -550,7 +550,7 @@ public class PhotoCropView extends FrameLayout {
             try {
                 return createBitmap(x, y, sizeX, sizeY);
             } catch (Throwable e2) {
-                FileLog.e("tmessages", e2);
+                FileLog.e("messenger", e2);
             }
         }
         return null;

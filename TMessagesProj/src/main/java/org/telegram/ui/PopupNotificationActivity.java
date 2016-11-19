@@ -464,7 +464,7 @@ public class PopupNotificationActivity extends Activity implements NotificationC
                         intent.setData(Uri.parse("package:" + ApplicationLoader.applicationContext.getPackageName()));
                         startActivity(intent);
                     } catch (Exception e) {
-                        FileLog.e("tmessages", e);
+                        FileLog.e("messenger", e);
                     }
                 }
             });
@@ -1103,7 +1103,7 @@ public class PopupNotificationActivity extends Activity implements NotificationC
                     typingDotsDrawable.stop();
                 }
             } catch (Exception e) {
-                FileLog.e("tmessages", e);
+                FileLog.e("messenger", e);
             }
         } else {
             onlineTextView.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);

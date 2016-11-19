@@ -102,7 +102,7 @@ public class SearchQuery {
                             }
                         });
                     } catch (Exception e) {
-                        FileLog.e("tmessages", e);
+                        FileLog.e("messenger", e);
                     }
                 }
             });
@@ -189,7 +189,7 @@ public class SearchQuery {
                                                 }
                                             });
                                         } catch (Exception e) {
-                                            FileLog.e("tmessages", e);
+                                            FileLog.e("messenger", e);
                                         }
                                     }
                                 });
@@ -277,7 +277,7 @@ public class SearchQuery {
                         cursor.dispose();
                     }
                 } catch (Exception e) {
-                    FileLog.e("tmessages", e);
+                    FileLog.e("messenger", e);
                 }
                 final double dtFinal = dt;
                 AndroidUtilities.runOnUIThread(new Runnable() {

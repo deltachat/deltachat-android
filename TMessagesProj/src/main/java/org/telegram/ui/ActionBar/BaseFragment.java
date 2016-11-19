@@ -66,7 +66,7 @@ public class BaseFragment {
                 try {
                     parent.removeView(fragmentView);
                 } catch (Exception e) {
-                    FileLog.e("tmessages", e);
+                    FileLog.e("messenger", e);
                 }
             }
             fragmentView = null;
@@ -77,7 +77,7 @@ public class BaseFragment {
                 try {
                     parent.removeView(actionBar);
                 } catch (Exception e) {
-                    FileLog.e("tmessages", e);
+                    FileLog.e("messenger", e);
                 }
             }
             actionBar = null;
@@ -94,7 +94,7 @@ public class BaseFragment {
                     try {
                         parent.removeView(fragmentView);
                     } catch (Exception e) {
-                        FileLog.e("tmessages", e);
+                        FileLog.e("messenger", e);
                     }
                 }
                 if (parentLayout != null && parentLayout.getContext() != fragmentView.getContext()) {
@@ -107,7 +107,7 @@ public class BaseFragment {
                     try {
                         parent.removeView(actionBar);
                     } catch (Exception e) {
-                        FileLog.e("tmessages", e);
+                        FileLog.e("messenger", e);
                     }
                 }
                 if (parentLayout != null && parentLayout.getContext() != actionBar.getContext()) {
@@ -176,7 +176,7 @@ public class BaseFragment {
                 visibleDialog = null;
             }
         } catch (Exception e) {
-            FileLog.e("tmessages", e);
+            FileLog.e("messenger", e);
         }
     }
 
@@ -240,7 +240,7 @@ public class BaseFragment {
                 visibleDialog = null;
             }
         } catch (Exception e) {
-            FileLog.e("tmessages", e);
+            FileLog.e("messenger", e);
         }
         if (actionBar != null) {
             actionBar.onPause();
@@ -281,7 +281,7 @@ public class BaseFragment {
                 visibleDialog = null;
             }
         } catch (Exception e) {
-            FileLog.e("tmessages", e);
+            FileLog.e("messenger", e);
         }
         try {
             visibleDialog = dialog;
@@ -296,7 +296,7 @@ public class BaseFragment {
             visibleDialog.show();
             return visibleDialog;
         } catch (Exception e) {
-            FileLog.e("tmessages", e);
+            FileLog.e("messenger", e);
         }
         return null;
     }

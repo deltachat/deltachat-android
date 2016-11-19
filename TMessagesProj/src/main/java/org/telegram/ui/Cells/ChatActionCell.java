@@ -243,13 +243,13 @@ public class ChatActionCell extends BaseCell {
                         }
                         textHeight = (int)Math.max(textHeight, Math.ceil(textLayout.getLineBottom(a)));
                     } catch (Exception e) {
-                        FileLog.e("tmessages", e);
+                        FileLog.e("messenger", e);
                         return;
                     }
                     textWidth = (int)Math.max(textWidth, Math.ceil(lineWidth));
                 }
             } catch (Exception e) {
-                FileLog.e("tmessages", e);
+                FileLog.e("messenger", e);
             }
 
             textX = (width - textWidth) / 2;

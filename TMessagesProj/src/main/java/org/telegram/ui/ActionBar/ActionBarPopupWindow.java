@@ -95,7 +95,7 @@ public class ActionBarPopupWindow extends PopupWindow {
                 scrollView.setVerticalScrollBarEnabled(false);
                 addView(scrollView, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT));
             } catch (Throwable e) {
-                FileLog.e("tmessages", e);
+                FileLog.e("messenger", e);
             }
 
 
@@ -304,7 +304,7 @@ public class ActionBarPopupWindow extends PopupWindow {
             super.showAsDropDown(anchor, xoff, yoff);
             registerListener(anchor);
         } catch (Exception e) {
-            FileLog.e("tmessages", e);
+            FileLog.e("messenger", e);
         }
     }
 

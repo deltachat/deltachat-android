@@ -102,7 +102,7 @@ public class Emoji {
                     }
                 }
             } catch (Exception e) {
-                FileLog.e("tmessages", e);
+                FileLog.e("messenger", e);
             }
 
 
@@ -143,7 +143,7 @@ public class Emoji {
                 }
             });
         } catch (Throwable x) {
-            FileLog.e("tmessages", "Error loading emoji", x);
+            FileLog.e("messenger", "Error loading emoji", x);
         }
     }
 
@@ -194,7 +194,7 @@ public class Emoji {
     public static EmojiDrawable getEmojiDrawable(CharSequence code) {
         DrawableInfo info = rects.get(code);
         if (info == null) {
-            FileLog.e("tmessages", "No drawable for emoji " + code);
+            FileLog.e("messenger", "No drawable for emoji " + code);
             return null;
         }
         EmojiDrawable ed = new EmojiDrawable(info);
@@ -419,7 +419,7 @@ public class Emoji {
 //                }
 //            }
 //        } catch (Exception e) {
-//            FileLog.e("tmessages", e);
+//            FileLog.e("messenger", e);
 //            return cs;
 //        }
         return s;

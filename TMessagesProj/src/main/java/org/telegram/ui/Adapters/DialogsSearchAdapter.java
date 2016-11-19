@@ -372,7 +372,7 @@ public class DialogsSearchAdapter extends BaseSearchAdapterRecycler {
                         }
                     });
                 } catch (Exception e) {
-                    FileLog.e("tmessages", e);
+                    FileLog.e("messenger", e);
                 }
             }
         });
@@ -406,7 +406,7 @@ public class DialogsSearchAdapter extends BaseSearchAdapterRecycler {
                     state.step();
                     state.dispose();
                 } catch (Exception e) {
-                    FileLog.e("tmessages", e);
+                    FileLog.e("messenger", e);
                 }
             }
         });
@@ -424,7 +424,7 @@ public class DialogsSearchAdapter extends BaseSearchAdapterRecycler {
                 try {
                     MessagesStorage.getInstance().getDatabase().executeFast("DELETE FROM search_recent WHERE 1").stepThis().dispose();
                 } catch (Exception e) {
-                    FileLog.e("tmessages", e);
+                    FileLog.e("messenger", e);
                 }
             }
         });
@@ -741,7 +741,7 @@ public class DialogsSearchAdapter extends BaseSearchAdapterRecycler {
 
                     updateSearchResults(resultArray, resultArrayNames, encUsers, searchId);
                 } catch (Exception e) {
-                    FileLog.e("tmessages", e);
+                    FileLog.e("messenger", e);
                 }
             }
         });
@@ -812,7 +812,7 @@ public class DialogsSearchAdapter extends BaseSearchAdapterRecycler {
                 searchTimer = null;
             }
         } catch (Exception e) {
-            FileLog.e("tmessages", e);
+            FileLog.e("messenger", e);
         }
         if (query == null || query.length() == 0) {
             hashtagsLoadedFromDb = false;
@@ -858,7 +858,7 @@ public class DialogsSearchAdapter extends BaseSearchAdapterRecycler {
                         searchTimer.cancel();
                         searchTimer = null;
                     } catch (Exception e) {
-                        FileLog.e("tmessages", e);
+                        FileLog.e("messenger", e);
                     }
                     searchDialogsInternal(query, searchId);
                     AndroidUtilities.runOnUIThread(new Runnable() {
@@ -1065,7 +1065,7 @@ public class DialogsSearchAdapter extends BaseSearchAdapterRecycler {
                             username = AndroidUtilities.replaceTags(String.format("<c#ff4d83b3>@%s</c>%s", un.substring(0, foundUserName.length()), un.substring(foundUserName.length())));
                         } catch (Exception e) {
                             username = un;
-                            FileLog.e("tmessages", e);
+                            FileLog.e("messenger", e);
                         }
                     }
                 }

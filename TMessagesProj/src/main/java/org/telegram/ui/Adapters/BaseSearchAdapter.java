@@ -106,7 +106,7 @@ public class BaseSearchAdapter extends BaseFragmentAdapter {
                         }
                     });
                 } catch (Exception e) {
-                    FileLog.e("tmessages", e);
+                    FileLog.e("messenger", e);
                 }
             }
         });
@@ -178,7 +178,7 @@ public class BaseSearchAdapter extends BaseFragmentAdapter {
                         MessagesStorage.getInstance().getDatabase().commitTransaction();
                     }
                 } catch (Exception e) {
-                    FileLog.e("tmessages", e);
+                    FileLog.e("messenger", e);
                 }
             }
         });
@@ -195,7 +195,7 @@ public class BaseSearchAdapter extends BaseFragmentAdapter {
                 try {
                     MessagesStorage.getInstance().getDatabase().executeFast("DELETE FROM hashtag_recent_v2 WHERE 1").stepThis().dispose();
                 } catch (Exception e) {
-                    FileLog.e("tmessages", e);
+                    FileLog.e("messenger", e);
                 }
             }
         });

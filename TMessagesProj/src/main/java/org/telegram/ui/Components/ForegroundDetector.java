@@ -63,12 +63,12 @@ public class ForegroundDetector implements Application.ActivityLifecycleCallback
             if (System.currentTimeMillis() - enterBackgroundTime < 200) {
                 wasInBackground = false;
             }
-            FileLog.e("tmessages", "switch to foreground");
+            FileLog.e("messenger", "switch to foreground");
             for (Listener listener : listeners) {
                 try {
                     listener.onBecameForeground();
                 } catch (Exception e) {
-                    FileLog.e("tmessages", e);
+                    FileLog.e("messenger", e);
                 }
             }
         }
@@ -90,12 +90,12 @@ public class ForegroundDetector implements Application.ActivityLifecycleCallback
         if (--refs == 0) {
             enterBackgroundTime = System.currentTimeMillis();
             wasInBackground = true;
-            FileLog.e("tmessages", "switch to background");
+            FileLog.e("messenger", "switch to background");
             for (Listener listener : listeners) {
                 try {
                     listener.onBecameBackground();
                 } catch (Exception e) {
-                    FileLog.e("tmessages", e);
+                    FileLog.e("messenger", e);
                 }
             }
         }

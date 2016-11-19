@@ -551,7 +551,7 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
                                     visibleDialog.dismiss();
                                 }
                             } catch (Exception e) {
-                                FileLog.e("tmessages", e);
+                                FileLog.e("messenger", e);
                             }
                             int newMask = 0;
                             for (int a = 0; a < 6; a++) {
@@ -880,7 +880,7 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
                             data.cleanup();
                         }
                     } catch (Exception e) {
-                        FileLog.e("tmessages", e);
+                        FileLog.e("messenger", e);
                         supportUser = null;
                     }
                 }
@@ -912,7 +912,7 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
                                 try {
                                     progressDialog.dismiss();
                                 } catch (Exception e) {
-                                    FileLog.e("tmessages", e);
+                                    FileLog.e("messenger", e);
                                 }
                                 ArrayList<TLRPC.User> users = new ArrayList<>();
                                 users.add(res.user);
@@ -930,7 +930,7 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
                                 try {
                                     progressDialog.dismiss();
                                 } catch (Exception e) {
-                                    FileLog.e("tmessages", e);
+                                    FileLog.e("messenger", e);
                                 }
                             }
                         });
@@ -1292,7 +1292,7 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
                         }
                         ((TextInfoCell) view).setText(String.format(Locale.US, "Telegram for Android v%s (%d) %s", pInfo.versionName, code, abi));
                     } catch (Exception e) {
-                        FileLog.e("tmessages", e);
+                        FileLog.e("messenger", e);
                     }
                     */
                 }

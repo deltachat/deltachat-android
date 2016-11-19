@@ -343,7 +343,7 @@ public class StickerPreviewViewer {
                     wm.removeView(windowView);
                 }
             } catch (Exception e) {
-                FileLog.e("tmessages", e);
+                FileLog.e("messenger", e);
             }
             WindowManager wm = (WindowManager) parentActivity.getSystemService(Context.WINDOW_SERVICE);
             wm.addView(windowView, windowLayoutParams);
@@ -377,7 +377,7 @@ public class StickerPreviewViewer {
                 wm.removeView(windowView);
             }
         } catch (Exception e) {
-            FileLog.e("tmessages", e);
+            FileLog.e("messenger", e);
         }
     }
 
@@ -394,7 +394,7 @@ public class StickerPreviewViewer {
             }
             windowView = null;
         } catch (Exception e) {
-            FileLog.e("tmessages", e);
+            FileLog.e("messenger", e);
         }
         Instance = null;
     }

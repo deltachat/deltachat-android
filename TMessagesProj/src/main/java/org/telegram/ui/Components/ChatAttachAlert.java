@@ -506,7 +506,7 @@ public class ChatAttachAlert extends BottomSheet implements NotificationCenter.N
                                         break;
                                 }
                             } catch (Exception e) {
-                                FileLog.e("tmessages", e);
+                                FileLog.e("messenger", e);
                             }
                             arrayList.add(new MediaController.PhotoEntry(0, 0, 0, path.getAbsolutePath(), orientation, false));
 
@@ -1213,7 +1213,7 @@ public class ChatAttachAlert extends BottomSheet implements NotificationCenter.N
             try {
                 animators.add(ViewAnimationUtils.createCircularReveal(containerView, finalRevealX, revealY, open ? 0 : finalRevealRadius, open ? finalRevealRadius : 0));
             } catch (Exception e) {
-                FileLog.e("tmessages", e);
+                FileLog.e("messenger", e);
             }
             animatorSet.setDuration(320);
         } else {
@@ -1247,7 +1247,7 @@ public class ChatAttachAlert extends BottomSheet implements NotificationCenter.N
                         try {
                             dismissInternal();
                         } catch (Exception e) {
-                            FileLog.e("tmessages", e);
+                            FileLog.e("messenger", e);
                         }
                     }
                 }

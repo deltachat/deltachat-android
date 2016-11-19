@@ -1195,7 +1195,7 @@ public class PhotoFilterView extends FrameLayout {
             int[] compileStatus = new int[1];
             GLES20.glGetShaderiv(shader, GLES20.GL_COMPILE_STATUS, compileStatus, 0);
             if (compileStatus[0] == 0) {
-                FileLog.e("tmessages", GLES20.glGetShaderInfoLog(shader));
+                FileLog.e("messenger", GLES20.glGetShaderInfoLog(shader));
                 GLES20.glDeleteShader(shader);
                 shader = 0;
             }
@@ -1207,14 +1207,14 @@ public class PhotoFilterView extends FrameLayout {
 
             eglDisplay = egl10.eglGetDisplay(EGL10.EGL_DEFAULT_DISPLAY);
             if (eglDisplay == EGL10.EGL_NO_DISPLAY) {
-                FileLog.e("tmessages", "eglGetDisplay failed " + GLUtils.getEGLErrorString(egl10.eglGetError()));
+                FileLog.e("messenger", "eglGetDisplay failed " + GLUtils.getEGLErrorString(egl10.eglGetError()));
                 finish();
                 return false;
             }
 
             int[] version = new int[2];
             if (!egl10.eglInitialize(eglDisplay, version)) {
-                FileLog.e("tmessages", "eglInitialize failed " + GLUtils.getEGLErrorString(egl10.eglGetError()));
+                FileLog.e("messenger", "eglInitialize failed " + GLUtils.getEGLErrorString(egl10.eglGetError()));
                 finish();
                 return false;
             }
@@ -1232,13 +1232,13 @@ public class PhotoFilterView extends FrameLayout {
                     EGL10.EGL_NONE
             };
             if (!egl10.eglChooseConfig(eglDisplay, configSpec, configs, 1, configsCount)) {
-                FileLog.e("tmessages", "eglChooseConfig failed " + GLUtils.getEGLErrorString(egl10.eglGetError()));
+                FileLog.e("messenger", "eglChooseConfig failed " + GLUtils.getEGLErrorString(egl10.eglGetError()));
                 finish();
                 return false;
             } else if (configsCount[0] > 0) {
                 eglConfig = configs[0];
             } else {
-                FileLog.e("tmessages", "eglConfig not initialized");
+                FileLog.e("messenger", "eglConfig not initialized");
                 finish();
                 return false;
             }
@@ -1246,7 +1246,7 @@ public class PhotoFilterView extends FrameLayout {
             int[] attrib_list = { EGL_CONTEXT_CLIENT_VERSION, 2, EGL10.EGL_NONE };
             eglContext = egl10.eglCreateContext(eglDisplay, eglConfig, EGL10.EGL_NO_CONTEXT, attrib_list);
             if (eglContext == null) {
-                FileLog.e("tmessages", "eglCreateContext failed " + GLUtils.getEGLErrorString(egl10.eglGetError()));
+                FileLog.e("messenger", "eglCreateContext failed " + GLUtils.getEGLErrorString(egl10.eglGetError()));
                 finish();
                 return false;
             }
@@ -1259,12 +1259,12 @@ public class PhotoFilterView extends FrameLayout {
             }
 
             if (eglSurface == null || eglSurface == EGL10.EGL_NO_SURFACE) {
-                FileLog.e("tmessages", "createWindowSurface failed " + GLUtils.getEGLErrorString(egl10.eglGetError()));
+                FileLog.e("messenger", "createWindowSurface failed " + GLUtils.getEGLErrorString(egl10.eglGetError()));
                 finish();
                 return false;
             }
             if (!egl10.eglMakeCurrent(eglDisplay, eglSurface, eglSurface, eglContext)) {
-                FileLog.e("tmessages", "eglMakeCurrent failed " + GLUtils.getEGLErrorString(egl10.eglGetError()));
+                FileLog.e("messenger", "eglMakeCurrent failed " + GLUtils.getEGLErrorString(egl10.eglGetError()));
                 finish();
                 return false;
             }
@@ -1326,7 +1326,7 @@ public class PhotoFilterView extends FrameLayout {
                 GLES20.glGetProgramiv(toolsShaderProgram, GLES20.GL_LINK_STATUS, linkStatus, 0);
                 if (linkStatus[0] == 0) {
                     /*String infoLog = GLES20.glGetProgramInfoLog(toolsShaderProgram);
-                    FileLog.e("tmessages", "link error = " + infoLog);*/
+                    FileLog.e("messenger", "link error = " + infoLog);*/
                     GLES20.glDeleteProgram(toolsShaderProgram);
                     toolsShaderProgram = 0;
                 } else {
@@ -1607,7 +1607,7 @@ public class PhotoFilterView extends FrameLayout {
                     buffer = ByteBuffer.allocateDirect(PGPhotoEnhanceSegments * PGPhotoEnhanceSegments * PGPhotoEnhanceHistogramBins * 4);
                     Utilities.calcCDT(hsvBuffer, renderBufferWidth, renderBufferHeight, buffer);
                 } catch (Exception e) {
-                    FileLog.e("tmessages", e);
+                    FileLog.e("messenger", e);
                 }
 
                 GLES20.glBindTexture(GL10.GL_TEXTURE_2D, enhanceTextures[1]);
@@ -1809,7 +1809,7 @@ public class PhotoFilterView extends FrameLayout {
 
                 if (!eglContext.equals(egl10.eglGetCurrentContext()) || !eglSurface.equals(egl10.eglGetCurrentSurface(EGL10.EGL_DRAW))) {
                     if (!egl10.eglMakeCurrent(eglDisplay, eglSurface, eglSurface, eglContext)) {
-                        FileLog.e("tmessages", "eglMakeCurrent failed " + GLUtils.getEGLErrorString(egl10.eglGetError()));
+                        FileLog.e("messenger", "eglMakeCurrent failed " + GLUtils.getEGLErrorString(egl10.eglGetError()));
                         return;
                     }
                 }
@@ -1867,7 +1867,7 @@ public class PhotoFilterView extends FrameLayout {
                 });
                 semaphore.acquire();
             } catch (Exception e) {
-                FileLog.e("tmessages", e);
+                FileLog.e("messenger", e);
             }
             return object[0];
         }

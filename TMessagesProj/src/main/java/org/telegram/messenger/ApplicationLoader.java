@@ -146,7 +146,7 @@ public class ApplicationLoader extends Application {
             path.mkdirs();
             return path;
         } catch (Exception e) {
-            FileLog.e("tmessages", e);
+            FileLog.e("messenger", e);
         }
         return new File("/data/data/com.b44t.messenger/files"); // EDIT BY MR
     }
@@ -177,9 +177,9 @@ public class ApplicationLoader extends Application {
         try {
             PowerManager pm = (PowerManager)ApplicationLoader.applicationContext.getSystemService(Context.POWER_SERVICE);
             isScreenOn = pm.isScreenOn();
-            FileLog.e("tmessages", "screen state = " + isScreenOn);
+            FileLog.e("messenger", "screen state = " + isScreenOn);
         } catch (Exception e) {
-            FileLog.e("tmessages", e);
+            FileLog.e("messenger", e);
         }
 
         UserConfig.loadConfig();
@@ -232,7 +232,7 @@ public class ApplicationLoader extends Application {
         }
 
         ApplicationLoader app = (ApplicationLoader)ApplicationLoader.applicationContext;
-        FileLog.e("tmessages", "app initied");
+        FileLog.e("messenger", "app initied");
 
         ContactsController.getInstance().checkAppAccount();
         MediaController.getInstance();

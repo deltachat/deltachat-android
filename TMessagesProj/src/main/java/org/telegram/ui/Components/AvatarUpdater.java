@@ -71,7 +71,7 @@ public class AvatarUpdater implements NotificationCenter.NotificationCenterDeleg
             }
             parentFragment.startActivityForResult(takePictureIntent, 13);
         } catch (Exception e) {
-            FileLog.e("tmessages", e);
+            FileLog.e("messenger", e);
         }
     }
 
@@ -99,7 +99,7 @@ public class AvatarUpdater implements NotificationCenter.NotificationCenterDeleg
                     photoPickerIntent.setType("image/*");
                     parentFragment.startActivityForResult(photoPickerIntent, 14);
                 } catch (Exception e) {
-                    FileLog.e("tmessages", e);
+                    FileLog.e("messenger", e);
                 }
             }
 
@@ -127,7 +127,7 @@ public class AvatarUpdater implements NotificationCenter.NotificationCenterDeleg
             photoCropActivity.setDelegate(this);
             activity.presentFragment(photoCropActivity);
         } catch (Exception e) {
-            FileLog.e("tmessages", e);
+            FileLog.e("messenger", e);
             Bitmap bitmap = ImageLoader.loadBitmap(path, uri, 800, 800, true);
             processBitmap(bitmap);
         }
@@ -153,7 +153,7 @@ public class AvatarUpdater implements NotificationCenter.NotificationCenterDeleg
                             break;
                     }
                 } catch (Exception e) {
-                    FileLog.e("tmessages", e);
+                    FileLog.e("messenger", e);
                 }
                 final ArrayList<Object> arrayList = new ArrayList<>();
                 arrayList.add(new MediaController.PhotoEntry(0, 0, 0, currentPicturePath, orientation, false));

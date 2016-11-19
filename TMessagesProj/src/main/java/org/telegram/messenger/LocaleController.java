@@ -274,14 +274,14 @@ public class LocaleController {
             }
             applyLanguage(currentInfo, override);
         } catch (Exception e) {
-            FileLog.e("tmessages", e);
+            FileLog.e("messenger", e);
         }
 
         try {
             IntentFilter timezoneFilter = new IntentFilter(Intent.ACTION_TIMEZONE_CHANGED);
             ApplicationLoader.applicationContext.registerReceiver(new TimeZoneChangedReceiver(), timezoneFilter);
         } catch (Exception e) {
-            FileLog.e("tmessages", e);
+            FileLog.e("messenger", e);
         }
     }
 
@@ -416,7 +416,7 @@ public class LocaleController {
                 return true;
             }
         } catch (Exception e) {
-            FileLog.e("tmessages", e);
+            FileLog.e("messenger", e);
         }
         return false;
     }
@@ -512,14 +512,14 @@ public class LocaleController {
             }
             return stringMap;
         } catch (Exception e) {
-            FileLog.e("tmessages", e);
+            FileLog.e("messenger", e);
         } finally {
             try {
                 if (stream != null) {
                     stream.close();
                 }
             } catch (Exception e) {
-                FileLog.e("tmessages", e);
+                FileLog.e("messenger", e);
             }
         }
         return new HashMap<>();
@@ -593,7 +593,7 @@ public class LocaleController {
                 changingConfiguration = false;
             }
         } catch (Exception e) {
-            FileLog.e("tmessages", e);
+            FileLog.e("messenger", e);
             changingConfiguration = false;
         }
         recreateFormatters();
@@ -613,7 +613,7 @@ public class LocaleController {
             try {
                 value = ApplicationLoader.applicationContext.getString(res);
             } catch (Exception e) {
-                FileLog.e("tmessages", e);
+                FileLog.e("messenger", e);
             }
         }
         if (value == null) {
@@ -649,7 +649,7 @@ public class LocaleController {
                 return String.format(value, args);
             }
         } catch (Exception e) {
-            FileLog.e("tmessages", e);
+            FileLog.e("messenger", e);
             return "LOC_ERR: " + key;
         }
     }
@@ -662,7 +662,7 @@ public class LocaleController {
                 return String.format(string, args);
             }
         } catch (Exception e) {
-            FileLog.e("tmessages", e);
+            FileLog.e("messenger", e);
             return "LOC_ERR: " + string;
         }
     }
@@ -707,7 +707,7 @@ public class LocaleController {
             }
             return getInstance().chatFullDate.format(date * 1000);
         } catch (Exception e) {
-            FileLog.e("tmessages", e);
+            FileLog.e("messenger", e);
         }
         return "LOC_ERR: formatDateChat";
     }
@@ -731,7 +731,7 @@ public class LocaleController {
                 return getInstance().formatterYear.format(new Date(date * 1000));
             }
         } catch (Exception e) {
-            FileLog.e("tmessages", e);
+            FileLog.e("messenger", e);
         }
         return "LOC_ERR: formatDate";
     }
@@ -755,7 +755,7 @@ public class LocaleController {
                 return LocaleController.formatString("formatDateAtTime", R.string.formatDateAtTime, getInstance().formatterYear.format(new Date(date * 1000)), getInstance().formatterDay.format(new Date(date * 1000)));
             }
         } catch (Exception e) {
-            FileLog.e("tmessages", e);
+            FileLog.e("messenger", e);
         }
         return "LOC_ERR";
     }
@@ -789,7 +789,7 @@ public class LocaleController {
                 return String.format("%s %s", LocaleController.getString("LastSeenDate", R.string.LastSeenDate), format);
             }
         } catch (Exception e) {
-            FileLog.e("tmessages", e);
+            FileLog.e("messenger", e);
         }
         return "LOC_ERR";
     }
@@ -851,7 +851,7 @@ public class LocaleController {
                 }
             }
         } catch (Exception e) {
-            FileLog.e("tmessages", e);
+            FileLog.e("messenger", e);
         }
         return "LOC_ERR";
     }

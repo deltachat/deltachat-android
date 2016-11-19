@@ -381,7 +381,7 @@ public class DrawerLayoutContainer extends FrameLayout {
                     child.layout(-child.getMeasuredWidth(), lp.topMargin, 0, lp.topMargin + child.getMeasuredHeight());
                 }
             } catch (Exception e) {
-                FileLog.e("tmessages", e);
+                FileLog.e("messenger", e);
             }
         }
         inLayout = false;
@@ -392,7 +392,7 @@ public class DrawerLayoutContainer extends FrameLayout {
         if (!inLayout) {
             /*StackTraceElement[] elements = Thread.currentThread().getStackTrace();
             for (int a = 0; a < elements.length; a++) {
-                FileLog.d("tmessages", "on " + elements[a]);
+                FileLog.d("messenger", "on " + elements[a]);
             }*/
             super.requestLayout();
         }

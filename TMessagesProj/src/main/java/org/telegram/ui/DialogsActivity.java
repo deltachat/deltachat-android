@@ -750,7 +750,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
                         }
                     }
                 } catch (Exception e) {
-                    FileLog.e("tmessages", e); //TODO fix it in other way?
+                    FileLog.e("messenger", e); //TODO fix it in other way?
                 }
             }
         } else if (id == NotificationCenter.emojiDidLoaded) {

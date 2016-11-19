@@ -965,7 +965,7 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
                 showAlertDialog(builder);
             }
         } catch (Exception e) {
-            FileLog.e("tmessages", e);
+            FileLog.e("messenger", e);
         }
     }
 
@@ -1009,7 +1009,7 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
                         try {
                             return ((ViewGroup) view).startActionModeForChild(originalView, callback, type);
                         } catch (Throwable e) {
-                            FileLog.e("tmessages", e);
+                            FileLog.e("messenger", e);
                         }
                     }
                 }
@@ -1248,7 +1248,7 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
                         AndroidUtilities.openForView(currentMessageObject, parentActivity);
                         closePhoto(false, false);
                     } catch (Exception e) {
-                        FileLog.e("tmessages", e);
+                        FileLog.e("messenger", e);
                     }
                 }
             }
@@ -1807,7 +1807,7 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
 
                 @Override
                 public void onError(Exception e) {
-                    FileLog.e("tmessages", e);
+                    FileLog.e("messenger", e);
                 }
 
                 @Override
@@ -1950,7 +1950,7 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
                 visibleDialog = null;
             }
         } catch (Exception e) {
-            FileLog.e("tmessages", e);
+            FileLog.e("messenger", e);
         }
         try {
             visibleDialog = builder.show();
@@ -1962,7 +1962,7 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
                 }
             });
         } catch (Exception e) {
-            FileLog.e("tmessages", e);
+            FileLog.e("messenger", e);
         }
     }
 
@@ -3211,7 +3211,7 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
             containerView.setFocusable(false);
             wm.addView(windowView, windowLayoutParams);
         } catch (Exception e) {
-            FileLog.e("tmessages", e);
+            FileLog.e("messenger", e);
             return;
         }
 
@@ -3414,7 +3414,7 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
                 visibleDialog = null;
             }
         } catch (Exception e) {
-            FileLog.e("tmessages", e);
+            FileLog.e("messenger", e);
         }
 
         if (currentEditMode != 0) {
@@ -3637,7 +3637,7 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
             }
             windowView = null;
         } catch (Exception e) {
-            FileLog.e("tmessages", e);
+            FileLog.e("messenger", e);
         }
         /*if (captionEditText != null) {
             captionEditText.onDestroy();
@@ -3674,7 +3674,7 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
                         wm.removeView(windowView);
                     }
                 } catch (Exception e) {
-                    FileLog.e("tmessages", e);
+                    FileLog.e("messenger", e);
                 }
             }
         });

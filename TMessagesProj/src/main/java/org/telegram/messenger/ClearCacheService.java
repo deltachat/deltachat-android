@@ -64,7 +64,7 @@ public class ClearCacheService extends IntentService {
                                                 f.delete();
                                             }
                                         } catch (Exception e) {
-                                            FileLog.e("tmessages", e);
+                                            FileLog.e("messenger", e);
                                         }
                                     } else if (f.lastModified() + diff < currentTime) {
                                         f.delete();
@@ -73,7 +73,7 @@ public class ClearCacheService extends IntentService {
                             }
                         }
                     } catch (Throwable e) {
-                        FileLog.e("tmessages", e);
+                        FileLog.e("messenger", e);
                     }
                 }
             }

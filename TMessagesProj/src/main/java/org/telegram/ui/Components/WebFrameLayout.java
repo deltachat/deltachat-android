@@ -281,7 +281,7 @@ public class WebFrameLayout extends FrameLayout {
                     android.content.ClipData clip = android.content.ClipData.newPlainText("label", openUrl);
                     clipboard.setPrimaryClip(clip);
                 } catch (Exception e) {
-                    FileLog.e("tmessages", e);
+                    FileLog.e("messenger", e);
                 }
                 Toast.makeText(getContext(), LocaleController.getString("LinkCopied", R.string.LinkCopied), Toast.LENGTH_SHORT).show();
                 if (dialog != null) {
@@ -338,13 +338,13 @@ public class WebFrameLayout extends FrameLayout {
                         }
                     }
                 } catch (Exception e) {
-                    FileLog.e("tmessages", e);
+                    FileLog.e("messenger", e);
                 }
                 if (!ok) {
                     try {
                         webView.loadUrl(embedUrl, args);
                     } catch (Exception e) {
-                        FileLog.e("tmessages", e);
+                        FileLog.e("messenger", e);
                     }
                 }
             }
@@ -360,7 +360,7 @@ public class WebFrameLayout extends FrameLayout {
             webView.loadUrl("about:blank");
             webView.destroy();
         } catch (Exception e) {
-            FileLog.e("tmessages", e);
+            FileLog.e("messenger", e);
         }
     }
 

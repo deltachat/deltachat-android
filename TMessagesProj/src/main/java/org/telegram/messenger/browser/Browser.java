@@ -40,7 +40,7 @@ public class Browser {
             intent.putExtra(android.provider.Browser.EXTRA_APPLICATION_ID, context.getPackageName());
             context.startActivity(intent);
         } catch (Exception e) {
-            FileLog.e("tmessages", e);
+            FileLog.e("messenger", e);
         }
     }
 

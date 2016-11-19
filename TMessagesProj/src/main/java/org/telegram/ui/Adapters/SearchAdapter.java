@@ -68,7 +68,7 @@ public class SearchAdapter extends BaseSearchAdapter {
                 searchTimer.cancel();
             }
         } catch (Exception e) {
-            FileLog.e("tmessages", e);
+            FileLog.e("messenger", e);
         }
         if (query == null) {
             searchResult.clear();
@@ -86,7 +86,7 @@ public class SearchAdapter extends BaseSearchAdapter {
                         searchTimer.cancel();
                         searchTimer = null;
                     } catch (Exception e) {
-                        FileLog.e("tmessages", e);
+                        FileLog.e("messenger", e);
                     }
                     processSearch(query);
                 }
@@ -278,7 +278,7 @@ public class SearchAdapter extends BaseSearchAdapter {
                         username = AndroidUtilities.replaceTags(String.format("<c#ff4d83b3>@%s</c>%s", un.substring(0, foundUserName.length()), un.substring(foundUserName.length())));
                     } catch (Exception e) {
                         username = un;
-                        FileLog.e("tmessages", e);
+                        FileLog.e("messenger", e);
                     }
                 }
 

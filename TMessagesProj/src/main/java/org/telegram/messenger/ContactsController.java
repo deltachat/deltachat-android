@@ -130,7 +130,7 @@ public class ContactsController {
                 }
             }
         } catch (Exception e) {
-            FileLog.e("tmessages", e);
+            FileLog.e("messenger", e);
         }
 
         accounts = am.getAccountsByType("org.telegram.messenger");
@@ -158,14 +158,14 @@ public class ContactsController {
                     am.removeAccount(accounts[a], null, null);
                 }
             } catch (Exception e) {
-                FileLog.e("tmessages", e);
+                FileLog.e("messenger", e);
             }
             if (UserConfig.isClientActivated()) {
                 try {
                     currentAccount = new Account("" + UserConfig.getClientUserId(), "org.telegram.messenger");
                     am.addAccountExplicitly(currentAccount, "", null);
                 } catch (Exception e) {
-                    FileLog.e("tmessages", e);
+                    FileLog.e("messenger", e);
                 }
             }
         }
@@ -190,7 +190,7 @@ public class ContactsController {
             @Override
             public void run() {
                 if (checkContactsInternal()) {
-                    FileLog.e("tmessages", "detected contacts change");
+                    FileLog.e("messenger", "detected contacts change");
                     ContactsController.getInstance().performSyncPhoneBook(ContactsController.getInstance().getContactsCopy(ContactsController.getInstance().contactsBook), true, false, true, false);
                 }
             }
@@ -231,14 +231,14 @@ public class ContactsController {
                     lastContactsVersions = newContactsVersion;
                 }
             } catch (Exception e) {
-                FileLog.e("tmessages", e);
+                FileLog.e("messenger", e);
             } finally {
                 if (pCur != null) {
                     pCur.close();
                 }
             }
         } catch (Exception e) {
-            FileLog.e("tmessages", e);
+            FileLog.e("messenger", e);
         }
         return reload;
     }
@@ -412,26 +412,26 @@ public class ContactsController {
                     pCur.close();
                 }
             } catch (Exception e) {
-                FileLog.e("tmessages", e);
+                FileLog.e("messenger", e);
             }
         } catch (Exception e) {
-            FileLog.e("tmessages", e);
+            FileLog.e("messenger", e);
             contactsMap.clear();
         }
         /*if (BuildVars.DEBUG_VERSION) {
             for (HashMap.Entry<Integer, Contact> entry : contactsMap.entrySet()) {
                 Contact contact = entry.getValue();
-                FileLog.e("tmessages", "contact = " + contact.first_name + " " + contact.last_name);
+                FileLog.e("messenger", "contact = " + contact.first_name + " " + contact.last_name);
                 if (contact.first_name.length() == 0 && contact.last_name.length() == 0 && contact.phones.size() > 0) {
-                    FileLog.e("tmessages", "warning, empty name for contact = " + contact.id);
+                    FileLog.e("messenger", "warning, empty name for contact = " + contact.id);
                 }
-                FileLog.e("tmessages", "phones:");
+                FileLog.e("messenger", "phones:");
                 for (String s : contact.phones) {
-                    FileLog.e("tmessages", "phone = " + s);
+                    FileLog.e("messenger", "phone = " + s);
                 }
-                FileLog.e("tmessages", "short phones:");
+                FileLog.e("messenger", "short phones:");
                 for (String s : contact.shortPhones) {
-                    FileLog.e("tmessages", "short phone = " + s);
+                    FileLog.e("messenger", "short phone = " + s);
                 }
             }
         }*/
@@ -471,7 +471,7 @@ public class ContactsController {
                         boolean recreateAccount = false;
                         if (UserConfig.isClientActivated()) {
                             if (accounts.length != 1) {
-                                FileLog.e("tmessages", "detected account deletion!");
+                                FileLog.e("messenger", "detected account deletion!");
                                 currentAccount = new Account(UserConfig.getCurrentUser().phone, "org.telegram.account");
                                 am.addAccountExplicitly(currentAccount, "", null);
                                 AndroidUtilities.runOnUIThread(new Runnable() {
@@ -483,7 +483,7 @@ public class ContactsController {
                             }
                         }
                     } catch (Exception e) {
-                        FileLog.e("tmessages", e);
+                        FileLog.e("messenger", e);
                     }
                 }*/
 
@@ -495,7 +495,7 @@ public class ContactsController {
                     }
                 }
 
-                FileLog.e("tmessages", "start read contacts from phone");
+                FileLog.e("messenger", "start read contacts from phone");
                 if (!schedule) {
                     checkContactsInternal();
                 }
@@ -589,7 +589,7 @@ public class ContactsController {
                         }
                     }
                     if (!first && contactHashMap.isEmpty() && toImport.isEmpty() && oldCount == contactsMap.size()) {
-                        FileLog.e("tmessages", "contacts not changed!");
+                        FileLog.e("messenger", "contacts not changed!");
                         return;
                     }
                     if (request && !contactHashMap.isEmpty() && !contactsMap.isEmpty()) {
@@ -601,12 +601,12 @@ public class ContactsController {
                                 @Override
                                 public void run() {
                                     /*if (BuildVars.DEBUG_VERSION) {
-                                        FileLog.e("tmessages", "need delete contacts");
+                                        FileLog.e("messenger", "need delete contacts");
                                         for (HashMap.Entry<Integer, Contact> c : contactHashMap.entrySet()) {
                                             Contact contact = c.getValue();
-                                            FileLog.e("tmessages", "delete contact " + contact.first_name + " " + contact.last_name);
+                                            FileLog.e("messenger", "delete contact " + contact.first_name + " " + contact.last_name);
                                             for (String phone : contact.phones) {
-                                                FileLog.e("tmessages", phone);
+                                                FileLog.e("messenger", phone);
                                             }
                                         }
                                     }*/
@@ -643,7 +643,7 @@ public class ContactsController {
                                                 }
                                             }
                                         } catch (Exception e) {
-                                            FileLog.e("tmessages", e);
+                                            FileLog.e("messenger", e);
                                         }
                                     }
 
@@ -680,14 +680,14 @@ public class ContactsController {
                     }
                 }
 
-                FileLog.e("tmessages", "done processing contacts");
+                FileLog.e("messenger", "done processing contacts");
 
                 if (request) {
                     if (!toImport.isEmpty()) {
                         /*if (BuildVars.DEBUG_VERSION) {
-                            FileLog.e("tmessages", "start import contacts");
+                            FileLog.e("messenger", "start import contacts");
                             for (TLRPC.TL_inputPhoneContact contact : toImport) {
-                                FileLog.e("tmessages", "add contact " + contact.first_name + " " + contact.last_name + " " + contact.phone);
+                                FileLog.e("messenger", "add contact " + contact.first_name + " " + contact.last_name + " " + contact.phone);
                             }
                         }*/
 
@@ -704,7 +704,7 @@ public class ContactsController {
                                 public void run(TLObject response, TLRPC.TL_error error) {
                                     completedRequestsCount++;
                                     if (error == null) {
-                                        FileLog.e("tmessages", "contacts imported");
+                                        FileLog.e("messenger", "contacts imported");
                                         TLRPC.TL_contacts_importedContacts res = (TLRPC.TL_contacts_importedContacts) response;
                                         if (!res.retry_contacts.isEmpty()) {
                                             for (int a = 0; a < res.retry_contacts.size(); a++) {
@@ -719,7 +719,7 @@ public class ContactsController {
 
                                         if (BuildVars.DEBUG_VERSION) {
                                             for (TLRPC.User user : res.users) {
-                                                FileLog.e("tmessages", "received user " + user.first_name + " " + user.last_name + " " + user.phone);
+                                                FileLog.e("messenger", "received user " + user.first_name + " " + user.last_name + " " + user.phone);
                                             }
                                         }
                                         MessagesStorage.getInstance().putUsersAndChats(res.users, null, true, true);
@@ -731,7 +731,7 @@ public class ContactsController {
                                         }
                                         processLoadedContacts(cArr, res.users, 2);
                                     } else {
-                                        FileLog.e("tmessages", "import contacts error " + error.text);
+                                        FileLog.e("messenger", "import contacts error " + error.text);
                                     }
                                     if (completedRequestsCount == count) {
                                         Utilities.stageQueue.postRunnable(new Runnable() {
@@ -813,10 +813,10 @@ public class ContactsController {
             loadingContacts = true;
         }
         if (fromCache) {
-            FileLog.e("tmessages", "load contacts from cache");
+            FileLog.e("messenger", "load contacts from cache");
             //MessagesStorage.getInstance().getContacts();
         } else {
-            FileLog.e("tmessages", "load contacts from server");
+            FileLog.e("messenger", "load contacts from server");
             /*TLRPC.TL_contacts_getContacts req = new TLRPC.TL_contacts_getContacts();
             req.hash = cacheEmpty ? "" : UserConfig.contactsHash;
             ConnectionsManager.getInstance().sendRequest(req, new RequestDelegate() {
@@ -839,7 +839,7 @@ public class ContactsController {
                                     NotificationCenter.getInstance().postNotificationName(NotificationCenter.contactsDidLoaded);
                                 }
                             });
-                            FileLog.e("tmessages", "load contacts don't change");
+                            FileLog.e("messenger", "load contacts don't change");
                             return;
                         }
                         processLoadedContacts(res.contacts, res.users, 0);
@@ -854,7 +854,7 @@ public class ContactsController {
             SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("mainconfig", Activity.MODE_PRIVATE);
             preferences.edit().putLong("lastReloadStatusTime", System.currentTimeMillis()).commit();
         } catch (Exception e) {
-            FileLog.e("tmessages", e);
+            FileLog.e("messenger", e);
         }
     }
 
@@ -918,14 +918,14 @@ public class ContactsController {
                 return false;
             }
         } catch (Exception e) {
-            FileLog.e("tmessages", e);
+            FileLog.e("messenger", e);
         } finally {
             try {
                 if (cursor != null) {
                     cursor.close();
                 }
             } catch (Exception e) {
-                FileLog.e("tmessages", e);
+                FileLog.e("messenger", e);
             }
         }
         return true;
@@ -954,7 +954,7 @@ public class ContactsController {
                 }
             }
         } catch (Exception e) {
-            FileLog.e("tmessages", e);
+            FileLog.e("messenger", e);
         }
     }
 
@@ -984,7 +984,7 @@ public class ContactsController {
                 }
             }
         }
-        FileLog.e("tmessages", "process update - contacts add = " + newC.size() + " delete = " + contactsTD.size());
+        FileLog.e("messenger", "process update - contacts add = " + newC.size() + " delete = " + contactsTD.size());
 
         StringBuilder toAdd = new StringBuilder();
         StringBuilder toDelete = new StringBuilder();
@@ -1117,7 +1117,7 @@ public class ContactsController {
                 Uri rawContactUri = ContactsContract.RawContacts.CONTENT_URI.buildUpon().appendQueryParameter(ContactsContract.CALLER_IS_SYNCADAPTER, "true").appendQueryParameter(ContactsContract.RawContacts.ACCOUNT_NAME, currentAccount.name).appendQueryParameter(ContactsContract.RawContacts.ACCOUNT_TYPE, currentAccount.type).build();
                 contentResolver.delete(rawContactUri, ContactsContract.RawContacts.SYNC2 + " = " + user.id, null);
             } catch (Exception e) {
-                FileLog.e("tmessages", e);
+                FileLog.e("messenger", e);
             }
         }
 
@@ -1158,7 +1158,7 @@ public class ContactsController {
                 res = Long.parseLong(result[0].uri.getLastPathSegment());
             }
         } catch (Exception e) {
-            FileLog.e("tmessages", e);
+            FileLog.e("messenger", e);
         }
         synchronized (observerLock) {
             ignoreChanges = false;
@@ -1178,7 +1178,7 @@ public class ContactsController {
             Uri rawContactUri = ContactsContract.RawContacts.CONTENT_URI.buildUpon().appendQueryParameter(ContactsContract.CALLER_IS_SYNCADAPTER, "true").appendQueryParameter(ContactsContract.RawContacts.ACCOUNT_NAME, currentAccount.name).appendQueryParameter(ContactsContract.RawContacts.ACCOUNT_TYPE, currentAccount.type).build();
             contentResolver.delete(rawContactUri, ContactsContract.RawContacts.SYNC2 + " = " + uid, null);
         } catch (Exception e) {
-            FileLog.e("tmessages", e);
+            FileLog.e("messenger", e);
         }
         synchronized (observerLock) {
             ignoreChanges = false;
@@ -1222,7 +1222,7 @@ public class ContactsController {
         req.contacts = contactsParams;
         req.replace = false;
         /*if (BuildVars.DEBUG_VERSION) {
-            FileLog.e("tmessages", "add contact " + user.first_name + " " + user.last_name + " " + user.phone);
+            FileLog.e("messenger", "add contact " + user.first_name + " " + user.last_name + " " + user.phone);
         }*/
         /*ConnectionsManager.getInstance().sendRequest(req, new RequestDelegate() {
             @Override
@@ -1235,7 +1235,7 @@ public class ContactsController {
 
                 if (BuildVars.DEBUG_VERSION) {
                     for (TLRPC.User user : res.users) {
-                        FileLog.e("tmessages", "received user " + user.first_name + " " + user.last_name + " " + user.phone);
+                        FileLog.e("messenger", "received user " + user.first_name + " " + user.last_name + " " + user.phone);
                     }
                 }
 

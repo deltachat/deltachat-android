@@ -217,7 +217,7 @@ public class MusicBrowserService extends MediaBrowserService implements Notifica
                             }
                         }
                     } catch (Exception e) {
-                        FileLog.e("tmessages", e);
+                        FileLog.e("messenger", e);
                     }
                     AndroidUtilities.runOnUIThread(new Runnable() {
                         @Override
@@ -313,7 +313,7 @@ public class MusicBrowserService extends MediaBrowserService implements Notifica
             try {
                 did = Integer.parseInt(parentMediaId.replace("__CHAT_", ""));
             } catch (Exception e) {
-                FileLog.e("tmessages", e);
+                FileLog.e("messenger", e);
             }
             ArrayList<MessageObject> arrayList = musicObjects.get(did);
             if (arrayList != null) {
@@ -349,7 +349,7 @@ public class MusicBrowserService extends MediaBrowserService implements Notifica
                 return result;
             }
         } catch (Throwable e) {
-            FileLog.e("tmessages", e);
+            FileLog.e("messenger", e);
         }
         return null;
     }
@@ -413,7 +413,7 @@ public class MusicBrowserService extends MediaBrowserService implements Notifica
                     }
                 }
             } catch (Exception e) {
-                FileLog.e("tmessages", e);
+                FileLog.e("messenger", e);
             }
             handlePlayRequest();
         }

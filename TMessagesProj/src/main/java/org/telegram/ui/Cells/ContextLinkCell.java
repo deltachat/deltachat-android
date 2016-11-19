@@ -156,7 +156,7 @@ public class ContextLinkCell extends View implements MediaController.FileDownloa
                     CharSequence titleFinal = TextUtils.ellipsize(Emoji.replaceEmoji(inlineResult.title.replace('\n', ' '), titleTextPaint.getFontMetricsInt(), AndroidUtilities.dp(15), false), titleTextPaint, Math.min(width, maxWidth), TextUtils.TruncateAt.END);
                     titleLayout = new StaticLayout(titleFinal, titleTextPaint, maxWidth + AndroidUtilities.dp(4), Layout.Alignment.ALIGN_NORMAL, 1.0f, 0.0f, false);
                 } catch (Exception e) {
-                    FileLog.e("tmessages", e);
+                    FileLog.e("messenger", e);
                 }
                 letterDrawable.setTitle(inlineResult.title);
             }
@@ -168,7 +168,7 @@ public class ContextLinkCell extends View implements MediaController.FileDownloa
                         linkY = descriptionY + descriptionLayout.getLineBottom(descriptionLayout.getLineCount() - 1) + AndroidUtilities.dp(1);
                     }
                 } catch (Exception e) {
-                    FileLog.e("tmessages", e);
+                    FileLog.e("messenger", e);
                 }
             }
 
@@ -178,7 +178,7 @@ public class ContextLinkCell extends View implements MediaController.FileDownloa
                     CharSequence linkFinal = TextUtils.ellipsize(inlineResult.url.replace('\n', ' '), descriptionTextPaint, Math.min(width, maxWidth), TextUtils.TruncateAt.MIDDLE);
                     linkLayout = new StaticLayout(linkFinal, descriptionTextPaint, maxWidth, Layout.Alignment.ALIGN_NORMAL, 1.0f, 0.0f, false);
                 } catch (Exception e) {
-                    FileLog.e("tmessages", e);
+                    FileLog.e("messenger", e);
                 }
             }
         }

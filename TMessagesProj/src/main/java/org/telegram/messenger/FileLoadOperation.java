@@ -138,7 +138,7 @@ public class FileLoadOperation {
                 }
             }
         } catch (Exception e) {
-            FileLog.e("tmessages", e);
+            FileLog.e("messenger", e);
             state = stateFailed;
             cleanup();
             Utilities.stageQueue.postRunnable(new Runnable() {
@@ -233,7 +233,7 @@ public class FileLoadOperation {
             }
 
             if (BuildVars.DEBUG_VERSION) {
-                FileLog.d("tmessages", "start loading file to temp = " + cacheFileTemp + " final = " + cacheFileFinal);
+                FileLog.d("messenger", "start loading file to temp = " + cacheFileTemp + " final = " + cacheFileFinal);
             }
 
             if (fileNameIv != null) {
@@ -247,7 +247,7 @@ public class FileLoadOperation {
                         downloadedBytes = 0;
                     }
                 } catch (Exception e) {
-                    FileLog.e("tmessages", e);
+                    FileLog.e("messenger", e);
                     downloadedBytes = 0;
                 }
             }
@@ -257,7 +257,7 @@ public class FileLoadOperation {
                     fileOutputStream.seek(downloadedBytes);
                 }
             } catch (Exception e) {
-                FileLog.e("tmessages", e);
+                FileLog.e("messenger", e);
             }
             if (fileOutputStream == null) {
                 cleanup();
@@ -320,13 +320,13 @@ public class FileLoadOperation {
                 try {
                     fileOutputStream.getChannel().close();
                 } catch (Exception e) {
-                    FileLog.e("tmessages", e);
+                    FileLog.e("messenger", e);
                 }
                 fileOutputStream.close();
                 fileOutputStream = null;
             }
         } catch (Exception e) {
-            FileLog.e("tmessages", e);
+            FileLog.e("messenger", e);
         }
 
         try {
@@ -335,7 +335,7 @@ public class FileLoadOperation {
                 fiv = null;
             }
         } catch (Exception e) {
-            FileLog.e("tmessages", e);
+            FileLog.e("messenger", e);
         }
         if (delayedRequestInfos != null) {
             for (int a = 0; a < delayedRequestInfos.size(); a++) {
@@ -363,7 +363,7 @@ public class FileLoadOperation {
             boolean renameResult = cacheFileTemp.renameTo(cacheFileFinal);
             if (!renameResult) {
                 if (BuildVars.DEBUG_VERSION) {
-                    FileLog.e("tmessages", "unable to rename temp = " + cacheFileTemp + " to final = " + cacheFileFinal + " retry = " + renameRetryCount);
+                    FileLog.e("messenger", "unable to rename temp = " + cacheFileTemp + " to final = " + cacheFileFinal + " retry = " + renameRetryCount);
                 }
                 renameRetryCount++;
                 if (renameRetryCount < 3) {
@@ -384,7 +384,7 @@ public class FileLoadOperation {
             }
         }
         if (BuildVars.DEBUG_VERSION) {
-            FileLog.e("tmessages", "finished downloading file to " + cacheFileFinal);
+            FileLog.e("messenger", "finished downloading file to " + cacheFileFinal);
         }
         delegate.didFinishLoadingFile(FileLoadOperation.this, cacheFileFinal);
     }

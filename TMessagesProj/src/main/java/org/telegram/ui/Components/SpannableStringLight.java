@@ -34,7 +34,7 @@ public class SpannableStringLight extends SpannableString {
             mSpanDataOverride = (int[]) mSpanDataField.get(this);
             mSpanCountOverride = (int) mSpanCountField.get(this);
         } catch (Throwable e) {
-            FileLog.e("tmessages", e);
+            FileLog.e("messenger", e);
         }
     }
 
@@ -50,7 +50,7 @@ public class SpannableStringLight extends SpannableString {
             mSpanDataField.set(this, mSpanDataOverride);
             mSpanCountField.set(this, mSpanCountOverride);
         } catch (Throwable e) {
-            FileLog.e("tmessages", e);
+            FileLog.e("messenger", e);
         }
     }
 
@@ -66,7 +66,7 @@ public class SpannableStringLight extends SpannableString {
                 mSpanCountField = SpannableString.class.getSuperclass().getDeclaredField("mSpanCount");
                 mSpanCountField.setAccessible(true);
             } catch (Throwable e) {
-                FileLog.e("tmessages", e);
+                FileLog.e("messenger", e);
             }
             fieldsAvailable = true;
         }

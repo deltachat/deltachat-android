@@ -149,12 +149,12 @@ public class CacheControlActivity extends BaseFragment {
                         size += getDirectorySize2(file);
                     } else {
                         size += file.length();
-                        FileLog.e("tmessages", "" + file + " size = " + file.length());
+                        FileLog.e("messenger", "" + file + " size = " + file.length());
                     }
                 }
             }
         } else if (dir.isFile()) {
-            FileLog.e("tmessages", "" + dir + " size = " + dir.length());
+            FileLog.e("messenger", "" + dir + " size = " + dir.length());
             size += dir.length();
         }
         return size;
@@ -192,7 +192,7 @@ public class CacheControlActivity extends BaseFragment {
                     }
                 }
             } catch (Throwable e) {
-                FileLog.e("tmessages", e);
+                FileLog.e("messenger", e);
             }
         } else if (dir.isFile()) {
             size += dir.length();
@@ -259,7 +259,7 @@ public class CacheControlActivity extends BaseFragment {
                                 }
                             }
                         } catch (Throwable e) {
-                            FileLog.e("tmessages", e);
+                            FileLog.e("messenger", e);
                         }
                     }
                     if (type == FileLoader.MEDIA_DIR_CACHE) {
@@ -294,7 +294,7 @@ public class CacheControlActivity extends BaseFragment {
                         try {
                             progressDialog.dismiss();
                         } catch (Exception e) {
-                            FileLog.e("tmessages", e);
+                            FileLog.e("messenger", e);
                         }
                     }
                 });
@@ -417,7 +417,7 @@ public class CacheControlActivity extends BaseFragment {
                                                         }
                                                     }
                                                 } catch (Exception e) {
-                                                    FileLog.e("tmessages", e);
+                                                    FileLog.e("messenger", e);
                                                 }
                                                 cursor2.dispose();
 
@@ -439,7 +439,7 @@ public class CacheControlActivity extends BaseFragment {
                                         database.commitTransaction();
                                         database.executeFast("VACUUM").stepThis().dispose();
                                     } catch (Exception e) {
-                                        FileLog.e("tmessages", e);
+                                        FileLog.e("messenger", e);
                                     } finally {
                                         AndroidUtilities.runOnUIThread(new Runnable() {
                                             @Override
@@ -447,7 +447,7 @@ public class CacheControlActivity extends BaseFragment {
                                                 try {
                                                     progressDialog.dismiss();
                                                 } catch (Exception e) {
-                                                    FileLog.e("tmessages", e);
+                                                    FileLog.e("messenger", e);
                                                 }
                                                 if (listAdapter != null) {
                                                     File file = new File(ApplicationLoader.getFilesDirFixed(), "cache4.db");
@@ -527,7 +527,7 @@ public class CacheControlActivity extends BaseFragment {
                                     visibleDialog.dismiss();
                                 }
                             } catch (Exception e) {
-                                FileLog.e("tmessages", e);
+                                FileLog.e("messenger", e);
                             }
                             cleanupFolders();
                         }

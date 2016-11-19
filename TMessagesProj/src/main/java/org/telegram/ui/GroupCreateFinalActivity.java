@@ -107,7 +107,7 @@ public class GroupCreateFinalActivity extends BaseFragment implements Notificati
             /*try {
                 semaphore.acquire();
             } catch (Exception e) {
-                FileLog.e("tmessages", e);
+                FileLog.e("messenger", e);
             }*/
             if (usersToLoad.size() != users.size()) {
                 return false;
@@ -185,7 +185,7 @@ public class GroupCreateFinalActivity extends BaseFragment implements Notificati
                                     try {
                                         dialog.dismiss();
                                     } catch (Exception e) {
-                                        FileLog.e("tmessages", e);
+                                        FileLog.e("messenger", e);
                                     }
                                 }
                             });
@@ -337,7 +337,7 @@ public class GroupCreateFinalActivity extends BaseFragment implements Notificati
                 avatar = small.location;
                 avatarImage.setImage(avatar, "50_50", avatarDrawable);
                 if (createAfterUpload) {
-                    FileLog.e("tmessages", "avatar did uploaded");
+                    FileLog.e("messenger", "avatar did uploaded");
                     MessagesController.getInstance().createChat(nameTextView.getText().toString(), selectedContacts, null, chatType, GroupCreateFinalActivity.this);
                 }
             }
@@ -398,7 +398,7 @@ public class GroupCreateFinalActivity extends BaseFragment implements Notificati
                 try {
                     progressDialog.dismiss();
                 } catch (Exception e) {
-                    FileLog.e("tmessages", e);
+                    FileLog.e("messenger", e);
                 }
             }
             donePressed = false;
@@ -407,7 +407,7 @@ public class GroupCreateFinalActivity extends BaseFragment implements Notificati
                 try {
                     progressDialog.dismiss();
                 } catch (Exception e) {
-                    FileLog.e("tmessages", e);
+                    FileLog.e("messenger", e);
                 }
             }
             int chat_id = (Integer)args[0];

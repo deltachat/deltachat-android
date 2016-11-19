@@ -138,7 +138,7 @@ public class WallpapersActivity extends BaseFragment implements NotificationCent
                             done = AndroidUtilities.copyFile(f, toFile);
                         } catch (Exception e) {
                             done = false;
-                            FileLog.e("tmessages", e);
+                            FileLog.e("messenger", e);
                         }
                     } else {
                         if (selectedBackground == -1) {
@@ -237,7 +237,7 @@ public class WallpapersActivity extends BaseFragment implements NotificationCent
                                     startActivityForResult(photoPickerIntent, 11);
                                 }
                             } catch (Exception e) {
-                                FileLog.e("tmessages", e);
+                                FileLog.e("messenger", e);
                             }
                         }
                     });
@@ -276,14 +276,14 @@ public class WallpapersActivity extends BaseFragment implements NotificationCent
                     Drawable drawable = backgroundImage.getDrawable();
                     backgroundImage.setImageBitmap(bitmap);
                 } catch (Exception e) {
-                    FileLog.e("tmessages", e);
+                    FileLog.e("messenger", e);
                 } finally {
                     try {
                         if (stream != null) {
                             stream.close();
                         }
                     } catch (Exception e) {
-                        FileLog.e("tmessages", e);
+                        FileLog.e("messenger", e);
                     }
                 }
                 currentPicturePath = null;
@@ -302,7 +302,7 @@ public class WallpapersActivity extends BaseFragment implements NotificationCent
                     Drawable drawable = backgroundImage.getDrawable();
                     backgroundImage.setImageBitmap(bitmap);
                 } catch (Exception e) {
-                    FileLog.e("tmessages", e);
+                    FileLog.e("messenger", e);
                 }
             }
         }
@@ -357,7 +357,7 @@ public class WallpapersActivity extends BaseFragment implements NotificationCent
                 try {
                     backgroundImage.setImageURI(Uri.fromFile(f));
                 } catch (Throwable e) {
-                    FileLog.e("tmessages", e);
+                    FileLog.e("messenger", e);
                 }
                 backgroundImage.setBackgroundColor(0);
                 selectedColor = 0;

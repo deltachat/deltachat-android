@@ -111,7 +111,7 @@ public abstract class BaseSearchAdapterRecycler extends RecyclerView.Adapter {
                         }
                     });
                 } catch (Exception e) {
-                    FileLog.e("tmessages", e);
+                    FileLog.e("messenger", e);
                 }
             }
         });
@@ -181,7 +181,7 @@ public abstract class BaseSearchAdapterRecycler extends RecyclerView.Adapter {
                         MessagesStorage.getInstance().getDatabase().commitTransaction();
                     }
                 } catch (Exception e) {
-                    FileLog.e("tmessages", e);
+                    FileLog.e("messenger", e);
                 }
             }
         });
@@ -198,7 +198,7 @@ public abstract class BaseSearchAdapterRecycler extends RecyclerView.Adapter {
                 try {
                     MessagesStorage.getInstance().getDatabase().executeFast("DELETE FROM hashtag_recent_v2 WHERE 1").stepThis().dispose();
                 } catch (Exception e) {
-                    FileLog.e("tmessages", e);
+                    FileLog.e("messenger", e);
                 }
             }
         });

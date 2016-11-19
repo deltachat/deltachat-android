@@ -50,7 +50,7 @@ public class VideoEditedInfo {
             }
             return true;
         } catch (Exception e) {
-            FileLog.e("tmessages", e);
+            FileLog.e("messenger", e);
         }
         return false;
     }

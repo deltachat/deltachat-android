@@ -628,7 +628,7 @@ public class MessageObject {
                 try {
                     Linkify.addLinks((Spannable) linkDescription, Linkify.WEB_URLS);
                 } catch (Exception e) {
-                    FileLog.e("tmessages", e);
+                    FileLog.e("messenger", e);
                 }
             }
             linkDescription = Emoji.replaceEmoji(linkDescription, textPaint.getFontMetricsInt(), AndroidUtilities.dp(20), false);
@@ -645,7 +645,7 @@ public class MessageObject {
                 try {
                     Linkify.addLinks((Spannable) caption, Linkify.WEB_URLS | Linkify.PHONE_NUMBERS);
                 } catch (Exception e) {
-                    FileLog.e("tmessages", e);
+                    FileLog.e("messenger", e);
                 }
                 addUsernamesAndHashtags(caption);
             }
@@ -675,7 +675,7 @@ public class MessageObject {
                 }
             }
         } catch (Exception e) {
-            FileLog.e("tmessages", e);
+            FileLog.e("messenger", e);
         }
     }
 
@@ -685,13 +685,13 @@ public class MessageObject {
                 try {
                     Linkify.addLinks((Spannable) messageText, Linkify.WEB_URLS | Linkify.PHONE_NUMBERS);
                 } catch (Exception e) {
-                    FileLog.e("tmessages", e);
+                    FileLog.e("messenger", e);
                 }
             } else {
                 try {
                     Linkify.addLinks((Spannable) messageText, Linkify.WEB_URLS);
                 } catch (Exception e) {
-                    FileLog.e("tmessages", e);
+                    FileLog.e("messenger", e);
                 }
             }
             addUsernamesAndHashtags(messageText);
@@ -729,7 +729,7 @@ public class MessageObject {
                 try {
                     Linkify.addLinks((Spannable) messageText, Linkify.PHONE_NUMBERS);
                 } catch (Throwable e) {
-                    FileLog.e("tmessages", e);
+                    FileLog.e("messenger", e);
                 }
             }
         }
@@ -810,7 +810,7 @@ public class MessageObject {
         try {
             textLayout = new StaticLayout(messageText, textPaint, maxWidth, Layout.Alignment.ALIGN_NORMAL, 1.0f, 0.0f, false);
         } catch (Exception e) {
-            FileLog.e("tmessages", e);
+            FileLog.e("messenger", e);
             return;
         }
 
@@ -847,7 +847,7 @@ public class MessageObject {
                     block.height = Math.max(block.height, block.textLayout.getLineBottom(block.textLayout.getLineCount() - 1));
                     prevOffset = block.textYOffset;
                 } catch (Exception e) {
-                    FileLog.e("tmessages", e);
+                    FileLog.e("messenger", e);
                     continue;
                 }
                 if (a == blocksCount - 1) {
@@ -855,7 +855,7 @@ public class MessageObject {
                     try {
                         textHeight = Math.max(textHeight, (int) (block.textYOffset + block.textLayout.getHeight()));
                     } catch (Exception e) {
-                        FileLog.e("tmessages", e);
+                        FileLog.e("messenger", e);
                     }
                 }
             }
@@ -866,14 +866,14 @@ public class MessageObject {
             try {
                 lastLeft = block.textXOffset = block.textLayout.getLineLeft(currentBlockLinesCount - 1);
             } catch (Exception e) {
-                FileLog.e("tmessages", e);
+                FileLog.e("messenger", e);
             }
 
             float lastLine = 0;
             try {
                 lastLine = block.textLayout.getLineWidth(currentBlockLinesCount - 1);
             } catch (Exception e) {
-                FileLog.e("tmessages", e);
+                FileLog.e("messenger", e);
             }
 
             int linesMaxWidth = (int) Math.ceil(lastLine);
@@ -896,7 +896,7 @@ public class MessageObject {
                     try {
                         lineWidth = block.textLayout.getLineWidth(n);
                     } catch (Exception e) {
-                        FileLog.e("tmessages", e);
+                        FileLog.e("messenger", e);
                         lineWidth = 0;
                     }
 
@@ -907,7 +907,7 @@ public class MessageObject {
                     try {
                         lineLeft = block.textLayout.getLineLeft(n);
                     } catch (Exception e) {
-                        FileLog.e("tmessages", e);
+                        FileLog.e("messenger", e);
                         lineLeft = 0;
                     }
 

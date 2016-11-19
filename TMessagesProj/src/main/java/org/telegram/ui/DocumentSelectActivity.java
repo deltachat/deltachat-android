@@ -105,7 +105,7 @@ public class DocumentSelectActivity extends BaseFragment {
                             listFiles(currentDir);
                         }
                     } catch (Exception e) {
-                        FileLog.e("tmessages", e);
+                        FileLog.e("messenger", e);
                     }
                 }
             };
@@ -124,7 +124,7 @@ public class DocumentSelectActivity extends BaseFragment {
                 ApplicationLoader.applicationContext.unregisterReceiver(receiver);
             }
         } catch (Exception e) {
-            FileLog.e("tmessages", e);
+            FileLog.e("messenger", e);
         }
         super.onFragmentDestroy();
     }
@@ -533,7 +533,7 @@ public class DocumentSelectActivity extends BaseFragment {
             String line;
             while ((line = bufferedReader.readLine()) != null) {
                 if (line.contains("vfat") || line.contains("/mnt")) {
-                    FileLog.e("tmessages", line);
+                    FileLog.e("messenger", line);
                     StringTokenizer tokens = new StringTokenizer(line, " ");
                     String unused = tokens.nextToken();
                     String path = tokens.nextToken();
@@ -564,20 +564,20 @@ public class DocumentSelectActivity extends BaseFragment {
                                 item.file = new File(path);
                                 items.add(item);
                             } catch (Exception e) {
-                                FileLog.e("tmessages", e);
+                                FileLog.e("messenger", e);
                             }
                         }
                     }
                 }
             }
         } catch (Exception e) {
-            FileLog.e("tmessages", e);
+            FileLog.e("messenger", e);
         } finally {
             if (bufferedReader != null) {
                 try {
                     bufferedReader.close();
                 } catch (Exception e) {
-                    FileLog.e("tmessages", e);
+                    FileLog.e("messenger", e);
                 }
             }
         }
@@ -599,7 +599,7 @@ public class DocumentSelectActivity extends BaseFragment {
                 items.add(fs);
             }
         } catch (Exception e) {
-            FileLog.e("tmessages", e);
+            FileLog.e("messenger", e);
         }
 
         fs = new ListItem();
@@ -624,7 +624,7 @@ public class DocumentSelectActivity extends BaseFragment {
             }
             return LocaleController.formatString("FreeOfTotal", R.string.FreeOfTotal, AndroidUtilities.formatFileSize(free), AndroidUtilities.formatFileSize(total));
         } catch (Exception e) {
-            FileLog.e("tmessages", e);
+            FileLog.e("messenger", e);
         }
         return path;
     }

@@ -59,7 +59,7 @@ public class LetterDrawable extends Drawable {
                     textHeight = textLayout.getLineBottom(0);
                 }
             } catch (Exception e) {
-                FileLog.e("tmessages", e);
+                FileLog.e("messenger", e);
             }
         } else {
             textLayout = null;

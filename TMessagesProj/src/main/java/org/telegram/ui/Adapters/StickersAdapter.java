@@ -134,7 +134,7 @@ public class StickersAdapter extends RecyclerView.Adapter implements Notificatio
                                     }
                                 }
                             } catch (Exception e) {
-                                FileLog.e("tmessages", e);
+                                FileLog.e("messenger", e);
                             }
                         }
                         if (!newRecentStickers.isEmpty()) {

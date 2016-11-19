@@ -158,7 +158,7 @@ public class ClippingImageView extends View {
                 try {
                     canvas.drawBitmap(bmp, matrix, paint);
                 } catch (Exception e) {
-                    FileLog.e("tmessages", e);
+                    FileLog.e("messenger", e);
                 }
             }
             canvas.restore();

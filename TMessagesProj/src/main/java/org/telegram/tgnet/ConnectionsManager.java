@@ -48,7 +48,7 @@ public class ConnectionsManager {
             wakeLock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "lock");
             wakeLock.setReferenceCounted(false);
         } catch (Exception e) {
-            FileLog.e("tmessages", e);
+            FileLog.e("messenger", e);
         }
     }
 
@@ -102,7 +102,7 @@ public class ConnectionsManager {
     public void setAppPaused(final boolean value, final boolean byScreenState) {
         if (!byScreenState) {
             appPaused = value;
-            FileLog.d("tmessages", "app paused = " + value);
+            FileLog.d("messenger", "app paused = " + value);
         }
         if (value) {
             if (lastPauseTime == 0) {
@@ -113,7 +113,7 @@ public class ConnectionsManager {
             if (appPaused) {
                 return;
             }
-            FileLog.e("tmessages", "reset app pause time");
+            FileLog.e("messenger", "reset app pause time");
             if (lastPauseTime != 0 && System.currentTimeMillis() - lastPauseTime > 5000) {
                 ContactsController.getInstance().checkContacts();
             }
@@ -134,7 +134,7 @@ public class ConnectionsManager {
                 return netInfo.isRoaming();
             }
         } catch (Exception e) {
-            FileLog.e("tmessages", e);
+            FileLog.e("messenger", e);
         }
         return false;
     }
@@ -147,7 +147,7 @@ public class ConnectionsManager {
                 return true;
             }
         } catch (Exception e) {
-            FileLog.e("tmessages", e);
+            FileLog.e("messenger", e);
         }
         return false;
     }
@@ -171,7 +171,7 @@ public class ConnectionsManager {
                 }
             }
         } catch (Exception e) {
-            FileLog.e("tmessages", e);
+            FileLog.e("messenger", e);
             return true;
         }
         return false;

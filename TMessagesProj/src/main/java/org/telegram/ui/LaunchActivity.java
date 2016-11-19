@@ -420,7 +420,7 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                     }
                 }
             } catch (Exception e) {
-                FileLog.e("tmessages", e);
+                FileLog.e("messenger", e);
             }
         } else {
             boolean allowOpen = true;
@@ -446,7 +446,7 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                 int height = view.getMeasuredHeight();
                 if (height > AndroidUtilities.dp(100) && height < AndroidUtilities.displaySize.y && height + AndroidUtilities.dp(100) > AndroidUtilities.displaySize.y) {
                     AndroidUtilities.displaySize.y = height;
-                    FileLog.e("tmessages", "fix display size y to " + AndroidUtilities.displaySize.y);
+                    FileLog.e("messenger", "fix display size y to " + AndroidUtilities.displaySize.y);
                 }
             }
         });
@@ -531,7 +531,7 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                                     BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(stream, "UTF-8"));
                                     String line;
                                     while ((line = bufferedReader.readLine()) != null) {
-                                        FileLog.e("tmessages", line);
+                                        FileLog.e("messenger", line);
                                         String[] args = line.split(":");
                                         if (args.length != 2) {
                                             continue;
@@ -588,7 +588,7 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                                         bufferedReader.close();
                                         stream.close();
                                     } catch (Exception e) {
-                                        FileLog.e("tmessages", e);
+                                        FileLog.e("messenger", e);
                                     }
                                     for (int a = 0; a < vcardDatas.size(); a++) {
                                         VcardData vcardData = vcardDatas.get(a);
@@ -612,7 +612,7 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                                     error = true;
                                 }
                             } catch (Exception e) {
-                                FileLog.e("tmessages", e);
+                                FileLog.e("messenger", e);
                                 error = true;
                             }
                         } else {
@@ -761,7 +761,7 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                                 error = true;
                             }
                         } catch (Exception e) {
-                            FileLog.e("tmessages", e);
+                            FileLog.e("messenger", e);
                             error = true;
                         }
                         if (error) {
@@ -869,7 +869,7 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                                         cursor.close();
                                     }
                                 } catch (Exception e) {
-                                    FileLog.e("tmessages", e);
+                                    FileLog.e("messenger", e);
                                 }
                             }
                         }
@@ -1068,7 +1068,7 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                                 try {
                                     progressDialog.dismiss();
                                 } catch (Exception e) {
-                                    FileLog.e("tmessages", e);
+                                    FileLog.e("messenger", e);
                                 }
                                 if (error == null && actionBarLayout != null) {
                                     final TLRPC.TL_contacts_resolvedPeer res = (TLRPC.TL_contacts_resolvedPeer) response;
@@ -1082,7 +1082,7 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                                             try {
                                                 Toast.makeText(LaunchActivity.this, LocaleController.getString("BotCantJoinGroups", R.string.BotCantJoinGroups), Toast.LENGTH_SHORT).show();
                                             } catch (Exception e) {
-                                                FileLog.e("tmessages", e);
+                                                FileLog.e("messenger", e);
                                             }
                                             return;
                                         }
@@ -1138,7 +1138,7 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                                     try {
                                         Toast.makeText(LaunchActivity.this, LocaleController.getString("NoUsernameFound", R.string.NoUsernameFound), Toast.LENGTH_SHORT).show();
                                     } catch (Exception e) {
-                                        FileLog.e("tmessages", e);
+                                        FileLog.e("messenger", e);
                                     }
                                 }
                             }
@@ -1160,7 +1160,7 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                                     try {
                                         progressDialog.dismiss();
                                     } catch (Exception e) {
-                                        FileLog.e("tmessages", e);
+                                        FileLog.e("messenger", e);
                                     }
                                     if (error == null && actionBarLayout != null) {
                                         TLRPC.ChatInvite invite = (TLRPC.ChatInvite) response;
@@ -1225,7 +1225,7 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                                     try {
                                         progressDialog.dismiss();
                                     } catch (Exception e) {
-                                        FileLog.e("tmessages", e);
+                                        FileLog.e("messenger", e);
                                     }
                                     if (error == null) {
                                         if (actionBarLayout != null) {
@@ -1314,7 +1314,7 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                     try {
                         dialog.dismiss();
                     } catch (Exception e) {
-                        FileLog.e("tmessages", e);
+                        FileLog.e("messenger", e);
                     }
                 }
             });
@@ -1329,7 +1329,7 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                 visibleDialog = null;
             }
         } catch (Exception e) {
-            FileLog.e("tmessages", e);
+            FileLog.e("messenger", e);
         }
         try {
             visibleDialog = builder.show();
@@ -1342,7 +1342,7 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
             });
             return visibleDialog;
         } catch (Exception e) {
-            FileLog.e("tmessages", e);
+            FileLog.e("messenger", e);
         }
         return null;
     }
@@ -1616,7 +1616,7 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                         intent.setData(Uri.parse("package:" + ApplicationLoader.applicationContext.getPackageName()));
                         startActivity(intent);
                     } catch (Exception e) {
-                        FileLog.e("tmessages", e);
+                        FileLog.e("messenger", e);
                     }
                 }
             });
@@ -1686,7 +1686,7 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                 visibleDialog = null;
             }
         } catch (Exception e) {
-            FileLog.e("tmessages", e);
+            FileLog.e("messenger", e);
         }
         try {
             if (onGlobalLayoutListener != null) {
@@ -1698,7 +1698,7 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                 }
             }
         } catch (Exception e) {
-            FileLog.e("tmessages", e);
+            FileLog.e("messenger", e);
         }
         super.onDestroy();
         onFinish();
@@ -1767,7 +1767,7 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
         } else if (id == NotificationCenter.didUpdatedConnectionState) {
             int state = ConnectionsManager.getInstance().getConnectionState();
             if (currentConnectionState != state) {
-                FileLog.d("tmessages", "switch to state " + state);
+                FileLog.d("messenger", "switch to state " + state);
                 currentConnectionState = state;
                 updateCurrentConnectionState();
             }
@@ -1847,10 +1847,10 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                 public void run() {
                     if (lockRunnable == this) {
                         if (AndroidUtilities.needShowPasscode(true)) {
-                            FileLog.e("tmessages", "lock app");
+                            FileLog.e("messenger", "lock app");
                             showPasscodeActivity();
                         } else {
-                            FileLog.e("tmessages", "didn't pass lock check");
+                            FileLog.e("messenger", "didn't pass lock check");
                         }
                         lockRunnable = null;
                     }
@@ -1939,7 +1939,7 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                 lastFragment.saveSelfArgs(outState);
             }
         } catch (Exception e) {
-            FileLog.e("tmessages", e);
+            FileLog.e("messenger", e);
         }
     }
 

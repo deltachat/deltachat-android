@@ -726,7 +726,7 @@ public class MessagesController implements NotificationCenter.NotificationCenter
         }
         loadingDialogs = true;
         NotificationCenter.getInstance().postNotificationName(NotificationCenter.dialogsNeedReload);
-        FileLog.e("tmessages", "load cacheOffset = " + offset + " count = " + count + " cache = " + fromCache);
+        FileLog.e("messenger", "load cacheOffset = " + offset + " count = " + count + " cache = " + fromCache);
         if (fromCache) {
             //MessagesStorage.getInstance().getDialogs(offset == 0 ? 0 : nextDialogsCacheOffset, count);
         } else {
@@ -1150,7 +1150,7 @@ public class MessagesController implements NotificationCenter.NotificationCenter
                             try {
                                 progressDialog.dismiss();
                             } catch (Exception e) {
-                                FileLog.e("tmessages", e);
+                                FileLog.e("messenger", e);
                             }
                             fragment.setVisibleDialog(null);
                             if (error == null) {
@@ -1168,7 +1168,7 @@ public class MessagesController implements NotificationCenter.NotificationCenter
                                     try {
                                         Toast.makeText(fragment.getParentActivity(), LocaleController.getString("NoUsernameFound", R.string.NoUsernameFound), Toast.LENGTH_SHORT).show();
                                     } catch (Exception e) {
-                                        FileLog.e("tmessages", e);
+                                        FileLog.e("messenger", e);
                                     }
                                 }
                             }
@@ -1184,7 +1184,7 @@ public class MessagesController implements NotificationCenter.NotificationCenter
                     try {
                         dialog.dismiss();
                     } catch (Exception e) {
-                        FileLog.e("tmessages", e);
+                        FileLog.e("messenger", e);
                     }
                     if (fragment != null) {
                         fragment.setVisibleDialog(null);

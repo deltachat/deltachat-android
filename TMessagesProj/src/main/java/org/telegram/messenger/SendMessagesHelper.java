@@ -77,7 +77,7 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
                 if (location == null || locationQueryCancelRunnable == null) {
                     return;
                 }
-                FileLog.e("tmessages", "found location " + location);
+                FileLog.e("messenger", "found location " + location);
                 lastKnownLocation = location;
                 if (location.getAccuracy() < 100) {
                     if (delegate != null) {
@@ -132,12 +132,12 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
             try {
                 locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1, 0, gpsLocationListener);
             } catch (Exception e) {
-                FileLog.e("tmessages", e);
+                FileLog.e("messenger", e);
             }
             try {
                 locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 1, 0, networkLocationListener);
             } catch (Exception e) {
-                FileLog.e("tmessages", e);
+                FileLog.e("messenger", e);
             }
             try {
                 lastKnownLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
@@ -145,7 +145,7 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
                     lastKnownLocation = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
                 }
             } catch (Exception e) {
-                FileLog.e("tmessages", e);
+                FileLog.e("messenger", e);
             }
             if (locationQueryCancelRunnable != null) {
                 AndroidUtilities.cancelRunOnUIThread(locationQueryCancelRunnable);
@@ -428,7 +428,7 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
                                             performSendDelayedMessage(message);
                                             NotificationCenter.getInstance().postNotificationName(NotificationCenter.updateMessageMedia, message.obj);
                                         } else {
-                                            FileLog.e("tmessages", "can't load image " + message.httpLocation + " to file " + cacheFile.toString());
+                                            FileLog.e("messenger", "can't load image " + message.httpLocation + " to file " + cacheFile.toString());
                                             //MessagesStorage.getInstance().markMessageAsSendError(message.obj.messageOwner);
                                             message.obj.messageOwner.send_state = MessageObject.MESSAGE_SEND_STATE_SEND_ERROR;
                                             NotificationCenter.getInstance().postNotificationName(NotificationCenter.messageSendError, message.obj.getId());
@@ -453,7 +453,7 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
                                         }
                                     } catch (Exception e) {
                                         message.documentLocation.thumb = null;
-                                        FileLog.e("tmessages", e);
+                                        FileLog.e("messenger", e);
                                     }
                                     if (message.documentLocation.thumb == null) {
                                         message.documentLocation.thumb = new TLRPC.TL_photoSizeEmpty();
@@ -582,7 +582,7 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
                         }
                         document = newDocument;
                     } catch (Exception e) {
-                        FileLog.e("tmessages", e);
+                        FileLog.e("messenger", e);
                     }
                 }
             }
@@ -1087,7 +1087,7 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
 
 
         } catch (Exception e) {
-            FileLog.e("tmessages", e);
+            FileLog.e("messenger", e);
             //MessagesStorage.getInstance().markMessageAsSendError(newMsg);
             if (newMsgObj != null) {
                 newMsgObj.messageOwner.send_state = MessageObject.MESSAGE_SEND_STATE_SEND_ERROR;
@@ -1287,7 +1287,7 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
                         bitmap.recycle();
                     }
                 } catch (Exception e) {
-                    FileLog.e("tmessages", e);
+                    FileLog.e("messenger", e);
                 }
             }
             if (document.mime_type.equals("image/webp") && allowSticker) {
@@ -1299,7 +1299,7 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
                     Utilities.loadWebpImage(null, buffer, buffer.limit(), bmOptions, true);
                     file.close();
                 } catch (Exception e) {
-                    FileLog.e("tmessages", e);
+                    FileLog.e("messenger", e);
                 }
                 if (bmOptions.outWidth != 0 && bmOptions.outHeight != 0 && bmOptions.outWidth <= 800 && bmOptions.outHeight <= 800) {
                     TLRPC.TL_documentAttributeSticker attributeSticker = new TLRPC.TL_documentAttributeSticker();
@@ -1439,7 +1439,7 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
                                 Toast toast = Toast.makeText(ApplicationLoader.applicationContext, LocaleController.getString("UnsupportedAttachment", R.string.UnsupportedAttachment), Toast.LENGTH_SHORT);
                                 toast.show();
                             } catch (Exception e) {
-                                FileLog.e("tmessages", e);
+                                FileLog.e("messenger", e);
                             }
                         }
                     });
@@ -1538,7 +1538,7 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
                                         bitmap.recycle();
                                     }
                                 } catch (Exception e) {
-                                    FileLog.e("tmessages", e);
+                                    FileLog.e("messenger", e);
                                 }
                             }
                             if (document.thumb == null) {
@@ -1859,14 +1859,14 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
                                 }
                                 infoObtained = true;
                             } catch (Exception e) {
-                                FileLog.e("tmessages", e);
+                                FileLog.e("messenger", e);
                             } finally {
                                 try {
                                     if (mediaMetadataRetriever != null) {
                                         mediaMetadataRetriever.release();
                                     }
                                 } catch (Exception e) {
-                                    FileLog.e("tmessages", e);
+                                    FileLog.e("messenger", e);
                                 }
                             }
                             if (!infoObtained) {
@@ -1879,7 +1879,7 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
                                         mp.release();
                                     }
                                 } catch (Exception e) {
-                                    FileLog.e("tmessages", e);
+                                    FileLog.e("messenger", e);
                                 }
                             }
                         }

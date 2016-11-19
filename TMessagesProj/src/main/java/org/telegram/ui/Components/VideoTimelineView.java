@@ -159,7 +159,7 @@ public class VideoTimelineView extends View {
             String duration = mediaMetadataRetriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_DURATION);
             videoLength = Long.parseLong(duration);
         } catch (Exception e) {
-            FileLog.e("tmessages", e);
+            FileLog.e("messenger", e);
         }
     }
 
@@ -207,7 +207,7 @@ public class VideoTimelineView extends View {
                         bitmap = result;
                     }
                 } catch (Exception e) {
-                    FileLog.e("tmessages", e);
+                    FileLog.e("messenger", e);
                 }
                 return bitmap;
             }
@@ -234,7 +234,7 @@ public class VideoTimelineView extends View {
                     mediaMetadataRetriever = null;
                 }
             } catch (Exception e) {
-                FileLog.e("tmessages", e);
+                FileLog.e("messenger", e);
             }
         }
         for (Bitmap bitmap : frames) {

@@ -34,7 +34,7 @@ public class VideoEncodingService extends Service implements NotificationCenter.
         stopForeground(true);
         NotificationCenter.getInstance().removeObserver(this, NotificationCenter.FileUploadProgressChanged);
         NotificationCenter.getInstance().removeObserver(this, NotificationCenter.stopEncodingService);
-        FileLog.e("tmessages", "destroy video service");
+        FileLog.e("messenger", "destroy video service");
     }
 
     @Override
@@ -62,7 +62,7 @@ public class VideoEncodingService extends Service implements NotificationCenter.
             stopSelf();
             return Service.START_NOT_STICKY;
         }
-        FileLog.e("tmessages", "start video service");
+        FileLog.e("messenger", "start video service");
         if (builder == null) {
             builder = new NotificationCompat.Builder(ApplicationLoader.applicationContext);
             builder.setSmallIcon(android.R.drawable.stat_sys_upload);

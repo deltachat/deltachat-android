@@ -190,7 +190,7 @@ public class StickersQuery {
                             hash = calcStickersHash(newStickerArray);
                         }
                     } catch (Throwable e) {
-                        FileLog.e("tmessages", e);
+                        FileLog.e("messenger", e);
                     } finally {
                         if (cursor != null) {
                             cursor.dispose();
@@ -300,7 +300,7 @@ public class StickersQuery {
                         state.dispose();
                     }
                 } catch (Exception e) {
-                    FileLog.e("tmessages", e);
+                    FileLog.e("messenger", e);
                 }
             }
         });
@@ -434,7 +434,7 @@ public class StickersQuery {
                             }
                         });
                     } catch (Throwable e) {
-                        FileLog.e("tmessages", e);
+                        FileLog.e("messenger", e);
                     }
                 } else if (!cache) {
                     AndroidUtilities.runOnUIThread(new Runnable() {
@@ -507,7 +507,7 @@ public class StickersQuery {
                                     Toast.makeText(context, LocaleController.getString("ErrorOccurred", R.string.ErrorOccurred), Toast.LENGTH_SHORT).show();
                                 }
                             } catch (Exception e) {
-                                FileLog.e("tmessages", e);
+                                FileLog.e("messenger", e);
                             }
                             loadStickers(false, true);
                         }

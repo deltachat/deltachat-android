@@ -329,7 +329,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                         AndroidUtilities.installShortcut(install_chat_id);
                         Toast.makeText(getParentActivity(), LocaleController.getString("ShortcutAdded", R.string.ShortcutAdded), Toast.LENGTH_LONG).show();
                     } catch (Exception e) {
-                        FileLog.e("tmessages", e);
+                        FileLog.e("messenger", e);
                     }
                 }
             }
@@ -574,7 +574,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
             try {
                 writeButton.setBackgroundResource(R.drawable.floating_user_states);
             } catch (Throwable e) {
-                FileLog.e("tmessages", e);
+                FileLog.e("messenger", e);
             }
             writeButton.setScaleType(ImageView.ScaleType.CENTER);
             writeButton.setImageResource(R.drawable.floating_camera);
