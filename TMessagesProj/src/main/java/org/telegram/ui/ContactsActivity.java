@@ -148,44 +148,61 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
         delegate = null;
     }
 
+    private volatile boolean m_in_sync = false;
+
     @Override
     public View createView(Context context) {
 
+        // do sync?
+        boolean do_sync_now = true;
+        if( m_in_sync ) {
+            do_sync_now = false;
+        }
+        else {
+            m_in_sync = true;
+        }
+
+        // initialize action
         actionBar.setBackButtonImage(R.drawable.ic_ab_back);
         actionBar.setAllowOverlayTitle(true);
         if( title != null ) {
             actionBar.setTitle(title);
             if( subtitle != null ) {
-                actionBar.setSubtitle("Synchronizing, please wait ...");
+                actionBar.setSubtitle(do_sync_now? LocaleController.getString("OneMomentPlease", R.string.OneMomentPlease) : subtitle);
             }
         }
 
         // sync phone book (the globalQueue is in the main thread)
-        Utilities.searchQueue.postRunnable(new Runnable() {
-            @Override
-            public void run() {
-                String pbcontacts = ContactsController.getInstance().readContactsFromPhoneBook();
-                if( !pbcontacts.isEmpty() ) {
-                    if( MrMailbox.MrMailboxAddAddressBook(MrMailbox.hMailbox, pbcontacts) > 0 ) {
-                        AndroidUtilities.runOnUIThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                NotificationCenter.getInstance().postNotificationName(NotificationCenter.contactsDidLoaded);
-                            }
-                        });
-                    }
-                }
+        if( do_sync_now ) {
+            Utilities.searchQueue.postRunnable(new Runnable() {
+                @Override
+                public void run() {
 
-                AndroidUtilities.runOnUIThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        if( subtitle != null ) {
-                            actionBar.setSubtitle(subtitle);
+                    String pbcontacts = ContactsController.getInstance().readContactsFromPhoneBook();
+                    if (!pbcontacts.isEmpty()) {
+                        if (MrMailbox.MrMailboxAddAddressBook(MrMailbox.hMailbox, pbcontacts) > 0) {
+                            AndroidUtilities.runOnUIThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    NotificationCenter.getInstance().postNotificationName(NotificationCenter.contactsDidLoaded);
+                                }
+                            });
                         }
                     }
-                });
-            }
-        });
+
+                    AndroidUtilities.runOnUIThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            if (subtitle != null) {
+                                actionBar.setSubtitle(subtitle);
+                            }
+                        }
+                    });
+
+                    m_in_sync = false;
+                }
+            });
+        }
 
         actionBar.setActionBarMenuOnItemClick(new ActionBar.ActionBarMenuOnItemClick() {
             @Override

@@ -722,4 +722,5 @@
     <string name="ContactDeleted">Benutzer gelöscht.</string>
     <string name="ContactCreated">Benutzer angelegt.</string>
     <string name="ViewProfile">Profil anzeigen</string>
+    <string name="OneMomentPlease">Einen Moment, bitte...</string>
 </resources>

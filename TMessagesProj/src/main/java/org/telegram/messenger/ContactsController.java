@@ -53,7 +53,8 @@ public class ContactsController {
                 return "";
             }
             ContentResolver cr = ApplicationLoader.applicationContext.getContentResolver();
-            Cursor pCur = cr.query(ContactsContract.CommonDataKinds.Email.CONTENT_URI, projectionNames, null, null, null);
+            Cursor pCur = cr.query(ContactsContract.CommonDataKinds.Email.CONTENT_URI, // <-- this works, but I do not understand it (did not got the time, yet (bp))
+                    projectionNames, null, null, null);
             if (pCur != null && pCur.getCount() > 0) {
                 while (pCur.moveToNext()) {
                     String display_name = pCur.getString(0);

@@ -655,14 +655,17 @@ public class NotificationsController {
                     return;
                 }
                 lastBadgeCount = count;
+
+
+                // support icon unread counts of "Nova Launcher", see http://novalauncher.com/teslaunread-api/
                 try {
                     ContentValues cv = new ContentValues();
                     cv.put("tag", "org.telegram.messenger/org.telegram.ui.LaunchActivity");
                     cv.put("count", count);
                     ApplicationLoader.applicationContext.getContentResolver().insert(Uri.parse("content://com.teslacoilsw.notifier/unread_count"), cv);
                 } catch (Throwable e) {
-                    //ignore
                 }
+
                 try {
                     if (launcherClassName == null) {
                         launcherClassName = getLauncherClassName(ApplicationLoader.applicationContext);
