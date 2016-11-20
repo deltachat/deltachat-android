@@ -275,6 +275,12 @@ JNIEXPORT jint Java_org_telegram_messenger_MrMailbox_MrMailboxCreateChatByContac
 }
 
 
+JNIEXPORT void Java_org_telegram_messenger_MrMailbox_MrMailboxDeleteChat(JNIEnv *env, jclass c, jlong hMailbox, jint chat_id)
+{
+	mrmailbox_delete_chat((mrmailbox_t*)hMailbox, chat_id);
+}
+
+
 /* MrMailbox - handle messages */
 
 JNIEXPORT jlong Java_org_telegram_messenger_MrMailbox_MrMailboxGetMsg(JNIEnv *env, jclass c, jlong hMailbox, jint id)

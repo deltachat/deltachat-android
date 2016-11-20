@@ -295,7 +295,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
     private final static int id_forward = 11;
     private final static int id_delete_messages = 12;
     private final static int chat_menu_attach = 14;
-    private final static int clear_history = 15;
+    //private final static int clear_history = 15;
     private final static int id_delete_chat = 16;
     private final static int mute = 18;
     private final static int id_reply = 19;
@@ -682,26 +682,30 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     */
                     actionBar.hideActionMode();
                     updateVisibleRows();
-                } else if (id == clear_history || id == id_delete_chat) {
+                } else if (/*id == clear_history ||*/ id == id_delete_chat) {
+                    // as the history may be a mix of messenger-messages and e-mails, it is not safe to delete it.
+                    // the user can delete explicit messages or use his e-mail programm to delete masses.
                     if (getParentActivity() == null) {
                         return;
                     }
 
                     AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
 
+                    String messageText;
+                    /*
                     int totalMessagesCount = MrMailbox.MrChatGetTotalMsgCount(m_hChat);
                     String messageText = LocaleController.formatString("AreYouSureDeleteMessages", R.string.AreYouSureDeleteMessages, LocaleController.formatPluralString("messages", totalMessagesCount));
+                    */
 
-
-                    if (id == clear_history) {
+                    /*if (id == clear_history) {
                         builder.setTitle(LocaleController.getString("ClearHistory", R.string.ClearHistory));
-                    } else {
+                    } else */ {
                         if (MrMailbox.MrChatGetType(m_hChat)==MrMailbox.MR_CHAT_GROUP) {
                             builder.setTitle(LocaleController.getString("DeleteAndExit", R.string.DeleteAndExit));
-                            messageText = "- " + messageText + "\n\n - " + LocaleController.getString("AreYouSureDeleteAndExit", R.string.AreYouSureDeleteAndExit);
+                            messageText = /*"- " + messageText + "\n\n - " +*/ LocaleController.getString("AreYouSureDeleteAndExit", R.string.AreYouSureDeleteAndExit);
                         } else {
                             builder.setTitle(LocaleController.getString("DeleteChat", R.string.DeleteChat));
-                            messageText = "- " + messageText + "\n\n- " + LocaleController.getString("AreYouSureDeleteThisChat", R.string.AreYouSureDeleteThisChat);
+                            messageText = /*"- " + messageText + "\n\n- " +*/ LocaleController.getString("AreYouSureDeleteThisChat", R.string.AreYouSureDeleteThisChat);
                         }
                     }
 
@@ -710,23 +714,12 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
-                            Toast.makeText(getParentActivity(), LocaleController.getString("NotYetImplemented", R.string.NotYetImplemented), Toast.LENGTH_LONG).show();
-                            /*
-                            if (id != clear_history) {
-                                if (isChat) {
-                                    if (ChatObject.isNotInChat(currentChat)) {
-                                        MessagesController.getInstance().deleteDialog(dialog_id, 0);
-                                    } else {
-                                        MessagesController.getInstance().deleteUserFromChat((int) -dialog_id, MessagesController.getInstance().getUser(UserConfig.getClientUserId()), null);
-                                    }
-                                } else {
-                                    MessagesController.getInstance().deleteDialog(dialog_id, 0);
-                                }
+                            if( MrMailbox.MrMailboxDeleteChat(MrMailbox.hMailbox, (int)dialog_id)!=0 ) {
                                 finishFragment();
-                            } else {
-                                MessagesController.getInstance().deleteDialog(dialog_id, 1);
                             }
-                            */
+                            else {
+                                Toast.makeText(getParentActivity(), LocaleController.getString("CannotDeleteChat", R.string.CannotDeleteChat), Toast.LENGTH_LONG).show();
+                            }
                         }
                     });
                     builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
@@ -868,7 +861,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
             muteItem = headerItem.addSubItem(mute, null, 0);
         }
 
-        headerItem.addSubItem(clear_history, LocaleController.getString("ClearHistory", R.string.ClearHistory), 0);
+        //headerItem.addSubItem(clear_history, LocaleController.getString("ClearHistory", R.string.ClearHistory), 0);
 
         if( !isChatWithStrangers ) {
             if (MrMailbox.MrChatGetType(m_hChat) == MrMailbox.MR_CHAT_GROUP) {

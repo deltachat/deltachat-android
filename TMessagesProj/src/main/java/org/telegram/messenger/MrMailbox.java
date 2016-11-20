@@ -174,7 +174,6 @@ public class MrMailbox {
     // this function is called from within the C-wrapper
     public final static int MR_EVENT_MSGS_UPDATED     = 2000;
     public final static int MR_EVENT_CONTACTS_CHANGED = 2030;
-    public final static int MR_EVENT_IS_EMAIL_KNOWN   = 2010;
     public final static int MR_EVENT_MSG_DELIVERED    = 3000;
     public final static int MR_EVENT_MSG_READ         = 3010;
     public static long MrCallback(final int event, final long data1, final long data2)
@@ -213,10 +212,6 @@ public class MrMailbox {
                     }
                 });
                 return 0;
-
-            case MR_EVENT_IS_EMAIL_KNOWN:
-                String emailAdr = CPtr2String(data1);
-                return 0;
         }
         return 0;
     }
@@ -246,6 +241,7 @@ public class MrMailbox {
     public native static int     MrMailboxCreateChatByContactId(long hMailbox, int contact_id); // returns chat_id
     public native static int[]   MrMailboxGetChatMedia      (long hMailbox, int chat_id, int msg_type, int or_msg_type);
     public native static int[]   MrMailboxGetChatContacts   (long hMailbox, int chat_id);
+    public native static int     MrMailboxDeleteChat        (long hMailbox, int chat_id);
     public native static long    MrMailboxGetMsg            (long hMailbox, int id); // return hMsg which must be unref'd after usage
     public native static String  MrMailboxGetMsgInfo        (long hMailbox, int id);
     public native static void    MrMailboxDeleteMsg         (long hMailbox, int id);

@@ -723,4 +723,5 @@
     <string name="ContactCreated">User created.</string>
     <string name="ViewProfile">View profile</string>
     <string name="OneMomentPlease">One moment, please...</string>
+    <string name="CannotDeleteChat">Cannot delete chat.</string>
 </resources>
