@@ -724,4 +724,5 @@
     <string name="ViewProfile">View profile</string>
     <string name="OneMomentPlease">One moment, please...</string>
     <string name="CannotDeleteChat">Cannot delete chat.</string>
+    <string name="NoChatsHelp">Start messaging by pressing the new chat button in the bottom right corner or tap the menu button for more options.</string>
 </resources>

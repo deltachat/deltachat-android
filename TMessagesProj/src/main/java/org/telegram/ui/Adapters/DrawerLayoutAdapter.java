@@ -104,7 +104,11 @@ public class DrawerLayoutAdapter extends BaseAdapter {
             } else if (i == iNewGroup) {
                 actionCell.setTextAndIcon(LocaleController.getString("NewGroup", R.string.NewGroup), R.drawable.menu_empty);
             } else if (i == iDeaddrop) {
-                actionCell.setTextAndIcon(LocaleController.getString("Deaddrop", R.string.Deaddrop), R.drawable.menu_empty); // we do not want an icon beside the mailbox: 1. We do not want to give it much attention, 2. if the mailbox is show in the chatlist, it gets the chat icon (KISS), but we should not use this icon in the drawer for the mailbox. 3. Simplicity
+                actionCell.setTextAndIcon(LocaleController.getString("Deaddrop", R.string.Deaddrop), R.drawable.menu_empty);
+                // we do not want an icon beside the mailbox:
+                // 1. We do not want to give it much attention,
+                // 2. If the mailbox is shown in the chatlist, it gets the chat icon (KISS), but we should not use this icon in the drawer for the mailbox.
+                // 3. Simplicity - we have two sections, "Add" and "Tools" - Mailbox belongs to the latter
             } else if (i == iSettings) {
                 actionCell.setTextAndIcon(LocaleController.getString("Settings", R.string.Settings), R.drawable.menu_settings);
             } else if (i == iFaq) {
