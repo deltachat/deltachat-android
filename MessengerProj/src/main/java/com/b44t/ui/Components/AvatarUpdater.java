@@ -22,7 +22,7 @@ import android.provider.MediaStore;
 import com.b44t.messenger.AndroidUtilities;
 import com.b44t.messenger.ImageLoader;
 import com.b44t.messenger.MediaController;
-import com.b44t.tgnet.TLRPC;
+import com.b44t.messenger.TLRPC;
 import com.b44t.messenger.FileLoader;
 import com.b44t.messenger.FileLog;
 import com.b44t.messenger.NotificationCenter;

@@ -42,7 +42,7 @@ import com.b44t.messenger.LocaleController;
 import com.b44t.messenger.support.widget.LinearLayoutManager;
 import com.b44t.messenger.support.widget.RecyclerView;
 import com.b44t.messenger.ApplicationLoader;
-import com.b44t.tgnet.TLRPC;
+import com.b44t.messenger.TLRPC;
 import com.b44t.messenger.FileLoader;
 import com.b44t.messenger.FileLog;
 import com.b44t.messenger.NotificationCenter;

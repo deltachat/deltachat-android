@@ -14,7 +14,7 @@ import android.graphics.Paint;
 import android.graphics.drawable.Drawable;
 
 import com.b44t.messenger.AndroidUtilities;
-import com.b44t.tgnet.TLRPC;
+import com.b44t.messenger.TLRPC;
 
 public class IdenticonDrawable extends Drawable {
 

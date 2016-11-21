@@ -33,7 +33,7 @@ import com.b44t.messenger.MediaController;
 import com.b44t.messenger.MessageObject;
 import com.b44t.messenger.R;
 import com.b44t.messenger.Utilities;
-import com.b44t.tgnet.TLRPC;
+import com.b44t.messenger.TLRPC;
 import com.b44t.ui.Components.LetterDrawable;
 import com.b44t.ui.Components.RadialProgress;
 import com.b44t.ui.ActionBar.Theme;

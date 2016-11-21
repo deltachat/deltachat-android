@@ -20,8 +20,6 @@ import android.text.TextUtils;
 import android.text.style.URLSpan;
 import android.text.util.Linkify;
 
-import com.b44t.tgnet.TLObject;
-import com.b44t.tgnet.TLRPC;
 import com.b44t.ui.ActionBar.Theme;
 import com.b44t.ui.Components.TypefaceSpan;
 import com.b44t.ui.Components.URLSpanNoUnderline;

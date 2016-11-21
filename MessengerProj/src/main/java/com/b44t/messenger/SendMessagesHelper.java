@@ -20,9 +20,6 @@ import android.widget.Toast;
 
 import com.b44t.messenger.audioinfo.AudioInfo;
 import com.b44t.messenger.query.DraftQuery;
-import com.b44t.tgnet.ConnectionsManager;
-import com.b44t.tgnet.TLObject;
-import com.b44t.tgnet.TLRPC;
 
 import java.io.File;
 import java.io.RandomAccessFile;

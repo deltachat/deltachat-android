@@ -9,8 +9,8 @@
 package com.b44t.ui.Adapters;
 
 import com.b44t.messenger.support.widget.RecyclerView;
-import com.b44t.tgnet.ConnectionsManager;
-import com.b44t.tgnet.TLObject;
+import com.b44t.messenger.ConnectionsManager;
+import com.b44t.messenger.TLObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;

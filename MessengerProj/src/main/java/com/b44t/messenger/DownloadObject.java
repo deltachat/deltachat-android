@@ -8,8 +8,6 @@
 
 package com.b44t.messenger;
 
-import com.b44t.tgnet.TLObject;
-
 public class DownloadObject {
     public TLObject object;
     public int type;

@@ -11,7 +11,7 @@ package com.b44t.messenger.query;
 import android.content.Context;
 
 import com.b44t.messenger.NotificationCenter;
-import com.b44t.tgnet.TLRPC;
+import com.b44t.messenger.TLRPC;
 
 import java.util.ArrayList;
 import java.util.HashMap;

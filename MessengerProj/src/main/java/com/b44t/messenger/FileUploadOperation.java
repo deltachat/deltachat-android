@@ -8,9 +8,6 @@
 
 package com.b44t.messenger;
 
-import com.b44t.tgnet.ConnectionsManager;
-import com.b44t.tgnet.TLRPC;
-
 import java.io.FileInputStream;
 
 public class FileUploadOperation {

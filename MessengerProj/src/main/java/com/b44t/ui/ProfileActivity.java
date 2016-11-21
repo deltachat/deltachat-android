@@ -52,7 +52,7 @@ import com.b44t.messenger.query.SharedMediaQuery;
 import com.b44t.messenger.ApplicationLoader;
 import com.b44t.messenger.support.widget.LinearLayoutManager;
 import com.b44t.messenger.support.widget.RecyclerView;
-import com.b44t.tgnet.TLRPC;
+import com.b44t.messenger.TLRPC;
 
 import com.b44t.messenger.FileLog;
 import com.b44t.messenger.MessagesController;
@@ -602,7 +602,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                     AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
                     CharSequence[] items;
                     TLRPC.Chat chat = MrMailbox.chatId2chat(chat_id);
-                    if (chat.photo == null || chat.photo.photo_big == null || chat.photo instanceof TLRPC.TL_chatPhotoEmpty) {
+                    if (chat.photo == null || chat.photo.photo_big == null /*|| chat.photo instanceof TLRPC.TL_chatPhotoEmpty*/) {
                         items = new CharSequence[]{LocaleController.getString("FromCamera", R.string.FromCamera), LocaleController.getString("FromGalley", R.string.FromGalley)};
                     } else {
                         items = new CharSequence[]{LocaleController.getString("FromCamera", R.string.FromCamera), LocaleController.getString("FromGalley", R.string.FromGalley), LocaleController.getString("DeletePhoto", R.string.DeletePhoto)};

@@ -25,7 +25,7 @@ import android.widget.TextView;
 
 import com.b44t.messenger.LocaleController;
 import com.b44t.messenger.MrMailbox;
-import com.b44t.tgnet.TLRPC;
+import com.b44t.messenger.TLRPC;
 import com.b44t.messenger.MessagesController;
 import com.b44t.messenger.NotificationCenter;
 import com.b44t.messenger.R;

@@ -57,8 +57,8 @@ import com.b44t.messenger.NotificationCenter;
 import com.b44t.messenger.R;
 import com.b44t.messenger.browser.Browser;
 import com.b44t.messenger.query.DraftQuery;
-import com.b44t.tgnet.ConnectionsManager;
-import com.b44t.tgnet.TLRPC;
+import com.b44t.messenger.ConnectionsManager;
+import com.b44t.messenger.TLRPC;
 import com.b44t.messenger.UserConfig;
 import com.b44t.ui.Adapters.DrawerLayoutAdapter;
 import com.b44t.ui.ActionBar.ActionBarLayout;
@@ -74,7 +74,6 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -1149,8 +1148,8 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
             }); */
         } else if (group != null) {
             if (state == 0) {
-                final TLRPC.TL_messages_checkChatInvite req = new TLRPC.TL_messages_checkChatInvite();
-                req.hash = group;
+                /*final TLRPC.TL_messages_checkChatInvite req = new TLRPC.TL_messages_checkChatInvite();
+                req.hash = group;*/
                 requestId = 0; /* ConnectionsManager.getInstance().sendRequest(req, new RequestDelegate() {
                     @Override
                     public void run(final TLObject response, final TLRPC.TL_error error) {
@@ -1209,8 +1208,8 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                     }
                 }, ConnectionsManager.RequestFlagFailOnServerErrors); */
             } else if (state == 1) {
-                TLRPC.TL_messages_importChatInvite req = new TLRPC.TL_messages_importChatInvite();
-                req.hash = group;
+                /*TLRPC.TL_messages_importChatInvite req = new TLRPC.TL_messages_importChatInvite();
+                req.hash = group;*/
                 /*
                 ConnectionsManager.getInstance().sendRequest(req, new RequestDelegate() {
                     @Override

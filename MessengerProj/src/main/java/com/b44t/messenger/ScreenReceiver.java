@@ -12,8 +12,6 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 
-import com.b44t.tgnet.ConnectionsManager;
-
 public class ScreenReceiver extends BroadcastReceiver {
 
     @Override

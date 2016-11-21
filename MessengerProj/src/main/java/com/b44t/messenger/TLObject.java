@@ -6,7 +6,7 @@
  * Copyright Nikolai Kudashov, 2013-2016.
  */
 
-package com.b44t.tgnet;
+package com.b44t.messenger;
 
 public class TLObject {
 }

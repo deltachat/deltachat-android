@@ -36,7 +36,7 @@ import com.b44t.messenger.volley.RequestQueue;
 import com.b44t.messenger.volley.toolbox.Volley;
 import com.b44t.messenger.ApplicationLoader;
 import com.b44t.messenger.R;
-import com.b44t.tgnet.TLRPC;
+import com.b44t.messenger.TLRPC;
 import com.b44t.messenger.MessageObject;
 import com.b44t.ui.ActionBar.ActionBarMenu;
 import com.b44t.ui.ActionBar.ActionBarMenuItem;

@@ -52,7 +52,7 @@ import com.b44t.messenger.FileLog;
 import com.b44t.messenger.R;
 import com.b44t.messenger.support.widget.GridLayoutManager;
 import com.b44t.messenger.support.widget.RecyclerView;
-import com.b44t.tgnet.TLRPC;
+import com.b44t.messenger.TLRPC;
 import com.b44t.ui.Cells.ContextLinkCell;
 import com.b44t.ui.Cells.EmptyCell;
 import com.b44t.ui.Cells.StickerEmojiCell;

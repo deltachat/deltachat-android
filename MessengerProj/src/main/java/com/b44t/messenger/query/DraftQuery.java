@@ -10,7 +10,7 @@ package com.b44t.messenger.query;
 
 import android.text.TextUtils;
 import com.b44t.messenger.MrMailbox;
-import com.b44t.tgnet.TLRPC;
+import com.b44t.messenger.TLRPC;
 import java.util.ArrayList;
 
 

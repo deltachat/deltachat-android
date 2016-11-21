@@ -6,7 +6,7 @@
  * Copyright Nikolai Kudashov, 2013-2016.
  */
 
-package com.b44t.tgnet;
+package com.b44t.messenger;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -31,9 +31,6 @@ public class TLRPC {
     public static class ChatPhoto extends TLObject {
 		public FileLocation photo_small;
 		public FileLocation photo_big;
-	}
-
-	public static class TL_chatPhotoEmpty extends ChatPhoto {
 	}
 
 	public static class DocumentAttribute extends TLObject {
@@ -170,9 +167,6 @@ public class TLRPC {
 	}
 
 	public static class TL_inputGeoPoint extends InputGeoPoint {
-	}
-
-	public static class TL_inputGeoPointEmpty extends InputGeoPoint {
 	}
 
 	public static class Audio extends TLObject {
@@ -560,7 +554,7 @@ public class TLRPC {
 		public boolean deactivated;
 		public int id;
 		public String title;
-		public ChatPhoto photo;
+		public final ChatPhoto photo = null;
 		public int date;
 		public int version;
 		public boolean editor;
@@ -570,7 +564,6 @@ public class TLRPC {
 		public boolean left;
 		public String username;
 		public boolean restricted;
-		public boolean democracy;
 		public boolean signatures;
 		public String restriction_reason;
 		public boolean min;
@@ -696,18 +689,6 @@ public class TLRPC {
 		public ArrayList<Long> documents = new ArrayList<>();
 	}
 
-	public static class InputChatPhoto extends TLObject {
-		public InputPhoto id;
-		public InputPhotoCrop crop;
-		public InputFile file;
-	}
-
-	public static class TL_inputChatPhotoEmpty extends InputChatPhoto {
-	}
-
-	public static class TL_inputChatUploadedPhoto extends InputChatPhoto {
-	}
-
 	public static class InputPhoto extends TLObject {
 		public long id;
 		public long access_hash;
@@ -733,21 +714,6 @@ public class TLRPC {
 		public Peer peer;
 	}
 
-	public static class InputPhotoCrop extends TLObject {
-		public double crop_left;
-		public double crop_top;
-	}
-
-	public static class TL_inputPhotoCropAuto extends InputPhotoCrop {
-	}
-
-	public static class TL_messages_getDialogs extends TLObject {
-		public int offset_date;
-		public int offset_id;
-		public InputPeer offset_peer;
-		public int limit;
-	}
-
 	public static class TL_messages_search extends TLObject {
 		public int flags;
 		public InputPeer peer;
@@ -764,30 +730,6 @@ public class TLRPC {
 		public InputPeer offset_peer;
 		public int offset_id;
 		public int limit;
-	}
-
-    public static class TL_messages_editChatPhoto extends TLObject {
-        public int chat_id;
-        public InputChatPhoto photo;
-    }
-
-	public static class TL_photos_uploadProfilePhoto extends TLObject {
-		public InputFile file;
-        public String caption;
-		public InputGeoPoint geo_point;
-		public InputPhotoCrop crop;
-	}
-
-    public static class TL_contacts_resolveUsername extends TLObject {
-        public String username;
-    }
-
-	public static class TL_messages_checkChatInvite extends TLObject {
-		public String hash;
-	}
-
-	public static class TL_messages_importChatInvite extends TLObject {
-		public String hash;
 	}
 
 	public static class MessageMedia extends TLObject {

@@ -19,8 +19,7 @@ import android.text.format.DateFormat;
 import android.util.Xml;
 
 import com.b44t.messenger.time.FastDateFormat;
-import com.b44t.tgnet.ConnectionsManager;
-import com.b44t.tgnet.TLRPC;
+
 import org.xmlpull.v1.XmlPullParser;
 
 import java.io.File;

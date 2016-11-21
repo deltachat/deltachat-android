@@ -1,4 +1,4 @@
-package com.b44t.tgnet;
+package com.b44t.messenger;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -7,10 +7,6 @@ import android.content.IntentFilter;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.PowerManager;
-
-import com.b44t.messenger.ApplicationLoader;
-import com.b44t.messenger.FileLog;
-import com.b44t.messenger.MrMailbox;
 
 public class ConnectionsManager {
 

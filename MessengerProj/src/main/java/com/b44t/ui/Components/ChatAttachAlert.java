@@ -53,7 +53,7 @@ import com.b44t.messenger.query.SearchQuery;
 import com.b44t.messenger.support.widget.LinearLayoutManager;
 import com.b44t.messenger.R;
 import com.b44t.messenger.support.widget.RecyclerView;
-import com.b44t.tgnet.TLRPC;
+import com.b44t.messenger.TLRPC;
 import com.b44t.ui.ActionBar.BottomSheet;
 import com.b44t.ui.ActionBar.Theme;
 import com.b44t.ui.Cells.PhotoAttachCameraCell;

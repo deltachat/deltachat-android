@@ -25,9 +25,6 @@ import android.os.Build;
 import android.os.Environment;
 import android.provider.MediaStore;
 
-import com.b44t.tgnet.ConnectionsManager;
-import com.b44t.tgnet.TLObject;
-import com.b44t.tgnet.TLRPC;
 import com.b44t.ui.Components.AnimatedFileDrawable;
 
 import java.io.ByteArrayOutputStream;

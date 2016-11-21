@@ -12,8 +12,6 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.util.Base64;
 
-import com.b44t.tgnet.TLRPC;
-
 import java.io.File;
 
 public class UserConfig {

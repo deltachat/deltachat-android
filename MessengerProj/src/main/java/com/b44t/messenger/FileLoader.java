@@ -8,9 +8,6 @@
 
 package com.b44t.messenger;
 
-import com.b44t.tgnet.TLObject;
-import com.b44t.tgnet.TLRPC;
-
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;

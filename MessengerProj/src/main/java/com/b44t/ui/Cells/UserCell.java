@@ -18,7 +18,7 @@ import android.widget.ImageView;
 import com.b44t.messenger.AndroidUtilities;
 import com.b44t.messenger.LocaleController;
 import com.b44t.messenger.R;
-import com.b44t.tgnet.TLRPC;
+import com.b44t.messenger.TLRPC;
 import com.b44t.ui.Components.AvatarDrawable;
 import com.b44t.ui.Components.BackupImageView;
 import com.b44t.ui.Components.CheckBox;

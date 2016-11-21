@@ -30,7 +30,7 @@ import com.b44t.messenger.MessageObject;
 import com.b44t.messenger.MrMailbox; // EDIT BY MR
 import com.b44t.messenger.FileLog;
 import com.b44t.messenger.query.DraftQuery;
-import com.b44t.tgnet.TLRPC;
+import com.b44t.messenger.TLRPC;
 import com.b44t.messenger.Emoji;
 import com.b44t.messenger.MessagesController;
 import com.b44t.messenger.R;

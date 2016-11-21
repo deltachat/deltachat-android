@@ -17,7 +17,7 @@ import android.widget.FrameLayout;
 
 import com.b44t.messenger.AndroidUtilities;
 import com.b44t.messenger.MrMailbox;
-import com.b44t.tgnet.TLRPC;
+import com.b44t.messenger.TLRPC;
 import com.b44t.ui.ActionBar.ActionBar;
 import com.b44t.ui.ActionBar.SimpleTextView;
 import com.b44t.ui.ActionBar.Theme;

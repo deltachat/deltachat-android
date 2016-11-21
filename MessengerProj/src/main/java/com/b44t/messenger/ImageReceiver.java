@@ -23,8 +23,6 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.view.View;
 
-import com.b44t.tgnet.TLObject;
-import com.b44t.tgnet.TLRPC;
 import com.b44t.ui.Components.AnimatedFileDrawable;
 
 public class ImageReceiver implements NotificationCenter.NotificationCenterDelegate {

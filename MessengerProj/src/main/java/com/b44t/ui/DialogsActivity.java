@@ -51,7 +51,7 @@ import com.b44t.messenger.query.SearchQuery;
 import com.b44t.messenger.support.widget.LinearLayoutManager;
 import com.b44t.messenger.support.widget.RecyclerView;
 import com.b44t.messenger.FileLog;
-import com.b44t.tgnet.TLRPC;
+import com.b44t.messenger.TLRPC;
 import com.b44t.messenger.ContactsController;
 import com.b44t.messenger.MessagesController;
 import com.b44t.messenger.NotificationCenter;
@@ -355,7 +355,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
                         if (dialogsSearchAdapter.isGlobalSearch(position)) {
                             ArrayList<TLRPC.Chat> chats = new ArrayList<>();
                             chats.add((TLRPC.Chat) obj);
-                            MessagesController.getInstance().putChats(chats, false);
+                            //MessagesController.getInstance().putChats(chats, false);
                             //MessagesStorage.getInstance().putUsersAndChats(null, chats, false, true);
                         }
                         if (((TLRPC.Chat) obj).id > 0) {

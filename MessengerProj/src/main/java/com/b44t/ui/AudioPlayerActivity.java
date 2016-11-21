@@ -27,7 +27,7 @@ import com.b44t.messenger.NotificationCenter;
 import com.b44t.messenger.audioinfo.AudioInfo;
 import com.b44t.messenger.FileLoader;
 import com.b44t.messenger.R;
-import com.b44t.tgnet.TLRPC;
+import com.b44t.messenger.TLRPC;
 import com.b44t.ui.ActionBar.ActionBar;
 import com.b44t.ui.ActionBar.BaseFragment;
 import com.b44t.ui.ActionBar.Theme;

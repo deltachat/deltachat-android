@@ -34,8 +34,6 @@ import android.support.v4.app.NotificationManagerCompat;
 import android.support.v4.app.RemoteInput;
 import android.util.SparseArray;
 
-import com.b44t.tgnet.ConnectionsManager;
-import com.b44t.tgnet.TLRPC;
 import com.b44t.ui.LaunchActivity;
 import com.b44t.ui.PopupNotificationActivity;
 

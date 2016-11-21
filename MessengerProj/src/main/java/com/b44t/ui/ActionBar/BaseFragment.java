@@ -19,7 +19,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.b44t.messenger.FileLog;
-import com.b44t.tgnet.ConnectionsManager;
+import com.b44t.messenger.ConnectionsManager;
 
 public class BaseFragment {
 

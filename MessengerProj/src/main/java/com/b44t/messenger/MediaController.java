@@ -56,8 +56,6 @@ import com.b44t.messenger.video.InputSurface;
 import com.b44t.messenger.video.MP4Builder;
 import com.b44t.messenger.video.Mp4Movie;
 import com.b44t.messenger.video.OutputSurface;
-import com.b44t.tgnet.ConnectionsManager;
-import com.b44t.tgnet.TLRPC;
 import com.b44t.ui.ChatActivity;
 import com.b44t.ui.PhotoViewer;
 

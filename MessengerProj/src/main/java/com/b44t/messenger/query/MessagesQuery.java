@@ -12,7 +12,7 @@ import android.text.Spannable;
 import com.b44t.messenger.MessageObject;
 import com.b44t.messenger.MessagesController;
 import com.b44t.messenger.Utilities;
-import com.b44t.tgnet.TLRPC;
+import com.b44t.messenger.TLRPC;
 import com.b44t.ui.Components.URLSpanUserMention;
 
 import java.util.ArrayList;

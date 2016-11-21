@@ -17,8 +17,8 @@ import android.util.AttributeSet;
 import android.view.View;
 
 import com.b44t.messenger.ImageReceiver;
-import com.b44t.tgnet.TLObject;
-import com.b44t.tgnet.TLRPC;
+import com.b44t.messenger.TLObject;
+import com.b44t.messenger.TLRPC;
 
 public class BackupImageView extends View {
 

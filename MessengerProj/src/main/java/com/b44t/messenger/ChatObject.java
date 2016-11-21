@@ -8,8 +8,6 @@
 
 package com.b44t.messenger;
 
-import com.b44t.tgnet.TLRPC;
-
 public class ChatObject {
 
     public static final int CHAT_TYPE_CHAT = 0;

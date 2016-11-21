@@ -29,8 +29,6 @@
 package com.b44t.messenger;
 
 
-import com.b44t.tgnet.TLRPC;
-
 public class MrMailbox {
 
     public static long           hMailbox = 0;

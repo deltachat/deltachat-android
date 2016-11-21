@@ -31,7 +31,7 @@ import com.b44t.messenger.LocaleController;
 import com.b44t.messenger.NotificationsController;
 import com.b44t.messenger.NotificationCenter;
 import com.b44t.messenger.ApplicationLoader;
-import com.b44t.tgnet.ConnectionsManager;
+import com.b44t.messenger.ConnectionsManager;
 import com.b44t.messenger.FileLog;
 import com.b44t.messenger.R;
 import com.b44t.ui.Adapters.BaseFragmentAdapter;

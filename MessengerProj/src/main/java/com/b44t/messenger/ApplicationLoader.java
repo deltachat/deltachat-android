@@ -26,7 +26,6 @@ import android.os.Build;
 import android.os.Handler;
 import android.os.PowerManager;
 
-import com.b44t.tgnet.ConnectionsManager;
 import com.b44t.ui.Components.ForegroundDetector;
 
 import java.io.File;

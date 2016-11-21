@@ -59,8 +59,6 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.b44t.tgnet.ConnectionsManager;
-import com.b44t.tgnet.TLRPC;
 import com.b44t.ui.ActionBar.BaseFragment;
 import com.b44t.ui.Components.ForegroundDetector;
 import com.b44t.ui.Components.TypefaceSpan;

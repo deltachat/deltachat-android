@@ -48,7 +48,7 @@ import com.b44t.messenger.ContactsController;
 import com.b44t.messenger.LocaleController;
 import com.b44t.messenger.MrMailbox;
 import com.b44t.messenger.Utilities;
-import com.b44t.tgnet.TLRPC;
+import com.b44t.messenger.TLRPC;
 import com.b44t.messenger.FileLog;
 import com.b44t.messenger.MessagesController;
 import com.b44t.messenger.NotificationCenter;

@@ -44,7 +44,7 @@ import com.b44t.messenger.MrMailbox;
 import com.b44t.messenger.R;
 import com.b44t.messenger.UserObject;
 import com.b44t.messenger.browser.Browser;
-import com.b44t.tgnet.TLRPC;
+import com.b44t.messenger.TLRPC;
 import com.b44t.ui.Components.AvatarDrawable;
 import com.b44t.ui.Components.LinkPath;
 import com.b44t.ui.Components.RadialProgress;

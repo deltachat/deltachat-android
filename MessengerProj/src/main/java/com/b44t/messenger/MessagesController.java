@@ -18,9 +18,6 @@ import android.os.Bundle;
 import com.b44t.messenger.query.DraftQuery;
 import com.b44t.messenger.query.MessagesQuery;
 import com.b44t.messenger.query.SearchQuery;
-import com.b44t.tgnet.ConnectionsManager;
-import com.b44t.tgnet.TLObject;
-import com.b44t.tgnet.TLRPC;
 import com.b44t.ui.ActionBar.BaseFragment;
 import com.b44t.ui.ChatActivity;
 import com.b44t.ui.ProfileActivity;
@@ -193,11 +190,11 @@ public class MessagesController implements NotificationCenter.NotificationCenter
             final TLRPC.InputFile file = (TLRPC.InputFile) args[1];
 
             if (uploadingAvatar != null && uploadingAvatar.equals(location)) {
-                TLRPC.TL_photos_uploadProfilePhoto req = new TLRPC.TL_photos_uploadProfilePhoto();
+                /*TLRPC.TL_photos_uploadProfilePhoto req = new TLRPC.TL_photos_uploadProfilePhoto();
                 req.caption = "";
                 req.crop = new TLRPC.TL_inputPhotoCropAuto();
                 req.file = file;
-                req.geo_point = new TLRPC.TL_inputGeoPointEmpty();
+                req.geo_point = new TLRPC.TL_inputGeoPointEmpty();*/
                 /*ConnectionsManager.getInstance().sendRequest(req, new RequestDelegate() {
                     @Override
                     public void run(TLObject response, TLRPC.TL_error error) {
@@ -485,6 +482,7 @@ public class MessagesController implements NotificationCenter.NotificationCenter
         }
     }
 
+    /*
     public void putChat(TLRPC.Chat chat, boolean fromCache) {
         if (chat == null) {
             return;
@@ -538,7 +536,9 @@ public class MessagesController implements NotificationCenter.NotificationCenter
             }
         }
     }
+    */
 
+    /*
     public void putChats(ArrayList<TLRPC.Chat> chats, boolean fromCache) {
         if (chats == null || chats.isEmpty()) {
             return;
@@ -549,11 +549,14 @@ public class MessagesController implements NotificationCenter.NotificationCenter
             putChat(chat, fromCache);
         }
     }
+    */
 
+    /*
     protected void clearFullUsers() {
         loadedFullUsers.clear();
         loadedFullChats.clear();
     }
+    */
 
     /*
     public void loadDialogPhotos(final int did, final int offset, final int count, final long max_id, final boolean fromCache, final int classGuid) {
@@ -730,6 +733,7 @@ public class MessagesController implements NotificationCenter.NotificationCenter
         if (fromCache) {
             //MessagesStorage.getInstance().getDialogs(offset == 0 ? 0 : nextDialogsCacheOffset, count);
         } else {
+            /*
             TLRPC.TL_messages_getDialogs req = new TLRPC.TL_messages_getDialogs();
             req.limit = count;
             boolean found = false;
@@ -759,6 +763,7 @@ public class MessagesController implements NotificationCenter.NotificationCenter
             if (!found) {
                 req.offset_peer = new TLRPC.TL_inputPeerEmpty();
             }
+            */
             /*ConnectionsManager.getInstance().sendRequest(req, new RequestDelegate() {
                 @Override
                 public void run(TLObject response, TLRPC.TL_error error) {
@@ -787,7 +792,7 @@ public class MessagesController implements NotificationCenter.NotificationCenter
     }
 
     public void changeChatAvatar(int chat_id, TLRPC.InputFile uploadedAvatar) {
-        TLObject request;
+        /*TLObject request;
         {
             TLRPC.TL_messages_editChatPhoto req = new TLRPC.TL_messages_editChatPhoto();
             req.chat_id = chat_id;
@@ -799,7 +804,7 @@ public class MessagesController implements NotificationCenter.NotificationCenter
                 req.photo = new TLRPC.TL_inputChatPhotoEmpty();
             }
             request = req;
-        }
+        }*/
         /*ConnectionsManager.getInstance().sendRequest(request, new RequestDelegate() {
             @Override
             public void run(TLObject response, TLRPC.TL_error error) {
@@ -1033,8 +1038,8 @@ public class MessagesController implements NotificationCenter.NotificationCenter
             progressDialog.setCanceledOnTouchOutside(false);
             progressDialog.setCancelable(false);
 
-            TLRPC.TL_contacts_resolveUsername req = new TLRPC.TL_contacts_resolveUsername();
-            req.username = username;
+            /*TLRPC.TL_contacts_resolveUsername req = new TLRPC.TL_contacts_resolveUsername();
+            req.username = username;*/
             final int reqId = 0; /*ConnectionsManager.getInstance().sendRequest(req, new RequestDelegate() {
                 @Override
                 public void run(final TLObject response, final TLRPC.TL_error error) {

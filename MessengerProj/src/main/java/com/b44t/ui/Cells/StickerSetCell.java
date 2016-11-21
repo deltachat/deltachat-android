@@ -24,7 +24,7 @@ import android.widget.TextView;
 import com.b44t.messenger.AndroidUtilities;
 import com.b44t.messenger.LocaleController;
 import com.b44t.messenger.R;
-import com.b44t.tgnet.TLRPC;
+import com.b44t.messenger.TLRPC;
 import com.b44t.ui.ActionBar.Theme;
 import com.b44t.ui.Components.BackupImageView;
 import com.b44t.ui.Components.LayoutHelper;

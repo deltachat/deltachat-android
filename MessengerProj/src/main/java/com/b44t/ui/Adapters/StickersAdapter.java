@@ -20,7 +20,7 @@ import com.b44t.messenger.Utilities;
 import com.b44t.messenger.query.StickersQuery;
 import com.b44t.messenger.support.widget.RecyclerView;
 import com.b44t.messenger.FileLoader;
-import com.b44t.tgnet.TLRPC;
+import com.b44t.messenger.TLRPC;
 import com.b44t.ui.Cells.StickerCell;
 
 import java.io.File;

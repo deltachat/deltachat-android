@@ -8,8 +8,6 @@
 
 package com.b44t.messenger;
 
-import com.b44t.tgnet.TLRPC;
-
 public class UserObject {
 
     public static boolean isDeleted(TLRPC.User user) {

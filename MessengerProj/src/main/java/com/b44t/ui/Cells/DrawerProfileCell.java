@@ -34,7 +34,7 @@ import com.b44t.messenger.MrMailbox;
 import com.b44t.messenger.ApplicationLoader;
 import com.b44t.messenger.FileLog;
 import com.b44t.messenger.R;
-import com.b44t.tgnet.TLRPC;
+import com.b44t.messenger.TLRPC;
 import com.b44t.ui.Components.LayoutHelper;
 import com.b44t.ui.ActionBar.Theme;
 
