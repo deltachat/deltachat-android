@@ -81,7 +81,7 @@ public class NativeLoader {
 
             try {
                 System.load(destLocalFile.getAbsolutePath());
-                init(context.getCacheDir().getAbsolutePath(), BuildVars.DEBUG_VERSION);
+                //init(context.getCacheDir().getAbsolutePath(), BuildVars.DEBUG_VERSION);
                 nativeLoaded = true;
             } catch (Error e) {
                 FileLog.e("messenger", e);
@@ -148,7 +148,7 @@ public class NativeLoader {
                     FileLog.d("messenger", "load normal lib");
                     try {
                         System.loadLibrary(LIB_NAME);
-                        init(crashDir, BuildVars.DEBUG_VERSION);
+                        //init(crashDir, BuildVars.DEBUG_VERSION);
                         nativeLoaded = true;
                         return;
                     } catch (Error e) {
@@ -165,7 +165,7 @@ public class NativeLoader {
                 try {
                     FileLog.d("messenger", "Load local lib");
                     System.load(destLocalFile.getAbsolutePath());
-                    init(crashDir, BuildVars.DEBUG_VERSION);
+                    //init(crashDir, BuildVars.DEBUG_VERSION);
                     nativeLoaded = true;
                     return;
                 } catch (Error e) {
@@ -185,13 +185,13 @@ public class NativeLoader {
 
         try {
             System.loadLibrary(LIB_NAME);
-            init(crashDir, BuildVars.DEBUG_VERSION);
+            //init(crashDir, BuildVars.DEBUG_VERSION);
             nativeLoaded = true;
         } catch (Error e) {
             FileLog.e("messenger", e);
         }
     }
 
-    private static native void init(String path, boolean enable); // EDIT BY MR -- the function currently just does nothing, however, maybe we'll need it in the future. Maybe it is also needed to force linking?
+    //private static native void init(String path, boolean enableGoglBreakpad); // not needed
     //public static native void crash();
 }

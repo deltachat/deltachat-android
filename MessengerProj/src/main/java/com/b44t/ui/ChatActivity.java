@@ -4009,7 +4009,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
             if ((updateMask & MessagesController.UPDATE_MASK_USER_PRINT) != 0) {
                 updateSubtitle = true;
             }
-            if ((updateMask & MessagesController.UPDATE_MASK_CHANNEL) != 0 && ChatObject.isChannel(currentChat)) {
+            /*if ((updateMask & MessagesController.UPDATE_MASK_CHANNEL) != 0 && ChatObject.isChannel(currentChat)) {
                 TLRPC.Chat chat = MessagesController.getInstance().getChat(currentChat.id);
                 if (chat == null) {
                     return;
@@ -4020,7 +4020,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 if (chatActivityEnterView != null) {
                     chatActivityEnterView.setDialogId(dialog_id);
                 }
-            }
+            }*/
             if (avatarContainer != null && updateSubtitle) {
                 avatarContainer.updateSubtitle();
             }
@@ -6139,9 +6139,9 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                             if (str.startsWith("@")) {
                                 MessagesController.openByUserName(str.substring(1), ChatActivity.this, 0);
                             } else if (str.startsWith("#")) {
-                                if (ChatObject.isChannel(currentChat)) {
+                                /*if (ChatObject.isChannel(currentChat)) {
                                     openSearchWithText(str);
-                                } else {
+                                } else*/ {
                                     DialogsActivity fragment = new DialogsActivity(null);
                                     fragment.setSearchString(str);
                                     presentFragment(fragment);

@@ -919,41 +919,41 @@ include $(BUILD_STATIC_LIBRARY)
 ################################################################################
 
 
-include $(CLEAR_VARS)
-
-LOCAL_CPP_EXTENSION := .cc
-LOCAL_ARM_MODE := arm
-LOCAL_MODULE := breakpad
-LOCAL_CPPFLAGS := -Wall -std=c++11 -DANDROID -finline-functions -ffast-math -Os -fno-strict-aliasing
-
-LOCAL_C_INCLUDES := \
-$(LOCAL_PATH)/breakpad/common/android/include \
-$(LOCAL_PATH)/breakpad
-
-LOCAL_SRC_FILES := \
-./breakpad/client/linux/crash_generation/crash_generation_client.cc \
-./breakpad/client/linux/dump_writer_common/ucontext_reader.cc \
-./breakpad/client/linux/dump_writer_common/thread_info.cc \
-./breakpad/client/linux/handler/exception_handler.cc \
-./breakpad/client/linux/handler/minidump_descriptor.cc \
-./breakpad/client/linux/log/log.cc \
-./breakpad/client/linux/microdump_writer/microdump_writer.cc \
-./breakpad/client/linux/minidump_writer/linux_dumper.cc \
-./breakpad/client/linux/minidump_writer/linux_ptrace_dumper.cc \
-./breakpad/client/linux/minidump_writer/minidump_writer.cc \
-./breakpad/client/minidump_file_writer.cc \
-./breakpad/common/android/breakpad_getcontext.S \
-./breakpad/common/convert_UTF.c \
-./breakpad/common/md5.cc \
-./breakpad/common/string_conversion.cc \
-./breakpad/common/linux/elfutils.cc \
-./breakpad/common/linux/file_id.cc \
-./breakpad/common/linux/guid_creator.cc \
-./breakpad/common/linux/linux_libc_support.cc \
-./breakpad/common/linux/memory_mapped_file.cc \
-./breakpad/common/linux/safe_readlink.cc
-
-include $(BUILD_STATIC_LIBRARY)
+#include $(CLEAR_VARS)
+#
+#LOCAL_CPP_EXTENSION := .cc
+#LOCAL_ARM_MODE := arm
+#LOCAL_MODULE := breakpad
+#LOCAL_CPPFLAGS := -Wall -std=c++11 -DANDROID -finline-functions -ffast-math -Os -fno-strict-aliasing
+#
+#LOCAL_C_INCLUDES := \
+#$(LOCAL_PATH)/breakpad/common/android/include \
+#$(LOCAL_PATH)/breakpad
+#
+#LOCAL_SRC_FILES := \
+#./breakpad/client/linux/crash_generation/crash_generation_client.cc \
+#./breakpad/client/linux/dump_writer_common/ucontext_reader.cc \
+#./breakpad/client/linux/dump_writer_common/thread_info.cc \
+#./breakpad/client/linux/handler/exception_handler.cc \
+#./breakpad/client/linux/handler/minidump_descriptor.cc \
+#./breakpad/client/linux/log/log.cc \
+#./breakpad/client/linux/microdump_writer/microdump_writer.cc \
+#./breakpad/client/linux/minidump_writer/linux_dumper.cc \
+#./breakpad/client/linux/minidump_writer/linux_ptrace_dumper.cc \
+#./breakpad/client/linux/minidump_writer/minidump_writer.cc \
+#./breakpad/client/minidump_file_writer.cc \
+#./breakpad/common/android/breakpad_getcontext.S \
+#./breakpad/common/convert_UTF.c \
+#./breakpad/common/md5.cc \
+#./breakpad/common/string_conversion.cc \
+#./breakpad/common/linux/elfutils.cc \
+#./breakpad/common/linux/file_id.cc \
+#./breakpad/common/linux/guid_creator.cc \
+#./breakpad/common/linux/linux_libc_support.cc \
+#./breakpad/common/linux/memory_mapped_file.cc \
+#./breakpad/common/linux/safe_readlink.cc
+#
+#include $(BUILD_STATIC_LIBRARY)
 
 
 ################################################################################
@@ -1313,8 +1313,9 @@ LOCAL_CFLAGS 	+= -Drestrict='' -D__EMX__ -DOPUS_BUILD -DFIXED_POINT -DUSE_ALLOCA
 LOCAL_CFLAGS 	+= -DANDROID_NDK -DDISABLE_IMPORTGL -fno-strict-aliasing -fprefetch-loop-arrays -DAVOID_TABLES -DANDROID_TILE_BASED_DECODE -DANDROID_ARMV6_IDCT -ffast-math -D__STDC_CONSTANT_MACROS
 LOCAL_CPPFLAGS 	:= -DBSD=1 -ffast-math -Os -funroll-loops -std=c++11
 LOCAL_LDLIBS 	:= -ljnigraphics -llog -lz -latomic
-LOCAL_STATIC_LIBRARIES :=  etpan sasl2 webp sqlite crypto breakpad avformat avcodec avutil libiconv
+LOCAL_STATIC_LIBRARIES :=  etpan sasl2 webp sqlite crypto avformat avcodec avutil libiconv
 # if you get "undefined reference" errors, the reason for this may be the _order_! Eg. libiconv as the first library does not work!
+# "breakpad" was placed after "crypto", NativeLoader.cpp after mrwrapper.c
 
 LOCAL_SRC_FILES     := \
 ./opus/src/opus.c \
@@ -1622,8 +1623,7 @@ LOCAL_SRC_FILES     += \
 ../../../messenger-backend/src/mrsqlite3.c \
 ../../../messenger-backend/src/mrstock.c \
 ../../../messenger-backend/src/mrtools.c \
-./mr_wrapper.c \
-./NativeLoader.cpp
+./mrwrapper.c
 
 include $(BUILD_SHARED_LIBRARY)
 
