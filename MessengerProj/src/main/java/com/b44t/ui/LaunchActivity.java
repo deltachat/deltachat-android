@@ -780,8 +780,9 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                             String scheme = data.getScheme();
                             if (scheme != null) {
                                 if ((scheme.equals("http") || scheme.equals("https"))) {
+                                    /*
                                     String host = data.getHost().toLowerCase();
-                                    if (host.equals("telegram.me") || host.equals("telegram.dog")) {
+                                    if (host.equals("t'gram.me") || host.equals("t'gram.dog")) {
                                         String path = data.getPath();
                                         if (path != null && path.length() > 1) {
                                             path = path.substring(1);
@@ -817,6 +818,7 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                                             }
                                         }
                                     }
+                                    */
                                 } else if (scheme.equals("tg")) {
                                     String url = data.toString();
                                     if (url.startsWith("tg:resolve") || url.startsWith("tg://resolve")) {
