@@ -304,9 +304,9 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                     presentFragment(new ContactsActivity(args));
                     drawerLayoutContainer.closeDrawer(false);
                 }
-                else if (position == DrawerLayoutAdapter.iStrangers) {
+                else if (position == DrawerLayoutAdapter.iDeaddrop) {
                     Bundle args = new Bundle();
-                    args.putInt("chat_id", (int) MrMailbox.MR_CHAT_ID_STRANGERS);
+                    args.putInt("chat_id", (int) MrMailbox.MR_CHAT_ID_DEADDROP);
                     presentFragment(new ChatActivity(args));
                     drawerLayoutContainer.closeDrawer(false);
                 }

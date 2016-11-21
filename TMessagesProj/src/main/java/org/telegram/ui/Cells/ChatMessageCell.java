@@ -3602,9 +3602,9 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
     }
 
     private boolean checkNeedDrawShareButton(MessageObject messageObject) {
-        // we use the "Share" button as a reply button: in the "strangers" group it is very useful to reply
+        // we use the "Share" button as a reply button: in the "deaddrop" group it is very useful to reply
         // to a message, so we use this as a shortcut to "long press -> reply"
-        if( messageObject.getDialogId()==MrMailbox.MR_CHAT_ID_STRANGERS) {
+        if( messageObject.getDialogId()==MrMailbox.MR_CHAT_ID_DEADDROP) {
             return true;
         }
         return false;

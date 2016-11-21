@@ -217,10 +217,10 @@ public class ApplicationLoader extends Application {
         SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("Notifications", Activity.MODE_PRIVATE);
         boolean enablePushConnection = preferences.getBoolean("pushConnection", true);
 
-        if( preferences.getInt("notify2_"+MrMailbox.MR_CHAT_ID_STRANGERS, 666)==666 ) {
-            // make sure, the notifications for the "strangers" dialog are muted by default
+        if( preferences.getInt("notify2_"+MrMailbox.MR_CHAT_ID_DEADDROP, 666)==666 ) {
+            // make sure, the notifications for the "deaddrop" dialog are muted by default
             SharedPreferences.Editor editor = preferences.edit();
-            editor.putInt("notify2_"+MrMailbox.MR_CHAT_ID_STRANGERS, 2);
+            editor.putInt("notify2_"+MrMailbox.MR_CHAT_ID_DEADDROP, 2);
             editor.commit();
         }
 
@@ -263,7 +263,7 @@ public class ApplicationLoader extends Application {
         MrMailbox.MrStockAddStr(5, LocaleController.getString("MemberPl", R.string.MemberPl));
         MrMailbox.MrStockAddStr(6, LocaleController.getString("ContactSg", R.string.ContactSg));
         MrMailbox.MrStockAddStr(7, LocaleController.getString("ContactPl", R.string.ContactPl));
-        MrMailbox.MrStockAddStr(8, LocaleController.getString("Strangers", R.string.Strangers));
+        MrMailbox.MrStockAddStr(8, LocaleController.getString("Deaddrop", R.string.Deaddrop));
         MrMailbox.MrStockAddStr(9, LocaleController.getString("AttachPhoto", R.string.AttachPhoto));
         MrMailbox.MrStockAddStr(10, LocaleController.getString("AttachVideo", R.string.AttachVideo));
         MrMailbox.MrStockAddStr(11, LocaleController.getString("AttachAudio", R.string.AttachAudio));

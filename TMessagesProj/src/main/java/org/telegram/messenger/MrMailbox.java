@@ -231,7 +231,7 @@ public class MrMailbox {
     public native static long    MrMailboxGetContact        (long hMailbox, int id);// returns hContact which must be unref'd after usage
     public native static int     MrMailboxCreateContact     (long hMailbox, String name, String addr);
     public native static int     MrMailboxBlockContact      (long hMailbox, int id, int block);
-    public native static int     MrMailboxDeleteContact     (long hMailbox, int id); // returns 0 if the contact could not be deleted (eg. it is in use, maybe by strangers)
+    public native static int     MrMailboxDeleteContact     (long hMailbox, int id); // returns 0 if the contact could not be deleted (eg. it is in use, maybe by deaddrop)
     public native static int     MrMailboxAddAddressBook    (long hMailbox, String adrbook);
 
     public native static long    MrMailboxGetChatlist       (long hMailbox); // returns hChatlist which must be unref'd after usage
@@ -319,7 +319,7 @@ public class MrMailbox {
     public final static int      MR_CHAT_GROUP              = 120;
 
     public final static int      MR_CONTACT_ID_SELF         = 1;
-    public final static int      MR_CHAT_ID_STRANGERS       = 1;
+    public final static int      MR_CHAT_ID_DEADDROP        = 1;
 
     public final static int      MR_MSG_UNDEFINED           =  0;
     public final static int      MR_MSG_TEXT                = 10;

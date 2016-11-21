@@ -569,7 +569,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
             frameLayout.addView(onlineTextView[a], LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.LEFT | Gravity.TOP, 118, 0, a == 0 ? 48 : 8, 0));
         }
 
-        if ( chat_id != 0 && chat_id!=MrMailbox.MR_CHAT_ID_STRANGERS ) {
+        if ( chat_id != 0 && chat_id!=MrMailbox.MR_CHAT_ID_DEADDROP ) {
             writeButton = new ImageView(context);
             try {
                 writeButton.setBackgroundResource(R.drawable.floating_user_states);
@@ -1166,13 +1166,13 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
         emptyRow = rowCount++;
         settingsNotificationsRow = rowCount++;
 
-        if( user_id!=0 || chat_id!=MrMailbox.MR_CHAT_ID_STRANGERS) {
+        if( user_id!=0 || chat_id!=MrMailbox.MR_CHAT_ID_DEADDROP) {
             changeNameRow = rowCount++;
         }
 
         if (user_id != 0) {
             startChatRow = rowCount++;
-        } else if (chat_id != 0 && chat_id!=MrMailbox.MR_CHAT_ID_STRANGERS ) {
+        } else if (chat_id != 0 && chat_id!=MrMailbox.MR_CHAT_ID_DEADDROP ) {
             addMemberRow = rowCount++;
         }
 

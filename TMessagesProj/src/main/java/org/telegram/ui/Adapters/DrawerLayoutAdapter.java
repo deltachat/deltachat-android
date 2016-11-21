@@ -33,9 +33,9 @@ public class DrawerLayoutAdapter extends BaseAdapter {
     public final static int iEmptyBelowProfile = 1;
     public final static int iNewChat           = 2;
     public final static int iNewGroup          = 3;
-    public final static int iStrangers         = 4;
-    public final static int iDivider           = 5;
-    public final static int iSettings          = 6;
+    public final static int iDivider           = 4;
+    public final static int iSettings          = 5;
+    public final static int iDeaddrop          = 6;
     public final static int iFaq               = 7;
     public final static int iCount             = 8;
 
@@ -102,13 +102,13 @@ public class DrawerLayoutAdapter extends BaseAdapter {
             if (i == iNewChat) {
                 actionCell.setTextAndIcon(LocaleController.getString("NewChat", R.string.NewChat), R.drawable.menu_newchat);
             } else if (i == iNewGroup) {
-                actionCell.setTextAndIcon(LocaleController.getString("NewGroup", R.string.NewGroup), R.drawable.menu_newgroup);
-            } else if (i == iStrangers) {
-                actionCell.setTextAndIcon(LocaleController.getString("Strangers", R.string.Strangers), R.drawable.menu_contacts);
+                actionCell.setTextAndIcon(LocaleController.getString("NewGroup", R.string.NewGroup), R.drawable.menu_empty);
+            } else if (i == iDeaddrop) {
+                actionCell.setTextAndIcon(LocaleController.getString("Deaddrop", R.string.Deaddrop), R.drawable.menu_empty); // we do not want an icon beside the mailbox: 1. We do not want to give it much attention, 2. if the mailbox is show in the chatlist, it gets the chat icon (KISS), but we should not use this icon in the drawer for the mailbox. 3. Simplicity
             } else if (i == iSettings) {
                 actionCell.setTextAndIcon(LocaleController.getString("Settings", R.string.Settings), R.drawable.menu_settings);
             } else if (i == iFaq) {
-                actionCell.setTextAndIcon(LocaleController.getString("Help", R.string.Help), R.drawable.menu_help);
+                actionCell.setTextAndIcon(LocaleController.getString("Help", R.string.Help), R.drawable.menu_empty);
             }
         }
 

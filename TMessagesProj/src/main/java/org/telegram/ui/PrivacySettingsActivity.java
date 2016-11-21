@@ -113,22 +113,22 @@ public class PrivacySettingsActivity extends BaseFragment implements Notificatio
                         presentFragment(new PasscodeActivity(0));
                     }
                 } else if( i==showUnknownSendersRow) {
-                    int oldval = MrMailbox.MrMailboxGetConfigInt(MrMailbox.hMailbox, "show_strangers", 0);
+                    int oldval = MrMailbox.MrMailboxGetConfigInt(MrMailbox.hMailbox, "show_deaddrop", 0);
                     if( oldval == 1 ) {
-                        MrMailbox.MrMailboxSetConfig(MrMailbox.hMailbox, "show_strangers", "0");
+                        MrMailbox.MrMailboxSetConfig(MrMailbox.hMailbox, "show_deaddrop", "0");
                     }
                     else {
-                        MrMailbox.MrMailboxSetConfig(MrMailbox.hMailbox, "show_strangers", "1");
+                        MrMailbox.MrMailboxSetConfig(MrMailbox.hMailbox, "show_deaddrop", "1");
                     }
                     MrMailbox.MrCallback(MrMailbox.MR_EVENT_MSGS_UPDATED, 0, 0);
                     if (view instanceof TextCheckCell) {
                         ((TextCheckCell) view).setChecked(oldval == 0);
                     }
 
-                    // if showing strangers is disabled, also disable notifications for this chat (cannot be displayed otherwise)
+                    // if showing deaddrop is disabled, also disable notifications for this chat (cannot be displayed otherwise)
                     SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("Notifications", Activity.MODE_PRIVATE);
                     SharedPreferences.Editor editor = preferences.edit();
-                    editor.putInt("notify2_" + MrMailbox.MR_CHAT_ID_STRANGERS, oldval==1? 2 /*always muted*/ : 0);
+                    editor.putInt("notify2_" + MrMailbox.MR_CHAT_ID_DEADDROP, oldval==1? 2 /*always muted*/ : 0);
                     editor.commit();
                 }
             }
@@ -283,9 +283,8 @@ public class PrivacySettingsActivity extends BaseFragment implements Notificatio
                 }
                 TextCheckCell textCell = (TextCheckCell) view;
                 if( i==showUnknownSendersRow) {
-                    textCell.setTextAndCheck(LocaleController.getString("StrangersInChatlist", R.string.StrangersInChatlist),
-                            MrMailbox.MrMailboxGetConfigInt(MrMailbox.hMailbox, "show_strangers", 0)!=0,
-                            true);
+                    textCell.setTextAndCheck(LocaleController.getString("DeaddropInChatlist", R.string.DeaddropInChatlist),
+                            MrMailbox.MrMailboxGetConfigInt(MrMailbox.hMailbox, "show_deaddrop", 0)!=0, true);
                 }
             }
             return view;
