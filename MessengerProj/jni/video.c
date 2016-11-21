@@ -66,7 +66,7 @@ int isSemiPlanarYUV(int colorFormat) {
     }
 }
 
-JNIEXPORT int Java_org_telegram_messenger_Utilities_convertVideoFrame(JNIEnv *env, jclass class, jobject src, jobject dest, int destFormat, int width, int height, int padding, int swap) {
+JNIEXPORT int Java_com_b44t_messenger_Utilities_convertVideoFrame(JNIEnv *env, jclass class, jobject src, jobject dest, int destFormat, int width, int height, int padding, int swap) {
     if (!src || !dest || !destFormat) {
         return 0;
     }

@@ -505,7 +505,7 @@ int writeFrame(uint8_t *framePcmBytes, unsigned int frameByteCount) {
     return 1;
 }
 
-JNIEXPORT int Java_org_telegram_messenger_MediaController_startRecord(JNIEnv *env, jclass class, jstring path) {
+JNIEXPORT int Java_com_b44t_messenger_MediaController_startRecord(JNIEnv *env, jclass class, jstring path) {
     const char *pathStr = (*env)->GetStringUTFChars(env, path, 0);
     
     int result = initRecorder(pathStr);
@@ -517,12 +517,12 @@ JNIEXPORT int Java_org_telegram_messenger_MediaController_startRecord(JNIEnv *en
     return result;
 }
 
-JNIEXPORT int Java_org_telegram_messenger_MediaController_writeFrame(JNIEnv *env, jclass class, jobject frame, jint len) {
+JNIEXPORT int Java_com_b44t_messenger_MediaController_writeFrame(JNIEnv *env, jclass class, jobject frame, jint len) {
     jbyte *frameBytes = (*env)->GetDirectBufferAddress(env, frame);
     return writeFrame(frameBytes, len);
 }
 
-JNIEXPORT void Java_org_telegram_messenger_MediaController_stopRecord(JNIEnv *env, jclass class) {
+JNIEXPORT void Java_com_b44t_messenger_MediaController_stopRecord(JNIEnv *env, jclass class) {
     cleanupRecorder();
 }
 
@@ -619,22 +619,22 @@ void fillBuffer(uint8_t *buffer, int capacity, int *args) {
     }
 }
 
-JNIEXPORT jlong Java_org_telegram_messenger_MediaController_getTotalPcmDuration(JNIEnv *env, jclass class) {
+JNIEXPORT jlong Java_com_b44t_messenger_MediaController_getTotalPcmDuration(JNIEnv *env, jclass class) {
     return _totalPcmDuration;
 }
 
-JNIEXPORT void Java_org_telegram_messenger_MediaController_readOpusFile(JNIEnv *env, jclass class, jobject buffer, jint capacity, jintArray args) {
+JNIEXPORT void Java_com_b44t_messenger_MediaController_readOpusFile(JNIEnv *env, jclass class, jobject buffer, jint capacity, jintArray args) {
     jint *argsArr = (*env)->GetIntArrayElements(env, args, 0);
     jbyte *bufferBytes = (*env)->GetDirectBufferAddress(env, buffer);
     fillBuffer(bufferBytes, capacity, argsArr);
     (*env)->ReleaseIntArrayElements(env, args, argsArr, 0);
 }
 
-JNIEXPORT int Java_org_telegram_messenger_MediaController_seekOpusFile(JNIEnv *env, jclass class, jfloat position) {
+JNIEXPORT int Java_com_b44t_messenger_MediaController_seekOpusFile(JNIEnv *env, jclass class, jfloat position) {
     return seekPlayer(position);
 }
 
-JNIEXPORT int Java_org_telegram_messenger_MediaController_openOpusFile(JNIEnv *env, jclass class, jstring path) {
+JNIEXPORT int Java_com_b44t_messenger_MediaController_openOpusFile(JNIEnv *env, jclass class, jstring path) {
     const char *pathStr = (*env)->GetStringUTFChars(env, path, 0);
     
     int result = initPlayer(pathStr);
@@ -646,11 +646,11 @@ JNIEXPORT int Java_org_telegram_messenger_MediaController_openOpusFile(JNIEnv *e
     return result;
 }
 
-JNIEXPORT void Java_org_telegram_messenger_MediaController_closeOpusFile(JNIEnv *env, jclass class) {
+JNIEXPORT void Java_com_b44t_messenger_MediaController_closeOpusFile(JNIEnv *env, jclass class) {
     cleanupPlayer();
 }
 
-JNIEXPORT int Java_org_telegram_messenger_MediaController_isOpusFile(JNIEnv *env, jclass class, jstring path) {
+JNIEXPORT int Java_com_b44t_messenger_MediaController_isOpusFile(JNIEnv *env, jclass class, jstring path) {
     const char *pathStr = (*env)->GetStringUTFChars(env, path, 0);
     
     int result = 0;
@@ -677,7 +677,7 @@ static inline void set_bits(uint8_t *bytes, int32_t bitOffset, int32_t value) {
     *((int32_t *) bytes) |= (value << bitOffset);
 }
 
-JNIEXPORT jbyteArray Java_org_telegram_messenger_MediaController_getWaveform2(JNIEnv *env, jclass class, jshortArray array, jint length) {
+JNIEXPORT jbyteArray Java_com_b44t_messenger_MediaController_getWaveform2(JNIEnv *env, jclass class, jshortArray array, jint length) {
     
     jshort *sampleBuffer = (*env)->GetShortArrayElements(env, array, 0);
     
@@ -738,7 +738,7 @@ JNIEXPORT jbyteArray Java_org_telegram_messenger_MediaController_getWaveform2(JN
 int16_t *sampleBuffer = NULL;
 
 
-JNIEXPORT jbyteArray Java_org_telegram_messenger_MediaController_getWaveform(JNIEnv *env, jclass class, jstring path) {
+JNIEXPORT jbyteArray Java_com_b44t_messenger_MediaController_getWaveform(JNIEnv *env, jclass class, jstring path) {
     const char *pathStr = (*env)->GetStringUTFChars(env, path, 0);
     jbyteArray result = 0;
     

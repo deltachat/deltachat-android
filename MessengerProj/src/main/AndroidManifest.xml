@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="org.telegram.messenger"
+    package="com.b44t.messenger"
     android:installLocation="auto">
 
     <supports-screens android:anyDensity="true"
@@ -50,10 +50,10 @@
         android:icon="@drawable/ic_launcher"
         android:largeHeap="true"
         android:theme="@style/Theme.MessengerProj.Start"
-        android:manageSpaceActivity="org.telegram.ui.ManageSpaceActivity">
+        android:manageSpaceActivity="com.b44t.ui.ManageSpaceActivity">
 
         <activity
-            android:name="org.telegram.ui.LaunchActivity"
+            android:name="com.b44t.ui.LaunchActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
             android:hardwareAccelerated="@bool/useHardwareAcceleration"
             android:launchMode="singleTask"
@@ -96,7 +96,7 @@
             <intent-filter>
                 <action android:name="android.intent.action.VIEW"/>
                 <category android:name="android.intent.category.DEFAULT"/>
-                <data android:mimeType="vnd.android.cursor.item/vnd.org.telegram.messenger.android.profile"/>
+                <data android:mimeType="vnd.android.cursor.item/vnd.com.b44t.messenger.android.profile"/>
             </intent-filter>
             <intent-filter>
                 <action android:name="android.intent.action.VIEW"/>
@@ -116,23 +116,23 @@
             <meta-data android:name="android.service.chooser.chooser_target_service" android:value=".TgChooserTargetService" />
         </activity>
         <activity
-            android:name="org.telegram.ui.ManageSpaceActivity"
+            android:name="com.b44t.ui.ManageSpaceActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
             android:hardwareAccelerated="@bool/useHardwareAcceleration"
             android:launchMode="singleTask"
             android:windowSoftInputMode="adjustPan">
         </activity>
         <activity
-            android:name="org.telegram.ui.IntroActivity"
+            android:name="com.b44t.ui.IntroActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize">
         </activity>
         <activity
-            android:name="org.telegram.messenger.OpenChatReceiver"
+            android:name="com.b44t.messenger.OpenChatReceiver"
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
             android:exported="true">
         </activity>
         <activity
-            android:name="org.telegram.ui.PopupNotificationActivity"
+            android:name="com.b44t.ui.PopupNotificationActivity"
             android:configChanges="keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"
             android:excludeFromRecents="true"
             android:launchMode="singleTask"
@@ -145,7 +145,7 @@
             android:name=".AutoMessageHeardReceiver"
             android:exported="false">
             <intent-filter>
-                <action android:name="org.telegram.messenger.ACTION_MESSAGE_HEARD"/>
+                <action android:name="com.b44t.messenger.ACTION_MESSAGE_HEARD"/>
             </intent-filter>
         </receiver>
 
@@ -153,7 +153,7 @@
             android:name=".AutoMessageReplyReceiver"
             android:exported="false">
             <intent-filter>
-                <action android:name="org.telegram.messenger.ACTION_MESSAGE_REPLY"/>
+                <action android:name="com.b44t.messenger.ACTION_MESSAGE_REPLY"/>
             </intent-filter>
         </receiver>
 
@@ -184,7 +184,7 @@
         </service>
 
         <service
-            android:name="org.telegram.messenger.TgChooserTargetService"
+            android:name="com.b44t.messenger.TgChooserTargetService"
             android:label="@string/AppName"
             android:permission="android.permission.BIND_CHOOSER_TARGET_SERVICE">
             <intent-filter>
@@ -205,11 +205,11 @@
 
         <receiver android:name=".MusicPlayerReceiver" >
             <intent-filter>
-                <action android:name="org.telegram.android.musicplayer.close" />
-                <action android:name="org.telegram.android.musicplayer.pause" />
-                <action android:name="org.telegram.android.musicplayer.next" />
-                <action android:name="org.telegram.android.musicplayer.play" />
-                <action android:name="org.telegram.android.musicplayer.previous" />
+                <action android:name="com.b44t.android.musicplayer.close" />
+                <action android:name="com.b44t.android.musicplayer.pause" />
+                <action android:name="com.b44t.android.musicplayer.next" />
+                <action android:name="com.b44t.android.musicplayer.play" />
+                <action android:name="com.b44t.android.musicplayer.previous" />
                 <action android:name="android.intent.action.MEDIA_BUTTON" />
                 <action android:name="android.media.AUDIO_BECOMING_NOISY" />
             </intent-filter>
@@ -217,7 +217,7 @@
 
         <receiver android:name=".AppStartReceiver" android:enabled="true">
             <intent-filter>
-                <action android:name="org.telegram.start" />
+                <action android:name="com.b44t.start" />
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
         </receiver>

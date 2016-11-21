@@ -7,7 +7,7 @@
     android:padding="10dp"
     android:background="@drawable/list_selector">
 
-    <org.telegram.ui.Components.BackupImageView
+    <com.b44t.ui.Components.BackupImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/message_image"

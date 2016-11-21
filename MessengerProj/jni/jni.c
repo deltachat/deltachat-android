@@ -9,10 +9,9 @@
 #include "utils.h"
 #include "image.h"
 
-//int registerNativeTgNetFunctions(JavaVM *vm, JNIEnv *env);
 int gifvideoOnJNILoad(JavaVM *vm, JNIEnv *env);
 
-jint JNI_OnLoad(JavaVM *vm, void *reserved) {
+jint JNI_OnLoad(JavaVM *vm, void *reserved) { /* this function is called automatically by the JNI when the library gets loaded */
 	JNIEnv *env = 0;
     srand(time(NULL));
     
@@ -28,12 +27,6 @@ jint JNI_OnLoad(JavaVM *vm, void *reserved) {
         return -1;
     }
 
-    /*
-    if (registerNativeTgNetFunctions(vm, env) != JNI_TRUE) {
-        return -1;
-    }
-    */
-    
 	return JNI_VERSION_1_6;
 }
 
@@ -42,7 +35,7 @@ void JNI_OnUnload(JavaVM *vm, void *reserved) {
 }
 
 /*
-JNIEXPORT void Java_org_telegram_messenger_Utilities_aesIgeEncryption(JNIEnv *env, jclass class, jobject buffer, jbyteArray key, jbyteArray iv, jboolean encrypt, int offset, int length) {
+JNIEXPORT void Java_com_b44t_messenger_Utilities_aesIgeEncryption(JNIEnv *env, jclass class, jobject buffer, jbyteArray key, jbyteArray iv, jboolean encrypt, int offset, int length) {
     jbyte *what = (*env)->GetDirectBufferAddress(env, buffer) + offset;
     unsigned char *keyBuff = (unsigned char *)(*env)->GetByteArrayElements(env, key, NULL);
     unsigned char *ivBuff = (unsigned char *)(*env)->GetByteArrayElements(env, iv, NULL);
@@ -60,7 +53,7 @@ JNIEXPORT void Java_org_telegram_messenger_Utilities_aesIgeEncryption(JNIEnv *en
 }
 */
 
-JNIEXPORT jstring Java_org_telegram_messenger_Utilities_readlink(JNIEnv *env, jclass class, jstring path) {
+JNIEXPORT jstring Java_com_b44t_messenger_Utilities_readlink(JNIEnv *env, jclass class, jstring path) {
     static char buf[1000];
     char *fileName = (*env)->GetStringUTFChars(env, path, NULL);
     int result = readlink(fileName, buf, 999);
