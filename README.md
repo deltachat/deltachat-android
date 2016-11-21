@@ -9,8 +9,8 @@ Build
 --------------------------------------------------------------------------------
 
 Beside a build in Android Studio, you have to call `ndk-build` in the
-`TMessagesProj` directory.  Moreover, place a copy of your keyfile eg. to
-`TMessagesProj/config/debug.keystore`.
+`MessengerProj` directory.  Moreover, place a copy of your keyfile eg. to
+`MessengerProj/config/debug.keystore`.
 
 ![Logo](https://messenger.b44t.com/start-img4.png)
 

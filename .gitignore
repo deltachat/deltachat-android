@@ -6,7 +6,7 @@ obj/
 local.properties
 *.keystore
 
-TMessagesProj/libs/
-TMessagesProj/src/main/java/org/telegram/messenger/BuildVars.java
+MessengerProj/libs/
+MessengerProj/src/main/java/org/telegram/messenger/BuildVars.java
 
 
