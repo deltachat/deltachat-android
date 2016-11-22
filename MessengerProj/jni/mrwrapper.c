@@ -428,7 +428,7 @@ JNIEXPORT jstring Java_com_b44t_messenger_MrMailbox_MrChatGetName(JNIEnv *env, j
 
 JNIEXPORT jstring Java_com_b44t_messenger_MrMailbox_MrChatGetSubtitle(JNIEnv *env, jclass c, jlong hChat)
 {
-	const char* temp = mrchat_get_subtitle((mrchat_t*)hChat); /* mrchat_get_subtitle() checks for nullpointers */
+	const char* temp = mrchat_get_subtitle((mrchat_t*)hChat);
 		jstring ret = JSTRING_NEW(temp);
 	free(temp);
 	return ret;
@@ -467,7 +467,7 @@ JNIEXPORT jint Java_com_b44t_messenger_MrMailbox_MrChatGetTotalMsgCount(JNIEnv *
 
 JNIEXPORT jint Java_com_b44t_messenger_MrMailbox_MrChatGetUnseenCount(JNIEnv *env, jclass c, jlong hChat)
 {
-	return mrchat_get_unseen_count((mrchat_t*)hChat); /* mrchat_get_unseen_count() checks for nullpointers */
+	return mrchat_get_unseen_count((mrchat_t*)hChat);
 }
 
 
@@ -549,7 +549,7 @@ JNIEXPORT jintArray Java_com_b44t_messenger_MrMailbox_MrMailboxGetChatContacts(J
 
 JNIEXPORT void Java_com_b44t_messenger_MrMailbox_MrMsglistUnref(JNIEnv *env, jclass c, jlong hMsglist)
 {
-	mrmsglist_unref((mrmsglist_t*)hMsglist); /* mrmsglist_unref() checks for nullpointers */
+	mrmsglist_unref((mrmsglist_t*)hMsglist);
 }
 
 

@@ -21,7 +21,7 @@
  *
  * File:    MrMailbox.java
  * Authors: Björn Petersen
- * Purpose: The Java part of the Java<->C Wrapper, see also mr_wrapper.c
+ * Purpose: The Java part of the Java<->C Wrapper, see also mrwrapper.c
  *
  ******************************************************************************/
 
