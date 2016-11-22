@@ -589,13 +589,13 @@ public class DocumentSelectActivity extends BaseFragment {
         items.add(fs);
 
         try {
-            File telegramPath = new File(Environment.getExternalStorageDirectory(), "Delta Chat");
-            if (telegramPath.exists()) {
+            File messengerPath = new File(Environment.getExternalStorageDirectory(), "Delta Chat");
+            if (messengerPath.exists()) {
                 fs = new ListItem();
                 fs.title = "Delta Chat";
-                fs.subtitle = telegramPath.toString();
+                fs.subtitle = messengerPath.toString();
                 fs.icon = R.drawable.ic_directory;
-                fs.file = telegramPath;
+                fs.file = messengerPath;
                 items.add(fs);
             }
         } catch (Exception e) {

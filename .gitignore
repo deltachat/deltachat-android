@@ -7,6 +7,5 @@ local.properties
 *.keystore
 
 MessengerProj/libs/
-MessengerProj/src/main/java/org/telegram/messenger/BuildVars.java
 
 

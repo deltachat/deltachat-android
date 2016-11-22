@@ -11,14 +11,12 @@ package com.b44t.ui;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.ProgressDialog;
 import android.content.ContentResolver;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
-import android.database.Cursor;
 import android.graphics.Point;
 import android.net.Uri;
 import android.os.Build;
@@ -49,14 +47,12 @@ import com.b44t.messenger.MessageObject;
 import com.b44t.messenger.MessagesController;
 import com.b44t.messenger.MrMailbox;
 import com.b44t.messenger.SendMessagesHelper;
-import com.b44t.messenger.Utilities;
 import com.b44t.messenger.ApplicationLoader;
 import com.b44t.messenger.FileLog;
 import com.b44t.messenger.LocaleController;
 import com.b44t.messenger.NotificationCenter;
 import com.b44t.messenger.R;
 import com.b44t.messenger.browser.Browser;
-import com.b44t.messenger.query.DraftQuery;
 import com.b44t.messenger.ConnectionsManager;
 import com.b44t.messenger.TLRPC;
 import com.b44t.messenger.UserConfig;
@@ -66,7 +62,6 @@ import com.b44t.ui.ActionBar.BaseFragment;
 import com.b44t.ui.ActionBar.DrawerLayoutContainer;
 import com.b44t.ui.Components.LayoutHelper;
 import com.b44t.ui.Components.PasscodeView;
-import com.b44t.ui.Components.StickersAlert;
 import com.b44t.ui.ActionBar.Theme;
 
 import java.io.BufferedReader;
@@ -119,7 +114,7 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
     protected void onCreate(Bundle savedInstanceState) {
         ApplicationLoader.postInitApplication();
 
-        if (!UserConfig.isClientActivated()) {
+        /*if (!UserConfig.isClientActivated()) {
             Intent intent = getIntent();
             if (intent != null && intent.getAction() != null && (Intent.ACTION_SEND.equals(intent.getAction()) || intent.getAction().equals(Intent.ACTION_SEND_MULTIPLE))) {
                 super.onCreate(savedInstanceState);
@@ -137,7 +132,7 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                     return;
                 }
             }
-        }
+        }*/
 
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setTheme(R.style.Theme_MessengerProj);
@@ -304,7 +299,7 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                 }
                 else if (position == DrawerLayoutAdapter.iDeaddrop) {
                     Bundle args = new Bundle();
-                    args.putInt("chat_id", (int) MrMailbox.MR_CHAT_ID_DEADDROP);
+                    args.putInt("chat_id", MrMailbox.MR_CHAT_ID_DEADDROP);
                     presentFragment(new ChatActivity(args));
                     drawerLayoutContainer.closeDrawer(false);
                 }
@@ -344,10 +339,10 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.wasUnableToFindCurrentLocation);
 
         if (actionBarLayout.fragmentsStack.isEmpty()) {
-            if (!UserConfig.isClientActivated()) {
+            /*if (!UserConfig.isClientActivated()) {
                 actionBarLayout.addFragmentToStack(new LoginActivity());
                 drawerLayoutContainer.setAllowOpenDrawer(false, false);
-            } else {
+            } else*/ {
                 actionBarLayout.addFragmentToStack(new DialogsActivity(null));
                 drawerLayoutContainer.setAllowOpenDrawer(true, false);
             }
@@ -495,9 +490,9 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
         } else {
             boolean pushOpened = false;
 
-            Integer push_user_id = 0;
+            //Integer push_user_id = 0;
             Integer push_chat_id = 0;
-            Integer push_enc_id = 0;
+            //Integer push_enc_id = 0;
             Integer open_settings = 0;
             long dialogId = intent != null && intent.getExtras() != null ? intent.getExtras().getLong("dialogId", 0) : 0;
             boolean showDialogsList = false;
@@ -512,7 +507,7 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
             documentsUrisArray = null;
             contactsToSend = null;
 
-            if (UserConfig.isClientActivated() && (flags & Intent.FLAG_ACTIVITY_LAUNCHED_FROM_HISTORY) == 0) {
+            if (/*UserConfig.isClientActivated() &&*/ (flags & Intent.FLAG_ACTIVITY_LAUNCHED_FROM_HISTORY) == 0) {
                 if (intent != null && intent.getAction() != null && !restore) {
                     if (Intent.ACTION_SEND.equals(intent.getAction())) {
                         boolean error = false;
@@ -768,14 +763,14 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                     } else if (Intent.ACTION_VIEW.equals(intent.getAction())) {
                         Uri data = intent.getData();
                         if (data != null) {
-                            String username = null;
+                            /*String username = null;
                             String group = null;
                             String sticker = null;
                             String botUser = null;
                             String botChat = null;
                             String message = null;
                             Integer messageId = null;
-                            boolean hasUrl = false;
+                            boolean hasUrl = false;*/
                             String scheme = data.getScheme();
                             if (scheme != null) {
                                 if ((scheme.equals("http") || scheme.equals("https"))) {
@@ -818,7 +813,7 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                                         }
                                     }
                                     */
-                                } else if (scheme.equals("tg")) {
+                                } /* else if (scheme.equals("tg")) {
                                     String url = data.toString();
                                     if (url.startsWith("tg:resolve") || url.startsWith("tg://resolve")) {
                                         url = url.replace("tg:resolve", "tg://telegram.org").replace("tg://resolve", "tg://telegram.org");
@@ -853,8 +848,10 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                                             message += data.getQueryParameter("text");
                                         }
                                     }
-                                }
+
+                                } */
                             }
+                            /*
                             if (username != null || group != null || sticker != null || message != null) {
                                 runLinkRequest(username, group, sticker, botUser, botChat, message, hasUrl, messageId, 0);
                             } else {
@@ -872,22 +869,21 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                                     FileLog.e("messenger", e);
                                 }
                             }
+                            */
                         }
                     } else if (intent.getAction().equals("com.b44t.messenger.OPEN_ACCOUNT")) {
                         open_settings = 1;
                     } else if (intent.getAction().startsWith("com.b44t.messenger.openchat")) {
-                        int chatId = intent.getIntExtra("chatId", 0);
-                        int userId = intent.getIntExtra("userId", 0);
-                        int encId = intent.getIntExtra("encId", 0);
+                        String temp = intent.getAction().substring(27);
+                        int chatId = 0;
+                        try {
+                            chatId = Integer.parseInt(temp, 10);
+                        } catch(Exception e) {
+                        }
+
                         if (chatId != 0) {
                             NotificationCenter.getInstance().postNotificationName(NotificationCenter.closeChats);
                             push_chat_id = chatId;
-                        } else if (userId != 0) {
-                            NotificationCenter.getInstance().postNotificationName(NotificationCenter.closeChats);
-                            push_user_id = userId;
-                        } else if (encId != 0) {
-                            NotificationCenter.getInstance().postNotificationName(NotificationCenter.closeChats);
-                            push_enc_id = encId;
                         } else {
                             showDialogsList = true;
                         }
@@ -897,7 +893,7 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                 }
             }
 
-            if (push_user_id != 0) {
+            /*if (push_user_id != 0) {
                 Bundle args = new Bundle();
                 args.putInt("user_id", push_user_id);
                 if (mainFragmentsStack.isEmpty() || MessagesController.checkCanOpenChat(args, mainFragmentsStack.get(mainFragmentsStack.size() - 1))) {
@@ -906,23 +902,23 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                         pushOpened = true;
                     }
                 }
-            } else if (push_chat_id != 0) {
+            } else*/ if (push_chat_id != 0) {
                 Bundle args = new Bundle();
                 args.putInt("chat_id", push_chat_id);
-                if (mainFragmentsStack.isEmpty() || MessagesController.checkCanOpenChat(args, mainFragmentsStack.get(mainFragmentsStack.size() - 1))) {
+                //if (mainFragmentsStack.isEmpty() || MessagesController.checkCanOpenChat(args, mainFragmentsStack.get(mainFragmentsStack.size() - 1))) {
                     ChatActivity fragment = new ChatActivity(args);
                     if (actionBarLayout.presentFragment(fragment, false, true, true)) {
                         pushOpened = true;
                     }
-                }
-            } else if (push_enc_id != 0) {
+                //}
+            } /*else if (push_enc_id != 0) {
                 Bundle args = new Bundle();
                 args.putInt("enc_id", push_enc_id);
                 ChatActivity fragment = new ChatActivity(args);
                 if (actionBarLayout.presentFragment(fragment, false, true, true)) {
                     pushOpened = true;
                 }
-            } else if (showDialogsList) {
+            }*/ else if (showDialogsList) {
                 if (!AndroidUtilities.isTablet()) {
                     actionBarLayout.removeAllFragments();
                 } else {
@@ -1045,306 +1041,6 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
             return pushOpened;
         }
         return false;
-    }
-
-    private void runLinkRequest(final String username, final String group, final String sticker, final String botUser, final String botChat, final String message, final boolean hasUrl, final Integer messageId, final int state) {
-        final ProgressDialog progressDialog = new ProgressDialog(this);
-        progressDialog.setMessage(LocaleController.getString("Loading", R.string.Loading));
-        progressDialog.setCanceledOnTouchOutside(false);
-        progressDialog.setCancelable(false);
-        int requestId = 0;
-
-        if (username != null) {
-            /*
-            TLRPC.TL_contacts_resolveUsername req = new TLRPC.TL_contacts_resolveUsername();
-            req.username = username;
-            requestId = ConnectionsManager.getInstance().sendRequest(req, new RequestDelegate() {
-                @Override
-                public void run(final TLObject response, final TLRPC.TL_error error) {
-                    AndroidUtilities.runOnUIThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            if (!LaunchActivity.this.isFinishing()) {
-                                try {
-                                    progressDialog.dismiss();
-                                } catch (Exception e) {
-                                    FileLog.e("messenger", e);
-                                }
-                                if (error == null && actionBarLayout != null) {
-                                    final TLRPC.TL_contacts_resolvedPeer res = (TLRPC.TL_contacts_resolvedPeer) response;
-                                    MessagesController.getInstance().putUsers(res.users, false);
-                                    MessagesController.getInstance().putChats(res.chats, false);
-                                    //MessagesStorage.getInstance().putUsersAndChats(res.users, res.chats, false, true);
-
-                                    if (botChat != null) {
-                                        final TLRPC.User user = !res.users.isEmpty() ? res.users.get(0) : null;
-                                        if (user == null || user.bot && user.bot_nochats) {
-                                            try {
-                                                Toast.makeText(LaunchActivity.this, LocaleController.getString("BotCantJoinGroups", R.string.BotCantJoinGroups), Toast.LENGTH_SHORT).show();
-                                            } catch (Exception e) {
-                                                FileLog.e("messenger", e);
-                                            }
-                                            return;
-                                        }
-                                        Bundle args = new Bundle();
-                                        args.putBoolean("onlySelect", true);
-                                        args.putInt("dialogsType", 2);
-                                        args.putString("addToGroupAlertString", LocaleController.formatString("AddToTheGroupTitle", R.string.AddToTheGroupTitle, UserObject.getUserName(user), "%1$s"));
-                                        DialogsActivity fragment = new DialogsActivity(args);
-                                        fragment.setDelegate(new DialogsActivity.DialogsActivityDelegate() {
-                                            @Override
-                                            public void didSelectDialog(DialogsActivity fragment, long did, boolean param) {
-                                                Bundle args = new Bundle();
-                                                args.putBoolean("scrollToTopOnResume", true);
-                                                args.putInt("chat_id", -(int) did);
-                                                if (mainFragmentsStack.isEmpty() || MessagesController.checkCanOpenChat(args, mainFragmentsStack.get(mainFragmentsStack.size() - 1))) {
-                                                    NotificationCenter.getInstance().postNotificationName(NotificationCenter.closeChats);
-                                                    MessagesController.getInstance().addUserToChat(-(int) did, user, null, 0, botChat, null);
-                                                    actionBarLayout.presentFragment(new ChatActivity(args), true, false, true);
-                                                }
-                                            }
-                                        });
-                                        presentFragment(fragment);
-                                    } else  {
-                                        long dialog_id;
-                                        boolean isBot = false;
-                                        Bundle args = new Bundle();
-                                        if (!res.chats.isEmpty()) {
-                                            args.putInt("chat_id", res.chats.get(0).id);
-                                            dialog_id = -res.chats.get(0).id;
-                                        } else {
-                                            args.putInt("user_id", res.users.get(0).id);
-                                            dialog_id = res.users.get(0).id;
-                                        }
-                                        if (botUser != null && res.users.size() > 0 && res.users.get(0).bot) {
-                                            args.putString("botUser", botUser);
-                                            isBot = true;
-                                        }
-                                        if (messageId != null) {
-                                            args.putInt("message_id", messageId);
-                                        }
-                                        BaseFragment lastFragment = !mainFragmentsStack.isEmpty() ? mainFragmentsStack.get(mainFragmentsStack.size() - 1) : null;
-                                        if (lastFragment == null || MessagesController.checkCanOpenChat(args, lastFragment)) {
-                                            if (isBot && lastFragment != null && lastFragment instanceof ChatActivity && ((ChatActivity) lastFragment).getDialogId() == dialog_id) {
-                                                //((ChatActivity) lastFragment).setBotUser(botUser);
-                                            } else {
-                                                ChatActivity fragment = new ChatActivity(args);
-                                                NotificationCenter.getInstance().postNotificationName(NotificationCenter.closeChats);
-                                                actionBarLayout.presentFragment(fragment, false, true, true);
-                                            }
-                                        }
-                                    }
-                                } else {
-                                    try {
-                                        Toast.makeText(LaunchActivity.this, LocaleController.getString("NoUsernameFound", R.string.NoUsernameFound), Toast.LENGTH_SHORT).show();
-                                    } catch (Exception e) {
-                                        FileLog.e("messenger", e);
-                                    }
-                                }
-                            }
-                        }
-                    });
-                }
-            }); */
-        } else if (group != null) {
-            if (state == 0) {
-                /*final TLRPC.TL_messages_checkChatInvite req = new TLRPC.TL_messages_checkChatInvite();
-                req.hash = group;*/
-                requestId = 0; /* ConnectionsManager.getInstance().sendRequest(req, new RequestDelegate() {
-                    @Override
-                    public void run(final TLObject response, final TLRPC.TL_error error) {
-                        AndroidUtilities.runOnUIThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                if (!LaunchActivity.this.isFinishing()) {
-                                    try {
-                                        progressDialog.dismiss();
-                                    } catch (Exception e) {
-                                        FileLog.e("messenger", e);
-                                    }
-                                    if (error == null && actionBarLayout != null) {
-                                        TLRPC.ChatInvite invite = (TLRPC.ChatInvite) response;
-                                        if (invite.chat != null && !ChatObject.isLeftFromChat(invite.chat)) {
-                                            MessagesController.getInstance().putChat(invite.chat, false);
-                                            ArrayList<TLRPC.Chat> chats = new ArrayList<>();
-                                            chats.add(invite.chat);
-                                            //MessagesStorage.getInstance().putUsersAndChats(null, chats, false, true);
-                                            Bundle args = new Bundle();
-                                            args.putInt("chat_id", invite.chat.id);
-                                            if (mainFragmentsStack.isEmpty() || MessagesController.checkCanOpenChat(args, mainFragmentsStack.get(mainFragmentsStack.size() - 1))) {
-                                                ChatActivity fragment = new ChatActivity(args);
-                                                NotificationCenter.getInstance().postNotificationName(NotificationCenter.closeChats);
-                                                actionBarLayout.presentFragment(fragment, false, true, true);
-                                            }
-                                        } else {
-                                            AlertDialog.Builder builder = new AlertDialog.Builder(LaunchActivity.this);
-                                            if (!invite.megagroup && invite.channel || ChatObject.isChannel(invite.chat) && !invite.chat.megagroup) {
-                                                builder.setMessage(LocaleController.formatString("ChannelJoinTo", R.string.ChannelJoinTo, invite.chat != null ? invite.chat.title : invite.title));
-                                            } else {
-                                                builder.setMessage(LocaleController.formatString("JoinToGroup", R.string.JoinToGroup, invite.chat != null ? invite.chat.title : invite.title));
-                                            }
-                                            builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), new DialogInterface.OnClickListener() {
-                                                @Override
-                                                public void onClick(DialogInterface dialogInterface, int i) {
-                                                    runLinkRequest(username, group, sticker, botUser, botChat, message, hasUrl, messageId, 1);
-                                                }
-                                            });
-                                            builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
-                                            showAlertDialog(builder);
-                                        }
-                                    } else {
-                                        AlertDialog.Builder builder = new AlertDialog.Builder(LaunchActivity.this);
-                                        if (error.text.startsWith("FLOOD_WAIT")) {
-                                            builder.setMessage(LocaleController.getString("FloodWait", R.string.FloodWait));
-                                        } else {
-                                            builder.setMessage(LocaleController.getString("JoinToGroupErrorNotExist", R.string.JoinToGroupErrorNotExist));
-                                        }
-                                        builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), null);
-                                        showAlertDialog(builder);
-                                    }
-                                }
-                            }
-                        });
-                    }
-                }, ConnectionsManager.RequestFlagFailOnServerErrors); */
-            } else if (state == 1) {
-                /*TLRPC.TL_messages_importChatInvite req = new TLRPC.TL_messages_importChatInvite();
-                req.hash = group;*/
-                /*
-                ConnectionsManager.getInstance().sendRequest(req, new RequestDelegate() {
-                    @Override
-                    public void run(final TLObject response, final TLRPC.TL_error error) {
-                        if (error == null) {
-                            TLRPC.Updates updates = (TLRPC.Updates) response;
-                            MessagesController.getInstance().processUpdates(updates, false);
-                        }
-                        AndroidUtilities.runOnUIThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                if (!LaunchActivity.this.isFinishing()) {
-                                    try {
-                                        progressDialog.dismiss();
-                                    } catch (Exception e) {
-                                        FileLog.e("messenger", e);
-                                    }
-                                    if (error == null) {
-                                        if (actionBarLayout != null) {
-                                            TLRPC.Updates updates = (TLRPC.Updates) response;
-                                            if (!updates.chats.isEmpty()) {
-                                                TLRPC.Chat chat = updates.chats.get(0);
-                                                chat.left = false;
-                                                chat.kicked = false;
-                                                MessagesController.getInstance().putUsers(updates.users, false);
-                                                MessagesController.getInstance().putChats(updates.chats, false);
-                                                Bundle args = new Bundle();
-                                                args.putInt("chat_id", chat.id);
-                                                if (mainFragmentsStack.isEmpty() || MessagesController.checkCanOpenChat(args, mainFragmentsStack.get(mainFragmentsStack.size() - 1))) {
-                                                    ChatActivity fragment = new ChatActivity(args);
-                                                    NotificationCenter.getInstance().postNotificationName(NotificationCenter.closeChats);
-                                                    actionBarLayout.presentFragment(fragment, false, true, true);
-                                                }
-                                            }
-                                        }
-                                    } else {
-                                        AlertDialog.Builder builder = new AlertDialog.Builder(LaunchActivity.this);
-                                        if (error.text.startsWith("FLOOD_WAIT")) {
-                                            builder.setMessage(LocaleController.getString("FloodWait", R.string.FloodWait));
-                                        } else if (error.text.equals("USERS_TOO_MUCH")) {
-                                            builder.setMessage(LocaleController.getString("JoinToGroupErrorFull", R.string.JoinToGroupErrorFull));
-                                        } else {
-                                            builder.setMessage(LocaleController.getString("JoinToGroupErrorNotExist", R.string.JoinToGroupErrorNotExist));
-                                        }
-                                        builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), null);
-                                        showAlertDialog(builder);
-                                    }
-                                }
-                            }
-                        });
-                    }
-                }, ConnectionsManager.RequestFlagFailOnServerErrors); */
-            }
-        } else if (sticker != null) {
-            if (!mainFragmentsStack.isEmpty()) {
-                TLRPC.TL_inputStickerSetShortName stickerset = new TLRPC.TL_inputStickerSetShortName();
-                stickerset.short_name = sticker;
-                mainFragmentsStack.get(mainFragmentsStack.size() - 1).showDialog(new StickersAlert(LaunchActivity.this, stickerset, null, null));
-            }
-            return;
-        } else if (message != null) {
-            Bundle args = new Bundle();
-            args.putBoolean("onlySelect", true);
-            DialogsActivity fragment = new DialogsActivity(args);
-            fragment.setDelegate(new DialogsActivity.DialogsActivityDelegate() {
-                @Override
-                public void didSelectDialog(DialogsActivity fragment, long did, boolean param) {
-                    Bundle args = new Bundle();
-                    args.putBoolean("scrollToTopOnResume", true);
-                    args.putBoolean("hasUrl", hasUrl);
-                    int lower_part = (int) did;
-                    int high_id = (int) (did >> 32);
-                    if (lower_part != 0) {
-                        if (high_id == 1) {
-                            args.putInt("chat_id", lower_part);
-                        } else {
-                            if (lower_part > 0) {
-                                args.putInt("user_id", lower_part);
-                            } else if (lower_part < 0) {
-                                args.putInt("chat_id", -lower_part);
-                            }
-                        }
-                    } else {
-                        args.putInt("enc_id", high_id);
-                    }
-                    if (MessagesController.checkCanOpenChat(args, fragment)) {
-                        NotificationCenter.getInstance().postNotificationName(NotificationCenter.closeChats);
-                        DraftQuery.saveDraft(did, message, null, null, true);
-                        actionBarLayout.presentFragment(new ChatActivity(args), true, false, true);
-                    }
-                }
-            });
-            presentFragment(fragment, false, true);
-        }
-
-        if (requestId != 0) {
-            final int reqId = requestId;
-            progressDialog.setButton(DialogInterface.BUTTON_NEGATIVE, LocaleController.getString("Cancel", R.string.Cancel), new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    ConnectionsManager.getInstance().cancelRequest(reqId, true);
-                    try {
-                        dialog.dismiss();
-                    } catch (Exception e) {
-                        FileLog.e("messenger", e);
-                    }
-                }
-            });
-            progressDialog.show();
-        }
-    }
-
-    public AlertDialog showAlertDialog(AlertDialog.Builder builder) {
-        try {
-            if (visibleDialog != null) {
-                visibleDialog.dismiss();
-                visibleDialog = null;
-            }
-        } catch (Exception e) {
-            FileLog.e("messenger", e);
-        }
-        try {
-            visibleDialog = builder.show();
-            visibleDialog.setCanceledOnTouchOutside(true);
-            visibleDialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
-                @Override
-                public void onDismiss(DialogInterface dialog) {
-                    visibleDialog = null;
-                }
-            });
-            return visibleDialog;
-        } catch (Exception e) {
-            FileLog.e("messenger", e);
-        }
-        return null;
     }
 
     @Override

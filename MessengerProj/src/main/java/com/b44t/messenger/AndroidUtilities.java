@@ -684,6 +684,7 @@ public class AndroidUtilities {
     private static Intent createShortcutIntent(long did, boolean forDelete) {
         Intent shortcutIntent = new Intent(ApplicationLoader.applicationContext, OpenChatReceiver.class);
 
+        /*
         int lower_id = (int) did;
         int high_id = (int) (did >> 32);
 
@@ -723,6 +724,15 @@ public class AndroidUtilities {
                 photo = chat.photo.photo_small;
             }
         }
+        */
+
+        TLRPC.FileLocation photo = null;
+        shortcutIntent.putExtra("chatId", did);
+        long hChat = MrMailbox.MrMailboxGetChat(MrMailbox.hMailbox, (int)did);
+            if( hChat == 0 ) { return null; }
+            String name = MrMailbox.MrChatGetName(hChat);
+        MrMailbox.MrChatUnref(hChat);
+
 
         shortcutIntent.setAction("com.b44t.messenger.openchat" + did);
         shortcutIntent.addFlags(0x4000000);
@@ -774,19 +784,19 @@ public class AndroidUtilities {
             if (bitmap != null) {
                 addIntent.putExtra(Intent.EXTRA_SHORTCUT_ICON, bitmap);
             } else {
-                if (user != null) {
-                    /*if (user.bot) {
+                /*if (user != null) {
+                    if (user.bot) {
                         addIntent.putExtra(Intent.EXTRA_SHORTCUT_ICON_RESOURCE, Intent.ShortcutIconResource.fromContext(ApplicationLoader.applicationContext, R.drawable.book_bot));
-                    } else*/ {
+                    } else {
                         addIntent.putExtra(Intent.EXTRA_SHORTCUT_ICON_RESOURCE, Intent.ShortcutIconResource.fromContext(ApplicationLoader.applicationContext, R.drawable.book_user));
                     }
                 } else if (chat != null) {
-                    /*if (ChatObject.isChannel(chat) && !chat.megagroup) {
+                    if (ChatObject.isChannel(chat) && !chat.megagroup) {
                         addIntent.putExtra(Intent.EXTRA_SHORTCUT_ICON_RESOURCE, Intent.ShortcutIconResource.fromContext(ApplicationLoader.applicationContext, R.drawable.book_channel));
-                    } else*/ {
+                    } else {*/
                         addIntent.putExtra(Intent.EXTRA_SHORTCUT_ICON_RESOURCE, Intent.ShortcutIconResource.fromContext(ApplicationLoader.applicationContext, R.drawable.book_group));
-                    }
-                }
+                /*}
+                }*/
             }
         }
         return addIntent;

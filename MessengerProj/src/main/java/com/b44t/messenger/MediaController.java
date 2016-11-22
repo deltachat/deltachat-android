@@ -3008,10 +3008,10 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
 
     public void checkSaveToGalleryFiles() {
         try {
-            File telegramPath = new File(Environment.getExternalStorageDirectory(), "Delta Chat");
-            File imagePath = new File(telegramPath, "Delta Chat Images");
+            File messengerPath = new File(Environment.getExternalStorageDirectory(), "Delta Chat");
+            File imagePath = new File(messengerPath, "Delta Chat Images");
             imagePath.mkdir();
-            File videoPath = new File(telegramPath, "Delta Chat Video");
+            File videoPath = new File(messengerPath, "Delta Chat Video");
             videoPath.mkdir();
 
             if (saveToGallery) {

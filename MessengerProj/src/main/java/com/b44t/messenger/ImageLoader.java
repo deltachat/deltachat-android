@@ -81,7 +81,7 @@ public class ImageLoader {
     private int lastImageNum = 0;
     private long lastProgressUpdateTime = 0;
 
-    private File telegramPath = null;
+    private File messengerPath = null;
 
     private class ThumbGenerateInfo {
         private int count;
@@ -1159,8 +1159,8 @@ public class ImageLoader {
                 AndroidUtilities.runOnUIThread(new Runnable() {
                     @Override
                     public void run() {
-                        if (MediaController.getInstance().canSaveToGallery() && telegramPath != null && finalFile != null && (location.endsWith(".mp4") || location.endsWith(".jpg"))) {
-                            if (finalFile.toString().startsWith(telegramPath.toString())) {
+                        if (MediaController.getInstance().canSaveToGallery() && messengerPath != null && finalFile != null && (location.endsWith(".mp4") || location.endsWith(".jpg"))) {
+                            if (finalFile.toString().startsWith(messengerPath.toString())) {
                                 AndroidUtilities.addMediaToGallery(finalFile.toString());
                             }
                         }
@@ -1284,12 +1284,12 @@ public class ImageLoader {
 
         try {
             if (Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())) {
-                telegramPath = new File(Environment.getExternalStorageDirectory(), "Delta Chat");
-                telegramPath.mkdirs();
+                messengerPath = new File(Environment.getExternalStorageDirectory(), "Delta Chat");
+                messengerPath.mkdirs();
 
-                if (telegramPath.isDirectory()) {
+                if (messengerPath.isDirectory()) {
                     try {
-                        File imagePath = new File(telegramPath, "Delta Chat Images");
+                        File imagePath = new File(messengerPath, "Delta Chat Images");
                         imagePath.mkdir();
                         if (imagePath.isDirectory() && canMoveFiles(cachePath, imagePath, FileLoader.MEDIA_DIR_IMAGE)) {
                             mediaDirs.put(FileLoader.MEDIA_DIR_IMAGE, imagePath);
@@ -1300,7 +1300,7 @@ public class ImageLoader {
                     }
 
                     try {
-                        File videoPath = new File(telegramPath, "Delta Chat Video");
+                        File videoPath = new File(messengerPath, "Delta Chat Video");
                         videoPath.mkdir();
                         if (videoPath.isDirectory() && canMoveFiles(cachePath, videoPath, FileLoader.MEDIA_DIR_VIDEO)) {
                             mediaDirs.put(FileLoader.MEDIA_DIR_VIDEO, videoPath);
@@ -1311,7 +1311,7 @@ public class ImageLoader {
                     }
 
                     try {
-                        File audioPath = new File(telegramPath, "Delta Chat Audio");
+                        File audioPath = new File(messengerPath, "Delta Chat Audio");
                         audioPath.mkdir();
                         if (audioPath.isDirectory() && canMoveFiles(cachePath, audioPath, FileLoader.MEDIA_DIR_AUDIO)) {
                             new File(audioPath, ".nomedia").createNewFile();
@@ -1323,7 +1323,7 @@ public class ImageLoader {
                     }
 
                     try {
-                        File documentPath = new File(telegramPath, "Delta Chat Documents");
+                        File documentPath = new File(messengerPath, "Delta Chat Documents");
                         documentPath.mkdir();
                         if (documentPath.isDirectory() && canMoveFiles(cachePath, documentPath, FileLoader.MEDIA_DIR_DOCUMENT)) {
                             new File(documentPath, ".nomedia").createNewFile();

@@ -339,7 +339,7 @@ public class MrMailbox {
     public final static int      MR_TITLE_USERNAME          = 2;
     public final static int      MR_TITLE_SELF              = 3;
 
-    // some rest of Telegram ...
+    // some rest of T'gram ...
     public native static long    getCurrentTimeMillis       ();
     public native static int     getCurrentTime             ();
 }

@@ -6229,7 +6229,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                             double lon = message.messageOwner.media.geo._long;
                             //TODO: get actual message Sender, localization
                             Intent intent = new Intent(android.content.Intent.ACTION_VIEW,
-                                    Uri.parse("geo:" + lat + "," + lon + "?z=15&q=" + lat + "," + lon + Uri.encode("(Shared by Telegram")));
+                                    Uri.parse("geo:" + lat + "," + lon + "?z=15&q=" + lat + "," + lon + Uri.encode("(Shared by Delta Chat")));
                             if(intent.resolveActivity(getParentActivity().getPackageManager()) != null) {
                                 try{
                                     getParentActivity().startActivity(intent);
