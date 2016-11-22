@@ -167,7 +167,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
     private RecyclerListView.OnItemClickListener mentionsOnItemClickListener;
     private StickersAdapter stickersAdapter;
     private FrameLayout stickersPanel;
-    private TextView muteItem;
+    private TextView muteMenuEntry;
     private boolean m_canMute;
     private FrameLayout pagedownButton;
     private boolean pagedownButtonShowedByScroll;
@@ -295,7 +295,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
     private final static int id_forward = 11;
     private final static int id_delete_messages = 12;
     private final static int chat_menu_attach = 14;
-    //private final static int clear_history = 15;
     private final static int id_delete_chat = 16;
     private final static int mute = 18;
     private final static int id_reply = 19;
@@ -682,7 +681,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     */
                     actionBar.hideActionMode();
                     updateVisibleRows();
-                } else if (/*id == clear_history ||*/ id == id_delete_chat) {
+                } else if ( id == id_delete_chat) {
                     // as the history may be a mix of messenger-messages and e-mails, it is not safe to delete it.
                     // the user can delete explicit messages or use his e-mail programm to delete masses.
                     if (getParentActivity() == null) {
@@ -690,27 +689,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     }
 
                     AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
-
-                    String messageText;
-                    /*
-                    int totalMessagesCount = MrMailbox.MrChatGetTotalMsgCount(m_hChat);
-                    String messageText = LocaleController.formatString("AreYouSureDeleteMessages", R.string.AreYouSureDeleteMessages, LocaleController.formatPluralString("messages", totalMessagesCount));
-                    */
-
-                    /*if (id == clear_history) {
-                        builder.setTitle(LocaleController.getString("ClearHistory", R.string.ClearHistory));
-                    } else */ {
-                        if (MrMailbox.MrChatGetType(m_hChat)==MrMailbox.MR_CHAT_GROUP) {
-                            builder.setTitle(LocaleController.getString("DeleteAndExit", R.string.DeleteAndExit));
-                            messageText = /*"- " + messageText + "\n\n - " +*/ LocaleController.getString("AreYouSureDeleteAndExit", R.string.AreYouSureDeleteAndExit);
-                        } else {
-                            builder.setTitle(LocaleController.getString("DeleteChat", R.string.DeleteChat));
-                            messageText = /*"- " + messageText + "\n\n- " +*/ LocaleController.getString("AreYouSureDeleteThisChat", R.string.AreYouSureDeleteThisChat);
-                        }
-                    }
-
-                    builder.setMessage(messageText);
-
+                    builder.setMessage(LocaleController.getString("AreYouSureDeleteThisChat", R.string.AreYouSureDeleteThisChat));
                     builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
@@ -858,10 +837,8 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         }
 
         if( m_canMute ) {
-            muteItem = headerItem.addSubItem(mute, null, 0);
+            muteMenuEntry = headerItem.addSubItem(mute, null, 0);
         }
-
-        //headerItem.addSubItem(clear_history, LocaleController.getString("ClearHistory", R.string.ClearHistory), 0);
 
         if( !isChatWithDeaddrop ) {
             if (MrMailbox.MrChatGetType(m_hChat) == MrMailbox.MR_CHAT_GROUP) {
@@ -3293,12 +3270,12 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
             rightIcon = R.drawable.mute_fixed;
         }
 
-        avatarContainer.setTitleIcons(currentEncryptedChat != null ? R.drawable.ic_lock_header : 0, rightIcon);
-        if( muteItem != null ) {
+        avatarContainer.setTitleIcons(0, rightIcon);
+        if( muteMenuEntry != null ) {
             if (rightIcon != 0) {
-                muteItem.setText(LocaleController.getString("UnmuteNotifications", R.string.UnmuteNotifications));
+                muteMenuEntry.setText(LocaleController.getString("UnmuteNotifications", R.string.UnmuteNotifications));
             } else {
-                muteItem.setText(LocaleController.getString("MuteNotifications", R.string.MuteNotifications));
+                muteMenuEntry.setText(LocaleController.getString("MuteNotifications", R.string.MuteNotifications));
             }
         }
     }
@@ -4804,20 +4781,13 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         }
     }
 
-    private void updateBottomOverlay() { // the bottom overlay is also used for going through search results
+    private void updateBottomOverlay() {
+        // the bottom overlay is also used for going through search results, however, it would be nicer to add the button [^] [v] to the actionbar
+        // moreover, we ouse the bottom overlay for the "dead drop chat"
         if (bottomOverlayChatText == null) {
             return;
         }
-        if (currentChat != null) {
-            bottomOverlayChatText.setText(LocaleController.getString("DeleteThisGroup", R.string.DeleteThisGroup));
-        } else {
-            if (userBlocked) {
-                bottomOverlayChatText.setText(LocaleController.getString("UnblockContact", R.string.UnblockContact));
-            }
-            else {
-                bottomOverlayChatText.setText(LocaleController.getString("DeleteThisChat", R.string.DeleteThisChat));
-            }
-        }
+        bottomOverlayChatText.setText("");
 
         if (searchItem != null && searchItem.getVisibility() == View.VISIBLE) {
             searchContainer.setVisibility(View.VISIBLE);
@@ -4829,8 +4799,8 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
             if (currentChat != null && (ChatObject.isNotInChat(currentChat) || !ChatObject.canWriteToChat(currentChat)) ||
                     currentUser != null && (UserObject.isDeleted(currentUser) || userBlocked)) {
                 bottomOverlayChat.setVisibility(View.VISIBLE);
-                if (muteItem!=null){
-                    muteItem.setVisibility(View.GONE);
+                if (muteMenuEntry !=null){
+                    muteMenuEntry.setVisibility(View.GONE);
                 }
                 chatActivityEnterView.setFieldFocused(false);
                 chatActivityEnterView.setVisibility(View.INVISIBLE);
@@ -4848,8 +4818,8 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     chatActivityEnterView.setVisibility(View.VISIBLE);
                     bottomOverlayChat.setVisibility(View.INVISIBLE);
                 }
-                if(muteItem!=null) {
-                    muteItem.setVisibility(View.VISIBLE);
+                if(muteMenuEntry !=null) {
+                    muteMenuEntry.setVisibility(View.VISIBLE);
                 }
             }
         }

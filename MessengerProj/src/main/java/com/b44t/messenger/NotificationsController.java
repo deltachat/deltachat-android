@@ -1331,11 +1331,11 @@ public class NotificationsController {
                         }
                     }
                 }
-            } else {
+            } /*else {
                 if (pushDialogs.size() == 1) {
                     intent.putExtra("encId", (int) (dialog_id >> 32));
                 }
-            }
+            }*/
             PendingIntent contentIntent = PendingIntent.getActivity(ApplicationLoader.applicationContext, 0, intent, PendingIntent.FLAG_ONE_SHOT);
 
             String name;

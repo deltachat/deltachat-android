@@ -969,9 +969,9 @@ public class PopupNotificationActivity extends Activity implements NotificationC
             } else {
                 intent.putExtra("userId", lower_id);
             }
-        } else {
+        } /*else {
             intent.putExtra("encId", (int)(dialog_id >> 32));
-        }
+        } */
         intent.setAction("com.b44t.messenger.openchat" + Math.random() + Integer.MAX_VALUE);
         intent.setFlags(0x00008000);
         startActivity(intent);
@@ -1007,10 +1007,10 @@ public class PopupNotificationActivity extends Activity implements NotificationC
             nameTextView.setCompoundDrawablePadding(0);
         } else if (currentUser != null) {
             nameTextView.setText(UserObject.getUserName(currentUser));
-            if ((int)dialog_id == 0) {
+            /*if ((int)dialog_id == 0) {
                 nameTextView.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_lock_white, 0, 0, 0);
                 nameTextView.setCompoundDrawablePadding(AndroidUtilities.dp(4));
-            } else {
+            } else*/ {
                 nameTextView.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
                 nameTextView.setCompoundDrawablePadding(0);
             }

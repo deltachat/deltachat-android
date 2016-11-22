@@ -506,7 +506,7 @@
     <string name="SendMessagesTo">Send messages to %1$s?</string>
     <string name="SendContactTo">Send contact to %1$s?</string>
     <string name="AreYouSureDeleteAndExit">Leave the group? You will no longer receive messages from the group.</string>
-    <string name="AreYouSureDeleteThisChat">Delete this chat? The chat will no longer be shown in the chat list.</string>
+    <string name="AreYouSureDeleteThisChat">Delete this chat? The chat will no longer be shown in the chat list, the messages will stay on the server.</string>
     <string name="ShareYouLocationTitle">Share your location?</string>
     <string name="ShareYouLocationInfo">This will send your current location to the bot.</string>
     <string name="ShareYouLocationUnable">App was unable to determine your current location</string>
