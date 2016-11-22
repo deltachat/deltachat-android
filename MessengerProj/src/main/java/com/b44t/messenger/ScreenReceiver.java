@@ -25,6 +25,6 @@ public class ScreenReceiver extends BroadcastReceiver {
             ConnectionsManager.getInstance().setAppPaused(false, true);
             ApplicationLoader.isScreenOn = true;
         }
-        NotificationCenter.getInstance().postNotificationName(NotificationCenter.screenStateChanged);
+        //NotificationCenter.getInstance().postNotificationName(NotificationCenter.screenStateChanged);
     }
 }

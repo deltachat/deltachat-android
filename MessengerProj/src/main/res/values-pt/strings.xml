@@ -37,7 +37,6 @@
     <string name="WaitingForNetwork">Aguardando rede...</string>
     <string name="Connecting">Conectando...</string>
     <string name="Updating">Atualizando...</string>
-    <string name="ClearHistory">Limpar histórico</string>
     <string name="DeleteChat">Apagar conversa</string>
     <string name="SelectChat">Selecione um Chat</string>
     <string name="PhotoTip">Toque e segure para ver</string>
@@ -91,8 +90,6 @@
     <string name="NoRecent">Nada recente</string>
     <string name="Message">Mensagem</string>
     <string name="TypeMessage">Mensagem</string>
-    <string name="ShareMyContactInfo">Compartilhar meu contato</string>
-    <string name="AddToContacts">Adicionar aos contatos</string>
     <string name="YouWereKicked">Você foi removido deste grupo</string>
     <string name="YouLeft">Você saiu deste grupo</string>
     <string name="DeleteThisGroup">Apagar este grupo</string>
@@ -109,7 +106,6 @@
     <string name="CopyUrl">Copiar URL</string>
     <string name="SendItems">Enviar %1$s</string>
     <string name="OpenUrlAlert">Abrir URL em %1$s?</string>
-    <string name="AddContactChat">ADICIONAR CONTATO</string>
     <string name="NobodyLikesSpam1">Desculpe, você pode enviar mensagens somente para contatos mútuos no momento.</string>
     <string name="NobodyLikesSpam2">Desculpe, você só pode adicionar contatos mútuos à grupos no momento.</string>
     <string name="MoreInfo">Mais informações</string>
@@ -152,12 +148,10 @@
     <string name="NotificationEditedGroupPhoto">%1$s editou a foto do grupo %2$s</string>
     <string name="NotificationGroupAddMember">%1$s convidou %3$s para o grupo %2$s</string>
     <string name="NotificationGroupAddSelf">%1$s retornou ao grupo %2$s</string>
-    <string name="NotificationGroupAddSelfMega">%1$s entrou no grupo %2$s</string>
     <string name="NotificationGroupKickMember">%1$s removeu %3$s do grupo %2$s</string>
     <string name="NotificationGroupKickYou">%1$s removeu você do grupo %2$s</string>
     <string name="NotificationGroupLeftMember">%1$s saiu do grupo %2$s</string>
     <string name="NotificationContactNewPhoto">%1$s atualizou a foto do perfil</string>
-    <string name="NotificationInvitedToGroupByLink">%1$s entrou para o grupo %2$s via link de convite</string>
     <string name="Reply">Responder</string>
     <string name="ReplyToGroup">Responder para %1$s</string>
     <string name="ReplyToUser">Responder para %1$s</string>

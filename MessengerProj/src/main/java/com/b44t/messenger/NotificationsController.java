@@ -813,9 +813,9 @@ public class NotificationsController {
                                             return null;
                                         }
                                         if (from_id == u2.id) {
-                                            if (messageObject.isMegagroup()) {
+                                            /*if (messageObject.isMegagroup()) {
                                                 msg = LocaleController.formatString("NotificationGroupAddSelfMega", R.string.NotificationGroupAddSelfMega, name, chat.title);
-                                            } else {
+                                            } else*/ {
                                                 msg = LocaleController.formatString("NotificationGroupAddSelf", R.string.NotificationGroupAddSelf, name, chat.title);
                                             }
                                         } else {
@@ -1595,7 +1595,7 @@ public class NotificationsController {
 
             NotificationCompat.Action wearReplyAction = null;
 
-            if (!ChatObject.isChannel(chat) && !AndroidUtilities.needShowPasscode(false) && !UserConfig.isWaitingForPasscodeEnter) {
+            if (/*!ChatObject.isChannel(chat) &&*/ !AndroidUtilities.needShowPasscode(false) && !UserConfig.isWaitingForPasscodeEnter) {
                 Intent msgReplyIntent = new Intent();
                 msgReplyIntent.addFlags(Intent.FLAG_INCLUDE_STOPPED_PACKAGES);
                 msgReplyIntent.setAction("com.b44t.messenger.ACTION_MESSAGE_REPLY");

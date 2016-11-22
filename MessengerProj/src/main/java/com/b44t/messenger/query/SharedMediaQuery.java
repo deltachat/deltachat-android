@@ -25,7 +25,7 @@ public class SharedMediaQuery {
     public final static int MEDIA_TYPES_COUNT = 5;
 
     public static void loadMedia(final long uid, final int offset, final int count, final int max_id, final int type, final boolean fromCache, final int classGuid) {
-        final boolean isChannel = (int) uid < 0 && ChatObject.isChannel(-(int) uid);
+        final boolean isChannel = false;//(int) uid < 0 && ChatObject.isChannel(-(int) uid);
 
         int lower_part = (int)uid;
         if (fromCache || lower_part == 0) {

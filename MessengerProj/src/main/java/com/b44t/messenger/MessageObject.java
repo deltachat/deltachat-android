@@ -994,7 +994,7 @@ public class MessageObject {
     }
 
     public boolean isMegagroup() {
-        return isMegagroup(messageOwner);
+        return false;
     }
 
     public static boolean isMegagroup(TLRPC.Message message) {

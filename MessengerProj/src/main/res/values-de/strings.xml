@@ -37,7 +37,6 @@
     <string name="WaitingForNetwork">Warte auf Netzwerk...</string>
     <string name="Connecting">Verbinde…</string>
     <string name="Updating">Aktualisiere…</string>
-    <string name="ClearHistory">Alle Nachrichten löschen</string>
     <string name="DeleteChat">Chat löschen</string>
     <string name="SelectChat">Chat auswählen</string>
     <string name="PhotoTip">Tippen und Halten</string>
@@ -91,8 +90,6 @@
     <string name="NoRecent">Keine aktuellen</string>
     <string name="Message">Nachricht</string>
     <string name="TypeMessage">Nachricht</string>
-    <string name="ShareMyContactInfo">Meine Nummer teilen</string>
-    <string name="AddToContacts">Zu Kontakten hinzufügen</string>
     <string name="YouWereKicked">Du wurdest aus der Gruppe entfernt</string>
     <string name="YouLeft">Du hast die Gruppe verlassen</string>
     <string name="DeleteThisGroup">Diese Gruppe löschen</string>
@@ -109,7 +106,6 @@
     <string name="CopyUrl">URL kopieren</string>
     <string name="SendItems">%1$s senden</string>
     <string name="OpenUrlAlert">URL %1$s öffnen?</string>
-    <string name="AddContactChat">KONTAKT HINZUFÜGEN</string>
     <string name="NobodyLikesSpam1">Derzeit kannst du nur Kontakten schreiben, die auch deine Nummer haben.</string>
     <string name="NobodyLikesSpam2">Derzeit kannst du nur Kontakte hinzufügen, die auch deine Nummer haben.</string>
     <string name="MoreInfo">Mehr Infos</string>
@@ -152,12 +148,10 @@
     <string name="NotificationEditedGroupPhoto">%1$s hat das Bild der Gruppe %2$s geändert</string>
     <string name="NotificationGroupAddMember">%1$s hat %3$s in die Gruppe %2$s eingeladen</string>
     <string name="NotificationGroupAddSelf">%1$s ist in die Gruppe %2$s zurückgekehrt</string>
-    <string name="NotificationGroupAddSelfMega">%1$s ist der Gruppe %2$s beigetreten</string>
     <string name="NotificationGroupKickMember">%1$s hat %3$s aus der Gruppe %2$s entfernt</string>
     <string name="NotificationGroupKickYou">%1$s hat dich aus der Gruppe %2$s entfernt</string>
     <string name="NotificationGroupLeftMember">%1$s hat die Gruppe %2$s verlassen</string>
     <string name="NotificationContactNewPhoto">%1$s hat das Profilbild geändert</string>
-    <string name="NotificationInvitedToGroupByLink">%1$s ist per Einladungslink der Gruppe %2$s beigetreten</string>
     <string name="Reply">Antworten</string>
     <string name="ReplyToGroup">%1$s antworten</string>
     <string name="ReplyToUser">%1$s antworten</string>

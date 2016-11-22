@@ -37,7 +37,6 @@
     <string name="WaitingForNetwork">Waiting for network...</string>
     <string name="Connecting">Connecting...</string>
     <string name="Updating">Updating...</string>
-    <string name="ClearHistory">Delete all messages</string>
     <string name="DeleteChat">Delete chat</string>
     <string name="SelectChat">Select chat</string>
     <string name="PhotoTip">Tap and hold to view</string>
@@ -91,8 +90,6 @@
     <string name="NoRecent">No recent</string>
     <string name="Message">Message</string>
     <string name="TypeMessage">Message</string>
-    <string name="ShareMyContactInfo">Share my contact</string>
-    <string name="AddToContacts">Add to contacts</string>
     <string name="YouWereKicked">You were removed from this group</string>
     <string name="YouLeft">You left this group</string>
     <string name="DeleteThisGroup">Delete this group</string>
@@ -109,7 +106,6 @@
     <string name="CopyUrl">Copy URL</string>
     <string name="SendItems">Send %1$s</string>
     <string name="OpenUrlAlert">Open url %1$s?</string>
-    <string name="AddContactChat">ADD CONTACT</string>
     <string name="NobodyLikesSpam1">Sorry, you can only send messages to mutual contacts at the moment.</string>
     <string name="NobodyLikesSpam2">Sorry, you can only add mutual contacts to groups at the moment.</string>
     <string name="MoreInfo">More info</string>
@@ -152,12 +148,10 @@
     <string name="NotificationEditedGroupPhoto">%1$s edited the group\'s %2$s photo</string>
     <string name="NotificationGroupAddMember">%1$s invited %3$s to the group %2$s</string>
     <string name="NotificationGroupAddSelf">%1$s returned to the group %2$s</string>
-    <string name="NotificationGroupAddSelfMega">%1$s joined the group %2$s</string>
     <string name="NotificationGroupKickMember">%1$s removed %3$s from the group %2$s</string>
     <string name="NotificationGroupKickYou">%1$s removed you from the group %2$s</string>
     <string name="NotificationGroupLeftMember">%1$s has left the group %2$s</string>
     <string name="NotificationContactNewPhoto">%1$s updated profile photo</string>
-    <string name="NotificationInvitedToGroupByLink">%1$s joined to the group %2$s via invite link</string>
     <string name="Reply">Reply</string>
     <string name="ReplyToGroup">Reply to %1$s</string>
     <string name="ReplyToUser">Reply to %1$s</string>

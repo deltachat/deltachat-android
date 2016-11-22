@@ -37,7 +37,6 @@
     <string name="WaitingForNetwork">Wachten op netwerk</string>
     <string name="Connecting">Verbinden</string>
     <string name="Updating">Bijwerken</string>
-    <string name="ClearHistory">Geschiedenis wissen</string>
     <string name="DeleteChat">Chat verwijderen</string>
     <string name="SelectChat">Kies een chat</string>
     <string name="PhotoTip">Druk en houd ingedrukt</string>
@@ -91,8 +90,6 @@
     <string name="NoRecent">Niets recents</string>
     <string name="Message">Bericht</string>
     <string name="TypeMessage">Bericht</string>
-    <string name="ShareMyContactInfo">Mijn contactgegevens delen</string>
-    <string name="AddToContacts">Toevoegen aan contacten</string>
     <string name="YouWereKicked">Je bent verwijderd uit deze groep</string>
     <string name="YouLeft">Je hebt deze groep verlaten</string>
     <string name="DeleteThisGroup">Deze groep verwijderen</string>
@@ -109,7 +106,6 @@
     <string name="CopyUrl">Link kopiëren</string>
     <string name="SendItems">%1$s versturen</string>
     <string name="OpenUrlAlert">URL %1$s openen?</string>
-    <string name="AddContactChat">CONTACT TOEVOEGEN</string>
     <string name="NobodyLikesSpam1">Je kunt momenteel alleen berichten sturen aan onderlingen contacten.</string>
     <string name="NobodyLikesSpam2">Je kunt momenteel alleen onderlinge contacten aan groepen toevoegen</string>
     <string name="MoreInfo">Meer informatie</string>
@@ -152,12 +148,10 @@
     <string name="NotificationEditedGroupPhoto">%1$s heeft de afbeelding van de groep %2$s gewijzigd</string>
     <string name="NotificationGroupAddMember">%1$s heeft %3$s uitgenodigd voor de groep %2$s</string>
     <string name="NotificationGroupAddSelf">%1$s is terug in de groep %2$s</string>
-    <string name="NotificationGroupAddSelfMega">%1$s is nu lid van de groep %2$s</string>
     <string name="NotificationGroupKickMember">%1$s heeft %3$s verwijderd uit de groep %2$s</string>
     <string name="NotificationGroupKickYou">%1$s heeft je verwijderd uit de groep %2$s</string>
     <string name="NotificationGroupLeftMember">%1$s heeft de groep %2$s verlaten</string>
     <string name="NotificationContactNewPhoto">%1$s heeft zijn/haar profielfoto gewijzigd</string>
-    <string name="NotificationInvitedToGroupByLink">%1$s is nu lid van de groep %2$s via uitnodigingslink</string>
     <string name="Reply">Antwoord</string>
     <string name="ReplyToGroup">Antwoord op %1$s</string>
     <string name="ReplyToUser">Antwoord op %1$s</string>

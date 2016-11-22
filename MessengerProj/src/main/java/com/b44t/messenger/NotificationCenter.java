@@ -44,7 +44,7 @@ public class NotificationCenter {
     public static final int recentImagesDidLoaded = totalEvents++;
     public static final int replaceMessagesObjects = totalEvents++;
     public static final int didSetPasscode = totalEvents++;
-    public static final int screenStateChanged = totalEvents++;
+    //public static final int screenStateChanged = totalEvents++; -- currently not used, but this may get handy
     public static final int didLoadedReplyMessages = totalEvents++;
     public static final int didReceivedWebpages = totalEvents++;
     public static final int didReceivedWebpagesInUpdates = totalEvents++;
