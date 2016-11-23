@@ -728,10 +728,9 @@ public class AndroidUtilities {
 
         TLRPC.FileLocation photo = null;
         shortcutIntent.putExtra("chatId", did);
-        long hChat = MrMailbox.MrMailboxGetChat(MrMailbox.hMailbox, (int)did);
-            if( hChat == 0 ) { return null; }
-            String name = MrMailbox.MrChatGetName(hChat);
-        MrMailbox.MrChatUnref(hChat);
+        MrChat mrChat = MrMailbox.getChat(MrMailbox.hMailbox, (int)did);
+        if( mrChat.getId() == 0 ) { return null; }
+        String name = mrChat.getName();
 
 
         shortcutIntent.setAction("com.b44t.messenger.openchat" + did);

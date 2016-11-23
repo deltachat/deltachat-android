@@ -45,6 +45,7 @@ import com.b44t.messenger.AndroidUtilities;
 import com.b44t.messenger.ImageLoader;
 import com.b44t.messenger.MessageObject;
 import com.b44t.messenger.MessagesController;
+import com.b44t.messenger.MrChat;
 import com.b44t.messenger.MrMailbox;
 import com.b44t.messenger.SendMessagesHelper;
 import com.b44t.messenger.ApplicationLoader;
@@ -299,7 +300,7 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                 }
                 else if (position == DrawerLayoutAdapter.iDeaddrop) {
                     Bundle args = new Bundle();
-                    args.putInt("chat_id", MrMailbox.MR_CHAT_ID_DEADDROP);
+                    args.putInt("chat_id", MrChat.MR_CHAT_ID_DEADDROP);
                     presentFragment(new ChatActivity(args));
                     drawerLayoutContainer.closeDrawer(false);
                 }

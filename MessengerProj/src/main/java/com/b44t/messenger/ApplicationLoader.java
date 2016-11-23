@@ -216,10 +216,10 @@ public class ApplicationLoader extends Application {
         SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("Notifications", Activity.MODE_PRIVATE);
         boolean enablePushConnection = preferences.getBoolean("pushConnection", true);
 
-        if( preferences.getInt("notify2_"+MrMailbox.MR_CHAT_ID_DEADDROP, 666)==666 ) {
+        if( preferences.getInt("notify2_"+MrChat.MR_CHAT_ID_DEADDROP, 666)==666 ) {
             // make sure, the notifications for the "deaddrop" dialog are muted by default
             SharedPreferences.Editor editor = preferences.edit();
-            editor.putInt("notify2_"+MrMailbox.MR_CHAT_ID_DEADDROP, 2);
+            editor.putInt("notify2_"+MrChat.MR_CHAT_ID_DEADDROP, 2);
             editor.commit();
         }
 

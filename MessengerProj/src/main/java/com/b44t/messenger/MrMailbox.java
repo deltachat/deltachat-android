@@ -37,18 +37,11 @@ public class MrMailbox {
 
 
     // tools
-    public static TLRPC.TL_dialog hChat2dialog(long hChat)
-    {
-        TLRPC.TL_dialog ret = new TLRPC.TL_dialog();
-        ret.id = MrMailbox.MrChatGetId(hChat);
-        return ret;
-    }
 
     public static TLRPC.TL_dialog hChatlist2dialog(long hChatlist, int index)
     {
-        long hChat = MrMailbox.MrChatlistGetChatByIndex(hChatlist, index);
-            TLRPC.TL_dialog dlg = hChat2dialog(hChat);
-        MrMailbox.MrChatUnref(hChat);
+        MrChat mrChat = MrMailbox.getChatByIndex(hChatlist, index);
+        TLRPC.TL_dialog dlg = MrChat.MrChat2dialog(mrChat);
 
         return dlg;
     }
@@ -129,6 +122,11 @@ public class MrMailbox {
         return new MrContact(MrMailboxGetContact(hMailbox, contact_id));
     }
 
+    public static MrChat getChat(long hMailbox, int contact_id)
+    {
+        return new MrChat(MrMailboxGetChat(hMailbox, contact_id));
+    }
+
     public native static long    MrMailboxNew               (); // returns hMailbox which must be unref'd after usage (Names as mrmailbox_new don't work due to the additional underscore)
     public native static int     MrMailboxOpen              (long hMailbox, String dbfile, String blobdir);
     public native static void    MrMailboxClose             (long hMailbox);
@@ -147,7 +145,7 @@ public class MrMailbox {
     public native static int     MrMailboxAddAddressBook    (long hMailbox, String adrbook);
 
     public native static long    MrMailboxGetChatlist       (long hMailbox); // returns hChatlist which must be unref'd after usage
-    public native static long    MrMailboxGetChat           (long hMailbox, int chat_id); // return hChat which must be unref'd after usage
+    private native static long   MrMailboxGetChat           (long hMailbox, int chat_id); // return hChat which must be unref'd after usage
     public native static int     MrMailboxMarkseenChat      (long hMailbox, int id);
     public native static int     MrMailboxGetChatIdByContactId (long hMailbox, int chat_id);
     public native static int     MrMailboxCreateChatByContactId(long hMailbox, int contact_id); // returns chat_id
@@ -166,41 +164,18 @@ public class MrMailbox {
     public native static String  MrMailboxExecute           (long hMailbox, String cmd);
 
     // MrChatlist objects
+    public static MrChat getChatByIndex(long hChatlist, int index)
+    {
+        return new MrChat(MrChatlistGetChatByIndex(hChatlist, index));
+    }
     public native static void    MrChatlistUnref            (long hChatlist);
     public native static int     MrChatlistGetCnt           (long hChatlist);
-    public native static int     MrChatlistGetChatByIndex   (long hChatlist, int index); // returns hChat which must be unref'd after usage
-
-    // MrChat objects
-    public static MrPoortext getSummary(long hChat) {
-        return new MrPoortext(MrChatGetSummary(hChat));
-    }
-    public native static void    MrChatUnref                (long hChat);
-    public native static int     MrChatGetId                (long hChat);
-    public native static int     MrChatGetType              (long hChat);
-    public native static String  MrChatGetName              (long hChat);
-    public static int            MrChatIsEncrypted          (long hChat) { return 0; }
-    public native static String  MrChatGetSubtitle          (long hChat);
-    public native static String  MrChatGetDraft             (long hChat); // returns null for "no draft"
-    public native static long    MrChatGetDraftTimestamp    (long hChat); // returns 0 for "no draft"
-    public native static int     MrChatGetDraftReplyToMsgId (long hChat); // returns 0 for "no draft"
-    public native static int     MrChatSetDraft             (long hChat, String draft/*NULL=delete*/, long replyToMsgId);
-    public native static int     MrChatGetUnseenCount       (long hChat);
-    public native static int     MrChatGetTotalMsgCount     (long hChat);
-    private native static long    MrChatGetSummary           (long hChat); // returns hPoortext
-    public native static int     MrChatSendText             (long hChat, String text); // returns message id
-    public native static int     MrChatSendMedia            (long hChat, int type, String file, String mime, int w, int h, int time_ms);
-
+    private native static long   MrChatlistGetChatByIndex   (long hChatlist, int index); // returns hChat which must be unref'd after usage
 
     // Tools
     public native static void    MrStockAddStr              (int id, String str);
     public native static String  MrGetVersionStr            ();
     public native static String  CPtr2String                (long hString); // get strings eg. from data1 from the callback
-
-    public final static int      MR_CHAT_UNDEFINED          =   0;
-    public final static int      MR_CHAT_NORMAL             = 100;
-    public final static int      MR_CHAT_GROUP              = 120;
-
-    public final static int      MR_CHAT_ID_DEADDROP        = 1;
 
     // some rest of T'gram ...
     public native static long    getCurrentTimeMillis       ();

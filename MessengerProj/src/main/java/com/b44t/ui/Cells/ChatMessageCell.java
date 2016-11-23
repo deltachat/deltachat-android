@@ -40,6 +40,7 @@ import com.b44t.messenger.FileLoader;
 import com.b44t.messenger.FileLog;
 import com.b44t.messenger.MessageObject;
 import com.b44t.messenger.MessagesController;
+import com.b44t.messenger.MrChat;
 import com.b44t.messenger.MrContact;
 import com.b44t.messenger.MrMailbox;
 import com.b44t.messenger.R;
@@ -3602,7 +3603,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
     private boolean checkNeedDrawShareButton(MessageObject messageObject) {
         // we use the "Share" button as a reply button: in the "deaddrop" group it is very useful to reply
         // to a message, so we use this as a shortcut to "long press -> reply"
-        if( messageObject.getDialogId()==MrMailbox.MR_CHAT_ID_DEADDROP) {
+        if( messageObject.getDialogId()== MrChat.MR_CHAT_ID_DEADDROP) {
             return true;
         }
         return false;

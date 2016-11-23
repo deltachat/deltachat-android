@@ -22,6 +22,7 @@ import android.widget.ListView;
 
 import com.b44t.messenger.ApplicationLoader;
 import com.b44t.messenger.LocaleController;
+import com.b44t.messenger.MrChat;
 import com.b44t.messenger.MrMailbox;
 import com.b44t.messenger.NotificationCenter;
 import com.b44t.messenger.R;
@@ -128,7 +129,7 @@ public class PrivacySettingsActivity extends BaseFragment implements Notificatio
                     // if showing deaddrop is disabled, also disable notifications for this chat (cannot be displayed otherwise)
                     SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("Notifications", Activity.MODE_PRIVATE);
                     SharedPreferences.Editor editor = preferences.edit();
-                    editor.putInt("notify2_" + MrMailbox.MR_CHAT_ID_DEADDROP, oldval==1? 2 /*always muted*/ : 0);
+                    editor.putInt("notify2_" + MrChat.MR_CHAT_ID_DEADDROP, oldval==1? 2 /*always muted*/ : 0);
                     editor.commit();
                 }
             }

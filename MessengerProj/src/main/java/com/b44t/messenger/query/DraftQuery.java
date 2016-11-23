@@ -9,6 +9,8 @@
 package com.b44t.messenger.query;
 
 import android.text.TextUtils;
+
+import com.b44t.messenger.MrChat;
 import com.b44t.messenger.MrMailbox;
 import com.b44t.messenger.TLRPC;
 import java.util.ArrayList;
@@ -59,34 +61,33 @@ public class DraftQuery {
     }
 
     public static TLRPC.DraftMessage getDraft(long did) { // returns null for "no draft"
-        long hChat = MrMailbox.MrMailboxGetChat(MrMailbox.hMailbox, (int)did);
-        if( hChat == 0 ) {
+        MrChat mrChat = MrMailbox.getChat(MrMailbox.hMailbox, (int)did);
+        if( mrChat.getId() == 0 ) {
             return null;
         }
         TLRPC.DraftMessage ret = new TLRPC.DraftMessage();
-        ret.message = MrMailbox.MrChatGetDraft(hChat);
-        ret.date = (int)MrMailbox.MrChatGetDraftTimestamp(hChat);
-        ret.reply_to_msg_id = MrMailbox.MrChatGetDraftReplyToMsgId(hChat);
+        ret.message = mrChat.getDraft();
+        ret.date = (int)mrChat.getDraftTimestamp();
+        ret.reply_to_msg_id = mrChat.getDraftReplyToMsgId();
         return ret;
     }
 
     public static TLRPC.Message getDraftMessage(long did) { // returns null for "no draft"
-        long hChat = MrMailbox.MrMailboxGetChat(MrMailbox.hMailbox, (int)did);
-        if( hChat == 0 ) {
+        MrChat mrChat = MrMailbox.getChat(MrMailbox.hMailbox, (int)did);
+        if( mrChat.getId() == 0 ) {
             return null;
         }
         TLRPC.Message ret = new TLRPC.Message();
-        ret.message = MrMailbox.MrChatGetDraft(hChat);
-        ret.date = (int)MrMailbox.MrChatGetDraftTimestamp(hChat);
-        ret.reply_to_msg_id = MrMailbox.MrChatGetDraftReplyToMsgId(hChat);
+        ret.message = mrChat.getDraft();
+        ret.date = (int)mrChat.getDraftTimestamp();
+        ret.reply_to_msg_id = mrChat.getDraftReplyToMsgId();
         return ret;
     }
 
     private static void saveDraft__(long did, String message, long replyToMessageId) // message may be null
     {
-        long hChat = MrMailbox.MrMailboxGetChat(MrMailbox.hMailbox, (int)did);
-            MrMailbox.MrChatSetDraft(hChat, message, replyToMessageId);
-        MrMailbox.MrChatUnref(hChat);
+        MrChat mrChat = MrMailbox.getChat(MrMailbox.hMailbox, (int)did);
+        mrChat.setDraft(message, replyToMessageId);
     }
 
     public static void saveDraft(long did, CharSequence message, ArrayList<TLRPC.MessageEntity> entities, TLRPC.Message replyToMessage, boolean noWebpage) {

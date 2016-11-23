@@ -63,6 +63,7 @@ import com.b44t.messenger.ChatObject;
 import com.b44t.messenger.Emoji;
 import com.b44t.messenger.LocaleController;
 import com.b44t.messenger.MediaController;
+import com.b44t.messenger.MrChat;
 import com.b44t.messenger.MrContact;
 import com.b44t.messenger.MrMailbox;
 import com.b44t.messenger.MrMsg;
@@ -139,7 +140,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
 
     private final boolean userBlocked = false;
 
-    public long m_hChat = 0; // EDIT BY MR
+    public MrChat m_mrChat = new MrChat(0);
 
     private ArrayList<ChatMessageCell> chatMessageCellsCache = new ArrayList<>();
 
@@ -314,13 +315,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
 
     private final static int id_chat_compose_panel = 1000;
 
-    @Override protected void finalize() throws Throwable
-    {
-        super.finalize();
-        MrMailbox.MrChatUnref(m_hChat);
-        m_hChat = 0;
-    }
-
     RecyclerListView.OnItemLongClickListener onItemLongClickListener = new RecyclerListView.OnItemLongClickListener() {
         @Override
         public boolean onItemClick(View view, int position) {
@@ -352,7 +346,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         // EDIT BY MR -- set up the values so that the activity gets usable
         dialog_id = arguments.getInt("chat_id", 0);
         MrMailbox.MrMailboxMarkseenChat(MrMailbox.hMailbox, (int)dialog_id);
-        m_hChat = MrMailbox.MrMailboxGetChat(MrMailbox.hMailbox, (int)dialog_id);
+        m_mrChat = MrMailbox.getChat(MrMailbox.hMailbox, (int)dialog_id);
         currentChat = new TLRPC.Chat();
         currentChat.id = (int)dialog_id;
         // /EDIT BY MR
@@ -708,7 +702,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 } else if (id == mute) {
                     toggleMute();
                 } else if (id == id_reply) {
-                    if( MrMailbox.MrChatGetId(m_hChat)==MrMailbox.MR_CHAT_ID_DEADDROP ){
+                    if( m_mrChat.getId()==MrChat.MR_CHAT_ID_DEADDROP ){
                         if( selectedMessagesIds[0]!=null && selectedMessagesIds[0].size()==1) {
                             ArrayList<Integer> ids = new ArrayList<>(selectedMessagesIds[0].keySet());
                             createChatByDeaddropMsgId(ids.get(0));
@@ -832,7 +826,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
             headerItem.addSubItem(search, LocaleController.getString("Search", R.string.Search), 0);
         }
 
-        boolean isChatWithDeaddrop = MrMailbox.MrChatGetId(m_hChat)==MrMailbox.MR_CHAT_ID_DEADDROP;
+        boolean isChatWithDeaddrop = m_mrChat.getId()==MrChat.MR_CHAT_ID_DEADDROP;
         m_canMute = true;
         if( isChatWithDeaddrop && MrMailbox.MrMailboxGetConfigInt(MrMailbox.hMailbox, "show_deaddrop", 0)==0 ) {
             m_canMute = false;
@@ -843,7 +837,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         }
 
         if( !isChatWithDeaddrop ) {
-            if (MrMailbox.MrChatGetType(m_hChat) == MrMailbox.MR_CHAT_GROUP) {
+            if (m_mrChat.getType() == MrChat.MR_CHAT_GROUP) {
                 headerItem.addSubItem(id_delete_chat, LocaleController.getString("DeleteAndExit", R.string.DeleteAndExit), 0);
             } else {
                 headerItem.addSubItem(id_delete_chat, LocaleController.getString("DeleteChat", R.string.DeleteChat), 0);
@@ -3255,7 +3249,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         if (avatarContainer == null) {
             return;
         }
-        avatarContainer.setTitle(MrMailbox.MrChatGetName(m_hChat)); // EDIT BY MR -- realize the title from m_hChat
+        avatarContainer.setTitle(m_mrChat.getName()); // EDIT BY MR -- realize the title from m_hChat
     }
 
     private void updateTitleIcons() {
@@ -3648,7 +3642,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                                 messagesDict[loadIndex].put(msg.id, msgDrawObj);
                         }
 
-                        if (MrMailbox.MrChatGetId(m_hChat) == MrMailbox.MR_CHAT_ID_DEADDROP) {
+                        if (m_mrChat.getId() == MrChat.MR_CHAT_ID_DEADDROP) {
                             updateBottomOverlay();
                         }
                 }
@@ -3964,9 +3958,8 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                         currentUser = user;
                     }
                 }*/
-                int back_id = MrMailbox.MrChatGetId(m_hChat);
-                MrMailbox.MrChatUnref(m_hChat);
-                m_hChat = MrMailbox.MrMailboxGetChat(MrMailbox.hMailbox, back_id);
+                int back_id = m_mrChat.getId();
+                m_mrChat = MrMailbox.getChat(MrMailbox.hMailbox, back_id);
 
                 updateTitle();
             }
@@ -4274,9 +4267,8 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 removeSelfFromStack();
             }
         } else if (id == NotificationCenter.messagesSentOrRead) {
-            int back_id = MrMailbox.MrChatGetId(m_hChat);
-            MrMailbox.MrChatUnref(m_hChat);
-            m_hChat = MrMailbox.MrMailboxGetChat(MrMailbox.hMailbox, back_id);
+            int back_id = m_mrChat.getId();
+            m_mrChat = MrMailbox.getChat(MrMailbox.hMailbox, back_id);
 
             int evt_read = (int)args[0];
             int evt_chat_id = (int)args[1];
@@ -4800,7 +4792,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 chatActivityEnterView.setFieldFocused(false);
                 chatActivityEnterView.setVisibility(View.INVISIBLE);
             } else {
-                if (MrMailbox.MrChatGetId(m_hChat)==MrMailbox.MR_CHAT_ID_DEADDROP) {
+                if (m_mrChat.getId()==MrChat.MR_CHAT_ID_DEADDROP) {
                     if( messages.isEmpty()) {
                         // showing the DeaddropHint if there are no messages is confusing (there are no "reply arrows" in this case)
                         bottomOverlayChatText.setText(LocaleController.getString("NoMessages", R.string.NoMessages));
@@ -6290,7 +6282,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
 
                 if (view instanceof ChatMessageCell) {
                     ChatMessageCell messageCell = (ChatMessageCell) view;
-                    messageCell.isChat = MrMailbox.MrChatGetType(m_hChat)==MrMailbox.MR_CHAT_GROUP;//currentChat != null;
+                    messageCell.isChat = m_mrChat.getType()==MrChat.MR_CHAT_GROUP;//currentChat != null;
                     messageCell.setMessageObject(message);
                     messageCell.setCheckPressed(!disableSelection, disableSelection && selected);
                     if (view instanceof ChatMessageCell && MediaController.getInstance().canDownloadMedia(MediaController.AUTODOWNLOAD_MASK_AUDIO)) {

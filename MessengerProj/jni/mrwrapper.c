@@ -399,34 +399,34 @@ JNIEXPORT jlong Java_com_b44t_messenger_MrMailbox_MrChatlistGetChatByIndex(JNIEn
  ******************************************************************************/
 
 
-JNIEXPORT void Java_com_b44t_messenger_MrMailbox_MrChatUnref(JNIEnv *env, jclass c, jlong hChat)
+JNIEXPORT void Java_com_b44t_messenger_MrChat_MrChatUnref(JNIEnv *env, jclass c, jlong hChat)
 {
 	mrchat_unref((mrchat_t*)hChat);
 }
 
 
-JNIEXPORT jint Java_com_b44t_messenger_MrMailbox_MrChatGetId(JNIEnv *env, jclass c, jlong hChat)
+JNIEXPORT jint Java_com_b44t_messenger_MrChat_MrChatGetId(JNIEnv *env, jclass c, jlong hChat)
 {
 	mrchat_t* ths = (mrchat_t*)hChat; if( ths == NULL ) { return 0; }
 	return ths->m_id;
 }
 
 
-JNIEXPORT jint Java_com_b44t_messenger_MrMailbox_MrChatGetType(JNIEnv *env, jclass c, jlong hChat)
+JNIEXPORT jint Java_com_b44t_messenger_MrChat_MrChatGetType(JNIEnv *env, jclass c, jlong hChat)
 {
 	mrchat_t* ths = (mrchat_t*)hChat; if( ths == NULL ) { return 0; }
 	return ths->m_type;
 }
 
 
-JNIEXPORT jstring Java_com_b44t_messenger_MrMailbox_MrChatGetName(JNIEnv *env, jclass c, jlong hChat)
+JNIEXPORT jstring Java_com_b44t_messenger_MrChat_MrChatGetName(JNIEnv *env, jclass c, jlong hChat)
 {
 	mrchat_t* ths = (mrchat_t*)hChat; if( ths == NULL ) { return JSTRING_NEW(NULL); }
 	return JSTRING_NEW(ths->m_name);
 }
 
 
-JNIEXPORT jstring Java_com_b44t_messenger_MrMailbox_MrChatGetSubtitle(JNIEnv *env, jclass c, jlong hChat)
+JNIEXPORT jstring Java_com_b44t_messenger_MrChat_MrChatGetSubtitle(JNIEnv *env, jclass c, jlong hChat)
 {
 	const char* temp = mrchat_get_subtitle((mrchat_t*)hChat);
 		jstring ret = JSTRING_NEW(temp);
@@ -435,7 +435,7 @@ JNIEXPORT jstring Java_com_b44t_messenger_MrMailbox_MrChatGetSubtitle(JNIEnv *en
 }
 
 
-JNIEXPORT jstring Java_com_b44t_messenger_MrMailbox_MrChatGetDraft(JNIEnv *env, jclass c, jlong hChat) /* returns NULL for "no draft" */
+JNIEXPORT jstring Java_com_b44t_messenger_MrChat_MrChatGetDraft(JNIEnv *env, jclass c, jlong hChat) /* returns NULL for "no draft" */
 {
 	mrchat_t* ths = (mrchat_t*)hChat;
 	if( ths && ths->m_draft_text ) {
@@ -445,39 +445,39 @@ JNIEXPORT jstring Java_com_b44t_messenger_MrMailbox_MrChatGetDraft(JNIEnv *env, 
 }
 
 
-JNIEXPORT jlong Java_com_b44t_messenger_MrMailbox_MrChatGetDraftTimestamp(JNIEnv *env, jclass c, jlong hChat)
+JNIEXPORT jlong Java_com_b44t_messenger_MrChat_MrChatGetDraftTimestamp(JNIEnv *env, jclass c, jlong hChat)
 {
 	mrchat_t* ths = (mrchat_t*)hChat; if( ths == NULL ) { return 0; }
 	return ths->m_draft_timestamp;
 }
 
 
-JNIEXPORT jint Java_com_b44t_messenger_MrMailbox_MrChatGetDraftReplyToMsgId(JNIEnv *env, jclass c, jlong hChat)
+JNIEXPORT jint Java_com_b44t_messenger_MrChat_MrChatGetDraftReplyToMsgId(JNIEnv *env, jclass c, jlong hChat)
 {
 	mrchat_t* ths = (mrchat_t*)hChat; if( ths == NULL ) { return 0; }
 	return 0;
 }
 
 
-JNIEXPORT jint Java_com_b44t_messenger_MrMailbox_MrChatGetTotalMsgCount(JNIEnv *env, jclass c, jlong hChat)
+JNIEXPORT jint Java_com_b44t_messenger_MrChat_MrChatGetTotalMsgCount(JNIEnv *env, jclass c, jlong hChat)
 {
 	return mrchat_get_total_msg_count((mrchat_t*)hChat);
 }
 
 
-JNIEXPORT jint Java_com_b44t_messenger_MrMailbox_MrChatGetUnseenCount(JNIEnv *env, jclass c, jlong hChat)
+JNIEXPORT jint Java_com_b44t_messenger_MrChat_MrChatGetUnseenCount(JNIEnv *env, jclass c, jlong hChat)
 {
 	return mrchat_get_unseen_count((mrchat_t*)hChat);
 }
 
 
-JNIEXPORT jlong Java_com_b44t_messenger_MrMailbox_MrChatGetSummary(JNIEnv *env, jclass c, jlong hChat)
+JNIEXPORT jlong Java_com_b44t_messenger_MrChat_MrChatGetSummary(JNIEnv *env, jclass c, jlong hChat)
 {
 	return (jlong)mrchat_get_summary((mrchat_t*)hChat);
 }
 
 
-JNIEXPORT jint Java_com_b44t_messenger_MrMailbox_MrChatSetDraft(JNIEnv *env, jclass c, jlong hChat, jstring draft /* NULL=delete */, jint replyToMsgId)
+JNIEXPORT jint Java_com_b44t_messenger_MrChat_MrChatSetDraft(JNIEnv *env, jclass c, jlong hChat, jstring draft /* NULL=delete */, jint replyToMsgId)
 {
 	CHAR_REF(draft);
 		jint ret = (jint)mrchat_set_draft((mrchat_t*)hChat, draftPtr /* NULL=delete */);
@@ -486,7 +486,7 @@ JNIEXPORT jint Java_com_b44t_messenger_MrMailbox_MrChatSetDraft(JNIEnv *env, jcl
 }
 
 
-JNIEXPORT jint Java_com_b44t_messenger_MrMailbox_MrChatSendText(JNIEnv *env, jclass c, jlong hChat, jstring text)
+JNIEXPORT jint Java_com_b44t_messenger_MrChat_MrChatSendText(JNIEnv *env, jclass c, jlong hChat, jstring text)
 {
 	mrmsg_t* msg = mrmsg_new();
 		msg->m_type = MR_MSG_TEXT;
@@ -499,7 +499,7 @@ JNIEXPORT jint Java_com_b44t_messenger_MrMailbox_MrChatSendText(JNIEnv *env, jcl
 }
 
 
-JNIEXPORT jint Java_com_b44t_messenger_MrMailbox_MrChatSendMedia(JNIEnv *env, jclass c, jlong hChat, jint type, jstring file, jstring mime, jint w, jint h, jint ms)
+JNIEXPORT jint Java_com_b44t_messenger_MrChat_MrChatSendMedia(JNIEnv *env, jclass c, jlong hChat, jint type, jstring file, jstring mime, jint w, jint h, jint ms)
 {
 	mrmsg_t* msg = mrmsg_new();
 		msg->m_type = type;

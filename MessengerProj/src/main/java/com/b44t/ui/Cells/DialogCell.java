@@ -27,6 +27,7 @@ import android.view.MotionEvent;
 import com.b44t.messenger.AndroidUtilities;
 import com.b44t.messenger.LocaleController;
 import com.b44t.messenger.MessageObject;
+import com.b44t.messenger.MrChat;
 import com.b44t.messenger.MrMailbox; // EDIT BY MR
 import com.b44t.messenger.FileLog;
 import com.b44t.messenger.MrMsg;
@@ -124,7 +125,7 @@ public class DialogCell extends BaseCell {
 
     private boolean isSelected;
 
-    private long m_hChat = 0; // EDIT BY MR
+    private MrChat m_mrChat = new MrChat(0);
 
     public DialogCell(Context context) {
         super(context);
@@ -183,17 +184,9 @@ public class DialogCell extends BaseCell {
         isDialogCell = true;
         index = i;
 
-        MrMailbox.MrChatUnref(m_hChat);
-        m_hChat = MrMailbox.MrChatlistGetChatByIndex(MrMailbox.hCurrChatlist, i);
+        m_mrChat = MrMailbox.getChatByIndex(MrMailbox.hCurrChatlist, i);
 
         update(0);
-    }
-
-    @Override protected void finalize() throws Throwable
-    {
-        MrMailbox.MrChatUnref(m_hChat);
-        m_hChat = 0;
-        super.finalize();
     }
 
     public void setDialog(long dialog_id, MessageObject messageObject, int date) { // used to display the search result [sic!]
@@ -287,7 +280,7 @@ public class DialogCell extends BaseCell {
         } else
         */
         {
-            if (MrMailbox.MrChatGetType(m_hChat)==MrMailbox.MR_CHAT_GROUP) { // EDIT BY MR
+            if (m_mrChat.getType()==MrChat.MR_CHAT_GROUP) { // EDIT BY MR
                 //if (chat.id < 0 || ChatObject.isChannel(chat) && !chat.megagroup) {
                 //    drawNameBroadcast = true;
                 //    nameLockTop = AndroidUtilities.dp(16.5f);
@@ -314,7 +307,7 @@ public class DialogCell extends BaseCell {
         }
 
         {
-                MrPoortext mrPoortext = MrMailbox.getSummary(m_hChat);
+                MrPoortext mrPoortext = m_mrChat.getSummary();
 
                 checkMessage = false;
                 String mess = mrPoortext.getText();
@@ -358,7 +351,7 @@ public class DialogCell extends BaseCell {
                     case MrMsg.MR_OUT_DELIVERED: drawCheck2 = true; break;
                     case MrMsg.MR_OUT_READ: drawCheck1 = true; drawCheck2 = true; break;
                 }
-                drawVerified = MrMailbox.MrChatIsEncrypted(m_hChat)!=0; // we use the "verified" check as an icon for "encryted" and "verified"
+                drawVerified = m_mrChat.isEncrypted()!=0; // we use the "verified" check as an icon for "encryted" and "verified"
         }
 
         if (unreadCount != 0) {
@@ -376,7 +369,7 @@ public class DialogCell extends BaseCell {
             timeLeft = AndroidUtilities.dp(15);
         }
 
-        nameString = MrMailbox.MrChatGetName(m_hChat); // EDIT BY MR
+        nameString = m_mrChat.getName();
 
         int nameWidth;
 
@@ -589,7 +582,7 @@ public class DialogCell extends BaseCell {
 
     public void update(int mask) {
         if (isDialogCell) {
-            unreadCount = MrMailbox.MrChatGetUnseenCount(m_hChat);
+            unreadCount = m_mrChat.getUnseenCount();
         }
 
         if (mask != 0) {
@@ -686,7 +679,7 @@ public class DialogCell extends BaseCell {
         */
 
         // MrAvatar
-        String cname = MrMailbox.MrChatGetName(m_hChat);
+        String cname = m_mrChat.getName();
         avatarDrawable.setInfoByName(cname);
 
         avatarImage.setImage(photo, "50_50", avatarDrawable, null, false);

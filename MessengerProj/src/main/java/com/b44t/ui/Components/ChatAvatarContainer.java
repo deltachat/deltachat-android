@@ -16,6 +16,7 @@ import android.view.View;
 import android.widget.FrameLayout;
 
 import com.b44t.messenger.AndroidUtilities;
+import com.b44t.messenger.MrChat;
 import com.b44t.messenger.MrMailbox;
 import com.b44t.messenger.TLRPC;
 import com.b44t.ui.ActionBar.ActionBar;
@@ -59,11 +60,11 @@ public class ChatAvatarContainer extends FrameLayout {
             @Override
             public void onClick(View v) {
                 Bundle args = new Bundle();
-                if( MrMailbox.MrChatGetType(parentFragment.m_hChat)==MrMailbox.MR_CHAT_GROUP ) {
-                    args.putInt("chat_id",  MrMailbox.MrChatGetId(parentFragment.m_hChat));
+                if( parentFragment.m_mrChat.getType()== MrChat.MR_CHAT_GROUP ) {
+                    args.putInt("chat_id",  parentFragment.m_mrChat.getId());
                 }
                 else {
-                    int[] contact_ids = MrMailbox.MrMailboxGetChatContacts(MrMailbox.hMailbox, MrMailbox.MrChatGetId(parentFragment.m_hChat));
+                    int[] contact_ids = MrMailbox.MrMailboxGetChatContacts(MrMailbox.hMailbox, parentFragment.m_mrChat.getId());
                     if( contact_ids.length==0) {
                         return; // should not happen
                     }
@@ -106,7 +107,7 @@ public class ChatAvatarContainer extends FrameLayout {
     }
 
     public void updateSubtitle() {
-        String text = MrMailbox.MrChatGetSubtitle(parentFragment.m_hChat); // EDIT BY MR
+        String text = parentFragment.m_mrChat.getSubtitle(); // EDIT BY MR
         subtitleTextView.setText(text); // EDIT BY MR
     }
 
@@ -129,7 +130,7 @@ public class ChatAvatarContainer extends FrameLayout {
         */
 
         // MrAvatar ...
-        avatarDrawable.setInfoByName(MrMailbox.MrChatGetName(parentFragment.m_hChat));
+        avatarDrawable.setInfoByName(parentFragment.m_mrChat.getName());
 
         if (avatarImageView != null) {
             avatarImageView.setImage(newPhoto, "50_50", avatarDrawable);

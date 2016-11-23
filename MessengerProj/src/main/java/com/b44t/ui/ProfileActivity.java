@@ -45,6 +45,7 @@ import android.widget.Toast;
 import com.b44t.messenger.AndroidUtilities;
 import com.b44t.messenger.AnimatorListenerAdapterProxy;
 import com.b44t.messenger.LocaleController;
+import com.b44t.messenger.MrChat;
 import com.b44t.messenger.MrContact;
 import com.b44t.messenger.MrMailbox;
 import com.b44t.messenger.SendMessagesHelper;
@@ -569,7 +570,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
             frameLayout.addView(onlineTextView[a], LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.LEFT | Gravity.TOP, 118, 0, a == 0 ? 48 : 8, 0));
         }
 
-        if ( chat_id != 0 && chat_id!=MrMailbox.MR_CHAT_ID_DEADDROP ) {
+        if ( chat_id != 0 && chat_id!= MrChat.MR_CHAT_ID_DEADDROP ) {
             writeButton = new ImageView(context);
             try {
                 writeButton.setBackgroundResource(R.drawable.floating_user_states);
@@ -1166,13 +1167,13 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
         emptyRow = rowCount++;
         settingsNotificationsRow = rowCount++;
 
-        if( user_id!=0 || chat_id!=MrMailbox.MR_CHAT_ID_DEADDROP) {
+        if( user_id!=0 || chat_id!=MrChat.MR_CHAT_ID_DEADDROP) {
             changeNameRow = rowCount++;
         }
 
         if (user_id != 0) {
             startChatRow = rowCount++;
-        } else if (chat_id != 0 && chat_id!=MrMailbox.MR_CHAT_ID_DEADDROP ) {
+        } else if (chat_id != 0 && chat_id!=MrChat.MR_CHAT_ID_DEADDROP ) {
             addMemberRow = rowCount++;
         }
 
@@ -1223,10 +1224,9 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
             newString2 = mrContact.getAddr();
         }
         else {
-            long hChat = MrMailbox.MrMailboxGetChat(MrMailbox.hMailbox, chat_id);
-                newString = MrMailbox.MrChatGetName(hChat);
-                newString2 = MrMailbox.MrChatGetSubtitle(hChat);
-            MrMailbox.MrChatUnref(hChat);
+            MrChat mrChat = MrMailbox.getChat(MrMailbox.hMailbox, chat_id);
+            newString = mrChat.getName();
+            newString2 = mrChat.getSubtitle();
         }
 
         for (int a = 0; a < 2; a++) {
