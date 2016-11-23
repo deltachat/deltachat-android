@@ -153,7 +153,7 @@ public class NameSettingsActivity extends BaseFragment {
 
             if( v.length()>=1 && v.charAt(0)=='.') {
                 String cmd = v.substring(1);
-                String execute_result = MrMailbox.MrMailboxExecute(MrMailbox.hMailbox, cmd);
+                String execute_result = MrMailbox.execute(cmd);
                 if( execute_result==null || execute_result.isEmpty()) {
                     execute_result = "ERROR: Unknown command.";
                 }
@@ -168,7 +168,7 @@ public class NameSettingsActivity extends BaseFragment {
                 return;
             }
 
-            MrMailbox.MrMailboxSetConfig(MrMailbox.hMailbox, "displayname", v.isEmpty() ? null : v);
+            MrMailbox.setConfig("displayname", v.isEmpty() ? null : v);
         }
 
         NotificationCenter.getInstance().postNotificationName(NotificationCenter.mainUserInfoChanged);
@@ -245,7 +245,7 @@ public class NameSettingsActivity extends BaseFragment {
                 if (i == rowDisplayname) {
                     if(displaynameCell==null) {
                         displaynameCell = new MrEditTextCell(mContext);
-                        displaynameCell.setValueHintAndLabel(MrMailbox.MrMailboxGetConfig(MrMailbox.hMailbox, "displayname", ""),
+                        displaynameCell.setValueHintAndLabel(MrMailbox.getConfig("displayname", ""),
                                 "", "", true);
                     }
                     view = displaynameCell;

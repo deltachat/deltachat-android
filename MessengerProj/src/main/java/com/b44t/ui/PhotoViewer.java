@@ -2702,7 +2702,7 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
 
             if( currentMessageObject!=null && currentMessageObject.messageOwner!=null )
             {
-                MrContact mrContact = MrMailbox.getContact(MrMailbox.hMailbox, currentMessageObject.messageOwner.from_id);
+                MrContact mrContact = MrMailbox.getContact(currentMessageObject.messageOwner.from_id);
                 nameTextView.setText(mrContact.getDisplayName());
             }
 

@@ -794,7 +794,7 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
             // SEND MESSAGE
             // -------------------------------------------------------------------------------------
 
-            MrChat mrChat = MrMailbox.getChat(MrMailbox.hMailbox, (int)peer);
+            MrChat mrChat = MrMailbox.getChat((int)peer);
 
             if (type == 0 /*|| type == 9 && message != null && encryptedChat != null*/ )
             {

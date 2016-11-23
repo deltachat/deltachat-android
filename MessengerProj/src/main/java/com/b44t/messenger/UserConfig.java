@@ -138,7 +138,7 @@ public class UserConfig {
     public static TLRPC.User getCurrentUser() {
         synchronized (sync) {
             if( currentUser==null ) {
-                currentUser = MrMailbox.contactId2user(1);
+                currentUser = MrContact.contactId2user(1);
             }
             return currentUser;
         }
@@ -146,7 +146,7 @@ public class UserConfig {
 
     public static void setCurrentUser(TLRPC.User user) {
         synchronized (sync) {
-            currentUser = MrMailbox.contactId2user(1); // EDIT BY MR - force the current user to be user #1, normally this function should not be called at all
+            currentUser = MrContact.contactId2user(1); // EDIT BY MR - force the current user to be user #1, normally this function should not be called at all
         }
     }
 

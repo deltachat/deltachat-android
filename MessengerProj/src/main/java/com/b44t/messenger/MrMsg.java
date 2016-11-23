@@ -108,14 +108,14 @@ public class MrMsg {
     /* additional functions that are not 1:1 available in the backend
      **********************************************************************************************/
 
-    public static TLRPC.Message MrMsg2Message(MrMsg mrMsg)
+    public TLRPC.Message get_TLRPC_Message()
     {
         TLRPC.Message ret = new TLRPC.TL_message(); // the class derived from TLRPC.Message defines the basic type:
         //  TLRPC.TL_messageService is used to display messages as "You joined the group"
         //  TLRPC.TL_message is a normal message (also photos?)
 
-        int state = mrMsg.getState();
-        int type  = mrMsg.getType();
+        int state = getState();
+        int type  = getType();
         switch( state ) {
             case MR_OUT_DELIVERED: ret.send_state = MessageObject.MESSAGE_SEND_STATE_SENT; break;
             case MR_OUT_ERROR:     ret.send_state = MessageObject.MESSAGE_SEND_STATE_SEND_ERROR; break;
@@ -123,12 +123,12 @@ public class MrMsg {
             case MR_OUT_READ:      ret.send_state = MessageObject.MESSAGE_SEND_STATE_SENT; break;
         }
 
-        ret.id            = mrMsg.getId();
-        ret.from_id       = mrMsg.getFromId();
+        ret.id            = getId();
+        ret.from_id       = getFromId();
         ret.to_id         = new TLRPC.TL_peerUser();
-        ret.to_id.user_id = mrMsg.getToId();
-        ret.date          = (int)mrMsg.getTimestamp();
-        ret.dialog_id     = mrMsg.getChatId();
+        ret.to_id.user_id = getToId();
+        ret.date          = (int)getTimestamp();
+        ret.dialog_id     = getChatId();
         ret.unread        = state!=MR_OUT_READ; // the state of outgoing messages
         ret.media_unread  = ret.unread;
         ret.flags         = 0; // posible flags: MESSAGE_FLAG_HAS_FROM_ID, however, this seems to be read only
@@ -137,16 +137,16 @@ public class MrMsg {
         ret.created_by_mr = true;
 
         if( type == MR_MSG_TEXT ) {
-            ret.message       = mrMsg.getText();
+            ret.message       = getText();
         }
         else if( type == MR_MSG_IMAGE ) {
-            String path = mrMsg.getParam('f', "");
+            String path = getParam('f', "");
             TLRPC.TL_photo photo = null;
             if( !path.isEmpty() ) {
                 try {
                     TLRPC.TL_photoSize photoSize = new TLRPC.TL_photoSize();
-                    photoSize.w = mrMsg.getParamInt('w', 800);
-                    photoSize.h = mrMsg.getParamInt('h', 800);
+                    photoSize.w = getParamInt('w', 800);
+                    photoSize.h = getParamInt('h', 800);
                     photoSize.size = 0;
                     photoSize.location = new TLRPC.TL_fileLocation();
                     photoSize.location.mr_path = path;
@@ -170,7 +170,7 @@ public class MrMsg {
             }
         }
         else if( type == MR_MSG_AUDIO || type == MR_MSG_VIDEO ) {
-            String path = mrMsg.getParam('f', "");
+            String path = getParam('f', "");
             if( !path.isEmpty()) {
                 ret.message = "-1"; // may be misused for video editing information
                 ret.media = new TLRPC.TL_messageMediaDocument();
@@ -180,14 +180,14 @@ public class MrMsg {
                 if( type == MR_MSG_AUDIO ) {
                     TLRPC.TL_documentAttributeAudio attr = new TLRPC.TL_documentAttributeAudio();
                     attr.voice = true; // !voice = music
-                    attr.duration = mrMsg.getParamInt('d', 0) / 1000;
+                    attr.duration = getParamInt('d', 0) / 1000;
                     ret.media.document.attributes.add(attr);
                 }
                 else if( type == MR_MSG_VIDEO) {
                     TLRPC.TL_documentAttributeVideo attr = new TLRPC.TL_documentAttributeVideo();
-                    attr.duration = mrMsg.getParamInt('d', 0) / 1000;
-                    attr.w = mrMsg.getParamInt('w', 0);
-                    attr.h = mrMsg.getParamInt('h', 0);
+                    attr.duration = getParamInt('d', 0) / 1000;
+                    attr.w = getParamInt('w', 0);
+                    attr.h = getParamInt('h', 0);
                     ret.media.document.attributes.add(attr);
                 }
 

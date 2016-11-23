@@ -3621,7 +3621,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
 
         String cname = "";
         if(currentUser!=null && isChat) {
-            MrContact mrContact = MrMailbox.getContact(MrMailbox.hMailbox, currentUser.id);
+            MrContact mrContact = MrMailbox.getContact(currentUser.id);
             cname = mrContact.getDisplayName();
         }
 

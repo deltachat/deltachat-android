@@ -47,10 +47,6 @@ public class ConnectionsManager {
         }
     }
 
-    public long getCurrentTimeMillis() {
-        return MrMailbox.getCurrentTimeMillis();
-    }
-
     public int getCurrentTime() {
         return MrMailbox.getCurrentTime();
     }

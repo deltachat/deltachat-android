@@ -345,8 +345,8 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
     public boolean onFragmentCreate() {
         // EDIT BY MR -- set up the values so that the activity gets usable
         dialog_id = arguments.getInt("chat_id", 0);
-        MrMailbox.MrMailboxMarkseenChat(MrMailbox.hMailbox, (int)dialog_id);
-        m_mrChat = MrMailbox.getChat(MrMailbox.hMailbox, (int)dialog_id);
+        MrMailbox.markseenChat((int)dialog_id);
+        m_mrChat = MrMailbox.getChat((int)dialog_id);
         currentChat = new TLRPC.Chat();
         currentChat.id = (int)dialog_id;
         // /EDIT BY MR
@@ -689,7 +689,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
-                            if( MrMailbox.MrMailboxDeleteChat(MrMailbox.hMailbox, (int)dialog_id)!=0 ) {
+                            if( MrMailbox.deleteChat((int)dialog_id)!=0 ) {
                                 finishFragment();
                             }
                             else {
@@ -731,7 +731,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 } else if (id == id_info) {
                     if( selectedMessagesIds[0]!=null && selectedMessagesIds[0].size()==1) {
                         ArrayList<Integer> ids = new ArrayList<>(selectedMessagesIds[0].keySet());
-                        String info_str = MrMailbox.MrMailboxGetMsgInfo(MrMailbox.hMailbox, ids.get(0));
+                        String info_str = MrMailbox.getMsgInfo(ids.get(0));
 
                         AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
                         builder.setMessage(info_str);
@@ -828,7 +828,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
 
         boolean isChatWithDeaddrop = m_mrChat.getId()==MrChat.MR_CHAT_ID_DEADDROP;
         m_canMute = true;
-        if( isChatWithDeaddrop && MrMailbox.MrMailboxGetConfigInt(MrMailbox.hMailbox, "show_deaddrop", 0)==0 ) {
+        if( isChatWithDeaddrop && MrMailbox.getConfigInt("show_deaddrop", 0)==0 ) {
             m_canMute = false;
         }
 
@@ -2856,10 +2856,10 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
             chatActivityEnterView.closeKeyboard();
         }
 
-        MrMsg mrMsg = MrMailbox.getMsg(MrMailbox.hMailbox, messageId);
+        MrMsg mrMsg = MrMailbox.getMsg(messageId);
 
         final int fromId =mrMsg.getFromId();
-        MrContact mrContact = MrMailbox.getContact(MrMailbox.hMailbox, fromId);
+        MrContact mrContact = MrMailbox.getContact(fromId);
         String name = mrContact.getNameNAddr();
 
 
@@ -2867,7 +2867,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                    int chatId = MrMailbox.MrMailboxCreateChatByContactId(MrMailbox.hMailbox, fromId);
+                    int chatId = MrMailbox.createChatByContactId(fromId);
                 if( chatId != 0 ) {
                     Bundle args = new Bundle();
                     args.putInt("chat_id", (int)chatId);
@@ -3631,12 +3631,12 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 }
                 */
                 {
-                    int[] msglist = MrMailbox.MrMailboxGetChatMsgs(MrMailbox.hMailbox, (int)dialog_id);
+                    int[] msglist = MrMailbox.getChatMsgs((int)dialog_id);
 
                         int mrCount = msglist.length;
                         for (int a = mrCount - 1; a >= 0; a--) {
-                            MrMsg mrMsg = MrMailbox.getMsg(MrMailbox.hMailbox, msglist[a]);
-                                TLRPC.Message msg = MrMsg.MrMsg2Message(mrMsg);
+                            MrMsg mrMsg = MrMailbox.getMsg(msglist[a]);
+                                TLRPC.Message msg = mrMsg.get_TLRPC_Message();
                                 MessageObject msgDrawObj = new MessageObject(msg, null, true);
                                 messages.add(0, msgDrawObj);
                                 messagesDict[loadIndex].put(msg.id, msgDrawObj);
@@ -3959,7 +3959,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     }
                 }*/
                 int back_id = m_mrChat.getId();
-                m_mrChat = MrMailbox.getChat(MrMailbox.hMailbox, back_id);
+                m_mrChat = MrMailbox.getChat(back_id);
 
                 updateTitle();
             }
@@ -4268,7 +4268,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
             }
         } else if (id == NotificationCenter.messagesSentOrRead) {
             int back_id = m_mrChat.getId();
-            m_mrChat = MrMailbox.getChat(MrMailbox.hMailbox, back_id);
+            m_mrChat = MrMailbox.getChat(back_id);
 
             int evt_read = (int)args[0];
             int evt_chat_id = (int)args[1];
@@ -5251,7 +5251,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                         for (HashMap.Entry<Integer, MessageObject> entry : selectedMessagesIds[a].entrySet()) {
                             MessageObject msg = entry.getValue();
                             int id_to_del = msg.messageOwner.id;
-                            MrMailbox.MrMailboxDeleteMsg(MrMailbox.hMailbox, id_to_del);
+                            MrMailbox.deleteMsg(id_to_del);
                         }
                         NotificationCenter.getInstance().postNotificationName(NotificationCenter.messagesDeleted, ids, 0);
                     }
@@ -5458,7 +5458,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         String str = "";
         if (name) {
             if (previousUid != messageObject.messageOwner.from_id) {
-                MrContact mrContact = MrMailbox.getContact(MrMailbox.hMailbox, messageObject.messageOwner.from_id);
+                MrContact mrContact = MrMailbox.getContact(messageObject.messageOwner.from_id);
                 str += mrContact.getDisplayName() + ":\n";
             }
         }

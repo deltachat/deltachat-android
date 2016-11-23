@@ -190,7 +190,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
 
 
         } else if (chat_id != 0) {
-            sortedUserIds = MrMailbox.MrMailboxGetChatContacts(MrMailbox.hMailbox, chat_id);
+            sortedUserIds = MrMailbox.getChatContacts(chat_id);
 
             avatarUpdater = new AvatarUpdater();
             avatarUpdater.delegate = new AvatarUpdater.AvatarUpdaterDelegate() {
@@ -265,7 +265,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                     finishFragment();
                 } else if (id == block_contact) {
                     if( userBlocked() ) {
-                        MrMailbox.MrMailboxBlockContact(MrMailbox.hMailbox, user_id, 0);
+                        MrMailbox.blockContact(user_id, 0);
                         finishFragment(); /* got to the parent, this is important eg. when editing blocking in the BlockedUserActivitiy. Moreover, this saves us updating all the states in the profile */
                     }
                     else {
@@ -274,7 +274,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                         builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
-                                MrMailbox.MrMailboxBlockContact(MrMailbox.hMailbox, user_id, 1);
+                                MrMailbox.blockContact(user_id, 1);
                                 finishFragment(); /* got to the parent, this is important eg. when editing blocking in the BlockedUserActivitiy. Moreover, this saves us updating all the states in the profile */
                             }
                         });
@@ -287,7 +287,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                     builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
-                            if( MrMailbox.MrMailboxDeleteContact(MrMailbox.hMailbox, user_id)==0 ) {
+                            if( MrMailbox.deleteContact(user_id)==0 ) {
                                 Toast.makeText(getParentActivity(), LocaleController.getString("CannotDeleteContact", R.string.CannotDeleteContact), Toast.LENGTH_LONG).show();
                             }
                             else {
@@ -326,7 +326,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                     try {
                         int install_chat_id = chat_id;
                         if (install_chat_id == 0) {
-                            install_chat_id = MrMailbox.MrMailboxGetChatIdByContactId(MrMailbox.hMailbox, user_id);
+                            install_chat_id = MrMailbox.getChatIdByContactId(user_id);
                         }
                         AndroidUtilities.installShortcut(install_chat_id);
                         Toast.makeText(getParentActivity(), LocaleController.getString("ShortcutAdded", R.string.ShortcutAdded), Toast.LENGTH_LONG).show();
@@ -403,7 +403,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                     presentFragment(new ContactAddActivity(args));
                 }
                 else if(position==startChatRow) {
-                    int belonging_chat_id = MrMailbox.MrMailboxGetChatIdByContactId(MrMailbox.hMailbox, user_id);
+                    int belonging_chat_id = MrMailbox.getChatIdByContactId(user_id);
                     if( belonging_chat_id != 0 ) {
                         Bundle args = new Bundle();
                         args.putInt("chat_id", belonging_chat_id);
@@ -415,7 +415,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
 
                     String name = "";
                     {
-                        MrContact mrContact = MrMailbox.getContact(MrMailbox.hMailbox, user_id);
+                        MrContact mrContact = MrMailbox.getContact(user_id);
                         name = mrContact.getNameNAddr();
                     }
 
@@ -423,7 +423,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                     builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
-                            int belonging_chat_id = MrMailbox.MrMailboxCreateChatByContactId(MrMailbox.hMailbox, user_id);
+                            int belonging_chat_id = MrMailbox.createChatByContactId(user_id);
                             if( belonging_chat_id != 0 ) {
                                 Bundle args = new Bundle();
                                 args.putInt("chat_id", belonging_chat_id);
@@ -539,7 +539,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                         PhotoViewer.getInstance().openPhoto(user.photo.photo_big, ProfileActivity.this);
                     }
                 } else if (chat_id != 0) {
-                    TLRPC.Chat chat = MrMailbox.chatId2chat(chat_id);
+                    TLRPC.Chat chat = MrChat.chatId2chat(chat_id);
                     if (chat.photo != null && chat.photo.photo_big != null) {
                         PhotoViewer.getInstance().setParentActivity(getParentActivity());
                         PhotoViewer.getInstance().openPhoto(chat.photo.photo_big, ProfileActivity.this);
@@ -602,7 +602,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                     }
                     AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
                     CharSequence[] items;
-                    TLRPC.Chat chat = MrMailbox.chatId2chat(chat_id);
+                    TLRPC.Chat chat = MrChat.chatId2chat(chat_id);
                     if (chat.photo == null || chat.photo.photo_big == null /*|| chat.photo instanceof TLRPC.TL_chatPhotoEmpty*/) {
                         items = new CharSequence[]{LocaleController.getString("FromCamera", R.string.FromCamera), LocaleController.getString("FromGalley", R.string.FromGalley)};
                     } else {
@@ -1099,7 +1099,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                 photoBig = user.photo.photo_big;
             }
         } else if (chat_id != 0) {
-            TLRPC.Chat chat = MrMailbox.chatId2chat(chat_id);
+            TLRPC.Chat chat = MrChat.chatId2chat(chat_id);
             if (chat != null && chat.photo != null && chat.photo.photo_big != null) {
                 photoBig = chat.photo.photo_big;
             }
@@ -1194,7 +1194,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
     {
         boolean blocked = false;
         if( user_id!=0 ) {
-            MrContact mrContact = MrMailbox.getContact(MrMailbox.hMailbox, user_id);
+            MrContact mrContact = MrMailbox.getContact(user_id);
             blocked = mrContact.isBlocked()!=0;
         }
         return blocked;
@@ -1219,12 +1219,12 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
         String newString2;
 
         if( user_id!=0 ) {
-            MrContact mrContact = MrMailbox.getContact(MrMailbox.hMailbox, user_id);
+            MrContact mrContact = MrMailbox.getContact(user_id);
             newString = mrContact.getDisplayName();
             newString2 = mrContact.getAddr();
         }
         else {
-            MrChat mrChat = MrMailbox.getChat(MrMailbox.hMailbox, chat_id);
+            MrChat mrChat = MrMailbox.getChat(chat_id);
             newString = mrChat.getName();
             newString2 = mrChat.getSubtitle();
         }
@@ -1262,7 +1262,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
 
         ActionBarMenuItem item = menu.addItem(10, R.drawable.ic_ab_other);
 
-        if( chat_id!=0 || MrMailbox.MrMailboxGetChatIdByContactId(MrMailbox.hMailbox, user_id)!=0 ) {
+        if( chat_id!=0 || MrMailbox.getChatIdByContactId(user_id)!=0 ) {
             item.addSubItem(add_shortcut, LocaleController.getString("AddShortcut", R.string.AddShortcut), 0);
         }
 
@@ -1410,7 +1410,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                     int curr_user_index = i - firstMemberRow;
                     if(curr_user_index>=0 && curr_user_index<sortedUserIds.length) {
                         int curr_user_id = sortedUserIds[curr_user_index];
-                        MrContact mrContact = MrMailbox.getContact(MrMailbox.hMailbox, curr_user_id);
+                        MrContact mrContact = MrMailbox.getContact(curr_user_id);
                             userCell.setData(curr_user_id, 0, mrContact.getDisplayName(),
                                     mrContact.getAddr(),
                                     curr_user_index==0? R.drawable.menu_newgroup : 0);

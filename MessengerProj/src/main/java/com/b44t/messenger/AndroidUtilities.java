@@ -728,7 +728,7 @@ public class AndroidUtilities {
 
         TLRPC.FileLocation photo = null;
         shortcutIntent.putExtra("chatId", did);
-        MrChat mrChat = MrMailbox.getChat(MrMailbox.hMailbox, (int)did);
+        MrChat mrChat = MrMailbox.getChat((int)did);
         if( mrChat.getId() == 0 ) { return null; }
         String name = mrChat.getName();
 

@@ -134,10 +134,10 @@ public class DrawerProfileCell extends FrameLayout {
             return;
         }
 
-        String displayname = MrMailbox.MrMailboxGetConfig(MrMailbox.hMailbox, "displayname", LocaleController.getString("MyAccount", R.string.MyAccount));
+        String displayname = MrMailbox.getConfig("displayname", LocaleController.getString("MyAccount", R.string.MyAccount));
         String addr;
-        if( MrMailbox.MrMailboxIsConfigured(MrMailbox.hMailbox)!=0) {
-            addr = MrMailbox.MrMailboxGetConfig(MrMailbox.hMailbox, "addr", "");
+        if( MrMailbox.isConfigured()!=0) {
+            addr = MrMailbox.getConfig("addr", "");
         }
         else {
             addr = LocaleController.getString("AccountNotConfigured", R.string.AccountNotConfigured);

@@ -64,6 +64,13 @@ public class MrContact {
     /* additional functions that are not 1:1 available in the backend
      **********************************************************************************************/
 
+    public static TLRPC.User contactId2user(int id)
+    {
+        TLRPC.User ret = new TLRPC.User();
+        ret.id = id;
+        return ret;
+    }
+
     public String getDisplayName() {
         String s=MrContactGetName(m_hContact);
         if(s.isEmpty()) {

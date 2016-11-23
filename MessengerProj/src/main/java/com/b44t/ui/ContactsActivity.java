@@ -180,7 +180,7 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
 
                     String pbcontacts = ContactsController.getInstance().readContactsFromPhoneBook();
                     if (!pbcontacts.isEmpty()) {
-                        if (MrMailbox.MrMailboxAddAddressBook(MrMailbox.hMailbox, pbcontacts) > 0) {
+                        if (MrMailbox.addAddressBook(pbcontacts) > 0) {
                             AndroidUtilities.runOnUIThread(new Runnable() {
                                 @Override
                                 public void run() {
@@ -402,7 +402,7 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
                 if (item instanceof TLRPC.User) {
                     final TLRPC.User user = (TLRPC.User) item;
                     if( do_what == SELECT_CONTACT_FOR_NEW_CHAT ) {
-                        int belonging_chat_id = MrMailbox.MrMailboxGetChatIdByContactId(MrMailbox.hMailbox, user.id);
+                        int belonging_chat_id = MrMailbox.getChatIdByContactId(user.id);
                         if( belonging_chat_id!=0 ) {
                             Bundle args = new Bundle();
                             args.putInt("chat_id", belonging_chat_id);
@@ -412,7 +412,7 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
 
                         String name = "";
                         {
-                            MrContact mrContact = MrMailbox.getContact(MrMailbox.hMailbox, user.id);
+                            MrContact mrContact = MrMailbox.getContact(user.id);
                             name = mrContact.getNameNAddr();
                         }
 
@@ -420,7 +420,7 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
                         builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
-                                int belonging_chat_id = MrMailbox.MrMailboxCreateChatByContactId(MrMailbox.hMailbox, user.id);
+                                int belonging_chat_id = MrMailbox.createChatByContactId(user.id);
                                 if( belonging_chat_id != 0 ) {
                                     Bundle args = new Bundle();
                                     args.putInt("chat_id", belonging_chat_id);
@@ -594,7 +594,7 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
 
         String name ="";
         {
-            MrContact mrContact = MrMailbox.getContact(MrMailbox.hMailbox, user.id);
+            MrContact mrContact = MrMailbox.getContact(user.id);
             name = mrContact.getDisplayName();
         }
 

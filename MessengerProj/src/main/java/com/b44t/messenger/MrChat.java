@@ -106,6 +106,7 @@ public class MrChat {
     private native static int     MrChatSendText             (long hChat, String text); // returns message id
     private native static int     MrChatSendMedia            (long hChat, int type, String file, String mime, int w, int h, int time_ms);
 
+
     /* additional functions that are not 1:1 available in the backend
      **********************************************************************************************/
 
@@ -113,10 +114,17 @@ public class MrChat {
         return 0;
     }
 
-    public static TLRPC.TL_dialog MrChat2dialog(MrChat mrChat)
+    public static TLRPC.Chat chatId2chat(int id)
+    {
+        TLRPC.Chat ret = new TLRPC.Chat();
+        ret.id = id;
+        return ret;
+    }
+
+    public TLRPC.TL_dialog get_TLRPC_TL_dialog()
     {
         TLRPC.TL_dialog ret = new TLRPC.TL_dialog();
-        ret.id = mrChat.getId();
+        ret.id = getId();
         return ret;
     }
 

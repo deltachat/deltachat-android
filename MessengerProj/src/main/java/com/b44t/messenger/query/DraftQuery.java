@@ -61,7 +61,7 @@ public class DraftQuery {
     }
 
     public static TLRPC.DraftMessage getDraft(long did) { // returns null for "no draft"
-        MrChat mrChat = MrMailbox.getChat(MrMailbox.hMailbox, (int)did);
+        MrChat mrChat = MrMailbox.getChat((int)did);
         if( mrChat.getId() == 0 ) {
             return null;
         }
@@ -73,7 +73,7 @@ public class DraftQuery {
     }
 
     public static TLRPC.Message getDraftMessage(long did) { // returns null for "no draft"
-        MrChat mrChat = MrMailbox.getChat(MrMailbox.hMailbox, (int)did);
+        MrChat mrChat = MrMailbox.getChat((int)did);
         if( mrChat.getId() == 0 ) {
             return null;
         }
@@ -86,7 +86,7 @@ public class DraftQuery {
 
     private static void saveDraft__(long did, String message, long replyToMessageId) // message may be null
     {
-        MrChat mrChat = MrMailbox.getChat(MrMailbox.hMailbox, (int)did);
+        MrChat mrChat = MrMailbox.getChat((int)did);
         mrChat.setDraft(message, replyToMessageId);
     }
 

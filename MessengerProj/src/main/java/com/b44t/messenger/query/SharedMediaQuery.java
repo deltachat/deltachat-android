@@ -80,7 +80,7 @@ public class SharedMediaQuery {
 
                 int[] media = new int[0];
                 if( type == SharedMediaQuery.MEDIA_PHOTOVIDEO ) {
-                    media = MrMailbox.MrMailboxGetChatMedia(MrMailbox.hMailbox, (int)uid, MrMsg.MR_MSG_IMAGE, MrMsg.MR_MSG_VIDEO);
+                    media = MrMailbox.getChatMedia((int)uid, MrMsg.MR_MSG_IMAGE, MrMsg.MR_MSG_VIDEO);
                 }
 
                 NotificationCenter.getInstance().postNotificationName(NotificationCenter.mediaCountDidLoaded,

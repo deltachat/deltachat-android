@@ -435,7 +435,7 @@ public class GroupCreateFinalActivity extends BaseFragment implements Notificati
 
             int curr_user_id = selectedContacts.get(i);
 
-            MrContact mrContact = MrMailbox.getContact(MrMailbox.hMailbox, curr_user_id);
+            MrContact mrContact = MrMailbox.getContact(curr_user_id);
 
             ((UserCell) view).setData(curr_user_id, 0, mrContact.getDisplayName(), mrContact.getAddr(), 0);
 

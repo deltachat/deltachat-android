@@ -104,7 +104,7 @@ public class ContactAddActivity extends BaseFragment implements NotificationCent
             actionBar.setTitle(LocaleController.getString("NewContactTitle", R.string.NewContactTitle));
         } else {
             actionBar.setTitle(LocaleController.getString("EditName", R.string.EditName));
-            MrContact mrContact = MrMailbox.getContact(MrMailbox.hMailbox, user_id);
+            MrContact mrContact = MrMailbox.getContact(user_id);
             nameToSet = mrContact.getDisplayName();
         }
 
@@ -120,18 +120,18 @@ public class ContactAddActivity extends BaseFragment implements NotificationCent
                         addr = emailTextView.getText().toString();
                     }
                     else {
-                        MrContact mrContact = MrMailbox.getContact(MrMailbox.hMailbox, user_id);
+                        MrContact mrContact = MrMailbox.getContact(user_id);
                         addr = mrContact.getAddr();
                     }
 
                     int new_user_id;
-                    if( (new_user_id=MrMailbox.MrMailboxCreateContact(MrMailbox.hMailbox, name, addr))==0 ) {
+                    if( (new_user_id=MrMailbox.createContact(name, addr))==0 ) {
                         Toast.makeText(getParentActivity(), LocaleController.getString("BadEmailAddress", R.string.BadEmailAddress), Toast.LENGTH_LONG).show();
                         return;
                     }
                     else if (do_what==CREATE_CONTACT) {
                         if(create_chat_when_done) {
-                            int belonging_chat_id = MrMailbox.MrMailboxCreateChatByContactId(MrMailbox.hMailbox, new_user_id);
+                            int belonging_chat_id = MrMailbox.createChatByContactId(new_user_id);
                             if( belonging_chat_id != 0 ) {
                                 Bundle args = new Bundle();
                                 args.putInt("chat_id", belonging_chat_id);

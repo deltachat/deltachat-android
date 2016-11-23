@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.b44t.messenger.AndroidUtilities;
+import com.b44t.messenger.MrChatlist;
 import com.b44t.messenger.support.widget.RecyclerView;
 import com.b44t.messenger.MrMailbox;
 import com.b44t.messenger.TLRPC;
@@ -47,11 +48,11 @@ public class DialogsAdapter extends RecyclerView.Adapter {
 
     @Override
     public int getItemCount() {
-        return MrMailbox.mrCurrChatlist.getCnt();
+        return MrMailbox.m_currChatlist.getCnt();
     }
 
     public TLRPC.TL_dialog getItem(int i) {
-        return MrMailbox.mrChatlist2dialog(MrMailbox.mrCurrChatlist, i);
+        return MrMailbox.m_currChatlist.get_TLRPC_TL_dialog(i);
     }
 
     @Override

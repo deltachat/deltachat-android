@@ -32,7 +32,7 @@ public class ContactsAdapter extends BaseFragmentAdapter {
 
     public ContactsAdapter(Context context) {
         mContext = context;
-        contactIds = MrMailbox.MrMailboxGetKnownContacts(MrMailbox.hMailbox, null);
+        contactIds = MrMailbox.getKnownContacts(null);
     }
 
     public void setCheckedMap(HashMap<Integer, ?> map) {
@@ -44,12 +44,12 @@ public class ContactsAdapter extends BaseFragmentAdapter {
     }
 
     public void search(String query) {
-        contactIds = MrMailbox.MrMailboxGetKnownContacts(MrMailbox.hMailbox, query);
+        contactIds = MrMailbox.getKnownContacts(query);
         lastQuery = query;
     }
 
     public void searchAgain() {
-        contactIds = MrMailbox.MrMailboxGetKnownContacts(MrMailbox.hMailbox, lastQuery);
+        contactIds = MrMailbox.getKnownContacts(lastQuery);
     }
 
     @Override
@@ -81,7 +81,7 @@ public class ContactsAdapter extends BaseFragmentAdapter {
 
         if(curr_user_index>=0 && curr_user_index<contactIds.length) {
             int curr_user_id = contactIds[curr_user_index];
-            MrContact mrContact = MrMailbox.getContact(MrMailbox.hMailbox, curr_user_id);
+            MrContact mrContact = MrMailbox.getContact(curr_user_id);
             ((UserCell) convertView).setData(curr_user_id, 0, mrContact.getDisplayName(),
                     mrContact.getAddr(), 0);
             if (checkedMap != null) {

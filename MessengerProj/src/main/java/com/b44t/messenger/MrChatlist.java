@@ -56,4 +56,15 @@ public class MrChatlist {
     private native static int     MrChatlistGetCnt           (long hChatlist);
     private native static long    MrChatlistGetChatByIndex   (long hChatlist, int index); // returns hChat which must be unref'd after usage
     private native static long    MrChatlistGetSummaryByIndex(long hChatlist, int index, long hChat);
+
+
+    /* additional functions that are not 1:1 available in the backend
+     **********************************************************************************************/
+
+    public TLRPC.TL_dialog get_TLRPC_TL_dialog(int index)
+    {
+        MrChat chat = getChatByIndex(index);
+        TLRPC.TL_dialog dlg = chat.get_TLRPC_TL_dialog();
+        return dlg;
+    }
 }

@@ -64,7 +64,7 @@ public class ChatAvatarContainer extends FrameLayout {
                     args.putInt("chat_id",  parentFragment.m_mrChat.getId());
                 }
                 else {
-                    int[] contact_ids = MrMailbox.MrMailboxGetChatContacts(MrMailbox.hMailbox, parentFragment.m_mrChat.getId());
+                    int[] contact_ids = MrMailbox.getChatContacts(parentFragment.m_mrChat.getId());
                     if( contact_ids.length==0) {
                         return; // should not happen
                     }

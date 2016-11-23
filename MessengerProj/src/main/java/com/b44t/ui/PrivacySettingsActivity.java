@@ -114,12 +114,12 @@ public class PrivacySettingsActivity extends BaseFragment implements Notificatio
                         presentFragment(new PasscodeActivity(0));
                     }
                 } else if( i==showUnknownSendersRow) {
-                    int oldval = MrMailbox.MrMailboxGetConfigInt(MrMailbox.hMailbox, "show_deaddrop", 0);
+                    int oldval = MrMailbox.getConfigInt("show_deaddrop", 0);
                     if( oldval == 1 ) {
-                        MrMailbox.MrMailboxSetConfig(MrMailbox.hMailbox, "show_deaddrop", "0");
+                        MrMailbox.setConfig("show_deaddrop", "0");
                     }
                     else {
-                        MrMailbox.MrMailboxSetConfig(MrMailbox.hMailbox, "show_deaddrop", "1");
+                        MrMailbox.setConfig("show_deaddrop", "1");
                     }
                     MrMailbox.MrCallback(MrMailbox.MR_EVENT_MSGS_UPDATED, 0, 0);
                     if (view instanceof TextCheckCell) {
@@ -285,7 +285,7 @@ public class PrivacySettingsActivity extends BaseFragment implements Notificatio
                 TextCheckCell textCell = (TextCheckCell) view;
                 if( i==showUnknownSendersRow) {
                     textCell.setTextAndCheck(LocaleController.getString("DeaddropInChatlist", R.string.DeaddropInChatlist),
-                            MrMailbox.MrMailboxGetConfigInt(MrMailbox.hMailbox, "show_deaddrop", 0)!=0, true);
+                            MrMailbox.getConfigInt("show_deaddrop", 0)!=0, true);
                 }
             }
             return view;

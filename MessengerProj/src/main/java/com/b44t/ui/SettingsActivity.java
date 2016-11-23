@@ -441,7 +441,7 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
                 } else if (i == helpRow) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
                     builder.setTitle(LocaleController.getString("AppName", R.string.AppName) + " " + getVersion());
-                    builder.setMessage(MrMailbox.MrMailboxGetInfo(MrMailbox.hMailbox));
+                    builder.setMessage(MrMailbox.getInfo());
                     builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
@@ -1367,8 +1367,8 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
                     */
                     // EDIT BY MR
                     String subtitle;
-                    if( MrMailbox.MrMailboxIsConfigured(MrMailbox.hMailbox)!=0) {
-                        subtitle = MrMailbox.MrMailboxGetConfig(MrMailbox.hMailbox, "addr", "");
+                    if( MrMailbox.isConfigured()!=0) {
+                        subtitle = MrMailbox.getConfig("addr", "");
                     }
                     else {
                         subtitle = LocaleController.getString("AccountNotConfigured", R.string.AccountNotConfigured);
@@ -1389,7 +1389,7 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
                     */
 
                     // EDIT BY MR
-                    String subtitle = MrMailbox.MrMailboxGetConfig(MrMailbox.hMailbox, "displayname", "");
+                    String subtitle = MrMailbox.getConfig("displayname", "");
                     if( subtitle.isEmpty()) {
                         subtitle = LocaleController.getString("NotSet", R.string.NotSet);
                     }

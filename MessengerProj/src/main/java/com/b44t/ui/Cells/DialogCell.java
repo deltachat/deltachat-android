@@ -28,6 +28,7 @@ import com.b44t.messenger.AndroidUtilities;
 import com.b44t.messenger.LocaleController;
 import com.b44t.messenger.MessageObject;
 import com.b44t.messenger.MrChat;
+import com.b44t.messenger.MrChatlist;
 import com.b44t.messenger.MrMailbox; // EDIT BY MR
 import com.b44t.messenger.FileLog;
 import com.b44t.messenger.MrMsg;
@@ -185,8 +186,8 @@ public class DialogCell extends BaseCell {
         isDialogCell = true;
         index = i;
 
-        m_mrChat  = MrMailbox.mrCurrChatlist.getChatByIndex(i);
-        m_summary = MrMailbox.mrCurrChatlist.getSummaryByIndex(i, m_mrChat);
+        m_mrChat  = MrMailbox.m_currChatlist.getChatByIndex(i);
+        m_summary = MrMailbox.m_currChatlist.getSummaryByIndex(i, m_mrChat);
 
         update(0);
     }
@@ -564,8 +565,8 @@ public class DialogCell extends BaseCell {
     */
 
     public void checkCurrentDialogIndex() {
-        if (index < MrMailbox.mrCurrChatlist.getCnt()) { // EDIT BY MR - was: index < getDialogsArray().size()
-            TLRPC.TL_dialog dialog = MrMailbox.mrChatlist2dialog(MrMailbox.mrCurrChatlist, index); // EDIT BY MR - was: getDialogsArray().get(index);
+        if (index < MrMailbox.m_currChatlist.getCnt()) { // EDIT BY MR - was: index < getDialogsArray().size()
+            TLRPC.TL_dialog dialog = MrMailbox.m_currChatlist.get_TLRPC_TL_dialog(index); // EDIT BY MR - was: getDialogsArray().get(index);
             TLRPC.DraftMessage newDraftMessage = DraftQuery.getDraft(currentDialogId);
             MessageObject newMessageObject = MessagesController.getInstance().dialogMessage.get(dialog.id);
             if (currentDialogId != dialog.id ||

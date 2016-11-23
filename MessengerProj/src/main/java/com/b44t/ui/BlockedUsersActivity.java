@@ -51,7 +51,7 @@ public class BlockedUsersActivity extends BaseFragment implements NotificationCe
     @Override
     public boolean onFragmentCreate() {
         super.onFragmentCreate();
-        blockedUserIds = MrMailbox.MrMailboxGetBlockedContacts(MrMailbox.hMailbox);
+        blockedUserIds = MrMailbox.getBlockedContacts();
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.updateInterfaces);
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.blockedUsersDidLoaded);
         return true;
@@ -137,7 +137,7 @@ public class BlockedUsersActivity extends BaseFragment implements NotificationCe
                 builder.setItems(items, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        MrMailbox.MrMailboxBlockContact(MrMailbox.hMailbox, selectedUserId, 0);
+                        MrMailbox.blockContact(selectedUserId, 0);
                     }
                 });
                 showDialog(builder.create());
@@ -157,7 +157,7 @@ public class BlockedUsersActivity extends BaseFragment implements NotificationCe
                 updateVisibleRows(mask);
             }
         } else if (id == NotificationCenter.blockedUsersDidLoaded) {
-            blockedUserIds = MrMailbox.MrMailboxGetBlockedContacts(MrMailbox.hMailbox);
+            blockedUserIds = MrMailbox.getBlockedContacts();
             if (listView != null && listView.getEmptyView() == null) {
                 listView.setEmptyView(emptyTextView);
             }
@@ -193,7 +193,7 @@ public class BlockedUsersActivity extends BaseFragment implements NotificationCe
         if (user == null) {
             return;
         }
-        MrMailbox.MrMailboxBlockContact(MrMailbox.hMailbox, user.id, 1);
+        MrMailbox.blockContact(user.id, 1);
     }
 
     private class ListAdapter extends BaseFragmentAdapter {
@@ -239,7 +239,7 @@ public class BlockedUsersActivity extends BaseFragment implements NotificationCe
                 view = new UserCell(mContext, 1, 0);
             }
             if (i>=0 && i<blockedUserIds.length) {
-                MrContact mrContact = MrMailbox.getContact(MrMailbox.hMailbox, blockedUserIds[i]);
+                MrContact mrContact = MrMailbox.getContact(blockedUserIds[i]);
                     ((UserCell) view).setData(blockedUserIds[i], 0, mrContact.getDisplayName(), mrContact.getAddr(), 0);
             }
             return view;
