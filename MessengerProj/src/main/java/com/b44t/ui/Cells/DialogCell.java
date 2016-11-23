@@ -29,6 +29,8 @@ import com.b44t.messenger.LocaleController;
 import com.b44t.messenger.MessageObject;
 import com.b44t.messenger.MrMailbox; // EDIT BY MR
 import com.b44t.messenger.FileLog;
+import com.b44t.messenger.MrMsg;
+import com.b44t.messenger.MrPoortext;
 import com.b44t.messenger.query.DraftQuery;
 import com.b44t.messenger.TLRPC;
 import com.b44t.messenger.Emoji;
@@ -312,21 +314,21 @@ public class DialogCell extends BaseCell {
         }
 
         {
-            long hPoortext = MrMailbox.MrChatGetSummary(m_hChat);
+                MrPoortext mrPoortext = MrMailbox.getSummary(m_hChat);
 
                 checkMessage = false;
-                String mess = MrMailbox.MrPoortextGetText(hPoortext);
+                String mess = mrPoortext.getText();
                 if (mess.length() > 150) {
                     mess = mess.substring(0, 150);
                 }
-                String title = MrMailbox.MrPoortextGetTitle(hPoortext);
+                String title = mrPoortext.getTitle();
                 if( !title.isEmpty() )
                 {
-                    int title_meaning = MrMailbox.MrPoortextGetTitleMeaning(hPoortext);
+                    int title_meaning = mrPoortext.getTitleMeaning();
                     int title_color = Theme.DIALOGS_NAME_TEXT_COLOR;
                     switch( title_meaning ) {
-                        case MrMailbox.MR_TITLE_SELF:  title_color = Theme.DIALOGS_SELF_TEXT_COLOR; break;
-                        case MrMailbox.MR_TITLE_DRAFT: title_color = Theme.DIALOGS_DRAFT_TEXT_COLOR; break;
+                        case MrPoortext.MR_TITLE_SELF:  title_color = Theme.DIALOGS_SELF_TEXT_COLOR; break;
+                        case MrPoortext.MR_TITLE_DRAFT: title_color = Theme.DIALOGS_DRAFT_TEXT_COLOR; break;
                     }
                     SpannableStringBuilder stringBuilder = SpannableStringBuilder.valueOf(String.format("%s: %s", title, mess));
                     stringBuilder.setSpan(new ForegroundColorSpan(title_color), 0, title.length() + 1, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
@@ -337,7 +339,7 @@ public class DialogCell extends BaseCell {
                     messageString = mess;
                 }
 
-                long timestmp = MrMailbox.MrPoortextGetTimestamp(hPoortext);
+                long timestmp =mrPoortext.getTimestamp();
                 if( timestmp!=0 ) {
                     timeString = LocaleController.stringForMessageListDate(timestmp);
                 }
@@ -350,15 +352,13 @@ public class DialogCell extends BaseCell {
                 drawClock = false;
                 drawCount = false;
                 drawError = false;
-                switch( MrMailbox.MrPoortextGetState(hPoortext) ) {
-                    case MrMailbox.MR_OUT_ERROR: drawError = true; break;
-                    case MrMailbox.MR_OUT_PENDING: drawClock = true; break;
-                    case MrMailbox.MR_OUT_DELIVERED: drawCheck2 = true; break;
-                    case MrMailbox.MR_OUT_READ: drawCheck1 = true; drawCheck2 = true; break;
+                switch( mrPoortext.getState() ) {
+                    case MrMsg.MR_OUT_ERROR: drawError = true; break;
+                    case MrMsg.MR_OUT_PENDING: drawClock = true; break;
+                    case MrMsg.MR_OUT_DELIVERED: drawCheck2 = true; break;
+                    case MrMsg.MR_OUT_READ: drawCheck1 = true; drawCheck2 = true; break;
                 }
                 drawVerified = MrMailbox.MrChatIsEncrypted(m_hChat)!=0; // we use the "verified" check as an icon for "encryted" and "verified"
-
-            MrMailbox.MrPoortextUnref(hPoortext);
         }
 
         if (unreadCount != 0) {

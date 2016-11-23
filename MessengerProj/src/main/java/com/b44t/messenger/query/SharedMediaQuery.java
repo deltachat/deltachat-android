@@ -11,6 +11,7 @@ package com.b44t.messenger.query;
 import com.b44t.messenger.ChatObject;
 import com.b44t.messenger.MessagesController;
 import com.b44t.messenger.MrMailbox;
+import com.b44t.messenger.MrMsg;
 import com.b44t.messenger.NotificationCenter;
 import com.b44t.messenger.Utilities;
 import com.b44t.messenger.TLRPC;
@@ -79,7 +80,7 @@ public class SharedMediaQuery {
 
                 int[] media = new int[0];
                 if( type == SharedMediaQuery.MEDIA_PHOTOVIDEO ) {
-                    media = MrMailbox.MrMailboxGetChatMedia(MrMailbox.hMailbox, (int)uid, MrMailbox.MR_MSG_IMAGE, MrMailbox.MR_MSG_VIDEO);
+                    media = MrMailbox.MrMailboxGetChatMedia(MrMailbox.hMailbox, (int)uid, MrMsg.MR_MSG_IMAGE, MrMsg.MR_MSG_VIDEO);
                 }
 
                 NotificationCenter.getInstance().postNotificationName(NotificationCenter.mediaCountDidLoaded,

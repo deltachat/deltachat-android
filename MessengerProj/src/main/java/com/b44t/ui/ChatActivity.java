@@ -63,6 +63,7 @@ import com.b44t.messenger.ChatObject;
 import com.b44t.messenger.Emoji;
 import com.b44t.messenger.LocaleController;
 import com.b44t.messenger.MediaController;
+import com.b44t.messenger.MrContact;
 import com.b44t.messenger.MrMailbox;
 import com.b44t.messenger.MrMsg;
 import com.b44t.messenger.NotificationsController;
@@ -2864,9 +2865,8 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         MrMsg mrMsg = MrMailbox.getMsg(MrMailbox.hMailbox, messageId);
 
         final int fromId =mrMsg.getFromId();
-        long hContact = MrMailbox.MrMailboxGetContact(MrMailbox.hMailbox, fromId);
-            String name = MrMailbox.MrContactGetNameNAddr(hContact);
-        MrMailbox.MrContactUnref(hContact);
+        MrContact mrContact = MrMailbox.getContact(MrMailbox.hMailbox, fromId);
+        String name = mrContact.getNameNAddr();
 
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
@@ -3642,7 +3642,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                         int mrCount = msglist.length;
                         for (int a = mrCount - 1; a >= 0; a--) {
                             MrMsg mrMsg = MrMailbox.getMsg(MrMailbox.hMailbox, msglist[a]);
-                                TLRPC.Message msg = MrMailbox.MrMsg2Message(mrMsg);
+                                TLRPC.Message msg = MrMsg.MrMsg2Message(mrMsg);
                                 MessageObject msgDrawObj = new MessageObject(msg, null, true);
                                 messages.add(0, msgDrawObj);
                                 messagesDict[loadIndex].put(msg.id, msgDrawObj);
@@ -5466,9 +5466,8 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         String str = "";
         if (name) {
             if (previousUid != messageObject.messageOwner.from_id) {
-                long hContact = MrMailbox.MrMailboxGetContact(MrMailbox.hMailbox, messageObject.messageOwner.from_id);
-                    str += MrMailbox.MrContactGetDisplayName(hContact) + ":\n";
-                MrMailbox.MrContactUnref(hContact);
+                MrContact mrContact = MrMailbox.getContact(MrMailbox.hMailbox, messageObject.messageOwner.from_id);
+                str += mrContact.getDisplayName() + ":\n";
             }
         }
         if (messageObject.type == 0 && messageObject.messageOwner.message != null) {

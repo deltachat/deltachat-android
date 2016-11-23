@@ -24,6 +24,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.b44t.messenger.LocaleController;
+import com.b44t.messenger.MrContact;
 import com.b44t.messenger.MrMailbox;
 import com.b44t.messenger.TLRPC;
 import com.b44t.messenger.MessagesController;
@@ -238,9 +239,8 @@ public class BlockedUsersActivity extends BaseFragment implements NotificationCe
                 view = new UserCell(mContext, 1, 0);
             }
             if (i>=0 && i<blockedUserIds.length) {
-                long hContact = MrMailbox.MrMailboxGetContact(MrMailbox.hMailbox, blockedUserIds[i]);
-                    ((UserCell) view).setData(blockedUserIds[i], 0, MrMailbox.MrContactGetDisplayName(hContact), MrMailbox.MrContactGetAddr(hContact), 0);
-                MrMailbox.MrContactUnref(hContact);
+                MrContact mrContact = MrMailbox.getContact(MrMailbox.hMailbox, blockedUserIds[i]);
+                    ((UserCell) view).setData(blockedUserIds[i], 0, mrContact.getDisplayName(), mrContact.getAddr(), 0);
             }
             return view;
         }

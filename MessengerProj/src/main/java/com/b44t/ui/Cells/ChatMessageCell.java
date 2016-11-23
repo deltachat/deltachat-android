@@ -40,6 +40,7 @@ import com.b44t.messenger.FileLoader;
 import com.b44t.messenger.FileLog;
 import com.b44t.messenger.MessageObject;
 import com.b44t.messenger.MessagesController;
+import com.b44t.messenger.MrContact;
 import com.b44t.messenger.MrMailbox;
 import com.b44t.messenger.R;
 import com.b44t.messenger.UserObject;
@@ -3619,9 +3620,8 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
 
         String cname = "";
         if(currentUser!=null && isChat) {
-            long hContact = MrMailbox.MrMailboxGetContact(MrMailbox.hMailbox, currentUser.id);
-                cname = MrMailbox.MrContactGetDisplayName(hContact);
-            MrMailbox.MrContactUnref(hContact);
+            MrContact mrContact = MrMailbox.getContact(MrMailbox.hMailbox, currentUser.id);
+            cname = mrContact.getDisplayName();
         }
 
         if (isChat && !messageObject.isOutOwner() && messageObject.isFromUser()) {

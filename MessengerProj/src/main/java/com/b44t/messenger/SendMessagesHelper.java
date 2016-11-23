@@ -930,7 +930,7 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
                     // SEND IMAGE
                     TLRPC.PhotoSize size1 = photo.sizes.get(photo.sizes.size() - 1);
 
-                    newMsg.id = MrMailbox.MrChatSendMedia(hChat, MrMailbox.MR_MSG_IMAGE,
+                    newMsg.id = MrMailbox.MrChatSendMedia(hChat, MrMsg.MR_MSG_IMAGE,
                                 newMsg.attachPath, null, size1.w, size1.h, 0);
                 }
                 else if( type == 3 )
@@ -950,13 +950,13 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
                         width  = videoEditedInfo.resultWidth; // overwrite original attributes with edited size
                         height = videoEditedInfo.resultHeight;
                     }
-                    newMsg.id = MrMailbox.MrChatSendMedia(hChat, MrMailbox.MR_MSG_VIDEO,
+                    newMsg.id = MrMailbox.MrChatSendMedia(hChat, MrMsg.MR_MSG_VIDEO,
                             newMsg.attachPath, document.mime_type, width, height, time_ms);
                 }
                 else if( type == 7 )
                 {
                     // SEND FILE
-                    newMsg.id = MrMailbox.MrChatSendMedia(hChat, MrMailbox.MR_MSG_FILE,
+                    newMsg.id = MrMailbox.MrChatSendMedia(hChat, MrMsg.MR_MSG_FILE,
                             newMsg.attachPath, document.mime_type, 0, 0, 0);
                 }
                 else if( type == 8 )
@@ -967,7 +967,7 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
                         time_ms = Integer.parseInt(params.get("mr_time_ms"));
                     }
 
-                    newMsg.id = MrMailbox.MrChatSendMedia(hChat, MrMailbox.MR_MSG_AUDIO,
+                    newMsg.id = MrMailbox.MrChatSendMedia(hChat, MrMsg.MR_MSG_AUDIO,
                                 newMsg.attachPath, document.mime_type, 0, 0, time_ms);
                 }
 

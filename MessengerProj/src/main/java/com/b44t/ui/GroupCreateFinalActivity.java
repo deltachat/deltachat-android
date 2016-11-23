@@ -31,6 +31,7 @@ import android.widget.Toast;
 import com.b44t.messenger.AndroidUtilities;
 import com.b44t.messenger.ChatObject;
 import com.b44t.messenger.LocaleController;
+import com.b44t.messenger.MrContact;
 import com.b44t.messenger.MrMailbox;
 import com.b44t.messenger.TLRPC;
 import com.b44t.messenger.MessagesController;
@@ -434,11 +435,10 @@ public class GroupCreateFinalActivity extends BaseFragment implements Notificati
 
             int curr_user_id = selectedContacts.get(i);
 
-            long hContact = MrMailbox.MrMailboxGetContact(MrMailbox.hMailbox, curr_user_id);
+            MrContact mrContact = MrMailbox.getContact(MrMailbox.hMailbox, curr_user_id);
 
-            ((UserCell) view).setData(curr_user_id, 0, MrMailbox.MrContactGetDisplayName(hContact), MrMailbox.MrContactGetAddr(hContact), 0);
+            ((UserCell) view).setData(curr_user_id, 0, mrContact.getDisplayName(), mrContact.getAddr(), 0);
 
-            MrMailbox.MrContactUnref(hContact);
             return view;
         }
 

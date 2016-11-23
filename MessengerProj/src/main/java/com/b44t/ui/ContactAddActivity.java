@@ -30,6 +30,7 @@ import android.widget.Toast;
 
 import com.b44t.messenger.AndroidUtilities;
 import com.b44t.messenger.LocaleController;
+import com.b44t.messenger.MrContact;
 import com.b44t.messenger.MrMailbox;
 import com.b44t.messenger.TLRPC;
 import com.b44t.messenger.MessagesController;
@@ -103,9 +104,8 @@ public class ContactAddActivity extends BaseFragment implements NotificationCent
             actionBar.setTitle(LocaleController.getString("NewContactTitle", R.string.NewContactTitle));
         } else {
             actionBar.setTitle(LocaleController.getString("EditName", R.string.EditName));
-            long hContact = MrMailbox.MrMailboxGetContact(MrMailbox.hMailbox, user_id);
-                nameToSet = MrMailbox.MrContactGetDisplayName(hContact);
-            MrMailbox.MrContactUnref(hContact);
+            MrContact mrContact = MrMailbox.getContact(MrMailbox.hMailbox, user_id);
+            nameToSet = mrContact.getDisplayName();
         }
 
         actionBar.setActionBarMenuOnItemClick(new ActionBar.ActionBarMenuOnItemClick() {
@@ -120,9 +120,8 @@ public class ContactAddActivity extends BaseFragment implements NotificationCent
                         addr = emailTextView.getText().toString();
                     }
                     else {
-                        long hContact = MrMailbox.MrMailboxGetContact(MrMailbox.hMailbox, user_id);
-                            addr = MrMailbox.MrContactGetAddr(hContact);
-                        MrMailbox.MrContactUnref(hContact);
+                        MrContact mrContact = MrMailbox.getContact(MrMailbox.hMailbox, user_id);
+                        addr = mrContact.getAddr();
                     }
 
                     int new_user_id;

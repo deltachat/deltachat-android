@@ -45,6 +45,7 @@ import android.widget.Toast;
 import com.b44t.messenger.AndroidUtilities;
 import com.b44t.messenger.AnimatorListenerAdapterProxy;
 import com.b44t.messenger.LocaleController;
+import com.b44t.messenger.MrContact;
 import com.b44t.messenger.MrMailbox;
 import com.b44t.messenger.SendMessagesHelper;
 import com.b44t.messenger.UserObject;
@@ -413,9 +414,8 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
 
                     String name = "";
                     {
-                        long hContact = MrMailbox.MrMailboxGetContact(MrMailbox.hMailbox, user_id);
-                            name = MrMailbox.MrContactGetNameNAddr(hContact);
-                        MrMailbox.MrContactUnref(hContact);
+                        MrContact mrContact = MrMailbox.getContact(MrMailbox.hMailbox, user_id);
+                        name = mrContact.getNameNAddr();
                     }
 
                     AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
@@ -1193,9 +1193,8 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
     {
         boolean blocked = false;
         if( user_id!=0 ) {
-            long hContact = MrMailbox.MrMailboxGetContact(MrMailbox.hMailbox, user_id);
-                blocked = MrMailbox.MrContactIsBlocked(hContact)!=0;
-            MrMailbox.MrContactUnref(hContact);
+            MrContact mrContact = MrMailbox.getContact(MrMailbox.hMailbox, user_id);
+            blocked = mrContact.isBlocked()!=0;
         }
         return blocked;
     }
@@ -1219,10 +1218,9 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
         String newString2;
 
         if( user_id!=0 ) {
-            long hContact = MrMailbox.MrMailboxGetContact(MrMailbox.hMailbox, user_id);
-                newString = MrMailbox.MrContactGetDisplayName(hContact);
-                newString2 = MrMailbox.MrContactGetAddr(hContact);
-            MrMailbox.MrContactUnref(hContact);
+            MrContact mrContact = MrMailbox.getContact(MrMailbox.hMailbox, user_id);
+            newString = mrContact.getDisplayName();
+            newString2 = mrContact.getAddr();
         }
         else {
             long hChat = MrMailbox.MrMailboxGetChat(MrMailbox.hMailbox, chat_id);
@@ -1412,11 +1410,10 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                     int curr_user_index = i - firstMemberRow;
                     if(curr_user_index>=0 && curr_user_index<sortedUserIds.length) {
                         int curr_user_id = sortedUserIds[curr_user_index];
-                        long hContact = MrMailbox.MrMailboxGetContact(MrMailbox.hMailbox, curr_user_id);
-                            userCell.setData(curr_user_id, 0, MrMailbox.MrContactGetDisplayName(hContact),
-                                    MrMailbox.MrContactGetAddr(hContact),
+                        MrContact mrContact = MrMailbox.getContact(MrMailbox.hMailbox, curr_user_id);
+                            userCell.setData(curr_user_id, 0, mrContact.getDisplayName(),
+                                    mrContact.getAddr(),
                                     curr_user_index==0? R.drawable.menu_newgroup : 0);
-                        MrMailbox.MrContactUnref(hContact);
                     }
                     break;
 

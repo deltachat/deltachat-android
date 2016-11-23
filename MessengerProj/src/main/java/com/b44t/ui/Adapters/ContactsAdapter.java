@@ -14,6 +14,7 @@ import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.b44t.messenger.MrContact;
 import com.b44t.messenger.MrMailbox;
 import com.b44t.messenger.TLRPC;
 import com.b44t.ui.Cells.UserCell;
@@ -80,10 +81,9 @@ public class ContactsAdapter extends BaseFragmentAdapter {
 
         if(curr_user_index>=0 && curr_user_index<contactIds.length) {
             int curr_user_id = contactIds[curr_user_index];
-            long hContact = MrMailbox.MrMailboxGetContact(MrMailbox.hMailbox, curr_user_id);
-            ((UserCell) convertView).setData(curr_user_id, 0, MrMailbox.MrContactGetDisplayName(hContact),
-                    MrMailbox.MrContactGetAddr(hContact), 0);
-            MrMailbox.MrContactUnref(hContact);
+            MrContact mrContact = MrMailbox.getContact(MrMailbox.hMailbox, curr_user_id);
+            ((UserCell) convertView).setData(curr_user_id, 0, mrContact.getDisplayName(),
+                    mrContact.getAddr(), 0);
             if (checkedMap != null) {
                 ((UserCell) convertView).setChecked(checkedMap.containsKey(curr_user_id), !scrolling);
             }

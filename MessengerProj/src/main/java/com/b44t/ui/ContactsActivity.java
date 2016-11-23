@@ -46,6 +46,7 @@ import com.b44t.messenger.ApplicationLoader;
 import com.b44t.messenger.ChatObject;
 import com.b44t.messenger.ContactsController;
 import com.b44t.messenger.LocaleController;
+import com.b44t.messenger.MrContact;
 import com.b44t.messenger.MrMailbox;
 import com.b44t.messenger.Utilities;
 import com.b44t.messenger.TLRPC;
@@ -411,9 +412,8 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
 
                         String name = "";
                         {
-                            long hContact = MrMailbox.MrMailboxGetContact(MrMailbox.hMailbox, user.id);
-                                name = MrMailbox.MrContactGetNameNAddr(hContact);
-                            MrMailbox.MrContactUnref(hContact);
+                            MrContact mrContact = MrMailbox.getContact(MrMailbox.hMailbox, user.id);
+                            name = mrContact.getNameNAddr();
                         }
 
                         AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
@@ -594,9 +594,8 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
 
         String name ="";
         {
-            long hContact = MrMailbox.MrMailboxGetContact(MrMailbox.hMailbox, user.id);
-                name = MrMailbox.MrContactGetDisplayName(hContact);
-            MrMailbox.MrContactUnref(hContact);
+            MrContact mrContact = MrMailbox.getContact(MrMailbox.hMailbox, user.id);
+            name = mrContact.getDisplayName();
         }
 
 
