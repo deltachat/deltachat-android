@@ -26,6 +26,7 @@ import android.widget.AdapterView;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.b44t.messenger.LocaleController;
 import com.b44t.messenger.NotificationsController;
@@ -540,6 +541,8 @@ public class NotificationsSettingsActivity extends BaseFragment implements Notif
                 }
             }
         });
+
+        Toast.makeText(context, LocaleController.getString("NotYetImplemented", R.string.NotYetImplemented), Toast.LENGTH_LONG).show();
 
         return fragmentView;
     }

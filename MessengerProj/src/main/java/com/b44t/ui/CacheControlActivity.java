@@ -24,6 +24,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.FrameLayout;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.b44t.messenger.AndroidUtilities;
 import com.b44t.messenger.ApplicationLoader;
@@ -200,6 +201,7 @@ public class CacheControlActivity extends BaseFragment {
         return size;
     }
 
+    /*
     private void cleanupFolders() {
         final ProgressDialog progressDialog = new ProgressDialog(getParentActivity());
         progressDialog.setMessage(LocaleController.getString("Loading", R.string.Loading));
@@ -301,6 +303,7 @@ public class CacheControlActivity extends BaseFragment {
             }
         });
     }
+    */
 
     @Override
     public View createView(Context context) {
@@ -539,6 +542,8 @@ public class CacheControlActivity extends BaseFragment {
                 }
             }
         });
+
+        Toast.makeText(context, LocaleController.getString("NotYetImplemented", R.string.NotYetImplemented), Toast.LENGTH_LONG).show();
 
         return fragmentView;
     }
