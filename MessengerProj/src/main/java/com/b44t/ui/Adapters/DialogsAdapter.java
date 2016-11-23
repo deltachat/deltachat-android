@@ -38,8 +38,7 @@ public class DialogsAdapter extends RecyclerView.Adapter {
         mContext = context;
         dialogsType = type;
 
-        MrMailbox.MrChatlistUnref(MrMailbox.hCurrChatlist);
-        MrMailbox.hCurrChatlist = MrMailbox.MrMailboxGetChatlist(MrMailbox.hMailbox);
+        MrMailbox.reloadMainChatlist();
     }
 
     public void setOpenedDialogId(long id) {
@@ -48,11 +47,11 @@ public class DialogsAdapter extends RecyclerView.Adapter {
 
     @Override
     public int getItemCount() {
-        return MrMailbox.MrChatlistGetCnt(MrMailbox.hCurrChatlist);
+        return MrMailbox.mrCurrChatlist.getCnt();
     }
 
     public TLRPC.TL_dialog getItem(int i) {
-        return MrMailbox.hChatlist2dialog(MrMailbox.hCurrChatlist, i);
+        return MrMailbox.mrChatlist2dialog(MrMailbox.mrCurrChatlist, i);
     }
 
     @Override

@@ -82,10 +82,6 @@ public class MrChat {
         return MrChatGetTotalMsgCount(m_hChat);
     }
 
-    public MrPoortext getSummary() {
-        return new MrPoortext(MrChatGetSummary(m_hChat));
-    }
-
     public int sendText(String text) {
         return MrChatSendText(m_hChat, text);
     }
@@ -122,5 +118,9 @@ public class MrChat {
         TLRPC.TL_dialog ret = new TLRPC.TL_dialog();
         ret.id = mrChat.getId();
         return ret;
+    }
+
+    public long GetCPtr() {
+        return m_hChat;
     }
 }

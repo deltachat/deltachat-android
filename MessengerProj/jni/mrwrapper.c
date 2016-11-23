@@ -376,21 +376,27 @@ JNIEXPORT jint Java_com_b44t_messenger_MrMailbox_MrMailboxAddAddressBook(JNIEnv 
  ******************************************************************************/
 
 
-JNIEXPORT void Java_com_b44t_messenger_MrMailbox_MrChatlistUnref(JNIEnv *env, jclass c, jlong hChatlist)
+JNIEXPORT void Java_com_b44t_messenger_MrChatlist_MrChatlistUnref(JNIEnv *env, jclass c, jlong hChatlist)
 {
 	mrchatlist_unref((mrchatlist_t*)hChatlist);
 }
 
 
-JNIEXPORT jint Java_com_b44t_messenger_MrMailbox_MrChatlistGetCnt(JNIEnv *env, jclass c, jlong hChatlist)
+JNIEXPORT jint Java_com_b44t_messenger_MrChatlist_MrChatlistGetCnt(JNIEnv *env, jclass c, jlong hChatlist)
 {
 	return mrchatlist_get_cnt((mrchatlist_t*)hChatlist);
 }
 
 
-JNIEXPORT jlong Java_com_b44t_messenger_MrMailbox_MrChatlistGetChatByIndex(JNIEnv *env, jclass c, jlong hChatlist, jint index)
+JNIEXPORT jlong Java_com_b44t_messenger_MrChatlist_MrChatlistGetChatByIndex(JNIEnv *env, jclass c, jlong hChatlist, jint index)
 {
 	return (jlong)mrchatlist_get_chat_by_index((mrchatlist_t*)hChatlist, index);
+}
+
+
+JNIEXPORT jlong Java_com_b44t_messenger_MrChatlist_MrChatlistGetSummaryByIndex(JNIEnv *env, jclass c, jlong hChatlist, jint index, jlong hChat)
+{
+	return (jlong)mrchatlist_get_summary_by_index((mrchatlist_t*)hChatlist, index, (mrchat_t*)hChat);
 }
 
 
@@ -468,12 +474,6 @@ JNIEXPORT jint Java_com_b44t_messenger_MrChat_MrChatGetTotalMsgCount(JNIEnv *env
 JNIEXPORT jint Java_com_b44t_messenger_MrChat_MrChatGetUnseenCount(JNIEnv *env, jclass c, jlong hChat)
 {
 	return mrchat_get_unseen_count((mrchat_t*)hChat);
-}
-
-
-JNIEXPORT jlong Java_com_b44t_messenger_MrChat_MrChatGetSummary(JNIEnv *env, jclass c, jlong hChat)
-{
-	return (jlong)mrchat_get_summary((mrchat_t*)hChat);
 }
 
 

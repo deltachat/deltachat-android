@@ -32,17 +32,16 @@ package com.b44t.messenger;
 public class MrMailbox {
 
     public static long           hMailbox = 0;
-    public static long           hCurrChatlist = 0;
+    public static MrChatlist     mrCurrChatlist = new MrChatlist(0);
     private static final String  TAG = "LibreChat"; // TAG is an Android convention
 
 
     // tools
 
-    public static TLRPC.TL_dialog hChatlist2dialog(long hChatlist, int index)
+    public static TLRPC.TL_dialog mrChatlist2dialog(MrChatlist mrChatlist, int index)
     {
-        MrChat mrChat = MrMailbox.getChatByIndex(hChatlist, index);
+        MrChat mrChat = mrChatlist.getChatByIndex(index);
         TLRPC.TL_dialog dlg = MrChat.MrChat2dialog(mrChat);
-
         return dlg;
     }
 
@@ -62,8 +61,7 @@ public class MrMailbox {
 
     public static void reloadMainChatlist()
     {
-        MrChatlistUnref(hCurrChatlist); // it's not optimal running this on the UI thread, maybe we should lock it and run it in a separate thread
-        hCurrChatlist = MrMailboxGetChatlist(hMailbox);
+        mrCurrChatlist = getChatlist(hMailbox);
     }
 
     // this function is called from within the C-wrapper
@@ -127,6 +125,10 @@ public class MrMailbox {
         return new MrChat(MrMailboxGetChat(hMailbox, contact_id));
     }
 
+    public static MrChatlist getChatlist(long hMailbox) {
+        return new MrChatlist(MrMailboxGetChatlist(hMailbox));
+    }
+
     public native static long    MrMailboxNew               (); // returns hMailbox which must be unref'd after usage (Names as mrmailbox_new don't work due to the additional underscore)
     public native static int     MrMailboxOpen              (long hMailbox, String dbfile, String blobdir);
     public native static void    MrMailboxClose             (long hMailbox);
@@ -144,7 +146,7 @@ public class MrMailbox {
     public native static int     MrMailboxDeleteContact     (long hMailbox, int id); // returns 0 if the contact could not be deleted (eg. it is in use, maybe by deaddrop)
     public native static int     MrMailboxAddAddressBook    (long hMailbox, String adrbook);
 
-    public native static long    MrMailboxGetChatlist       (long hMailbox); // returns hChatlist which must be unref'd after usage
+    private native static long   MrMailboxGetChatlist       (long hMailbox); // returns hChatlist which must be unref'd after usage
     private native static long   MrMailboxGetChat           (long hMailbox, int chat_id); // return hChat which must be unref'd after usage
     public native static int     MrMailboxMarkseenChat      (long hMailbox, int id);
     public native static int     MrMailboxGetChatIdByContactId (long hMailbox, int chat_id);
@@ -162,15 +164,6 @@ public class MrMailbox {
 
     public native static String  MrMailboxGetInfo           (long hMailbox);
     public native static String  MrMailboxExecute           (long hMailbox, String cmd);
-
-    // MrChatlist objects
-    public static MrChat getChatByIndex(long hChatlist, int index)
-    {
-        return new MrChat(MrChatlistGetChatByIndex(hChatlist, index));
-    }
-    public native static void    MrChatlistUnref            (long hChatlist);
-    public native static int     MrChatlistGetCnt           (long hChatlist);
-    private native static long   MrChatlistGetChatByIndex   (long hChatlist, int index); // returns hChat which must be unref'd after usage
 
     // Tools
     public native static void    MrStockAddStr              (int id, String str);

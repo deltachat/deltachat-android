@@ -126,6 +126,7 @@ public class DialogCell extends BaseCell {
     private boolean isSelected;
 
     private MrChat m_mrChat = new MrChat(0);
+    private MrPoortext m_summary = new MrPoortext(0);
 
     public DialogCell(Context context) {
         super(context);
@@ -184,7 +185,8 @@ public class DialogCell extends BaseCell {
         isDialogCell = true;
         index = i;
 
-        m_mrChat = MrMailbox.getChatByIndex(MrMailbox.hCurrChatlist, i);
+        m_mrChat  = MrMailbox.mrCurrChatlist.getChatByIndex(i);
+        m_summary = MrMailbox.mrCurrChatlist.getSummaryByIndex(i, m_mrChat);
 
         update(0);
     }
@@ -307,17 +309,15 @@ public class DialogCell extends BaseCell {
         }
 
         {
-                MrPoortext mrPoortext = m_mrChat.getSummary();
-
                 checkMessage = false;
-                String mess = mrPoortext.getText();
+                String mess = m_summary.getText();
                 if (mess.length() > 150) {
                     mess = mess.substring(0, 150);
                 }
-                String title = mrPoortext.getTitle();
+                String title = m_summary.getTitle();
                 if( !title.isEmpty() )
                 {
-                    int title_meaning = mrPoortext.getTitleMeaning();
+                    int title_meaning = m_summary.getTitleMeaning();
                     int title_color = Theme.DIALOGS_NAME_TEXT_COLOR;
                     switch( title_meaning ) {
                         case MrPoortext.MR_TITLE_SELF:  title_color = Theme.DIALOGS_SELF_TEXT_COLOR; break;
@@ -332,7 +332,7 @@ public class DialogCell extends BaseCell {
                     messageString = mess;
                 }
 
-                long timestmp =mrPoortext.getTimestamp();
+                long timestmp =m_summary.getTimestamp();
                 if( timestmp!=0 ) {
                     timeString = LocaleController.stringForMessageListDate(timestmp);
                 }
@@ -345,7 +345,7 @@ public class DialogCell extends BaseCell {
                 drawClock = false;
                 drawCount = false;
                 drawError = false;
-                switch( mrPoortext.getState() ) {
+                switch( m_summary.getState() ) {
                     case MrMsg.MR_OUT_ERROR: drawError = true; break;
                     case MrMsg.MR_OUT_PENDING: drawClock = true; break;
                     case MrMsg.MR_OUT_DELIVERED: drawCheck2 = true; break;
@@ -564,8 +564,8 @@ public class DialogCell extends BaseCell {
     */
 
     public void checkCurrentDialogIndex() {
-        if (index < MrMailbox.MrChatlistGetCnt(MrMailbox.hCurrChatlist)) { // EDIT BY MR - was: index < getDialogsArray().size()
-            TLRPC.TL_dialog dialog = MrMailbox.hChatlist2dialog(MrMailbox.hCurrChatlist, index); // EDIT BY MR - was: getDialogsArray().get(index);
+        if (index < MrMailbox.mrCurrChatlist.getCnt()) { // EDIT BY MR - was: index < getDialogsArray().size()
+            TLRPC.TL_dialog dialog = MrMailbox.mrChatlist2dialog(MrMailbox.mrCurrChatlist, index); // EDIT BY MR - was: getDialogsArray().get(index);
             TLRPC.DraftMessage newDraftMessage = DraftQuery.getDraft(currentDialogId);
             MessageObject newMessageObject = MessagesController.getInstance().dialogMessage.get(dialog.id);
             if (currentDialogId != dialog.id ||
