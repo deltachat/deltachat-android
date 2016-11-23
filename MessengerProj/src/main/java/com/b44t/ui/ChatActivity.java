@@ -3639,11 +3639,11 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 }
                 */
                 {
-                    long hMsglist = MrMailbox.MrChatGetMsglist(m_hChat, 0, 100);
+                    int[] msglist = MrMailbox.MrMailboxGetChatMsgs(MrMailbox.hMailbox, (int)dialog_id);
 
-                        int mrCount = MrMailbox.MrMsglistGetCnt(hMsglist);
+                        int mrCount = msglist.length;
                         for (int a = mrCount - 1; a >= 0; a--) {
-                            long hMsg = MrMailbox.MrMsglistGetMsgByIndex(hMsglist, a);
+                            long hMsg = MrMailbox.MrMailboxGetMsg(MrMailbox.hMailbox, msglist[a]);
                                 TLRPC.Message msg = MrMailbox.hMsg2Message(hMsg);
                                 MessageObject msgDrawObj = new MessageObject(msg, null, true);
                                 messages.add(0, msgDrawObj);
@@ -3654,8 +3654,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                         if (MrMailbox.MrChatGetId(m_hChat) == MrMailbox.MR_CHAT_ID_DEADDROP) {
                             updateBottomOverlay();
                         }
-
-                    MrMailbox.MrMsglistUnref(hMsglist);
                 }
 
 

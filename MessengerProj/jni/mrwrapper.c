@@ -477,12 +477,6 @@ JNIEXPORT jlong Java_com_b44t_messenger_MrMailbox_MrChatGetSummary(JNIEnv *env, 
 }
 
 
-JNIEXPORT jlong Java_com_b44t_messenger_MrMailbox_MrChatGetMsglist(JNIEnv *env, jclass c, jlong hChat, jint offset, jint amount)
-{
-	return (jlong)mrchat_get_msglist((mrchat_t*)hChat, offset, amount);
-}
-
-
 JNIEXPORT jint Java_com_b44t_messenger_MrMailbox_MrChatSetDraft(JNIEnv *env, jclass c, jlong hChat, jstring draft /* NULL=delete */, jint replyToMsgId)
 {
 	CHAR_REF(draft);
@@ -535,33 +529,18 @@ JNIEXPORT jintArray Java_com_b44t_messenger_MrMailbox_MrMailboxGetChatMedia(JNIE
 }
 
 
-JNIEXPORT jintArray Java_com_b44t_messenger_MrMailbox_MrMailboxGetChatContacts(JNIEnv *env, jclass c, jlong hMailbox, jint chat_id)
+JNIEXPORT jintArray Java_com_b44t_messenger_MrMailbox_MrMailboxGetChatMsgs(JNIEnv *env, jclass c, jlong hMailbox, jint chat_id)
 {
-	carray* ca = mrmailbox_get_chat_contacts((mrmailbox_t*)hMailbox, chat_id);
+	carray* ca = mrmailbox_get_chat_msgs((mrmailbox_t*)hMailbox, chat_id);
 	return carray2jintArray_n_carray_free(env, ca);
 }
 
 
-/*******************************************************************************
- * MrMsglist
- ******************************************************************************/
 
-
-JNIEXPORT void Java_com_b44t_messenger_MrMailbox_MrMsglistUnref(JNIEnv *env, jclass c, jlong hMsglist)
+JNIEXPORT jintArray Java_com_b44t_messenger_MrMailbox_MrMailboxGetChatContacts(JNIEnv *env, jclass c, jlong hMailbox, jint chat_id)
 {
-	mrmsglist_unref((mrmsglist_t*)hMsglist);
-}
-
-
-JNIEXPORT jint Java_com_b44t_messenger_MrMailbox_MrMsglistGetCnt(JNIEnv *env, jclass c, jlong hMsglist)
-{
-	return mrmsglist_get_cnt((mrmsglist_t*)hMsglist);
-}
-
-
-JNIEXPORT jlong Java_com_b44t_messenger_MrMailbox_MrMsglistGetMsgByIndex(JNIEnv *env, jclass c, jlong hMsglist, jint index)
-{
-	return (jlong)mrmsglist_get_msg_by_index((mrmsglist_t*)hMsglist, index);
+	carray* ca = mrmailbox_get_chat_contacts((mrmailbox_t*)hMailbox, chat_id);
+	return carray2jintArray_n_carray_free(env, ca);
 }
 
 

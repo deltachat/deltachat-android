@@ -236,6 +236,7 @@ public class MrMailbox {
     public native static int     MrMailboxMarkseenChat      (long hMailbox, int id);
     public native static int     MrMailboxGetChatIdByContactId (long hMailbox, int chat_id);
     public native static int     MrMailboxCreateChatByContactId(long hMailbox, int contact_id); // returns chat_id
+    public native static int[]   MrMailboxGetChatMsgs       (long hMailbox, int chat_id);
     public native static int[]   MrMailboxGetChatMedia      (long hMailbox, int chat_id, int msg_type, int or_msg_type);
     public native static int[]   MrMailboxGetChatContacts   (long hMailbox, int chat_id);
     public native static int     MrMailboxDeleteChat        (long hMailbox, int chat_id);
@@ -268,14 +269,8 @@ public class MrMailbox {
     public native static int     MrChatGetUnseenCount       (long hChat);
     public native static int     MrChatGetTotalMsgCount     (long hChat);
     public native static long    MrChatGetSummary           (long hChat); // returns hPoortext
-    public native static long    MrChatGetMsglist           (long hChat, int offset, int amount); // returns hMsglist
     public native static int     MrChatSendText             (long hChat, String text); // returns message id
     public native static int     MrChatSendMedia            (long hChat, int type, String file, String mime, int w, int h, int time_ms);
-
-    // MrMsglist objects
-    public native static void    MrMsglistUnref             (long hMsglist);
-    public native static int     MrMsglistGetCnt            (long hMsglist);
-    public native static int     MrMsglistGetMsgByIndex     (long hMsglist, int index); // returns hMsg which must be unref'd after usage
 
     // MrMsg objects
     public native static void    MrMsgUnref                 (long hMsg);
