@@ -21,7 +21,7 @@
  *
  * File:    MrMailbox.java
  * Authors: Björn Petersen
- * Purpose: The Java part of the Java<->C Wrapper, see also mrwrapper.c
+ * Purpose: Wrap around mrmailbox_t
  *
  ******************************************************************************/
 
@@ -53,14 +53,14 @@ public class MrMailbox {
         return dlg;
     }
 
-    public static TLRPC.Message hMsg2Message(long hMsg)
+    public static TLRPC.Message MrMsg2Message(MrMsg mrMsg)
     {
         TLRPC.Message ret = new TLRPC.TL_message(); // the class derived from TLRPC.Message defines the basic type:
                                                     //  TLRPC.TL_messageService is used to display messages as "You joined the group"
                                                     //  TLRPC.TL_message is a normal message (also photos?)
 
-        int state = MrMsgGetState(hMsg);
-        int type  = MrMsgGetType(hMsg);
+        int state = mrMsg.getState();
+        int type  = mrMsg.getType();
         switch( state ) {
             case MR_OUT_DELIVERED: ret.send_state = MessageObject.MESSAGE_SEND_STATE_SENT; break;
             case MR_OUT_ERROR:     ret.send_state = MessageObject.MESSAGE_SEND_STATE_SEND_ERROR; break;
@@ -68,12 +68,12 @@ public class MrMailbox {
             case MR_OUT_READ:      ret.send_state = MessageObject.MESSAGE_SEND_STATE_SENT; break;
         }
 
-        ret.id            = MrMailbox.MrMsgGetId(hMsg);
-        ret.from_id       = MrMailbox.MrMsgGetFromId(hMsg);
+        ret.id            = mrMsg.getId();
+        ret.from_id       = mrMsg.getFromId();
         ret.to_id         = new TLRPC.TL_peerUser();
-        ret.to_id.user_id = MrMailbox.MrMsgGetToId(hMsg);
-        ret.date          = (int)MrMsgGetTimestamp(hMsg);
-        ret.dialog_id     = MrMsgGetChatId(hMsg);
+        ret.to_id.user_id = mrMsg.getToId();
+        ret.date          = (int)mrMsg.getTimestamp();
+        ret.dialog_id     = mrMsg.getChatId();
         ret.unread        = state!=MR_OUT_READ; // the state of outgoing messages
         ret.media_unread  = ret.unread;
         ret.flags         = 0; // posible flags: MESSAGE_FLAG_HAS_FROM_ID, however, this seems to be read only
@@ -82,16 +82,16 @@ public class MrMailbox {
         ret.created_by_mr = true;
 
         if( type == MrMailbox.MR_MSG_TEXT ) {
-            ret.message       = MrMailbox.MrMsgGetText(hMsg);
+            ret.message       = mrMsg.getText();
         }
         else if( type == MrMailbox.MR_MSG_IMAGE ) {
-            String path = MrMailbox.MrMsgGetParam(hMsg, 'f', "");
+            String path = mrMsg.getParam('f', "");
             TLRPC.TL_photo photo = null;
             if( !path.isEmpty() ) {
                 try {
                     TLRPC.TL_photoSize photoSize = new TLRPC.TL_photoSize();
-                    photoSize.w = MrMailbox.MrMsgGetParamInt(hMsg, 'w', 800);
-                    photoSize.h = MrMailbox.MrMsgGetParamInt(hMsg, 'h', 800);
+                    photoSize.w = mrMsg.getParamInt('w', 800);
+                    photoSize.h = mrMsg.getParamInt('h', 800);
                     photoSize.size = 0;
                     photoSize.location = new TLRPC.TL_fileLocation();
                     photoSize.location.mr_path = path;
@@ -115,7 +115,7 @@ public class MrMailbox {
             }
         }
         else if( type == MrMailbox.MR_MSG_AUDIO || type == MrMailbox.MR_MSG_VIDEO ) {
-            String path = MrMailbox.MrMsgGetParam(hMsg, 'f', "");
+            String path = mrMsg.getParam('f', "");
             if( !path.isEmpty()) {
                 ret.message = "-1"; // may be misused for video editing information
                 ret.media = new TLRPC.TL_messageMediaDocument();
@@ -125,14 +125,14 @@ public class MrMailbox {
                 if( type == MrMailbox.MR_MSG_AUDIO ) {
                     TLRPC.TL_documentAttributeAudio attr = new TLRPC.TL_documentAttributeAudio();
                     attr.voice = true; // !voice = music
-                    attr.duration = MrMailbox.MrMsgGetParamInt(hMsg, 'd', 0) / 1000;
+                    attr.duration = mrMsg.getParamInt('d', 0) / 1000;
                     ret.media.document.attributes.add(attr);
                 }
                 else if( type == MrMailbox.MR_MSG_VIDEO) {
                     TLRPC.TL_documentAttributeVideo attr = new TLRPC.TL_documentAttributeVideo();
-                    attr.duration = MrMailbox.MrMsgGetParamInt(hMsg, 'd', 0) / 1000;
-                    attr.w = MrMailbox.MrMsgGetParamInt(hMsg, 'w', 0);
-                    attr.h = MrMailbox.MrMsgGetParamInt(hMsg, 'h', 0);
+                    attr.duration = mrMsg.getParamInt('d', 0) / 1000;
+                    attr.w = mrMsg.getParamInt('w', 0);
+                    attr.h = mrMsg.getParamInt('h', 0);
                     ret.media.document.attributes.add(attr);
                 }
 
@@ -214,6 +214,11 @@ public class MrMailbox {
     }
 
     // MrMailbox objects
+    public static MrMsg getMsg(long hMailbox, int id)
+    {
+        return new MrMsg(MrMailboxGetMsg(hMailbox, id));
+    }
+
     public native static long    MrMailboxNew               (); // returns hMailbox which must be unref'd after usage (Names as mrmailbox_new don't work due to the additional underscore)
     public native static int     MrMailboxOpen              (long hMailbox, String dbfile, String blobdir);
     public native static void    MrMailboxClose             (long hMailbox);
@@ -240,7 +245,7 @@ public class MrMailbox {
     public native static int[]   MrMailboxGetChatMedia      (long hMailbox, int chat_id, int msg_type, int or_msg_type);
     public native static int[]   MrMailboxGetChatContacts   (long hMailbox, int chat_id);
     public native static int     MrMailboxDeleteChat        (long hMailbox, int chat_id);
-    public native static long    MrMailboxGetMsg            (long hMailbox, int id); // return hMsg which must be unref'd after usage
+    private native static long   MrMailboxGetMsg            (long hMailbox, int id); // return hMsg which must be unref'd after usage
     public native static String  MrMailboxGetMsgInfo        (long hMailbox, int id);
     public native static void    MrMailboxDeleteMsg         (long hMailbox, int id);
     public native static int     MrMailboxSetConfig         (long hMailbox, String key, String value); // value may be NULL
@@ -271,19 +276,6 @@ public class MrMailbox {
     public native static long    MrChatGetSummary           (long hChat); // returns hPoortext
     public native static int     MrChatSendText             (long hChat, String text); // returns message id
     public native static int     MrChatSendMedia            (long hChat, int type, String file, String mime, int w, int h, int time_ms);
-
-    // MrMsg objects
-    public native static void    MrMsgUnref                 (long hMsg);
-    public native static int     MrMsgGetId                 (long hMsg);
-    public native static String  MrMsgGetText               (long hMsg);
-    public native static long    MrMsgGetTimestamp          (long hMsg);
-    public native static int     MrMsgGetType               (long hMsg);
-    public native static int     MrMsgGetState              (long hMsg);
-    public native static int     MrMsgGetChatId             (long hMsg);
-    public native static int     MrMsgGetFromId             (long hMsg);
-    public native static int     MrMsgGetToId               (long hMsg);
-    public native static String  MrMsgGetParam              (long hMsg, int key, String def);
-    public native static int     MrMsgGetParamInt           (long hMsg, int key, int def);
 
     // MrContact objects
     public native static void    MrContactUnref             (long hContact);

@@ -64,6 +64,7 @@ import com.b44t.messenger.Emoji;
 import com.b44t.messenger.LocaleController;
 import com.b44t.messenger.MediaController;
 import com.b44t.messenger.MrMailbox;
+import com.b44t.messenger.MrMsg;
 import com.b44t.messenger.NotificationsController;
 import com.b44t.messenger.SendMessagesHelper;
 import com.b44t.messenger.UserObject;
@@ -2860,10 +2861,9 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
             chatActivityEnterView.closeKeyboard();
         }
 
-        long hMsg = MrMailbox.MrMailboxGetMsg(MrMailbox.hMailbox, messageId);
-        if( hMsg==0 )  { return; }
+        MrMsg mrMsg = MrMailbox.getMsg(MrMailbox.hMailbox, messageId);
 
-        final int fromId = MrMailbox.MrMsgGetFromId(hMsg);
+        final int fromId =mrMsg.getFromId();
         long hContact = MrMailbox.MrMailboxGetContact(MrMailbox.hMailbox, fromId);
             String name = MrMailbox.MrContactGetNameNAddr(hContact);
         MrMailbox.MrContactUnref(hContact);
@@ -2887,8 +2887,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
         builder.setMessage(AndroidUtilities.replaceTags(LocaleController.formatString("AskStartChatWith", R.string.AskStartChatWith, name)));
         showDialog(builder.create());
-
-        MrMailbox.MrMsgUnref(hMsg);
     }
 
     private void scrollToMessageId(int id, int fromMessageId, boolean select, int loadIndex) {
@@ -3643,12 +3641,11 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
 
                         int mrCount = msglist.length;
                         for (int a = mrCount - 1; a >= 0; a--) {
-                            long hMsg = MrMailbox.MrMailboxGetMsg(MrMailbox.hMailbox, msglist[a]);
-                                TLRPC.Message msg = MrMailbox.hMsg2Message(hMsg);
+                            MrMsg mrMsg = MrMailbox.getMsg(MrMailbox.hMailbox, msglist[a]);
+                                TLRPC.Message msg = MrMailbox.MrMsg2Message(mrMsg);
                                 MessageObject msgDrawObj = new MessageObject(msg, null, true);
                                 messages.add(0, msgDrawObj);
                                 messagesDict[loadIndex].put(msg.id, msgDrawObj);
-                            MrMailbox.MrMsgUnref(hMsg);
                         }
 
                         if (MrMailbox.MrChatGetId(m_hChat) == MrMailbox.MR_CHAT_ID_DEADDROP) {
