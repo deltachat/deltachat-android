@@ -70,22 +70,22 @@ public class IntroActivity extends Activity {
                     R.drawable.intro1
             };
             titles = new int[]{
-                    R.string.Page7Title,
-                    R.string.Page6Title,
-                    R.string.Page5Title,
-                    R.string.Page4Title,
-                    R.string.Page3Title,
-                    R.string.Page2Title,
-                    R.string.Page1Title
+                    R.string.Intro7Headline,
+                    R.string.Intro6Headline,
+                    R.string.Intro5Headline,
+                    R.string.Intro4Headline,
+                    R.string.Intro3Headline,
+                    R.string.Intro2Headline,
+                    R.string.Intro1Headline
             };
             messages = new int[]{
-                    R.string.Page7Message,
-                    R.string.Page6Message,
-                    R.string.Page5Message,
-                    R.string.Page4Message,
-                    R.string.Page3Message,
-                    R.string.Page2Message,
-                    R.string.Page1Message
+                    R.string.Intro7Message,
+                    R.string.Intro6Message,
+                    R.string.Intro5Message,
+                    R.string.Intro4Message,
+                    R.string.Intro3Message,
+                    R.string.Intro2Message,
+                    R.string.Intro1Message
             };
         } else {
             icons = new int[]{
@@ -98,27 +98,27 @@ public class IntroActivity extends Activity {
                     R.drawable.intro7
             };
             titles = new int[]{
-                    R.string.Page1Title,
-                    R.string.Page2Title,
-                    R.string.Page3Title,
-                    R.string.Page4Title,
-                    R.string.Page5Title,
-                    R.string.Page6Title,
-                    R.string.Page7Title
+                    R.string.Intro1Headline,
+                    R.string.Intro2Headline,
+                    R.string.Intro3Headline,
+                    R.string.Intro4Headline,
+                    R.string.Intro5Headline,
+                    R.string.Intro6Headline,
+                    R.string.Intro7Headline
             };
             messages = new int[]{
-                    R.string.Page1Message,
-                    R.string.Page2Message,
-                    R.string.Page3Message,
-                    R.string.Page4Message,
-                    R.string.Page5Message,
-                    R.string.Page6Message,
-                    R.string.Page7Message
+                    R.string.Intro1Message,
+                    R.string.Intro2Message,
+                    R.string.Intro3Message,
+                    R.string.Intro4Message,
+                    R.string.Intro5Message,
+                    R.string.Intro6Message,
+                    R.string.Intro7Message
             };
         }
         viewPager = (ViewPager) findViewById(R.id.intro_view_pager);
         TextView startMessagingButton = (TextView) findViewById(R.id.start_messaging_button);
-        startMessagingButton.setText(LocaleController.getString("StartMessaging", R.string.StartMessaging).toUpperCase());
+        startMessagingButton.setText(LocaleController.getString("StartMessaging", R.string.IntroStartMessaging).toUpperCase());
         if (Build.VERSION.SDK_INT >= 21) {
             StateListAnimator animator = new StateListAnimator();
             animator.addState(new int[]{android.R.attr.state_pressed}, ObjectAnimator.ofFloat(startMessagingButton, "translationZ", AndroidUtilities.dp(2), AndroidUtilities.dp(4)).setDuration(200));

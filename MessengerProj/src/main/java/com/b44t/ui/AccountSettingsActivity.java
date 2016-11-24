@@ -485,7 +485,7 @@ public class AccountSettingsActivity extends BaseFragment implements Notificatio
                     view = new TextInfoPrivacyCell(mContext);
                 }
                 if( i==rowInfoBelowMailPw2) {
-                    ((TextInfoPrivacyCell) view).setText(LocaleController.getString("MyAccoutExplain", R.string.MyAccountExplain));
+                    ((TextInfoPrivacyCell) view).setText(LocaleController.getString("MyAccoutExplain", R.string.MyAccountExplain)+"\n");
                     view.setBackgroundResource(R.drawable.greydivider); // has shadow top+bottom
                 }
                 else if( i==rowInfoBelowSendPw) {
