@@ -28,6 +28,7 @@
 package com.b44t.ui;
 
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.text.InputType;
@@ -36,12 +37,16 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.FrameLayout;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.b44t.messenger.AndroidUtilities;
+import com.b44t.messenger.ContactsController;
 import com.b44t.messenger.LocaleController;
+import com.b44t.messenger.MessagesController;
 import com.b44t.messenger.MrMailbox;
 import com.b44t.messenger.NotificationCenter;
 import com.b44t.messenger.R;
+import com.b44t.messenger.Utilities;
 import com.b44t.ui.ActionBar.ActionBar;
 import com.b44t.ui.ActionBar.ActionBarMenu;
 import com.b44t.ui.ActionBar.BaseFragment;
@@ -53,7 +58,7 @@ import com.b44t.ui.Cells.TextInfoPrivacyCell;
 import com.b44t.ui.Components.LayoutHelper;
 
 
-public class AccountSettingsActivity extends BaseFragment {
+public class AccountSettingsActivity extends BaseFragment implements NotificationCenter.NotificationCenterDelegate {
 
     // the list
     private ListAdapter listAdapter;
@@ -95,10 +100,13 @@ public class AccountSettingsActivity extends BaseFragment {
     // misc.
     private View             doneButton;
     private final static int done_button = 1;
+    private ProgressDialog   progressDialog = null;
 
     @Override
     public boolean onFragmentCreate() {
         super.onFragmentCreate();
+
+        NotificationCenter.getInstance().addObserver(this, NotificationCenter.connectionStateChanged);
 
         rowCount = 0;
         rowSectionBasic = rowCount++;
@@ -125,6 +133,7 @@ public class AccountSettingsActivity extends BaseFragment {
     @Override
     public void onFragmentDestroy() {
         super.onFragmentDestroy();
+        NotificationCenter.getInstance().removeObserver(this, NotificationCenter.connectionStateChanged);
     }
 
     @Override
@@ -242,26 +251,52 @@ public class AccountSettingsActivity extends BaseFragment {
             MrMailbox.setConfig("send_pw", v.isEmpty() ? null : v);
         }
 
-        MrMailbox.disconnect();
-        MrMailbox.configure();
-        MrMailbox.connect();
-
         // show dialog
+        if( progressDialog!=null ) {
+            progressDialog.dismiss();
+            progressDialog = null;
+        }
 
-        AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
-        builder.setMessage("Testing the server connection, this may take a moment.");
-        builder.setNeutralButton(LocaleController.getString("OK", R.string.OK), new DialogInterface.OnClickListener() {
+        progressDialog = new ProgressDialog(getParentActivity());
+        progressDialog.setMessage(LocaleController.getString("ConfiguringAccount", R.string.ConfiguringAccount));
+        progressDialog.setCanceledOnTouchOutside(false);
+        progressDialog.setCancelable(false);
+        progressDialog.setButton(DialogInterface.BUTTON_NEGATIVE, LocaleController.getString("Cancel", R.string.Cancel), new DialogInterface.OnClickListener() {
             @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                finishFragment();
+            public void onClick(DialogInterface dialog, int which) {
+                progressDialog = null;
             }
         });
-        showDialog(builder.create());
+        progressDialog.show();
 
+        // try to connect
+        // (for the future, we may put all this togehter in a single command, that is executed
+        // asynchronously by the backend; then we can skip creating a runnable here)
+        Utilities.searchQueue.postRunnable(new Runnable() {
+            @Override
+            public void run() {
+                MrMailbox.disconnect();
+                MrMailbox.configure();
+                MrMailbox.connect();
+            }
+        });
+    }
 
-        //finishFragment(); // disable this when a dialog is used
-
-        NotificationCenter.getInstance().postNotificationName(NotificationCenter.mainUserInfoChanged);
+    @Override
+    public void didReceivedNotification(int id, Object... args) {
+        if (id == NotificationCenter.connectionStateChanged ) {
+            if( progressDialog!=null ) {
+                progressDialog.dismiss();
+                progressDialog = null;
+            }
+            if( (int)args[0]==1 ) {
+                finishFragment();
+                NotificationCenter.getInstance().postNotificationName(NotificationCenter.mainUserInfoChanged);
+            }
+            else {
+                Toast.makeText(getParentActivity(), LocaleController.getString("CannotConnect", R.string.CannotConnect), Toast.LENGTH_LONG).show();
+            }
+        }
     }
 
     private boolean isModified(){

@@ -718,4 +718,6 @@
     <string name="ViewProfile">Profil anzeigen</string>
     <string name="OneMomentPlease">Einen Moment, bitte...</string>
     <string name="NoChatsHelp">Um einen Chat zu starten, unten auf das Plussymbol tippen; das Menü bietet weitere Opitonen.</string>
+    <string name="CannotDeleteChat">Kann Chat nicht löschen</string>
+    <string name="ConfiguringAccount">Konto konfigurieren...</string>
 </resources>

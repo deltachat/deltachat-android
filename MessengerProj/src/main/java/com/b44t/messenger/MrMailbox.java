@@ -211,13 +211,23 @@ public class MrMailbox {
     /* receive events
      **********************************************************************************************/
 
-    public final static int MR_EVENT_MSGS_UPDATED     = 2000;
-    public final static int MR_EVENT_CONTACTS_CHANGED = 2030;
-    public final static int MR_EVENT_MSG_DELIVERED    = 3000;
-    public final static int MR_EVENT_MSG_READ         = 3010;
+    public final static int MR_EVENT_MSGS_UPDATED             = 2000;
+    public final static int MR_EVENT_CONTACTS_CHANGED         = 2030;
+    public final static int MR_EVENT_MSG_DELIVERED            = 3000;
+    public final static int MR_EVENT_MSG_READ                 = 3010;
+    public final static int MR_EVENT_CONNECTION_STATE_CHANGED = 3020;
     public static long MrCallback(final int event, final long data1, final long data2) // this function is called from within the C-wrapper
     {
         switch(event) {
+            case MR_EVENT_CONNECTION_STATE_CHANGED:
+                AndroidUtilities.runOnUIThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        NotificationCenter.getInstance().postNotificationName(NotificationCenter.connectionStateChanged, (int)data1);
+                    }
+                });
+                return 0;
+
             case MR_EVENT_MSGS_UPDATED:
                 AndroidUtilities.runOnUIThread(new Runnable() {
                     @Override
