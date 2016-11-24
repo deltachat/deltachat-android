@@ -420,13 +420,13 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
             boolean allowOpen = true;
             if (AndroidUtilities.isTablet()) {
                 allowOpen = actionBarLayout.fragmentsStack.size() <= 1 && layersActionBarLayout.fragmentsStack.isEmpty();
-                if (layersActionBarLayout.fragmentsStack.size() == 1 && layersActionBarLayout.fragmentsStack.get(0) instanceof LoginActivity) {
+                /*if (layersActionBarLayout.fragmentsStack.size() == 1 && layersActionBarLayout.fragmentsStack.get(0) instanceof LoginActivity) {
                     allowOpen = false;
-                }
+                }*/
             }
-            if (actionBarLayout.fragmentsStack.size() == 1 && actionBarLayout.fragmentsStack.get(0) instanceof LoginActivity) {
+            /*if (actionBarLayout.fragmentsStack.size() == 1 && actionBarLayout.fragmentsStack.get(0) instanceof LoginActivity) {
                 allowOpen = false;
-            }
+            }*/
             drawerLayoutContainer.setAllowOpenDrawer(allowOpen, false);
         }
 
@@ -1009,12 +1009,12 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
 
             if (!pushOpened && !isNew) {
                 if (AndroidUtilities.isTablet()) {
-                    if (!UserConfig.isClientActivated()) {
+                    /*if (!UserConfig.isClientActivated()) {
                         if (layersActionBarLayout.fragmentsStack.isEmpty()) {
                             layersActionBarLayout.addFragmentToStack(new LoginActivity());
                             drawerLayoutContainer.setAllowOpenDrawer(false, false);
                         }
-                    } else {
+                    } else*/ {
                         if (actionBarLayout.fragmentsStack.isEmpty()) {
                             actionBarLayout.addFragmentToStack(new DialogsActivity(null));
                             drawerLayoutContainer.setAllowOpenDrawer(true, false);
@@ -1022,10 +1022,10 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                     }
                 } else {
                     if (actionBarLayout.fragmentsStack.isEmpty()) {
-                        if (!UserConfig.isClientActivated()) {
+                        /*if (!UserConfig.isClientActivated()) {
                             actionBarLayout.addFragmentToStack(new LoginActivity());
                             drawerLayoutContainer.setAllowOpenDrawer(false, false);
-                        } else {
+                        } else*/ {
                             actionBarLayout.addFragmentToStack(new DialogsActivity(null));
                             drawerLayoutContainer.setAllowOpenDrawer(true, false);
                         }
@@ -1745,7 +1745,7 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
     @Override
     public boolean needPresentFragment(BaseFragment fragment, boolean removeLast, boolean forceWithoutAnimation, ActionBarLayout layout) {
         if (AndroidUtilities.isTablet()) {
-            drawerLayoutContainer.setAllowOpenDrawer(!(fragment instanceof LoginActivity /*|| fragment instanceof CountrySelectActivity EDIT BY MR*/) && layersActionBarLayout.getVisibility() != View.VISIBLE, true);
+            drawerLayoutContainer.setAllowOpenDrawer(!(false /*|| fragment instanceof CountrySelectActivity EDIT BY MR*/) && layersActionBarLayout.getVisibility() != View.VISIBLE, true);
             if (fragment instanceof DialogsActivity) {
                 DialogsActivity dialogsActivity = (DialogsActivity)fragment;
                 if (dialogsActivity.isMainDialogList() && layout != actionBarLayout) {
@@ -1814,11 +1814,11 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
             } else if (layout != layersActionBarLayout) {
                 layersActionBarLayout.setVisibility(View.VISIBLE);
                 drawerLayoutContainer.setAllowOpenDrawer(false, true);
-                if (fragment instanceof LoginActivity) {
+                /*if (fragment instanceof LoginActivity) {
                     backgroundTablet.setVisibility(View.VISIBLE);
                     shadowTabletSide.setVisibility(View.GONE);
                     shadowTablet.setBackgroundColor(0x00000000);
-                } else {
+                } else*/ {
                     shadowTablet.setBackgroundColor(0x7F000000);
                 }
                 layersActionBarLayout.presentFragment(fragment, removeLast, forceWithoutAnimation, false);
@@ -1826,7 +1826,7 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
             }
             return true;
         } else {
-            drawerLayoutContainer.setAllowOpenDrawer(!(fragment instanceof LoginActivity /*|| fragment instanceof CountrySelectActivity EDIT MY MR*/), false);
+            drawerLayoutContainer.setAllowOpenDrawer(!(false /*|| fragment instanceof CountrySelectActivity EDIT MY MR*/), false);
             return true;
         }
     }
@@ -1834,7 +1834,7 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
     @Override
     public boolean needAddFragmentToStack(BaseFragment fragment, ActionBarLayout layout) {
         if (AndroidUtilities.isTablet()) {
-            drawerLayoutContainer.setAllowOpenDrawer(!(fragment instanceof LoginActivity /*|| fragment instanceof CountrySelectActivity EDIT BY MR*/) && layersActionBarLayout.getVisibility() != View.VISIBLE, true);
+            drawerLayoutContainer.setAllowOpenDrawer(!(false /*|| fragment instanceof CountrySelectActivity EDIT BY MR*/) && layersActionBarLayout.getVisibility() != View.VISIBLE, true);
             if (fragment instanceof DialogsActivity) {
                 DialogsActivity dialogsActivity = (DialogsActivity)fragment;
                 if (dialogsActivity.isMainDialogList() && layout != actionBarLayout) {
@@ -1879,11 +1879,11 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
             } else if (layout != layersActionBarLayout) {
                 layersActionBarLayout.setVisibility(View.VISIBLE);
                 drawerLayoutContainer.setAllowOpenDrawer(false, true);
-                if (fragment instanceof LoginActivity) {
+                /*if (fragment instanceof LoginActivity) {
                     backgroundTablet.setVisibility(View.VISIBLE);
                     shadowTabletSide.setVisibility(View.GONE);
                     shadowTablet.setBackgroundColor(0x00000000);
-                } else {
+                } else*/ {
                     shadowTablet.setBackgroundColor(0x7F000000);
                 }
                 layersActionBarLayout.addFragmentToStack(fragment);
@@ -1891,7 +1891,7 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
             }
             return true;
         } else {
-            drawerLayoutContainer.setAllowOpenDrawer(!(fragment instanceof LoginActivity /*|| fragment instanceof CountrySelectActivity EDIT BY MR*/), false);
+            drawerLayoutContainer.setAllowOpenDrawer(!(false /*|| fragment instanceof CountrySelectActivity EDIT BY MR*/), false);
             return true;
         }
     }
