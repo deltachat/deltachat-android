@@ -35,11 +35,9 @@ import com.b44t.ui.ActionBar.Theme;
 public class ProfileSearchCell extends BaseCell {
 
     private static TextPaint namePaint;
-    private static TextPaint nameEncryptedPaint;
     private static TextPaint onlinePaint;
     private static TextPaint offlinePaint;
     private static TextPaint countPaint;
-    private static Drawable lockDrawable;
     private static Drawable groupDrawable;
     private static Drawable countDrawable;
     private static Drawable countDrawableGrey;
@@ -66,7 +64,6 @@ public class ProfileSearchCell extends BaseCell {
     private int nameLeft;
     private int nameTop;
     private StaticLayout nameLayout;
-    private boolean drawNameLock;
     private boolean drawNameGroup;
     private int nameLockLeft;
     private int nameLockTop;
@@ -92,11 +89,6 @@ public class ProfileSearchCell extends BaseCell {
             namePaint.setColor(0xff212121);
             namePaint.setTypeface(AndroidUtilities.getTypeface("fonts/rmedium.ttf"));
 
-            nameEncryptedPaint = new TextPaint(TextPaint.ANTI_ALIAS_FLAG);
-            nameEncryptedPaint.setTextSize(AndroidUtilities.dp(17));
-            nameEncryptedPaint.setColor(0xff00a60e);
-            nameEncryptedPaint.setTypeface(AndroidUtilities.getTypeface("fonts/rmedium.ttf"));
-
             onlinePaint = new TextPaint(TextPaint.ANTI_ALIAS_FLAG);
             onlinePaint.setTextSize(AndroidUtilities.dp(16));
             onlinePaint.setColor(Theme.MSG_LINK_TEXT_COLOR);
@@ -113,7 +105,6 @@ public class ProfileSearchCell extends BaseCell {
             countPaint.setColor(0xffffffff);
             countPaint.setTypeface(AndroidUtilities.getTypeface("fonts/rmedium.ttf"));
 
-            lockDrawable = getResources().getDrawable(R.drawable.list_secret);
             groupDrawable = getResources().getDrawable(R.drawable.list_group);
             countDrawable = getResources().getDrawable(R.drawable.dialogs_badge);
             countDrawableGrey = getResources().getDrawable(R.drawable.dialogs_badge2);
@@ -182,11 +173,10 @@ public class ProfileSearchCell extends BaseCell {
         CharSequence nameString;
         TextPaint currentNamePaint;
 
-        drawNameLock = false;
         drawNameGroup = false;
         drawCheck = false;
 
-        if (encryptedChat != null) {
+        /*if (encryptedChat != null) {
             drawNameLock = true;
             dialog_id = ((long) encryptedChat.id) << 32;
             if (!LocaleController.isRTL) {
@@ -197,7 +187,7 @@ public class ProfileSearchCell extends BaseCell {
                 nameLeft = AndroidUtilities.dp(11);
             }
             nameLockTop = AndroidUtilities.dp(16.5f);
-        } else {
+        } else*/ {
             if (chat != null) {
                 /*if (chat.id < 0) {
                     dialog_id = AndroidUtilities.makeBroadcastId(chat.id);
@@ -245,9 +235,9 @@ public class ProfileSearchCell extends BaseCell {
             nameString = nameString2.replace('\n', ' ');
         }
 
-        if (encryptedChat != null) {
+        /*if (encryptedChat != null) {
             currentNamePaint = nameEncryptedPaint;
-        } else {
+        } else*/ {
             currentNamePaint = namePaint;
         }
 
@@ -258,9 +248,9 @@ public class ProfileSearchCell extends BaseCell {
         } else {
             onlineWidth = nameWidth = getMeasuredWidth() - nameLeft - AndroidUtilities.dp(AndroidUtilities.leftBaseline);
         }
-        if (drawNameLock) {
+        /*if (drawNameLock) {
             nameWidth -= AndroidUtilities.dp(6) + lockDrawable.getIntrinsicWidth();
-        } else if (drawNameGroup) {
+        } else*/ if (drawNameGroup) {
             nameWidth -= AndroidUtilities.dp(6) + groupDrawable.getIntrinsicWidth();
         }
 
@@ -474,10 +464,10 @@ public class ProfileSearchCell extends BaseCell {
             canvas.saveLayerAlpha(0, 0, canvas.getWidth(), canvas.getHeight(), (int)(255 * drawAlpha), Canvas.HAS_ALPHA_LAYER_SAVE_FLAG);
         }
 
-        if (drawNameLock) {
+        /*if (drawNameLock) {
             setDrawableBounds(lockDrawable, nameLockLeft, nameLockTop);
             lockDrawable.draw(canvas);
-        } else if (drawNameGroup) {
+        } else*/ if (drawNameGroup) {
             setDrawableBounds(groupDrawable, nameLockLeft, nameLockTop);
             groupDrawable.draw(canvas);
         }
