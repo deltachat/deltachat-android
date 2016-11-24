@@ -9,25 +9,9 @@
     <string name="LanguageNameInEnglish">Dutch</string>
     <string name="LanguageCode">nl</string>
     <!--signin view-->
-    <string name="YourPhone">Je telefoon</string>
-    <string name="StartText">Bevestig je landnummer en voer je telefoonnummer in.</string>
-    <string name="ChooseCountry">Kies een land</string>
-    <string name="WrongCountry">Onjuist landnummer</string>
     <!--code enter view-->
-    <string name="YourCode">Telefoonverificatie</string>
-    <string name="CallText">We bellen je over %1$d:%2$02d</string>
-    <string name="SmsText">We sturen je een SMS over %1$d:%2$02d</string>
-    <string name="Calling">We bellen je</string>
-    <string name="Code">Code</string>
-    <string name="WrongNumber">Verkeerd nummer?</string>
-    <string name="DidNotGetTheCode">Geen code ontvangen?</string>
     <!--signup view-->
-    <string name="YourName">Je naam</string>
-    <string name="RegisterText">Voer je voor- en achternaam in</string>
     <!--<string name="RegisterText">Set up your name and picture</string>-->
-    <string name="FirstName">Voornaam (verplicht)</string>
-    <string name="LastName">Achternaam (optioneel)</string>
-    <string name="CancelRegistration">Registratie annuleren</string>
     <!--chats view-->
     <string name="Settings">Instellingen</string>
     <string name="NewGroup">Nieuwe groep</string>
@@ -411,17 +395,6 @@
     <string name="VideoCaption">Video-onderschrift</string>
     <string name="Caption">Onderschrift</string>
     <!--password view-->
-    <string name="RestoreEmailSentInfo">Controleer je e-mail en geef de 6-cijferige code in die we je hebben gestuurd.</string>
-    <string name="RestoreEmailTrouble">Kun je je e-mail niet benaderen %1$s?</string>
-    <string name="ResetMyAccount">ACCOUNT RESETTEN</string>
-    <string name="ResetMyAccountText">Al je chats, berichten en alle andere data gaan verloren als je verder gaat met de account-reset.</string>
-    <string name="ResetMyAccountWarning">Waarschuwing</string>
-    <string name="ResetMyAccountWarningText">Je kunt dit niet ongedaan maken.\n\nAl je chats, berichten en data gaan verloren als je je account reset.</string>
-    <string name="ResetMyAccountWarningReset">Resetten</string>
-    <string name="LoginPassword">Wachtwoord</string>
-    <string name="LoginPasswordText">Twee-staps-verificatie ingeschakeld. Je account is met een extra wachtwoord beveiligd.</string>
-    <string name="ForgotPassword">Wachtwoord vergeten?</string>
-    <string name="PasswordCode">Code</string>
     <!--privacy settings-->
     <string name="PrivacySettings">Privacy en veiligheid</string>
     <string name="PrivacyTitle">Privacy</string>

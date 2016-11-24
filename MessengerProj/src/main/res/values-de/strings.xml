@@ -9,25 +9,9 @@
     <string name="LanguageNameInEnglish">German</string>
     <string name="LanguageCode">de</string>
     <!--signin view-->
-    <string name="YourPhone">Dein Telefon</string>
-    <string name="StartText">Bitte bestätige deine Landesvorwahl und deine Telefonnummer.</string>
-    <string name="ChooseCountry">Wähle ein Land</string>
-    <string name="WrongCountry">Falsche Landesvorwahl</string>
     <!--code enter view-->
-    <string name="YourCode">Nummer verifizieren</string>
-    <string name="CallText">Wir rufen dich an in %1$d:%2$02d</string>
-    <string name="SmsText">Wir senden Dir eine SMS in %1$d:%2$02d</string>
-    <string name="Calling">Wir rufen dich an…</string>
-    <string name="Code">Code</string>
-    <string name="WrongNumber">Falsche Nummer?</string>
-    <string name="DidNotGetTheCode">Code nicht erhalten?</string>
     <!--signup view-->
-    <string name="YourName">Dein Name</string>
-    <string name="RegisterText">Gib deinen Vor- und Nachnamen ein</string>
     <!--<string name="RegisterText">Set up your name and picture</string>-->
-    <string name="FirstName">Vorname (erforderlich)</string>
-    <string name="LastName">Nachname (optional)</string>
-    <string name="CancelRegistration">Registrierung abbrechen</string>
     <!--chats view-->
     <string name="Settings">Einstellungen</string>
     <string name="NewGroup">Neue Gruppe</string>
@@ -411,17 +395,6 @@
     <string name="VideoCaption">Videobeschriftung</string>
     <string name="Caption">Beschriftung</string>
     <!--password view-->
-    <string name="RestoreEmailSentInfo">Überprüfe deine Mails und gib den 6-stelligen Code aus userer Email ein.</string>
-    <string name="RestoreEmailTrouble">Du hast keinen Zugang zu deiner Adresse %1$s?</string>
-    <string name="ResetMyAccount">KONTO ZURÜCKSETZEN</string>
-    <string name="ResetMyAccountText">Wenn du dein Konto zurücksetzt, verlierst du alle Chats und Nachrichten, ebenso deine geteilten Bilder und Videos.</string>
-    <string name="ResetMyAccountWarning">Warnung</string>
-    <string name="ResetMyAccountWarningText">Dies kann nicht rückgängig gemacht werden.\n\nWenn du dein Konto zurücksetzt, sind alle Chats gelöscht.</string>
-    <string name="ResetMyAccountWarningReset">Zurücksetzen</string>
-    <string name="LoginPassword">Kennwort</string>
-    <string name="LoginPasswordText">Du hast die zweistufige Bestätigung aktiviert. Dein Konto ist mit einem zusätzlichem Kennwort geschützt.</string>
-    <string name="ForgotPassword">Kennwort vergessen?</string>
-    <string name="PasswordCode">Code</string>
     <!--privacy settings-->
     <string name="PrivacySettings">Privatsphäre und Sicherheit</string>
     <string name="PrivacyTitle">Privatsphäre</string>

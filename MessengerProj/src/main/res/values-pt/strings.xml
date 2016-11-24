@@ -9,25 +9,9 @@
     <string name="LanguageNameInEnglish">Portuguese</string>
     <string name="LanguageCode">pt</string>
     <!--signin view-->
-    <string name="YourPhone">Seu número</string>
-    <string name="StartText">Confirme o código de seu país e preencha seu número de telefone.</string>
-    <string name="ChooseCountry">Escolha um país</string>
-    <string name="WrongCountry">Código do país incorreto</string>
     <!--code enter view-->
-    <string name="YourCode">Verificação do tel.</string>
-    <string name="CallText">Vamos te ligar em %1$d:%2$02d</string>
-    <string name="SmsText">Vamos te enviar uma SMS em %1$d:%2$02d</string>
-    <string name="Calling">Estamos te ligando...</string>
-    <string name="Code">Código</string>
-    <string name="WrongNumber">Número incorreto?</string>
-    <string name="DidNotGetTheCode">Não recebeu o código?</string>
     <!--signup view-->
-    <string name="YourName">Seu nome</string>
-    <string name="RegisterText">Configure seu nome e sobrenome</string>
     <!--<string name="RegisterText">Set up your name and picture</string>-->
-    <string name="FirstName">Nome (obrigatório)</string>
-    <string name="LastName">Sobrenome (opcional)</string>
-    <string name="CancelRegistration">Cancelar registro</string>
     <!--chats view-->
     <string name="Settings">Configurações</string>
     <string name="NewGroup">Novo Grupo</string>
@@ -411,17 +395,6 @@
     <string name="VideoCaption">Legenda do Vídeo</string>
     <string name="Caption">Legenda</string>
     <!--password view-->
-    <string name="RestoreEmailSentInfo">Por favor, verifique o seu e-mail e digite aqui o código de 6 dígitos recebido.</string>
-    <string name="RestoreEmailTrouble">Está tendo problemas para acessar seu e-mail %1$s?</string>
-    <string name="ResetMyAccount">APAGAR MINHA CONTA</string>
-    <string name="ResetMyAccountText">Se você prosseguir e apagar a sua conta, você perderá todos os seus chats e mensagens, assim como todas as suas mídias e arquivos compartilhados.</string>
-    <string name="ResetMyAccountWarning">Aviso</string>
-    <string name="ResetMyAccountWarningText">Essa ação não pode ser desfeita.\n\nSe você apagar a sua conta, todas as suas mensagens e chats serão apagados.</string>
-    <string name="ResetMyAccountWarningReset">Apagar</string>
-    <string name="LoginPassword">Senha</string>
-    <string name="LoginPasswordText">Você habilitou a verificação em duas etapas, a sua conta está protegida com uma senha adicional.</string>
-    <string name="ForgotPassword">Esqueceu a senha?</string>
-    <string name="PasswordCode">Código</string>
     <!--privacy settings-->
     <string name="PrivacySettings">Privacidade e Segurança</string>
     <string name="PrivacyTitle">Privacidade</string>

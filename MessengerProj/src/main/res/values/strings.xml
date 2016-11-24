@@ -9,25 +9,9 @@
     <string name="LanguageNameInEnglish" tools:keep="@string/LanguageNameInEnglish">English</string>
     <string name="LanguageCode" tools:keep="@string/LanguageCode">en</string>
     <!--signin view-->
-    <string name="YourPhone">Your phone</string>
-    <string name="StartText">Please confirm your country code and enter your phone number.</string>
-    <string name="ChooseCountry">Choose a country</string>
-    <string name="WrongCountry">Wrong country code</string>
     <!--code enter view-->
-    <string name="YourCode">Phone verification</string>
-    <string name="CallText">We will call you in %1$d:%2$02d</string>
-    <string name="SmsText">We will send you an SMS in %1$d:%2$02d</string>
-    <string name="Calling">Calling you...</string>
-    <string name="Code">Code</string>
-    <string name="WrongNumber">Wrong number?</string>
-    <string name="DidNotGetTheCode">Didn\'t get the code?</string>
     <!--signup view-->
-    <string name="YourName">Your name</string>
-    <string name="RegisterText">Set up your first and last name</string>
     <!--<string name="RegisterText">Set up your name and picture</string>-->
-    <string name="FirstName">First name (required)</string>
-    <string name="LastName">Last name (optional)</string>
-    <string name="CancelRegistration">Cancel registration</string>
     <!--chats view-->
     <string name="Settings">Settings</string>
     <string name="NewGroup">New group</string>
@@ -411,17 +395,6 @@
     <string name="VideoCaption">Video Caption</string>
     <string name="Caption">Caption</string>
     <!--password view-->
-    <string name="RestoreEmailSentInfo">Please check your e-mail and enter the 6-digit code we have sent here.</string>
-    <string name="RestoreEmailTrouble">Having trouble accessing your e-mail %1$s?</string>
-    <string name="ResetMyAccount">RESET MY ACCOUNT</string>
-    <string name="ResetMyAccountText">You will lose all your chats and messages, along with any media and files you shared, if you proceed with resetting your account.</string>
-    <string name="ResetMyAccountWarning">Warning</string>
-    <string name="ResetMyAccountWarningText">This action can\'t be undone.\n\nIf you reset your account, all your messages and chats will be deleted.</string>
-    <string name="ResetMyAccountWarningReset">Reset</string>
-    <string name="LoginPassword">Password</string>
-    <string name="LoginPasswordText">You have enabled Two-Step Verification, so your account is protected with an additional password.</string>
-    <string name="ForgotPassword">Forgot password?</string>
-    <string name="PasswordCode">Code</string>
     <!--privacy settings-->
     <string name="PrivacySettings">Privacy and Security</string>
     <string name="PrivacyTitle" tools:keep="@string/PrivacyTitle">Privacy</string>

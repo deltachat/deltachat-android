@@ -9,25 +9,9 @@
     <string name="LanguageNameInEnglish">Spanish</string>
     <string name="LanguageCode">es</string>
     <!--signin view-->
-    <string name="YourPhone">Tu teléfono</string>
-    <string name="StartText">Por favor, confirma tu código de país y pon tu número de teléfono.</string>
-    <string name="ChooseCountry">Elige un país</string>
-    <string name="WrongCountry">Código de país incorrecto</string>
     <!--code enter view-->
-    <string name="YourCode">Verificación</string>
-    <string name="CallText">Te llamaremos en %1$d:%2$02d</string>
-    <string name="SmsText">Te enviaremos un SMS en %1$d:%2$02d</string>
-    <string name="Calling">Llamándote...</string>
-    <string name="Code">Código</string>
-    <string name="WrongNumber">¿Número incorrecto?</string>
-    <string name="DidNotGetTheCode">¿No recibiste el código?</string>
     <!--signup view-->
-    <string name="YourName">Tu nombre</string>
-    <string name="RegisterText">Ingresa tu nombre y apellidos</string>
     <!--<string name="RegisterText">Set up your name and picture</string>-->
-    <string name="FirstName">Nombre (requerido)</string>
-    <string name="LastName">Apellidos (opcional)</string>
-    <string name="CancelRegistration">Cancelar registro</string>
     <!--chats view-->
     <string name="Settings">Ajustes</string>
     <string name="NewGroup">Nuevo grupo</string>
@@ -411,17 +395,6 @@
     <string name="VideoCaption">Comentario de vídeo</string>
     <string name="Caption">Comentario</string>
     <!--password view-->
-    <string name="RestoreEmailSentInfo">Por favor, revisa tu e-mail y pon el código de 6 dígitos que te enviamos ahí.</string>
-    <string name="RestoreEmailTrouble">¿Tienes problemas para acceder a tu e-mail %1$s?</string>
-    <string name="ResetMyAccount">RESTABLECER MI CUENTA</string>
-    <string name="ResetMyAccountText">Si continúas con el reinicio de tu cuenta, perderás todos tus chats y mensajes, junto con toda la multimedia y archivos que compartiste.</string>
-    <string name="ResetMyAccountWarning">Advertencia</string>
-    <string name="ResetMyAccountWarningText">Esta acción no se puede deshacer.\n\nSi restableces tu cuenta, todos tus mensajes y chats se eliminarán.</string>
-    <string name="ResetMyAccountWarningReset">Restablecer</string>
-    <string name="LoginPassword">Contraseña</string>
-    <string name="LoginPasswordText">Activaste la verificación en dos pasos, así que tu cuenta está protegida con una contraseña adicional.</string>
-    <string name="ForgotPassword">¿Olvidaste la contraseña?</string>
-    <string name="PasswordCode">Código</string>
     <!--privacy settings-->
     <string name="PrivacySettings">Privacidad y seguridad</string>
     <string name="PrivacyTitle">Privacidad</string>

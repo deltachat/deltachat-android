@@ -9,25 +9,9 @@
     <string name="LanguageNameInEnglish">Italian</string>
     <string name="LanguageCode">it</string>
     <!--signin view-->
-    <string name="YourPhone">Il tuo telefono</string>
-    <string name="StartText">Conferma il prefisso nazionale e inserisci il tuo numero di telefono.</string>
-    <string name="ChooseCountry">Scegli una nazione</string>
-    <string name="WrongCountry">Prefisso errato</string>
     <!--code enter view-->
-    <string name="YourCode">Verifica numero</string>
-    <string name="CallText">Ti telefoneremo tra %1$d:%2$02d</string>
-    <string name="SmsText">Ti invieremo un SMS tra %1$d:%2$02d</string>
-    <string name="Calling">Ti stiamo chiamando…</string>
-    <string name="Code">Codice</string>
-    <string name="WrongNumber">Numero errato?</string>
-    <string name="DidNotGetTheCode">Non hai ricevuto il codice?</string>
     <!--signup view-->
-    <string name="YourName">Il tuo nome</string>
-    <string name="RegisterText">Inserisci il tuo nome e cognome</string>
     <!--<string name="RegisterText">Set up your name and picture</string>-->
-    <string name="FirstName">Nome (richiesto)</string>
-    <string name="LastName">Cognome (facoltativo)</string>
-    <string name="CancelRegistration">Annulla registrazione</string>
     <!--chats view-->
     <string name="Settings">Impostazioni</string>
     <string name="NewGroup">Nuovo gruppo</string>
@@ -411,17 +395,6 @@
     <string name="VideoCaption">Didascalia video</string>
     <string name="Caption">Didascalia</string>
     <!--password view-->
-    <string name="RestoreEmailSentInfo">Controlla la tua e-mail e inserisci il codice a 6 cifre che ti abbiamo inviato.</string>
-    <string name="RestoreEmailTrouble">Hai problemi ad accedere alla tua e-mail %1$s?</string>
-    <string name="ResetMyAccount">RIPRISTINA IL MIO ACCOUNT</string>
-    <string name="ResetMyAccountText">Perderai tutte le chat e i messaggi, insieme ai media e ai file condivisi, se procederai a ripristinare il tuo account.</string>
-    <string name="ResetMyAccountWarning">Attenzione</string>
-    <string name="ResetMyAccountWarningText">Questa azione non può essere annullata.\n\nSe ripristini il tuo account, tutti i tuoi messaggi e le tue chat saranno eliminati.</string>
-    <string name="ResetMyAccountWarningReset">Ripristina</string>
-    <string name="LoginPassword">Password</string>
-    <string name="LoginPasswordText">Hai attivato la verifica in due passaggi, così il tuo account è protetto con una password aggiuntiva.</string>
-    <string name="ForgotPassword">Password dimenticata?</string>
-    <string name="PasswordCode">Codice</string>
     <!--privacy settings-->
     <string name="PrivacySettings">Privacy e sicurezza</string>
     <string name="PrivacyTitle">Privacy</string>
