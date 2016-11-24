@@ -594,7 +594,7 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
                 } else if (i == usernameRow) {
                     presentFragment(new NameSettingsActivity());
                 } else if (i == numberRow) {
-                    presentFragment(new AccountSettingsActivity());
+                    presentFragment(new AccountSettingsActivity(null));
                 } else if (i == stickersRow) {
                     //presentFragment(new StickersActivity()); // EDIT BY MR
                 } else if (i == cacheRow) {

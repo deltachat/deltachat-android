@@ -31,6 +31,7 @@ import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.os.Bundle;
 import android.text.InputType;
 import android.view.View;
 import android.view.ViewGroup;
@@ -101,6 +102,14 @@ public class AccountSettingsActivity extends BaseFragment implements Notificatio
     private View             doneButton;
     private final static int done_button = 1;
     private ProgressDialog   progressDialog = null;
+    boolean fromIntro;
+
+    public AccountSettingsActivity(Bundle args) {
+        super();
+        if( args!=null ) {
+            fromIntro = args.getBoolean("fromIntro", false);
+        }
+    }
 
     @Override
     public boolean onFragmentCreate() {
@@ -140,13 +149,16 @@ public class AccountSettingsActivity extends BaseFragment implements Notificatio
     public View createView(Context context) {
 
         // create action bar
-        actionBar.setBackButtonImage(R.drawable.ic_ab_back);
+        if( !fromIntro ) {
+            actionBar.setBackButtonImage(R.drawable.ic_ab_back);
+        }
+
         actionBar.setAllowOverlayTitle(true);
         actionBar.setTitle(LocaleController.getString("AccountSettings", R.string.AccountSettings));
         actionBar.setActionBarMenuOnItemClick(new ActionBar.ActionBarMenuOnItemClick() {
             @Override
             public void onItemClick(int id) {
-                if (id == -1) {
+                if (id == -1 && !fromIntro ) {
                     if( isModified() ) { // TODO: maybe we should also ask if the user presses the "back" button
                         AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
                         builder.setMessage(LocaleController.getString("DiscardChanges", R.string.DiscardChanges));
@@ -290,7 +302,13 @@ public class AccountSettingsActivity extends BaseFragment implements Notificatio
                 progressDialog = null;
             }
             if( (int)args[0]==1 ) {
-                finishFragment();
+                if( fromIntro ) {
+                    presentFragment(new DialogsActivity(null), true);
+                    ((LaunchActivity)getParentActivity()).drawerLayoutContainer.setAllowOpenDrawer(true, false);
+                }
+                else {
+                    finishFragment();
+                }
                 NotificationCenter.getInstance().postNotificationName(NotificationCenter.mainUserInfoChanged);
             }
             else {

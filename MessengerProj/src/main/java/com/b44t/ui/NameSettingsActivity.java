@@ -30,6 +30,7 @@ package com.b44t.ui;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.text.InputType;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -245,6 +246,7 @@ public class NameSettingsActivity extends BaseFragment {
                 if (i == rowDisplayname) {
                     if(displaynameCell==null) {
                         displaynameCell = new MrEditTextCell(mContext);
+                        displaynameCell.getEditTextView().setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS | InputType.TYPE_TEXT_FLAG_CAP_WORDS);
                         displaynameCell.setValueHintAndLabel(MrMailbox.getConfig("displayname", ""),
                                 "", "", true);
                     }

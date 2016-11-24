@@ -115,6 +115,17 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
     protected void onCreate(Bundle savedInstanceState) {
         ApplicationLoader.postInitApplication();
 
+        if( MrMailbox.isConfigured()==0 ) {
+            Intent intent = getIntent();
+            if (intent != null && !intent.getBooleanExtra("fromIntro", false)) {
+                Intent intent2 = new Intent(this, IntroActivity.class);
+                startActivity(intent2);
+                super.onCreate(savedInstanceState);
+                finish();
+                return;
+            }
+        }
+
         /*if (!UserConfig.isClientActivated()) {
             Intent intent = getIntent();
             if (intent != null && intent.getAction() != null && (Intent.ACTION_SEND.equals(intent.getAction()) || intent.getAction().equals(Intent.ACTION_SEND_MULTIPLE))) {
@@ -340,10 +351,12 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.wasUnableToFindCurrentLocation);
 
         if (actionBarLayout.fragmentsStack.isEmpty()) {
-            /*if (!UserConfig.isClientActivated()) {
-                actionBarLayout.addFragmentToStack(new LoginActivity());
+            if ( MrMailbox.isConfigured()==0 ) {
+                Bundle args = new Bundle();
+                args.putBoolean("fromIntro", true);
+                actionBarLayout.addFragmentToStack(new AccountSettingsActivity(args));
                 drawerLayoutContainer.setAllowOpenDrawer(false, false);
-            } else*/ {
+            } else {
                 actionBarLayout.addFragmentToStack(new DialogsActivity(null));
                 drawerLayoutContainer.setAllowOpenDrawer(true, false);
             }
