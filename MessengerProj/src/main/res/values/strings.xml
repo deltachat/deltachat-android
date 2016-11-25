@@ -502,25 +502,24 @@
     <string name="PermissionOpenSettings">SETTINGS</string>
     <!--Intro view-->
     <string name="Intro1Headline">Delta Chat</string>
-    <string name="Intro1Message">Der Messenger mit der <![CDATA[<b>größten Reichweite</b>]]> der Welt.<![CDATA[<br/><b>Kostenlos</b>]]> und <![CDATA[<b>sicher</b>]]>.</string>
+    <string name="Intro1Message">The messenger with the <![CDATA[<b>largest range</b>]]> in the world.<![CDATA[<br/><b>Free</b>]]> and <![CDATA[<b>save</b>]]>.</string>
 
-    <string name="Intro2Headline">Keine Abhängigkeiten</string>
-    <string name="Intro2Message"><![CDATA[<b>Unabhängig</b>]]> von fremden Diensten und Servern.<![CDATA[<br/>]]>Die App verwendet nur Ihren E-Mail-Server.</string>
+    <string name="Intro2Headline">Independent</string>
+    <string name="Intro2Message"><![CDATA[<b>No dependencies</b>]]> to foreign computers or services. The app only uses your email-server.</string>
 
-    <string name="Intro3Headline">Schnell</string>
-    <string name="Intro3Message"><![CDATA[<b>Push-Nachrichten</b>]]> in Sekunden.<![CDATA[<br/>]]>Rasantes Interface.</string>
+    <string name="Intro3Headline">Fast</string>
+    <string name="Intro3Message"><![CDATA[<b>Push-messages</b>]]> in seconds.<![CDATA[<br/>]]>Rapid interface.</string>
 
-    <string name="Intro4Headline">Leistungsstark</string>
-    <string name="Intro4Message"><![CDATA[<b>Unbegrenzt große</b>]]> Chats, Bilder, Videos,<![CDATA[<br/>]]>Sprachnachrichten und mehr.</string>
+    <string name="Intro4Headline">Powerful</string>
+    <string name="Intro4Message"><![CDATA[<b>Unlimited</b>]]> chats, images, videos, audio messages and more. Multi-client capable.</string>
 
-    <string name="Intro5Headline">Kostenlos</string>
-    <string name="Intro5Message"><![CDATA[<b>Delta Chat</b>]]> ist für immer kostenlos.<![CDATA[<br/>]]>OpenSource. Keine Werbung. Kein Abo.</string>
+    <string name="Intro5Headline">Free</string>
+    <string name="Intro5Message"><![CDATA[<b>Delta Chat</b>]]> ist free forever.<![CDATA[<br/>]]>OpenSource. No ads. No subscription. No vendor lock-in.</string>
 
-    <string name="Intro6Headline">Sicher</string>
-    <string name="Intro6Message"><![CDATA[<b>Verschlüsselung</b>]]> mit allen gängigen Verfahren.<![CDATA[<br/>]]>Die Nachrichten bleiben auf Ihren Servern.</string>
+    <string name="Intro6Headline">Safe</string>
+    <string name="Intro6Message"><![CDATA[<b>Encrypted</b>]]> with all common algorithms. Messages stay on your servers.</string>
 
-    <string name="Intro7Headline">Vertraulich</string>
-    <string name="Intro7Message"><![CDATA[<b>Delta Chat</b>]]> ist für die geschäftliche Kommunikation geeignet.</string>
+    <string name="Intro7Headline">Trustworthy</string>
 
     <string name="IntroStartMessaging">Start Messaging</string>
     <!--plural-->
@@ -701,4 +700,5 @@
     <string name="NoChatsHelp">Start messaging by pressing the new chat button in the bottom right corner or tap the menu button for more options.</string>
     <string name="ConfiguringAccount">Configuring account...</string>
     <string name="CannotConnect">Cannot connect, please check the configuration.</string>
+    <string name="Intro7Message"><![CDATA[<b>Delta Chat</b>]]> is safe for business use, compatible and standards-based.</string>
 </resources>
