@@ -242,7 +242,7 @@ public class GroupCreateFinalActivity extends BaseFragment implements Notificati
         nameTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
         nameTextView.setHintTextColor(0xff979797);
         nameTextView.setImeOptions(EditorInfo.IME_FLAG_NO_EXTRACT_UI);
-        nameTextView.setInputType(InputType.TYPE_TEXT_FLAG_CAP_SENTENCES);
+        nameTextView.setInputType(InputType.TYPE_TEXT_FLAG_CAP_WORDS);
         nameTextView.setPadding(0, 0, 0, AndroidUtilities.dp(8));
         InputFilter[] inputFilters = new InputFilter[1];
         inputFilters[0] = new InputFilter.LengthFilter(100);
