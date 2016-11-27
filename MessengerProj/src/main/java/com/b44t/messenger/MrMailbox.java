@@ -63,6 +63,8 @@ public class MrMailbox {
         return MrMailboxFetch(m_hMailbox);
     }
 
+    public native static String getErrorDescr();
+
     public static int setConfig(String key, String value) {
         return MrMailboxSetConfig(m_hMailbox, key, value);
     }
@@ -83,7 +85,7 @@ public class MrMailbox {
         return MrMailboxExecute(m_hMailbox, cmd);
     }
 
-    private static long           m_hMailbox = 0;
+    private static long           m_hMailbox = 0; // do not rename this, is used in C-part
     private native static long    MrMailboxNew               (); // returns hMailbox which must be unref'd after usage (Names as mrmailbox_new don't work due to the additional underscore)
     private native static int     MrMailboxOpen              (long hMailbox, String dbfile, String blobdir);
     private native static void    MrMailboxClose             (long hMailbox);

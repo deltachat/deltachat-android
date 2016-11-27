@@ -312,7 +312,11 @@ public class AccountSettingsActivity extends BaseFragment implements Notificatio
                 NotificationCenter.getInstance().postNotificationName(NotificationCenter.mainUserInfoChanged);
             }
             else {
-                Toast.makeText(getParentActivity(), LocaleController.getString("CannotConnect", R.string.CannotConnect), Toast.LENGTH_LONG).show();
+                String err = MrMailbox.getErrorDescr();
+                if( err.isEmpty() ) {
+                    err = LocaleController.getString("CannotConnect", R.string.CannotConnect);
+                }
+                Toast.makeText(getParentActivity(), err, Toast.LENGTH_LONG).show();
             }
         }
     }

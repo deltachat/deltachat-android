@@ -115,6 +115,19 @@ static jintArray carray2jintArray_n_carray_free(JNIEnv *env, const carray* ca)
 /*******************************************************************************
  * MrMailbox
  ******************************************************************************/
+
+
+static mrmailbox_t* get_mrmailbox_t(JNIEnv *env, jclass cls)
+{
+	static jfieldID fid = 0;
+	if( fid == 0 ) {
+		fid = (*env)->GetStaticFieldID(env, cls, "m_hMailbox", "J" /*Signature, J=long*/);
+	}
+	if( fid ) {
+		return (mrmailbox_t*)(*env)->GetStaticLongField(env, cls, fid);
+	}
+	return NULL;
+}
  
 
 /* MrMailbox - new/delete */
@@ -193,6 +206,15 @@ JNIEXPORT void Java_com_b44t_messenger_MrMailbox_MrMailboxDisconnect(JNIEnv *env
 JNIEXPORT jint Java_com_b44t_messenger_MrMailbox_MrMailboxFetch(JNIEnv *env, jclass c, jlong hMailbox)
 {
 	return mrmailbox_fetch((mrmailbox_t*)hMailbox);
+}
+
+
+JNIEXPORT jstring Java_com_b44t_messenger_MrMailbox_getErrorDescr(JNIEnv *env, jclass cls)
+{
+	char* c = mrmailbox_get_error_descr(get_mrmailbox_t(env, cls));
+		jstring ret = JSTRING_NEW(c);
+	free(c);
+	return ret;
 }
 
 
