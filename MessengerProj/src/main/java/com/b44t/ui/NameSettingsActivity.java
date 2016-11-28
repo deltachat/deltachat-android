@@ -47,7 +47,7 @@ import com.b44t.ui.ActionBar.ActionBarMenu;
 import com.b44t.ui.ActionBar.BaseFragment;
 import com.b44t.ui.Adapters.BaseFragmentAdapter;
 import com.b44t.ui.Cells.HeaderCell;
-import com.b44t.ui.Cells.MrEditTextCell;
+import com.b44t.ui.Cells.EditTextCell;
 import com.b44t.ui.Cells.TextInfoPrivacyCell;
 import com.b44t.ui.Components.LayoutHelper;
 
@@ -66,7 +66,7 @@ public class NameSettingsActivity extends BaseFragment {
     private final int   typeTextEntry = 1;
     private final int   typeSection   = 2;
 
-    MrEditTextCell      displaynameCell; // warning all these objects may be null!
+    EditTextCell displaynameCell; // warning all these objects may be null!
 
     // misc.
     private View             doneButton;
@@ -245,7 +245,7 @@ public class NameSettingsActivity extends BaseFragment {
             else if (type == typeTextEntry) {
                 if (i == rowDisplayname) {
                     if(displaynameCell==null) {
-                        displaynameCell = new MrEditTextCell(mContext);
+                        displaynameCell = new EditTextCell(mContext);
                         displaynameCell.getEditTextView().setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS | InputType.TYPE_TEXT_FLAG_CAP_WORDS);
                         displaynameCell.setValueHintAndLabel(MrMailbox.getConfig("displayname", ""),
                                 "", "", true);

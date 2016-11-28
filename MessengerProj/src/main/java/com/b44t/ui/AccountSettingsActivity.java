@@ -41,9 +41,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.b44t.messenger.AndroidUtilities;
-import com.b44t.messenger.ContactsController;
 import com.b44t.messenger.LocaleController;
-import com.b44t.messenger.MessagesController;
 import com.b44t.messenger.MrMailbox;
 import com.b44t.messenger.NotificationCenter;
 import com.b44t.messenger.R;
@@ -53,7 +51,7 @@ import com.b44t.ui.ActionBar.ActionBarMenu;
 import com.b44t.ui.ActionBar.BaseFragment;
 import com.b44t.ui.Adapters.BaseFragmentAdapter;
 import com.b44t.ui.Cells.HeaderCell;
-import com.b44t.ui.Cells.MrEditTextCell;
+import com.b44t.ui.Cells.EditTextCell;
 import com.b44t.ui.Cells.ShadowSectionCell;
 import com.b44t.ui.Cells.TextInfoPrivacyCell;
 import com.b44t.ui.Components.LayoutHelper;
@@ -88,15 +86,15 @@ public class AccountSettingsActivity extends BaseFragment implements Notificatio
     private final int   typeShadowSection = 2;
     private final int   typeSection       = 3;
 
-    MrEditTextCell      addrCell;  // warning all these objects may be null!
-    MrEditTextCell      mailPwCell;
-    MrEditTextCell      mailServerCell;
-    MrEditTextCell      mailPortCell;
-    MrEditTextCell      mailUserCell;
-    MrEditTextCell      sendPwCell;
-    MrEditTextCell      sendServerCell;
-    MrEditTextCell      sendPortCell;
-    MrEditTextCell      sendUserCell;
+    EditTextCell addrCell;  // warning all these objects may be null!
+    EditTextCell mailPwCell;
+    EditTextCell mailServerCell;
+    EditTextCell mailPortCell;
+    EditTextCell mailUserCell;
+    EditTextCell sendPwCell;
+    EditTextCell sendServerCell;
+    EditTextCell sendPortCell;
+    EditTextCell sendUserCell;
 
     // misc.
     private View             doneButton;
@@ -392,7 +390,7 @@ public class AccountSettingsActivity extends BaseFragment implements Notificatio
             if (type == typeTextEntry) {
                 if (i == rowAddr) {
                     if( addrCell==null) {
-                        addrCell = new MrEditTextCell(mContext);
+                        addrCell = new EditTextCell(mContext);
                         addrCell.setValueHintAndLabel(MrMailbox.getConfig("addr", ""),
                                 "", LocaleController.getString("MyEmailAddress", R.string.MyEmailAddress), false);
                         addrCell.getEditTextView().setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS | InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
@@ -401,7 +399,7 @@ public class AccountSettingsActivity extends BaseFragment implements Notificatio
                 }
                 else if (i == rowMailPw) {
                     if( mailPwCell==null) {
-                        mailPwCell = new MrEditTextCell(mContext);
+                        mailPwCell = new EditTextCell(mContext);
                         mailPwCell.setValueHintAndLabel(MrMailbox.getConfig("mail_pw", ""),
                                 "", LocaleController.getString("Password", R.string.Password), false);
                         mailPwCell.getEditTextView().setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS | InputType.TYPE_TEXT_VARIATION_PASSWORD);
@@ -410,7 +408,7 @@ public class AccountSettingsActivity extends BaseFragment implements Notificatio
                 }
                 else if (i == rowMailServer) {
                     if( mailServerCell==null) {
-                        mailServerCell = new MrEditTextCell(mContext);
+                        mailServerCell = new EditTextCell(mContext);
                         mailServerCell.setValueHintAndLabel(MrMailbox.getConfig("mail_server", ""),
                                 LocaleController.getString("Automatic", R.string.Automatic), LocaleController.getString("ImapServer", R.string.ImapServer), false);
                     }
@@ -418,7 +416,7 @@ public class AccountSettingsActivity extends BaseFragment implements Notificatio
                 }
                 else if (i == rowMailPort) {
                     if( mailPortCell==null) {
-                        mailPortCell = new MrEditTextCell(mContext);
+                        mailPortCell = new EditTextCell(mContext);
                         mailPortCell.setValueHintAndLabel(MrMailbox.getConfig("mail_port", ""),
                                 LocaleController.getString("Default", R.string.Default), LocaleController.getString("ImapPort", R.string.ImapPort), false);
                     }
@@ -426,7 +424,7 @@ public class AccountSettingsActivity extends BaseFragment implements Notificatio
                 }
                 else if (i == rowMailUser) {
                     if( mailUserCell==null) {
-                        mailUserCell = new MrEditTextCell(mContext);
+                        mailUserCell = new EditTextCell(mContext);
                         mailUserCell.setValueHintAndLabel(MrMailbox.getConfig("mail_user", ""),
                                 LocaleController.getString("FromAbove", R.string.FromAbove), LocaleController.getString("ImapLoginname", R.string.ImapLoginname), false);
                     }
@@ -434,7 +432,7 @@ public class AccountSettingsActivity extends BaseFragment implements Notificatio
                 }
                 else if (i == rowSendServer) {
                     if( sendServerCell==null) {
-                        sendServerCell = new MrEditTextCell(mContext);
+                        sendServerCell = new EditTextCell(mContext);
                         sendServerCell.setValueHintAndLabel(MrMailbox.getConfig("send_server", ""),
                                 LocaleController.getString("Automatic", R.string.Automatic), LocaleController.getString("SmtpServer", R.string.SmtpServer), false);
                     }
@@ -442,7 +440,7 @@ public class AccountSettingsActivity extends BaseFragment implements Notificatio
                 }
                 else if (i == rowSendPort) {
                     if( sendPortCell==null) {
-                        sendPortCell = new MrEditTextCell(mContext);
+                        sendPortCell = new EditTextCell(mContext);
                         sendPortCell.setValueHintAndLabel(MrMailbox.getConfig("send_port", ""),
                                 LocaleController.getString("Default", R.string.Default), LocaleController.getString("SmtpPort", R.string.SmtpPort), false);
                     }
@@ -450,7 +448,7 @@ public class AccountSettingsActivity extends BaseFragment implements Notificatio
                 }
                 else if (i == rowSendUser) {
                     if( sendUserCell==null) {
-                        sendUserCell = new MrEditTextCell(mContext);
+                        sendUserCell = new EditTextCell(mContext);
                         sendUserCell.setValueHintAndLabel(MrMailbox.getConfig("send_user", ""),
                                 LocaleController.getString("FromAbove", R.string.FromAbove), LocaleController.getString("SmtpLoginname", R.string.SmtpLoginname), false);
                     }
@@ -458,7 +456,7 @@ public class AccountSettingsActivity extends BaseFragment implements Notificatio
                 }
                 else if (i == rowSendPw) {
                     if( sendPwCell==null) {
-                        sendPwCell = new MrEditTextCell(mContext);
+                        sendPwCell = new EditTextCell(mContext);
                         sendPwCell.setValueHintAndLabel(MrMailbox.getConfig("send_pw", ""),
                                 LocaleController.getString("FromAbove", R.string.FromAbove), LocaleController.getString("SmtpPassword", R.string.SmtpPassword), false);
                         sendPwCell.getEditTextView().setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS | InputType.TYPE_TEXT_VARIATION_PASSWORD);

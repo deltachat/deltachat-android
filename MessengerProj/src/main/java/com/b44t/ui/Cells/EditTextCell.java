@@ -19,7 +19,7 @@
  *
  *******************************************************************************
  *
- * File:    MrEditTextCell.java
+ * File:    EditTextCell.java
  * Authors: Björn Petersen
  * Purpose: A simple text-edit-cell that can be used in list layouts
  *
@@ -43,7 +43,7 @@ import com.b44t.messenger.AndroidUtilities;
 import com.b44t.messenger.LocaleController;
 import com.b44t.ui.Components.LayoutHelper;
 
-public class MrEditTextCell extends FrameLayout {
+public class EditTextCell extends FrameLayout {
 
     private EditText editView;
     private TextView labelTextView;
@@ -51,7 +51,7 @@ public class MrEditTextCell extends FrameLayout {
     private boolean needDivider;
     private String originalValue;
 
-    public MrEditTextCell(Context context) {
+    public EditTextCell(Context context) {
         super(context);
 
         if (paint == null) {
