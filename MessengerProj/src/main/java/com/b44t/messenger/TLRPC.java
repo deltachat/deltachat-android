@@ -252,19 +252,18 @@ public class TLRPC {
 		public String first_name;
 		public String last_name;
 		public String username;
-		public long access_hash;
+		public final long access_hash = 0;
         public String phone;
 		public UserProfilePhoto photo;
 		public UserStatus status;
         public int flags;
 		public boolean self;
 		public boolean contact;
-		public boolean mutual_contact;
-		public boolean deleted;
+		public final boolean mutual_contact = false;
+		public final boolean deleted = false;
 		public final boolean bot = false;
 		public boolean verified;
 		public boolean min;
-		public String restriction_reason;
     }
 
 	public static class TL_userContact_old2 extends User {

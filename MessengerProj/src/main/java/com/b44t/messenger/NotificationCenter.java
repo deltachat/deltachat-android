@@ -55,7 +55,6 @@ public class NotificationCenter {
     public static final int userInfoDidLoaded = totalEvents++;
     public static final int chatSearchResultsAvailable = totalEvents++;
     public static final int musicDidLoaded = totalEvents++;
-    public static final int needShowAlert = totalEvents++;
     public static final int didUpdatedMessagesViews = totalEvents++;
     public static final int needReloadRecentDialogsSearch = totalEvents++;
     public static final int locationPermissionGranted = totalEvents++;

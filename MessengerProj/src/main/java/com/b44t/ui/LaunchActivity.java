@@ -347,7 +347,6 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.mainUserInfoChanged);
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.closeOtherAppActivities);
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.didUpdatedConnectionState);
-        NotificationCenter.getInstance().addObserver(this, NotificationCenter.needShowAlert);
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.wasUnableToFindCurrentLocation);
 
         if (actionBarLayout.fragmentsStack.isEmpty()) {
@@ -1087,9 +1086,7 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
             } else {
                 args.putInt("enc_id", high_id);
             }
-            if (!MessagesController.checkCanOpenChat(args, dialogsFragment)) {
-                return;
-            }
+
             ChatActivity fragment = new ChatActivity(args);
 
             if (videoPath != null) {
@@ -1159,7 +1156,6 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
         NotificationCenter.getInstance().removeObserver(this, NotificationCenter.mainUserInfoChanged);
         NotificationCenter.getInstance().removeObserver(this, NotificationCenter.closeOtherAppActivities);
         NotificationCenter.getInstance().removeObserver(this, NotificationCenter.didUpdatedConnectionState);
-        NotificationCenter.getInstance().removeObserver(this, NotificationCenter.needShowAlert);
         NotificationCenter.getInstance().removeObserver(this, NotificationCenter.wasUnableToFindCurrentLocation);
     }
 
@@ -1483,30 +1479,6 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
             }
         } else if (id == NotificationCenter.mainUserInfoChanged) {
             drawerLayoutAdapter.notifyDataSetChanged();
-        } else if (id == NotificationCenter.needShowAlert) {
-            final Integer reason = (Integer) args[0];
-            AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), null);
-            if (reason != 2) {
-                builder.setNegativeButton(LocaleController.getString("MoreInfo", R.string.MoreInfo), new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        if (!mainFragmentsStack.isEmpty()) {
-                            MessagesController.openByUserName("spambot", mainFragmentsStack.get(mainFragmentsStack.size() - 1), 1);
-                        }
-                    }
-                });
-            }
-            if (reason == 0) {
-                builder.setMessage(LocaleController.getString("NobodyLikesSpam1", R.string.NobodyLikesSpam1));
-            } else if (reason == 1) {
-                builder.setMessage(LocaleController.getString("NobodyLikesSpam2", R.string.NobodyLikesSpam2));
-            } else if (reason == 2) {
-                builder.setMessage((String) args[1]);
-            }
-            if (!mainFragmentsStack.isEmpty()) {
-                mainFragmentsStack.get(mainFragmentsStack.size() - 1).showDialog(builder.create());
-            }
         } else if (id == NotificationCenter.wasUnableToFindCurrentLocation) {
             final HashMap<String, MessageObject> waitingForLocation = (HashMap<String, MessageObject>) args[0];
             AlertDialog.Builder builder = new AlertDialog.Builder(this);

@@ -6090,14 +6090,16 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                             return;
                         }
                         if (url instanceof URLSpanUserMention) {
+                            /*
                             TLRPC.User user = MessagesController.getInstance().getUser(Utilities.parseInt(((URLSpanUserMention) url).getURL()));
                             if (user != null) {
                                 MessagesController.openChatOrProfileWith(user, null, ChatActivity.this, 0);
                             }
+                            */
                         } else if (url instanceof URLSpanNoUnderline) {
                             String str = ((URLSpanNoUnderline) url).getURL();
                             if (str.startsWith("@")) {
-                                MessagesController.openByUserName(str.substring(1), ChatActivity.this, 0);
+                                //MessagesController.openByUserName(str.substring(1), ChatActivity.this, 0);
                             } else if (str.startsWith("#")) {
                                 /*if (ChatObject.isChannel(currentChat)) {
                                     openSearchWithText(str);

@@ -575,14 +575,10 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
                         }
                     }
                     if (searchString != null) {
-                        if (MessagesController.checkCanOpenChat(args, DialogsActivity.this)) {
                             NotificationCenter.getInstance().postNotificationName(NotificationCenter.closeChats);
                             presentFragment(new ChatActivity(args));
-                        }
                     } else {
-                        if (MessagesController.checkCanOpenChat(args, DialogsActivity.this)) {
                             presentFragment(new ChatActivity(args));
-                        }
                     }
                 }
             }
