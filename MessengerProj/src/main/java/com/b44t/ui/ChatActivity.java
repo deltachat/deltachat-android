@@ -134,11 +134,15 @@ import java.util.regex.Matcher;
 public class ChatActivity extends BaseFragment implements NotificationCenter.NotificationCenterDelegate, DialogsActivity.DialogsActivityDelegate,
         PhotoViewer.PhotoViewerProvider {
 
+    public  static final int ROWTYPE_MESSAGE_CELL = 0;
+    public  static final int ROWTYPE_ACTION_CELL  = 1;
+    public  static final int ROWTYPE_UNREAD_CELL  = 2;
+    private static final int ROWTYPE_BOTINFO_CELL = 3;
+    private static final int ROWTYPE_LOADING_CELL = 4;
+
     protected TLRPC.Chat currentChat;
     protected TLRPC.User currentUser; // originally currentChat<->currentUser was used to differ between normal or group chats
     private final TLRPC.EncryptedChat currentEncryptedChat = null;
-
-    private final boolean userBlocked = false;
 
     public MrChat m_mrChat = new MrChat(0);
 
@@ -4143,7 +4147,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                             dateMsg.date = obj.messageOwner.date;
                             MessageObject dateObj = new MessageObject(dateMsg, null, false);
                             dateObj.type = 10;
-                            dateObj.contentType = 1;
+                            dateObj.contentType = ROWTYPE_ACTION_CELL;
                             messages.add(placeToPaste, dateObj);
                             addedCount++;
                         }
@@ -4159,7 +4163,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                                     dateMsg.id = 0;
                                     MessageObject dateObj = new MessageObject(dateMsg, null, false);
                                     dateObj.type = 6;
-                                    dateObj.contentType = 2;
+                                    dateObj.contentType = ROWTYPE_UNREAD_CELL;
                                     messages.add(0, dateObj);
                                     unreadMessageObject = dateObj;
                                     scrollToMessage = unreadMessageObject;
@@ -4784,7 +4788,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         } else {
             searchContainer.setVisibility(View.INVISIBLE);
             if (currentChat != null && (ChatObject.isNotInChat(currentChat) || !ChatObject.canWriteToChat(currentChat)) ||
-                    currentUser != null && (UserObject.isDeleted(currentUser) || userBlocked)) {
+                    currentUser != null && (UserObject.isDeleted(currentUser))) {
                 bottomOverlayChat.setVisibility(View.VISIBLE);
                 if (muteMenuEntry !=null){
                     muteMenuEntry.setVisibility(View.GONE);
@@ -5996,7 +6000,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         @Override
         public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             View view = null;
-            if (viewType == 0) {
+            if (viewType == ROWTYPE_MESSAGE_CELL) {
                 if (!chatMessageCellsCache.isEmpty()) {
                     view = chatMessageCellsCache.get(0);
                     chatMessageCellsCache.remove(0);
@@ -6207,7 +6211,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 /*if (currentEncryptedChat == null)*/ {
                     chatMessageCell.setAllowAssistant(true);
                 }
-            } else if (viewType == 1) {
+            } else if (viewType == ROWTYPE_ACTION_CELL) {
                 view = new ChatActionCell(mContext);
                 ((ChatActionCell) view).setDelegate(new ChatActionCell.ChatActionCellDelegate() {
                     @Override
@@ -6242,11 +6246,11 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                         }
                     }
                 });
-            } else if (viewType == 2) {
+            } else if (viewType == ROWTYPE_UNREAD_CELL) {
                 view = new ChatUnreadCell(mContext);
-            } else if (viewType == 3) {
+            } else if (viewType == ROWTYPE_BOTINFO_CELL) {
                 // was: BotHelpCell
-            } else if (viewType == 4) {
+            } else if (viewType == ROWTYPE_LOADING_CELL) {
                 view = new ChatLoadingCell(mContext);
             }
             view.setLayoutParams(new RecyclerView.LayoutParams(RecyclerView.LayoutParams.MATCH_PARENT, RecyclerView.LayoutParams.WRAP_CONTENT));
@@ -6308,10 +6312,11 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         public int getItemViewType(int position) {
             if (position >= messagesStartRow && position < messagesEndRow) {
                 return messages.get(messages.size() - (position - messagesStartRow) - 1).contentType;
+                                // may be ROWTYPE_MESSAGE_CELL, ROWTYPE_ACTION_CELL, ROWTYPE_UNREAD_CELL,
             } else if (position == botInfoRow) {
-                return 3;
+                return ROWTYPE_BOTINFO_CELL;
             }
-            return 4;
+            return ROWTYPE_LOADING_CELL;
         }
 
         @Override

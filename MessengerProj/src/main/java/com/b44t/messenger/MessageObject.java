@@ -21,6 +21,7 @@ import android.text.style.URLSpan;
 import android.text.util.Linkify;
 
 import com.b44t.ui.ActionBar.Theme;
+import com.b44t.ui.ChatActivity;
 import com.b44t.ui.Components.TypefaceSpan;
 import com.b44t.ui.Components.URLSpanNoUnderline;
 import com.b44t.ui.Components.URLSpanNoUnderlineBold;
@@ -47,7 +48,7 @@ public class MessageObject {
     public CharSequence caption;
     public MessageObject replyMessageObject;
     public int type = 1000;
-    public int contentType;
+    public int contentType; // one of ChatActivity.ROWTYPE_MESSAGE_CELL, .ROWTYPE_ACTION_CELL or .ROWTYPE_UNREAD_CELL
     public String dateKey;
     public String monthKey;
     public boolean deleted;
@@ -199,9 +200,9 @@ public class MessageObject {
                         }
                 } else if (message.action instanceof TLRPC.TL_messageActionUserUpdatedPhoto) {
                     messageText = LocaleController.formatString("NotificationContactNewPhoto", R.string.NotificationContactNewPhoto, UserObject.getUserName(fromUser));
-                } else if (message.action instanceof TLRPC.TL_messageActionHistoryClear) {
+                }/* else if (message.action instanceof TLRPC.TL_messageActionHistoryClear) {
                     messageText = LocaleController.getString("HistoryCleared", R.string.HistoryCleared);
-                }
+                }*/
             }
         } else if (!isMediaEmpty()) {
             if (message.media instanceof TLRPC.TL_messageMediaPhoto) {
@@ -322,21 +323,21 @@ public class MessageObject {
                 type = 0;
             } else */
             if (messageOwner.action instanceof TLRPC.TL_messageActionChatEditPhoto || messageOwner.action instanceof TLRPC.TL_messageActionUserUpdatedPhoto) {
-                contentType = 1;
+                contentType = ChatActivity.ROWTYPE_ACTION_CELL;
                 type = 11;
             /*} else if (messageOwner.action instanceof TLRPC.TL_messageEncryptedAction) {
                 if (messageOwner.action.encryptedAction instanceof TLRPC.TL_decryptedMessageActionScreenshotMessages || messageOwner.action.encryptedAction instanceof TLRPC.TL_decryptedMessageActionSetMessageTTL) {
-                    contentType = 1;
+                    contentType = ChatActivity.ROWTYPE_ACTION_CELL;
                     type = 10;
                 } else {
                     contentType = -1;
                     type = -1;
-                }*/
+                }
             } else if (messageOwner.action instanceof TLRPC.TL_messageActionHistoryClear) {
                 contentType = -1;
-                type = -1;
+                type = -1;*/
             } else {
-                contentType = 1;
+                contentType = ChatActivity.ROWTYPE_ACTION_CELL;
                 type = 10;
             }
         }

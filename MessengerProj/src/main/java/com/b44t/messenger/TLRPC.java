@@ -284,9 +284,6 @@ public class TLRPC {
 	public static class TL_messageActionChatCreate extends MessageAction {
 	}
 
-	public static class TL_messageActionHistoryClear extends MessageAction {
-	}
-
 	public static class TL_messageActionChatEditPhoto extends MessageAction {
 	}
 
