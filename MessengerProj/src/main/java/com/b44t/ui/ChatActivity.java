@@ -424,7 +424,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         }
         */
 
-        NotificationCenter.getInstance().addObserver(this, NotificationCenter.messagesDidLoaded);
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.emojiDidLoaded);
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.updateInterfaces);
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.didReceivedNewMessages);
@@ -482,23 +481,9 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         AndroidUtilities.runOnUIThread(new Runnable() {
            @Override
            public void run() {
-
-               int count = 0;
-               ArrayList<MessageObject> objects = new ArrayList<>();
-               boolean isCache = true;
-               int first_unread_final = Integer.MAX_VALUE;
-               int unread_count = 0;
-               int last_date = 0;
-               int load_type = 0;
-               boolean isEnd = false;
-               int loadIndex = 0;
-               NotificationCenter.getInstance().postNotificationName(
-                       NotificationCenter.messagesDidLoaded, // this is a synchronous call -- however, this should not make much difference
-                       dialog_id, count, objects /*arg#2*/, isCache, first_unread_final, last_message_id, unread_count,
-                       last_date, load_type, isEnd, classGuid /*arg#10*/, loadIndex);
-
+               messagesDidLoaded();
            }
-       });
+        });
         // /EDIT BY MR
 
         /* EDIT BY MR
@@ -541,7 +526,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
             mentionsAdapter.onDestroy();
         }
         MessagesController.getInstance().setLastCreatedDialogId(dialog_id, false);
-        NotificationCenter.getInstance().removeObserver(this, NotificationCenter.messagesDidLoaded);
         NotificationCenter.getInstance().removeObserver(this, NotificationCenter.emojiDidLoaded);
         NotificationCenter.getInstance().removeObserver(this, NotificationCenter.updateInterfaces);
         NotificationCenter.getInstance().removeObserver(this, NotificationCenter.didReceivedNewMessages);
@@ -3524,415 +3508,328 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         }
     }
 
-    @Override
-    public void didReceivedNotification(int id, final Object... args) {
-        if (id == NotificationCenter.messagesDidLoaded) {
-            int guid = (Integer) args[10];
-            if (guid == classGuid) {
+    private void messagesDidLoaded()
+    {
+        // should be called from the GUI thread only (as the original event was)
 
-                // define the animations that we want to receive during the opening animation -- EDIT BY MR
-                if (!openAnimationEnded) {
-                    NotificationCenter.getInstance().setAllowedNotificationsDutingAnimation(new int[]{NotificationCenter.dialogsNeedReload,
-                            NotificationCenter.closeChats});
+        // define the animations that we want to receive during the opening animation -- EDIT BY MR
+        if (!openAnimationEnded) {
+            NotificationCenter.getInstance().setAllowedNotificationsDutingAnimation(new int[]{NotificationCenter.dialogsNeedReload,
+                    NotificationCenter.closeChats});
+        }
+
+        /* EDIT BY MR -- scroll to a specific message
+        if (waitingForReplyMessageLoad) {
+            boolean found = false;
+            for (int a = 0; a < messArr.size(); a++) {
+                if (messArr.get(a).getId() == startLoadFromMessageId) {
+                    found = true;
+                    break;
                 }
+            }
+            if (!found) {
+                startLoadFromMessageId = 0;
+                return;
+            }
+            int startLoadFrom = startLoadFromMessageId;
+            boolean needSelect = needSelectFromMessageId;
+            clearChatData();
+            startLoadFromMessageId = startLoadFrom;
+            needSelectFromMessageId = needSelect;
+        }
+        */
 
-                /* EDIT BY MR -- not sure what this is for
-                int queryLoadIndex = (Integer) args[11];
-                int index = waitingForLoad.indexOf(queryLoadIndex);
-                if (index == -1) {
-                    return;
-                } else {
-                    waitingForLoad.remove(index);
+        loadsCount++;
+        final int loadIndex = 0; //did == dialog_id ? 0 : 1;
+        final int fnid = (Integer) Integer.MAX_VALUE;
+        final int last_unread_date = 0;
+        boolean wasUnread = false;
+        if (fnid != 0) {
+            first_unread_id = fnid;
+            unread_to_load = 0;
+        }
+        int newRowsCount = 0;
+
+        forwardEndReached[loadIndex] = startLoadFromMessageId == 0 && last_message_id == 0;
+
+
+        if (firstLoading) {
+            if (!forwardEndReached[loadIndex]) {
+                messages.clear();
+                messagesByDays.clear();
+                for (int a = 0; a < 2; a++) {
+                    messagesDict[a].clear();
+                    maxMessageId[a] = Integer.MAX_VALUE;
+                    minMessageId[a] = Integer.MIN_VALUE;
+                    maxDate[a] = Integer.MIN_VALUE;
+                    minDate[a] = 0;
                 }
-                */
-
-
-                /* EDIT BY MR -- messArr are the message objects to show
-                ArrayList<MessageObject> messArr = (ArrayList<MessageObject>) args[2];
-                */
-
-                /* EDIT BY MR -- scroll to a specific message
-                if (waitingForReplyMessageLoad) {
-                    boolean found = false;
-                    for (int a = 0; a < messArr.size(); a++) {
-                        if (messArr.get(a).getId() == startLoadFromMessageId) {
-                            found = true;
-                            break;
-                        }
+            }
+            firstLoading = false;
+            AndroidUtilities.runOnUIThread(new Runnable() {
+                @Override
+                public void run() {
+                    if (parentLayout != null) {
+                        parentLayout.resumeDelayedFragmentAnimation();
                     }
-                    if (!found) {
-                        startLoadFromMessageId = 0;
-                        return;
+                }
+            });
+        }
+
+        {
+            int[] msglist = MrMailbox.getChatMsgs((int)dialog_id);
+
+            int mrCount = msglist.length;
+            for (int a = mrCount - 1; a >= 0; a--) {
+                MrMsg mrMsg = MrMailbox.getMsg(msglist[a]);
+                TLRPC.Message msg = mrMsg.get_TLRPC_Message();
+                MessageObject msgDrawObj = new MessageObject(msg, null, true);
+                messages.add(0, msgDrawObj);
+                messagesDict[loadIndex].put(msg.id, msgDrawObj);
+            }
+
+            if (m_mrChat.getId() == MrChat.MR_CHAT_ID_DEADDROP) {
+                updateBottomOverlay();
+            }
+        }
+
+
+            /* EDIT BY MR -- the add loop
+            int approximateHeightSum = 0;
+            for (int a = 0; a < messArr.size(); a++) {
+
+
+                MessageObject obj = messArr.get(a);
+
+                approximateHeightSum += obj.getApproximateHeight();
+
+                if (currentUser != null && currentUser.bot && obj.isOut()) {
+                    obj.setIsRead();
+                }
+
+                if (messagesDict[loadIndex].containsKey(obj.getId())) {
+                    continue;
+                }
+
+                if (loadIndex == 1) {
+                    obj.setIsRead();
+                }
+
+                if (loadIndex == 0 && ChatObject.isChannel(currentChat) && obj.getId() == 1) {
+                    endReached[loadIndex] = true;
+                    cacheEndReached[loadIndex] = true;
+                }
+
+                if (obj.getId() > 0) {
+                    maxMessageId[loadIndex] = Math.min(obj.getId(), maxMessageId[loadIndex]);
+                    minMessageId[loadIndex] = Math.max(obj.getId(), minMessageId[loadIndex]);
+                } else if (currentEncryptedChat != null) {
+                    maxMessageId[loadIndex] = Math.max(obj.getId(), maxMessageId[loadIndex]);
+                    minMessageId[loadIndex] = Math.min(obj.getId(), minMessageId[loadIndex]);
+                }
+                if (obj.messageOwner.date != 0) {
+                    maxDate[loadIndex] = Math.max(maxDate[loadIndex], obj.messageOwner.date);
+                    if (minDate[loadIndex] == 0 || obj.messageOwner.date < minDate[loadIndex]) {
+                        minDate[loadIndex] = obj.messageOwner.date;
                     }
-                    int startLoadFrom = startLoadFromMessageId;
-                    boolean needSelect = needSelectFromMessageId;
-                    clearChatData();
-                    startLoadFromMessageId = startLoadFrom;
-                    needSelectFromMessageId = needSelect;
-                }
-                */
-
-                loadsCount++;
-                long did = (Long) args[0];
-                int loadIndex = did == dialog_id ? 0 : 1;
-                boolean isCache = (Boolean) args[3];
-                int fnid = (Integer) args[4];
-                int last_unread_date = (Integer) args[7];
-                int load_type = (Integer) args[8];
-                boolean wasUnread = false;
-                if (fnid != 0) {
-                    first_unread_id = fnid;
-                    last_message_id = (Integer) args[5];
-                    unread_to_load = (Integer) args[6];
-                } else if (startLoadFromMessageId != 0 && load_type == 3) {
-                    last_message_id = (Integer) args[5];
-                }
-                int newRowsCount = 0;
-
-                forwardEndReached[loadIndex] = startLoadFromMessageId == 0 && last_message_id == 0;
-                if ((load_type == 1 || load_type == 3) && loadIndex == 1) {
-                    endReached[0] = cacheEndReached[0] = true;
-                    forwardEndReached[0] = false;
-                    minMessageId[0] = 0;
                 }
 
-                /* EDIT BY MR
-                if (loadsCount == 1 && messArr.size() > 20) {
-                    loadsCount++;
+                if (obj.type < 0 || loadIndex == 1 && obj.messageOwner.action instanceof TLRPC.TL_messageActionChatMigrateTo) {
+                    continue;
                 }
-                */
 
-                if (firstLoading) {
-                    if (!forwardEndReached[loadIndex]) {
-                        messages.clear();
-                        messagesByDays.clear();
-                        for (int a = 0; a < 2; a++) {
-                            messagesDict[a].clear();
-                            maxMessageId[a] = Integer.MAX_VALUE;
-                            minMessageId[a] = Integer.MIN_VALUE;
-                            maxDate[a] = Integer.MIN_VALUE;
-                            minDate[a] = 0;
-                        }
+                if (!obj.isOut() && obj.isUnread()) {
+                    wasUnread = true;
+                }
+
+                messagesDict[loadIndex].put(obj.getId(), obj);
+                ArrayList<MessageObject> dayArray = messagesByDays.get(obj.dateKey);
+
+                if (dayArray == null) {
+                    dayArray = new ArrayList<>();
+                    messagesByDays.put(obj.dateKey, dayArray);
+                    TLRPC.Message dateMsg = new TLRPC.Message();
+                    dateMsg.message = LocaleController.formatDateChat(obj.messageOwner.date);
+                    dateMsg.id = 0;
+                    dateMsg.date = obj.messageOwner.date;
+                    MessageObject dateObj = new MessageObject(dateMsg, null, false);
+                    dateObj.type = 10;
+                    dateObj.contentType = 1;
+                    if (load_type == 1) {
+                        messages.add(0, dateObj);
+                    } else {
+                        messages.add(dateObj);
                     }
-                    firstLoading = false;
-                    AndroidUtilities.runOnUIThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            if (parentLayout != null) {
-                                parentLayout.resumeDelayedFragmentAnimation();
-                            }
-                        }
-                    });
+                    newRowsCount++;
                 }
 
-                /* EDIT BY MR
+                newRowsCount++;
                 if (load_type == 1) {
-                    Collections.reverse(messArr);
+                    dayArray.add(obj);
+                    messages.add(0, obj);
                 }
 
-                if (currentEncryptedChat == null) {
-                    MessagesQuery.loadReplyMessagesForMessages(messArr, dialog_id);
-                }
-                */
-                {
-                    int[] msglist = MrMailbox.getChatMsgs((int)dialog_id);
-
-                        int mrCount = msglist.length;
-                        for (int a = mrCount - 1; a >= 0; a--) {
-                            MrMsg mrMsg = MrMailbox.getMsg(msglist[a]);
-                                TLRPC.Message msg = mrMsg.get_TLRPC_Message();
-                                MessageObject msgDrawObj = new MessageObject(msg, null, true);
-                                messages.add(0, msgDrawObj);
-                                messagesDict[loadIndex].put(msg.id, msgDrawObj);
-                        }
-
-                        if (m_mrChat.getId() == MrChat.MR_CHAT_ID_DEADDROP) {
-                            updateBottomOverlay();
-                        }
+                if (load_type != 1) {
+                    dayArray.add(obj);
+                    messages.add(messages.size() - 1, obj);
                 }
 
+                if (obj.getId() == last_message_id) {
+                    forwardEndReached[loadIndex] = true;
+                }
 
-                /* EDIT BY MR -- the add loop
-                int approximateHeightSum = 0;
-                for (int a = 0; a < messArr.size(); a++) {
-
-
-                    MessageObject obj = messArr.get(a);
-
-                    approximateHeightSum += obj.getApproximateHeight();
-
-                    if (currentUser != null && currentUser.bot && obj.isOut()) {
-                        obj.setIsRead();
-                    }
-
-                    if (messagesDict[loadIndex].containsKey(obj.getId())) {
-                        continue;
-                    }
-
-                    if (loadIndex == 1) {
-                        obj.setIsRead();
-                    }
-
-                    if (loadIndex == 0 && ChatObject.isChannel(currentChat) && obj.getId() == 1) {
-                        endReached[loadIndex] = true;
-                        cacheEndReached[loadIndex] = true;
-                    }
-
-                    if (obj.getId() > 0) {
-                        maxMessageId[loadIndex] = Math.min(obj.getId(), maxMessageId[loadIndex]);
-                        minMessageId[loadIndex] = Math.max(obj.getId(), minMessageId[loadIndex]);
-                    } else if (currentEncryptedChat != null) {
-                        maxMessageId[loadIndex] = Math.max(obj.getId(), maxMessageId[loadIndex]);
-                        minMessageId[loadIndex] = Math.min(obj.getId(), minMessageId[loadIndex]);
-                    }
-                    if (obj.messageOwner.date != 0) {
-                        maxDate[loadIndex] = Math.max(maxDate[loadIndex], obj.messageOwner.date);
-                        if (minDate[loadIndex] == 0 || obj.messageOwner.date < minDate[loadIndex]) {
-                            minDate[loadIndex] = obj.messageOwner.date;
-                        }
-                    }
-
-                    if (obj.type < 0 || loadIndex == 1 && obj.messageOwner.action instanceof TLRPC.TL_messageActionChatMigrateTo) {
-                        continue;
-                    }
-
-                    if (!obj.isOut() && obj.isUnread()) {
-                        wasUnread = true;
-                    }
-
-                    messagesDict[loadIndex].put(obj.getId(), obj);
-                    ArrayList<MessageObject> dayArray = messagesByDays.get(obj.dateKey);
-
-                    if (dayArray == null) {
-                        dayArray = new ArrayList<>();
-                        messagesByDays.put(obj.dateKey, dayArray);
+                if (load_type == 2 && obj.getId() == first_unread_id) {
+                    if (approximateHeightSum > AndroidUtilities.displaySize.y / 2 || !forwardEndReached[0]) {
                         TLRPC.Message dateMsg = new TLRPC.Message();
-                        dateMsg.message = LocaleController.formatDateChat(obj.messageOwner.date);
+                        dateMsg.message = "";
                         dateMsg.id = 0;
-                        dateMsg.date = obj.messageOwner.date;
                         MessageObject dateObj = new MessageObject(dateMsg, null, false);
-                        dateObj.type = 10;
-                        dateObj.contentType = 1;
-                        if (load_type == 1) {
-                            messages.add(0, dateObj);
-                        } else {
-                            messages.add(dateObj);
-                        }
+                        dateObj.type = 6;
+                        dateObj.contentType = 2;
+                        messages.add(messages.size() - 1, dateObj);
+                        unreadMessageObject = dateObj;
+                        scrollToMessage = unreadMessageObject;
+                        scrollToMessagePosition = -10000;
                         newRowsCount++;
                     }
-
-                    newRowsCount++;
-                    if (load_type == 1) {
-                        dayArray.add(obj);
-                        messages.add(0, obj);
-                    }
-
-                    if (load_type != 1) {
-                        dayArray.add(obj);
-                        messages.add(messages.size() - 1, obj);
-                    }
-
-                    if (obj.getId() == last_message_id) {
-                        forwardEndReached[loadIndex] = true;
-                    }
-
-                    if (load_type == 2 && obj.getId() == first_unread_id) {
-                        if (approximateHeightSum > AndroidUtilities.displaySize.y / 2 || !forwardEndReached[0]) {
-                            TLRPC.Message dateMsg = new TLRPC.Message();
-                            dateMsg.message = "";
-                            dateMsg.id = 0;
-                            MessageObject dateObj = new MessageObject(dateMsg, null, false);
-                            dateObj.type = 6;
-                            dateObj.contentType = 2;
-                            messages.add(messages.size() - 1, dateObj);
-                            unreadMessageObject = dateObj;
-                            scrollToMessage = unreadMessageObject;
-                            scrollToMessagePosition = -10000;
-                            newRowsCount++;
-                        }
-                    } else if (load_type == 3 && obj.getId() == startLoadFromMessageId) {
-                        if (needSelectFromMessageId) {
-                            highlightMessageId = obj.getId();
-                        } else {
-                            highlightMessageId = Integer.MAX_VALUE;
-                        }
-                        scrollToMessage = obj;
-                        startLoadFromMessageId = 0;
-                        if (scrollToMessagePosition == -10000) {
-                            scrollToMessagePosition = -9000;
-                        }
-                    }
-
-                }
-                */
-
-
-
-                if (load_type == 0 && newRowsCount == 0) {
-                    loadsCount--;
-                }
-
-                if (forwardEndReached[loadIndex] && loadIndex != 1) {
-                    first_unread_id = 0;
-                    last_message_id = 0;
-                }
-
-                if (loadsCount <= 2) {
-                    if (!isCache) {
-                        updateSpamView();
-                    }
-                }
-
-                if (load_type == 1) {
-                    /* EDIT BY MR
-                    if (messArr.size() != count && !isCache) {
-                        forwardEndReached[loadIndex] = true;
-                        if (loadIndex != 1) {
-                            first_unread_id = 0;
-                            last_message_id = 0;
-                            chatAdapter.notifyItemRemoved(chatAdapter.getItemCount() - 1);
-                            newRowsCount--;
-                        }
-                        startLoadFromMessageId = 0;
-                    }
-                    */
-                    if (newRowsCount > 0) {
-                        int firstVisPos = chatLayoutManager.findLastVisibleItemPosition();
-                        int top = 0;
-                        if (firstVisPos != chatLayoutManager.getItemCount() - 1) {
-                            firstVisPos = RecyclerView.NO_POSITION;
-                        } else {
-                            View firstVisView = chatLayoutManager.findViewByPosition(firstVisPos);
-                            top = ((firstVisView == null) ? 0 : firstVisView.getTop()) - chatListView.getPaddingTop();
-                        }
-                        chatAdapter.notifyItemRangeInserted(chatAdapter.getItemCount() - 1, newRowsCount);
-                        if (firstVisPos != RecyclerView.NO_POSITION) {
-                            chatLayoutManager.scrollToPositionWithOffset(firstVisPos, top);
-                        }
-                    }
-                    loadingForward = false;
-                } else {
-                    /* EDIT BY MR
-                    if (messArr.size() < count && load_type != 3) {
-                        if (isCache) {
-                            if (currentEncryptedChat != null || isBroadcast) {
-                                endReached[loadIndex] = true;
-                            }
-                            if (load_type != 2) {
-                                cacheEndReached[loadIndex] = true;
-                            }
-                        } else if (load_type != 2) {
-                            endReached[loadIndex] = true;// TODO if < 7 from unread
-                        }
-                    }
-                    */
-                    loading = false;
-
-                    if (chatListView != null) {
-                        if (first || scrollToTopOnResume || forceScrollToTop) {
-                            forceScrollToTop = false;
-                            chatAdapter.notifyDataSetChanged();
-                            if (scrollToMessage != null) {
-                                int yOffset;
-                                if (scrollToMessagePosition == -9000) {
-                                    yOffset = Math.max(0, (chatListView.getHeight() - scrollToMessage.getApproximateHeight()) / 2);
-                                } else if (scrollToMessagePosition == -10000) {
-                                    yOffset = 0;
-                                } else {
-                                    yOffset = scrollToMessagePosition;
-                                }
-                                if (!messages.isEmpty()) {
-                                    if (messages.get(messages.size() - 1) == scrollToMessage || messages.get(messages.size() - 2) == scrollToMessage) {
-                                        chatLayoutManager.scrollToPositionWithOffset((chatAdapter.isBot ? 1 : 0), -chatListView.getPaddingTop() - AndroidUtilities.dp(7) + yOffset);
-                                    } else {
-                                        chatLayoutManager.scrollToPositionWithOffset(chatAdapter.messagesStartRow + messages.size() - messages.indexOf(scrollToMessage) - 1, -chatListView.getPaddingTop() - AndroidUtilities.dp(7) + yOffset);
-                                    }
-                                }
-                                chatListView.invalidate();
-                                if (scrollToMessagePosition == -10000 || scrollToMessagePosition == -9000) {
-                                    showPagedownButton(true, true);
-                                }
-                                scrollToMessagePosition = -10000;
-                                scrollToMessage = null;
-                            } else {
-                                moveScrollToLastMessage();
-                            }
-                        } else {
-                            if (newRowsCount != 0) {
-                                boolean end = false;
-                                if (endReached[loadIndex] && (loadIndex == 0 && mergeDialogId == 0 || loadIndex == 1)) {
-                                    end = true;
-                                    chatAdapter.notifyItemRangeChanged(chatAdapter.isBot ? 1 : 0, 2);
-                                }
-                                int firstVisPos = chatLayoutManager.findLastVisibleItemPosition();
-                                View firstVisView = chatLayoutManager.findViewByPosition(firstVisPos);
-                                int top = ((firstVisView == null) ? 0 : firstVisView.getTop()) - chatListView.getPaddingTop();
-                                if (newRowsCount - (end ? 1 : 0) > 0) {
-                                    chatAdapter.notifyItemRangeInserted((chatAdapter.isBot ? 2 : 1) + (end ? 0 : 1), newRowsCount - (end ? 1 : 0));
-                                }
-                                if (firstVisPos != -1) {
-                                    chatLayoutManager.scrollToPositionWithOffset(firstVisPos + newRowsCount - (end ? 1 : 0), top);
-                                }
-                            } else if (endReached[loadIndex] && (loadIndex == 0 && mergeDialogId == 0 || loadIndex == 1)) {
-                                chatAdapter.notifyItemRemoved(chatAdapter.isBot ? 1 : 0);
-                            }
-                        }
-
-                        if (paused) {
-                            scrollToTopOnResume = true;
-                            if (scrollToMessage != null) {
-                                scrollToTopUnReadOnResume = true;
-                            }
-                        }
-
-                        if (first) {
-                            if (chatListView != null) {
-                                chatListView.setEmptyView(emptyViewContainer);
-                            }
-                        }
+                } else if (load_type == 3 && obj.getId() == startLoadFromMessageId) {
+                    if (needSelectFromMessageId) {
+                        highlightMessageId = obj.getId();
                     } else {
-                        scrollToTopOnResume = true;
-                        if (scrollToMessage != null) {
-                            scrollToTopUnReadOnResume = true;
+                        highlightMessageId = Integer.MAX_VALUE;
+                    }
+                    scrollToMessage = obj;
+                    startLoadFromMessageId = 0;
+                    if (scrollToMessagePosition == -10000) {
+                        scrollToMessagePosition = -9000;
+                    }
+                }
+
+            }
+            */
+
+
+
+        if (newRowsCount == 0) {
+            loadsCount--;
+        }
+
+        if (forwardEndReached[loadIndex] && loadIndex != 1) {
+            first_unread_id = 0;
+            last_message_id = 0;
+        }
+
+        {
+            loading = false;
+
+            if (chatListView != null) {
+                if (first || scrollToTopOnResume || forceScrollToTop) {
+                    forceScrollToTop = false;
+                    chatAdapter.notifyDataSetChanged();
+                    if (scrollToMessage != null) {
+                        int yOffset;
+                        if (scrollToMessagePosition == -9000) {
+                            yOffset = Math.max(0, (chatListView.getHeight() - scrollToMessage.getApproximateHeight()) / 2);
+                        } else if (scrollToMessagePosition == -10000) {
+                            yOffset = 0;
+                        } else {
+                            yOffset = scrollToMessagePosition;
                         }
-                    }
-                }
-
-                if (first && messages.size() > 0) {
-                    if (loadIndex == 0) {
-                        final boolean wasUnreadFinal = wasUnread;
-                        final int last_unread_date_final = last_unread_date;
-                        final int lastid = messages.get(0).getId();
-                        AndroidUtilities.runOnUIThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                if (last_message_id != 0) {
-                                    MessagesController.getInstance().markDialogAsRead(dialog_id, lastid, last_message_id, last_unread_date_final, wasUnreadFinal, false);
-                                } else {
-                                    MessagesController.getInstance().markDialogAsRead(dialog_id, lastid, minMessageId[0], maxDate[0], wasUnreadFinal, false);
-                                }
+                        if (!messages.isEmpty()) {
+                            if (messages.get(messages.size() - 1) == scrollToMessage || messages.get(messages.size() - 2) == scrollToMessage) {
+                                chatLayoutManager.scrollToPositionWithOffset((chatAdapter.isBot ? 1 : 0), -chatListView.getPaddingTop() - AndroidUtilities.dp(7) + yOffset);
+                            } else {
+                                chatLayoutManager.scrollToPositionWithOffset(chatAdapter.messagesStartRow + messages.size() - messages.indexOf(scrollToMessage) - 1, -chatListView.getPaddingTop() - AndroidUtilities.dp(7) + yOffset);
                             }
-                        }, 700);
-                    }
-                    first = false;
-                }
-
-                if (newRowsCount == 0 && currentEncryptedChat != null && !endReached[0]) {
-                    first = true;
-                    if (chatListView != null) {
-                        chatListView.setEmptyView(null);
-                    }
-                    if (emptyViewContainer != null) {
-                        emptyViewContainer.setVisibility(View.INVISIBLE);
+                        }
+                        chatListView.invalidate();
+                        if (scrollToMessagePosition == -10000 || scrollToMessagePosition == -9000) {
+                            showPagedownButton(true, true);
+                        }
+                        scrollToMessagePosition = -10000;
+                        scrollToMessage = null;
+                    } else {
+                        moveScrollToLastMessage();
                     }
                 } else {
-                    if (progressView != null) {
-                        progressView.setVisibility(View.INVISIBLE);
+                    if (newRowsCount != 0) {
+                        boolean end = false;
+                        if (endReached[loadIndex] && (loadIndex == 0 && mergeDialogId == 0 || loadIndex == 1)) {
+                            end = true;
+                            chatAdapter.notifyItemRangeChanged(chatAdapter.isBot ? 1 : 0, 2);
+                        }
+                        int firstVisPos = chatLayoutManager.findLastVisibleItemPosition();
+                        View firstVisView = chatLayoutManager.findViewByPosition(firstVisPos);
+                        int top = ((firstVisView == null) ? 0 : firstVisView.getTop()) - chatListView.getPaddingTop();
+                        if (newRowsCount - (end ? 1 : 0) > 0) {
+                            chatAdapter.notifyItemRangeInserted((chatAdapter.isBot ? 2 : 1) + (end ? 0 : 1), newRowsCount - (end ? 1 : 0));
+                        }
+                        if (firstVisPos != -1) {
+                            chatLayoutManager.scrollToPositionWithOffset(firstVisPos + newRowsCount - (end ? 1 : 0), top);
+                        }
+                    } else if (endReached[loadIndex] && (loadIndex == 0 && mergeDialogId == 0 || loadIndex == 1)) {
+                        chatAdapter.notifyItemRemoved(chatAdapter.isBot ? 1 : 0);
                     }
                 }
-                checkScrollForLoad(false);
+
+                if (paused) {
+                    scrollToTopOnResume = true;
+                    if (scrollToMessage != null) {
+                        scrollToTopUnReadOnResume = true;
+                    }
+                }
+
+                if (first) {
+                    if (chatListView != null) {
+                        chatListView.setEmptyView(emptyViewContainer);
+                    }
+                }
+            } else {
+                scrollToTopOnResume = true;
+                if (scrollToMessage != null) {
+                    scrollToTopUnReadOnResume = true;
+                }
             }
-        } else if (id == NotificationCenter.emojiDidLoaded) {
+        }
+
+        if (first && messages.size() > 0) {
+            if (loadIndex == 0) {
+                final boolean wasUnreadFinal = wasUnread;
+                final int last_unread_date_final = last_unread_date;
+                final int lastid = messages.get(0).getId();
+                AndroidUtilities.runOnUIThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        if (last_message_id != 0) {
+                            MessagesController.getInstance().markDialogAsRead(dialog_id, lastid, last_message_id, last_unread_date_final, wasUnreadFinal, false);
+                        } else {
+                            MessagesController.getInstance().markDialogAsRead(dialog_id, lastid, minMessageId[0], maxDate[0], wasUnreadFinal, false);
+                        }
+                    }
+                }, 700);
+            }
+            first = false;
+        }
+
+        if (newRowsCount == 0 && currentEncryptedChat != null && !endReached[0]) {
+            first = true;
+            if (chatListView != null) {
+                chatListView.setEmptyView(null);
+            }
+            if (emptyViewContainer != null) {
+                emptyViewContainer.setVisibility(View.INVISIBLE);
+            }
+        } else {
+            if (progressView != null) {
+                progressView.setVisibility(View.INVISIBLE);
+            }
+        }
+        checkScrollForLoad(false);
+    }
+
+    @Override
+    public void didReceivedNotification(int id, final Object... args) {
+        if (id == NotificationCenter.emojiDidLoaded) {
             if (chatListView != null) {
                 chatListView.invalidateViews();
             }
@@ -4737,7 +4634,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
     @Override
     public void onTransitionAnimationStart(boolean isOpen, boolean backward) {
         NotificationCenter.getInstance().setAllowedNotificationsDutingAnimation(new int[]{NotificationCenter.dialogsNeedReload,
-                NotificationCenter.closeChats, NotificationCenter.messagesDidLoaded});
+                NotificationCenter.closeChats});
         NotificationCenter.getInstance().setAnimationInProgress(true);
         if (isOpen) {
             openAnimationEnded = false;

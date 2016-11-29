@@ -23,7 +23,6 @@ public class NotificationCenter {
     public static final int closeChats = totalEvents++;
     public static final int messagesDeleted = totalEvents++;
     public static final int messagesSentOrRead = totalEvents++;
-    public static final int messagesDidLoaded = totalEvents++;
     public static final int messageReceivedByAck = totalEvents++;
     public static final int messageReceivedByServer = totalEvents++;
     public static final int messageSendError = totalEvents++;
