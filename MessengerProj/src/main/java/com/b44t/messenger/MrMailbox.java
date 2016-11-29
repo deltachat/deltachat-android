@@ -148,6 +148,8 @@ public class MrMailbox {
         return new MrChat(MrMailboxGetChat(m_hMailbox, contact_id));
     }
 
+    public native static int markseenMsg(int id); // TODO: needs to be implemented
+
     public static int markseenChat(int id) {
         return MrMailboxMarkseenChat(m_hMailbox, id);
     }
@@ -235,7 +237,7 @@ public class MrMailbox {
                     @Override
                     public void run() {
                         reloadMainChatlist();
-                        NotificationCenter.getInstance().postNotificationName(NotificationCenter.dialogsNeedReload);
+                        NotificationCenter.getInstance().postNotificationName(NotificationCenter.dialogsNeedReload, event, (int)data1, (int)data2);
                     }
                 });
                 return 0;

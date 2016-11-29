@@ -413,6 +413,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         */
 
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.emojiDidLoaded);
+        NotificationCenter.getInstance().addObserver(this, NotificationCenter.dialogsNeedReload);
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.updateInterfaces);
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.didReceivedNewMessages);
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.closeChats);
@@ -514,6 +515,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         }
         MessagesController.getInstance().setLastCreatedDialogId(dialog_id, false);
         NotificationCenter.getInstance().removeObserver(this, NotificationCenter.emojiDidLoaded);
+        NotificationCenter.getInstance().removeObserver(this, NotificationCenter.dialogsNeedReload);
         NotificationCenter.getInstance().removeObserver(this, NotificationCenter.updateInterfaces);
         NotificationCenter.getInstance().removeObserver(this, NotificationCenter.didReceivedNewMessages);
         NotificationCenter.getInstance().removeObserver(this, NotificationCenter.closeChats);
@@ -3351,11 +3353,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
     {
         // should be called from the GUI thread only (as the original event was)
 
-        // define the animations that we want to receive during the opening animation -- EDIT BY MR
-        if (!openAnimationEnded) {
-            NotificationCenter.getInstance().setAllowedNotificationsDutingAnimation(new int[]{NotificationCenter.dialogsNeedReload,
-                    NotificationCenter.closeChats});
-        }
 
         /* EDIT BY MR -- scroll to a specific message
         if (waitingForReplyMessageLoad) {
@@ -3657,6 +3654,21 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
 
     @Override
     public void didReceivedNotification(int id, final Object... args) {
+        if( id == NotificationCenter.dialogsNeedReload ) {
+            if( args.length >= 3 ) {
+                int evt_chat_id = (int) args[1];
+                int evt_msg_id = (int) args[2];
+                if (evt_chat_id == dialog_id && evt_msg_id > 0) {
+                    MrMsg mrMsg = MrMailbox.getMsg(evt_msg_id);
+                    TLRPC.Message msg = mrMsg.get_TLRPC_Message();
+                    MessageObject msgDrawObj = new MessageObject(msg, null, true);
+                    messages.add(0, msgDrawObj);
+                    messagesDict[0].put(msg.id, msgDrawObj);
+                    chatAdapter.notifyDataSetChanged();
+                    scrollToLastMessage(false); // TODO markseen
+                }
+            }
+        }
         if (id == NotificationCenter.emojiDidLoaded) {
             if (chatListView != null) {
                 chatListView.invalidateViews();
