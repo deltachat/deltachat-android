@@ -304,12 +304,4 @@ public class BaseFragment {
     protected void onDialogDismiss(Dialog dialog) {
 
     }
-
-    public Dialog getVisibleDialog() {
-        return visibleDialog;
-    }
-
-    public void setVisibleDialog(Dialog dialog) {
-        visibleDialog = dialog;
-    }
 }

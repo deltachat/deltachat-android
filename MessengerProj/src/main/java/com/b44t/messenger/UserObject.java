@@ -19,21 +19,6 @@ public class UserObject {
     }
 
     public static String getUserName(TLRPC.User user) {
-        if (user == null || isDeleted(user)) {
-            return "ErrName";
-        }
-        String name = ContactsController.formatName(user.first_name, user.last_name);
-        return name.length() != 0 || user.phone == null || user.phone.length() == 0 ? name : ""/*PhoneFormat.getInstance().format("+" + user.phone)*/;
-    }
-
-    public static String getFirstName(TLRPC.User user) {
-        if (user == null || isDeleted(user)) {
-            return "DELETED";
-        }
-        String name = user.first_name;
-        if (name == null || name.length() == 0) {
-            name = user.last_name;
-        }
-        return name != null && name.length() > 0 ? name : "ErrFirstName";
+        return "ErrName"; // use MrContact.getName() instead
     }
 }

@@ -995,9 +995,6 @@ public class PopupNotificationActivity extends Activity implements NotificationC
                 currentChat = MessagesController.getInstance().getChat(-lower_id);
                 currentUser = MessagesController.getInstance().getUser(currentMessageObject.messageOwner.from_id);
             }
-        } else {
-            TLRPC.EncryptedChat encryptedChat = MessagesController.getInstance().getEncryptedChat((int)(dialog_id >> 32));
-            currentUser = MessagesController.getInstance().getUser(encryptedChat.user_id);
         }
 
         if (currentChat != null && currentUser != null) {

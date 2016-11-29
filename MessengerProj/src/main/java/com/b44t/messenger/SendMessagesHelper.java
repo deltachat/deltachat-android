@@ -544,46 +544,6 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
         if (document == null) {
             return;
         }
-        if ((int) peer == 0) {
-            int high_id = (int) (peer >> 32);
-            TLRPC.EncryptedChat encryptedChat = MessagesController.getInstance().getEncryptedChat(high_id);
-            if (encryptedChat == null) {
-                return;
-            }
-            if (document.thumb instanceof TLRPC.TL_photoSize) {
-                File file = FileLoader.getPathToAttach(document.thumb, true);
-                if (file.exists()) {
-                    try {
-                        int len = (int) file.length();
-                        byte[] arr = new byte[(int) file.length()];
-                        RandomAccessFile reader = new RandomAccessFile(file, "r");
-                        reader.readFully(arr);
-                        TLRPC.TL_document newDocument = new TLRPC.TL_document();
-                        newDocument.thumb = new TLRPC.TL_photoCachedSize();
-                        newDocument.thumb.location = document.thumb.location;
-                        newDocument.thumb.size = document.thumb.size;
-                        newDocument.thumb.w = document.thumb.w;
-                        newDocument.thumb.h = document.thumb.h;
-                        newDocument.thumb.type = document.thumb.type;
-                        newDocument.thumb.bytes = arr;
-
-                        newDocument.id = document.id;
-                        newDocument.access_hash = document.access_hash;
-                        newDocument.date = document.date;
-                        newDocument.mime_type = document.mime_type;
-                        newDocument.size = document.size;
-                        newDocument.dc_id = document.dc_id;
-                        newDocument.attributes = document.attributes;
-                        if (newDocument.mime_type == null) {
-                            newDocument.mime_type = "";
-                        }
-                        document = newDocument;
-                    } catch (Exception e) {
-                        FileLog.e("messenger", e);
-                    }
-                }
-            }
-        }
         SendMessagesHelper.getInstance().sendMessageDocument((TLRPC.TL_document) document, null, null, peer, replyingMessageObject, null);
     }
 

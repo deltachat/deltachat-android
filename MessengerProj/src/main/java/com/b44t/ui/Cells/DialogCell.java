@@ -269,19 +269,6 @@ public class DialogCell extends BaseCell {
         //drawNameBot = false;
         drawVerified = false;
 
-        /* EDIT BY MR
-        if (encryptedChat != null) {
-            drawNameLock = true;
-            nameLockTop = AndroidUtilities.dp(16.5f);
-            if (!LocaleController.isRTL) {
-                nameLockLeft = AndroidUtilities.dp(AndroidUtilities.leftBaseline);
-                nameLeft = AndroidUtilities.dp(AndroidUtilities.leftBaseline + 4) + lockDrawable.getIntrinsicWidth();
-            } else {
-                nameLockLeft = getMeasuredWidth() - AndroidUtilities.dp(AndroidUtilities.leftBaseline) - lockDrawable.getIntrinsicWidth();
-                nameLeft = AndroidUtilities.dp(14);
-            }
-        } else
-        */
         {
             if (m_mrChat.getType()==MrChat.MR_CHAT_GROUP) { // EDIT BY MR
                 //if (chat.id < 0 || ChatObject.isChannel(chat) && !chat.megagroup) {

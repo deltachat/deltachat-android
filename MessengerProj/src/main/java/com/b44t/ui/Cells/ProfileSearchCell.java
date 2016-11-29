@@ -51,7 +51,7 @@ public class ProfileSearchCell extends BaseCell {
 
     private TLRPC.User user = null;
     private TLRPC.Chat chat = null;
-    private TLRPC.EncryptedChat encryptedChat = null;
+    private final Object encryptedChat = null;
     private long dialog_id;
 
     private String lastName = null;
@@ -126,7 +126,7 @@ public class ProfileSearchCell extends BaseCell {
         return super.onTouchEvent(event);
     }
 
-    public void setData(TLObject object, TLRPC.EncryptedChat ec, CharSequence n, CharSequence s, boolean needCount) {
+    public void setData(TLObject object, Object ec, CharSequence n, CharSequence s, boolean needCount) {
         currentName = n;
         if (object instanceof TLRPC.User) {
             user = (TLRPC.User) object;
@@ -135,7 +135,6 @@ public class ProfileSearchCell extends BaseCell {
             chat = (TLRPC.Chat) object;
             user = null;
         }
-        encryptedChat = ec;
         subLabel = s;
         drawCount = needCount;
         update(0);
@@ -176,18 +175,7 @@ public class ProfileSearchCell extends BaseCell {
         drawNameGroup = false;
         drawCheck = false;
 
-        /*if (encryptedChat != null) {
-            drawNameLock = true;
-            dialog_id = ((long) encryptedChat.id) << 32;
-            if (!LocaleController.isRTL) {
-                nameLockLeft = AndroidUtilities.dp(AndroidUtilities.leftBaseline);
-                nameLeft = AndroidUtilities.dp(AndroidUtilities.leftBaseline + 4) + lockDrawable.getIntrinsicWidth();
-            } else {
-                nameLockLeft = getMeasuredWidth() - AndroidUtilities.dp(AndroidUtilities.leftBaseline + 2) - lockDrawable.getIntrinsicWidth();
-                nameLeft = AndroidUtilities.dp(11);
-            }
-            nameLockTop = AndroidUtilities.dp(16.5f);
-        } else*/ {
+        {
             if (chat != null) {
                 /*if (chat.id < 0) {
                     dialog_id = AndroidUtilities.makeBroadcastId(chat.id);
@@ -235,11 +223,7 @@ public class ProfileSearchCell extends BaseCell {
             nameString = nameString2.replace('\n', ' ');
         }
 
-        /*if (encryptedChat != null) {
-            currentNamePaint = nameEncryptedPaint;
-        } else*/ {
-            currentNamePaint = namePaint;
-        }
+        currentNamePaint = namePaint;
 
         int onlineWidth;
         int nameWidth;

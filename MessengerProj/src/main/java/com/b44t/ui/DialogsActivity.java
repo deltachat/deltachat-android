@@ -926,13 +926,6 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
                         }
                     }
                 }
-            } else {
-                TLRPC.EncryptedChat chat = MessagesController.getInstance().getEncryptedChat(high_id);
-                TLRPC.User user = MessagesController.getInstance().getUser(chat.user_id);
-                if (user == null) {
-                    return;
-                }
-                builder.setMessage(LocaleController.formatStringSimple(selectAlertString, UserObject.getUserName(user)));
             }
 
             builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), new DialogInterface.OnClickListener() {

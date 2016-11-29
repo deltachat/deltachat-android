@@ -502,10 +502,6 @@ public class AndroidUtilities {
         return (cm / 2.54f) * (isX ? displayMetrics.xdpi : displayMetrics.ydpi);
     }
 
-    public static int getPeerLayerVersion(int layer) {
-        return (layer >> 16) & 0xffff;
-    }
-
     public static void runOnUIThread(Runnable runnable) {
         runOnUIThread(runnable, 0);
     }
@@ -582,78 +578,6 @@ public class AndroidUtilities {
             }
         }
     }
-
-    /*
-    public static AlertDialog.Builder buildTTLAlert(final Context context, final TLRPC.EncryptedChat encryptedChat) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(context);
-        builder.setTitle(LocaleController.getString("MessageLifetime", R.string.MessageLifetime));
-        final NumberPicker numberPicker = new NumberPicker(context);
-        numberPicker.setMinValue(0);
-        numberPicker.setMaxValue(20);
-        if (encryptedChat.ttl > 0 && encryptedChat.ttl < 16) {
-            numberPicker.setValue(encryptedChat.ttl);
-        } else if (encryptedChat.ttl == 30) {
-            numberPicker.setValue(16);
-        } else if (encryptedChat.ttl == 60) {
-            numberPicker.setValue(17);
-        } else if (encryptedChat.ttl == 60 * 60) {
-            numberPicker.setValue(18);
-        } else if (encryptedChat.ttl == 60 * 60 * 24) {
-            numberPicker.setValue(19);
-        } else if (encryptedChat.ttl == 60 * 60 * 24 * 7) {
-            numberPicker.setValue(20);
-        } else if (encryptedChat.ttl == 0) {
-            numberPicker.setValue(0);
-        }
-        numberPicker.setFormatter(new NumberPicker.Formatter() {
-            @Override
-            public String format(int value) {
-                if (value == 0) {
-                    return LocaleController.getString("ShortMessageLifetimeForever", R.string.ShortMessageLifetimeForever);
-                } else if (value >= 1 && value < 16) {
-                    return AndroidUtilities.formatTTLString(value);
-                } else if (value == 16) {
-                    return AndroidUtilities.formatTTLString(30);
-                } else if (value == 17) {
-                    return AndroidUtilities.formatTTLString(60);
-                } else if (value == 18) {
-                    return AndroidUtilities.formatTTLString(60 * 60);
-                } else if (value == 19) {
-                    return AndroidUtilities.formatTTLString(60 * 60 * 24);
-                } else if (value == 20) {
-                    return AndroidUtilities.formatTTLString(60 * 60 * 24 * 7);
-                }
-                return "";
-            }
-        });
-        builder.setView(numberPicker);
-        builder.setNegativeButton(LocaleController.getString("Done", R.string.Done), new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                int oldValue = encryptedChat.ttl;
-                which = numberPicker.getValue();
-                if (which >= 0 && which < 16) {
-                    encryptedChat.ttl = which;
-                } else if (which == 16) {
-                    encryptedChat.ttl = 30;
-                } else if (which == 17) {
-                    encryptedChat.ttl = 60;
-                } else if (which == 18) {
-                    encryptedChat.ttl = 60 * 60;
-                } else if (which == 19) {
-                    encryptedChat.ttl = 60 * 60 * 24;
-                } else if (which == 20) {
-                    encryptedChat.ttl = 60 * 60 * 24 * 7;
-                }
-                if (oldValue != encryptedChat.ttl) {
-                    //SecretChatHelper.getInstance().sendTTLMessage(encryptedChat, null);
-                    //MessagesStorage.getInstance().updateEncryptedChatTTL(encryptedChat);
-                }
-            }
-        });
-        return builder;
-    }
-    */
 
     public static void clearCursorDrawable(EditText editText) {
         if (editText == null) {

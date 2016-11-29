@@ -504,11 +504,6 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
 
     private ExternalObserver externalObserver = null;
     private InternalObserver internalObserver = null;
-    private long lastSecretChatEnterTime = 0;
-    private long lastSecretChatLeaveTime = 0;
-    private long lastMediaCheckTime = 0;
-    private TLRPC.EncryptedChat lastSecretChat = null;
-    private ArrayList<Long> lastSecretChatVisibleMessages = null;
     private int startObserverToken = 0;
     private StopMediaObserverRunnable stopMediaObserverRunnable = null;
 

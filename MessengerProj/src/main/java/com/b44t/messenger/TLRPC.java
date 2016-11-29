@@ -97,15 +97,6 @@ public class TLRPC {
 	public static class TL_geoPoint extends GeoPoint {
 	}
 
-	public static class SendMessageAction extends TLObject {
-		public int progress;
-	}
-
-	public static class PrivacyRule extends TLObject {
-		public ArrayList<Integer> users = new ArrayList<>();
-
-	}
-
 	public static class TL_messageMediaEmpty extends MessageMedia {
 	}
 
@@ -426,39 +417,6 @@ public class TLRPC {
 	public static class TL_userStatusRecently extends UserStatus {
 	}
 
-	public static class Update extends TLObject {
-		public int chat_id;
-		public int user_id;
-		public int date;
-		public int version;
-		public DraftMessage draft;
-		public int pts;
-		public byte[] data;
-		public int flags;
-		public String query;
-		public String offset;
-		public int channel_id;
-		public SendMessageAction action;
-		public boolean blocked;
-		public String location;
-		public boolean enabled;
-		public ArrayList<PrivacyRule> rules = new ArrayList<>();
-		public UserStatus status;
-		public int views;
-		public String type;
-		public MessageMedia media;
-		public String first_name;
-		public String last_name;
-		public String username;
-		public ArrayList<Integer> messages = new ArrayList<>();
-		public String phone;
-		public WebPage webpage;
-		public EncryptedChat chat;
-		public ArrayList<Long> order = new ArrayList<>();
-		public UserProfilePhoto photo;
-		public boolean previous;
-	}
-
 	public static class InputEncryptedFile extends TLObject {
 		public long id;
 		public int parts;
@@ -561,7 +519,6 @@ public class TLRPC {
 		public String username;
 		public boolean restricted;
 		public boolean signatures;
-		public String restriction_reason;
 		public boolean min;
 		public String address;
 	}
@@ -647,26 +604,6 @@ public class TLRPC {
 		public String name;
 	}
 
-	public static class Updates extends TLObject {
-		public ArrayList<Update> updates = new ArrayList<>();
-		public ArrayList<User> users = new ArrayList<>();
-		public ArrayList<Chat> chats = new ArrayList<>();
-		public int date;
-		public int seq;
-		public int flags;
-		public boolean out;
-		public boolean mentioned;
-		public boolean silent;
-		public int id;
-		public int user_id;
-		public String message;
-		public int pts;
-		public MessageMedia media;
-		public Update update;
-		public int from_id;
-		public int chat_id;
-	}
-
 	public static class WallPaper extends TLObject {
 		public int id;
 		public String title;
@@ -744,17 +681,6 @@ public class TLRPC {
 		public int user_id;
 		public WebPage webpage;
 	}
-
-    public static class EncryptedChat extends TLObject {
-        public int id;
-        public int date;
-        public byte[] nonce;
-        public byte[] auth_key; //custom
-        public int user_id; //custom
-        public int ttl; //custom
-        public int layer; //custom
-        public byte[] key_hash; //custom
-    }
 
     public static class Message extends TLObject {
         public int id;

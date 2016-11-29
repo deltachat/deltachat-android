@@ -1019,7 +1019,7 @@ public class DialogsSearchAdapter extends BaseSearchAdapterRecycler {
 
                 TLRPC.User user = null;
                 TLRPC.Chat chat = null;
-                TLRPC.EncryptedChat encryptedChat = null;
+                final Object encryptedChat = null;
                 CharSequence username = null;
                 CharSequence name = null;
                 boolean isRecent = false;
@@ -1035,10 +1035,10 @@ public class DialogsSearchAdapter extends BaseSearchAdapterRecycler {
                         chat = (TLRPC.Chat) obj;
                     }
                     un = chat.username;
-                } else if (obj instanceof TLRPC.EncryptedChat) {
+                }/* else if (obj instanceof TLRPC.EncryptedChat) {
                     encryptedChat = MessagesController.getInstance().getEncryptedChat(((TLRPC.EncryptedChat) obj).id);
                     user = MessagesController.getInstance().getUser(encryptedChat.user_id);
-                }
+                }*/
 
                 if (isRecentSearchDisplayed()) {
                     isRecent = true;

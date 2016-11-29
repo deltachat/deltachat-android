@@ -9,18 +9,12 @@
 package com.b44t.messenger;
 
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.app.ProgressDialog;
-import android.content.DialogInterface;
 import android.content.SharedPreferences;
-import android.os.Bundle;
 
 import com.b44t.messenger.query.DraftQuery;
 import com.b44t.messenger.query.MessagesQuery;
 import com.b44t.messenger.query.SearchQuery;
 import com.b44t.ui.ActionBar.BaseFragment;
-import com.b44t.ui.ChatActivity;
-import com.b44t.ui.ProfileActivity;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -32,7 +26,6 @@ import java.util.concurrent.Semaphore;
 public class MessagesController implements NotificationCenter.NotificationCenterDelegate {
 
     private ConcurrentHashMap<Integer, TLRPC.Chat> chats = new ConcurrentHashMap<>(100, 1.0f, 2);
-    private ConcurrentHashMap<Integer, TLRPC.EncryptedChat> encryptedChats = new ConcurrentHashMap<>(10, 1.0f, 2);
     private ConcurrentHashMap<Integer, TLRPC.User> users = new ConcurrentHashMap<>(100, 1.0f, 2);
     private ConcurrentHashMap<String, TLRPC.User> usersByUsernames = new ConcurrentHashMap<>(100, 1.0f, 2);
 
@@ -376,10 +369,6 @@ public class MessagesController implements NotificationCenter.NotificationCenter
         return chats.get(id);
     }
 
-    public TLRPC.EncryptedChat getEncryptedChat(Integer id) {
-        return encryptedChats.get(id);
-    }
-
     public void setLastCreatedDialogId(final long dialog_id, final boolean set) {
         Utilities.stageQueue.postRunnable(new Runnable() {
             @Override
@@ -616,15 +605,7 @@ public class MessagesController implements NotificationCenter.NotificationCenter
     }
     */
 
-    public void deleteMessages(ArrayList<Integer> messages, ArrayList<Long> randoms, TLRPC.EncryptedChat encryptedChat, final int channelId) {
-
-    }
-
-    public void deleteDialog(final long did, final int onlyHistory) {
-        deleteDialog(did, true, onlyHistory, 0);
-    }
-
-    private void deleteDialog(final long did, final boolean first, final int onlyHistory, final int max_id) {
+    public void deleteMessages(ArrayList<Integer> messages, ArrayList<Long> randoms, Object encryptedChat, final int channelId) {
 
     }
 
