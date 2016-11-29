@@ -190,11 +190,8 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
     private ExtendedGridLayoutManager mentionGridLayoutManager;
     private AnimatorSet mentionListAnimation;
     private ChatAttachAlert chatAttachAlert;
-    private LinearLayout reportSpamView;
-    private AnimatorSet reportSpamViewAnimator;
-    private TextView addToContactsButton;
-    private TextView reportSpamButton;
-    private FrameLayout reportSpamContainer;
+    private final Object reportSpamView = null;
+    private final Object reportSpamView_getTag = null;
     private PlayerView playerView;
     private TextView gifHintTextView;
     private View emojiButtonRed;
@@ -452,7 +449,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.messagesReadContent);
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.chatSearchResultsAvailable);
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.didUpdatedMessagesViews);
-        NotificationCenter.getInstance().addObserver(this, NotificationCenter.peerSettingsDidLoaded);
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.newDraftReceived);
 
         super.onFragmentCreate();
@@ -554,7 +550,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         NotificationCenter.getInstance().removeObserver(this, NotificationCenter.chatSearchResultsAvailable);
         NotificationCenter.getInstance().removeObserver(this, NotificationCenter.audioPlayStateChanged);
         NotificationCenter.getInstance().removeObserver(this, NotificationCenter.didUpdatedMessagesViews);
-        NotificationCenter.getInstance().removeObserver(this, NotificationCenter.peerSettingsDidLoaded);
         NotificationCenter.getInstance().removeObserver(this, NotificationCenter.newDraftReceived);
 
         if (AndroidUtilities.isTablet()) {
@@ -1266,91 +1261,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         progressBar.setIndeterminate(true);
         AndroidUtilities.setProgressBarAnimationDuration(progressBar, 1500);
         progressView.addView(progressBar, LayoutHelper.createFrame(32, 32, Gravity.CENTER));
-
-        reportSpamView = new LinearLayout(context);
-        reportSpamView.setTag(1);
-        reportSpamView.setTranslationY(-AndroidUtilities.dp(50));
-        reportSpamView.setVisibility(View.GONE);
-        reportSpamView.setBackgroundResource(R.drawable.blockpanel);
-        contentView.addView(reportSpamView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, 50, Gravity.TOP | Gravity.LEFT));
-
-        addToContactsButton = new TextView(context);
-        addToContactsButton.setTextColor(Theme.CHAT_ADD_CONTACT_TEXT_COLOR);
-        addToContactsButton.setVisibility(View.GONE);
-        addToContactsButton.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
-        addToContactsButton.setTypeface(AndroidUtilities.getTypeface("fonts/rmedium.ttf"));
-        addToContactsButton.setSingleLine(true);
-        addToContactsButton.setMaxLines(1);
-        addToContactsButton.setPadding(AndroidUtilities.dp(4), 0, AndroidUtilities.dp(4), 0);
-        addToContactsButton.setGravity(Gravity.CENTER);
-        addToContactsButton.setText("foo bar");
-        reportSpamView.addView(addToContactsButton, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.MATCH_PARENT, 0.5f, Gravity.LEFT | Gravity.TOP, 0, 0, 0, AndroidUtilities.dp(1)));
-
-        reportSpamContainer = new FrameLayout(context);
-        reportSpamView.addView(reportSpamContainer, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.MATCH_PARENT, 1.0f, Gravity.LEFT | Gravity.TOP, 0, 0, 0, AndroidUtilities.dp(1)));
-
-        reportSpamButton = new TextView(context);
-        reportSpamButton.setTextColor(Theme.CHAT_REPORT_SPAM_TEXT_COLOR);
-        reportSpamButton.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
-        reportSpamButton.setTypeface(AndroidUtilities.getTypeface("fonts/rmedium.ttf"));
-        reportSpamButton.setSingleLine(true);
-        reportSpamButton.setMaxLines(1);
-        reportSpamButton.setText("foo bar"); // removing this button completely destroyed the layout at a first test, I have not the time to figure this out at the moment
-        reportSpamButton.setGravity(Gravity.CENTER);
-        reportSpamButton.setPadding(AndroidUtilities.dp(50), 0, AndroidUtilities.dp(50), 0);
-        reportSpamContainer.addView(reportSpamButton, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.MATCH_PARENT, Gravity.LEFT | Gravity.TOP));
-        reportSpamButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                /*
-                if (getParentActivity() == null) {
-                    return;
-                }
-                AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
-                if (ChatObject.isChannel(currentChat) && !currentChat.megagroup) {
-                    builder.setMessage(LocaleController.getString("ReportSpamAlertChannel", R.string.ReportSpamAlertChannel));
-                } else if (currentChat != null) {
-                    builder.setMessage(LocaleController.getString("ReportSpamAlertGroup", R.string.ReportSpamAlertGroup));
-                } else {
-                    builder.setMessage(LocaleController.getString("ReportSpamAlert", R.string.ReportSpamAlert));
-                }
-                builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        if (currentUser != null) {
-                            MessagesController.getInstance().blockUser(currentUser.id);
-                        }
-                        //MessagesController.getInstance().reportSpam(dialog_id, currentUser, currentChat);
-                        updateSpamView();
-                        if (currentChat != null) {
-                            if (ChatObject.isNotInChat(currentChat)) {
-                                MessagesController.getInstance().deleteDialog(dialog_id, 0);
-                            } else {
-                                MessagesController.getInstance().deleteUserFromChat((int) -dialog_id, MessagesController.getInstance().getUser(UserConfig.getClientUserId()), null);
-                            }
-                        } else {
-                            MessagesController.getInstance().deleteDialog(dialog_id, 0);
-                        }
-                        finishFragment();
-                    }
-                });
-                builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
-                showDialog(builder.create());
-                */
-            }
-        });
-
-        ImageView closeReportSpam = new ImageView(context);
-        closeReportSpam.setImageResource(R.drawable.miniplayer_close);
-        closeReportSpam.setScaleType(ImageView.ScaleType.CENTER);
-        reportSpamContainer.addView(closeReportSpam, LayoutHelper.createFrame(48, 48, Gravity.RIGHT | Gravity.TOP));
-        closeReportSpam.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //MessagesController.getInstance().hideReportSpam(dialog_id, currentUser, currentChat);
-                updateSpamView();
-            }
-        });
 
         alertView = new FrameLayout(context);
         alertView.setTag(1);
@@ -2117,7 +2027,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         }
 
         updateBottomOverlay();
-        updateSpamView();
         updatePinnedMessageView(true);
 
         fixLayoutInternal();
@@ -4599,11 +4508,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     updateVisibleRows();
                 }
             }
-        } else if (id == NotificationCenter.peerSettingsDidLoaded) {
-            long did = (Long) args[0];
-            if (did == dialog_id) {
-                updateSpamView();
-            }
         } else if (id == NotificationCenter.newDraftReceived) {
             long did = (Long) args[0];
             if (did == dialog_id) {
@@ -4818,85 +4722,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         checkListViewPaddings();
     }
 
-    private void updateSpamView() {
-        if (reportSpamView == null) {
-            return;
-        }
-        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("Notifications", Activity.MODE_PRIVATE);
-        boolean show = preferences.getInt("spam3_" + dialog_id, 0) == 2;
-        if (show) {
-            if (messages.isEmpty()) {
-                show = false;
-            } else {
-                int count = messages.size() - 1;
-                for (int a = count; a >= Math.max(count - 50, 0); a--) {
-                    MessageObject messageObject = messages.get(a);
-                    if (messageObject.isOut()) {
-                        show = false;
-                        break;
-                    }
-                }
-            }
-        }
-        if (!show) {
-            if (reportSpamView.getTag() == null) {
-                reportSpamView.setTag(1);
-
-                if (reportSpamViewAnimator != null) {
-                    reportSpamViewAnimator.cancel();
-                }
-                reportSpamViewAnimator = new AnimatorSet();
-                reportSpamViewAnimator.playTogether(ObjectAnimator.ofFloat(reportSpamView, "translationY", -AndroidUtilities.dp(50)));
-                reportSpamViewAnimator.setDuration(200);
-                reportSpamViewAnimator.addListener(new AnimatorListenerAdapterProxy() {
-                    @Override
-                    public void onAnimationEnd(Animator animation) {
-                        if (reportSpamViewAnimator != null && reportSpamViewAnimator.equals(animation)) {
-                            reportSpamView.setVisibility(View.GONE);
-                            reportSpamViewAnimator = null;
-                        }
-                    }
-
-                    @Override
-                    public void onAnimationCancel(Animator animation) {
-                        if (reportSpamViewAnimator != null && reportSpamViewAnimator.equals(animation)) {
-                            reportSpamViewAnimator = null;
-                        }
-                    }
-                });
-                reportSpamViewAnimator.start();
-            }
-        } else {
-            if (reportSpamView.getTag() != null) {
-                reportSpamView.setTag(null);
-                reportSpamView.setVisibility(View.VISIBLE);
-                if (reportSpamViewAnimator != null) {
-                    reportSpamViewAnimator.cancel();
-                }
-                reportSpamViewAnimator = new AnimatorSet();
-                reportSpamViewAnimator.playTogether(ObjectAnimator.ofFloat(reportSpamView, "translationY", 0));
-                reportSpamViewAnimator.setDuration(200);
-                reportSpamViewAnimator.addListener(new AnimatorListenerAdapterProxy() {
-                    @Override
-                    public void onAnimationEnd(Animator animation) {
-                        if (reportSpamViewAnimator != null && reportSpamViewAnimator.equals(animation)) {
-                            reportSpamViewAnimator = null;
-                        }
-                    }
-
-                    @Override
-                    public void onAnimationCancel(Animator animation) {
-                        if (reportSpamViewAnimator != null && reportSpamViewAnimator.equals(animation)) {
-                            reportSpamViewAnimator = null;
-                        }
-                    }
-                });
-                reportSpamViewAnimator.start();
-            }
-        }
-        checkListViewPaddings();
-    }
-
     private void checkListViewPaddings() {
         AndroidUtilities.runOnUIThread(new Runnable() {
             @Override
@@ -4908,11 +4733,11 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                         View firstVisView = chatLayoutManager.findViewByPosition(firstVisPos);
                         top = ((firstVisView == null) ? 0 : firstVisView.getTop()) - chatListView.getPaddingTop();
                     }
-                    if (chatListView.getPaddingTop() != AndroidUtilities.dp(52) && (pinnedMessageView != null && pinnedMessageView.getTag() == null || reportSpamView != null && reportSpamView.getTag() == null)) {
+                    if (chatListView.getPaddingTop() != AndroidUtilities.dp(52) && (pinnedMessageView != null && pinnedMessageView.getTag() == null || reportSpamView != null && reportSpamView_getTag == null)) {
                         chatListView.setPadding(0, AndroidUtilities.dp(52), 0, AndroidUtilities.dp(3));
                         chatListView.setTopGlowOffset(AndroidUtilities.dp(48));
                         top -= AndroidUtilities.dp(48);
-                    } else if (chatListView.getPaddingTop() != AndroidUtilities.dp(4) && (pinnedMessageView == null || pinnedMessageView.getTag() != null) && (reportSpamView == null || reportSpamView.getTag() != null)) {
+                    } else if (chatListView.getPaddingTop() != AndroidUtilities.dp(4) && (pinnedMessageView == null || pinnedMessageView.getTag() != null) && (reportSpamView == null || reportSpamView_getTag != null)) {
                         chatListView.setPadding(0, AndroidUtilities.dp(4), 0, AndroidUtilities.dp(3));
                         chatListView.setTopGlowOffset(0);
                         top += AndroidUtilities.dp(48);
@@ -5753,7 +5578,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 if (view instanceof ChatActionCell && currentChat != null) {
                     object.dialogId = -currentChat.id;
                 }
-                if (pinnedMessageView != null && pinnedMessageView.getTag() == null || reportSpamView != null && reportSpamView.getTag() == null) {
+                if (pinnedMessageView != null && pinnedMessageView.getTag() == null || reportSpamView != null && reportSpamView_getTag == null) {
                     object.clipTopAddition = AndroidUtilities.dp(48);
                 }
                 return object;
