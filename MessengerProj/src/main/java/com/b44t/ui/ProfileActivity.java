@@ -659,7 +659,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
     @Override
     public void restoreSelfArgs(Bundle args) {
         if (chat_id != 0) {
-            MessagesController.getInstance().loadChatInfo(chat_id, null, false);
+            //MessagesController.getInstance().loadChatInfo(chat_id, null, false);
             if (avatarUpdater != null) {
                 avatarUpdater.currentPicturePath = args.getString("path");
             }

@@ -513,7 +513,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         if (mentionsAdapter != null) {
             mentionsAdapter.onDestroy();
         }
-        MessagesController.getInstance().setLastCreatedDialogId(dialog_id, false);
         NotificationCenter.getInstance().removeObserver(this, NotificationCenter.emojiDidLoaded);
         NotificationCenter.getInstance().removeObserver(this, NotificationCenter.dialogsNeedReload);
         NotificationCenter.getInstance().removeObserver(this, NotificationCenter.updateInterfaces);
@@ -2293,25 +2292,27 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 if (!endReached[0]) {
                     loading = true;
                     waitingForLoad.add(lastLoadIndex);
+                    /*
                     if (messagesByDays.size() != 0) {
                         MessagesController.getInstance().loadMessages(dialog_id, 50, maxMessageId[0], !cacheEndReached[0], minDate[0], classGuid, 0, 0, ChatObject.isChannel(currentChat), lastLoadIndex++);
                     } else {
                         MessagesController.getInstance().loadMessages(dialog_id, 50, 0, !cacheEndReached[0], minDate[0], classGuid, 0, 0, ChatObject.isChannel(currentChat), lastLoadIndex++);
                     }
+                    */
                 } else if (mergeDialogId != 0 && !endReached[1]) {
                     loading = true;
                     waitingForLoad.add(lastLoadIndex);
-                    MessagesController.getInstance().loadMessages(mergeDialogId, 50, maxMessageId[1], !cacheEndReached[1], minDate[1], classGuid, 0, 0, ChatObject.isChannel(currentChat), lastLoadIndex++);
+                    //MessagesController.getInstance().loadMessages(mergeDialogId, 50, maxMessageId[1], !cacheEndReached[1], minDate[1], classGuid, 0, 0, ChatObject.isChannel(currentChat), lastLoadIndex++);
                 }
             }
             if (!loadingForward && firstVisibleItem + visibleItemCount >= totalItemCount - 10) {
                 if (mergeDialogId != 0 && !forwardEndReached[1]) {
                     waitingForLoad.add(lastLoadIndex);
-                    MessagesController.getInstance().loadMessages(mergeDialogId, 50, minMessageId[1], true, maxDate[1], classGuid, 1, 0, ChatObject.isChannel(currentChat), lastLoadIndex++);
+                    //MessagesController.getInstance().loadMessages(mergeDialogId, 50, minMessageId[1], true, maxDate[1], classGuid, 1, 0, ChatObject.isChannel(currentChat), lastLoadIndex++);
                     loadingForward = true;
                 } else if (!forwardEndReached[0]) {
                     waitingForLoad.add(lastLoadIndex);
-                    MessagesController.getInstance().loadMessages(dialog_id, 50, minMessageId[0], true, maxDate[0], classGuid, 1, 0, ChatObject.isChannel(currentChat), lastLoadIndex++);
+                    //MessagesController.getInstance().loadMessages(dialog_id, 50, minMessageId[0], true, maxDate[0], classGuid, 1, 0, ChatObject.isChannel(currentChat), lastLoadIndex++);
                     loadingForward = true;
                 }
             }
@@ -2650,7 +2651,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         } else {
             clearChatData();
             waitingForLoad.add(lastLoadIndex);
-            MessagesController.getInstance().loadMessages(dialog_id, 30, 0, true, 0, classGuid, 0, 0, ChatObject.isChannel(currentChat), lastLoadIndex++);
+            //MessagesController.getInstance().loadMessages(dialog_id, 30, 0, true, 0, classGuid, 0, 0, ChatObject.isChannel(currentChat), lastLoadIndex++);
         }
     }
 
@@ -2834,7 +2835,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
             scrollToMessagePosition = -10000;
             startLoadFromMessageId = id;
             waitingForLoad.add(lastLoadIndex);
-            MessagesController.getInstance().loadMessages(loadIndex == 0 ? dialog_id : mergeDialogId, AndroidUtilities.isTablet() ? 30 : 20, startLoadFromMessageId, true, 0, classGuid, 3, 0, ChatObject.isChannel(currentChat), lastLoadIndex++);
+            //MessagesController.getInstance().loadMessages(loadIndex == 0 ? dialog_id : mergeDialogId, AndroidUtilities.isTablet() ? 30 : 20, startLoadFromMessageId, true, 0, classGuid, 3, 0, ChatObject.isChannel(currentChat), lastLoadIndex++);
             //emptyViewContainer.setVisibility(View.INVISIBLE);
         }
         returnToMessageId = fromMessageId;
@@ -4076,7 +4077,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     maxDate[0] = maxDate[1] = Integer.MIN_VALUE;
                     minDate[0] = minDate[1] = 0;
                     waitingForLoad.add(lastLoadIndex);
-                    MessagesController.getInstance().loadMessages(dialog_id, 30, 0, !cacheEndReached[0], minDate[0], classGuid, 0, 0, ChatObject.isChannel(currentChat), lastLoadIndex++);
+                    //MessagesController.getInstance().loadMessages(dialog_id, 30, 0, !cacheEndReached[0], minDate[0], classGuid, 0, 0, ChatObject.isChannel(currentChat), lastLoadIndex++);
                     loading = true;
                 }
             }
@@ -4227,7 +4228,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     loading = true;
                     startLoadFromMessageId = 0;
                     waitingForLoad.add(lastLoadIndex);
-                    MessagesController.getInstance().loadMessages(dialog_id, AndroidUtilities.isTablet() ? 30 : 20, 0, true, 0, classGuid, 2, 0, ChatObject.isChannel(currentChat), lastLoadIndex++);
+                    //MessagesController.getInstance().loadMessages(dialog_id, AndroidUtilities.isTablet() ? 30 : 20, 0, true, 0, classGuid, 2, 0, ChatObject.isChannel(currentChat), lastLoadIndex++);
                 } else {
                     if (progressView != null) {
                         progressView.setVisibility(View.INVISIBLE);
@@ -4822,8 +4823,8 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
             }
         }
         if (replyingMessageObject == null && draftReplyMessage != null) {
-            replyingMessageObject = new MessageObject(draftReplyMessage, MessagesController.getInstance().getUsers(), false);
-            showReplyPanel(true, replyingMessageObject, null, null, false, false);
+            //replyingMessageObject = new MessageObject(draftReplyMessage, MessagesController.getInstance().getUsers(), false);
+            //showReplyPanel(true, replyingMessageObject, null, null, false, false);
         }
     }
 

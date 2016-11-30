@@ -21,13 +21,8 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.Semaphore;
 
 public class MessagesController implements NotificationCenter.NotificationCenterDelegate {
-
-    private ConcurrentHashMap<Integer, TLRPC.Chat> chats = new ConcurrentHashMap<>(100, 1.0f, 2);
-    private ConcurrentHashMap<Integer, TLRPC.User> users = new ConcurrentHashMap<>(100, 1.0f, 2);
-    private ConcurrentHashMap<String, TLRPC.User> usersByUsernames = new ConcurrentHashMap<>(100, 1.0f, 2);
 
     public ArrayList<TLRPC.TL_dialog> dialogs = new ArrayList<>();
     public ArrayList<TLRPC.TL_dialog> dialogsServerOnly = new ArrayList<>();
@@ -39,11 +34,6 @@ public class MessagesController implements NotificationCenter.NotificationCenter
     public HashMap<Integer, MessageObject> dialogMessagesByIds = new HashMap<>();
     public HashMap<Long, CharSequence> printingStrings = new HashMap<>();
     public ConcurrentHashMap<Integer, Integer> onlinePrivacy = new ConcurrentHashMap<>(20, 1.0f, 2);
-
-    private ArrayList<Long> createdDialogIds = new ArrayList<>();
-
-    private ArrayList<Integer> loadedFullUsers = new ArrayList<>();
-    private ArrayList<Integer> loadedFullChats = new ArrayList<>();
 
     private HashMap<String, ArrayList<MessageObject>> reloadingWebpages = new HashMap<>();
 
@@ -65,7 +55,6 @@ public class MessagesController implements NotificationCenter.NotificationCenter
     public static final int UPDATE_MASK_CHAT_NAME = 16;
     public static final int UPDATE_MASK_CHAT_MEMBERS = 32;
     public static final int UPDATE_MASK_USER_PRINT = 64;
-    public static final int UPDATE_MASK_USER_PHONE = 128;
     public static final int UPDATE_MASK_READ_DIALOG_MESSAGE = 256;
     public static final int UPDATE_MASK_SELECT_DIALOG = 512;
     public static final int UPDATE_MASK_NEW_MESSAGE = 2048;
@@ -354,256 +343,9 @@ public class MessagesController implements NotificationCenter.NotificationCenter
         return u;
     }
 
-    public TLRPC.User getUser(String username) {
-        if (username == null || username.length() == 0) {
-            return null;
-        }
-        return usersByUsernames.get(username.toLowerCase());
-    }
-
-    public ConcurrentHashMap<Integer, TLRPC.User> getUsers() {
-        return users;
-    }
-
     public TLRPC.Chat getChat(Integer id) {
-        return chats.get(id);
+        return null;
     }
-
-    public void setLastCreatedDialogId(final long dialog_id, final boolean set) {
-        Utilities.stageQueue.postRunnable(new Runnable() {
-            @Override
-            public void run() {
-                if (set) {
-                    createdDialogIds.add(dialog_id);
-                } else {
-                    createdDialogIds.remove(dialog_id);
-                }
-            }
-        });
-    }
-
-    public boolean putUser(TLRPC.User user, boolean fromCache) {
-        if (user == null) {
-            return false;
-        }
-        fromCache = fromCache && user.id / 1000 != 333 && user.id != 777000;
-        TLRPC.User oldUser = users.get(user.id);
-        if (oldUser != null && oldUser.username != null && oldUser.username.length() > 0) {
-            usersByUsernames.remove(oldUser.username);
-        }
-        if (user.username != null && user.username.length() > 0) {
-            usersByUsernames.put(user.username.toLowerCase(), user);
-        }
-        if (user.min) {
-            if (oldUser != null) {
-                if (!fromCache) {
-                    if (user.username != null) {
-                        oldUser.username = user.username;
-                        oldUser.flags |= 8;
-                    } else {
-                        oldUser.username = null;
-                        oldUser.flags = oldUser.flags &~ 8;
-                    }
-                    if (user.photo != null) {
-                        oldUser.photo = user.photo;
-                        oldUser.flags |= 32;
-                    } else {
-                        oldUser.photo = null;
-                        oldUser.flags = oldUser.flags &~ 32;
-                    }
-                }
-            } else {
-                users.put(user.id, user);
-            }
-        } else {
-            if (!fromCache) {
-                users.put(user.id, user);
-                if (user.id == UserConfig.getClientUserId()) {
-                    UserConfig.setCurrentUser(user);
-                    UserConfig.saveConfig(true);
-                }
-                if (oldUser != null && user.status != null && oldUser.status != null && user.status.expires != oldUser.status.expires) {
-                    return true;
-                }
-            } else if (oldUser == null) {
-                users.put(user.id, user);
-            } else if (oldUser.min) {
-                user.min = false;
-                if (oldUser.username != null) {
-                    user.username = oldUser.username;
-                    user.flags |= 8;
-                } else {
-                    user.username = null;
-                    user.flags = user.flags &~ 8;
-                }
-                if (oldUser.photo != null) {
-                    user.photo = oldUser.photo;
-                    user.flags |= 32;
-                } else {
-                    user.photo = null;
-                    user.flags = user.flags &~ 32;
-                }
-                users.put(user.id, user);
-            }
-        }
-        return false;
-    }
-
-    public void putUsers(ArrayList<TLRPC.User> users, boolean fromCache) {
-        if (users == null || users.isEmpty()) {
-            return;
-        }
-        boolean updateStatus = false;
-        int count = users.size();
-        for (int a = 0; a < count; a++) {
-            TLRPC.User user = users.get(a);
-            if (putUser(user, fromCache)) {
-                updateStatus = true;
-            }
-        }
-        if (updateStatus) {
-            AndroidUtilities.runOnUIThread(new Runnable() {
-                @Override
-                public void run() {
-                    NotificationCenter.getInstance().postNotificationName(NotificationCenter.updateInterfaces, UPDATE_MASK_STATUS);
-                }
-            });
-        }
-    }
-
-    /*
-    public void putChat(TLRPC.Chat chat, boolean fromCache) {
-        if (chat == null) {
-            return;
-        }
-        TLRPC.Chat oldChat = chats.get(chat.id);
-
-        if (chat.min) {
-            if (oldChat != null) {
-                if (!fromCache) {
-                    oldChat.title = chat.title;
-                    oldChat.photo = chat.photo;
-                    //oldChat.broadcast = chat.broadcast;
-                    oldChat.verified = chat.verified;
-                    //oldChat.megagroup = chat.megagroup;
-                    oldChat.democracy = chat.democracy;
-                    if (chat.username != null) {
-                        oldChat.username = chat.username;
-                        oldChat.flags |= 64;
-                    } else {
-                        oldChat.username = null;
-                        oldChat.flags = oldChat.flags &~ 64;
-                    }
-                }
-            } else {
-                chats.put(chat.id, chat);
-            }
-        } else {
-            if (!fromCache) {
-                if (oldChat != null && chat.version != oldChat.version) {
-                    loadedFullChats.remove((Integer) chat.id);
-                }
-                chats.put(chat.id, chat);
-            } else if (oldChat == null) {
-                chats.put(chat.id, chat);
-            } else if (oldChat.min) {
-                chat.min = false;
-                chat.title = oldChat.title;
-                chat.photo = oldChat.photo;
-                //chat.broadcast = oldChat.broadcast;
-                chat.verified = oldChat.verified;
-                //chat.megagroup = oldChat.megagroup;
-                chat.democracy = oldChat.democracy;
-                if (oldChat.username != null) {
-                    chat.username = oldChat.username;
-                    chat.flags |= 64;
-                } else {
-                    chat.username = null;
-                    chat.flags = chat.flags &~ 64;
-                }
-                chats.put(chat.id, chat);
-            }
-        }
-    }
-    */
-
-    /*
-    public void putChats(ArrayList<TLRPC.Chat> chats, boolean fromCache) {
-        if (chats == null || chats.isEmpty()) {
-            return;
-        }
-        int count = chats.size();
-        for (int a = 0; a < count; a++) {
-            TLRPC.Chat chat = chats.get(a);
-            putChat(chat, fromCache);
-        }
-    }
-    */
-
-    /*
-    protected void clearFullUsers() {
-        loadedFullUsers.clear();
-        loadedFullChats.clear();
-    }
-    */
-
-    /*
-    public void loadDialogPhotos(final int did, final int offset, final int count, final long max_id, final boolean fromCache, final int classGuid) {
-        if (fromCache) {
-            MessagesStorage.getInstance().getDialogPhotos(did, offset, count, max_id, classGuid);
-        } else {
-            if (did > 0) {
-                TLRPC.User user = getUser(did);
-                if (user == null) {
-                    return;
-                }
-                TLRPC.TL_photos_getUserPhotos req = new TLRPC.TL_photos_getUserPhotos();
-                req.limit = count;
-                req.offset = offset;
-                req.max_id = (int) max_id;
-                req.user_id = getInputUser(user);
-                int reqId = ConnectionsManager.getInstance().sendRequest(req, new RequestDelegate() {
-                    @Override
-                    public void run(TLObject response, TLRPC.TL_error error) {
-                        if (error == null) {
-                            TLRPC.photos_Photos res = (TLRPC.photos_Photos) response;
-                            processLoadedUserPhotos(res, did, offset, count, max_id, false, classGuid);
-                        }
-                    }
-                });
-                ConnectionsManager.getInstance().bindRequestToGuid(reqId, classGuid);
-            } else if (did < 0) {
-                TLRPC.TL_messages_search req = new TLRPC.TL_messages_search();
-                req.filter = new TLRPC.TL_inputMessagesFilterChatPhotos();
-                req.limit = count;
-                req.offset = offset;
-                req.max_id = (int) max_id;
-                req.q = "";
-                req.peer = MessagesController.getInputPeer(did);
-                int reqId = ConnectionsManager.getInstance().sendRequest(req, new RequestDelegate() {
-                    @Override
-                    public void run(TLObject response, TLRPC.TL_error error) {
-                        if (error == null) {
-                            TLRPC.messages_Messages messages = (TLRPC.messages_Messages) response;
-                            TLRPC.TL_photos_photos res = new TLRPC.TL_photos_photos();
-                            res.count = messages.count;
-                            res.users.addAll(messages.users);
-                            for (int a = 0; a < messages.messages.size(); a++) {
-                                TLRPC.Message message = messages.messages.get(a);
-                                if (message.action == null || message.action.photo == null) {
-                                    continue;
-                                }
-                                res.photos.add(message.action.photo);
-                            }
-                            processLoadedUserPhotos(res, did, offset, count, max_id, false, classGuid);
-                        }
-                    }
-                });
-                ConnectionsManager.getInstance().bindRequestToGuid(reqId, classGuid);
-            }
-        }
-    }
-    */
 
     public void deleteMessages(ArrayList<Integer> messages, ArrayList<Long> randoms, Object encryptedChat, final int channelId) {
 
@@ -633,22 +375,10 @@ public class MessagesController implements NotificationCenter.NotificationCenter
         return searchImage;
     }
 
-    public void loadChatInfo(final int chat_id, Semaphore semaphore, boolean force) {
-        //MessagesStorage.getInstance().loadChatInfo(chat_id, semaphore, force, false);
-    }
-
     public void cancelTyping(int action, long dialog_id) {
     }
 
     public void sendTyping(final long dialog_id, final int action, int classGuid) {
-    }
-
-    public void loadMessages(final long dialog_id, final int count, final int max_id, boolean fromCache, int midDate, final int classGuid, final int load_type, final int last_message_id, final boolean isChannel, final int loadIndex) {
-        loadMessages(dialog_id, count, max_id, fromCache, midDate, classGuid, load_type, last_message_id, isChannel, loadIndex, 0, 0, 0, false);
-    }
-
-    public void loadMessages(final long dialog_id, final int count, final int max_id, boolean fromCache, int midDate, final int classGuid, final int load_type, final int last_message_id, final boolean isChannel, final int loadIndex, final int first_unread, final int unread_count, final int last_date, final boolean queryFromServer) {
-
     }
 
     public void reloadWebPages(final long dialog_id, HashMap<String, ArrayList<MessageObject>> webpagesToReload) {
@@ -761,9 +491,6 @@ public class MessagesController implements NotificationCenter.NotificationCenter
     }
 
     public void markMessageAsRead(final long dialog_id, final long random_id, int ttl) {
-        if (random_id == 0 || dialog_id == 0 || ttl <= 0 && ttl != Integer.MIN_VALUE) {
-            return;
-        }
     }
 
     public void markDialogAsRead(final long dialog_id, final int max_id, final int max_positive_id, final int max_date, final boolean was, final boolean popup) {

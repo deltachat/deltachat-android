@@ -94,9 +94,9 @@ public class GroupCreateFinalActivity extends BaseFragment implements Notificati
                 return false;
             }
             if (!users.isEmpty()) {
-                for (TLRPC.User user : users) {
-                    MessagesController.getInstance().putUser(user, true);
-                }
+                //for (TLRPC.User user : users) {
+                //    MessagesController.getInstance().putUser(user, true);
+                //}
             } else {
                 return false;
             }

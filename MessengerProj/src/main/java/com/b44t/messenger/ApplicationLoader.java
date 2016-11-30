@@ -226,7 +226,7 @@ public class ApplicationLoader extends Application {
         MessagesController.getInstance();
         ConnectionsManager.getInstance().init(deviceModel, systemVersion, appVersion, langCode, configPath, FileLog.getNetworkLogPath(), UserConfig.getClientUserId(), enablePushConnection);
         if (UserConfig.getCurrentUser() != null) {
-            MessagesController.getInstance().putUser(UserConfig.getCurrentUser(), true);
+            //MessagesController.getInstance().putUser(UserConfig.getCurrentUser(), true);
             SendMessagesHelper.getInstance().checkUnsentMessages();
         }
 

@@ -343,9 +343,9 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
                     if (obj instanceof TLRPC.User) {
                         dialog_id = ((TLRPC.User) obj).id;
                         if (dialogsSearchAdapter.isGlobalSearch(position)) {
-                            ArrayList<TLRPC.User> users = new ArrayList<>();
-                            users.add((TLRPC.User) obj);
-                            MessagesController.getInstance().putUsers(users, false);
+                            //ArrayList<TLRPC.User> users = new ArrayList<>();
+                            //users.add((TLRPC.User) obj);
+                            //MessagesController.getInstance().putUsers(users, false);
                             //MessagesStorage.getInstance().putUsersAndChats(users, null, false, true);
                         }
                         if (!onlySelect) {
