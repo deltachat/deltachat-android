@@ -24,6 +24,7 @@ import android.os.Build;
 import com.b44t.messenger.AndroidUtilities;
 import com.b44t.messenger.ApplicationLoader;
 import com.b44t.messenger.R;
+import com.b44t.ui.Components.ChatAttachAlert;
 
 public class Theme {
 
@@ -310,14 +311,14 @@ public class Theme {
 
     public static void loadChatResources(Context context) {
         if (attachButtonDrawables[0] == null) {
-            attachButtonDrawables[0] = context.getResources().getDrawable(R.drawable.attach_camera_states);
-            attachButtonDrawables[1] = context.getResources().getDrawable(R.drawable.attach_gallery_states);
-            attachButtonDrawables[2] = context.getResources().getDrawable(R.drawable.attach_video_states);
-            attachButtonDrawables[3] = context.getResources().getDrawable(R.drawable.attach_audio_states);
-            attachButtonDrawables[4] = context.getResources().getDrawable(R.drawable.attach_file_states);
-            attachButtonDrawables[5] = context.getResources().getDrawable(R.drawable.attach_contact_states);
-            attachButtonDrawables[6] = context.getResources().getDrawable(R.drawable.attach_location_states);
-            attachButtonDrawables[7] = context.getResources().getDrawable(R.drawable.attach_hide_states);
+            attachButtonDrawables[ChatAttachAlert.ATTACH_BUTTON_IDX_CAMERA]      = context.getResources().getDrawable(R.drawable.attach_camera_states);
+            attachButtonDrawables[ChatAttachAlert.ATTACH_BUTTON_IDX_GALLERY]     = context.getResources().getDrawable(R.drawable.attach_gallery_states);
+            attachButtonDrawables[ChatAttachAlert.ATTACH_BUTTON_IDX_VIDEO]       = context.getResources().getDrawable(R.drawable.attach_video_states);
+            attachButtonDrawables[ChatAttachAlert.ATTACH_BUTTON_IDX_MUSIC]       = context.getResources().getDrawable(R.drawable.attach_audio_states);
+            attachButtonDrawables[ChatAttachAlert.ATTACH_BUTTON_IDX_FILE]        = context.getResources().getDrawable(R.drawable.attach_file_states);
+            attachButtonDrawables[ChatAttachAlert.ATTACH_BUTTON_IDX_CONTACT]     = context.getResources().getDrawable(R.drawable.attach_contact_states);
+            attachButtonDrawables[ChatAttachAlert.ATTACH_BUTTON_IDX_LOCATION]    = context.getResources().getDrawable(R.drawable.attach_location_states);
+            attachButtonDrawables[ChatAttachAlert.ATTACH_BUTTON_IDX_SENDSELECTED]= context.getResources().getDrawable(R.drawable.attach_hide_states);
         }
     }
 

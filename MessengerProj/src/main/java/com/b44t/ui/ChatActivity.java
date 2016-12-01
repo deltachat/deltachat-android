@@ -295,14 +295,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
     private final static int id_reply = 19;
     private final static int id_info = 20;
 
-    private final static int attach_photo = 0;
-    private final static int attach_gallery = 1;
-    private final static int attach_video = 2;
-    private final static int attach_audio = 3;
-    private final static int attach_document = 4;
-    private final static int attach_contact = 5;
-    private final static int attach_location = 6;
-
     private final static int search = 40;
 
     private final static int id_chat_compose_panel = 1000;
@@ -2064,7 +2056,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     if (getParentActivity() == null) {
                         return;
                     }
-                    if (button == 7) {
+                    if (button == ChatAttachAlert.ATTACH_BUTTON_IDX_SENDSELECTED) {
                         chatAttachAlert.dismiss();
                         HashMap<Integer, MediaController.PhotoEntry> selectedPhotos = chatAttachAlert.getSelectedPhotos();
                         if (!selectedPhotos.isEmpty()) {
@@ -2320,7 +2312,8 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
     }
 
     private void processSelectedAttach(int which) {
-        if (which == attach_photo || which == attach_gallery || which == attach_document || which == attach_video) {
+        if (which == ChatAttachAlert.ATTACH_BUTTON_IDX_CAMERA || which == ChatAttachAlert.ATTACH_BUTTON_IDX_GALLERY
+         || which == ChatAttachAlert.ATTACH_BUTTON_IDX_FILE || which == ChatAttachAlert.ATTACH_BUTTON_IDX_VIDEO ) {
             String action;
             if (currentChat != null) {
                 /*if (currentChat.participants_count > MessagesController.getInstance().groupBigSize) {
@@ -2330,14 +2323,14 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                         action = "bigchat_upload_document";
                     }
                 } else*/ {
-                    if (which == attach_photo || which == attach_gallery) {
+                    if (which == ChatAttachAlert.ATTACH_BUTTON_IDX_CAMERA || which == ChatAttachAlert.ATTACH_BUTTON_IDX_GALLERY) {
                         action = "chat_upload_photo";
                     } else {
                         action = "chat_upload_document";
                     }
                 }
             } else {
-                if (which == attach_photo || which == attach_gallery) {
+                if (which == ChatAttachAlert.ATTACH_BUTTON_IDX_CAMERA || which == ChatAttachAlert.ATTACH_BUTTON_IDX_GALLERY) {
                     action = "pm_upload_photo";
                 } else {
                     action = "pm_upload_document";
@@ -2345,7 +2338,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
             }
         }
 
-        if (which == attach_photo) {
+        if (which == ChatAttachAlert.ATTACH_BUTTON_IDX_CAMERA ) {
             try {
                 Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                 File image = AndroidUtilities.generatePicturePath();
@@ -2357,7 +2350,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
             } catch (Exception e) {
                 FileLog.e("messenger", e);
             }
-        } else if (which == attach_gallery) {
+        } else if (which == ChatAttachAlert.ATTACH_BUTTON_IDX_GALLERY ) {
             if (Build.VERSION.SDK_INT >= 23 && getParentActivity().checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
                 getParentActivity().requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 4);
                 return;
@@ -2404,7 +2397,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 }
             });
             presentFragment(fragment);
-        } else if (which == attach_video) {
+        } else if (which == ChatAttachAlert.ATTACH_BUTTON_IDX_VIDEO) {
             try {
                 Intent takeVideoIntent = new Intent(MediaStore.ACTION_VIDEO_CAPTURE);
                 File video = AndroidUtilities.generateVideoPath();
@@ -2419,7 +2412,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
             } catch (Exception e) {
                 FileLog.e("messenger", e);
             }
-        } else if (which == attach_location ) {
+        } else if (which == ChatAttachAlert.ATTACH_BUTTON_IDX_LOCATION ) {
             /* Telegram-FOSS  Disabled for now.*/
             Toast.makeText(getParentActivity(), LocaleController.getString("NotYetImplemented", R.string.NotYetImplemented), Toast.LENGTH_LONG).show();
             /*AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
@@ -2437,7 +2430,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
             builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
             builder.setMessage("Send current Location?");
             showDialog(builder.create());*/
-        } else if (which == attach_document) {
+        } else if (which == ChatAttachAlert.ATTACH_BUTTON_IDX_FILE ) {
             if (Build.VERSION.SDK_INT >= 23 && getParentActivity().checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
                 getParentActivity().requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 4);
                 return;
@@ -2464,7 +2457,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 }
             });
             presentFragment(fragment);
-        } else if (which == attach_audio) {
+        } else if (which == ChatAttachAlert.ATTACH_BUTTON_IDX_MUSIC ) {
             if (Build.VERSION.SDK_INT >= 23 && getParentActivity().checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
                 getParentActivity().requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 4);
                 return;
@@ -2479,7 +2472,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 }
             });
             presentFragment(fragment);
-        } else if (which == attach_contact) {
+        } else if (which == ChatAttachAlert.ATTACH_BUTTON_IDX_CONTACT ) {
             if (Build.VERSION.SDK_INT >= 23) {
                 if (getParentActivity().checkSelfPermission(Manifest.permission.READ_CONTACTS) != PackageManager.PERMISSION_GRANTED) {
                     getParentActivity().requestPermissions(new String[]{Manifest.permission.READ_CONTACTS}, 5);
