@@ -157,7 +157,6 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
         private Field editorField;
         private Drawable[] mCursorDrawable;
         private Field mCursorDrawableField;
-        private int triesCount = 0;
 
         public EditTextCaption(Context context) {
             super(context);
@@ -350,7 +349,6 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
     private boolean ignoreTextChange;
     private int innerTextChange;
     private MessageObject replyingMessageObject;
-    //private MessageObject botMessageObject;
     private TLRPC.WebPage messageWebPage;
     private boolean messageWebPageSearch = true;
     private ChatActivityEnterViewDelegate delegate;
@@ -1268,24 +1266,6 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
         }
     }
 
-    /*
-    public void setReplyingMessageObject(MessageObject messageObject) {
-        if (messageObject != null) {
-            if (botMessageObject == null && botButtonsMessageObject != replyingMessageObject) {
-                botMessageObject = botButtonsMessageObject;
-            }
-            replyingMessageObject = messageObject;
-            setButtons(replyingMessageObject, true);
-        } else if (messageObject == null && replyingMessageObject == botButtonsMessageObject) {
-            replyingMessageObject = null;
-            setButtons(botMessageObject, false);
-            botMessageObject = null;
-        } else {
-            replyingMessageObject = messageObject;
-        }
-    }
-    */
-
     public void setWebPage(TLRPC.WebPage webPage, boolean searchWebPages) {
         messageWebPage = webPage;
         messageWebPageSearch = searchWebPages;
@@ -1355,21 +1335,6 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
             }
         }
     }
-
-    /*
-    public void doneEditingMessage() {
-        if (editingMessageObject != null) {
-            delegate.onMessageEditEnd(true);
-            editingMessageReqId = SendMessagesHelper.getInstance().editMessage(editingMessageObject, messageEditText.getText().toString(), messageWebPageSearch, parentFragment, MessagesQuery.getEntities(messageEditText.getText()), new Runnable() {
-                @Override
-                public void run() {
-                    editingMessageReqId = 0;
-                    setEditingMessageObject(null, false);
-                }
-            });
-        }
-    }
-    */
 
     public boolean processSendingText(CharSequence text) {
         text = AndroidUtilities.getTrimmedString(text);
@@ -1739,116 +1704,6 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
         this.delegate = delegate;
     }
 
-    /*
-    public void setCommand(MessageObject messageObject, String command, boolean longPress, boolean username) {
-        if (command == null || getVisibility() != VISIBLE) {
-            return;
-        }
-        if (longPress) {
-            String text = messageEditText.getText().toString();
-            TLRPC.User user = messageObject != null && (int) dialog_id < 0 ? MessagesController.getInstance().getUser(messageObject.messageOwner.from_id) : null;
-            if ((botCount != 1 || username) && user != null && user.bot && !command.contains("@")) {
-                text = String.format(Locale.US, "%s@%s", command, user.username) + " " + text.replaceFirst("^/[a-zA-Z@\\d_]{1,255}(\\s|$)", "");
-            } else {
-                text = command + " " + text.replaceFirst("^/[a-zA-Z@\\d_]{1,255}(\\s|$)", "");
-            }
-            ignoreTextChange = true;
-            messageEditText.setText(text);
-            messageEditText.setSelection(messageEditText.getText().length());
-            ignoreTextChange = false;
-            if (delegate != null) {
-                delegate.onTextChanged(messageEditText.getText(), true);
-            }
-            if (!keyboardVisible && currentPopupContentType == -1) {
-                openKeyboard();
-            }
-        } else {
-            TLRPC.User user = messageObject != null && (int) dialog_id < 0 ? MessagesController.getInstance().getUser(messageObject.messageOwner.from_id) : null;
-            if ((botCount != 1 || username) && user != null && user.bot && !command.contains("@")) {
-                SendMessagesHelper.getInstance().sendMessage(String.format(Locale.US, "%s@%s", command, user.username), dialog_id, null, null, false, null, null, null);
-            } else {
-                SendMessagesHelper.getInstance().sendMessage(command, dialog_id, null, null, false, null, null, null);
-            }
-        }
-    }
-    */
-
-    /*
-    public void setEditingMessageObject(MessageObject messageObject, boolean caption) {
-        if (audioToSend != null || editingMessageObject == messageObject) {
-            return;
-        }
-        if (editingMessageReqId != 0) {
-            ConnectionsManager.getInstance().cancelRequest(editingMessageReqId, true);
-            editingMessageReqId = 0;
-        }
-        editingMessageObject = messageObject;
-        editingCaption = caption;
-        if (editingMessageObject != null) {
-            InputFilter[] inputFilters = new InputFilter[1];
-            if (caption) {
-                inputFilters[0] = new InputFilter.LengthFilter(200);
-                if (editingMessageObject.caption != null) {
-                    setFieldText(Emoji.replaceEmoji(new SpannableStringBuilder(editingMessageObject.caption.toString()), messageEditText.getPaint().getFontMetricsInt(), AndroidUtilities.dp(20), false));
-                } else {
-                    setFieldText("");
-                }
-            } else {
-                inputFilters[0] = new InputFilter.LengthFilter(4096);
-                if (editingMessageObject.messageText != null) {
-                    SpannableStringBuilder stringBuilder = new SpannableStringBuilder(editingMessageObject.messageText.toString());
-                    ArrayList<TLRPC.MessageEntity> entities = MessagesQuery.getEntities(editingMessageObject.messageText);
-                    if (entities != null) {
-                        for (int a = 0; a < entities.size(); a++) {
-                            TLRPC.TL_inputMessageEntityMentionName entity = (TLRPC.TL_inputMessageEntityMentionName) entities.get(a);
-                            if (entity.offset + entity.length < editingMessageObject.messageText.length() && editingMessageObject.messageText.charAt(entity.offset + entity.length) == ' ') {
-                                entity.length++;
-                            }
-                            stringBuilder.setSpan(new URLSpanUserMention("" + entity.user_id.user_id), entity.offset, entity.offset + entity.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-                        }
-                    }
-                    setFieldText(Emoji.replaceEmoji(stringBuilder, messageEditText.getPaint().getFontMetricsInt(), AndroidUtilities.dp(20), false));
-                } else {
-                    setFieldText("");
-                }
-            }
-            messageEditText.setFilters(inputFilters);
-            openKeyboard();
-            FrameLayout.LayoutParams layoutParams = (FrameLayout.LayoutParams) messageEditText.getLayoutParams();
-            layoutParams.rightMargin = AndroidUtilities.dp(4);
-            messageEditText.setLayoutParams(layoutParams);
-            sendButton.setVisibility(GONE);
-            cancelBotButton.setVisibility(GONE);
-            audioSendButton.setVisibility(GONE);
-            attachButton.setVisibility(GONE);
-            sendButtonContainer.setVisibility(GONE);
-        } else {
-            messageEditText.setFilters(new InputFilter[0]);
-            delegate.onMessageEditEnd(false);
-            audioSendButton.setVisibility(VISIBLE);
-            attachButton.setVisibility(VISIBLE);
-            sendButtonContainer.setVisibility(VISIBLE);
-            attachButton.setScaleX(1.0f);
-            attachButton.setAlpha(1.0f);
-            sendButton.setScaleX(0.1f);
-            sendButton.setScaleY(0.1f);
-            sendButton.setAlpha(0.0f);
-            cancelBotButton.setScaleX(0.1f);
-            cancelBotButton.setScaleY(0.1f);
-            cancelBotButton.setAlpha(0.0f);
-            audioSendButton.setScaleX(1.0f);
-            audioSendButton.setScaleY(1.0f);
-            audioSendButton.setAlpha(1.0f);
-            sendButton.setVisibility(GONE);
-            cancelBotButton.setVisibility(GONE);
-            messageEditText.setText("");
-            delegate.onAttachButtonShow();
-            updateFieldRight(1);
-        }
-        updateFieldHint();
-    }
-    */
-
     public void setFieldText(CharSequence text) {
         if (messageEditText == null) {
             return;
@@ -1886,18 +1741,6 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
             FileLog.e("messenger", e);
         }
     }
-
-    /*
-    public void setFieldFocused() {
-        if (messageEditText != null) {
-            try {
-                messageEditText.requestFocus();
-            } catch (Exception e) {
-                FileLog.e("messenger", e);
-            }
-        }
-    }
-    */
 
     public void setFieldFocused(boolean focus) {
         if (messageEditText == null) {
@@ -1949,188 +1792,6 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
         }
         attachButton.addView(view, LayoutHelper.createLinear(48, 48));
     }
-
-    /*
-    private void updateBotButton() {
-        if (botButton == null) {
-            return;
-        }
-        if (hasBotCommands || botReplyMarkup != null) {
-            if (botButton.getVisibility() != VISIBLE) {
-                botButton.setVisibility(VISIBLE);
-            }
-            if (botReplyMarkup != null) {
-                if (isPopupShowing() && currentPopupContentType == 1) {
-                    botButton.setImageResource(R.drawable.ic_msg_panel_kb);
-                } else {
-                    botButton.setImageResource(R.drawable.bot_keyboard2);
-                }
-            } else {
-                botButton.setImageResource(R.drawable.bot_keyboard);
-            }
-        } else {
-            botButton.setVisibility(GONE);
-        }
-        updateFieldRight(2);
-        attachButton.setPivotX(AndroidUtilities.dp((botButton == null || botButton.getVisibility() == GONE) && (notifyButton == null || notifyButton.getVisibility() == GONE) ? 48 : 96));
-    }
-
-    public void setBotsCount(int count, boolean hasCommands) {
-        botCount = count;
-        if (hasBotCommands != hasCommands) {
-            hasBotCommands = hasCommands;
-            updateBotButton();
-        }
-    }
-
-    public void setButtons(MessageObject messageObject) {
-        setButtons(messageObject, true);
-    }
-
-    public void setButtons(MessageObject messageObject, boolean openKeyboard) {
-        if (replyingMessageObject != null && replyingMessageObject == botButtonsMessageObject && replyingMessageObject != messageObject) {
-            botMessageObject = messageObject;
-            return;
-        }
-        if (botButton == null || botButtonsMessageObject != null && botButtonsMessageObject == messageObject || botButtonsMessageObject == null && messageObject == null) {
-            return;
-        }
-        if (botKeyboardView == null) {
-            botKeyboardView = new BotKeyboardView(parentActivity);
-            botKeyboardView.setVisibility(GONE);
-            botKeyboardView.setDelegate(new BotKeyboardView.BotKeyboardViewDelegate() {
-                @Override
-                public void didPressedButton(TLRPC.KeyboardButton button) {
-                    MessageObject object = replyingMessageObject != null ? replyingMessageObject : ((int) dialog_id < 0 ? botButtonsMessageObject : null);
-                    didPressedBotButton(button, object, replyingMessageObject != null ? replyingMessageObject : botButtonsMessageObject);
-                    if (replyingMessageObject != null) {
-                        openKeyboardInternal();
-                        setButtons(botMessageObject, false);
-                    } else if (botButtonsMessageObject.messageOwner.reply_markup.single_use) {
-                        openKeyboardInternal();
-                        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("mainconfig", Activity.MODE_PRIVATE);
-                        preferences.edit().putInt("answered_" + dialog_id, botButtonsMessageObject.getId()).commit();
-                    }
-                    if (delegate != null) {
-                        delegate.onMessageSend(null);
-                    }
-                }
-            });
-            sizeNotifierLayout.addView(botKeyboardView);
-        }
-        botButtonsMessageObject = messageObject;
-        botReplyMarkup = messageObject != null && messageObject.messageOwner.reply_markup instanceof TLRPC.TL_replyKeyboardMarkup ? (TLRPC.TL_replyKeyboardMarkup) messageObject.messageOwner.reply_markup : null;
-
-        botKeyboardView.setPanelHeight(AndroidUtilities.displaySize.x > AndroidUtilities.displaySize.y ? keyboardHeightLand : keyboardHeight);
-        botKeyboardView.setButtons(botReplyMarkup != null ? botReplyMarkup : null);
-        if (botReplyMarkup != null) {
-            SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("mainconfig", Activity.MODE_PRIVATE);
-            boolean keyboardHidden = preferences.getInt("hidekeyboard_" + dialog_id, 0) == messageObject.getId();
-            if (botButtonsMessageObject != replyingMessageObject && botReplyMarkup.single_use) {
-                if (preferences.getInt("answered_" + dialog_id, 0) == messageObject.getId()) {
-                    return;
-                }
-            }
-            if (!keyboardHidden && messageEditText.length() == 0 && !isPopupShowing()) {
-                showPopup(1, 1);
-            }
-        } else {
-            if (isPopupShowing() && currentPopupContentType == 1) {
-                if (openKeyboard) {
-                    openKeyboardInternal();
-                } else {
-                    showPopup(0, 1);
-                }
-            }
-        }
-        updateBotButton();
-    }
-    */
-
-    /*
-    public void didPressedBotButton(final TLRPC.KeyboardButton button, final MessageObject replyMessageObject, final MessageObject messageObject) {
-        if (button == null || messageObject == null) {
-            return;
-        }
-        if (button instanceof TLRPC.TL_keyboardButton) {
-            SendMessagesHelper.getInstance().sendMessage(button.text, dialog_id, replyMessageObject, null, false, null, null, null);
-        } else if (button instanceof TLRPC.TL_keyboardButtonUrl) {
-            parentFragment.showOpenUrlAlert(button.url);
-        } else if (button instanceof TLRPC.TL_keyboardButtonRequestPhone) {
-            //parentFragment.shareMyContact(messageObject);
-        } else if (button instanceof TLRPC.TL_keyboardButtonRequestGeoLocation) {
-            AlertDialog.Builder builder = new AlertDialog.Builder(parentActivity);
-            builder.setTitle(LocaleController.getString("ShareYouLocationTitle", R.string.ShareYouLocationTitle));
-            builder.setMessage(LocaleController.getString("ShareYouLocationInfo", R.string.ShareYouLocationInfo));
-            builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialogInterface, int i) {
-                    if (Build.VERSION.SDK_INT >= 23 && parentActivity.checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-                        parentActivity.requestPermissions(new String[]{Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION}, 2);
-                        pendingMessageObject = messageObject;
-                        pendingLocationButton = button;
-                        return;
-                    }
-                    SendMessagesHelper.getInstance().sendCurrentLocation(messageObject, button);
-                }
-            });
-            builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
-            parentFragment.showDialog(builder.create());
-        } else if (button instanceof TLRPC.TL_keyboardButtonCallback) {
-            SendMessagesHelper.getInstance().sendCallback(messageObject, button, parentFragment);
-        } else if (button instanceof TLRPC.TL_keyboardButtonSwitchInline) {
-            if (parentFragment.processSwitchButton((TLRPC.TL_keyboardButtonSwitchInline) button)) {
-                return;
-            }
-            Bundle args = new Bundle();
-            args.putBoolean("onlySelect", true);
-            args.putInt("dialogsType", 1);
-            DialogsActivity fragment = new DialogsActivity(args);
-            fragment.setDelegate(new DialogsActivity.DialogsActivityDelegate() {
-                @Override
-                public void didSelectDialog(DialogsActivity fragment, long did, boolean param) {
-                    int uid = messageObject.messageOwner.from_id;
-                    if (messageObject.messageOwner.via_bot_id != 0) {
-                        uid = messageObject.messageOwner.via_bot_id;
-                    }
-                    TLRPC.User user = MessagesController.getInstance().getUser(uid);
-                    if (user == null) {
-                        fragment.finishFragment();
-                        return;
-                    }
-                    DraftQuery.saveDraft(did, "@" + user.username + " " + button.query, null, null, true);
-                    if (did != dialog_id) {
-                        int lower_part = (int) did;
-                        if (lower_part != 0) {
-                            Bundle args = new Bundle();
-                            if (lower_part > 0) {
-                                args.putInt("user_id", lower_part);
-                            } else if (lower_part < 0) {
-                                args.putInt("chat_id", -lower_part);
-                            }
-                            if (!MessagesController.checkCanOpenChat(args, fragment)) {
-                                return;
-                            }
-                            ChatActivity chatActivity = new ChatActivity(args);
-                            if (parentFragment.presentFragment(chatActivity, true)) {
-                                if (!AndroidUtilities.isTablet()) {
-                                    parentFragment.removeSelfFromStack();
-                                }
-                            } else {
-                                fragment.finishFragment();
-                            }
-                        } else {
-                            fragment.finishFragment();
-                        }
-                    } else {
-                        fragment.finishFragment();
-                    }
-                }
-            });
-            parentFragment.presentFragment(fragment);
-        }
-    }
-    */
 
     public boolean isPopupView(View view) {
         return /*view == botKeyboardView ||*/ view == emojiView;
@@ -2360,18 +2021,10 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
 
     public boolean isEditingMessage() {
         return false;
-        //return editingMessageObject != null;
     }
-
-    /*
-    public MessageObject getEditingMessageObject() {
-        return editingMessageObject;
-    }
-    */
 
     public boolean isEditingCaption() {
         return false;
-        //return editingCaption;
     }
 
     public boolean hasAudioToSend() {
