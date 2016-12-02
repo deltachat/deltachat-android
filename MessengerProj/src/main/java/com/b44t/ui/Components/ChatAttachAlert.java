@@ -73,8 +73,8 @@ public class ChatAttachAlert extends BottomSheet implements NotificationCenter.N
     public final static int ATTACH_BUTTON_IDX_LOCATION     = 2;
     public final static int ATTACH_BUTTON_IDX_CONTACT      = 3;
     public final static int ATTACH_BUTTON_IDX_GALLERY      = 4;
-    public final static int ATTACH_BUTTON_IDX_MUSIC        = 5;
-    public final static int ATTACH_BUTTON_IDX_FILE         = 6;
+    public final static int ATTACH_BUTTON_IDX_FILE         = 5;
+    public final static int ATTACH_BUTTON_IDX_MUSIC        = 6;
     public final static int ATTACH_BUTTON_IDX_SENDSELECTED = 7;
     public final static int ATTACH_BUTTON_COUNT            = 8;
 
