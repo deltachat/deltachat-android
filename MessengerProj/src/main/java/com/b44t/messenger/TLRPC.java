@@ -251,7 +251,6 @@ public class TLRPC {
 		public boolean self;
 		public boolean contact;
 		public final boolean mutual_contact = false;
-		public final boolean deleted = false;
 		public final boolean bot = false;
 		public boolean verified;
 		public boolean min;

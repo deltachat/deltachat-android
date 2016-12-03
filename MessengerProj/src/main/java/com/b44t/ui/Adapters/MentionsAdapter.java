@@ -598,7 +598,7 @@ public class MentionsAdapter extends BaseSearchAdapterRecycler {
                         continue;
                     }
                     if (usernameString.length() == 0) {
-                        if (!user.deleted && (allowNewMentions || !allowNewMentions && user.username != null && user.username.length() != 0)) {
+                        if ( (allowNewMentions || !allowNewMentions && user.username != null && user.username.length() != 0)) {
                             newResult.add(user);
                         }
                     } else {

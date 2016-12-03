@@ -140,7 +140,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
     private static final int ROWTYPE_LOADING_CELL = 4;
 
     protected TLRPC.Chat currentChat;
-    protected TLRPC.User currentUser; // originally currentChat<->currentUser was used to differ between normal or group chats
+    //private final TLRPC.User currentUser = null; // originally currentChat<->currentUser was used to differ between normal or group chats
 
     public MrChat m_mrChat = new MrChat(0);
 
@@ -2896,8 +2896,8 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
 
     private void checkActionBarMenu() {
         if (/*currentEncryptedChat != null && !(currentEncryptedChat instanceof TLRPC.TL_encryptedChat) ||*/
-                currentChat != null && ChatObject.isNotInChat(currentChat) ||
-                currentUser != null && UserObject.isDeleted(currentUser)) {
+                currentChat != null && ChatObject.isNotInChat(currentChat) /*||
+                currentUser != null && UserObject.isDeleted(currentUser)*/  ) {
             if (menuItem != null) {
                 menuItem.setVisibility(View.GONE);
             }
@@ -3765,9 +3765,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
 
                     for (int a = 0; a < arr.size(); a++) {
                         MessageObject obj = arr.get(a);
-                        if (currentUser != null && currentUser.bot && obj.isOut()) {
-                            obj.setIsRead();
-                        }
 
                         if (obj.isOut() && obj.isSending()) {
                             scrollToLastMessage(false);
@@ -3842,9 +3839,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                                     placeToPaste = 0;
                                 }
                             }
-                        }
-                        if (currentUser != null && currentUser.bot && obj.isOut()) {
-                            obj.setIsRead();
                         }
 
                         if (obj.type < 0 || messagesDict[0].containsKey(obj.getId())) {
@@ -4464,9 +4458,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         NotificationCenter.getInstance().setAnimationInProgress(false);
         if (isOpen) {
             openAnimationEnded = true;
-            if (currentUser != null) {
-                //MessagesController.getInstance().loadFullUser(currentUser, classGuid, false);
-            }
+
             if (Build.VERSION.SDK_INT >= 21) {
                 createChatAttachView();
             }
@@ -4488,8 +4480,8 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
             chatActivityEnterView.setVisibility(View.INVISIBLE);
         } else {
             searchContainer.setVisibility(View.INVISIBLE);
-            if (currentChat != null && (ChatObject.isNotInChat(currentChat) || !ChatObject.canWriteToChat(currentChat)) ||
-                    currentUser != null && (UserObject.isDeleted(currentUser))) {
+            if (currentChat != null && (ChatObject.isNotInChat(currentChat) || !ChatObject.canWriteToChat(currentChat)) /*||
+                    currentUser != null && (UserObject.isDeleted(currentUser))*/) {
                 bottomOverlayChat.setVisibility(View.VISIBLE);
                 if (muteMenuEntry !=null){
                     muteMenuEntry.setVisibility(View.GONE);
@@ -5680,7 +5672,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                             Bundle args = new Bundle();
                             args.putInt("user_id", user.id);
                             ProfileActivity fragment = new ProfileActivity(args);
-                            fragment.setPlayProfileAnimation(currentUser != null && currentUser.id == user.id);
+                            fragment.setPlayProfileAnimation(false/*currentUser != null && currentUser.id == user.id*/);
                             presentFragment(fragment);
                         }
                     }
@@ -5861,7 +5853,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                             Bundle args = new Bundle();
                             args.putInt("user_id", uid);
                             ProfileActivity fragment = new ProfileActivity(args);
-                            fragment.setPlayProfileAnimation(currentUser != null && currentUser.id == uid);
+                            fragment.setPlayProfileAnimation(false/*currentUser != null && currentUser.id == uid*/);
                             presentFragment(fragment);
                         }
                     }

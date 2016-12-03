@@ -10,10 +10,6 @@ package com.b44t.messenger;
 
 public class UserObject {
 
-    public static boolean isDeleted(TLRPC.User user) {
-        return user == null || user.deleted;
-    }
-
     public static boolean isUserSelf(TLRPC.User user) {
         return user.self;
     }
