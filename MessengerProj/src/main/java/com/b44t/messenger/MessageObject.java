@@ -800,7 +800,7 @@ public class MessageObject {
                 maxWidth = Math.min(AndroidUtilities.displaySize.x, AndroidUtilities.displaySize.y) - AndroidUtilities.dp(80);
             }
         }
-        if (fromUser != null && fromUser.bot || (isMegagroup() || messageOwner.fwd_from != null && messageOwner.fwd_from.channel_id != 0) && !isOut()) {
+        if (fromUser != null && fromUser.bot || (messageOwner.fwd_from != null && messageOwner.fwd_from.channel_id != 0) && !isOut()) {
             maxWidth -= AndroidUtilities.dp(20);
         }
 
@@ -991,14 +991,6 @@ public class MessageObject {
     }
 
     public boolean isSecretMedia() {
-        return false;
-    }
-
-    public boolean isMegagroup() {
-        return false;
-    }
-
-    public static boolean isMegagroup(TLRPC.Message message) {
         return false;
     }
 

@@ -12,19 +12,4 @@ public class ChatObject {
 
     public static final int CHAT_TYPE_CHAT = 0;
 
-    public static boolean isNotInChat(TLRPC.Chat chat) {
-        return chat == null || chat instanceof TLRPC.TL_chatEmpty || chat.left || chat.kicked || chat.deactivated;
-    }
-
-    public static boolean isChannel(TLRPC.Chat chat) {
-        return false;
-    }
-
-    public static boolean isChannel(int chatId) {
-        return false;
-    }
-
-    public static boolean canWriteToChat(TLRPC.Chat chat) {
-        return true;
-    }
 }

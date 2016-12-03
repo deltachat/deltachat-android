@@ -419,7 +419,7 @@ public class NotificationsController {
                         value = !(notifyOverride == 2 || (!preferences.getBoolean("EnableAll", true) || isChat && !preferences.getBoolean("EnableGroup", true)) && notifyOverride == 0);
                         settingsCache.put(dialog_id, value);
                     }
-                    if (popup != 0 && messageObject.messageOwner.to_id.channel_id != 0 && !messageObject.isMegagroup()) {
+                    if (popup != 0 && messageObject.messageOwner.to_id.channel_id != 0) {
                         popup = 0;
                     }
                     if (value) {

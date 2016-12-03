@@ -58,7 +58,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.b44t.messenger.AndroidUtilities;
-import com.b44t.messenger.ChatObject;
 import com.b44t.messenger.Emoji;
 import com.b44t.messenger.LocaleController;
 import com.b44t.messenger.MediaController;
@@ -68,7 +67,6 @@ import com.b44t.messenger.MrMailbox;
 import com.b44t.messenger.MrMsg;
 import com.b44t.messenger.NotificationsController;
 import com.b44t.messenger.SendMessagesHelper;
-import com.b44t.messenger.UserObject;
 import com.b44t.messenger.Utilities;
 import com.b44t.messenger.VideoEditedInfo;
 import com.b44t.messenger.browser.Browser;
@@ -2895,16 +2893,8 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
     }
 
     private void checkActionBarMenu() {
-        if (/*currentEncryptedChat != null && !(currentEncryptedChat instanceof TLRPC.TL_encryptedChat) ||*/
-                currentChat != null && ChatObject.isNotInChat(currentChat) /*||
-                currentUser != null && UserObject.isDeleted(currentUser)*/  ) {
-            if (menuItem != null) {
-                menuItem.setVisibility(View.GONE);
-            }
-        } else {
-            if (menuItem != null) {
-                menuItem.setVisibility(View.VISIBLE);
-            }
+        if (menuItem != null) {
+            menuItem.setVisibility(View.VISIBLE);
         }
         checkAndUpdateAvatar();
     }
@@ -4480,15 +4470,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
             chatActivityEnterView.setVisibility(View.INVISIBLE);
         } else {
             searchContainer.setVisibility(View.INVISIBLE);
-            if (currentChat != null && (ChatObject.isNotInChat(currentChat) || !ChatObject.canWriteToChat(currentChat)) /*||
-                    currentUser != null && (UserObject.isDeleted(currentUser))*/) {
-                bottomOverlayChat.setVisibility(View.VISIBLE);
-                if (muteMenuEntry !=null){
-                    muteMenuEntry.setVisibility(View.GONE);
-                }
-                chatActivityEnterView.setFieldFocused(false);
-                chatActivityEnterView.setVisibility(View.INVISIBLE);
-            } else {
+            {
                 if (m_mrChat.getId()==MrChat.MR_CHAT_ID_DEADDROP) {
                     if( messages.isEmpty()) {
                         // showing the DeaddropHint if there are no messages is confusing (there are no "reply arrows" in this case)
@@ -4918,15 +4900,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         actionBar.hideActionMode();
         updatePinnedMessageView(true);
 
-        boolean allowChatActions = true;
-        if (/*currentEncryptedChat != null && AndroidUtilities.getPeerLayerVersion(currentEncryptedChat.layer) < 46 ||*/
-            type == 1 && message.getDialogId() == mergeDialogId
-         || message.getId() < 0
-         || currentChat != null && (ChatObject.isNotInChat(currentChat)
-         || ChatObject.isChannel(currentChat) && !currentChat.creator && !currentChat.editor && !currentChat.megagroup)) {
-            allowChatActions = false;
-        }
-
         if (single || type < 2 || type == 20) {
             if (type >= 0) {
                 selectedObject = message;
@@ -4945,10 +4918,8 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     options.add(1);
                 } else if (type == 1) {
                     if (currentChat != null ) {
-                        if (allowChatActions) {
-                            items.add(LocaleController.getString("Reply", R.string.Reply));
-                            options.add(8);
-                        }
+                        items.add(LocaleController.getString("Reply", R.string.Reply));
+                        options.add(8);
 
                         items.add(LocaleController.getString("Delete", R.string.Delete));
                         options.add(1);
@@ -4965,10 +4936,9 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     options.add(1);
                 } else {
                     {
-                        if (allowChatActions) {
-                            items.add(LocaleController.getString("Reply", R.string.Reply));
-                            options.add(8);
-                        }
+                        items.add(LocaleController.getString("Reply", R.string.Reply));
+                        options.add(8);
+
                         if (selectedObject.type == 0 || selectedObject.caption != null) {
                             items.add(LocaleController.getString("Copy", R.string.Copy));
                             options.add(3);

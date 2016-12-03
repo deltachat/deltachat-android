@@ -503,20 +503,14 @@ public class TLRPC {
 	public static class Chat extends TLObject {
 		public int flags;
 		public boolean creator;
-		public boolean kicked;
-		public boolean deactivated;
 		public int id;
 		public String title;
 		public final ChatPhoto photo = null;
 		public int date;
 		public int version;
 		public boolean editor;
-		public final boolean broadcast = false;
 		public boolean verified;
-		public final boolean megagroup = false;
-		public boolean left;
 		public String username;
-		public boolean restricted;
 		public boolean signatures;
 		public boolean min;
 		public String address;
@@ -737,8 +731,6 @@ public class TLRPC {
 		public long id; //custom
 	}
 
-    public static class TL_chatEmpty extends Chat {
-    }
     public static class Vector extends TLObject {
         public ArrayList<Object> objects = new ArrayList<>();
     }

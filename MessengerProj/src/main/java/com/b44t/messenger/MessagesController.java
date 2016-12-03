@@ -590,7 +590,7 @@ public class MessagesController implements NotificationCenter.NotificationCenter
         if (dialog == null) {
             if (!isBroadcast) {
                 TLRPC.Chat chat = getChat(channelId);
-                if (channelId != 0 && chat == null || chat != null && chat.left) {
+                if (channelId != 0 && chat == null || chat != null && false/*chat.left*/) {
                     return;
                 }
                 dialog = new TLRPC.TL_dialog();

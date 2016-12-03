@@ -8,7 +8,6 @@
 
 package com.b44t.messenger.query;
 
-import com.b44t.messenger.ChatObject;
 import com.b44t.messenger.MessagesController;
 import com.b44t.messenger.MrMailbox;
 import com.b44t.messenger.MrMsg;
