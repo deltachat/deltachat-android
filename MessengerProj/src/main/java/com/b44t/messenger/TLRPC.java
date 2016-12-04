@@ -24,7 +24,6 @@ public class TLRPC {
 		public boolean no_webpage;
 		public int reply_to_msg_id;
 		public String message;
-		public ArrayList<MessageEntity> entities = new ArrayList<>();
 		public int date;
 	}
 
@@ -426,48 +425,6 @@ public class TLRPC {
 		public FileLocation photo_big;
 	}
 
-	public static class MessageEntity extends TLObject {
-		public int offset;
-		public int length;
-		public String url;
-		public String language;
-	}
-
-	public static class TL_messageEntityTextUrl extends MessageEntity {
-	}
-
-	public static class TL_messageEntityEmail extends MessageEntity {
-	}
-
-	public static class TL_messageEntityPre extends MessageEntity {
-	}
-
-	public static class TL_messageEntityUrl extends MessageEntity {
-	}
-
-	public static class TL_messageEntityItalic extends MessageEntity {
-	}
-
-	public static class TL_messageEntityMention extends MessageEntity {
-	}
-
-	public static class TL_messageEntityMentionName extends MessageEntity {
-		public int user_id;
-	}
-
-	public static class TL_inputMessageEntityMentionName extends MessageEntity {
-		public InputUser user_id;
-	}
-
-	public static class TL_messageEntityBold extends MessageEntity {
-	}
-
-	public static class TL_messageEntityHashtag extends MessageEntity {
-	}
-
-	public static class TL_messageEntityCode extends MessageEntity {
-	}
-
 	public static class Photo extends TLObject {
 		public long id;
 		public long access_hash;
@@ -690,10 +647,8 @@ public class TLRPC {
 		public boolean media_unread;
 		public boolean out;
 		public boolean unread;
-        public ArrayList<MessageEntity> entities = new ArrayList<>();
 		public String via_bot_name;
 		public int views;
-		public int edit_date;
 		public boolean silent;
 		public boolean post;
 		public TL_messageFwdHeader fwd_from;
@@ -703,8 +658,6 @@ public class TLRPC {
 		public HashMap<String, String> params; //custom
         public long random_id; //custom
         public long dialog_id; //custom
-        public int ttl; //custom
-        public int destroyTime; //custom
         public int layer; //custom
         public TLRPC.Message replyMessage; //custom
 		public boolean created_by_mr;

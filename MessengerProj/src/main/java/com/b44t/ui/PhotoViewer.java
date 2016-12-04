@@ -2784,11 +2784,11 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
                         actionBar.setTitle(LocaleController.getString("AttachPhoto", R.string.AttachPhoto));
                     }
                 }
-                if (currentMessageObject.messageOwner.ttl != 0) {
+                /*if (currentMessageObject.messageOwner.ttl != 0) {
                     menuItem.hideSubItem(gallery_menu_save);
                     //shareButton.setVisibility(View.GONE);
                     menuItem.hideSubItem(gallery_menu_share);
-                } else {
+                } else*/ {
                     menuItem.showSubItem(gallery_menu_save);
                     //shareButton.setVisibility(videoPlayerControlFrameLayout == null || videoPlayerControlFrameLayout.getVisibility() != View.VISIBLE ? View.VISIBLE : View.GONE);
                     /*if (shareButton.getVisibility() == View.VISIBLE) {

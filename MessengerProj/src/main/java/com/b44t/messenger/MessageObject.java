@@ -705,25 +705,10 @@ public class MessageObject {
         generateLinkDescription();
         textLayoutBlocks = new ArrayList<>();
 
-        boolean hasEntities;
-        if (messageOwner.send_state != MESSAGE_SEND_STATE_SENT) {
-            hasEntities = false;
-            for (int a = 0; a < messageOwner.entities.size(); a++) {
-                if (!(messageOwner.entities.get(a) instanceof TLRPC.TL_inputMessageEntityMentionName)) {
-                    hasEntities = true;
-                    break;
-                }
-            }
-        } else {
-            hasEntities = !messageOwner.entities.isEmpty();
-        }
-
-
-        final boolean useManualParse = true; // false only add links to phone numbers; was used in Telegram for incoming messages that were already parsed (?)
-
-        if (useManualParse) {
+        /*final boolean useManualParse = true; // false only add links to phone numbers; was used in Telegram for incoming messages that were already parsed (?)
+        if (useManualParse) {*/
             addLinks(messageText);
-        } else {
+        /*} else {
             if (messageText instanceof Spannable && messageText.length() < 200) {
                 try {
                     Linkify.addLinks((Spannable) messageText, Linkify.PHONE_NUMBERS);
@@ -731,14 +716,14 @@ public class MessageObject {
                     FileLog.e("messenger", e);
                 }
             }
-        }
+        }*/
 
-        if (messageText instanceof Spannable) {
+        /*if (messageText instanceof Spannable) {
             Spannable spannable = (Spannable) messageText;
-            int count = messageOwner.entities.size();
+            int count = messageOwner.entities_.size();
             URLSpan[] spans = spannable.getSpans(0, messageText.length(), URLSpan.class);
             for (int a = 0; a < count; a++) {
-                TLRPC.MessageEntity entity = messageOwner.entities.get(a);
+                TLRPC.MessageEntity entity = messageOwner.entities_.get(a);
                 if (entity.length <= 0 || entity.offset < 0 || entity.offset >= messageOwner.message.length()) {
                     continue;
                 } else if (entity.offset + entity.length > messageOwner.message.length()) {
@@ -784,7 +769,7 @@ public class MessageObject {
                     }
                 }
             }
-        }
+        }*/
 
         int maxWidth;
         if (AndroidUtilities.isTablet()) {

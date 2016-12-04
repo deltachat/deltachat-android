@@ -548,19 +548,19 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
     }
 
     public void sendMessageContact(TLRPC.User user, long peer, MessageObject reply_to_msg, HashMap<String, String> params) {
-        sendMessage__(null, null, null, null, user, null, peer, null, reply_to_msg, null, null, params);
+        sendMessage__(null, null, null, null, user, null, peer, null, reply_to_msg, null, params);
     }
 
     public void sendMessageDocument(TLRPC.TL_document document, VideoEditedInfo videoEditedInfo, String path, long peer, MessageObject reply_to_msg, HashMap<String, String> params) {
-        sendMessage__(null, null, null, videoEditedInfo, null, document, peer, path, reply_to_msg, null, null, params);
+        sendMessage__(null, null, null, videoEditedInfo, null, document, peer, path, reply_to_msg, null, params);
     }
 
-    public void sendMessageText(String message, long peer, MessageObject reply_to_msg, TLRPC.WebPage webPage, boolean searchLinks, ArrayList<TLRPC.MessageEntity> entities, HashMap<String, String> params) {
-        sendMessage__(message, null, null, null, null, null, peer, null, reply_to_msg, webPage, entities, params);
+    public void sendMessageText(String message, long peer, MessageObject reply_to_msg, TLRPC.WebPage webPage, boolean searchLinks, HashMap<String, String> params) {
+        sendMessage__(message, null, null, null, null, null, peer, null, reply_to_msg, webPage, params);
     }
 
     public void sendMessagePhoto(TLRPC.TL_photo photo, String path, long peer, MessageObject reply_to_msg, HashMap<String, String> params) {
-        sendMessage__(null, null, photo, null, null, null, peer, path, reply_to_msg, null, null, params);
+        sendMessage__(null, null, photo, null, null, null, peer, path, reply_to_msg, null, params);
     }
 
     private void sendMessage__(String message,
@@ -573,7 +573,6 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
                              String path,
                              MessageObject reply_to_msg,
                              TLRPC.WebPage webPage,
-                             ArrayList<TLRPC.MessageEntity> entities,
                              HashMap<String, String> params) {
         if (peer == 0) { // peer == dialog id
             return;
@@ -613,9 +612,6 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
             {
                 if (message != null) {
                     newMsg = new TLRPC.TL_message();
-                    if (entities != null && !entities.isEmpty()) {
-                        newMsg.entities = entities;
-                    }
                     if (webPage == null) {
                         newMsg.media = new TLRPC.TL_messageMediaEmpty();
                     } else {
@@ -759,7 +755,7 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
             if (type == 0 /*|| type == 9 && message != null && encryptedChat != null*/ )
             {
                 newMsg.id = mrChat.sendText(newMsg.message);
-                DraftQuery.cleanDraft(peer, false);
+                DraftQuery.cleanDraft(peer);
 
                 MrMailbox.reloadMainChatlist();
             }
@@ -1606,7 +1602,7 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
                                     //int count = (int) Math.ceil(textFinal.length() / 4096.0f);
                                     //for (int a = 0; a < count; a++) {
                                     //    String mess = textFinal.substring(a * 4096, Math.min((a + 1) * 4096, textFinal.length()));
-                                        SendMessagesHelper.getInstance().sendMessageText(textFinal, dialog_id, null, null, true, null, null);
+                                        SendMessagesHelper.getInstance().sendMessageText(textFinal, dialog_id, null, null, true, null);
                                     //}
                                 }
                             }

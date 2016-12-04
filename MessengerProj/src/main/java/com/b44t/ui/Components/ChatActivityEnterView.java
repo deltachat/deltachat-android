@@ -61,7 +61,6 @@ import com.b44t.messenger.SendMessagesHelper;
 import com.b44t.messenger.FileLog;
 import com.b44t.messenger.NotificationCenter;
 import com.b44t.messenger.R;
-import com.b44t.messenger.query.MessagesQuery;
 import com.b44t.messenger.ConnectionsManager;
 import com.b44t.messenger.TLRPC;
 import com.b44t.messenger.UserConfig;
@@ -1342,7 +1341,7 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
             //int count = (int) Math.ceil(text.length() / 4096.0f);
             //for (int a = 0; a < count; a++) {
             //    CharSequence mess = text.subSequence(a * 4096, Math.min((a + 1) * 4096, text.length()));
-                SendMessagesHelper.getInstance().sendMessageText(text.toString(), dialog_id, replyingMessageObject, messageWebPage, messageWebPageSearch, MessagesQuery.getEntities(text), null);
+                SendMessagesHelper.getInstance().sendMessageText(text.toString(), dialog_id, replyingMessageObject, messageWebPage, messageWebPageSearch, null);
             //}
             return true;
         }

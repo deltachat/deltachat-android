@@ -287,7 +287,6 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
     private int namesOffset;
 
     private int lastSendState;
-    private int lastDeleteDate;
     private int lastViewsCount;
 
     public ChatMessageCell(Context context) {
@@ -1217,9 +1216,6 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
         if (lastSendState != currentMessageObject.messageOwner.send_state) {
             return true;
         }
-        if (lastDeleteDate != currentMessageObject.messageOwner.destroyTime) {
-            return true;
-        }
         if (lastViewsCount != currentMessageObject.messageOwner.views) {
             return true;
         }
@@ -1606,7 +1602,6 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
         if (messageChanged || dataChanged || isPhotoDataChanged(messageObject)) {
             currentMessageObject = messageObject;
             lastSendState = messageObject.messageOwner.send_state;
-            lastDeleteDate = messageObject.messageOwner.destroyTime;
             lastViewsCount = messageObject.messageOwner.views;
             isPressed = false;
             isCheckPressed = true;

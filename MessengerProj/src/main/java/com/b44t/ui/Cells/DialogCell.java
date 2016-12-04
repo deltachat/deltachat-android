@@ -66,7 +66,6 @@ public class DialogCell extends BaseCell {
     private static Paint backPaint;
 
     private long currentDialogId;
-    private int currentEditDate;
     private boolean isDialogCell; // if it is no dialog cell, it is a search cell ...
     //private int lastMessageDate;
     private int unreadCount;
@@ -196,8 +195,6 @@ public class DialogCell extends BaseCell {
         currentDialogId = dialog_id;
         message = messageObject;
         isDialogCell = false;
-        //lastMessageDate = date;
-        currentEditDate = messageObject != null ? messageObject.messageOwner.edit_date : 0;
         unreadCount = 0;
         lastUnreadState = messageObject != null && messageObject.isUnread();
         if (message != null) {
@@ -558,7 +555,6 @@ public class DialogCell extends BaseCell {
             MessageObject newMessageObject = MessagesController.getInstance().dialogMessage.get(dialog.id);
             if (currentDialogId != dialog.id ||
                     message != null && message.getId() != dialog.top_message ||
-                    newMessageObject != null && newMessageObject.messageOwner.edit_date != currentEditDate ||
                     unreadCount != dialog.unread_count ||
                     message != newMessageObject ||
                     message == null && newMessageObject != null || newDraftMessage != draftMessage) {

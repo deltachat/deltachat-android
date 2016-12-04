@@ -89,9 +89,11 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
 
     private AlertDialog permissionDialog;
 
-    //private int prevPosition; -- Disable the floating hiding action for now; I'm not sure if it is really useful.
-    //private int prevTop;
-    //private boolean scrollUpdated;
+    // Floating hiding action
+    private int prevPosition;
+    private int prevTop;
+    private boolean scrollUpdated;
+    // /Floating hiding action
 
     private boolean floatingHidden;
     private final AccelerateDecelerateInterpolator floatingInterpolator = new AccelerateDecelerateInterpolator();
@@ -151,7 +153,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
 
 
         if (!dialogsLoaded) {
-            MessagesController.getInstance().loadDialogs(0, 100, true);
+            NotificationCenter.getInstance().postNotificationName(NotificationCenter.dialogsNeedReload); // this is the rest of the first call to the removed MessagesController.loadDialogs(); not sure, if this is really needed
             dialogsLoaded = true;
         }
         return true;
@@ -486,22 +488,17 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 int firstVisibleItem = layoutManager.findFirstVisibleItemPosition();
-                int visibleItemCount = Math.abs(layoutManager.findLastVisibleItemPosition() - firstVisibleItem) + 1;
-                int totalItemCount = recyclerView.getAdapter().getItemCount();
+                //int visibleItemCount = Math.abs(layoutManager.findLastVisibleItemPosition() - firstVisibleItem) + 1;
+                //int totalItemCount = recyclerView.getAdapter().getItemCount();
 
                 if (searching && searchWas) {
-                    if (visibleItemCount > 0 && layoutManager.findLastVisibleItemPosition() == totalItemCount - 1 && !dialogsSearchAdapter.isMessagesSearchEndReached()) {
-                        dialogsSearchAdapter.loadMoreSearchMessages(); // TODO BY MR - implement searching
-                    }
+                    //if (visibleItemCount > 0 && layoutManager.findLastVisibleItemPosition() == totalItemCount - 1 && !dialogsSearchAdapter.isMessagesSearchEndReached()) {
+                    //    dialogsSearchAdapter.loadMoreSearchMessages(); // TODO BY MR - implement searching
+                    //}
                     return;
                 }
-                if (visibleItemCount > 0) {
-                    if (layoutManager.findLastVisibleItemPosition() >= getDialogsArray().size() - 10) {
-                        MessagesController.getInstance().loadDialogs(-1, 100, !MessagesController.getInstance().dialogsEndReached);
-                    }
-                }
 
-                /* -- Disable the floating hiding action for now; I'm not sure if it is really useful.
+                // Floating hiding action - I'm not sure if it is really useful.
                 if (floatingButton.getVisibility() != View.GONE) {
                     final View topChild = recyclerView.getChildAt(0);
                     int firstViewTop = 0;
@@ -524,7 +521,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
                     prevTop = firstViewTop;
                     scrollUpdated = true;
                 }
-                */
+                // /Floating hiding action
             }
         });
 
@@ -800,17 +797,6 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
                 dialogsSearchAdapter.notifyDataSetChanged();
             }
         }
-    }
-
-    private ArrayList<TLRPC.TL_dialog> getDialogsArray() {
-        if (dialogsType == 0) {
-            return MessagesController.getInstance().dialogs;
-        } else if (dialogsType == 1) {
-            return MessagesController.getInstance().dialogsServerOnly;
-        } else if (dialogsType == 2) {
-            return MessagesController.getInstance().dialogsGroupsOnly;
-        }
-        return null;
     }
 
     private void updatePasscodeButton() {
