@@ -23,8 +23,6 @@ public class NotificationCenter {
     public static final int closeChats = totalEvents++;
     public static final int messagesDeleted = totalEvents++;
     public static final int messagesSentOrRead = totalEvents++;
-    public static final int messageReceivedByAck = totalEvents++;
-    public static final int messageReceivedByServer = totalEvents++;
     public static final int messageSendError = totalEvents++;
     public static final int contactsDidLoaded = totalEvents++;
     public static final int chatDidCreated = totalEvents++;
@@ -56,10 +54,8 @@ public class NotificationCenter {
     public static final int didUpdatedMessagesViews = totalEvents++;
     public static final int needReloadRecentDialogsSearch = totalEvents++;
     public static final int locationPermissionGranted = totalEvents++;
-    public static final int peerSettingsDidLoaded = totalEvents++;
     public static final int wasUnableToFindCurrentLocation = totalEvents++;
     public static final int reloadHints = totalEvents++;
-    public static final int reloadInlineHints = totalEvents++;
     public static final int newDraftReceived = totalEvents++;
 
     public static final int httpFileDidLoaded = totalEvents++;
@@ -70,8 +66,6 @@ public class NotificationCenter {
     public static final int wallpapersDidLoaded = totalEvents++;
     public static final int closeOtherAppActivities = totalEvents++;
     public static final int didUpdatedConnectionState = totalEvents++;
-    public static final int didReceiveSmsCode = totalEvents++;
-    public static final int didReceiveCall = totalEvents++;
     public static final int emojiDidLoaded = totalEvents++;
     public static final int appDidLogout = totalEvents++;
 

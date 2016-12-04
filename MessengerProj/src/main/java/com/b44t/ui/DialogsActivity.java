@@ -47,7 +47,6 @@ import com.b44t.messenger.ImageLoader;
 import com.b44t.messenger.LocaleController;
 import com.b44t.messenger.MessageObject;
 import com.b44t.messenger.UserObject;
-import com.b44t.messenger.query.SearchQuery;
 import com.b44t.messenger.support.widget.LinearLayoutManager;
 import com.b44t.messenger.support.widget.RecyclerView;
 import com.b44t.messenger.FileLog;
@@ -142,8 +141,6 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
             NotificationCenter.getInstance().addObserver(this, NotificationCenter.appDidLogout);
             NotificationCenter.getInstance().addObserver(this, NotificationCenter.openedChatChanged);
             NotificationCenter.getInstance().addObserver(this, NotificationCenter.notificationsSettingsUpdated);
-            NotificationCenter.getInstance().addObserver(this, NotificationCenter.messageReceivedByAck);
-            NotificationCenter.getInstance().addObserver(this, NotificationCenter.messageReceivedByServer);
             NotificationCenter.getInstance().addObserver(this, NotificationCenter.messageSendError);
             NotificationCenter.getInstance().addObserver(this, NotificationCenter.didSetPasscode);
             NotificationCenter.getInstance().addObserver(this, NotificationCenter.needReloadRecentDialogsSearch);
@@ -170,8 +167,6 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
             NotificationCenter.getInstance().removeObserver(this, NotificationCenter.appDidLogout);
             NotificationCenter.getInstance().removeObserver(this, NotificationCenter.openedChatChanged);
             NotificationCenter.getInstance().removeObserver(this, NotificationCenter.notificationsSettingsUpdated);
-            NotificationCenter.getInstance().removeObserver(this, NotificationCenter.messageReceivedByAck);
-            NotificationCenter.getInstance().removeObserver(this, NotificationCenter.messageReceivedByServer);
             NotificationCenter.getInstance().removeObserver(this, NotificationCenter.messageSendError);
             NotificationCenter.getInstance().removeObserver(this, NotificationCenter.didSetPasscode);
             NotificationCenter.getInstance().removeObserver(this, NotificationCenter.needReloadRecentDialogsSearch);
@@ -594,7 +589,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
                 builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        SearchQuery.removePeer(did);
+                        //SearchQuery.removePeer(did);
                     }
                 });
                 builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
@@ -782,7 +777,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
             }
         } else if (id == NotificationCenter.notificationsSettingsUpdated) {
             updateVisibleRows(0);
-        } else if (id == NotificationCenter.messageReceivedByAck || id == NotificationCenter.messageReceivedByServer || id == NotificationCenter.messageSendError) {
+        } else if ( id == NotificationCenter.messageSendError) {
             updateVisibleRows(MessagesController.UPDATE_MASK_SEND_STATE);
         } else if (id == NotificationCenter.didSetPasscode) {
             updatePasscodeButton();

@@ -175,13 +175,7 @@ public class TLRPC {
 		public int flags;
 		public int id;
 		public String about;
-		public int pinned_msg_id;
 		public ChatParticipants participants;
-	}
-
-	public static class TL_topPeerCategoryPeers extends TLObject {
-		public TopPeerCategory category;
-		public int count;
 	}
 
 	public static class InputUser extends TLObject {
@@ -307,9 +301,6 @@ public class TLRPC {
 		public String caption;
 		public byte[] key;
 		public byte[] iv;
-	}
-
-	public static class TopPeerCategory extends TLObject {
 	}
 
 	public static class InputDocument extends TLObject {
@@ -591,10 +582,6 @@ public class TLRPC {
 	}
 
 	public static class TL_inputPeerEmpty extends InputPeer {
-	}
-
-	public static class TL_topPeer extends TLObject {
-		public Peer peer;
 	}
 
 	public static class TL_messages_search extends TLObject {

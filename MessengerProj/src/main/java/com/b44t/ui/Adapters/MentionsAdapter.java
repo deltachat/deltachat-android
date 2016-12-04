@@ -16,7 +16,6 @@ import com.b44t.messenger.AndroidUtilities;
 import com.b44t.messenger.MessageObject;
 import com.b44t.messenger.MessagesController;
 import com.b44t.messenger.UserObject;
-import com.b44t.messenger.query.SearchQuery;
 import com.b44t.messenger.support.widget.RecyclerView;
 import com.b44t.messenger.ConnectionsManager;
 import com.b44t.messenger.TLRPC;
@@ -573,7 +572,7 @@ public class MentionsAdapter extends BaseSearchAdapterRecycler {
             String usernameString = result.toString().toLowerCase();
             ArrayList<TLRPC.User> newResult = new ArrayList<>();
             final HashMap<Integer, TLRPC.User> newResultsHashMap = new HashMap<>();
-            if (needBotContext && dogPostion == 0 && !SearchQuery.inlineBots.isEmpty()) {
+            /*if (needBotContext && dogPostion == 0 && !SearchQuery.inlineBots.isEmpty()) {
                 int count = 0;
                 for (int a = 0; a < SearchQuery.inlineBots.size(); a++) {
                     TLRPC.User user = MessagesController.getInstance().getUser(SearchQuery.inlineBots.get(a).peer.user_id);
@@ -589,7 +588,7 @@ public class MentionsAdapter extends BaseSearchAdapterRecycler {
                         break;
                     }
                 }
-            }
+            }*/
             if (info != null && info.participants != null) {
                 for (int a = 0; a < info.participants.participants.size(); a++) {
                     TLRPC.ChatParticipant chatParticipant = info.participants.participants.get(a);

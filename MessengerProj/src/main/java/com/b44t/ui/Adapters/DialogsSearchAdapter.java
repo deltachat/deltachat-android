@@ -18,7 +18,6 @@ import com.b44t.messenger.ContactsController;
 import com.b44t.messenger.LocaleController;
 import com.b44t.messenger.MessageObject;
 import com.b44t.messenger.MessagesController;
-import com.b44t.messenger.query.SearchQuery;
 import com.b44t.messenger.support.widget.LinearLayoutManager;
 import com.b44t.messenger.support.widget.RecyclerView;
 import com.b44t.messenger.FileLog;
@@ -56,6 +55,7 @@ public class DialogsSearchAdapter extends BaseSearchAdapterRecycler {
     private String lastMessagesSearchString;
     private int lastSearchId = 0;
     private int dialogsType;
+    private static ArrayList<Object> hints = new ArrayList<>();
 
     private ArrayList<RecentSearchObject> recentSearchObjects = new ArrayList<>();
     private HashMap<Long, RecentSearchObject> recentSearchObjectsById = new HashMap<>();
@@ -103,35 +103,12 @@ public class DialogsSearchAdapter extends BaseSearchAdapterRecycler {
         @Override
         public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
             HintDialogCell cell = (HintDialogCell) holder.itemView;
-
-            TLRPC.TL_topPeer peer = SearchQuery.hints.get(position);
-            //TLRPC.TL_dialog dialog = new TLRPC.TL_dialog();
-            TLRPC.Chat chat = null;
-            TLRPC.User user = null;
-            int did = 0;
-            if (peer.peer.user_id != 0) {
-                did = peer.peer.user_id;
-                user = MessagesController.getInstance().getUser(peer.peer.user_id);
-            } else if (peer.peer.channel_id != 0) {
-                did = -peer.peer.channel_id;
-                chat = MessagesController.getInstance().getChat(peer.peer.channel_id);
-            } else if (peer.peer.chat_id != 0) {
-                did = -peer.peer.chat_id;
-                chat = MessagesController.getInstance().getChat(peer.peer.chat_id);
-            }
-            cell.setTag(did);
-            String name = "";
-            if (user != null) {
-                name = ContactsController.formatName(user.first_name, user.last_name);
-            } else if (chat != null) {
-                name = chat.title;
-            }
-            cell.setDialog(did, false, name);
+            cell.setDialog(0, false, "ErrSearch");
         }
 
         @Override
         public int getItemCount() {
-            return SearchQuery.hints.size();
+            return hints.size();
         }
     }
 
@@ -140,7 +117,6 @@ public class DialogsSearchAdapter extends BaseSearchAdapterRecycler {
         needMessagesSearch = messagesSearch;
         dialogsType = type;
         loadRecentSearch();
-        SearchQuery.loadHints(true);
     }
 
     public void setDelegate(DialogsSearchAdapterDelegate delegate) {
@@ -246,11 +222,11 @@ public class DialogsSearchAdapter extends BaseSearchAdapterRecycler {
     }
 
     public boolean hasRecentRearch() {
-        return !recentSearchObjects.isEmpty() || !SearchQuery.hints.isEmpty();
+        return !recentSearchObjects.isEmpty() || !hints.isEmpty();
     }
 
     public boolean isRecentSearchDisplayed() {
-        return needMessagesSearch != 2 && (lastSearchText == null || lastSearchText.length() == 0) && (!recentSearchObjects.isEmpty() || !SearchQuery.hints.isEmpty());
+        return needMessagesSearch != 2 && (lastSearchText == null || lastSearchText.length() == 0) && (!recentSearchObjects.isEmpty() || !hints.isEmpty());
     }
 
     public void loadRecentSearch() {
@@ -878,7 +854,7 @@ public class DialogsSearchAdapter extends BaseSearchAdapterRecycler {
     @Override
     public int getItemCount() {
         if (isRecentSearchDisplayed()) {
-            return (!recentSearchObjects.isEmpty() ? recentSearchObjects.size() + 1 : 0) + (!SearchQuery.hints.isEmpty() ? 2 : 0);
+            return (!recentSearchObjects.isEmpty() ? recentSearchObjects.size() + 1 : 0) + (!hints.isEmpty() ? 2 : 0);
         }
         if (!searchResultHashtags.isEmpty()) {
             return searchResultHashtags.size() + 1;
@@ -897,7 +873,7 @@ public class DialogsSearchAdapter extends BaseSearchAdapterRecycler {
 
     public Object getItem(int i) {
         if (isRecentSearchDisplayed()) {
-            int offset = (!SearchQuery.hints.isEmpty() ? 2 : 0);
+            int offset = (!hints.isEmpty() ? 2 : 0);
             if (i > offset && i - 1 - offset < recentSearchObjects.size()) {
                 TLObject object = recentSearchObjects.get(i - 1 - offset).object;
                 if (object instanceof TLRPC.User) {
@@ -1075,7 +1051,7 @@ public class DialogsSearchAdapter extends BaseSearchAdapterRecycler {
             case 1: {
                 GreySectionCell cell = (GreySectionCell) holder.itemView;
                 if (isRecentSearchDisplayed()) {
-                    int offset = (!SearchQuery.hints.isEmpty() ? 2 : 0);
+                    int offset = (!hints.isEmpty() ? 2 : 0);
                     if (position < offset) {
                         cell.setText(LocaleController.getString("ChatHints", R.string.ChatHints).toUpperCase());
                     } else {
@@ -1117,7 +1093,7 @@ public class DialogsSearchAdapter extends BaseSearchAdapterRecycler {
     @Override
     public int getItemViewType(int i) {
         if (isRecentSearchDisplayed()) {
-            int offset = (!SearchQuery.hints.isEmpty() ? 2 : 0);
+            int offset = (!hints.isEmpty() ? 2 : 0);
             if (i <= offset) {
                 if (i == offset || i % 2 == 0) {
                     return 1;

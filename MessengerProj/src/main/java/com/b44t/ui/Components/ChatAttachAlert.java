@@ -40,8 +40,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.b44t.messenger.AndroidUtilities;
-import com.b44t.messenger.AnimatorListenerAdapterProxy;
-import com.b44t.messenger.ApplicationLoader;
 import com.b44t.messenger.MessagesController;
 import com.b44t.messenger.ContactsController;
 import com.b44t.messenger.FileLog;
@@ -49,7 +47,6 @@ import com.b44t.messenger.LocaleController;
 import com.b44t.messenger.MediaController;
 import com.b44t.messenger.MessageObject;
 import com.b44t.messenger.NotificationCenter;
-import com.b44t.messenger.query.SearchQuery;
 import com.b44t.messenger.support.widget.LinearLayoutManager;
 import com.b44t.messenger.R;
 import com.b44t.messenger.support.widget.RecyclerView;
@@ -81,7 +78,6 @@ public class ChatAttachAlert extends BottomSheet implements NotificationCenter.N
     public interface ChatAttachViewDelegate {
         void didPressedButton(int button);
         View getRevealView();
-        void didSelectBot(TLRPC.User user);
     }
 
     private class InnerAnimator {
@@ -165,157 +161,6 @@ public class ChatAttachAlert extends BottomSheet implements NotificationCenter.N
         }
     }
 
-    private class AttachBotButton extends FrameLayout {
-
-        private BackupImageView imageView;
-        private TextView nameTextView;
-        private AvatarDrawable avatarDrawable = new AvatarDrawable();
-        private boolean pressed;
-
-        private boolean checkingForLongPress = false;
-        private CheckForLongPress pendingCheckForLongPress = null;
-        private int pressCount = 0;
-        private CheckForTap pendingCheckForTap = null;
-
-        private TLRPC.User currentUser;
-
-        private final class CheckForTap implements Runnable {
-            public void run() {
-                if (pendingCheckForLongPress == null) {
-                    pendingCheckForLongPress = new CheckForLongPress();
-                }
-                pendingCheckForLongPress.currentPressCount = ++pressCount;
-                postDelayed(pendingCheckForLongPress, ViewConfiguration.getLongPressTimeout() - ViewConfiguration.getTapTimeout());
-            }
-        }
-
-        class CheckForLongPress implements Runnable {
-            public int currentPressCount;
-
-            public void run() {
-                if (checkingForLongPress && getParent() != null && currentPressCount == pressCount) {
-                    checkingForLongPress = false;
-                    performHapticFeedback(HapticFeedbackConstants.LONG_PRESS);
-                    onLongPress();
-                    MotionEvent event = MotionEvent.obtain(0, 0, MotionEvent.ACTION_CANCEL, 0, 0, 0);
-                    onTouchEvent(event);
-                    event.recycle();
-                }
-            }
-        }
-
-        public AttachBotButton(Context context) {
-            super(context);
-
-            imageView = new BackupImageView(context);
-            imageView.setRoundRadius(AndroidUtilities.dp(27));
-            addView(imageView, LayoutHelper.createFrame(54, 54, Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 7, 0, 0));
-
-            nameTextView = new TextView(context);
-            nameTextView.setTextColor(Theme.ATTACH_SHEET_TEXT_COLOR);
-            nameTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 12);
-            nameTextView.setMaxLines(2);
-            nameTextView.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL);
-            nameTextView.setLines(2);
-            nameTextView.setEllipsize(TextUtils.TruncateAt.END);
-            addView(nameTextView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.LEFT | Gravity.TOP, 6, 65, 6, 0));
-        }
-
-        @Override
-        protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-            super.onMeasure(MeasureSpec.makeMeasureSpec(AndroidUtilities.dp(85), MeasureSpec.EXACTLY), MeasureSpec.makeMeasureSpec(AndroidUtilities.dp(100), MeasureSpec.EXACTLY));
-        }
-
-        private void onLongPress() {
-            if (baseFragment == null || currentUser == null) {
-                return;
-            }
-            AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-            builder.setMessage(LocaleController.formatString("ChatHintsDelete", R.string.ChatHintsDelete, ContactsController.formatName(currentUser.first_name, currentUser.last_name)));
-            builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialogInterface, int i) {
-                    SearchQuery.removeInline(currentUser.id);
-                }
-            });
-            builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
-            builder.show();
-        }
-
-        public void setUser(TLRPC.User user) {
-            if (user == null) {
-                return;
-            }
-            currentUser = user;
-            TLRPC.FileLocation photo = null;
-            nameTextView.setText(ContactsController.formatName(user.first_name, user.last_name));
-            avatarDrawable.setInfoByUser(user);
-            if (user != null && user.photo != null) {
-                photo = user.photo.photo_small;
-            }
-            imageView.setImage(photo, "50_50", avatarDrawable);
-            requestLayout();
-        }
-
-        @Override
-        public boolean onTouchEvent(MotionEvent event) {
-            boolean result = false;
-
-            if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                pressed = true;
-                invalidate();
-                result = true;
-            } else if (pressed) {
-                if (event.getAction() == MotionEvent.ACTION_UP) {
-                    getParent().requestDisallowInterceptTouchEvent(true);
-                    pressed = false;
-                    playSoundEffect(SoundEffectConstants.CLICK);
-                    delegate.didSelectBot(MessagesController.getInstance().getUser(SearchQuery.inlineBots.get((Integer) getTag()).peer.user_id));
-                    setUseRevealAnimation(false);
-                    dismiss();
-                    setUseRevealAnimation(true);
-                    invalidate();
-                } else if (event.getAction() == MotionEvent.ACTION_CANCEL) {
-                    pressed = false;
-                    invalidate();
-                }
-            }
-            if (!result) {
-                result = super.onTouchEvent(event);
-            } else {
-                if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                    startCheckLongPress();
-                }
-            }
-            if (event.getAction() != MotionEvent.ACTION_DOWN && event.getAction() != MotionEvent.ACTION_MOVE) {
-                cancelCheckLongPress();
-            }
-
-            return result;
-        }
-
-        protected void startCheckLongPress() {
-            if (checkingForLongPress) {
-                return;
-            }
-            checkingForLongPress = true;
-            if (pendingCheckForTap == null) {
-                pendingCheckForTap = new CheckForTap();
-            }
-            postDelayed(pendingCheckForTap, ViewConfiguration.getTapTimeout());
-        }
-
-        protected void cancelCheckLongPress() {
-            checkingForLongPress = false;
-            if (pendingCheckForLongPress != null) {
-                removeCallbacks(pendingCheckForLongPress);
-            }
-            if (pendingCheckForTap != null) {
-                removeCallbacks(pendingCheckForTap);
-            }
-        }
-    }
-
     public ChatAttachAlert(Context context) {
         super(context, false);
         setDelegate(this);
@@ -324,7 +169,6 @@ public class ChatAttachAlert extends BottomSheet implements NotificationCenter.N
             //CameraController.getInstance().initCamera();
         }
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.albumsDidLoaded);
-        NotificationCenter.getInstance().addObserver(this, NotificationCenter.reloadInlineHints);
         shadowDrawable = context.getResources().getDrawable(R.drawable.sheet_shadow);
 
         containerView = listView = new RecyclerListView(context) {
@@ -356,7 +200,7 @@ public class ChatAttachAlert extends BottomSheet implements NotificationCenter.N
                 if (Build.VERSION.SDK_INT >= 21) {
                     height -= AndroidUtilities.statusBarHeight;
                 }
-                int contentSize = backgroundPaddingTop + AndroidUtilities.dp(294) + (SearchQuery.inlineBots.isEmpty() ? 0 : ((int) Math.ceil(SearchQuery.inlineBots.size() / 4.0f) * AndroidUtilities.dp(100) + AndroidUtilities.dp(12)));
+                int contentSize = backgroundPaddingTop + AndroidUtilities.dp(294);
                 int padding = contentSize == AndroidUtilities.dp(294) ? 0 : (height - AndroidUtilities.dp(294));
                 if (padding != 0 && contentSize < height) {
                     padding -= (height - contentSize);
@@ -704,10 +548,6 @@ public class ChatAttachAlert extends BottomSheet implements NotificationCenter.N
                 progressView.showTextView();
                 photoAttachAdapter.notifyDataSetChanged();
             }
-        } else if (id == NotificationCenter.reloadInlineHints) {
-            if (adapter != null) {
-                adapter.notifyDataSetChanged();
-            }
         }
     }
 
@@ -797,7 +637,6 @@ public class ChatAttachAlert extends BottomSheet implements NotificationCenter.N
 
     public void onDestroy() {
         NotificationCenter.getInstance().removeObserver(this, NotificationCenter.albumsDidLoaded);
-        NotificationCenter.getInstance().removeObserver(this, NotificationCenter.reloadInlineHints);
         baseFragment = null;
     }
 
@@ -989,7 +828,7 @@ public class ChatAttachAlert extends BottomSheet implements NotificationCenter.N
                     view = new ShadowSectionCell(mContext);
                     break;
                 default:
-                    FrameLayout frameLayout = new FrameLayout(mContext) {
+                    FrameLayout frameLayout = new FrameLayout(mContext);/* -- not used, this is the old "swipe up bot stuff" --  {
                         @Override
                         protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
                             int diff = (right - left - AndroidUtilities.dp(85 * 4 + 20)) / 3;
@@ -1002,9 +841,9 @@ public class ChatAttachAlert extends BottomSheet implements NotificationCenter.N
                     };
                     for (int a = 0; a < 4; a++) {
                         frameLayout.addView(new AttachBotButton(mContext));
-                    }
+                    }*/
                     view = frameLayout;
-                    frameLayout.setLayoutParams(new RecyclerView.LayoutParams(LayoutHelper.MATCH_PARENT, AndroidUtilities.dp(100)));
+                    //frameLayout.setLayoutParams(new RecyclerView.LayoutParams(LayoutHelper.MATCH_PARENT, AndroidUtilities.dp(100)));
                     break;
             }
             return new Holder(view);
@@ -1013,6 +852,7 @@ public class ChatAttachAlert extends BottomSheet implements NotificationCenter.N
         @Override
         public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
             if (position > 1) {
+                /*
                 position -= 2;
                 position *= 4;
                 FrameLayout frameLayout = (FrameLayout) holder.itemView;
@@ -1026,12 +866,13 @@ public class ChatAttachAlert extends BottomSheet implements NotificationCenter.N
                         child.setUser(MessagesController.getInstance().getUser(SearchQuery.inlineBots.get(position + a).peer.user_id));
                     }
                 }
+                */
             }
         }
 
         @Override
         public int getItemCount() {
-            return 1 + (!SearchQuery.inlineBots.isEmpty() ? 1 + (int) Math.ceil(SearchQuery.inlineBots.size() / 4.0f) : 0);
+            return 1;
         }
 
         @Override

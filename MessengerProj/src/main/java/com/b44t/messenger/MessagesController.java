@@ -72,12 +72,10 @@ public class MessagesController implements NotificationCenter.NotificationCenter
 
     public MessagesController() {
         ImageLoader.getInstance();
-        //MessagesStorage.getInstance();
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.FileDidUpload);
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.FileDidFailUpload);
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.FileDidLoaded);
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.FileDidFailedLoad);
-        NotificationCenter.getInstance().addObserver(this, NotificationCenter.messageReceivedByServer);
         SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("Notifications", Activity.MODE_PRIVATE);
         enableJoined = preferences.getBoolean("EnableContactJoined", true);
 
@@ -191,26 +189,6 @@ public class MessagesController implements NotificationCenter.NotificationCenter
             final String location = (String) args[0];
             if (uploadingAvatar != null && uploadingAvatar.equals(location)) {
                 uploadingAvatar = null;
-            }
-        } else if (id == NotificationCenter.messageReceivedByServer) {
-            Integer msgId = (Integer) args[0];
-            Integer newMsgId = (Integer) args[1];
-            Long did = (Long) args[3];
-            MessageObject obj = dialogMessage.get(did);
-            if (obj != null && obj.getId() == msgId) {
-                obj.messageOwner.id = newMsgId;
-                obj.messageOwner.send_state = MessageObject.MESSAGE_SEND_STATE_SENT;
-                TLRPC.TL_dialog dialog = dialogs_dict.get(did);
-                if (dialog != null) {
-                    if (dialog.top_message == msgId) {
-                        dialog.top_message = newMsgId;
-                    }
-                }
-                NotificationCenter.getInstance().postNotificationName(NotificationCenter.dialogsNeedReload);
-            }
-            obj = dialogMessagesByIds.remove(msgId);
-            if (obj != null) {
-                dialogMessagesByIds.put(newMsgId, obj);
             }
         }
     }
