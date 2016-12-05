@@ -614,7 +614,6 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
                 NotificationCenter.getInstance().addObserver(MediaController.this, NotificationCenter.FileDidLoaded);
                 NotificationCenter.getInstance().addObserver(MediaController.this, NotificationCenter.FileLoadProgressChanged);
                 NotificationCenter.getInstance().addObserver(MediaController.this, NotificationCenter.FileUploadProgressChanged);
-                NotificationCenter.getInstance().addObserver(MediaController.this, NotificationCenter.removeAllMessagesFromDialog);
                 NotificationCenter.getInstance().addObserver(MediaController.this, NotificationCenter.musicDidLoaded);
             }
         });
@@ -1352,11 +1351,6 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
                         }
                     }
                 }
-            }
-        } else if (id == NotificationCenter.removeAllMessagesFromDialog) {
-            long did = (Long) args[0];
-            if (playingMessageObject != null && playingMessageObject.getDialogId() == did) {
-                cleanupPlayer(false, true);
             }
         } else if (id == NotificationCenter.musicDidLoaded) {
             long did = (Long) args[0];
