@@ -41,6 +41,7 @@ import com.b44t.messenger.AndroidUtilities;
 import com.b44t.messenger.LocaleController;
 import com.b44t.messenger.MediaController;
 import com.b44t.messenger.MessagesController;
+import com.b44t.messenger.MrMailbox;
 import com.b44t.messenger.NotificationsController;
 import com.b44t.messenger.UserObject;
 import com.b44t.messenger.ApplicationLoader;
@@ -295,7 +296,8 @@ public class PopupNotificationActivity extends Activity implements NotificationC
                 if (currentMessageNum >= 0 && currentMessageNum < NotificationsController.getInstance().popupMessages.size()) {
                     NotificationsController.getInstance().popupMessages.remove(currentMessageNum);
                 }
-                MessagesController.getInstance().markDialogAsRead(currentMessageObject.getDialogId(), currentMessageObject.getId(), Math.max(0, currentMessageObject.getId()), currentMessageObject.messageOwner.date, true, true);
+                //MessagesController.getInstance().markDialogAsRead(currentMessageObject.getDialogId(), currentMessageObject.getId(), Math.max(0, currentMessageObject.getId()), currentMessageObject.messageOwner.date, true, true);
+                MrMailbox.markseenMsg((int)currentMessageObject.getId());
                 currentMessageObject = null;
                 getNewMessage();
             }

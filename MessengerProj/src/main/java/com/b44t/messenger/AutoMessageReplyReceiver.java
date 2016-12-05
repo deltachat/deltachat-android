@@ -33,6 +33,6 @@ public class AutoMessageReplyReceiver extends BroadcastReceiver {
             return;
         }
         SendMessagesHelper.getInstance().sendMessageText(text.toString(), dialog_id, null, null, true, null);
-        MessagesController.getInstance().markDialogAsRead(dialog_id, max_id, max_id, 0, true, false);
+        MrMailbox.markseenChat((int)dialog_id);
     }
 }

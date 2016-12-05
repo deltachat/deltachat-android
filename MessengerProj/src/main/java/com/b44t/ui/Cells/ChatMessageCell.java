@@ -160,7 +160,6 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
     private static TextPaint infoPaint;
     private static TextPaint docNamePaint;
     private static Paint docBackPaint;
-    private static Paint deleteProgressPaint;
     private static TextPaint locationTitlePaint;
     private static TextPaint locationAddressPaint;
     private static Paint urlPaint;
@@ -300,9 +299,6 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
             docNamePaint.setTextSize(dp(15));
 
             docBackPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-
-            deleteProgressPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-            deleteProgressPaint.setColor(Theme.MSG_SECRET_TIME_TEXT_COLOR);
 
             locationTitlePaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
             locationTitlePaint.setTextSize(dp(15));

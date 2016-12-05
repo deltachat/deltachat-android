@@ -233,9 +233,6 @@ public class MessagesController implements NotificationCenter.NotificationCenter
     public void markMessageContentAsRead(final MessageObject messageObject) {
     }
 
-    public void markDialogAsRead(final long dialog_id, final int max_id, final int max_positive_id, final int max_date, final boolean was, final boolean popup) {
-    }
-
     public void addUserToChat(final int chat_id, final TLRPC.User user, final TLRPC.ChatFull info, int count_fwd, String botHash, final BaseFragment fragment) {
     }
 

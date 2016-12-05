@@ -22,6 +22,6 @@ public class AutoMessageHeardReceiver extends BroadcastReceiver {
         if (dialog_id == 0 || max_id == 0) {
             return;
         }
-        MessagesController.getInstance().markDialogAsRead(dialog_id, max_id, max_id, 0, true, false);
+        MrMailbox.markseenChat((int)dialog_id);
     }
 }

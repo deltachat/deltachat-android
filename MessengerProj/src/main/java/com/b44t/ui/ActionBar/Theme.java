@@ -53,9 +53,7 @@ public class Theme {
     public static final int DIALOGS_PRINTING_TEXT_COLOR = 0xff4d83b3;
     public static final int DIALOGS_DRAFT_TEXT_COLOR = 0xffdd4b39;
 
-    public static final int CHAT_UNREAD_TEXT_COLOR = 0xff5695cc;
-    public static final int CHAT_ADD_CONTACT_TEXT_COLOR = 0xff4a82b5;
-    public static final int CHAT_REPORT_SPAM_TEXT_COLOR = 0xffcf5957;
+    public static final int CHAT_UNREAD_TEXT_COLOR = 0xff888888;
     public static final int CHAT_BOTTOM_OVERLAY_TEXT_COLOR = 0xff7f7f7f;
     public static final int CHAT_GIF_HINT_TEXT_COLOR = 0xffffffff;
     public static final int CHAT_EMPTY_VIEW_TEXT_COLOR = 0xffffffff;
@@ -64,9 +62,6 @@ public class Theme {
     public static final int INAPP_PLAYER_PERFORMER_TEXT_COLOR = 0xff2f3438;
     public static final int INAPP_PLAYER_TITLE_TEXT_COLOR = 0xff2f3438;
     public static final int INAPP_PLAYER_BACKGROUND_COLOR = 0xffffffff;
-
-    public static final int REPLY_PANEL_NAME_TEXT_COLOR = 0xff3a8ccf;
-    public static final int REPLY_PANEL_MESSAGE_TEXT_COLOR = 0xff222222;
 
     public static final int ALERT_PANEL_NAME_TEXT_COLOR = 0xff3a8ccf;
     public static final int ALERT_PANEL_MESSAGE_TEXT_COLOR = 0xff999999;
@@ -81,7 +76,6 @@ public class Theme {
 
     public static final int MSG_SELECTED_BACKGROUND_COLOR = 0x6633b5e5;
     public static final int MSG_WEB_PREVIEW_DURATION_TEXT_COLOR = 0xffffffff;
-    public static final int MSG_SECRET_TIME_TEXT_COLOR = 0xffe4e2e0;
     public static final int MSG_STICKER_NAME_TEXT_COLOR = 0xffffffff;
     public static final int MSG_IN_FORDWARDED_NAME_TEXT_COLOR = 0xff3886c7;
     public static final int MSG_OUT_FORDWARDED_NAME_TEXT_COLOR = 0xff55ab4f;

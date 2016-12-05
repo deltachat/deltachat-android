@@ -52,7 +52,6 @@ import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -93,7 +92,6 @@ import com.b44t.ui.ActionBar.ActionBarMenu;
 import com.b44t.ui.ActionBar.ActionBarMenuItem;
 import com.b44t.ui.Cells.ChatMessageCell;
 import com.b44t.ui.Cells.ChatUnreadCell;
-import com.b44t.ui.Components.BackupImageView;
 import com.b44t.ui.ActionBar.BaseFragment;
 import com.b44t.ui.Components.ChatActivityEnterView;
 import com.b44t.messenger.ImageReceiver;
@@ -134,7 +132,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
 
     private ArrayList<ChatMessageCell> chatMessageCellsCache = new ArrayList<>();
 
-    private FrameLayout progressView;
     private FrameLayout bottomOverlay;
     protected ChatActivityEnterView chatActivityEnterView;
     private ActionBarMenuItem menuItem;
@@ -204,8 +201,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
     private ArrayList<CharSequence> foundUrls;
     private Runnable waitingForCharaterEnterRunnable;
 
-    private int readWithDate;
-    private int readWithMid;
     private boolean scrollToTopOnResume;
     private boolean forceScrollToTop;
     private boolean scrollToTopUnReadOnResume;
@@ -224,7 +219,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
     private int minDate;
     private boolean endReached;
     private boolean forwardEndReached = true; // true=newest messages loaded
-    private boolean loading;
     private boolean firstLoading = true;
     private int last_message_id = 0;
 
@@ -289,7 +283,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
     public boolean onFragmentCreate() {
         // EDIT BY MR -- set up the values so that the activity gets usable
         dialog_id = arguments.getInt("chat_id", 0);
-        MrMailbox.markseenChat((int)dialog_id);
         m_mrChat = MrMailbox.getChat((int)dialog_id);
         currentChat = new TLRPC.Chat();
         currentChat.id = (int)dialog_id;
@@ -854,7 +847,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     if (child == null || child.getVisibility() == GONE || child == chatActivityEnterView) {
                         continue;
                     }
-                    if (child == chatListView || child == progressView) {
+                    if (child == chatListView ) {
                         int contentWidthSpec = MeasureSpec.makeMeasureSpec(widthSize, MeasureSpec.EXACTLY);
                         int contentHeightSpec = MeasureSpec.makeMeasureSpec(Math.max(AndroidUtilities.dp(10), heightSize - inputFieldHeight + AndroidUtilities.dp(2 + (chatActivityEnterView.isTopViewVisible() ? 48 : 0))), MeasureSpec.EXACTLY);
                         child.measure(contentWidthSpec, contentHeightSpec);
@@ -970,7 +963,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                         childTop = chatActivityEnterView.getBottom();
                     } else if (child == gifHintTextView) {
                         childTop -= inputFieldHeight;
-                    } else if (child == chatListView || child == progressView) {
+                    } else if (child == chatListView ) {
                         if (chatActivityEnterView.isTopViewVisible()) {
                             childTop -= AndroidUtilities.dp(48);
                         }
@@ -1150,25 +1143,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 return false;
             }
         });
-
-        progressView = new FrameLayout(context);
-        progressView.setVisibility(View.INVISIBLE);
-        contentView.addView(progressView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.MATCH_PARENT, Gravity.TOP | Gravity.LEFT));
-
-        View view = new View(context);
-        view.setBackgroundResource(R.drawable.system_loader);
-        view.getBackground().setColorFilter(Theme.colorFilter);
-        progressView.addView(view, LayoutHelper.createFrame(36, 36, Gravity.CENTER));
-
-        ProgressBar progressBar = new ProgressBar(context);
-        try {
-            progressBar.setIndeterminateDrawable(context.getResources().getDrawable(R.drawable.loading_animation));
-        } catch (Exception e) {
-            //don't promt
-        }
-        progressBar.setIndeterminate(true);
-        AndroidUtilities.setProgressBarAnimationDuration(progressBar, 1500);
-        progressView.addView(progressBar, LayoutHelper.createFrame(32, 32, Gravity.CENTER));
 
         FrameLayout alertView = new FrameLayout(context);
         alertView.setTag(1);
@@ -1831,13 +1805,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         bottomOverlayChat.addView(bottomOverlayChatText, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER));
 
         chatAdapter.updateRows();
-        if (loading && messages.isEmpty()) {
-            progressView.setVisibility(View.VISIBLE);
-            chatListView.setEmptyView(null);
-        } else {
-            progressView.setVisibility(View.INVISIBLE);
-            chatListView.setEmptyView(emptyViewContainer);
-        }
+        chatListView.setEmptyView(emptyViewContainer);
 
         //chatActivityEnterView.setButtons(userBlocked ? null : botButtons);
 
@@ -2102,11 +2070,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
             } else  {
                 checkLoadCount = 5;
             }
-            if (firstVisibleItem <= checkLoadCount && !loading) {
-                if (!endReached) {
-                    loading = true;
-                }
-            }
             if (!loadingForward && firstVisibleItem + visibleItemCount >= totalItemCount - 10) {
                 if (!forwardEndReached) {
                     //MessagesController.getInstance().loadMessages(dialog_id, 50, minMessageId[0], true, maxDate[0], classGuid, 1, 0, ChatObject.isChannel(currentChat), lastLoadIndex++);
@@ -2348,7 +2311,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
     private void clearChatData() {
         messages.clear();
         messagesByDays.clear();
-        progressView.setVisibility(View.VISIBLE);
         chatListView.setEmptyView(null);
         messagesDict.clear();
         maxMessageId = Integer.MAX_VALUE;
@@ -2359,7 +2321,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         forwardEndReached = true;
         first = true;
         firstLoading = true;
-        loading = true;
         loadingForward = false;
         startLoadFromMessageId = 0;
         last_message_id = 0;
@@ -3239,8 +3200,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         }
 
         {
-            loading = false;
-
             if (chatListView != null) {
                 if (first || scrollToTopOnResume || forceScrollToTop) {
                     forceScrollToTop = false;
@@ -3318,21 +3277,12 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 AndroidUtilities.runOnUIThread(new Runnable() {
                     @Override
                     public void run() {
-                        if (last_message_id != 0) {
-                            MessagesController.getInstance().markDialogAsRead(dialog_id, lastid, last_message_id, last_unread_date_final, wasUnreadFinal, false);
-                        } else {
-                            MessagesController.getInstance().markDialogAsRead(dialog_id, lastid, minMessageId, maxDate, wasUnreadFinal, false);
-                        }
+                        MrMailbox.markseenChat((int)dialog_id);
                     }
                 }, 700);
             first = false;
         }
 
-        {
-            if (progressView != null) {
-                progressView.setVisibility(View.INVISIBLE);
-            }
-        }
         checkScrollForLoad(false);
     }
 
@@ -3343,16 +3293,56 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 // add incoming messages
                 int evt_chat_id = (int) args[1];
                 int evt_msg_id = (int) args[2];
-                if (evt_chat_id == dialog_id && evt_msg_id > 0) {
+                if (evt_chat_id == dialog_id && evt_msg_id > 0)
+                {
+                    boolean markAsRead = false;
+
                     MrMsg mrMsg = MrMailbox.getMsg(evt_msg_id);
                     TLRPC.Message msg = mrMsg.get_TLRPC_Message();
                     MessageObject msgDrawObj = new MessageObject(msg, null, true);
+
+                    if (!msgDrawObj.isOut()) {
+                        if (paused) {
+                            if (!scrollToTopUnReadOnResume && unreadMessageObject != null) {
+                                removeMessageObject(unreadMessageObject);
+                                unreadMessageObject = null;
+                            }
+                            if (unreadMessageObject == null) {
+                                TLRPC.Message dateMsg = new TLRPC.Message();
+                                dateMsg.message = "";
+                                dateMsg.id = 0;
+                                MessageObject dateObj = new MessageObject(dateMsg, null, false);
+                                dateObj.type = 6;
+                                dateObj.contentType = ROWTYPE_UNREAD_CELL;
+                                messages.add(0, dateObj);
+                                unreadMessageObject = dateObj;
+                                scrollToMessage = unreadMessageObject;
+                                scrollToMessagePosition = -10000;
+                                unread_to_load = 0;
+                                scrollToTopUnReadOnResume = true;
+                            }
+                        }
+
+                        if (unreadMessageObject != null) {
+                            unread_to_load++;
+                        }
+
+                        markAsRead = true;
+                    }
+
                     createDateHeadlineIfNeeded(msgDrawObj);
                     messages.add(0, msgDrawObj);
                     messagesDict.put(msg.id, msgDrawObj);
                     chatAdapter.notifyDataSetChanged();
                     scrollToLastMessage(false);
-                    MrMailbox.markseenMsg(evt_msg_id);
+
+                    if (markAsRead) {
+                        if (paused) {
+                            readWhenResume = true;
+                        } else {
+                            MrMailbox.markseenMsg(evt_msg_id);
+                        }
+                    }
                 }
             }
         }
@@ -3438,7 +3428,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 if (!forwardEndReached) {
                     int currentMaxDate = Integer.MIN_VALUE;
                     int currentMinMsgId = Integer.MIN_VALUE;
-                    boolean currentMarkAsRead = false;
 
                     for (int a = 0; a < arr.size(); a++) {
                         MessageObject obj = arr.get(a);
@@ -3459,28 +3448,15 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
 
                         if (!obj.isOut() && obj.isUnread()) {
                             unread_to_load++;
-                            currentMarkAsRead = true;
                         }
                         if (obj.type == 10 || obj.type == 11) {
                             updateChat = true;
                         }
                     }
 
-                    if (currentMarkAsRead) {
-                        if (paused) {
-                            readWhenResume = true;
-                            readWithDate = currentMaxDate;
-                            readWithMid = currentMinMsgId;
-                        } else {
-                            if (messages.size() > 0) {
-                                MessagesController.getInstance().markDialogAsRead(dialog_id, messages.get(0).getId(), currentMinMsgId, currentMaxDate, true, false);
-                            }
-                        }
-                    }
+
                     updateVisibleRows();
                 } else {
-                    boolean markAsRead = false;
-                    boolean unreadUpdated = true;
                     int oldCount = messages.size();
                     int addedCount = 0;
                     int placeToPaste = -1;
@@ -3542,41 +3518,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                         // create date headline
                         addedCount += createDateHeadlineIfNeeded(obj);
 
-                        if (!obj.isOut()) {
-                            if (paused && placeToPaste == 0) {
-                                if (!scrollToTopUnReadOnResume && unreadMessageObject != null) {
-                                    removeMessageObject(unreadMessageObject);
-                                    unreadMessageObject = null;
-                                }
-                                if (unreadMessageObject == null) {
-                                    TLRPC.Message dateMsg = new TLRPC.Message();
-                                    dateMsg.message = "";
-                                    dateMsg.id = 0;
-                                    MessageObject dateObj = new MessageObject(dateMsg, null, false);
-                                    dateObj.type = 6;
-                                    dateObj.contentType = ROWTYPE_UNREAD_CELL;
-                                    messages.add(0, dateObj);
-                                    unreadMessageObject = dateObj;
-                                    scrollToMessage = unreadMessageObject;
-                                    scrollToMessagePosition = -10000;
-                                    unreadUpdated = false;
-                                    unread_to_load = 0;
-                                    scrollToTopUnReadOnResume = true;
-                                    addedCount++;
-                                }
-                            }
-                            if (unreadMessageObject != null) {
-                                unread_to_load++;
-                                unreadUpdated = true;
-                            }
-                            if (obj.isUnread()) {
-                                if (!paused) {
-                                    obj.setIsRead();
-                                }
-                                markAsRead = true;
-                            }
-                        }
-
                         messages.add(placeToPaste, obj);
                         addedCount++;
                         newUnreadMessageCount++;
@@ -3585,13 +3526,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                         }
                     }
 
-                    if (progressView != null) {
-                        progressView.setVisibility(View.INVISIBLE);
-                    }
                     if (chatAdapter != null) {
-                        if (unreadUpdated) {
-                            chatAdapter.updateRowWithMessageObject(unreadMessageObject);
-                        }
                         if (addedCount != 0) {
                             chatAdapter.notifyItemRangeInserted(chatAdapter.getItemCount() - placeToPaste, addedCount);
                         }
@@ -3626,16 +3561,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                         }
                     } else {
                         scrollToTopOnResume = true;
-                    }
-
-                    if (markAsRead) {
-                        if (paused) {
-                            readWhenResume = true;
-                            readWithDate = maxDate;
-                            readWithMid = minMessageId;
-                        } else {
-                            MessagesController.getInstance().markDialogAsRead(dialog_id, messages.get(0).getId(), minMessageId, maxDate, true, false);
-                        }
                     }
                 }
 
@@ -3707,10 +3632,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 }
             }
             if (messages.isEmpty()) {
-                if (!endReached && !loading) {
-                    if (progressView != null) {
-                        progressView.setVisibility(View.INVISIBLE);
-                    }
+                if (!endReached ) {
                     if (chatListView != null) {
                         chatListView.setEmptyView(null);
                     }
@@ -3719,7 +3641,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     maxDate = Integer.MIN_VALUE;
                     minDate = 0;
                     //MessagesController.getInstance().loadMessages(dialog_id, 30, 0, !cacheEndReached[0], minDate[0], classGuid, 0, 0, ChatObject.isChannel(currentChat), lastLoadIndex++);
-                    loading = true;
                 }
             }
             if (updated && chatAdapter != null) {
@@ -3997,17 +3918,9 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
             scrollToMessage = null;
         }
         paused = false;
-        if (readWhenResume && !messages.isEmpty()) {
-            for (MessageObject messageObject : messages) {
-                if (!messageObject.isUnread() && !messageObject.isOut()) {
-                    break;
-                }
-                if (!messageObject.isOut()) {
-                    messageObject.setIsRead();
-                }
-            }
+        if (readWhenResume ) {
             readWhenResume = false;
-            MessagesController.getInstance().markDialogAsRead(dialog_id, messages.get(0).getId(), readWithMid, readWithDate, true, false);
+            MrMailbox.markseenChat((int)dialog_id);
         }
         checkScrollForLoad(false);
         if (wasPaused) {
