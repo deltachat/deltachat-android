@@ -144,7 +144,6 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
             NotificationCenter.getInstance().addObserver(this, NotificationCenter.messageSendError);
             NotificationCenter.getInstance().addObserver(this, NotificationCenter.didSetPasscode);
             NotificationCenter.getInstance().addObserver(this, NotificationCenter.needReloadRecentDialogsSearch);
-            NotificationCenter.getInstance().addObserver(this, NotificationCenter.didLoadedReplyMessages);
             NotificationCenter.getInstance().addObserver(this, NotificationCenter.reloadHints);
         }
 
@@ -170,7 +169,6 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
             NotificationCenter.getInstance().removeObserver(this, NotificationCenter.messageSendError);
             NotificationCenter.getInstance().removeObserver(this, NotificationCenter.didSetPasscode);
             NotificationCenter.getInstance().removeObserver(this, NotificationCenter.needReloadRecentDialogsSearch);
-            NotificationCenter.getInstance().removeObserver(this, NotificationCenter.didLoadedReplyMessages);
             NotificationCenter.getInstance().removeObserver(this, NotificationCenter.reloadHints);
         }
         delegate = null;
@@ -785,8 +783,6 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
             if (dialogsSearchAdapter != null) {
                 dialogsSearchAdapter.loadRecentSearch();
             }
-        } else if (id == NotificationCenter.didLoadedReplyMessages) {
-            updateVisibleRows(0);
         } else if (id == NotificationCenter.reloadHints) {
             if (dialogsSearchAdapter != null) {
                 dialogsSearchAdapter.notifyDataSetChanged();
