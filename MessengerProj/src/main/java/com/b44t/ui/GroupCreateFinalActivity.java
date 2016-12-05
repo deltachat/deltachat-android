@@ -29,7 +29,6 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.b44t.messenger.AndroidUtilities;
-import com.b44t.messenger.ChatObject;
 import com.b44t.messenger.LocaleController;
 import com.b44t.messenger.MrContact;
 import com.b44t.messenger.MrMailbox;
@@ -62,13 +61,11 @@ public class GroupCreateFinalActivity extends BaseFragment implements Notificati
     private AvatarDrawable avatarDrawable;
     private AvatarUpdater avatarUpdater = new AvatarUpdater();
     private String nameToSet = null;
-    private int chatType = ChatObject.CHAT_TYPE_CHAT;
 
     private final static int done_button = 1;
 
     public GroupCreateFinalActivity(Bundle args) {
         super(args);
-        chatType = args.getInt("chatType", ChatObject.CHAT_TYPE_CHAT);
         avatarDrawable = new AvatarDrawable();
     }
 
@@ -232,7 +229,7 @@ public class GroupCreateFinalActivity extends BaseFragment implements Notificati
         }
 
         nameTextView = new EditText(context);
-        nameTextView.setHint(chatType == ChatObject.CHAT_TYPE_CHAT ? LocaleController.getString("EnterGroupNamePlaceholder", R.string.EnterGroupNamePlaceholder) : LocaleController.getString("EnterListName", R.string.EnterListName));
+        nameTextView.setHint(LocaleController.getString("EnterGroupNamePlaceholder", R.string.EnterGroupNamePlaceholder));
         if (nameToSet != null) {
             nameTextView.setText(nameToSet);
             nameToSet = null;

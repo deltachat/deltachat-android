@@ -43,7 +43,6 @@ import android.widget.TextView;
 
 import com.b44t.messenger.AndroidUtilities;
 import com.b44t.messenger.ApplicationLoader;
-import com.b44t.messenger.ChatObject;
 import com.b44t.messenger.ContactsController;
 import com.b44t.messenger.LocaleController;
 import com.b44t.messenger.MrContact;
@@ -233,7 +232,6 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
                     result.addAll(selectedContacts.keySet());
                     Bundle args = new Bundle();
                     args.putIntegerArrayList("result", result);
-                    args.putInt("chatType", ChatObject.CHAT_TYPE_CHAT);
                     presentFragment(new GroupCreateFinalActivity(args));
                 }
             }
