@@ -2105,13 +2105,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
             if (firstVisibleItem <= checkLoadCount && !loading) {
                 if (!endReached) {
                     loading = true;
-                    /*
-                    if (messagesByDays.size() != 0) {
-                        MessagesController.getInstance().loadMessages(dialog_id, 50, maxMessageId[0], !cacheEndReached[0], minDate[0], classGuid, 0, 0, ChatObject.isChannel(currentChat), lastLoadIndex++);
-                    } else {
-                        MessagesController.getInstance().loadMessages(dialog_id, 50, 0, !cacheEndReached[0], minDate[0], classGuid, 0, 0, ChatObject.isChannel(currentChat), lastLoadIndex++);
-                    }
-                    */
                 }
             }
             if (!loadingForward && firstVisibleItem + visibleItemCount >= totalItemCount - 10) {
@@ -3064,31 +3057,34 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         }
     }
 
+    private int createDateHeadlineIfNeeded(MessageObject msgDrawObj)
+    {
+        int createdRows = 0;
+
+        ArrayList<MessageObject> dayArray = messagesByDays.get(msgDrawObj.dateKey);
+        if (dayArray == null) {
+            dayArray = new ArrayList<>();
+            messagesByDays.put(msgDrawObj.dateKey, dayArray);
+            TLRPC.Message dateMsg = new TLRPC.Message();
+            dateMsg.message = LocaleController.formatDateChat(msgDrawObj.messageOwner.date);
+            dateMsg.id = 0;
+            dateMsg.date = msgDrawObj.messageOwner.date;
+            MessageObject dateObj = new MessageObject(dateMsg, null, false);
+            dateObj.type = 10;
+            dateObj.contentType = ROWTYPE_ACTION_CELL;
+            messages.add(0, dateObj);
+            createdRows++;
+        }
+
+        dayArray.add(0, msgDrawObj);
+
+        return createdRows;
+    }
+
     private void messagesDidLoaded()
     {
+        // init chat messages
         // should be called from the GUI thread only (as the original event was)
-
-
-        /* EDIT BY MR -- scroll to a specific message
-        if (waitingForReplyMessageLoad) {
-            boolean found = false;
-            for (int a = 0; a < messArr.size(); a++) {
-                if (messArr.get(a).getId() == startLoadFromMessageId) {
-                    found = true;
-                    break;
-                }
-            }
-            if (!found) {
-                startLoadFromMessageId = 0;
-                return;
-            }
-            int startLoadFrom = startLoadFromMessageId;
-            boolean needSelect = needSelectFromMessageId;
-            clearChatData();
-            startLoadFromMessageId = startLoadFrom;
-            needSelectFromMessageId = needSelect;
-        }
-        */
 
         final int fnid = (Integer) Integer.MAX_VALUE;
         final int last_unread_date = 0;
@@ -3131,6 +3127,9 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 MrMsg mrMsg = MrMailbox.getMsg(msglist[a]);
                 TLRPC.Message msg = mrMsg.get_TLRPC_Message();
                 MessageObject msgDrawObj = new MessageObject(msg, null, true);
+
+                createDateHeadlineIfNeeded(msgDrawObj);
+
                 messages.add(0, msgDrawObj);
                 messagesDict.put(msg.id, msgDrawObj);
             }
@@ -3187,25 +3186,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 }
 
                 messagesDict[loadIndex].put(obj.getId(), obj);
-                ArrayList<MessageObject> dayArray = messagesByDays.get(obj.dateKey);
-
-                if (dayArray == null) {
-                    dayArray = new ArrayList<>();
-                    messagesByDays.put(obj.dateKey, dayArray);
-                    TLRPC.Message dateMsg = new TLRPC.Message();
-                    dateMsg.message = LocaleController.formatDateChat(obj.messageOwner.date);
-                    dateMsg.id = 0;
-                    dateMsg.date = obj.messageOwner.date;
-                    MessageObject dateObj = new MessageObject(dateMsg, null, false);
-                    dateObj.type = 10;
-                    dateObj.contentType = 1;
-                    if (load_type == 1) {
-                        messages.add(0, dateObj);
-                    } else {
-                        messages.add(dateObj);
-                    }
-                    newRowsCount++;
-                }
 
                 newRowsCount++;
                 if (load_type == 1) {
@@ -3360,16 +3340,18 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
     public void didReceivedNotification(int id, final Object... args) {
         if( id == NotificationCenter.dialogsNeedReload ) {
             if( args.length >= 3 ) {
+                // add incoming messages
                 int evt_chat_id = (int) args[1];
                 int evt_msg_id = (int) args[2];
                 if (evt_chat_id == dialog_id && evt_msg_id > 0) {
                     MrMsg mrMsg = MrMailbox.getMsg(evt_msg_id);
                     TLRPC.Message msg = mrMsg.get_TLRPC_Message();
                     MessageObject msgDrawObj = new MessageObject(msg, null, true);
-                    messages.add(0, msgDrawObj);  // TODO: also add date, if needed
+                    createDateHeadlineIfNeeded(msgDrawObj);
+                    messages.add(0, msgDrawObj);
                     messagesDict.put(msg.id, msgDrawObj);
                     chatAdapter.notifyDataSetChanged();
-                    scrollToLastMessage(false); // TODO markseen
+                    scrollToLastMessage(false); // TODO: markseen
                 }
             }
         }
@@ -3418,6 +3400,8 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
             }
 
         } else if (id == NotificationCenter.didReceivedNewMessages) {
+
+            // add outgoing  messages just sent from the app
             long did = (Long) args[0];
             if (did == dialog_id) {
 
@@ -3555,20 +3539,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                         messagesDict.put(obj.getId(), obj);
 
                         // create date headline
-                        ArrayList<MessageObject> dayArray = messagesByDays.get(obj.dateKey);
-                        if (dayArray == null) {
-                            dayArray = new ArrayList<>();
-                            messagesByDays.put(obj.dateKey, dayArray);
-                            TLRPC.Message dateMsg = new TLRPC.Message();
-                            dateMsg.message = LocaleController.formatDateChat(obj.messageOwner.date);
-                            dateMsg.id = 0;
-                            dateMsg.date = obj.messageOwner.date;
-                            MessageObject dateObj = new MessageObject(dateMsg, null, false);
-                            dateObj.type = 10;
-                            dateObj.contentType = ROWTYPE_ACTION_CELL;
-                            messages.add(placeToPaste, dateObj);
-                            addedCount++;
-                        }
+                        addedCount += createDateHeadlineIfNeeded(obj);
 
                         if (!obj.isOut()) {
                             if (paused && placeToPaste == 0) {
@@ -3605,7 +3576,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                             }
                         }
 
-                        dayArray.add(0, obj);
                         messages.add(placeToPaste, obj);
                         addedCount++;
                         newUnreadMessageCount++;
