@@ -148,11 +148,8 @@ public class MrMailbox {
         return new MrChat(MrMailboxGetChat(m_hMailbox, contact_id));
     }
 
-    public native static int markseenMsg(int id); // TODO: needs to be implemented
-
-    public static int markseenChat(int id) {
-        return MrMailboxMarkseenChat(m_hMailbox, id);
-    }
+    public native static int    markseenMsg        (int msg_id);
+    public native static int    markseenChat       (int chat_id);
 
     public static int getChatIdByContactId (int contact_id) {
         return MrMailboxGetChatIdByContactId(m_hMailbox, contact_id);
@@ -180,7 +177,6 @@ public class MrMailbox {
 
     private native static long    MrMailboxGetChatlist       (long hMailbox); // returns hChatlist which must be unref'd after usage
     private native static long    MrMailboxGetChat           (long hMailbox, int chat_id); // return hChat which must be unref'd after usage
-    private native static int     MrMailboxMarkseenChat      (long hMailbox, int id);
     private native static int     MrMailboxGetChatIdByContactId (long hMailbox, int contact_id);
     private native static int     MrMailboxCreateChatByContactId(long hMailbox, int contact_id); // returns chat_id
     private native static int[]   MrMailboxGetChatMsgs       (long hMailbox, int chat_id);

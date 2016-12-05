@@ -285,9 +285,15 @@ JNIEXPORT jint Java_com_b44t_messenger_MrMailbox_MrMailboxGetChatIdByContactId(J
 }
 
 
-JNIEXPORT jint Java_com_b44t_messenger_MrMailbox_MrMailboxMarkseenChat(JNIEnv *env, jclass c, jlong hMailbox, jint chat_id)
+JNIEXPORT jint Java_com_b44t_messenger_MrMailbox_markseenMsg(JNIEnv *env, jclass cls, jint msg_id)
 {
-	return (jlong)mrmailbox_markseen_chat((mrmailbox_t*)hMailbox, chat_id);
+	return (jint)mrmailbox_markseen_msg(get_mrmailbox_t(env, cls), msg_id);
+}
+
+
+JNIEXPORT jint Java_com_b44t_messenger_MrMailbox_markseenChat(JNIEnv *env, jclass cls, jint chat_id)
+{
+	return (jlong)mrmailbox_markseen_chat(get_mrmailbox_t(env, cls), chat_id);
 }
 
 

@@ -3351,7 +3351,8 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     messages.add(0, msgDrawObj);
                     messagesDict.put(msg.id, msgDrawObj);
                     chatAdapter.notifyDataSetChanged();
-                    scrollToLastMessage(false); // TODO: markseen
+                    scrollToLastMessage(false);
+                    MrMailbox.markseenMsg(evt_msg_id);
                 }
             }
         }
