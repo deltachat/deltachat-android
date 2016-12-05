@@ -50,7 +50,6 @@ public class MessageObject {
     public int type = 1000;
     public int contentType; // one of ChatActivity.ROWTYPE_MESSAGE_CELL, .ROWTYPE_ACTION_CELL or .ROWTYPE_UNREAD_CELL
     public String dateKey;
-    public String monthKey;
     public boolean deleted;
     public float audioProgress;
     public int audioProgressSec;
@@ -254,7 +253,6 @@ public class MessageObject {
         int dateYear = rightNow.get(Calendar.YEAR);
         int dateMonth = rightNow.get(Calendar.MONTH);
         dateKey = String.format("%d_%02d_%02d", dateYear, dateMonth, dateDay);
-        monthKey = String.format("%d_%02d", dateYear, dateMonth);
 
         if (messageOwner.message != null && messageOwner.id < 0 && messageOwner.message.length() > 6 && isVideo()) {
             videoEditedInfo = new VideoEditedInfo();

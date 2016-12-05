@@ -216,7 +216,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
     private int newUnreadMessageCount;
 
     private HashMap<Integer, MessageObject> messagesDict = new HashMap<>();
-    private HashMap<String, ArrayList<MessageObject>> messagesByDays = new HashMap<>();
+    private HashMap<String, ArrayList<MessageObject>> messagesByDays = new HashMap<>(); // used to add/remove date headlines
     protected ArrayList<MessageObject> messages = new ArrayList<>();
     private int maxMessageId = Integer.MAX_VALUE;
     private int minMessageId = Integer.MIN_VALUE;
@@ -3498,7 +3498,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     boolean unreadUpdated = true;
                     int oldCount = messages.size();
                     int addedCount = 0;
-                    HashMap<String, ArrayList<MessageObject>> webpagesToReload = null;
                     int placeToPaste = -1;
                     for (int a = 0; a < arr.size(); a++) {
                         MessageObject obj = arr.get(a);
@@ -3554,6 +3553,8 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                         }
                         maxDate = Math.max(maxDate, obj.messageOwner.date);
                         messagesDict.put(obj.getId(), obj);
+
+                        // create date headline
                         ArrayList<MessageObject> dayArray = messagesByDays.get(obj.dateKey);
                         if (dayArray == null) {
                             dayArray = new ArrayList<>();
@@ -3568,6 +3569,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                             messages.add(placeToPaste, dateObj);
                             addedCount++;
                         }
+
                         if (!obj.isOut()) {
                             if (paused && placeToPaste == 0) {
                                 if (!scrollToTopUnReadOnResume && unreadMessageObject != null) {
@@ -3611,9 +3613,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                             updateChat = true;
                         }
                     }
-                    if (webpagesToReload != null) {
-                        MessagesController.getInstance().reloadWebPages(dialog_id, webpagesToReload);
-                    }
 
                     if (progressView != null) {
                         progressView.setVisibility(View.INVISIBLE);
@@ -3637,9 +3636,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                         if (endReached) {
                             lastVisible++;
                         }
-                        /*if (chatAdapter.isBot) {
-                            oldCount++;
-                        }*/
                         if (lastVisible >= oldCount || hasFromMe) {
                             newUnreadMessageCount = 0;
                             if (!firstLoading) {
@@ -3722,6 +3718,8 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     if (index != -1) {
                         messages.remove(index);
                         messagesDict.remove(ids);
+
+                        // remove date headline if this was the last message with that date
                         ArrayList<MessageObject> dayArr = messagesByDays.get(obj.dateKey);
                         if (dayArr != null) {
                             dayArr.remove(obj);
@@ -3732,6 +3730,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                                 }
                             }
                         }
+
                         updated = true;
                     }
                 }

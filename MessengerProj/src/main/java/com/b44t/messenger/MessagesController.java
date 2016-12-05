@@ -230,63 +230,7 @@ public class MessagesController implements NotificationCenter.NotificationCenter
     public void sendTyping(final long dialog_id, final int action, int classGuid) {
     }
 
-    public void reloadWebPages(final long dialog_id, HashMap<String, ArrayList<MessageObject>> webpagesToReload) {
-        for (HashMap.Entry<String, ArrayList<MessageObject>> entry : webpagesToReload.entrySet()) {
-            final String url = entry.getKey();
-            final ArrayList<MessageObject> messages = entry.getValue();
-            ArrayList<MessageObject> arrayList = reloadingWebpages.get(url);
-            if (arrayList == null) {
-                arrayList = new ArrayList<>();
-                reloadingWebpages.put(url, arrayList);
-            }
-            arrayList.addAll(messages);
-            /*TLRPC.TL_messages_getWebPagePreview req = new TLRPC.TL_messages_getWebPagePreview();
-            req.message = url;
-            ConnectionsManager.getInstance().sendRequest(req, new RequestDelegate() {
-                @Override
-                public void run(final TLObject response, final TLRPC.TL_error error) {
-                    AndroidUtilities.runOnUIThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            ArrayList<MessageObject> arrayList = reloadingWebpages.remove(url);
-                            if (arrayList == null) {
-                                return;
-                            }
-                            TLRPC.TL_messages_messages messagesRes = new TLRPC.TL_messages_messages();
-                            if (!(response instanceof TLRPC.TL_messageMediaWebPage)) {
-                                for (int a = 0; a < arrayList.size(); a++) {
-                                    arrayList.get(a).messageOwner.media.webpage = new TLRPC.TL_webPageEmpty();
-                                    messagesRes.messages.add(arrayList.get(a).messageOwner);
-                                }
-                            } else {
-                                TLRPC.TL_messageMediaWebPage media = (TLRPC.TL_messageMediaWebPage) response;
-                                if (media.webpage instanceof TLRPC.TL_webPage || media.webpage instanceof TLRPC.TL_webPageEmpty) {
-                                    for (int a = 0; a < arrayList.size(); a++) {
-                                        arrayList.get(a).messageOwner.media.webpage = media.webpage;
-                                        if (a == 0) {
-                                            ImageLoader.saveMessageThumbs(arrayList.get(a).messageOwner);
-                                        }
-                                        messagesRes.messages.add(arrayList.get(a).messageOwner);
-                                    }
-                                } else {
-                                    reloadingWebpagesPending.put(media.webpage.id, arrayList);
-                                }
-                            }
-                            if (!messagesRes.messages.isEmpty()) {
-                                //MessagesStorage.getInstance().putMessages(messagesRes, dialog_id, -2, 0, false);
-                                NotificationCenter.getInstance().postNotificationName(NotificationCenter.replaceMessagesObjects, dialog_id, arrayList);
-                            }
-                        }
-                    });
-                }
-            });*/
-        }
-    }
-
     public void markMessageContentAsRead(final MessageObject messageObject) {
-    }
-
-    public void markMessageAsRead(final long dialog_id, final long random_id, int ttl) {
     }
 
     public void markDialogAsRead(final long dialog_id, final int max_id, final int max_positive_id, final int max_date, final boolean was, final boolean popup) {
