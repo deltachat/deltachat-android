@@ -11,12 +11,9 @@ package com.b44t.messenger;
 import android.app.Activity;
 import android.content.SharedPreferences;
 
-import com.b44t.messenger.query.DraftQuery;
 import com.b44t.ui.ActionBar.BaseFragment;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.HashMap;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -95,7 +92,6 @@ public class MessagesController implements NotificationCenter.NotificationCenter
         } else {
             inputUser = new TLRPC.TL_inputUser();
             inputUser.user_id = user.id;
-            inputUser.access_hash = user.access_hash;
         }
         return inputUser;
     }
@@ -108,12 +104,8 @@ public class MessagesController implements NotificationCenter.NotificationCenter
     public static TLRPC.InputPeer getInputPeer(int id) {
         TLRPC.InputPeer inputPeer;
         {
-            TLRPC.User user = getInstance().getUser(id);
             inputPeer = new TLRPC.TL_inputPeerUser();
             inputPeer.user_id = id;
-            if (user != null) {
-                inputPeer.access_hash = user.access_hash;
-            }
         }
         return inputPeer;
     }

@@ -50,7 +50,6 @@ import com.b44t.messenger.MrContact;
 import com.b44t.messenger.MrMailbox;
 import com.b44t.messenger.SendMessagesHelper;
 import com.b44t.messenger.UserObject;
-import com.b44t.messenger.query.SharedMediaQuery;
 import com.b44t.messenger.ApplicationLoader;
 import com.b44t.messenger.support.widget.LinearLayoutManager;
 import com.b44t.messenger.support.widget.RecyclerView;
@@ -204,14 +203,6 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
             avatarUpdater.parentFragment = this;
         } else {
             return false;
-        }
-
-        if (dialog_id != 0) {
-            SharedMediaQuery.getMediaCount(dialog_id, SharedMediaQuery.MEDIA_PHOTOVIDEO, classGuid, true);
-        } else if (user_id != 0) {
-            SharedMediaQuery.getMediaCount(user_id, SharedMediaQuery.MEDIA_PHOTOVIDEO, classGuid, true);
-        } else if (chat_id > 0) {
-            SharedMediaQuery.getMediaCount(-chat_id, SharedMediaQuery.MEDIA_PHOTOVIDEO, classGuid, true);
         }
 
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.updateInterfaces);

@@ -147,7 +147,6 @@ public class TLRPC {
 
 	public static class TL_messages_stickerSet extends TLObject {
 		public StickerSet set;
-		public ArrayList<TL_stickerPack> packs = new ArrayList<>();
 		public ArrayList<Document> documents = new ArrayList<>();
 	}
 
@@ -180,7 +179,6 @@ public class TLRPC {
 
 	public static class InputUser extends TLObject {
 		public int user_id;
-		public long access_hash;
 	}
 
 	public static class TL_inputUserEmpty extends InputUser {
@@ -236,7 +234,6 @@ public class TLRPC {
 		public String first_name;
 		public String last_name;
 		public String username;
-		public final long access_hash = 0;
         public String phone;
 		public UserProfilePhoto photo;
 		public UserStatus status;
@@ -380,7 +377,6 @@ public class TLRPC {
 
 	public static class InputStickerSet extends TLObject {
 		public long id;
-		public long access_hash;
 		public String short_name;
 	}
 
@@ -466,7 +462,6 @@ public class TLRPC {
 
 	public static class StickerSet extends TLObject {
 		public long id;
-		public long access_hash;
 		public String title;
 		public int flags;
 		public boolean installed;
@@ -474,27 +469,6 @@ public class TLRPC {
 		public boolean official;
 		public int count;
 		public int hash;
-	}
-
-	public static class MessagesFilter extends TLObject {
-	}
-
-	public static class TL_inputMessagesFilterDocument extends MessagesFilter {
-	}
-
-	public static class TL_inputMessagesFilterMusic extends MessagesFilter {
-	}
-
-	public static class TL_inputMessagesFilterUrl extends MessagesFilter {
-	}
-
-	public static class TL_inputMessagesFilterVoice extends MessagesFilter {
-	}
-
-	public static class TL_inputMessagesFilterEmpty extends MessagesFilter {
-	}
-
-	public static class TL_inputMessagesFilterPhotoVideo extends MessagesFilter {
 	}
 
 	public static class TL_messageFwdHeader extends TLObject {
@@ -559,10 +533,6 @@ public class TLRPC {
 	public static class TL_wallPaperSolid extends WallPaper {
 	}
 
-	public static class TL_stickerPack extends TLObject {
-		public ArrayList<Long> documents = new ArrayList<>();
-	}
-
 	public static class InputPhoto extends TLObject {
 		public long id;
 		public long access_hash;
@@ -573,7 +543,6 @@ public class TLRPC {
 
 	public static class InputPeer extends TLObject {
 		public int user_id;
-		public long access_hash;
 		public int chat_id;
 		public int channel_id;
 	}
@@ -582,16 +551,6 @@ public class TLRPC {
 	}
 
 	public static class TL_inputPeerEmpty extends InputPeer {
-	}
-
-	public static class TL_messages_search extends TLObject {
-		public int flags;
-		public InputPeer peer;
-		public String q;
-		public MessagesFilter filter;
-		public int offset;
-		public int max_id;
-		public int limit;
 	}
 
 	public static class TL_messages_searchGlobal extends TLObject {

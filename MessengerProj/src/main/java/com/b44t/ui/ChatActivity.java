@@ -68,8 +68,6 @@ import com.b44t.messenger.SendMessagesHelper;
 import com.b44t.messenger.Utilities;
 import com.b44t.messenger.VideoEditedInfo;
 import com.b44t.messenger.browser.Browser;
-import com.b44t.messenger.query.DraftQuery;
-import com.b44t.messenger.query.StickersQuery;
 import com.b44t.messenger.support.widget.GridLayoutManager;
 import com.b44t.messenger.support.widget.LinearLayoutManager;
 import com.b44t.messenger.support.widget.RecyclerView;
@@ -2038,7 +2036,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                             }
                             SendMessagesHelper.prepareSendingPhotos(photos, null, dialog_id, replyingMessageObject, captions);
                             showReplyPanel(false, null, null, null, false, true);
-                            DraftQuery.cleanDraft(dialog_id);
+                            m_mrChat.cleanDraft();
                         }
                         return;
                     } else if (chatAttachAlert != null) {
@@ -2288,7 +2286,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     SendMessagesHelper.prepareSendingPhotos(photos, null, dialog_id, replyingMessageObject, captions);
                     SendMessagesHelper.prepareSendingPhotosSearch(webPhotos, dialog_id, replyingMessageObject);
                     showReplyPanel(false, null, null, null, false, true);
-                    DraftQuery.cleanDraft(dialog_id);
+                    m_mrChat.cleanDraft();
                 }
 
                 @Override
@@ -2317,7 +2315,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     } else {
                         SendMessagesHelper.prepareSendingVideo(path, 0, 0, 0, 0, null, dialog_id, replyingMessageObject);
                         showReplyPanel(false, null, null, null, false, true);
-                        DraftQuery.cleanDraft(dialog_id);
+                        m_mrChat.cleanDraft();
                         return true;
                     }
                 }
@@ -2368,7 +2366,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     activity.finishFragment();
                     SendMessagesHelper.prepareSendingDocuments(files, files, null, null, dialog_id, replyingMessageObject);
                     showReplyPanel(false, null, null, null, false, true);
-                    DraftQuery.cleanDraft(dialog_id);
+                    m_mrChat.cleanDraft();
                 }
 
                 @Override
@@ -2394,7 +2392,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 public void didSelectAudio(ArrayList<MessageObject> audios) {
                     SendMessagesHelper.prepareSendingAudioDocuments(audios, dialog_id, replyingMessageObject);
                     showReplyPanel(false, null, null, null, false, true);
-                    DraftQuery.cleanDraft(dialog_id);
+                    m_mrChat.cleanDraft();
                 }
             });
             presentFragment(fragment);
@@ -2846,11 +2844,11 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     } else if (messageObject.isSticker()) {
                         TLRPC.InputStickerSet inputStickerSet = messageObject.getInputStickerSet();
                         if (inputStickerSet instanceof TLRPC.TL_inputStickerSetID) {
-                            if (!StickersQuery.isStickerPackInstalled(inputStickerSet.id)) {
+                            if (!StickersAdapter.isStickerPackInstalled(inputStickerSet.id)) {
                                 return 7;
                             }
                         } else if (inputStickerSet instanceof TLRPC.TL_inputStickerSetShortName) {
-                            if (!StickersQuery.isStickerPackInstalled(inputStickerSet.short_name)) {
+                            if (!StickersAdapter.isStickerPackInstalled(inputStickerSet.short_name)) {
                                 return 7;
                             }
                         }
@@ -3027,14 +3025,14 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 videoEditedInfo.originalPath = videoPath;
                 SendMessagesHelper.prepareSendingVideo(videoPath, estimatedSize, estimatedDuration, resultWidth, resultHeight, videoEditedInfo, dialog_id, replyingMessageObject);
                 showReplyPanel(false, null, null, null, false, true);
-                DraftQuery.cleanDraft(dialog_id);
+                m_mrChat.cleanDraft();
             }
         });
 
         if (parentLayout == null || !fragment.onFragmentCreate()) {
             SendMessagesHelper.prepareSendingVideo(videoPath, 0, 0, 0, 0, null, dialog_id, replyingMessageObject);
             showReplyPanel(false, null, null, null, false, true);
-            DraftQuery.cleanDraft(dialog_id);
+            m_mrChat.cleanDraft();
             return false;
         }
         parentLayout.presentFragment(fragment, removeLast, !animated, true);
@@ -3112,7 +3110,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     SendMessagesHelper.prepareSendingPhoto(null, uri, dialog_id, replyingMessageObject, null);
                 }
                 showReplyPanel(false, null, null, null, false, true);
-                DraftQuery.cleanDraft(dialog_id);
+                m_mrChat.cleanDraft();
             } else if (requestCode == 2) {
                 String videoPath = null;
                 FileLog.d("messenger", "pic path " + currentPicturePath);
@@ -3152,7 +3150,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 } else {
                     SendMessagesHelper.prepareSendingVideo(videoPath, 0, 0, 0, 0, null, dialog_id, replyingMessageObject);
                     showReplyPanel(false, null, null, null, false, true);
-                    DraftQuery.cleanDraft(dialog_id);
+                    m_mrChat.cleanDraft();
                 }
             } else if (requestCode == 21) {
                 if (data == null || data.getData() == null) {
@@ -3187,7 +3185,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 }
                 SendMessagesHelper.prepareSendingDocument(tempPath, originalPath, null, null, dialog_id, replyingMessageObject);
                 showReplyPanel(false, null, null, null, false, true);
-                DraftQuery.cleanDraft(dialog_id);
+                m_mrChat.cleanDraft();
             } else if (requestCode == 31) {
                 if (data == null || data.getData() == null) {
                     showAttachmentError();
@@ -3211,7 +3209,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                         }
                         if (sent) {
                             showReplyPanel(false, null, null, null, false, true);
-                            DraftQuery.cleanDraft(dialog_id);
+                            m_mrChat.cleanDraft();
                         }
                     }
                 } finally {
@@ -4416,7 +4414,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
             }
             chatActivityEnterView.setFieldFocused(false);
         }
-        DraftQuery.saveDraft(dialog_id, draftMessage, replyingMessageObject != null ? replyingMessageObject.messageOwner : null);
+        m_mrChat.saveDraft(draftMessage, replyingMessageObject != null ? replyingMessageObject.messageOwner : null);
 
         MessagesController.getInstance().cancelTyping(0, dialog_id);
     }
@@ -4425,30 +4423,12 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         if (chatActivityEnterView == null) {
             return;
         }
-        TLRPC.DraftMessage draftMessage = DraftQuery.getDraft(dialog_id);
+        TLRPC.DraftMessage draftMessage = m_mrChat.getDraftMessageObj();
         if (chatActivityEnterView.getFieldText() == null) {
             if (draftMessage != null) {
                 chatActivityEnterView.setWebPage(null, !draftMessage.no_webpage);
                 CharSequence message;
-                /*if (!draftMessage.entities.isEmpty()) {
-                    SpannableStringBuilder stringBuilder = SpannableStringBuilder.valueOf(draftMessage.message);
-                    for (int a = 0; a < draftMessage.entities.size(); a++) {
-                        TLRPC.MessageEntity entity = draftMessage.entities.get(a);
-                        if (entity instanceof TLRPC.TL_inputMessageEntityMentionName || entity instanceof TLRPC.TL_messageEntityMentionName) {
-                            int user_id;
-                            if (entity instanceof TLRPC.TL_inputMessageEntityMentionName) {
-                                user_id = ((TLRPC.TL_inputMessageEntityMentionName) entity).user_id.user_id;
-                            } else {
-                                user_id = ((TLRPC.TL_messageEntityMentionName) entity).user_id;
-                            }
-                            if (entity.offset + entity.length < stringBuilder.length() && stringBuilder.charAt(entity.offset + entity.length) == ' ') {
-                                entity.length++;
-                            }
-                            stringBuilder.setSpan(new URLSpanUserMention("" + user_id), entity.offset, entity.offset + entity.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-                        }
-                    }
-                    message = stringBuilder;
-                } else*/ {
+                {
                     message = draftMessage.message;
                 }
                 chatActivityEnterView.setFieldText(message);
@@ -5151,11 +5131,11 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         if (photoEntry.imagePath != null) {
             SendMessagesHelper.prepareSendingPhoto(photoEntry.imagePath, null, dialog_id, replyingMessageObject, photoEntry.caption);
             showReplyPanel(false, null, null, null, false, true);
-            DraftQuery.cleanDraft(dialog_id);
+            m_mrChat.cleanDraft();
         } else if (photoEntry.path != null) {
             SendMessagesHelper.prepareSendingPhoto(photoEntry.path, null, dialog_id, replyingMessageObject, photoEntry.caption);
             showReplyPanel(false, null, null, null, false, true);
-            DraftQuery.cleanDraft(dialog_id);
+            m_mrChat.cleanDraft();
         }
     }
 

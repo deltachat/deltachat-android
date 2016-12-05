@@ -19,8 +19,8 @@ import android.widget.TextView;
 
 import com.b44t.messenger.AndroidUtilities;
 import com.b44t.messenger.Emoji;
-import com.b44t.messenger.query.StickersQuery;
 import com.b44t.messenger.TLRPC;
+import com.b44t.ui.Adapters.StickersAdapter;
 import com.b44t.ui.Components.BackupImageView;
 import com.b44t.ui.Components.LayoutHelper;
 
@@ -28,7 +28,6 @@ public class StickerEmojiCell extends FrameLayout {
 
     private BackupImageView imageView;
     private TLRPC.Document sticker;
-    private TextView emojiTextView;
     private float alpha = 1;
     private boolean changingAlpha;
     private long lastUpdateTime;
@@ -43,10 +42,6 @@ public class StickerEmojiCell extends FrameLayout {
         imageView = new BackupImageView(context);
         imageView.setAspectFit(true);
         addView(imageView, LayoutHelper.createFrame(66, 66, Gravity.CENTER));
-
-        emojiTextView = new TextView(context);
-        emojiTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
-        addView(emojiTextView, LayoutHelper.createFrame(28, 28, Gravity.BOTTOM | Gravity.RIGHT));
     }
 
     public TLRPC.Document getSticker() {
@@ -58,26 +53,6 @@ public class StickerEmojiCell extends FrameLayout {
             sticker = document;
             if (document.thumb != null) {
                 imageView.setImage(document.thumb.location, null, "webp", null);
-            }
-
-            if (showEmoji) {
-                boolean set = false;
-                for (int a = 0; a < document.attributes.size(); a++) {
-                    TLRPC.DocumentAttribute attribute = document.attributes.get(a);
-                    if (attribute instanceof TLRPC.TL_documentAttributeSticker) {
-                        if (attribute.alt != null && attribute.alt.length() > 0) {
-                            emojiTextView.setText(Emoji.replaceEmoji(attribute.alt, emojiTextView.getPaint().getFontMetricsInt(), AndroidUtilities.dp(16), false));
-                            set = true;
-                        }
-                        break;
-                    }
-                }
-                if (!set) {
-                    emojiTextView.setText(Emoji.replaceEmoji(StickersQuery.getEmojiForSticker(sticker.id), emojiTextView.getPaint().getFontMetricsInt(), AndroidUtilities.dp(16), false));
-                }
-                emojiTextView.setVisibility(VISIBLE);
-            } else {
-                emojiTextView.setVisibility(INVISIBLE);
             }
         }
     }

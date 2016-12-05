@@ -17,7 +17,6 @@ import android.view.ViewGroup;
 import com.b44t.messenger.FileLog;
 import com.b44t.messenger.NotificationCenter;
 import com.b44t.messenger.Utilities;
-import com.b44t.messenger.query.StickersQuery;
 import com.b44t.messenger.support.widget.RecyclerView;
 import com.b44t.messenger.FileLoader;
 import com.b44t.messenger.TLRPC;
@@ -54,7 +53,7 @@ public class StickersAdapter extends RecyclerView.Adapter implements Notificatio
     public StickersAdapter(Context context, StickersAdapterDelegate delegate) {
         mContext = context;
         this.delegate = delegate;
-        StickersQuery.checkStickers();
+        //StickersQuery.checkStickers();
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.FileDidLoaded);
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.FileDidFailedLoad);
     }
@@ -108,7 +107,7 @@ public class StickersAdapter extends RecyclerView.Adapter implements Notificatio
                 }
             }
             lastSticker = emoji.toString();
-            HashMap<String, ArrayList<TLRPC.Document>> allStickers = StickersQuery.getAllStickers();
+            HashMap<String, ArrayList<TLRPC.Document>> allStickers = getAllStickers();
             if (allStickers != null) {
                 ArrayList<TLRPC.Document> newStickers = allStickers.get(lastSticker);
                 if (stickers != null && newStickers == null) {
@@ -208,5 +207,36 @@ public class StickersAdapter extends RecyclerView.Adapter implements Notificatio
             side = 1;
         }
         ((StickerCell) viewHolder.itemView).setSticker(stickers.get(i), side);
+    }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    // was: StickersQuery
+
+    public static TLRPC.Document getStickerById(long id) {
+        return null;
+    }
+
+    public static TLRPC.TL_messages_stickerSet getStickerSetByName(String name) {
+        return null;
+    }
+
+    public static TLRPC.TL_messages_stickerSet getStickerSetById(Long id) {
+        return null;
+    }
+
+    public static HashMap<String, ArrayList<TLRPC.Document>> getAllStickers() {
+        return null;
+    }
+
+    public static ArrayList<TLRPC.TL_messages_stickerSet> getStickerSets() {
+        return new ArrayList<>();
+    }
+
+    public static boolean isStickerPackInstalled(long id) {
+        return false;
+    }
+
+    public static boolean isStickerPackInstalled(String name) {
+        return false;
     }
 }

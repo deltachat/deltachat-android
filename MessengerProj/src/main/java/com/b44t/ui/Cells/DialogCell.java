@@ -28,12 +28,10 @@ import com.b44t.messenger.AndroidUtilities;
 import com.b44t.messenger.LocaleController;
 import com.b44t.messenger.MessageObject;
 import com.b44t.messenger.MrChat;
-import com.b44t.messenger.MrChatlist;
-import com.b44t.messenger.MrMailbox; // EDIT BY MR
+import com.b44t.messenger.MrMailbox;
 import com.b44t.messenger.FileLog;
 import com.b44t.messenger.MrMsg;
 import com.b44t.messenger.MrPoortext;
-import com.b44t.messenger.query.DraftQuery;
 import com.b44t.messenger.TLRPC;
 import com.b44t.messenger.Emoji;
 import com.b44t.messenger.MessagesController;
@@ -82,7 +80,6 @@ public class DialogCell extends BaseCell {
     private TLRPC.User user = null;
     private TLRPC.Chat chat = null;
     private CharSequence lastPrintString = null;
-    private TLRPC.DraftMessage draftMessage;
 
     public boolean useSeparator = false;
 
@@ -551,13 +548,12 @@ public class DialogCell extends BaseCell {
     public void checkCurrentDialogIndex() {
         if (index < MrMailbox.m_currChatlist.getCnt()) { // EDIT BY MR - was: index < getDialogsArray().size()
             TLRPC.TL_dialog dialog = MrMailbox.m_currChatlist.get_TLRPC_TL_dialog(index); // EDIT BY MR - was: getDialogsArray().get(index);
-            TLRPC.DraftMessage newDraftMessage = DraftQuery.getDraft(currentDialogId);
             MessageObject newMessageObject = MessagesController.getInstance().dialogMessage.get(dialog.id);
             if (currentDialogId != dialog.id ||
                     message != null && message.getId() != dialog.top_message ||
                     unreadCount != dialog.unread_count ||
                     message != newMessageObject ||
-                    message == null && newMessageObject != null || newDraftMessage != draftMessage) {
+                    message == null && newMessageObject != null ) {
                 currentDialogId = dialog.id;
                 update(0);
             }

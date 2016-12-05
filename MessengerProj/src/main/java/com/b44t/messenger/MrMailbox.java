@@ -279,4 +279,22 @@ public class MrMailbox {
     {
         m_currChatlist = getChatlist();
     }
+
+    public final static int MEDIA_PHOTOVIDEO = 0;
+    public static void getMediaCount(final long uid, final int type, final int classGuid, boolean fromCache) {
+        Utilities.globalQueue.postRunnable(new Runnable() {
+            @Override
+            public void run() {
+                int[] media = new int[0];
+                if( type == MEDIA_PHOTOVIDEO ) {
+                    media = MrMailbox.getChatMedia((int)uid, MrMsg.MR_MSG_IMAGE, MrMsg.MR_MSG_VIDEO);
+                }
+
+                NotificationCenter.getInstance().postNotificationName(NotificationCenter.mediaCountDidLoaded,
+                        uid, media.length, false /*not from cache*/, type, media);
+
+
+            }
+        });
+    }
 }

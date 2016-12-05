@@ -19,7 +19,6 @@ import android.webkit.MimeTypeMap;
 import android.widget.Toast;
 
 import com.b44t.messenger.audioinfo.AudioInfo;
-import com.b44t.messenger.query.DraftQuery;
 
 import java.io.File;
 import java.io.RandomAccessFile;
@@ -755,7 +754,7 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
             if (type == 0 /*|| type == 9 && message != null && encryptedChat != null*/ )
             {
                 newMsg.id = mrChat.sendText(newMsg.message);
-                DraftQuery.cleanDraft(peer);
+                mrChat.cleanDraft();
 
                 MrMailbox.reloadMainChatlist();
             }

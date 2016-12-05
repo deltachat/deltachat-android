@@ -51,7 +51,6 @@ import android.telephony.PhoneStateListener;
 import android.telephony.TelephonyManager;
 
 import com.b44t.messenger.audioinfo.AudioInfo;
-import com.b44t.messenger.query.SharedMediaQuery;
 import com.b44t.messenger.video.InputSurface;
 import com.b44t.messenger.video.MP4Builder;
 import com.b44t.messenger.video.Mp4Movie;
@@ -1990,7 +1989,7 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
                 currentPlaylistNum = 0;
             }
             if (loadMusic) {
-                SharedMediaQuery.loadMusic(current.getDialogId(), playlist.get(0).getId());
+                //SharedMediaQuery.loadMusic(current.getDialogId(), playlist.get(0).getId());
             }
         }
         return playAudio(current);

@@ -27,6 +27,8 @@
 
 package com.b44t.messenger;
 
+import android.text.TextUtils;
+
 public class MrChat {
 
     public final static int      MR_CHAT_UNDEFINED          =   0;
@@ -130,5 +132,33 @@ public class MrChat {
 
     public long GetCPtr() {
         return m_hChat;
+    }
+
+    public TLRPC.DraftMessage getDraftMessageObj() {
+        if( getId() == 0 ) {
+            return null;
+        }
+        TLRPC.DraftMessage ret = new TLRPC.DraftMessage();
+        ret.message = getDraft();
+        if( ret.message==null || ret.message.isEmpty() ) {
+            return null;
+        }
+        ret.date = (int)getDraftTimestamp();
+        ret.reply_to_msg_id = getDraftReplyToMsgId();
+        return ret;
+    }
+
+    public void saveDraft(CharSequence message, TLRPC.Message replyToMessage) {
+        if( message == null || TextUtils.isEmpty(message) ) {
+            setDraft(null, 0);
+        }
+        else {
+            setDraft(message.toString(), 0);
+        }
+    }
+
+    public void cleanDraft()
+    {
+        setDraft(null, 0);
     }
 }

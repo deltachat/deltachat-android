@@ -47,12 +47,12 @@ import com.b44t.messenger.LocaleController;
 import com.b44t.messenger.MediaController;
 import com.b44t.messenger.NotificationCenter;
 import com.b44t.messenger.Utilities;
-import com.b44t.messenger.query.StickersQuery;
 import com.b44t.messenger.FileLog;
 import com.b44t.messenger.R;
 import com.b44t.messenger.support.widget.GridLayoutManager;
 import com.b44t.messenger.support.widget.RecyclerView;
 import com.b44t.messenger.TLRPC;
+import com.b44t.ui.Adapters.StickersAdapter;
 import com.b44t.ui.Cells.ContextLinkCell;
 import com.b44t.ui.Cells.EmptyCell;
 import com.b44t.ui.Cells.StickerEmojiCell;
@@ -582,7 +582,7 @@ public class EmojiView extends FrameLayout implements NotificationCenter.Notific
         }
 
         if (showStickers) {
-            StickersQuery.checkStickers();
+            //StickersQuery.checkStickers();
             stickersGridView = new GridView(context) {
                 @Override
                 public boolean onInterceptTouchEvent(MotionEvent event) {
@@ -1162,13 +1162,13 @@ public class EmojiView extends FrameLayout implements NotificationCenter.Notific
     }
 
     private void sortStickers() {
-        if (StickersQuery.getStickerSets().isEmpty()) {
+        if (StickersAdapter.getStickerSets().isEmpty()) {
             recentStickers.clear();
             return;
         }
         recentStickers.clear();
         for (int a = 0; a < newRecentStickers.size(); a++) {
-            TLRPC.Document sticker = StickersQuery.getStickerById(newRecentStickers.get(a));
+            TLRPC.Document sticker = StickersAdapter.getStickerById(newRecentStickers.get(a));
             if (sticker != null) {
                 recentStickers.add(sticker);
             }
@@ -1210,7 +1210,7 @@ public class EmojiView extends FrameLayout implements NotificationCenter.Notific
         }
 
         stickerSets.clear();
-        ArrayList<TLRPC.TL_messages_stickerSet> packs = StickersQuery.getStickerSets();
+        ArrayList<TLRPC.TL_messages_stickerSet> packs = StickersAdapter.getStickerSets();
         for (int a = 0; a < packs.size(); a++) {
             TLRPC.TL_messages_stickerSet pack = packs.get(a);
             if (pack.set.disabled || pack.documents == null || pack.documents.isEmpty()) {

@@ -60,7 +60,6 @@ import com.b44t.messenger.MrMailbox;
 import com.b44t.messenger.exoplayer.AspectRatioFrameLayout;
 import com.b44t.messenger.exoplayer.ExoPlayer;
 import com.b44t.messenger.exoplayer.util.PlayerControl;
-import com.b44t.messenger.query.SharedMediaQuery;
 import com.b44t.messenger.ApplicationLoader;
 import com.b44t.messenger.FileLoader;
 import com.b44t.messenger.FileLog;
@@ -798,7 +797,7 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
                 if (needSearchImageInArr && isFirstLoading) {
                     isFirstLoading = false;
                     loadingMoreImages = true;
-                    SharedMediaQuery.loadMedia(currentDialogId, 0, 80, 0, SharedMediaQuery.MEDIA_PHOTOVIDEO, true, classGuid);
+                    //SharedMediaQuery.loadMedia(currentDialogId, 0, 80, 0, SharedMediaQuery.MEDIA_PHOTOVIDEO, true, classGuid);
                 } else if (!imagesArr.isEmpty()) {
                     if (opennedFromMedia) {
                         actionBar.setTitle(LocaleController.formatString("Of", R.string.Of, currentIndex + 1, totalImagesCount + totalImagesCountMerge));
@@ -887,9 +886,9 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
                         if (!endReached[loadIndex]) {
                             loadingMoreImages = true;
                             if (opennedFromMedia) {
-                                SharedMediaQuery.loadMedia(loadIndex == 0 ? currentDialogId : mergeDialogId, 0, 80, loadFromMaxId, SharedMediaQuery.MEDIA_PHOTOVIDEO, true, classGuid);
+                                //SharedMediaQuery.loadMedia(loadIndex == 0 ? currentDialogId : mergeDialogId, 0, 80, loadFromMaxId, SharedMediaQuery.MEDIA_PHOTOVIDEO, true, classGuid);
                             } else {
-                                SharedMediaQuery.loadMedia(loadIndex == 0 ? currentDialogId : mergeDialogId, 0, 80, loadFromMaxId, SharedMediaQuery.MEDIA_PHOTOVIDEO, true, classGuid);
+                                //SharedMediaQuery.loadMedia(loadIndex == 0 ? currentDialogId : mergeDialogId, 0, 80, loadFromMaxId, SharedMediaQuery.MEDIA_PHOTOVIDEO, true, classGuid);
                             }
                         }
                     }
@@ -2639,9 +2638,9 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
 
         if (currentAnimation == null) {
             if (currentDialogId != 0 && totalImagesCount == 0) {
-                SharedMediaQuery.getMediaCount(currentDialogId, SharedMediaQuery.MEDIA_PHOTOVIDEO, classGuid, true);
+                MrMailbox.getMediaCount(currentDialogId, MrMailbox.MEDIA_PHOTOVIDEO, classGuid, true);
                 if (mergeDialogId != 0) {
-                    SharedMediaQuery.getMediaCount(mergeDialogId, SharedMediaQuery.MEDIA_PHOTOVIDEO, classGuid, true);
+                    MrMailbox.getMediaCount(mergeDialogId, MrMailbox.MEDIA_PHOTOVIDEO, classGuid, true);
                 }
             } else if (avatarsDialogId != 0) {
                 //MessagesController.getInstance().loadDialogPhotos(avatarsDialogId, 0, 80, 0, true, classGuid);
@@ -2757,7 +2756,7 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
                                 }
                             }
 
-                            SharedMediaQuery.loadMedia(loadIndex == 0 ? currentDialogId : mergeDialogId, 0, 80, loadFromMaxId, SharedMediaQuery.MEDIA_PHOTOVIDEO, true, classGuid);
+                            //SharedMediaQuery.loadMedia(loadIndex == 0 ? currentDialogId : mergeDialogId, 0, 80, loadFromMaxId, SharedMediaQuery.MEDIA_PHOTOVIDEO, true, classGuid);
                             loadingMoreImages = true;
                         }
                         actionBar.setTitle(LocaleController.formatString("Of", R.string.Of, currentIndex + 1, totalImagesCount + totalImagesCountMerge));
@@ -2772,7 +2771,7 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
                                 }
                             }
 
-                            SharedMediaQuery.loadMedia(loadIndex == 0 ? currentDialogId : mergeDialogId, 0, 80, loadFromMaxId, SharedMediaQuery.MEDIA_PHOTOVIDEO, true, classGuid);
+                            //SharedMediaQuery.loadMedia(loadIndex == 0 ? currentDialogId : mergeDialogId, 0, 80, loadFromMaxId, SharedMediaQuery.MEDIA_PHOTOVIDEO, true, classGuid);
                             loadingMoreImages = true;
                         }
                         actionBar.setTitle(LocaleController.formatString("Of", R.string.Of, (totalImagesCount + totalImagesCountMerge - imagesArr.size()) + currentIndex + 1, totalImagesCount + totalImagesCountMerge));
