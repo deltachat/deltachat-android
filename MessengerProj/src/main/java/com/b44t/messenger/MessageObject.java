@@ -782,7 +782,7 @@ public class MessageObject {
                 maxWidth = Math.min(AndroidUtilities.displaySize.x, AndroidUtilities.displaySize.y) - AndroidUtilities.dp(80);
             }
         }
-        if (fromUser != null && fromUser.bot || (messageOwner.fwd_from != null && messageOwner.fwd_from.channel_id != 0) && !isOut()) {
+        if ( (messageOwner.fwd_from != null && messageOwner.fwd_from.channel_id != 0) && !isOut()) {
             maxWidth -= AndroidUtilities.dp(20);
         }
 

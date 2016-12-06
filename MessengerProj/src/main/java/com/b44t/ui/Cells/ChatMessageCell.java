@@ -3553,16 +3553,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
         if (hasSign && signUser == null) {
             hasSign = false;
         }
-        String timeString;
-        TLRPC.User author = null;
-        if (currentMessageObject.isFromUser()) {
-            author = MessagesController.getInstance().getUser(messageObject.messageOwner.from_id);
-        }
-        if (messageObject.messageOwner.via_bot_id == 0 && messageObject.messageOwner.via_bot_name == null && (author == null || !author.bot) && (messageObject.messageOwner.flags & TLRPC.MESSAGE_FLAG_EDITED) != 0) {
-            timeString = LocaleController.getString("EditedMessage", R.string.EditedMessage) + " " + LocaleController.getInstance().formatterDay.format((long) (messageObject.messageOwner.date) * 1000);
-        } else {
-            timeString = LocaleController.getInstance().formatterDay.format((long) (messageObject.messageOwner.date) * 1000);
-        }
+        String timeString = LocaleController.getInstance().formatterDay.format((long) (messageObject.messageOwner.date) * 1000);
         if (hasSign) {
             currentTimeString = ", " + timeString;
         } else {

@@ -23,7 +23,6 @@
     <string name="Updating">Bijwerken</string>
     <string name="DeleteChat">Chat verwijderen</string>
     <string name="SelectChat">Kies een chat</string>
-    <string name="PhotoTip">Druk en houd ingedrukt</string>
     <string name="SearchMessages">BERICHTEN</string>
     <string name="Search">Zoeken</string>
     <string name="MuteNotifications">Meldingen stil</string>
@@ -35,12 +34,10 @@
     <string name="ChatHints">CHATS</string>
     <string name="ChatHintsDelete">%1$s uit suggesties verwijderen?</string>
     <string name="Draft">Concept</string>
-    <string name="HistoryCleared">Geschiedenis gewist</string>
     <!--channels-->
     <string name="ChannelNotifyMembersInfoOn">Berichtgeving voor leden</string>
     <string name="ChannelNotifyMembersInfoOff">Geen berichtgeving voor leden</string>
     <!--broadcasts-->
-    <string name="EnterListName">Naam van lijst</string>
     <!--audio view-->
     <string name="NoAudio">Voeg bestanden toe aan de muziekbibliotheek op je apparaat om ze hier te zien.</string>
     <string name="AttachMusic">Muziek</string>
@@ -90,15 +87,11 @@
     <string name="CopyUrl">Link kopiëren</string>
     <string name="SendItems">%1$s versturen</string>
     <string name="OpenUrlAlert">URL %1$s openen?</string>
-    <string name="NobodyLikesSpam1">Je kunt momenteel alleen berichten sturen aan onderlingen contacten.</string>
-    <string name="NobodyLikesSpam2">Je kunt momenteel alleen onderlinge contacten aan groepen toevoegen</string>
     <string name="MoreInfo">Meer informatie</string>
     <string name="ShareSendTo">Versturen naar...</string>
     <string name="TapHereGifs">Tik hier om opgeslagen GIF\'s te bekijken</string>
     <string name="ClearRecentEmoji">Recente emoji\'s wissen?</string>
-    <string name="PinnedMessage">Vastgezet bericht</string>
     <string name="EditedMessage">bewerkt</string>
-    <string name="AttachBotsHelp">Scrollen voor bots</string>
     <string name="AddShortcut">Snelkoppeling toevoegen</string>
     <string name="ShortcutAdded">Snelkoppeling aan startscherm toegevoegd</string>
     <!--notification-->

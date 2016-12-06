@@ -41,7 +41,6 @@ public class ProfileSearchCell extends BaseCell {
     private static Drawable groupDrawable;
     private static Drawable countDrawable;
     private static Drawable countDrawableGrey;
-    private static Drawable checkDrawable;
     private static Paint linePaint;
 
     private CharSequence currentName;
@@ -75,8 +74,6 @@ public class ProfileSearchCell extends BaseCell {
     private int countWidth;
     private StaticLayout countLayout;
 
-    private boolean drawCheck;
-
     private int onlineLeft;
     private StaticLayout onlineLayout;
 
@@ -108,7 +105,6 @@ public class ProfileSearchCell extends BaseCell {
             groupDrawable = getResources().getDrawable(R.drawable.list_group);
             countDrawable = getResources().getDrawable(R.drawable.dialogs_badge);
             countDrawableGrey = getResources().getDrawable(R.drawable.dialogs_badge2);
-            checkDrawable = getResources().getDrawable(R.drawable.check_list);
         }
 
         avatarImage = new ImageReceiver(this);
@@ -173,7 +169,6 @@ public class ProfileSearchCell extends BaseCell {
         TextPaint currentNamePaint;
 
         drawNameGroup = false;
-        drawCheck = false;
 
         {
             if (chat != null) {
@@ -191,7 +186,6 @@ public class ProfileSearchCell extends BaseCell {
                         nameLockTop = AndroidUtilities.dp(30);
                     }
                 }
-                drawCheck = chat.verified;
                 if (!LocaleController.isRTL) {
                     nameLockLeft = AndroidUtilities.dp(AndroidUtilities.leftBaseline);
                     nameLeft = AndroidUtilities.dp(AndroidUtilities.leftBaseline + 4) + (groupDrawable.getIntrinsicWidth());
@@ -207,7 +201,6 @@ public class ProfileSearchCell extends BaseCell {
                     nameLeft = AndroidUtilities.dp(11);
                 }
                 nameLockTop = AndroidUtilities.dp(17);
-                drawCheck = user.verified;
             }
         }
 
@@ -461,14 +454,6 @@ public class ProfileSearchCell extends BaseCell {
             canvas.translate(nameLeft, nameTop);
             nameLayout.draw(canvas);
             canvas.restore();
-            if (drawCheck) {
-                if (LocaleController.isRTL) {
-                    setDrawableBounds(checkDrawable, nameLeft - AndroidUtilities.dp(4) - checkDrawable.getIntrinsicWidth(), nameLockTop);
-                } else {
-                    setDrawableBounds(checkDrawable, nameLeft + (int) nameLayout.getLineWidth(0) + AndroidUtilities.dp(4), nameLockTop);
-                }
-                checkDrawable.draw(canvas);
-            }
         }
 
         if (onlineLayout != null) {

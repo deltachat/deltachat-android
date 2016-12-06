@@ -23,7 +23,6 @@
     <string name="Updating">Aggiorno…</string>
     <string name="DeleteChat">Elimina chat</string>
     <string name="SelectChat">Seleziona chat</string>
-    <string name="PhotoTip">Tieni premuto per vedere</string>
     <string name="SearchMessages">MESSAGGI</string>
     <string name="Search">Cerca</string>
     <string name="MuteNotifications">Silenzia notifiche</string>
@@ -35,12 +34,10 @@
     <string name="ChatHints">CHAT</string>
     <string name="ChatHintsDelete">Eliminare %1$s dai suggerimenti?</string>
     <string name="Draft">Bozza</string>
-    <string name="HistoryCleared">Cronologia eliminata</string>
     <!--channels-->
     <string name="ChannelNotifyMembersInfoOn">I post saranno notificati ai membri</string>
     <string name="ChannelNotifyMembersInfoOff">I post non saranno notificati ai membri</string>
     <!--broadcasts-->
-    <string name="EnterListName">Inserisci il nome della lista</string>
     <!--audio view-->
     <string name="NoAudio">Aggiungi file nella libreria musicale del tuo dispositivo per vederli qui.</string>
     <string name="AttachMusic">Musica</string>
@@ -90,15 +87,11 @@
     <string name="CopyUrl">Copia URL</string>
     <string name="SendItems">Invia %1$s</string>
     <string name="OpenUrlAlert">Aprire url %1$s?</string>
-    <string name="NobodyLikesSpam1">Spiacenti, ma al momento puoi scrivere solo ai contatti reciproci.</string>
-    <string name="NobodyLikesSpam2">Spiacenti, ma al momento puoi aggiungere ai gruppi solo contatti reciproci.</string>
     <string name="MoreInfo">Maggiori info</string>
     <string name="ShareSendTo">Invia a...</string>
     <string name="TapHereGifs">Premi qui per accedere alle GIF salvate</string>
     <string name="ClearRecentEmoji">Cancellare le emoji recenti?</string>
-    <string name="PinnedMessage">Messaggio fissato</string>
     <string name="EditedMessage">modificato</string>
-    <string name="AttachBotsHelp">Scorri verso il basso per i bot</string>
     <string name="AddShortcut">Aggiungi scorciatoia</string>
     <string name="ShortcutAdded">Scorciatoia aggiunta alla schermata home</string>
     <!--notification-->

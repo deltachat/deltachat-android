@@ -1234,8 +1234,6 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
             int rightIcon = 0;
             if (a == 0) {
                 rightIcon = MessagesController.getInstance().isDialogMuted(dialog_id != 0 ? dialog_id : (long) user_id) ? R.drawable.mute_fixed : 0;
-            } else if (user.verified) {
-                rightIcon = R.drawable.check_profile_fixed;
             }
             nameTextView[a].setLeftDrawable(leftIcon);
             nameTextView[a].setRightDrawable(rightIcon);

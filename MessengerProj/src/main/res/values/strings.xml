@@ -23,7 +23,6 @@
     <string name="Updating">Updating...</string>
     <string name="DeleteChat">Delete chat</string>
     <string name="SelectChat">Select chat</string>
-    <string name="PhotoTip">Tap and hold to view</string>
     <string name="SearchMessages">MESSAGES</string>
     <string name="Search">Search</string>
     <string name="MuteNotifications">Mute notifications</string>
@@ -35,12 +34,10 @@
     <string name="ChatHints">CHATS</string>
     <string name="ChatHintsDelete">Delete %1$s from suggestions?</string>
     <string name="Draft">Draft</string>
-    <string name="HistoryCleared">History was cleared</string>
     <!--channels-->
     <string name="ChannelNotifyMembersInfoOn">Members will be notified when you post</string>
     <string name="ChannelNotifyMembersInfoOff">Members will not be notified when you post</string>
     <!--broadcasts-->
-    <string name="EnterListName">Enter list name</string>
     <!--audio view-->
     <string name="NoAudio">Please add files to the music library on your device to see them here.</string>
     <string name="AttachMusic">Music</string>
@@ -90,15 +87,11 @@
     <string name="CopyUrl">Copy URL</string>
     <string name="SendItems">Send %1$s</string>
     <string name="OpenUrlAlert">Open url %1$s?</string>
-    <string name="NobodyLikesSpam1">Sorry, you can only send messages to mutual contacts at the moment.</string>
-    <string name="NobodyLikesSpam2">Sorry, you can only add mutual contacts to groups at the moment.</string>
     <string name="MoreInfo">More info</string>
     <string name="ShareSendTo">Send to...</string>
     <string name="TapHereGifs">Tap here to access saved GIFs</string>
     <string name="ClearRecentEmoji">Clear recent emoji?</string>
-    <string name="PinnedMessage">Pinned Message</string>
     <string name="EditedMessage">edited</string>
-    <string name="AttachBotsHelp">Scroll down for bots</string>
     <string name="AddShortcut">Add widget</string>
     <string name="ShortcutAdded">Widget added to home screen</string>
     <!--notification-->

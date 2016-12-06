@@ -23,7 +23,6 @@
     <string name="Updating">Actualizando...</string>
     <string name="DeleteChat">Eliminar chat</string>
     <string name="SelectChat">Elige el chat</string>
-    <string name="PhotoTip">Mantén pulsado para ver</string>
     <string name="SearchMessages">MENSAJES</string>
     <string name="Search">Buscar</string>
     <string name="MuteNotifications">Silenciar notificaciones</string>
@@ -35,12 +34,10 @@
     <string name="ChatHints">CHATS</string>
     <string name="ChatHintsDelete">¿Eliminar a %1$s de las sugerencias?</string>
     <string name="Draft">Borrador</string>
-    <string name="HistoryCleared">Historial borrado</string>
     <!--channels-->
     <string name="ChannelNotifyMembersInfoOn">Tu publicación será notificada</string>
     <string name="ChannelNotifyMembersInfoOff">Tu publicación no será notificada</string>
     <!--broadcasts-->
-    <string name="EnterListName">Nombre de la lista</string>
     <!--audio view-->
     <string name="NoAudio">Por favor, añade archivos a la carpeta de música en tu dispositivo para verlos aquí.</string>
     <string name="AttachMusic">Música</string>
@@ -90,15 +87,11 @@
     <string name="CopyUrl">Copiar URL</string>
     <string name="SendItems">Enviar %1$s</string>
     <string name="OpenUrlAlert">¿Abrir %1$s?</string>
-    <string name="NobodyLikesSpam1">Lo sentimos, por ahora puedes enviar mensajes sólo a contactos mutuos.</string>
-    <string name="NobodyLikesSpam2">Lo sentimos, por ahora sólo puedes añadir contactos mutuos a un grupo.</string>
     <string name="MoreInfo">Más información</string>
     <string name="ShareSendTo">Enviar a...</string>
     <string name="TapHereGifs">Toca y ve los GIF guardados</string>
     <string name="ClearRecentEmoji">¿Borrar los emojis recientes?</string>
-    <string name="PinnedMessage">Mensaje anclado</string>
     <string name="EditedMessage">editado</string>
-    <string name="AttachBotsHelp">Ve abajo para los bots</string>
     <string name="AddShortcut">Añadir acceso directo</string>
     <string name="ShortcutAdded">Acceso directo añadido al escritorio</string>
     <!--notification-->

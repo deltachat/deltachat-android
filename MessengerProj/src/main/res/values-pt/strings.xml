@@ -23,7 +23,6 @@
     <string name="Updating">Atualizando...</string>
     <string name="DeleteChat">Apagar conversa</string>
     <string name="SelectChat">Selecione um Chat</string>
-    <string name="PhotoTip">Toque e segure para ver</string>
     <string name="SearchMessages">MENSAGENS</string>
     <string name="Search">Busca</string>
     <string name="MuteNotifications">Silenciar notificações</string>
@@ -35,12 +34,10 @@
     <string name="ChatHints">CONVERSAS</string>
     <string name="ChatHintsDelete">Apagar %1$s das sugestões?</string>
     <string name="Draft">Rascunho</string>
-    <string name="HistoryCleared">O histórico foi apagado</string>
     <!--channels-->
     <string name="ChannelNotifyMembersInfoOn">Os membros serão notificados quando você postar</string>
     <string name="ChannelNotifyMembersInfoOff">Os membros não serão notificados quando você postar</string>
     <!--broadcasts-->
-    <string name="EnterListName">Digite o nome da lista</string>
     <!--audio view-->
     <string name="NoAudio">Por favor, adicione arquivos à biblioteca de música de seu dispositivo para vê-los aqui.</string>
     <string name="AttachMusic">Música</string>
@@ -90,15 +87,11 @@
     <string name="CopyUrl">Copiar URL</string>
     <string name="SendItems">Enviar %1$s</string>
     <string name="OpenUrlAlert">Abrir URL em %1$s?</string>
-    <string name="NobodyLikesSpam1">Desculpe, você pode enviar mensagens somente para contatos mútuos no momento.</string>
-    <string name="NobodyLikesSpam2">Desculpe, você só pode adicionar contatos mútuos à grupos no momento.</string>
     <string name="MoreInfo">Mais informações</string>
     <string name="ShareSendTo">Enviar para...</string>
     <string name="TapHereGifs">Toque aqui para acessar os GIFs salvos</string>
     <string name="ClearRecentEmoji">Limpar emojis recentes?</string>
-    <string name="PinnedMessage">Mensagem Fixada</string>
     <string name="EditedMessage">editado</string>
-    <string name="AttachBotsHelp">Desça para ver os bots</string>
     <string name="AddShortcut">Adicionar atalho</string>
     <string name="ShortcutAdded">Atalho adicionado à tela de início</string>
     <!--notification-->

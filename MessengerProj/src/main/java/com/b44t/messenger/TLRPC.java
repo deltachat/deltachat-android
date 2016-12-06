@@ -209,9 +209,6 @@ public class TLRPC {
 		public Document document;
 	}
 
-	public static class TL_webPageEmpty extends WebPage {
-	}
-
     public static class TL_webPage extends WebPage {
     }
 
@@ -241,8 +238,6 @@ public class TLRPC {
 		public boolean self;
 		public boolean contact;
 		public final boolean mutual_contact = false;
-		public final boolean bot = false;
-		public boolean verified;
 		public boolean min;
     }
 
@@ -453,7 +448,6 @@ public class TLRPC {
 		public int date;
 		public int version;
 		public boolean editor;
-		public boolean verified;
 		public String username;
 		public boolean signatures;
 		public boolean min;

@@ -23,7 +23,6 @@
     <string name="Updating">Aktualisiere…</string>
     <string name="DeleteChat">Chat löschen</string>
     <string name="SelectChat">Chat auswählen</string>
-    <string name="PhotoTip">Tippen und Halten</string>
     <string name="SearchMessages">NACHRICHTEN</string>
     <string name="Search">Suche</string>
     <string name="MuteNotifications">Stummschalten</string>
@@ -35,12 +34,10 @@
     <string name="ChatHints">CHATS</string>
     <string name="ChatHintsDelete">Lösche %1$s aus Vorschlägen?</string>
     <string name="Draft">Entwurf</string>
-    <string name="HistoryCleared">Verlauf wurde gelöscht</string>
     <!--channels-->
     <string name="ChannelNotifyMembersInfoOn">Mitglieder werden benachrichtigt</string>
     <string name="ChannelNotifyMembersInfoOff">Mitglieder werden nicht benachrichtigt</string>
     <!--broadcasts-->
-    <string name="EnterListName">Listenname</string>
     <!--audio view-->
     <string name="NoAudio">Bitte füge Musikdateien einfach deiner Android Musikbibliothek hinzu, um sie hier zu sehen.</string>
     <string name="AttachMusic">Musik</string>
@@ -90,15 +87,11 @@
     <string name="CopyUrl">URL kopieren</string>
     <string name="SendItems">%1$s senden</string>
     <string name="OpenUrlAlert">URL %1$s öffnen?</string>
-    <string name="NobodyLikesSpam1">Derzeit kannst du nur Kontakten schreiben, die auch deine Nummer haben.</string>
-    <string name="NobodyLikesSpam2">Derzeit kannst du nur Kontakte hinzufügen, die auch deine Nummer haben.</string>
     <string name="MoreInfo">Mehr Infos</string>
     <string name="ShareSendTo">Sende an...</string>
     <string name="TapHereGifs">Hier tippen um gespeicherte GIFs zu sehen</string>
     <string name="ClearRecentEmoji">Zuletzt benutzte Emoji leeren?</string>
-    <string name="PinnedMessage">Angeheftete Nachricht</string>
     <string name="EditedMessage">bearbeitet</string>
-    <string name="AttachBotsHelp">Runterscrollen für Bots</string>
     <string name="AddShortcut">Widget hinzufügen</string>
     <string name="ShortcutAdded">Widget zum Startbildschirm hinzugefügt</string>
     <!--notification-->
