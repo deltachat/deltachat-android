@@ -50,7 +50,6 @@ public class MessageObject {
     public int type = 1000;
     public int contentType; // one of ChatActivity.ROWTYPE_MESSAGE_CELL, .ROWTYPE_ACTION_CELL or .ROWTYPE_UNREAD_CELL
     public String dateKey;
-    public boolean deleted;
     public float audioProgress;
     public int audioProgressSec;
     public ArrayList<TLRPC.PhotoSize> photoThumbs;

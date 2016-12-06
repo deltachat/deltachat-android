@@ -16,6 +16,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.b44t.messenger.AndroidUtilities;
+import com.b44t.messenger.MessagesController;
 import com.b44t.messenger.R;
 import com.b44t.ui.Components.LayoutHelper;
 import com.b44t.ui.ActionBar.Theme;
@@ -33,8 +34,8 @@ public class ChatUnreadCell extends FrameLayout {
 
         textView = new TextView(context);
         textView.setPadding(0, 0, 0, AndroidUtilities.dp(1));
-        textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
-        textView.setTextColor(Theme.CHAT_UNREAD_TEXT_COLOR);
+        textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, MessagesController.getInstance().fontSize-2);
+        textView.setTextColor(Theme.MSG_IN_TIME_TEXT_COLOR);
         textView.setTypeface(AndroidUtilities.getTypeface("fonts/rmedium.ttf"));
         addView(textView, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER));
     }

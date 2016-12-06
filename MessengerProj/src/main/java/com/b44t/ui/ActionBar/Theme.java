@@ -53,7 +53,6 @@ public class Theme {
     public static final int DIALOGS_PRINTING_TEXT_COLOR = 0xff4d83b3;
     public static final int DIALOGS_DRAFT_TEXT_COLOR = 0xffdd4b39;
 
-    public static final int CHAT_UNREAD_TEXT_COLOR = 0xff888888;
     public static final int CHAT_BOTTOM_OVERLAY_TEXT_COLOR = 0xff7f7f7f;
     public static final int CHAT_GIF_HINT_TEXT_COLOR = 0xffffffff;
     public static final int CHAT_EMPTY_VIEW_TEXT_COLOR = 0xffffffff;
