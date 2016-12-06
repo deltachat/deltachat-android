@@ -804,7 +804,6 @@ public class DialogsSearchAdapter extends BaseSearchAdapterRecycler {
             if (needMessagesSearch != 2 && (query.startsWith("#") && query.length() == 1)) {
                 messagesSearchEndReached = true;
                 if (!hashtagsLoadedFromDb) {
-                    loadRecentHashtags();
                     if (delegate != null) {
                         delegate.searchStateChanged(true);
                     }

@@ -75,50 +75,7 @@ public abstract class BaseSearchAdapterRecycler extends RecyclerView.Adapter {
         }, ConnectionsManager.RequestFlagFailOnServerErrors);*/
     }
 
-    public void loadRecentHashtags() {
-        /*
-        MessagesStorage.getInstance().getStorageQueue().postRunnable(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    SQLiteCursor cursor = MessagesStorage.getInstance().getDatabase().queryFinalized("SELECT id, date FROM hashtag_recent_v2 WHERE 1");
-                    final ArrayList<HashtagObject> arrayList = new ArrayList<>();
-                    final HashMap<String, HashtagObject> hashMap = new HashMap<>();
-                    while (cursor.next()) {
-                        HashtagObject hashtagObject = new HashtagObject();
-                        hashtagObject.hashtag = cursor.stringValue(0);
-                        hashtagObject.date = cursor.intValue(1);
-                        arrayList.add(hashtagObject);
-                        hashMap.put(hashtagObject.hashtag, hashtagObject);
-                    }
-                    cursor.dispose();
-                    Collections.sort(arrayList, new Comparator<HashtagObject>() {
-                        @Override
-                        public int compare(HashtagObject lhs, HashtagObject rhs) {
-                            if (lhs.date < rhs.date) {
-                                return 1;
-                            } else if (lhs.date > rhs.date) {
-                                return -1;
-                            } else {
-                                return 0;
-                            }
-                        }
-                    });
-                    AndroidUtilities.runOnUIThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            setHashtags(arrayList, hashMap);
-                        }
-                    });
-                } catch (Exception e) {
-                    FileLog.e("messenger", e);
-                }
-            }
-        });
-        */
-    }
-
-    public void addHashtagsFromMessage(CharSequence message) {
+        public void addHashtagsFromMessage(CharSequence message) {
         if (message == null) {
             return;
         }

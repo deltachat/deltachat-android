@@ -75,7 +75,6 @@ public class ContextLinkCell extends View implements MediaController.FileDownloa
     private int descriptionY = AndroidUtilities.dp(27);
     private StaticLayout descriptionLayout;
 
-    private final TLRPC.BotInlineResult inlineResult = null;
     private TLRPC.Document documentAttach;
     private int documentAttachType;
     private boolean mediaWebpage;
@@ -83,7 +82,6 @@ public class ContextLinkCell extends View implements MediaController.FileDownloa
     private static TextPaint titleTextPaint;
     private static TextPaint descriptionTextPaint;
     private static Paint paint;
-    private static Drawable shadowDrawable;
 
     private int TAG;
     private int buttonState;
@@ -129,7 +127,7 @@ public class ContextLinkCell extends View implements MediaController.FileDownloa
         linkLayout = null;
         linkY = AndroidUtilities.dp(27);
 
-        if (inlineResult == null && documentAttach == null) {
+        if (documentAttach == null) {
             setMeasuredDimension(AndroidUtilities.dp(100), AndroidUtilities.dp(100));
             return;
         }
@@ -145,42 +143,6 @@ public class ContextLinkCell extends View implements MediaController.FileDownloa
         if (documentAttach != null) {
             photoThumbs = new ArrayList<>();
             photoThumbs.add(documentAttach.thumb);
-        } else if (inlineResult != null && inlineResult.photo != null) {
-            photoThumbs = new ArrayList<>(inlineResult.photo.sizes);
-        }
-
-        if (!mediaWebpage && inlineResult != null) {
-            if (inlineResult.title != null) {
-                try {
-                    int width = (int) Math.ceil(titleTextPaint.measureText(inlineResult.title));
-                    CharSequence titleFinal = TextUtils.ellipsize(Emoji.replaceEmoji(inlineResult.title.replace('\n', ' '), titleTextPaint.getFontMetricsInt(), AndroidUtilities.dp(15), false), titleTextPaint, Math.min(width, maxWidth), TextUtils.TruncateAt.END);
-                    titleLayout = new StaticLayout(titleFinal, titleTextPaint, maxWidth + AndroidUtilities.dp(4), Layout.Alignment.ALIGN_NORMAL, 1.0f, 0.0f, false);
-                } catch (Exception e) {
-                    FileLog.e("messenger", e);
-                }
-                letterDrawable.setTitle(inlineResult.title);
-            }
-
-            if (inlineResult.description != null) {
-                try {
-                    descriptionLayout = ChatMessageCell.generateStaticLayout(Emoji.replaceEmoji(inlineResult.description, descriptionTextPaint.getFontMetricsInt(), AndroidUtilities.dp(13), false), descriptionTextPaint, maxWidth, maxWidth, 0, 3);
-                    if (descriptionLayout.getLineCount() > 0) {
-                        linkY = descriptionY + descriptionLayout.getLineBottom(descriptionLayout.getLineCount() - 1) + AndroidUtilities.dp(1);
-                    }
-                } catch (Exception e) {
-                    FileLog.e("messenger", e);
-                }
-            }
-
-            if (inlineResult.url != null) {
-                try {
-                    int width = (int) Math.ceil(descriptionTextPaint.measureText(inlineResult.url));
-                    CharSequence linkFinal = TextUtils.ellipsize(inlineResult.url.replace('\n', ' '), descriptionTextPaint, Math.min(width, maxWidth), TextUtils.TruncateAt.MIDDLE);
-                    linkLayout = new StaticLayout(linkFinal, descriptionTextPaint, maxWidth, Layout.Alignment.ALIGN_NORMAL, 1.0f, 0.0f, false);
-                } catch (Exception e) {
-                    FileLog.e("messenger", e);
-                }
-            }
         }
 
         documentAttachType = DOCUMENT_ATTACH_TYPE_NONE;
@@ -196,40 +158,6 @@ public class ContextLinkCell extends View implements MediaController.FileDownloa
             } else {
                 currentPhotoObject = documentAttach.thumb;
             }
-        } else if (inlineResult != null && inlineResult.photo != null) {
-            documentAttachType = DOCUMENT_ATTACH_TYPE_PHOTO;
-            currentPhotoObject = FileLoader.getClosestPhotoSizeWithSize(photoThumbs, AndroidUtilities.getPhotoSize(), true);
-            currentPhotoObjectThumb = FileLoader.getClosestPhotoSizeWithSize(photoThumbs, 80);
-            if (currentPhotoObjectThumb == currentPhotoObject) {
-                currentPhotoObjectThumb = null;
-            }
-        }
-        if (inlineResult != null) {
-            if (inlineResult.content_url != null) {
-                if (inlineResult.type != null) {
-                    if (inlineResult.type.startsWith("gif")) {
-                        if (documentAttachType != DOCUMENT_ATTACH_TYPE_GIF) {
-                            url = inlineResult.content_url;
-                            documentAttachType = DOCUMENT_ATTACH_TYPE_GIF;
-                        }
-                    } else if (inlineResult.type.equals("photo")) {
-                        url = inlineResult.thumb_url;
-                        if (url == null) {
-                            url = inlineResult.content_url;
-                        }
-                    }
-                }
-            }
-            if (url == null && inlineResult.thumb_url != null) {
-                url = inlineResult.thumb_url;
-            }
-        }
-        if (url == null && currentPhotoObject == null && currentPhotoObjectThumb == null) {
-            /*if (inlineResult.send_message instanceof TLRPC.TL_botInlineMessageMediaVenue || inlineResult.send_message instanceof TLRPC.TL_botInlineMessageMediaGeo) {
-                double lat = inlineResult.send_message.geo.lat;
-                double lon = inlineResult.send_message.geo._long;
-                url = String.format(Locale.US, "https://maps.googleapis.com/maps/api/staticmap?center=%f,%f&zoom=15&size=72x72&maptype=roadmap&scale=%d&markers=color:red|size:small|%f,%f&sensor=false", lat, lon, Math.min(2, (int) Math.ceil(AndroidUtilities.density)), lat, lon);
-            }*/
         }
 
         int width;
@@ -253,9 +181,6 @@ public class ContextLinkCell extends View implements MediaController.FileDownloa
                 }
                 w = currentPhotoObject.w;
                 h = currentPhotoObject.h;
-            } else if (inlineResult != null) {
-                w = inlineResult.w;
-                h = inlineResult.h;
             }
         }
         if (w == 0 || h == 0) {
@@ -296,7 +221,6 @@ public class ContextLinkCell extends View implements MediaController.FileDownloa
 
         if (mediaWebpage) {
             setBackgroundDrawable(null);
-            //if (inlineResult == null) {
                 width = viewWidth;
                 int height = MeasureSpec.getSize(heightMeasureSpec);
                 if (height == 0) {
@@ -307,13 +231,6 @@ public class ContextLinkCell extends View implements MediaController.FileDownloa
                 int y = (height - AndroidUtilities.dp(24)) / 2;
                 radialProgress.setProgressRect(x, y, x + AndroidUtilities.dp(24), y + AndroidUtilities.dp(24));
                 linkImageView.setImageCoords(0, 0, width, height);
-            /*} else {
-                setMeasuredDimension(width + AndroidUtilities.dp(5), AndroidUtilities.dp(90));
-                int x = AndroidUtilities.dp(5) + (width - AndroidUtilities.dp(24)) / 2;
-                int y = (AndroidUtilities.dp(90) - AndroidUtilities.dp(24)) / 2;
-                radialProgress.setProgressRect(x, y, x + AndroidUtilities.dp(24), y + AndroidUtilities.dp(24));
-                linkImageView.setImageCoords(AndroidUtilities.dp(5), AndroidUtilities.dp(5), width, AndroidUtilities.dp(80));
-            }*/
         } else {
             setBackgroundResource(R.drawable.list_selector);
             int height = 0;
@@ -339,7 +256,6 @@ public class ContextLinkCell extends View implements MediaController.FileDownloa
     public void setGif(TLRPC.Document document, boolean divider) {
         needDivider = divider;
         needShadow = false;
-        //inlineResult = null;
         documentAttach = document;
         mediaWebpage = true;
         requestLayout();
@@ -391,41 +307,7 @@ public class ContextLinkCell extends View implements MediaController.FileDownloa
             }
         }
 
-        if (mediaWebpage || delegate == null || inlineResult == null) {
-            return super.onTouchEvent(event);
-        }
-        int x = (int) event.getX();
-        int y = (int) event.getY();
-
-        boolean result = false;
-        int side = AndroidUtilities.dp(48);
-        if (inlineResult != null && inlineResult.content_url != null && inlineResult.content_url.length() > 0) {
-            if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                if (letterDrawable.getBounds().contains(x, y)) {
-                    buttonPressed = true;
-                    result = true;
-                }
-            } else {
-                if (buttonPressed) {
-                    if (event.getAction() == MotionEvent.ACTION_UP) {
-                        buttonPressed = false;
-                        playSoundEffect(SoundEffectConstants.CLICK);
-                        delegate.didPressedImage(this);
-                    } else if (event.getAction() == MotionEvent.ACTION_CANCEL) {
-                        buttonPressed = false;
-                    } else if (event.getAction() == MotionEvent.ACTION_MOVE) {
-                        if (!letterDrawable.getBounds().contains(x, y)) {
-                            buttonPressed = false;
-                        }
-                    }
-                }
-            }
-        }
-        if (!result) {
-            result = super.onTouchEvent(event);
-        }
-
-        return result;
+        return super.onTouchEvent(event);
     }
 
     @Override
@@ -454,43 +336,7 @@ public class ContextLinkCell extends View implements MediaController.FileDownloa
         }
 
         if (!mediaWebpage) {
-            /*if (inlineResult != null && inlineResult.type.equals("file")) {
-                int w = Theme.inlineDocDrawable.getIntrinsicWidth();
-                int h = Theme.inlineDocDrawable.getIntrinsicHeight();
-                int x = linkImageView.getImageX() + (AndroidUtilities.dp(52) - w) / 2;
-                int y = linkImageView.getImageY() + (AndroidUtilities.dp(52) - h) / 2;
-                canvas.drawRect(linkImageView.getImageX(), linkImageView.getImageY(), linkImageView.getImageX() + AndroidUtilities.dp(52), linkImageView.getImageY() + AndroidUtilities.dp(52), LetterDrawable.paint);
-                Theme.inlineDocDrawable.setBounds(x, y, x + w, y + h);
-                Theme.inlineDocDrawable.draw(canvas);
-            } else if (inlineResult != null && (inlineResult.type.equals("audio") || inlineResult.type.equals("voice"))) {
-                int w = Theme.inlineAudioDrawable.getIntrinsicWidth();
-                int h = Theme.inlineAudioDrawable.getIntrinsicHeight();
-                int x = linkImageView.getImageX() + (AndroidUtilities.dp(52) - w) / 2;
-                int y = linkImageView.getImageY() + (AndroidUtilities.dp(52) - h) / 2;
-                canvas.drawRect(linkImageView.getImageX(), linkImageView.getImageY(), linkImageView.getImageX() + AndroidUtilities.dp(52), linkImageView.getImageY() + AndroidUtilities.dp(52), LetterDrawable.paint);
-                Theme.inlineAudioDrawable.setBounds(x, y, x + w, y + h);
-                Theme.inlineAudioDrawable.draw(canvas);
-            } else if (inlineResult != null && (inlineResult.type.equals("venue") || inlineResult.type.equals("geo"))) {
-                int w = Theme.inlineLocationDrawable.getIntrinsicWidth();
-                int h = Theme.inlineLocationDrawable.getIntrinsicHeight();
-                int x = linkImageView.getImageX() + (AndroidUtilities.dp(52) - w) / 2;
-                int y = linkImageView.getImageY() + (AndroidUtilities.dp(52) - h) / 2;
-                canvas.drawRect(linkImageView.getImageX(), linkImageView.getImageY(), linkImageView.getImageX() + AndroidUtilities.dp(52), linkImageView.getImageY() + AndroidUtilities.dp(52), LetterDrawable.paint);
-                Theme.inlineLocationDrawable.setBounds(x, y, x + w, y + h);
-                Theme.inlineLocationDrawable.draw(canvas);
-            } else*/ {
                 letterDrawable.draw(canvas);
-            }
-        } else {
-            /*if (inlineResult != null && (inlineResult.send_message instanceof TLRPC.TL_botInlineMessageMediaGeo || inlineResult.send_message instanceof TLRPC.TL_botInlineMessageMediaVenue)) {
-                int w = Theme.inlineLocationDrawable.getIntrinsicWidth();
-                int h = Theme.inlineLocationDrawable.getIntrinsicHeight();
-                int x = linkImageView.getImageX() + (linkImageView.getImageWidth() - w) / 2;
-                int y = linkImageView.getImageY() + (linkImageView.getImageHeight() - h) / 2;
-                canvas.drawRect(linkImageView.getImageX(), linkImageView.getImageY(), linkImageView.getImageX() + linkImageView.getImageWidth(), linkImageView.getImageY() + linkImageView.getImageHeight(), LetterDrawable.paint);
-                Theme.inlineLocationDrawable.setBounds(x, y, x + w, y + h);
-                Theme.inlineLocationDrawable.draw(canvas);
-            }*/
         }
         if (drawLinkImageView) {
             canvas.save();
@@ -526,10 +372,7 @@ public class ContextLinkCell extends View implements MediaController.FileDownloa
                 canvas.drawLine(AndroidUtilities.dp(AndroidUtilities.leftBaseline), getMeasuredHeight() - 1, getMeasuredWidth(), getMeasuredHeight() - 1, paint);
             }
         }
-        if (needShadow && shadowDrawable != null) {
-            shadowDrawable.setBounds(0, 0, getMeasuredWidth(), AndroidUtilities.dp(3));
-            shadowDrawable.draw(canvas);
-        }
+
     }
 
     private Drawable getDrawableForCurrentState() {
@@ -542,22 +385,7 @@ public class ContextLinkCell extends View implements MediaController.FileDownloa
         }
         String fileName = null;
         File cacheFile = null;
-        if (inlineResult != null) {
-            if (inlineResult.document instanceof TLRPC.TL_document) {
-                fileName = FileLoader.getAttachFileName(inlineResult.document);
-                cacheFile = FileLoader.getPathToAttach(inlineResult.document);
-            } else if (inlineResult.photo instanceof TLRPC.TL_photo) {
-                TLRPC.PhotoSize currentPhotoObject = FileLoader.getClosestPhotoSizeWithSize(inlineResult.photo.sizes, AndroidUtilities.getPhotoSize(), true);
-                fileName = FileLoader.getAttachFileName(currentPhotoObject);
-                cacheFile = FileLoader.getPathToAttach(currentPhotoObject);
-            } else if (inlineResult.content_url != null) {
-                fileName = Utilities.MD5(inlineResult.content_url) + "." + ImageLoader.getHttpUrlExtension(inlineResult.content_url, "jpg");
-                cacheFile = new File(FileLoader.getInstance().getDirectory(FileLoader.MEDIA_DIR_CACHE), fileName);
-            } else if (inlineResult.thumb_url != null) {
-                fileName = Utilities.MD5(inlineResult.thumb_url) + "." + ImageLoader.getHttpUrlExtension(inlineResult.thumb_url, "jpg");
-                cacheFile = new File(FileLoader.getInstance().getDirectory(FileLoader.MEDIA_DIR_CACHE), fileName);
-            }
-        } else if (documentAttach != null) {
+        if (documentAttach != null) {
             fileName = FileLoader.getAttachFileName(documentAttach);
             cacheFile = FileLoader.getPathToAttach(documentAttach);
         }
@@ -587,10 +415,6 @@ public class ContextLinkCell extends View implements MediaController.FileDownloa
 
     public void setDelegate(ContextLinkCellDelegate contextLinkCellDelegate) {
         delegate = contextLinkCellDelegate;
-    }
-
-    public TLRPC.BotInlineResult getResult() {
-        return null;
     }
 
     @Override

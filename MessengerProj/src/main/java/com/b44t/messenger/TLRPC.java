@@ -17,7 +17,6 @@ public class TLRPC {
     public static final int MESSAGE_FLAG_REPLY              = 0x00000008;
     public static final int MESSAGE_FLAG_HAS_FROM_ID        = 0x00000100;
     public static final int MESSAGE_FLAG_HAS_MEDIA          = 0x00000200;
-	public static final int MESSAGE_FLAG_EDITED             = 0x00008000;
 
 	public static class DraftMessage extends TLObject {
 		public int flags;
@@ -116,24 +115,6 @@ public class TLRPC {
 
 	public static class TL_messageMediaWebPage extends MessageMedia {
 	}
-
-	public static class BotInlineResult extends TLObject {
-		public int flags;
-		public String id;
-		public String type;
-		public String title;
-		public String description;
-		public String url;
-		public String thumb_url;
-		public String content_url;
-		public String content_type;
-		public int w;
-		public int h;
-		public int duration;
-		public Photo photo;
-		public Document document;
-	}
-
 
 	public static class PeerNotifySettings extends TLObject {
 		public int flags;
@@ -237,7 +218,6 @@ public class TLRPC {
         public int flags;
 		public boolean self;
 		public boolean contact;
-		public final boolean mutual_contact = false;
 		public boolean min;
     }
 
@@ -422,11 +402,6 @@ public class TLRPC {
 	public static class TL_photoEmpty extends Photo {
 	}
 
-	public static class TL_contact extends TLObject {
-		public int user_id;
-		public boolean mutual;
-	}
-
 	public static class ChatParticipants extends TLObject {
 		public int flags;
 		public int chat_id;
@@ -587,12 +562,10 @@ public class TLRPC {
 		public boolean media_unread;
 		public boolean out;
 		public boolean unread;
-		public String via_bot_name;
 		public int views;
 		public boolean silent;
 		public boolean post;
 		public TL_messageFwdHeader fwd_from;
-		public int via_bot_id;
         public int send_state = 0; //custom
         public String attachPath = ""; //custom
 		public HashMap<String, String> params; //custom

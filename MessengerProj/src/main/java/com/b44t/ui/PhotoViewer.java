@@ -1661,10 +1661,7 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
             }
             */
 
-            @Override
-            public void onContextClick(TLRPC.BotInlineResult result) {
 
-            }
         }));
         mentionsAdapter.setAllowNewMentions(false);
 
@@ -2622,7 +2619,6 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
             if (parentChatActivity != null /*&& (parentChatActivity.currentEncryptedChat == null || AndroidUtilities.getPeerLayerVersion(parentChatActivity.currentEncryptedChat.layer) >= 46)*/) {
                 mentionsAdapter.setChatInfo(parentChatActivity.info);
                 mentionsAdapter.setNeedUsernames(parentChatActivity.currentChat != null);
-                mentionsAdapter.setNeedBotContext(false);
                 //captionItem.setVisibility(cropItem.getVisibility());
                 //captionEditText.setVisibility(cropItem.getVisibility());
                 //needCaptionLayout = captionItem.getVisibility() == View.VISIBLE;

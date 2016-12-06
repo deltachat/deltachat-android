@@ -187,7 +187,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
     private boolean openSearchKeyboard;
 
     private boolean allowStickersPanel;
-    private boolean allowContextBotPanel;
     private boolean allowContextBotPanelSecond = true;
     private AnimatorSet runningAnimation;
 
@@ -862,28 +861,10 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                         int height;
                         mentionListViewIgnoreLayout = true;
 
-                        /*if (mentionsAdapter.isBotContext() && mentionsAdapter.isMediaLayout()) {
-                            int size = mentionGridLayoutManager.getRowsCount(widthSize);
-                            int maxHeight = size * 102;
-                            if (mentionsAdapter.isBotContext()) {
-                                if (mentionsAdapter.getBotContextSwitch() != null) {
-                                    maxHeight += 34;
-                                }
-                            }
-                            height = heightSize - chatActivityEnterView.getMeasuredHeight() + (maxHeight != 0 ? AndroidUtilities.dp(2) : 0);
-                            mentionListView.setPadding(0, Math.max(0, height - AndroidUtilities.dp(Math.min(maxHeight, 68 * 1.8f))), 0, 0);
-                        } else */ {
+                        {
                             int size = mentionsAdapter.getItemCount();
                             int maxHeight = 0;
-                            /*if (mentionsAdapter.isBotContext()) {
-                                if (mentionsAdapter.getBotContextSwitch() != null) {
-                                    maxHeight += 36;
-                                    size -= 1;
-                                }
-                                maxHeight += size * 68;
-                            } else */ {
-                                maxHeight += size * 36;
-                            }
+                            maxHeight += size * 36;
                             height = heightSize - chatActivityEnterView.getMeasuredHeight() + (maxHeight != 0 ? AndroidUtilities.dp(2) : 0);
                             mentionListView.setPadding(0, Math.max(0, height - AndroidUtilities.dp(Math.min(maxHeight, 68 * 1.8f))), 0, 0);
                         }
@@ -1251,9 +1232,9 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
 
                     if (newPosition != -1) {
                         mentionListViewIgnoreLayout = true;
-                        if (mentionsAdapter.isBotContext() && mentionsAdapter.isMediaLayout()) {
+                        /*if (mentionsAdapter.isBotContext() && mentionsAdapter.isMediaLayout()) {
                             mentionGridLayoutManager.scrollToPositionWithOffset(newPosition, newTop);
-                        } else {
+                        } else*/ {
                             mentionLayoutManager.scrollToPositionWithOffset(newPosition, newTop);
                         }
                         super.onLayout(false, l, t, r, b);
@@ -1366,9 +1347,9 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
             mentionListView.setAdapter(mentionsAdapter = new MentionsAdapter(context, false, dialog_id, new MentionsAdapter.MentionsAdapterDelegate() {
                 @Override
                 public void needChangePanelVisibility(boolean show) {
-                    if (mentionsAdapter.isBotContext() && mentionsAdapter.isMediaLayout()) {
+                    /*if (mentionsAdapter.isBotContext() && mentionsAdapter.isMediaLayout()) {
                         mentionListView.setLayoutManager(mentionGridLayoutManager);
-                    } else {
+                    } else*/ {
                         mentionListView.setLayoutManager(mentionLayoutManager);
                     }
                     if (show) {
@@ -1381,12 +1362,12 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                             mentionContainer.setAlpha(1.0f);
                             return;
                         }
-                        if (mentionsAdapter.isBotContext() && mentionsAdapter.isMediaLayout()) {
+                        /*if (mentionsAdapter.isBotContext() && mentionsAdapter.isMediaLayout()) {
                             mentionGridLayoutManager.scrollToPositionWithOffset(0, 10000);
-                        } else {
+                        } else*/ {
                             mentionLayoutManager.scrollToPositionWithOffset(0, 10000);
                         }
-                        if (allowStickersPanel && (!mentionsAdapter.isBotContext() || (allowContextBotPanel || allowContextBotPanelSecond))) {
+                        if (allowStickersPanel) {
                             mentionContainer.setVisibility(View.VISIBLE);
                             mentionContainer.setTag(null);
                             mentionListAnimation = new AnimatorSet();
@@ -1463,27 +1444,11 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     }
                 }
                 */
-
-                @Override
-                public void onContextClick(TLRPC.BotInlineResult result) {
-                    if (getParentActivity() == null || result.content_url == null) {
-                        return;
-                    }
-                    if (result.type.equals("video") || result.type.equals("web_player_video")) {
-                        BottomSheet.Builder builder = new BottomSheet.Builder(getParentActivity());
-                        builder.setCustomView(new WebFrameLayout(getParentActivity(), builder.create(), result.title != null ? result.title : "", result.description, result.content_url, result.content_url, result.w, result.h));
-                        builder.setUseFullWidth(true);
-                        showDialog(builder.create());
-                    } else {
-                        Browser.openUrl(getParentActivity(), result.content_url);
-                    }
-                }
             }));
 
             mentionsAdapter.setParentFragment(this);
             mentionsAdapter.setChatInfo(info);
             mentionsAdapter.setNeedUsernames(currentChat != null);
-            mentionsAdapter.setNeedBotContext(true);
             mentionListView.setOnItemClickListener(mentionsOnItemClickListener = new RecyclerListView.OnItemClickListener() {
                 @Override
                 public void onItemClick(View view, int position) {
@@ -1542,16 +1507,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
 
                 @Override
                 public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
-                    int lastVisibleItem;
-                    if (mentionsAdapter.isBotContext() && mentionsAdapter.isMediaLayout()) {
-                        lastVisibleItem = mentionGridLayoutManager.findLastVisibleItemPosition();
-                    } else {
-                        lastVisibleItem = mentionLayoutManager.findLastVisibleItemPosition();
-                    }
-                    int visibleItemCount = lastVisibleItem == RecyclerView.NO_POSITION ? 0 : lastVisibleItem;
-                    if (visibleItemCount > 0 && lastVisibleItem > mentionsAdapter.getItemCount() - 5) {
-                        mentionsAdapter.searchForContextBotForNextOffset();
-                    }
                     mentionListViewUpdateLayout();
                 }
             });
@@ -1682,13 +1637,11 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     if (stickersPanel.getVisibility() == View.INVISIBLE) {
                         stickersPanel.setVisibility(View.VISIBLE);
                     }
-                    if (mentionContainer != null && mentionContainer.getVisibility() == View.INVISIBLE && (!mentionsAdapter.isBotContext() || (allowContextBotPanel || allowContextBotPanelSecond))) {
+                    if (mentionContainer != null && mentionContainer.getVisibility() == View.INVISIBLE ) {
                         mentionContainer.setVisibility(View.VISIBLE);
                         mentionContainer.setTag(null);
                     }
                 }
-
-                allowContextBotPanel = !chatActivityEnterView.isPopupShowing();
             }
 
             @Override
@@ -2064,12 +2017,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         int visibleItemCount = firstVisibleItem == RecyclerView.NO_POSITION ? 0 : Math.abs(chatLayoutManager.findLastVisibleItemPosition() - firstVisibleItem) + 1;
         if (visibleItemCount > 0) {
             int totalItemCount = chatAdapter.getItemCount();
-            int checkLoadCount;
-            if (scroll) {
-                checkLoadCount = 25;
-            } else  {
-                checkLoadCount = 5;
-            }
             if (!loadingForward && firstVisibleItem + visibleItemCount >= totalItemCount - 10) {
                 if (!forwardEndReached) {
                     //MessagesController.getInstance().loadMessages(dialog_id, 50, minMessageId[0], true, maxDate[0], classGuid, 1, 0, ChatObject.isChannel(currentChat), lastLoadIndex++);
