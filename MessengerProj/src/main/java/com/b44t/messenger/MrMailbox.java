@@ -159,9 +159,7 @@ public class MrMailbox {
         return MrMailboxCreateChatByContactId(m_hMailbox, contact_id);
     }
 
-    public static int[] getChatMsgs(int chat_id) {
-        return MrMailboxGetChatMsgs(m_hMailbox, chat_id);
-    }
+    public native static int[] getChatMsgs(int chat_id);
 
     public static int[] getChatMedia(int chat_id, int msg_type, int or_msg_type) {
         return MrMailboxGetChatMedia(m_hMailbox, chat_id, msg_type, or_msg_type);
@@ -179,7 +177,6 @@ public class MrMailbox {
     private native static long    MrMailboxGetChat           (long hMailbox, int chat_id); // return hChat which must be unref'd after usage
     private native static int     MrMailboxGetChatIdByContactId (long hMailbox, int contact_id);
     private native static int     MrMailboxCreateChatByContactId(long hMailbox, int contact_id); // returns chat_id
-    private native static int[]   MrMailboxGetChatMsgs       (long hMailbox, int chat_id);
     private native static int[]   MrMailboxGetChatMedia      (long hMailbox, int chat_id, int msg_type, int or_msg_type);
     private native static int[]   MrMailboxGetChatContacts   (long hMailbox, int chat_id);
     private native static int     MrMailboxDeleteChat        (long hMailbox, int chat_id);
