@@ -89,9 +89,11 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
     private AlertDialog permissionDialog;
 
     // Floating hiding action
+    /*
     private int prevPosition;
     private int prevTop;
     private boolean scrollUpdated;
+    */
     // /Floating hiding action
 
     private boolean floatingHidden;
@@ -491,7 +493,8 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
                     return;
                 }
 
-                // Floating hiding action - I'm not sure if it is really useful.
+                // Floating hiding action - I'm not sure if it is really useful. If there is nothing to scroll the floting button cannot does not move away - and covers always a part of the last row. This is not better than without moving away.
+                /*
                 if (floatingButton.getVisibility() != View.GONE) {
                     final View topChild = recyclerView.getChildAt(0);
                     int firstViewTop = 0;
@@ -514,6 +517,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
                     prevTop = firstViewTop;
                     scrollUpdated = true;
                 }
+                */
                 // /Floating hiding action
             }
         });
