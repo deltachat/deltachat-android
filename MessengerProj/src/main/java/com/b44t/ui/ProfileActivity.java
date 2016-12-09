@@ -44,6 +44,7 @@ import android.widget.Toast;
 
 import com.b44t.messenger.AndroidUtilities;
 import com.b44t.messenger.AnimatorListenerAdapterProxy;
+import com.b44t.messenger.ContactsController;
 import com.b44t.messenger.LocaleController;
 import com.b44t.messenger.MrChat;
 import com.b44t.messenger.MrContact;
@@ -1196,26 +1197,18 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
             return;
         }
 
-        TLRPC.User user = MessagesController.getInstance().getUser(user_id);
-        TLRPC.FileLocation photo = null;
-        TLRPC.FileLocation photoBig = null;
-        if (user.photo != null) {
-            photo = user.photo.photo_small;
-            photoBig = user.photo.photo_big;
-        }
-        avatarDrawable.setInfoByUser(user);
-        avatarImage.setImage(photo, "50_50", avatarDrawable);
-
         String newString;
         String newString2;
 
+        MrContact mrContact = null;
+        MrChat mrChat = null;
         if( user_id!=0 ) {
-            MrContact mrContact = MrMailbox.getContact(user_id);
+            mrContact = MrMailbox.getContact(user_id);
             newString = mrContact.getDisplayName();
             newString2 = mrContact.getAddr();
         }
         else {
-            MrChat mrChat = MrMailbox.getChat(chat_id);
+            mrChat = MrMailbox.getChat(chat_id);
             newString = mrChat.getName();
             newString2 = mrChat.getSubtitle();
         }
@@ -1239,9 +1232,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
             nameTextView[a].setRightDrawable(rightIcon);
         }
 
-        avatarImage.getImageReceiver().setVisible(!PhotoViewer.getInstance().isShowingImage(photoBig), false);
-        avatarDrawable.setInfoByName(newString);
-
+        ContactsController.setupAvatar(avatarImage, avatarDrawable, mrContact, mrChat);
     }
 
     private void createActionBarMenu() {
@@ -1400,9 +1391,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                     if(curr_user_index>=0 && curr_user_index<sortedUserIds.length) {
                         int curr_user_id = sortedUserIds[curr_user_index];
                         MrContact mrContact = MrMailbox.getContact(curr_user_id);
-                            userCell.setData(curr_user_id, 0, mrContact.getDisplayName(),
-                                    mrContact.getAddr(),
-                                    curr_user_index==0? R.drawable.menu_newgroup : 0);
+                            userCell.setData(mrContact, curr_user_index==0? R.drawable.menu_newgroup : 0);
                     }
                     break;
 

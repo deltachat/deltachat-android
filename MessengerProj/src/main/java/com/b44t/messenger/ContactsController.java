@@ -9,10 +9,20 @@
 package com.b44t.messenger;
 
 import android.content.ContentResolver;
+import android.content.ContentUris;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Build;
 import android.provider.ContactsContract;
+import android.util.Log;
+
+import com.b44t.ui.Components.AvatarDrawable;
+import com.b44t.ui.Components.BackupImageView;
+
+import java.io.InputStream;
 import java.util.HashMap;
 
 public class ContactsController {
@@ -133,5 +143,74 @@ public class ContactsController {
             }
         }
         return result.toString();
+    }
+
+
+    /* Handle contact images
+     **********************************************************************************************/
+
+    public static void setupAvatar(Object avtObj,
+                                   AvatarDrawable avtDrawable,
+                                   MrContact mrContact, MrChat mrChat)
+    {
+        String fallbackName = "";
+        if( mrContact!=null ) {
+            fallbackName = mrContact.getDisplayName();
+        }
+        else if( mrChat != null ) {
+            fallbackName = mrChat.getName();
+        }
+
+        avtDrawable.setInfoByName(fallbackName);
+
+        TLRPC.FileLocation photo = null;
+
+        if( avtObj instanceof ImageReceiver ) {
+            ((ImageReceiver)avtObj).setImage(photo, "50_50", avtDrawable, null, false);
+        }
+        else if( avtObj instanceof BackupImageView ) {
+            ((BackupImageView)avtObj).setImage(photo, "50_50", avtDrawable);
+        }
+    }
+
+    // from http://stackoverflow.com/questions/2383580/how-do-i-load-a-contact-photo
+    public static Bitmap loadContactPhoto(ContentResolver cr, long id, long photo_id)
+    {
+        Uri uri = ContentUris.withAppendedId(ContactsContract.Contacts.CONTENT_URI, id);
+        InputStream input = ContactsContract.Contacts.openContactPhotoInputStream(cr, uri);
+        if (input != null)
+        {
+            return BitmapFactory.decodeStream(input);
+        }
+        else
+        {
+            Log.d("PHOTO","first try failed to load photo");
+        }
+
+        byte[] photoBytes = null;
+
+        Uri photoUri = ContentUris.withAppendedId(ContactsContract.Data.CONTENT_URI, photo_id);
+
+        Cursor c = cr.query(photoUri, new String[] {ContactsContract.CommonDataKinds.Photo.PHOTO}, null, null, null);
+
+        try
+        {
+            if (c.moveToFirst())
+                photoBytes = c.getBlob(0);
+
+        } catch (Exception e) {
+            // TODO: handle exception
+            e.printStackTrace();
+
+        } finally {
+
+            c.close();
+        }
+
+        if (photoBytes != null)
+            return BitmapFactory.decodeByteArray(photoBytes,0,photoBytes.length);
+        else
+            Log.d("PHOTO","second try also failed");
+        return null;
     }
 }

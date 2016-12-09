@@ -16,7 +16,9 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 
 import com.b44t.messenger.AndroidUtilities;
+import com.b44t.messenger.ContactsController;
 import com.b44t.messenger.LocaleController;
+import com.b44t.messenger.MrContact;
 import com.b44t.messenger.R;
 import com.b44t.messenger.TLRPC;
 import com.b44t.ui.Components.AvatarDrawable;
@@ -34,8 +36,7 @@ public class UserCell extends FrameLayout {
     private CheckBox checkBox;
 
     private AvatarDrawable avatarDrawable;
-    private int user_id;
-    private int chat_id;
+    private MrContact m_mrContact;
 
     private CharSequence currentName;
     private CharSequence currentStatus;
@@ -75,12 +76,12 @@ public class UserCell extends FrameLayout {
         }
     }
 
-    public void setData(int new_user_id, int new_chat_id, CharSequence name, CharSequence status, int resId) {
-        currentStatus = null;
-        currentStatus = status;
-        currentName = name;
-        user_id = new_user_id;
-        chat_id = new_chat_id;
+    public void setData(MrContact mrContact, int resId) {
+        m_mrContact = mrContact;
+        if( m_mrContact != null ) {
+            currentName = m_mrContact.getDisplayName();
+            currentStatus = m_mrContact.getAddr();
+        }
         currentResId = resId;
         update(0);
     }
@@ -104,7 +105,7 @@ public class UserCell extends FrameLayout {
     }
 
     public void update(int mask) {
-        if (user_id == 0 && chat_id==0) {
+        if (m_mrContact==null) {
             return;
         }
         TLRPC.FileLocation photo = null;
@@ -172,10 +173,7 @@ public class UserCell extends FrameLayout {
             imageView.setImageResource(currentResId);
         }
 
-        if( currentName != null ) {
-            avatarDrawable.setInfoByName(currentName.toString());
-            avatarImageView.setImage(photo, "50_50", avatarDrawable);
-        }
+        ContactsController.setupAvatar(avatarImageView, avatarDrawable, m_mrContact, null);
     }
 
     @Override

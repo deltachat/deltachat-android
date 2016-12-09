@@ -240,7 +240,7 @@ public class BlockedUsersActivity extends BaseFragment implements NotificationCe
             }
             if (i>=0 && i<blockedUserIds.length) {
                 MrContact mrContact = MrMailbox.getContact(blockedUserIds[i]);
-                    ((UserCell) view).setData(blockedUserIds[i], 0, mrContact.getDisplayName(), mrContact.getAddr(), 0);
+                    ((UserCell) view).setData(mrContact, 0);
             }
             return view;
         }

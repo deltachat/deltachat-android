@@ -3601,38 +3601,16 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
             currentChat = MessagesController.getInstance().getChat(currentMessageObject.messageOwner.to_id.channel_id);
         }
 
+        MrContact mrContact = null;
         String cname = "";
         if(currentUser!=null && isChat) {
-            MrContact mrContact = MrMailbox.getContact(currentUser.id);
+            mrContact = MrMailbox.getContact(currentUser.id);
             cname = mrContact.getDisplayName();
         }
 
         if (isChat && !messageObject.isOutOwner() && messageObject.isFromUser()) {
             isAvatarVisible = true;
-            /*
-            if (currentUser != null) {
-                if (currentUser.photo != null) {
-                    currentPhoto = currentUser.photo.photo_small;
-                } else {
-                    currentPhoto = null;
-                }
-                avatarDrawable.setInfo(currentUser);
-            } else if (currentChat != null) {
-                if (currentChat.photo != null) {
-                    currentPhoto = currentChat.photo.photo_small;
-                } else {
-                    currentPhoto = null;
-                }
-                avatarDrawable.setInfo(currentChat);
-            } else {
-                currentPhoto = null;
-                avatarDrawable.setInfo(messageObject.messageOwner.from_id, null, null, false);
-            }
-            */
-
-            // MrAvatar ...
-            avatarDrawable.setInfoByName(cname);
-            avatarImage.setImage(currentPhoto, "50_50", avatarDrawable, null, false);
+            ContactsController.setupAvatar(avatarImage, avatarDrawable, mrContact, null);
         }
 
 

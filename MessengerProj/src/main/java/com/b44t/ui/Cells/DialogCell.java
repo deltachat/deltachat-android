@@ -25,6 +25,7 @@ import android.text.style.ForegroundColorSpan;
 import android.view.MotionEvent;
 
 import com.b44t.messenger.AndroidUtilities;
+import com.b44t.messenger.ContactsController;
 import com.b44t.messenger.LocaleController;
 import com.b44t.messenger.MessageObject;
 import com.b44t.messenger.MrChat;
@@ -643,26 +644,7 @@ public class DialogCell extends BaseCell {
             }
         }
 
-        TLRPC.FileLocation photo = null;
-        /* EDIT BY MR
-        if (user != null) {
-            if (user.photo != null) {
-                photo = user.photo.photo_small;
-            }
-            avatarDrawable.setInfo(user);
-        } else if (chat != null) {
-            if (chat.photo != null) {
-                photo = chat.photo.photo_small;
-            }
-            avatarDrawable.setInfo(chat);
-        }
-        */
-
-        // MrAvatar
-        String cname = m_mrChat.getName();
-        avatarDrawable.setInfoByName(cname);
-
-        avatarImage.setImage(photo, "50_50", avatarDrawable, null, false);
+        ContactsController.setupAvatar(avatarImage, avatarDrawable, null, m_mrChat);
 
         if (getMeasuredWidth() != 0 || getMeasuredHeight() != 0) {
             buildLayout();

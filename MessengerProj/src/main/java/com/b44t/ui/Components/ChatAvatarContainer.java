@@ -16,6 +16,7 @@ import android.view.View;
 import android.widget.FrameLayout;
 
 import com.b44t.messenger.AndroidUtilities;
+import com.b44t.messenger.ContactsController;
 import com.b44t.messenger.MrChat;
 import com.b44t.messenger.MrMailbox;
 import com.b44t.messenger.TLRPC;
@@ -112,28 +113,8 @@ public class ChatAvatarContainer extends FrameLayout {
     }
 
     public void checkAndUpdateAvatar() {
-        TLRPC.FileLocation newPhoto = null;
-        /* EDIT BY MR
-        TLRPC.User user = parentFragment.getCurrentUser();
-        TLRPC.Chat chat = parentFragment.getCurrentChat();
-        if (user != null) {
-            if (user.photo != null) {
-                newPhoto = user.photo.photo_small;
-            }
-            avatarDrawable.setInfo(user);
-        } else if (chat != null) {
-            if (chat.photo != null) {
-                newPhoto = chat.photo.photo_small;
-            }
-            avatarDrawable.setInfo(chat);
-        }
-        */
-
-        // MrAvatar ...
-        avatarDrawable.setInfoByName(parentFragment.m_mrChat.getName());
-
         if (avatarImageView != null) {
-            avatarImageView.setImage(newPhoto, "50_50", avatarDrawable);
+            ContactsController.setupAvatar(avatarImageView, avatarDrawable, null, parentFragment.m_mrChat);
         }
     }
 }

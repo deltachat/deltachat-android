@@ -82,8 +82,7 @@ public class ContactsAdapter extends BaseFragmentAdapter {
         if(curr_user_index>=0 && curr_user_index<contactIds.length) {
             int curr_user_id = contactIds[curr_user_index];
             MrContact mrContact = MrMailbox.getContact(curr_user_id);
-            ((UserCell) convertView).setData(curr_user_id, 0, mrContact.getDisplayName(),
-                    mrContact.getAddr(), 0);
+            ((UserCell) convertView).setData(mrContact, 0);
             if (checkedMap != null) {
                 ((UserCell) convertView).setChecked(checkedMap.containsKey(curr_user_id), !scrolling);
             }
