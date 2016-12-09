@@ -309,6 +309,17 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                     presentFragment(new ContactsActivity(args));
                     drawerLayoutContainer.closeDrawer(false);
                 }
+                else if (position == DrawerLayoutAdapter.iInviteFriends) {
+                    try {
+                        Intent intent = new Intent(Intent.ACTION_SEND);
+                        intent.setType("text/plain");
+                        intent.putExtra(Intent.EXTRA_TEXT, MrMailbox.getInviteText());
+                        startActivityForResult(Intent.createChooser(intent, LocaleController.getString("InviteFriends", R.string.InviteFriends)), 500);
+                    } catch (Exception e) {
+                        FileLog.e("tmessages", e);
+                    }
+                    drawerLayoutContainer.closeDrawer(false);
+                }
                 else if (position == DrawerLayoutAdapter.iDeaddrop) {
                     Bundle args = new Bundle();
                     args.putInt("chat_id", MrChat.MR_CHAT_ID_DEADDROP);

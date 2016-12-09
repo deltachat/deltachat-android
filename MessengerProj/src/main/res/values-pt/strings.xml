@@ -623,4 +623,5 @@
     <string name="NewChat">Novo Chat</string>
     <string name="Media">Mídias</string>
     <string name="SeachUser">Busca</string>
+    <string name="InviteFriends">Convidar Amigos</string>
 </resources>
