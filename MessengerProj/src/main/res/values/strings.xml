@@ -694,6 +694,6 @@
     <string name="ConfiguringAccount">Configuring account...</string>
     <string name="CannotConnect">Cannot connect, please check the configuration.</string>
     <string name="Intro7Message"><![CDATA[<b>Delta Chat</b>]]> is safe for business use, compatible and standards-based.</string>
-    <string name="InviteFriends">Invite friends</string>
+    <string name="InviteMenuEntry">Send invitations</string>
     <string name="InviteText">I\'m using Delta Chat messenger now - %1$s - you can text me at %2$s</string>
 </resources>

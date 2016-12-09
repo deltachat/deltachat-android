@@ -35,7 +35,7 @@ public class DrawerLayoutAdapter extends BaseAdapter {
     public final static int iNewGroup          = 3;
     public final static int iDivider           = 4;
     public final static int iSettings          = 5;
-    public final static int iInviteFriends     = 6;
+    public final static int iInviteMenuEntry   = 6;
     public final static int iDeaddrop          = 7;
     public final static int iFaq               = 8;
     public final static int iCount             = 9;
@@ -104,8 +104,8 @@ public class DrawerLayoutAdapter extends BaseAdapter {
                 actionCell.setTextAndIcon(LocaleController.getString("NewChat", R.string.NewChat), R.drawable.menu_newchat);
             } else if (i == iNewGroup) {
                 actionCell.setTextAndIcon(LocaleController.getString("NewGroup", R.string.NewGroup), R.drawable.menu_empty);
-            } else if (i == iInviteFriends) {
-                actionCell.setTextAndIcon(LocaleController.getString("InviteFriends", R.string.InviteFriends), R.drawable.menu_empty);
+            } else if (i == iInviteMenuEntry) {
+                actionCell.setTextAndIcon(LocaleController.getString("InviteMenuEntry", R.string.InviteMenuEntry), R.drawable.menu_empty);
             } else if (i == iDeaddrop) {
                 actionCell.setTextAndIcon(LocaleController.getString("Deaddrop", R.string.Deaddrop), R.drawable.menu_empty);
                 // we do not want an icon beside the mailbox:

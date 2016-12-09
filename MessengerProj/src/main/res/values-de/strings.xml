@@ -693,6 +693,6 @@
     <string name="NoChatsHelp">Unten auf das Plussymbol für die erste Chatnachricht tippen; der Menüknopf öffnet die weiteren Opitonen.</string>
     <string name="CannotDeleteChat">Kann Chat nicht löschen</string>
     <string name="ConfiguringAccount">Konto konfigurieren...</string>
-    <string name="InviteFriends">Freunde einladen</string>
+    <string name="InviteMenuEntry">Einladungen versenden</string>
     <string name="InviteText">Ich verwende nun auch den Delta Chat Messenger - %1$s - und bin dort unter %2$s erreichbar.</string>
 </resources>
