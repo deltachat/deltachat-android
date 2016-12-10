@@ -22,7 +22,7 @@ import com.b44t.messenger.TLRPC;
 
 public class BackupImageView extends View {
 
-    private ImageReceiver imageReceiver;
+    public ImageReceiver imageReceiver;
     private int width = -1;
     private int height = -1;
 

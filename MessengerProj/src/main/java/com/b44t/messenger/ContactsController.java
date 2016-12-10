@@ -20,12 +20,13 @@ import android.provider.ContactsContract;
 import android.util.Log;
 
 import com.b44t.ui.Components.AvatarDrawable;
-import com.b44t.ui.Components.BackupImageView;
 
 import java.io.InputStream;
 import java.util.HashMap;
 
 public class ContactsController {
+
+    static ContentResolver s_cr;
 
     public static class Contact {
         public String name;
@@ -149,68 +150,105 @@ public class ContactsController {
     /* Handle contact images
      **********************************************************************************************/
 
-    public static void setupAvatar(Object avtObj,
+    public static void setupAvatar(ImageReceiver avtImageReceiver,
                                    AvatarDrawable avtDrawable,
                                    MrContact mrContact, MrChat mrChat)
     {
+        // get email to search avatar image for
         String fallbackName = "";
+        String email = null;
         if( mrContact!=null ) {
+            email = mrContact.getAddr();
             fallbackName = mrContact.getDisplayName();
         }
         else if( mrChat != null ) {
             fallbackName = mrChat.getName();
+            if(mrChat.getType()==MrChat.MR_CHAT_NORMAL) {
+                int[] contact_ids = MrMailbox.getChatContacts(mrChat.getId());
+                if( contact_ids.length==1 ) {
+                    MrContact mrc = MrMailbox.getContact(contact_ids[0]);
+                    email = mrc.getAddr();
+                    fallbackName = mrc.getDisplayName();
+                }
+            }
         }
 
-        avtDrawable.setInfoByName(fallbackName);
-
-        TLRPC.FileLocation photo = null;
-
-        if( avtObj instanceof ImageReceiver ) {
-            ((ImageReceiver)avtObj).setImage(photo, "50_50", avtDrawable, null, false);
+        // try to get avatar image from the address book
+        Bitmap photoBitmap = null;
+        if( email!=null ) {
+            try {
+                if (s_cr == null) {
+                    s_cr = ApplicationLoader.applicationContext.getContentResolver();
+                }
+                Uri uri = Uri.withAppendedPath(ContactsContract.CommonDataKinds.Email.CONTENT_LOOKUP_URI, Uri.encode(email));
+                Cursor pCur = s_cr.query(uri,
+                        new String[] {
+                                ContactsContract.Contacts._ID,
+                                ContactsContract.Contacts.PHOTO_ID,
+                                ContactsContract.CommonDataKinds.Email.ADDRESS
+                                //ContactsContract.CommonDataKinds.Email.DISPLAY_NAME,
+                        },
+                        null, null, null);
+                if (pCur != null ) {
+                    if( pCur.getCount() > 0 ) {
+                        while (pCur.moveToNext()) {
+                            int contact_id = pCur.getInt(0);
+                            int photo_id = pCur.getInt(1);
+                            String addr = pCur.getString(2);
+                            if( addr.equalsIgnoreCase(email) && contact_id > 0 && photo_id > 0) {
+                                photoBitmap = loadContactPhoto(s_cr, contact_id, photo_id);
+                                break;
+                            }
+                        }
+                    }
+                    pCur.close();
+                }
+            }
+            catch (Exception e) {
+                ;
+            }
         }
-        else if( avtObj instanceof BackupImageView ) {
-            ((BackupImageView)avtObj).setImage(photo, "50_50", avtDrawable);
+
+        if( photoBitmap != null ) {
+            avtImageReceiver.setImageBitmap(photoBitmap);
+            avtImageReceiver.clipCircled();
+        }
+        else {
+            avtDrawable.setInfoByName(fallbackName);
+            avtImageReceiver.setImage(null, "50_50", avtDrawable, null, false);
         }
     }
 
     // from http://stackoverflow.com/questions/2383580/how-do-i-load-a-contact-photo
-    public static Bitmap loadContactPhoto(ContentResolver cr, long id, long photo_id)
+    public static Bitmap loadContactPhoto(ContentResolver cr, long contact_id, long photo_id)
     {
-        Uri uri = ContentUris.withAppendedId(ContactsContract.Contacts.CONTENT_URI, id);
+        // first try using photo_id
+        byte[] photoBytes = null;
+        Uri photoUri = ContentUris.withAppendedId(ContactsContract.Data.CONTENT_URI, photo_id);
+        Cursor c = cr.query(photoUri, new String[] {ContactsContract.CommonDataKinds.Photo.PHOTO}, null, null, null);
+        if( c != null ) {
+            try {
+                if (c.moveToFirst()) {
+                    photoBytes = c.getBlob(0);
+                }
+
+            } catch (Exception e) {
+                ;
+            } finally {
+                c.close();
+            }
+        }
+        if (photoBytes != null) {
+            return BitmapFactory.decodeByteArray(photoBytes, 0, photoBytes.length);
+        }
+
+        // second try using contact_id
+        Uri uri = ContentUris.withAppendedId(ContactsContract.Contacts.CONTENT_URI, contact_id);
         InputStream input = ContactsContract.Contacts.openContactPhotoInputStream(cr, uri);
-        if (input != null)
-        {
+        if (input != null) {
             return BitmapFactory.decodeStream(input);
         }
-        else
-        {
-            Log.d("PHOTO","first try failed to load photo");
-        }
 
-        byte[] photoBytes = null;
-
-        Uri photoUri = ContentUris.withAppendedId(ContactsContract.Data.CONTENT_URI, photo_id);
-
-        Cursor c = cr.query(photoUri, new String[] {ContactsContract.CommonDataKinds.Photo.PHOTO}, null, null, null);
-
-        try
-        {
-            if (c.moveToFirst())
-                photoBytes = c.getBlob(0);
-
-        } catch (Exception e) {
-            // TODO: handle exception
-            e.printStackTrace();
-
-        } finally {
-
-            c.close();
-        }
-
-        if (photoBytes != null)
-            return BitmapFactory.decodeByteArray(photoBytes,0,photoBytes.length);
-        else
-            Log.d("PHOTO","second try also failed");
         return null;
     }
 }

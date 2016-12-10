@@ -173,7 +173,7 @@ public class UserCell extends FrameLayout {
             imageView.setImageResource(currentResId);
         }
 
-        ContactsController.setupAvatar(avatarImageView, avatarDrawable, m_mrContact, null);
+        ContactsController.setupAvatar(avatarImageView.imageReceiver, avatarDrawable, m_mrContact, null);
     }
 
     @Override

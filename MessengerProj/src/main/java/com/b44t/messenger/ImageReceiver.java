@@ -14,6 +14,7 @@ import android.graphics.Canvas;
 import android.graphics.ColorFilter;
 import android.graphics.Matrix;
 import android.graphics.Paint;
+import android.graphics.Path;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffColorFilter;
 import android.graphics.Rect;
@@ -534,6 +535,13 @@ public class ImageReceiver implements NotificationCenter.NotificationCenterDeleg
                         }
                         if (isVisible) {
                             try {
+
+                                if( m_clipCircled ) {
+                                    Path clipPath = new Path();
+                                    clipPath.addCircle(imageX+imageW/2, imageY+imageH/2, imageW/2, Path.Direction.CW);
+                                    canvas.clipPath(clipPath);
+                                }
+
                                 bitmapDrawable.setAlpha(alpha);
                                 bitmapDrawable.draw(canvas);
                             } catch (Exception e) {
@@ -588,6 +596,12 @@ public class ImageReceiver implements NotificationCenter.NotificationCenterDeleg
                 }
             }
         }
+    }
+
+    private boolean m_clipCircled = false;
+    public void clipCircled()
+    {
+        m_clipCircled = true;
     }
 
     public boolean draw(Canvas canvas) {

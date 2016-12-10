@@ -1232,7 +1232,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
             nameTextView[a].setRightDrawable(rightIcon);
         }
 
-        ContactsController.setupAvatar(avatarImage, avatarDrawable, mrContact, mrChat);
+        ContactsController.setupAvatar(avatarImage.imageReceiver, avatarDrawable, mrContact, mrChat);
     }
 
     private void createActionBarMenu() {
