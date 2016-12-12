@@ -86,7 +86,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
     private ActionBarMenuItem passcodeItem;
     private ImageView floatingButton;
 
-    private AlertDialog permissionDialog;
+    //private AlertDialog permissionDialog;
 
     // Floating hiding action
     /*
@@ -627,7 +627,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
             if (activity != null) {
                 checkPermission = false;
                 if (activity.checkSelfPermission(Manifest.permission.READ_CONTACTS) != PackageManager.PERMISSION_GRANTED || activity.checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-                    if (activity.shouldShowRequestPermissionRationale(Manifest.permission.READ_CONTACTS)) {
+                    /* if (activity.shouldShowRequestPermissionRationale(Manifest.permission.READ_CONTACTS)) {
                         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
                         builder.setMessage(LocaleController.getString("PermissionContacts", R.string.PermissionContacts));
                         builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), null);
@@ -637,7 +637,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
                         builder.setMessage(LocaleController.getString("PermissionStorage", R.string.PermissionStorage));
                         builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), null);
                         showDialog(permissionDialog = builder.create());
-                    } else {
+                    } else */ {
                         askForPermissons();
                     }
                 }
@@ -662,9 +662,10 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
             permissons.add(Manifest.permission.WRITE_EXTERNAL_STORAGE);
         }
         String[] items = permissons.toArray(new String[permissons.size()]);
-        activity.requestPermissions(items, 1);
+        activity.requestPermissions(items, LaunchActivity.REQ_CONTACT_N_STORAGE_PERMISON_ID);
     }
 
+    /*
     @Override
     protected void onDialogDismiss(Dialog dialog) {
         super.onDialogDismiss(dialog);
@@ -672,6 +673,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
             askForPermissons();
         }
     }
+    */
 
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
@@ -696,7 +698,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
 
     @Override
     public void onRequestPermissionsResultFragment(int requestCode, String[] permissions, int[] grantResults) {
-        if (requestCode == 1) {
+        if (requestCode == LaunchActivity.REQ_CONTACT_N_STORAGE_PERMISON_ID) {
             for (int a = 0; a < permissions.length; a++) {
                 if (grantResults.length <= a || grantResults[a] != PackageManager.PERMISSION_GRANTED) {
                     continue;

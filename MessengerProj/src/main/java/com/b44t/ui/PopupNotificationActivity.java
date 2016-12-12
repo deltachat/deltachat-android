@@ -457,11 +457,13 @@ public class PopupNotificationActivity extends Activity implements NotificationC
             }
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setMessage(LocaleController.getString("PermissionNoAudio", R.string.PermissionNoAudio));
-            builder.setNegativeButton(LocaleController.getString("PermissionOpenSettings", R.string.PermissionOpenSettings), new DialogInterface.OnClickListener() {
+            builder.setPositiveButton(LocaleController.getString("PermissionOpenSettings", R.string.PermissionOpenSettings), new DialogInterface.OnClickListener() {
                 @TargetApi(Build.VERSION_CODES.GINGERBREAD)
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     try {
+                        // the settings button is needed as the user may have selected "do not ask again" and
+                        // may get in trouble to activate the feature otherwise ...
                         Intent intent = new Intent(android.provider.Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
                         intent.setData(Uri.parse("package:" + ApplicationLoader.applicationContext.getPackageName()));
                         startActivity(intent);
@@ -470,7 +472,7 @@ public class PopupNotificationActivity extends Activity implements NotificationC
                     }
                 }
             });
-            builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), null);
+            builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
             builder.show();
         }
     }

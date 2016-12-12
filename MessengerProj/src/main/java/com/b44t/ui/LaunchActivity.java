@@ -8,6 +8,7 @@
 
 package com.b44t.ui;
 
+import android.Manifest;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -1305,31 +1306,50 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
         }
     }
 
+    public static final int REQ_CONTACT_N_STORAGE_PERMISON_ID = 1;
+
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        if (requestCode == 3 || requestCode == 4 || requestCode == 5) {
-            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+        if (requestCode == REQ_CONTACT_N_STORAGE_PERMISON_ID || requestCode == 3 || requestCode == 4 || requestCode == 5) {
+            int grantedCount = 0;
+            String msg = "";
+            for (int i = 0; i < permissions.length; i++) {
+                if (grantResults[i] == PackageManager.PERMISSION_GRANTED) {
+                    grantedCount++;
+                }
+                else {
+                    switch (permissions[i]) {
+                        case Manifest.permission.READ_CONTACTS:
+                            msg += "- " + LocaleController.getString("PermissionContacts", R.string.PermissionContacts) + "\n\n";
+                            break;
+                        case Manifest.permission.WRITE_EXTERNAL_STORAGE:
+                            msg += "- " + LocaleController.getString("PermissionStorage", R.string.PermissionStorage) + "\n\n";
+                            break;
+                        case Manifest.permission.RECORD_AUDIO:
+                            msg += "- " + LocaleController.getString("PermissionNoAudio", R.string.PermissionNoAudio) + "\n\n";
+                            break;
+                    }
+                }
+            }
+
+            if (grantedCount==grantResults.length) {
                 if (requestCode == 4) {
                     ImageLoader.getInstance().checkMediaPaths();
-                } /*else if (requestCode == 5) {
-                    ContactsController.getInstance().readContacts();
-                }*/
-                return;
+                }
+                return; // everyting granted
             }
+
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            if (requestCode == 3) {
-                builder.setMessage(LocaleController.getString("PermissionNoAudio", R.string.PermissionNoAudio));
-            } else if (requestCode == 4) {
-                builder.setMessage(LocaleController.getString("PermissionStorage", R.string.PermissionStorage));
-            } else if (requestCode == 5) {
-                builder.setMessage(LocaleController.getString("PermissionContacts", R.string.PermissionContacts));
-            }
-            builder.setNegativeButton(LocaleController.getString("PermissionOpenSettings", R.string.PermissionOpenSettings), new DialogInterface.OnClickListener() {
+            builder.setMessage(msg.trim());
+
+            builder.setPositiveButton(LocaleController.getString("PermissionOpenSettings", R.string.PermissionOpenSettings), new DialogInterface.OnClickListener() {
                 @TargetApi(Build.VERSION_CODES.GINGERBREAD)
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     try {
+                        // the settings button is needed as the user may have selected "do not ask again" and
+                        // may get in trouble to activate the feature otherwise ...
                         Intent intent = new Intent(android.provider.Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
                         intent.setData(Uri.parse("package:" + ApplicationLoader.applicationContext.getPackageName()));
                         startActivity(intent);
@@ -1338,7 +1358,7 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                     }
                 }
             });
-            builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), null);
+            builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
             builder.show();
             return;
         } else if (requestCode == 2) {

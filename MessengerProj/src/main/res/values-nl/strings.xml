@@ -492,7 +492,7 @@
     <string name="PermissionNoAudio">Delta Chat heeft toegang tot je microfoon nodig om spraakberichten te kunnen verzenden.</string>
     <string name="PermissionNoLocation">Delta Chat heeft toegang tot je locatie nodig om deze te kunnen delen met je vrienden.</string>
     <string name="PermissionNoLocationPosition">Delta Chat heeft toegang tot je locatie nodig.</string>
-    <string name="PermissionOpenSettings">INSTELLINGEN</string>
+    <string name="PermissionOpenSettings">Instellingen</string>
     <!--Intro view-->
     <string name="IntroStartMessaging">Begin met chatten</string>
     <!--plural-->

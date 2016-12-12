@@ -492,7 +492,7 @@
     <string name="PermissionNoAudio">Delta Chat necesita acceso a tu micrófono, para que puedas enviar mensajes de voz.</string>
     <string name="PermissionNoLocation">Delta Chat necesita acceso a tu ubicación, para que puedas compartirla con tus amigos.</string>
     <string name="PermissionNoLocationPosition">Delta Chat necesita acceso a tu ubicación.</string>
-    <string name="PermissionOpenSettings">AJUSTES</string>
+    <string name="PermissionOpenSettings">Ajustes</string>
     <!--Intro view-->
     <string name="IntroStartMessaging">Empieza a conversar</string>
     <!--plural-->

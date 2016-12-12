@@ -492,7 +492,7 @@
     <string name="PermissionNoAudio">Delta Chat needs access to your microphone so that you can send voice messages.</string>
     <string name="PermissionNoLocation">Delta Chat needs access to your location so that you can share it with your friends.</string>
     <string name="PermissionNoLocationPosition">Delta Chat needs access to your location.</string>
-    <string name="PermissionOpenSettings">SETTINGS</string>
+    <string name="PermissionOpenSettings">Settings</string>
     <!--Intro view-->
     <string name="Intro1Headline">Delta Chat</string>
     <string name="Intro1Message">The messenger with the <![CDATA[<b>largest range</b>]]> in the world.<![CDATA[<br/><b>Free</b>]]> and <![CDATA[<b>save</b>]]>.</string>

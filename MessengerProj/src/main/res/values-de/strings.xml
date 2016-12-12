@@ -487,12 +487,12 @@
     <string name="ForwardMessagesToGroup">Weiterleiten an %1$s?</string>
     <string name="RaiseToSpeakAlert">Möchtest du \"Zum Sprechen ans Ohr\" für Sprachnachrichten aktivieren?</string>
     <!--permissions-->
-    <string name="PermissionContacts">Delta Chat benötigt Zugriff auf deine Kontakte um dich auf all denen Geräten mit deinen Freunden zu verbinden. </string>
-    <string name="PermissionStorage">Delta Chat benötigt Zugriff auf deinen Speicher, damit du Bilder, Videos und Musik senden und speichern kannst.</string>
-    <string name="PermissionNoAudio">Delta Chat benötigt Zugriff auf dein Mikrofon, damit du Sprachnachrichten senden kannst. </string>
+    <string name="PermissionContacts">Für eine einfache Kontaktaufnahme, benötigt Delta Chat Zugriff auf die Kontakte. Die Daten werden dabei nur lokal verarbeitet und zu keinem Server oder Dienst übertragen.</string>
+    <string name="PermissionStorage">Um Bilder, Videos, Musik und Dateien senden und speichern zu können, benötigt Delta Chat Zugriff auf den Speicher.</string>
+    <string name="PermissionNoAudio">Um Sprachnachrichten versenden zu können, benötigt Delta Chat Zugriff auf das Mikrofon.</string>
     <string name="PermissionNoLocation">Delta Chat benötigt Zugriff auf deinen Standort, damit du ihn mit Freunden teilen kannst. </string>
     <string name="PermissionNoLocationPosition">Delta Chat benötigt Zugriff auf deinen Standort.</string>
-    <string name="PermissionOpenSettings">EINSTELLUNGEN</string>
+    <string name="PermissionOpenSettings">Einstellungen</string>
     <!--Intro view-->
     <string name="Intro1Headline">Delta Chat</string>
     <string name="Intro1Message">Der Messenger mit der <![CDATA[<b>größten Reichweite</b>]]> der Welt.<![CDATA[<br/><b>Kostenlos</b>]]> und <![CDATA[<b>sicher</b>]]>.</string>
