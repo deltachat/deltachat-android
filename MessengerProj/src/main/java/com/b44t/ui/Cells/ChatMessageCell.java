@@ -3610,7 +3610,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
 
         if (isChat && !messageObject.isOutOwner() && messageObject.isFromUser()) {
             isAvatarVisible = true;
-            ContactsController.setupAvatar(avatarImage, avatarDrawable, mrContact, null);
+            ContactsController.setupAvatar(this, avatarImage, avatarDrawable, mrContact, null);
         }
 
 

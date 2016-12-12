@@ -644,7 +644,7 @@ public class DialogCell extends BaseCell {
             }
         }
 
-        ContactsController.setupAvatar(avatarImage, avatarDrawable, null, m_mrChat);
+        ContactsController.setupAvatar(this, avatarImage, avatarDrawable, null, m_mrChat);
 
         if (getMeasuredWidth() != 0 || getMeasuredHeight() != 0) {
             buildLayout();

@@ -42,6 +42,7 @@ import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.b44t.messenger.AndroidUtilities;
+import com.b44t.messenger.ContactsController;
 import com.b44t.messenger.ImageLoader;
 import com.b44t.messenger.MessageObject;
 import com.b44t.messenger.MessagesController;
@@ -1378,6 +1379,7 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
         if (PhotoViewer.getInstance().isVisible()) {
             PhotoViewer.getInstance().onPause();
         }
+        ContactsController.cleanupAvatarCache();
     }
 
     @Override
@@ -1436,6 +1438,7 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
             passcodeView.onResume();
         }
         ConnectionsManager.getInstance().setAppPaused(false, false);
+        ContactsController.cleanupAvatarCache();
         updateCurrentConnectionState();
         if (PhotoViewer.getInstance().isVisible()) {
             PhotoViewer.getInstance().onResume();

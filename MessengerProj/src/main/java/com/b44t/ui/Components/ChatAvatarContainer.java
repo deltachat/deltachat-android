@@ -114,7 +114,7 @@ public class ChatAvatarContainer extends FrameLayout {
 
     public void checkAndUpdateAvatar() {
         if (avatarImageView != null) {
-            ContactsController.setupAvatar(avatarImageView.imageReceiver, avatarDrawable, null, parentFragment.m_mrChat);
+            ContactsController.setupAvatar(avatarImageView, avatarImageView.imageReceiver, avatarDrawable, null, parentFragment.m_mrChat);
         }
     }
 }

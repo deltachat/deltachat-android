@@ -177,7 +177,7 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
                 @Override
                 public void run() {
 
-                    String pbcontacts = ContactsController.getInstance().readContactsFromPhoneBook();
+                    String pbcontacts = ContactsController.readContactsFromPhoneBook();
                     if (!pbcontacts.isEmpty()) {
                         if (MrMailbox.addAddressBook(pbcontacts) > 0) {
                             AndroidUtilities.runOnUIThread(new Runnable() {
