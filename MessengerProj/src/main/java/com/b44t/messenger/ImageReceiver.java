@@ -536,11 +536,13 @@ public class ImageReceiver implements NotificationCenter.NotificationCenterDeleg
                         if (isVisible) {
                             try {
 
+                                /*
                                 if( m_clipCircled ) {
                                     Path clipPath = new Path();
                                     clipPath.addCircle(imageX+imageW/2, imageY+imageH/2, imageW/2, Path.Direction.CW);
                                     canvas.clipPath(clipPath);
                                 }
+                                */
 
                                 bitmapDrawable.setAlpha(alpha);
                                 bitmapDrawable.draw(canvas);
@@ -598,11 +600,13 @@ public class ImageReceiver implements NotificationCenter.NotificationCenterDeleg
         }
     }
 
+    /* better use ContactsController.createCoundBitmap() which also uses antialiasing
     private boolean m_clipCircled = false;
     public void clipCircled()
     {
         m_clipCircled = true;
     }
+    */
 
     public boolean draw(Canvas canvas) {
         try {

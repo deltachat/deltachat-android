@@ -14,6 +14,12 @@ import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.BitmapShader;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.RectF;
+import android.graphics.Shader;
 import android.net.Uri;
 import android.os.Build;
 import android.provider.ContactsContract;
@@ -21,6 +27,7 @@ import android.util.Log;
 
 import com.b44t.ui.Components.AvatarDrawable;
 
+import java.io.File;
 import java.io.InputStream;
 import java.util.HashMap;
 
@@ -196,7 +203,10 @@ public class ContactsController {
                             int photo_id = pCur.getInt(1);
                             String addr = pCur.getString(2);
                             if( addr.equalsIgnoreCase(email) && contact_id > 0 && photo_id > 0) {
-                                photoBitmap = loadContactPhoto(s_cr, contact_id, photo_id);
+                                Bitmap tempBitmap = loadContactPhoto(s_cr, contact_id, photo_id);
+                                if( tempBitmap != null ) {
+                                    photoBitmap = createRoundBitmap(tempBitmap);
+                                }
                                 break;
                             }
                         }
@@ -211,7 +221,6 @@ public class ContactsController {
 
         if( photoBitmap != null ) {
             avtImageReceiver.setImageBitmap(photoBitmap);
-            avtImageReceiver.clipCircled();
         }
         else {
             avtDrawable.setInfoByName(fallbackName);
@@ -249,6 +258,28 @@ public class ContactsController {
             return BitmapFactory.decodeStream(input);
         }
 
+        return null;
+    }
+
+    private static Paint roundPaint;
+    private static RectF bitmapRect;
+    private static Bitmap createRoundBitmap(Bitmap bitmap) {
+        try {
+            Bitmap result = Bitmap.createBitmap(bitmap.getWidth(), bitmap.getHeight(), Bitmap.Config.ARGB_8888);
+            result.eraseColor(Color.TRANSPARENT);
+            Canvas canvas = new Canvas(result);
+            BitmapShader shader = new BitmapShader(bitmap, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
+            if (roundPaint == null) {
+                roundPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+                bitmapRect = new RectF();
+            }
+            roundPaint.setShader(shader);
+            bitmapRect.set(0, 0, bitmap.getWidth(), bitmap.getHeight());
+            canvas.drawRoundRect(bitmapRect, bitmap.getWidth(), bitmap.getHeight(), roundPaint);
+            return result;
+        } catch (Throwable e) {
+            ;
+        }
         return null;
     }
 }
