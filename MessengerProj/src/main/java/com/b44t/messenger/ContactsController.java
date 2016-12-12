@@ -160,11 +160,13 @@ public class ContactsController {
      **********************************************************************************************/
 
     static class AvtCacheEntry {
-        public Bitmap m_avatarBitmap;
-        public String m_fallbackName;
+        public Bitmap  m_avatarBitmap;
+        public String  m_fallbackName;
+        public boolean m_needsReload;
         AvtCacheEntry(Bitmap avatarBitmap, String fallbackName) {
             m_avatarBitmap = avatarBitmap;
             m_fallbackName = fallbackName;
+            m_needsReload  = false;
         }
     }
 
@@ -179,10 +181,13 @@ public class ContactsController {
 
     public static void cleanupAvatarCache() {
         // to detect changes of the avatar images eg. in the Contacts App,
-        // this function should be called whenever the App goes to background.
+        // this function should be called whenever the App goes to background or back to foreground.
+        // instead of emptying the cache, we force a reloading (looks smarter - most times, the avatars do not change)
         synchronized (s_viewBindings /*we use s_viewBindings for locking!*/ ) {
             Log.i(TAG, "Avatar cache discarded.");
-            s_avtCache.clear();
+            for (AvtCacheEntry cacheEntry : s_avtCache.values()) {
+                cacheEntry.m_needsReload = true;
+            }
         }
     }
 
@@ -239,7 +244,11 @@ public class ContactsController {
         {
             // avatar is not in cache, empty the image (may be the bitmap of another use as we re-use the objects)
             avtImageReceiver.setImage(null, "50_50", null, null, false);
+        }
 
+        if( cacheEntry==null || cacheEntry.m_needsReload )
+        {
+            // avatar is not in cache or needs reloading:
             // load avatar in a working thread (when loaded, we'll add it to cache and invalidate back in the GUI thread)
             Utilities.searchQueue.postRunnable(new Runnable() {
                 @Override
