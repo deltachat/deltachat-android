@@ -108,24 +108,13 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
 
     private boolean disallowLongPress;
 
-    private boolean isSmallImage;
     private boolean drawImageButton;
     private int documentAttachType;
     private TLRPC.Document documentAttach;
     private boolean drawPhotoImage;
-    private boolean hasLinkPreview;
-    private int linkPreviewHeight;
+    private final boolean hasLinkPreview = false;
     private int mediaOffsetY;
-    private int descriptionY;
-    private int durationWidth;
-    private int descriptionX;
-    private int titleX;
-    private int authorX;
-    private StaticLayout siteNameLayout;
     private StaticLayout titleLayout;
-    private StaticLayout descriptionLayout;
-    private StaticLayout videoInfoLayout;
-    private StaticLayout authorLayout;
 
     private StaticLayout docTitleLayout;
     private int docTitleOffsetX;
@@ -568,6 +557,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
         return false;
     }
 
+    /*
     private boolean checkLinkPreviewMotionEvent(MotionEvent event) {
         if (currentMessageObject.type != 0 || !hasLinkPreview) {
             return false;
@@ -688,6 +678,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
         }
         return false;
     }
+    */
 
     private boolean checkOtherButtonMotionEvent(MotionEvent event) {
         if (documentAttachType != DOCUMENT_ATTACH_TYPE_DOCUMENT && currentMessageObject.type != 12 && documentAttachType != DOCUMENT_ATTACH_TYPE_MUSIC && documentAttachType != DOCUMENT_ATTACH_TYPE_VIDEO && documentAttachType != DOCUMENT_ATTACH_TYPE_GIF && currentMessageObject.type != 8) {
@@ -853,9 +844,9 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
         if (!result) {
             result = checkOtherButtonMotionEvent(event);
         }
-        if (!result) {
+        /*if (!result) {
             result = checkLinkPreviewMotionEvent(event);
-        }
+        }*/
         if (!result) {
             result = checkCaptionMotionEvent(event);
         }
@@ -1203,7 +1194,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
     }
 
     private boolean isUserDataChanged() {
-        if (currentMessageObject != null && (!hasLinkPreview && currentMessageObject.messageOwner.media != null && currentMessageObject.messageOwner.media.webpage instanceof TLRPC.TL_webPage)) {
+        if (currentMessageObject != null && (!hasLinkPreview && currentMessageObject.messageOwner.media != null &&  false/*currentMessageObject.messageOwner.media.webpage instanceof TLRPC.TL_webPage*/)) {
             return true;
         }
         if (currentMessageObject == null || currentUser == null && currentChat == null) {
@@ -1618,18 +1609,12 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
             resetPressedLink(-1);
             messageObject.forceUpdate = false;
             drawPhotoImage = false;
-            hasLinkPreview = false;
             linkPreviewPressed = false;
             buttonPressed = 0;
-            linkPreviewHeight = 0;
             mediaOffsetY = 0;
             documentAttachType = DOCUMENT_ATTACH_TYPE_NONE;
             documentAttach = null;
-            descriptionLayout = null;
             titleLayout = null;
-            videoInfoLayout = null;
-            siteNameLayout = null;
-            authorLayout = null;
             captionLayout = null;
             docTitleLayout = null;
             drawImageButton = false;
@@ -1685,7 +1670,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                     timeMore += dp(20.5f);
                 }
 
-                hasLinkPreview = messageObject.messageOwner.media instanceof TLRPC.TL_messageMediaWebPage && messageObject.messageOwner.media.webpage instanceof TLRPC.TL_webPage;
+                //hasLinkPreview = messageObject.messageOwner.media instanceof TLRPC.TL_messageMediaWebPage && messageObject.messageOwner.media.webpage instanceof TLRPC.TL_webPage;
                 backgroundWidth = maxWidth;
                 if (hasLinkPreview || maxWidth - messageObject.lastLineWidth < timeMore) {
                     backgroundWidth = Math.max(backgroundWidth, messageObject.lastLineWidth) + dp(31);
@@ -1711,7 +1696,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                 maxChildWidth = Math.max(maxChildWidth, replyTextWidth);
                 int maxWebWidth = 0;
 
-                if (hasLinkPreview) {
+                /*if (hasLinkPreview) {
                     int linkPreviewMaxWidth;
                     if (isTablet()) {
                         if (messageObject.isFromUser() && (currentMessageObject.messageOwner.to_id.channel_id != 0 || currentMessageObject.messageOwner.to_id.chat_id != 0) && !currentMessageObject.isOut()) {
@@ -2120,7 +2105,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                         }
                         calcBackgroundWidth(maxWidth, timeMore, maxChildWidth);
                     }
-                } else {
+                } else*/ {
                     photoImage.setImageBitmap((Drawable) null);
                     calcBackgroundWidth(maxWidth, timeMore, maxChildWidth);
                 }
@@ -2625,11 +2610,11 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                     timeAudioX = dp(76);
                 }
             }
-            if (hasLinkPreview) {
+            /*if (hasLinkPreview) {
                 seekBarX += dp(10);
                 buttonX += dp(10);
                 timeAudioX += dp(10);
-            }
+            }*/
             seekBarWaveform.setSize(backgroundWidth - dp(92 + (hasLinkPreview ? 10 : 0)), dp(30));
             seekBar.setSize(backgroundWidth - dp(72 + (hasLinkPreview ? 10 : 0)), dp(30));
             seekBarY = dp(13) + namesOffset + mediaOffsetY;
@@ -2653,11 +2638,11 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                     timeAudioX = dp(76);
                 }
             }
-            if (hasLinkPreview) {
+            /*if (hasLinkPreview) {
                 seekBarX += dp(10);
                 buttonX += dp(10);
                 timeAudioX += dp(10);
-            }
+            }*/
             seekBar.setSize(backgroundWidth - dp(65 + (hasLinkPreview ? 10 : 0)), dp(30));
             seekBarY = dp(29) + namesOffset + mediaOffsetY;
             buttonY = dp(13) + namesOffset + mediaOffsetY;
@@ -2674,9 +2659,9 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                     buttonX = dp(23);
                 }
             }
-            if (hasLinkPreview) {
+            /*if (hasLinkPreview) {
                 buttonX += dp(10);
-            }
+            }*/
             buttonY = dp(13) + namesOffset + mediaOffsetY;
             radialProgress.setProgressRect(buttonX, buttonY, buttonX + dp(44), buttonY + dp(44));
             photoImage.setImageCoords(buttonX - dp(10), buttonY - dp(10), photoImage.getImageWidth(), photoImage.getImageHeight());
@@ -2766,7 +2751,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                 }
             }
 
-            if (hasLinkPreview) {
+            /*if (hasLinkPreview) {
                 int startY = textY + currentMessageObject.textHeight + dp(8);
                 int linkX = textX + dp(1);
                 int linkPreviewY = startY;
@@ -2862,7 +2847,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                         canvas.restore();
                     }
                 }
-            }
+            }*/
             drawTime = true;
         } else if (drawPhotoImage) {
             imageDrawn = photoImage.draw(canvas);

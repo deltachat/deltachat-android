@@ -20,7 +20,6 @@ public class TLRPC {
 
 	public static class DraftMessage extends TLObject {
 		public int flags;
-		public boolean no_webpage;
 		public int reply_to_msg_id;
 		public String message;
 		public int date;
@@ -113,9 +112,6 @@ public class TLRPC {
 	public static class TL_messageMediaGeo extends MessageMedia {
 	}
 
-	public static class TL_messageMediaWebPage extends MessageMedia {
-	}
-
 	public static class PeerNotifySettings extends TLObject {
 		public int flags;
 		public boolean silent;
@@ -175,7 +171,6 @@ public class TLRPC {
 		public int flags;
 		public long id;
 		public String url;
-		public String display_url;
 		public String type;
 		public String site_name;
 		public String title;
@@ -189,9 +184,6 @@ public class TLRPC {
 		public int date;
 		public Document document;
 	}
-
-    public static class TL_webPage extends WebPage {
-    }
 
     public static class InputFileLocation extends TLObject {
 		public long id;

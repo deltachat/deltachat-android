@@ -2243,7 +2243,7 @@ public class ImageLoader {
             if (message.media.document.thumb instanceof TLRPC.TL_photoCachedSize) {
                 photoSize = message.media.document.thumb;
             }
-        } else if (message.media instanceof TLRPC.TL_messageMediaWebPage) {
+        } /*else if (message.media instanceof TLRPC.TL_messageMediaWebPage) {
             if (message.media.webpage.photo != null) {
                 for (TLRPC.PhotoSize size : message.media.webpage.photo.sizes) {
                     if (size instanceof TLRPC.TL_photoCachedSize) {
@@ -2252,7 +2252,7 @@ public class ImageLoader {
                     }
                 }
             }
-        }
+        }*/
         if (photoSize != null && photoSize.bytes != null && photoSize.bytes.length != 0) {
             if (photoSize.location instanceof TLRPC.TL_fileLocationUnavailable) {
                 photoSize.location = new TLRPC.TL_fileLocation();
@@ -2287,14 +2287,14 @@ public class ImageLoader {
                 }
             } else if (message.media instanceof TLRPC.TL_messageMediaDocument) {
                 message.media.document.thumb = newPhotoSize;
-            } else if (message.media instanceof TLRPC.TL_messageMediaWebPage) {
+            } /*else if (message.media instanceof TLRPC.TL_messageMediaWebPage) {
                 for (int a = 0; a < message.media.webpage.photo.sizes.size(); a++) {
                     if (message.media.webpage.photo.sizes.get(a) instanceof TLRPC.TL_photoCachedSize) {
                         message.media.webpage.photo.sizes.set(a, newPhotoSize);
                         break;
                     }
                 }
-            }
+            }*/
         }
     }
 

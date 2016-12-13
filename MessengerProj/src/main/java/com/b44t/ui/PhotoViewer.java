@@ -939,10 +939,6 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
 
             if (currentMessageObject != null) {
                 isVideo = currentMessageObject.isVideo();
-                        /*if (currentMessageObject.messageOwner.media instanceof TLRPC.TL_messageMediaWebPage) {
-                            AndroidUtilities.openUrl(parentActivity, currentMessageObject.messageOwner.media.webpage.url);
-                            return;
-                        }*/
                 f = FileLoader.getPathToMessage(currentMessageObject.messageOwner);
             } else if (currentFileLocation != null) {
                 f = FileLoader.getPathToAttach(currentFileLocation, avatarsDialogId != 0);
@@ -2470,7 +2466,7 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
                         size[0] = -1;
                     }
                 }
-            } else if (message.messageOwner.media instanceof TLRPC.TL_messageMediaPhoto && message.messageOwner.media.photo != null || message.messageOwner.media instanceof TLRPC.TL_messageMediaWebPage && message.messageOwner.media.webpage != null) {
+            } else if (message.messageOwner.media instanceof TLRPC.TL_messageMediaPhoto && message.messageOwner.media.photo != null ) {
                 TLRPC.PhotoSize sizeFull = FileLoader.getClosestPhotoSizeWithSize(message.photoThumbs, AndroidUtilities.getPhotoSize());
                 if (sizeFull != null) {
                     size[0] = sizeFull.size;
@@ -2571,7 +2567,7 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
             imagesArr.add(messageObject);
             if (currentAnimation != null) {
                 needSearchImageInArr = false;
-            } else if (!(messageObject.messageOwner.media instanceof TLRPC.TL_messageMediaWebPage) && (messageObject.messageOwner.action == null || messageObject.messageOwner.action instanceof TLRPC.TL_messageActionEmpty)) {
+            } else if ( (messageObject.messageOwner.action == null || messageObject.messageOwner.action instanceof TLRPC.TL_messageActionEmpty)) {
                 needSearchImageInArr = true;
                 imagesByIds[0].put(messageObject.getId(), messageObject);
                 //menuItem.showSubItem(gallery_menu_showall);
@@ -2772,13 +2768,14 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
                         }
                         actionBar.setTitle(LocaleController.formatString("Of", R.string.Of, (totalImagesCount + totalImagesCountMerge - imagesArr.size()) + currentIndex + 1, totalImagesCount + totalImagesCountMerge));
                     }
-                } else if (currentMessageObject.messageOwner.media instanceof TLRPC.TL_messageMediaWebPage) {
+                } /*else if (currentMessageObject.messageOwner.media instanceof TLRPC.TL_messageMediaWebPage) {
                     if (currentMessageObject.isVideo()) {
                         actionBar.setTitle(LocaleController.getString("AttachVideo", R.string.AttachVideo));
                     } else {
                         actionBar.setTitle(LocaleController.getString("AttachPhoto", R.string.AttachPhoto));
                     }
-                }
+                }*/
+
                 /*if (currentMessageObject.messageOwner.ttl != 0) {
                     menuItem.hideSubItem(gallery_menu_save);
                     //shareButton.setVisibility(View.GONE);

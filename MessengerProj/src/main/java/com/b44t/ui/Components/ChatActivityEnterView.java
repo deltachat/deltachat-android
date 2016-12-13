@@ -348,8 +348,6 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
     private boolean ignoreTextChange;
     private int innerTextChange;
     private MessageObject replyingMessageObject;
-    private TLRPC.WebPage messageWebPage;
-    private boolean messageWebPageSearch = true;
     private ChatActivityEnterViewDelegate delegate;
 
     private TLRPC.TL_document audioToSend;
@@ -623,9 +621,6 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
                 checkSendButton(true);
                 CharSequence message = AndroidUtilities.getTrimmedString(charSequence.toString());
                 if (delegate != null) {
-                    if (count > 2 || charSequence == null || charSequence.length() == 0) {
-                        messageWebPageSearch = true;
-                    }
                     if (!ignoreTextChange) {
                         delegate.onTextChanged(charSequence, before > count + 1 || (count - before) > 2);
                     }
@@ -1265,13 +1260,8 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
         }
     }
 
-    public void setWebPage(TLRPC.WebPage webPage, boolean searchWebPages) {
-        messageWebPage = webPage;
-        messageWebPageSearch = searchWebPages;
-    }
-
     public boolean isMessageWebPageSearchEnabled() {
-        return messageWebPageSearch;
+        return true;
     }
 
     private void hideRecordedAudioPanel() {
@@ -1341,7 +1331,7 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
             //int count = (int) Math.ceil(text.length() / 4096.0f);
             //for (int a = 0; a < count; a++) {
             //    CharSequence mess = text.subSequence(a * 4096, Math.min((a + 1) * 4096, text.length()));
-                SendMessagesHelper.getInstance().sendMessageText(text.toString(), dialog_id, replyingMessageObject, messageWebPage, messageWebPageSearch, null);
+                SendMessagesHelper.getInstance().sendMessageText(text.toString(), dialog_id, replyingMessageObject, null);
             //}
             return true;
         }

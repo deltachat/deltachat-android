@@ -196,7 +196,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
     private boolean wasPaused = false;
     private boolean readWhenResume = false;
     private int linkSearchRequestId;
-    private TLRPC.WebPage foundWebPage;
     private ArrayList<CharSequence> foundUrls;
     private Runnable waitingForCharaterEnterRunnable;
 
@@ -2164,7 +2163,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
     }
 
     private void searchLinks(final CharSequence charSequence, final boolean force) {
-        if (force && foundWebPage != null) {
+        /*if (force && foundWebPage != null) {
             if (foundWebPage.url != null) {
                 int index = TextUtils.indexOf(charSequence, foundWebPage.url);
                 char lastChar = 0;
@@ -2183,7 +2182,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     return;
                 }
             }
-        }
+        }*/
         Utilities.searchQueue.postRunnable(new Runnable() {
             @Override
             public void run() {
@@ -2217,7 +2216,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                         }
                     }
                     foundUrls = urls;
-                    if (urls == null) {
+                    /*if (urls == null) {
                         AndroidUtilities.runOnUIThread(new Runnable() {
                             @Override
                             public void run() {
@@ -2227,9 +2226,9 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                             }
                         });
                         return;
-                    }
+                    }*/
                 } catch (Exception e) {
-                    FileLog.e("messenger", e);
+                    /*FileLog.e("messenger", e);
                     String text = charSequence.toString().toLowerCase();
                     if (charSequence.length() < 13 || !text.contains("http://") && !text.contains("https://")) {
                         AndroidUtilities.runOnUIThread(new Runnable() {
@@ -2241,7 +2240,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                             }
                         });
                         return;
-                    }
+                    }*/
                 }
 
                 linkSearchRequestId = 0; // was: TL_messages_getWebPagePreview ...
@@ -3688,9 +3687,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 MessageObject messageObject = messageObjects.get(a);
                 MessageObject old = messagesDict.get(messageObject.getId());
                 if (old != null) {
-                    if (!mediaUpdated && messageObject.messageOwner.media instanceof TLRPC.TL_messageMediaWebPage) {
-                        mediaUpdated = true;
-                    }
                     if (old.replyMessageObject != null) {
                         messageObject.replyMessageObject = old.replyMessageObject;
                     }
@@ -3934,7 +3930,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         TLRPC.DraftMessage draftMessage = m_mrChat.getDraftMessageObj();
         if (chatActivityEnterView.getFieldText() == null) {
             if (draftMessage != null) {
-                chatActivityEnterView.setWebPage(null, !draftMessage.no_webpage);
                 CharSequence message;
                 {
                     message = draftMessage.message;
@@ -4103,10 +4098,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                             options.add(3);
                         }
                         if (type == 3) {
-                            if (selectedObject.messageOwner.media instanceof TLRPC.TL_messageMediaWebPage && MessageObject.isNewGifDocument(selectedObject.messageOwner.media.webpage.document)) {
-                                items.add(LocaleController.getString("SaveToGIFs", R.string.SaveToGIFs));
-                                options.add(11);
-                            }
+                            ; // save to GIFs
                         } else if (type == 4) {
                             if (selectedObject.isVideo()) {
                                 mr_no_menu = true; // no menu for videos, use the long click

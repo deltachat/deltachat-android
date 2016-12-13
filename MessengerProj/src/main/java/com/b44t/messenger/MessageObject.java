@@ -44,10 +44,9 @@ public class MessageObject {
 
     public TLRPC.Message messageOwner;
     public CharSequence messageText;
-    public CharSequence linkDescription;
     public CharSequence caption;
     public MessageObject replyMessageObject;
-    public int type = 1000;
+    public int type = 1000; // ?
     public int contentType; // one of ChatActivity.ROWTYPE_MESSAGE_CELL, .ROWTYPE_ACTION_CELL or .ROWTYPE_UNREAD_CELL
     public String dateKey;
     public float audioProgress;
@@ -422,7 +421,7 @@ public class MessageObject {
                         photoObject.h = messageOwner.media.document.thumb.h;
                     }
                 }
-            } else if (messageOwner.media instanceof TLRPC.TL_messageMediaWebPage) {
+            } /* else if (messageOwner.media instanceof TLRPC.TL_messageMediaWebPage) {
                 if (messageOwner.media.webpage.photo != null) {
                     if (!update || photoThumbs == null) {
                         photoThumbs = new ArrayList<>(messageOwner.media.webpage.photo.sizes);
@@ -452,7 +451,7 @@ public class MessageObject {
                         }
                     }
                 }
-            }
+            } */
         }
     }
 
@@ -535,9 +534,9 @@ public class MessageObject {
                     return FileLoader.getAttachFileName(sizeFull);
                 }
             }
-        } else if (messageOwner.media instanceof TLRPC.TL_messageMediaWebPage) {
+        } /*else if (messageOwner.media instanceof TLRPC.TL_messageMediaWebPage) {
             return FileLoader.getAttachFileName(messageOwner.media.webpage.document);
-        }
+        } */
         return "";
     }
 
@@ -615,7 +614,7 @@ public class MessageObject {
     }
 
     public void generateLinkDescription() {
-        if (linkDescription != null) {
+        /*if (linkDescription != null) {
             return;
         }
         if (messageOwner.media instanceof TLRPC.TL_messageMediaWebPage && messageOwner.media.webpage instanceof TLRPC.TL_webPage && messageOwner.media.webpage.description != null) {
@@ -628,7 +627,7 @@ public class MessageObject {
                 }
             }
             linkDescription = Emoji.replaceEmoji(linkDescription, textPaint.getFontMetricsInt(), AndroidUtilities.dp(20), false);
-        }
+        }*/
     }
 
     public void generateCaption() {
@@ -1076,9 +1075,9 @@ public class MessageObject {
     }
 
     public TLRPC.Document getDocument() {
-        if (messageOwner.media instanceof TLRPC.TL_messageMediaWebPage) {
+        /*if (messageOwner.media instanceof TLRPC.TL_messageMediaWebPage) {
             return messageOwner.media.webpage.document;
-        }
+        }*/
         return messageOwner.media != null ? messageOwner.media.document : null;
     }
 
@@ -1087,23 +1086,23 @@ public class MessageObject {
     }
 
     public static boolean isMusicMessage(TLRPC.Message message) {
-        if (message.media instanceof TLRPC.TL_messageMediaWebPage) {
+        /*if (message.media instanceof TLRPC.TL_messageMediaWebPage) {
             return isMusicDocument(message.media.webpage.document);
-        }
+        }*/
         return message.media != null && message.media.document != null && isMusicDocument(message.media.document);
     }
 
     public static boolean isVoiceMessage(TLRPC.Message message) {
-        if (message.media instanceof TLRPC.TL_messageMediaWebPage) {
+        /*if (message.media instanceof TLRPC.TL_messageMediaWebPage) {
             return isVoiceDocument(message.media.webpage.document);
-        }
+        }*/
         return message.media != null && message.media.document != null && isVoiceDocument(message.media.document);
     }
 
     public static boolean isVideoMessage(TLRPC.Message message) {
-        if (message.media instanceof TLRPC.TL_messageMediaWebPage) {
+        /*if (message.media instanceof TLRPC.TL_messageMediaWebPage) {
             return isVideoDocument(message.media.webpage.document);
-        }
+        }*/
         return message.media != null && message.media.document != null && isVideoDocument(message.media.document);
     }
 
@@ -1134,7 +1133,7 @@ public class MessageObject {
 
     public int getApproximateHeight() {
         if (type == 0) {
-            int height = textHeight + (messageOwner.media instanceof TLRPC.TL_messageMediaWebPage && messageOwner.media.webpage instanceof TLRPC.TL_webPage ? AndroidUtilities.dp(100) : 0);
+            int height = textHeight /*+ (messageOwner.media instanceof TLRPC.TL_messageMediaWebPage && messageOwner.media.webpage instanceof TLRPC.TL_webPage ? AndroidUtilities.dp(100) : 0)*/;
             if (isReply()) {
                 height += AndroidUtilities.dp(42);
             }
@@ -1258,7 +1257,7 @@ public class MessageObject {
     }
 
     public boolean isWebpageDocument() {
-        return messageOwner.media instanceof TLRPC.TL_messageMediaWebPage && messageOwner.media.webpage.document != null && !isGifDocument(messageOwner.media.webpage.document);
+        return false;
     }
 
     public boolean isNewGif() {
@@ -1369,7 +1368,7 @@ public class MessageObject {
     }
 
     public static boolean isMediaEmpty(TLRPC.Message message) {
-        return message == null || message.media == null || message.media instanceof TLRPC.TL_messageMediaEmpty || message.media instanceof TLRPC.TL_messageMediaWebPage;
+        return message == null || message.media == null || message.media instanceof TLRPC.TL_messageMediaEmpty;
     }
 
     public String getForwardedName() {
