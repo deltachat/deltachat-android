@@ -177,17 +177,15 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
         privacyRow = rowCount++;
         notificationRow = rowCount++;
         backgroundRow = rowCount++;
-        enableAnimationsRow = rowCount++;
         languageRow = rowCount++;
 
-        mediaDownloadSection = rowCount++;
-        mediaDownloadSection2 = rowCount++;
-        autoplayGifsRow = rowCount++;
+        mediaDownloadSection = -1;
+        mediaDownloadSection2 = -1;
+        autoplayGifsRow = -1;//rowCount++;
         mobileDownloadRow = -1;//rowCount++;
         wifiDownloadRow = -1;//rowCount++;
         roamingDownloadRow = -1;//rowCount++;
         saveToGalleryRow = -1;//rowCount++; -- for now, we do not use this option, this results in confusing folders ("AppName" and "AppName Images" etc.); instead, for now, the user can use the option to manually save a media
-        cacheRow = rowCount++;
 
         messagesSectionRow = rowCount++;
         messagesSectionRow2 = rowCount++;
@@ -201,6 +199,8 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
         }
         raiseToSpeakRow = rowCount++; // outgoing message
         sendByEnterRow = rowCount++;
+        enableAnimationsRow = rowCount++;
+        cacheRow = rowCount++;
 
         supportSectionRow = rowCount++;
         supportSectionRow2 = rowCount++;
@@ -1226,7 +1226,7 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
                 } else if (i == stickersRow) {
                     textCell.setText(LocaleController.getString("Stickers", R.string.Stickers), true);
                 } else if (i == cacheRow) {
-                    textCell.setText(LocaleController.getString("CacheSettings", R.string.CacheSettings), true);
+                    textCell.setText(LocaleController.getString("CacheSettings", R.string.CacheSettings), false);
                 } 
                 /* EDIT BY MR
                 else if (i == privacyPolicyRow) {
@@ -1241,9 +1241,9 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
 
                 SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("mainconfig", Activity.MODE_PRIVATE);
                 if (i == enableAnimationsRow) {
-                    textCell.setTextAndCheck(LocaleController.getString("EnableAnimations", R.string.EnableAnimations), preferences.getBoolean("view_animations", true), true);
+                    textCell.setTextAndCheck(LocaleController.getString("EnableAnimations", R.string.EnableAnimations), preferences.getBoolean("view_animations", true), false);
                 } else if (i == sendByEnterRow) {
-                    textCell.setTextAndCheck(LocaleController.getString("SendByEnter", R.string.SendByEnter), preferences.getBoolean("send_by_enter", false), false);
+                    textCell.setTextAndCheck(LocaleController.getString("SendByEnter", R.string.SendByEnter), preferences.getBoolean("send_by_enter", false), true);
                 } else if (i == saveToGalleryRow) {
                     textCell.setTextAndCheck(LocaleController.getString("SaveToGallerySettings", R.string.SaveToGallerySettings), MediaController.getInstance().canSaveToGallery(), true);
                 } else if (i == autoplayGifsRow) {
@@ -1262,7 +1262,7 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
                 } else if (i == supportSectionRow2) {
                     ((HeaderCell) view).setText(LocaleController.getString("Info", R.string.Info)); // EDIT BY MR -- was: Support
                 } else if (i == messagesSectionRow2) {
-                    ((HeaderCell) view).setText(LocaleController.getString("MessagesSettings", R.string.MessagesSettings));
+                    ((HeaderCell) view).setText(LocaleController.getString("AdvancedSettings", R.string.AdvancedSettings));
                 } else if (i == mediaDownloadSection2) {
                     ((HeaderCell) view).setText(LocaleController.getString("Media", R.string.Media));
                 } else if (i == numberSectionRow) {

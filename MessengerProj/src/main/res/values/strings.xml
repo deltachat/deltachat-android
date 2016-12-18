@@ -676,7 +676,7 @@
     <string name="MuteAlways">Always muted</string>
     <string name="AskStartChatWith">Start a chat with <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>?</string>
     <string name="DeaddropHint">To start a chat, click on the reply-arrows.</string>
-    <string name="NotYetImplemented">This function is not yet available.</string>
+    <string name="NotYetImplemented">This function is not available or incomplete.</string>
     <string name="DefaultStatusText">Sent with my Delta Chat Messenger</string>
     <string name="SubjectPrefix">Instant message</string>
     <string name="SeachUser">Search user</string>
@@ -696,4 +696,5 @@
     <string name="Intro7Message"><![CDATA[<b>Delta Chat</b>]]> is safe for business use, compatible and standards-based.</string>
     <string name="InviteMenuEntry">Send invitations</string>
     <string name="InviteText">I\'m using Delta Chat messenger now - %1$s - you can text me at %2$s</string>
+    <string name="AdvancedSettings">Advanced settings</string>
 </resources>

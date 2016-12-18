@@ -2994,7 +2994,7 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
         editor.commit();
     }
 
-    public void checkSaveToGalleryFiles() {
+    public void checkSaveToGalleryFiles() { // not sure, but it seems as if these paths are not needed
         try {
             File messengerPath = new File(Environment.getExternalStorageDirectory(), "Delta Chat");
             File imagePath = new File(messengerPath, "Delta Chat Images");

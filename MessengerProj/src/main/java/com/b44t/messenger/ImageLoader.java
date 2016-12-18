@@ -1263,7 +1263,7 @@ public class ImageLoader {
         });
     }
 
-    public HashMap<Integer, File> createMediaPaths() {
+    public HashMap<Integer, File> createMediaPaths() { // not sure, but it seems as if these paths are not needed
         HashMap<Integer, File> mediaDirs = new HashMap<>();
         File cachePath = AndroidUtilities.getCacheDir();
         if (!cachePath.isDirectory()) {

@@ -2149,6 +2149,7 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
                 AndroidUtilities.hideKeyboard(messageEditText);
             }
         } else if (id == NotificationCenter.recordStartError || id == NotificationCenter.recordStopped) {
+            Toast.makeText(getContext(), LocaleController.getString("NotYetImplemented", R.string.NotYetImplemented), Toast.LENGTH_LONG).show();
             if (recordingAudio) {
                 MessagesController.getInstance().sendTyping(dialog_id, 2, 0);
                 recordingAudio = false;
