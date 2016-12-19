@@ -37,8 +37,34 @@
 #define CHAR_UNREF(a) \
 	if(a) { (*env)->ReleaseStringUTFChars(env, (a), a##Ptr); }
 
-#define JSTRING_NEW(a) \
-	(*env)->NewStringUTF(env, a? a : "") /*should handle NULL arguments, does not return NULL!*/
+#define JSTRING_NEW(a) jstring_new__(env, (a))
+static jstring jstring_new__(JNIEnv* env, const char* a)
+{
+	if( a==NULL || a[0]==0 ) {
+		return (*env)->NewStringUTF(env, "");
+	}
+
+	/* for non-empty strings, do not use NewStringUTF() as this is buggy on some Android versions.
+	Instead, create the string using `new String(ByteArray, "UTF-8);` which seems to be programmed more properly.
+	(eg. on KitKat a simple "SMILING FACE WITH SMILING EYES" (U+1F60A, UTF-8 F0 9F 98 8A) will let the app crash, reporting 0xF0 is a bad UTF-8 start, 
+	see http://stackoverflow.com/questions/12127817/android-ics-4-0-ndk-newstringutf-is-crashing-down-the-app ) */
+	static jclass    s_strCls    = NULL;
+	static jmethodID s_strCtor   = NULL;
+	static jclass    s_strEncode = NULL;
+	if( s_strCls==NULL ) {
+		s_strCls    = (*env)->NewGlobalRef(env, (*env)->FindClass(env, "java/lang/String"));
+		s_strCtor   = (*env)->GetMethodID(env, s_strCls, "<init>", "([BLjava/lang/String;)V");
+		s_strEncode = (*env)->NewGlobalRef(env, (*env)->NewStringUTF(env, "UTF-8"));
+	}
+
+	int a_bytes = strlen(a);
+	jbyteArray array = (*env)->NewByteArray(env, a_bytes);
+		(*env)->SetByteArrayRegion(env, array, 0, a_bytes, a);
+		jstring ret = (jstring) (*env)->NewObject(env, s_strCls, s_strCtor, array, s_strEncode);
+	(*env)->DeleteLocalRef(env, array); /* we have to delete the reference as it is not returned to Java, AFAIK */
+
+	return ret;
+}
 
 
 /* our log handler */
