@@ -2235,6 +2235,7 @@ public class ImageLoader {
         return ext;
     }
 
+    /*
     public static void saveMessageThumbs(TLRPC.Message message) {
         TLRPC.PhotoSize photoSize = null;
         if (message.media instanceof TLRPC.TL_messageMediaPhoto) {
@@ -2248,16 +2249,17 @@ public class ImageLoader {
             if (message.media.document.thumb instanceof TLRPC.TL_photoCachedSize) {
                 photoSize = message.media.document.thumb;
             }
-        } /*else if (message.media instanceof TLRPC.TL_messageMediaWebPage) {
-            if (message.media.webpage.photo != null) {
-                for (TLRPC.PhotoSize size : message.media.webpage.photo.sizes) {
-                    if (size instanceof TLRPC.TL_photoCachedSize) {
-                        photoSize = size;
-                        break;
-                    }
-                }
-            }
-        }*/
+        }
+        //else if (message.media instanceof TLRPC.TL_messageMediaWebPage) {
+        //    if (message.media.webpage.photo != null) {
+        //        for (TLRPC.PhotoSize size : message.media.webpage.photo.sizes) {
+        //            if (size instanceof TLRPC.TL_photoCachedSize) {
+        //                photoSize = size;
+        //                break;
+        //            }
+        //        }
+        //    }
+        //}
         if (photoSize != null && photoSize.bytes != null && photoSize.bytes.length != 0) {
             if (photoSize.location instanceof TLRPC.TL_fileLocationUnavailable) {
                 photoSize.location = new TLRPC.TL_fileLocation();
@@ -2292,17 +2294,20 @@ public class ImageLoader {
                 }
             } else if (message.media instanceof TLRPC.TL_messageMediaDocument) {
                 message.media.document.thumb = newPhotoSize;
-            } /*else if (message.media instanceof TLRPC.TL_messageMediaWebPage) {
-                for (int a = 0; a < message.media.webpage.photo.sizes.size(); a++) {
-                    if (message.media.webpage.photo.sizes.get(a) instanceof TLRPC.TL_photoCachedSize) {
-                        message.media.webpage.photo.sizes.set(a, newPhotoSize);
-                        break;
-                    }
-                }
-            }*/
+            }
+            //else if (message.media instanceof TLRPC.TL_messageMediaWebPage) {
+            //    for (int a = 0; a < message.media.webpage.photo.sizes.size(); a++) {
+            //        if (message.media.webpage.photo.sizes.get(a) instanceof TLRPC.TL_photoCachedSize) {
+            //            message.media.webpage.photo.sizes.set(a, newPhotoSize);
+            //            break;
+            //        }
+            //    }
+            //}
         }
     }
+    */
 
+    /*
     public static void saveMessagesThumbs(ArrayList<TLRPC.Message> messages) {
         if (messages == null || messages.isEmpty()) {
             return;
@@ -2312,4 +2317,5 @@ public class ImageLoader {
             saveMessageThumbs(message);
         }
     }
+    */
 }

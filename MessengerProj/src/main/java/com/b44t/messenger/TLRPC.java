@@ -456,7 +456,7 @@ public class TLRPC {
 	}
 
 	public static class PhotoSize extends TLObject {
-		public String type;
+		public String type; // s, m, x, y, w for small, medium, ... widest
 		public FileLocation location;
 		public int w;
 		public int h;

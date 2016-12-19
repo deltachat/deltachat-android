@@ -577,6 +577,20 @@ JNIEXPORT jintArray Java_com_b44t_messenger_MrMailbox_MrMailboxGetChatContacts(J
  ******************************************************************************/
 
 
+static mrmsg_t* get_mrmsg_t(JNIEnv *env, jobject obj)
+{
+	static jfieldID fid = 0;
+	if( fid == 0 ) {
+		jclass cls = (*env)->GetObjectClass(env, obj);
+		fid = (*env)->GetFieldID(env, cls, "m_hMsg", "J" /*Signature, J=long*/);
+	}
+	if( fid ) {
+		return (mrmsg_t*)(*env)->GetLongField(env, obj, fid);
+	}
+	return NULL;
+}
+
+
 JNIEXPORT void Java_com_b44t_messenger_MrMsg_MrMsgUnref(JNIEnv *env, jclass c, jlong hMsg)
 {
 	mrmsg_unref((mrmsg_t*)hMsg);
@@ -655,6 +669,13 @@ JNIEXPORT jint Java_com_b44t_messenger_MrMsg_MrMsgGetParamInt(JNIEnv *env, jclas
 {
 	mrmsg_t* ths = (mrmsg_t*)hMsg;
 	return  mrparam_get_int(ths? ths->m_param:NULL, key, def);
+}
+
+
+JNIEXPORT jint Java_com_b44t_messenger_MrMsg_getBytes(JNIEnv *env, jobject obj)
+{
+	mrmsg_t* ths = get_mrmsg_t(env, obj);
+	return ths? ths->m_bytes : 0;
 }
 
 

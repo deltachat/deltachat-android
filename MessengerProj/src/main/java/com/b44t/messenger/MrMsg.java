@@ -28,7 +28,11 @@
 
 package com.b44t.messenger;
 
+import android.util.Log;
+
 public class MrMsg {
+
+    private static final String TAG = "MrMsg";
 
     public final static int      MR_MSG_UNDEFINED           =  0;
     public final static int      MR_MSG_TEXT                = 10;
@@ -91,7 +95,9 @@ public class MrMsg {
         return MrMsgGetParamInt(m_hMsg, key, def);
     }
 
-    private long                  m_hMsg;
+    public native int getBytes();
+
+    private long                  m_hMsg; // must not be renamed as referenced by JNI under the name "m_hMsg"
     private native static void    MrMsgUnref                 (long hMsg);
     private native static int     MrMsgGetId                 (long hMsg);
     private native static String  MrMsgGetText               (long hMsg);
@@ -147,11 +153,21 @@ public class MrMsg {
                     TLRPC.TL_photoSize photoSize = new TLRPC.TL_photoSize();
                     photoSize.w = getParamInt('w', 800);
                     photoSize.h = getParamInt('h', 800);
-                    photoSize.size = 0;
+                    photoSize.size = 0; // not sure what to use here, maybe `getBytes();`?
                     photoSize.location = new TLRPC.TL_fileLocation();
                     photoSize.location.mr_path = path;
                     photoSize.location.local_id = -ret.id; // this forces the document to be searched in the cache dir
-                    photoSize.type = "x";
+                    if (photoSize.w <= 100 && photoSize.h <= 100) {
+                        photoSize.type = "s";
+                    } else if (photoSize.w <= 320 && photoSize.h <= 320) {
+                        photoSize.type = "m";
+                    } else if (photoSize.w <= 800 && photoSize.h <= 800) {
+                        photoSize.type = "x";
+                    } else if (photoSize.w <= 1280 && photoSize.h <= 1280) {
+                        photoSize.type = "y";
+                    } else {
+                        photoSize.type = "w";
+                    }
                     photo = new TLRPC.TL_photo();
                     photo.sizes.add(photoSize);
                 } catch (Exception e) {
