@@ -1159,11 +1159,11 @@ public class ImageLoader {
                 AndroidUtilities.runOnUIThread(new Runnable() {
                     @Override
                     public void run() {
-                        if (MediaController.getInstance().canSaveToGallery() && messengerPath != null && finalFile != null && (location.endsWith(".mp4") || location.endsWith(".jpg"))) {
+                        /*if (MediaController.getInstance().canSaveToGallery() && messengerPath != null && finalFile != null && (location.endsWith(".mp4") || location.endsWith(".jpg"))) {
                             if (finalFile.toString().startsWith(messengerPath.toString())) {
                                 AndroidUtilities.addMediaToGallery(finalFile.toString());
                             }
-                        }
+                        }*/
                         NotificationCenter.getInstance().postNotificationName(NotificationCenter.FileDidLoaded, location);
                         ImageLoader.this.fileDidLoaded(location, finalFile, type);
                     }

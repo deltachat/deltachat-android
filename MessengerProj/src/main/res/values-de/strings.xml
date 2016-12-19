@@ -695,6 +695,6 @@
     <string name="ConfiguringAccount">Konto konfigurieren...</string>
     <string name="InviteMenuEntry">Einladungen versenden</string>
     <string name="InviteText">Ich verwende nun auch den Delta Chat Messenger - %1$s - und bin dort unter %2$s erreichbar.</string>
-    <string name="AdvancedSettings">Erweiterte Einstellungen</string>
+    <string name="AdvancedSettings">Fortgeschrittene Einstellungen</string>
     <string name="CannotConnect"></string>
 </resources>

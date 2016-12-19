@@ -273,8 +273,8 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
     private ArrayList<DownloadObject> videoDownloadQueue = new ArrayList<>();
     private HashMap<String, DownloadObject> downloadQueueKeys = new HashMap<>();
 
-    private boolean saveToGallery = true;
-    private boolean autoplayGifs = true;
+    private final boolean saveToGallery = false;
+    private final boolean autoplayGifs = true;
     private boolean raiseToSpeak = true;
     private boolean directShare = true;
     private boolean shuffleMusic;
@@ -598,8 +598,8 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
         mobileDataDownloadMask = preferences.getInt("mobileDataDownloadMask", AUTODOWNLOAD_MASK_PHOTO | AUTODOWNLOAD_MASK_AUDIO | AUTODOWNLOAD_MASK_MUSIC | AUTODOWNLOAD_MASK_GIF);
         wifiDownloadMask = preferences.getInt("wifiDownloadMask", AUTODOWNLOAD_MASK_PHOTO | AUTODOWNLOAD_MASK_AUDIO | AUTODOWNLOAD_MASK_MUSIC | AUTODOWNLOAD_MASK_GIF);
         roamingDownloadMask = preferences.getInt("roamingDownloadMask", 0);
-        saveToGallery = preferences.getBoolean("save_gallery", false);
-        autoplayGifs = preferences.getBoolean("autoplay_gif", true);
+        //saveToGallery = preferences.getBoolean("save_gallery", false);
+        //autoplayGifs = preferences.getBoolean("autoplay_gif", true);
         raiseToSpeak = preferences.getBoolean("raise_to_speak", true);
         directShare = preferences.getBoolean("direct_share", true);
         shuffleMusic = preferences.getBoolean("shuffleMusic", false);
@@ -2961,6 +2961,7 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
         return null;
     }
 
+    /*
     public void toggleSaveToGallery() {
         saveToGallery = !saveToGallery;
         SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("mainconfig", Activity.MODE_PRIVATE);
@@ -2977,6 +2978,7 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
         editor.putBoolean("autoplay_gif", autoplayGifs);
         editor.commit();
     }
+    */
 
     public void toogleRaiseToSpeak() {
         raiseToSpeak = !raiseToSpeak;
@@ -3022,9 +3024,11 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
         }
     }
 
+    /*
     public boolean canSaveToGallery() {
         return saveToGallery;
     }
+    */
 
     public boolean canAutoplayGifs() {
         return autoplayGifs;

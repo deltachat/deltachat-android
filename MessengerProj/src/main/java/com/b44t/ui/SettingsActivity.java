@@ -185,7 +185,7 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
         mobileDownloadRow = -1;//rowCount++;
         wifiDownloadRow = -1;//rowCount++;
         roamingDownloadRow = -1;//rowCount++;
-        saveToGalleryRow = -1;//rowCount++; -- for now, we do not use this option, this results in confusing folders ("AppName" and "AppName Images" etc.); instead, for now, the user can use the option to manually save a media
+        saveToGalleryRow = -1;//rowCount++; -- for now, we do not use this option, this results in confusing folders ("AppName" and "AppName Images" etc.); instead, for now, the user can use the option to manually save a media. Moreover, we also avoid the problem to double-save each image _or_ to handle the case a user deletes an image in the gallery.
 
         messagesSectionRow = rowCount++;
         messagesSectionRow2 = rowCount++;
@@ -419,7 +419,7 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
                     if (view instanceof TextCheckCell) {
                         ((TextCheckCell) view).setChecked(MediaController.getInstance().canRaiseToSpeak());
                     }
-                } else if (i == autoplayGifsRow) {
+                /*} else if (i == autoplayGifsRow) {
                     MediaController.getInstance().toggleAutoplayGifs();
                     if (view instanceof TextCheckCell) {
                         ((TextCheckCell) view).setChecked(MediaController.getInstance().canAutoplayGifs());
@@ -428,7 +428,7 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
                     MediaController.getInstance().toggleSaveToGallery();
                     if (view instanceof TextCheckCell) {
                         ((TextCheckCell) view).setChecked(MediaController.getInstance().canSaveToGallery());
-                    }
+                    }*/
                 } else if(i == directShareRow) {
                     MediaController.getInstance().toggleDirectShare();
                     if (view instanceof TextCheckCell) {
@@ -1244,10 +1244,10 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
                     textCell.setTextAndCheck(LocaleController.getString("EnableAnimations", R.string.EnableAnimations), preferences.getBoolean("view_animations", true), false);
                 } else if (i == sendByEnterRow) {
                     textCell.setTextAndCheck(LocaleController.getString("SendByEnter", R.string.SendByEnter), preferences.getBoolean("send_by_enter", false), true);
-                } else if (i == saveToGalleryRow) {
+                /*} else if (i == saveToGalleryRow) {
                     textCell.setTextAndCheck(LocaleController.getString("SaveToGallerySettings", R.string.SaveToGallerySettings), MediaController.getInstance().canSaveToGallery(), true);
                 } else if (i == autoplayGifsRow) {
-                    textCell.setTextAndCheck(LocaleController.getString("AutoplayGifs", R.string.AutoplayGifs), MediaController.getInstance().canAutoplayGifs(), true);
+                    textCell.setTextAndCheck(LocaleController.getString("AutoplayGifs", R.string.AutoplayGifs), MediaController.getInstance().canAutoplayGifs(), true);*/
                 } else if (i == raiseToSpeakRow) {
                     textCell.setTextAndCheck(LocaleController.getString("RaiseToSpeak", R.string.RaiseToSpeak), MediaController.getInstance().canRaiseToSpeak(), true);
                 } else if (i == directShareRow) {

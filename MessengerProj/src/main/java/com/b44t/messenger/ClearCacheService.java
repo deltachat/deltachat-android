@@ -29,6 +29,7 @@ public class ClearCacheService extends IntentService {
     protected void onHandleIntent(Intent intent) {
         ApplicationLoader.postInitApplication();
 
+        /*
         SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("mainconfig", Activity.MODE_PRIVATE);
         final int keepMedia = preferences.getInt("keep_media", 2);
         if (keepMedia == 2) {
@@ -78,5 +79,6 @@ public class ClearCacheService extends IntentService {
                 }
             }
         });
+        */
     }
 }
