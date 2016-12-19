@@ -37,18 +37,16 @@
 
         <TextView android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="336dp"
             android:background="@drawable/regbtn_states"
-            android:layout_gravity="center_horizontal"
+            android:layout_gravity="center_horizontal|bottom"
             android:textSize="16dp"
             android:textColor="#ffffff"
             android:gravity="center"
             android:paddingLeft="20dp"
             android:paddingRight="20dp"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
+            android:layout_marginBottom="62dp"
             android:id="@+id/start_messaging_button"/>
 
         <LinearLayout
@@ -56,49 +54,49 @@
             android:layout_height="wrap_content"
             android:id="@+id/bottom_pages"
             android:orientation="horizontal"
-            android:layout_gravity="bottom|center_horizontal"
-            android:layout_marginBottom="26dp">
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="336dp">
 
             <FrameLayout
-                android:layout_width="5dp"
-                android:layout_height="5dp"
+                android:layout_width="7dp"
+                android:layout_height="7dp"
                 android:background="#bbbbbb"/>
 
             <FrameLayout
-                android:layout_width="5dp"
-                android:layout_height="5dp"
+                android:layout_width="7dp"
+                android:layout_height="7dp"
                 android:background="#bbbbbb"
-                android:layout_marginLeft="7dp"/>
+                android:layout_marginLeft="8dp"/>
 
             <FrameLayout
-                android:layout_width="5dp"
-                android:layout_height="5dp"
+                android:layout_width="7dp"
+                android:layout_height="7dp"
                 android:background="#bbbbbb"
-                android:layout_marginLeft="7dp"/>
+                android:layout_marginLeft="8dp"/>
 
             <FrameLayout
-                android:layout_width="5dp"
-                android:layout_height="5dp"
+                android:layout_width="7dp"
+                android:layout_height="7dp"
                 android:background="#bbbbbb"
-                android:layout_marginLeft="7dp"/>
+                android:layout_marginLeft="8dp"/>
 
             <FrameLayout
-                android:layout_width="5dp"
-                android:layout_height="5dp"
+                android:layout_width="7dp"
+                android:layout_height="7dp"
                 android:background="#bbbbbb"
-                android:layout_marginLeft="7dp"/>
+                android:layout_marginLeft="8dp"/>
 
             <FrameLayout
-                android:layout_width="5dp"
-                android:layout_height="5dp"
+                android:layout_width="7dp"
+                android:layout_height="7dp"
                 android:background="#bbbbbb"
-                android:layout_marginLeft="7dp"/>
+                android:layout_marginLeft="8dp"/>
 
             <FrameLayout
-                android:layout_width="5dp"
-                android:layout_height="5dp"
+                android:layout_width="7dp"
+                android:layout_height="7dp"
                 android:background="#bbbbbb"
-                android:layout_marginLeft="7dp"/>
+                android:layout_marginLeft="8dp"/>
 
         </LinearLayout>
 
