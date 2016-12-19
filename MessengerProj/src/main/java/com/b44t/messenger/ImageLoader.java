@@ -1228,6 +1228,10 @@ public class ImageLoader {
         filter.addDataScheme("file");
         ApplicationLoader.applicationContext.registerReceiver(receiver, filter);
 
+        checkMediaPaths();
+    }
+
+    public void checkMediaPaths() {
         HashMap<Integer, File> mediaDirs = new HashMap<>();
         File cachePath = AndroidUtilities.getCacheDir();
         if (!cachePath.isDirectory()) {
@@ -1242,13 +1246,11 @@ public class ImageLoader {
         } catch (Exception e) {
             FileLog.e("messenger", e);
         }
+
         mediaDirs.put(FileLoader.MEDIA_DIR_CACHE, cachePath);
         FileLoader.getInstance().setMediaDirs(mediaDirs);
 
-        checkMediaPaths();
-    }
-
-    public void checkMediaPaths() {
+        /*
         cacheOutQueue.postRunnable(new Runnable() {
             @Override
             public void run() {
@@ -1261,8 +1263,10 @@ public class ImageLoader {
                 });
             }
         });
+        */
     }
 
+    /*
     public HashMap<Integer, File> createMediaPaths() { // not sure, but it seems as if these paths are not needed
         HashMap<Integer, File> mediaDirs = new HashMap<>();
         File cachePath = AndroidUtilities.getCacheDir();
@@ -1344,6 +1348,7 @@ public class ImageLoader {
 
         return mediaDirs;
     }
+    */
 
     private boolean canMoveFiles(File from, File to, int type) {
         RandomAccessFile file = null;

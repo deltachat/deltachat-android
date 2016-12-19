@@ -63,16 +63,16 @@ public class CacheControlActivity extends BaseFragment {
     private int typeSectionTitle = 2;
     private int typeCount        = 3; // /EDIT BY MR -- no gaps, please
 
-    private long databaseSize = -1;
-    private long cacheSize = -1;
-    private long documentsSize = -1;
-    private long audioSize = -1;
-    private long musicSize = -1;
-    private long photoSize = -1;
-    private long videoSize = -1;
-    private long totalSize = -1;
-    private boolean clear[] = new boolean[6];
-    private boolean calculating = true;
+    //private long databaseSize = -1;
+    //private long cacheSize = -1;
+    //private long documentsSize = -1;
+    //private long audioSize = -1;
+    //private long musicSize = -1;
+    //private long photoSize = -1;
+    //private long videoSize = -1;
+    //private long totalSize = -1;
+    //private boolean clear[] = new boolean[6];
+    //private boolean calculating = true;
 
     private volatile boolean canceled = false;
 
@@ -91,8 +91,9 @@ public class CacheControlActivity extends BaseFragment {
         databaseInfoRow = -1; // EDIT BY MR -- was: rowCount++;
 
         File file = new File(ApplicationLoader.getFilesDirFixed(), "cache4.db");
-        databaseSize = file.length();
+        //databaseSize = file.length();
 
+        /*
         Utilities.globalQueue.postRunnable(new Runnable() {
             @Override
             public void run() {
@@ -129,6 +130,7 @@ public class CacheControlActivity extends BaseFragment {
                 });
             }
         });
+        */
 
         return true;
     }
@@ -570,7 +572,7 @@ public class CacheControlActivity extends BaseFragment {
 
         @Override
         public boolean isEnabled(int i) {
-            return i == databaseRow || i == cacheRow && totalSize > 0 || i == keepMediaRow;
+            return i == databaseRow || /*i == cacheRow && totalSize > 0 ||*/ i == keepMediaRow;
         }
 
         @Override
@@ -612,13 +614,14 @@ public class CacheControlActivity extends BaseFragment {
                 }
                 TextSettingsCell textCell = (TextSettingsCell) view;
                 if (i == databaseRow) {
-                    textCell.setTextAndValue(LocaleController.getString("LocalDatabase", R.string.LocalDatabase), AndroidUtilities.formatFileSize(databaseSize), false);
+                    //textCell.setTextAndValue(LocaleController.getString("LocalDatabase", R.string.LocalDatabase), AndroidUtilities.formatFileSize(databaseSize), false);
                 } else if (i == cacheRow) {
                     /*if (calculating) {
                         textCell.setTextAndValue(LocaleController.getString("ClearMediaCache", R.string.ClearMediaCache), LocaleController.getString("CalculatingSize", R.string.CalculatingSize), false);
-                    } else */ {
+                    } else  {
                         textCell.setTextAndValue(LocaleController.getString("ClearMediaCache", R.string.ClearMediaCache), totalSize == 0 ? LocaleController.getString("CacheEmpty", R.string.CacheEmpty) : AndroidUtilities.formatFileSize(totalSize), false);
                     }
+                    */
                 } else if (i == keepMediaRow) {
                     SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("mainconfig", Activity.MODE_PRIVATE);
                     int keepMedia = preferences.getInt("keep_media", 2);
