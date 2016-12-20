@@ -290,13 +290,13 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
     private RecordDot recordDot;
     private SizeNotifierFrameLayout sizeNotifierLayout;
     private LinearLayout attachButton;
-    private ImageView botButton;
+    //private ImageView botButton;
     private LinearLayout textFieldContainer;
     private FrameLayout sendButtonContainer;
     private View topView;
     //private PopupWindow botKeyboardPopup;
     //private BotKeyboardView botKeyboardView;
-    private ImageView notifyButton;
+    //private ImageView notifyButton;
     private RecordCircle recordCircle;
     private CloseProgressDrawable2 progressDrawable;
     private Drawable backgroundDrawable;
@@ -677,6 +677,7 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
             attachButton.setPivotX(AndroidUtilities.dp(48));
             frameLayout.addView(attachButton, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, 48, Gravity.BOTTOM | Gravity.RIGHT));
 
+            /*
             botButton = new ImageView(context);
             botButton.setImageResource(R.drawable.bot_keyboard2);
             botButton.setScaleType(ImageView.ScaleType.CENTER);
@@ -688,7 +689,6 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
             botButton.setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    /*
                     if (botReplyMarkup != null) {
                         if (!isPopupShowing() || currentPopupContentType != 1) {
                             showPopup(1, 1);
@@ -705,10 +705,11 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
                         setFieldText("/");
                         openKeyboard();
                     }
-                    */
                 }
             });
+            */
 
+            /*
             notifyButton = new ImageView(context);
             notifyButton.setImageResource(silent ? R.drawable.notify_members_off : R.drawable.notify_members_on);
             notifyButton.setScaleType(ImageView.ScaleType.CENTER);
@@ -732,6 +733,7 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
                     updateFieldHint();
                 }
             });
+            */
         }
 
         recordedAudioPanel = new FrameLayout(context);
@@ -1227,11 +1229,11 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
             TLRPC.Chat currentChat = MessagesController.getInstance().getChat(-(int) dialog_id);
             silent = ApplicationLoader.applicationContext.getSharedPreferences("Notifications", Activity.MODE_PRIVATE).getBoolean("silent_" + dialog_id, false);
             //canWriteToChannel = ChatObject.isChannel(currentChat) && (currentChat.creator || currentChat.editor) && !currentChat.megagroup;
-            if (notifyButton != null) {
+            /*if (notifyButton != null) {
                 notifyButton.setVisibility(canWriteToChannel ? VISIBLE : GONE);
                 notifyButton.setImageResource(silent ? R.drawable.notify_members_off : R.drawable.notify_members_on);
                 attachButton.setPivotX(AndroidUtilities.dp((botButton == null || botButton.getVisibility() == GONE) && (notifyButton == null || notifyButton.getVisibility() == GONE) ? 48 : 96));
-            }
+            }*/
             if (attachButton != null) {
                 updateFieldRight(attachButton.getVisibility() == VISIBLE ? 1 : 0);
             }
@@ -1579,16 +1581,16 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
         }
         FrameLayout.LayoutParams layoutParams = (FrameLayout.LayoutParams) messageEditText.getLayoutParams();
         if (attachVisible == 1) {
-            if (botButton != null && botButton.getVisibility() == VISIBLE || notifyButton != null && notifyButton.getVisibility() == VISIBLE) {
+            /*if (botButton != null && botButton.getVisibility() == VISIBLE || notifyButton != null && notifyButton.getVisibility() == VISIBLE) {
                 layoutParams.rightMargin = AndroidUtilities.dp(98);
-            } else {
+            } else*/ {
                 layoutParams.rightMargin = AndroidUtilities.dp(50);
             }
         } else if (attachVisible == 2) {
             if (layoutParams.rightMargin != AndroidUtilities.dp(2)) {
-                if (botButton != null && botButton.getVisibility() == VISIBLE || notifyButton != null && notifyButton.getVisibility() == VISIBLE) {
+                /*if (botButton != null && botButton.getVisibility() == VISIBLE || notifyButton != null && notifyButton.getVisibility() == VISIBLE) {
                     layoutParams.rightMargin = AndroidUtilities.dp(98);
-                } else {
+                } else*/ {
                     layoutParams.rightMargin = AndroidUtilities.dp(50);
                 }
             }
