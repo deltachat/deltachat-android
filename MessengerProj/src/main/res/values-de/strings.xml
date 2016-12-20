@@ -192,7 +192,7 @@
     <string name="NoStickers">Noch keine Sticker</string>
     <string name="SendSticker">STICKER SENDEN</string>
     <!--settings view-->
-    <string name="TextSize">Textgröße für Nachrichten</string>
+    <string name="TextSize">Schriftgröße für Nachrichten</string>
     <string name="EnableAnimations">Übergänge animieren</string>
     <string name="UnblockContact">Benutzer nicht mehr blockieren</string>
     <string name="NoBlocked">Keine blockierten Benutzer</string>

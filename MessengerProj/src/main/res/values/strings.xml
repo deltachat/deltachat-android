@@ -192,7 +192,7 @@
     <string name="NoStickers">No stickers yet</string>
     <string name="SendSticker">SEND STICKER</string>
     <!--settings view-->
-    <string name="TextSize">Messages Text Size</string>
+    <string name="TextSize">Messages font size</string>
     <string name="EnableAnimations">Transition animation</string>
     <string name="UnblockContact">Unblock contact</string>
     <string name="NoBlocked">No blocked users yet</string>

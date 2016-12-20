@@ -12,6 +12,7 @@ import android.app.Activity;
 import android.content.SharedPreferences;
 
 import com.b44t.ui.ActionBar.BaseFragment;
+import com.b44t.ui.SettingsActivity;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -79,9 +80,10 @@ public class MessagesController implements NotificationCenter.NotificationCenter
         preferences = ApplicationLoader.applicationContext.getSharedPreferences("mainconfig", Activity.MODE_PRIVATE);
         secretWebpagePreview = preferences.getInt("secretWebpage2", 2);
         ratingDecay = preferences.getInt("ratingDecay", 2419200);
-        fontSize = preferences.getInt("fons_size", AndroidUtilities.isTablet() ? 18 : 16);
+        fontSize = preferences.getInt("msg_font_size", SettingsActivity.defMsgFontSize());
     }
 
+    /*
     public static TLRPC.InputUser getInputUser(TLRPC.User user) {
         if (user == null) {
             return new TLRPC.TL_inputUserEmpty();
@@ -100,6 +102,7 @@ public class MessagesController implements NotificationCenter.NotificationCenter
         TLRPC.User user = getInstance().getUser(user_id);
         return getInputUser(user);
     }
+    */
 
     public static TLRPC.InputPeer getInputPeer(int id) {
         TLRPC.InputPeer inputPeer;

@@ -103,6 +103,10 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
     private final static int edit_name = 1;
     private final static int logout = 2;
 
+    public static int defMsgFontSize() {
+        return AndroidUtilities.isTablet() ? 18 : 16;
+    }
+
     @Override
     public boolean onFragmentCreate() {
         super.onFragmentCreate();
@@ -340,8 +344,21 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
                     AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
                     builder.setTitle(LocaleController.getString("TextSize", R.string.TextSize));
                     final NumberPicker numberPicker = new NumberPicker(getParentActivity());
-                    numberPicker.setMinValue(12);
-                    numberPicker.setMaxValue(30);
+                    final int MIN_VAL = 12;
+                    final int MAX_VAL = 30;
+                    final int DEF_VAL = defMsgFontSize();
+                    String displayValues[] = new String[MAX_VAL-MIN_VAL+1];
+                    for( int v = MIN_VAL; v <= MAX_VAL; v++ ) {
+                        String cur = String.format("%d", v);
+                        if( v==DEF_VAL ) {
+                            cur += " (" +LocaleController.getString("Default", R.string.Default)+ ")";
+                        }
+                        displayValues[v-MIN_VAL] = cur;
+                    }
+                    numberPicker.setMinValue(MIN_VAL);
+                    numberPicker.setMaxValue(MAX_VAL);
+                    numberPicker.setDisplayedValues(displayValues);
+                    numberPicker.setWrapSelectorWheel(false);
                     numberPicker.setValue(MessagesController.getInstance().fontSize);
                     builder.setView(numberPicker);
                     builder.setNegativeButton(LocaleController.getString("Done", R.string.Done), new DialogInterface.OnClickListener() {
@@ -349,7 +366,7 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
                         public void onClick(DialogInterface dialog, int which) {
                             SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("mainconfig", Activity.MODE_PRIVATE);
                             SharedPreferences.Editor editor = preferences.edit();
-                            editor.putInt("fons_size", numberPicker.getValue());
+                            editor.putInt("msg_font_size", numberPicker.getValue());
                             MessagesController.getInstance().fontSize = numberPicker.getValue();
                             editor.commit();
                             if (listView != null) {
@@ -1186,7 +1203,7 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
                 TextSettingsCell textCell = (TextSettingsCell) view;
                 if (i == textSizeRow) {
                     SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("mainconfig", Activity.MODE_PRIVATE);
-                    int size = preferences.getInt("fons_size", AndroidUtilities.isTablet() ? 18 : 16);
+                    int size = preferences.getInt("msg_font_size", defMsgFontSize());
                     textCell.setTextAndValue(LocaleController.getString("TextSize", R.string.TextSize), String.format("%d", size), true);
                 } else if (i == languageRow) {
                     textCell.setTextAndValue(LocaleController.getString("Language", R.string.Language), LocaleController.getCurrentLanguageName(), false);
