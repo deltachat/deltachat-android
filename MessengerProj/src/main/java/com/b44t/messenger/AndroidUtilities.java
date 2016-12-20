@@ -83,10 +83,6 @@ public class AndroidUtilities {
 
     private static final Hashtable<String, Typeface> typefaceCache = new Hashtable<>();
     private static int prevOrientation = -10;
-    private static boolean waitingForSms = false;
-    private static boolean waitingForCall = false;
-    private static final Object smsLock = new Object();
-    private static final Object callLock = new Object();
 
     public static int statusBarHeight = 0;
     public static float density = 1;
@@ -247,6 +243,7 @@ public class AndroidUtilities {
         }
     }
 
+    /*
     public static boolean isGoogleMapsInstalled(final BaseFragment fragment) {
         try {
             ApplicationLoader.applicationContext.getPackageManager().getApplicationInfo("com.google.android.apps.maps", 0);
@@ -274,6 +271,7 @@ public class AndroidUtilities {
             return false;
         }
     }
+    */
 
     public static boolean isInternalUri(Uri uri) {
         String pathString = uri.getPath();
@@ -361,34 +359,6 @@ public class AndroidUtilities {
         }
     }
 
-    public static boolean isWaitingForSms() {
-        boolean value;
-        synchronized (smsLock) {
-            value = waitingForSms;
-        }
-        return value;
-    }
-
-    public static void setWaitingForSms(boolean value) {
-        synchronized (smsLock) {
-            waitingForSms = value;
-        }
-    }
-
-    public static boolean isWaitingForCall() {
-        boolean value;
-        synchronized (callLock) {
-            value = waitingForCall;
-        }
-        return value;
-    }
-
-    public static void setWaitingForCall(boolean value) {
-        synchronized (callLock) {
-            waitingForCall = value;
-        }
-    }
-
     public static void showKeyboard(View view) {
         if (view == null) {
             return;
@@ -429,6 +399,7 @@ public class AndroidUtilities {
         }
     }
 
+    /*
     public static File getCacheDir() {
         String state = null;
         try {
@@ -456,6 +427,7 @@ public class AndroidUtilities {
         }
         return new File("");
     }
+    */
 
     public static int dp(float value) {
         if (value == 0) {

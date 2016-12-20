@@ -188,20 +188,25 @@ JNIEXPORT jlong Java_com_b44t_messenger_MrMailbox_MrMailboxNew(JNIEnv *env, jcla
 
 /* MrMailbox - open/configure/connect/fetch */
 
-JNIEXPORT jint Java_com_b44t_messenger_MrMailbox_MrMailboxOpen(JNIEnv *env, jclass c, jlong hMailbox, jstring dbfile, jstring blobdir)
+JNIEXPORT jint Java_com_b44t_messenger_MrMailbox_open(JNIEnv *env, jclass cls, jstring dbfile)
 {
 	CHAR_REF(dbfile);
-	CHAR_REF(blobdir);
-		jint ret = mrmailbox_open((mrmailbox_t*)hMailbox, dbfilePtr, blobdirPtr);
-	CHAR_UNREF(blobdir);
+		jint ret = mrmailbox_open(get_mrmailbox_t(env, cls), dbfilePtr, NULL);
 	CHAR_UNREF(dbfile)
 	return ret;
 }
 
 
-JNIEXPORT void Java_com_b44t_messenger_MrMailbox_MrMailboxClose(JNIEnv *env, jclass c, jlong hMailbox)
+JNIEXPORT void Java_com_b44t_messenger_MrMailbox_close(JNIEnv *env, jclass cls)
 {
-	mrmailbox_close((mrmailbox_t*)hMailbox);
+	mrmailbox_close(get_mrmailbox_t(env, cls));
+}
+
+
+JNIEXPORT jstring Java_com_b44t_messenger_MrMailbox_getBlobdir(JNIEnv *env, jclass cls)
+{
+	mrmailbox_t* ths = get_mrmailbox_t(env, cls);
+	return JSTRING_NEW((ths&&ths->m_blobdir)? ths->m_blobdir : NULL);
 }
 
 

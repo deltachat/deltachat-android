@@ -1233,18 +1233,10 @@ public class ImageLoader {
 
     public void checkMediaPaths() {
         HashMap<Integer, File> mediaDirs = new HashMap<>();
-        File cachePath = AndroidUtilities.getCacheDir();
-        if (!cachePath.isDirectory()) {
-            try {
-                cachePath.mkdirs();
-            } catch (Exception e) {
-                FileLog.e("messenger", e);
-            }
-        }
+        File cachePath = new File(MrMailbox.getBlobdir());
         try {
             new File(cachePath, ".nomedia").createNewFile();
         } catch (Exception e) {
-            FileLog.e("messenger", e);
         }
 
         mediaDirs.put(FileLoader.MEDIA_DIR_CACHE, cachePath);

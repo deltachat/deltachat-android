@@ -223,23 +223,19 @@ public class ApplicationLoader extends Application {
             editor.commit();
         }
 
+        // open() sqlite file (you can inspect the file eg. with "Tools / Android Device Monitor / File Explorer")
+        // open() should be called before MessagesController.getInstance() as this also initilizes directories based upon getBlobdir().
+        File dbfile = new File(getFilesDirFixed(), "messenger.db");
+        MrMailbox.open(dbfile.getAbsolutePath());
+        MrMailbox.connect();
+
+        // create other default objects
         MessagesController.getInstance();
         ConnectionsManager.getInstance().init(deviceModel, systemVersion, appVersion, langCode, configPath, FileLog.getNetworkLogPath(), UserConfig.getClientUserId(), enablePushConnection);
         if (UserConfig.getCurrentUser() != null) {
-            //MessagesController.getInstance().putUser(UserConfig.getCurrentUser(), true);
             SendMessagesHelper.getInstance().checkUnsentMessages();
         }
-
-        ApplicationLoader app = (ApplicationLoader)ApplicationLoader.applicationContext;
-        FileLog.e("messenger", "app initied");
-
-        //ContactsController.getInstance().checkAppAccount();
         MediaController.getInstance();
-
-        // EDIT BY MR - open my sqlite file (you can inspect the file eg. with "Tools / Android Device Monitor / File Explorer")
-        File dbfile = new File(getFilesDirFixed(), "messenger.db");
-        MrMailbox.open(dbfile.getAbsolutePath(), "");
-        MrMailbox.connect();
     }
 
     @Override
@@ -274,25 +270,6 @@ public class ApplicationLoader extends Application {
 
         startPushService();
     }
-
-    /*public static void sendRegIdToBackend(final String token) {
-        Utilities.stageQueue.postRunnable(new Runnable() {
-            @Override
-            public void run() {
-                UserConfig.pushString = token;
-                UserConfig.registeredForPush = false;
-                UserConfig.saveConfig(false);
-                if (UserConfig.getClientUserId() != 0) {
-                    AndroidUtilities.runOnUIThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            MessagesController.getInstance().registerForPush(token);
-                        }
-                    });
-                }
-            }
-        });
-    }*/
 
     public static void startPushService() {
         SharedPreferences preferences = applicationContext.getSharedPreferences("Notifications", MODE_PRIVATE);

@@ -35,13 +35,9 @@ public class MrMailbox {
         m_hMailbox = MrMailboxNew();
     }
 
-    public static int open(String dbfile, String blobdir) {
-        return MrMailboxOpen(m_hMailbox, dbfile, blobdir);
-    }
-
-    public static void close() {
-        MrMailboxClose(m_hMailbox);
-    }
+    public native static int    open(String dbfile);
+    public native static void   close();
+    public native static String getBlobdir();
 
     public static int configure() {
         return MrMailboxConfigure(m_hMailbox);
@@ -87,8 +83,6 @@ public class MrMailbox {
 
     private static long           m_hMailbox = 0; // do not rename this, is used in C-part
     private native static long    MrMailboxNew               (); // returns hMailbox which must be unref'd after usage (Names as mrmailbox_new don't work due to the additional underscore)
-    private native static int     MrMailboxOpen              (long hMailbox, String dbfile, String blobdir);
-    private native static void    MrMailboxClose             (long hMailbox);
     private native static int     MrMailboxConfigure         (long hMailbox);
     private native static int     MrMailboxIsConfigured      (long hMailbox);
     private native static int     MrMailboxConnect           (long hMailbox);

@@ -113,7 +113,7 @@ public class NativeLoader {
             return;
         }
 
-        String crashDir = context.getCacheDir().getAbsolutePath();
+        //String crashDir = context.getCacheDir().getAbsolutePath();
 
         try {
             String folder;
