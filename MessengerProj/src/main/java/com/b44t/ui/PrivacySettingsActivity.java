@@ -121,7 +121,7 @@ public class PrivacySettingsActivity extends BaseFragment implements Notificatio
                     else {
                         MrMailbox.setConfig("show_deaddrop", "1");
                     }
-                    MrMailbox.MrCallback(MrMailbox.MR_EVENT_MSGS_UPDATED, 0, 0);
+                    MrMailbox.MrCallback(MrMailbox.MR_EVENT_MSGS_CHANGED, 0, 0);
                     if (view instanceof TextCheckCell) {
                         ((TextCheckCell) view).setChecked(oldval == 0);
                     }
