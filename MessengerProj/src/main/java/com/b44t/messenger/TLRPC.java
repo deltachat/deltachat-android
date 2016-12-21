@@ -154,19 +154,6 @@ public class TLRPC {
 		public ChatParticipants participants;
 	}
 
-	public static class InputUser extends TLObject {
-		public int user_id;
-	}
-
-	public static class TL_inputUserEmpty extends InputUser {
-	}
-
-	public static class TL_inputUserSelf extends InputUser {
-	}
-
-	public static class TL_inputUser extends InputUser {
-	}
-
 	public static class WebPage extends TLObject {
 		public int flags;
 		public long id;
@@ -550,7 +537,7 @@ public class TLRPC {
         public String message;
         public MessageMedia media;
         public int flags;
-		public boolean mentioned;
+		public final boolean mentioned = false;
 		public boolean media_unread;
 		public boolean out;
 		public boolean unread;

@@ -376,10 +376,23 @@ public class NotificationsController {
 
         if( chat_id == opened_dialog_id && ApplicationLoader.isScreenOn ) {
             playInChatSound();
+            return;
         }
-        else {
 
+        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("Notifications", Context.MODE_PRIVATE);
+        int notifyOverride = getNotifyOverride(preferences, chat_id);
+        if (notifyOverride == 2) {
+            return; // muted
         }
+
+        MrChat mrChat = MrMailbox.getChat(chat_id);
+        boolean isGroupChat = mrChat.getType()==MrChat.MR_CHAT_GROUP;
+        if( isGroupChat && mrChat.getId()==MrChat.MR_CHAT_ID_DEADDROP ) {
+            if(  ) {
+
+            }
+        }
+        int popup = preferences.getInt(isGroupChat ? "popupGroup" : "popupAll", 0);
 
         /* old func:
         public void processNewMessages(final ArrayList<MessageObject> messageObjects, final boolean isLast)

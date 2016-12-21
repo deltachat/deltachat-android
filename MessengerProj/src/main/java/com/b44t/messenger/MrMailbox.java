@@ -138,8 +138,8 @@ public class MrMailbox {
         return new MrChatlist(MrMailboxGetChatlist(m_hMailbox));
     }
 
-    public static MrChat getChat(int contact_id) {
-        return new MrChat(MrMailboxGetChat(m_hMailbox, contact_id));
+    public static MrChat getChat(int chat_id) {
+        return new MrChat(MrMailboxGetChat(m_hMailbox, chat_id));
     }
 
     public native static int    markseenMsg        (int msg_id);
