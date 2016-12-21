@@ -385,11 +385,25 @@ public class NotificationsController {
         }
 
         MrChat mrChat = MrMailbox.getChat(chat_id);
+        if( mrChat.getId() == 0 ) {
+            return;
+        }
         boolean isGroupChat = mrChat.getType()==MrChat.MR_CHAT_GROUP;
         boolean value = !( (!preferences.getBoolean("EnableAll", true) || isGroupChat && !preferences.getBoolean("EnableGroup", true)) && notifyOverride == 0);
 
         if( value ) {
+            MrMsg msg  = MrMailbox.getMsg(msg_id);
+            if( msg.getId()==0 ) {
+                return;
+            }
+            TLRPC.Message tmsg = msg.get_TLRPC_Message();
+            MessageObject msgDrawObj = new MessageObject(tmsg, null, true);
 
+            delayedPushMessages.add(msgDrawObj);
+            pushMessages.add(0, msgDrawObj);
+            pushMessagesDict.put((long)msg_id, msgDrawObj);
+
+            showOrUpdateNotification(false);
         }
 
         /* old func:
