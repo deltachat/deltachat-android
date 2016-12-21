@@ -187,7 +187,6 @@ public class NotificationsSettingsActivity extends BaseFragment implements Notif
                         editor.putBoolean("EnableGroup", !enabled);
                     }
                     editor.commit();
-                    updateServerNotificationsSettings(i == groupAlertRow);
                 } else if (i == messagePreviewRow || i == groupPreviewRow) {
                     SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("Notifications", Activity.MODE_PRIVATE);
                     SharedPreferences.Editor editor = preferences.edit();
@@ -199,7 +198,6 @@ public class NotificationsSettingsActivity extends BaseFragment implements Notif
                         editor.putBoolean("EnablePreviewGroup", !enabled);
                     }
                     editor.commit();
-                    updateServerNotificationsSettings(i == groupPreviewRow);
                 } else if (i == messageSoundRow || i == groupSoundRow) {
                     try {
                         SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("Notifications", Activity.MODE_PRIVATE);
@@ -509,33 +507,7 @@ public class NotificationsSettingsActivity extends BaseFragment implements Notif
             }
         });
 
-        Toast.makeText(context, LocaleController.getString("NotYetImplemented", R.string.NotYetImplemented), Toast.LENGTH_LONG).show();
-
         return fragmentView;
-    }
-
-    public void updateServerNotificationsSettings(boolean group) {
-        //disable global settings sync
-        /*SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("Notifications", Activity.MODE_PRIVATE);
-        TLRPC.TL_account_updateNotifySettings req = new TLRPC.TL_account_updateNotifySettings();
-        req.settings = new TLRPC.TL_inputPeerNotifySettings();
-        req.settings.sound = "default";
-        req.settings.events_mask = 0;
-        if (!group) {
-            req.peer = new TLRPC.TL_inputNotifyUsers();
-            req.settings.mute_until = preferences.getBoolean("EnableAll", true) ? 0 : Integer.MAX_VALUE;
-            req.settings.show_previews = preferences.getBoolean("EnablePreviewAll", true);
-        } else {
-            req.peer = new TLRPC.TL_inputNotifyChats();
-            req.settings.mute_until = preferences.getBoolean("EnableGroup", true) ? 0 : Integer.MAX_VALUE;
-            req.settings.show_previews = preferences.getBoolean("EnablePreviewGroup", true);
-        }
-        ConnectionsManager.getInstance().sendRequest(req, new RPCRequest.RPCRequestDelegate() {
-            @Override
-            public void run(TLObject response, TLRPC.TL_error error) {
-
-            }
-        });*/
     }
 
     @Override

@@ -369,7 +369,20 @@ public class NotificationsController {
         });
     }
 
-    public void processNewMessages(final ArrayList<MessageObject> messageObjects, final boolean isLast) {
+    public void processNewMessages(int chat_id, int msg_id) {
+        if( chat_id <= 0 || msg_id <= 0 ) {
+            return;
+        }
+
+        if( chat_id == opened_dialog_id && ApplicationLoader.isScreenOn ) {
+            playInChatSound();
+        }
+        else {
+
+        }
+
+        /* old func:
+        public void processNewMessages(final ArrayList<MessageObject> messageObjects, final boolean isLast)
         if (messageObjects.isEmpty()) {
             return;
         }
@@ -401,9 +414,9 @@ public class NotificationsController {
                         continue;
                     }
                     if (messageObject.messageOwner.mentioned) {
-                        /*if (!allowPinned && messageObject.messageOwner.action instanceof TLRPC.TL_messageActionPinMessage) {
+                        if (!allowPinned && messageObject.messageOwner.action instanceof TLRPC.TL_messageActionPinMessage) {
                             continue;
-                        }*/
+                        }
                         dialog_id = messageObject.messageOwner.from_id;
                     }
                     if (isPersonalMessage(messageObject)) {
@@ -458,6 +471,7 @@ public class NotificationsController {
                 }
             }
         });
+        */
     }
 
     public void processDialogsUpdateRead(final HashMap<Long, Integer> dialogsToUpdate) {

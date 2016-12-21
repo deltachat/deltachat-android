@@ -228,7 +228,7 @@ public class MrMailbox {
                         reloadMainChatlist();
                         NotificationCenter.getInstance().postNotificationName(NotificationCenter.dialogsNeedReload, event, (int)data1, (int)data2);
                         if( event == MR_EVENT_INCOMING_MSG ) {
-                            // TODO: add a notification ...
+                            NotificationsController.getInstance().processNewMessages((int)data1, (int)data2);
                         }
                     }
                 });
