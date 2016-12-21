@@ -26,6 +26,7 @@ import android.widget.TextView;
 import com.b44t.messenger.AndroidUtilities;
 import com.b44t.messenger.FileLog;
 import com.b44t.messenger.LocaleController;
+import com.b44t.messenger.MrMailbox;
 import com.b44t.messenger.R;
 import com.b44t.messenger.Utilities;
 import com.b44t.ui.Adapters.BaseFragmentAdapter;
@@ -169,6 +170,7 @@ public class LanguageSelectActivity extends BaseFragment {
                 }
                 if (localeInfo != null) {
                     LocaleController.getInstance().applyLanguage(localeInfo, true);
+                    MrMailbox.initStockStrings();
                     parentLayout.rebuildAllFragmentViews(false);
                 }
                 finishFragment();

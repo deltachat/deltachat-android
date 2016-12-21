@@ -251,20 +251,7 @@ public class ApplicationLoader extends Application {
         // however, we may want to to have a look at onPause() eg. of activities (eg. for flushing data, if needed)
         MrMailbox.MrCallback(0, 0, 0); // do not remove this call; this makes sure, the function is not removed from build or warnings are printed!
         MrMailbox.init();
-        MrMailbox.MrStockAddStr(1, LocaleController.getString("NoMessages", R.string.NoMessages));
-        MrMailbox.MrStockAddStr(2, LocaleController.getString("FromSelf", R.string.FromSelf));
-        MrMailbox.MrStockAddStr(3, LocaleController.getString("Draft", R.string.Draft));
-        MrMailbox.MrStockAddStr(4, LocaleController.getString("MemberSg", R.string.MemberSg));
-        MrMailbox.MrStockAddStr(5, LocaleController.getString("MemberPl", R.string.MemberPl));
-        MrMailbox.MrStockAddStr(6, LocaleController.getString("ContactSg", R.string.ContactSg));
-        MrMailbox.MrStockAddStr(7, LocaleController.getString("ContactPl", R.string.ContactPl));
-        MrMailbox.MrStockAddStr(8, LocaleController.getString("Deaddrop", R.string.Deaddrop));
-        MrMailbox.MrStockAddStr(9, LocaleController.getString("AttachPhoto", R.string.AttachPhoto));
-        MrMailbox.MrStockAddStr(10, LocaleController.getString("AttachVideo", R.string.AttachVideo));
-        MrMailbox.MrStockAddStr(11, LocaleController.getString("AttachAudio", R.string.AttachAudio));
-        MrMailbox.MrStockAddStr(12, LocaleController.getString("AttachDocument", R.string.AttachDocument));
-        MrMailbox.MrStockAddStr(13, LocaleController.getString("DefaultStatusText", R.string.DefaultStatusText));
-        MrMailbox.MrStockAddStr(14, LocaleController.getString("SubjectPrefix", R.string.SubjectPrefix));
+        MrMailbox.initStockStrings();
 
         applicationHandler = new Handler(applicationContext.getMainLooper());
 

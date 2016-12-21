@@ -194,7 +194,7 @@ public class MrMailbox {
     private native static void    MrMailboxDeleteMsg         (long hMailbox, int id);
 
     // static
-    public native static void     MrStockAddStr              (int id, String str);
+    private native static void     MrStockAddStr              (int id, String str);
     public native static String   MrGetVersionStr            ();
     public native static String   CPtr2String                (long hString); // get strings eg. from data1 from the callback
 
@@ -288,6 +288,24 @@ public class MrMailbox {
 
             }
         });
+    }
+
+    public static void initStockStrings()
+    {
+        MrStockAddStr(1, LocaleController.getString("NoMessages", R.string.NoMessages));
+        MrStockAddStr(2, LocaleController.getString("FromSelf", R.string.FromSelf));
+        MrStockAddStr(3, LocaleController.getString("Draft", R.string.Draft));
+        MrStockAddStr(4, LocaleController.getString("MemberSg", R.string.MemberSg));
+        MrStockAddStr(5, LocaleController.getString("MemberPl", R.string.MemberPl));
+        MrStockAddStr(6, LocaleController.getString("ContactSg", R.string.ContactSg));
+        MrStockAddStr(7, LocaleController.getString("ContactPl", R.string.ContactPl));
+        MrStockAddStr(8, LocaleController.getString("Deaddrop", R.string.Deaddrop));
+        MrStockAddStr(9, LocaleController.getString("AttachPhoto", R.string.AttachPhoto));
+        MrStockAddStr(10, LocaleController.getString("AttachVideo", R.string.AttachVideo));
+        MrStockAddStr(11, LocaleController.getString("AttachAudio", R.string.AttachAudio));
+        MrStockAddStr(12, LocaleController.getString("AttachDocument", R.string.AttachDocument));
+        MrStockAddStr(13, LocaleController.getString("DefaultStatusText", R.string.DefaultStatusText));
+        MrStockAddStr(14, LocaleController.getString("SubjectPrefix", R.string.SubjectPrefix));
     }
 
     public static String getInviteText() {

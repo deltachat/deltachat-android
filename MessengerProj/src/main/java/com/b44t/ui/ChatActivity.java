@@ -4281,6 +4281,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 }
                 if (locFile != null) {
                     if (LocaleController.getInstance().applyLanguageFile(locFile)) {
+                        MrMailbox.initStockStrings();
                         presentFragment(new LanguageSelectActivity());
                     } else {
                         if (getParentActivity() == null) {
