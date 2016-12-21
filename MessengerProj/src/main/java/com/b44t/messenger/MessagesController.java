@@ -35,7 +35,6 @@ public class MessagesController implements NotificationCenter.NotificationCenter
 
     private String uploadingAvatar = null;
 
-    public boolean enableJoined = true;
     public int fontSize = AndroidUtilities.dp(16);
     public int ratingDecay;
 
@@ -75,7 +74,6 @@ public class MessagesController implements NotificationCenter.NotificationCenter
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.FileDidLoaded);
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.FileDidFailedLoad);
         SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("Notifications", Activity.MODE_PRIVATE);
-        enableJoined = preferences.getBoolean("EnableContactJoined", true);
 
         preferences = ApplicationLoader.applicationContext.getSharedPreferences("mainconfig", Activity.MODE_PRIVATE);
         secretWebpagePreview = preferences.getInt("secretWebpage2", 2);

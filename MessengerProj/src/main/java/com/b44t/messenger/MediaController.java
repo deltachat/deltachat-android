@@ -2500,7 +2500,7 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
         try {
             Vibrator v = (Vibrator) ApplicationLoader.applicationContext.getSystemService(Context.VIBRATOR_SERVICE);
             v.vibrate(50);
-            //NotificationsController.getInstance().playRecordSound();
+            //NotificationsController.getInstance().playRecordSound(); -- was also disabled in Telegram; playing a sound while recording may result in a feedback
         } catch (Exception e) {
             FileLog.e("messenger", e);
         }

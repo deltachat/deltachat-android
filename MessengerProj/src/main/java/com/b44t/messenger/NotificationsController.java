@@ -386,7 +386,11 @@ public class NotificationsController {
 
         MrChat mrChat = MrMailbox.getChat(chat_id);
         boolean isGroupChat = mrChat.getType()==MrChat.MR_CHAT_GROUP;
-        int popup = preferences.getInt(isGroupChat ? "popupGroup" : "popupAll", 0);
+        boolean value = !( (!preferences.getBoolean("EnableAll", true) || isGroupChat && !preferences.getBoolean("EnableGroup", true)) && notifyOverride == 0);
+
+        if( value ) {
+
+        }
 
         /* old func:
         public void processNewMessages(final ArrayList<MessageObject> messageObjects, final boolean isLast)
@@ -433,19 +437,12 @@ public class NotificationsController {
 
                     Boolean value = settingsCache.get(dialog_id);
                     boolean isChat = (int) dialog_id < 0;
-                    popup = (int) dialog_id == 0 ? 0 : preferences.getInt(isChat ? "popupGroup" : "popupAll", 0);
                     if (value == null) {
                         int notifyOverride = getNotifyOverride(preferences, dialog_id);
                         value = !(notifyOverride == 2 || (!preferences.getBoolean("EnableAll", true) || isChat && !preferences.getBoolean("EnableGroup", true)) && notifyOverride == 0);
                         settingsCache.put(dialog_id, value);
                     }
-                    if (popup != 0 && messageObject.messageOwner.to_id.channel_id != 0) {
-                        popup = 0;
-                    }
                     if (value) {
-                        if (popup != 0) {
-                            popupArray.add(0, messageObject);
-                        }
                         delayedPushMessages.add(messageObject);
                         pushMessages.add(0, messageObject);
                         pushMessagesDict.put(mid, messageObject);
@@ -459,23 +456,7 @@ public class NotificationsController {
                     notifyCheck = isLast;
                 }
 
-                if (!popupArray.isEmpty() && oldCount != popupArray.size() && !AndroidUtilities.needShowPasscode(false)) {
-                    final int popupFinal = popup;
-                    AndroidUtilities.runOnUIThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            popupMessages = popupArray;
-                            if (ApplicationLoader.mainInterfacePaused || !ApplicationLoader.isScreenOn && !UserConfig.isWaitingForPasscodeEnter) {
-                                MessageObject messageObject = messageObjects.get(0);
-                                if (popupFinal == 3 || popupFinal == 1 && ApplicationLoader.isScreenOn || popupFinal == 2 && !ApplicationLoader.isScreenOn) {
-                                    Intent popupIntent = new Intent(ApplicationLoader.applicationContext, PopupNotificationActivity.class);
-                                    popupIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_NO_ANIMATION | Intent.FLAG_ACTIVITY_NO_USER_ACTION | Intent.FLAG_FROM_BACKGROUND);
-                                    ApplicationLoader.applicationContext.startActivity(popupIntent);
-                                }
-                            }
-                        }
-                    });
-                }
+
             }
         });
         */
@@ -1060,43 +1041,6 @@ public class NotificationsController {
             FileLog.e("messenger", e);
         }
     }
-
-    /*public void playRecordSound() {
-        try {
-            if (audioManager.getRingerMode() == AudioManager.RINGER_MODE_SILENT) {
-                return;
-            }
-            notificationsQueue.postRunnable(new Runnable() {
-                @Override
-                public void run() {
-                    try {
-                        if (soundPool == null) {
-                            soundPool = new SoundPool(3, AudioManager.STREAM_SYSTEM, 0);
-                            soundPool.setOnLoadCompleteListener(new SoundPool.OnLoadCompleteListener() {
-                                @Override
-                                public void onLoadComplete(SoundPool soundPool, int sampleId, int status) {
-                                    if (status == 0) {
-                                        soundPool.play(sampleId, 1.0f, 1.0f, 1, 0, 1.0f);
-                                    }
-                                }
-                            });
-                        }
-                        if (soundRecord == 0 && !soundRecordLoaded) {
-                            soundRecordLoaded = true;
-                            soundRecord = soundPool.load(ApplicationLoader.applicationContext, R.raw.sound_record, 1);
-                        }
-                        if (soundRecord != 0) {
-                            soundPool.play(soundRecord, 1.0f, 1.0f, 1, 0, 1.0f);
-                        }
-                    } catch (Exception e) {
-                        FileLog.e("messenger", e);
-                    }
-                }
-            });
-        } catch (Exception e) {
-            FileLog.e("messenger", e);
-        }
-    }*/
 
     private void playInChatSound() {
         if (!inChatSoundEnabled || MediaController.getInstance().isRecordingAudio()) {
