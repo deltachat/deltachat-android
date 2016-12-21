@@ -35,7 +35,6 @@ import android.support.v4.app.RemoteInput;
 import android.util.SparseArray;
 
 import com.b44t.ui.LaunchActivity;
-import com.b44t.ui.PopupNotificationActivity;
 
 import java.util.ArrayList;
 import java.util.Calendar;

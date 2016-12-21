@@ -210,11 +210,6 @@
     <string name="NotificationsServiceConnectionInfo">Nutzt eine batterieschonende Hintergrundverbindung, um Benachrichtigungen zu gewährleisten.</string>
     <string name="ImportContacts">Kontakte importieren</string>
     <string name="LedColor">LED-Farbe</string>
-    <string name="PopupNotification">Popup Mitteilungen</string>
-    <string name="NoPopup">Kein Popup</string>
-    <string name="OnlyWhenScreenOn">Nur wenn Bildschirm „an“</string>
-    <string name="OnlyWhenScreenOff">Nur wenn Bildschirm „aus“</string>
-    <string name="AlwaysShowPopup">Popups immer anzeigen</string>
     <string name="BadgeNumber">Anzahl in Popup anzeigen</string>
     <string name="Short">Kurz</string>
     <string name="Long">Lang</string>

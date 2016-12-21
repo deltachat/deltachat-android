@@ -210,11 +210,6 @@
     <string name="NotificationsServiceConnectionInfo">Achtergrondverbinding voor meldingen. Inschakelen voor betrouwbare meldingen.</string>
     <string name="ImportContacts">Importeer contacten</string>
     <string name="LedColor">LED-kleur</string>
-    <string name="PopupNotification">Pop-up meldingen</string>
-    <string name="NoPopup">Geen pop-up</string>
-    <string name="OnlyWhenScreenOn">Alleen bij scherm aan</string>
-    <string name="OnlyWhenScreenOff">Alleen bij scherm uit</string>
-    <string name="AlwaysShowPopup">Altijd pop-up tonen</string>
     <string name="BadgeNumber">Badgenummer</string>
     <string name="Short">Kort</string>
     <string name="Long">Lang</string>

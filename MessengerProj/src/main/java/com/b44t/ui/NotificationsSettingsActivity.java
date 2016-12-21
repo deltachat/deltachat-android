@@ -26,7 +26,6 @@ import android.widget.AdapterView;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.b44t.messenger.LocaleController;
 import com.b44t.messenger.NotificationsController;
@@ -59,7 +58,6 @@ public class NotificationsSettingsActivity extends BaseFragment implements Notif
     private int messageVibrateRow;
     private int messageSoundRow;
     private int messageLedRow;
-    private int messagePopupNotificationRow;
     private int messagePriorityRow;
     private int groupSectionRow2;
     private int groupSectionRow;
@@ -68,7 +66,6 @@ public class NotificationsSettingsActivity extends BaseFragment implements Notif
     private int groupVibrateRow;
     private int groupSoundRow;
     private int groupLedRow;
-    private int groupPopupNotificationRow;
     private int groupPriorityRow;
     private int inappSectionRow2;
     private int inappSectionRow;
@@ -86,6 +83,13 @@ public class NotificationsSettingsActivity extends BaseFragment implements Notif
     private int resetNotificationsRow;
     private int rowCount = 0;
 
+    private final int TYPE_HEADER      = 0;
+    private final int TYPE_CHECK_CELL  = 1;
+    private final int TYPE_TEXT_DETAIL = 2;
+    private final int TYPE_COLOR_CELL  = 3;
+    private final int TYPE_SHADOW      = 4;
+    private final int TYPE_COUNT       = 5;
+
     @Override
     public boolean onFragmentCreate() {
         messageSectionRow = rowCount++;
@@ -93,7 +97,6 @@ public class NotificationsSettingsActivity extends BaseFragment implements Notif
         messagePreviewRow = rowCount++;
         messageLedRow = rowCount++;
         messageVibrateRow = rowCount++;
-        messagePopupNotificationRow = rowCount++;
         messageSoundRow = rowCount++;
         if (Build.VERSION.SDK_INT >= 21) {
             messagePriorityRow = rowCount++;
@@ -106,7 +109,6 @@ public class NotificationsSettingsActivity extends BaseFragment implements Notif
         groupPreviewRow = rowCount++;
         groupLedRow = rowCount++;
         groupVibrateRow = rowCount++;
-        groupPopupNotificationRow = rowCount++;
         groupSoundRow = rowCount++;
         if (Build.VERSION.SDK_INT >= 21) {
             groupPriorityRow = rowCount++;
@@ -377,32 +379,6 @@ public class NotificationsSettingsActivity extends BaseFragment implements Notif
                         }
                     });
                     showDialog(builder.create());
-                } else if (i == messagePopupNotificationRow || i == groupPopupNotificationRow) {
-                    AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
-                    builder.setTitle(LocaleController.getString("PopupNotification", R.string.PopupNotification));
-                    builder.setItems(new CharSequence[]{
-                            LocaleController.getString("NoPopup", R.string.NoPopup),
-                            LocaleController.getString("OnlyWhenScreenOn", R.string.OnlyWhenScreenOn),
-                            LocaleController.getString("OnlyWhenScreenOff", R.string.OnlyWhenScreenOff),
-                            LocaleController.getString("AlwaysShowPopup", R.string.AlwaysShowPopup)
-                    }, new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("Notifications", Activity.MODE_PRIVATE);
-                            SharedPreferences.Editor editor = preferences.edit();
-                            if (i == messagePopupNotificationRow) {
-                                editor.putInt("popupAll", which);
-                            } else if (i == groupPopupNotificationRow) {
-                                editor.putInt("popupGroup", which);
-                            }
-                            editor.commit();
-                            if (listView != null) {
-                                listView.invalidateViews();
-                            }
-                        }
-                    });
-                    builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
-                    showDialog(builder.create());
                 } else if (i == messageVibrateRow || i == groupVibrateRow) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
                     builder.setTitle(LocaleController.getString("Vibrate", R.string.Vibrate));
@@ -602,7 +578,7 @@ public class NotificationsSettingsActivity extends BaseFragment implements Notif
         @Override
         public View getView(int i, View view, ViewGroup viewGroup) {
             int type = getItemViewType(i);
-            if (type == 0) {
+            if (type == TYPE_HEADER) {
                 if (view == null) {
                     view = new HeaderCell(mContext);
                 }
@@ -617,7 +593,7 @@ public class NotificationsSettingsActivity extends BaseFragment implements Notif
                 } else if (i == resetSectionRow) {
                     ((HeaderCell) view).setText(LocaleController.getString("Reset", R.string.Reset));
                 }
-            } if (type == 1) {
+            } if (type == TYPE_CHECK_CELL) {
                 if (view == null) {
                     view = new TextCheckCell(mContext);
                 }
@@ -649,7 +625,7 @@ public class NotificationsSettingsActivity extends BaseFragment implements Notif
                 } else if (i == inchatSoundRow) {
                     checkCell.setTextAndCheck(LocaleController.getString("InChatSound", R.string.InChatSound), preferences.getBoolean("EnableInChatSound", true), true);
                 }
-            } else if (type == 2) {
+            } else if (type == TYPE_TEXT_DETAIL) {
                 if (view == null) {
                     view = new TextDetailSettingsCell(mContext);
                 }
@@ -673,25 +649,6 @@ public class NotificationsSettingsActivity extends BaseFragment implements Notif
                 } else if (i == resetNotificationsRow) {
                     textCell.setMultilineDetail(true);
                     textCell.setTextAndValue(LocaleController.getString("ResetAllNotifications", R.string.ResetAllNotifications), LocaleController.getString("UndoAllCustom", R.string.UndoAllCustom), false);
-                } else if (i == messagePopupNotificationRow || i == groupPopupNotificationRow) {
-                    textCell.setMultilineDetail(false);
-                    int option = 0;
-                    if (i == messagePopupNotificationRow) {
-                        option = preferences.getInt("popupAll", 0);
-                    } else if (i == groupPopupNotificationRow) {
-                        option = preferences.getInt("popupGroup", 0);
-                    }
-                    String value;
-                    if (option == 0) {
-                        value = LocaleController.getString("NoPopup", R.string.NoPopup);
-                    } else if (option == 1) {
-                        value = LocaleController.getString("OnlyWhenScreenOn", R.string.OnlyWhenScreenOn);
-                    } else if (option == 2) {
-                        value = LocaleController.getString("OnlyWhenScreenOff", R.string.OnlyWhenScreenOff);
-                    } else {
-                        value = LocaleController.getString("AlwaysShowPopup", R.string.AlwaysShowPopup);
-                    }
-                    textCell.setTextAndValue(LocaleController.getString("PopupNotification", R.string.PopupNotification), value, true);
                 } else if (i == messageVibrateRow || i == groupVibrateRow) {
                     textCell.setMultilineDetail(false);
                     int value = 0;
@@ -739,7 +696,7 @@ public class NotificationsSettingsActivity extends BaseFragment implements Notif
                         textCell.setTextAndValue(LocaleController.getString("NotificationsPriority", R.string.NotificationsPriority), LocaleController.getString("NotificationsPriorityMax", R.string.NotificationsPriorityMax), false);
                     }
                 }
-            } else if (type == 3) {
+            } else if (type == TYPE_COLOR_CELL) {
                 if (view == null) {
                     view = new TextColorCell(mContext);
                 }
@@ -752,7 +709,7 @@ public class NotificationsSettingsActivity extends BaseFragment implements Notif
                 } else if (i == groupLedRow) {
                     textCell.setTextAndColor(LocaleController.getString("LedColor", R.string.LedColor), preferences.getInt("GroupLed", 0xff00ff00), true);
                 }
-            } else if (type == 4) {
+            } else if (type == TYPE_SHADOW) {
                 if (view == null) {
                     view = new ShadowSectionCell(mContext);
                 }
@@ -764,26 +721,26 @@ public class NotificationsSettingsActivity extends BaseFragment implements Notif
         public int getItemViewType(int i) {
             if (i == messageSectionRow || i == groupSectionRow || i == inappSectionRow ||
                     i == otherSectionRow || i == resetSectionRow) {
-                return 0;
+                return TYPE_HEADER;
             } else if (i == messageAlertRow || i == messagePreviewRow || i == groupAlertRow ||
                     i == groupPreviewRow || i == inappSoundRow || i == inappVibrateRow ||
                     i == inappPreviewRow ||
                     i == notificationsServiceRow || i == badgeNumberRow || i == inappPriorityRow ||
                     i == inchatSoundRow || i == notificationsServiceConnectionRow) {
-                return 1;
+                return TYPE_CHECK_CELL;
             } else if (i == messageLedRow || i == groupLedRow) {
-                return 3;
+                return TYPE_COLOR_CELL;
             } else if ( i == groupSectionRow2 ||
                     i == inappSectionRow2 || i == otherSectionRow2 || i == resetSectionRow2) {
-                return 4;
+                return TYPE_SHADOW;
             } else {
-                return 2;
+                return TYPE_TEXT_DETAIL;
             }
         }
 
         @Override
         public int getViewTypeCount() {
-            return 5;
+            return TYPE_COUNT;
         }
 
         @Override

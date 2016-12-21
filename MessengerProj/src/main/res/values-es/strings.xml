@@ -210,11 +210,6 @@
     <string name="NotificationsServiceConnectionInfo">Conexión de bajo impacto, en segundo plano, para recibir notificaciones. Úsala para tener notificaciones fiables.</string>
     <string name="ImportContacts">Importar contactos</string>
     <string name="LedColor">Color del LED</string>
-    <string name="PopupNotification">Notificaciones emergentes</string>
-    <string name="NoPopup">Desactivadas</string>
-    <string name="OnlyWhenScreenOn">Con pantalla encendida</string>
-    <string name="OnlyWhenScreenOff">Con pantalla apagada</string>
-    <string name="AlwaysShowPopup">Mostrar siempre </string>
     <string name="BadgeNumber">Globo en el ícono</string>
     <string name="Short">Cortas</string>
     <string name="Long">Largas</string>

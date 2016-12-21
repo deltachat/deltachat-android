@@ -210,11 +210,6 @@
     <string name="NotificationsServiceConnectionInfo">Mantiene una connessione a basso impatto per ricevere le notifiche. Attivala per notifiche affidabili.</string>
     <string name="ImportContacts">Importa contatti</string>
     <string name="LedColor">Colore LED</string>
-    <string name="PopupNotification">Notifiche popup</string>
-    <string name="NoPopup">Nessun popup</string>
-    <string name="OnlyWhenScreenOn">Solo con schermo acceso</string>
-    <string name="OnlyWhenScreenOff">Solo con schermo spento</string>
-    <string name="AlwaysShowPopup">Mostra sempre i popup</string>
     <string name="BadgeNumber">Contatore badge</string>
     <string name="Short">Breve</string>
     <string name="Long">Lunga</string>

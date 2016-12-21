@@ -38,15 +38,6 @@
         <item name="android:colorControlActivated">#4991cc</item>
     </style>
 
-    <style name="Theme.MessengerProj.PopupNotification" parent="Theme.MessengerProj">
-        <item name="android:windowBackground">@android:color/transparent</item>
-        <item name="android:windowIsTranslucent">true</item>
-        <item name="android:windowAnimationStyle">@null</item>
-        <item name="android:windowActionBar">false</item>
-        <item name="android:windowNoTitle">true</item>
-        <item name="android:colorPrimaryDark">#99000000</item>
-    </style>
-
     <style name="Theme.MessengerProj.Dialog.Alert" parent="android:style/Theme.Material.Light.Dialog.Alert">
         <item name="android:colorAccent">#4991cc</item>
     </style>
