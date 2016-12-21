@@ -56,7 +56,6 @@ import com.b44t.messenger.LocaleController;
 import com.b44t.messenger.MediaController;
 import com.b44t.messenger.MessageObject;
 import com.b44t.messenger.MessagesController;
-import com.b44t.messenger.NotificationsController;
 import com.b44t.messenger.SendMessagesHelper;
 import com.b44t.messenger.FileLog;
 import com.b44t.messenger.NotificationCenter;
@@ -307,7 +306,6 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
 
     private int currentPopupContentType = -1;
 
-    private boolean silent;
     private final boolean canWriteToChannel = false;
 
     private boolean isPaused = true;
@@ -546,7 +544,7 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
         });
 
         messageEditText = new EditTextCaption(context);
-        updateFieldHint();
+        messageEditText.setHint(LocaleController.getString("TypeMessage", R.string.TypeMessage));
         messageEditText.setImeOptions(EditorInfo.IME_FLAG_NO_EXTRACT_UI);
         messageEditText.setInputType(messageEditText.getInputType() | EditorInfo.TYPE_TEXT_FLAG_CAP_SENTENCES | EditorInfo.TYPE_TEXT_FLAG_MULTI_LINE);
         messageEditText.setSingleLine(false);
@@ -676,64 +674,6 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
             attachButton.setEnabled(false);
             attachButton.setPivotX(AndroidUtilities.dp(48));
             frameLayout.addView(attachButton, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, 48, Gravity.BOTTOM | Gravity.RIGHT));
-
-            /*
-            botButton = new ImageView(context);
-            botButton.setImageResource(R.drawable.bot_keyboard2);
-            botButton.setScaleType(ImageView.ScaleType.CENTER);
-            botButton.setVisibility(GONE);
-            if (Build.VERSION.SDK_INT >= 21) {
-                botButton.setBackgroundDrawable(Theme.createBarSelectorDrawable(Theme.INPUT_FIELD_SELECTOR_COLOR));
-            }
-            attachButton.addView(botButton, LayoutHelper.createLinear(48, 48));
-            botButton.setOnClickListener(new OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if (botReplyMarkup != null) {
-                        if (!isPopupShowing() || currentPopupContentType != 1) {
-                            showPopup(1, 1);
-                            SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("mainconfig", Activity.MODE_PRIVATE);
-                            preferences.edit().remove("hidekeyboard_" + dialog_id).commit();
-                        } else {
-                            if (currentPopupContentType == 1 && botButtonsMessageObject != null) {
-                                SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("mainconfig", Activity.MODE_PRIVATE);
-                                preferences.edit().putInt("hidekeyboard_" + dialog_id, botButtonsMessageObject.getId()).commit();
-                            }
-                            openKeyboardInternal();
-                        }
-                    } else if (hasBotCommands) {
-                        setFieldText("/");
-                        openKeyboard();
-                    }
-                }
-            });
-            */
-
-            /*
-            notifyButton = new ImageView(context);
-            notifyButton.setImageResource(silent ? R.drawable.notify_members_off : R.drawable.notify_members_on);
-            notifyButton.setScaleType(ImageView.ScaleType.CENTER);
-            notifyButton.setVisibility(canWriteToChannel ? VISIBLE : GONE);
-            if (Build.VERSION.SDK_INT >= 21) {
-                notifyButton.setBackgroundDrawable(Theme.createBarSelectorDrawable(Theme.INPUT_FIELD_SELECTOR_COLOR));
-            }
-            attachButton.addView(notifyButton, LayoutHelper.createLinear(48, 48));
-            notifyButton.setOnClickListener(new OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    silent = !silent;
-                    notifyButton.setImageResource(silent ? R.drawable.notify_members_off : R.drawable.notify_members_on);
-                    ApplicationLoader.applicationContext.getSharedPreferences("Notifications", Activity.MODE_PRIVATE).edit().putBoolean("silent_" + dialog_id, silent).commit();
-                    NotificationsController.updateServerNotificationsSettings(dialog_id);
-                    if (silent) {
-                        Toast.makeText(parentActivity, LocaleController.getString("ChannelNotifyMembersInfoOff", R.string.ChannelNotifyMembersInfoOff), Toast.LENGTH_SHORT).show();
-                    } else {
-                        Toast.makeText(parentActivity, LocaleController.getString("ChannelNotifyMembersInfoOn", R.string.ChannelNotifyMembersInfoOn), Toast.LENGTH_SHORT).show();
-                    }
-                    updateFieldHint();
-                }
-            });
-            */
         }
 
         recordedAudioPanel = new FrameLayout(context);
@@ -1226,39 +1166,9 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
     public void setDialogId(long id) {
         dialog_id = id;
         if ((int) dialog_id < 0) {
-            TLRPC.Chat currentChat = MessagesController.getInstance().getChat(-(int) dialog_id);
-            silent = ApplicationLoader.applicationContext.getSharedPreferences("Notifications", Activity.MODE_PRIVATE).getBoolean("silent_" + dialog_id, false);
-            //canWriteToChannel = ChatObject.isChannel(currentChat) && (currentChat.creator || currentChat.editor) && !currentChat.megagroup;
-            /*if (notifyButton != null) {
-                notifyButton.setVisibility(canWriteToChannel ? VISIBLE : GONE);
-                notifyButton.setImageResource(silent ? R.drawable.notify_members_off : R.drawable.notify_members_on);
-                attachButton.setPivotX(AndroidUtilities.dp((botButton == null || botButton.getVisibility() == GONE) && (notifyButton == null || notifyButton.getVisibility() == GONE) ? 48 : 96));
-            }*/
             if (attachButton != null) {
                 updateFieldRight(attachButton.getVisibility() == VISIBLE ? 1 : 0);
             }
-        }
-    }
-
-    private void updateFieldHint() {
-        /* EDIT BY MR
-        boolean isChannel = false;
-        if ((int) dialog_id < 0) {
-            TLRPC.Chat chat = MessagesController.getInstance().getChat(-(int) dialog_id);
-            isChannel = ChatObject.isChannel(chat) && !chat.megagroup;
-        }
-        if (isChannel) {
-            if (editingMessageObject != null) {
-                messageEditText.setHint(editingCaption ? LocaleController.getString("Caption", R.string.Caption) : LocaleController.getString("TypeMessage", R.string.TypeMessage));
-            } else {
-                if (silent) {
-                    messageEditText.setHint(LocaleController.getString("ChannelSilentBroadcast", R.string.ChannelSilentBroadcast));
-                } else {
-                    messageEditText.setHint(LocaleController.getString("ChannelBroadcast", R.string.ChannelBroadcast));
-                }
-            }
-        } else*/ {
-            messageEditText.setHint(LocaleController.getString("TypeMessage", R.string.TypeMessage));
         }
     }
 

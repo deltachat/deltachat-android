@@ -8,10 +8,6 @@
     <string name="LanguageName">Español</string>
     <string name="LanguageNameInEnglish">Spanish</string>
     <string name="LanguageCode">es</string>
-    <!--signin view-->
-    <!--code enter view-->
-    <!--signup view-->
-    <!--<string name="RegisterText">Set up your name and picture</string>-->
     <!--chats view-->
     <string name="Settings">Ajustes</string>
     <string name="NewGroup">Nuevo grupo</string>
@@ -34,10 +30,6 @@
     <string name="ChatHints">CHATS</string>
     <string name="ChatHintsDelete">¿Eliminar a %1$s de las sugerencias?</string>
     <string name="Draft">Borrador</string>
-    <!--channels-->
-    <string name="ChannelNotifyMembersInfoOn">Tu publicación será notificada</string>
-    <string name="ChannelNotifyMembersInfoOff">Tu publicación no será notificada</string>
-    <!--broadcasts-->
     <!--audio view-->
     <string name="NoAudio">Por favor, añade archivos a la carpeta de música en tu dispositivo para verlos aquí.</string>
     <string name="AttachMusic">Música</string>
@@ -91,7 +83,6 @@
     <string name="ShareSendTo">Enviar a...</string>
     <string name="TapHereGifs">Toca y ve los GIF guardados</string>
     <string name="ClearRecentEmoji">¿Borrar los emojis recientes?</string>
-    <string name="EditedMessage">editado</string>
     <string name="AddShortcut">Añadir acceso directo</string>
     <string name="ShortcutAdded">Acceso directo añadido al escritorio</string>
     <!--notification-->
@@ -152,7 +143,6 @@
     <string name="JoinToGroup">¿Quieres unirte al chat “%1$s”?</string>
     <string name="LinkCopied">Enlace copiado al portapapeles</string>
     <string name="ShareLink">Compartir enlace</string>
-    <!--set admins view-->
     <!--group info view-->
     <string name="SharedMedia">Multimedia</string>
     <string name="SETTINGS">Ajustes</string>
@@ -167,15 +157,7 @@
     <string name="BlockContact">Bloquear</string>
     <string name="EditContact">Editar</string>
     <string name="DeleteContact">Eliminar</string>
-    <string name="PhoneHome">Casa</string>
-    <string name="PhoneMobile">Móvil</string>
-    <string name="PhoneWork">Trabajo</string>
-    <string name="PhoneOther">Otro</string>
-    <string name="PhoneMain">Principal</string>
     <string name="Info">Información</string>
-    <!--usernames-->
-    <string name="Username">Alias</string>
-    <string name="ErrorOccurred">Ocurrió un error.</string>
     <!--stickers view-->
     <string name="Stickers">Stickers</string>
     <string name="StickersInfo">Los artistas pueden añadir sus propios packs de stickers usando el bot @stickers.\n\nLos usuarios pueden añadir stickers tocando y eligiendo “Añadir stickers”.</string>
@@ -211,14 +193,11 @@
     <string name="UndoAllCustom">Deshacer las notificaciones personalizadas para todos tus usuarios y grupos</string>
     <string name="NotificationsAndSounds">Notificaciones y sonidos</string>
     <string name="BlockedUsers">Usuarios bloqueados</string>
-    <string name="LogOut">Cerrar sesión</string>
     <string name="NoSound">Sin sonido</string>
     <string name="Default">Por defecto</string>
     <string name="OnlyIfSilent">Sólo si está silenciado</string>
     <string name="ChatBackground">Fondo de chat</string>
-    <string name="MessagesSettings">Mensajes</string>
     <string name="SendByEnter">Enviar con “Intro”</string>
-    <string name="Events">Eventos</string>
     <string name="Language">Idioma</string>
     <string name="Help">Preguntas frecuentes</string>
     <string name="DeleteLocalization">¿Eliminar traducción?</string>
@@ -241,14 +220,7 @@
     <string name="Long">Largas</string>
     <string name="SystemDefault">Según el sistema</string>
     <string name="SettingsDefault">Según Delta Chat</string>
-    <string name="AutomaticMediaDownload">Descarga automática de multimedia</string>
-    <string name="WhenUsingMobileData">Con uso de datos móviles</string>
-    <string name="WhenConnectedOnWiFi">Con conexión a Wi-Fi</string>
-    <string name="WhenRoaming">Con itinerancia de datos</string>
-    <string name="NoMediaAutoDownload">Ningún contenido multimedia</string>
-    <string name="AutoplayGifs">Autorreproducción de GIF</string>
     <string name="RaiseToSpeak">Elevar para hablar</string>
-    <string name="SaveToGallerySettings">Guardar en galería</string>
     <string name="EditName">Editar nombre</string>
     <string name="NotificationsPriority">Prioridad</string>
     <string name="NotificationsPriorityDefault">Por defecto</string>
@@ -281,7 +253,6 @@
     <string name="LocalDatabaseInfo">Al borrar la base de datos se eliminarán los mensajes en la caché y se comprimirá la base de datos para liberar espacio de almacenamiento. Delta Chat requiere algunos datos para funcionar, así que la base de datos nunca podrá llegar a cero.\n\nEsto puede tardar algunos minutos.</string>
     <string name="ClearMediaCache">Borrar caché</string>
     <string name="CacheClear">Borrar</string>
-    <string name="CalculatingSize">Calculando...</string>
     <string name="LocalDocumentCache">Archivos</string>
     <string name="LocalPhotoCache">Fotos</string>
     <string name="LocalAudioCache">Mensajes de voz</string>
@@ -387,7 +358,6 @@
     <string name="PhotoCaption">Comentario de foto</string>
     <string name="VideoCaption">Comentario de vídeo</string>
     <string name="Caption">Comentario</string>
-    <!--password view-->
     <!--privacy settings-->
     <string name="PrivacySettings">Privacidad y seguridad</string>
     <string name="PrivacyTitle">Privacidad</string>
@@ -410,7 +380,6 @@
     <string name="EditedVideo">Vídeo editado</string>
     <string name="SendingVideo">Enviando vídeo...</string>
     <string name="CompressVideo">Comprimir Vídeo</string>
-    <!--bot-->
     <!--button titles-->
     <string name="Next">Siguiente</string>
     <string name="Back">Atrás</string>

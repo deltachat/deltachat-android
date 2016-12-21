@@ -8,10 +8,6 @@
     <string name="LanguageName">Nederlands</string>
     <string name="LanguageNameInEnglish">Dutch</string>
     <string name="LanguageCode">nl</string>
-    <!--signin view-->
-    <!--code enter view-->
-    <!--signup view-->
-    <!--<string name="RegisterText">Set up your name and picture</string>-->
     <!--chats view-->
     <string name="Settings">Instellingen</string>
     <string name="NewGroup">Nieuwe groep</string>
@@ -34,10 +30,6 @@
     <string name="ChatHints">CHATS</string>
     <string name="ChatHintsDelete">%1$s uit suggesties verwijderen?</string>
     <string name="Draft">Concept</string>
-    <!--channels-->
-    <string name="ChannelNotifyMembersInfoOn">Berichtgeving voor leden</string>
-    <string name="ChannelNotifyMembersInfoOff">Geen berichtgeving voor leden</string>
-    <!--broadcasts-->
     <!--audio view-->
     <string name="NoAudio">Voeg bestanden toe aan de muziekbibliotheek op je apparaat om ze hier te zien.</string>
     <string name="AttachMusic">Muziek</string>
@@ -91,7 +83,6 @@
     <string name="ShareSendTo">Versturen naar...</string>
     <string name="TapHereGifs">Tik hier om opgeslagen GIF\'s te bekijken</string>
     <string name="ClearRecentEmoji">Recente emoji\'s wissen?</string>
-    <string name="EditedMessage">bewerkt</string>
     <string name="AddShortcut">Snelkoppeling toevoegen</string>
     <string name="ShortcutAdded">Snelkoppeling aan startscherm toegevoegd</string>
     <!--notification-->
@@ -152,7 +143,6 @@
     <string name="JoinToGroup">Wil je lid worden van de groep \"%1$s\"?</string>
     <string name="LinkCopied">Link gekopieerd naar klembord.</string>
     <string name="ShareLink">Link delen</string>
-    <!--set admins view-->
     <!--group info view-->
     <string name="SharedMedia">Gedeelde media</string>
     <string name="SETTINGS">Instellingen</string>
@@ -167,15 +157,7 @@
     <string name="BlockContact">Blokkeer</string>
     <string name="EditContact">Wijzig</string>
     <string name="DeleteContact">Verwijder</string>
-    <string name="PhoneHome">Thuis</string>
-    <string name="PhoneMobile">Mobiel</string>
-    <string name="PhoneWork">Werk</string>
-    <string name="PhoneOther">Overig</string>
-    <string name="PhoneMain">Hoofd</string>
     <string name="Info">Info</string>
-    <!--usernames-->
-    <string name="Username">Gebruikersnaam</string>
-    <string name="ErrorOccurred">Er is een fout opgetreden.</string>
     <!--stickers view-->
     <string name="Stickers">Stickers</string>
     <string name="StickersInfo">Ontwerpers kunnen stickerbundels toevoegen via onze bot: @stickers.\n\nGebruikers kunnen met een tik stickers toevoegen via \"Toevoegen aan stickers\".</string>
@@ -211,14 +193,11 @@
     <string name="UndoAllCustom">Aangepaste meldingsinstellingen wissen voor contacten en groepen.</string>
     <string name="NotificationsAndSounds">Meldingen en geluiden</string>
     <string name="BlockedUsers">Geblokkeerd</string>
-    <string name="LogOut">Uitloggen</string>
     <string name="NoSound">Geen geluid</string>
     <string name="Default">Standaard</string>
     <string name="OnlyIfSilent">Alleen indien stil</string>
     <string name="ChatBackground">Achtergrond kiezen</string>
-    <string name="MessagesSettings">Berichten</string>
     <string name="SendByEnter">Versturen met Enter</string>
-    <string name="Events">Gebeurtenissen</string>
     <string name="Language">Taal</string>
     <string name="Help">Veelgestelde vragen</string>
     <string name="DeleteLocalization">Vertaling verwijderen?</string>
@@ -241,14 +220,7 @@
     <string name="Long">Lang</string>
     <string name="SystemDefault">Systeeminstelling</string>
     <string name="SettingsDefault">Standaardinstelling</string>
-    <string name="AutomaticMediaDownload">Automatisch media downloaden</string>
-    <string name="WhenUsingMobileData">Bij mobiele verbinding</string>
-    <string name="WhenConnectedOnWiFi">Bij Wi-Fi-verbinding</string>
-    <string name="WhenRoaming">Bij roaming</string>
-    <string name="NoMediaAutoDownload">Geen media</string>
-    <string name="AutoplayGifs">GIF\'s automatisch afspelen</string>
     <string name="RaiseToSpeak">Houd bij oor</string>
-    <string name="SaveToGallerySettings">Opslaan in galerij</string>
     <string name="EditName">Naam wijzigen</string>
     <string name="NotificationsPriority">Prioriteit</string>
     <string name="NotificationsPriorityDefault">Standaard</string>
@@ -281,7 +253,6 @@
     <string name="LocalDatabaseInfo">Het opschonen van de lokale database zal de tekst van gecachet berichten verwijderen en de database comprimeren om ruimte te besparen. Delta Chat heeft wat ruimte nodig om te kunnen functioneren, dus de databasegrootte zal nooit nul worden.\n\nDit kan enkele minuten duren.</string>
     <string name="ClearMediaCache">Cache opschonen</string>
     <string name="CacheClear">Opschonen</string>
-    <string name="CalculatingSize">Berekenen...</string>
     <string name="LocalDocumentCache">Bestanden</string>
     <string name="LocalPhotoCache">Foto\'s</string>
     <string name="LocalAudioCache">Spraakberichten</string>
@@ -387,7 +358,6 @@
     <string name="PhotoCaption">Foto-onderschrift</string>
     <string name="VideoCaption">Video-onderschrift</string>
     <string name="Caption">Onderschrift</string>
-    <!--password view-->
     <!--privacy settings-->
     <string name="PrivacySettings">Privacy en veiligheid</string>
     <string name="PrivacyTitle">Privacy</string>
@@ -410,7 +380,6 @@
     <string name="EditedVideo">Bewerkte video</string>
     <string name="SendingVideo">Video versturen</string>
     <string name="CompressVideo">Video comprimeren</string>
-    <!--bot-->
     <!--button titles-->
     <string name="Next">Volgende</string>
     <string name="Back">Vorige</string>

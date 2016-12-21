@@ -8,10 +8,6 @@
     <string name="LanguageName">Deutsch</string>
     <string name="LanguageNameInEnglish">German</string>
     <string name="LanguageCode">de</string>
-    <!--signin view-->
-    <!--code enter view-->
-    <!--signup view-->
-    <!--<string name="RegisterText">Set up your name and picture</string>-->
     <!--chats view-->
     <string name="Settings">Einstellungen</string>
     <string name="NewGroup">Neue Gruppe</string>
@@ -34,10 +30,6 @@
     <string name="ChatHints">CHATS</string>
     <string name="ChatHintsDelete">Lösche %1$s aus Vorschlägen?</string>
     <string name="Draft">Entwurf</string>
-    <!--channels-->
-    <string name="ChannelNotifyMembersInfoOn">Mitglieder werden benachrichtigt</string>
-    <string name="ChannelNotifyMembersInfoOff">Mitglieder werden nicht benachrichtigt</string>
-    <!--broadcasts-->
     <!--audio view-->
     <string name="NoAudio">Bitte füge Musikdateien einfach deiner Android Musikbibliothek hinzu, um sie hier zu sehen.</string>
     <string name="AttachMusic">Musik</string>
@@ -91,7 +83,6 @@
     <string name="ShareSendTo">Sende an...</string>
     <string name="TapHereGifs">Hier tippen um gespeicherte GIFs zu sehen</string>
     <string name="ClearRecentEmoji">Zuletzt benutzte Emoji leeren?</string>
-    <string name="EditedMessage">bearbeitet</string>
     <string name="AddShortcut">Widget hinzufügen</string>
     <string name="ShortcutAdded">Widget zum Startbildschirm hinzugefügt</string>
     <!--notification-->
@@ -152,7 +143,6 @@
     <string name="JoinToGroup">Möchtest du dem Chat \'%1$s\' beitreten?</string>
     <string name="LinkCopied">Link in die Zwischenablage kopiert</string>
     <string name="ShareLink">Link teilen</string>
-    <!--set admins view-->
     <!--group info view-->
     <string name="SharedMedia">Geteilte Medien</string>
     <string name="SETTINGS">Einstellungen</string>
@@ -167,15 +157,7 @@
     <string name="BlockContact">Benutzer blockieren</string>
     <string name="EditContact">Bearbeiten</string>
     <string name="DeleteContact">Benutzer löschen</string>
-    <string name="PhoneHome">Festnetz</string>
-    <string name="PhoneMobile">Mobil</string>
-    <string name="PhoneWork">Arbeit</string>
-    <string name="PhoneOther">Sonstiges</string>
-    <string name="PhoneMain">Hauptnummer</string>
     <string name="Info">Info</string>
-    <!--usernames-->
-    <string name="Username">Benutzername</string>
-    <string name="ErrorOccurred">Es ist ein Fehler aufgetreten.</string>
     <!--stickers view-->
     <string name="Stickers">Sticker</string>
     <string name="StickersInfo">Künstler können eigene Sticker-Pakete über unseren Sticker Bot (@stickers) einstellen.\n\nNutzer fügen neue Sticker durch Antippen eines Stickers und dann \"Hinzufügen\" hinzu.</string>
@@ -211,14 +193,11 @@
     <string name="UndoAllCustom">Setzt alle benutzerdefinierten Einstellungen für Mitteilungen zurück</string>
     <string name="NotificationsAndSounds">Mitteilungen und Töne</string>
     <string name="BlockedUsers">Blockierte Benutzer</string>
-    <string name="LogOut">Abmelden</string>
     <string name="NoSound">Kein Ton</string>
     <string name="Default">Standard</string>
     <string name="OnlyIfSilent">Wenn lautlos</string>
     <string name="ChatBackground">Chat-Hintergrundbild</string>
-    <string name="MessagesSettings">Nachrichten</string>
     <string name="SendByEnter">Mit Enter senden</string>
-    <string name="Events">Ereignisse</string>
     <string name="Language">Sprache</string>
     <string name="Help">Hilfe</string>
     <string name="DeleteLocalization">Lokalisierung löschen?</string>
@@ -241,14 +220,7 @@
     <string name="Long">Lang</string>
     <string name="SystemDefault">Systemvorgabe</string>
     <string name="SettingsDefault">Standardeinstellung</string>
-    <string name="AutomaticMediaDownload">Automatischer Mediendownload</string>
-    <string name="WhenUsingMobileData">Über Mobilfunk</string>
-    <string name="WhenConnectedOnWiFi">Über W-LAN</string>
-    <string name="WhenRoaming">Bei Roaming</string>
-    <string name="NoMediaAutoDownload">kein automatischer Download</string>
-    <string name="AutoplayGifs">GIFs autom. Abspielen</string>
     <string name="RaiseToSpeak">Zum Sprechen ans Ohr</string>
-    <string name="SaveToGallerySettings">In der Galerie speichern</string>
     <string name="EditName">Name bearbeiten</string>
     <string name="NotificationsPriority">Priorität</string>
     <string name="NotificationsPriorityDefault">Standard</string>
@@ -281,7 +253,6 @@
     <string name="LocalDatabaseInfo">Zwischengespeicherte Textnachrichten werden entfernt und die Datenbank optimiert um Speicherplatz zurückzuerhalten. Auf Null lässt sich die Größe jedoch nicht reduzieren, da die App einige Daten für den laufenden Betrieb benötigt.\n\nHinweis: Der Vorgang kann mehrere Minuten dauern.</string>
     <string name="ClearMediaCache">Cache Leeren</string>
     <string name="CacheClear">Leeren</string>
-    <string name="CalculatingSize">Berechne...</string>
     <string name="LocalDocumentCache">Dateien</string>
     <string name="LocalPhotoCache">Bilder</string>
     <string name="LocalAudioCache">Sprachnachrichten</string>
@@ -387,7 +358,6 @@
     <string name="PhotoCaption">Bildbeschriftung</string>
     <string name="VideoCaption">Videobeschriftung</string>
     <string name="Caption">Beschriftung</string>
-    <!--password view-->
     <!--privacy settings-->
     <string name="PrivacySettings">Privatsphäre und Sicherheit</string>
     <string name="PrivacyTitle">Privatsphäre</string>
@@ -410,7 +380,6 @@
     <string name="EditedVideo">Bearbeitetes Video</string>
     <string name="SendingVideo">Sende Video...</string>
     <string name="CompressVideo">Video komprimieren</string>
-    <!--bot-->
     <!--button titles-->
     <string name="Next">Weiter</string>
     <string name="Back">Zurück</string>

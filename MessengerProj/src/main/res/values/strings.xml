@@ -8,10 +8,6 @@
     <string name="LanguageName">English</string>
     <string name="LanguageNameInEnglish" tools:keep="@string/LanguageNameInEnglish">English</string>
     <string name="LanguageCode" tools:keep="@string/LanguageCode">en</string>
-    <!--signin view-->
-    <!--code enter view-->
-    <!--signup view-->
-    <!--<string name="RegisterText">Set up your name and picture</string>-->
     <!--chats view-->
     <string name="Settings">Settings</string>
     <string name="NewGroup">New group</string>
@@ -34,10 +30,6 @@
     <string name="ChatHints">CHATS</string>
     <string name="ChatHintsDelete">Delete %1$s from suggestions?</string>
     <string name="Draft">Draft</string>
-    <!--channels-->
-    <string name="ChannelNotifyMembersInfoOn">Members will be notified when you post</string>
-    <string name="ChannelNotifyMembersInfoOff">Members will not be notified when you post</string>
-    <!--broadcasts-->
     <!--audio view-->
     <string name="NoAudio">Please add files to the music library on your device to see them here.</string>
     <string name="AttachMusic">Music</string>
@@ -91,7 +83,6 @@
     <string name="ShareSendTo">Send to...</string>
     <string name="TapHereGifs">Tap here to access saved GIFs</string>
     <string name="ClearRecentEmoji">Clear recent emoji?</string>
-    <string name="EditedMessage">edited</string>
     <string name="AddShortcut">Add widget</string>
     <string name="ShortcutAdded">Widget added to home screen</string>
     <!--notification-->
@@ -152,7 +143,6 @@
     <string name="JoinToGroup">Do you want to join the chat \'%1$s\'?</string>
     <string name="LinkCopied">Link copied to clipboard</string>
     <string name="ShareLink">Share Link</string>
-    <!--set admins view-->
     <!--group info view-->
     <string name="SharedMedia">Shared Media</string>
     <string name="SETTINGS">Settings</string>
@@ -167,15 +157,7 @@
     <string name="BlockContact">Block contact</string>
     <string name="EditContact">Edit</string>
     <string name="DeleteContact">Delete user</string>
-    <string name="PhoneHome">Home</string>
-    <string name="PhoneMobile">Mobile</string>
-    <string name="PhoneWork">Work</string>
-    <string name="PhoneOther">Other</string>
-    <string name="PhoneMain">Main</string>
     <string name="Info">Info</string>
-    <!--usernames-->
-    <string name="Username">Username</string>
-    <string name="ErrorOccurred">An error occurred.</string>
     <!--stickers view-->
     <string name="Stickers">Stickers</string>
     <string name="StickersInfo">Artists are welcome to add their own sticker packs using our @stickers bot.\n\nUsers can add stickers by tapping on them and choosing \"Add to Stickers\".</string>
@@ -211,14 +193,11 @@
     <string name="UndoAllCustom">Undo all custom notification settings for all your contacts and groups</string>
     <string name="NotificationsAndSounds">Notifications and Sounds</string>
     <string name="BlockedUsers">Blocked contacts</string>
-    <string name="LogOut">Log out</string>
     <string name="NoSound">No sound</string>
     <string name="Default">Default</string>
     <string name="OnlyIfSilent">Only if silent</string>
     <string name="ChatBackground">Chat Background</string>
-    <string name="MessagesSettings">Messages</string>
     <string name="SendByEnter">Send by Enter</string>
-    <string name="Events">Events</string>
     <string name="Language">Language</string>
     <string name="Help">Help</string>
     <string name="DeleteLocalization">Delete localization?</string>
@@ -241,14 +220,7 @@
     <string name="Long">Long</string>
     <string name="SystemDefault">System default</string>
     <string name="SettingsDefault">Settings default</string>
-    <string name="AutomaticMediaDownload">Automatic media download</string>
-    <string name="WhenUsingMobileData">When using mobile data</string>
-    <string name="WhenConnectedOnWiFi">When connected on Wi-Fi</string>
-    <string name="WhenRoaming">When roaming</string>
-    <string name="NoMediaAutoDownload">No media</string>
-    <string name="AutoplayGifs">Autoplay GIFs</string>
     <string name="RaiseToSpeak">Raise to Speak</string>
-    <string name="SaveToGallerySettings">Save to gallery</string>
     <string name="EditName">Edit name</string>
     <string name="NotificationsPriority">Priority</string>
     <string name="NotificationsPriorityDefault">Default</string>
@@ -281,7 +253,6 @@
     <string name="LocalDatabaseInfo">Clearing the local database will delete the texts of cached messages and compress the database to save internal disk space. The app needs some data to work, so database size will not reach zero.\n\nThis operation can take a few minutes to complete.</string>
     <string name="ClearMediaCache">Clear Cache</string>
     <string name="CacheClear">Clear</string>
-    <string name="CalculatingSize">Calculating...</string>
     <string name="LocalDocumentCache">Documents</string>
     <string name="LocalPhotoCache">Photos</string>
     <string name="LocalAudioCache">Voice messages</string>
@@ -387,7 +358,6 @@
     <string name="PhotoCaption">Photo Caption</string>
     <string name="VideoCaption">Video Caption</string>
     <string name="Caption">Caption</string>
-    <!--password view-->
     <!--privacy settings-->
     <string name="PrivacySettings">Privacy and Security</string>
     <string name="PrivacyTitle" tools:keep="@string/PrivacyTitle">Privacy</string>
@@ -410,7 +380,6 @@
     <string name="EditedVideo">Edited Video</string>
     <string name="SendingVideo">Sending video...</string>
     <string name="CompressVideo">Compress Video</string>
-    <!--bot-->
     <!--button titles-->
     <string name="Next">Next</string>
     <string name="Back">Back</string>

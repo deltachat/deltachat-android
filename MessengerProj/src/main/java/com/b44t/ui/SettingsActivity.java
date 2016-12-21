@@ -501,6 +501,7 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
                     showDialog(builder.create());
                     */
                 } else if (i == wifiDownloadRow || i == mobileDownloadRow || i == roamingDownloadRow) {
+                    /*
                     if (getParentActivity() == null) {
                         return;
                     }
@@ -608,6 +609,7 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
                     linearLayout.addView(cell, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 48));
                     builder.setCustomView(linearLayout);
                     showDialog(builder.create());
+                    */
                 } else if (i == usernameRow) {
                     presentFragment(new NameSettingsActivity());
                 } else if (i == numberRow) {
@@ -1319,6 +1321,7 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
                 }
                 TextDetailSettingsCell textCell = (TextDetailSettingsCell) view;
 
+                /*
                 if (i == mobileDownloadRow || i == wifiDownloadRow || i == roamingDownloadRow) {
                     int mask;
                     String value;
@@ -1371,18 +1374,9 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
                         text = LocaleController.getString("NoMediaAutoDownload", R.string.NoMediaAutoDownload);
                     }
                     textCell.setTextAndValue(value, text, true);
-                } else if (i == numberRow) {
-                    /* EDIT BY MR
-                    TLRPC.User user = UserConfig.getCurrentUser();
-                    String value;
-                    if (user != null && user.phone != null && user.phone.length() != 0) {
-                        value = PhoneFormat.getInstance().format("+" + user.phone);
-                    } else {
-                        value = LocaleController.getString("NumberUnknown", R.string.NumberUnknown);
-                    }
-                    textCell.setTextAndValue(value, LocaleController.getString("Phone", R.string.Phone), true);
-                    */
-                    // EDIT BY MR
+                } else
+                */
+                if (i == numberRow) {
                     String subtitle;
                     if( MrMailbox.isConfigured()!=0) {
                         subtitle = MrMailbox.getConfig("addr", "");
@@ -1392,26 +1386,12 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
                     }
 
                     textCell.setTextAndValue(LocaleController.getString("AccountSettings", R.string.AccountSettings), subtitle, false);
-                    // /EDIT BY MR
                 } else if (i == usernameRow) {
-                    /* EDIT BY MR
-                    TLRPC.User user = UserConfig.getCurrentUser();
-                    String value;
-                    if (user != null && user.username != null && user.username.length() != 0) {
-                        value = "@" + user.username;
-                    } else {
-                        value = LocaleController.getString("UsernameEmpty", R.string.UsernameEmpty);
-                    }
-                    textCell.setTextAndValue("foo", LocaleController.getString("Username", R.string.Username), false);
-                    */
-
-                    // EDIT BY MR
                     String subtitle = MrMailbox.getConfig("displayname", "");
                     if( subtitle.isEmpty()) {
                         subtitle = LocaleController.getString("NotSet", R.string.NotSet);
                     }
                     textCell.setTextAndValue(LocaleController.getString("MyName", R.string.MyName), subtitle, true);
-                    // /EDIT BY MR
                 }
             }
             return view;
