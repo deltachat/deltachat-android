@@ -197,7 +197,7 @@
     <string name="Default">Default</string>
     <string name="OnlyIfSilent">Only if silent</string>
     <string name="ChatBackground">Chat Background</string>
-    <string name="SendByEnter">Send by Enter</string>
+    <string name="SendByEnter">Send by "Enter"</string>
     <string name="Language">Language</string>
     <string name="Help">Help</string>
     <string name="DeleteLocalization">Delete localization?</string>
@@ -219,7 +219,6 @@
     <string name="Short">Short</string>
     <string name="Long">Long</string>
     <string name="SystemDefault">System default</string>
-    <string name="SettingsDefault">Settings default</string>
     <string name="RaiseToSpeak">Raise to Speak</string>
     <string name="EditName">Edit name</string>
     <string name="NotificationsPriority">Priority</string>

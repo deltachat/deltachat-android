@@ -219,7 +219,6 @@
     <string name="Short">Cortas</string>
     <string name="Long">Largas</string>
     <string name="SystemDefault">Según el sistema</string>
-    <string name="SettingsDefault">Según Delta Chat</string>
     <string name="RaiseToSpeak">Elevar para hablar</string>
     <string name="EditName">Editar nombre</string>
     <string name="NotificationsPriority">Prioridad</string>

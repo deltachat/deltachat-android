@@ -131,7 +131,7 @@ public class ProfileNotificationsActivity extends BaseFragment implements Notifi
                     builder.setTitle(LocaleController.getString("Vibrate", R.string.Vibrate));
                     builder.setItems(new CharSequence[]{
                             LocaleController.getString("VibrationDisabled", R.string.VibrationDisabled),
-                            LocaleController.getString("SettingsDefault", R.string.SettingsDefault),
+                            LocaleController.getString("Default", R.string.Default),
                             LocaleController.getString("SystemDefault", R.string.SystemDefault),
                             LocaleController.getString("Short", R.string.Short),
                             LocaleController.getString("Long", R.string.Long)
@@ -282,7 +282,7 @@ public class ProfileNotificationsActivity extends BaseFragment implements Notifi
                     AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
                     builder.setTitle(LocaleController.getString("NotificationsPriority", R.string.NotificationsPriority));
                     builder.setItems(new CharSequence[]{
-                            LocaleController.getString("SettingsDefault", R.string.SettingsDefault),
+                            LocaleController.getString("Default", R.string.Default),
                             LocaleController.getString("NotificationsPriorityDefault", R.string.NotificationsPriorityDefault),
                             LocaleController.getString("NotificationsPriorityHigh", R.string.NotificationsPriorityHigh),
                             LocaleController.getString("NotificationsPriorityMax", R.string.NotificationsPriorityMax)
@@ -521,7 +521,7 @@ public class ProfileNotificationsActivity extends BaseFragment implements Notifi
                 if (i == settingsVibrateRow) {
                     int value = preferences.getInt("vibrate_" + dialog_id, 0);
                     if (value == 0) {
-                        textCell.setTextAndValue(LocaleController.getString("Vibrate", R.string.Vibrate), LocaleController.getString("SettingsDefault", R.string.SettingsDefault), true);
+                        textCell.setTextAndValue(LocaleController.getString("Vibrate", R.string.Vibrate), LocaleController.getString("Default", R.string.Default), true);
                     } else if (value == 1) {
                         textCell.setTextAndValue(LocaleController.getString("Vibrate", R.string.Vibrate), LocaleController.getString("Short", R.string.Short), true);
                     } else if (value == 2) {
@@ -574,7 +574,7 @@ public class ProfileNotificationsActivity extends BaseFragment implements Notifi
                     } else if (value == 2) {
                         textCell.setTextAndValue(LocaleController.getString("NotificationsPriority", R.string.NotificationsPriority), LocaleController.getString("NotificationsPriorityMax", R.string.NotificationsPriorityMax), true);
                     } else if (value == 3) {
-                        textCell.setTextAndValue(LocaleController.getString("NotificationsPriority", R.string.NotificationsPriority), LocaleController.getString("SettingsDefault", R.string.SettingsDefault), true);
+                        textCell.setTextAndValue(LocaleController.getString("NotificationsPriority", R.string.NotificationsPriority), LocaleController.getString("Default", R.string.Default), true);
                     }
                 } else if (i == smartRow) {
                     int notifyMaxCount = preferences.getInt("smart_max_count_" + dialog_id, 2);

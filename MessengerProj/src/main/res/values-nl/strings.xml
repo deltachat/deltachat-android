@@ -197,7 +197,7 @@
     <string name="Default">Standaard</string>
     <string name="OnlyIfSilent">Alleen indien stil</string>
     <string name="ChatBackground">Achtergrond kiezen</string>
-    <string name="SendByEnter">Versturen met Enter</string>
+    <string name="SendByEnter">Versturen met "Enter"</string>
     <string name="Language">Taal</string>
     <string name="Help">Veelgestelde vragen</string>
     <string name="DeleteLocalization">Vertaling verwijderen?</string>
@@ -219,7 +219,6 @@
     <string name="Short">Kort</string>
     <string name="Long">Lang</string>
     <string name="SystemDefault">Systeeminstelling</string>
-    <string name="SettingsDefault">Standaardinstelling</string>
     <string name="RaiseToSpeak">Houd bij oor</string>
     <string name="EditName">Naam wijzigen</string>
     <string name="NotificationsPriority">Prioriteit</string>

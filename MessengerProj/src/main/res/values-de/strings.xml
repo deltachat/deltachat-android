@@ -197,7 +197,7 @@
     <string name="Default">Standard</string>
     <string name="OnlyIfSilent">Wenn lautlos</string>
     <string name="ChatBackground">Chat-Hintergrundbild</string>
-    <string name="SendByEnter">Mit Enter senden</string>
+    <string name="SendByEnter">Mit Taste „Enter“ senden</string>
     <string name="Language">Sprache</string>
     <string name="Help">Hilfe</string>
     <string name="DeleteLocalization">Lokalisierung löschen?</string>
@@ -219,7 +219,6 @@
     <string name="Short">Kurz</string>
     <string name="Long">Lang</string>
     <string name="SystemDefault">Systemvorgabe</string>
-    <string name="SettingsDefault">Standardeinstellung</string>
     <string name="RaiseToSpeak">Zum Sprechen ans Ohr</string>
     <string name="EditName">Name bearbeiten</string>
     <string name="NotificationsPriority">Priorität</string>

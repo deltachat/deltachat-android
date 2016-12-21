@@ -27,7 +27,6 @@ import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.widget.AdapterView;
 import android.widget.FrameLayout;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 
 import com.b44t.messenger.AndroidUtilities;
@@ -35,13 +34,10 @@ import com.b44t.messenger.MediaController;
 import com.b44t.messenger.MrMailbox;
 import com.b44t.messenger.ApplicationLoader;
 import com.b44t.messenger.LocaleController;
-import com.b44t.messenger.FileLog;
 import com.b44t.messenger.MessagesController;
 import com.b44t.messenger.NotificationCenter;
 import com.b44t.messenger.R;
-import com.b44t.ui.ActionBar.BottomSheet;
 import com.b44t.ui.Adapters.BaseFragmentAdapter;
-import com.b44t.ui.Cells.CheckBoxCell;
 import com.b44t.ui.Cells.EmptyCell;
 import com.b44t.ui.Cells.HeaderCell;
 import com.b44t.ui.Cells.ShadowSectionCell;
@@ -1260,7 +1256,7 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
 
                 SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("mainconfig", Activity.MODE_PRIVATE);
                 if (i == enableAnimationsRow) {
-                    textCell.setTextAndCheck(LocaleController.getString("EnableAnimations", R.string.EnableAnimations), preferences.getBoolean("view_animations", true), false);
+                    textCell.setTextAndCheck(LocaleController.getString("EnableAnimations", R.string.EnableAnimations), preferences.getBoolean("view_animations", true), true);
                 } else if (i == sendByEnterRow) {
                     textCell.setTextAndCheck(LocaleController.getString("SendByEnter", R.string.SendByEnter), preferences.getBoolean("send_by_enter", false), true);
                 /*} else if (i == saveToGalleryRow) {

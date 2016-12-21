@@ -387,11 +387,6 @@ public class NotificationsController {
 
         MrChat mrChat = MrMailbox.getChat(chat_id);
         boolean isGroupChat = mrChat.getType()==MrChat.MR_CHAT_GROUP;
-        if( isGroupChat && mrChat.getId()==MrChat.MR_CHAT_ID_DEADDROP ) {
-            if(  ) {
-
-            }
-        }
         int popup = preferences.getInt(isGroupChat ? "popupGroup" : "popupAll", 0);
 
         /* old func:

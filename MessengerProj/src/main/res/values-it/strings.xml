@@ -197,7 +197,7 @@
     <string name="Default">Predefinite</string>
     <string name="OnlyIfSilent">Solo se silenzioso</string>
     <string name="ChatBackground">Sfondo chat</string>
-    <string name="SendByEnter">Invia con tasto invio</string>
+    <string name="SendByEnter">Invia con tasto "invio"</string>
     <string name="Language">Lingua</string>
     <string name="Help">Domande frequenti</string>
     <string name="DeleteLocalization">Eliminare la traduzione?</string>
@@ -219,7 +219,6 @@
     <string name="Short">Breve</string>
     <string name="Long">Lunga</string>
     <string name="SystemDefault">Predefinito di sistema</string>
-    <string name="SettingsDefault">Impostazioni predefinite</string>
     <string name="RaiseToSpeak">Alza per parlare</string>
     <string name="EditName">Modifica nome</string>
     <string name="NotificationsPriority">Priorità</string>

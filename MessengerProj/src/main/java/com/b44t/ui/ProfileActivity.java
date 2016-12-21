@@ -1157,7 +1157,10 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
         rowCount = 0;
 
         emptyRow = rowCount++;
-        settingsNotificationsRow = rowCount++;
+
+        if( chat_id!=MrChat.MR_CHAT_ID_DEADDROP || MrMailbox.getConfigInt("show_deaddrop", 0)!=0 ) {
+            settingsNotificationsRow = rowCount++;
+        }
 
         if( user_id!=0 || chat_id!=MrChat.MR_CHAT_ID_DEADDROP) {
             changeNameRow = rowCount++;
@@ -1172,9 +1175,11 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
         //sectionRow = rowCount++;
 
         if( chat_id != 0 ) {
-            emptyRowChat = rowCount++;
-            membersSectionRow = rowCount++;
-            emptyRowChat2 = rowCount++;
+            if( rowCount > 1/*first empty row is always added*/ ) {
+                emptyRowChat = rowCount++;
+                membersSectionRow = rowCount++;
+                emptyRowChat2 = rowCount++;
+            }
 
             firstMemberRow = rowCount;
             rowCount += sortedUserIds.length;
