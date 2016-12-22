@@ -86,7 +86,7 @@
     <string name="AddShortcut">Adicionar atalho</string>
     <string name="ShortcutAdded">Atalho adicionado à tela de início</string>
     <!--notification-->
-    <string name="YouHaveNewMessage">Você tem uma nova mensagem</string>
+    <string name="NotificationNewMsgRcvd">Você tem uma nova mensagem</string>
     <string name="NotificationMessageText">%1$s: %2$s</string>
     <string name="NotificationMessageNoText">%1$s te enviou uma mensagem</string>
     <string name="NotificationMessagePhoto">%1$s te enviou uma foto</string>

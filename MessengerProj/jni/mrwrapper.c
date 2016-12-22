@@ -699,7 +699,7 @@ JNIEXPORT jstring Java_com_b44t_messenger_MrMsg_MrMsgGetParam(JNIEnv *env, jclas
 JNIEXPORT jint Java_com_b44t_messenger_MrMsg_MrMsgGetParamInt(JNIEnv *env, jclass c, jlong hMsg, jint key, jint def)
 {
 	mrmsg_t* ths = (mrmsg_t*)hMsg;
-	return  mrparam_get_int(ths? ths->m_param:NULL, key, def);
+	return mrparam_get_int(ths? ths->m_param:NULL, key, def);
 }
 
 
@@ -707,6 +707,12 @@ JNIEXPORT jint Java_com_b44t_messenger_MrMsg_getBytes(JNIEnv *env, jobject obj)
 {
 	mrmsg_t* ths = get_mrmsg_t(env, obj);
 	return ths? ths->m_bytes : 0;
+}
+
+
+JNIEXPORT jint Java_com_b44t_messenger_MrMsg_getSummary(JNIEnv *env, jobject obj, jint approx_characters)
+{
+	return JSTRING_NEW(mrmsg_get_summary(get_mrmsg_t(env, obj), approx_characters));
 }
 
 

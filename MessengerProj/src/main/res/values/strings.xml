@@ -86,7 +86,7 @@
     <string name="AddShortcut">Add widget</string>
     <string name="ShortcutAdded">Widget added to home screen</string>
     <!--notification-->
-    <string name="YouHaveNewMessage">You have a new message</string>
+    <string name="NotificationNewMsgRcvd">New message received</string>
     <string name="NotificationMessageText">%1$s: %2$s</string>
     <string name="NotificationMessageNoText">%1$s sent you a message</string>
     <string name="NotificationMessagePhoto">%1$s sent you a photo</string>

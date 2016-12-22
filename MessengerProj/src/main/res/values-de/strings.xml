@@ -86,7 +86,7 @@
     <string name="AddShortcut">Widget hinzufügen</string>
     <string name="ShortcutAdded">Widget zum Startbildschirm hinzugefügt</string>
     <!--notification-->
-    <string name="YouHaveNewMessage">Du hast eine neue Nachricht</string>
+    <string name="NotificationNewMsgRcvd">Neue Nachricht erhalten</string>
     <string name="NotificationMessageText">%1$s: %2$s</string>
     <string name="NotificationMessageNoText">%1$s hat dir eine Nachricht gesendet</string>
     <string name="NotificationMessagePhoto">%1$s hat dir ein Bild gesendet</string>

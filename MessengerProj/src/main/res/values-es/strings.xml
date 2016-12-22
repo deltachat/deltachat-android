@@ -86,7 +86,7 @@
     <string name="AddShortcut">Añadir acceso directo</string>
     <string name="ShortcutAdded">Acceso directo añadido al escritorio</string>
     <!--notification-->
-    <string name="YouHaveNewMessage">Tienes un nuevo mensaje</string>
+    <string name="NotificationNewMsgRcvd">Tienes un nuevo mensaje</string>
     <string name="NotificationMessageText">%1$s: %2$s</string>
     <string name="NotificationMessageNoText">%1$s te envió un mensaje</string>
     <string name="NotificationMessagePhoto">%1$s te envió una foto</string>

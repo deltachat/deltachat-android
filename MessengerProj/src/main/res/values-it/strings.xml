@@ -86,7 +86,7 @@
     <string name="AddShortcut">Aggiungi scorciatoia</string>
     <string name="ShortcutAdded">Scorciatoia aggiunta alla schermata home</string>
     <!--notification-->
-    <string name="YouHaveNewMessage">Hai un nuovo messaggio</string>
+    <string name="NotificationNewMsgRcvd">Hai un nuovo messaggio</string>
     <string name="NotificationMessageText">%1$s: %2$s</string>
     <string name="NotificationMessageNoText">%1$s ti ha inviato un messaggio</string>
     <string name="NotificationMessagePhoto">%1$s ti ha inviato una foto</string>

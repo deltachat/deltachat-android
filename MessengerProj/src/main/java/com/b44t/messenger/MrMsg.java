@@ -96,6 +96,7 @@ public class MrMsg {
     }
 
     public native int getBytes();
+    public native String getSummary(int approx_characters);
 
     private long                  m_hMsg; // must not be renamed as referenced by JNI under the name "m_hMsg"
     private native static void    MrMsgUnref                 (long hMsg);

@@ -86,7 +86,7 @@
     <string name="AddShortcut">Snelkoppeling toevoegen</string>
     <string name="ShortcutAdded">Snelkoppeling aan startscherm toegevoegd</string>
     <!--notification-->
-    <string name="YouHaveNewMessage">Je hebt een nieuw bericht</string>
+    <string name="NotificationNewMsgRcvd">Je hebt een nieuw bericht</string>
     <string name="NotificationMessageText">%1$s: %2$s</string>
     <string name="NotificationMessageNoText">%1$s heeft je een bericht gestuurd</string>
     <string name="NotificationMessagePhoto">%1$s heeft je een foto gestuurd</string>
