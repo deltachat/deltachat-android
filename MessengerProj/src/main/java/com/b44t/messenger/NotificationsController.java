@@ -34,6 +34,7 @@ import android.support.v4.app.NotificationManagerCompat;
 import android.support.v4.app.RemoteInput;
 import android.util.SparseArray;
 
+import com.b44t.ui.ActionBar.Theme;
 import com.b44t.ui.LaunchActivity;
 
 import java.util.ArrayList;
@@ -1345,7 +1346,7 @@ public class NotificationsController {
                     .setContentIntent(contentIntent)
                     .setGroup("messages")
                     .setGroupSummary(true)
-                    .setColor(0xff2ca5e0);
+                    .setColor(Theme.ACTION_BAR_COLOR);
 
             mBuilder.setCategory(NotificationCompat.CATEGORY_MESSAGE);
             if (chat == null && user != null && user.phone != null && user.phone.length() > 0) {
@@ -1639,7 +1640,7 @@ public class NotificationsController {
                     .setGroup("messages")
                     .setContentText(text)
                     .setAutoCancel(true)
-                    .setColor(0xff2ca5e0)
+                    .setColor(Theme.ACTION_BAR_COLOR)
                     .setGroupSummary(false)
                     .setContentIntent(contentIntent)
                     .extend(wearableExtender)

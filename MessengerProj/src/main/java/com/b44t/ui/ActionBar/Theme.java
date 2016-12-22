@@ -28,7 +28,7 @@ import com.b44t.ui.Components.ChatAttachAlert;
 
 public class Theme {
 
-    public static final int ACTION_BAR_COLOR = 0xff415e6b;
+    public static final int ACTION_BAR_COLOR = 0xff415e6b; // also used for the notification icon background
     public static final int ACTION_BAR_PHOTO_VIEWER_COLOR = 0x7f000000;
     public static final int ACTION_BAR_MEDIA_PICKER_COLOR = 0xff333333;
     public static final int ACTION_BAR_PLAYER_COLOR = 0xffffffff;
