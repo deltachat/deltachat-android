@@ -3228,6 +3228,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     @Override
                     public void run() {
                         MrMailbox.markseenChat((int)dialog_id);
+                        NotificationsController.getInstance().removeSeenMessages();
                     }
                 }, 700);
             first = false;
@@ -3291,6 +3292,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                             readWhenResume = true;
                         } else {
                             MrMailbox.markseenMsg(evt_msg_id);
+                            NotificationsController.getInstance().removeSeenMessages();
                         }
                     }
                 }
@@ -3868,6 +3870,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         if (readWhenResume ) {
             readWhenResume = false;
             MrMailbox.markseenChat((int)dialog_id);
+            NotificationsController.getInstance().removeSeenMessages();
         }
         checkScrollForLoad(false);
         if (wasPaused) {

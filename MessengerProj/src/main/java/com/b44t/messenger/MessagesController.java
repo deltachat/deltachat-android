@@ -113,10 +113,10 @@ public class MessagesController implements NotificationCenter.NotificationCenter
 
     public static TLRPC.Peer getPeer(int id) {
         TLRPC.Peer inputPeer;
-        if (id < 0) {
+        /*if (id < 0) {
             inputPeer = new TLRPC.TL_peerChat();
             inputPeer.chat_id = -id;
-        } else {
+        } else*/ {
             inputPeer = new TLRPC.TL_peerUser();
             inputPeer.user_id = id;
         }

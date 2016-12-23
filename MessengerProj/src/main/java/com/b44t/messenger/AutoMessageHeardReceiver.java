@@ -23,5 +23,6 @@ public class AutoMessageHeardReceiver extends BroadcastReceiver {
             return;
         }
         MrMailbox.markseenChat((int)dialog_id);
+        NotificationsController.getInstance().removeSeenMessages();
     }
 }

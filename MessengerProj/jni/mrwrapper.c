@@ -595,6 +595,12 @@ JNIEXPORT jintArray Java_com_b44t_messenger_MrMailbox_getChatMsgs(JNIEnv *env, j
 }
 
 
+JNIEXPORT jintArray Java_com_b44t_messenger_MrMailbox_getUnseenMsgs(JNIEnv *env, jclass cls)
+{
+	carray* ca = mrmailbox_get_unseen_msgs(get_mrmailbox_t(env, cls));
+	return carray2jintArray_n_carray_free(env, ca);
+}
+
 
 JNIEXPORT jintArray Java_com_b44t_messenger_MrMailbox_MrMailboxGetChatContacts(JNIEnv *env, jclass c, jlong hMailbox, jint chat_id)
 {

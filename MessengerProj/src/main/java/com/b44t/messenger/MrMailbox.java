@@ -154,6 +154,7 @@ public class MrMailbox {
     }
 
     public native static int[] getChatMsgs(int chat_id);
+    public native static int[] getUnseenMsgs();
 
     public static int[] getChatMedia(int chat_id, int msg_type, int or_msg_type) {
         return MrMailboxGetChatMedia(m_hMailbox, chat_id, msg_type, or_msg_type);

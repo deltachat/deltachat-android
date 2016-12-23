@@ -34,5 +34,6 @@ public class AutoMessageReplyReceiver extends BroadcastReceiver {
         }
         SendMessagesHelper.getInstance().sendMessageText(text.toString(), dialog_id, null, null);
         MrMailbox.markseenChat((int)dialog_id);
+        NotificationsController.getInstance().removeSeenMessages();
     }
 }

@@ -77,13 +77,10 @@ public class TLRPC {
 	public static class Peer extends TLObject {
 		public final int channel_id = 0;
 		public int user_id;
-		public int chat_id;
+		public final int chat_id = 0;
 	}
 
 	public static class TL_peerUser extends Peer {
-	}
-
-	public static class TL_peerChat extends Peer {
 	}
 
 	public static class GeoPoint extends TLObject {
