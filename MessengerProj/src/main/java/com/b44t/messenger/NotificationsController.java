@@ -420,7 +420,7 @@ public class NotificationsController {
                     pushDialogs.put(chat_id, old_cnt+1);
                     total_unread_count++;
 
-                    showOrUpdateNotification(false);
+                    showOrUpdateNotification(true /*play sound*/);
                 }
             }
         });
