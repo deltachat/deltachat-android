@@ -734,6 +734,7 @@ public class NotificationsController {
     }
 
     private void setBadge(final int count) {
+
         notificationsQueue.postRunnable(new Runnable() {
             @Override
             public void run() {
@@ -789,17 +790,7 @@ public class NotificationsController {
         MrChat mrChat = MrMailbox.getChat((int)dialog_id);
         MrContact mrContact = MrMailbox.getContact(from_id);
         String name = mrContact.getDisplayName();
-        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("Notifications", Context.MODE_PRIVATE);
         boolean is_group = mrChat.getType()==MrChat.MR_CHAT_GROUP;
-
-        if( (int)dialog_id == 0
-         || name.isEmpty()
-         || AndroidUtilities.needShowPasscode(false)
-         || UserConfig.isWaitingForPasscodeEnter
-         || !preferences.getBoolean("EnablePreviewAll", true)
-         || (is_group && !preferences.getBoolean("EnablePreviewGroup", true)) ) {
-            return LocaleController.getString("NotificationNewMsgRcvd", R.string.NotificationNewMsgRcvd);
-        }
 
         MrMsg  mrMsg = MrMailbox.getMsg(messageObject.getId());
         String msg = mrMsg.getSummary(160);
@@ -993,16 +984,16 @@ public class NotificationsController {
 
             final long dialog_id = lastMessageObject.getDialogId();
 
-            int mid = lastMessageObject.getId();
+            //int mid = lastMessageObject.getId();
             final int user_id = lastMessageObject.messageOwner.from_id;
 
-            TLRPC.User user = MessagesController.getInstance().getUser(user_id);
+            //TLRPC.User user = MessagesController.getInstance().getUser(user_id);
 
             MrChat mrChat = MrMailbox.getChat((int)dialog_id);
             boolean isGroupChat = mrChat.getType() == MrChat.MR_CHAT_GROUP;
 
 
-            TLRPC.FileLocation photoPath = null;
+            //TLRPC.FileLocation photoPath = null;
 
             boolean notifyDisabled = false;
             int needVibrate = 0;
@@ -1010,8 +1001,7 @@ public class NotificationsController {
             int ledColor = 0xff00ff00;
             boolean inAppSounds;
             boolean inAppVibrate;
-            boolean inAppPreview = false;
-            boolean inAppPriority;
+            //boolean inAppPreview = false;
             int priority = 0;
             int priorityOverride;
             int vibrateOverride;
@@ -1049,8 +1039,8 @@ public class NotificationsController {
             if (!notifyDisabled) {
                 inAppSounds = preferences.getBoolean("EnableInAppSounds", true);
                 inAppVibrate = preferences.getBoolean("EnableInAppVibrate", true);
-                inAppPreview = preferences.getBoolean("EnableInAppPreview", true);
-                inAppPriority = preferences.getBoolean("EnableInAppPriority", false);
+                //inAppPreview = preferences.getBoolean("EnableInAppPreview", true);
+                int inAppPriority = preferences.getInt("priority_inapp", 0);
                 vibrateOverride = preferences.getInt("vibrate_" + dialog_id, 0);
                 priorityOverride = preferences.getInt("priority_" + dialog_id, 3);
                 boolean vibrateOnlyIfSilent = false;
@@ -1065,14 +1055,14 @@ public class NotificationsController {
                     needVibrate = preferences.getInt("vibrate_group", 0);
                     priority = preferences.getInt("priority_group", 1);
                     ledColor = preferences.getInt("GroupLed", 0xff00ff00);
-                } else if (user_id != 0) {
+                } else {
                     if (choosenSoundPath != null && choosenSoundPath.equals(defaultPath)) {
                         choosenSoundPath = null;
                     } else if (choosenSoundPath == null) {
                         choosenSoundPath = preferences.getString("GlobalSoundPath", defaultPath);
                     }
                     needVibrate = preferences.getInt("vibrate_messages", 0);
-                    priority = preferences.getInt("priority_group", 1);
+                    priority = preferences.getInt("priority_messages", 1);
                     ledColor = preferences.getInt("MessagesLed", 0xff00ff00);
                 }
                 if (preferences.contains("color_" + dialog_id)) {
@@ -1097,11 +1087,7 @@ public class NotificationsController {
                     if (!inAppVibrate) {
                         needVibrate = 2;
                     }
-                    if (!inAppPriority) {
-                        priority = 0;
-                    } else if (priority == 2) {
-                        priority = 1;
-                    }
+                    priority = inAppPriority;
                 }
                 if (vibrateOnlyIfSilent && needVibrate != 2) {
                     try {
@@ -1148,8 +1134,14 @@ public class NotificationsController {
             }*/
             PendingIntent contentIntent = PendingIntent.getActivity(ApplicationLoader.applicationContext, 0, intent, PendingIntent.FLAG_ONE_SHOT);
 
+            boolean showPreview = preferences.getBoolean("EnablePreviewAll", true);
+            if( AndroidUtilities.needShowPasscode(false)
+             || UserConfig.isWaitingForPasscodeEnter) {
+                showPreview = false;
+            }
+
             String name;
-            if ( dialog_id == 0 || pushDialogs.size() > 1 || AndroidUtilities.needShowPasscode(false) || UserConfig.isWaitingForPasscodeEnter) {
+            if ( pushDialogs.size() > 1  || !showPreview ) {
                 name = LocaleController.getString("AppName", R.string.AppName);
             } else {
                 if ( isGroupChat ) {
@@ -1183,7 +1175,11 @@ public class NotificationsController {
             int silent = 2;
             String lastMessage = null;
             boolean hasNewMessages = false;
-            if (pushMessages.size() == 1) {
+            if( !showPreview ) {
+                mBuilder.setContentText(detailText);
+                lastMessage = detailText;
+            }
+            else if (pushMessages.size() == 1 ) {
                 MessageObject messageObject = pushMessages.get(0);
                 String message = lastMessage = getStringForMessage(messageObject, isGroupChat? ADD_USER : 0);
                 silent = messageObject.messageOwner.silent ? 1 : 0;
@@ -1272,7 +1268,7 @@ public class NotificationsController {
             }
 
             if (silent != 1 && !notifyDisabled) {
-                if (ApplicationLoader.mainInterfacePaused || inAppPreview) {
+                /*if (ApplicationLoader.mainInterfacePaused || inAppPreview)*/ {
                     if (lastMessage.length() > 100) {
                         lastMessage = lastMessage.substring(0, 100).replace('\n', ' ').trim() + "...";
                     }
@@ -1303,13 +1299,19 @@ public class NotificationsController {
                 mBuilder.setVibrate(new long[]{0, 0});
             }
 
-            showExtraNotifications(mBuilder, notifyAboutLast);
+            //showExtraNotifications(mBuilder, notifyAboutLast);
             notificationManager.notify(1, mBuilder.build());
 
             scheduleNotificationRepeat();
+
+            if (preferences.getBoolean("badgeNumber", true)) {
+                setBadge(total_unread_count);
+            }
+
         } catch (Exception e) {
             FileLog.e("messenger", e);
         }
+
     }
 
     @SuppressLint("InlinedApi")

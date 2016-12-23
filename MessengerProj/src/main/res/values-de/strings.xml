@@ -182,8 +182,8 @@
     <string name="Alert">Benachrichtigung</string>
     <string name="MessagePreview">Vorschau</string>
     <string name="GroupNotifications">Gruppen</string>
-    <string name="Sound">Nachrichtenton auswählen</string>
-    <string name="InAppNotifications">In-App </string>
+    <string name="Sound">Nachrichtenton</string>
+    <string name="InAppNotifications">Bei App im Vordergrund</string>
     <string name="InAppSounds">In-App-Töne</string>
     <string name="InAppVibrate">In-App-Vibration</string>
     <string name="Vibrate">Vibrieren</string>
@@ -220,10 +220,10 @@
     <string name="NotificationsPriorityDefault">Standard</string>
     <string name="NotificationsPriorityLow">Niedrig</string>
     <string name="NotificationsPriorityHigh">Hoch</string>
-    <string name="NotificationsPriorityMax">Max.</string>
+    <string name="NotificationsPriorityMax">Sehr hoch</string>
     <string name="RepeatNotificationsNever">Niemals</string>
     <string name="RepeatNotifications">Erneut benachrichtigen</string>
-    <string name="NotificationsOther">Sonstige</string>
+    <string name="NotificationsOther">Sonstiges</string>
     <string name="NotificationsDisabled">Deaktiviert</string>
     <string name="VibrationDisabled">Deaktiviert</string>
     <string name="LedDisabled">Deaktiviert</string>
