@@ -216,11 +216,11 @@
     <string name="SystemDefault">Systemvorgabe</string>
     <string name="RaiseToSpeak">Zum Sprechen ans Ohr</string>
     <string name="EditName">Name bearbeiten</string>
-    <string name="NotificationsPriority">Priorität</string>
-    <string name="NotificationsPriorityDefault">Standard</string>
-    <string name="NotificationsPriorityLow">Niedrig</string>
-    <string name="NotificationsPriorityHigh">Hoch</string>
-    <string name="NotificationsPriorityMax">Sehr hoch</string>
+    <string name="NotificationsPriority">Darstellung</string>
+    <string name="NotificationsPriorityDefault">Normale Priorität</string>
+    <string name="NotificationsPriorityLow">Niedrige Priorität</string>
+    <string name="NotificationsPriorityHigh">Hohe Priorität</string>
+    <string name="NotificationsPriorityMax">Höchste Priorität</string>
     <string name="RepeatNotificationsNever">Niemals</string>
     <string name="RepeatNotifications">Erneut benachrichtigen</string>
     <string name="NotificationsOther">Sonstiges</string>

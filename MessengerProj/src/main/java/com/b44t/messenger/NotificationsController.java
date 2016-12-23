@@ -1039,8 +1039,6 @@ public class NotificationsController {
             if (!notifyDisabled) {
                 inAppSounds = preferences.getBoolean("EnableInAppSounds", true);
                 inAppVibrate = preferences.getBoolean("EnableInAppVibrate", true);
-                //inAppPreview = preferences.getBoolean("EnableInAppPreview", true);
-                int inAppPriority = preferences.getInt("priority_inapp", 0);
                 vibrateOverride = preferences.getInt("vibrate_" + dialog_id, 0);
                 priorityOverride = preferences.getInt("priority_" + dialog_id, 3);
                 boolean vibrateOnlyIfSilent = false;
@@ -1087,7 +1085,7 @@ public class NotificationsController {
                     if (!inAppVibrate) {
                         needVibrate = 2;
                     }
-                    priority = inAppPriority;
+                    priority = preferences.getInt("priority_inapp", 0);
                 }
                 if (vibrateOnlyIfSilent && needVibrate != 2) {
                     try {
