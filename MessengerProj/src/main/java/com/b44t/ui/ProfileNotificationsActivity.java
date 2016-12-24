@@ -32,6 +32,8 @@ import android.widget.TextView;
 
 import com.b44t.messenger.AndroidUtilities;
 import com.b44t.messenger.MessagesController;
+import com.b44t.messenger.MrChat;
+import com.b44t.messenger.MrMailbox;
 import com.b44t.messenger.NotificationsController;
 import com.b44t.messenger.ApplicationLoader;
 import com.b44t.messenger.FileLog;
@@ -42,7 +44,9 @@ import com.b44t.messenger.ConnectionsManager;
 import com.b44t.messenger.TLRPC;
 import com.b44t.ui.ActionBar.Theme;
 import com.b44t.ui.Adapters.BaseFragmentAdapter;
+import com.b44t.ui.Cells.HeaderCell;
 import com.b44t.ui.Cells.TextColorCell;
+import com.b44t.ui.Cells.TextSettingsCell;
 import com.b44t.ui.Cells.TextDetailSettingsCell;
 import com.b44t.ui.ActionBar.ActionBar;
 import com.b44t.ui.ActionBar.BaseFragment;
@@ -53,8 +57,9 @@ import com.b44t.ui.Components.NumberPicker;
 public class ProfileNotificationsActivity extends BaseFragment implements NotificationCenter.NotificationCenterDelegate {
 
     private ListView listView;
-    private long dialog_id;
+    private int dialog_id;
 
+    private int headerRow;
     private int settingsNotificationsRow;
     private int settingsVibrateRow;
     private int settingsSoundRow;
@@ -63,28 +68,37 @@ public class ProfileNotificationsActivity extends BaseFragment implements Notifi
     private int smartRow;
     private int rowCount = 0;
 
+    private final int TYPE_HEADER       = 0;
+    private final int TYPE_TEXTSETTINGS = 1;
+    private final int TYPE_TEXTDETAILS  = 2;
+    private final int TYPE_COLOR_CELL   = 3;
+    private final int TYPE_COUNT        = 4;
+
+    private MrChat m_mrChat;
+
     public ProfileNotificationsActivity(Bundle args) {
         super(args);
-        dialog_id = args.getLong("dialog_id");
+        dialog_id = args.getInt("chat_id");
+        m_mrChat = MrMailbox.getChat(dialog_id);
     }
 
     @Override
     public boolean onFragmentCreate() {
+        boolean isGroupChat = m_mrChat.getType()== MrChat.MR_CHAT_GROUP;
+
+        headerRow = rowCount++;
         settingsNotificationsRow = rowCount++;
-        settingsVibrateRow = rowCount++;
         settingsSoundRow = rowCount++;
-        if (Build.VERSION.SDK_INT >= 21) {
-            settingsPriorityRow = rowCount++;
-        } else {
-            settingsPriorityRow = -1;
-        }
-        int lower_id = (int) dialog_id;
-        if (lower_id < 0) {
+        settingsVibrateRow = rowCount++;
+        settingsLedRow = rowCount++;
+        settingsPriorityRow = Build.VERSION.SDK_INT >= 21? rowCount++ : -1;
+
+        if (isGroupChat) {
             smartRow = rowCount++;
         } else {
-            smartRow = 1;
+            smartRow = -1;
         }
-        settingsLedRow = rowCount++;
+
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.notificationsSettingsUpdated);
         return super.onFragmentCreate();
     }
@@ -138,20 +152,22 @@ public class ProfileNotificationsActivity extends BaseFragment implements Notifi
                     }, new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("Notifications", Activity.MODE_PRIVATE);
-                            SharedPreferences.Editor editor = preferences.edit();
-                            if (which == 0) {
-                                editor.putInt("vibrate_" + dialog_id, 2);
-                            } else if (which == 1) {
-                                editor.putInt("vibrate_" + dialog_id, 0);
-                            } else if (which == 2) {
-                                editor.putInt("vibrate_" + dialog_id, 4);
-                            } else if (which == 3) {
-                                editor.putInt("vibrate_" + dialog_id, 1);
-                            } else if (which == 4) {
-                                editor.putInt("vibrate_" + dialog_id, 3);
+                            if( dialog_id != 0 ) {
+                                SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("Notifications", Activity.MODE_PRIVATE);
+                                SharedPreferences.Editor editor = preferences.edit();
+                                if (which == 0) {
+                                    editor.putInt("vibrate_" + dialog_id, 2);
+                                } else if (which == 1) {
+                                    editor.putInt("vibrate_" + dialog_id, 0);
+                                } else if (which == 2) {
+                                    editor.putInt("vibrate_" + dialog_id, 4);
+                                } else if (which == 3) {
+                                    editor.putInt("vibrate_" + dialog_id, 1);
+                                } else if (which == 4) {
+                                    editor.putInt("vibrate_" + dialog_id, 3);
+                                }
+                                editor.commit();
                             }
-                            editor.commit();
                             if (listView != null) {
                                 listView.invalidateViews();
                             }
@@ -308,7 +324,7 @@ public class ProfileNotificationsActivity extends BaseFragment implements Notifi
                         return;
                     }
                     SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("Notifications", Activity.MODE_PRIVATE);
-                    int notifyMaxCount = preferences.getInt("smart_max_count_" + dialog_id, 2);
+                    int notifyMaxCount = preferences.getInt("smart_max_count_" + dialog_id, 0);
                     int notifyDelay = preferences.getInt("smart_delay_" + dialog_id, 3 * 60);
                     if (notifyMaxCount == 0) {
                         notifyMaxCount = 2;
@@ -340,6 +356,7 @@ public class ProfileNotificationsActivity extends BaseFragment implements Notifi
                     numberPickerTimes.setMinValue(1);
                     numberPickerTimes.setMaxValue(10);
                     numberPickerTimes.setValue(notifyMaxCount);
+                    numberPickerTimes.setWrapSelectorWheel(false);
                     linearLayout2.addView(numberPickerTimes);
                     layoutParams1 = (LinearLayout.LayoutParams) numberPickerTimes.getLayoutParams();
                     layoutParams1.width = AndroidUtilities.dp(50);
@@ -378,6 +395,7 @@ public class ProfileNotificationsActivity extends BaseFragment implements Notifi
                     numberPickerMinutes.setMinValue(1);
                     numberPickerMinutes.setMaxValue(10);
                     numberPickerMinutes.setValue(notifyDelay / 60);
+                    numberPickerMinutes.setWrapSelectorWheel(false);
                     linearLayout2.addView(numberPickerMinutes);
                     layoutParams1 = (LinearLayout.LayoutParams) numberPickerMinutes.getLayoutParams();
                     layoutParams1.width = AndroidUtilities.dp(50);
@@ -483,7 +501,7 @@ public class ProfileNotificationsActivity extends BaseFragment implements Notifi
 
         @Override
         public boolean isEnabled(int i) {
-            return true;
+            return !(i==headerRow);
         }
 
         @Override
@@ -509,13 +527,17 @@ public class ProfileNotificationsActivity extends BaseFragment implements Notifi
         @Override
         public View getView(int i, View view, ViewGroup viewGroup) {
             int type = getItemViewType(i);
-            if (type == 0) {
+            if( type == TYPE_HEADER ) {
                 if (view == null) {
-                    view = new TextDetailSettingsCell(mContext);
+                    view = new HeaderCell(mContext);
                 }
-
-                TextDetailSettingsCell textCell = (TextDetailSettingsCell) view;
-
+                ((HeaderCell) view).setText(m_mrChat.getName());
+            }
+            else if (type == TYPE_TEXTSETTINGS) {
+                if (view == null) {
+                    view = new TextSettingsCell(mContext);
+                }
+                TextSettingsCell textCell = (TextSettingsCell) view;
                 SharedPreferences preferences = mContext.getSharedPreferences("Notifications", Activity.MODE_PRIVATE);
 
                 if (i == settingsVibrateRow) {
@@ -539,7 +561,7 @@ public class ProfileNotificationsActivity extends BaseFragment implements Notifi
                         textCell.setTextAndValue(LocaleController.getString("Notifications", R.string.Notifications), LocaleController.getString("Enabled", R.string.Enabled), true);
                     } else if (value == 2) {
                         textCell.setTextAndValue(LocaleController.getString("Notifications", R.string.Notifications), LocaleController.getString("NotificationsDisabled", R.string.NotificationsDisabled), true);
-                    }  else if (value == 3) {
+                    } else if (value == 3) {
                         int delta = preferences.getInt("notifyuntil_" + dialog_id, 0) - ConnectionsManager.getInstance().getCurrentTime();
                         String val;
                         if (delta <= 0) {
@@ -576,8 +598,16 @@ public class ProfileNotificationsActivity extends BaseFragment implements Notifi
                     } else if (value == 3) {
                         textCell.setTextAndValue(LocaleController.getString("NotificationsPriority", R.string.NotificationsPriority), LocaleController.getString("Default", R.string.Default), true);
                     }
-                } else if (i == smartRow) {
-                    int notifyMaxCount = preferences.getInt("smart_max_count_" + dialog_id, 2);
+                }
+            } else if (type == TYPE_TEXTDETAILS) {
+                if (view == null) {
+                    view = new TextDetailSettingsCell(mContext);
+                }
+                TextDetailSettingsCell textCell = (TextDetailSettingsCell) view;
+                SharedPreferences preferences = mContext.getSharedPreferences("Notifications", Activity.MODE_PRIVATE);
+
+                if (i == smartRow) {
+                    int notifyMaxCount = preferences.getInt("smart_max_count_" + dialog_id, 0);
                     int notifyDelay = preferences.getInt("smart_delay_" + dialog_id, 3 * 60);
                     if (notifyMaxCount == 0) {
                         textCell.setTextAndValue(LocaleController.getString("SmartNotifications", R.string.SmartNotifications), LocaleController.getString("SmartNotificationsDisabled", R.string.SmartNotificationsDisabled), true);
@@ -587,7 +617,7 @@ public class ProfileNotificationsActivity extends BaseFragment implements Notifi
                         textCell.setTextAndValue(LocaleController.getString("SmartNotifications", R.string.SmartNotifications), LocaleController.formatString("SmartNotificationsInfo", R.string.SmartNotificationsInfo, times, minutes), true);
                     }
                 }
-            } else if (type == 1) {
+            } else if (type == TYPE_COLOR_CELL) {
                 if (view == null) {
                     view = new TextColorCell(mContext);
                 }
@@ -611,17 +641,21 @@ public class ProfileNotificationsActivity extends BaseFragment implements Notifi
 
         @Override
         public int getItemViewType(int i) {
-            if (i == settingsNotificationsRow || i == settingsVibrateRow || i == settingsSoundRow || i == settingsPriorityRow || i == smartRow) {
-                return 0;
-            } else if (i == settingsLedRow) {
-                return 1;
+            if( i==headerRow ) {
+                return TYPE_HEADER;
             }
-            return 0;
+            else if (i == settingsLedRow) {
+                return TYPE_COLOR_CELL;
+            }
+            else if( i==smartRow ) {
+                return TYPE_TEXTDETAILS;
+            }
+            return TYPE_TEXTSETTINGS;
         }
 
         @Override
         public int getViewTypeCount() {
-            return 2;
+            return TYPE_COUNT;
         }
 
         @Override

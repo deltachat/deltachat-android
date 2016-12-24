@@ -381,10 +381,10 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                 }
                 if (position == settingsNotificationsRow) {
                     Bundle args = new Bundle();
-                    if (user_id != 0) {
-                        args.putLong("dialog_id", user_id);
-                    } else if (chat_id != 0) {
-                        args.putLong("dialog_id", -chat_id);
+                    if (chat_id != 0) {
+                        args.putInt("chat_id", chat_id);
+                    } else {
+                        args.putInt("chat_id", MrMailbox.getChatIdByContactId(user_id));
                     }
                     presentFragment(new ProfileNotificationsActivity(args));
                 }
@@ -1158,7 +1158,8 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
 
         emptyRow = rowCount++;
 
-        if( chat_id!=MrChat.MR_CHAT_ID_DEADDROP || MrMailbox.getConfigInt("show_deaddrop", 0)!=0 ) {
+        if( (chat_id!=0 && (chat_id!=MrChat.MR_CHAT_ID_DEADDROP || MrMailbox.getConfigInt("show_deaddrop", 0)!=0))
+         || MrMailbox.getChatIdByContactId(user_id)!=0 ) {
             settingsNotificationsRow = rowCount++;
         }
 

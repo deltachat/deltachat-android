@@ -1012,7 +1012,7 @@ public class NotificationsController {
             }
 
             if (!notifyDisabled && isGroupChat ) {
-                int notifyMaxCount = preferences.getInt("smart_max_count_" + dialog_id, 2);
+                int notifyMaxCount = preferences.getInt("smart_max_count_" + dialog_id, 0);
                 int notifyDelay = preferences.getInt("smart_delay_" + dialog_id, 3 * 60);
                 if (notifyMaxCount != 0) {
                     Point dialogInfo = smartNotificationsDialogs.get(dialog_id);
