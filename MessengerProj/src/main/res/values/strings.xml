@@ -198,8 +198,8 @@
     <string name="Help">Help</string>
     <string name="DeleteLocalization">Delete localization?</string>
     <string name="IncorrectLocalization">Incorrect localization file</string>
-    <string name="Enabled">Enabled</string>
-    <string name="Disabled" tools:keep="@string/Disabled">Disabled</string>
+    <string name="Enabled">On</string>
+    <string name="Disabled">Off</string>
     <string name="NotificationsService">Keep-alive service</string>
     <string name="NotificationsServiceInfo">Relaunch app when shut down by user or system. This will ensure app can show notifications.</string>
     <string name="NotificationsServiceConnection">Background connection</string>
@@ -218,15 +218,10 @@
     <string name="NotificationsPriorityMax">Highest priority</string>
     <string name="RepeatNotifications">Repeat notifications</string>
     <string name="NotificationsOther">Other</string>
-    <string name="NotificationsDisabled">Disabled</string>
-    <string name="VibrationDisabled">Disabled</string>
-    <string name="LedDisabled">Disabled</string>
-    <string name="Off">Off</string>
     <string name="InChatSound">In-chat sounds</string>
     <string name="SoundDefault">Default</string>
     <string name="VibrationDefault">Default</string>
-    <string name="SmartNotifications">Smart Notifications</string>
-    <string name="SmartNotificationsDisabled">Disabled</string>
+    <string name="SmartNotifications">Limit notifications</string>
     <string name="SmartNotificationsInfo">Sound at most %1$s within %2$s</string>
     <string name="SmartNotificationsSoundAtMost">Sound at most</string>
     <string name="SmartNotificationsTimes">times</string>
@@ -263,10 +258,8 @@
     <string name="EnterYourPasscode">Enter your passcode</string>
     <string name="ReEnterYourPasscode">Re-enter your new passcode</string>
     <string name="PasscodeDoNotMatch">Passcodes do not match</string>
-    <string name="AutoLock">Auto-lock</string>
     <string name="AutoLockInfo">Require passcode if away for a time.</string>
     <string name="AutoLockInTime">in %1$s</string>
-    <string name="AutoLockDisabled">Disabled</string>
     <string name="UnlockFingerprint">Unlock with Fingerprint</string>
     <string name="FingerprintInfo">Confirm fingerprint to continue</string>
     <string name="FingerprintHelp">Touch sensor</string>

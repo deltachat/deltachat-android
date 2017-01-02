@@ -198,8 +198,8 @@
     <string name="Help">Hilfe</string>
     <string name="DeleteLocalization">Lokalisierung löschen?</string>
     <string name="IncorrectLocalization">Falsche Sprachdatei</string>
-    <string name="Enabled">Aktiviert</string>
-    <string name="Disabled">Deaktiviert</string>
+    <string name="Enabled">An</string>
+    <string name="Disabled">Aus</string>
     <string name="NotificationsService">Keep-Alive-Dienst</string>
     <string name="NotificationsServiceInfo">Sofern die App beendet wurde, diese automatisch neu starten, um Benachrichtigungen zu gewährleisten.</string>
     <string name="NotificationsServiceConnection">Hintergrundverbindung</string>
@@ -218,15 +218,10 @@
     <string name="NotificationsPriorityMax">Höchste Priorität</string>
     <string name="RepeatNotifications">Erneut benachrichtigen</string>
     <string name="NotificationsOther">Sonstiges</string>
-    <string name="NotificationsDisabled">Deaktiviert</string>
-    <string name="VibrationDisabled">Deaktiviert</string>
-    <string name="LedDisabled">Deaktiviert</string>
-    <string name="Off">Aus</string>
     <string name="InChatSound">In-Chat-Töne</string>
     <string name="SoundDefault">Standard</string>
     <string name="VibrationDefault">Standard</string>
-    <string name="SmartNotifications">Intelligente Benachrichtigungen</string>
-    <string name="SmartNotificationsDisabled">Deaktiviert</string>
+    <string name="SmartNotifications">Benachrichtigungen begrenzen</string>
     <string name="SmartNotificationsInfo">Höchstens %1$s innerhalb von %2$s</string>
     <string name="SmartNotificationsSoundAtMost">Höchstens</string>
     <string name="SmartNotificationsTimes">Mal</string>
@@ -266,7 +261,6 @@
     <string name="AutoLock">Auto-Sperre</string>
     <string name="AutoLockInfo">Sperrt App bei Inaktivität automatisch.</string>
     <string name="AutoLockInTime">in %1$s</string>
-    <string name="AutoLockDisabled">Deaktiviert</string>
     <string name="UnlockFingerprint">Per Fingerabdruck entsperren</string>
     <string name="FingerprintInfo">Fingerabdruck bestätigen </string>
     <string name="FingerprintHelp">Berührungssensor</string>

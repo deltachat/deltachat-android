@@ -218,15 +218,10 @@
     <string name="NotificationsPriorityMax">Max</string>
     <string name="RepeatNotifications">Meldingen herhalen</string>
     <string name="NotificationsOther">Overig</string>
-    <string name="NotificationsDisabled">Uitgeschakeld</string>
-    <string name="VibrationDisabled">Uitgeschakeld</string>
-    <string name="LedDisabled">Uitgeschakeld</string>
-    <string name="Off">Uit</string>
     <string name="InChatSound">Chatgeluiden</string>
     <string name="SoundDefault">Standaard</string>
     <string name="VibrationDefault">Standaard</string>
     <string name="SmartNotifications">Slimme meldingen</string>
-    <string name="SmartNotificationsDisabled">Uitgeschakeld</string>
     <string name="SmartNotificationsInfo">Geluid maximaal %1$s per %2$s</string>
     <string name="SmartNotificationsSoundAtMost">Geluid maximaal</string>
     <string name="SmartNotificationsTimes">keer</string>
@@ -266,7 +261,6 @@
     <string name="AutoLock">Automatisch vergrendelen</string>
     <string name="AutoLockInfo">Vraag om toegangscode indien afwezig</string>
     <string name="AutoLockInTime">over %1$s</string>
-    <string name="AutoLockDisabled">Uitgeschakeld</string>
     <string name="UnlockFingerprint">Ontgrendel met vingerafdruk</string>
     <string name="FingerprintInfo">Vingerafdruk bevestigen</string>
     <string name="FingerprintHelp">Vingerafdruksensor</string>

@@ -218,15 +218,10 @@
     <string name="NotificationsPriorityMax">Máxima</string>
     <string name="RepeatNotifications">Repetir Notificações</string>
     <string name="NotificationsOther">Outro</string>
-    <string name="NotificationsDisabled">Desativado</string>
-    <string name="VibrationDisabled">Desativado</string>
-    <string name="LedDisabled">Desativado</string>
-    <string name="Off">Desativado</string>
     <string name="InChatSound">Sons no Chat</string>
     <string name="SoundDefault">Padrão</string>
     <string name="VibrationDefault">Padrão</string>
     <string name="SmartNotifications">Notificações Inteligentes</string>
-    <string name="SmartNotificationsDisabled">Desativado</string>
     <string name="SmartNotificationsInfo">Tocar no máximo %1$s a cada %2$s</string>
     <string name="SmartNotificationsSoundAtMost">Tocar no máximo</string>
     <string name="SmartNotificationsTimes">vezes</string>
@@ -266,7 +261,6 @@
     <string name="AutoLock">Auto-bloquear</string>
     <string name="AutoLockInfo">Requisitar senha se estiver ausente por muito tempo.</string>
     <string name="AutoLockInTime">em %1$s</string>
-    <string name="AutoLockDisabled">Desativado</string>
     <string name="UnlockFingerprint">Desbloquear com Impressão Digital</string>
     <string name="FingerprintInfo">Confirme a impressão digital para continuar</string>
     <string name="FingerprintHelp">Toque o sensor</string>

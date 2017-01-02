@@ -73,7 +73,7 @@ public class PasscodeActivity extends BaseFragment implements NotificationCenter
     private int passcodeSetStep = 0;
     private String firstPassword;
 
-    private int passcodeRow;
+    private int passcodeOnOffRow;
     private int changePasscodeRow;
     private int passcodeDetailRow;
     private int fingerprintRow;
@@ -310,7 +310,7 @@ public class PasscodeActivity extends BaseFragment implements NotificationCenter
                 public void onItemClick(AdapterView<?> adapterView, View view, final int i, long l) {
                     if (i == changePasscodeRow) {
                         presentFragment(new PasscodeActivity(1));
-                    } else if (i == passcodeRow) {
+                    } else if (i == passcodeOnOffRow) {
                         TextCheckCell cell = (TextCheckCell) view;
                         if (UserConfig.passcodeHash.length() != 0) {
                             UserConfig.passcodeHash = "";
@@ -354,7 +354,7 @@ public class PasscodeActivity extends BaseFragment implements NotificationCenter
                             @Override
                             public String format(int value) {
                                 if (value == 0) {
-                                    return LocaleController.getString("AutoLockDisabled", R.string.AutoLockDisabled);
+                                    return LocaleController.getString("Disabled", R.string.Disabled);
                                 } else if (value == 1) {
                                     return LocaleController.formatString("AutoLockInTime", R.string.AutoLockInTime, LocaleController.formatPluralString("Minutes", 1));
                                 } else if (value == 2) {
@@ -434,7 +434,7 @@ public class PasscodeActivity extends BaseFragment implements NotificationCenter
 
     private void updateRows() {
         rowCount = 0;
-        passcodeRow = rowCount++;
+        passcodeOnOffRow = rowCount++;
         changePasscodeRow = rowCount++;
         passcodeDetailRow = rowCount++;
         if (UserConfig.passcodeHash.length() > 0) {
@@ -607,7 +607,7 @@ public class PasscodeActivity extends BaseFragment implements NotificationCenter
 
         @Override
         public boolean isEnabled(int i) {
-            return i == passcodeRow || i == fingerprintRow || i == autoLockRow || UserConfig.passcodeHash.length() != 0 && i == changePasscodeRow;
+            return i == passcodeOnOffRow || i == fingerprintRow || i == autoLockRow || UserConfig.passcodeHash.length() != 0 && i == changePasscodeRow;
         }
 
         @Override
@@ -640,7 +640,7 @@ public class PasscodeActivity extends BaseFragment implements NotificationCenter
                 }
                 TextCheckCell textCell = (TextCheckCell) view;
 
-                if (i == passcodeRow) {
+                if (i == passcodeOnOffRow) {
                     textCell.setTextAndCheck(LocaleController.getString("Passcode", R.string.Passcode), UserConfig.passcodeHash.length() > 0, true);
                 } else if (i == fingerprintRow) {
                     textCell.setTextAndCheck(LocaleController.getString("UnlockFingerprint", R.string.UnlockFingerprint), UserConfig.useFingerprint, true);
@@ -657,7 +657,7 @@ public class PasscodeActivity extends BaseFragment implements NotificationCenter
                 } else if (i == autoLockRow) {
                     String val;
                     if (UserConfig.autoLockIn == 0) {
-                        val = LocaleController.formatString("AutoLockDisabled", R.string.AutoLockDisabled);
+                        val = LocaleController.formatString("Disabled", R.string.Disabled);
                     } else if (UserConfig.autoLockIn < 60 * 60) {
                         val = LocaleController.formatString("AutoLockInTime", R.string.AutoLockInTime, LocaleController.formatPluralString("Minutes", UserConfig.autoLockIn / 60));
                     } else if (UserConfig.autoLockIn < 60 * 60 * 24) {
@@ -689,7 +689,7 @@ public class PasscodeActivity extends BaseFragment implements NotificationCenter
 
         @Override
         public int getItemViewType(int i) {
-            if (i == passcodeRow || i == fingerprintRow) {
+            if (i == passcodeOnOffRow || i == fingerprintRow) {
                 return 0;
             } else if (i == changePasscodeRow || i == autoLockRow) {
                 return 1;

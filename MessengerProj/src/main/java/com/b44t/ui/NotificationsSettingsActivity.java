@@ -334,7 +334,7 @@ public class NotificationsSettingsActivity extends BaseFragment implements Notif
                             editor.commit();
                         }
                     });
-                    builder.setNeutralButton(LocaleController.getString("LedDisabled", R.string.LedDisabled), new DialogInterface.OnClickListener() {
+                    builder.setNeutralButton(LocaleController.getString("Disabled", R.string.Disabled), new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             final SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("Notifications", Activity.MODE_PRIVATE);
@@ -356,7 +356,7 @@ public class NotificationsSettingsActivity extends BaseFragment implements Notif
                     AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
                     builder.setTitle(LocaleController.getString("Vibrate", R.string.Vibrate));
                     builder.setItems(new CharSequence[]{
-                            LocaleController.getString("VibrationDisabled", R.string.VibrationDisabled),
+                            LocaleController.getString("Disabled", R.string.Disabled),
                             LocaleController.getString("VibrationDefault", R.string.VibrationDefault),
                             LocaleController.getString("Short", R.string.Short),
                             LocaleController.getString("Long", R.string.Long),
@@ -418,7 +418,7 @@ public class NotificationsSettingsActivity extends BaseFragment implements Notif
                     AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
                     builder.setTitle(LocaleController.getString("RepeatNotifications", R.string.RepeatNotifications));
                     builder.setItems(new CharSequence[]{
-                            LocaleController.getString("Off", R.string.Off),
+                            LocaleController.getString("Disabled", R.string.Disabled),
                             LocaleController.formatPluralString("Minutes", 5),
                             LocaleController.formatPluralString("Minutes", 10),
                             LocaleController.formatPluralString("Minutes", 30),
@@ -636,7 +636,7 @@ public class NotificationsSettingsActivity extends BaseFragment implements Notif
                     } else if (value == 1) {
                         textCell.setTextAndValue(LocaleController.getString("Vibrate", R.string.Vibrate), LocaleController.getString("Short", R.string.Short), true);
                     } else if (value == 2) {
-                        textCell.setTextAndValue(LocaleController.getString("Vibrate", R.string.Vibrate), LocaleController.getString("VibrationDisabled", R.string.VibrationDisabled), true);
+                        textCell.setTextAndValue(LocaleController.getString("Vibrate", R.string.Vibrate), LocaleController.getString("Disabled", R.string.Disabled), true);
                     } else if (value == 3) {
                         textCell.setTextAndValue(LocaleController.getString("Vibrate", R.string.Vibrate), LocaleController.getString("Long", R.string.Long), true);
                     } else if (value == 4) {
@@ -662,7 +662,7 @@ public class NotificationsSettingsActivity extends BaseFragment implements Notif
                     int minutes = preferences.getInt("repeat_messages", 0);
                     String value;
                     if (minutes == 0) {
-                        value = LocaleController.getString("Off", R.string.Off);
+                        value = LocaleController.getString("Disabled", R.string.Disabled);
                     } else if (minutes < 60) {
                         value = LocaleController.formatPluralString("Minutes", minutes);
                     } else {

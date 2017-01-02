@@ -144,7 +144,7 @@ public class ProfileNotificationsActivity extends BaseFragment implements Notifi
                     AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
                     builder.setTitle(LocaleController.getString("Vibrate", R.string.Vibrate));
                     builder.setItems(new CharSequence[]{
-                            LocaleController.getString("VibrationDisabled", R.string.VibrationDisabled),
+                            LocaleController.getString("Disabled", R.string.Disabled),
                             LocaleController.getString("Default", R.string.Default),
                             LocaleController.getString("SystemDefault", R.string.SystemDefault),
                             LocaleController.getString("Short", R.string.Short),
@@ -183,7 +183,7 @@ public class ProfileNotificationsActivity extends BaseFragment implements Notifi
                     builder.setItems(new CharSequence[]{
                             LocaleController.getString("Default", R.string.Default),
                             LocaleController.getString("Enabled", R.string.Enabled),
-                            LocaleController.getString("NotificationsDisabled", R.string.NotificationsDisabled)
+                            LocaleController.getString("Disabled", R.string.Disabled)
                     }, new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface d, int which) {
@@ -273,7 +273,7 @@ public class ProfileNotificationsActivity extends BaseFragment implements Notifi
                             listView.invalidateViews();
                         }
                     });
-                    builder.setNeutralButton(LocaleController.getString("LedDisabled", R.string.LedDisabled), new DialogInterface.OnClickListener() {
+                    builder.setNeutralButton(LocaleController.getString("Disabled", R.string.Disabled), new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             final SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("Notifications", Activity.MODE_PRIVATE);
@@ -425,7 +425,7 @@ public class ProfileNotificationsActivity extends BaseFragment implements Notifi
                             }
                         }
                     });
-                    builder.setNegativeButton(LocaleController.getString("SmartNotificationsDisabled", R.string.SmartNotificationsDisabled), new DialogInterface.OnClickListener() {
+                    builder.setNegativeButton(LocaleController.getString("Disabled", R.string.Disabled), new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("Notifications", Activity.MODE_PRIVATE);
@@ -547,7 +547,7 @@ public class ProfileNotificationsActivity extends BaseFragment implements Notifi
                     } else if (value == 1) {
                         textCell.setTextAndValue(LocaleController.getString("Vibrate", R.string.Vibrate), LocaleController.getString("Short", R.string.Short), true);
                     } else if (value == 2) {
-                        textCell.setTextAndValue(LocaleController.getString("Vibrate", R.string.Vibrate), LocaleController.getString("VibrationDisabled", R.string.VibrationDisabled), true);
+                        textCell.setTextAndValue(LocaleController.getString("Vibrate", R.string.Vibrate), LocaleController.getString("Disabled", R.string.Disabled), true);
                     } else if (value == 3) {
                         textCell.setTextAndValue(LocaleController.getString("Vibrate", R.string.Vibrate), LocaleController.getString("Long", R.string.Long), true);
                     } else if (value == 4) {
@@ -560,7 +560,7 @@ public class ProfileNotificationsActivity extends BaseFragment implements Notifi
                     } else if (value == 1) {
                         textCell.setTextAndValue(LocaleController.getString("Notifications", R.string.Notifications), LocaleController.getString("Enabled", R.string.Enabled), true);
                     } else if (value == 2) {
-                        textCell.setTextAndValue(LocaleController.getString("Notifications", R.string.Notifications), LocaleController.getString("NotificationsDisabled", R.string.NotificationsDisabled), true);
+                        textCell.setTextAndValue(LocaleController.getString("Notifications", R.string.Notifications), LocaleController.getString("Disabled", R.string.Disabled), true);
                     } else if (value == 3) {
                         int delta = preferences.getInt("notifyuntil_" + dialog_id, 0) - ConnectionsManager.getInstance().getCurrentTime();
                         String val;
@@ -578,7 +578,7 @@ public class ProfileNotificationsActivity extends BaseFragment implements Notifi
                         if (val != null) {
                             textCell.setTextAndValue(LocaleController.getString("Notifications", R.string.Notifications), val, true);
                         } else {
-                            textCell.setTextAndValue(LocaleController.getString("Notifications", R.string.Notifications), LocaleController.getString("NotificationsDisabled", R.string.NotificationsDisabled), true);
+                            textCell.setTextAndValue(LocaleController.getString("Notifications", R.string.Notifications), LocaleController.getString("Disabled", R.string.Disabled), true);
                         }
                     }
                 } else if (i == settingsSoundRow) {
@@ -610,7 +610,7 @@ public class ProfileNotificationsActivity extends BaseFragment implements Notifi
                     int notifyMaxCount = preferences.getInt("smart_max_count_" + dialog_id, 0);
                     int notifyDelay = preferences.getInt("smart_delay_" + dialog_id, 3 * 60);
                     if (notifyMaxCount == 0) {
-                        textCell.setTextAndValue(LocaleController.getString("SmartNotifications", R.string.SmartNotifications), LocaleController.getString("SmartNotificationsDisabled", R.string.SmartNotificationsDisabled), true);
+                        textCell.setTextAndValue(LocaleController.getString("SmartNotifications", R.string.SmartNotifications), LocaleController.getString("Disabled", R.string.Disabled), true);
                     } else {
                         String times = LocaleController.formatPluralString("Times", notifyMaxCount);
                         String minutes = LocaleController.formatPluralString("Minutes", notifyDelay / 60);
