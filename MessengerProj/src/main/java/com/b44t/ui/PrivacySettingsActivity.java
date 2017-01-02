@@ -48,7 +48,11 @@ public class PrivacySettingsActivity extends BaseFragment implements Notificatio
     private int secretDetailRow;
     private int rowCount;
 
-    private int typeTextCheck = 3;
+    private final int TYPE_TEXTSETTING = 0;
+    private final int TYPE_TEXT_INFO   = 1;
+    private final int TYPE_HEADER      = 2;
+    private final int TYPE_CHECK_CELL  = 3;
+    private final int TYPE_COUNT       = 4;
 
     @Override
     public boolean onFragmentCreate() {
@@ -248,18 +252,19 @@ public class PrivacySettingsActivity extends BaseFragment implements Notificatio
         @Override
         public View getView(int i, View view, ViewGroup viewGroup) {
             int type = getItemViewType(i);
-            if (type == 0) {
+            if (type == TYPE_TEXTSETTING) {
                 if (view == null) {
                     view = new TextSettingsCell(mContext);
                     view.setBackgroundColor(0xffffffff);
                 }
                 TextSettingsCell textCell = (TextSettingsCell) view;
                 if (i == blockedRow) {
-                    textCell.setText(LocaleController.getString("BlockedUsers", R.string.BlockedUsers), true);
+                    String cntStr = String.format("%d", MrMailbox.getBlockedCount());
+                    textCell.setTextAndValue(LocaleController.getString("BlockedUsers", R.string.BlockedUsers), cntStr, true);
                 } else if (i == passcodeRow) {
                     textCell.setText(LocaleController.getString("Passcode", R.string.Passcode), true);
                 }
-            } else if (type == 1) {
+            } else if (type == TYPE_TEXT_INFO) {
                 if (view == null) {
                     view = new TextInfoPrivacyCell(mContext);
                 }
@@ -267,7 +272,7 @@ public class PrivacySettingsActivity extends BaseFragment implements Notificatio
                     ((TextInfoPrivacyCell) view).setText("");
                     view.setBackgroundResource(R.drawable.greydivider_bottom);
                 }
-            } else if (type == 2) {
+            } else if (type == TYPE_HEADER) {
                 if (view == null) {
                     view = new HeaderCell(mContext);
                     view.setBackgroundColor(0xffffffff);
@@ -277,7 +282,7 @@ public class PrivacySettingsActivity extends BaseFragment implements Notificatio
                 } else if (i == securitySectionRow) {
                     ((HeaderCell) view).setText(LocaleController.getString("SecurityTitle", R.string.SecurityTitle));
                 }
-            } else if (type == typeTextCheck) {
+            } else if (type == TYPE_CHECK_CELL ) {
                 if (view == null) {
                     view = new TextCheckCell(mContext);
                     view.setBackgroundColor(0xffffffff);
@@ -293,21 +298,19 @@ public class PrivacySettingsActivity extends BaseFragment implements Notificatio
 
         @Override
         public int getItemViewType(int i) {
-            if (i == blockedRow || i == passcodeRow ) {
-                return 0;
-            } else if (i == secretDetailRow) {
-                return 1;
+            if (i == secretDetailRow) {
+                return TYPE_TEXT_INFO;
             } else if (i == securitySectionRow || i == privacySectionRow ) {
-                return 2;
+                return TYPE_HEADER;
             } else if (i==showUnknownSendersRow) {
-                return typeTextCheck;
+                return TYPE_CHECK_CELL;
             }
-            return 0;
+            return TYPE_TEXTSETTING;
         }
 
         @Override
         public int getViewTypeCount() {
-            return 4;
+            return TYPE_COUNT;
         }
 
         @Override

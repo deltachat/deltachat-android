@@ -260,9 +260,15 @@ JNIEXPORT jintArray Java_com_b44t_messenger_MrMailbox_MrMailboxGetKnownContacts(
 }
 
 
-JNIEXPORT jintArray Java_com_b44t_messenger_MrMailbox_MrMailboxGetBlockedContacts(JNIEnv *env, jclass c, jlong hMailbox)
+JNIEXPORT jint Java_com_b44t_messenger_MrMailbox_getBlockedCount(JNIEnv *env, jclass cls)
 {
-	carray* ca = mrmailbox_get_blocked_contacts((mrmailbox_t*)hMailbox);
+	return mrmailbox_get_blocked_count(get_mrmailbox_t(env, cls));
+}
+
+
+JNIEXPORT jintArray Java_com_b44t_messenger_MrMailbox_getBlockedContacts(JNIEnv *env, jclass cls)
+{
+	carray* ca = mrmailbox_get_blocked_contacts(get_mrmailbox_t(env, cls));
 	return carray2jintArray_n_carray_free(env, ca);
 }
 

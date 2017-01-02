@@ -100,9 +100,8 @@ public class MrMailbox {
         return MrMailboxGetKnownContacts(m_hMailbox, query);
     }
 
-    public static int[] getBlockedContacts() {
-        return MrMailboxGetBlockedContacts(m_hMailbox);
-    }
+    public native static int   getBlockedCount();
+    public native static int[] getBlockedContacts();
 
     public static MrContact getContact(int contact_id) {
         return new MrContact(MrMailboxGetContact(m_hMailbox, contact_id));
@@ -125,7 +124,6 @@ public class MrMailbox {
     }
 
     private native static int[]   MrMailboxGetKnownContacts  (long hMailbox, String query);
-    private native static int[]   MrMailboxGetBlockedContacts(long hMailbox);
     private native static long    MrMailboxGetContact        (long hMailbox, int id);// returns hContact which must be unref'd after usage
     private native static int     MrMailboxCreateContact     (long hMailbox, String name, String addr);
     private native static int     MrMailboxBlockContact      (long hMailbox, int id, int block);
