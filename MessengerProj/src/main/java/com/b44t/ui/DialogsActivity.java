@@ -46,6 +46,8 @@ import com.b44t.messenger.BuildVars;
 import com.b44t.messenger.ImageLoader;
 import com.b44t.messenger.LocaleController;
 import com.b44t.messenger.MessageObject;
+import com.b44t.messenger.MrChat;
+import com.b44t.messenger.MrMailbox;
 import com.b44t.messenger.UserObject;
 import com.b44t.messenger.support.widget.LinearLayoutManager;
 import com.b44t.messenger.support.widget.RecyclerView;
@@ -102,7 +104,6 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
     private boolean checkPermission = true;
 
     private String selectAlertString;
-    private String selectAlertStringGroup;
     private String addToGroupAlertString;
     private int dialogsType;
 
@@ -131,7 +132,6 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
             onlySelect = arguments.getBoolean("onlySelect", false);
             dialogsType = arguments.getInt("dialogsType", 0);
             selectAlertString = arguments.getString("selectAlertString");
-            selectAlertStringGroup = arguments.getString("selectAlertStringGroup");
             addToGroupAlertString = arguments.getString("addToGroupAlertString");
         }
 
@@ -876,39 +876,16 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
     }
 
     private void didSelectResult(final long dialog_id, boolean useAlert, final boolean param) {
-        if (useAlert && (selectAlertString != null && selectAlertStringGroup != null || addToGroupAlertString != null)) {
+        if (useAlert && (selectAlertString != null || addToGroupAlertString != null)) {
             if (getParentActivity() == null) {
                 return;
             }
             AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
-            int lower_part = (int) dialog_id;
-            int high_id = (int) (dialog_id >> 32);
-            if (lower_part != 0) {
-                if (high_id == 1) {
-                    TLRPC.Chat chat = MessagesController.getInstance().getChat(lower_part);
-                    if (chat == null) {
-                        return;
-                    }
-                    builder.setMessage(LocaleController.formatStringSimple(selectAlertStringGroup, chat.title));
-                } else {
-                    if (lower_part > 0) {
-                        TLRPC.User user = MessagesController.getInstance().getUser(lower_part);
-                        if (user == null) {
-                            return;
-                        }
-                        builder.setMessage(LocaleController.formatStringSimple(selectAlertString, UserObject.getUserName(user)));
-                    } else if (lower_part < 0) {
-                        TLRPC.Chat chat = MessagesController.getInstance().getChat(-lower_part);
-                        if (chat == null) {
-                            return;
-                        }
-                        if (addToGroupAlertString != null) {
-                            builder.setMessage(LocaleController.formatStringSimple(addToGroupAlertString, chat.title));
-                        } else {
-                            builder.setMessage(LocaleController.formatStringSimple(selectAlertStringGroup, chat.title));
-                        }
-                    }
-                }
+            MrChat mrChat = MrMailbox.getChat((int)dialog_id);
+            if (addToGroupAlertString != null) {
+                builder.setMessage(LocaleController.formatStringSimple(addToGroupAlertString, mrChat.getName()));
+            } else {
+                builder.setMessage(LocaleController.formatStringSimple(selectAlertString, mrChat.getName()));
             }
 
             builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), new DialogInterface.OnClickListener() {

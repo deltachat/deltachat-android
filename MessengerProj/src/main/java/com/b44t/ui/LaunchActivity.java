@@ -991,10 +991,8 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                     args.putBoolean("onlySelect", true);
                     if (contactsToSend != null) {
                         args.putString("selectAlertString", LocaleController.getString("SendContactTo", R.string.SendMessagesTo));
-                        args.putString("selectAlertStringGroup", LocaleController.getString("SendContactToGroup", R.string.SendContactToGroup));
                     } else {
                         args.putString("selectAlertString", LocaleController.getString("SendMessagesTo", R.string.SendMessagesTo));
-                        args.putString("selectAlertStringGroup", LocaleController.getString("SendMessagesToGroup", R.string.SendMessagesToGroup));
                     }
                     DialogsActivity fragment = new DialogsActivity(args);
                     fragment.setDelegate(this);

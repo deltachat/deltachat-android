@@ -433,8 +433,6 @@
     <string name="AreYouSureDeleteContact">Contact echt verwijderen?</string>
     <string name="AreYouSureRegistration">Weet je zeker dat je de registratie wilt annuleren?</string>
     <string name="AreYouSureDeleteMessages">%1$s echt verwijderen?</string>
-    <string name="SendMessagesToGroup">Berichten naar %1$s versturen?</string>
-    <string name="SendContactToGroup">Contact delen met %1$s?</string>
     <string name="ForwardMessagesToGroup">Berichten doorsturen naar %1$s?</string>
     <string name="RaiseToSpeakAlert">Wil je \"Houd bij oor\" inschakelen voor spraakberichten?</string>
     <!--permissions-->

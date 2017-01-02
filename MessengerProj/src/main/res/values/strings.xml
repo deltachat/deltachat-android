@@ -432,8 +432,6 @@
     <string name="AreYouSureDeleteContact">Are you sure you want to delete this user?</string>
     <string name="AreYouSureRegistration">Are you sure you want to cancel registration?</string>
     <string name="AreYouSureDeleteMessages">Delete %1$s? The messages will also be deleted from the server.</string>
-    <string name="SendMessagesToGroup">Send messages to %1$s?</string>
-    <string name="SendContactToGroup">Send contact to %1$s?</string>
     <string name="ForwardMessagesToGroup">Forward messages to %1$s?</string>
     <string name="RaiseToSpeakAlert">Would you like to enable "Raise to speak" for voice messages?</string>
     <!--permissions-->

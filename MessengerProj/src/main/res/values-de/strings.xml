@@ -433,8 +433,6 @@
     <string name="AreYouSureDeleteContact">Diesen Benutzer wirklich löschen?</string>
     <string name="AreYouSureRegistration">Bist du dir sicher, dass du die Registrierung abbrechen willst?</string>
     <string name="AreYouSureDeleteMessages">%1$s löschen? Die Nachrichten werden auch auf dem Server gelöscht.</string>
-    <string name="SendMessagesToGroup">Nachricht an %1$s senden?</string>
-    <string name="SendContactToGroup">Kontakt senden an %1$s?</string>
     <string name="ForwardMessagesToGroup">Weiterleiten an %1$s?</string>
     <string name="RaiseToSpeakAlert">Möchtest du \"Zum Sprechen ans Ohr\" für Sprachnachrichten aktivieren?</string>
     <!--permissions-->

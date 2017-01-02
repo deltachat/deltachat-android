@@ -433,8 +433,6 @@
     <string name="AreYouSureDeleteContact">Você tem certeza que deseja apagar este contato?</string>
     <string name="AreYouSureRegistration">Você tem certeza que deseja cancelar o registro?</string>
     <string name="AreYouSureDeleteMessages">Você tem certeza que deseja apagar %1$s?</string>
-    <string name="SendMessagesToGroup">Enviar mensagens para %1$s?</string>
-    <string name="SendContactToGroup">Enviar contato para %1$s?</string>
     <string name="ForwardMessagesToGroup">Encaminhar mensagem para %1$s?</string>
     <string name="RaiseToSpeakAlert">Gostaria de habilitar o \"Levantar para Falar\" para mensagens de voz?</string>
     <!--permissions-->
