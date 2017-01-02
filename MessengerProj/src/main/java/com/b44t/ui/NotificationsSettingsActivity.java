@@ -418,7 +418,7 @@ public class NotificationsSettingsActivity extends BaseFragment implements Notif
                     AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
                     builder.setTitle(LocaleController.getString("RepeatNotifications", R.string.RepeatNotifications));
                     builder.setItems(new CharSequence[]{
-                            LocaleController.getString("RepeatDisabled", R.string.RepeatDisabled),
+                            LocaleController.getString("Off", R.string.Off),
                             LocaleController.formatPluralString("Minutes", 5),
                             LocaleController.formatPluralString("Minutes", 10),
                             LocaleController.formatPluralString("Minutes", 30),
@@ -558,9 +558,9 @@ public class NotificationsSettingsActivity extends BaseFragment implements Notif
                     view = new HeaderCell(mContext);
                 }
                 if (i == messageSectionRow) {
-                    ((HeaderCell) view).setText(LocaleController.getString("MessageNotifications", R.string.MessageNotifications));
+                    ((HeaderCell) view).setText(LocaleController.getString("NormalMessagess", R.string.NormalMessages));
                 } else if (i == groupSectionRow) {
-                    ((HeaderCell) view).setText(LocaleController.getString("GroupNotifications", R.string.GroupNotifications));
+                    ((HeaderCell) view).setText(LocaleController.getString("GroupMessages", R.string.GroupMessages));
                 } else if (i == inappSectionRow) {
                     ((HeaderCell) view).setText(LocaleController.getString("InAppNotifications", R.string.InAppNotifications));
                 } else if (i == otherSectionRow) {
@@ -659,10 +659,10 @@ public class NotificationsSettingsActivity extends BaseFragment implements Notif
                         textCell.setTextAndValue(LocaleController.getString("NotificationsPriority", R.string.NotificationsPriority), LocaleController.getString("NotificationsPriorityMax", R.string.NotificationsPriorityMax), false);
                     }
                 } else if (i == repeatRow) {
-                    int minutes = preferences.getInt("repeat_messages", 60);
+                    int minutes = preferences.getInt("repeat_messages", 0);
                     String value;
                     if (minutes == 0) {
-                        value = LocaleController.getString("RepeatNotificationsNever", R.string.RepeatNotificationsNever);
+                        value = LocaleController.getString("Off", R.string.Off);
                     } else if (minutes < 60) {
                         value = LocaleController.formatPluralString("Minutes", minutes);
                     } else {

@@ -813,7 +813,7 @@ public class NotificationsController {
         try {
             PendingIntent pintent = PendingIntent.getService(ApplicationLoader.applicationContext, 0, new Intent(ApplicationLoader.applicationContext, NotificationRepeat.class), 0);
             SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("Notifications", Activity.MODE_PRIVATE);
-            int minutes = preferences.getInt("repeat_messages", 60);
+            int minutes = preferences.getInt("repeat_messages", 0);
             if (minutes > 0 && personal_count > 0) {
                 alarmManager.set(AlarmManager.ELAPSED_REALTIME_WAKEUP, SystemClock.elapsedRealtime() + minutes * 60 * 1000, pintent);
             } else {
