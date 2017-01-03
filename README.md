@@ -23,5 +23,4 @@ The Delta Chat Android Frontend is based upon
 
 ---
 
-Copyright (c) Bjoern Petersen Software Design and Development,
-http://b44t.com and contributors.
+Copyright (c) 2017 Bjoern Petersen and contributors, http://b44t.com

@@ -1,8 +1,8 @@
 /*******************************************************************************
  *
  *                          Messenger Android Frontend
- *     Copyright (C) 2016 Björn Petersen Software Design and Development
- *                   Contact: r10s@b44t.com, http://b44t.com
+ *                           (C) 2017 Björn Petersen
+ *                    Contact: r10s@b44t.com, http://b44t.com
  *
  * This program is free software: you can redistribute it and/or modify it under
  * the terms of the GNU General Public License as published by the Free Software
@@ -20,7 +20,6 @@
  *******************************************************************************
  *
  * File:    MrChat.java
- * Authors: Björn Petersen
  * Purpose: Wrap around mrchat_t
  *
  ******************************************************************************/
