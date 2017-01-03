@@ -105,11 +105,16 @@ public class WallpapersActivity extends BaseFragment implements NotificationCent
         selectedBackground = preferences.getInt("selectedBackground", 1000001);
         selectedColor = preferences.getInt("selectedColor", 0);
 
-        //MessagesStorage.getInstance().getWallpapers(); -- EDIT BY MR
+        //MessagesStorage.getInstance().getWallpapers();
         TLRPC.WallPaper wo = new TLRPC.WallPaper();
         wo.id = 1000001;
         wallPapers.add(wo);
-        // EDIT BY MR
+
+        //wo = new TLRPC.TL_wallPaperSolid();
+        //wo.id = 1;
+        //wo.color = 0xFF0000FF; -- results in a magneta wallpaper, however, this is not really shown. NB: what with the wallpaper in the pincode-enter-screen?
+        //wo.bg_color = 0xFFFF00FF;
+        //wallPapers.add(wo);
 
         File toFile = new File(ApplicationLoader.getFilesDirFixed(), "wallpaper-temp.jpg");
         toFile.delete();
