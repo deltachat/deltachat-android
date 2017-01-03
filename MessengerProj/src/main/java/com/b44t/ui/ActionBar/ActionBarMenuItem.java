@@ -444,7 +444,7 @@ public class ActionBarMenuItem extends FrameLayout {
                         listener.onTextChanged(searchField);
                     }
                     if (clearButton != null) {
-                        clearButton.setAlpha(s == null || s.length() == 0 ? 0.6f : 1.0f);
+                        clearButton.setVisibility(s==null||s.length()==0? GONE : VISIBLE); // hide the X-button completely if unused - otherwise one gets confused with the close-searchbar-functionality (originally, we use setAlpha() for graying out)
                     }
                 }
 
