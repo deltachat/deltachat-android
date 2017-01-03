@@ -1115,36 +1115,8 @@ public class NotificationsController {
             }
 
             Intent intent = new Intent(ApplicationLoader.applicationContext, LaunchActivity.class);
-            intent.setAction("com.b44t.messenger.openchat" + Math.random() + Integer.MAX_VALUE);
+            intent.setAction("com.b44t.messenger.openchat" + (pushDialogs.size() == 1? dialog_id : 0));
             intent.setFlags(32768);
-            if ((int)dialog_id != 0) {
-                if (pushDialogs.size() == 1) {
-                    if (isGroupChat) {
-                        intent.putExtra("chatId", dialog_id);
-                    } else if (user_id != 0) {
-                        intent.putExtra("userId", user_id);
-                    }
-                }
-                /*if (AndroidUtilities.needShowPasscode(false) || UserConfig.isWaitingForPasscodeEnter) {
-                    photoPath = null;
-                } else {
-                    if (pushDialogs.size() == 1) {
-                        if (isGroupChat) {
-                            if (chat.photo != null && chat.photo.photo_small != null && chat.photo.photo_small.volume_id != 0 && chat.photo.photo_small.local_id != 0) {
-                                photoPath = chat.photo.photo_small;
-                            }
-                        } else if (user != null) {
-                            if (user.photo != null && user.photo.photo_small != null && user.photo.photo_small.volume_id != 0 && user.photo.photo_small.local_id != 0) {
-                                photoPath = user.photo.photo_small;
-                            }
-                        }
-                    }
-                }*/
-            } /*else {
-                if (pushDialogs.size() == 1) {
-                    intent.putExtra("encId", (int) (dialog_id >> 32));
-                }
-            }*/
             PendingIntent contentIntent = PendingIntent.getActivity(ApplicationLoader.applicationContext, 0, intent, PendingIntent.FLAG_ONE_SHOT);
 
             boolean showPreview = preferences.getBoolean("EnablePreviewAll", true);
