@@ -469,36 +469,50 @@ JNIEXPORT jlong Java_com_b44t_messenger_MrChatlist_MrChatlistGetSummaryByIndex(J
  ******************************************************************************/
 
 
+static mrchat_t* get_mrchat_t(JNIEnv *env, jobject obj)
+{
+	static jfieldID fid = 0;
+	if( fid == 0 ) {
+		jclass cls = (*env)->GetObjectClass(env, obj);
+		fid = (*env)->GetFieldID(env, cls, "m_hChat", "J" /*Signature, J=long*/);
+	}
+	if( fid ) {
+		return (mrchat_t*)(*env)->GetLongField(env, obj, fid);
+	}
+	return NULL;
+}
+
+
 JNIEXPORT void Java_com_b44t_messenger_MrChat_MrChatUnref(JNIEnv *env, jclass c, jlong hChat)
 {
 	mrchat_unref((mrchat_t*)hChat);
 }
 
 
-JNIEXPORT jint Java_com_b44t_messenger_MrChat_MrChatGetId(JNIEnv *env, jclass c, jlong hChat)
+JNIEXPORT jint Java_com_b44t_messenger_MrChat_getId(JNIEnv *env, jclass cls)
 {
-	mrchat_t* ths = (mrchat_t*)hChat; if( ths == NULL ) { return 0; }
+	mrchat_t* ths = get_mrchat_t(env, cls); if( ths == NULL ) { return 0; }
 	return ths->m_id;
 }
 
 
-JNIEXPORT jint Java_com_b44t_messenger_MrChat_MrChatGetType(JNIEnv *env, jclass c, jlong hChat)
+JNIEXPORT jint Java_com_b44t_messenger_MrChat_getType(JNIEnv *env, jclass cls)
 {
-	mrchat_t* ths = (mrchat_t*)hChat; if( ths == NULL ) { return 0; }
+	mrchat_t* ths = get_mrchat_t(env, cls); if( ths == NULL ) { return 0; }
 	return ths->m_type;
 }
 
 
-JNIEXPORT jstring Java_com_b44t_messenger_MrChat_MrChatGetName(JNIEnv *env, jclass c, jlong hChat)
+JNIEXPORT jstring Java_com_b44t_messenger_MrChat_getName(JNIEnv *env, jclass cls)
 {
-	mrchat_t* ths = (mrchat_t*)hChat; if( ths == NULL ) { return JSTRING_NEW(NULL); }
+	mrchat_t* ths = get_mrchat_t(env, cls); if( ths == NULL ) { return JSTRING_NEW(NULL); }
 	return JSTRING_NEW(ths->m_name);
 }
 
 
-JNIEXPORT jstring Java_com_b44t_messenger_MrChat_MrChatGetSubtitle(JNIEnv *env, jclass c, jlong hChat)
+JNIEXPORT jstring Java_com_b44t_messenger_MrChat_getSubtitle(JNIEnv *env, jclass cls)
 {
-	const char* temp = mrchat_get_subtitle((mrchat_t*)hChat);
+	const char* temp = mrchat_get_subtitle(get_mrchat_t(env, cls));
 		jstring ret = JSTRING_NEW(temp);
 	free(temp);
 	return ret;

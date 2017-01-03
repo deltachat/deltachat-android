@@ -45,20 +45,10 @@ public class MrChat {
         MrChatUnref(m_hChat);
     }
 
-    public int getId() {
-        return MrChatGetId(m_hChat);
-    }
-    public int getType() {
-        return MrChatGetType(m_hChat);
-    }
-
-    public String getName() {
-        return MrChatGetName(m_hChat);
-    }
-
-    public String getSubtitle() {
-        return MrChatGetSubtitle(m_hChat);
-    }
+    public native int    getId();
+    public native int    getType();
+    public native String getName();
+    public native String getSubtitle();
 
     public String getDraft() {
         return MrChatGetDraft(m_hChat);
@@ -91,19 +81,14 @@ public class MrChat {
         return MrChatSendMedia(m_hChat, type, file, mime, w, h, time_ms);
     }
 
-    private long                  m_hChat;
+    private long                  m_hChat;  // must not be renamed as referenced by JNI under the name "m_hChat"
     private native static void    MrChatUnref                (long hChat);
-    private native static int     MrChatGetId                (long hChat);
-    private native static int     MrChatGetType              (long hChat);
-    private native static String  MrChatGetName              (long hChat);
-    private native static String  MrChatGetSubtitle          (long hChat);
     private native static String  MrChatGetDraft             (long hChat); // returns null for "no draft"
     private native static long    MrChatGetDraftTimestamp    (long hChat); // returns 0 for "no draft"
     private native static int     MrChatGetDraftReplyToMsgId (long hChat); // returns 0 for "no draft"
     private native static int     MrChatSetDraft             (long hChat, String draft/*NULL=delete*/, long replyToMsgId);
     private native static int     MrChatGetUnseenCount       (long hChat);
     private native static int     MrChatGetTotalMsgCount     (long hChat);
-    private native static long    MrChatGetSummary           (long hChat); // returns hPoortext
     private native static int     MrChatSendText             (long hChat, String text); // returns message id
     private native static int     MrChatSendMedia            (long hChat, int type, String file, String mime, int w, int h, int time_ms);
 

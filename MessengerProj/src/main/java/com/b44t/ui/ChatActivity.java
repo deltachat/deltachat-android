@@ -292,12 +292,10 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
 
     @Override
     public boolean onFragmentCreate() {
-        // EDIT BY MR -- set up the values so that the activity gets usable
         dialog_id = arguments.getInt("chat_id", 0);
         m_mrChat = MrMailbox.getChat((int)dialog_id);
         currentChat = new TLRPC.Chat();
         currentChat.id = (int)dialog_id;
-        // /EDIT BY MR
 
         startLoadFromMessageId = arguments.getInt("message_id", 0);
         scrollToTopOnResume = arguments.getBoolean("scrollToTopOnResume", false);
