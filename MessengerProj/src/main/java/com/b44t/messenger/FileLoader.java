@@ -524,7 +524,7 @@ public class FileLoader {
         if (message == null) {
             return "";
         }
-        if (message instanceof TLRPC.TL_messageService) {
+        /*if (message instanceof TLRPC.TL_messageService) {
             if (message.action.photo != null) {
                 ArrayList<TLRPC.PhotoSize> sizes = message.action.photo.sizes;
                 if (sizes.size() > 0) {
@@ -534,7 +534,7 @@ public class FileLoader {
                     }
                 }
             }
-        } else {
+        } else*/ {
             if (message.media instanceof TLRPC.TL_messageMediaDocument) {
                 return getAttachFileName(message.media.document);
             } else if (message.media instanceof TLRPC.TL_messageMediaPhoto) {
@@ -566,7 +566,7 @@ public class FileLoader {
         if (message == null) {
             return new File("");
         }
-        if (message instanceof TLRPC.TL_messageService) {
+        /*if (message instanceof TLRPC.TL_messageService) {
             if (message.action.photo != null) {
                 ArrayList<TLRPC.PhotoSize> sizes = message.action.photo.sizes;
                 if (sizes.size() > 0) {
@@ -576,7 +576,7 @@ public class FileLoader {
                     }
                 }
             }
-        } else {
+        } else*/ {
             if (message.media instanceof TLRPC.TL_messageMediaDocument) {
                 return getPathToAttach(message.media.document);
             } else if (message.media instanceof TLRPC.TL_messageMediaPhoto) {

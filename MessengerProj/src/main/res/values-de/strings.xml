@@ -348,24 +348,6 @@
     <string name="OK">OK</string>
     <string name="Crop">SCHNEIDEN</string>
     <!--messages-->
-    <string name="ActionKickUser">un1 hat un2 aus der Gruppe entfernt</string>
-    <string name="ActionLeftUser">un1 hat die Gruppe verlassen</string>
-    <string name="ActionAddUser">un1 hat un2 hinzugefügt</string>
-    <string name="ActionRemovedPhoto">un1 hat das Gruppenbild entfernt</string>
-    <string name="ActionChangedPhoto">un1 hat das Gruppenbild geändert</string>
-    <string name="ActionChangedTitle">un1 hat den Namen der Gruppe in un2 geändert</string>
-    <string name="ActionCreateGroup">un1 hat die Gruppe erstellt</string>
-    <string name="ActionYouKickUser">Du hast un2 aus der Gruppe entfernt</string>
-    <string name="ActionYouLeftUser">Du hast die Gruppe verlassen</string>
-    <string name="ActionYouAddUser">Du hast un2 hinzugefügt</string>
-    <string name="ActionYouRemovedPhoto">Du hast das Gruppenbild entfernt</string>
-    <string name="ActionYouChangedPhoto">Du hast das Gruppenbild geändert</string>
-    <string name="ActionYouChangedTitle">Du hast den Gruppennamen in un2 geändert</string>
-    <string name="ActionYouCreateGroup">Du hast die Gruppe erstellt</string>
-    <string name="ActionKickUserYou">un1 hat dich aus der Gruppe entfernt</string>
-    <string name="ActionAddUserYou">un1 hat dich hinzugefügt</string>
-    <string name="ActionAddUserSelf">un1 ist in die Gruppe zurückgekehrt</string>
-    <string name="ActionAddUserSelfYou">Du bist in die Gruppe zurückgekehrt</string>
     <string name="AttachPhoto">Bild</string>
     <string name="AttachVideo">Video</string>
     <string name="AttachGif">GIF</string>
@@ -378,7 +360,6 @@
     <!--Alert messages-->
     <string name="Loading">Lädt…</string>
     <string name="NoPlayerInstalled">Du hast keinen Videoplayer. Bitte installiere einen um fortzufahren.</string>
-    <string name="NoMailInstalled">Bitte sende eine Email an sms@stel.com mit einer Beschreibung des Problems.</string>
     <string name="NoHandleAppInstalled">Du hast keine Applikationen, die den Dateityp \'%1$s\' öffnen könnten. Bitte installiere eine entsprechende Anwendung um fortzufahren.</string>
     <string name="AddToTheGroupTitle">%1$s dem Chat %2$s hinzufügen?</string>
     <string name="AddToTheGroup">%1$s zur Gruppe hinzufügen?</string>

@@ -348,24 +348,6 @@
     <string name="OK">OK</string>
     <string name="Crop">BIJSNIJDEN</string>
     <!--messages-->
-    <string name="ActionKickUser">un1 heeft un2 verwijderd</string>
-    <string name="ActionLeftUser">un1 heeft de groep verlaten</string>
-    <string name="ActionAddUser">un1 heeft un2 toegevoegd</string>
-    <string name="ActionRemovedPhoto">un1 heeft de groepsafbeelding verwijderd</string>
-    <string name="ActionChangedPhoto">un1 heeft de groepsafbeelding gewijzigd</string>
-    <string name="ActionChangedTitle">un1 heeft de groepsnaam gewijzigd naar un2</string>
-    <string name="ActionCreateGroup">un1 heeft de groep gemaakt</string>
-    <string name="ActionYouKickUser">Je hebt un2 verwijderd</string>
-    <string name="ActionYouLeftUser">Je hebt de groep verlaten</string>
-    <string name="ActionYouAddUser">Je hebt un2 toegevoegd</string>
-    <string name="ActionYouRemovedPhoto">Je hebt de groepsafbeelding verwijderd</string>
-    <string name="ActionYouChangedPhoto">Je hebt de groepsafbeelding gewijzigd</string>
-    <string name="ActionYouChangedTitle">Je hebt de groepsnaam gewijzigd naar un2</string>
-    <string name="ActionYouCreateGroup">Je hebt de groep gemaakt</string>
-    <string name="ActionKickUserYou">un1 heeft je verwijderd</string>
-    <string name="ActionAddUserYou">un1 heeft je toegevoegd</string>
-    <string name="ActionAddUserSelf">un1 is terug in de groep</string>
-    <string name="ActionAddUserSelfYou">Je keerde terug naar de groep</string>
     <string name="AttachPhoto">Foto</string>
     <string name="AttachVideo">Video</string>
     <string name="AttachGif">GIF</string>
@@ -378,7 +360,6 @@
     <!--Alert messages-->
     <string name="Loading">Bezig met laden</string>
     <string name="NoPlayerInstalled">Je hebt geen mediaspeler. Installeer een mediaspeler om door te gaan.</string>
-    <string name="NoMailInstalled">E-mail ons op sms@stel.com en vertel ons over je probleem.</string>
     <string name="NoHandleAppInstalled">Je hebt geen apps die bestandstype \'%1$s\' kunnen verwerken, gelieve een compatibele app te installeren</string>
     <string name="AddToTheGroupTitle">%1$s toevoegen aan de groep %2$s?</string>
     <string name="AddToTheGroup">%1$s toevoegen aan de groep?</string>

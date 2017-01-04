@@ -348,24 +348,6 @@
     <string name="OK">OK</string>
     <string name="Crop">RITAGLIA</string>
     <!--messages-->
-    <string name="ActionKickUser">un1 ha rimosso un2</string>
-    <string name="ActionLeftUser">un1 ha lasciato il gruppo</string>
-    <string name="ActionAddUser">un1 ha aggiunto un2</string>
-    <string name="ActionRemovedPhoto">un1 ha rimosso la foto del gruppo</string>
-    <string name="ActionChangedPhoto">un1 ha cambiato la foto del gruppo</string>
-    <string name="ActionChangedTitle">un1 ha cambiato il nome del gruppo in un2</string>
-    <string name="ActionCreateGroup">un1 ha creato il gruppo</string>
-    <string name="ActionYouKickUser">Hai rimosso un2</string>
-    <string name="ActionYouLeftUser">Hai lasciato il gruppo</string>
-    <string name="ActionYouAddUser">Hai aggiunto un2</string>
-    <string name="ActionYouRemovedPhoto">Hai rimosso la foto del gruppo</string>
-    <string name="ActionYouChangedPhoto">Hai cambiato la foto del gruppo</string>
-    <string name="ActionYouChangedTitle">Hai cambiato il nome del gruppo in un2</string>
-    <string name="ActionYouCreateGroup">Hai creato il gruppo</string>
-    <string name="ActionKickUserYou">un1 ti ha rimosso</string>
-    <string name="ActionAddUserYou">un1 ti ha aggiunto</string>
-    <string name="ActionAddUserSelf">un1 è tornato nel gruppo</string>
-    <string name="ActionAddUserSelfYou">Sei tornato nel gruppo</string>
     <string name="AttachPhoto">Foto</string>
     <string name="AttachVideo">Video</string>
     <string name="AttachGif">GIF</string>
@@ -378,7 +360,6 @@
     <!--Alert messages-->
     <string name="Loading">Caricamento…</string>
     <string name="NoPlayerInstalled">Non hai un lettore video, per favore installane uno per continuare</string>
-    <string name="NoMailInstalled">Invia un’email a sms@stel.com spiegandoci il problema.</string>
     <string name="NoHandleAppInstalled">Non hai applicazioni che possono gestire il tipo di file \'%1$s\': installane una per proseguire</string>
     <string name="AddToTheGroupTitle">Aggiungere %1$s alla chat %2$s?</string>
     <string name="AddToTheGroup">Aggiungere %1$s al gruppo?</string>

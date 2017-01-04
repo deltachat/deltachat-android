@@ -123,7 +123,7 @@ public class MessageObject {
             }
         }
 
-        if (message instanceof TLRPC.TL_messageService) {
+        /*if (message instanceof TLRPC.TL_messageService) {
             if (message.action != null) {
                 if (message.action instanceof TLRPC.TL_messageActionChatCreate) {
                     if (isOut()) {
@@ -192,12 +192,12 @@ public class MessageObject {
                             messageText = replaceWithLink(messageText, "un1", fromUser);
                         }
                     }
-                /*} else if (message.action instanceof TLRPC.TL_messageActionChatEditPhoto) {
+                } else if (message.action instanceof TLRPC.TL_messageActionChatEditPhoto) {
                         if (isOut()) {
                             messageText = LocaleController.getString("ActionYouChangedPhoto", R.string.ActionYouChangedPhoto);
                         } else {
                             messageText = replaceWithLink(LocaleController.getString("ActionChangedPhoto", R.string.ActionChangedPhoto), "un1", fromUser);
-                        }*/
+                        }
                 } else if (message.action instanceof TLRPC.TL_messageActionChatEditTitle) {
                         if (isOut()) {
                             messageText = LocaleController.getString("ActionYouChangedTitle", R.string.ActionYouChangedTitle).replace("un2", message.action.title);
@@ -210,13 +210,13 @@ public class MessageObject {
                         } else {
                             messageText = replaceWithLink(LocaleController.getString("ActionRemovedPhoto", R.string.ActionRemovedPhoto), "un1", fromUser);
                         }
-                /*} else if (message.action instanceof TLRPC.TL_messageActionUserUpdatedPhoto) {
+                } else if (message.action instanceof TLRPC.TL_messageActionUserUpdatedPhoto) {
                     messageText = LocaleController.formatString("NotificationContactNewPhoto", R.string.NotificationContactNewPhoto, UserObject.getUserName(fromUser));
                 } else if (message.action instanceof TLRPC.TL_messageActionHistoryClear) {
-                    messageText = LocaleController.getString("HistoryCleared", R.string.HistoryCleared);*/
+                    messageText = LocaleController.getString("HistoryCleared", R.string.HistoryCleared);
                 }
             }
-        } else if (!isMediaEmpty()) {
+        } else*/ if (!isMediaEmpty()) {
             if (message.media instanceof TLRPC.TL_messageMediaPhoto) {
                 messageText = LocaleController.getString("AttachPhoto", R.string.AttachPhoto);
             } else if (isVideo()) {
@@ -329,8 +329,8 @@ public class MessageObject {
                     type = 9;
                 }
             }
-        } else if (messageOwner instanceof TLRPC.TL_messageService) {
-            /*if (messageOwner.action instanceof TLRPC.TL_messageActionLoginUnknownLocation) {
+        } /*else if (messageOwner instanceof TLRPC.TL_messageService) {
+            if (messageOwner.action instanceof TLRPC.TL_messageActionLoginUnknownLocation) {
                 type = 0;
             } else if (messageOwner.action instanceof TLRPC.TL_messageActionChatEditPhoto || messageOwner.action instanceof TLRPC.TL_messageActionUserUpdatedPhoto) {
                 contentType = ChatActivity.ROWTYPE_ACTION_CELL;
@@ -346,11 +346,11 @@ public class MessageObject {
             } else if (messageOwner.action instanceof TLRPC.TL_messageActionHistoryClear) {
                 contentType = -1;
                 type = -1;
-            } else*/ {
+            } else {
                 contentType = ChatActivity.ROWTYPE_ACTION_CELL;
                 type = 10;
             }
-        }
+        }*/
         if (oldType != 1000 && oldType != type) {
             generateThumbs(false);
         }
@@ -384,8 +384,8 @@ public class MessageObject {
     }
 
     public void generateThumbs(boolean update) {
-        if (messageOwner instanceof TLRPC.TL_messageService) {
-            /*if (messageOwner.action instanceof TLRPC.TL_messageActionChatEditPhoto) {
+        /*if (messageOwner instanceof TLRPC.TL_messageService) {
+            if (messageOwner.action instanceof TLRPC.TL_messageActionChatEditPhoto) {
                 if (!update) {
                     photoThumbs = new ArrayList<>(messageOwner.action.photo.sizes);
                 } else if (photoThumbs != null && !photoThumbs.isEmpty()) {
@@ -403,8 +403,8 @@ public class MessageObject {
                         }
                     }
                 }
-            }*/
-        } else if (messageOwner.media != null && !(messageOwner.media instanceof TLRPC.TL_messageMediaEmpty)) {
+            }
+        } else*/ if (messageOwner.media != null && !(messageOwner.media instanceof TLRPC.TL_messageMediaEmpty)) {
             if (messageOwner.media instanceof TLRPC.TL_messageMediaPhoto) {
                 if (!update || photoThumbs != null && photoThumbs.size() != messageOwner.media.photo.sizes.size()) {
                     photoThumbs = new ArrayList<>(messageOwner.media.photo.sizes);
@@ -469,6 +469,7 @@ public class MessageObject {
         }
     }
 
+    /*
     public CharSequence replaceWithLink(CharSequence source, String param, ArrayList<Integer> uids, AbstractMap<Integer, TLRPC.User> usersDict) {
         int start = TextUtils.indexOf(source, param);
         if (start >= 0) {
@@ -517,6 +518,7 @@ public class MessageObject {
         }
         return source;
     }
+    */
 
     /*
     public String getExtension() {

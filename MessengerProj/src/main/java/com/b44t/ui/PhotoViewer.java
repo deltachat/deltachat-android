@@ -2465,10 +2465,10 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
                 return null;
             }
             MessageObject message = imagesArr.get(index);
-            if (message.messageOwner instanceof TLRPC.TL_messageService) {
-                /*if (message.messageOwner.action instanceof TLRPC.TL_messageActionUserUpdatedPhoto) {
+            /*if (message.messageOwner instanceof TLRPC.TL_messageService) {
+                if (message.messageOwner.action instanceof TLRPC.TL_messageActionUserUpdatedPhoto) {
                     return message.messageOwner.action.newUserPhoto.photo_big;
-                } else*/ {
+                } else {
                     TLRPC.PhotoSize sizeFull = FileLoader.getClosestPhotoSizeWithSize(message.photoThumbs, AndroidUtilities.getPhotoSize());
                     if (sizeFull != null) {
                         size[0] = sizeFull.size;
@@ -2480,7 +2480,7 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
                         size[0] = -1;
                     }
                 }
-            } else if (message.messageOwner.media instanceof TLRPC.TL_messageMediaPhoto && message.messageOwner.media.photo != null ) {
+            } else*/ if (message.messageOwner.media instanceof TLRPC.TL_messageMediaPhoto && message.messageOwner.media.photo != null ) {
                 TLRPC.PhotoSize sizeFull = FileLoader.getClosestPhotoSizeWithSize(message.photoThumbs, AndroidUtilities.getPhotoSize());
                 if (sizeFull != null) {
                     size[0] = sizeFull.size;
@@ -2581,7 +2581,7 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
             imagesArr.add(messageObject);
             if (currentAnimation != null) {
                 needSearchImageInArr = false;
-            } else if ( (messageObject.messageOwner.action == null || messageObject.messageOwner.action instanceof TLRPC.TL_messageActionEmpty)) {
+            } else /*if ( (messageObject.messageOwner.action == null || messageObject.messageOwner.action instanceof TLRPC.TL_messageActionEmpty))*/ {
                 needSearchImageInArr = true;
                 imagesByIds[0].put(messageObject.getId(), messageObject);
                 //menuItem.showSubItem(gallery_menu_showall);

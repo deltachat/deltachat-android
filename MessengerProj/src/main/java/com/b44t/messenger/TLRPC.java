@@ -215,34 +215,6 @@ public class TLRPC {
 	public static class TL_userContact_old2 extends User {
 	}
 
-	public static class MessageAction extends TLObject {
-		public String title;
-		public String address;
-		public ArrayList<Integer> users = new ArrayList<>();
-		public final int channel_id = 0;
-		public Photo photo;
-		public int chat_id;
-		public int user_id;
-	}
-
-	public static class TL_messageActionChatCreate extends MessageAction {
-	}
-
-	public static class TL_messageActionChatAddUser extends MessageAction {
-	}
-
-	public static class TL_messageActionChatDeleteUser extends MessageAction {
-	}
-
-	public static class TL_messageActionChatDeletePhoto extends MessageAction {
-	}
-
-	public static class TL_messageActionChatEditTitle extends MessageAction {
-	}
-
-	public static class TL_messageActionEmpty extends MessageAction {
-	}
-
 	public static class Video extends TLObject {
 		public long id;
 		public int user_id;
@@ -536,7 +508,6 @@ public class TLRPC {
         public int from_id;
         public Peer to_id;
         public int date;
-        public MessageAction action;
         public int reply_to_msg_id;
 		public long reply_to_random_id;
         public String message;
@@ -564,9 +535,6 @@ public class TLRPC {
 	}
 
 	public static class TL_message extends Message {
-	}
-
-	public static class TL_messageService extends Message {
 	}
 
 	public static class TL_dialog extends TLObject {
