@@ -121,12 +121,10 @@
     <string name="AddContact">Toevoegen</string>
     <string name="NewContactTitle">Contact toevoegen</string>
     <string name="BlockContact">Blokkeer</string>
-    <string name="EditContact">Wijzig</string>
     <string name="DeleteContact">Verwijder</string>
     <string name="Info">Info</string>
     <!--stickers view-->
     <string name="Stickers">Stickers</string>
-    <string name="StickersInfo">Ontwerpers kunnen stickerbundels toevoegen via onze bot: @stickers.\n\nGebruikers kunnen met een tik stickers toevoegen via \"Toevoegen aan stickers\".</string>
     <string name="AddStickers">Stickers toevoegen</string>
     <string name="AddToStickers">Toevoegen aan stickers</string>
     <string name="AddStickersNotFound">Stickers niet gevonden</string>

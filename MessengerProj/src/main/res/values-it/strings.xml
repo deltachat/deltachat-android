@@ -121,12 +121,10 @@
     <string name="AddContact">Aggiungi</string>
     <string name="NewContactTitle">Aggiungi contatto</string>
     <string name="BlockContact">Blocca</string>
-    <string name="EditContact">Modifica</string>
     <string name="DeleteContact">Elimina</string>
     <string name="Info">Info</string>
     <!--stickers view-->
     <string name="Stickers">Sticker</string>
-    <string name="StickersInfo">Gli artisti sono invitati ad aggiungere i loro set di sticker usando il nostro bot @stickers.\n\nGli utenti possono aggiungere sticker premendo su di loro e scegliendo \"Aggiungi agli sticker\".</string>
     <string name="AddStickers">Aggiungi sticker</string>
     <string name="AddToStickers">Aggiungi agli sticker</string>
     <string name="AddStickersNotFound">Sticker non trovati</string>

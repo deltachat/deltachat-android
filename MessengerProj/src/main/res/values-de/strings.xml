@@ -121,12 +121,10 @@
     <string name="AddContact">Hinzufügen</string>
     <string name="NewContactTitle">Neuer Benutzer</string>
     <string name="BlockContact">Benutzer blockieren</string>
-    <string name="EditContact">Bearbeiten</string>
     <string name="DeleteContact">Benutzer löschen</string>
     <string name="Info">Info</string>
     <!--stickers view-->
     <string name="Stickers">Sticker</string>
-    <string name="StickersInfo">Künstler können eigene Sticker-Pakete über unseren Sticker Bot (@stickers) einstellen.\n\nNutzer fügen neue Sticker durch Antippen eines Stickers und dann \"Hinzufügen\" hinzu.</string>
     <string name="AddStickers">Sticker hinzufügen</string>
     <string name="AddToStickers">Sticker hinzufügen</string>
     <string name="AddStickersNotFound">Sticker nicht gefunden</string>
