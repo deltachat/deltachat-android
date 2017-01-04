@@ -591,57 +591,12 @@ public class AndroidUtilities {
         }
     }
 
-    private static Intent createShortcutIntent(long did, boolean forDelete) {
+    private static Intent createShortcutIntent(int did, Bitmap bitmap) {
         Intent shortcutIntent = new Intent(ApplicationLoader.applicationContext, OpenChatReceiver.class);
 
-        /*
-        int lower_id = (int) did;
-        int high_id = (int) (did >> 32);
-
-        TLRPC.User user = null;
-        TLRPC.Chat chat = null;
-        if (lower_id == 0) {
-            shortcutIntent.putExtra("encId", high_id);
-            TLRPC.EncryptedChat encryptedChat = MessagesController.getInstance().getEncryptedChat(high_id);
-            if (encryptedChat == null) {
-                return null;
-            }
-            user = MessagesController.getInstance().getUser(encryptedChat.user_id);
-        } else if (lower_id > 0) {
-            shortcutIntent.putExtra("userId", lower_id);
-            user = MessagesController.getInstance().getUser(lower_id);
-        } else if (lower_id < 0) {
-            chat = MessagesController.getInstance().getChat(-lower_id);
-            shortcutIntent.putExtra("chatId", -lower_id);
-        } else {
-            return null;
-        }
-        if (user == null && chat == null) {
-            return null;
-        }
-
-        String name;
-        TLRPC.FileLocation photo = null;
-
-        if (user != null) {
-            name = ContactsController.formatName(user.first_name, user.last_name);
-            if (user.photo != null) {
-                photo = user.photo.photo_small;
-            }
-        } else {
-            name = chat.title;
-            if (chat.photo != null) {
-                photo = chat.photo.photo_small;
-            }
-        }
-        */
-
-        TLRPC.FileLocation photo = null;
-        shortcutIntent.putExtra("chatId", did);
-        MrChat mrChat = MrMailbox.getChat((int)did);
+        MrChat mrChat = MrMailbox.getChat(did);
         if( mrChat.getId() == 0 ) { return null; }
         String name = mrChat.getName();
-
 
         shortcutIntent.setAction("com.b44t.messenger.openchat" + did);
         shortcutIntent.addFlags(0x4000000);
@@ -650,70 +605,15 @@ public class AndroidUtilities {
         addIntent.putExtra(Intent.EXTRA_SHORTCUT_INTENT, shortcutIntent);
         addIntent.putExtra(Intent.EXTRA_SHORTCUT_NAME, name);
         addIntent.putExtra("duplicate", false);
-        if (!forDelete) {
-            Bitmap bitmap = null;
-            if (photo != null) {
-                try {
-                    File path = FileLoader.getPathToAttach(photo, true);
-                    bitmap = BitmapFactory.decodeFile(path.toString());
-                    if (bitmap != null) {
-                        int size = AndroidUtilities.dp(58);
-                        Bitmap result = Bitmap.createBitmap(size, size, Bitmap.Config.ARGB_8888);
-                        result.eraseColor(Color.TRANSPARENT);
-                        Canvas canvas = new Canvas(result);
-                        BitmapShader shader = new BitmapShader(bitmap, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
-                        if (roundPaint == null) {
-                            roundPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-                            bitmapRect = new RectF();
-                        }
-                        float scale = size / (float) bitmap.getWidth();
-                        canvas.save();
-                        canvas.scale(scale, scale);
-                        roundPaint.setShader(shader);
-                        bitmapRect.set(0, 0, bitmap.getWidth(), bitmap.getHeight());
-                        canvas.drawRoundRect(bitmapRect, bitmap.getWidth(), bitmap.getHeight(), roundPaint);
-                        canvas.restore();
-                        Drawable drawable = ApplicationLoader.applicationContext.getResources().getDrawable(R.drawable.book_logo);
-                        int w = AndroidUtilities.dp(15);
-                        int left = size - w - AndroidUtilities.dp(2);
-                        int top = size - w - AndroidUtilities.dp(2);
-                        drawable.setBounds(left, top, left + w, top + w);
-                        drawable.draw(canvas);
-                        try {
-                            canvas.setBitmap(null);
-                        } catch (Exception e) {
-                            //don't promt, this will crash on 2.x
-                        }
-                        bitmap = result;
-                    }
-                } catch (Throwable e) {
-                    FileLog.e("messenger", e);
-                }
-            }
-            if (bitmap != null) {
-                addIntent.putExtra(Intent.EXTRA_SHORTCUT_ICON, bitmap);
-            } else {
-                /*if (user != null) {
-                    if (user.bot) {
-                        addIntent.putExtra(Intent.EXTRA_SHORTCUT_ICON_RESOURCE, Intent.ShortcutIconResource.fromContext(ApplicationLoader.applicationContext, R.drawable.book_bot));
-                    } else {
-                        addIntent.putExtra(Intent.EXTRA_SHORTCUT_ICON_RESOURCE, Intent.ShortcutIconResource.fromContext(ApplicationLoader.applicationContext, R.drawable.book_user));
-                    }
-                } else if (chat != null) {
-                    if (ChatObject.isChannel(chat) && !chat.megagroup) {
-                        addIntent.putExtra(Intent.EXTRA_SHORTCUT_ICON_RESOURCE, Intent.ShortcutIconResource.fromContext(ApplicationLoader.applicationContext, R.drawable.book_channel));
-                    } else {*/
-                        addIntent.putExtra(Intent.EXTRA_SHORTCUT_ICON_RESOURCE, Intent.ShortcutIconResource.fromContext(ApplicationLoader.applicationContext, R.drawable.book_group));
-                /*}
-                }*/
-            }
+        if( bitmap != null ) {
+            addIntent.putExtra(Intent.EXTRA_SHORTCUT_ICON, bitmap);
         }
         return addIntent;
     }
 
-    public static void installShortcut(long did) {
+    public static void installShortcut(int did, Bitmap bitmap) {
         try {
-            Intent addIntent = createShortcutIntent(did, false);
+            Intent addIntent = createShortcutIntent(did, bitmap);
             addIntent.setAction("com.android.launcher.action.INSTALL_SHORTCUT");
             ApplicationLoader.applicationContext.sendBroadcast(addIntent);
         } catch (Exception e) {
@@ -721,9 +621,9 @@ public class AndroidUtilities {
         }
     }
 
-    public static void uninstallShortcut(long did) {
+    public static void uninstallShortcut(int did) {
         try {
-            Intent addIntent = createShortcutIntent(did, true);
+            Intent addIntent = createShortcutIntent(did, null);
             addIntent.setAction("com.android.launcher.action.UNINSTALL_SHORTCUT");
             ApplicationLoader.applicationContext.sendBroadcast(addIntent);
         } catch (Exception e) {

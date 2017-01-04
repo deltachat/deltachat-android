@@ -83,7 +83,7 @@
     <string name="ShareSendTo">Sende an...</string>
     <string name="TapHereGifs">Hier tippen um gespeicherte GIFs zu sehen</string>
     <string name="ClearRecentEmoji">Zuletzt benutzte Emoji leeren?</string>
-    <string name="AddShortcut">Widget hinzufügen</string>
+    <string name="AddShortcut">Auf Startbildschirm platzieren</string>
     <string name="ShortcutAdded">Widget zum Startbildschirm hinzugefügt</string>
     <!--notification-->
     <string name="NotificationNewMsgRcvd">Neue Nachricht erhalten</string>

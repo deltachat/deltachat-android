@@ -130,10 +130,10 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
     private AvatarUpdater avatarUpdater;
     private int[] sortedUserIds;
 
-    private final static int block_contact = 2;
-    private final static int delete_contact = 5;
-    private final static int invite_to_group = 9;
-    private final static int add_shortcut = 14;
+    private final static int ID_BLOCK_CONTACT = 2;
+    private final static int ID_DELETE_CONTACT = 5;
+    private final static int ID_INVITE_TO_GROUP = 9;
+    private final static int ID_ADD_SHORTCUT = 14;
 
     private int emptyRow = -1;
     private int userSectionRow = -1;
@@ -268,7 +268,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                 }
                 if (id == -1) {
                     finishFragment();
-                } else if (id == block_contact) {
+                } else if (id == ID_BLOCK_CONTACT) {
                     if( userBlocked() ) {
                         MrMailbox.blockContact(user_id, 0);
                         finishFragment(); /* got to the parent, this is important eg. when editing blocking in the BlockedUserActivitiy. Moreover, this saves us updating all the states in the profile */
@@ -286,7 +286,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                         builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
                         showDialog(builder.create());
                     }
-                } else if (id == delete_contact) {
+                } else if (id == ID_DELETE_CONTACT) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
                     builder.setMessage(LocaleController.getString("AreYouSureDeleteContact", R.string.AreYouSureDeleteContact));
                     builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), new DialogInterface.OnClickListener() {
@@ -302,7 +302,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                     });
                     builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
                     showDialog(builder.create());
-                } else if (id == invite_to_group) {
+                } else if (id == ID_INVITE_TO_GROUP) {
                     final TLRPC.User user = MessagesController.getInstance().getUser(user_id);
                     if (user == null) {
                         return;
@@ -327,14 +327,20 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                         }
                     });
                     presentFragment(fragment);
-                } else if (id == add_shortcut) {
+                } else if (id == ID_ADD_SHORTCUT) {
                     try {
-                        int install_chat_id = chat_id;
-                        if (install_chat_id == 0) {
-                            install_chat_id = MrMailbox.getChatIdByContactId(user_id);
-                        }
-                        AndroidUtilities.installShortcut(install_chat_id);
+                        // draw avatar into a bitmap
+                        int wh = avatarImage.imageReceiver.getImageWidth();
+                        Bitmap bitmap = Bitmap.createBitmap(wh, wh, Bitmap.Config.ARGB_8888);
+                        bitmap.eraseColor(Color.TRANSPARENT);
+                        Canvas canvas = new Canvas(bitmap);
+                        avatarImage.imageReceiver.draw(canvas);
+
+                        // add shortcut
+                        int install_chat_id = chat_id!=0? chat_id : MrMailbox.getChatIdByContactId(user_id);
+                        AndroidUtilities.installShortcut(install_chat_id, bitmap);
                         Toast.makeText(getParentActivity(), LocaleController.getString("ShortcutAdded", R.string.ShortcutAdded), Toast.LENGTH_LONG).show();
+
                     } catch (Exception e) {
                         FileLog.e("messenger", e);
                     }
@@ -1262,12 +1268,12 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
         ActionBarMenuItem item = menu.addItem(10, R.drawable.ic_ab_other);
 
         if( chat_id!=0 || MrMailbox.getChatIdByContactId(user_id)!=0 ) {
-            item.addSubItem(add_shortcut, LocaleController.getString("AddShortcut", R.string.AddShortcut), 0);
+            item.addSubItem(ID_ADD_SHORTCUT, LocaleController.getString("AddShortcut", R.string.AddShortcut), 0);
         }
 
         if (user_id != 0) {
-            item.addSubItem(block_contact, userBlocked()? LocaleController.getString("UnblockContact", R.string.UnblockContact) : LocaleController.getString("BlockContact", R.string.BlockContact), 0);
-            item.addSubItem(delete_contact, LocaleController.getString("DeleteContact", R.string.DeleteContact), 0);
+            item.addSubItem(ID_BLOCK_CONTACT, userBlocked()? LocaleController.getString("UnblockContact", R.string.UnblockContact) : LocaleController.getString("BlockContact", R.string.BlockContact), 0);
+            item.addSubItem(ID_DELETE_CONTACT, LocaleController.getString("DeleteContact", R.string.DeleteContact), 0);
         }
 
 

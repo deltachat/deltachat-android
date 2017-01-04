@@ -83,7 +83,7 @@
     <string name="ShareSendTo">Send to...</string>
     <string name="TapHereGifs">Tap here to access saved GIFs</string>
     <string name="ClearRecentEmoji">Clear recent emoji?</string>
-    <string name="AddShortcut">Add widget</string>
+    <string name="AddShortcut">Add widget to home screen</string>
     <string name="ShortcutAdded">Widget added to home screen</string>
     <!--notification-->
     <string name="NotificationNewMsgRcvd">New message received</string>

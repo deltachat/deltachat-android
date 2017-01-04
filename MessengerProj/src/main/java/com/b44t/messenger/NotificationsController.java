@@ -1301,6 +1301,7 @@ public class NotificationsController {
 
     @SuppressLint("InlinedApi")
     private void showExtraNotifications(NotificationCompat.Builder notificationBuilder, boolean notifyAboutLast) {
+        // TODO: support Android wear by calling this function above from showOrUpdateNotification
         if (Build.VERSION.SDK_INT < 18) {
             return;
         }
