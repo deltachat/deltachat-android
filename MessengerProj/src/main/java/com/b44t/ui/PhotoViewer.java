@@ -2466,9 +2466,9 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
             }
             MessageObject message = imagesArr.get(index);
             if (message.messageOwner instanceof TLRPC.TL_messageService) {
-                if (message.messageOwner.action instanceof TLRPC.TL_messageActionUserUpdatedPhoto) {
+                /*if (message.messageOwner.action instanceof TLRPC.TL_messageActionUserUpdatedPhoto) {
                     return message.messageOwner.action.newUserPhoto.photo_big;
-                } else {
+                } else*/ {
                     TLRPC.PhotoSize sizeFull = FileLoader.getClosestPhotoSizeWithSize(message.photoThumbs, AndroidUtilities.getPhotoSize());
                     if (sizeFull != null) {
                         size[0] = sizeFull.size;

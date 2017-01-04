@@ -223,22 +223,15 @@ public class TLRPC {
 		public Photo photo;
 		public int chat_id;
 		public int user_id;
-		public UserProfilePhoto newUserPhoto;
 	}
 
 	public static class TL_messageActionChatCreate extends MessageAction {
-	}
-
-	public static class TL_messageActionChatEditPhoto extends MessageAction {
 	}
 
 	public static class TL_messageActionChatAddUser extends MessageAction {
 	}
 
 	public static class TL_messageActionChatDeleteUser extends MessageAction {
-	}
-
-	public static class TL_messageActionUserUpdatedPhoto extends MessageAction {
 	}
 
 	public static class TL_messageActionChatDeletePhoto extends MessageAction {

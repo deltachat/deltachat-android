@@ -122,9 +122,9 @@ public class ChatActionCell extends BaseCell {
                 }
             }
             avatarDrawable.setInfoByName(null);
-            if (currentMessageObject.messageOwner.action instanceof TLRPC.TL_messageActionUserUpdatedPhoto) {
+            /*if (currentMessageObject.messageOwner.action instanceof TLRPC.TL_messageActionUserUpdatedPhoto) {
                 imageReceiver.setImage(currentMessageObject.messageOwner.action.newUserPhoto.photo_small, "50_50", avatarDrawable, null, false);
-            } else {
+            } else */ {
                 TLRPC.PhotoSize photo = FileLoader.getClosestPhotoSizeWithSize(currentMessageObject.photoThumbs, AndroidUtilities.dp(64));
                 if (photo != null) {
                     imageReceiver.setImage(photo.location, "50_50", avatarDrawable, null, false);
