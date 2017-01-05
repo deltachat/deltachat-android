@@ -51,7 +51,6 @@ public class NotificationCenter {
     public static final int openedChatChanged = totalEvents++;
     public static final int stopEncodingService = totalEvents++;
     public static final int mainUserInfoChanged = totalEvents++;
-    public static final int updateMessageMedia = totalEvents++;
     public static final int recentImagesDidLoaded = totalEvents++;
     public static final int replaceMessagesObjects = totalEvents++;
     public static final int didSetPasscode = totalEvents++;
@@ -61,12 +60,10 @@ public class NotificationCenter {
     public static final int userInfoDidLoaded = totalEvents++;
     public static final int chatSearchResultsAvailable = totalEvents++;
     public static final int musicDidLoaded = totalEvents++;
-    public static final int didUpdatedMessagesViews = totalEvents++;
     public static final int needReloadRecentDialogsSearch = totalEvents++;
     public static final int locationPermissionGranted = totalEvents++;
     public static final int wasUnableToFindCurrentLocation = totalEvents++;
     public static final int reloadHints = totalEvents++;
-    public static final int newDraftReceived = totalEvents++;
 
     public static final int httpFileDidLoaded = totalEvents++;
     public static final int httpFileDidFailedLoad = totalEvents++;

@@ -42,7 +42,6 @@ public class DialogsAdapter extends RecyclerView.Adapter {
     private long openedDialogId;
 
     private class Holder extends RecyclerView.ViewHolder {
-
         public Holder(View itemView) {
             super(itemView);
         }
