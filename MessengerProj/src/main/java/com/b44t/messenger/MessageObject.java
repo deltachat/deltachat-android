@@ -1147,6 +1147,13 @@ public class MessageObject {
         return null;
     }
 
+    public boolean isSelectable() {
+        if (type == 6 || type == 10 || type == 11) {
+            return false;
+        }
+        return true;
+    }
+
     public int getApproximateHeight() {
         if (type == 0) {
             int height = textHeight /*+ (messageOwner.media instanceof TLRPC.TL_messageMediaWebPage && messageOwner.media.webpage instanceof TLRPC.TL_webPage ? AndroidUtilities.dp(100) : 0)*/;

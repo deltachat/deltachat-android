@@ -205,7 +205,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
     private boolean allowContextBotPanelSecond = true;
     private AnimatorSet runningAnimation;
 
-    private MessageObject selectedObject;
     private MessageObject forwaringMessage;
     private boolean paused = true;
     private boolean wasPaused = false;
@@ -270,7 +269,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         @Override
         public boolean onItemClick(View view, int position) {
             if (!actionBar.isActionModeShowed()) {
-                createMenu(view, false);
+                handleClick(view, true);
                 return true;
             }
             return false;
@@ -284,7 +283,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 processRowSelect(view);
                 return;
             }
-            createMenu(view, true);
+            handleClick(view, false);
         }
     };
 
@@ -457,13 +456,12 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         // init chat messages, this function is called only once from onFragmentCreate()
         // should be called from the GUI thread only (as the original event was)
 
-        final int fnid = (Integer) Integer.MAX_VALUE;
+        final int fnid = Integer.MAX_VALUE;
         final int last_unread_date = 0;
         boolean wasUnread = false;
-        if (fnid != 0) {
-            first_unread_id = fnid;
-            unread_to_load = 0;
-        }
+
+        first_unread_id = fnid;
+        unread_to_load = 0;
 
         //int newRowsCount = 0;
 
@@ -2801,81 +2799,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         checkAndUpdateAvatar();
     }
 
-    private int getMessageType(MessageObject messageObject) {
-        if (messageObject == null) {
-            return -1;
-        }
-        {
-            if ( messageObject.getId() <= 0 && messageObject.isOut() ) {
-                if (messageObject.isSendError()) {
-                    if (!messageObject.isMediaEmpty()) {
-                        return 0;
-                    } else {
-                        return 20;
-                    }
-                } else {
-                    return -1;
-                }
-            } else {
-                if (messageObject.type == 6) {
-                    return -1;
-                } else if (messageObject.type == 10 || messageObject.type == 11) {
-                    if (messageObject.getId() == 0) {
-                        return -1;
-                    }
-                    return 1;
-                } else {
-                    if (messageObject.isVoice()) {
-                        return 2;
-                    } else if (messageObject.isSticker()) {
-                        TLRPC.InputStickerSet inputStickerSet = messageObject.getInputStickerSet();
-                        if (inputStickerSet instanceof TLRPC.TL_inputStickerSetID) {
-                            if (!StickersAdapter.isStickerPackInstalled(inputStickerSet.id)) {
-                                return 7;
-                            }
-                        } else if (inputStickerSet instanceof TLRPC.TL_inputStickerSetShortName) {
-                            if (!StickersAdapter.isStickerPackInstalled(inputStickerSet.short_name)) {
-                                return 7;
-                            }
-                        }
-                    } else if (messageObject.messageOwner.media instanceof TLRPC.TL_messageMediaPhoto || messageObject.getDocument() != null || messageObject.isMusic() || messageObject.isVideo()) {
-                        boolean canSave = false;
-                        if (messageObject.messageOwner.attachPath != null && messageObject.messageOwner.attachPath.length() != 0) {
-                            File f = new File(messageObject.messageOwner.attachPath);
-                            if (f.exists()) {
-                                canSave = true;
-                            }
-                        }
-                        if (!canSave) {
-                            File f = FileLoader.getPathToMessage(messageObject.messageOwner);
-                            if (f.exists()) {
-                                canSave = true;
-                            }
-                        }
-                        if (canSave) {
-                            if (messageObject.getDocument() != null) {
-                                String mime = messageObject.getDocument().mime_type;
-                                if (mime != null) {
-                                    if (mime.endsWith("/xml")) {
-                                        return 5;
-                                    } else if (mime.endsWith("/png") || mime.endsWith("/jpg") || mime.endsWith("/jpeg")) {
-                                        return 6;
-                                    }
-                                }
-                            }
-                            return 4;
-                        }
-                    } else if (messageObject.type == 12) {
-                        return 8;
-                    } else if (messageObject.isMediaEmpty()) {
-                        return 3;
-                    }
-                    return 2;
-                }
-            }
-        }
-    }
-
     private void addToSelectedMessages(MessageObject messageObject) {
         int index = messageObject.getDialogId() == dialog_id ? 0 : 1;
         if (selectedMessagesIds[index].containsKey(messageObject.getId())) {
@@ -2940,9 +2863,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
             message = ((ChatActionCell) view).getMessageObject();
         }
 
-        int type = getMessageType(message);
-
-        if (type < 2 || type == 20) {
+        if (message==null || !message.isSelectable()) {
             return;
         }
         addToSelectedMessages(message);
@@ -4046,155 +3967,26 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         showDialog(builder.create());
     }
 
-    private void createMenu(View v, boolean single) { // single=false: long click
-        boolean mr_no_menu = false;
-
-        if (actionBar.isActionModeShowed()) {
-            return;
-        }
-
+    private void handleClick(View v, boolean longClick)
+    {
         MessageObject message = null;
         if (v instanceof ChatMessageCell) {
             message = ((ChatMessageCell) v).getMessageObject();
         } else if (v instanceof ChatActionCell) {
             message = ((ChatActionCell) v).getMessageObject();
         }
-        if (message == null) {
+
+        if( !longClick || message == null || !message.isSelectable() || actionBar.isActionModeShowed() ) {
             return;
         }
-        final int type = getMessageType(message); // 3=normal text message
-        /*if (single && message.messageOwner.action instanceof TLRPC.TL_messageActionPinMessage) {
-            scrollToMessageId(message.messageOwner.reply_to_msg_id, 0, true, 0);
-            return;
-        }*/
 
-        selectedObject = null;
         forwaringMessage = null;
         for (int a = 1; a >= 0; a--) {
             selectedMessagesCanCopyIds[a].clear();
             selectedMessagesIds[a].clear();
         }
         actionBar.hideActionMode();
-
-        if (single || type < 2 || type == 20) {
-            if (type >= 0) {
-                selectedObject = message;
-                if (getParentActivity() == null) {
-                    return;
-                }
-                AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
-
-                ArrayList<CharSequence> items = new ArrayList<>();
-                final ArrayList<Integer> options = new ArrayList<>();
-
-                if (type == 0) {
-                    items.add(LocaleController.getString("Retry", R.string.Retry));
-                    options.add(0);
-                    items.add(LocaleController.getString("Delete", R.string.Delete));
-                    options.add(1);
-                } else if (type == 1) {
-                    if (currentChat != null ) {
-                        items.add(LocaleController.getString("Reply", R.string.Reply));
-                        options.add(8);
-
-                        items.add(LocaleController.getString("Delete", R.string.Delete));
-                        options.add(1);
-                    } else {
-                        items.add(LocaleController.getString("Delete", R.string.Delete));
-                        options.add(1);
-                    }
-                } else if (type == 20) {
-                    items.add(LocaleController.getString("Retry", R.string.Retry));
-                    options.add(0);
-                    items.add(LocaleController.getString("Copy", R.string.Copy));
-                    options.add(3);
-                    items.add(LocaleController.getString("Delete", R.string.Delete));
-                    options.add(1);
-                } else {
-                    {
-                        items.add(LocaleController.getString("Reply", R.string.Reply));
-                        options.add(8);
-
-                        if (selectedObject.type == 0 || selectedObject.caption != null) {
-                            items.add(LocaleController.getString("Copy", R.string.Copy));
-                            options.add(3);
-                        }
-                        if (type == 3) {
-                            ; // save to GIFs
-                        } else if (type == 4) {
-                            if (selectedObject.isVideo()) {
-                                mr_no_menu = true; // no menu for videos, use the long click
-                            } else if (selectedObject.isMusic()) {
-                                mr_no_menu = true; // no menu for audio, use the long click
-                            } else if (selectedObject.getDocument() != null) {
-                                if (MessageObject.isNewGifDocument(selectedObject.getDocument())) {
-                                    items.add(LocaleController.getString("SaveToGIFs", R.string.SaveToGIFs));
-                                    options.add(11);
-                                }
-                                items.add(LocaleController.getString("SaveToDownloads", R.string.SaveToDownloads));
-                                options.add(10);
-                                items.add(LocaleController.getString("ShareFile", R.string.ShareFile));
-                                options.add(6);
-                            } else {
-                                mr_no_menu = true; // no menu for images, use the long click
-                            }
-                        } else if (type == 5) {
-                            items.add(LocaleController.getString("ApplyLocalizationFile", R.string.ApplyLocalizationFile));
-                            options.add(5);
-                            items.add(LocaleController.getString("ShareFile", R.string.ShareFile));
-                            options.add(6);
-                        } else if (type == 6) {
-                            items.add(LocaleController.getString("SaveToGallery", R.string.SaveToGallery));
-                            options.add(7);
-                            items.add(LocaleController.getString("SaveToDownloads", R.string.SaveToDownloads));
-                            options.add(10);
-                            items.add(LocaleController.getString("ShareFile", R.string.ShareFile));
-                            options.add(6);
-                        } else if (type == 7) {
-                            items.add(LocaleController.getString("AddToStickers", R.string.AddToStickers));
-                            options.add(9);
-                        } else if (type == 8) {
-                            // type=8=contact (?)
-                        }
-                        items.add(LocaleController.getString("Forward", R.string.Forward));
-                        options.add(2);
-
-                        items.add(LocaleController.getString("Delete", R.string.Delete));
-                        options.add(1);
-
-                    }
-
-                    if( type == 3 || mr_no_menu ) {
-                        // EDIT BY MR: type=3 is a normal message; we do not want a menu on a single click here:
-                        // this distubs and the approach does not work for images (they're enlarged on single clicks).
-                        // So, it is better to force learning the user to do a long click, which works for all message types equally.
-                        options.clear();
-                    }
-                }
-
-                if (options.isEmpty()) {
-                    return;
-                }
-                final CharSequence[] finalItems = items.toArray(new CharSequence[items.size()]);
-                builder.setItems(finalItems, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        if (selectedObject == null || i < 0 || i >= options.size()) {
-                            return;
-                        }
-                        processSelectedOption(options.get(i));
-                    }
-                });
-
-                builder.setTitle(LocaleController.getString("Message", R.string.Message));
-                showDialog(builder.create());
-            }
-            return;
-        }
-
-        // handle long clicks
-        final ActionBarMenu actionMode = actionBar.createActionMode();
-
+        actionBar.createActionMode();
         actionBar.showActionMode();
 
         AnimatorSet animatorSet = new AnimatorSet();
@@ -4231,171 +4023,12 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         return str;
     }
 
-    private void processSelectedOption(int option) {
-        if (selectedObject == null) {
-            return;
-        }
-        switch (option) {
-            case 0: {
-                /*
-                if (SendMessagesHelper.getInstance().retrySendMessage(selectedObject, false)) {
-                    moveScrollToLastMessage();
-                }
-                */
-                break;
-            }
-            case 1: {
-                // delete by context menu; this is not supported by us, the user shall use the long-click
-                break;
-            }
-            case 2: {
-                forwaringMessage = selectedObject;
-                Bundle args = new Bundle();
-                args.putBoolean("onlySelect", true);
-                args.putInt("dialogsType", 1);
-                DialogsActivity fragment = new DialogsActivity(args);
-                fragment.setDelegate(this);
-                presentFragment(fragment);
-                break;
-            }
-            case 3: {
-                AndroidUtilities.addToClipboard(getMessageContent(selectedObject, 0, false));
-                break;
-            }
-            case 4: {
-                String path = selectedObject.messageOwner.attachPath;
-                if (path != null && path.length() > 0) {
-                    File temp = new File(path);
-                    if (!temp.exists()) {
-                        path = null;
-                    }
-                }
-                if (path == null || path.length() == 0) {
-                    path = FileLoader.getPathToMessage(selectedObject.messageOwner).toString();
-                }
-                if (selectedObject.type == 3 || selectedObject.type == 1) {
-                    if (Build.VERSION.SDK_INT >= 23 && getParentActivity().checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-                        getParentActivity().requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 4);
-                        selectedObject = null;
-                        return;
-                    }
-                    MediaController.saveFile(path, getParentActivity(), selectedObject.type == 3 ? 1 : 0, null, null);
-                }
-                break;
-            }
-            case 5: {
-                File locFile = null;
-                if (selectedObject.messageOwner.attachPath != null && selectedObject.messageOwner.attachPath.length() != 0) {
-                    File f = new File(selectedObject.messageOwner.attachPath);
-                    if (f.exists()) {
-                        locFile = f;
-                    }
-                }
-                if (locFile == null) {
-                    File f = FileLoader.getPathToMessage(selectedObject.messageOwner);
-                    if (f.exists()) {
-                        locFile = f;
-                    }
-                }
-                if (locFile != null) {
-                    if (LocaleController.getInstance().applyLanguageFile(locFile)) {
-                        MrMailbox.initStockStrings();
-                        presentFragment(new LanguageSelectActivity());
-                    } else {
-                        if (getParentActivity() == null) {
-                            selectedObject = null;
-                            return;
-                        }
-                        AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
-                        builder.setMessage(LocaleController.getString("IncorrectLocalization", R.string.IncorrectLocalization));
-                        builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), null);
-                        showDialog(builder.create());
-                    }
-                }
-                break;
-            }
-            case 6: {
-                String path = selectedObject.messageOwner.attachPath;
-                if (path != null && path.length() > 0) {
-                    File temp = new File(path);
-                    if (!temp.exists()) {
-                        path = null;
-                    }
-                }
-                if (path == null || path.length() == 0) {
-                    path = FileLoader.getPathToMessage(selectedObject.messageOwner).toString();
-                }
-                Intent intent = new Intent(Intent.ACTION_SEND);
-                intent.setType(selectedObject.getDocument().mime_type);
-                intent.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(new File(path)));
-                getParentActivity().startActivityForResult(Intent.createChooser(intent, LocaleController.getString("ShareFile", R.string.ShareFile)), 500);
-                break;
-            }
-            case 7: {
-                String path = selectedObject.messageOwner.attachPath;
-                if (path != null && path.length() > 0) {
-                    File temp = new File(path);
-                    if (!temp.exists()) {
-                        path = null;
-                    }
-                }
-                if (path == null || path.length() == 0) {
-                    path = FileLoader.getPathToMessage(selectedObject.messageOwner).toString();
-                }
-                if (Build.VERSION.SDK_INT >= 23 && getParentActivity().checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-                    getParentActivity().requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 4);
-                    selectedObject = null;
-                    return;
-                }
-                MediaController.saveFile(path, getParentActivity(), 0, null, null);
-                break;
-            }
-            case 8: {
-                break;
-            }
-            case 9: {
-                showDialog(new StickersAlert(getParentActivity(), selectedObject.getInputStickerSet(), null, bottomOverlayChat.getVisibility() != View.VISIBLE ? chatActivityEnterView : null));
-                break;
-            }
-            case 10: {
-                if (Build.VERSION.SDK_INT >= 23 && getParentActivity().checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-                    getParentActivity().requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 4);
-                    selectedObject = null;
-                    return;
-                }
-                String fileName = FileLoader.getDocumentFileName(selectedObject.getDocument());
-                if (fileName == null || fileName.length() == 0) {
-                    fileName = selectedObject.getFileName();
-                }
-                String path = selectedObject.messageOwner.attachPath;
-                if (path != null && path.length() > 0) {
-                    File temp = new File(path);
-                    if (!temp.exists()) {
-                        path = null;
-                    }
-                }
-                if (path == null || path.length() == 0) {
-                    path = FileLoader.getPathToMessage(selectedObject.messageOwner).toString();
-                }
-                MediaController.saveFile(path, getParentActivity(), selectedObject.isMusic() ? 3 : 2, fileName, selectedObject.getDocument() != null ? selectedObject.getDocument().mime_type : "");
-                break;
-            }
-            case 11: {
-                MediaController.SearchImage searchImage = MessagesController.getInstance().saveGif(selectedObject.getDocument());
-                showGifHint();
-                chatActivityEnterView.addRecentGif(searchImage);
-                break;
-            }
-        }
-        selectedObject = null;
-    }
-
     @Override
     public void didSelectDialog(DialogsActivity activity, long did, boolean param) {
         if (dialog_id != 0 && (forwaringMessage != null || !selectedMessagesIds[0].isEmpty() || !selectedMessagesIds[1].isEmpty())) {
-            ArrayList<MessageObject> fmessages = new ArrayList<>();
+            //ArrayList<MessageObject> fmessages = new ArrayList<>();
             if (forwaringMessage != null) {
-                fmessages.add(forwaringMessage);
+                //fmessages.add(forwaringMessage);
                 forwaringMessage = null;
             } else {
                 for (int a = 1; a >= 0; a--) {
@@ -4405,7 +4038,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                         Integer id = ids.get(b);
                         MessageObject message = selectedMessagesIds[a].get(id);
                         if (message != null && id > 0) {
-                            fmessages.add(message);
+                            //fmessages.add(message);
                         }
                     }
                     selectedMessagesCanCopyIds[a].clear();
@@ -4774,7 +4407,12 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
 
                     @Override
                     public void didPressedOther(ChatMessageCell cell) {
-                        createMenu(cell, true);
+                        handleClick(cell, false);
+                    }
+
+                    @Override
+                    public void didLongPressed(ChatMessageCell cell) {
+                        handleClick(cell, true);
                     }
 
                     @Override
@@ -4800,11 +4438,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                         if (message.messageOwner.send_state != 0) {
                             SendMessagesHelper.getInstance().cancelSendingMessage(message);
                         }
-                    }
-
-                    @Override
-                    public void didLongPressed(ChatMessageCell cell) {
-                        createMenu(cell, false);
                     }
 
                     @Override
@@ -4886,12 +4519,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     @Override
                     public void didPressedImage(ChatMessageCell cell) {
                         MessageObject message = cell.getMessageObject();
-                        /*if (message.isSendError()) { -- for our Messenger, sending is completely asynchrounous - as soon as there is a GUI object, it can be accessed
-                            createMenu(cell, false);
-                            return;
-                        } else if (message.isSending()) {
-                            return;
-                        }*/
                         if (message.type == 13) {
                             showDialog(new StickersAlert(getParentActivity(), message.getInputStickerSet(), null, bottomOverlayChat.getVisibility() != View.VISIBLE ? chatActivityEnterView : null));
                         } else if (Build.VERSION.SDK_INT >= 16 && message.isVideo() || message.type == 1 || message.type == 0 && !message.isWebpageDocument() || message.isGif()) {
@@ -4955,7 +4582,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
 
                     @Override
                     public void didLongPressed(ChatActionCell cell) {
-                        createMenu(cell, false);
                     }
 
                     @Override
