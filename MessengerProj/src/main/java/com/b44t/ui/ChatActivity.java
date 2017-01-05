@@ -147,7 +147,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
     // misc
     protected TLRPC.Chat currentChat;
     public MrChat m_mrChat = new MrChat(0);
-    private ArrayList<ChatMessageCell> chatMessageCellsCache = new ArrayList<>();
+    //private ArrayList<ChatMessageCell> chatMessageCellsCache = new ArrayList<>();
     private FrameLayout bottomOverlay;
     protected ChatActivityEnterView chatActivityEnterView;
     private ActionBarMenuItem menuItem;
@@ -760,11 +760,11 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
     @Override
     public View createView(Context context) {
 
-        if (chatMessageCellsCache.isEmpty()) {
+        /*if (chatMessageCellsCache.isEmpty()) {
             for (int a = 0; a < 8; a++) {
                 chatMessageCellsCache.add(new ChatMessageCell(context));
             }
-        }
+        }*/
         for (int a = 1; a >= 0; a--) {
             selectedMessagesIds[a].clear();
             selectedMessagesCanCopyIds[a].clear();
@@ -4729,10 +4729,10 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             View view = null;
             if (viewType == ROWTYPE_MESSAGE_CELL) {
-                if (!chatMessageCellsCache.isEmpty()) {
+                /*if (!chatMessageCellsCache.isEmpty()) {
                     view = chatMessageCellsCache.get(0);
                     chatMessageCellsCache.remove(0);
-                } else {
+                } else */ {
                     view = new ChatMessageCell(mContext);
                 }
                 ChatMessageCell chatMessageCell = (ChatMessageCell) view;
