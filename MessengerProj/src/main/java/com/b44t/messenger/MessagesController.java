@@ -42,9 +42,6 @@ public class MessagesController implements NotificationCenter.NotificationCenter
     public HashMap<Long, MessageObject> dialogMessagesByRandomIds = new HashMap<>();
     public HashMap<Integer, MessageObject> dialogMessagesByIds = new HashMap<>();
     public HashMap<Long, CharSequence> printingStrings = new HashMap<>();
-    public ConcurrentHashMap<Integer, Integer> onlinePrivacy = new ConcurrentHashMap<>(20, 1.0f, 2);
-
-    private HashMap<String, ArrayList<MessageObject>> reloadingWebpages = new HashMap<>();
 
     public int secretWebpagePreview = 2;
 

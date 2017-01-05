@@ -343,7 +343,7 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
     private boolean keyboardVisible;
     private int emojiPadding;
     private boolean sendByEnter;
-    private long lastTypingTimeSend;
+    //private long lastTypingTimeSend;
     private String lastTimeString;
     private float startedDraggingX = -1;
     private float distCanMove = AndroidUtilities.dp(80);
@@ -632,7 +632,6 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
                     return;
                 }
                 checkSendButton(true);
-                CharSequence message = AndroidUtilities.getTrimmedString(charSequence.toString());
                 if (delegate != null) {
                     if (!ignoreTextChange) {
                         delegate.onTextChanged(charSequence, before > count + 1 || (count - before) > 2);
@@ -641,20 +640,15 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
                 if (innerTextChange != 2 && before != count && (count - before) > 1) {
                     processChange = true;
                 }
-                if (/*editingMessageObject == null &&*/ !canWriteToChannel && message.length() != 0 && lastTypingTimeSend < System.currentTimeMillis() - 5000 && !ignoreTextChange) {
-                    int currentTime = ConnectionsManager.getInstance().getCurrentTime();
-                    TLRPC.User currentUser = null;
-                    if ((int) dialog_id > 0) {
-                        currentUser = MessagesController.getInstance().getUser((int) dialog_id);
-                    }
-                    if (currentUser != null && (currentUser.id == UserConfig.getClientUserId() || currentUser.status != null && currentUser.status.expires_ < currentTime && !MessagesController.getInstance().onlinePrivacy.containsKey(currentUser.id))) {
-                        return;
-                    }
+                /*
+                CharSequence message = AndroidUtilities.getTrimmedString(charSequence.toString());
+                if ( message.length() != 0 && lastTypingTimeSend < System.currentTimeMillis() - 5000 && !ignoreTextChange) {
                     lastTypingTimeSend = System.currentTimeMillis();
                     if (delegate != null) {
                         delegate.needSendTyping();
                     }
                 }
+                */
             }
 
             @Override
@@ -805,18 +799,18 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
                             return false;
                         }
 
-                        String action;
+                        /*String action;
                         TLRPC.Chat currentChat;
                         if ((int) dialog_id < 0) {
                             currentChat = MessagesController.getInstance().getChat(-(int) dialog_id);
-                            /*if (currentChat != null && currentChat.participants_count > MessagesController.getInstance().groupBigSize) {
+                            if (currentChat != null && currentChat.participants_count > MessagesController.getInstance().groupBigSize) {
                                 action = "bigchat_upload_audio";
-                            } else*/ {
+                            } else {
                                 action = "chat_upload_audio";
                             }
                         } else {
                             action = "pm_upload_audio";
-                        }
+                        }*/
                     }
                     startedDraggingX = -1;
                     MediaController.getInstance().startRecording(dialog_id, replyingMessageObject);
@@ -1241,7 +1235,7 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
         CharSequence message = messageEditText.getText();
         if (processSendingText(message)) {
             messageEditText.setText("");
-            lastTypingTimeSend = 0;
+            //lastTypingTimeSend = 0;
             if (delegate != null) {
                 delegate.onMessageSend(message);
             }
