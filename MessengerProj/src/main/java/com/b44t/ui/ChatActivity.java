@@ -147,7 +147,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
     // misc
     protected TLRPC.Chat currentChat;
     public MrChat m_mrChat = new MrChat(0);
-    //private ArrayList<ChatMessageCell> chatMessageCellsCache = new ArrayList<>();
     private FrameLayout bottomOverlay;
     protected ChatActivityEnterView chatActivityEnterView;
     private ActionBarMenuItem menuItem;
@@ -182,8 +181,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
     private AnimatorSet mentionListAnimation;
     private ChatAttachAlert chatAttachAlert;
     private PlayerView playerView;
-    private TextView gifHintTextView;
-    private View emojiButtonRed;
     private TextView alertTextView;
     private FrameLayout searchContainer;
     private ImageView searchUpButton;
@@ -202,7 +199,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
     private boolean openSearchKeyboard;
 
     private boolean allowStickersPanel;
-    private boolean allowContextBotPanelSecond = true;
     private AnimatorSet runningAnimation;
 
     private MessageObject forwaringMessage;
@@ -1199,8 +1195,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                         childTop -= inputFieldHeight / 2;
                     } else if (chatActivityEnterView.isPopupView(child)) {
                         childTop = chatActivityEnterView.getBottom();
-                    } else if (child == gifHintTextView) {
-                        childTop -= inputFieldHeight;
                     } else if (child == chatListView ) {
                         if (chatActivityEnterView.isTopViewVisible()) {
                             childTop -= AndroidUtilities.dp(48);
@@ -1903,10 +1897,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
 
             @Override
             public void onStickersTab(boolean opened) {
-                if (emojiButtonRed != null) {
-                    emojiButtonRed.setVisibility(View.GONE);
-                }
-                allowContextBotPanelSecond = !opened;
             }
         });
 
@@ -2016,8 +2006,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
 
         chatAdapter.updateRows();
         chatListView.setEmptyView(emptyViewContainer);
-
-        //chatActivityEnterView.setButtons(userBlocked ? null : botButtons);
 
         if (!AndroidUtilities.isTablet() || AndroidUtilities.isSmallTablet()) {
             contentView.addView(playerView = new PlayerView(context, this), LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, 39, Gravity.TOP | Gravity.LEFT, 0, -36, 0, 0));
@@ -2193,77 +2181,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 chatActivityEnterView.setFieldText("");
             }
         });
-    }
-
-    private void showGifHint() {
-        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("mainconfig", Activity.MODE_PRIVATE);
-        if (preferences.getBoolean("gifhint", false)) {
-            return;
-        }
-        preferences.edit().putBoolean("gifhint", true).commit();
-
-        if (getParentActivity() == null || fragmentView == null || gifHintTextView != null) {
-            return;
-        }
-        if (!allowContextBotPanelSecond) {
-            if (chatActivityEnterView != null) {
-                chatActivityEnterView.setOpenGifsTabFirst();
-            }
-            return;
-        }
-        SizeNotifierFrameLayout frameLayout = (SizeNotifierFrameLayout) fragmentView;
-        int index = frameLayout.indexOfChild(chatActivityEnterView);
-        if (index == -1) {
-            return;
-        }
-        chatActivityEnterView.setOpenGifsTabFirst();
-        emojiButtonRed = new View(getParentActivity());
-        emojiButtonRed.setBackgroundResource(R.drawable.redcircle);
-        frameLayout.addView(emojiButtonRed, index + 1, LayoutHelper.createFrame(10, 10, Gravity.BOTTOM | Gravity.LEFT, 30, 0, 0, 27));
-
-        gifHintTextView = new TextView(getParentActivity());
-        gifHintTextView.setBackgroundResource(R.drawable.tooltip);
-        gifHintTextView.setTextColor(Theme.CHAT_GIF_HINT_TEXT_COLOR);
-        gifHintTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
-        gifHintTextView.setPadding(AndroidUtilities.dp(10), 0, AndroidUtilities.dp(10), 0);
-        gifHintTextView.setText(LocaleController.getString("TapHereGifs", R.string.TapHereGifs));
-        gifHintTextView.setGravity(Gravity.CENTER_VERTICAL);
-        frameLayout.addView(gifHintTextView, index + 1, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, 32, Gravity.LEFT | Gravity.BOTTOM, 5, 0, 0, 3));
-
-        AnimatorSet AnimatorSet = new AnimatorSet();
-        AnimatorSet.playTogether(
-                ObjectAnimator.ofFloat(gifHintTextView, "alpha", 0.0f, 1.0f),
-                ObjectAnimator.ofFloat(emojiButtonRed, "alpha", 0.0f, 1.0f)
-        );
-        AnimatorSet.addListener(new AnimatorListenerAdapterProxy() {
-            @Override
-            public void onAnimationEnd(Animator animation) {
-                AndroidUtilities.runOnUIThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        if (gifHintTextView == null) {
-                            return;
-                        }
-                        AnimatorSet AnimatorSet = new AnimatorSet();
-                        AnimatorSet.playTogether(
-                                ObjectAnimator.ofFloat(gifHintTextView, "alpha", 0.0f)
-                        );
-                        AnimatorSet.addListener(new AnimatorListenerAdapterProxy() {
-                            @Override
-                            public void onAnimationEnd(Animator animation) {
-                                if (gifHintTextView != null) {
-                                    gifHintTextView.setVisibility(View.GONE);
-                                }
-                            }
-                        });
-                        AnimatorSet.setDuration(300);
-                        AnimatorSet.start();
-                    }
-                }, 2000);
-            }
-        });
-        AnimatorSet.setDuration(300);
-        AnimatorSet.start();
     }
 
     private void checkScrollForLoad(boolean scroll) {
