@@ -647,7 +647,7 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
                     if ((int) dialog_id > 0) {
                         currentUser = MessagesController.getInstance().getUser((int) dialog_id);
                     }
-                    if (currentUser != null && (currentUser.id == UserConfig.getClientUserId() || currentUser.status != null && currentUser.status.expires < currentTime && !MessagesController.getInstance().onlinePrivacy.containsKey(currentUser.id))) {
+                    if (currentUser != null && (currentUser.id == UserConfig.getClientUserId() || currentUser.status != null && currentUser.status.expires_ < currentTime && !MessagesController.getInstance().onlinePrivacy.containsKey(currentUser.id))) {
                         return;
                     }
                     lastTypingTimeSend = System.currentTimeMillis();
@@ -1932,15 +1932,6 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
             AndroidUtilities.cancelRunOnUIThread(openKeyboardRunnable);
             AndroidUtilities.runOnUIThread(openKeyboardRunnable, 100);
         }
-    }
-
-
-    public boolean isEditingMessage() {
-        return false;
-    }
-
-    public boolean isEditingCaption() {
-        return false;
     }
 
     public boolean hasAudioToSend() {

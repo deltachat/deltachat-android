@@ -69,6 +69,7 @@ import android.widget.Toast;
 
 import com.b44t.messenger.AndroidUtilities;
 import com.b44t.messenger.ImageLoader;
+import com.b44t.messenger.MrChat;
 import com.b44t.messenger.MrContact;
 import com.b44t.messenger.MrMailbox;
 import com.b44t.messenger.exoplayer.AspectRatioFrameLayout;
@@ -2628,7 +2629,7 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
             cropItem.setVisibility(obj instanceof MediaController.PhotoEntry || obj instanceof MediaController.SearchImage && ((MediaController.SearchImage) obj).type == 0 ? View.VISIBLE : View.GONE);
             if (parentChatActivity != null /*&& (parentChatActivity.currentEncryptedChat == null || AndroidUtilities.getPeerLayerVersion(parentChatActivity.currentEncryptedChat.layer) >= 46)*/) {
                 mentionsAdapter.setChatInfo(parentChatActivity.info);
-                mentionsAdapter.setNeedUsernames(parentChatActivity.currentChat != null);
+                mentionsAdapter.setNeedUsernames(parentChatActivity.m_mrChat.getType()== MrChat.MR_CHAT_GROUP);
                 //captionItem.setVisibility(cropItem.getVisibility());
                 //captionEditText.setVisibility(cropItem.getVisibility());
                 //needCaptionLayout = captionItem.getVisibility() == View.VISIBLE;

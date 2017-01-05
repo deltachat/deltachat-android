@@ -286,15 +286,7 @@ public class ProfileSearchCell extends BaseCell {
             if (subLabel != null) {
                 onlineString = subLabel;
             } else if (user != null) {
-                /*if (user.bot) {
-                    onlineString = LocaleController.getString("Bot", R.string.Bot);
-                } else*/ {
-                    onlineString = LocaleController.formatUserStatus(user);
-                    if (user != null && (user.id == UserConfig.getClientUserId() || user.status != null && user.status.expires > ConnectionsManager.getInstance().getCurrentTime())) {
-                        currentOnlinePaint = onlinePaint;
-                        onlineString = LocaleController.getString("Online", R.string.Online);
-                    }
-                }
+                onlineString = "ErrOnline";
             }
 
             CharSequence onlineStringFinal = TextUtils.ellipsize(onlineString, currentOnlinePaint, onlineWidth - AndroidUtilities.dp(12), TextUtils.TruncateAt.END);
@@ -385,9 +377,6 @@ public class ProfileSearchCell extends BaseCell {
             }
             if (!continueUpdate && (mask & MessagesController.UPDATE_MASK_STATUS) != 0 && user != null) {
                 int newStatus = 0;
-                if (user.status != null) {
-                    newStatus = user.status.expires;
-                }
                 if (newStatus != lastStatus) {
                     continueUpdate = true;
                 }
@@ -416,11 +405,7 @@ public class ProfileSearchCell extends BaseCell {
         }
 
         if (user != null) {
-            if (user.status != null) {
-                lastStatus = user.status.expires;
-            } else {
-                lastStatus = 0;
-            }
+            lastStatus = 0;
             lastName = user.first_name + user.last_name;
         } else if (chat != null) {
             lastName = chat.title;

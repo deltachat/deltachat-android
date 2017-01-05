@@ -205,7 +205,6 @@ public class TLRPC {
 		public String username;
         public String phone;
 		public UserProfilePhoto photo;
-		public UserStatus status;
         public int flags;
 		public boolean self;
 		public boolean contact;
@@ -312,25 +311,6 @@ public class TLRPC {
 	}
 
 	public static class TL_inputStickerSetEmpty extends InputStickerSet {
-	}
-
-	public static class TL_inputStickerSetID extends InputStickerSet {
-	}
-
-	public static class TL_inputStickerSetShortName extends InputStickerSet {
-	}
-
-	public static class UserStatus extends TLObject {
-		public int expires;
-	}
-
-	public static class TL_userStatusLastWeek extends UserStatus {
-	}
-
-	public static class TL_userStatusLastMonth extends UserStatus {
-    }
-
-	public static class TL_userStatusRecently extends UserStatus {
 	}
 
 	public static class InputEncryptedFile extends TLObject {
