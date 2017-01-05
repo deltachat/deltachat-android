@@ -61,7 +61,7 @@ public class MessageObject {
     public CharSequence messageText;
     public CharSequence caption;
     public MessageObject replyMessageObject;
-    public int type = 1000; // ?
+    public int type = 1000; // 13: sticker
     public int contentType; // one of ChatActivity.ROWTYPE_MESSAGE_CELL, .ROWTYPE_ACTION_CELL or .ROWTYPE_UNREAD_CELL
     public String dateKey;
     public float audioProgress;

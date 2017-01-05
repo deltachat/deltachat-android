@@ -97,7 +97,6 @@ import com.b44t.ui.ActionBar.BackDrawable;
 import com.b44t.ui.ActionBar.BottomSheet;
 import com.b44t.ui.ActionBar.SimpleTextView;
 import com.b44t.ui.Adapters.MentionsAdapter;
-import com.b44t.ui.Adapters.StickersAdapter;
 import com.b44t.messenger.AnimatorListenerAdapterProxy;
 import com.b44t.ui.Cells.ChatActionCell;
 import com.b44t.ui.ActionBar.ActionBar;
@@ -117,7 +116,6 @@ import com.b44t.ui.Components.NumberTextView;
 import com.b44t.ui.Components.RecyclerListView;
 import com.b44t.ui.Components.Size;
 import com.b44t.ui.Components.SizeNotifierFrameLayout;
-import com.b44t.ui.Components.StickersAlert;
 import com.b44t.ui.ActionBar.Theme;
 import com.b44t.ui.Components.URLSpanNoUnderline;
 import com.b44t.ui.Components.URLSpanReplacement;
@@ -163,11 +161,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
     private NumberTextView selectedMessagesCountTextView;
     private SimpleTextView actionModeTextView;
     private SimpleTextView actionModeSubTextView;
-    private RecyclerListView stickersListView;
-    private RecyclerListView.OnItemClickListener stickersOnItemClickListener;
     private RecyclerListView.OnItemClickListener mentionsOnItemClickListener;
-    private StickersAdapter stickersAdapter;
-    private FrameLayout stickersPanel;
     private TextView muteMenuEntry;
     private boolean m_canMute;
     private FrameLayout pagedownButton;
@@ -198,7 +192,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
 
     private boolean openSearchKeyboard;
 
-    private boolean allowStickersPanel;
     private AnimatorSet runningAnimation;
 
     private MessageObject forwaringMessage;
@@ -735,9 +728,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         }
         */
         AndroidUtilities.removeAdjustResize(getParentActivity(), classGuid);
-        if (stickersAdapter != null) {
-            stickersAdapter.onDestroy();
-        }
+
         if (chatAttachAlert != null) {
             chatAttachAlert.onDestroy();
         }
@@ -1446,8 +1437,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     if (!mentionListViewIsScrolling && mentionListViewScrollOffsetY != 0 && event.getY() < mentionListViewScrollOffsetY) {
                         return false;
                     }
-                    boolean result = StickerPreviewViewer.getInstance().onInterceptTouchEvent(event, mentionListView, 0);
-                    return super.onInterceptTouchEvent(event) || result;
+                    return super.onInterceptTouchEvent(event);
                 }
 
                 @Override
@@ -1500,7 +1490,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
             mentionListView.setOnTouchListener(new View.OnTouchListener() {
                 @Override
                 public boolean onTouch(View v, MotionEvent event) {
-                    return StickerPreviewViewer.getInstance().onTouch(event, mentionListView, 0, mentionsOnItemClickListener);
+                    return false;
                 }
             });
             mentionListView.setTag(2);
@@ -1618,34 +1608,8 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                         } else*/ {
                             mentionLayoutManager.scrollToPositionWithOffset(0, 10000);
                         }
-                        if (allowStickersPanel) {
-                            mentionContainer.setVisibility(View.VISIBLE);
-                            mentionContainer.setTag(null);
-                            mentionListAnimation = new AnimatorSet();
-                            mentionListAnimation.playTogether(
-                                    ObjectAnimator.ofFloat(mentionContainer, "alpha", 0.0f, 1.0f)
-                            );
-                            mentionListAnimation.addListener(new AnimatorListenerAdapterProxy() {
-                                @Override
-                                public void onAnimationEnd(Animator animation) {
-                                    if (mentionListAnimation != null && mentionListAnimation.equals(animation)) {
-                                        mentionListAnimation = null;
-                                    }
-                                }
-
-                                @Override
-                                public void onAnimationCancel(Animator animation) {
-                                    if (mentionListAnimation != null && mentionListAnimation.equals(animation)) {
-                                        mentionListAnimation = null;
-                                    }
-                                }
-                            });
-                            mentionListAnimation.setDuration(200);
-                            mentionListAnimation.start();
-                        } else {
-                            mentionContainer.setAlpha(1.0f);
-                            mentionContainer.setVisibility(View.INVISIBLE);
-                        }
+                        mentionContainer.setAlpha(1.0f);
+                        mentionContainer.setVisibility(View.INVISIBLE);
                     } else {
                         if (mentionListAnimation != null) {
                             mentionListAnimation.cancel();
@@ -1655,46 +1619,11 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                         if (mentionContainer.getVisibility() == View.GONE) {
                             return;
                         }
-                        if (allowStickersPanel) {
-                            mentionListAnimation = new AnimatorSet();
-                            mentionListAnimation.playTogether(
-                                    ObjectAnimator.ofFloat(mentionContainer, "alpha", 0.0f)
-                            );
-                            mentionListAnimation.addListener(new AnimatorListenerAdapterProxy() {
-                                @Override
-                                public void onAnimationEnd(Animator animation) {
-                                    if (mentionListAnimation != null && mentionListAnimation.equals(animation)) {
-                                        mentionContainer.setVisibility(View.GONE);
-                                        mentionContainer.setTag(null);
-                                        mentionListAnimation = null;
-                                    }
-                                }
-
-                                @Override
-                                public void onAnimationCancel(Animator animation) {
-                                    if (mentionListAnimation != null && mentionListAnimation.equals(animation)) {
-                                        mentionListAnimation = null;
-                                    }
-                                }
-                            });
-                            mentionListAnimation.setDuration(200);
-                            mentionListAnimation.start();
-                        } else {
-                            mentionContainer.setTag(null);
-                            mentionContainer.setVisibility(View.GONE);
-                        }
+                        mentionContainer.setTag(null);
+                        mentionContainer.setVisibility(View.GONE);
                     }
                 }
 
-                /*
-                @Override
-                public void onContextSearch(boolean searching) {
-                    if (chatActivityEnterView != null) {
-                        chatActivityEnterView.setCaption(mentionsAdapter.getBotCaption());
-                        chatActivityEnterView.showContextProgress(searching);
-                    }
-                }
-                */
             }));
 
             mentionsAdapter.setParentFragment(this);
@@ -1814,9 +1743,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
             @Override
             public void onTextChanged(final CharSequence text, boolean bigChange) {
                 MediaController.getInstance().setInputFieldHasText(text != null && text.length() != 0 || chatActivityEnterView.isEditingMessage());
-                if (stickersAdapter != null && !chatActivityEnterView.isEditingMessage()) {
-                    stickersAdapter.loadStikersForEmoji(text);
-                }
                 if (mentionsAdapter != null && text!=null ) {
                     mentionsAdapter.searchUsernameOrHashtag(text.toString(), chatActivityEnterView.getCursorPosition(), messages);
                 }
@@ -1876,18 +1802,11 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
             @Override
             public void onWindowSizeChanged(int size) {
                 if (size < AndroidUtilities.dp(72) + ActionBar.getCurrentActionBarHeight()) {
-                    allowStickersPanel = false;
-                    if (stickersPanel.getVisibility() == View.VISIBLE) {
-                        stickersPanel.setVisibility(View.INVISIBLE);
-                    }
                     if (mentionContainer != null && mentionContainer.getVisibility() == View.VISIBLE) {
                         mentionContainer.setVisibility(View.INVISIBLE);
                     }
                 } else {
-                    allowStickersPanel = true;
-                    if (stickersPanel.getVisibility() == View.INVISIBLE) {
-                        stickersPanel.setVisibility(View.VISIBLE);
-                    }
+
                     if (mentionContainer != null && mentionContainer.getVisibility() == View.INVISIBLE ) {
                         mentionContainer.setVisibility(View.VISIBLE);
                         mentionContainer.setTag(null);
@@ -1899,37 +1818,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
             public void onStickersTab(boolean opened) {
             }
         });
-
-        stickersPanel = new FrameLayout(context);
-        stickersPanel.setVisibility(View.GONE);
-        contentView.addView(stickersPanel, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, 81.5f, Gravity.LEFT | Gravity.BOTTOM, 0, 0, 0, 38));
-
-        stickersListView = new RecyclerListView(context) {
-            @Override
-            public boolean onInterceptTouchEvent(MotionEvent event) {
-                boolean result = StickerPreviewViewer.getInstance().onInterceptTouchEvent(event, stickersListView, 0);
-                return super.onInterceptTouchEvent(event) || result;
-            }
-        };
-        stickersListView.setTag(3);
-        stickersListView.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                return StickerPreviewViewer.getInstance().onTouch(event, stickersListView, 0, stickersOnItemClickListener);
-            }
-        });
-        stickersListView.setDisallowInterceptTouchEvents(true);
-        LinearLayoutManager layoutManager = new LinearLayoutManager(context);
-        layoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
-        stickersListView.setLayoutManager(layoutManager);
-        stickersListView.setClipToPadding(false);
-        stickersListView.setOverScrollMode(RecyclerListView.OVER_SCROLL_NEVER);
-        stickersPanel.addView(stickersListView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, 78));
-        initStickers();
-
-        ImageView imageView = new ImageView(context);
-        imageView.setImageResource(R.drawable.stickers_back_arrow);
-        stickersPanel.addView(imageView, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.BOTTOM | Gravity.LEFT, 53, 0, 0, 0));
 
         searchContainer = new FrameLayout(context);
         searchContainer.setBackgroundResource(R.drawable.compose_panel);
@@ -2111,76 +1999,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
             }
         }
         return false;
-    }
-
-    private void initStickers() {
-        if (chatActivityEnterView == null || getParentActivity() == null || stickersAdapter != null ) {
-            return;
-        }
-        if (stickersAdapter != null) {
-            stickersAdapter.onDestroy();
-        }
-        stickersListView.setPadding(AndroidUtilities.dp(18), 0, AndroidUtilities.dp(18), 0);
-        stickersListView.setAdapter(stickersAdapter = new StickersAdapter(getParentActivity(), new StickersAdapter.StickersAdapterDelegate() {
-            @Override
-            public void needChangePanelVisibility(final boolean show) {
-                if (show && stickersPanel.getVisibility() == View.VISIBLE || !show && stickersPanel.getVisibility() == View.GONE) {
-                    return;
-                }
-                if (show) {
-                    stickersListView.scrollToPosition(0);
-                    stickersPanel.setVisibility(allowStickersPanel ? View.VISIBLE : View.INVISIBLE);
-                }
-                if (runningAnimation != null) {
-                    runningAnimation.cancel();
-                    runningAnimation = null;
-                }
-                if (stickersPanel.getVisibility() != View.INVISIBLE) {
-                    runningAnimation = new AnimatorSet();
-                    runningAnimation.playTogether(
-                            ObjectAnimator.ofFloat(stickersPanel, "alpha", show ? 0.0f : 1.0f, show ? 1.0f : 0.0f)
-                    );
-                    runningAnimation.setDuration(150);
-                    runningAnimation.addListener(new AnimatorListenerAdapterProxy() {
-                        @Override
-                        public void onAnimationEnd(Animator animation) {
-                            if (runningAnimation != null && runningAnimation.equals(animation)) {
-                                if (!show) {
-                                    stickersAdapter.clearStickers();
-                                    stickersPanel.setVisibility(View.GONE);
-                                    if (StickerPreviewViewer.getInstance().isVisible()) {
-                                        StickerPreviewViewer.getInstance().close();
-                                    }
-                                    StickerPreviewViewer.getInstance().reset();
-                                }
-                                runningAnimation = null;
-                            }
-                        }
-
-                        @Override
-                        public void onAnimationCancel(Animator animation) {
-                            if (runningAnimation != null && runningAnimation.equals(animation)) {
-                                runningAnimation = null;
-                            }
-                        }
-                    });
-                    runningAnimation.start();
-                } else if (!show) {
-                    stickersPanel.setVisibility(View.GONE);
-                }
-            }
-        }));
-        stickersListView.setOnItemClickListener(stickersOnItemClickListener = new RecyclerListView.OnItemClickListener() {
-            @Override
-            public void onItemClick(View view, int position) {
-                TLRPC.Document document = stickersAdapter.getItem(position);
-                if (document instanceof TLRPC.TL_document) {
-                    SendMessagesHelper.getInstance().sendSticker(document, dialog_id, null);
-                    chatActivityEnterView.addStickerToRecent(document);
-                }
-                chatActivityEnterView.setFieldText("");
-            }
-        });
     }
 
     private void checkScrollForLoad(boolean scroll) {
@@ -4436,9 +4254,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     @Override
                     public void didPressedImage(ChatMessageCell cell) {
                         MessageObject message = cell.getMessageObject();
-                        if (message.type == 13) {
-                            showDialog(new StickersAlert(getParentActivity(), message.getInputStickerSet(), null, bottomOverlayChat.getVisibility() != View.VISIBLE ? chatActivityEnterView : null));
-                        } else if (Build.VERSION.SDK_INT >= 16 && message.isVideo() || message.type == 1 || message.type == 0 && !message.isWebpageDocument() || message.isGif()) {
+                        if (Build.VERSION.SDK_INT >= 16 && message.isVideo() || message.type == 1 || message.type == 0 && !message.isWebpageDocument() || message.isGif()) {
                             PhotoViewer.getInstance().setParentActivity(getParentActivity());
                             PhotoViewer.getInstance().openPhoto(message, message.type != 0 ? dialog_id : 0, 0, ChatActivity.this);
                         } else if (message.type == 3) {
