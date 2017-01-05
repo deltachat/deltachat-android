@@ -135,23 +135,25 @@ import java.util.regex.Matcher;
 public class ChatActivity extends BaseFragment implements NotificationCenter.NotificationCenterDelegate, DialogsActivity.DialogsActivityDelegate,
         PhotoViewer.PhotoViewerProvider {
 
-    public  static final int ROWTYPE_MESSAGE_CELL = 0;
-    public  static final int ROWTYPE_ACTION_CELL  = 1;
-    public  static final int ROWTYPE_UNREAD_CELL  = 2;
+    // the list view
+    private RecyclerListView                chatListView;
+    private static final int                ROWTYPE_MESSAGE_CELL    = 0;
+    private static final int                ROWTYPE_DATE_HEADLINE   = 1;
+    private static final int                ROWTYPE_UNREAD_HEADLINE = 2;
+    private HashMap<Integer, MessageObject> messagesDict = new HashMap<>();
+    private ArrayList<MessageObject>        messages = new ArrayList<>();
+    private MessageObject                   unreadMessageObject;
 
+    // misc
     protected TLRPC.Chat currentChat;
-
     public MrChat m_mrChat = new MrChat(0);
-
     private ArrayList<ChatMessageCell> chatMessageCellsCache = new ArrayList<>();
-
     private FrameLayout bottomOverlay;
     protected ChatActivityEnterView chatActivityEnterView;
     private ActionBarMenuItem menuItem;
     private ActionBarMenuItem attachItem;
     private ActionBarMenuItem headerItem;
     private ActionBarMenuItem searchItem;
-    private RecyclerListView chatListView;
     private LinearLayoutManager chatLayoutManager;
     private ChatActivityAdapter chatAdapter;
     private TextView bottomOverlayChatText;
@@ -221,9 +223,8 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
 
     private int newUnreadMessageCount;
 
-    private HashMap<Integer, MessageObject> messagesDict = new HashMap<>();
+
     private HashMap<String, ArrayList<MessageObject>> messagesByDays = new HashMap<>(); // used to add/remove date headlines
-    protected ArrayList<MessageObject> messages = new ArrayList<>();
     private int maxMessageId = Integer.MAX_VALUE;
     private int minMessageId = Integer.MIN_VALUE;
     private int maxDate = Integer.MIN_VALUE;
@@ -240,10 +241,11 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
     private int unread_to_load;
     private int first_unread_id;
     private boolean loadingForward;
-    private MessageObject unreadMessageObject;
+
     private MessageObject scrollToMessage;
-    private int highlightMessageId = Integer.MAX_VALUE;
     private int scrollToMessagePosition = -10000;
+
+    private int highlightMessageId = Integer.MAX_VALUE;
 
     private String currentPicturePath;
 
@@ -3240,7 +3242,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
             dateMsg.date = msgDrawObj.messageOwner.date;
             MessageObject dateObj = new MessageObject(dateMsg, null, false);
             dateObj.type = 10;
-            dateObj.contentType = ROWTYPE_ACTION_CELL;
+            dateObj.contentType = ROWTYPE_DATE_HEADLINE;
             messages.add(0, dateObj);
             createdRows++;
         }
@@ -3277,7 +3279,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                                 dateMsg.id = 0;
                                 MessageObject dateObj = new MessageObject(dateMsg, null, false);
                                 dateObj.type = 6;
-                                dateObj.contentType = ROWTYPE_UNREAD_CELL;
+                                dateObj.contentType = ROWTYPE_UNREAD_HEADLINE;
                                 messages.add(0, dateObj);
                                 unreadMessageObject = dateObj;
                                 scrollToMessage = unreadMessageObject;
@@ -4936,7 +4938,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     }
                 });
                 chatMessageCell.setAllowAssistant(true);
-            } else if (viewType == ROWTYPE_ACTION_CELL) {
+            } else if (viewType == ROWTYPE_DATE_HEADLINE ) {
                 view = new ChatActionCell(mContext);
                 ((ChatActionCell) view).setDelegate(new ChatActionCell.ChatActionCellDelegate() {
                     @Override
@@ -4971,7 +4973,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                         }
                     }
                 });
-            } else if (viewType == ROWTYPE_UNREAD_CELL) {
+            } else if (viewType == ROWTYPE_UNREAD_HEADLINE) {
                 view = new ChatUnreadCell(mContext);
             }
 
@@ -5008,7 +5010,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     messageCell.isChat = m_mrChat.getType()==MrChat.MR_CHAT_GROUP;//currentChat != null;
                     messageCell.setMessageObject(message);
                     messageCell.setCheckPressed(!disableSelection, disableSelection && selected);
-                    if (view instanceof ChatMessageCell && MediaController.getInstance().canDownloadMedia(MediaController.AUTODOWNLOAD_MASK_AUDIO)) {
+                    if ( MediaController.getInstance().canDownloadMedia(MediaController.AUTODOWNLOAD_MASK_AUDIO)) {
                         ((ChatMessageCell) view).downloadAudioIfNeed();
                     }
                     messageCell.setHighlighted(highlightMessageId != Integer.MAX_VALUE && message.getId() == highlightMessageId);
@@ -5062,6 +5064,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
             }
         }
 
+        /*
         public void updateRowWithMessageObject(MessageObject messageObject) {
             int index = messages.indexOf(messageObject);
             if (index == -1) {
@@ -5069,6 +5072,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
             }
             notifyItemChanged(messagesStartRow + messages.size() - index - 1);
         }
+        */
 
         @Override
         public void notifyDataSetChanged() {
