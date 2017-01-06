@@ -3866,7 +3866,11 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                     currentBackgroundDrawable = Theme.backgroundMediaDrawableOut;
                 }
             }
-            setDrawableBounds(currentBackgroundDrawable, layoutWidth - backgroundWidth - (!mediaBackground ? 0 : dp(9)), dp(1), backgroundWidth - (mediaBackground ? 0 : dp(3)), layoutHeight - dp(2));
+            setDrawableBounds(currentBackgroundDrawable,
+                    layoutWidth - backgroundWidth - (!mediaBackground ? 0 : dp(9)),
+                    dp(1),
+                    backgroundWidth - (mediaBackground ? 0 : dp(3)),
+                    layoutHeight - dp(2));
         } else {
             if (isDrawSelectedBackground()) {
                 if (!mediaBackground) {
@@ -3882,9 +3886,17 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                 }
             }
             if (isChat && currentMessageObject.isFromUser()) {
-                setDrawableBounds(currentBackgroundDrawable, dp(48 + (!mediaBackground ? 3 : 9)), dp(1), backgroundWidth - (mediaBackground ? 0 : dp(3)), layoutHeight - dp(2));
+                setDrawableBounds(currentBackgroundDrawable,
+                        dp(48 + (!mediaBackground ? 3 : 9)),
+                        dp(1),
+                        backgroundWidth - (mediaBackground ? 0 : dp(3)),
+                        layoutHeight - dp(2));
             } else {
-                setDrawableBounds(currentBackgroundDrawable, (!mediaBackground ? dp(3) : dp(9)), dp(1), backgroundWidth - (mediaBackground ? 0 : dp(3)), layoutHeight - dp(2));
+                setDrawableBounds(currentBackgroundDrawable,
+                        (!mediaBackground ? dp(3) : dp(9)),
+                        dp(1),
+                        backgroundWidth - (mediaBackground ? 0 : dp(3)),
+                        layoutHeight - dp(2));
             }
         }
         if (drawBackground && currentBackgroundDrawable != null) {
