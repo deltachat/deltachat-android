@@ -3854,48 +3854,48 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
 
         if (currentMessageObject.isOutOwner()) {
             if (isDrawSelectedBackground()) {
-                if (!mediaBackground) {
+                //if (!mediaBackground) {
                     currentBackgroundDrawable = Theme.backgroundDrawableOutSelected;
-                } else {
-                    currentBackgroundDrawable = Theme.backgroundMediaDrawableOutSelected;
-                }
+                //} else {
+                //    currentBackgroundDrawable = Theme.backgroundMediaDrawableOutSelected;
+                //}
             } else {
-                if (!mediaBackground) {
+                //if (!mediaBackground) {
                     currentBackgroundDrawable = Theme.backgroundDrawableOut;
-                } else {
-                    currentBackgroundDrawable = Theme.backgroundMediaDrawableOut;
-                }
+                //} else {
+                //    currentBackgroundDrawable = Theme.backgroundMediaDrawableOut;
+                //}
             }
             setDrawableBounds(currentBackgroundDrawable,
                     layoutWidth - backgroundWidth - (!mediaBackground ? 0 : dp(9)),
                     dp(1),
-                    backgroundWidth - (mediaBackground ? 0 : dp(3)),
+                    backgroundWidth - (mediaBackground ? -dp(6) : dp(3)),
                     layoutHeight - dp(2));
         } else {
             if (isDrawSelectedBackground()) {
-                if (!mediaBackground) {
+                //if (!mediaBackground) {
                     currentBackgroundDrawable = Theme.backgroundDrawableInSelected;
-                } else {
-                    currentBackgroundDrawable = Theme.backgroundMediaDrawableInSelected;
-                }
+                //} else {
+                //    currentBackgroundDrawable = Theme.backgroundMediaDrawableInSelected;
+                //}
             } else {
-                if (!mediaBackground) {
+                //if (!mediaBackground) {
                     currentBackgroundDrawable = Theme.backgroundDrawableIn;
-                } else {
-                    currentBackgroundDrawable = Theme.backgroundMediaDrawableIn;
-                }
+                //} else {
+                //    currentBackgroundDrawable = Theme.backgroundMediaDrawableIn;
+                //}
             }
             if (isChat && currentMessageObject.isFromUser()) {
                 setDrawableBounds(currentBackgroundDrawable,
-                        dp(48 + (!mediaBackground ? 3 : 9)),
+                        dp(48 + (!mediaBackground ? 3 : 3)),
                         dp(1),
-                        backgroundWidth - (mediaBackground ? 0 : dp(3)),
+                        backgroundWidth - (mediaBackground ? -dp(6) : dp(3)),
                         layoutHeight - dp(2));
             } else {
                 setDrawableBounds(currentBackgroundDrawable,
-                        (!mediaBackground ? dp(3) : dp(9)),
+                        (!mediaBackground ? dp(3) : dp(3)),
                         dp(1),
-                        backgroundWidth - (mediaBackground ? 0 : dp(3)),
+                        backgroundWidth - (mediaBackground ? -dp(6) : dp(3)),
                         layoutHeight - dp(2));
             }
         }

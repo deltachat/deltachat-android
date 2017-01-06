@@ -175,10 +175,6 @@ public class Theme {
     public static Drawable backgroundDrawableInSelected;
     public static Drawable backgroundDrawableOut;
     public static Drawable backgroundDrawableOutSelected;
-    public static Drawable backgroundMediaDrawableIn;
-    public static Drawable backgroundMediaDrawableInSelected;
-    public static Drawable backgroundMediaDrawableOut;
-    public static Drawable backgroundMediaDrawableOutSelected;
     public static Drawable checkDrawable;
     public static Drawable halfCheckDrawable;
     public static Drawable clockDrawable;
@@ -217,10 +213,6 @@ public class Theme {
             backgroundDrawableInSelected = context.getResources().getDrawable(R.drawable.msg_in_selected);
             backgroundDrawableOut = context.getResources().getDrawable(R.drawable.msg_out);
             backgroundDrawableOutSelected = context.getResources().getDrawable(R.drawable.msg_out_selected);
-            backgroundMediaDrawableIn = context.getResources().getDrawable(R.drawable.msg_in_photo);
-            backgroundMediaDrawableInSelected = context.getResources().getDrawable(R.drawable.msg_in_photo_selected);
-            backgroundMediaDrawableOut = context.getResources().getDrawable(R.drawable.msg_out_photo);
-            backgroundMediaDrawableOutSelected = context.getResources().getDrawable(R.drawable.msg_out_photo_selected);
             checkDrawable = context.getResources().getDrawable(R.drawable.msg_check);
             halfCheckDrawable = context.getResources().getDrawable(R.drawable.msg_halfcheck);
             clockDrawable = context.getResources().getDrawable(R.drawable.msg_clock);
