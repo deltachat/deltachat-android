@@ -150,7 +150,9 @@ public class MrMailbox {
         return MrMailboxCreateChatByContactId(m_hMailbox, contact_id);
     }
 
-    public native static int[] getChatMsgs(int chat_id);
+    public final static int MR_GCM_ADDDAYMARKER = 0x01;
+    public native static int[] getChatMsgs(int chat_id, int flags, int marker1before);
+
     public native static int[] getUnseenMsgs();
 
     public static int[] getChatMedia(int chat_id, int msg_type, int or_msg_type) {

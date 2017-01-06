@@ -49,6 +49,9 @@ public class MrMsg {
     public final static int      MR_OUT_DELIVERED           = 26;
     public final static int      MR_OUT_READ                = 28;
 
+    public final static int      MR_MSG_ID_MARKER1    = 1;
+    public final static int      MR_MSG_ID_DAYMARKER  = 9;
+
     public MrMsg(long hMsg) {
         m_hMsg = hMsg;
     }

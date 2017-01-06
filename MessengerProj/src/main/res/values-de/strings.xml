@@ -525,8 +525,8 @@
     <string name="formatterMonthYear">MMMM yyyy</string>
     <string name="formatterMonth">d. MMM</string>
     <string name="formatterYear">dd.MM.yyyy</string>
-    <string name="chatDate">d. MMMM</string>
-    <string name="chatFullDate">d. MMMM yyyy</string>
+    <string name="chatDate">EEE, d. MMMM</string>
+    <string name="chatFullDate">EEE, d. MMMM yyyy</string>
     <string name="formatterWeek">EEE</string>
     <string name="formatterDay24H">HH:mm</string>
     <string name="formatterDay12H">h:mm a</string>

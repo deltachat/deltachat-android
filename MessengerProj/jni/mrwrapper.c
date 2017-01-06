@@ -607,9 +607,9 @@ JNIEXPORT jintArray Java_com_b44t_messenger_MrMailbox_MrMailboxGetChatMedia(JNIE
 }
 
 
-JNIEXPORT jintArray Java_com_b44t_messenger_MrMailbox_getChatMsgs(JNIEnv *env, jclass cls, jint chat_id)
+JNIEXPORT jintArray Java_com_b44t_messenger_MrMailbox_getChatMsgs(JNIEnv *env, jclass cls, jint chat_id, jint flags, jint marker1before)
 {
-	carray* ca = mrmailbox_get_chat_msgs(get_mrmailbox_t(env, cls), chat_id);
+	carray* ca = mrmailbox_get_chat_msgs(get_mrmailbox_t(env, cls), chat_id, flags, marker1before);
 	return carray2jintArray_n_carray_free(env, ca);
 }
 
