@@ -38,18 +38,12 @@ import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.database.Cursor;
 import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
 import android.media.ExifInterface;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.provider.MediaStore;
-import android.text.Spannable;
-import android.text.SpannableString;
-import android.text.Spanned;
 import android.text.TextUtils;
 import android.text.style.ClickableSpan;
 import android.text.style.URLSpan;
@@ -62,7 +56,6 @@ import android.view.ViewTreeObserver;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -78,7 +71,6 @@ import com.b44t.messenger.SendMessagesHelper;
 import com.b44t.messenger.Utilities;
 import com.b44t.messenger.VideoEditedInfo;
 import com.b44t.messenger.browser.Browser;
-import com.b44t.messenger.support.widget.GridLayoutManager;
 import com.b44t.messenger.support.widget.LinearLayoutManager;
 import com.b44t.messenger.support.widget.RecyclerView;
 import com.b44t.messenger.ApplicationLoader;
@@ -92,9 +84,7 @@ import com.b44t.messenger.NotificationCenter;
 import com.b44t.messenger.R;
 import com.b44t.messenger.UserConfig;
 import com.b44t.ui.ActionBar.BackDrawable;
-import com.b44t.ui.ActionBar.BottomSheet;
 import com.b44t.ui.ActionBar.SimpleTextView;
-import com.b44t.ui.Adapters.MentionsAdapter;
 import com.b44t.messenger.AnimatorListenerAdapterProxy;
 import com.b44t.ui.Cells.ChatActionCell;
 import com.b44t.ui.ActionBar.ActionBar;
@@ -107,17 +97,14 @@ import com.b44t.ui.Components.ChatActivityEnterView;
 import com.b44t.messenger.ImageReceiver;
 import com.b44t.ui.Components.ChatAttachAlert;
 import com.b44t.ui.Components.ChatAvatarContainer;
-import com.b44t.ui.Components.ExtendedGridLayoutManager;
 import com.b44t.ui.Components.PlayerView;
 import com.b44t.ui.Components.LayoutHelper;
 import com.b44t.ui.Components.NumberTextView;
 import com.b44t.ui.Components.RecyclerListView;
-import com.b44t.ui.Components.Size;
 import com.b44t.ui.Components.SizeNotifierFrameLayout;
 import com.b44t.ui.ActionBar.Theme;
 import com.b44t.ui.Components.URLSpanNoUnderline;
 import com.b44t.ui.Components.URLSpanReplacement;
-import com.b44t.ui.Components.URLSpanUserMention;
 
 import java.io.File;
 import java.net.URLDecoder;
@@ -165,12 +152,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
     private FrameLayout pagedownButton;
     private boolean pagedownButtonShowedByScroll;
     private TextView pagedownButtonCounter;
-    private MentionsAdapter mentionsAdapter;
-    private FrameLayout mentionContainer;
-    private RecyclerListView mentionListView;
-    private LinearLayoutManager mentionLayoutManager;
-    private ExtendedGridLayoutManager mentionGridLayoutManager;
-    private AnimatorSet mentionListAnimation;
     private ChatAttachAlert chatAttachAlert;
     private PlayerView playerView;
     private TextView alertTextView;
@@ -178,12 +159,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
     private ImageView searchUpButton;
     private ImageView searchDownButton;
     private SimpleTextView searchCountText;
-
-    private boolean mentionListViewIgnoreLayout;
-    private int mentionListViewScrollOffsetY;
-    private int mentionListViewLastViewTop;
-    private int mentionListViewLastViewPosition;
-    private boolean mentionListViewIsScrolling;
 
     private ObjectAnimator pagedownButtonAnimation;
     private ObjectAnimator iconAnimator;
@@ -376,9 +351,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         if (chatActivityEnterView != null) {
             chatActivityEnterView.onDestroy();
         }
-        if (mentionsAdapter != null) {
-            mentionsAdapter.onDestroy();
-        }
+
         NotificationCenter.getInstance().removeObserver(this, NotificationCenter.emojiDidLoaded);
         NotificationCenter.getInstance().removeObserver(this, NotificationCenter.dialogsNeedReload);
         NotificationCenter.getInstance().removeObserver(this, NotificationCenter.updateInterfaces);
@@ -764,24 +737,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                         child.measure(contentWidthSpec, contentHeightSpec);
                     } else if (chatActivityEnterView.isPopupView(child)) {
                         child.measure(MeasureSpec.makeMeasureSpec(widthSize, MeasureSpec.EXACTLY), MeasureSpec.makeMeasureSpec(child.getLayoutParams().height, MeasureSpec.EXACTLY));
-                    } else if (child == mentionContainer) {
-                        FrameLayout.LayoutParams layoutParams = (FrameLayout.LayoutParams) mentionContainer.getLayoutParams();
-                        int height;
-                        mentionListViewIgnoreLayout = true;
-
-                        {
-                            int size = mentionsAdapter.getItemCount();
-                            int maxHeight = 0;
-                            maxHeight += size * 36;
-                            height = heightSize - chatActivityEnterView.getMeasuredHeight() + (maxHeight != 0 ? AndroidUtilities.dp(2) : 0);
-                            mentionListView.setPadding(0, Math.max(0, height - AndroidUtilities.dp(Math.min(maxHeight, 68 * 1.8f))), 0, 0);
-                        }
-
-                        layoutParams.height = height;
-                        layoutParams.topMargin = 0;
-
-                        mentionListViewIgnoreLayout = false;
-                        child.measure(MeasureSpec.makeMeasureSpec(widthSize, MeasureSpec.EXACTLY), MeasureSpec.makeMeasureSpec(layoutParams.height, MeasureSpec.EXACTLY));
                     } else {
                         measureChildWithMargins(child, widthMeasureSpec, 0, heightMeasureSpec, 0);
                     }
@@ -842,9 +797,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                             childTop = lp.topMargin;
                     }
 
-                    if (child == mentionContainer) {
-                        childTop -= chatActivityEnterView.getMeasuredHeight() - AndroidUtilities.dp(2);
-                    } else if (child == pagedownButton) {
+                    if (child == pagedownButton) {
                         childTop -= chatActivityEnterView.getMeasuredHeight();
                     } else if (child == emptyViewContainer) {
                         childTop -= inputFieldHeight / 2;
@@ -890,9 +843,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
 
         if (chatActivityEnterView != null) {
             chatActivityEnterView.onDestroy();
-        }
-        if (mentionsAdapter != null) {
-            mentionsAdapter.onDestroy();
         }
 
         chatListView = new RecyclerListView(context) {
@@ -1073,307 +1023,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         alertTextView.setMaxLines(1);
         alertView.addView(alertTextView, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.TOP | Gravity.LEFT, 8, 23, 8, 0));
 
-        {
-            mentionContainer = new FrameLayout(context) {
-
-                private Drawable background;
-
-                @Override
-                public void onDraw(Canvas canvas) {
-                    if (mentionListView.getChildCount() <= 0) {
-                        return;
-                    }
-                    /*if (mentionsAdapter.isBotContext() && mentionsAdapter.isMediaLayout() && mentionsAdapter.getBotContextSwitch() == null) {
-                        background.setBounds(0, mentionListViewScrollOffsetY - AndroidUtilities.dp(4), getMeasuredWidth(), getMeasuredHeight());
-                    } else*/ {
-                        background.setBounds(0, mentionListViewScrollOffsetY - AndroidUtilities.dp(2), getMeasuredWidth(), getMeasuredHeight());
-                    }
-                    background.draw(canvas);
-                }
-
-                @Override
-                public void setBackgroundResource(int resid) {
-                    background = getContext().getResources().getDrawable(resid);
-                }
-
-                @Override
-                public void requestLayout() {
-                    if (mentionListViewIgnoreLayout) {
-                        return;
-                    }
-                    super.requestLayout();
-                }
-            };
-            mentionContainer.setBackgroundResource(R.drawable.compose_panel);
-            mentionContainer.setVisibility(View.GONE);
-            mentionContainer.setWillNotDraw(false);
-            contentView.addView(mentionContainer, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, 110, Gravity.LEFT | Gravity.BOTTOM));
-
-            mentionListView = new RecyclerListView(context) {
-
-                private int lastWidth;
-                private int lastHeight;
-
-                @Override
-                public boolean onInterceptTouchEvent(MotionEvent event) {
-                    if (!mentionListViewIsScrolling && mentionListViewScrollOffsetY != 0 && event.getY() < mentionListViewScrollOffsetY) {
-                        return false;
-                    }
-                    return super.onInterceptTouchEvent(event);
-                }
-
-                @Override
-                public boolean onTouchEvent(MotionEvent event) {
-                    if (!mentionListViewIsScrolling && mentionListViewScrollOffsetY != 0 && event.getY() < mentionListViewScrollOffsetY) {
-                        return false;
-                    }
-                    //supress warning
-                    return super.onTouchEvent(event);
-                }
-
-                @Override
-                public void requestLayout() {
-                    if (mentionListViewIgnoreLayout) {
-                        return;
-                    }
-                    super.requestLayout();
-                }
-
-                @Override
-                protected void onLayout(boolean changed, int l, int t, int r, int b) {
-                    int width = r - l;
-                    int height = b - t;
-
-                    int newPosition = -1;
-                    int newTop = 0;
-                    if (mentionListView != null && mentionListViewLastViewPosition >= 0 && width == lastWidth && height - lastHeight != 0) {
-                        newPosition = mentionListViewLastViewPosition;
-                        newTop = mentionListViewLastViewTop + height - lastHeight - getPaddingTop();
-                    }
-
-                    super.onLayout(changed, l, t, r, b);
-
-                    if (newPosition != -1) {
-                        mentionListViewIgnoreLayout = true;
-                        /*if (mentionsAdapter.isBotContext() && mentionsAdapter.isMediaLayout()) {
-                            mentionGridLayoutManager.scrollToPositionWithOffset(newPosition, newTop);
-                        } else*/ {
-                            mentionLayoutManager.scrollToPositionWithOffset(newPosition, newTop);
-                        }
-                        super.onLayout(false, l, t, r, b);
-                        mentionListViewIgnoreLayout = false;
-                    }
-
-                    lastHeight = height;
-                    lastWidth = width;
-                    mentionListViewUpdateLayout();
-                }
-            };
-            mentionListView.setOnTouchListener(new View.OnTouchListener() {
-                @Override
-                public boolean onTouch(View v, MotionEvent event) {
-                    return false;
-                }
-            });
-            mentionListView.setTag(2);
-            mentionLayoutManager = new LinearLayoutManager(context) {
-                @Override
-                public boolean supportsPredictiveItemAnimations() {
-                    return false;
-                }
-            };
-            mentionLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-            mentionGridLayoutManager = new ExtendedGridLayoutManager(context, 100) {
-
-                private Size size = new Size();
-
-                @Override
-                protected Size getSizeForItem(int i) {
-                    /*if (mentionsAdapter.getBotContextSwitch() != null) {
-                        i++;
-                    }
-                    Object object = mentionsAdapter.getItem(i);
-                    if (object instanceof TLRPC.BotInlineResult) {
-                        TLRPC.BotInlineResult inlineResult = (TLRPC.BotInlineResult) object;
-                        if (inlineResult.document != null) {
-                            size.width = inlineResult.document.thumb != null ? inlineResult.document.thumb.w : 100;
-                            size.height = inlineResult.document.thumb != null ? inlineResult.document.thumb.h : 100;
-                            for (int b = 0; b < inlineResult.document.attributes.size(); b++) {
-                                TLRPC.DocumentAttribute attribute = inlineResult.document.attributes.get(b);
-                                if (attribute instanceof TLRPC.TL_documentAttributeImageSize || attribute instanceof TLRPC.TL_documentAttributeVideo) {
-                                    size.width = attribute.w;
-                                    size.height = attribute.h;
-                                    break;
-                                }
-                            }
-                        } else {
-                            size.width = inlineResult.w;
-                            size.height = inlineResult.h;
-                        }
-                    }*/
-                    return size;
-                }
-
-                @Override
-                protected int getFlowItemCount() {
-                    /*if (mentionsAdapter.getBotContextSwitch() != null) {
-                        return getItemCount() - 1;
-                    }*/
-                    return super.getFlowItemCount();
-                }
-            };
-            mentionGridLayoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
-                @Override
-                public int getSpanSize(int position) {
-                    //Object object = mentionsAdapter.getItem(position);
-                    /*if (object instanceof TLRPC.TL_inlineBotSwitchPM) {
-                        return 100;
-                    } else*/ {
-                        /*if (mentionsAdapter.getBotContextSwitch() != null) {
-                            position--;
-                        }*/
-                        return mentionGridLayoutManager.getSpanSizeForItem(position);
-                    }
-                }
-            });
-            mentionListView.addItemDecoration(new RecyclerView.ItemDecoration() {
-                @Override
-                public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
-                    outRect.left = 0;
-                    outRect.right = 0;
-                    outRect.top = 0;
-                    outRect.bottom = 0;
-                    if (parent.getLayoutManager() == mentionGridLayoutManager) {
-                        int position = parent.getChildAdapterPosition(view);
-                        /*if (mentionsAdapter.getBotContextSwitch() != null) {
-                            if (position == 0) {
-                                return;
-                            }
-                            position--;
-                            if (!mentionGridLayoutManager.isFirstRow(position)) {
-                                outRect.top = AndroidUtilities.dp(2);
-                            }
-                        } else */ {
-                            outRect.top = AndroidUtilities.dp(2);
-                        }
-                        outRect.right = mentionGridLayoutManager.isLastInRow(position) ? 0 : AndroidUtilities.dp(2);
-                    }
-                }
-            });
-            mentionListView.setItemAnimator(null);
-            mentionListView.setLayoutAnimation(null);
-            mentionListView.setClipToPadding(false);
-            mentionListView.setLayoutManager(mentionLayoutManager);
-            mentionListView.setOverScrollMode(ListView.OVER_SCROLL_NEVER);
-            mentionContainer.addView(mentionListView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.MATCH_PARENT));
-
-            mentionListView.setAdapter(mentionsAdapter = new MentionsAdapter(context, false, dialog_id, new MentionsAdapter.MentionsAdapterDelegate() {
-                @Override
-                public void needChangePanelVisibility(boolean show) {
-                    /*if (mentionsAdapter.isBotContext() && mentionsAdapter.isMediaLayout()) {
-                        mentionListView.setLayoutManager(mentionGridLayoutManager);
-                    } else*/ {
-                        mentionListView.setLayoutManager(mentionLayoutManager);
-                    }
-                    if (show) {
-                        if (mentionListAnimation != null) {
-                            mentionListAnimation.cancel();
-                            mentionListAnimation = null;
-                        }
-
-                        if (mentionContainer.getVisibility() == View.VISIBLE) {
-                            mentionContainer.setAlpha(1.0f);
-                            return;
-                        }
-                        /*if (mentionsAdapter.isBotContext() && mentionsAdapter.isMediaLayout()) {
-                            mentionGridLayoutManager.scrollToPositionWithOffset(0, 10000);
-                        } else*/ {
-                            mentionLayoutManager.scrollToPositionWithOffset(0, 10000);
-                        }
-                        mentionContainer.setAlpha(1.0f);
-                        mentionContainer.setVisibility(View.INVISIBLE);
-                    } else {
-                        if (mentionListAnimation != null) {
-                            mentionListAnimation.cancel();
-                            mentionListAnimation = null;
-                        }
-
-                        if (mentionContainer.getVisibility() == View.GONE) {
-                            return;
-                        }
-                        mentionContainer.setTag(null);
-                        mentionContainer.setVisibility(View.GONE);
-                    }
-                }
-
-            }));
-
-            mentionsAdapter.setParentFragment(this);
-            mentionsAdapter.setChatInfo(info);
-            mentionsAdapter.setNeedUsernames(m_mrChat.getType()==MrChat.MR_CHAT_GROUP);
-            mentionListView.setOnItemClickListener(new RecyclerListView.OnItemClickListener() {
-                @Override
-                public void onItemClick(View view, int position) {
-                    Object object = mentionsAdapter.getItem(position);
-                    int start = mentionsAdapter.getResultStartPosition();
-                    int len = mentionsAdapter.getResultLength();
-                    if (object instanceof TLRPC.User) {
-                        TLRPC.User user = (TLRPC.User) object;
-                            if (user.username != null) {
-                                chatActivityEnterView.replaceWithText(start, len, "@" + user.username + " ");
-                            } else {
-                                String name = user.first_name;
-                                if (name == null || name.length() == 0) {
-                                    name = user.last_name;
-                                }
-                                Spannable spannable = new SpannableString(name + " ");
-                                spannable.setSpan(new URLSpanUserMention("" + user.id), 0, spannable.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-                                chatActivityEnterView.replaceWithText(start, len, spannable);
-                            }
-                    } else if (object instanceof String) {
-                        chatActivityEnterView.replaceWithText(start, len, object + " ");
-                    }
-                }
-            });
-
-            mentionListView.setOnItemLongClickListener(new RecyclerListView.OnItemLongClickListener() {
-                @Override
-                public boolean onItemClick(View view, int position) {
-                    if (getParentActivity() == null || !mentionsAdapter.isLongClickEnabled()) {
-                        return false;
-                    }
-                    Object object = mentionsAdapter.getItem(position);
-                    if (object instanceof String) {
-                        AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
-                        builder.setMessage(LocaleController.getString("ClearSearch", R.string.ClearSearch));
-                        builder.setPositiveButton(LocaleController.getString("ClearButton", R.string.ClearButton).toUpperCase(), new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
-                                mentionsAdapter.clearRecentHashtags();
-                            }
-                        });
-                        builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
-                        showDialog(builder.create());
-                        return true;
-                    }
-                    return false;
-                }
-            });
-
-            mentionListView.setOnScrollListener(new RecyclerView.OnScrollListener() {
-
-                @Override
-                public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
-                    mentionListViewIsScrolling = newState == RecyclerView.SCROLL_STATE_DRAGGING;
-                }
-
-                @Override
-                public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
-                    mentionListViewUpdateLayout();
-                }
-            });
-        }
-
         pagedownButton = new FrameLayout(context);
         pagedownButton.setVisibility(View.INVISIBLE);
         contentView.addView(pagedownButton, LayoutHelper.createFrame(46, 59, Gravity.RIGHT | Gravity.BOTTOM, 0, 0, 7, 5));
@@ -1417,9 +1066,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
             @Override
             public void onMessageSend(CharSequence message) {
                 moveScrollToLastMessage();
-                if (mentionsAdapter != null) {
-                    mentionsAdapter.addHashtagsFromMessage(message);
-                }
             }
 
             @Override
@@ -1483,17 +1129,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
 
             @Override
             public void onWindowSizeChanged(int size) {
-                if (size < AndroidUtilities.dp(72) + ActionBar.getCurrentActionBarHeight()) {
-                    if (mentionContainer != null && mentionContainer.getVisibility() == View.VISIBLE) {
-                        mentionContainer.setVisibility(View.INVISIBLE);
-                    }
-                } else {
 
-                    if (mentionContainer != null && mentionContainer.getVisibility() == View.INVISIBLE ) {
-                        mentionContainer.setVisibility(View.VISIBLE);
-                        mentionContainer.setTag(null);
-                    }
-                }
             }
 
             @Override
@@ -1586,31 +1222,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         fixLayoutInternal();
 
         return fragmentView;
-    }
-
-    private void mentionListViewUpdateLayout() {
-        if (mentionListView.getChildCount() <= 0) {
-            mentionListViewScrollOffsetY = 0;
-            mentionListViewLastViewPosition = -1;
-            return;
-        }
-        View child = mentionListView.getChildAt(mentionListView.getChildCount() - 1);
-        MentionsAdapter.Holder holder = (MentionsAdapter.Holder) mentionListView.findContainingViewHolder(child);
-        if (holder != null) {
-            mentionListViewLastViewPosition = holder.getAdapterPosition();
-            mentionListViewLastViewTop = child.getTop();
-        } else {
-            mentionListViewLastViewPosition = -1;
-        }
-
-        child = mentionListView.getChildAt(0);
-        holder = (MentionsAdapter.Holder) mentionListView.findContainingViewHolder(child);
-        int newOffset = child.getTop() > 0 && holder != null && holder.getAdapterPosition() == 0 ? child.getTop() : 0;
-        if (mentionListViewScrollOffsetY != newOffset) {
-            mentionListView.setTopGlowOffset(mentionListViewScrollOffsetY = newOffset);
-            mentionListView.invalidate();
-            mentionContainer.invalidate();
-        }
     }
 
     private void createChatAttachView() {
@@ -2131,9 +1742,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         if (chatActivityEnterView != null) {
             chatActivityEnterView.onRequestPermissionsResultFragment(requestCode, permissions, grantResults);
         }
-        if (mentionsAdapter != null) {
-            mentionsAdapter.onRequestPermissionsResultFragment(requestCode, permissions, grantResults);
-        }
+
     }
 
     private void checkActionBarMenu() {
@@ -2536,9 +2145,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
             if (alertTextView != null) {
                 alertTextView.invalidate();
             }
-            if (mentionListView != null) {
-                mentionListView.invalidateViews();
-            }
+
         }
         else if (id == NotificationCenter.updateInterfaces)
         {
@@ -3385,14 +2992,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                         if (url == null) {
                             return;
                         }
-                        if (url instanceof URLSpanUserMention) {
-                            /*
-                            TLRPC.User user = MessagesController.getInstance().getUser(Utilities.parseInt(((URLSpanUserMention) url).getURL()));
-                            if (user != null) {
-                                MessagesController.openChatOrProfileWith(user, null, ChatActivity.this, 0);
-                            }
-                            */
-                        } else if (url instanceof URLSpanNoUnderline) {
+                        if (url instanceof URLSpanNoUnderline) {
                             /*
                             String str = ((URLSpanNoUnderline) url).getURL();
                             if (str.startsWith("@")) {

@@ -24,24 +24,14 @@
 package com.b44t.messenger;
 
 import android.graphics.Paint;
-import android.graphics.Typeface;
 import android.text.Layout;
 import android.text.Spannable;
-import android.text.SpannableStringBuilder;
-import android.text.Spanned;
 import android.text.StaticLayout;
 import android.text.TextPaint;
-import android.text.TextUtils;
-import android.text.style.URLSpan;
 import android.text.util.Linkify;
 
 import com.b44t.ui.ActionBar.Theme;
-import com.b44t.ui.ChatActivity;
-import com.b44t.ui.Components.TypefaceSpan;
 import com.b44t.ui.Components.URLSpanNoUnderline;
-import com.b44t.ui.Components.URLSpanNoUnderlineBold;
-import com.b44t.ui.Components.URLSpanReplacement;
-import com.b44t.ui.Components.URLSpanUserMention;
 
 import java.io.File;
 import java.util.AbstractMap;
