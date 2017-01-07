@@ -201,12 +201,10 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
     private final static int id_delete_messages = 12;
     private final static int id_attach = 14;
     private final static int id_delete_chat = 16;
-    private final static int mute = 18;
+    private final static int id_mute = 18;
     private final static int id_reply = 19;
     private final static int id_info = 20;
-
-    private final static int search = 40;
-
+    private final static int id_search = 40;
     private final static int id_chat_compose_panel = 1000;
 
     public ChatActivity(Bundle args) {
@@ -241,7 +239,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.audioDidStarted);
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.replaceMessagesObjects);
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.notificationsSettingsUpdated);
-        NotificationCenter.getInstance().addObserver(this, NotificationCenter.chatSearchResultsAvailable);
+        //NotificationCenter.getInstance().addObserver(this, NotificationCenter.chatSearchResultsAvailable);
 
         if (AndroidUtilities.isTablet()) {
             NotificationCenter.getInstance().postNotificationName(NotificationCenter.openedChatChanged, dialog_id, false);
@@ -368,7 +366,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         NotificationCenter.getInstance().removeObserver(this, NotificationCenter.audioDidStarted);
         NotificationCenter.getInstance().removeObserver(this, NotificationCenter.replaceMessagesObjects);
         NotificationCenter.getInstance().removeObserver(this, NotificationCenter.notificationsSettingsUpdated);
-        NotificationCenter.getInstance().removeObserver(this, NotificationCenter.chatSearchResultsAvailable);
+        //NotificationCenter.getInstance().removeObserver(this, NotificationCenter.chatSearchResultsAvailable);
         NotificationCenter.getInstance().removeObserver(this, NotificationCenter.audioPlayStateChanged);
 
         if (AndroidUtilities.isTablet()) {
@@ -480,7 +478,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     });
                     builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
                     showDialog(builder.create());
-                } else if (id == mute) {
+                } else if (id == id_mute) {
                     toggleMute();
                 } else if (id == id_reply) {
                     if( m_mrChat.getId()==MrChat.MR_CHAT_ID_DEADDROP ){
@@ -523,7 +521,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     }
                     chatAttachAlert.init(ChatActivity.this);
                     showDialog(chatAttachAlert);
-                } else if (id == search) {
+                } else if (id == id_search) {
                     openSearchWithText(null);
                 }
             }
@@ -534,48 +532,45 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
 
         ActionBarMenu menu = actionBar.createMenu();
 
-        {
-            searchItem = menu.addItem(0, R.drawable.ic_ab_search).setIsSearchField(true).setActionBarMenuItemSearchListener(new ActionBarMenuItem.ActionBarMenuItemSearchListener() {
 
-                @Override
-                public void onSearchCollapse() {
-                    avatarContainer.setVisibility(View.VISIBLE);
-                    headerItem.setVisibility(View.VISIBLE);
-                    searchItem.setVisibility(View.GONE);
-                    highlightMessageId = Integer.MAX_VALUE;
-                    updateVisibleRows();
-                    scrollToLastMessage(false);
-                    updateBottomOverlay();
+        searchItem = menu.addItem(0, R.drawable.ic_ab_search).setIsSearchField(true).setActionBarMenuItemSearchListener(new ActionBarMenuItem.ActionBarMenuItemSearchListener() {
+            @Override
+            public void onSearchCollapse() {
+                avatarContainer.setVisibility(View.VISIBLE);
+                headerItem.setVisibility(View.VISIBLE);
+                searchItem.setVisibility(View.GONE);
+                highlightMessageId = Integer.MAX_VALUE;
+                updateVisibleRows();
+                scrollToLastMessage(false);
+                updateBottomOverlay();
+            }
+
+            @Override
+            public void onSearchExpand() {
+                if (!openSearchKeyboard) {
+                    return;
                 }
-
-                @Override
-                public void onSearchExpand() {
-                    if (!openSearchKeyboard) {
-                        return;
+                AndroidUtilities.runOnUIThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        searchItem.getSearchField().requestFocus();
+                        AndroidUtilities.showKeyboard(searchItem.getSearchField());
                     }
-                    AndroidUtilities.runOnUIThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            searchItem.getSearchField().requestFocus();
-                            AndroidUtilities.showKeyboard(searchItem.getSearchField());
-                            Toast.makeText(getParentActivity(), LocaleController.getString("NotYetImplemented", R.string.NotYetImplemented), Toast.LENGTH_LONG).show();
-                        }
-                    }, 300);
-                }
+                }, 300);
+            }
 
-                @Override
-                public void onSearchPressed(EditText editText) {
-                    updateSearchButtons(0, 0, 0);
-                    //MessagesSearchQuery.searchMessagesInChat(editText.getText().toString(), dialog_id, mergeDialogId, classGuid, 0);
-                }
-            });
-            searchItem.getSearchField().setHint(LocaleController.getString("Search", R.string.Search));
-            searchItem.setVisibility(View.GONE);
-        }
+            @Override
+            public void onTextChanged(EditText editText) {
+                handleSearch(SEARCH_QUERY, editText.getText().toString());
+            }
+        });
+        searchItem.getSearchField().setHint(LocaleController.getString("Search", R.string.Search));
+        searchItem.setVisibility(View.GONE);
+
 
         headerItem = menu.addItem(0, R.drawable.ic_ab_other);
         if (searchItem != null) {
-            headerItem.addSubItem(search, LocaleController.getString("Search", R.string.Search), 0);
+            headerItem.addSubItem(id_search, LocaleController.getString("Search", R.string.Search), 0);
         }
 
         boolean isChatWithDeaddrop = m_mrChat.getId()==MrChat.MR_CHAT_ID_DEADDROP;
@@ -585,7 +580,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         }
 
         if( m_canMute ) {
-            muteMenuEntry = headerItem.addSubItem(mute, null, 0);
+            muteMenuEntry = headerItem.addSubItem(id_mute, null, 0);
         }
 
         if( !isChatWithDeaddrop ) {
@@ -1014,7 +1009,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
             @Override
             public void onClick(View view) {
                 if (returnToMessageId > 0) {
-                    scrollToMessageId(returnToMessageId, 0, true);
+                    scrollToMessageId(returnToMessageId, true);
                 } else {
                     scrollToLastMessage(true);
                 }
@@ -1111,7 +1106,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         searchUpButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //MessagesSearchQuery.searchMessagesInChat(null, dialog_id, mergeDialogId, classGuid, 1);
+                handleSearch(SEARCH_UP, null);
             }
         });
 
@@ -1122,7 +1117,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         searchDownButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //MessagesSearchQuery.searchMessagesInChat(null, dialog_id, mergeDialogId, classGuid, 2);
+                handleSearch(SEARCH_DOWN, null);
             }
         });
 
@@ -1643,7 +1638,16 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         showDialog(builder.create());
     }
 
-    private void scrollToMessageId(int id, int fromMessageId, boolean select) {
+    private void scrollToMessageId(int id, boolean select) {
+        int i, icnt = m_msglist.length;
+        for( i = 0; i < icnt; i++ ) {
+            if( m_msglist[i]==id ) {
+                chatLayoutManager.scrollToPosition(i);
+                highlightMessageId = select? id : Integer.MAX_VALUE;
+                updateVisibleRows();
+                return;
+            }
+        }
     }
 
     private void showPagedownButton(boolean show, boolean animated) {
@@ -2236,29 +2240,82 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         {
             updateTitleIcons();
         }
-        else if (id == NotificationCenter.chatSearchResultsAvailable)
-        {
-            if (classGuid == (Integer) args[0]) {
-                int messageId = (Integer) args[1];
-                long did = (Long) args[3];
-                if (messageId != 0) {
-                    scrollToMessageId(messageId, 0, true);
-                }
-                updateSearchButtons((Integer) args[2], (Integer) args[4], (Integer) args[5]);
-            }
-        }
     }
 
-    private void updateSearchButtons(int mask, int num, int count) {
+    private static final int SEARCH_QUERY      = 0;
+    private static final int SEARCH_QUERY_CONT = 1;
+    private static final int SEARCH_UP         = 2;
+    private static final int SEARCH_DOWN       = 3;
+    private String m_lastSearchQuery = "";
+    private int[] m_searchResult = {};
+    private int   m_searchIndex = -1;
+    private void handleSearch(int action, String query)
+    {
+        if( action==SEARCH_QUERY ) {
+            if( query==null ) {query="";}
+            if (!query.equals(m_lastSearchQuery)) {
+                m_lastSearchQuery = query;
+                Utilities.searchQueue.postRunnable(new Runnable() {
+                   @Override
+                   public void run() {
+                       final int temp[] = MrMailbox.searchMsgs((int) dialog_id, m_lastSearchQuery);
+                       AndroidUtilities.runOnUIThread(new Runnable() {
+                           @Override
+                           public void run() {
+                               int state = searchItem.getVisibility();
+                               if( actionBar.isSearchFieldVisible() ) {
+                                   m_searchResult = temp;
+                                   if (m_searchResult.length > 0) {
+                                       m_searchIndex = 0;
+                                   } else {
+                                       m_searchIndex = -1;
+                                   }
+                                   handleSearch(SEARCH_QUERY_CONT, null);
+                               }
+                           }
+                       });
+                   }
+                });
+            }
+            return;
+        }
+        else if( action==SEARCH_UP ) {
+            if( m_searchResult.length>0 ) {
+                m_searchIndex = Math.max(m_searchIndex-1, 0);
+            }
+        }
+        else if( action==SEARCH_DOWN ) {
+            if( m_searchResult.length>0 ) {
+                m_searchIndex = Math.min(m_searchIndex+1, m_searchResult.length-1);
+            }
+        }
+
+        if( m_searchIndex>=0 && m_searchIndex<m_searchResult.length ) {
+            scrollToMessageId(m_searchResult[m_searchIndex], true);
+        }
+        else {
+            highlightMessageId = Integer.MAX_VALUE;
+            updateVisibleRows();
+        }
+
+        boolean enableUp = false, enableDown = false;
+        if( m_searchResult.length>0 ) {
+            enableUp = m_searchIndex > 0;
+            enableDown = m_searchIndex < m_searchResult.length-1;
+        }
+        updateSearchButtons(enableUp, enableDown, m_searchIndex+1, m_searchResult.length);
+    }
+
+    private void updateSearchButtons(boolean enableUp, boolean enableDown, int num, int count) {
         if (searchUpButton != null) {
-            searchUpButton.setEnabled((mask & 1) != 0);
-            searchDownButton.setEnabled((mask & 2) != 0);
-            searchUpButton.setAlpha(searchUpButton.isEnabled() ? 1.0f : 0.5f);
-            searchDownButton.setAlpha(searchDownButton.isEnabled() ? 1.0f : 0.5f);
+            searchUpButton.setEnabled(enableUp);
+            searchDownButton.setEnabled(enableDown);
+            searchUpButton.setAlpha(enableUp? 1.0f : 0.4f);
+            searchDownButton.setAlpha(enableDown? 1.0f : 0.4f);
             if (count == 0) {
                 searchCountText.setText("");
             } else {
-                searchCountText.setText(LocaleController.formatString("Of", R.string.Of, num + 1, count));
+                searchCountText.setText(String.format("%d/%d", num, count));
             }
         }
     }
@@ -2707,16 +2764,15 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
     private void openSearchWithText(String text) {
         avatarContainer.setVisibility(View.GONE);
         headerItem.setVisibility(View.GONE);
-        //attachItem.setVisibility(View.GONE);
         searchItem.setVisibility(View.VISIBLE);
-        updateSearchButtons(0, 0, 0);
+        updateSearchButtons(false, false, 0, 0);
         updateBottomOverlay();
         openSearchKeyboard = text == null;
         searchItem.openSearch(openSearchKeyboard);
         if (text != null) {
             searchItem.getSearchField().setText(text);
             searchItem.getSearchField().setSelection(searchItem.getSearchField().length());
-            //MessagesSearchQuery.searchMessagesInChat(text, dialog_id, mergeDialogId, classGuid, 0);
+            handleSearch(SEARCH_QUERY, text);
         }
     }
 
@@ -2998,7 +3054,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     @Override
                     public void didPressedReplyMessage(ChatMessageCell cell, int id) {
                         MessageObject messageObject = cell.getMessageObject();
-                        scrollToMessageId(id, messageObject.getId(), true);
+                        scrollToMessageId(id, true);
                     }
 
                     @Override
