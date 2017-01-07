@@ -583,4 +583,5 @@
     <string name="AdvancedSettings">Fortgeschrittene Einstellungen</string>
     <string name="CannotConnect"></string>
     <string name="AskResetNotifications">Alle Benachrichtigungseinstellungen und Töne dieser Seite, der Kontakte und der Gruppen zurücksetzen?</string>
+    <string name="SendFiles">Dateien senden</string>
 </resources>

@@ -134,7 +134,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
     private FrameLayout bottomOverlay;
     protected ChatActivityEnterView chatActivityEnterView;
     private ActionBarMenuItem menuItem;
-    private ActionBarMenuItem attachItem;
     private ActionBarMenuItem headerItem;
     private ActionBarMenuItem searchItem;
     private LinearLayoutManager chatLayoutManager;
@@ -200,7 +199,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
     private final static int id_copy = 10;
     private final static int id_forward = 11;
     private final static int id_delete_messages = 12;
-    private final static int chat_menu_attach = 14;
+    private final static int id_attach = 14;
     private final static int id_delete_chat = 16;
     private final static int mute = 18;
     private final static int id_reply = 19;
@@ -512,7 +511,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     }
                     actionBar.hideActionMode();
                     updateVisibleRows();
-                } else if (id == chat_menu_attach) {
+                } else if (id == id_attach) {
                     if (getParentActivity() == null) {
                         return;
                     }
@@ -541,21 +540,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 @Override
                 public void onSearchCollapse() {
                     avatarContainer.setVisibility(View.VISIBLE);
-                    if (chatActivityEnterView.hasText()) {
-                        if (headerItem != null) {
-                            headerItem.setVisibility(View.GONE);
-                        }
-                        if (attachItem != null) {
-                            attachItem.setVisibility(View.VISIBLE);
-                        }
-                    } else {
-                        if (headerItem != null) {
-                            headerItem.setVisibility(View.VISIBLE);
-                        }
-                        if (attachItem != null) {
-                            attachItem.setVisibility(View.GONE);
-                        }
-                    }
+                    headerItem.setVisibility(View.VISIBLE);
                     searchItem.setVisibility(View.GONE);
                     highlightMessageId = Integer.MAX_VALUE;
                     updateVisibleRows();
@@ -604,6 +589,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         }
 
         if( !isChatWithDeaddrop ) {
+            headerItem.addSubItem(id_attach, LocaleController.getString("SendFiles", R.string.SendFiles), 0);
             if (m_mrChat.getType() == MrChat.MR_CHAT_GROUP) {
                 headerItem.addSubItem(id_delete_chat, LocaleController.getString("DeleteAndExit", R.string.DeleteAndExit), 0);
             } else {
@@ -615,9 +601,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         avatarContainer.updateSubtitle();
         updateTitleIcons();
 
-        attachItem = menu.addItem(chat_menu_attach, R.drawable.ic_ab_other).setOverrideMenuClick(true).setAllowCloseAnimation(false);
-        attachItem.setVisibility(View.GONE);
-        menuItem = menu.addItem(chat_menu_attach, R.drawable.ic_ab_attach).setAllowCloseAnimation(false);
+        menuItem = menu.addItem(id_attach, R.drawable.ic_ab_attach).setAllowCloseAnimation(false); // "menuItem" is added to ChatEnterViewActivity
         menuItem.setBackgroundDrawable(null);
 
         actionModeViews.clear();
@@ -1102,34 +1086,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
             }
 
             @Override
-            public void onAttachButtonHidden() {
-                if (actionBar.isSearchFieldVisible()) {
-                    return;
-                }
-                if (attachItem != null) {
-                    attachItem.setVisibility(View.VISIBLE);
-                }
-                if (headerItem != null) {
-                    headerItem.setVisibility(View.GONE);
-                }
-            }
-
-            @Override
-            public void onAttachButtonShow() {
-                if (actionBar.isSearchFieldVisible()) {
-                    return;
-                }
-                if (attachItem != null) {
-                    attachItem.setVisibility(View.GONE);
-                }
-                if (headerItem != null) {
-                    headerItem.setVisibility(View.VISIBLE);
-                }
-            }
-
-            @Override
             public void onWindowSizeChanged(int size) {
-
             }
 
             @Override
@@ -2750,7 +2707,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
     private void openSearchWithText(String text) {
         avatarContainer.setVisibility(View.GONE);
         headerItem.setVisibility(View.GONE);
-        attachItem.setVisibility(View.GONE);
+        //attachItem.setVisibility(View.GONE);
         searchItem.setVisibility(View.VISIBLE);
         updateSearchButtons(0, 0, 0);
         updateBottomOverlay();

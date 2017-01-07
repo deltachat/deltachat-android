@@ -94,8 +94,8 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
         void onMessageSend(CharSequence message);
         void needSendTyping();
         void onTextChanged(CharSequence text, boolean bigChange);
-        void onAttachButtonHidden();
-        void onAttachButtonShow();
+        //void onAttachButtonHidden();
+        //void onAttachButtonShow();
         void onWindowSizeChanged(int size);
         void onStickersTab(boolean opened);
         //void onMessageEditEnd(boolean loading);
@@ -1308,9 +1308,9 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
                         });
                         runningAnimation2.start();
                         updateFieldRight(0);
-                        if (delegate != null) {
+                        /*if (delegate != null) {
                             delegate.onAttachButtonHidden();
-                        }
+                        }*/
                     }
 
                     runningAnimation = new AnimatorSet();
@@ -1397,9 +1397,9 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
                     audioSendButton.setVisibility(GONE);
                     if (attachButton != null) {
                         attachButton.setVisibility(GONE);
-                        if (delegate != null) {
+                        /*if (delegate != null) {
                             delegate.onAttachButtonHidden();
-                        }
+                        }*/
                         updateFieldRight(0);
                     }
                 }
@@ -1429,7 +1429,7 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
                     runningAnimation2.setDuration(100);
                     runningAnimation2.start();
                     updateFieldRight(1);
-                    delegate.onAttachButtonShow();
+                    //delegate.onAttachButtonShow();
                 }
 
                 audioSendButton.setVisibility(VISIBLE);
@@ -1486,7 +1486,7 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
                 sendButton.setVisibility(GONE);
                 audioSendButton.setVisibility(VISIBLE);
                 if (attachButton != null) {
-                    delegate.onAttachButtonShow();
+                    //delegate.onAttachButtonShow();
                     attachButton.setVisibility(VISIBLE);
                     updateFieldRight(1);
                 }
