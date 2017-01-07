@@ -95,10 +95,7 @@ public class MrMailbox {
 
 
     // contacts
-    public static int[] getKnownContacts(String query) {
-        return MrMailboxGetKnownContacts(m_hMailbox, query);
-    }
-
+    public native static int[] getKnownContacts(String query);
     public native static int   getBlockedCount();
     public native static int[] getBlockedContacts();
 
@@ -122,7 +119,6 @@ public class MrMailbox {
         return MrMailboxAddAddressBook(m_hMailbox, adrbook);
     }
 
-    private native static int[]   MrMailboxGetKnownContacts  (long hMailbox, String query);
     private native static long    MrMailboxGetContact        (long hMailbox, int id);// returns hContact which must be unref'd after usage
     private native static int     MrMailboxCreateContact     (long hMailbox, String name, String addr);
     private native static int     MrMailboxBlockContact      (long hMailbox, int id, int block);
@@ -152,6 +148,8 @@ public class MrMailbox {
 
     public final static int MR_GCM_ADDDAYMARKER = 0x01;
     public native static int[] getChatMsgs(int chat_id, int flags, int marker1before);
+
+    public native static int[] searchMsgs(int chat_id, String query);
 
     public native static int[] getUnseenMsgs();
 

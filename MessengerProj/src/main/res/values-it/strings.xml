@@ -61,7 +61,6 @@
     <string name="ForwardedMessage">Messaggio inoltrato</string>
     <string name="From">Da</string>
     <string name="NoRecent">Nessun recente</string>
-    <string name="Message">Messaggio</string>
     <string name="TypeMessage">Messaggi</string>
     <string name="YouWereKicked">Sei stato rimosso da questo gruppo</string>
     <string name="YouLeft">Hai lasciato il gruppo</string>
@@ -69,19 +68,15 @@
     <string name="DeleteThisChat">Elimina questa chat</string>
     <string name="SlideToCancel">ANNULLA</string>
     <string name="SaveToDownloads">Salva nei download</string>
-    <string name="SaveToGIFs">Salva nelle GIF</string>
     <string name="DeleteGif">Eliminare GIF?</string>
     <string name="SaveToMusic">Salva nella musica</string>
     <string name="ShareFile">Condividi</string>
-    <string name="ApplyLocalizationFile">Applica traduzione</string>
     <string name="UnsupportedAttachment">Allegato non supportato</string>
     <string name="OpenInBrowser">APRI IN...</string>
-    <string name="CopyUrl">Copia URL</string>
     <string name="SendItems">Invia %1$s</string>
     <string name="OpenUrlAlert">Aprire url %1$s?</string>
     <string name="MoreInfo">Maggiori info</string>
     <string name="ShareSendTo">Invia a...</string>
-    <string name="TapHereGifs">Premi qui per accedere alle GIF salvate</string>
     <string name="ClearRecentEmoji">Cancellare le emoji recenti?</string>
     <string name="AddShortcut">Aggiungi scorciatoia</string>
     <string name="ShortcutAdded">Scorciatoia aggiunta alla schermata home</string>
@@ -337,7 +332,7 @@
     <string name="Add">Aggiungi</string>
     <string name="Edit">Modifica</string>
     <string name="Send">Invia</string>
-    <string name="Copy">Copia</string>
+    <string name="CopyToClipboard">Copia</string>
     <string name="Delete">Elimina</string>
     <string name="Forward">Inoltra</string>
     <string name="Retry">Riprova</string>

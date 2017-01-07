@@ -61,7 +61,6 @@
     <string name="ForwardedMessage">Forwarded message</string>
     <string name="From">From</string>
     <string name="NoRecent">No recent</string>
-    <string name="Message">Message</string>
     <string name="TypeMessage">Message</string>
     <string name="YouWereKicked">You were removed from this group</string>
     <string name="YouLeft">You left this group</string>
@@ -69,19 +68,15 @@
     <string name="DeleteThisChat">Delete this chat</string>
     <string name="SlideToCancel">SLIDE TO CANCEL</string>
     <string name="SaveToDownloads">Save to downloads</string>
-    <string name="SaveToGIFs">Save to GIFs</string>
     <string name="DeleteGif">Delete GIF?</string>
     <string name="SaveToMusic">Save to music</string>
     <string name="ShareFile">Share</string>
-    <string name="ApplyLocalizationFile">Apply localization file</string>
     <string name="UnsupportedAttachment">Unsupported attachment</string>
     <string name="OpenInBrowser">OPEN IN...</string>
-    <string name="CopyUrl">Copy URL</string>
     <string name="SendItems">Send %1$s</string>
     <string name="OpenUrlAlert">Open url %1$s?</string>
     <string name="MoreInfo">More info</string>
     <string name="ShareSendTo">Send to...</string>
-    <string name="TapHereGifs">Tap here to access saved GIFs</string>
     <string name="ClearRecentEmoji">Clear recent emoji?</string>
     <string name="AddShortcut">Add widget to home screen</string>
     <string name="ShortcutAdded">Widget added to home screen</string>
@@ -336,7 +331,7 @@
     <string name="Add">Add</string>
     <string name="Edit">Edit</string>
     <string name="Send">Send</string>
-    <string name="Copy">Copy</string>
+    <string name="CopyToClipboard">Copy to clipboard</string>
     <string name="Delete">Delete</string>
     <string name="Forward">Forward</string>
     <string name="Retry">Retry</string>

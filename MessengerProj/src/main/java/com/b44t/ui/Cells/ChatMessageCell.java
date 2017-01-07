@@ -87,7 +87,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
         void didLongPressed(ChatMessageCell cell);
         void didPressedReplyMessage(ChatMessageCell cell, int id);
         void didPressedUrl(MessageObject messageObject, ClickableSpan url, boolean longPress);
-        void needOpenWebView(String url, String title, String description, String originalUrl, int w, int h);
+        //void needOpenWebView(String url, String title, String description, String originalUrl, int w, int h);
         void didPressedImage(ChatMessageCell cell);
         void didPressedShare(ChatMessageCell cell);
         void didPressedOther(ChatMessageCell cell);
@@ -1174,9 +1174,9 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
         } else if (documentAttachType == DOCUMENT_ATTACH_TYPE_GIF) {
             if (buttonState == -1) {
                 TLRPC.WebPage webPage = currentMessageObject.messageOwner.media.webpage;
-                if (Build.VERSION.SDK_INT >= 16 && webPage.embed_url != null && webPage.embed_url.length() != 0) {
+                /*if (Build.VERSION.SDK_INT >= 16 && webPage.embed_url != null && webPage.embed_url.length() != 0) {
                     delegate.needOpenWebView(webPage.embed_url, webPage.site_name, webPage.description, webPage.url, webPage.embed_width, webPage.embed_height);
-                } else {
+                } else*/ {
                     Browser.openUrl(getContext(), webPage.url);
                 }
             }

@@ -118,7 +118,6 @@ import com.b44t.ui.ActionBar.Theme;
 import com.b44t.ui.Components.URLSpanNoUnderline;
 import com.b44t.ui.Components.URLSpanReplacement;
 import com.b44t.ui.Components.URLSpanUserMention;
-import com.b44t.ui.Components.WebFrameLayout;
 
 import java.io.File;
 import java.net.URLDecoder;
@@ -3408,7 +3407,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                             final String urlFinal = ((URLSpan) url).getURL();
                             if (longPress) {
                                 AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
-                                builder.setItems(new CharSequence[]{LocaleController.getString("Open", R.string.Open), LocaleController.getString("Copy", R.string.Copy)}, new DialogInterface.OnClickListener() {
+                                builder.setItems(new CharSequence[]{LocaleController.getString("Open", R.string.Open), LocaleController.getString("CopyToClipboard", R.string.CopyToClipboard)}, new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, final int which) {
                                         if (which == 0) {
@@ -3431,13 +3430,13 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                         }
                     }
 
-                    @Override
+                    /*@Override
                     public void needOpenWebView(String url, String title, String description, String originalUrl, int w, int h) {
                         BottomSheet.Builder builder = new BottomSheet.Builder(mContext);
                         builder.setCustomView(new WebFrameLayout(mContext, builder.create(), title, description, originalUrl, url, w, h));
                         builder.setUseFullWidth(true);
                         showDialog(builder.create());
-                    }
+                    }*/
 
                     @Override
                     public void didPressedReplyMessage(ChatMessageCell cell, int id) {

@@ -61,7 +61,6 @@
     <string name="ForwardedMessage">Doorgestuurd bericht</string>
     <string name="From">Van</string>
     <string name="NoRecent">Niets recents</string>
-    <string name="Message">Bericht</string>
     <string name="TypeMessage">Bericht</string>
     <string name="YouWereKicked">Je bent verwijderd uit deze groep</string>
     <string name="YouLeft">Je hebt deze groep verlaten</string>
@@ -69,19 +68,15 @@
     <string name="DeleteThisChat">Chat verwijderen</string>
     <string name="SlideToCancel">SLEEP OM TE ANNULEREN</string>
     <string name="SaveToDownloads">Opslaan in Downloads</string>
-    <string name="SaveToGIFs">GIF opslaan</string>
     <string name="DeleteGif">GIF verwijderen?</string>
     <string name="SaveToMusic">Opslaan in muziek</string>
     <string name="ShareFile">Delen</string>
-    <string name="ApplyLocalizationFile">Vertaling toepassen</string>
     <string name="UnsupportedAttachment">Bestandstype niet ondersteund</string>
     <string name="OpenInBrowser">OPENEN IN...</string>
-    <string name="CopyUrl">Link kopiëren</string>
     <string name="SendItems">%1$s versturen</string>
     <string name="OpenUrlAlert">URL %1$s openen?</string>
     <string name="MoreInfo">Meer informatie</string>
     <string name="ShareSendTo">Versturen naar...</string>
-    <string name="TapHereGifs">Tik hier om opgeslagen GIF\'s te bekijken</string>
     <string name="ClearRecentEmoji">Recente emoji\'s wissen?</string>
     <string name="AddShortcut">Snelkoppeling toevoegen</string>
     <string name="ShortcutAdded">Snelkoppeling aan startscherm toegevoegd</string>
@@ -337,7 +332,7 @@
     <string name="Add">Toevoegen</string>
     <string name="Edit">Wijzig</string>
     <string name="Send">Stuur</string>
-    <string name="Copy">Kopieer</string>
+    <string name="CopyToClipboard">Kopieer</string>
     <string name="Delete">Verwijder</string>
     <string name="Forward">Doorsturen</string>
     <string name="Retry">Opnieuw proberen</string>

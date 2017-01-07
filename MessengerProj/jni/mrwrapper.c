@@ -250,10 +250,10 @@ JNIEXPORT jstring Java_com_b44t_messenger_MrMailbox_getErrorDescr(JNIEnv *env, j
 
 /* MrMailbox - handle contacts */
 
-JNIEXPORT jintArray Java_com_b44t_messenger_MrMailbox_MrMailboxGetKnownContacts(JNIEnv *env, jclass c, jlong hMailbox, jstring query)
+JNIEXPORT jintArray Java_com_b44t_messenger_MrMailbox_getKnownContacts(JNIEnv *env, jclass cls, jstring query)
 {
-    CHAR_REF(query);
-	    carray* ca = mrmailbox_get_known_contacts((mrmailbox_t*)hMailbox, queryPtr);
+	CHAR_REF(query);
+	    carray* ca = mrmailbox_get_known_contacts(get_mrmailbox_t(env, cls), queryPtr);
 	CHAR_UNREF(query);
 	return carray2jintArray_n_carray_free(env, ca);
 }
@@ -610,6 +610,15 @@ JNIEXPORT jintArray Java_com_b44t_messenger_MrMailbox_MrMailboxGetChatMedia(JNIE
 JNIEXPORT jintArray Java_com_b44t_messenger_MrMailbox_getChatMsgs(JNIEnv *env, jclass cls, jint chat_id, jint flags, jint marker1before)
 {
 	carray* ca = mrmailbox_get_chat_msgs(get_mrmailbox_t(env, cls), chat_id, flags, marker1before);
+	return carray2jintArray_n_carray_free(env, ca);
+}
+
+
+JNIEXPORT jintArray Java_com_b44t_messenger_MrMailbox_searchMsgs(JNIEnv *env, jclass cls, jint chat_id, jstring query)
+{
+	CHAR_REF(query);
+		carray* ca = mrmailbox_search_msgs(get_mrmailbox_t(env, cls), chat_id, queryPtr);
+	CHAR_UNREF(query);
 	return carray2jintArray_n_carray_free(env, ca);
 }
 

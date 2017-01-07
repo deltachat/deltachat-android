@@ -61,7 +61,6 @@
     <string name="ForwardedMessage">Weitergeleitete Nachricht</string>
     <string name="From">Von</string>
     <string name="NoRecent">Keine aktuellen</string>
-    <string name="Message">Nachricht</string>
     <string name="TypeMessage">Nachricht</string>
     <string name="YouWereKicked">Du wurdest aus der Gruppe entfernt</string>
     <string name="YouLeft">Du hast die Gruppe verlassen</string>
@@ -69,19 +68,15 @@
     <string name="DeleteThisChat">Diesen Chat löschen</string>
     <string name="SlideToCancel">WISCHEN UM ABZUBRECHEN</string>
     <string name="SaveToDownloads">In Downloads speichern</string>
-    <string name="SaveToGIFs">GIF hinzufügen</string>
     <string name="DeleteGif">GIF löschen?</string>
     <string name="SaveToMusic">Musik speichern</string>
     <string name="ShareFile">Teilen</string>
-    <string name="ApplyLocalizationFile">Sprachdatei benutzen</string>
     <string name="UnsupportedAttachment">Nicht unterstützte Datei</string>
     <string name="OpenInBrowser">ÖFFNEN MIT...</string>
-    <string name="CopyUrl">URL kopieren</string>
     <string name="SendItems">%1$s senden</string>
     <string name="OpenUrlAlert">URL %1$s öffnen?</string>
     <string name="MoreInfo">Mehr Infos</string>
     <string name="ShareSendTo">Sende an...</string>
-    <string name="TapHereGifs">Hier tippen um gespeicherte GIFs zu sehen</string>
     <string name="ClearRecentEmoji">Zuletzt benutzte Emoji leeren?</string>
     <string name="AddShortcut">Auf Startbildschirm platzieren</string>
     <string name="ShortcutAdded">Widget zum Startbildschirm hinzugefügt</string>
@@ -337,7 +332,7 @@
     <string name="Add">Hinzufügen</string>
     <string name="Edit">Bearbeiten</string>
     <string name="Send">Senden</string>
-    <string name="Copy">Kopieren</string>
+    <string name="CopyToClipboard">Auf Zwischenablage kopieren</string>
     <string name="Delete">Löschen</string>
     <string name="Forward">Weiterleiten</string>
     <string name="Retry">Erneut versuchen</string>
