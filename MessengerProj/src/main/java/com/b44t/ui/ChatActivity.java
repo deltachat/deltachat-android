@@ -154,10 +154,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
     private ChatAttachAlert chatAttachAlert;
     private PlayerView playerView;
     private TextView alertTextView;
-    private FrameLayout searchContainer;
-    private ImageView searchUpButton;
-    private ImageView searchDownButton;
-    private SimpleTextView searchCountText;
 
     private ObjectAnimator pagedownButtonAnimation;
     private ObjectAnimator iconAnimator;
@@ -522,7 +518,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     chatAttachAlert.init(ChatActivity.this);
                     showDialog(chatAttachAlert);
                 } else if (id == id_search) {
-                    openSearchWithText(null);
+                    openSearchWithText("");
                 }
             }
         });
@@ -532,7 +528,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
 
         ActionBarMenu menu = actionBar.createMenu();
 
-
         searchItem = menu.addItem(0, R.drawable.ic_ab_search).setIsSearchField(true).setActionBarMenuItemSearchListener(new ActionBarMenuItem.ActionBarMenuItemSearchListener() {
             @Override
             public void onSearchCollapse() {
@@ -540,6 +535,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 headerItem.setVisibility(View.VISIBLE);
                 searchItem.setVisibility(View.GONE);
                 highlightMessageId = Integer.MAX_VALUE;
+                m_searching = false;
                 updateVisibleRows();
                 scrollToLastMessage(false);
                 updateBottomOverlay();
@@ -562,6 +558,16 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
             @Override
             public void onTextChanged(EditText editText) {
                 handleSearch(SEARCH_QUERY, editText.getText().toString());
+            }
+
+            @Override
+            public void onUpPressed() {
+                handleSearch(SEARCH_UP, null);
+            }
+
+            @Override
+            public void onDownPressed() {
+                handleSearch(SEARCH_DOWN, null);
             }
         });
         searchItem.getSearchField().setHint(LocaleController.getString("Search", R.string.Search));
@@ -1088,44 +1094,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
             public void onStickersTab(boolean opened) {
             }
         });
-
-        searchContainer = new FrameLayout(context);
-        searchContainer.setBackgroundResource(R.drawable.compose_panel);
-        searchContainer.setVisibility(View.INVISIBLE);
-        searchContainer.setFocusable(true);
-        searchContainer.setFocusableInTouchMode(true);
-        searchContainer.setClickable(true);
-        searchContainer.setBackgroundResource(R.drawable.compose_panel);
-        searchContainer.setPadding(0, AndroidUtilities.dp(3), 0, 0);
-        contentView.addView(searchContainer, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, 51, Gravity.BOTTOM));
-
-        searchUpButton = new ImageView(context);
-        searchUpButton.setScaleType(ImageView.ScaleType.CENTER);
-        searchUpButton.setImageResource(R.drawable.search_up);
-        searchContainer.addView(searchUpButton, LayoutHelper.createFrame(48, 48));
-        searchUpButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                handleSearch(SEARCH_UP, null);
-            }
-        });
-
-        searchDownButton = new ImageView(context);
-        searchDownButton.setScaleType(ImageView.ScaleType.CENTER);
-        searchDownButton.setImageResource(R.drawable.search_down);
-        searchContainer.addView(searchDownButton, LayoutHelper.createFrame(48, 48, Gravity.LEFT | Gravity.TOP, 48, 0, 0, 0));
-        searchDownButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                handleSearch(SEARCH_DOWN, null);
-            }
-        });
-
-        searchCountText = new SimpleTextView(context);
-        searchCountText.setTextColor(Theme.CHAT_SEARCH_COUNT_TEXT_COLOR);
-        searchCountText.setTextSize(15);
-        searchCountText.setTypeface(AndroidUtilities.getTypeface("fonts/rmedium.ttf"));
-        searchContainer.addView(searchCountText, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.LEFT | Gravity.CENTER_VERTICAL, 108, 0, 0, 0));
 
         bottomOverlay = new FrameLayout(context);
         bottomOverlay.setVisibility(View.INVISIBLE);
@@ -2242,6 +2210,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         }
     }
 
+    private boolean m_searching = false;
     private static final int SEARCH_QUERY      = 0;
     private static final int SEARCH_QUERY_CONT = 1;
     private static final int SEARCH_UP         = 2;
@@ -2251,8 +2220,10 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
     private int   m_searchIndex = -1;
     private void handleSearch(int action, String query)
     {
+        m_searching = true;
         if( action==SEARCH_QUERY ) {
             if( query==null ) {query="";}
+            query = query.trim();
             if (!query.equals(m_lastSearchQuery)) {
                 m_lastSearchQuery = query;
                 Utilities.searchQueue.postRunnable(new Runnable() {
@@ -2262,8 +2233,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                        AndroidUtilities.runOnUIThread(new Runnable() {
                            @Override
                            public void run() {
-                               int state = searchItem.getVisibility();
-                               if( actionBar.isSearchFieldVisible() ) {
+                               if( m_searching ) {
                                    m_searchResult = temp;
                                    if (m_searchResult.length > 0) {
                                        m_searchIndex = 0;
@@ -2295,28 +2265,18 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         }
         else {
             highlightMessageId = Integer.MAX_VALUE;
-            updateVisibleRows();
         }
+        updateVisibleRows();
+        chatListView.invalidate();
 
-        boolean enableUp = false, enableDown = false;
-        if( m_searchResult.length>0 ) {
-            enableUp = m_searchIndex > 0;
-            enableDown = m_searchIndex < m_searchResult.length-1;
-        }
-        updateSearchButtons(enableUp, enableDown, m_searchIndex+1, m_searchResult.length);
-    }
-
-    private void updateSearchButtons(boolean enableUp, boolean enableDown, int num, int count) {
-        if (searchUpButton != null) {
-            searchUpButton.setEnabled(enableUp);
-            searchDownButton.setEnabled(enableDown);
-            searchUpButton.setAlpha(enableUp? 1.0f : 0.4f);
-            searchDownButton.setAlpha(enableDown? 1.0f : 0.4f);
-            if (count == 0) {
-                searchCountText.setText("");
-            } else {
-                searchCountText.setText(String.format("%d/%d", num, count));
-            }
+        if( m_lastSearchQuery.isEmpty() ) {
+            searchItem.setExtraSearchInfo("", true, false, false);
+        } else if (m_searchResult.length == 0) {
+            searchItem.setExtraSearchInfo("0/0", true, false, false);
+        } else {
+            boolean enableUp = m_searchIndex > 0;
+            boolean enableDown = m_searchIndex < m_searchResult.length-1;
+            searchItem.setExtraSearchInfo(String.format("%d/%d", m_searchIndex+1, m_searchResult.length), true, enableUp, enableDown);
         }
     }
 
@@ -2351,12 +2311,10 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         bottomOverlayChatText.setText("");
 
         if (searchItem != null && searchItem.getVisibility() == View.VISIBLE) {
-            searchContainer.setVisibility(View.VISIBLE);
             bottomOverlayChat.setVisibility(View.INVISIBLE);
             chatActivityEnterView.setFieldFocused(false);
             chatActivityEnterView.setVisibility(View.INVISIBLE);
         } else {
-            searchContainer.setVisibility(View.INVISIBLE);
             {
                 if (m_mrChat.getId()==MrChat.MR_CHAT_ID_DEADDROP) {
                     if( m_msglist.length==0 ) {
@@ -2380,7 +2338,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
     }
 
     private void checkRaiseSensors() {
-        if (!ApplicationLoader.mainInterfacePaused && (bottomOverlayChat == null || bottomOverlayChat.getVisibility() != View.VISIBLE) && (bottomOverlay == null || bottomOverlay.getVisibility() != View.VISIBLE) && (searchContainer == null || searchContainer.getVisibility() != View.VISIBLE)) {
+        if (!ApplicationLoader.mainInterfacePaused && (bottomOverlayChat == null || bottomOverlayChat.getVisibility() != View.VISIBLE) && (bottomOverlay == null || bottomOverlay.getVisibility() != View.VISIBLE) ) {
             MediaController.getInstance().setAllowStartRecord(true);
         } else {
             MediaController.getInstance().setAllowStartRecord(false);
@@ -2717,9 +2675,9 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 cell.setMessageObject(cell.getMessageObject());
                 cell.setCheckPressed(!disableSelection, disableSelection && selected);
                 cell.setHighlighted(highlightMessageId != Integer.MAX_VALUE && cell.getMessageObject() != null && cell.getMessageObject().getId() == highlightMessageId);
-                /*if (searchContainer != null && searchContainer.getVisibility() == View.VISIBLE && MessagesSearchQuery.getLastSearchQuery() != null) {
-                    cell.setHighlightedText(MessagesSearchQuery.getLastSearchQuery());
-                } else*/ {
+                if ( m_searching && !m_lastSearchQuery.isEmpty() ) {
+                    cell.setHighlightedText(m_lastSearchQuery);
+                } else {
                     cell.setHighlightedText(null);
                 }
             } else if (view instanceof ChatActionCell) {
@@ -2765,15 +2723,13 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         avatarContainer.setVisibility(View.GONE);
         headerItem.setVisibility(View.GONE);
         searchItem.setVisibility(View.VISIBLE);
-        updateSearchButtons(false, false, 0, 0);
         updateBottomOverlay();
-        openSearchKeyboard = text == null;
+        openSearchKeyboard = true;
         searchItem.openSearch(openSearchKeyboard);
-        if (text != null) {
-            searchItem.getSearchField().setText(text);
-            searchItem.getSearchField().setSelection(searchItem.getSearchField().length());
-            handleSearch(SEARCH_QUERY, text);
-        }
+        searchItem.getSearchField().setText(text);
+        searchItem.getSearchField().setSelection(searchItem.getSearchField().length());
+        searchItem.setExtraSearchInfo("", true, false, false);
+        handleSearch(SEARCH_QUERY, text);
     }
 
     @Override
@@ -3246,6 +3202,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                         return true;
                     }
                 });
+
                 messageCell.setHighlighted(highlightMessageId != Integer.MAX_VALUE && messageCell.getMessageObject().getId() == highlightMessageId);
             }
         }

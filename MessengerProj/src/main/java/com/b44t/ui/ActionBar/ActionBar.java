@@ -65,7 +65,6 @@ public class ActionBar extends FrameLayout {
     private boolean actionModeVisible;
     private boolean addToContainer = true;
     private boolean interceptTouches = true;
-    private int extraHeight;
     private AnimatorSet actionModeAnimation;
 
     private boolean allowOverlayTitle;
@@ -381,10 +380,6 @@ public class ActionBar extends FrameLayout {
         interceptTouches = value;
     }
 
-    public void setExtraHeight(int value) {
-        extraHeight = value;
-    }
-
     public void closeSearchField() {
         if (!isSearchFieldVisible || menu == null) {
             return;
@@ -406,7 +401,7 @@ public class ActionBar extends FrameLayout {
         int actionBarHeight = getCurrentActionBarHeight();
         int actionBarHeightSpec = MeasureSpec.makeMeasureSpec(actionBarHeight, MeasureSpec.EXACTLY);
 
-        setMeasuredDimension(width, actionBarHeight + (occupyStatusBar ? AndroidUtilities.statusBarHeight : 0) + extraHeight);
+        setMeasuredDimension(width, actionBarHeight + (occupyStatusBar ? AndroidUtilities.statusBarHeight : 0));
 
         int textLeft;
         if (backButtonImageView != null && backButtonImageView.getVisibility() != GONE) {

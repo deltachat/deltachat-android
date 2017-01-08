@@ -70,6 +70,12 @@ public class ActionBarMenuItem extends FrameLayout {
 
         public void onSearchPressed(EditText editText) {
         }
+
+        public void onUpPressed() {
+        }
+
+        public void onDownPressed() {
+        }
     }
 
     public interface ActionBarMenuItemDelegate {
@@ -80,9 +86,11 @@ public class ActionBarMenuItem extends FrameLayout {
     private ActionBarMenu parentMenu;
     private ActionBarPopupWindow popupWindow;
     private EditText searchField;
-    private ImageView clearButton;
+    private ImageView searchUpButton;
+    private ImageView searchDownButton;
+    private SimpleTextView searchCountText;
     protected ImageView iconView;
-    private FrameLayout searchContainer;
+    private LinearLayout searchContainer;
     private boolean isSearchField = false;
     private ActionBarMenuItemSearchListener listener;
     private Rect rect;
@@ -399,7 +407,7 @@ public class ActionBarMenuItem extends FrameLayout {
             return this;
         }
         if (value && searchContainer == null) {
-            searchContainer = new FrameLayout(getContext());
+            searchContainer = new LinearLayout(getContext());
             parentMenu.addView(searchContainer, 0);
             LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) searchContainer.getLayoutParams();
             layoutParams.weight = 1;
@@ -458,9 +466,6 @@ public class ActionBarMenuItem extends FrameLayout {
                     if (listener != null) {
                         listener.onTextChanged(searchField);
                     }
-                    if (clearButton != null) {
-                        clearButton.setVisibility(s==null||s.length()==0? GONE : VISIBLE); // hide the X-button completely if unused - otherwise one gets confused with the close-searchbar-functionality (originally, we use setAlpha() for graying out)
-                    }
                 }
 
                 @Override
@@ -478,34 +483,67 @@ public class ActionBarMenuItem extends FrameLayout {
             }
             searchField.setImeOptions(EditorInfo.IME_FLAG_NO_FULLSCREEN | EditorInfo.IME_ACTION_SEARCH);
             searchField.setTextIsSelectable(false);
-            searchContainer.addView(searchField);
-            FrameLayout.LayoutParams layoutParams2 = (FrameLayout.LayoutParams) searchField.getLayoutParams();
-            layoutParams2.width = LayoutHelper.MATCH_PARENT;
-            layoutParams2.gravity = Gravity.CENTER_VERTICAL;
-            layoutParams2.height = AndroidUtilities.dp(36);
-            layoutParams2.rightMargin = AndroidUtilities.dp(48);
-            searchField.setLayoutParams(layoutParams2);
+            searchContainer.addView(searchField, LayoutHelper.createLinear(48, 48, 10.0f, Gravity.CENTER_VERTICAL));
 
-            clearButton = new ImageView(getContext());
-            clearButton.setImageResource(R.drawable.ic_close_white);
-            clearButton.setScaleType(ImageView.ScaleType.CENTER);
-            clearButton.setOnClickListener(new OnClickListener() {
+            searchCountText = new SimpleTextView(getContext());
+            searchCountText.setTextColor(Theme.ACTION_BAR_SUBTITLE_COLOR);
+            searchCountText.setTextSize(14);
+            searchCountText.setText("1/10");
+            searchCountText.setVisibility(View.GONE);
+            searchContainer.addView(searchCountText, LayoutHelper.createLinear(48, LayoutHelper.WRAP_CONTENT, Gravity.LEFT|Gravity.CENTER_VERTICAL));
+
+            searchUpButton = new ImageView(getContext());
+            searchUpButton.setImageResource(R.drawable.search_up);
+            searchUpButton.setScaleType(ImageView.ScaleType.CENTER);
+            searchContainer.addView(searchUpButton, LayoutHelper.createLinear(48, 48, Gravity.CENTER_VERTICAL));
+            searchUpButton.setVisibility(View.GONE);
+            searchUpButton.setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    searchField.setText("");
-                    searchField.requestFocus();
-                    AndroidUtilities.showKeyboard(searchField);
+                    listener.onUpPressed();
                 }
             });
-            searchContainer.addView(clearButton);
-            layoutParams2 = (FrameLayout.LayoutParams) clearButton.getLayoutParams();
-            layoutParams2.width = AndroidUtilities.dp(48);
-            layoutParams2.gravity = Gravity.CENTER_VERTICAL | Gravity.RIGHT;
-            layoutParams2.height = LayoutHelper.MATCH_PARENT;
-            clearButton.setLayoutParams(layoutParams2);
+
+            searchDownButton = new ImageView(getContext());
+            searchDownButton.setImageResource(R.drawable.search_down);
+            searchDownButton.setScaleType(ImageView.ScaleType.CENTER);
+            searchContainer.addView(searchDownButton, LayoutHelper.createLinear(48, 48, Gravity.CENTER_VERTICAL));
+            searchDownButton.setVisibility(View.GONE);
+            searchDownButton.setOnClickListener(new OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    listener.onDownPressed();
+                }
+            });
         }
         isSearchField = value;
         return this;
+    }
+
+    public void setExtraSearchInfo(String text, boolean upDown, boolean enableUp, boolean enableDown)
+    {
+        if( searchCountText!=null && searchUpButton!=null && searchDownButton!=null ) {
+            if( text!=null && !text.isEmpty() ) {
+                searchCountText.setVisibility(View.VISIBLE);
+                searchCountText.setText(text);
+            }
+            else {
+                searchCountText.setVisibility(View.GONE);
+            }
+
+            if( upDown ) {
+                searchUpButton.setVisibility(View.VISIBLE);
+                searchUpButton.setEnabled(enableUp);
+                searchUpButton.setAlpha(enableUp ? 1.0f : 0.25f);
+                searchDownButton.setVisibility(View.VISIBLE);
+                searchDownButton.setEnabled(enableDown);
+                searchDownButton.setAlpha(enableDown ? 1.0f : 0.25f);
+            }
+            else {
+                searchUpButton.setVisibility(View.GONE);
+                searchDownButton.setVisibility(View.GONE);
+            }
+        }
     }
 
     public boolean isSearchField() {
