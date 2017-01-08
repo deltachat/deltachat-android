@@ -70,7 +70,6 @@ public class NotificationsController {
     private HashMap<Integer, Integer> pushDialogs = new HashMap<>();
     private HashMap<Long, Integer> wearNotificationsIds = new HashMap<>();
     private HashMap<Long, Integer> autoNotificationsIds = new HashMap<>();
-    private HashMap<Long, Integer> pushDialogsOverrideMention = new HashMap<>();
     private int wearNotificationId = 10000;
     private int autoNotificationId = 20000;
     public ArrayList<MessageObject> popupMessages = new ArrayList<>();

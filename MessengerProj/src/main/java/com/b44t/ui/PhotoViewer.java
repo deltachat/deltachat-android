@@ -82,13 +82,11 @@ import com.b44t.messenger.LocaleController;
 import com.b44t.messenger.MediaController;
 import com.b44t.messenger.NotificationCenter;
 import com.b44t.messenger.R;
-import com.b44t.messenger.support.widget.LinearLayoutManager;
 import com.b44t.messenger.ConnectionsManager;
 import com.b44t.messenger.TLRPC;
 import com.b44t.messenger.MessageObject;
 import com.b44t.messenger.Utilities;
 import com.b44t.ui.ActionBar.Theme;
-import com.b44t.ui.Adapters.MentionsAdapter;
 import com.b44t.messenger.AnimatorListenerAdapterProxy;
 import com.b44t.ui.ActionBar.ActionBar;
 import com.b44t.ui.ActionBar.ActionBarMenu;
@@ -101,7 +99,6 @@ import com.b44t.ui.Components.LayoutHelper;
 import com.b44t.ui.Components.PhotoCropView;
 import com.b44t.ui.Components.PhotoFilterView;
 import com.b44t.ui.Components.PickerBottomLayout;
-import com.b44t.ui.Components.RecyclerListView;
 import com.b44t.ui.Components.SeekBar;
 import com.b44t.ui.Components.SizeNotifierFrameLayoutPhoto;
 import com.b44t.ui.Components.VideoPlayer;
@@ -193,11 +190,11 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
     private float animationValues[][] = new float[2][8];
 
     private ChatActivity parentChatActivity;
-    private MentionsAdapter mentionsAdapter;
+    /*private MentionsAdapter mentionsAdapter;
     private RecyclerListView mentionListView;
     private LinearLayoutManager mentionLayoutManager;
     private AnimatorSet mentionListAnimation;
-    private boolean allowMentions;
+    private boolean allowMentions;*/
 
     private int animationInProgress = 0;
     private long transitionAnimationStartTime = 0;
@@ -662,14 +659,14 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
                         childTop = lp.topMargin;
                 }
 
-                if (child == mentionListView) {
-                    //if (!captionEditText.isPopupShowing() && !captionEditText.isKeyboardVisible() && captionEditText.getEmojiPadding() == 0) {
+                /*if (child == mentionListView) {
+                    if (!captionEditText.isPopupShowing() && !captionEditText.isKeyboardVisible() && captionEditText.getEmojiPadding() == 0) {
                         childTop += AndroidUtilities.dp(400);
-                    /*} else {
+                    } else {
                         childTop -= captionEditText.getMeasuredHeight();
-                    }*/
+                    }
                 }
-                /* else if (child == captionEditText) {
+                else if (child == captionEditText) {
                     if (!captionEditText.isPopupShowing() && !captionEditText.isKeyboardVisible() && captionEditText.getEmojiPadding() == 0) {
                         childTop += AndroidUtilities.dp(400);
                     }
@@ -1577,6 +1574,7 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
         containerView.addView(captionEditText, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.BOTTOM | Gravity.LEFT, 0, 0, 0, -400));
         */
 
+        /*
         mentionListView = new RecyclerListView(actvityContext);
         mentionListView.setTag(5);
         mentionLayoutManager = new LinearLayoutManager(actvityContext) {
@@ -1665,12 +1663,10 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
                 }
             }
 
-            /*
             @Override
             public void onContextSearch(boolean searching) {
 
             }
-            */
 
 
         }));
@@ -1684,9 +1680,9 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
                 int len = mentionsAdapter.getResultLength();
                 if (object instanceof TLRPC.User) {
                     TLRPC.User user = (TLRPC.User) object;
-                    /*if (user != null) {
+                    if (user != null) {
                         captionEditText.replaceWithText(start, len, "@" + user.username + " ");
-                    }*/
+                    }
                 } else if (object instanceof String) {
                     //captionEditText.replaceWithText(start, len, object + " ");
                 }
@@ -1713,6 +1709,7 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
                 return false;
             }
         });
+        */
     }
 
     private void updateVideoPlayerTime() {
@@ -2561,7 +2558,7 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
         //captionItem.setVisibility(View.GONE);
         //captionDoneItem.setVisibility(View.GONE);
         //captionEditText.setVisibility(View.GONE);
-        mentionListView.setVisibility(View.GONE);
+        //mentionListView.setVisibility(View.GONE);
         editorDoneLayout.setVisibility(View.GONE);
         //captionTextView.setTag(null);
         //captionTextView.setVisibility(View.INVISIBLE);
@@ -2628,8 +2625,8 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
             Object obj = imagesArrLocals.get(index);
             cropItem.setVisibility(obj instanceof MediaController.PhotoEntry || obj instanceof MediaController.SearchImage && ((MediaController.SearchImage) obj).type == 0 ? View.VISIBLE : View.GONE);
             if (parentChatActivity != null /*&& (parentChatActivity.currentEncryptedChat == null || AndroidUtilities.getPeerLayerVersion(parentChatActivity.currentEncryptedChat.layer) >= 46)*/) {
-                mentionsAdapter.setChatInfo(parentChatActivity.info);
-                mentionsAdapter.setNeedUsernames(parentChatActivity.m_mrChat.getType()== MrChat.MR_CHAT_GROUP);
+                //mentionsAdapter.setChatInfo(parentChatActivity.info);
+                //mentionsAdapter.setNeedUsernames(parentChatActivity.m_mrChat.getType()== MrChat.MR_CHAT_GROUP);
                 //captionItem.setVisibility(cropItem.getVisibility());
                 //captionEditText.setVisibility(cropItem.getVisibility());
                 //needCaptionLayout = captionItem.getVisibility() == View.VISIBLE;

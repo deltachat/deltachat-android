@@ -493,7 +493,6 @@ public class TLRPC {
         public String message;
         public MessageMedia media;
         public int flags;
-		public final boolean mentioned = false;
 		public boolean media_unread;
 		public boolean out;
 		public boolean unread;
