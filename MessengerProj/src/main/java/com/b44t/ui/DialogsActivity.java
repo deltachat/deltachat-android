@@ -98,14 +98,14 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
     private ActionBarMenuItem passcodeItem;
     private ImageView floatingButton;
 
-    //private AlertDialog permissionDialog;
-
-    // Floating hiding action
-    /*
-    private int prevPosition;
-    private int prevTop;
-    private boolean scrollUpdated;
-    */
+    // Floating hiding action as in Telegram - I think this is not useful:
+    // - it always takes a moment to check if the button is there or not (ot to let it appear)
+    // - if there is nothing to scroll the floting button does not move away -
+    //   and covers always a part of the last row. This is not better than without moving away.
+    // - hidden or not, covered parts oif the last row can be seen by moving the content
+        /* private int prevPosition;
+        private int prevTop;
+        private boolean scrollUpdated; */
     // /Floating hiding action
 
     private boolean floatingHidden;
@@ -498,9 +498,8 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
                     return;
                 }
 
-                // Floating hiding action - I'm not sure if it is really useful. If there is nothing to scroll the floting button cannot does not move away - and covers always a part of the last row. This is not better than without moving away.
-                /*
-                if (floatingButton.getVisibility() != View.GONE) {
+                // Floating hiding action
+                /* if (floatingButton.getVisibility() != View.GONE) {
                     final View topChild = recyclerView.getChildAt(0);
                     int firstViewTop = 0;
                     if (topChild != null) {
@@ -521,8 +520,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
                     prevPosition = firstVisibleItem;
                     prevTop = firstViewTop;
                     scrollUpdated = true;
-                }
-                */
+                } */
                 // /Floating hiding action
             }
         });
@@ -632,19 +630,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
             if (activity != null) {
                 checkPermission = false;
                 if (activity.checkSelfPermission(Manifest.permission.READ_CONTACTS) != PackageManager.PERMISSION_GRANTED || activity.checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-                    /* if (activity.shouldShowRequestPermissionRationale(Manifest.permission.READ_CONTACTS)) {
-                        AlertDialog.Builder builder = new AlertDialog.Builder(activity);
-                        builder.setMessage(LocaleController.getString("PermissionContacts", R.string.PermissionContacts));
-                        builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), null);
-                        showDialog(permissionDialog = builder.create());
-                    } else if (activity.shouldShowRequestPermissionRationale(Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
-                        AlertDialog.Builder builder = new AlertDialog.Builder(activity);
-                        builder.setMessage(LocaleController.getString("PermissionStorage", R.string.PermissionStorage));
-                        builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), null);
-                        showDialog(permissionDialog = builder.create());
-                    } else */ {
-                        askForPermissons();
-                    }
+                    askForPermissons();
                 }
             }
         }
@@ -669,16 +655,6 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
         String[] items = permissons.toArray(new String[permissons.size()]);
         activity.requestPermissions(items, LaunchActivity.REQ_CONTACT_N_STORAGE_PERMISON_ID);
     }
-
-    /*
-    @Override
-    protected void onDialogDismiss(Dialog dialog) {
-        super.onDialogDismiss(dialog);
-        if (permissionDialog != null && dialog == permissionDialog && getParentActivity() != null) {
-            askForPermissons();
-        }
-    }
-    */
 
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
