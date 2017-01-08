@@ -426,6 +426,7 @@ public class ActionBarMenuItem extends FrameLayout {
             searchField.setPadding(0, 0, 0, 0);
             int inputType = searchField.getInputType() | EditorInfo.TYPE_TEXT_FLAG_NO_SUGGESTIONS;
             searchField.setInputType(inputType);
+            searchField.setImeOptions(EditorInfo.IME_ACTION_DONE | EditorInfo.IME_FLAG_NO_EXTRACT_UI); // IME_ACTION_SEARCH is confusing as we use a real time search and the search is already performed when the user will hit the "search" button
             searchField.setCustomSelectionActionModeCallback(new ActionMode.Callback() {
                 public boolean onPrepareActionMode(ActionMode mode, Menu menu) {
                     return false;
@@ -481,7 +482,6 @@ public class ActionBarMenuItem extends FrameLayout {
             } catch (Exception e) {
                 //nothing to do
             }
-            searchField.setImeOptions(EditorInfo.IME_FLAG_NO_FULLSCREEN | EditorInfo.IME_ACTION_SEARCH);
             searchField.setTextIsSelectable(false);
             searchContainer.addView(searchField, LayoutHelper.createLinear(48, 48, 10.0f, Gravity.CENTER_VERTICAL));
 

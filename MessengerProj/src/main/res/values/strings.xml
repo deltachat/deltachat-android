@@ -582,5 +582,5 @@
     <string name="InviteText">I\'m using Delta Chat messenger now - %1$s - you can text me at %2$s</string>
     <string name="AdvancedSettings">Advanced settings</string>
     <string name="AskResetNotifications" >Reset all notification settings and sounds of this page and of your contacts and groups?</string>
-    <string name="SendFiles">Send files</string>
+    <string name="AttachFiles">Attach files</string>
 </resources>

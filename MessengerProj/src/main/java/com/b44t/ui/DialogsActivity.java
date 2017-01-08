@@ -217,7 +217,6 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
                     }
                 }
                 updatePasscodeButton();
-                Toast.makeText(getParentActivity(), LocaleController.getString("NotYetImplemented", R.string.NotYetImplemented), Toast.LENGTH_LONG).show();
             }
 
             @Override
