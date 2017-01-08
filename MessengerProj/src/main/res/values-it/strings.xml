@@ -4,7 +4,6 @@
 
 <resources>
     <string name="AppName">Delta Chat</string>
-    <string name="AppNameBeta">Delta Chat</string>
     <string name="LanguageName">Italiano</string>
     <string name="LanguageNameInEnglish">Italian</string>
     <string name="LanguageCode">it</string>
@@ -224,30 +223,6 @@
     <string name="FingerprintInfo">Conferma impronta digitale per continuare</string>
     <string name="FingerprintHelp">Sensore touch</string>
     <string name="FingerprintNotRecognized">Impronta digitale non riconosciuta. Riprova</string>
-    <!--media view-->
-    <string name="DocumentsTitle">File condivisi</string>
-    <string name="SharedMediaTitle">Media condivisi</string>
-    <string name="LinksTitle">Link condivisi</string>
-    <string name="AudioTitle">Musica condivisa</string>
-    <string name="NoMedia">Condividi foto e video in questa chat e accedi ad essi da ogni tuo dispositivo.</string>
-    <string name="NoSharedAudio">Condividi musica in questa chat e accedi ad essa da ogni tuo dispositivo.</string>
-    <string name="NoSharedFiles">Condividi file e documenti in questa chat e accedi ad essi da ogni tuo dispositivo.</string>
-    <string name="NoSharedLinks">Condividi link in questa chat ed accedi ad essi da ogni tuo dispositivo.</string>
-    <string name="NoMediaSecret">Le foto e i video di questa chat appariranno qui.</string>
-    <string name="NoSharedAudioSecret">La musica di questa chat apparirà qui.</string>
-    <string name="NoSharedFilesSecret">I file e i documenti di questa chat appariranno qui.</string>
-    <string name="NoSharedLinksSecret">I link condivisi di questa chat appariranno qui.</string>
-    <!--map view-->
-    <string name="Map">Mappa</string>
-    <string name="Satellite">Satellite</string>
-    <string name="Hybrid">Ibrido</string>
-    <string name="MetersAway">m di distanza</string>
-    <string name="KMetersAway">km di distanza</string>
-    <string name="SendLocation">Invia la tua posizione corrente</string>
-    <string name="SendSelectedLocation">Invia la posizione selezionata</string>
-    <string name="ShareLocation">Posizione</string>
-    <string name="AccurateTo">Precisione di %1$s</string>
-    <string name="NearbyPlaces">O SELEZIONA UN LUOGO</string>
     <!--photo gallery view-->
     <string name="ShowAllMedia">Mostra tutti i file media</string>
     <string name="SaveToGallery">Salva nella galleria</string>

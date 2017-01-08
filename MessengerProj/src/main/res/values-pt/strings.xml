@@ -4,7 +4,6 @@
 
 <resources xmlns:tools="http://schemas.android.com/tools">
     <string name="AppName">Delta Chat</string>
-    <string name="AppNameBeta">Delta Chat</string>
     <string name="LanguageName">Português</string>
     <string name="LanguageNameInEnglish">Portuguese</string>
     <string name="LanguageCode">pt</string>
@@ -224,30 +223,6 @@
     <string name="FingerprintInfo">Confirme a impressão digital para continuar</string>
     <string name="FingerprintHelp">Toque o sensor</string>
     <string name="FingerprintNotRecognized">Impressão digital não reconhecida.</string>
-    <!--media view-->
-    <string name="DocumentsTitle">Arquivos Compartilhados</string>
-    <string name="SharedMediaTitle">Mídia Compartilhada</string>
-    <string name="LinksTitle">Links Compartilhados</string>
-    <string name="AudioTitle">Música Compartilhada</string>
-    <string name="NoMedia">Compartilhar fotos e vídeos no chat e acessá-los em qualquer um de seus dispositivos.</string>
-    <string name="NoSharedAudio">Compartilhe músicas nesse chat e os acesse de qualquer um de seus dispositivos.</string>
-    <string name="NoSharedFiles">Compartilhar arquivos e documentos no chat e acessá-los de qualquer um de seus dispositivos.</string>
-    <string name="NoSharedLinks">Compartilhe links nesse chat e os acesse de qualquer um de seus dispositivos</string>
-    <string name="NoMediaSecret">Fotos e vídeos desse chat serão mostrados aqui.</string>
-    <string name="NoSharedAudioSecret">Músicas desse chat serão mostradas aqui.</string>
-    <string name="NoSharedFilesSecret">Arquivos e documentos desse chat serão mostradas aqui.</string>
-    <string name="NoSharedLinksSecret">Links compartilhados desse chat serão mostrados aqui.</string>
-    <!--map view-->
-    <string name="Map">Mapa</string>
-    <string name="Satellite">Satélite</string>
-    <string name="Hybrid">Híbrido</string>
-    <string name="MetersAway">m de distância</string>
-    <string name="KMetersAway">km de distância</string>
-    <string name="SendLocation">Enviar sua localização atual</string>
-    <string name="SendSelectedLocation">Enviar localização selecionada</string>
-    <string name="ShareLocation">Localização</string>
-    <string name="AccurateTo">Precisão de %1$s</string>
-    <string name="NearbyPlaces">OU ESCOLHA UM LUGAR</string>
     <!--photo gallery view-->
     <string name="ShowAllMedia">Mostrar todas as mídias</string>
     <string name="SaveToGallery">Salvar na galeria</string>

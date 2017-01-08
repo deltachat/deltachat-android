@@ -4,7 +4,6 @@
 
 <resources>
     <string name="AppName">Delta Chat</string>
-    <string name="AppNameBeta">Delta Chat</string>
     <string name="LanguageName">Nederlands</string>
     <string name="LanguageNameInEnglish">Dutch</string>
     <string name="LanguageCode">nl</string>
@@ -224,30 +223,6 @@
     <string name="FingerprintInfo">Vingerafdruk bevestigen</string>
     <string name="FingerprintHelp">Vingerafdruksensor</string>
     <string name="FingerprintNotRecognized">Vingerafdruk niet herkend,  probeer opnieuw</string>
-    <!--media view-->
-    <string name="DocumentsTitle">Gedeelde bestanden</string>
-    <string name="SharedMediaTitle">Gedeelde media</string>
-    <string name="LinksTitle">Gedeelde links</string>
-    <string name="AudioTitle">Gedeelde muziek</string>
-    <string name="NoMedia">Deel foto\'s en video\'s in deze chat om ze op al je apparaten te kunnen benaderen.</string>
-    <string name="NoSharedAudio">Deel muziek in deze chat om ze op al je apparaten te kunnen benaderen.</string>
-    <string name="NoSharedFiles">Deel bestanden en documenten in deze chat om ze op al je apparaten te kunnen benaderen.</string>
-    <string name="NoSharedLinks">Deel links in deze chat om ze op al je apparaten te kunnen benaderen.</string>
-    <string name="NoMediaSecret">Foto\'s en video\'s van deze chat verschijnen hier</string>
-    <string name="NoSharedAudioSecret">Muziek van deze chat verschijnt hier</string>
-    <string name="NoSharedFilesSecret">Bestanden van deze chat verschijnen hier</string>
-    <string name="NoSharedLinksSecret">Gedeelde links can deze chat verschijnen hier</string>
-    <!--map view-->
-    <string name="Map">Kaart</string>
-    <string name="Satellite">Satelliet</string>
-    <string name="Hybrid">Hybride</string>
-    <string name="MetersAway">m hiervandaan</string>
-    <string name="KMetersAway">km hiervandaan</string>
-    <string name="SendLocation">Huidige locatie sturen</string>
-    <string name="SendSelectedLocation">Geselecteerde locatie sturen</string>
-    <string name="ShareLocation">Locatie</string>
-    <string name="AccurateTo">Nauwkeurig tot op %1$s</string>
-    <string name="NearbyPlaces">OF KIES EEN PLEK</string>
     <!--photo gallery view-->
     <string name="ShowAllMedia">Alle media weergeven</string>
     <string name="SaveToGallery">Opslaan in galerij</string>

@@ -4,7 +4,6 @@
 
 <resources>
     <string name="AppName">Delta Chat</string>
-    <string name="AppNameBeta">Delta Chat</string>
     <string name="LanguageName">Español</string>
     <string name="LanguageNameInEnglish">Spanish</string>
     <string name="LanguageCode">es</string>
@@ -224,30 +223,6 @@
     <string name="FingerprintInfo">Confirma la huella digital para continuar</string>
     <string name="FingerprintHelp">Sensor táctil</string>
     <string name="FingerprintNotRecognized">Huella digital no reconocida. Reinténtalo</string>
-    <!--media view-->
-    <string name="DocumentsTitle">Archivos</string>
-    <string name="SharedMediaTitle">Multimedia</string>
-    <string name="LinksTitle">Enlaces</string>
-    <string name="AudioTitle">Música</string>
-    <string name="NoMedia">Comparte fotos y vídeos en este chat y accede a ellos desde cualquier dispositivo.</string>
-    <string name="NoSharedAudio">Comparte música en este chat y accede a ella desde cualquier dispositivo.</string>
-    <string name="NoSharedFiles">Comparte archivos en este chat y accede a ellos desde cualquier dispositivo.</string>
-    <string name="NoSharedLinks">Comparte enlaces en este chat y accede a ellos desde cualquiera de tus dispositivos.</string>
-    <string name="NoMediaSecret">Las fotos y vídeos de este chat aparecerán aquí.</string>
-    <string name="NoSharedAudioSecret">La música de este chat aparecerá aquí.</string>
-    <string name="NoSharedFilesSecret">Los archivos de este chat aparecerán aquí.</string>
-    <string name="NoSharedLinksSecret">Los enlaces de este chat aparecerán aquí.</string>
-    <!--map view-->
-    <string name="Map">Mapa</string>
-    <string name="Satellite">Satélite</string>
-    <string name="Hybrid">Híbrido</string>
-    <string name="MetersAway">m de distancia</string>
-    <string name="KMetersAway">km de distancia</string>
-    <string name="SendLocation">Enviar tu ubicación actual</string>
-    <string name="SendSelectedLocation">Enviar la ubicación seleccionada</string>
-    <string name="ShareLocation">Ubicación</string>
-    <string name="AccurateTo">Exacto a %1$s</string>
-    <string name="NearbyPlaces">O ELIGE UN LUGAR</string>
     <!--photo gallery view-->
     <string name="ShowAllMedia">Ir a Multimedia</string>
     <string name="SaveToGallery">Guardar en galería</string>

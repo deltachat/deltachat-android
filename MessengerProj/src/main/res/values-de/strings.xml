@@ -4,7 +4,6 @@
 
 <resources>
     <string name="AppName">Delta Chat</string>
-    <string name="AppNameBeta">Delta Chat</string>
     <string name="LanguageName">Deutsch</string>
     <string name="LanguageNameInEnglish">German</string>
     <string name="LanguageCode">de</string>
@@ -31,7 +30,7 @@
     <string name="ChatHintsDelete">Lösche %1$s aus Vorschlägen?</string>
     <string name="Draft">Entwurf</string>
     <!--audio view-->
-    <string name="NoAudio">Bitte füge Musikdateien einfach deiner Android Musikbibliothek hinzu, um sie hier zu sehen.</string>
+    <string name="NoAudio">Musikdateien der Android Musikbibliothek hinzufügen, um sie hier zu sehen.</string>
     <string name="AttachMusic">Musik</string>
     <string name="AudioUnknownArtist">Unbekannter Künstler</string>
     <string name="AudioUnknownTitle">Unbekannter Titel</string>
@@ -214,7 +213,7 @@
     <string name="EnterCurrentPasscode">Aktuellen Pincode eingeben</string>
     <string name="EnterNewFirstPasscode">Pincode eingeben</string>
     <string name="EnterNewPasscode">Neuen Pincode eingeben</string>
-    <string name="EnterYourPasscode">Deinen Pincode eingeben</string>
+    <string name="EnterYourPasscode">Pincode eingeben</string>
     <string name="ReEnterYourPasscode">Neuen Pincode erneut eingben</string>
     <string name="PasscodeDoNotMatch">Pincode falsch</string>
     <string name="AutoLock">Auto-Sperre</string>
@@ -224,30 +223,6 @@
     <string name="FingerprintInfo">Fingerabdruck bestätigen </string>
     <string name="FingerprintHelp">Berührungssensor</string>
     <string name="FingerprintNotRecognized">Abdruck nicht erkannt; erneut versuchen </string>
-    <!--media view-->
-    <string name="DocumentsTitle">Geteilte Dateien</string>
-    <string name="SharedMediaTitle">Geteilte Medien</string>
-    <string name="LinksTitle">Geteilte Links</string>
-    <string name="AudioTitle">Geteilte Musik</string>
-    <string name="NoMedia">Die hier geteilten Bilder und Videos kannst du von jedem deiner Geräte aufrufen.</string>
-    <string name="NoSharedAudio">Die hier geteilten Lieder kannst du von jedem deiner Geräte aufrufen.</string>
-    <string name="NoSharedFiles">Die hier geteilten Dateien kannst du von jedem deiner Geräte aufrufen.</string>
-    <string name="NoSharedLinks">Die hier geteilten Links kannst du von jedem deiner Geräte aufrufen.</string>
-    <string name="NoMediaSecret">Geteilte Bilder und Videos werden hier angezeigt.</string>
-    <string name="NoSharedAudioSecret">Musik aus dem Chat wird hier angezeigt.</string>
-    <string name="NoSharedFilesSecret">Dateien und Dokumente werden hier angezeigt.</string>
-    <string name="NoSharedLinksSecret">Alle geteilten Links werden hier angezeigt.</string>
-    <!--map view-->
-    <string name="Map">Karte</string>
-    <string name="Satellite">Satellit</string>
-    <string name="Hybrid">Hybrid</string>
-    <string name="MetersAway">m entfernt</string>
-    <string name="KMetersAway">km entfernt</string>
-    <string name="SendLocation">Meinen Standort senden</string>
-    <string name="SendSelectedLocation">Diesen Standort senden</string>
-    <string name="ShareLocation">Standort</string>
-    <string name="AccurateTo">Auf %1$s genau</string>
-    <string name="NearbyPlaces">Oder wähle einen Ort</string>
     <!--photo gallery view-->
     <string name="ShowAllMedia">Zeige alle Medien</string>
     <string name="SaveToGallery">In der Galerie speichern</string>
