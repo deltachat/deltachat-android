@@ -2220,6 +2220,8 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
     private int   m_searchIndex = -1;
     private void handleSearch(int action, String query)
     {
+        boolean doScroll = false;
+
         m_searching = true;
         if( action==SEARCH_QUERY ) {
             if( query==null ) {query="";}
@@ -2247,27 +2249,31 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                    }
                 });
             }
-            return;
+        }
+        else if( action==SEARCH_QUERY_CONT ) {
+            doScroll = true;
         }
         else if( action==SEARCH_UP ) {
             if( m_searchResult.length>0 ) {
                 m_searchIndex = Math.max(m_searchIndex-1, 0);
             }
+            doScroll = true;
         }
         else if( action==SEARCH_DOWN ) {
             if( m_searchResult.length>0 ) {
                 m_searchIndex = Math.min(m_searchIndex+1, m_searchResult.length-1);
             }
+            doScroll = true;
         }
 
-        if( m_searchIndex>=0 && m_searchIndex<m_searchResult.length ) {
-            scrollToMessageId(m_searchResult[m_searchIndex], true);
+        if( doScroll ) {
+            if (m_searchIndex >= 0 && m_searchIndex < m_searchResult.length) {
+                scrollToMessageId(m_searchResult[m_searchIndex], true);
+            } else {
+                highlightMessageId = Integer.MAX_VALUE;
+            }
+            updateVisibleRows();
         }
-        else {
-            highlightMessageId = Integer.MAX_VALUE;
-        }
-        updateVisibleRows();
-        chatListView.invalidate();
 
         if( m_lastSearchQuery.isEmpty() ) {
             searchItem.setExtraSearchInfo("", true, false, false);
@@ -2303,35 +2309,33 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
     }
 
     private void updateBottomOverlay() {
-        // the bottom overlay is also used for going through search results, however, it would be nicer to add the button [^] [v] to the actionbar
-        // moreover, we ouse the bottom overlay for the "dead drop chat"
+        // we use the bottom overlay for the "dead drop chat" and for the search result line
         if (bottomOverlayChatText == null) {
             return;
         }
+
         bottomOverlayChatText.setText("");
 
         if (searchItem != null && searchItem.getVisibility() == View.VISIBLE) {
-            bottomOverlayChat.setVisibility(View.INVISIBLE);
+            bottomOverlayChat.setVisibility(View.VISIBLE);
             chatActivityEnterView.setFieldFocused(false);
             chatActivityEnterView.setVisibility(View.INVISIBLE);
         } else {
-            {
-                if (m_mrChat.getId()==MrChat.MR_CHAT_ID_DEADDROP) {
-                    if( m_msglist.length==0 ) {
-                        // showing the DeaddropHint if there are no messages is confusing (there are no "reply arrows" in this case)
-                        bottomOverlayChatText.setText(LocaleController.getString("NoMessages", R.string.NoMessages));
-                    } else {
-                        bottomOverlayChatText.setText(LocaleController.getString("DeaddropHint", R.string.DeaddropHint));
-                    }
-                    bottomOverlayChat.setVisibility(View.VISIBLE);
-                    chatActivityEnterView.setVisibility(View.INVISIBLE);
+            if (m_mrChat.getId()==MrChat.MR_CHAT_ID_DEADDROP) {
+                if( m_msglist.length==0 ) {
+                    // showing the DeaddropHint if there are no messages is confusing (there are no "reply arrows" in this case)
+                    bottomOverlayChatText.setText(LocaleController.getString("NoMessages", R.string.NoMessages));
                 } else {
-                    chatActivityEnterView.setVisibility(View.VISIBLE);
-                    bottomOverlayChat.setVisibility(View.INVISIBLE);
+                    bottomOverlayChatText.setText(LocaleController.getString("DeaddropHint", R.string.DeaddropHint));
                 }
-                if(muteMenuEntry !=null) {
-                    muteMenuEntry.setVisibility(View.VISIBLE);
-                }
+                bottomOverlayChat.setVisibility(View.VISIBLE);
+                chatActivityEnterView.setVisibility(View.INVISIBLE);
+            } else {
+                chatActivityEnterView.setVisibility(View.VISIBLE);
+                bottomOverlayChat.setVisibility(View.INVISIBLE);
+            }
+            if(muteMenuEntry !=null) {
+                muteMenuEntry.setVisibility(View.VISIBLE);
             }
         }
         checkRaiseSensors();
