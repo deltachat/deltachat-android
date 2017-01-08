@@ -2270,8 +2270,11 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
 
         if( doScroll!=0 ) {
             scrollToMessageId(doScroll, doHilite);
-            updateVisibleRows();
         }
+        else {
+            highlightMessageId = 0;
+        }
+        updateVisibleRows();
 
         if( m_lastSearchQuery.isEmpty() ) {
             searchItem.setExtraSearchInfo("", true, true, true);
