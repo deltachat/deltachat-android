@@ -195,7 +195,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
             passcodeItem = menu.addItem(1, R.drawable.lock_close);
             updatePasscodeButton();
         }
-        final ActionBarMenuItem item = menu.addItem(0, R.drawable.ic_ab_search).setIsSearchField(true).setActionBarMenuItemSearchListener(new ActionBarMenuItem.ActionBarMenuItemSearchListener() {
+        final ActionBarMenuItem item = menu.addItem(0, R.drawable.ic_ab_search).setIsSearchField(true, true).setActionBarMenuItemSearchListener(new ActionBarMenuItem.ActionBarMenuItemSearchListener() {
             @Override
             public void onSearchExpand() {
                 searching = true;
@@ -445,9 +445,10 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
         listView.setOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
-                if (newState == RecyclerView.SCROLL_STATE_DRAGGING && searching && searchWas) {
-                    AndroidUtilities.hideKeyboard(getParentActivity().getCurrentFocus());
-                }
+                // due to the setIsSearchField()-HACK, we do not want force keyboard disappering (HACK looks smaller so ;-)
+                //if (newState == RecyclerView.SCROLL_STATE_DRAGGING && searching && searchWas) {
+                //    AndroidUtilities.hideKeyboard(getParentActivity().getCurrentFocus());
+                //}
             }
 
             @Override
@@ -458,7 +459,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
 
                 if (searching && searchWas) {
                     //if (visibleItemCount > 0 && layoutManager.findLastVisibleItemPosition() == totalItemCount - 1 && !dialogsSearchAdapter.isMessagesSearchEndReached()) {
-                    //    dialogsSearchAdapter.loadMoreSearchMessages(); // TODO BY MR - implement searching
+                    //    dialogsSearchAdapter.loadMoreSearchMessages();
                     //}
                     return;
                 }

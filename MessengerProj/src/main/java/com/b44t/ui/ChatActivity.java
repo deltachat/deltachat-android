@@ -532,7 +532,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
 
         ActionBarMenu menu = actionBar.createMenu();
 
-        searchItem = menu.addItem(0, R.drawable.ic_ab_search).setIsSearchField(true).setActionBarMenuItemSearchListener(new ActionBarMenuItem.ActionBarMenuItemSearchListener() {
+        searchItem = menu.addItem(0, R.drawable.ic_ab_search).setIsSearchField(true, false).setActionBarMenuItemSearchListener(new ActionBarMenuItem.ActionBarMenuItemSearchListener() {
             @Override
             public void onSearchCollapse() {
                 avatarContainer.setVisibility(View.VISIBLE);

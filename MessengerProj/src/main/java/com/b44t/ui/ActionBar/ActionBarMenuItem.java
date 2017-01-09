@@ -402,7 +402,7 @@ public class ActionBarMenuItem extends FrameLayout {
         return this;
     }
 
-    public ActionBarMenuItem setIsSearchField(boolean value) {
+    public ActionBarMenuItem setIsSearchField(boolean value, boolean applyHack) {
         if (parentMenu == null) {
             return this;
         }
@@ -483,6 +483,23 @@ public class ActionBarMenuItem extends FrameLayout {
                 //nothing to do
             }
             searchField.setTextIsSelectable(false);
+            if( applyHack ) {
+                searchField.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+                    @Override
+                    public void onFocusChange(View v, boolean hasFocus) {
+                        if (hasFocus) {
+                            // This is a HACK: normally, the soft keyboard should show up automatically whenever the user
+                            // clicks the search input field - however, if the user selected an item in the search and comes back to the search result,
+                            // a click on the search input field does ... nothing.
+                            AndroidUtilities.showKeyboard(v);
+                            // ... maybe re-setting the soft input mode may help, I've not tested this.
+                            // finally, a combinaction of showKeyboard()/hideKeyboard() will show up the keyboard on the next click, too.
+                            //parentMenu.getParent().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
+                        }
+                    }
+                });
+            }
+
             searchContainer.addView(searchField, LayoutHelper.createLinear(48, 48, 10.0f, Gravity.CENTER_VERTICAL));
 
             searchCountText = new SimpleTextView(getContext());
