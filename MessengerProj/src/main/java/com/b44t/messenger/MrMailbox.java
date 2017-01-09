@@ -146,6 +146,9 @@ public class MrMailbox {
         return MrMailboxCreateChatByContactId(m_hMailbox, contact_id);
     }
 
+    public native static int createGroupChat(String name);
+    public native static int addContactToChat(int chat_id, int contact_id);
+
     public final static int MR_GCM_ADDDAYMARKER = 0x01;
     public native static int[] getChatMsgs(int chat_id, int flags, int marker1before);
 

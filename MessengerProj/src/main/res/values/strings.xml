@@ -567,4 +567,5 @@
     <string name="AskResetNotifications" >Reset all notification settings and sounds of this page and of your contacts and groups?</string>
     <string name="AttachFiles">Attach files</string>
     <string name="Chats">Chats</string>
+    <string name="ErrGroupNameEmpty">Please enter a name for the group.</string>
 </resources>

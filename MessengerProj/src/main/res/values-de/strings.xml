@@ -567,4 +567,5 @@
     <string name="CannotConnect"></string>
     <string name="AskResetNotifications">Alle Benachrichtigungseinstellungen und Töne dieser Seite, der Kontakte und der Gruppen zurücksetzen?</string>
     <string name="AttachFiles">Dateien anhängen</string>
+    <string name="ErrGroupNameEmpty">Bitte einen Namen für die Gruppe eingeben.</string>
 </resources>

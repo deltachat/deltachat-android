@@ -348,6 +348,21 @@ JNIEXPORT jint Java_com_b44t_messenger_MrMailbox_MrMailboxCreateChatByContactId(
 }
 
 
+JNIEXPORT jint Java_com_b44t_messenger_MrMailbox_createGroupChat(JNIEnv *env, jclass cls, jstring name)
+{
+	CHAR_REF(name);
+		jint ret = (jint)mrmailbox_create_group_chat(get_mrmailbox_t(env, cls), namePtr);
+	CHAR_UNREF(name);
+	return ret;
+}
+
+
+JNIEXPORT jint Java_com_b44t_messenger_MrMailbox_addContactToChat(JNIEnv *env, jclass cls, jint chat_id, jint contact_id)
+{
+	return (jint)mrmailbox_add_contact_to_chat(get_mrmailbox_t(env, cls), chat_id, contact_id);
+}
+
+
 JNIEXPORT void Java_com_b44t_messenger_MrMailbox_MrMailboxDeleteChat(JNIEnv *env, jclass c, jlong hMailbox, jint chat_id)
 {
 	mrmailbox_delete_chat((mrmailbox_t*)hMailbox, chat_id);

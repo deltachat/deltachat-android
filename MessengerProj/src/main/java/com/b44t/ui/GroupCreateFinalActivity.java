@@ -88,8 +88,6 @@ public class GroupCreateFinalActivity extends BaseFragment implements Notificati
     @Override
     public boolean onFragmentCreate() {
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.updateInterfaces);
-        NotificationCenter.getInstance().addObserver(this, NotificationCenter.chatDidCreated);
-        NotificationCenter.getInstance().addObserver(this, NotificationCenter.chatDidFailCreate);
         avatarUpdater.parentFragment = this;
         avatarUpdater.delegate = this;
         avatarUpdater.returnOnly = true;
@@ -120,8 +118,6 @@ public class GroupCreateFinalActivity extends BaseFragment implements Notificati
     public void onFragmentDestroy() {
         super.onFragmentDestroy();
         NotificationCenter.getInstance().removeObserver(this, NotificationCenter.updateInterfaces);
-        NotificationCenter.getInstance().removeObserver(this, NotificationCenter.chatDidCreated);
-        NotificationCenter.getInstance().removeObserver(this, NotificationCenter.chatDidFailCreate);
         avatarUpdater.clear();
     }
 
@@ -144,35 +140,32 @@ public class GroupCreateFinalActivity extends BaseFragment implements Notificati
                 if (id == -1) {
                     finishFragment();
                 } else if (id == done_button) {
-                    if (nameTextView.getText().length() == 0) {
+                    String groupName = nameTextView.getText().toString().trim();
+                    if (groupName.isEmpty()) {
+                        Toast.makeText(getParentActivity(), LocaleController.getString("ErrGroupNameEmpty", R.string.ErrGroupNameEmpty), Toast.LENGTH_LONG).show();
                         return;
                     }
-                    Toast.makeText(getParentActivity(), LocaleController.getString("NotYetImplemented", R.string.NotYetImplemented), Toast.LENGTH_LONG).show();
-                    return;
-                    /*NotificationCenter.getInstance().postNotificationName(NotificationCenter.chatDidCreated, chat_id);
-                    {
-                            progressDialog = new ProgressDialog(getParentActivity());
-                            progressDialog.setMessage(LocaleController.getString("Loading", R.string.Loading));
-                            progressDialog.setCanceledOnTouchOutside(false);
-                            progressDialog.setCancelable(false);
-
-                            final int reqId = MessagesController.getInstance().createChat(nameTextView.getText().toString(), selectedContacts, null, chatType, GroupCreateFinalActivity.this);
-
-                            progressDialog.setButton(DialogInterface.BUTTON_NEGATIVE, LocaleController.getString("Cancel", R.string.Cancel), new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialog, int which) {
-                                    ConnectionsManager.getInstance().cancelRequest(reqId, true);
-                                    donePressed = false;
-                                    try {
-                                        dialog.dismiss();
-                                    } catch (Exception e) {
-                                        FileLog.e("messenger", e);
-                                    }
-                                }
-                            });
-                            progressDialog.show();
+                    int chat_id=MrMailbox.createGroupChat(groupName);
+                    if( chat_id<=0 ) {
+                        /* this should never happen, the group is created locally, there is no reason to fail here */
+                        Toast.makeText(getParentActivity(), "ErrCreateGroup", Toast.LENGTH_LONG).show();
+                        return;
                     }
-                    */
+                    int i, icnt = selectedContacts.size();
+                    for( i = 0; i < icnt; i++ ) {
+                        if( 0==MrMailbox.addContactToChat(chat_id, selectedContacts.get(i)) ) {
+                            Toast.makeText(getParentActivity(), "ErrAddContact", Toast.LENGTH_LONG).show();
+                        }
+                    }
+
+                    NotificationCenter.getInstance().postNotificationName(NotificationCenter.chatDidCreated, chat_id);
+                    NotificationCenter.getInstance().postNotificationName(NotificationCenter.closeChats);
+                    Bundle args2 = new Bundle();
+                    args2.putInt("chat_id", chat_id);
+                    presentFragment(new ChatActivity(args2), true);
+                    if (uploadedAvatar != null) {
+                        MessagesController.getInstance().changeChatAvatar(chat_id, uploadedAvatar);
+                    }
                 }
             }
         });
@@ -376,36 +369,6 @@ public class GroupCreateFinalActivity extends BaseFragment implements Notificati
             if ((mask & MessagesController.UPDATE_MASK_AVATAR) != 0 || (mask & MessagesController.UPDATE_MASK_NAME) != 0 || (mask & MessagesController.UPDATE_MASK_STATUS) != 0) {
                 updateVisibleRows(mask);
             }
-        } else if (id == NotificationCenter.chatDidFailCreate) {
-            /*
-            if (progressDialog != null) {
-                try {
-                    progressDialog.dismiss();
-                } catch (Exception e) {
-                    FileLog.e("messenger", e);
-                }
-            }
-            */
-        } else if (id == NotificationCenter.chatDidCreated) {
-            /*
-            if (progressDialog != null) {
-                try {
-                    progressDialog.dismiss();
-                } catch (Exception e) {
-                    FileLog.e("messenger", e);
-                }
-            }
-            */
-            /*
-            int chat_id = (Integer)args[0];
-            NotificationCenter.getInstance().postNotificationName(NotificationCenter.closeChats);
-            Bundle args2 = new Bundle();
-            args2.putInt("chat_id", chat_id);
-            presentFragment(new ChatActivity(args2), true);
-            if (uploadedAvatar != null) {
-                MessagesController.getInstance().changeChatAvatar(chat_id, uploadedAvatar);
-            }
-            */
         }
     }
 

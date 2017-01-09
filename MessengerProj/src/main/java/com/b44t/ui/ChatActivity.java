@@ -595,11 +595,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
 
         if( !isChatWithDeaddrop ) {
             headerItem.addSubItem(id_attach, LocaleController.getString("AttachFiles", R.string.AttachFiles), 0); // "Attach" means "Attach to chat", not "Attach to message" (which is not possible)
-            if (m_mrChat.getType() == MrChat.MR_CHAT_GROUP) {
-                headerItem.addSubItem(id_delete_chat, LocaleController.getString("DeleteAndExit", R.string.DeleteAndExit), 0);
-            } else {
-                headerItem.addSubItem(id_delete_chat, LocaleController.getString("DeleteChat", R.string.DeleteChat), 0);
-            }
+            headerItem.addSubItem(id_delete_chat, LocaleController.getString("DeleteChat", R.string.DeleteChat), 0);
         }
 
         updateTitle();
