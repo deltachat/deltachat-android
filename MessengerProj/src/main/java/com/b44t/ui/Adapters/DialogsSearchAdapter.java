@@ -162,7 +162,7 @@ public class DialogsSearchAdapter extends RecyclerView.Adapter {
                         cell.useSeparator = (j != m_msgIds.length - 1);
                         MrMsg mrMsg = MrMailbox.getMsg(m_msgIds[j]);
                         MrChat mrChat = MrMailbox.getChat(mrMsg.getChatId());
-                        MrPoortext mrSummary = new MrPoortext(0);
+                        MrPoortext mrSummary = mrMsg.getSummary(mrChat);
                         cell.setDialog(mrChat, mrSummary, -1, 0);
                     }
                 }

@@ -807,7 +807,7 @@ public class NotificationsController {
         boolean is_group = mrChat.getType()==MrChat.MR_CHAT_GROUP;
 
         MrMsg  mrMsg = MrMailbox.getMsg(messageObject.getId());
-        String msg = mrMsg.getSummary(160);
+        String msg = mrMsg.getSummarytext(160);
 
         String ret;
         if( (flags&ADD_GROUP)!=0 && is_group ) {

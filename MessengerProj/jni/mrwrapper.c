@@ -753,9 +753,15 @@ JNIEXPORT jint Java_com_b44t_messenger_MrMsg_getBytes(JNIEnv *env, jobject obj)
 }
 
 
-JNIEXPORT jint Java_com_b44t_messenger_MrMsg_getSummary(JNIEnv *env, jobject obj, jint approx_characters)
+JNIEXPORT jlong Java_com_b44t_messenger_MrMsg_getSummaryCPtr(JNIEnv *env, jobject obj, jlong hChat)
 {
-	return JSTRING_NEW(mrmsg_get_summary(get_mrmsg_t(env, obj), approx_characters));
+	return (jlong)mrmsg_get_summary(get_mrmsg_t(env, obj), (mrchat_t*)hChat);
+}
+
+
+JNIEXPORT jint Java_com_b44t_messenger_MrMsg_getSummarytext(JNIEnv *env, jobject obj, jint approx_characters)
+{
+	return JSTRING_NEW(mrmsg_get_summarytext(get_mrmsg_t(env, obj), approx_characters));
 }
 
 

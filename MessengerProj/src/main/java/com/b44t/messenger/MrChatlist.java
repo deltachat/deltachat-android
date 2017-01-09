@@ -47,7 +47,7 @@ public class MrChatlist {
     }
 
     public MrPoortext getSummaryByIndex(int index, MrChat chat) {
-        return new MrPoortext(MrChatlistGetSummaryByIndex(m_hChatlist, index, chat.GetCPtr()));
+        return new MrPoortext(MrChatlistGetSummaryByIndex(m_hChatlist, index, chat.getCPtr()));
     }
 
     private long                  m_hChatlist;

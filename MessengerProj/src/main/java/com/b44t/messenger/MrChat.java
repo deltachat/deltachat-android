@@ -114,7 +114,7 @@ public class MrChat {
         return ret;
     }
 
-    public long GetCPtr() {
+    public long getCPtr() {
         return m_hChat;
     }
 

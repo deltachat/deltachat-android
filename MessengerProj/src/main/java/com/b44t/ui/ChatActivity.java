@@ -2590,7 +2590,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
             ret += msg.getText();
         }
         else {
-            ret += msg.getSummary(1000);
+            ret += msg.getSummarytext(1000);
         }
 
         return ret;

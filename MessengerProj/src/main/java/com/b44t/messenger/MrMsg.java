@@ -97,8 +97,10 @@ public class MrMsg {
         return MrMsgGetParamInt(m_hMsg, key, def);
     }
 
-    public native int getBytes();
-    public native String getSummary(int approx_characters);
+    public native int    getBytes();
+    public MrPoortext    getSummary(MrChat chat) { return new MrPoortext(getSummaryCPtr(chat.getCPtr())); }
+    private native long  getSummaryCPtr(long hChat);
+    public native String getSummarytext(int approx_characters);
 
     private long                  m_hMsg; // must not be renamed as referenced by JNI under the name "m_hMsg"
     private native static void    MrMsgUnref                 (long hMsg);
