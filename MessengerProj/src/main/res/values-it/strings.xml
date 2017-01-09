@@ -386,6 +386,14 @@
     <string name="FromChats_few">da %1$d chat</string>
     <string name="FromChats_many">da %1$d chat</string>
     <string name="FromChats_other">da %1$d chat</string>
+
+    <string name="Chats_zero">Nessuna chat</string>
+    <string name="Chats_one">%1$d chat</string>
+    <string name="Chats_two">%1$d chat</string>
+    <string name="Chats_few">%1$d chat</string>
+    <string name="Chats_many">%1$d chat</string>
+    <string name="Chats_other">%1$d chat</string>
+
     <string name="Seconds_zero">%1$d secondi</string>
     <string name="Seconds_one">%1$d secondo</string>
     <string name="Seconds_two">%1$d secondi</string>

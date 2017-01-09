@@ -11,7 +11,7 @@
     <string name="Settings">Settings</string>
     <string name="NewGroup">New group</string>
     <string name="Yesterday">yesterday</string>
-    <string name="NoResult">No results</string>
+    <string name="NoResult">No results.</string>
     <string name="NoChats">No chats yet.</string>
     <string name="WaitingForNetwork">Waiting for network...</string>
     <string name="Connecting">Connecting...</string>
@@ -405,6 +405,14 @@
     <string name="FromChats_few">from %1$d chats</string>
     <string name="FromChats_many">from %1$d chats</string>
     <string name="FromChats_other">from %1$d chats</string>
+
+    <string name="Chats_zero">No chats</string>
+    <string name="Chats_one">%1$d chat</string>
+    <string name="Chats_two">%1$d chats</string>
+    <string name="Chats_few">%1$d chats</string>
+    <string name="Chats_many">%1$d chats</string>
+    <string name="Chats_other">%1$d chats</string>
+
     <string name="Seconds_zero">%1$d seconds</string>
     <string name="Seconds_one">%1$d second</string>
     <string name="Seconds_two">%1$d seconds</string>
@@ -558,4 +566,5 @@
     <string name="AdvancedSettings">Advanced settings</string>
     <string name="AskResetNotifications" >Reset all notification settings and sounds of this page and of your contacts and groups?</string>
     <string name="AttachFiles">Attach files</string>
+    <string name="Chats">Chats</string>
 </resources>

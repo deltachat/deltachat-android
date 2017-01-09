@@ -407,6 +407,14 @@
     <string name="FromChats_few">in %1$d Chats</string>
     <string name="FromChats_many">in %1$d Chats</string>
     <string name="FromChats_other">in %1$d Chats</string>
+
+    <string name="Chats_zero">Keine Chats</string>
+    <string name="Chats_one">%1$d Chat</string>
+    <string name="Chats_two">%1$d Chats</string>
+    <string name="Chats_few">%1$d Chats</string>
+    <string name="Chats_many">%1$d Chats</string>
+    <string name="Chats_other">%1$d Chats</string>
+
     <string name="Seconds_zero">%1$d Sekunden</string>
     <string name="Seconds_one">%1$d Sekunde</string>
     <string name="Seconds_two">%1$d Sekunden</string>

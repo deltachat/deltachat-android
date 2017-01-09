@@ -28,7 +28,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.b44t.messenger.AndroidUtilities;
-import com.b44t.messenger.MrChatlist;
+import com.b44t.messenger.MrChat;
+import com.b44t.messenger.MrPoortext;
 import com.b44t.messenger.support.widget.RecyclerView;
 import com.b44t.messenger.MrMailbox;
 import com.b44t.messenger.TLRPC;
@@ -38,7 +39,6 @@ import com.b44t.ui.Cells.DialogCell;
 public class DialogsAdapter extends RecyclerView.Adapter {
 
     private Context mContext;
-    private int dialogsType;
     private long openedDialogId;
 
     private class Holder extends RecyclerView.ViewHolder {
@@ -47,9 +47,8 @@ public class DialogsAdapter extends RecyclerView.Adapter {
         }
     }
 
-    public DialogsAdapter(Context context, int type) {
+    public DialogsAdapter(Context context) {
         mContext = context;
-        dialogsType = type;
 
         MrMailbox.reloadMainChatlist();
     }
@@ -63,8 +62,8 @@ public class DialogsAdapter extends RecyclerView.Adapter {
         return MrMailbox.m_currChatlist.getCnt();
     }
 
-    public TLRPC.TL_dialog getItem(int i) {
-        return MrMailbox.m_currChatlist.get_TLRPC_TL_dialog(i);
+    public MrChat getItem(int i) {
+        return MrMailbox.m_currChatlist.getChatByIndex(i);
     }
 
     @Override
@@ -91,13 +90,13 @@ public class DialogsAdapter extends RecyclerView.Adapter {
         if (viewHolder.getItemViewType() == 0) {
             DialogCell cell = (DialogCell) viewHolder.itemView;
             cell.useSeparator = (i != getItemCount() - 1);
-            TLRPC.TL_dialog dialog = getItem(i);
-            if (dialogsType == 0) {
-                if (AndroidUtilities.isTablet()) {
-                    cell.setDialogSelected(dialog.id == openedDialogId);
-                }
+            MrChat mrChat = getItem(i);
+            if (AndroidUtilities.isTablet()) {
+                cell.setDialogSelected(mrChat.getId() == openedDialogId);
             }
-            cell.setDialog(dialog, i, dialogsType);
+
+            MrPoortext mrSummary = MrMailbox.m_currChatlist.getSummaryByIndex(i, mrChat);
+            cell.setDialog(mrChat, mrSummary, i, 0);
         }
     }
 

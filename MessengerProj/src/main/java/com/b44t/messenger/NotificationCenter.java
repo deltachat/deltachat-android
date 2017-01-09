@@ -59,7 +59,6 @@ public class NotificationCenter {
     public static final int didReplacedPhotoInMemCache = totalEvents++;
     public static final int userInfoDidLoaded = totalEvents++;
     public static final int musicDidLoaded = totalEvents++;
-    public static final int needReloadRecentDialogsSearch = totalEvents++;
     public static final int locationPermissionGranted = totalEvents++;
     public static final int wasUnableToFindCurrentLocation = totalEvents++;
     public static final int reloadHints = totalEvents++;

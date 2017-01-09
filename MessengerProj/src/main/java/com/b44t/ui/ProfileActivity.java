@@ -302,7 +302,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                     });
                     builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
                     showDialog(builder.create());
-                } else if (id == ID_INVITE_TO_GROUP) {
+                /*} else if (id == ID_INVITE_TO_GROUP) {
                     final TLRPC.User user = MessagesController.getInstance().getUser(user_id);
                     if (user == null) {
                         return;
@@ -326,7 +326,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                             removeSelfFromStack();
                         }
                     });
-                    presentFragment(fragment);
+                    presentFragment(fragment);*/
                 } else if (id == ID_ADD_SHORTCUT) {
                     try {
                         // draw avatar into a bitmap

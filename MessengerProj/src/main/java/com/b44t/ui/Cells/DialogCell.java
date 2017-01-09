@@ -191,13 +191,14 @@ public class DialogCell extends BaseCell {
         avatarDrawable = new AvatarDrawable();
     }
 
-    public void setDialog(TLRPC.TL_dialog dialog, int i, int type) { // called for the chats overview
-        currentDialogId = dialog.id;
+    public void setDialog(MrChat mrChat, MrPoortext mrSummary, int i, int type) { // called for the chats overview
+
+        m_mrChat  = mrChat;
+        m_summary = mrSummary;
+
+        currentDialogId = mrChat.getId();
         isDialogCell = true;
         index = i;
-
-        m_mrChat  = MrMailbox.m_currChatlist.getChatByIndex(i);
-        m_summary = MrMailbox.m_currChatlist.getSummaryByIndex(i, m_mrChat);
 
         update(0);
     }

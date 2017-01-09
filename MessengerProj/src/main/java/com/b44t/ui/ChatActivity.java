@@ -336,6 +336,10 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
             }, 700);
             first = false;
         }
+
+        if( startLoadFromMessageId!=0 ) {
+            scrollToMessageId(startLoadFromMessageId, true);
+        }
     }
 
     @Override

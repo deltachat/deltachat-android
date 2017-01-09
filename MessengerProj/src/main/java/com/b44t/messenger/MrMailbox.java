@@ -127,8 +127,8 @@ public class MrMailbox {
 
 
     // chats
-    public static MrChatlist getChatlist() {
-        return new MrChatlist(MrMailboxGetChatlist(m_hMailbox));
+    public static MrChatlist getChatlist(String query) {
+        return new MrChatlist(MrMailboxGetChatlist(m_hMailbox, query));
     }
 
     public static MrChat getChat(int chat_id) {
@@ -165,7 +165,7 @@ public class MrMailbox {
         return MrMailboxDeleteChat(m_hMailbox, chat_id);
     }
 
-    private native static long    MrMailboxGetChatlist       (long hMailbox); // returns hChatlist which must be unref'd after usage
+    private native static long    MrMailboxGetChatlist       (long hMailbox, String query); // returns hChatlist which must be unref'd after usage
     private native static long    MrMailboxGetChat           (long hMailbox, int chat_id); // return hChat which must be unref'd after usage
     private native static int     MrMailboxGetChatIdByContactId (long hMailbox, int contact_id);
     private native static int     MrMailboxCreateChatByContactId(long hMailbox, int contact_id); // returns chat_id
@@ -267,7 +267,7 @@ public class MrMailbox {
     public native static int     getCurrentTime             ();
     public static void reloadMainChatlist()
     {
-        m_currChatlist = getChatlist();
+        m_currChatlist = getChatlist(null);
     }
 
     public final static int MEDIA_PHOTOVIDEO = 0;
