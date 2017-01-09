@@ -32,7 +32,6 @@ import com.b44t.messenger.MrChat;
 import com.b44t.messenger.MrPoortext;
 import com.b44t.messenger.support.widget.RecyclerView;
 import com.b44t.messenger.MrMailbox;
-import com.b44t.messenger.TLRPC;
 import com.b44t.ui.Cells.DialogCell;
 
 
@@ -96,7 +95,7 @@ public class DialogsAdapter extends RecyclerView.Adapter {
             }
 
             MrPoortext mrSummary = MrMailbox.m_currChatlist.getSummaryByIndex(i, mrChat);
-            cell.setDialog(mrChat, mrSummary, i, 0);
+            cell.setDialog(mrChat, mrSummary, i, true);
         }
     }
 

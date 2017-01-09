@@ -148,9 +148,12 @@ public class DialogsSearchAdapter extends RecyclerView.Adapter {
                     if( j >= 0 && j < m_chatlistCnt ) {
                         DialogCell cell = (DialogCell) viewHolder.itemView;
                         cell.useSeparator = (j != m_chatlistCnt - 1);
+
                         MrChat mrChat = m_chatlist.getChatByIndex(j);
                         MrPoortext mrSummary = m_chatlist.getSummaryByIndex(j, mrChat);
-                        cell.setDialog(mrChat, mrSummary, -1, 0);
+
+                        cell.setDialog(mrChat, mrSummary, -1,
+                                true /*always show unread count*/);
                     }
                 }
                 break;
@@ -160,10 +163,13 @@ public class DialogsSearchAdapter extends RecyclerView.Adapter {
                     if( j >= 0 && j < m_msgIds.length ) {
                         DialogCell cell = (DialogCell) viewHolder.itemView;
                         cell.useSeparator = (j != m_msgIds.length - 1);
+
                         MrMsg mrMsg = MrMailbox.getMsg(m_msgIds[j]);
                         MrChat mrChat = MrMailbox.getChat(mrMsg.getChatId());
                         MrPoortext mrSummary = mrMsg.getSummary(mrChat);
-                        cell.setDialog(mrChat, mrSummary, -1, 0);
+
+                        cell.setDialog(mrChat, mrSummary, -1,
+                                mrMsg.getState()==MrMsg.MR_IN_UNREAD /*show unread count only if the message itself is unread*/ );
                     }
                 }
                 break;

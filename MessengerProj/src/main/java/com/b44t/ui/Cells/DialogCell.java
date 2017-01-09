@@ -67,7 +67,6 @@ public class DialogCell extends BaseCell {
     private static Drawable halfCheckDrawable;
     private static Drawable clockDrawable;
     private static Drawable errorDrawable;
-    //private static Drawable lockDrawable;
     private static Drawable countDrawable;
     private static Drawable countDrawableGrey;
     private static Drawable groupDrawable;
@@ -78,15 +77,13 @@ public class DialogCell extends BaseCell {
     private static Paint backPaint;
 
     private long currentDialogId;
-    private boolean isDialogCell; // if it is no dialog cell, it is a search cell ...
-    //private int lastMessageDate;
+    private final boolean isDialogCell = true; // if it is no dialog cell, it is a search cell ...
     private int unreadCount;
     private boolean lastUnreadState;
     private int lastSendState;
     private boolean dialogMuted;
     private MessageObject message;
     private int index;
-    //private int dialogsType;
 
     private ImageReceiver avatarImage;
     private AvatarDrawable avatarDrawable;
@@ -99,7 +96,6 @@ public class DialogCell extends BaseCell {
 
     private int nameLeft;
     private StaticLayout nameLayout;
-    //private boolean drawNameLock;
     private boolean drawNameGroup;
     private int nameMuteLeft;
     private int nameLockLeft;
@@ -138,6 +134,7 @@ public class DialogCell extends BaseCell {
 
     private MrChat m_mrChat = new MrChat(0);
     private MrPoortext m_summary = new MrPoortext(0);
+    private boolean m_showUnreadCount;
 
     public DialogCell(Context context) {
         super(context);
@@ -172,7 +169,6 @@ public class DialogCell extends BaseCell {
             countPaint.setColor(0xffffffff);
             countPaint.setTypeface(AndroidUtilities.getTypeface("fonts/rmedium.ttf"));
 
-            //lockDrawable = getResources().getDrawable(R.drawable.list_secret);
             checkDrawable = getResources().getDrawable(R.drawable.dialogs_check);
             halfCheckDrawable = getResources().getDrawable(R.drawable.dialogs_halfcheck);
             clockDrawable = getResources().getDrawable(R.drawable.msg_clock);
@@ -191,27 +187,15 @@ public class DialogCell extends BaseCell {
         avatarDrawable = new AvatarDrawable();
     }
 
-    public void setDialog(MrChat mrChat, MrPoortext mrSummary, int i, int type) { // called for the chats overview
+    public void setDialog(MrChat mrChat, MrPoortext mrSummary, int i, boolean showUnreadCount) { // called for the chats overview
 
         m_mrChat  = mrChat;
         m_summary = mrSummary;
+        m_showUnreadCount = showUnreadCount;
 
         currentDialogId = mrChat.getId();
-        isDialogCell = true;
         index = i;
 
-        update(0);
-    }
-
-    public void setDialog(long dialog_id, MessageObject messageObject, int date) { // used to display the search result [sic!]
-        currentDialogId = dialog_id;
-        message = messageObject;
-        isDialogCell = false;
-        unreadCount = 0;
-        lastUnreadState = messageObject != null && messageObject.isUnread();
-        if (message != null) {
-            lastSendState = message.messageOwner.send_state;
-        }
         update(0);
     }
 
@@ -547,19 +531,6 @@ public class DialogCell extends BaseCell {
         isSelected = value;
     }
 
-    /* EDIT BY MR
-    private ArrayList<TLRPC.TL_dialog> getDialogsArray() {
-        if (dialogsType == 0) {
-            return MessagesController.getInstance().dialogs;
-        } else if (dialogsType == 1) {
-            return MessagesController.getInstance().dialogsServerOnly;
-        }  else if (dialogsType == 2) {
-            return MessagesController.getInstance().dialogsGroupsOnly;
-        }
-        return null;
-    }
-    */
-
     public void checkCurrentDialogIndex() {
         if (index < MrMailbox.m_currChatlist.getCnt()) { // EDIT BY MR - was: index < getDialogsArray().size()
             TLRPC.TL_dialog dialog = MrMailbox.m_currChatlist.get_TLRPC_TL_dialog(index); // EDIT BY MR - was: getDialogsArray().get(index);
@@ -576,7 +547,7 @@ public class DialogCell extends BaseCell {
     }
 
     public void update(int mask) {
-        if (isDialogCell) {
+        if( m_showUnreadCount ) {
             unreadCount = m_mrChat.getUnseenCount();
         }
 
@@ -646,12 +617,6 @@ public class DialogCell extends BaseCell {
             } else {
                 if (lower_id < 0) {
                     chat = MessagesController.getInstance().getChat(-lower_id);
-                    /*if (!isDialogCell && chat != null && chat.migrated_to != null) {
-                        TLRPC.Chat chat2 = MessagesController.getInstance().getChat(chat.migrated_to.channel_id);
-                        if (chat2 != null) {
-                            chat = chat2;
-                        }
-                    }*/
                 } else {
                     user = MessagesController.getInstance().getUser(lower_id);
                 }
