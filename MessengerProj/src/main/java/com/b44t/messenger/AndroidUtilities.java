@@ -108,9 +108,6 @@ public class AndroidUtilities {
     private static Boolean isTablet = null;
     private static int adjustOwnerClassGuid = 0;
 
-    private static Paint roundPaint;
-    private static RectF bitmapRect;
-
     public static Pattern WEB_URL = null;
     static {
         try {
@@ -256,36 +253,6 @@ public class AndroidUtilities {
             activity.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
         }
     }
-
-    /*
-    public static boolean isGoogleMapsInstalled(final BaseFragment fragment) {
-        try {
-            ApplicationLoader.applicationContext.getPackageManager().getApplicationInfo("com.google.android.apps.maps", 0);
-            return true;
-        } catch (PackageManager.NameNotFoundException e) {
-            if (fragment.getParentActivity() == null) {
-                return false;
-            }
-            AlertDialog.Builder builder = new AlertDialog.Builder(fragment.getParentActivity());
-            builder.setMessage("Install Google Maps?");
-            builder.setCancelable(true);
-            builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialogInterface, int i) {
-                    try {
-                        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=com.google.android.apps.maps"));
-                        fragment.getParentActivity().startActivityForResult(intent, 500);
-                    } catch (Exception e) {
-                        FileLog.e("messenger", e);
-                    }
-                }
-            });
-            builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
-            fragment.showDialog(builder.create());
-            return false;
-        }
-    }
-    */
 
     public static boolean isInternalUri(Uri uri) {
         String pathString = uri.getPath();
@@ -816,55 +783,6 @@ public class AndroidUtilities {
         });
         animatorSet.start();
     }
-
-    /*public static String ellipsize(String text, int maxLines, int maxWidth, TextPaint paint) {
-        if (text == null || paint == null) {
-            return null;
-        }
-        int count;
-        int offset = 0;
-        StringBuilder result = null;
-        TextView
-        for (int a = 0; a < maxLines; a++) {
-            count = paint.breakText(text, true, maxWidth, null);
-            if (a != maxLines - 1) {
-                if (result == null) {
-                    result = new StringBuilder(count * maxLines + 1);
-                }
-                boolean foundSpace = false;
-                for (int c = count - 1; c >= offset; c--) {
-                    if (text.charAt(c) == ' ') {
-                        foundSpace = true;
-                        result.append(text.substring(offset, c - 1));
-                        offset = c - 1;
-                    }
-                }
-                if (!foundSpace) {
-                    offset = count;
-                }
-                text = text.substring(0, offset);
-            } else if (maxLines == 1) {
-                return text.substring(0, count);
-            } else {
-                result.append(text.substring(0, count));
-            }
-        }
-        return result.toString();
-    }*/
-
-    /*public static void turnOffHardwareAcceleration(Window window) {
-        if (window == null || Build.MODEL == null) {
-            return;
-        }
-        if (Build.MODEL.contains("GT-S5301") ||
-                Build.MODEL.contains("GT-S5303") ||
-                Build.MODEL.contains("GT-B5330") ||
-                Build.MODEL.contains("GT-S5302") ||
-                Build.MODEL.contains("GT-S6012B") ||
-                Build.MODEL.contains("MegaFon_SP-AI")) {
-            window.clearFlags(WindowManager.LayoutParams.FLAG_HARDWARE_ACCELERATED);
-        }
-    }*/
 
     public static void addToClipboard(CharSequence str) {
         try {
