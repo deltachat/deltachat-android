@@ -369,6 +369,15 @@ JNIEXPORT jint Java_com_b44t_messenger_MrMailbox_removeContactFromChat(JNIEnv *e
 }
 
 
+JNIEXPORT jint Java_com_b44t_messenger_MrMailbox_setChatName(JNIEnv *env, jclass cls, jint chat_id, jstring name)
+{
+	CHAR_REF(name);
+		jint ret = (jint)mrmailbox_set_chat_name(get_mrmailbox_t(env, cls), chat_id, namePtr);
+	CHAR_UNREF(name);
+	return ret;
+}
+
+
 JNIEXPORT void Java_com_b44t_messenger_MrMailbox_deleteChat(JNIEnv *env, jclass cls, jint chat_id)
 {
 	mrmailbox_delete_chat(get_mrmailbox_t(env, cls), chat_id);

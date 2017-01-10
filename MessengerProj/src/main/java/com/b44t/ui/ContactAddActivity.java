@@ -23,9 +23,7 @@
 
 package com.b44t.ui;
 
-import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
@@ -44,6 +42,7 @@ import android.widget.Toast;
 import com.b44t.messenger.AndroidUtilities;
 import com.b44t.messenger.ContactsController;
 import com.b44t.messenger.LocaleController;
+import com.b44t.messenger.MrChat;
 import com.b44t.messenger.MrContact;
 import com.b44t.messenger.MrMailbox;
 import com.b44t.messenger.TLRPC;
@@ -73,6 +72,7 @@ public class ContactAddActivity extends BaseFragment implements NotificationCent
     private AvatarDrawable avatarDrawable;
     private AvatarUpdater avatarUpdater = new AvatarUpdater();
     private String nameToSet = null;
+    private int chat_id; // only used for EDIT_NAME in chats
     private int user_id;
     private boolean create_chat_when_done;
 
@@ -92,6 +92,7 @@ public class ContactAddActivity extends BaseFragment implements NotificationCent
         avatarUpdater.returnOnly = true;
         do_what = getArguments().getInt("do_what", 0);
         user_id = getArguments().getInt("user_id", 0);
+        chat_id = getArguments().getInt("chat_id", 0);
         create_chat_when_done = getArguments().getBoolean("create_chat_when_done", false);
         return super.onFragmentCreate();
     }
@@ -118,8 +119,12 @@ public class ContactAddActivity extends BaseFragment implements NotificationCent
             actionBar.setTitle(LocaleController.getString("NewContactTitle", R.string.NewContactTitle));
         } else {
             actionBar.setTitle(LocaleController.getString("EditName", R.string.EditName));
-            MrContact mrContact = MrMailbox.getContact(user_id);
-            nameToSet = mrContact.getDisplayName();
+            if( user_id!=0 ) {
+                nameToSet = MrMailbox.getContact(user_id).getDisplayName();
+            }
+            else {
+                nameToSet = MrMailbox.getChat(chat_id).getName();
+            }
         }
 
         actionBar.setActionBarMenuOnItemClick(new ActionBar.ActionBarMenuOnItemClick() {
@@ -129,34 +134,39 @@ public class ContactAddActivity extends BaseFragment implements NotificationCent
                     finishFragment();
                 } else if (id == done_button) {
                     String name = nameTextView.getText().toString();
-                    String addr = "";
-                    if (do_what==CREATE_CONTACT) {
-                        addr = emailTextView.getText().toString();
+                    if( chat_id!=0 ) {
+                        MrMailbox.setChatName(chat_id, name);
                     }
                     else {
-                        MrContact mrContact = MrMailbox.getContact(user_id);
-                        addr = mrContact.getAddr();
-                    }
-
-                    int new_user_id;
-                    if( (new_user_id=MrMailbox.createContact(name, addr))==0 ) {
-                        Toast.makeText(getParentActivity(), LocaleController.getString("BadEmailAddress", R.string.BadEmailAddress), Toast.LENGTH_LONG).show();
-                        return;
-                    }
-                    else if (do_what==CREATE_CONTACT) {
-                        if(create_chat_when_done) {
-                            int belonging_chat_id = MrMailbox.createChatByContactId(new_user_id);
-                            if( belonging_chat_id != 0 ) {
-                                Bundle args = new Bundle();
-                                args.putInt("chat_id", belonging_chat_id);
-                                presentFragment(new ChatActivity(args), true);
-                                NotificationCenter.getInstance().postNotificationName(NotificationCenter.chatDidCreated, belonging_chat_id); /*this will remove the contact list from stack */
-                                NotificationCenter.getInstance().postNotificationName(NotificationCenter.updateInterfaces, MessagesController.UPDATE_MASK_NAME);
-                                return;
-                            }
+                        String addr = "";
+                        if (do_what==CREATE_CONTACT) {
+                            addr = emailTextView.getText().toString();
                         }
                         else {
-                            Toast.makeText(getParentActivity(), LocaleController.getString("ContactCreated", R.string.ContactCreated), Toast.LENGTH_LONG).show();
+                            MrContact mrContact = MrMailbox.getContact(user_id);
+                            addr = mrContact.getAddr();
+                        }
+
+                        int new_user_id;
+                        if( (new_user_id=MrMailbox.createContact(name, addr))==0 ) {
+                            Toast.makeText(getParentActivity(), LocaleController.getString("BadEmailAddress", R.string.BadEmailAddress), Toast.LENGTH_LONG).show();
+                            return;
+                        }
+                        else if (do_what==CREATE_CONTACT) {
+                            if(create_chat_when_done) {
+                                int belonging_chat_id = MrMailbox.createChatByContactId(new_user_id);
+                                if( belonging_chat_id != 0 ) {
+                                    Bundle args = new Bundle();
+                                    args.putInt("chat_id", belonging_chat_id);
+                                    presentFragment(new ChatActivity(args), true);
+                                    NotificationCenter.getInstance().postNotificationName(NotificationCenter.chatDidCreated, belonging_chat_id); /*this will remove the contact list from stack */
+                                    NotificationCenter.getInstance().postNotificationName(NotificationCenter.updateInterfaces, MessagesController.UPDATE_MASK_NAME);
+                                    return;
+                                }
+                            }
+                            else {
+                                Toast.makeText(getParentActivity(), LocaleController.getString("ContactCreated", R.string.ContactCreated), Toast.LENGTH_LONG).show();
+                            }
                         }
                     }
 
@@ -327,8 +337,7 @@ public class ContactAddActivity extends BaseFragment implements NotificationCent
             email = emailTextView.length() > 0? emailTextView.getText().toString() : null;
         }
         else if( user_id != 0 ) {
-            MrContact mrContact = MrMailbox.getContact(user_id);
-            email = mrContact.getAddr();
+            email = MrMailbox.getContact(user_id).getAddr();
         }
         ContactsController.setupAvatarByStrings(avatarImage, avatarImage.imageReceiver, avatarDrawable,
                 email,

@@ -26,8 +26,6 @@ package com.b44t.ui;
 import android.animation.Animator;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
-import android.animation.StateListAnimator;
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -39,7 +37,6 @@ import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
-import android.graphics.Outline;
 import android.graphics.Paint;
 import android.os.Build;
 import android.os.Bundle;
@@ -47,7 +44,6 @@ import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewOutlineProvider;
 import android.view.ViewTreeObserver;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.DecelerateInterpolator;
@@ -63,7 +59,6 @@ import com.b44t.messenger.MrChat;
 import com.b44t.messenger.MrContact;
 import com.b44t.messenger.MrMailbox;
 import com.b44t.messenger.SendMessagesHelper;
-import com.b44t.messenger.UserObject;
 import com.b44t.messenger.ApplicationLoader;
 import com.b44t.messenger.support.widget.LinearLayoutManager;
 import com.b44t.messenger.support.widget.RecyclerView;
@@ -410,7 +405,11 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                 else if(position==changeNameRow) {
                     Bundle args = new Bundle();
                     args.putInt("do_what", ContactAddActivity.EDIT_NAME);
-                    args.putInt("user_id", user_id);
+                    if (chat_id != 0) {
+                        args.putInt("chat_id", chat_id);
+                    } else {
+                        args.putInt("user_id", user_id);
+                    }
                     presentFragment(new ContactAddActivity(args));
                 }
                 else if(position==startChatRow) {
