@@ -148,6 +148,7 @@ public class MrMailbox {
 
     public native static int createGroupChat(String name);
     public native static int addContactToChat(int chat_id, int contact_id);
+    public native static int removeContactFromChat(int chat_id, int contact_id);
 
     public final static int MR_GCM_ADDDAYMARKER = 0x01;
     public native static int[] getChatMsgs(int chat_id, int flags, int marker1before);
@@ -160,21 +161,14 @@ public class MrMailbox {
         return MrMailboxGetChatMedia(m_hMailbox, chat_id, msg_type, or_msg_type);
     }
 
-    public static int[] getChatContacts(int chat_id) {
-        return MrMailboxGetChatContacts(m_hMailbox, chat_id);
-    }
-
-    public static int deleteChat(int chat_id) {
-        return MrMailboxDeleteChat(m_hMailbox, chat_id);
-    }
+    public native static int[] getChatContacts(int chat_id);
+    public native static int deleteChat(int chat_id);
 
     private native static long    MrMailboxGetChatlist       (long hMailbox, String query); // returns hChatlist which must be unref'd after usage
     private native static long    MrMailboxGetChat           (long hMailbox, int chat_id); // return hChat which must be unref'd after usage
     private native static int     MrMailboxGetChatIdByContactId (long hMailbox, int contact_id);
     private native static int     MrMailboxCreateChatByContactId(long hMailbox, int contact_id); // returns chat_id
     private native static int[]   MrMailboxGetChatMedia      (long hMailbox, int chat_id, int msg_type, int or_msg_type);
-    private native static int[]   MrMailboxGetChatContacts   (long hMailbox, int chat_id);
-    private native static int     MrMailboxDeleteChat        (long hMailbox, int chat_id);
 
 
     // msgs

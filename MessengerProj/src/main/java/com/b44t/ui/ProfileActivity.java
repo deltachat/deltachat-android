@@ -454,9 +454,11 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                     int curr_user_index = position - firstMemberRow;
                     if(curr_user_index>=0 && curr_user_index<sortedUserIds.length) {
                         int curr_user_id = sortedUserIds[curr_user_index];
-                        Bundle args = new Bundle();
-                        args.putInt("user_id", curr_user_id);
-                        presentFragment(new ProfileActivity(args));
+                        if( curr_user_id > MrContact.MR_CONTACT_ID_LAST_SPECIAL ) {
+                            Bundle args = new Bundle();
+                            args.putInt("user_id", curr_user_id);
+                            presentFragment(new ProfileActivity(args));
+                        }
                     }
                 } else {
                     processOnClickOrPress(position);

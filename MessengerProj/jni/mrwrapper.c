@@ -363,9 +363,15 @@ JNIEXPORT jint Java_com_b44t_messenger_MrMailbox_addContactToChat(JNIEnv *env, j
 }
 
 
-JNIEXPORT void Java_com_b44t_messenger_MrMailbox_MrMailboxDeleteChat(JNIEnv *env, jclass c, jlong hMailbox, jint chat_id)
+JNIEXPORT jint Java_com_b44t_messenger_MrMailbox_removeContactFromChat(JNIEnv *env, jclass cls, jint chat_id, jint contact_id)
 {
-	mrmailbox_delete_chat((mrmailbox_t*)hMailbox, chat_id);
+	return (jint)mrmailbox_remove_contact_from_chat(get_mrmailbox_t(env, cls), chat_id, contact_id);
+}
+
+
+JNIEXPORT void Java_com_b44t_messenger_MrMailbox_deleteChat(JNIEnv *env, jclass cls, jint chat_id)
+{
+	mrmailbox_delete_chat(get_mrmailbox_t(env, cls), chat_id);
 }
 
 
@@ -654,9 +660,9 @@ JNIEXPORT jintArray Java_com_b44t_messenger_MrMailbox_getUnseenMsgs(JNIEnv *env,
 }
 
 
-JNIEXPORT jintArray Java_com_b44t_messenger_MrMailbox_MrMailboxGetChatContacts(JNIEnv *env, jclass c, jlong hMailbox, jint chat_id)
+JNIEXPORT jintArray Java_com_b44t_messenger_MrMailbox_getChatContacts(JNIEnv *env, jclass cls, jint chat_id)
 {
-	carray* ca = mrmailbox_get_chat_contacts((mrmailbox_t*)hMailbox, chat_id);
+	carray* ca = mrmailbox_get_chat_contacts(get_mrmailbox_t(env, cls), chat_id);
 	return carray2jintArray_n_carray_free(env, ca);
 }
 

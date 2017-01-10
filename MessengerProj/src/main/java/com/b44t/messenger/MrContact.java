@@ -31,6 +31,7 @@ package com.b44t.messenger;
 public class MrContact {
 
     public final static int MR_CONTACT_ID_SELF = 1;
+    public final static int MR_CONTACT_ID_LAST_SPECIAL = 9;
 
     public MrContact(long hContact) {
         m_hContact = hContact;
