@@ -177,7 +177,6 @@ public class ContactsController {
         //ContactsContract.CommonDataKinds.Email.DISPLAY_NAME,
     };
     private static final Object s_sync = new Object();
-    private static HashMap<View, String> s_viewBindings = new HashMap<>();
     private static HashMap<String, AvtCacheEntry> s_avtCache = new HashMap<>();
 
     public static void cleanupAvatarCache() {
@@ -235,7 +234,7 @@ public class ContactsController {
         // moreover, check if the avatar is in cache
         AvtCacheEntry cacheEntry;
         synchronized (s_sync) {
-            s_viewBindings.put(avtView, email+fallbackName);
+            avtImageReceiver.m_userDataUnique = email+fallbackName;
             cacheEntry = s_avtCache.get(email+fallbackName);
         }
 
@@ -264,7 +263,7 @@ public class ContactsController {
                 public void run() {
                     // is the avatar still desired?
                     synchronized (s_sync) {
-                        if (!s_viewBindings.get(avtView).equals(email+fallbackName)) {
+                        if (!avtImageReceiver.m_userDataUnique.equals(email+fallbackName)) {
                             return;
                         }
                     }
@@ -307,7 +306,7 @@ public class ContactsController {
                         public void run() {
                             // is the avatar still desired?
                             synchronized (s_sync) {
-                                if (!s_viewBindings.get(avtView).equals(email+fallbackName)) {
+                                if (!avtImageReceiver.m_userDataUnique.equals(email+fallbackName)) {
                                     return;
                                 }
                             }

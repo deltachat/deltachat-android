@@ -43,6 +43,7 @@ import com.b44t.ui.Components.AnimatedFileDrawable;
 
 public class ImageReceiver implements NotificationCenter.NotificationCenterDelegate {
 
+
     public interface ImageReceiverDelegate {
         void didSetImage(ImageReceiver imageReceiver, boolean set, boolean thumb);
     }
@@ -58,6 +59,11 @@ public class ImageReceiver implements NotificationCenter.NotificationCenterDeleg
         public boolean cacheOnly;
         public String ext;
     }
+
+    public String m_userDataUnique = ""; // used to discard images loaded and no longer required as there was a new request
+            // before, we used "private static HashMap<View, String> s_viewBindings = new HashMap<>();" in ContactsController -
+            // however, this was a bad idea as this resulted in _lots_ of objects that were never freed...
+
 
     private View parentView;
     private Integer tag;
