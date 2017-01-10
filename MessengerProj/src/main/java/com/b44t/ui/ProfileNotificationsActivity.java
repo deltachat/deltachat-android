@@ -128,7 +128,8 @@ public class ProfileNotificationsActivity extends BaseFragment implements Notifi
     public View createView(Context context) {
         actionBar.setBackButtonImage(R.drawable.ic_ab_back);
         actionBar.setAllowOverlayTitle(true);
-        actionBar.setTitle(LocaleController.getString("NotificationsAndSounds", R.string.NotificationsAndSounds));
+        actionBar.setTitle(m_mrChat.getName());
+        actionBar.setSubtitle(LocaleController.getString("Settings", R.string.Settings));
         actionBar.setActionBarMenuOnItemClick(new ActionBar.ActionBarMenuOnItemClick() {
             @Override
             public void onItemClick(int id) {
@@ -546,7 +547,7 @@ public class ProfileNotificationsActivity extends BaseFragment implements Notifi
                 if (view == null) {
                     view = new HeaderCell(mContext);
                 }
-                ((HeaderCell) view).setText(m_mrChat.getName());
+                ((HeaderCell) view).setText(LocaleController.getString("NotificationsAndSounds", R.string.NotificationsAndSounds));
             }
             else if (type == TYPE_TEXTSETTINGS) {
                 if (view == null) {

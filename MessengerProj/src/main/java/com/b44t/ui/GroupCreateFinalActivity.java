@@ -44,6 +44,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.b44t.messenger.AndroidUtilities;
+import com.b44t.messenger.ContactsController;
 import com.b44t.messenger.LocaleController;
 import com.b44t.messenger.MrContact;
 import com.b44t.messenger.MrMailbox;
@@ -91,26 +92,9 @@ public class GroupCreateFinalActivity extends BaseFragment implements Notificati
         avatarUpdater.parentFragment = this;
         avatarUpdater.delegate = this;
         avatarUpdater.returnOnly = true;
-        selectedContacts = getArguments().getIntegerArrayList("result");
-        final ArrayList<Integer> usersToLoad = new ArrayList<>();
-        for (Integer uid : selectedContacts) {
-            if (MessagesController.getInstance().getUser(uid) == null) {
-                usersToLoad.add(uid);
-            }
-        }
-        if (!usersToLoad.isEmpty()) {
-            final ArrayList<TLRPC.User> users = new ArrayList<>();
-            if (usersToLoad.size() != users.size()) {
-                return false;
-            }
-            if (!users.isEmpty()) {
-                //for (TLRPC.User user : users) {
-                //    MessagesController.getInstance().putUser(user, true);
-                //}
-            } else {
-                return false;
-            }
-        }
+        selectedContacts = getArguments().getIntegerArrayList("result"); /* may be empty - in this case a group only with SELF is created */
+        if( selectedContacts == null ) { selectedContacts = new ArrayList<>(); }
+        selectedContacts.add(MrContact.MR_CONTACT_ID_SELF);
         return super.onFragmentCreate();
     }
 
@@ -187,7 +171,7 @@ public class GroupCreateFinalActivity extends BaseFragment implements Notificati
 
         avatarImage = new BackupImageView(context);
         avatarImage.setRoundRadius(AndroidUtilities.dp(32));
-        avatarDrawable.setInfoByName("?");
+        //avatarDrawable.setInfoByName("?");
         avatarImage.setImageDrawable(avatarDrawable);
         frameLayout.addView(avatarImage);
         FrameLayout.LayoutParams layoutParams1 = (FrameLayout.LayoutParams) avatarImage.getLayoutParams();
@@ -200,7 +184,8 @@ public class GroupCreateFinalActivity extends BaseFragment implements Notificati
         layoutParams1.gravity = Gravity.TOP | (LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT);
         avatarImage.setLayoutParams(layoutParams1);
         {
-            avatarDrawable.setDrawPhoto(true);
+            //avatarDrawable.setDrawPhoto(true);
+            /* TODO: let the user select a photo for the group
             avatarImage.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -234,6 +219,7 @@ public class GroupCreateFinalActivity extends BaseFragment implements Notificati
                     showDialog(builder.create());
                 }
             });
+            */
         }
 
         nameTextView = new EditText(context);
@@ -276,16 +262,13 @@ public class GroupCreateFinalActivity extends BaseFragment implements Notificati
 
                 @Override
                 public void afterTextChanged(Editable s) {
-                    avatarDrawable.setInfoByName(nameTextView.length() > 0 ? nameTextView.getText().toString() : "?");
-                    avatarImage.invalidate();
+                    updateAvatar();
                 }
             });
         }
 
         GreySectionCell sectionCell = new GreySectionCell(context);
-        sectionCell.setText(
-                LocaleController.getString("MeAnd", R.string.MeAnd) + " " +
-                LocaleController.formatPluralString("Members", selectedContacts.size()));
+        sectionCell.setText(LocaleController.formatPluralString("Members", selectedContacts.size()));
         linearLayout.addView(sectionCell);
 
         listView = new ListView(context);
@@ -299,7 +282,15 @@ public class GroupCreateFinalActivity extends BaseFragment implements Notificati
         layoutParams.height = LayoutHelper.MATCH_PARENT;
         listView.setLayoutParams(layoutParams);
 
+        updateAvatar();
+
         return fragmentView;
+    }
+
+    private void updateAvatar()
+    {
+        ContactsController.setupAvatarByStrings(avatarImage, avatarImage.imageReceiver, avatarDrawable, null,
+                nameTextView.length() > 0 ? nameTextView.getText().toString() : "?");
     }
 
     @Override

@@ -176,6 +176,7 @@ public class ContactsController {
         ContactsContract.CommonDataKinds.Email.ADDRESS
         //ContactsContract.CommonDataKinds.Email.DISPLAY_NAME,
     };
+    private static final Object s_sync = new Object();
     private static HashMap<View, String> s_viewBindings = new HashMap<>();
     private static HashMap<String, AvtCacheEntry> s_avtCache = new HashMap<>();
 
@@ -183,8 +184,7 @@ public class ContactsController {
         // to detect changes of the avatar images eg. in the Contacts App,
         // this function should be called whenever the App goes to background or back to foreground.
         // instead of emptying the cache, we force a reloading (looks smarter - most times, the avatars do not change)
-        synchronized (s_viewBindings /*we use s_viewBindings for locking!*/ ) {
-            Log.i(TAG, "Avatar cache discarded.");
+        synchronized (s_sync) {
             for (AvtCacheEntry cacheEntry : s_avtCache.values()) {
                 cacheEntry.m_needsReload = true;
             }
@@ -215,6 +215,15 @@ public class ContactsController {
             }
         }
 
+        setupAvatarByStrings(avtView, avtImageReceiver, avtDrawable, tempEmail, tempName);
+    }
+
+    public static void setupAvatarByStrings(final View avtView,
+                                   final ImageReceiver avtImageReceiver,
+                                   final AvatarDrawable avtDrawable,
+                                   String tempEmail,
+                                   String tempName)
+    {
         if( tempEmail == null ) {
             tempEmail = "fallback:" + tempName;
         }
@@ -222,12 +231,12 @@ public class ContactsController {
         final String email = tempEmail;
         final String fallbackName = tempName;
 
-        // bind e-email address to view object to detect overwrites and discard loading old images (may happen on fast scrolling)
+        // bind e-mail+name address to view object to detect overwrites and discard loading old images (may happen on fast scrolling)
         // moreover, check if the avatar is in cache
         AvtCacheEntry cacheEntry;
-        synchronized (s_viewBindings) {
-            s_viewBindings.put(avtView, email);
-            cacheEntry = s_avtCache.get(email);
+        synchronized (s_sync) {
+            s_viewBindings.put(avtView, email+fallbackName);
+            cacheEntry = s_avtCache.get(email+fallbackName);
         }
 
         if( cacheEntry != null )
@@ -254,8 +263,8 @@ public class ContactsController {
                 @Override
                 public void run() {
                     // is the avatar still desired?
-                    synchronized (s_viewBindings) {
-                        if (!s_viewBindings.get(avtView).equals(email)) {
+                    synchronized (s_sync) {
+                        if (!s_viewBindings.get(avtView).equals(email+fallbackName)) {
                             return;
                         }
                     }
@@ -297,8 +306,8 @@ public class ContactsController {
                         @Override
                         public void run() {
                             // is the avatar still desired?
-                            synchronized (s_viewBindings) {
-                                if (!s_viewBindings.get(avtView).equals(email)) {
+                            synchronized (s_sync) {
+                                if (!s_viewBindings.get(avtView).equals(email+fallbackName)) {
                                     return;
                                 }
                             }
@@ -311,8 +320,8 @@ public class ContactsController {
                             }
                             avtView.invalidate();
 
-                            synchronized (s_viewBindings /*we use s_viewBindings for locking!*/ ) {
-                                s_avtCache.put(email, new AvtCacheEntry(photoBitmap, fallbackName));
+                            synchronized (s_sync) {
+                                s_avtCache.put(email+fallbackName, new AvtCacheEntry(photoBitmap, fallbackName));
                             }
                         }
                     });

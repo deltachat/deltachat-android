@@ -238,9 +238,7 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
                 }
                 else if( id == id_done_button )
                 {
-                    if (selectedContacts.isEmpty()) {
-                        return;
-                    }
+                    /*it's okay if selectedContacts is empty - a group only with SELF with created then*/
                     ArrayList<Integer> result = new ArrayList<>();
                     result.addAll(selectedContacts.keySet());
                     Bundle args = new Bundle();

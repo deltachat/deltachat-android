@@ -584,6 +584,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
         }
 
         if ( chat_id != 0 && chat_id!= MrChat.MR_CHAT_ID_DEADDROP ) {
+            /* TODO: let the user select a photo for the group
             writeButton = new ImageView(context);
             try {
                 writeButton.setBackgroundResource(R.drawable.floating_user_states);
@@ -616,7 +617,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                     AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
                     CharSequence[] items;
                     TLRPC.Chat chat = MrChat.chatId2chat(chat_id);
-                    if (chat.photo == null || chat.photo.photo_big == null /*|| chat.photo instanceof TLRPC.TL_chatPhotoEmpty*/) {
+                    if (chat.photo == null || chat.photo.photo_big == null ) {
                         items = new CharSequence[]{LocaleController.getString("FromCamera", R.string.FromCamera), LocaleController.getString("FromGalley", R.string.FromGalley)};
                     } else {
                         items = new CharSequence[]{LocaleController.getString("FromCamera", R.string.FromCamera), LocaleController.getString("FromGalley", R.string.FromGalley), LocaleController.getString("DeletePhoto", R.string.DeletePhoto)};
@@ -637,6 +638,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                     showDialog(builder.create());
                 }
             });
+            */
         }
         needLayout();
 
@@ -1407,7 +1409,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                     } else if (i == startChatRow) {
                         textCell.setText(LocaleController.getString("NewChat", R.string.NewChat));
                     } else if (i == settingsNotificationsRow) {
-                        textCell.setTextAndIcon(LocaleController.getString("NotificationsAndSounds", R.string.NotificationsAndSounds), R.drawable.menu_settings);
+                        textCell.setTextAndIcon(LocaleController.getString("Settings", R.string.Settings), R.drawable.menu_settings);
                     } else if (i == addMemberRow) {
                         textCell.setText(LocaleController.getString("AddMember", R.string.AddMember));
                     }
