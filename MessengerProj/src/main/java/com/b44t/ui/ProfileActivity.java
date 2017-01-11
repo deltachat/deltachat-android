@@ -297,31 +297,6 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                     });
                     builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
                     showDialog(builder.create());
-                /*} else if (id == ID_INVITE_TO_GROUP) {
-                    final TLRPC.User user = MessagesController.getInstance().getUser(user_id);
-                    if (user == null) {
-                        return;
-                    }
-                    Bundle args = new Bundle();
-                    args.putBoolean("onlySelect", true);
-                    args.putInt("dialogsType", 2);
-                    args.putString("addToGroupAlertString", LocaleController.formatString("AddToTheGroupTitle", R.string.AddToTheGroupTitle, UserObject.getUserName(user), "%1$s"));
-                    DialogsActivity fragment = new DialogsActivity(args);
-                    fragment.setDelegate(new DialogsActivity.DialogsActivityDelegate() {
-                        @Override
-                        public void didSelectDialog(DialogsActivity fragment, long did, boolean param) {
-                            Bundle args = new Bundle();
-                            args.putBoolean("scrollToTopOnResume", true);
-                            args.putInt("chat_id", -(int) did);
-
-                            NotificationCenter.getInstance().removeObserver(ProfileActivity.this, NotificationCenter.closeChats);
-                            NotificationCenter.getInstance().postNotificationName(NotificationCenter.closeChats);
-                            MessagesController.getInstance().addUserToChat(-(int) did, user, null, 0, null, ProfileActivity.this);
-                            presentFragment(new ChatActivity(args), true);
-                            removeSelfFromStack();
-                        }
-                    });
-                    presentFragment(fragment);*/
                 } else if (id == ID_ADD_SHORTCUT) {
                     try {
                         // draw avatar into a bitmap
@@ -468,63 +443,32 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
         listView.setOnItemLongClickListener(new RecyclerListView.OnItemLongClickListener() {
             @Override
             public boolean onItemClick(View view, int position) {
-                if (position >= firstMemberRow && position <= lastMemberRow) {
-                    /*
-                    if (getParentActivity() == null) {
-                        return false;
-                    }
-                    boolean allowKick = false;
-                    boolean allowSetAdmin = false;
-
-                    final TLRPC.ChatParticipant user;
-                    if (!sortedUsers.isEmpty()) {
-                        user = info.participants.participants.get(sortedUsers.get(position - emptyRowChat2 - 1));
-                    } else {
-                        user = info.participants.participants.get(position - emptyRowChat2 - 1);
-                    }
-                    selectedUser = user.user_id;
-
-                    if (user.user_id != UserConfig.getClientUserId()) {
-                        if (currentChat.creator) {
-                            allowKick = true;
-                        } else if (user instanceof TLRPC.TL_chatParticipant) {
-                            if (currentChat.admin && currentChat.admins_enabled || user.inviter_id == UserConfig.getClientUserId()) {
-                                allowKick = true;
-                            }
+                if (position >= firstMemberRow && position <= lastMemberRow)
+                {
+                    int curr_user_index = position - firstMemberRow;
+                    if(curr_user_index>=0 && curr_user_index<sortedUserIds.length)
+                    {
+                        final int curr_user_id = sortedUserIds[curr_user_index];
+                        if( curr_user_id!=MrContact.MR_CONTACT_ID_SELF  ) {
+                            AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
+                            CharSequence[] items = new CharSequence[]{LocaleController.getString("KickFromGroup", R.string.KickFromGroup)};
+                            builder.setItems(items, new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    MrMailbox.removeContactFromChat(chat_id, curr_user_id);
+                                    sortedUserIds = MrMailbox.getChatContacts(chat_id);
+                                    updateRowsIds();
+                                    updateProfileData();
+                                    listAdapter.notifyDataSetChanged();
+                                    NotificationCenter.getInstance().postNotificationName(NotificationCenter.updateInterfaces, MessagesController.UPDATE_MASK_CHAT_MEMBERS);
+                                }
+                            });
+                            showDialog(builder.create());
                         }
                     }
-
-                    if (!allowKick) {
-                        return false;
-                    }
-                    AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
-                    if (currentChat.megagroup && currentChat.creator && allowSetAdmin) {
-                        CharSequence[] items = new CharSequence[]{LocaleController.getString("SetAsAdmin", R.string.SetAsAdmin), LocaleController.getString("KickFromGroup", R.string.KickFromGroup)};
-                        builder.setItems(items, new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
-                                if (i == 0) {
-                                    ;
-                                } else if (i == 1) {
-                                    kickUser(selectedUser);
-                                }
-                            }
-                        });
-                    } else {
-                        CharSequence[] items = new CharSequence[]{chat_id > 0 ? LocaleController.getString("KickFromGroup", R.string.KickFromGroup) : LocaleController.getString("KickFromBroadcast", R.string.KickFromBroadcast)};
-                        builder.setItems(items, new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
-                                if (i == 0) {
-                                    kickUser(selectedUser);
-                                }
-                            }
-                        });
-                    }
-                    showDialog(builder.create());
-                    */
                     return true;
-                } else {
+                } else
+                {
                     return processOnClickOrPress(position);
                 }
             }
@@ -688,34 +632,22 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
     }
 
     private void openAddMember() {
-        /*
+
         Bundle args = new Bundle();
-        args.putBoolean("onlyUsers", true);
-        args.putBoolean("returnAsResult", true);
-        args.putBoolean("needForwardCount", !ChatObject.isChannel(currentChat));
-        //args.putBoolean("allowUsernameSearch", false);
-        if (chat_id > 0) {
-            if (currentChat.creator) {
-                args.putInt("chat_id", currentChat.id);
-            }
-            args.putString("selectAlertString", LocaleController.getString("AddToTheGroup", R.string.AddToTheGroup));
-        }
+        args.putInt("do_what", ContactsActivity.ADD_CONTACTS_TO_GROUP);
         ContactsActivity fragment = new ContactsActivity(args);
         fragment.setDelegate(new ContactsActivity.ContactsActivityDelegate() {
             @Override
-            public void didSelectContact(TLRPC.User user, String param) {
-                MessagesController.getInstance().addUserToChat(chat_id, user, info, param != null ? Utilities.parseInt(param) : 0, null, ProfileActivity.this);
+            public void didSelectContact(int added_user_id) {
+                MrMailbox.addContactToChat(chat_id, added_user_id);
+                sortedUserIds = MrMailbox.getChatContacts(chat_id);
+                updateRowsIds();
+                updateProfileData();
+                listAdapter.notifyDataSetChanged();
+                NotificationCenter.getInstance().postNotificationName(NotificationCenter.updateInterfaces, MessagesController.UPDATE_MASK_CHAT_MEMBERS);
             }
         });
-        if (info != null && info.participants != null) {
-            HashMap<Integer, TLRPC.User> users = new HashMap<>();
-            for (int a = 0; a < info.participants.participants.size(); a++) {
-                users.put(info.participants.participants.get(a).user_id, null);
-            }
-            fragment.setIgnoreUsers(users);
-        }
         presentFragment(fragment);
-        */
     }
 
     private void checkListViewScroll() {
@@ -1194,8 +1126,6 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
         } else if (chat_id != 0 && chat_id!=MrChat.MR_CHAT_ID_DEADDROP ) {
             addMemberRow = rowCount++;
         }
-
-        //sectionRow = rowCount++;
 
         if( chat_id != 0 ) {
             if( rowCount > 1/*first empty row is always added*/ ) {

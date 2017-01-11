@@ -110,7 +110,7 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
     private final static int id_toggle      = 4;
 
     public interface ContactsActivityDelegate {
-        void didSelectContact(TLRPC.User user, String param);
+        void didSelectContact(int user_id);
     }
 
     public ContactsActivity(Bundle args) {
@@ -140,7 +140,7 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
         }
         else if( do_what == ADD_CONTACTS_TO_GROUP )
         {
-            title = LocaleController.getString("AddContact", R.string.AddContact);
+            title = LocaleController.getString("AddMember", R.string.AddMember);
         }
         else if( do_what == SELECT_CONTACT_TO_BLOCK )
         {
@@ -250,7 +250,7 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
 
         ActionBarMenu menu = actionBar.createMenu();
 
-        if( do_what == SELECT_CONTACTS_FOR_NEW_GROUP || do_what == ADD_CONTACTS_TO_GROUP ) {
+        if( do_what == SELECT_CONTACTS_FOR_NEW_GROUP ) {
             menu.addItem(id_done_button, R.drawable.ic_done);
         }
 
@@ -491,7 +491,7 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
                         }
                     }
                     else if (delegate != null) {
-                        delegate.didSelectContact(user, null);
+                        delegate.didSelectContact(user.id);
                         delegate = null;
                         finishFragment();
                     }

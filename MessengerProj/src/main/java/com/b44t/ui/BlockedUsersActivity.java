@@ -202,11 +202,8 @@ public class BlockedUsersActivity extends BaseFragment implements NotificationCe
     }
 
     @Override
-    public void didSelectContact(final TLRPC.User user, String param) {
-        if (user == null) {
-            return;
-        }
-        MrMailbox.blockContact(user.id, 1);
+    public void didSelectContact(int user_id) {
+        MrMailbox.blockContact(user_id, 1);
     }
 
     private class ListAdapter extends BaseFragmentAdapter {
