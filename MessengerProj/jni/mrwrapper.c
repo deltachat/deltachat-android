@@ -558,6 +558,13 @@ JNIEXPORT jstring Java_com_b44t_messenger_MrChat_getSubtitle(JNIEnv *env, jclass
 }
 
 
+JNIEXPORT jint Java_com_b44t_messenger_MrChat_getParamInt(JNIEnv *env, jclass cls, jint key, jint def)
+{
+	mrchat_t* ths = get_mrchat_t(env, cls);
+	return mrparam_get_int(ths? ths->m_param:NULL, key, def);
+}
+
+
 JNIEXPORT jstring Java_com_b44t_messenger_MrChat_MrChatGetDraft(JNIEnv *env, jclass c, jlong hChat) /* returns NULL for "no draft" */
 {
 	mrchat_t* ths = (mrchat_t*)hChat;

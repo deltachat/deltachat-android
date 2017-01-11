@@ -301,7 +301,7 @@ public class MrMailbox {
         MrStockAddStr(11, LocaleController.getString("AttachAudio", R.string.AttachAudio));
         MrStockAddStr(12, LocaleController.getString("AttachDocument", R.string.AttachDocument));
         MrStockAddStr(13, LocaleController.getString("DefaultStatusText", R.string.DefaultStatusText));
-        MrStockAddStr(14, LocaleController.getString("SubjectPrefix", R.string.SubjectPrefix));
+        MrStockAddStr(14, LocaleController.getString("MsgNewGroupDraft", R.string.MsgNewGroupDraft));
     }
 
     public static String getInviteText() {

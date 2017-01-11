@@ -568,4 +568,6 @@
     <string name="AttachFiles">Attach files</string>
     <string name="Chats">Chats</string>
     <string name="ErrGroupNameEmpty">Please enter a name for the group.</string>
+    <string name="MsgNewGroupDraftHint">Write a first message to allow others to reply in this group.</string>
+    <string name="MsgNewGroupDraft">Hello, I\'ve just created the group \"_\" for us.</string>
 </resources>

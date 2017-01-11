@@ -568,4 +568,6 @@
     <string name="AskResetNotifications">Alle Benachrichtigungseinstellungen und Töne dieser Seite, der Kontakte und der Gruppen zurücksetzen?</string>
     <string name="AttachFiles">Dateien anhängen</string>
     <string name="ErrGroupNameEmpty">Bitte einen Namen für die Gruppe eingeben.</string>
+    <string name="MsgNewGroupDraft">Hallo, ich habe die Gruppe \"_\" für uns erstellt.</string>
+    <string name="MsgNewGroupDraftHint">Eine erste Nachricht schreiben; dann können die anderen in der Gruppe antworten.</string>
 </resources>

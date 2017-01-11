@@ -50,6 +50,9 @@ public class MrChat {
     public native String getName();
     public native String getSubtitle();
 
+    public static int MR_CHAT_PARAM_UNPROMOTED = 'U';
+    public native int    getParamInt(int key, int def);
+
     public String getDraft() {
         return MrChatGetDraft(m_hChat);
     }

@@ -816,7 +816,14 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         });
 
             TextView emptyView = new TextView(context);
-            emptyView.setText(LocaleController.getString("NoMessages", R.string.NoMessages));
+
+            if( m_mrChat.getParamInt(MrChat.MR_CHAT_PARAM_UNPROMOTED, 0)==1 ) {
+                emptyView.setText(LocaleController.getString("MsgNewGroupDraftHint", R.string.MsgNewGroupDraftHint));
+            }
+            else {
+                emptyView.setText(LocaleController.getString("NoMessages", R.string.NoMessages));
+            }
+
             emptyView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
             emptyView.setGravity(Gravity.CENTER);
             emptyView.setTextColor(Theme.CHAT_EMPTY_VIEW_TEXT_COLOR);
@@ -824,7 +831,10 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
             emptyView.getBackground().setColorFilter(Theme.colorFilter);
             emptyView.setTypeface(AndroidUtilities.getTypeface("fonts/rmedium.ttf"));
             emptyView.setPadding(AndroidUtilities.dp(10), AndroidUtilities.dp(2), AndroidUtilities.dp(10), AndroidUtilities.dp(3));
-            emptyViewContainer.addView(emptyView, new FrameLayout.LayoutParams(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER));
+            FrameLayout.LayoutParams fl = new FrameLayout.LayoutParams(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER);
+            fl.leftMargin = AndroidUtilities.dp(24);
+            fl.rightMargin = AndroidUtilities.dp(24);
+            emptyViewContainer.addView(emptyView, fl);
 
         if (chatActivityEnterView != null) {
             chatActivityEnterView.onDestroy();
