@@ -422,10 +422,10 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
         listView.setOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
-                // due to the setIsSearchField()-HACK, we do not want force keyboard disappering (HACK looks smaller so ;-)
-                //if (newState == RecyclerView.SCROLL_STATE_DRAGGING && searching && searchWas) {
-                //    AndroidUtilities.hideKeyboard(getParentActivity().getCurrentFocus());
-                //}
+                // if we disable this, the keyboard always lays over the list and the end of the list is never reachable -- was: due to the setIsSearchField()-HACK, we do not want force keyboard disappering (HACK looks smaller so ;-)
+                if (newState == RecyclerView.SCROLL_STATE_DRAGGING && searching && searchWas) {
+                    AndroidUtilities.hideKeyboard(getParentActivity().getCurrentFocus());
+                }
             }
 
             @Override
