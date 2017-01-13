@@ -204,6 +204,7 @@ public class MrMailbox {
     public final static int MR_EVENT_MSG_DELIVERED            = 3000;
     public final static int MR_EVENT_MSG_READ                 = 3010;
     public final static int MR_EVENT_CONNECTION_STATE_CHANGED = 3020;
+    public final static int MR_EVENT_CHAT_MODIFIED            = 3030;
     public static long MrCallback(final int event, final long data1, final long data2) // this function is called from within the C-wrapper
     {
         switch(event) {
@@ -250,6 +251,18 @@ public class MrMailbox {
                         NotificationCenter.getInstance().postNotificationName(NotificationCenter.contactsDidLoaded);
                         NotificationCenter.getInstance().postNotificationName(NotificationCenter.blockedUsersDidLoaded);
                         NotificationCenter.getInstance().postNotificationName(NotificationCenter.dialogsNeedReload);
+                    }
+                });
+                return 0;
+
+            case MR_EVENT_CHAT_MODIFIED:
+                AndroidUtilities.runOnUIThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        reloadMainChatlist();
+                        NotificationCenter.getInstance().postNotificationName(NotificationCenter.updateInterfaces,
+                                MessagesController.UPDATE_MASK_NAME|MessagesController.UPDATE_MASK_CHAT_NAME|
+                                MessagesController.UPDATE_MASK_CHAT_MEMBERS|MessagesController.UPDATE_MASK_AVATAR);
                     }
                 });
                 return 0;
@@ -302,6 +315,10 @@ public class MrMailbox {
         MrStockAddStr(12, LocaleController.getString("AttachDocument", R.string.AttachDocument));
         MrStockAddStr(13, LocaleController.getString("DefaultStatusText", R.string.DefaultStatusText));
         MrStockAddStr(14, LocaleController.getString("MsgNewGroupDraft", R.string.MsgNewGroupDraft));
+        MrStockAddStr(15, LocaleController.getString("MsgGroupNameChanged", R.string.MsgGroupNameChanged));
+        MrStockAddStr(16, LocaleController.getString("MsgGroupImageChanged", R.string.MsgGroupImageChanged));
+        MrStockAddStr(17, LocaleController.getString("MsgMemberAddedToGroup", R.string.MsgMemberAddedToGroup));
+        MrStockAddStr(18, LocaleController.getString("MsgMemberRemovedFromToGroup", R.string.MsgMemberRemovedFromToGroup));
     }
 
     public static String getInviteText() {

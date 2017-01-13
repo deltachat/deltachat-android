@@ -636,7 +636,7 @@ public class NotificationsSettingsActivity extends BaseFragment implements Notif
                         value = preferences.getString("GroupSound", LocaleController.getString("SoundDefault", R.string.SoundDefault));
                     }
                     if (value.equals("NoSound")) {
-                        value = LocaleController.getString("NoSound", R.string.NoSound);
+                        value = LocaleController.getString("Disabled", R.string.Disabled);
                     }
                     textCell.setTextAndValue(LocaleController.getString("Sound", R.string.Sound), value, true);
                 } else if (i == messageVibrateRow || i == groupVibrateRow) {

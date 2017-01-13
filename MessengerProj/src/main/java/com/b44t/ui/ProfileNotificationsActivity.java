@@ -600,7 +600,7 @@ public class ProfileNotificationsActivity extends BaseFragment implements Notifi
                 } else if (i == settingsSoundRow) {
                     String value = preferences.getString("sound_" + dialog_id, LocaleController.getString("SoundDefault", R.string.SoundDefault));
                     if (value.equals("NoSound")) {
-                        value = LocaleController.getString("NoSound", R.string.NoSound);
+                        value = LocaleController.getString("Disabled", R.string.Disabled);
                     }
                     textCell.setTextAndValue(LocaleController.getString("Sound", R.string.Sound), value, true);
                 } else if (i == settingsPriorityRow) {

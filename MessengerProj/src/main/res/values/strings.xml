@@ -570,4 +570,8 @@
     <string name="ErrGroupNameEmpty">Please enter a name for the group.</string>
     <string name="MsgNewGroupDraftHint">Write a first message to allow others to reply in this group.</string>
     <string name="MsgNewGroupDraft">Hello, I\'ve just created the group \"_\" for us.</string>
+    <string name="MsgGroupNameChanged">Group name changed from \"_\" to \"_\".</string>
+    <string name="MsgGroupImageChanged">Group image changed.</string>
+    <string name="MsgMemberAddedToGroup">Member \"_\" added.</string>
+    <string name="MsgMemberRemovedFromToGroup">Member \"_\" removed.</string>
 </resources>
