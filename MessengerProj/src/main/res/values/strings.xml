@@ -18,16 +18,11 @@
     <string name="Updating">Updating...</string>
     <string name="DeleteChat">Delete chat</string>
     <string name="SelectChat">Select chat</string>
-    <string name="SearchMessages">MESSAGES</string>
     <string name="Search">Search</string>
     <string name="MuteNotifications">Mute notifications</string>
     <string name="MuteFor">Mute for %1$s</string>
     <string name="UnmuteNotifications">Unmute</string>
     <string name="WillUnmuteIn">In %1$s</string>
-    <string name="Hashtags">HASHTAGS</string>
-    <string name="Recent">RECENT</string>
-    <string name="ChatHints">CHATS</string>
-    <string name="ChatHintsDelete">Delete %1$s from suggestions?</string>
     <string name="Draft">Draft</string>
     <!--audio view-->
     <string name="NoAudio">Please add files to the music library on your device to see them here.</string>
@@ -50,7 +45,6 @@
     <string name="Folder">Folder</string>
     <string name="GalleryInfo">To send images without compression</string>
     <!--chat view-->
-    <string name="Invisible">invisible</string>
     <string name="ChatGallery">Gallery</string>
     <string name="ChatLocation">Location</string>
     <string name="ChatVideo">Video</string>
@@ -61,10 +55,6 @@
     <string name="From">From</string>
     <string name="NoRecent">No recent</string>
     <string name="TypeMessage">Message</string>
-    <string name="YouWereKicked">You were removed from this group</string>
-    <string name="YouLeft">You left this group</string>
-    <string name="DeleteThisGroup">Delete this group</string>
-    <string name="DeleteThisChat">Delete this chat</string>
     <string name="SlideToCancel">SLIDE TO CANCEL</string>
     <string name="SaveToDownloads">Save to downloads</string>
     <string name="DeleteGif">Delete GIF?</string>
@@ -88,26 +78,16 @@
     <string name="NoContacts">No contacts yet</string>
     <string name="TodayAt">at</string>
     <string name="YesterdayAt">yesterday at</string>
-    <string name="Online">online</string>
     <string name="LastSeen">last seen</string>
     <string name="LastSeenDate">last seen</string>
-    <string name="LastSeenNow">last seen just now</string>
-    <string name="GlobalSearch">GLOBAL SEARCH</string>
-    <string name="Lately">last seen recently</string>
-    <string name="WithinAWeek">last seen within a week</string>
-    <string name="WithinAMonth">last seen within a month</string>
-    <string name="ALongTimeAgo">last seen a long time ago</string>
     <!--group create view-->
     <string name="SendMessageTo">Send message to...</string>
     <string name="EnterGroupNamePlaceholder">Enter group name</string>
-    <string name="JoinToGroup">Do you want to join the chat \'%1$s\'?</string>
-    <string name="LinkCopied">Link copied to clipboard</string>
     <string name="ShareLink">Share Link</string>
     <!--group info view-->
     <string name="SharedMedia">Shared Media</string>
     <string name="SETTINGS">Settings</string>
     <string name="AddMember">Add member</string>
-    <string name="DeleteAndExit">Delete and leave group</string>
     <string name="Notifications">Notifications</string>
     <string name="RemoveMember">Remove member</string>
     <!--contact info view-->
@@ -147,7 +127,6 @@
     <string name="ResetAllNotifications">Reset all notifications</string>
     <string name="NotificationsAndSounds">Notifications and sounds</string>
     <string name="BlockedUsers">Blocked contacts</string>
-    <string name="NoSound">No sound</string>
     <string name="Default">Default</string>
     <string name="OnlyIfSilent">Only if silent</string>
     <string name="ChatBackground">Chat background</string>
@@ -155,14 +134,12 @@
     <string name="Language">Language</string>
     <string name="Help">Help</string>
     <string name="DeleteLocalization">Delete localization?</string>
-    <string name="IncorrectLocalization">Incorrect localization file</string>
     <string name="Enabled">On</string>
     <string name="Disabled">Off</string>
     <string name="NotificationsService">Keep-alive service</string>
     <string name="NotificationsServiceInfo">Relaunch app when shut down by user or system. This will ensure app can show notifications.</string>
     <string name="NotificationsServiceConnection">Background connection</string>
     <string name="NotificationsServiceConnectionInfo">Keep a low impact background connection to receive notifications. Enable for reliable notifications.</string>
-    <string name="ImportContacts">Import Contacts</string>
     <string name="LedColor">LED color</string>
     <string name="BadgeNumber">Show count in popup</string>
     <string name="Short">Short</string>
@@ -276,19 +253,7 @@
     <!--privacy settings-->
     <string name="PrivacySettings">Privacy and security</string>
     <string name="PrivacyTitle" tools:keep="@string/PrivacyTitle">Privacy</string>
-    <string name="PrivacyLastSeen">Last Seen</string>
-    <string name="LastSeenEverybody">Everybody</string>
-    <string name="LastSeenContacts">My Contacts</string>
-    <string name="LastSeenNobody">Nobody</string>
-    <string name="LastSeenEverybodyMinus">Everybody (-%1$d)</string>
-    <string name="LastSeenContactsPlus">My Contacts (+%1$d)</string>
-    <string name="LastSeenContactsMinus">My Contacts (-%1$d)</string>
-    <string name="LastSeenContactsMinusPlus">My Contacts (-%1$d, +%2$d)</string>
-    <string name="LastSeenNobodyPlus">Nobody (+%1$d)</string>
     <string name="SecurityTitle">Security</string>
-    <string name="LastSeenHelp">Change who can see your Last Seen time.</string>
-    <string name="LastSeenTitle">Who can see your Last Seen time?</string>
-    <string name="CreateGroupError">Sorry, you can\'t create a group with these users because of their privacy settings.</string>
     <!--edit video view-->
     <string name="EditVideo">Edit Video</string>
     <string name="OriginalVideo">Original Video</string>

@@ -18,16 +18,11 @@
     <string name="Updating">Bijwerken</string>
     <string name="DeleteChat">Chat verwijderen</string>
     <string name="SelectChat">Kies een chat</string>
-    <string name="SearchMessages">BERICHTEN</string>
     <string name="Search">Zoeken</string>
     <string name="MuteNotifications">Meldingen stil</string>
     <string name="MuteFor">%1$s stil</string>
     <string name="UnmuteNotifications">Stil uitschakelen</string>
     <string name="WillUnmuteIn">Over %1$s</string>
-    <string name="Hashtags">HASHTAGS</string>
-    <string name="Recent">RECENT</string>
-    <string name="ChatHints">CHATS</string>
-    <string name="ChatHintsDelete">%1$s uit suggesties verwijderen?</string>
     <string name="Draft">Concept</string>
     <!--audio view-->
     <string name="NoAudio">Voeg bestanden toe aan de muziekbibliotheek op je apparaat om ze hier te zien.</string>
@@ -50,7 +45,6 @@
     <string name="Folder">Map</string>
     <string name="GalleryInfo">Om bestanden ongecomprimeerd te versturen</string>
     <!--chat view-->
-    <string name="Invisible">onzichtbaar</string>
     <string name="ChatGallery">Galerij</string>
     <string name="ChatLocation">Locatie</string>
     <string name="ChatVideo">Video</string>
@@ -61,10 +55,6 @@
     <string name="From">Van</string>
     <string name="NoRecent">Niets recents</string>
     <string name="TypeMessage">Bericht</string>
-    <string name="YouWereKicked">Je bent verwijderd uit deze groep</string>
-    <string name="YouLeft">Je hebt deze groep verlaten</string>
-    <string name="DeleteThisGroup">Deze groep verwijderen</string>
-    <string name="DeleteThisChat">Chat verwijderen</string>
     <string name="SlideToCancel">SLEEP OM TE ANNULEREN</string>
     <string name="SaveToDownloads">Opslaan in Downloads</string>
     <string name="DeleteGif">GIF verwijderen?</string>
@@ -88,26 +78,16 @@
     <string name="NoContacts">Nog geen contacten</string>
     <string name="TodayAt">om</string>
     <string name="YesterdayAt">gisteren om</string>
-    <string name="Online">online</string>
     <string name="LastSeen">gezien</string>
     <string name="LastSeenDate">gezien</string>
-    <string name="LastSeenNow">laatst gezien zojuist</string>
-    <string name="GlobalSearch">WERELDWIJD ZOEKEN</string>
-    <string name="Lately">recent gezien</string>
-    <string name="WithinAWeek">afgelopen week gezien</string>
-    <string name="WithinAMonth">afgelopen maand gezien</string>
-    <string name="ALongTimeAgo">lang geleden gezien</string>
     <!--group create view-->
     <string name="SendMessageTo">Bericht versturen naar</string>
     <string name="EnterGroupNamePlaceholder">Groepsnaam</string>
-    <string name="JoinToGroup">Wil je lid worden van de groep \"%1$s\"?</string>
-    <string name="LinkCopied">Link gekopieerd naar klembord.</string>
     <string name="ShareLink">Link delen</string>
     <!--group info view-->
     <string name="SharedMedia">Gedeelde media</string>
     <string name="SETTINGS">Instellingen</string>
     <string name="AddMember">Lid toevoegen</string>
-    <string name="DeleteAndExit">Groep verwijderen en verlaten</string>
     <string name="Notifications">Meldingen</string>
     <string name="RemoveMember">Verwijderen uit groep</string>
     <!--contact info view-->
@@ -147,7 +127,6 @@
     <string name="ResetAllNotifications">Meldingen resetten</string>
     <string name="NotificationsAndSounds">Meldingen en geluiden</string>
     <string name="BlockedUsers">Geblokkeerd</string>
-    <string name="NoSound">Geen geluid</string>
     <string name="Default">Standaard</string>
     <string name="OnlyIfSilent">Alleen indien stil</string>
     <string name="ChatBackground">Achtergrond kiezen</string>
@@ -155,14 +134,12 @@
     <string name="Language">Taal</string>
     <string name="Help">Veelgestelde vragen</string>
     <string name="DeleteLocalization">Vertaling verwijderen?</string>
-    <string name="IncorrectLocalization">Ongeldig vertalingsbestand</string>
     <string name="Enabled">Inschakelen</string>
     <string name="Disabled">Uitgeschakeld</string>
     <string name="NotificationsService">Meldingenservice</string>
     <string name="NotificationsServiceInfo">App automatisch herstarten bij afsluiten om meldingen weer te kunnen blijven geven.</string>
     <string name="NotificationsServiceConnection">Achtergrondverbinding</string>
     <string name="NotificationsServiceConnectionInfo">Achtergrondverbinding voor meldingen. Inschakelen voor betrouwbare meldingen.</string>
-    <string name="ImportContacts">Importeer contacten</string>
     <string name="LedColor">LED-kleur</string>
     <string name="BadgeNumber">Badgenummer</string>
     <string name="Short">Kort</string>
@@ -277,19 +254,7 @@
     <!--privacy settings-->
     <string name="PrivacySettings">Privacy en veiligheid</string>
     <string name="PrivacyTitle">Privacy</string>
-    <string name="PrivacyLastSeen">Laatst gezien</string>
-    <string name="LastSeenEverybody">Iedereen</string>
-    <string name="LastSeenContacts">Mijn contacten</string>
-    <string name="LastSeenNobody">Niemand</string>
-    <string name="LastSeenEverybodyMinus">Iedereen (-%1$d)</string>
-    <string name="LastSeenContactsPlus">Mijn contacten (+%1$d)</string>
-    <string name="LastSeenContactsMinus">Mijn contacten (-%1$d)</string>
-    <string name="LastSeenContactsMinusPlus">Mijn contacten (-%1$d, +%2$d)</string>
-    <string name="LastSeenNobodyPlus">Niemand (+%1$d)</string>
     <string name="SecurityTitle">Veiligheid</string>
-    <string name="LastSeenHelp">Wijzig wie je laatst gezien tijd kan zien.</string>
-    <string name="LastSeenTitle">Wie kan mijn laatst gezien tijd zien?</string>
-    <string name="CreateGroupError">Je kan geen groep maken met deze gebruikers vanwege de privacyinstellingen van deze gebruikers.</string>
     <!--edit video view-->
     <string name="EditVideo">Video bewerken</string>
     <string name="OriginalVideo">Originele video</string>

@@ -18,16 +18,11 @@
     <string name="Updating">Atualizando...</string>
     <string name="DeleteChat">Apagar conversa</string>
     <string name="SelectChat">Selecione um Chat</string>
-    <string name="SearchMessages">MENSAGENS</string>
     <string name="Search">Busca</string>
     <string name="MuteNotifications">Silenciar notificações</string>
     <string name="MuteFor">Silenciar por %1$s</string>
     <string name="UnmuteNotifications">Restaurar Som</string>
     <string name="WillUnmuteIn">Em %1$s</string>
-    <string name="Hashtags">HASHTAGS</string>
-    <string name="Recent">RECENTE</string>
-    <string name="ChatHints">CONVERSAS</string>
-    <string name="ChatHintsDelete">Apagar %1$s das sugestões?</string>
     <string name="Draft">Rascunho</string>
     <!--audio view-->
     <string name="NoAudio">Por favor, adicione arquivos à biblioteca de música de seu dispositivo para vê-los aqui.</string>
@@ -50,7 +45,6 @@
     <string name="Folder">Pasta</string>
     <string name="GalleryInfo">Para enviar imagens sem compressão</string>
     <!--chat view-->
-    <string name="Invisible">invisível</string>
     <string name="ChatGallery">Galeria</string>
     <string name="ChatLocation">Localização</string>
     <string name="ChatVideo">Vídeo</string>
@@ -61,10 +55,6 @@
     <string name="From">De</string>
     <string name="NoRecent">Nada recente</string>
     <string name="TypeMessage">Mensagem</string>
-    <string name="YouWereKicked">Você foi removido deste grupo</string>
-    <string name="YouLeft">Você saiu deste grupo</string>
-    <string name="DeleteThisGroup">Apagar este grupo</string>
-    <string name="DeleteThisChat">Apagar este chat</string>
     <string name="SlideToCancel">DESLIZE PARA CANCELAR</string>
     <string name="SaveToDownloads">Salvar em downloads</string>
     <string name="DeleteGif">Apagar GIF?</string>
@@ -88,26 +78,16 @@
     <string name="NoContacts">Ainda não há contatos</string>
     <string name="TodayAt">às</string>
     <string name="YesterdayAt">ontem às</string>
-    <string name="Online">online</string>
     <string name="LastSeen">visto</string>
     <string name="LastSeenDate">visto</string>
-    <string name="LastSeenNow">visto agora mesmo</string>
-    <string name="GlobalSearch">BUSCA GLOBAL</string>
-    <string name="Lately">visto recentemente</string>
-    <string name="WithinAWeek">visto na última semana</string>
-    <string name="WithinAMonth">visto no último mês</string>
-    <string name="ALongTimeAgo">visto há muito tempo</string>
     <!--group create view-->
     <string name="SendMessageTo">Enviar mensagem para...</string>
     <string name="EnterGroupNamePlaceholder">Digite o nome do grupo</string>
-    <string name="JoinToGroup">Você deseja entrar no chat \'%1$s\'?</string>
-    <string name="LinkCopied">Link copiado para área de transferência</string>
     <string name="ShareLink">Compartilhar Link</string>
     <!--group info view-->
     <string name="SharedMedia">Mídia Compartilhada</string>
     <string name="SETTINGS">Configurações</string>
     <string name="AddMember">Adicionar membro</string>
-    <string name="DeleteAndExit">Apagar e sair do grupo</string>
     <string name="Notifications">Notificações</string>
     <string name="RemoveMember">Remover do grupo</string>
     <!--contact info view-->
@@ -147,7 +127,6 @@
     <string name="ResetAllNotifications">Restaurar configurações</string>
     <string name="NotificationsAndSounds">Notificações e Sons</string>
     <string name="BlockedUsers">Usuários bloqueados</string>
-    <string name="NoSound">Sem som</string>
     <string name="Default">Padrão</string>
     <string name="OnlyIfSilent">Somente no silencioso </string>
     <string name="ChatBackground">Papel de Parede</string>
@@ -155,14 +134,12 @@
     <string name="Language">Idioma</string>
     <string name="Help">Perguntas frequentes</string>
     <string name="DeleteLocalization">Apagar localização?</string>
-    <string name="IncorrectLocalization">Arquivo de localização incorreto</string>
     <string name="Enabled">Ativado</string>
     <string name="Disabled">Desativado</string>
     <string name="NotificationsService">Serviço Manter-Ativo</string>
     <string name="NotificationsServiceInfo">Reiniciar o app quando desligado pelo usuário ou pelo sistema. Isso irá garantir que o app mostre as notificações.</string>
     <string name="NotificationsServiceConnection">Conexão em Segundo Plano</string>
     <string name="NotificationsServiceConnectionInfo">Manter uma conexão de baixo impacto para receber notificações. Habilite para notificações mais confiáveis.</string>
-    <string name="ImportContacts">Importar Contatos</string>
     <string name="LedColor">Cor do LED</string>
     <string name="BadgeNumber">Contador no Ícone</string>
     <string name="Short">Curta</string>
@@ -277,19 +254,7 @@
     <!--privacy settings-->
     <string name="PrivacySettings">Privacidade e Segurança</string>
     <string name="PrivacyTitle">Privacidade</string>
-    <string name="PrivacyLastSeen">Último Acesso</string>
-    <string name="LastSeenEverybody">Todos</string>
-    <string name="LastSeenContacts">Meus Contatos</string>
-    <string name="LastSeenNobody">Nenhum</string>
-    <string name="LastSeenEverybodyMinus">Todos (-%1$d)</string>
-    <string name="LastSeenContactsPlus">Meus Contatos (+%1$d)</string>
-    <string name="LastSeenContactsMinus">Meus Contatos (-%1$d)</string>
-    <string name="LastSeenContactsMinusPlus">Meus Contatos (-%1$d, +%2$d)</string>
-    <string name="LastSeenNobodyPlus">Nenhum (+%1$d)</string>
     <string name="SecurityTitle">Segurança</string>
-    <string name="LastSeenHelp">Alterar quem pode ver o seu Último Acesso.</string>
-    <string name="LastSeenTitle">Quem pode ver o seu Último Acesso?</string>
-    <string name="CreateGroupError">Você não pode criar um grupo com esses usuários devido as configurações de privacidade deles.</string>
     <!--edit video view-->
     <string name="EditVideo">Editar Vídeo</string>
     <string name="OriginalVideo">Vídeo Original</string>

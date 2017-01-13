@@ -281,9 +281,6 @@ public class Theme {
 
             shareIconDrawable = context.getResources().getDrawable(R.drawable.ic_ab_reply);
 
-            geoInDrawable = context.getResources().getDrawable(R.drawable.location_b);
-            geoOutDrawable = context.getResources().getDrawable(R.drawable.location_g);
-
             cornerOuter[0] = context.getResources().getDrawable(R.drawable.corner_out_tl);
             cornerOuter[1] = context.getResources().getDrawable(R.drawable.corner_out_tr);
             cornerOuter[2] = context.getResources().getDrawable(R.drawable.corner_out_br);
