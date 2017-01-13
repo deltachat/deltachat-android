@@ -334,6 +334,7 @@ public class MrMailbox {
         MrStockAddStr(16, LocaleController.getString("MsgGroupImageChanged", R.string.MsgGroupImageChanged));
         MrStockAddStr(17, LocaleController.getString("MsgMemberAddedToGroup", R.string.MsgMemberAddedToGroup));
         MrStockAddStr(18, LocaleController.getString("MsgMemberRemovedFromToGroup", R.string.MsgMemberRemovedFromToGroup));
+        MrStockAddStr(19, LocaleController.getString("MsgGroupLeft", R.string.MsgGroupLeft));
     }
 
     public static String getInviteText() {

@@ -542,4 +542,5 @@
     <string name="AskAddMemberToGroup">Benutzer <![CDATA[<b>]]>%1$s<![CDATA[</b>]]> zur Gruppe hinzufügen?</string>
     <string name="AskRemoveMemberFromGroup">Benutzer <![CDATA[<b>]]>%1$s<![CDATA[</b>]]> aus Gruppe entfernen?</string>
     <string name="ErrSelfNotInGroup">Sie müssen ein Gruppenmitglied sein, um diese Aktion ausführen zu können.</string>
+    <string name="MsgGroupLeft">Gruppe verlassen.</string>
 </resources>
