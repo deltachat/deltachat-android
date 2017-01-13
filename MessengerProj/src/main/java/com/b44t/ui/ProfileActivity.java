@@ -365,10 +365,12 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
         listView.setOnItemClickListener(new RecyclerListView.OnItemClickListener() {
             @Override
             public void onItemClick(View view, final int position) {
-                if (getParentActivity() == null) {
+                if (getParentActivity() == null)
+                {
                     return;
                 }
-                if (position == settingsNotificationsRow) {
+                if (position == settingsNotificationsRow)
+                {
                     Bundle args = new Bundle();
                     if (chat_id != 0) {
                         args.putInt("chat_id", chat_id);
@@ -377,7 +379,8 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                     }
                     presentFragment(new ProfileNotificationsActivity(args));
                 }
-                else if(position==changeNameRow) {
+                else if(position==changeNameRow)
+                {
                     Bundle args = new Bundle();
                     args.putInt("do_what", ContactAddActivity.EDIT_NAME);
                     if (chat_id != 0) {
@@ -387,7 +390,8 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                     }
                     presentFragment(new ContactAddActivity(args));
                 }
-                else if(position==startChatRow) {
+                else if(position==startChatRow)
+                {
                     int belonging_chat_id = MrMailbox.getChatIdByContactId(user_id);
                     if( belonging_chat_id != 0 ) {
                         Bundle args = new Bundle();
@@ -398,12 +402,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                         return;
                     }
 
-                    String name = "";
-                    {
-                        MrContact mrContact = MrMailbox.getContact(user_id);
-                        name = mrContact.getNameNAddr();
-                    }
-
+                    String name = MrMailbox.getContact(user_id).getNameNAddr();
                     AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
                     builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), new DialogInterface.OnClickListener() {
                         @Override
@@ -422,9 +421,37 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                     builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
                     builder.setMessage(AndroidUtilities.replaceTags(LocaleController.formatString("AskStartChatWith", R.string.AskStartChatWith, name)));
                     showDialog(builder.create());
-                } else if (position == addMemberRow) {
-                    openAddMember();
-                } else if (position >= firstMemberRow && position <= lastMemberRow) {
+                }
+                else if (position == addMemberRow)
+                {
+                    Bundle args = new Bundle();
+                    args.putInt("do_what", ContactsActivity.ADD_CONTACTS_TO_GROUP);
+                    ContactsActivity fragment = new ContactsActivity(args);
+                    fragment.setDelegate(new ContactsActivity.ContactsActivityDelegate() {
+                        @Override
+                        public void didSelectContact(final int added_user_id) {
+                            AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
+                            builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    MrMailbox.addContactToChat(chat_id, added_user_id);
+                                    sortedUserIds = MrMailbox.getChatContacts(chat_id);
+                                    updateRowsIds();
+                                    updateProfileData();
+                                    listAdapter.notifyDataSetChanged();
+                                    NotificationCenter.getInstance().postNotificationName(NotificationCenter.updateInterfaces, MessagesController.UPDATE_MASK_CHAT_MEMBERS);
+                                }
+                            });
+                            builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
+                            String name = MrMailbox.getContact(added_user_id).getDisplayName();
+                            builder.setMessage(AndroidUtilities.replaceTags(LocaleController.formatString("AskAddMemberToGroup", R.string.AskAddMemberToGroup, name)));
+                            showDialog(builder.create());
+                        }
+                    });
+                    presentFragment(fragment);
+                }
+                else if (position >= firstMemberRow && position <= lastMemberRow)
+                {
                     int curr_user_index = position - firstMemberRow;
                     if(curr_user_index>=0 && curr_user_index<sortedUserIds.length) {
                         int curr_user_id = sortedUserIds[curr_user_index];
@@ -434,7 +461,9 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                             presentFragment(new ProfileActivity(args));
                         }
                     }
-                } else {
+                }
+                else
+                {
                     processOnClickOrPress(position);
                 }
             }
@@ -449,22 +478,32 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                     if(curr_user_index>=0 && curr_user_index<sortedUserIds.length)
                     {
                         final int curr_user_id = sortedUserIds[curr_user_index];
-                        if( curr_user_id!=MrContact.MR_CONTACT_ID_SELF  ) {
-                            AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
-                            CharSequence[] items = new CharSequence[]{LocaleController.getString("KickFromGroup", R.string.KickFromGroup)};
-                            builder.setItems(items, new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialogInterface, int i) {
-                                    MrMailbox.removeContactFromChat(chat_id, curr_user_id);
-                                    sortedUserIds = MrMailbox.getChatContacts(chat_id);
-                                    updateRowsIds();
-                                    updateProfileData();
-                                    listAdapter.notifyDataSetChanged();
-                                    NotificationCenter.getInstance().postNotificationName(NotificationCenter.updateInterfaces, MessagesController.UPDATE_MASK_CHAT_MEMBERS);
-                                }
-                            });
-                            showDialog(builder.create());
-                        }
+                        AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
+                        CharSequence[] items = new CharSequence[]{LocaleController.getString("RemoveMember", R.string.RemoveMember)};
+                        builder.setItems(items, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+
+                                AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
+                                builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                        MrMailbox.removeContactFromChat(chat_id, curr_user_id);
+                                        sortedUserIds = MrMailbox.getChatContacts(chat_id);
+                                        updateRowsIds();
+                                        updateProfileData();
+                                        listAdapter.notifyDataSetChanged();
+                                        NotificationCenter.getInstance().postNotificationName(NotificationCenter.updateInterfaces, MessagesController.UPDATE_MASK_CHAT_MEMBERS);
+                                    }
+                                });
+                                builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
+                                String name = MrMailbox.getContact(curr_user_id).getDisplayName();
+                                builder.setMessage(AndroidUtilities.replaceTags(LocaleController.formatString("AskRemoveMemberFromGroup", R.string.AskRemoveMemberFromGroup, name)));
+                                showDialog(builder.create());
+                            }
+                        });
+                        showDialog(builder.create());
+
                     }
                     return true;
                 } else
@@ -629,25 +668,6 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
         if (chat_id != 0) {
             avatarUpdater.onActivityResult(requestCode, resultCode, data);
         }
-    }
-
-    private void openAddMember() {
-
-        Bundle args = new Bundle();
-        args.putInt("do_what", ContactsActivity.ADD_CONTACTS_TO_GROUP);
-        ContactsActivity fragment = new ContactsActivity(args);
-        fragment.setDelegate(new ContactsActivity.ContactsActivityDelegate() {
-            @Override
-            public void didSelectContact(int added_user_id) {
-                MrMailbox.addContactToChat(chat_id, added_user_id);
-                sortedUserIds = MrMailbox.getChatContacts(chat_id);
-                updateRowsIds();
-                updateProfileData();
-                listAdapter.notifyDataSetChanged();
-                NotificationCenter.getInstance().postNotificationName(NotificationCenter.updateInterfaces, MessagesController.UPDATE_MASK_CHAT_MEMBERS);
-            }
-        });
-        presentFragment(fragment);
     }
 
     private void checkListViewScroll() {

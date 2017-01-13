@@ -109,7 +109,7 @@
     <string name="AddMember">Añadir miembro</string>
     <string name="DeleteAndExit">Eliminar y dejar el grupo</string>
     <string name="Notifications">Notificaciones</string>
-    <string name="KickFromGroup">Eliminar del grupo</string>
+    <string name="RemoveMember">Eliminar del grupo</string>
     <!--contact info view-->
     <string name="ShareContact">Compartir</string>
     <string name="AddContact">Añadir</string>
@@ -332,7 +332,7 @@
     <string name="NoPlayerInstalled">No tienes reproductor de vídeo. Por favor, instala uno para continuar.</string>
     <string name="NoHandleAppInstalled">No tienes aplicaciones que puedan manejar el tipo de archivo “%1$s”. Por favor, instala una para continuar.</string>
     <string name="AddToTheGroupTitle">¿Añadir a %1$s al chat %2$s?</string>
-    <string name="AddToTheGroup">¿Añadir a %1$s al grupo?</string>
+    <string name="AskAddMemberToGroup">¿Añadir a <![CDATA[<b>]]>%1$s<![CDATA[</b>]]> al grupo?</string>
     <string name="UserAlreadyInGroup">Este usuario ya está en el grupo</string>
     <string name="ForwardMessagesTo">¿Reenviar mensajes a %1$s?</string>
     <string name="SendMessagesTo">¿Enviar mensajes a %1$s?</string>

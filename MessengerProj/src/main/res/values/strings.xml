@@ -109,7 +109,7 @@
     <string name="AddMember">Add member</string>
     <string name="DeleteAndExit">Delete and leave group</string>
     <string name="Notifications">Notifications</string>
-    <string name="KickFromGroup">Remove from group</string>
+    <string name="RemoveMember">Remove member</string>
     <!--contact info view-->
     <string name="ShareContact">Share</string>
     <string name="AddContact">Add</string>
@@ -533,10 +533,10 @@
     <string name="AboutThisProgram">About Delta Chat</string>
     <string name="NotSet">Not set</string>
     <string name="NewChat">New chat</string>
-    <string name="MemberSg">_ member</string>
-    <string name="MemberPl">_ members</string>
-    <string name="ContactSg">_ contact</string>
-    <string name="ContactPl">_ contacts</string>
+    <string name="MemberSg">## member</string>
+    <string name="MemberPl">## members</string>
+    <string name="ContactSg">## contact</string>
+    <string name="ContactPl">## contacts</string>
     <string name="Deaddrop">Mailbox</string>
     <string name="Media">Media</string>
     <string name="DeaddropInChatlist">Show mailbox in chatlist</string>
@@ -569,9 +569,11 @@
     <string name="Chats">Chats</string>
     <string name="ErrGroupNameEmpty">Please enter a name for the group.</string>
     <string name="MsgNewGroupDraftHint">Write a first message to allow others to reply in this group.</string>
-    <string name="MsgNewGroupDraft">Hello, I\'ve just created the group \"_\" for us.</string>
-    <string name="MsgGroupNameChanged">Group name changed from \"_\" to \"_\".</string>
+    <string name="MsgNewGroupDraft">Hello, I\'ve just created the group \"##\" for us.</string>
+    <string name="MsgGroupNameChanged">Group name changed from \"##\" to \"##\".</string>
     <string name="MsgGroupImageChanged">Group image changed.</string>
-    <string name="MsgMemberAddedToGroup">Member \"_\" added.</string>
-    <string name="MsgMemberRemovedFromToGroup">Member \"_\" removed.</string>
+    <string name="MsgMemberAddedToGroup">Member ## added.</string>
+    <string name="MsgMemberRemovedFromToGroup">Member ## removed.</string>
+    <string name="AskAddMemberToGroup">Add user <![CDATA[<b>]]>%1$s<![CDATA[</b>]]> to group?</string>
+    <string name="AskRemoveMemberFromGroup">Remove user <![CDATA[<b>]]>%1$s<![CDATA[</b>]]> from group?</string>
 </resources>

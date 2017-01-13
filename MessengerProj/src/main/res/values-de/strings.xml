@@ -109,7 +109,7 @@
     <string name="AddMember">Mitglied hinzufügen</string>
     <string name="DeleteAndExit">Löschen und Gruppe verlassen</string>
     <string name="Notifications">Mitteilungen</string>
-    <string name="KickFromGroup">Aus der Gruppe entfernen</string>
+    <string name="RemoveMember">Mitglied entfernen</string>
     <!--contact info view-->
     <string name="ShareContact">Teilen</string>
     <string name="AddContact">Hinzufügen</string>
@@ -535,10 +535,10 @@
     <string name="AboutThisProgram">Über Delta Chat</string>
     <string name="NotSet">Nicht gesetzt</string>
     <string name="NewChat">Neuer Chat</string>
-    <string name="ContactPl">_ Kontakte</string>
-    <string name="ContactSg">_ Kontakt</string>
-    <string name="MemberSg">_ Mitglied</string>
-    <string name="MemberPl">_ Mitglieder</string>
+    <string name="ContactPl">## Kontakte</string>
+    <string name="ContactSg">## Kontakt</string>
+    <string name="MemberSg">## Mitglied</string>
+    <string name="MemberPl">## Mitglieder</string>
     <string name="Deaddrop">Briefkasten</string>
     <string name="Media">Medien</string>
     <string name="DeaddropInChatlist">Briefkasten in Chatliste</string>
@@ -568,10 +568,12 @@
     <string name="AskResetNotifications">Alle Benachrichtigungseinstellungen und Töne dieser Seite, der Kontakte und der Gruppen zurücksetzen?</string>
     <string name="AttachFiles">Dateien anhängen</string>
     <string name="ErrGroupNameEmpty">Bitte einen Namen für die Gruppe eingeben.</string>
-    <string name="MsgNewGroupDraft">Hallo, ich habe die Gruppe \"_\" für uns erstellt.</string>
+    <string name="MsgNewGroupDraft">Hallo, ich habe die Gruppe \"##\" für uns erstellt.</string>
     <string name="MsgNewGroupDraftHint">Eine erste Nachricht schreiben; dann können die anderen in der Gruppe antworten.</string>
     <string name="MsgGroupImageChanged">Gruppenbild geändert.</string>
-    <string name="MsgGroupNameChanged">Gruppenname von \"_\" in \"_\" geändert.</string>
-    <string name="MsgMemberAddedToGroup">\"_\" zur Gruppe hinzugefügt.</string>
-    <string name="MsgMemberRemovedFromToGroup">\"_\" aus Gruppe entfernt.</string>
+    <string name="MsgGroupNameChanged">Gruppenname von \"##\" in \"##\" geändert.</string>
+    <string name="MsgMemberAddedToGroup">## zur Gruppe hinzugefügt.</string>
+    <string name="MsgMemberRemovedFromToGroup">## aus Gruppe entfernt.</string>
+    <string name="AskAddMemberToGroup">Benutzer <![CDATA[<b>]]>%1$s<![CDATA[</b>]]> zur Gruppe hinzufügen?</string>
+    <string name="AskRemoveMemberFromGroup">Benutzer <![CDATA[<b>]]>%1$s<![CDATA[</b>]]> aus Gruppe entfernen?</string>
 </resources>
