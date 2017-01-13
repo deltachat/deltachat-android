@@ -1036,7 +1036,9 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
                 */
             }
 
-            NotificationsController.getInstance().playOutChatSound();
+            if( newMsg.id!=0 ) {
+                NotificationsController.getInstance().playOutChatSound();
+            }
 
             // finally update the interface, this results u.a. in an didReceivedNewMessages event which requires newMsg.id to be set
             MessagesController.getInstance().updateInterfaceWithMessages(peer, objArr);

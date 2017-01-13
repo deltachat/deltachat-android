@@ -1004,7 +1004,7 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                     Bundle args = new Bundle();
                     args.putBoolean("onlySelect", true);
                     if (contactsToSend != null) {
-                        args.putString("selectAlertString", LocaleController.getString("SendContactTo", R.string.SendMessagesTo));
+                        args.putString("selectAlertString", LocaleController.getString("SendMessagesTo", R.string.SendMessagesTo));
                     } else {
                         args.putString("selectAlertString", LocaleController.getString("SendMessagesTo", R.string.SendMessagesTo));
                     }

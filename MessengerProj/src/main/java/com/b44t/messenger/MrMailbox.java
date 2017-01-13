@@ -199,12 +199,16 @@ public class MrMailbox {
      **********************************************************************************************/
 
     public final static int MR_EVENT_MSGS_CHANGED             = 2000;
-    public final static int MR_EVENT_INCOMING_MSG             = 2001;
+    public final static int MR_EVENT_INCOMING_MSG             = 2005;
+    public final static int MR_EVENT_MSG_DELIVERED            = 2010;
+    public final static int MR_EVENT_MSG_READ                 = 2015;
+    public final static int MR_EVENT_CHAT_MODIFIED            = 2020;
     public final static int MR_EVENT_CONTACTS_CHANGED         = 2030;
-    public final static int MR_EVENT_MSG_DELIVERED            = 3000;
-    public final static int MR_EVENT_MSG_READ                 = 3010;
-    public final static int MR_EVENT_CONNECTION_STATE_CHANGED = 3020;
-    public final static int MR_EVENT_CHAT_MODIFIED            = 3030;
+    public final static int MR_EVENT_CONNECTION_STATE_CHANGED = 2040;
+    public final static int MR_EVENT_REPORT                   = 2050;
+
+    public final static int MR_REPORT_ERR_SELF_NOT_IN_GROUP   = 1;
+
     public static long MrCallback(final int event, final long data1, final long data2) // this function is called from within the C-wrapper
     {
         switch(event) {
@@ -263,6 +267,17 @@ public class MrMailbox {
                         NotificationCenter.getInstance().postNotificationName(NotificationCenter.updateInterfaces,
                                 MessagesController.UPDATE_MASK_NAME|MessagesController.UPDATE_MASK_CHAT_NAME|
                                 MessagesController.UPDATE_MASK_CHAT_MEMBERS|MessagesController.UPDATE_MASK_AVATAR);
+                    }
+                });
+                return 0;
+
+            case MR_EVENT_REPORT:
+                AndroidUtilities.runOnUIThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        if(data1==MR_REPORT_ERR_SELF_NOT_IN_GROUP) {
+                            NotificationCenter.getInstance().postNotificationName(NotificationCenter.errSelfNotInGroup);
+                        }
                     }
                 });
                 return 0;

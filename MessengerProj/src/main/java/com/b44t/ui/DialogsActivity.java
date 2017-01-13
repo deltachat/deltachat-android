@@ -723,9 +723,9 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
             AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
             MrChat mrChat = MrMailbox.getChat((int)dialog_id);
             if (addToGroupAlertString != null) {
-                builder.setMessage(LocaleController.formatStringSimple(addToGroupAlertString, mrChat.getName()));
+                builder.setMessage(AndroidUtilities.replaceTags(LocaleController.formatStringSimple(addToGroupAlertString, mrChat.getName())));
             } else {
-                builder.setMessage(LocaleController.formatStringSimple(selectAlertString, mrChat.getName()));
+                builder.setMessage(AndroidUtilities.replaceTags(LocaleController.formatStringSimple(selectAlertString, mrChat.getName())));
             }
 
             builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), new DialogInterface.OnClickListener() {

@@ -335,7 +335,7 @@
     <string name="AskAddMemberToGroup">¿Añadir a <![CDATA[<b>]]>%1$s<![CDATA[</b>]]> al grupo?</string>
     <string name="UserAlreadyInGroup">Este usuario ya está en el grupo</string>
     <string name="ForwardMessagesTo">¿Reenviar mensajes a %1$s?</string>
-    <string name="SendMessagesTo">¿Enviar mensajes a %1$s?</string>
+    <string name="SendMessagesTo">¿Enviar mensajes a <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>?</string>
     <string name="SendContactTo">¿Enviar contacto a %1$s?</string>
     <string name="AreYouSureDeleteAndExit">¿Quieres eliminar y dejar el grupo?</string>
     <string name="AreYouSureDeleteThisChat">¿Quieres eliminar este chat?</string>

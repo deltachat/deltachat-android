@@ -335,7 +335,7 @@
     <string name="AddToTheGroup">%1$s zur Gruppe hinzufügen?</string>
     <string name="UserAlreadyInGroup">Nutzer befindet sich schon in der Gruppe</string>
     <string name="ForwardMessagesTo">Nachrichten an %1$s weiterleiten?</string>
-    <string name="SendMessagesTo">Nachricht an %1$s senden?</string>
+    <string name="SendMessagesTo">Nachricht an <![CDATA[<b>]]>%1$s<![CDATA[</b>]]> senden?</string>
     <string name="SendContactTo">Kontakt senden an %1$s?</string>
     <string name="AreYouSureDeleteAndExit">Gruppe verlassen? Es werden dann keine Nachrichten dieser Gruppe mehr empfangen.</string>
     <string name="AreYouSureDeleteThisChat">Chat löschen? Der Chat wird dann nicht mehr in der Chatliste angezeigt, die Nachrichten verbleiben auf dem Server.</string>
@@ -576,4 +576,5 @@
     <string name="MsgMemberRemovedFromToGroup">## aus Gruppe entfernt.</string>
     <string name="AskAddMemberToGroup">Benutzer <![CDATA[<b>]]>%1$s<![CDATA[</b>]]> zur Gruppe hinzufügen?</string>
     <string name="AskRemoveMemberFromGroup">Benutzer <![CDATA[<b>]]>%1$s<![CDATA[</b>]]> aus Gruppe entfernen?</string>
+    <string name="ErrSelfNotInGroup">Sie müssen ein Gruppenmitglied sein, um diese Aktion ausführen zu können.</string>
 </resources>

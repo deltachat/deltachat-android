@@ -235,6 +235,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.audioDidStarted);
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.replaceMessagesObjects);
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.notificationsSettingsUpdated);
+        NotificationCenter.getInstance().addObserver(this, NotificationCenter.errSelfNotInGroup);
         //NotificationCenter.getInstance().addObserver(this, NotificationCenter.chatSearchResultsAvailable);
 
         if (AndroidUtilities.isTablet()) {
@@ -366,6 +367,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         NotificationCenter.getInstance().removeObserver(this, NotificationCenter.audioDidStarted);
         NotificationCenter.getInstance().removeObserver(this, NotificationCenter.replaceMessagesObjects);
         NotificationCenter.getInstance().removeObserver(this, NotificationCenter.notificationsSettingsUpdated);
+        NotificationCenter.getInstance().removeObserver(this, NotificationCenter.errSelfNotInGroup);
         //NotificationCenter.getInstance().removeObserver(this, NotificationCenter.chatSearchResultsAvailable);
         NotificationCenter.getInstance().removeObserver(this, NotificationCenter.audioPlayStateChanged);
 
@@ -2207,6 +2209,10 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         else if (id == NotificationCenter.notificationsSettingsUpdated)
         {
             updateTitleIcons();
+        }
+        else if( id == NotificationCenter.errSelfNotInGroup )
+        {
+            Toast.makeText(getParentActivity(), LocaleController.getString("ErrSelfNotInGroup", R.string.ErrSelfNotInGroup), Toast.LENGTH_LONG).show();
         }
     }
 

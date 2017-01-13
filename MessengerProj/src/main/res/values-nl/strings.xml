@@ -335,7 +335,7 @@
     <string name="AskAddMemberToGroup"><![CDATA[<b>]]>%1$s<![CDATA[</b>]]> toevoegen aan de groep?</string>
     <string name="UserAlreadyInGroup">Gebruiker is al een groepslid</string>
     <string name="ForwardMessagesTo">Berichten doorsturen naar %1$s?</string>
-    <string name="SendMessagesTo">Berichten naar %1$s versturen?</string>
+    <string name="SendMessagesTo">Berichten naar <![CDATA[<b>]]>%1$s<![CDATA[</b>]]> versturen?</string>
     <string name="SendContactTo">Contact delen met %1$s?</string>
     <string name="AreYouSureDeleteAndExit">Verwijderen en de groep verlaten?</string>
     <string name="AreYouSureDeleteThisChat">Chat echt verwijderen?</string>
