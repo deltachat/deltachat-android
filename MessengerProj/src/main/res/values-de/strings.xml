@@ -523,7 +523,7 @@
     <string name="ContactCreated">Benutzer angelegt.</string>
     <string name="ViewProfile">Profil anzeigen</string>
     <string name="OneMomentPlease">Einen Moment, bitte...</string>
-    <string name="NoChatsHelp">Unten auf das Plussymbol für die erste Chatnachricht tippen; der Menüknopf öffnet die weiteren Opitonen.</string>
+    <string name="NoChatsHelp">Unten auf das Plussymbol für die erste Chatnachricht tippen; der Menüknopf öffnet die weiteren Optionen.</string>
     <string name="CannotDeleteChat">Kann Chat nicht löschen</string>
     <string name="ConfiguringAccount">Konto konfigurieren...</string>
     <string name="InviteMenuEntry">Einladungen versenden</string>
