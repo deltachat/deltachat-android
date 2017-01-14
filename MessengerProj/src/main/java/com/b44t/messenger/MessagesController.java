@@ -61,8 +61,6 @@ public class MessagesController implements NotificationCenter.NotificationCenter
     public static final int UPDATE_MASK_SELECT_DIALOG = 512;
     public static final int UPDATE_MASK_NEW_MESSAGE = 2048;
     public static final int UPDATE_MASK_SEND_STATE = 4096;
-    public static final int UPDATE_MASK_CHANNEL = 8192;
-    public static final int UPDATE_MASK_CHAT_ADMINS = 16384;
 
     private static volatile MessagesController Instance = null;
 

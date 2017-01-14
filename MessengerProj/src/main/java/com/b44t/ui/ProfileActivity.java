@@ -194,8 +194,6 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
             }
             NotificationCenter.getInstance().addObserver(this, NotificationCenter.updateInterfaces);
             NotificationCenter.getInstance().addObserver(this, NotificationCenter.contactsDidLoaded);
-            NotificationCenter.getInstance().addObserver(this, NotificationCenter.userInfoDidLoaded);
-
 
         } else if (chat_id != 0) {
             sortedUserIds = MrMailbox.getChatContacts(chat_id);
@@ -228,7 +226,6 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
         NotificationCenter.getInstance().removeObserver(this, NotificationCenter.closeChats);
         if (user_id != 0) {
             NotificationCenter.getInstance().removeObserver(this, NotificationCenter.contactsDidLoaded);
-            NotificationCenter.getInstance().removeObserver(this, NotificationCenter.userInfoDidLoaded);
             //MessagesController.getInstance().cancelLoadFullUser(user_id);
         } else if (chat_id != 0) {
             //NotificationCenter.getInstance().removeObserver(this, NotificationCenter.chatInfoDidLoaded);
@@ -435,10 +432,6 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                                 @Override
                                 public void onClick(DialogInterface dialogInterface, int i) {
                                     MrMailbox.addContactToChat(chat_id, added_user_id);
-                                    sortedUserIds = MrMailbox.getChatContacts(chat_id);
-                                    updateRowsIds();
-                                    updateProfileData();
-                                    listAdapter.notifyDataSetChanged();
                                     NotificationCenter.getInstance().postNotificationName(NotificationCenter.updateInterfaces, MessagesController.UPDATE_MASK_CHAT_MEMBERS);
                                 }
                             });
@@ -489,10 +482,6 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                                     @Override
                                     public void onClick(DialogInterface dialogInterface, int i) {
                                         MrMailbox.removeContactFromChat(chat_id, curr_user_id);
-                                        sortedUserIds = MrMailbox.getChatContacts(chat_id);
-                                        updateRowsIds();
-                                        updateProfileData();
-                                        listAdapter.notifyDataSetChanged();
                                         NotificationCenter.getInstance().postNotificationName(NotificationCenter.updateInterfaces, MessagesController.UPDATE_MASK_CHAT_MEMBERS);
                                     }
                                 });
@@ -827,22 +816,11 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                     updateProfileData();
                 }
             } else if (chat_id != 0) {
-                if ((mask & MessagesController.UPDATE_MASK_CHAT_ADMINS) != 0) {
-                    createActionBarMenu();
-                    updateRowsIds();
-                    if (listAdapter != null) {
-                        listAdapter.notifyDataSetChanged();
-                    }
-                }
-                if ((mask & MessagesController.UPDATE_MASK_CHANNEL) != 0 || (mask & MessagesController.UPDATE_MASK_CHAT_AVATAR) != 0 || (mask & MessagesController.UPDATE_MASK_CHAT_NAME) != 0 || (mask & MessagesController.UPDATE_MASK_CHAT_MEMBERS) != 0 || (mask & MessagesController.UPDATE_MASK_STATUS) != 0) {
-                    updateProfileData();
-                }
-                if ((mask & MessagesController.UPDATE_MASK_CHANNEL) != 0) {
-                    updateRowsIds();
-                    if (listAdapter != null) {
-                        listAdapter.notifyDataSetChanged();
-                    }
-                }
+                sortedUserIds = MrMailbox.getChatContacts(chat_id);
+                updateRowsIds();
+                updateProfileData();
+                listAdapter.notifyDataSetChanged();
+
                 if ((mask & MessagesController.UPDATE_MASK_AVATAR) != 0 || (mask & MessagesController.UPDATE_MASK_NAME) != 0 || (mask & MessagesController.UPDATE_MASK_STATUS) != 0) {
                     if (listView != null) {
                         int count = listView.getChildCount();
@@ -859,14 +837,6 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
             createActionBarMenu();
         } else if (id == NotificationCenter.closeChats) {
             removeSelfFromStack();
-        } else if (id == NotificationCenter.userInfoDidLoaded) {
-            int uid = (Integer) args[0];
-            if (uid == user_id) {
-                updateRowsIds();
-                if (listAdapter != null) {
-                    listAdapter.notifyDataSetChanged();
-                }
-            }
         }
     }
 
