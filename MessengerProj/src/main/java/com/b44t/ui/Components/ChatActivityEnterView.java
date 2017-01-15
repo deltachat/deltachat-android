@@ -793,13 +793,14 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
                 if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
+                    /*
                     if (parentFragment != null) {
                         if (Build.VERSION.SDK_INT >= 23 && parentActivity.checkSelfPermission(Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED) {
                             parentActivity.requestPermissions(new String[]{Manifest.permission.RECORD_AUDIO}, 3);
                             return false;
                         }
 
-                        /*String action;
+                        String action;
                         TLRPC.Chat currentChat;
                         if ((int) dialog_id < 0) {
                             currentChat = MessagesController.getInstance().getChat(-(int) dialog_id);
@@ -810,17 +811,21 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
                             }
                         } else {
                             action = "pm_upload_audio";
-                        }*/
+                        }
                     }
                     startedDraggingX = -1;
                     MediaController.getInstance().startRecording(dialog_id, replyingMessageObject);
                     updateAudioRecordIntefrace();
                     audioSendButton.getParent().requestDisallowInterceptTouchEvent(true);
+                    */
                 } else if (motionEvent.getAction() == MotionEvent.ACTION_UP || motionEvent.getAction() == MotionEvent.ACTION_CANCEL) {
+                    Toast.makeText(getContext(), LocaleController.getString("NotYetImplemented", R.string.NotYetImplemented), Toast.LENGTH_SHORT).show();
+                    /*
                     startedDraggingX = -1;
                     MediaController.getInstance().stopRecording(1);
                     recordingAudio = false;
                     updateAudioRecordIntefrace();
+                    */
                 } else if (motionEvent.getAction() == MotionEvent.ACTION_MOVE && recordingAudio) {
                     float x = motionEvent.getX();
                     if (x < -distCanMove) {
@@ -2061,7 +2066,6 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
                 AndroidUtilities.hideKeyboard(messageEditText);
             }
         } else if (id == NotificationCenter.recordStartError || id == NotificationCenter.recordStopped) {
-            Toast.makeText(getContext(), LocaleController.getString("NotYetImplemented", R.string.NotYetImplemented), Toast.LENGTH_LONG).show();
             if (recordingAudio) {
                 MessagesController.getInstance().sendTyping(dialog_id, 2, 0);
                 recordingAudio = false;

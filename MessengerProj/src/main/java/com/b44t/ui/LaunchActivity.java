@@ -659,7 +659,7 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                             if( text == null )
                             {
                                 // added by MR, the Telegram-FOSS crashes on selecing an image in the gallery - why?
-                                Toast.makeText(this, LocaleController.getString("NotYetImplemented", R.string.NotYetImplemented), Toast.LENGTH_LONG).show();
+                                Toast.makeText(this, LocaleController.getString("NotYetImplemented", R.string.NotYetImplemented), Toast.LENGTH_SHORT).show();
                             }
                             else {
                                 String subject = intent.getStringExtra(Intent.EXTRA_SUBJECT);

@@ -125,7 +125,7 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
         messagesSectionRow2 = rowCount++;
         textSizeRow = rowCount++; // incoming messages
         if (Build.VERSION.SDK_INT >= 23) {
-            directShareRow = rowCount++;
+            directShareRow = -1; // for now, seems not really to work, however, in T'gram it does
         }
         else {
             directShareRow = -1;
@@ -133,7 +133,7 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
         raiseToSpeakRow = rowCount++; // outgoing message
         sendByEnterRow = rowCount++;
         enableAnimationsRow = rowCount++;
-        cacheRow = rowCount++;
+        cacheRow = -1; // for now, the page is still reachable by the "storage settings" in the "android App Settings"
         supportSectionRow = rowCount++;
         supportSectionRow2 = rowCount++;
         aboutRow = rowCount++;
@@ -457,7 +457,7 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
 
                 SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("mainconfig", Activity.MODE_PRIVATE);
                 if (i == enableAnimationsRow) {
-                    textCell.setTextAndCheck(LocaleController.getString("EnableAnimations", R.string.EnableAnimations), preferences.getBoolean("view_animations", true), true);
+                    textCell.setTextAndCheck(LocaleController.getString("EnableAnimations", R.string.EnableAnimations), preferences.getBoolean("view_animations", true), false);
                 } else if (i == sendByEnterRow) {
                     textCell.setTextAndCheck(LocaleController.getString("SendByEnter", R.string.SendByEnter), preferences.getBoolean("send_by_enter", false), true);
                 } else if (i == raiseToSpeakRow) {

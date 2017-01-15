@@ -295,7 +295,7 @@ public class GroupCreateFinalActivity extends BaseFragment implements Notificati
 
     @Override
     public void didUploadedPhoto(final TLRPC.InputFile file, final TLRPC.PhotoSize small, final TLRPC.PhotoSize big) {
-        Toast.makeText(getParentActivity(), LocaleController.getString("NotYetImplemented", R.string.NotYetImplemented), Toast.LENGTH_LONG).show();
+        Toast.makeText(getParentActivity(), LocaleController.getString("NotYetImplemented", R.string.NotYetImplemented), Toast.LENGTH_SHORT).show();
         /*
         AndroidUtilities.runOnUIThread(new Runnable() {
             @Override

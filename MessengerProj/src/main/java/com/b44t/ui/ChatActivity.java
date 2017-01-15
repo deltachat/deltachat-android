@@ -447,7 +447,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     }
                     createDeleteMessagesAlert();
                 } else if (id == id_forward) {
-                    Toast.makeText(getParentActivity(), LocaleController.getString("NotYetImplemented", R.string.NotYetImplemented), Toast.LENGTH_LONG).show();
+                    Toast.makeText(getParentActivity(), LocaleController.getString("NotYetImplemented", R.string.NotYetImplemented), Toast.LENGTH_SHORT).show();
                     /*
                     Bundle args = new Bundle();
                     args.putBoolean("onlySelect", true);
@@ -490,7 +490,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                         }
                     }
                     else{
-                        Toast.makeText(getParentActivity(), LocaleController.getString("NotYetImplemented", R.string.NotYetImplemented), Toast.LENGTH_LONG).show();
+                        Toast.makeText(getParentActivity(), LocaleController.getString("NotYetImplemented", R.string.NotYetImplemented), Toast.LENGTH_SHORT).show();
                         actionBar.hideActionMode();
                         updateVisibleRows();
                     }
@@ -1285,7 +1285,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
             });
             presentFragment(fragment);
         } else if (which == ChatAttachAlert.ATTACH_BUTTON_IDX_VIDEO) {
-            Toast.makeText(getParentActivity(), LocaleController.getString("NotYetImplemented", R.string.NotYetImplemented), Toast.LENGTH_LONG).show();
+            Toast.makeText(getParentActivity(), LocaleController.getString("NotYetImplemented", R.string.NotYetImplemented), Toast.LENGTH_SHORT).show();
             try {
                 Intent takeVideoIntent = new Intent(MediaStore.ACTION_VIDEO_CAPTURE);
                 File video = AndroidUtilities.generateVideoPath();
@@ -1301,9 +1301,9 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 FileLog.e("messenger", e);
             }
         } else if (which == ChatAttachAlert.ATTACH_BUTTON_IDX_LOCATION ) {
-            Toast.makeText(getParentActivity(), LocaleController.getString("NotYetImplemented", R.string.NotYetImplemented), Toast.LENGTH_LONG).show();
+            Toast.makeText(getParentActivity(), LocaleController.getString("NotYetImplemented", R.string.NotYetImplemented), Toast.LENGTH_SHORT).show();
         } else if (which == ChatAttachAlert.ATTACH_BUTTON_IDX_FILE ) {
-            Toast.makeText(getParentActivity(), LocaleController.getString("NotYetImplemented", R.string.NotYetImplemented), Toast.LENGTH_LONG).show();
+            Toast.makeText(getParentActivity(), LocaleController.getString("NotYetImplemented", R.string.NotYetImplemented), Toast.LENGTH_SHORT).show();
             if (Build.VERSION.SDK_INT >= 23 && getParentActivity().checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
                 getParentActivity().requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 4);
                 return;
@@ -1330,7 +1330,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
             });
             presentFragment(fragment);
         } else if (which == ChatAttachAlert.ATTACH_BUTTON_IDX_MUSIC ) {
-            Toast.makeText(getParentActivity(), LocaleController.getString("NotYetImplemented", R.string.NotYetImplemented), Toast.LENGTH_LONG).show();
+            Toast.makeText(getParentActivity(), LocaleController.getString("NotYetImplemented", R.string.NotYetImplemented), Toast.LENGTH_SHORT).show();
             if (Build.VERSION.SDK_INT >= 23 && getParentActivity().checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
                 getParentActivity().requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 4);
                 return;
@@ -1345,7 +1345,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
             });
             presentFragment(fragment);
         } else if (which == ChatAttachAlert.ATTACH_BUTTON_IDX_CONTACT ) {
-            Toast.makeText(getParentActivity(), LocaleController.getString("NotYetImplemented", R.string.NotYetImplemented), Toast.LENGTH_LONG).show();
+            Toast.makeText(getParentActivity(), LocaleController.getString("NotYetImplemented", R.string.NotYetImplemented), Toast.LENGTH_SHORT).show();
             if (Build.VERSION.SDK_INT >= 23) {
                 if (getParentActivity().checkSelfPermission(Manifest.permission.READ_CONTACTS) != PackageManager.PERMISSION_GRANTED) {
                     getParentActivity().requestPermissions(new String[]{Manifest.permission.READ_CONTACTS}, 5);

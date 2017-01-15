@@ -1136,10 +1136,10 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
                     switchToEditMode(2);
                 }
                 else if (id == gallery_menu_forward) {
-                    Toast.makeText(parentActivity, LocaleController.getString("NotYetImplemented", R.string.NotYetImplemented), Toast.LENGTH_LONG).show();
+                    Toast.makeText(parentActivity, LocaleController.getString("NotYetImplemented", R.string.NotYetImplemented), Toast.LENGTH_SHORT).show();
                 }
                 else if (id == gallery_menu_delete) {
-                    Toast.makeText(parentActivity, LocaleController.getString("NotYetImplemented", R.string.NotYetImplemented), Toast.LENGTH_LONG).show();
+                    Toast.makeText(parentActivity, LocaleController.getString("NotYetImplemented", R.string.NotYetImplemented), Toast.LENGTH_SHORT).show();
                     /*
                     if (parentActivity == null) {
                         return;

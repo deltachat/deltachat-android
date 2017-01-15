@@ -557,7 +557,7 @@ public class CacheControlActivity extends BaseFragment {
             }
         });
 
-        Toast.makeText(context, LocaleController.getString("NotYetImplemented", R.string.NotYetImplemented), Toast.LENGTH_LONG).show();
+        Toast.makeText(context, LocaleController.getString("NotYetImplemented", R.string.NotYetImplemented), Toast.LENGTH_SHORT).show();
 
         return fragmentView;
     }
