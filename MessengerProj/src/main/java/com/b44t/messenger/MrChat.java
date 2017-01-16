@@ -148,4 +148,20 @@ public class MrChat {
     {
         setDraft(null, 0);
     }
+
+    public String getNameNAddr()
+    {
+        // returns name of group chats or name+e-mail-address for normal chats
+        String name = "ErrGrpNameNAddr";
+        if( getType()==MR_CHAT_GROUP ) {
+            name = getName();
+        }
+        else {
+            int contacts[] = MrMailbox.getChatContacts(getId());
+            if( contacts.length==1 ) {
+                name = MrMailbox.getContact(contacts[0]).getNameNAddr();
+            }
+        }
+        return name;
+    }
 }

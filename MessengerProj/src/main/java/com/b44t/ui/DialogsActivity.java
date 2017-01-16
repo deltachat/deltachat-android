@@ -109,7 +109,6 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
     private boolean checkPermission = true;
 
     private String selectAlertString;
-    private String addToGroupAlertString;
 
     private static boolean dialogsLoaded;
     private boolean searching;
@@ -134,7 +133,6 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
         if (getArguments() != null) {
             onlySelect = arguments.getBoolean("onlySelect", false);
             selectAlertString = arguments.getString("selectAlertString");
-            addToGroupAlertString = arguments.getString("addToGroupAlertString");
         }
 
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.dialogsNeedReload);
@@ -716,17 +714,15 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
     }
 
     private void didSelectResult(final long dialog_id, boolean useAlert, final boolean param) {
-        if (useAlert && (selectAlertString != null || addToGroupAlertString != null)) {
+        if (useAlert && (selectAlertString != null )) {
             if (getParentActivity() == null) {
                 return;
             }
             AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
+
             MrChat mrChat = MrMailbox.getChat((int)dialog_id);
-            if (addToGroupAlertString != null) {
-                builder.setMessage(AndroidUtilities.replaceTags(LocaleController.formatStringSimple(addToGroupAlertString, mrChat.getName())));
-            } else {
-                builder.setMessage(AndroidUtilities.replaceTags(LocaleController.formatStringSimple(selectAlertString, mrChat.getName())));
-            }
+            builder.setMessage(AndroidUtilities.replaceTags(LocaleController.formatStringSimple(selectAlertString,
+                    mrChat.getNameNAddr() /*display addr as there may be contacts with the same name but different addresses*/)));
 
             builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), new DialogInterface.OnClickListener() {
                 @Override
