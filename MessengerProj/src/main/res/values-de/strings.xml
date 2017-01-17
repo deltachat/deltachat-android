@@ -534,7 +534,7 @@
     <string name="AttachFiles">Dateien anhängen</string>
     <string name="ErrGroupNameEmpty">Bitte einen Namen für die Gruppe eingeben.</string>
     <string name="MsgNewGroupDraft">Hallo, ich habe die Gruppe \"##\" für uns erstellt.</string>
-    <string name="MsgNewGroupDraftHint">Eine erste Nachricht schreiben; dann können die anderen in der Gruppe antworten.</string>
+    <string name="MsgNewGroupDraftHint">Eine erste Nachricht schreiben; dann können die anderen in der Gruppe antworten.\n\n• Gruppenmitglieder müssen hierzu Delta Chat nicht installiert haben.\n\n• Die Zustellung der ersten Nachricht kann einen Moment dauern.</string>
     <string name="MsgGroupImageChanged">Gruppenbild geändert.</string>
     <string name="MsgGroupNameChanged">Gruppenname von \"##\" in \"##\" geändert.</string>
     <string name="MsgMemberAddedToGroup">## zur Gruppe hinzugefügt.</string>
@@ -543,4 +543,5 @@
     <string name="AskRemoveMemberFromGroup">Benutzer <![CDATA[<b>]]>%1$s<![CDATA[</b>]]> aus Gruppe entfernen?</string>
     <string name="ErrSelfNotInGroup">Sie müssen ein Gruppenmitglied sein, um diese Aktion ausführen zu können.</string>
     <string name="MsgGroupLeft">Gruppe verlassen.</string>
+    <string name="NoMessagesHint">Nachricht an <![CDATA[<b>]]>%1$s<![CDATA[</b>]]> senden:\n\n• <![CDATA[<b>]]>%2$s<![CDATA[</b>]]> muss hierzu Delta Chat nicht installiert haben.\n\n• Die Zustellung der ersten Nachricht kann einen Moment dauern.</string>
 </resources>

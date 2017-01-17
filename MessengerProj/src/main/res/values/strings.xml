@@ -533,7 +533,7 @@
     <string name="AttachFiles">Attach files</string>
     <string name="Chats">Chats</string>
     <string name="ErrGroupNameEmpty">Please enter a name for the group.</string>
-    <string name="MsgNewGroupDraftHint">Write a first message to allow others to reply in this group.</string>
+    <string name="MsgNewGroupDraftHint">Write a first message to allow others to reply in this group.\n\n• It is okay if not all members use Delta Chat.\n\n• Delivering the first message may take a moment.</string>
     <string name="MsgNewGroupDraft">Hello, I\'ve just created the group \"##\" for us.</string>
     <string name="MsgGroupNameChanged">Group name changed from \"##\" to \"##\".</string>
     <string name="MsgGroupImageChanged">Group image changed.</string>
@@ -543,4 +543,5 @@
     <string name="AskRemoveMemberFromGroup">Remove user <![CDATA[<b>]]>%1$s<![CDATA[</b>]]> from group?</string>
     <string name="ErrSelfNotInGroup">You must be a member of the group to perform this action.</string>
     <string name="MsgGroupLeft">Group left.</string>
+    <string name="NoMessagesHint">Send message to <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>:\n\n• It is okay if  <![CDATA[<b>]]>%2$s<![CDATA[</b>]]> does not use Delta Chat.\n\n• Delivering the first message may take a moment.</string>
 </resources>

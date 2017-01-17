@@ -821,17 +821,22 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
 
             if( m_mrChat.getParamInt(MrChat.MR_CHAT_PARAM_UNPROMOTED, 0)==1 ) {
                 emptyView.setText(LocaleController.getString("MsgNewGroupDraftHint", R.string.MsgNewGroupDraftHint));
+                emptyView.setGravity(Gravity.LEFT);
+            }
+            else if( m_mrChat.getType()==MrChat.MR_CHAT_NORMAL ){
+                String name = m_mrChat.getName();
+                emptyView.setText(AndroidUtilities.replaceTags(LocaleController.formatString("NoMessagesHint", R.string.NoMessagesHint, name, name)));
+                emptyView.setGravity(Gravity.LEFT);
             }
             else {
                 emptyView.setText(LocaleController.getString("NoMessages", R.string.NoMessages));
+                emptyView.setGravity(Gravity.CENTER);
             }
 
-            emptyView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
-            emptyView.setGravity(Gravity.CENTER);
+            emptyView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
             emptyView.setTextColor(Theme.CHAT_EMPTY_VIEW_TEXT_COLOR);
             emptyView.setBackgroundResource(R.drawable.system);
             emptyView.getBackground().setColorFilter(Theme.colorFilter);
-            emptyView.setTypeface(AndroidUtilities.getTypeface("fonts/rmedium.ttf"));
             emptyView.setPadding(AndroidUtilities.dp(10), AndroidUtilities.dp(2), AndroidUtilities.dp(10), AndroidUtilities.dp(3));
             FrameLayout.LayoutParams fl = new FrameLayout.LayoutParams(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER);
             fl.leftMargin = AndroidUtilities.dp(24);
