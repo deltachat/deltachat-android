@@ -72,13 +72,8 @@ public class MrMailbox {
         return MrMailboxGetConfigInt(m_hMailbox, key, def);
     }
 
-    public static String getInfo() {
-        return MrMailboxGetInfo(m_hMailbox);
-    }
-
-    public static String execute(String cmd) {
-        return MrMailboxExecute(m_hMailbox, cmd);
-    }
+    public native static String getInfo();
+    public native static String cmdline(String cmd);
 
     private static long           m_hMailbox = 0; // do not rename this, is used in C-part
     private native static long    MrMailboxNew               (); // returns hMailbox which must be unref'd after usage (Names as mrmailbox_new don't work due to the additional underscore)
@@ -90,9 +85,6 @@ public class MrMailbox {
     private native static int     MrMailboxSetConfig         (long hMailbox, String key, String value); // value may be NULL
     private native static String  MrMailboxGetConfig         (long hMailbox, String key, String def); // def may be NULL, returns empty string as NULL
     private native static int     MrMailboxGetConfigInt      (long hMailbox, String key, int def); // def may be NULL, returns empty string as NULL
-    private native static String  MrMailboxGetInfo           (long hMailbox);
-    private native static String  MrMailboxExecute           (long hMailbox, String cmd);
-
 
     // contacts
     public native static int[] getKnownContacts(String query);

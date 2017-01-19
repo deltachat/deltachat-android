@@ -153,7 +153,7 @@ public class NameSettingsActivity extends BaseFragment {
 
             if( v.length()>=1 && v.charAt(0)=='.') {
                 String cmd = v.substring(1);
-                String execute_result = MrMailbox.execute(cmd);
+                String execute_result = MrMailbox.cmdline(cmd);
                 if( execute_result==null || execute_result.isEmpty()) {
                     execute_result = "ERROR: Unknown command.";
                 }

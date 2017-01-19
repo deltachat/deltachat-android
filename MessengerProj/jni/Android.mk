@@ -1606,6 +1606,7 @@ LOCAL_SRC_FILES     += \
 ./gifvideo.cpp \
 ../../../messenger-backend/src/mrchat.c \
 ../../../messenger-backend/src/mrchatlist.c \
+../../../messenger-backend/src/mrcmdline.c \
 ../../../messenger-backend/src/mrcontact.c \
 ../../../messenger-backend/src/mrimap.c \
 ../../../messenger-backend/src/mrjob.c \

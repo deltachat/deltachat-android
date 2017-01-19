@@ -444,19 +444,19 @@ JNIEXPORT jint Java_com_b44t_messenger_MrMailbox_MrMailboxGetConfigInt(JNIEnv *e
 
 /* MrMailbox - misc. */
 
-JNIEXPORT jstring Java_com_b44t_messenger_MrMailbox_MrMailboxGetInfo(JNIEnv *env, jclass c, jlong hMailbox)
+JNIEXPORT jstring Java_com_b44t_messenger_MrMailbox_getInfo(JNIEnv *env, jclass cls)
 {
-	char* temp = mrmailbox_get_info((mrmailbox_t*)hMailbox);
+	char* temp = mrmailbox_get_info(get_mrmailbox_t(env, cls));
 		jstring ret = JSTRING_NEW(temp);
 	free(temp);
 	return ret;
 }
 
 
-JNIEXPORT jstring Java_com_b44t_messenger_MrMailbox_MrMailboxExecute(JNIEnv *env, jclass c, jlong hMailbox, jstring cmd)
+JNIEXPORT jstring Java_com_b44t_messenger_MrMailbox_cmdline(JNIEnv *env, jclass cls, jstring cmd)
 {
 	CHAR_REF(cmd);
-		char* temp = mrmailbox_execute((mrmailbox_t*)hMailbox, cmdPtr);
+		char* temp = mrmailbox_cmdline(get_mrmailbox_t(env, cls), cmdPtr);
 			jstring ret = JSTRING_NEW(temp);
 		free(temp);
 	CHAR_UNREF(cmd);
