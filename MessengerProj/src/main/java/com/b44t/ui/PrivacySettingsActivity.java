@@ -30,6 +30,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.FrameLayout;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.b44t.messenger.ApplicationLoader;
 import com.b44t.messenger.LocaleController;
@@ -52,6 +53,8 @@ public class PrivacySettingsActivity extends BaseFragment implements Notificatio
     private ListAdapter listAdapter;
 
     private int privacySectionRow;
+    private int e2eEncryptionRow;
+    private int readReceiptsRow;
     private int blockedRow;
     private int showUnknownSendersRow;
     private int securitySectionRow;
@@ -73,9 +76,11 @@ public class PrivacySettingsActivity extends BaseFragment implements Notificatio
 
         rowCount = 0;
         privacySectionRow       = -1;
+        e2eEncryptionRow        = rowCount++;
+        readReceiptsRow         = rowCount++;
         blockedRow              = rowCount++;
-        showUnknownSendersRow   = rowCount++;
         passcodeRow             = rowCount++;
+        showUnknownSendersRow   = rowCount++;
         securitySectionRow      = -1;
         secretDetailRow         = rowCount++;
 
@@ -128,7 +133,16 @@ public class PrivacySettingsActivity extends BaseFragment implements Notificatio
                     } else {
                         presentFragment(new PasscodeActivity(0));
                     }
-                } else if( i==showUnknownSendersRow) {
+                }
+                else if(i==e2eEncryptionRow )
+                {
+                    Toast.makeText(getParentActivity(), LocaleController.getString("NotYetImplemented", R.string.NotYetImplemented), Toast.LENGTH_SHORT).show();
+                }
+                else if(i==readReceiptsRow )
+                {
+                    Toast.makeText(getParentActivity(), LocaleController.getString("NotYetImplemented", R.string.NotYetImplemented), Toast.LENGTH_SHORT).show();
+                }
+                else if( i==showUnknownSendersRow) {
                     int oldval = MrMailbox.getConfigInt("show_deaddrop", 0);
                     if( oldval == 1 ) {
                         MrMailbox.setConfig("show_deaddrop", "0");
@@ -236,8 +250,8 @@ public class PrivacySettingsActivity extends BaseFragment implements Notificatio
 
         @Override
         public boolean isEnabled(int i) {
-            return (i == passcodeRow) || (i == blockedRow) ||
-                    (i == showUnknownSendersRow);
+            int type = getItemViewType(i);
+            return type!=TYPE_HEADER && type!=TYPE_TEXT_INFO;
         }
 
         @Override
@@ -300,9 +314,17 @@ public class PrivacySettingsActivity extends BaseFragment implements Notificatio
                     view.setBackgroundColor(0xffffffff);
                 }
                 TextCheckCell textCell = (TextCheckCell) view;
-                if( i==showUnknownSendersRow) {
+                if( i == e2eEncryptionRow ) {
+                    textCell.setTextAndCheck(LocaleController.getString("E2EEncryption", R.string.E2EEncryption),
+                            MrMailbox.getConfigInt("e2e_encrypt", 1)!=0, true);
+                }
+                else if( i == readReceiptsRow ) {
+                    textCell.setTextAndCheck(LocaleController.getString("SendNRcvReadReceipts", R.string.SendNRcvReadReceipts),
+                            MrMailbox.getConfigInt("read_receipts", 1)!=0, true);
+                }
+                else if( i==showUnknownSendersRow) {
                     textCell.setTextAndCheck(LocaleController.getString("DeaddropInChatlist", R.string.DeaddropInChatlist),
-                            MrMailbox.getConfigInt("show_deaddrop", 0)!=0, true);
+                            MrMailbox.getConfigInt("show_deaddrop", 0)!=0, false);
                 }
             }
             return view;
@@ -314,7 +336,7 @@ public class PrivacySettingsActivity extends BaseFragment implements Notificatio
                 return TYPE_TEXT_INFO;
             } else if (i == securitySectionRow || i == privacySectionRow ) {
                 return TYPE_HEADER;
-            } else if (i==showUnknownSendersRow) {
+            } else if (i==showUnknownSendersRow || i==e2eEncryptionRow || i==readReceiptsRow ) {
                 return TYPE_CHECK_CELL;
             }
             return TYPE_TEXTSETTING;
