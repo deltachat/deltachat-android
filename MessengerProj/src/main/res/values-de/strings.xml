@@ -546,4 +546,6 @@
     <string name="NoMessagesHint">Nachricht an <![CDATA[<b>]]>%1$s<![CDATA[</b>]]> senden:\n\n• <![CDATA[<b>]]>%2$s<![CDATA[</b>]]> muss hierzu Delta Chat nicht installiert haben.\n\n• Die Zustellung der ersten Nachricht kann einen Moment dauern.</string>
     <string name="E2EEncryption">Ende-zu-Ende-Verschlüsselung</string>
     <string name="SendNRcvReadReceipts">Lesebestätigungen empfangen/senden</string>
+    <string name="E2EManagePrivateKeys">Private Schlüssel verwalten</string>
+    <string name="E2ECompareKeys">Schlüssel vergleichen</string>
 </resources>

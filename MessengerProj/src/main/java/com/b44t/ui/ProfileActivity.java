@@ -136,6 +136,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
     private int settingsNotificationsRow = -1;
     private int changeNameRow = -1;
     private int startChatRow = -1;
+    private int compareKeysRow = -1;
     private int addMemberRow = -1;
 
     private int emptyRowChat = -1;
@@ -387,6 +388,10 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                     }
                     presentFragment(new ContactAddActivity(args));
                 }
+                else if(position==compareKeysRow)
+                {
+                    Toast.makeText(getParentActivity(), LocaleController.getString("NotYetImplemented", R.string.NotYetImplemented), Toast.LENGTH_SHORT).show();
+                }
                 else if(position==startChatRow)
                 {
                     int belonging_chat_id = MrMailbox.getChatIdByContactId(user_id);
@@ -455,10 +460,6 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                         }
                     }
                 }
-                else
-                {
-                    processOnClickOrPress(position);
-                }
             }
         });
 
@@ -495,9 +496,10 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
 
                     }
                     return true;
-                } else
+                }
+                else
                 {
-                    return processOnClickOrPress(position);
+                    return false;
                 }
             }
         });
@@ -621,16 +623,6 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
         });
 
         return fragmentView;
-    }
-
-    private boolean processOnClickOrPress(final int position) {
-        if (position == changeNameRow) {
-            return true;
-        }
-        else if (position == startChatRow) {
-            return true;
-        }
-        return false;
     }
 
     @Override
@@ -1112,6 +1104,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
         }
 
         if (user_id != 0) {
+            compareKeysRow = rowCount++;
             startChatRow = rowCount++;
         } else if (chat_id != 0 && chat_id!=MrChat.MR_CHAT_ID_DEADDROP ) {
             addMemberRow = rowCount++;
@@ -1325,6 +1318,8 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                     textCell.setTextColor(0xff212121);
                     if (i == changeNameRow) {
                         textCell.setText(LocaleController.getString("EditName", R.string.EditName));
+                    } else if (i == compareKeysRow) {
+                        textCell.setText(LocaleController.getString("E2ECompareKeys", R.string.E2ECompareKeys));
                     } else if (i == startChatRow) {
                         textCell.setText(LocaleController.getString("NewChat", R.string.NewChat));
                     } else if (i == settingsNotificationsRow) {
@@ -1351,10 +1346,12 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                 if (user_id != 0) {
                     enabled =  i == settingsNotificationsRow
                             || i == changeNameRow
+                            || i == compareKeysRow
                             || i == startChatRow;
                 } else if (chat_id != 0) {
                     enabled =  i == settingsNotificationsRow
                             || i == changeNameRow
+                            || i== compareKeysRow
                             || i == addMemberRow
                             || (i >= firstMemberRow && i <= lastMemberRow);
                 }
@@ -1381,7 +1378,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                 return typeEmpty;
             } else if (i == sectionRow || i == userSectionRow) {
                 return typeDivider;
-            } else if ( i == changeNameRow || i==startChatRow || i == settingsNotificationsRow || i == addMemberRow) {
+            } else if ( i == changeNameRow || i==compareKeysRow || i==startChatRow || i == settingsNotificationsRow || i == addMemberRow) {
                 return typeTextCell;
             } else if (i >= firstMemberRow && i <= lastMemberRow) {
                 return typeContactCell;

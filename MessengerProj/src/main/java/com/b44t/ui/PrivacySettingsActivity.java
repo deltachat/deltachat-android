@@ -60,6 +60,7 @@ public class PrivacySettingsActivity extends BaseFragment implements Notificatio
     private int securitySectionRow;
     private int passcodeRow;
     private int secretDetailRow;
+    private int manageKeysRow;
     private int rowCount;
 
     private final int TYPE_TEXTSETTING = 0;
@@ -81,6 +82,7 @@ public class PrivacySettingsActivity extends BaseFragment implements Notificatio
         blockedRow              = rowCount++;
         passcodeRow             = rowCount++;
         showUnknownSendersRow   = rowCount++;
+        manageKeysRow           = rowCount++;
         securitySectionRow      = -1;
         secretDetailRow         = rowCount++;
 
@@ -135,6 +137,10 @@ public class PrivacySettingsActivity extends BaseFragment implements Notificatio
                     }
                 }
                 else if(i==e2eEncryptionRow )
+                {
+                    Toast.makeText(getParentActivity(), LocaleController.getString("NotYetImplemented", R.string.NotYetImplemented), Toast.LENGTH_SHORT).show();
+                }
+                else if(i==manageKeysRow )
                 {
                     Toast.makeText(getParentActivity(), LocaleController.getString("NotYetImplemented", R.string.NotYetImplemented), Toast.LENGTH_SHORT).show();
                 }
@@ -290,6 +296,9 @@ public class PrivacySettingsActivity extends BaseFragment implements Notificatio
                     String val = UserConfig.passcodeHash.length() > 0? LocaleController.getString("Enabled", R.string.Enabled) : LocaleController.getString("Disabled", R.string.Disabled);
                     textCell.setTextAndValue(LocaleController.getString("Passcode", R.string.Passcode), val, true);
                 }
+                else if( i==manageKeysRow ) {
+                    textCell.setText(LocaleController.getString("E2EManagePrivateKeys", R.string.E2EManagePrivateKeys), true);
+                }
             } else if (type == TYPE_TEXT_INFO) {
                 if (view == null) {
                     view = new TextInfoPrivacyCell(mContext);
@@ -324,7 +333,7 @@ public class PrivacySettingsActivity extends BaseFragment implements Notificatio
                 }
                 else if( i==showUnknownSendersRow) {
                     textCell.setTextAndCheck(LocaleController.getString("DeaddropInChatlist", R.string.DeaddropInChatlist),
-                            MrMailbox.getConfigInt("show_deaddrop", 0)!=0, false);
+                            MrMailbox.getConfigInt("show_deaddrop", 0)!=0, true);
                 }
             }
             return view;
