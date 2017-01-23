@@ -75,7 +75,7 @@
     <string name="ReplyToUser">%1$s antworten</string>
     <string name="NotificationMessagesPeopleDisplayOrder">%1$s %2$s</string>
     <!--contacts view-->
-    <string name="NoContacts">Noch keine Kontakte</string>
+    <string name="NoContacts">Keine Benutzer.</string>
     <string name="TodayAt">um</string>
     <string name="YesterdayAt">gestern um</string>
     <string name="LastSeen">zul. online</string>
@@ -530,7 +530,7 @@
     <string name="InviteText">Ich verwende nun auch den Delta Chat Messenger - %1$s - und bin dort unter %2$s erreichbar.</string>
     <string name="AdvancedSettings">Fortgeschrittene Einstellungen</string>
     <string name="CannotConnect"></string>
-    <string name="AskResetNotifications">Alle Benachrichtigungseinstellungen und Töne dieser Seite, der Kontakte und der Gruppen zurücksetzen?</string>
+    <string name="AskResetNotifications">Alle Benachrichtigungseinstellungen und Töne dieser Seite und auch der einzelnen Chats zurücksetzen?</string>
     <string name="AttachFiles">Dateien anhängen</string>
     <string name="ErrGroupNameEmpty">Bitte einen Namen für die Gruppe eingeben.</string>
     <string name="MsgNewGroupDraft">Hallo, ich habe die Gruppe \"##\" für uns erstellt.</string>
@@ -548,4 +548,5 @@
     <string name="SendNRcvReadReceipts">Lesebestätigungen empfangen/senden</string>
     <string name="E2EManagePrivateKeys">Private Schlüssel verwalten</string>
     <string name="E2ECompareKeys">Schlüssel vergleichen</string>
+    <string name="ResetUserKey">Benutzerschlüssel zurücksetzen</string>
 </resources>

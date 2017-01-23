@@ -125,7 +125,8 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
     private AvatarUpdater avatarUpdater;
     private int[] sortedUserIds;
 
-    private final static int ID_BLOCK_CONTACT = 2;
+    private final static int ID_STOP_ENCRYPTION_FOR_THIS_USER = 2;
+    private final static int ID_BLOCK_CONTACT = 3;
     private final static int ID_DELETE_CONTACT = 5;
     private final static int ID_INVITE_TO_GROUP = 9;
     private final static int ID_ADD_SHORTCUT = 14;
@@ -261,7 +262,13 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                 }
                 if (id == -1) {
                     finishFragment();
-                } else if (id == ID_BLOCK_CONTACT) {
+                }
+                else if( id==ID_STOP_ENCRYPTION_FOR_THIS_USER )
+                {
+                    Toast.makeText(getParentActivity(), LocaleController.getString("NotYetImplemented", R.string.NotYetImplemented), Toast.LENGTH_SHORT).show();
+                }
+                else if (id == ID_BLOCK_CONTACT)
+                {
                     if( userBlocked() ) {
                         MrMailbox.blockContact(user_id, 0);
                         finishFragment(); /* got to the parent, this is important eg. when editing blocking in the BlockedUserActivitiy. Moreover, this saves us updating all the states in the profile */
@@ -279,7 +286,9 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                         builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
                         showDialog(builder.create());
                     }
-                } else if (id == ID_DELETE_CONTACT) {
+                }
+                else if (id == ID_DELETE_CONTACT)
+                {
                     AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
                     builder.setMessage(LocaleController.getString("AreYouSureDeleteContact", R.string.AreYouSureDeleteContact));
                     builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), new DialogInterface.OnClickListener() {
@@ -295,7 +304,9 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                     });
                     builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
                     showDialog(builder.create());
-                } else if (id == ID_ADD_SHORTCUT) {
+                }
+                else if (id == ID_ADD_SHORTCUT)
+                {
                     try {
                         // draw avatar into a bitmap
                         int wh = avatarImage.imageReceiver.getImageWidth();
@@ -1188,6 +1199,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
         }
 
         if (user_id != 0) {
+            item.addSubItem(ID_STOP_ENCRYPTION_FOR_THIS_USER, LocaleController.getString("ResetUserKey", R.string.ResetUserKey), 0);
             item.addSubItem(ID_BLOCK_CONTACT, userBlocked()? LocaleController.getString("UnblockContact", R.string.UnblockContact) : LocaleController.getString("BlockContact", R.string.BlockContact), 0);
             item.addSubItem(ID_DELETE_CONTACT, LocaleController.getString("DeleteContact", R.string.DeleteContact), 0);
         }

@@ -75,7 +75,7 @@
     <string name="ReplyToUser">Reply to %1$s</string>
     <string name="NotificationMessagesPeopleDisplayOrder">%1$s %2$s</string>
     <!--contacts view-->
-    <string name="NoContacts">No contacts yet</string>
+    <string name="NoContacts">No users yet.</string>
     <string name="TodayAt">at</string>
     <string name="YesterdayAt">yesterday at</string>
     <string name="LastSeen">last seen</string>
@@ -93,8 +93,8 @@
     <!--contact info view-->
     <string name="ShareContact">Share</string>
     <string name="AddContact">Add</string>
-    <string name="NewContactTitle">New contact</string>
-    <string name="BlockContact">Block contact</string>
+    <string name="NewContactTitle">New user</string>
+    <string name="BlockContact">Block user</string>
     <string name="DeleteContact">Delete user</string>
     <string name="Info">Info</string>
     <!--stickers view-->
@@ -114,7 +114,7 @@
     <!--settings view-->
     <string name="TextSize">Messages font size</string>
     <string name="EnableAnimations">Transition animation</string>
-    <string name="UnblockContact">Unblock contact</string>
+    <string name="UnblockContact">Unblock user</string>
     <string name="NoBlocked">No blocked users yet</string>
     <string name="NormalMessages">Normal messages</string>
     <string name="Alert">Alert</string>
@@ -126,7 +126,7 @@
     <string name="Reset">Reset</string>
     <string name="ResetAllNotifications">Reset all notifications</string>
     <string name="NotificationsAndSounds">Notifications and sounds</string>
-    <string name="BlockedUsers">Blocked contacts</string>
+    <string name="BlockedUsers">Blocked users</string>
     <string name="Default">Default</string>
     <string name="OnlyIfSilent">Only if silent</string>
     <string name="ChatBackground">Chat background</string>
@@ -548,4 +548,5 @@
     <string name="E2EEncryption">End-to-end-encryption</string>
     <string name="E2EManagePrivateKeys">Manage private keys</string>
     <string name="E2ECompareKeys">Compare keys</string>
+    <string name="ResetUserKey">Reset user\'s key</string>
 </resources>
