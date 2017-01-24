@@ -325,11 +325,11 @@ public class PrivacySettingsActivity extends BaseFragment implements Notificatio
                 TextCheckCell textCell = (TextCheckCell) view;
                 if( i == e2eEncryptionRow ) {
                     textCell.setTextAndCheck(LocaleController.getString("E2EEncryption", R.string.E2EEncryption),
-                            MrMailbox.getConfigInt("e2e_encrypt", 1)!=0, true);
+                            MrMailbox.getConfigInt("e2e_encrypt", 0)!=0, true);
                 }
                 else if( i == readReceiptsRow ) {
                     textCell.setTextAndCheck(LocaleController.getString("SendNRcvReadReceipts", R.string.SendNRcvReadReceipts),
-                            MrMailbox.getConfigInt("read_receipts", 1)!=0, true);
+                            MrMailbox.getConfigInt("read_receipts", 0)!=0, true);
                 }
                 else if( i==showUnknownSendersRow) {
                     textCell.setTextAndCheck(LocaleController.getString("DeaddropInChatlist", R.string.DeaddropInChatlist),
