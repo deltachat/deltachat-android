@@ -202,6 +202,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
     private final static int id_info = 20;
     private final static int id_search = 40;
     private final static int id_chat_compose_panel = 1000;
+    TextView m_replyMenuItem, m_infoMenuItem;
 
     public ChatActivity(Bundle args) {
         super(args);
@@ -679,11 +680,15 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         actionModeSubTextView.setGravity(Gravity.LEFT);
         actionModeSubTextView.setTextColor(Theme.ACTION_BAR_ACTION_MODE_TEXT_COLOR);
         actionModeTitleContainer.addView(actionModeSubTextView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.MATCH_PARENT));
-        actionModeViews.add(actionMode.addItem(id_info, R.drawable.ic_ab_info, Theme.ACTION_BAR_MODE_SELECTOR_COLOR, null, AndroidUtilities.dp(54)));
-        actionModeViews.add(actionMode.addItem(id_reply, R.drawable.ic_ab_reply, Theme.ACTION_BAR_MODE_SELECTOR_COLOR, null, AndroidUtilities.dp(54)));
-        actionModeViews.add(actionMode.addItem(id_copy, R.drawable.ic_ab_fwd_copy, Theme.ACTION_BAR_MODE_SELECTOR_COLOR, null, AndroidUtilities.dp(54)));
         actionModeViews.add(actionMode.addItem(id_delete_messages, R.drawable.ic_ab_fwd_delete, Theme.ACTION_BAR_MODE_SELECTOR_COLOR, null, AndroidUtilities.dp(54)));
         actionModeViews.add(actionMode.addItem(id_forward, R.drawable.ic_ab_fwd_forward, Theme.ACTION_BAR_MODE_SELECTOR_COLOR, null, AndroidUtilities.dp(54)));
+        ActionBarMenuItem submenu = actionMode.addItem(0, R.drawable.ic_ab_other_grey);
+            if( isChatWithDeaddrop ) {
+                m_replyMenuItem = submenu.addSubItem(id_reply, LocaleController.getString("Reply", R.string.Reply), 0);
+            }
+            submenu.addSubItem(id_copy, LocaleController.getString("CopyToClipboard", R.string.CopyToClipboard), 0);
+            m_infoMenuItem = submenu.addSubItem(id_info, LocaleController.getString("Info", R.string.Info), 0);
+        actionModeViews.add(submenu);
         checkActionBarMenu();
 
         fragmentView = new SizeNotifierFrameLayout(context) {
@@ -1702,41 +1707,9 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
             if (selectedMessagesIds.isEmpty() ) {
                 actionBar.hideActionMode();
             } else {
-                final int newVisibility = selectedMessagesIds.size() == 1 ? View.VISIBLE : View.GONE;
-
-                final ActionBarMenuItem infoItem = actionBar.createActionMode().getItem(id_info);
-                final ActionBarMenuItem replyItem = actionBar.createActionMode().getItem(id_reply);
-
-                if (infoItem != null && replyItem != null
-                 && (infoItem.getVisibility() != newVisibility || replyItem.getVisibility()!=newVisibility)) {
-                    if( iconAnimator != null ) {
-                        iconAnimator.cancel();
-                        iconAnimator = null;
-                    }
-                    iconAnimator = ObjectAnimator.ofFloat(this, "progress", 1, 0);
-                    iconAnimator.setDuration(100);
-                    iconAnimator.addListener(new AnimatorListenerAdapterProxy() {
-                        @Override
-                        public void onAnimationEnd(Animator animation) {
-                            iconAnimator = null;
-                            if( newVisibility==View.VISIBLE) {
-                                infoItem.setVisibility(newVisibility);
-                            }
-                            else {
-                                replyItem.setVisibility(newVisibility);
-                            }
-                        }
-                    });
-                    iconAnimator.start();
-
-                    if( newVisibility==View.VISIBLE) {
-                        replyItem.setVisibility(newVisibility);
-                    }
-                    else {
-                        infoItem.setVisibility(newVisibility);
-                    }
-                }
-
+                int newVisibility = selectedMessagesIds.size() == 1 ? View.VISIBLE : View.GONE;
+                if( m_infoMenuItem != null  ) { m_infoMenuItem.setVisibility(newVisibility); }
+                if( m_replyMenuItem != null ) { m_replyMenuItem.setVisibility(newVisibility); }
             }
         }
     }
