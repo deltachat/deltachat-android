@@ -17,7 +17,7 @@
     <string name="Connecting">Conectando...</string>
     <string name="Updating">Atualizando...</string>
     <string name="DeleteChat">Apagar conversa</string>
-    <string name="SelectChat">Selecione um Chat</string>
+    <string name="SelectChat">Selecione um Chat ...</string>
     <string name="Search">Busca</string>
     <string name="MuteNotifications">Silenciar notificações</string>
     <string name="MuteFor">Silenciar por %1$s</string>
@@ -299,7 +299,7 @@
     <string name="AddToTheGroupTitle">Adcione %1$s ao chat %2$s?</string>
     <string name="AskAddMemberToGroup">Adicionar <![CDATA[<b>]]>%1$s<![CDATA[</b>]]> no grupo?</string>
     <string name="UserAlreadyInGroup">Este usuário já está neste grupo</string>
-    <string name="ForwardMessagesTo">Encaminhar mensagem para %1$s?</string>
+    <string name="ForwardMessagesTo">Encaminhar mensagem para <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>?</string>
     <string name="SendMessagesTo">Enviar mensagens para <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>?</string>
     <string name="SendContactTo">Enviar contato para %1$s?</string>
     <string name="AreYouSureDeleteAndExit">Você tem certeza que apagar e sair do grupo?</string>
@@ -309,7 +309,6 @@
     <string name="AreYouSureBlockContact">Você tem certeza que deseja bloquear este contato?</string>
     <string name="AreYouSureDeleteContact">Você tem certeza que deseja apagar este contato?</string>
     <string name="AreYouSureDeleteMessages">Você tem certeza que deseja apagar %1$s?</string>
-    <string name="ForwardMessagesToGroup">Encaminhar mensagem para %1$s?</string>
     <string name="RaiseToSpeakAlert">Gostaria de habilitar o \"Levantar para Falar\" para mensagens de voz?</string>
     <!--permissions-->
     <string name="PermissionContacts">Delta Chat precisa acessar seus contatos para que você possa se conectar aos seus amigos em todos os seus dispositivos.</string>
@@ -449,4 +448,5 @@
     <string name="Media">Mídias</string>
     <string name="SeachUser">Busca</string>
     <string name="InviteMenuEntry">Convidar Amigos</string>
+    <string name="ForwardToTitle">Selecione um Chat ...</string>
 </resources>

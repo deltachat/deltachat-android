@@ -452,6 +452,8 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 {
                     Bundle args = new Bundle();
                     args.putBoolean("onlySelect", true);
+                    args.putString("onlySelectTitle", LocaleController.getString("ForwardToTitle", R.string.ForwardToTitle));
+                    args.putString("selectAlertString", LocaleController.getString("ForwardMessagesTo", R.string.ForwardMessagesTo));
                     DialogsActivity fragment = new DialogsActivity(args);
                     fragment.setDelegate(ChatActivity.this);
                     presentFragment(fragment); // this results in a call to didSelectDialog()
@@ -2584,9 +2586,12 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
     }
 
     @Override
-        public void didSelectDialog(DialogsActivity dialogsFragment, long did, boolean param) {
-
+    public void didSelectDialog(DialogsActivity dialogsFragment, long chat_id, boolean param)
+    {
         Toast.makeText(getParentActivity(), LocaleController.getString("NotYetImplemented", R.string.NotYetImplemented), Toast.LENGTH_SHORT).show();
+
+
+        //MrMailbox.forwardMsg(selectedMessageIds, chat_id);
 
         actionBar.hideActionMode();
         updateVisibleRows();

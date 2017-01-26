@@ -17,7 +17,7 @@
     <string name="Connecting">Verbinden</string>
     <string name="Updating">Bijwerken</string>
     <string name="DeleteChat">Chat verwijderen</string>
-    <string name="SelectChat">Kies een chat</string>
+    <string name="SelectChat">Kies een chat ...</string>
     <string name="Search">Zoeken</string>
     <string name="MuteNotifications">Meldingen stil</string>
     <string name="MuteFor">%1$s stil</string>
@@ -299,7 +299,7 @@
     <string name="AddToTheGroupTitle">%1$s toevoegen aan de groep %2$s?</string>
     <string name="AskAddMemberToGroup"><![CDATA[<b>]]>%1$s<![CDATA[</b>]]> toevoegen aan de groep?</string>
     <string name="UserAlreadyInGroup">Gebruiker is al een groepslid</string>
-    <string name="ForwardMessagesTo">Berichten doorsturen naar %1$s?</string>
+    <string name="ForwardMessagesTo">Berichten doorsturen naar <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>?</string>
     <string name="SendMessagesTo">Berichten naar <![CDATA[<b>]]>%1$s<![CDATA[</b>]]> versturen?</string>
     <string name="SendContactTo">Contact delen met %1$s?</string>
     <string name="AreYouSureDeleteAndExit">Verwijderen en de groep verlaten?</string>
@@ -309,7 +309,6 @@
     <string name="AreYouSureBlockContact">Weet je zeker dat je deze persoon wilt blokkeren?</string>
     <string name="AreYouSureDeleteContact">Contact echt verwijderen?</string>
     <string name="AreYouSureDeleteMessages">%1$s echt verwijderen?</string>
-    <string name="ForwardMessagesToGroup">Berichten doorsturen naar %1$s?</string>
     <string name="RaiseToSpeakAlert">Wil je \"Houd bij oor\" inschakelen voor spraakberichten?</string>
     <!--permissions-->
     <string name="PermissionContacts">Delta Chat heeft toegang tot je contacten nodig zodat je kan chatten met je vrienden vanaf al je apparaten.</string>
@@ -449,4 +448,5 @@
     <string name="Media">Media</string>
     <string name="SeachUser">Zoeken</string>
     <string name="InviteMenuEntry">Vrienden uitnodigen</string>
+    <string name="ForwardToTitle">Kies een chat ...</string>
 </resources>

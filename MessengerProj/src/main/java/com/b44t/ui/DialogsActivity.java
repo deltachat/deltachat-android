@@ -114,6 +114,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
     private boolean searching;
     private boolean searchWas;
     private boolean onlySelect;
+    private String onlySelectTitle = "";
     private long openedDialogId;
 
     private DialogsActivityDelegate delegate;
@@ -132,6 +133,10 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
 
         if (getArguments() != null) {
             onlySelect = arguments.getBoolean("onlySelect", false);
+            onlySelectTitle = arguments.getString("onlySelectTitle");
+            if( onlySelectTitle.isEmpty()) {
+                onlySelectTitle = LocaleController.getString("SelectChat", R.string.SelectChat);
+            }
             selectAlertString = arguments.getString("selectAlertString");
         }
 
@@ -253,7 +258,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
         item.getSearchField().setHint(LocaleController.getString("Search", R.string.Search));
         if (onlySelect) {
             actionBar.setBackButtonImage(R.drawable.ic_ab_back);
-            actionBar.setTitle(LocaleController.getString("SelectChat", R.string.SelectChat));
+            actionBar.setTitle(onlySelectTitle);
         } else {
             actionBar.setBackButtonDrawable(new MenuDrawable());
             actionBar.setTitle(LocaleController.getString("AppName", R.string.AppName));

@@ -430,14 +430,12 @@ JNIEXPORT void Java_com_b44t_messenger_MrMailbox_deleteMsg(JNIEnv *env, jclass c
 }
 
 
-JNIEXPORT void Java_com_b44t_messenger_MrMailbox_forwardMsgs(JNIEnv *env, jclass cls, jintArray msg_ids, jintArray contact_ids)
+JNIEXPORT void Java_com_b44t_messenger_MrMailbox_forwardMsgs(JNIEnv *env, jclass cls, jintArray msg_ids, jint chat_id)
 {
-	int msg_ids_cnt, contact_ids_cnt;
+	int msg_ids_cnt;
 	const int* msg_ids_ptr = jintArray2uint32Pointer(env, msg_ids, &msg_ids_cnt);
-	const int* contact_ids_ptr = jintArray2uint32Pointer(env, contact_ids, &contact_ids_cnt);
-		mrmailbox_forward_msgs(get_mrmailbox_t(env, cls), msg_ids_ptr, msg_ids_cnt, contact_ids_ptr, contact_ids_cnt); 
+		mrmailbox_forward_msgs(get_mrmailbox_t(env, cls), msg_ids_ptr, msg_ids_cnt, chat_id); 
 	free(msg_ids_ptr);
-	free(contact_ids_ptr);
 }
 
 

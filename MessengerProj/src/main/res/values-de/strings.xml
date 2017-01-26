@@ -17,7 +17,7 @@
     <string name="Connecting">Verbinde…</string>
     <string name="Updating">Aktualisiere…</string>
     <string name="DeleteChat">Chat löschen</string>
-    <string name="SelectChat">Chat auswählen</string>
+    <string name="SelectChat">Chat auswählen ...</string>
     <string name="Search">Suche</string>
     <string name="MuteNotifications">Stummschalten</string>
     <string name="MuteFor">Stumm für %1$s</string>
@@ -299,7 +299,7 @@
     <string name="AddToTheGroupTitle">%1$s dem Chat %2$s hinzufügen?</string>
     <string name="AddToTheGroup">%1$s zur Gruppe hinzufügen?</string>
     <string name="UserAlreadyInGroup">Nutzer befindet sich schon in der Gruppe</string>
-    <string name="ForwardMessagesTo">Nachrichten an %1$s weiterleiten?</string>
+    <string name="ForwardMessagesTo">Ausgewählte Nachrichten an <![CDATA[<b>]]>%1$s<![CDATA[</b>]]> weiterleiten?</string>
     <string name="SendMessagesTo">Nachricht an <![CDATA[<b>]]>%1$s<![CDATA[</b>]]> senden?</string>
     <string name="SendContactTo">Kontakt senden an %1$s?</string>
     <string name="AreYouSureDeleteAndExit">Gruppe verlassen? Es werden dann keine Nachrichten dieser Gruppe mehr empfangen.</string>
@@ -309,7 +309,6 @@
     <string name="AreYouSureBlockContact">Diesen Benutzer wirklich blockieren?</string>
     <string name="AreYouSureDeleteContact">Diesen Benutzer wirklich löschen?</string>
     <string name="AreYouSureDeleteMessages">%1$s löschen? Die Nachrichten werden auch auf dem Server gelöscht.</string>
-    <string name="ForwardMessagesToGroup">Weiterleiten an %1$s?</string>
     <string name="RaiseToSpeakAlert">Möchtest du \"Zum Sprechen ans Ohr\" für Sprachnachrichten aktivieren?</string>
     <!--permissions-->
     <string name="PermissionContacts">Für eine einfache Kontaktaufnahme, benötigt Delta Chat Zugriff auf die Kontakte. Die Daten werden dabei nur lokal verarbeitet und zu keinem Server oder Dienst übertragen.</string>
@@ -549,4 +548,5 @@
     <string name="E2EManagePrivateKeys">Private Schlüssel verwalten</string>
     <string name="E2ECompareKeys">Schlüssel vergleichen</string>
     <string name="ResetUserKey">Benutzerschlüssel zurücksetzen</string>
+    <string name="ForwardToTitle">Weiterleiten an ...</string>
 </resources>
