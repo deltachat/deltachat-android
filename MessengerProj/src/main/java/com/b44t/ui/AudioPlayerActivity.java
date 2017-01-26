@@ -198,9 +198,9 @@ public class AudioPlayerActivity extends BaseFragment implements NotificationCen
         actionBar.setBackgroundColor(Theme.ACTION_BAR_PLAYER_COLOR);
         actionBar.setBackButtonImage(R.drawable.pl_back);
         actionBar.setItemsBackgroundColor(Theme.ACTION_BAR_AUDIO_SELECTOR_COLOR);
-        if (!AndroidUtilities.isTablet()) {
+        /*if (!AndroidUtilities.isTablet()) {
             actionBar.showActionModeTop();
-        }
+        }*/
         actionBar.setActionBarMenuOnItemClick(new ActionBar.ActionBarMenuOnItemClick() {
             @Override
             public void onItemClick(int id) {

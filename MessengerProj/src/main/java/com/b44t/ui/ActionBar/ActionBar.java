@@ -58,7 +58,7 @@ public class ActionBar extends FrameLayout {
     private ImageView backButtonImageView;
     private SimpleTextView titleTextView;
     private SimpleTextView subtitleTextView;
-    private View actionModeTop;
+    //private View actionModeTop;
     private ActionBarMenu menu;
     private ActionBarMenu actionMode;
     private boolean occupyStatusBar = Build.VERSION.SDK_INT >= 21;
@@ -218,6 +218,7 @@ public class ActionBar extends FrameLayout {
         actionMode.setLayoutParams(layoutParams);
         actionMode.setVisibility(INVISIBLE);
 
+        /*
         if (occupyStatusBar && actionModeTop == null) {
             actionModeTop = new View(getContext());
             actionModeTop.setBackgroundColor(0x99000000);
@@ -229,6 +230,7 @@ public class ActionBar extends FrameLayout {
             actionModeTop.setLayoutParams(layoutParams);
             actionModeTop.setVisibility(INVISIBLE);
         }
+        */
 
         return actionMode;
     }
@@ -240,9 +242,9 @@ public class ActionBar extends FrameLayout {
         actionModeVisible = true;
         ArrayList<Animator> animators = new ArrayList<>();
         animators.add(ObjectAnimator.ofFloat(actionMode, "alpha", 0.0f, 1.0f));
-        if (occupyStatusBar && actionModeTop != null) {
+        /*if (occupyStatusBar && actionModeTop != null) {
             animators.add(ObjectAnimator.ofFloat(actionModeTop, "alpha", 0.0f, 1.0f));
-        }
+        }*/
         if (actionModeAnimation != null) {
             actionModeAnimation.cancel();
         }
@@ -253,9 +255,9 @@ public class ActionBar extends FrameLayout {
             @Override
             public void onAnimationStart(Animator animation) {
                 actionMode.setVisibility(VISIBLE);
-                if (occupyStatusBar && actionModeTop != null) {
+                /*if (occupyStatusBar && actionModeTop != null) {
                     actionModeTop.setVisibility(VISIBLE);
-                }
+                }*/
             }
 
             @Override
@@ -298,9 +300,9 @@ public class ActionBar extends FrameLayout {
         actionModeVisible = false;
         ArrayList<Animator> animators = new ArrayList<>();
         animators.add(ObjectAnimator.ofFloat(actionMode, "alpha", 0.0f));
-        if (occupyStatusBar && actionModeTop != null) {
+        /*if (occupyStatusBar && actionModeTop != null) {
             animators.add(ObjectAnimator.ofFloat(actionModeTop, "alpha", 0.0f));
-        }
+        }*/
         if (actionModeAnimation != null) {
             actionModeAnimation.cancel();
         }
@@ -313,9 +315,9 @@ public class ActionBar extends FrameLayout {
                 if (actionModeAnimation != null && actionModeAnimation.equals(animation)) {
                     actionModeAnimation = null;
                     actionMode.setVisibility(INVISIBLE);
-                    if (occupyStatusBar && actionModeTop != null) {
+                    /*if (occupyStatusBar && actionModeTop != null) {
                         actionModeTop.setVisibility(INVISIBLE);
-                    }
+                    }*/
                 }
             }
 
@@ -345,6 +347,7 @@ public class ActionBar extends FrameLayout {
         }
     }
 
+    /*
     public void showActionModeTop() {
         if (occupyStatusBar && actionModeTop == null) {
             actionModeTop = new View(getContext());
@@ -357,6 +360,7 @@ public class ActionBar extends FrameLayout {
             actionModeTop.setLayoutParams(layoutParams);
         }
     }
+    */
 
     public boolean isActionModeShowed() {
         return actionMode != null && actionModeVisible;

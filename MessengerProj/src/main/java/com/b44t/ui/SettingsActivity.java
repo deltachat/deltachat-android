@@ -255,7 +255,7 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
                 } else if (i == aboutRow) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
                     builder.setTitle(LocaleController.getString("AppName", R.string.AppName) + " " + getVersion());
-                    builder.setMessage(MrMailbox.getInfo());
+                    builder.setMessage(MrMailbox.getInfo() + "\n\n" + getAndroidInfo());
                     builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
@@ -312,6 +312,11 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
         } catch (Exception e) {
             return "ErrVersion";
         }
+    }
+
+    private String getAndroidInfo()
+    {
+        return "Build.VERSION.SDK_INT=" + Build.VERSION.SDK_INT;
     }
 
     @Override

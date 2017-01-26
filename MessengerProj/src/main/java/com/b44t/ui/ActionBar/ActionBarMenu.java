@@ -46,6 +46,7 @@ public class ActionBarMenu extends LinearLayout {
         super(context);
     }
 
+    /*
     public View addItemResource(int id, int resourceId) {
         LayoutInflater li = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View view = li.inflate(resourceId, null);
@@ -63,6 +64,7 @@ public class ActionBarMenu extends LinearLayout {
         });
         return view;
     }
+    */
 
     public ActionBarMenuItem addItem(int id, Drawable drawable) { /*  */
         return addItem(id, 0, parentActionBar.itemsBackgroundColor, drawable, AndroidUtilities.dp(48));
@@ -144,10 +146,10 @@ public class ActionBarMenu extends LinearLayout {
                 if (item.hasSubMenu()) {
                     item.toggleSubMenu();
                     break;
-                } else if (item.overrideMenuClick) {
+                } /*else if (item.overrideMenuClick) {
                     onItemClick((Integer) item.getTag());
                     break;
-                }
+                }*/
             }
         }
     }

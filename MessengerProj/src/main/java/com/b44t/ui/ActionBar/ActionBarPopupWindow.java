@@ -89,7 +89,7 @@ public class ActionBarPopupWindow extends PopupWindow {
         private float backScaleY = 1;
         private int backAlpha = 255;
         private int lastStartedChild = 0;
-        private boolean showedFromBotton;
+        //private boolean showedFromBotton;
         private HashMap<View, Integer> positions = new HashMap<>();
 
         private ScrollView scrollView;
@@ -123,9 +123,11 @@ public class ActionBarPopupWindow extends PopupWindow {
             }
         }
 
+        /*
         public void setShowedFromBotton(boolean value) {
             showedFromBotton = value;
         }
+        */
 
         public void setDispatchKeyEventListener(OnDispatchKeyEventListener listener) {
             mOnDispatchKeyEventListener = listener;
@@ -145,16 +147,16 @@ public class ActionBarPopupWindow extends PopupWindow {
             invalidate();
         }
 
-        public void setBackScaleY(float value) {
+        public void setBackScaleY(float value) { /* AFAIK this and the other "back" functions are used for some animations */
             backScaleY = value;
             if (animationEnabled) {
                 int count = getItemsCount();
-                int visibleCount = 0;
+                /*int visibleCount = 0;
                 for (int a = 0; a < count; a++) {
                     visibleCount += getItemAt(a).getVisibility() == VISIBLE ? 1 : 0;
-                }
+                }*/
                 int height = getMeasuredHeight() - AndroidUtilities.dp(16);
-                if (showedFromBotton) {
+                /*if (showedFromBotton) {
                     for (int a = lastStartedChild; a >= 0; a--) {
                         View child = getItemAt(a);
                         if (child.getVisibility() != VISIBLE) {
@@ -167,7 +169,7 @@ public class ActionBarPopupWindow extends PopupWindow {
                         lastStartedChild = a - 1;
                         startChildAnimation(child);
                     }
-                } else {
+                } else*/ {
                     for (int a = lastStartedChild; a < count; a++) {
                         View child = getItemAt(a);
                         if (child.getVisibility() != VISIBLE) {
@@ -190,7 +192,7 @@ public class ActionBarPopupWindow extends PopupWindow {
                 AnimatorSet animatorSet = new AnimatorSet();
                 animatorSet.playTogether(
                         ObjectAnimator.ofFloat(child, "alpha", 0.0f, 1.0f),
-                        ObjectAnimator.ofFloat(child, "translationY", AndroidUtilities.dp(showedFromBotton ? 6 : -6), 0));
+                        ObjectAnimator.ofFloat(child, "translationY", AndroidUtilities.dp(/*showedFromBotton ? 6 :*/ -6), 0));
                 animatorSet.setDuration(180);
                 animatorSet.setInterpolator(decelerateInterpolator);
                 animatorSet.start();
@@ -223,9 +225,9 @@ public class ActionBarPopupWindow extends PopupWindow {
         protected void onDraw(Canvas canvas) {
             if (backgroundDrawable != null) {
                 backgroundDrawable.setAlpha(backAlpha);
-                if (showedFromBotton) {
+                /*if (showedFromBotton) {
                     backgroundDrawable.setBounds(0, (int) (getMeasuredHeight() * (1.0f - backScaleY)), (int) (getMeasuredWidth() * backScaleX), getMeasuredHeight());
-                } else {
+                } else*/ {
                     backgroundDrawable.setBounds(0, 0, (int) (getMeasuredWidth() * backScaleX), (int) (getMeasuredHeight() * backScaleY));
                 }
                 backgroundDrawable.draw(canvas);
@@ -345,9 +347,9 @@ public class ActionBarPopupWindow extends PopupWindow {
                 child.setAlpha(0.0f);
                 visibleCount++;
             }
-            if (content.showedFromBotton) {
+            /*if (content.showedFromBotton) {
                 content.lastStartedChild = count - 1;
-            } else {
+            } else*/ {
                 content.lastStartedChild = 0;
             }
             windowAnimatorSet = new AnimatorSet();
@@ -412,7 +414,7 @@ public class ActionBarPopupWindow extends PopupWindow {
             ActionBarPopupWindowLayout content = (ActionBarPopupWindowLayout) getContentView();
             windowAnimatorSet = new AnimatorSet();
             windowAnimatorSet.playTogether(
-                    ObjectAnimator.ofFloat(content, "translationY", AndroidUtilities.dp(content.showedFromBotton ? 5 : -5)),
+                    ObjectAnimator.ofFloat(content, "translationY", AndroidUtilities.dp(/*content.showedFromBotton ? 5 :*/ -5)),
                     ObjectAnimator.ofFloat(content, "alpha", 0.0f));
             windowAnimatorSet.setDuration(150);
             windowAnimatorSet.addListener(new Animator.AnimatorListener() {

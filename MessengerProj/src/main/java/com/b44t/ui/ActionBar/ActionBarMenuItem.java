@@ -97,12 +97,12 @@ public class ActionBarMenuItem extends FrameLayout {
     private int[] location;
     private View selectedMenuView;
     private Runnable showMenuRunnable;
-    private boolean showFromBottom;
+    //private boolean showFromBottom;
     private int menuHeight = AndroidUtilities.dp(16);
     private int subMenuOpenSide = 0;
     private ActionBarMenuItemDelegate delegate;
     private boolean allowCloseAnimation = true;
-    protected boolean overrideMenuClick;
+    //protected boolean overrideMenuClick;
     private boolean processedPopupClick;
 
     public ActionBarMenuItem(Context context, ActionBarMenu menu, int backgroundColor) {
@@ -202,12 +202,14 @@ public class ActionBarMenuItem extends FrameLayout {
         this.delegate = delegate;
     }
 
-    public void setShowFromBottom(boolean value) { /*  */
+    /*
+    public void setShowFromBottom(boolean value) {
         showFromBottom = value;
         if (popupLayout != null) {
             popupLayout.setShowedFromBotton(showFromBottom);
         }
     }
+    */
 
     public void setSubMenuOpenSide(int side) {
         subMenuOpenSide = side;
@@ -262,7 +264,7 @@ public class ActionBarMenuItem extends FrameLayout {
                 textView.setCompoundDrawablesWithIntrinsicBounds(null, null, getResources().getDrawable(icon), null);
             }
         }
-        popupLayout.setShowedFromBotton(showFromBottom);
+        //popupLayout.setShowedFromBotton(showFromBottom);
         popupLayout.addView(textView);
         LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) textView.getLayoutParams();
         if (LocaleController.isRTL) {
@@ -319,7 +321,8 @@ public class ActionBarMenuItem extends FrameLayout {
             popupWindow.setClippingEnabled(true);
             popupWindow.setInputMethodMode(ActionBarPopupWindow.INPUT_METHOD_NOT_NEEDED);
             popupWindow.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_UNSPECIFIED);
-            popupLayout.measure(MeasureSpec.makeMeasureSpec(AndroidUtilities.dp(1000), MeasureSpec.AT_MOST), MeasureSpec.makeMeasureSpec(AndroidUtilities.dp(1000), MeasureSpec.AT_MOST));
+            int wh = MeasureSpec.makeMeasureSpec(AndroidUtilities.dp(1000), MeasureSpec.AT_MOST);
+            popupLayout.measure(wh, wh);
             popupWindow.getContentView().setFocusableInTouchMode(true);
             popupWindow.getContentView().setOnKeyListener(new OnKeyListener() {
                 @Override
@@ -397,10 +400,12 @@ public class ActionBarMenuItem extends FrameLayout {
         return searchField;
     }
 
+    /*
     public ActionBarMenuItem setOverrideMenuClick(boolean value) {
         overrideMenuClick = value;
         return this;
     }
+    */
 
     public ActionBarMenuItem setIsSearchField(boolean value, boolean applyHack) {
         if (parentMenu == null) {
@@ -587,16 +592,17 @@ public class ActionBarMenuItem extends FrameLayout {
 
     private void updateOrShowPopup(boolean show, boolean update) {
         int offsetY;
-        if (showFromBottom) {
+        /*if (showFromBottom) {
             getLocationOnScreen(location);
             int diff = location[1] - AndroidUtilities.statusBarHeight + getMeasuredHeight() - menuHeight;
             offsetY = -menuHeight;
             if (diff < 0) {
                 offsetY -= diff;
             }
-        } else {
+        } else*/ {
             if (parentMenu != null && subMenuOpenSide == 0) {
-                offsetY = -parentMenu.parentActionBar.getMeasuredHeight() + parentMenu.getTop();
+                ActionBarMenu pm = parentMenu.parentActionBar.createMenu(); // for normal items, this is identical to parentMenu; for the action bar we take the normal menu as a a reference for the position
+                offsetY = -pm.parentActionBar.getMeasuredHeight() + pm.getTop();
             } else {
                 offsetY = -getMeasuredHeight();
             }
@@ -607,14 +613,14 @@ public class ActionBarMenuItem extends FrameLayout {
         }
 
         if (subMenuOpenSide == 0) {
-            if (showFromBottom) {
+            /*if (showFromBottom) {
                 if (show) {
                     popupWindow.showAsDropDown(this, -popupLayout.getMeasuredWidth() + getMeasuredWidth(), offsetY);
                 }
                 if (update) {
                     popupWindow.update(this, -popupLayout.getMeasuredWidth() + getMeasuredWidth(), offsetY, -1, -1);
                 }
-            } else {
+            } else*/ {
                 if (parentMenu != null) {
                     View parent = parentMenu.parentActionBar;
                     if (show) {
