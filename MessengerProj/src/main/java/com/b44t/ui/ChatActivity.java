@@ -447,19 +447,17 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                         return;
                     }
                     createDeleteMessagesAlert();
-                } else if (id == id_forward) {
-                    Toast.makeText(getParentActivity(), LocaleController.getString("NotYetImplemented", R.string.NotYetImplemented), Toast.LENGTH_SHORT).show();
-                    /*
+                }
+                else if (id == id_forward)
+                {
                     Bundle args = new Bundle();
                     args.putBoolean("onlySelect", true);
-                    args.putInt("dialogsType", 1);
                     DialogsActivity fragment = new DialogsActivity(args);
                     fragment.setDelegate(ChatActivity.this);
-                    presentFragment(fragment);
-                    */
-                    actionBar.hideActionMode();
-                    updateVisibleRows();
-                } else if ( id == id_delete_chat) {
+                    presentFragment(fragment); // this results in a call to didSelectDialog()
+                }
+                else if ( id == id_delete_chat)
+                {
                     // as the history may be a mix of messenger-messages and e-mails, it is not safe to delete it.
                     // the user can delete explicit messages or use his e-mail programm to delete masses.
                     if (getParentActivity() == null) {
@@ -2586,7 +2584,16 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
     }
 
     @Override
-    public void didSelectDialog(DialogsActivity activity, long did, boolean param) {
+        public void didSelectDialog(DialogsActivity dialogsFragment, long did, boolean param) {
+
+        Toast.makeText(getParentActivity(), LocaleController.getString("NotYetImplemented", R.string.NotYetImplemented), Toast.LENGTH_SHORT).show();
+
+        actionBar.hideActionMode();
+        updateVisibleRows();
+
+        dialogsFragment.finishFragment(true);
+
+        /*
         if (dialog_id != 0 && (forwaringMessage != null || !selectedMessagesIds.isEmpty() )) {
             if (forwaringMessage != null) {
                 forwaringMessage = null;
@@ -2626,6 +2633,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 updateVisibleRows();
             }
         }
+        */
     }
 
     @Override

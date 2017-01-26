@@ -173,13 +173,11 @@ public class MrMailbox {
         return MrMailboxGetMsgInfo(m_hMailbox, id);
     }
 
-    public static void deleteMsg(int id) {
-        MrMailboxDeleteMsg(m_hMailbox, id);
-    }
+    public native static void deleteMsg(int id);
+    public native static void forwardMsg(int msg_ids[], int contact_ids[]);
 
     private native static long    MrMailboxGetMsg            (long hMailbox, int id); // return hMsg which must be unref'd after usage
     private native static String  MrMailboxGetMsgInfo        (long hMailbox, int id);
-    private native static void    MrMailboxDeleteMsg         (long hMailbox, int id);
 
     // static
     private native static void     MrStockAddStr              (int id, String str);

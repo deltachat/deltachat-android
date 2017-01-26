@@ -137,6 +137,29 @@ static jintArray carray2jintArray_n_carray_free(JNIEnv *env, const carray* ca)
 }
 
 
+static int* jintArray2uint32Pointer(JNIEnv* env, jintArray ja, int* icnt)
+{
+	uint32_t*   ret  = NULL;
+	const jint* temp;
+	int         i;
+	if( env && ja && icnt ) {
+		temp  = (*env)->GetIntArrayElements(env, ja, NULL);
+		*icnt = (*env)->GetArrayLength(env, ja);
+		if( temp && *icnt > 0 ) {
+			ret = calloc(icnt, sizeof(uint32_t));
+			if( ret ) {
+				for( i = 0; i < icnt; i++ ) {
+					ret[i] = (uint32_t)temp[i];
+				}
+			}
+			(*env)->ReleaseIntArrayElements(env, ja, temp, 0);
+		}
+	}
+
+	return ret;
+}
+
+
 /*******************************************************************************
  * MrMailbox
  ******************************************************************************/
@@ -401,9 +424,20 @@ JNIEXPORT jstring Java_com_b44t_messenger_MrMailbox_MrMailboxGetMsgInfo(JNIEnv *
 }
 
 
-JNIEXPORT void Java_com_b44t_messenger_MrMailbox_MrMailboxDeleteMsg(JNIEnv *env, jclass c, jlong hMailbox, jint id)
+JNIEXPORT void Java_com_b44t_messenger_MrMailbox_deleteMsg(JNIEnv *env, jclass cls, jint id)
 {
-	mrmailbox_delete_msg((mrmailbox_t*)hMailbox, id);
+	mrmailbox_delete_msg(get_mrmailbox_t(env, cls), id);
+}
+
+
+JNIEXPORT void Java_com_b44t_messenger_MrMailbox_forwardMsgs(JNIEnv *env, jclass cls, jintArray msg_ids, jintArray contact_ids)
+{
+	int msg_ids_cnt, contact_ids_cnt;
+	const int* msg_ids_ptr = jintArray2uint32Pointer(env, msg_ids, &msg_ids_cnt);
+	const int* contact_ids_ptr = jintArray2uint32Pointer(env, contact_ids, &contact_ids_cnt);
+		mrmailbox_forward_msgs(get_mrmailbox_t(env, cls), msg_ids_ptr, msg_ids_cnt, contact_ids_ptr, contact_ids_cnt); 
+	free(msg_ids_ptr);
+	free(contact_ids_ptr);
 }
 
 
