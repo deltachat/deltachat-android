@@ -787,9 +787,9 @@ public class MessageObject {
                 maxWidth = Math.min(AndroidUtilities.displaySize.x, AndroidUtilities.displaySize.y) - AndroidUtilities.dp(80);
             }
         }
-        if ( (messageOwner.fwd_from != null && messageOwner.fwd_from.channel_id != 0) && !isOut()) {
+        /*if ( (messageOwner.fwd_from != null && messageOwner.fwd_from.channel_id != 0) && !isOut()) {
             maxWidth -= AndroidUtilities.dp(20);
-        }
+        }*/
 
         StaticLayout textLayout;
 
@@ -1330,24 +1330,14 @@ public class MessageObject {
             TLRPC.DocumentAttribute attribute = document.attributes.get(a);
             if (attribute instanceof TLRPC.TL_documentAttributeAudio) {
                 if (attribute.voice) {
-                    if (isOutOwner() || messageOwner.fwd_from != null && messageOwner.fwd_from.from_id == UserConfig.getClientUserId()) {
+                    if (isOutOwner() ) {
                         return LocaleController.getString("FromSelf", R.string.FromSelf);
                     }
-                    TLRPC.User user = null;
-                    TLRPC.Chat chat = null;
-                    if (messageOwner.fwd_from != null && messageOwner.fwd_from.channel_id != 0) {
-                        chat = MessagesController.getInstance().getChat(messageOwner.fwd_from.channel_id);
-                    } else if (messageOwner.fwd_from != null && messageOwner.fwd_from.from_id != 0) {
-                        user = MessagesController.getInstance().getUser(messageOwner.fwd_from.from_id);
-                    } else if (messageOwner.from_id < 0) {
-                        chat = MessagesController.getInstance().getChat(-messageOwner.from_id);
+                    else if (messageOwner.fwd_from != null ) {
+                        return messageOwner.fwd_from.m_name;
                     } else {
-                        user = MessagesController.getInstance().getUser(messageOwner.from_id);
-                    }
-                    if (user != null) {
+                        TLRPC.User user = MessagesController.getInstance().getUser(messageOwner.from_id);
                         return UserObject.getUserName(user);
-                    } else if (chat != null) {
-                        return chat.title;
                     }
                 }
                 String performer = attribute.performer;
@@ -1386,12 +1376,7 @@ public class MessageObject {
 
     public String getForwardedName() {
         if (messageOwner.fwd_from != null) {
-            if (messageOwner.fwd_from.from_id != 0) {
-                TLRPC.User user = MessagesController.getInstance().getUser(messageOwner.fwd_from.from_id);
-                if (user != null) {
-                    return UserObject.getUserName(user);
-                }
-            }
+            return messageOwner.fwd_from.m_name;
         }
         return null;
     }

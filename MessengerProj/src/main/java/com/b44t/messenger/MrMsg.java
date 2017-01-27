@@ -221,6 +221,15 @@ public class MrMsg {
             ret.message = String.format("<unsupported message type #%d for id #%d>", type, ret.id);
         }
 
+        if( !getParam('a', "").equals("") ) {
+            ret.flags |= TLRPC.MESSAGE_FLAG_FWD;
+            ret.fwd_from = new TLRPC.TL_messageFwdHeader();
+            ret.fwd_from.m_name  = getParam('A', "");
+            if( ret.fwd_from.m_name.isEmpty() ) {
+                ret.fwd_from.m_name = getParam('a', "");
+            }
+        }
+
         return ret;
     }
 };

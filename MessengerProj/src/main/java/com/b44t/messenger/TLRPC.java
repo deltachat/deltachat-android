@@ -163,7 +163,6 @@ public class TLRPC {
 		public int flags;
 		public int id;
 		public String about;
-		public ChatParticipants participants;
 	}
 
 	public static class WebPage extends TLObject {
@@ -171,13 +170,9 @@ public class TLRPC {
 		public long id;
 		public String url;
 		public String type;
-		public String site_name;
 		public String title;
 		public String description;
 		public Photo photo;
-		public String embed_url;
-		public int embed_width;
-		public int embed_height;
 		public int duration;
 		public String author;
 		public int date;
@@ -338,18 +333,6 @@ public class TLRPC {
 	public static class TL_photoEmpty extends Photo {
 	}
 
-	public static class ChatParticipants extends TLObject {
-		public int flags;
-		public int chat_id;
-		public ArrayList<ChatParticipant> participants = new ArrayList<>();
-		public int version;
-	}
-
-	public static class ChatParticipant extends TLObject {
-		public int user_id;
-		public int date;
-	}
-
 	public static class Chat extends TLObject {
 		public int flags;
 		public boolean creator;
@@ -377,11 +360,7 @@ public class TLRPC {
 	}
 
 	public static class TL_messageFwdHeader extends TLObject {
-		public int flags;
-		public int from_id;
-		public int date;
-		public int channel_id;
-		public int channel_post;
+		public String m_name;
 	}
 
 	public static class FileLocation extends TLObject {
@@ -453,17 +432,6 @@ public class TLRPC {
 	}
 
 	public static class TL_inputPeerUser extends InputPeer {
-	}
-
-	public static class TL_inputPeerEmpty extends InputPeer {
-	}
-
-	public static class TL_messages_searchGlobal extends TLObject {
-		public String q;
-		public int offset_date;
-		public InputPeer offset_peer;
-		public int offset_id;
-		public int limit;
 	}
 
 	public static class MessageMedia extends TLObject {

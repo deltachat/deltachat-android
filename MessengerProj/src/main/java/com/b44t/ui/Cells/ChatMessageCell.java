@@ -281,8 +281,6 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
     private TLRPC.FileLocation currentPhoto;
     private String currentNameString;
 
-    private TLRPC.User currentForwardUser;
-    private TLRPC.Chat currentForwardChannel;
     private String currentForwardNameString;
 
     private ChatMessageCellDelegate delegate;
@@ -947,11 +945,9 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                         forwardNamePressed = false;
                         playSoundEffect(SoundEffectConstants.CLICK);
                         if (delegate != null) {
-                            if (currentForwardChannel != null) {
-                                delegate.didPressedChannelAvatar(this, currentForwardChannel, currentMessageObject.messageOwner.fwd_from.channel_post);
-                            } else if (currentForwardUser != null) {
+                            /*if (currentForwardUser != null) {
                                 delegate.didPressedUserAvatar(this, currentForwardUser);
-                            }
+                            }*/
                         }
                     } else if (event.getAction() == MotionEvent.ACTION_CANCEL) {
                         forwardNamePressed = false;
@@ -3691,53 +3687,35 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
             nameWidth = 0;
         }
 
-        currentForwardUser = null;
         currentForwardNameString = null;
-        currentForwardChannel = null;
         forwardedNameLayout[0] = null;
         forwardedNameLayout[1] = null;
         forwardedNameWidth = 0;
-        if (drawForwardedName && messageObject.isForwarded()) {
-            if (messageObject.messageOwner.fwd_from.channel_id != 0) {
-                currentForwardChannel = MessagesController.getInstance().getChat(messageObject.messageOwner.fwd_from.channel_id);
-            }
-            if (messageObject.messageOwner.fwd_from.from_id != 0) {
-                currentForwardUser = MessagesController.getInstance().getUser(messageObject.messageOwner.fwd_from.from_id);
-            }
+        if( drawForwardedName && messageObject.isForwarded() && messageObject.messageOwner.fwd_from!=null )
+        {
+            currentForwardNameString = messageObject.messageOwner.fwd_from.m_name;
 
-            if (currentForwardUser != null || currentForwardChannel != null) {
-                if (currentForwardChannel != null) {
-                    if (currentForwardUser != null) {
-                        currentForwardNameString = String.format("%s (%s)", currentForwardChannel.title, UserObject.getUserName(currentForwardUser));
-                    } else {
-                        currentForwardNameString = currentForwardChannel.title;
-                    }
-                } else if (currentForwardUser != null) {
-                    currentForwardNameString = UserObject.getUserName(currentForwardUser);
-                }
-
-                forwardedNameWidth = getMaxNameWidth();
-                int fromWidth = (int) Math.ceil(forwardNamePaint.measureText(LocaleController.getString("From", R.string.From) + " "));
-                CharSequence name = TextUtils.ellipsize(currentForwardNameString.replace('\n', ' '), replyNamePaint, forwardedNameWidth - fromWidth - viaWidth, TextUtils.TruncateAt.END);
-                CharSequence lastLine;
-                if (viaString != null) {
-                    viaNameWidth = (int) Math.ceil(forwardNamePaint.measureText(LocaleController.getString("From", R.string.From) + " " + name));
-                    lastLine = replaceTags(String.format("%s <b>%s</b> via <b>%s</b>", LocaleController.getString("From", R.string.From), name, viaUsername));
-                } else {
-                    lastLine = replaceTags(String.format("%s <b>%s</b>", LocaleController.getString("From", R.string.From), name));
-                }
-                lastLine = TextUtils.ellipsize(lastLine, forwardNamePaint, forwardedNameWidth, TextUtils.TruncateAt.END);
-                try {
-                    forwardedNameLayout[1] = new StaticLayout(lastLine, forwardNamePaint, forwardedNameWidth + dp(2), Layout.Alignment.ALIGN_NORMAL, 1.0f, 0.0f, false);
-                    lastLine = TextUtils.ellipsize(replaceTags(LocaleController.getString("ForwardedMessage", R.string.ForwardedMessage)), forwardNamePaint, forwardedNameWidth, TextUtils.TruncateAt.END);
-                    forwardedNameLayout[0] = new StaticLayout(lastLine, forwardNamePaint, forwardedNameWidth + dp(2), Layout.Alignment.ALIGN_NORMAL, 1.0f, 0.0f, false);
-                    forwardedNameWidth = Math.max((int) Math.ceil(forwardedNameLayout[0].getLineWidth(0)), (int) Math.ceil(forwardedNameLayout[1].getLineWidth(0)));
-                    forwardNameOffsetX[0] = forwardedNameLayout[0].getLineLeft(0);
-                    forwardNameOffsetX[1] = forwardedNameLayout[1].getLineLeft(0);
-                    namesOffset += dp(36);
-                } catch (Exception e) {
-                    FileLog.e("messenger", e);
-                }
+            forwardedNameWidth = getMaxNameWidth();
+            int fromWidth = (int) Math.ceil(forwardNamePaint.measureText(LocaleController.getString("From", R.string.From) + " "));
+            CharSequence name = TextUtils.ellipsize(currentForwardNameString.replace('\n', ' '), replyNamePaint, forwardedNameWidth - fromWidth - viaWidth, TextUtils.TruncateAt.END);
+            CharSequence lastLine;
+            if (viaString != null) {
+                viaNameWidth = (int) Math.ceil(forwardNamePaint.measureText(LocaleController.getString("From", R.string.From) + " " + name));
+                lastLine = replaceTags(String.format("%s <b>%s</b> via <b>%s</b>", LocaleController.getString("From", R.string.From), name, viaUsername));
+            } else {
+                lastLine = replaceTags(String.format("%s <b>%s</b>", LocaleController.getString("From", R.string.From), name));
+            }
+            lastLine = TextUtils.ellipsize(lastLine, forwardNamePaint, forwardedNameWidth, TextUtils.TruncateAt.END);
+            try {
+                forwardedNameLayout[1] = new StaticLayout(lastLine, forwardNamePaint, forwardedNameWidth + dp(2), Layout.Alignment.ALIGN_NORMAL, 1.0f, 0.0f, false);
+                lastLine = TextUtils.ellipsize(replaceTags(LocaleController.getString("ForwardedMessage", R.string.ForwardedMessage)), forwardNamePaint, forwardedNameWidth, TextUtils.TruncateAt.END);
+                forwardedNameLayout[0] = new StaticLayout(lastLine, forwardNamePaint, forwardedNameWidth + dp(2), Layout.Alignment.ALIGN_NORMAL, 1.0f, 0.0f, false);
+                forwardedNameWidth = Math.max((int) Math.ceil(forwardedNameLayout[0].getLineWidth(0)), (int) Math.ceil(forwardedNameLayout[1].getLineWidth(0)));
+                forwardNameOffsetX[0] = forwardedNameLayout[0].getLineLeft(0);
+                forwardNameOffsetX[1] = forwardedNameLayout[1].getLineLeft(0);
+                namesOffset += dp(36);
+            } catch (Exception e) {
+                FileLog.e("messenger", e);
             }
         }
 
