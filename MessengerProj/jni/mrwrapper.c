@@ -82,7 +82,7 @@ static void s_log_callback_(int type, const char* msg)
 }
 
 
-/* globl stuff */
+/* global stuff */
 
 static JavaVM*   s_jvm = NULL;
 static jclass    s_MrMailbox_class = NULL;
@@ -137,25 +137,29 @@ static jintArray carray2jintArray_n_carray_free(JNIEnv *env, const carray* ca)
 }
 
 
-static int* jintArray2uint32Pointer(JNIEnv* env, jintArray ja, int* icnt)
+static uint32_t* jintArray2uint32Pointer(JNIEnv* env, jintArray ja, int* ret_icnt)
 {
-	uint32_t*   ret  = NULL;
-	const jint* temp;
-	int         i;
-	if( env && ja && icnt ) {
-		temp  = (*env)->GetIntArrayElements(env, ja, NULL);
-		*icnt = (*env)->GetArrayLength(env, ja);
-		if( temp && *icnt > 0 ) {
-			ret = calloc(icnt, sizeof(uint32_t));
-			if( ret ) {
-				for( i = 0; i < icnt; i++ ) {
-					ret[i] = (uint32_t)temp[i];
+	uint32_t* ret = NULL;
+	if( env && ja && ret_icnt )
+	{
+		int i, icnt  = (*env)->GetArrayLength(env, ja);
+		if( icnt > 0 )
+		{
+			const jint* temp = (*env)->GetIntArrayElements(env, ja, NULL);
+			if( temp )
+			{
+				ret = calloc(icnt, sizeof(uint32_t));
+				if( ret )
+				{
+					for( i = 0; i < icnt; i++ ) {
+						ret[i] = (uint32_t)temp[i];
+					}
+					*ret_icnt = icnt;
 				}
+				(*env)->ReleaseIntArrayElements(env, ja, temp, 0);
 			}
-			(*env)->ReleaseIntArrayElements(env, ja, temp, 0);
 		}
 	}
-
 	return ret;
 }
 
@@ -433,7 +437,7 @@ JNIEXPORT void Java_com_b44t_messenger_MrMailbox_deleteMsg(JNIEnv *env, jclass c
 JNIEXPORT void Java_com_b44t_messenger_MrMailbox_forwardMsgs(JNIEnv *env, jclass cls, jintArray msg_ids, jint chat_id)
 {
 	int msg_ids_cnt;
-	const int* msg_ids_ptr = jintArray2uint32Pointer(env, msg_ids, &msg_ids_cnt);
+	const uint32_t* msg_ids_ptr = jintArray2uint32Pointer(env, msg_ids, &msg_ids_cnt);
 		mrmailbox_forward_msgs(get_mrmailbox_t(env, cls), msg_ids_ptr, msg_ids_cnt, chat_id); 
 	free(msg_ids_ptr);
 }

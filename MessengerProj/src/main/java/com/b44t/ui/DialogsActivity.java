@@ -134,7 +134,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
         if (getArguments() != null) {
             onlySelect = arguments.getBoolean("onlySelect", false);
             onlySelectTitle = arguments.getString("onlySelectTitle");
-            if( onlySelectTitle.isEmpty()) {
+            if( onlySelectTitle==null || onlySelectTitle.isEmpty()) {
                 onlySelectTitle = LocaleController.getString("SelectChat", R.string.SelectChat);
             }
             selectAlertString = arguments.getString("selectAlertString");

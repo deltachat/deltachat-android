@@ -2586,19 +2586,36 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
     }
 
     @Override
-    public void didSelectDialog(DialogsActivity dialogsFragment, long chat_id, boolean param)
+    public void didSelectDialog(DialogsActivity dialogsFragment, long fwd_chat_id, boolean param)
     {
-        Toast.makeText(getParentActivity(), LocaleController.getString("NotYetImplemented", R.string.NotYetImplemented), Toast.LENGTH_SHORT).show();
+        if( selectedMessagesIds.size()>0) {
+            int ids[] = new int[selectedMessagesIds.size()], i = 0;
+            for (HashMap.Entry<Integer, Integer> entry : selectedMessagesIds.entrySet()) {
+                ids[i++] = entry.getKey();
+            }
+            MrMailbox.forwardMsgs(ids, (int)fwd_chat_id);
+        }
 
+        if( fwd_chat_id == dialog_id ) {
+            dialogsFragment.finishFragment(true);
+            actionBar.hideActionMode();
+            updateVisibleRows();
+        }
+        else {
+            Bundle args = new Bundle();
+            args.putInt("chat_id", (int)fwd_chat_id);
+            ChatActivity fragment = new ChatActivity(args);
+            if( presentFragment(fragment, true /*remove last*/) ) {
+                if (!AndroidUtilities.isTablet()) {
+                    removeSelfFromStack();
+                }
+            }
+            else {
+                dialogsFragment.finishFragment(false);
+            }
+        }
 
-        //MrMailbox.forwardMsg(selectedMessageIds, chat_id);
-
-        actionBar.hideActionMode();
-        updateVisibleRows();
-
-        dialogsFragment.finishFragment(true);
-
-        /*
+       /*
         if (dialog_id != 0 && (forwaringMessage != null || !selectedMessagesIds.isEmpty() )) {
             if (forwaringMessage != null) {
                 forwaringMessage = null;
