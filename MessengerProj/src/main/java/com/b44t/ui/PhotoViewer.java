@@ -1288,9 +1288,12 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
         menuItem.addSubItem(gallery_menu_openin, str, 0);
         menuItem.addSubItem(gallery_menu_save, LocaleController.getString("SaveToGallery", R.string.SaveToGallery), 0);
         //menuItem.addSubItem(gallery_menu_showall, LocaleController.getString("ShowAllMedia", R.string.ShowAllMedia), 0);
-        menuItem.addSubItem(gallery_menu_share, LocaleController.getString("ShareFile", R.string.ShareFile), 0);
-        menuItem.addSubItem(gallery_menu_forward, LocaleController.getString("Forward", R.string.Forward), 0);
-        menuItem.addSubItem(gallery_menu_delete, LocaleController.getString("Delete", R.string.Delete), 0);
+
+        // the following 3 options are disabled for the moment, we'll add them if we have the time (bp)
+        // (as a replacement, you can use "save to gallery" for sharing or the options from the chat for forwarding/delete)
+        //menuItem.addSubItem(gallery_menu_share, LocaleController.getString("ShareFile", R.string.ShareFile), 0);
+        //menuItem.addSubItem(gallery_menu_forward, LocaleController.getString("Forward", R.string.Forward), 0);
+        //menuItem.addSubItem(gallery_menu_delete, LocaleController.getString("Delete", R.string.Delete), 0);
 
         //captionDoneItem = menu.addItemWithWidth(gallery_menu_caption_done, R.drawable.ic_done, AndroidUtilities.dp(56));
         //captionItem = menu.addItemWithWidth(gallery_menu_caption, R.drawable.photo_text, AndroidUtilities.dp(56));

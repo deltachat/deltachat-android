@@ -33,10 +33,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Point;
-import android.graphics.drawable.BitmapDrawable;
 import android.media.AudioManager;
 import android.media.SoundPool;
 import android.net.Uri;
@@ -47,7 +44,6 @@ import android.provider.Settings;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.NotificationManagerCompat;
 import android.support.v4.app.RemoteInput;
-import android.util.SparseArray;
 
 import com.b44t.ui.ActionBar.Theme;
 import com.b44t.ui.LaunchActivity;
@@ -77,9 +73,7 @@ public class NotificationsController {
     private int total_unread_count = 0;
     private int personal_count = 0;
     private boolean notifyCheck = false;
-    private int lastOnlineFromOtherDevice = 0;
     private boolean inChatSoundEnabled = true;
-    private int lastBadgeCount;
     private String launcherClassName;
 
     private Runnable notificationDelayRunnable;
@@ -90,10 +84,8 @@ public class NotificationsController {
     private SoundPool soundPool;
     private int soundIn;
     private int soundOut;
-    private int soundRecord;
     private boolean soundInLoaded;
     private boolean soundOutLoaded;
-    private boolean soundRecordLoaded;
     protected AudioManager audioManager;
     private AlarmManager alarmManager;
 
@@ -154,6 +146,7 @@ public class NotificationsController {
         };
     }
 
+    /*
     public void cleanup() {
         popupMessages.clear();
         notificationsQueue.postRunnable(new Runnable() {
@@ -185,6 +178,7 @@ public class NotificationsController {
             }
         });
     }
+    */
 
     public void setInChatSoundEnabled(boolean value) {
         inChatSoundEnabled = value;
@@ -198,18 +192,6 @@ public class NotificationsController {
             }
         });
     }
-
-    /*
-    public void setLastOnlineFromOtherDevice(final int time) {
-        notificationsQueue.postRunnable(new Runnable() {
-            @Override
-            public void run() {
-                FileLog.e("messenger", "set last online from other device = " + time);
-                lastOnlineFromOtherDevice = time;
-            }
-        });
-    }
-    */
 
     /*
     public void removeNotificationsForDialog(long did) {
@@ -747,6 +729,7 @@ public class NotificationsController {
         setBadge(enabled ? total_unread_count : 0);
     }
 
+    private int lastBadgeCount = -1;
     private void setBadge(final int count) {
 
         notificationsQueue.postRunnable(new Runnable() {
@@ -882,12 +865,14 @@ public class NotificationsController {
                 notificationManager.cancel(entry.getValue());
             }
             wearNotificationsIds.clear();
-            AndroidUtilities.runOnUIThread(new Runnable() {
+            /*AndroidUtilities.runOnUIThread(new Runnable() {
                 @Override
                 public void run() {
                     NotificationCenter.getInstance().postNotificationName(NotificationCenter.pushMessagesUpdated);
                 }
-            });
+            });*/
+            total_unread_count = 0;
+            setBadge(0);
         } catch (Exception e) {
             FileLog.e("messenger", e);
         }
