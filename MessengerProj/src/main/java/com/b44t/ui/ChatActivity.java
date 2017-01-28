@@ -2508,13 +2508,14 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
 
-                ArrayList<Integer> ids = new ArrayList<>(selectedMessagesIds.keySet());
-                if( ids.size()>0) {
+                ArrayList<Integer> ids_list = new ArrayList<>(selectedMessagesIds.keySet());
+                if( ids_list.size()>0) {
+                    int ids_arr[] = new int[selectedMessagesIds.size()], j = 0;
                     for (HashMap.Entry<Integer, Integer> entry : selectedMessagesIds.entrySet()) {
-                        Integer id_to_del = entry.getKey();
-                        MrMailbox.deleteMsg(id_to_del);
+                        ids_arr[j++] = entry.getKey();
                     }
-                    NotificationCenter.getInstance().postNotificationName(NotificationCenter.messagesDeleted, ids, 0);
+                    MrMailbox.deleteMsgs(ids_arr);
+                    NotificationCenter.getInstance().postNotificationName(NotificationCenter.messagesDeleted, ids_list, 0);
                 }
 
                 actionBar.hideActionMode();

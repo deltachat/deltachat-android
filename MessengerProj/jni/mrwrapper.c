@@ -428,9 +428,12 @@ JNIEXPORT jstring Java_com_b44t_messenger_MrMailbox_MrMailboxGetMsgInfo(JNIEnv *
 }
 
 
-JNIEXPORT void Java_com_b44t_messenger_MrMailbox_deleteMsg(JNIEnv *env, jclass cls, jint id)
+JNIEXPORT void Java_com_b44t_messenger_MrMailbox_deleteMsgs(JNIEnv *env, jclass cls, jintArray msg_ids)
 {
-	mrmailbox_delete_msg(get_mrmailbox_t(env, cls), id);
+	int msg_ids_cnt;
+	const uint32_t* msg_ids_ptr = jintArray2uint32Pointer(env, msg_ids, &msg_ids_cnt);
+		mrmailbox_delete_msgs(get_mrmailbox_t(env, cls), msg_ids_ptr, msg_ids_cnt);
+	free(msg_ids_ptr);
 }
 
 

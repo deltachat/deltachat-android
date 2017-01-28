@@ -173,7 +173,7 @@ public class MrMailbox {
         return MrMailboxGetMsgInfo(m_hMailbox, id);
     }
 
-    public native static void deleteMsg(int id);
+    public native static void deleteMsgs(int msg_ids[]);
     public native static void forwardMsgs(int msg_ids[], int chat_ids);
 
     private native static long    MrMailboxGetMsg            (long hMailbox, int id); // return hMsg which must be unref'd after usage
