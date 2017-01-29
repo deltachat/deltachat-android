@@ -13,11 +13,11 @@
     <string name="Yesterday">gestern</string>
     <string name="NoResult">Keine Ergebnisse</string>
     <string name="NoChats">Noch keine Chats.</string>
-    <string name="WaitingForNetwork">Warte auf Netzwerk...</string>
-    <string name="Connecting">Verbinde…</string>
-    <string name="Updating">Aktualisiere…</string>
+    <string name="WaitingForNetwork">Warte auf Netzwerk …</string>
+    <string name="Connecting">Verbinde …</string>
+    <string name="Updating">Aktualisiere …</string>
     <string name="DeleteChat">Chat löschen</string>
-    <string name="SelectChat">Chat auswählen ...</string>
+    <string name="SelectChat">Chat auswählen …</string>
     <string name="Search">Suche</string>
     <string name="MuteNotifications">Stummschalten</string>
     <string name="MuteFor">Stumm für %1$s</string>
@@ -34,7 +34,7 @@
     <string name="FreeOfTotal">Freier Speicher: %1$s von %2$s</string>
     <string name="UnknownError">Unbekannter Fehler</string>
     <string name="AccessError">Zugriffsfehler</string>
-    <string name="NoFiles">Noch keine Dateien…</string>
+    <string name="NoFiles">Noch keine Dateien …</string>
     <string name="FileUploadLimit">Die Datei darf nicht größer als %1$s sein</string>
     <string name="NotMounted">Speicher nicht eingebunden</string>
     <string name="UsbActive">USB-Transfer aktiv</string>
@@ -61,11 +61,11 @@
     <string name="SaveToMusic">Musik speichern</string>
     <string name="ShareFile">Teilen</string>
     <string name="UnsupportedAttachment">Nicht unterstützte Datei</string>
-    <string name="OpenInBrowser">ÖFFNEN MIT...</string>
+    <string name="OpenInBrowser">ÖFFNEN MIT …</string>
     <string name="SendItems">%1$s senden</string>
     <string name="OpenUrlAlert">URL %1$s öffnen?</string>
     <string name="MoreInfo">Mehr Infos</string>
-    <string name="ShareSendTo">Sende an...</string>
+    <string name="ShareSendTo">Sende an …</string>
     <string name="ClearRecentEmoji">Zuletzt benutzte Emoji leeren?</string>
     <string name="AddShortcut">Auf Startbildschirm platzieren</string>
     <string name="ShortcutAdded">Widget zum Startbildschirm hinzugefügt</string>
@@ -81,7 +81,7 @@
     <string name="LastSeen">zul. online</string>
     <string name="LastSeenDate">zul. online</string>
     <!--group create view-->
-    <string name="SendMessageTo">Sende Nachricht an…</string>
+    <string name="SendMessageTo">Sende Nachricht an …</string>
     <string name="EnterGroupNamePlaceholder">Gruppenname</string>
     <string name="ShareLink">Link teilen</string>
     <!--group info view-->
@@ -247,7 +247,7 @@
     <string name="ClearButton">Löschen</string>
     <string name="PickerPhotos">Bilder</string>
     <string name="PickerVideo">Video</string>
-    <string name="AddCaption">Beschriftung...</string>
+    <string name="AddCaption">Beschriftung …</string>
     <string name="PhotoCaption">Bildbeschriftung</string>
     <string name="VideoCaption">Videobeschriftung</string>
     <string name="Caption">Beschriftung</string>
@@ -259,7 +259,7 @@
     <string name="EditVideo">Video bearbeiten</string>
     <string name="OriginalVideo">Originalvideo</string>
     <string name="EditedVideo">Bearbeitetes Video</string>
-    <string name="SendingVideo">Sende Video...</string>
+    <string name="SendingVideo">Sende Video …</string>
     <string name="CompressVideo">Video komprimieren</string>
     <!--button titles-->
     <string name="Next">Weiter</string>
@@ -293,7 +293,7 @@
     <string name="AttachAudio">Sprachnachricht</string>
     <string name="FromSelf">Ich</string>
     <!--Alert messages-->
-    <string name="Loading">Lädt…</string>
+    <string name="Loading">Lädt …</string>
     <string name="NoPlayerInstalled">Du hast keinen Videoplayer. Bitte installiere einen um fortzufahren.</string>
     <string name="NoHandleAppInstalled">Du hast keine Applikationen, die den Dateityp \'%1$s\' öffnen könnten. Bitte installiere eine entsprechende Anwendung um fortzufahren.</string>
     <string name="AddToTheGroupTitle">%1$s dem Chat %2$s hinzufügen?</string>
@@ -521,10 +521,10 @@
     <string name="ContactDeleted">Benutzer gelöscht.</string>
     <string name="ContactCreated">Benutzer angelegt.</string>
     <string name="ViewProfile">Profil anzeigen</string>
-    <string name="OneMomentPlease">Einen Moment, bitte...</string>
+    <string name="OneMomentPlease">Einen Moment, bitte …</string>
     <string name="NoChatsHelp">Unten auf das Plussymbol für die erste Chatnachricht tippen; der Menüknopf öffnet die weiteren Optionen.</string>
     <string name="CannotDeleteChat">Kann Chat nicht löschen</string>
-    <string name="ConfiguringAccount">Konto konfigurieren...</string>
+    <string name="ConfiguringAccount">Konto konfigurieren …</string>
     <string name="InviteMenuEntry">Einladungen versenden</string>
     <string name="InviteText">Ich verwende nun auch den Delta Chat Messenger - %1$s - und bin dort unter %2$s erreichbar.</string>
     <string name="AdvancedSettings">Fortgeschrittene Einstellungen</string>
@@ -548,5 +548,5 @@
     <string name="E2EManagePrivateKeys">Private Schlüssel verwalten</string>
     <string name="E2ECompareKeys">Schlüssel vergleichen</string>
     <string name="ResetUserKey">Benutzerschlüssel zurücksetzen</string>
-    <string name="ForwardToTitle">Weiterleiten an ...</string>
+    <string name="ForwardToTitle">Weiterleiten an …</string>
 </resources>
