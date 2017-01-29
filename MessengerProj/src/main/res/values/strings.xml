@@ -141,7 +141,7 @@
     <string name="NotificationsServiceConnection">Background connection</string>
     <string name="NotificationsServiceConnectionInfo">Keep a low impact background connection to receive notifications. Enable for reliable notifications.</string>
     <string name="LedColor">LED color</string>
-    <string name="BadgeNumber">Show count on icon</string>
+    <string name="BadgeNumber">Show count on icon if possible</string>
     <string name="Short">Short</string>
     <string name="Long">Long</string>
     <string name="SystemDefault">System default</string>

@@ -141,7 +141,7 @@
     <string name="NotificationsServiceConnection">Hintergrundverbindung</string>
     <string name="NotificationsServiceConnectionInfo">Nutzt eine batterieschonende Hintergrundverbindung, um Benachrichtigungen zu gewährleisten.</string>
     <string name="LedColor">LED-Farbe</string>
-    <string name="BadgeNumber">Anzahl auf Icon anzeigen</string>
+    <string name="BadgeNumber">Anzahl auf Icon anzeigen, wenn möglich</string>
     <string name="Short">Kurz</string>
     <string name="Long">Lang</string>
     <string name="SystemDefault">Systemvorgabe</string>
