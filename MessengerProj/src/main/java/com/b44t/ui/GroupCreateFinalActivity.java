@@ -137,8 +137,11 @@ public class GroupCreateFinalActivity extends BaseFragment implements Notificati
                     }
                     int i, icnt = selectedContacts.size();
                     for( i = 0; i < icnt; i++ ) {
-                        if( 0==MrMailbox.addContactToChat(chat_id, selectedContacts.get(i)) ) {
-                            Toast.makeText(getParentActivity(), "ErrAddContact", Toast.LENGTH_LONG).show();
+                        int contact_id = selectedContacts.get(i);
+                        if( contact_id != MrContact.MR_CONTACT_ID_SELF ) {
+                            if (0 == MrMailbox.addContactToChat(chat_id, contact_id)) {
+                                Toast.makeText(getParentActivity(), "ErrAddContactToGroup", Toast.LENGTH_LONG).show();
+                            }
                         }
                     }
 
