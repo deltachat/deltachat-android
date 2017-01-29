@@ -193,6 +193,7 @@
     <string name="EnterYourPasscode">Enter your passcode</string>
     <string name="ReEnterYourPasscode">Re-enter your new passcode</string>
     <string name="PasscodeDoNotMatch">Passcodes do not match</string>
+    <string name="AutoLock">Autolock</string>
     <string name="AutoLockInfo">Require passcode if away for a time.</string>
     <string name="AutoLockInTime">in %1$s</string>
     <string name="UnlockFingerprint">Unlock with Fingerprint</string>
