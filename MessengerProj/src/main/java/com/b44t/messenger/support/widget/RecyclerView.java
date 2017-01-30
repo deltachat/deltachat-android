@@ -7538,6 +7538,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
                     resultMode = MeasureSpec.AT_MOST;
                 }
             }
+            //noinspection WrongConstant
             return MeasureSpec.makeMeasureSpec(resultSize, resultMode);
         }
 

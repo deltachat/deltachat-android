@@ -13,11 +13,11 @@
     <string name="Yesterday">ieri</string>
     <string name="NoResult">Nessun risultato</string>
     <string name="NoChats">Ancora nessuna chat.</string>
-    <string name="WaitingForNetwork">Attendo la rete...</string>
+    <string name="WaitingForNetwork">Attendo la rete…</string>
     <string name="Connecting">Connetto…</string>
     <string name="Updating">Aggiorno…</string>
     <string name="DeleteChat">Elimina chat</string>
-    <string name="SelectChat">Seleziona chat ...</string>
+    <string name="SelectChat">Seleziona chat …</string>
     <string name="Search">Cerca</string>
     <string name="MuteNotifications">Silenzia notifiche</string>
     <string name="MuteFor">Silenzia per %1$s</string>
@@ -34,7 +34,7 @@
     <string name="FreeOfTotal">Liberi %1$s di %2$s</string>
     <string name="UnknownError">Errore sconosciuto</string>
     <string name="AccessError">Errore durante l\'accesso</string>
-    <string name="NoFiles">Ancora nessun file...</string>
+    <string name="NoFiles">Ancora nessun file…</string>
     <string name="FileUploadLimit">La dimensione del file non dovrebbe superare i %1$s</string>
     <string name="NotMounted">Archiviazione non montata</string>
     <string name="UsbActive">Trasferimento USB attivo</string>
@@ -61,11 +61,11 @@
     <string name="SaveToMusic">Salva nella musica</string>
     <string name="ShareFile">Condividi</string>
     <string name="UnsupportedAttachment">Allegato non supportato</string>
-    <string name="OpenInBrowser">APRI IN...</string>
+    <string name="OpenInBrowser">APRI IN…</string>
     <string name="SendItems">Invia %1$s</string>
     <string name="OpenUrlAlert">Aprire url %1$s?</string>
     <string name="MoreInfo">Maggiori info</string>
-    <string name="ShareSendTo">Invia a...</string>
+    <string name="ShareSendTo">Invia a…</string>
     <string name="ClearRecentEmoji">Cancellare le emoji recenti?</string>
     <string name="AddShortcut">Aggiungi scorciatoia</string>
     <string name="ShortcutAdded">Scorciatoia aggiunta alla schermata home</string>
@@ -81,7 +81,7 @@
     <string name="LastSeen">ultimo accesso</string>
     <string name="LastSeenDate">ultimo accesso</string>
     <!--group create view-->
-    <string name="SendMessageTo">Invia messaggio a...</string>
+    <string name="SendMessageTo">Invia messaggio a…</string>
     <string name="EnterGroupNamePlaceholder">Immetti il nome del gruppo</string>
     <string name="ShareLink">Condividi link</string>
     <!--group info view-->
@@ -247,7 +247,7 @@
     <string name="ClearButton">Cancella</string>
     <string name="PickerPhotos">Foto</string>
     <string name="PickerVideo">Video</string>
-    <string name="AddCaption">Aggiungi una didascalia...</string>
+    <string name="AddCaption">Aggiungi una didascalia…</string>
     <string name="PhotoCaption">Didascalia foto</string>
     <string name="VideoCaption">Didascalia video</string>
     <string name="Caption">Didascalia</string>
@@ -259,7 +259,7 @@
     <string name="EditVideo">Modifica video</string>
     <string name="OriginalVideo">Video originale</string>
     <string name="EditedVideo">Video modificato</string>
-    <string name="SendingVideo">Invio video...</string>
+    <string name="SendingVideo">Invio video…</string>
     <string name="CompressVideo">Comprimi video</string>
     <!--button titles-->
     <string name="Next">Avanti</string>
@@ -456,5 +456,5 @@
     <string name="Media">Media</string>
     <string name="SeachUser">Cerca</string>
     <string name="InviteMenuEntry">Invita amici</string>
-    <string name="ForwardToTitle">Seleziona chat ...</string>
+    <string name="ForwardToTitle">Seleziona chat …</string>
 </resources>

@@ -13,11 +13,11 @@
     <string name="Yesterday">ontem</string>
     <string name="NoResult">Nenhum resultado</string>
     <string name="NoChats">Ainda não há chats.</string>
-    <string name="WaitingForNetwork">Aguardando rede...</string>
-    <string name="Connecting">Conectando...</string>
-    <string name="Updating">Atualizando...</string>
+    <string name="WaitingForNetwork">Aguardando rede…</string>
+    <string name="Connecting">Conectando…</string>
+    <string name="Updating">Atualizando…</string>
     <string name="DeleteChat">Apagar conversa</string>
-    <string name="SelectChat">Selecione um Chat ...</string>
+    <string name="SelectChat">Selecione um Chat …</string>
     <string name="Search">Busca</string>
     <string name="MuteNotifications">Silenciar notificações</string>
     <string name="MuteFor">Silenciar por %1$s</string>
@@ -61,11 +61,11 @@
     <string name="SaveToMusic">Salvar em músicas</string>
     <string name="ShareFile">Compartilhar</string>
     <string name="UnsupportedAttachment">Anexo não suportado</string>
-    <string name="OpenInBrowser">ABRIR EM...</string>
+    <string name="OpenInBrowser">ABRIR EM…</string>
     <string name="SendItems">Enviar %1$s</string>
     <string name="OpenUrlAlert">Abrir URL em %1$s?</string>
     <string name="MoreInfo">Mais informações</string>
-    <string name="ShareSendTo">Enviar para...</string>
+    <string name="ShareSendTo">Enviar para…</string>
     <string name="ClearRecentEmoji">Limpar emojis recentes?</string>
     <string name="AddShortcut">Adicionar atalho</string>
     <string name="ShortcutAdded">Atalho adicionado à tela de início</string>
@@ -81,7 +81,7 @@
     <string name="LastSeen">visto</string>
     <string name="LastSeenDate">visto</string>
     <!--group create view-->
-    <string name="SendMessageTo">Enviar mensagem para...</string>
+    <string name="SendMessageTo">Enviar mensagem para…</string>
     <string name="EnterGroupNamePlaceholder">Digite o nome do grupo</string>
     <string name="ShareLink">Compartilhar Link</string>
     <!--group info view-->
@@ -247,7 +247,7 @@
     <string name="ClearButton">Limpar</string>
     <string name="PickerPhotos">Fotos</string>
     <string name="PickerVideo">Vídeo</string>
-    <string name="AddCaption">Adicionar legenda...</string>
+    <string name="AddCaption">Adicionar legenda…</string>
     <string name="PhotoCaption">Legenda da Foto</string>
     <string name="VideoCaption">Legenda do Vídeo</string>
     <string name="Caption">Legenda</string>
@@ -259,7 +259,7 @@
     <string name="EditVideo">Editar Vídeo</string>
     <string name="OriginalVideo">Vídeo Original</string>
     <string name="EditedVideo">Vídeo Editado</string>
-    <string name="SendingVideo">Enviando vídeo...</string>
+    <string name="SendingVideo">Enviando vídeo…</string>
     <string name="CompressVideo">Compactar Vídeo</string>
     <!--button titles-->
     <string name="Next">Próximo</string>
@@ -293,7 +293,7 @@
     <string name="AttachAudio">Mensagem de voz</string>
     <string name="FromSelf">Você</string>
     <!--Alert messages-->
-    <string name="Loading">Carregando...</string>
+    <string name="Loading">Carregando…</string>
     <string name="NoPlayerInstalled">Você não possui um reprodutor de vídeo, instale um para continuar</string>
     <string name="NoHandleAppInstalled">Você não possui um aplicativo que suporte o tipo de arquivo \'%1$s\', por favor instale um para continuar</string>
     <string name="AddToTheGroupTitle">Adcione %1$s ao chat %2$s?</string>
@@ -448,5 +448,5 @@
     <string name="Media">Mídias</string>
     <string name="SeachUser">Busca</string>
     <string name="InviteMenuEntry">Convidar Amigos</string>
-    <string name="ForwardToTitle">Selecione um Chat ...</string>
+    <string name="ForwardToTitle">Selecione um Chat …</string>
 </resources>

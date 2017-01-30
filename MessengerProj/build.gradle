@@ -42,6 +42,10 @@ android {
         targetCompatibility JavaVersion.VERSION_1_7
     }
 
+    lintOptions {
+        abortOnError false
+    }
+
     signingConfigs {
         debug {
             storeFile file("config/debug.keystore")

@@ -13,11 +13,11 @@
     <string name="Yesterday">yesterday</string>
     <string name="NoResult">No results.</string>
     <string name="NoChats">No chats yet.</string>
-    <string name="WaitingForNetwork">Waiting for network...</string>
-    <string name="Connecting">Connecting...</string>
-    <string name="Updating">Updating...</string>
+    <string name="WaitingForNetwork">Waiting for network …</string>
+    <string name="Connecting">Connecting …</string>
+    <string name="Updating">Updating …</string>
     <string name="DeleteChat">Delete chat</string>
-    <string name="SelectChat">Select chat ...</string>
+    <string name="SelectChat">Select chat …</string>
     <string name="Search">Search</string>
     <string name="MuteNotifications">Mute notifications</string>
     <string name="MuteFor">Mute for %1$s</string>
@@ -34,7 +34,7 @@
     <string name="FreeOfTotal">Free %1$s of %2$s</string>
     <string name="UnknownError">Unknown error</string>
     <string name="AccessError">Access error</string>
-    <string name="NoFiles">No files yet...</string>
+    <string name="NoFiles">No files yet …</string>
     <string name="FileUploadLimit">File size shouldn\'t be greater than %1$s</string>
     <string name="NotMounted">Storage not mounted</string>
     <string name="UsbActive">USB transfer active</string>
@@ -61,11 +61,11 @@
     <string name="SaveToMusic">Save to music</string>
     <string name="ShareFile">Share</string>
     <string name="UnsupportedAttachment">Unsupported attachment</string>
-    <string name="OpenInBrowser">OPEN IN...</string>
+    <string name="OpenInBrowser">OPEN IN …</string>
     <string name="SendItems">Send %1$s</string>
     <string name="OpenUrlAlert">Open url %1$s?</string>
     <string name="MoreInfo">More info</string>
-    <string name="ShareSendTo">Send to...</string>
+    <string name="ShareSendTo">Send to …</string>
     <string name="ClearRecentEmoji">Clear recent emoji?</string>
     <string name="AddShortcut">Add widget to home screen</string>
     <string name="ShortcutAdded">Widget added to home screen</string>
@@ -81,7 +81,7 @@
     <string name="LastSeen">last seen</string>
     <string name="LastSeenDate">last seen</string>
     <!--group create view-->
-    <string name="SendMessageTo">Send message to...</string>
+    <string name="SendMessageTo">Send message to …</string>
     <string name="EnterGroupNamePlaceholder">Enter group name</string>
     <string name="ShareLink">Share Link</string>
     <!--group info view-->
@@ -193,6 +193,7 @@
     <string name="EnterYourPasscode">Enter your passcode</string>
     <string name="ReEnterYourPasscode">Re-enter your new passcode</string>
     <string name="PasscodeDoNotMatch">Passcodes do not match</string>
+    <string name="AutoLock">Autolock</string>
     <string name="AutoLockInfo">Require passcode if away for a time.</string>
     <string name="AutoLockInTime">in %1$s</string>
     <string name="UnlockFingerprint">Unlock with Fingerprint</string>
@@ -246,7 +247,7 @@
     <string name="ClearButton">Clear</string>
     <string name="PickerPhotos">Photos</string>
     <string name="PickerVideo">Video</string>
-    <string name="AddCaption">Add a caption...</string>
+    <string name="AddCaption">Add a caption …</string>
     <string name="PhotoCaption">Photo Caption</string>
     <string name="VideoCaption">Video Caption</string>
     <string name="Caption">Caption</string>
@@ -258,7 +259,7 @@
     <string name="EditVideo">Edit Video</string>
     <string name="OriginalVideo">Original Video</string>
     <string name="EditedVideo">Edited Video</string>
-    <string name="SendingVideo">Sending video...</string>
+    <string name="SendingVideo">Sending video …</string>
     <string name="CompressVideo">Compress Video</string>
     <!--button titles-->
     <string name="Next">Next</string>
@@ -292,7 +293,7 @@
     <string name="AttachAudio">Voice message</string>
     <string name="FromSelf">Me</string>
     <!--Alert messages-->
-    <string name="Loading">Loading...</string>
+    <string name="Loading">Loading …</string>
     <string name="NoPlayerInstalled">You don\'t have a video player, please install one to continue</string>
     <string name="NoHandleAppInstalled">You don\'t have applications that can handle the file type \'%1$s\', please install one to continue</string>
     <string name="AddToTheGroupTitle">Add %1$s to the chat %2$s?</string>
@@ -519,10 +520,10 @@
     <string name="ContactDeleted">User deleted.</string>
     <string name="ContactCreated">User created.</string>
     <string name="ViewProfile">View profile</string>
-    <string name="OneMomentPlease">One moment, please...</string>
+    <string name="OneMomentPlease">One moment, please …</string>
     <string name="CannotDeleteChat">Cannot delete chat.</string>
     <string name="NoChatsHelp">Start messaging by pressing the new chat button in the bottom right corner or tap the menu button for more options.</string>
-    <string name="ConfiguringAccount">Configuring account...</string>
+    <string name="ConfiguringAccount">Configuring account …</string>
     <string name="CannotConnect">Cannot connect, please check the configuration.</string>
     <string name="Intro7Message"><![CDATA[<b>Delta Chat</b>]]> is safe for business use, compatible and standards-based.</string>
     <string name="InviteMenuEntry">Send invitations</string>
@@ -548,5 +549,5 @@
     <string name="E2EManagePrivateKeys">Manage private keys</string>
     <string name="E2ECompareKeys">Compare keys</string>
     <string name="ResetUserKey">Reset user\'s key</string>
-    <string name="ForwardToTitle">Forward to ...</string>
+    <string name="ForwardToTitle">Forward to …</string>
 </resources>
