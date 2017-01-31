@@ -1,0 +1,3 @@
+[submodule "MessengerProj/jni/messenger-backend"]
+	path = MessengerProj/jni/messenger-backend
+	url = https://github.com/r10s/messenger-backend.git
