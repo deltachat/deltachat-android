@@ -528,7 +528,7 @@
     <string name="InviteMenuEntry">Einladungen versenden</string>
     <string name="InviteText">Ich verwende nun auch den Delta Chat Messenger - %1$s - und bin dort unter %2$s erreichbar.</string>
     <string name="AdvancedSettings">Fortgeschrittene Einstellungen</string>
-    <string name="CannotConnect"></string>
+    <string name="CannotConnect">Verbindung mit dem Konto nicht möglich, bitte überprüfen Sie die Konfiguration.</string>
     <string name="AskResetNotifications">Alle Benachrichtigungseinstellungen und Töne dieser Seite und auch der einzelnen Chats zurücksetzen?</string>
     <string name="AttachFiles">Dateien anhängen</string>
     <string name="ErrGroupNameEmpty">Bitte einen Namen für die Gruppe eingeben.</string>
@@ -549,4 +549,5 @@
     <string name="E2ECompareKeys">Schlüssel vergleichen</string>
     <string name="ResetUserKey">Benutzerschlüssel zurücksetzen</string>
     <string name="ForwardToTitle">Weiterleiten an …</string>
+    <string name="Chats">Chats</string>
 </resources>
