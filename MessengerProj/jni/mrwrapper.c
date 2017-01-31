@@ -27,7 +27,7 @@
  
 #include <jni.h>
 #include <android/log.h>
-#include "../../../messenger-backend/src/mrmailbox.h"
+#include "messenger-backend/src/mrmailbox.h"
 
 
 #define CHAR_REF(a) \
