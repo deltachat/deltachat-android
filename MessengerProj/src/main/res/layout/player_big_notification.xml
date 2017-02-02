@@ -23,12 +23,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="top|left"
-            android:singleLine="true"
             android:textColor="#ffffffff"
             android:textSize="16dp"
             android:layout_marginLeft="12dp"
             android:layout_marginTop="4dp"
-            android:layout_marginRight="44dp"/>
+            android:layout_marginRight="44dp"
+            android:maxLines="1" />
 
         <ImageView
             android:id="@+id/player_close"
@@ -45,12 +45,12 @@
             android:id="@+id/player_author_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:singleLine="true"
             android:textColor="#ffc7c7c7"
             android:layout_marginTop="25dp"
             android:layout_marginLeft="12dp"
             android:layout_marginRight="44dp"
-            android:textSize="13dp" />
+            android:textSize="13dp"
+            android:maxLines="1" />
 
         <FrameLayout
             android:layout_height="1dp"
