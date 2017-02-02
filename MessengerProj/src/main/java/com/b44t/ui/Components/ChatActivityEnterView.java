@@ -815,7 +815,7 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
                     }
                     startedDraggingX = -1;
                     MediaController.getInstance().startRecording(dialog_id, replyingMessageObject);
-                    updateAudioRecordIntefrace();
+                    updateAudioRecordInterface();
                     audioSendButton.getParent().requestDisallowInterceptTouchEvent(true);
                     */
                 } else if (motionEvent.getAction() == MotionEvent.ACTION_UP || motionEvent.getAction() == MotionEvent.ACTION_CANCEL) {
@@ -824,14 +824,14 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
                     startedDraggingX = -1;
                     MediaController.getInstance().stopRecording(1);
                     recordingAudio = false;
-                    updateAudioRecordIntefrace();
+                    updateAudioRecordInterface();
                     */
                 } else if (motionEvent.getAction() == MotionEvent.ACTION_MOVE && recordingAudio) {
                     float x = motionEvent.getX();
                     if (x < -distCanMove) {
                         MediaController.getInstance().stopRecording(0);
                         recordingAudio = false;
-                        updateAudioRecordIntefrace();
+                        updateAudioRecordInterface();
                     }
 
                     x = x + audioSendButton.getX();
@@ -1524,7 +1524,7 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
         messageEditText.setLayoutParams(layoutParams);
     }
 
-    private void updateAudioRecordIntefrace() {
+    private void updateAudioRecordInterface() {
         if (recordingAudio) {
             if (audioInterfaceState == 1) {
                 return;
@@ -2069,12 +2069,12 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
             if (recordingAudio) {
                 MessagesController.getInstance().sendTyping(dialog_id, 2, 0);
                 recordingAudio = false;
-                updateAudioRecordIntefrace();
+                updateAudioRecordInterface();
             }
         } else if (id == NotificationCenter.recordStarted) {
             if (!recordingAudio) {
                 recordingAudio = true;
-                updateAudioRecordIntefrace();
+                updateAudioRecordInterface();
             }
         } else if (id == NotificationCenter.audioDidSent) {
             audioToSend = (TLRPC.TL_document) args[0];
