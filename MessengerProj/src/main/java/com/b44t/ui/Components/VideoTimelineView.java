@@ -42,7 +42,6 @@ import com.b44t.messenger.R;
 
 import java.util.ArrayList;
 
-@TargetApi(10)
 public class VideoTimelineView extends View {
 
     private long videoLength = 0;
