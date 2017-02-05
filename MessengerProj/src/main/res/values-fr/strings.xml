@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-
-
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <string name="AppName">Delta Chat</string>
     <string name="LanguageName">Français</string>
-    <string name="LanguageNameInEnglish" tools:keep="@string/LanguageNameInEnglish">French</string>
-    <string name="LanguageCode" tools:keep="@string/LanguageCode">fr</string>
+    <string name="LanguageNameInEnglish">French</string>
+    <string name="LanguageCode">fr</string>
     <!--chats view-->
     <string name="Settings">Paramètres</string>
     <string name="NewGroup">Nouveau groupe</string>
@@ -33,7 +31,7 @@
     <string name="SelectFile">Selectionner le fichier</string>
     <string name="FreeOfTotal">Free %1$s of %2$s</string>
     <string name="UnknownError">Erreur inconnue</string>
-    <string name="AccessError">Erreur d'accès</string>
+    <string name="AccessError">Erreur d\'accès</string>
     <string name="NoFiles">Aucun fichier pour le moment…</string>
     <string name="FileUploadLimit">La taille du fichier ne peut pas exéder %1$s</string>
     <string name="NotMounted">Stockage non monté</string>
@@ -179,7 +177,7 @@
     <string name="LocalCache">Autres fichiers</string>
     <string name="CacheEmpty">Vide</string>
     <string name="KeepMedia">Conserver les fichier média</string>
-    <string name="KeepMediaInfo">Les photos, vidéos et autres fichiers venant des conversations du cloud que vous n'avez <![CDATA[<b>pas</b>]]> consultés pendant cette période seront supprimés pour libérer de l\'espace.</string>
+    <string name="KeepMediaInfo">Les photos, vidéos et autres fichiers venant des conversations du cloud que vous n\'avez <![CDATA[<b>pas</b>]]> consultés pendant cette période seront supprimés pour libérer de l\'espace.</string>
     <string name="KeepMediaForever">Toujours</string>
     <!--passcode view-->
     <string name="Passcode">Verrouiller par mot de passe</string>
@@ -253,7 +251,7 @@
     <string name="Caption">Légende</string>
     <!--privacy settings-->
     <string name="PrivacySettings">Vie privée et sécurité</string>
-    <string name="PrivacyTitle" tools:keep="@string/PrivacyTitle">Vie privée</string>
+    <string name="PrivacyTitle">Vie privée</string>
     <string name="SecurityTitle">Securité</string>
     <!--edit video view-->
     <string name="EditVideo">Modifier la vidéo</string>
@@ -303,7 +301,7 @@
     <string name="SendMessagesTo">Envoyer les messages à <![CDATA[<b>]]>%1$s<![CDATA[</b>]]> ?</string>
     <string name="SendContactTo">Envoyer le contact à %1$s ?</string>
     <string name="AreYouSureDeleteAndExit">Êtes-vous sûr de vouloir quitter le groupe ? Vous ne recevrez plus de message de ce groupe.</string>
-    <string name="AreYouSureDeleteThisChat">Êtes-vous sûr de vouloir supprimer cette conversation ? La conversation n'apparaîtra plus dans la liste des conversations, mais les messages resteront sur le serveur.</string>
+    <string name="AreYouSureDeleteThisChat">Êtes-vous sûr de vouloir supprimer cette conversation ? La conversation n\'apparaîtra plus dans la liste des conversations, mais les messages resteront sur le serveur.</string>
     <string name="ShareYouLocationUnable">L\'application n\'a pas pu déterminer votre localisation actuelle</string>
     <string name="ShareYouLocationUnableManually">Choisir manuellement</string>
     <string name="AreYouSureBlockContact">Êtes-vous sûr de vouloir bloquer cet utilisateur ?</string>
@@ -331,7 +329,7 @@
     <string name="Intro4Message">Envoyer et recevez des messages, des photo, des vidéos, des messages audios et plus <![CDATA[<b>sans limite</b>]]>. Compatible multi-plateforme.</string>
 
     <string name="Intro5Headline">Libre</string>
-    <string name="Intro5Message"><![CDATA[<b>Delta Chat</b>]]> sera toujours libre.<![CDATA[<br/>]]>OpenSource. Pas de pub. Pas d'inscription.</string>
+    <string name="Intro5Message"><![CDATA[<b>Delta Chat</b>]]> sera toujours libre.<![CDATA[<br/>]]>OpenSource. Pas de pub. Pas d\'inscription.</string>
 
     <string name="Intro6Headline">Sûr</string>
     <string name="Intro6Message"><![CDATA[<b>Chiffré</b>]]> avec des algorithmes communs. Les messages restent sur vos serveurs.</string>
@@ -515,7 +513,7 @@
     <string name="Name" >Nom</string>
     <string name="EmailAddress">Adresse e-mail</string>
     <string name="MeAnd">Moi et</string>
-    <string name="CannotDeleteContact">Impossible de supprimer les contacts en cours d'utilisation, bloquez-les à la place.</string>
+    <string name="CannotDeleteContact">Impossible de supprimer les contacts en cours d\'utilisation, bloquez-les à la place.</string>
     <string name="BadEmailAddress">Mauvaise adresse e-mail.</string>
     <string name="ContactDeleted">Utilisateur supprimé.</string>
     <string name="ContactCreated">Utilisateur créé.</string>
