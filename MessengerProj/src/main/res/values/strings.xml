@@ -493,7 +493,7 @@
     <string name="OutboxHeadline">Outbox</string>
     <string name="BasicSettings">Basic settings</string>
     <string name="MyAccountExplain">For known e-mail providers, the following settings are determinated automatically.</string>
-    <string name="MyAccountExplain2" >Sometimes, IMAP/SMTP needs to be enabled in the e-mail web frontend.\n\nOn problems, ask your e-mail provider or your friends.</string>
+    <string name="MyAccountExplain2" >Sometimes, IMAP/SMTP needs to be enabled in the e-mail web frontend.\n\nOn problems, ask your e-mail-provider or your friends.</string>
     <string name="AccountNotConfigured">Account not configured</string>
     <string name="AboutThisProgram">About Delta Chat</string>
     <string name="NotSet">Not set</string>
