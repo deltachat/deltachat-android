@@ -82,7 +82,7 @@ android {
         }
     }
 
-    defaultConfig.versionCode = 14
+    defaultConfig.versionCode = 15
 
     sourceSets.main {
         jniLibs.srcDir 'libs'
@@ -133,7 +133,6 @@ android {
     defaultConfig {
         minSdkVersion 14 // 14: Android 4.0 Ice Cream Sandwich 2011 (Telegram default), 21: Android 5.0 Lollipop 2014 (recommended for InstantRun)
         targetSdkVersion 23
-        versionName "0.1.15"
+        versionName "0.1.16"
     }
 }
-
