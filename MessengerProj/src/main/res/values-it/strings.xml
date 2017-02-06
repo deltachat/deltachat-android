@@ -430,18 +430,6 @@
     <string name="Photos_few">%1$d foto</string>
     <string name="Photos_many">%1$d foto</string>
     <string name="Photos_other">%1$d foto</string>
-    <string name="LastSeenMinutes_zero">ultimo accesso %1$d minuti fa</string>
-    <string name="LastSeenMinutes_one">ultimo accesso %1$d minuto fa</string>
-    <string name="LastSeenMinutes_two">ultimo accesso %1$d minuti fa</string>
-    <string name="LastSeenMinutes_few">ultimo accesso %1$d minuti fa</string>
-    <string name="LastSeenMinutes_many">ultimo accesso %1$d minuti fa</string>
-    <string name="LastSeenMinutes_other">ultimo accesso %1$d minuti fa</string>
-    <string name="LastSeenHours_zero">ultimo accesso %1$d ore fa</string>
-    <string name="LastSeenHours_one">ultimo accesso %1$d ora fa</string>
-    <string name="LastSeenHours_two">ultimo accesso %1$d ore fa</string>
-    <string name="LastSeenHours_few">ultimo accesso %1$d ore fa</string>
-    <string name="LastSeenHours_many">ultimo accesso %1$d ore fa</string>
-    <string name="LastSeenHours_other">ultimo accesso %1$d ore fa</string>
     <!--date formatters-->
     <string name="formatterMonthYear">MMMM yyyy</string>
     <string name="formatterMonth">dd MMM</string>

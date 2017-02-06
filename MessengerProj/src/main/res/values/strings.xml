@@ -450,18 +450,6 @@
     <string name="Photos_few">%1$d photos</string>
     <string name="Photos_many">%1$d photos</string>
     <string name="Photos_other">%1$d photos</string>
-    <string name="LastSeenMinutes_zero">last seen %1$d minutes ago</string>
-    <string name="LastSeenMinutes_one">last seen %1$d minute ago</string>
-    <string name="LastSeenMinutes_two">last seen %1$d minutes ago</string>
-    <string name="LastSeenMinutes_few">last seen %1$d minutes ago</string>
-    <string name="LastSeenMinutes_many">last seen %1$d minutes ago</string>
-    <string name="LastSeenMinutes_other">last seen %1$d minutes ago</string>
-    <string name="LastSeenHours_zero">last seen %1$d hours ago</string>
-    <string name="LastSeenHours_one">last seen %1$d hour ago</string>
-    <string name="LastSeenHours_two">last seen %1$d hours ago</string>
-    <string name="LastSeenHours_few">last seen %1$d hours ago</string>
-    <string name="LastSeenHours_many">last seen %1$d hours ago</string>
-    <string name="LastSeenHours_other">last seen %1$d hours ago</string>
     <!--date formatters-->
     <string name="formatterMonthYear">MMMM yyyy</string>
     <string name="formatterMonth">MMM dd</string>

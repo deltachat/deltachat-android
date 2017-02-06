@@ -451,18 +451,6 @@
     <string name="Photos_few">%1$d Bilder</string>
     <string name="Photos_many">%1$d Bilder</string>
     <string name="Photos_other">%1$d Bilder</string>
-    <string name="LastSeenMinutes_zero">zul. online vor %1$d Minuten</string>
-    <string name="LastSeenMinutes_one">zul. online vor %1$d Minute</string>
-    <string name="LastSeenMinutes_two">zul. online vor %1$d Minuten</string>
-    <string name="LastSeenMinutes_few">zul. online vor %1$d Minuten</string>
-    <string name="LastSeenMinutes_many">zul. online vor %1$d Minuten</string>
-    <string name="LastSeenMinutes_other">zul. online vor %1$d Minuten</string>
-    <string name="LastSeenHours_zero">zul. online vor %1$d Stunden</string>
-    <string name="LastSeenHours_one">zul. online vor %1$d Stunde</string>
-    <string name="LastSeenHours_two">zul. online vor %1$d Stunden</string>
-    <string name="LastSeenHours_few">zul. online vor %1$d Stunden</string>
-    <string name="LastSeenHours_many">zul. online vor %1$d Stunden</string>
-    <string name="LastSeenHours_other">zul. online vor %1$d Stunden</string>
     <!--date formatters-->
     <string name="formatterMonthYear">MMMM yyyy</string>
     <string name="formatterMonth">d. MMM</string>

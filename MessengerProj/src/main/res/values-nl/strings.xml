@@ -422,18 +422,6 @@
     <string name="Photos_few">%1$d foto\'s</string>
     <string name="Photos_many">%1$d foto\'s</string>
     <string name="Photos_other">%1$d foto\'s</string>
-    <string name="LastSeenMinutes_zero">laatst gezien %1$d min geleden</string>
-    <string name="LastSeenMinutes_one">laatst gezien %1$d minuut geleden</string>
-    <string name="LastSeenMinutes_two">laatst gezien %1$d min geleden</string>
-    <string name="LastSeenMinutes_few">laatst gezien %1$d min geleden</string>
-    <string name="LastSeenMinutes_many">laatst gezien %1$d min geleden</string>
-    <string name="LastSeenMinutes_other">laatst gezien %1$d min geleden</string>
-    <string name="LastSeenHours_zero">laatst gezien %1$d uur geleden</string>
-    <string name="LastSeenHours_one">laatst gezien %1$d uur geleden</string>
-    <string name="LastSeenHours_two">laatst gezien %1$d uur geleden</string>
-    <string name="LastSeenHours_few">laatst gezien %1$d uur geleden</string>
-    <string name="LastSeenHours_many">laatst gezien %1$d uur geleden</string>
-    <string name="LastSeenHours_other">laatst gezien %1$d uur geleden</string>
     <!--date formatters-->
     <string name="formatterMonthYear">MMMM yyyy</string>
     <string name="formatterMonth">dd MMM</string>
