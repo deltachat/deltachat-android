@@ -367,12 +367,10 @@
     <string name="FromChats_many">de %1$d conversations</string>
     <string name="FromChats_other">de %1$d conversations</string>
 
-    <string name="Chats_zero">Aucune conversation</string>
-    <string name="Chats_one">%1$d conversation</string>
-    <string name="Chats_two">%1$d conversations</string>
-    <string name="Chats_few">%1$d conversations</string>
-    <string name="Chats_many">%1$d conversations</string>
-    <string name="Chats_other">%1$d conversations</string>
+    <plurals name="Chats">
+        <item quantity="one">%d conversation</item>
+        <item quantity="other">%d conversations</item>
+    </plurals>
 
     <string name="Seconds_zero">%1$d seconde</string>
     <string name="Seconds_one">%1$d seconde</string>

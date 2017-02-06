@@ -178,7 +178,7 @@ public class DialogsSearchAdapter extends RecyclerView.Adapter {
             case ROWTYPE_HEADLINE: {
                     GreySectionCell headlineCell = (GreySectionCell) viewHolder.itemView;
                     if (i == rowChatsHeadline) {
-                        headlineCell.setText(LocaleController.formatPluralString("Chats", m_chatlistCnt));
+                        headlineCell.setText(mContext.getResources().getQuantityString(R.plurals.Chats, m_chatlistCnt, m_chatlistCnt));
                     } else if (i == rowMsgsHeadline) {
                         headlineCell.setText(mContext.getResources().getQuantityString(R.plurals.messages, m_msgIds.length, m_msgIds.length));
                     }
