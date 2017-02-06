@@ -551,10 +551,6 @@ public class LocaleController {
         recreateFormatters();
     }
 
-    private void loadCurrentLocale() {
-        localeValues.clear();
-    }
-
     public static String getCurrentLanguageName() {
         return getString("LanguageName", R.string.LanguageName);
     }
