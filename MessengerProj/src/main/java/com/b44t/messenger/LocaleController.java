@@ -379,68 +379,6 @@ public class LocaleController {
         return result.toString();
     }
 
-    public boolean applyLanguageFile(File file) {
-        try {
-            HashMap<String, String> stringMap = getLocaleFileStrings(file);
-
-            String languageName = stringMap.get("LanguageName");
-            String languageNameInEnglish = stringMap.get("LanguageNameInEnglish");
-            String languageCode = stringMap.get("LanguageCode");
-
-            if (languageName != null && languageName.length() > 0 &&
-                    languageNameInEnglish != null && languageNameInEnglish.length() > 0 &&
-                    languageCode != null && languageCode.length() > 0) {
-
-                if (languageName.contains("&") || languageName.contains("|")) {
-                    return false;
-                }
-                if (languageNameInEnglish.contains("&") || languageNameInEnglish.contains("|")) {
-                    return false;
-                }
-                if (languageCode.contains("&") || languageCode.contains("|") || languageCode.contains("/") || languageCode.contains("\\")) {
-                    return false;
-                }
-
-                File finalFile = new File(ApplicationLoader.getFilesDirFixed(), languageCode + ".xml");
-                if (!AndroidUtilities.copyFile(file, finalFile)) {
-                    return false;
-                }
-
-                LocaleInfo localeInfo = languagesDict.get(languageCode);
-                if (localeInfo == null) {
-                    localeInfo = new LocaleInfo();
-                    localeInfo.name = languageName;
-                    localeInfo.nameEnglish = languageNameInEnglish;
-                    localeInfo.shortName = languageCode;
-
-                    localeInfo.pathToFile = finalFile.getAbsolutePath();
-                    sortedLanguages.add(localeInfo);
-                    languagesDict.put(localeInfo.shortName, localeInfo);
-                    otherLanguages.add(localeInfo);
-
-                    Collections.sort(sortedLanguages, new Comparator<LocaleInfo>() {
-                        @Override
-                        public int compare(LocaleController.LocaleInfo o, LocaleController.LocaleInfo o2) {
-                            if (o.shortName == null) {
-                                return -1;
-                            } else if (o2.shortName == null) {
-                                return 1;
-                            }
-                            return o.name.compareTo(o2.name);
-                        }
-                    });
-                    saveOtherLanguages();
-                }
-                localeValues = stringMap;
-                applyLanguage(localeInfo, true, true);
-                return true;
-            }
-        } catch (Exception e) {
-            FileLog.e("messenger", e);
-        }
-        return false;
-    }
-
     private void saveOtherLanguages() {
         SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("langconfig", Activity.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
