@@ -3198,7 +3198,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 else if (view instanceof ChatUnreadCell)
                 {
                     ChatUnreadCell unreadCell = (ChatUnreadCell) view;
-                    unreadCell.setText(LocaleController.formatPluralString("NewMessages", markerUnreadCount));
+                    unreadCell.setText(mContext.getResources().getQuantityString(R.plurals.NewMessages, markerUnreadCount, markerUnreadCount));
                 }
             }
         }

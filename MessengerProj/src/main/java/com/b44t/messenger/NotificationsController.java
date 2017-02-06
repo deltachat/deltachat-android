@@ -55,6 +55,8 @@ import java.util.List;
 
 public class NotificationsController {
 
+    private Context mContext;
+
     public static final String EXTRA_VOICE_REPLY = "extra_voice_reply";
 
     private DispatchQueue notificationsQueue = new DispatchQueue("notificationsQueue");
@@ -104,6 +106,7 @@ public class NotificationsController {
     }
 
     public NotificationsController() {
+        mContext = ApplicationLoader.applicationContext;
         notificationManager = NotificationManagerCompat.from(ApplicationLoader.applicationContext);
         SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("Notifications", Context.MODE_PRIVATE);
         inChatSoundEnabled = preferences.getBoolean("EnableInChatSound", true);
@@ -1117,10 +1120,10 @@ public class NotificationsController {
 
             String detailText;
             if (pushDialogs.size() == 1) {
-                detailText = LocaleController.formatPluralString("NewMessages", total_unread_count);
+                detailText = mContext.getResources().getQuantityString(R.plurals.NewMessages, total_unread_count, total_unread_count);
             } else {
                 detailText = LocaleController.formatString("NotificationMessagesPeopleDisplayOrder", R.string.NotificationMessagesPeopleDisplayOrder,
-                        LocaleController.formatPluralString("NewMessages", total_unread_count),
+                        mContext.getResources().getQuantityString(R.plurals.NewMessages, total_unread_count, total_unread_count),
                         LocaleController.formatPluralString("FromChats", pushDialogs.size()));
             }
 

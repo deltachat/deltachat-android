@@ -344,12 +344,10 @@
     <string name="Members_few">%1$d membres</string>
     <string name="Members_many">%1$d membres</string>
     <string name="Members_other">%1$d membres</string>
-    <string name="NewMessages_zero">aucun nouveau message</string>
-    <string name="NewMessages_one">%1$d nouveau message</string>
-    <string name="NewMessages_two">%1$d nouveaux messages</string>
-    <string name="NewMessages_few">%1$d nouveaux messages</string>
-    <string name="NewMessages_many">%1$d nouveaux messages</string>
-    <string name="NewMessages_other">%1$d nouveau messages</string>
+    <plurals name="NewMessages">
+        <item quantity="one">%d nouveau message</item>
+        <item quantity="other">%d nouveaux messages</item>
+    </plurals>
     <plurals name="messages">
         <item quantity="one">%d message</item>
         <item quantity="other">%d messages</item>
