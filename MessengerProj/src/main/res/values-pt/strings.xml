@@ -78,8 +78,6 @@
     <string name="NoContacts">Ainda não há contatos</string>
     <string name="TodayAt">às</string>
     <string name="YesterdayAt">ontem às</string>
-    <string name="LastSeen">visto</string>
-    <string name="LastSeenDate">visto</string>
     <!--group create view-->
     <string name="SendMessageTo">Enviar mensagem para…</string>
     <string name="EnterGroupNamePlaceholder">Digite o nome do grupo</string>

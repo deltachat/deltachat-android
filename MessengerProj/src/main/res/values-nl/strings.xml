@@ -78,8 +78,6 @@
     <string name="NoContacts">Nog geen contacten</string>
     <string name="TodayAt">om</string>
     <string name="YesterdayAt">gisteren om</string>
-    <string name="LastSeen">gezien</string>
-    <string name="LastSeenDate">gezien</string>
     <!--group create view-->
     <string name="SendMessageTo">Bericht versturen naar</string>
     <string name="EnterGroupNamePlaceholder">Groepsnaam</string>

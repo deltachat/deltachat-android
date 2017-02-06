@@ -78,8 +78,6 @@
     <string name="NoContacts">Ancora nessun contatto</string>
     <string name="TodayAt">alle</string>
     <string name="YesterdayAt">ieri alle</string>
-    <string name="LastSeen">ultimo accesso</string>
-    <string name="LastSeenDate">ultimo accesso</string>
     <!--group create view-->
     <string name="SendMessageTo">Invia messaggio a…</string>
     <string name="EnterGroupNamePlaceholder">Immetti il nome del gruppo</string>

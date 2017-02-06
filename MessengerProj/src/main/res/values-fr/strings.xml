@@ -76,8 +76,6 @@
     <string name="NoContacts">Aucun utilisateur pour le moment.</string>
     <string name="TodayAt">à</string>
     <string name="YesterdayAt">hier à</string>
-    <string name="LastSeen">vu(e) à</string>
-    <string name="LastSeenDate">vu(e) le</string>
     <!--group create view-->
     <string name="SendMessageTo">Envoyer un message à…</string>
     <string name="EnterGroupNamePlaceholder">Saisissez le nom du groupe</string>

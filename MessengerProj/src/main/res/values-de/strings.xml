@@ -78,8 +78,6 @@
     <string name="NoContacts">Keine Benutzer.</string>
     <string name="TodayAt">um</string>
     <string name="YesterdayAt">gestern um</string>
-    <string name="LastSeen">zul. online</string>
-    <string name="LastSeenDate">zul. online</string>
     <!--group create view-->
     <string name="SendMessageTo">Sende Nachricht an …</string>
     <string name="EnterGroupNamePlaceholder">Gruppenname</string>
