@@ -32,6 +32,7 @@ import com.b44t.messenger.MrChat;
 import com.b44t.messenger.MrChatlist;
 import com.b44t.messenger.MrMsg;
 import com.b44t.messenger.MrPoortext;
+import com.b44t.messenger.R;
 import com.b44t.messenger.support.widget.RecyclerView;
 import com.b44t.messenger.MrMailbox;
 import com.b44t.ui.Cells.DialogCell;
@@ -179,7 +180,7 @@ public class DialogsSearchAdapter extends RecyclerView.Adapter {
                     if (i == rowChatsHeadline) {
                         headlineCell.setText(LocaleController.formatPluralString("Chats", m_chatlistCnt));
                     } else if (i == rowMsgsHeadline) {
-                        headlineCell.setText(LocaleController.formatPluralString("messages", m_msgIds.length));
+                        headlineCell.setText(mContext.getResources().getQuantityString(R.plurals.messages, m_msgIds.length, m_msgIds.length));
                     }
                 }
                 break;
