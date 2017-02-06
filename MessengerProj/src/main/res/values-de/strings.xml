@@ -395,12 +395,10 @@
     <string name="Days_few">%1$d Tage</string>
     <string name="Days_many">%1$d Tage</string>
     <string name="Days_other">%1$d Tage</string>
-    <string name="Weeks_zero">%1$d Wochen</string>
-    <string name="Weeks_one">%1$d Woche</string>
-    <string name="Weeks_two">%1$d Wochen</string>
-    <string name="Weeks_few">%1$d Wochen</string>
-    <string name="Weeks_many">%1$d Wochen</string>
-    <string name="Weeks_other">%1$d Wochen</string>
+    <plurals name="Weeks">
+        <item quantity="one">%d Woche</item>
+        <item quantity="other">%d Wochen</item>
+    </plurals>
     <string name="Months_zero">%1$d Monate</string>
     <string name="Months_one">%1$d Monat</string>
     <string name="Months_two">%1$d Monate</string>
