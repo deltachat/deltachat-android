@@ -84,6 +84,7 @@ android {
     }
 
     productFlavors {
+        /*
         x86 {
             ndk {
                 abiFilter "x86"
@@ -102,6 +103,7 @@ android {
             }
             versionCode = 1
         }
+        */
         fat {
             versionCode = 3
         }
