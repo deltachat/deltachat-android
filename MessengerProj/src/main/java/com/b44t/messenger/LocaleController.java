@@ -71,7 +71,6 @@ public class LocaleController {
     private HashMap<String, PluralRules> allRules = new HashMap<>();
 
     private Locale currentLocale;
-    private Locale systemDefaultLocale;
     private PluralRules currentPluralRules;
     private LocaleInfo currentLocaleInfo;
     private LocaleInfo defaultLocalInfo;
@@ -268,7 +267,6 @@ public class LocaleController {
         localeInfo.pathToFile = null;
         sortedLanguages.add(0, localeInfo);
 
-        systemDefaultLocale = Locale.getDefault();
         is24HourFormat = DateFormat.is24HourFormat(ApplicationLoader.applicationContext);
         LocaleInfo currentInfo = null;
         boolean override = false;
@@ -283,11 +281,11 @@ public class LocaleController {
                 }
             }
 
-            if (currentInfo == null && systemDefaultLocale.getLanguage() != null) {
-                currentInfo = languagesDict.get(systemDefaultLocale.getLanguage());
+            if (currentInfo == null && Locale.getDefault().getLanguage() != null) {
+                currentInfo = languagesDict.get(Locale.getDefault().getLanguage());
             }
             if (currentInfo == null) {
-                currentInfo = languagesDict.get(getLocaleString(systemDefaultLocale));
+                currentInfo = languagesDict.get(getLocaleString(Locale.getDefault()));
             }
             if (currentInfo == null) {
                 currentInfo = languagesDict.get("en");
@@ -328,10 +326,6 @@ public class LocaleController {
         }
     }
 
-    public Locale getSystemDefaultLocale() {
-        return systemDefaultLocale;
-    }
-
     private String getLocaleString(Locale locale) {
         if (locale == null) {
             return "en";
@@ -356,7 +350,7 @@ public class LocaleController {
     }
 
     public static String getLocaleStringIso639() {
-        Locale locale = getInstance().getSystemDefaultLocale();
+        Locale locale = Locale.getDefault();
         if (locale == null) {
             return "en";
         }
@@ -511,7 +505,7 @@ public class LocaleController {
                     }
                 }
             } else {
-                newLocale = systemDefaultLocale;
+                newLocale = Locale.getDefault();
                 languageOverride = null;
                 SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("mainconfig", Activity.MODE_PRIVATE);
                 SharedPreferences.Editor editor = preferences.edit();
@@ -630,7 +624,6 @@ public class LocaleController {
             return;
         }
         is24HourFormat = DateFormat.is24HourFormat(ApplicationLoader.applicationContext);
-        systemDefaultLocale = newConfig.locale;
         if (languageOverride != null) {
             LocaleInfo toSet = currentLocaleInfo;
             currentLocaleInfo = null;
