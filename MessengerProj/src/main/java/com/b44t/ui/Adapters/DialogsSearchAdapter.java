@@ -27,7 +27,6 @@ import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.b44t.messenger.LocaleController;
 import com.b44t.messenger.MrChat;
 import com.b44t.messenger.MrChatlist;
 import com.b44t.messenger.MrMsg;
