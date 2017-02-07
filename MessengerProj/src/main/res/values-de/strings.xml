@@ -399,12 +399,10 @@
         <item quantity="one">%d Woche</item>
         <item quantity="other">%d Wochen</item>
     </plurals>
-    <string name="Months_zero">%1$d Monate</string>
-    <string name="Months_one">%1$d Monat</string>
-    <string name="Months_two">%1$d Monate</string>
-    <string name="Months_few">%1$d Monate</string>
-    <string name="Months_many">%1$d Monate</string>
-    <string name="Months_other">%1$d Monate</string>
+    <plurals name="Months">
+        <item quantity="one">%d Monat</item>
+        <item quantity="other">%d Monate</item>
+    </plurals>
     <string name="Years_zero">%1$d Jahre</string>
     <string name="Years_one">%1$d Jahr</string>
     <string name="Years_two">%1$d Jahre</string>

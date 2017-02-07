@@ -398,12 +398,10 @@
         <item quantity="one">%d week</item>
         <item quantity="other">%d weeks</item>
     </plurals>
-    <string name="Months_zero">%1$d months</string>
-    <string name="Months_one">%1$d month</string>
-    <string name="Months_two">%1$d months</string>
-    <string name="Months_few">%1$d months</string>
-    <string name="Months_many">%1$d months</string>
-    <string name="Months_other">%1$d months</string>
+    <plurals name="Months">
+        <item quantity="one">%d month</item>
+        <item quantity="other">%d months</item>
+    </plurals>
     <string name="Years_zero">%1$d years</string>
     <string name="Years_one">%1$d year</string>
     <string name="Years_two">%1$d years</string>

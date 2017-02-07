@@ -372,12 +372,10 @@
         <item quantity="one">%d week</item>
         <item quantity="other">%d weken</item>
     </plurals>
-    <string name="Months_zero">%1$d maanden</string>
-    <string name="Months_one">%1$d maand</string>
-    <string name="Months_two">%1$d maanden</string>
-    <string name="Months_few">%1$d maanden</string>
-    <string name="Months_many">%1$d maanden</string>
-    <string name="Months_other">%1$d maanden</string>
+    <plurals name="Months">
+        <item quantity="one">%d maand</item>
+        <item quantity="other">%d maanden</item>
+    </plurals>
     <string name="Years_zero">%1$d jaar</string>
     <string name="Years_one">%1$d jaar</string>
     <string name="Years_two">%1$d jaar</string>

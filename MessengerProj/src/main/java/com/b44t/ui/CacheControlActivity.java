@@ -351,7 +351,7 @@ public class CacheControlActivity extends BaseFragment {
             public void onItemClick(final AdapterView<?> adapterView, View view, final int i, long l) {
                 if (i == keepMediaRow) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
-                    builder.setItems(new CharSequence[]{context.getResources().getQuantityString(R.plurals.Weeks, 1, 1), LocaleController.formatPluralString("Months", 1), LocaleController.getString("KeepMediaForever", R.string.KeepMediaForever)}, new DialogInterface.OnClickListener() {
+                    builder.setItems(new CharSequence[]{context.getResources().getQuantityString(R.plurals.Weeks, 1, 1), context.getResources().getQuantityString(R.plurals.Months, 1, 1), LocaleController.getString("KeepMediaForever", R.string.KeepMediaForever)}, new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, final int which) {
                             SharedPreferences.Editor editor = ApplicationLoader.applicationContext.getSharedPreferences("mainconfig", Activity.MODE_PRIVATE).edit();
@@ -641,7 +641,7 @@ public class CacheControlActivity extends BaseFragment {
                     if (keepMedia == 0) {
                         value = mContext.getResources().getQuantityString(R.plurals.Weeks, 1, 1);
                     } else if (keepMedia == 1) {
-                        value = LocaleController.formatPluralString("Months", 1);
+                        value = mContext.getResources().getQuantityString(R.plurals.Months, 1, 1);
                     } else {
                         value = mContext.getString(R.string.KeepMediaForever);
                     }
