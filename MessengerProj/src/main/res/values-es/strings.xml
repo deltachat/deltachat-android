@@ -330,24 +330,12 @@
         <item quantity="one">%d mensaje</item>
         <item quantity="other">%d mensajes</item>
     </plurals>
-    <string name="items_zero">Sin ítems</string>
-    <string name="items_one">%1$d ítem</string>
-    <string name="items_two">%1$d ítems</string>
-    <string name="items_few">%1$d ítems</string>
-    <string name="items_many">%1$d ítems</string>
-    <string name="items_other">%1$d ítems</string>
     <string name="FromChats_zero">desde ningún chat</string>
     <string name="FromChats_one">desde %1$d chat</string>
     <string name="FromChats_two">desde %1$d chats</string>
     <string name="FromChats_few">desde %1$d chats</string>
     <string name="FromChats_many">desde %1$d chats</string>
     <string name="FromChats_other">desde %1$d chats</string>
-    <string name="Seconds_zero">%1$d segundos</string>
-    <string name="Seconds_one">%1$d segundo</string>
-    <string name="Seconds_two">%1$d segundos</string>
-    <string name="Seconds_few">%1$d segundos</string>
-    <string name="Seconds_many">%1$d segundos</string>
-    <string name="Seconds_other">%1$d segundos</string>
     <string name="Minutes_zero">%1$d minutos</string>
     <string name="Minutes_one">%1$d minuto</string>
     <string name="Minutes_two">%1$d minutos</string>
@@ -380,12 +368,6 @@
     <string name="Times_few">%1$d veces</string>
     <string name="Times_many">%1$d veces</string>
     <string name="Times_other">%1$d veces</string>
-    <string name="Meters_zero">%1$d metros</string>
-    <string name="Meters_one">%1$d metro</string>
-    <string name="Meters_two">%1$d metros</string>
-    <string name="Meters_few">%1$d metros</string>
-    <string name="Meters_many">%1$d metros</string>
-    <string name="Meters_other">%1$d metros</string>
     <string name="Stickers_zero">%1$d stickers</string>
     <string name="Stickers_one">%1$d sticker</string>
     <string name="Stickers_two">%1$d stickers</string>

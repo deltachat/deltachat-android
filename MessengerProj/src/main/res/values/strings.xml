@@ -354,12 +354,6 @@
         <item quantity="one">%d message</item>
         <item quantity="other">%d messages</item>
     </plurals>
-    <string name="items_zero">no items</string>
-    <string name="items_one">%1$d item</string>
-    <string name="items_two">%1$d items</string>
-    <string name="items_few">%1$d items</string>
-    <string name="items_many">%1$d items</string>
-    <string name="items_other">%1$d items</string>
     <string name="FromChats_zero">from no chats</string>
     <string name="FromChats_one">from %1$d chat</string>
     <string name="FromChats_two">from %1$d chats</string>
@@ -372,12 +366,6 @@
         <item quantity="other">%d chats</item>
     </plurals>
 
-    <string name="Seconds_zero">%1$d seconds</string>
-    <string name="Seconds_one">%1$d second</string>
-    <string name="Seconds_two">%1$d seconds</string>
-    <string name="Seconds_few">%1$d seconds</string>
-    <string name="Seconds_many">%1$d seconds</string>
-    <string name="Seconds_other">%1$d seconds</string>
     <string name="Minutes_zero">%1$d minutes</string>
     <string name="Minutes_one">%1$d minute</string>
     <string name="Minutes_two">%1$d minutes</string>
@@ -410,12 +398,6 @@
     <string name="Times_few">%1$d times</string>
     <string name="Times_many">%1$d times</string>
     <string name="Times_other">%1$d times</string>
-    <string name="Meters_zero">%1$d meters</string>
-    <string name="Meters_one">%1$d meter</string>
-    <string name="Meters_two">%1$d meters</string>
-    <string name="Meters_few">%1$d meters</string>
-    <string name="Meters_many">%1$d meters</string>
-    <string name="Meters_other">%1$d meters</string>
     <string name="Stickers_zero">%1$d stickers</string>
     <string name="Stickers_one">%1$d sticker</string>
     <string name="Stickers_two">%1$d stickers</string>
