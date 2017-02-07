@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<!--https://www.transifex.com/projects/p/telegram/language/pt_PT/members/-->
+
 
 <resources xmlns:tools="http://schemas.android.com/tools">
     <string name="AppName">Delta Chat</string>
     <string name="LanguageName">Português</string>
-    <string name="LanguageNameInEnglish">Portuguese</string>
-    <string name="LanguageCode">pt</string>
+    <string name="LanguageNameInEnglish" tools:keep="@string/LanguageNameInEnglish">Portuguese</string>
+    <string name="LanguageCode" tools:keep="@string/LanguageCode">pt</string>
     <!--chats view-->
     <string name="Settings">Configurações</string>
     <string name="NewGroup">Novo Grupo</string>
@@ -126,7 +126,7 @@
     <string name="NotificationsAndSounds">Notificações e Sons</string>
     <string name="BlockedUsers">Usuários bloqueados</string>
     <string name="Default">Padrão</string>
-    <string name="OnlyIfSilent">Somente no silencioso </string>
+    <string name="OnlyIfSilent">Somente no silencioso</string>
     <string name="ChatBackground">Papel de Parede</string>
     <string name="SendByEnter">Enviar usando \'Enter\'</string>
     <string name="Language">Idioma</string>
@@ -251,7 +251,7 @@
     <string name="Caption">Legenda</string>
     <!--privacy settings-->
     <string name="PrivacySettings">Privacidade e Segurança</string>
-    <string name="PrivacyTitle">Privacidade</string>
+    <string name="PrivacyTitle" tools:keep="@string/PrivacyTitle">Privacidade</string>
     <string name="SecurityTitle">Segurança</string>
     <!--edit video view-->
     <string name="EditVideo">Editar Vídeo</string>
@@ -295,7 +295,7 @@
     <string name="NoPlayerInstalled">Você não possui um reprodutor de vídeo, instale um para continuar</string>
     <string name="NoHandleAppInstalled">Você não possui um aplicativo que suporte o tipo de arquivo \'%1$s\', por favor instale um para continuar</string>
     <string name="AddToTheGroupTitle">Adcione %1$s ao chat %2$s?</string>
-    <string name="AskAddMemberToGroup">Adicionar <![CDATA[<b>]]>%1$s<![CDATA[</b>]]> no grupo?</string>
+    <string name="AskAddMemberToGroup">Adicionar <![CDATA[<b>]]>%1$s<![CDATA[</b>]]> ao grupo?</string>
     <string name="UserAlreadyInGroup">Este usuário já está neste grupo</string>
     <string name="ForwardMessagesTo">Encaminhar mensagem para <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>?</string>
     <string name="SendMessagesTo">Enviar mensagens para <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>?</string>
@@ -316,6 +316,26 @@
     <string name="PermissionNoLocationPosition">O Delta Chat precisa acessar sua localização</string>
     <string name="PermissionOpenSettings">Configurações</string>
     <!--Intro view-->
+    <string name="Intro1Headline">Delta Chat</string>
+    <string name="Intro1Message">O aplicativo com o <![CDATA[<b>]]>maior número de usuários<![CDATA[</b>]]> do mundo.&lt;br/&gt;&lt;b&gt;Grátis&lt;/b&gt; e &lt;b&gt;seguro&lt;/b&gt;.</string>
+
+    <string name="Intro2Headline">Independente</string>
+    <string name="Intro2Message">&lt;b&gt;Independente&lt;/b&gt; de serviços estrangeiros. Este aplicativo só precisa de um e-mail para funcionar.</string>
+
+    <string name="Intro3Headline">Rápido</string>
+    <string name="Intro3Message">&lt;b&gt;Envie mensagens&lt;/b&gt; num átimo.&lt;br/&gt; Interface leve.</string>
+
+    <string name="Intro4Headline">Poderoso</string>
+    <string name="Intro4Message">&lt;b&gt;Sem limites&lt;/b&gt; para chats, imagens, vídeos, áudio e mais. Multicliente.</string>
+
+    <string name="Intro5Headline">Grátis</string>
+    <string name="Intro5Message">&lt;b&gt;Delta Chat&lt;/b&gt; será sempre grátis, de Código livre e sem propagandas.</string>
+
+    <string name="Intro6Headline">Seguro</string>
+    <string name="Intro6Message">&lt;b&gt;Criptografia&lt;/b&gt; com as tecnologias mais usadas. Suas mensagens ficam no servidor de e-mail.</string>
+
+    <string name="Intro7Headline">Confiável</string>
+
     <string name="IntroStartMessaging">Comece a conversar</string>
     <!--plural-->
     <plurals name="Members">
@@ -368,6 +388,12 @@
     <string name="Times_few">%1$d vezes</string>
     <string name="Times_many">%1$d vezes</string>
     <string name="Times_other">%1$d vezes</string>
+    <string name="Meters_zero">%1$d metros</string>
+    <string name="Meters_one">%1$d metro</string>
+    <string name="Meters_two">%1$d metros</string>
+    <string name="Meters_few">%1$d metros</string>
+    <string name="Meters_many">%1$d metros</string>
+    <string name="Meters_other">%1$d metros</string>
     <string name="Stickers_zero">%1$d stickers</string>
     <string name="Stickers_one">%1$d sticker</string>
     <string name="Stickers_two">%1$d stickers</string>
@@ -390,9 +416,82 @@
     <string name="formatterDay24H">HH:mm</string>
     <string name="formatterDay12H">h:mm a</string>
     <string name="formatDateAtTime">%1$s às %2$s</string>
+    <string name="AccountSettings">Configurações de conta</string>
+    <string name="MyAccount">Minha conta</string>
+    <string name="Yes">Sim</string>
+    <string name="No">Não</string>
+    <string name="MyName">Meu nome</string>
+    <string name="MyNameExplain">Este nome será exibido aos seus contatos.\n\nSe não inseri-lo os destinatários visualizarão o seu endereço de e-mail.</string>
+    <string name="MyEmailAddress">Meu endereço de e-mail</string>
+    <string name="Password">Senha</string>
+    <string name="SmtpPassword">senha SMTP</string>
+    <string name="FromAbove">de acima</string>
+    <string name="SmtpLoginname">Nome de usuário SMTP</string>
+    <string name="SmtpPort">Porta SMTP</string>
+    <string name="Automatic">automático</string>
+    <string name="ImapServer">Servidor IMAP</string>
+    <string name="ImapLoginname">Nome de login IMAP</string>
+    <string name="SmtpServer">Servidor SMTP</string>
+    <string name="ImapPort">Porta IMAP</string>
+    <string name="InboxHeadline">Caixa de entrada</string>
+    <string name="OutboxHeadline">Caixa de saída</string>
+    <string name="BasicSettings">Configurações básicas</string>
+    <string name="MyAccountExplain">Para servidores de e-mail mais populares as configurações são detectadas automaticamente.</string>
+    <string name="MyAccountExplain2" >Por vezes é necessário habilitar as funcionalidades IMAP/SMTP nas configurações do provedor escolhido.\n\nNão exite em pedir ajuda ao provedor ou aos seus amigos.</string>
+    <string name="AccountNotConfigured">Conta não configurada</string>
+    <string name="AboutThisProgram">Sobre o Delta Chat</string>
+    <string name="NotSet">Não configurado</string>
     <string name="NewChat">Novo Chat</string>
+    <string name="MemberSg">## membro</string>
+    <string name="MemberPl">## membros</string>
+    <string name="ContactSg"># contato</string>
+    <string name="ContactPl">## contatos</string>
+    <string name="Deaddrop">Caixa de entrada</string>
     <string name="Media">Mídias</string>
+    <string name="DeaddropInChatlist">Exibir caixa de entrada na lista de conversas</string>
+    <string name="MuteAlways">Silenciar sempre</string>
+    <string name="AskStartChatWith">Conversar com &lt;b&gt;%1$s&lt;/b&gt;?</string>
+    <string name="DeaddropHint">Para conversar clique na seta.</string>
+    <string name="NotYetImplemented">Função ainda não implementada.</string>
+    <string name="DefaultStatusText">Enviado pelo Delta Chat Messenger</string>
+    <string name="SubjectPrefix">Mensagem instantânea</string>
     <string name="SeachUser">Busca</string>
+    <string name="Name" >Nome</string>
+    <string name="EmailAddress">Endereço de e-mail</string>
+    <string name="MeAnd">Eu e</string>
+    <string name="CannotDeleteContact">Impossível deletar usuários ativos, bloqueie-os.</string>
+    <string name="BadEmailAddress">E-mail inválido.</string>
+    <string name="ContactDeleted">Usuário deletado.</string>
+    <string name="ContactCreated">Usuário criado.</string>
+    <string name="ViewProfile">Ver perfil</string>
+    <string name="OneMomentPlease">Um momento, por favor...</string>
+    <string name="CannotDeleteChat">Impossível deletar a conversa.</string>
+    <string name="NoChatsHelp">Comece uma conversa pressionando o botão "+" no canto direito inferior. Alternativamente acesse a opção correspondente pelo menu.</string>
+    <string name="ConfiguringAccount">Configurando conta...</string>
+    <string name="CannotConnect">Não conectou! Revise as configurações.</string>
+    <string name="Intro7Message">&lt;b&gt;Delta Chat&lt;/b&gt; é seguro para fins comerciais e compatível com os padrões de uso.</string>
     <string name="InviteMenuEntry">Convidar Amigos</string>
+    <string name="InviteText">Agora estou usando o Delta Chat - %1$s - contate-me às %2$s</string>
+    <string name="AdvancedSettings">Configurações avançadas</string>
+    <string name="AskResetNotifications" >Zerar configurações de som e notificação desta página, usuários e grupos?</string>
+    <string name="AttachFiles">Anexar arquivos</string>
+    <string name="Chats">Conversas</string>
+    <string name="ErrGroupNameEmpty">Escolha o nome do grupo.</string>
+    <string name="MsgNewGroupDraftHint">Escreva a primeira mensagem para que os demais possam interagir no grupo.\n\n• Não é necessário que todos usem o Delta Chat.\n\n• A primeira mensagem pode demorar um pouco.</string>
+    <string name="MsgNewGroupDraft">Olá! Criei o grupo \"##\" para conversarmos.</string>
+    <string name="MsgGroupNameChanged">O nome do grupo mudou de \"##\" para \"##\".</string>
+    <string name="MsgGroupImageChanged">Imagem do grupo alterada.</string>
+    <string name="MsgMemberAddedToGroup">## adicionado.</string>
+    <string name="MsgMemberRemovedFromToGroup">## removido.</string>
+    <string name="AskRemoveMemberFromGroup">Remover &lt;b&gt;%1$s&lt;/b&gt; so grupo?</string>
+    <string name="ErrSelfNotInGroup">É preciso ser um membro do grupo para fazer isso.</string>
+    <string name="MsgGroupLeft">Deixou o grupo.</string>
+    <string name="NoMessagesHint">Enviar mensagem para &lt;b&gt;%1$s&lt;/b&gt;:\n\n•  &lt;b&gt;%2$s&lt;/b&gt; não precisa usar o Delta Chat.\n\n• A primeira mensagem pode demorar um pouco.</string>
+    <string name="SendNRcvReadReceipts">Enviar e receber confirmação</string>
+    <string name="E2EEncryption">Criptografia ponta-a-ponta</string>
+    <string name="E2EManagePrivateKeys">Gerir chaves privadas</string>
+    <string name="E2ECompareKeys">Comparar chaves</string>
+    <string name="ResetUserKey">Reconfigurar chave do usuário</string>
     <string name="ForwardToTitle">Selecione um Chat …</string>
 </resources>
+
