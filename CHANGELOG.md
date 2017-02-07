@@ -1,6 +1,6 @@
 # Delta Chat Changelog
 
-## v0.1.16
+## v0.1.17
 2017-02-07
 
 * Drop two unnecessary permissions: ACCESS_COARSE_LOCATION and ACCESS_FINE_LOCATION
