@@ -376,12 +376,6 @@
         <item quantity="one">%d maand</item>
         <item quantity="other">%d maanden</item>
     </plurals>
-    <string name="Years_zero">%1$d jaar</string>
-    <string name="Years_one">%1$d jaar</string>
-    <string name="Years_two">%1$d jaar</string>
-    <string name="Years_few">%1$d jaar</string>
-    <string name="Years_many">%1$d jaar</string>
-    <string name="Years_other">%1$d jaar</string>
     <string name="Users_zero">%1$d gebruikers</string>
     <string name="Users_one">%1$d gebruiker</string>
     <string name="Users_two">%1$d gebruikers</string>

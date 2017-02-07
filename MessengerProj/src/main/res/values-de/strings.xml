@@ -403,12 +403,6 @@
         <item quantity="one">%d Monat</item>
         <item quantity="other">%d Monate</item>
     </plurals>
-    <string name="Years_zero">%1$d Jahre</string>
-    <string name="Years_one">%1$d Jahr</string>
-    <string name="Years_two">%1$d Jahre</string>
-    <string name="Years_few">%1$d Jahre</string>
-    <string name="Years_many">%1$d Jahre</string>
-    <string name="Years_other">%1$d Jahre</string>
     <string name="Users_zero">%1$d Nutzer</string>
     <string name="Users_one">%1$d Nutzer</string>
     <string name="Users_two">%1$d Nutzer</string>
