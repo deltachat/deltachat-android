@@ -306,7 +306,6 @@
     <string name="ShareYouLocationUnableManually">Selbst wählen</string>
     <string name="AreYouSureBlockContact">Diesen Benutzer wirklich blockieren?</string>
     <string name="AreYouSureDeleteContact">Diesen Benutzer wirklich löschen?</string>
-    <string name="AreYouSureDeleteMessages">%1$s löschen? Die Nachrichten werden auch auf dem Server gelöscht.</string>
     <string name="RaiseToSpeakAlert">Möchtest du \"Zum Sprechen ans Ohr\" für Sprachnachrichten aktivieren?</string>
     <!--permissions-->
     <string name="PermissionContacts">Für eine einfache Kontaktaufnahme, benötigt Delta Chat Zugriff auf die Kontakte. Die Daten werden dabei nur lokal verarbeitet und zu keinem Server oder Dienst übertragen.</string>
@@ -354,6 +353,10 @@
     <plurals name="messages">
         <item quantity="one">%d Nachricht</item>
         <item quantity="other">%d Nachrichten</item>
+    </plurals>
+    <plurals name="AreYouSureDeleteMessages">
+        <item quantity="one">%d Nachricht löschen? Die Nachricht wird auch auf dem Server gelöscht.</item>
+        <item quantity="other">%d Nachrichten löschen? Die Nachrichten werden auch auf dem Server gelöscht.</item>
     </plurals>
     <string name="FromChats_zero">in keinen Chats</string>
     <string name="FromChats_one">in %1$d Chat</string>

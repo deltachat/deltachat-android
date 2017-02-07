@@ -306,7 +306,6 @@
     <string name="ShareYouLocationUnableManually">Choose manually</string>
     <string name="AreYouSureBlockContact">Are you sure you want to block this user?</string>
     <string name="AreYouSureDeleteContact">Are you sure you want to delete this user?</string>
-    <string name="AreYouSureDeleteMessages">Delete %1$s? The messages will also be deleted from the server.</string>
     <string name="RaiseToSpeakAlert">Would you like to enable "Raise to speak" for voice messages?</string>
     <!--permissions-->
     <string name="PermissionContacts">Delta Chat needs access to your contacts so that you can connect with your friends across all your devices.</string>
@@ -353,6 +352,10 @@
     <plurals name="messages">
         <item quantity="one">%d message</item>
         <item quantity="other">%d messages</item>
+    </plurals>
+    <plurals name="AreYouSureDeleteMessages">
+        <item quantity="one">Delete %d message? The message will also be deleted from the server.</item>
+        <item quantity="other">Delete %d messages? The messages will also be deleted from the server.</item>
     </plurals>
     <string name="FromChats_zero">from no chats</string>
     <string name="FromChats_one">from %1$d chat</string>

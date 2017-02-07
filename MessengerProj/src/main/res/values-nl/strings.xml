@@ -306,7 +306,6 @@
     <string name="ShareYouLocationUnableManually">Handmatig kiezen</string>
     <string name="AreYouSureBlockContact">Weet je zeker dat je deze persoon wilt blokkeren?</string>
     <string name="AreYouSureDeleteContact">Contact echt verwijderen?</string>
-    <string name="AreYouSureDeleteMessages">%1$s echt verwijderen?</string>
     <string name="RaiseToSpeakAlert">Wil je \"Houd bij oor\" inschakelen voor spraakberichten?</string>
     <!--permissions-->
     <string name="PermissionContacts">Delta Chat heeft toegang tot je contacten nodig zodat je kan chatten met je vrienden vanaf al je apparaten.</string>

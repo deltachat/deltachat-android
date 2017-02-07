@@ -306,7 +306,6 @@
     <string name="ShareYouLocationUnableManually">Escolher manualmente</string>
     <string name="AreYouSureBlockContact">Você tem certeza que deseja bloquear este contato?</string>
     <string name="AreYouSureDeleteContact">Você tem certeza que deseja apagar este contato?</string>
-    <string name="AreYouSureDeleteMessages">Você tem certeza que deseja apagar %1$s?</string>
     <string name="RaiseToSpeakAlert">Gostaria de habilitar o \"Levantar para Falar\" para mensagens de voz?</string>
     <!--permissions-->
     <string name="PermissionContacts">Delta Chat precisa acessar seus contatos para que você possa se conectar aos seus amigos em todos os seus dispositivos.</string>
