@@ -388,12 +388,6 @@
     <string name="Times_few">%1$d vezes</string>
     <string name="Times_many">%1$d vezes</string>
     <string name="Times_other">%1$d vezes</string>
-    <string name="Meters_zero">%1$d metros</string>
-    <string name="Meters_one">%1$d metro</string>
-    <string name="Meters_two">%1$d metros</string>
-    <string name="Meters_few">%1$d metros</string>
-    <string name="Meters_many">%1$d metros</string>
-    <string name="Meters_other">%1$d metros</string>
     <string name="Stickers_zero">%1$d stickers</string>
     <string name="Stickers_one">%1$d sticker</string>
     <string name="Stickers_two">%1$d stickers</string>
