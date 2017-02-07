@@ -136,7 +136,7 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
         else if( do_what == SELECT_CONTACTS_FOR_NEW_GROUP )
         {
             title      = LocaleController.getString("NewGroup", R.string.NewGroup);
-            subtitle   = LocaleController.getString("MeAnd", R.string.MeAnd) + " " + LocaleController.formatPluralString("Members", 0);
+            subtitle   = ApplicationLoader.applicationContext.getResources().getQuantityString(R.plurals.MeAndMembers, 0, 0);
         }
         else if( do_what == ADD_CONTACTS_TO_GROUP )
         {
@@ -163,7 +163,7 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
     private volatile boolean m_in_sync = false;
 
     @Override
-    public View createView(Context context) {
+    public View createView(final Context context) {
 
         // do sync?
         boolean do_sync_now = true;
@@ -464,7 +464,7 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
                             span.uid = user.id;
                             ignoreChange = false;
                         }
-                        actionBar.setSubtitle(LocaleController.getString("MeAnd", R.string.MeAnd) + " " + LocaleController.formatPluralString("Members", selectedContacts.size()));
+                        actionBar.setSubtitle(context.getResources().getQuantityString(R.plurals.MeAndMembers, selectedContacts.size(), selectedContacts.size()));
                         if (searching || searchWas) {
                             ignoreChange = true;
                             SpannableStringBuilder ssb = new SpannableStringBuilder("");

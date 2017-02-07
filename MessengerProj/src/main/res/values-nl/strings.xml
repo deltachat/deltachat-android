@@ -318,12 +318,10 @@
     <!--Intro view-->
     <string name="IntroStartMessaging">Begin met chatten</string>
     <!--plural-->
-    <string name="Members_zero">%1$d leden</string>
-    <string name="Members_one">%1$d leden</string>
-    <string name="Members_two">%1$d leden</string>
-    <string name="Members_few">%1$d leden</string>
-    <string name="Members_many">%1$d leden</string>
-    <string name="Members_other">%1$d leden</string>
+    <plurals name="Members">
+        <item quantity="one">%d leden</item>
+        <item quantity="other">%d leden</item>
+    </plurals>
     <plurals name="NewMessages">
         <item quantity="one">%d nieuw bericht</item>
         <item quantity="other">%d nieuwe berichten</item>

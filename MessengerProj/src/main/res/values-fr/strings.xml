@@ -336,12 +336,14 @@
 
     <string name="IntroStartMessaging">Commencez à converser</string>
     <!--plural-->
-    <string name="Members_zero">%1$d membre</string>
-    <string name="Members_one">%1$d membre</string>
-    <string name="Members_two">%1$d membres</string>
-    <string name="Members_few">%1$d membres</string>
-    <string name="Members_many">%1$d membres</string>
-    <string name="Members_other">%1$d membres</string>
+    <plurals name="Members">
+        <item quantity="one">%d membre</item>
+        <item quantity="other">%d membres</item>
+    </plurals>
+    <plurals name="MeAndMembers">
+        <item quantity="one">Moi et %d membre</item>
+        <item quantity="other">Moi et %d membres</item>
+    </plurals>
     <plurals name="NewMessages">
         <item quantity="one">%d nouveau message</item>
         <item quantity="other">%d nouveaux messages</item>
@@ -476,7 +478,6 @@
     <string name="SeachUser">Recherche un contact</string>
     <string name="Name" >Nom</string>
     <string name="EmailAddress">Adresse e-mail</string>
-    <string name="MeAnd">Moi et</string>
     <string name="CannotDeleteContact">Impossible de supprimer les contacts en cours d\'utilisation, bloquez-les à la place.</string>
     <string name="BadEmailAddress">Mauvaise adresse e-mail.</string>
     <string name="ContactDeleted">Utilisateur supprimé.</string>

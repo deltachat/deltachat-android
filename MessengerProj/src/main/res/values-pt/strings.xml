@@ -318,12 +318,10 @@
     <!--Intro view-->
     <string name="IntroStartMessaging">Comece a conversar</string>
     <!--plural-->
-    <string name="Members_zero">%1$d membros</string>
-    <string name="Members_one">%1$d membro</string>
-    <string name="Members_two">%1$d membros</string>
-    <string name="Members_few">%1$d membros</string>
-    <string name="Members_many">%1$d membros</string>
-    <string name="Members_other">%1$d membros</string>
+    <plurals name="Members">
+        <item quantity="one">%d membro</item>
+        <item quantity="other">%d membros</item>
+    </plurals>
     <plurals name="NewMessages">
         <item quantity="one">%d nova mensagem</item>
         <item quantity="other">%d novas mensagens</item>

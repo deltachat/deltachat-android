@@ -271,7 +271,7 @@ public class GroupCreateFinalActivity extends BaseFragment implements Notificati
         }
 
         GreySectionCell sectionCell = new GreySectionCell(context);
-        sectionCell.setText(LocaleController.formatPluralString("Members", selectedContacts.size()));
+        sectionCell.setText(context.getResources().getQuantityString(R.plurals.Members, selectedContacts.size(), selectedContacts.size()));
         linearLayout.addView(sectionCell);
 
         listView = new ListView(context);
