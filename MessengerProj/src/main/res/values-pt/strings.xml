@@ -461,10 +461,10 @@
     <string name="ContactDeleted">Usuário deletado.</string>
     <string name="ContactCreated">Usuário criado.</string>
     <string name="ViewProfile">Ver perfil</string>
-    <string name="OneMomentPlease">Um momento, por favor...</string>
+    <string name="OneMomentPlease">Um momento, por favor…</string>
     <string name="CannotDeleteChat">Impossível deletar a conversa.</string>
     <string name="NoChatsHelp">Comece uma conversa pressionando o botão "+" no canto direito inferior. Alternativamente acesse a opção correspondente pelo menu.</string>
-    <string name="ConfiguringAccount">Configurando conta...</string>
+    <string name="ConfiguringAccount">Configurando conta…</string>
     <string name="CannotConnect">Não conectou! Revise as configurações.</string>
     <string name="Intro7Message">&lt;b&gt;Delta Chat&lt;/b&gt; é seguro para fins comerciais e compatível com os padrões de uso.</string>
     <string name="InviteMenuEntry">Convidar Amigos</string>
