@@ -342,6 +342,10 @@
         <item quantity="one">%d membro</item>
         <item quantity="other">%d membros</item>
     </plurals>
+    <plurals name="MeAndMembers">
+        <item quantity="one">Eu e %d membro</item>
+        <item quantity="other">Eu e %d membros</item>
+    </plurals>
     <plurals name="NewMessages">
         <item quantity="one">%d nova mensagem</item>
         <item quantity="other">%d novas mensagens</item>
@@ -452,7 +456,6 @@
     <string name="SeachUser">Busca</string>
     <string name="Name" >Nome</string>
     <string name="EmailAddress">Endereço de e-mail</string>
-    <string name="MeAnd">Eu e</string>
     <string name="CannotDeleteContact">Impossível deletar usuários ativos, bloqueie-os.</string>
     <string name="BadEmailAddress">E-mail inválido.</string>
     <string name="ContactDeleted">Usuário deletado.</string>
