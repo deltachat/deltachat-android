@@ -1,6 +1,8 @@
 # Delta Chat Changelog
 
-## UNRELEASED
+## v0.1.16
+2017-02-07
+
 * Drop two unnecessary permissions: ACCESS_COARSE_LOCATION and ACCESS_FINE_LOCATION
 * Really add French translation
 * Update Portuguese translation
