@@ -1109,7 +1109,7 @@ public class NotificationsController {
 
             String name;
             if ( pushDialogs.size() > 1  || !showPreview ) {
-                name = LocaleController.getString("AppName", R.string.AppName);
+                name = mContext.getString(R.string.AppName);
             } else {
                 if ( isGroupChat ) {
                     name = mrChat.getName();
@@ -1122,9 +1122,8 @@ public class NotificationsController {
             if (pushDialogs.size() == 1) {
                 detailText = mContext.getResources().getQuantityString(R.plurals.NewMessages, total_unread_count, total_unread_count);
             } else {
-                detailText = LocaleController.formatString("NotificationMessagesPeopleDisplayOrder", R.string.NotificationMessagesPeopleDisplayOrder,
-                        mContext.getResources().getQuantityString(R.plurals.NewMessages, total_unread_count, total_unread_count),
-                        LocaleController.formatPluralString("FromChats", pushDialogs.size()));
+                String newMessages = mContext.getResources().getQuantityString(R.plurals.NewMessages, total_unread_count, total_unread_count);
+                detailText = mContext.getResources().getQuantityString(R.plurals.NewMessagesInChats, pushDialogs.size(), newMessages, pushDialogs.size());
             }
 
             NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(ApplicationLoader.applicationContext)
@@ -1335,7 +1334,7 @@ public class NotificationsController {
             }
             TLRPC.FileLocation photoPath = null;
             if (AndroidUtilities.needShowPasscode(false) || UserConfig.isWaitingForPasscodeEnter) {
-                name = LocaleController.getString("AppName", R.string.AppName);
+                name = mContext.getString(R.string.AppName);
             } else {
                 if (chat != null) {
                     name = chat.title;
@@ -1386,19 +1385,19 @@ public class NotificationsController {
                 msgReplyIntent.putExtra("dialog_id", dialog_id);
                 msgReplyIntent.putExtra("max_id", max_id);
                 PendingIntent msgReplyPendingIntent = PendingIntent.getBroadcast(ApplicationLoader.applicationContext, notificationIdAuto, msgReplyIntent, PendingIntent.FLAG_UPDATE_CURRENT);
-                RemoteInput remoteInputAuto = new RemoteInput.Builder(NotificationsController.EXTRA_VOICE_REPLY).setLabel(LocaleController.getString("Reply", R.string.Reply)).build();
+                RemoteInput remoteInputAuto = new RemoteInput.Builder(NotificationsController.EXTRA_VOICE_REPLY).setLabel(mContext.getString(R.string.Reply)).build();
                 unreadConvBuilder.setReplyAction(msgReplyPendingIntent, remoteInputAuto);
 
                 Intent replyIntent = new Intent(ApplicationLoader.applicationContext, WearReplyReceiver.class);
                 replyIntent.putExtra("dialog_id", dialog_id);
                 replyIntent.putExtra("max_id", max_id);
                 PendingIntent replyPendingIntent = PendingIntent.getBroadcast(ApplicationLoader.applicationContext, notificationIdWear, replyIntent, PendingIntent.FLAG_UPDATE_CURRENT);
-                RemoteInput remoteInputWear = new RemoteInput.Builder(EXTRA_VOICE_REPLY).setLabel(LocaleController.getString("Reply", R.string.Reply)).build();
+                RemoteInput remoteInputWear = new RemoteInput.Builder(EXTRA_VOICE_REPLY).setLabel(mContext.getString(R.string.Reply)).build();
                 String replyToString;
                 if (chat != null) {
-                    replyToString = LocaleController.formatString("ReplyToGroup", R.string.ReplyToGroup, name);
+                    replyToString = String.format(mContext.getString(R.string.ReplyToGroup), name);
                 } else {
-                    replyToString = LocaleController.formatString("ReplyToUser", R.string.ReplyToUser, name);
+                    replyToString = String.format(mContext.getString(R.string.ReplyToUser), name);
                 }
                 wearReplyAction = new NotificationCompat.Action.Builder(R.drawable.ic_reply_icon, replyToString, replyPendingIntent).addRemoteInput(remoteInputWear).build();
             }

@@ -357,18 +357,17 @@
         <item quantity="one">Delete %d message? The message will also be deleted from the server.</item>
         <item quantity="other">Delete %d messages? The messages will also be deleted from the server.</item>
     </plurals>
-    <string name="FromChats_zero">from no chats</string>
-    <string name="FromChats_one">from %1$d chat</string>
-    <string name="FromChats_two">from %1$d chats</string>
-    <string name="FromChats_few">from %1$d chats</string>
-    <string name="FromChats_many">from %1$d chats</string>
-    <string name="FromChats_other">from %1$d chats</string>
-
+    <plurals name="NewMessagesInChats">
+        <!-- Translators: the first string placeholder "%s" gets replaced with the
+        text "%d new messages", so the complete sentence would be e.g.
+        "4 new messages in 2 chats". -->
+        <item quantity="one">%1$s in %2$d chat</item>
+        <item quantity="other">%1$s in %2$d chats</item>
+    </plurals>
     <plurals name="Chats">
         <item quantity="one">%d chat</item>
         <item quantity="other">%d chats</item>
     </plurals>
-
     <string name="Minutes_zero">%1$d minutes</string>
     <string name="Minutes_one">%1$d minute</string>
     <string name="Minutes_two">%1$d minutes</string>
