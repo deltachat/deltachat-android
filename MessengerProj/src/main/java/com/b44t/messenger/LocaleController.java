@@ -210,6 +210,14 @@ public class LocaleController {
         sortedLanguages.add(localeInfo);
         languagesDict.put(localeInfo.shortName, localeInfo);
 
+        localeInfo = new LocaleInfo();
+        localeInfo.name = "Polski";
+        localeInfo.nameEnglish = "Polish";
+        localeInfo.shortName = "pl";
+        localeInfo.pathToFile = null;
+        sortedLanguages.add(localeInfo);
+        languagesDict.put(localeInfo.shortName, localeInfo);
+
         /* EDIT BY MR
         localeInfo = new LocaleInfo();
         localeInfo.name = "العربية";
