@@ -401,12 +401,6 @@
     <string name="Times_few">%1$d times</string>
     <string name="Times_many">%1$d times</string>
     <string name="Times_other">%1$d times</string>
-    <string name="Stickers_zero">%1$d stickers</string>
-    <string name="Stickers_one">%1$d sticker</string>
-    <string name="Stickers_two">%1$d stickers</string>
-    <string name="Stickers_few">%1$d stickers</string>
-    <string name="Stickers_many">%1$d stickers</string>
-    <string name="Stickers_other">%1$d stickers</string>
     <!--date formatters-->
     <string name="formatterMonthYear">MMMM yyyy</string>
     <string name="formatterMonth">MMM dd</string>
