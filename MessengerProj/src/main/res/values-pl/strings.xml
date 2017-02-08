@@ -1,0 +1,551 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="AppName">Delta Chat</string>
+    <string name="LanguageName">Polski</string>
+    <string name="LanguageNameInEnglish" tools:keep="@string/LanguageNameInEnglish">Polish</string>
+    <string name="LanguageCode" tools:keep="@string/LanguageCode">pl</string>
+    <!--chats view-->
+    <string name="Settings">Ustawienia</string>
+    <string name="NewGroup">Nowa grupa</string>
+    <string name="Yesterday">wczoraj</string>
+    <string name="NoResult">Nie ma wyników.</string>
+    <string name="NoChats">Nie ma czatów.</string>
+    <string name="WaitingForNetwork">Czekam na sieć…</string>
+    <string name="Connecting">Łączenie…</string>
+    <string name="Updating">Aktualizowanie…</string>
+    <string name="DeleteChat">Usuń czat</string>
+    <string name="SelectChat">Wybierz czat…</string>
+    <string name="Search">Szukaj</string>
+    <string name="MuteNotifications">Wyłącz powiadomienia</string>
+    <string name="MuteFor">Wyłącz na %1$s</string>
+    <string name="UnmuteNotifications">Włącz powiadomienia</string>
+    <string name="WillUnmuteIn">wył. przez %1$s</string>
+    <string name="Draft">Szkic</string>
+    <!--audio view-->
+    <string name="NoAudio">Dodaj pliki do biblioteki muzyki w urządzeniu, aby zobaczyć je tutaj.</string>
+    <string name="AttachMusic">Muzyka</string>
+    <string name="AudioUnknownArtist">Nieznany artysta</string>
+    <string name="AudioUnknownTitle">Nieznany tytuł</string>
+    <!--documents view-->
+    <string name="SelectFile">Wybierz plik</string>
+    <string name="FreeOfTotal">Wolne %1$s z %2$s</string>
+    <string name="UnknownError">Nieznany błąd</string>
+    <string name="AccessError">Błąd dostępu</string>
+    <string name="NoFiles">Nie ma plików…</string>
+    <string name="FileUploadLimit">Rozmiar pliku nie powinien być większy niż %1$s</string>
+    <string name="NotMounted">Nie zamontowano pamięci</string>
+    <string name="UsbActive">Aktywny transfer USB</string>
+    <string name="InternalStorage">Pamięć wewnętrzna</string>
+    <string name="ExternalStorage">Pamięć zewnętrzna</string>
+    <string name="SystemRoot">Katalog systemowy</string>
+    <string name="SdCard">Karta SD</string>
+    <string name="Folder">Folder</string>
+    <string name="GalleryInfo">Wyślij obrazki bez kompresji</string>
+    <!--chat view-->
+    <string name="ChatGallery">Galeria</string>
+    <string name="ChatLocation">Lokalizacja</string>
+    <string name="ChatVideo">Wideo</string>
+    <string name="ChatDocument">Plik</string>
+    <string name="ChatCamera">Kamera</string>
+    <string name="NoMessages">Brak wiadomości.</string>
+    <string name="ForwardedMessage">Przekazana wiadomość</string>
+    <string name="From">Od</string>
+    <string name="NoRecent">Nie ma wcześniejszych</string>
+    <string name="TypeMessage">Wiadomość</string>
+    <string name="SlideToCancel">PRZESUŃ, BY ANULOWAĆ</string>
+    <string name="SaveToDownloads">Zapisz w pobranych</string>
+    <string name="DeleteGif">Usunąć GIFa?</string>
+    <string name="SaveToMusic">Zapisz w muzyce</string>
+    <string name="ShareFile">Udostępnij</string>
+    <string name="UnsupportedAttachment">Nieobsługiwany załącznik</string>
+    <string name="OpenInBrowser">OTWÓRZ W…</string>
+    <string name="SendItems">Wyślij %1$s</string>
+    <string name="OpenUrlAlert">Otworzyć adres %1$s?</string>
+    <string name="MoreInfo">Więcej informacji</string>
+    <string name="ShareSendTo">Wyślij do…</string>
+    <string name="ClearRecentEmoji">Wyczyścić ostatnie emoji?</string>
+    <string name="AddShortcut">Dodaj widget do ekranu głównego</string>
+    <string name="ShortcutAdded">Widget dodany do ekranu głównego</string>
+    <!--notification-->
+    <string name="Reply">Odpowiedz</string>
+    <string name="ReplyToGroup">Odpowiedz grupie %1$s</string>
+    <string name="ReplyToUser">Odpowiedz grupie %1$s</string>
+    <string name="NotificationMessagesPeopleDisplayOrder">%1$s %2$s</string>
+    <!--contacts view-->
+    <string name="NoContacts">Nie ma użytkowników.</string>
+    <string name="TodayAt">o</string>
+    <string name="YesterdayAt">wczoraj o</string>
+    <!--group create view-->
+    <string name="SendMessageTo">Wysłać wiadomości do…</string>
+    <string name="EnterGroupNamePlaceholder">Podaj nazwę grupy</string>
+    <string name="ShareLink">Udostępnij link</string>
+    <!--group info view-->
+    <string name="SharedMedia">Udostępnione media</string>
+    <string name="SETTINGS">Ustawienia</string>
+    <string name="AddMember">Dodaj członka</string>
+    <string name="Notifications">Powiadomienia</string>
+    <string name="RemoveMember">Usuń członka</string>
+    <!--contact info view-->
+    <string name="ShareContact">Udostępnij</string>
+    <string name="AddContact">Dodaj</string>
+    <string name="NewContactTitle">Nowy użytkownik</string>
+    <string name="BlockContact">Zablokuj użytkownika</string>
+    <string name="DeleteContact">Usuń użytkownika</string>
+    <string name="Info">Informacje</string>
+    <!--stickers view-->
+    <string name="Stickers">Naklejki</string>
+    <string name="AddStickers">Dodaj naklejki</string>
+    <string name="AddToStickers">Dodaj do naklejek</string>
+    <string name="AddStickersNotFound">Nie znaleziono naklejek</string>
+    <string name="StickersRemoved">Naklejki zostały usunięte</string>
+    <string name="AddStickersInstalled">Dodano nowe naklejki</string>
+    <string name="StickersHide">Ukryj</string>
+    <string name="StickersShow">Pokaż</string>
+    <string name="StickersShare">Udostępnij</string>
+    <string name="StickersCopy">Kopiuj link</string>
+    <string name="StickersRemove">Usuń</string>
+    <string name="NoStickers">Nie ma naklejek</string>
+    <string name="SendSticker">WYŚLIJ NAKLEJKĘ</string>
+    <!--settings view-->
+    <string name="TextSize">Rozmiar czcionki w wiadomości</string>
+    <string name="EnableAnimations">Animacja przejścia</string>
+    <string name="UnblockContact">Odblokuj użytkownika</string>
+    <string name="NoBlocked">Nie ma zablokowanych użytkowników</string>
+    <string name="NormalMessages">Normalne wiadomości</string>
+    <string name="Alert">Alarm</string>
+    <string name="MessagePreview">Podgląd wiadomości</string>
+    <string name="GroupMessages">Grupowe wiadomości</string>
+    <string name="Sound">Dźwięki</string>
+    <string name="InAppNotifications">Powiadomienia w aplikacji</string>
+    <string name="Vibrate">Wibracje</string>
+    <string name="Reset">Resetuj</string>
+    <string name="ResetAllNotifications">Resetuj wszystkie powiadomienia</string>
+    <string name="NotificationsAndSounds">Powiadomienia i dźwięki</string>
+    <string name="BlockedUsers">Zablokowani użytkownicy</string>
+    <string name="Default">Domyślne</string>
+    <string name="OnlyIfSilent">Tylko jeśli wyciszony</string>
+    <string name="ChatBackground">Tło czatu</string>
+    <string name="SendByEnter">Wyślij wiadomość naciskając Enter</string>
+    <string name="Language">Język</string>
+    <string name="Help">Pomoc</string>
+    <string name="DeleteLocalization">Usunąć lokalizację?</string>
+    <string name="Enabled">Włączone</string>
+    <string name="Disabled">Wyłączone</string>
+    <string name="NotificationsService">Podtrzymywanie usługi</string>
+    <string name="NotificationsServiceInfo">Uruchom ponownie aplikację, gdy zostanie wyłączona przez użytkownika lub przez system. Zapewni to otrzymywanie powiadomień.</string>
+    <string name="NotificationsServiceConnection">Łączenie w tle</string>
+    <string name="NotificationsServiceConnectionInfo">Utrzymuj niski wpływ połączenia w tle, by odbierać powiadomienia. Włącz dla zaufanych powiadomień.</string>
+    <string name="LedColor">Kolor LED-a</string>
+    <string name="BadgeNumber">Pokaż ilość na ikonie, jeśli to możliwe</string>
+    <string name="Short">Krótkie</string>
+    <string name="Long">Długie</string>
+    <string name="SystemDefault">Domyślny systemu</string>
+    <string name="RaiseToSpeak">Odbierz i mów / słuchaj</string>
+    <string name="EditName">Edytuj nazwę</string>
+    <string name="NotificationsPriority">Zobacz</string>
+    <string name="NotificationsPriorityDefault">Normaly priorytet</string>
+    <string name="NotificationsPriorityHigh">Wysoki priorytet</string>
+    <string name="NotificationsPriorityMax">Najwyższy priorytet</string>
+    <string name="RepeatNotifications">Powtarzanie powiadomień co</string>
+    <string name="NotificationsOther">Inny</string>
+    <string name="InChatSound">Dźwięki w czacie</string>
+    <string name="SoundDefault">Domyślne</string>
+    <string name="VibrationDefault">Domyślne</string>
+    <string name="SmartNotifications">Limit powiadomień</string>
+    <string name="SmartNotificationsInfo">Dźwięk, co najwyżej %1$s w ciągu %2$s</string>
+    <string name="SmartNotificationsSoundAtMost">Dźwięk, co najwyżej</string>
+    <string name="SmartNotificationsTimes">razy</string>
+    <string name="SmartNotificationsWithin">w ciągu</string>
+    <string name="SmartNotificationsMinutes">minut</string>
+    <string name="DirectShare">Bezpośrednie udostępnianie</string>
+    <string name="DirectShareInfo">Pokaż ostatnie czaty w menu udostępniania</string>
+    <!--cache view-->
+    <string name="CacheSettings">Pamięć</string>
+    <string name="LocalDatabase">Lokalna baza danych</string>
+    <string name="LocalDatabaseClear">Wyczyścić zbuforowane wiadomości?</string>
+    <string name="LocalDatabaseInfo">Wyczyszczenie lokalnej bazy danych spowoduje usunięcie tekstów zbuforowanych wiadomości i skompresowanie bazy, by zaoszczędzić miejsce w pamięci wewnętrznej. Aplikacja do działania potrzebuje niektórych danych, więc rozmiar bazy danych nie osiągnie zero.
+
+Operacja ta może potrwać kilka minut.</string>
+    <string name="ClearMediaCache">Wyczyść pamięć podręczną</string>
+    <string name="CacheClear">Wyczyść</string>
+    <string name="LocalDocumentCache">Dokumenty</string>
+    <string name="LocalPhotoCache">Zdjęcia</string>
+    <string name="LocalAudioCache">Wiadomości głosowe</string>
+    <string name="LocalVideoCache">Wideo</string>
+    <string name="LocalMusicCache">Muzyka</string>
+    <string name="LocalCache">Inne pliki</string>
+    <string name="CacheEmpty">Pusty</string>
+    <string name="KeepMedia">Przechowywanie multimediów</string>
+    <string name="KeepMediaInfo">Zdjęcia, wideo i inne pliki z czatów w chmurze <b>nie używane</b> w tym okresie zostaną usunięte z urządzenia, by zaoszczędzić miejsce w pamięci.</string>
+    <string name="KeepMediaForever">Na zawsze</string>
+    <!--passcode view-->
+    <string name="Passcode">Blokada kodem dostępu</string>
+    <string name="ChangePasscode">Zmień kod dostępu</string>
+    <string name="ChangePasscodeInfo">Po skonfigurowaniu dodatkowego kodu dostępu, na stronie czatów pojawi się ikona kłódki. Dotknij ją, aby zablokować lub odblokować aplikację.
+
+Uwaga! Jeśli zapomnisz kod dostępu, musisz usunąć i ponownie zainstalować aplikację.</string>
+    <string name="PasscodePIN">PIN</string>
+    <string name="PasscodePassword">Hasło</string>
+    <string name="EnterCurrentPasscode">Wprowadź aktualny kod dostępu</string>
+    <string name="EnterNewFirstPasscode">Wprowadź kod dostępu</string>
+    <string name="EnterNewPasscode">Wprowadź nowy kod dostępu</string>
+    <string name="EnterYourPasscode">Wprowadź kod dostępu</string>
+    <string name="ReEnterYourPasscode">Powtórz nowy kod dostępu</string>
+    <string name="PasscodeDoNotMatch">Hasła są niezgodne</string>
+    <string name="AutoLock">Automatyczna blokada</string>
+    <string name="AutoLockInfo">Wymagaj kodu dostępu po dłuższej nieaktywności.</string>
+    <string name="AutoLockInTime">za %1$s</string>
+    <string name="UnlockFingerprint">Odblokuj odciskiem palca</string>
+    <string name="FingerprintInfo">Potwierdź odcisk palca, aby kontynuować</string>
+    <string name="FingerprintHelp">Czujnik dotykowy</string>
+    <string name="FingerprintNotRecognized">Odcisk palca nie rozpoznany. Spróbuj ponownie</string>
+    <!--photo gallery view-->
+    <string name="ShowAllMedia">Pokaż wszystkie multimedia</string>
+    <string name="SaveToGallery">Zapisz w galerii</string>
+    <string name="Of">%1$d z %2$d</string>
+    <string name="Gallery">Galeria</string>
+    <string name="AllPhotos">Wszystkie zdjęcia</string>
+    <string name="AllVideo">Wszystkie wideo</string>
+    <string name="NoPhotos">Nie ma zdjęć</string>
+    <string name="NoVideo">Nie ma jeszcze wideo</string>
+    <string name="PleaseDownload">Pobierz najpierw multimedia</string>
+    <string name="NoRecentPhotos">Nie ma wcześniejszych zdjęć</string>
+    <string name="NoRecentGIFs">Nie ma wcześniejszych GIFów</string>
+    <string name="SearchImages">SZUKAJ OBRAZY</string>
+    <string name="SearchImagesInfo">W INTERNECIE</string>
+    <string name="SearchGifs">SZUKAJ GIFY</string>
+    <string name="SearchImagesTitle">Przeszukaj internet</string>
+    <string name="SearchGifsTitle">Szukaj GIFy</string>
+    <string name="CropImage">Przytnij zdjęcie</string>
+    <string name="EditImage">Edytuj zdjęcie</string>
+    <string name="Enhance">Ulepszenie</string>
+    <string name="Highlights">Wyróżnienia</string>
+    <string name="Contrast">Kontrast</string>
+    <string name="Exposure">Ekspozycja</string>
+    <string name="Warmth">Ciepło</string>
+    <string name="Saturation">Saturacja</string>
+    <string name="Vignette">Winieta</string>
+    <string name="Shadows">Cienie</string>
+    <string name="Grain">Ziarno</string>
+    <string name="Sharpen">Wyostrzenie</string>
+    <string name="Fade">Zanikanie</string>
+    <string name="Tint">Odcień</string>
+    <string name="TintShadows">CIENIE</string>
+    <string name="TintHighlights">WYRÓŻNIENIA</string>
+    <string name="Curves">Krzywe</string>
+    <string name="CurvesAll">WSZYSTKIE</string>
+    <string name="CurvesRed">CZERWONE</string>
+    <string name="CurvesGreen">ZIELONE</string>
+    <string name="CurvesBlue">NIEBIESKIE</string>
+    <string name="Blur">Rozmycie</string>
+    <string name="BlurOff">Wyłączone</string>
+    <string name="BlurLinear">Liniowe</string>
+    <string name="BlurRadial">Radialne</string>
+    <string name="DiscardChanges">Odrzucić zmiany?</string>
+    <string name="ClearSearch">Wyczyścić historię wyszukiwania?</string>
+    <string name="ClearButton">Wyczyść</string>
+    <string name="PickerPhotos">Zdjęcia</string>
+    <string name="PickerVideo">Wideo</string>
+    <string name="AddCaption">Dodaj podpis…</string>
+    <string name="PhotoCaption">Podpis zdjęcia</string>
+    <string name="VideoCaption">Podpis wideo</string>
+    <string name="Caption">Podpis</string>
+    <!--privacy settings-->
+    <string name="PrivacySettings">Prywatność i bezpieczeństwo</string>
+    <string name="PrivacyTitle" tools:keep="@string/PrivacyTitle">Prywatność</string>
+    <string name="SecurityTitle">Bezpieczeństwo</string>
+    <!--edit video view-->
+    <string name="EditVideo">Edycja wideo</string>
+    <string name="OriginalVideo">Oryginalne wideo</string>
+    <string name="EditedVideo">Edytowane wideo</string>
+    <string name="SendingVideo">Wysyłanie wideo…</string>
+    <string name="CompressVideo">Kompresuj wideo</string>
+    <!--button titles-->
+    <string name="Next">Dalej</string>
+    <string name="Back">Wstecz</string>
+    <string name="Done">Gotowe</string>
+    <string name="Open">Otwórz</string>
+    <string name="Save">Zapisz</string>
+    <string name="Cancel">Anuluj</string>
+    <string name="Close">Zamknij</string>
+    <string name="Add">Dodaj</string>
+    <string name="Edit">Edytuj</string>
+    <string name="Send">Wyślij</string>
+    <string name="CopyToClipboard">Kopiuj do schowka</string>
+    <string name="Delete">Usuń</string>
+    <string name="Forward">Przekaż</string>
+    <string name="Retry">Spróbuj ponownie</string>
+    <string name="FromCamera">Z kamery</string>
+    <string name="FromGalley">Z galerii</string>
+    <string name="DeletePhoto">Usuń zdjęcie</string>
+    <string name="Set">Ustaw</string>
+    <string name="OK">OK</string>
+    <string name="Crop">PRZYTNIJ</string>
+    <!--messages-->
+    <string name="AttachPhoto">Zdjęcie</string>
+    <string name="AttachVideo">Wideo</string>
+    <string name="AttachGif">GIF</string>
+    <string name="AttachLocation">Lokalizacja</string>
+    <string name="AttachContact">Kontakt</string>
+    <string name="AttachDocument">Plik</string>
+    <string name="AttachSticker">naklejka</string>
+    <string name="AttachAudio">Wiadomość głosowa</string>
+    <string name="FromSelf">Ja</string>
+    <!--Alert messages-->
+    <string name="Loading">Wczytywanie…</string>
+    <string name="NoPlayerInstalled">Nie masz odtwarzacza wideo. Zainstaluj jakiś, aby kontynuować.</string>
+    <string name="NoHandleAppInstalled">Nie masz aplikacji obsługujących pliki typu „%1$s”. Zainstaluj jakąś, aby kontynuować.</string>
+    <string name="AddToTheGroupTitle">Dodać %1$s do czatu %2$s?</string>
+    <string name="AddToTheGroup">Dodać %1$s do grupy?</string>
+    <string name="UserAlreadyInGroup">Ten użytkownik jest już w tej grupie</string>
+    <string name="ForwardMessagesTo">Przekazać wybrane wiadomości do <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>?</string>
+    <string name="SendMessagesTo">Wysłać wiadomość do <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>?</string>
+    <string name="SendContactTo">Wysłać kontakt do użytkownika %1$s?</string>
+    <string name="AreYouSureDeleteAndExit">Opuścić grupę? Nie będziesz już otrzymywać wiadomości od grupy.</string>
+    <string name="AreYouSureDeleteThisChat">Usunąć ten czat? Czat nie będzie widoczny na liście czatów, wiadomości pozostaną na serwerze.</string>
+    <string name="ShareYouLocationUnable">Aplikacja nie była w stanie określić twojej aktualnej lokalizacji</string>
+    <string name="ShareYouLocationUnableManually">Wybierz ręcznie</string>
+    <string name="AreYouSureBlockContact">Czy na pewno chcesz zablokować tego użytkownika?</string>
+    <string name="AreYouSureDeleteContact">Czy na pewno chcesz usunąć tego użytkownika?</string>
+    <string name="AreYouSureDeleteMessages">Usunąć %1$s? Wiadomości zostaną usunięte również z serwera.</string>
+    <string name="RaiseToSpeakAlert">Czy chcesz włączyć funkcję „Odbierz i mów / słuchaj” dla wiadomości głosowych?</string>
+    <!--permissions-->
+    <string name="PermissionContacts">Aby można było łączyć się ze znajomymi na wszystkich urządzeniach, Delta Chat musi mieć dostęp do listy kontaktów.</string>
+    <string name="PermissionStorage">Aby wysyłać i zapisywać zdjęcia, wideo, muzykę i inne multimedia, Delta Chat musi mieć dostęp do pamięci.</string>
+    <string name="PermissionNoAudio">Aby wysyłać wiadomości głosowe Delta Chat musi mieć dostęp do mikrofonu.</string>
+    <string name="PermissionNoLocation">Aby móc udostępniać swoją lokalizację znajomym, Delta Chat musi mieć do niej dostęp.</string>
+    <string name="PermissionNoLocationPosition">Delta Chat potrzebuje dostępu do twojej lokalizacji.</string>
+    <string name="PermissionOpenSettings">Ustawienia</string>
+    <!--Intro view-->
+    <string name="Intro1Headline">Delta Chat</string>
+    <string name="Intro1Message">Komunikator o <![CDATA[<b>największym zasięgu</b>]]> na świecie.<![CDATA[<br/><b>Darmowy</b>]]> i <![CDATA[<b>bezpieczny</b>]]>.</string>
+
+    <string name="Intro2Headline">Niezależny</string>
+    <string name="Intro2Message"><![CDATA[<b>Niezależny</b>]]> od obcych komputerów i usług. Aplikacja wykorzystuje tylko twój serwer e-mail.</string>
+
+    <string name="Intro3Headline">Szybki</string>
+    <string name="Intro3Message"><![CDATA[<b>Wiadomości push</b>]]> w kilka sekund.<![CDATA[<br/>]]>Szybki interfejs.</string>
+
+    <string name="Intro4Headline">Potężny</string>
+    <string name="Intro4Message"><![CDATA[<b>Nieograniczone</b>]]> czaty, obrazy, filmy, wiadomości audio i wiele innych. Sprawny multi-klient.</string>
+
+    <string name="Intro5Headline">Darmowy</string>
+    <string name="Intro5Message"><![CDATA[<b>Delta Chat</b>]]> jest zawsze darmowy.<![CDATA[<br/>]]>Otwarto źródłowy. Bez reklam. Bez abonamentu. No vendor lock-in. (Brak sprzedawców umowy o wyłączności ???)</string>
+
+    <string name="Intro6Headline">Bezpieczny</string>
+    <string name="Intro6Message"><![CDATA[<b>Zaszyfrowany</b>]]> za pomocą wszystkich typowych algorytmów. Wiadomości pozostają na swoich serwerach.</string>
+
+    <string name="Intro7Headline">Godny zaufania</string>
+
+    <string name="IntroStartMessaging">Uruchom komunikator</string>
+    <!--plural-->
+    <string name="Members_zero">%1$d członków</string>
+    <string name="Members_one">%1$d członek</string>
+    <string name="Members_two">%1$d członków</string>
+    <string name="Members_few">%1$d członków</string>
+    <string name="Members_many">%1$d członków</string>
+    <string name="Members_other">%1$d członków</string>
+    <plurals name="NewMessages">
+        <item quantity="one">%d nowa wiadomość</item>
+        <item quantity="few">%d nowe wiadomości</item>
+        <item quantity="other">%d nowych wiadomości</item>
+    </plurals>
+    <plurals name="messages">
+        <item quantity="one">%d wiadomość</item>
+        <item quantity="few">%d wiadomości</item>
+        <item quantity="other">%d wiadomości</item>
+    </plurals>
+    <string name="items_zero">brak elementów</string>
+    <string name="items_one">%1$d element</string>
+    <string name="items_two">%1$d elementy</string>
+    <string name="items_few">%1$d elementy</string>
+    <string name="items_many">%1$d elementy</string>
+    <string name="items_other">%1$d elementy</string>
+    <string name="FromChats_zero">z żadnego czatu</string>
+    <string name="FromChats_one">z %1$d czatu</string>
+    <string name="FromChats_two">z %1$d czatów</string>
+    <string name="FromChats_few">z %1$d czatów</string>
+    <string name="FromChats_many">z %1$d czatów</string>
+    <string name="FromChats_other">z %1$d czatów</string>
+
+    <plurals name="Chats">
+        <item quantity="one">%d czat</item>
+        <item quantity="few">%d czaty</item>
+        <item quantity="other">%d czatów</item>
+    </plurals>
+
+    <string name="Seconds_zero">%1$d sekundy</string>
+    <string name="Seconds_one">%1$d sekunda</string>
+    <string name="Seconds_two">%1$d sekundy</string>
+    <string name="Seconds_few">%1$d sekundy</string>
+    <string name="Seconds_many">%1$d sekundy</string>
+    <string name="Seconds_other">%1$d sekundy</string>
+    <string name="Minutes_zero">%1$d minut</string>
+    <string name="Minutes_one">%1$d min.</string>
+    <string name="Minutes_two">%1$d minut</string>
+    <string name="Minutes_few">%1$d minut</string>
+    <string name="Minutes_many">%1$d minut</string>
+    <string name="Minutes_other">%1$d minut</string>
+    <string name="Hours_zero">%1$d godziny</string>
+    <string name="Hours_one">%1$d godz.</string>
+    <string name="Hours_two">%1$d godziny</string>
+    <string name="Hours_few">%1$d godziny</string>
+    <string name="Hours_many">%1$d godziny</string>
+    <string name="Hours_other">%1$d godziny</string>
+    <string name="Days_zero">%1$d dni</string>
+    <string name="Days_one">%1$d dzień</string>
+    <string name="Days_two">%1$d dni</string>
+    <string name="Days_few">%1$d dni</string>
+    <string name="Days_many">%1$d dni</string>
+    <string name="Days_other">%1$d dni</string>
+    <string name="Weeks_zero">%1$d tygodni</string>
+    <string name="Weeks_one">%1$d tydzień</string>
+    <string name="Weeks_two">%1$d tygodni</string>
+    <string name="Weeks_few">%1$d tygodni</string>
+    <string name="Weeks_many">%1$d tygodni</string>
+    <string name="Weeks_other">%1$d tygodni</string>
+    <string name="Months_zero">%1$d miesięcy</string>
+    <string name="Months_one">%1$d miesiąc</string>
+    <string name="Months_two">%1$d miesięcy</string>
+    <string name="Months_few">%1$d miesięcy</string>
+    <string name="Months_many">%1$d miesięcy</string>
+    <string name="Months_other">%1$d miesięcy</string>
+    <string name="Years_zero">%1$d lata</string>
+    <string name="Years_one">%1$d rok</string>
+    <string name="Years_two">%1$d lata</string>
+    <string name="Years_few">%1$d lata</string>
+    <string name="Years_many">%1$d lata</string>
+    <string name="Years_other">%1$d lata</string>
+    <string name="Users_zero">%1$d użytkowników</string>
+    <string name="Users_one">%1$d użytkownik</string>
+    <string name="Users_two">%1$d użytkowników</string>
+    <string name="Users_few">%1$d użytkowników</string>
+    <string name="Users_many">%1$d użytkowników</string>
+    <string name="Users_other">%1$d użytkowników</string>
+    <string name="Times_zero">%1$d razy</string>
+    <string name="Times_one">%1$d raz</string>
+    <string name="Times_two">%1$d razy</string>
+    <string name="Times_few">%1$d razy</string>
+    <string name="Times_many">%1$d razy</string>
+    <string name="Times_other">%1$d razy</string>
+    <string name="Meters_zero">%1$d metrów</string>
+    <string name="Meters_one">%1$d metr</string>
+    <string name="Meters_two">%1$d metrów</string>
+    <string name="Meters_few">%1$d metrów</string>
+    <string name="Meters_many">%1$d metrów</string>
+    <string name="Meters_other">%1$d metrów</string>
+    <string name="Stickers_zero">%1$d naklejki</string>
+    <string name="Stickers_one">%1$d naklejka</string>
+    <string name="Stickers_two">%1$d naklejki</string>
+    <string name="Stickers_few">%1$d naklejki</string>
+    <string name="Stickers_many">%1$d naklejki</string>
+    <string name="Stickers_other">%1$d naklejki</string>
+    <string name="Photos_zero">%1$d zdjęć</string>
+    <string name="Photos_one">%1$d zdjęcie</string>
+    <string name="Photos_two">%1$d zdjęć</string>
+    <string name="Photos_few">%1$d zdjęć</string>
+    <string name="Photos_many">%1$d zdjęć</string>
+    <string name="Photos_other">%1$d zdjęć</string>
+    <!--date formatters-->
+    <string name="formatterMonthYear">MMMM yyyy</string>
+    <string name="formatterMonth">dd MMM</string>
+    <string name="formatterYear">dd.MM.yyyy</string>
+    <string name="chatDate">EEE, d MMMM</string>
+    <string name="chatFullDate">EEE, d MMMM yyyy</string>
+    <string name="formatterWeek">EEE</string>
+    <string name="formatterDay24H">HH:mm</string>
+    <string name="formatterDay12H">h:mm a</string>
+    <string name="formatDateAtTime">%1$s o %2$s</string>
+    <string name="AccountSettings">Ustawienia konta</string>
+    <string name="MyAccount">Moje konto</string>
+    <string name="Yes">Tak</string>
+    <string name="No">Nie</string>
+    <string name="MyName">Moja nazwa</string>
+    <string name="MyNameExplain">Twoja nazwa, pokazywana odbiorcom.
+
+Jeśli nie wprowadzisz nazwy, odbiorcy będą widzieć tylko twój adres e-mail z ustawień konta.</string>
+    <string name="MyEmailAddress">Mój adres e-mail</string>
+    <string name="Password">Hasło</string>
+    <string name="SmtpPassword">SMTP hasło</string>
+    <string name="FromAbove">jak powyżej</string>
+    <string name="SmtpLoginname">SMTP nazwa użytkownika</string>
+    <string name="SmtpPort">SMTP port</string>
+    <string name="Automatic">atomatycznie</string>
+    <string name="ImapServer">IMAP serwer</string>
+    <string name="ImapLoginname">IMAP nazwa użytkownika</string>
+    <string name="SmtpServer">SMTP serwer</string>
+    <string name="ImapPort">IMAP port</string>
+    <string name="InboxHeadline">Skrzynka odbiorcza</string>
+    <string name="OutboxHeadline">Skrzynka nadawcza</string>
+    <string name="BasicSettings">Ustawienia podstawowe</string>
+    <string name="MyAccountExplain">Dla znanych dostawców usług poczty elektronicznej ponisze ustawienia są określane automatycznie.</string>
+    <string name="MyAccountExplain2" >Czasami IMAP / SMTP musi być włączony w interfejsie www poczty internetowej.
+Z problemami należy zwrócić się do usługodawcy e-mail lub znajomym.</string>
+    <string name="AccountNotConfigured">Konto nie jest skonfigurowane</string>
+    <string name="AboutThisProgram">O Delta Chat</string>
+    <string name="NotSet">Nie ustawiony</string>
+    <string name="NewChat">Nowy czat</string>
+    <string name="MemberSg">## członek</string>
+    <string name="MemberPl">członków - ##</string>
+    <string name="ContactSg">## kontakt</string>
+    <string name="ContactPl">kontaktów - ##</string>
+    <string name="Deaddrop">Skrzynka pocztowa</string>
+    <string name="Media">Multimedia</string>
+    <string name="DeaddropInChatlist">Pokaż skrzynkę pocztową na liście czatów</string>
+    <string name="MuteAlways">Zawsze wyłączone</string>
+    <string name="AskStartChatWith">Rozpocząć czat z <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>?</string>
+    <string name="DeaddropHint">Aby rozpocząć czat, naciśnij na strzałkę odpowiedzi.</string>
+    <string name="NotYetImplemented">Ta funkcja jest niedostępna lub niekompletna.</string>
+    <string name="DefaultStatusText">Wysłane z komunikatora Delta Chat</string>
+    <string name="SubjectPrefix">Wiadomości błyskawiczne</string>
+    <string name="SeachUser">Szukaj użytkownika</string>
+    <string name="Name" >Nazwa</string>
+    <string name="EmailAddress">Adres e-mail</string>
+    <string name="MeAnd">Ja i</string>
+    <string name="CannotDeleteContact">Nie możesz usunąć użytkowników w użyciu, zamiast tego zablokuj użytkownika.</string>
+    <string name="BadEmailAddress">Zły adres e-mail</string>
+    <string name="ContactDeleted">Użytkownik usunięty.</string>
+    <string name="ContactCreated">Użytkownik utworzony.</string>
+    <string name="ViewProfile">Pokaż profil</string>
+    <string name="OneMomentPlease">Jedną chwilę, proszę…</string>
+    <string name="CannotDeleteChat">Nie można usunąć czatu.</string>
+    <string name="NoChatsHelp">Zacznij przesyłanie wiadomości, naciskając przycisk nowej wiadomości w prawym dolnym rogu lub naciśnij przycisk menu, aby uzyskać więcej opcji.</string>
+    <string name="ConfiguringAccount">Konfigurowanie konta…</string>
+    <string name="CannotConnect">Nie można nawiązać połączenia, sprawdź konfigurację.</string>
+    <string name="Intro7Message"><![CDATA[<b>Delta Chat</b>]]> jest bezpieczny dla zastosowań biznesowych, zgodny i oparty na standardach.</string>
+    <string name="InviteMenuEntry">Wyślij zaproszenia</string>
+    <string name="InviteText">Teraz używam komunikatora Delta Chat - %1$s - możesz pisać do mnie na %2$s</string>
+    <string name="AdvancedSettings">Usywienia zaawansowane</string>
+    <string name="AskResetNotifications" >Zresetować wszystkie ustawienia powiadomień i dźwięków na tej stronie oraz dla swoich kontaktów i grup?</string>
+    <string name="AttachFiles">Załącz pliki</string>
+    <string name="Chats">Czaty</string>
+    <string name="ErrGroupNameEmpty">Podaj nazwę dla grupy</string>
+    <string name="MsgNewGroupDraftHint">Napisz pierwszą wiadomość, by inni mogli odpowiedzieć w tej grupie.
+
+• Nie ma problemu, jeśli nie wszyscy członkowie korzystają z Delta Chat.
+
+• Dostarczenie pierwszej wiadomości może chwilę potrwać.</string>
+    <string name="MsgNewGroupDraft">Witam, właśnie utworzyłem dla nas grupę \"##\".</string>
+    <string name="MsgGroupNameChanged">Zmieniono nazwę grupy z \"##\" na \"##\".</string>
+    <string name="MsgGroupImageChanged">Zmieniono obraz grupy.</string>
+    <string name="MsgMemberAddedToGroup">Dodano członka ##</string>
+    <string name="MsgMemberRemovedFromToGroup">Usunięto członka ##</string>
+    <string name="AskAddMemberToGroup">Dodać użytkownika <![CDATA[<b>]]>%1$s<![CDATA[</b>]]> do grupy?</string>
+    <string name="AskRemoveMemberFromGroup">Usunąć użytkownika <![CDATA[<b>]]>%1$s<![CDATA[</b>]]> z grupy?</string>
+    <string name="ErrSelfNotInGroup">Musisz być członkiem grupy, aby wykonać tę czynność.</string>
+    <string name="MsgGroupLeft">Grupa opuszczona.</string>
+    <string name="NoMessagesHint">Wyślij wiadomość do <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>:
+
+• Nie ma problemu, jeśli <![CDATA[<b>]]>%2$s<![CDATA[</b>]]> nie używa Delta Chat.
+
+• Dostarczenie pierwszej wiadomości może chwilę potrwać.</string>
+    <string name="SendNRcvReadReceipts">Odbieraj i wysyłaj potwierdzenia odczytu</string>
+    <string name="E2EEncryption">Pełne szyfrowanie</string>
+    <string name="E2EManagePrivateKeys">Zarządzaj prywatnymi kluczami</string>
+    <string name="E2ECompareKeys">Porównaj klucze</string>
+    <string name="ResetUserKey">Resetuj klucz użytkownika</string>
+    <string name="ForwardToTitle">Przekaż do…</string>
+</resources>
