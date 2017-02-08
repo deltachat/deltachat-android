@@ -379,12 +379,6 @@
     <string name="Stickers_few">%1$d sticker</string>
     <string name="Stickers_many">%1$d sticker</string>
     <string name="Stickers_other">%1$d sticker</string>
-    <string name="Photos_zero">%1$d foto</string>
-    <string name="Photos_one">%1$d foto</string>
-    <string name="Photos_two">%1$d foto</string>
-    <string name="Photos_few">%1$d foto</string>
-    <string name="Photos_many">%1$d foto</string>
-    <string name="Photos_other">%1$d foto</string>
     <!--date formatters-->
     <string name="formatterMonthYear">MMMM yyyy</string>
     <string name="formatterMonth">dd MMM</string>
