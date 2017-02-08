@@ -329,12 +329,6 @@
         <item quantity="one">%d messaggio</item>
         <item quantity="other">%d messaggi</item>
     </plurals>
-    <string name="FromChats_zero">da nessuna chat</string>
-    <string name="FromChats_one">da %1$d chat</string>
-    <string name="FromChats_two">da %1$d chat</string>
-    <string name="FromChats_few">da %1$d chat</string>
-    <string name="FromChats_many">da %1$d chat</string>
-    <string name="FromChats_other">da %1$d chat</string>
 
     <plurals name="Chats">
         <item quantity="one">%d chat</item>

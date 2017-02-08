@@ -353,12 +353,6 @@
         <item quantity="one">%d mensagem</item>
         <item quantity="other">%d mensagens</item>
     </plurals>
-    <string name="FromChats_zero">de nenhum chat</string>
-    <string name="FromChats_one">de %1$d chat</string>
-    <string name="FromChats_two">de %1$d chats</string>
-    <string name="FromChats_few">de %1$d chats</string>
-    <string name="FromChats_many">de %1$d chats</string>
-    <string name="FromChats_other">de %1$d chats</string>
     <string name="Minutes_zero">%1$d minutos</string>
     <string name="Minutes_one">%1$d minuto</string>
     <string name="Minutes_two">%1$d minutos</string>

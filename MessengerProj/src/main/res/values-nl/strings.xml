@@ -329,12 +329,6 @@
         <item quantity="one">%d bericht</item>
         <item quantity="other">%d berichten</item>
     </plurals>
-    <string name="FromChats_zero">van geen chats</string>
-    <string name="FromChats_one">van %1$d chat</string>
-    <string name="FromChats_two">van %1$d chats</string>
-    <string name="FromChats_few">van %1$d chats</string>
-    <string name="FromChats_many">van %1$d chats</string>
-    <string name="FromChats_other">van %1$d chats</string>
     <string name="Minutes_zero">%1$d minuten</string>
     <string name="Minutes_one">%1$d minuut</string>
     <string name="Minutes_two">%1$d minuten</string>

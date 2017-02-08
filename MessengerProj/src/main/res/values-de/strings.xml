@@ -358,12 +358,6 @@
         <item quantity="one">%d Nachricht löschen? Die Nachricht wird auch auf dem Server gelöscht.</item>
         <item quantity="other">%d Nachrichten löschen? Die Nachrichten werden auch auf dem Server gelöscht.</item>
     </plurals>
-    <string name="FromChats_zero">in keinen Chats</string>
-    <string name="FromChats_one">in %1$d Chat</string>
-    <string name="FromChats_two">in %1$d Chats</string>
-    <string name="FromChats_few">in %1$d Chats</string>
-    <string name="FromChats_many">in %1$d Chats</string>
-    <string name="FromChats_other">in %1$d Chats</string>
 
     <plurals name="Chats">
         <item quantity="one">%d Chat</item>

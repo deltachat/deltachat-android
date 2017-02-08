@@ -351,12 +351,6 @@ Uwaga! Jeśli zapomnisz kod dostępu, musisz usunąć i ponownie zainstalować a
         <item quantity="few">%d wiadomości</item>
         <item quantity="other">%d wiadomości</item>
     </plurals>
-    <string name="FromChats_zero">z żadnego czatu</string>
-    <string name="FromChats_one">z %1$d czatu</string>
-    <string name="FromChats_two">z %1$d czatów</string>
-    <string name="FromChats_few">z %1$d czatów</string>
-    <string name="FromChats_many">z %1$d czatów</string>
-    <string name="FromChats_other">z %1$d czatów</string>
 
     <plurals name="Chats">
         <item quantity="one">%d czat</item>
