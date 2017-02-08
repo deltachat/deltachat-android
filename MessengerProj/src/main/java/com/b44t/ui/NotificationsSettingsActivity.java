@@ -434,9 +434,9 @@ public class NotificationsSettingsActivity extends BaseFragment implements Notif
                     builder.setTitle(LocaleController.getString("RepeatNotifications", R.string.RepeatNotifications));
                     builder.setItems(new CharSequence[]{
                             LocaleController.getString("Disabled", R.string.Disabled),
-                            LocaleController.formatPluralString("Minutes", 5),
-                            LocaleController.formatPluralString("Minutes", 10),
-                            LocaleController.formatPluralString("Minutes", 30),
+                            ApplicationLoader.applicationContext.getResources().getQuantityString(R.plurals.Minutes, 5, 5),
+                            ApplicationLoader.applicationContext.getResources().getQuantityString(R.plurals.Minutes, 10, 10),
+                            ApplicationLoader.applicationContext.getResources().getQuantityString(R.plurals.Minutes, 30, 30),
                             LocaleController.formatPluralString("Hours", 1),
                             LocaleController.formatPluralString("Hours", 2),
                             LocaleController.formatPluralString("Hours", 4)

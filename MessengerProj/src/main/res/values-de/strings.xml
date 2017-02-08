@@ -370,12 +370,10 @@
         <item quantity="other">%d Chats</item>
     </plurals>
 
-    <string name="Minutes_zero">%1$d Minuten</string>
-    <string name="Minutes_one">%1$d Minute</string>
-    <string name="Minutes_two">%1$d Minuten</string>
-    <string name="Minutes_few">%1$d Minuten</string>
-    <string name="Minutes_many">%1$d Minuten</string>
-    <string name="Minutes_other">%1$d Minuten</string>
+    <plurals name="Minutes">
+        <item quantity="one">%d Minute</item>
+        <item quantity="other">%d Minuten</item>
+    </plurals>
     <string name="Hours_zero">%1$d Stunden</string>
     <string name="Hours_one">%1$d Stunde</string>
     <string name="Hours_two">%1$d Stunden</string>

@@ -358,12 +358,11 @@ Uwaga! Jeśli zapomnisz kod dostępu, musisz usunąć i ponownie zainstalować a
         <item quantity="other">%d czatów</item>
     </plurals>
 
-    <string name="Minutes_zero">%1$d minut</string>
-    <string name="Minutes_one">%1$d min.</string>
-    <string name="Minutes_two">%1$d minut</string>
-    <string name="Minutes_few">%1$d minut</string>
-    <string name="Minutes_many">%1$d minut</string>
-    <string name="Minutes_other">%1$d minut</string>
+    <plurals name="Minutes">
+        <item quantity="one">%d minut</item>
+        <item quantity="few">%d minut</item>
+        <item quantity="other">%d minut</item>
+    </plurals>
     <string name="Hours_zero">%1$d godziny</string>
     <string name="Hours_one">%1$d godz.</string>
     <string name="Hours_two">%1$d godziny</string>

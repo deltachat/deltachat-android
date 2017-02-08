@@ -329,12 +329,10 @@
         <item quantity="one">%d mensaje</item>
         <item quantity="other">%d mensajes</item>
     </plurals>
-    <string name="Minutes_zero">%1$d minutos</string>
-    <string name="Minutes_one">%1$d minuto</string>
-    <string name="Minutes_two">%1$d minutos</string>
-    <string name="Minutes_few">%1$d minutos</string>
-    <string name="Minutes_many">%1$d minutos</string>
-    <string name="Minutes_other">%1$d minutos</string>
+    <plurals name="Minutes">
+        <item quantity="one">%d minuto</item>
+        <item quantity="other">%d minutos</item>
+    </plurals>
     <string name="Hours_zero">%1$d horas</string>
     <string name="Hours_one">%1$d hora</string>
     <string name="Hours_two">%1$d horas</string>
