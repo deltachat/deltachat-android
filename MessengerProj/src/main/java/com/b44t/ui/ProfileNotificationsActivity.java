@@ -583,7 +583,8 @@ public class ProfileNotificationsActivity extends BaseFragment implements Notifi
                         if (delta <= 0) {
                             val = LocaleController.getString("Enabled", R.string.Enabled);
                         } else if (delta < 60 * 60) {
-                            val = LocaleController.formatString("WillUnmuteIn", R.string.WillUnmuteIn, LocaleController.formatPluralString("Minutes", delta / 60));
+                            // @TODO: Maybe this should be reworded a bit.
+                            val = mContext.getResources().getQuantityString(R.plurals.Minutes, delta / 60, delta / 60);
                         } else if (delta < 60 * 60 * 24) {
                             val = LocaleController.formatString("WillUnmuteIn", R.string.WillUnmuteIn, LocaleController.formatPluralString("Hours", (int) Math.ceil(delta / 60.0f / 60)));
                         } else if (delta < 60 * 60 * 24 * 365) {
@@ -629,7 +630,7 @@ public class ProfileNotificationsActivity extends BaseFragment implements Notifi
                         textCell.setTextAndValue(LocaleController.getString("SmartNotifications", R.string.SmartNotifications), LocaleController.getString("Disabled", R.string.Disabled), true);
                     } else {
                         String times = LocaleController.formatPluralString("Times", notifyMaxCount);
-                        String minutes = LocaleController.formatPluralString("Minutes", notifyDelay / 60);
+                        String minutes = ApplicationLoader.applicationContext.getResources().getQuantityString(R.plurals.Minutes, notifyDelay / 60, notifyDelay / 60);
                         textCell.setTextAndValue(LocaleController.getString("SmartNotifications", R.string.SmartNotifications), LocaleController.formatString("SmartNotificationsInfo", R.string.SmartNotificationsInfo, times, minutes), true);
                     }
                 }

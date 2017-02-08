@@ -679,7 +679,7 @@ public class NotificationsSettingsActivity extends BaseFragment implements Notif
                     if (minutes == 0) {
                         value = LocaleController.getString("Disabled", R.string.Disabled);
                     } else if (minutes < 60) {
-                        value = LocaleController.formatPluralString("Minutes", minutes);
+                        value = ApplicationLoader.applicationContext.getResources().getQuantityString(R.plurals.Minutes, minutes, minutes);
                     } else {
                         value = LocaleController.formatPluralString("Hours", minutes / 60);
                     }

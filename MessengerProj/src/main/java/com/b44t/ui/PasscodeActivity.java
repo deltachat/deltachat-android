@@ -371,9 +371,9 @@ public class PasscodeActivity extends BaseFragment implements NotificationCenter
                                 if (value == 0) {
                                     return LocaleController.getString("Disabled", R.string.Disabled);
                                 } else if (value == 1) {
-                                    return LocaleController.formatString("AutoLockInTime", R.string.AutoLockInTime, LocaleController.formatPluralString("Minutes", 1));
+                                    return ApplicationLoader.applicationContext.getResources().getQuantityString(R.plurals.Minutes, 1, 1);
                                 } else if (value == 2) {
-                                    return LocaleController.formatString("AutoLockInTime", R.string.AutoLockInTime, LocaleController.formatPluralString("Minutes", 5));
+                                    return ApplicationLoader.applicationContext.getResources().getQuantityString(R.plurals.Minutes, 5, 5);
                                 } else if (value == 3) {
                                     return LocaleController.formatString("AutoLockInTime", R.string.AutoLockInTime, LocaleController.formatPluralString("Hours", 1));
                                 } else if (value == 4) {
@@ -674,7 +674,7 @@ public class PasscodeActivity extends BaseFragment implements NotificationCenter
                     if (UserConfig.autoLockIn == 0) {
                         val = LocaleController.formatString("Disabled", R.string.Disabled);
                     } else if (UserConfig.autoLockIn < 60 * 60) {
-                        val = LocaleController.formatString("AutoLockInTime", R.string.AutoLockInTime, LocaleController.formatPluralString("Minutes", UserConfig.autoLockIn / 60));
+                        val = ApplicationLoader.applicationContext.getResources().getQuantityString(R.plurals.Minutes, UserConfig.autoLockIn / 60, UserConfig.autoLockIn / 60);
                     } else if (UserConfig.autoLockIn < 60 * 60 * 24) {
                         val = LocaleController.formatString("AutoLockInTime", R.string.AutoLockInTime, LocaleController.formatPluralString("Hours", (int) Math.ceil(UserConfig.autoLockIn / 60.0f / 60)));
                     } else {
