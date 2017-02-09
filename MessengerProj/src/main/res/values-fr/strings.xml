@@ -18,7 +18,6 @@
     <string name="SelectChat">Selectionner la conversation…</string>
     <string name="Search">Rechercher</string>
     <string name="MuteNotifications">Désactiver les notifications</string>
-    <string name="MuteFor">Silence pour %1$s</string>
     <string name="UnmuteNotifications">Activer les notifications</string>
     <string name="WillUnmuteIn">Dans %1$s</string>
     <string name="Draft">Brouillons</string>

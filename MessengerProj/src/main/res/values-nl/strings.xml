@@ -20,7 +20,6 @@
     <string name="SelectChat">Kies een chat …</string>
     <string name="Search">Zoeken</string>
     <string name="MuteNotifications">Meldingen stil</string>
-    <string name="MuteFor">%1$s stil</string>
     <string name="UnmuteNotifications">Stil uitschakelen</string>
     <string name="WillUnmuteIn">Over %1$s</string>
     <string name="Draft">Concept</string>

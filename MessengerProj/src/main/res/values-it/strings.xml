@@ -20,7 +20,6 @@
     <string name="SelectChat">Seleziona chat …</string>
     <string name="Search">Cerca</string>
     <string name="MuteNotifications">Silenzia notifiche</string>
-    <string name="MuteFor">Silenzia per %1$s</string>
     <string name="UnmuteNotifications">Suona</string>
     <string name="WillUnmuteIn">Tra %1$s</string>
     <string name="Draft">Bozza</string>
