@@ -1717,8 +1717,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         MessageObject message = null;
         if (view instanceof ChatMessageCell) {
             message = ((ChatMessageCell) view).getMessageObject();
-        } else if (view instanceof ChatActionCell) {
-            message = ((ChatActionCell) view).getMessageObject();
         }
 
         if (message==null || !message.isSelectable()) {
@@ -2782,24 +2780,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                         imageReceiver = cell.getPhotoImage();
                     }
                 }
-            } else if (view instanceof ChatActionCell) {
-                ChatActionCell cell = (ChatActionCell) view;
-                MessageObject message = cell.getMessageObject();
-                if (message != null) {
-                    if (messageObject != null) {
-                        if (message.getId() == messageObject.getId()) {
-                            imageReceiver = cell.getPhotoImage();
-                        }
-                    } else if (fileLocation != null && message.photoThumbs != null) {
-                        for (int b = 0; b < message.photoThumbs.size(); b++) {
-                            TLRPC.PhotoSize photoSize = message.photoThumbs.get(b);
-                            if (photoSize.location.volume_id == fileLocation.volume_id && photoSize.location.local_id == fileLocation.local_id) {
-                                imageReceiver = cell.getPhotoImage();
-                                break;
-                            }
-                        }
-                    }
-                }
             }
 
             if (imageReceiver != null) {
@@ -3091,38 +3071,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 chatMessageCell.setAllowAssistant(true);
             } else if (viewType == ROWTYPE_DATE_HEADLINE ) {
                 view = new ChatActionCell(mContext);
-                ((ChatActionCell) view).setDelegate(new ChatActionCell.ChatActionCellDelegate() {
-                    @Override
-                    public void didClickedImage(ChatActionCell cell) {
-                        MessageObject message = cell.getMessageObject();
-                        PhotoViewer.getInstance().setParentActivity(getParentActivity());
-                        TLRPC.PhotoSize photoSize = FileLoader.getClosestPhotoSizeWithSize(message.photoThumbs, 640);
-                        if (photoSize != null) {
-                            PhotoViewer.getInstance().openPhoto(photoSize.location, ChatActivity.this);
-                        } else {
-                            PhotoViewer.getInstance().openPhoto(message, 0, 0, ChatActivity.this);
-                        }
-                    }
-
-                    @Override
-                    public void didLongPressed(ChatActionCell cell) {
-                    }
-
-                    @Override
-                    public void needOpenUserProfile(int uid) {
-                        if (uid < 0) {
-                            Bundle args = new Bundle();
-                            args.putInt("chat_id", -uid);
-                            presentFragment(new ChatActivity(args), true);
-                        } else if (uid != UserConfig.getClientUserId()) {
-                            Bundle args = new Bundle();
-                            args.putInt("user_id", uid);
-                            ProfileActivity fragment = new ProfileActivity(args);
-                            fragment.setPlayProfileAnimation(false/*currentUser != null && currentUser.id == uid*/);
-                            presentFragment(fragment);
-                        }
-                    }
-                });
             } else if (viewType == ROWTYPE_UNREAD_HEADLINE) {
                 view = new ChatUnreadCell(mContext);
             }

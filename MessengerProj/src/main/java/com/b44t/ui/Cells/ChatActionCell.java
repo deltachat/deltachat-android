@@ -24,45 +24,25 @@
 package com.b44t.ui.Cells;
 
 import android.content.Context;
-import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.text.Layout;
-import android.text.Spannable;
 import android.text.StaticLayout;
 import android.text.TextPaint;
-import android.text.style.URLSpan;
 import android.view.MotionEvent;
-import android.view.SoundEffectConstants;
 
 import com.b44t.messenger.AndroidUtilities;
 import com.b44t.messenger.ApplicationLoader;
-import com.b44t.messenger.ImageReceiver;
 import com.b44t.messenger.MessageObject;
 import com.b44t.messenger.MessagesController;
-import com.b44t.messenger.FileLoader;
 import com.b44t.messenger.FileLog;
-import com.b44t.messenger.TLRPC;
-import com.b44t.messenger.UserConfig;
 import com.b44t.ui.ActionBar.Theme;
-import com.b44t.ui.PhotoViewer;
-import com.b44t.ui.Components.AvatarDrawable;
 
 public class ChatActionCell extends BaseCell {
-
-    public interface ChatActionCellDelegate {
-        void didClickedImage(ChatActionCell cell);
-        void didLongPressed(ChatActionCell cell);
-        void needOpenUserProfile(int uid);
-    }
 
     private static TextPaint textPaint;
     private static Paint backPaint;
 
-    private URLSpan pressedLink;
-
-    private ImageReceiver imageReceiver;
-    private AvatarDrawable avatarDrawable;
     private StaticLayout textLayout;
     private int textWidth = 0;
     private int textHeight = 0;
@@ -70,13 +50,10 @@ public class ChatActionCell extends BaseCell {
     private int textY = 0;
     private int textXLeft = 0;
     private int previousWidth = 0;
-    private boolean imagePressed = false;
 
     private boolean hasReplyMessage;
 
     private MessageObject currentMessageObject;
-
-    private ChatActionCellDelegate delegate;
 
     public ChatActionCell(Context context) {
         super(context);
@@ -90,14 +67,7 @@ public class ChatActionCell extends BaseCell {
         }
         backPaint.setColor(ApplicationLoader.getServiceMessageColor());
 
-        imageReceiver = new ImageReceiver(this);
-        imageReceiver.setRoundRadius(AndroidUtilities.dp(32));
-        avatarDrawable = new AvatarDrawable();
         textPaint.setTextSize(AndroidUtilities.dp(MessagesController.getInstance().fontSize - 2));
-    }
-
-    public void setDelegate(ChatActionCellDelegate delegate) {
-        this.delegate = delegate;
     }
 
     public void setMessageObject(MessageObject messageObject) {
@@ -107,35 +77,6 @@ public class ChatActionCell extends BaseCell {
         currentMessageObject = messageObject;
         hasReplyMessage = messageObject.replyMessageObject != null;
         previousWidth = 0;
-        if (currentMessageObject.type == 11) {
-            int id = 0;
-            if (messageObject.messageOwner.to_id != null) {
-                if (messageObject.messageOwner.to_id.chat_id != 0) {
-                    id = messageObject.messageOwner.to_id.chat_id;
-                } else if (messageObject.messageOwner.to_id.channel_id != 0) {
-                    id = messageObject.messageOwner.to_id.channel_id;
-                } else {
-                    id = messageObject.messageOwner.to_id.user_id;
-                    if (id == UserConfig.getClientUserId()) {
-                        id = messageObject.messageOwner.from_id;
-                    }
-                }
-            }
-            avatarDrawable.setInfoByName(null);
-            /*if (currentMessageObject.messageOwner.action instanceof TLRPC.TL_messageActionUserUpdatedPhoto) {
-                imageReceiver.setImage(currentMessageObject.messageOwner.action.newUserPhoto.photo_small, "50_50", avatarDrawable, null, false);
-            } else */ {
-                TLRPC.PhotoSize photo = FileLoader.getClosestPhotoSizeWithSize(currentMessageObject.photoThumbs, AndroidUtilities.dp(64));
-                if (photo != null) {
-                    imageReceiver.setImage(photo.location, "50_50", avatarDrawable, null, false);
-                } else {
-                    imageReceiver.setImageBitmap(avatarDrawable);
-                }
-            }
-            imageReceiver.setVisible(!PhotoViewer.getInstance().isShowingImage(currentMessageObject), false);
-        } else {
-            imageReceiver.setImageBitmap((Bitmap)null);
-        }
         requestLayout();
     }
 
@@ -143,95 +84,13 @@ public class ChatActionCell extends BaseCell {
         return currentMessageObject;
     }
 
-    public ImageReceiver getPhotoImage() {
-        return imageReceiver;
-    }
-
     @Override
     protected void onLongPress() {
-        if (delegate != null) {
-            delegate.didLongPressed(this);
-        }
     }
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        float x = event.getX();
-        float y = event.getY();
-
-        boolean result = false;
-        if (event.getAction() == MotionEvent.ACTION_DOWN) {
-            if (delegate != null) {
-                if (currentMessageObject.type == 11 && imageReceiver.isInsideImage(x, y)) {
-                    imagePressed = true;
-                    result = true;
-                }
-                if (result) {
-                    startCheckLongPress();
-                }
-            }
-        } else {
-            if (event.getAction() != MotionEvent.ACTION_MOVE) {
-                cancelCheckLongPress();
-            }
-            if (imagePressed) {
-                if (event.getAction() == MotionEvent.ACTION_UP) {
-                    imagePressed = false;
-                    if (delegate != null) {
-                        delegate.didClickedImage(this);
-                        playSoundEffect(SoundEffectConstants.CLICK);
-                    }
-                } else if (event.getAction() == MotionEvent.ACTION_CANCEL) {
-                    imagePressed = false;
-                } else if (event.getAction() == MotionEvent.ACTION_MOVE) {
-                    if (!imageReceiver.isInsideImage(x, y)) {
-                        imagePressed = false;
-                    }
-                }
-            }
-        }
-        if (!result) {
-            if (event.getAction() == MotionEvent.ACTION_DOWN || pressedLink != null && event.getAction() == MotionEvent.ACTION_UP) {
-                if (x >= textX && y >= textY && x <= textX + textWidth && y <= textY + textHeight) {
-                    y -= textY;
-                    x -= textXLeft;
-
-                    final int line = textLayout.getLineForVertical((int)y);
-                    final int off = textLayout.getOffsetForHorizontal(line, x);
-                    final float left = textLayout.getLineLeft(line);
-                    if (left <= x && left + textLayout.getLineWidth(line) >= x && currentMessageObject.messageText instanceof Spannable) {
-                        Spannable buffer = (Spannable) currentMessageObject.messageText;
-                        URLSpan[] link = buffer.getSpans(off, off, URLSpan.class);
-
-                        if (link.length != 0) {
-                            if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                                pressedLink = link[0];
-                                result = true;
-                            } else {
-                                if (link[0] == pressedLink) {
-                                    if (delegate != null) {
-                                        delegate.needOpenUserProfile(Integer.parseInt(link[0].getURL()));
-                                    }
-                                    result = true;
-                                }
-                            }
-                        } else {
-                            pressedLink = null;
-                        }
-                    } else {
-                        pressedLink = null;
-                    }
-                } else {
-                    pressedLink = null;
-                }
-            }
-        }
-
-        if (!result) {
-            result = super.onTouchEvent(event);
-        }
-
-        return result;
+        return false;
     }
 
     @Override
@@ -270,10 +129,6 @@ public class ChatActionCell extends BaseCell {
             textX = (width - textWidth) / 2;
             textY = AndroidUtilities.dp(7);
             textXLeft = (width - textLayout.getWidth()) / 2;
-
-            if (currentMessageObject.type == 11) {
-                imageReceiver.setImageCoords((width - AndroidUtilities.dp(64)) / 2, textHeight + AndroidUtilities.dp(15), AndroidUtilities.dp(64), AndroidUtilities.dp(64));
-            }
         }
         setMeasuredDimension(width, textHeight + AndroidUtilities.dp(14 + (currentMessageObject.type == 11 ? 70 : 0)));
     }
@@ -304,10 +159,6 @@ public class ChatActionCell extends BaseCell {
     protected void onDraw(Canvas canvas) {
         if (currentMessageObject == null) {
             return;
-        }
-
-        if (currentMessageObject.type == 11) {
-            imageReceiver.draw(canvas);
         }
 
         if (textLayout != null) {
