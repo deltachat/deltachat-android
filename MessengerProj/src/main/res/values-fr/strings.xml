@@ -361,12 +361,10 @@
         <item quantity="one">%d minute</item>
         <item quantity="other">%d minutes</item>
     </plurals>
-    <string name="Hours_zero">%1$d heure</string>
-    <string name="Hours_one">%1$d heure</string>
-    <string name="Hours_two">%1$d heures</string>
-    <string name="Hours_few">%1$d heures</string>
-    <string name="Hours_many">%1$d heures</string>
-    <string name="Hours_other">%1$d heures</string>
+    <plurals name="Hours">
+        <item quantity="one">%d heure</item>
+        <item quantity="other">%d heures</item>
+    </plurals>
     <string name="Days_zero">%1$d jour</string>
     <string name="Days_one">%1$d jour</string>
     <string name="Days_two">%1$d jours</string>

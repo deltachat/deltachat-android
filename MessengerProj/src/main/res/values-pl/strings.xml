@@ -363,12 +363,11 @@ Uwaga! Jeśli zapomnisz kod dostępu, musisz usunąć i ponownie zainstalować a
         <item quantity="few">%d minut</item>
         <item quantity="other">%d minut</item>
     </plurals>
-    <string name="Hours_zero">%1$d godziny</string>
-    <string name="Hours_one">%1$d godz.</string>
-    <string name="Hours_two">%1$d godziny</string>
-    <string name="Hours_few">%1$d godziny</string>
-    <string name="Hours_many">%1$d godziny</string>
-    <string name="Hours_other">%1$d godziny</string>
+    <plurals name="Hours">
+        <item quantity="one">%d godziny</item>
+        <item quantity="few">%d godziny</item>
+        <item quantity="other">%d godziny</item>
+    </plurals>
     <string name="Days_zero">%1$d dni</string>
     <string name="Days_one">%1$d dzień</string>
     <string name="Days_two">%1$d dni</string>

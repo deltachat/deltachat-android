@@ -333,12 +333,10 @@
         <item quantity="one">%d minuut</item>
         <item quantity="other">%d minuten</item>
     </plurals>
-    <string name="Hours_zero">%1$d uur</string>
-    <string name="Hours_one">%1$d uur</string>
-    <string name="Hours_two">%1$d uur</string>
-    <string name="Hours_few">%1$d uur</string>
-    <string name="Hours_many">%1$d uur</string>
-    <string name="Hours_other">%1$d uur</string>
+    <plurals name="Hours">
+        <item quantity="one">%d uur</item>
+        <item quantity="other">%d uur</item>
+    </plurals>
     <string name="Days_zero">%1$d dagen</string>
     <string name="Days_one">%1$d dag</string>
     <string name="Days_two">%1$d dagen</string>
