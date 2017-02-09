@@ -26,6 +26,7 @@ package com.b44t.ui.Cells;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
+import android.graphics.Typeface;
 import android.text.Layout;
 import android.text.StaticLayout;
 import android.text.TextPaint;
@@ -61,6 +62,7 @@ public class ChatActionCell extends BaseCell {
             textPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
             textPaint.setColor(0xffffffff);
             textPaint.linkColor = 0xffffffff;
+            textPaint.setTypeface(Typeface.DEFAULT_BOLD);
 
             backPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         }
