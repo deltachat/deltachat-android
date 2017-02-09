@@ -631,9 +631,9 @@ public class ProfileNotificationsActivity extends BaseFragment implements Notifi
                     if (notifyMaxCount == 0) {
                         textCell.setTextAndValue(LocaleController.getString("SmartNotifications", R.string.SmartNotifications), LocaleController.getString("Disabled", R.string.Disabled), true);
                     } else {
-                        String times = LocaleController.formatPluralString("Times", notifyMaxCount);
                         String minutes = ApplicationLoader.applicationContext.getResources().getQuantityString(R.plurals.Minutes, notifyDelay / 60, notifyDelay / 60);
-                        textCell.setTextAndValue(LocaleController.getString("SmartNotifications", R.string.SmartNotifications), LocaleController.formatString("SmartNotificationsInfo", R.string.SmartNotificationsInfo, times, minutes), true);
+                        String value = ApplicationLoader.applicationContext.getResources().getQuantityString(R.plurals.MaxNotifications, notifyMaxCount, notifyMaxCount, minutes);
+                        textCell.setTextAndValue(LocaleController.getString("SmartNotifications", R.string.SmartNotifications), value, true);
                     }
                 }
             } else if (type == TYPE_COLOR_CELL) {

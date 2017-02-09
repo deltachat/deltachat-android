@@ -372,12 +372,6 @@ Uwaga! Jeśli zapomnisz kod dostępu, musisz usunąć i ponownie zainstalować a
         <item quantity="few">%d dni</item>
         <item quantity="other">%d dni</item>
     </plurals>
-    <string name="Times_zero">%1$d razy</string>
-    <string name="Times_one">%1$d raz</string>
-    <string name="Times_two">%1$d razy</string>
-    <string name="Times_few">%1$d razy</string>
-    <string name="Times_many">%1$d razy</string>
-    <string name="Times_other">%1$d razy</string>
     <!--date formatters-->
     <string name="formatterMonthYear">MMMM yyyy</string>
     <string name="formatterMonth">dd MMM</string>

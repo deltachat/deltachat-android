@@ -348,12 +348,6 @@
         <item quantity="one">%d mes</item>
         <item quantity="other">%d meses</item>
     </plurals>
-    <string name="Times_zero">%1$d veces</string>
-    <string name="Times_one">%1$d vez</string>
-    <string name="Times_two">%1$d veces</string>
-    <string name="Times_few">%1$d veces</string>
-    <string name="Times_many">%1$d veces</string>
-    <string name="Times_other">%1$d veces</string>
     <!--date formatters-->
     <string name="formatterMonthYear">MMMM \'de\' yyyy</string>
     <string name="formatterMonth">dd \'de\' MMM</string>

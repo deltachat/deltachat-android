@@ -392,12 +392,13 @@
         <item quantity="one">%d Monat</item>
         <item quantity="other">%d Monate</item>
     </plurals>
-    <string name="Times_zero">%1$d Mal</string>
-    <string name="Times_one">%1$d Mal</string>
-    <string name="Times_two">%1$d Mal</string>
-    <string name="Times_few">%1$d Mal</string>
-    <string name="Times_many">%1$d Mal</string>
-    <string name="Times_other">%1$d Mal</string>
+    <plurals name="MaxNotifications">
+        <!-- Translators: the second string placeholder "%s" gets replaced with the
+        text "%d minutes", so the complete sentence would be e.g.
+        "At most 8 notifications within 3 minutes". -->
+        <item quantity="one">Höchstens %1$d Benachrichtigung in %2$s</item>
+        <item quantity="other">Höchstens %1$d Benachrichtigungen in %2$s</item>
+    </plurals>
     <!--date formatters-->
     <string name="formatterMonthYear">MMMM yyyy</string>
     <string name="formatterMonth">d. MMM</string>
