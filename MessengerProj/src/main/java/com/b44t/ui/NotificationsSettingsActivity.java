@@ -437,9 +437,9 @@ public class NotificationsSettingsActivity extends BaseFragment implements Notif
                             ApplicationLoader.applicationContext.getResources().getQuantityString(R.plurals.Minutes, 5, 5),
                             ApplicationLoader.applicationContext.getResources().getQuantityString(R.plurals.Minutes, 10, 10),
                             ApplicationLoader.applicationContext.getResources().getQuantityString(R.plurals.Minutes, 30, 30),
-                            LocaleController.formatPluralString("Hours", 1),
-                            LocaleController.formatPluralString("Hours", 2),
-                            LocaleController.formatPluralString("Hours", 4)
+                            ApplicationLoader.applicationContext.getResources().getQuantityString(R.plurals.Hours, 1, 1),
+                            ApplicationLoader.applicationContext.getResources().getQuantityString(R.plurals.Hours, 2, 2),
+                            ApplicationLoader.applicationContext.getResources().getQuantityString(R.plurals.Hours, 4, 4)
                     }, new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
@@ -681,7 +681,7 @@ public class NotificationsSettingsActivity extends BaseFragment implements Notif
                     } else if (minutes < 60) {
                         value = ApplicationLoader.applicationContext.getResources().getQuantityString(R.plurals.Minutes, minutes, minutes);
                     } else {
-                        value = LocaleController.formatPluralString("Hours", minutes / 60);
+                        value = ApplicationLoader.applicationContext.getResources().getQuantityString(R.plurals.Hours, minutes / 60, minutes / 60);
                     }
                     textCell.setTextAndValue(LocaleController.getString("RepeatNotifications", R.string.RepeatNotifications), value, true);
                 }

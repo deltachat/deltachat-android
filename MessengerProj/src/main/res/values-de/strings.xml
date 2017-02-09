@@ -20,6 +20,9 @@
     <string name="SelectChat">Chat auswählen …</string>
     <string name="Search">Suche</string>
     <string name="MuteNotifications">Stummschalten</string>
+    <string name="MuteFor1Hour">Stumm für 1 Stunde</string>
+    <string name="MuteFor8Hours">Stumm für 8 Stunden</string>
+    <string name="MuteFor2Days">Stumm für 2 Tage</string>
     <string name="MuteFor">Stumm für %1$s</string>
     <string name="UnmuteNotifications">Stumm aus</string>
     <string name="WillUnmuteIn">In %1$s</string>
