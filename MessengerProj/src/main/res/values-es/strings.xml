@@ -336,12 +336,10 @@
         <item quantity="one">%d hora</item>
         <item quantity="other">%d horas</item>
     </plurals>
-    <string name="Days_zero">%1$d días</string>
-    <string name="Days_one">%1$d día</string>
-    <string name="Days_two">%1$d días</string>
-    <string name="Days_few">%1$d días</string>
-    <string name="Days_many">%1$d días</string>
-    <string name="Days_other">%1$d días</string>
+    <plurals name="Days">
+        <item quantity="one">%d día</item>
+        <item quantity="other">%d días</item>
+    </plurals>
     <plurals name="Weeks">
         <item quantity="one">%d semana</item>
         <item quantity="other">%d semanas</item>

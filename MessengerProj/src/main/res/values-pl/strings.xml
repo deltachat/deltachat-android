@@ -367,12 +367,11 @@ Uwaga! Jeśli zapomnisz kod dostępu, musisz usunąć i ponownie zainstalować a
         <item quantity="few">%d godziny</item>
         <item quantity="other">%d godziny</item>
     </plurals>
-    <string name="Days_zero">%1$d dni</string>
-    <string name="Days_one">%1$d dzień</string>
-    <string name="Days_two">%1$d dni</string>
-    <string name="Days_few">%1$d dni</string>
-    <string name="Days_many">%1$d dni</string>
-    <string name="Days_other">%1$d dni</string>
+    <plurals name="Days">
+        <item quantity="one">%d dzień</item>
+        <item quantity="few">%d dni</item>
+        <item quantity="other">%d dni</item>
+    </plurals>
     <string name="Times_zero">%1$d razy</string>
     <string name="Times_one">%1$d raz</string>
     <string name="Times_two">%1$d razy</string>

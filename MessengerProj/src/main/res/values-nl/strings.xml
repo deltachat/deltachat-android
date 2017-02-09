@@ -336,12 +336,10 @@
         <item quantity="one">%d uur</item>
         <item quantity="other">%d uur</item>
     </plurals>
-    <string name="Days_zero">%1$d dagen</string>
-    <string name="Days_one">%1$d dag</string>
-    <string name="Days_two">%1$d dagen</string>
-    <string name="Days_few">%1$d dagen</string>
-    <string name="Days_many">%1$d dagen</string>
-    <string name="Days_other">%1$d dagen</string>
+    <plurals name="Days">
+        <item quantity="one">%d dag</item>
+        <item quantity="other">%d dagen</item>
+    </plurals>
     <plurals name="Weeks">
         <item quantity="one">%d week</item>
         <item quantity="other">%d weken</item>
