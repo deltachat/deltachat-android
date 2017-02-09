@@ -1414,9 +1414,7 @@ public class MessageObject {
                 if (currentPhotoObject == null) {
                     return;
                 }
-                if (currentPhotoObject != null) {
-                    mediaExists = FileLoader.getPathToAttach(currentPhotoObject, true).exists();
-                }
+                mediaExists = FileLoader.getPathToAttach(currentPhotoObject, true).exists();
             }
         }
 
