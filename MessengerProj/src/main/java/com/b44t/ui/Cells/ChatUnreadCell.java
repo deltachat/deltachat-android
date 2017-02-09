@@ -24,6 +24,7 @@
 package com.b44t.ui.Cells;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.widget.FrameLayout;
@@ -51,7 +52,7 @@ public class ChatUnreadCell extends FrameLayout {
         textView.setPadding(0, 0, 0, AndroidUtilities.dp(1));
         textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, MessagesController.getInstance().fontSize-2);
         textView.setTextColor(Theme.MSG_IN_TIME_TEXT_COLOR);
-        textView.setTypeface(AndroidUtilities.getTypeface("fonts/rmedium.ttf"));
+        textView.setTypeface(Typeface.DEFAULT_BOLD);
         addView(textView, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER));
     }
 

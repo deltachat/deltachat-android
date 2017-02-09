@@ -99,7 +99,6 @@ public class AudioCell extends FrameLayout {
         titleTextView = new TextView(context);
         titleTextView.setTextColor(0xff212121);
         titleTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
-        titleTextView.setTypeface(AndroidUtilities.getTypeface("fonts/rmedium.ttf"));
         titleTextView.setLines(1);
         titleTextView.setMaxLines(1);
         titleTextView.setSingleLine(true);

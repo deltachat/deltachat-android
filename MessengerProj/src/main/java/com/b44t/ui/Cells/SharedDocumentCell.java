@@ -93,7 +93,6 @@ public class SharedDocumentCell extends FrameLayout implements MediaController.F
         extTextView = new TextView(context);
         extTextView.setTextColor(0xffffffff);
         extTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
-        extTextView.setTypeface(AndroidUtilities.getTypeface("fonts/rmedium.ttf"));
         extTextView.setLines(1);
         extTextView.setMaxLines(1);
         extTextView.setSingleLine(true);
@@ -114,7 +113,6 @@ public class SharedDocumentCell extends FrameLayout implements MediaController.F
         nameTextView = new TextView(context);
         nameTextView.setTextColor(0xff212121);
         nameTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
-        nameTextView.setTypeface(AndroidUtilities.getTypeface("fonts/rmedium.ttf"));
         nameTextView.setLines(1);
         nameTextView.setMaxLines(1);
         nameTextView.setSingleLine(true);

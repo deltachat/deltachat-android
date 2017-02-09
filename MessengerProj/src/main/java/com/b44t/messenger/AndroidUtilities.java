@@ -37,15 +37,9 @@ import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.database.Cursor;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.BitmapShader;
-import android.graphics.Canvas;
 import android.graphics.Color;
-import android.graphics.Paint;
 import android.graphics.Point;
 import android.graphics.Rect;
-import android.graphics.RectF;
-import android.graphics.Shader;
 import android.graphics.Typeface;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
@@ -73,7 +67,6 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.b44t.ui.ActionBar.BaseFragment;
 import com.b44t.ui.Components.ForegroundDetector;
 import com.b44t.ui.Components.TypefaceSpan;
 
@@ -95,7 +88,6 @@ import java.util.regex.Pattern;
 
 public class AndroidUtilities {
 
-    private static final Hashtable<String, Typeface> typefaceCache = new Hashtable<>();
     private static int prevOrientation = -10;
 
     public static int statusBarHeight = 0;
@@ -322,21 +314,6 @@ public class AndroidUtilities {
             }
         } catch (Exception e) {
             FileLog.e("messenger", e);
-        }
-    }
-
-    public static Typeface getTypeface(String assetPath) {
-        synchronized (typefaceCache) {
-            if (!typefaceCache.containsKey(assetPath)) {
-                try {
-                    Typeface t = Typeface.createFromAsset(ApplicationLoader.applicationContext.getAssets(), assetPath);
-                    typefaceCache.put(assetPath, t);
-                } catch (Exception e) {
-                    FileLog.e("Typefaces", "Could not get typeface '" + assetPath + "' because " + e.getMessage());
-                    return null;
-                }
-            }
-            return typefaceCache.get(assetPath);
         }
     }
 
@@ -727,7 +704,7 @@ public class AndroidUtilities {
             }
             SpannableStringBuilder spannableStringBuilder = new SpannableStringBuilder(stringBuilder);
             for (int a = 0; a < bolds.size() / 2; a++) {
-                spannableStringBuilder.setSpan(new TypefaceSpan(AndroidUtilities.getTypeface("fonts/rmedium.ttf")), bolds.get(a * 2), bolds.get(a * 2 + 1), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                spannableStringBuilder.setSpan(new TypefaceSpan(Typeface.DEFAULT_BOLD), bolds.get(a * 2), bolds.get(a * 2 + 1), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
             }
             for (int a = 0; a < colors.size() / 3; a++) {
                 spannableStringBuilder.setSpan(new ForegroundColorSpan(colors.get(a * 3 + 2)), colors.get(a * 3), colors.get(a * 3 + 1), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);

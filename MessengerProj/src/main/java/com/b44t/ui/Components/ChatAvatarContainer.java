@@ -24,6 +24,7 @@
 package com.b44t.ui.Components;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -61,7 +62,6 @@ public class ChatAvatarContainer extends FrameLayout {
         titleTextView.setTextColor(Theme.ACTION_BAR_TITLE_COLOR);
         titleTextView.setTextSize(18);
         titleTextView.setGravity(Gravity.LEFT);
-        titleTextView.setTypeface(AndroidUtilities.getTypeface("fonts/rmedium.ttf"));
         titleTextView.setLeftDrawableTopPadding(-AndroidUtilities.dp(1.3f));
         titleTextView.setRightDrawableTopPadding(-AndroidUtilities.dp(1.3f));
         addView(titleTextView);

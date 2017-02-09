@@ -28,6 +28,7 @@ import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.graphics.Canvas;
+import android.graphics.Typeface;
 import android.text.SpannableStringBuilder;
 import android.text.Spanned;
 import android.text.TextUtils;
@@ -248,7 +249,7 @@ public class PlayerView extends FrameLayout implements NotificationCenter.Notifi
                     stringBuilder = new SpannableStringBuilder(String.format("%s - %s", messageObject.getMusicAuthor(), messageObject.getMusicTitle()));
                     titleTextView.setEllipsize(TextUtils.TruncateAt.END);
                 }
-                TypefaceSpan span = new TypefaceSpan(AndroidUtilities.getTypeface("fonts/rmedium.ttf"), 0, Theme.INAPP_PLAYER_PERFORMER_TEXT_COLOR);
+                TypefaceSpan span = new TypefaceSpan(Typeface.DEFAULT_BOLD, 0, Theme.INAPP_PLAYER_PERFORMER_TEXT_COLOR);
                 stringBuilder.setSpan(span, 0, messageObject.getMusicAuthor().length(), Spanned.SPAN_INCLUSIVE_INCLUSIVE);
                 titleTextView.setText(stringBuilder);
             }

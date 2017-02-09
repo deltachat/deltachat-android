@@ -1351,7 +1351,6 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
 
         nameTextView = new TextView(containerView.getContext());
         nameTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
-        nameTextView.setTypeface(AndroidUtilities.getTypeface("fonts/rmedium.ttf"));
         nameTextView.setSingleLine(true);
         nameTextView.setMaxLines(1);
         nameTextView.setEllipsize(TextUtils.TruncateAt.END);
@@ -1365,7 +1364,6 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
         dateTextView.setMaxLines(1);
         dateTextView.setEllipsize(TextUtils.TruncateAt.END);
         dateTextView.setTextColor(0xffffffff);
-        dateTextView.setTypeface(AndroidUtilities.getTypeface("fonts/rmedium.ttf"));
         dateTextView.setGravity(Gravity.LEFT);
         bottomLayout.addView(dateTextView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.TOP | Gravity.LEFT, 16, 25, 50, 0));
 

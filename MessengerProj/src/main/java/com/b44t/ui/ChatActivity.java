@@ -668,7 +668,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
 
         actionModeTextView = new SimpleTextView(context);
         actionModeTextView.setTextSize(18);
-        actionModeTextView.setTypeface(AndroidUtilities.getTypeface("fonts/rmedium.ttf"));
         actionModeTextView.setTextColor(Theme.ACTION_BAR_ACTION_MODE_TEXT_COLOR);
         actionModeTextView.setText(LocaleController.getString("Edit", R.string.Edit));
         actionModeTitleContainer.addView(actionModeTextView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.MATCH_PARENT));
@@ -1023,7 +1022,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
 
         pagedownButtonCounter = new TextView(context);
         pagedownButtonCounter.setVisibility(View.INVISIBLE);
-        pagedownButtonCounter.setTypeface(AndroidUtilities.getTypeface("fonts/rmedium.ttf"));
         pagedownButtonCounter.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13);
         pagedownButtonCounter.setTextColor(0xffffffff);
         pagedownButtonCounter.setGravity(Gravity.CENTER);
@@ -1121,7 +1119,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
 
         bottomOverlayChatText = new TextView(context);
         bottomOverlayChatText.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
-        //bottomOverlayChatText.setTypeface(AndroidUtilities.getTypeface("fonts/rmedium.ttf"));
         bottomOverlayChatText.setTextColor(0xffb2b2b2); // same as hintTextColor of the keyboard
         bottomOverlayChat.addView(bottomOverlayChatText, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER));
 

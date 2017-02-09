@@ -61,7 +61,7 @@ public class Theme {
 
     public static final int ATTACH_SHEET_TEXT_COLOR = 0xff757575;
 
-    public static final int DIALOGS_TITLE_TEXT_COLOR = 0xff212121;
+    public static final int DIALOGS_TITLE_TEXT_COLOR = 0xff000000;
     public static final int DIALOGS_MESSAGE_TEXT_COLOR = 0xff8f8f8f;
     public static final int DIALOGS_NAME_TEXT_COLOR = 0xff555555;
     public static final int DIALOGS_SELF_TEXT_COLOR = 0xff00a60e; // from encrypted chat title: 0xff00a60e, alternative: 0xff3c912e
@@ -75,11 +75,6 @@ public class Theme {
     public static final int INAPP_PLAYER_PERFORMER_TEXT_COLOR = 0xff2f3438;
     public static final int INAPP_PLAYER_TITLE_TEXT_COLOR = 0xff2f3438;
     public static final int INAPP_PLAYER_BACKGROUND_COLOR = 0xffffffff;
-
-    public static final int ALERT_PANEL_NAME_TEXT_COLOR = 0xff3a8ccf;
-    public static final int ALERT_PANEL_MESSAGE_TEXT_COLOR = 0xff999999;
-
-    public static final int AUTODOWNLOAD_SHEET_SAVE_TEXT_COLOR = 0xff3a8ccf;
 
     public static final int STICKERS_SHEET_TITLE_TEXT_COLOR = 0xff212121;
     public static final int STICKERS_SHEET_SEND_TEXT_COLOR = 0xff3a8ccf;

@@ -31,6 +31,7 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Matrix;
 import android.graphics.SurfaceTexture;
+import android.graphics.Typeface;
 import android.opengl.GLES20;
 import android.opengl.GLUtils;
 import android.os.Build;
@@ -2087,7 +2088,6 @@ public class PhotoFilterView extends FrameLayout {
         cancelTextView.setBackgroundDrawable(Theme.createBarSelectorDrawable(Theme.ACTION_BAR_PICKER_SELECTOR_COLOR, false));
         cancelTextView.setPadding(AndroidUtilities.dp(29), 0, AndroidUtilities.dp(29), 0);
         cancelTextView.setText(LocaleController.getString("Cancel", R.string.Cancel).toUpperCase());
-        cancelTextView.setTypeface(AndroidUtilities.getTypeface("fonts/rmedium.ttf"));
         frameLayout.addView(cancelTextView, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.MATCH_PARENT, Gravity.TOP | Gravity.LEFT));
 
         doneTextView = new TextView(context);
@@ -2097,7 +2097,7 @@ public class PhotoFilterView extends FrameLayout {
         doneTextView.setBackgroundDrawable(Theme.createBarSelectorDrawable(Theme.ACTION_BAR_PICKER_SELECTOR_COLOR, false));
         doneTextView.setPadding(AndroidUtilities.dp(29), 0, AndroidUtilities.dp(29), 0);
         doneTextView.setText(LocaleController.getString("Done", R.string.Done).toUpperCase());
-        doneTextView.setTypeface(AndroidUtilities.getTypeface("fonts/rmedium.ttf"));
+        doneTextView.setTypeface(Typeface.DEFAULT_BOLD);
         frameLayout.addView(doneTextView, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.MATCH_PARENT, Gravity.TOP | Gravity.RIGHT));
 
         recyclerListView = new RecyclerListView(context);
@@ -2315,7 +2315,6 @@ public class PhotoFilterView extends FrameLayout {
             } else if (a == 3) {
                 curveTextView[a].setText(LocaleController.getString("CurvesBlue", R.string.CurvesBlue).toUpperCase());
             }
-            curveTextView[a].setTypeface(AndroidUtilities.getTypeface("fonts/rmedium.ttf"));
             curveTextViewContainer.addView(curveTextView[a], LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, 28, a == 0 ? 0 : 30, 0, 0, 0));
             curveTextView[a].setOnClickListener(new OnClickListener() {
                 @Override
@@ -2341,7 +2340,6 @@ public class PhotoFilterView extends FrameLayout {
         tintShadowsButton.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
         tintShadowsButton.setGravity(Gravity.CENTER_VERTICAL);
         tintShadowsButton.setText(LocaleController.getString("TintShadows", R.string.TintShadows).toUpperCase());
-        tintShadowsButton.setTypeface(AndroidUtilities.getTypeface("fonts/rmedium.ttf"));
         tintTextViewContainer.addView(tintShadowsButton, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, 28));
         tintShadowsButton.setOnClickListener(new OnClickListener() {
             @Override
@@ -2355,7 +2353,6 @@ public class PhotoFilterView extends FrameLayout {
         tintHighlightsButton.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
         tintHighlightsButton.setGravity(Gravity.CENTER_VERTICAL);
         tintHighlightsButton.setText(LocaleController.getString("TintHighlights", R.string.TintHighlights).toUpperCase());
-        tintHighlightsButton.setTypeface(AndroidUtilities.getTypeface("fonts/rmedium.ttf"));
         tintTextViewContainer.addView(tintHighlightsButton, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, 28, 100, 0, 0, 0));
         tintHighlightsButton.setOnClickListener(new OnClickListener() {
             @Override

@@ -26,6 +26,7 @@ package com.b44t.ui.Cells;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
+import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.text.Layout;
@@ -143,7 +144,6 @@ public class DialogCell extends BaseCell {
             namePaint = new TextPaint(TextPaint.ANTI_ALIAS_FLAG);
             namePaint.setTextSize(AndroidUtilities.dp(17));
             namePaint.setColor(Theme.DIALOGS_TITLE_TEXT_COLOR);
-            namePaint.setTypeface(AndroidUtilities.getTypeface("fonts/rmedium.ttf"));
 
             messagePaint = new TextPaint(TextPaint.ANTI_ALIAS_FLAG);
             messagePaint.setTextSize(AndroidUtilities.dp(16));
@@ -167,7 +167,7 @@ public class DialogCell extends BaseCell {
             countPaint = new TextPaint(TextPaint.ANTI_ALIAS_FLAG);
             countPaint.setTextSize(AndroidUtilities.dp(13));
             countPaint.setColor(0xffffffff);
-            countPaint.setTypeface(AndroidUtilities.getTypeface("fonts/rmedium.ttf"));
+            countPaint.setTypeface(Typeface.DEFAULT_BOLD);
 
             checkDrawable = getResources().getDrawable(R.drawable.dialogs_check);
             halfCheckDrawable = getResources().getDrawable(R.drawable.dialogs_halfcheck);

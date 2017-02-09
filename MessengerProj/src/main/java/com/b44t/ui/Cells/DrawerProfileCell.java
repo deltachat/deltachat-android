@@ -73,8 +73,7 @@ public class DrawerProfileCell extends FrameLayout {
 
         nameTextView = new TextView(context);
         nameTextView.setTextColor(0xffffffff);
-        nameTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 22 /*EDIT BY MR, was 15*/);
-        nameTextView.setTypeface(AndroidUtilities.getTypeface("fonts/rmedium.ttf"));
+        nameTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 23);
         nameTextView.setLines(1);
         nameTextView.setMaxLines(1);
         nameTextView.setSingleLine(true);

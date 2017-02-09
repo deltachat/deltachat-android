@@ -51,7 +51,6 @@ public class PhotoEditToolCell extends FrameLayout {
         nameTextView.setGravity(Gravity.CENTER);
         nameTextView.setTextColor(0xffffffff);
         nameTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 10);
-        nameTextView.setTypeface(AndroidUtilities.getTypeface("fonts/rmedium.ttf"));
         nameTextView.setMaxLines(1);
         nameTextView.setSingleLine(true);
         nameTextView.setEllipsize(TextUtils.TruncateAt.END);
@@ -60,7 +59,6 @@ public class PhotoEditToolCell extends FrameLayout {
         valueTextView = new TextView(context);
         valueTextView.setTextColor(0xff6cc3ff);
         valueTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 11);
-        valueTextView.setTypeface(AndroidUtilities.getTypeface("fonts/rmedium.ttf"));
         addView(valueTextView, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.LEFT | Gravity.TOP, 57, 3, 0, 0));
     }
 

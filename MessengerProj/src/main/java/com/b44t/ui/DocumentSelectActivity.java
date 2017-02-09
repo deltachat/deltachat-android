@@ -192,7 +192,6 @@ public class DocumentSelectActivity extends BaseFragment {
 
         selectedMessagesCountTextView = new NumberTextView(actionMode.getContext());
         selectedMessagesCountTextView.setTextSize(18);
-        selectedMessagesCountTextView.setTypeface(AndroidUtilities.getTypeface("fonts/rmedium.ttf"));
         selectedMessagesCountTextView.setTextColor(0xff737373);
         selectedMessagesCountTextView.setOnTouchListener(new View.OnTouchListener() {
             @Override

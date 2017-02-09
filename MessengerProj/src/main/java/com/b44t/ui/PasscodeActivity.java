@@ -288,7 +288,6 @@ public class PasscodeActivity extends BaseFragment implements NotificationCenter
                 dropDown.setMaxLines(1);
                 dropDown.setEllipsize(TextUtils.TruncateAt.END);
                 dropDown.setTextColor(0xffffffff);
-                dropDown.setTypeface(AndroidUtilities.getTypeface("fonts/rmedium.ttf"));
                 dropDown.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_arrow_drop_down, 0);
                 dropDown.setCompoundDrawablePadding(AndroidUtilities.dp(4));
                 dropDown.setPadding(0, 0, AndroidUtilities.dp(10), 0);

@@ -61,7 +61,6 @@ public class ChatActionCell extends BaseCell {
             textPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
             textPaint.setColor(0xffffffff);
             textPaint.linkColor = 0xffffffff;
-            textPaint.setTypeface(AndroidUtilities.getTypeface("fonts/rmedium.ttf"));
 
             backPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         }

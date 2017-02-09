@@ -167,7 +167,6 @@ public class StickersAlert extends BottomSheet implements NotificationCenter.Not
         titleTextView.setEllipsize(TextUtils.TruncateAt.MIDDLE);
         titleTextView.setPadding(AndroidUtilities.dp(18), 0, AndroidUtilities.dp(18), 0);
         titleTextView.setGravity(Gravity.CENTER_VERTICAL);
-        titleTextView.setTypeface(AndroidUtilities.getTypeface("fonts/rmedium.ttf"));
         containerView.addView(titleTextView, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 48));
         titleTextView.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -326,7 +325,6 @@ public class StickersAlert extends BottomSheet implements NotificationCenter.Not
         previewSendButton.setBackgroundColor(0xffffffff);
         previewSendButton.setPadding(AndroidUtilities.dp(29), 0, AndroidUtilities.dp(29), 0);
         previewSendButton.setText(LocaleController.getString("Close", R.string.Close).toUpperCase());
-        previewSendButton.setTypeface(AndroidUtilities.getTypeface("fonts/rmedium.ttf"));
         previewSendButton.setVisibility(View.GONE);
         stickerPreviewLayout.addView(previewSendButton, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, 48, Gravity.BOTTOM | Gravity.LEFT));
         previewSendButton.setOnClickListener(new View.OnClickListener() {

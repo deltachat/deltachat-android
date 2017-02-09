@@ -29,6 +29,7 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.RectF;
+import android.graphics.Typeface;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
@@ -297,14 +298,12 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
             infoPaint.setTextSize(dp(12));
 
             docNamePaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
-            docNamePaint.setTypeface(getTypeface("fonts/rmedium.ttf"));
             docNamePaint.setTextSize(dp(15));
 
             docBackPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
 
             locationTitlePaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
             locationTitlePaint.setTextSize(dp(15));
-            locationTitlePaint.setTypeface(getTypeface("fonts/rmedium.ttf"));
 
             locationAddressPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
             locationAddressPaint.setTextSize(dp(13));
@@ -320,14 +319,13 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
 
             audioTitlePaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
             audioTitlePaint.setTextSize(dp(16));
-            audioTitlePaint.setTypeface(getTypeface("fonts/rmedium.ttf"));
 
             audioPerformerPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
             audioPerformerPaint.setTextSize(dp(15));
 
             contactNamePaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
             contactNamePaint.setTextSize(dp(15));
-            contactNamePaint.setTypeface(getTypeface("fonts/rmedium.ttf"));
+            contactNamePaint.setTypeface(Typeface.DEFAULT_BOLD);
 
             contactPhonePaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
             contactPhonePaint.setTextSize(dp(13));
@@ -340,14 +338,14 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
             timePaint.setTextSize(dp(12));
 
             namePaint = new TextPaint(TextPaint.ANTI_ALIAS_FLAG);
-            namePaint.setTypeface(getTypeface("fonts/rmedium.ttf"));
+            namePaint.setTypeface(Typeface.DEFAULT_BOLD);
             namePaint.setTextSize(dp(14));
 
             forwardNamePaint = new TextPaint(TextPaint.ANTI_ALIAS_FLAG);
             forwardNamePaint.setTextSize(dp(14));
 
             replyNamePaint = new TextPaint(TextPaint.ANTI_ALIAS_FLAG);
-            replyNamePaint.setTypeface(getTypeface("fonts/rmedium.ttf"));
+            replyNamePaint.setTypeface(Typeface.DEFAULT_BOLD);
             replyNamePaint.setTextSize(dp(14));
 
             replyTextPaint = new TextPaint(TextPaint.ANTI_ALIAS_FLAG);
