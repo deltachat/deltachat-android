@@ -24,7 +24,6 @@
     <string name="MuteFor8Hours">Mute for 8 hours</string>
     <string name="MuteFor2Days">Mute for 2 days</string>
     <string name="UnmuteNotifications">Unmute</string>
-    <string name="WillUnmuteIn">In %1$s</string>
     <string name="Draft">Draft</string>
     <!--audio view-->
     <string name="NoAudio">Please add files to the music library on your device to see them here.</string>
@@ -66,8 +65,6 @@
     <string name="OpenInBrowser">OPEN IN …</string>
     <string name="SendItems">Send %1$s</string>
     <string name="OpenUrlAlert">Open url %1$s?</string>
-    <string name="MoreInfo">More info</string>
-    <string name="ShareSendTo">Send to …</string>
     <string name="ClearRecentEmoji">Clear recent emoji?</string>
     <string name="AddShortcut">Add widget to home screen</string>
     <string name="ShortcutAdded">Widget added to home screen</string>
@@ -75,7 +72,6 @@
     <string name="Reply">Reply</string>
     <string name="ReplyToGroup">Reply to %1$s</string>
     <string name="ReplyToUser">Reply to %1$s</string>
-    <string name="NotificationMessagesPeopleDisplayOrder">%1$s %2$s</string>
     <!--contacts view-->
     <string name="NoContacts">No users yet.</string>
     <string name="TodayAt">at</string>

@@ -19,7 +19,6 @@
     <string name="Search">Rechercher</string>
     <string name="MuteNotifications">Désactiver les notifications</string>
     <string name="UnmuteNotifications">Activer les notifications</string>
-    <string name="WillUnmuteIn">Dans %1$s</string>
     <string name="Draft">Brouillons</string>
     <!--audio view-->
     <string name="NoAudio">Veuillez ajouter des fichiers dans votre bibliotèque musicale pour les voir ici.</string>
@@ -61,8 +60,6 @@
     <string name="OpenInBrowser">OUVRIR DANS…</string>
     <string name="SendItems">Envoyer %1$s</string>
     <string name="OpenUrlAlert">Ouvrir URL %1$s ?</string>
-    <string name="MoreInfo">Plus d\'info</string>
-    <string name="ShareSendTo">Envoyer à…</string>
     <string name="ClearRecentEmoji">Vider les emokis récent ?</string>
     <string name="AddShortcut">Ajouter le widget à l\'écran d\'accueil</string>
     <string name="ShortcutAdded">Widget ajouté à l\'écran d\'accueil</string>
@@ -70,7 +67,6 @@
     <string name="Reply">Répondre</string>
     <string name="ReplyToGroup">Répondre à %1$s</string>
     <string name="ReplyToUser">Répondre à %1$s</string>
-    <string name="NotificationMessagesPeopleDisplayOrder">%1$s %2$s</string>
     <!--contacts view-->
     <string name="NoContacts">Aucun utilisateur pour le moment.</string>
     <string name="TodayAt">à</string>

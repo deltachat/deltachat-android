@@ -21,7 +21,6 @@
     <string name="Search">Buscar</string>
     <string name="MuteNotifications">Silenciar notificaciones</string>
     <string name="UnmuteNotifications">No silenciar</string>
-    <string name="WillUnmuteIn">En %1$s</string>
     <string name="Draft">Borrador</string>
     <!--audio view-->
     <string name="NoAudio">Por favor, añade archivos a la carpeta de música en tu dispositivo para verlos aquí.</string>
@@ -63,8 +62,6 @@
     <string name="OpenInBrowser">ABRIR EN…</string>
     <string name="SendItems">Enviar %1$s</string>
     <string name="OpenUrlAlert">¿Abrir %1$s?</string>
-    <string name="MoreInfo">Más información</string>
-    <string name="ShareSendTo">Enviar a…</string>
     <string name="ClearRecentEmoji">¿Borrar los emojis recientes?</string>
     <string name="AddShortcut">Añadir acceso directo</string>
     <string name="ShortcutAdded">Acceso directo añadido al escritorio</string>
@@ -72,7 +69,6 @@
     <string name="Reply">Responder</string>
     <string name="ReplyToGroup">Responder a %1$s</string>
     <string name="ReplyToUser">Responder a %1$s</string>
-    <string name="NotificationMessagesPeopleDisplayOrder">%1$s %2$s</string>
     <!--contacts view-->
     <string name="NoContacts">Aún sin contactos</string>
     <string name="TodayAt">a las</string>

@@ -24,7 +24,6 @@
     <string name="MuteFor8Hours">Stumm für 8 Stunden</string>
     <string name="MuteFor2Days">Stumm für 2 Tage</string>
     <string name="UnmuteNotifications">Stumm aus</string>
-    <string name="WillUnmuteIn">In %1$s</string>
     <string name="Draft">Entwurf</string>
     <!--audio view-->
     <string name="NoAudio">Musikdateien der Android Musikbibliothek hinzufügen, um sie hier zu sehen.</string>
@@ -66,8 +65,6 @@
     <string name="OpenInBrowser">ÖFFNEN MIT …</string>
     <string name="SendItems">%1$s senden</string>
     <string name="OpenUrlAlert">URL %1$s öffnen?</string>
-    <string name="MoreInfo">Mehr Infos</string>
-    <string name="ShareSendTo">Sende an …</string>
     <string name="ClearRecentEmoji">Zuletzt benutzte Emoji leeren?</string>
     <string name="AddShortcut">Auf Startbildschirm platzieren</string>
     <string name="ShortcutAdded">Widget zum Startbildschirm hinzugefügt</string>
@@ -75,7 +72,6 @@
     <string name="Reply">Antworten</string>
     <string name="ReplyToGroup">%1$s antworten</string>
     <string name="ReplyToUser">%1$s antworten</string>
-    <string name="NotificationMessagesPeopleDisplayOrder">%1$s %2$s</string>
     <!--contacts view-->
     <string name="NoContacts">Keine Benutzer.</string>
     <string name="TodayAt">um</string>
