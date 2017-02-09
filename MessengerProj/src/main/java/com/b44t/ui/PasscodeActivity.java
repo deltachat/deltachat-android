@@ -678,7 +678,7 @@ public class PasscodeActivity extends BaseFragment implements NotificationCenter
                     } else if (UserConfig.autoLockIn < 60 * 60 * 24) {
                         val = ApplicationLoader.applicationContext.getResources().getQuantityString(R.plurals.Hours, (int) Math.ceil(UserConfig.autoLockIn / 60.0f / 60), (int) Math.ceil(UserConfig.autoLockIn / 60.0f / 60));
                     } else {
-                        val = LocaleController.formatString("AutoLockInTime", R.string.AutoLockInTime, LocaleController.formatPluralString("Days", (int) Math.ceil(UserConfig.autoLockIn / 60.0f / 60 / 24)));
+                        val = ApplicationLoader.applicationContext.getResources().getQuantityString(R.plurals.Days, (int) Math.ceil(UserConfig.autoLockIn / 60.0f / 60 / 24), (int) Math.ceil(UserConfig.autoLockIn / 60.0f / 60 / 24));
                     }
                     textCell.setTextAndValue(LocaleController.getString("AutoLock", R.string.AutoLock), val, true);
                     textCell.setTextColor(0xff000000);

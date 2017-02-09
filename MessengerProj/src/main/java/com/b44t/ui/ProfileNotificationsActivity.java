@@ -589,7 +589,8 @@ public class ProfileNotificationsActivity extends BaseFragment implements Notifi
                             // @TODO: Maybe this should be reworded a bit.
                             val = mContext.getResources().getQuantityString(R.plurals.Hours, (int) Math.ceil(delta / 60.0f / 60), (int) Math.ceil(delta / 60.0f / 60));
                         } else if (delta < 60 * 60 * 24 * 365) {
-                            val = LocaleController.formatString("WillUnmuteIn", R.string.WillUnmuteIn, LocaleController.formatPluralString("Days", (int) Math.ceil(delta / 60.0f / 60 / 24)));
+                            // @TODO: Maybe this should be reworded a bit.
+                            val = mContext.getResources().getQuantityString(R.plurals.Days, (int) Math.ceil(delta / 60.0f / 60 / 24), (int) Math.ceil(delta / 60.0f / 60 / 24));
                         } else {
                             val = null;
                         }
