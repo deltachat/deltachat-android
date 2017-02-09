@@ -309,8 +309,6 @@
     <string name="PermissionContacts">Delta Chat needs access to your contacts so that you can connect with your friends across all your devices.</string>
     <string name="PermissionStorage">Delta Chat needs access to your storage so that you can send and save photos, videos, music and other media.</string>
     <string name="PermissionNoAudio">Delta Chat needs access to your microphone so that you can send voice messages.</string>
-    <string name="PermissionNoLocation">Delta Chat needs access to your location so that you can share it with your friends.</string>
-    <string name="PermissionNoLocationPosition">Delta Chat needs access to your location.</string>
     <string name="PermissionOpenSettings">Settings</string>
     <!--Intro view-->
     <string name="Intro1Headline">Delta Chat</string>

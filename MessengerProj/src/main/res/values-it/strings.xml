@@ -306,8 +306,6 @@
     <string name="PermissionContacts">Delta Chat deve accedere ai tuoi contatti per poterti connettere con i tuoi amici su tutti i tuoi dispositivi.</string>
     <string name="PermissionStorage">Delta Chat deve accedere alla tua memoria per poter inviare e salvare foto,video, musica e altri media.</string>
     <string name="PermissionNoAudio">Delta Chat deve accedere al microfono per poter inviare messaggi vocali.</string>
-    <string name="PermissionNoLocation">Delta Chat deve accedere alla tua posizione per poterla condividere con i tuoi amici.</string>
-    <string name="PermissionNoLocationPosition">Delta Chat deve accedere alla tua posizione.</string>
     <string name="PermissionOpenSettings">Impostazioni</string>
     <!--Intro view-->
     <string name="IntroStartMessaging">Inizia a chattare</string>

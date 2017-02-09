@@ -310,8 +310,6 @@ Uwaga! Jeśli zapomnisz kod dostępu, musisz usunąć i ponownie zainstalować a
     <string name="PermissionContacts">Aby można było łączyć się ze znajomymi na wszystkich urządzeniach, Delta Chat musi mieć dostęp do listy kontaktów.</string>
     <string name="PermissionStorage">Aby wysyłać i zapisywać zdjęcia, wideo, muzykę i inne multimedia, Delta Chat musi mieć dostęp do pamięci.</string>
     <string name="PermissionNoAudio">Aby wysyłać wiadomości głosowe Delta Chat musi mieć dostęp do mikrofonu.</string>
-    <string name="PermissionNoLocation">Aby móc udostępniać swoją lokalizację znajomym, Delta Chat musi mieć do niej dostęp.</string>
-    <string name="PermissionNoLocationPosition">Delta Chat potrzebuje dostępu do twojej lokalizacji.</string>
     <string name="PermissionOpenSettings">Ustawienia</string>
     <!--Intro view-->
     <string name="Intro1Headline">Delta Chat</string>
