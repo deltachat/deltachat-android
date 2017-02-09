@@ -50,13 +50,6 @@ import java.util.TimeZone;
 
 public class LocaleController {
 
-    static final int QUANTITY_OTHER = 0x0000;
-    static final int QUANTITY_ZERO = 0x0001;
-    static final int QUANTITY_ONE = 0x0002;
-    static final int QUANTITY_TWO = 0x0004;
-    static final int QUANTITY_FEW = 0x0008;
-    static final int QUANTITY_MANY = 0x0010;
-
     public static boolean isRTL = false;
     public static int nameDisplayOrder = 1;
     private static boolean is24HourFormat = false;
@@ -68,10 +61,7 @@ public class LocaleController {
     public FastDateFormat chatDate;
     public FastDateFormat chatFullDate;
 
-    private HashMap<String, PluralRules> allRules = new HashMap<>();
-
     private Locale currentLocale;
-    private PluralRules currentPluralRules;
     private LocaleInfo currentLocaleInfo;
     private LocaleInfo defaultLocalInfo;
     private HashMap<String, String> localeValues = new HashMap<>();
@@ -139,30 +129,6 @@ public class LocaleController {
     }
 
     public LocaleController() {
-        addRules(new String[]{"bem", "brx", "da", "de", "el", "en", "eo", "es", "et", "fi", "fo", "gl", "he", "iw", "it", "nb",
-                "nl", "nn", "no", "sv", "af", "bg", "bn", "ca", "eu", "fur", "fy", "gu", "ha", "is", "ku",
-                "lb", "ml", "mr", "nah", "ne", "om", "or", "pa", "pap", "ps", "so", "sq", "sw", "ta", "te",
-                "tk", "ur", "zu", "mn", "gsw", "chr", "rm", "pt", "an", "ast"}, new PluralRules_One());
-        addRules(new String[]{"cs", "sk"}, new PluralRules_Czech());
-        addRules(new String[]{"ff", "fr", "kab"}, new PluralRules_French());
-        addRules(new String[]{"hr", "ru", "sr", "uk", "be", "bs", "sh"}, new PluralRules_Balkan());
-        addRules(new String[]{"lv"}, new PluralRules_Latvian());
-        addRules(new String[]{"lt"}, new PluralRules_Lithuanian());
-        addRules(new String[]{"pl"}, new PluralRules_Polish());
-        addRules(new String[]{"ro", "mo"}, new PluralRules_Romanian());
-        addRules(new String[]{"sl"}, new PluralRules_Slovenian());
-        addRules(new String[]{"ar"}, new PluralRules_Arabic());
-        addRules(new String[]{"mk"}, new PluralRules_Macedonian());
-        addRules(new String[]{"cy"}, new PluralRules_Welsh());
-        addRules(new String[]{"br"}, new PluralRules_Breton());
-        addRules(new String[]{"lag"}, new PluralRules_Langi());
-        addRules(new String[]{"shi"}, new PluralRules_Tachelhit());
-        addRules(new String[]{"mt"}, new PluralRules_Maltese());
-        addRules(new String[]{"ga", "se", "sma", "smi", "smj", "smn", "sms"}, new PluralRules_Two());
-        addRules(new String[]{"ak", "am", "bh", "fil", "tl", "guw", "hi", "ln", "mg", "nso", "ti", "wa"}, new PluralRules_Zero());
-        addRules(new String[]{"az", "bm", "fa", "ig", "hu", "ja", "kde", "kea", "ko", "my", "ses", "sg", "to",
-                "tr", "vi", "wo", "yo", "zh", "bo", "dz", "id", "jv", "ka", "km", "kn", "ms", "th"}, new PluralRules_None());
-
         LocaleInfo localeInfo = new LocaleInfo();
         localeInfo.name = "English";
         localeInfo.nameEnglish = "English";
@@ -218,16 +184,6 @@ public class LocaleController {
         sortedLanguages.add(localeInfo);
         languagesDict.put(localeInfo.shortName, localeInfo);
 
-        /* EDIT BY MR
-        localeInfo = new LocaleInfo();
-        localeInfo.name = "العربية";
-        localeInfo.nameEnglish = "Arabic";
-        localeInfo.shortName = "ar";
-        localeInfo.pathToFile = null;
-        sortedLanguages.add(localeInfo);
-        languagesDict.put(localeInfo.shortName, localeInfo);
-        */
-
         localeInfo = new LocaleInfo();
         localeInfo.name = "Português";
         localeInfo.nameEnglish = "Portuguese";
@@ -235,24 +191,6 @@ public class LocaleController {
         localeInfo.pathToFile = null;
         sortedLanguages.add(localeInfo);
         languagesDict.put(localeInfo.shortName, localeInfo);
-
-        /* EDIT BY MR
-        localeInfo = new LocaleInfo();
-        localeInfo.name = "Português (Portugal)";
-        localeInfo.nameEnglish = "Portuguese (Portugal)";
-        localeInfo.shortName = "pt_PT";
-        localeInfo.pathToFile = null;
-        sortedLanguages.add(localeInfo);
-        languagesDict.put(localeInfo.shortName, localeInfo);
-
-        localeInfo = new LocaleInfo();
-        localeInfo.name = "한국어";
-        localeInfo.nameEnglish = "Korean";
-        localeInfo.shortName = "ko";
-        localeInfo.pathToFile = null;
-        sortedLanguages.add(localeInfo);
-        languagesDict.put(localeInfo.shortName, localeInfo);
-        */
 
         loadOtherLanguages();
 
@@ -308,29 +246,6 @@ public class LocaleController {
             ApplicationLoader.applicationContext.registerReceiver(new TimeZoneChangedReceiver(), timezoneFilter);
         } catch (Exception e) {
             FileLog.e("messenger", e);
-        }
-    }
-
-    private void addRules(String[] languages, PluralRules rules) {
-        for (String language : languages) {
-            allRules.put(language, rules);
-        }
-    }
-
-    private String stringForQuantity(int quantity) {
-        switch (quantity) {
-            case QUANTITY_ZERO:
-                return "zero";
-            case QUANTITY_ONE:
-                return "one";
-            case QUANTITY_TWO:
-                return "two";
-            case QUANTITY_FEW:
-                return "few";
-            case QUANTITY_MANY:
-                return "many";
-            default:
-                return "other";
         }
     }
 
@@ -541,10 +456,6 @@ public class LocaleController {
                 }
                 currentLocale = newLocale;
                 currentLocaleInfo = localeInfo;
-                currentPluralRules = allRules.get(currentLocale.getLanguage());
-                if (currentPluralRules == null) {
-                    currentPluralRules = allRules.get("en");
-                }
                 changingConfiguration = true;
                 Locale.setDefault(currentLocale);
                 android.content.res.Configuration config = new android.content.res.Configuration();
@@ -580,16 +491,6 @@ public class LocaleController {
 
     public static String getString(String key, int res) {
         return getInstance().getStringInternal(key, res);
-    }
-
-    public static String formatPluralString(String key, int plural) {
-        if (key == null || key.length() == 0 || getInstance().currentPluralRules == null) {
-            return "LOC_ERR:" + key;
-        }
-        String param = getInstance().stringForQuantity(getInstance().currentPluralRules.quantityForNumber(plural));
-        param = key + "_" + param;
-        int resourceId = ApplicationLoader.applicationContext.getResources().getIdentifier(param, "string", ApplicationLoader.applicationContext.getPackageName());
-        return formatString(param, resourceId, plural);
     }
 
     public static String formatString(String key, int res, Object... args) {
@@ -641,10 +542,6 @@ public class LocaleController {
                     recreateFormatters();
                 }
                 currentLocale = newLocale;
-                currentPluralRules = allRules.get(currentLocale.getLanguage());
-                if (currentPluralRules == null) {
-                    currentPluralRules = allRules.get("en");
-                }
             }
         }
     }
@@ -751,285 +648,5 @@ public class LocaleController {
             FileLog.e("messenger", e);
         }
         return "LOC_ERR";
-    }
-
-    /*
-    public static String formatShortNumber(int number, int[] rounded) {
-        String K = "";
-        int lastDec = 0;
-        int KCount = 0;
-        while (number / 1000 > 0) {
-            K += "K";
-            lastDec = (number % 1000) / 100;
-            number /= 1000;
-        }
-        if (rounded != null) {
-            double value = number + lastDec / 10.0;
-            for (int a = 0; a < K.length(); a++) {
-                value *= 1000;
-            }
-            rounded[0] = (int) value;
-        }
-        if (lastDec != 0 && K.length() > 0) {
-            if (K.length() == 2) {
-                return String.format(Locale.US, "%d.%dM", number, lastDec);
-            } else {
-                return String.format(Locale.US, "%d.%d%s", number, lastDec, K);
-            }
-        }
-        if (K.length() == 2) {
-            return String.format(Locale.US, "%dM", number);
-        } else {
-            return String.format(Locale.US, "%d%s", number, K);
-        }
-    }
-    */
-
-    abstract public static class PluralRules {
-        abstract int quantityForNumber(int n);
-    }
-
-    public static class PluralRules_Zero extends PluralRules {
-        public int quantityForNumber(int count) {
-            if (count == 0 || count == 1) {
-                return QUANTITY_ONE;
-            } else {
-                return QUANTITY_OTHER;
-            }
-        }
-    }
-
-    public static class PluralRules_Welsh extends PluralRules {
-        public int quantityForNumber(int count) {
-            if (count == 0) {
-                return QUANTITY_ZERO;
-            } else if (count == 1) {
-                return QUANTITY_ONE;
-            } else if (count == 2) {
-                return QUANTITY_TWO;
-            } else if (count == 3) {
-                return QUANTITY_FEW;
-            } else if (count == 6) {
-                return QUANTITY_MANY;
-            } else {
-                return QUANTITY_OTHER;
-            }
-        }
-    }
-
-    public static class PluralRules_Two extends PluralRules {
-        public int quantityForNumber(int count) {
-            if (count == 1) {
-                return QUANTITY_ONE;
-            } else if (count == 2) {
-                return QUANTITY_TWO;
-            } else {
-                return QUANTITY_OTHER;
-            }
-        }
-    }
-
-    public static class PluralRules_Tachelhit extends PluralRules {
-        public int quantityForNumber(int count) {
-            if (count >= 0 && count <= 1) {
-                return QUANTITY_ONE;
-            } else if (count >= 2 && count <= 10) {
-                return QUANTITY_FEW;
-            } else {
-                return QUANTITY_OTHER;
-            }
-        }
-    }
-
-    public static class PluralRules_Slovenian extends PluralRules {
-        public int quantityForNumber(int count) {
-            int rem100 = count % 100;
-            if (rem100 == 1) {
-                return QUANTITY_ONE;
-            } else if (rem100 == 2) {
-                return QUANTITY_TWO;
-            } else if (rem100 >= 3 && rem100 <= 4) {
-                return QUANTITY_FEW;
-            } else {
-                return QUANTITY_OTHER;
-            }
-        }
-    }
-
-    public static class PluralRules_Romanian extends PluralRules {
-        public int quantityForNumber(int count) {
-            int rem100 = count % 100;
-            if (count == 1) {
-                return QUANTITY_ONE;
-            } else if ((count == 0 || (rem100 >= 1 && rem100 <= 19))) {
-                return QUANTITY_FEW;
-            } else {
-                return QUANTITY_OTHER;
-            }
-        }
-    }
-
-    public static class PluralRules_Polish extends PluralRules {
-        public int quantityForNumber(int count) {
-            int rem100 = count % 100;
-            int rem10 = count % 10;
-            if (count == 1) {
-                return QUANTITY_ONE;
-            } else if (rem10 >= 2 && rem10 <= 4 && !(rem100 >= 12 && rem100 <= 14) && !(rem100 >= 22 && rem100 <= 24)) {
-                return QUANTITY_FEW;
-            } else {
-                return QUANTITY_OTHER;
-            }
-        }
-    }
-
-    public static class PluralRules_One extends PluralRules {
-        public int quantityForNumber(int count) {
-            return count == 1 ? QUANTITY_ONE : QUANTITY_OTHER;
-        }
-    }
-
-    public static class PluralRules_None extends PluralRules {
-        public int quantityForNumber(int count) {
-            return QUANTITY_OTHER;
-        }
-    }
-
-    public static class PluralRules_Maltese extends PluralRules {
-        public int quantityForNumber(int count) {
-            int rem100 = count % 100;
-            if (count == 1) {
-                return QUANTITY_ONE;
-            } else if (count == 0 || (rem100 >= 2 && rem100 <= 10)) {
-                return QUANTITY_FEW;
-            } else if (rem100 >= 11 && rem100 <= 19) {
-                return QUANTITY_MANY;
-            } else {
-                return QUANTITY_OTHER;
-            }
-        }
-    }
-
-    public static class PluralRules_Macedonian extends PluralRules {
-        public int quantityForNumber(int count) {
-            if (count % 10 == 1 && count != 11) {
-                return QUANTITY_ONE;
-            } else {
-                return QUANTITY_OTHER;
-            }
-        }
-    }
-
-    public static class PluralRules_Lithuanian extends PluralRules {
-        public int quantityForNumber(int count) {
-            int rem100 = count % 100;
-            int rem10 = count % 10;
-            if (rem10 == 1 && !(rem100 >= 11 && rem100 <= 19)) {
-                return QUANTITY_ONE;
-            } else if (rem10 >= 2 && rem10 <= 9 && !(rem100 >= 11 && rem100 <= 19)) {
-                return QUANTITY_FEW;
-            } else {
-                return QUANTITY_OTHER;
-            }
-        }
-    }
-
-    public static class PluralRules_Latvian extends PluralRules {
-        public int quantityForNumber(int count) {
-            if (count == 0) {
-                return QUANTITY_ZERO;
-            } else if (count % 10 == 1 && count % 100 != 11) {
-                return QUANTITY_ONE;
-            } else {
-                return QUANTITY_OTHER;
-            }
-        }
-    }
-
-    public static class PluralRules_Langi extends PluralRules {
-        public int quantityForNumber(int count) {
-            if (count == 0) {
-                return QUANTITY_ZERO;
-            } else if (count > 0 && count < 2) {
-                return QUANTITY_ONE;
-            } else {
-                return QUANTITY_OTHER;
-            }
-        }
-    }
-
-    public static class PluralRules_French extends PluralRules {
-        public int quantityForNumber(int count) {
-            if (count >= 0 && count < 2) {
-                return QUANTITY_ONE;
-            } else {
-                return QUANTITY_OTHER;
-            }
-        }
-    }
-
-    public static class PluralRules_Czech extends PluralRules {
-        public int quantityForNumber(int count) {
-            if (count == 1) {
-                return QUANTITY_ONE;
-            } else if (count >= 2 && count <= 4) {
-                return QUANTITY_FEW;
-            } else {
-                return QUANTITY_OTHER;
-            }
-        }
-    }
-
-    public static class PluralRules_Breton extends PluralRules {
-        public int quantityForNumber(int count) {
-            if (count == 0) {
-                return QUANTITY_ZERO;
-            } else if (count == 1) {
-                return QUANTITY_ONE;
-            } else if (count == 2) {
-                return QUANTITY_TWO;
-            } else if (count == 3) {
-                return QUANTITY_FEW;
-            } else if (count == 6) {
-                return QUANTITY_MANY;
-            } else {
-                return QUANTITY_OTHER;
-            }
-        }
-    }
-
-    public static class PluralRules_Balkan extends PluralRules {
-        public int quantityForNumber(int count) {
-            int rem100 = count % 100;
-            int rem10 = count % 10;
-            if (rem10 == 1 && rem100 != 11) {
-                return QUANTITY_ONE;
-            } else if (rem10 >= 2 && rem10 <= 4 && !(rem100 >= 12 && rem100 <= 14)) {
-                return QUANTITY_FEW;
-            } else if ((rem10 == 0 || (rem10 >= 5 && rem10 <= 9) || (rem100 >= 11 && rem100 <= 14))) {
-                return QUANTITY_MANY;
-            } else {
-                return QUANTITY_OTHER;
-            }
-        }
-    }
-
-    public static class PluralRules_Arabic extends PluralRules {
-        public int quantityForNumber(int count) {
-            int rem100 = count % 100;
-            if (count == 0) {
-                return QUANTITY_ZERO;
-            } else if (count == 1) {
-                return QUANTITY_ONE;
-            } else if (count == 2) {
-                return QUANTITY_TWO;
-            } else if (rem100 >= 3 && rem100 <= 10) {
-                return QUANTITY_FEW;
-            } else if (rem100 >= 11 && rem100 <= 99) {
-                return QUANTITY_MANY;
-            } else {
-                return QUANTITY_OTHER;
-            }
-        }
     }
 }
