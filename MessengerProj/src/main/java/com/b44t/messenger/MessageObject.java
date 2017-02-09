@@ -23,6 +23,7 @@
 
 package com.b44t.messenger;
 
+import android.content.Context;
 import android.graphics.Paint;
 import android.text.Layout;
 import android.text.Spannable;
@@ -42,6 +43,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class MessageObject {
+
+    private Context mContext = ApplicationLoader.applicationContext;
 
     public static final int MESSAGE_SEND_STATE_SENDING = 1;
     public static final int MESSAGE_SEND_STATE_SENT = 0;
@@ -210,33 +213,34 @@ public class MessageObject {
             if (message.media instanceof TLRPC.TL_messageMediaPhoto) {
                 messageText = LocaleController.getString("AttachPhoto", R.string.AttachPhoto);
             } else if (isVideo()) {
-                messageText = LocaleController.getString("AttachVideo", R.string.AttachVideo);
+                messageText = mContext.getString(R.string.AttachVideo);
             } else if (isVoice()) {
-                messageText = LocaleController.getString("AttachAudio", R.string.AttachAudio);
+                messageText = mContext.getString(R.string.AttachAudio);
             } else if (message.media instanceof TLRPC.TL_messageMediaGeo || message.media instanceof TLRPC.TL_messageMediaVenue) {
-                messageText = LocaleController.getString("AttachLocation", R.string.AttachLocation);
+                messageText = mContext.getString(R.string.AttachLocation);
             } else if (message.media instanceof TLRPC.TL_messageMediaContact) {
-                messageText = LocaleController.getString("AttachContact", R.string.AttachContact);
+                messageText = mContext.getString(R.string.AttachContact);
             /*} else if (message.media instanceof TLRPC.TL_messageMediaUnsupported) {
                 messageText = LocaleController.getString("UnsupportedMedia", R.string.UnsupportedMedia);*/
             } else if (message.media instanceof TLRPC.TL_messageMediaDocument) {
                 if (isSticker()) {
                     String sch = getStrickerChar();
                     if (sch != null && sch.length() > 0) {
-                        messageText = String.format("%s %s", sch, LocaleController.getString("AttachSticker", R.string.AttachSticker));
+                        // @TODO: This needs plural handling.
+                        messageText = String.format("%s %s", sch, mContext.getString(R.string.AttachSticker));
                     } else {
-                        messageText = LocaleController.getString("AttachSticker", R.string.AttachSticker);
+                        messageText = mContext.getString(R.string.AttachSticker);
                     }
                 } else if (isMusic()) {
-                    messageText = LocaleController.getString("AttachMusic", R.string.AttachMusic);
+                    messageText = mContext.getString(R.string.AttachMusic);
                 } else if (isGif()) {
-                    messageText = LocaleController.getString("AttachGif", R.string.AttachGif);
+                    messageText = mContext.getString(R.string.AttachGif);
                 } else {
                     String name = FileLoader.getDocumentFileName(message.media.document);
                     if (name != null && name.length() > 0) {
                         messageText = name;
                     } else {
-                        messageText = LocaleController.getString("AttachDocument", R.string.AttachDocument);
+                        messageText = mContext.getString(R.string.AttachDocument);
                     }
                 }
             }
@@ -1294,7 +1298,7 @@ public class MessageObject {
                 if (title == null || title.length() == 0) {
                     title = FileLoader.getDocumentFileName(document);
                     if (title == null || title.length() == 0) {
-                        title = LocaleController.getString("AudioUnknownTitle", R.string.AudioUnknownTitle);
+                        title = mContext.getString(R.string.AudioUnknownTitle);
                     }
                 }
                 return title;
@@ -1331,7 +1335,7 @@ public class MessageObject {
             if (attribute instanceof TLRPC.TL_documentAttributeAudio) {
                 if (attribute.voice) {
                     if (isOutOwner() ) {
-                        return LocaleController.getString("FromSelf", R.string.FromSelf);
+                        return mContext.getString(R.string.FromSelf);
                     }
                     else if (messageOwner.fwd_from != null ) {
                         return messageOwner.fwd_from.m_name;
@@ -1342,7 +1346,7 @@ public class MessageObject {
                 }
                 String performer = attribute.performer;
                 if (performer == null || performer.length() == 0) {
-                    performer = LocaleController.getString("AudioUnknownArtist", R.string.AudioUnknownArtist);
+                    performer = mContext.getString(R.string.AudioUnknownArtist);
                 }
                 return performer;
             }
