@@ -66,7 +66,6 @@ import com.b44t.messenger.R;
 import com.b44t.messenger.UserConfig;
 import com.b44t.ui.Adapters.DialogsAdapter;
 import com.b44t.ui.Adapters.DialogsSearchAdapter;
-import com.b44t.ui.Cells.ProfileSearchCell;
 import com.b44t.ui.Cells.UserCell;
 import com.b44t.ui.Cells.DialogCell;
 import com.b44t.ui.ActionBar.ActionBar;
@@ -695,18 +694,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
                 }
             } else if (child instanceof UserCell) {
                 ((UserCell) child).update(mask);
-            } else if (child instanceof ProfileSearchCell) {
-                ((ProfileSearchCell) child).update(mask);
-            } /*else if (child instanceof RecyclerListView) {
-                RecyclerListView innerListView = (RecyclerListView) child;
-                int count2 = innerListView.getChildCount();
-                for (int b = 0; b < count2; b++) {
-                    View child2 = innerListView.getChildAt(b);
-                    if (child2 instanceof HintDialogCell) {
-                        ((HintDialogCell) child2).checkUnreadCounter(mask);
-                    }
-                }
-            }*/
+            }
         }
     }
 

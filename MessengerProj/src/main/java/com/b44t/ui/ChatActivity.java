@@ -153,10 +153,8 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
     private TextView pagedownButtonCounter;
     private ChatAttachAlert chatAttachAlert;
     private PlayerView playerView;
-    private TextView alertTextView;
 
     private ObjectAnimator pagedownButtonAnimation;
-    private ObjectAnimator iconAnimator;
 
     private boolean openSearchKeyboard;
 
@@ -1004,30 +1002,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 return false;
             }
         });
-
-        FrameLayout alertView = new FrameLayout(context);
-        alertView.setTag(1);
-        alertView.setTranslationY(-AndroidUtilities.dp(50));
-        alertView.setVisibility(View.GONE);
-        alertView.setBackgroundResource(R.drawable.blockpanel);
-        contentView.addView(alertView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, 50, Gravity.TOP | Gravity.LEFT));
-
-        TextView alertNameTextView = new TextView(context);
-        alertNameTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
-        alertNameTextView.setTextColor(Theme.ALERT_PANEL_NAME_TEXT_COLOR);
-        alertNameTextView.setTypeface(AndroidUtilities.getTypeface("fonts/rmedium.ttf"));
-        alertNameTextView.setSingleLine(true);
-        alertNameTextView.setEllipsize(TextUtils.TruncateAt.END);
-        alertNameTextView.setMaxLines(1);
-        alertView.addView(alertNameTextView, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.TOP | Gravity.LEFT, 8, 5, 8, 0));
-
-        alertTextView = new TextView(context);
-        alertTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
-        alertTextView.setTextColor(Theme.ALERT_PANEL_MESSAGE_TEXT_COLOR);
-        alertTextView.setSingleLine(true);
-        alertTextView.setEllipsize(TextUtils.TruncateAt.END);
-        alertTextView.setMaxLines(1);
-        alertView.addView(alertTextView, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.TOP | Gravity.LEFT, 8, 23, 8, 0));
 
         pagedownButton = new FrameLayout(context);
         pagedownButton.setVisibility(View.INVISIBLE);
@@ -2048,10 +2022,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
             if (chatListView != null) {
                 chatListView.invalidateViews();
             }
-            if (alertTextView != null) {
-                alertTextView.invalidate();
-            }
-
         }
         else if (id == NotificationCenter.updateInterfaces)
         {
