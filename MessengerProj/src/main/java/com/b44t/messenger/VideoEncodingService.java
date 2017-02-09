@@ -24,6 +24,7 @@
 package com.b44t.messenger;
 
 import android.app.Service;
+import android.content.Context;
 import android.content.Intent;
 import android.os.IBinder;
 import android.support.v4.app.NotificationCompat;
@@ -31,6 +32,7 @@ import android.support.v4.app.NotificationManagerCompat;
 
 public class VideoEncodingService extends Service implements NotificationCenter.NotificationCenterDelegate {
 
+    private Context mContext = ApplicationLoader.applicationContext;
     private NotificationCompat.Builder builder = null;
     private String path = null;
     private int currentProgress = 0;
@@ -61,7 +63,7 @@ public class VideoEncodingService extends Service implements NotificationCenter.
                 Boolean enc = (Boolean) args[2];
                 currentProgress = (int)(progress * 100);
                 builder.setProgress(100, currentProgress, currentProgress == 0);
-                NotificationManagerCompat.from(ApplicationLoader.applicationContext).notify(4, builder.build());
+                NotificationManagerCompat.from(mContext).notify(4, builder.build());
             }
         } else if (id == NotificationCenter.stopEncodingService) {
             String filepath = (String)args[0];
@@ -79,17 +81,17 @@ public class VideoEncodingService extends Service implements NotificationCenter.
         }
         FileLog.e("messenger", "start video service");
         if (builder == null) {
-            builder = new NotificationCompat.Builder(ApplicationLoader.applicationContext);
+            builder = new NotificationCompat.Builder(mContext);
             builder.setSmallIcon(android.R.drawable.stat_sys_upload);
             builder.setWhen(System.currentTimeMillis());
-            builder.setContentTitle(LocaleController.getString("AppName", R.string.AppName));
-            builder.setTicker(LocaleController.getString("SendingVideo", R.string.SendingVideo));
-            builder.setContentText(LocaleController.getString("SendingVideo", R.string.SendingVideo));
+            builder.setContentTitle(mContext.getString(R.string.AppName));
+            builder.setTicker(mContext.getString(R.string.SendingVideo));
+            builder.setContentText(mContext.getString(R.string.SendingVideo));
         }
         currentProgress = 0;
         builder.setProgress(100, currentProgress, currentProgress == 0);
         startForeground(4, builder.build());
-        NotificationManagerCompat.from(ApplicationLoader.applicationContext).notify(4, builder.build());
+        NotificationManagerCompat.from(mContext).notify(4, builder.build());
         return Service.START_NOT_STICKY;
     }
 }
