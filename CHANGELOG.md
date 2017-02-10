@@ -3,6 +3,8 @@
 ## UNRELEASED
 
 * Add Polish translation
+* Remove custom plural handling, use Android's routines instead
+* Remove unused source code and strings
 
 ## v0.1.17
 2017-02-07
