@@ -4,6 +4,7 @@
 
 * Add Polish translation
 * Use a new default background for chats
+* Improve typography by using the system font instead of a custom resource font
 * Remove custom plural handling, use Android's routines instead
 * Remove unused source code and strings
 * More fixes of lint errors and warnings
