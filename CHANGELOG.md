@@ -3,8 +3,10 @@
 ## UNRELEASED
 
 * Add Polish translation
+* Use a new default background for chats
 * Remove custom plural handling, use Android's routines instead
 * Remove unused source code and strings
+* More fixes of lint errors and warnings
 
 ## v0.1.17
 2017-02-07
@@ -18,8 +20,8 @@
 ## v0.1.16
 2017-02-06
 
-* Added French translation
-* Fixed some lint errors and warnings
+* Add French translation
+* Fix some lint errors and warnings
 
 ## v0.1.15
 2017-01-31
