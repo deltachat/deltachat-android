@@ -43,9 +43,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.b44t.messenger.AndroidUtilities;
+import com.b44t.messenger.ApplicationLoader;
 import com.b44t.messenger.LocaleController;
 import com.b44t.messenger.R;
 import com.b44t.ui.ActionBar.Theme;
+
+import java.util.Locale;
 
 public class IntroActivity extends Activity {
 
@@ -133,7 +136,7 @@ public class IntroActivity extends Activity {
         }
         viewPager = (ViewPager) findViewById(R.id.intro_view_pager);
         TextView startMessagingButton = (TextView) findViewById(R.id.start_messaging_button);
-        startMessagingButton.setText(LocaleController.getString("StartMessaging", R.string.IntroStartMessaging).toUpperCase());
+        startMessagingButton.setText(ApplicationLoader.applicationContext.getString(R.string.IntroStartMessaging).toUpperCase(Locale.getDefault()));
         if (Build.VERSION.SDK_INT >= 21) {
             StateListAnimator animator = new StateListAnimator();
             animator.addState(new int[]{android.R.attr.state_pressed}, ObjectAnimator.ofFloat(startMessagingButton, "translationZ", AndroidUtilities.dp(2), AndroidUtilities.dp(4)).setDuration(200));
