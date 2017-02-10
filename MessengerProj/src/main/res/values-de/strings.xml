@@ -338,6 +338,10 @@
         <item quantity="one">%d Mitglied</item>
         <item quantity="other">%d Mitglieder</item>
     </plurals>
+    <plurals name="Contacts">
+        <item quantity="one">%d Kontakt</item>
+        <item quantity="other">%d Kontakt</item>
+    </plurals>
     <plurals name="MeAndMembers">
         <item quantity="one">Ich und %d Mitglied</item>
         <item quantity="other">Ich und %d Mitglieder</item>
@@ -429,10 +433,6 @@
     <string name="AboutThisProgram">Über Delta Chat</string>
     <string name="NotSet">Nicht gesetzt</string>
     <string name="NewChat">Neuer Chat</string>
-    <string name="ContactPl">## Kontakte</string>
-    <string name="ContactSg">## Kontakt</string>
-    <string name="MemberSg">## Mitglied</string>
-    <string name="MemberPl">## Mitglieder</string>
     <string name="Deaddrop">Briefkasten</string>
     <string name="Media">Medien</string>
     <string name="DeaddropInChatlist">Briefkasten in Chatliste</string>

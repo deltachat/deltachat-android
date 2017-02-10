@@ -180,10 +180,9 @@ public class MrMailbox {
     private native static String  MrMailboxGetMsgInfo        (long hMailbox, int id);
 
     // static
-    private native static void     MrStockAddStr              (int id, String str);
     public native static String   MrGetVersionStr            ();
     public native static String   CPtr2String                (long hString); // get strings eg. from data1 from the callback
-
+    public native static long     String2CPtr                (String str);
 
     /* receive events
      **********************************************************************************************/
@@ -196,6 +195,8 @@ public class MrMailbox {
     public final static int MR_EVENT_CONTACTS_CHANGED         = 2030;
     public final static int MR_EVENT_CONNECTION_STATE_CHANGED = 2040;
     public final static int MR_EVENT_REPORT                   = 2050;
+    public final static int MR_EVENT_GET_STRING               = 2091;
+    public final static int MR_EVENT_GET_QUANTITIY_STRING     = 2092;
 
     public final static int MR_REPORT_ERR_SELF_NOT_IN_GROUP   = 1;
 
@@ -271,6 +272,35 @@ public class MrMailbox {
                     }
                 });
                 return 0;
+
+            case MR_EVENT_GET_STRING:
+                String s = "ErrStrBadId";
+                switch( (int)data1 ) {
+                    case  1: s = LocaleController.getString("NoMessages", R.string.NoMessages); break;
+                    case  2: s = LocaleController.getString("FromSelf", R.string.FromSelf); break;
+                    case  3: s = LocaleController.getString("Draft", R.string.Draft); break;
+                    case  8: s = LocaleController.getString("Deaddrop", R.string.Deaddrop); break;
+                    case  9: s = LocaleController.getString("AttachPhoto", R.string.AttachPhoto); break;
+                    case 10: s = LocaleController.getString("AttachVideo", R.string.AttachVideo); break;
+                    case 11: s = LocaleController.getString("AttachAudio", R.string.AttachAudio); break;
+                    case 12: s = LocaleController.getString("AttachDocument", R.string.AttachDocument); break;
+                    case 13: s = LocaleController.getString("DefaultStatusText", R.string.DefaultStatusText); break;
+                    case 14: s = LocaleController.getString("MsgNewGroupDraft", R.string.MsgNewGroupDraft); break;
+                    case 15: s = LocaleController.getString("MsgGroupNameChanged", R.string.MsgGroupNameChanged); break;
+                    case 16: s = LocaleController.getString("MsgGroupImageChanged", R.string.MsgGroupImageChanged); break;
+                    case 17: s = LocaleController.getString("MsgMemberAddedToGroup", R.string.MsgMemberAddedToGroup); break;
+                    case 18: s = LocaleController.getString("MsgMemberRemovedFromToGroup", R.string.MsgMemberRemovedFromToGroup); break;
+                    case 19: s = LocaleController.getString("MsgGroupLeft", R.string.MsgGroupLeft); break;
+                }
+                return String2CPtr(s);
+
+            case MR_EVENT_GET_QUANTITIY_STRING:
+                String sp = "ErrQtyStrBadId";
+                switch( (int)data1 ) {
+                    case 4: sp = ApplicationLoader.applicationContext.getResources().getQuantityString(R.plurals.Members, (int)data2, (int)data2); break;
+                    case 6: sp = ApplicationLoader.applicationContext.getResources().getQuantityString(R.plurals.Contacts, (int)data2, (int)data2); break;
+                }
+                return String2CPtr(sp);
         }
         return 0;
     }
@@ -302,29 +332,6 @@ public class MrMailbox {
 
             }
         });
-    }
-
-    public static void initStockStrings()
-    {
-        MrStockAddStr(1, LocaleController.getString("NoMessages", R.string.NoMessages));
-        MrStockAddStr(2, LocaleController.getString("FromSelf", R.string.FromSelf));
-        MrStockAddStr(3, LocaleController.getString("Draft", R.string.Draft));
-        MrStockAddStr(4, LocaleController.getString("MemberSg", R.string.MemberSg));
-        MrStockAddStr(5, LocaleController.getString("MemberPl", R.string.MemberPl));
-        MrStockAddStr(6, LocaleController.getString("ContactSg", R.string.ContactSg));
-        MrStockAddStr(7, LocaleController.getString("ContactPl", R.string.ContactPl));
-        MrStockAddStr(8, LocaleController.getString("Deaddrop", R.string.Deaddrop));
-        MrStockAddStr(9, LocaleController.getString("AttachPhoto", R.string.AttachPhoto));
-        MrStockAddStr(10, LocaleController.getString("AttachVideo", R.string.AttachVideo));
-        MrStockAddStr(11, LocaleController.getString("AttachAudio", R.string.AttachAudio));
-        MrStockAddStr(12, LocaleController.getString("AttachDocument", R.string.AttachDocument));
-        MrStockAddStr(13, LocaleController.getString("DefaultStatusText", R.string.DefaultStatusText));
-        MrStockAddStr(14, LocaleController.getString("MsgNewGroupDraft", R.string.MsgNewGroupDraft));
-        MrStockAddStr(15, LocaleController.getString("MsgGroupNameChanged", R.string.MsgGroupNameChanged));
-        MrStockAddStr(16, LocaleController.getString("MsgGroupImageChanged", R.string.MsgGroupImageChanged));
-        MrStockAddStr(17, LocaleController.getString("MsgMemberAddedToGroup", R.string.MsgMemberAddedToGroup));
-        MrStockAddStr(18, LocaleController.getString("MsgMemberRemovedFromToGroup", R.string.MsgMemberRemovedFromToGroup));
-        MrStockAddStr(19, LocaleController.getString("MsgGroupLeft", R.string.MsgGroupLeft));
     }
 
     public static String getInviteText() {

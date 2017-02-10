@@ -185,7 +185,6 @@ public class LanguageSelectActivity extends BaseFragment {
                 }
                 if (localeInfo != null) {
                     LocaleController.getInstance().applyLanguage(localeInfo, true);
-                    MrMailbox.initStockStrings();
                     parentLayout.rebuildAllFragmentViews(false);
                 }
                 finishFragment();

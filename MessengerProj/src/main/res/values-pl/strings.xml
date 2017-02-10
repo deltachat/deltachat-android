@@ -342,6 +342,11 @@ Uwaga! Jeśli zapomnisz kod dostępu, musisz usunąć i ponownie zainstalować a
         <item quantity="few">%d członków</item>
         <item quantity="other">%d członków</item>
     </plurals>
+    <plurals name="Contacts">
+        <item quantity="one">%d kontakt</item>
+        <item quantity="few">kontaktów - %d</item>
+        <item quantity="other">kontaktów - %d</item>
+    </plurals>
     <plurals name="MeAndMembers">
         <item quantity="one">Ja i %d członek</item>
         <item quantity="few">Ja i %d członków</item>
@@ -442,10 +447,6 @@ Z problemami należy zwrócić się do usługodawcy e-mail lub znajomym.</string
     <string name="AboutThisProgram">O Delta Chat</string>
     <string name="NotSet">Nie ustawiony</string>
     <string name="NewChat">Nowy czat</string>
-    <string name="MemberSg">## członek</string>
-    <string name="MemberPl">członków - ##</string>
-    <string name="ContactSg">## kontakt</string>
-    <string name="ContactPl">kontaktów - ##</string>
     <string name="Deaddrop">Skrzynka pocztowa</string>
     <string name="Media">Multimedia</string>
     <string name="DeaddropInChatlist">Pokaż skrzynkę pocztową na liście czatów</string>

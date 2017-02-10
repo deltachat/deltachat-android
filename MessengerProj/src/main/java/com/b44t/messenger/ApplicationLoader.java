@@ -244,7 +244,6 @@ public class ApplicationLoader extends Application {
         // however, we may want to to have a look at onPause() eg. of activities (eg. for flushing data, if needed)
         MrMailbox.MrCallback(0, 0, 0); // do not remove this call; this makes sure, the function is not removed from build or warnings are printed!
         MrMailbox.init();
-        MrMailbox.initStockStrings();
 
         applicationHandler = new Handler(applicationContext.getMainLooper());
 

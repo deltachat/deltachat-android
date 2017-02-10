@@ -935,11 +935,15 @@ JNIEXPORT jstring Java_com_b44t_messenger_MrMailbox_CPtr2String(JNIEnv *env, jcl
 }
 
 
-JNIEXPORT void Java_com_b44t_messenger_MrMailbox_MrStockAddStr(JNIEnv* env, jclass c, jint id, jstring str)
+JNIEXPORT jlong Java_com_b44t_messenger_MrMailbox_String2CPtr(JNIEnv *env, jclass c, jstring str)
 {
-	CHAR_REF(str);
-		mrstock_add_str(id, strPtr);
-	CHAR_UNREF(str)
+    char* hStr = NULL;
+    if( str ) {
+        CHAR_REF(str);
+            hStr = strdup(strPtr);
+        CHAR_UNREF(str);
+    }
+    return (jlong)hStr;
 }
 
 
