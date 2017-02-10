@@ -340,7 +340,7 @@
     </plurals>
     <plurals name="Contacts">
         <item quantity="one">%d Kontakt</item>
-        <item quantity="other">%d Kontakt</item>
+        <item quantity="other">%d Kontakte</item>
     </plurals>
     <plurals name="MeAndMembers">
         <item quantity="one">Ich und %d Mitglied</item>
