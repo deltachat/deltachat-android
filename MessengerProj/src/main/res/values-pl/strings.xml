@@ -482,11 +482,11 @@ Z problemami należy zwrócić się do usługodawcy e-mail lub znajomym.</string
 • Nie ma problemu, jeśli nie wszyscy członkowie korzystają z Delta Chat.
 
 • Dostarczenie pierwszej wiadomości może chwilę potrwać.</string>
-    <string name="MsgNewGroupDraft">Witam, właśnie utworzyłem dla nas grupę \"##\".</string>
-    <string name="MsgGroupNameChanged">Zmieniono nazwę grupy z \"##\" na \"##\".</string>
+    <string name="MsgNewGroupDraft">Witam, właśnie utworzyłem dla nas grupę \"%1$s\".</string>
+    <string name="MsgGroupNameChanged">Zmieniono nazwę grupy z \"%1$s\" na \"%2$s\".</string>
     <string name="MsgGroupImageChanged">Zmieniono obraz grupy.</string>
-    <string name="MsgMemberAddedToGroup">Dodano członka ##</string>
-    <string name="MsgMemberRemovedFromToGroup">Usunięto członka ##</string>
+    <string name="MsgMemberAddedToGroup">Dodano członka %1$s</string>
+    <string name="MsgMemberRemovedFromToGroup">Usunięto członka %1$s</string>
     <string name="AskAddMemberToGroup">Dodać użytkownika <![CDATA[<b>]]>%1$s<![CDATA[</b>]]> do grupy?</string>
     <string name="AskRemoveMemberFromGroup">Usunąć użytkownika <![CDATA[<b>]]>%1$s<![CDATA[</b>]]> z grupy?</string>
     <string name="ErrSelfNotInGroup">Musisz być członkiem grupy, aby wykonać tę czynność.</string>

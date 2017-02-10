@@ -437,11 +437,11 @@
     <string name="Chats">Conversas</string>
     <string name="ErrGroupNameEmpty">Escolha o nome do grupo.</string>
     <string name="MsgNewGroupDraftHint">Escreva a primeira mensagem para que os demais possam interagir no grupo.\n\n• Não é necessário que todos usem o Delta Chat.\n\n• A primeira mensagem pode demorar um pouco.</string>
-    <string name="MsgNewGroupDraft">Olá! Criei o grupo \"##\" para conversarmos.</string>
-    <string name="MsgGroupNameChanged">O nome do grupo mudou de \"##\" para \"##\".</string>
+    <string name="MsgNewGroupDraft">Olá! Criei o grupo \"%1$s\" para conversarmos.</string>
+    <string name="MsgGroupNameChanged">O nome do grupo mudou de \"%1$s\" para \"%2$s\".</string>
     <string name="MsgGroupImageChanged">Imagem do grupo alterada.</string>
-    <string name="MsgMemberAddedToGroup">## adicionado.</string>
-    <string name="MsgMemberRemovedFromToGroup">## removido.</string>
+    <string name="MsgMemberAddedToGroup">%1$s adicionado.</string>
+    <string name="MsgMemberRemovedFromToGroup">%1$s removido.</string>
     <string name="AskRemoveMemberFromGroup">Remover &lt;b&gt;%1$s&lt;/b&gt; so grupo?</string>
     <string name="ErrSelfNotInGroup">É preciso ser um membro do grupo para fazer isso.</string>
     <string name="MsgGroupLeft">Deixou o grupo.</string>

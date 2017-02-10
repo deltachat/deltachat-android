@@ -441,11 +441,11 @@
     <string name="Chats">Conversations</string>
     <string name="ErrGroupNameEmpty">Merci de saisir un nom pour le groupe.</string>
     <string name="MsgNewGroupDraftHint">Écrivez un premier message pour permettre aux autres de répondre dans ce group.\n\n• C\'est bon si tout les membres n\'utilisent pas Delta Chat.\n\n• La livraison du premier message peut prendre un moment.</string>
-    <string name="MsgNewGroupDraft">Bonjour, je viens juste de créer le groupe \"##\" pour nous.</string>
-    <string name="MsgGroupNameChanged">Le nom du group a changé de \"##\" à \"##\".</string>
+    <string name="MsgNewGroupDraft">Bonjour, je viens juste de créer le groupe \"%1$s\" pour nous.</string>
+    <string name="MsgGroupNameChanged">Le nom du group a changé de \"%1$s\" à \"%2$s\".</string>
     <string name="MsgGroupImageChanged">L\'image du groupe a changé.</string>
-    <string name="MsgMemberAddedToGroup">Le membre ## vient d\'être ajouté.</string>
-    <string name="MsgMemberRemovedFromToGroup">Le membre ## vient d\'être retiré.</string>
+    <string name="MsgMemberAddedToGroup">Le membre %1$s vient d\'être ajouté.</string>
+    <string name="MsgMemberRemovedFromToGroup">Le membre %1$s vient d\'être retiré.</string>
     <string name="AskAddMemberToGroup">Voulez-vous ajouter <![CDATA[<b>]]>%1$s<![CDATA[</b>]]> au groupe ?</string>
     <string name="AskRemoveMemberFromGroup">Voulez-vous retirer <![CDATA[<b>]]>%1$s<![CDATA[</b>]]> du groupe ?</string>
     <string name="ErrSelfNotInGroup">Vous devez être membre du groupe pour effectuer cette action.</string>

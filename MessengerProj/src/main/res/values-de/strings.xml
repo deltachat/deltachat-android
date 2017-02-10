@@ -461,12 +461,12 @@
     <string name="AskResetNotifications">Alle Benachrichtigungseinstellungen und Töne dieser Seite und auch der einzelnen Chats zurücksetzen?</string>
     <string name="AttachFiles">Dateien anhängen</string>
     <string name="ErrGroupNameEmpty">Bitte einen Namen für die Gruppe eingeben.</string>
-    <string name="MsgNewGroupDraft">Hallo, ich habe die Gruppe \"##\" für uns erstellt.</string>
+    <string name="MsgNewGroupDraft">Hallo, ich habe die Gruppe \"%1$s\" für uns erstellt.</string>
     <string name="MsgNewGroupDraftHint">Eine erste Nachricht schreiben; dann können die anderen in der Gruppe antworten.\n\n• Gruppenmitglieder müssen hierzu Delta Chat nicht installiert haben.\n\n• Die Zustellung der ersten Nachricht kann einen Moment dauern.</string>
     <string name="MsgGroupImageChanged">Gruppenbild geändert.</string>
-    <string name="MsgGroupNameChanged">Gruppenname von \"##\" in \"##\" geändert.</string>
-    <string name="MsgMemberAddedToGroup">## zur Gruppe hinzugefügt.</string>
-    <string name="MsgMemberRemovedFromToGroup">## aus Gruppe entfernt.</string>
+    <string name="MsgGroupNameChanged">Gruppenname von \"%1$s\" in \"%2$s\" geändert.</string>
+    <string name="MsgMemberAddedToGroup">%1$s zur Gruppe hinzugefügt.</string>
+    <string name="MsgMemberRemovedFromToGroup">%1$s aus Gruppe entfernt.</string>
     <string name="AskAddMemberToGroup">Benutzer <![CDATA[<b>]]>%1$s<![CDATA[</b>]]> zur Gruppe hinzufügen?</string>
     <string name="AskRemoveMemberFromGroup">Benutzer <![CDATA[<b>]]>%1$s<![CDATA[</b>]]> aus Gruppe entfernen?</string>
     <string name="ErrSelfNotInGroup">Sie müssen ein Gruppenmitglied sein, um diese Aktion ausführen zu können.</string>
