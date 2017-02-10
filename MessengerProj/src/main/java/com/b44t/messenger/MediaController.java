@@ -2422,7 +2422,7 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
         SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("mainconfig", Activity.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
         editor.putBoolean("shuffleMusic", shuffleMusic);
-        editor.commit();
+        editor.apply();
         if (shuffleMusic) {
             buildShuffledPlayList();
             currentPlaylistNum = 0;
@@ -2446,7 +2446,7 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
         SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("mainconfig", Activity.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
         editor.putInt("repeatMode", repeatMode);
-        editor.commit();
+        editor.apply();
     }
 
     public boolean pauseAudio(MessageObject messageObject) {
@@ -2982,7 +2982,7 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
         SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("mainconfig", Activity.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
         editor.putBoolean("save_gallery", saveToGallery);
-        editor.commit();
+        editor.apply();
         checkSaveToGalleryFiles();
     }
 
@@ -2991,7 +2991,7 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
         SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("mainconfig", Activity.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
         editor.putBoolean("autoplay_gif", autoplayGifs);
-        editor.commit();
+        editor.apply();
     }
     */
 
@@ -3000,7 +3000,7 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
         SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("mainconfig", Activity.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
         editor.putBoolean("raise_to_speak", raiseToSpeak);
-        editor.commit();
+        editor.apply();
     }
 
     public void toggleDirectShare() {
@@ -3008,7 +3008,7 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
         SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("mainconfig", Activity.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
         editor.putBoolean("direct_share", directShare);
-        editor.commit();
+        editor.apply();
     }
 
     public void checkSaveToGalleryFiles() { // not sure, but it seems as if these paths are not needed
@@ -3495,12 +3495,12 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
 
         SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("videoconvert", Activity.MODE_PRIVATE);
         boolean isPreviousOk = preferences.getBoolean("isPreviousOk", true);
-        preferences.edit().putBoolean("isPreviousOk", false).commit();
+        preferences.edit().putBoolean("isPreviousOk", false).apply();
 
         File inputFile = new File(videoPath);
         if (!inputFile.canRead() || !isPreviousOk) {
             didWriteData(messageObject, cacheFile, true, true);
-            preferences.edit().putBoolean("isPreviousOk", true).commit();
+            preferences.edit().putBoolean("isPreviousOk", true).apply();
             return false;
         }
 
@@ -3888,11 +3888,11 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
                 FileLog.e("messenger", "time = " + (System.currentTimeMillis() - time));
             }
         } else {
-            preferences.edit().putBoolean("isPreviousOk", true).commit();
+            preferences.edit().putBoolean("isPreviousOk", true).apply();
             didWriteData(messageObject, cacheFile, true, true);
             return false;
         }
-        preferences.edit().putBoolean("isPreviousOk", true).commit();
+        preferences.edit().putBoolean("isPreviousOk", true).apply();
         didWriteData(messageObject, cacheFile, true, error);
         return true;
     }

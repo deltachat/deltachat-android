@@ -294,7 +294,7 @@ public class VideoEditorActivity extends BaseFragment implements TextureView.Sur
                 SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("mainconfig", Activity.MODE_PRIVATE);
                 SharedPreferences.Editor editor = preferences.edit();
                 editor.putBoolean("compress_video", isChecked);
-                editor.commit();
+                editor.apply();
                 updateVideoEditedInfo();
             }
         });

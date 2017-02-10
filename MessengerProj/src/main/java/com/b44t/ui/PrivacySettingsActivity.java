@@ -165,7 +165,7 @@ public class PrivacySettingsActivity extends BaseFragment implements Notificatio
                     SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("Notifications", Activity.MODE_PRIVATE);
                     SharedPreferences.Editor editor = preferences.edit();
                     editor.putInt("notify2_" + MrChat.MR_CHAT_ID_DEADDROP, oldval==1? 2 /*always muted*/ : 0);
-                    editor.commit();
+                    editor.apply();
                 }
             }
         });

@@ -355,7 +355,7 @@ public class CacheControlActivity extends BaseFragment {
                         @Override
                         public void onClick(DialogInterface dialog, final int which) {
                             SharedPreferences.Editor editor = ApplicationLoader.applicationContext.getSharedPreferences("mainconfig", Activity.MODE_PRIVATE).edit();
-                            editor.putInt("keep_media", which).commit();
+                            editor.putInt("keep_media", which).apply();
                             if (listAdapter != null) {
                                 listAdapter.notifyDataSetChanged();
                             }

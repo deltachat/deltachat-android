@@ -209,7 +209,7 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
                             SharedPreferences.Editor editor = preferences.edit();
                             editor.putInt("msg_font_size", numberPicker.getValue());
                             MessagesController.getInstance().fontSize = numberPicker.getValue();
-                            editor.commit();
+                            editor.apply();
                             if (listView != null) {
                                 listView.invalidateViews();
                             }
@@ -221,7 +221,7 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
                     boolean animations = preferences.getBoolean("view_animations", true);
                     SharedPreferences.Editor editor = preferences.edit();
                     editor.putBoolean("view_animations", !animations);
-                    editor.commit();
+                    editor.apply();
                     if (view instanceof TextCheckCell) {
                         ((TextCheckCell) view).setChecked(!animations);
                     }
@@ -234,7 +234,7 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
                     boolean send = preferences.getBoolean("send_by_enter", false);
                     SharedPreferences.Editor editor = preferences.edit();
                     editor.putBoolean("send_by_enter", !send);
-                    editor.commit();
+                    editor.apply();
                     if (view instanceof TextCheckCell) {
                         ((TextCheckCell) view).setChecked(!send);
                     }

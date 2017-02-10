@@ -1001,7 +1001,7 @@ public class EmojiView extends FrameLayout implements NotificationCenter.Notific
 
     public void clearRecentEmoji() {
         SharedPreferences preferences = getContext().getSharedPreferences("emoji", Activity.MODE_PRIVATE);
-        preferences.edit().putBoolean("filled_default", true).commit();
+        preferences.edit().putBoolean("filled_default", true).apply();
         emojiUseHistory.clear();
         recentEmoji.clear();
         saveRecentEmoji();
@@ -1108,7 +1108,7 @@ public class EmojiView extends FrameLayout implements NotificationCenter.Notific
             stringBuilder.append("=");
             stringBuilder.append(entry.getValue());
         }
-        preferences.edit().putString("emojis2", stringBuilder.toString()).commit();
+        preferences.edit().putString("emojis2", stringBuilder.toString()).apply();
     }
 
     private void saveEmojiColors() {
@@ -1122,7 +1122,7 @@ public class EmojiView extends FrameLayout implements NotificationCenter.Notific
             stringBuilder.append("=");
             stringBuilder.append(entry.getValue());
         }
-        preferences.edit().putString("color", stringBuilder.toString()).commit();
+        preferences.edit().putString("color", stringBuilder.toString()).apply();
     }
 
     private void saveRecentStickers() {
@@ -1135,7 +1135,7 @@ public class EmojiView extends FrameLayout implements NotificationCenter.Notific
             stringBuilder.append(newRecentStickers.get(a));
         }
         editor.putString("stickers2", stringBuilder.toString());
-        editor.commit();
+        editor.apply();
     }
 
     public void switchToGifRecent() {
@@ -1331,7 +1331,7 @@ public class EmojiView extends FrameLayout implements NotificationCenter.Notific
                         }
                     }
                 }
-                preferences.edit().remove("emojis").commit();
+                preferences.edit().remove("emojis").apply();
                 saveRecentEmoji();
             } else {
                 str = preferences.getString("emojis2", "");
@@ -1355,7 +1355,7 @@ public class EmojiView extends FrameLayout implements NotificationCenter.Notific
                     for (int i = 0; i < newRecent.length; i++) {
                         emojiUseHistory.put(newRecent[i], newRecent.length - i);
                     }
-                    preferences.edit().putBoolean("filled_default", true).commit();
+                    preferences.edit().putBoolean("filled_default", true).apply();
                     saveRecentEmoji();
                 }
             }
@@ -1412,7 +1412,7 @@ public class EmojiView extends FrameLayout implements NotificationCenter.Notific
                             return 0;
                         }
                     });
-                    preferences.edit().remove("stickers").commit();
+                    preferences.edit().remove("stickers").apply();
                     saveRecentStickers();
                 } else {
                     str = preferences.getString("stickers2", "");

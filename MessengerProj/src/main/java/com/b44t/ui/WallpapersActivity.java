@@ -173,7 +173,7 @@ public class WallpapersActivity extends BaseFragment implements NotificationCent
                         SharedPreferences.Editor editor = preferences.edit();
                         editor.putInt("selectedBackground", selectedBackground);
                         editor.putInt("selectedColor", selectedColor);
-                        editor.commit();
+                        editor.apply();
                         ApplicationLoader.reloadWallpaper();
                     }
                     finishFragment();

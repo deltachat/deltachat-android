@@ -182,7 +182,7 @@ public class ProfileNotificationsActivity extends BaseFragment implements Notifi
                                 } else if (which == 4) {
                                     editor.putInt("vibrate_" + dialog_id, 3);
                                 }
-                                editor.commit();
+                                editor.apply();
                             }
                             if (listView != null) {
                                 listView.invalidateViews();
@@ -210,7 +210,7 @@ public class ProfileNotificationsActivity extends BaseFragment implements Notifi
                                 NotificationsController.getInstance().removeNotificationsForDialog(dialog_id);
                             }*/
                             //MessagesStorage.getInstance().setDialogFlags(dialog_id, which == 2 ? 1 : 0);
-                            editor.commit();
+                            editor.apply();
                             TLRPC.TL_dialog dialog = MessagesController.getInstance().dialogs_dict.get(dialog_id);
                             if (dialog != null) {
                                 dialog.notify_settings = new TLRPC.TL_peerNotifySettings();
@@ -285,7 +285,7 @@ public class ProfileNotificationsActivity extends BaseFragment implements Notifi
                             final SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("Notifications", Activity.MODE_PRIVATE);
                             SharedPreferences.Editor editor = preferences.edit();
                             editor.putInt("color_" + dialog_id, colorPickerView.getColor());
-                            editor.commit();
+                            editor.apply();
                             listView.invalidateViews();
                         }
                     });
@@ -295,7 +295,7 @@ public class ProfileNotificationsActivity extends BaseFragment implements Notifi
                             final SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("Notifications", Activity.MODE_PRIVATE);
                             SharedPreferences.Editor editor = preferences.edit();
                             editor.putInt("color_" + dialog_id, 0);
-                            editor.commit();
+                            editor.apply();
                             listView.invalidateViews();
                         }
                     });
@@ -305,7 +305,7 @@ public class ProfileNotificationsActivity extends BaseFragment implements Notifi
                             final SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("Notifications", Activity.MODE_PRIVATE);
                             SharedPreferences.Editor editor = preferences.edit();
                             editor.remove("color_" + dialog_id);
-                            editor.commit();
+                            editor.apply();
                             listView.invalidateViews();
                         }
                     });
@@ -327,7 +327,7 @@ public class ProfileNotificationsActivity extends BaseFragment implements Notifi
                                 which--;
                             }
                             SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("Notifications", Activity.MODE_PRIVATE);
-                            preferences.edit().putInt("priority_" + dialog_id, which).commit();
+                            preferences.edit().putInt("priority_" + dialog_id, which).apply();
                             if (listView != null) {
                                 listView.invalidateViews();
                             }
@@ -434,8 +434,8 @@ public class ProfileNotificationsActivity extends BaseFragment implements Notifi
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("Notifications", Activity.MODE_PRIVATE);
-                            preferences.edit().putInt("smart_max_count_" + dialog_id, numberPickerTimes.getValue()).commit();
-                            preferences.edit().putInt("smart_delay_" + dialog_id, numberPickerMinutes.getValue() * 60).commit();
+                            preferences.edit().putInt("smart_max_count_" + dialog_id, numberPickerTimes.getValue()).apply();
+                            preferences.edit().putInt("smart_delay_" + dialog_id, numberPickerMinutes.getValue() * 60).apply();
                             if (listView != null) {
                                 listView.invalidateViews();
                             }
@@ -445,7 +445,7 @@ public class ProfileNotificationsActivity extends BaseFragment implements Notifi
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("Notifications", Activity.MODE_PRIVATE);
-                            preferences.edit().putInt("smart_max_count_" + dialog_id, 0).commit();
+                            preferences.edit().putInt("smart_max_count_" + dialog_id, 0).apply();
                             if (listView != null) {
                                 listView.invalidateViews();
                             }
@@ -491,7 +491,7 @@ public class ProfileNotificationsActivity extends BaseFragment implements Notifi
                     editor.putString("sound_path_" + dialog_id, "NoSound");
                 }
             }
-            editor.commit();
+            editor.apply();
             listView.invalidateViews();
         }
     }

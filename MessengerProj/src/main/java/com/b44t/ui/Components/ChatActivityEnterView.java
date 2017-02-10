@@ -1965,10 +1965,10 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
         if (height > AndroidUtilities.dp(50) && keyboardVisible) {
             if (isWidthGreater) {
                 keyboardHeightLand = height;
-                ApplicationLoader.applicationContext.getSharedPreferences("emoji", 0).edit().putInt("kbd_height_land3", keyboardHeightLand).commit();
+                ApplicationLoader.applicationContext.getSharedPreferences("emoji", 0).edit().putInt("kbd_height_land3", keyboardHeightLand).apply();
             } else {
                 keyboardHeight = height;
-                ApplicationLoader.applicationContext.getSharedPreferences("emoji", 0).edit().putInt("kbd_height", keyboardHeight).commit();
+                ApplicationLoader.applicationContext.getSharedPreferences("emoji", 0).edit().putInt("kbd_height", keyboardHeight).apply();
             }
         }
 

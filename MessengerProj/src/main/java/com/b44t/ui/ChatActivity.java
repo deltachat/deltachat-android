@@ -1522,7 +1522,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                                 editor.putInt("notify2_" + dialog_id, 3);
                                 editor.putInt("notifyuntil_" + dialog_id, untilTime);
                             }
-                            editor.commit();
+                            editor.apply();
                             /*NotificationsController.getInstance().removeNotificationsForDialog(dialog_id);
                             TLRPC.TL_dialog dialog = MessagesController.getInstance().dialogs_dict.get(dialog_id);
                             if (dialog != null) {
@@ -1540,7 +1540,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
             SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("Notifications", Activity.MODE_PRIVATE);
             SharedPreferences.Editor editor = preferences.edit();
             editor.putInt("notify2_" + dialog_id, 0);
-            editor.commit();
+            editor.apply();
             /*TLRPC.TL_dialog dialog = MessagesController.getInstance().dialogs_dict.get(dialog_id);
             if (dialog != null) {
                 dialog.notify_settings = new TLRPC.TL_peerNotifySettings();

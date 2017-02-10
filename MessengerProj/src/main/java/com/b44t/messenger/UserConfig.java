@@ -122,7 +122,7 @@ public class UserConfig {
                 }
                 */
 
-                editor.commit();
+                editor.apply();
                 if (oldFile != null) {
                     oldFile.delete();
                 }

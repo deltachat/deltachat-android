@@ -213,7 +213,7 @@ public class ApplicationLoader extends Application {
             // make sure, the notifications for the "deaddrop" dialog are muted by default
             SharedPreferences.Editor editor = preferences.edit();
             editor.putInt("notify2_"+MrChat.MR_CHAT_ID_DEADDROP, 2);
-            editor.commit();
+            editor.apply();
         }
 
         // open() sqlite file (you can inspect the file eg. with "Tools / Android Device Monitor / File Explorer")

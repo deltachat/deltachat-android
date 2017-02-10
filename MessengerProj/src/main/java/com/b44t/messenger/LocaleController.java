@@ -310,7 +310,7 @@ public class LocaleController {
             }
         }
         editor.putString("locales", locales);
-        editor.commit();
+        editor.apply();
     }
 
     public boolean deleteLanguage(LocaleInfo localeInfo) {
@@ -424,7 +424,7 @@ public class LocaleController {
                         SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("mainconfig", Activity.MODE_PRIVATE);
                         SharedPreferences.Editor editor = preferences.edit();
                         editor.putString("language", localeInfo.shortName);
-                        editor.commit();
+                        editor.apply();
                     }
                 }
             } else {
@@ -433,7 +433,7 @@ public class LocaleController {
                 SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("mainconfig", Activity.MODE_PRIVATE);
                 SharedPreferences.Editor editor = preferences.edit();
                 editor.remove("language");
-                editor.commit();
+                editor.apply();
 
                 if (newLocale != null) {
                     LocaleInfo info = null;

@@ -408,7 +408,7 @@ public class MusicBrowserService extends MediaBrowserService implements Notifica
                     return;
                 }
                 lastSelectedDialog = did;
-                ApplicationLoader.applicationContext.getSharedPreferences("Notifications", Activity.MODE_PRIVATE).edit().putInt("auto_lastSelectedDialog", did).commit();
+                ApplicationLoader.applicationContext.getSharedPreferences("Notifications", Activity.MODE_PRIVATE).edit().putInt("auto_lastSelectedDialog", did).apply();
                 MediaController.getInstance().setPlaylist(arrayList, arrayList.get(id), false);
                 mediaSession.setQueue(arrayList1);
                 if (did > 0) {

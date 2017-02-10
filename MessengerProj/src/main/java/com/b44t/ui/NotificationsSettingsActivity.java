@@ -191,7 +191,7 @@ public class NotificationsSettingsActivity extends BaseFragment implements Notif
                         enabled = preferences.getBoolean("EnableGroup", true);
                         editor.putBoolean("EnableGroup", !enabled);
                     }
-                    editor.commit();
+                    editor.apply();
                 } else if (i == messagePreviewRow /*|| i == groupPreviewRow*/) {
                     SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("Notifications", Activity.MODE_PRIVATE);
                     SharedPreferences.Editor editor = preferences.edit();
@@ -202,7 +202,7 @@ public class NotificationsSettingsActivity extends BaseFragment implements Notif
                     //    enabled = preferences.getBoolean("EnablePreviewGroup", true);
                     //    editor.putBoolean("EnablePreviewGroup", !enabled);
                     //}
-                    editor.commit();
+                    editor.apply();
                 } else if (i == messageSoundRow || i == groupSoundRow) {
                     try {
                         SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("Notifications", Activity.MODE_PRIVATE);
@@ -253,7 +253,7 @@ public class NotificationsSettingsActivity extends BaseFragment implements Notif
                             SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("Notifications", Activity.MODE_PRIVATE);
                             SharedPreferences.Editor editor = preferences.edit();
                             editor.clear();
-                            editor.commit();
+                            editor.apply();
                             if (listView != null) {
                                 listView.invalidateViews();
                             }
@@ -267,13 +267,13 @@ public class NotificationsSettingsActivity extends BaseFragment implements Notif
                     SharedPreferences.Editor editor = preferences.edit();
                     enabled = preferences.getBoolean("EnableInAppSounds", true);
                     editor.putBoolean("EnableInAppSounds", !enabled);
-                    editor.commit();
+                    editor.apply();
                 } else if (i == inappVibrateRow) {
                     SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("Notifications", Activity.MODE_PRIVATE);
                     SharedPreferences.Editor editor = preferences.edit();
                     enabled = preferences.getBoolean("EnableInAppVibrate", true);
                     editor.putBoolean("EnableInAppVibrate", !enabled);
-                    editor.commit();
+                    editor.apply();
                 /*} else if (i == inappPreviewRow) {
                     SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("Notifications", Activity.MODE_PRIVATE);
                     SharedPreferences.Editor editor = preferences.edit();
@@ -285,21 +285,21 @@ public class NotificationsSettingsActivity extends BaseFragment implements Notif
                     SharedPreferences.Editor editor = preferences.edit();
                     enabled = preferences.getBoolean("EnableInChatSound", true);
                     editor.putBoolean("EnableInChatSound", !enabled);
-                    editor.commit();
+                    editor.apply();
                     NotificationsController.getInstance().setInChatSoundEnabled(!enabled);
                 } else if (i == badgeNumberRow) {
                     SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("Notifications", Activity.MODE_PRIVATE);
                     SharedPreferences.Editor editor = preferences.edit();
                     enabled = preferences.getBoolean("badgeNumber", true);
                     editor.putBoolean("badgeNumber", !enabled);
-                    editor.commit();
+                    editor.apply();
                     NotificationsController.getInstance().setBadgeEnabled(!enabled);
                 } else if (i == notificationsServiceConnectionRow) {
                     SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("Notifications", Activity.MODE_PRIVATE);
                     enabled = preferences.getBoolean("pushConnection", true);
                     SharedPreferences.Editor editor = preferences.edit();
                     editor.putBoolean("pushConnection", !enabled);
-                    editor.commit();
+                    editor.apply();
                     if (!enabled) {
                         ConnectionsManager.getInstance().setPushConnectionEnabled(true);
                     } else {
@@ -310,7 +310,7 @@ public class NotificationsSettingsActivity extends BaseFragment implements Notif
                     final SharedPreferences.Editor editor = preferences.edit();
                     enabled = preferences.getBoolean("pushService", true);
                     editor.putBoolean("pushService", !enabled);
-                    editor.commit();
+                    editor.apply();
                     ApplicationLoader.stopPushService();
                     ApplicationLoader.startPushService();
                 } else if (i == messageLedRow || i == groupLedRow) {
@@ -346,7 +346,7 @@ public class NotificationsSettingsActivity extends BaseFragment implements Notif
                                 editor.putInt("GroupLed", colorPickerView.getColor());
                                 textCell.setTextAndColor(LocaleController.getString("LedColor", R.string.LedColor), colorPickerView.getColor(), true);
                             }
-                            editor.commit();
+                            editor.apply();
                         }
                     });
                     builder.setNeutralButton(LocaleController.getString("Disabled", R.string.Disabled), new DialogInterface.OnClickListener() {
@@ -362,7 +362,7 @@ public class NotificationsSettingsActivity extends BaseFragment implements Notif
                                 editor.putInt("GroupLed", 0);
                                 textCell.setTextAndColor(LocaleController.getString("LedColor", R.string.LedColor), 0, true);
                             }
-                            editor.commit();
+                            editor.apply();
                             listView.invalidateViews();
                         }
                     });
@@ -396,7 +396,7 @@ public class NotificationsSettingsActivity extends BaseFragment implements Notif
                             } else if (which == 4) {
                                 editor.putInt(param, 4);
                             }
-                            editor.commit();
+                            editor.apply();
                             if (listView != null) {
                                 listView.invalidateViews();
                             }
@@ -416,11 +416,11 @@ public class NotificationsSettingsActivity extends BaseFragment implements Notif
                         public void onClick(DialogInterface dialog, int which) {
                             SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("Notifications", Activity.MODE_PRIVATE);
                             if (i == messagePriorityRow) {
-                                preferences.edit().putInt("priority_messages", which).commit();
+                                preferences.edit().putInt("priority_messages", which).apply();
                             } else if (i == groupPriorityRow) {
-                                preferences.edit().putInt("priority_group", which).commit();
+                                preferences.edit().putInt("priority_group", which).apply();
                             } else if (i == inappPriorityRow) {
-                                preferences.edit().putInt("priority_inapp", which).commit();
+                                preferences.edit().putInt("priority_inapp", which).apply();
                             }
                             if (listView != null) {
                                 listView.invalidateViews();
@@ -458,7 +458,7 @@ public class NotificationsSettingsActivity extends BaseFragment implements Notif
                                 minutes = 60 * 4;
                             }
                             SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("Notifications", Activity.MODE_PRIVATE);
-                            preferences.edit().putInt("repeat_messages", minutes).commit();
+                            preferences.edit().putInt("repeat_messages", minutes).apply();
                             if (listView != null) {
                                 listView.invalidateViews();
                             }
@@ -513,7 +513,7 @@ public class NotificationsSettingsActivity extends BaseFragment implements Notif
                     editor.putString("GroupSoundPath", "NoSound");
                 }
             }
-            editor.commit();
+            editor.apply();
             listView.invalidateViews();
         }
     }
