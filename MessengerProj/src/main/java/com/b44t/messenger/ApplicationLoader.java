@@ -53,9 +53,6 @@ public class ApplicationLoader extends Application {
     private static boolean isCustomTheme;
     private static final Object sync = new Object();
 
-    private static int serviceMessageColor;
-    private static int serviceSelectedMessageColor;
-
     public static volatile Context applicationContext;
     public static volatile Handler applicationHandler;
     private static volatile boolean applicationInited = false;
@@ -73,25 +70,11 @@ public class ApplicationLoader extends Application {
 
     public static void reloadWallpaper() {
         cachedWallpaper = null;
-        serviceMessageColor = 0;
-        ApplicationLoader.applicationContext.getSharedPreferences("mainconfig", Activity.MODE_PRIVATE).edit().remove("serviceMessageColor").commit();
         loadWallpaper();
     }
 
-    private static void calcBackgroundColor() {
-        int result[] = AndroidUtilities.calcDrawableColor(cachedWallpaper);
-        serviceMessageColor = result[0];
-        serviceSelectedMessageColor = result[1];
-        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("mainconfig", Activity.MODE_PRIVATE);
-        preferences.edit().putInt("serviceMessageColor", serviceMessageColor).putInt("serviceSelectedMessageColor", serviceSelectedMessageColor).commit();
-    }
-
     public static int getServiceMessageColor() {
-        return serviceMessageColor;
-    }
-
-    public static int getServiceSelectedMessageColor() {
-        return serviceSelectedMessageColor;
+        return 0xAA777777; // this color is used as a background for date headlines, empty chat hints and in the drawer
     }
 
     public static void loadWallpaper() {
@@ -107,8 +90,6 @@ public class ApplicationLoader extends Application {
                         SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("mainconfig", Activity.MODE_PRIVATE);
                         int selectedBackground = preferences.getInt("selectedBackground", 1000001);
                         selectedColor = preferences.getInt("selectedColor", 0);
-                        serviceMessageColor = preferences.getInt("serviceMessageColor", 0);
-                        serviceSelectedMessageColor = preferences.getInt("serviceSelectedMessageColor", 0);
                         if (selectedColor == 0) {
                             if (selectedBackground == 1000001) {
                                 cachedWallpaper = applicationContext.getResources().getDrawable(R.drawable.background_hd);
@@ -132,9 +113,6 @@ public class ApplicationLoader extends Application {
                             selectedColor = -2693905;
                         }
                         cachedWallpaper = new ColorDrawable(selectedColor);
-                    }
-                    if (serviceMessageColor == 0) {
-                        calcBackgroundColor();
                     }
                 }
             }

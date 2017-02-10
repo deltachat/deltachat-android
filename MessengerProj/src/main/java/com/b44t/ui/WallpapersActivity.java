@@ -79,8 +79,6 @@ public class WallpapersActivity extends BaseFragment implements NotificationCent
 
     private ListAdapter listAdapter;
     private ImageView backgroundImage;
-    private FrameLayout progressView;
-    private View progressViewBackground;
     private int selectedBackground;
     private int selectedColor;
     private ArrayList<TLRPC.WallPaper> wallPapers = new ArrayList<>();
@@ -198,24 +196,6 @@ public class WallpapersActivity extends BaseFragment implements NotificationCent
                 return true;
             }
         });
-
-        progressView = new FrameLayout(context);
-        progressView.setVisibility(View.INVISIBLE);
-        frameLayout.addView(progressView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.MATCH_PARENT, Gravity.TOP | Gravity.LEFT, 0, 0, 0, 52));
-
-        progressViewBackground = new View(context);
-        progressViewBackground.setBackgroundResource(R.drawable.system_loader);
-        progressView.addView(progressViewBackground, LayoutHelper.createFrame(36, 36, Gravity.CENTER));
-
-        ProgressBar progressBar = new ProgressBar(context);
-        try {
-            progressBar.setIndeterminateDrawable(context.getResources().getDrawable(R.drawable.loading_animation));
-        } catch (Exception e) {
-            //don't promt
-        }
-        progressBar.setIndeterminate(true);
-        AndroidUtilities.setProgressBarAnimationDuration(progressBar, 1500);
-        progressView.addView(progressBar, LayoutHelper.createFrame(32, 32, Gravity.CENTER));
 
         RecyclerListView listView = new RecyclerListView(context);
         listView.setClipToPadding(false);
@@ -357,12 +337,9 @@ public class WallpapersActivity extends BaseFragment implements NotificationCent
             String fileName = size.location.volume_id + "_" + size.location.local_id + ".jpg";
             File f = new File(FileLoader.getInstance().getDirectory(FileLoader.MEDIA_DIR_CACHE), fileName);
             if (!f.exists()) {
-                int result[] = AndroidUtilities.calcDrawableColor(backgroundImage.getDrawable());
-                progressViewBackground.getBackground().setColorFilter(new PorterDuffColorFilter(result[0], PorterDuff.Mode.MULTIPLY));
                 loadingFile = fileName;
                 loadingFileObject = f;
                 doneButton.setEnabled(false);
-                progressView.setVisibility(View.VISIBLE);
                 loadingSize = size;
                 selectedColor = 0;
                 FileLoader.getInstance().loadFile(size, null, true);
@@ -382,7 +359,6 @@ public class WallpapersActivity extends BaseFragment implements NotificationCent
                 backgroundImage.setBackgroundColor(0);
                 selectedColor = 0;
                 doneButton.setEnabled(true);
-                progressView.setVisibility(View.GONE);
             }
         } else {
             if (loadingFile != null) {
@@ -418,7 +394,6 @@ public class WallpapersActivity extends BaseFragment implements NotificationCent
             loadingFile = null;
             loadingSize = null;
             doneButton.setEnabled(true);
-            progressView.setVisibility(View.GONE);
         }
     }
 
@@ -431,14 +406,12 @@ public class WallpapersActivity extends BaseFragment implements NotificationCent
                 loadingFileObject = null;
                 loadingFile = null;
                 loadingSize = null;
-                progressView.setVisibility(View.GONE);
                 doneButton.setEnabled(false);
             }
         } else if (id == NotificationCenter.FileDidLoaded) {
             String location = (String) args[0];
             if (loadingFile != null && loadingFile.equals(location)) {
                 backgroundImage.setImageURI(Uri.fromFile(loadingFileObject));
-                progressView.setVisibility(View.GONE);
                 backgroundImage.setBackgroundColor(0);
                 doneButton.setEnabled(true);
                 loadingFileObject = null;

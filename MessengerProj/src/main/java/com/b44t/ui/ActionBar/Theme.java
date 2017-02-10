@@ -185,16 +185,12 @@ public class Theme {
 
     public static Drawable shareIconDrawable;
 
-    public static Drawable geoInDrawable;
-    public static Drawable geoOutDrawable;
-
     public static Drawable[] contactDrawable = new Drawable[2];
     public static Drawable[][] fileStatesDrawable = new Drawable[10][2];
     public static Drawable[][] photoStatesDrawables = new Drawable[13][2];
     public static Drawable[] docMenuDrawable = new Drawable[4];
 
     public static PorterDuffColorFilter colorFilter;
-    public static PorterDuffColorFilter colorPressedFilter;
     private static int currentColor;
 
     public static Drawable attachButtonDrawables[] = new Drawable[8];
@@ -290,7 +286,6 @@ public class Theme {
         int color = ApplicationLoader.getServiceMessageColor();
         if (currentColor != color) {
             colorFilter = new PorterDuffColorFilter(color, PorterDuff.Mode.MULTIPLY);
-            colorPressedFilter = new PorterDuffColorFilter(ApplicationLoader.getServiceSelectedMessageColor(), PorterDuff.Mode.MULTIPLY);
             currentColor = color;
             for (int a = 0; a < 4; a++) {
                 cornerOuter[a].setColorFilter(colorFilter);
