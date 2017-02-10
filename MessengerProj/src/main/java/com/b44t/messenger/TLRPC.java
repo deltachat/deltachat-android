@@ -425,15 +425,6 @@ public class TLRPC {
 	public static class TL_inputPhoto extends InputPhoto {
 	}
 
-	public static class InputPeer extends TLObject {
-		public int user_id;
-		public int chat_id;
-		public int channel_id;
-	}
-
-	public static class TL_inputPeerUser extends InputPeer {
-	}
-
 	public static class MessageMedia extends TLObject {
 		public byte[] bytes;
 		public Photo photo;
@@ -477,9 +468,6 @@ public class TLRPC {
         public TLRPC.Message replyMessage; //custom
 		public boolean created_by_mr;
     }
-
-	public static class TL_messageEmpty extends Message {
-	}
 
 	public static class TL_message extends Message {
 	}

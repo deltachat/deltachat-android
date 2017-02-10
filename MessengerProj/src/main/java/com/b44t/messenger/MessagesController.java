@@ -91,36 +91,6 @@ public class MessagesController implements NotificationCenter.NotificationCenter
         fontSize = preferences.getInt("msg_font_size", SettingsActivity.defMsgFontSize());
     }
 
-    /*
-    public static TLRPC.InputUser getInputUser(TLRPC.User user) {
-        if (user == null) {
-            return new TLRPC.TL_inputUserEmpty();
-        }
-        TLRPC.InputUser inputUser;
-        if (user.id == UserConfig.getClientUserId()) {
-            inputUser = new TLRPC.TL_inputUserSelf();
-        } else {
-            inputUser = new TLRPC.TL_inputUser();
-            inputUser.user_id = user.id;
-        }
-        return inputUser;
-    }
-
-    public static TLRPC.InputUser getInputUser(int user_id) {
-        TLRPC.User user = getInstance().getUser(user_id);
-        return getInputUser(user);
-    }
-    */
-
-    public static TLRPC.InputPeer getInputPeer(int id) {
-        TLRPC.InputPeer inputPeer;
-        {
-            inputPeer = new TLRPC.TL_inputPeerUser();
-            inputPeer.user_id = id;
-        }
-        return inputPeer;
-    }
-
     public static TLRPC.Peer getPeer(int id) {
         TLRPC.Peer inputPeer;
         /*if (id < 0) {
