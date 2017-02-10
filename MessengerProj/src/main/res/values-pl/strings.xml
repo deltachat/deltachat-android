@@ -20,6 +20,9 @@
     <string name="SelectChat">Wybierz czat…</string>
     <string name="Search">Szukaj</string>
     <string name="MuteNotifications">Wyłącz powiadomienia</string>
+    <string name="MuteFor1Hour">Wyłącz na 1 godzinę</string>
+    <string name="MuteFor8Hours">Wyłącz na 8 godzin</string>
+    <string name="MuteFor2Days">Wyłącz na 2 dni</string>
     <string name="UnmuteNotifications">Włącz powiadomienia</string>
     <string name="Draft">Szkic</string>
     <!--audio view-->
@@ -334,6 +337,16 @@ Uwaga! Jeśli zapomnisz kod dostępu, musisz usunąć i ponownie zainstalować a
 
     <string name="IntroStartMessaging">Uruchom komunikator</string>
     <!--plural-->
+    <plurals name="Members">
+        <item quantity="one">%d członek</item>
+        <item quantity="few">%d członków</item>
+        <item quantity="other">%d członków</item>
+    </plurals>
+    <plurals name="MeAndMembers">
+        <item quantity="one">Ja i %d członek</item>
+        <item quantity="few">Ja i %d członków</item>
+        <item quantity="other">Ja i %d członków</item>
+    </plurals>
     <plurals name="NewMessages">
         <item quantity="one">%d nowa wiadomość</item>
         <item quantity="few">%d nowe wiadomości</item>
@@ -344,27 +357,51 @@ Uwaga! Jeśli zapomnisz kod dostępu, musisz usunąć i ponownie zainstalować a
         <item quantity="few">%d wiadomości</item>
         <item quantity="other">%d wiadomości</item>
     </plurals>
-
+    <plurals name="AreYouSureDeleteMessages">
+        <item quantity="one">Usunąć %d wiadomość? Wiadomość zostanie usunięta również z serwera.</item>
+        <item quantity="few">Usunąć %d wiadomości? Wiadomości zostaną usunięte również z serwera.</item>
+        <item quantity="other">Usunąć %d wiadomości? Wiadomości zostaną usunięte również z serwera.</item>
+    </plurals>
+    <plurals name="NewMessagesInChats">
+        <item quantity="one">%1$s w %2$d czacie</item>
+        <item quantity="few">%1$s w %2$d czatach</item>
+        <item quantity="other">%1$s w %2$d czatach</item>
+    </plurals>
     <plurals name="Chats">
         <item quantity="one">%d czat</item>
         <item quantity="few">%d czaty</item>
-        <item quantity="other">%d czatów</item>
+        <item quantity="other">czatów - %d</item>
     </plurals>
 
     <plurals name="Minutes">
-        <item quantity="one">%d minut</item>
-        <item quantity="few">%d minut</item>
-        <item quantity="other">%d minut</item>
+        <item quantity="one">%d minuta</item>
+        <item quantity="few">%d min.</item>
+        <item quantity="other">%d min.</item>
     </plurals>
     <plurals name="Hours">
-        <item quantity="one">%d godziny</item>
-        <item quantity="few">%d godziny</item>
-        <item quantity="other">%d godziny</item>
+        <item quantity="one">%d godzina</item>
+        <item quantity="few">%d godz.</item>
+        <item quantity="other">%d godz.</item>
     </plurals>
     <plurals name="Days">
         <item quantity="one">%d dzień</item>
         <item quantity="few">%d dni</item>
         <item quantity="other">%d dni</item>
+    </plurals>
+    <plurals name="Weeks">
+        <item quantity="one">%d tydzień</item>
+        <item quantity="few">%d tyg.</item>
+        <item quantity="other">%d tyg.</item>
+    </plurals>
+    <plurals name="Months">
+        <item quantity="one">%d miesiąc</item>
+        <item quantity="few">%d mies.</item>
+        <item quantity="other">%d mies.</item>
+    </plurals>
+    <plurals name="MaxNotifications">
+        <item quantity="one">Najwyżej %1$d powiadomienie w ciągu %2$s</item>
+        <item quantity="few">Najwyżej %1$d powiadomienia w ciągu %2$s</item>
+        <item quantity="other">Najwyżej %1$d powiadomień w ciągu %2$s</item>
     </plurals>
     <!--date formatters-->
     <string name="formatterMonthYear">MMMM yyyy</string>
