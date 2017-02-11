@@ -1,6 +1,7 @@
 # Delta Chat Changelog
 
-## UNRELEASED
+## v0.1.18
+2017-02-11
 
 * Add Polish translation
 * Use a new default background for chats
