@@ -116,102 +116,9 @@ public class MessageObject {
             }
         }
 
-        /*if (message instanceof TLRPC.TL_messageService) {
-            if (message.action != null) {
-                if (message.action instanceof TLRPC.TL_messageActionChatCreate) {
-                    if (isOut()) {
-                        messageText = LocaleController.getString("ActionYouCreateGroup", R.string.ActionYouCreateGroup);
-                    } else {
-                        messageText = replaceWithLink(LocaleController.getString("ActionCreateGroup", R.string.ActionCreateGroup), "un1", fromUser);
-                    }
-                } else if (message.action instanceof TLRPC.TL_messageActionChatDeleteUser) {
-                    if (message.action.user_id == message.from_id) {
-                        if (isOut()) {
-                            messageText = LocaleController.getString("ActionYouLeftUser", R.string.ActionYouLeftUser);
-                        } else {
-                            messageText = replaceWithLink(LocaleController.getString("ActionLeftUser", R.string.ActionLeftUser), "un1", fromUser);
-                        }
-                    } else {
-                        TLRPC.User whoUser = null;
-                        if (users != null) {
-                            whoUser = users.get(message.action.user_id);
-                        }
-                        if (whoUser == null) {
-                            whoUser = MessagesController.getInstance().getUser(message.action.user_id);
-                        }
-                        if (isOut()) {
-                            messageText = replaceWithLink(LocaleController.getString("ActionYouKickUser", R.string.ActionYouKickUser), "un2", whoUser);
-                        } else if (message.action.user_id == UserConfig.getClientUserId()) {
-                            messageText = replaceWithLink(LocaleController.getString("ActionKickUserYou", R.string.ActionKickUserYou), "un1", fromUser);
-                        } else {
-                            messageText = replaceWithLink(LocaleController.getString("ActionKickUser", R.string.ActionKickUser), "un2", whoUser);
-                            messageText = replaceWithLink(messageText, "un1", fromUser);
-                        }
-                    }
-                } else if (message.action instanceof TLRPC.TL_messageActionChatAddUser) {
-                    int singleUserId = messageOwner.action.user_id;
-                    if (singleUserId == 0 && messageOwner.action.users.size() == 1) {
-                        singleUserId = messageOwner.action.users.get(0);
-                    }
-                    if (singleUserId != 0) {
-                        TLRPC.User whoUser = null;
-                        if (users != null) {
-                            whoUser = users.get(singleUserId);
-                        }
-                        if (whoUser == null) {
-                            whoUser = MessagesController.getInstance().getUser(singleUserId);
-                        }
-                        if (singleUserId == message.from_id) {
-                                if (isOut()) {
-                                    messageText = LocaleController.getString("ActionAddUserSelfYou", R.string.ActionAddUserSelfYou);
-                                } else {
-                                    messageText = replaceWithLink(LocaleController.getString("ActionAddUserSelf", R.string.ActionAddUserSelf), "un1", fromUser);
-                                }
-                        } else {
-                            if (isOut()) {
-                                messageText = replaceWithLink(LocaleController.getString("ActionYouAddUser", R.string.ActionYouAddUser), "un2", whoUser);
-                            } else if (singleUserId == UserConfig.getClientUserId()) {
-                                messageText = replaceWithLink(LocaleController.getString("ActionAddUserYou", R.string.ActionAddUserYou), "un1", fromUser);
-                            } else {
-                                messageText = replaceWithLink(LocaleController.getString("ActionAddUser", R.string.ActionAddUser), "un2", whoUser);
-                                messageText = replaceWithLink(messageText, "un1", fromUser);
-                            }
-                        }
-                    } else {
-                        if (isOut()) {
-                            messageText = replaceWithLink(LocaleController.getString("ActionYouAddUser", R.string.ActionYouAddUser), "un2", message.action.users, users);
-                        } else {
-                            messageText = replaceWithLink(LocaleController.getString("ActionAddUser", R.string.ActionAddUser), "un2", message.action.users, users);
-                            messageText = replaceWithLink(messageText, "un1", fromUser);
-                        }
-                    }
-                } else if (message.action instanceof TLRPC.TL_messageActionChatEditPhoto) {
-                        if (isOut()) {
-                            messageText = LocaleController.getString("ActionYouChangedPhoto", R.string.ActionYouChangedPhoto);
-                        } else {
-                            messageText = replaceWithLink(LocaleController.getString("ActionChangedPhoto", R.string.ActionChangedPhoto), "un1", fromUser);
-                        }
-                } else if (message.action instanceof TLRPC.TL_messageActionChatEditTitle) {
-                        if (isOut()) {
-                            messageText = LocaleController.getString("ActionYouChangedTitle", R.string.ActionYouChangedTitle).replace("un2", message.action.title);
-                        } else {
-                            messageText = replaceWithLink(LocaleController.getString("ActionChangedTitle", R.string.ActionChangedTitle).replace("un2", message.action.title), "un1", fromUser);
-                        }
-                } else if (message.action instanceof TLRPC.TL_messageActionChatDeletePhoto) {
-                        if (isOut()) {
-                            messageText = LocaleController.getString("ActionYouRemovedPhoto", R.string.ActionYouRemovedPhoto);
-                        } else {
-                            messageText = replaceWithLink(LocaleController.getString("ActionRemovedPhoto", R.string.ActionRemovedPhoto), "un1", fromUser);
-                        }
-                } else if (message.action instanceof TLRPC.TL_messageActionUserUpdatedPhoto) {
-                    messageText = LocaleController.formatString("NotificationContactNewPhoto", R.string.NotificationContactNewPhoto, UserObject.getUserName(fromUser));
-                } else if (message.action instanceof TLRPC.TL_messageActionHistoryClear) {
-                    messageText = LocaleController.getString("HistoryCleared", R.string.HistoryCleared);
-                }
-            }
-        } else*/ if (!isMediaEmpty()) {
+        if (!isMediaEmpty()) {
             if (message.media instanceof TLRPC.TL_messageMediaPhoto) {
-                messageText = LocaleController.getString("AttachPhoto", R.string.AttachPhoto);
+                messageText = mContext.getString(R.string.AttachPhoto);
             } else if (isVideo()) {
                 messageText = mContext.getString(R.string.AttachVideo);
             } else if (isVoice()) {
@@ -220,8 +127,6 @@ public class MessageObject {
                 messageText = mContext.getString(R.string.AttachLocation);
             } else if (message.media instanceof TLRPC.TL_messageMediaContact) {
                 messageText = mContext.getString(R.string.AttachContact);
-            /*} else if (message.media instanceof TLRPC.TL_messageMediaUnsupported) {
-                messageText = LocaleController.getString("UnsupportedMedia", R.string.UnsupportedMedia);*/
             } else if (message.media instanceof TLRPC.TL_messageMediaDocument) {
                 if (isSticker()) {
                     String sch = getStrickerChar();
