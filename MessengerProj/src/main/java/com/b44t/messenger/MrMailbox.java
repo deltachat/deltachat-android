@@ -276,21 +276,21 @@ public class MrMailbox {
             case MR_EVENT_GET_STRING:
                 String s = "ErrStrBadId";
                 switch( (int)data1 ) {
-                    case  1: s = LocaleController.getString("NoMessages", R.string.NoMessages); break;
-                    case  2: s = LocaleController.getString("FromSelf", R.string.FromSelf); break;
-                    case  3: s = LocaleController.getString("Draft", R.string.Draft); break;
-                    case  8: s = LocaleController.getString("Deaddrop", R.string.Deaddrop); break;
-                    case  9: s = LocaleController.getString("AttachPhoto", R.string.AttachPhoto); break;
-                    case 10: s = LocaleController.getString("AttachVideo", R.string.AttachVideo); break;
-                    case 11: s = LocaleController.getString("AttachAudio", R.string.AttachAudio); break;
-                    case 12: s = LocaleController.getString("AttachDocument", R.string.AttachDocument); break;
-                    case 13: s = LocaleController.getString("DefaultStatusText", R.string.DefaultStatusText); break;
-                    case 14: s = LocaleController.getString("MsgNewGroupDraft", R.string.MsgNewGroupDraft); break;
-                    case 15: s = LocaleController.getString("MsgGroupNameChanged", R.string.MsgGroupNameChanged); break;
-                    case 16: s = LocaleController.getString("MsgGroupImageChanged", R.string.MsgGroupImageChanged); break;
-                    case 17: s = LocaleController.getString("MsgMemberAddedToGroup", R.string.MsgMemberAddedToGroup); break;
-                    case 18: s = LocaleController.getString("MsgMemberRemovedFromToGroup", R.string.MsgMemberRemovedFromToGroup); break;
-                    case 19: s = LocaleController.getString("MsgGroupLeft", R.string.MsgGroupLeft); break;
+                    case  1: s = ApplicationLoader.applicationContext.getString(R.string.NoMessages); break;
+                    case  2: s = ApplicationLoader.applicationContext.getString(R.string.FromSelf); break;
+                    case  3: s = ApplicationLoader.applicationContext.getString(R.string.Draft); break;
+                    case  8: s = ApplicationLoader.applicationContext.getString(R.string.Deaddrop); break;
+                    case  9: s = ApplicationLoader.applicationContext.getString(R.string.AttachPhoto); break;
+                    case 10: s = ApplicationLoader.applicationContext.getString(R.string.AttachVideo); break;
+                    case 11: s = ApplicationLoader.applicationContext.getString(R.string.AttachAudio); break;
+                    case 12: s = ApplicationLoader.applicationContext.getString(R.string.AttachDocument); break;
+                    case 13: s = ApplicationLoader.applicationContext.getString(R.string.DefaultStatusText); break;
+                    case 14: s = ApplicationLoader.applicationContext.getString(R.string.MsgNewGroupDraft); break;
+                    case 15: s = ApplicationLoader.applicationContext.getString(R.string.MsgGroupNameChanged); break;
+                    case 16: s = ApplicationLoader.applicationContext.getString(R.string.MsgGroupImageChanged); break;
+                    case 17: s = ApplicationLoader.applicationContext.getString(R.string.MsgMemberAddedToGroup); break;
+                    case 18: s = ApplicationLoader.applicationContext.getString(R.string.MsgMemberRemovedFromToGroup); break;
+                    case 19: s = ApplicationLoader.applicationContext.getString(R.string.MsgGroupLeft); break;
                 }
                 return String2CPtr(s);
 
