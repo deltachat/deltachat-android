@@ -24,15 +24,15 @@ tasks.withType(JavaCompile) {
 }
 
 dependencies {
-    compile 'com.android.support:support-v4:23.4.0'
+    compile 'com.android.support:appcompat-v7:25.1.1'
     compile 'com.googlecode.mp4parser:isoparser:1.0.6'
     compile 'com.amulyakhare:com.amulyakhare.textdrawable:1.0.1'
     compile fileTree(dir: "$buildDir/native-libs", include: 'native-libs.jar')
 }
 
 android {
-    compileSdkVersion 23
-    buildToolsVersion '23.0.3'
+    compileSdkVersion 25
+    buildToolsVersion '25.0.2'
 
     useLibrary 'org.apache.http.legacy'
     defaultConfig.applicationId = "com.b44t.messenger"
@@ -116,7 +116,7 @@ android {
 
     defaultConfig {
         minSdkVersion 14 // 14: Android 4.0 Ice Cream Sandwich 2011 (Telegram default), 21: Android 5.0 Lollipop 2014 (recommended for InstantRun)
-        targetSdkVersion 23
+        targetSdkVersion 25
         versionName "0.1.18"
     }
 }
