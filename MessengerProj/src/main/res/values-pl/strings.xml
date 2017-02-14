@@ -77,7 +77,7 @@
     <string name="TodayAt">o</string>
     <string name="YesterdayAt">wczoraj o</string>
     <!--group create view-->
-    <string name="SendMessageTo">Wysłać wiadomości do…</string>
+    <string name="SendMessageTo">Wyślij wiadomość do…</string>
     <string name="EnterGroupNamePlaceholder">Podaj nazwę grupy</string>
     <string name="ShareLink">Udostępnij link</string>
     <!--group info view-->
@@ -123,7 +123,7 @@
     <string name="ResetAllNotifications">Resetuj wszystkie powiadomienia</string>
     <string name="NotificationsAndSounds">Powiadomienia i dźwięki</string>
     <string name="BlockedUsers">Zablokowani użytkownicy</string>
-    <string name="Default">Domyślne</string>
+    <string name="Default">domyślny</string>
     <string name="OnlyIfSilent">Tylko jeśli wyciszony</string>
     <string name="ChatBackground">Tło czatu</string>
     <string name="SendByEnter">Wyślij wiadomość naciskając Enter</string>
@@ -131,7 +131,7 @@
     <string name="Help">Pomoc</string>
     <string name="DeleteLocalization">Usunąć lokalizację?</string>
     <string name="Enabled">Włączone</string>
-    <string name="Disabled">Wyłączone</string>
+    <string name="Disabled">Wyłączony</string>
     <string name="NotificationsService">Podtrzymywanie usługi</string>
     <string name="NotificationsServiceInfo">Uruchom ponownie aplikację, gdy zostanie wyłączona przez użytkownika lub przez system. Zapewni to otrzymywanie powiadomień.</string>
     <string name="NotificationsServiceConnection">Łączenie w tle</string>
@@ -143,12 +143,12 @@
     <string name="SystemDefault">Domyślny systemu</string>
     <string name="RaiseToSpeak">Odbierz i mów / słuchaj</string>
     <string name="EditName">Edytuj nazwę</string>
-    <string name="NotificationsPriority">Zobacz</string>
+    <string name="NotificationsPriority">Priorytet</string>
     <string name="NotificationsPriorityDefault">Normaly priorytet</string>
     <string name="NotificationsPriorityHigh">Wysoki priorytet</string>
     <string name="NotificationsPriorityMax">Najwyższy priorytet</string>
     <string name="RepeatNotifications">Powtarzanie powiadomień co</string>
-    <string name="NotificationsOther">Inny</string>
+    <string name="NotificationsOther">Inne</string>
     <string name="InChatSound">Dźwięki w czacie</string>
     <string name="SoundDefault">Domyślne</string>
     <string name="VibrationDefault">Domyślne</string>
@@ -164,9 +164,7 @@
     <string name="CacheSettings">Pamięć</string>
     <string name="LocalDatabase">Lokalna baza danych</string>
     <string name="LocalDatabaseClear">Wyczyścić zbuforowane wiadomości?</string>
-    <string name="LocalDatabaseInfo">Wyczyszczenie lokalnej bazy danych spowoduje usunięcie tekstów zbuforowanych wiadomości i skompresowanie bazy, by zaoszczędzić miejsce w pamięci wewnętrznej. Aplikacja do działania potrzebuje niektórych danych, więc rozmiar bazy danych nie osiągnie zero.
-
-Operacja ta może potrwać kilka minut.</string>
+    <string name="LocalDatabaseInfo">Wyczyszczenie lokalnej bazy danych spowoduje usunięcie tekstów zbuforowanych wiadomości i skompresowanie bazy, by zaoszczędzić miejsce w pamięci wewnętrznej. Aplikacja do działania potrzebuje niektórych danych, więc rozmiar bazy danych nie osiągnie zero.\\n\\nOperacja ta może potrwać kilka minut.</string>
     <string name="ClearMediaCache">Wyczyść pamięć podręczną</string>
     <string name="CacheClear">Wyczyść</string>
     <string name="LocalDocumentCache">Dokumenty</string>
@@ -177,14 +175,12 @@ Operacja ta może potrwać kilka minut.</string>
     <string name="LocalCache">Inne pliki</string>
     <string name="CacheEmpty">Pusty</string>
     <string name="KeepMedia">Przechowywanie multimediów</string>
-    <string name="KeepMediaInfo">Zdjęcia, wideo i inne pliki z czatów w chmurze <b>nie używane</b> w tym okresie zostaną usunięte z urządzenia, by zaoszczędzić miejsce w pamięci.</string>
+    <string name="KeepMediaInfo">Zdjęcia, wideo i inne pliki z czatów w chmurze <![CDATA[<b>nie używane</b>]]> w tym okresie zostaną usunięte z urządzenia, by zaoszczędzić miejsce w pamięci.</string>
     <string name="KeepMediaForever">Na zawsze</string>
     <!--passcode view-->
     <string name="Passcode">Blokada kodem dostępu</string>
     <string name="ChangePasscode">Zmień kod dostępu</string>
-    <string name="ChangePasscodeInfo">Po skonfigurowaniu dodatkowego kodu dostępu, na stronie czatów pojawi się ikona kłódki. Dotknij ją, aby zablokować lub odblokować aplikację.
-
-Uwaga! Jeśli zapomnisz kod dostępu, musisz usunąć i ponownie zainstalować aplikację.</string>
+    <string name="ChangePasscodeInfo">Po skonfigurowaniu dodatkowego kodu dostępu, na stronie czatów pojawi się ikona kłódki. Dotknij ją, aby zablokować lub odblokować aplikację.\\n\\nUwaga! Jeśli zapomnisz kod dostępu, musisz usunąć i ponownie zainstalować aplikację.</string>
     <string name="PasscodePIN">PIN</string>
     <string name="PasscodePassword">Hasło</string>
     <string name="EnterCurrentPasscode">Wprowadź aktualny kod dostępu</string>
@@ -328,7 +324,7 @@ Uwaga! Jeśli zapomnisz kod dostępu, musisz usunąć i ponownie zainstalować a
     <string name="Intro4Message"><![CDATA[<b>Nieograniczone</b>]]> czaty, obrazy, filmy, wiadomości audio i wiele innych. Sprawny multi-klient.</string>
 
     <string name="Intro5Headline">Darmowy</string>
-    <string name="Intro5Message"><![CDATA[<b>Delta Chat</b>]]> jest zawsze darmowy.<![CDATA[<br/>]]>Otwarto źródłowy. Bez reklam. Bez abonamentu. No vendor lock-in. (Brak sprzedawców umowy o wyłączności ???)</string>
+    <string name="Intro5Message"><![CDATA[<b>Delta Chat</b>]]> jest zawsze darmowy.<![CDATA[<br/>]]>O otwartym kodzie źródłowym. Bez reklam. Bez abonamentu. Bez ograniczeń dystrybucji.</string>
 
     <string name="Intro6Headline">Bezpieczny</string>
     <string name="Intro6Message"><![CDATA[<b>Zaszyfrowany</b>]]> za pomocą wszystkich typowych algorytmów. Wiadomości pozostają na swoich serwerach.</string>
@@ -350,7 +346,7 @@ Uwaga! Jeśli zapomnisz kod dostępu, musisz usunąć i ponownie zainstalować a
     <plurals name="MeAndMembers">
         <item quantity="one">Ja i %d członek</item>
         <item quantity="few">Ja i %d członków</item>
-        <item quantity="other">Ja i %d członków</item>
+        <item quantity="other">ja i %d członków</item>
     </plurals>
     <plurals name="NewMessages">
         <item quantity="one">%d nowa wiadomość</item>
@@ -384,7 +380,7 @@ Uwaga! Jeśli zapomnisz kod dostępu, musisz usunąć i ponownie zainstalować a
         <item quantity="other">%d min.</item>
     </plurals>
     <plurals name="Hours">
-        <item quantity="one">%d godzina</item>
+        <item quantity="one">%d godz.</item>
         <item quantity="few">%d godz.</item>
         <item quantity="other">%d godz.</item>
     </plurals>
@@ -423,13 +419,11 @@ Uwaga! Jeśli zapomnisz kod dostępu, musisz usunąć i ponownie zainstalować a
     <string name="Yes">Tak</string>
     <string name="No">Nie</string>
     <string name="MyName">Moja nazwa</string>
-    <string name="MyNameExplain">Twoja nazwa, pokazywana odbiorcom.
-
-Jeśli nie wprowadzisz nazwy, odbiorcy będą widzieć tylko twój adres e-mail z ustawień konta.</string>
+    <string name="MyNameExplain">Twoja nazwa, pokazywana odbiorcom.\\n\\nJeśli nie wprowadzisz nazwy, odbiorcy będą widzieć tylko twój adres e-mail z ustawień konta.</string>
     <string name="MyEmailAddress">Mój adres e-mail</string>
     <string name="Password">Hasło</string>
     <string name="SmtpPassword">SMTP hasło</string>
-    <string name="FromAbove">jak powyżej</string>
+    <string name="FromAbove">jak wyżej</string>
     <string name="SmtpLoginname">SMTP nazwa użytkownika</string>
     <string name="SmtpPort">SMTP port</string>
     <string name="Automatic">atomatycznie</string>
@@ -440,19 +434,18 @@ Jeśli nie wprowadzisz nazwy, odbiorcy będą widzieć tylko twój adres e-mail 
     <string name="InboxHeadline">Skrzynka odbiorcza</string>
     <string name="OutboxHeadline">Skrzynka nadawcza</string>
     <string name="BasicSettings">Ustawienia podstawowe</string>
-    <string name="MyAccountExplain">Dla znanych dostawców usług poczty elektronicznej ponisze ustawienia są określane automatycznie.</string>
-    <string name="MyAccountExplain2" >Czasami IMAP / SMTP musi być włączony w interfejsie www poczty internetowej.
-Z problemami należy zwrócić się do usługodawcy e-mail lub znajomym.</string>
+    <string name="MyAccountExplain">Dla znanych dostawców usług poczty elektronicznej poniższe ustawienia są określane automatycznie.</string>
+    <string name="MyAccountExplain2" >Czasami IMAP / SMTP musi być włączony w interfejsie www poczty internetowej.\\n\\nZ problemami należy zwrócić się do usługodawcy e-mail lub znajomych.</string>
     <string name="AccountNotConfigured">Konto nie jest skonfigurowane</string>
     <string name="AboutThisProgram">O Delta Chat</string>
-    <string name="NotSet">Nie ustawiony</string>
+    <string name="NotSet">Nie ustawiona</string>
     <string name="NewChat">Nowy czat</string>
     <string name="Deaddrop">Skrzynka pocztowa</string>
     <string name="Media">Multimedia</string>
     <string name="DeaddropInChatlist">Pokaż skrzynkę pocztową na liście czatów</string>
     <string name="MuteAlways">Zawsze wyłączone</string>
     <string name="AskStartChatWith">Rozpocząć czat z <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>?</string>
-    <string name="DeaddropHint">Aby rozpocząć czat, naciśnij na strzałkę odpowiedzi.</string>
+    <string name="DeaddropHint">Aby rozpocząć czat, naciśnij strzałkę odpowiedzi.</string>
     <string name="NotYetImplemented">Ta funkcja jest niedostępna lub niekompletna.</string>
     <string name="DefaultStatusText">Wysłane z komunikatora Delta Chat</string>
     <string name="SubjectPrefix">Wiadomości błyskawiczne</string>
@@ -477,11 +470,7 @@ Z problemami należy zwrócić się do usługodawcy e-mail lub znajomym.</string
     <string name="AttachFiles">Załącz pliki</string>
     <string name="Chats">Czaty</string>
     <string name="ErrGroupNameEmpty">Podaj nazwę dla grupy</string>
-    <string name="MsgNewGroupDraftHint">Napisz pierwszą wiadomość, by inni mogli odpowiedzieć w tej grupie.
-
-• Nie ma problemu, jeśli nie wszyscy członkowie korzystają z Delta Chat.
-
-• Dostarczenie pierwszej wiadomości może chwilę potrwać.</string>
+    <string name="MsgNewGroupDraftHint">Napisz pierwszą wiadomość, by inni mogli odpowiedzieć w tej grupie.\\n\\n• Nie ma problemu, jeśli nie wszyscy członkowie korzystają z Delta Chat.\\n\\n• Dostarczenie pierwszej wiadomości może chwilę potrwać.</string>
     <string name="MsgNewGroupDraft">Witam, właśnie utworzyłem dla nas grupę \"%1$s\".</string>
     <string name="MsgGroupNameChanged">Zmieniono nazwę grupy z \"%1$s\" na \"%2$s\".</string>
     <string name="MsgGroupImageChanged">Zmieniono obraz grupy.</string>
@@ -491,11 +480,7 @@ Z problemami należy zwrócić się do usługodawcy e-mail lub znajomym.</string
     <string name="AskRemoveMemberFromGroup">Usunąć użytkownika <![CDATA[<b>]]>%1$s<![CDATA[</b>]]> z grupy?</string>
     <string name="ErrSelfNotInGroup">Musisz być członkiem grupy, aby wykonać tę czynność.</string>
     <string name="MsgGroupLeft">Grupa opuszczona.</string>
-    <string name="NoMessagesHint">Wyślij wiadomość do <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>:
-
-• Nie ma problemu, jeśli <![CDATA[<b>]]>%2$s<![CDATA[</b>]]> nie używa Delta Chat.
-
-• Dostarczenie pierwszej wiadomości może chwilę potrwać.</string>
+    <string name="NoMessagesHint">Wyślij wiadomość do <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>:\\n\\n• Nie ma problemu, jeśli <![CDATA[<b>]]>%2$s<![CDATA[</b>]]> nie używa Delta Chat.\\n\\n• Dostarczenie pierwszej wiadomości może chwilę potrwać.</string>
     <string name="SendNRcvReadReceipts">Odbieraj i wysyłaj potwierdzenia odczytu</string>
     <string name="E2EEncryption">Pełne szyfrowanie</string>
     <string name="E2EManagePrivateKeys">Zarządzaj prywatnymi kluczami</string>
