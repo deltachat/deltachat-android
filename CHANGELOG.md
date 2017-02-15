@@ -1,5 +1,11 @@
 # Delta Chat Changelog
 
+## UNRELEASED
+
+* Make the "Chats" folder visible if the server hides new folders by default
+* Fix a crash when the server returns empty folders
+* Update Polish and Portuguese translations
+
 ## v0.1.18
 2017-02-11
 
