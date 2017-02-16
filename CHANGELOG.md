@@ -1,6 +1,6 @@
 # Delta Chat Changelog
 
-## v0.1.19
+## v0.1.20
 2017-02-16
 
 * Avoid unwanted downloads of lots of old messages
