@@ -55,18 +55,15 @@ public class DrawerProfileCell extends FrameLayout {
 
     private TextView nameTextView;
     private TextView subtitleTextView;
-    private ImageView shadowView;
     private Rect srcRect = new Rect();
     private Rect destRect = new Rect();
     private Paint paint = new Paint();
-    private int currentColor;
 
     public DrawerProfileCell(Context context) {
         super(context);
         setBackgroundColor(Theme.ACTION_BAR_COLOR);
 
-        shadowView = new ImageView(context);
-        shadowView.setVisibility(INVISIBLE);
+        ImageView shadowView = new ImageView(context);
         shadowView.setScaleType(ImageView.ScaleType.FIT_XY);
         shadowView.setImageResource(R.drawable.bottom_shadow);
         addView(shadowView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, 100/*EDIT BY MR, was 70*/, Gravity.LEFT | Gravity.BOTTOM));
@@ -88,12 +85,13 @@ public class DrawerProfileCell extends FrameLayout {
         subtitleTextView.setMaxLines(1);
         subtitleTextView.setSingleLine(true);
         subtitleTextView.setGravity(Gravity.LEFT);
+        subtitleTextView.setTextColor(0xffffffff);
         addView(subtitleTextView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.LEFT | Gravity.BOTTOM, 16, 0, 16, 9));
     }
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        int mrHeight = 180; // EDIT BY MR -- was: 148
+        int mrHeight = 180;
         if (Build.VERSION.SDK_INT >= 21) {
             super.onMeasure(widthMeasureSpec, MeasureSpec.makeMeasureSpec(AndroidUtilities.dp(mrHeight) + AndroidUtilities.statusBarHeight, MeasureSpec.EXACTLY));
         } else {
@@ -109,43 +107,25 @@ public class DrawerProfileCell extends FrameLayout {
     @Override
     protected void onDraw(Canvas canvas) {
         Drawable backgroundDrawable = ApplicationLoader.getCachedWallpaper();
-        int color = ApplicationLoader.getServiceMessageColor();
-        if (currentColor != color) {
-            currentColor = color;
-            shadowView.getDrawable().setColorFilter(new PorterDuffColorFilter(color | 0xff000000, PorterDuff.Mode.MULTIPLY));
-        }
-
-        if ( backgroundDrawable != null) {
-            subtitleTextView.setTextColor(0xffffffff);
-            shadowView.setVisibility(VISIBLE);
-            if (backgroundDrawable instanceof ColorDrawable) {
-                backgroundDrawable.setBounds(0, 0, getMeasuredWidth(), getMeasuredHeight());
-                backgroundDrawable.draw(canvas);
-            } else if (backgroundDrawable instanceof BitmapDrawable) {
-                Bitmap bitmap = ((BitmapDrawable) backgroundDrawable).getBitmap();
-                float scaleX = (float) getMeasuredWidth() / (float) bitmap.getWidth();
-                float scaleY = (float) getMeasuredHeight() / (float) bitmap.getHeight();
-                float scale = scaleX < scaleY ? scaleY : scaleX;
-                int width = (int) (getMeasuredWidth() / scale);
-                int height = (int) (getMeasuredHeight() / scale);
-                int x = (bitmap.getWidth() - width) / 2;
-                int y = (bitmap.getHeight() - height) / 2;
-                srcRect.set(x, y, x + width, y + height);
-                destRect.set(0, 0, getMeasuredWidth(), getMeasuredHeight());
-                canvas.drawBitmap(bitmap, srcRect, destRect, paint);
-            }
-        } else {
-            shadowView.setVisibility(INVISIBLE);
-            subtitleTextView.setTextColor(0xffc2e5ff);
-            super.onDraw(canvas);
+        if (backgroundDrawable instanceof ColorDrawable) {
+            backgroundDrawable.setBounds(0, 0, getMeasuredWidth(), getMeasuredHeight());
+            backgroundDrawable.draw(canvas);
+        } else if (backgroundDrawable instanceof BitmapDrawable) {
+            Bitmap bitmap = ((BitmapDrawable) backgroundDrawable).getBitmap();
+            float scaleX = (float) getMeasuredWidth() / (float) bitmap.getWidth();
+            float scaleY = (float) getMeasuredHeight() / (float) bitmap.getHeight();
+            float scale = scaleX < scaleY ? scaleY : scaleX;
+            int width = (int) (getMeasuredWidth() / scale);
+            int height = (int) (getMeasuredHeight() / scale);
+            int x = (bitmap.getWidth() - width) / 2;
+            int y = (bitmap.getHeight() - height) / 2;
+            srcRect.set(x, y, x + width, y + height);
+            destRect.set(0, 0, getMeasuredWidth(), getMeasuredHeight());
+            canvas.drawBitmap(bitmap, srcRect, destRect, paint);
         }
     }
 
-    public void setUser(TLRPC.User user) {
-        if (user == null) {
-            return;
-        }
-
+    public void updateUserName() {
         String displayname = MrMailbox.getConfig("displayname", LocaleController.getString("MyAccount", R.string.MyAccount));
         String addr;
         if( MrMailbox.isConfigured()!=0) {

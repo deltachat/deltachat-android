@@ -99,7 +99,7 @@ public class DrawerLayoutAdapter extends BaseAdapter {
             if (view == null) {
                 view = new DrawerProfileCell(mContext);
             }
-            ((DrawerProfileCell) view).setUser(MessagesController.getInstance().getUser(UserConfig.getClientUserId()));
+            ((DrawerProfileCell) view).updateUserName();
         } else if (type == typeEmpty) {
             if (view == null) {
                 view = new EmptyCell(mContext, AndroidUtilities.dp(8));
