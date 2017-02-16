@@ -2,6 +2,7 @@
 
 ## UNRELEASED
 
+* Avoid unwanted downloads of lots of old messages
 * Make the "Chats" folder visible if the server hides new folders by default
 * Fix a crash when the server returns empty folders
 * Update Polish and Portuguese translations
