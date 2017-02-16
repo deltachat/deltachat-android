@@ -1,6 +1,7 @@
 # Delta Chat Changelog
 
-## UNRELEASED
+## v0.1.19
+2017-02-16
 
 * Avoid unwanted downloads of lots of old messages
 * Make the "Chats" folder visible if the server hides new folders by default
