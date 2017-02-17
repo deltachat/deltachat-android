@@ -478,4 +478,5 @@
     <string name="E2ECompareKeys">Compare keys</string>
     <string name="ResetUserKey">Reset user\'s key</string>
     <string name="ForwardToTitle">Forward to …</string>
+    <string name="SelectContactToAttach">Select user to attach</string>
 </resources>

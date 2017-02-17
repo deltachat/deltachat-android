@@ -99,6 +99,7 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
     public final static int SELECT_CONTACTS_FOR_NEW_GROUP = 2;
     public final static int ADD_CONTACTS_TO_GROUP         = 3;
     public final static int SELECT_CONTACT_TO_BLOCK       = 4;
+    public final static int SELECT_CONTACT_TO_ATTACH      = 5;
 
     private ContactsActivityDelegate delegate;
 
@@ -145,6 +146,10 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
         else if( do_what == SELECT_CONTACT_TO_BLOCK )
         {
             title = LocaleController.getString("BlockContact", R.string.BlockContact);
+        }
+        else if( do_what == SELECT_CONTACT_TO_ATTACH )
+        {
+            title = ApplicationLoader.applicationContext.getString(R.string.SelectContactToAttach);
         }
 
         return true;

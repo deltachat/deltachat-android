@@ -479,4 +479,5 @@
     <string name="ResetUserKey">Benutzerschlüssel zurücksetzen</string>
     <string name="ForwardToTitle">Weiterleiten an …</string>
     <string name="Chats">Chats</string>
+    <string name="SelectContactToAttach">Benutzerdaten versenden</string>
 </resources>

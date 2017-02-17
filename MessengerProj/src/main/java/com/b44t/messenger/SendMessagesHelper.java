@@ -569,7 +569,7 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
         sendMessage__(null, null, null, videoEditedInfo, null, document, peer, path, params);
     }
 
-    public void sendMessageText(String message, long peer, MessageObject reply_to_msg, HashMap<String, String> params) {
+    public void sendMessageText(String message, long peer, HashMap<String, String> params) {
         sendMessage__(message, null, null, null, null, null, peer, null, params);
     }
 
@@ -1611,7 +1611,7 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
                                     //int count = (int) Math.ceil(textFinal.length() / 4096.0f);
                                     //for (int a = 0; a < count; a++) {
                                     //    String mess = textFinal.substring(a * 4096, Math.min((a + 1) * 4096, textFinal.length()));
-                                        SendMessagesHelper.getInstance().sendMessageText(textFinal, dialog_id, null, null);
+                                        SendMessagesHelper.getInstance().sendMessageText(textFinal, dialog_id, null);
                                     //}
                                 }
                             }

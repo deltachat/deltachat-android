@@ -36,13 +36,11 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
-import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.media.ExifInterface;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.provider.MediaStore;
 import android.text.TextUtils;
 import android.text.style.ClickableSpan;
@@ -1322,21 +1320,27 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 }
             });
             presentFragment(fragment);
-        } else if (which == ChatAttachAlert.ATTACH_BUTTON_IDX_CONTACT ) {
-            Toast.makeText(getParentActivity(), LocaleController.getString("NotYetImplemented", R.string.NotYetImplemented), Toast.LENGTH_SHORT).show();
-            if (Build.VERSION.SDK_INT >= 23) {
-                if (getParentActivity().checkSelfPermission(Manifest.permission.READ_CONTACTS) != PackageManager.PERMISSION_GRANTED) {
-                    getParentActivity().requestPermissions(new String[]{Manifest.permission.READ_CONTACTS}, 5);
-                    return;
+        }
+        else if (which == ChatAttachAlert.ATTACH_BUTTON_IDX_CONTACT )
+        {
+            Bundle args = new Bundle();
+            args.putInt("do_what", ContactsActivity.SELECT_CONTACT_TO_ATTACH);
+            ContactsActivity fragment = new ContactsActivity(args);
+            fragment.setDelegate(new ContactsActivity.ContactsActivityDelegate() {
+                @Override
+                public void didSelectContact(final int selected_user_id) {
+                    MrContact contact = MrMailbox.getContact(selected_user_id);
+                    String msg = contact.getName();
+                    if(msg.isEmpty()) {
+                        msg = contact.getAddr();
+                    }
+                    else {
+                        msg += ": " + contact.getAddr();
+                    }
+                    SendMessagesHelper.getInstance().sendMessageText(msg, dialog_id, null);
                 }
-            }
-            try {
-                Intent intent = new Intent(Intent.ACTION_PICK, ContactsContract.Contacts.CONTENT_URI);
-                intent.setType(ContactsContract.CommonDataKinds.Phone.CONTENT_TYPE);
-                startActivityForResult(intent, 31);
-            } catch (Exception e) {
-                FileLog.e("messenger", e);
-            }
+            });
+            presentFragment(fragment);
         }
     }
 
@@ -1913,40 +1917,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 }
                 SendMessagesHelper.prepareSendingDocument(tempPath, originalPath, null, null, dialog_id, null);
                 m_mrChat.cleanDraft();
-            } else if (requestCode == 31) {
-                if (data == null || data.getData() == null) {
-                    showAttachmentError();
-                    return;
-                }
-                Uri uri = data.getData();
-                Cursor c = null;
-                try {
-                    c = getParentActivity().getContentResolver().query(uri, new String[]{ContactsContract.Data.DISPLAY_NAME, ContactsContract.CommonDataKinds.Phone.NUMBER}, null, null, null);
-                    if (c != null) {
-                        boolean sent = false;
-                        while (c.moveToNext()) {
-                            sent = true;
-                            String name = c.getString(0);
-                            String number = c.getString(1);
-                            TLRPC.User user = new TLRPC.User();
-                            user.first_name = name;
-                            user.last_name = "";
-                            user.phone = number;
-                            SendMessagesHelper.getInstance().sendMessageContact(user, dialog_id, null, null);
-                        }
-                        if (sent) {
-                            m_mrChat.cleanDraft();
-                        }
-                    }
-                } finally {
-                    try {
-                        if (c != null && !c.isClosed()) {
-                            c.close();
-                        }
-                    } catch (Exception e) {
-                        FileLog.e("messenger", e);
-                    }
-                }
             }
         }
     }
