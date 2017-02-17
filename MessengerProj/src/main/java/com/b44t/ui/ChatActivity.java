@@ -1570,7 +1570,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                    int chatId = MrMailbox.createChatByContactId(fromId);
+                int chatId = MrMailbox.createChatByContactId(fromId);
                 if( chatId != 0 ) {
                     Bundle args = new Bundle();
                     args.putInt("chat_id", chatId);
@@ -2947,8 +2947,16 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                             }
                         } else*/ {
                             final String urlFinal = ((URLSpan) url).getURL();
-                            if (longPress) {
+                            String urlTitle = urlFinal;
+                            boolean isMailto = urlFinal.startsWith("mailto:");
+                            if( isMailto ) {
+                                urlTitle = urlFinal.substring(7);
+                            }
+
+                            if (longPress)
+                            {
                                 AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
+                                builder.setTitle(urlTitle);
                                 builder.setItems(new CharSequence[]{LocaleController.getString("Open", R.string.Open), LocaleController.getString("CopyToClipboard", R.string.CopyToClipboard)}, new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, final int which) {
@@ -2960,12 +2968,40 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                                     }
                                 });
                                 showDialog(builder.create());
-                            } else {
-                                /*if (url instanceof URLSpanReplacement) {
-                                    showOpenUrlAlert(((URLSpanReplacement) url).getURL());
-                                } else*/ if (url instanceof URLSpan) {
-                                    Browser.openUrl(getParentActivity(), urlFinal);
-                                } else {
+                            }
+                            else
+                            {
+                                if (url instanceof URLSpan)
+                                {
+                                    if( isMailto )
+                                    {
+                                        AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
+                                        builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), new DialogInterface.OnClickListener() {
+                                            @Override
+                                            public void onClick(DialogInterface dialogInterface, int i) {
+                                                int contactId = MrMailbox.createContact("", urlFinal);
+                                                int chatId = MrMailbox.createChatByContactId(contactId);
+                                                if( chatId != 0 ) {
+                                                    Bundle args = new Bundle();
+                                                    args.putInt("chat_id", chatId);
+                                                    presentFragment(new ChatActivity(args), true /*removeLast*/);
+                                                }
+                                                else {
+                                                    Toast.makeText(getParentActivity(), "Cannot create chat.", Toast.LENGTH_LONG).show(); // should not happen
+                                                }
+                                            }
+                                        });
+                                        builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
+                                        builder.setMessage(AndroidUtilities.replaceTags(LocaleController.formatString("AskStartChatWith", R.string.AskStartChatWith, urlTitle)));
+                                        showDialog(builder.create());
+                                    }
+                                    else
+                                    {
+                                        Browser.openUrl(getParentActivity(), urlFinal);
+                                    }
+                                }
+                                else
+                                {
                                     url.onClick(fragmentView);
                                 }
                             }
