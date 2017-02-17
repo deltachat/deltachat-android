@@ -627,14 +627,15 @@ public class MessageObject {
         }*/
 
         int maxWidth;
+        boolean substractAvatar = !isOut() && MrMailbox.getChat((int)messageOwner.dialog_id).getType()==MrChat.MR_CHAT_GROUP;
         if (AndroidUtilities.isTablet()) {
-            if (messageOwner.from_id > 0 && (messageOwner.to_id.channel_id != 0 || messageOwner.to_id.chat_id != 0) && !isOut()) {
+            if (substractAvatar) {
                 maxWidth = AndroidUtilities.getMinTabletSide() - AndroidUtilities.dp(122);
             } else {
                 maxWidth = AndroidUtilities.getMinTabletSide() - AndroidUtilities.dp(80);
             }
         } else {
-            if (messageOwner.from_id > 0 && (messageOwner.to_id.channel_id != 0 || messageOwner.to_id.chat_id != 0) && !isOut()) {
+            if (substractAvatar) {
                 maxWidth = Math.min(AndroidUtilities.displaySize.x, AndroidUtilities.displaySize.y) - AndroidUtilities.dp(122);
             } else {
                 maxWidth = Math.min(AndroidUtilities.displaySize.x, AndroidUtilities.displaySize.y) - AndroidUtilities.dp(80);
