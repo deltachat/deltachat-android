@@ -2810,23 +2810,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         }
     }
 
-    /*public void showOpenUrlAlert(final String url) {
-        if (Browser.isInternalUrl(url)) {
-            Browser.openUrl(getParentActivity(), url);
-        } else {
-            AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
-            builder.setMessage(LocaleController.formatString("OpenUrlAlert", R.string.OpenUrlAlert, url));
-            builder.setPositiveButton(LocaleController.getString("Open", R.string.Open), new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialogInterface, int i) {
-                    Browser.openUrl(getParentActivity(), url);
-                }
-            });
-            builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
-            showDialog(builder.create());
-        }
-    }*/
-
     public class ChatActivityAdapter extends RecyclerView.Adapter {
 
         private Context mContext;
@@ -2858,7 +2841,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 chatMessageCell.setDelegate(new ChatMessageCell.ChatMessageCellDelegate() {
                     @Override
                     public void didPressedShare(ChatMessageCell cell) {
-                        // a click on the icon rignt of a deaddrop's messages
+                        // a click on the icon right of a deaddrop's messages
                         createChatByDeaddropMsgId(cell.getMessageObject().getId());
                     }
 
@@ -2932,94 +2915,90 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     }
 
                     @Override
-                    public void didPressedUrl(MessageObject messageObject, final ClickableSpan url, boolean longPress) {
-                        if (url == null) {
+                    public void didPressedUrl(MessageObject messageObject, final ClickableSpan url, boolean longPress)
+                    {
+                        if (!(url instanceof URLSpan)) {
                             return;
                         }
-                        /*if (url instanceof URLSpanNoUnderline) {
-                            String str = ((URLSpanNoUnderline) url).getURL();
-                            if (str.startsWith("@")) {
-                                MessagesController.openByUserName(str.substring(1), ChatActivity.this, 0);
-                            } else if (str.startsWith("#")) {
-                                DialogsActivity fragment = new DialogsActivity(null);
-                                fragment.setSearchString(str);
-                                presentFragment(fragment);
-                            }
-                        } else*/ {
-                            final String urlFinal = ((URLSpan) url).getURL();
-                            String urlTitle = urlFinal;
-                            boolean isMailto = urlFinal.startsWith("mailto:");
-                            if( isMailto ) {
-                                urlTitle = urlFinal.substring(7);
-                            }
 
-                            if (longPress)
+                        final String urlFinal = ((URLSpan) url).getURL();
+                        boolean      isMailto = urlFinal.startsWith("mailto:");
+                        final String urlTitle = isMailto? urlFinal.substring(7) : urlFinal;
+
+                        if (longPress)
+                        {
+                            ArrayList<CharSequence>  menuItems = new ArrayList<>();
+                            final ArrayList<Integer> menuIDs   = new ArrayList<>();
+
+                            if( isMailto ) {
+                                menuItems.add(ApplicationLoader.applicationContext.getString(R.string.NewChat));
+                                menuIDs.add(100);
+                                menuItems.add(ApplicationLoader.applicationContext.getString(R.string.NewContactTitle));
+                                menuIDs.add(110);
+                            }
+                            menuItems.add(ApplicationLoader.applicationContext.getString(R.string.Open));
+                            menuIDs.add(200);
+                            menuItems.add(ApplicationLoader.applicationContext.getString(R.string.CopyToClipboard));
+                            menuIDs.add(210);
+
+                            AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
+                            builder.setTitle(urlTitle);
+                            builder.setItems(menuItems.toArray(new CharSequence[menuItems.size()]), new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, final int selIndex) {
+                                    switch( menuIDs.get(selIndex) ) {
+                                        case 100:
+                                            createChat(urlFinal);
+                                            break;
+                                        case 110:
+                                            MrMailbox.createContact("", urlFinal);
+                                            Toast.makeText(getParentActivity(), ApplicationLoader.applicationContext.getString(R.string.ContactCreated), Toast.LENGTH_LONG).show();
+                                            break;
+                                        case 200:
+                                            Browser.openUrl(getParentActivity(), urlFinal);
+                                            break;
+                                        case 210:
+                                            AndroidUtilities.addToClipboard(urlTitle);
+                                            break;
+                                    }
+                                }
+                            });
+                            showDialog(builder.create());
+                        }
+                        else
+                        {
+                            if( isMailto )
                             {
                                 AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
-                                builder.setTitle(urlTitle);
-                                builder.setItems(new CharSequence[]{LocaleController.getString("Open", R.string.Open), LocaleController.getString("CopyToClipboard", R.string.CopyToClipboard)}, new DialogInterface.OnClickListener() {
+                                builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), new DialogInterface.OnClickListener() {
                                     @Override
-                                    public void onClick(DialogInterface dialog, final int which) {
-                                        if (which == 0) {
-                                            Browser.openUrl(getParentActivity(), urlFinal);
-                                        } else if (which == 1) {
-                                            AndroidUtilities.addToClipboard(urlFinal);
-                                        }
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                    createChat(urlFinal);
                                     }
                                 });
+                                builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
+                                builder.setMessage(AndroidUtilities.replaceTags(LocaleController.formatString("AskStartChatWith", R.string.AskStartChatWith, urlTitle)));
                                 showDialog(builder.create());
                             }
                             else
                             {
-                                if (url instanceof URLSpan)
-                                {
-                                    if( isMailto )
-                                    {
-                                        AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
-                                        builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), new DialogInterface.OnClickListener() {
-                                            @Override
-                                            public void onClick(DialogInterface dialogInterface, int i) {
-                                                int contactId = MrMailbox.createContact("", urlFinal);
-                                                int chatId = MrMailbox.createChatByContactId(contactId);
-                                                if( chatId != 0 ) {
-                                                    Bundle args = new Bundle();
-                                                    args.putInt("chat_id", chatId);
-                                                    presentFragment(new ChatActivity(args), true /*removeLast*/);
-                                                }
-                                                else {
-                                                    Toast.makeText(getParentActivity(), "Cannot create chat.", Toast.LENGTH_LONG).show(); // should not happen
-                                                }
-                                            }
-                                        });
-                                        builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
-                                        builder.setMessage(AndroidUtilities.replaceTags(LocaleController.formatString("AskStartChatWith", R.string.AskStartChatWith, urlTitle)));
-                                        showDialog(builder.create());
-                                    }
-                                    else
-                                    {
-                                        Browser.openUrl(getParentActivity(), urlFinal);
-                                    }
-                                }
-                                else
-                                {
-                                    url.onClick(fragmentView);
-                                }
+                                Browser.openUrl(getParentActivity(), urlFinal);
                             }
                         }
                     }
 
-                    /*@Override
-                    public void needOpenWebView(String url, String title, String description, String originalUrl, int w, int h) {
-                        BottomSheet.Builder builder = new BottomSheet.Builder(mContext);
-                        builder.setCustomView(new WebFrameLayout(mContext, builder.create(), title, description, originalUrl, url, w, h));
-                        builder.setUseFullWidth(true);
-                        showDialog(builder.create());
-                    }*/
-
-                    @Override
-                    public void didPressedReplyMessage(ChatMessageCell cell, int id) {
-                        MessageObject messageObject = cell.getMessageObject();
-                        scrollToMessageId(id, true);
+                    private void createChat(String urlFinal)
+                    {
+                        int contactId = MrMailbox.createContact("", urlFinal);
+                        int chatId = MrMailbox.createChatByContactId(contactId);
+                        if( chatId != 0 ) {
+                            Bundle args = new Bundle();
+                            args.putInt("chat_id", chatId);
+                            presentFragment(new ChatActivity(args), true /*removeLast*/);
+                        }
+                        else {
+                            Toast.makeText(getParentActivity(), "Cannot create chat.", Toast.LENGTH_LONG).show(); // should not happen
+                        }
                     }
 
                     @Override

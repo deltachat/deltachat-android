@@ -84,7 +84,6 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
         void didPressedChannelAvatar(ChatMessageCell cell, TLRPC.Chat chat, int postId);
         void didPressedCancelSendButton(ChatMessageCell cell);
         void didLongPressed(ChatMessageCell cell);
-        void didPressedReplyMessage(ChatMessageCell cell, int id);
         void didPressedUrl(MessageObject messageObject, ClickableSpan url, boolean longPress);
         //void needOpenWebView(String url, String title, String description, String originalUrl, int w, int h);
         void didPressedImage(ChatMessageCell cell);
@@ -957,10 +956,10 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                 } else if (replyPressed) {
                     if (event.getAction() == MotionEvent.ACTION_UP) {
                         replyPressed = false;
-                        playSoundEffect(SoundEffectConstants.CLICK);
+                        /*playSoundEffect(SoundEffectConstants.CLICK);
                         if (delegate != null) {
                             delegate.didPressedReplyMessage(this, currentMessageObject.messageOwner.reply_to_msg_id);
-                        }
+                        }*/
                     } else if (event.getAction() == MotionEvent.ACTION_CANCEL) {
                         replyPressed = false;
                     } else if (event.getAction() == MotionEvent.ACTION_MOVE) {
