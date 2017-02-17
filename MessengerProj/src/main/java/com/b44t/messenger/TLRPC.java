@@ -448,7 +448,6 @@ public class TLRPC {
         public Peer to_id;
         public int date;
         public int reply_to_msg_id;
-		public long reply_to_random_id;
         public String message;
         public MessageMedia media;
         public int flags;

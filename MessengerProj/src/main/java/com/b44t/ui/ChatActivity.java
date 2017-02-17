@@ -103,8 +103,6 @@ import com.b44t.ui.Components.NumberTextView;
 import com.b44t.ui.Components.RecyclerListView;
 import com.b44t.ui.Components.SizeNotifierFrameLayout;
 import com.b44t.ui.ActionBar.Theme;
-import com.b44t.ui.Components.URLSpanNoUnderline;
-import com.b44t.ui.Components.URLSpanReplacement;
 
 import java.io.File;
 import java.net.URLDecoder;
@@ -2812,7 +2810,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         }
     }
 
-    public void showOpenUrlAlert(final String url) {
+    /*public void showOpenUrlAlert(final String url) {
         if (Browser.isInternalUrl(url)) {
             Browser.openUrl(getParentActivity(), url);
         } else {
@@ -2827,7 +2825,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
             builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
             showDialog(builder.create());
         }
-    }
+    }*/
 
     public class ChatActivityAdapter extends RecyclerView.Adapter {
 
@@ -2938,8 +2936,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                         if (url == null) {
                             return;
                         }
-                        if (url instanceof URLSpanNoUnderline) {
-                            /*
+                        /*if (url instanceof URLSpanNoUnderline) {
                             String str = ((URLSpanNoUnderline) url).getURL();
                             if (str.startsWith("@")) {
                                 MessagesController.openByUserName(str.substring(1), ChatActivity.this, 0);
@@ -2948,8 +2945,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                                 fragment.setSearchString(str);
                                 presentFragment(fragment);
                             }
-                            */
-                        } else {
+                        } else*/ {
                             final String urlFinal = ((URLSpan) url).getURL();
                             if (longPress) {
                                 AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
@@ -2965,9 +2961,9 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                                 });
                                 showDialog(builder.create());
                             } else {
-                                if (url instanceof URLSpanReplacement) {
+                                /*if (url instanceof URLSpanReplacement) {
                                     showOpenUrlAlert(((URLSpanReplacement) url).getURL());
-                                } else if (url instanceof URLSpan) {
+                                } else*/ if (url instanceof URLSpan) {
                                     Browser.openUrl(getParentActivity(), urlFinal);
                                 } else {
                                     url.onClick(fragmentView);

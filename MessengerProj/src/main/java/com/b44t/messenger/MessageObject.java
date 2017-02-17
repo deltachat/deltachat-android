@@ -32,11 +32,9 @@ import android.text.TextPaint;
 import android.text.util.Linkify;
 
 import com.b44t.ui.ActionBar.Theme;
-import com.b44t.ui.Components.URLSpanNoUnderline;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class MessageObject {
@@ -330,76 +328,6 @@ public class MessageObject {
         }
     }
 
-    /*
-    public CharSequence replaceWithLink(CharSequence source, String param, ArrayList<Integer> uids, AbstractMap<Integer, TLRPC.User> usersDict) {
-        int start = TextUtils.indexOf(source, param);
-        if (start >= 0) {
-            SpannableStringBuilder names = new SpannableStringBuilder("");
-            for (int a = 0; a < uids.size(); a++) {
-                TLRPC.User user = null;
-                if (usersDict != null) {
-                    user = usersDict.get(uids.get(a));
-                }
-                if (user == null) {
-                    user = MessagesController.getInstance().getUser(uids.get(a));
-                }
-                if (user != null) {
-                    String name = UserObject.getUserName(user);
-                    start = names.length();
-                    if (names.length() != 0) {
-                        names.append(", ");
-                    }
-                    names.append(name);
-                    names.setSpan(new URLSpanNoUnderlineBold("" + user.id), start, start + name.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-                }
-            }
-            return TextUtils.replace(source, new String[]{param}, new CharSequence[]{names});
-        }
-        return source;
-    }
-
-    public CharSequence replaceWithLink(CharSequence source, String param, TLObject object) {
-        int start = TextUtils.indexOf(source, param);
-        if (start >= 0) {
-            String name;
-            int id;
-            if (object instanceof TLRPC.User) {
-                name = UserObject.getUserName((TLRPC.User) object);
-                id = ((TLRPC.User) object).id;
-            } else if (object instanceof TLRPC.Chat) {
-                name = ((TLRPC.Chat) object).title;
-                id = -((TLRPC.Chat) object).id;
-            } else {
-                name = "";
-                id = 0;
-            }
-            SpannableStringBuilder builder = new SpannableStringBuilder(TextUtils.replace(source, new String[]{param}, new String[]{name}));
-            builder.setSpan(new URLSpanNoUnderlineBold("" + id), start, start + name.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-            return builder;
-        }
-        return source;
-    }
-    */
-
-    /*
-    public String getExtension() {
-        String fileName = getFileName();
-        int idx = fileName.lastIndexOf('.');
-        String ext = null;
-        if (idx != -1) {
-            ext = fileName.substring(idx + 1);
-        }
-        if (ext == null || ext.length() == 0) {
-            ext = messageOwner.media.document.mime_type;
-        }
-        if (ext == null) {
-            ext = "";
-        }
-        ext = ext.toUpperCase();
-        return ext;
-    }
-    */
-
     public String getFileName() {
         if (messageOwner.media instanceof TLRPC.TL_messageMediaDocument) {
             return FileLoader.getAttachFileName(messageOwner.media.document);
@@ -498,16 +426,16 @@ public class MessageObject {
             caption = Emoji.replaceEmoji(messageOwner.media.caption, textPaint.getFontMetricsInt(), AndroidUtilities.dp(20), false);
             if (containsUrls(caption)) {
                 try {
-                    Linkify.addLinks((Spannable) caption, Linkify.WEB_URLS | Linkify.PHONE_NUMBERS);
+                    Linkify.addLinks((Spannable) caption, Linkify.WEB_URLS | Linkify.PHONE_NUMBERS | Linkify.EMAIL_ADDRESSES);
                 } catch (Exception e) {
                     FileLog.e("messenger", e);
                 }
-                addUsernamesAndHashtags(caption);
+                //addUsernamesAndHashtags(caption);
             }
         }
     }
 
-    private static void addUsernamesAndHashtags(CharSequence charSequence) {
+    /*private static void addUsernamesAndHashtags(CharSequence charSequence) {
         try {
             if (urlPattern == null) {
                 urlPattern = Pattern.compile("(^|\\s)/[a-zA-Z@\\d_]{1,255}|(^|\\s)@[a-zA-Z\\d_]{1,32}|(^|\\s)#[\\w\\.]+");
@@ -532,24 +460,24 @@ public class MessageObject {
         } catch (Exception e) {
             FileLog.e("messenger", e);
         }
-    }
+    }*/
 
     private static void addLinks(CharSequence messageText) {
         if (messageText instanceof Spannable && containsUrls(messageText)) {
-            if (messageText.length() < 200) {
+            //if (messageText.length() < 200) {
                 try {
-                    Linkify.addLinks((Spannable) messageText, Linkify.WEB_URLS | Linkify.PHONE_NUMBERS);
+                    Linkify.addLinks((Spannable) messageText, Linkify.WEB_URLS | Linkify.PHONE_NUMBERS | Linkify.EMAIL_ADDRESSES);
                 } catch (Exception e) {
                     FileLog.e("messenger", e);
                 }
-            } else {
+            /*} else {
                 try {
                     Linkify.addLinks((Spannable) messageText, Linkify.WEB_URLS);
                 } catch (Exception e) {
                     FileLog.e("messenger", e);
                 }
-            }
-            addUsernamesAndHashtags(messageText);
+            }*/
+            //addUsernamesAndHashtags(messageText);
         }
     }
 
@@ -802,62 +730,12 @@ public class MessageObject {
         return messageOwner.media_unread;
     }
 
-    public void setIsRead() {
-        messageOwner.unread = false;
-    }
-
-    /*
-    public static int getUnreadFlags(TLRPC.Message message) {
-        int flags = 0;
-        if (!message.unread) {
-            flags |= 1;
-        }
-        if (!message.media_unread) {
-            flags |= 2;
-        }
-        return flags;
-    }
-    */
-
-    public void setContentIsRead() {
-        messageOwner.media_unread = false;
-    }
-
     public int getId() {
         return messageOwner.id;
     }
 
-    public boolean isSecretPhoto() {
-        return false;
-    }
-
-    public boolean isSecretMedia() {
-        return false;
-    }
-
-    public static boolean isOut(TLRPC.Message message) {
-        return message.out;
-    }
-
     public long getDialogId() {
-        return getDialogId(messageOwner);
-    }
-
-    public static long getDialogId(TLRPC.Message message) {
-        if (message.dialog_id == 0 && message.to_id != null) {
-            if (message.to_id.chat_id != 0) {
-                /*if (message.to_id.chat_id < 0) {
-                    message.dialog_id = AndroidUtilities.makeBroadcastId(message.to_id.chat_id);
-                } else*/ {
-                    message.dialog_id = -message.to_id.chat_id;
-                }
-            } else if (isOut(message)) {
-                message.dialog_id = message.to_id.user_id;
-            } else {
-                message.dialog_id = message.from_id;
-            }
-        }
-        return message.dialog_id;
+        return messageOwner.dialog_id;
     }
 
     public boolean isSending() {
