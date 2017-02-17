@@ -1,5 +1,11 @@
 # Delta Chat Changelog
 
+## UNRELEASED
+
+* Clickable email addresses
+* Update Polish translation
+* Fix tablet startup bug
+
 ## v0.1.20
 2017-02-16
 
