@@ -408,7 +408,7 @@ public class NotificationsController {
                         return;
                     }
                     TLRPC.Message tmsg = mrMsg.get_TLRPC_Message();
-                    MessageObject msgDrawObj = new MessageObject(tmsg, null, true);
+                    MessageObject msgDrawObj = new MessageObject(tmsg, true);
 
                     delayedPushMessages.add(msgDrawObj);
                     pushMessages.add(0, msgDrawObj);

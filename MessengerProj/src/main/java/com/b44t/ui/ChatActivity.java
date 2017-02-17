@@ -3074,7 +3074,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     // show a normal message
                     MrMsg mrMsg = MrMailbox.getMsg(msg_id);
                     TLRPC.Message msg = mrMsg.get_TLRPC_Message();
-                    MessageObject msgDrawObj = new MessageObject(msg, null, true);
+                    MessageObject msgDrawObj = new MessageObject(msg, true);
 
                     ChatMessageCell messageCell = (ChatMessageCell) view;
                     messageCell.isChat = m_mrChat.getType()==MrChat.MR_CHAT_GROUP;
@@ -3102,7 +3102,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                         dateMsg.id = 0;
                         dateMsg.date = (int)mrMsg.getTimestamp();
                         dateMsg.message = LocaleController.formatDateChat(dateMsg.date);
-                        MessageObject msgDrawObj = new MessageObject(dateMsg, null, false);
+                        MessageObject msgDrawObj = new MessageObject(dateMsg, false);
                         msgDrawObj.type = 10;
                         msgDrawObj.contentType = ROWTYPE_DATE_HEADLINE;
 

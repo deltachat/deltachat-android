@@ -562,19 +562,19 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
     }
 
     public void sendMessageContact(TLRPC.User user, long peer, MessageObject reply_to_msg, HashMap<String, String> params) {
-        sendMessage__(null, null, null, null, user, null, peer, null, reply_to_msg, params);
+        sendMessage__(null, null, null, null, user, null, peer, null, params);
     }
 
     public void sendMessageDocument(TLRPC.TL_document document, VideoEditedInfo videoEditedInfo, String path, long peer, MessageObject reply_to_msg, HashMap<String, String> params) {
-        sendMessage__(null, null, null, videoEditedInfo, null, document, peer, path, reply_to_msg, params);
+        sendMessage__(null, null, null, videoEditedInfo, null, document, peer, path, params);
     }
 
     public void sendMessageText(String message, long peer, MessageObject reply_to_msg, HashMap<String, String> params) {
-        sendMessage__(message, null, null, null, null, null, peer, null, reply_to_msg, params);
+        sendMessage__(message, null, null, null, null, null, peer, null, params);
     }
 
     public void sendMessagePhoto(TLRPC.TL_photo photo, String path, long peer, MessageObject reply_to_msg, HashMap<String, String> params) {
-        sendMessage__(null, null, photo, null, null, null, peer, path, reply_to_msg, params);
+        sendMessage__(null, null, photo, null, null, null, peer, path, params);
     }
 
     private void sendMessage__(String message,
@@ -585,7 +585,6 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
                              TLRPC.TL_document document,
                              long peer,
                              String path,
-                             MessageObject reply_to_msg,
                              HashMap<String, String> params) {
         if (peer == 0) { // peer == dialog id
             return;
@@ -717,10 +716,10 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
             newMsg.flags |= TLRPC.MESSAGE_FLAG_HAS_MEDIA;
             newMsg.unread = true;
             newMsg.dialog_id = peer;
-            if (reply_to_msg != null) {
+            /*if (reply_to_msg != null) {
                 newMsg.flags |= TLRPC.MESSAGE_FLAG_REPLY;
                 newMsg.reply_to_msg_id = reply_to_msg.getId();
-            }
+            }*/
 
             if (lower_id != 0) {
                 {
@@ -741,8 +740,7 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
             newMsg.media_unread = true;
 
             newMsg.send_state = MessageObject.MESSAGE_SEND_STATE_SENDING;
-            newMsgObj = new MessageObject(newMsg, null, true);
-            newMsgObj.replyMessageObject = reply_to_msg;
+            newMsgObj = new MessageObject(newMsg, true);
             if (!newMsgObj.isForwarded() && newMsgObj.type == 3) {
                 newMsgObj.attachPathExists = true;
             }

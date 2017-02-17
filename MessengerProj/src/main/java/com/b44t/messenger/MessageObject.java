@@ -35,10 +35,7 @@ import com.b44t.ui.ActionBar.Theme;
 import com.b44t.ui.Components.URLSpanNoUnderline;
 
 import java.io.File;
-import java.util.AbstractMap;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -53,10 +50,11 @@ public class MessageObject {
     public TLRPC.Message messageOwner;
     public CharSequence messageText;
     public CharSequence caption;
-    public MessageObject replyMessageObject;
-    public int type = 1000; // 13: sticker
+    public final MessageObject replyMessageObject = null;
+
+    public int type = 1000; // 8: gif, 13: sticker
+
     public int contentType; // one of ChatActivity.ROWTYPE_MESSAGE_CELL, .ROWTYPE_ACTION_CELL or .ROWTYPE_UNREAD_CELL
-    public String dateKey;
     public float audioProgress;
     public int audioProgressSec;
     public ArrayList<TLRPC.PhotoSize> photoThumbs;
@@ -71,9 +69,7 @@ public class MessageObject {
     public int textWidth;
     public int textHeight;
 
-    private boolean layoutCreated;
-
-    public static Pattern urlPattern;
+    private static Pattern urlPattern;
 
     public static class TextLayoutBlock {
         public StaticLayout textLayout;
@@ -87,11 +83,7 @@ public class MessageObject {
 
     public ArrayList<TextLayoutBlock> textLayoutBlocks;
 
-    public MessageObject(TLRPC.Message message, AbstractMap<Integer, TLRPC.User> users, boolean generateLayout) {
-        this(message, users, null, generateLayout);
-    }
-
-    public MessageObject(TLRPC.Message message, AbstractMap<Integer, TLRPC.User> users, AbstractMap<Integer, TLRPC.Chat> chats, boolean generateLayout) {
+    public MessageObject(TLRPC.Message message, boolean generateLayout) {
         if (textPaint == null) {
             textPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
             textPaint.setColor(Theme.MSG_TEXT_COLOR);
@@ -102,22 +94,12 @@ public class MessageObject {
 
         messageOwner = message;
 
-        if (message.replyMessage != null) {
+        /*if (message.replyMessage != null) {
             replyMessageObject = new MessageObject(message.replyMessage, users, chats, false);
-        }
-
-        TLRPC.User fromUser = null;
-        if (message.from_id > 0) {
-            if (users != null) {
-                fromUser = users.get(message.from_id);
-            }
-            if (fromUser == null) {
-                fromUser = MessagesController.getInstance().getUser(message.from_id);
-            }
-        }
+        }*/
 
         if (!isMediaEmpty()) {
-            if (message.media instanceof TLRPC.TL_messageMediaPhoto) {
+            /*if (message.media instanceof TLRPC.TL_messageMediaPhoto) {
                 messageText = mContext.getString(R.string.AttachPhoto);
             } else if (isVideo()) {
                 messageText = mContext.getString(R.string.AttachVideo);
@@ -148,7 +130,8 @@ public class MessageObject {
                         messageText = mContext.getString(R.string.AttachDocument);
                     }
                 }
-            }
+            }*/
+            messageText = "<media message>"; // should not be displayed, use MrMsg.getSummarytext() instead
         } else {
             messageText = message.message;
         }
@@ -157,14 +140,6 @@ public class MessageObject {
         }
 
         setType();
-        //measureInlineBotButtons();
-
-        Calendar rightNow = new GregorianCalendar();
-        rightNow.setTimeInMillis((long) (messageOwner.date) * 1000);
-        int dateDay = rightNow.get(Calendar.DAY_OF_YEAR);
-        int dateYear = rightNow.get(Calendar.YEAR);
-        int dateMonth = rightNow.get(Calendar.MONTH);
-        dateKey = String.format("%d_%02d_%02d", dateYear, dateMonth, dateDay);
 
         if (messageOwner.message != null && messageOwner.id < 0 && messageOwner.message.length() > 6 && isVideo()) {
             videoEditedInfo = new VideoEditedInfo();
@@ -176,9 +151,8 @@ public class MessageObject {
         generateCaption();
         if (generateLayout) {
             messageText = Emoji.replaceEmoji(messageText, textPaint.getFontMetricsInt(), AndroidUtilities.dp(20), false);
-            generateLayout(fromUser);
+            generateLayout();
         }
-        layoutCreated = generateLayout;
         generateThumbs(false);
         checkMediaExistance();
     }
@@ -193,7 +167,7 @@ public class MessageObject {
         return textPaint;
     }
 
-    public void setType() {
+    private void setType() {
         int oldType = type;
         if (messageOwner instanceof TLRPC.TL_message /*|| messageOwner instanceof TLRPC.TL_messageForwarded_old2*/) {
             if (isMediaEmpty()) {
@@ -255,18 +229,6 @@ public class MessageObject {
         }
     }
 
-    public void checkLayout() {
-        if (!layoutCreated) {
-            layoutCreated = true;
-            TLRPC.User fromUser = null;
-            if (isFromUser()) {
-                fromUser = MessagesController.getInstance().getUser(messageOwner.from_id);
-            }
-            messageText = Emoji.replaceEmoji(messageText, textPaint.getFontMetricsInt(), AndroidUtilities.dp(20), false);
-            generateLayout(fromUser);
-        }
-    }
-
     public static boolean isGifDocument(TLRPC.Document document) {
         return document != null && document.thumb != null && document.mime_type != null && (document.mime_type.equals("image/gif") || isNewGifDocument(document));
     }
@@ -282,7 +244,7 @@ public class MessageObject {
         return false;
     }
 
-    public void generateThumbs(boolean update) {
+    private void generateThumbs(boolean update) {
         /*if (messageOwner instanceof TLRPC.TL_messageService) {
             if (messageOwner.action instanceof TLRPC.TL_messageActionChatEditPhoto) {
                 if (!update) {
@@ -528,24 +490,7 @@ public class MessageObject {
         return false;
     }
 
-    public void generateLinkDescription() {
-        /*if (linkDescription != null) {
-            return;
-        }
-        if (messageOwner.media instanceof TLRPC.TL_messageMediaWebPage && messageOwner.media.webpage instanceof TLRPC.TL_webPage && messageOwner.media.webpage.description != null) {
-            linkDescription = Spannable.Factory.getInstance().newSpannable(messageOwner.media.webpage.description);
-            if (containsUrls(linkDescription)) {
-                try {
-                    Linkify.addLinks((Spannable) linkDescription, Linkify.WEB_URLS);
-                } catch (Exception e) {
-                    FileLog.e("messenger", e);
-                }
-            }
-            linkDescription = Emoji.replaceEmoji(linkDescription, textPaint.getFontMetricsInt(), AndroidUtilities.dp(20), false);
-        }*/
-    }
-
-    public void generateCaption() {
+    private void generateCaption() {
         if (caption != null) {
             return;
         }
@@ -589,7 +534,7 @@ public class MessageObject {
         }
     }
 
-    public static void addLinks(CharSequence messageText) {
+    private static void addLinks(CharSequence messageText) {
         if (messageText instanceof Spannable && containsUrls(messageText)) {
             if (messageText.length() < 200) {
                 try {
@@ -608,12 +553,11 @@ public class MessageObject {
         }
     }
 
-    private void generateLayout(TLRPC.User fromUser) {
+    private void generateLayout() {
         if (type != 0 || messageOwner.to_id == null || messageText == null || messageText.length() == 0) {
             return;
         }
 
-        generateLinkDescription();
         textLayoutBlocks = new ArrayList<>();
 
         /*final boolean useManualParse = true; // false only add links to phone numbers; was used in Telegram for incoming messages that were already parsed (?)
@@ -1132,27 +1076,10 @@ public class MessageObject {
                 } else if (h < AndroidUtilities.dp(120)) {
                     h = AndroidUtilities.dp(120);
                 }
-                /*if (isSecretPhoto()) {
-                    if (AndroidUtilities.isTablet()) {
-                        h = (int) (AndroidUtilities.getMinTabletSide() * 0.5f);
-                    } else {
-                        h = (int) (Math.min(AndroidUtilities.displaySize.x, AndroidUtilities.displaySize.y) * 0.5f);
-                    }
-                }*/
                 photoHeight = h;
             }
             return photoHeight + AndroidUtilities.dp(14);
         }
-    }
-
-    public String getStickerEmoji() {
-        for (int a = 0; a < messageOwner.media.document.attributes.size(); a++) {
-            TLRPC.DocumentAttribute attribute = messageOwner.media.document.attributes.get(a);
-            if (attribute instanceof TLRPC.TL_documentAttributeSticker) {
-                return attribute.alt != null && attribute.alt.length() > 0 ? attribute.alt : null;
-            }
-        }
-        return null;
     }
 
     public boolean isSticker() {
@@ -1272,7 +1199,7 @@ public class MessageObject {
     }
 
     public boolean isReply() {
-        return (messageOwner.reply_to_msg_id != 0 || messageOwner.reply_to_random_id != 0) && (messageOwner.flags & TLRPC.MESSAGE_FLAG_REPLY) != 0;
+        return false;
     }
 
     public boolean isMediaEmpty() {
@@ -1291,7 +1218,6 @@ public class MessageObject {
     }
 
     public void checkMediaExistance() {
-        File cacheFile = null;
         attachPathExists = false;
         mediaExists = false;
         if (type == 1) {

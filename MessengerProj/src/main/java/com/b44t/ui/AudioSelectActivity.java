@@ -261,7 +261,7 @@ public class AudioSelectActivity extends BaseFragment implements NotificationCen
                         fileName.file_name = file.getName();
                         message.media.document.attributes.add(fileName);
 
-                        audioEntry.messageObject = new MessageObject(message, null, false);
+                        audioEntry.messageObject = new MessageObject(message, false);
 
                         newAudioEntries.add(audioEntry);
                         id--;

@@ -465,7 +465,6 @@ public class TLRPC {
         public long random_id; //custom
         public long dialog_id; //custom
         public int layer; //custom
-        public TLRPC.Message replyMessage; //custom
 		public boolean created_by_mr;
     }
 
