@@ -384,6 +384,12 @@ JNIEXPORT jint Java_com_b44t_messenger_MrMailbox_createGroupChat(JNIEnv *env, jc
 }
 
 
+JNIEXPORT jint Java_com_b44t_messenger_MrMailbox_isContactInChat(JNIEnv *env, jclass cls, jint chat_id, jint contact_id)
+{
+	return (jint)mrmailbox_is_contact_in_chat(get_mrmailbox_t(env, cls), chat_id, contact_id);
+}
+
+
 JNIEXPORT jint Java_com_b44t_messenger_MrMailbox_addContactToChat(JNIEnv *env, jclass cls, jint chat_id, jint contact_id)
 {
 	return (jint)mrmailbox_add_contact_to_chat(get_mrmailbox_t(env, cls), chat_id, contact_id);

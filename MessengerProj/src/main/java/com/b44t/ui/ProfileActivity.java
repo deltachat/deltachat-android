@@ -444,18 +444,24 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                     fragment.setDelegate(new ContactsActivity.ContactsActivityDelegate() {
                         @Override
                         public void didSelectContact(final int added_user_id) {
-                            AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
-                            builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialogInterface, int i) {
-                                    MrMailbox.addContactToChat(chat_id, added_user_id);
-                                    NotificationCenter.getInstance().postNotificationName(NotificationCenter.updateInterfaces, MessagesController.UPDATE_MASK_CHAT_MEMBERS);
-                                }
-                            });
-                            builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
-                            String name = MrMailbox.getContact(added_user_id).getDisplayName();
-                            builder.setMessage(AndroidUtilities.replaceTags(LocaleController.formatString("AskAddMemberToGroup", R.string.AskAddMemberToGroup, name)));
-                            showDialog(builder.create());
+                            if( MrMailbox.isContactInChat(chat_id, added_user_id)!=0 )
+                            {
+                                Toast.makeText(getParentActivity(), ApplicationLoader.applicationContext.getString(R.string.UserAlreadyInGroup), Toast.LENGTH_SHORT).show();
+                            }
+                            else {
+                                AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
+                                builder.setPositiveButton(ApplicationLoader.applicationContext.getString(R.string.OK), new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                        MrMailbox.addContactToChat(chat_id, added_user_id);
+                                        NotificationCenter.getInstance().postNotificationName(NotificationCenter.updateInterfaces, MessagesController.UPDATE_MASK_CHAT_MEMBERS);
+                                    }
+                                });
+                                builder.setNegativeButton(ApplicationLoader.applicationContext.getString(R.string.Cancel), null);
+                                String name = MrMailbox.getContact(added_user_id).getDisplayName();
+                                builder.setMessage(AndroidUtilities.replaceTags(LocaleController.formatString("AskAddMemberToGroup", R.string.AskAddMemberToGroup, name)));
+                                showDialog(builder.create());
+                            }
                         }
                     });
                     presentFragment(fragment);
