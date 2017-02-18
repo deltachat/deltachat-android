@@ -446,7 +446,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                         public void didSelectContact(final int added_user_id) {
                             if( MrMailbox.isContactInChat(chat_id, added_user_id)!=0 )
                             {
-                                Toast.makeText(getParentActivity(), ApplicationLoader.applicationContext.getString(R.string.UserAlreadyInGroup), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getParentActivity(), ApplicationLoader.applicationContext.getString(R.string.ContactAlreadyInGroup), Toast.LENGTH_SHORT).show();
                             }
                             else {
                                 AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
@@ -1205,7 +1205,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
         }
 
         if (user_id != 0) {
-            item.addSubItem(ID_STOP_ENCRYPTION_FOR_THIS_USER, LocaleController.getString("ResetUserKey", R.string.ResetUserKey), 0);
+            item.addSubItem(ID_STOP_ENCRYPTION_FOR_THIS_USER, ApplicationLoader.applicationContext.getString(R.string.ResetContactsKey), 0);
             item.addSubItem(ID_BLOCK_CONTACT, userBlocked()? LocaleController.getString("UnblockContact", R.string.UnblockContact) : LocaleController.getString("BlockContact", R.string.BlockContact), 0);
             item.addSubItem(ID_DELETE_CONTACT, LocaleController.getString("DeleteContact", R.string.DeleteContact), 0);
         }

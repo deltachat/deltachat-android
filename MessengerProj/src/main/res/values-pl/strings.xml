@@ -64,14 +64,13 @@
     <string name="UnsupportedAttachment">Nieobsługiwany załącznik</string>
     <string name="OpenInBrowser">OTWÓRZ W…</string>
     <string name="SendItems">Wyślij %1$s</string>
-    <string name="OpenUrlAlert">Otworzyć adres %1$s?</string>
     <string name="ClearRecentEmoji">Wyczyścić ostatnie emoji?</string>
     <string name="AddShortcut">Dodaj widget do ekranu głównego</string>
     <string name="ShortcutAdded">Widget dodany do ekranu głównego</string>
     <!--notification-->
     <string name="Reply">Odpowiedz</string>
     <string name="ReplyToGroup">Odpowiedz grupie %1$s</string>
-    <string name="ReplyToUser">Odpowiedz grupie %1$s</string>
+    <string name="ReplyToContact">Odpowiedz grupie %1$s</string>
     <!--contacts view-->
     <string name="NoContacts">Nie ma użytkowników.</string>
     <string name="TodayAt">o</string>
@@ -87,8 +86,6 @@
     <string name="Notifications">Powiadomienia</string>
     <string name="RemoveMember">Usuń członka</string>
     <!--contact info view-->
-    <string name="ShareContact">Udostępnij</string>
-    <string name="AddContact">Dodaj</string>
     <string name="NewContactTitle">Nowy użytkownik</string>
     <string name="BlockContact">Zablokuj użytkownika</string>
     <string name="DeleteContact">Usuń użytkownika</string>
@@ -122,7 +119,7 @@
     <string name="Reset">Resetuj</string>
     <string name="ResetAllNotifications">Resetuj wszystkie powiadomienia</string>
     <string name="NotificationsAndSounds">Powiadomienia i dźwięki</string>
-    <string name="BlockedUsers">Zablokowani użytkownicy</string>
+    <string name="BlockedContacts">Zablokowani użytkownicy</string>
     <string name="Default">domyślny</string>
     <string name="OnlyIfSilent">Tylko jeśli wyciszony</string>
     <string name="ChatBackground">Tło czatu</string>
@@ -274,7 +271,6 @@
     <string name="Retry">Spróbuj ponownie</string>
     <string name="FromCamera">Z kamery</string>
     <string name="FromGalley">Z galerii</string>
-    <string name="DeletePhoto">Usuń zdjęcie</string>
     <string name="Set">Ustaw</string>
     <string name="OK">OK</string>
     <string name="Crop">PRZYTNIJ</string>
@@ -282,7 +278,6 @@
     <string name="AttachPhoto">Zdjęcie</string>
     <string name="AttachVideo">Wideo</string>
     <string name="AttachGif">GIF</string>
-    <string name="AttachLocation">Lokalizacja</string>
     <string name="AttachContact">Kontakt</string>
     <string name="AttachDocument">Plik</string>
     <string name="AttachSticker">naklejka</string>
@@ -292,13 +287,9 @@
     <string name="Loading">Wczytywanie…</string>
     <string name="NoPlayerInstalled">Nie masz odtwarzacza wideo. Zainstaluj jakiś, aby kontynuować.</string>
     <string name="NoHandleAppInstalled">Nie masz aplikacji obsługujących pliki typu „%1$s”. Zainstaluj jakąś, aby kontynuować.</string>
-    <string name="AddToTheGroupTitle">Dodać %1$s do czatu %2$s?</string>
-    <string name="AddToTheGroup">Dodać %1$s do grupy?</string>
-    <string name="UserAlreadyInGroup">Ten użytkownik jest już w tej grupie</string>
+    <string name="ContactAlreadyInGroup">Ten użytkownik jest już w tej grupie</string>
     <string name="ForwardMessagesTo">Przekazać wybrane wiadomości do <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>?</string>
     <string name="SendMessagesTo">Wysłać wiadomość do <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>?</string>
-    <string name="SendContactTo">Wysłać kontakt do użytkownika %1$s?</string>
-    <string name="AreYouSureDeleteAndExit">Opuścić grupę? Nie będziesz już otrzymywać wiadomości od grupy.</string>
     <string name="AreYouSureDeleteThisChat">Usunąć ten czat? Czat nie będzie widoczny na liście czatów, wiadomości pozostaną na serwerze.</string>
     <string name="ShareYouLocationUnable">Aplikacja nie była w stanie określić twojej aktualnej lokalizacji</string>
     <string name="ShareYouLocationUnableManually">Wybierz ręcznie</string>
@@ -448,13 +439,10 @@
     <string name="DeaddropHint">Aby rozpocząć czat, naciśnij strzałkę odpowiedzi.</string>
     <string name="NotYetImplemented">Ta funkcja jest niedostępna lub niekompletna.</string>
     <string name="DefaultStatusText">Wysłane z komunikatora Delta Chat</string>
-    <string name="SubjectPrefix">Wiadomości błyskawiczne</string>
-    <string name="SeachUser">Szukaj użytkownika</string>
     <string name="Name" >Nazwa</string>
     <string name="EmailAddress">Adres e-mail</string>
     <string name="CannotDeleteContact">Nie możesz usunąć użytkowników w użyciu, zamiast tego zablokuj użytkownika.</string>
     <string name="BadEmailAddress">Zły adres e-mail</string>
-    <string name="ContactDeleted">Użytkownik usunięty.</string>
     <string name="ContactCreated">Użytkownik utworzony.</string>
     <string name="ViewProfile">Pokaż profil</string>
     <string name="OneMomentPlease">Jedną chwilę, proszę…</string>
@@ -468,7 +456,6 @@
     <string name="AdvancedSettings">Usywienia zaawansowane</string>
     <string name="AskResetNotifications" >Zresetować wszystkie ustawienia powiadomień i dźwięków na tej stronie oraz dla swoich kontaktów i grup?</string>
     <string name="AttachFiles">Załącz pliki</string>
-    <string name="Chats">Czaty</string>
     <string name="ErrGroupNameEmpty">Podaj nazwę dla grupy</string>
     <string name="MsgNewGroupDraftHint">Napisz pierwszą wiadomość, by inni mogli odpowiedzieć w tej grupie.\n\n• Nie ma problemu, jeśli nie wszyscy członkowie korzystają z Delta Chat.\n\n• Dostarczenie pierwszej wiadomości może chwilę potrwać.</string>
     <string name="MsgNewGroupDraft">Witam, właśnie utworzyłem dla nas grupę \"%1$s\".</string>
@@ -485,6 +472,6 @@
     <string name="E2EEncryption">Pełne szyfrowanie</string>
     <string name="E2EManagePrivateKeys">Zarządzaj prywatnymi kluczami</string>
     <string name="E2ECompareKeys">Porównaj klucze</string>
-    <string name="ResetUserKey">Resetuj klucz użytkownika</string>
+    <string name="ResetContactsKey">Resetuj klucz użytkownika</string>
     <string name="ForwardToTitle">Przekaż do…</string>
 </resources>

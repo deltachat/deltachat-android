@@ -1397,7 +1397,7 @@ public class NotificationsController {
                 if (chat != null) {
                     replyToString = String.format(mContext.getString(R.string.ReplyToGroup), name);
                 } else {
-                    replyToString = String.format(mContext.getString(R.string.ReplyToUser), name);
+                    replyToString = String.format(mContext.getString(R.string.ReplyToContact), name);
                 }
                 wearReplyAction = new NotificationCompat.Action.Builder(R.drawable.ic_reply_icon, replyToString, replyPendingIntent).addRemoteInput(remoteInputWear).build();
             }

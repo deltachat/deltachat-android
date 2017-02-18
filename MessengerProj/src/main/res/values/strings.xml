@@ -64,16 +64,15 @@
     <string name="UnsupportedAttachment">Unsupported attachment</string>
     <string name="OpenInBrowser">OPEN IN …</string>
     <string name="SendItems">Send %1$s</string>
-    <string name="OpenUrlAlert">Open url %1$s?</string>
     <string name="ClearRecentEmoji">Clear recent emoji?</string>
     <string name="AddShortcut">Add widget to home screen</string>
     <string name="ShortcutAdded">Widget added to home screen</string>
     <!--notification-->
     <string name="Reply">Reply</string>
     <string name="ReplyToGroup">Reply to %1$s</string>
-    <string name="ReplyToUser">Reply to %1$s</string>
+    <string name="ReplyToContact">Reply to %1$s</string>
     <!--contacts view-->
-    <string name="NoContacts">No users yet.</string>
+    <string name="NoContacts">No contacts yet.</string>
     <string name="TodayAt">at</string>
     <string name="YesterdayAt">yesterday at</string>
     <!--group create view-->
@@ -87,11 +86,9 @@
     <string name="Notifications">Notifications</string>
     <string name="RemoveMember">Remove member</string>
     <!--contact info view-->
-    <string name="ShareContact">Share</string>
-    <string name="AddContact">Add</string>
-    <string name="NewContactTitle">New user</string>
-    <string name="BlockContact">Block user</string>
-    <string name="DeleteContact">Delete user</string>
+    <string name="NewContactTitle">New contact</string>
+    <string name="BlockContact">Block contact</string>
+    <string name="DeleteContact">Delete contact</string>
     <string name="Info">Info</string>
     <!--stickers view-->
     <string name="Stickers">Stickers</string>
@@ -110,8 +107,8 @@
     <!--settings view-->
     <string name="TextSize">Messages font size</string>
     <string name="EnableAnimations">Transition animation</string>
-    <string name="UnblockContact">Unblock user</string>
-    <string name="NoBlocked">No blocked users yet</string>
+    <string name="UnblockContact">Unblock contact</string>
+    <string name="NoBlocked">No blocked contacts yet</string>
     <string name="NormalMessages">Normal messages</string>
     <string name="Alert">Alert</string>
     <string name="MessagePreview">Message preview</string>
@@ -122,7 +119,7 @@
     <string name="Reset">Reset</string>
     <string name="ResetAllNotifications">Reset all notifications</string>
     <string name="NotificationsAndSounds">Notifications and sounds</string>
-    <string name="BlockedUsers">Blocked users</string>
+    <string name="BlockedContacts">Blocked contacts</string>
     <string name="Default">Default</string>
     <string name="OnlyIfSilent">Only if silent</string>
     <string name="ChatBackground">Chat background</string>
@@ -274,7 +271,6 @@
     <string name="Retry">Retry</string>
     <string name="FromCamera">From camera</string>
     <string name="FromGalley">From gallery</string>
-    <string name="DeletePhoto">Delete photo</string>
     <string name="Set">Set</string>
     <string name="OK">OK</string>
     <string name="Crop">CROP</string>
@@ -282,7 +278,6 @@
     <string name="AttachPhoto">Photo</string>
     <string name="AttachVideo">Video</string>
     <string name="AttachGif">GIF</string>
-    <string name="AttachLocation">Location</string>
     <string name="AttachContact">Contact</string>
     <string name="AttachDocument">File</string>
     <string name="AttachSticker">Sticker</string>
@@ -292,18 +287,14 @@
     <string name="Loading">Loading …</string>
     <string name="NoPlayerInstalled">You don\'t have a video player, please install one to continue</string>
     <string name="NoHandleAppInstalled">You don\'t have applications that can handle the file type \'%1$s\', please install one to continue</string>
-    <string name="AddToTheGroupTitle">Add %1$s to the chat %2$s?</string>
-    <string name="AddToTheGroup">Add %1$s to the group?</string>
-    <string name="UserAlreadyInGroup">This user is already in this group</string>
+    <string name="ContactAlreadyInGroup">This contact is already in this group.</string>
     <string name="ForwardMessagesTo">Forward selected messages to <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>?</string>
     <string name="SendMessagesTo">Send messages to <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>?</string>
-    <string name="SendContactTo">Send contact to %1$s?</string>
-    <string name="AreYouSureDeleteAndExit">Leave the group? You will no longer receive messages from the group.</string>
     <string name="AreYouSureDeleteThisChat">Delete this chat? The chat will no longer be shown in the chat list, the messages will stay on the server.</string>
     <string name="ShareYouLocationUnable">App was unable to determine your current location</string>
     <string name="ShareYouLocationUnableManually">Choose manually</string>
-    <string name="AreYouSureBlockContact">Are you sure you want to block this user?</string>
-    <string name="AreYouSureDeleteContact">Are you sure you want to delete this user?</string>
+    <string name="AreYouSureBlockContact">Are you sure you want to block this contact?</string>
+    <string name="AreYouSureDeleteContact">Are you sure you want to delete this contact?</string>
     <string name="RaiseToSpeakAlert">Would you like to enable "Raise to speak" for voice messages?</string>
     <!--permissions-->
     <string name="PermissionContacts">Delta Chat needs access to your contacts so that you can connect with your friends across all your devices.</string>
@@ -439,14 +430,11 @@
     <string name="DeaddropHint">To start a chat, click on the reply-arrows.</string>
     <string name="NotYetImplemented">This function is not available or incomplete.</string>
     <string name="DefaultStatusText">Sent with my Delta Chat Messenger</string>
-    <string name="SubjectPrefix">Instant message</string>
-    <string name="SeachUser">Search user</string>
     <string name="Name" >Name</string>
     <string name="EmailAddress">E-mail address</string>
-    <string name="CannotDeleteContact">Cannot delete users in use, block user instead.</string>
+    <string name="CannotDeleteContact">Cannot delete contacts in use, block contact instead.</string>
     <string name="BadEmailAddress">Bad e-mail address.</string>
-    <string name="ContactDeleted">User deleted.</string>
-    <string name="ContactCreated">User created.</string>
+    <string name="ContactCreated">Contact created.</string>
     <string name="ViewProfile">View profile</string>
     <string name="OneMomentPlease">One moment, please …</string>
     <string name="CannotDeleteChat">Cannot delete chat.</string>
@@ -459,7 +447,6 @@
     <string name="AdvancedSettings">Advanced settings</string>
     <string name="AskResetNotifications" >Reset all notification settings and sounds of this page and of your contacts and groups?</string>
     <string name="AttachFiles">Attach files</string>
-    <string name="Chats">Chats</string>
     <string name="ErrGroupNameEmpty">Please enter a name for the group.</string>
     <string name="MsgNewGroupDraftHint">Write a first message to allow others to reply in this group.\n\n• It is okay if not all members use Delta Chat.\n\n• Delivering the first message may take a moment.</string>
     <string name="MsgNewGroupDraft">Hello, I\'ve just created the group \"%1$s\" for us.</string>
@@ -467,8 +454,8 @@
     <string name="MsgGroupImageChanged">Group image changed.</string>
     <string name="MsgMemberAddedToGroup">Member %1$s added.</string>
     <string name="MsgMemberRemovedFromToGroup">Member %1$s removed.</string>
-    <string name="AskAddMemberToGroup">Add user <![CDATA[<b>]]>%1$s<![CDATA[</b>]]> to group?</string>
-    <string name="AskRemoveMemberFromGroup">Remove user <![CDATA[<b>]]>%1$s<![CDATA[</b>]]> from group?</string>
+    <string name="AskAddMemberToGroup">Add <![CDATA[<b>]]>%1$s<![CDATA[</b>]]> to group?</string>
+    <string name="AskRemoveMemberFromGroup">Remove <![CDATA[<b>]]>%1$s<![CDATA[</b>]]> from group?</string>
     <string name="ErrSelfNotInGroup">You must be a member of the group to perform this action.</string>
     <string name="MsgGroupLeft">Group left.</string>
     <string name="NoMessagesHint">Send message to <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>:\n\n• It is okay if  <![CDATA[<b>]]>%2$s<![CDATA[</b>]]> does not use Delta Chat.\n\n• Delivering the first message may take a moment.</string>
@@ -476,7 +463,7 @@
     <string name="E2EEncryption">End-to-end-encryption</string>
     <string name="E2EManagePrivateKeys">Manage private keys</string>
     <string name="E2ECompareKeys">Compare keys</string>
-    <string name="ResetUserKey">Reset user\'s key</string>
+    <string name="ResetContactsKey">Reset contact\'s key</string>
     <string name="ForwardToTitle">Forward to …</string>
-    <string name="SelectContactToAttach">Select user to attach</string>
+    <string name="SelectContactToAttach">Select contact to attach</string>
 </resources>

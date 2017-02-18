@@ -64,16 +64,15 @@
     <string name="UnsupportedAttachment">Nicht unterstützte Datei</string>
     <string name="OpenInBrowser">ÖFFNEN MIT …</string>
     <string name="SendItems">%1$s senden</string>
-    <string name="OpenUrlAlert">URL %1$s öffnen?</string>
     <string name="ClearRecentEmoji">Zuletzt benutzte Emoji leeren?</string>
     <string name="AddShortcut">Auf Startbildschirm platzieren</string>
     <string name="ShortcutAdded">Widget zum Startbildschirm hinzugefügt</string>
     <!--notification-->
     <string name="Reply">Antworten</string>
     <string name="ReplyToGroup">%1$s antworten</string>
-    <string name="ReplyToUser">%1$s antworten</string>
+    <string name="ReplyToContact">%1$s antworten</string>
     <!--contacts view-->
-    <string name="NoContacts">Keine Benutzer.</string>
+    <string name="NoContacts">Keine Kontakte.</string>
     <string name="TodayAt">um</string>
     <string name="YesterdayAt">gestern um</string>
     <!--group create view-->
@@ -87,11 +86,9 @@
     <string name="Notifications">Mitteilungen</string>
     <string name="RemoveMember">Mitglied entfernen</string>
     <!--contact info view-->
-    <string name="ShareContact">Teilen</string>
-    <string name="AddContact">Hinzufügen</string>
-    <string name="NewContactTitle">Neuer Benutzer</string>
-    <string name="BlockContact">Benutzer blockieren</string>
-    <string name="DeleteContact">Benutzer löschen</string>
+    <string name="NewContactTitle">Neuer Kontakt</string>
+    <string name="BlockContact">Kontakt blockieren</string>
+    <string name="DeleteContact">Kontakt löschen</string>
     <string name="Info">Info</string>
     <!--stickers view-->
     <string name="Stickers">Sticker</string>
@@ -110,8 +107,8 @@
     <!--settings view-->
     <string name="TextSize">Schriftgröße für Nachrichten</string>
     <string name="EnableAnimations">Übergänge animieren</string>
-    <string name="UnblockContact">Benutzer nicht mehr blockieren</string>
-    <string name="NoBlocked">Keine blockierten Benutzer</string>
+    <string name="UnblockContact">Kontakt nicht mehr blockieren</string>
+    <string name="NoBlocked">Keine blockierten Kontakte</string>
     <string name="NormalMessages">Normale Nachrichten</string>
     <string name="Alert">Benachrichtigung</string>
     <string name="MessagePreview">Vorschau</string>
@@ -122,7 +119,7 @@
     <string name="Reset">Zurücksetzen</string>
     <string name="ResetAllNotifications">Mitteilungseinstellungen zurücksetzen</string>
     <string name="NotificationsAndSounds">Mitteilungen und Töne</string>
-    <string name="BlockedUsers">Blockierte Benutzer</string>
+    <string name="BlockedContacts">Blockierte Kontakte</string>
     <string name="Default">Standard</string>
     <string name="OnlyIfSilent">Wenn lautlos</string>
     <string name="ChatBackground">Chat-Hintergrundbild</string>
@@ -274,7 +271,6 @@
     <string name="Retry">Erneut versuchen</string>
     <string name="FromCamera">Von der Kamera</string>
     <string name="FromGalley">Aus der Galerie</string>
-    <string name="DeletePhoto">Bild löschen</string>
     <string name="Set">Wählen</string>
     <string name="OK">OK</string>
     <string name="Crop">SCHNEIDEN</string>
@@ -282,7 +278,6 @@
     <string name="AttachPhoto">Bild</string>
     <string name="AttachVideo">Video</string>
     <string name="AttachGif">GIF</string>
-    <string name="AttachLocation">Standort</string>
     <string name="AttachContact">Kontakt</string>
     <string name="AttachDocument">Datei</string>
     <string name="AttachSticker">Sticker</string>
@@ -292,18 +287,14 @@
     <string name="Loading">Lädt …</string>
     <string name="NoPlayerInstalled">Du hast keinen Videoplayer. Bitte installiere einen um fortzufahren.</string>
     <string name="NoHandleAppInstalled">Du hast keine Applikationen, die den Dateityp \'%1$s\' öffnen könnten. Bitte installiere eine entsprechende Anwendung um fortzufahren.</string>
-    <string name="AddToTheGroupTitle">%1$s dem Chat %2$s hinzufügen?</string>
-    <string name="AddToTheGroup">%1$s zur Gruppe hinzufügen?</string>
-    <string name="UserAlreadyInGroup">Nutzer befindet sich schon in der Gruppe</string>
+    <string name="ContactAlreadyInGroup">Kontakt befindet sich schon in der Gruppe.</string>
     <string name="ForwardMessagesTo">Ausgewählte Nachrichten an <![CDATA[<b>]]>%1$s<![CDATA[</b>]]> weiterleiten?</string>
     <string name="SendMessagesTo">Nachricht an <![CDATA[<b>]]>%1$s<![CDATA[</b>]]> senden?</string>
-    <string name="SendContactTo">Kontakt senden an %1$s?</string>
-    <string name="AreYouSureDeleteAndExit">Gruppe verlassen? Es werden dann keine Nachrichten dieser Gruppe mehr empfangen.</string>
     <string name="AreYouSureDeleteThisChat">Chat löschen? Der Chat wird dann nicht mehr in der Chatliste angezeigt, die Nachrichten verbleiben auf dem Server.</string>
     <string name="ShareYouLocationUnable">App kann deinen aktuellen Standort nicht bestimmen</string>
     <string name="ShareYouLocationUnableManually">Selbst wählen</string>
-    <string name="AreYouSureBlockContact">Diesen Benutzer wirklich blockieren?</string>
-    <string name="AreYouSureDeleteContact">Diesen Benutzer wirklich löschen?</string>
+    <string name="AreYouSureBlockContact">Diesen Kontakt wirklich blockieren?</string>
+    <string name="AreYouSureDeleteContact">Diesen Kontakt wirklich löschen?</string>
     <string name="RaiseToSpeakAlert">Möchtest du \"Zum Sprechen ans Ohr\" für Sprachnachrichten aktivieren?</string>
     <!--permissions-->
     <string name="PermissionContacts">Für eine einfache Kontaktaufnahme, benötigt Delta Chat Zugriff auf die Kontakte. Die Daten werden dabei nur lokal verarbeitet und zu keinem Server oder Dienst übertragen.</string>
@@ -441,14 +432,11 @@
     <string name="DeaddropHint">Ein Klick auf die Antwort-Pfeile startet einen Chat.</string>
     <string name="NotYetImplemented">Diese Funktion ist nicht oder nur unvollständig eingebaut.</string>
     <string name="DefaultStatusText">Mit meinem Delta Chat Messenger gesendet</string>
-    <string name="SubjectPrefix">Sofortnachricht</string>
-    <string name="SeachUser">Benutzer suchen</string>
     <string name="Name">Name</string>
     <string name="EmailAddress">E-Mail-Adresse</string>
-    <string name="CannotDeleteContact">Der Benutzer kann nicht gelöscht werden, da er verwendet wird; er kann aber blockiert werden.</string>
+    <string name="CannotDeleteContact">Der Kontakt kann nicht gelöscht werden, da er verwendet wird; er kann aber blockiert werden.</string>
     <string name="BadEmailAddress">Ungültige E-Mail-Adresse.</string>
-    <string name="ContactDeleted">Benutzer gelöscht.</string>
-    <string name="ContactCreated">Benutzer angelegt.</string>
+    <string name="ContactCreated">Kontakt angelegt.</string>
     <string name="ViewProfile">Profil anzeigen</string>
     <string name="OneMomentPlease">Einen Moment, bitte …</string>
     <string name="NoChatsHelp">Unten auf das Plussymbol für die erste Chatnachricht tippen; der Menüknopf öffnet die weiteren Optionen.</string>
@@ -467,8 +455,8 @@
     <string name="MsgGroupNameChanged">Gruppenname von \"%1$s\" in \"%2$s\" geändert.</string>
     <string name="MsgMemberAddedToGroup">%1$s zur Gruppe hinzugefügt.</string>
     <string name="MsgMemberRemovedFromToGroup">%1$s aus Gruppe entfernt.</string>
-    <string name="AskAddMemberToGroup">Benutzer <![CDATA[<b>]]>%1$s<![CDATA[</b>]]> zur Gruppe hinzufügen?</string>
-    <string name="AskRemoveMemberFromGroup">Benutzer <![CDATA[<b>]]>%1$s<![CDATA[</b>]]> aus Gruppe entfernen?</string>
+    <string name="AskAddMemberToGroup"><![CDATA[<b>]]>%1$s<![CDATA[</b>]]> zur Gruppe hinzufügen?</string>
+    <string name="AskRemoveMemberFromGroup"><![CDATA[<b>]]>%1$s<![CDATA[</b>]]> aus Gruppe entfernen?</string>
     <string name="ErrSelfNotInGroup">Sie müssen ein Gruppenmitglied sein, um diese Aktion ausführen zu können.</string>
     <string name="MsgGroupLeft">Gruppe verlassen.</string>
     <string name="NoMessagesHint">Nachricht an <![CDATA[<b>]]>%1$s<![CDATA[</b>]]> senden:\n\n• <![CDATA[<b>]]>%2$s<![CDATA[</b>]]> muss hierzu Delta Chat nicht installiert haben.\n\n• Die Zustellung der ersten Nachricht kann einen Moment dauern.</string>
@@ -476,8 +464,7 @@
     <string name="SendNRcvReadReceipts">Lesebestätigungen empfangen/senden</string>
     <string name="E2EManagePrivateKeys">Private Schlüssel verwalten</string>
     <string name="E2ECompareKeys">Schlüssel vergleichen</string>
-    <string name="ResetUserKey">Benutzerschlüssel zurücksetzen</string>
+    <string name="ResetContactsKey">Schlüssel zurücksetzen</string>
     <string name="ForwardToTitle">Weiterleiten an …</string>
-    <string name="Chats">Chats</string>
-    <string name="SelectContactToAttach">Benutzerdaten versenden</string>
+    <string name="SelectContactToAttach">Kontaktdaten versenden</string>
 </resources>

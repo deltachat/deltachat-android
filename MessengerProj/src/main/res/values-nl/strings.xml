@@ -61,14 +61,13 @@
     <string name="UnsupportedAttachment">Bestandstype niet ondersteund</string>
     <string name="OpenInBrowser">OPENEN IN…</string>
     <string name="SendItems">%1$s versturen</string>
-    <string name="OpenUrlAlert">URL %1$s openen?</string>
     <string name="ClearRecentEmoji">Recente emoji\'s wissen?</string>
     <string name="AddShortcut">Snelkoppeling toevoegen</string>
     <string name="ShortcutAdded">Snelkoppeling aan startscherm toegevoegd</string>
     <!--notification-->
     <string name="Reply">Antwoord</string>
     <string name="ReplyToGroup">Antwoord op %1$s</string>
-    <string name="ReplyToUser">Antwoord op %1$s</string>
+    <string name="ReplyToContact">Antwoord op %1$s</string>
     <!--contacts view-->
     <string name="NoContacts">Nog geen contacten</string>
     <string name="TodayAt">om</string>
@@ -84,8 +83,6 @@
     <string name="Notifications">Meldingen</string>
     <string name="RemoveMember">Verwijderen uit groep</string>
     <!--contact info view-->
-    <string name="ShareContact">Delen</string>
-    <string name="AddContact">Toevoegen</string>
     <string name="NewContactTitle">Contact toevoegen</string>
     <string name="BlockContact">Blokkeer</string>
     <string name="DeleteContact">Verwijder</string>
@@ -119,7 +116,7 @@
     <string name="Reset">Resetten</string>
     <string name="ResetAllNotifications">Meldingen resetten</string>
     <string name="NotificationsAndSounds">Meldingen en geluiden</string>
-    <string name="BlockedUsers">Geblokkeerd</string>
+    <string name="BlockedContacts">Geblokkeerd</string>
     <string name="Default">Standaard</string>
     <string name="OnlyIfSilent">Alleen indien stil</string>
     <string name="ChatBackground">Achtergrond kiezen</string>
@@ -271,7 +268,6 @@
     <string name="Retry">Opnieuw proberen</string>
     <string name="FromCamera">Van camera</string>
     <string name="FromGalley">Uit galerij</string>
-    <string name="DeletePhoto">Foto verwijderen</string>
     <string name="Set">Stel in</string>
     <string name="OK">OK</string>
     <string name="Crop">BIJSNIJDEN</string>
@@ -279,7 +275,6 @@
     <string name="AttachPhoto">Foto</string>
     <string name="AttachVideo">Video</string>
     <string name="AttachGif">GIF</string>
-    <string name="AttachLocation">Locatie</string>
     <string name="AttachContact">Contact</string>
     <string name="AttachDocument">Bestand</string>
     <string name="AttachSticker">Sticker</string>
@@ -289,13 +284,10 @@
     <string name="Loading">Bezig met laden</string>
     <string name="NoPlayerInstalled">Je hebt geen mediaspeler. Installeer een mediaspeler om door te gaan.</string>
     <string name="NoHandleAppInstalled">Je hebt geen apps die bestandstype \'%1$s\' kunnen verwerken, gelieve een compatibele app te installeren</string>
-    <string name="AddToTheGroupTitle">%1$s toevoegen aan de groep %2$s?</string>
     <string name="AskAddMemberToGroup"><![CDATA[<b>]]>%1$s<![CDATA[</b>]]> toevoegen aan de groep?</string>
-    <string name="UserAlreadyInGroup">Gebruiker is al een groepslid</string>
+    <string name="ContactAlreadyInGroup">Gebruiker is al een groepslid</string>
     <string name="ForwardMessagesTo">Berichten doorsturen naar <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>?</string>
     <string name="SendMessagesTo">Berichten naar <![CDATA[<b>]]>%1$s<![CDATA[</b>]]> versturen?</string>
-    <string name="SendContactTo">Contact delen met %1$s?</string>
-    <string name="AreYouSureDeleteAndExit">Verwijderen en de groep verlaten?</string>
     <string name="AreYouSureDeleteThisChat">Chat echt verwijderen?</string>
     <string name="ShareYouLocationUnable">Huidige locatie kon niet worden vastgesteld</string>
     <string name="ShareYouLocationUnableManually">Handmatig kiezen</string>
@@ -354,7 +346,6 @@
     <string name="formatDateAtTime">%1$s om %2$s</string>
     <string name="NewChat">Nieuwe chat</string>
     <string name="Media">Media</string>
-    <string name="SeachUser">Zoeken</string>
     <string name="InviteMenuEntry">Vrienden uitnodigen</string>
     <string name="ForwardToTitle">Kies een chat …</string>
 </resources>

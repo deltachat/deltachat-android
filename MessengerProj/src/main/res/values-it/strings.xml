@@ -61,14 +61,13 @@
     <string name="UnsupportedAttachment">Allegato non supportato</string>
     <string name="OpenInBrowser">APRI IN…</string>
     <string name="SendItems">Invia %1$s</string>
-    <string name="OpenUrlAlert">Aprire url %1$s?</string>
     <string name="ClearRecentEmoji">Cancellare le emoji recenti?</string>
     <string name="AddShortcut">Aggiungi scorciatoia</string>
     <string name="ShortcutAdded">Scorciatoia aggiunta alla schermata home</string>
     <!--notification-->
     <string name="Reply">Rispondi</string>
     <string name="ReplyToGroup">Rispondi a %1$s</string>
-    <string name="ReplyToUser">Rispondi a %1$s</string>
+    <string name="ReplyToContact">Rispondi a %1$s</string>
     <!--contacts view-->
     <string name="NoContacts">Ancora nessun contatto</string>
     <string name="TodayAt">alle</string>
@@ -84,8 +83,6 @@
     <string name="Notifications">Notifiche</string>
     <string name="RemoveMember">Rimuovi dal gruppo</string>
     <!--contact info view-->
-    <string name="ShareContact">Condividi</string>
-    <string name="AddContact">Aggiungi</string>
     <string name="NewContactTitle">Aggiungi contatto</string>
     <string name="BlockContact">Blocca</string>
     <string name="DeleteContact">Elimina</string>
@@ -119,7 +116,7 @@
     <string name="Reset">Ripristina</string>
     <string name="ResetAllNotifications">Ripristina tutte le notifiche</string>
     <string name="NotificationsAndSounds">Notifiche e suoni</string>
-    <string name="BlockedUsers">Utenti bloccati</string>
+    <string name="BlockedContacts">Utenti bloccati</string>
     <string name="Default">Predefinite</string>
     <string name="OnlyIfSilent">Solo se silenzioso</string>
     <string name="ChatBackground">Sfondo chat</string>
@@ -271,7 +268,6 @@
     <string name="Retry">Riprova</string>
     <string name="FromCamera">Dalla fotocamera</string>
     <string name="FromGalley">Dalla galleria</string>
-    <string name="DeletePhoto">Elimina foto</string>
     <string name="Set">Imposta</string>
     <string name="OK">OK</string>
     <string name="Crop">RITAGLIA</string>
@@ -279,7 +275,6 @@
     <string name="AttachPhoto">Foto</string>
     <string name="AttachVideo">Video</string>
     <string name="AttachGif">GIF</string>
-    <string name="AttachLocation">Posizione</string>
     <string name="AttachContact">Contatto</string>
     <string name="AttachDocument">File</string>
     <string name="AttachSticker">Sticker</string>
@@ -289,13 +284,10 @@
     <string name="Loading">Caricamento…</string>
     <string name="NoPlayerInstalled">Non hai un lettore video, per favore installane uno per continuare</string>
     <string name="NoHandleAppInstalled">Non hai applicazioni che possono gestire il tipo di file \'%1$s\': installane una per proseguire</string>
-    <string name="AddToTheGroupTitle">Aggiungere %1$s alla chat %2$s?</string>
     <string name="AskAddMemberToGroup">Aggiungere <![CDATA[<b>]]>%1$s<![CDATA[</b>]]> al gruppo?</string>
-    <string name="UserAlreadyInGroup">Questo utente è già membro del gruppo</string>
+    <string name="ContactAlreadyInGroup">Questo utente è già membro del gruppo</string>
     <string name="ForwardMessagesTo">Vuoi inoltrare i messaggi a <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>?</string>
     <string name="SendMessagesTo">Inviare i messaggi a <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>?</string>
-    <string name="SendContactTo">Inviare contatto a %1$s?</string>
-    <string name="AreYouSureDeleteAndExit">Sei sicuro di voler uscire ed eliminare il gruppo?</string>
     <string name="AreYouSureDeleteThisChat">Sei sicuro di voler eliminare questa chat?</string>
     <string name="ShareYouLocationUnable">L\'app non è riuscita a determinare la tua posizione corrente</string>
     <string name="ShareYouLocationUnableManually">Scegli manualmente</string>
@@ -360,7 +352,6 @@
     <string name="formatDateAtTime">%1$s alle %2$s</string>
     <string name="NewChat">Nuova chat</string>
     <string name="Media">Media</string>
-    <string name="SeachUser">Cerca</string>
     <string name="InviteMenuEntry">Invita amici</string>
     <string name="ForwardToTitle">Seleziona chat …</string>
 </resources>

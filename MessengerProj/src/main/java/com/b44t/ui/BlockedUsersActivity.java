@@ -36,6 +36,7 @@ import android.widget.FrameLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.b44t.messenger.ApplicationLoader;
 import com.b44t.messenger.LocaleController;
 import com.b44t.messenger.MrContact;
 import com.b44t.messenger.MrMailbox;
@@ -81,7 +82,7 @@ public class BlockedUsersActivity extends BaseFragment implements NotificationCe
     public View createView(Context context) {
         actionBar.setBackButtonImage(R.drawable.ic_ab_back);
         actionBar.setAllowOverlayTitle(true);
-        actionBar.setTitle(LocaleController.getString("BlockedUsers", R.string.BlockedUsers));
+        actionBar.setTitle(ApplicationLoader.applicationContext.getString(R.string.BlockedContacts));
         actionBar.setActionBarMenuOnItemClick(new ActionBar.ActionBarMenuOnItemClick() {
             @Override
             public void onItemClick(int id) {

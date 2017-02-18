@@ -59,14 +59,13 @@
     <string name="UnsupportedAttachment">Pièce jointe non gérée</string>
     <string name="OpenInBrowser">OUVRIR DANS…</string>
     <string name="SendItems">Envoyer %1$s</string>
-    <string name="OpenUrlAlert">Ouvrir URL %1$s ?</string>
     <string name="ClearRecentEmoji">Vider les emokis récent ?</string>
     <string name="AddShortcut">Ajouter le widget à l\'écran d\'accueil</string>
     <string name="ShortcutAdded">Widget ajouté à l\'écran d\'accueil</string>
     <!--notification-->
     <string name="Reply">Répondre</string>
     <string name="ReplyToGroup">Répondre à %1$s</string>
-    <string name="ReplyToUser">Répondre à %1$s</string>
+    <string name="ReplyToContact">Répondre à %1$s</string>
     <!--contacts view-->
     <string name="NoContacts">Aucun utilisateur pour le moment.</string>
     <string name="TodayAt">à</string>
@@ -82,8 +81,6 @@
     <string name="Notifications">Notifications</string>
     <string name="RemoveMember">Supprimer un membre</string>
     <!--contact info view-->
-    <string name="ShareContact">Partager</string>
-    <string name="AddContact">Ajouter</string>
     <string name="NewContactTitle">Nouvel utilisateur</string>
     <string name="BlockContact">Bloquer le contact</string>
     <string name="DeleteContact">Supprimer le contact</string>
@@ -117,7 +114,7 @@
     <string name="Reset">Reinitialiser</string>
     <string name="ResetAllNotifications">Réinitialiser les notifications</string>
     <string name="NotificationsAndSounds">Notifications et sons</string>
-    <string name="BlockedUsers">Contacts bloqués</string>
+    <string name="BlockedContacts">Contacts bloqués</string>
     <string name="Default">Defaut</string>
     <string name="OnlyIfSilent">Seulement en silencieux</string>
     <string name="ChatBackground">Arrière-plan de conversation</string>
@@ -269,7 +266,6 @@
     <string name="Retry">Réessayer</string>
     <string name="FromCamera">Depuis la caméra</string>
     <string name="FromGalley">Depuis la galerie</string>
-    <string name="DeletePhoto">Supprimer la photo</string>
     <string name="Set">Définir</string>
     <string name="OK">OK</string>
     <string name="Crop">DÉCOUPER</string>
@@ -277,7 +273,6 @@
     <string name="AttachPhoto">Photo</string>
     <string name="AttachVideo">Vidéo</string>
     <string name="AttachGif">GIF</string>
-    <string name="AttachLocation">Localisation</string>
     <string name="AttachContact">Contact</string>
     <string name="AttachDocument">Fichier</string>
     <string name="AttachSticker">Autocollant</string>
@@ -287,13 +282,9 @@
     <string name="Loading">Chargement…</string>
     <string name="NoPlayerInstalled">Vous n\'avez pas de lecteur vidéo, installez-en un pour continuer</string>
     <string name="NoHandleAppInstalled">Vous n\'avez pas d\'application qui peut gérer le type \'%1$s\', veuillez en installer un pour continuer</string>
-    <string name="AddToTheGroupTitle">Ajouter %1$s à la conversation %2$s?</string>
-    <string name="AddToTheGroup">Ajouter %1$s au groupe ?</string>
-    <string name="UserAlreadyInGroup">Ce contact est déjà dans ce groupe</string>
+    <string name="ContactAlreadyInGroup">Ce contact est déjà dans ce groupe</string>
     <string name="ForwardMessagesTo">Renvoyer les messages sélectionnés à <![CDATA[<b>]]>%1$s<![CDATA[</b>]]> ?</string>
     <string name="SendMessagesTo">Envoyer les messages à <![CDATA[<b>]]>%1$s<![CDATA[</b>]]> ?</string>
-    <string name="SendContactTo">Envoyer le contact à %1$s ?</string>
-    <string name="AreYouSureDeleteAndExit">Êtes-vous sûr de vouloir quitter le groupe ? Vous ne recevrez plus de message de ce groupe.</string>
     <string name="AreYouSureDeleteThisChat">Êtes-vous sûr de vouloir supprimer cette conversation ? La conversation n\'apparaîtra plus dans la liste des conversations, mais les messages resteront sur le serveur.</string>
     <string name="ShareYouLocationUnable">L\'application n\'a pas pu déterminer votre localisation actuelle</string>
     <string name="ShareYouLocationUnableManually">Choisir manuellement</string>
@@ -418,13 +409,10 @@
     <string name="DeaddropHint">Pour lancer une conversation, cliquez sur le bouton de réponse en forme de flèche.</string>
     <string name="NotYetImplemented">This function is not available or incomplete.</string>
     <string name="DefaultStatusText">Envoyé avec ma messagerie Delta Chat</string>
-    <string name="SubjectPrefix">Message instantanné</string>
-    <string name="SeachUser">Recherche un contact</string>
     <string name="Name" >Nom</string>
     <string name="EmailAddress">Adresse e-mail</string>
     <string name="CannotDeleteContact">Impossible de supprimer les contacts en cours d\'utilisation, bloquez-les à la place.</string>
     <string name="BadEmailAddress">Mauvaise adresse e-mail.</string>
-    <string name="ContactDeleted">Utilisateur supprimé.</string>
     <string name="ContactCreated">Utilisateur créé.</string>
     <string name="ViewProfile">Voir le profil</string>
     <string name="OneMomentPlease">Un moment…</string>
@@ -438,7 +426,6 @@
     <string name="AdvancedSettings">Paramètres avancés</string>
     <string name="AskResetNotifications" >Êtes-vous sûr de vouloir réinitialiser toutes les paramètres de notification et les sons de cette page et de vos contacts et groups ?</string>
     <string name="AttachFiles">Joindre des fichiers</string>
-    <string name="Chats">Conversations</string>
     <string name="ErrGroupNameEmpty">Merci de saisir un nom pour le groupe.</string>
     <string name="MsgNewGroupDraftHint">Écrivez un premier message pour permettre aux autres de répondre dans ce group.\n\n• C\'est bon si tout les membres n\'utilisent pas Delta Chat.\n\n• La livraison du premier message peut prendre un moment.</string>
     <string name="MsgNewGroupDraft">Bonjour, je viens juste de créer le groupe \"%1$s\" pour nous.</string>
@@ -455,6 +442,6 @@
     <string name="E2EEncryption">Chiffrement bout à bout</string>
     <string name="E2EManagePrivateKeys">Gérer les clefs privées</string>
     <string name="E2ECompareKeys">Comparer les clefs</string>
-    <string name="ResetUserKey">Reinitialiser les clefs de l\'utilisateur</string>
+    <string name="ResetContactsKey">Reinitialiser les clefs de l\'utilisateur</string>
     <string name="ForwardToTitle">Renvoyer à…</string>
 </resources>

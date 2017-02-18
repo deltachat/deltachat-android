@@ -291,7 +291,7 @@ public class PrivacySettingsActivity extends BaseFragment implements Notificatio
                 TextSettingsCell textCell = (TextSettingsCell) view;
                 if (i == blockedRow) {
                     String cntStr = String.format("%d", MrMailbox.getBlockedCount());
-                    textCell.setTextAndValue(LocaleController.getString("BlockedUsers", R.string.BlockedUsers), cntStr, true);
+                    textCell.setTextAndValue(ApplicationLoader.applicationContext.getString(R.string.BlockedContacts), cntStr, true);
                 } else if (i == passcodeRow) {
                     String val = UserConfig.passcodeHash.length() > 0? LocaleController.getString("Enabled", R.string.Enabled) : LocaleController.getString("Disabled", R.string.Disabled);
                     textCell.setTextAndValue(LocaleController.getString("Passcode", R.string.Passcode), val, true);

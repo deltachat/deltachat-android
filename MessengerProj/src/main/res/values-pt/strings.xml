@@ -61,14 +61,13 @@
     <string name="UnsupportedAttachment">Anexo não suportado</string>
     <string name="OpenInBrowser">ABRIR EM…</string>
     <string name="SendItems">Enviar %1$s</string>
-    <string name="OpenUrlAlert">Abrir URL em %1$s?</string>
     <string name="ClearRecentEmoji">Limpar emojis recentes?</string>
     <string name="AddShortcut">Adicionar atalho</string>
     <string name="ShortcutAdded">Atalho adicionado à tela de início</string>
     <!--notification-->
     <string name="Reply">Responder</string>
     <string name="ReplyToGroup">Responder para %1$s</string>
-    <string name="ReplyToUser">Responder para %1$s</string>
+    <string name="ReplyToContact">Responder para %1$s</string>
     <!--contacts view-->
     <string name="NoContacts">Ainda não há contatos</string>
     <string name="TodayAt">às</string>
@@ -84,8 +83,6 @@
     <string name="Notifications">Notificações</string>
     <string name="RemoveMember">Remover do grupo</string>
     <!--contact info view-->
-    <string name="ShareContact">Compartilhar</string>
-    <string name="AddContact">Adicionar</string>
     <string name="NewContactTitle">Adicionar contato</string>
     <string name="BlockContact">Bloquear</string>
     <string name="DeleteContact">Apagar</string>
@@ -119,7 +116,7 @@
     <string name="Reset">Limpar</string>
     <string name="ResetAllNotifications">Restaurar configurações</string>
     <string name="NotificationsAndSounds">Notificações e Sons</string>
-    <string name="BlockedUsers">Usuários bloqueados</string>
+    <string name="BlockedContacts">Usuários bloqueados</string>
     <string name="Default">Padrão</string>
     <string name="OnlyIfSilent">Somente no silencioso</string>
     <string name="ChatBackground">Papel de Parede</string>
@@ -271,7 +268,6 @@
     <string name="Retry">Tentar novamente</string>
     <string name="FromCamera">Câmera</string>
     <string name="FromGalley">Galeria</string>
-    <string name="DeletePhoto">Apagar foto</string>
     <string name="Set">Aplicar</string>
     <string name="OK">OK</string>
     <string name="Crop">CORTAR</string>
@@ -279,7 +275,6 @@
     <string name="AttachPhoto">Foto</string>
     <string name="AttachVideo">Vídeo</string>
     <string name="AttachGif">GIF</string>
-    <string name="AttachLocation">Localização</string>
     <string name="AttachContact">Contato</string>
     <string name="AttachDocument">Arquivo</string>
     <string name="AttachSticker">Sticker</string>
@@ -289,14 +284,10 @@
     <string name="Loading">Carregando…</string>
     <string name="NoPlayerInstalled">Você não possui um reprodutor de vídeo, instale um para continuar</string>
     <string name="NoHandleAppInstalled">Você não possui um aplicativo que suporte o tipo de arquivo \'%1$s\', por favor instale um para continuar</string>
-    <string name="AddToTheGroupTitle">Adcione %1$s ao chat %2$s?</string>
     <string name="AskAddMemberToGroup">Adicionar <![CDATA[<b>]]>%1$s<![CDATA[</b>]]> no grupo?</string>
-    <string name="AddToTheGroup">Adicionar %1$s ao grupo?</string>
-    <string name="UserAlreadyInGroup">Este usuário já está neste grupo</string>
+    <string name="ContactAlreadyInGroup">Este usuário já está neste grupo</string>
     <string name="ForwardMessagesTo">Encaminhar mensagem para <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>?</string>
     <string name="SendMessagesTo">Enviar mensagens para <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>?</string>
-    <string name="SendContactTo">Enviar contato para %1$s?</string>
-    <string name="AreYouSureDeleteAndExit">Você tem certeza que apagar e sair do grupo?</string>
     <string name="AreYouSureDeleteThisChat">Você tem certeza que deseja apagar esta conversa?</string>
     <string name="ShareYouLocationUnable">O aplicativo foi impossibilitado de determinar sua localização atual.</string>
     <string name="ShareYouLocationUnableManually">Escolher manualmente</string>
@@ -415,13 +406,10 @@
     <string name="DeaddropHint">Para conversar clique na seta.</string>
     <string name="NotYetImplemented">Esta função ainda não está disponível ou ainda não está completamente desenvolvida.</string>
     <string name="DefaultStatusText">Enviado pelo Delta Chat Messenger</string>
-    <string name="SubjectPrefix">Mensagem instantânea</string>
-    <string name="SeachUser">Busca</string>
     <string name="Name" >Nome</string>
     <string name="EmailAddress">Endereço de e-mail</string>
     <string name="CannotDeleteContact">Impossível deletar um usuário em uso! Bloqueie-o.</string>
     <string name="BadEmailAddress">Endereço inválido</string>
-    <string name="ContactDeleted">Usuário deletado.</string>
     <string name="ContactCreated">Usuário criado.</string>
     <string name="ViewProfile">Ver perfil</string>
     <string name="OneMomentPlease">Um momento, por favor…</string>
@@ -450,7 +438,7 @@
     <string name="E2EEncryption">Criptografia ponta-a-ponta</string>
     <string name="E2EManagePrivateKeys">Gerir chaves privadas</string>
     <string name="E2ECompareKeys">Comparar chaves</string>
-    <string name="ResetUserKey">Apagar chave do usuário</string>
+    <string name="ResetContactsKey">Apagar chave do usuário</string>
     <string name="ForwardToTitle">Selecione um Chat …</string>
 </resources>
 
