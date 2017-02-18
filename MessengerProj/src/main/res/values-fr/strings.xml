@@ -444,4 +444,5 @@
     <string name="E2ECompareKeys">Comparer les clefs</string>
     <string name="ResetContactsKey">Reinitialiser les clefs de l\'utilisateur</string>
     <string name="ForwardToTitle">Renvoyer à…</string>
+    <string name="ContactDeleted">Utilisateur supprimé.</string>
 </resources>

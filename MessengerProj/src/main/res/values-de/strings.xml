@@ -467,4 +467,5 @@
     <string name="ResetContactsKey">Schlüssel zurücksetzen</string>
     <string name="ForwardToTitle">Weiterleiten an …</string>
     <string name="SelectContactToAttach">Kontaktdaten versenden</string>
+    <string name="ContactDeleted">Kontakt gelöscht.</string>
 </resources>

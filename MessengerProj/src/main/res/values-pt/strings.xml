@@ -440,5 +440,6 @@
     <string name="E2ECompareKeys">Comparar chaves</string>
     <string name="ResetContactsKey">Apagar chave do usuário</string>
     <string name="ForwardToTitle">Selecione um Chat …</string>
+    <string name="ContactDeleted">Usuário deletado.</string>
 </resources>
 
