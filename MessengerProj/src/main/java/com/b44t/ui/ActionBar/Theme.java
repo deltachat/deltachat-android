@@ -303,7 +303,7 @@ public class Theme {
             attachButtonDrawables[ChatAttachAlert.ATTACH_BUTTON_IDX_MUSIC]       = context.getResources().getDrawable(R.drawable.attach_audio_states);
             attachButtonDrawables[ChatAttachAlert.ATTACH_BUTTON_IDX_FILE]        = context.getResources().getDrawable(R.drawable.attach_file_states);
             attachButtonDrawables[ChatAttachAlert.ATTACH_BUTTON_IDX_CONTACT]     = context.getResources().getDrawable(R.drawable.attach_contact_states);
-            attachButtonDrawables[ChatAttachAlert.ATTACH_BUTTON_IDX_LOCATION]    = context.getResources().getDrawable(R.drawable.attach_location_states);
+            attachButtonDrawables[ChatAttachAlert.ATTACH_BUTTON_IDX_EMPTY]       = context.getResources().getDrawable(R.drawable.attach_empty_states);
             attachButtonDrawables[ChatAttachAlert.ATTACH_BUTTON_IDX_SENDSELECTED]= context.getResources().getDrawable(R.drawable.attach_hide_states);
         }
     }

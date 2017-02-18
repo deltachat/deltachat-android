@@ -1141,7 +1141,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
             chatAttachAlert.setDelegate(new ChatAttachAlert.ChatAttachViewDelegate() {
                 @Override
                 public void didPressedButton(int button) {
-                    if (getParentActivity() == null) {
+                    if (getParentActivity() == null || button == ChatAttachAlert.ATTACH_BUTTON_IDX_EMPTY) {
                         return;
                     }
                     if (button == ChatAttachAlert.ATTACH_BUTTON_IDX_SENDSELECTED) {
@@ -1276,8 +1276,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
             } catch (Exception e) {
                 FileLog.e("messenger", e);
             }
-        } else if (which == ChatAttachAlert.ATTACH_BUTTON_IDX_LOCATION ) {
-            Toast.makeText(getParentActivity(), LocaleController.getString("NotYetImplemented", R.string.NotYetImplemented), Toast.LENGTH_SHORT).show();
         } else if (which == ChatAttachAlert.ATTACH_BUTTON_IDX_FILE ) {
             Toast.makeText(getParentActivity(), LocaleController.getString("NotYetImplemented", R.string.NotYetImplemented), Toast.LENGTH_SHORT).show();
             if (Build.VERSION.SDK_INT >= 23 && getParentActivity().checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {

@@ -2,6 +2,7 @@
 
 ## UNRELEASED
 
+* Send contacts and email addresses
 * Clickable email addresses
 * Update Polish translation
 * Fix tablet startup bug

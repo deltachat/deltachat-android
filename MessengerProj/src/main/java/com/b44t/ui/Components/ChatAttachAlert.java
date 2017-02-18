@@ -82,9 +82,9 @@ public class ChatAttachAlert extends BottomSheet implements NotificationCenter.N
 
     public final static int ATTACH_BUTTON_IDX_CAMERA       = 0;
     public final static int ATTACH_BUTTON_IDX_VIDEO        = 1;
-    public final static int ATTACH_BUTTON_IDX_LOCATION     = 2;
-    public final static int ATTACH_BUTTON_IDX_CONTACT      = 3;
-    public final static int ATTACH_BUTTON_IDX_GALLERY      = 4;
+    public final static int ATTACH_BUTTON_IDX_GALLERY      = 2;
+    public final static int ATTACH_BUTTON_IDX_EMPTY        = 3;
+    public final static int ATTACH_BUTTON_IDX_CONTACT      = 4;
     public final static int ATTACH_BUTTON_IDX_FILE         = 5;
     public final static int ATTACH_BUTTON_IDX_MUSIC        = 6;
     public final static int ATTACH_BUTTON_IDX_SENDSELECTED = 7;
@@ -425,7 +425,7 @@ public class ChatAttachAlert extends BottomSheet implements NotificationCenter.N
         labels[ATTACH_BUTTON_IDX_MUSIC]       = LocaleController.getString("AttachMusic", R.string.AttachMusic);
         labels[ATTACH_BUTTON_IDX_FILE]        = LocaleController.getString("ChatDocument", R.string.ChatDocument);
         labels[ATTACH_BUTTON_IDX_CONTACT]     = LocaleController.getString("AttachContact", R.string.AttachContact);
-        labels[ATTACH_BUTTON_IDX_LOCATION]    = LocaleController.getString("ChatLocation", R.string.ChatLocation);
+        labels[ATTACH_BUTTON_IDX_EMPTY]       = "";
         labels[ATTACH_BUTTON_IDX_SENDSELECTED]= "";
 
         for (int a = 0; a < ATTACH_BUTTON_COUNT; a++) {
