@@ -149,7 +149,7 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
         }
         else if( do_what == SELECT_CONTACT_TO_ATTACH )
         {
-            title = ApplicationLoader.applicationContext.getString(R.string.SelectContactToAttach);
+            title = ApplicationLoader.applicationContext.getString(R.string.SelectContact);
         }
 
         return true;

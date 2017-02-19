@@ -465,6 +465,6 @@
     <string name="E2ECompareKeys">Compare keys</string>
     <string name="ResetContactsKey">Reset contact\'s key</string>
     <string name="ForwardToTitle">Forward to …</string>
-    <string name="SelectContactToAttach">Select contact to attach</string>
+    <string name="SelectContact">Choose a contact</string>
     <string name="ContactDeleted">Contact deleted.</string>
 </resources>
