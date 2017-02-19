@@ -3217,7 +3217,6 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
             radialProgress.setBackground(null, false, false);
             return;
         }
-        boolean fromBot = currentMessageObject.messageOwner.params != null && currentMessageObject.messageOwner.params.containsKey("query_id");
 
         if (documentAttachType == DOCUMENT_ATTACH_TYPE_AUDIO || documentAttachType == DOCUMENT_ATTACH_TYPE_MUSIC) {
             /*if ((currentMessageObject.isOut() && currentMessageObject.isSending()) || (currentMessageObject.isSendError() && fromBot)) {
