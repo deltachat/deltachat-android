@@ -50,7 +50,21 @@ public class MessageObject {
     public CharSequence caption;
     public final MessageObject replyMessageObject = null;
 
-    public int type = 1000; // 4: unused-geo, 8: gif, 12: unused-contact, 13: sticker
+    public final static int MO_TYPE0_TEXT           = 0;
+    public final static int MO_TYPE1_PHOTO          = 1;
+    public final static int MO_TYPE2_VOICE          = 2;
+    public final static int MO_TYPE3_VIDEO          = 3;
+    public final static int MO_TYPE4_GEO            = 4; // we do not use this, instead a geo-message is normal text
+    public final static int MO_TYPE6                = 6;
+    public final static int MO_TYPE8_GIF            = 8;
+    public final static int MO_TYPE9_FILE           = 9;
+    public final static int MO_TYPE10_DATE_HEADLINE = 10;
+    public final static int MO_TYPE11               = 11;
+    public final static int MO_TYPE12_CONTACT       = 12; // we do not use this, instead a contact-message is normal text
+    public final static int MO_TYPE13_STICKER       = 13;
+    public final static int MO_TYPE14_MUSIC         = 14;
+    public final static int MO_TYPE1000_INIT_VAL    = 1000;
+    public int type = MO_TYPE1000_INIT_VAL;
 
     public int contentType; // one of ChatActivity.ROWTYPE_MESSAGE_CELL, .ROWTYPE_ACTION_CELL or .ROWTYPE_UNREAD_CELL
     public float audioProgress;
@@ -129,35 +143,35 @@ public class MessageObject {
         int oldType = type;
         if (messageOwner instanceof TLRPC.TL_message /*|| messageOwner instanceof TLRPC.TL_messageForwarded_old2*/) {
             if (isMediaEmpty()) {
-                type = 0;
+                type = MO_TYPE0_TEXT;
                 if (messageText == null || messageText.length() == 0) {
                     messageText = "Empty message";
                 }
             } else if (messageOwner.media instanceof TLRPC.TL_messageMediaPhoto) {
-                type = 1;
+                type = MO_TYPE1_PHOTO;
             /*} else if (messageOwner.media instanceof TLRPC.TL_messageMediaGeo || messageOwner.media instanceof TLRPC.TL_messageMediaVenue) {
-                type = 4;*/
+                type = MO_TYPE4_GEO;*/
             } else if (isVideo()) {
-                type = 3;
+                type = MO_TYPE3_VIDEO;
             } else if (isVoice()) {
-                type = 2;
+                type = MO_TYPE2_VOICE;
             } else if (isMusic()) {
-                type = 14;
+                type = MO_TYPE14_MUSIC;
             /*} else if (messageOwner.media instanceof TLRPC.TL_messageMediaContact) {
-                type = 12;*/
+                type = MO_TYPE12_CONTACT;*/
             /*} else if (messageOwner.media instanceof TLRPC.TL_messageMediaUnsupported) {
-                type = 0;*/
+                type = MO_TYPE0_TEXT;*/
             } else if (messageOwner.media instanceof TLRPC.TL_messageMediaDocument) {
                 if (messageOwner.media.document.mime_type != null) {
                     if (isGifDocument(messageOwner.media.document)) {
-                        type = 8;
+                        type = MO_TYPE8_GIF;
                     } else if (messageOwner.media.document.mime_type.equals("image/webp") && isSticker()) {
-                        type = 13;
+                        type = MO_TYPE13_STICKER;
                     } else {
-                        type = 9;
+                        type = MO_TYPE9_FILE;
                     }
                 } else {
-                    type = 9;
+                    type = MO_TYPE9_FILE;
                 }
             }
         } /*else if (messageOwner instanceof TLRPC.TL_messageService) {
@@ -442,7 +456,7 @@ public class MessageObject {
     }
 
     private void generateLayout() {
-        if (type != 0 || messageOwner.to_id == null || messageText == null || messageText.length() == 0) {
+        if (type != MO_TYPE0_TEXT || messageOwner.to_id == null || messageText == null || messageText.length() == 0) {
             return;
         }
 
@@ -819,34 +833,34 @@ public class MessageObject {
     }
 
     public boolean isSelectable() {
-        if (type == 6 || type == 10 || type == 11) {
+        if (type == MO_TYPE6 || type == MO_TYPE10_DATE_HEADLINE || type == MO_TYPE11) {
             return false;
         }
         return true;
     }
 
     public int getApproximateHeight() {
-        if (type == 0) {
+        if (type == MO_TYPE0_TEXT) {
             int height = textHeight /*+ (messageOwner.media instanceof TLRPC.TL_messageMediaWebPage && messageOwner.media.webpage instanceof TLRPC.TL_webPage ? AndroidUtilities.dp(100) : 0)*/;
             if (isReply()) {
                 height += AndroidUtilities.dp(42);
             }
             return height;
-        } else if (type == 2) {
+        } else if (type == MO_TYPE2_VOICE ) {
             return AndroidUtilities.dp(72);
         /*} else if (type == 12) -- was: contact {
             return AndroidUtilities.dp(71);*/
-        } else if (type == 9) {
+        } else if (type == MO_TYPE9_FILE) {
             return AndroidUtilities.dp(100);
-        } else if (type == 4) {
+        } else if (type == MO_TYPE4_GEO) {
             return AndroidUtilities.dp(114);
-        } else if (type == 14) {
+        } else if (type == MO_TYPE14_MUSIC) {
             return AndroidUtilities.dp(82);
-        } else if (type == 10) {
+        } else if (type == MO_TYPE10_DATE_HEADLINE) {
             return AndroidUtilities.dp(30);
-        } else if (type == 11) {
+        } else if (type == MO_TYPE11) {
             return AndroidUtilities.dp(50);
-        } else if (type == 13) {
+        } else if (type == MO_TYPE13_STICKER) {
             float maxHeight = AndroidUtilities.displaySize.y * 0.4f;
             float maxWidth;
             if (AndroidUtilities.isTablet()) {
@@ -911,8 +925,8 @@ public class MessageObject {
     }
 
     public boolean isSticker() {
-        if (type != 1000) {
-            return type == 13;
+        if (type != MO_TYPE1000_INIT_VAL) {
+            return type == MO_TYPE13_STICKER;
         }
         return isStickerMessage(messageOwner);
     }
@@ -943,7 +957,7 @@ public class MessageObject {
 
     public String getMusicTitle() {
         TLRPC.Document document;
-        if (type == 0) {
+        if (type == MO_TYPE0_TEXT) {
             document = messageOwner.media.webpage.document;
         } else {
             document = messageOwner.media.document;
@@ -969,7 +983,7 @@ public class MessageObject {
 
     public int getDuration() {
         TLRPC.Document document;
-        if (type == 0) {
+        if (type == MO_TYPE0_TEXT) {
             document = messageOwner.media.webpage.document;
         } else {
             document = messageOwner.media.document;
@@ -985,7 +999,7 @@ public class MessageObject {
 
     public String getMusicAuthor() {
         TLRPC.Document document;
-        if (type == 0) {
+        if (type == MO_TYPE0_TEXT) {
             document = messageOwner.media.webpage.document;
         } else {
             document = messageOwner.media.document;
@@ -1048,7 +1062,7 @@ public class MessageObject {
     public void checkMediaExistance() {
         attachPathExists = false;
         mediaExists = false;
-        if (type == 1) {
+        if (type == MO_TYPE1_PHOTO) {
             TLRPC.PhotoSize currentPhotoObject = FileLoader.getClosestPhotoSizeWithSize(photoThumbs, AndroidUtilities.getPhotoSize());
             if (currentPhotoObject != null) {
                 File f = FileLoader.getPathToMessage(messageOwner);
@@ -1056,7 +1070,7 @@ public class MessageObject {
                     mediaExists = f.exists();
                 }
             }
-        } else if (type == 8 || type == 3 || type == 9 || type == 2 || type == 14) {
+        } else if (type == MO_TYPE8_GIF || type == MO_TYPE3_VIDEO || type == MO_TYPE9_FILE || type == MO_TYPE2_VOICE || type == MO_TYPE14_MUSIC) {
             if (messageOwner.attachPath != null && messageOwner.attachPath.length() > 0) {
                 File f = new File(messageOwner.attachPath);
                 attachPathExists = f.exists();
@@ -1068,7 +1082,7 @@ public class MessageObject {
             TLRPC.Document document = getDocument();
             if (document != null) {
                 mediaExists = FileLoader.getPathToAttach(document).exists();
-            } else if (type == 0) {
+            } else if (type == MO_TYPE0_TEXT) {
                 TLRPC.PhotoSize currentPhotoObject = FileLoader.getClosestPhotoSizeWithSize(photoThumbs, AndroidUtilities.getPhotoSize());
                 if (currentPhotoObject == null) {
                     return;

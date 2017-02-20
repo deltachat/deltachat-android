@@ -131,7 +131,7 @@ public class ChatActionCell extends BaseCell {
             textY = AndroidUtilities.dp(7);
             textXLeft = (width - textLayout.getWidth()) / 2;
         }
-        setMeasuredDimension(width, textHeight + AndroidUtilities.dp(14 + (currentMessageObject.type == 11 ? 70 : 0)));
+        setMeasuredDimension(width, textHeight + AndroidUtilities.dp(14 + (currentMessageObject.type == MessageObject.MO_TYPE11 ? 70 : 0)));
     }
 
     private int findMaxWidthAroundLine(int line) {

@@ -2663,7 +2663,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         }
         AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
         builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), null);
-        if (message.type == 3) {
+        if (message.type == MessageObject.MO_TYPE3_VIDEO) {
             builder.setMessage(LocaleController.getString("NoPlayerInstalled", R.string.NoPlayerInstalled));
         } else {
             builder.setMessage(LocaleController.formatString("NoHandleAppInstalled", R.string.NoHandleAppInstalled, message.getDocument().mime_type));
@@ -2963,10 +2963,10 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     @Override
                     public void didPressedImage(ChatMessageCell cell) {
                         MessageObject message = cell.getMessageObject();
-                        if (Build.VERSION.SDK_INT >= 16 && message.isVideo() || message.type == 1 || message.type == 0 && !message.isWebpageDocument() || message.isGif()) {
+                        if (Build.VERSION.SDK_INT >= 16 && message.isVideo() || message.type == MessageObject.MO_TYPE1_PHOTO || message.type == MessageObject.MO_TYPE0_TEXT && !message.isWebpageDocument() || message.isGif()) {
                             PhotoViewer.getInstance().setParentActivity(getParentActivity());
-                            PhotoViewer.getInstance().openPhoto(message, message.type != 0 ? dialog_id : 0, 0, ChatActivity.this);
-                        } else if (message.type == 3) {
+                            PhotoViewer.getInstance().openPhoto(message, message.type != MessageObject.MO_TYPE0_TEXT ? dialog_id : 0, 0, ChatActivity.this);
+                        } else if (message.type == MessageObject.MO_TYPE3_VIDEO) {
                             try {
                                 File f = null;
                                 if (message.messageOwner.attachPath != null && message.messageOwner.attachPath.length() != 0) {
@@ -2981,7 +2981,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                             } catch (Exception e) {
                                 alertUserOpenError(message);
                             }
-                        } else if (message.type == 4) {
+                        } else if (message.type == MessageObject.MO_TYPE4_GEO) {
                             /* Telegram-FOSS: Try to fire off a geo: intent */
                             double lat = message.messageOwner.media.geo.lat;
                             double lon = message.messageOwner.media.geo._long;
@@ -2996,7 +2996,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                                     FileLog.e("messenger", e);
                                 }
                             }
-                        } else if (message.type == 9 || message.type == 0) {
+                        } else if (message.type == MessageObject.MO_TYPE9_FILE || message.type == MessageObject.MO_TYPE0_TEXT) {
                             try {
                                 AndroidUtilities.openForView(message, getParentActivity());
                             } catch (Exception e) {
@@ -3073,7 +3073,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                         dateMsg.date = (int)mrMsg.getTimestamp();
                         dateMsg.message = LocaleController.formatDateChat(dateMsg.date);
                         MessageObject msgDrawObj = new MessageObject(dateMsg, false);
-                        msgDrawObj.type = 10;
+                        msgDrawObj.type = MessageObject.MO_TYPE10_DATE_HEADLINE;
                         msgDrawObj.contentType = ROWTYPE_DATE_HEADLINE;
 
                         ChatActionCell actionCell = (ChatActionCell) view;

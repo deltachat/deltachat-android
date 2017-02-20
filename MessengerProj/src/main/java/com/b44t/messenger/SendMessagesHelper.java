@@ -514,7 +514,7 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
 
             newMsg.send_state = MessageObject.MESSAGE_SEND_STATE_SENDING;
             newMsgObj = new MessageObject(newMsg, true);
-            if (!newMsgObj.isForwarded() && newMsgObj.type == 3) {
+            if (!newMsgObj.isForwarded() && newMsgObj.type == MessageObject.MO_TYPE3_VIDEO) {
                 newMsgObj.attachPathExists = true;
             }
 

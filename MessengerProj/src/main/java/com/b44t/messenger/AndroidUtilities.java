@@ -958,7 +958,7 @@ public class AndroidUtilities {
                 String ext = fileName.substring(idx + 1);
                 realMimeType = myMime.getMimeTypeFromExtension(ext.toLowerCase());
                 if (realMimeType == null) {
-                    if (message.type == 9 || message.type == 0) {
+                    if (message.type == MessageObject.MO_TYPE9_FILE || message.type == MessageObject.MO_TYPE0_TEXT) {
                         realMimeType = message.getDocument().mime_type;
                     }
                     if (realMimeType == null || realMimeType.length() == 0) {
