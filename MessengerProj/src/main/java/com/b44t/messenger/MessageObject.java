@@ -92,47 +92,7 @@ public class MessageObject {
 
         messageOwner = message;
 
-        /*if (message.replyMessage != null) {
-            replyMessageObject = new MessageObject(message.replyMessage, users, chats, false);
-        }*/
-
-        if (!isMediaEmpty()) {
-            /*if (message.media instanceof TLRPC.TL_messageMediaPhoto) {
-                messageText = mContext.getString(R.string.AttachPhoto);
-            } else if (isVideo()) {
-                messageText = mContext.getString(R.string.AttachVideo);
-            } else if (isVoice()) {
-                messageText = mContext.getString(R.string.AttachAudio);
-            } else if (message.media instanceof TLRPC.TL_messageMediaGeo || message.media instanceof TLRPC.TL_messageMediaVenue) {
-                messageText = mContext.getString(R.string.AttachLocation);
-            } else if (message.media instanceof TLRPC.TL_messageMediaContact) {
-                messageText = mContext.getString(R.string.AttachContact);
-            } else if (message.media instanceof TLRPC.TL_messageMediaDocument) {
-                if (isSticker()) {
-                    String sch = getStrickerChar();
-                    if (sch != null && sch.length() > 0) {
-                        // @TODO: This needs plural handling.
-                        messageText = String.format("%s %s", sch, mContext.getString(R.string.AttachSticker));
-                    } else {
-                        messageText = mContext.getString(R.string.AttachSticker);
-                    }
-                } else if (isMusic()) {
-                    messageText = mContext.getString(R.string.AttachMusic);
-                } else if (isGif()) {
-                    messageText = mContext.getString(R.string.AttachGif);
-                } else {
-                    String name = FileLoader.getDocumentFileName(message.media.document);
-                    if (name != null && name.length() > 0) {
-                        messageText = name;
-                    } else {
-                        messageText = mContext.getString(R.string.AttachDocument);
-                    }
-                }
-            }*/
-            messageText = "<media message>"; // should not be displayed, use MrMsg.getSummarytext() instead
-        } else {
-            messageText = message.message;
-        }
+        messageText = message.message;
         if (messageText == null) {
             messageText = "";
         }
@@ -852,17 +812,6 @@ public class MessageObject {
                         return null;
                     }
                     return attribute.stickerset;
-                }
-            }
-        }
-        return null;
-    }
-
-    public String getStrickerChar() {
-        if (messageOwner.media != null && messageOwner.media.document != null) {
-            for (TLRPC.DocumentAttribute attribute : messageOwner.media.document.attributes) {
-                if (attribute instanceof TLRPC.TL_documentAttributeSticker) {
-                    return attribute.alt;
                 }
             }
         }

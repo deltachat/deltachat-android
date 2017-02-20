@@ -85,7 +85,6 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
         void didPressedCancelSendButton(ChatMessageCell cell);
         void didLongPressed(ChatMessageCell cell);
         void didPressedUrl(MessageObject messageObject, ClickableSpan url, boolean longPress);
-        //void needOpenWebView(String url, String title, String description, String originalUrl, int w, int h);
         void didPressedImage(ChatMessageCell cell);
         void didPressedShare(ChatMessageCell cell);
         void didPressedOther(ChatMessageCell cell);
@@ -117,7 +116,6 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
 
     private RadialProgress radialProgress;
     private ImageReceiver photoImage;
-    private AvatarDrawable contactAvatarDrawable;
 
     private boolean disallowLongPress;
 
@@ -357,7 +355,6 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
         replyImageReceiver = new ImageReceiver(this);
         TAG = MediaController.getInstance().generateObserverTag();
 
-        contactAvatarDrawable = new AvatarDrawable();
         photoImage = new ImageReceiver(this);
         photoImage.setDelegate(this);
         radialProgress = new RadialProgress(this);
@@ -1165,11 +1162,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
         } else if (documentAttachType == DOCUMENT_ATTACH_TYPE_GIF) {
             if (buttonState == -1) {
                 TLRPC.WebPage webPage = currentMessageObject.messageOwner.media.webpage;
-                /*if (Build.VERSION.SDK_INT >= 16 && webPage.embed_url != null && webPage.embed_url.length() != 0) {
-                    delegate.needOpenWebView(webPage.embed_url, webPage.site_name, webPage.description, webPage.url, webPage.embed_width, webPage.embed_height);
-                } else*/ {
-                    Browser.openUrl(getContext(), webPage.url);
-                }
+                Browser.openUrl(getContext(), webPage.url);
             }
         }
     }
