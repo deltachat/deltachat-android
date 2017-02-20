@@ -185,7 +185,6 @@ public class Theme {
 
     public static Drawable shareIconDrawable;
 
-    public static Drawable[] contactDrawable = new Drawable[2];
     public static Drawable[][] fileStatesDrawable = new Drawable[10][2];
     public static Drawable[][] photoStatesDrawables = new Drawable[13][2];
     public static Drawable[] docMenuDrawable = new Drawable[4];
@@ -266,9 +265,6 @@ public class Theme {
             docMenuDrawable[1] = context.getResources().getDrawable(R.drawable.doc_actions_g);
             docMenuDrawable[2] = context.getResources().getDrawable(R.drawable.doc_actions_b_s);
             docMenuDrawable[3] = context.getResources().getDrawable(R.drawable.video_actions);
-
-            contactDrawable[0] = context.getResources().getDrawable(R.drawable.contact_blue);
-            contactDrawable[1] = context.getResources().getDrawable(R.drawable.contact_green);
 
             shareIconDrawable = context.getResources().getDrawable(R.drawable.ic_ab_reply);
 

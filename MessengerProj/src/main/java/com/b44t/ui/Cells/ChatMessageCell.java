@@ -689,7 +689,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
     */
 
     private boolean checkOtherButtonMotionEvent(MotionEvent event) {
-        if (documentAttachType != DOCUMENT_ATTACH_TYPE_DOCUMENT && currentMessageObject.type != 12 && documentAttachType != DOCUMENT_ATTACH_TYPE_MUSIC && documentAttachType != DOCUMENT_ATTACH_TYPE_VIDEO && documentAttachType != DOCUMENT_ATTACH_TYPE_GIF && currentMessageObject.type != 8) {
+        if (documentAttachType != DOCUMENT_ATTACH_TYPE_DOCUMENT && documentAttachType != DOCUMENT_ATTACH_TYPE_MUSIC && documentAttachType != DOCUMENT_ATTACH_TYPE_VIDEO && documentAttachType != DOCUMENT_ATTACH_TYPE_GIF && currentMessageObject.type != 8) {
             return false;
         }
 
@@ -739,13 +739,13 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                         imagePressed = true;
                         result = true;
                     }
-                    if (currentMessageObject.type == 12) {
+                    /*if (currentMessageObject.type == 12) -- contact {
                         TLRPC.User user = MessagesController.getInstance().getUser(currentMessageObject.messageOwner.media.user_id);
                         if (user == null) {
                             imagePressed = false;
                             result = false;
                         }
-                    }
+                    }*/
                 }
             }
             if (imagePressed) {
@@ -2115,7 +2115,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                     photoImage.setImageBitmap((Drawable) null);
                     calcBackgroundWidth(maxWidth, timeMore, maxChildWidth);
                 }
-            } else if (messageObject.type == 12) {
+            /*} else if (messageObject.type == 12) -- was: contact {
                 drawName = false;
                 drawForwardedName = true;
                 drawPhotoImage = true;
@@ -2163,7 +2163,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                     if (timeLeft < timeWidth) {
                         totalHeight += AndroidUtilities.dp(8);
                     }
-                }
+                }*/
             } else if (messageObject.type == 2) {
                 drawForwardedName = true;
                 if (isTablet()) {
@@ -2237,44 +2237,6 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                             }
                         }
                     }
-                } else if (messageObject.type == 4) { //geo
-                    /*
-                    double lat = messageObject.messageOwner.media.geo.lat;
-                    double lon = messageObject.messageOwner.media.geo._long;
-
-                    if (messageObject.messageOwner.media.title != null && messageObject.messageOwner.media.title.length() > 0) {
-                        if (isTablet()) {
-                            backgroundWidth = Math.min(getMinTabletSide() - dp(isChat && messageObject.isFromUser() && !messageObject.isOutOwner() ? 102 : 50), dp(270));
-                        } else {
-                            backgroundWidth = Math.min(displaySize.x - dp(isChat && messageObject.isFromUser() && !messageObject.isOutOwner() ? 102 : 50), dp(270));
-                        }
-                        if (checkNeedDrawShareButton(messageObject)) {
-                            backgroundWidth -= dp(20);
-                        }
-                        int maxWidth = backgroundWidth - dp(86 + 37);
-
-                        docTitleLayout = StaticLayoutEx.createStaticLayout(messageObject.messageOwner.media.title, locationTitlePaint, maxWidth, Layout.Alignment.ALIGN_NORMAL, 1.0f, 0.0f, false, TextUtils.TruncateAt.END, maxWidth, 2);
-                        int lineCount = docTitleLayout.getLineCount();
-                        if (messageObject.messageOwner.media.address != null && messageObject.messageOwner.media.address.length() > 0) {
-                            infoLayout = StaticLayoutEx.createStaticLayout(messageObject.messageOwner.media.address, locationAddressPaint, maxWidth, Layout.Alignment.ALIGN_NORMAL, 1.0f, 0.0f, false, TextUtils.TruncateAt.END, maxWidth, Math.min(3, 3 - lineCount));
-                        } else {
-                            infoLayout = null;
-                        }
-
-                        mediaBackground = false;
-                        availableTimeWidth = maxWidth;
-                        photoWidth = dp(86);
-                        photoHeight = dp(86);
-                        currentUrl = String.format(Locale.US, "https://maps.googleapis.com/maps/api/staticmap?center=%f,%f&zoom=15&size=72x72&maptype=roadmap&scale=%d&markers=color:red|size:mid|%f,%f&sensor=false", lat, lon, Math.min(2, (int) Math.ceil(density)), lat, lon);
-                    } else {
-                        availableTimeWidth = dp(200 - 14);
-                        photoWidth = dp(200);
-                        photoHeight = dp(100);
-                        backgroundWidth = photoWidth + dp(12);
-                        currentUrl = String.format(Locale.US, "https://maps.googleapis.com/maps/api/staticmap?center=%f,%f&zoom=15&size=200x100&maptype=roadmap&scale=%d&markers=color:red|size:mid|%f,%f&sensor=false", lat, lon, Math.min(2, (int) Math.ceil(density)), lat, lon);
-                    }
-                    photoImage.setImage(currentUrl, null, messageObject.isOutOwner() ? Theme.geoOutDrawable : Theme.geoInDrawable, null, 0);
-                    */
                 } else if (messageObject.type == 13) { //webp
                     drawBackground = false;
                     for (int a = 0; a < messageObject.messageOwner.media.document.attributes.size(); a++) {

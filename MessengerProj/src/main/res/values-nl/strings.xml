@@ -44,7 +44,6 @@
     <string name="GalleryInfo">Om bestanden ongecomprimeerd te versturen</string>
     <!--chat view-->
     <string name="ChatGallery">Galerij</string>
-    <string name="ChatLocation">Locatie</string>
     <string name="ChatVideo">Video</string>
     <string name="ChatDocument">Bestand</string>
     <string name="ChatCamera">Camera</string>
@@ -289,8 +288,6 @@
     <string name="ForwardMessagesTo">Berichten doorsturen naar <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>?</string>
     <string name="SendMessagesTo">Berichten naar <![CDATA[<b>]]>%1$s<![CDATA[</b>]]> versturen?</string>
     <string name="AreYouSureDeleteThisChat">Chat echt verwijderen?</string>
-    <string name="ShareYouLocationUnable">Huidige locatie kon niet worden vastgesteld</string>
-    <string name="ShareYouLocationUnableManually">Handmatig kiezen</string>
     <string name="AreYouSureBlockContact">Weet je zeker dat je deze persoon wilt blokkeren?</string>
     <string name="AreYouSureDeleteContact">Contact echt verwijderen?</string>
     <string name="RaiseToSpeakAlert">Wil je \"Houd bij oor\" inschakelen voor spraakberichten?</string>

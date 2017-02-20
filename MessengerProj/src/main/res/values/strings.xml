@@ -47,7 +47,6 @@
     <string name="GalleryInfo">To send images without compression</string>
     <!--chat view-->
     <string name="ChatGallery">Gallery</string>
-    <string name="ChatLocation">Location</string>
     <string name="ChatVideo">Video</string>
     <string name="ChatDocument">File</string>
     <string name="ChatCamera">Camera</string>
@@ -291,8 +290,6 @@
     <string name="ForwardMessagesTo">Forward selected messages to <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>?</string>
     <string name="SendMessagesTo">Send messages to <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>?</string>
     <string name="AreYouSureDeleteThisChat">Delete this chat? The chat will no longer be shown in the chat list, the messages will stay on the server.</string>
-    <string name="ShareYouLocationUnable">App was unable to determine your current location</string>
-    <string name="ShareYouLocationUnableManually">Choose manually</string>
     <string name="AreYouSureBlockContact">Are you sure you want to block this contact?</string>
     <string name="AreYouSureDeleteContact">Are you sure you want to delete this contact?</string>
     <string name="RaiseToSpeakAlert">Would you like to enable "Raise to speak" for voice messages?</string>

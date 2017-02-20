@@ -1327,15 +1327,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
             fragment.setDelegate(new ContactsActivity.ContactsActivityDelegate() {
                 @Override
                 public void didSelectContact(final int selected_user_id) {
-                    MrContact contact = MrMailbox.getContact(selected_user_id);
-                    String msg = contact.getName();
-                    if(msg.isEmpty()) {
-                        msg = contact.getAddr();
-                    }
-                    else {
-                        msg += ": " + contact.getAddr();
-                    }
-                    SendMessagesHelper.getInstance().sendMessageText(msg, dialog_id, null);
+                    SendMessagesHelper.getInstance().sendMessageContact(selected_user_id, (int)dialog_id);
                 }
             });
             presentFragment(fragment);

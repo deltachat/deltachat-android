@@ -44,7 +44,6 @@
     <string name="GalleryInfo">Para enviar imágenes sin compresión</string>
     <!--chat view-->
     <string name="ChatGallery">Galería</string>
-    <string name="ChatLocation">Ubicación</string>
     <string name="ChatVideo">Vídeo</string>
     <string name="ChatDocument">Archivo</string>
     <string name="ChatCamera">Cámara</string>
@@ -289,8 +288,6 @@
     <string name="ForwardMessagesTo">¿Reenviar mensajes a <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>?</string>
     <string name="SendMessagesTo">¿Enviar mensajes a <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>?</string>
     <string name="AreYouSureDeleteThisChat">¿Quieres eliminar este chat?</string>
-    <string name="ShareYouLocationUnable">La aplicación no pudo determinar tu ubicación actual</string>
-    <string name="ShareYouLocationUnableManually">Elegir manualmente</string>
     <string name="AreYouSureBlockContact">¿Quieres bloquear este contacto?</string>
     <string name="AreYouSureDeleteContact">¿Quieres eliminar este contacto?</string>
     <string name="RaiseToSpeakAlert">¿Quieres habilitar “Elevar para hablar” para mensajes de voz?</string>

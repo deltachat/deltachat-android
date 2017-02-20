@@ -47,7 +47,6 @@
     <string name="GalleryInfo">Wyślij obrazki bez kompresji</string>
     <!--chat view-->
     <string name="ChatGallery">Galeria</string>
-    <string name="ChatLocation">Lokalizacja</string>
     <string name="ChatVideo">Wideo</string>
     <string name="ChatDocument">Plik</string>
     <string name="ChatCamera">Kamera</string>
@@ -291,8 +290,6 @@
     <string name="ForwardMessagesTo">Przekazać wybrane wiadomości do <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>?</string>
     <string name="SendMessagesTo">Wysłać wiadomość do <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>?</string>
     <string name="AreYouSureDeleteThisChat">Usunąć ten czat? Czat nie będzie widoczny na liście czatów, wiadomości pozostaną na serwerze.</string>
-    <string name="ShareYouLocationUnable">Aplikacja nie była w stanie określić twojej aktualnej lokalizacji</string>
-    <string name="ShareYouLocationUnableManually">Wybierz ręcznie</string>
     <string name="AreYouSureBlockContact">Czy na pewno chcesz zablokować ten kontakt?</string>
     <string name="AreYouSureDeleteContact">Czy na pewno chcesz usunąć ten kontakt?</string>
     <string name="RaiseToSpeakAlert">Czy chcesz włączyć funkcję „Odbierz i mów / słuchaj” dla wiadomości głosowych?</string>

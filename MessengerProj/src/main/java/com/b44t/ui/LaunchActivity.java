@@ -27,10 +27,10 @@ import android.Manifest;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.Application;
 import android.content.ContentResolver;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.graphics.Point;
@@ -60,8 +60,6 @@ import android.widget.Toast;
 import com.b44t.messenger.AndroidUtilities;
 import com.b44t.messenger.ContactsController;
 import com.b44t.messenger.ImageLoader;
-import com.b44t.messenger.MessageObject;
-import com.b44t.messenger.MessagesController;
 import com.b44t.messenger.MrChat;
 import com.b44t.messenger.MrMailbox;
 import com.b44t.messenger.SendMessagesHelper;
@@ -86,23 +84,19 @@ import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+
 
 public class LaunchActivity extends Activity implements ActionBarLayout.ActionBarLayoutDelegate, NotificationCenter.NotificationCenterDelegate, DialogsActivity.DialogsActivityDelegate {
 
     private boolean finished;
     private String videoPath;
     private String sendingText;
-    private TLRPC.TL_messageMediaGeo sendingLocation;
     private ArrayList<Uri> photoPathsArray;
     private ArrayList<String> documentsPathsArray;
     private ArrayList<Uri> documentsUrisArray;
     private String documentsMimeType;
     private ArrayList<String> documentsOriginalPathsArray;
-    private ArrayList<TLRPC.User> contactsToSend;
+    private ArrayList<Integer> contactsToSend;
     private int currentConnectionState;
     private static ArrayList<BaseFragment> mainFragmentsStack = new ArrayList<>();
     private static ArrayList<BaseFragment> layerFragmentsStack = new ArrayList<>();
@@ -374,7 +368,6 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.mainUserInfoChanged);
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.closeOtherAppActivities);
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.didUpdatedConnectionState);
-        NotificationCenter.getInstance().addObserver(this, NotificationCenter.wasUnableToFindCurrentLocation);
 
         if (actionBarLayout.fragmentsStack.isEmpty()) {
             if ( MrMailbox.isConfigured()==0 ) {
@@ -516,7 +509,7 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
 
     private class VcardData {
         String name;
-        ArrayList<String> phones = new ArrayList<>();
+        ArrayList<String> emails = new ArrayList<>();
     }
 
     private boolean handleIntent(Intent intent, boolean isNew, boolean restore, boolean fromPassword) {
@@ -530,9 +523,7 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
         } else {
             boolean pushOpened = false;
 
-            //Integer push_user_id = 0;
             Integer push_chat_id = 0;
-            //Integer push_enc_id = 0;
             Integer open_settings = 0;
             long dialogId = intent != null && intent.getExtras() != null ? intent.getExtras().getLong("dialogId", 0) : 0;
             boolean showDialogsList = false;
@@ -610,10 +601,10 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                                                     }
                                                 }
                                             }
-                                        } else if (args[0].startsWith("TEL")) {
-                                            String phone = "";//PhoneFormat.stripExceptNumbers(args[1], true);
-                                            if (phone.length() > 0) {
-                                                currentData.phones.add(phone);
+                                        } else if (args[0].startsWith("EMAIL")) {
+                                            String email = args[1];
+                                            if (email.length() > 0) {
+                                                currentData.emails.add(email);
                                             }
                                         }
                                     }
@@ -625,21 +616,19 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                                     }
                                     for (int a = 0; a < vcardDatas.size(); a++) {
                                         VcardData vcardData = vcardDatas.get(a);
-                                        if (vcardData.name != null && !vcardData.phones.isEmpty()) {
+                                        if (vcardData.name != null && !vcardData.emails.isEmpty()) {
                                             if (contactsToSend == null) {
                                                 contactsToSend = new ArrayList<>();
                                             }
 
-                                            for (int b = 0; b < vcardData.phones.size(); b++) {
-                                                String phone = vcardData.phones.get(b);
-                                                TLRPC.User user = new TLRPC.TL_userContact_old2();
-                                                user.phone = phone;
-                                                user.first_name = vcardData.name;
-                                                user.last_name = "";
-                                                user.id = 0;
-                                                contactsToSend.add(user);
+                                            for (int b = 0; b < vcardData.emails.size(); b++) {
+                                                int contact_to_send_id = MrMailbox.createContact(vcardData.name, vcardData.emails.get(b));
+                                                contactsToSend.add(contact_to_send_id);
                                             }
                                         }
+                                    }
+                                    if( contactsToSend==null ) {
+                                        Toast.makeText(this, ApplicationLoader.applicationContext.getString(R.string.BadEmailAddress), Toast.LENGTH_SHORT).show();;
                                     }
                                 } else {
                                     error = true;
@@ -663,14 +652,7 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                             }
                             else {
                                 String subject = intent.getStringExtra(Intent.EXTRA_SUBJECT);
-                                Pattern r = Pattern.compile("geo: ?(-?\\d+\\.\\d+),(-?\\d+\\.\\d+)(,|\\?z=)(-?\\d+)");
-                                Matcher m = r.matcher(text);
-                                if (m.find()) {
-                                    sendingLocation = new TLRPC.TL_messageMediaGeo();
-                                    sendingLocation.geo = new TLRPC.TL_geoPoint();
-                                    sendingLocation.geo.lat = Double.parseDouble(m.group(1));
-                                    sendingLocation.geo._long = Double.parseDouble(m.group(2));
-                                } else if (text != null && text.length() != 0) {
+                                if (text != null && text.length() != 0) {
                                     if ((text.startsWith("http://") || text.startsWith("https://")) && subject != null && subject.length() != 0) {
                                         text = subject + "\n" + text;
                                     }
@@ -722,7 +704,7 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                                             }
                                         }
                                     }
-                                } else if (sendingText == null && sendingLocation == null) {
+                                } else if (sendingText == null) {
                                     error = true;
                                 }
                             }
@@ -996,18 +978,14 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                 }
                 actionBarLayout.presentFragment(new AudioPlayerActivity(), false, true, true);
                 pushOpened = true;
-            } else if (videoPath != null || photoPathsArray != null || sendingText != null || sendingLocation != null || documentsPathsArray != null || contactsToSend != null || documentsUrisArray != null) {
+            } else if (videoPath != null || photoPathsArray != null || sendingText != null || documentsPathsArray != null || contactsToSend != null || documentsUrisArray != null) {
                 if (!AndroidUtilities.isTablet()) {
                     NotificationCenter.getInstance().postNotificationName(NotificationCenter.closeChats);
                 }
                 if (dialogId == 0) {
                     Bundle args = new Bundle();
                     args.putBoolean("onlySelect", true);
-                    if (contactsToSend != null) {
-                        args.putString("selectAlertString", LocaleController.getString("SendMessagesTo", R.string.SendMessagesTo));
-                    } else {
-                        args.putString("selectAlertString", LocaleController.getString("SendMessagesTo", R.string.SendMessagesTo));
-                    }
+                    args.putString("selectAlertString", LocaleController.getString("SendMessagesTo", R.string.SendMessagesTo));
                     DialogsActivity fragment = new DialogsActivity(args);
                     fragment.setDelegate(this);
                     boolean removeLast;
@@ -1137,8 +1115,8 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                     SendMessagesHelper.prepareSendingDocuments(documentsPathsArray, documentsOriginalPathsArray, documentsUrisArray, documentsMimeType, dialog_id, null);
                 }
                 if (contactsToSend != null && !contactsToSend.isEmpty()) {
-                    for (TLRPC.User user : contactsToSend) {
-                        SendMessagesHelper.getInstance().sendMessageContact(user, dialog_id, null, null);
+                    for (int user_id : contactsToSend) {
+                        SendMessagesHelper.getInstance().sendMessageContact(user_id, (int)dialog_id);
                     }
                 }
             }
@@ -1146,7 +1124,6 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
             photoPathsArray = null;
             videoPath = null;
             sendingText = null;
-            sendingLocation = null;
             documentsPathsArray = null;
             documentsOriginalPathsArray = null;
             contactsToSend = null;
@@ -1165,7 +1142,6 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
         NotificationCenter.getInstance().removeObserver(this, NotificationCenter.mainUserInfoChanged);
         NotificationCenter.getInstance().removeObserver(this, NotificationCenter.closeOtherAppActivities);
         NotificationCenter.getInstance().removeObserver(this, NotificationCenter.didUpdatedConnectionState);
-        NotificationCenter.getInstance().removeObserver(this, NotificationCenter.wasUnableToFindCurrentLocation);
     }
 
     public void presentFragment(BaseFragment fragment) {
@@ -1357,10 +1333,6 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
             builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
             builder.show();
             return;
-        } else if (requestCode == 2) {
-            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                NotificationCenter.getInstance().postNotificationName(NotificationCenter.locationPermissionGranted);
-            }
         }
         if (actionBarLayout.fragmentsStack.size() != 0) {
             BaseFragment fragment = actionBarLayout.fragmentsStack.get(actionBarLayout.fragmentsStack.size() - 1);
@@ -1484,41 +1456,6 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
             }
         } else if (id == NotificationCenter.mainUserInfoChanged) {
             drawerLayoutAdapter.notifyDataSetChanged();
-        } else if (id == NotificationCenter.wasUnableToFindCurrentLocation) {
-            final HashMap<String, MessageObject> waitingForLocation = (HashMap<String, MessageObject>) args[0];
-            AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), null);
-            builder.setNegativeButton(LocaleController.getString("ShareYouLocationUnableManually", R.string.ShareYouLocationUnableManually), new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialogInterface, int i) {
-                    /*Telegram FOSS: manual Location selection not available */
-                    Toast.makeText(getApplicationContext(),"Disabled for now.", Toast.LENGTH_LONG).show();
-                    /*
-                    if (mainFragmentsStack.isEmpty()) {
-                        return;
-                    }
-                    BaseFragment lastFragment = mainFragmentsStack.get(mainFragmentsStack.size() - 1);
-                    if (!AndroidUtilities.isGoogleMapsInstalled(lastFragment)) {
-                        return;
-                    }
-                    LocationActivity fragment = new LocationActivity();
-                    fragment.setDelegate(new LocationActivity.LocationActivityDelegate() {
-                        @Override
-                        public void didSelectLocation(TLRPC.MessageMedia location) {
-                            for (HashMap.Entry<String, MessageObject> entry : waitingForLocation.entrySet()) {
-                                MessageObject messageObject = entry.getValue();
-                                SendMessagesHelper.getInstance().sendMessage(location, messageObject.getDialogId(), messageObject, null, null);
-                            }
-                        }
-                    });
-                    presentFragment(fragment);
-                    */
-                }
-            });
-            builder.setMessage(LocaleController.getString("ShareYouLocationUnable", R.string.ShareYouLocationUnable));
-            if (!mainFragmentsStack.isEmpty()) {
-                mainFragmentsStack.get(mainFragmentsStack.size() - 1).showDialog(builder.create());
-            }
         }
     }
 

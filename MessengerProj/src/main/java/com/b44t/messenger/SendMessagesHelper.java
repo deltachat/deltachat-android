@@ -44,155 +44,6 @@ import java.util.HashMap;
 
 public class SendMessagesHelper implements NotificationCenter.NotificationCenterDelegate {
 
-    //private TLRPC.ChatFull currentChatInfo = null;
-    //private HashMap<String, ArrayList<DelayedMessage>> delayedMessages = new HashMap<>();
-    //private HashMap<Integer, MessageObject> unsentMessages = new HashMap<>();
-    //private HashMap<Integer, TLRPC.Message> sendingMessages = new HashMap<>();
-    //private HashMap<String, MessageObject> waitingForLocation = new HashMap<>();
-    //private HashMap<String, MessageObject> waitingForCallback = new HashMap<>();
-
-    /*
-    private LocationProvider locationProvider = new LocationProvider(new LocationProvider.LocationProviderDelegate() {
-        @Override
-        public void onLocationAcquired(Location location) {
-            sendLocation(location);
-            waitingForLocation.clear();
-        }
-
-        @Override
-        public void onUnableLocationAcquire() {
-            HashMap<String, MessageObject> waitingForLocationCopy = new HashMap<>(waitingForLocation);
-            NotificationCenter.getInstance().postNotificationName(NotificationCenter.wasUnableToFindCurrentLocation, waitingForLocationCopy);
-            waitingForLocation.clear();
-        }
-    });
-
-    public static class LocationProvider {
-
-        public interface LocationProviderDelegate {
-            void onLocationAcquired(Location location);
-            void onUnableLocationAcquire();
-        }
-
-        private LocationProviderDelegate delegate;
-        private LocationManager locationManager;
-        private GpsLocationListener gpsLocationListener = new GpsLocationListener();
-        private GpsLocationListener networkLocationListener = new GpsLocationListener();
-        private Runnable locationQueryCancelRunnable;
-        private Location lastKnownLocation;
-
-        private class GpsLocationListener implements LocationListener {
-
-            @Override
-            public void onLocationChanged(Location location) {
-                if (location == null || locationQueryCancelRunnable == null) {
-                    return;
-                }
-                FileLog.e("messenger", "found location " + location);
-                lastKnownLocation = location;
-                if (location.getAccuracy() < 100) {
-                    if (delegate != null) {
-                        delegate.onLocationAcquired(location);
-                    }
-                    if (locationQueryCancelRunnable != null) {
-                        AndroidUtilities.cancelRunOnUIThread(locationQueryCancelRunnable);
-                    }
-                    cleanup();
-                }
-            }
-
-            @Override
-            public void onStatusChanged(String provider, int status, Bundle extras) {
-
-            }
-
-            @Override
-            public void onProviderEnabled(String provider) {
-
-            }
-
-            @Override
-            public void onProviderDisabled(String provider) {
-
-            }
-        }
-
-        public LocationProvider() {
-
-        }
-
-        public LocationProvider(LocationProviderDelegate locationProviderDelegate) {
-            delegate = locationProviderDelegate;
-        }
-
-        public void setDelegate(LocationProviderDelegate locationProviderDelegate) {
-            delegate = locationProviderDelegate;
-        }
-
-        private void cleanup() {
-            locationManager.removeUpdates(gpsLocationListener);
-            locationManager.removeUpdates(networkLocationListener);
-            lastKnownLocation = null;
-            locationQueryCancelRunnable = null;
-        }
-
-        public void start() {
-            if (locationManager == null) {
-                locationManager = (LocationManager) ApplicationLoader.applicationContext.getSystemService(Context.LOCATION_SERVICE);
-            }
-            try {
-                locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1, 0, gpsLocationListener);
-            } catch (Exception e) {
-                FileLog.e("messenger", e);
-            }
-            try {
-                locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 1, 0, networkLocationListener);
-            } catch (Exception e) {
-                FileLog.e("messenger", e);
-            }
-            try {
-                lastKnownLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-                if (lastKnownLocation == null) {
-                    lastKnownLocation = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
-                }
-            } catch (Exception e) {
-                FileLog.e("messenger", e);
-            }
-            if (locationQueryCancelRunnable != null) {
-                AndroidUtilities.cancelRunOnUIThread(locationQueryCancelRunnable);
-            }
-            locationQueryCancelRunnable = new Runnable() {
-                @Override
-                public void run() {
-                    if (locationQueryCancelRunnable != this) {
-                        return;
-                    }
-                    if (delegate != null) {
-                        if (lastKnownLocation != null) {
-                            delegate.onLocationAcquired(lastKnownLocation);
-                        } else {
-                            delegate.onUnableLocationAcquire();
-                        }
-                    }
-                    cleanup();
-                }
-            };
-            AndroidUtilities.runOnUIThread(locationQueryCancelRunnable, 5000);
-        }
-
-        public void stop() {
-            if (locationManager == null) {
-                return;
-            }
-            if (locationQueryCancelRunnable != null) {
-                AndroidUtilities.cancelRunOnUIThread(locationQueryCancelRunnable);
-
-            }
-            cleanup();
-        }
-    }
-    */
-
     private static volatile SendMessagesHelper Instance = null;
 
     public static SendMessagesHelper getInstance() {
@@ -224,10 +75,8 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
         //delayedMessages.clear();
         //unsentMessages.clear();
         //sendingMessages.clear();
-        //waitingForLocation.clear();
         //waitingForCallback.clear();
         //currentChatInfo = null;
-        //locationProvider.stop();
     }
 
     /*
@@ -549,26 +398,33 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
         SendMessagesHelper.getInstance().sendMessageDocument((TLRPC.TL_document) document, null, null, peer, replyingMessageObject, null);
     }
 
-    public void sendMessageContact(TLRPC.User user, long peer, MessageObject reply_to_msg, HashMap<String, String> params) {
-        sendMessage__(null, null, null, user, null, peer, null, params);
+    public void sendMessageContact(int contact_id, int dialog_id) {
+        MrContact contact = MrMailbox.getContact(contact_id);
+        String msg = contact.getName();
+        if(msg.isEmpty()) {
+            msg = contact.getAddr();
+        }
+        else {
+            msg += ": " + contact.getAddr();
+        }
+        SendMessagesHelper.getInstance().sendMessageText(msg, dialog_id, null);
     }
 
     public void sendMessageDocument(TLRPC.TL_document document, VideoEditedInfo videoEditedInfo, String path, long peer, MessageObject reply_to_msg, HashMap<String, String> params) {
-        sendMessage__(null, null, videoEditedInfo, null, document, peer, path, params);
+        sendMessage__(null, null, videoEditedInfo, document, peer, path, params);
     }
 
     public void sendMessageText(String message, long peer, HashMap<String, String> params) {
-        sendMessage__(message, null, null, null, null, peer, null, params);
+        sendMessage__(message, null, null, null, peer, null, params);
     }
 
     public void sendMessagePhoto(TLRPC.TL_photo photo, String path, long peer, MessageObject reply_to_msg, HashMap<String, String> params) {
-        sendMessage__(null, photo, null, null, null, peer, path, params);
+        sendMessage__(null, photo, null, null, peer, path, params);
     }
 
     private void sendMessage__(String message,
                              TLRPC.TL_photo photo,
                              VideoEditedInfo videoEditedInfo,
-                             TLRPC.User user,
                              TLRPC.TL_document document,
                              long peer,
                              String path,
@@ -607,21 +463,6 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
                         TLRPC.FileLocation location1 = photo.sizes.get(photo.sizes.size() - 1).location;
                         newMsg.attachPath = FileLoader.getPathToAttach(location1, true).toString();
                     }
-                } else if (user != null) {
-                    newMsg = new TLRPC.TL_message();
-                    newMsg.media = new TLRPC.TL_messageMediaContact();
-                    newMsg.media.phone_number = user.phone;
-                    newMsg.media.first_name = user.first_name;
-                    newMsg.media.last_name = user.last_name;
-                    newMsg.media.user_id = user.id;
-                    if (newMsg.media.first_name == null) {
-                        user.first_name = newMsg.media.first_name = "";
-                    }
-                    if (newMsg.media.last_name == null) {
-                        user.last_name = newMsg.media.last_name = "";
-                    }
-                    newMsg.message = "";
-                    type = 6;
                 } else if (document != null) {
                     // AUDIO, VIDEO etc.
                     newMsg = new TLRPC.TL_message();
@@ -727,11 +568,6 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
                         media.id.access_hash = document.access_hash;
                         inputMedia = media;
                     }
-                } else if (type == 6) {
-                    inputMedia = new TLRPC.TL_inputMediaContact();
-                    inputMedia.phone_number = user.phone;
-                    inputMedia.first_name = user.first_name;
-                    inputMedia.last_name = user.last_name;
                 } else if (type == 7 ) {
                     if (document.access_hash == 0) {
                         if ( originalPath != null && originalPath.length() > 0 && originalPath.startsWith("http") && params != null) {

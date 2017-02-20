@@ -109,19 +109,10 @@ public class TLRPC {
 	public static class TL_messageMediaEmpty extends MessageMedia {
 	}
 
-	public static class TL_messageMediaVenue extends MessageMedia {
-	}
-
 	public static class TL_messageMediaDocument extends MessageMedia {
 	}
 
-	public static class TL_messageMediaContact extends MessageMedia {
-	}
-
 	public static class TL_messageMediaPhoto extends MessageMedia {
-	}
-
-	public static class TL_messageMediaGeo extends MessageMedia {
 	}
 
 	public static class PeerNotifySettings extends TLObject {
@@ -137,14 +128,6 @@ public class TLRPC {
 	public static class TL_messages_stickerSet extends TLObject {
 		public StickerSet set;
 		public ArrayList<Document> documents = new ArrayList<>();
-	}
-
-	public static class InputGeoPoint extends TLObject {
-		public double lat;
-		public double _long;
-	}
-
-	public static class TL_inputGeoPoint extends InputGeoPoint {
 	}
 
 	public static class Audio extends TLObject {
@@ -206,9 +189,6 @@ public class TLRPC {
 		public boolean min;
     }
 
-	public static class TL_userContact_old2 extends User {
-	}
-
 	public static class Video extends TLObject {
 		public long id;
 		public int user_id;
@@ -259,19 +239,11 @@ public class TLRPC {
 		public String mime_type;
 		public ArrayList<DocumentAttribute> attributes = new ArrayList<>();
 		public String caption;
-		public InputGeoPoint geo_point;
 		public String title;
 		public String address;
 		public String provider;
-		public String venue_id;
-		public String phone_number;
-		public String first_name;
-		public String last_name;
 		public String url;
 		public String q;
-	}
-
-	public static class TL_inputMediaContact extends InputMedia {
 	}
 
 	public static class TL_inputMediaUploadedThumbDocument extends InputMedia {
@@ -284,13 +256,7 @@ public class TLRPC {
 	public static class TL_inputMediaGifExternal extends InputMedia {
 	}
 
-	public static class TL_inputMediaGeoPoint extends InputMedia {
-	}
-
 	public static class TL_inputMediaUploadedPhoto extends InputMedia {
-	}
-
-	public static class TL_inputMediaVenue extends InputMedia {
 	}
 
 	public static class TL_inputMediaUploadedDocument extends InputMedia {
@@ -432,12 +398,8 @@ public class TLRPC {
 		public String title;
 		public String address;
 		public String provider;
-		public String venue_id;
 		public Document document;
 		public String caption;
-		public String phone_number;
-		public String first_name;
-		public String last_name;
 		public int user_id;
 		public WebPage webpage;
 	}

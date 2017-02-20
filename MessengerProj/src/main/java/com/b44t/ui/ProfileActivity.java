@@ -38,7 +38,7 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
-import android.graphics.Typeface;
+
 import android.os.Build;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -59,7 +59,6 @@ import com.b44t.messenger.LocaleController;
 import com.b44t.messenger.MrChat;
 import com.b44t.messenger.MrContact;
 import com.b44t.messenger.MrMailbox;
-import com.b44t.messenger.SendMessagesHelper;
 import com.b44t.messenger.ApplicationLoader;
 import com.b44t.messenger.support.widget.LinearLayoutManager;
 import com.b44t.messenger.support.widget.RecyclerView;
@@ -92,7 +91,7 @@ import com.b44t.ui.ActionBar.Theme;
 import java.util.ArrayList;
 
 
-public class ProfileActivity extends BaseFragment implements NotificationCenter.NotificationCenterDelegate, DialogsActivity.DialogsActivityDelegate, PhotoViewer.PhotoViewerProvider {
+public class ProfileActivity extends BaseFragment implements NotificationCenter.NotificationCenterDelegate, PhotoViewer.PhotoViewerProvider {
 
     private int user_id;  // show the profile of a single user
     private int chat_id;  // show the profile of a group
@@ -1218,31 +1217,6 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
     protected void onDialogDismiss(Dialog dialog) {
         if (listView != null) {
             listView.invalidateViews();
-        }
-    }
-
-    @Override
-    public void didSelectDialog(DialogsActivity fragment, long dialog_id, boolean param) {
-        if (dialog_id != 0) {
-            Bundle args = new Bundle();
-            args.putBoolean("scrollToTopOnResume", true);
-            int lower_part = (int) dialog_id;
-            if (lower_part != 0) {
-                if (lower_part > 0) {
-                    args.putInt("user_id", lower_part);
-                } else if (lower_part < 0) {
-                    args.putInt("chat_id", -lower_part);
-                }
-            } else {
-                args.putInt("enc_id", (int) (dialog_id >> 32));
-            }
-
-            NotificationCenter.getInstance().removeObserver(this, NotificationCenter.closeChats);
-            NotificationCenter.getInstance().postNotificationName(NotificationCenter.closeChats);
-            presentFragment(new ChatActivity(args), true);
-            removeSelfFromStack();
-            TLRPC.User user = MessagesController.getInstance().getUser(user_id);
-            SendMessagesHelper.getInstance().sendMessageContact(user, dialog_id, null, null);
         }
     }
 

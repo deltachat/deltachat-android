@@ -50,7 +50,7 @@ public class MessageObject {
     public CharSequence caption;
     public final MessageObject replyMessageObject = null;
 
-    public int type = 1000; // 8: gif, 13: sticker
+    public int type = 1000; // 4: unused-geo, 8: gif, 12: unused-contact, 13: sticker
 
     public int contentType; // one of ChatActivity.ROWTYPE_MESSAGE_CELL, .ROWTYPE_ACTION_CELL or .ROWTYPE_UNREAD_CELL
     public float audioProgress;
@@ -175,16 +175,16 @@ public class MessageObject {
                 }
             } else if (messageOwner.media instanceof TLRPC.TL_messageMediaPhoto) {
                 type = 1;
-            } else if (messageOwner.media instanceof TLRPC.TL_messageMediaGeo || messageOwner.media instanceof TLRPC.TL_messageMediaVenue) {
-                type = 4;
+            /*} else if (messageOwner.media instanceof TLRPC.TL_messageMediaGeo || messageOwner.media instanceof TLRPC.TL_messageMediaVenue) {
+                type = 4;*/
             } else if (isVideo()) {
                 type = 3;
             } else if (isVoice()) {
                 type = 2;
             } else if (isMusic()) {
                 type = 14;
-            } else if (messageOwner.media instanceof TLRPC.TL_messageMediaContact) {
-                type = 12;
+            /*} else if (messageOwner.media instanceof TLRPC.TL_messageMediaContact) {
+                type = 12;*/
             /*} else if (messageOwner.media instanceof TLRPC.TL_messageMediaUnsupported) {
                 type = 0;*/
             } else if (messageOwner.media instanceof TLRPC.TL_messageMediaDocument) {
@@ -885,8 +885,8 @@ public class MessageObject {
             return height;
         } else if (type == 2) {
             return AndroidUtilities.dp(72);
-        } else if (type == 12) {
-            return AndroidUtilities.dp(71);
+        /*} else if (type == 12) -- was: contact {
+            return AndroidUtilities.dp(71);*/
         } else if (type == 9) {
             return AndroidUtilities.dp(100);
         } else if (type == 4) {

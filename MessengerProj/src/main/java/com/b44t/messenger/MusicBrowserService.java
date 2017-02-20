@@ -318,7 +318,7 @@ public class MusicBrowserService extends MediaBrowserService implements Notifica
                     }
                 }
                 if (avatar == null || bitmap == null) {
-                    builder.setIconUri(Uri.parse("android.resource://" + getApplicationContext().getPackageName() + "/drawable/contact_blue"));
+                    builder.setIconUri(Uri.parse("android.resource://" + getApplicationContext().getPackageName() + "/drawable/audiosend_play"));
                 }
                 mediaItems.add(new MediaBrowser.MediaItem(builder.build(), MediaBrowser.MediaItem.FLAG_BROWSABLE));
             }

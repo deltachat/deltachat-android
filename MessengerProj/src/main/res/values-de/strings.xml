@@ -47,7 +47,6 @@
     <string name="GalleryInfo">Bilder ohne Komprimierung senden</string>
     <!--chat view-->
     <string name="ChatGallery">Galerie</string>
-    <string name="ChatLocation">Standort</string>
     <string name="ChatVideo">Video</string>
     <string name="ChatDocument">Datei</string>
     <string name="ChatCamera">Kamera</string>
@@ -291,8 +290,6 @@
     <string name="ForwardMessagesTo">Ausgewählte Nachrichten an <![CDATA[<b>]]>%1$s<![CDATA[</b>]]> weiterleiten?</string>
     <string name="SendMessagesTo">Nachricht an <![CDATA[<b>]]>%1$s<![CDATA[</b>]]> senden?</string>
     <string name="AreYouSureDeleteThisChat">Chat löschen? Der Chat wird dann nicht mehr in der Chatliste angezeigt, die Nachrichten verbleiben auf dem Server.</string>
-    <string name="ShareYouLocationUnable">App kann deinen aktuellen Standort nicht bestimmen</string>
-    <string name="ShareYouLocationUnableManually">Selbst wählen</string>
     <string name="AreYouSureBlockContact">Diesen Kontakt wirklich blockieren?</string>
     <string name="AreYouSureDeleteContact">Diesen Kontakt wirklich löschen?</string>
     <string name="RaiseToSpeakAlert">Möchtest du \"Zum Sprechen ans Ohr\" für Sprachnachrichten aktivieren?</string>
