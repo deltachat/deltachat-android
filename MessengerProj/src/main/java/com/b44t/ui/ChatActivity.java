@@ -2981,21 +2981,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                             } catch (Exception e) {
                                 alertUserOpenError(message);
                             }
-                        } else if (message.type == MessageObject.MO_TYPE4_GEO) {
-                            /* Telegram-FOSS: Try to fire off a geo: intent */
-                            double lat = message.messageOwner.media.geo.lat;
-                            double lon = message.messageOwner.media.geo._long;
-                            Intent intent = new Intent(android.content.Intent.ACTION_VIEW,
-                                    Uri.parse("geo:" + lat + "," + lon + "?z=15&q=" + lat + "," + lon + Uri.encode("(Shared by Delta Chat")));
-                            if(intent.resolveActivity(getParentActivity().getPackageManager()) != null) {
-                                try{
-                                    getParentActivity().startActivity(intent);
-                                }
-                                catch (Exception e){
-                                    Toast.makeText(getParentActivity(), "Error handling geo: intent", Toast.LENGTH_SHORT).show();
-                                    FileLog.e("messenger", e);
-                                }
-                            }
                         } else if (message.type == MessageObject.MO_TYPE9_FILE || message.type == MessageObject.MO_TYPE0_TEXT) {
                             try {
                                 AndroidUtilities.openForView(message, getParentActivity());

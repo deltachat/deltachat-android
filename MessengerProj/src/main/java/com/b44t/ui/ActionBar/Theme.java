@@ -100,14 +100,6 @@ public class Theme {
     public static final int MSG_IN_REPLY_MEDIA_MESSAGE_SELETED_TEXT_COLOR = 0xff89b4c1;
     public static final int MSG_OUT_REPLY_MEDIA_MESSAGE_SELETED_TEXT_COLOR = 0xff65b05b;
     public static final int MSG_STICKER_REPLY_MESSAGE_TEXT_COLOR = 0xffffffff;
-    public static final int MSG_IN_WEB_PREVIEW_LINE_COLOR = 0xff70b4e8;
-    public static final int MSG_OUT_WEB_PREVIEW_LINE_COLOR = 0xff88c97b;
-    public static final int MSG_IN_SITE_NAME_TEXT_COLOR = 0xff3a8ccf;
-    public static final int MSG_OUT_SITE_NAME_TEXT_COLOR = 0xff55ab4f;
-    public static final int MSG_IN_CONTACT_NAME_TEXT_COLOR = 0xff4e9ad4;
-    public static final int MSG_OUT_CONTACT_NAME_TEXT_COLOR = 0xff55ab4f;
-    public static final int MSG_IN_CONTACT_PHONE_TEXT_COLOR = 0xff2f3438;
-    public static final int MSG_OUT_CONTACT_PHONE_TEXT_COLOR = 0xff354234;
     public static final int MSG_MEDIA_PROGRESS_COLOR = 0xffffffff;
     public static final int MSG_IN_AUDIO_PROGRESS_COLOR = 0xffffffff;
     public static final int MSG_OUT_AUDIO_PROGRESS_COLOR = 0xffefffde;

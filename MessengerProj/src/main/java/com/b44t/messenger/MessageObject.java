@@ -54,16 +54,12 @@ public class MessageObject {
     public final static int MO_TYPE1_PHOTO          = 1;
     public final static int MO_TYPE2_VOICE          = 2;
     public final static int MO_TYPE3_VIDEO          = 3;
-    public final static int MO_TYPE4_GEO            = 4; // we do not use this, instead a geo-message is normal text
-    public final static int MO_TYPE6                = 6;
     public final static int MO_TYPE8_GIF            = 8;
     public final static int MO_TYPE9_FILE           = 9;
     public final static int MO_TYPE10_DATE_HEADLINE = 10;
-    public final static int MO_TYPE11               = 11;
-    public final static int MO_TYPE12_CONTACT       = 12; // we do not use this, instead a contact-message is normal text
     public final static int MO_TYPE13_STICKER       = 13;
     public final static int MO_TYPE14_MUSIC         = 14;
-    public final static int MO_TYPE1000_INIT_VAL    = 1000;
+    public final static int MO_TYPE1000_INIT_VAL    = 1000; // unsused types: 4=LOCATION, 12=CONTACT
     public int type = MO_TYPE1000_INIT_VAL;
 
     public int contentType; // one of ChatActivity.ROWTYPE_MESSAGE_CELL, .ROWTYPE_ACTION_CELL or .ROWTYPE_UNREAD_CELL
@@ -833,7 +829,7 @@ public class MessageObject {
     }
 
     public boolean isSelectable() {
-        if (type == MO_TYPE6 || type == MO_TYPE10_DATE_HEADLINE || type == MO_TYPE11) {
+        if( type == MO_TYPE10_DATE_HEADLINE ) {
             return false;
         }
         return true;
@@ -848,18 +844,12 @@ public class MessageObject {
             return height;
         } else if (type == MO_TYPE2_VOICE ) {
             return AndroidUtilities.dp(72);
-        /*} else if (type == 12) -- was: contact {
-            return AndroidUtilities.dp(71);*/
         } else if (type == MO_TYPE9_FILE) {
             return AndroidUtilities.dp(100);
-        } else if (type == MO_TYPE4_GEO) {
-            return AndroidUtilities.dp(114);
         } else if (type == MO_TYPE14_MUSIC) {
             return AndroidUtilities.dp(82);
         } else if (type == MO_TYPE10_DATE_HEADLINE) {
             return AndroidUtilities.dp(30);
-        } else if (type == MO_TYPE11) {
-            return AndroidUtilities.dp(50);
         } else if (type == MO_TYPE13_STICKER) {
             float maxHeight = AndroidUtilities.displaySize.y * 0.4f;
             float maxWidth;
