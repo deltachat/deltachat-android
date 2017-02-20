@@ -35,7 +35,6 @@ import com.b44t.ui.ActionBar.Theme;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.regex.Pattern;
 
 public class MessageObject {
 
@@ -76,8 +75,6 @@ public class MessageObject {
     public int lastLineWidth;
     public int textWidth;
     public int textHeight;
-
-    private static Pattern urlPattern;
 
     public static class TextLayoutBlock {
         public StaticLayout textLayout;
@@ -145,18 +142,12 @@ public class MessageObject {
                 }
             } else if (messageOwner.media instanceof TLRPC.TL_messageMediaPhoto) {
                 type = MO_TYPE1_PHOTO;
-            /*} else if (messageOwner.media instanceof TLRPC.TL_messageMediaGeo || messageOwner.media instanceof TLRPC.TL_messageMediaVenue) {
-                type = MO_TYPE4_GEO;*/
             } else if (isVideo()) {
                 type = MO_TYPE3_VIDEO;
             } else if (isVoice()) {
                 type = MO_TYPE2_VOICE;
             } else if (isMusic()) {
                 type = MO_TYPE14_MUSIC;
-            /*} else if (messageOwner.media instanceof TLRPC.TL_messageMediaContact) {
-                type = MO_TYPE12_CONTACT;*/
-            /*} else if (messageOwner.media instanceof TLRPC.TL_messageMediaUnsupported) {
-                type = MO_TYPE0_TEXT;*/
             } else if (messageOwner.media instanceof TLRPC.TL_messageMediaDocument) {
                 if (messageOwner.media.document.mime_type != null) {
                     if (isGifDocument(messageOwner.media.document)) {
@@ -170,28 +161,7 @@ public class MessageObject {
                     type = MO_TYPE9_FILE;
                 }
             }
-        } /*else if (messageOwner instanceof TLRPC.TL_messageService) {
-            if (messageOwner.action instanceof TLRPC.TL_messageActionLoginUnknownLocation) {
-                type = 0;
-            } else if (messageOwner.action instanceof TLRPC.TL_messageActionChatEditPhoto || messageOwner.action instanceof TLRPC.TL_messageActionUserUpdatedPhoto) {
-                contentType = ChatActivity.ROWTYPE_ACTION_CELL;
-                type = 11;
-            } else if (messageOwner.action instanceof TLRPC.TL_messageEncryptedAction) {
-                if (messageOwner.action.encryptedAction instanceof TLRPC.TL_decryptedMessageActionScreenshotMessages || messageOwner.action.encryptedAction instanceof TLRPC.TL_decryptedMessageActionSetMessageTTL) {
-                    contentType = ChatActivity.ROWTYPE_ACTION_CELL;
-                    type = 10;
-                } else {
-                    contentType = -1;
-                    type = -1;
-                }
-            } else if (messageOwner.action instanceof TLRPC.TL_messageActionHistoryClear) {
-                contentType = -1;
-                type = -1;
-            } else {
-                contentType = ChatActivity.ROWTYPE_ACTION_CELL;
-                type = 10;
-            }
-        }*/
+        }
         if (oldType != 1000 && oldType != type) {
             generateThumbs(false);
         }
@@ -213,27 +183,7 @@ public class MessageObject {
     }
 
     private void generateThumbs(boolean update) {
-        /*if (messageOwner instanceof TLRPC.TL_messageService) {
-            if (messageOwner.action instanceof TLRPC.TL_messageActionChatEditPhoto) {
-                if (!update) {
-                    photoThumbs = new ArrayList<>(messageOwner.action.photo.sizes);
-                } else if (photoThumbs != null && !photoThumbs.isEmpty()) {
-                    for (int a = 0; a < photoThumbs.size(); a++) {
-                        TLRPC.PhotoSize photoObject = photoThumbs.get(a);
-                        for (int b = 0; b < messageOwner.action.photo.sizes.size(); b++) {
-                            TLRPC.PhotoSize size = messageOwner.action.photo.sizes.get(b);
-                            if (size instanceof TLRPC.TL_photoSizeEmpty) {
-                                continue;
-                            }
-                            if (size.type.equals(photoObject.type)) {
-                                photoObject.location = size.location;
-                                break;
-                            }
-                        }
-                    }
-                }
-            }
-        } else*/ if (messageOwner.media != null && !(messageOwner.media instanceof TLRPC.TL_messageMediaEmpty)) {
+        if (messageOwner.media != null && !(messageOwner.media instanceof TLRPC.TL_messageMediaEmpty)) {
             if (messageOwner.media instanceof TLRPC.TL_messageMediaPhoto) {
                 if (!update || photoThumbs != null && photoThumbs.size() != messageOwner.media.photo.sizes.size()) {
                     photoThumbs = new ArrayList<>(messageOwner.media.photo.sizes);
@@ -264,37 +214,7 @@ public class MessageObject {
                         photoObject.h = messageOwner.media.document.thumb.h;
                     }
                 }
-            } /* else if (messageOwner.media instanceof TLRPC.TL_messageMediaWebPage) {
-                if (messageOwner.media.webpage.photo != null) {
-                    if (!update || photoThumbs == null) {
-                        photoThumbs = new ArrayList<>(messageOwner.media.webpage.photo.sizes);
-                    } else if (!photoThumbs.isEmpty()) {
-                        for (int a = 0; a < photoThumbs.size(); a++) {
-                            TLRPC.PhotoSize photoObject = photoThumbs.get(a);
-                            for (int b = 0; b < messageOwner.media.webpage.photo.sizes.size(); b++) {
-                                TLRPC.PhotoSize size = messageOwner.media.webpage.photo.sizes.get(b);
-                                if (size instanceof TLRPC.TL_photoSizeEmpty) {
-                                    continue;
-                                }
-                                if (size.type.equals(photoObject.type)) {
-                                    photoObject.location = size.location;
-                                    break;
-                                }
-                            }
-                        }
-                    }
-                } else if (messageOwner.media.webpage.document != null) {
-                    if (!(messageOwner.media.webpage.document.thumb instanceof TLRPC.TL_photoSizeEmpty)) {
-                        if (!update) {
-                            photoThumbs = new ArrayList<>();
-                            photoThumbs.add(messageOwner.media.webpage.document.thumb);
-                        } else if (photoThumbs != null && !photoThumbs.isEmpty() && messageOwner.media.webpage.document.thumb != null) {
-                            TLRPC.PhotoSize photoObject = photoThumbs.get(0);
-                            photoObject.location = messageOwner.media.webpage.document.thumb.location;
-                        }
-                    }
-                }
-            } */
+            }
         }
     }
 
@@ -309,9 +229,7 @@ public class MessageObject {
                     return FileLoader.getAttachFileName(sizeFull);
                 }
             }
-        } /*else if (messageOwner.media instanceof TLRPC.TL_messageMediaWebPage) {
-            return FileLoader.getAttachFileName(messageOwner.media.webpage.document);
-        } */
+        }
         return "";
     }
 
@@ -400,54 +318,17 @@ public class MessageObject {
                 } catch (Exception e) {
                     FileLog.e("messenger", e);
                 }
-                //addUsernamesAndHashtags(caption);
             }
         }
     }
 
-    /*private static void addUsernamesAndHashtags(CharSequence charSequence) {
-        try {
-            if (urlPattern == null) {
-                urlPattern = Pattern.compile("(^|\\s)/[a-zA-Z@\\d_]{1,255}|(^|\\s)@[a-zA-Z\\d_]{1,32}|(^|\\s)#[\\w\\.]+");
-            }
-            Matcher matcher = urlPattern.matcher(charSequence);
-            while (matcher.find()) {
-                int start = matcher.start();
-                int end = matcher.end();
-                if (charSequence.charAt(start) != '@' && charSequence.charAt(start) != '#' && charSequence.charAt(start) != '/') {
-                    start++;
-                }
-                URLSpanNoUnderline url = null;
-                if (charSequence.charAt(start) == '/') {
-                    ;
-                } else {
-                    url = new URLSpanNoUnderline(charSequence.subSequence(start, end).toString());
-                }
-                if (url != null) {
-                    ((Spannable) charSequence).setSpan(url, start, end, 0);
-                }
-            }
-        } catch (Exception e) {
-            FileLog.e("messenger", e);
-        }
-    }*/
-
     private static void addLinks(CharSequence messageText) {
         if (messageText instanceof Spannable && containsUrls(messageText)) {
-            //if (messageText.length() < 200) {
-                try {
-                    Linkify.addLinks((Spannable) messageText, Linkify.WEB_URLS | Linkify.PHONE_NUMBERS | Linkify.EMAIL_ADDRESSES);
-                } catch (Exception e) {
-                    FileLog.e("messenger", e);
-                }
-            /*} else {
-                try {
-                    Linkify.addLinks((Spannable) messageText, Linkify.WEB_URLS);
-                } catch (Exception e) {
-                    FileLog.e("messenger", e);
-                }
-            }*/
-            //addUsernamesAndHashtags(messageText);
+            try {
+                Linkify.addLinks((Spannable) messageText, Linkify.WEB_URLS | Linkify.PHONE_NUMBERS | Linkify.EMAIL_ADDRESSES);
+            } catch (Exception e) {
+                FileLog.e("messenger", e);
+            }
         }
     }
 
@@ -458,71 +339,7 @@ public class MessageObject {
 
         textLayoutBlocks = new ArrayList<>();
 
-        /*final boolean useManualParse = true; // false only add links to phone numbers; was used in Telegram for incoming messages that were already parsed (?)
-        if (useManualParse) {*/
-            addLinks(messageText);
-        /*} else {
-            if (messageText instanceof Spannable && messageText.length() < 200) {
-                try {
-                    Linkify.addLinks((Spannable) messageText, Linkify.PHONE_NUMBERS);
-                } catch (Throwable e) {
-                    FileLog.e("messenger", e);
-                }
-            }
-        }*/
-
-        /*if (messageText instanceof Spannable) {
-            Spannable spannable = (Spannable) messageText;
-            int count = messageOwner.entities_.size();
-            URLSpan[] spans = spannable.getSpans(0, messageText.length(), URLSpan.class);
-            for (int a = 0; a < count; a++) {
-                TLRPC.MessageEntity entity = messageOwner.entities_.get(a);
-                if (entity.length <= 0 || entity.offset < 0 || entity.offset >= messageOwner.message.length()) {
-                    continue;
-                } else if (entity.offset + entity.length > messageOwner.message.length()) {
-                    entity.length = messageOwner.message.length() - entity.offset;
-                }
-                if (spans != null && spans.length > 0) {
-                    for (int b = 0; b < spans.length; b++) {
-                        if (spans[b] == null) {
-                            continue;
-                        }
-                        int start = spannable.getSpanStart(spans[b]);
-                        int end = spannable.getSpanEnd(spans[b]);
-                        if (entity.offset <= start && entity.offset + entity.length >= start || entity.offset <= end && entity.offset + entity.length >= end) {
-                            spannable.removeSpan(spans[b]);
-                            spans[b] = null;
-                        }
-                    }
-                }
-                if (entity instanceof TLRPC.TL_messageEntityBold) {
-                    spannable.setSpan(new TypefaceSpan(AndroidUtilities.getTypeface("fonts/rmedium.ttf")), entity.offset, entity.offset + entity.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-                } else if (entity instanceof TLRPC.TL_messageEntityItalic) {
-                    spannable.setSpan(new TypefaceSpan(AndroidUtilities.getTypeface("fonts/ritalic.ttf")), entity.offset, entity.offset + entity.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-                } else if (entity instanceof TLRPC.TL_messageEntityCode || entity instanceof TLRPC.TL_messageEntityPre) {
-                    spannable.setSpan(new TypefaceSpan(Typeface.MONOSPACE, AndroidUtilities.dp(MessagesController.getInstance().fontSize - 1)), entity.offset, entity.offset + entity.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-                } else if (entity instanceof TLRPC.TL_messageEntityMentionName) {
-                    spannable.setSpan(new URLSpanUserMention("" + ((TLRPC.TL_messageEntityMentionName) entity).user_id), entity.offset, entity.offset + entity.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-                } else if (entity instanceof TLRPC.TL_inputMessageEntityMentionName) {
-                    spannable.setSpan(new URLSpanUserMention("" + ((TLRPC.TL_inputMessageEntityMentionName) entity).user_id.user_id), entity.offset, entity.offset + entity.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-                } else if (!useManualParse) {
-                    String url = messageOwner.message.substring(entity.offset, entity.offset + entity.length);
-                    if (entity instanceof TLRPC.TL_messageEntityHashtag || entity instanceof TLRPC.TL_messageEntityMention) {
-                        spannable.setSpan(new URLSpanNoUnderline(url), entity.offset, entity.offset + entity.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-                    } else if (entity instanceof TLRPC.TL_messageEntityEmail) {
-                        spannable.setSpan(new URLSpanReplacement("mailto:" + url), entity.offset, entity.offset + entity.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-                    } else if (entity instanceof TLRPC.TL_messageEntityUrl) {
-                        if (!url.toLowerCase().startsWith("http")) {
-                            spannable.setSpan(new URLSpan("http://" + url), entity.offset, entity.offset + entity.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-                        } else {
-                            spannable.setSpan(new URLSpan(url), entity.offset, entity.offset + entity.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-                        }
-                    } else if (entity instanceof TLRPC.TL_messageEntityTextUrl) {
-                        spannable.setSpan(new URLSpanReplacement(entity.url), entity.offset, entity.offset + entity.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-                    }
-                }
-            }
-        }*/
+        addLinks(messageText);
 
         int maxWidth;
         boolean substractAvatar = !isOut() && MrMailbox.getChat((int)messageOwner.dialog_id).getType()==MrChat.MR_CHAT_GROUP;
@@ -539,9 +356,6 @@ public class MessageObject {
                 maxWidth = Math.min(AndroidUtilities.displaySize.x, AndroidUtilities.displaySize.y) - AndroidUtilities.dp(80);
             }
         }
-        /*if ( (messageOwner.fwd_from != null && messageOwner.fwd_from.channel_id != 0) && !isOut()) {
-            maxWidth -= AndroidUtilities.dp(20);
-        }*/
 
         StaticLayout textLayout;
 
@@ -709,25 +523,16 @@ public class MessageObject {
     }
 
     public boolean isSending() {
-        return messageOwner.send_state == MESSAGE_SEND_STATE_SENDING /*&& messageOwner.id < 0-- EDIT BY MR, the ID is always set by us*/;
+        return messageOwner.send_state == MESSAGE_SEND_STATE_SENDING;
     }
 
     public boolean isSendError() {
-        return messageOwner.send_state == MESSAGE_SEND_STATE_SEND_ERROR /*&& messageOwner.id < 0-- EDIT BY MR, the ID is always set by us*/;
+        return messageOwner.send_state == MESSAGE_SEND_STATE_SEND_ERROR;
     }
 
     public boolean isSent() {
-        return messageOwner.send_state == MESSAGE_SEND_STATE_SENT /*|| messageOwner.id > 0 -- EDIT BY MR, the ID is always set by us*/;
+        return messageOwner.send_state == MESSAGE_SEND_STATE_SENT;
     }
-
-    /*
-    public String getDocumentName() {
-        if (messageOwner.media != null && messageOwner.media.document != null) {
-            return FileLoader.getDocumentFileName(messageOwner.media.document);
-        }
-        return "";
-    }
-    */
 
     public static boolean isStickerDocument(TLRPC.Document document) {
         if (document != null) {
@@ -783,38 +588,26 @@ public class MessageObject {
     }
 
     public TLRPC.Document getDocument() {
-        /*if (messageOwner.media instanceof TLRPC.TL_messageMediaWebPage) {
-            return messageOwner.media.webpage.document;
-        }*/
         return messageOwner.media != null ? messageOwner.media.document : null;
     }
 
-    public static boolean isStickerMessage(TLRPC.Message message) {
+    private static boolean isStickerMessage(TLRPC.Message message) {
         return message.media != null && message.media.document != null && isStickerDocument(message.media.document);
     }
 
-    public static boolean isMusicMessage(TLRPC.Message message) {
-        /*if (message.media instanceof TLRPC.TL_messageMediaWebPage) {
-            return isMusicDocument(message.media.webpage.document);
-        }*/
+    private static boolean isMusicMessage(TLRPC.Message message) {
         return message.media != null && message.media.document != null && isMusicDocument(message.media.document);
     }
 
-    public static boolean isVoiceMessage(TLRPC.Message message) {
-        /*if (message.media instanceof TLRPC.TL_messageMediaWebPage) {
-            return isVoiceDocument(message.media.webpage.document);
-        }*/
+    private static boolean isVoiceMessage(TLRPC.Message message) {
         return message.media != null && message.media.document != null && isVoiceDocument(message.media.document);
     }
 
-    public static boolean isVideoMessage(TLRPC.Message message) {
-        /*if (message.media instanceof TLRPC.TL_messageMediaWebPage) {
-            return isVideoDocument(message.media.webpage.document);
-        }*/
+    private static boolean isVideoMessage(TLRPC.Message message) {
         return message.media != null && message.media.document != null && isVideoDocument(message.media.document);
     }
 
-    public static TLRPC.InputStickerSet getInputStickerSet(TLRPC.Message message) {
+    private static TLRPC.InputStickerSet getInputStickerSet(TLRPC.Message message) {
         if (message.media != null && message.media.document != null) {
             for (TLRPC.DocumentAttribute attribute : message.media.document.attributes) {
                 if (attribute instanceof TLRPC.TL_documentAttributeSticker) {
@@ -837,10 +630,7 @@ public class MessageObject {
 
     public int getApproximateHeight() {
         if (type == MO_TYPE0_TEXT) {
-            int height = textHeight /*+ (messageOwner.media instanceof TLRPC.TL_messageMediaWebPage && messageOwner.media.webpage instanceof TLRPC.TL_webPage ? AndroidUtilities.dp(100) : 0)*/;
-            if (isReply()) {
-                height += AndroidUtilities.dp(42);
-            }
+            int height = textHeight;
             return height;
         } else if (type == MO_TYPE2_VOICE ) {
             return AndroidUtilities.dp(72);
@@ -1026,19 +816,15 @@ public class MessageObject {
         return isForwardedMessage(messageOwner);
     }
 
-    public static boolean isForwardedMessage(TLRPC.Message message) {
+    private static boolean isForwardedMessage(TLRPC.Message message) {
         return (message.flags & TLRPC.MESSAGE_FLAG_FWD) != 0;
     }
 
-    public boolean isReply() {
-        return false;
-    }
-
-    public boolean isMediaEmpty() {
+    private boolean isMediaEmpty() {
         return isMediaEmpty(messageOwner);
     }
 
-    public static boolean isMediaEmpty(TLRPC.Message message) {
+    private static boolean isMediaEmpty(TLRPC.Message message) {
         return message == null || message.media == null || message.media instanceof TLRPC.TL_messageMediaEmpty;
     }
 
@@ -1049,7 +835,7 @@ public class MessageObject {
         return null;
     }
 
-    public void checkMediaExistance() {
+    private void checkMediaExistance() {
         attachPathExists = false;
         mediaExists = false;
         if (type == MO_TYPE1_PHOTO) {
