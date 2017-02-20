@@ -70,9 +70,9 @@
     <!--notification-->
     <string name="Reply">Odpowiedz</string>
     <string name="ReplyToGroup">Odpowiedz grupie %1$s</string>
-    <string name="ReplyToContact">Odpowiedz grupie %1$s</string>
+    <string name="ReplyToContact">Odpowiedz kontaktowi %1$s</string>
     <!--contacts view-->
-    <string name="NoContacts">Nie ma użytkowników.</string>
+    <string name="NoContacts">Nie ma kontaktów.</string>
     <string name="TodayAt">o</string>
     <string name="YesterdayAt">wczoraj o</string>
     <!--group create view-->
@@ -86,9 +86,9 @@
     <string name="Notifications">Powiadomienia</string>
     <string name="RemoveMember">Usuń członka</string>
     <!--contact info view-->
-    <string name="NewContactTitle">Nowy użytkownik</string>
-    <string name="BlockContact">Zablokuj użytkownika</string>
-    <string name="DeleteContact">Usuń użytkownika</string>
+    <string name="NewContactTitle">Nowy kontakt</string>
+    <string name="BlockContact">Blokuj kontakt</string>
+    <string name="DeleteContact">Usuń kontakt</string>
     <string name="Info">Informacje</string>
     <!--stickers view-->
     <string name="Stickers">Naklejki</string>
@@ -107,8 +107,8 @@
     <!--settings view-->
     <string name="TextSize">Rozmiar czcionki w wiadomości</string>
     <string name="EnableAnimations">Animacja przejścia</string>
-    <string name="UnblockContact">Odblokuj użytkownika</string>
-    <string name="NoBlocked">Nie ma zablokowanych użytkowników</string>
+    <string name="UnblockContact">Odblokuj kontakt</string>
+    <string name="NoBlocked">Nie ma zablokowanych kontaktów</string>
     <string name="NormalMessages">Normalne wiadomości</string>
     <string name="Alert">Alarm</string>
     <string name="MessagePreview">Podgląd wiadomości</string>
@@ -119,7 +119,7 @@
     <string name="Reset">Resetuj</string>
     <string name="ResetAllNotifications">Resetuj wszystkie powiadomienia</string>
     <string name="NotificationsAndSounds">Powiadomienia i dźwięki</string>
-    <string name="BlockedContacts">Zablokowani użytkownicy</string>
+    <string name="BlockedContacts">Zablokowane kontakty</string>
     <string name="Default">domyślny</string>
     <string name="OnlyIfSilent">Tylko jeśli wyciszony</string>
     <string name="ChatBackground">Tło czatu</string>
@@ -287,14 +287,14 @@
     <string name="Loading">Wczytywanie…</string>
     <string name="NoPlayerInstalled">Nie masz odtwarzacza wideo. Zainstaluj jakiś, aby kontynuować.</string>
     <string name="NoHandleAppInstalled">Nie masz aplikacji obsługujących pliki typu „%1$s”. Zainstaluj jakąś, aby kontynuować.</string>
-    <string name="ContactAlreadyInGroup">Ten użytkownik jest już w tej grupie</string>
+    <string name="ContactAlreadyInGroup">Ten kontakt jest już w tej grupie</string>
     <string name="ForwardMessagesTo">Przekazać wybrane wiadomości do <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>?</string>
     <string name="SendMessagesTo">Wysłać wiadomość do <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>?</string>
     <string name="AreYouSureDeleteThisChat">Usunąć ten czat? Czat nie będzie widoczny na liście czatów, wiadomości pozostaną na serwerze.</string>
     <string name="ShareYouLocationUnable">Aplikacja nie była w stanie określić twojej aktualnej lokalizacji</string>
     <string name="ShareYouLocationUnableManually">Wybierz ręcznie</string>
-    <string name="AreYouSureBlockContact">Czy na pewno chcesz zablokować tego użytkownika?</string>
-    <string name="AreYouSureDeleteContact">Czy na pewno chcesz usunąć tego użytkownika?</string>
+    <string name="AreYouSureBlockContact">Czy na pewno chcesz zablokować ten kontakt?</string>
+    <string name="AreYouSureDeleteContact">Czy na pewno chcesz usunąć ten kontakt?</string>
     <string name="RaiseToSpeakAlert">Czy chcesz włączyć funkcję „Odbierz i mów / słuchaj” dla wiadomości głosowych?</string>
     <!--permissions-->
     <string name="PermissionContacts">Aby można było łączyć się ze znajomymi na wszystkich urządzeniach, Delta Chat musi mieć dostęp do listy kontaktów.</string>
@@ -327,72 +327,85 @@
     <plurals name="Members">
         <item quantity="one">%d członek</item>
         <item quantity="few">%d członków</item>
+        <item quantity="many">%d członków</item>
         <item quantity="other">%d członków</item>
     </plurals>
     <plurals name="Contacts">
         <item quantity="one">%d kontakt</item>
         <item quantity="few">kontaktów - %d</item>
+        <item quantity="many">kontaktów - %d</item>
         <item quantity="other">kontaktów - %d</item>
     </plurals>
     <plurals name="MeAndMembers">
         <item quantity="one">ja i %d członek</item>
         <item quantity="few">ja i %d członków</item>
+        <item quantity="many">ja i %d członków</item>
         <item quantity="other">ja i %d członków</item>
     </plurals>
     <plurals name="NewMessages">
         <item quantity="one">%d nowa wiadomość</item>
         <item quantity="few">%d nowe wiadomości</item>
+        <item quantity="many">%d nowych wiadomości</item>
         <item quantity="other">%d nowych wiadomości</item>
     </plurals>
     <plurals name="messages">
         <item quantity="one">%d wiadomość</item>
         <item quantity="few">%d wiadomości</item>
+        <item quantity="many">%d wiadomości</item>
         <item quantity="other">%d wiadomości</item>
     </plurals>
     <plurals name="AreYouSureDeleteMessages">
         <item quantity="one">Usunąć %d wiadomość? Wiadomość zostanie usunięta również z serwera.</item>
         <item quantity="few">Usunąć %d wiadomości? Wiadomości zostaną usunięte również z serwera.</item>
+        <item quantity="many">Usunąć %d wiadomości? Wiadomości zostaną usunięte również z serwera.</item>
         <item quantity="other">Usunąć %d wiadomości? Wiadomości zostaną usunięte również z serwera.</item>
     </plurals>
     <plurals name="NewMessagesInChats">
         <item quantity="one">%1$s w %2$d czacie</item>
         <item quantity="few">%1$s w %2$d czatach</item>
+        <item quantity="many">%1$s w %2$d czatach</item>
         <item quantity="other">%1$s w %2$d czatach</item>
     </plurals>
     <plurals name="Chats">
         <item quantity="one">%d czat</item>
         <item quantity="few">%d czaty</item>
+        <item quantity="many">czatów - %d</item>
         <item quantity="other">czatów - %d</item>
     </plurals>
-
     <plurals name="Minutes">
         <item quantity="one">%d minuta</item>
         <item quantity="few">%d min.</item>
+        <item quantity="many">%d min.</item>
         <item quantity="other">%d min.</item>
     </plurals>
     <plurals name="Hours">
         <item quantity="one">%d godz.</item>
         <item quantity="few">%d godz.</item>
+        <item quantity="many">%d godz.</item>
         <item quantity="other">%d godz.</item>
     </plurals>
     <plurals name="Days">
         <item quantity="one">%d dzień</item>
         <item quantity="few">%d dni</item>
+        <item quantity="many">%d dni</item>
         <item quantity="other">%d dni</item>
     </plurals>
     <plurals name="Weeks">
         <item quantity="one">%d tydzień</item>
         <item quantity="few">%d tyg.</item>
+        <item quantity="many">%d tyg.</item>
         <item quantity="other">%d tyg.</item>
     </plurals>
     <plurals name="Months">
         <item quantity="one">%d miesiąc</item>
         <item quantity="few">%d mies.</item>
+        <item quantity="many">%d mies.</item>
         <item quantity="other">%d mies.</item>
     </plurals>
     <plurals name="MaxNotifications">
         <item quantity="one">Najwyżej %1$d powiadomienie w ciągu %2$s</item>
         <item quantity="few">Najwyżej %1$d powiadomienia w ciągu %2$s</item>
+        <item quantity="many">Najwyżej %1$d powiadomień w ciągu %2$s</item>
         <item quantity="other">Najwyżej %1$d powiadomień w ciągu %2$s</item>
     </plurals>
     <!--date formatters-->
@@ -441,9 +454,9 @@
     <string name="DefaultStatusText">Wysłane z komunikatora Delta Chat</string>
     <string name="Name" >Nazwa</string>
     <string name="EmailAddress">Adres e-mail</string>
-    <string name="CannotDeleteContact">Nie możesz usunąć użytkowników w użyciu, zamiast tego zablokuj użytkownika.</string>
+    <string name="CannotDeleteContact">Nie możesz usunąć kontaktu w użyciu, zamiast tego zablokuj kontakt.</string>
     <string name="BadEmailAddress">Zły adres e-mail</string>
-    <string name="ContactCreated">Użytkownik utworzony.</string>
+    <string name="ContactCreated">Kontakt utworzony.</string>
     <string name="ViewProfile">Pokaż profil</string>
     <string name="OneMomentPlease">Jedną chwilę, proszę…</string>
     <string name="CannotDeleteChat">Nie można usunąć czatu.</string>
@@ -453,7 +466,7 @@
     <string name="Intro7Message"><![CDATA[<b>Delta Chat</b>]]> jest bezpieczny dla zastosowań biznesowych, zgodny i oparty na standardach.</string>
     <string name="InviteMenuEntry">Wyślij zaproszenia</string>
     <string name="InviteText">Teraz używam komunikatora Delta Chat - %1$s - możesz pisać do mnie na %2$s</string>
-    <string name="AdvancedSettings">Usywienia zaawansowane</string>
+    <string name="AdvancedSettings">Ustawienia zaawansowane</string>
     <string name="AskResetNotifications" >Zresetować wszystkie ustawienia powiadomień i dźwięków na tej stronie oraz dla swoich kontaktów i grup?</string>
     <string name="AttachFiles">Załącz pliki</string>
     <string name="ErrGroupNameEmpty">Podaj nazwę dla grupy</string>
@@ -463,8 +476,8 @@
     <string name="MsgGroupImageChanged">Zmieniono obraz grupy.</string>
     <string name="MsgMemberAddedToGroup">Dodano członka %1$s</string>
     <string name="MsgMemberRemovedFromToGroup">Usunięto członka %1$s</string>
-    <string name="AskAddMemberToGroup">Dodać użytkownika <![CDATA[<b>]]>%1$s<![CDATA[</b>]]> do grupy?</string>
-    <string name="AskRemoveMemberFromGroup">Usunąć użytkownika <![CDATA[<b>]]>%1$s<![CDATA[</b>]]> z grupy?</string>
+    <string name="AskAddMemberToGroup">Dodać kontakt <![CDATA[<b>]]>%1$s<![CDATA[</b>]]> do grupy?</string>
+    <string name="AskRemoveMemberFromGroup">Usunąć kontakt <![CDATA[<b>]]>%1$s<![CDATA[</b>]]> z grupy?</string>
     <string name="ErrSelfNotInGroup">Musisz być członkiem grupy, aby wykonać tę czynność.</string>
     <string name="MsgGroupLeft">Grupa opuszczona.</string>
     <string name="NoMessagesHint">Wyślij wiadomość do <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>:\n\n• Nie ma problemu, jeśli <![CDATA[<b>]]>%2$s<![CDATA[</b>]]> nie używa Delta Chat.\n\n• Dostarczenie pierwszej wiadomości może chwilę potrwać.</string>
@@ -472,7 +485,8 @@
     <string name="E2EEncryption">Pełne szyfrowanie</string>
     <string name="E2EManagePrivateKeys">Zarządzaj prywatnymi kluczami</string>
     <string name="E2ECompareKeys">Porównaj klucze</string>
-    <string name="ResetContactsKey">Resetuj klucz użytkownika</string>
+    <string name="ResetContactsKey">Resetuj klucz kontaktu</string>
     <string name="ForwardToTitle">Przekaż do…</string>
-    <string name="ContactDeleted">Użytkownik usunięty.</string>
+    <string name="SelectContact">Wybierz kontakt</string>
+    <string name="ContactDeleted">Kontakt usunięty.</string>
 </resources>
