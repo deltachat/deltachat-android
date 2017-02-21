@@ -342,7 +342,7 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                     drawerLayoutContainer.closeDrawer(false);
                 }
                 else if (position == DrawerLayoutAdapter.iFaq) {
-                    Browser.openUrl(LaunchActivity.this, "https://messenger.b44t.com/help");
+                    Browser.openUrl(LaunchActivity.this, "https://getdelta/help");
                     drawerLayoutContainer.closeDrawer(false);
                 }
             }

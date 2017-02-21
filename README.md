@@ -13,7 +13,7 @@ Beside a build in Android Studio, you have to call `ndk-build` in the
 `MessengerProj` directory.  Moreover, place a copy of your keyfile eg. to
 `MessengerProj/config/debug.keystore`.
 
-![Logo](https://messenger.b44t.com/start-img4.png)
+![Logo](https://getdelta.org/start-img4.png)
 
 The backend (https://github.com/r10s/messenger-backend), is checked out 
 automatically; there is not need to build the backend itself, the android 
