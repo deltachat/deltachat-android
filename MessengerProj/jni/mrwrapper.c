@@ -847,6 +847,12 @@ JNIEXPORT jint Java_com_b44t_messenger_MrMsg_getSummarytext(JNIEnv *env, jobject
 }
 
 
+JNIEXPORT jint Java_com_b44t_messenger_MrMsg_getFilename(JNIEnv *env, jobject obj)
+{
+	return JSTRING_NEW(mrmsg_get_filename(get_mrmsg_t(env, obj)));
+}
+
+
 /*******************************************************************************
  * MrContact
  ******************************************************************************/

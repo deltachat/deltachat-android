@@ -69,7 +69,6 @@ public class Theme {
     public static final int DIALOGS_DRAFT_TEXT_COLOR = 0xffdd4b39;
 
     public static final int CHAT_BOTTOM_OVERLAY_TEXT_COLOR = 0xff7f7f7f;
-    public static final int CHAT_GIF_HINT_TEXT_COLOR = 0xffffffff;
     public static final int CHAT_EMPTY_VIEW_TEXT_COLOR = 0xffffffff;
 
     public static final int INAPP_PLAYER_PERFORMER_TEXT_COLOR = 0xff2f3438;
@@ -87,24 +86,6 @@ public class Theme {
     public static final int MSG_STICKER_NAME_TEXT_COLOR = 0xffffffff;
     public static final int MSG_IN_FORDWARDED_NAME_TEXT_COLOR = 0xff3886c7;
     public static final int MSG_OUT_FORDWARDED_NAME_TEXT_COLOR = 0xff55ab4f;
-    public static final int MSG_IN_REPLY_LINE_COLOR = 0xff70b4e8;
-    public static final int MSG_OUT_REPLY_LINE_COLOR = 0xff88c97b;
-    public static final int MSG_STICKER_REPLY_LINE_COLOR = 0xffffffff;
-    public static final int MSG_IN_REPLY_NAME_TEXT_COLOR = 0xff3a8ccf;
-    public static final int MSG_OUT_REPLY_NAME_TEXT_COLOR = 0xff55ab4f;
-    public static final int MSG_STICKER_REPLY_NAME_TEXT_COLOR = 0xffffffff;
-    public static final int MSG_IN_REPLY_MESSAGE_TEXT_COLOR = 0xff000000;
-    public static final int MSG_OUT_REPLY_MESSAGE_TEXT_COLOR = 0xff000000;
-    public static final int MSG_IN_REPLY_MEDIA_MESSAGE_TEXT_COLOR = 0xffa1aab3;
-    public static final int MSG_OUT_REPLY_MEDIA_MESSAGE_TEXT_COLOR = 0xff65b05b;
-    public static final int MSG_IN_REPLY_MEDIA_MESSAGE_SELETED_TEXT_COLOR = 0xff89b4c1;
-    public static final int MSG_OUT_REPLY_MEDIA_MESSAGE_SELETED_TEXT_COLOR = 0xff65b05b;
-    public static final int MSG_STICKER_REPLY_MESSAGE_TEXT_COLOR = 0xffffffff;
-    public static final int MSG_MEDIA_PROGRESS_COLOR = 0xffffffff;
-    public static final int MSG_IN_AUDIO_PROGRESS_COLOR = 0xffffffff;
-    public static final int MSG_OUT_AUDIO_PROGRESS_COLOR = 0xffefffde;
-    public static final int MSG_IN_AUDIO_SELECTED_PROGRESS_COLOR = 0xffe2f8ff;
-    public static final int MSG_OUT_AUDIO_SELECTED_PROGRESS_COLOR = 0xffd4f5bc;
     public static final int MSG_MEDIA_TIME_TEXT_COLOR = 0xffffffff;
     public static final int MSG_IN_TIME_TEXT_COLOR = 0xffa1aab3;
     public static final int MSG_OUT_TIME_TEXT_COLOR = 0xff70b15c;
@@ -130,32 +111,15 @@ public class Theme {
     public static final int MSG_OUT_VOICE_SEEKBAR_SELECTED_COLOR = 0xffa9dd96;
     public static final int MSG_IN_VOICE_SEEKBAR_FILL_COLOR = 0xff72b5e8;
     public static final int MSG_OUT_VOICE_SEEKBAR_FILL_COLOR = 0xff78c272;
-    public static final int MSG_IN_FILE_PROGRESS_COLOR = 0xffebf0f5;
-    public static final int MSG_OUT_FILE_PROGRESS_COLOR = 0xffdaf5c3;
-    public static final int MSG_IN_FILE_PROGRESS_SELECTED_COLOR = 0xffcbeaf6;
-    public static final int MSG_OUT_FILE_PROGRESS_SELECTED_COLOR = 0xffc5eca7;
-    public static final int MSG_IN_FILE_NAME_TEXT_COLOR = 0xff4e9ad4;
-    public static final int MSG_OUT_FILE_NAME_TEXT_COLOR = 0xff55ab4f;
-    public static final int MSG_IN_FILE_INFO_TEXT_COLOR = 0xffa1aab3;
-    public static final int MSG_OUT_FILE_INFO_TEXT_COLOR = 0xff65b05b;
-    public static final int MSG_IN_FILE_INFO_SELECTED_TEXT_COLOR = 0xff89b4c1;
-    public static final int MSG_OUT_FILE_INFO_SELECTED_TEXT_COLOR = 0xff65b05b;
     public static final int MSG_IN_FILE_BACKGROUND_COLOR = 0xffebf0f5;
     public static final int MSG_OUT_FILE_BACKGROUND_COLOR = 0xffdaf5c3;
     public static final int MSG_IN_FILE_BACKGROUND_SELECTED_COLOR = 0xffcbeaf6;
     public static final int MSG_OUT_FILE_BACKGROUND_SELECTED_COLOR = 0xffc5eca7;
-    public static final int MSG_IN_VENUE_NAME_TEXT_COLOR = 0xff4e9ad4;
-    public static final int MSG_OUT_VENUE_NAME_TEXT_COLOR = 0xff55ab4f;
-    public static final int MSG_IN_VENUE_INFO_TEXT_COLOR = 0xffa1aab3;
-    public static final int MSG_OUT_VENUE_INFO_TEXT_COLOR = 0xff65b05b;
-    public static final int MSG_IN_VENUE_INFO_SELECTED_TEXT_COLOR = 0xff89b4c1;
-    public static final int MSG_OUT_VENUE_INFO_SELECTED_TEXT_COLOR = 0xff65b05b;
     public static final int MSG_MEDIA_INFO_TEXT_COLOR = 0xffffffff;
     public static final int MSG_TEXT_COLOR = 0xff000000;
     public static final int MSG_LINK_TEXT_COLOR = 0xff2678b6;
     public static final int MSG_LINK_SELECT_BACKGROUND_COLOR = 0x3362a9e3;
     public static final int MSG_TEXT_SELECT_BACKGROUND_COLOR = 0x6662a9e3;
-
 
     public static Drawable backgroundDrawableIn;
     public static Drawable backgroundDrawableInSelected;
@@ -176,8 +140,7 @@ public class Theme {
     public static Drawable[] cornerInner = new Drawable[4];
 
     public static Drawable shareIconDrawable;
-
-    public static Drawable[][] fileStatesDrawable = new Drawable[10][2];
+    public static Drawable fileDrawable;
     public static Drawable[][] photoStatesDrawables = new Drawable[13][2];
     public static Drawable[] docMenuDrawable = new Drawable[4];
 
@@ -205,26 +168,7 @@ public class Theme {
             timeStickerBackgroundDrawable = context.getResources().getDrawable(R.drawable.phototime2);
             systemDrawable = context.getResources().getDrawable(R.drawable.system);
 
-            fileStatesDrawable[0][0] = context.getResources().getDrawable(R.drawable.play_g);         // self
-            fileStatesDrawable[0][1] = context.getResources().getDrawable(R.drawable.play_g_s);
-            fileStatesDrawable[1][0] = context.getResources().getDrawable(R.drawable.pause_g);
-            fileStatesDrawable[1][1] = context.getResources().getDrawable(R.drawable.pause_g_s);
-            fileStatesDrawable[2][0] = context.getResources().getDrawable(R.drawable.file_g_load);
-            fileStatesDrawable[2][1] = context.getResources().getDrawable(R.drawable.file_g_load_s);
-            fileStatesDrawable[3][0] = context.getResources().getDrawable(R.drawable.file_g);
-            fileStatesDrawable[3][1] = context.getResources().getDrawable(R.drawable.file_g_s);
-            fileStatesDrawable[4][0] = context.getResources().getDrawable(R.drawable.file_g_cancel);
-            fileStatesDrawable[4][1] = context.getResources().getDrawable(R.drawable.file_g_cancel_s);
-            fileStatesDrawable[5][0] = context.getResources().getDrawable(R.drawable.play_b);         // from other = self+5
-            fileStatesDrawable[5][1] = context.getResources().getDrawable(R.drawable.play_b_s);
-            fileStatesDrawable[6][0] = context.getResources().getDrawable(R.drawable.pause_b);
-            fileStatesDrawable[6][1] = context.getResources().getDrawable(R.drawable.pause_b_s);
-            fileStatesDrawable[7][0] = context.getResources().getDrawable(R.drawable.file_b_load);
-            fileStatesDrawable[7][1] = context.getResources().getDrawable(R.drawable.file_b_load_s);
-            fileStatesDrawable[8][0] = context.getResources().getDrawable(R.drawable.file_b);
-            fileStatesDrawable[8][1] = context.getResources().getDrawable(R.drawable.file_b_s);
-            fileStatesDrawable[9][0] = context.getResources().getDrawable(R.drawable.file_b_cancel);
-            fileStatesDrawable[9][1] = context.getResources().getDrawable(R.drawable.file_b_cancel_s);
+            fileDrawable = context.getResources().getDrawable(R.drawable.file);
 
             photoStatesDrawables[0][0] = context.getResources().getDrawable(R.drawable.photoload);
             photoStatesDrawables[0][1] = context.getResources().getDrawable(R.drawable.photoload_pressed);

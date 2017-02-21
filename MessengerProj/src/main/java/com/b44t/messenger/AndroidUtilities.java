@@ -961,7 +961,35 @@ public class AndroidUtilities {
         return key_hash;
     }
 
+    /*
+    public static void saveToDownloads()
+    {
+        if (Build.VERSION.SDK_INT >= 23 && getParentActivity().checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+            getParentActivity().requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 4);
+            selectedObject = null;
+            return;
+        }
+        String fileName = FileLoader.getDocumentFileName(selectedObject.getDocument());
+        if (fileName == null || fileName.length() == 0) {
+            fileName = selectedObject.getFileName();
+        }
+        String path = selectedObject.messageOwner.attachPath;
+        if (path != null && path.length() > 0) {
+            File temp = new File(path);
+            if (!temp.exists()) {
+                path = null;
+            }
+        }
+        if (path == null || path.length() == 0) {
+            path = FileLoader.getPathToMessage(selectedObject.messageOwner).toString();
+        }
+        MediaController.saveFile(path, getParentActivity(), selectedObject.isMusic() ? 3 : 2, fileName, selectedObject.getDocument() != null ? selectedObject.getDocument().mime_type : "");
+
+    }
+    */
+
     public static void openForView(MessageObject message, Activity activity) throws Exception {
+        // TODO:  this seems not to work for files in our private directory!
         File f = null;
         String fileName = message.getFileName();
         if (message.messageOwner.attachPath != null && message.messageOwner.attachPath.length() != 0) {
