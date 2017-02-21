@@ -156,11 +156,6 @@
     <string name="LocalDatabaseInfo">Effacer la base de données locale va supprimer les textes des messages cachés et compresser la base de données pour gagner de l\'espace disque sur le stockage interne. L\'application a besoin de certaines données pour fonctionner, donc, la base de données n\'aura pas un taille nulle.\n\nL\'opération peut prendre plusieurs minutes.</string>
     <string name="ClearMediaCache">Effacer le cache</string>
     <string name="CacheClear">Effacer</string>
-    <string name="LocalDocumentCache">Documents</string>
-    <string name="LocalPhotoCache">Photos</string>
-    <string name="LocalAudioCache">Messages vocaux</string>
-    <string name="LocalVideoCache">Vidéos</string>
-    <string name="LocalMusicCache">Musique</string>
     <string name="LocalCache">Autres fichiers</string>
     <string name="CacheEmpty">Vide</string>
     <string name="KeepMedia">Conserver les fichier média</string>
@@ -273,7 +268,7 @@
     <string name="AttachContact">Contact</string>
     <string name="AttachDocument">Fichier</string>
     <string name="AttachSticker">Autocollant</string>
-    <string name="AttachAudio">Message vocal</string>
+    <string name="AttachVoiceMessage">Message vocal</string>
     <string name="FromSelf">Moi</string>
     <!--Alert messages-->
     <string name="Loading">Chargement…</string>

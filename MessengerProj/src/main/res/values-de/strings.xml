@@ -161,11 +161,6 @@
     <string name="LocalDatabaseInfo">Zwischengespeicherte Textnachrichten werden entfernt und die Datenbank optimiert um Speicherplatz zurückzuerhalten. Auf Null lässt sich die Größe jedoch nicht reduzieren, da die App einige Daten für den laufenden Betrieb benötigt.\n\nHinweis: Der Vorgang kann mehrere Minuten dauern.</string>
     <string name="ClearMediaCache">Cache Leeren</string>
     <string name="CacheClear">Leeren</string>
-    <string name="LocalDocumentCache">Dateien</string>
-    <string name="LocalPhotoCache">Bilder</string>
-    <string name="LocalAudioCache">Sprachnachrichten</string>
-    <string name="LocalVideoCache">Videos</string>
-    <string name="LocalMusicCache">Musik</string>
     <string name="LocalCache">Sonstige Dateien</string>
     <string name="CacheEmpty">Leer</string>
     <string name="KeepMedia">Medien behalten</string>
@@ -278,7 +273,7 @@
     <string name="AttachContact">Kontakt</string>
     <string name="AttachDocument">Datei</string>
     <string name="AttachSticker">Sticker</string>
-    <string name="AttachAudio">Sprachnachricht</string>
+    <string name="AttachVoiceMessage">Sprachnachricht</string>
     <string name="FromSelf">Ich</string>
     <!--Alert messages-->
     <string name="Loading">Lädt …</string>

@@ -37,6 +37,7 @@ public class MrMsg {
     public final static int      MR_MSG_TEXT                = 10;
     public final static int      MR_MSG_IMAGE               = 20;
     public final static int      MR_MSG_AUDIO               = 40;
+    public final static int      MR_MSG_VOICE               = 41;
     public final static int      MR_MSG_VIDEO               = 50;
     public final static int      MR_MSG_FILE                = 60;
 
@@ -190,7 +191,7 @@ public class MrMsg {
                 ret.message = "<cannot load image>";
             }
         }
-        else if( type == MR_MSG_AUDIO || type == MR_MSG_VIDEO ) {
+        else if( type == MR_MSG_AUDIO || type == MR_MSG_VOICE || type == MR_MSG_VIDEO ) {
             String path = getParam('f', "");
             if( !path.isEmpty()) {
                 ret.message = "-1"; // may be misused for video editing information
@@ -198,13 +199,13 @@ public class MrMsg {
                 ret.media.caption = "";
                 ret.media.document = new TLRPC.TL_document();
                 ret.media.document.mr_path = path;
-                if( type == MR_MSG_AUDIO ) {
+                if( type == MR_MSG_AUDIO || type == MR_MSG_VOICE ) {
                     TLRPC.TL_documentAttributeAudio attr = new TLRPC.TL_documentAttributeAudio();
-                    attr.voice = true; // !voice = music
+                    attr.voice = type == MR_MSG_VOICE;
                     attr.duration = getParamInt('d', 0) / 1000;
                     ret.media.document.attributes.add(attr);
                 }
-                else if( type == MR_MSG_VIDEO) {
+                else {
                     TLRPC.TL_documentAttributeVideo attr = new TLRPC.TL_documentAttributeVideo();
                     attr.duration = getParamInt('d', 0) / 1000;
                     attr.w = getParamInt('w', 0);

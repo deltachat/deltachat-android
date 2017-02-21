@@ -158,11 +158,6 @@
     <string name="LocalDatabaseInfo">Limpar o banco de dados local apagará todos os textos das mensagens em cache e compactará o banco de dados para economizar espaço. O Delta Chat precisa de alguns dados para trabalhar, então o tamanho do banco não vai chegar a zero.\n\nEssa operação pode demorar alguns minutos para ser concluída.</string>
     <string name="ClearMediaCache">Limpar Cache</string>
     <string name="CacheClear">Limpar</string>
-    <string name="LocalDocumentCache">Documentos</string>
-    <string name="LocalPhotoCache">Fotos</string>
-    <string name="LocalAudioCache">Mensagens de voz</string>
-    <string name="LocalVideoCache">Vídeos</string>
-    <string name="LocalMusicCache">Música</string>
     <string name="LocalCache">Outros arquivos</string>
     <string name="CacheEmpty">Vazio</string>
     <string name="KeepMedia">Manter Mídias</string>
@@ -275,7 +270,7 @@
     <string name="AttachContact">Contato</string>
     <string name="AttachDocument">Arquivo</string>
     <string name="AttachSticker">Sticker</string>
-    <string name="AttachAudio">Mensagem de voz</string>
+    <string name="AttachVoiceMessage">Mensagem de voz</string>
     <string name="FromSelf">Você</string>
     <!--Alert messages-->
     <string name="Loading">Carregando…</string>

@@ -161,11 +161,6 @@
     <string name="LocalDatabaseInfo">Clearing the local database will delete the texts of cached messages and compress the database to save internal disk space. The app needs some data to work, so database size will not reach zero.\n\nThis operation can take a few minutes to complete.</string>
     <string name="ClearMediaCache">Clear Cache</string>
     <string name="CacheClear">Clear</string>
-    <string name="LocalDocumentCache">Documents</string>
-    <string name="LocalPhotoCache">Photos</string>
-    <string name="LocalAudioCache">Voice messages</string>
-    <string name="LocalVideoCache">Videos</string>
-    <string name="LocalMusicCache">Music</string>
     <string name="LocalCache">Other files</string>
     <string name="CacheEmpty">Empty</string>
     <string name="KeepMedia">Keep Media</string>
@@ -278,7 +273,7 @@
     <string name="AttachContact">Contact</string>
     <string name="AttachDocument">File</string>
     <string name="AttachSticker">Sticker</string>
-    <string name="AttachAudio">Voice message</string>
+    <string name="AttachVoiceMessage">Voice message</string>
     <string name="FromSelf">Me</string>
     <!--Alert messages-->
     <string name="Loading">Loading …</string>

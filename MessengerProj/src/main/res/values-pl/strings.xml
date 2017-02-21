@@ -161,11 +161,6 @@
     <string name="LocalDatabaseInfo">Wyczyszczenie lokalnej bazy danych spowoduje usunięcie tekstów zbuforowanych wiadomości i skompresowanie bazy, by zaoszczędzić miejsce w pamięci wewnętrznej. Aplikacja do działania potrzebuje niektórych danych, więc rozmiar bazy danych nie osiągnie zero.\n\nOperacja ta może potrwać kilka minut.</string>
     <string name="ClearMediaCache">Wyczyść pamięć podręczną</string>
     <string name="CacheClear">Wyczyść</string>
-    <string name="LocalDocumentCache">Dokumenty</string>
-    <string name="LocalPhotoCache">Zdjęcia</string>
-    <string name="LocalAudioCache">Wiadomości głosowe</string>
-    <string name="LocalVideoCache">Wideo</string>
-    <string name="LocalMusicCache">Muzyka</string>
     <string name="LocalCache">Inne pliki</string>
     <string name="CacheEmpty">Pusty</string>
     <string name="KeepMedia">Przechowywanie multimediów</string>
@@ -278,7 +273,7 @@
     <string name="AttachContact">Kontakt</string>
     <string name="AttachDocument">Plik</string>
     <string name="AttachSticker">naklejka</string>
-    <string name="AttachAudio">Wiadomość głosowa</string>
+    <string name="AttachVoiceMessage">Wiadomość głosowa</string>
     <string name="FromSelf">Ja</string>
     <!--Alert messages-->
     <string name="Loading">Wczytywanie…</string>

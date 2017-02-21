@@ -158,11 +158,6 @@
     <string name="LocalDatabaseInfo">Eliminando il database locale, verranno cancellati i messaggi nella cache e il database verrà compresso per risparmiare spazio. Delta Chat ha bisogno di alcuni dati per funzionare, quindi il database non sarà azzerato.\n\nQuesta operazione può richiedere alcuni minuti.</string>
     <string name="ClearMediaCache">Svuota cache</string>
     <string name="CacheClear">Svuota</string>
-    <string name="LocalDocumentCache">Documenti</string>
-    <string name="LocalPhotoCache">Foto</string>
-    <string name="LocalAudioCache">Messaggi vocali</string>
-    <string name="LocalVideoCache">Video</string>
-    <string name="LocalMusicCache">Musica</string>
     <string name="LocalCache">Altri file</string>
     <string name="CacheEmpty">Vuota</string>
     <string name="KeepMedia">Mantieni media</string>
@@ -275,7 +270,7 @@
     <string name="AttachContact">Contatto</string>
     <string name="AttachDocument">File</string>
     <string name="AttachSticker">Sticker</string>
-    <string name="AttachAudio">Messaggio vocale</string>
+    <string name="AttachVoiceMessage">Messaggio vocale</string>
     <string name="FromSelf">Tu</string>
     <!--Alert messages-->
     <string name="Loading">Caricamento…</string>

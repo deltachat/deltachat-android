@@ -158,11 +158,6 @@
     <string name="LocalDatabaseInfo">Het opschonen van de lokale database zal de tekst van gecachet berichten verwijderen en de database comprimeren om ruimte te besparen. Delta Chat heeft wat ruimte nodig om te kunnen functioneren, dus de databasegrootte zal nooit nul worden.\n\nDit kan enkele minuten duren.</string>
     <string name="ClearMediaCache">Cache opschonen</string>
     <string name="CacheClear">Opschonen</string>
-    <string name="LocalDocumentCache">Bestanden</string>
-    <string name="LocalPhotoCache">Foto\'s</string>
-    <string name="LocalAudioCache">Spraakberichten</string>
-    <string name="LocalVideoCache">Video\'s</string>
-    <string name="LocalMusicCache">Muziek</string>
     <string name="LocalCache">Overige bestanden</string>
     <string name="CacheEmpty">Leeg</string>
     <string name="KeepMedia">Media bewaren</string>
@@ -275,7 +270,7 @@
     <string name="AttachContact">Contact</string>
     <string name="AttachDocument">Bestand</string>
     <string name="AttachSticker">Sticker</string>
-    <string name="AttachAudio">Spraakbericht</string>
+    <string name="AttachVoiceMessage">Spraakbericht</string>
     <string name="FromSelf">Jij</string>
     <!--Alert messages-->
     <string name="Loading">Bezig met laden</string>

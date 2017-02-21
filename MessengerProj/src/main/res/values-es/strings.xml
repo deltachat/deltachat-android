@@ -158,11 +158,6 @@
     <string name="LocalDatabaseInfo">Al borrar la base de datos se eliminarán los mensajes en la caché y se comprimirá la base de datos para liberar espacio de almacenamiento. Delta Chat requiere algunos datos para funcionar, así que la base de datos nunca podrá llegar a cero.\n\nEsto puede tardar algunos minutos.</string>
     <string name="ClearMediaCache">Borrar caché</string>
     <string name="CacheClear">Borrar</string>
-    <string name="LocalDocumentCache">Archivos</string>
-    <string name="LocalPhotoCache">Fotos</string>
-    <string name="LocalAudioCache">Mensajes de voz</string>
-    <string name="LocalVideoCache">Vídeos</string>
-    <string name="LocalMusicCache">Música</string>
     <string name="LocalCache">Otros archivos</string>
     <string name="CacheEmpty">Vacío</string>
     <string name="KeepMedia">Conservar multimedia</string>
@@ -275,7 +270,7 @@
     <string name="AttachContact">Contacto</string>
     <string name="AttachDocument">Archivo</string>
     <string name="AttachSticker">Sticker</string>
-    <string name="AttachAudio">Mensaje de voz</string>
+    <string name="AttachVoiceMessage">Mensaje de voz</string>
     <string name="FromSelf">Tú</string>
     <!--Alert messages-->
     <string name="Loading">Cargando…</string>
