@@ -47,8 +47,6 @@
     <string name="GalleryInfo">Bilder ohne Komprimierung senden</string>
     <!--chat view-->
     <string name="ChatGallery">Galerie</string>
-    <string name="ChatVideo">Video</string>
-    <string name="ChatDocument">Datei</string>
     <string name="ChatCamera">Kamera</string>
     <string name="NoMessages">Keine Nachrichten.</string>
     <string name="ForwardedMessage">Weitergeleitete Nachricht</string>

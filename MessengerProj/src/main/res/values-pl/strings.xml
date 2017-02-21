@@ -47,8 +47,6 @@
     <string name="GalleryInfo">Wyślij obrazki bez kompresji</string>
     <!--chat view-->
     <string name="ChatGallery">Galeria</string>
-    <string name="ChatVideo">Wideo</string>
-    <string name="ChatDocument">Plik</string>
     <string name="ChatCamera">Kamera</string>
     <string name="NoMessages">Brak wiadomości.</string>
     <string name="ForwardedMessage">Przekazana wiadomość</string>

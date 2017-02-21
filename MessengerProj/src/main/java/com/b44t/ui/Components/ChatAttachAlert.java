@@ -48,6 +48,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.b44t.messenger.AndroidUtilities;
+import com.b44t.messenger.ApplicationLoader;
 import com.b44t.messenger.FileLog;
 import com.b44t.messenger.LocaleController;
 import com.b44t.messenger.MediaController;
@@ -341,12 +342,12 @@ public class ChatAttachAlert extends BottomSheet implements NotificationCenter.N
         attachView.addView(lineView, new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 1, Gravity.TOP | Gravity.LEFT));
 
         CharSequence[] labels = new CharSequence[ATTACH_BUTTON_COUNT];
-        labels[ATTACH_BUTTON_IDX_CAMERA]      = LocaleController.getString("ChatCamera", R.string.ChatCamera);
-        labels[ATTACH_BUTTON_IDX_GALLERY]     = LocaleController.getString("ChatGallery", R.string.ChatGallery);
-        labels[ATTACH_BUTTON_IDX_VIDEO]       = LocaleController.getString("ChatVideo", R.string.ChatVideo);
-        labels[ATTACH_BUTTON_IDX_MUSIC]       = LocaleController.getString("AttachMusic", R.string.AttachMusic);
-        labels[ATTACH_BUTTON_IDX_FILE]        = LocaleController.getString("ChatDocument", R.string.ChatDocument);
-        labels[ATTACH_BUTTON_IDX_CONTACT]     = LocaleController.getString("AttachContact", R.string.AttachContact);
+        labels[ATTACH_BUTTON_IDX_CAMERA]      = ApplicationLoader.applicationContext.getString(R.string.ChatCamera);
+        labels[ATTACH_BUTTON_IDX_GALLERY]     = ApplicationLoader.applicationContext.getString(R.string.ChatGallery);
+        labels[ATTACH_BUTTON_IDX_VIDEO]       = ApplicationLoader.applicationContext.getString(R.string.AttachVideo);
+        labels[ATTACH_BUTTON_IDX_MUSIC]       = ApplicationLoader.applicationContext.getString(R.string.AttachMusic);
+        labels[ATTACH_BUTTON_IDX_FILE]        = ApplicationLoader.applicationContext.getString(R.string.AttachDocument);
+        labels[ATTACH_BUTTON_IDX_CONTACT]     = ApplicationLoader.applicationContext.getString(R.string.AttachContact);
         labels[ATTACH_BUTTON_IDX_EMPTY]       = "";
         labels[ATTACH_BUTTON_IDX_SENDSELECTED]= "";
 

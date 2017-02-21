@@ -44,8 +44,6 @@
     <string name="GalleryInfo">Om bestanden ongecomprimeerd te versturen</string>
     <!--chat view-->
     <string name="ChatGallery">Galerij</string>
-    <string name="ChatVideo">Video</string>
-    <string name="ChatDocument">Bestand</string>
     <string name="ChatCamera">Camera</string>
     <string name="NoMessages">Nog geen berichten.</string>
     <string name="ForwardedMessage">Doorgestuurd bericht</string>
