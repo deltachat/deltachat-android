@@ -879,13 +879,13 @@ public class AndroidUtilities {
 
     public static String formatFileSize(long size) {
         if (size < 1024) {
-            return String.format("%d B", size);
+            return String.format("%d Byte", size);
         } else if (size < 1024 * 1024) {
-            return String.format("%.1f KB", size / 1024.0f);
+            return String.format("%.1f KiB", size / 1024.0f);
         } else if (size < 1024 * 1024 * 1024) {
-            return String.format("%.1f MB", size / 1024.0f / 1024.0f);
+            return String.format("%.1f MiB", size / 1024.0f / 1024.0f);
         } else {
-            return String.format("%.1f GB", size / 1024.0f / 1024.0f / 1024.0f);
+            return String.format("%.1f GiB", size / 1024.0f / 1024.0f / 1024.0f);
         }
     }
 
