@@ -28,7 +28,7 @@
     <!--documents view-->
     <string name="SelectFile">Selectionner le fichier</string>
     <string name="FreeOfTotal">Free %1$s of %2$s</string>
-    <string name="UnknownError">Erreur inconnue</string>
+    <string name="ErrorHint">Erreur inconnue</string>
     <string name="AccessError">Erreur d\'accès</string>
     <string name="NoFiles">Aucun fichier pour le moment…</string>
     <string name="FileUploadLimit">La taille du fichier ne peut pas exéder %1$s</string>
@@ -406,7 +406,6 @@
     <string name="ContactCreated">Utilisateur créé.</string>
     <string name="ViewProfile">Voir le profil</string>
     <string name="OneMomentPlease">Un moment…</string>
-    <string name="CannotDeleteChat">Impossible de supprimer la conversation.</string>
     <string name="NoChatsHelp">Lancez une conversation en appuyant sur le bouton dans le coin inférieur droit ou appuyez sur le bouton menu pour plus d\'options.</string>
     <string name="ConfiguringAccount">Configuration du compte en cours…</string>
     <string name="CannotConnect">Connexion impossible, veuillez vérifier la configuration.</string>
@@ -434,5 +433,5 @@
     <string name="E2ECompareKeys">Comparer les clefs</string>
     <string name="ResetContactsKey">Reinitialiser les clefs de l\'utilisateur</string>
     <string name="ForwardToTitle">Renvoyer à…</string>
-    <string name="ContactDeleted">Utilisateur supprimé.</string>
+    <string name="DoneHint">Fait.</string>
 </resources>

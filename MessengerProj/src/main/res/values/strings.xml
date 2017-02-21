@@ -33,7 +33,7 @@
     <!--documents view-->
     <string name="SelectFile">Select File</string>
     <string name="FreeOfTotal">Free %1$s of %2$s</string>
-    <string name="UnknownError">Unknown error</string>
+    <string name="ErrorHint">Unknown error</string>
     <string name="AccessError">Access error</string>
     <string name="NoFiles">No files yet …</string>
     <string name="FileUploadLimit">File size shouldn\'t be greater than %1$s</string>
@@ -427,7 +427,6 @@
     <string name="ContactCreated">Contact created.</string>
     <string name="ViewProfile">View profile</string>
     <string name="OneMomentPlease">One moment, please …</string>
-    <string name="CannotDeleteChat">Cannot delete chat.</string>
     <string name="NoChatsHelp">Start messaging by pressing the new chat button in the bottom right corner or tap the menu button for more options.</string>
     <string name="ConfiguringAccount">Configuring account …</string>
     <string name="CannotConnect">Cannot connect, please check the configuration.</string>
@@ -456,5 +455,6 @@
     <string name="ResetContactsKey">Reset contact\'s key</string>
     <string name="ForwardToTitle">Forward to …</string>
     <string name="SelectContact">Choose a contact</string>
-    <string name="ContactDeleted">Contact deleted.</string>
+    <string name="DoneHint">Done.</string>
+
 </resources>

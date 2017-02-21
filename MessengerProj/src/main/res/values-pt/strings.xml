@@ -30,7 +30,7 @@
     <!--documents view-->
     <string name="SelectFile">Selecione um Arquivo</string>
     <string name="FreeOfTotal">Disponível %1$s de %2$s</string>
-    <string name="UnknownError">Erro desconhecido</string>
+    <string name="ErrorHint">Erro desconhecido</string>
     <string name="AccessError">Erro de acesso</string>
     <string name="NoFiles">Ainda não há arquivos</string>
     <string name="FileUploadLimit">Tamanho do arquivo não deve ser maior que %1$s</string>
@@ -403,7 +403,6 @@
     <string name="ContactCreated">Usuário criado.</string>
     <string name="ViewProfile">Ver perfil</string>
     <string name="OneMomentPlease">Um momento, por favor…</string>
-    <string name="CannotDeleteChat">Impossível deletar o chat.</string>
     <string name="NoChatsHelp">Comece uma conversa pressionando \"+\" do canto direito inferior. Pressione o menu para mais opções.</string>
     <string name="ConfiguringAccount">Configurando conta…</string>
     <string name="CannotConnect">Impossível conectar! Cheque a configuração.</string>
@@ -430,6 +429,6 @@
     <string name="E2ECompareKeys">Comparar chaves</string>
     <string name="ResetContactsKey">Apagar chave do usuário</string>
     <string name="ForwardToTitle">Selecione um Chat …</string>
-    <string name="ContactDeleted">Usuário deletado.</string>
+    <string name="DoneHint">Concluído.</string>
 </resources>
 

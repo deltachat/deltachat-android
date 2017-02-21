@@ -443,7 +443,7 @@ public class DocumentSelectActivity extends BaseFragment {
             return false;
         }
         if (files == null) {
-            showErrorBox(LocaleController.getString("UnknownError", R.string.UnknownError));
+            showErrorBox(ApplicationLoader.applicationContext.getString(R.string.ErrorHint));
             return false;
         }
         currentDir = dir;

@@ -30,7 +30,7 @@
     <!--documents view-->
     <string name="SelectFile">Seleziona file</string>
     <string name="FreeOfTotal">Liberi %1$s di %2$s</string>
-    <string name="UnknownError">Errore sconosciuto</string>
+    <string name="ErrorHint">Errore sconosciuto</string>
     <string name="AccessError">Errore durante l\'accesso</string>
     <string name="NoFiles">Ancora nessun file…</string>
     <string name="FileUploadLimit">La dimensione del file non dovrebbe superare i %1$s</string>
@@ -344,4 +344,5 @@
     <string name="Media">Media</string>
     <string name="InviteMenuEntry">Invita amici</string>
     <string name="ForwardToTitle">Seleziona chat …</string>
+    <string name="DoneHint">Fatto.</string>
 </resources>

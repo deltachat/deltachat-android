@@ -66,6 +66,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.b44t.ui.Components.ForegroundDetector;
 import com.b44t.ui.Components.TypefaceSpan;
@@ -645,6 +646,26 @@ public class AndroidUtilities {
             }
         });
         animatorSet.start();
+    }
+
+    public static void showDoneHint(Context context)
+    {
+        // this hint should be shown when an action is complete and not directly visible on the screen,
+        // eg. copy-to-clipboard or item deletion in a long list
+        Toast.makeText(context, ApplicationLoader.applicationContext.getString(R.string.DoneHint), Toast.LENGTH_SHORT).show();
+    }
+
+    public static void showErrorHint(Context context)
+    {
+        // this hint should be shown on errors that normally should not happen.
+        showHint(context, ApplicationLoader.applicationContext.getString(R.string.ErrorHint));
+    }
+
+    public static void showHint(Context context, String text)
+    {
+        if( text != null ) {
+            Toast.makeText(context, text, Toast.LENGTH_LONG).show();
+        }
     }
 
     public static void addToClipboard(CharSequence str) {

@@ -295,10 +295,10 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
                             if( MrMailbox.deleteContact(user_id)==0 ) {
-                                Toast.makeText(getParentActivity(), ApplicationLoader.applicationContext.getString(R.string.CannotDeleteContact), Toast.LENGTH_LONG).show();
+                                AndroidUtilities.showHint(getParentActivity(), ApplicationLoader.applicationContext.getString(R.string.CannotDeleteContact));
                             }
                             else {
-                                Toast.makeText(getParentActivity(), ApplicationLoader.applicationContext.getString(R.string.ContactDeleted), Toast.LENGTH_LONG).show();
+                                AndroidUtilities.showDoneHint(getParentActivity());
                                 finishFragment();
                             }
                         }

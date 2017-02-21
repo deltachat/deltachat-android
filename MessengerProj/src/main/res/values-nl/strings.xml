@@ -30,7 +30,7 @@
     <!--documents view-->
     <string name="SelectFile">Kies een bestand</string>
     <string name="FreeOfTotal">Vrij: %1$s van %2$s</string>
-    <string name="UnknownError">Onbekende fout</string>
+    <string name="ErrorHint">Onbekende fout</string>
     <string name="AccessError">Toegangsfout</string>
     <string name="NoFiles">Nog geen bestanden</string>
     <string name="FileUploadLimit">Bestanden mogen maximaal %1$s zijn</string>
@@ -338,4 +338,5 @@
     <string name="Media">Media</string>
     <string name="InviteMenuEntry">Vrienden uitnodigen</string>
     <string name="ForwardToTitle">Kies een chat …</string>
+    <string name="DoneHint">Gereed.</string>
 </resources>

@@ -33,7 +33,7 @@
     <!--documents view-->
     <string name="SelectFile">Datei auswählen</string>
     <string name="FreeOfTotal">Freier Speicher: %1$s von %2$s</string>
-    <string name="UnknownError">Unbekannter Fehler</string>
+    <string name="ErrorHint">Unbekannter Fehler</string>
     <string name="AccessError">Zugriffsfehler</string>
     <string name="NoFiles">Noch keine Dateien …</string>
     <string name="FileUploadLimit">Die Datei darf nicht größer als %1$s sein</string>
@@ -430,7 +430,6 @@
     <string name="ViewProfile">Profil anzeigen</string>
     <string name="OneMomentPlease">Einen Moment, bitte …</string>
     <string name="NoChatsHelp">Unten auf das Plussymbol für die erste Chatnachricht tippen; der Menüknopf öffnet die weiteren Optionen.</string>
-    <string name="CannotDeleteChat">Kann Chat nicht löschen</string>
     <string name="ConfiguringAccount">Konto konfigurieren …</string>
     <string name="InviteMenuEntry">Einladungen versenden</string>
     <string name="InviteText">Ich verwende nun auch den Delta Chat Messenger - %1$s - und bin dort unter %2$s erreichbar.</string>
@@ -457,5 +456,5 @@
     <string name="ResetContactsKey">Schlüssel zurücksetzen</string>
     <string name="ForwardToTitle">Weiterleiten an …</string>
     <string name="SelectContact">Kontakt auswählen</string>
-    <string name="ContactDeleted">Kontakt gelöscht.</string>
+    <string name="DoneHint">Fertig.</string>
 </resources>

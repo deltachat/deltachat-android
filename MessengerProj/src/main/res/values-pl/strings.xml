@@ -33,7 +33,7 @@
     <!--documents view-->
     <string name="SelectFile">Wybierz plik</string>
     <string name="FreeOfTotal">Wolne %1$s z %2$s</string>
-    <string name="UnknownError">Nieznany błąd</string>
+    <string name="ErrorHint">Nieznany błąd</string>
     <string name="AccessError">Błąd dostępu</string>
     <string name="NoFiles">Nie ma plików…</string>
     <string name="FileUploadLimit">Rozmiar pliku nie powinien być większy niż %1$s</string>
@@ -449,7 +449,6 @@
     <string name="ContactCreated">Kontakt utworzony.</string>
     <string name="ViewProfile">Pokaż profil</string>
     <string name="OneMomentPlease">Jedną chwilę, proszę…</string>
-    <string name="CannotDeleteChat">Nie można usunąć czatu.</string>
     <string name="NoChatsHelp">Zacznij przesyłanie wiadomości, naciskając przycisk nowej wiadomości w prawym dolnym rogu lub naciśnij przycisk menu, aby uzyskać więcej opcji.</string>
     <string name="ConfiguringAccount">Konfigurowanie konta…</string>
     <string name="CannotConnect">Nie można nawiązać połączenia, sprawdź konfigurację.</string>
@@ -478,5 +477,5 @@
     <string name="ResetContactsKey">Resetuj klucz kontaktu</string>
     <string name="ForwardToTitle">Przekaż do…</string>
     <string name="SelectContact">Wybierz kontakt</string>
-    <string name="ContactDeleted">Kontakt usunięty.</string>
+    <string name="DoneHint">Gotowe.</string>
 </resources>

@@ -429,13 +429,11 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                         str += getMessageContent(messageId, previousMid);
                         previousMid = messageId;
                     }
-                    if (str.length() != 0) {
-                        AndroidUtilities.addToClipboard(str);
-                    }
+                    AndroidUtilities.addToClipboard(str);
                     selectedMessagesIds.clear();
-
                     actionBar.hideActionMode();
                     updateVisibleRows();
+                    AndroidUtilities.showDoneHint(getParentActivity());
                 } else if (id == id_delete_messages) {
                     if (getParentActivity() == null) {
                         return;
@@ -466,10 +464,11 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
                             if( MrMailbox.deleteChat((int)dialog_id)!=0 ) {
+                                AndroidUtilities.showDoneHint(getParentActivity());
                                 finishFragment();
                             }
                             else {
-                                Toast.makeText(getParentActivity(), LocaleController.getString("CannotDeleteChat", R.string.CannotDeleteChat), Toast.LENGTH_LONG).show();
+                                AndroidUtilities.showErrorHint(getParentActivity()); // normally, there is no reason for deleteChat to fail() as everything is just local
                             }
                         }
                     });
@@ -2445,6 +2444,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
 
                 MrMailbox.reloadMainChatlist();
                 NotificationCenter.getInstance().postNotificationName(NotificationCenter.dialogsNeedReload);
+                AndroidUtilities.showDoneHint(getParentActivity());
             }
         });
         builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
@@ -2918,6 +2918,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                                             break;
                                         case 210:
                                             AndroidUtilities.addToClipboard(urlTitle);
+                                            AndroidUtilities.showDoneHint(getParentActivity());
                                             break;
                                     }
                                 }
