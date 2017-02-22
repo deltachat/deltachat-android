@@ -2444,7 +2444,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
 
                 MrMailbox.reloadMainChatlist();
                 NotificationCenter.getInstance().postNotificationName(NotificationCenter.dialogsNeedReload);
-                AndroidUtilities.showDoneHint(getParentActivity());
             }
         });
         builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
