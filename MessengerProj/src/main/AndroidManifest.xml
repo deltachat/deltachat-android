@@ -157,7 +157,7 @@
         </receiver>
         -->
 
-        <service android:name=".AuthenticatorService" android:exported="true">
+        <service android:name=".AuthenticatorService" android:exported="true"> <!-- what is this for? (bp) -->
             <intent-filter>
                 <action android:name="android.accounts.AccountAuthenticator"/>
             </intent-filter>
@@ -165,7 +165,7 @@
                 android:resource="@xml/auth"/>
         </service>
 
-        <service android:name=".ContactsSyncAdapterService" android:exported="true">
+        <service android:name=".ContactsSyncAdapterService" android:exported="true"> <!-- what is this for? (bp) -->
             <intent-filter>
                 <action android:name="android.content.SyncAdapter" />
             </intent-filter>
@@ -178,7 +178,7 @@
         <service
             android:name="com.b44t.messenger.TgChooserTargetService"
             android:label="@string/AppName"
-            android:permission="android.permission.BIND_CHOOSER_TARGET_SERVICE">
+            android:permission="android.permission.BIND_CHOOSER_TARGET_SERVICE"> <!-- what is this for? (bp) -->
             <intent-filter>
                 <action android:name="android.service.chooser.ChooserTargetService" />
             </intent-filter>
