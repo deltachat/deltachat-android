@@ -277,7 +277,6 @@
     <string name="FromSelf">Ja</string>
     <!--Alert messages-->
     <string name="Loading">Wczytywanie…</string>
-    <string name="NoPlayerInstalled">Nie masz odtwarzacza wideo. Zainstaluj jakiś, aby kontynuować.</string>
     <string name="NoHandleAppInstalled">Nie masz aplikacji obsługujących pliki typu „%1$s”. Zainstaluj jakąś, aby kontynuować.</string>
     <string name="ContactAlreadyInGroup">Ten kontakt jest już w tej grupie</string>
     <string name="ForwardMessagesTo">Przekazać wybrane wiadomości do <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>?</string>

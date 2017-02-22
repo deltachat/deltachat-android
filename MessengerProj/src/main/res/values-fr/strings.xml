@@ -272,7 +272,6 @@
     <string name="FromSelf">Moi</string>
     <!--Alert messages-->
     <string name="Loading">Chargement…</string>
-    <string name="NoPlayerInstalled">Vous n\'avez pas de lecteur vidéo, installez-en un pour continuer</string>
     <string name="NoHandleAppInstalled">Vous n\'avez pas d\'application qui peut gérer le type \'%1$s\', veuillez en installer un pour continuer</string>
     <string name="ContactAlreadyInGroup">Ce contact est déjà dans ce groupe</string>
     <string name="ForwardMessagesTo">Renvoyer les messages sélectionnés à <![CDATA[<b>]]>%1$s<![CDATA[</b>]]> ?</string>

@@ -277,7 +277,6 @@
     <string name="FromSelf">Me</string>
     <!--Alert messages-->
     <string name="Loading">Loading …</string>
-    <string name="NoPlayerInstalled">You don\'t have a video player, please install one to continue</string>
     <string name="NoHandleAppInstalled">You don\'t have applications that can handle the file type \'%1$s\', please install one to continue</string>
     <string name="ContactAlreadyInGroup">This contact is already in this group.</string>
     <string name="ForwardMessagesTo">Forward selected messages to <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>?</string>

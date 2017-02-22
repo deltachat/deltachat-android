@@ -274,7 +274,6 @@
     <string name="FromSelf">Tu</string>
     <!--Alert messages-->
     <string name="Loading">Caricamento…</string>
-    <string name="NoPlayerInstalled">Non hai un lettore video, per favore installane uno per continuare</string>
     <string name="NoHandleAppInstalled">Non hai applicazioni che possono gestire il tipo di file \'%1$s\': installane una per proseguire</string>
     <string name="AskAddMemberToGroup">Aggiungere <![CDATA[<b>]]>%1$s<![CDATA[</b>]]> al gruppo?</string>
     <string name="ContactAlreadyInGroup">Questo utente è già membro del gruppo</string>

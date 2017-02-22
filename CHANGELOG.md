@@ -2,6 +2,7 @@
 
 ## UNRELEASED
 
+* Allow sending and opening attachments of any type
 * Send contacts and email addresses
 * Clickable email addresses
 * Update Polish translation

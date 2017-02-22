@@ -72,7 +72,6 @@ import com.b44t.messenger.browser.Browser;
 import com.b44t.messenger.support.widget.LinearLayoutManager;
 import com.b44t.messenger.support.widget.RecyclerView;
 import com.b44t.messenger.ApplicationLoader;
-import com.b44t.messenger.FileLoader;
 import com.b44t.messenger.ConnectionsManager;
 import com.b44t.messenger.TLRPC;
 import com.b44t.messenger.FileLog;
@@ -154,7 +153,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
 
     private boolean openSearchKeyboard;
 
-    private MessageObject forwaringMessage;
     private boolean paused = true;
     private boolean wasPaused = false;
     private boolean readWhenResume = false;
@@ -231,7 +229,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.replaceMessagesObjects);
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.notificationsSettingsUpdated);
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.errSelfNotInGroup);
-        //NotificationCenter.getInstance().addObserver(this, NotificationCenter.chatSearchResultsAvailable);
 
         if (AndroidUtilities.isTablet()) {
             NotificationCenter.getInstance().postNotificationName(NotificationCenter.openedChatChanged, dialog_id, false);
@@ -363,7 +360,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         NotificationCenter.getInstance().removeObserver(this, NotificationCenter.replaceMessagesObjects);
         NotificationCenter.getInstance().removeObserver(this, NotificationCenter.notificationsSettingsUpdated);
         NotificationCenter.getInstance().removeObserver(this, NotificationCenter.errSelfNotInGroup);
-        //NotificationCenter.getInstance().removeObserver(this, NotificationCenter.chatSearchResultsAvailable);
         NotificationCenter.getInstance().removeObserver(this, NotificationCenter.audioPlayStateChanged);
 
         if (AndroidUtilities.isTablet()) {
@@ -1423,27 +1419,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         });
     }
 
-    /*
-    private void clearChatData() {
-        messages.clear();
-        messagesByDays.clear();
-        chatListView.setEmptyView(null);
-        messagesDict.clear();
-        maxMessageId = Integer.MAX_VALUE;
-        minMessageId = Integer.MIN_VALUE;
-        maxDate = Integer.MIN_VALUE;
-        minDate = 0;
-        endReached = false;
-        forwardEndReached = true;
-        first = true;
-        firstLoading = true;
-        loadingForward = false;
-        startLoadFromMessageId = 0;
-        last_message_id = 0;
-        chatAdapter.notifyDataSetChanged();
-    }
-    */
-
     private void moveScrollToLastMessage() {
         if( m_msglist.length > 0  ) {
             chatLayoutManager.scrollToPositionWithOffset(m_msglist.length - 1, -100000 - chatListView.getPaddingTop());
@@ -2463,7 +2438,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
             return;
         }
 
-        forwaringMessage = null;
         selectedMessagesIds.clear();
         actionBar.hideActionMode();
         actionBar.createActionMode();
@@ -2536,48 +2510,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 dialogsFragment.finishFragment(false);
             }
         }
-
-       /*
-        if (dialog_id != 0 && (forwaringMessage != null || !selectedMessagesIds.isEmpty() )) {
-            if (forwaringMessage != null) {
-                forwaringMessage = null;
-            } else {
-                selectedMessagesIds.clear();
-                actionBar.hideActionMode();
-            }
-
-            if (did != dialog_id) {
-                int lower_part = (int) did;
-                if (lower_part != 0) {
-                    Bundle args = new Bundle();
-                    args.putBoolean("scrollToTopOnResume", scrollToTopOnResume);
-                    if (lower_part > 0) {
-                        args.putInt("user_id", lower_part);
-                    } else if (lower_part < 0) {
-                        args.putInt("chat_id", -lower_part);
-                    }
-
-                    ChatActivity chatActivity = new ChatActivity(args);
-                    if (presentFragment(chatActivity, true)) {
-                        if (!AndroidUtilities.isTablet()) {
-                            removeSelfFromStack();
-                        }
-                    } else {
-                        activity.finishFragment();
-                    }
-                } else {
-                    activity.finishFragment();
-                }
-            } else {
-                activity.finishFragment();
-                moveScrollToLastMessage();
-                if (AndroidUtilities.isTablet()) {
-                    actionBar.hideActionMode();
-                }
-                updateVisibleRows();
-            }
-        }
-        */
     }
 
     @Override
@@ -2654,20 +2586,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         }
         */
         return messageObjects;
-    }
-
-    private void alertUserOpenError(MessageObject message) {
-        if (getParentActivity() == null) {
-            return;
-        }
-        AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
-        builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), null);
-        if (message.type == MessageObject.MO_TYPE3_VIDEO) {
-            builder.setMessage(LocaleController.getString("NoPlayerInstalled", R.string.NoPlayerInstalled));
-        } else {
-            builder.setMessage(LocaleController.formatString("NoHandleAppInstalled", R.string.NoHandleAppInstalled, message.getDocument().mime_type));
-        }
-        showDialog(builder.create());
     }
 
     private void openSearchWithText(String text) {
@@ -2963,29 +2881,19 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     @Override
                     public void didPressedImage(ChatMessageCell cell) {
                         MessageObject message = cell.getMessageObject();
-                        if (Build.VERSION.SDK_INT >= 16 && message.isVideo() || message.type == MessageObject.MO_TYPE1_PHOTO || message.type == MessageObject.MO_TYPE0_TEXT && !message.isWebpageDocument() || message.isGif()) {
+                        if( (Build.VERSION.SDK_INT >= 16 && message.isVideo()) || message.type == MessageObject.MO_TYPE1_PHOTO || message.isGif()) {
                             PhotoViewer.getInstance().setParentActivity(getParentActivity());
                             PhotoViewer.getInstance().openPhoto(message, message.type != MessageObject.MO_TYPE0_TEXT ? dialog_id : 0, 0, ChatActivity.this);
-                        } else if (message.type == MessageObject.MO_TYPE3_VIDEO) {
-                            try {
-                                File f = null;
-                                if (message.messageOwner.attachPath != null && message.messageOwner.attachPath.length() != 0) {
-                                    f = new File(message.messageOwner.attachPath);
-                                }
-                                if (f == null || !f.exists()) {
-                                    f = FileLoader.getPathToMessage(message.messageOwner);
-                                }
-                                Intent intent = new Intent(Intent.ACTION_VIEW);
-                                intent.setDataAndType(Uri.fromFile(f), "video/mp4");
-                                getParentActivity().startActivityForResult(intent, 500);
-                            } catch (Exception e) {
-                                alertUserOpenError(message);
-                            }
-                        } else if (message.type == MessageObject.MO_TYPE9_FILE || message.type == MessageObject.MO_TYPE0_TEXT) {
+                        } else if (message.type == MessageObject.MO_TYPE9_FILE || message.type == MessageObject.MO_TYPE3_VIDEO ) {
                             try {
                                 AndroidUtilities.openForView(message, getParentActivity());
                             } catch (Exception e) {
-                                alertUserOpenError(message);
+                                if ( getParentActivity()!=null ) {
+                                    AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
+                                    builder.setPositiveButton(ApplicationLoader.applicationContext.getString(R.string.OK), null);
+                                    builder.setMessage(LocaleController.formatString("NoHandleAppInstalled", R.string.NoHandleAppInstalled, AndroidUtilities.getMimetypeForView(message)));
+                                    showDialog(builder.create());
+                                }
                             }
                         }
                     }

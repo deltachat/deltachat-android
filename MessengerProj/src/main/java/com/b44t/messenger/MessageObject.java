@@ -727,10 +727,6 @@ public class MessageObject {
         return messageOwner.media instanceof TLRPC.TL_messageMediaDocument && isGifDocument(messageOwner.media.document);
     }
 
-    public boolean isWebpageDocument() {
-        return false;
-    }
-
     public boolean isNewGif() {
         return messageOwner.media != null && isNewGifDocument(messageOwner.media.document);
     }

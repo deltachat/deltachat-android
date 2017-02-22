@@ -199,6 +199,7 @@ public class MrMsg {
                 ret.media = new TLRPC.TL_messageMediaDocument();
                 ret.media.caption = "";
                 ret.media.document = new TLRPC.TL_document();
+                ret.media.document.file_name = getFilename();
                 ret.media.document.mr_path = path;
                 if( type == MR_MSG_AUDIO || type == MR_MSG_VOICE ) {
                     TLRPC.TL_documentAttributeAudio attr = new TLRPC.TL_documentAttributeAudio();

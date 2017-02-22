@@ -988,21 +988,32 @@ public class AndroidUtilities {
     }
     */
 
+    public static String getMimetypeForView(MessageObject message)
+    {
+        String mimeType = "application/octet-stream";
+        String fileName = message.messageOwner.media.document.file_name;
+        try {
+            MimeTypeMap mimeMap = MimeTypeMap.getSingleton();
+            int idx = fileName.lastIndexOf('.');
+            if (idx != -1) {
+                String ext = fileName.substring(idx + 1);
+                mimeType = mimeMap.getMimeTypeFromExtension(ext.toLowerCase());
+            }
+            if (mimeType == null) {
+                mimeType = message.messageOwner.media.document.mime_type;
+            }
+        }
+        catch(Exception e) {
+        }
+        return mimeType;
+    }
+
     public static void openForView(MessageObject message, Activity activity) throws Exception
     {
         String fileName = message.messageOwner.media.document.file_name;
         Uri toOpen = Uri.parse("content://" + BuildConfig.APPLICATION_ID + ".attachments/" + fileName);
 
-        String mimeType = null;
-        MimeTypeMap mimeMap = MimeTypeMap.getSingleton();
-        int idx = fileName.lastIndexOf('.');
-        if (idx != -1) {
-            String ext = fileName.substring(idx + 1);
-            mimeType = mimeMap.getMimeTypeFromExtension(ext.toLowerCase());
-        }
-        if (mimeType == null) {
-            mimeType = message.messageOwner.media.document.mime_type;
-        }
+        String mimeType = getMimetypeForView(message);
 
         Intent intent = new Intent(Intent.ACTION_VIEW);
         intent.setDataAndType(toOpen, mimeType);

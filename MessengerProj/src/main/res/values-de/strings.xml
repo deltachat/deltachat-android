@@ -277,8 +277,7 @@
     <string name="FromSelf">Ich</string>
     <!--Alert messages-->
     <string name="Loading">Lädt …</string>
-    <string name="NoPlayerInstalled">Du hast keinen Videoplayer. Bitte installiere einen um fortzufahren.</string>
-    <string name="NoHandleAppInstalled">Du hast keine Applikationen, die den Dateityp \'%1$s\' öffnen könnten. Bitte installiere eine entsprechende Anwendung um fortzufahren.</string>
+    <string name="NoHandleAppInstalled">Um den Dateityp \"%1$s\" öffnen zu können, muss eine entsprechende App installiert werden.</string>
     <string name="ContactAlreadyInGroup">Kontakt befindet sich schon in der Gruppe.</string>
     <string name="ForwardMessagesTo">Ausgewählte Nachrichten an <![CDATA[<b>]]>%1$s<![CDATA[</b>]]> weiterleiten?</string>
     <string name="SendMessagesTo">Nachricht an <![CDATA[<b>]]>%1$s<![CDATA[</b>]]> senden?</string>
