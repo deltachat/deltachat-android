@@ -98,14 +98,6 @@ public class TLRPC {
 	public static class TL_peerUser extends Peer {
 	}
 
-	public static class GeoPoint extends TLObject {
-		public double _long;
-		public double lat;
-	}
-
-	public static class TL_geoPoint extends GeoPoint {
-	}
-
 	public static class TL_messageMediaEmpty extends MessageMedia {
 	}
 
@@ -181,7 +173,6 @@ public class TLRPC {
 		public String first_name;
 		public String last_name;
 		public String username;
-        public String phone;
 		public UserProfilePhoto photo;
         public int flags;
 		public boolean self;
@@ -394,7 +385,6 @@ public class TLRPC {
 	public static class MessageMedia extends TLObject {
 		public byte[] bytes;
 		public Photo photo;
-		public GeoPoint geo;
 		public String title;
 		public String address;
 		public String provider;
