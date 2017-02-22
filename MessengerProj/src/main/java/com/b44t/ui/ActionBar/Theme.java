@@ -116,6 +116,7 @@ public class Theme {
     public static final int MSG_LINK_TEXT_COLOR = 0xff2678b6;
     public static final int MSG_LINK_SELECT_BACKGROUND_COLOR = 0x3362a9e3;
     public static final int MSG_TEXT_SELECT_BACKGROUND_COLOR = 0x6662a9e3;
+    public static final int MSG_DOC_NAME_COLOR = 0xFF3093e0; // similar color as the file-icon
 
     public static Drawable backgroundDrawableIn;
     public static Drawable backgroundDrawableInSelected;

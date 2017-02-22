@@ -159,8 +159,6 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
     private static TextPaint infoPaint;
     private static TextPaint docNamePaint;
     private static Paint docBackPaint;
-    private static TextPaint locationTitlePaint;
-    private static TextPaint locationAddressPaint;
     private static Paint urlPaint;
     private static Paint urlSelectionPaint;
     private static TextPaint durationPaint;
@@ -293,15 +291,9 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
             infoPaint.setTextSize(dp(12));
 
             docNamePaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
-            docNamePaint.setTextSize(dp(15));
+            docNamePaint.setTextSize(dp(16));
 
             docBackPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-
-            locationTitlePaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
-            locationTitlePaint.setTextSize(dp(15));
-
-            locationAddressPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
-            locationAddressPaint.setTextSize(dp(13));
 
             urlPaint = new Paint();
             urlPaint.setColor(Theme.MSG_LINK_SELECT_BACKGROUND_COLOR);
@@ -2192,13 +2184,11 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
 
         if (documentAttachType == DOCUMENT_ATTACH_TYPE_DOCUMENT) {
             drawIcon = true;
+            docNamePaint.setColor(Theme.MSG_DOC_NAME_COLOR);
+            infoPaint.setColor(Theme.MSG_DOC_NAME_COLOR);
             if (currentMessageObject.isOutOwner()) {
-                docNamePaint.setColor(Theme.MSG_TEXT_COLOR);
-                infoPaint.setColor(Theme.MSG_TEXT_COLOR);
                 docBackPaint.setColor(isDrawSelectedBackground() ? Theme.MSG_OUT_FILE_BACKGROUND_SELECTED_COLOR : Theme.MSG_OUT_FILE_BACKGROUND_COLOR);
             } else {
-                docNamePaint.setColor(Theme.MSG_TEXT_COLOR);
-                infoPaint.setColor(Theme.MSG_TEXT_COLOR);
                 docBackPaint.setColor(isDrawSelectedBackground() ? Theme.MSG_IN_FILE_BACKGROUND_SELECTED_COLOR : Theme.MSG_IN_FILE_BACKGROUND_COLOR);
             }
 
