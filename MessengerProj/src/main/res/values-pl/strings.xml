@@ -36,7 +36,6 @@
     <string name="ErrorHint">Nieznany błąd</string>
     <string name="AccessError">Błąd dostępu</string>
     <string name="NoFiles">Nie ma plików…</string>
-    <string name="FileUploadLimit">Rozmiar pliku nie powinien być większy niż %1$s</string>
     <string name="NotMounted">Nie zamontowano pamięci</string>
     <string name="UsbActive">Aktywny transfer USB</string>
     <string name="InternalStorage">Pamięć wewnętrzna</string>

@@ -31,7 +31,6 @@
     <string name="ErrorHint">Erreur inconnue</string>
     <string name="AccessError">Erreur d\'accès</string>
     <string name="NoFiles">Aucun fichier pour le moment…</string>
-    <string name="FileUploadLimit">La taille du fichier ne peut pas exéder %1$s</string>
     <string name="NotMounted">Stockage non monté</string>
     <string name="UsbActive">Transfert USB en cours</string>
     <string name="InternalStorage">Stockage interne</string>

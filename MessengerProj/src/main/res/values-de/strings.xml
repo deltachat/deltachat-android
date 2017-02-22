@@ -36,7 +36,6 @@
     <string name="ErrorHint">Unbekannter Fehler</string>
     <string name="AccessError">Zugriffsfehler</string>
     <string name="NoFiles">Noch keine Dateien …</string>
-    <string name="FileUploadLimit">Die Datei darf nicht größer als %1$s sein</string>
     <string name="NotMounted">Speicher nicht eingebunden</string>
     <string name="UsbActive">USB-Transfer aktiv</string>
     <string name="InternalStorage">Interner Speicher</string>

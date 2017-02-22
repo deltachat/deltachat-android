@@ -33,7 +33,6 @@
     <string name="ErrorHint">Onbekende fout</string>
     <string name="AccessError">Toegangsfout</string>
     <string name="NoFiles">Nog geen bestanden</string>
-    <string name="FileUploadLimit">Bestanden mogen maximaal %1$s zijn</string>
     <string name="NotMounted">Geen opslagmedium gevonden</string>
     <string name="UsbActive">USB-overdracht actief</string>
     <string name="InternalStorage">Interne opslag</string>

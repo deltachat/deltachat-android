@@ -33,7 +33,6 @@
     <string name="ErrorHint">Error desconocido</string>
     <string name="AccessError">Error de acceso</string>
     <string name="NoFiles">Aún sin archivos…</string>
-    <string name="FileUploadLimit">El archivo no debe superar los %1$s</string>
     <string name="NotMounted">Almacenamiento no montado</string>
     <string name="UsbActive">Transferencia USB activa</string>
     <string name="InternalStorage">Almacenamiento Interno</string>

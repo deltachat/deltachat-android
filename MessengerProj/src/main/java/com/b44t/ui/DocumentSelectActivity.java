@@ -27,7 +27,6 @@ import android.animation.Animator;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.annotation.SuppressLint;
-import android.app.AlertDialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -85,7 +84,6 @@ public class DocumentSelectActivity extends BaseFragment {
     private ArrayList<ListItem> items = new ArrayList<>();
     private boolean receiverRegistered = false;
     private ArrayList<HistoryEntry> history = new ArrayList<>();
-    private long sizeLimit = 1024 * 1024 * 1536;
     private DocumentSelectActivityDelegate delegate;
     private HashMap<String, ListItem> selectedFiles = new HashMap<>();
     private ArrayList<View> actionModeViews = new ArrayList<>();
@@ -238,14 +236,8 @@ public class DocumentSelectActivity extends BaseFragment {
                 File file = item.file;
                 if (file != null && !file.isDirectory()) {
                     if (!file.canRead()) {
-                        showErrorBox(LocaleController.getString("AccessError", R.string.AccessError));
+                        showErrorBox(ApplicationLoader.applicationContext.getString(R.string.AccessError));
                         return false;
-                    }
-                    if (sizeLimit != 0) {
-                        if (file.length() > sizeLimit) {
-                            showErrorBox(LocaleController.formatString("FileUploadLimit", R.string.FileUploadLimit, AndroidUtilities.formatFileSize(sizeLimit)));
-                            return false;
-                        }
                     }
                     if (file.length() == 0) {
                         return false;
@@ -311,14 +303,8 @@ public class DocumentSelectActivity extends BaseFragment {
                     listView.setSelection(0);
                 } else {
                     if (!file.canRead()) {
-                        showErrorBox(LocaleController.getString("AccessError", R.string.AccessError));
+                        showErrorBox(ApplicationLoader.applicationContext.getString(R.string.AccessError));
                         file = new File("/mnt/sdcard");
-                    }
-                    if (sizeLimit != 0) {
-                        if (file.length() > sizeLimit) {
-                            showErrorBox(LocaleController.formatString("FileUploadLimit", R.string.FileUploadLimit, AndroidUtilities.formatFileSize(sizeLimit)));
-                            return;
-                        }
                     }
                     if (file.length() == 0) {
                         return;
@@ -431,7 +417,7 @@ public class DocumentSelectActivity extends BaseFragment {
                     return true;
                 }
             }
-            showErrorBox(LocaleController.getString("AccessError", R.string.AccessError));
+            showErrorBox(ApplicationLoader.applicationContext.getString(R.string.AccessError));
             return false;
         }
         emptyView.setText(LocaleController.getString("NoFiles", R.string.NoFiles));
@@ -511,10 +497,7 @@ public class DocumentSelectActivity extends BaseFragment {
     }
 
     private void showErrorBox(String error) {
-        if (getParentActivity() == null) {
-            return;
-        }
-        new AlertDialog.Builder(getParentActivity()).setTitle(LocaleController.getString("AppName", R.string.AppName)).setMessage(error).setPositiveButton(LocaleController.getString("OK", R.string.OK), null).show();
+        AndroidUtilities.showHint(getParentActivity(), error);
     }
 
     @SuppressLint("NewApi")
@@ -524,7 +507,6 @@ public class DocumentSelectActivity extends BaseFragment {
 
         HashSet<String> paths = new HashSet<>();
         String defaultPath = Environment.getExternalStorageDirectory().getPath();
-        boolean isDefaultPathRemovable = Environment.isExternalStorageRemovable();
         String defaultPathState = Environment.getExternalStorageState();
         if (defaultPathState.equals(Environment.MEDIA_MOUNTED) || defaultPathState.equals(Environment.MEDIA_MOUNTED_READ_ONLY)) {
             ListItem ext = new ListItem();
