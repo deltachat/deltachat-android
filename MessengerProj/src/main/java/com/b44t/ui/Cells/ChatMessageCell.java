@@ -2856,9 +2856,9 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
             timePaint.setColor(Theme.MSG_MEDIA_TIME_TEXT_COLOR);
         } else {
             if (currentMessageObject.isOutOwner()) {
-                timePaint.setColor(isDrawSelectedBackground() ? Theme.MSG_OUT_TIME_SELECTED_TEXT_COLOR : Theme.MSG_OUT_TIME_TEXT_COLOR);
+                timePaint.setColor(Theme.MSG_OUT_FWD_N_TIME_TEXT_COLOR);
             } else {
-                timePaint.setColor(isDrawSelectedBackground() ? Theme.MSG_IN_TIME_SELECTED_TEXT_COLOR : Theme.MSG_IN_TIME_TEXT_COLOR);
+                timePaint.setColor(Theme.MSG_IN_FWD_N_TIME_TEXT_COLOR);
             }
         }
 
@@ -2953,10 +2953,10 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
         if (drawForwardedName && forwardedNameLayout[0] != null && forwardedNameLayout[1] != null) {
             forwardNameY = dp(10 + (drawNameLayout ? 19 : 0));
             if (currentMessageObject.isOutOwner()) {
-                forwardNamePaint.setColor(Theme.MSG_OUT_FORDWARDED_NAME_TEXT_COLOR);
+                forwardNamePaint.setColor(Theme.MSG_OUT_FWD_N_TIME_TEXT_COLOR);
                 forwardNameX = currentBackgroundDrawable.getBounds().left + dp(11);
             } else {
-                forwardNamePaint.setColor(Theme.MSG_IN_FORDWARDED_NAME_TEXT_COLOR);
+                forwardNamePaint.setColor(Theme.MSG_IN_FWD_N_TIME_TEXT_COLOR);
                 if (mediaBackground) {
                     forwardNameX = currentBackgroundDrawable.getBounds().left + dp(11);
                 } else {

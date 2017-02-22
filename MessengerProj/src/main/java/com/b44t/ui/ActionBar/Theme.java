@@ -84,13 +84,9 @@ public class Theme {
     public static final int MSG_SELECTED_BACKGROUND_COLOR = 0x6633b5e5;
     public static final int MSG_WEB_PREVIEW_DURATION_TEXT_COLOR = 0xffffffff;
     public static final int MSG_STICKER_NAME_TEXT_COLOR = 0xffffffff;
-    public static final int MSG_IN_FORDWARDED_NAME_TEXT_COLOR = 0xff3886c7;
-    public static final int MSG_OUT_FORDWARDED_NAME_TEXT_COLOR = 0xff55ab4f;
+    public static final int MSG_IN_FWD_N_TIME_TEXT_COLOR = 0xff9ea7b0;
+    public static final int MSG_OUT_FWD_N_TIME_TEXT_COLOR = 0xff70b15c;
     public static final int MSG_MEDIA_TIME_TEXT_COLOR = 0xffffffff;
-    public static final int MSG_IN_TIME_TEXT_COLOR = 0xffa1aab3;
-    public static final int MSG_OUT_TIME_TEXT_COLOR = 0xff70b15c;
-    public static final int MSG_IN_TIME_SELECTED_TEXT_COLOR = 0xff89b4c1;
-    public static final int MSG_OUT_TIME_SELECTED_TEXT_COLOR = 0xff70b15c;
     public static final int MSG_IN_AUDIO_PERFORMER_TEXT_COLOR = 0xff2f3438;
     public static final int MSG_OUT_AUDIO_PERFORMER_TEXT_COLOR = 0xff354234;
     public static final int MSG_IN_AUDIO_TITLE_TEXT_COLOR = 0xff4e9ad4;
