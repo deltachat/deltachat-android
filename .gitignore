@@ -6,3 +6,6 @@ obj/
 local.properties
 *.keystore
 libs/
+
+# ignore private scripts and directories, eg. local2github.prv.sh
+*.prv*
