@@ -101,7 +101,6 @@ public class AndroidUtilities {
     private static Boolean isTablet = null;
     private static int adjustOwnerClassGuid = 0;
 
-    public static Pattern WEB_URL = null;
     static {
         try {
             final String GOOD_IRI_CHAR = "a-zA-Z0-9\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF";
@@ -115,15 +114,6 @@ public class AndroidUtilities {
             final String GTLD = "[" + GOOD_GTLD_CHAR + "]{2,63}";
             final String HOST_NAME = "(" + IRI + "\\.)+" + GTLD;
             final Pattern DOMAIN_NAME = Pattern.compile("(" + HOST_NAME + "|" + IP_ADDRESS + ")");
-            WEB_URL = Pattern.compile(
-                    "((?:(http|https|Http|Https):\\/\\/(?:(?:[a-zA-Z0-9\\$\\-\\_\\.\\+\\!\\*\\'\\(\\)"
-                            + "\\,\\;\\?\\&\\=]|(?:\\%[a-fA-F0-9]{2})){1,64}(?:\\:(?:[a-zA-Z0-9\\$\\-\\_"
-                            + "\\.\\+\\!\\*\\'\\(\\)\\,\\;\\?\\&\\=]|(?:\\%[a-fA-F0-9]{2})){1,25})?\\@)?)?"
-                            + "(?:" + DOMAIN_NAME + ")"
-                            + "(?:\\:\\d{1,5})?)" // plus option port number
-                            + "(\\/(?:(?:[" + GOOD_IRI_CHAR + "\\;\\/\\?\\:\\@\\&\\=\\#\\~"  // plus option query params
-                            + "\\-\\.\\+\\!\\*\\'\\(\\)\\,\\_])|(?:\\%[a-fA-F0-9]{2}))*)?"
-                            + "(?:\\b|$)");
         } catch (Exception e) {
             FileLog.e("messenger", e);
         }

@@ -1186,10 +1186,6 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
         }
     }
 
-    public boolean isMessageWebPageSearchEnabled() {
-        return true;
-    }
-
     private void hideRecordedAudioPanel() {
         audioToSendPath = null;
         audioToSend = null;

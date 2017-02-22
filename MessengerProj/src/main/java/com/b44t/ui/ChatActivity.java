@@ -106,7 +106,6 @@ import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.regex.Matcher;
 
 @SuppressWarnings("unchecked")
 public class ChatActivity extends BaseFragment implements NotificationCenter.NotificationCenterDelegate, DialogsActivity.DialogsActivityDelegate,
@@ -156,9 +155,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
     private boolean paused = true;
     private boolean wasPaused = false;
     private boolean readWhenResume = false;
-    private int linkSearchRequestId;
-    private ArrayList<CharSequence> foundUrls;
-    private Runnable waitingForCharaterEnterRunnable;
 
     private boolean scrollToTopOnResume;
     private boolean forceScrollToTop;
@@ -1040,29 +1036,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
             @Override
             public void onTextChanged(final CharSequence text, boolean bigChange) {
                 MediaController.getInstance().setInputFieldHasText(text != null && text.length() != 0);
-                /*if (mentionsAdapter != null && text!=null ) {
-                    mentionsAdapter.searchUsernameOrHashtag(text.toString(), chatActivityEnterView.getCursorPosition(), messages);
-                }*/
-                if (waitingForCharaterEnterRunnable != null) {
-                    AndroidUtilities.cancelRunOnUIThread(waitingForCharaterEnterRunnable);
-                    waitingForCharaterEnterRunnable = null;
-                }
-                if( chatActivityEnterView.isMessageWebPageSearchEnabled() ) {
-                    if (bigChange) {
-                        searchLinks(text, true);
-                    } else {
-                        waitingForCharaterEnterRunnable = new Runnable() {
-                            @Override
-                            public void run() {
-                                if (this == waitingForCharaterEnterRunnable) {
-                                    searchLinks(text, false);
-                                    waitingForCharaterEnterRunnable = null;
-                                }
-                            }
-                        };
-                        AndroidUtilities.runOnUIThread(waitingForCharaterEnterRunnable, AndroidUtilities.WEB_URL == null ? 3000 : 1000);
-                    }
-                }
             }
 
             @Override
@@ -1331,92 +1304,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
     @Override
     public boolean dismissDialogOnPause(Dialog dialog) {
         return !(dialog == chatAttachAlert && PhotoViewer.getInstance().isVisible()) && super.dismissDialogOnPause(dialog);
-    }
-
-    private void searchLinks(final CharSequence charSequence, final boolean force) {
-        /*if (force && foundWebPage != null) {
-            if (foundWebPage.url != null) {
-                int index = TextUtils.indexOf(charSequence, foundWebPage.url);
-                char lastChar = 0;
-                boolean lenEqual = false;
-                if (index == -1) {
-                    if (foundWebPage.display_url != null) {
-                        index = TextUtils.indexOf(charSequence, foundWebPage.display_url);
-                        lenEqual = index != -1 && index + foundWebPage.display_url.length() == charSequence.length();
-                        lastChar = index != -1 && !lenEqual ? charSequence.charAt(index + foundWebPage.display_url.length()) : 0;
-                    }
-                } else {
-                    lenEqual = index + foundWebPage.url.length() == charSequence.length();
-                    lastChar = !lenEqual ? charSequence.charAt(index + foundWebPage.url.length()) : 0;
-                }
-                if (index != -1 && (lenEqual || lastChar == ' ' || lastChar == ',' || lastChar == '.' || lastChar == '!' || lastChar == '/')) {
-                    return;
-                }
-            }
-        }*/
-        Utilities.searchQueue.postRunnable(new Runnable() {
-            @Override
-            public void run() {
-                if (linkSearchRequestId != 0) {
-                    ConnectionsManager.getInstance().cancelRequest(linkSearchRequestId, true);
-                    linkSearchRequestId = 0;
-                }
-                ArrayList<CharSequence> urls = null;
-                try {
-                    Matcher m = AndroidUtilities.WEB_URL.matcher(charSequence);
-                    while (m.find()) {
-                        if (m.start() > 0) {
-                            if (charSequence.charAt(m.start() - 1) == '@') {
-                                continue;
-                            }
-                        }
-                        if (urls == null) {
-                            urls = new ArrayList<>();
-                        }
-                        urls.add(charSequence.subSequence(m.start(), m.end()));
-                    }
-                    if (urls != null && foundUrls != null && urls.size() == foundUrls.size()) {
-                        boolean clear = true;
-                        for (int a = 0; a < urls.size(); a++) {
-                            if (!TextUtils.equals(urls.get(a), foundUrls.get(a))) {
-                                clear = false;
-                            }
-                        }
-                        if (clear) {
-                            return;
-                        }
-                    }
-                    foundUrls = urls;
-                    /*if (urls == null) {
-                        AndroidUtilities.runOnUIThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                if (foundWebPage != null) {
-                                    foundWebPage = null;
-                                }
-                            }
-                        });
-                        return;
-                    }*/
-                } catch (Exception e) {
-                    /*FileLog.e("messenger", e);
-                    String text = charSequence.toString().toLowerCase();
-                    if (charSequence.length() < 13 || !text.contains("http://") && !text.contains("https://")) {
-                        AndroidUtilities.runOnUIThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                if (foundWebPage != null) {
-                                    foundWebPage = null;
-                                }
-                            }
-                        });
-                        return;
-                    }*/
-                }
-
-                linkSearchRequestId = 0; // was: TL_messages_getWebPagePreview ...
-            }
-        });
     }
 
     private void moveScrollToLastMessage() {
