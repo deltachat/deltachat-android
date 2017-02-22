@@ -988,50 +988,25 @@ public class AndroidUtilities {
     }
     */
 
-    public static void openForView(MessageObject message, Activity activity) throws Exception {
-        // TODO:  this seems not to work for files in our private directory!
-        File f = null;
-        String fileName = message.getFileName();
-        if (message.messageOwner.attachPath != null && message.messageOwner.attachPath.length() != 0) {
-            f = new File(message.messageOwner.attachPath);
+    public static void openForView(MessageObject message, Activity activity) throws Exception
+    {
+        String fileName = message.messageOwner.media.document.file_name;
+        Uri toOpen = Uri.parse("content://" + BuildConfig.APPLICATION_ID + ".attachments/" + fileName);
+
+        String mimeType = null;
+        MimeTypeMap mimeMap = MimeTypeMap.getSingleton();
+        int idx = fileName.lastIndexOf('.');
+        if (idx != -1) {
+            String ext = fileName.substring(idx + 1);
+            mimeType = mimeMap.getMimeTypeFromExtension(ext.toLowerCase());
         }
-        if (f == null || !f.exists()) {
-            f = FileLoader.getPathToMessage(message.messageOwner);
+        if (mimeType == null) {
+            mimeType = message.messageOwner.media.document.mime_type;
         }
-        if (f != null && f.exists()) {
-            String realMimeType = null;
-            Intent intent = new Intent(Intent.ACTION_VIEW);
-            MimeTypeMap myMime = MimeTypeMap.getSingleton();
-            int idx = fileName.lastIndexOf('.');
-            if (idx != -1) {
-                String ext = fileName.substring(idx + 1);
-                realMimeType = myMime.getMimeTypeFromExtension(ext.toLowerCase());
-                if (realMimeType == null) {
-                    if (message.type == MessageObject.MO_TYPE9_FILE || message.type == MessageObject.MO_TYPE0_TEXT) {
-                        realMimeType = message.getDocument().mime_type;
-                    }
-                    if (realMimeType == null || realMimeType.length() == 0) {
-                        realMimeType = null;
-                    }
-                }
-                if (realMimeType != null) {
-                    intent.setDataAndType(Uri.fromFile(f), realMimeType);
-                } else {
-                    intent.setDataAndType(Uri.fromFile(f), "text/plain");
-                }
-            } else {
-                intent.setDataAndType(Uri.fromFile(f), "text/plain");
-            }
-            if (realMimeType != null) {
-                try {
-                    activity.startActivityForResult(intent, 500);
-                } catch (Exception e) {
-                    intent.setDataAndType(Uri.fromFile(f), "text/plain");
-                    activity.startActivityForResult(intent, 500);
-                }
-            } else {
-                activity.startActivityForResult(intent, 500);
-            }
-        }
+
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.setDataAndType(toOpen, mimeType);
+        intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+        activity.startActivity(intent);
     }
 }
