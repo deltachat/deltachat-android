@@ -168,7 +168,7 @@
     <!--passcode view-->
     <string name="Passcode">Pincode-Sperre</string>
     <string name="ChangePasscode">Pincode ändern</string>
-    <string name="ChangePasscodeInfo">Wenn die Code-Sperre aktiviert ist, erscheint ein Schloss ganz oben über der Chatliste. Ein Tipp auf das Schloss, sperrt bzw. entsperrt die Chats.\n\nÜbrigens: Wenn der Pincode vergessen wird, muss die App gelöscht und neu installiert werden.</string>
+    <string name="ChangePasscodeInfo">Wenn die Code-Sperre aktiviert ist, erscheint ein Schloss ganz oben über der Chatliste. Ein Tipp auf das Schloss, sperrt die Chats.\n\nÜbrigens: Wenn der Pincode vergessen wird, muss die App gelöscht und neu installiert werden.</string>
     <string name="PasscodePIN">Pincode</string>
     <string name="PasscodePassword">Kennwort</string>
     <string name="EnterCurrentPasscode">Aktuellen Pincode eingeben</string>
