@@ -42,7 +42,7 @@ import com.b44t.ui.Components.BackupImageView;
 import com.b44t.ui.Components.CheckBox;
 import com.b44t.ui.Components.LayoutHelper;
 
-public class SharedDocumentCell extends FrameLayout implements MediaController.FileDownloadProgressListener {
+public class SharedDocumentCell extends FrameLayout {
 
     private ImageView placeholderImageView;
     private BackupImageView thumbImageView;
@@ -52,7 +52,7 @@ public class SharedDocumentCell extends FrameLayout implements MediaController.F
 
     private static Paint paint;
 
-    private int TAG;
+    //private int TAG;
 
     public SharedDocumentCell(Context context) {
         super(context);
@@ -63,7 +63,7 @@ public class SharedDocumentCell extends FrameLayout implements MediaController.F
             paint.setStrokeWidth(1);
         }
 
-        TAG = MediaController.getInstance().generateObserverTag();
+        //TAG = MediaController.getInstance().generateObserverTag();
 
         placeholderImageView = new ImageView(context);
         addView(placeholderImageView, LayoutHelper.createFrame(40, 40, (LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT) | Gravity.TOP, LocaleController.isRTL ? 0 : 12, 8, LocaleController.isRTL ? 12 : 0, 0));
@@ -131,7 +131,7 @@ public class SharedDocumentCell extends FrameLayout implements MediaController.F
     @Override
     protected void onDetachedFromWindow() {
         super.onDetachedFromWindow();
-        MediaController.getInstance().removeLoadingFileObserver(this);
+        //MediaController.getInstance().removeLoadingFileObserver(this);
     }
 
     public void setChecked(boolean checked, boolean animated) {
@@ -150,7 +150,7 @@ public class SharedDocumentCell extends FrameLayout implements MediaController.F
     protected void onDraw(Canvas canvas) {
     }
 
-    @Override
+    /*@Override
     public void onFailedDownload(String name) {
     }
 
@@ -170,5 +170,5 @@ public class SharedDocumentCell extends FrameLayout implements MediaController.F
     @Override
     public int getObserverTag() {
         return TAG;
-    }
+    }*/
 }

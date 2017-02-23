@@ -76,7 +76,7 @@ import java.util.Locale;
 
 import static com.b44t.messenger.AndroidUtilities.*;
 
-public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate, ImageReceiver.ImageReceiverDelegate, MediaController.FileDownloadProgressListener {
+public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate, ImageReceiver.ImageReceiverDelegate {
 
     public interface ChatMessageCellDelegate {
         void didPressedUserAvatar(ChatMessageCell cell, TLRPC.User user);
@@ -194,7 +194,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
     private StaticLayout performerLayout;
     private int performerX;
 
-    private int TAG;
+    //private int TAG;
 
     public boolean isChat;
     private boolean isPressed;
@@ -338,7 +338,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
         avatarImage.setRoundRadius(dp(21));
         avatarDrawable = new AvatarDrawable();
         replyImageReceiver = new ImageReceiver(this);
-        TAG = MediaController.getInstance().generateObserverTag();
+        //TAG = MediaController.getInstance().generateObserverTag();
 
         photoImage = new ImageReceiver(this);
         photoImage.setDelegate(this);
@@ -1101,7 +1101,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
         avatarImage.onDetachedFromWindow();
         replyImageReceiver.onDetachedFromWindow();
         photoImage.onDetachedFromWindow();
-        MediaController.getInstance().removeLoadingFileObserver(this);
+        //MediaController.getInstance().removeLoadingFileObserver(this);
     }
 
     @Override
@@ -1786,7 +1786,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                             boolean photoExist = true;
                             //String fileName = FileLoader.getAttachFileName(currentPhotoObject);
                             if (messageObject.mediaExists) {
-                                MediaController.getInstance().removeLoadingFileObserver(this);
+                                //MediaController.getInstance().removeLoadingFileObserver(this);
                             } else {
                                 photoExist = false;
                             }
@@ -1807,7 +1807,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                         String fileName = FileLoader.getAttachFileName(messageObject.messageOwner.media.document);
                         int localFile = 0;
                         if (messageObject.attachPathExists) {
-                            MediaController.getInstance().removeLoadingFileObserver(this);
+                            //MediaController.getInstance().removeLoadingFileObserver(this);
                             localFile = 1;
                         } else if (messageObject.mediaExists) {
                             localFile = 2;
@@ -2369,7 +2369,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                 radialProgress.setProgress(progress != null ? progress : 0, false);
             } else*/ {
                 if (fileExists) {
-                    MediaController.getInstance().removeLoadingFileObserver(this);
+                    //MediaController.getInstance().removeLoadingFileObserver(this);
                     boolean playing = MediaController.getInstance().isPlayingAudio(currentMessageObject);
                     if (!playing || playing && MediaController.getInstance().isAudioPaused()) {
                         buttonState = 0;
@@ -2378,7 +2378,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                     }
                     //radialProgress.setBackground(getDrawableForCurrentState(), false, animated);
                 } else {
-                    MediaController.getInstance().addLoadingFileObserver(fileName, currentMessageObject, this);
+                    //MediaController.getInstance().addLoadingFileObserver(fileName, currentMessageObject, this);
                     if (!FileLoader.getInstance().isLoadingFile(fileName)) {
                         buttonState = 2;
                         //radialProgress.setProgress(0, animated);
@@ -2401,7 +2401,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                 return;
             }
             if (!fileExists) {
-                MediaController.getInstance().addLoadingFileObserver(fileName, currentMessageObject, this);
+                //MediaController.getInstance().addLoadingFileObserver(fileName, currentMessageObject, this);
                 float setProgress = 0;
                 boolean progressVisible = false;
                 if (!FileLoader.getInstance().isLoadingFile(fileName)) {
@@ -2423,7 +2423,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                 //radialProgress.setBackground(getDrawableForCurrentState(), progressVisible, animated);
                 invalidate();
             } else {
-                MediaController.getInstance().removeLoadingFileObserver(this);
+                //MediaController.getInstance().removeLoadingFileObserver(this);
                 if (documentAttachType == DOCUMENT_ATTACH_TYPE_GIF && !photoImage.isAllowStartAnimation()) {
                     buttonState = 2;
                 } else {
@@ -2457,33 +2457,33 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                     invalidate();
                 }
             } else*/ {
-                if (currentMessageObject.messageOwner.attachPath != null && currentMessageObject.messageOwner.attachPath.length() != 0) {
+                /*if (currentMessageObject.messageOwner.attachPath != null && currentMessageObject.messageOwner.attachPath.length() != 0) {
                     MediaController.getInstance().removeLoadingFileObserver(this);
-                }
+                }*/
                 if (!fileExists) {
-                    MediaController.getInstance().addLoadingFileObserver(fileName, currentMessageObject, this);
-                    float setProgress = 0;
-                    boolean progressVisible = false;
+                    //MediaController.getInstance().addLoadingFileObserver(fileName, currentMessageObject, this);
+                    //float setProgress = 0;
+                    //boolean progressVisible = false;
                     if (!FileLoader.getInstance().isLoadingFile(fileName)) {
                         if (!cancelLoading &&
                                 (currentMessageObject.type == MessageObject.MO_TYPE1_PHOTO && MediaController.getInstance().canDownloadMedia(MediaController.AUTODOWNLOAD_MASK_PHOTO) ||
                                         currentMessageObject.type == MessageObject.MO_TYPE8_GIF && MediaController.getInstance().canDownloadMedia(MediaController.AUTODOWNLOAD_MASK_GIF) && MessageObject.isNewGifDocument(currentMessageObject.messageOwner.media.document)) ) {
-                            progressVisible = true;
+                            //progressVisible = true;
                             buttonState = 1;
                         } else {
                             buttonState = 0;
                         }
                     } else {
-                        progressVisible = true;
+                        //progressVisible = true;
                         buttonState = 1;
-                        Float progress = ImageLoader.getInstance().getFileProgress(fileName);
-                        setProgress = progress != null ? progress : 0;
+                        //Float progress = ImageLoader.getInstance().getFileProgress(fileName);
+                        //setProgress = progress != null ? progress : 0;
                     }
                     //radialProgress.setBackground(getDrawableForCurrentState(), progressVisible, animated);
                     //radialProgress.setProgress(setProgress, false);
                     invalidate();
                 } else {
-                    MediaController.getInstance().removeLoadingFileObserver(this);
+                    //MediaController.getInstance().removeLoadingFileObserver(this);
                     if (currentMessageObject.type == MessageObject.MO_TYPE8_GIF && !photoImage.isAllowStartAnimation()) {
                         buttonState = 2;
                     } else if (documentAttachType == DOCUMENT_ATTACH_TYPE_VIDEO) {
@@ -2592,7 +2592,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
         }
     }
 
-    @Override
+    /*@Override
     public void onFailedDownload(String fileName) {
         updateButtonState(documentAttachType == DOCUMENT_ATTACH_TYPE_AUDIO || documentAttachType == DOCUMENT_ATTACH_TYPE_MUSIC);
     }
@@ -2628,7 +2628,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                 }
             }
         }
-    }
+    }*/
 
     @Override
     public void didSetImage(ImageReceiver imageReceiver, boolean set, boolean thumb) {
@@ -2638,7 +2638,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
         }
     }
 
-    @Override
+    /*@Override
     public void onProgressDownload(String fileName, float progress) {
         //radialProgress.setProgress(progress, true);
         if (documentAttachType == DOCUMENT_ATTACH_TYPE_AUDIO || documentAttachType == DOCUMENT_ATTACH_TYPE_MUSIC) {
@@ -2655,7 +2655,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
     @Override
     public void onProgressUpload(String fileName, float progress, boolean isEncrypted) {
         //radialProgress.setProgress(progress, true);
-    }
+    }*/
 
     @Override
     public void onProvideStructure(ViewStructure structure) {
@@ -3067,10 +3067,10 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
         }
     }
 
-    @Override
+    /*@Override
     public int getObserverTag() {
         return TAG;
-    }
+    }*/
 
     public MessageObject getMessageObject() {
         return currentMessageObject;
