@@ -45,6 +45,7 @@ import android.text.Editable;
 import android.text.InputFilter;
 import android.text.InputType;
 import android.text.TextWatcher;
+import android.text.method.PasswordTransformationMethod;
 import android.util.TypedValue;
 import android.view.ActionMode;
 import android.view.Gravity;
@@ -80,6 +81,336 @@ public class PasscodeView extends FrameLayout {
         void didAcceptedPassword();
     }
 
+    private class AnimatingTextView extends FrameLayout {
+
+        private ArrayList<TextView> characterTextViews;
+        private ArrayList<TextView> dotTextViews;
+        private StringBuilder stringBuilder;
+        private String DOT = "\u2022";
+        private AnimatorSet currentAnimation;
+        private Runnable dotRunnable;
+
+        public AnimatingTextView(Context context) {
+            super(context);
+            characterTextViews = new ArrayList<>(4);
+            dotTextViews = new ArrayList<>(4);
+            stringBuilder = new StringBuilder(4);
+
+            for (int a = 0; a < 4; a++) {
+                TextView textView = new TextView(context);
+                textView.setTextColor(0xffffffff);
+                textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 36);
+                textView.setGravity(Gravity.CENTER);
+                textView.setAlpha(0);
+                textView.setPivotX(AndroidUtilities.dp(25));
+                textView.setPivotY(AndroidUtilities.dp(25));
+                addView(textView);
+                LayoutParams layoutParams = (LayoutParams) textView.getLayoutParams();
+                layoutParams.width = AndroidUtilities.dp(50);
+                layoutParams.height = AndroidUtilities.dp(50);
+                layoutParams.gravity = Gravity.TOP | Gravity.LEFT;
+                textView.setLayoutParams(layoutParams);
+                characterTextViews.add(textView);
+
+                textView = new TextView(context);
+                textView.setTextColor(0xffffffff);
+                textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 36);
+                textView.setGravity(Gravity.CENTER);
+                textView.setAlpha(0);
+                textView.setText(DOT);
+                textView.setPivotX(AndroidUtilities.dp(25));
+                textView.setPivotY(AndroidUtilities.dp(25));
+                addView(textView);
+                layoutParams = (LayoutParams) textView.getLayoutParams();
+                layoutParams.width = AndroidUtilities.dp(50);
+                layoutParams.height = AndroidUtilities.dp(50);
+                layoutParams.gravity = Gravity.TOP | Gravity.LEFT;
+                textView.setLayoutParams(layoutParams);
+                dotTextViews.add(textView);
+            }
+        }
+
+        private int getXForTextView(int pos) {
+            return (getMeasuredWidth() - stringBuilder.length() * AndroidUtilities.dp(30)) / 2 + pos * AndroidUtilities.dp(30) - AndroidUtilities.dp(10);
+        }
+
+        public void appendCharacter(String c) {
+            if (stringBuilder.length() == 4) {
+                return;
+            }
+            try {
+                performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP);
+            } catch (Exception e) {
+                FileLog.e("messenger", e);
+            }
+
+
+            ArrayList<Animator> animators = new ArrayList<>();
+            final int newPos = stringBuilder.length();
+            stringBuilder.append(c);
+
+            TextView textView = characterTextViews.get(newPos);
+            textView.setText(c);
+            textView.setTranslationX(getXForTextView(newPos));
+            animators.add(ObjectAnimator.ofFloat(textView, "scaleX", 0, 1));
+            animators.add(ObjectAnimator.ofFloat(textView, "scaleY", 0, 1));
+            animators.add(ObjectAnimator.ofFloat(textView, "alpha", 0, 1));
+            animators.add(ObjectAnimator.ofFloat(textView, "translationY", AndroidUtilities.dp(20), 0));
+            textView = dotTextViews.get(newPos);
+            textView.setTranslationX(getXForTextView(newPos));
+            textView.setAlpha(0);
+            animators.add(ObjectAnimator.ofFloat(textView, "scaleX", 0, 1));
+            animators.add(ObjectAnimator.ofFloat(textView, "scaleY", 0, 1));
+            animators.add(ObjectAnimator.ofFloat(textView, "translationY", AndroidUtilities.dp(20), 0));
+
+            for (int a = newPos + 1; a < 4; a++) {
+                textView = characterTextViews.get(a);
+                if (textView.getAlpha() != 0) {
+                    animators.add(ObjectAnimator.ofFloat(textView, "scaleX", 0));
+                    animators.add(ObjectAnimator.ofFloat(textView, "scaleY", 0));
+                    animators.add(ObjectAnimator.ofFloat(textView, "alpha", 0));
+                }
+
+                textView = dotTextViews.get(a);
+                if (textView.getAlpha() != 0) {
+                    animators.add(ObjectAnimator.ofFloat(textView, "scaleX", 0));
+                    animators.add(ObjectAnimator.ofFloat(textView, "scaleY", 0));
+                    animators.add(ObjectAnimator.ofFloat(textView, "alpha", 0));
+                }
+            }
+
+            if (dotRunnable != null) {
+                AndroidUtilities.cancelRunOnUIThread(dotRunnable);
+            }
+            dotRunnable = new Runnable() {
+                @Override
+                public void run() {
+                    if (dotRunnable != this) {
+                        return;
+                    }
+                    ArrayList<Animator> animators = new ArrayList<>();
+
+                    TextView textView = characterTextViews.get(newPos);
+                    animators.add(ObjectAnimator.ofFloat(textView, "scaleX", 0));
+                    animators.add(ObjectAnimator.ofFloat(textView, "scaleY", 0));
+                    animators.add(ObjectAnimator.ofFloat(textView, "alpha", 0));
+                    textView = dotTextViews.get(newPos);
+                    animators.add(ObjectAnimator.ofFloat(textView, "scaleX", 1));
+                    animators.add(ObjectAnimator.ofFloat(textView, "scaleY", 1));
+                    animators.add(ObjectAnimator.ofFloat(textView, "alpha", 1));
+
+                    currentAnimation = new AnimatorSet();
+                    currentAnimation.setDuration(150);
+                    currentAnimation.playTogether(animators);
+                    currentAnimation.addListener(new AnimatorListenerAdapterProxy() {
+                        @Override
+                        public void onAnimationEnd(Animator animation) {
+                            if (currentAnimation != null && currentAnimation.equals(animation)) {
+                                currentAnimation = null;
+                            }
+                        }
+                    });
+                    currentAnimation.start();
+                }
+            };
+            AndroidUtilities.runOnUIThread(dotRunnable, 1500);
+
+            for (int a = 0; a < newPos; a++) {
+                textView = characterTextViews.get(a);
+                animators.add(ObjectAnimator.ofFloat(textView, "translationX", getXForTextView(a)));
+                animators.add(ObjectAnimator.ofFloat(textView, "scaleX", 0));
+                animators.add(ObjectAnimator.ofFloat(textView, "scaleY", 0));
+                animators.add(ObjectAnimator.ofFloat(textView, "alpha", 0));
+                animators.add(ObjectAnimator.ofFloat(textView, "translationY", 0));
+                textView = dotTextViews.get(a);
+                animators.add(ObjectAnimator.ofFloat(textView, "translationX", getXForTextView(a)));
+                animators.add(ObjectAnimator.ofFloat(textView, "scaleX", 1));
+                animators.add(ObjectAnimator.ofFloat(textView, "scaleY", 1));
+                animators.add(ObjectAnimator.ofFloat(textView, "alpha", 1));
+                animators.add(ObjectAnimator.ofFloat(textView, "translationY", 0));
+            }
+
+            if (currentAnimation != null) {
+                currentAnimation.cancel();
+            }
+            currentAnimation = new AnimatorSet();
+            currentAnimation.setDuration(150);
+            currentAnimation.playTogether(animators);
+            currentAnimation.addListener(new AnimatorListenerAdapterProxy() {
+                @Override
+                public void onAnimationEnd(Animator animation) {
+                    if (currentAnimation != null && currentAnimation.equals(animation)) {
+                        currentAnimation = null;
+                    }
+                }
+            });
+            currentAnimation.start();
+        }
+
+        public String getString() {
+            return stringBuilder.toString();
+        }
+
+        public int lenght() {
+            return stringBuilder.length();
+        }
+
+        public void eraseLastCharacter() {
+            if (stringBuilder.length() == 0) {
+                return;
+            }
+            try {
+                performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP);
+            } catch (Exception e) {
+                FileLog.e("messenger", e);
+            }
+
+            ArrayList<Animator> animators = new ArrayList<>();
+            int deletingPos = stringBuilder.length() - 1;
+            if (deletingPos != 0) {
+                stringBuilder.deleteCharAt(deletingPos);
+            }
+
+            for (int a = deletingPos; a < 4; a++) {
+                TextView textView = characterTextViews.get(a);
+                if (textView.getAlpha() != 0) {
+                    animators.add(ObjectAnimator.ofFloat(textView, "scaleX", 0));
+                    animators.add(ObjectAnimator.ofFloat(textView, "scaleY", 0));
+                    animators.add(ObjectAnimator.ofFloat(textView, "alpha", 0));
+                    animators.add(ObjectAnimator.ofFloat(textView, "translationY", 0));
+                    animators.add(ObjectAnimator.ofFloat(textView, "translationX", getXForTextView(a)));
+                }
+
+                textView = dotTextViews.get(a);
+                if (textView.getAlpha() != 0) {
+                    animators.add(ObjectAnimator.ofFloat(textView, "scaleX", 0));
+                    animators.add(ObjectAnimator.ofFloat(textView, "scaleY", 0));
+                    animators.add(ObjectAnimator.ofFloat(textView, "alpha", 0));
+                    animators.add(ObjectAnimator.ofFloat(textView, "translationY", 0));
+                    animators.add(ObjectAnimator.ofFloat(textView, "translationX", getXForTextView(a)));
+                }
+            }
+
+            if (deletingPos == 0) {
+                stringBuilder.deleteCharAt(deletingPos);
+            }
+
+            for (int a = 0; a < deletingPos; a++) {
+                TextView textView = characterTextViews.get(a);
+                animators.add(ObjectAnimator.ofFloat(textView, "translationX", getXForTextView(a)));
+                textView = dotTextViews.get(a);
+                animators.add(ObjectAnimator.ofFloat(textView, "translationX", getXForTextView(a)));
+            }
+
+            if (dotRunnable != null) {
+                AndroidUtilities.cancelRunOnUIThread(dotRunnable);
+                dotRunnable = null;
+            }
+
+            if (currentAnimation != null) {
+                currentAnimation.cancel();
+            }
+            currentAnimation = new AnimatorSet();
+            currentAnimation.setDuration(150);
+            currentAnimation.playTogether(animators);
+            currentAnimation.addListener(new AnimatorListenerAdapterProxy() {
+                @Override
+                public void onAnimationEnd(Animator animation) {
+                    if (currentAnimation != null && currentAnimation.equals(animation)) {
+                        currentAnimation = null;
+                    }
+                }
+            });
+            currentAnimation.start();
+        }
+
+        private void eraseAllCharacters(final boolean animated) {
+            if (stringBuilder.length() == 0) {
+                return;
+            }
+            if (dotRunnable != null) {
+                AndroidUtilities.cancelRunOnUIThread(dotRunnable);
+                dotRunnable = null;
+            }
+            if (currentAnimation != null) {
+                currentAnimation.cancel();
+                currentAnimation = null;
+            }
+            stringBuilder.delete(0, stringBuilder.length());
+            if (animated) {
+                ArrayList<Animator> animators = new ArrayList<>();
+
+                for (int a = 0; a < 4; a++) {
+                    TextView textView = characterTextViews.get(a);
+                    if (textView.getAlpha() != 0) {
+                        animators.add(ObjectAnimator.ofFloat(textView, "scaleX", 0));
+                        animators.add(ObjectAnimator.ofFloat(textView, "scaleY", 0));
+                        animators.add(ObjectAnimator.ofFloat(textView, "alpha", 0));
+                    }
+
+                    textView = dotTextViews.get(a);
+                    if (textView.getAlpha() != 0) {
+                        animators.add(ObjectAnimator.ofFloat(textView, "scaleX", 0));
+                        animators.add(ObjectAnimator.ofFloat(textView, "scaleY", 0));
+                        animators.add(ObjectAnimator.ofFloat(textView, "alpha", 0));
+                    }
+                }
+
+                currentAnimation = new AnimatorSet();
+                currentAnimation.setDuration(150);
+                currentAnimation.playTogether(animators);
+                currentAnimation.addListener(new AnimatorListenerAdapterProxy() {
+                    @Override
+                    public void onAnimationEnd(Animator animation) {
+                        if (currentAnimation != null && currentAnimation.equals(animation)) {
+                            currentAnimation = null;
+                        }
+                    }
+                });
+                currentAnimation.start();
+            } else {
+                for (int a = 0; a < 4; a++) {
+                    characterTextViews.get(a).setAlpha(0);
+                    dotTextViews.get(a).setAlpha(0);
+                }
+            }
+        }
+
+        @Override
+        protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
+            if (dotRunnable != null) {
+                AndroidUtilities.cancelRunOnUIThread(dotRunnable);
+                dotRunnable = null;
+            }
+            if (currentAnimation != null) {
+                currentAnimation.cancel();
+                currentAnimation = null;
+            }
+
+            for (int a = 0; a < 4; a++) {
+                if (a < stringBuilder.length()) {
+                    TextView textView = characterTextViews.get(a);
+                    textView.setAlpha(0);
+                    textView.setScaleX(1);
+                    textView.setScaleY(1);
+                    textView.setTranslationY(0);
+                    textView.setTranslationX(getXForTextView(a));
+
+                    textView = dotTextViews.get(a);
+                    textView.setAlpha(1);
+                    textView.setScaleX(1);
+                    textView.setScaleY(1);
+                    textView.setTranslationY(0);
+                    textView.setTranslationX(getXForTextView(a));
+                } else {
+                    characterTextViews.get(a).setAlpha(0);
+                    dotTextViews.get(a).setAlpha(0);
+                }
+            }
+            super.onLayout(changed, left, top, right, bottom);
+        }
+    }
+
     private Drawable backgroundDrawable;
     private FrameLayout numbersFrameLayout;
     private ArrayList<TextView> numberTextViews;
@@ -88,6 +419,7 @@ public class PasscodeView extends FrameLayout {
     private FrameLayout passwordFrameLayout;
     private ImageView eraseView;
     private EditText passwordEditText;
+    private AnimatingTextView passwordEditText2;
     private FrameLayout backgroundFrameLayout;
     private TextView passcodeTextView;
     private ImageView checkImage;
@@ -150,6 +482,17 @@ public class PasscodeView extends FrameLayout {
         layoutParams.bottomMargin = AndroidUtilities.dp(62);
         layoutParams.gravity = Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL;
         passcodeTextView.setLayoutParams(layoutParams);
+
+        passwordEditText2 = new AnimatingTextView(context);
+        passwordFrameLayout.addView(passwordEditText2);
+        layoutParams = (FrameLayout.LayoutParams) passwordEditText2.getLayoutParams();
+        layoutParams.height = LayoutHelper.WRAP_CONTENT;
+        layoutParams.width = LayoutHelper.MATCH_PARENT;
+        layoutParams.leftMargin = AndroidUtilities.dp(70);
+        layoutParams.rightMargin = AndroidUtilities.dp(70);
+        layoutParams.bottomMargin = AndroidUtilities.dp(6);
+        layoutParams.gravity = Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL;
+        passwordEditText2.setLayoutParams(layoutParams);
 
         passwordEditText = new EditText(context);
         passwordEditText.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 36);
@@ -332,6 +675,7 @@ public class PasscodeView extends FrameLayout {
                     @Override
                     public boolean onLongClick(View v) {
                         passwordEditText.setText("");
+                        passwordEditText2.eraseAllCharacters(true);
                         return true;
                     }
                 });
@@ -646,7 +990,7 @@ public class PasscodeView extends FrameLayout {
             checkImage.setVisibility(VISIBLE);
         }
         setVisibility(VISIBLE);
-        passwordEditText.setInputTypeionMethod(PasswordTransformationMethod.getInstance());
+        passwordEditText.setTransformationMethod(PasswordTransformationMethod.getInstance());
         passwordEditText.setText("");
         passwordEditText2.eraseAllCharacters(false);
 
