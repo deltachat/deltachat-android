@@ -192,7 +192,7 @@ public class MrMsg {
                 ret.message = "<cannot load image>";
             }
         }
-        else if( type == MR_MSG_AUDIO || type == MR_MSG_VOICE || type == MR_MSG_VIDEO ) {
+        else if( type == MR_MSG_AUDIO || type == MR_MSG_VOICE || type == MR_MSG_VIDEO || type == MR_MSG_FILE ) {
             String path = getParam('f', "");
             if( !path.isEmpty()) {
                 ret.message = "-1"; // may be misused for video editing information
@@ -201,34 +201,24 @@ public class MrMsg {
                 ret.media.document = new TLRPC.TL_document();
                 ret.media.document.file_name = getFilename();
                 ret.media.document.mr_path = path;
+                ret.media.document.size = getBytes();
                 if( type == MR_MSG_AUDIO || type == MR_MSG_VOICE ) {
                     TLRPC.TL_documentAttributeAudio attr = new TLRPC.TL_documentAttributeAudio();
                     attr.voice = type == MR_MSG_VOICE;
                     attr.duration = getParamInt('d', 0) / 1000;
                     ret.media.document.attributes.add(attr);
                 }
-                else {
+                else if( type == MR_MSG_VIDEO ) {
                     TLRPC.TL_documentAttributeVideo attr = new TLRPC.TL_documentAttributeVideo();
                     attr.duration = getParamInt('d', 0) / 1000;
                     attr.w = getParamInt('w', 0);
                     attr.h = getParamInt('h', 0);
                     ret.media.document.attributes.add(attr);
                 }
+                else {
+                    ret.media.document.mime_type = getParam('m', "application/octet-stream");
+                }
 
-            }
-            else {
-                ret.message = "<audio/video path missing>";
-            }
-        }
-        else if( type == MR_MSG_FILE ) {
-            String path = getParam('f', "");
-            if( !path.isEmpty()) {
-                ret.media = new TLRPC.TL_messageMediaDocument();
-                ret.media.document = new TLRPC.TL_document();
-                ret.media.document.mime_type = getParam('m', "application/octet-stream");
-                ret.media.document.file_name = getFilename();
-                ret.media.document.size = getBytes();
-                ret.media.document.mr_path = path;
             }
             else {
                 ret.message = "<file path missing>";
