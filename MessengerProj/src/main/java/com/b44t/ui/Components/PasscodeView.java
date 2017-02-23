@@ -70,6 +70,7 @@ import com.b44t.messenger.FileLog;
 import com.b44t.messenger.R;
 import com.b44t.messenger.UserConfig;
 import com.b44t.messenger.AnimatorListenerAdapterProxy;
+import com.b44t.ui.ActionBar.Theme;
 
 import java.util.ArrayList;
 import java.util.Locale;
@@ -958,17 +959,11 @@ public class PasscodeView extends FrameLayout {
         }
         setAlpha(1.0f);
         setTranslationY(0);
-        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("mainconfig", Activity.MODE_PRIVATE);
-        int selectedBackground = preferences.getInt("selectedBackground", 1000001);
-        if (selectedBackground == 1000001) {
-            backgroundFrameLayout.setBackgroundColor(0xff517c9e);
+        backgroundDrawable = ApplicationLoader.getCachedWallpaper();
+        if (backgroundDrawable != null) {
+            backgroundFrameLayout.setBackgroundColor(0xb6000000);
         } else {
-            backgroundDrawable = ApplicationLoader.getCachedWallpaper();
-            if (backgroundDrawable != null) {
-                backgroundFrameLayout.setBackgroundColor(0xbf000000);
-            } else {
-                backgroundFrameLayout.setBackgroundColor(0xff517c9e);
-            }
+            backgroundFrameLayout.setBackgroundColor(Theme.ACTION_BAR_COLOR);
         }
 
         passcodeTextView.setText(LocaleController.getString("EnterYourPasscode", R.string.EnterYourPasscode));
