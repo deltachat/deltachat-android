@@ -179,7 +179,6 @@
     <string name="AutoLockInTime">over %1$s</string>
     <string name="UnlockFingerprint">Ontgrendel met vingerafdruk</string>
     <string name="FingerprintInfo">Vingerafdruk bevestigen</string>
-    <string name="FingerprintHelp">Vingerafdruksensor</string>
     <string name="FingerprintNotRecognized">Vingerafdruk niet herkend,  probeer opnieuw</string>
     <!--photo gallery view-->
     <string name="ShowAllMedia">Alle media weergeven</string>

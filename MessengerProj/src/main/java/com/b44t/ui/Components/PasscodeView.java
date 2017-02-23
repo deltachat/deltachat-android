@@ -425,7 +425,6 @@ public class PasscodeView extends FrameLayout {
     private int keyboardHeight = 0;
 
     private CancellationSignal cancellationSignal;
-    private ImageView fingerprintImageView;
     private TextView fingerprintStatusTextView;
     private boolean selfCancelled;
     private AlertDialog fingerprintDialog;
@@ -433,9 +432,6 @@ public class PasscodeView extends FrameLayout {
     private Rect rect = new Rect();
 
     private PasscodeViewDelegate delegate;
-
-    private final static int id_fingerprint_textview = 1000;
-    private final static int id_fingerprint_imageview = 1001;
 
     public PasscodeView(final Context context) {
         super(context);
@@ -866,35 +862,14 @@ public class PasscodeView extends FrameLayout {
                 FingerprintManagerCompat fingerprintManager = FingerprintManagerCompat.from(ApplicationLoader.applicationContext);
                 if (fingerprintManager.isHardwareDetected() && fingerprintManager.hasEnrolledFingerprints()) {
                     RelativeLayout relativeLayout = new RelativeLayout(getContext());
-                    relativeLayout.setPadding(AndroidUtilities.dp(24), AndroidUtilities.dp(16), AndroidUtilities.dp(24), AndroidUtilities.dp(8));
-
-                    TextView fingerprintTextView = new TextView(getContext());
-                    fingerprintTextView.setTextColor(0xff939393);
-                    fingerprintTextView.setId(id_fingerprint_textview);
-                    fingerprintTextView.setTextAppearance(android.R.style.TextAppearance_Material_Subhead);
-                    fingerprintTextView.setText(LocaleController.getString("FingerprintInfo", R.string.FingerprintInfo));
-                    relativeLayout.addView(fingerprintTextView);
-                    RelativeLayout.LayoutParams layoutParams = LayoutHelper.createRelative(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT);
-                    layoutParams.addRule(RelativeLayout.ALIGN_PARENT_TOP);
-                    layoutParams.addRule(RelativeLayout.ALIGN_PARENT_START);
-                    fingerprintTextView.setLayoutParams(layoutParams);
-
-                    fingerprintImageView = new ImageView(getContext());
-                    fingerprintImageView.setImageResource(R.drawable.ic_fp_40px);
-                    fingerprintImageView.setId(id_fingerprint_imageview);
-                    relativeLayout.addView(fingerprintImageView, LayoutHelper.createRelative(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, 0, 20, 0, 0, RelativeLayout.ALIGN_PARENT_START, RelativeLayout.BELOW, id_fingerprint_textview));
+                    relativeLayout.setPadding(AndroidUtilities.dp(16), AndroidUtilities.dp(16), AndroidUtilities.dp(16), AndroidUtilities.dp(8));
 
                     fingerprintStatusTextView = new TextView(getContext());
                     fingerprintStatusTextView.setGravity(Gravity.CENTER_VERTICAL);
-                    fingerprintStatusTextView.setText(LocaleController.getString("FingerprintHelp", R.string.FingerprintHelp));
-                    fingerprintStatusTextView.setTextAppearance(android.R.style.TextAppearance_Material_Body1);
-                    fingerprintStatusTextView.setTextColor(0x42000000);
+                    fingerprintStatusTextView.setText(ApplicationLoader.applicationContext.getString(R.string.FingerprintInfo));
+                    fingerprintStatusTextView.setTextAppearance(android.R.style.TextAppearance_Material_Subhead);
                     relativeLayout.addView(fingerprintStatusTextView);
-                    layoutParams = LayoutHelper.createRelative(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT);
-                    layoutParams.setMarginStart(AndroidUtilities.dp(16));
-                    layoutParams.addRule(RelativeLayout.ALIGN_BOTTOM, id_fingerprint_imageview);
-                    layoutParams.addRule(RelativeLayout.ALIGN_TOP, id_fingerprint_imageview);
-                    layoutParams.addRule(RelativeLayout.END_OF, id_fingerprint_imageview);
+                    RelativeLayout.LayoutParams layoutParams = LayoutHelper.createRelative(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT);
                     fingerprintStatusTextView.setLayoutParams(layoutParams);
 
                     AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
@@ -1033,7 +1008,6 @@ public class PasscodeView extends FrameLayout {
     }
 
     private void showFingerprintError(CharSequence error) {
-        fingerprintImageView.setImageResource(R.drawable.ic_fingerprint_error);
         fingerprintStatusTextView.setText(error);
         fingerprintStatusTextView.setTextColor(0xfff4511e);
         Vibrator v = (Vibrator) getContext().getSystemService(Context.VIBRATOR_SERVICE);

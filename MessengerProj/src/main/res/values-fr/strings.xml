@@ -177,7 +177,6 @@
     <string name="AutoLockInTime">dans %1$s</string>
     <string name="UnlockFingerprint">Déverrouiller avec votre empreinte digitale</string>
     <string name="FingerprintInfo">Confirmer votre empreinte digitale pour continuer</string>
-    <string name="FingerprintHelp">Capteur tactile</string>
     <string name="FingerprintNotRecognized">Empreinte non reconnue. Essayer encore</string>
     <!--photo gallery view-->
     <string name="ShowAllMedia">Montrer tous les médias</string>

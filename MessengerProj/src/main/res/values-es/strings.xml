@@ -179,7 +179,6 @@
     <string name="AutoLockInTime">en %1$s</string>
     <string name="UnlockFingerprint">Desbloquear con la huella digital</string>
     <string name="FingerprintInfo">Confirma la huella digital para continuar</string>
-    <string name="FingerprintHelp">Sensor táctil</string>
     <string name="FingerprintNotRecognized">Huella digital no reconocida. Reinténtalo</string>
     <!--photo gallery view-->
     <string name="ShowAllMedia">Ir a Multimedia</string>

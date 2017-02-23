@@ -179,7 +179,6 @@
     <string name="AutoLockInTime">em %1$s</string>
     <string name="UnlockFingerprint">Desbloquear com Impressão Digital</string>
     <string name="FingerprintInfo">Confirme a impressão digital para continuar</string>
-    <string name="FingerprintHelp">Toque o sensor</string>
     <string name="FingerprintNotRecognized">Impressão digital não reconhecida.</string>
     <!--photo gallery view-->
     <string name="ShowAllMedia">Mostrar todas as mídias</string>

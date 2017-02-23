@@ -182,7 +182,6 @@
     <string name="AutoLockInTime">in %1$s</string>
     <string name="UnlockFingerprint">Unlock with Fingerprint</string>
     <string name="FingerprintInfo">Confirm fingerprint to continue</string>
-    <string name="FingerprintHelp">Touch sensor</string>
     <string name="FingerprintNotRecognized">Fingerprint not recognized. Try again</string>
     <!--photo gallery view-->
     <string name="ShowAllMedia">Show all media</string>

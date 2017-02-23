@@ -182,7 +182,6 @@
     <string name="AutoLockInTime">za %1$s</string>
     <string name="UnlockFingerprint">Odblokuj odciskiem palca</string>
     <string name="FingerprintInfo">Potwierdź odcisk palca, aby kontynuować</string>
-    <string name="FingerprintHelp">Czujnik dotykowy</string>
     <string name="FingerprintNotRecognized">Odcisk palca nie rozpoznany. Spróbuj ponownie</string>
     <!--photo gallery view-->
     <string name="ShowAllMedia">Pokaż wszystkie multimedia</string>

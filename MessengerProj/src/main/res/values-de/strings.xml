@@ -181,8 +181,7 @@
     <string name="AutoLockInfo">Sperrt App bei Inaktivität automatisch.</string>
     <string name="AutoLockInTime">in %1$s</string>
     <string name="UnlockFingerprint">Per Fingerabdruck entsperren</string>
-    <string name="FingerprintInfo">Fingerabdruck bestätigen </string>
-    <string name="FingerprintHelp">Berührungssensor</string>
+    <string name="FingerprintInfo">Fingerabdruck bestätigen.</string>
     <string name="FingerprintNotRecognized">Abdruck nicht erkannt; erneut versuchen </string>
     <!--photo gallery view-->
     <string name="ShowAllMedia">Zeige alle Medien</string>

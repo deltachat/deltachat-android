@@ -179,7 +179,6 @@
     <string name="AutoLockInTime">tra %1$s</string>
     <string name="UnlockFingerprint">Sblocca con impronta digitale</string>
     <string name="FingerprintInfo">Conferma impronta digitale per continuare</string>
-    <string name="FingerprintHelp">Sensore touch</string>
     <string name="FingerprintNotRecognized">Impronta digitale non riconosciuta. Riprova</string>
     <!--photo gallery view-->
     <string name="ShowAllMedia">Mostra tutti i file media</string>
