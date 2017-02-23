@@ -180,17 +180,19 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
 
     private String startVideoEdit = null;
 
-    private final static int id_copy = 10;
-    private final static int id_forward = 11;
-    private final static int id_delete_messages = 12;
-    private final static int id_attach = 14;
-    private final static int id_delete_chat = 16;
-    private final static int id_mute = 18;
-    private final static int id_reply = 19;
-    private final static int id_info = 20;
-    private final static int id_search = 40;
-    private final static int id_chat_compose_panel = 1000;
-    TextView m_replyMenuItem, m_infoMenuItem;
+    private final static int ID_COPY = 10;
+    private final static int ID_FORWARD = 11;
+    private final static int ID_DELETE_MESSAGES = 12;
+    private final static int ID_ATTACH = 14;
+    private final static int ID_DELETE_CHAT = 16;
+    private final static int ID_MUTE = 18;
+    private final static int ID_REPLY = 19;
+    private final static int ID_INFO = 20;
+    private final static int ID_SAVE_TO_XX = 21;
+    private final static int ID_SHARE = 22;
+    private final static int ID_SEARCH = 40;
+    private final static int ID_CHAT_COMPOSE_PANEL = 1000;
+    private TextView m_replyMenuItem, m_infoMenuItem, m_saveToXXMenuItem, m_shareMenuItem;
 
     public ChatActivity(Bundle args) {
         super(args);
@@ -408,7 +410,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     } else {
                         finishFragment();
                     }
-                } else if (id == id_copy) {
+                } else if (id == ID_COPY) {
                     String str = "";
                     int previousMid = 0;
                     ArrayList<Integer> ids = new ArrayList<>(selectedMessagesIds.keySet());
@@ -426,13 +428,13 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     actionBar.hideActionMode();
                     updateVisibleRows();
                     AndroidUtilities.showDoneHint(getParentActivity());
-                } else if (id == id_delete_messages) {
+                } else if (id == ID_DELETE_MESSAGES) {
                     if (getParentActivity() == null) {
                         return;
                     }
                     createDeleteMessagesAlert();
                 }
-                else if (id == id_forward)
+                else if (id == ID_FORWARD)
                 {
                     Bundle args = new Bundle();
                     args.putBoolean("onlySelect", true);
@@ -442,7 +444,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     fragment.setDelegate(ChatActivity.this);
                     presentFragment(fragment); // this results in a call to didSelectDialog()
                 }
-                else if ( id == id_delete_chat)
+                else if ( id == ID_DELETE_CHAT)
                 {
                     // as the history may be a mix of messenger-messages and e-mails, it is not safe to delete it.
                     // the user can delete explicit messages or use his e-mail programm to delete masses.
@@ -466,9 +468,9 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     });
                     builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
                     showDialog(builder.create());
-                } else if (id == id_mute) {
+                } else if (id == ID_MUTE) {
                     toggleMute();
-                } else if (id == id_reply) {
+                } else if (id == ID_REPLY) {
                     if( m_mrChat.getId()==MrChat.MR_CHAT_ID_DEADDROP ){
                         if( selectedMessagesIds!=null && selectedMessagesIds.size()==1) {
                             ArrayList<Integer> ids = new ArrayList<>(selectedMessagesIds.keySet());
@@ -480,24 +482,29 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                         actionBar.hideActionMode();
                         updateVisibleRows();
                     }
-                } else if (id == id_info) {
-                    if( selectedMessagesIds!=null && selectedMessagesIds.size()==1) {
-                        ArrayList<Integer> ids = new ArrayList<>(selectedMessagesIds.keySet());
-                        String info_str = MrMailbox.getMsgInfo(ids.get(0));
-
-                        AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
-                        builder.setMessage(info_str);
-                        builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
-                                ;
-                            }
-                        });
-                        showDialog(builder.create());
-                    }
+                } else if (id == ID_INFO) {
+                    String info_str = MrMailbox.getMsgInfo(getFirstSelectedId());
+                    AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
+                    builder.setMessage(info_str);
+                    builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            ;
+                        }
+                    });
+                    showDialog(builder.create());
                     actionBar.hideActionMode();
                     updateVisibleRows();
-                } else if (id == id_attach) {
+                }
+                else if( id== ID_SAVE_TO_XX )
+                {
+                    Toast.makeText(getParentActivity(), ApplicationLoader.applicationContext.getString(R.string.NotYetImplemented), Toast.LENGTH_SHORT).show();
+                }
+                else if( id== ID_SHARE )
+                {
+                    Toast.makeText(getParentActivity(), ApplicationLoader.applicationContext.getString(R.string.NotYetImplemented), Toast.LENGTH_SHORT).show();
+                }
+                else if (id == ID_ATTACH) {
                     if (getParentActivity() == null) {
                         return;
                     }
@@ -509,7 +516,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     }
                     chatAttachAlert.init(ChatActivity.this);
                     showDialog(chatAttachAlert);
-                } else if (id == id_search) {
+                } else if (id == ID_SEARCH) {
                     openSearchWithText("");
                 }
             }
@@ -568,7 +575,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
 
         headerItem = menu.addItem(0, R.drawable.ic_ab_other);
         if (searchItem != null) {
-            headerItem.addSubItem(id_search, LocaleController.getString("Search", R.string.Search), 0);
+            headerItem.addSubItem(ID_SEARCH, ApplicationLoader.applicationContext.getString(R.string.Search), 0);
         }
 
         boolean isChatWithDeaddrop = m_mrChat.getId()==MrChat.MR_CHAT_ID_DEADDROP;
@@ -578,19 +585,19 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         }
 
         if( m_canMute ) {
-            muteMenuEntry = headerItem.addSubItem(id_mute, null, 0);
+            muteMenuEntry = headerItem.addSubItem(ID_MUTE, null, 0);
         }
 
         if( !isChatWithDeaddrop ) {
-            headerItem.addSubItem(id_attach, LocaleController.getString("AttachFiles", R.string.AttachFiles), 0); // "Attach" means "Attach to chat", not "Attach to message" (which is not possible)
-            headerItem.addSubItem(id_delete_chat, LocaleController.getString("DeleteChat", R.string.DeleteChat), 0);
+            headerItem.addSubItem(ID_ATTACH, ApplicationLoader.applicationContext.getString(R.string.AttachFiles), 0); // "Attach" means "Attach to chat", not "Attach to message" (which is not possible)
+            headerItem.addSubItem(ID_DELETE_CHAT, ApplicationLoader.applicationContext.getString(R.string.DeleteChat), 0);
         }
 
         updateTitle();
         avatarContainer.updateSubtitle();
         updateTitleIcons();
 
-        menuItem = menu.addItem(id_attach, R.drawable.ic_ab_attach).setAllowCloseAnimation(false); // "menuItem" is added to ChatEnterViewActivity
+        menuItem = menu.addItem(ID_ATTACH, R.drawable.ic_ab_attach).setAllowCloseAnimation(false); // "menuItem" is added to ChatEnterViewActivity
         menuItem.setBackgroundDrawable(null);
 
         actionModeViews.clear();
@@ -663,14 +670,16 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         actionModeSubTextView.setGravity(Gravity.LEFT);
         actionModeSubTextView.setTextColor(Theme.ACTION_BAR_ACTION_MODE_TEXT_COLOR);
         actionModeTitleContainer.addView(actionModeSubTextView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.MATCH_PARENT));
-        actionModeViews.add(actionMode.addItem(id_delete_messages, R.drawable.ic_ab_fwd_delete, Theme.ACTION_BAR_MODE_SELECTOR_COLOR, null, AndroidUtilities.dp(54)));
-        actionModeViews.add(actionMode.addItem(id_forward, R.drawable.ic_ab_fwd_forward, Theme.ACTION_BAR_MODE_SELECTOR_COLOR, null, AndroidUtilities.dp(54)));
+        actionModeViews.add(actionMode.addItem(ID_DELETE_MESSAGES, R.drawable.ic_ab_fwd_delete, Theme.ACTION_BAR_MODE_SELECTOR_COLOR, null, AndroidUtilities.dp(54)));
+        actionModeViews.add(actionMode.addItem(ID_FORWARD, R.drawable.ic_ab_fwd_forward, Theme.ACTION_BAR_MODE_SELECTOR_COLOR, null, AndroidUtilities.dp(54)));
         ActionBarMenuItem submenu = actionMode.addItem(0, R.drawable.ic_ab_other_grey);
             if( isChatWithDeaddrop ) {
-                m_replyMenuItem = submenu.addSubItem(id_reply, LocaleController.getString("Reply", R.string.Reply), 0);
+                m_replyMenuItem = submenu.addSubItem(ID_REPLY, ApplicationLoader.applicationContext.getString(R.string.Reply), 0);
             }
-            submenu.addSubItem(id_copy, LocaleController.getString("CopyToClipboard", R.string.CopyToClipboard), 0);
-            m_infoMenuItem = submenu.addSubItem(id_info, LocaleController.getString("Info", R.string.Info), 0);
+            submenu.addSubItem(ID_COPY, ApplicationLoader.applicationContext.getString(R.string.CopyToClipboard), 0);
+            m_saveToXXMenuItem = submenu.addSubItem(ID_SAVE_TO_XX, "", 0);
+            m_shareMenuItem = submenu.addSubItem(ID_SHARE, ApplicationLoader.applicationContext.getString(R.string.ShareFile), 0);
+            m_infoMenuItem = submenu.addSubItem(ID_INFO, ApplicationLoader.applicationContext.getString(R.string.Info), 0);
         actionModeViews.add(submenu);
         checkActionBarMenu();
 
@@ -1022,7 +1031,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         chatActivityEnterView.addToAttachLayout(menuItem);
 
         //noinspection ResourceType
-        chatActivityEnterView.setId(id_chat_compose_panel);
+        chatActivityEnterView.setId(ID_CHAT_COMPOSE_PANEL);
 
         chatActivityEnterView.setAllowStickersAndGifs(false, false); // for the moment, we have no stickers
 
@@ -1529,11 +1538,41 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
             if (selectedMessagesIds.isEmpty() ) {
                 actionBar.hideActionMode();
             } else {
-                int newVisibility = selectedMessagesIds.size() == 1 ? View.VISIBLE : View.GONE;
-                if( m_infoMenuItem != null  ) { m_infoMenuItem.setVisibility(newVisibility); }
-                if( m_replyMenuItem != null ) { m_replyMenuItem.setVisibility(newVisibility); }
+                boolean isSingleSelection = selectedMessagesIds.size()==1;
+                boolean canSaveToXX = false;
+                if( m_saveToXXMenuItem != null ) {
+                    if( isSingleSelection ) {
+                        MrMsg selMsg = MrMailbox.getMsg(getFirstSelectedId());
+                        int type = selMsg.getType();
+                        if( type==MrMsg.MR_MSG_FILE ) {
+                            canSaveToXX = true;
+                            m_saveToXXMenuItem.setText(R.string.SaveToDownloads);
+                        }
+                        else if( type == MrMsg.MR_MSG_AUDIO || type == MrMsg.MR_MSG_VOICE ) {
+                            canSaveToXX = true;
+                            m_saveToXXMenuItem.setText(R.string.SaveToMusic);
+                        }
+                        if( type==MrMsg.MR_MSG_IMAGE || type == MrMsg.MR_MSG_VIDEO ) {
+                            canSaveToXX = true;
+                            m_saveToXXMenuItem.setText(R.string.SaveToGallery);
+                        }
+                    }
+                    m_saveToXXMenuItem.setVisibility(canSaveToXX? View.VISIBLE : View.GONE);
+                }
+                if( m_shareMenuItem != null ) { m_shareMenuItem.setVisibility(canSaveToXX? View.VISIBLE : View.GONE); }
+                if( m_infoMenuItem != null  ) { m_infoMenuItem.setVisibility(isSingleSelection? View.VISIBLE : View.GONE); }
+                if( m_replyMenuItem != null ) { m_replyMenuItem.setVisibility(isSingleSelection? View.VISIBLE : View.GONE); }
             }
         }
+    }
+
+    private int getFirstSelectedId()
+    {
+        ArrayList<Integer> ids_list = new ArrayList<>(selectedMessagesIds.keySet());
+        if(ids_list.size() > 0 ) {
+            return ids_list.get(0);
+        }
+        return 0;
     }
 
     private void processRowSelect(View view) {
