@@ -228,7 +228,7 @@ public class MrMsg {
                 ret.media.document.mime_type = getParam('m', "application/octet-stream");
                 ret.media.document.file_name = getFilename();
                 ret.media.document.size = getBytes();
-                ret.attachPath = path;
+                ret.media.document.mr_path = path;
             }
             else {
                 ret.message = "<file path missing>";

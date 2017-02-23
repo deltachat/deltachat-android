@@ -225,19 +225,6 @@ public class AndroidUtilities {
         }
     }
 
-    public static boolean isKeyboardShowed(View view) {
-        if (view == null) {
-            return false;
-        }
-        try {
-            InputMethodManager inputManager = (InputMethodManager) view.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
-            return inputManager.isActive(view);
-        } catch (Exception e) {
-            FileLog.e("messenger", e);
-        }
-        return false;
-    }
-
     public static void hideKeyboard(View view) {
         if (view == null) {
             return;
@@ -394,19 +381,6 @@ public class AndroidUtilities {
             Field mCursorDrawableRes = TextView.class.getDeclaredField("mCursorDrawableRes");
             mCursorDrawableRes.setAccessible(true);
             mCursorDrawableRes.setInt(editText, 0);
-        } catch (Exception e) {
-            FileLog.e("messenger", e);
-        }
-    }
-
-    public static void setProgressBarAnimationDuration(ProgressBar progressBar, int duration) {
-        if (progressBar == null) {
-            return;
-        }
-        try {
-            Field mCursorDrawableRes = ProgressBar.class.getDeclaredField("mDuration");
-            mCursorDrawableRes.setAccessible(true);
-            mCursorDrawableRes.setInt(progressBar, duration);
         } catch (Exception e) {
             FileLog.e("messenger", e);
         }
@@ -1000,13 +974,20 @@ public class AndroidUtilities {
 
     public static void openForView(MessageObject message, Activity activity) throws Exception
     {
-        String fileName = message.messageOwner.media.document.file_name;
-        Uri toOpen = Uri.parse("content://" + BuildConfig.APPLICATION_ID + ".attachments/" + fileName);
+        String path = message.messageOwner.media.document.mr_path;
+        File   file = new File(path);
+        Uri    uri;
+        if( path.startsWith(MrMailbox.getBlobdir()) ) {
+            uri = Uri.parse("content://" + BuildConfig.APPLICATION_ID + ".attachments/" + file.getName());
+        }
+        else {
+            uri = Uri.fromFile(file);
+        }
 
         String mimeType = getMimetypeForView(message);
 
         Intent intent = new Intent(Intent.ACTION_VIEW);
-        intent.setDataAndType(toOpen, mimeType);
+        intent.setDataAndType(uri, mimeType);
         intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
         activity.startActivity(intent);
     }
