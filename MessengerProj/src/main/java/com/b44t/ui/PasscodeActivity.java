@@ -381,6 +381,7 @@ public class PasscodeActivity extends BaseFragment implements NotificationCenter
                                 return "";
                             }
                         });
+                        numberPicker.setWrapSelectorWheel(false);
                         builder.setView(numberPicker);
                         builder.setNegativeButton(LocaleController.getString("Done", R.string.Done), new DialogInterface.OnClickListener() {
                             @Override

@@ -77,11 +77,11 @@ public class PrivacySettingsActivity extends BaseFragment implements Notificatio
 
         rowCount = 0;
         privacySectionRow       = -1;
-        e2eEncryptionRow        = rowCount++;
-        readReceiptsRow         = rowCount++;
-        blockedRow              = rowCount++;
         passcodeRow             = rowCount++;
+        blockedRow              = rowCount++;
         showUnknownSendersRow   = rowCount++;
+        readReceiptsRow         = rowCount++;
+        e2eEncryptionRow        = rowCount++;
         manageKeysRow           = rowCount++;
         securitySectionRow      = -1;
         secretDetailRow         = rowCount++;

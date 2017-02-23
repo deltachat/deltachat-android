@@ -43,6 +43,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewOutlineProvider;
 import android.view.ViewTreeObserver;
+import android.view.WindowManager;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.EditText;
 import android.widget.FrameLayout;
@@ -57,6 +58,7 @@ import com.b44t.messenger.LocaleController;
 import com.b44t.messenger.MrChat;
 import com.b44t.messenger.MrMailbox;
 import com.b44t.messenger.MrMsg;
+import com.b44t.messenger.Utilities;
 import com.b44t.messenger.support.widget.LinearLayoutManager;
 import com.b44t.messenger.support.widget.RecyclerView;
 import com.b44t.messenger.FileLog;
@@ -117,6 +119,8 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
     private long openedDialogId;
 
     private DialogsActivityDelegate delegate;
+
+    private static final int ID_LOCK_APP = 1;
 
     public interface DialogsActivityDelegate {
         void didSelectDialog(DialogsActivity fragment, long dialog_id, boolean param);
@@ -187,7 +191,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
 
         ActionBarMenu menu = actionBar.createMenu();
         if (!onlySelect ) {
-            passcodeItem = menu.addItem(1, R.drawable.lock_close);
+            passcodeItem = menu.addItem(ID_LOCK_APP, R.drawable.lock_close);
             updatePasscodeButton();
         }
         final ActionBarMenuItem item = menu.addItem(0, R.drawable.ic_ab_search).setIsSearchField(true, true).setActionBarMenuItemSearchListener(new ActionBarMenuItem.ActionBarMenuItemSearchListener() {
@@ -273,11 +277,32 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
                     } else if (parentLayout != null) {
                         parentLayout.getDrawerLayoutContainer().openDrawer(false);
                     }
-                } else if (id == 1) {
+                } else if (id == ID_LOCK_APP) {
+
+                    listView.setVisibility(View.INVISIBLE);
                     UserConfig.appLocked = !UserConfig.appLocked;
                     UserConfig.saveConfig(false);
-                    updatePasscodeButton();
-                    getParentActivity().finish();
+                    if( UserConfig.appLocked )
+                    {
+                        // hide list as it is visible in the "last app switcher" otherwise, save state
+                        updatePasscodeButton();
+
+                        // finish the activity after a little delay; 200 ms shoud be enough to
+                        // let the system update its screenshots for the "last app switcher".
+                        // FLAG_SECURE may be a little too much as it affects display and screenshots;
+                        // it also does not really direct this problem.
+                        Utilities.searchQueue.postRunnable(new Runnable() {
+                            @Override
+                            public void run() {
+                                AndroidUtilities.runOnUIThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        getParentActivity().finish();
+                                    }
+                                });
+                            }
+                        }, 200);
+                    }
                 }
             }
         });
