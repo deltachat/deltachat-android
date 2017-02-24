@@ -181,7 +181,6 @@
     <string name="FingerprintInfo">Confirma la huella digital para continuar</string>
     <string name="FingerprintNotRecognized">Huella digital no reconocida. Reinténtalo</string>
     <!--photo gallery view-->
-    <string name="ShowAllMedia">Ir a Multimedia</string>
     <string name="SaveToGallery">Guardar en galería</string>
     <string name="Of">%1$d de %2$d</string>
     <string name="Gallery">Galería</string>
@@ -189,7 +188,6 @@
     <string name="AllVideo">Todos los vídeos</string>
     <string name="NoPhotos">Aún sin fotos</string>
     <string name="NoVideo">Sin vídeos aún</string>
-    <string name="PleaseDownload">Por favor, primero descarga la multimedia</string>
     <string name="NoRecentPhotos">No hay fotos recientes</string>
     <string name="NoRecentGIFs">No hay GIF recientes</string>
     <string name="SearchImages">BUSCA FOTOS</string>
@@ -271,7 +269,6 @@
     <string name="AttachVoiceMessage">Mensaje de voz</string>
     <string name="FromSelf">Tú</string>
     <!--Alert messages-->
-    <string name="Loading">Cargando…</string>
     <string name="NoHandleAppInstalled">No tienes aplicaciones que puedan manejar el tipo de archivo “%1$s”. Por favor, instala una para continuar.</string>
     <string name="AskAddMemberToGroup">¿Añadir a <![CDATA[<b>]]>%1$s<![CDATA[</b>]]> al grupo?</string>
     <string name="ContactAlreadyInGroup">Este usuario ya está en el grupo</string>

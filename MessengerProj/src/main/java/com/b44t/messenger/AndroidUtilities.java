@@ -22,15 +22,15 @@
 
 package com.b44t.messenger;
 
+import android.Manifest;
 import android.animation.Animator;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.app.AlertDialog;
+import android.app.DownloadManager;
 import android.content.ContentUris;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
@@ -41,8 +41,6 @@ import android.graphics.Color;
 import android.graphics.Point;
 import android.graphics.Rect;
 import android.graphics.Typeface;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Build;
@@ -64,7 +62,6 @@ import android.widget.AbsListView;
 import android.widget.EdgeEffect;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -80,6 +77,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
+import java.nio.channels.FileChannel;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -625,11 +623,11 @@ public class AndroidUtilities {
         showHint(context, ApplicationLoader.applicationContext.getString(R.string.ErrorHint));
     }
 
-    public static void showHint(Context context, String text)
+    public static Toast showHint(Context context, String text)
     {
-        if( text != null ) {
-            Toast.makeText(context, text, Toast.LENGTH_LONG).show();
-        }
+        Toast t = Toast.makeText(context, text, Toast.LENGTH_LONG);
+        t.show();
+        return t;
     }
 
     public static void addToClipboard(CharSequence str) {
@@ -787,49 +785,6 @@ public class AndroidUtilities {
         return null;
     }
 
-    public static CharSequence generateSearchName(String name, String name2, String q) {
-        if (name == null && name2 == null) {
-            return "";
-        }
-        SpannableStringBuilder builder = new SpannableStringBuilder();
-        String wholeString = name;
-        if (wholeString == null || wholeString.length() == 0) {
-            wholeString = name2;
-        } else if (name2 != null && name2.length() != 0) {
-            wholeString += " " + name2;
-        }
-        wholeString = wholeString.trim();
-        String lower = " " + wholeString.toLowerCase();
-
-        int index;
-        int lastIndex = 0;
-        while ((index = lower.indexOf(" " + q, lastIndex)) != -1) {
-            int idx = index - (index == 0 ? 0 : 1);
-            int end = q.length() + (index == 0 ? 0 : 1) + idx;
-
-            if (lastIndex != 0 && lastIndex != idx + 1) {
-                builder.append(wholeString.substring(lastIndex, idx));
-            } else if (lastIndex == 0 && idx != 0) {
-                builder.append(wholeString.substring(0, idx));
-            }
-
-            String query = wholeString.substring(idx, end);
-            if (query.startsWith(" ")) {
-                builder.append(" ");
-            }
-            query = query.trim();
-            builder.append(AndroidUtilities.replaceTags("<c#ff4d83b3>" + query + "</c>"));
-
-            lastIndex = end;
-        }
-
-        if (lastIndex != -1 && lastIndex != wholeString.length()) {
-            builder.append(wholeString.substring(lastIndex, wholeString.length()));
-        }
-
-        return builder;
-    }
-
     public static File generateVideoPath() {
         try {
             File storageDir = getAlbumDir();
@@ -918,44 +873,17 @@ public class AndroidUtilities {
         return true;
     }
 
-    public static byte[] calcAuthKeyHash(byte[] auth_key) {
-        byte[] sha1 = Utilities.computeSHA1(auth_key);
-        byte[] key_hash = new byte[16];
-        System.arraycopy(sha1, 0, key_hash, 0, 16);
-        return key_hash;
-    }
+    /* open, view, download files
+     **********************************************************************************************/
 
-    /*
-    public static void saveToDownloads()
+    public static String getMimetype(MessageObject message)
     {
-        if (Build.VERSION.SDK_INT >= 23 && getParentActivity().checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-            getParentActivity().requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 4);
-            selectedObject = null;
-            return;
-        }
-        String fileName = FileLoader.getDocumentFileName(selectedObject.getDocument());
-        if (fileName == null || fileName.length() == 0) {
-            fileName = selectedObject.getFileName();
-        }
-        String path = selectedObject.messageOwner.attachPath;
-        if (path != null && path.length() > 0) {
-            File temp = new File(path);
-            if (!temp.exists()) {
-                path = null;
-            }
-        }
-        if (path == null || path.length() == 0) {
-            path = FileLoader.getPathToMessage(selectedObject.messageOwner).toString();
-        }
-        MediaController.saveFile(path, getParentActivity(), selectedObject.isMusic() ? 3 : 2, fileName, selectedObject.getDocument() != null ? selectedObject.getDocument().mime_type : "");
-
+        return getMimetype(message.messageOwner.media.document.file_name, message.messageOwner.media.document.mime_type);
     }
-    */
 
-    public static String getMimetypeForView(MessageObject message)
+    public static String getMimetype(String fileName, String def)
     {
         String mimeType = "application/octet-stream";
-        String fileName = message.messageOwner.media.document.file_name;
         try {
             MimeTypeMap mimeMap = MimeTypeMap.getSingleton();
             int idx = fileName.lastIndexOf('.');
@@ -964,7 +892,7 @@ public class AndroidUtilities {
                 mimeType = mimeMap.getMimeTypeFromExtension(ext.toLowerCase());
             }
             if (mimeType == null) {
-                mimeType = message.messageOwner.media.document.mime_type;
+                mimeType = def==null? "application/octet-stream" : def;
             }
         }
         catch(Exception e) {
@@ -984,11 +912,133 @@ public class AndroidUtilities {
             uri = Uri.fromFile(file);
         }
 
-        String mimeType = getMimetypeForView(message);
+        String mimeType = getMimetype(message);
 
         Intent intent = new Intent(Intent.ACTION_VIEW);
         intent.setDataAndType(uri, mimeType);
         intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
         activity.startActivity(intent);
     }
+
+    private static File getFineFilename(File path, String desiredName)
+    {
+        // get a fine file name by adding a number to the basename and avoid overwrites
+        for( int i = 0; i < 1000; i++ ) {
+            String testName = desiredName;
+            if( i > 0 ) {
+                String baseName=desiredName, ext = "";
+                int idx = desiredName.lastIndexOf('.');
+                if( idx != -1 ) {
+                    baseName = desiredName.substring(0, idx);
+                    ext = desiredName.substring(idx);
+                }
+                testName = String.format("%s-%d%s", baseName, i, ext);
+            }
+            File pathNFile = new File(path, testName);
+            if (!pathNFile.exists()) {
+                return pathNFile;
+            }
+        }
+        return null;
+    }
+
+    public static void saveMessageFileToExt(final Activity context, int msg_id)
+    {
+        if (Build.VERSION.SDK_INT >= 23 && context.checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+            context.requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 4);
+            return;
+        }
+
+        MrMsg        msg = MrMailbox.getMsg(msg_id);
+        final int    msg_type = msg.getType();
+        String       msg_file_path = msg.getParam('f', "");
+        final String msg_mime = msg.getParam('m', "application/octet-stream");
+        final String msg_file_name = msg.getFilename();
+        final File sourceFile = new File(msg_file_path);
+        if( !sourceFile.exists() ) {
+            showErrorHint(context);
+            return;
+        }
+
+        final Toast waitingHint = showHint(context, ApplicationLoader.applicationContext.getString(R.string.OneMomentPlease));
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                boolean allOkay = false;
+
+                try {
+                    // get destination path
+                    File destPath = null;
+                    boolean add_to_download_manager = false;
+                    if (msg_type == MrMsg.MR_MSG_IMAGE || msg_type == MrMsg.MR_MSG_VIDEO) {
+                        destPath = AndroidUtilities.getAlbumDir();
+                    } else if (msg_type == MrMsg.MR_MSG_FILE) {
+                        destPath = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
+                        add_to_download_manager = true;
+                    } else if (msg_type == MrMsg.MR_MSG_AUDIO || msg_type == MrMsg.MR_MSG_VOICE ) {
+                        destPath = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_MUSIC);
+                    }
+
+                    // create destination path (must be done, see documentation for getExternalStoragePublicDirectory())
+                    destPath.mkdirs();
+
+                    File destPathNFile = getFineFilename(destPath, msg_file_name);
+                    if( destPathNFile != null )
+                    {
+                        destPathNFile.createNewFile();
+                        boolean copied = true;
+                        FileChannel source = null;
+                        FileChannel destination = null;
+                        try {
+                            source = new FileInputStream(sourceFile).getChannel();
+                            destination = new FileOutputStream(destPathNFile).getChannel();
+                            long size = source.size();
+                            for (long a = 0; a < size; a += 4096) {
+                                destination.transferFrom(source, a, Math.min(4096, size - a));
+                            }
+                        } catch (Exception e) {
+                            copied = false;
+                        } finally {
+                            if (source != null) {
+                                source.close();
+                            }
+                            if (destination != null) {
+                                destination.close();
+                            }
+                        }
+
+                        if (copied) {
+                            if ( add_to_download_manager ) {
+                                DownloadManager downloadManager = (DownloadManager) ApplicationLoader.applicationContext.getSystemService(Context.DOWNLOAD_SERVICE);
+                                downloadManager.addCompletedDownload(destPathNFile.getName(), destPathNFile.getName(), false, getMimetype(msg_file_name, msg_mime), destPathNFile.getAbsolutePath(), destPathNFile.length(), true);
+                            } else {
+                                addMediaToGallery(Uri.fromFile(destPathNFile));
+                            }
+                            allOkay = true;
+                        }
+                    }
+                }
+                catch (Exception e) {
+                    ;
+                }
+
+                final boolean allOkayFinal = allOkay;
+                AndroidUtilities.runOnUIThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        waitingHint.cancel();
+                        if( allOkayFinal ) {
+                            showDoneHint(context);
+                        }
+                        else {
+                            showHint(context, ApplicationLoader.applicationContext.getString(R.string.AccessError));
+                        }
+                    }
+                });
+
+            }
+        }).start();
+    }
+
 }

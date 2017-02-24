@@ -184,7 +184,6 @@
     <string name="FingerprintInfo">Confirm fingerprint to continue</string>
     <string name="FingerprintNotRecognized">Fingerprint not recognized. Try again</string>
     <!--photo gallery view-->
-    <string name="ShowAllMedia">Show all media</string>
     <string name="SaveToGallery">Save to gallery</string>
     <string name="Of">%1$d of %2$d</string>
     <string name="Gallery">Gallery</string>
@@ -192,7 +191,6 @@
     <string name="AllVideo">All Videos</string>
     <string name="NoPhotos">No photos yet</string>
     <string name="NoVideo">No videos yet</string>
-    <string name="PleaseDownload">Please download media first</string>
     <string name="NoRecentPhotos">No recent photos</string>
     <string name="NoRecentGIFs">No recent GIFs</string>
     <string name="SearchImages">FIND IMAGES</string>
@@ -274,7 +272,6 @@
     <string name="AttachVoiceMessage">Voice message</string>
     <string name="FromSelf">Me</string>
     <!--Alert messages-->
-    <string name="Loading">Loading …</string>
     <string name="NoHandleAppInstalled">You don\'t have applications that can handle the file type \'%1$s\', please install one to continue</string>
     <string name="ContactAlreadyInGroup">This contact is already in this group.</string>
     <string name="ForwardMessagesTo">Forward selected messages to <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>?</string>

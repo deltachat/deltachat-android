@@ -184,7 +184,6 @@
     <string name="FingerprintInfo">Fingerabdruck bestätigen.</string>
     <string name="FingerprintNotRecognized">Abdruck nicht erkannt; erneut versuchen </string>
     <!--photo gallery view-->
-    <string name="ShowAllMedia">Zeige alle Medien</string>
     <string name="SaveToGallery">In der Galerie speichern</string>
     <string name="Of">%1$d von %2$d</string>
     <string name="Gallery">Galerie</string>
@@ -192,7 +191,6 @@
     <string name="AllVideo">Alle Videos</string>
     <string name="NoPhotos">Noch keine Bilder</string>
     <string name="NoVideo">Noch keine Videos</string>
-    <string name="PleaseDownload">Medien bitte zuerst herunterladen</string>
     <string name="NoRecentPhotos">Suchverlauf</string>
     <string name="NoRecentGIFs">Suchverlauf</string>
     <string name="SearchImages">BILDERSUCHE</string>
@@ -274,7 +272,6 @@
     <string name="AttachVoiceMessage">Sprachnachricht</string>
     <string name="FromSelf">Ich</string>
     <!--Alert messages-->
-    <string name="Loading">Lädt …</string>
     <string name="NoHandleAppInstalled">Um den Dateityp \"%1$s\" öffnen zu können, muss eine entsprechende App installiert werden.</string>
     <string name="ContactAlreadyInGroup">Kontakt befindet sich schon in der Gruppe.</string>
     <string name="ForwardMessagesTo">Ausgewählte Nachrichten an <![CDATA[<b>]]>%1$s<![CDATA[</b>]]> weiterleiten?</string>

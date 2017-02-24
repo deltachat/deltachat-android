@@ -120,7 +120,6 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
         notificationRow = rowCount++;
         backgroundRow = rowCount++;
         languageRow = rowCount++;
-        // saveToGalleryRow: for now, we do not use this option, this results in confusing folders ("AppName" and "AppName Images" etc.); instead, for now, the user can use the option to manually save a media. Moreover, we also avoid the problem to double-save each image _or_ to handle the case a user deletes an image in the gallery.
         messagesSectionRow = rowCount++;
         messagesSectionRow2 = rowCount++;
         textSizeRow = rowCount++; // incoming messages

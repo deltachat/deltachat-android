@@ -91,6 +91,9 @@ public class WallpapersActivity extends BaseFragment implements NotificationCent
 
     private final static int done_button = 1;
 
+    private final static int RC10_TAKE_WALLPAPER_PICTURE = 10;
+    private final static int RC11_SELECT_WALLPAPER_FROM_GALLERY = 11;
+
     @Override
     public boolean onFragmentCreate() {
         super.onFragmentCreate();
@@ -230,11 +233,11 @@ public class WallpapersActivity extends BaseFragment implements NotificationCent
                                         takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(image));
                                         currentPicturePath = image.getAbsolutePath();
                                     }
-                                    startActivityForResult(takePictureIntent, 10);
+                                    startActivityForResult(takePictureIntent, RC10_TAKE_WALLPAPER_PICTURE);
                                 } else if (i == 1) {
                                     Intent photoPickerIntent = new Intent(Intent.ACTION_PICK);
                                     photoPickerIntent.setType("image/*");
-                                    startActivityForResult(photoPickerIntent, 11);
+                                    startActivityForResult(photoPickerIntent, RC11_SELECT_WALLPAPER_FROM_GALLERY);
                                 }
                             } catch (Exception e) {
                                 FileLog.e("messenger", e);
@@ -262,7 +265,7 @@ public class WallpapersActivity extends BaseFragment implements NotificationCent
     @Override
     public void onActivityResultFragment(int requestCode, int resultCode, Intent data) {
         if (resultCode == Activity.RESULT_OK) {
-            if (requestCode == 10) {
+            if (requestCode == RC10_TAKE_WALLPAPER_PICTURE) {
                 AndroidUtilities.addMediaToGallery(currentPicturePath);
                 FileOutputStream stream = null;
                 try {
@@ -287,7 +290,7 @@ public class WallpapersActivity extends BaseFragment implements NotificationCent
                     }
                 }
                 currentPicturePath = null;
-            } else if (requestCode == 11) {
+            } else if (requestCode == RC11_SELECT_WALLPAPER_FROM_GALLERY) {
                 if (data == null || data.getData() == null) {
                     return;
                 }

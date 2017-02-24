@@ -498,7 +498,9 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 }
                 else if( id== ID_SAVE_TO_XX )
                 {
-                    Toast.makeText(getParentActivity(), ApplicationLoader.applicationContext.getString(R.string.NotYetImplemented), Toast.LENGTH_SHORT).show();
+                    AndroidUtilities.saveMessageFileToExt(getParentActivity(), getFirstSelectedId());
+                    actionBar.hideActionMode();
+                    updateVisibleRows();
                 }
                 else if( id== ID_SHARE )
                 {
@@ -2817,7 +2819,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                                 if ( getParentActivity()!=null ) {
                                     AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
                                     builder.setPositiveButton(ApplicationLoader.applicationContext.getString(R.string.OK), null);
-                                    builder.setMessage(LocaleController.formatString("NoHandleAppInstalled", R.string.NoHandleAppInstalled, AndroidUtilities.getMimetypeForView(message)));
+                                    builder.setMessage(LocaleController.formatString("NoHandleAppInstalled", R.string.NoHandleAppInstalled, AndroidUtilities.getMimetype(message)));
                                     showDialog(builder.create());
                                 }
                             }

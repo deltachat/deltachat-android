@@ -92,12 +92,6 @@ public class FileLoader {
         mediaDirs = dirs;
     }
 
-    /*
-    public File checkDirectory(int type) {
-        return mediaDirs.get(type);
-    }
-    */
-
     public File getDirectory(int type) { // always returns the cache directory as this is the only one set in mediaDirs[] - we do not use the other directories at the moment
         File dir = mediaDirs.get(type);
         if (dir == null && type != MEDIA_DIR_CACHE) {

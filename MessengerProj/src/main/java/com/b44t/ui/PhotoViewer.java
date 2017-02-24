@@ -966,11 +966,6 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
                 intent.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(f));
 
                 parentActivity.startActivityForResult(Intent.createChooser(intent, LocaleController.getString("ShareFile", R.string.ShareFile)), 500);
-            } else {
-                AlertDialog.Builder builder = new AlertDialog.Builder(parentActivity);
-                builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), null);
-                builder.setMessage(LocaleController.getString("PleaseDownload", R.string.PleaseDownload));
-                showAlertDialog(builder);
             }
         } catch (Exception e) {
             FileLog.e("messenger", e);
@@ -1064,25 +1059,8 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
                     }*/
                     closePhoto(true, false);
                 } else if (id == gallery_menu_save) {
-                    if (Build.VERSION.SDK_INT >= 23 && parentActivity.checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-                        parentActivity.requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 4);
-                        return;
-                    }
-
-                    File f = null;
                     if (currentMessageObject != null) {
-                        f = FileLoader.getPathToMessage(currentMessageObject.messageOwner);
-                    } else if (currentFileLocation != null) {
-                        f = FileLoader.getPathToAttach(currentFileLocation, avatarsDialogId != 0);
-                    }
-
-                    if (f != null && f.exists()) {
-                        MediaController.saveFile(f.toString(), parentActivity, currentMessageObject != null && currentMessageObject.isVideo() ? 1 : 0, null, null);
-                    } else {
-                        AlertDialog.Builder builder = new AlertDialog.Builder(parentActivity);
-                        builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), null);
-                        builder.setMessage(LocaleController.getString("PleaseDownload", R.string.PleaseDownload));
-                        showAlertDialog(builder);
+                        AndroidUtilities.saveMessageFileToExt(parentActivity, currentMessageObject.getId());
                     }
                 }
                 /*else if (id == gallery_menu_showall) {
@@ -1286,8 +1264,7 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
             str = str.substring(0,1).toUpperCase() + str.substring(1).toLowerCase();
         }
         menuItem.addSubItem(gallery_menu_openin, str, 0);
-        menuItem.addSubItem(gallery_menu_save, LocaleController.getString("SaveToGallery", R.string.SaveToGallery), 0);
-        //menuItem.addSubItem(gallery_menu_showall, LocaleController.getString("ShowAllMedia", R.string.ShowAllMedia), 0);
+        menuItem.addSubItem(gallery_menu_save, ApplicationLoader.applicationContext.getString(R.string.SaveToGallery), 0);
 
         // the following 3 options are disabled for the moment, we'll add them if we have the time (bp)
         // (as a replacement, you can use "save to gallery" for sharing or the options from the chat for forwarding/delete)

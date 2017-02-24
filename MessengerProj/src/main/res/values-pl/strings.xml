@@ -184,7 +184,6 @@
     <string name="FingerprintInfo">Potwierdź odcisk palca, aby kontynuować</string>
     <string name="FingerprintNotRecognized">Odcisk palca nie rozpoznany. Spróbuj ponownie</string>
     <!--photo gallery view-->
-    <string name="ShowAllMedia">Pokaż wszystkie multimedia</string>
     <string name="SaveToGallery">Zapisz w galerii</string>
     <string name="Of">%1$d z %2$d</string>
     <string name="Gallery">Galeria</string>
@@ -192,7 +191,6 @@
     <string name="AllVideo">Wszystkie wideo</string>
     <string name="NoPhotos">Nie ma zdjęć</string>
     <string name="NoVideo">Nie ma jeszcze wideo</string>
-    <string name="PleaseDownload">Pobierz najpierw multimedia</string>
     <string name="NoRecentPhotos">Nie ma wcześniejszych zdjęć</string>
     <string name="NoRecentGIFs">Nie ma wcześniejszych GIFów</string>
     <string name="SearchImages">SZUKAJ OBRAZY</string>
@@ -274,7 +272,6 @@
     <string name="AttachVoiceMessage">Wiadomość głosowa</string>
     <string name="FromSelf">Ja</string>
     <!--Alert messages-->
-    <string name="Loading">Wczytywanie…</string>
     <string name="NoHandleAppInstalled">Nie masz aplikacji obsługujących pliki typu „%1$s”. Zainstaluj jakąś, aby kontynuować.</string>
     <string name="ContactAlreadyInGroup">Ten kontakt jest już w tej grupie</string>
     <string name="ForwardMessagesTo">Przekazać wybrane wiadomości do <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>?</string>

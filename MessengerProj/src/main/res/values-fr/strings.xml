@@ -179,7 +179,6 @@
     <string name="FingerprintInfo">Confirmer votre empreinte digitale pour continuer</string>
     <string name="FingerprintNotRecognized">Empreinte non reconnue. Essayer encore</string>
     <!--photo gallery view-->
-    <string name="ShowAllMedia">Montrer tous les médias</string>
     <string name="SaveToGallery">Enregistrer dans la galerie</string>
     <string name="Of">%1$d de %2$d</string>
     <string name="Gallery">Gallerie</string>
@@ -187,7 +186,6 @@
     <string name="AllVideo">Toutes les vidéos</string>
     <string name="NoPhotos">Aucune photo pour le moment</string>
     <string name="NoVideo">Aucune vidéo pour le moement</string>
-    <string name="PleaseDownload">Veuiller télécharger le média</string>
     <string name="NoRecentPhotos">Aucune photo récente</string>
     <string name="NoRecentGIFs">Aucun GIF récent</string>
     <string name="SearchImages">TROUVER LES IMAGES</string>
@@ -269,7 +267,6 @@
     <string name="AttachVoiceMessage">Message vocal</string>
     <string name="FromSelf">Moi</string>
     <!--Alert messages-->
-    <string name="Loading">Chargement…</string>
     <string name="NoHandleAppInstalled">Vous n\'avez pas d\'application qui peut gérer le type \'%1$s\', veuillez en installer un pour continuer</string>
     <string name="ContactAlreadyInGroup">Ce contact est déjà dans ce groupe</string>
     <string name="ForwardMessagesTo">Renvoyer les messages sélectionnés à <![CDATA[<b>]]>%1$s<![CDATA[</b>]]> ?</string>

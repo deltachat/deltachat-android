@@ -37,7 +37,6 @@ import android.media.ThumbnailUtils;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
-import android.os.Environment;
 import android.provider.MediaStore;
 
 import com.b44t.ui.Components.AnimatedFileDrawable;
@@ -95,8 +94,6 @@ public class ImageLoader {
     private volatile long lastCacheOutTime = 0;
     private int lastImageNum = 0;
     private long lastProgressUpdateTime = 0;
-
-    private File messengerPath = null;
 
     private class ThumbGenerateInfo {
         private int count;
@@ -530,16 +527,6 @@ public class ImageLoader {
                             kf += "@" + filter;
                         }
                         NotificationCenter.getInstance().postNotificationName(NotificationCenter.messageThumbGenerated, bitmapDrawable, kf);
-                        /*BitmapDrawable old = memCache.get(kf);
-                        if (old != null) {
-                            Bitmap image = old.getBitmap();
-                            if (runtimeHack != null) {
-                                runtimeHack.trackAlloc(image.getRowBytes() * image.getHeight());
-                            }
-                            if (!image.isRecycled()) {
-                                image.recycle();
-                            }
-                        }*/
                         memCache.put(kf, bitmapDrawable);
                     }
                 });
@@ -1256,149 +1243,6 @@ public class ImageLoader {
 
         mediaDirs.put(FileLoader.MEDIA_DIR_CACHE, cachePath);
         FileLoader.getInstance().setMediaDirs(mediaDirs);
-
-        /*
-        cacheOutQueue.postRunnable(new Runnable() {
-            @Override
-            public void run() {
-                final HashMap<Integer, File> paths = createMediaPaths();
-                AndroidUtilities.runOnUIThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        FileLoader.getInstance().setMediaDirs(paths);
-                    }
-                });
-            }
-        });
-        */
-    }
-
-    /*
-    public HashMap<Integer, File> createMediaPaths() { // not sure, but it seems as if these paths are not needed
-        HashMap<Integer, File> mediaDirs = new HashMap<>();
-        File cachePath = AndroidUtilities.getCacheDir();
-        if (!cachePath.isDirectory()) {
-            try {
-                cachePath.mkdirs();
-            } catch (Exception e) {
-                FileLog.e("messenger", e);
-            }
-        }
-        try {
-            new File(cachePath, ".nomedia").createNewFile();
-        } catch (Exception e) {
-            FileLog.e("messenger", e);
-        }
-
-        mediaDirs.put(FileLoader.MEDIA_DIR_CACHE, cachePath);
-        FileLog.e("messenger", "cache path = " + cachePath);
-
-        try {
-            if (Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())) {
-                messengerPath = new File(Environment.getExternalStorageDirectory(), "Delta Chat");
-                messengerPath.mkdirs();
-
-                if (messengerPath.isDirectory()) {
-                    try {
-                        File imagePath = new File(messengerPath, "Delta Chat Images");
-                        imagePath.mkdir();
-                        if (imagePath.isDirectory() && canMoveFiles(cachePath, imagePath, FileLoader.MEDIA_DIR_IMAGE)) {
-                            mediaDirs.put(FileLoader.MEDIA_DIR_IMAGE, imagePath);
-                            FileLog.e("messenger", "image path = " + imagePath);
-                        }
-                    } catch (Exception e) {
-                        FileLog.e("messenger", e);
-                    }
-
-                    try {
-                        File videoPath = new File(messengerPath, "Delta Chat Video");
-                        videoPath.mkdir();
-                        if (videoPath.isDirectory() && canMoveFiles(cachePath, videoPath, FileLoader.MEDIA_DIR_VIDEO)) {
-                            mediaDirs.put(FileLoader.MEDIA_DIR_VIDEO, videoPath);
-                            FileLog.e("messenger", "video path = " + videoPath);
-                        }
-                    } catch (Exception e) {
-                        FileLog.e("messenger", e);
-                    }
-
-                    try {
-                        File audioPath = new File(messengerPath, "Delta Chat Audio");
-                        audioPath.mkdir();
-                        if (audioPath.isDirectory() && canMoveFiles(cachePath, audioPath, FileLoader.MEDIA_DIR_AUDIO)) {
-                            new File(audioPath, ".nomedia").createNewFile();
-                            mediaDirs.put(FileLoader.MEDIA_DIR_AUDIO, audioPath);
-                            FileLog.e("messenger", "audio path = " + audioPath);
-                        }
-                    } catch (Exception e) {
-                        FileLog.e("messenger", e);
-                    }
-
-                    try {
-                        File documentPath = new File(messengerPath, "Delta Chat Documents");
-                        documentPath.mkdir();
-                        if (documentPath.isDirectory() && canMoveFiles(cachePath, documentPath, FileLoader.MEDIA_DIR_DOCUMENT)) {
-                            new File(documentPath, ".nomedia").createNewFile();
-                            mediaDirs.put(FileLoader.MEDIA_DIR_DOCUMENT, documentPath);
-                            FileLog.e("messenger", "documents path = " + documentPath);
-                        }
-                    } catch (Exception e) {
-                        FileLog.e("messenger", e);
-                    }
-                }
-            } else {
-                FileLog.e("messenger", "this Android can't rename files");
-            }
-            MediaController.getInstance().checkSaveToGalleryFiles();
-        } catch (Exception e) {
-            FileLog.e("messenger", e);
-        }
-
-        return mediaDirs;
-    }
-    */
-
-    private boolean canMoveFiles(File from, File to, int type) {
-        RandomAccessFile file = null;
-        try {
-            File srcFile = null;
-            File dstFile = null;
-            if (type == FileLoader.MEDIA_DIR_IMAGE) {
-                srcFile = new File(from, "000000000_999999_temp.jpg");
-                dstFile = new File(to, "000000000_999999.jpg");
-            } else if (type == FileLoader.MEDIA_DIR_DOCUMENT) {
-                srcFile = new File(from, "000000000_999999_temp.doc");
-                dstFile = new File(to, "000000000_999999.doc");
-            } else if (type == FileLoader.MEDIA_DIR_AUDIO) {
-                srcFile = new File(from, "000000000_999999_temp.ogg");
-                dstFile = new File(to, "000000000_999999.ogg");
-            } else if (type == FileLoader.MEDIA_DIR_VIDEO) {
-                srcFile = new File(from, "000000000_999999_temp.mp4");
-                dstFile = new File(to, "000000000_999999.mp4");
-            }
-            byte[] buffer = new byte[1024];
-            srcFile.createNewFile();
-            file = new RandomAccessFile(srcFile, "rws");
-            file.write(buffer);
-            file.close();
-            file = null;
-            boolean canRename = srcFile.renameTo(dstFile);
-            srcFile.delete();
-            dstFile.delete();
-            if (canRename) {
-                return true;
-            }
-        } catch (Exception e) {
-            FileLog.e("messenger", e);
-        } finally {
-            try {
-                if (file != null) {
-                    file.close();
-                }
-            } catch (Exception e) {
-                FileLog.e("messenger", e);
-            }
-        }
-        return false;
     }
 
     public Float getFileProgress(String location) {
@@ -1406,21 +1250,6 @@ public class ImageLoader {
             return null;
         }
         return fileProgresses.get(location);
-    }
-
-    private void performReplace(String oldKey, String newKey) {
-        BitmapDrawable b = memCache.get(oldKey);
-        if (b != null) {
-            ignoreRemoval = oldKey;
-            memCache.remove(oldKey);
-            memCache.put(newKey, b);
-            ignoreRemoval = null;
-        }
-        Integer val = bitmapUseCounts.get(oldKey);
-        if (val != null) {
-            bitmapUseCounts.put(newKey, val);
-            bitmapUseCounts.remove(oldKey);
-        }
     }
 
     public void incrementUseCount(String key) {
@@ -1503,65 +1332,6 @@ public class ImageLoader {
         });
     }
 
-    public BitmapDrawable getImageFromMemory(String key) {
-        return memCache.get(key);
-    }
-
-    public BitmapDrawable getImageFromMemory(TLObject fileLocation, String httpUrl, String filter) {
-        if (fileLocation == null && httpUrl == null) {
-            return null;
-        }
-        String key = null;
-        if (httpUrl != null) {
-            key = Utilities.MD5(httpUrl);
-        } else {
-            if (fileLocation instanceof TLRPC.FileLocation) {
-                TLRPC.FileLocation location = (TLRPC.FileLocation) fileLocation;
-                key = location.volume_id + "_" + location.local_id;
-            } else if (fileLocation instanceof TLRPC.Document) {
-                TLRPC.Document location = (TLRPC.Document) fileLocation;
-                key = location.dc_id + "_" + location.id;
-            }
-        }
-        if (filter != null) {
-            key += "@" + filter;
-        }
-        return memCache.get(key);
-    }
-
-    private void replaceImageInCacheInternal(final String oldKey, final String newKey, final TLRPC.FileLocation newLocation) {
-        ArrayList<String> arr = memCache.getFilterKeys(oldKey);
-        if (arr != null) {
-            for (int a = 0; a < arr.size(); a++) {
-                String filter = arr.get(a);
-                String oldK = oldKey + "@" + filter;
-                String newK = newKey + "@" + filter;
-                performReplace(oldK, newK);
-                NotificationCenter.getInstance().postNotificationName(NotificationCenter.didReplacedPhotoInMemCache, oldK, newK, newLocation);
-            }
-        } else {
-            performReplace(oldKey, newKey);
-            NotificationCenter.getInstance().postNotificationName(NotificationCenter.didReplacedPhotoInMemCache, oldKey, newKey, newLocation);
-        }
-    }
-
-    public void replaceImageInCache(final String oldKey, final String newKey, final TLRPC.FileLocation newLocation, boolean post) {
-        if (post) {
-            AndroidUtilities.runOnUIThread(new Runnable() {
-                @Override
-                public void run() {
-                    replaceImageInCacheInternal(oldKey, newKey, newLocation);
-                }
-            });
-        } else {
-            replaceImageInCacheInternal(oldKey, newKey, newLocation);
-        }
-    }
-
-    public void putImageToCache(BitmapDrawable bitmap, String key) {
-        memCache.put(key, bitmap);
-    }
-
     private void generateThumb(int mediaType, File originalPath, TLRPC.FileLocation thumbLocation, String filter) {
         if (mediaType != FileLoader.MEDIA_DIR_IMAGE && mediaType != FileLoader.MEDIA_DIR_VIDEO && mediaType != FileLoader.MEDIA_DIR_DOCUMENT || originalPath == null || thumbLocation == null) {
             return;
@@ -1619,7 +1389,6 @@ public class ImageLoader {
 
                 if (!added) {
                     boolean onlyCache = false;
-                    boolean isQuality = false;
                     File cacheFile = null;
 
                     if (httpLocation != null) {
@@ -1932,34 +1701,6 @@ public class ImageLoader {
         }
     }
 
-    public void loadHttpFile(String url, String defaultExt) {
-        if (url == null || url.length() == 0 || httpFileLoadTasksByKeys.containsKey(url)) {
-            return;
-        }
-        String ext = getHttpUrlExtension(url, defaultExt);
-        File file = new File(FileLoader.getInstance().getDirectory(FileLoader.MEDIA_DIR_CACHE), Utilities.MD5(url) + "_temp." + ext);
-        file.delete();
-
-        HttpFileTask task = new HttpFileTask(url, file, ext);
-        httpFileLoadTasks.add(task);
-        httpFileLoadTasksByKeys.put(url, task);
-        runHttpFileLoadTasks(null, 0);
-    }
-
-    public void cancelLoadHttpFile(String url) {
-        HttpFileTask task = httpFileLoadTasksByKeys.get(url);
-        if (task != null) {
-            task.cancel(true);
-            httpFileLoadTasksByKeys.remove(url);
-            httpFileLoadTasks.remove(task);
-        }
-        Runnable runnable = retryHttpsTasks.get(url);
-        if (runnable != null) {
-            AndroidUtilities.cancelRunOnUIThread(runnable);
-        }
-        runHttpFileLoadTasks(null, 0);
-    }
-
     private void runHttpFileLoadTasks(final HttpFileTask oldTask, final int reason) {
         AndroidUtilities.runOnUIThread(new Runnable() {
             @Override
@@ -2005,7 +1746,6 @@ public class ImageLoader {
         InputStream inputStream = null;
 
         if (path == null && uri != null && uri.getScheme() != null) {
-            String imageFilePath = null;
             if (uri.getScheme().contains("file")) {
                 path = uri.getPath();
             } else {
@@ -2020,7 +1760,6 @@ public class ImageLoader {
         if (path != null) {
             BitmapFactory.decodeFile(path, bmOptions);
         } else if (uri != null) {
-            boolean error = false;
             try {
                 inputStream = ApplicationLoader.applicationContext.getContentResolver().openInputStream(uri);
                 BitmapFactory.decodeStream(inputStream, null, bmOptions);

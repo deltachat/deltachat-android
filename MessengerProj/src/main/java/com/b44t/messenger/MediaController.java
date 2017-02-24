@@ -27,8 +27,6 @@ import android.Manifest;
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.app.Activity;
-import android.app.DownloadManager;
-import android.app.ProgressDialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -288,7 +286,6 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
     private ArrayList<DownloadObject> videoDownloadQueue = new ArrayList<>();
     private HashMap<String, DownloadObject> downloadQueueKeys = new HashMap<>();
 
-    private final boolean saveToGallery = false;
     private final boolean autoplayGifs = true;
     private boolean raiseToSpeak = true;
     private boolean directShare = true;
@@ -613,7 +610,6 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
         mobileDataDownloadMask = preferences.getInt("mobileDataDownloadMask", AUTODOWNLOAD_MASK_PHOTO | AUTODOWNLOAD_MASK_AUDIO | AUTODOWNLOAD_MASK_MUSIC | AUTODOWNLOAD_MASK_GIF);
         wifiDownloadMask = preferences.getInt("wifiDownloadMask", AUTODOWNLOAD_MASK_PHOTO | AUTODOWNLOAD_MASK_AUDIO | AUTODOWNLOAD_MASK_MUSIC | AUTODOWNLOAD_MASK_GIF);
         roamingDownloadMask = preferences.getInt("roamingDownloadMask", 0);
-        //saveToGallery = preferences.getBoolean("save_gallery", false);
         //autoplayGifs = preferences.getBoolean("autoplay_gif", true);
         raiseToSpeak = preferences.getBoolean("raise_to_speak", true);
         directShare = preferences.getBoolean("direct_share", true);
@@ -2730,130 +2726,6 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
         });
     }
 
-    public static void saveFile(String fullPath, Context context, final int type, final String name, final String mime) {
-        if (fullPath == null) {
-            return;
-        }
-
-        File file = null;
-        if (fullPath != null && fullPath.length() != 0) {
-            file = new File(fullPath);
-            if (!file.exists()) {
-                file = null;
-            }
-        }
-
-        if (file == null) {
-            return;
-        }
-
-        final File sourceFile = file;
-        if (sourceFile.exists()) {
-            ProgressDialog progressDialog = null;
-            if (context != null) {
-                try {
-                    progressDialog = new ProgressDialog(context);
-                    progressDialog.setMessage(LocaleController.getString("Loading", R.string.Loading));
-                    progressDialog.setCanceledOnTouchOutside(false);
-                    progressDialog.setCancelable(false);
-                    progressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
-                    progressDialog.setMax(100);
-                    progressDialog.show();
-                } catch (Exception e) {
-                    FileLog.e("messenger", e);
-                }
-            }
-
-            final ProgressDialog finalProgress = progressDialog;
-
-            new Thread(new Runnable() {
-                @Override
-                public void run() {
-                    try {
-                        File destFile = null;
-                        if (type == 0) {
-                            destFile = AndroidUtilities.generatePicturePath();
-                        } else if (type == 1) {
-                            destFile = AndroidUtilities.generateVideoPath();
-                        } else if (type == 2) {
-                            File f = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
-                            f.mkdir();
-                            destFile = new File(f, name);
-                        } else if (type == 3) {
-                            File f = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_MUSIC);
-                            f.mkdirs();
-                            destFile = new File(f, name);
-                        }
-
-                        if (!destFile.exists()) {
-                            destFile.createNewFile();
-                        }
-                        FileChannel source = null;
-                        FileChannel destination = null;
-                        boolean result = true;
-                        long lastProgress = System.currentTimeMillis() - 500;
-                        try {
-                            source = new FileInputStream(sourceFile).getChannel();
-                            destination = new FileOutputStream(destFile).getChannel();
-                            long size = source.size();
-                            for (long a = 0; a < size; a += 4096) {
-                                destination.transferFrom(source, a, Math.min(4096, size - a));
-                                if (finalProgress != null) {
-                                    if (lastProgress <= System.currentTimeMillis() - 500) {
-                                        lastProgress = System.currentTimeMillis();
-                                        final int progress = (int) ((float) a / (float) size * 100);
-                                        AndroidUtilities.runOnUIThread(new Runnable() {
-                                            @Override
-                                            public void run() {
-                                                try {
-                                                    finalProgress.setProgress(progress);
-                                                } catch (Exception e) {
-                                                    FileLog.e("messenger", e);
-                                                }
-                                            }
-                                        });
-                                    }
-                                }
-                            }
-                        } catch (Exception e) {
-                            FileLog.e("messenger", e);
-                            result = false;
-                        } finally {
-                            if (source != null) {
-                                source.close();
-                            }
-                            if (destination != null) {
-                                destination.close();
-                            }
-                        }
-
-                        if (result) {
-                            if (type == 2) {
-                                DownloadManager downloadManager = (DownloadManager) ApplicationLoader.applicationContext.getSystemService(Context.DOWNLOAD_SERVICE);
-                                downloadManager.addCompletedDownload(destFile.getName(), destFile.getName(), false, mime, destFile.getAbsolutePath(), destFile.length(), true);
-                            } else {
-                                AndroidUtilities.addMediaToGallery(Uri.fromFile(destFile));
-                            }
-                        }
-                    } catch (Exception e) {
-                        FileLog.e("messenger", e);
-                    }
-                    if (finalProgress != null) {
-                        AndroidUtilities.runOnUIThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                try {
-                                    finalProgress.dismiss();
-                                } catch (Exception e) {
-                                    FileLog.e("messenger", e);
-                                }
-                            }
-                        });
-                    }
-                }
-            }).start();
-        }
-    }
 
     public static boolean isWebp(Uri uri) {
         InputStream inputStream = null;
@@ -2977,15 +2849,6 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
     }
 
     /*
-    public void toggleSaveToGallery() {
-        saveToGallery = !saveToGallery;
-        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("mainconfig", Activity.MODE_PRIVATE);
-        SharedPreferences.Editor editor = preferences.edit();
-        editor.putBoolean("save_gallery", saveToGallery);
-        editor.apply();
-        checkSaveToGalleryFiles();
-    }
-
     public void toggleAutoplayGifs() {
         autoplayGifs = !autoplayGifs;
         SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("mainconfig", Activity.MODE_PRIVATE);
@@ -3010,40 +2873,6 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
         editor.putBoolean("direct_share", directShare);
         editor.apply();
     }
-
-    public void checkSaveToGalleryFiles() { // not sure, but it seems as if these paths are not needed
-        try {
-            File messengerPath = new File(Environment.getExternalStorageDirectory(), "Delta Chat");
-            File imagePath = new File(messengerPath, "Delta Chat Images");
-            imagePath.mkdir();
-            File videoPath = new File(messengerPath, "Delta Chat Video");
-            videoPath.mkdir();
-
-            if (saveToGallery) {
-                if (imagePath.isDirectory()) {
-                    new File(imagePath, ".nomedia").delete();
-                }
-                if (videoPath.isDirectory()) {
-                    new File(videoPath, ".nomedia").delete();
-                }
-            } else {
-                if (imagePath.isDirectory()) {
-                    new File(imagePath, ".nomedia").createNewFile();
-                }
-                if (videoPath.isDirectory()) {
-                    new File(videoPath, ".nomedia").createNewFile();
-                }
-            }
-        } catch (Exception e) {
-            FileLog.e("messenger", e);
-        }
-    }
-
-    /*
-    public boolean canSaveToGallery() {
-        return saveToGallery;
-    }
-    */
 
     public boolean canAutoplayGifs() {
         return autoplayGifs;
