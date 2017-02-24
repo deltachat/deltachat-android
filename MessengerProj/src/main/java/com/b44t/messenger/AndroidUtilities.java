@@ -876,11 +876,6 @@ public class AndroidUtilities {
     /* open, view, download files
      **********************************************************************************************/
 
-    public static String getMimetype(MessageObject message)
-    {
-        return getMimetype(message.messageOwner.media.document.file_name, message.messageOwner.media.document.mime_type);
-    }
-
     public static String getMimetype(String fileName, String def)
     {
         String mimeType = "application/octet-stream";
@@ -900,24 +895,38 @@ public class AndroidUtilities {
         return mimeType;
     }
 
-    public static void openForView(MessageObject message, Activity activity) throws Exception
+    public static void openForViewOrShare(Activity activity, int msg_id, String cmd)
     {
-        String path = message.messageOwner.media.document.mr_path;
-        File   file = new File(path);
-        Uri    uri;
-        if( path.startsWith(MrMailbox.getBlobdir()) ) {
-            uri = Uri.parse("content://" + BuildConfig.APPLICATION_ID + ".attachments/" + file.getName());
-        }
-        else {
-            uri = Uri.fromFile(file);
-        }
+        MrMsg msg = MrMailbox.getMsg(msg_id);
+        String path = msg.getParam('f', "");
+        String mimeType = getMimetype(path, msg.getParam('m', "application/octet-stream"));
+        try {
+            File file = new File(path);
+            Uri uri;
+            if (path.startsWith(MrMailbox.getBlobdir())) {
+                uri = Uri.parse("content://" + BuildConfig.APPLICATION_ID + ".attachments/" + file.getName());
+            } else {
+                uri = Uri.fromFile(file);
+            }
 
-        String mimeType = getMimetype(message);
+            if( cmd == Intent.ACTION_VIEW ) {
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                intent.setDataAndType(uri, mimeType);
+                intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                activity.startActivity(intent);
+            }
+            else {
+                Intent intent = new Intent(Intent.ACTION_SEND);
+                intent.setType(mimeType);
+                intent.putExtra(Intent.EXTRA_STREAM, uri);
+                intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                activity.startActivity(Intent.createChooser(intent, ApplicationLoader.applicationContext.getString(R.string.ShareFile)));
+            }
 
-        Intent intent = new Intent(Intent.ACTION_VIEW);
-        intent.setDataAndType(uri, mimeType);
-        intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-        activity.startActivity(intent);
+        }
+        catch (Exception e) {
+            showHint(activity, LocaleController.formatString("NoHandleAppInstalled", R.string.NoHandleAppInstalled, mimeType));
+        }
     }
 
     private static File getFineFilename(File path, String desiredName)

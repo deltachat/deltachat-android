@@ -58,7 +58,6 @@
     <string name="SaveToMusic">Musik speichern</string>
     <string name="ShareFile">Teilen</string>
     <string name="UnsupportedAttachment">Nicht unterstützte Datei</string>
-    <string name="OpenInBrowser">ÖFFNEN MIT …</string>
     <string name="SendItems">%1$s senden</string>
     <string name="ClearRecentEmoji">Zuletzt benutzte Emoji leeren?</string>
     <string name="AddShortcut">Auf Startbildschirm platzieren</string>

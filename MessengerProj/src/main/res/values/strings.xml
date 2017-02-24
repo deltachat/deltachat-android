@@ -58,7 +58,6 @@
     <string name="SaveToMusic">Save to music</string>
     <string name="ShareFile">Share</string>
     <string name="UnsupportedAttachment">Unsupported attachment</string>
-    <string name="OpenInBrowser">OPEN IN …</string>
     <string name="SendItems">Send %1$s</string>
     <string name="ClearRecentEmoji">Clear recent emoji?</string>
     <string name="AddShortcut">Add widget to home screen</string>

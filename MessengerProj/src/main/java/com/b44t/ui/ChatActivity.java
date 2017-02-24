@@ -504,7 +504,9 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 }
                 else if( id== ID_SHARE )
                 {
-                    Toast.makeText(getParentActivity(), ApplicationLoader.applicationContext.getString(R.string.NotYetImplemented), Toast.LENGTH_SHORT).show();
+                    AndroidUtilities.openForViewOrShare(getParentActivity(), getFirstSelectedId(), Intent.ACTION_SEND);
+                    actionBar.hideActionMode();
+                    updateVisibleRows();
                 }
                 else if (id == ID_ATTACH) {
                     if (getParentActivity() == null) {
@@ -2813,17 +2815,8 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                             PhotoViewer.getInstance().setParentActivity(getParentActivity());
                             PhotoViewer.getInstance().openPhoto(message, message.type != MessageObject.MO_TYPE0_TEXT ? dialog_id : 0, 0, ChatActivity.this);
                         } else if (message.type == MessageObject.MO_TYPE9_FILE || message.type == MessageObject.MO_TYPE3_VIDEO ) {
-                            try {
-                                AndroidUtilities.openForView(message, getParentActivity());
-                            } catch (Exception e) {
-                                if ( getParentActivity()!=null ) {
-                                    AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
-                                    builder.setPositiveButton(ApplicationLoader.applicationContext.getString(R.string.OK), null);
-                                    builder.setMessage(LocaleController.formatString("NoHandleAppInstalled", R.string.NoHandleAppInstalled, AndroidUtilities.getMimetype(message)));
-                                    showDialog(builder.create());
-                                }
-                            }
-                        }
+                            AndroidUtilities.openForViewOrShare(getParentActivity(), message.getId(), Intent.ACTION_VIEW);
+                     }
                     }
                 });
                 chatMessageCell.setAllowAssistant(true);
