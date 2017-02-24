@@ -7,6 +7,8 @@
 * Clickable email addresses
 * Update Polish translation
 * Fix tablet startup bug
+* Close the app when using the lock-app-via-pincode function
+* Try to clear the task switcher's screenshots when locking the app via pincode
 
 ## v0.1.20
 2017-02-16
