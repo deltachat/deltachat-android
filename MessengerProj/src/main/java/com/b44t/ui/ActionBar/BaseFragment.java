@@ -49,6 +49,19 @@ public class BaseFragment {
     protected boolean swipeBackEnabled = true;
     protected boolean hasOwnBackground = false;
 
+    // IDs forwarded from startActivityForResult() to onActivityResultFragment()
+    public final static int
+            RC0_CHAT_IMAGE_CAPTURE             = 0,
+            RC1_CHAT_PICK                      = 1,
+            RC2_CHAT_VIDEO_CAPTURE             = 2,
+            RC10_WALLPAPER_IMAGE_CAPTURE       = 10,
+            RC11_WALLPAPER_PICK                = 11,
+            RC12_PROFILE_RINGTONE_PICKER       = 12,
+            RC13_AVATAR_IMAGE_CAPTURE          = 13,
+            RC14_AVATAR_GET_CONTENT            = 14,
+            RC21_CHAT_PICK_WO_COMPR            = 21,
+            RC500_PHOTO_VIEW                   = 500;
+
     public BaseFragment() {
         classGuid = ConnectionsManager.getInstance().generateClassGuid();
     }

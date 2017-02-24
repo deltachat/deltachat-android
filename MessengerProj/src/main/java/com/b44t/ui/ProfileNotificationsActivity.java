@@ -251,7 +251,7 @@ public class ProfileNotificationsActivity extends BaseFragment implements Notifi
                         }
 
                         tmpIntent.putExtra(RingtoneManager.EXTRA_RINGTONE_EXISTING_URI, currentSound);
-                        startActivityForResult(tmpIntent, 12);
+                        startActivityForResult(tmpIntent, RC12_PROFILE_RINGTONE_PICKER);
                     } catch (Exception e) {
                         FileLog.e("messenger", e);
                     }
@@ -482,7 +482,7 @@ public class ProfileNotificationsActivity extends BaseFragment implements Notifi
             SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("Notifications", Activity.MODE_PRIVATE);
             SharedPreferences.Editor editor = preferences.edit();
 
-            if (requestCode == 12) {
+            if (requestCode == RC12_PROFILE_RINGTONE_PICKER) {
                 if (name != null) {
                     editor.putString("sound_" + dialog_id, name);
                     editor.putString("sound_path_" + dialog_id, ringtone.toString());

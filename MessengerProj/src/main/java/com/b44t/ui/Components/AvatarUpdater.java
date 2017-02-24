@@ -84,7 +84,7 @@ public class AvatarUpdater implements NotificationCenter.NotificationCenterDeleg
                 takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(image));
                 currentPicturePath = image.getAbsolutePath();
             }
-            parentFragment.startActivityForResult(takePictureIntent, 13);
+            parentFragment.startActivityForResult(takePictureIntent, BaseFragment.RC13_AVATAR_IMAGE_CAPTURE);
         } catch (Exception e) {
             FileLog.e("messenger", e);
         }
@@ -112,7 +112,7 @@ public class AvatarUpdater implements NotificationCenter.NotificationCenterDeleg
                 try {
                     Intent photoPickerIntent = new Intent(Intent.ACTION_GET_CONTENT);
                     photoPickerIntent.setType("image/*");
-                    parentFragment.startActivityForResult(photoPickerIntent, 14);
+                    parentFragment.startActivityForResult(photoPickerIntent, BaseFragment.RC14_AVATAR_GET_CONTENT);
                 } catch (Exception e) {
                     FileLog.e("messenger", e);
                 }
@@ -150,7 +150,7 @@ public class AvatarUpdater implements NotificationCenter.NotificationCenterDeleg
 
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (resultCode == Activity.RESULT_OK) {
-            if (requestCode == 13) {
+            if (requestCode == BaseFragment.RC13_AVATAR_IMAGE_CAPTURE) {
                 PhotoViewer.getInstance().setParentActivity(parentFragment.getParentActivity());
                 int orientation = 0;
                 try {
@@ -188,7 +188,7 @@ public class AvatarUpdater implements NotificationCenter.NotificationCenterDeleg
                 }, null);
                 AndroidUtilities.addMediaToGallery(currentPicturePath);
                 currentPicturePath = null;
-            } else if (requestCode == 14) {
+            } else if (requestCode == BaseFragment.RC14_AVATAR_GET_CONTENT) {
                 if (data == null || data.getData() == null) {
                     return;
                 }

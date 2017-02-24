@@ -82,6 +82,7 @@ import com.b44t.messenger.ConnectionsManager;
 import com.b44t.messenger.TLRPC;
 import com.b44t.messenger.MessageObject;
 import com.b44t.messenger.Utilities;
+import com.b44t.ui.ActionBar.BaseFragment;
 import com.b44t.ui.ActionBar.Theme;
 import com.b44t.messenger.AnimatorListenerAdapterProxy;
 import com.b44t.ui.ActionBar.ActionBar;
@@ -4188,7 +4189,7 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
             } else {
                 Intent intent = new Intent(Intent.ACTION_VIEW);
                 intent.setDataAndType(Uri.fromFile(file), "video/mp4");
-                parentActivity.startActivityForResult(intent, 500);
+                parentActivity.startActivityForResult(intent, BaseFragment.RC500_PHOTO_VIEW);
             }
         }
     }

@@ -325,7 +325,7 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                         Intent intent = new Intent(Intent.ACTION_SEND);
                         intent.setType("text/plain");
                         intent.putExtra(Intent.EXTRA_TEXT, MrMailbox.getInviteText());
-                        startActivityForResult(Intent.createChooser(intent, LocaleController.getString("InviteMenuEntry", R.string.InviteMenuEntry)), 500);
+                        startActivity(Intent.createChooser(intent, LocaleController.getString("InviteMenuEntry", R.string.InviteMenuEntry)));
                     } catch (Exception e) {
                         FileLog.e("tmessages", e);
                     }

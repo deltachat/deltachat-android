@@ -1192,7 +1192,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(image));
                     currentPicturePath = image.getAbsolutePath();
                 }
-                startActivityForResult(takePictureIntent, 0);
+                startActivityForResult(takePictureIntent, RC0_CHAT_IMAGE_CAPTURE);
             } catch (Exception e) {
                 FileLog.e("messenger", e);
             }
@@ -1223,7 +1223,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                         Intent chooserIntent = Intent.createChooser(photoPickerIntent, null);
                         chooserIntent.putExtra(Intent.EXTRA_INITIAL_INTENTS, new Intent[]{videoPickerIntent});
 
-                        startActivityForResult(chooserIntent, 1);
+                        startActivityForResult(chooserIntent, RC1_CHAT_PICK);
                     } catch (Exception e) {
                         FileLog.e("messenger", e);
                     }
@@ -1253,7 +1253,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     takeVideoIntent.putExtra(MediaStore.EXTRA_SIZE_LIMIT, (long) (1024 * 1024 * 1536));
                     currentPicturePath = video.getAbsolutePath();
                 }
-                startActivityForResult(takeVideoIntent, 2);
+                startActivityForResult(takeVideoIntent, RC2_CHAT_VIDEO_CAPTURE);
             } catch (Exception e) {
                 FileLog.e("messenger", e);
             }
@@ -1276,7 +1276,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     try {
                         Intent photoPickerIntent = new Intent(Intent.ACTION_PICK);
                         photoPickerIntent.setType("*/*");
-                        startActivityForResult(photoPickerIntent, 21);
+                        startActivityForResult(photoPickerIntent, RC21_CHAT_PICK_WO_COMPR);
                     } catch (Exception e) {
                         FileLog.e("messenger", e);
                     }
@@ -1677,7 +1677,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
     @Override
     public void onActivityResultFragment(int requestCode, int resultCode, Intent data) {
         if (resultCode == Activity.RESULT_OK) {
-            if (requestCode == 0) {
+            if (requestCode == RC0_CHAT_IMAGE_CAPTURE) {
                 PhotoViewer.getInstance().setParentActivity(getParentActivity());
                 final ArrayList<Object> arrayList = new ArrayList<>();
                 int orientation = 0;
@@ -1708,7 +1708,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 }, this);
                 AndroidUtilities.addMediaToGallery(currentPicturePath);
                 currentPicturePath = null;
-            } else if (requestCode == 1) {
+            } else if (requestCode == RC1_CHAT_PICK) {
                 if (data == null || data.getData() == null) {
                     showAttachmentError();
                     return;
@@ -1737,7 +1737,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     SendMessagesHelper.prepareSendingPhoto(null, uri, dialog_id, null, null);
                 }
                 m_mrChat.cleanDraft();
-            } else if (requestCode == 2) {
+            } else if (requestCode == RC2_CHAT_VIDEO_CAPTURE) {
                 String videoPath = null;
                 FileLog.d("messenger", "pic path " + currentPicturePath);
                 if (data != null && currentPicturePath != null) {
@@ -1777,7 +1777,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     SendMessagesHelper.prepareSendingVideo(videoPath, 0, 0, 0, 0, null, dialog_id, null);
                     m_mrChat.cleanDraft();
                 }
-            } else if (requestCode == 21) {
+            } else if (requestCode == RC21_CHAT_PICK_WO_COMPR) {
                 if (data == null || data.getData() == null) {
                     showAttachmentError();
                     return;
@@ -2606,6 +2606,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         return 0;
     }
 
+    // PhotoViewerProvider
     public void sendPhoto(MediaController.PhotoEntry photoEntry) {
         if (photoEntry.imagePath != null) {
             SendMessagesHelper.prepareSendingPhoto(photoEntry.imagePath, null, dialog_id, null, photoEntry.caption);
