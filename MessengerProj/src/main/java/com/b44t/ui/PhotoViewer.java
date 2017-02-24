@@ -215,7 +215,7 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
 
     private int avatarsDialogId;
     private long currentDialogId;
-    private long mergeDialogId;
+    private final long mergeDialogId = 0;
     private int totalImagesCount;
     private int totalImagesCountMerge;
     private boolean isFirstLoading;
@@ -2977,24 +2977,24 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
         return isVisible && !disableShowCheck && object != null && currentPathObject != null && object.equals(currentPathObject);
     }
 
-    public void openPhoto(final MessageObject messageObject, long dialogId, long mergeDialogId, final PhotoViewerProvider provider) {
-        openPhoto(messageObject, null, null, null, 0, provider, null, dialogId, mergeDialogId);
+    public void openPhoto(final MessageObject messageObject, long dialogId, final PhotoViewerProvider provider) {
+        openPhoto(messageObject, null, null, null, 0, provider, null, dialogId);
     }
 
     public void openPhoto(final TLRPC.FileLocation fileLocation, final PhotoViewerProvider provider) {
-        openPhoto(null, fileLocation, null, null, 0, provider, null, 0, 0);
+        openPhoto(null, fileLocation, null, null, 0, provider, null, 0);
     }
 
-    public void openPhoto(final ArrayList<MessageObject> messages, final int index, long dialogId, long mergeDialogId, final PhotoViewerProvider provider) {
-        openPhoto(messages.get(index), null, messages, null, index, provider, null, dialogId, mergeDialogId);
-    }
+    /*public void openPhoto(final ArrayList<MessageObject> messages, final int index, long dialogId, final PhotoViewerProvider provider) {
+        openPhoto(messages.get(index), null, messages, null, index, provider, null, dialogId);
+    }*/
 
     public void openPhotoForSelect(final ArrayList<Object> photos, final int index, int type, final PhotoViewerProvider provider, ChatActivity chatActivity) {
         sendPhotoType = type;
         if (pickerView != null) {
             pickerView.doneButtonTextView.setText(sendPhotoType == 1 ? LocaleController.getString("Set", R.string.Set).toUpperCase() : LocaleController.getString("Send", R.string.Send).toUpperCase());
         }
-        openPhoto(null, null, null, photos, index, provider, chatActivity, 0, 0);
+        openPhoto(null, null, null, photos, index, provider, chatActivity, 0);
     }
 
     private boolean checkAnimation() {
@@ -3010,7 +3010,7 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
         return animationInProgress != 0;
     }
 
-    public void openPhoto(final MessageObject messageObject, final TLRPC.FileLocation fileLocation, final ArrayList<MessageObject> messages, final ArrayList<Object> photos, final int index, final PhotoViewerProvider provider, ChatActivity chatActivity, long dialogId, long mDialogId) {
+    public void openPhoto(final MessageObject messageObject, final TLRPC.FileLocation fileLocation, final ArrayList<MessageObject> messages, final ArrayList<Object> photos, final int index, final PhotoViewerProvider provider, ChatActivity chatActivity, long dialogId) {
         if (parentActivity == null || isVisible || provider == null && checkAnimation() || messageObject == null && fileLocation == null && messages == null && photos == null) {
             return;
         }
@@ -3053,7 +3053,6 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.emojiDidLoaded);
 
         placeProvider = provider;
-        mergeDialogId = mDialogId;
         currentDialogId = dialogId;
 
         if (velocityTracker == null) {
