@@ -2681,11 +2681,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     }
 
                     @Override
-                    public void didPressedOther(ChatMessageCell cell) {
-                        handleClick(cell, false);
-                    }
-
-                    @Override
                     public void didLongPressed(ChatMessageCell cell) {
                         handleClick(cell, true);
                     }

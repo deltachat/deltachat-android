@@ -469,7 +469,7 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
                 newMsg_id = mrChat.sendMedia(MrMsg.MR_MSG_VIDEO,
                         path, document.mime_type, width, height, time_ms);
             }
-            else if (document != null && MessageObject.isVoiceDocument(document))
+            else if (document != null && MessageObject.isVoiceDocument(document) || MessageObject.isMusicDocument(document))
             {
                 // SEND AUDIO
                 int time_ms = 0;

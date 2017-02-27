@@ -62,7 +62,7 @@ public class ContextLinkCell extends View implements MediaController.FileDownloa
     private final static int DOCUMENT_ATTACH_TYPE_NONE = 0;
     private final static int DOCUMENT_ATTACH_TYPE_DOCUMENT = 1;
     private final static int DOCUMENT_ATTACH_TYPE_GIF = 2;
-    private final static int DOCUMENT_ATTACH_TYPE_AUDIO = 3;
+    private final static int DOCUMENT_ATTACH_TYPE_VOICE = 3;
     private final static int DOCUMENT_ATTACH_TYPE_VIDEO = 4;
     private final static int DOCUMENT_ATTACH_TYPE_MUSIC = 5;
     private final static int DOCUMENT_ATTACH_TYPE_STICKER = 6;

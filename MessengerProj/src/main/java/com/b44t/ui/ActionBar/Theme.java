@@ -87,10 +87,6 @@ public class Theme {
     public static final int MSG_IN_FWD_N_TIME_TEXT_COLOR = 0xff9ea7b0;
     public static final int MSG_OUT_FWD_N_TIME_TEXT_COLOR = 0xff70b15c;
     public static final int MSG_MEDIA_TIME_TEXT_COLOR = 0xffffffff;
-    public static final int MSG_IN_AUDIO_PERFORMER_TEXT_COLOR = 0xff2f3438;
-    public static final int MSG_OUT_AUDIO_PERFORMER_TEXT_COLOR = 0xff354234;
-    public static final int MSG_IN_AUDIO_TITLE_TEXT_COLOR = 0xff4e9ad4;
-    public static final int MSG_OUT_AUDIO_TITLE_TEXT_COLOR = 0xff55ab4f;
     public static final int MSG_IN_AUDIO_DURATION_TEXT_COLOR = 0xffa1aab3;
     public static final int MSG_OUT_AUDIO_DURATION_TEXT_COLOR = 0xff65b05b;
     public static final int MSG_IN_AUDIO_DURATION_SELECTED_TEXT_COLOR = 0xff89b4c1;
@@ -117,6 +113,7 @@ public class Theme {
     public static final int MSG_LINK_SELECT_BACKGROUND_COLOR = 0x3362a9e3;
     public static final int MSG_TEXT_SELECT_BACKGROUND_COLOR = 0x6662a9e3;
     public static final int MSG_DOC_NAME_COLOR = 0xFF3093e0; // similar color as the file-icon
+    public static final int MSG_AUDIO_NAME_COLOR = 0xFFed824e; // similar color as the audio-icon
 
     public static Drawable backgroundDrawableIn;
     public static Drawable backgroundDrawableInSelected;
@@ -137,9 +134,14 @@ public class Theme {
     public static Drawable[] cornerInner = new Drawable[4];
 
     public static Drawable shareIconDrawable;
-    public static Drawable fileDrawable;
+
+    public static final int INLIST_FILE  = 0;
+    public static final int INLIST_PLAY  = 1;
+    public static final int INLIST_PAUSE = 2;
+    public static final int INLIST_COUNT = 3;
+    public static Drawable[] inlistDrawable = new Drawable[INLIST_COUNT];
+
     public static Drawable[][] photoStatesDrawables = new Drawable[13][2];
-    public static Drawable[] docMenuDrawable = new Drawable[4];
 
     public static PorterDuffColorFilter colorFilter;
     private static int currentColor;
@@ -165,7 +167,9 @@ public class Theme {
             timeStickerBackgroundDrawable = context.getResources().getDrawable(R.drawable.phototime2);
             systemDrawable = context.getResources().getDrawable(R.drawable.system);
 
-            fileDrawable = context.getResources().getDrawable(R.drawable.attach_file_inlist);
+            inlistDrawable[INLIST_FILE]  = context.getResources().getDrawable(R.drawable.attach_file_inlist);
+            inlistDrawable[INLIST_PLAY]  = context.getResources().getDrawable(R.drawable.attach_audio_inlist_play);
+            inlistDrawable[INLIST_PAUSE] = context.getResources().getDrawable(R.drawable.attach_audio_inlist_pause);
 
             photoStatesDrawables[0][0] = context.getResources().getDrawable(R.drawable.photoload);
             photoStatesDrawables[0][1] = context.getResources().getDrawable(R.drawable.photoload_pressed);
@@ -193,11 +197,6 @@ public class Theme {
             photoStatesDrawables[11][1] = context.getResources().getDrawable(R.drawable.photocancel_b_s);
             photoStatesDrawables[12][0] = context.getResources().getDrawable(R.drawable.doc_blue);
             photoStatesDrawables[12][1] = context.getResources().getDrawable(R.drawable.doc_blue_s);
-
-            docMenuDrawable[0] = context.getResources().getDrawable(R.drawable.doc_actions_b);
-            docMenuDrawable[1] = context.getResources().getDrawable(R.drawable.doc_actions_g);
-            docMenuDrawable[2] = context.getResources().getDrawable(R.drawable.doc_actions_b_s);
-            docMenuDrawable[3] = context.getResources().getDrawable(R.drawable.video_actions);
 
             shareIconDrawable = context.getResources().getDrawable(R.drawable.ic_ab_reply);
 
