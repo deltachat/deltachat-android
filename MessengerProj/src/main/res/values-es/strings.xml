@@ -54,7 +54,6 @@
     <string name="DeleteGif">¿Eliminar GIF?</string>
     <string name="SaveToMusic">Guardar en música</string>
     <string name="ShareFile">Compartir</string>
-    <string name="UnsupportedAttachment">Adjunto no soportado</string>
     <string name="SendItems">Enviar %1$s</string>
     <string name="ClearRecentEmoji">¿Borrar los emojis recientes?</string>
     <string name="AddShortcut">Añadir acceso directo</string>

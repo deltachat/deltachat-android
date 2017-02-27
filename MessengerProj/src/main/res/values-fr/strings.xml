@@ -52,7 +52,6 @@
     <string name="DeleteGif">Supprimer GIF ?</string>
     <string name="SaveToMusic">Enregistrer dans les musiques</string>
     <string name="ShareFile">Partager</string>
-    <string name="UnsupportedAttachment">Pièce jointe non gérée</string>
     <string name="SendItems">Envoyer %1$s</string>
     <string name="ClearRecentEmoji">Vider les emokis récent ?</string>
     <string name="AddShortcut">Ajouter le widget à l\'écran d\'accueil</string>

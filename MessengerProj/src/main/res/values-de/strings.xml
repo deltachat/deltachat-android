@@ -55,9 +55,8 @@
     <string name="SlideToCancel">WISCHEN UM ABZUBRECHEN</string>
     <string name="SaveToDownloads">In Downloads speichern</string>
     <string name="DeleteGif">GIF löschen?</string>
-    <string name="SaveToMusic">Musik speichern</string>
+    <string name="SaveToMusic">In Musik speichern</string>
     <string name="ShareFile">Teilen</string>
-    <string name="UnsupportedAttachment">Nicht unterstützte Datei</string>
     <string name="SendItems">%1$s senden</string>
     <string name="ClearRecentEmoji">Zuletzt benutzte Emoji leeren?</string>
     <string name="AddShortcut">Auf Startbildschirm platzieren</string>

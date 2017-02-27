@@ -1291,8 +1291,14 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
             AudioSelectActivity fragment = new AudioSelectActivity();
             fragment.setDelegate(new AudioSelectActivity.AudioSelectActivityDelegate() {
                 @Override
-                public void didSelectAudio(ArrayList<MessageObject> audios) {
-                    SendMessagesHelper.prepareSendingAudioDocuments(audios, dialog_id);
+                public void didSelectAudio(ArrayList<MessageObject> messageObjects) {
+                    ArrayList<String> files = new ArrayList<>();
+                    int size = messageObjects.size();
+                    for (int a = 0; a < size; a++) {
+                        MessageObject messageObject = messageObjects.get(a);
+                        files.add(messageObject.messageOwner.attachPath);
+                    }
+                    SendMessagesHelper.prepareSendingDocuments(files, files, null, null, dialog_id);
                     m_mrChat.cleanDraft();
                 }
             });
@@ -1669,8 +1675,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         if (getParentActivity() == null) {
             return;
         }
-        Toast toast = Toast.makeText(getParentActivity(), LocaleController.getString("UnsupportedAttachment", R.string.UnsupportedAttachment), Toast.LENGTH_SHORT);
-        toast.show();
+        AndroidUtilities.showErrorHint(getParentActivity()); // should not happen
     }
 
     @Override

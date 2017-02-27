@@ -746,7 +746,7 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
         prepareSendingDocuments(paths, originalPaths, uris, mine, dialog_id);
     }
 
-    public static void prepareSendingAudioDocuments(final ArrayList<MessageObject> messageObjects, final long dialog_id) {
+    /*public static void prepareSendingAudioDocuments(final ArrayList<MessageObject> messageObjects, final long dialog_id) {
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -761,7 +761,7 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
                     }
 
                     TLRPC.TL_document document = null;
-                    /*if (!isEncrypted)*/ {
+                    if (!isEncrypted) {
                         document = null;//(TLRPC.TL_document) MessagesStorage.getInstance().getSentFile(originalPath, !isEncrypted ? 1 : 4);
                     }
                     if (document == null) {
@@ -782,7 +782,7 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
                 }
             }
         }).start();
-    }
+    }*/
 
     public static void prepareSendingDocuments(final ArrayList<String> paths, final ArrayList<String> originalPaths, final ArrayList<Uri> uris, final String mime, final long dialog_id) {
         if (paths == null && originalPaths == null && uris == null || paths != null && originalPaths != null && paths.size() != originalPaths.size()) {
@@ -811,10 +811,8 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
                         @Override
                         public void run() {
                             try {
-                                Toast toast = Toast.makeText(ApplicationLoader.applicationContext, LocaleController.getString("UnsupportedAttachment", R.string.UnsupportedAttachment), Toast.LENGTH_SHORT);
-                                toast.show();
+                                AndroidUtilities.showErrorHint(ApplicationLoader.applicationContext); // should not happen
                             } catch (Exception e) {
-                                FileLog.e("messenger", e);
                             }
                         }
                     });
