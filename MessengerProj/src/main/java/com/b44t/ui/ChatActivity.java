@@ -1144,7 +1144,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                                 photoEntry.thumbPath = null;
                                 photoEntry.caption = null;
                             }
-                            SendMessagesHelper.prepareSendingPhotos(photos, null, dialog_id, null, captions);
+                            SendMessagesHelper.prepareSendingPhotos(photos, null, dialog_id, captions);
                             m_mrChat.cleanDraft();
                         }
                         return;
@@ -1205,8 +1205,8 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
             fragment.setDelegate(new PhotoAlbumPickerActivity.PhotoAlbumPickerActivityDelegate() {
                 @Override
                 public void didSelectPhotos(ArrayList<String> photos, ArrayList<String> captions, ArrayList<MediaController.SearchImage> webPhotos) {
-                    SendMessagesHelper.prepareSendingPhotos(photos, null, dialog_id, null, captions);
-                    SendMessagesHelper.prepareSendingPhotosSearch(webPhotos, dialog_id, null);
+                    SendMessagesHelper.prepareSendingPhotos(photos, null, dialog_id, captions);
+                    SendMessagesHelper.prepareSendingPhotosSearch(webPhotos, dialog_id);
                     m_mrChat.cleanDraft();
                 }
 
@@ -1234,7 +1234,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     if (Build.VERSION.SDK_INT >= 16) {
                         return !openVideoEditor(path, true, true);
                     } else {
-                        SendMessagesHelper.prepareSendingVideo(path, 0, 0, 0, 0, null, dialog_id, null);
+                        SendMessagesHelper.prepareSendingVideo(path, 0, 0, 0, 0, null, dialog_id);
                         m_mrChat.cleanDraft();
                         return true;
                     }
@@ -1267,7 +1267,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 @Override
                 public void didSelectFiles(DocumentSelectActivity activity, ArrayList<String> files) {
                     activity.finishFragment();
-                    SendMessagesHelper.prepareSendingDocuments(files, files, null, null, dialog_id, null);
+                    SendMessagesHelper.prepareSendingDocuments(files, files, null, null, dialog_id);
                     m_mrChat.cleanDraft();
                 }
 
@@ -1293,7 +1293,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
             fragment.setDelegate(new AudioSelectActivity.AudioSelectActivityDelegate() {
                 @Override
                 public void didSelectAudio(ArrayList<MessageObject> audios) {
-                    SendMessagesHelper.prepareSendingAudioDocuments(audios, dialog_id, null);
+                    SendMessagesHelper.prepareSendingAudioDocuments(audios, dialog_id);
                     m_mrChat.cleanDraft();
                 }
             });
@@ -1652,13 +1652,13 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 videoEditedInfo.resultWidth = resultWidth;
                 videoEditedInfo.resultHeight = resultHeight;
                 videoEditedInfo.originalPath = videoPath;
-                SendMessagesHelper.prepareSendingVideo(videoPath, estimatedSize, estimatedDuration, resultWidth, resultHeight, videoEditedInfo, dialog_id, null);
+                SendMessagesHelper.prepareSendingVideo(videoPath, estimatedSize, estimatedDuration, resultWidth, resultHeight, videoEditedInfo, dialog_id);
                 m_mrChat.cleanDraft();
             }
         });
 
         if (parentLayout == null || !fragment.onFragmentCreate()) {
-            SendMessagesHelper.prepareSendingVideo(videoPath, 0, 0, 0, 0, null, dialog_id, null);
+            SendMessagesHelper.prepareSendingVideo(videoPath, 0, 0, 0, 0, null, dialog_id);
             m_mrChat.cleanDraft();
             return false;
         }
@@ -1731,10 +1731,10 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                             openVideoEditor(videoPath, false, false);
                         }
                     } else {
-                        SendMessagesHelper.prepareSendingVideo(videoPath, 0, 0, 0, 0, null, dialog_id, null);
+                        SendMessagesHelper.prepareSendingVideo(videoPath, 0, 0, 0, 0, null, dialog_id);
                     }
                 } else {
-                    SendMessagesHelper.prepareSendingPhoto(null, uri, dialog_id, null, null);
+                    SendMessagesHelper.prepareSendingPhoto(null, uri, dialog_id, null);
                 }
                 m_mrChat.cleanDraft();
             } else if (requestCode == RC2_CHAT_VIDEO_CAPTURE) {
@@ -1774,7 +1774,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                         openVideoEditor(videoPath, false, false);
                     }
                 } else {
-                    SendMessagesHelper.prepareSendingVideo(videoPath, 0, 0, 0, 0, null, dialog_id, null);
+                    SendMessagesHelper.prepareSendingVideo(videoPath, 0, 0, 0, 0, null, dialog_id);
                     m_mrChat.cleanDraft();
                 }
             } else if (requestCode == RC21_CHAT_PICK_WO_COMPR) {
@@ -1808,7 +1808,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     showAttachmentError();
                     return;
                 }
-                SendMessagesHelper.prepareSendingDocument(tempPath, originalPath, null, null, dialog_id, null);
+                SendMessagesHelper.prepareSendingDocument(tempPath, originalPath, null, null, dialog_id);
                 m_mrChat.cleanDraft();
             }
         }
@@ -2609,10 +2609,10 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
     // PhotoViewerProvider
     public void sendPhoto(MediaController.PhotoEntry photoEntry) {
         if (photoEntry.imagePath != null) {
-            SendMessagesHelper.prepareSendingPhoto(photoEntry.imagePath, null, dialog_id, null, photoEntry.caption);
+            SendMessagesHelper.prepareSendingPhoto(photoEntry.imagePath, null, dialog_id, photoEntry.caption);
             m_mrChat.cleanDraft();
         } else if (photoEntry.path != null) {
-            SendMessagesHelper.prepareSendingPhoto(photoEntry.path, null, dialog_id, null, photoEntry.caption);
+            SendMessagesHelper.prepareSendingPhoto(photoEntry.path, null, dialog_id, photoEntry.caption);
             m_mrChat.cleanDraft();
         }
     }

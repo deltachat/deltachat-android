@@ -391,11 +391,11 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
         MessagesController.getInstance().deleteMessages(messages, null, null, object.messageOwner.to_id.channel_id);
     }
 
-    public void sendSticker(TLRPC.Document document, long peer, MessageObject replyingMessageObject) {
+    public void sendSticker(TLRPC.Document document, long peer) {
         if (document == null) {
             return;
         }
-        SendMessagesHelper.getInstance().sendMessageDocument((TLRPC.TL_document) document, null, null, peer, replyingMessageObject, null);
+        SendMessagesHelper.getInstance().sendMessageDocument((TLRPC.TL_document) document, null, null, peer, null);
     }
 
     public void sendMessageContact(int contact_id, int dialog_id) {
@@ -410,7 +410,7 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
         SendMessagesHelper.getInstance().sendMessageText(msg, dialog_id, null);
     }
 
-    public void sendMessageDocument(TLRPC.TL_document document, VideoEditedInfo videoEditedInfo, String path, long peer, MessageObject reply_to_msg, HashMap<String, String> params) {
+    public void sendMessageDocument(TLRPC.TL_document document, VideoEditedInfo videoEditedInfo, String path, long peer, HashMap<String, String> params) {
         sendMessage__(null, null, videoEditedInfo, document, peer, path, params);
     }
 
@@ -418,7 +418,7 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
         sendMessage__(message, null, null, null, peer, null, params);
     }
 
-    public void sendMessagePhoto(TLRPC.TL_photo photo, String path, long peer, MessageObject reply_to_msg, HashMap<String, String> params) {
+    public void sendMessagePhoto(TLRPC.TL_photo photo, String path, long peer, HashMap<String, String> params) {
         sendMessage__(null, photo, null, null, peer, path, params);
     }
 
@@ -754,7 +754,7 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
         }
     }
 
-    private static boolean prepareSendingDocumentInternal(String path, String originalPath, Uri uri, String mime, final long dialog_id, final MessageObject reply_to_msg, String caption) {
+    private static boolean prepareSendingDocumentInternal(String path, String originalPath, Uri uri, String mime, final long dialog_id, String caption) {
         if ((path == null || path.length() == 0) && uri == null) {
             return false;
         }
@@ -914,13 +914,13 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
         AndroidUtilities.runOnUIThread(new Runnable() {
             @Override
             public void run() {
-                SendMessagesHelper.getInstance().sendMessageDocument(documentFinal, null, pathFinal, dialog_id, reply_to_msg, params);
+                SendMessagesHelper.getInstance().sendMessageDocument(documentFinal, null, pathFinal, dialog_id, params);
             }
         });
         return true;
     }
 
-    public static void prepareSendingDocument(String path, String originalPath, Uri uri, String mine, long dialog_id, MessageObject reply_to_msg) {
+    public static void prepareSendingDocument(String path, String originalPath, Uri uri, String mine, long dialog_id) {
         if ((path == null || originalPath == null) && uri == null) {
             return;
         }
@@ -932,10 +932,10 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
         }
         paths.add(path);
         originalPaths.add(originalPath);
-        prepareSendingDocuments(paths, originalPaths, uris, mine, dialog_id, reply_to_msg);
+        prepareSendingDocuments(paths, originalPaths, uris, mine, dialog_id);
     }
 
-    public static void prepareSendingAudioDocuments(final ArrayList<MessageObject> messageObjects, final long dialog_id, final MessageObject reply_to_msg) {
+    public static void prepareSendingAudioDocuments(final ArrayList<MessageObject> messageObjects, final long dialog_id) {
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -987,7 +987,7 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
                     AndroidUtilities.runOnUIThread(new Runnable() {
                         @Override
                         public void run() {
-                            SendMessagesHelper.getInstance().sendMessageDocument(documentFinal, null, messageObject.messageOwner.attachPath, dialog_id, reply_to_msg, params);
+                            SendMessagesHelper.getInstance().sendMessageDocument(documentFinal, null, messageObject.messageOwner.attachPath, dialog_id, params);
                         }
                     });
                 }
@@ -995,7 +995,7 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
         }).start();
     }
 
-    public static void prepareSendingDocuments(final ArrayList<String> paths, final ArrayList<String> originalPaths, final ArrayList<Uri> uris, final String mime, final long dialog_id, final MessageObject reply_to_msg) {
+    public static void prepareSendingDocuments(final ArrayList<String> paths, final ArrayList<String> originalPaths, final ArrayList<Uri> uris, final String mime, final long dialog_id) {
         if (paths == null && originalPaths == null && uris == null || paths != null && originalPaths != null && paths.size() != originalPaths.size()) {
             return;
         }
@@ -1005,14 +1005,14 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
                 boolean error = false;
                 if (paths != null) {
                     for (int a = 0; a < paths.size(); a++) {
-                        if (!prepareSendingDocumentInternal(paths.get(a), originalPaths.get(a), null, mime, dialog_id, reply_to_msg, null)) {
+                        if (!prepareSendingDocumentInternal(paths.get(a), originalPaths.get(a), null, mime, dialog_id, null)) {
                             error = true;
                         }
                     }
                 }
                 if (uris != null) {
                     for (int a = 0; a < uris.size(); a++) {
-                        if (!prepareSendingDocumentInternal(null, null, uris.get(a), mime, dialog_id, reply_to_msg, null)) {
+                        if (!prepareSendingDocumentInternal(null, null, uris.get(a), mime, dialog_id, null)) {
                             error = true;
                         }
                     }
@@ -1034,7 +1034,7 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
         }).start();
     }
 
-    public static void prepareSendingPhoto(String imageFilePath, Uri imageUri, long dialog_id, MessageObject reply_to_msg, CharSequence caption) {
+    public static void prepareSendingPhoto(String imageFilePath, Uri imageUri, long dialog_id, CharSequence caption) {
         ArrayList<String> paths = null;
         ArrayList<Uri> uris = null;
         ArrayList<String> captions = null;
@@ -1050,10 +1050,10 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
             captions = new ArrayList<>();
             captions.add(caption.toString());
         }
-        prepareSendingPhotos(paths, uris, dialog_id, reply_to_msg, captions);
+        prepareSendingPhotos(paths, uris, dialog_id, captions);
     }
 
-    public static void prepareSendingPhotosSearch(final ArrayList<MediaController.SearchImage> photos, final long dialog_id, final MessageObject reply_to_msg) {
+    public static void prepareSendingPhotosSearch(final ArrayList<MediaController.SearchImage> photos, final long dialog_id) {
         if (photos == null || photos.isEmpty()) {
             return;
         }
@@ -1149,7 +1149,7 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
                         AndroidUtilities.runOnUIThread(new Runnable() {
                             @Override
                             public void run() {
-                                SendMessagesHelper.getInstance().sendMessageDocument(documentFinal, null, pathFinal, dialog_id, reply_to_msg, params);
+                                SendMessagesHelper.getInstance().sendMessageDocument(documentFinal, null, pathFinal, dialog_id, params);
                             }
                         });
                     } else {
@@ -1199,7 +1199,7 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
                             AndroidUtilities.runOnUIThread(new Runnable() {
                                 @Override
                                 public void run() {
-                                    SendMessagesHelper.getInstance().sendMessagePhoto(photoFinal, needDownloadHttpFinal ? searchImage.imageUrl : null, dialog_id, reply_to_msg, params);
+                                    SendMessagesHelper.getInstance().sendMessagePhoto(photoFinal, needDownloadHttpFinal ? searchImage.imageUrl : null, dialog_id, params);
                                 }
                             });
                         }
@@ -1253,7 +1253,7 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
         */
     }
 
-    public static void prepareSendingPhotos(ArrayList<String> paths, ArrayList<Uri> uris, final long dialog_id, final MessageObject reply_to_msg, final ArrayList<String> captions) {
+    public static void prepareSendingPhotos(ArrayList<String> paths, ArrayList<Uri> uris, final long dialog_id, final ArrayList<String> captions) {
         if (paths == null && uris == null || paths != null && paths.isEmpty() || uris != null && uris.isEmpty()) {
             return;
         }
@@ -1351,7 +1351,7 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
                             AndroidUtilities.runOnUIThread(new Runnable() {
                                 @Override
                                 public void run() {
-                                    SendMessagesHelper.getInstance().sendMessagePhoto(photoFinal, null, dialog_id, reply_to_msg, params);
+                                    SendMessagesHelper.getInstance().sendMessagePhoto(photoFinal, null, dialog_id, params);
                                 }
                             });
                         }
@@ -1359,14 +1359,14 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
                 }
                 if (sendAsDocuments != null && !sendAsDocuments.isEmpty()) {
                     for (int a = 0; a < sendAsDocuments.size(); a++) {
-                        prepareSendingDocumentInternal(sendAsDocuments.get(a), sendAsDocumentsOriginal.get(a), null, extension, dialog_id, reply_to_msg, sendAsDocumentsCaptions.get(a));
+                        prepareSendingDocumentInternal(sendAsDocuments.get(a), sendAsDocumentsOriginal.get(a), null, extension, dialog_id, sendAsDocumentsCaptions.get(a));
                     }
                 }
             }
         }).start();
     }
 
-    public static void prepareSendingVideo(final String videoPath, final long estimatedSize, final long duration, final int width, final int height, final VideoEditedInfo videoEditedInfo, final long dialog_id, final MessageObject reply_to_msg) {
+    public static void prepareSendingVideo(final String videoPath, final long estimatedSize, final long duration, final int width, final int height, final VideoEditedInfo videoEditedInfo, final long dialog_id) {
         if (videoPath == null || videoPath.length() == 0) {
             return;
         }
@@ -1480,11 +1480,11 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
                     AndroidUtilities.runOnUIThread(new Runnable() {
                         @Override
                         public void run() {
-                            SendMessagesHelper.getInstance().sendMessageDocument(videoFinal, videoEditedInfo, finalPath, dialog_id, reply_to_msg, params);
+                            SendMessagesHelper.getInstance().sendMessageDocument(videoFinal, videoEditedInfo, finalPath, dialog_id, params);
                         }
                     });
                 } else {
-                    prepareSendingDocumentInternal(videoPath, videoPath, null, null, dialog_id, reply_to_msg, null);
+                    prepareSendingDocumentInternal(videoPath, videoPath, null, null, dialog_id, null);
                 }
             }
         }).start();

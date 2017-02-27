@@ -1225,7 +1225,7 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
             if (playing != null && playing == audioToSendMessageObject) {
                 MediaController.getInstance().cleanupPlayer(true, true);
             }
-            SendMessagesHelper.getInstance().sendMessageDocument(audioToSend, null, audioToSendPath, dialog_id, replyingMessageObject, null);
+            SendMessagesHelper.getInstance().sendMessageDocument(audioToSend, null, audioToSendPath, dialog_id, null);
             if (delegate != null) {
                 delegate.onMessageSend(null);
             }

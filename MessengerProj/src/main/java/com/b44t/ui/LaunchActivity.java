@@ -1104,7 +1104,7 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                         captions.add(sendingText);
                         sendingText = null;
                     }
-                    SendMessagesHelper.prepareSendingPhotos(null, photoPathsArray, dialog_id, null, captions);
+                    SendMessagesHelper.prepareSendingPhotos(null, photoPathsArray, dialog_id, captions);
                 }
 
                 if (sendingText != null) {
@@ -1112,7 +1112,7 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                 }
 
                 if (documentsPathsArray != null || documentsUrisArray != null) {
-                    SendMessagesHelper.prepareSendingDocuments(documentsPathsArray, documentsOriginalPathsArray, documentsUrisArray, documentsMimeType, dialog_id, null);
+                    SendMessagesHelper.prepareSendingDocuments(documentsPathsArray, documentsOriginalPathsArray, documentsUrisArray, documentsMimeType, dialog_id);
                 }
                 if (contactsToSend != null && !contactsToSend.isEmpty()) {
                     for (int user_id : contactsToSend) {
