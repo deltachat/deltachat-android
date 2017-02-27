@@ -1758,7 +1758,7 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
 
             @Override
             public void onGifSelected(TLRPC.Document gif) {
-                SendMessagesHelper.getInstance().sendSticker(gif, dialog_id, replyingMessageObject);
+                SendMessagesHelper.getInstance().sendSticker(gif, dialog_id);
                 if ((int) dialog_id == 0) {
                     MessagesController.getInstance().saveGif(gif);
                 }
@@ -1809,16 +1809,16 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
 
     @Override
     public void onStickerSelected(TLRPC.Document sticker) {
-        SendMessagesHelper.getInstance().sendSticker(sticker, dialog_id, replyingMessageObject);
+        SendMessagesHelper.getInstance().sendSticker(sticker, dialog_id);
         if (delegate != null) {
             delegate.onMessageSend(null);
         }
     }
 
-    public void addStickerToRecent(TLRPC.Document sticker) {
+    /*public void addStickerToRecent(TLRPC.Document sticker) {
         createEmojiView();
         emojiView.addRecentSticker(sticker);
-    }
+    }*/
 
     private void showPopup(int show, int contentType /*0=emojiView, 1=botKeyboardView*/ ) {
         if (show == 1) {
