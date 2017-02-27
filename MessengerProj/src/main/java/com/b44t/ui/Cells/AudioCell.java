@@ -81,12 +81,12 @@ public class AudioCell extends FrameLayout {
                 if (audioEntry != null) {
                     if (MediaController.getInstance().isPlayingAudio(audioEntry.messageObject) && !MediaController.getInstance().isAudioPaused()) {
                         MediaController.getInstance().pauseAudio(audioEntry.messageObject);
-                        playButton.setImageResource(R.drawable.audiosend_play);
+                        playButton.setImageResource(R.drawable.attach_audio_inlist_play);
                     } else {
                         ArrayList<MessageObject> arrayList = new ArrayList<>();
                         arrayList.add(audioEntry.messageObject);
                         if (MediaController.getInstance().setPlaylist(arrayList, audioEntry.messageObject)) {
-                            playButton.setImageResource(R.drawable.audiosend_pause);
+                            playButton.setImageResource(R.drawable.attach_audio_inlist_pause);
                             if (delegate != null) {
                                 delegate.startedPlayingAudio(audioEntry.messageObject);
                             }
@@ -154,7 +154,7 @@ public class AudioCell extends FrameLayout {
         genreTextView.setText(audioEntry.genre);
         authorTextView.setText(audioEntry.author);
         timeTextView.setText(String.format("%d:%02d", audioEntry.duration / 60, audioEntry.duration % 60));
-        playButton.setImageResource(MediaController.getInstance().isPlayingAudio(audioEntry.messageObject) && !MediaController.getInstance().isAudioPaused() ? R.drawable.audiosend_pause : R.drawable.audiosend_play);
+        playButton.setImageResource(MediaController.getInstance().isPlayingAudio(audioEntry.messageObject) && !MediaController.getInstance().isAudioPaused() ? R.drawable.attach_audio_inlist_pause : R.drawable.attach_audio_inlist_play);
 
         needDivider = divider;
         setWillNotDraw(!divider);

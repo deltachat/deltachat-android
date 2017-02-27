@@ -111,7 +111,7 @@ public class SharedDocumentCell extends FrameLayout {
             dateTextView.setText(value);
         }
         if (resId == 0) {
-            placeholderImageView.setImageResource(R.drawable.file);
+            placeholderImageView.setImageResource(R.drawable.attach_file_inlist);
             placeholderImageView.setVisibility(VISIBLE);
         } else {
             placeholderImageView.setVisibility(INVISIBLE);

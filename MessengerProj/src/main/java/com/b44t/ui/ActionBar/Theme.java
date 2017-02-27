@@ -165,7 +165,7 @@ public class Theme {
             timeStickerBackgroundDrawable = context.getResources().getDrawable(R.drawable.phototime2);
             systemDrawable = context.getResources().getDrawable(R.drawable.system);
 
-            fileDrawable = context.getResources().getDrawable(R.drawable.file);
+            fileDrawable = context.getResources().getDrawable(R.drawable.attach_file_inlist);
 
             photoStatesDrawables[0][0] = context.getResources().getDrawable(R.drawable.photoload);
             photoStatesDrawables[0][1] = context.getResources().getDrawable(R.drawable.photoload_pressed);
