@@ -35,12 +35,8 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class MessagesController implements NotificationCenter.NotificationCenterDelegate {
 
-    public ArrayList<TLRPC.TL_dialog> dialogs = new ArrayList<>();
-    public int nextDialogsCacheOffset;
     public ConcurrentHashMap<Long, TLRPC.TL_dialog> dialogs_dict = new ConcurrentHashMap<>(100, 1.0f, 2);
     public HashMap<Long, MessageObject> dialogMessage = new HashMap<>();
-    public HashMap<Long, MessageObject> dialogMessagesByRandomIds = new HashMap<>();
-    public HashMap<Integer, MessageObject> dialogMessagesByIds = new HashMap<>();
     public HashMap<Long, CharSequence> printingStrings = new HashMap<>();
 
     public int secretWebpagePreview = 2;
@@ -89,18 +85,6 @@ public class MessagesController implements NotificationCenter.NotificationCenter
         secretWebpagePreview = preferences.getInt("secretWebpage2", 2);
         ratingDecay = preferences.getInt("ratingDecay", 2419200);
         fontSize = preferences.getInt("msg_font_size", SettingsActivity.defMsgFontSize());
-    }
-
-    public static TLRPC.Peer getPeer(int id) {
-        TLRPC.Peer inputPeer;
-        /*if (id < 0) {
-            inputPeer = new TLRPC.TL_peerChat();
-            inputPeer.chat_id = -id;
-        } else*/ {
-            inputPeer = new TLRPC.TL_peerUser();
-            inputPeer.user_id = id;
-        }
-        return inputPeer;
     }
 
     @Override
@@ -214,9 +198,6 @@ public class MessagesController implements NotificationCenter.NotificationCenter
     public void markMessageContentAsRead(final MessageObject messageObject) {
     }
 
-    public void addUserToChat(final int chat_id, final TLRPC.User user, final TLRPC.ChatFull info, int count_fwd, String botHash, final BaseFragment fragment) {
-    }
-
     public void changeChatAvatar(int chat_id, TLRPC.InputFile uploadedAvatar) {
         /*TLObject request;
         {
@@ -254,90 +235,5 @@ public class MessagesController implements NotificationCenter.NotificationCenter
             }
         }
         return false;
-    }
-
-    protected void updateInterfaceWithMessages(long uid, ArrayList<MessageObject> messages) {
-        updateInterfaceWithMessages(uid, messages, false);
-    }
-
-    protected static void addNewGifToRecent(TLRPC.Document document, int date) {
-        ArrayList<MediaController.SearchImage> arrayList = new ArrayList<>();
-        MediaController.SearchImage searchImage = new MediaController.SearchImage();
-        searchImage.type = 2;
-        searchImage.document = document;
-        searchImage.date = date;
-        searchImage.id = "" + searchImage.document.id;
-        arrayList.add(searchImage);
-    }
-
-    protected void updateInterfaceWithMessages(final long uid, final ArrayList<MessageObject> messages, boolean isBroadcast) {
-        if (messages == null || messages.isEmpty()) {
-            return;
-        }
-
-        final boolean isEncryptedChat = false;
-        MessageObject lastMessage = null;
-        int channelId = 0;
-        for (int a = 0; a < messages.size(); a++) {
-            MessageObject message = messages.get(a);
-            if (lastMessage == null || (!isEncryptedChat && message.getId() > lastMessage.getId() || (isEncryptedChat || message.getId() < 0 && lastMessage.getId() < 0) && message.getId() < lastMessage.getId()) || message.messageOwner.date > lastMessage.messageOwner.date) {
-                lastMessage = message;
-            }
-            if (message.isOut() && message.isNewGif() && !message.isSending() && !message.isForwarded()) {
-                addNewGifToRecent(message.messageOwner.media.document, message.messageOwner.date);
-            }
-        }
-        //MessagesQuery.loadReplyMessagesForMessages(messages, uid);
-        NotificationCenter.getInstance().postNotificationName(NotificationCenter.didReceivedNewMessages, uid, messages);
-
-        if (lastMessage == null) {
-            return;
-        }
-        TLRPC.TL_dialog dialog = dialogs_dict.get(uid);
-
-        if (dialog == null) {
-            if (!isBroadcast) {
-                TLRPC.Chat chat = getChat(channelId);
-                if (channelId != 0 && chat == null || chat != null && false/*chat.left*/) {
-                    return;
-                }
-                dialog = new TLRPC.TL_dialog();
-                dialog.id = uid;
-                dialog.unread_count = 0;
-                dialog.top_message = lastMessage.getId();
-                dialog.last_message_date = lastMessage.messageOwner.date;
-                //dialog.flags = ChatObject.isChannel(chat) ? 1 : 0;
-                dialogs_dict.put(uid, dialog);
-                dialogs.add(dialog);
-                dialogMessage.put(uid, lastMessage);
-                if (lastMessage.messageOwner.to_id.channel_id == 0) {
-                    dialogMessagesByIds.put(lastMessage.getId(), lastMessage);
-                    if (lastMessage.messageOwner.random_id != 0) {
-                        dialogMessagesByRandomIds.put(lastMessage.messageOwner.random_id, lastMessage);
-                    }
-                }
-                nextDialogsCacheOffset++;
-            }
-        } else {
-            if ((dialog.top_message > 0 && lastMessage.getId() > 0 && lastMessage.getId() > dialog.top_message) ||
-                    (dialog.top_message < 0 && lastMessage.getId() < 0 && lastMessage.getId() < dialog.top_message) ||
-                    !dialogMessage.containsKey(uid) || dialog.top_message < 0 || dialog.last_message_date <= lastMessage.messageOwner.date) {
-                MessageObject object = dialogMessagesByIds.remove(dialog.top_message);
-                if (object != null && object.messageOwner.random_id != 0) {
-                    dialogMessagesByRandomIds.remove(object.messageOwner.random_id);
-                }
-                dialog.top_message = lastMessage.getId();
-                if (!isBroadcast) {
-                    dialog.last_message_date = lastMessage.messageOwner.date;
-                }
-                dialogMessage.put(uid, lastMessage);
-                if (lastMessage.messageOwner.to_id.channel_id == 0) {
-                    dialogMessagesByIds.put(lastMessage.getId(), lastMessage);
-                    if (lastMessage.messageOwner.random_id != 0) {
-                        dialogMessagesByRandomIds.put(lastMessage.messageOwner.random_id, lastMessage);
-                    }
-                }
-            }
-        }
     }
 }

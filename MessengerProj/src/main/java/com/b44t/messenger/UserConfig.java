@@ -32,15 +32,8 @@ import java.io.File;
 public class UserConfig {
 
     private static TLRPC.User currentUser;
-    public static boolean registeredForPush;
-    public static String pushString = "";
-    public static int lastSendMessageId = -210000;
     public static int lastLocalId = -210000;
-    public static int lastBroadcastId = -1;
-    public static String contactsHash = "";
-    public static boolean blockedUsersLoaded;
     private final static Object sync = new Object();
-    public static boolean saveIncomingPhotos;
     public static String passcodeHash = "";
     public static byte[] passcodeSalt = new byte[0];
     public static boolean appLocked;
@@ -49,26 +42,6 @@ public class UserConfig {
     public static int lastPauseTime;
     public static boolean isWaitingForPasscodeEnter;
     public static boolean useFingerprint = true;
-    public static String lastUpdateVersion;
-    public static int lastContactsSyncTime;
-    public static int lastHintsSyncTime;
-    public static boolean draftsLoaded;
-
-    public static int migrateOffsetId = -1;
-    public static int migrateOffsetDate = -1;
-    public static int migrateOffsetUserId = -1;
-    public static int migrateOffsetChatId = -1;
-    public static int migrateOffsetChannelId = -1;
-    public static long migrateOffsetAccess = -1;
-
-    public static int getNewMessageId() {
-        int id;
-        synchronized (sync) {
-            id = lastSendMessageId;
-            lastSendMessageId--;
-        }
-        return id;
-    }
 
     public static void saveConfig(boolean withFile) {
         saveConfig(withFile, null);
@@ -79,34 +52,14 @@ public class UserConfig {
             try {
                 SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("userconfing", Context.MODE_PRIVATE);
                 SharedPreferences.Editor editor = preferences.edit();
-                editor.putBoolean("registeredForPush", registeredForPush);
-                editor.putString("pushString2", pushString);
-                editor.putInt("lastSendMessageId", lastSendMessageId);
                 editor.putInt("lastLocalId", lastLocalId);
-                editor.putString("contactsHash", contactsHash);
-                editor.putBoolean("saveIncomingPhotos", saveIncomingPhotos);
-                editor.putInt("lastBroadcastId", lastBroadcastId);
-                editor.putBoolean("blockedUsersLoaded", blockedUsersLoaded);
                 editor.putString("passcodeHash1", passcodeHash);
                 editor.putString("passcodeSalt", passcodeSalt.length > 0 ? Base64.encodeToString(passcodeSalt, Base64.DEFAULT) : "");
                 editor.putBoolean("appLocked", appLocked);
                 editor.putInt("passcodeType", passcodeType);
                 editor.putInt("autoLockIn", autoLockIn);
                 editor.putInt("lastPauseTime", lastPauseTime);
-                editor.putString("lastUpdateVersion2", lastUpdateVersion);
-                editor.putInt("lastContactsSyncTime", lastContactsSyncTime);
                 editor.putBoolean("useFingerprint", useFingerprint);
-                editor.putInt("lastHintsSyncTime", lastHintsSyncTime);
-                editor.putBoolean("draftsLoaded", draftsLoaded);
-
-                editor.putInt("migrateOffsetId", migrateOffsetId);
-                if (migrateOffsetId != -1) {
-                    editor.putInt("migrateOffsetDate", migrateOffsetDate);
-                    editor.putInt("migrateOffsetUserId", migrateOffsetUserId);
-                    editor.putInt("migrateOffsetChatId", migrateOffsetChatId);
-                    editor.putInt("migrateOffsetChannelId", migrateOffsetChannelId);
-                    editor.putLong("migrateOffsetAccess", migrateOffsetAccess);
-                }
 
                 /*
                 if (currentUser != null) {
@@ -231,33 +184,13 @@ public class UserConfig {
             */
             {
                 SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("userconfing", Context.MODE_PRIVATE);
-                registeredForPush = preferences.getBoolean("registeredForPush", false);
-                pushString = preferences.getString("pushString2", "");
-                lastSendMessageId = preferences.getInt("lastSendMessageId", -210000);
                 lastLocalId = preferences.getInt("lastLocalId", -210000);
-                contactsHash = preferences.getString("contactsHash", "");
-                saveIncomingPhotos = preferences.getBoolean("saveIncomingPhotos", false);
-                lastBroadcastId = preferences.getInt("lastBroadcastId", -1);
-                blockedUsersLoaded = preferences.getBoolean("blockedUsersLoaded", false);
                 passcodeHash = preferences.getString("passcodeHash1", "");
                 appLocked = preferences.getBoolean("appLocked", false);
                 passcodeType = preferences.getInt("passcodeType", 0);
                 autoLockIn = preferences.getInt("autoLockIn", 60 * 60);
                 lastPauseTime = preferences.getInt("lastPauseTime", 0);
                 useFingerprint = preferences.getBoolean("useFingerprint", true);
-                lastUpdateVersion = preferences.getString("lastUpdateVersion2", "3.5");
-                lastContactsSyncTime = preferences.getInt("lastContactsSyncTime", (int) (System.currentTimeMillis() / 1000) - 23 * 60 * 60);
-                lastHintsSyncTime = preferences.getInt("lastHintsSyncTime", (int) (System.currentTimeMillis() / 1000) - 25 * 60 * 60);
-                draftsLoaded = preferences.getBoolean("draftsLoaded", false);
-
-                migrateOffsetId = preferences.getInt("migrateOffsetId", 0);
-                if (migrateOffsetId != -1) {
-                    migrateOffsetDate = preferences.getInt("migrateOffsetDate", 0);
-                    migrateOffsetUserId = preferences.getInt("migrateOffsetUserId", 0);
-                    migrateOffsetChatId = preferences.getInt("migrateOffsetChatId", 0);
-                    migrateOffsetChannelId = preferences.getInt("migrateOffsetChannelId", 0);
-                    migrateOffsetAccess = preferences.getLong("migrateOffsetAccess", 0);
-                }
 
                 /*
                 String user = preferences.getString("user", null);

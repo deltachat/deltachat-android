@@ -1376,14 +1376,13 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
                 }
             }
         } else if (id == NotificationCenter.didReceivedNewMessages) {
-            if (voiceMessagesPlaylist != null && !voiceMessagesPlaylist.isEmpty()) {
+            if (voiceMessagesPlaylist != null && !voiceMessagesPlaylist.isEmpty() && args.length >= 2 ) {
                 MessageObject messageObject = voiceMessagesPlaylist.get(0);
                 long did = (Long) args[0];
                 if (did == messageObject.getDialogId()) {
-                    ArrayList<MessageObject> arr = (ArrayList<MessageObject>) args[1];
-                    for (int a = 0; a < arr.size(); a++) {
-                        messageObject = arr.get(a);
-                        if (messageObject.isVoice() && (!voiceMessagesPlaylistUnread || messageObject.isContentUnread() && !messageObject.isOut())) {
+                    MrMsg msg = MrMailbox.getMsg((int)args[1]);
+                    if( msg.getId()!=0 ) {
+                        if (msg.getType()==MrMsg.MR_MSG_VOICE && (!voiceMessagesPlaylistUnread || messageObject.isContentUnread() && !messageObject.isOut())) {
                             voiceMessagesPlaylist.add(messageObject);
                             voiceMessagesPlaylistMap.put(messageObject.getId(), messageObject);
                         }

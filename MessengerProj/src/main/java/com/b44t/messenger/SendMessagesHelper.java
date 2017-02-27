@@ -418,7 +418,7 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
         sendMessage__(message, null, null, null, peer, null, params);
     }
 
-    public void sendMessagePhoto(TLRPC.TL_photo photo, String path, long peer, HashMap<String, String> params) {
+    private void sendMessagePhoto(TLRPC.TL_photo photo, String path, long peer, HashMap<String, String> params) {
         sendMessage__(null, photo, null, null, peer, path, params);
     }
 
@@ -426,260 +426,84 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
                              TLRPC.TL_photo photo,
                              VideoEditedInfo videoEditedInfo,
                              TLRPC.TL_document document,
-                             long peer,
+                             long dialog_id,
                              String path,
                              HashMap<String, String> params) {
-        if (peer == 0) { // peer == dialog id
-            return;
-        }
-
-        String originalPath = null;
-        if (params != null && params.containsKey("originalPath")) {
-            originalPath = params.get("originalPath");
-        }
-
-        TLRPC.Message newMsg = null;    // data
-        MessageObject newMsgObj = null; // drawing
-        int type = -1;
-        int lower_id = (int) peer;
+        int newMsg_id = 0;
 
         try {
+            MrChat mrChat = MrMailbox.getChat((int)dialog_id);
+            if (message != null)
             {
-                if (message != null) {
-                    newMsg = new TLRPC.TL_message();
-                    newMsg.media = new TLRPC.TL_messageMediaEmpty();
-                    type = 0;
-                    newMsg.message = message;
-                } else if (photo != null) {
-                    newMsg = new TLRPC.TL_message();
-                    newMsg.media = new TLRPC.TL_messageMediaPhoto();
-                    newMsg.media.caption = photo.caption != null ? photo.caption : "";
-                    newMsg.media.photo = photo;
-                    type = 2;
-                    newMsg.message = "-1";
-                    if (path != null && path.length() > 0 && path.startsWith("http")) {
-                        newMsg.attachPath = path;
-                    } else {
-                        TLRPC.FileLocation location1 = photo.sizes.get(photo.sizes.size() - 1).location;
-                        newMsg.attachPath = FileLoader.getPathToAttach(location1, true).toString();
-                    }
-                } else if (document != null) {
-                    // AUDIO, VIDEO etc.
-                    newMsg = new TLRPC.TL_message();
-                    newMsg.media = new TLRPC.TL_messageMediaDocument();
-                    newMsg.media.caption = document.caption != null ? document.caption : "";
-                    newMsg.media.document = document;
-                    if (MessageObject.isVideoDocument(document)) {
-                        type = 3;
-                    } else if (MessageObject.isVoiceDocument(document)) {
-                        type = 8;
-                    } else {
-                        type = 7;
-                    }
-                    if (videoEditedInfo == null) {
-                        newMsg.message = "-1";
-                    } else {
-                        newMsg.message = videoEditedInfo.getString();
-                    }
-                    newMsg.attachPath = path;
-                }
-                else {
-                    return; // should not happen
-                }
-
-                if (newMsg.attachPath == null) {
-                    newMsg.attachPath = "";
-                }
-                /*newMsg.local_id =*/ newMsg.id = UserConfig.getNewMessageId();
-                newMsg.out = true;
-                newMsg.from_id = UserConfig.getClientUserId();
-                newMsg.flags |= TLRPC.MESSAGE_FLAG_HAS_FROM_ID;
-                UserConfig.saveConfig(false);
-            }
-
-            if (newMsg.random_id == 0) {
-                newMsg.random_id = getNextRandomId();
-            }
-            newMsg.params = params;
-            newMsg.date = ConnectionsManager.getInstance().getCurrentTime();
-            newMsg.flags |= TLRPC.MESSAGE_FLAG_HAS_MEDIA;
-            newMsg.unread = true;
-            newMsg.dialog_id = peer;
-
-            if (lower_id != 0) {
-                newMsg.to_id = MessagesController.getPeer(lower_id); // Cave: this sets user_id to the chat_id ... however, seems as if it is not read at all ...
-            }
-
-            newMsg.media_unread = true;
-
-            newMsg.send_state = MessageObject.MESSAGE_SEND_STATE_SENDING;
-            newMsgObj = new MessageObject(newMsg, true);
-            if (!newMsgObj.isForwarded() && newMsgObj.type == MessageObject.MO_TYPE3_VIDEO) {
-                newMsgObj.attachPathExists = true;
-            }
-
-            ArrayList<MessageObject> objArr = new ArrayList<>();
-            objArr.add(newMsgObj);
-            ArrayList<TLRPC.Message> arr = new ArrayList<>();
-            arr.add(newMsg);
-
-
-            // SEND MESSAGE
-            // -------------------------------------------------------------------------------------
-
-            MrChat mrChat = MrMailbox.getChat((int)peer);
-
-            if (type == 0 )
-            {
-                newMsg.id = mrChat.sendText(newMsg.message);
+                // SEND TEXT
+                newMsg_id = mrChat.sendText(message);
                 mrChat.cleanDraft();
-
-                MrMailbox.reloadMainChatlist();
             }
-            else if ( type == 2 || type == 3 || (type >= 5 && type <= 8) ) {
-                TLRPC.InputMedia inputMedia = null;
-                if (type == 2 ) {
-                    if (photo.access_hash == 0) {
-                        inputMedia = new TLRPC.TL_inputMediaUploadedPhoto();
-                        inputMedia.caption = photo.caption != null ? photo.caption : "";
-                    } else {
-                        TLRPC.TL_inputMediaPhoto media = new TLRPC.TL_inputMediaPhoto();
-                        media.id = new TLRPC.TL_inputPhoto();
-                        media.caption = photo.caption != null ? photo.caption : "";
-                        media.id.id = photo.id;
-                        media.id.access_hash = photo.access_hash;
-                        inputMedia = media;
-                    }
-                } else if (type == 3) {
-                    if (document.access_hash == 0) {
-                        if (document.thumb.location != null) {
-                            inputMedia = new TLRPC.TL_inputMediaUploadedThumbDocument();
-                        } else {
-                            inputMedia = new TLRPC.TL_inputMediaUploadedDocument();
-                        }
-                        inputMedia.caption = document.caption != null ? document.caption : "";
-                        inputMedia.mime_type = document.mime_type;
-                        inputMedia.attributes = document.attributes;
-                    } else {
-                        TLRPC.TL_inputMediaDocument media = new TLRPC.TL_inputMediaDocument();
-                        media.id = new TLRPC.TL_inputDocument();
-                        media.caption = document.caption != null ? document.caption : "";
-                        media.id.id = document.id;
-                        media.id.access_hash = document.access_hash;
-                        inputMedia = media;
-                    }
-                } else if (type == 7 ) {
-                    if (document.access_hash == 0) {
-                        if ( originalPath != null && originalPath.length() > 0 && originalPath.startsWith("http") && params != null) {
-                            inputMedia = new TLRPC.TL_inputMediaGifExternal();
-                            String args[] = params.get("url").split("\\|");
-                            if (args.length == 2) {
-                                inputMedia.url = args[0];
-                                inputMedia.q = args[1];
-                            }
-                        } else {
-                            if (document.thumb.location != null && document.thumb.location instanceof TLRPC.TL_fileLocation) {
-                                inputMedia = new TLRPC.TL_inputMediaUploadedThumbDocument();
-                            } else {
-                                inputMedia = new TLRPC.TL_inputMediaUploadedDocument();
-                            }
-                        }
-                        inputMedia.mime_type = document.mime_type;
-                        inputMedia.attributes = document.attributes;
-                        inputMedia.caption = document.caption != null ? document.caption : "";
-                    } else {
-                        TLRPC.TL_inputMediaDocument media = new TLRPC.TL_inputMediaDocument();
-                        media.id = new TLRPC.TL_inputDocument();
-                        media.id.id = document.id;
-                        media.id.access_hash = document.access_hash;
-                        media.caption = document.caption != null ? document.caption : "";
-                        inputMedia = media;
-                    }
-                } else if (type == 8) {
-                    if (document.access_hash == 0) {
-                        inputMedia = new TLRPC.TL_inputMediaUploadedDocument();
-                        inputMedia.mime_type = document.mime_type;
-                        inputMedia.attributes = document.attributes;
-                        inputMedia.caption = document.caption != null ? document.caption : "";
-                    } else {
-                        TLRPC.TL_inputMediaDocument media = new TLRPC.TL_inputMediaDocument();
-                        media.id = new TLRPC.TL_inputDocument();
-                        media.caption = document.caption != null ? document.caption : "";
-                        media.id.id = document.id;
-                        media.id.access_hash = document.access_hash;
-                        inputMedia = media;
+            else if (photo != null)
+            {
+                // SEND IMAGE
+                TLRPC.FileLocation location1 = photo.sizes.get(photo.sizes.size() - 1).location;
+                String newMsg_attachPath = FileLoader.getPathToAttach(location1, true).toString();
+
+                TLRPC.PhotoSize size1 = photo.sizes.get(photo.sizes.size() - 1);
+                newMsg_id = mrChat.sendMedia(MrMsg.MR_MSG_IMAGE,
+                        newMsg_attachPath, null, size1.w, size1.h, 0);
+            }
+            else if (document != null && MessageObject.isVideoDocument(document))
+            {
+                // SEND VIDEO
+                int width = 0, height = 0, time_ms = 0;
+                for (int i = 0; i < document.attributes.size(); i++) {
+                    TLRPC.DocumentAttribute a = document.attributes.get(i);
+                    if (a instanceof TLRPC.TL_documentAttributeVideo) {
+                        time_ms = a.duration * 1000;
+                        width = a.w;
+                        height = a.h;
+                        break;
                     }
                 }
-
-
-                // perform sending
-                if( type == 2 )
-                {
-                    // SEND IMAGE
-                    TLRPC.PhotoSize size1 = photo.sizes.get(photo.sizes.size() - 1);
-
-                    newMsg.id = mrChat.sendMedia(MrMsg.MR_MSG_IMAGE,
-                                newMsg.attachPath, null, size1.w, size1.h, 0);
+                if (videoEditedInfo != null) {
+                    width = videoEditedInfo.resultWidth; // overwrite original attributes with edited size
+                    height = videoEditedInfo.resultHeight;
                 }
-                else if( type == 3 )
-                {
-                    // SEND VIDEO
-                    int width = 0, height = 0, time_ms = 0;
-                    for (int i = 0; i < document.attributes.size(); i++) {
-                        TLRPC.DocumentAttribute a = document.attributes.get(i);
-                        if (a instanceof TLRPC.TL_documentAttributeVideo) {
-                            time_ms = a.duration*1000;
-                            width   = a.w;
-                            height  = a.h;
-                            break;
-                        }
-                    }
-                    if( videoEditedInfo!=null ) {
-                        width  = videoEditedInfo.resultWidth; // overwrite original attributes with edited size
-                        height = videoEditedInfo.resultHeight;
-                    }
-                    newMsg.id = mrChat.sendMedia(MrMsg.MR_MSG_VIDEO,
-                            newMsg.attachPath, document.mime_type, width, height, time_ms);
-                }
-                else if( type == 7 )
-                {
-                    // SEND FILE
-                    newMsg.id = mrChat.sendMedia(MrMsg.MR_MSG_FILE,
-                            newMsg.attachPath, document.mime_type, 0, 0, 0);
-                }
-                else if( type == 8 )
-                {
-                    // SEND AUDIO
-                    int time_ms = 0;
-                    if( params.get("mr_time_ms") != null ) {
-                        time_ms = Integer.parseInt(params.get("mr_time_ms"));
-                    }
-
-                    newMsg.id = mrChat.sendMedia(MrMsg.MR_MSG_AUDIO,
-                                newMsg.attachPath, document.mime_type, 0, 0, time_ms);
+                newMsg_id = mrChat.sendMedia(MrMsg.MR_MSG_VIDEO,
+                        path, document.mime_type, width, height, time_ms);
+            }
+            else if (document != null && MessageObject.isVoiceDocument(document))
+            {
+                // SEND AUDIO
+                int time_ms = 0;
+                if( params.get("mr_time_ms") != null ) {
+                    time_ms = Integer.parseInt(params.get("mr_time_ms"));
                 }
 
-                MrMailbox.reloadMainChatlist();
+                newMsg_id = mrChat.sendMedia(MrMsg.MR_MSG_AUDIO,
+                        path, document.mime_type, 0, 0, time_ms);
 
             }
+            else if (document != null)
+            {
+                // SEND FILE
+                newMsg_id = mrChat.sendMedia(MrMsg.MR_MSG_FILE,
+                        path, document.mime_type, 0, 0, 0);
+            }
+            else
+            {
+                return; // should not happen
+            }
 
-            if( newMsg.id!=0 ) {
+            MrMailbox.reloadMainChatlist();
+
+            if( newMsg_id!=0 ) {
                 NotificationsController.getInstance().playOutChatSound();
             }
 
-            // finally update the interface, this results u.a. in an didReceivedNewMessages event which requires newMsg.id to be set
-            MessagesController.getInstance().updateInterfaceWithMessages(peer, objArr);
+            // finally update the interface
+            NotificationCenter.getInstance().postNotificationName(NotificationCenter.didReceivedNewMessages, dialog_id, newMsg_id);
             NotificationCenter.getInstance().postNotificationName(NotificationCenter.dialogsNeedReload);
 
-
-         } catch (Exception e) {
-            FileLog.e("messenger", e);
-            //MessagesStorage.getInstance().markMessageAsSendError(newMsg);
-            if (newMsgObj != null) {
-                newMsgObj.messageOwner.send_state = MessageObject.MESSAGE_SEND_STATE_SEND_ERROR;
-            }
-            NotificationCenter.getInstance().postNotificationName(NotificationCenter.messageSendError, newMsg.id);
-            //processSentMessage(newMsg.id);
+        } catch (Exception e) {
+            NotificationCenter.getInstance().postNotificationName(NotificationCenter.messageSendError, newMsg_id);
         }
     }
 
@@ -796,20 +620,7 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
         if (ext.toLowerCase().equals("mp3") || ext.toLowerCase().equals("m4a")) {
             AudioInfo audioInfo = AudioInfo.getAudioInfo(f);
             if (audioInfo != null && audioInfo.getDuration() != 0) {
-                /*if (isEncrypted) {
-                    int high_id = (int) (dialog_id >> 32);
-                    TLRPC.EncryptedChat encryptedChat = MessagesController.getInstance().getEncryptedChat(high_id);
-                    if (encryptedChat == null) {
-                        return false;
-                    }
-                    if (AndroidUtilities.getPeerLayerVersion(encryptedChat.layer) >= 46) {
-                        attributeAudio = new TLRPC.TL_documentAttributeAudio();
-                    } else {
-                        attributeAudio = new TLRPC.TL_documentAttributeAudio_old();
-                    }
-                } else*/ {
-                    attributeAudio = new TLRPC.TL_documentAttributeAudio();
-                }
+                attributeAudio = new TLRPC.TL_documentAttributeAudio();
                 attributeAudio.duration = (int) (audioInfo.getDuration() / 1000);
                 attributeAudio.title = audioInfo.getTitle();
                 attributeAudio.performer = audioInfo.getArtist();
@@ -945,9 +756,6 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
                     String originalPath = messageObject.messageOwner.attachPath;
                     final File f = new File(originalPath);
 
-                    final boolean isEncrypted = false;//(int) dialog_id == 0;
-
-
                     if (originalPath != null) {
                         originalPath += "audio" + f.length();
                     }
@@ -959,25 +767,6 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
                     if (document == null) {
                         document = null;//(TLRPC.TL_document) messageObject.messageOwner.media.document;
                     }
-
-                    /*if (isEncrypted) {
-                        int high_id = (int) (dialog_id >> 32);
-                        TLRPC.EncryptedChat encryptedChat = MessagesController.getInstance().getEncryptedChat(high_id);
-                        if (encryptedChat == null) {
-                            return;
-                        }
-                        if (AndroidUtilities.getPeerLayerVersion(encryptedChat.layer) < 46) {
-                            for (int b = 0; b < document.attributes.size(); b++) {
-                                if (document.attributes.get(b) instanceof TLRPC.TL_documentAttributeAudio) {
-                                    TLRPC.TL_documentAttributeAudio_old old = new TLRPC.TL_documentAttributeAudio_old();
-                                    old.duration = document.attributes.get(b).duration;
-                                    document.attributes.remove(b);
-                                    document.attributes.add(old);
-                                    break;
-                                }
-                            }
-                        }
-                    }*/
 
                     final HashMap<String, String> params = new HashMap<>();
                     if (originalPath != null) {

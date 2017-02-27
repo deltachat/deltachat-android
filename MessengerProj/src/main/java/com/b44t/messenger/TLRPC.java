@@ -196,14 +196,6 @@ public class TLRPC {
 		public byte[] iv;
 	}
 
-	public static class InputDocument extends TLObject {
-		public long id;
-		public long access_hash;
-	}
-
-	public static class TL_inputDocument extends InputDocument {
-	}
-
 	public static class Document extends TLObject {
 		public long id;
 		public long access_hash;
@@ -222,39 +214,6 @@ public class TLRPC {
 	}
 
 	public static class TL_document extends Document {
-	}
-
-	public static class InputMedia extends TLObject {
-		public InputFile file;
-		public InputFile thumb;
-		public String mime_type;
-		public ArrayList<DocumentAttribute> attributes = new ArrayList<>();
-		public String caption;
-		public String title;
-		public String address;
-		public String provider;
-		public String url;
-		public String q;
-	}
-
-	public static class TL_inputMediaUploadedThumbDocument extends InputMedia {
-	}
-
-	public static class TL_inputMediaDocument extends InputMedia {
-		public InputDocument id;
-	}
-
-	public static class TL_inputMediaGifExternal extends InputMedia {
-	}
-
-	public static class TL_inputMediaUploadedPhoto extends InputMedia {
-	}
-
-	public static class TL_inputMediaUploadedDocument extends InputMedia {
-	}
-
-	public static class TL_inputMediaPhoto extends InputMedia {
-		public InputPhoto id;
 	}
 
 	public static class InputStickerSet extends TLObject {
@@ -277,7 +236,6 @@ public class TLRPC {
 
 	public static class Photo extends TLObject {
 		public long id;
-		public long access_hash;
 		public int user_id;
 		public int date;
 		public String caption;
@@ -374,14 +332,6 @@ public class TLRPC {
 	public static class TL_wallPaperSolid extends WallPaper {
 	}
 
-	public static class InputPhoto extends TLObject {
-		public long id;
-		public long access_hash;
-	}
-
-	public static class TL_inputPhoto extends InputPhoto {
-	}
-
 	public static class MessageMedia extends TLObject {
 		public byte[] bytes;
 		public Photo photo;
@@ -413,7 +363,6 @@ public class TLRPC {
         public int send_state = 0; //custom
         public String attachPath = ""; //custom
 		public HashMap<String, String> params; //custom
-        public long random_id; //custom
         public long dialog_id; //custom
         public int layer; //custom
 		public boolean created_by_mr;
@@ -430,7 +379,6 @@ public class TLRPC {
 		public PeerNotifySettings notify_settings;
 		public int pts;
 		public DraftMessage draft;
-		public int last_message_date; //custom
 		public long id; //custom
 	}
 
