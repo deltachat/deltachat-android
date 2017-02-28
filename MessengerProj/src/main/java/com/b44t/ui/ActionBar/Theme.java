@@ -141,8 +141,6 @@ public class Theme {
     public static final int INLIST_COUNT = 3;
     public static Drawable[] inlistDrawable = new Drawable[INLIST_COUNT];
 
-    public static Drawable[][] photoStatesDrawables = new Drawable[13][2];
-
     public static PorterDuffColorFilter colorFilter;
     private static int currentColor;
 
@@ -170,33 +168,6 @@ public class Theme {
             inlistDrawable[INLIST_FILE]  = context.getResources().getDrawable(R.drawable.attach_file_inlist);
             inlistDrawable[INLIST_PLAY]  = context.getResources().getDrawable(R.drawable.attach_audio_inlist_play);
             inlistDrawable[INLIST_PAUSE] = context.getResources().getDrawable(R.drawable.attach_audio_inlist_pause);
-
-            photoStatesDrawables[0][0] = context.getResources().getDrawable(R.drawable.photoload);
-            photoStatesDrawables[0][1] = context.getResources().getDrawable(R.drawable.photoload_pressed);
-            photoStatesDrawables[1][0] = context.getResources().getDrawable(R.drawable.photocancel);
-            photoStatesDrawables[1][1] = context.getResources().getDrawable(R.drawable.photocancel_pressed);
-            photoStatesDrawables[2][0] = context.getResources().getDrawable(R.drawable.photogif);
-            photoStatesDrawables[2][1] = context.getResources().getDrawable(R.drawable.photogif_pressed);
-            photoStatesDrawables[3][0] = context.getResources().getDrawable(R.drawable.playvideo);
-            photoStatesDrawables[3][1] = context.getResources().getDrawable(R.drawable.playvideo_pressed);
-            //photoStatesDrawables[4] = context.getResources().getDrawable(R.drawable.photopause);
-            photoStatesDrawables[4][0] = photoStatesDrawables[4][1] = context.getResources().getDrawable(R.drawable.burn);
-            photoStatesDrawables[5][0] = photoStatesDrawables[5][1] = context.getResources().getDrawable(R.drawable.circle);
-            photoStatesDrawables[6][0] = photoStatesDrawables[6][1] = context.getResources().getDrawable(R.drawable.photocheck);
-
-            photoStatesDrawables[7][0] = context.getResources().getDrawable(R.drawable.photoload_g);
-            photoStatesDrawables[7][1] = context.getResources().getDrawable(R.drawable.photoload_g_s);
-            photoStatesDrawables[8][0] = context.getResources().getDrawable(R.drawable.photocancel_g);
-            photoStatesDrawables[8][1] = context.getResources().getDrawable(R.drawable.photocancel_g_s);
-            photoStatesDrawables[9][0] = context.getResources().getDrawable(R.drawable.doc_green);
-            photoStatesDrawables[9][1] = context.getResources().getDrawable(R.drawable.doc_green);
-
-            photoStatesDrawables[10][0] = context.getResources().getDrawable(R.drawable.photoload_b);
-            photoStatesDrawables[10][1] = context.getResources().getDrawable(R.drawable.photoload_b_s);
-            photoStatesDrawables[11][0] = context.getResources().getDrawable(R.drawable.photocancel_b);
-            photoStatesDrawables[11][1] = context.getResources().getDrawable(R.drawable.photocancel_b_s);
-            photoStatesDrawables[12][0] = context.getResources().getDrawable(R.drawable.doc_blue);
-            photoStatesDrawables[12][1] = context.getResources().getDrawable(R.drawable.doc_blue_s);
 
             newchatIconDrawable = context.getResources().getDrawable(R.drawable.ic_ab_reply);
 

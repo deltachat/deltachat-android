@@ -390,7 +390,7 @@ public class ContextLinkCell extends View implements MediaController.FileDownloa
     }
 
     private Drawable getDrawableForCurrentState() {
-        return buttonState == 1 ? Theme.photoStatesDrawables[5][0] : null;
+        return buttonState == 1 ? Theme.inlistDrawable[Theme.INLIST_FILE] : null;
     }
 
     public void updateButtonState(boolean animated) {
