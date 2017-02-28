@@ -356,41 +356,6 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
         }
     }
 
-    public void cancelSendingMessage(MessageObject object) {
-        /*
-        String keyToRemvoe = null;
-        boolean enc = false;
-        for (HashMap.Entry<String, ArrayList<DelayedMessage>> entry : delayedMessages.entrySet()) {
-            ArrayList<DelayedMessage> messages = entry.getValue();
-            for (int a = 0; a < messages.size(); a++) {
-                DelayedMessage message = messages.get(a);
-                if (message.obj.getId() == object.getId()) {
-                    messages.remove(a);
-                    MediaController.getInstance().cancelVideoConvert(message.obj);
-                    if (messages.size() == 0) {
-                        keyToRemvoe = entry.getKey();
-                        if (message.sendEncryptedRequest != null) {
-                            enc = true;
-                        }
-                    }
-                    break;
-                }
-            }
-        }
-        if (keyToRemvoe != null) {
-            if (keyToRemvoe.startsWith("http")) {
-                ImageLoader.getInstance().cancelLoadHttpFile(keyToRemvoe);
-            } else {
-                FileLoader.getInstance().cancelUploadFile(keyToRemvoe, enc);
-            }
-            stopVideoService(keyToRemvoe);
-        }
-        */
-        ArrayList<Integer> messages = new ArrayList<>();
-        messages.add(object.getId());
-        MessagesController.getInstance().deleteMessages(messages, null, null, object.messageOwner.to_id.channel_id);
-    }
-
     public void sendSticker(TLRPC.Document document, long peer) {
         if (document == null) {
             return;

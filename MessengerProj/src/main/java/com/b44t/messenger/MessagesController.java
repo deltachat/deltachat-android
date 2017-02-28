@@ -161,10 +161,6 @@ public class MessagesController implements NotificationCenter.NotificationCenter
         return null;
     }
 
-    public void deleteMessages(ArrayList<Integer> messages, ArrayList<Long> randoms, Object encryptedChat, final int channelId) {
-
-    }
-
     public MediaController.SearchImage saveGif(TLRPC.Document document) {
         MediaController.SearchImage searchImage = new MediaController.SearchImage();
         searchImage.type = 2;

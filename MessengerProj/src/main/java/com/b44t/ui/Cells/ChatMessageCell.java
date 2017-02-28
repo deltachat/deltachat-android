@@ -47,7 +47,6 @@ import android.view.ViewStructure;
 
 import com.b44t.messenger.AndroidUtilities;
 import com.b44t.messenger.ContactsController;
-import com.b44t.messenger.ImageLoader;
 import com.b44t.messenger.ImageReceiver;
 import com.b44t.messenger.LocaleController;
 import com.b44t.messenger.MediaController;
@@ -81,7 +80,6 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
     public interface ChatMessageCellDelegate {
         void didPressedUserAvatar(ChatMessageCell cell, TLRPC.User user);
         void didPressedChannelAvatar(ChatMessageCell cell, TLRPC.Chat chat, int postId);
-        void didPressedCancelSendButton(ChatMessageCell cell);
         void didLongPressed(ChatMessageCell cell);
         void didPressedUrl(MessageObject messageObject, ClickableSpan url, boolean longPress);
         void didPressedImage(ChatMessageCell cell);
@@ -112,7 +110,6 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
     private int totalVisibleBlocksCount;
     private boolean needNewVisiblePart;
 
-    //private RadialProgress radialProgress;
     private ImageReceiver photoImage;
 
     private boolean disallowLongPress;
@@ -123,7 +120,6 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
     private boolean drawPhotoImage;
     private final boolean hasLinkPreview = false;
     private int mediaOffsetY;
-    private StaticLayout titleLayout;
 
     private StaticLayout docTitleLayout;
     private int docTitleOffsetX;
@@ -136,17 +132,13 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
     private StaticLayout infoLayout;
     private int infoWidth;
 
-    private String currentUrl;
-
     private int buttonX;
     private int buttonY;
 
     private final static int
                 BS0_CLICK_TO_PLAY = 0,
                 BS1_CLICK_TO_PAUSE = 1,
-                BS2_CLICK_TO_LOAD = 2,
-                BS3_NORMAL = 3,
-                BS4_CLICK_TO_CANCEL = 4;
+                BS3_NORMAL = 3;
     private int buttonState;
 
     private int buttonPressed;
@@ -158,7 +150,6 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
     private TLRPC.PhotoSize currentPhotoObjectThumb;
     private String currentPhotoFilter;
     private String currentPhotoFilterThumb;
-    private boolean cancelLoading;
 
     private static TextPaint infoPaint;
     private static TextPaint docNamePaint;
@@ -190,7 +181,6 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
     private static TextPaint audioTimePaint;
     private static TextPaint audioTitlePaint;
     private static TextPaint audioPerformerPaint;
-    private static TextPaint contactPhonePaint;
 
     private StaticLayout songLayout;
     private int songX;
@@ -219,9 +209,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
     private static TextPaint timePaint;
     private static TextPaint namePaint;
     private static TextPaint forwardNamePaint;
-    private static TextPaint replyNamePaint;
-    private static TextPaint replyTextPaint;
-    private static Paint replyLinePaint;
+    private static TextPaint forward2NamePaint;
 
     private int backgroundWidth = 100;
 
@@ -234,17 +222,8 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
     private boolean forwardNamePressed;
     private boolean forwardBotPressed;
 
-    private StaticLayout replyNameLayout;
     private StaticLayout replyTextLayout;
     private ImageReceiver replyImageReceiver;
-    private int replyStartX;
-    private int replyStartY;
-    private int replyNameWidth;
-    private float replyNameOffset;
-    private int replyTextWidth;
-    private float replyTextOffset;
-    private boolean needReplyImage;
-    private boolean replyPressed;
     private TLRPC.FileLocation currentReplyPhoto;
 
     private boolean drawShareButton;
@@ -328,25 +307,17 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
             forwardNamePaint = new TextPaint(TextPaint.ANTI_ALIAS_FLAG);
             forwardNamePaint.setTextSize(dp(14));
 
-            replyNamePaint = new TextPaint(TextPaint.ANTI_ALIAS_FLAG);
-            replyNamePaint.setTypeface(Typeface.DEFAULT_BOLD);
-            replyNamePaint.setTextSize(dp(14));
-
-            replyTextPaint = new TextPaint(TextPaint.ANTI_ALIAS_FLAG);
-            replyTextPaint.setTextSize(dp(14));
-            replyTextPaint.linkColor = Theme.MSG_LINK_TEXT_COLOR;
-
-            replyLinePaint = new Paint();
+            forward2NamePaint = new TextPaint(TextPaint.ANTI_ALIAS_FLAG);
+            forward2NamePaint.setTypeface(Typeface.DEFAULT_BOLD);
+            forward2NamePaint.setTextSize(dp(14));
         }
         avatarImage = new ImageReceiver(this);
         avatarImage.setRoundRadius(dp(21));
         avatarDrawable = new AvatarDrawable();
         replyImageReceiver = new ImageReceiver(this);
-        //TAG = MediaController.getInstance().generateObserverTag();
 
         photoImage = new ImageReceiver(this);
         photoImage.setDelegate(this);
-        //radialProgress = new RadialProgress(this);
         seekBar = new SeekBar(context);
         seekBar.setDelegate(this);
         seekBarWaveform = new SeekBarWaveform(context);
@@ -593,7 +564,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                     invalidate();
                 } else if (imagePressed) {
                     imagePressed = false;
-                    if (buttonState == -1 || buttonState == BS2_CLICK_TO_LOAD || buttonState == BS3_NORMAL) {
+                    if (buttonState == -1 || buttonState == BS3_NORMAL) {
                         playSoundEffect(SoundEffectConstants.CLICK);
                         didClickedImage();
                     } else if (buttonState == BS0_CLICK_TO_PLAY && documentAttachType == DOCUMENT_ATTACH_TYPE_DOCUMENT) {
@@ -631,7 +602,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
         } else {
             int side = dp(36);
             boolean area;
-            if (buttonState == BS0_CLICK_TO_PLAY || buttonState == BS1_CLICK_TO_PAUSE || buttonState == BS2_CLICK_TO_LOAD) {
+            if (buttonState == BS0_CLICK_TO_PLAY || buttonState == BS1_CLICK_TO_PAUSE) {
                 area = x >= buttonX - dp(12) && x <= buttonX - dp(12) + backgroundWidth && y >= namesOffset + mediaOffsetY && y <= layoutHeight;
             } else {
                 area = x >= buttonX && x <= buttonX + side && y >= buttonY && y <= buttonY + side;
@@ -657,7 +628,6 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                         invalidate();
                     }
                 }
-                //radialProgress.swapBackground(getDrawableForCurrentState());
             }
         }
         return result;
@@ -769,20 +739,6 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                     }
                 } else if (forwardBotPressed) {
                     forwardBotPressed = false;
-                } else if (replyPressed) {
-                    if (event.getAction() == MotionEvent.ACTION_UP) {
-                        replyPressed = false;
-                        /*playSoundEffect(SoundEffectConstants.CLICK);
-                        if (delegate != null) {
-                            delegate.didPressedReplyMessage(this, currentMessageObject.messageOwner.reply_to_msg_id);
-                        }*/
-                    } else if (event.getAction() == MotionEvent.ACTION_CANCEL) {
-                        replyPressed = false;
-                    } else if (event.getAction() == MotionEvent.ACTION_MOVE) {
-                        if (!(x >= replyStartX && x <= replyStartX + Math.max(replyNameWidth, replyTextWidth) && y >= replyStartY && y <= replyStartY + dp(35))) {
-                            replyPressed = false;
-                        }
-                    }
                 } else if (sharePressed) {
                     if (event.getAction() == MotionEvent.ACTION_UP) {
                         sharePressed = false;
@@ -858,16 +814,6 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
             }
         }
         invalidate();
-    }
-
-    public void downloadAudioIfNeed() {
-        if (documentAttachType != DOCUMENT_ATTACH_TYPE_VOICE || documentAttach.size >= 1024 * 1024 * 5) {
-            return;
-        }
-        if (buttonState == BS2_CLICK_TO_LOAD) {
-            FileLoader.getInstance().loadFile(documentAttach, true, false);
-            buttonState = BS4_CLICK_TO_CANCEL;
-        }
     }
 
     public void setVisiblePart(int position, int height) {
@@ -954,13 +900,13 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                 if (MediaController.getInstance().canAutoplayGifs()) {
                     delegate.didPressedImage(this);
                 } else {
-                    buttonState = BS2_CLICK_TO_LOAD;
+                    buttonState = BS0_CLICK_TO_PLAY;
                     currentMessageObject.audioProgress = 1;
                     photoImage.setAllowStartAnimation(false);
                     photoImage.stopAnimation();
                     invalidate();
                 }
-            } else if (buttonState == BS2_CLICK_TO_LOAD || buttonState == BS0_CLICK_TO_PLAY) {
+            } else if ( buttonState == BS0_CLICK_TO_PLAY) {
                 didPressedButton();
             }
         } else if (documentAttachType == DOCUMENT_ATTACH_TYPE_VIDEO) {
@@ -1081,10 +1027,10 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
         replyImageReceiver.onAttachedToWindow();
         if (drawPhotoImage) {
             if (photoImage.onAttachedToWindow()) {
-                updateButtonState(false);
+                updateButtonState();
             }
         } else {
-            updateButtonState(false);
+            updateButtonState();
         }
     }
 
@@ -1107,7 +1053,6 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
     public void setCheckPressed(boolean value, boolean pressed) {
         isCheckPressed = value;
         isPressed = pressed;
-        //radialProgress.swapBackground(getDrawableForCurrentState());
         if (useSeekBarWaweform) {
             seekBarWaveform.setSelected(isDrawSelectedBackground());
         } else {
@@ -1121,7 +1066,6 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
             return;
         }
         isHighlighted = value;
-        //radialProgress.swapBackground(getDrawableForCurrentState());
         if (useSeekBarWaweform) {
             seekBarWaveform.setSelected(isDrawSelectedBackground());
         } else {
@@ -1133,7 +1077,6 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
     @Override
     public void setPressed(boolean pressed) {
         super.setPressed(pressed);
-        //radialProgress.swapBackground(getDrawableForCurrentState());
         if (useSeekBarWaweform) {
             seekBarWaveform.setSelected(isDrawSelectedBackground());
         } else {
@@ -1381,10 +1324,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
             isAvatarVisible = false;
             wasLayout = false;
             drawShareButton = checkNeedDrawShareButton(messageObject);
-            replyNameLayout = null;
             replyTextLayout = null;
-            replyNameWidth = 0;
-            replyTextWidth = 0;
             viaNameWidth = 0;
             currentReplyPhoto = null;
             currentUser = null;
@@ -1399,7 +1339,6 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
             mediaOffsetY = 0;
             documentAttachType = DOCUMENT_ATTACH_TYPE_NONE;
             documentAttach = null;
-            titleLayout = null;
             captionLayout = null;
             docTitleLayout = null;
             drawImageButton = false;
@@ -1407,9 +1346,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
             currentPhotoObjectThumb = null;
             currentPhotoFilter = null;
             infoLayout = null;
-            cancelLoading = false;
             buttonState = -1;
-            currentUrl = null;
             photoNotSet = false;
             drawBackground = true;
             drawName = false;
@@ -1455,7 +1392,6 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                     timeMore += dp(20.5f);
                 }
 
-                //hasLinkPreview = messageObject.messageOwner.media instanceof TLRPC.TL_messageMediaWebPage && messageObject.messageOwner.media.webpage instanceof TLRPC.TL_webPage;
                 backgroundWidth = maxWidth;
                 if (hasLinkPreview || maxWidth - messageObject.lastLineWidth < timeMore) {
                     backgroundWidth = Math.max(backgroundWidth, messageObject.lastLineWidth) + dp(31);
@@ -1477,8 +1413,6 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
 
                 int maxChildWidth = Math.max(backgroundWidth, nameWidth);
                 maxChildWidth = Math.max(maxChildWidth, forwardedNameWidth);
-                maxChildWidth = Math.max(maxChildWidth, replyNameWidth);
-                maxChildWidth = Math.max(maxChildWidth, replyTextWidth);
 
                 photoImage.setImageBitmap((Drawable) null);
                 calcBackgroundWidth(maxWidth, timeMore, maxChildWidth);
@@ -1777,7 +1711,6 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                         String fileName = FileLoader.getAttachFileName(messageObject.messageOwner.media.document);
                         int localFile = 0;
                         if (messageObject.attachPathExists) {
-                            //MediaController.getInstance().removeLoadingFileObserver(this);
                             localFile = 1;
                         } else if (messageObject.mediaExists) {
                             localFile = 2;
@@ -1834,7 +1767,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
             }
         }
         updateWaveform();
-        updateButtonState(dataChanged);
+        updateButtonState();
     }
 
     @Override
@@ -1904,7 +1837,6 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
 
             iconX = buttonX;
             iconY = buttonY;
-            //radialProgress.setProgressRect(buttonX, buttonY, buttonX + dp(44), buttonY + dp(44));
 
             updateAudioProgress();
         } else if (documentAttachType == DOCUMENT_ATTACH_TYPE_MUSIC) {
@@ -1929,7 +1861,6 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
 
             iconX = buttonX;
             iconY = buttonY;
-            //radialProgress.setProgressRect(buttonX, buttonY, buttonX + dp(44), buttonY + dp(44));
 
             updateAudioProgress();
         } else if (documentAttachType == DOCUMENT_ATTACH_TYPE_DOCUMENT && !drawPhotoImage) {
@@ -1946,7 +1877,6 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
 
             iconX = buttonX;
             iconY = buttonY;
-            //radialProgress.setProgressRect(buttonX, buttonY, buttonX + dp(44), buttonY + dp(44));
 
             photoImage.setImageCoords(buttonX - dp(10), buttonY - dp(10), photoImage.getImageWidth(), photoImage.getImageHeight());
         } else {
@@ -1970,7 +1900,6 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
 
             iconX = buttonX;
             iconY = buttonY;
-            //radialProgress.setProgressRect(buttonX, buttonY, buttonX + dp(48), buttonY + dp(48));
 
             deleteProgressRect.set(buttonX + dp(3), buttonY + dp(3), buttonX + dp(45), buttonY + dp(45));
         }
@@ -1986,8 +1915,6 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
 
         photoImage.setPressed(isDrawSelectedBackground());
         photoImage.setVisible(!PhotoViewer.getInstance().isShowingImage(currentMessageObject), false);
-        //radialProgress.setHideCurrentDrawable(false);
-        //radialProgress.setProgressColor(Theme.MSG_MEDIA_PROGRESS_COLOR);
 
         boolean imageDrawn = false;
         int drawIcon = -1;
@@ -2175,10 +2102,6 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
             }
         }
 
-        //if (drawImageButton && photoImage.getVisible()) {
-            //radialProgress.draw(canvas);
-        //}
-
         if( drawIcon!=-1 ) {
             setDrawableBounds(Theme.inlistDrawable[drawIcon], iconX, iconY, dp(44), dp(44));
             Theme.inlistDrawable[drawIcon].draw(canvas);
@@ -2207,151 +2130,54 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
         return backgroundWidth - dp(mediaBackground ? 22 : 31);
     }
 
-    public void updateButtonState(boolean animated) {
+    public void updateButtonState() {
         String fileName = null;
-        boolean fileExists = false;
         if (currentMessageObject.type == MessageObject.MO_TYPE1_PHOTO) {
             if (currentPhotoObject == null) {
                 return;
             }
             fileName = FileLoader.getAttachFileName(currentPhotoObject);
-            fileExists = currentMessageObject.mediaExists;
         } else if (currentMessageObject.type == MessageObject.MO_TYPE8_GIF || documentAttachType == DOCUMENT_ATTACH_TYPE_VIDEO || currentMessageObject.type == MessageObject.MO_TYPE9_FILE || documentAttachType == DOCUMENT_ATTACH_TYPE_VOICE || documentAttachType == DOCUMENT_ATTACH_TYPE_MUSIC) {
             if (currentMessageObject.attachPathExists) {
                 fileName = currentMessageObject.messageOwner.attachPath;
-                fileExists = true;
             } else if (!currentMessageObject.isSendError() || documentAttachType == DOCUMENT_ATTACH_TYPE_VOICE || documentAttachType == DOCUMENT_ATTACH_TYPE_MUSIC) {
                 fileName = currentMessageObject.getFileName();
-                fileExists = currentMessageObject.mediaExists;
             }
         } else if (documentAttachType != DOCUMENT_ATTACH_TYPE_NONE) {
             fileName = FileLoader.getAttachFileName(documentAttach);
-            fileExists = currentMessageObject.mediaExists;
         } else if (currentPhotoObject != null) {
             fileName = FileLoader.getAttachFileName(currentPhotoObject);
-            fileExists = currentMessageObject.mediaExists;
         }
+
         if (fileName == null || fileName.length() == 0) {
-            //radialProgress.setBackground(null, false, false);
             return;
         }
 
         if (documentAttachType == DOCUMENT_ATTACH_TYPE_VOICE || documentAttachType == DOCUMENT_ATTACH_TYPE_MUSIC) {
-            {
-                if (fileExists) {
-                    //MediaController.getInstance().removeLoadingFileObserver(this);
                     boolean playing = MediaController.getInstance().isPlayingAudio(currentMessageObject);
                     if (!playing || playing && MediaController.getInstance().isAudioPaused()) {
                         buttonState = BS0_CLICK_TO_PLAY;
                     } else {
                         buttonState = BS1_CLICK_TO_PAUSE;
                     }
-                } else {
-                    //MediaController.getInstance().addLoadingFileObserver(fileName, currentMessageObject, this);
-                    if (!FileLoader.getInstance().isLoadingFile(fileName)) {
-                        buttonState = BS2_CLICK_TO_LOAD;
-                    } else {
-                        buttonState = BS4_CLICK_TO_CANCEL;
-                    }
-                }
-            }
             updateAudioProgress();
         } else if (currentMessageObject.type == MessageObject.MO_TYPE0_TEXT && documentAttachType != DOCUMENT_ATTACH_TYPE_DOCUMENT && documentAttachType != DOCUMENT_ATTACH_TYPE_VIDEO) {
             if (currentPhotoObject == null || !drawImageButton) {
                 return;
             }
-            if (!fileExists) {
-                //MediaController.getInstance().addLoadingFileObserver(fileName, currentMessageObject, this);
-                float setProgress = 0;
-                boolean progressVisible = false;
-                if (!FileLoader.getInstance().isLoadingFile(fileName)) {
-                    if (!cancelLoading &&
-                            (documentAttachType == 0 && MediaController.getInstance().canDownloadMedia(MediaController.AUTODOWNLOAD_MASK_PHOTO) ||
-                                    documentAttachType == DOCUMENT_ATTACH_TYPE_GIF && MediaController.getInstance().canDownloadMedia(MediaController.AUTODOWNLOAD_MASK_GIF))) {
-                        progressVisible = true;
-                        buttonState = BS1_CLICK_TO_PAUSE;
-                    } else {
-                        buttonState = BS0_CLICK_TO_PLAY;
-                    }
-                } else {
-                    progressVisible = true;
-                    buttonState = BS1_CLICK_TO_PAUSE;
-                    Float progress = ImageLoader.getInstance().getFileProgress(fileName);
-                    setProgress = progress != null ? progress : 0;
-                }
-                invalidate();
-            } else {
-                //MediaController.getInstance().removeLoadingFileObserver(this);
-                if (documentAttachType == DOCUMENT_ATTACH_TYPE_GIF && !photoImage.isAllowStartAnimation()) {
-                    buttonState = BS2_CLICK_TO_LOAD;
-                } else {
-                    buttonState = -1;
-                }
-                invalidate();
-            }
+            buttonState = -1;
+            invalidate();
         } else {
-            /*if (currentMessageObject.isOut() && currentMessageObject.isSending()) {
-                if (currentMessageObject.messageOwner.attachPath != null && currentMessageObject.messageOwner.attachPath.length() > 0) {
-                    MediaController.getInstance().addLoadingFileObserver(currentMessageObject.messageOwner.attachPath, currentMessageObject, this);
-                    boolean needProgress = currentMessageObject.messageOwner.attachPath == null || !currentMessageObject.messageOwner.attachPath.startsWith("http");
-                    HashMap<String, String> params = currentMessageObject.messageOwner.params;
-                    if (currentMessageObject.messageOwner.message != null && params != null && (params.containsKey("url") || params.containsKey("bot"))) {
-                        needProgress = false;
-                        buttonState = -1;
-                    } else {
-                        buttonState = 1;
-                    }
-                    radialProgress.setBackground(getDrawableForCurrentState(), needProgress, animated);
-                    if (needProgress) {
-                        Float progress = ImageLoader.getInstance().getFileProgress(currentMessageObject.messageOwner.attachPath);
-                        if (progress == null && SendMessagesHelper.getInstance().isSendingMessage(currentMessageObject.getId())) {
-                            progress = 1.0f;
-                        }
-                        radialProgress.setProgress(progress != null ? progress : 0, false);
-                    } else {
-                        radialProgress.setProgress(0, false);
-                    }
-                    invalidate();
-                }
-            } else*/ {
-                /*if (currentMessageObject.messageOwner.attachPath != null && currentMessageObject.messageOwner.attachPath.length() != 0) {
-                    MediaController.getInstance().removeLoadingFileObserver(this);
-                }*/
-                if (!fileExists) {
-                    //MediaController.getInstance().addLoadingFileObserver(fileName, currentMessageObject, this);
-                    //float setProgress = 0;
-                    //boolean progressVisible = false;
-                    if (!FileLoader.getInstance().isLoadingFile(fileName)) {
-                        if (!cancelLoading &&
-                                (currentMessageObject.type == MessageObject.MO_TYPE1_PHOTO && MediaController.getInstance().canDownloadMedia(MediaController.AUTODOWNLOAD_MASK_PHOTO) ||
-                                        currentMessageObject.type == MessageObject.MO_TYPE8_GIF && MediaController.getInstance().canDownloadMedia(MediaController.AUTODOWNLOAD_MASK_GIF) && MessageObject.isNewGifDocument(currentMessageObject.messageOwner.media.document)) ) {
-                            //progressVisible = true;
-                            buttonState = BS1_CLICK_TO_PAUSE;
-                        } else {
-                            buttonState = BS0_CLICK_TO_PLAY;
-                        }
-                    } else {
-                        //progressVisible = true;
-                        buttonState = BS1_CLICK_TO_PAUSE;
-                        //Float progress = ImageLoader.getInstance().getFileProgress(fileName);
-                        //setProgress = progress != null ? progress : 0;
-                    }
-                    invalidate();
-                } else {
-                    //MediaController.getInstance().removeLoadingFileObserver(this);
-                    if (currentMessageObject.type == MessageObject.MO_TYPE8_GIF && !photoImage.isAllowStartAnimation()) {
-                        buttonState = BS2_CLICK_TO_LOAD;
-                    } else if (documentAttachType == DOCUMENT_ATTACH_TYPE_VIDEO) {
-                        buttonState = BS3_NORMAL;
-                    } else {
-                        buttonState = -1;
-                    }
-                    if (photoNotSet) {
-                        setMessageObject(currentMessageObject);
-                    }
-                    invalidate();
-                }
+            if (documentAttachType == DOCUMENT_ATTACH_TYPE_VIDEO) {
+                buttonState = BS3_NORMAL;
+            } else {
+                buttonState = -1;
             }
+
+            if (photoNotSet) {
+                setMessageObject(currentMessageObject);
+            }
+            invalidate();
         }
     }
 
@@ -2363,7 +2189,6 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                     invalidate();
                 }
             } else {
-                cancelLoading = false;
                 if (currentMessageObject.type == MessageObject.MO_TYPE1_PHOTO) {
                     photoImage.setImage(currentPhotoObject.location, currentPhotoFilter, currentPhotoObjectThumb != null ? currentPhotoObjectThumb.location : null, currentPhotoFilter, currentPhotoObject.size, null, false);
                 } else if (currentMessageObject.type == MessageObject.MO_TYPE8_GIF) {
@@ -2397,24 +2222,8 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                 buttonState = BS0_CLICK_TO_PLAY;
                 invalidate();
             }
-        } else if (buttonState == BS2_CLICK_TO_LOAD) {
-            if (documentAttachType == DOCUMENT_ATTACH_TYPE_VOICE || documentAttachType == DOCUMENT_ATTACH_TYPE_MUSIC) {
-                FileLoader.getInstance().loadFile(documentAttach, true, false);
-                buttonState = BS4_CLICK_TO_CANCEL;
-                invalidate();
-            } else {
-                photoImage.setAllowStartAnimation(true);
-                photoImage.startAnimation();
-                currentMessageObject.audioProgress = 0;
-                buttonState = -1;
-            }
         } else if (buttonState == BS3_NORMAL) {
             delegate.didPressedImage(this);
-        } else if (buttonState == BS4_CLICK_TO_CANCEL) {
-            if (documentAttachType == DOCUMENT_ATTACH_TYPE_VOICE || documentAttachType == DOCUMENT_ATTACH_TYPE_MUSIC) {
-                buttonState = BS2_CLICK_TO_LOAD;
-                invalidate();
-            }
         }
     }
 
@@ -2422,7 +2231,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
     public void didSetImage(ImageReceiver imageReceiver, boolean set, boolean thumb) {
         if (currentMessageObject != null && set && !thumb && !currentMessageObject.mediaExists && !currentMessageObject.attachPathExists) {
             currentMessageObject.mediaExists = true;
-            updateButtonState(true);
+            updateButtonState();
         }
     }
 
@@ -2571,7 +2380,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
 
             forwardedNameWidth = getMaxNameWidth();
             int fromWidth = (int) Math.ceil(forwardNamePaint.measureText(LocaleController.getString("From", R.string.From) + " "));
-            CharSequence name = TextUtils.ellipsize(currentForwardNameString.replace('\n', ' '), replyNamePaint, forwardedNameWidth - fromWidth - viaWidth, TextUtils.TruncateAt.END);
+            CharSequence name = TextUtils.ellipsize(currentForwardNameString.replace('\n', ' '), forward2NamePaint, forwardedNameWidth - fromWidth - viaWidth, TextUtils.TruncateAt.END);
             CharSequence lastLine;
             if (viaString != null) {
                 viaNameWidth = (int) Math.ceil(forwardNamePaint.measureText(LocaleController.getString("From", R.string.From) + " " + name));
@@ -2623,17 +2432,9 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
 
         if (currentMessageObject.isOutOwner()) {
             if (isDrawSelectedBackground()) {
-                //if (!mediaBackground) {
-                    currentBackgroundDrawable = Theme.backgroundDrawableOutSelected;
-                //} else {
-                //    currentBackgroundDrawable = Theme.backgroundMediaDrawableOutSelected;
-                //}
+                currentBackgroundDrawable = Theme.backgroundDrawableOutSelected;
             } else {
-                //if (!mediaBackground) {
-                    currentBackgroundDrawable = Theme.backgroundDrawableOut;
-                //} else {
-                //    currentBackgroundDrawable = Theme.backgroundMediaDrawableOut;
-                //}
+                currentBackgroundDrawable = Theme.backgroundDrawableOut;
             }
             setDrawableBounds(currentBackgroundDrawable,
                     layoutWidth - backgroundWidth - (!mediaBackground ? 0 : dp(9)),
@@ -2642,17 +2443,9 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                     layoutHeight - dp(2));
         } else {
             if (isDrawSelectedBackground()) {
-                //if (!mediaBackground) {
-                    currentBackgroundDrawable = Theme.backgroundDrawableInSelected;
-                //} else {
-                //    currentBackgroundDrawable = Theme.backgroundMediaDrawableInSelected;
-                //}
+                currentBackgroundDrawable = Theme.backgroundDrawableInSelected;
             } else {
-                //if (!mediaBackground) {
-                    currentBackgroundDrawable = Theme.backgroundDrawableIn;
-                //} else {
-                //    currentBackgroundDrawable = Theme.backgroundMediaDrawableIn;
-                //}
+                currentBackgroundDrawable = Theme.backgroundDrawableIn;
             }
             if (isChat && currentMessageObject.isFromUser()) {
                 setDrawableBounds(currentBackgroundDrawable,
@@ -2835,11 +2628,6 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
             }
         }
     }
-
-    /*@Override
-    public int getObserverTag() {
-        return TAG;
-    }*/
 
     public MessageObject getMessageObject() {
         return currentMessageObject;

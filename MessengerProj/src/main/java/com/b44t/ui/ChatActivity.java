@@ -1957,7 +1957,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                         ChatMessageCell cell = (ChatMessageCell) view;
                         MessageObject messageObject = cell.getMessageObject();
                         if (messageObject != null && (messageObject.isVoice() || messageObject.isMusic())) {
-                            cell.updateButtonState(false);
+                            cell.updateButtonState();
                         }
                     }
                 }
@@ -2003,7 +2003,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                         ChatMessageCell cell = (ChatMessageCell) view;
                         MessageObject messageObject1 = cell.getMessageObject();
                         if (messageObject1 != null && (messageObject1.isVoice() || messageObject1.isMusic())) {
-                            cell.updateButtonState(false);
+                            cell.updateButtonState();
                         }
                     }
                 }
@@ -2706,15 +2706,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                         }
                     }
 
-
-                    @Override
-                    public void didPressedCancelSendButton(ChatMessageCell cell) {
-                        MessageObject message = cell.getMessageObject();
-                        if (message.messageOwner.send_state != 0) {
-                            SendMessagesHelper.getInstance().cancelSendingMessage(message);
-                        }
-                    }
-
                     @Override
                     public boolean canPerformActions() {
                         return actionBar != null && !actionBar.isActionModeShowed();
@@ -2864,10 +2855,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     messageCell.isChat = m_mrChat.getType()==MrChat.MR_CHAT_GROUP;
                     messageCell.setMessageObject(msgDrawObj);
                     messageCell.setCheckPressed(!disableSelection, disableSelection && selected);
-                    if ( MediaController.getInstance().canDownloadMedia(MediaController.AUTODOWNLOAD_MASK_AUDIO)) {
-                        ((ChatMessageCell) view).downloadAudioIfNeed();
-                    }
-
                     messageCell.setHighlighted(highlightMessageId != 0 && msgDrawObj.getId() == highlightMessageId);
 
                     if (m_searching && !m_lastSearchQuery.isEmpty()) {
