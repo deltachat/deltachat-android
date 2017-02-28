@@ -83,7 +83,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
         void didLongPressed(ChatMessageCell cell);
         void didPressedUrl(MessageObject messageObject, ClickableSpan url, boolean longPress);
         void didPressedImage(ChatMessageCell cell);
-        void didPressedShare(ChatMessageCell cell);
+        void didPressedNewchat(ChatMessageCell cell);
         boolean needPlayAudio(MessageObject messageObject);
         boolean canPerformActions();
     }
@@ -222,14 +222,10 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
     private boolean forwardNamePressed;
     private boolean forwardBotPressed;
 
-    private StaticLayout replyTextLayout;
-    private ImageReceiver replyImageReceiver;
-    private TLRPC.FileLocation currentReplyPhoto;
-
-    private boolean drawShareButton;
-    private boolean sharePressed;
-    private int shareStartX;
-    private int shareStartY;
+    private boolean drawNewchatButton;
+    private boolean newchatPressed;
+    private int newchatStartX;
+    private int newchatStartY;
 
     private StaticLayout nameLayout;
     private int nameWidth;
@@ -314,7 +310,6 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
         avatarImage = new ImageReceiver(this);
         avatarImage.setRoundRadius(dp(21));
         avatarDrawable = new AvatarDrawable();
-        replyImageReceiver = new ImageReceiver(this);
 
         photoImage = new ImageReceiver(this);
         photoImage.setDelegate(this);
@@ -690,8 +685,8 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                     } else if (drawNameLayout && nameLayout != null && viaWidth != 0 && x >= nameX + viaNameWidth && x <= nameX + viaNameWidth + viaWidth && y >= nameY - dp(4) && y <= nameY + dp(20)) {
                         forwardBotPressed = true;
                         result = true;
-                    } else if (drawShareButton && x >= shareStartX && x <= shareStartX + dp(40) && y >= shareStartY && y <= shareStartY + dp(32)) {
-                        sharePressed = true;
+                    } else if (drawNewchatButton && x >= newchatStartX && x <= newchatStartX + dp(40) && y >= newchatStartY && y <= newchatStartY + dp(32)) {
+                        newchatPressed = true;
                         result = true;
                         invalidate();
                     }
@@ -739,18 +734,18 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                     }
                 } else if (forwardBotPressed) {
                     forwardBotPressed = false;
-                } else if (sharePressed) {
+                } else if (newchatPressed) {
                     if (event.getAction() == MotionEvent.ACTION_UP) {
-                        sharePressed = false;
+                        newchatPressed = false;
                         playSoundEffect(SoundEffectConstants.CLICK);
                         if (delegate != null) {
-                            delegate.didPressedShare(this);
+                            delegate.didPressedNewchat(this);
                         }
                     } else if (event.getAction() == MotionEvent.ACTION_CANCEL) {
-                        sharePressed = false;
+                        newchatPressed = false;
                     } else if (event.getAction() == MotionEvent.ACTION_MOVE) {
-                        if (!(x >= shareStartX && x <= shareStartX + dp(40) && y >= shareStartY && y <= shareStartY + dp(32))) {
-                            sharePressed = false;
+                        if (!(x >= newchatStartX && x <= newchatStartX + dp(40) && y >= newchatStartY && y <= newchatStartY + dp(32))) {
+                            newchatPressed = false;
                         }
                     }
                     invalidate();
@@ -973,17 +968,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
             }
         }
 
-        if (replyTextLayout == null && currentMessageObject.replyMessageObject != null) {
-            return true;
-        }
-
         if (currentPhoto == null && newPhoto != null || currentPhoto != null && newPhoto == null || currentPhoto != null && newPhoto != null && (currentPhoto.local_id != newPhoto.local_id || currentPhoto.volume_id != newPhoto.volume_id)) {
-            return true;
-        }
-
-        TLRPC.FileLocation newReplyPhoto = null;
-
-        if (currentReplyPhoto == null && newReplyPhoto != null) {
             return true;
         }
 
@@ -1015,16 +1000,13 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
     protected void onDetachedFromWindow() {
         super.onDetachedFromWindow();
         avatarImage.onDetachedFromWindow();
-        replyImageReceiver.onDetachedFromWindow();
         photoImage.onDetachedFromWindow();
-        //MediaController.getInstance().removeLoadingFileObserver(this);
     }
 
     @Override
     protected void onAttachedToWindow() {
         super.onAttachedToWindow();
         avatarImage.onAttachedToWindow();
-        replyImageReceiver.onAttachedToWindow();
         if (drawPhotoImage) {
             if (photoImage.onAttachedToWindow()) {
                 updateButtonState();
@@ -1323,10 +1305,8 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
             isCheckPressed = true;
             isAvatarVisible = false;
             wasLayout = false;
-            drawShareButton = checkNeedDrawShareButton(messageObject);
-            replyTextLayout = null;
+            drawNewchatButton = checkNeedDrawNewchatButton(messageObject);
             viaNameWidth = 0;
-            currentReplyPhoto = null;
             currentUser = null;
             currentChat = null;
             drawNameLayout = false;
@@ -1463,7 +1443,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                     } else {
                         backgroundWidth = Math.min(displaySize.x - dp(isChat && messageObject.isFromUser() && !messageObject.isOutOwner() ? 102 : 50), dp(270));
                     }
-                    if (checkNeedDrawShareButton(messageObject)) {
+                    if (checkNeedDrawNewchatButton(messageObject)) {
                         backgroundWidth -= dp(20);
                     }
                     int maxWidth = backgroundWidth - dp(86 + 52);
@@ -1543,7 +1523,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                         maxPhotoWidth = photoWidth = (int) (Math.min(displaySize.x, displaySize.y) * 0.7f);
                     }
                     photoHeight = photoWidth + dp(100);
-                    if (checkNeedDrawShareButton(messageObject)) {
+                    if (checkNeedDrawNewchatButton(messageObject)) {
                         maxPhotoWidth -= dp(20);
                         photoWidth -= dp(20);
                     }
@@ -2290,9 +2270,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
         return isPressed() && isCheckPressed || !isCheckPressed && isPressed || isHighlighted;
     }
 
-    private boolean checkNeedDrawShareButton(MessageObject messageObject) {
-        // we use the "Share" button as a reply button: in the "deaddrop" group it is very useful to reply
-        // to a message, so we use this as a shortcut to "long press -> reply"
+    private boolean checkNeedDrawNewchatButton(MessageObject messageObject) {
         if( messageObject.getDialogId()== MrChat.MR_CHAT_ID_DEADDROP) {
             return true;
         }
@@ -2467,11 +2445,11 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
 
         drawContent(canvas);
 
-        if (drawShareButton) {
-            shareStartX = currentBackgroundDrawable.getBounds().right - dp(34);
-            shareStartY = dp(4);
-            setDrawableBounds(Theme.shareIconDrawable, shareStartX, shareStartY);
-            Theme.shareIconDrawable.draw(canvas);
+        if (drawNewchatButton) {
+            newchatStartX = currentBackgroundDrawable.getBounds().right - dp(34);
+            newchatStartY = dp(4);
+            setDrawableBounds(Theme.newchatIconDrawable, newchatStartX, newchatStartY);
+            Theme.newchatIconDrawable.draw(canvas);
         }
 
         if (drawNameLayout && nameLayout != null) {

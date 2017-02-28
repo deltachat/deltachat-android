@@ -133,7 +133,7 @@ public class Theme {
     public static Drawable[] cornerOuter = new Drawable[4];
     public static Drawable[] cornerInner = new Drawable[4];
 
-    public static Drawable shareIconDrawable;
+    public static Drawable newchatIconDrawable;
 
     public static final int INLIST_FILE  = 0;
     public static final int INLIST_PLAY  = 1;
@@ -198,7 +198,7 @@ public class Theme {
             photoStatesDrawables[12][0] = context.getResources().getDrawable(R.drawable.doc_blue);
             photoStatesDrawables[12][1] = context.getResources().getDrawable(R.drawable.doc_blue_s);
 
-            shareIconDrawable = context.getResources().getDrawable(R.drawable.ic_ab_reply);
+            newchatIconDrawable = context.getResources().getDrawable(R.drawable.ic_ab_reply);
 
             cornerOuter[0] = context.getResources().getDrawable(R.drawable.corner_out_tl);
             cornerOuter[1] = context.getResources().getDrawable(R.drawable.corner_out_tr);

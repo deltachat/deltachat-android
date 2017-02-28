@@ -2651,8 +2651,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 ChatMessageCell chatMessageCell = (ChatMessageCell) view;
                 chatMessageCell.setDelegate(new ChatMessageCell.ChatMessageCellDelegate() {
                     @Override
-                    public void didPressedShare(ChatMessageCell cell) {
-                        // a click on the icon right of a deaddrop's messages
+                    public void didPressedNewchat(ChatMessageCell cell) {
                         createChatByDeaddropMsgId(cell.getMessageObject().getId());
                     }
 
