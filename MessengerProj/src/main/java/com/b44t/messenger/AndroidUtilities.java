@@ -902,6 +902,11 @@ public class AndroidUtilities {
         String mimeType = getMimetype(path, msg.getParam('m', "application/octet-stream"));
         try {
             File file = new File(path);
+            if( !file.exists() ) {
+                showHint(activity, LocaleController.formatString("FileNotFound", R.string.FileNotFound, path));
+                return;
+            }
+
             Uri uri;
             if (path.startsWith(MrMailbox.getBlobdir())) {
                 uri = Uri.parse("content://" + BuildConfig.APPLICATION_ID + ".attachments/" + file.getName());
@@ -965,7 +970,7 @@ public class AndroidUtilities {
         final String msg_file_name = msg.getFilename();
         final File sourceFile = new File(msg_file_path);
         if( !sourceFile.exists() ) {
-            showErrorHint(context);
+            showHint(context, LocaleController.formatString("FileNotFound", R.string.FileNotFound, msg_file_path));
             return;
         }
 

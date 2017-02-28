@@ -449,4 +449,5 @@
     <string name="ForwardToTitle">Weiterleiten an …</string>
     <string name="SelectContact">Kontakt auswählen</string>
     <string name="DoneHint">Fertig.</string>
+    <string name="FileNotFound">Datei %1$s nicht gefunden.</string>
 </resources>
