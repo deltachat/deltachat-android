@@ -1119,20 +1119,15 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
 
             if (messageObject.isOutOwner()) {
                 seekBarWaveform.setColors(Theme.MSG_OUT_VOICE_SEEKBAR_COLOR, Theme.MSG_OUT_VOICE_SEEKBAR_FILL_COLOR, Theme.MSG_OUT_VOICE_SEEKBAR_SELECTED_COLOR);
-                seekBar.setColors(Theme.MSG_OUT_AUDIO_SEEKBAR_COLOR, Theme.MSG_OUT_AUDIO_SEEKBAR_FILL_COLOR, Theme.MSG_OUT_AUDIO_SEEKBAR_SELECTED_COLOR);
             } else {
                 seekBarWaveform.setColors(Theme.MSG_IN_VOICE_SEEKBAR_COLOR, Theme.MSG_IN_VOICE_SEEKBAR_FILL_COLOR, Theme.MSG_IN_VOICE_SEEKBAR_SELECTED_COLOR);
-                seekBar.setColors(Theme.MSG_IN_AUDIO_SEEKBAR_COLOR, Theme.MSG_IN_AUDIO_SEEKBAR_FILL_COLOR, Theme.MSG_IN_AUDIO_SEEKBAR_SELECTED_COLOR);
             }
+            seekBar.setColors(Theme.MSG_AUDIO_SEEKBAR_LITE_COLOR, Theme.MSG_AUDIO_SEEKBAR_DARK_COLOR, Theme.MSG_AUDIO_SEEKBAR_DARK_COLOR);
             seekBarWaveform.setMessageObject(messageObject);
             return 0;
         } else if (MessageObject.isMusicDocument(documentAttach)) {
             documentAttachType = DOCUMENT_ATTACH_TYPE_MUSIC;
-            if (messageObject.isOutOwner()) {
-                seekBar.setColors(Theme.MSG_OUT_AUDIO_SEEKBAR_COLOR, Theme.MSG_OUT_AUDIO_SEEKBAR_FILL_COLOR, Theme.MSG_OUT_AUDIO_SEEKBAR_SELECTED_COLOR);
-            } else {
-                seekBar.setColors(Theme.MSG_IN_AUDIO_SEEKBAR_COLOR, Theme.MSG_IN_AUDIO_SEEKBAR_FILL_COLOR, Theme.MSG_IN_AUDIO_SEEKBAR_SELECTED_COLOR);
-            }
+            seekBar.setColors(Theme.MSG_AUDIO_SEEKBAR_LITE_COLOR, Theme.MSG_AUDIO_SEEKBAR_DARK_COLOR, Theme.MSG_AUDIO_SEEKBAR_DARK_COLOR);
 
             maxWidth = maxWidth - dp(86);
 

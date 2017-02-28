@@ -91,12 +91,6 @@ public class Theme {
     public static final int MSG_OUT_AUDIO_DURATION_TEXT_COLOR = 0xff65b05b;
     public static final int MSG_IN_AUDIO_DURATION_SELECTED_TEXT_COLOR = 0xff89b4c1;
     public static final int MSG_OUT_AUDIO_DURATION_SELECTED_TEXT_COLOR = 0xff65b05b;
-    public static final int MSG_IN_AUDIO_SEEKBAR_COLOR = 0xffe4eaf0;
-    public static final int MSG_OUT_AUDIO_SEEKBAR_COLOR = 0xffbbe3ac;
-    public static final int MSG_IN_AUDIO_SEEKBAR_SELECTED_COLOR = 0xffbcdee8;
-    public static final int MSG_OUT_AUDIO_SEEKBAR_SELECTED_COLOR = 0xffa9dd96;
-    public static final int MSG_IN_AUDIO_SEEKBAR_FILL_COLOR = 0xff72b5e8;
-    public static final int MSG_OUT_AUDIO_SEEKBAR_FILL_COLOR = 0xff78c272;
     public static final int MSG_IN_VOICE_SEEKBAR_COLOR = 0xffdee5eb;
     public static final int MSG_OUT_VOICE_SEEKBAR_COLOR = 0xffbbe3ac;
     public static final int MSG_IN_VOICE_SEEKBAR_SELECTED_COLOR = 0xffbcdee8;
@@ -113,7 +107,10 @@ public class Theme {
     public static final int MSG_LINK_SELECT_BACKGROUND_COLOR = 0x3362a9e3;
     public static final int MSG_TEXT_SELECT_BACKGROUND_COLOR = 0x6662a9e3;
     public static final int MSG_DOC_NAME_COLOR = 0xFF3093e0; // similar color as the file-icon
+
     public static final int MSG_AUDIO_NAME_COLOR = 0xFFed824e; // similar color as the audio-icon
+    public static final int MSG_AUDIO_SEEKBAR_DARK_COLOR = 0xFFf68751;
+    public static final int MSG_AUDIO_SEEKBAR_LITE_COLOR = 0xFFfbc8af;
 
     public static Drawable backgroundDrawableIn;
     public static Drawable backgroundDrawableInSelected;
