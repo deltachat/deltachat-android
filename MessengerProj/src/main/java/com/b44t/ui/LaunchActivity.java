@@ -527,7 +527,6 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
             Integer open_settings = 0;
             long dialogId = intent != null && intent.getExtras() != null ? intent.getExtras().getLong("dialogId", 0) : 0;
             boolean showDialogsList = false;
-            boolean showPlayer = false;
 
             photoPathsArray = null;
             videoPath = null;
@@ -909,8 +908,6 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                         } else {
                             showDialogsList = true;
                         }
-                    } else if (intent.getAction().equals("com.b44t.messenger.openplayer")) {
-                        showPlayer = true;
                     }
                 }
             }
@@ -954,31 +951,8 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                 }
                 pushOpened = false;
                 isNew = false;
-            } else if (showPlayer) {
-                if (AndroidUtilities.isTablet()) {
-                    for (int a = 0; a < layersActionBarLayout.fragmentsStack.size(); a++) {
-                        BaseFragment fragment = layersActionBarLayout.fragmentsStack.get(a);
-                        if (fragment instanceof AudioPlayerActivity) {
-                            layersActionBarLayout.removeFragmentFromStack(fragment);
-                            break;
-                        }
-                    }
-                    actionBarLayout.showLastFragment();
-                    rightActionBarLayout.showLastFragment();
-                    drawerLayoutContainer.setAllowOpenDrawer(false, false);
-                } else {
-                    for (int a = 0; a < actionBarLayout.fragmentsStack.size(); a++) {
-                        BaseFragment fragment = actionBarLayout.fragmentsStack.get(a);
-                        if (fragment instanceof AudioPlayerActivity) {
-                            actionBarLayout.removeFragmentFromStack(fragment);
-                            break;
-                        }
-                    }
-                    drawerLayoutContainer.setAllowOpenDrawer(true, false);
-                }
-                actionBarLayout.presentFragment(new AudioPlayerActivity(), false, true, true);
-                pushOpened = true;
-            } else if (videoPath != null || photoPathsArray != null || sendingText != null || documentsPathsArray != null || contactsToSend != null || documentsUrisArray != null) {
+            }
+            else if (videoPath != null || photoPathsArray != null || sendingText != null || documentsPathsArray != null || contactsToSend != null || documentsUrisArray != null) {
                 if (!AndroidUtilities.isTablet()) {
                     NotificationCenter.getInstance().postNotificationName(NotificationCenter.closeChats);
                 }

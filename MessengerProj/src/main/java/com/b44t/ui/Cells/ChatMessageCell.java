@@ -2167,11 +2167,9 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
             }
         } else if (buttonState == BS1_CLICK_TO_PAUSE) {
             if (documentAttachType == DOCUMENT_ATTACH_TYPE_VOICE || documentAttachType == DOCUMENT_ATTACH_TYPE_MUSIC) {
-                boolean result = MediaController.getInstance().pauseAudio(currentMessageObject);
-                if (result) {
-                    buttonState = BS0_CLICK_TO_PLAY;
-                    invalidate();
-                }
+                MediaController.getInstance().stopAudio(); // a click on message-pause should do the opposite of message-play - including clearing the status bar (a "real" pause can be done via the status bar)
+                buttonState = BS0_CLICK_TO_PLAY;
+                invalidate();
             } else {
                 buttonState = BS0_CLICK_TO_PLAY;
                 invalidate();

@@ -94,7 +94,6 @@ import com.b44t.ui.Components.ChatActivityEnterView;
 import com.b44t.messenger.ImageReceiver;
 import com.b44t.ui.Components.ChatAttachAlert;
 import com.b44t.ui.Components.ChatAvatarContainer;
-import com.b44t.ui.Components.PlayerView;
 import com.b44t.ui.Components.LayoutHelper;
 import com.b44t.ui.Components.NumberTextView;
 import com.b44t.ui.Components.RecyclerListView;
@@ -146,7 +145,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
     private boolean pagedownButtonShowedByScroll;
     private TextView pagedownButtonCounter;
     private ChatAttachAlert chatAttachAlert;
-    private PlayerView playerView;
 
     private ObjectAnimator pagedownButtonAnimation;
 
@@ -1110,10 +1108,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
 
         //chatAdapter.updateRows();
         chatListView.setEmptyView(emptyViewContainer);
-
-        if (!AndroidUtilities.isTablet() || AndroidUtilities.isSmallTablet()) {
-            contentView.addView(playerView = new PlayerView(context, this), LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, 39, Gravity.TOP | Gravity.LEFT, 0, -36, 0, 0));
-        }
 
         updateBottomOverlay();
 
@@ -2307,15 +2301,8 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         if (AndroidUtilities.isTablet()) {
             if (AndroidUtilities.isSmallTablet() && ApplicationLoader.applicationContext.getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
                 actionBar.setBackButtonDrawable(new BackDrawable(false));
-                if (playerView != null && playerView.getParent() == null) {
-                    ((ViewGroup) fragmentView).addView(playerView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, 39, Gravity.TOP | Gravity.LEFT, 0, -36, 0, 0));
-                }
             } else {
                 actionBar.setBackButtonDrawable(new BackDrawable(parentLayout == null || parentLayout.fragmentsStack.isEmpty() || parentLayout.fragmentsStack.get(0) == ChatActivity.this || parentLayout.fragmentsStack.size() == 1));
-                if (playerView != null && playerView.getParent() != null) {
-                    fragmentView.setPadding(0, 0, 0, 0);
-                    ((ViewGroup) fragmentView).removeView(playerView);
-                }
             }
             return false;
         }

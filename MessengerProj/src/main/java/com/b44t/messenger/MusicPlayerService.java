@@ -120,7 +120,7 @@ public class MusicPlayerService extends Service implements NotificationCenter.No
         }
 
         Intent intent = new Intent(ApplicationLoader.applicationContext, LaunchActivity.class);
-        intent.setAction("com.b44t.messenger.openplayer");
+        intent.setAction("com.b44t.messenger.openchat"+messageObject.getDialogId());
         intent.setFlags(32768);
         PendingIntent contentIntent = PendingIntent.getActivity(ApplicationLoader.applicationContext, 0, intent, 0);
 

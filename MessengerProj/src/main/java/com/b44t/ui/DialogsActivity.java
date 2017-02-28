@@ -75,7 +75,6 @@ import com.b44t.ui.ActionBar.ActionBarMenu;
 import com.b44t.ui.ActionBar.ActionBarMenuItem;
 import com.b44t.ui.ActionBar.BaseFragment;
 import com.b44t.ui.ActionBar.MenuDrawable;
-import com.b44t.ui.Components.PlayerView;
 import com.b44t.ui.Components.EmptyTextProgressView;
 import com.b44t.ui.Components.LayoutHelper;
 import com.b44t.ui.Components.RecyclerListView;
@@ -505,10 +504,6 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
 
         searchEmptyView.setVisibility(View.GONE);
         listView.setEmptyView(emptyView);
-
-        if (!onlySelect ) {
-            frameLayout.addView(new PlayerView(context, this), LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, 39, Gravity.TOP | Gravity.LEFT, 0, -36, 0, 0));
-        }
 
         return fragmentView;
     }

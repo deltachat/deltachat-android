@@ -46,7 +46,6 @@ public class Theme {
     public static final int ACTION_BAR_COLOR = 0xff415e6b; // also used for the notification icon background and as pincode-default-background color
     public static final int ACTION_BAR_PHOTO_VIEWER_COLOR = 0x7f000000;
     public static final int ACTION_BAR_MEDIA_PICKER_COLOR = 0xff333333;
-    public static final int ACTION_BAR_PLAYER_COLOR = 0xffffffff;
     public static final int ACTION_BAR_TITLE_COLOR = 0xffffffff;
     public static final int ACTION_BAR_SUBTITLE_COLOR = 0xffd5e8f7;
     public static final int ACTION_BAR_ACTION_MODE_TEXT_COLOR = 0xff737373;
@@ -70,10 +69,6 @@ public class Theme {
 
     public static final int CHAT_BOTTOM_OVERLAY_TEXT_COLOR = 0xff7f7f7f;
     public static final int CHAT_EMPTY_VIEW_TEXT_COLOR = 0xffffffff;
-
-    public static final int INAPP_PLAYER_PERFORMER_TEXT_COLOR = 0xff2f3438;
-    public static final int INAPP_PLAYER_TITLE_TEXT_COLOR = 0xff2f3438;
-    public static final int INAPP_PLAYER_BACKGROUND_COLOR = 0xffffffff;
 
     public static final int STICKERS_SHEET_TITLE_TEXT_COLOR = 0xff212121;
     public static final int STICKERS_SHEET_SEND_TEXT_COLOR = 0xff3a8ccf;
