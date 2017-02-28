@@ -287,9 +287,6 @@ public class AudioPlayerActivity extends BaseFragment implements NotificationCen
         playButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (MediaController.getInstance().isDownloadingCurrentMessage()) {
-                    return;
-                }
                 if (MediaController.getInstance().isAudioPaused()) {
                     MediaController.getInstance().playAudio(MediaController.getInstance().getPlayingMessageObject());
                 } else {

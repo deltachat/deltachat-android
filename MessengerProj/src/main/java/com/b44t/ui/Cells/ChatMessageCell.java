@@ -772,7 +772,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
 
         int duration = 0;
         if (documentAttachType == DOCUMENT_ATTACH_TYPE_VOICE) {
-            if (!MediaController.getInstance().isPlayingAudio(currentMessageObject)) {
+            if (!MediaController.getInstance().isMessageOnAir(currentMessageObject)) {
                 for (int a = 0; a < documentAttach.attributes.size(); a++) {
                     TLRPC.DocumentAttribute attribute = documentAttach.attributes.get(a);
                     if (attribute instanceof TLRPC.TL_documentAttributeAudio) {
@@ -798,7 +798,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                     break;
                 }
             }
-            if (MediaController.getInstance().isPlayingAudio(currentMessageObject)) {
+            if (MediaController.getInstance().isMessageOnAir(currentMessageObject)) {
                 currentProgress = currentMessageObject.audioProgressSec;
             }
             String timeString = String.format("%d:%02d / %d:%02d", currentProgress / 60, currentProgress % 60, duration / 60, duration % 60);
@@ -1943,7 +1943,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
         if (documentAttachType == DOCUMENT_ATTACH_TYPE_GIF || currentMessageObject.type == MessageObject.MO_TYPE8_GIF) {
             ;
         } else if (documentAttachType == DOCUMENT_ATTACH_TYPE_MUSIC) {
-            drawIcon = Theme.INLIST_PLAY;
+            drawIcon = buttonState==BS0_CLICK_TO_PLAY? Theme.INLIST_PLAY : Theme.INLIST_PAUSE;
             audioTitlePaint.setColor(Theme.MSG_AUDIO_NAME_COLOR);
             audioPerformerPaint.setColor(Theme.MSG_AUDIO_NAME_COLOR);
             audioTimePaint.setColor(Theme.MSG_AUDIO_NAME_COLOR);
@@ -1954,7 +1954,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
             canvas.restore();
 
             canvas.save();
-            if (MediaController.getInstance().isPlayingAudio(currentMessageObject)) {
+            if (MediaController.getInstance().isMessageOnAir(currentMessageObject)) {
                 canvas.translate(seekBarX, seekBarY);
                 seekBar.draw(canvas);
             } else {
@@ -1969,7 +1969,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
             canvas.restore();
 
         } else if (documentAttachType == DOCUMENT_ATTACH_TYPE_VOICE) {
-            drawIcon = Theme.INLIST_PLAY;
+            drawIcon = buttonState==BS0_CLICK_TO_PLAY? Theme.INLIST_PLAY : Theme.INLIST_PAUSE;
             if (currentMessageObject.isOutOwner()) {
                 audioTimePaint.setColor(isDrawSelectedBackground() ? Theme.MSG_OUT_AUDIO_DURATION_SELECTED_TEXT_COLOR : Theme.MSG_OUT_AUDIO_DURATION_TEXT_COLOR);
             } else {
@@ -2111,35 +2111,14 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
     }
 
     public void updateButtonState() {
-        String fileName = null;
-        if (currentMessageObject.type == MessageObject.MO_TYPE1_PHOTO) {
-            if (currentPhotoObject == null) {
-                return;
-            }
-            fileName = FileLoader.getAttachFileName(currentPhotoObject);
-        } else if (currentMessageObject.type == MessageObject.MO_TYPE8_GIF || documentAttachType == DOCUMENT_ATTACH_TYPE_VIDEO || currentMessageObject.type == MessageObject.MO_TYPE9_FILE || documentAttachType == DOCUMENT_ATTACH_TYPE_VOICE || documentAttachType == DOCUMENT_ATTACH_TYPE_MUSIC) {
-            if (currentMessageObject.attachPathExists) {
-                fileName = currentMessageObject.messageOwner.attachPath;
-            } else if (!currentMessageObject.isSendError() || documentAttachType == DOCUMENT_ATTACH_TYPE_VOICE || documentAttachType == DOCUMENT_ATTACH_TYPE_MUSIC) {
-                fileName = currentMessageObject.getFileName();
-            }
-        } else if (documentAttachType != DOCUMENT_ATTACH_TYPE_NONE) {
-            fileName = FileLoader.getAttachFileName(documentAttach);
-        } else if (currentPhotoObject != null) {
-            fileName = FileLoader.getAttachFileName(currentPhotoObject);
-        }
-
-        if (fileName == null || fileName.length() == 0) {
-            return;
-        }
-
         if (documentAttachType == DOCUMENT_ATTACH_TYPE_VOICE || documentAttachType == DOCUMENT_ATTACH_TYPE_MUSIC) {
-                    boolean playing = MediaController.getInstance().isPlayingAudio(currentMessageObject);
-                    if (!playing || playing && MediaController.getInstance().isAudioPaused()) {
-                        buttonState = BS0_CLICK_TO_PLAY;
-                    } else {
-                        buttonState = BS1_CLICK_TO_PAUSE;
-                    }
+            boolean isMessageOnAir = MediaController.getInstance().isMessageOnAir(currentMessageObject);
+            boolean paused = MediaController.getInstance().isAudioPaused();
+            if( isMessageOnAir && !paused ) {
+                buttonState = BS1_CLICK_TO_PAUSE;
+            } else {
+                buttonState = BS0_CLICK_TO_PLAY;
+            }
             updateAudioProgress();
         } else if (currentMessageObject.type == MessageObject.MO_TYPE0_TEXT && documentAttachType != DOCUMENT_ATTACH_TYPE_DOCUMENT && documentAttachType != DOCUMENT_ATTACH_TYPE_VIDEO) {
             if (currentPhotoObject == null || !drawImageButton) {

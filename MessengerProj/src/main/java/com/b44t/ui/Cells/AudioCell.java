@@ -79,7 +79,7 @@ public class AudioCell extends FrameLayout {
             @Override
             public void onClick(View v) {
                 if (audioEntry != null) {
-                    if (MediaController.getInstance().isPlayingAudio(audioEntry.messageObject) && !MediaController.getInstance().isAudioPaused()) {
+                    if (MediaController.getInstance().isMessageOnAir(audioEntry.messageObject) && !MediaController.getInstance().isAudioPaused()) {
                         MediaController.getInstance().pauseAudio(audioEntry.messageObject);
                         playButton.setImageResource(R.drawable.attach_audio_inlist_play);
                     } else {
@@ -154,7 +154,7 @@ public class AudioCell extends FrameLayout {
         genreTextView.setText(audioEntry.genre);
         authorTextView.setText(audioEntry.author);
         timeTextView.setText(String.format("%d:%02d", audioEntry.duration / 60, audioEntry.duration % 60));
-        playButton.setImageResource(MediaController.getInstance().isPlayingAudio(audioEntry.messageObject) && !MediaController.getInstance().isAudioPaused() ? R.drawable.attach_audio_inlist_pause : R.drawable.attach_audio_inlist_play);
+        playButton.setImageResource(MediaController.getInstance().isMessageOnAir(audioEntry.messageObject) && !MediaController.getInstance().isAudioPaused() ? R.drawable.attach_audio_inlist_pause : R.drawable.attach_audio_inlist_play);
 
         needDivider = divider;
         setWillNotDraw(!divider);

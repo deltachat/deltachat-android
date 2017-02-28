@@ -2005,7 +2005,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         }
         else if (id == NotificationCenter.audioDidStarted)
         {
-            MessageObject messageObject = (MessageObject) args[0];
             if (chatListView != null) {
                 int count = chatListView.getChildCount();
                 for (int a = 0; a < count; a++) {
@@ -2668,14 +2667,13 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
 
                     @Override
                     public boolean needPlayAudio(MessageObject messageObject) {
-                        if (messageObject.isVoice()) {
-                            boolean result = MediaController.getInstance().playAudio(messageObject);
+                        boolean result = MediaController.getInstance().playAudio(messageObject);
+                        /*if (messageObject.isVoice()) {
                             MediaController.getInstance().setVoiceMessagesPlaylist(result ? createVoiceMessagesPlaylist(messageObject, false) : null, false);
-                            return result;
-                        } /*TODO: else if (messageObject.isMusic()) {
+                        } else if (messageObject.isMusic()) {
                             return MediaController.getInstance().setPlaylist(messages, messageObject);
                         }*/
-                        return false;
+                        return result;
                     }
 
                     @Override

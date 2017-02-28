@@ -23,7 +23,6 @@
 
 package com.b44t.ui.Components;
 
-import android.Manifest;
 import android.animation.Animator;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
@@ -33,7 +32,6 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
-import android.content.pm.PackageManager;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.drawable.Drawable;
@@ -75,7 +73,6 @@ import com.b44t.messenger.SendMessagesHelper;
 import com.b44t.messenger.FileLog;
 import com.b44t.messenger.NotificationCenter;
 import com.b44t.messenger.R;
-import com.b44t.messenger.ConnectionsManager;
 import com.b44t.messenger.TLRPC;
 import com.b44t.messenger.UserConfig;
 import com.b44t.ui.ActionBar.ActionBar;
@@ -729,7 +726,7 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
                 if (audioToSend == null) {
                     return;
                 }
-                if (MediaController.getInstance().isPlayingAudio(audioToSendMessageObject) && !MediaController.getInstance().isAudioPaused()) {
+                if (MediaController.getInstance().isMessageOnAir(audioToSendMessageObject) && !MediaController.getInstance().isAudioPaused()) {
                     MediaController.getInstance().pauseAudio(audioToSendMessageObject);
                     recordedAudioPlayButton.setImageResource(R.drawable.s_player_play_states);
                 } else {
@@ -2129,13 +2126,13 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
                 parentActivity.setVolumeControlStream(frontSpeaker ? AudioManager.STREAM_VOICE_CALL : AudioManager.USE_DEFAULT_STREAM_TYPE);
             }
         } else if (id == NotificationCenter.audioDidReset) {
-            if (audioToSendMessageObject != null && !MediaController.getInstance().isPlayingAudio(audioToSendMessageObject)) {
+            if (audioToSendMessageObject != null && !MediaController.getInstance().isMessageOnAir(audioToSendMessageObject)) {
                 recordedAudioPlayButton.setImageResource(R.drawable.s_player_play_states);
                 recordedAudioSeekBar.setProgress(0);
             }
         } else if (id == NotificationCenter.audioProgressDidChanged) {
             Integer mid = (Integer) args[0];
-            if (audioToSendMessageObject != null && MediaController.getInstance().isPlayingAudio(audioToSendMessageObject)) {
+            if (audioToSendMessageObject != null && MediaController.getInstance().isMessageOnAir(audioToSendMessageObject)) {
                 MessageObject player = MediaController.getInstance().getPlayingMessageObject();
                 audioToSendMessageObject.audioProgress = player.audioProgress;
                 audioToSendMessageObject.audioProgressSec = player.audioProgressSec;

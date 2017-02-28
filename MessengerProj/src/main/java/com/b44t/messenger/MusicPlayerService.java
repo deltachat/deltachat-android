@@ -151,20 +151,8 @@ public class MusicPlayerService extends Service implements NotificationCenter.No
                 notification.bigContentView.setImageViewResource(R.id.player_album_art, R.drawable.nocover_big);
             }
         }
-        if (MediaController.getInstance().isDownloadingCurrentMessage()) {
-            notification.contentView.setViewVisibility(R.id.player_pause, View.GONE);
-            notification.contentView.setViewVisibility(R.id.player_play, View.GONE);
-            notification.contentView.setViewVisibility(R.id.player_next, View.GONE);
-            notification.contentView.setViewVisibility(R.id.player_previous, View.GONE);
-            notification.contentView.setViewVisibility(R.id.player_progress_bar, View.VISIBLE);
-            if (supportBigNotifications) {
-                notification.bigContentView.setViewVisibility(R.id.player_pause, View.GONE);
-                notification.bigContentView.setViewVisibility(R.id.player_play, View.GONE);
-                notification.bigContentView.setViewVisibility(R.id.player_next, View.GONE);
-                notification.bigContentView.setViewVisibility(R.id.player_previous, View.GONE);
-                notification.bigContentView.setViewVisibility(R.id.player_progress_bar, View.VISIBLE);
-            }
-        } else {
+
+        {
             notification.contentView.setViewVisibility(R.id.player_progress_bar, View.GONE);
             notification.contentView.setViewVisibility(R.id.player_next, View.VISIBLE);
             notification.contentView.setViewVisibility(R.id.player_previous, View.VISIBLE);

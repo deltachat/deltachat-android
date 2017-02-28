@@ -495,11 +495,7 @@ public class MusicBrowserService extends MediaBrowserService implements Notifica
         if (playingMessageObject == null) {
             state = PlaybackState.STATE_STOPPED;
         } else {
-            if (MediaController.getInstance().isDownloadingCurrentMessage()) {
-                state = PlaybackState.STATE_BUFFERING;
-            } else {
-                state = MediaController.getInstance().isAudioPaused() ? PlaybackState.STATE_PAUSED : PlaybackState.STATE_PLAYING;
-            }
+            state = MediaController.getInstance().isAudioPaused() ? PlaybackState.STATE_PAUSED : PlaybackState.STATE_PLAYING;
         }
 
         if (error != null) {
