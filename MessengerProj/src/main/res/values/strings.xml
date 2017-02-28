@@ -56,7 +56,7 @@
     <string name="SaveToDownloads">Save to downloads</string>
     <string name="DeleteGif">Delete GIF?</string>
     <string name="SaveToMusic">Save to music</string>
-    <string name="ShareFile">Share</string>
+    <string name="Share">Share</string>
     <string name="SendItems">Send %1$s</string>
     <string name="ClearRecentEmoji">Clear recent emoji?</string>
     <string name="AddShortcut">Add widget to home screen</string>
@@ -72,10 +72,8 @@
     <!--group create view-->
     <string name="SendMessageTo">Send message to …</string>
     <string name="EnterGroupNamePlaceholder">Enter group name</string>
-    <string name="ShareLink">Share Link</string>
     <!--group info view-->
     <string name="SharedMedia">Shared Media</string>
-    <string name="SETTINGS">Settings</string>
     <string name="AddMember">Add member</string>
     <string name="Notifications">Notifications</string>
     <string name="RemoveMember">Remove member</string>
@@ -88,16 +86,8 @@
     <string name="Stickers">Stickers</string>
     <string name="AddStickers">Add Stickers</string>
     <string name="AddToStickers">Add to Stickers</string>
-    <string name="AddStickersNotFound">Stickers not found</string>
-    <string name="StickersRemoved">Stickers removed</string>
-    <string name="AddStickersInstalled">New stickers added</string>
-    <string name="StickersHide">Hide</string>
-    <string name="StickersShow">Show</string>
-    <string name="StickersShare">Share</string>
-    <string name="StickersCopy">Copy link</string>
     <string name="StickersRemove">Remove</string>
     <string name="NoStickers">No stickers yet</string>
-    <string name="SendSticker">SEND STICKER</string>
     <!--settings view-->
     <string name="TextSize">Messages font size</string>
     <string name="EnableAnimations">Transition animation</string>

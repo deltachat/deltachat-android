@@ -682,7 +682,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
             }
             submenu.addSubItem(ID_COPY, ApplicationLoader.applicationContext.getString(R.string.CopyToClipboard), 0);
             m_saveToXXMenuItem = submenu.addSubItem(ID_SAVE_TO_XX, "", 0);
-            m_shareMenuItem = submenu.addSubItem(ID_SHARE, ApplicationLoader.applicationContext.getString(R.string.ShareFile), 0);
+            m_shareMenuItem = submenu.addSubItem(ID_SHARE, ApplicationLoader.applicationContext.getString(R.string.Share), 0);
             m_infoMenuItem = submenu.addSubItem(ID_INFO, ApplicationLoader.applicationContext.getString(R.string.Info), 0);
         actionModeViews.add(submenu);
         checkActionBarMenu();

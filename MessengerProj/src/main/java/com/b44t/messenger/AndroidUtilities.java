@@ -925,7 +925,7 @@ public class AndroidUtilities {
                 intent.setType(mimeType);
                 intent.putExtra(Intent.EXTRA_STREAM, uri);
                 intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-                activity.startActivity(Intent.createChooser(intent, ApplicationLoader.applicationContext.getString(R.string.ShareFile)));
+                activity.startActivity(Intent.createChooser(intent, ApplicationLoader.applicationContext.getString(R.string.Share)));
             }
 
         }

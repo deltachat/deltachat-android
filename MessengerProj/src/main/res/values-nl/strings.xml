@@ -53,7 +53,7 @@
     <string name="SaveToDownloads">Opslaan in Downloads</string>
     <string name="DeleteGif">GIF verwijderen?</string>
     <string name="SaveToMusic">Opslaan in muziek</string>
-    <string name="ShareFile">Delen</string>
+    <string name="Share">Delen</string>
     <string name="SendItems">%1$s versturen</string>
     <string name="ClearRecentEmoji">Recente emoji\'s wissen?</string>
     <string name="AddShortcut">Snelkoppeling toevoegen</string>
@@ -69,10 +69,8 @@
     <!--group create view-->
     <string name="SendMessageTo">Bericht versturen naar</string>
     <string name="EnterGroupNamePlaceholder">Groepsnaam</string>
-    <string name="ShareLink">Link delen</string>
     <!--group info view-->
     <string name="SharedMedia">Gedeelde media</string>
-    <string name="SETTINGS">Instellingen</string>
     <string name="AddMember">Lid toevoegen</string>
     <string name="Notifications">Meldingen</string>
     <string name="RemoveMember">Verwijderen uit groep</string>
@@ -85,16 +83,8 @@
     <string name="Stickers">Stickers</string>
     <string name="AddStickers">Stickers toevoegen</string>
     <string name="AddToStickers">Toevoegen aan stickers</string>
-    <string name="AddStickersNotFound">Stickers niet gevonden</string>
-    <string name="StickersRemoved">Stickers verwijderd</string>
-    <string name="AddStickersInstalled">Nieuwe stickers toegevoegd</string>
-    <string name="StickersHide">Verbergen</string>
-    <string name="StickersShow">Weergeven</string>
-    <string name="StickersShare">Delen</string>
-    <string name="StickersCopy">Link kopiëren</string>
     <string name="StickersRemove">Verwijder</string>
     <string name="NoStickers">Nog geen stickers</string>
-    <string name="SendSticker">STICKER STUREN</string>
     <!--settings view-->
     <string name="TextSize">Tekstgrootte berichten</string>
     <string name="EnableAnimations">Animaties</string>

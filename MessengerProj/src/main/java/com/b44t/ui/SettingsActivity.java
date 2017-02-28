@@ -474,7 +474,7 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
                     view = new HeaderCell(mContext);
                 }
                 if (i == settingsSectionRow2) {
-                    ((HeaderCell) view).setText(LocaleController.getString("SETTINGS", R.string.SETTINGS));
+                    ((HeaderCell) view).setText(ApplicationLoader.applicationContext.getString(R.string.Settings));
                 } else if (i == supportSectionRow2) {
                     ((HeaderCell) view).setText(LocaleController.getString("Info", R.string.Info));
                 } else if (i == messagesSectionRow2) {

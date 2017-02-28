@@ -45,6 +45,7 @@ import android.widget.TextView;
 
 import com.b44t.messenger.AndroidUtilities;
 import com.b44t.messenger.AnimatorListenerAdapterProxy;
+import com.b44t.messenger.ApplicationLoader;
 import com.b44t.messenger.Emoji;
 import com.b44t.messenger.LocaleController;
 import com.b44t.messenger.NotificationCenter;
@@ -341,7 +342,7 @@ public class StickersAlert extends BottomSheet implements NotificationCenter.Not
         stickerPreviewLayout.addView(previewSendButtonShadow, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, 3, Gravity.BOTTOM | Gravity.LEFT, 0, 0, 0, 48));
 
         if (delegate != null) {
-            previewSendButton.setText(LocaleController.getString("SendSticker", R.string.SendSticker).toUpperCase());
+            previewSendButton.setText(ApplicationLoader.applicationContext.getString(R.string.Send).toUpperCase());
             stickerImageView.setLayoutParams(LayoutHelper.createFrame(size, size, Gravity.CENTER, 0, 0, 0, 30));
             previewSendButton.setVisibility(View.VISIBLE);
             previewSendButtonShadow.setVisibility(View.VISIBLE);

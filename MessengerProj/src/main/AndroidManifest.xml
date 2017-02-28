@@ -217,7 +217,7 @@
         <receiver android:name=".WearReplyReceiver" android:enabled="true"/>
         <!-- <receiver android:name=".NetworkAlarm" android:enabled="true"/> -->
 
-        <receiver android:name=".ShareBroadcastReceiver" android:enabled="true"/>
+        <!-- <receiver android:name=".ShareBroadcastReceiver" android:enabled="true"/> - seems to be unneeded (bp) -->
 
         <receiver android:name=".NotificationDismissReceiver" android:exported="false"/>
 

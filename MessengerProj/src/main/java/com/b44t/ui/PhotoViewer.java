@@ -1183,7 +1183,7 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
 
         menuItem = menu.addItem(0, R.drawable.ic_ab_other);
         menuItem.addSubItem(gallery_menu_save, ApplicationLoader.applicationContext.getString(R.string.SaveToGallery), 0);
-        menuItem.addSubItem(gallery_menu_share, ApplicationLoader.applicationContext.getString(R.string.ShareFile), 0);
+        menuItem.addSubItem(gallery_menu_share, ApplicationLoader.applicationContext.getString(R.string.Share), 0);
         //menuItem.addSubItem(gallery_menu_forward, LocaleController.getString("Forward", R.string.Forward), 0);
         //menuItem.addSubItem(gallery_menu_delete, LocaleController.getString("Delete", R.string.Delete), 0);
 

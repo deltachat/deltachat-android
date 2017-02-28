@@ -53,7 +53,7 @@
     <string name="SaveToDownloads">Salva nei download</string>
     <string name="DeleteGif">Eliminare GIF?</string>
     <string name="SaveToMusic">Salva nella musica</string>
-    <string name="ShareFile">Condividi</string>
+    <string name="Share">Condividi</string>
     <string name="SendItems">Invia %1$s</string>
     <string name="ClearRecentEmoji">Cancellare le emoji recenti?</string>
     <string name="AddShortcut">Aggiungi scorciatoia</string>
@@ -69,10 +69,8 @@
     <!--group create view-->
     <string name="SendMessageTo">Invia messaggio a…</string>
     <string name="EnterGroupNamePlaceholder">Immetti il nome del gruppo</string>
-    <string name="ShareLink">Condividi link</string>
     <!--group info view-->
     <string name="SharedMedia">Media condivisi</string>
-    <string name="SETTINGS">Impostazioni</string>
     <string name="AddMember">Aggiungi membro</string>
     <string name="Notifications">Notifiche</string>
     <string name="RemoveMember">Rimuovi dal gruppo</string>
@@ -85,16 +83,8 @@
     <string name="Stickers">Sticker</string>
     <string name="AddStickers">Aggiungi sticker</string>
     <string name="AddToStickers">Aggiungi agli sticker</string>
-    <string name="AddStickersNotFound">Sticker non trovati</string>
-    <string name="StickersRemoved">Sticker rimossi</string>
-    <string name="AddStickersInstalled">Nuovi sticker aggiunti</string>
-    <string name="StickersHide">Nascondi</string>
-    <string name="StickersShow">Mostra</string>
-    <string name="StickersShare">Condividi</string>
-    <string name="StickersCopy">Copia link</string>
     <string name="StickersRemove">Rimuovi</string>
     <string name="NoStickers">Ancora nessuno sticker</string>
-    <string name="SendSticker">INVIA STICKER</string>
     <!--settings view-->
     <string name="TextSize">Dimensione testo messaggi</string>
     <string name="EnableAnimations">Abilita animazioni</string>

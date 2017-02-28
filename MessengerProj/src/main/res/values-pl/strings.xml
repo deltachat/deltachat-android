@@ -56,7 +56,7 @@
     <string name="SaveToDownloads">Zapisz w pobranych</string>
     <string name="DeleteGif">Usunąć GIFa?</string>
     <string name="SaveToMusic">Zapisz w muzyce</string>
-    <string name="ShareFile">Udostępnij</string>
+    <string name="Share">Udostępnij</string>
     <string name="SendItems">Wyślij %1$s</string>
     <string name="ClearRecentEmoji">Wyczyścić ostatnie emoji?</string>
     <string name="AddShortcut">Dodaj widget do ekranu głównego</string>
@@ -72,10 +72,8 @@
     <!--group create view-->
     <string name="SendMessageTo">Wyślij wiadomość do…</string>
     <string name="EnterGroupNamePlaceholder">Podaj nazwę grupy</string>
-    <string name="ShareLink">Udostępnij link</string>
     <!--group info view-->
     <string name="SharedMedia">Udostępnione media</string>
-    <string name="SETTINGS">Ustawienia</string>
     <string name="AddMember">Dodaj członka</string>
     <string name="Notifications">Powiadomienia</string>
     <string name="RemoveMember">Usuń członka</string>
@@ -88,16 +86,8 @@
     <string name="Stickers">Naklejki</string>
     <string name="AddStickers">Dodaj naklejki</string>
     <string name="AddToStickers">Dodaj do naklejek</string>
-    <string name="AddStickersNotFound">Nie znaleziono naklejek</string>
-    <string name="StickersRemoved">Naklejki zostały usunięte</string>
-    <string name="AddStickersInstalled">Dodano nowe naklejki</string>
-    <string name="StickersHide">Ukryj</string>
-    <string name="StickersShow">Pokaż</string>
-    <string name="StickersShare">Udostępnij</string>
-    <string name="StickersCopy">Kopiuj link</string>
     <string name="StickersRemove">Usuń</string>
     <string name="NoStickers">Nie ma naklejek</string>
-    <string name="SendSticker">WYŚLIJ NAKLEJKĘ</string>
     <!--settings view-->
     <string name="TextSize">Rozmiar czcionki w wiadomości</string>
     <string name="EnableAnimations">Animacja przejścia</string>

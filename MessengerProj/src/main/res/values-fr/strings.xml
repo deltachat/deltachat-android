@@ -51,7 +51,7 @@
     <string name="SaveToDownloads">Enregistrer dans les téléchargements</string>
     <string name="DeleteGif">Supprimer GIF ?</string>
     <string name="SaveToMusic">Enregistrer dans les musiques</string>
-    <string name="ShareFile">Partager</string>
+    <string name="Share">Partager</string>
     <string name="SendItems">Envoyer %1$s</string>
     <string name="ClearRecentEmoji">Vider les emokis récent ?</string>
     <string name="AddShortcut">Ajouter le widget à l\'écran d\'accueil</string>
@@ -67,10 +67,8 @@
     <!--group create view-->
     <string name="SendMessageTo">Envoyer un message à…</string>
     <string name="EnterGroupNamePlaceholder">Saisissez le nom du groupe</string>
-    <string name="ShareLink">Partager le lien</string>
     <!--group info view-->
     <string name="SharedMedia">Media partagés</string>
-    <string name="SETTINGS">Paramètres</string>
     <string name="AddMember">Ajouter un membre</string>
     <string name="Notifications">Notifications</string>
     <string name="RemoveMember">Supprimer un membre</string>
@@ -83,16 +81,8 @@
     <string name="Stickers">Autocollants</string>
     <string name="AddStickers">Ajouter des autocollants</string>
     <string name="AddToStickers">Ajouter aux autocollants</string>
-    <string name="AddStickersNotFound">Autocollants introuvables</string>
-    <string name="StickersRemoved">Autocollants supprimés</string>
-    <string name="AddStickersInstalled">Nouveaux autocollants ajoutés</string>
-    <string name="StickersHide">Cacher</string>
-    <string name="StickersShow">Montrer</string>
-    <string name="StickersShare">Partager</string>
-    <string name="StickersCopy">Copier le lien</string>
     <string name="StickersRemove">Effacer</string>
     <string name="NoStickers">Aucun autocollant pour le moment</string>
-    <string name="SendSticker">ENVOYER L\'AUTOCOLLANT</string>
     <!--settings view-->
     <string name="TextSize">Taille de la police des messages</string>
     <string name="EnableAnimations">Animation des transitions</string>
