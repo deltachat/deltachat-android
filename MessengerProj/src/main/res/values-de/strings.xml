@@ -122,7 +122,7 @@
     <string name="Short">Kurz</string>
     <string name="Long">Lang</string>
     <string name="SystemDefault">Systemvorgabe</string>
-    <string name="RaiseToSpeak">Zum Sprechen ans Ohr</string>
+    <string name="RaiseToSpeak">Ans Ohr für Sprachnachricht</string>
     <string name="EditName">Name bearbeiten</string>
     <string name="NotificationsPriority">Darstellung</string>
     <string name="NotificationsPriorityDefault">Normale Priorität</string>
@@ -267,7 +267,6 @@
     <string name="AreYouSureDeleteThisChat">Chat löschen? Der Chat wird dann nicht mehr in der Chatliste angezeigt, die Nachrichten verbleiben auf dem Server.</string>
     <string name="AreYouSureBlockContact">Diesen Kontakt wirklich blockieren?</string>
     <string name="AreYouSureDeleteContact">Diesen Kontakt wirklich löschen?</string>
-    <string name="RaiseToSpeakAlert">Möchtest du \"Zum Sprechen ans Ohr\" für Sprachnachrichten aktivieren?</string>
     <!--permissions-->
     <string name="PermissionContacts">Für eine einfache Kontaktaufnahme, benötigt Delta Chat Zugriff auf die Kontakte. Die Daten werden dabei nur lokal verarbeitet und zu keinem Server oder Dienst übertragen.</string>
     <string name="PermissionStorage">Um Bilder, Videos, Musik und Dateien senden und speichern zu können, benötigt Delta Chat Zugriff auf den Speicher.</string>

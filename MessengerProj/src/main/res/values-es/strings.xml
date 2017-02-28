@@ -265,7 +265,6 @@
     <string name="AreYouSureDeleteThisChat">¿Quieres eliminar este chat?</string>
     <string name="AreYouSureBlockContact">¿Quieres bloquear este contacto?</string>
     <string name="AreYouSureDeleteContact">¿Quieres eliminar este contacto?</string>
-    <string name="RaiseToSpeakAlert">¿Quieres habilitar “Elevar para hablar” para mensajes de voz?</string>
     <!--permissions-->
     <string name="PermissionContacts">Delta Chat necesita el acceso a tus contactos, para que puedas comunicarte con ellos en todos tus dispositivos.</string>
     <string name="PermissionStorage">Delta Chat necesita acceso a tu almacenamiento, para que puedas enviar y guardar fotos, vídeos, música y otros archivos.</string>

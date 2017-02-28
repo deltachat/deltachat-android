@@ -267,7 +267,6 @@
     <string name="AreYouSureDeleteThisChat">Delete this chat? The chat will no longer be shown in the chat list, the messages will stay on the server.</string>
     <string name="AreYouSureBlockContact">Are you sure you want to block this contact?</string>
     <string name="AreYouSureDeleteContact">Are you sure you want to delete this contact?</string>
-    <string name="RaiseToSpeakAlert">Would you like to enable "Raise to speak" for voice messages?</string>
     <!--permissions-->
     <string name="PermissionContacts">Delta Chat needs access to your contacts so that you can connect with your friends across all your devices.</string>
     <string name="PermissionStorage">Delta Chat needs access to your storage so that you can send and save photos, videos, music and other media.</string>

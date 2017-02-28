@@ -267,7 +267,6 @@
     <string name="AreYouSureDeleteThisChat">Usunąć ten czat? Czat nie będzie widoczny na liście czatów, wiadomości pozostaną na serwerze.</string>
     <string name="AreYouSureBlockContact">Czy na pewno chcesz zablokować ten kontakt?</string>
     <string name="AreYouSureDeleteContact">Czy na pewno chcesz usunąć ten kontakt?</string>
-    <string name="RaiseToSpeakAlert">Czy chcesz włączyć funkcję „Odbierz i mów / słuchaj” dla wiadomości głosowych?</string>
     <!--permissions-->
     <string name="PermissionContacts">Aby można było łączyć się ze znajomymi na wszystkich urządzeniach, Delta Chat musi mieć dostęp do listy kontaktów.</string>
     <string name="PermissionStorage">Aby wysyłać i zapisywać zdjęcia, wideo, muzykę i inne multimedia, Delta Chat musi mieć dostęp do pamięci.</string>

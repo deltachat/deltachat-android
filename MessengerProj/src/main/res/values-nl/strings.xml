@@ -265,7 +265,6 @@
     <string name="AreYouSureDeleteThisChat">Chat echt verwijderen?</string>
     <string name="AreYouSureBlockContact">Weet je zeker dat je deze persoon wilt blokkeren?</string>
     <string name="AreYouSureDeleteContact">Contact echt verwijderen?</string>
-    <string name="RaiseToSpeakAlert">Wil je \"Houd bij oor\" inschakelen voor spraakberichten?</string>
     <!--permissions-->
     <string name="PermissionContacts">Delta Chat heeft toegang tot je contacten nodig zodat je kan chatten met je vrienden vanaf al je apparaten.</string>
     <string name="PermissionStorage">Delta Chat heeft toegang tot je opslaggeheugen nodig zodat je foto\'s, video\'s, muziek en andere media kunt opslaan en versturen.</string>
