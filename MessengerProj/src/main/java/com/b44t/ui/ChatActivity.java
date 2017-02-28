@@ -190,9 +190,10 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
     private final static int ID_INFO = 20;
     private final static int ID_SAVE_TO_XX = 21;
     private final static int ID_SHARE = 22;
+    private final static int ID_OPEN = 23;
     private final static int ID_SEARCH = 40;
     private final static int ID_CHAT_COMPOSE_PANEL = 1000;
-    private TextView m_replyMenuItem, m_infoMenuItem, m_saveToXXMenuItem, m_shareMenuItem;
+    private TextView m_replyMenuItem, m_infoMenuItem, m_saveToXXMenuItem, m_openMenuItem, m_shareMenuItem;
 
     public ChatActivity(Bundle args) {
         super(args);
@@ -502,6 +503,13 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     actionBar.hideActionMode();
                     updateVisibleRows();
                 }
+                else if( id == ID_OPEN )
+                {
+                    // for files, that cannot be handled internally (documents ...), this is equal to a normal click
+                    AndroidUtilities.openForViewOrShare(getParentActivity(), getFirstSelectedId(), Intent.ACTION_VIEW);
+                    actionBar.hideActionMode();
+                    updateVisibleRows();
+                }
                 else if( id== ID_SHARE )
                 {
                     AndroidUtilities.openForViewOrShare(getParentActivity(), getFirstSelectedId(), Intent.ACTION_SEND);
@@ -682,6 +690,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
             }
             submenu.addSubItem(ID_COPY, ApplicationLoader.applicationContext.getString(R.string.CopyToClipboard), 0);
             m_saveToXXMenuItem = submenu.addSubItem(ID_SAVE_TO_XX, "", 0);
+            m_openMenuItem = submenu.addSubItem(ID_OPEN, ApplicationLoader.applicationContext.getString(R.string.Open), 0);
             m_shareMenuItem = submenu.addSubItem(ID_SHARE, ApplicationLoader.applicationContext.getString(R.string.Share), 0);
             m_infoMenuItem = submenu.addSubItem(ID_INFO, ApplicationLoader.applicationContext.getString(R.string.Info), 0);
         actionModeViews.add(submenu);
@@ -1548,9 +1557,10 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 actionBar.hideActionMode();
             } else {
                 boolean isSingleSelection = selectedMessagesIds.size()==1;
-                boolean canSaveToXX = false;
+                boolean canSaveToXX = false, canOpen = false;
                 if( m_saveToXXMenuItem != null ) {
                     if( isSingleSelection ) {
+                        canOpen = true;
                         MrMsg selMsg = MrMailbox.getMsg(getFirstSelectedId());
                         int type = selMsg.getType();
                         if( type==MrMsg.MR_MSG_FILE ) {
@@ -1568,6 +1578,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     }
                     m_saveToXXMenuItem.setVisibility(canSaveToXX? View.VISIBLE : View.GONE);
                 }
+                if( m_openMenuItem != null )  { m_openMenuItem.setVisibility(canOpen? View.VISIBLE : View.GONE); }
                 if( m_shareMenuItem != null ) { m_shareMenuItem.setVisibility(canSaveToXX? View.VISIBLE : View.GONE); }
                 if( m_infoMenuItem != null  ) { m_infoMenuItem.setVisibility(isSingleSelection? View.VISIBLE : View.GONE); }
                 if( m_replyMenuItem != null ) { m_replyMenuItem.setVisibility(isSingleSelection? View.VISIBLE : View.GONE); }
