@@ -157,15 +157,18 @@
         </receiver>
         -->
 
-        <!-- <service android:name=".AuthenticatorService" android:exported="true">
+        <!-- currently, we do not use the android account system
+        <service android:name=".AuthenticatorService" android:exported="true">
             <intent-filter>
                 <action android:name="android.accounts.AccountAuthenticator"/>
             </intent-filter>
             <meta-data android:name="android.accounts.AccountAuthenticator"
                 android:resource="@xml/auth"/>
-        </service> - currently, we do not use the android account system -->
+        </service>
+        -->
 
-        <service android:name=".ContactsSyncAdapterService" android:exported="true"> <!-- what is this for? (bp) -->
+        <!-- seems to be not needed (bp)
+        <service android:name=".ContactsSyncAdapterService" android:exported="true">
             <intent-filter>
                 <action android:name="android.content.SyncAdapter" />
             </intent-filter>
@@ -174,6 +177,7 @@
             <meta-data android:name="android.provider.CONTACTS_STRUCTURE"
                 android:resource="@xml/contacts" />
         </service>
+        -->
 
         <!-- this would implement the "direct share" functionality (the system shows some direct links eg.
         to the most recent chats when calling "share" from another app, see https://developer.android.com/reference/android/service/chooser/ChooserTargetService.html )
@@ -192,11 +196,13 @@
         <service android:name=".ClearCacheService" android:exported="false"/>
         <service android:name=".VideoEncodingService" android:enabled="true"/>
         <service android:name=".MusicPlayerService" android:exported="true" android:enabled="true"/>
-        <!-- <service android:name=".MusicBrowserService" android:exported="true">
+        <!-- Do not expose data through MediaBrowserService, this seems unexpected for an messenger.
+        Instead, the user can use 'save to music' or 'share' explicitly for items not privacy related.
+        <service android:name=".MusicBrowserService" android:exported="true">
             <intent-filter>
                 <action android:name="android.media.browse.MediaBrowserService"/>
             </intent-filter>
-        </service> - Do not expose data through MediaBrowserService, this seems unexpected for an messenger. Instead, the user can use 'save to music' or 'share' explicitly for items not privacy related. -->
+        </service> -->
 
         <receiver android:name=".MusicPlayerReceiver" >
             <intent-filter>
@@ -220,7 +226,9 @@
         <receiver android:name=".WearReplyReceiver" android:enabled="true"/>
         <!-- <receiver android:name=".NetworkAlarm" android:enabled="true"/> -->
 
-        <!-- <receiver android:name=".ShareBroadcastReceiver" android:enabled="true"/> - seems to be unneeded (bp) -->
+        <!-- seems to be unneeded (bp)
+        <receiver android:name=".ShareBroadcastReceiver" android:enabled="true"/>
+        -->
 
         <receiver android:name=".NotificationDismissReceiver" android:exported="false"/>
 
