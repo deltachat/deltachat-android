@@ -114,7 +114,7 @@
                 <category android:name="android.intent.category.DEFAULT" />
                 <data android:scheme="tg" />
             </intent-filter> -->
-            <meta-data android:name="android.service.chooser.chooser_target_service" android:value=".TgChooserTargetService" />
+            <!-- see note below, <meta-data android:name="android.service.chooser.chooser_target_service" android:value=".TgChooserTargetService" /> -->
         </activity>
         <activity
             android:name="com.b44t.ui.ManageSpaceActivity"
@@ -175,14 +175,17 @@
                 android:resource="@xml/contacts" />
         </service>
 
+        <!-- this would implement the "direct share" functionality (the system shows some direct links eg.
+        to the most recent chats when calling "share" from another app, see https://developer.android.com/reference/android/service/chooser/ChooserTargetService.html )
+        however, if we want this feature, we have to reimplement TgChooserTargetService or sth. like that.
         <service
             android:name="com.b44t.messenger.TgChooserTargetService"
             android:label="@string/AppName"
-            android:permission="android.permission.BIND_CHOOSER_TARGET_SERVICE"> <!-- what is this for? (bp) -->
+            android:permission="android.permission.BIND_CHOOSER_TARGET_SERVICE">
             <intent-filter>
                 <action android:name="android.service.chooser.ChooserTargetService" />
             </intent-filter>
-        </service>
+        </service> -->
 
         <service android:name=".NotificationsService" android:enabled="true"/>
         <service android:name=".NotificationRepeat" android:exported="false"/>
