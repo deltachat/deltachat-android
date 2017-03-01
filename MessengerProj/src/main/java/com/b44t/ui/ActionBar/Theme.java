@@ -104,7 +104,7 @@ public class Theme {
     public static final int MSG_DOC_NAME_COLOR = 0xFF3093e0; // similar color as the file-icon
 
     public static final int MSG_AUDIO_NAME_COLOR = 0xFFed824e; // similar color as the audio-icon
-    public static final int MSG_AUDIO_SEEKBAR_DARK_COLOR = 0xFFf68751;
+    public static final int MSG_AUDIO_SEEKBAR_DARK_COLOR = 0xFFf68751; // same color as in audio-icon, also used for the record-button
     public static final int MSG_AUDIO_SEEKBAR_LITE_COLOR = 0xFFfbc8af;
 
     public static Drawable backgroundDrawableIn;

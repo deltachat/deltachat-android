@@ -23,6 +23,7 @@
 
 package com.b44t.ui.Components;
 
+import android.Manifest;
 import android.animation.Animator;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
@@ -32,6 +33,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.drawable.Drawable;
@@ -442,7 +444,7 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
 
         public RecordCircle(Context context) {
             super(context);
-            paint.setColor(0xff5795cc);
+            paint.setColor(Theme.MSG_AUDIO_SEEKBAR_DARK_COLOR);
             paintRecord.setColor(0x0d000000);
             micDrawable = getResources().getDrawable(R.drawable.mic_pressed);
         }
@@ -790,39 +792,21 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
                 if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
-                    /*
                     if (parentFragment != null) {
                         if (Build.VERSION.SDK_INT >= 23 && parentActivity.checkSelfPermission(Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED) {
                             parentActivity.requestPermissions(new String[]{Manifest.permission.RECORD_AUDIO}, 3);
                             return false;
-                        }
-
-                        String action;
-                        TLRPC.Chat currentChat;
-                        if ((int) dialog_id < 0) {
-                            currentChat = MessagesController.getInstance().getChat(-(int) dialog_id);
-                            if (currentChat != null && currentChat.participants_count > MessagesController.getInstance().groupBigSize) {
-                                action = "bigchat_upload_audio";
-                            } else {
-                                action = "chat_upload_audio";
-                            }
-                        } else {
-                            action = "pm_upload_audio";
                         }
                     }
                     startedDraggingX = -1;
                     MediaController.getInstance().startRecording(dialog_id, replyingMessageObject);
                     updateAudioRecordInterface();
                     audioSendButton.getParent().requestDisallowInterceptTouchEvent(true);
-                    */
                 } else if (motionEvent.getAction() == MotionEvent.ACTION_UP || motionEvent.getAction() == MotionEvent.ACTION_CANCEL) {
-                    Toast.makeText(getContext(), LocaleController.getString("NotYetImplemented", R.string.NotYetImplemented), Toast.LENGTH_SHORT).show();
-                    /*
                     startedDraggingX = -1;
                     MediaController.getInstance().stopRecording(1);
                     recordingAudio = false;
                     updateAudioRecordInterface();
-                    */
                 } else if (motionEvent.getAction() == MotionEvent.ACTION_MOVE && recordingAudio) {
                     float x = motionEvent.getX();
                     if (x < -distCanMove) {
