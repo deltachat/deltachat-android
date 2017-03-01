@@ -157,13 +157,13 @@
         </receiver>
         -->
 
-        <service android:name=".AuthenticatorService" android:exported="true"> <!-- what is this for? (bp) -->
+        <!-- <service android:name=".AuthenticatorService" android:exported="true">
             <intent-filter>
                 <action android:name="android.accounts.AccountAuthenticator"/>
             </intent-filter>
             <meta-data android:name="android.accounts.AccountAuthenticator"
                 android:resource="@xml/auth"/>
-        </service>
+        </service> - currently, we do not use the android account system -->
 
         <service android:name=".ContactsSyncAdapterService" android:exported="true"> <!-- what is this for? (bp) -->
             <intent-filter>

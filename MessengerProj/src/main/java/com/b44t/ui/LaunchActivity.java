@@ -524,7 +524,7 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
             boolean pushOpened = false;
 
             Integer push_chat_id = 0;
-            Integer open_settings = 0;
+            //Integer open_settings = 0;
             long dialogId = intent != null && intent.getExtras() != null ? intent.getExtras().getLong("dialogId", 0) : 0;
             boolean showDialogsList = false;
 
@@ -892,9 +892,11 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                             }
                             */
                         }
-                    } else if (intent.getAction().equals("com.b44t.messenger.OPEN_ACCOUNT")) {
+                    }
+                    /*else if (intent.getAction().equals("com.b44t.messenger.OPEN_ACCOUNT")) {
                         open_settings = 1;
-                    } else if (intent.getAction().startsWith("com.b44t.messenger.openchat")) {
+                    } */
+                    else if (intent.getAction().startsWith("com.b44t.messenger.openchat")) {
                         String temp = intent.getAction().substring(27);
                         int chatId = 0;
                         try {
@@ -984,7 +986,8 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                 } else {
                     didSelectDialog(null, dialogId, false);
                 }
-            } else if (open_settings != 0) {
+            }
+            /*else if (open_settings != 0) {
                 actionBarLayout.presentFragment(new SettingsActivity(), false, true, true);
                 if (AndroidUtilities.isTablet()) {
                     actionBarLayout.showLastFragment();
@@ -994,7 +997,7 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                     drawerLayoutContainer.setAllowOpenDrawer(true, false);
                 }
                 pushOpened = true;
-            }
+            }*/
 
             if (!pushOpened && !isNew) {
                 if (AndroidUtilities.isTablet()) {
