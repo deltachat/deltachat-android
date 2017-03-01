@@ -1551,29 +1551,28 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 actionBar.hideActionMode();
             } else {
                 boolean isSingleSelection = selectedMessagesIds.size()==1;
-                boolean canSaveToXX = false, canOpen = false;
+                boolean hasAttachment = false;
                 if( m_saveToXXMenuItem != null ) {
                     if( isSingleSelection ) {
-                        canOpen = true;
                         MrMsg selMsg = MrMailbox.getMsg(getFirstSelectedId());
                         int type = selMsg.getType();
                         if( type==MrMsg.MR_MSG_FILE ) {
-                            canSaveToXX = true;
+                            hasAttachment = true;
                             m_saveToXXMenuItem.setText(R.string.SaveToDownloads);
                         }
                         else if( type == MrMsg.MR_MSG_AUDIO || type == MrMsg.MR_MSG_VOICE ) {
-                            canSaveToXX = true;
+                            hasAttachment = true;
                             m_saveToXXMenuItem.setText(R.string.SaveToMusic);
                         }
                         if( type==MrMsg.MR_MSG_IMAGE || type == MrMsg.MR_MSG_VIDEO ) {
-                            canSaveToXX = true;
+                            hasAttachment = true;
                             m_saveToXXMenuItem.setText(R.string.SaveToGallery);
                         }
                     }
-                    m_saveToXXMenuItem.setVisibility(canSaveToXX? View.VISIBLE : View.GONE);
+                    m_saveToXXMenuItem.setVisibility(hasAttachment? View.VISIBLE : View.GONE);
                 }
-                if( m_openMenuItem != null )  { m_openMenuItem.setVisibility(canOpen? View.VISIBLE : View.GONE); }
-                if( m_shareMenuItem != null ) { m_shareMenuItem.setVisibility(canSaveToXX? View.VISIBLE : View.GONE); }
+                if( m_openMenuItem != null )  { m_openMenuItem.setVisibility(hasAttachment? View.VISIBLE : View.GONE); }
+                if( m_shareMenuItem != null ) { m_shareMenuItem.setVisibility(hasAttachment? View.VISIBLE : View.GONE); }
                 if( m_infoMenuItem != null  ) { m_infoMenuItem.setVisibility(isSingleSelection? View.VISIBLE : View.GONE); }
                 if( m_replyMenuItem != null ) { m_replyMenuItem.setVisibility(isSingleSelection? View.VISIBLE : View.GONE); }
             }
