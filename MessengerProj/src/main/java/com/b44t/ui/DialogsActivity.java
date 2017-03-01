@@ -537,8 +537,8 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
         ArrayList<String> permissons = new ArrayList<>();
         if (activity.checkSelfPermission(Manifest.permission.READ_CONTACTS) != PackageManager.PERMISSION_GRANTED) {
             permissons.add(Manifest.permission.READ_CONTACTS);
-            permissons.add(Manifest.permission.WRITE_CONTACTS);
-            permissons.add(Manifest.permission.GET_ACCOUNTS);
+            //permissons.add(Manifest.permission.WRITE_CONTACTS);
+            //permissons.add(Manifest.permission.GET_ACCOUNTS);
         }
         if (activity.checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
             permissons.add(Manifest.permission.READ_EXTERNAL_STORAGE);

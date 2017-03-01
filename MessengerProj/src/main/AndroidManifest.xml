@@ -20,28 +20,28 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> <!-- we need it eg. for getActiveNetworkInfo() -->
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <!-- <uses-permission android:name="android.permission.GET_ACCOUNTS" /> - required for AccountManager -->
     <uses-permission android:name="android.permission.READ_CONTACTS" />
-    <uses-permission android:name="android.permission.WRITE_CONTACTS" />
-    <uses-permission android:name="android.permission.MANAGE_ACCOUNTS"/>
-    <uses-permission android:name="android.permission.READ_PROFILE"/>
-    <uses-permission android:name="android.permission.WRITE_SYNC_SETTINGS"/>
-    <uses-permission android:name="android.permission.READ_SYNC_SETTINGS"/>
-    <uses-permission android:name="android.permission.AUTHENTICATE_ACCOUNTS"/>
+    <!-- <uses-permission android:name="android.permission.WRITE_CONTACTS" /> -->
+    <!-- <uses-permission android:name="android.permission.MANAGE_ACCOUNTS"/> - required for AccountManager in API level <= 22 -->
+    <!-- <uses-permission android:name="android.permission.READ_PROFILE"/> - required for ContactsContract.Profile -->
+    <!-- <uses-permission android:name="android.permission.WRITE_SYNC_SETTINGS"/> required for AbstractThreadedSyncAdapter-->
+    <!-- <uses-permission android:name="android.permission.READ_SYNC_SETTINGS"/> - required for AbstractThreadedSyncAdapter -->
+    <!-- <uses-permission android:name="android.permission.AUTHENTICATE_ACCOUNTS"/> - seems to be unneeded and is no longer supported by Android, was needed for AbstractAccountAuthenticator, see http://stackoverflow.com/questions/32601456/marshmallow-permission-implementation#36907308 -->
     <uses-permission android:name="android.permission.VIBRATE" />
-    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
-    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <!-- <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" /> - required for windows using the TYPE_SYSTEM_ALERT flag -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" /> <!-- we need the TelephonyManager to pause the audio player on calls -->
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.USE_FINGERPRINT" />
     <uses-permission android:name="android.permission.INSTALL_SHORTCUT" />
     <uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT" />
-    <uses-permission android:name="com.android.launcher.permission.UNINSTALL_SHORTCUT"/>
-    <!--<uses-permission android:name="android.permission.CAMERA" />-->
+    <!-- <uses-permission android:name="com.android.launcher.permission.UNINSTALL_SHORTCUT" /> - required for AndroidUtilities.uninstallShortcut() -->
+    <!-- <uses-permission android:name="android.permission.CAMERA" /> - also disabled in T'gram; we're using the camera via an intent only -->
 
     <application
         android:name=".ApplicationLoader"
@@ -167,7 +167,7 @@
         </service>
         -->
 
-        <!-- seems to be not needed (bp)
+        <!-- seems to be not needed, derived from AbstractThreadedSyncAdapter, would need the READ/WRITE_SYNC_SETTINGS
         <service android:name=".ContactsSyncAdapterService" android:exported="true">
             <intent-filter>
                 <action android:name="android.content.SyncAdapter" />

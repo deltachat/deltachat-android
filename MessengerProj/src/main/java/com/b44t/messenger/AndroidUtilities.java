@@ -414,6 +414,9 @@ public class AndroidUtilities {
         }
     }
 
+    /* -- uninstalling shortcuts would be needed if a chat is deleted. However,
+       -- com.b44t.messenger.openchatNNN just opens the overview in this case, which is okay for the moment.
+       -- uninstalling shortcuts would required the permission com.android.launcher.permission.UNINSTALL_SHORTCUT
     public static void uninstallShortcut(int did) {
         try {
             Intent addIntent = createShortcutIntent(did, null);
@@ -422,7 +425,7 @@ public class AndroidUtilities {
         } catch (Exception e) {
             FileLog.e("messenger", e);
         }
-    }
+    }*/
 
     public static int getViewInset(View view) {
         if (view == null || Build.VERSION.SDK_INT < 21 || view.getHeight() == AndroidUtilities.displaySize.y || view.getHeight() == AndroidUtilities.displaySize.y - statusBarHeight) {
