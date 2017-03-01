@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ff424242" >
+    android:background="#ff415e6b" > <!-- =ACTION_BAR_COLOR -->
 
     <ImageView
         android:layout_width="match_parent"
@@ -60,15 +60,6 @@
         android:layout_centerVertical="true"
         android:layout_alignParentRight="true"
         android:orientation="horizontal" >
-
-        <ProgressBar
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_gravity="center"
-            android:layout_marginRight="56dp"
-            android:indeterminateDrawable="@drawable/loading_animation"
-            android:indeterminateDuration="1500"
-            android:id="@+id/player_progress_bar" />
 
         <ImageView
             android:id="@+id/player_previous"

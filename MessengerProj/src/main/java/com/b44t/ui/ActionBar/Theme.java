@@ -43,7 +43,7 @@ import com.b44t.ui.Components.ChatAttachAlert;
 
 public class Theme {
 
-    public static final int ACTION_BAR_COLOR = 0xff415e6b; // also used for the notification icon background and as pincode-default-background color
+    public static final int ACTION_BAR_COLOR = 0xff415e6b; // also used for the notification icon background and as pincode-default-background color, TODO: let player_big_notification/player_small_notification use this color automatically
     public static final int ACTION_BAR_PHOTO_VIEWER_COLOR = 0x7f000000;
     public static final int ACTION_BAR_MEDIA_PICKER_COLOR = 0xff333333;
     public static final int ACTION_BAR_TITLE_COLOR = 0xffffffff;

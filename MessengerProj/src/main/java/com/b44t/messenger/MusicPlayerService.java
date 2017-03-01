@@ -53,7 +53,6 @@ public class MusicPlayerService extends Service implements NotificationCenter.No
     private RemoteControlClient remoteControlClient;
     private AudioManager audioManager;
 
-    private static boolean supportBigNotifications = Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN;
     private static boolean supportLockScreenControls = Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH;
 
     @Override
@@ -115,9 +114,6 @@ public class MusicPlayerService extends Service implements NotificationCenter.No
 
         RemoteViews simpleContentView = new RemoteViews(getApplicationContext().getPackageName(), R.layout.player_small_notification);
         RemoteViews expandedView = null;
-        if (supportBigNotifications) {
-            expandedView = new RemoteViews(getApplicationContext().getPackageName(), R.layout.player_big_notification);
-        }
 
         Intent intent = new Intent(ApplicationLoader.applicationContext, LaunchActivity.class);
         intent.setAction("com.b44t.messenger.openchat"+messageObject.getDialogId());
@@ -125,66 +121,36 @@ public class MusicPlayerService extends Service implements NotificationCenter.No
         PendingIntent contentIntent = PendingIntent.getActivity(ApplicationLoader.applicationContext, 0, intent, 0);
 
         Notification notification = new NotificationCompat.Builder(getApplicationContext())
-                .setSmallIcon(R.drawable.player)
+                .setSmallIcon(R.drawable.notification_player)
                 .setContentIntent(contentIntent)
                 .setContentTitle(songName).build();
 
         notification.contentView = simpleContentView;
-        if (supportBigNotifications) {
-            notification.bigContentView = expandedView;
-        }
 
         setListeners(simpleContentView);
-        if (supportBigNotifications) {
-            setListeners(expandedView);
-        }
 
         Bitmap albumArt = audioInfo != null ? audioInfo.getSmallCover() : null;
         if (albumArt != null) {
             notification.contentView.setImageViewBitmap(R.id.player_album_art, albumArt);
-            if (supportBigNotifications) {
-                notification.bigContentView.setImageViewBitmap(R.id.player_album_art, albumArt);
-            }
         } else {
             notification.contentView.setImageViewResource(R.id.player_album_art, R.drawable.nocover_small);
-            if (supportBigNotifications) {
-                notification.bigContentView.setImageViewResource(R.id.player_album_art, R.drawable.nocover_big);
-            }
         }
 
         {
-            notification.contentView.setViewVisibility(R.id.player_progress_bar, View.GONE);
             notification.contentView.setViewVisibility(R.id.player_next, View.VISIBLE);
             notification.contentView.setViewVisibility(R.id.player_previous, View.VISIBLE);
-            if (supportBigNotifications) {
-                notification.bigContentView.setViewVisibility(R.id.player_next, View.VISIBLE);
-                notification.bigContentView.setViewVisibility(R.id.player_previous, View.VISIBLE);
-                notification.bigContentView.setViewVisibility(R.id.player_progress_bar, View.GONE);
-            }
 
             if (MediaController.getInstance().isAudioPaused()) {
                 notification.contentView.setViewVisibility(R.id.player_pause, View.GONE);
                 notification.contentView.setViewVisibility(R.id.player_play, View.VISIBLE);
-                if (supportBigNotifications) {
-                    notification.bigContentView.setViewVisibility(R.id.player_pause, View.GONE);
-                    notification.bigContentView.setViewVisibility(R.id.player_play, View.VISIBLE);
-                }
             } else {
                 notification.contentView.setViewVisibility(R.id.player_pause, View.VISIBLE);
                 notification.contentView.setViewVisibility(R.id.player_play, View.GONE);
-                if (supportBigNotifications) {
-                    notification.bigContentView.setViewVisibility(R.id.player_pause, View.VISIBLE);
-                    notification.bigContentView.setViewVisibility(R.id.player_play, View.GONE);
-                }
             }
         }
 
         notification.contentView.setTextViewText(R.id.player_song_name, songName);
         notification.contentView.setTextViewText(R.id.player_author_name, authorName);
-        if (supportBigNotifications) {
-            notification.bigContentView.setTextViewText(R.id.player_song_name, songName);
-            notification.bigContentView.setTextViewText(R.id.player_author_name, authorName);
-        }
         notification.flags |= Notification.FLAG_ONGOING_EVENT;
         startForeground(5, notification);
 
@@ -206,12 +172,16 @@ public class MusicPlayerService extends Service implements NotificationCenter.No
     public void setListeners(RemoteViews view) {
         PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), 0, new Intent(NOTIFY_PREVIOUS), PendingIntent.FLAG_UPDATE_CURRENT);
         view.setOnClickPendingIntent(R.id.player_previous, pendingIntent);
+
         pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), 0, new Intent(NOTIFY_CLOSE), PendingIntent.FLAG_UPDATE_CURRENT);
         view.setOnClickPendingIntent(R.id.player_close, pendingIntent);
+
         pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), 0, new Intent(NOTIFY_PAUSE), PendingIntent.FLAG_UPDATE_CURRENT);
         view.setOnClickPendingIntent(R.id.player_pause, pendingIntent);
+
         pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), 0, new Intent(NOTIFY_NEXT), PendingIntent.FLAG_UPDATE_CURRENT);
         view.setOnClickPendingIntent(R.id.player_next, pendingIntent);
+
         pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), 0, new Intent(NOTIFY_PLAY), PendingIntent.FLAG_UPDATE_CURRENT);
         view.setOnClickPendingIntent(R.id.player_play, pendingIntent);
     }
