@@ -189,11 +189,11 @@
         <service android:name=".ClearCacheService" android:exported="false"/>
         <service android:name=".VideoEncodingService" android:enabled="true"/>
         <service android:name=".MusicPlayerService" android:exported="true" android:enabled="true"/>
-        <service android:name=".MusicBrowserService" android:exported="true">
+        <!-- <service android:name=".MusicBrowserService" android:exported="true">
             <intent-filter>
                 <action android:name="android.media.browse.MediaBrowserService"/>
             </intent-filter>
-        </service>
+        </service> - Do not expose data through MediaBrowserService, this seems unexpected for an messenger. Instead, the user can use 'save to music' or 'share' explicitly for items not privacy related. -->
 
         <receiver android:name=".MusicPlayerReceiver" >
             <intent-filter>
