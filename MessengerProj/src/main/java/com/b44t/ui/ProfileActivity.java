@@ -861,7 +861,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
 
     public void setPlayProfileAnimation(boolean value) {
         SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("mainconfig", Activity.MODE_PRIVATE);
-        if (!AndroidUtilities.isTablet() && preferences.getBoolean("view_animations", true)) {
+        if (!AndroidUtilities.isTablet() && preferences.getBoolean("view_animations2", true)) {
             playProfileAnimation = value;
         }
     }

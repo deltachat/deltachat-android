@@ -119,10 +119,8 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
         privacyRow = rowCount++;
         notificationRow = rowCount++;
         backgroundRow = rowCount++;
-        languageRow = rowCount++;
-        messagesSectionRow = rowCount++;
-        messagesSectionRow2 = rowCount++;
-        textSizeRow = rowCount++; // incoming messages
+        messagesSectionRow = -1; // rowCount++;
+        messagesSectionRow2 = -1; // rowCount++;
         if (Build.VERSION.SDK_INT >= 23) {
             directShareRow = -1; // for now, seems not really to work, however, in T'gram it does
         }
@@ -131,8 +129,11 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
         }
         raiseToSpeakRow = rowCount++; // outgoing message
         sendByEnterRow = rowCount++;
-        enableAnimationsRow = rowCount++;
+        enableAnimationsRow = -1;//rowCount++; -- for now, we disable this option, maybe we can add it later to a "view" settings, however, in general, this should be more a system-option
         cacheRow = -1; // for now, the page is still reachable by the "storage settings" in the "android App Settings"
+        textSizeRow = rowCount++;
+        languageRow = rowCount++;
+
         supportSectionRow = rowCount++;
         supportSectionRow2 = rowCount++;
         aboutRow = rowCount++;
@@ -217,9 +218,9 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
                     showDialog(builder.create());
                 } else if (i == enableAnimationsRow) {
                     SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("mainconfig", Activity.MODE_PRIVATE);
-                    boolean animations = preferences.getBoolean("view_animations", true);
+                    boolean animations = preferences.getBoolean("view_animations2", true);
                     SharedPreferences.Editor editor = preferences.edit();
-                    editor.putBoolean("view_animations", !animations);
+                    editor.putBoolean("view_animations2", !animations);
                     editor.apply();
                     if (view instanceof TextCheckCell) {
                         ((TextCheckCell) view).setChecked(!animations);
@@ -461,7 +462,7 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
 
                 SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("mainconfig", Activity.MODE_PRIVATE);
                 if (i == enableAnimationsRow) {
-                    textCell.setTextAndCheck(LocaleController.getString("EnableAnimations", R.string.EnableAnimations), preferences.getBoolean("view_animations", true), false);
+                    textCell.setTextAndCheck(LocaleController.getString("EnableAnimations", R.string.EnableAnimations), preferences.getBoolean("view_animations2", true), false);
                 } else if (i == sendByEnterRow) {
                     textCell.setTextAndCheck(LocaleController.getString("SendByEnter", R.string.SendByEnter), preferences.getBoolean("send_by_enter", false), true);
                 } else if (i == raiseToSpeakRow) {
