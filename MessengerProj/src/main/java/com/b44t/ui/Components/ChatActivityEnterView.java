@@ -231,7 +231,6 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
 
     private EditTextCaption messageEditText;
     private ImageView sendButton;
-    private ImageView cancelBotButton;
     private ImageView emojiButton;
     private EmojiView emojiView;
     private TextView recordTimeText;
@@ -253,7 +252,6 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
     //private BotKeyboardView botKeyboardView;
     //private ImageView notifyButton;
     private RecordCircle recordCircle;
-    private CloseProgressDrawable2 progressDrawable;
     private Drawable backgroundDrawable;
 
     //private MessageObject editingMessageObject;
@@ -800,29 +798,6 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
         recordCircle.setVisibility(GONE);
         sizeNotifierLayout.addView(recordCircle, LayoutHelper.createFrame(124, 124, Gravity.BOTTOM | Gravity.RIGHT, 0, 0, -36, -38));
 
-        cancelBotButton = new ImageView(context);
-        cancelBotButton.setVisibility(INVISIBLE);
-        cancelBotButton.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
-        //cancelBotButton.setImageResource(R.drawable.delete_reply);
-        cancelBotButton.setImageDrawable(progressDrawable = new CloseProgressDrawable2());
-        cancelBotButton.setSoundEffectsEnabled(false);
-        cancelBotButton.setScaleX(0.1f);
-        cancelBotButton.setScaleY(0.1f);
-        cancelBotButton.setAlpha(0.0f);
-        sendButtonContainer.addView(cancelBotButton, LayoutHelper.createFrame(48, 48));
-        cancelBotButton.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String text = messageEditText.getText().toString();
-                int idx = text.indexOf(' ');
-                if (idx == -1 || idx == text.length() - 1) {
-                    setFieldText("");
-                } else {
-                    setFieldText(text.substring(0, idx + 1));
-                }
-            }
-        });
-
         sendButton = new ImageView(context);
         sendButton.setVisibility(INVISIBLE);
         sendButton.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
@@ -869,17 +844,6 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
     @Override
     public boolean hasOverlappingRendering() {
         return false;
-    }
-
-    public void showContextProgress(boolean show) {
-        if (progressDrawable == null) {
-            return;
-        }
-        if (show) {
-            progressDrawable.startAnimation();
-        } else {
-            progressDrawable.stopAnimation();
-        }
     }
 
     public void addTopView(View view, int height) {
@@ -1185,8 +1149,7 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
         }
         CharSequence message = AndroidUtilities.getTrimmedString(messageEditText.getText());
         if (message.length() > 0 || forceShowSendButton || audioToSend != null) {
-            boolean showSendButton = cancelBotButton.getVisibility() == VISIBLE;
-            if (audioSendButton.getVisibility() == VISIBLE || showSendButton) {
+            if (audioSendButton.getVisibility() == VISIBLE ) {
                 if (animated) {
                     if(runningAnimationType == 1) {
                         return;
@@ -1237,11 +1200,6 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
                         animators.add(ObjectAnimator.ofFloat(audioSendButton, "scaleY", 0.1f));
                         animators.add(ObjectAnimator.ofFloat(audioSendButton, "alpha", 0.0f));
                     }
-                    if (showSendButton) {
-                        animators.add(ObjectAnimator.ofFloat(cancelBotButton, "scaleX", 0.1f));
-                        animators.add(ObjectAnimator.ofFloat(cancelBotButton, "scaleY", 0.1f));
-                        animators.add(ObjectAnimator.ofFloat(cancelBotButton, "alpha", 0.0f));
-                    }
                     runningAnimationType = 1;
                     animators.add(ObjectAnimator.ofFloat(sendButton, "scaleX", 1.0f));
                     animators.add(ObjectAnimator.ofFloat(sendButton, "scaleY", 1.0f));
@@ -1255,7 +1213,6 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
                         public void onAnimationEnd(Animator animation) {
                             if (runningAnimation != null && runningAnimation.equals(animation)) {
                                 sendButton.setVisibility(VISIBLE);
-                                cancelBotButton.setVisibility(GONE);
                                 audioSendButton.setVisibility(GONE);
                                 runningAnimation = null;
                                 runningAnimationType = 0;
@@ -1274,14 +1231,10 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
                     audioSendButton.setScaleX(0.1f);
                     audioSendButton.setScaleY(0.1f);
                     audioSendButton.setAlpha(0.0f);
-                    cancelBotButton.setScaleX(0.1f);
-                    cancelBotButton.setScaleY(0.1f);
-                    cancelBotButton.setAlpha(0.0f);
                     sendButton.setScaleX(1.0f);
                     sendButton.setScaleY(1.0f);
                     sendButton.setAlpha(1.0f);
                     sendButton.setVisibility(VISIBLE);
-                    cancelBotButton.setVisibility(GONE);
                     audioSendButton.setVisibility(GONE);
                     if (attachButton != null) {
                         attachButton.setVisibility(GONE);
@@ -1292,7 +1245,7 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
                     }
                 }
             }
-        } else if (sendButton.getVisibility() == VISIBLE || cancelBotButton.getVisibility() == VISIBLE) {
+        } else if (sendButton.getVisibility() == VISIBLE ) {
             if (animated) {
                 if (runningAnimationType == 2) {
                     return;
@@ -1328,15 +1281,9 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
                 animators.add(ObjectAnimator.ofFloat(audioSendButton, "scaleX", 1.0f));
                 animators.add(ObjectAnimator.ofFloat(audioSendButton, "scaleY", 1.0f));
                 animators.add(ObjectAnimator.ofFloat(audioSendButton, "alpha", 1.0f));
-                if (cancelBotButton.getVisibility() == VISIBLE) {
-                    animators.add(ObjectAnimator.ofFloat(cancelBotButton, "scaleX", 0.1f));
-                    animators.add(ObjectAnimator.ofFloat(cancelBotButton, "scaleY", 0.1f));
-                    animators.add(ObjectAnimator.ofFloat(cancelBotButton, "alpha", 0.0f));
-                } else {
-                    animators.add(ObjectAnimator.ofFloat(sendButton, "scaleX", 0.1f));
-                    animators.add(ObjectAnimator.ofFloat(sendButton, "scaleY", 0.1f));
-                    animators.add(ObjectAnimator.ofFloat(sendButton, "alpha", 0.0f));
-                }
+                animators.add(ObjectAnimator.ofFloat(sendButton, "scaleX", 0.1f));
+                animators.add(ObjectAnimator.ofFloat(sendButton, "scaleY", 0.1f));
+                animators.add(ObjectAnimator.ofFloat(sendButton, "alpha", 0.0f));
 
                 runningAnimation.playTogether(animators);
                 runningAnimation.setDuration(150);
@@ -1345,7 +1292,6 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
                     public void onAnimationEnd(Animator animation) {
                         if (runningAnimation != null && runningAnimation.equals(animation)) {
                             sendButton.setVisibility(GONE);
-                            cancelBotButton.setVisibility(GONE);
                             audioSendButton.setVisibility(VISIBLE);
                             runningAnimation = null;
                             runningAnimationType = 0;
@@ -1364,13 +1310,9 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
                 sendButton.setScaleX(0.1f);
                 sendButton.setScaleY(0.1f);
                 sendButton.setAlpha(0.0f);
-                cancelBotButton.setScaleX(0.1f);
-                cancelBotButton.setScaleY(0.1f);
-                cancelBotButton.setAlpha(0.0f);
                 audioSendButton.setScaleX(1.0f);
                 audioSendButton.setScaleY(1.0f);
                 audioSendButton.setAlpha(1.0f);
-                cancelBotButton.setVisibility(GONE);
                 sendButton.setVisibility(GONE);
                 audioSendButton.setVisibility(VISIBLE);
                 if (attachButton != null) {
