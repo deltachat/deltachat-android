@@ -140,20 +140,6 @@ public class TLRPC {
 		public String about;
 	}
 
-	public static class WebPage extends TLObject {
-		public int flags;
-		public long id;
-		public String url;
-		public String type;
-		public String title;
-		public String description;
-		public Photo photo;
-		public int duration;
-		public String author;
-		public int date;
-		public Document document;
-	}
-
     public static class InputFileLocation extends TLObject {
 		public long id;
 		public long access_hash;
@@ -341,7 +327,6 @@ public class TLRPC {
 		public Document document;
 		public String caption;
 		public int user_id;
-		public WebPage webpage;
 	}
 
     public static class Message extends TLObject {

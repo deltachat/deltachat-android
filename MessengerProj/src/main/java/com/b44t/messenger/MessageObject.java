@@ -733,11 +733,7 @@ public class MessageObject {
 
     public String getMusicTitle() {
         TLRPC.Document document;
-        if (type == MO_TYPE0_TEXT) {
-            document = messageOwner.media.webpage.document;
-        } else {
-            document = messageOwner.media.document;
-        }
+        document = messageOwner.media.document;
         for (int a = 0; a < document.attributes.size(); a++) {
             TLRPC.DocumentAttribute attribute = document.attributes.get(a);
             if (attribute instanceof TLRPC.TL_documentAttributeAudio) {
@@ -759,11 +755,7 @@ public class MessageObject {
 
     public int getDuration() {
         TLRPC.Document document;
-        if (type == MO_TYPE0_TEXT) {
-            document = messageOwner.media.webpage.document;
-        } else {
-            document = messageOwner.media.document;
-        }
+        document = messageOwner.media.document;
         for (int a = 0; a < document.attributes.size(); a++) {
             TLRPC.DocumentAttribute attribute = document.attributes.get(a);
             if (attribute instanceof TLRPC.TL_documentAttributeAudio) {
@@ -775,11 +767,7 @@ public class MessageObject {
 
     public String getMusicAuthor() {
         TLRPC.Document document;
-        if (type == MO_TYPE0_TEXT) {
-            document = messageOwner.media.webpage.document;
-        } else {
-            document = messageOwner.media.document;
-        }
+        document = messageOwner.media.document;
         for (int a = 0; a < document.attributes.size(); a++) {
             TLRPC.DocumentAttribute attribute = document.attributes.get(a);
             if (attribute instanceof TLRPC.TL_documentAttributeAudio) {

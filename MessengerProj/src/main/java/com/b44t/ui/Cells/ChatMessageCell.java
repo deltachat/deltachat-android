@@ -912,11 +912,6 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
             if (buttonState == -1) {
                 delegate.didPressedImage(this);
             }
-        } else if (documentAttachType == DOCUMENT_ATTACH_TYPE_GIF) {
-            if (buttonState == -1) {
-                TLRPC.WebPage webPage = currentMessageObject.messageOwner.media.webpage;
-                Browser.openUrl(getContext(), webPage.url);
-            }
         }
     }
 
@@ -1094,14 +1089,11 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
     }
 
     private int createDocumentLayout(int maxWidth, MessageObject messageObject) {
-        if (messageObject.type == MessageObject.MO_TYPE0_TEXT) {
-            documentAttach = messageObject.messageOwner.media.webpage.document;
-        } else {
-            documentAttach = messageObject.messageOwner.media.document;
-        }
+        documentAttach = messageObject.messageOwner.media.document;
         if (documentAttach == null) {
             return 0;
         }
+
         if (MessageObject.isVoiceDocument(documentAttach)) {
             documentAttachType = DOCUMENT_ATTACH_TYPE_VOICE;
             int duration = 0;
@@ -2152,13 +2144,6 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                     FileLoader.getInstance().loadFile(currentMessageObject.messageOwner.media.document, false, false);
                 } else if (documentAttachType == DOCUMENT_ATTACH_TYPE_VIDEO) {
                     FileLoader.getInstance().loadFile(documentAttach, true, false);
-                } else if (currentMessageObject.type == MessageObject.MO_TYPE0_TEXT && documentAttachType != DOCUMENT_ATTACH_TYPE_NONE) {
-                    if (documentAttachType == DOCUMENT_ATTACH_TYPE_GIF) {
-                        photoImage.setImage(currentMessageObject.messageOwner.media.webpage.document, null, currentPhotoObject.location, currentPhotoFilter, currentMessageObject.messageOwner.media.webpage.document.size, null, false);
-                        currentMessageObject.audioProgress = 2;
-                    } else if (documentAttachType == DOCUMENT_ATTACH_TYPE_DOCUMENT) {
-                        FileLoader.getInstance().loadFile(currentMessageObject.messageOwner.media.webpage.document, false, false);
-                    }
                 } else {
                     photoImage.setImage(currentPhotoObject.location, currentPhotoFilter, currentPhotoObjectThumb != null ? currentPhotoObjectThumb.location : null, currentPhotoFilterThumb, 0, null, false);
                 }
