@@ -87,11 +87,8 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
         void onMessageSend(CharSequence message);
         void needSendTyping();
         void onTextChanged(CharSequence text, boolean bigChange);
-        //void onAttachButtonHidden();
-        //void onAttachButtonShow();
         void onWindowSizeChanged(int size);
         void onStickersTab(boolean opened);
-        //void onMessageEditEnd(boolean loading);
     }
 
     private class SeekBarWaveformView extends View {
@@ -232,7 +229,7 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
     private ImageView emojiButton;
     private EmojiView emojiView;
     private TextView recordTimeText;
-    private ImageView audioSendButton;
+    private ImageView audioRecordButton;
     private FrameLayout recordPanel;
     private FrameLayout recordedAudioPanel;
     private SeekBarWaveformView recordedAudioSeekBar;
@@ -268,7 +265,6 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
     private float startedDraggingX = -1;
     private float distCanMove = AndroidUtilities.dp(80);
     private boolean recordingAudio;
-    private boolean forceShowSendButton;
     private boolean allowStickers;
     private boolean allowGifs;
 
@@ -472,9 +468,23 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
 
         messageEditText = new EditTextCaption(context);
         messageEditText.setHint(LocaleController.getString("TypeMessage", R.string.TypeMessage));
-        messageEditText.setImeOptions(EditorInfo.IME_FLAG_NO_EXTRACT_UI);
-        messageEditText.setInputType(messageEditText.getInputType() | EditorInfo.TYPE_TEXT_FLAG_CAP_SENTENCES | EditorInfo.TYPE_TEXT_FLAG_MULTI_LINE);
-        messageEditText.setSingleLine(false);
+
+        int addImeFlag = 0, addInputType = 0;
+        if( sendByEnter ) {
+            // using IME_ACTION_SEND together with EditText over multiple lines is a little bit tricky:
+            // - setSingleLine(true) and the missing TYPE_TEXT_FLAG_MULTI_LINE is needed to show the IME_ACTION_SEND-button
+            // - setHorizontallyScrolling(false) forces the field to scroll vertically (see setMaxLines() below) instead of horizontally
+            addImeFlag = EditorInfo.IME_ACTION_SEND;
+            messageEditText.setSingleLine(true);
+            addInputType = 0;
+            messageEditText.setHorizontallyScrolling(false);
+        }
+        else {
+            messageEditText.setSingleLine(false);
+            addInputType = EditorInfo.TYPE_TEXT_FLAG_MULTI_LINE;
+        }
+        messageEditText.setImeOptions(EditorInfo.IME_FLAG_NO_EXTRACT_UI | addImeFlag);
+        messageEditText.setInputType(messageEditText.getInputType() | EditorInfo.TYPE_TEXT_FLAG_CAP_SENTENCES | addInputType);
         messageEditText.setMaxLines(4);
         messageEditText.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 18);
         messageEditText.setGravity(Gravity.BOTTOM);
@@ -681,14 +691,14 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
         sendButtonContainer = new FrameLayout(context);
         textFieldContainer.addView(sendButtonContainer, LayoutHelper.createLinear(48, 48, Gravity.BOTTOM));
 
-        audioSendButton = new ImageView(context);
-        audioSendButton.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
-        audioSendButton.setImageResource(R.drawable.mic);
-        audioSendButton.setBackgroundColor(0xffffffff);
-        audioSendButton.setSoundEffectsEnabled(false);
-        audioSendButton.setPadding(0, 0, AndroidUtilities.dp(4), 0);
-        sendButtonContainer.addView(audioSendButton, LayoutHelper.createFrame(48, 48));
-        audioSendButton.setOnTouchListener(new OnTouchListener() {
+        audioRecordButton = new ImageView(context);
+        audioRecordButton.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
+        audioRecordButton.setImageResource(R.drawable.mic);
+        audioRecordButton.setBackgroundColor(0xffffffff);
+        audioRecordButton.setSoundEffectsEnabled(false);
+        audioRecordButton.setPadding(0, 0, AndroidUtilities.dp(4), 0);
+        sendButtonContainer.addView(audioRecordButton, LayoutHelper.createFrame(48, 48));
+        audioRecordButton.setOnTouchListener(new OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
                 if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
@@ -701,7 +711,7 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
                     startedDraggingX = -1;
                     MediaController.getInstance().startRecording(dialog_id, replyingMessageObject);
                     updateAudioRecordInterface();
-                    audioSendButton.getParent().requestDisallowInterceptTouchEvent(true);
+                    audioRecordButton.getParent().requestDisallowInterceptTouchEvent(true);
                 } else if (motionEvent.getAction() == MotionEvent.ACTION_UP || motionEvent.getAction() == MotionEvent.ACTION_CANCEL) {
                     startedDraggingX = -1;
                     MediaController.getInstance().stopRecording(1);
@@ -715,7 +725,7 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
                         updateAudioRecordInterface();
                     }
 
-                    x = x + audioSendButton.getX();
+                    x = x + audioRecordButton.getX();
                     FrameLayout.LayoutParams params = (FrameLayout.LayoutParams) slideText.getLayoutParams();
                     if (startedDraggingX != -1) {
                         float dist = (x - startedDraggingX);
@@ -797,11 +807,6 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
     @Override
     public boolean hasOverlappingRendering() {
         return false;
-    }
-
-    public void setForceShowSendButton(boolean value, boolean animated) {
-        forceShowSendButton = value;
-        checkSendButton(animated);
     }
 
     public void setAllowStickersAndGifs(boolean value, boolean value2) {
@@ -944,21 +949,13 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
             if (delegate != null) {
                 delegate.onMessageSend(message);
             }
-        } else if (forceShowSendButton) {
-            if (delegate != null) {
-                delegate.onMessageSend(null);
-            }
         }
     }
 
     public boolean processSendingText(CharSequence text) {
         text = AndroidUtilities.getTrimmedString(text);
         if (text.length() != 0) {
-            //int count = (int) Math.ceil(text.length() / 4096.0f);
-            //for (int a = 0; a < count; a++) {
-            //    CharSequence mess = text.subSequence(a * 4096, Math.min((a + 1) * 4096, text.length()));
-                SendMessagesHelper.getInstance().sendMessageText(text.toString(), dialog_id, null);
-            //}
+            SendMessagesHelper.getInstance().sendMessageText(text.toString(), dialog_id, null);
             return true;
         }
         return false;
@@ -969,8 +966,9 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
             animated = false;
         }
         CharSequence message = AndroidUtilities.getTrimmedString(messageEditText.getText());
-        if (message.length() > 0 || forceShowSendButton || audioToSend != null) {
-            if (audioSendButton.getVisibility() == VISIBLE ) {
+        if (message.length() > 0 || audioToSend != null) {
+            if (audioRecordButton.getVisibility() == VISIBLE ) {
+                // hide audio-record-button and attach-button, show send-button
                 if (animated) {
                     if(runningAnimationType == 1) {
                         return;
@@ -1008,24 +1006,24 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
                         });
                         runningAnimation2.start();
                         updateFieldRight(0);
-                        /*if (delegate != null) {
-                            delegate.onAttachButtonHidden();
-                        }*/
                     }
 
                     runningAnimation = new AnimatorSet();
 
                     ArrayList<Animator> animators = new ArrayList<>();
-                    if (audioSendButton.getVisibility() == VISIBLE) {
-                        animators.add(ObjectAnimator.ofFloat(audioSendButton, "scaleX", 0.1f));
-                        animators.add(ObjectAnimator.ofFloat(audioSendButton, "scaleY", 0.1f));
-                        animators.add(ObjectAnimator.ofFloat(audioSendButton, "alpha", 0.0f));
+                    if (audioRecordButton.getVisibility() == VISIBLE) {
+                        animators.add(ObjectAnimator.ofFloat(audioRecordButton, "scaleX", 0.1f));
+                        animators.add(ObjectAnimator.ofFloat(audioRecordButton, "scaleY", 0.1f));
+                        animators.add(ObjectAnimator.ofFloat(audioRecordButton, "alpha", 0.0f));
                     }
                     runningAnimationType = 1;
-                    animators.add(ObjectAnimator.ofFloat(sendButton, "scaleX", 1.0f));
-                    animators.add(ObjectAnimator.ofFloat(sendButton, "scaleY", 1.0f));
-                    animators.add(ObjectAnimator.ofFloat(sendButton, "alpha", 1.0f));
-                    sendButton.setVisibility(VISIBLE);
+
+                    if( !sendByEnter ) {
+                        animators.add(ObjectAnimator.ofFloat(sendButton, "scaleX", 1.0f));
+                        animators.add(ObjectAnimator.ofFloat(sendButton, "scaleY", 1.0f));
+                        animators.add(ObjectAnimator.ofFloat(sendButton, "alpha", 1.0f));
+                        sendButton.setVisibility(VISIBLE);
+                    }
 
                     runningAnimation.playTogether(animators);
                     runningAnimation.setDuration(150);
@@ -1033,8 +1031,12 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
                         @Override
                         public void onAnimationEnd(Animator animation) {
                             if (runningAnimation != null && runningAnimation.equals(animation)) {
-                                sendButton.setVisibility(VISIBLE);
-                                audioSendButton.setVisibility(GONE);
+
+                                if( !sendByEnter ) {
+                                    sendButton.setVisibility(VISIBLE);
+                                }
+
+                                audioRecordButton.setVisibility(GONE);
                                 runningAnimation = null;
                                 runningAnimationType = 0;
                             }
@@ -1049,24 +1051,26 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
                     });
                     runningAnimation.start();
                 } else {
-                    audioSendButton.setScaleX(0.1f);
-                    audioSendButton.setScaleY(0.1f);
-                    audioSendButton.setAlpha(0.0f);
-                    sendButton.setScaleX(1.0f);
-                    sendButton.setScaleY(1.0f);
-                    sendButton.setAlpha(1.0f);
-                    sendButton.setVisibility(VISIBLE);
-                    audioSendButton.setVisibility(GONE);
+                    audioRecordButton.setScaleX(0.1f);
+                    audioRecordButton.setScaleY(0.1f);
+                    audioRecordButton.setAlpha(0.0f);
+
+                    if( !sendByEnter ) {
+                        sendButton.setScaleX(1.0f);
+                        sendButton.setScaleY(1.0f);
+                        sendButton.setAlpha(1.0f);
+                        sendButton.setVisibility(VISIBLE);
+                    }
+
+                    audioRecordButton.setVisibility(GONE);
                     if (attachButton != null) {
                         attachButton.setVisibility(GONE);
-                        /*if (delegate != null) {
-                            delegate.onAttachButtonHidden();
-                        }*/
                         updateFieldRight(0);
                     }
                 }
             }
-        } else if (sendButton.getVisibility() == VISIBLE ) {
+        } else if (audioRecordButton.getVisibility() != VISIBLE ) {
+            // hide send-button, show audio-record-button and attach-button
             if (animated) {
                 if (runningAnimationType == 2) {
                     return;
@@ -1091,17 +1095,16 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
                     runningAnimation2.setDuration(100);
                     runningAnimation2.start();
                     updateFieldRight(1);
-                    //delegate.onAttachButtonShow();
                 }
 
-                audioSendButton.setVisibility(VISIBLE);
+                audioRecordButton.setVisibility(VISIBLE);
                 runningAnimation = new AnimatorSet();
                 runningAnimationType = 2;
 
                 ArrayList<Animator> animators = new ArrayList<>();
-                animators.add(ObjectAnimator.ofFloat(audioSendButton, "scaleX", 1.0f));
-                animators.add(ObjectAnimator.ofFloat(audioSendButton, "scaleY", 1.0f));
-                animators.add(ObjectAnimator.ofFloat(audioSendButton, "alpha", 1.0f));
+                animators.add(ObjectAnimator.ofFloat(audioRecordButton, "scaleX", 1.0f));
+                animators.add(ObjectAnimator.ofFloat(audioRecordButton, "scaleY", 1.0f));
+                animators.add(ObjectAnimator.ofFloat(audioRecordButton, "alpha", 1.0f));
                 animators.add(ObjectAnimator.ofFloat(sendButton, "scaleX", 0.1f));
                 animators.add(ObjectAnimator.ofFloat(sendButton, "scaleY", 0.1f));
                 animators.add(ObjectAnimator.ofFloat(sendButton, "alpha", 0.0f));
@@ -1113,7 +1116,7 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
                     public void onAnimationEnd(Animator animation) {
                         if (runningAnimation != null && runningAnimation.equals(animation)) {
                             sendButton.setVisibility(GONE);
-                            audioSendButton.setVisibility(VISIBLE);
+                            audioRecordButton.setVisibility(VISIBLE);
                             runningAnimation = null;
                             runningAnimationType = 0;
                         }
@@ -1131,13 +1134,12 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
                 sendButton.setScaleX(0.1f);
                 sendButton.setScaleY(0.1f);
                 sendButton.setAlpha(0.0f);
-                audioSendButton.setScaleX(1.0f);
-                audioSendButton.setScaleY(1.0f);
-                audioSendButton.setAlpha(1.0f);
+                audioRecordButton.setScaleX(1.0f);
+                audioRecordButton.setScaleY(1.0f);
+                audioRecordButton.setAlpha(1.0f);
                 sendButton.setVisibility(GONE);
-                audioSendButton.setVisibility(VISIBLE);
+                audioRecordButton.setVisibility(VISIBLE);
                 if (attachButton != null) {
-                    //delegate.onAttachButtonShow();
                     attachButton.setVisibility(VISIBLE);
                     updateFieldRight(1);
                 }
@@ -1198,7 +1200,7 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
             runningAnimationAudio = new AnimatorSet();
             runningAnimationAudio.playTogether(ObjectAnimator.ofFloat(recordPanel, "translationX", 0),
                     ObjectAnimator.ofFloat(recordCircle, "scale", 1),
-                    ObjectAnimator.ofFloat(audioSendButton, "alpha", 0));
+                    ObjectAnimator.ofFloat(audioRecordButton, "alpha", 0));
             runningAnimationAudio.setDuration(300);
             runningAnimationAudio.addListener(new AnimatorListenerAdapterProxy() {
                 @Override
@@ -1232,7 +1234,7 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
             runningAnimationAudio = new AnimatorSet();
             runningAnimationAudio.playTogether(ObjectAnimator.ofFloat(recordPanel, "translationX", AndroidUtilities.displaySize.x),
                     ObjectAnimator.ofFloat(recordCircle, "scale", 0.0f),
-                    ObjectAnimator.ofFloat(audioSendButton, "alpha", 1.0f));
+                    ObjectAnimator.ofFloat(audioRecordButton, "alpha", 1.0f));
             runningAnimationAudio.setDuration(300);
             runningAnimationAudio.addListener(new AnimatorListenerAdapterProxy() {
                 @Override
