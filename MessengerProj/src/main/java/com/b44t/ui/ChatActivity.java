@@ -45,6 +45,7 @@ import android.provider.MediaStore;
 import android.text.TextUtils;
 import android.text.style.ClickableSpan;
 import android.text.style.URLSpan;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.MotionEvent;
@@ -192,6 +193,8 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
     private final static int ID_SEARCH = 40;
     private final static int ID_CHAT_COMPOSE_PANEL = 1000;
     private TextView m_replyMenuItem, m_infoMenuItem, m_saveToXXMenuItem, m_openMenuItem, m_shareMenuItem;
+
+    private static final String TAG = "ChatActivity";
 
     public ChatActivity(Bundle args) {
         super(args);
@@ -2824,6 +2827,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 View view = holder.itemView;
                 int msg_id = m_msglist[i];
 
+                //Log.i(TAG, String.format("Loading message #%d to index #%d", msg_id, i));
                 boolean selected = false;
                 boolean disableSelection = false;
                 if (actionBar.isActionModeShowed()) {

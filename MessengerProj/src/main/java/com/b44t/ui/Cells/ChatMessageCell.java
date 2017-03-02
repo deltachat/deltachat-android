@@ -1018,11 +1018,14 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
         for (int a = 0; a < documentAttach.attributes.size(); a++) {
             TLRPC.DocumentAttribute attribute = documentAttach.attributes.get(a);
             if (attribute instanceof TLRPC.TL_documentAttributeAudio) {
+                /* this does not work and result in endless reloading of the messages in the
+                   chatlist (you can check this using the `Log.i()`-command in ChatActivity
                 if (attribute.waveform == null || attribute.waveform.length == 0) {
                     MediaController.getInstance().generateWaveform(currentMessageObject);
                 }
                 useSeekBarWaweform = attribute.waveform != null;
                 seekBarWaveform.setWaveform(attribute.waveform);
+                */
                 break;
             }
         }
@@ -1919,9 +1922,10 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
             durationLayout.draw(canvas);
             canvas.restore();
 
-            if (currentMessageObject.type != MessageObject.MO_TYPE0_TEXT && currentMessageObject.messageOwner.to_id.channel_id == 0 && currentMessageObject.isContentUnread()) {
-                docBackPaint.setColor(currentMessageObject.isOutOwner() ? Theme.MSG_OUT_VOICE_SEEKBAR_FILL_COLOR : Theme.MSG_IN_VOICE_SEEKBAR_FILL_COLOR);
-                canvas.drawCircle(timeAudioX + timeWidthAudio + dp(6), dp(51) + namesOffset + mediaOffsetY, dp(3), docBackPaint);
+            if (!currentMessageObject.isOutOwner() && currentMessageObject.isUnread()) {
+                // mark unread incoming messages with a little dot (only works if we mark the voice messages as being read only if heard)
+                docBackPaint.setColor(Theme.MSG_IN_VOICE_SEEKBAR_FILL_COLOR);
+                canvas.drawCircle(timeAudioX + timeWidthAudio + dp(6), dp(51) + namesOffset + mediaOffsetY, dp(4), docBackPaint);
             }
         }
 
