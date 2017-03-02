@@ -42,11 +42,7 @@ import android.os.Build;
 import android.os.PowerManager;
 import android.os.SystemClock;
 import android.text.Editable;
-import android.text.Layout;
 import android.text.SpannableStringBuilder;
-import android.text.StaticLayout;
-import android.text.TextPaint;
-import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.text.style.ImageSpan;
 import android.util.TypedValue;
@@ -63,7 +59,6 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.b44t.messenger.AndroidUtilities;
 import com.b44t.messenger.Emoji;
@@ -160,11 +155,6 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
 
     private class EditTextCaption extends EditText {
 
-        private String caption;
-        private StaticLayout captionLayout;
-        private int userNameLength;
-        private int xOffset;
-        private int yOffset;
         private Object editor;
         private Field editorField;
         private Drawable[] mCursorDrawable;
@@ -188,17 +178,6 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
             }
         }
 
-        public void setCaption(String value) {
-            if ((caption == null || caption.length() == 0) && (value == null || value.length() == 0) || caption != null && value != null && caption.equals(value)) {
-                return;
-            }
-            caption = value;
-            if (caption != null) {
-                caption = caption.replace('\n', ' ');
-            }
-            requestLayout();
-        }
-
         @SuppressLint("DrawAllocation")
         @Override
         protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
@@ -208,55 +187,18 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
                 setMeasuredDimension(MeasureSpec.getSize(widthMeasureSpec), AndroidUtilities.dp(51));
                 FileLog.e("messenger", e);
             }
-
-
-            captionLayout = null;
-
-            if (caption != null && caption.length() > 0) {
-                CharSequence text = getText();
-                if (text.length() > 1 && text.charAt(0) == '@') {
-                    int index = TextUtils.indexOf(text, ' ');
-                    if (index != -1) {
-                        TextPaint paint = getPaint();
-                        CharSequence str = text.subSequence(0, index + 1);
-                        int size = (int) Math.ceil(paint.measureText(text, 0, index + 1));
-                        int width = getMeasuredWidth() - getPaddingLeft() - getPaddingRight();
-                        userNameLength = str.length();
-                        CharSequence captionFinal = TextUtils.ellipsize(caption, paint, width - size, TextUtils.TruncateAt.END);
-                        xOffset = size;
-                        try {
-                            captionLayout = new StaticLayout(captionFinal, getPaint(), width - size, Layout.Alignment.ALIGN_NORMAL, 1.0f, 0.0f, false);
-                            if (captionLayout.getLineCount() > 0) {
-                                xOffset += -captionLayout.getLineLeft(0);
-                            }
-                            yOffset = (getMeasuredHeight() - captionLayout.getLineBottom(0)) / 2 + AndroidUtilities.dp(0.5f);
-                        } catch (Exception e) {
-                            FileLog.e("messenger", e);
-                        }
-                    }
-                }
-            }
         }
 
         @Override
         protected void onDraw(Canvas canvas) {
             try {
                 super.onDraw(canvas);
-                if (captionLayout != null && userNameLength == length()) {
-                    Paint paint = getPaint();
-                    int oldColor = getPaint().getColor();
-                    paint.setColor(0xffb2b2b2);
-                    canvas.save();
-                    canvas.translate(xOffset, yOffset);
-                    captionLayout.draw(canvas);
-                    canvas.restore();
-                    paint.setColor(oldColor);
-                }
             } catch (Exception e) {
-                FileLog.e("messenger", e);
             }
 
             try {
+                // the following lines are because otherwise the cursor stops blinking if
+                // the focus was set to another text field in between (eg. search)
                 if (editorField != null && mCursorDrawable != null && mCursorDrawable[0] != null) {
                     long mShowCursor = editorField.getLong(editor);
                     boolean showCursor = (SystemClock.uptimeMillis() - mShowCursor) % (2 * 500) < 500;
@@ -268,12 +210,12 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
                     }
                 }
             } catch (Throwable e) {
-                //ignore
             }
         }
 
         @Override
         public boolean onTouchEvent(MotionEvent event) {
+            // show the keyboard again if it was hidden by the emoji view
             if (isPopupShowing() && event.getAction() == MotionEvent.ACTION_DOWN) {
                 showPopup(AndroidUtilities.usingHardwareInput ? 0 : 2, 0);
                 openKeyboardInternal();
@@ -940,13 +882,6 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
         }
     }
 
-    public void setCaption(String caption) {
-        if (messageEditText != null) {
-            messageEditText.setCaption(caption);
-            checkSendButton(true);
-        }
-    }
-
     public void addTopView(View view, int height) {
         if (view == null) {
             return;
@@ -1250,11 +1185,10 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
         }
         CharSequence message = AndroidUtilities.getTrimmedString(messageEditText.getText());
         if (message.length() > 0 || forceShowSendButton || audioToSend != null) {
-            boolean showBotButton = messageEditText.caption != null && sendButton.getVisibility() == VISIBLE;
-            boolean showSendButton = messageEditText.caption == null && cancelBotButton.getVisibility() == VISIBLE;
-            if (audioSendButton.getVisibility() == VISIBLE || showBotButton || showSendButton) {
+            boolean showSendButton = cancelBotButton.getVisibility() == VISIBLE;
+            if (audioSendButton.getVisibility() == VISIBLE || showSendButton) {
                 if (animated) {
-                    if (runningAnimationType == 1 && messageEditText.caption == null || runningAnimationType == 3 && messageEditText.caption != null) {
+                    if(runningAnimationType == 1) {
                         return;
                     }
                     if (runningAnimation != null) {
@@ -1303,28 +1237,16 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
                         animators.add(ObjectAnimator.ofFloat(audioSendButton, "scaleY", 0.1f));
                         animators.add(ObjectAnimator.ofFloat(audioSendButton, "alpha", 0.0f));
                     }
-                    if (showBotButton) {
-                        animators.add(ObjectAnimator.ofFloat(sendButton, "scaleX", 0.1f));
-                        animators.add(ObjectAnimator.ofFloat(sendButton, "scaleY", 0.1f));
-                        animators.add(ObjectAnimator.ofFloat(sendButton, "alpha", 0.0f));
-                    } else if (showSendButton) {
+                    if (showSendButton) {
                         animators.add(ObjectAnimator.ofFloat(cancelBotButton, "scaleX", 0.1f));
                         animators.add(ObjectAnimator.ofFloat(cancelBotButton, "scaleY", 0.1f));
                         animators.add(ObjectAnimator.ofFloat(cancelBotButton, "alpha", 0.0f));
                     }
-                    if (messageEditText.caption != null) {
-                        runningAnimationType = 3;
-                        animators.add(ObjectAnimator.ofFloat(cancelBotButton, "scaleX", 1.0f));
-                        animators.add(ObjectAnimator.ofFloat(cancelBotButton, "scaleY", 1.0f));
-                        animators.add(ObjectAnimator.ofFloat(cancelBotButton, "alpha", 1.0f));
-                        cancelBotButton.setVisibility(VISIBLE);
-                    } else {
-                        runningAnimationType = 1;
-                        animators.add(ObjectAnimator.ofFloat(sendButton, "scaleX", 1.0f));
-                        animators.add(ObjectAnimator.ofFloat(sendButton, "scaleY", 1.0f));
-                        animators.add(ObjectAnimator.ofFloat(sendButton, "alpha", 1.0f));
-                        sendButton.setVisibility(VISIBLE);
-                    }
+                    runningAnimationType = 1;
+                    animators.add(ObjectAnimator.ofFloat(sendButton, "scaleX", 1.0f));
+                    animators.add(ObjectAnimator.ofFloat(sendButton, "scaleY", 1.0f));
+                    animators.add(ObjectAnimator.ofFloat(sendButton, "alpha", 1.0f));
+                    sendButton.setVisibility(VISIBLE);
 
                     runningAnimation.playTogether(animators);
                     runningAnimation.setDuration(150);
@@ -1332,13 +1254,8 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
                         @Override
                         public void onAnimationEnd(Animator animation) {
                             if (runningAnimation != null && runningAnimation.equals(animation)) {
-                                if (messageEditText.caption != null) {
-                                    cancelBotButton.setVisibility(VISIBLE);
-                                    sendButton.setVisibility(GONE);
-                                } else {
-                                    sendButton.setVisibility(VISIBLE);
-                                    cancelBotButton.setVisibility(GONE);
-                                }
+                                sendButton.setVisibility(VISIBLE);
+                                cancelBotButton.setVisibility(GONE);
                                 audioSendButton.setVisibility(GONE);
                                 runningAnimation = null;
                                 runningAnimationType = 0;
@@ -1357,25 +1274,14 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
                     audioSendButton.setScaleX(0.1f);
                     audioSendButton.setScaleY(0.1f);
                     audioSendButton.setAlpha(0.0f);
-                    if (messageEditText.caption != null) {
-                        sendButton.setScaleX(0.1f);
-                        sendButton.setScaleY(0.1f);
-                        sendButton.setAlpha(0.0f);
-                        cancelBotButton.setScaleX(1.0f);
-                        cancelBotButton.setScaleY(1.0f);
-                        cancelBotButton.setAlpha(1.0f);
-                        cancelBotButton.setVisibility(VISIBLE);
-                        sendButton.setVisibility(GONE);
-                    } else {
-                        cancelBotButton.setScaleX(0.1f);
-                        cancelBotButton.setScaleY(0.1f);
-                        cancelBotButton.setAlpha(0.0f);
-                        sendButton.setScaleX(1.0f);
-                        sendButton.setScaleY(1.0f);
-                        sendButton.setAlpha(1.0f);
-                        sendButton.setVisibility(VISIBLE);
-                        cancelBotButton.setVisibility(GONE);
-                    }
+                    cancelBotButton.setScaleX(0.1f);
+                    cancelBotButton.setScaleY(0.1f);
+                    cancelBotButton.setAlpha(0.0f);
+                    sendButton.setScaleX(1.0f);
+                    sendButton.setScaleY(1.0f);
+                    sendButton.setAlpha(1.0f);
+                    sendButton.setVisibility(VISIBLE);
+                    cancelBotButton.setVisibility(GONE);
                     audioSendButton.setVisibility(GONE);
                     if (attachButton != null) {
                         attachButton.setVisibility(GONE);
