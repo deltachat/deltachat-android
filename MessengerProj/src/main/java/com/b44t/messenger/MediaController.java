@@ -622,7 +622,7 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
                 NotificationCenter.getInstance().addObserver(MediaController.this, NotificationCenter.FileDidLoaded);
                 NotificationCenter.getInstance().addObserver(MediaController.this, NotificationCenter.FileLoadProgressChanged);
                 NotificationCenter.getInstance().addObserver(MediaController.this, NotificationCenter.FileUploadProgressChanged);
-                NotificationCenter.getInstance().addObserver(MediaController.this, NotificationCenter.musicDidLoaded);
+                //NotificationCenter.getInstance().addObserver(MediaController.this, NotificationCenter.musicDidLoaded);
             }
         });
 
@@ -1353,7 +1353,8 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
                     }
                 }
             }
-        } else if (id == NotificationCenter.musicDidLoaded) {
+        }
+        /*else if (id == NotificationCenter.musicDidLoaded) {
             long did = (Long) args[0];
             if (playingMessageObject != null && playingMessageObject.isMusic() && playingMessageObject.getDialogId() == did) {
                 ArrayList<MessageObject> arrayList = (ArrayList<MessageObject>) args[1];
@@ -1365,7 +1366,8 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
                     currentPlaylistNum += arrayList.size();
                 }
             }
-        } else if (id == NotificationCenter.didReceivedNewMessages) {
+        }*/
+        else if (id == NotificationCenter.didReceivedNewMessages) {
             if (voiceMessagesPlaylist != null && !voiceMessagesPlaylist.isEmpty() && args.length >= 2 ) {
                 MessageObject messageObject = voiceMessagesPlaylist.get(0);
                 long did = (Long) args[0];
@@ -2077,7 +2079,7 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
         playAudio(currentPlayList.get(currentPlaylistNum));
     }
 
-    private void checkIsNextMusicFileDownloaded() {
+    /*private void checkIsNextMusicFileDownloaded() {
         if ((getCurrentDownloadMask() & AUTODOWNLOAD_MASK_MUSIC) == 0) {
             return;
         }
@@ -2102,7 +2104,7 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
         if (cacheFile != null && cacheFile != file && !cacheFile.exists() && nextAudio.isMusic()) {
             FileLoader.getInstance().loadFile(nextAudio.getDocument(), false, false);
         }
-    }
+    }*/
 
     public void setVoiceMessagesPlaylist(ArrayList<MessageObject> playlist, boolean unread) {
         voiceMessagesPlaylist = playlist;
@@ -2154,7 +2156,7 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
             }
             return true;
         }
-        if (!messageObject.isOut() && messageObject.isContentUnread() && messageObject.messageOwner.to_id.channel_id == 0) {
+        if (!messageObject.isOut() && messageObject.isContentUnread()) {
             MessagesController.getInstance().markMessageContentAsRead(messageObject);
         }
         boolean notify = !playMusicAgain;
@@ -2188,11 +2190,12 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
             NotificationCenter.getInstance().postNotificationName(NotificationCenter.audioPlayStateChanged, playingMessageObject.getId());
             return true;
         }
-        if (messageObject.isMusic()) {
+        /*if (messageObject.isMusic()) {
             checkIsNextMusicFileDownloaded();
-        }
+        }*/
 
-        if (isOpusFile(cacheFile.getAbsolutePath()) == 1) {
+        if (isOpusFile(cacheFile.getAbsolutePath()) == 1)
+        {
             playlist.clear();
             shuffledPlaylist.clear();
             synchronized (playerObjectSync) {
@@ -2239,7 +2242,9 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
                     return false;
                 }
             }
-        } else {
+        }
+        else
+        {
             try {
                 audioPlayer = new MediaPlayer();
                 audioPlayer.setAudioStreamType(useFrontSpeaker ? AudioManager.STREAM_VOICE_CALL : AudioManager.STREAM_MUSIC);
@@ -2329,13 +2334,9 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
             });
         }
 
-        if (playingMessageObject.isMusic()) {
-            Intent intent = new Intent(ApplicationLoader.applicationContext, MusicPlayerService.class);
-            ApplicationLoader.applicationContext.startService(intent);
-        } else {
-            Intent intent = new Intent(ApplicationLoader.applicationContext, MusicPlayerService.class);
-            ApplicationLoader.applicationContext.stopService(intent);
-        }
+        // we show the status-bar-player for music as well as for voice messages. KISS.
+        Intent intent = new Intent(ApplicationLoader.applicationContext, MusicPlayerService.class);
+        ApplicationLoader.applicationContext.startService(intent);
 
         return true;
     }

@@ -56,7 +56,7 @@ public class NotificationCenter {
     //public static final int screenStateChanged = totalEvents++; -- currently not used, but this may get handy
     public static final int stickersDidLoaded = totalEvents++;
     public static final int didReplacedPhotoInMemCache = totalEvents++;
-    public static final int musicDidLoaded = totalEvents++;
+    //public static final int musicDidLoaded = totalEvents++;
     public static final int reloadHints = totalEvents++;
 
     public static final int httpFileDidLoaded = totalEvents++;
