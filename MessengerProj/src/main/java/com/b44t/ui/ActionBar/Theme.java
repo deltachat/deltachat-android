@@ -77,7 +77,6 @@ public class Theme {
     public static final int STICKERS_SHEET_REMOVE_TEXT_COLOR = 0xffcd5a5a;
 
     public static final int MSG_SELECTED_BACKGROUND_COLOR = 0x6633b5e5;
-    public static final int MSG_WEB_PREVIEW_DURATION_TEXT_COLOR = 0xffffffff;
     public static final int MSG_STICKER_NAME_TEXT_COLOR = 0xffffffff;
     public static final int MSG_IN_FWD_N_TIME_TEXT_COLOR = 0xff9ea7b0;
     public static final int MSG_OUT_FWD_N_TIME_TEXT_COLOR = 0xff70b15c;
