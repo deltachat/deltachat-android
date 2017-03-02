@@ -682,7 +682,7 @@ JNIEXPORT jint Java_com_b44t_messenger_MrChat_MrChatSendMedia(JNIEnv *env, jclas
 			mrparam_set_int(msg->m_param, 'w', w);
 			mrparam_set_int(msg->m_param, 'h', h);
 		}
-		if( type == MR_MSG_AUDIO || type == MR_MSG_VIDEO ) {
+		if( type == MR_MSG_AUDIO || type == MR_MSG_VOICE || type == MR_MSG_VIDEO ) {
 			mrparam_set_int(msg->m_param, 'd', ms);
 		}
 		jint msg_id = mrchat_send_msg((mrchat_t*)hChat, msg);

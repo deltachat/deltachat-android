@@ -434,7 +434,7 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
                 newMsg_id = mrChat.sendMedia(MrMsg.MR_MSG_VIDEO,
                         path, document.mime_type, width, height, time_ms);
             }
-            else if (document != null && MessageObject.isVoiceDocument(document) || MessageObject.isMusicDocument(document))
+            else if ( MessageObject.isVoiceDocument(document) || MessageObject.isMusicDocument(document) )
             {
                 // SEND AUDIO
                 int time_ms = 0;
@@ -442,7 +442,8 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
                     time_ms = Integer.parseInt(params.get("mr_time_ms"));
                 }
 
-                newMsg_id = mrChat.sendMedia(MrMsg.MR_MSG_AUDIO,
+                newMsg_id = mrChat.sendMedia(
+                        MessageObject.isVoiceDocument(document)? MrMsg.MR_MSG_VOICE : MrMsg.MR_MSG_AUDIO,
                         path, document.mime_type, 0, 0, time_ms);
 
             }
