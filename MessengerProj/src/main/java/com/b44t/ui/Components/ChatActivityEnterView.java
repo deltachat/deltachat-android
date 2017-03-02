@@ -1018,12 +1018,10 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
                     }
                     runningAnimationType = 1;
 
-                    if( !sendByEnter ) {
-                        animators.add(ObjectAnimator.ofFloat(sendButton, "scaleX", 1.0f));
-                        animators.add(ObjectAnimator.ofFloat(sendButton, "scaleY", 1.0f));
-                        animators.add(ObjectAnimator.ofFloat(sendButton, "alpha", 1.0f));
-                        sendButton.setVisibility(VISIBLE);
-                    }
+                    animators.add(ObjectAnimator.ofFloat(sendButton, "scaleX", 1.0f));
+                    animators.add(ObjectAnimator.ofFloat(sendButton, "scaleY", 1.0f));
+                    animators.add(ObjectAnimator.ofFloat(sendButton, "alpha", 1.0f));
+                    sendButton.setVisibility(VISIBLE);
 
                     runningAnimation.playTogether(animators);
                     runningAnimation.setDuration(150);
@@ -1032,9 +1030,7 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
                         public void onAnimationEnd(Animator animation) {
                             if (runningAnimation != null && runningAnimation.equals(animation)) {
 
-                                if( !sendByEnter ) {
-                                    sendButton.setVisibility(VISIBLE);
-                                }
+                                sendButton.setVisibility(VISIBLE);
 
                                 audioRecordButton.setVisibility(GONE);
                                 runningAnimation = null;
@@ -1055,12 +1051,10 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
                     audioRecordButton.setScaleY(0.1f);
                     audioRecordButton.setAlpha(0.0f);
 
-                    if( !sendByEnter ) {
-                        sendButton.setScaleX(1.0f);
-                        sendButton.setScaleY(1.0f);
-                        sendButton.setAlpha(1.0f);
-                        sendButton.setVisibility(VISIBLE);
-                    }
+                    sendButton.setScaleX(1.0f);
+                    sendButton.setScaleY(1.0f);
+                    sendButton.setAlpha(1.0f);
+                    sendButton.setVisibility(VISIBLE);
 
                     audioRecordButton.setVisibility(GONE);
                     if (attachButton != null) {

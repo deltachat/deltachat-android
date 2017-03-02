@@ -119,8 +119,8 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
         privacyRow = rowCount++;
         notificationRow = rowCount++;
         backgroundRow = rowCount++;
-        messagesSectionRow = -1; // rowCount++;
-        messagesSectionRow2 = -1; // rowCount++;
+        messagesSectionRow = rowCount++;
+        messagesSectionRow2 = rowCount++;
         if (Build.VERSION.SDK_INT >= 23) {
             directShareRow = -1; // for now, seems not really to work, however, in T'gram it does
         }
