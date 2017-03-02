@@ -80,7 +80,7 @@ public class AudioCell extends FrameLayout {
             public void onClick(View v) {
                 if (audioEntry != null) {
                     if (MediaController.getInstance().isMessageOnAir(audioEntry.messageObject) && !MediaController.getInstance().isAudioPaused()) {
-                        MediaController.getInstance().pauseAudio(audioEntry.messageObject);
+                        MediaController.getInstance().stopAudio();
                         playButton.setImageResource(R.drawable.attach_audio_inlist_play);
                     } else {
                         ArrayList<MessageObject> arrayList = new ArrayList<>();
