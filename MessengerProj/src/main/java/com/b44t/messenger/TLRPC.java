@@ -199,11 +199,6 @@ public class TLRPC {
 	public static class TL_inputStickerSetEmpty extends InputStickerSet {
 	}
 
-	public static class InputEncryptedFile extends TLObject {
-		public long id;
-		public int parts;
-	}
-
 	public static class UserProfilePhoto extends TLObject {
 		public FileLocation photo_small;
 		public FileLocation photo_big;

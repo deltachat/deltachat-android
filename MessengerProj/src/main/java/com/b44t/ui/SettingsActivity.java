@@ -149,7 +149,7 @@ public class SettingsActivity extends BaseFragment {
                 }
                 else if (i == aboutRow) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
-                    builder.setTitle(LocaleController.getString("AppName", R.string.AppName) + " " + getVersion());
+                    builder.setTitle(ApplicationLoader.applicationContext.getString(R.string.AppName) + " v" + getVersion());
                     builder.setMessage(MrMailbox.getInfo() + "\n\n" + getAndroidInfo());
                     builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), new DialogInterface.OnClickListener() {
                         @Override
@@ -169,7 +169,18 @@ public class SettingsActivity extends BaseFragment {
     {
         try {
             PackageInfo pInfo = ApplicationLoader.applicationContext.getPackageManager().getPackageInfo(ApplicationLoader.applicationContext.getPackageName(), 0);
-            String abi = "";
+            return pInfo.versionName;
+        }
+        catch(Exception e) {
+            return "ErrVersion";
+        }
+    }
+
+    private String getAbi() // ABI = Application Binary Interface
+    {
+        try {
+            PackageInfo pInfo = ApplicationLoader.applicationContext.getPackageManager().getPackageInfo(ApplicationLoader.applicationContext.getPackageName(), 0);
+            String abi = "ErrAbi";
             switch (pInfo.versionCode % 10) {
                 case 0:
                     abi = "arm";
@@ -184,15 +195,16 @@ public class SettingsActivity extends BaseFragment {
                     abi = "universal";
                     break;
             }
-            return String.format(Locale.US, "v%s-%s", pInfo.versionName, abi);
+            return abi;
         } catch (Exception e) {
-            return "ErrVersion";
+            return "ErrAbi";
         }
     }
 
     private String getAndroidInfo()
     {
-        return "Build.VERSION.SDK_INT=" + Build.VERSION.SDK_INT;
+        return "Build.VERSION.SDK_INT=" + Build.VERSION.SDK_INT + "\n"
+                + "ABI=" + getAbi();
     }
 
     private class ListAdapter extends BaseFragmentAdapter {
@@ -262,7 +274,7 @@ public class SettingsActivity extends BaseFragment {
                     textCell.setText(ApplicationLoader.applicationContext.getString(R.string.AdvancedSettings), false);
                 }
                 else if (i == aboutRow) {
-                    textCell.setText(LocaleController.getString("AboutThisProgram", R.string.AboutThisProgram), false);
+                    textCell.setText(ApplicationLoader.applicationContext.getString(R.string.AboutThisProgram), false);
                 }
             }
             else if (type == ROWTYPE_HEADER) {
