@@ -68,7 +68,6 @@ public class NameSettingsActivity extends BaseFragment {
     EditTextCell displaynameCell; // warning all these objects may be null!
 
     // misc.
-    private View             doneButton;
     private final static int done_button = 1;
 
     @Override
@@ -121,7 +120,7 @@ public class NameSettingsActivity extends BaseFragment {
         });
 
         ActionBarMenu menu = actionBar.createMenu();
-        doneButton = menu.addItemWithWidth(done_button, R.drawable.ic_done, AndroidUtilities.dp(56));
+        menu.addItemWithWidth(done_button, R.drawable.ic_done, AndroidUtilities.dp(56));
 
         // create object to hold the whole view
         fragmentView = new FrameLayout(context);

@@ -26,8 +26,7 @@ package com.b44t.messenger;
 import android.app.Activity;
 import android.content.SharedPreferences;
 
-import com.b44t.ui.ActionBar.BaseFragment;
-import com.b44t.ui.SettingsActivity;
+import com.b44t.ui.SettingsAdvActivity;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -39,12 +38,9 @@ public class MessagesController implements NotificationCenter.NotificationCenter
     public HashMap<Long, MessageObject> dialogMessage = new HashMap<>();
     public HashMap<Long, CharSequence> printingStrings = new HashMap<>();
 
-    public int secretWebpagePreview = 2;
-
     private String uploadingAvatar = null;
 
-    public int fontSize = AndroidUtilities.dp(16);
-    public int ratingDecay;
+    public int fontSize;
 
     public static final int UPDATE_MASK_NAME = 1;
     public static final int UPDATE_MASK_AVATAR = 2;
@@ -79,12 +75,9 @@ public class MessagesController implements NotificationCenter.NotificationCenter
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.FileDidFailUpload);
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.FileDidLoaded);
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.FileDidFailedLoad);
-        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("Notifications", Activity.MODE_PRIVATE);
 
-        preferences = ApplicationLoader.applicationContext.getSharedPreferences("mainconfig", Activity.MODE_PRIVATE);
-        secretWebpagePreview = preferences.getInt("secretWebpage2", 2);
-        ratingDecay = preferences.getInt("ratingDecay", 2419200);
-        fontSize = preferences.getInt("msg_font_size", SettingsActivity.defMsgFontSize());
+        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("mainconfig", Activity.MODE_PRIVATE);
+        fontSize = preferences.getInt("msg_font_size", SettingsAdvActivity.defMsgFontSize());
     }
 
     @Override
