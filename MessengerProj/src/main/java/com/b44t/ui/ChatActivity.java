@@ -1944,6 +1944,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         else if (id == NotificationCenter.messageSendError)
         {
             chatAdapter.notifyDataSetChanged();
+            AndroidUtilities.showErrorHint(getParentActivity());
         }
         else if (id == NotificationCenter.contactsDidLoaded)
         {

@@ -438,8 +438,17 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
             {
                 // SEND AUDIO
                 int time_ms = 0;
-                if( params.get("mr_time_ms") != null ) {
-                    time_ms = Integer.parseInt(params.get("mr_time_ms"));
+                if( params!=null && params.get("mr_time_ms") != null ) {
+                    time_ms = Integer.parseInt(params.get("mr_time_ms")); // if possible, use a higher resolution
+                }
+                else {
+                    for (int i = 0; i < document.attributes.size(); i++) {
+                        TLRPC.DocumentAttribute a = document.attributes.get(i);
+                        if (a instanceof TLRPC.TL_documentAttributeAudio) {
+                            time_ms = a.duration * 1000;
+                            break;
+                        }
+                    }
                 }
 
                 newMsg_id = mrChat.sendMedia(

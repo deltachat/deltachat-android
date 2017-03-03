@@ -98,7 +98,7 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
         public SeekBarWaveformView(Context context) {
             super(context);
             seekBarWaveform = new SeekBarWaveform(context);
-            seekBarWaveform.setColors(0xffa2cef8, 0xffffffff, 0xffa2cef8);
+            seekBarWaveform.setColors(0xffffffff, Theme.MSG_AUDIO_SEEKBAR_DARK_COLOR, 0xffffffff);
             seekBarWaveform.setDelegate(new SeekBar.SeekBarDelegate() {
                 @Override
                 public void onSeekBarDrag(float progress) {
@@ -915,21 +915,8 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
         AnimatorSet.start();
     }
 
-    private void sendMessage() {
-        if (parentFragment != null) {
-            String action;
-            TLRPC.Chat currentChat;
-            if ((int) dialog_id < 0) {
-                currentChat = MessagesController.getInstance().getChat(-(int) dialog_id);
-                /*if (currentChat != null && currentChat.participants_count > MessagesController.getInstance().groupBigSize) {
-                    action = "bigchat_message";
-                } else*/ {
-                    action = "chat_message";
-                }
-            } else {
-                action = "pm_message";
-            }
-        }
+    private void sendMessage()
+    {
         if (audioToSend != null) {
             MessageObject playing = MediaController.getInstance().getPlayingMessageObject();
             if (playing != null && playing == audioToSendMessageObject) {
