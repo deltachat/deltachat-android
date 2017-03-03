@@ -214,7 +214,7 @@ public class AvatarUpdater implements NotificationCenter.NotificationCenterDeleg
                 uploadingAvatar = FileLoader.getInstance().getDirectory(FileLoader.MEDIA_DIR_CACHE) + "/" + bigPhoto.location.volume_id + "_" + bigPhoto.location.local_id + ".jpg";
                 NotificationCenter.getInstance().addObserver(AvatarUpdater.this, NotificationCenter.FileDidUpload);
                 NotificationCenter.getInstance().addObserver(AvatarUpdater.this, NotificationCenter.FileDidFailUpload);
-                FileLoader.getInstance().uploadFile(uploadingAvatar, false, true);
+                //FileLoader.getInstance().uploadFile(uploadingAvatar, false, true);
             }
         }
     }

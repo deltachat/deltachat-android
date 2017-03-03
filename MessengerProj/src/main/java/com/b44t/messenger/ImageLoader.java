@@ -1107,6 +1107,7 @@ public class ImageLoader {
         };
 
         FileLoader.getInstance().setDelegate(new FileLoader.FileLoaderDelegate() {
+            /*
             @Override
             public void fileUploadProgressChanged(final String location, final float progress, final boolean isEncrypted) {
                 fileProgresses.put(location, progress);
@@ -1154,6 +1155,7 @@ public class ImageLoader {
                     }
                 });
             }
+            */
 
             @Override
             public void fileDidLoaded(final String location, final File finalFile, final int type) {

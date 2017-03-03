@@ -970,6 +970,7 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
         }
     }
 
+    /*
     protected void processDownloadObjects(int type, ArrayList<DownloadObject> objects) {
         if (objects.isEmpty()) {
             return;
@@ -1016,6 +1017,7 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
             }
         }
     }
+    */
 
     protected void newDownloadObjectsAvailable(int downloadMask) {
         int mask = getCurrentDownloadMask();
@@ -2174,6 +2176,7 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
         }
         final File cacheFile = file != null ? file : FileLoader.getPathToMessage(messageObject.messageOwner);
         if (cacheFile != null && cacheFile != file && !cacheFile.exists() && messageObject.isMusic()) {
+            /*
             FileLoader.getInstance().loadFile(messageObject.getDocument(), false, false);
             isPaused = false;
             lastProgress = 0;
@@ -2188,7 +2191,8 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
                 ApplicationLoader.applicationContext.stopService(intent);
             }
             NotificationCenter.getInstance().postNotificationName(NotificationCenter.audioPlayStateChanged, playingMessageObject.getId());
-            return true;
+            */
+            return false;
         }
         /*if (messageObject.isMusic()) {
             checkIsNextMusicFileDownloaded();

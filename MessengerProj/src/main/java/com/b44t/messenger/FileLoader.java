@@ -33,11 +33,6 @@ import java.util.concurrent.Semaphore;
 public class FileLoader {
 
     public interface FileLoaderDelegate {
-        void fileUploadProgressChanged(String location, float progress, boolean isEncrypted);
-
-        void fileDidUploaded(String location, TLRPC.InputFile inputFile, TLRPC.InputEncryptedFile inputEncryptedFile, byte[] key, byte[] iv, long totalFileSize);
-
-        void fileDidFailedUpload(String location, boolean isEncrypted);
 
         void fileDidLoaded(String location, File finalFile, int type);
 
@@ -55,23 +50,16 @@ public class FileLoader {
     private HashMap<Integer, File> mediaDirs = null;
     private volatile DispatchQueue fileLoaderQueue = new DispatchQueue("fileUploadQueue");
 
-    private LinkedList<FileUploadOperation> uploadOperationQueue = new LinkedList<>();
-    private LinkedList<FileUploadOperation> uploadSmallOperationQueue = new LinkedList<>();
     private LinkedList<FileLoadOperation> loadOperationQueue = new LinkedList<>();
     private LinkedList<FileLoadOperation> audioLoadOperationQueue = new LinkedList<>();
     private LinkedList<FileLoadOperation> photoLoadOperationQueue = new LinkedList<>();
-    private ConcurrentHashMap<String, FileUploadOperation> uploadOperationPaths = new ConcurrentHashMap<>();
-    private ConcurrentHashMap<String, FileUploadOperation> uploadOperationPathsEnc = new ConcurrentHashMap<>();
     private ConcurrentHashMap<String, FileLoadOperation> loadOperationPaths = new ConcurrentHashMap<>();
-    private HashMap<String, Long> uploadSizes = new HashMap<>();
 
     private FileLoaderDelegate delegate = null;
 
     private int currentLoadOperationsCount = 0;
     private int currentAudioLoadOperationsCount = 0;
     private int currentPhotoLoadOperationsCount = 0;
-    private int currentUploadOperationsCount = 0;
-    private int currentUploadSmallOperationsCount = 0;
 
     private static volatile FileLoader Instance = null;
 
@@ -105,160 +93,6 @@ public class FileLoader {
             //don't promt
         }
         return dir;
-    }
-
-    /*
-    public void checkUploadNewDataAvailable(final String location, final boolean encrypted, final long finalSize) {
-        fileLoaderQueue.postRunnable(new Runnable() {
-            @Override
-            public void run() {
-                FileUploadOperation operation;
-                if (encrypted) {
-                    operation = uploadOperationPathsEnc.get(location);
-                } else {
-                    operation = uploadOperationPaths.get(location);
-                }
-                if (operation != null) {
-                    operation.checkNewDataAvailable(finalSize);
-                } else if (finalSize != 0) {
-                    uploadSizes.put(location, finalSize);
-                }
-            }
-        });
-    }
-    */
-
-    public void uploadFile(final String location, final boolean encrypted, final boolean small) {
-        uploadFile(location, encrypted, small, 0);
-    }
-
-    public void uploadFile(final String location, final boolean encrypted, final boolean small, final int estimatedSize) {
-        if (location == null) {
-            return;
-        }
-        fileLoaderQueue.postRunnable(new Runnable() {
-            @Override
-            public void run() {
-                if (encrypted) {
-                    if (uploadOperationPathsEnc.containsKey(location)) {
-                        return;
-                    }
-                } else {
-                    if (uploadOperationPaths.containsKey(location)) {
-                        return;
-                    }
-                }
-                int esimated = estimatedSize;
-                if (esimated != 0) {
-                    Long finalSize = uploadSizes.get(location);
-                    if (finalSize != null) {
-                        esimated = 0;
-                        uploadSizes.remove(location);
-                    }
-                }
-                FileUploadOperation operation = new FileUploadOperation(location, encrypted, esimated);
-                if (encrypted) {
-                    uploadOperationPathsEnc.put(location, operation);
-                } else {
-                    uploadOperationPaths.put(location, operation);
-                }
-                operation.delegate = new FileUploadOperation.FileUploadOperationDelegate() {
-                    @Override
-                    public void didFinishUploadingFile(final FileUploadOperation operation, final TLRPC.InputFile inputFile, final TLRPC.InputEncryptedFile inputEncryptedFile, final byte[] key, final byte[] iv) {
-                        fileLoaderQueue.postRunnable(new Runnable() {
-                            @Override
-                            public void run() {
-                                if (encrypted) {
-                                    uploadOperationPathsEnc.remove(location);
-                                } else {
-                                    uploadOperationPaths.remove(location);
-                                }
-                                if (small) {
-                                    currentUploadSmallOperationsCount--;
-                                    if (currentUploadSmallOperationsCount < 1) {
-                                        FileUploadOperation operation = uploadSmallOperationQueue.poll();
-                                        if (operation != null) {
-                                            currentUploadSmallOperationsCount++;
-                                            operation.start();
-                                        }
-                                    }
-                                } else {
-                                    currentUploadOperationsCount--;
-                                    if (currentUploadOperationsCount < 1) {
-                                        FileUploadOperation operation = uploadOperationQueue.poll();
-                                        if (operation != null) {
-                                            currentUploadOperationsCount++;
-                                            operation.start();
-                                        }
-                                    }
-                                }
-                                if (delegate != null) {
-                                    delegate.fileDidUploaded(location, inputFile, inputEncryptedFile, key, iv, operation.getTotalFileSize());
-                                }
-                            }
-                        });
-                    }
-
-                    @Override
-                    public void didFailedUploadingFile(final FileUploadOperation operation) {
-                        fileLoaderQueue.postRunnable(new Runnable() {
-                            @Override
-                            public void run() {
-                                if (encrypted) {
-                                    uploadOperationPathsEnc.remove(location);
-                                } else {
-                                    uploadOperationPaths.remove(location);
-                                }
-                                if (delegate != null) {
-                                    delegate.fileDidFailedUpload(location, encrypted);
-                                }
-                                if (small) {
-                                    currentUploadSmallOperationsCount--;
-                                    if (currentUploadSmallOperationsCount < 1) {
-                                        FileUploadOperation operation = uploadSmallOperationQueue.poll();
-                                        if (operation != null) {
-                                            currentUploadSmallOperationsCount++;
-                                            operation.start();
-                                        }
-                                    }
-                                } else {
-                                    currentUploadOperationsCount--;
-                                    if (currentUploadOperationsCount < 1) {
-                                        FileUploadOperation operation = uploadOperationQueue.poll();
-                                        if (operation != null) {
-                                            currentUploadOperationsCount++;
-                                            operation.start();
-                                        }
-                                    }
-                                }
-                            }
-                        });
-                    }
-
-                    @Override
-                    public void didChangedUploadProgress(FileUploadOperation operation, final float progress) {
-                        if (delegate != null) {
-                            delegate.fileUploadProgressChanged(location, progress, encrypted);
-                        }
-                    }
-                };
-                if (small) {
-                    if (currentUploadSmallOperationsCount < 1) {
-                        currentUploadSmallOperationsCount++;
-                        operation.start();
-                    } else {
-                        uploadSmallOperationQueue.add(operation);
-                    }
-                } else {
-                    if (currentUploadOperationsCount < 1) {
-                        currentUploadOperationsCount++;
-                        operation.start();
-                    } else {
-                        uploadOperationQueue.add(operation);
-                    }
-                }
-            }
-        });
     }
 
     public void cancelLoadFile(TLRPC.Document document) {
