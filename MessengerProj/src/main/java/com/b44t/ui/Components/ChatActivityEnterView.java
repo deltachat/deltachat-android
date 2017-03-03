@@ -98,7 +98,7 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
         public SeekBarWaveformView(Context context) {
             super(context);
             seekBarWaveform = new SeekBarWaveform(context);
-            seekBarWaveform.setColors(0xffffffff, Theme.MSG_AUDIO_SEEKBAR_DARK_COLOR, 0xffffffff);
+            seekBarWaveform.setColors(0xffffffff, 0xff000000, 0xffffffff);
             seekBarWaveform.setDelegate(new SeekBar.SeekBarDelegate() {
                 @Override
                 public void onSeekBarDrag(float progress) {
@@ -604,7 +604,7 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
 
         ImageView imageView = new ImageView(context);
         imageView.setScaleType(ImageView.ScaleType.CENTER);
-        imageView.setImageResource(R.drawable.ic_ab_fwd_delete);
+        imageView.setImageResource(R.drawable.delete_reply);
         recordedAudioPanel.addView(imageView, LayoutHelper.createFrame(48, 48));
         imageView.setOnClickListener(new OnClickListener() {
             @Override
