@@ -1908,9 +1908,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 checkAndUpdateAvatar();
                 updateVisibleRows();
             }
-            if ((updateMask & MessagesController.UPDATE_MASK_USER_PRINT) != 0) {
-                updateSubtitle = true;
-            }
             if (avatarContainer != null && updateSubtitle) {
                 avatarContainer.updateSubtitle();
             }

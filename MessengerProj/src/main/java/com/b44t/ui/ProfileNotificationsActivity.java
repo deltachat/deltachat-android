@@ -46,7 +46,6 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.b44t.messenger.AndroidUtilities;
-import com.b44t.messenger.MessagesController;
 import com.b44t.messenger.MrChat;
 import com.b44t.messenger.MrMailbox;
 import com.b44t.messenger.NotificationsController;
@@ -56,7 +55,6 @@ import com.b44t.messenger.LocaleController;
 import com.b44t.messenger.NotificationCenter;
 import com.b44t.messenger.R;
 import com.b44t.messenger.ConnectionsManager;
-import com.b44t.messenger.TLRPC;
 import com.b44t.ui.ActionBar.Theme;
 import com.b44t.ui.Adapters.BaseFragmentAdapter;
 import com.b44t.ui.Cells.HeaderCell;
@@ -211,13 +209,13 @@ public class ProfileNotificationsActivity extends BaseFragment implements Notifi
                             }*/
                             //MessagesStorage.getInstance().setDialogFlags(dialog_id, which == 2 ? 1 : 0);
                             editor.apply();
-                            TLRPC.TL_dialog dialog = MessagesController.getInstance().dialogs_dict.get(dialog_id);
+                            /*TLRPC.TL_dialog dialog = MessagesController.getInstance().dialogs_dict.get(dialog_id);
                             if (dialog != null) {
                                 dialog.notify_settings = new TLRPC.TL_peerNotifySettings();
                                 if (which == 2) {
                                     dialog.notify_settings.mute_until = Integer.MAX_VALUE;
                                 }
-                            }
+                            }*/
                             if (listView != null) {
                                 listView.invalidateViews();
                             }

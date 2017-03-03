@@ -29,14 +29,8 @@ import android.content.SharedPreferences;
 import com.b44t.ui.SettingsAdvActivity;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.concurrent.ConcurrentHashMap;
 
 public class MessagesController implements NotificationCenter.NotificationCenterDelegate {
-
-    public ConcurrentHashMap<Long, TLRPC.TL_dialog> dialogs_dict = new ConcurrentHashMap<>(100, 1.0f, 2);
-    public HashMap<Long, MessageObject> dialogMessage = new HashMap<>();
-    public HashMap<Long, CharSequence> printingStrings = new HashMap<>();
 
     private String uploadingAvatar = null;
 
@@ -48,8 +42,6 @@ public class MessagesController implements NotificationCenter.NotificationCenter
     public static final int UPDATE_MASK_CHAT_AVATAR = 8;
     public static final int UPDATE_MASK_CHAT_NAME = 16;
     public static final int UPDATE_MASK_CHAT_MEMBERS = 32;
-    public static final int UPDATE_MASK_USER_PRINT = 64;
-    public static final int UPDATE_MASK_READ_DIALOG_MESSAGE = 256;
     public static final int UPDATE_MASK_SELECT_DIALOG = 512;
     public static final int UPDATE_MASK_NEW_MESSAGE = 2048;
     public static final int UPDATE_MASK_SEND_STATE = 4096;

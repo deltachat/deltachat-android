@@ -70,7 +70,6 @@ public class NotificationsController {
     private HashMap<Long, Integer> autoNotificationsIds = new HashMap<>();
     private int wearNotificationId = 10000;
     private int autoNotificationId = 20000;
-    public ArrayList<MessageObject> popupMessages = new ArrayList<>();
     private long opened_dialog_id = 0;
     private int total_unread_count = 0;
     private int personal_count = 0;
@@ -935,7 +934,7 @@ public class NotificationsController {
         }
     }
 
-    private void scheduleNotificationDelay(boolean onlineReason) {
+    /*private void scheduleNotificationDelay(boolean onlineReason) {
         try {
             FileLog.e("messenger", "delay notification start, onlineReason = " + onlineReason);
             notificationDelayWakelock.acquire(10000);
@@ -945,7 +944,7 @@ public class NotificationsController {
             FileLog.e("messenger", e);
             showOrUpdateNotification(notifyCheck);
         }
-    }
+    }*/
 
     protected void repeatNotificationMaybe() {
         notificationsQueue.postRunnable(new Runnable() {

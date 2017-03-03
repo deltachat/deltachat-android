@@ -41,7 +41,6 @@ public class TLRPC {
 	}
 
     public static class ChatPhoto extends TLObject {
-		public FileLocation photo_small;
 		public FileLocation photo_big;
 	}
 
@@ -105,16 +104,6 @@ public class TLRPC {
 	}
 
 	public static class TL_messageMediaPhoto extends MessageMedia {
-	}
-
-	public static class PeerNotifySettings extends TLObject {
-		public int flags;
-		public boolean silent;
-		public int mute_until;
-		public String sound;
-	}
-
-	public static class TL_peerNotifySettings extends PeerNotifySettings {
 	}
 
 	public static class TL_messages_stickerSet extends TLObject {
@@ -361,7 +350,6 @@ public class TLRPC {
 		public Peer peer;
 		public int top_message;
 		public int unread_count;
-		public PeerNotifySettings notify_settings;
 		public int pts;
 		public DraftMessage draft;
 		public long id; //custom

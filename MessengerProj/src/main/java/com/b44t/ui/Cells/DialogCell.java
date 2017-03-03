@@ -80,10 +80,9 @@ public class DialogCell extends BaseCell {
     private long currentDialogId;
     private final boolean isDialogCell = true; // if it is no dialog cell, it is a search cell ...
     private int unreadCount;
-    private boolean lastUnreadState;
     private int lastSendState;
     private boolean dialogMuted;
-    private MessageObject message;
+    private final MessageObject message = null;
     private int index;
 
     private ImageReceiver avatarImage;
@@ -91,7 +90,6 @@ public class DialogCell extends BaseCell {
 
     private TLRPC.User user = null;
     private TLRPC.Chat chat = null;
-    private CharSequence lastPrintString = null;
 
     public boolean useSeparator = false;
 
@@ -534,7 +532,7 @@ public class DialogCell extends BaseCell {
     public void checkCurrentDialogIndex() {
         if (index < MrMailbox.m_currChatlist.getCnt()) { // EDIT BY MR - was: index < getDialogsArray().size()
             TLRPC.TL_dialog dialog = MrMailbox.m_currChatlist.get_TLRPC_TL_dialog(index); // EDIT BY MR - was: getDialogsArray().get(index);
-            MessageObject newMessageObject = MessagesController.getInstance().dialogMessage.get(dialog.id);
+            final MessageObject newMessageObject = null;
             if (currentDialogId != dialog.id ||
                     message != null && message.getId() != dialog.top_message ||
                     unreadCount != dialog.unread_count ||
@@ -553,14 +551,6 @@ public class DialogCell extends BaseCell {
 
         if (mask != 0) {
             boolean continueUpdate = false;
-            if (isDialogCell) {
-                if ((mask & MessagesController.UPDATE_MASK_USER_PRINT) != 0) {
-                    CharSequence printString = MessagesController.getInstance().printingStrings.get(currentDialogId);
-                    if (lastPrintString != null && printString == null || lastPrintString == null && printString != null || lastPrintString != null && printString != null && !lastPrintString.equals(printString)) {
-                        continueUpdate = true;
-                    }
-                }
-            }
             if (!continueUpdate && (mask & MessagesController.UPDATE_MASK_AVATAR) != 0) {
                 if (chat == null) {
                     continueUpdate = true;
@@ -579,18 +569,6 @@ public class DialogCell extends BaseCell {
             if (!continueUpdate && (mask & MessagesController.UPDATE_MASK_CHAT_NAME) != 0) {
                 if (user == null) {
                     continueUpdate = true;
-                }
-            }
-            if (!continueUpdate && (mask & MessagesController.UPDATE_MASK_READ_DIALOG_MESSAGE) != 0) {
-                if (message != null && lastUnreadState != message.isUnread()) {
-                    lastUnreadState = message.isUnread();
-                    continueUpdate = true;
-                } else if (isDialogCell) {
-                    TLRPC.TL_dialog dialog = MessagesController.getInstance().dialogs_dict.get(currentDialogId);
-                    if (dialog != null && unreadCount != dialog.unread_count) {
-                        unreadCount = dialog.unread_count;
-                        continueUpdate = true;
-                    }
                 }
             }
             if (!continueUpdate && (mask & MessagesController.UPDATE_MASK_SEND_STATE) != 0) {
