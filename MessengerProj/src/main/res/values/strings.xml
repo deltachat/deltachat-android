@@ -28,8 +28,6 @@
     <!--audio view-->
     <string name="NoAudio">Please add files to the music library on your device to see them here.</string>
     <string name="AttachMusic">Music</string>
-    <string name="AudioUnknownArtist">Unknown artist</string>
-    <string name="AudioUnknownTitle">Unknown title</string>
     <!--documents view-->
     <string name="SelectFile">Select File</string>
     <string name="FreeOfTotal">Free %1$s of %2$s</string>

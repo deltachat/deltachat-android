@@ -52,8 +52,6 @@ public class SharedDocumentCell extends FrameLayout {
 
     private static Paint paint;
 
-    //private int TAG;
-
     public SharedDocumentCell(Context context) {
         super(context);
 
@@ -62,8 +60,6 @@ public class SharedDocumentCell extends FrameLayout {
             paint.setColor(0xffd9d9d9);
             paint.setStrokeWidth(1);
         }
-
-        //TAG = MediaController.getInstance().generateObserverTag();
 
         placeholderImageView = new ImageView(context);
         addView(placeholderImageView, LayoutHelper.createFrame(40, 40, (LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT) | Gravity.TOP, LocaleController.isRTL ? 0 : 12, 8, LocaleController.isRTL ? 12 : 0, 0));
@@ -128,12 +124,6 @@ public class SharedDocumentCell extends FrameLayout {
         }
     }
 
-    @Override
-    protected void onDetachedFromWindow() {
-        super.onDetachedFromWindow();
-        //MediaController.getInstance().removeLoadingFileObserver(this);
-    }
-
     public void setChecked(boolean checked, boolean animated) {
         if (checkBox.getVisibility() != VISIBLE) {
             checkBox.setVisibility(VISIBLE);
@@ -145,30 +135,4 @@ public class SharedDocumentCell extends FrameLayout {
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, MeasureSpec.makeMeasureSpec(AndroidUtilities.dp(56) /*+ (needDivider ? 1 : 0)*/, MeasureSpec.EXACTLY));
     }
-
-    @Override
-    protected void onDraw(Canvas canvas) {
-    }
-
-    /*@Override
-    public void onFailedDownload(String name) {
-    }
-
-    @Override
-    public void onSuccessDownload(String name) {
-    }
-
-    @Override
-    public void onProgressDownload(String fileName, float progress) {
-    }
-
-    @Override
-    public void onProgressUpload(String fileName, float progress, boolean isEncrypted) {
-
-    }
-
-    @Override
-    public int getObserverTag() {
-        return TAG;
-    }*/
 }

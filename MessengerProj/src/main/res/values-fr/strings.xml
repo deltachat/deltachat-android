@@ -23,8 +23,6 @@
     <!--audio view-->
     <string name="NoAudio">Veuillez ajouter des fichiers dans votre bibliotèque musicale pour les voir ici.</string>
     <string name="AttachMusic">Musique</string>
-    <string name="AudioUnknownArtist">Artiste inconnu</string>
-    <string name="AudioUnknownTitle">Titre inconnu</string>
     <!--documents view-->
     <string name="SelectFile">Selectionner le fichier</string>
     <string name="FreeOfTotal">Free %1$s of %2$s</string>

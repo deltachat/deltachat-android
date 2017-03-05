@@ -142,7 +142,6 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
         public long id;
         public String author;
         public String title;
-        public String genre;
         public int duration;
         public String path;
         public MessageObject messageObject;

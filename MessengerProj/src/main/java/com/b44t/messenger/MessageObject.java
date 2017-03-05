@@ -744,7 +744,7 @@ public class MessageObject {
                 if (title == null || title.length() == 0) {
                     title = FileLoader.getDocumentFileName(document);
                     if (title == null || title.length() == 0) {
-                        title = mContext.getString(R.string.AudioUnknownTitle);
+                        title = "ErrTitle"; // should never happen
                     }
                 }
                 return title;
@@ -784,7 +784,7 @@ public class MessageObject {
                 }
                 String performer = attribute.performer;
                 if (performer == null || performer.length() == 0) {
-                    performer = mContext.getString(R.string.AudioUnknownArtist);
+                    performer = mContext.getString(R.string.AttachMusic);
                 }
                 return performer;
             }

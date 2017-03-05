@@ -28,8 +28,6 @@
     <!--audio view-->
     <string name="NoAudio">Musikdateien der Android Musikbibliothek hinzufügen, um sie hier zu sehen.</string>
     <string name="AttachMusic">Musik</string>
-    <string name="AudioUnknownArtist">Unbekannter Künstler</string>
-    <string name="AudioUnknownTitle">Unbekannter Titel</string>
     <!--documents view-->
     <string name="SelectFile">Datei auswählen</string>
     <string name="FreeOfTotal">Freier Speicher: %1$s von %2$s</string>

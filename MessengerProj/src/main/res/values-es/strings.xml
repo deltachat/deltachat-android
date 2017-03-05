@@ -25,8 +25,6 @@
     <!--audio view-->
     <string name="NoAudio">Por favor, añade archivos a la carpeta de música en tu dispositivo para verlos aquí.</string>
     <string name="AttachMusic">Música</string>
-    <string name="AudioUnknownArtist">Artista desconocido</string>
-    <string name="AudioUnknownTitle">Título desconocido</string>
     <!--documents view-->
     <string name="SelectFile">Elegir archivo</string>
     <string name="FreeOfTotal">%1$s de %2$s libres</string>

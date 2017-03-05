@@ -207,8 +207,7 @@ public class AudioSelectActivity extends BaseFragment implements NotificationCen
                         MediaStore.Audio.Media.ARTIST,
                         MediaStore.Audio.Media.TITLE,
                         MediaStore.Audio.Media.DATA,
-                        MediaStore.Audio.Media.DURATION,
-                        MediaStore.Audio.Media.ALBUM
+                        MediaStore.Audio.Media.DURATION
                 };
 
                 final ArrayList<MediaController.AudioEntry> newAudioEntries = new ArrayList<>();
@@ -223,7 +222,6 @@ public class AudioSelectActivity extends BaseFragment implements NotificationCen
                         audioEntry.title = cursor.getString(2);
                         audioEntry.path = cursor.getString(3);
                         audioEntry.duration = (int) (cursor.getLong(4) / 1000);
-                        audioEntry.genre = cursor.getString(5);
 
                         File file = new File(audioEntry.path);
 
@@ -335,7 +333,7 @@ public class AudioSelectActivity extends BaseFragment implements NotificationCen
                 });
             }
             MediaController.AudioEntry audioEntry = audioEntries.get(i);
-            ((AudioCell) view).setAudio(audioEntries.get(i), i != audioEntries.size() - 1, selectedAudios.containsKey(audioEntry.id));
+            ((AudioCell) view).setAudio(audioEntries.get(i), selectedAudios.containsKey(audioEntry.id));
             return view;
         }
 
