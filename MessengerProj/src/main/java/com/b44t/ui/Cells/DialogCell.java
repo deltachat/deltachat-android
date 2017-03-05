@@ -289,18 +289,18 @@ public class DialogCell extends BaseCell {
 
         {
                 checkMessage = false;
-                String mess = m_summary.getText();
+                String mess = m_summary.getText2();
                 if (mess.length() > 150) {
                     mess = mess.substring(0, 150);
                 }
-                String title = m_summary.getTitle();
+                String title = m_summary.getText1();
                 if( !title.isEmpty() )
                 {
-                    int title_meaning = m_summary.getTitleMeaning();
+                    int title_meaning = m_summary.getText1Meaning();
                     int title_color = Theme.DIALOGS_NAME_TEXT_COLOR;
                     switch( title_meaning ) {
-                        case MrPoortext.MR_TITLE_SELF:  title_color = Theme.DIALOGS_SELF_TEXT_COLOR; break;
-                        case MrPoortext.MR_TITLE_DRAFT: title_color = Theme.DIALOGS_DRAFT_TEXT_COLOR; break;
+                        case MrPoortext.MR_TEXT1_SELF:  title_color = Theme.DIALOGS_SELF_TEXT_COLOR; break;
+                        case MrPoortext.MR_TEXT1_DRAFT: title_color = Theme.DIALOGS_DRAFT_TEXT_COLOR; break;
                     }
                     SpannableStringBuilder stringBuilder = SpannableStringBuilder.valueOf(String.format("%s: %s", title, mess));
                     stringBuilder.setSpan(new ForegroundColorSpan(title_color), 0, title.length() + 1, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);

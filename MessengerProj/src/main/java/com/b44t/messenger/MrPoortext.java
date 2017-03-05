@@ -30,10 +30,10 @@ package com.b44t.messenger;
 
 public class MrPoortext {
 
-    public final static int      MR_TITLE_NORMAL            = 0;
-    public final static int      MR_TITLE_DRAFT             = 1;
-    public final static int      MR_TITLE_USERNAME          = 2;
-    public final static int      MR_TITLE_SELF              = 3;
+    public final static int      MR_TEXT1_NORMAL            = 0;
+    public final static int      MR_TEXT1_DRAFT             = 1;
+    public final static int      MR_TEXT1_USERNAME          = 2;
+    public final static int      MR_TEXT1_SELF              = 3;
 
     public MrPoortext(long hPoortext) {
         m_hPoortext = hPoortext;
@@ -44,16 +44,16 @@ public class MrPoortext {
         MrPoortextUnref(m_hPoortext);
     }
 
-    public String getTitle() {
-        return MrPoortextGetTitle(m_hPoortext);
+    public String getText1() {
+        return MrPoortextGetText1(m_hPoortext);
     }
 
-    public int getTitleMeaning() {
-        return MrPoortextGetTitleMeaning(m_hPoortext);
+    public int getText1Meaning() {
+        return MrPoortextGetText1Meaning(m_hPoortext);
     }
 
-    public String getText() {
-        return MrPoortextGetText(m_hPoortext);
+    public String getText2() {
+        return MrPoortextGetText2(m_hPoortext);
     }
 
     public long getTimestamp() {
@@ -66,9 +66,9 @@ public class MrPoortext {
 
     private long                  m_hPoortext;
     private native static void    MrPoortextUnref            (long hPoortext);
-    private native static String  MrPoortextGetTitle         (long hPoortext);
-    private native static int     MrPoortextGetTitleMeaning  (long hPoortext);
-    private native static String  MrPoortextGetText          (long hPoortext);
+    private native static String  MrPoortextGetText1         (long hPoortext);
+    private native static int     MrPoortextGetText1Meaning  (long hPoortext);
+    private native static String  MrPoortextGetText2         (long hPoortext);
     private native static long    MrPoortextGetTimestamp     (long hPoortext);
     private native static int     MrPoortextGetState         (long hPoortext);
 }

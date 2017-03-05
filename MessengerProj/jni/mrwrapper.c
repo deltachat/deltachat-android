@@ -896,24 +896,24 @@ JNIEXPORT void Java_com_b44t_messenger_MrPoortext_MrPoortextUnref(JNIEnv *env, j
 }
 
 
-JNIEXPORT jstring Java_com_b44t_messenger_MrPoortext_MrPoortextGetTitle(JNIEnv *env, jclass c, jlong hPoortext)
+JNIEXPORT jstring Java_com_b44t_messenger_MrPoortext_MrPoortextGetText1(JNIEnv *env, jclass c, jlong hPoortext)
 {
 	mrpoortext_t* ths = (mrpoortext_t*)hPoortext; if( ths == NULL ) { return JSTRING_NEW(NULL); }
-	return JSTRING_NEW(ths->m_title);
+	return JSTRING_NEW(ths->m_text1);
 }
 
 
-JNIEXPORT jint Java_com_b44t_messenger_MrPoortext_MrPoortextGetTitleMeaning(JNIEnv *env, jclass c, jlong hPoortext)
+JNIEXPORT jint Java_com_b44t_messenger_MrPoortext_MrPoortextGetText1Meaning(JNIEnv *env, jclass c, jlong hPoortext)
 {
 	mrpoortext_t* ths = (mrpoortext_t*)hPoortext; if( ths == NULL ) { return 0; }
-	return ths->m_title_meaning;
+	return ths->m_text1_meaning;
 }
 
 
-JNIEXPORT jstring Java_com_b44t_messenger_MrPoortext_MrPoortextGetText(JNIEnv *env, jclass c, jlong hPoortext)
+JNIEXPORT jstring Java_com_b44t_messenger_MrPoortext_MrPoortextGetText2(JNIEnv *env, jclass c, jlong hPoortext)
 {
 	mrpoortext_t* ths = (mrpoortext_t*)hPoortext; if( ths == NULL ) { return JSTRING_NEW(NULL); }
-	return JSTRING_NEW(ths->m_text);
+	return JSTRING_NEW(ths->m_text2);
 }
 
 
