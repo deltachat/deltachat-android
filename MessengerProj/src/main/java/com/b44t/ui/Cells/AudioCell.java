@@ -81,9 +81,7 @@ public class AudioCell extends FrameLayout {
                         MediaController.getInstance().stopAudio();
                         playButton.setImageResource(R.drawable.attach_audio_inlist_play);
                     } else {
-                        ArrayList<MessageObject> arrayList = new ArrayList<>();
-                        arrayList.add(audioEntry.messageObject);
-                        if (MediaController.getInstance().setPlaylist(arrayList, audioEntry.messageObject)) {
+                        if (MediaController.getInstance().playAudio(audioEntry.messageObject)) {
                             playButton.setImageResource(R.drawable.attach_audio_inlist_pause);
                             if (delegate != null) {
                                 delegate.startedPlayingAudio(audioEntry.messageObject);

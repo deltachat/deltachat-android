@@ -276,7 +276,6 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
     private long dialog_id;
     private boolean ignoreTextChange;
     private int innerTextChange;
-    private MessageObject replyingMessageObject;
     private ChatActivityEnterViewDelegate delegate;
 
     private TLRPC.TL_document audioToSend;
@@ -709,7 +708,7 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
                         }
                     }
                     startedDraggingX = -1;
-                    MediaController.getInstance().startRecording(dialog_id, replyingMessageObject);
+                    MediaController.getInstance().startRecording(dialog_id);
                     updateAudioRecordInterface();
                     audioRecordButton.getParent().requestDisallowInterceptTouchEvent(true);
                 } else if (motionEvent.getAction() == MotionEvent.ACTION_UP || motionEvent.getAction() == MotionEvent.ACTION_CANCEL) {

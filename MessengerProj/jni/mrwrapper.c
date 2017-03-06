@@ -699,10 +699,16 @@ JNIEXPORT jint Java_com_b44t_messenger_MrChat_sendMedia(JNIEnv *env, jclass cls,
 }
 
 
-JNIEXPORT jintArray Java_com_b44t_messenger_MrMailbox_MrMailboxGetChatMedia(JNIEnv *env, jclass c, jlong hMailbox, jint chat_id, jint msg_type, jint or_msg_type)
+JNIEXPORT jintArray Java_com_b44t_messenger_MrMailbox_getChatMedia(JNIEnv *env, jclass cls, jint chat_id, jint msg_type, jint or_msg_type)
 {
-	carray* ca = mrmailbox_get_chat_media((mrmailbox_t*)hMailbox, chat_id, msg_type, or_msg_type);
+	carray* ca = mrmailbox_get_chat_media(get_mrmailbox_t(env, cls), chat_id, msg_type, or_msg_type);
 	return carray2jintArray_n_carray_free(env, ca);
+}
+
+
+JNIEXPORT jint Java_com_b44t_messenger_MrMailbox_getNextMedia(JNIEnv *env, jclass cls, jint msg_id, jint dir)
+{
+	return mrmailbox_get_next_media(get_mrmailbox_t(env, cls), msg_id, dir);
 }
 
 

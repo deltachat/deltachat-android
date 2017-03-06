@@ -61,10 +61,10 @@ public class MusicPlayerReceiver extends BroadcastReceiver {
                 case KeyEvent.KEYCODE_MEDIA_STOP:
                     break;
                 case KeyEvent.KEYCODE_MEDIA_NEXT:
-                    MediaController.getInstance().playNextMessage();
+                    MediaController.getInstance().playNextMessage(+1, false);
                     break;
                 case KeyEvent.KEYCODE_MEDIA_PREVIOUS:
-                    MediaController.getInstance().playPreviousMessage();
+                    MediaController.getInstance().playNextMessage(-1, false);
                     break;
             }
         } else {
@@ -73,11 +73,11 @@ public class MusicPlayerReceiver extends BroadcastReceiver {
             } else if (intent.getAction().equals(MusicPlayerService.NOTIFY_PAUSE) || intent.getAction().equals(android.media.AudioManager.ACTION_AUDIO_BECOMING_NOISY)) {
                 MediaController.getInstance().pauseAudio(MediaController.getInstance().getPlayingMessageObject());
             } else if (intent.getAction().equals(MusicPlayerService.NOTIFY_NEXT)) {
-                MediaController.getInstance().playNextMessage();
+                MediaController.getInstance().playNextMessage(+1, false);
             } else if (intent.getAction().equals(MusicPlayerService.NOTIFY_CLOSE)) {
                 MediaController.getInstance().cleanupPlayer(true, true);
             } else if (intent.getAction().equals(MusicPlayerService.NOTIFY_PREVIOUS)) {
-                MediaController.getInstance().playPreviousMessage();
+                MediaController.getInstance().playNextMessage(-1, false);
             }
         }
     }

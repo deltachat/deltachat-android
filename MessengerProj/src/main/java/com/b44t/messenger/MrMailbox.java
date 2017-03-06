@@ -151,10 +151,8 @@ public class MrMailbox {
 
     public native static int[] getUnseenMsgs();
 
-    public static int[] getChatMedia(int chat_id, int msg_type, int or_msg_type) {
-        return MrMailboxGetChatMedia(m_hMailbox, chat_id, msg_type, or_msg_type);
-    }
-
+    public native static int[] getChatMedia(int chat_id, int msg_type, int or_msg_type);
+    public native static int getNextMedia(int msg_id, int dir);
     public native static int[] getChatContacts(int chat_id);
     public native static int deleteChat(int chat_id);
 
@@ -162,7 +160,6 @@ public class MrMailbox {
     private native static long    MrMailboxGetChat           (long hMailbox, int chat_id); // return hChat which must be unref'd after usage
     private native static int     MrMailboxGetChatIdByContactId (long hMailbox, int contact_id);
     private native static int     MrMailboxCreateChatByContactId(long hMailbox, int contact_id); // returns chat_id
-    private native static int[]   MrMailboxGetChatMedia      (long hMailbox, int chat_id, int msg_type, int or_msg_type);
 
 
     // msgs

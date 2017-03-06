@@ -261,10 +261,6 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
     private boolean videoConvertFirstWrite = true;
     private HashMap<String, MessageObject> generatingWaveform = new HashMap<>();
 
-    private boolean voiceMessagesPlaylistUnread;
-    private ArrayList<MessageObject> voiceMessagesPlaylist;
-    private HashMap<Integer, MessageObject> voiceMessagesPlaylistMap;
-
     public static final int AUTODOWNLOAD_MASK_PHOTO = 1;
     public static final int AUTODOWNLOAD_MASK_AUDIO = 2;
     public static final int AUTODOWNLOAD_MASK_VIDEO = 4;
@@ -311,9 +307,6 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
     private Timer progressTimer = null;
     private final Object progressTimerSync = new Object();
     private int buffersWrited;
-    private ArrayList<MessageObject> playlist = new ArrayList<>();
-    private int currentPlaylistNum;
-    private boolean forceLoopCurrentPlaylist;
     private boolean playMusicAgain;
     private AudioInfo audioInfo;
 
@@ -323,7 +316,6 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
     private long recordStartTime;
     private long recordTimeCount;
     private long recordDialogId;
-    private MessageObject recordReplyingMessageObject;
     private DispatchQueue fileDecodingQueue;
     private DispatchQueue playerQueue;
     private ArrayList<AudioBuffer> usedPlayerBuffers = new ArrayList<>();
@@ -817,11 +809,8 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
         gifDownloadQueue.clear();
         downloadQueueKeys.clear();
         videoConvertQueue.clear();
-        playlist.clear();
         generatingWaveform.clear();
         typingTimes.clear();
-        voiceMessagesPlaylist = null;
-        voiceMessagesPlaylistMap = null;
         cancelVideoConvert(null);
     }
 
@@ -1337,17 +1326,6 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
                     }
                 }
             }
-            if (voiceMessagesPlaylist != null && !voiceMessagesPlaylist.isEmpty()) {
-                MessageObject messageObject = voiceMessagesPlaylist.get(0);
-                if (channelId == messageObject.messageOwner.to_id.channel_id) {
-                    for (int a = 0; a < markAsDeletedMessages.size(); a++) {
-                        messageObject = voiceMessagesPlaylistMap.remove(markAsDeletedMessages.get(a));
-                        if (messageObject != null) {
-                            voiceMessagesPlaylist.remove(messageObject);
-                        }
-                    }
-                }
-            }
         }
         /*else if (id == NotificationCenter.musicDidLoaded) {
             long did = (Long) args[0];
@@ -1362,21 +1340,6 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
                 }
             }
         }*/
-        else if (id == NotificationCenter.didReceivedNewMessages) {
-            if (voiceMessagesPlaylist != null && !voiceMessagesPlaylist.isEmpty() && args.length >= 2 ) {
-                MessageObject messageObject = voiceMessagesPlaylist.get(0);
-                long did = (Long) args[0];
-                if (did == messageObject.getDialogId()) {
-                    MrMsg msg = MrMailbox.getMsg((int)args[1]);
-                    if( msg.getId()!=0 ) {
-                        if (msg.getType()==MrMsg.MR_MSG_VOICE && (!voiceMessagesPlaylistUnread || messageObject.isContentUnread() && !messageObject.isOut())) {
-                            voiceMessagesPlaylist.add(messageObject);
-                            voiceMessagesPlaylistMap.put(messageObject.getId(), messageObject);
-                        }
-                    }
-                }
-            }
-        }
     }
 
     private void checkDecoderQueue() {
@@ -1601,7 +1564,7 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
                     if (!raiseChat.playFirstUnreadVoiceMessage()) {
                         raiseToEarRecord = true;
                         useFrontSpeaker = false;
-                        startRecording(raiseChat.getDialogId(), null);
+                        startRecording(raiseChat.getDialogId());
                     }
                     ignoreOnPause = true;
                     if (proximityHasDifferentValues && proximityWakeLock != null && !proximityWakeLock.isHeld()) {
@@ -1666,7 +1629,7 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
             return;
         }
         raiseToEarRecord = true;
-        startRecording(raiseChat.getDialogId(), null);
+        startRecording(raiseChat.getDialogId());
         ignoreOnPause = true;
     }
 
@@ -1830,24 +1793,11 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
             if (notify) {
                 NotificationsController.getInstance().audioManager.abandonAudioFocus(this);
                 hasAudioFocus = 0;
-                if (voiceMessagesPlaylist != null) {
-                    if (byVoiceEnd && voiceMessagesPlaylist.get(0) == lastFile) {
-                        voiceMessagesPlaylist.remove(0);
-                        voiceMessagesPlaylistMap.remove(lastFile.getId());
-                        if (voiceMessagesPlaylist.isEmpty()) {
-                            voiceMessagesPlaylist = null;
-                            voiceMessagesPlaylistMap = null;
-                        }
-                    } else {
-                        voiceMessagesPlaylist = null;
-                        voiceMessagesPlaylistMap = null;
-                    }
-                }
                 boolean next = false;
-                if (voiceMessagesPlaylist != null) {
+                /*if (voiceMessagesPlaylist != null) {
                     MessageObject nextVoiceMessage = voiceMessagesPlaylist.get(0);
                     playAudio(nextVoiceMessage);
-                } else {
+                } else*/ {
                     if (lastFile.isVoice() && lastFile.getId() != 0) {
                         startRecordingIfFromSpeaker();
                     }
@@ -1923,154 +1873,32 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
         return playingMessageObject;
     }
 
-    public int getPlayingMessageObjectNum() {
-        return currentPlaylistNum;
-    }
-
-    private void buildShuffledPlayList() {
-        if (playlist.isEmpty()) {
+    public void playNextMessage(int dir, boolean endOfTrack)
+    {
+        if( playingMessageObject == null || playingMessageObject.getId()<0) {
             return;
         }
-        ArrayList<MessageObject> all = new ArrayList<>(playlist);
 
-        MessageObject messageObject = playlist.get(currentPlaylistNum);
-        all.remove(currentPlaylistNum);
-
-        int count = all.size();
-        for (int a = 0; a < count; a++) {
-            int index = Utilities.random.nextInt(all.size());
-            all.remove(index);
-        }
-    }
-
-    public boolean setPlaylist(ArrayList<MessageObject> messageObjects, MessageObject current) {
-        return setPlaylist(messageObjects, current, true);
-    }
-
-    public boolean setPlaylist(ArrayList<MessageObject> messageObjects, MessageObject current, boolean loadMusic) {
-        if (playingMessageObject == current) {
-            return playAudio(current);
-        }
-        forceLoopCurrentPlaylist = !loadMusic;
-        playMusicAgain = !playlist.isEmpty();
-        playlist.clear();
-        for (int a = messageObjects.size() - 1; a >= 0; a--) {
-            MessageObject messageObject = messageObjects.get(a);
-            if (messageObject.isMusic()) {
-                playlist.add(messageObject);
-            }
-        }
-        currentPlaylistNum = playlist.indexOf(current);
-        if (currentPlaylistNum == -1) {
-            playlist.clear();
-            currentPlaylistNum = playlist.size();
-            playlist.add(current);
-        }
-        if (current.isMusic()) {
-            if (loadMusic) {
-                //SharedMediaQuery.loadMusic(current.getDialogId(), playlist.get(0).getId());
-            }
-        }
-        return playAudio(current);
-    }
-
-    public void playNextMessage() {
-        playNextMessage(false);
-    }
-
-    public void playMessageAtIndex(int index) {
-        if (currentPlaylistNum < 0 || currentPlaylistNum >= playlist.size()) {
-            return;
-        }
-        currentPlaylistNum = index;
-        playMusicAgain = true;
-        playAudio(playlist.get(currentPlaylistNum));
-    }
-
-    private void playNextMessage(boolean byStop) {
-        ArrayList<MessageObject> currentPlayList = playlist;
-
-        currentPlaylistNum++;
-        if (currentPlaylistNum >= currentPlayList.size()) {
-            currentPlaylistNum = 0;
-            if (byStop && !forceLoopCurrentPlaylist) {
-                if (audioPlayer != null || audioTrackPlayer != null) {
-                    if (audioPlayer != null) {
-                        try {
-                            audioPlayer.reset();
-                        } catch (Exception e) {
-                            FileLog.e("messenger", e);
-                        }
-                        try {
-                            audioPlayer.stop();
-                        } catch (Exception e) {
-                            FileLog.e("messenger", e);
-                        }
-                        try {
-                            audioPlayer.release();
-                            audioPlayer = null;
-                        } catch (Exception e) {
-                            FileLog.e("messenger", e);
-                        }
-                    } else if (audioTrackPlayer != null) {
-                        synchronized (playerObjectSync) {
-                            try {
-                                audioTrackPlayer.pause();
-                                audioTrackPlayer.flush();
-                            } catch (Exception e) {
-                                FileLog.e("messenger", e);
-                            }
-                            try {
-                                audioTrackPlayer.release();
-                                audioTrackPlayer = null;
-                            } catch (Exception e) {
-                                FileLog.e("messenger", e);
-                            }
-                        }
-                    }
-                    stopProgressTimer();
-                    lastProgress = 0;
-                    buffersWrited = 0;
-                    isPaused = true;
-                    playingMessageObject.audioProgress = 0.0f;
-                    playingMessageObject.audioProgressSec = 0;
-                    NotificationCenter.getInstance().postNotificationName(NotificationCenter.audioProgressDidChanged, playingMessageObject.getId(), 0);
-                    NotificationCenter.getInstance().postNotificationName(NotificationCenter.audioPlayStateChanged, playingMessageObject.getId());
-                }
+        int nextMsgId = MrMailbox.getNextMedia(playingMessageObject.getId(), dir);
+        if( nextMsgId == 0 ) {
+            if( endOfTrack ) {
+                cleanupPlayer(true, true, false);
                 return;
             }
-        }
-        if (currentPlaylistNum < 0 || currentPlaylistNum >= currentPlayList.size()) {
-            return;
-        }
-        playMusicAgain = true;
-        playAudio(currentPlayList.get(currentPlaylistNum));
-    }
-
-    public void playPreviousMessage() {
-        ArrayList<MessageObject> currentPlayList = playlist;
-
-        currentPlaylistNum--;
-        if (currentPlaylistNum < 0) {
-            currentPlaylistNum = currentPlayList.size() - 1;
-        }
-        if (currentPlaylistNum < 0 || currentPlaylistNum >= currentPlayList.size()) {
-            return;
-        }
-        playMusicAgain = true;
-        playAudio(currentPlayList.get(currentPlaylistNum));
-    }
-
-    public void setVoiceMessagesPlaylist(ArrayList<MessageObject> playlist, boolean unread) {
-        voiceMessagesPlaylist = playlist;
-        if (voiceMessagesPlaylist != null) {
-            voiceMessagesPlaylistUnread = unread;
-            voiceMessagesPlaylistMap = new HashMap<>();
-            for (int a = 0; a < voiceMessagesPlaylist.size(); a++) {
-                MessageObject messageObject = voiceMessagesPlaylist.get(a);
-                voiceMessagesPlaylistMap.put(messageObject.getId(), messageObject);
+            else {
+                if( dir < 0 ) {
+                    nextMsgId = playingMessageObject.getId(); // play again
+                }
+                else {
+                    return; // do nothing
+                }
             }
         }
+
+        TLRPC.Message tmsg = MrMailbox.getMsg(nextMsgId).get_TLRPC_Message();
+        MessageObject msgDrawObj = new MessageObject(tmsg, true);
+        playMusicAgain = true;
+        playAudio(msgDrawObj);
     }
 
     private void checkAudioFocus(MessageObject messageObject) {
@@ -2135,7 +1963,6 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
 
         if (isOpusFile(cacheFile.getAbsolutePath()) == 1)
         {
-            playlist.clear();
             synchronized (playerObjectSync) {
                 try {
                     ignoreFirstProgress = 3;
@@ -2160,7 +1987,7 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
                     audioTrackPlayer.setPlaybackPositionUpdateListener(new AudioTrack.OnPlaybackPositionUpdateListener() {
                         @Override
                         public void onMarkerReached(AudioTrack audioTrack) {
-                            cleanupPlayer(true, true, true);
+                            playNextMessage(+1, true);
                         }
 
                         @Override
@@ -2190,17 +2017,13 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
                 audioPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
                     @Override
                     public void onCompletion(MediaPlayer mediaPlayer) {
-                        if (!playlist.isEmpty() && playlist.size() > 1) {
-                            playNextMessage(true);
-                        } else {
-                            cleanupPlayer(true, true, messageObject != null && messageObject.isVoice());
-                        }
+                        playNextMessage(+1, true);
                     }
                 });
                 audioPlayer.prepare();
                 audioPlayer.start();
                 if (messageObject.isVoice()) {
-                    playlist.clear();
+                    //playlist.clear();
                 } else {
                     try {
                         audioInfo = AudioInfo.getAudioInfo(cacheFile);
@@ -2376,7 +2199,7 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
         return isPaused;
     }
 
-    public void startRecording(final long dialog_id, final MessageObject reply_to_msg) {
+    public void startRecording(final long dialog_id) {
         boolean paused = false;
         if (playingMessageObject != null && isMessageOnAir(playingMessageObject) && !isAudioPaused()) {
             paused = true;
@@ -2434,7 +2257,6 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
                     recordTimeCount = 0;
                     samplesCount = 0;
                     recordDialogId = dialog_id;
-                    recordReplyingMessageObject = reply_to_msg;
                     fileBuffer.rewind();
 
                     audioRecorder.startRecording();
