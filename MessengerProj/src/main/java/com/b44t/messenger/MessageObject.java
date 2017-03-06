@@ -731,28 +731,6 @@ public class MessageObject {
         return messageOwner.media != null && isNewGifDocument(messageOwner.media.document);
     }
 
-    public String getMusicTitle() {
-        TLRPC.Document document;
-        document = messageOwner.media.document;
-        for (int a = 0; a < document.attributes.size(); a++) {
-            TLRPC.DocumentAttribute attribute = document.attributes.get(a);
-            if (attribute instanceof TLRPC.TL_documentAttributeAudio) {
-                if (attribute.voice) {
-                    return LocaleController.formatDateAudio(messageOwner.date);
-                }
-                String title = attribute.title;
-                if (title == null || title.length() == 0) {
-                    title = FileLoader.getDocumentFileName(document);
-                    if (title == null || title.length() == 0) {
-                        title = "ErrTitle"; // should never happen
-                    }
-                }
-                return title;
-            }
-        }
-        return "";
-    }
-
     public int getDuration() {
         TLRPC.Document document;
         document = messageOwner.media.document;
@@ -763,33 +741,6 @@ public class MessageObject {
             }
         }
         return 0;
-    }
-
-    public String getMusicAuthor() {
-        TLRPC.Document document;
-        document = messageOwner.media.document;
-        for (int a = 0; a < document.attributes.size(); a++) {
-            TLRPC.DocumentAttribute attribute = document.attributes.get(a);
-            if (attribute instanceof TLRPC.TL_documentAttributeAudio) {
-                if (attribute.voice) {
-                    if (isOutOwner() ) {
-                        return mContext.getString(R.string.FromSelf);
-                    }
-                    else if (messageOwner.fwd_from != null ) {
-                        return messageOwner.fwd_from.m_name;
-                    } else {
-                        TLRPC.User user = MessagesController.getInstance().getUser(messageOwner.from_id);
-                        return UserObject.getUserName(user);
-                    }
-                }
-                String performer = attribute.performer;
-                if (performer == null || performer.length() == 0) {
-                    performer = mContext.getString(R.string.AttachMusic);
-                }
-                return performer;
-            }
-        }
-        return "";
     }
 
     public TLRPC.InputStickerSet getInputStickerSet() {

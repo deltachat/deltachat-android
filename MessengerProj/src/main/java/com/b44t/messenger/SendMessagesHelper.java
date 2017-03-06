@@ -412,7 +412,7 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
 
                 TLRPC.PhotoSize size1 = photo.sizes.get(photo.sizes.size() - 1);
                 newMsg_id = mrChat.sendMedia(MrMsg.MR_MSG_IMAGE,
-                        newMsg_attachPath, null, size1.w, size1.h, 0);
+                        newMsg_attachPath, null, size1.w, size1.h, 0, null, null);
             }
             else if (document != null && MessageObject.isVideoDocument(document))
             {
@@ -432,35 +432,37 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
                     height = videoEditedInfo.resultHeight;
                 }
                 newMsg_id = mrChat.sendMedia(MrMsg.MR_MSG_VIDEO,
-                        path, document.mime_type, width, height, time_ms);
+                        path, document.mime_type, width, height, time_ms, null, null);
             }
             else if ( MessageObject.isVoiceDocument(document) || MessageObject.isMusicDocument(document) )
             {
                 // SEND AUDIO
                 int time_ms = 0;
+                String author = null, trackname = null;
+                for (int i = 0; i < document.attributes.size(); i++) {
+                    TLRPC.DocumentAttribute a = document.attributes.get(i);
+                    if (a instanceof TLRPC.TL_documentAttributeAudio) {
+                        time_ms = a.duration * 1000;
+                        author = a.performer;
+                        trackname = a.title;
+                        break;
+                    }
+                }
+
                 if( params!=null && params.get("mr_time_ms") != null ) {
                     time_ms = Integer.parseInt(params.get("mr_time_ms")); // if possible, use a higher resolution
-                }
-                else {
-                    for (int i = 0; i < document.attributes.size(); i++) {
-                        TLRPC.DocumentAttribute a = document.attributes.get(i);
-                        if (a instanceof TLRPC.TL_documentAttributeAudio) {
-                            time_ms = a.duration * 1000;
-                            break;
-                        }
-                    }
                 }
 
                 newMsg_id = mrChat.sendMedia(
                         MessageObject.isVoiceDocument(document)? MrMsg.MR_MSG_VOICE : MrMsg.MR_MSG_AUDIO,
-                        path, document.mime_type, 0, 0, time_ms);
+                        path, document.mime_type, 0, 0, time_ms, author, trackname);
 
             }
             else if (document != null)
             {
                 // SEND FILE
                 newMsg_id = mrChat.sendMedia(MrMsg.MR_MSG_FILE,
-                        path, document.mime_type, 0, 0, 0);
+                        path, document.mime_type, 0, 0, 0, null, null);
             }
             else
             {
@@ -601,11 +603,9 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
                 attributeAudio.performer = audioInfo.getArtist();
                 if (attributeAudio.title == null) {
                     attributeAudio.title = "";
-                    attributeAudio.flags |= 1;
                 }
                 if (attributeAudio.performer == null) {
                     attributeAudio.performer = "";
-                    attributeAudio.flags |= 2;
                 }
             }
         }

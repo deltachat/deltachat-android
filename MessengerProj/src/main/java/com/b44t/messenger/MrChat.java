@@ -76,13 +76,9 @@ public class MrChat {
         return MrChatGetTotalMsgCount(m_hChat);
     }
 
-    public int sendText(String text) {
-        return MrChatSendText(m_hChat, text);
-    }
+    public native int sendText(String text);
 
-    public int sendMedia(int type, String file, String mime, int w, int h, int time_ms) {
-        return MrChatSendMedia(m_hChat, type, file, mime, w, h, time_ms);
-    }
+    public native int sendMedia(int type, String file, String mime, int w, int h, int time_ms, String author, String trackname);
 
     private long                  m_hChat;  // must not be renamed as referenced by JNI under the name "m_hChat"
     private native static void    MrChatUnref                (long hChat);
@@ -92,8 +88,6 @@ public class MrChat {
     private native static int     MrChatSetDraft             (long hChat, String draft/*NULL=delete*/, long replyToMsgId);
     private native static int     MrChatGetUnseenCount       (long hChat);
     private native static int     MrChatGetTotalMsgCount     (long hChat);
-    private native static int     MrChatSendText             (long hChat, String text); // returns message id
-    private native static int     MrChatSendMedia            (long hChat, int type, String file, String mime, int w, int h, int time_ms);
 
 
     /* additional functions that are not 1:1 available in the backend

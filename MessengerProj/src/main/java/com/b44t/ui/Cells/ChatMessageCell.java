@@ -56,6 +56,7 @@ import com.b44t.messenger.MessagesController;
 import com.b44t.messenger.MrChat;
 import com.b44t.messenger.MrContact;
 import com.b44t.messenger.MrMailbox;
+import com.b44t.messenger.MrPoortext;
 import com.b44t.messenger.R;
 import com.b44t.messenger.UserObject;
 import com.b44t.messenger.TLRPC;
@@ -1068,13 +1069,14 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
 
             maxWidth = maxWidth - dp(86);
 
-            CharSequence stringFinal = TextUtils.ellipsize(messageObject.getMusicTitle().replace('\n', ' '), audioTitlePaint, maxWidth, TextUtils.TruncateAt.MIDDLE);
+            MrPoortext pt = MrMailbox.getMsg(messageObject.getId()).getMediainfo();
+            CharSequence stringFinal = TextUtils.ellipsize(pt.getText2(), audioTitlePaint, maxWidth, TextUtils.TruncateAt.MIDDLE);
             songLayout = new StaticLayout(stringFinal, audioTitlePaint, maxWidth, Layout.Alignment.ALIGN_NORMAL, 1.0f, 0.0f, false);
             if (songLayout.getLineCount() > 0) {
                 songX = -(int) Math.ceil(songLayout.getLineLeft(0));
             }
 
-            stringFinal = TextUtils.ellipsize(messageObject.getMusicAuthor().replace('\n', ' '), audioPerformerPaint, maxWidth, TextUtils.TruncateAt.END);
+            stringFinal = TextUtils.ellipsize(pt.getText1(), audioPerformerPaint, maxWidth, TextUtils.TruncateAt.END);
             performerLayout = new StaticLayout(stringFinal, audioPerformerPaint, maxWidth, Layout.Alignment.ALIGN_NORMAL, 1.0f, 0.0f, false);
             if (performerLayout.getLineCount() > 0) {
                 performerX = -(int) Math.ceil(performerLayout.getLineLeft(0));

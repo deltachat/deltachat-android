@@ -655,20 +655,20 @@ JNIEXPORT jint Java_com_b44t_messenger_MrChat_MrChatSetDraft(JNIEnv *env, jclass
 }
 
 
-JNIEXPORT jint Java_com_b44t_messenger_MrChat_MrChatSendText(JNIEnv *env, jclass c, jlong hChat, jstring text)
+JNIEXPORT jint Java_com_b44t_messenger_MrChat_sendText(JNIEnv *env, jclass cls, jstring text)
 {
 	mrmsg_t* msg = mrmsg_new();
 		msg->m_type = MR_MSG_TEXT;
 		CHAR_REF(text);
 			msg->m_text = textPtr? strdup(textPtr) : NULL;
 		CHAR_UNREF(text);
-		jint msg_id = mrchat_send_msg((mrchat_t*)hChat, msg);
+		jint msg_id = mrchat_send_msg(get_mrchat_t(env, cls), msg);
 	mrmsg_unref(msg);
 	return msg_id;
 }
 
 
-JNIEXPORT jint Java_com_b44t_messenger_MrChat_MrChatSendMedia(JNIEnv *env, jclass c, jlong hChat, jint type, jstring file, jstring mime, jint w, jint h, jint ms)
+JNIEXPORT jint Java_com_b44t_messenger_MrChat_sendMedia(JNIEnv *env, jclass cls, jint type, jstring file, jstring mime, jint w, jint h, jint ms, jstring author, jstring trackname)
 {
 	mrmsg_t* msg = mrmsg_new();
 		msg->m_type = type;
@@ -685,7 +685,15 @@ JNIEXPORT jint Java_com_b44t_messenger_MrChat_MrChatSendMedia(JNIEnv *env, jclas
 		if( type == MR_MSG_AUDIO || type == MR_MSG_VOICE || type == MR_MSG_VIDEO ) {
 			mrparam_set_int(msg->m_param, 'd', ms);
 		}
-		jint msg_id = mrchat_send_msg((mrchat_t*)hChat, msg);
+		if( type == MR_MSG_AUDIO ) {
+			CHAR_REF(author);
+				mrparam_set(msg->m_param, 'N', authorPtr);
+			CHAR_UNREF(author);
+			CHAR_REF(trackname);
+				mrparam_set(msg->m_param, 'n', tracknamePtr);
+			CHAR_UNREF(trackname);
+		}
+		jint msg_id = mrchat_send_msg(get_mrchat_t(env, cls), msg);
 	mrmsg_unref(msg);
 	return msg_id;
 }
@@ -850,6 +858,12 @@ JNIEXPORT jint Java_com_b44t_messenger_MrMsg_getSummarytext(JNIEnv *env, jobject
 JNIEXPORT jint Java_com_b44t_messenger_MrMsg_getFilename(JNIEnv *env, jobject obj)
 {
 	return JSTRING_NEW(mrmsg_get_filename(get_mrmsg_t(env, obj)));
+}
+
+
+JNIEXPORT jlong Java_com_b44t_messenger_MrMsg_getMediainfoCPtr(JNIEnv *env, jobject obj)
+{
+	return (jlong)mrmsg_get_mediainfo(get_mrmsg_t(env, obj));
 }
 
 

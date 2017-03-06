@@ -102,6 +102,8 @@ public class MrMsg {
     public MrPoortext    getSummary(MrChat chat) { return new MrPoortext(getSummaryCPtr(chat.getCPtr())); }
     private native long  getSummaryCPtr(long hChat);
     public native String getSummarytext(int approx_characters);
+    public MrPoortext    getMediainfo() { return new MrPoortext(getMediainfoCPtr()); }
+    private native long  getMediainfoCPtr();
     public native String getFilename();
 
     private long                  m_hMsg; // must not be renamed as referenced by JNI under the name "m_hMsg"

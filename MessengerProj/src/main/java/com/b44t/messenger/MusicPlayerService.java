@@ -107,13 +107,32 @@ public class MusicPlayerService extends Service implements NotificationCenter.No
     }
 
     @SuppressLint("NewApi")
-    private void createNotification(MessageObject messageObject) {
-        String songName = messageObject.getMusicTitle();
-        String authorName = messageObject.getMusicAuthor();
+    private void createNotification(MessageObject messageObject)
+    {
         AudioInfo audioInfo = MediaController.getInstance().getAudioInfo();
 
+        MrPoortext pt = MrMailbox.getMsg(messageObject.getId()).getMediainfo();
+        String authorName = pt.getText1();
+        String songName = pt.getText2();
+        if( songName == null || songName.length()==0 ) {
+            TLRPC.Document document = messageObject.messageOwner.media.document;
+            for (int i = 0; i < document.attributes.size(); i++) {
+                TLRPC.DocumentAttribute attr = document.attributes.get(i);
+                if (attr instanceof TLRPC.TL_documentAttributeAudio) {
+                    authorName = attr.performer;
+                    songName = attr.title;
+                    break;
+                }
+            }
+        }
+
+        if( songName == null || songName.length()==0 ) {
+            // preview of just recorded and not send voice messages
+            authorName = ApplicationLoader.applicationContext.getString(R.string.FromSelf);
+            songName = ApplicationLoader.applicationContext.getString(R.string.AttachVoiceMessage);
+        }
+
         RemoteViews simpleContentView = new RemoteViews(getApplicationContext().getPackageName(), R.layout.player_small_notification);
-        RemoteViews expandedView = null;
 
         Intent intent = new Intent(ApplicationLoader.applicationContext, LaunchActivity.class);
         intent.setAction("com.b44t.messenger.openchat"+messageObject.getDialogId());

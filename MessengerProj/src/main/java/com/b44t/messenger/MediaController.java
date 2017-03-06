@@ -286,8 +286,6 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
     private final boolean autoplayGifs = true;
     private boolean raiseToSpeak = true;
     private boolean directShare = true;
-    private boolean shuffleMusic;
-    private int repeatMode;
 
     private Runnable refreshGalleryRunnable;
     public static AlbumEntry allPhotosAlbumEntry;
@@ -314,7 +312,6 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
     private final Object progressTimerSync = new Object();
     private int buffersWrited;
     private ArrayList<MessageObject> playlist = new ArrayList<>();
-    private ArrayList<MessageObject> shuffledPlaylist = new ArrayList<>();
     private int currentPlaylistNum;
     private boolean forceLoopCurrentPlaylist;
     private boolean playMusicAgain;
@@ -609,8 +606,6 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
         //autoplayGifs = preferences.getBoolean("autoplay_gif", true);
         raiseToSpeak = preferences.getBoolean("raise_to_speak", true);
         directShare = preferences.getBoolean("direct_share", true);
-        shuffleMusic = preferences.getBoolean("shuffleMusic", false);
-        repeatMode = preferences.getInt("repeatMode", 0);
 
         AndroidUtilities.runOnUIThread(new Runnable() {
             @Override
@@ -823,7 +818,6 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
         downloadQueueKeys.clear();
         videoConvertQueue.clear();
         playlist.clear();
-        shuffledPlaylist.clear();
         generatingWaveform.clear();
         typingTimes.clear();
         voiceMessagesPlaylist = null;
@@ -1938,16 +1932,13 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
             return;
         }
         ArrayList<MessageObject> all = new ArrayList<>(playlist);
-        shuffledPlaylist.clear();
 
         MessageObject messageObject = playlist.get(currentPlaylistNum);
         all.remove(currentPlaylistNum);
-        shuffledPlaylist.add(messageObject);
 
         int count = all.size();
         for (int a = 0; a < count; a++) {
             int index = Utilities.random.nextInt(all.size());
-            shuffledPlaylist.add(all.get(index));
             all.remove(index);
         }
     }
@@ -1972,15 +1963,10 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
         currentPlaylistNum = playlist.indexOf(current);
         if (currentPlaylistNum == -1) {
             playlist.clear();
-            shuffledPlaylist.clear();
             currentPlaylistNum = playlist.size();
             playlist.add(current);
         }
         if (current.isMusic()) {
-            if (shuffleMusic) {
-                buildShuffledPlayList();
-                currentPlaylistNum = 0;
-            }
             if (loadMusic) {
                 //SharedMediaQuery.loadMusic(current.getDialogId(), playlist.get(0).getId());
             }
@@ -2002,17 +1988,12 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
     }
 
     private void playNextMessage(boolean byStop) {
-        ArrayList<MessageObject> currentPlayList = shuffleMusic ? shuffledPlaylist : playlist;
+        ArrayList<MessageObject> currentPlayList = playlist;
 
-        if (byStop && repeatMode == 2 && !forceLoopCurrentPlaylist) {
-            cleanupPlayer(false, false);
-            playAudio(currentPlayList.get(currentPlaylistNum));
-            return;
-        }
         currentPlaylistNum++;
         if (currentPlaylistNum >= currentPlayList.size()) {
             currentPlaylistNum = 0;
-            if (byStop && repeatMode == 0 && !forceLoopCurrentPlaylist) {
+            if (byStop && !forceLoopCurrentPlaylist) {
                 if (audioPlayer != null || audioTrackPlayer != null) {
                     if (audioPlayer != null) {
                         try {
@@ -2067,7 +2048,7 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
     }
 
     public void playPreviousMessage() {
-        ArrayList<MessageObject> currentPlayList = shuffleMusic ? shuffledPlaylist : playlist;
+        ArrayList<MessageObject> currentPlayList = playlist;
 
         currentPlaylistNum--;
         if (currentPlaylistNum < 0) {
@@ -2079,33 +2060,6 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
         playMusicAgain = true;
         playAudio(currentPlayList.get(currentPlaylistNum));
     }
-
-    /*private void checkIsNextMusicFileDownloaded() {
-        if ((getCurrentDownloadMask() & AUTODOWNLOAD_MASK_MUSIC) == 0) {
-            return;
-        }
-        ArrayList<MessageObject> currentPlayList = shuffleMusic ? shuffledPlaylist : playlist;
-        if (currentPlayList == null || currentPlayList.size() < 2) {
-            return;
-        }
-        int nextIndex = currentPlaylistNum + 1;
-        if (nextIndex >= currentPlayList.size()) {
-            nextIndex = 0;
-        }
-        MessageObject nextAudio = currentPlayList.get(nextIndex);
-        File file = null;
-        if (nextAudio.messageOwner.attachPath != null && nextAudio.messageOwner.attachPath.length() > 0) {
-            file = new File(nextAudio.messageOwner.attachPath);
-            if (!file.exists()) {
-                file = null;
-            }
-        }
-        final File cacheFile = file != null ? file : FileLoader.getPathToMessage(nextAudio.messageOwner);
-        boolean exist = cacheFile != null && cacheFile.exists();
-        if (cacheFile != null && cacheFile != file && !cacheFile.exists() && nextAudio.isMusic()) {
-            FileLoader.getInstance().loadFile(nextAudio.getDocument(), false, false);
-        }
-    }*/
 
     public void setVoiceMessagesPlaylist(ArrayList<MessageObject> playlist, boolean unread) {
         voiceMessagesPlaylist = playlist;
@@ -2165,6 +2119,7 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
             notify = false;
         }
         cleanupPlayer(notify, false);
+        audioInfo = null;
         playMusicAgain = false;
         File file = null;
         if (messageObject.messageOwner.attachPath != null && messageObject.messageOwner.attachPath.length() > 0) {
@@ -2175,32 +2130,12 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
         }
         final File cacheFile = file != null ? file : FileLoader.getPathToMessage(messageObject.messageOwner);
         if (cacheFile != null && cacheFile != file && !cacheFile.exists() && messageObject.isMusic()) {
-            /*
-            FileLoader.getInstance().loadFile(messageObject.getDocument(), false, false);
-            isPaused = false;
-            lastProgress = 0;
-            lastPlayPcm = 0;
-            audioInfo = null;
-            playingMessageObject = messageObject;
-            if (playingMessageObject.getDocument() != null) {
-                Intent intent = new Intent(ApplicationLoader.applicationContext, MusicPlayerService.class);
-                ApplicationLoader.applicationContext.startService(intent);
-            } else {
-                Intent intent = new Intent(ApplicationLoader.applicationContext, MusicPlayerService.class);
-                ApplicationLoader.applicationContext.stopService(intent);
-            }
-            NotificationCenter.getInstance().postNotificationName(NotificationCenter.audioPlayStateChanged, playingMessageObject.getId());
-            */
             return false;
         }
-        /*if (messageObject.isMusic()) {
-            checkIsNextMusicFileDownloaded();
-        }*/
 
         if (isOpusFile(cacheFile.getAbsolutePath()) == 1)
         {
             playlist.clear();
-            shuffledPlaylist.clear();
             synchronized (playerObjectSync) {
                 try {
                     ignoreFirstProgress = 3;
@@ -2265,9 +2200,7 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
                 audioPlayer.prepare();
                 audioPlayer.start();
                 if (messageObject.isVoice()) {
-                    audioInfo = null;
                     playlist.clear();
-                    shuffledPlaylist.clear();
                 } else {
                     try {
                         audioInfo = AudioInfo.getAudioInfo(cacheFile);
@@ -2386,46 +2319,6 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
 
     public AudioInfo getAudioInfo() {
         return audioInfo;
-    }
-
-    public boolean isShuffleMusic() {
-        return shuffleMusic;
-    }
-
-    public int getRepeatMode() {
-        return repeatMode;
-    }
-
-    public void toggleShuffleMusic() {
-        shuffleMusic = !shuffleMusic;
-        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("mainconfig", Activity.MODE_PRIVATE);
-        SharedPreferences.Editor editor = preferences.edit();
-        editor.putBoolean("shuffleMusic", shuffleMusic);
-        editor.apply();
-        if (shuffleMusic) {
-            buildShuffledPlayList();
-            currentPlaylistNum = 0;
-        } else {
-            if (playingMessageObject != null) {
-                currentPlaylistNum = playlist.indexOf(playingMessageObject);
-                if (currentPlaylistNum == -1) {
-                    playlist.clear();
-                    shuffledPlaylist.clear();
-                    cleanupPlayer(true, true);
-                }
-            }
-        }
-    }
-
-    public void toggleRepeatMode() {
-        repeatMode++;
-        if (repeatMode > 2) {
-            repeatMode = 0;
-        }
-        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("mainconfig", Activity.MODE_PRIVATE);
-        SharedPreferences.Editor editor = preferences.edit();
-        editor.putInt("repeatMode", repeatMode);
-        editor.apply();
     }
 
     public boolean pauseAudio(MessageObject messageObject) {
@@ -2603,7 +2496,6 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
                                 TLRPC.DocumentAttribute attribute = messageObject.getDocument().attributes.get(a);
                                 if (attribute instanceof TLRPC.TL_documentAttributeAudio) {
                                     attribute.waveform = waveform;
-                                    attribute.flags |= 4;
                                     break;
                                 }
                             }
@@ -2636,9 +2528,6 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
                             TLRPC.TL_documentAttributeAudio attributeAudio = new TLRPC.TL_documentAttributeAudio();
                             attributeAudio.voice = true;
                             attributeAudio.waveform = getWaveform2(recordSamples, recordSamples.length); //getWaveform(recordingAudioFileToSend.getAbsolutePath());
-                            if (attributeAudio.waveform != null) {
-                                attributeAudio.flags |= 4;
-                            }
                             long duration = recordTimeCount;
                             attributeAudio.duration = (int) (recordTimeCount / 1000);
                             audioToSend.attributes.add(attributeAudio);

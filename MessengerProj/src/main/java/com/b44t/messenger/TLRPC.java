@@ -50,7 +50,6 @@ public class TLRPC {
 		public int duration;
 		public String alt;
 		public InputStickerSet stickerset;
-		public int flags;
 		public boolean voice;
 		public String title;
 		public String performer;

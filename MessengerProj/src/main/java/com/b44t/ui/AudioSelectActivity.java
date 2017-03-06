@@ -252,7 +252,6 @@ public class AudioSelectActivity extends BaseFragment implements NotificationCen
                         attributeAudio.duration = audioEntry.duration;
                         attributeAudio.title = audioEntry.title;
                         attributeAudio.performer = audioEntry.author;
-                        attributeAudio.flags |= 3;
                         message.media.document.attributes.add(attributeAudio);
 
                         TLRPC.TL_documentAttributeFilename fileName = new TLRPC.TL_documentAttributeFilename();
