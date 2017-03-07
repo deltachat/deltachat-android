@@ -217,7 +217,6 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
     private HashMap<Long, Long> typingTimes = new HashMap<>();
 
     private SensorManager sensorManager;
-    private boolean ignoreProximity;
     private PowerManager.WakeLock proximityWakeLock;
     private Sensor proximitySensor;
     private Sensor accelerometerSensor;
@@ -256,7 +255,6 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
     private static final int AUDIO_FOCUSED  = 2;
 
     private ArrayList<MessageObject> videoConvertQueue = new ArrayList<>();
-    private final Object videoQueueSync = new Object();
     private boolean cancelCurrentVideoConversion = false;
     private boolean videoConvertFirstWrite = true;
     private HashMap<String, MessageObject> generatingWaveform = new HashMap<>();
@@ -1561,7 +1559,7 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
                 if (!raiseToEarRecord) {
                     FileLog.e("messenger", "start record");
                     useFrontSpeaker = true;
-                    if (!raiseChat.playFirstUnreadVoiceMessage()) {
+                    if (!raiseChat.playFirstUnreadVoiceMessage() /*if there is nothing to play, the function checks for record permission*/ ) {
                         raiseToEarRecord = true;
                         useFrontSpeaker = false;
                         startRecording(raiseChat.getDialogId());

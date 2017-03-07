@@ -126,7 +126,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
 
     // misc
     private FrameLayout bottomOverlay;
-    protected ChatActivityEnterView chatActivityEnterView;
+    private ChatActivityEnterView chatActivityEnterView;
     private ActionBarMenuItem menuItem;
     private ActionBarMenuItem headerItem;
     private ActionBarMenuItem searchItem;
@@ -1173,19 +1173,20 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
     }
 
     public boolean playFirstUnreadVoiceMessage() {
-        /*for (int a = messages.size() - 1; a >= 0; a--) {
+        /* -- maybe we should implement this also for Delta Chat (raise-to-hear if there are unheard messages)
+        for (int a = messages.size() - 1; a >= 0; a--) {
             MessageObject messageObject = messages.get(a);
             if (messageObject.isVoice() && messageObject.isContentUnread() && !messageObject.isOut() && messageObject.messageOwner.to_id.channel_id == 0) {
                 MediaController.getInstance().setVoiceMessagesPlaylist(MediaController.getInstance().playAudio(messageObject) ? createVoiceMessagesPlaylist(messageObject, true) : null, true);
                 return true;
             }
-        }
+        }*/
         if (Build.VERSION.SDK_INT >= 23 && getParentActivity() != null) {
             if (getParentActivity().checkSelfPermission(Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED) {
                 getParentActivity().requestPermissions(new String[]{Manifest.permission.RECORD_AUDIO}, 3);
                 return true;
             }
-        }*/
+        }
         return false;
     }
 
@@ -2459,64 +2460,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
 
     private void updateVisibleRows() {
         chatAdapter.notifyDataSetChanged();
-        /*
-        if (chatListView == null) {
-            return;
-        }
-        int count = chatListView.getChildCount();
-        //MessageObject editingMessageObject = chatActivityEnterView != null ? chatActivityEnterView.getEditingMessageObject() : null;
-        for (int a = 0; a < count; a++) {
-            View view = chatListView.getChildAt(a);
-            if (view instanceof ChatMessageCell) {
-                ChatMessageCell cell = (ChatMessageCell) view;
-
-                boolean disableSelection = false;
-                boolean selected = false;
-                if (actionBar.isActionModeShowed()) {
-                    MessageObject messageObject = cell.getMessageObject();
-                    if ( selectedMessagesIds.containsKey(messageObject.getId())) {
-                        view.setBackgroundColor(Theme.MSG_SELECTED_BACKGROUND_COLOR);
-                        selected = true;
-                    } else {
-                        view.setBackgroundColor(0);
-                    }
-                    disableSelection = true;
-                } else {
-                    view.setBackgroundColor(0);
-                }
-
-                cell.setMessageObject(cell.getMessageObject());
-                cell.setCheckPressed(!disableSelection, disableSelection && selected);
-                cell.setHighlighted(highlightMessageId != Integer.MAX_VALUE && cell.getMessageObject() != null && cell.getMessageObject().getId() == highlightMessageId);
-                if ( m_searching && !m_lastSearchQuery.isEmpty() ) {
-                    cell.setHighlightedText(m_lastSearchQuery);
-                } else {
-                    cell.setHighlightedText(null);
-                }
-            } else if (view instanceof ChatActionCell) {
-                ChatActionCell cell = (ChatActionCell) view;
-                cell.setMessageObject(cell.getMessageObject());
-            }
-        }
-        */
-    }
-
-    private ArrayList<MessageObject> createVoiceMessagesPlaylist(MessageObject startMessageObject, boolean playingUnreadMedia) {
-        ArrayList<MessageObject> messageObjects = new ArrayList<>();
-        /*
-        messageObjects.add(startMessageObject);
-        int messageId = startMessageObject.getId();
-        if (messageId != 0) {
-            //boolean started = false;
-            for (int a = messages.size() - 1; a >= 0; a--) {
-                MessageObject messageObject = messages.get(a);
-                if( (messageObject.getId() > messageId) && messageObject.isVoice() && (!playingUnreadMedia || (messageObject.isContentUnread() && !messageObject.isOut()))) {
-                    messageObjects.add(messageObject);
-                }
-            }
-        }
-        */
-        return messageObjects;
     }
 
     private void openSearchWithText(String text) {
@@ -2654,13 +2597,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
 
                     @Override
                     public boolean needPlayAudio(MessageObject messageObject) {
-                        boolean result = MediaController.getInstance().playAudio(messageObject);
-                        /*if (messageObject.isVoice()) {
-                            MediaController.getInstance().setVoiceMessagesPlaylist(result ? createVoiceMessagesPlaylist(messageObject, false) : null, false);
-                        } else if (messageObject.isMusic()) {
-                            return MediaController.getInstance().setPlaylist(messages, messageObject);
-                        }*/
-                        return result;
+                        return MediaController.getInstance().playAudio(messageObject);
                     }
 
                     @Override
