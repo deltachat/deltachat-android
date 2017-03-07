@@ -51,7 +51,7 @@ public class NotificationCenter {
     public static final int stopEncodingService = totalEvents++;
     public static final int mainUserInfoChanged = totalEvents++;
     public static final int recentImagesDidLoaded = totalEvents++;
-    public static final int replaceMessagesObjects = totalEvents++;
+    public static final int waveformCalculated = totalEvents++;
     public static final int didSetPasscode = totalEvents++;
     //public static final int screenStateChanged = totalEvents++; -- currently not used, but this may get handy
     public static final int stickersDidLoaded = totalEvents++;

@@ -75,18 +75,6 @@ public class TLRPC {
 	public static class TL_documentAttributeFilename extends DocumentAttribute {
 	}
 
-    public static class messages_Messages extends TLObject {
-        public ArrayList<Message> messages = new ArrayList<>();
-        public ArrayList<Chat> chats = new ArrayList<>();
-        public ArrayList<User> users = new ArrayList<>();
-        public int flags;
-        public int pts;
-        public int count;
-    }
-
-    public static class TL_messages_messages extends messages_Messages {
-    }
-
 	public static class Peer extends TLObject {
 		public final int channel_id = 0;
 		public int user_id;

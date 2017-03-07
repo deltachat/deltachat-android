@@ -81,12 +81,6 @@ public class Theme {
     public static final int MSG_IN_TIME_N_FWD_TEXT_COLOR = 0xff9ea7b0;
     public static final int MSG_OUT_TIME_TEXT_COLOR = 0xff70b15c;
     public static final int MSG_MEDIA_TIME_TEXT_COLOR = 0xffffffff;
-    public static final int MSG_IN_VOICE_SEEKBAR_COLOR = 0xffdee5eb;
-    public static final int MSG_OUT_VOICE_SEEKBAR_COLOR = 0xffbbe3ac;
-    public static final int MSG_IN_VOICE_SEEKBAR_SELECTED_COLOR = 0xffbcdee8;
-    public static final int MSG_OUT_VOICE_SEEKBAR_SELECTED_COLOR = 0xffa9dd96;
-    public static final int MSG_IN_VOICE_SEEKBAR_FILL_COLOR = 0xff72b5e8;
-    public static final int MSG_OUT_VOICE_SEEKBAR_FILL_COLOR = 0xff78c272;
     public static final int MSG_IN_FILE_BACKGROUND_COLOR = 0xffebf0f5;
     public static final int MSG_OUT_FILE_BACKGROUND_COLOR = 0xffdaf5c3;
     public static final int MSG_IN_FILE_BACKGROUND_SELECTED_COLOR = 0xffcbeaf6;

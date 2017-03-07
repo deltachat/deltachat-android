@@ -225,7 +225,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.blockedUsersDidLoaded);
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.FileNewChunkAvailable);
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.audioDidStarted);
-        NotificationCenter.getInstance().addObserver(this, NotificationCenter.replaceMessagesObjects);
+        NotificationCenter.getInstance().addObserver(this, NotificationCenter.waveformCalculated);
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.notificationsSettingsUpdated);
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.errSelfNotInGroup);
 
@@ -355,7 +355,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         NotificationCenter.getInstance().removeObserver(this, NotificationCenter.blockedUsersDidLoaded);
         NotificationCenter.getInstance().removeObserver(this, NotificationCenter.FileNewChunkAvailable);
         NotificationCenter.getInstance().removeObserver(this, NotificationCenter.audioDidStarted);
-        NotificationCenter.getInstance().removeObserver(this, NotificationCenter.replaceMessagesObjects);
+        NotificationCenter.getInstance().removeObserver(this, NotificationCenter.waveformCalculated);
         NotificationCenter.getInstance().removeObserver(this, NotificationCenter.notificationsSettingsUpdated);
         NotificationCenter.getInstance().removeObserver(this, NotificationCenter.errSelfNotInGroup);
         NotificationCenter.getInstance().removeObserver(this, NotificationCenter.audioPlayStateChanged);
@@ -2012,9 +2012,21 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 }
             }
         }
-        else if (id == NotificationCenter.replaceMessagesObjects)
+        else if (id == NotificationCenter.waveformCalculated)
         {
-            chatAdapter.notifyDataSetChanged();
+            if (chatListView != null) {
+                int count = chatListView.getChildCount();
+                for (int a = 0; a < count; a++) {
+                    View view = chatListView.getChildAt(a);
+                    if (view instanceof ChatMessageCell) {
+                        ChatMessageCell cell = (ChatMessageCell) view;
+                        MessageObject messageObject1 = cell.getMessageObject();
+                        if( messageObject1.getId()==(Integer)args[0] ) {
+                            cell.waveformCalculated();
+                        }
+                    }
+                }
+            }
         }
         else if (id == NotificationCenter.notificationsSettingsUpdated)
         {

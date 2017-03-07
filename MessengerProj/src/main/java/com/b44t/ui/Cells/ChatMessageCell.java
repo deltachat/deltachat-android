@@ -163,7 +163,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
 
     private int iconX, iconY;
 
-    private boolean useSeekBarWaweform;
+    private boolean useSeekBarWaveform;
     private SeekBar seekBar;
     private SeekBarWaveform seekBarWaveform;
     private int seekBarX;
@@ -573,15 +573,15 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
         int x = (int) event.getX();
         int y = (int) event.getY();
         boolean result;
-        if (useSeekBarWaweform) {
+        if (useSeekBarWaveform) {
             result = seekBarWaveform.onTouch(event.getAction(), event.getX() - seekBarX - dp(13), event.getY() - seekBarY);
         } else {
             result = seekBar.onTouch(event.getAction(), event.getX() - seekBarX, event.getY() - seekBarY);
         }
         if (result) {
-            if (!useSeekBarWaweform && event.getAction() == MotionEvent.ACTION_DOWN) {
+            if (!useSeekBarWaveform && event.getAction() == MotionEvent.ACTION_DOWN) {
                 getParent().requestDisallowInterceptTouchEvent(true);
-            } else if (useSeekBarWaweform && !seekBarWaveform.isStartDraging() && event.getAction() == MotionEvent.ACTION_UP) {
+            } else if (useSeekBarWaveform && !seekBarWaveform.isStartDraging() && event.getAction() == MotionEvent.ACTION_UP) {
                 didPressedButton();
             }
             disallowLongPress = true;
@@ -737,7 +737,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
             return;
         }
 
-        if (useSeekBarWaweform) {
+        if (useSeekBarWaveform) {
             if (!seekBarWaveform.isDragging()) {
                 seekBarWaveform.setProgress(currentMessageObject.audioProgress);
             }
@@ -973,7 +973,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
     public void setCheckPressed(boolean value, boolean pressed) {
         isCheckPressed = value;
         isPressed = pressed;
-        if (useSeekBarWaweform) {
+        if (useSeekBarWaveform) {
             seekBarWaveform.setSelected(isDrawSelectedBackground());
         } else {
             seekBar.setSelected(isDrawSelectedBackground());
@@ -986,7 +986,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
             return;
         }
         isHighlighted = value;
-        if (useSeekBarWaweform) {
+        if (useSeekBarWaveform) {
             seekBarWaveform.setSelected(isDrawSelectedBackground());
         } else {
             seekBar.setSelected(isDrawSelectedBackground());
@@ -997,7 +997,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
     @Override
     public void setPressed(boolean pressed) {
         super.setPressed(pressed);
-        if (useSeekBarWaweform) {
+        if (useSeekBarWaveform) {
             seekBarWaveform.setSelected(isDrawSelectedBackground());
         } else {
             seekBar.setSelected(isDrawSelectedBackground());
@@ -1014,24 +1014,26 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
         MediaController.getInstance().seekToProgress(currentMessageObject, progress);
     }
 
-    private void updateWaveform() {
+    private void updateWaveform(boolean doLoad) {
         if (currentMessageObject == null || documentAttachType != DOCUMENT_ATTACH_TYPE_VOICE) {
             return;
         }
         for (int a = 0; a < documentAttach.attributes.size(); a++) {
             TLRPC.DocumentAttribute attribute = documentAttach.attributes.get(a);
             if (attribute instanceof TLRPC.TL_documentAttributeAudio) {
-                /* this does not work and result in endless reloading of the messages in the
-                   chatlist (you can check this using the `Log.i()`-command in ChatActivity
-                if (attribute.waveform == null || attribute.waveform.length == 0) {
-                    MediaController.getInstance().generateWaveform(currentMessageObject);
+                if (doLoad && (attribute.waveform == null || attribute.waveform.length == 0)) {
+                    MediaController.getInstance().generateWaveform(currentMessageObject); // results in a call to waveformCalculated() or sets up attribute.waveform directly
                 }
-                useSeekBarWaweform = attribute.waveform != null;
+                useSeekBarWaveform = attribute.waveform != null;
                 seekBarWaveform.setWaveform(attribute.waveform);
-                */
                 break;
             }
         }
+    }
+
+    public void waveformCalculated() {
+        updateWaveform(false);
+        invalidate();
     }
 
     private void createDocumentLayout(int maxWidth, MessageObject messageObject) {
@@ -1056,11 +1058,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
             int minSize = dp(40 + 14 + 20 + 90 + 10) + timeWidth;
             backgroundWidth = Math.min(maxWidth, minSize + duration * dp(10));
 
-            if (messageObject.isOutOwner()) {
-                seekBarWaveform.setColors(Theme.MSG_OUT_VOICE_SEEKBAR_COLOR, Theme.MSG_OUT_VOICE_SEEKBAR_FILL_COLOR, Theme.MSG_OUT_VOICE_SEEKBAR_SELECTED_COLOR);
-            } else {
-                seekBarWaveform.setColors(Theme.MSG_IN_VOICE_SEEKBAR_COLOR, Theme.MSG_IN_VOICE_SEEKBAR_FILL_COLOR, Theme.MSG_IN_VOICE_SEEKBAR_SELECTED_COLOR);
-            }
+            seekBarWaveform.setColors(Theme.MSG_AUDIO_SEEKBAR_DARK_COLOR, 0xff000000, Theme.MSG_AUDIO_SEEKBAR_DARK_COLOR);
             seekBar.setColors(Theme.MSG_AUDIO_SEEKBAR_LITE_COLOR, Theme.MSG_AUDIO_SEEKBAR_DARK_COLOR, Theme.MSG_AUDIO_SEEKBAR_DARK_COLOR);
             seekBarWaveform.setMessageObject(messageObject);
         }
@@ -1265,7 +1263,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
             photoNotSet = false;
             drawBackground = true;
             drawName = false;
-            useSeekBarWaweform = false;
+            useSeekBarWaveform = false;
             drawForwardedName = false;
             mediaBackground = false;
             availableTimeWidth = 0;
@@ -1343,6 +1341,8 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                 setMessageObjectInternal(messageObject);
 
                 totalHeight = dp(70) + namesOffset;
+
+                updateWaveform(true);
             } else if (messageObject.type == MessageObject.MO_TYPE14_MUSIC) {
                 if (isTablet()) {
                     backgroundWidth = Math.min(getMinTabletSide() - dp(isGroupChat && messageObject.isFromUser() && !messageObject.isOutOwner() ? 102 : 50), dp(270));
@@ -1678,7 +1678,6 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
 
             substractBackgroundHeight = 0;
         }
-        updateWaveform();
         updateButtonState();
     }
 
@@ -1901,10 +1900,10 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
             drawIcon = buttonState==BS0_CLICK_TO_PLAY? Theme.INLIST_PLAY : Theme.INLIST_PAUSE;
 
             canvas.save();
-            if (useSeekBarWaweform) {
+            if (useSeekBarWaveform) {
                 canvas.translate(seekBarX + dp(13), seekBarY);
                 seekBarWaveform.draw(canvas);
-            } else {
+            } else if( buttonState==BS1_CLICK_TO_PAUSE /* avoid flickering as the normal seekbar is normally replaced by the waveform seekbar after a second or so */ ) {
                 canvas.translate(seekBarX, seekBarY);
                 seekBar.draw(canvas);
             }
@@ -1917,7 +1916,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
 
             if (!currentMessageObject.isOutOwner() && currentMessageObject.isUnread()) {
                 // mark unread incoming messages with a little dot (only works if we mark the voice messages as being read only if heard)
-                docBackPaint.setColor(Theme.MSG_IN_VOICE_SEEKBAR_FILL_COLOR);
+                docBackPaint.setColor(Theme.MSG_AUDIO_SEEKBAR_DARK_COLOR);
                 canvas.drawCircle(timeAudioX + timeWidthAudio + dp(6), dp(51) + namesOffset + mediaOffsetY, dp(4), docBackPaint);
             }
         }

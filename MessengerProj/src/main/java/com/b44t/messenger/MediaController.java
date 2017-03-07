@@ -69,7 +69,9 @@ import com.b44t.messenger.video.OutputSurface;
 import com.b44t.ui.ChatActivity;
 import com.b44t.ui.PhotoViewer;
 
+import java.io.DataInputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.lang.ref.WeakReference;
@@ -1909,17 +1911,51 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
         }, paused ? 500 : 50);
     }
 
+    private static void setWaveformToMessageObject(MessageObject messageObject, byte[] waveform)
+    {
+        for (int a = 0; a < messageObject.getDocument().attributes.size(); a++) {
+            TLRPC.DocumentAttribute attribute = messageObject.getDocument().attributes.get(a);
+            if (attribute instanceof TLRPC.TL_documentAttributeAudio) {
+                attribute.waveform = waveform;
+                break;
+            }
+        }
+    }
+
     public void generateWaveform(MessageObject messageObject) {
         final String id = messageObject.getId() + "_" + messageObject.getDialogId();
         final String path = FileLoader.getPathToMessage(messageObject.messageOwner).getAbsolutePath();
         if (generatingWaveform.containsKey(id)) {
             return;
         }
+
+        try {
+            File testfile = new File(path + ".waveform");
+            if (testfile.exists() && testfile.length() > 0) {
+                byte[] waveform = new byte[(int) testfile.length()];
+                DataInputStream dis = new DataInputStream(new FileInputStream(testfile));
+                dis.readFully(waveform);
+                dis.close();
+                setWaveformToMessageObject(messageObject, waveform);
+                return;
+            }
+        }
+        catch(Exception e) {}
+
         generatingWaveform.put(id, messageObject);
         Utilities.globalQueue.postRunnable(new Runnable() {
             @Override
             public void run() {
                 final byte[] waveform = MediaController.getInstance().getWaveform(path);
+                if( waveform!=null && waveform.length > 0 ) {
+                    try {
+                        FileOutputStream out = new FileOutputStream(path + ".waveform");
+                        out.write(waveform);
+                        out.close();
+                    }
+                    catch(Exception e) {}
+                }
+
                 AndroidUtilities.runOnUIThread(new Runnable() {
                     @Override
                     public void run() {
@@ -1928,19 +1964,8 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
                             return;
                         }
                         if (waveform != null) {
-                            for (int a = 0; a < messageObject.getDocument().attributes.size(); a++) {
-                                TLRPC.DocumentAttribute attribute = messageObject.getDocument().attributes.get(a);
-                                if (attribute instanceof TLRPC.TL_documentAttributeAudio) {
-                                    attribute.waveform = waveform;
-                                    break;
-                                }
-                            }
-                            TLRPC.TL_messages_messages messagesRes = new TLRPC.TL_messages_messages();
-                            messagesRes.messages.add(messageObject.messageOwner);
-                            //MessagesStorage.getInstance().putMessages(messagesRes, messageObject.getDialogId(), -1, 0, false);
-                            ArrayList<MessageObject> arrayList = new ArrayList<>();
-                            arrayList.add(messageObject);
-                            NotificationCenter.getInstance().postNotificationName(NotificationCenter.replaceMessagesObjects, messageObject.getDialogId(), arrayList);
+                            setWaveformToMessageObject(messageObject, waveform);
+                            NotificationCenter.getInstance().postNotificationName(NotificationCenter.waveformCalculated, messageObject.getId());
                         }
                     }
                 });
