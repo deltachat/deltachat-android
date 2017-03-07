@@ -117,6 +117,7 @@ public class ConnectionsManager {
         return lastClassGuid++;
     }
 
+    /* -- leave this for future use
     public static boolean isRoaming() {
         try {
             ConnectivityManager cm = (ConnectivityManager) ApplicationLoader.applicationContext.getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -128,8 +129,9 @@ public class ConnectionsManager {
             FileLog.e("messenger", e);
         }
         return false;
-    }
+    } */
 
+    /* -- leave this for future use
     public static boolean isConnectedToWiFi() {
         try {
             ConnectivityManager cm = (ConnectivityManager) ApplicationLoader.applicationContext.getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -141,7 +143,7 @@ public class ConnectionsManager {
             FileLog.e("messenger", e);
         }
         return false;
-    }
+    } */
 
     public static boolean isNetworkOnline() {
         try {

@@ -268,14 +268,6 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
     public int mobileDataDownloadMask = 0;
     public int wifiDownloadMask = 0;
     public int roamingDownloadMask = 0;
-    private int lastCheckMask = 0;
-    private ArrayList<DownloadObject> photoDownloadQueue = new ArrayList<>();
-    private ArrayList<DownloadObject> audioDownloadQueue = new ArrayList<>();
-    private ArrayList<DownloadObject> documentDownloadQueue = new ArrayList<>();
-    private ArrayList<DownloadObject> musicDownloadQueue = new ArrayList<>();
-    private ArrayList<DownloadObject> gifDownloadQueue = new ArrayList<>();
-    private ArrayList<DownloadObject> videoDownloadQueue = new ArrayList<>();
-    private HashMap<String, DownloadObject> downloadQueueKeys = new HashMap<>();
 
     private final boolean autoplayGifs = true;
     private boolean raiseToSpeak = true;
@@ -619,9 +611,7 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
         IntentFilter filter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
         ApplicationLoader.applicationContext.registerReceiver(networkStateReceiver, filter);
 
-        if (UserConfig.isClientActivated()) {
-            checkAutodownloadSettings();
-        }
+        checkAutodownloadSettings();
 
         if (Build.VERSION.SDK_INT >= 16) {
             mediaProjections = new String[]{
@@ -799,147 +789,27 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
         cleanupPlayer(false, true);
         audioInfo = null;
         playMusicAgain = false;
-        photoDownloadQueue.clear();
-        audioDownloadQueue.clear();
-        documentDownloadQueue.clear();
-        videoDownloadQueue.clear();
-        musicDownloadQueue.clear();
-        gifDownloadQueue.clear();
-        downloadQueueKeys.clear();
         videoConvertQueue.clear();
         generatingWaveform.clear();
         typingTimes.clear();
         cancelVideoConvert(null);
     }
 
-    protected int getAutodownloadMask() {
-        int mask = 0;
-        if ((mobileDataDownloadMask & AUTODOWNLOAD_MASK_PHOTO) != 0 || (wifiDownloadMask & AUTODOWNLOAD_MASK_PHOTO) != 0 || (roamingDownloadMask & AUTODOWNLOAD_MASK_PHOTO) != 0) {
-            mask |= AUTODOWNLOAD_MASK_PHOTO;
-        }
-        if ((mobileDataDownloadMask & AUTODOWNLOAD_MASK_AUDIO) != 0 || (wifiDownloadMask & AUTODOWNLOAD_MASK_AUDIO) != 0 || (roamingDownloadMask & AUTODOWNLOAD_MASK_AUDIO) != 0) {
-            mask |= AUTODOWNLOAD_MASK_AUDIO;
-        }
-        if ((mobileDataDownloadMask & AUTODOWNLOAD_MASK_VIDEO) != 0 || (wifiDownloadMask & AUTODOWNLOAD_MASK_VIDEO) != 0 || (roamingDownloadMask & AUTODOWNLOAD_MASK_VIDEO) != 0) {
-            mask |= AUTODOWNLOAD_MASK_VIDEO;
-        }
-        if ((mobileDataDownloadMask & AUTODOWNLOAD_MASK_DOCUMENT) != 0 || (wifiDownloadMask & AUTODOWNLOAD_MASK_DOCUMENT) != 0 || (roamingDownloadMask & AUTODOWNLOAD_MASK_DOCUMENT) != 0) {
-            mask |= AUTODOWNLOAD_MASK_DOCUMENT;
-        }
-        if ((mobileDataDownloadMask & AUTODOWNLOAD_MASK_MUSIC) != 0 || (wifiDownloadMask & AUTODOWNLOAD_MASK_MUSIC) != 0 || (roamingDownloadMask & AUTODOWNLOAD_MASK_MUSIC) != 0) {
-            mask |= AUTODOWNLOAD_MASK_MUSIC;
-        }
-        if ((mobileDataDownloadMask & AUTODOWNLOAD_MASK_GIF) != 0 || (wifiDownloadMask & AUTODOWNLOAD_MASK_GIF) != 0 || (roamingDownloadMask & AUTODOWNLOAD_MASK_GIF) != 0) {
-            mask |= AUTODOWNLOAD_MASK_GIF;
-        }
-        return mask;
-    }
 
     public void checkAutodownloadSettings() {
+        /* -- leave this for future use
         int currentMask = getCurrentDownloadMask();
         if (currentMask == lastCheckMask) {
             return;
         }
         lastCheckMask = currentMask;
-        if ((currentMask & AUTODOWNLOAD_MASK_PHOTO) != 0) {
-            if (photoDownloadQueue.isEmpty()) {
-                newDownloadObjectsAvailable(AUTODOWNLOAD_MASK_PHOTO);
-            }
-        } else {
-            for (int a = 0; a < photoDownloadQueue.size(); a++) {
-                DownloadObject downloadObject = photoDownloadQueue.get(a);
-                FileLoader.getInstance().cancelLoadFile((TLRPC.PhotoSize) downloadObject.object);
-            }
-            photoDownloadQueue.clear();
-        }
-        if ((currentMask & AUTODOWNLOAD_MASK_AUDIO) != 0) {
-            if (audioDownloadQueue.isEmpty()) {
-                newDownloadObjectsAvailable(AUTODOWNLOAD_MASK_AUDIO);
-            }
-        } else {
-            for (int a = 0; a < audioDownloadQueue.size(); a++) {
-                DownloadObject downloadObject = audioDownloadQueue.get(a);
-                FileLoader.getInstance().cancelLoadFile((TLRPC.Document) downloadObject.object);
-            }
-            audioDownloadQueue.clear();
-        }
-        if ((currentMask & AUTODOWNLOAD_MASK_DOCUMENT) != 0) {
-            if (documentDownloadQueue.isEmpty()) {
-                newDownloadObjectsAvailable(AUTODOWNLOAD_MASK_DOCUMENT);
-            }
-        } else {
-            for (int a = 0; a < documentDownloadQueue.size(); a++) {
-                DownloadObject downloadObject = documentDownloadQueue.get(a);
-                TLRPC.Document document = (TLRPC.Document) downloadObject.object;
-                FileLoader.getInstance().cancelLoadFile(document);
-            }
-            documentDownloadQueue.clear();
-        }
-        if ((currentMask & AUTODOWNLOAD_MASK_VIDEO) != 0) {
-            if (videoDownloadQueue.isEmpty()) {
-                newDownloadObjectsAvailable(AUTODOWNLOAD_MASK_VIDEO);
-            }
-        } else {
-            for (int a = 0; a < videoDownloadQueue.size(); a++) {
-                DownloadObject downloadObject = videoDownloadQueue.get(a);
-                FileLoader.getInstance().cancelLoadFile((TLRPC.Document) downloadObject.object);
-            }
-            videoDownloadQueue.clear();
-        }
-        if ((currentMask & AUTODOWNLOAD_MASK_MUSIC) != 0) {
-            if (musicDownloadQueue.isEmpty()) {
-                newDownloadObjectsAvailable(AUTODOWNLOAD_MASK_MUSIC);
-            }
-        } else {
-            for (int a = 0; a < musicDownloadQueue.size(); a++) {
-                DownloadObject downloadObject = musicDownloadQueue.get(a);
-                TLRPC.Document document = (TLRPC.Document) downloadObject.object;
-                FileLoader.getInstance().cancelLoadFile(document);
-            }
-            musicDownloadQueue.clear();
-        }
-        if ((currentMask & AUTODOWNLOAD_MASK_GIF) != 0) {
-            if (gifDownloadQueue.isEmpty()) {
-                newDownloadObjectsAvailable(AUTODOWNLOAD_MASK_GIF);
-            }
-        } else {
-            for (int a = 0; a < gifDownloadQueue.size(); a++) {
-                DownloadObject downloadObject = gifDownloadQueue.get(a);
-                TLRPC.Document document = (TLRPC.Document) downloadObject.object;
-                FileLoader.getInstance().cancelLoadFile(document);
-            }
-            gifDownloadQueue.clear();
-        }
 
-        int mask = getAutodownloadMask();
-        if (mask == 0) {
-            //MessagesStorage.getInstance().clearDownloadQueue(0);
-        } else {
-            if ((mask & AUTODOWNLOAD_MASK_PHOTO) == 0) {
-                //MessagesStorage.getInstance().clearDownloadQueue(AUTODOWNLOAD_MASK_PHOTO);
-            }
-            if ((mask & AUTODOWNLOAD_MASK_AUDIO) == 0) {
-                //MessagesStorage.getInstance().clearDownloadQueue(AUTODOWNLOAD_MASK_AUDIO);
-            }
-            if ((mask & AUTODOWNLOAD_MASK_VIDEO) == 0) {
-                //MessagesStorage.getInstance().clearDownloadQueue(AUTODOWNLOAD_MASK_VIDEO);
-            }
-            if ((mask & AUTODOWNLOAD_MASK_DOCUMENT) == 0) {
-                //MessagesStorage.getInstance().clearDownloadQueue(AUTODOWNLOAD_MASK_DOCUMENT);
-            }
-            if ((mask & AUTODOWNLOAD_MASK_MUSIC) == 0) {
-                //MessagesStorage.getInstance().clearDownloadQueue(AUTODOWNLOAD_MASK_MUSIC);
-            }
-            if ((mask & AUTODOWNLOAD_MASK_GIF) == 0) {
-                //MessagesStorage.getInstance().clearDownloadQueue(AUTODOWNLOAD_MASK_GIF);
-            }
-        }
+        ... maybe tell the backend what can be downloaded ...
+
+        */
     }
 
-    public boolean canDownloadMedia(int type) {
-        return (getCurrentDownloadMask() & type) != 0;
-    }
-
+    /* -- leave this for future use
     private int getCurrentDownloadMask() {
         if (ConnectionsManager.isConnectedToWiFi()) {
             return wifiDownloadMask;
@@ -948,119 +818,7 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
         } else {
             return mobileDataDownloadMask;
         }
-    }
-
-    /*
-    protected void processDownloadObjects(int type, ArrayList<DownloadObject> objects) {
-        if (objects.isEmpty()) {
-            return;
-        }
-        ArrayList<DownloadObject> queue = null;
-        if (type == AUTODOWNLOAD_MASK_PHOTO) {
-            queue = photoDownloadQueue;
-        } else if (type == AUTODOWNLOAD_MASK_AUDIO) {
-            queue = audioDownloadQueue;
-        } else if (type == AUTODOWNLOAD_MASK_VIDEO) {
-            queue = videoDownloadQueue;
-        } else if (type == AUTODOWNLOAD_MASK_DOCUMENT) {
-            queue = documentDownloadQueue;
-        } else if (type == AUTODOWNLOAD_MASK_MUSIC) {
-            queue = musicDownloadQueue;
-        } else if (type == AUTODOWNLOAD_MASK_GIF) {
-            queue = gifDownloadQueue;
-        }
-        for (int a = 0; a < objects.size(); a++) {
-            DownloadObject downloadObject = objects.get(a);
-            String path;
-            if (downloadObject.object instanceof TLRPC.Document) {
-                TLRPC.Document document = (TLRPC.Document) downloadObject.object;
-                path = FileLoader.getAttachFileName(document);
-            } else {
-                path = FileLoader.getAttachFileName(downloadObject.object);
-            }
-            if (downloadQueueKeys.containsKey(path)) {
-                continue;
-            }
-
-            boolean added = true;
-            if (downloadObject.object instanceof TLRPC.PhotoSize) {
-                FileLoader.getInstance().loadFile((TLRPC.PhotoSize) downloadObject.object, null, false);
-            } else if (downloadObject.object instanceof TLRPC.Document) {
-                TLRPC.Document document = (TLRPC.Document) downloadObject.object;
-                FileLoader.getInstance().loadFile(document, false, false);
-            } else {
-                added = false;
-            }
-            if (added) {
-                queue.add(downloadObject);
-                downloadQueueKeys.put(path, downloadObject);
-            }
-        }
-    }
-    */
-
-    protected void newDownloadObjectsAvailable(int downloadMask) {
-        int mask = getCurrentDownloadMask();
-        if ((mask & AUTODOWNLOAD_MASK_PHOTO) != 0 && (downloadMask & AUTODOWNLOAD_MASK_PHOTO) != 0 && photoDownloadQueue.isEmpty()) {
-            //MessagesStorage.getInstance().getDownloadQueue(AUTODOWNLOAD_MASK_PHOTO);
-        }
-        if ((mask & AUTODOWNLOAD_MASK_AUDIO) != 0 && (downloadMask & AUTODOWNLOAD_MASK_AUDIO) != 0 && audioDownloadQueue.isEmpty()) {
-            //MessagesStorage.getInstance().getDownloadQueue(AUTODOWNLOAD_MASK_AUDIO);
-        }
-        if ((mask & AUTODOWNLOAD_MASK_VIDEO) != 0 && (downloadMask & AUTODOWNLOAD_MASK_VIDEO) != 0 && videoDownloadQueue.isEmpty()) {
-            //MessagesStorage.getInstance().getDownloadQueue(AUTODOWNLOAD_MASK_VIDEO);
-        }
-        if ((mask & AUTODOWNLOAD_MASK_DOCUMENT) != 0 && (downloadMask & AUTODOWNLOAD_MASK_DOCUMENT) != 0 && documentDownloadQueue.isEmpty()) {
-            //MessagesStorage.getInstance().getDownloadQueue(AUTODOWNLOAD_MASK_DOCUMENT);
-        }
-        if ((mask & AUTODOWNLOAD_MASK_MUSIC) != 0 && (downloadMask & AUTODOWNLOAD_MASK_MUSIC) != 0 && musicDownloadQueue.isEmpty()) {
-            //MessagesStorage.getInstance().getDownloadQueue(AUTODOWNLOAD_MASK_MUSIC);
-        }
-        if ((mask & AUTODOWNLOAD_MASK_GIF) != 0 && (downloadMask & AUTODOWNLOAD_MASK_GIF) != 0 && gifDownloadQueue.isEmpty()) {
-            //MessagesStorage.getInstance().getDownloadQueue(AUTODOWNLOAD_MASK_GIF);
-        }
-    }
-
-    private void checkDownloadFinished(String fileName, int state) {
-        DownloadObject downloadObject = downloadQueueKeys.get(fileName);
-        if (downloadObject != null) {
-            downloadQueueKeys.remove(fileName);
-            if (state == 0 || state == 2) {
-                //MessagesStorage.getInstance().removeFromDownloadQueue(downloadObject.id, downloadObject.type, false /*state != 0*/);
-            }
-            if (downloadObject.type == AUTODOWNLOAD_MASK_PHOTO) {
-                photoDownloadQueue.remove(downloadObject);
-                if (photoDownloadQueue.isEmpty()) {
-                    newDownloadObjectsAvailable(AUTODOWNLOAD_MASK_PHOTO);
-                }
-            } else if (downloadObject.type == AUTODOWNLOAD_MASK_AUDIO) {
-                audioDownloadQueue.remove(downloadObject);
-                if (audioDownloadQueue.isEmpty()) {
-                    newDownloadObjectsAvailable(AUTODOWNLOAD_MASK_AUDIO);
-                }
-            } else if (downloadObject.type == AUTODOWNLOAD_MASK_VIDEO) {
-                videoDownloadQueue.remove(downloadObject);
-                if (videoDownloadQueue.isEmpty()) {
-                    newDownloadObjectsAvailable(AUTODOWNLOAD_MASK_VIDEO);
-                }
-            } else if (downloadObject.type == AUTODOWNLOAD_MASK_DOCUMENT) {
-                documentDownloadQueue.remove(downloadObject);
-                if (documentDownloadQueue.isEmpty()) {
-                    newDownloadObjectsAvailable(AUTODOWNLOAD_MASK_DOCUMENT);
-                }
-            } else if (downloadObject.type == AUTODOWNLOAD_MASK_MUSIC) {
-                musicDownloadQueue.remove(downloadObject);
-                if (musicDownloadQueue.isEmpty()) {
-                    newDownloadObjectsAvailable(AUTODOWNLOAD_MASK_MUSIC);
-                }
-            } else if (downloadObject.type == AUTODOWNLOAD_MASK_GIF) {
-                gifDownloadQueue.remove(downloadObject);
-                if (gifDownloadQueue.isEmpty()) {
-                    newDownloadObjectsAvailable(AUTODOWNLOAD_MASK_GIF);
-                }
-            }
-        }
-    }
+    } */
 
     public void startMediaObserver() {
         ApplicationLoader.applicationHandler.removeCallbacks(stopMediaObserverRunnable);
@@ -1233,7 +991,6 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
             }
             listenerInProgress = false;
             processLaterArrays();
-            checkDownloadFinished(fileName, (Integer) args[1]);
         } else if (id == NotificationCenter.FileDidLoaded) {
             listenerInProgress = true;
             String fileName = (String) args[0];
@@ -1258,7 +1015,6 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
             }
             listenerInProgress = false;
             processLaterArrays();
-            checkDownloadFinished(fileName, 0);
         } else if (id == NotificationCenter.FileLoadProgressChanged) {
             listenerInProgress = true;
             String fileName = (String) args[0];
