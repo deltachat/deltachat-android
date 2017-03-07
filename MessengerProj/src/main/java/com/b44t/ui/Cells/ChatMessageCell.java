@@ -1899,11 +1899,11 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
             durationLayout.draw(canvas);
             canvas.restore();
 
-            if (!currentMessageObject.isOutOwner() && currentMessageObject.isUnread()) {
+            /*if (!currentMessageObject.isOutOwner() && currentMessageObject.isUnread()) {
                 // mark unread incoming messages with a little dot (only works if we mark the voice messages as being read only if heard)
                 docBackPaint.setColor(Theme.MSG_AUDIO_SEEKBAR_DARK_COLOR);
                 canvas.drawCircle(timeAudioX + timeWidthAudio + dp(6), dp(51) + namesOffset + mediaOffsetY, dp(4), docBackPaint);
-            }
+            }*/
         }
 
         if (currentMessageObject.type == MessageObject.MO_TYPE1_PHOTO || documentAttachType == DOCUMENT_ATTACH_TYPE_VIDEO) {

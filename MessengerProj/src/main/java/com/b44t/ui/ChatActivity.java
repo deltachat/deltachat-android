@@ -478,7 +478,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                         }
                     }
                     else{
-                        Toast.makeText(getParentActivity(), LocaleController.getString("NotYetImplemented", R.string.NotYetImplemented), Toast.LENGTH_SHORT).show();
                         actionBar.hideActionMode();
                         updateVisibleRows();
                     }
@@ -1247,7 +1246,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
             });
             presentFragment(fragment);
         } else if (which == ChatAttachAlert.ATTACH_BUTTON_IDX_VIDEO) {
-            Toast.makeText(getParentActivity(), LocaleController.getString("NotYetImplemented", R.string.NotYetImplemented), Toast.LENGTH_SHORT).show();
             try {
                 Intent takeVideoIntent = new Intent(MediaStore.ACTION_VIDEO_CAPTURE);
                 File video = AndroidUtilities.generateVideoPath();
