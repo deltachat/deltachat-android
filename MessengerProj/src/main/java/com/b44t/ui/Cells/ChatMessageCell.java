@@ -98,7 +98,6 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
     private int textX;
     private int textY;
     private int totalHeight;
-    private int keyboardHeight;
     private int linkBlockNum;
     private int linkSelectionBlockNum;
 
@@ -187,7 +186,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
 
     //private int TAG;
 
-    public boolean isChat;
+    public boolean isGroupChat;
     private boolean isPressed;
     private boolean isHighlighted;
     private boolean mediaBackground;
@@ -276,12 +275,15 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
 
             audioTimePaint = new TextPaint(TextPaint.ANTI_ALIAS_FLAG);
             audioTimePaint.setTextSize(dp(12));
+            audioTimePaint.setColor(Theme.MSG_AUDIO_NAME_COLOR);
 
             audioTitlePaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
             audioTitlePaint.setTextSize(dp(16));
+            audioTitlePaint.setColor(Theme.MSG_AUDIO_NAME_COLOR);
 
             audioPerformerPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
-            audioPerformerPaint.setTextSize(dp(15));
+            audioPerformerPaint.setTextSize(dp(14));
+            audioPerformerPaint.setColor(Theme.MSG_AUDIO_NAME_COLOR);
 
             timePaint = new TextPaint(TextPaint.ANTI_ALIAS_FLAG);
             timePaint.setTextSize(dp(12));
@@ -909,7 +911,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
         }
 
         String newNameString = null;
-        if (drawName && isChat && !currentMessageObject.isOutOwner()) {
+        if (drawName && isGroupChat && !currentMessageObject.isOutOwner()) {
             if (newUser != null) {
                 newNameString = UserObject.getUserName(newUser);
             } else if (newChat != null) {
@@ -1283,7 +1285,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
 
                 int maxWidth;
                 if (isTablet()) {
-                    if (isChat && !messageObject.isOutOwner() && messageObject.isFromUser()) {
+                    if (isGroupChat && !messageObject.isOutOwner() && messageObject.isFromUser()) {
                         maxWidth = getMinTabletSide() - dp(122);
                         drawName = true;
                     } else {
@@ -1291,7 +1293,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                         maxWidth = getMinTabletSide() - dp(80);
                     }
                 } else {
-                    if (isChat && !messageObject.isOutOwner() && messageObject.isFromUser()) {
+                    if (isGroupChat && !messageObject.isOutOwner() && messageObject.isFromUser()) {
                         maxWidth = Math.min(displaySize.x, displaySize.y) - dp(122);
                         drawName = true;
                     } else {
@@ -1332,9 +1334,9 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
             } else if (messageObject.type == MessageObject.MO_TYPE2_VOICE) {
                 drawForwardedName = true;
                 if (isTablet()) {
-                    backgroundWidth = Math.min(getMinTabletSide() - dp(isChat && messageObject.isFromUser() && !messageObject.isOutOwner() ? 102 : 50), dp(270));
+                    backgroundWidth = Math.min(getMinTabletSide() - dp(isGroupChat && messageObject.isFromUser() && !messageObject.isOutOwner() ? 102 : 50), dp(270));
                 } else {
-                    backgroundWidth = Math.min(displaySize.x - dp(isChat && messageObject.isFromUser() && !messageObject.isOutOwner() ? 102 : 50), dp(270));
+                    backgroundWidth = Math.min(displaySize.x - dp(isGroupChat && messageObject.isFromUser() && !messageObject.isOutOwner() ? 102 : 50), dp(270));
                 }
                 createDocumentLayout(backgroundWidth, messageObject);
 
@@ -1343,16 +1345,16 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                 totalHeight = dp(70) + namesOffset;
             } else if (messageObject.type == MessageObject.MO_TYPE14_MUSIC) {
                 if (isTablet()) {
-                    backgroundWidth = Math.min(getMinTabletSide() - dp(isChat && messageObject.isFromUser() && !messageObject.isOutOwner() ? 102 : 50), dp(270));
+                    backgroundWidth = Math.min(getMinTabletSide() - dp(isGroupChat && messageObject.isFromUser() && !messageObject.isOutOwner() ? 102 : 50), dp(270));
                 } else {
-                    backgroundWidth = Math.min(displaySize.x - dp(isChat && messageObject.isFromUser() && !messageObject.isOutOwner() ? 102 : 50), dp(270));
+                    backgroundWidth = Math.min(displaySize.x - dp(isGroupChat && messageObject.isFromUser() && !messageObject.isOutOwner() ? 102 : 50), dp(270));
                 }
 
                 createDocumentLayout(backgroundWidth, messageObject);
 
                 setMessageObjectInternal(messageObject);
 
-                totalHeight = dp(82) + namesOffset;
+                totalHeight = dp(80) + namesOffset;
             } else {
                 drawForwardedName = messageObject.messageOwner.fwd_from != null && messageObject.type != MessageObject.MO_TYPE13_STICKER;
                 mediaBackground = messageObject.type != MessageObject.MO_TYPE9_FILE;
@@ -1372,9 +1374,9 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                 photoImage.setForcePreview(false);
                 if (messageObject.type == MessageObject.MO_TYPE9_FILE) {
                     if (isTablet()) {
-                        backgroundWidth = Math.min(getMinTabletSide() - dp(isChat && messageObject.isFromUser() && !messageObject.isOutOwner() ? 102 : 50), dp(270));
+                        backgroundWidth = Math.min(getMinTabletSide() - dp(isGroupChat && messageObject.isFromUser() && !messageObject.isOutOwner() ? 102 : 50), dp(270));
                     } else {
-                        backgroundWidth = Math.min(displaySize.x - dp(isChat && messageObject.isFromUser() && !messageObject.isOutOwner() ? 102 : 50), dp(270));
+                        backgroundWidth = Math.min(displaySize.x - dp(isGroupChat && messageObject.isFromUser() && !messageObject.isOutOwner() ? 102 : 50), dp(270));
                     }
                     if (checkNeedDrawNewchatButton(messageObject)) {
                         backgroundWidth -= dp(20);
@@ -1674,10 +1676,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                 }
             }
 
-            {
-                substractBackgroundHeight = 0;
-                keyboardHeight = 0;
-            }
+            substractBackgroundHeight = 0;
         }
         updateWaveform();
         updateButtonState();
@@ -1685,7 +1684,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        setMeasuredDimension(MeasureSpec.getSize(widthMeasureSpec), totalHeight + keyboardHeight);
+        setMeasuredDimension(MeasureSpec.getSize(widthMeasureSpec), totalHeight);
     }
 
     @SuppressLint("DrawAllocation")
@@ -1705,13 +1704,13 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
             timeLayout = new StaticLayout(currentTimeString, timePaint, timeTextWidth + dp(6), Layout.Alignment.ALIGN_NORMAL, 1.0f, 0.0f, false);
             if (!mediaBackground) {
                 if (!currentMessageObject.isOutOwner()) {
-                    timeX = backgroundWidth - dp(9) - timeWidth + (isChat && currentMessageObject.isFromUser() ? dp(48) : 0);
+                    timeX = backgroundWidth - dp(9) - timeWidth + (isGroupChat && currentMessageObject.isFromUser() ? dp(48) : 0);
                 } else {
                     timeX = layoutWidth - timeWidth - dp(38.5f);
                 }
             } else {
                 if (!currentMessageObject.isOutOwner()) {
-                    timeX = backgroundWidth - dp(4) - timeWidth + (isChat && currentMessageObject.isFromUser() ? dp(48) : 0);
+                    timeX = backgroundWidth - dp(4) - timeWidth + (isGroupChat && currentMessageObject.isFromUser() ? dp(48) : 0);
                 } else {
                     timeX = layoutWidth - timeWidth - dp(42.0f);
                 }
@@ -1733,7 +1732,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                 buttonX = layoutWidth - backgroundWidth + dp(14);
                 timeAudioX = layoutWidth - backgroundWidth + dp(67);
             } else {
-                if (isChat && currentMessageObject.isFromUser()) {
+                if (isGroupChat && currentMessageObject.isFromUser()) {
                     seekBarX = dp(114);
                     buttonX = dp(71);
                     timeAudioX = dp(124);
@@ -1758,7 +1757,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                 buttonX = layoutWidth - backgroundWidth + dp(14);
                 timeAudioX = layoutWidth - backgroundWidth + dp(67);
             } else {
-                if (isChat && currentMessageObject.isFromUser()) {
+                if (isGroupChat && currentMessageObject.isFromUser()) {
                     seekBarX = dp(113);
                     buttonX = dp(71);
                     timeAudioX = dp(124);
@@ -1770,7 +1769,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
             }
             seekBar.setSize(backgroundWidth - dp(65), dp(30));
             seekBarY = dp(29) + namesOffset + mediaOffsetY;
-            buttonY = dp(13) + namesOffset + mediaOffsetY;
+            buttonY = dp(18) + namesOffset + mediaOffsetY;
 
             iconX = buttonX;
             iconY = buttonY;
@@ -1780,7 +1779,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
             if (currentMessageObject.isOutOwner()) {
                 buttonX = layoutWidth - backgroundWidth + dp(14);
             } else {
-                if (isChat && currentMessageObject.isFromUser()) {
+                if (isGroupChat && currentMessageObject.isFromUser()) {
                     buttonX = dp(71);
                 } else {
                     buttonX = dp(23);
@@ -1801,7 +1800,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                     x = layoutWidth - backgroundWidth + dp(6);
                 }
             } else {
-                if (isChat && currentMessageObject.isFromUser()) {
+                if (isGroupChat && currentMessageObject.isFromUser()) {
                     x = dp(63);
                 } else {
                     x = dp(15);
@@ -1877,9 +1876,6 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
             ;
         } else if (documentAttachType == DOCUMENT_ATTACH_TYPE_MUSIC) {
             drawIcon = buttonState==BS0_CLICK_TO_PLAY? Theme.INLIST_PLAY : Theme.INLIST_PAUSE;
-            audioTitlePaint.setColor(Theme.MSG_AUDIO_NAME_COLOR);
-            audioPerformerPaint.setColor(Theme.MSG_AUDIO_NAME_COLOR);
-            audioTimePaint.setColor(Theme.MSG_AUDIO_NAME_COLOR);
 
             canvas.save();
             canvas.translate(timeAudioX + songX, dp(13) + namesOffset + mediaOffsetY);
@@ -1897,17 +1893,12 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
             canvas.restore();
 
             canvas.save();
-            canvas.translate(timeAudioX, dp(57) + namesOffset + mediaOffsetY);
+            canvas.translate(timeAudioX, dp(55) + namesOffset + mediaOffsetY);
             durationLayout.draw(canvas);
             canvas.restore();
 
         } else if (documentAttachType == DOCUMENT_ATTACH_TYPE_VOICE) {
             drawIcon = buttonState==BS0_CLICK_TO_PLAY? Theme.INLIST_PLAY : Theme.INLIST_PAUSE;
-            if (currentMessageObject.isOutOwner()) {
-                audioTimePaint.setColor(isDrawSelectedBackground() ? Theme.MSG_OUT_AUDIO_DURATION_SELECTED_TEXT_COLOR : Theme.MSG_OUT_AUDIO_DURATION_TEXT_COLOR);
-            } else {
-                audioTimePaint.setColor(isDrawSelectedBackground() ? Theme.MSG_IN_AUDIO_DURATION_SELECTED_TEXT_COLOR : Theme.MSG_IN_AUDIO_DURATION_TEXT_COLOR);
-            }
 
             canvas.save();
             if (useSeekBarWaweform) {
@@ -2027,13 +2018,13 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
         if (documentAttachType == DOCUMENT_ATTACH_TYPE_STICKER) {
             int maxWidth;
             if (isTablet()) {
-                if (isChat && !currentMessageObject.isOutOwner() && currentMessageObject.isFromUser()) {
+                if (isGroupChat && !currentMessageObject.isOutOwner() && currentMessageObject.isFromUser()) {
                     maxWidth = getMinTabletSide() - dp(42);
                 } else {
                     maxWidth = getMinTabletSide();
                 }
             } else {
-                if (isChat && !currentMessageObject.isOutOwner() && currentMessageObject.isFromUser()) {
+                if (isGroupChat && !currentMessageObject.isOutOwner() && currentMessageObject.isFromUser()) {
                     maxWidth = Math.min(displaySize.x, displaySize.y) - dp(42);
                 } else {
                     maxWidth = Math.min(displaySize.x, displaySize.y);
@@ -2193,12 +2184,12 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
 
         MrContact mrContact = null;
         String cname = "";
-        if(currentUser!=null && isChat) {
+        if(currentUser!=null && isGroupChat) {
             mrContact = MrMailbox.getContact(currentUser.id);
             cname = mrContact.getDisplayName();
         }
 
-        if (isChat && !messageObject.isOutOwner() && messageObject.isFromUser()) {
+        if (isGroupChat && !messageObject.isOutOwner() && messageObject.isFromUser()) {
             isAvatarVisible = true;
             ContactsController.setupAvatar(this, avatarImage, avatarDrawable, mrContact, null);
         }
@@ -2207,7 +2198,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
 
         namesOffset = 0;
 
-        boolean authorName = drawName && isChat && !currentMessageObject.isOutOwner();
+        boolean authorName = drawName && isGroupChat && !currentMessageObject.isOutOwner();
         if (authorName) {
             drawNameLayout = true;
             nameWidth = getMaxNameWidth();
@@ -2299,9 +2290,9 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
             timePaint.setColor(Theme.MSG_MEDIA_TIME_TEXT_COLOR);
         } else {
             if (currentMessageObject.isOutOwner()) {
-                timePaint.setColor(Theme.MSG_OUT_FWD_N_TIME_TEXT_COLOR);
+                timePaint.setColor(Theme.MSG_OUT_TIME_TEXT_COLOR);
             } else {
-                timePaint.setColor(Theme.MSG_IN_FWD_N_TIME_TEXT_COLOR);
+                timePaint.setColor(Theme.MSG_IN_TIME_N_FWD_TEXT_COLOR);
             }
         }
 
@@ -2322,7 +2313,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
             } else {
                 currentBackgroundDrawable = Theme.backgroundDrawableIn;
             }
-            if (isChat && currentMessageObject.isFromUser()) {
+            if (isGroupChat && currentMessageObject.isFromUser()) {
                 setDrawableBounds(currentBackgroundDrawable,
                         dp(48 + (!mediaBackground ? 3 : 3)),
                         dp(1),
@@ -2379,11 +2370,10 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
 
         if (drawForwardedName && forwardedNameLayout[0] != null && forwardedNameLayout[1] != null) {
             forwardNameY = dp(10 + (drawNameLayout ? 19 : 0));
+            forwardNamePaint.setColor(Theme.MSG_IN_TIME_N_FWD_TEXT_COLOR);
             if (currentMessageObject.isOutOwner()) {
-                forwardNamePaint.setColor(Theme.MSG_OUT_FWD_N_TIME_TEXT_COLOR);
                 forwardNameX = currentBackgroundDrawable.getBounds().left + dp(11);
             } else {
-                forwardNamePaint.setColor(Theme.MSG_IN_FWD_N_TIME_TEXT_COLOR);
                 if (mediaBackground) {
                     forwardNameX = currentBackgroundDrawable.getBounds().left + dp(11);
                 } else {
