@@ -134,14 +134,14 @@ public class MusicPlayerService extends Service implements NotificationCenter.No
 
         RemoteViews simpleContentView = new RemoteViews(getApplicationContext().getPackageName(), R.layout.player_small_notification);
 
-        Intent intent = new Intent(ApplicationLoader.applicationContext, LaunchActivity.class);
-        intent.setAction("com.b44t.messenger.openchat"+messageObject.getDialogId());
-        intent.setFlags(32768);
-        PendingIntent contentIntent = PendingIntent.getActivity(ApplicationLoader.applicationContext, 0, intent, 0);
+        //Intent intent = new Intent(ApplicationLoader.applicationContext, LaunchActivity.class);
+        //intent.setAction("com.b44t.messenger.openchat"+messageObject.getDialogId());
+        //intent.setFlags(32768);
+        //PendingIntent contentIntent = PendingIntent.getActivity(ApplicationLoader.applicationContext, 0, intent, 0);
 
         Notification notification = new NotificationCompat.Builder(getApplicationContext())
                 .setSmallIcon(R.drawable.notification_player)
-                .setContentIntent(contentIntent)
+                //.setContentIntent(contentIntent)
                 .setContentTitle(songName).build();
 
         notification.contentView = simpleContentView;
