@@ -999,15 +999,15 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
         MediaController.getInstance().seekToProgress(currentMessageObject, progress);
     }
 
-    private void updateWaveform(boolean doLoad) {
+    private void updateWaveform(boolean doGenerate) {
         if (currentMessageObject == null || documentAttachType != DOCUMENT_ATTACH_TYPE_VOICE) {
             return;
         }
         for (int a = 0; a < documentAttach.attributes.size(); a++) {
             TLRPC.DocumentAttribute attribute = documentAttach.attributes.get(a);
             if (attribute instanceof TLRPC.TL_documentAttributeAudio) {
-                if (doLoad && (attribute.waveform == null || attribute.waveform.length == 0)) {
-                    MediaController.getInstance().generateWaveform(currentMessageObject); // results in a call to waveformCalculated() or sets up attribute.waveform directly
+                if ( attribute.waveform == null || attribute.waveform.length == 0 ) {
+                    MediaController.getInstance().loadOrGenerateWaveform(FileLoader.getPathToMessage(currentMessageObject.messageOwner).getAbsolutePath(), doGenerate, currentMessageObject); // results in a call to waveformCalculated() or sets up attribute.waveform directly
                 }
                 useSeekBarWaveform = attribute.waveform != null;
                 seekBarWaveform.setWaveform(attribute.waveform);

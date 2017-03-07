@@ -257,7 +257,6 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
     private ArrayList<MessageObject> videoConvertQueue = new ArrayList<>();
     private boolean cancelCurrentVideoConversion = false;
     private boolean videoConvertFirstWrite = true;
-    private HashMap<String, MessageObject> generatingWaveform = new HashMap<>();
 
     public static final int AUTODOWNLOAD_MASK_PHOTO = 1;
     public static final int AUTODOWNLOAD_MASK_AUDIO = 2;
@@ -1922,55 +1921,51 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
         }
     }
 
-    public void generateWaveform(MessageObject messageObject) {
-        final String id = messageObject.getId() + "_" + messageObject.getDialogId();
-        final String path = FileLoader.getPathToMessage(messageObject.messageOwner).getAbsolutePath();
-        if (generatingWaveform.containsKey(id)) {
-            return;
-        }
-
-        try {
-            File testfile = new File(path + ".waveform");
-            if (testfile.exists() && testfile.length() > 0) {
-                byte[] waveform = new byte[(int) testfile.length()];
+    private HashMap<String, Integer> generatingWaveform = new HashMap<>();
+    public void loadOrGenerateWaveform(final String path, boolean doGenerate, MessageObject setToObj) // we may call this function without setToObj to just generate the waveform
+    {
+        File testfile = new File(path + ".waveform");
+        if (testfile.exists() && testfile.length() > 0) {
+            byte[] waveform = new byte[(int) testfile.length()];
+            try {
                 DataInputStream dis = new DataInputStream(new FileInputStream(testfile));
                 dis.readFully(waveform);
                 dis.close();
-                setWaveformToMessageObject(messageObject, waveform);
+                if( setToObj != null ) {
+                    setWaveformToMessageObject(setToObj, waveform);
+                }
+            } catch(Exception e) {}
+            return;
+        }
+
+        if( doGenerate ) {
+            final int setToObj_id = setToObj==null? 0 : setToObj.getId();
+            if (generatingWaveform.containsKey(path)) {
                 return;
             }
-        }
-        catch(Exception e) {}
-
-        generatingWaveform.put(id, messageObject);
-        Utilities.globalQueue.postRunnable(new Runnable() {
-            @Override
-            public void run() {
-                final byte[] waveform = MediaController.getInstance().getWaveform(path);
-                if( waveform!=null && waveform.length > 0 ) {
-                    try {
-                        FileOutputStream out = new FileOutputStream(path + ".waveform");
-                        out.write(waveform);
-                        out.close();
+            generatingWaveform.put(path, 1);
+            Utilities.globalQueue.postRunnable(new Runnable() {
+                @Override
+                public void run() {
+                    final byte[] waveform = MediaController.getInstance().getWaveform(path);
+                    if (waveform != null && waveform.length > 0) {
+                        try {
+                            FileOutputStream out = new FileOutputStream(path + ".waveform");
+                            out.write(waveform);
+                            out.close();
+                        } catch (Exception e) { }
+                        AndroidUtilities.runOnUIThread(new Runnable() {
+                            @Override
+                            public void run() {
+                            NotificationCenter.getInstance().postNotificationName(NotificationCenter.waveformCalculated, setToObj_id);
+                            }
+                        });
                     }
-                    catch(Exception e) {}
+
+                    generatingWaveform.remove(path);
                 }
-
-                AndroidUtilities.runOnUIThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        MessageObject messageObject = generatingWaveform.remove(id);
-                        if (messageObject == null) {
-                            return;
-                        }
-                        if (waveform != null) {
-                            setWaveformToMessageObject(messageObject, waveform);
-                            NotificationCenter.getInstance().postNotificationName(NotificationCenter.waveformCalculated, messageObject.getId());
-                        }
-                    }
-                });
-            }
-        });
+            });
+        }
     }
 
     private void stopRecordingInternal(final int send) {
