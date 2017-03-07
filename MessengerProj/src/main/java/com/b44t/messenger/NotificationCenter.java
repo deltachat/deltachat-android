@@ -86,7 +86,6 @@ public class NotificationCenter {
     public static final int recordStarted = totalEvents++;
     public static final int recordStartError = totalEvents++;
     public static final int recordStopped = totalEvents++;
-    public static final int screenshotTook = totalEvents++;
     public static final int albumsDidLoaded = totalEvents++;
     public static final int audioDidSent = totalEvents++;
     public static final int audioDidStarted = totalEvents++;

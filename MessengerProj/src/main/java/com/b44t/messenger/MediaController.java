@@ -35,8 +35,6 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.database.ContentObserver;
 import android.database.Cursor;
-import android.graphics.BitmapFactory;
-import android.graphics.Point;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -422,30 +420,6 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
         }
     };
 
-    private class InternalObserver extends ContentObserver {
-        public InternalObserver() {
-            super(null);
-        }
-
-        @Override
-        public void onChange(boolean selfChange) {
-            super.onChange(selfChange);
-            processMediaObserver(MediaStore.Images.Media.INTERNAL_CONTENT_URI);
-        }
-    }
-
-    private class ExternalObserver extends ContentObserver {
-        public ExternalObserver() {
-            super(null);
-        }
-
-        @Override
-        public void onChange(boolean selfChange) {
-            super.onChange(selfChange);
-            processMediaObserver(MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-        }
-    }
-
     private class GalleryObserverInternal extends ContentObserver {
         public GalleryObserverInternal() {
             super(null);
@@ -485,37 +459,6 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
                     loadGalleryPhotosAlbums(0);
                 }
             }, 2000);
-        }
-    }
-
-    private ExternalObserver externalObserver = null;
-    private InternalObserver internalObserver = null;
-    private int startObserverToken = 0;
-    private StopMediaObserverRunnable stopMediaObserverRunnable = null;
-
-    private final class StopMediaObserverRunnable implements Runnable {
-        public int currentObserverToken = 0;
-
-        @Override
-        public void run() {
-            if (currentObserverToken == startObserverToken) {
-                try {
-                    if (internalObserver != null) {
-                        ApplicationLoader.applicationContext.getContentResolver().unregisterContentObserver(internalObserver);
-                        internalObserver = null;
-                    }
-                } catch (Exception e) {
-                    FileLog.e("messenger", e);
-                }
-                try {
-                    if (externalObserver != null) {
-                        ApplicationLoader.applicationContext.getContentResolver().unregisterContentObserver(externalObserver);
-                        externalObserver = null;
-                    }
-                } catch (Exception e) {
-                    FileLog.e("messenger", e);
-                }
-            }
         }
     }
 
@@ -819,89 +762,6 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
             return mobileDataDownloadMask;
         }
     } */
-
-    public void startMediaObserver() {
-        ApplicationLoader.applicationHandler.removeCallbacks(stopMediaObserverRunnable);
-        startObserverToken++;
-        try {
-            if (internalObserver == null) {
-                ApplicationLoader.applicationContext.getContentResolver().registerContentObserver(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, false, externalObserver = new ExternalObserver());
-            }
-        } catch (Exception e) {
-            FileLog.e("messenger", e);
-        }
-        try {
-            if (externalObserver == null) {
-                ApplicationLoader.applicationContext.getContentResolver().registerContentObserver(MediaStore.Images.Media.INTERNAL_CONTENT_URI, false, internalObserver = new InternalObserver());
-            }
-        } catch (Exception e) {
-            FileLog.e("messenger", e);
-        }
-    }
-
-    public void stopMediaObserver() {
-        if (stopMediaObserverRunnable == null) {
-            stopMediaObserverRunnable = new StopMediaObserverRunnable();
-        }
-        stopMediaObserverRunnable.currentObserverToken = startObserverToken;
-        ApplicationLoader.applicationHandler.postDelayed(stopMediaObserverRunnable, 5000);
-    }
-
-    public void processMediaObserver(Uri uri) {
-        try {
-            Point size = AndroidUtilities.getRealScreenSize();
-
-            Cursor cursor = ApplicationLoader.applicationContext.getContentResolver().query(uri, mediaProjections, null, null, "date_added DESC LIMIT 1");
-            final ArrayList<Long> screenshotDates = new ArrayList<>();
-            if (cursor != null) {
-                while (cursor.moveToNext()) {
-                    String val = "";
-                    String data = cursor.getString(0);
-                    String display_name = cursor.getString(1);
-                    String album_name = cursor.getString(2);
-                    long date = cursor.getLong(3);
-                    String title = cursor.getString(4);
-                    int photoW = 0;
-                    int photoH = 0;
-                    if (Build.VERSION.SDK_INT >= 16) {
-                        photoW = cursor.getInt(5);
-                        photoH = cursor.getInt(6);
-                    }
-                    if (data != null && data.toLowerCase().contains("screenshot") ||
-                            display_name != null && display_name.toLowerCase().contains("screenshot") ||
-                            album_name != null && album_name.toLowerCase().contains("screenshot") ||
-                            title != null && title.toLowerCase().contains("screenshot")) {
-                        try {
-                            if (photoW == 0 || photoH == 0) {
-                                BitmapFactory.Options bmOptions = new BitmapFactory.Options();
-                                bmOptions.inJustDecodeBounds = true;
-                                BitmapFactory.decodeFile(data, bmOptions);
-                                photoW = bmOptions.outWidth;
-                                photoH = bmOptions.outHeight;
-                            }
-                            if (photoW <= 0 || photoH <= 0 || (photoW == size.x && photoH == size.y || photoH == size.x && photoW == size.y)) {
-                                screenshotDates.add(date);
-                            }
-                        } catch (Exception e) {
-                            screenshotDates.add(date);
-                        }
-                    }
-                }
-                cursor.close();
-            }
-            if (!screenshotDates.isEmpty()) {
-                AndroidUtilities.runOnUIThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        NotificationCenter.getInstance().postNotificationName(NotificationCenter.screenshotTook);
-                        //checkScreenshots(screenshotDates);
-                    }
-                });
-            }
-        } catch (Exception e) {
-            FileLog.e("messenger", e);
-        }
-    }
 
     public int generateObserverTag() {
         return lastTag++;

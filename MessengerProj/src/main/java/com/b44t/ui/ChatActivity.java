@@ -222,7 +222,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.audioProgressDidChanged);
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.audioDidReset);
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.audioPlayStateChanged);
-        NotificationCenter.getInstance().addObserver(this, NotificationCenter.screenshotTook);
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.blockedUsersDidLoaded);
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.FileNewChunkAvailable);
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.audioDidStarted);
@@ -353,7 +352,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         NotificationCenter.getInstance().removeObserver(this, NotificationCenter.contactsDidLoaded);
         NotificationCenter.getInstance().removeObserver(this, NotificationCenter.audioProgressDidChanged);
         NotificationCenter.getInstance().removeObserver(this, NotificationCenter.audioDidReset);
-        NotificationCenter.getInstance().removeObserver(this, NotificationCenter.screenshotTook);
         NotificationCenter.getInstance().removeObserver(this, NotificationCenter.blockedUsersDidLoaded);
         NotificationCenter.getInstance().removeObserver(this, NotificationCenter.FileNewChunkAvailable);
         NotificationCenter.getInstance().removeObserver(this, NotificationCenter.audioDidStarted);
