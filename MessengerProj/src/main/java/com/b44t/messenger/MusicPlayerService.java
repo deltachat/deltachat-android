@@ -151,8 +151,9 @@ public class MusicPlayerService extends Service implements NotificationCenter.No
         Bitmap albumArt = audioInfo != null ? audioInfo.getSmallCover() : null;
         if (albumArt != null) {
             notification.contentView.setImageViewBitmap(R.id.player_album_art, albumArt);
+            notification.contentView.setViewVisibility(R.id.player_album_art, View.VISIBLE);
         } else {
-            notification.contentView.setImageViewResource(R.id.player_album_art, R.drawable.nocover_small);
+            notification.contentView.setViewVisibility(R.id.player_album_art, View.GONE);
         }
 
         {
