@@ -1186,7 +1186,7 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
                         proximityWakeLock.acquire();
                     }
                 }
-            } else if (playingMessageObject != null && playingMessageObject.isVoice()) {
+            } /*else if (playingMessageObject != null && playingMessageObject.isVoice()) {
                 if (!useFrontSpeaker) {
                     FileLog.e("messenger", "start listen");
                     if (proximityHasDifferentValues && proximityWakeLock != null && !proximityWakeLock.isHeld()) {
@@ -1196,12 +1196,12 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
                     startAudioAgain(false);
                     ignoreOnPause = true;
                 }
-            }
+            } */
             raisedToBack = 0;
             raisedToTop = 0;
             countLess = 0;
         } else if (proximityTouched) {
-            if (playingMessageObject != null && playingMessageObject.isVoice()) {
+            /*if (playingMessageObject != null && playingMessageObject.isVoice()) {
                 if (!useFrontSpeaker) {
                     FileLog.e("messenger", "start listen by proximity only");
                     if (proximityHasDifferentValues && proximityWakeLock != null && !proximityWakeLock.isHeld()) {
@@ -1211,7 +1211,7 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
                     startAudioAgain(false);
                     ignoreOnPause = true;
                 }
-            }
+            }*/
         } else if (!proximityTouched) {
             if (raiseToEarRecord) {
                 FileLog.e("messenger", "stop record");
