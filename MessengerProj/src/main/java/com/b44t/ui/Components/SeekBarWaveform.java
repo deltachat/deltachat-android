@@ -47,11 +47,9 @@ public class SeekBarWaveform {
     private byte[] waveformBytes;
     private MessageObject messageObject;
     private View parentView;
-    private boolean selected;
 
     private int innerColor;
     private int outerColor;
-    private int selectedColor;
 
     public SeekBarWaveform(Context context) {
         if (paintInner == null) {
@@ -64,18 +62,13 @@ public class SeekBarWaveform {
         delegate = seekBarDelegate;
     }
 
-    public void setColors(int inner, int outer, int selected) {
+    public void setColors(int inner, int outer) {
         innerColor = inner;
         outerColor = outer;
-        selectedColor = selected;
     }
 
     public void setWaveform(byte[] waveform) {
         waveformBytes = waveform;
-    }
-
-    public void setSelected(boolean value) {
-        selected = value;
     }
 
     public void setMessageObject(MessageObject object) {
@@ -162,7 +155,7 @@ public class SeekBarWaveform {
         float barCounter = 0;
         int nextBarNum = 0;
 
-        paintInner.setColor(messageObject != null && !messageObject.isOutOwner() && messageObject.isContentUnread() ? outerColor : (selected ? selectedColor : innerColor));
+        paintInner.setColor(innerColor);
         paintOuter.setColor(outerColor);
 
         int y = (height - AndroidUtilities.dp(14)) / 2;

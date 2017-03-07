@@ -973,11 +973,6 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
     public void setCheckPressed(boolean value, boolean pressed) {
         isCheckPressed = value;
         isPressed = pressed;
-        if (useSeekBarWaveform) {
-            seekBarWaveform.setSelected(isDrawSelectedBackground());
-        } else {
-            seekBar.setSelected(isDrawSelectedBackground());
-        }
         invalidate();
     }
 
@@ -986,22 +981,12 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
             return;
         }
         isHighlighted = value;
-        if (useSeekBarWaveform) {
-            seekBarWaveform.setSelected(isDrawSelectedBackground());
-        } else {
-            seekBar.setSelected(isDrawSelectedBackground());
-        }
         invalidate();
     }
 
     @Override
     public void setPressed(boolean pressed) {
         super.setPressed(pressed);
-        if (useSeekBarWaveform) {
-            seekBarWaveform.setSelected(isDrawSelectedBackground());
-        } else {
-            seekBar.setSelected(isDrawSelectedBackground());
-        }
         invalidate();
     }
 
@@ -1058,7 +1043,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
             int minSize = dp(40 + 14 + 20 + 90 + 10) + timeWidth;
             backgroundWidth = Math.min(maxWidth, minSize + duration * dp(10));
 
-            seekBarWaveform.setColors(Theme.MSG_AUDIO_SEEKBAR_DARK_COLOR, 0xff000000, Theme.MSG_AUDIO_SEEKBAR_DARK_COLOR);
+            seekBarWaveform.setColors(Theme.MSG_AUDIO_SEEKBAR_DARK_COLOR, 0xff000000);
             seekBar.setColors(Theme.MSG_AUDIO_SEEKBAR_LITE_COLOR, Theme.MSG_AUDIO_SEEKBAR_DARK_COLOR, Theme.MSG_AUDIO_SEEKBAR_DARK_COLOR);
             seekBarWaveform.setMessageObject(messageObject);
         }

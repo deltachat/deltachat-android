@@ -98,7 +98,7 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
         public SeekBarWaveformView(Context context) {
             super(context);
             seekBarWaveform = new SeekBarWaveform(context);
-            seekBarWaveform.setColors(0xffffffff, 0xff000000, 0xffffffff);
+            seekBarWaveform.setColors(0xffffffff, 0xff000000);
             seekBarWaveform.setDelegate(new SeekBar.SeekBarDelegate() {
                 @Override
                 public void onSeekBarDrag(float progress) {
