@@ -541,7 +541,7 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
                 NotificationCenter.getInstance().addObserver(MediaController.this, NotificationCenter.messagesDeleted);
                 NotificationCenter.getInstance().addObserver(MediaController.this, NotificationCenter.FileDidLoaded);
                 NotificationCenter.getInstance().addObserver(MediaController.this, NotificationCenter.FileLoadProgressChanged);
-                NotificationCenter.getInstance().addObserver(MediaController.this, NotificationCenter.FileUploadProgressChanged);
+                //NotificationCenter.getInstance().addObserver(MediaController.this, NotificationCenter.FileUploadProgressChanged);
                 //NotificationCenter.getInstance().addObserver(MediaController.this, NotificationCenter.musicDidLoaded);
             }
         });
@@ -890,7 +890,8 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
             }
             listenerInProgress = false;
             processLaterArrays();
-        } else if (id == NotificationCenter.FileUploadProgressChanged) {
+        }
+        /*else if (id == NotificationCenter.FileUploadProgressChanged) {
             listenerInProgress = true;
             String fileName = (String) args[0];
             ArrayList<WeakReference<FileDownloadProgressListener>> arrayList = loadingFileObservers.get(fileName);
@@ -905,7 +906,6 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
             }
             listenerInProgress = false;
             processLaterArrays();
-            /*
             try {
                 ArrayList<SendMessagesHelper.DelayedMessage> delayedMessages = SendMessagesHelper.getInstance().getDelayedMessages(fileName);
                 if (delayedMessages != null) {
@@ -930,8 +930,8 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
             } catch (Exception e) {
                 FileLog.e("messenger", e);
             }
-            */
-        } else if (id == NotificationCenter.messagesDeleted) {
+        } */
+        else if (id == NotificationCenter.messagesDeleted) {
             ArrayList<Integer> markAsDeletedMessages = (ArrayList<Integer>) args[0];
             if (playingMessageObject != null) {
                 if (markAsDeletedMessages.contains(playingMessageObject.getId())) {

@@ -39,7 +39,7 @@ public class VideoEncodingService extends Service implements NotificationCenter.
 
     public VideoEncodingService() {
         super();
-        NotificationCenter.getInstance().addObserver(this, NotificationCenter.FileUploadProgressChanged);
+        //NotificationCenter.getInstance().addObserver(this, NotificationCenter.FileUploadProgressChanged);
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.stopEncodingService);
     }
 
@@ -49,14 +49,14 @@ public class VideoEncodingService extends Service implements NotificationCenter.
 
     public void onDestroy() {
         stopForeground(true);
-        NotificationCenter.getInstance().removeObserver(this, NotificationCenter.FileUploadProgressChanged);
+        //NotificationCenter.getInstance().removeObserver(this, NotificationCenter.FileUploadProgressChanged);
         NotificationCenter.getInstance().removeObserver(this, NotificationCenter.stopEncodingService);
         FileLog.e("messenger", "destroy video service");
     }
 
     @Override
     public void didReceivedNotification(int id, Object... args) {
-        if (id == NotificationCenter.FileUploadProgressChanged) {
+        /*if (id == NotificationCenter.FileUploadProgressChanged) {
             String fileName = (String)args[0];
             if (path != null && path.equals(fileName)) {
                 Float progress = (Float) args[1];
@@ -65,7 +65,7 @@ public class VideoEncodingService extends Service implements NotificationCenter.
                 builder.setProgress(100, currentProgress, currentProgress == 0);
                 NotificationManagerCompat.from(mContext).notify(4, builder.build());
             }
-        } else if (id == NotificationCenter.stopEncodingService) {
+        } else*/ if (id == NotificationCenter.stopEncodingService) {
             String filepath = (String)args[0];
             if (filepath == null || filepath.equals(path)) {
                 stopSelf();

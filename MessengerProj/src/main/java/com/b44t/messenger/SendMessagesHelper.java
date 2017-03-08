@@ -31,6 +31,7 @@ import android.media.ThumbnailUtils;
 import android.net.Uri;
 import android.provider.MediaStore;
 import android.webkit.MimeTypeMap;
+import android.widget.Toast;
 
 import com.b44t.messenger.audioinfo.AudioInfo;
 
@@ -175,79 +176,52 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
                 }
             }
             */
-        } else if (id == NotificationCenter.FilePreparingStarted) {
-            /*
+        }
+        else if (id == NotificationCenter.FilePreparingStarted)
+        {
+            // encoding started
+        }
+        else if (id == NotificationCenter.FileNewChunkAvailable)
+        {
+            // encoding progress
             MessageObject messageObject = (MessageObject) args[0];
-            String finalPath = (String) args[1];
-            ArrayList<DelayedMessage> arr = delayedMessages.get(messageObject.messageOwner.attachPath);
-            if (arr != null) {
-                for (int a = 0; a < arr.size(); a++) {
-                    DelayedMessage message = arr.get(a);
-                    if (message.obj == messageObject) {
-                        message.videoEditedInfo = null;
-                        performSendDelayedMessage(message);
-                        arr.remove(a);
-                        break;
-                    }
-                }
-                if (arr.isEmpty()) {
-                    delayedMessages.remove(messageObject.messageOwner.attachPath);
-                }
-            }
-            */
-        } else if (id == NotificationCenter.FileNewChunkAvailable) {
-            //MessageObject messageObject = (MessageObject) args[0];
-            //String finalPath = (String) args[1];
-            //long finalSize = (Long) args[2];
-            //boolean isEncrypted = false;//((int) messageObject.getDialogId()) == 0;
-            //FileLoader.getInstance().checkUploadNewDataAvailable(finalPath, isEncrypted, finalSize);
-            //if (finalSize != 0) {
-                /*
-                ArrayList<DelayedMessage> arr = delayedMessages.get(messageObject.messageOwner.attachPath);
-                if (arr != null) {
-                    for (int a = 0; a < arr.size(); a++) {
-                        DelayedMessage message = arr.get(a);
-                        if (message.obj == messageObject) {
-                            message.obj.videoEditedInfo = null;
-                            message.obj.messageOwner.message = "-1";
-                            message.obj.messageOwner.media.document.size = (int) finalSize;
-
-                            ArrayList<TLRPC.Message> messages = new ArrayList<>();
-                            messages.add(message.obj.messageOwner);
-                            //MessagesStorage.getInstance().putMessages(messages, false, true, false, 0);
+            long finalSize = (Long) args[2];
+            if( finalSize != 0 && messageObject.isVideo() )
+            {
+                // encoding done
+                boolean success = true;
+                int newMsgId = 0;
+                try {
+                    int time_ms = 0;
+                    for (int i = 0; i < messageObject.messageOwner.media.document.attributes.size(); i++) {
+                        TLRPC.DocumentAttribute a = messageObject.messageOwner.media.document.attributes.get(i);
+                        if (a instanceof TLRPC.TL_documentAttributeVideo) {
+                            time_ms = a.duration * 1000;
                             break;
                         }
                     }
-                    if (arr.isEmpty()) {
-                        delayedMessages.remove(messageObject.messageOwner.attachPath);
-                    }
+                    newMsgId = MrMailbox.getChat((int) messageObject.getDialogId()).sendMedia(MrMsg.MR_MSG_VIDEO,
+                            messageObject.messageOwner.attachPath,
+                            messageObject.messageOwner.media.document.mime_type,
+                            messageObject.videoEditedInfo.resultWidth,
+                            messageObject.videoEditedInfo.resultHeight,
+                            time_ms, null, null);
                 }
-                */
-            //}
-        } else if (id == NotificationCenter.FilePreparingFailed) {
-            MessageObject messageObject = (MessageObject) args[0];
-            //String finalPath = (String) args[1];
-            stopVideoService(messageObject.messageOwner.attachPath);
-            /*
-            ArrayList<DelayedMessage> arr = delayedMessages.get(finalPath);
-            if (arr != null) {
-                for (int a = 0; a < arr.size(); a++) {
-                    DelayedMessage message = arr.get(a);
-                    if (message.obj == messageObject) {
-                        //MessagesStorage.getInstance().markMessageAsSendError(message.obj.messageOwner);
-                        message.obj.messageOwner.send_state = MessageObject.MESSAGE_SEND_STATE_SEND_ERROR;
-                        arr.remove(a);
-                        a--;
-                        NotificationCenter.getInstance().postNotificationName(NotificationCenter.messageSendError, message.obj.getId());
-                        processSentMessage(message.obj.getId());
-                    }
+                catch(Exception e) {
+                    success = false;
                 }
-                if (arr.isEmpty()) {
-                    delayedMessages.remove(finalPath);
-                }
+
+                updateInterfaceForNewMessage((int)messageObject.getDialogId(), success, newMsgId);
+                stopVideoService(messageObject.messageOwner.attachPath);
             }
-            */
-        } else if (id == NotificationCenter.httpFileDidLoaded) {
+        }
+        else if (id == NotificationCenter.FilePreparingFailed)
+        {
+            // encoding error
+            MessageObject messageObject = (MessageObject) args[0];
+            stopVideoService(messageObject.messageOwner.attachPath);
+        }
+        else if (id == NotificationCenter.httpFileDidLoaded) {
             /*
             String path = (String) args[0];
             ArrayList<DelayedMessage> arr = delayedMessages.get(path);
@@ -400,6 +374,8 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
         NotificationCenter.getInstance().postNotificationName(NotificationCenter.dialogsNeedReload);
     }
 
+    private Toast videoUploadingHint;
+
     private void sendMessage__(String message,
                              TLRPC.TL_photo photo,
                              VideoEditedInfo videoEditedInfo,
@@ -411,7 +387,7 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
         int newMsg_id = 0;
 
         try {
-            final MrChat mrChat = MrMailbox.getChat((int)dialog_id);
+            MrChat mrChat = MrMailbox.getChat((int)dialog_id);
             if (message != null)
             {
                 // SEND TEXT
@@ -431,15 +407,7 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
             else if (document != null && MessageObject.isVideoDocument(document))
             {
                 // SEND VIDEO, encoding is done first in a working thread
-                int time_ms = 0;
-                for (int i = 0; i < document.attributes.size(); i++) {
-                    TLRPC.DocumentAttribute a = document.attributes.get(i);
-                    if (a instanceof TLRPC.TL_documentAttributeVideo) {
-                        time_ms = a.duration * 1000;
-                        break;
-                    }
-                }
-
+                videoUploadingHint = AndroidUtilities.showHint(ApplicationLoader.applicationContext, ApplicationLoader.applicationContext.getString(R.string.OneMomentPlease));
                 TLRPC.TL_message mown = new TLRPC.TL_message();
                 mown.dialog_id = dialog_id;
                 mown.media = new TLRPC.TL_messageMediaDocument();
@@ -447,41 +415,7 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
                 mown.attachPath = path;
                 MessageObject mobj = new MessageObject(mown, false);
                 mobj.videoEditedInfo = videoEditedInfo;
-
-                final int final_time_ms = time_ms;
-                final MessageObject final_message_obj = mobj;
-                Utilities.searchQueue.postRunnable(new Runnable() {
-                    @Override
-                    public void run() {
-                        boolean success = true;
-                        try {
-                            /*if( !MediaController.getInstance().convertVideo(final_message_obj) ) {
-                                success = false;
-                            }*/
-                        }
-                        catch(Exception e) {
-                            success = false;
-                        }
-
-                        int msg_id = 0;
-                        if( success ) {
-                            msg_id = mrChat.sendMedia(MrMsg.MR_MSG_VIDEO,
-                                    final_message_obj.messageOwner.attachPath,
-                                    final_message_obj.messageOwner.media.document.mime_type,
-                                    final_message_obj.videoEditedInfo.resultWidth,
-                                    final_message_obj.videoEditedInfo.resultHeight,
-                                    final_time_ms, null, null);
-                        }
-
-                        final int final_msg_id = msg_id;
-                        AndroidUtilities.runOnUIThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                updateInterfaceForNewMessage((int)final_message_obj.messageOwner.dialog_id, true, final_msg_id);
-                            }
-                        });
-                    }
-                });
+                MediaController.getInstance().scheduleVideoConvert(mobj);
                 return;
             }
             else if ( MessageObject.isVoiceDocument(document) || MessageObject.isMusicDocument(document) )
@@ -534,6 +468,10 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
                     @Override
                     public void run() {
                         NotificationCenter.getInstance().postNotificationName(NotificationCenter.stopEncodingService, path);
+                        if( videoUploadingHint != null ) {
+                            videoUploadingHint.cancel();
+                            videoUploadingHint = null;
+                        }
                     }
                 });
             }
