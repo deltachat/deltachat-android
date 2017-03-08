@@ -386,17 +386,32 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
         sendMessage__(null, photo, null, null, peer, path, params);
     }
 
+    private void updateInterfaceForNewMessage(int chat_id, boolean success, int msg_id)
+    {
+        if( msg_id <= 0 ) {success = false;}
+        MrMailbox.reloadMainChatlist();
+        if( success ) {
+            NotificationsController.getInstance().playOutChatSound();
+            NotificationCenter.getInstance().postNotificationName(NotificationCenter.didReceivedNewMessages, chat_id, msg_id);
+        }
+        else {
+            NotificationCenter.getInstance().postNotificationName(NotificationCenter.messageSendError, msg_id);
+        }
+        NotificationCenter.getInstance().postNotificationName(NotificationCenter.dialogsNeedReload);
+    }
+
     private void sendMessage__(String message,
                              TLRPC.TL_photo photo,
                              VideoEditedInfo videoEditedInfo,
                              TLRPC.TL_document document,
                              long dialog_id,
                              String path,
-                             HashMap<String, String> params) {
+                             HashMap<String, String> params)
+    {
         int newMsg_id = 0;
 
         try {
-            MrChat mrChat = MrMailbox.getChat((int)dialog_id);
+            final MrChat mrChat = MrMailbox.getChat((int)dialog_id);
             if (message != null)
             {
                 // SEND TEXT
@@ -415,23 +430,59 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
             }
             else if (document != null && MessageObject.isVideoDocument(document))
             {
-                // SEND VIDEO
-                int width = 0, height = 0, time_ms = 0;
+                // SEND VIDEO, encoding is done first in a working thread
+                int time_ms = 0;
                 for (int i = 0; i < document.attributes.size(); i++) {
                     TLRPC.DocumentAttribute a = document.attributes.get(i);
                     if (a instanceof TLRPC.TL_documentAttributeVideo) {
                         time_ms = a.duration * 1000;
-                        width = a.w;
-                        height = a.h;
                         break;
                     }
                 }
-                if (videoEditedInfo != null) {
-                    width = videoEditedInfo.resultWidth; // overwrite original attributes with edited size
-                    height = videoEditedInfo.resultHeight;
-                }
-                newMsg_id = mrChat.sendMedia(MrMsg.MR_MSG_VIDEO,
-                        path, document.mime_type, width, height, time_ms, null, null);
+
+                TLRPC.TL_message mown = new TLRPC.TL_message();
+                mown.dialog_id = dialog_id;
+                mown.media = new TLRPC.TL_messageMediaDocument();
+                mown.media.document = document;
+                mown.attachPath = path;
+                MessageObject mobj = new MessageObject(mown, false);
+                mobj.videoEditedInfo = videoEditedInfo;
+
+                final int final_time_ms = time_ms;
+                final MessageObject final_message_obj = mobj;
+                Utilities.searchQueue.postRunnable(new Runnable() {
+                    @Override
+                    public void run() {
+                        boolean success = true;
+                        try {
+                            /*if( !MediaController.getInstance().convertVideo(final_message_obj) ) {
+                                success = false;
+                            }*/
+                        }
+                        catch(Exception e) {
+                            success = false;
+                        }
+
+                        int msg_id = 0;
+                        if( success ) {
+                            msg_id = mrChat.sendMedia(MrMsg.MR_MSG_VIDEO,
+                                    final_message_obj.messageOwner.attachPath,
+                                    final_message_obj.messageOwner.media.document.mime_type,
+                                    final_message_obj.videoEditedInfo.resultWidth,
+                                    final_message_obj.videoEditedInfo.resultHeight,
+                                    final_time_ms, null, null);
+                        }
+
+                        final int final_msg_id = msg_id;
+                        AndroidUtilities.runOnUIThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                updateInterfaceForNewMessage((int)final_message_obj.messageOwner.dialog_id, true, final_msg_id);
+                            }
+                        });
+                    }
+                });
+                return;
             }
             else if ( MessageObject.isVoiceDocument(document) || MessageObject.isMusicDocument(document) )
             {
@@ -468,18 +519,10 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
                 return; // should not happen
             }
 
-            MrMailbox.reloadMainChatlist();
-
-            if( newMsg_id!=0 ) {
-                NotificationsController.getInstance().playOutChatSound();
-            }
-
-            // finally update the interface
-            NotificationCenter.getInstance().postNotificationName(NotificationCenter.didReceivedNewMessages, dialog_id, newMsg_id);
-            NotificationCenter.getInstance().postNotificationName(NotificationCenter.dialogsNeedReload);
+            updateInterfaceForNewMessage((int)dialog_id, true, newMsg_id);
 
         } catch (Exception e) {
-            NotificationCenter.getInstance().postNotificationName(NotificationCenter.messageSendError, newMsg_id);
+            updateInterfaceForNewMessage((int)dialog_id, false, newMsg_id);
         }
     }
 
