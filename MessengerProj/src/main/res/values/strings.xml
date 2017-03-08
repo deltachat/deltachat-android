@@ -216,7 +216,7 @@
     <string name="PrivacyTitle" tools:keep="@string/PrivacyTitle">Privacy</string>
     <string name="SecurityTitle">Security</string>
     <!--edit video view-->
-    <string name="EditVideo">Edit Video</string>
+    <string name="SendVideo">Send Video</string>
     <string name="OriginalVideo">Original Video</string>
     <string name="EditedVideo">Edited Video</string>
     <string name="SendingVideo">Sending video …</string>

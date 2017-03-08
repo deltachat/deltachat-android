@@ -2,12 +2,14 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ff000000">
+    android:background="#ffffffff">
 
     <FrameLayout
         android:layout_height="match_parent"
         android:layout_width="match_parent"
+        android:layout_marginLeft="16dp"
         android:layout_marginTop="16dp"
+        android:layout_marginRight="16dp"
         android:layout_marginBottom="160dp"
         android:id="@+id/video_container"
         android:layout_gravity="top">
@@ -37,7 +39,7 @@
             android:layout_height="36dp"
             android:layout_width="match_parent"
             android:id="@+id/video_seekbar"
-            android:background="#77000000"
+            android:background="#ffffffff"
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"/>
 
@@ -53,7 +55,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        android:background="#ff2d2d2d"
+        android:background="#ffffffff"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         android:layout_marginBottom="16dp"
@@ -62,44 +64,36 @@
         android:id="@+id/info_container"
         android:orientation="vertical">
     
-        <TextView
+        <!-- <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="#f0f0f0"
-            android:textSize="15dp"
-            android:layout_marginLeft="13dp"
-            android:layout_marginRight="13dp"
-            android:id="@+id/original_title"/>
+            android:textColor="#808080"
+            android:textSize="13dp"
+            android:id="@+id/original_title"/> -->
 
-        <TextView
+        <!-- <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="#bebebe"
+            android:textColor="#000000"
             android:textSize="15dp"
-            android:layout_marginLeft="13dp"
-            android:layout_marginRight="13dp"
-            android:id="@+id/original_size"/>
+            android:id="@+id/original_size"/> -->
 
-        <TextView
+        <!-- <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="#f0f0f0"
-            android:textSize="15dp"
+            android:textColor="#808080"
+            android:textSize="13dp"
             android:layout_marginTop="10dp"
-            android:layout_marginLeft="13dp"
-            android:layout_marginRight="13dp"
-            android:id="@+id/edited_title"/>
+            android:id="@+id/edited_title"/> -->
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="#bebebe"
-            android:textSize="15dp"
-            android:layout_marginLeft="13dp"
-            android:layout_marginRight="13dp"
+            android:textColor="#000000"
+            android:textSize="16dp"
             android:id="@+id/edited_size"/>
 
-        <CheckBox
+        <!-- <CheckBox
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="8dp"
@@ -107,7 +101,7 @@
             android:layout_marginTop="6dp"
             android:textColor="#f0f0f0"
             android:textSize="15dp"
-            android:id="@+id/compress_video"/>
+            android:id="@+id/compress_video"/> -->
 
     </LinearLayout>
 

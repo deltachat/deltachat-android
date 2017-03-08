@@ -204,16 +204,18 @@ public class PhotoPickerActivity extends BaseFragment implements NotificationCen
                 sendSelectedPhotos();
             }
         });
-        if (singlePhoto) {
-            pickerBottomLayout.setVisibility(View.GONE);
-        }
 
         listView.setEmptyView(emptyView);
         pickerBottomLayout.updateSelectedCount(selectedPhotos.size(), true);
 
-        View shadow = new View(context);
-        shadow.setBackgroundResource(R.drawable.header_shadow_reverse);
-        frameLayout.addView(shadow, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, 3, Gravity.LEFT | Gravity.BOTTOM, 0, 0, 0, 48));
+        if(singlePhoto) {
+            pickerBottomLayout.setVisibility(View.GONE);
+        }
+        else {
+            View shadow = new View(context);
+            shadow.setBackgroundResource(R.drawable.header_shadow_reverse);
+            frameLayout.addView(shadow, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, 3, Gravity.LEFT | Gravity.BOTTOM, 0, 0, 0, 48));
+        }
 
         return fragmentView;
     }

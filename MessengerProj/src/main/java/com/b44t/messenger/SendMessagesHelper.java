@@ -31,7 +31,6 @@ import android.media.ThumbnailUtils;
 import android.net.Uri;
 import android.provider.MediaStore;
 import android.webkit.MimeTypeMap;
-import android.widget.Toast;
 
 import com.b44t.messenger.audioinfo.AudioInfo;
 
@@ -484,9 +483,8 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
         }
     }
 
-    protected void stopVideoService(final String path) {
-        /*
-        MessagesStorage.getInstance().getStorageQueue().postRunnable(new Runnable() {
+    private void stopVideoService(final String path) {
+        Utilities.stageQueue.postRunnable(new Runnable() {
             @Override
             public void run() {
                 AndroidUtilities.runOnUIThread(new Runnable() {
@@ -497,7 +495,6 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
                 });
             }
         });
-        */
     }
 
 
