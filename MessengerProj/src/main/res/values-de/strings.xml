@@ -177,13 +177,6 @@
     <string name="AllVideo">Alle Videos</string>
     <string name="NoPhotos">Noch keine Bilder</string>
     <string name="NoVideo">Noch keine Videos</string>
-    <string name="NoRecentPhotos">Suchverlauf</string>
-    <string name="NoRecentGIFs">Suchverlauf</string>
-    <string name="SearchImages">BILDERSUCHE</string>
-    <string name="SearchImagesInfo">BILDERSUCHE</string>
-    <string name="SearchGifs">GIF-SUCHE</string>
-    <string name="SearchImagesTitle">Suche Bilder</string>
-    <string name="SearchGifsTitle">Suche GIFs</string>
     <string name="CropImage">Bild zuschneiden</string>
     <string name="EditImage">Bild bearbeiten</string>
     <string name="Enhance">Verbessern</string>

@@ -70,7 +70,7 @@ public class PhotoPickerAlbumsCell extends FrameLayout {
             addView(linearLayout, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, 28, Gravity.LEFT | Gravity.BOTTOM));
 
             nameTextView = new TextView(context);
-            nameTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13);
+            nameTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 15);
             nameTextView.setTextColor(0xffffffff);
             nameTextView.setSingleLine(true);
             nameTextView.setEllipsize(TextUtils.TruncateAt.END);

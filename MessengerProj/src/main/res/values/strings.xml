@@ -177,13 +177,6 @@
     <string name="AllVideo">All Videos</string>
     <string name="NoPhotos">No photos yet</string>
     <string name="NoVideo">No videos yet</string>
-    <string name="NoRecentPhotos">No recent photos</string>
-    <string name="NoRecentGIFs">No recent GIFs</string>
-    <string name="SearchImages">FIND IMAGES</string>
-    <string name="SearchImagesInfo">WEB SEARCH</string>
-    <string name="SearchGifs">FIND GIFS</string>
-    <string name="SearchImagesTitle">Search web</string>
-    <string name="SearchGifsTitle">Search GIFs</string>
     <string name="CropImage">Crop image</string>
     <string name="EditImage">Edit image</string>
     <string name="Enhance">Enhance</string>

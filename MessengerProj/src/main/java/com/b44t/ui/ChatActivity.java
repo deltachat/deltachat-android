@@ -1205,17 +1205,17 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 getParentActivity().requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 4);
                 return;
             }
-            PhotoAlbumPickerActivity fragment = new PhotoAlbumPickerActivity(false, true, ChatActivity.this);
+            PhotoAlbumPickerActivity fragment = new PhotoAlbumPickerActivity(false, ChatActivity.this);
             fragment.setDelegate(new PhotoAlbumPickerActivity.PhotoAlbumPickerActivityDelegate() {
                 @Override
-                public void didSelectPhotos(ArrayList<String> photos, ArrayList<String> captions, ArrayList<MediaController.SearchImage> webPhotos) {
+                public void didSelectPhotos(ArrayList<String> photos, ArrayList<String> captions) {
                     SendMessagesHelper.prepareSendingPhotos(photos, null, dialog_id, captions);
-                    SendMessagesHelper.prepareSendingPhotosSearch(webPhotos, dialog_id);
                     m_mrChat.cleanDraft();
                 }
 
                 @Override
                 public void startPhotoSelectActivity() {
+                    /* -- this is the fallback implementation of the gallery selection, see ID_OPEN_SYSTEM_SELECTOR
                     try {
                         Intent videoPickerIntent = new Intent();
                         videoPickerIntent.setType("video/*");
@@ -1230,7 +1230,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                         startActivityForResult(chooserIntent, RC1_CHAT_PICK);
                     } catch (Exception e) {
                         FileLog.e("messenger", e);
-                    }
+                    } */
                 }
 
                 @Override
@@ -1717,6 +1717,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 AndroidUtilities.addMediaToGallery(currentPicturePath);
                 currentPicturePath = null;
             } else if (requestCode == RC1_CHAT_PICK) {
+                /* -- this is the fallback implementation of the gallery selection, see ID_OPEN_SYSTEM_SELECTOR
                 if (data == null || data.getData() == null) {
                     showAttachmentError();
                     return;
@@ -1744,7 +1745,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 } else {
                     SendMessagesHelper.prepareSendingPhoto(null, uri, dialog_id, null);
                 }
-                m_mrChat.cleanDraft();
+                m_mrChat.cleanDraft(); */
             } else if (requestCode == RC2_CHAT_VIDEO_CAPTURE) {
                 String videoPath = null;
                 FileLog.d("messenger", "pic path " + currentPicturePath);

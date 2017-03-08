@@ -97,10 +97,10 @@ public class AvatarUpdater implements NotificationCenter.NotificationCenterDeleg
                 return;
             }
         }
-        PhotoAlbumPickerActivity fragment = new PhotoAlbumPickerActivity(true, false, null);
+        PhotoAlbumPickerActivity fragment = new PhotoAlbumPickerActivity(true, null);
         fragment.setDelegate(new PhotoAlbumPickerActivity.PhotoAlbumPickerActivityDelegate() {
             @Override
-            public void didSelectPhotos(ArrayList<String> photos, ArrayList<String> captions, ArrayList<MediaController.SearchImage> webPhotos) {
+            public void didSelectPhotos(ArrayList<String> photos, ArrayList<String> captions) {
                 if (!photos.isEmpty()) {
                     Bitmap bitmap = ImageLoader.loadBitmap(photos.get(0), null, 800, 800, true);
                     processBitmap(bitmap);
@@ -109,13 +109,14 @@ public class AvatarUpdater implements NotificationCenter.NotificationCenterDeleg
 
             @Override
             public void startPhotoSelectActivity() {
+                /* -- this is the fallback implementation of the gallery selection, see ID_OPEN_SYSTEM_SELECTOR
                 try {
                     Intent photoPickerIntent = new Intent(Intent.ACTION_GET_CONTENT);
                     photoPickerIntent.setType("image/*");
                     parentFragment.startActivityForResult(photoPickerIntent, BaseFragment.RC14_AVATAR_GET_CONTENT);
                 } catch (Exception e) {
                     FileLog.e("messenger", e);
-                }
+                } */
             }
 
             @Override
@@ -189,10 +190,11 @@ public class AvatarUpdater implements NotificationCenter.NotificationCenterDeleg
                 AndroidUtilities.addMediaToGallery(currentPicturePath);
                 currentPicturePath = null;
             } else if (requestCode == BaseFragment.RC14_AVATAR_GET_CONTENT) {
+                /* -- this is the fallback implementation of the gallery selection, see ID_OPEN_SYSTEM_SELECTOR
                 if (data == null || data.getData() == null) {
                     return;
                 }
-                startCrop(null, data.getData());
+                startCrop(null, data.getData()); */
             }
         }
     }

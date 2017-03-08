@@ -174,13 +174,6 @@
     <string name="AllVideo">Alle video\'s</string>
     <string name="NoPhotos">Nog geen foto\'s</string>
     <string name="NoVideo">Nog geen video\'s</string>
-    <string name="NoRecentPhotos">Niets recents</string>
-    <string name="NoRecentGIFs">Niets recents</string>
-    <string name="SearchImages">ONLINE ZOEKEN</string>
-    <string name="SearchImagesInfo">ZOEK OP HET WEB</string>
-    <string name="SearchGifs">GIF\'S ZOEKEN </string>
-    <string name="SearchImagesTitle">Online zoeken</string>
-    <string name="SearchGifsTitle">GIF\'s zoeken</string>
     <string name="CropImage">Foto bijsnijden</string>
     <string name="EditImage">Foto bewerken</string>
     <string name="Enhance">Verbeteren</string>
