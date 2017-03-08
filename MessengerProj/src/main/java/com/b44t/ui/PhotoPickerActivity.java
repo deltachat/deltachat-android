@@ -79,7 +79,10 @@ public class PhotoPickerActivity extends BaseFragment implements NotificationCen
 
     private RequestQueue requestQueue;
 
+    public final static int TYPE0_SEARCH_IMAGES = 0;
+    public final static int TYPE1_SEARCH_GIF = 1;
     private int type;
+
     private HashMap<String, MediaController.SearchImage> selectedWebPhotos;
     private HashMap<Integer, MediaController.PhotoEntry> selectedPhotos;
     private ArrayList<MediaController.SearchImage> recentImages;
@@ -154,14 +157,12 @@ public class PhotoPickerActivity extends BaseFragment implements NotificationCen
     @SuppressWarnings("unchecked")
     @Override
     public View createView(Context context) {
-        actionBar.setBackgroundColor(Theme.ACTION_BAR_MEDIA_PICKER_COLOR);
-        actionBar.setItemsBackgroundColor(Theme.ACTION_BAR_PICKER_SELECTOR_COLOR);
         actionBar.setBackButtonImage(R.drawable.ic_ab_back);
         if (selectedAlbum != null) {
             actionBar.setTitle(selectedAlbum.bucketName);
-        } else if (type == 0) {
+        } else if (type == TYPE0_SEARCH_IMAGES) {
             actionBar.setTitle(LocaleController.getString("SearchImagesTitle", R.string.SearchImagesTitle));
-        } else if (type == 1) {
+        } else if (type == TYPE1_SEARCH_GIF) {
             actionBar.setTitle(LocaleController.getString("SearchGifsTitle", R.string.SearchGifsTitle));
         }
         actionBar.setActionBarMenuOnItemClick(new ActionBar.ActionBarMenuOnItemClick() {
@@ -196,9 +197,9 @@ public class PhotoPickerActivity extends BaseFragment implements NotificationCen
         }
 
         if (selectedAlbum == null) {
-            if (type == 0) {
+            if (type == TYPE0_SEARCH_IMAGES) {
                 searchItem.getSearchField().setHint(LocaleController.getString("SearchImagesTitle", R.string.SearchImagesTitle));
-            } else if (type == 1) {
+            } else if (type == TYPE1_SEARCH_GIF) {
                 searchItem.getSearchField().setHint(LocaleController.getString("SearchGifsTitle", R.string.SearchGifsTitle));
             }
         }
@@ -206,7 +207,7 @@ public class PhotoPickerActivity extends BaseFragment implements NotificationCen
         fragmentView = new FrameLayout(context);
 
         FrameLayout frameLayout = (FrameLayout) fragmentView;
-        frameLayout.setBackgroundColor(0xff000000);
+        frameLayout.setBackgroundColor(0xffffffff);
 
         listView = new GridView(context);
         listView.setPadding(AndroidUtilities.dp(4), AndroidUtilities.dp(4), AndroidUtilities.dp(4), AndroidUtilities.dp(4));
@@ -226,7 +227,7 @@ public class PhotoPickerActivity extends BaseFragment implements NotificationCen
         layoutParams.bottomMargin = singlePhoto ? 0 : AndroidUtilities.dp(48);
         listView.setLayoutParams(layoutParams);
         listView.setAdapter(listAdapter = new ListAdapter(context));
-        AndroidUtilities.setListViewEdgeEffectColor(listView, 0xff333333);
+        AndroidUtilities.setListViewEdgeEffectColor(listView, Theme.ACTION_BAR_COLOR);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -278,9 +279,9 @@ public class PhotoPickerActivity extends BaseFragment implements NotificationCen
         if (selectedAlbum != null) {
             emptyView.setText(LocaleController.getString("NoPhotos", R.string.NoPhotos));
         } else {
-            if (type == 0) {
+            if (type == TYPE0_SEARCH_IMAGES) {
                 emptyView.setText(LocaleController.getString("NoRecentPhotos", R.string.NoRecentPhotos));
-            } else if (type == 1) {
+            } else if (type == TYPE1_SEARCH_GIF) {
                 emptyView.setText(LocaleController.getString("NoRecentGIFs", R.string.NoRecentGIFs));
             }
         }
@@ -333,7 +334,7 @@ public class PhotoPickerActivity extends BaseFragment implements NotificationCen
             updateSearchInterface();
         }
 
-        pickerBottomLayout = new PickerBottomLayout(context);
+        pickerBottomLayout = new PickerBottomLayout(context, false);
         frameLayout.addView(pickerBottomLayout);
         layoutParams = (FrameLayout.LayoutParams) pickerBottomLayout.getLayoutParams();
         layoutParams.width = LayoutHelper.MATCH_PARENT;
@@ -359,6 +360,10 @@ public class PhotoPickerActivity extends BaseFragment implements NotificationCen
 
         listView.setEmptyView(emptyView);
         pickerBottomLayout.updateSelectedCount(selectedPhotos.size() + selectedWebPhotos.size(), true);
+
+        View shadow = new View(context);
+        shadow.setBackgroundResource(R.drawable.header_shadow_reverse);
+        frameLayout.addView(shadow, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, 3, Gravity.LEFT | Gravity.BOTTOM, 0, 0, 0, 48));
 
         return fragmentView;
     }
@@ -747,9 +752,9 @@ public class PhotoPickerActivity extends BaseFragment implements NotificationCen
             if (selectedAlbum == null) {
                 if (searchResult.isEmpty() && lastSearchString == null) {
                     return recentImages.size();
-                } else if (type == 0) {
+                } else if (type == TYPE0_SEARCH_IMAGES) {
                     return searchResult.size() + (nextSearchBingString == null ? 0 : 1);
-                } else if (type == 1) {
+                } else if (type == TYPE1_SEARCH_GIF) {
                     return searchResult.size() + (giphySearchEndReached ? 0 : 1);
                 }
             }

@@ -75,7 +75,7 @@ public class PhotoPickerPhotoCell extends FrameLayout {
         }
         if (animated) {
             if (checked) {
-                setBackgroundColor(0xff0A0A0A);
+                setBackgroundColor(0xffffffff);
             }
             animator = new AnimatorSet();
             animator.playTogether(ObjectAnimator.ofFloat(photoImage, "scaleX", checked ? 0.85f : 1.0f),
@@ -101,7 +101,7 @@ public class PhotoPickerPhotoCell extends FrameLayout {
             });
             animator.start();
         } else {
-            setBackgroundColor(checked ? 0xff0A0A0A : 0);
+            setBackgroundColor(checked ? 0xffffffff : 0);
             photoImage.setScaleX(checked ? 0.85f : 1.0f);
             photoImage.setScaleY(checked ? 0.85f : 1.0f);
         }
