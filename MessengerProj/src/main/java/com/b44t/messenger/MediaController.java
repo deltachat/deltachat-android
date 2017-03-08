@@ -932,13 +932,10 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
             }
             */
         } else if (id == NotificationCenter.messagesDeleted) {
-            int channelId = (Integer) args[1];
             ArrayList<Integer> markAsDeletedMessages = (ArrayList<Integer>) args[0];
             if (playingMessageObject != null) {
-                if (channelId == playingMessageObject.messageOwner.to_id.channel_id) {
-                    if (markAsDeletedMessages.contains(playingMessageObject.getId())) {
-                        cleanupPlayer(true, true);
-                    }
+                if (markAsDeletedMessages.contains(playingMessageObject.getId())) {
+                    cleanupPlayer(true, true);
                 }
             }
         }
