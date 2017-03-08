@@ -2682,7 +2682,7 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
 
                 checkConversionCanceled();
 
-                if (resultWidth != originalWidth || resultHeight != originalHeight) {
+                if (resultWidth != originalWidth || resultHeight != originalHeight || rotateRender != 0) {
                     int videoIndex;
                     videoIndex = selectTrack(extractor, false);
                     if (videoIndex >= 0) {
