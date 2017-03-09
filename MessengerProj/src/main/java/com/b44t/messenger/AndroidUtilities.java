@@ -800,7 +800,7 @@ public class AndroidUtilities {
     }
 
     public static String formatFileSize(long bytes) {
-        if( bytes >= 1024*1024 ) {
+        if( bytes >= 999*1024 ) { /* Start showing MiB already at 999 KiB, this avoids confusion with four digit KiB which may be being already "Megabytes" ... */
             return String.format("%.1f MiB", bytes / 1024.0f / 1024.0f);
         }
         else if( bytes >= 1024 ) {
