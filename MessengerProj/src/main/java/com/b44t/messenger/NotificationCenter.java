@@ -68,9 +68,6 @@ public class NotificationCenter {
     public static final int didUpdatedConnectionState = totalEvents++;
     public static final int emojiDidLoaded = totalEvents++;
 
-    public static final int FileDidUpload = totalEvents++;
-    public static final int FileDidFailUpload = totalEvents++;
-    //public static final int FileUploadProgressChanged = totalEvents++;
     public static final int FileLoadProgressChanged = totalEvents++;
     public static final int FileDidLoaded = totalEvents++;
     public static final int FileDidFailedLoad = totalEvents++;

@@ -40,7 +40,6 @@ import com.b44t.messenger.MediaController;
 import com.b44t.messenger.TLRPC;
 import com.b44t.messenger.FileLoader;
 import com.b44t.messenger.FileLog;
-import com.b44t.messenger.NotificationCenter;
 import com.b44t.messenger.UserConfig;
 import com.b44t.ui.LaunchActivity;
 import com.b44t.ui.PhotoAlbumPickerActivity;
@@ -51,7 +50,7 @@ import com.b44t.ui.PhotoViewer;
 import java.io.File;
 import java.util.ArrayList;
 
-public class AvatarUpdater implements NotificationCenter.NotificationCenterDelegate, PhotoCropActivity.PhotoEditActivityDelegate {
+public class AvatarUpdater implements PhotoCropActivity.PhotoEditActivityDelegate {
 
     public String currentPicturePath;
     private TLRPC.PhotoSize smallPhoto;
@@ -214,8 +213,6 @@ public class AvatarUpdater implements NotificationCenter.NotificationCenterDeleg
             } else {
                 UserConfig.saveConfig(false);
                 uploadingAvatar = FileLoader.getInstance().getDirectory(FileLoader.MEDIA_DIR_CACHE) + "/" + bigPhoto.location.volume_id + "_" + bigPhoto.location.local_id + ".jpg";
-                NotificationCenter.getInstance().addObserver(AvatarUpdater.this, NotificationCenter.FileDidUpload);
-                NotificationCenter.getInstance().addObserver(AvatarUpdater.this, NotificationCenter.FileDidFailUpload);
                 //FileLoader.getInstance().uploadFile(uploadingAvatar, false, true);
             }
         }
@@ -224,35 +221,5 @@ public class AvatarUpdater implements NotificationCenter.NotificationCenterDeleg
     @Override
     public void didFinishEdit(Bitmap bitmap) {
         processBitmap(bitmap);
-    }
-
-    @Override
-    public void didReceivedNotification(int id, final Object... args) {
-        if (id == NotificationCenter.FileDidUpload) {
-            String location = (String)args[0];
-            if (uploadingAvatar != null && location.equals(uploadingAvatar)) {
-                NotificationCenter.getInstance().removeObserver(AvatarUpdater.this, NotificationCenter.FileDidUpload);
-                NotificationCenter.getInstance().removeObserver(AvatarUpdater.this, NotificationCenter.FileDidFailUpload);
-                if (delegate != null) {
-                    delegate.didUploadedPhoto((TLRPC.InputFile)args[1], smallPhoto, bigPhoto);
-                }
-                uploadingAvatar = null;
-                if (clearAfterUpdate) {
-                    parentFragment = null;
-                    delegate = null;
-                }
-            }
-        } else if (id == NotificationCenter.FileDidFailUpload) {
-            String location = (String)args[0];
-            if (uploadingAvatar != null && location.equals(uploadingAvatar)) {
-                NotificationCenter.getInstance().removeObserver(AvatarUpdater.this, NotificationCenter.FileDidUpload);
-                NotificationCenter.getInstance().removeObserver(AvatarUpdater.this, NotificationCenter.FileDidFailUpload);
-                uploadingAvatar = null;
-                if (clearAfterUpdate) {
-                    parentFragment = null;
-                    delegate = null;
-                }
-            }
-        }
     }
 }

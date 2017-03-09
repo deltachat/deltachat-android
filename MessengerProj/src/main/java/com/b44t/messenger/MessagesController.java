@@ -30,9 +30,7 @@ import com.b44t.ui.SettingsAdvActivity;
 
 import java.util.ArrayList;
 
-public class MessagesController implements NotificationCenter.NotificationCenterDelegate {
-
-    private String uploadingAvatar = null;
+public class MessagesController {
 
     public int fontSize;
 
@@ -63,76 +61,9 @@ public class MessagesController implements NotificationCenter.NotificationCenter
 
     public MessagesController() {
         ImageLoader.getInstance();
-        NotificationCenter.getInstance().addObserver(this, NotificationCenter.FileDidUpload);
-        NotificationCenter.getInstance().addObserver(this, NotificationCenter.FileDidFailUpload);
-        NotificationCenter.getInstance().addObserver(this, NotificationCenter.FileDidLoaded);
-        NotificationCenter.getInstance().addObserver(this, NotificationCenter.FileDidFailedLoad);
 
         SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("mainconfig", Activity.MODE_PRIVATE);
         fontSize = preferences.getInt("msg_font_size", SettingsAdvActivity.defMsgFontSize());
-    }
-
-    @Override
-    public void didReceivedNotification(int id, Object... args) {
-        if (id == NotificationCenter.FileDidUpload) {
-            final String location = (String) args[0];
-            final TLRPC.InputFile file = (TLRPC.InputFile) args[1];
-
-            if (uploadingAvatar != null && uploadingAvatar.equals(location)) {
-                /*TLRPC.TL_photos_uploadProfilePhoto req = new TLRPC.TL_photos_uploadProfilePhoto();
-                req.caption = "";
-                req.crop = new TLRPC.TL_inputPhotoCropAuto();
-                req.file = file;
-                req.geo_point = new TLRPC.TL_inputGeoPointEmpty();*/
-                /*ConnectionsManager.getInstance().sendRequest(req, new RequestDelegate() {
-                    @Override
-                    public void run(TLObject response, TLRPC.TL_error error) {
-                        if (error == null) {
-                            TLRPC.User user = getUser(UserConfig.getClientUserId());
-                            if (user == null) {
-                                user = UserConfig.getCurrentUser();
-                                putUser(user, true);
-                            } else {
-                                UserConfig.setCurrentUser(user);
-                            }
-                            if (user == null) {
-                                return;
-                            }
-                            TLRPC.TL_photos_photo photo = (TLRPC.TL_photos_photo) response;
-                            ArrayList<TLRPC.PhotoSize> sizes = photo.photo.sizes;
-                            TLRPC.PhotoSize smallSize = FileLoader.getClosestPhotoSizeWithSize(sizes, 100);
-                            TLRPC.PhotoSize bigSize = FileLoader.getClosestPhotoSizeWithSize(sizes, 1000);
-                            user.photo = new TLRPC.TL_userProfilePhoto();
-                            user.photo.photo_id = photo.photo.id;
-                            if (smallSize != null) {
-                                user.photo.photo_small = smallSize.location;
-                            }
-                            if (bigSize != null) {
-                                user.photo.photo_big = bigSize.location;
-                            } else if (smallSize != null) {
-                                user.photo.photo_small = smallSize.location;
-                            }
-                            //MessagesStorage.getInstance().clearUserPhotos(user.id);
-                            ArrayList<TLRPC.User> users = new ArrayList<>();
-                            users.add(user);
-                            //MessagesStorage.getInstance().putUsersAndChats(users, null, false, true);
-                            AndroidUtilities.runOnUIThread(new Runnable() {
-                                @Override
-                                public void run() {
-                                    NotificationCenter.getInstance().postNotificationName(NotificationCenter.updateInterfaces, UPDATE_MASK_AVATAR);
-                                    UserConfig.saveConfig(true);
-                                }
-                            });
-                        }
-                    }
-                });*/
-            }
-        } else if (id == NotificationCenter.FileDidFailUpload) {
-            final String location = (String) args[0];
-            if (uploadingAvatar != null && uploadingAvatar.equals(location)) {
-                uploadingAvatar = null;
-            }
-        }
     }
 
     public TLRPC.User getUser(Integer id) {

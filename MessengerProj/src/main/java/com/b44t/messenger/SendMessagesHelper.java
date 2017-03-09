@@ -60,8 +60,6 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
     }
 
     public SendMessagesHelper() {
-        NotificationCenter.getInstance().addObserver(this, NotificationCenter.FileDidUpload);
-        NotificationCenter.getInstance().addObserver(this, NotificationCenter.FileDidFailUpload);
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.FilePreparingStarted);
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.FileNewChunkAvailable);
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.FilePreparingFailed);
@@ -87,97 +85,7 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
 
     @Override
     public void didReceivedNotification(int id, final Object... args) {
-        if (id == NotificationCenter.FileDidUpload) {
-            /*
-            final String location = (String) args[0];
-            final TLRPC.InputFile file = (TLRPC.InputFile) args[1];
-            final TLRPC.InputEncryptedFile encryptedFile = (TLRPC.InputEncryptedFile) args[2];
-            ArrayList<DelayedMessage> arr = delayedMessages.get(location);
-            if (arr != null) {
-                for (int a = 0; a < arr.size(); a++) {
-                    DelayedMessage message = arr.get(a);
-                    TLRPC.InputMedia media = null;
-                    if (message.sendRequest instanceof TLRPC.TL_messages_sendMedia) {
-                        media = ((TLRPC.TL_messages_sendMedia) message.sendRequest).media;
-                    } else if (message.sendRequest instanceof TLRPC.TL_messages_sendBroadcast) {
-                        media = ((TLRPC.TL_messages_sendBroadcast) message.sendRequest).media;
-                    }
-
-                    if (file != null && media != null) {
-                        if (message.type == 0) {
-                            media.file = file;
-                            performSendMessageRequest(message.sendRequest, message.obj, message.originalPath);
-                        } else if (message.type == 1) {
-                            if (media.file == null) {
-                                media.file = file;
-                                if (media.thumb == null && message.location != null) {
-                                    performSendDelayedMessage(message);
-                                } else {
-                                    performSendMessageRequest(message.sendRequest, message.obj, message.originalPath);
-                                }
-                            } else {
-                                media.thumb = file;
-                                performSendMessageRequest(message.sendRequest, message.obj, message.originalPath);
-                            }
-                        } else if (message.type == 2) {
-                            if (media.file == null) {
-                                media.file = file;
-                                if (media.thumb == null && message.location != null) {
-                                    performSendDelayedMessage(message);
-                                } else {
-                                    performSendMessageRequest(message.sendRequest, message.obj, message.originalPath);
-                                }
-                            } else {
-                                media.thumb = file;
-                                performSendMessageRequest(message.sendRequest, message.obj, message.originalPath);
-                            }
-                        } else if (message.type == 3) {
-                            media.file = file;
-                            performSendMessageRequest(message.sendRequest, message.obj, message.originalPath);
-                        }
-                        arr.remove(a);
-                        a--;
-                    } else if (encryptedFile != null && message.sendEncryptedRequest != null) {
-                        if (message.sendEncryptedRequest.media instanceof TLRPC.TL_decryptedMessageMediaVideo || message.sendEncryptedRequest.media instanceof TLRPC.TL_decryptedMessageMediaPhoto) {
-                            long size = (Long) args[5];
-                            message.sendEncryptedRequest.media.size = (int) size;
-                        }
-                        message.sendEncryptedRequest.media.key = (byte[]) args[3];
-                        message.sendEncryptedRequest.media.iv = (byte[]) args[4];
-                        //SecretChatHelper.getInstance().performSendEncryptedRequest(message.sendEncryptedRequest, message.obj.messageOwner, message.encryptedChat, encryptedFile, message.originalPath, message.obj);
-                        arr.remove(a);
-                        a--;
-                    }
-                }
-                if (arr.isEmpty()) {
-                    delayedMessages.remove(location);
-                }
-            }
-            */
-        } else if (id == NotificationCenter.FileDidFailUpload) {
-            /*
-            final String location = (String) args[0];
-            final boolean enc = (Boolean) args[1];
-            ArrayList<DelayedMessage> arr = delayedMessages.get(location);
-            if (arr != null) {
-                for (int a = 0; a < arr.size(); a++) {
-                    DelayedMessage obj = arr.get(a);
-                    if (enc && obj.sendEncryptedRequest != null || !enc && obj.sendRequest != null) {
-                        //MessagesStorage.getInstance().markMessageAsSendError(obj.obj.messageOwner);
-                        obj.obj.messageOwner.send_state = MessageObject.MESSAGE_SEND_STATE_SEND_ERROR;
-                        arr.remove(a);
-                        a--;
-                        NotificationCenter.getInstance().postNotificationName(NotificationCenter.messageSendError, obj.obj.getId());
-                        processSentMessage(obj.obj.getId());
-                    }
-                }
-                if (arr.isEmpty()) {
-                    delayedMessages.remove(location);
-                }
-            }
-            */
-        }
-        else if (id == NotificationCenter.FilePreparingStarted)
+        if (id == NotificationCenter.FilePreparingStarted)
         {
             // encoding started
         }
