@@ -1326,10 +1326,10 @@ public class NotificationsController {
                     continue;
                 }
             } else {
-                chat = MessagesController.getInstance().getChat(-(int)dialog_id);
-                if (chat == null) {
+                /*chat = MessagesController.getInstance().getChat(-(int)dialog_id);
+                if (chat == null) {*/
                     continue;
-                }
+                //}
             }
             TLRPC.FileLocation photoPath = null;
             if (AndroidUtilities.needShowPasscode(false) || UserConfig.isWaitingForPasscodeEnter) {

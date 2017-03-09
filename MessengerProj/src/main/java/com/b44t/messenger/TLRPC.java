@@ -76,7 +76,6 @@ public class TLRPC {
 	}
 
 	public static class Peer extends TLObject {
-		public final int channel_id = 0;
 		public int user_id;
 		public final int chat_id = 0;
 	}
@@ -104,16 +103,8 @@ public class TLRPC {
 		public int duration;
 		public String mime_type;
 		public int size;
-		public int dc_id;
+		public final int dc_id = 0;
 		public int user_id;
-		public byte[] key;
-		public byte[] iv;
-	}
-
-	public static class ChatFull extends TLObject {
-		public int flags;
-		public int id;
-		public String about;
 	}
 
     public static class InputFileLocation extends TLObject {
@@ -121,7 +112,6 @@ public class TLRPC {
 		public long access_hash;
 		public long volume_id;
 		public int local_id;
-		public long secret;
 	}
 
 	public static class TL_inputDocumentFileLocation extends InputFileLocation {
@@ -137,9 +127,6 @@ public class TLRPC {
 		public String username;
 		public UserProfilePhoto photo;
         public int flags;
-		public boolean self;
-		public boolean contact;
-		public boolean min;
     }
 
 	public static class Video extends TLObject {
@@ -154,8 +141,6 @@ public class TLRPC {
 		public int h;
 		public String mime_type;
 		public String caption;
-		public byte[] key;
-		public byte[] iv;
 	}
 
 	public static class Document extends TLObject {
@@ -212,12 +197,12 @@ public class TLRPC {
 		public String title;
 		public final ChatPhoto photo = null;
 		public int date;
-		public int version;
-		public boolean editor;
+		public final int version = 0;
+		public final boolean editor = false;
 		public String username;
-		public boolean signatures;
-		public boolean min;
-		public String address;
+		public final boolean signatures = false;
+		public final boolean min = false;
+		public final String address = null;
 	}
 
 	public static class StickerSet extends TLObject {
@@ -305,22 +290,22 @@ public class TLRPC {
         public int from_id;
         public Peer to_id;
         public int date;
-        public int reply_to_msg_id;
+        public final int reply_to_msg_id = 0;
         public String message;
         public MessageMedia media;
         public int flags;
 		public boolean media_unread;
 		public boolean out;
 		public boolean unread;
-		public int views;
-		public boolean silent;
-		public boolean post;
+		public final int views = 0;
+		public final boolean silent = false;
+		public final boolean post = false;// ? true=avatar wird in gruppen nicht angezeigt, wird aber in isFromUser() auch überprüft...
 		public TL_messageFwdHeader fwd_from;
         public int send_state = 0; //custom
         public String attachPath = ""; //custom
 		public HashMap<String, String> params; //custom
         public long dialog_id; //custom
-        public int layer; //custom
+        public final int layer = 0; //custom
 		public boolean created_by_mr;
     }
 
@@ -330,9 +315,9 @@ public class TLRPC {
 	public static class TL_dialog extends TLObject {
 		final public int flags = 0;
 		public Peer peer;
-		public int top_message;
-		public int unread_count;
-		public int pts;
+		public final int top_message = 0;
+		public final int unread_count = 0;
+		public final int pts = 0;
 		public DraftMessage draft;
 		public long id; //custom
 	}

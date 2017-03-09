@@ -25,10 +25,6 @@ package com.b44t.messenger;
 
 public class UserObject {
 
-    public static boolean isUserSelf(TLRPC.User user) {
-        return user.self;
-    }
-
     public static String getUserName(TLRPC.User user) {
         return "ErrName"; // use MrContact.getName() instead
     }

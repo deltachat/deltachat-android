@@ -175,8 +175,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
 
     private String currentPicturePath;
 
-    protected TLRPC.ChatFull info = null;
-
     private String startVideoEdit = null;
 
     private final static int ID_COPY = 10;
@@ -2607,23 +2605,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     @Override
                     public boolean needPlayAudio(MessageObject messageObject) {
                         return MediaController.getInstance().playAudio(messageObject);
-                    }
-
-                    @Override
-                    public void didPressedChannelAvatar(ChatMessageCell cell, TLRPC.Chat chat, int postId) {
-                        if (actionBar.isActionModeShowed()) {
-                            processRowSelect(cell);
-                            return;
-                        }
-                        if (chat != null && chat.id != dialog_id) {
-                            Bundle args = new Bundle();
-                            args.putInt("chat_id", chat.id);
-                            if (postId != 0) {
-                                args.putInt("message_id", postId);
-                            }
-
-                            presentFragment(new ChatActivity(args), true);
-                        }
                     }
 
                     @Override

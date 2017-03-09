@@ -88,8 +88,8 @@ public class DialogCell extends BaseCell {
     private ImageReceiver avatarImage;
     private AvatarDrawable avatarDrawable;
 
-    private TLRPC.User user = null;
-    private TLRPC.Chat chat = null;
+    private final Object user = null;
+    private final Object chat = null;
 
     public boolean useSeparator = false;
 
@@ -584,10 +584,10 @@ public class DialogCell extends BaseCell {
         }
 
         dialogMuted = isDialogCell && MessagesController.getInstance().isDialogMuted(currentDialogId);
-        user = null;
-        chat = null;
+        //user = null;
+        //chat = null;
 
-        int lower_id = (int)currentDialogId;
+        /*int lower_id = (int)currentDialogId;
         int high_id = (int)(currentDialogId >> 32);
         if (lower_id != 0) {
             if (high_id == 1) {
@@ -599,7 +599,7 @@ public class DialogCell extends BaseCell {
                     user = MessagesController.getInstance().getUser(lower_id);
                 }
             }
-        }
+        }*/
 
         ContactsController.setupAvatar(this, avatarImage, avatarDrawable, null, m_mrChat);
 

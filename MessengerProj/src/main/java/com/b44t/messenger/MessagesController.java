@@ -73,10 +73,6 @@ public class MessagesController {
         return u;
     }
 
-    public TLRPC.Chat getChat(Integer id) {
-        return null;
-    }
-
     public MediaController.SearchImage saveGif(TLRPC.Document document) {
         MediaController.SearchImage searchImage = new MediaController.SearchImage();
         searchImage.type = 2;

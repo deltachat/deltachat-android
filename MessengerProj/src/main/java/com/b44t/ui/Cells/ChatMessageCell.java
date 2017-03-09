@@ -79,7 +79,6 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
 
     public interface ChatMessageCellDelegate {
         void didPressedUserAvatar(ChatMessageCell cell, TLRPC.User user);
-        void didPressedChannelAvatar(ChatMessageCell cell, TLRPC.Chat chat, int postId);
         void didLongPressed(ChatMessageCell cell);
         void didPressedUrl(MessageObject messageObject, ClickableSpan url, boolean longPress);
         void didPressedImage(ChatMessageCell cell);
@@ -244,7 +243,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
     private boolean drawTime = true;
 
     private TLRPC.User currentUser;
-    private TLRPC.Chat currentChat;
+    private final Object currentChat = null;
     private TLRPC.FileLocation currentPhoto;
     private String currentNameString;
 
@@ -693,8 +692,6 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                         if (delegate != null) {
                             if (currentUser != null) {
                                 delegate.didPressedUserAvatar(this, currentUser);
-                            } else if (currentChat != null) {
-                                delegate.didPressedChannelAvatar(this, currentChat, 0);
                             }
                         }
                     } else if (event.getAction() == MotionEvent.ACTION_CANCEL) {
@@ -895,12 +892,12 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
         }
 
         TLRPC.User newUser = null;
-        TLRPC.Chat newChat = null;
+        final TLRPC.Chat newChat = null;
         if (currentMessageObject.isFromUser()) {
             newUser = MessagesController.getInstance().getUser(currentMessageObject.messageOwner.from_id);
-        } else if (currentMessageObject.messageOwner.post) {
+        } /*else if (currentMessageObject.messageOwner.post) {
             newChat = MessagesController.getInstance().getChat(currentMessageObject.messageOwner.to_id.channel_id);
-        }
+        }*/
         TLRPC.FileLocation newPhoto = null;
 
         if (isAvatarVisible) {
@@ -1231,7 +1228,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
             wasLayout = false;
             drawNewchatButton = checkNeedDrawNewchatButton(messageObject);
             currentUser = null;
-            currentChat = null;
+            //currentChat = null;
             drawNameLayout = false;
 
             resetPressedLink(-1);
@@ -2165,11 +2162,11 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
 
         if (currentMessageObject.isFromUser()) {
             currentUser = MessagesController.getInstance().getUser(currentMessageObject.messageOwner.from_id);
-        } else if (currentMessageObject.messageOwner.from_id < 0) {
+        } /*else if (currentMessageObject.messageOwner.from_id < 0) {
             currentChat = MessagesController.getInstance().getChat(-currentMessageObject.messageOwner.from_id);
         } else if (currentMessageObject.messageOwner.post) {
             currentChat = MessagesController.getInstance().getChat(currentMessageObject.messageOwner.to_id.channel_id);
-        }
+        }*/
 
         MrContact mrContact = null;
         String cname = "";
@@ -2198,9 +2195,9 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
             if (authorName) {
                 if (currentUser != null) {
                     currentNameString = cname;
-                } else if (currentChat != null) {
+                } /*else if (currentChat != null) {
                     currentNameString = currentChat.title;
-                } else {
+                } */ else {
                     currentNameString = "DELETED";
                 }
             } else {

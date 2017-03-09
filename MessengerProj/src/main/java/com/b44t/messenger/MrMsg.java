@@ -148,7 +148,6 @@ public class MrMsg {
         ret.unread        = state!=MR_OUT_READ; // the state of outgoing messages
         ret.media_unread  = ret.unread;
         ret.flags         = 0; // posible flags: MESSAGE_FLAG_HAS_FROM_ID, however, this seems to be read only
-        ret.post          = false; // ? true=avatar wird in gruppen nicht angezeigt, wird aber in isFromUser() auch überprüft...
         ret.out           = ret.from_id==MrContact.MR_CONTACT_ID_SELF; // true=outgoing message, read eg. in MessageObject.isOutOwner()
         ret.created_by_mr = true;
 
