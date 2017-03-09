@@ -844,8 +844,16 @@ JNIEXPORT jint Java_com_b44t_messenger_MrMsg_MrMsgGetParamInt(JNIEnv *env, jclas
 
 JNIEXPORT jint Java_com_b44t_messenger_MrMsg_getBytes(JNIEnv *env, jobject obj)
 {
+	jint ret = 0;
 	mrmsg_t* ths = get_mrmsg_t(env, obj);
-	return ths? ths->m_bytes : 0;
+	if( ths ) {
+		const char* file = mrparam_get(ths->m_param, 'f', NULL);
+		if( file ) {
+			ret = mr_get_filebytes(file);
+			free(file);
+		}
+	}
+	return ret;
 }
 
 
