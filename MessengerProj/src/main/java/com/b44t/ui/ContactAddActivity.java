@@ -113,7 +113,7 @@ public class ContactAddActivity extends BaseFragment implements NotificationCent
     @Override
     public View createView(Context context) {
 
-        actionBar.setBackButtonImage(R.drawable.ic_ab_back);
+        actionBar.setBackButtonImage(R.drawable.ic_close_white);
         actionBar.setAllowOverlayTitle(true);
         if (do_what==CREATE_CONTACT) {
             actionBar.setTitle(LocaleController.getString("NewContactTitle", R.string.NewContactTitle));

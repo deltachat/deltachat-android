@@ -129,7 +129,7 @@ public class PasscodeActivity extends BaseFragment implements NotificationCenter
 
     @Override
     public View createView(Context context) {
-        actionBar.setBackButtonImage(R.drawable.ic_ab_back);
+        actionBar.setBackButtonImage(screen == SCREEN0_SETTINGS? R.drawable.ic_ab_back : R.drawable.ic_close_white);
         actionBar.setAllowOverlayTitle(false);
         actionBar.setActionBarMenuOnItemClick(new ActionBar.ActionBarMenuOnItemClick() {
             @Override

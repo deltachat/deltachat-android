@@ -236,7 +236,7 @@ public class VideoEditorActivity extends BaseFragment implements TextureView.Sur
 
     @Override
     public View createView(Context context) {
-        actionBar.setBackButtonImage(R.drawable.ic_ab_back);
+        actionBar.setBackButtonImage(R.drawable.ic_close_white);
         actionBar.setTitle(ApplicationLoader.applicationContext.getString(R.string.SendVideo));
         actionBar.setActionBarMenuOnItemClick(new ActionBar.ActionBarMenuOnItemClick() {
             @Override

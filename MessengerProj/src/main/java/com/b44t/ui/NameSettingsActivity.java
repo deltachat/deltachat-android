@@ -91,28 +91,14 @@ public class NameSettingsActivity extends BaseFragment {
     public View createView(Context context) {
 
         // create action bar
-        actionBar.setBackButtonImage(R.drawable.ic_ab_back);
+        actionBar.setBackButtonImage(R.drawable.ic_close_white);
         actionBar.setAllowOverlayTitle(true);
         actionBar.setTitle(LocaleController.getString("MyName", R.string.MyName));
         actionBar.setActionBarMenuOnItemClick(new ActionBar.ActionBarMenuOnItemClick() {
             @Override
             public void onItemClick(int id) {
                 if (id == -1) {
-                    if( isModified() ) { // TODO: maybe we should also ask if the user presses the "back" button
-                        AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
-                        builder.setMessage(LocaleController.getString("DiscardChanges", R.string.DiscardChanges));
-                        builder.setPositiveButton(LocaleController.getString("Yes", R.string.Yes), new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
-                                finishFragment();
-                            }
-                        });
-                        builder.setNegativeButton(LocaleController.getString("No", R.string.No), null);
-                        showDialog(builder.create());
-                    }
-                    else {
-                        finishFragment();
-                    }
+                    finishFragment();
                 } else if (id == done_button) {
                     saveData();
                 }

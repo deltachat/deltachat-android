@@ -147,7 +147,7 @@ public class AccountSettingsActivity extends BaseFragment implements Notificatio
 
         // create action bar
         if( !fromIntro ) {
-            actionBar.setBackButtonImage(R.drawable.ic_ab_back);
+            actionBar.setBackButtonImage(R.drawable.ic_close_white);
         }
 
         actionBar.setAllowOverlayTitle(true);
@@ -156,7 +156,7 @@ public class AccountSettingsActivity extends BaseFragment implements Notificatio
             @Override
             public void onItemClick(int id) {
                 if (id == -1 && !fromIntro ) {
-                    if( isModified() ) { // TODO: maybe we should also ask if the user presses the "back" button
+                    if( isModified() ) { // as we use "close/ok" buttons instead of a "back" button it is more clear what happens, however, an additional question does not disturb here
                         AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
                         builder.setMessage(LocaleController.getString("DiscardChanges", R.string.DiscardChanges));
                         builder.setPositiveButton(LocaleController.getString("Yes", R.string.Yes), new DialogInterface.OnClickListener() {
