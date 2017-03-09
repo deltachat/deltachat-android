@@ -799,15 +799,15 @@ public class AndroidUtilities {
         return null;
     }
 
-    public static String formatFileSize(long size) {
-        if (size < 1024) {
-            return String.format("%d Byte", size);
-        } else if (size < 1024 * 1024) {
-            return String.format("%.1f KiB", size / 1024.0f);
-        } else if (size < 1024 * 1024 * 1024) {
-            return String.format("%.1f MiB", size / 1024.0f / 1024.0f);
-        } else {
-            return String.format("%.1f GiB", size / 1024.0f / 1024.0f / 1024.0f);
+    public static String formatFileSize(long bytes) {
+        if( bytes >= 1024*1024 ) {
+            return String.format("%.1f MiB", bytes / 1024.0f / 1024.0f);
+        }
+        else if( bytes >= 1024 ) {
+            return String.format("%d KiB", (bytes+512) / 1024);
+        }
+        else {
+            return String.format("%d Byte", bytes);
         }
     }
 
