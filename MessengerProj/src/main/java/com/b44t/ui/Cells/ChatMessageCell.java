@@ -45,6 +45,7 @@ import android.view.SoundEffectConstants;
 import android.view.ViewStructure;
 
 import com.b44t.messenger.AndroidUtilities;
+import com.b44t.messenger.ApplicationLoader;
 import com.b44t.messenger.ContactsController;
 import com.b44t.messenger.ImageReceiver;
 import com.b44t.messenger.LocaleController;
@@ -1093,6 +1094,9 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
             int minutes = duration / 60;
             int seconds = duration - minutes * 60;
             String str = String.format("%d:%02d, %s", minutes, seconds, formatFileSize(documentAttach.size));
+            if( MrMailbox.getMsg(messageObject.getId()).isIncreation()!=0 ) {
+                str = ApplicationLoader.applicationContext.getString(R.string.OneMoment);
+            }
             infoWidth = (int) Math.ceil(infoPaint.measureText(str));
             infoLayout = new StaticLayout(str, infoPaint, infoWidth, Layout.Alignment.ALIGN_NORMAL, 1.0f, 0.0f, false);
         }

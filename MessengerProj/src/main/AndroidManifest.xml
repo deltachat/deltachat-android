@@ -194,7 +194,6 @@
         <service android:name=".NotificationsService" android:enabled="true"/>
         <service android:name=".NotificationRepeat" android:exported="false"/>
         <service android:name=".ClearCacheService" android:exported="false"/>
-        <service android:name=".VideoEncodingService" android:enabled="true"/>
         <service android:name=".MusicPlayerService" android:exported="true" android:enabled="true"/>
         <!-- Do not expose data through MediaBrowserService, this seems unexpected for an messenger.
         Instead, the user can use 'save to music' or 'share' explicitly for items not privacy related.

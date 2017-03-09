@@ -105,6 +105,7 @@ public class MrMsg {
     public MrPoortext    getMediainfo() { return new MrPoortext(getMediainfoCPtr()); }
     private native long  getMediainfoCPtr();
     public native String getFilename();
+    public native int    isIncreation();
 
     private long                  m_hMsg; // must not be renamed as referenced by JNI under the name "m_hMsg"
     private native static void    MrMsgUnref                 (long hMsg);

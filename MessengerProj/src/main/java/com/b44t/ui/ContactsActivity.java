@@ -185,7 +185,7 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
         if( title != null ) {
             actionBar.setTitle(title);
             if( subtitle != null ) {
-                actionBar.setSubtitle(do_sync_now? LocaleController.getString("OneMomentPlease", R.string.OneMomentPlease) : subtitle);
+                actionBar.setSubtitle(do_sync_now? ApplicationLoader.applicationContext.getString(R.string.OneMoment) : subtitle);
             }
         }
 

@@ -189,37 +189,16 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
             if( finalSize != 0 && messageObject.isVideo() )
             {
                 // encoding done
-                boolean success = true;
-                int newMsgId = 0;
-                try {
-                    int time_ms = 0;
-                    for (int i = 0; i < messageObject.messageOwner.media.document.attributes.size(); i++) {
-                        TLRPC.DocumentAttribute a = messageObject.messageOwner.media.document.attributes.get(i);
-                        if (a instanceof TLRPC.TL_documentAttributeVideo) {
-                            time_ms = a.duration * 1000;
-                            break;
-                        }
-                    }
-                    newMsgId = MrMailbox.getChat((int) messageObject.getDialogId()).sendMedia(MrMsg.MR_MSG_VIDEO,
-                            messageObject.messageOwner.attachPath,
-                            messageObject.messageOwner.media.document.mime_type,
-                            messageObject.videoEditedInfo.resultWidth,
-                            messageObject.videoEditedInfo.resultHeight,
-                            time_ms, null, null);
-                }
-                catch(Exception e) {
-                    success = false;
-                }
-
-                updateInterfaceForNewMessage((int)messageObject.getDialogId(), success, newMsgId);
-                stopVideoService(messageObject.messageOwner.attachPath);
+                new File(messageObject.messageOwner.attachPath+".increation").delete();
+                NotificationCenter.getInstance().postNotificationName(NotificationCenter.messagesSentOrRead);
             }
         }
         else if (id == NotificationCenter.FilePreparingFailed)
         {
             // encoding error
             MessageObject messageObject = (MessageObject) args[0];
-            stopVideoService(messageObject.messageOwner.attachPath);
+            new File(messageObject.messageOwner.attachPath+".increation").delete();
+            NotificationCenter.getInstance().postNotificationName(NotificationCenter.messagesSentOrRead);
         }
         else if (id == NotificationCenter.httpFileDidLoaded) {
             /*
@@ -374,8 +353,6 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
         NotificationCenter.getInstance().postNotificationName(NotificationCenter.dialogsNeedReload);
     }
 
-    private Toast videoUploadingHint;
-
     private void sendMessage__(String message,
                              TLRPC.TL_photo photo,
                              VideoEditedInfo videoEditedInfo,
@@ -406,8 +383,21 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
             }
             else if (document != null && MessageObject.isVideoDocument(document))
             {
-                // SEND VIDEO, encoding is done first in a working thread
-                videoUploadingHint = AndroidUtilities.showHint(ApplicationLoader.applicationContext, ApplicationLoader.applicationContext.getString(R.string.OneMomentPlease));
+                // SEND VIDEO, encoding is done in a working thread, the backend waits automatically until the `.increation`-file is deleted
+                new File(path+".increation").createNewFile();
+
+                int time_ms = 0;
+                for (int i = 0; i < document.attributes.size(); i++) {
+                    TLRPC.DocumentAttribute a = document.attributes.get(i);
+                    if (a instanceof TLRPC.TL_documentAttributeVideo) {
+                        time_ms = a.duration * 1000;
+                        break;
+                    }
+                }
+
+                newMsg_id = mrChat.sendMedia(MrMsg.MR_MSG_VIDEO,
+                        path, document.mime_type, videoEditedInfo.resultWidth, videoEditedInfo.resultHeight, time_ms, null, null);
+
                 TLRPC.TL_message mown = new TLRPC.TL_message();
                 mown.dialog_id = dialog_id;
                 mown.media = new TLRPC.TL_messageMediaDocument();
@@ -416,7 +406,6 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
                 MessageObject mobj = new MessageObject(mown, false);
                 mobj.videoEditedInfo = videoEditedInfo;
                 MediaController.getInstance().scheduleVideoConvert(mobj);
-                return;
             }
             else if ( MessageObject.isVoiceDocument(document) || MessageObject.isMusicDocument(document) )
             {
@@ -458,47 +447,6 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
         } catch (Exception e) {
             updateInterfaceForNewMessage((int)dialog_id, false, newMsg_id);
         }
-    }
-
-    private void stopVideoService(final String path) {
-        Utilities.stageQueue.postRunnable(new Runnable() {
-            @Override
-            public void run() {
-                AndroidUtilities.runOnUIThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        NotificationCenter.getInstance().postNotificationName(NotificationCenter.stopEncodingService, path);
-                        if( videoUploadingHint != null ) {
-                            videoUploadingHint.cancel();
-                            videoUploadingHint = null;
-                        }
-                    }
-                });
-            }
-        });
-    }
-
-
-    /*
-    public boolean isSendingMessage(int mid) {
-        //return sendingMessages.containsKey(mid);
-        boolean isSending = false;
-        long hMsg = MrMailbox.MrMailboxGetMsg(MrMailbox.hMailbox, mid);
-            int state = MrMailbox.MrMsgGetState(hMsg);
-            if( state == MrMailbox.MR_OUT_PENDING || state == MrMailbox.MR_OUT_SENDING ) {
-                isSending = true;
-            }
-        MrMailbox.MrMsgUnref(hMsg);
-        return isSending;
-    }
-    */
-
-    protected long getNextRandomId() {
-        long val = 0;
-        while (val == 0) {
-            val = Utilities.random.nextLong();
-        }
-        return val;
     }
 
     public void checkUnsentMessages() {

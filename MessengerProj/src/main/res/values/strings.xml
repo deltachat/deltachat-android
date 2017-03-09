@@ -219,7 +219,6 @@
     <string name="SendVideo">Send Video</string>
     <string name="OriginalVideo">Original Video</string>
     <string name="EditedVideo">Edited Video</string>
-    <string name="SendingVideo">Sending video …</string>
     <string name="CompressVideo">Compress Video</string>
     <!--button titles-->
     <string name="Next">Next</string>
@@ -398,7 +397,9 @@
     <string name="BadEmailAddress">Bad e-mail address.</string>
     <string name="ContactCreated">Contact created.</string>
     <string name="ViewProfile">View profile</string>
-    <string name="OneMomentPlease">One moment, please …</string>
+    <!-- Translators: please use a very short string here, it should not much longer than
+    the string needed for video time+size (0:00, 12,3 Mib) -->
+    <string name="OneMoment">One moment …</string>
     <string name="NoChatsHelp">Start messaging by pressing the new chat button in the bottom right corner or tap the menu button for more options.</string>
     <string name="ConfiguringAccount">Configuring account …</string>
     <string name="CannotConnect">Cannot connect, please check the configuration.</string>

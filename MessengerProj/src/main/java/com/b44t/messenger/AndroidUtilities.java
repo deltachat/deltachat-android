@@ -977,7 +977,7 @@ public class AndroidUtilities {
             return;
         }
 
-        final Toast waitingHint = showHint(context, ApplicationLoader.applicationContext.getString(R.string.OneMomentPlease));
+        final Toast waitingHint = showHint(context, ApplicationLoader.applicationContext.getString(R.string.OneMoment));
 
         new Thread(new Runnable() {
             @Override

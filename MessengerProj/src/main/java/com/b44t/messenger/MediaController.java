@@ -2391,9 +2391,6 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
                 cancelCurrentVideoConversion = false;
             }
             MessageObject messageObject = videoConvertQueue.get(0);
-            Intent intent = new Intent(ApplicationLoader.applicationContext, VideoEncodingService.class);
-            intent.putExtra("path", messageObject.messageOwner.attachPath);
-            ApplicationLoader.applicationContext.startService(intent);
             VideoConvertRunnable.runConversion(messageObject);
         }
     }

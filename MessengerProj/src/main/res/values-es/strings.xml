@@ -216,7 +216,6 @@
     <string name="SendVideo">Editar vídeo</string>
     <string name="OriginalVideo">Vídeo original</string>
     <string name="EditedVideo">Vídeo editado</string>
-    <string name="SendingVideo">Enviando vídeo…</string>
     <string name="CompressVideo">Comprimir Vídeo</string>
     <!--button titles-->
     <string name="Next">Siguiente</string>

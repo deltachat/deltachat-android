@@ -881,6 +881,12 @@ JNIEXPORT jlong Java_com_b44t_messenger_MrMsg_getMediainfoCPtr(JNIEnv *env, jobj
 }
 
 
+JNIEXPORT jint Java_com_b44t_messenger_MrMsg_isIncreation(JNIEnv *env, jobject obj)
+{
+    return (jint)mrmsg_is_increation(get_mrmsg_t(env, obj));
+}
+
+
 /*******************************************************************************
  * MrContact
  ******************************************************************************/

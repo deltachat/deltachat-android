@@ -2743,6 +2743,11 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     @Override
                     public void didPressedImage(ChatMessageCell cell) {
                         MessageObject message = cell.getMessageObject();
+
+                        if( message.type == MessageObject.MO_TYPE3_VIDEO && MrMailbox.getMsg(message.getId()).isIncreation()!=0 ) {
+                            return; // we're not ready (still compressing), a hint is already shown in the message itself
+                        }
+
                         if( /*(Build.VERSION.SDK_INT >= 16 && message.isVideo()) ||*/ message.type == MessageObject.MO_TYPE1_PHOTO || message.isGif()) {
                             PhotoViewer.getInstance().setParentActivity(getParentActivity());
                             PhotoViewer.getInstance().openPhoto(message, message.type != MessageObject.MO_TYPE0_TEXT ? dialog_id : 0, ChatActivity.this);

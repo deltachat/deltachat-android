@@ -214,7 +214,6 @@
     <string name="SendVideo">Modifier la vidéo</string>
     <string name="OriginalVideo">Vidéo originale</string>
     <string name="EditedVideo">Vidéos modifiées</string>
-    <string name="SendingVideo">Envoi de la vidéo…</string>
     <string name="CompressVideo">Compresser la vidéo</string>
     <!--button titles-->
     <string name="Next">Suivant</string>
@@ -377,7 +376,7 @@
     <string name="BadEmailAddress">Mauvaise adresse e-mail.</string>
     <string name="ContactCreated">Utilisateur créé.</string>
     <string name="ViewProfile">Voir le profil</string>
-    <string name="OneMomentPlease">Un moment…</string>
+    <string name="OneMoment">Un moment…</string>
     <string name="NoChatsHelp">Lancez une conversation en appuyant sur le bouton dans le coin inférieur droit ou appuyez sur le bouton menu pour plus d\'options.</string>
     <string name="ConfiguringAccount">Configuration du compte en cours…</string>
     <string name="CannotConnect">Connexion impossible, veuillez vérifier la configuration.</string>

@@ -219,7 +219,6 @@
     <string name="SendVideo">Video senden</string>
     <string name="OriginalVideo">Originalvideo</string>
     <string name="EditedVideo">Bearbeitetes Video</string>
-    <string name="SendingVideo">Sende Video …</string>
     <string name="CompressVideo">Video komprimieren</string>
     <!--button titles-->
     <string name="Next">Weiter</string>
@@ -400,7 +399,7 @@
     <string name="BadEmailAddress">Ungültige E-Mail-Adresse.</string>
     <string name="ContactCreated">Kontakt angelegt.</string>
     <string name="ViewProfile">Profil anzeigen</string>
-    <string name="OneMomentPlease">Einen Moment, bitte …</string>
+    <string name="OneMoment">Einen Moment …</string>
     <string name="NoChatsHelp">Unten auf das Plussymbol für die erste Chatnachricht tippen; der Menüknopf öffnet die weiteren Optionen.</string>
     <string name="ConfiguringAccount">Konto konfigurieren …</string>
     <string name="InviteMenuEntry">Einladungen versenden</string>

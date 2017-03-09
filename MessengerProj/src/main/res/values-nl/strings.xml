@@ -216,7 +216,6 @@
     <string name="SendVideo">Video bewerken</string>
     <string name="OriginalVideo">Originele video</string>
     <string name="EditedVideo">Bewerkte video</string>
-    <string name="SendingVideo">Video versturen</string>
     <string name="CompressVideo">Video comprimeren</string>
     <!--button titles-->
     <string name="Next">Volgende</string>

@@ -219,7 +219,6 @@
     <string name="SendVideo">Edycja wideo</string>
     <string name="OriginalVideo">Oryginalne wideo</string>
     <string name="EditedVideo">Edytowane wideo</string>
-    <string name="SendingVideo">Wysyłanie wideo…</string>
     <string name="CompressVideo">Kompresuj wideo</string>
     <!--button titles-->
     <string name="Next">Dalej</string>
@@ -420,7 +419,7 @@
     <string name="BadEmailAddress">Zły adres e-mail</string>
     <string name="ContactCreated">Kontakt utworzony.</string>
     <string name="ViewProfile">Pokaż profil</string>
-    <string name="OneMomentPlease">Jedną chwilę, proszę…</string>
+    <string name="OneMoment">Jedną chwilę…</string>
     <string name="NoChatsHelp">Zacznij przesyłanie wiadomości, naciskając przycisk nowej wiadomości w prawym dolnym rogu lub naciśnij przycisk menu, aby uzyskać więcej opcji.</string>
     <string name="ConfiguringAccount">Konfigurowanie konta…</string>
     <string name="CannotConnect">Nie można nawiązać połączenia, sprawdź konfigurację.</string>
