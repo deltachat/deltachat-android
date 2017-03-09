@@ -131,9 +131,9 @@ public class PrivacySettingsActivity extends BaseFragment implements Notificatio
                     presentFragment(new BlockedUsersActivity());
                 } else if (i == passcodeRow) {
                     if (UserConfig.passcodeHash.length() > 0) {
-                        presentFragment(new PasscodeActivity(2));
+                        presentFragment(new PasscodeActivity(PasscodeActivity.SCREEN2_ENTER_CODE2));
                     } else {
-                        presentFragment(new PasscodeActivity(0));
+                        presentFragment(new PasscodeActivity(PasscodeActivity.SCREEN0_SETTINGS));
                     }
                 }
                 else if(i==e2eEncryptionRow )

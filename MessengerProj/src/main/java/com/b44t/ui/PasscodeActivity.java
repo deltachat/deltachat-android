@@ -83,7 +83,11 @@ public class PasscodeActivity extends BaseFragment implements NotificationCenter
     private TextView dropDown;
     private ActionBarMenuItem dropDownContainer;
 
-    private int type;
+    public final static int SCREEN0_SETTINGS = 0;
+    public final static int SCREEN1_ENTER_CODE1 = 1;
+    public final static int SCREEN2_ENTER_CODE2 = 2;
+    private int screen;
+
     private int currentPasswordType = 0;
     private int passcodeSetStep = 0;
     private String firstPassword;
@@ -100,16 +104,16 @@ public class PasscodeActivity extends BaseFragment implements NotificationCenter
     private final static int pin_item = 2;
     private final static int password_item = 3;
 
-    public PasscodeActivity(int type) {
+    public PasscodeActivity(int screen) {
         super();
-        this.type = type;
+        this.screen = screen;
     }
 
     @Override
     public boolean onFragmentCreate() {
         super.onFragmentCreate();
         updateRows();
-        if (type == 0) {
+        if (screen == SCREEN0_SETTINGS ) {
             NotificationCenter.getInstance().addObserver(this, NotificationCenter.didSetPasscode);
         }
         return true;
@@ -118,16 +122,14 @@ public class PasscodeActivity extends BaseFragment implements NotificationCenter
     @Override
     public void onFragmentDestroy() {
         super.onFragmentDestroy();
-        if (type == 0) {
+        if (screen == SCREEN0_SETTINGS ) {
             NotificationCenter.getInstance().removeObserver(this, NotificationCenter.didSetPasscode);
         }
     }
 
     @Override
     public View createView(Context context) {
-        if (type != 3) {
-            actionBar.setBackButtonImage(R.drawable.ic_ab_back);
-        }
+        actionBar.setBackButtonImage(R.drawable.ic_ab_back);
         actionBar.setAllowOverlayTitle(false);
         actionBar.setActionBarMenuOnItemClick(new ActionBar.ActionBarMenuOnItemClick() {
             @Override
@@ -153,13 +155,13 @@ public class PasscodeActivity extends BaseFragment implements NotificationCenter
         fragmentView = new FrameLayout(context);
         FrameLayout frameLayout = (FrameLayout) fragmentView;
 
-        if (type != 0) {
+        if (screen != SCREEN0_SETTINGS ) {
             ActionBarMenu menu = actionBar.createMenu();
             menu.addItemWithWidth(done_button, R.drawable.ic_done, AndroidUtilities.dp(56));
 
             titleTextView = new TextView(context);
             titleTextView.setTextColor(0xff757575);
-            if (type == 1) {
+            if (screen == SCREEN1_ENTER_CODE1) {
                 if (UserConfig.passcodeHash.length() != 0) {
                     titleTextView.setText(LocaleController.getString("EnterNewPasscode", R.string.EnterNewPasscode));
                 } else {
@@ -185,7 +187,7 @@ public class PasscodeActivity extends BaseFragment implements NotificationCenter
             passwordEditText.setLines(1);
             passwordEditText.setGravity(Gravity.CENTER_HORIZONTAL);
             passwordEditText.setSingleLine(true);
-            if (type == 1) {
+            if (screen == SCREEN1_ENTER_CODE1) {
                 passcodeSetStep = 0;
                 passwordEditText.setImeOptions(EditorInfo.IME_ACTION_NEXT);
             } else {
@@ -231,9 +233,9 @@ public class PasscodeActivity extends BaseFragment implements NotificationCenter
                 @Override
                 public void afterTextChanged(Editable s) {
                     if (passwordEditText.length() == 4) {
-                        if (type == 2 && UserConfig.passcodeType == 0) {
+                        if (screen == SCREEN2_ENTER_CODE2 && UserConfig.passcodeType == 0) {
                             processDone();
-                        } else if (type == 1 && currentPasswordType == 0) {
+                        } else if (screen == SCREEN1_ENTER_CODE1 && currentPasswordType == 0) {
                             if (passcodeSetStep == 0) {
                                 processNext();
                             } else if (passcodeSetStep == 1) {
@@ -261,7 +263,7 @@ public class PasscodeActivity extends BaseFragment implements NotificationCenter
                 }
             });
 
-            if (type == 1) {
+            if (screen == SCREEN1_ENTER_CODE1) {
                 dropDownContainer = new ActionBarMenuItem(context, menu, 0);
                 dropDownContainer.setSubMenuOpenSide(1);
                 dropDownContainer.addSubItem(pin_item, LocaleController.getString("PasscodePIN", R.string.PasscodePIN), 0);
@@ -323,7 +325,7 @@ public class PasscodeActivity extends BaseFragment implements NotificationCenter
                 @Override
                 public void onItemClick(AdapterView<?> adapterView, View view, final int i, long l) {
                     if (i == changePasscodeRow) {
-                        presentFragment(new PasscodeActivity(1));
+                        presentFragment(new PasscodeActivity(SCREEN1_ENTER_CODE1));
                     } else if (i == passcodeOnOffRow) {
                         TextCheckCell cell = (TextCheckCell) view;
                         if (UserConfig.passcodeHash.length() != 0) {
@@ -342,7 +344,7 @@ public class PasscodeActivity extends BaseFragment implements NotificationCenter
                             cell.setChecked(UserConfig.passcodeHash.length() != 0);
                             NotificationCenter.getInstance().postNotificationName(NotificationCenter.didSetPasscode);
                         } else {
-                            presentFragment(new PasscodeActivity(1));
+                            presentFragment(new PasscodeActivity(SCREEN1_ENTER_CODE1));
                         }
                     } else if (i == autoLockRow) {
                         if (getParentActivity() == null) {
@@ -421,7 +423,7 @@ public class PasscodeActivity extends BaseFragment implements NotificationCenter
         if (listAdapter != null) {
             listAdapter.notifyDataSetChanged();
         }
-        if (type != 0) {
+        if (screen != SCREEN0_SETTINGS) {
             AndroidUtilities.runOnUIThread(new Runnable() {
                 @Override
                 public void run() {
@@ -438,7 +440,7 @@ public class PasscodeActivity extends BaseFragment implements NotificationCenter
     @Override
     public void didReceivedNotification(int id, Object... args) {
         if (id == NotificationCenter.didSetPasscode) {
-            if (type == 0) {
+            if (screen == SCREEN0_SETTINGS) {
                 updateRows();
                 if (listAdapter != null) {
                     listAdapter.notifyDataSetChanged();
@@ -490,7 +492,7 @@ public class PasscodeActivity extends BaseFragment implements NotificationCenter
 
     @Override
     public void onTransitionAnimationEnd(boolean isOpen, boolean backward) {
-        if (isOpen && type != 0) {
+        if (isOpen && screen != SCREEN0_SETTINGS) {
             AndroidUtilities.showKeyboard(passwordEditText);
         }
     }
@@ -503,13 +505,13 @@ public class PasscodeActivity extends BaseFragment implements NotificationCenter
                 dropDown.setText(LocaleController.getString("PasscodePassword", R.string.PasscodePassword));
             }
         }
-        if (type == 1 && currentPasswordType == 0 || type == 2 && UserConfig.passcodeType == 0) {
+        if (screen == SCREEN1_ENTER_CODE1 && currentPasswordType == 0 || screen == SCREEN2_ENTER_CODE2 && UserConfig.passcodeType == 0) {
             InputFilter[] filterArray = new InputFilter[1];
             filterArray[0] = new InputFilter.LengthFilter(4);
             passwordEditText.setFilters(filterArray);
             passwordEditText.setInputType(InputType.TYPE_CLASS_PHONE);
             passwordEditText.setKeyListener(DigitsKeyListener.getInstance("1234567890"));
-        } else if (type == 1 && currentPasswordType == 1 || type == 2 && UserConfig.passcodeType == 1) {
+        } else if (screen == SCREEN1_ENTER_CODE1 && currentPasswordType == 1 || screen == SCREEN2_ENTER_CODE2 && UserConfig.passcodeType == 1) {
             passwordEditText.setFilters(new InputFilter[0]);
             passwordEditText.setKeyListener(null);
             passwordEditText.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
@@ -539,7 +541,7 @@ public class PasscodeActivity extends BaseFragment implements NotificationCenter
             onPasscodeError();
             return;
         }
-        if (type == 1) {
+        if (screen == SCREEN1_ENTER_CODE1) {
             if (!firstPassword.equals(passwordEditText.getText().toString())) {
                 try {
                     Toast.makeText(getParentActivity(), LocaleController.getString("PasscodeDoNotMatch", R.string.PasscodeDoNotMatch), Toast.LENGTH_SHORT).show();
@@ -570,7 +572,7 @@ public class PasscodeActivity extends BaseFragment implements NotificationCenter
             NotificationCenter.getInstance().postNotificationName(NotificationCenter.didSetPasscode);
             passwordEditText.clearFocus();
             AndroidUtilities.hideKeyboard(passwordEditText);
-        } else if (type == 2) {
+        } else if (screen == SCREEN2_ENTER_CODE2) {
             if (!UserConfig.checkPasscode(passwordEditText.getText().toString())) {
                 passwordEditText.setText("");
                 onPasscodeError();
@@ -578,7 +580,7 @@ public class PasscodeActivity extends BaseFragment implements NotificationCenter
             }
             passwordEditText.clearFocus();
             AndroidUtilities.hideKeyboard(passwordEditText);
-            presentFragment(new PasscodeActivity(0), true);
+            presentFragment(new PasscodeActivity(SCREEN0_SETTINGS), true);
         }
     }
 
