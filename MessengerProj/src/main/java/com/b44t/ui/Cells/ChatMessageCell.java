@@ -584,7 +584,9 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
             } else if (useSeekBarWaveform && !seekBarWaveform.isStartDraging() && event.getAction() == MotionEvent.ACTION_UP) {
                 didPressedButton();
             }
-            disallowLongPress = true;
+            if( buttonState == BS1_CLICK_TO_PAUSE /*if we're not playing, a long press on the waveform selects the whole message as usual*/ ) {
+                disallowLongPress = true;
+            }
             invalidate();
         } else {
             int side = dp(36);
@@ -1045,7 +1047,6 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
 
             seekBarWaveform.setColors(Theme.MSG_AUDIO_SEEKBAR_DARK_COLOR, 0xff000000);
             seekBar.setColors(Theme.MSG_AUDIO_SEEKBAR_LITE_COLOR, Theme.MSG_AUDIO_SEEKBAR_DARK_COLOR, Theme.MSG_AUDIO_SEEKBAR_DARK_COLOR);
-            seekBarWaveform.setMessageObject(messageObject);
         }
         else if (MessageObject.isMusicDocument(documentAttach))
         {

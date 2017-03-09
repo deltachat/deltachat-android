@@ -30,7 +30,6 @@ import android.view.MotionEvent;
 import android.view.View;
 
 import com.b44t.messenger.AndroidUtilities;
-import com.b44t.messenger.MessageObject;
 
 public class SeekBarWaveform {
 
@@ -45,7 +44,6 @@ public class SeekBarWaveform {
     private int height;
     private SeekBar.SeekBarDelegate delegate;
     private byte[] waveformBytes;
-    private MessageObject messageObject;
     private View parentView;
 
     private int innerColor;
@@ -69,10 +67,6 @@ public class SeekBarWaveform {
 
     public void setWaveform(byte[] waveform) {
         waveformBytes = waveform;
-    }
-
-    public void setMessageObject(MessageObject object) {
-        messageObject = object;
     }
 
     public void setParentView(View view) {
