@@ -800,14 +800,14 @@ public class AndroidUtilities {
     }
 
     public static String formatFileSize(long bytes) {
-        if( bytes >= 999*1024 ) { /* Start showing MiB already at 999 KiB, this avoids confusion with four digit KiB which may be being already "Megabytes" ... */
-            return String.format("%.1f MiB", bytes / 1024.0f / 1024.0f);
-        }
-        else if( bytes >= 1024 ) {
-            return String.format("%d KiB", (bytes+512) / 1024);
-        }
-        else {
+        // We use the SI-prefix with the usual base as defined in the 1990's.
+        // The other option would be to show MiB and KiB, however, these abbreviations are not very usual.
+        if (bytes < 1000) {
             return String.format("%d Byte", bytes);
+        } else if (bytes < (1000 * 1000)-500) { // 999499 Byte=999 KB, 999500 Byte=1,0 MB
+            return String.format("%.0f KB", bytes / 1000.0f);
+        } else {
+            return String.format("%.1f MB", bytes / 1000.0f / 1000.0f);
         }
     }
 
