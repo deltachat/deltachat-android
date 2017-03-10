@@ -69,20 +69,6 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.FileDidFailedLoad);
     }
 
-    public void cleanup() {
-        //delayedMessages.clear();
-        //unsentMessages.clear();
-        //sendingMessages.clear();
-        //waitingForCallback.clear();
-        //currentChatInfo = null;
-    }
-
-    /*
-    public void setCurrentChatInfo(TLRPC.ChatFull info) {
-        currentChatInfo = info;
-    }
-    */
-
     @Override
     public void didReceivedNotification(int id, final Object... args) {
         if (id == NotificationCenter.FilePreparingStarted)
@@ -664,11 +650,6 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
     }
 
     public static void prepareSendingText(final String text, final long dialog_id) {
-        /*
-        MessagesStorage.getInstance().getStorageQueue().postRunnable(new Runnable() {
-            @Override
-            public void run() {
-        */
                 Utilities.stageQueue.postRunnable(new Runnable() {
                     @Override
                     public void run() {
@@ -677,20 +658,12 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
                             public void run() {
                                 String textFinal = getTrimmedString(text);
                                 if (textFinal.length() != 0) {
-                                    //int count = (int) Math.ceil(textFinal.length() / 4096.0f);
-                                    //for (int a = 0; a < count; a++) {
-                                    //    String mess = textFinal.substring(a * 4096, Math.min((a + 1) * 4096, textFinal.length()));
                                         SendMessagesHelper.getInstance().sendMessageText(textFinal, dialog_id, null);
-                                    //}
                                 }
                             }
                         });
                     }
                 });
-        /*
-            }
-        });
-        */
     }
 
     public static void prepareSendingPhotos(ArrayList<String> paths, ArrayList<Uri> uris, final long dialog_id, final ArrayList<String> captions) {
@@ -814,8 +787,6 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
             @Override
             public void run() {
 
-                final boolean isEncrypted = false;//(int) dialog_id == 0;
-
                 if (videoEditedInfo != null || videoPath.endsWith("mp4")) {
                     String path = videoPath;
                     String originalPath = videoPath;
@@ -828,20 +799,8 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
                         }
                     }
                     TLRPC.TL_document document = null;
-                    /*if (!isEncrypted)*/ {
-                        //document = (TLRPC.TL_document) MessagesStorage.getInstance().getSentFile(originalPath, !isEncrypted ? 2 : 5);
-                    }
-                    if (document == null) {
-                        Bitmap thumb = ThumbnailUtils.createVideoThumbnail(videoPath, MediaStore.Video.Thumbnails.MINI_KIND);
-                        TLRPC.PhotoSize size = ImageLoader.scaleAndSaveImage(thumb, 90, 90, 55, isEncrypted);
+                    {
                         document = new TLRPC.TL_document();
-                        document.thumb = size;
-                        if (document.thumb == null) {
-                            document.thumb = new TLRPC.TL_photoSizeEmpty();
-                            document.thumb.type = "s";
-                        } else {
-                            document.thumb.type = "s";
-                        }
                         document.mime_type = "video/mp4";
                         UserConfig.saveConfig(false);
                         TLRPC.TL_documentAttributeVideo attributeVideo = new TLRPC.TL_documentAttributeVideo();
@@ -911,8 +870,14 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
                         }
                     }
                     final TLRPC.TL_document videoFinal = document;
-                    final String originalPathFinal = originalPath;
                     final String finalPath = path;
+
+                    // create thumbnail from original video (the recoded one is not yet preset ...)
+                    Bitmap thumb = ThumbnailUtils.createVideoThumbnail(videoPath, MediaStore.Video.Thumbnails.MINI_KIND);
+                    File vfile = new File(finalPath);
+                    File tfile = new File(MrMailbox.getBlobdir(), vfile.getName()+"-preview.jpg");
+                    ImageLoader.scaleAndSaveImage(tfile, thumb, 90, 90, 55, false);
+
                     final HashMap<String, String> params = new HashMap<>();
                     if (originalPath != null) {
                         params.put("originalPath", originalPath);

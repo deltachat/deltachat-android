@@ -27,7 +27,12 @@
 
 package com.b44t.messenger;
 
+import android.graphics.Bitmap;
+import android.media.ThumbnailUtils;
+import android.provider.MediaStore;
 import android.util.Log;
+
+import java.io.File;
 
 public class MrMsg {
 
@@ -91,12 +96,10 @@ public class MrMsg {
         return MrMsgGetToId(m_hMsg);
     }
 
-    public String getParam (int key, String def) {
-        return MrMsgGetParam(m_hMsg, key, def);
-    }
-    public int getParamInt(int key, int def) {
-        return MrMsgGetParamInt(m_hMsg, key, def);
-    }
+    public native String getParam(int key, String def);
+    public native int    getParamInt(int key, int def);
+    public native void   setParamInt(int key, int def);
+    public native void   saveParamToDisk();
 
     public native int    getBytes();
     public MrPoortext    getSummary(MrChat chat) { return new MrPoortext(getSummaryCPtr(chat.getCPtr())); }
@@ -117,8 +120,6 @@ public class MrMsg {
     private native static int     MrMsgGetChatId             (long hMsg);
     private native static int     MrMsgGetFromId             (long hMsg);
     private native static int     MrMsgGetToId               (long hMsg);
-    private native static String  MrMsgGetParam              (long hMsg, int key, String def);
-    private native static int     MrMsgGetParamInt           (long hMsg, int key, int def);
 
 
     /* additional functions that are not 1:1 available in the backend
@@ -211,10 +212,34 @@ public class MrMsg {
                     ret.media.document.attributes.add(attr);
                 }
                 else if( type == MR_MSG_VIDEO ) {
+                    File vfile = new File(path);
+                    File tfile = new File(MrMailbox.getBlobdir(), vfile.getName()+"-preview.jpg");
+                    if( !tfile.exists() ) {
+                        Bitmap thumb = ThumbnailUtils.createVideoThumbnail(path, MediaStore.Video.Thumbnails.MINI_KIND);
+                        TLRPC.PhotoSize size = ImageLoader.scaleAndSaveImage(tfile, thumb, 90, 90, 55, false);
+                        size.location.mr_path = tfile.getAbsolutePath();
+                        size.type = "s";
+                        ret.media.document.thumb = size;
+
+                        setParamInt('w', size.w);
+                        setParamInt('h', size.h);
+                        saveParamToDisk();
+                    }
+                    else {
+                        TLRPC.PhotoSize size = new TLRPC.PhotoSize();
+                        size.location = new TLRPC.TL_fileLocation();
+                        size.location.mr_path = tfile.getAbsolutePath();
+                        size.location.local_id = -ret.id;
+                        size.w = getParamInt('w', 320);
+                        size.h = getParamInt('h', 240);
+                        size.type = "s";
+                        ret.media.document.thumb = size;
+                    }
+
                     TLRPC.TL_documentAttributeVideo attr = new TLRPC.TL_documentAttributeVideo();
                     attr.duration = getParamInt('d', 0) / 1000;
-                    attr.w = getParamInt('w', 0);
-                    attr.h = getParamInt('h', 0);
+                    attr.w = ret.media.document.thumb.w;
+                    attr.h = ret.media.document.thumb.h;
                     ret.media.document.attributes.add(attr);
                 }
                 else {

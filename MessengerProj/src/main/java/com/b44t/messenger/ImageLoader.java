@@ -1875,7 +1875,7 @@ public class ImageLoader {
         return b;
     }
 
-    private static TLRPC.PhotoSize scaleAndSaveImageInternal(Bitmap bitmap, int w, int h, float photoW, float photoH, float scaleFactor, int quality, boolean cache, boolean scaleAnyway) throws Exception {
+    private static TLRPC.PhotoSize scaleAndSaveImageInternal(File cacheFile, Bitmap bitmap, int w, int h, float photoW, float photoH, float scaleFactor, int quality, boolean cache, boolean scaleAnyway) throws Exception {
         Bitmap scaledBitmap;
         if (scaleFactor > 1 || scaleAnyway) {
             scaledBitmap = Bitmaps.createScaledBitmap(bitmap, w, h, true);
@@ -1904,8 +1904,11 @@ public class ImageLoader {
             size.type = "w";
         }
 
-        String fileName = location.volume_id + "_" + location.local_id + ".jpg";
-        final File cacheFile = new File(FileLoader.getInstance().getDirectory(FileLoader.MEDIA_DIR_CACHE), fileName);
+        if( cacheFile == null ) {
+            String fileName = location.volume_id + "_" + location.local_id + ".jpg";
+            cacheFile = new File(FileLoader.getInstance().getDirectory(FileLoader.MEDIA_DIR_CACHE), fileName);
+        }
+
         FileOutputStream stream = new FileOutputStream(cacheFile);
         scaledBitmap.compress(Bitmap.CompressFormat.JPEG, quality, stream);
         if (cache) {
@@ -1926,10 +1929,18 @@ public class ImageLoader {
     }
 
     public static TLRPC.PhotoSize scaleAndSaveImage(Bitmap bitmap, float maxWidth, float maxHeight, int quality, boolean cache) {
-        return scaleAndSaveImage(bitmap, maxWidth, maxHeight, quality, cache, 0, 0);
+        return scaleAndSaveImage(null, bitmap, maxWidth, maxHeight, quality, cache, 0, 0);
     }
 
     public static TLRPC.PhotoSize scaleAndSaveImage(Bitmap bitmap, float maxWidth, float maxHeight, int quality, boolean cache, int minWidth, int minHeight) {
+        return scaleAndSaveImage(null, bitmap, maxWidth, maxHeight, quality, cache, minWidth, minHeight);
+    }
+
+    public static TLRPC.PhotoSize scaleAndSaveImage(File cacheFile, Bitmap bitmap, float maxWidth, float maxHeight, int quality, boolean cache) {
+        return scaleAndSaveImage(cacheFile, bitmap, maxWidth, maxHeight, quality, cache, 0, 0);
+    }
+
+    private static TLRPC.PhotoSize scaleAndSaveImage(File cacheFile, Bitmap bitmap, float maxWidth, float maxHeight, int quality, boolean cache, int minWidth, int minHeight) {
         if (bitmap == null) {
             return null;
         }
@@ -1957,13 +1968,13 @@ public class ImageLoader {
         }
 
         try {
-            return scaleAndSaveImageInternal(bitmap, w, h, photoW, photoH, scaleFactor, quality, cache, scaleAnyway);
+            return scaleAndSaveImageInternal(cacheFile, bitmap, w, h, photoW, photoH, scaleFactor, quality, cache, scaleAnyway);
         } catch (Throwable e) {
             FileLog.e("messenger", e);
             ImageLoader.getInstance().clearMemory();
             System.gc();
             try {
-                return scaleAndSaveImageInternal(bitmap, w, h, photoW, photoH, scaleFactor, quality, cache, scaleAnyway);
+                return scaleAndSaveImageInternal(cacheFile, bitmap, w, h, photoW, photoH, scaleFactor, quality, cache, scaleAnyway);
             } catch (Throwable e2) {
                 FileLog.e("messenger", e2);
                 return null;

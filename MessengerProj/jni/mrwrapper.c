@@ -823,9 +823,9 @@ JNIEXPORT jint Java_com_b44t_messenger_MrMsg_MrMsgGetToId(JNIEnv *env, jclass c,
 }
 
 
-JNIEXPORT jstring Java_com_b44t_messenger_MrMsg_MrMsgGetParam(JNIEnv *env, jclass c, jlong hMsg, jint key, jstring def)
+JNIEXPORT jstring Java_com_b44t_messenger_MrMsg_getParam(JNIEnv *env, jobject obj, jint key, jstring def)
 {
-	mrmsg_t* ths = (mrmsg_t*)hMsg;
+	mrmsg_t* ths = get_mrmsg_t(env, obj);
 	CHAR_REF(def);
 		char* temp = mrparam_get(ths? ths->m_param:NULL, key, defPtr);
 			jstring ret = JSTRING_NEW(temp);
@@ -835,10 +835,23 @@ JNIEXPORT jstring Java_com_b44t_messenger_MrMsg_MrMsgGetParam(JNIEnv *env, jclas
 }
 
 
-JNIEXPORT jint Java_com_b44t_messenger_MrMsg_MrMsgGetParamInt(JNIEnv *env, jclass c, jlong hMsg, jint key, jint def)
+JNIEXPORT jint Java_com_b44t_messenger_MrMsg_getParamInt(JNIEnv *env, jobject obj, jint key, jint def)
 {
-	mrmsg_t* ths = (mrmsg_t*)hMsg;
+	mrmsg_t* ths = get_mrmsg_t(env, obj);
 	return mrparam_get_int(ths? ths->m_param:NULL, key, def);
+}
+
+
+JNIEXPORT void Java_com_b44t_messenger_MrMsg_setParamInt(JNIEnv *env, jobject obj, jint key, jint value)
+{
+	mrmsg_t* ths = get_mrmsg_t(env, obj);
+	mrparam_set_int(ths? ths->m_param:NULL, key, value);
+}
+
+
+JNIEXPORT void Java_com_b44t_messenger_MrMsg_saveParamToDisk(JNIEnv *env, jobject obj)
+{
+	mrmsg_save_param_to_disk(get_mrmsg_t(env, obj));
 }
 
 

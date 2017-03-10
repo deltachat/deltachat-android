@@ -321,8 +321,4 @@ public class TLRPC {
 		public DraftMessage draft;
 		public long id; //custom
 	}
-
-    public static class Vector extends TLObject {
-        public ArrayList<Object> objects = new ArrayList<>();
-    }
 }

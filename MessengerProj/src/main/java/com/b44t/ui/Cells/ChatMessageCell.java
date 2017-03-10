@@ -1907,8 +1907,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                 canvas.drawCircle(timeAudioX + timeWidthAudio + dp(6), dp(51) + namesOffset + mediaOffsetY, dp(4), docBackPaint);
             }*/
         }
-
-        if (currentMessageObject.type == MessageObject.MO_TYPE1_PHOTO || documentAttachType == DOCUMENT_ATTACH_TYPE_VIDEO) {
+        else if (currentMessageObject.type == MessageObject.MO_TYPE1_PHOTO || documentAttachType == DOCUMENT_ATTACH_TYPE_VIDEO) {
             if (photoImage.getVisible()) {
                 if (infoLayout != null && (buttonState == BS1_CLICK_TO_PAUSE || buttonState == BS0_CLICK_TO_PLAY || buttonState == BS3_NORMAL)) {
                     infoPaint.setColor(Theme.MSG_MEDIA_INFO_TEXT_COLOR);
