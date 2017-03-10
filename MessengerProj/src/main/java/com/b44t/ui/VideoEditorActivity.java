@@ -40,6 +40,7 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.b44t.messenger.VideoEditedInfo;
 import com.coremedia.iso.IsoFile;
 import com.coremedia.iso.boxes.Box;
 import com.coremedia.iso.boxes.MediaBox;
@@ -97,7 +98,7 @@ public class VideoEditorActivity extends BaseFragment implements TextureView.Sur
     private int originalHeight = 0;
     private int resultWidth = 0;
     private int resultHeight = 0;
-    private int bitrate = 0;
+    private int resultBitrate = 0;
     private int originalBitrate = 0;
     private float videoDuration = 0;
     private long startTime = 0;
@@ -109,7 +110,7 @@ public class VideoEditorActivity extends BaseFragment implements TextureView.Sur
     private long originalSize = 0;
 
     public interface VideoEditorActivityDelegate {
-        void didFinishEditVideo(String videoPath, long startTime, long endTime, int resultWidth, int resultHeight, int rotationValue, int originalWidth, int originalHeight, int bitrate, long estimatedSize, long estimatedDuration);
+        void didFinishEditVideo(VideoEditedInfo vei, long estimatedSize, long estimatedDuration);
     }
 
     private Runnable progressRunnable = new Runnable() {
@@ -259,7 +260,18 @@ public class VideoEditorActivity extends BaseFragment implements TextureView.Sur
                         /*if (compressVideo.getVisibility() == View.GONE || compressVideo.getVisibility() == View.VISIBLE && !compressVideo.isChecked()) {
                             delegate.didFinishEditVideo(videoPath, startTime, endTime, originalWidth, originalHeight, rotationValue, originalWidth, originalHeight, originalBitrate, estimatedSize, esimatedDuration);
                         } else*/ {
-                            delegate.didFinishEditVideo(videoPath, startTime, endTime, resultWidth, resultHeight, rotationValue, originalWidth, originalHeight, bitrate, estimatedSize, esimatedDuration);
+                            VideoEditedInfo vei = new VideoEditedInfo();
+                            vei.originalPath    = videoPath;
+                            vei.startTime       = startTime;
+                            vei.endTime         = endTime;
+                            vei.rotationValue   = rotationValue;
+                            vei.originalWidth   = originalWidth;
+                            vei.originalHeight  = originalHeight;
+                            vei.originalBitrate = originalBitrate;
+                            vei.resultWidth     = resultWidth;
+                            vei.resultHeight    = resultHeight;
+                            vei.resultBitrate   = resultBitrate;
+                            delegate.didFinishEditVideo(vei, estimatedSize, esimatedDuration);
                         }
                     }
                     finishFragment();
@@ -738,10 +750,7 @@ public class VideoEditorActivity extends BaseFragment implements TextureView.Sur
                 TrackHeaderBox headerBox = trackBox.getTrackHeaderBox();
                 if (headerBox.getWidth() != 0 && headerBox.getHeight() != 0) {
                     trackHeaderBox = headerBox;
-                    originalBitrate = bitrate = (int) (trackBitrate / 100000 * 100000);
-                    if (bitrate > 900000) {
-                        bitrate = 900000;
-                    }
+                    originalBitrate = resultBitrate = (int) (trackBitrate / 100000 * 100000);
                     videoFramesSize += sampleSizes;
                 } else {
                     audioFramesSize += sampleSizes;
@@ -766,11 +775,16 @@ public class VideoEditorActivity extends BaseFragment implements TextureView.Sur
                 float scale = resultWidth > resultHeight ? 640.0f / resultWidth : 640.0f / resultHeight;
                 resultWidth *= scale;
                 resultHeight *= scale;
-                if (bitrate != 0) {
-                    bitrate *= Math.max(0.5f, scale);
-                    videoFramesSize = (long) (bitrate / 8 * videoDuration);
+                if (resultBitrate != 0) {
+                    resultBitrate *= Math.max(0.5f, scale);
                 }
             }
+
+            if (resultBitrate > 500000) {
+                resultBitrate = 500000; // ~ 3.7 MB/minute, plus Audio
+            }
+
+            videoFramesSize = (long) (resultBitrate / 8 * videoDuration);
 
             if (!isAvc && (resultWidth == originalWidth || resultHeight == originalHeight)) {
                 return false;

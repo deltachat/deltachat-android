@@ -1648,18 +1648,8 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         VideoEditorActivity fragment = new VideoEditorActivity(args);
         fragment.setDelegate(new VideoEditorActivity.VideoEditorActivityDelegate() {
             @Override
-            public void didFinishEditVideo(String videoPath, long startTime, long endTime, int resultWidth, int resultHeight, int rotationValue, int originalWidth, int originalHeight, int bitrate, long estimatedSize, long estimatedDuration) {
-                VideoEditedInfo videoEditedInfo = new VideoEditedInfo();
-                videoEditedInfo.startTime = startTime;
-                videoEditedInfo.endTime = endTime;
-                videoEditedInfo.rotationValue = rotationValue;
-                videoEditedInfo.originalWidth = originalWidth;
-                videoEditedInfo.originalHeight = originalHeight;
-                videoEditedInfo.bitrate = bitrate;
-                videoEditedInfo.resultWidth = resultWidth;
-                videoEditedInfo.resultHeight = resultHeight;
-                videoEditedInfo.originalPath = videoPath;
-                SendMessagesHelper.prepareSendingVideo(videoPath, estimatedSize, estimatedDuration, resultWidth, resultHeight, videoEditedInfo, dialog_id);
+            public void didFinishEditVideo(VideoEditedInfo vei, long estimatedSize, long estimatedDuration) {
+                SendMessagesHelper.prepareSendingVideo(vei.originalPath, estimatedSize, estimatedDuration, vei.resultWidth, vei.resultHeight, vei, dialog_id);
                 m_mrChat.cleanDraft();
             }
         });

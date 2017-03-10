@@ -106,13 +106,6 @@ public class MessageObject {
 
         setType();
 
-        if (messageOwner.message != null && messageOwner.id < 0 && messageOwner.message.length() > 6 && isVideo()) {
-            videoEditedInfo = new VideoEditedInfo();
-            if (!videoEditedInfo.parseString(messageOwner.message)) {
-                videoEditedInfo = null;
-            }
-        }
-
         generateCaption();
         if (generateLayout) {
             messageText = Emoji.replaceEmoji(messageText, textPaint.getFontMetricsInt(), AndroidUtilities.dp(20), false);

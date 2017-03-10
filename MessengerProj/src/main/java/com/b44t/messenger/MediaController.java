@@ -2614,7 +2614,8 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
         int rotationValue = messageObject.videoEditedInfo.rotationValue;
         int originalWidth = messageObject.videoEditedInfo.originalWidth;
         int originalHeight = messageObject.videoEditedInfo.originalHeight;
-        int bitrate = messageObject.videoEditedInfo.bitrate;
+        int originalBitrate = messageObject.videoEditedInfo.originalBitrate;
+        int resultBitrate = messageObject.videoEditedInfo.resultBitrate;
         int rotateRender = 0;
         File cacheFile = new File(messageObject.messageOwner.attachPath);
 
@@ -2676,7 +2677,7 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
 
                 checkConversionCanceled();
 
-                if (resultWidth != originalWidth || resultHeight != originalHeight || rotateRender != 0) {
+                if (resultBitrate<originalBitrate || resultWidth != originalWidth || resultHeight != originalHeight || rotateRender != 0) {
                     int videoIndex;
                     videoIndex = selectTrack(extractor, false);
                     if (videoIndex >= 0) {
@@ -2765,7 +2766,7 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
 
                             MediaFormat outputFormat = MediaFormat.createVideoFormat(MIME_TYPE, resultWidth, resultHeight);
                             outputFormat.setInteger(MediaFormat.KEY_COLOR_FORMAT, colorFormat);
-                            outputFormat.setInteger(MediaFormat.KEY_BIT_RATE, bitrate != 0 ? bitrate : 921600);
+                            outputFormat.setInteger(MediaFormat.KEY_BIT_RATE, resultBitrate != 0 ? resultBitrate : 921600);
                             outputFormat.setInteger(MediaFormat.KEY_FRAME_RATE, 25);
                             outputFormat.setInteger(MediaFormat.KEY_I_FRAME_INTERVAL, 10);
                             if (Build.VERSION.SDK_INT < 18) {
