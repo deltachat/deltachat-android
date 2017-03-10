@@ -75,8 +75,8 @@ public class VideoEditorActivity extends BaseFragment implements TextureView.Sur
     private VideoTimelineView videoTimelineView = null;
     private View videoContainerView = null;
     //private TextView originalSizeTextView = null;
-    private TextView editedSizeTextView = null;
-    private View textContainerView = null;
+    //private TextView editedSizeTextView = null;
+    //private View textContainerView = null;
     private ImageView playButton = null;
     private VideoSeekBarView videoSeekBarView = null;
     private TextureView textureView = null;
@@ -272,9 +272,9 @@ public class VideoEditorActivity extends BaseFragment implements TextureView.Sur
 
         fragmentView = getParentActivity().getLayoutInflater().inflate(R.layout.video_editor_layout, null, false);
         //originalSizeTextView = (TextView) fragmentView.findViewById(R.id.original_size);
-        editedSizeTextView = (TextView) fragmentView.findViewById(R.id.edited_size);
+        //editedSizeTextView = (TextView) fragmentView.findViewById(R.id.edited_size);
         videoContainerView = fragmentView.findViewById(R.id.video_container);
-        textContainerView = fragmentView.findViewById(R.id.info_container);
+        //textContainerView = fragmentView.findViewById(R.id.info_container);
         controlView = fragmentView.findViewById(R.id.control_layout);
         /*compressVideo = (CheckBox) fragmentView.findViewById(R.id.compress_video);
         compressVideo.setText(LocaleController.getString("CompressVideo", R.string.CompressVideo));
@@ -504,7 +504,7 @@ public class VideoEditorActivity extends BaseFragment implements TextureView.Sur
     }*/
 
     private void updateVideoEditedInfo() {
-        if (editedSizeTextView == null) {
+        if (videoTimelineView == null) {
             return;
         }
         esimatedDuration = (long) Math.ceil((videoTimelineView.getRightProgress() - videoTimelineView.getLeftProgress()) * videoDuration);
@@ -537,7 +537,7 @@ public class VideoEditorActivity extends BaseFragment implements TextureView.Sur
         int minutes = (int) (esimatedDuration / 1000 / 60);
         int seconds = (int) Math.ceil(esimatedDuration / 1000) - minutes * 60;
         String videoTimeSize = String.format("%d:%02d, ~%s", minutes, seconds, AndroidUtilities.formatFileSize(estimatedSize));
-        editedSizeTextView.setText(String.format("%s", /* "%s, %s", videoDimension,*/ videoTimeSize));
+        actionBar.setSubtitle(videoTimeSize);
     }
 
     private void fixVideoSize() {
@@ -595,6 +595,7 @@ public class VideoEditorActivity extends BaseFragment implements TextureView.Sur
             return;
         }
         if (!AndroidUtilities.isTablet() && getParentActivity().getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            // landscape orientation
             FrameLayout.LayoutParams layoutParams = (FrameLayout.LayoutParams) videoContainerView.getLayoutParams();
             layoutParams.topMargin = AndroidUtilities.dp(16);
             layoutParams.bottomMargin = AndroidUtilities.dp(16);
@@ -609,12 +610,6 @@ public class VideoEditorActivity extends BaseFragment implements TextureView.Sur
             layoutParams.gravity = Gravity.TOP;
             controlView.setLayoutParams(layoutParams);
 
-            layoutParams = (FrameLayout.LayoutParams) textContainerView.getLayoutParams();
-            layoutParams.width = AndroidUtilities.displaySize.x / 3 * 2 - AndroidUtilities.dp(32);
-            layoutParams.leftMargin = AndroidUtilities.displaySize.x / 3 + AndroidUtilities.dp(16);
-            layoutParams.rightMargin = AndroidUtilities.dp(16);
-            layoutParams.bottomMargin = AndroidUtilities.dp(16);
-            textContainerView.setLayoutParams(layoutParams);
         } else {
             FrameLayout.LayoutParams layoutParams = (FrameLayout.LayoutParams) videoContainerView.getLayoutParams();
             layoutParams.topMargin = AndroidUtilities.dp(16);
@@ -629,13 +624,6 @@ public class VideoEditorActivity extends BaseFragment implements TextureView.Sur
             layoutParams.width = LayoutHelper.MATCH_PARENT;
             layoutParams.gravity = Gravity.BOTTOM;
             controlView.setLayoutParams(layoutParams);
-
-            layoutParams = (FrameLayout.LayoutParams) textContainerView.getLayoutParams();
-            layoutParams.width = LayoutHelper.MATCH_PARENT;
-            layoutParams.leftMargin = AndroidUtilities.dp(16);
-            layoutParams.rightMargin = AndroidUtilities.dp(16);
-            layoutParams.bottomMargin = AndroidUtilities.dp(16);
-            textContainerView.setLayoutParams(layoutParams);
         }
         fixVideoSize();
         videoTimelineView.clearFrames();
