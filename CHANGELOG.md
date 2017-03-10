@@ -1,14 +1,22 @@
 # Delta Chat Changelog
 
-## UNRELEASED
+## v0.1.21
+2017-03-10
 
-* Allow sending and opening attachments of any type
+* Record and send voice messages
+* Record and send videos
+* Send and play music
 * Send contacts and email addresses
+* Sending and opening attachments of any type
+* Share and open commands for all attachments
+* Accept VCards send to us by other apps
 * Clickable email addresses
 * Update Polish translation
 * Fix tablet startup bug
 * Close the app when using the lock-app-via-pincode function
+* Protect data by using a content provider for sharing
 * Try to clear the task switcher's screenshots when locking the app via pincode
+* Pimp GUI
 
 ## v0.1.20
 2017-02-16
