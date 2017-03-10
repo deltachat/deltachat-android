@@ -255,15 +255,18 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
 
         ActionBarMenu menu = actionBar.createMenu();
 
-        if( do_what == SELECT_CONTACTS_FOR_NEW_GROUP ) {
-            menu.addItem(id_done_button, R.drawable.ic_done);
-        }
 
         ActionBarMenuItem item = menu.addItem(10, R.drawable.ic_ab_other);
         if (do_what == SELECT_CONTACT_FOR_NEW_CHAT || do_what == SELECT_CONTACTS_FOR_NEW_GROUP) {
             item.addSubItem(id_toggle, do_what == SELECT_CONTACT_FOR_NEW_CHAT ? LocaleController.getString("NewGroup", R.string.NewGroup) : LocaleController.getString("NewChat", R.string.NewChat), 0);
         }
         item.addSubItem(id_add_contact, LocaleController.getString("NewContactTitle", R.string.NewContactTitle), 0);
+
+
+        if( do_what == SELECT_CONTACTS_FOR_NEW_GROUP ) {
+            menu.addItem(id_done_button, R.drawable.ic_done); // this should be the very most right icon
+        }
+
 
         listViewAdapter = new ContactsAdapter(context);
         listViewAdapter.setCheckedMap(selectedContacts);
