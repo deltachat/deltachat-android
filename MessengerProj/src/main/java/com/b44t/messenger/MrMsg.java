@@ -215,15 +215,18 @@ public class MrMsg {
                     File vfile = new File(path);
                     File tfile = new File(MrMailbox.getBlobdir(), vfile.getName()+"-preview.jpg");
                     if( !tfile.exists() ) {
-                        Bitmap thumb = ThumbnailUtils.createVideoThumbnail(path, MediaStore.Video.Thumbnails.MINI_KIND);
-                        TLRPC.PhotoSize size = ImageLoader.scaleAndSaveImage(tfile, thumb, 90, 90, 55, false);
-                        size.location.mr_path = tfile.getAbsolutePath();
-                        size.type = "s";
-                        ret.media.document.thumb = size;
+                        try {
+                            Bitmap thumb = ThumbnailUtils.createVideoThumbnail(path, MediaStore.Video.Thumbnails.MINI_KIND);
+                            TLRPC.PhotoSize size = ImageLoader.scaleAndSaveImage(tfile, thumb, 90, 90, 55, false);
+                            size.location.mr_path = tfile.getAbsolutePath();
+                            size.type = "s";
+                            ret.media.document.thumb = size;
 
-                        setParamInt('w', size.w);
-                        setParamInt('h', size.h);
-                        saveParamToDisk();
+                            setParamInt('w', size.w);
+                            setParamInt('h', size.h);
+                            saveParamToDisk();
+                        }
+                        catch (Exception e) {}
                     }
                     else {
                         TLRPC.PhotoSize size = new TLRPC.PhotoSize();
@@ -238,8 +241,8 @@ public class MrMsg {
 
                     TLRPC.TL_documentAttributeVideo attr = new TLRPC.TL_documentAttributeVideo();
                     attr.duration = getParamInt('d', 0) / 1000;
-                    attr.w = ret.media.document.thumb.w;
-                    attr.h = ret.media.document.thumb.h;
+                    attr.w = getParamInt('w', 320);
+                    attr.h = getParamInt('h', 240);
                     ret.media.document.attributes.add(attr);
                 }
                 else {
