@@ -1920,6 +1920,9 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                     canvas.restore();
                 }
             }
+            if( documentAttachType == DOCUMENT_ATTACH_TYPE_VIDEO ) {
+                drawIcon = Theme.INLIST_TRANSP_PLAY;
+            }
         }
 
         if (captionLayout != null) {

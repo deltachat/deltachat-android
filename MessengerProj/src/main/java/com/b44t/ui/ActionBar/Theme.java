@@ -116,10 +116,11 @@ public class Theme {
 
     public static Drawable newchatIconDrawable;
 
-    public static final int INLIST_FILE  = 0;
-    public static final int INLIST_PLAY  = 1;
-    public static final int INLIST_PAUSE = 2;
-    public static final int INLIST_COUNT = 3;
+    public static final int INLIST_FILE        = 0;
+    public static final int INLIST_PLAY        = 1;
+    public static final int INLIST_PAUSE       = 2;
+    public static final int INLIST_TRANSP_PLAY = 3;
+    public static final int INLIST_COUNT       = 4;
     public static Drawable[] inlistDrawable = new Drawable[INLIST_COUNT];
 
     public static PorterDuffColorFilter colorFilter;
@@ -146,9 +147,10 @@ public class Theme {
             timeStickerBackgroundDrawable = context.getResources().getDrawable(R.drawable.phototime2);
             systemDrawable = context.getResources().getDrawable(R.drawable.system);
 
-            inlistDrawable[INLIST_FILE]  = context.getResources().getDrawable(R.drawable.attach_file_inlist);
-            inlistDrawable[INLIST_PLAY]  = context.getResources().getDrawable(R.drawable.attach_audio_inlist_play);
-            inlistDrawable[INLIST_PAUSE] = context.getResources().getDrawable(R.drawable.attach_audio_inlist_pause);
+            inlistDrawable[INLIST_FILE]        = context.getResources().getDrawable(R.drawable.attach_file_inlist);
+            inlistDrawable[INLIST_PLAY]        = context.getResources().getDrawable(R.drawable.attach_audio_inlist_play);
+            inlistDrawable[INLIST_TRANSP_PLAY] = context.getResources().getDrawable(R.drawable.video_play);
+            inlistDrawable[INLIST_PAUSE]       = context.getResources().getDrawable(R.drawable.attach_audio_inlist_pause);
 
             newchatIconDrawable = context.getResources().getDrawable(R.drawable.ic_ab_reply);
 
