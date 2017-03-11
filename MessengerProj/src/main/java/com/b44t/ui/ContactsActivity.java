@@ -255,17 +255,15 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
 
         ActionBarMenu menu = actionBar.createMenu();
 
+        if( do_what == SELECT_CONTACTS_FOR_NEW_GROUP ) {
+            menu.addItem(id_done_button, R.drawable.ic_done); // should the "done" button be right or left of other buttons?  Esp. for the "more" button, it looks better if it is right left of it - beside the title describing the action and nearer to "cancel"; the other buttons has not so much to do with the group but switches to other types.  In other situations, the icon-oder-decision may be different.
+        }
 
         ActionBarMenuItem item = menu.addItem(10, R.drawable.ic_ab_other);
         if (do_what == SELECT_CONTACT_FOR_NEW_CHAT || do_what == SELECT_CONTACTS_FOR_NEW_GROUP) {
             item.addSubItem(id_toggle, do_what == SELECT_CONTACT_FOR_NEW_CHAT ? LocaleController.getString("NewGroup", R.string.NewGroup) : LocaleController.getString("NewChat", R.string.NewChat), 0);
         }
         item.addSubItem(id_add_contact, LocaleController.getString("NewContactTitle", R.string.NewContactTitle), 0);
-
-
-        if( do_what == SELECT_CONTACTS_FOR_NEW_GROUP ) {
-            menu.addItem(id_done_button, R.drawable.ic_done); // this should be the very most right icon
-        }
 
 
         listViewAdapter = new ContactsAdapter(context);
