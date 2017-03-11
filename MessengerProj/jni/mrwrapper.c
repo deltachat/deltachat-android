@@ -66,32 +66,37 @@ static jstring jstring_new__(JNIEnv* env, const char* a)
 }
 
 
-/* our log handler */
-
-static void s_log_callback_(int type, const char* msg)
-{
-	int prio;
-	
-	switch( type ) {
-		case 'd': prio = ANDROID_LOG_DEBUG; break;
-		case 'i': prio = ANDROID_LOG_INFO;  break;
-		case 'w': prio = ANDROID_LOG_WARN;  break;
-		default:  prio = ANDROID_LOG_ERROR; break;
-	}
-	__android_log_print(prio, "DeltaChat", "%s\n", msg); /* on problems, add `-llog` to `Android.mk` */
-}
-
-
 /* global stuff */
 
 static JavaVM*   s_jvm = NULL;
 static jclass    s_MrMailbox_class = NULL;
 static jmethodID s_MrCallback_methodID = NULL;
+static int       s_global_init_done = 0;
+
+
+static void s_log_callback_(int type, const char* msg)
+{
+	int prio;
+
+	switch( type ) {
+		case 'd': prio = ANDROID_LOG_DEBUG; break;
+		case 'i': prio = ANDROID_LOG_INFO;  break;
+		case 'w': prio = ANDROID_LOG_WARN;  break;
+		default:  prio = ANDROID_LOG_ERROR; break; /* 'e'rror or 'p'opup */
+	}
+	__android_log_print(prio, "DeltaChat", "%s\n", msg); /* on problems, add `-llog` to `Android.mk` */
+
+	if( type == 'p' && s_global_init_done && s_jvm && s_MrMailbox_class && s_MrCallback_methodID ) {
+	    JNIEnv* env;
+	    (*s_jvm)->GetEnv(s_jvm, &env, JNI_VERSION_1_6); /* as this function may be called from _any_ thread, we cannot use a static pointer to JNIEnv */
+	    (*env)->CallStaticLongMethod(env, s_MrMailbox_class, s_MrCallback_methodID, MR_EVENT_REPORT, MR_REPORT_POPUP_ERR, (jlong)msg);
+	}
+}
+
 
 static void s_init_globals(JNIEnv *env, jclass MrMailbox_class)
 {
 	/* make sure, the intialisation is done only once */
-	static bool s_global_init_done = 0;
 	if( s_global_init_done ) { return; }
 	s_global_init_done = 1;
 	

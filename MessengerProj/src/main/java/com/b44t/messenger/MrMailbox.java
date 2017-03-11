@@ -197,6 +197,7 @@ public class MrMailbox {
     public final static int MR_EVENT_GET_QUANTITIY_STRING     = 2092;
 
     public final static int MR_REPORT_ERR_SELF_NOT_IN_GROUP   = 1;
+    public final static int MR_REPORT_POPUP_ERR               = 2;
 
     public static long MrCallback(final int event, final long data1, final long data2) // this function is called from within the C-wrapper
     {
@@ -261,14 +262,22 @@ public class MrMailbox {
                 return 0;
 
             case MR_EVENT_REPORT:
-                AndroidUtilities.runOnUIThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        if(data1==MR_REPORT_ERR_SELF_NOT_IN_GROUP) {
-                            NotificationCenter.getInstance().postNotificationName(NotificationCenter.errSelfNotInGroup);
+                {
+                    final String errorText = CPtr2String(data2);
+                    AndroidUtilities.runOnUIThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            if (data1 == MR_REPORT_ERR_SELF_NOT_IN_GROUP) {
+                                NotificationCenter.getInstance().postNotificationName(NotificationCenter.errSelfNotInGroup);
+                            } else if (data1 == MR_REPORT_POPUP_ERR) {
+                                if( ConnectionsManager.isNetworkOnline() ) {
+                                    // report the errors only if we're online - otherwise, it is quite usual that we get lots of connection errors ...
+                                    AndroidUtilities.showHint(ApplicationLoader.applicationContext, errorText);
+                                }
+                            }
                         }
-                    }
-                });
+                    });
+                }
                 return 0;
 
             case MR_EVENT_GET_STRING:
