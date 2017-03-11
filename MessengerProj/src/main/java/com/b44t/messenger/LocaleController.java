@@ -135,6 +135,11 @@ public class LocaleController {
         localeInfo.shortName = "pt";
         languagesDict.put(localeInfo.shortName, localeInfo);
 
+        localeInfo = new LocaleInfo();
+        localeInfo.name = "한국어";
+        localeInfo.shortName = "ko";
+        languagesDict.put(localeInfo.shortName, localeInfo);
+
         systemDefaultLocale = Locale.getDefault(); // we have to remember this as we may switch back to default later
         is24HourFormat = DateFormat.is24HourFormat(ApplicationLoader.applicationContext);
         LocaleInfo currentInfo = null;
