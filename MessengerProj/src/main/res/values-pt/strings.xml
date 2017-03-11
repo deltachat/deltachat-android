@@ -212,7 +212,7 @@
     <string name="PrivacyTitle">Privacidade</string>
     <string name="SecurityTitle">Segurança</string>
     <!--edit video view-->
-    <string name="SendVideo">Editar Vídeo</string>
+    <string name="SendVideo">Enviar Vídeo</string>
     <string name="OriginalVideo">Vídeo Original</string>
     <string name="EditedVideo">Vídeo Editado</string>
     <string name="CompressVideo">Compactar Vídeo</string>

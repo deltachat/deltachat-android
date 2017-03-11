@@ -211,7 +211,7 @@
     <string name="PrivacyTitle">Vie privée</string>
     <string name="SecurityTitle">Securité</string>
     <!--edit video view-->
-    <string name="SendVideo">Modifier la vidéo</string>
+    <string name="SendVideo">Envoyer la vidéo</string>
     <string name="OriginalVideo">Vidéo originale</string>
     <string name="EditedVideo">Vidéos modifiées</string>
     <string name="CompressVideo">Compresser la vidéo</string>
