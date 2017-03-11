@@ -108,7 +108,6 @@
     <string name="SendByEnter">Mit Taste „Enter“ senden</string>
     <string name="Language">Sprache</string>
     <string name="Help">Hilfe</string>
-    <string name="DeleteLocalization">Lokalisierung löschen?</string>
     <string name="Enabled">An</string>
     <string name="Disabled">Aus</string>
     <string name="NotificationsService">Keep-Alive-Dienst</string>

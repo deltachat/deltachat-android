@@ -105,7 +105,6 @@
     <string name="SendByEnter">Versturen met "Enter"</string>
     <string name="Language">Taal</string>
     <string name="Help">Veelgestelde vragen</string>
-    <string name="DeleteLocalization">Vertaling verwijderen?</string>
     <string name="Enabled">Inschakelen</string>
     <string name="Disabled">Uitgeschakeld</string>
     <string name="NotificationsService">Meldingenservice</string>

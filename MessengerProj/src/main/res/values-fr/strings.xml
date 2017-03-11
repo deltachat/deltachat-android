@@ -103,7 +103,6 @@
     <string name="SendByEnter">Envoyer avec "Entrée"</string>
     <string name="Language">Langue</string>
     <string name="Help">Aide</string>
-    <string name="DeleteLocalization">Supprimer la localisation ?</string>
     <string name="Enabled">Activé</string>
     <string name="Disabled">Désactivé</string>
     <string name="NotificationsService">Service de continuité</string>

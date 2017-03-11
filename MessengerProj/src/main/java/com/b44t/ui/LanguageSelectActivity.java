@@ -23,9 +23,7 @@
 
 package com.b44t.ui;
 
-import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
@@ -39,9 +37,9 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.b44t.messenger.AndroidUtilities;
+import com.b44t.messenger.ApplicationLoader;
 import com.b44t.messenger.FileLog;
 import com.b44t.messenger.LocaleController;
-import com.b44t.messenger.MrMailbox;
 import com.b44t.messenger.R;
 import com.b44t.messenger.Utilities;
 import com.b44t.ui.Adapters.BaseFragmentAdapter;
@@ -53,6 +51,8 @@ import com.b44t.ui.ActionBar.BaseFragment;
 import com.b44t.ui.Components.LayoutHelper;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -63,12 +63,27 @@ public class LanguageSelectActivity extends BaseFragment {
     private boolean searching;
     private BaseFragmentAdapter searchListViewAdapter;
     private TextView emptyTextView;
-
     private Timer searchTimer;
     public ArrayList<LocaleController.LocaleInfo> searchResult;
+    private ArrayList<LocaleController.LocaleInfo> sortedLanguages = new ArrayList<>();
 
     @Override
     public View createView(Context context) {
+
+        for (LocaleController.LocaleInfo localInfo : LocaleController.getInstance().languagesDict.values()) {
+            sortedLanguages.add(localInfo);
+        }
+        Collections.sort(sortedLanguages, new Comparator<LocaleController.LocaleInfo>() {
+            @Override
+            public int compare(LocaleController.LocaleInfo o, LocaleController.LocaleInfo o2) {
+                return o.name.compareTo(o2.name);
+            }
+        });
+        LocaleController.LocaleInfo localeInfo = new LocaleController.LocaleInfo();
+        localeInfo.name = ApplicationLoader.applicationContext.getString(R.string.Default); // the "Default" option is interesting, because it not only sets the language to default but also clears the "override" flag - further system changes are then followed by Delta Chat again.
+        localeInfo.shortName = null;
+        sortedLanguages.add(0, localeInfo);
+
         searching = false;
         searchWas = false;
 
@@ -179,8 +194,8 @@ public class LanguageSelectActivity extends BaseFragment {
                         localeInfo = searchResult.get(i);
                     }
                 } else {
-                    if (i >= 0 && i < LocaleController.getInstance().sortedLanguages.size()) {
-                        localeInfo = LocaleController.getInstance().sortedLanguages.get(i);
+                    if (i >= 0 && i < sortedLanguages.size()) {
+                        localeInfo = sortedLanguages.get(i);
                     }
                 }
                 if (localeInfo != null) {
@@ -188,47 +203,6 @@ public class LanguageSelectActivity extends BaseFragment {
                     parentLayout.rebuildAllFragmentViews(false);
                 }
                 finishFragment();
-            }
-        });
-
-        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-            @Override
-            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
-                LocaleController.LocaleInfo localeInfo = null;
-                if (searching && searchWas) {
-                    if (i >= 0 && i < searchResult.size()) {
-                        localeInfo = searchResult.get(i);
-                    }
-                } else {
-                    if (i >= 0 && i < LocaleController.getInstance().sortedLanguages.size()) {
-                        localeInfo = LocaleController.getInstance().sortedLanguages.get(i);
-                    }
-                }
-                if (localeInfo == null || localeInfo.pathToFile == null || getParentActivity() == null) {
-                    return false;
-                }
-                final LocaleController.LocaleInfo finalLocaleInfo = localeInfo;
-                AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
-                builder.setMessage(LocaleController.getString("DeleteLocalization", R.string.DeleteLocalization));
-                builder.setPositiveButton(LocaleController.getString("Delete", R.string.Delete), new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        if (LocaleController.getInstance().deleteLanguage(finalLocaleInfo)) {
-                            if (searchResult != null) {
-                                searchResult.remove(finalLocaleInfo);
-                            }
-                            if (listAdapter != null) {
-                                listAdapter.notifyDataSetChanged();
-                            }
-                            if (searchListViewAdapter != null) {
-                                searchListViewAdapter.notifyDataSetChanged();
-                            }
-                        }
-                    }
-                });
-                builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
-                showDialog(builder.create());
-                return true;
             }
         });
 
@@ -293,11 +267,10 @@ public class LanguageSelectActivity extends BaseFragment {
                     updateSearchResults(new ArrayList<LocaleController.LocaleInfo>());
                     return;
                 }
-                long time = System.currentTimeMillis();
                 ArrayList<LocaleController.LocaleInfo> resultArray = new ArrayList<>();
 
-                for (LocaleController.LocaleInfo c : LocaleController.getInstance().sortedLanguages) {
-                    if (c.name.toLowerCase().startsWith(query) || c.nameEnglish.toLowerCase().startsWith(query)) {
+                for (LocaleController.LocaleInfo c : sortedLanguages) {
+                    if (c.name.toLowerCase().startsWith(query)) {
                         resultArray.add(c);
                     }
                 }
@@ -404,10 +377,10 @@ public class LanguageSelectActivity extends BaseFragment {
 
         @Override
         public int getCount() {
-            if (LocaleController.getInstance().sortedLanguages == null) {
+            if (sortedLanguages == null) {
                 return 0;
             }
-            return LocaleController.getInstance().sortedLanguages.size();
+            return sortedLanguages.size();
         }
 
         @Override
@@ -431,8 +404,8 @@ public class LanguageSelectActivity extends BaseFragment {
                 view = new TextSettingsCell(mContext);
             }
 
-            LocaleController.LocaleInfo localeInfo = LocaleController.getInstance().sortedLanguages.get(i);
-            ((TextSettingsCell) view).setText(localeInfo.name, i != LocaleController.getInstance().sortedLanguages.size() - 1);
+            LocaleController.LocaleInfo localeInfo = sortedLanguages.get(i);
+            ((TextSettingsCell) view).setText(localeInfo.name, i != sortedLanguages.size() - 1);
 
             return view;
         }
@@ -449,7 +422,7 @@ public class LanguageSelectActivity extends BaseFragment {
 
         @Override
         public boolean isEmpty() {
-            return LocaleController.getInstance().sortedLanguages == null || LocaleController.getInstance().sortedLanguages.size() == 0;
+            return sortedLanguages == null || sortedLanguages.size() == 0;
         }
     }
 }

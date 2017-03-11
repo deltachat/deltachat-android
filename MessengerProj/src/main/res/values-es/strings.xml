@@ -105,7 +105,6 @@
     <string name="SendByEnter">Enviar con “Intro”</string>
     <string name="Language">Idioma</string>
     <string name="Help">Preguntas frecuentes</string>
-    <string name="DeleteLocalization">¿Eliminar traducción?</string>
     <string name="Enabled">Activadas</string>
     <string name="Disabled">Desactivadas</string>
     <string name="NotificationsService">Servicio keep-alive</string>

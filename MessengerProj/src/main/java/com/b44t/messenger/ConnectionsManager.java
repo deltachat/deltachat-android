@@ -73,7 +73,7 @@ public class ConnectionsManager {
         //native_setPushConnectionEnabled(value);
     }
 
-    public void init(String deviceModel, String systemVersion, String appVersion, String langCode, String configPath, String logPath, int userId, boolean enablePushConnection) {
+    public void init() {
         //native_init(version, layer, apiId, deviceModel, systemVersion, appVersion, langCode, configPath, logPath, userId, enablePushConnection);
         //checkConnection();
         BroadcastReceiver networkStateReceiver = new BroadcastReceiver() {

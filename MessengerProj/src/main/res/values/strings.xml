@@ -108,7 +108,6 @@
     <string name="SendByEnter">Send by "enter"</string>
     <string name="Language">Language</string>
     <string name="Help">Help</string>
-    <string name="DeleteLocalization">Delete localization?</string>
     <string name="Enabled">On</string>
     <string name="Disabled">Off</string>
     <string name="NotificationsService">Keep-alive service</string>

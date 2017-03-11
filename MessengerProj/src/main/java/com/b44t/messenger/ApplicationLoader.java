@@ -176,25 +176,19 @@ public class ApplicationLoader extends Application {
 
         UserConfig.loadConfig();
         String deviceModel;
-        String langCode;
         String appVersion;
         String systemVersion;
         String configPath = getFilesDirFixed().toString();
 
         try {
-            langCode = LocaleController.getLocaleStringIso639();
             deviceModel = Build.MANUFACTURER + Build.MODEL;
             PackageInfo pInfo = ApplicationLoader.applicationContext.getPackageManager().getPackageInfo(ApplicationLoader.applicationContext.getPackageName(), 0);
             appVersion = pInfo.versionName + " (" + pInfo.versionCode + ")";
             systemVersion = "SDK " + Build.VERSION.SDK_INT;
         } catch (Exception e) {
-            langCode = "en";
             deviceModel = "Android unknown";
             appVersion = "App version unknown";
             systemVersion = "SDK " + Build.VERSION.SDK_INT;
-        }
-        if (langCode.trim().length() == 0) {
-            langCode = "en";
         }
         if (deviceModel.trim().length() == 0) {
             deviceModel = "Android unknown";
@@ -224,7 +218,7 @@ public class ApplicationLoader extends Application {
 
         // create other default objects
         MessagesController.getInstance();
-        ConnectionsManager.getInstance().init(deviceModel, systemVersion, appVersion, langCode, configPath, FileLog.getNetworkLogPath(), UserConfig.getClientUserId(), enablePushConnection);
+        ConnectionsManager.getInstance().init();
         if (UserConfig.getCurrentUser() != null) {
             SendMessagesHelper.getInstance().checkUnsentMessages();
         }

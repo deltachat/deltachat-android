@@ -105,7 +105,6 @@
     <string name="SendByEnter">Invia con tasto "invio"</string>
     <string name="Language">Lingua</string>
     <string name="Help">Domande frequenti</string>
-    <string name="DeleteLocalization">Eliminare la traduzione?</string>
     <string name="Enabled">Abilitate</string>
     <string name="Disabled">Disabilitata</string>
     <string name="NotificationsService">Servizio keep-alive</string>

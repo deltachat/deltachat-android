@@ -104,7 +104,6 @@
     <string name="SendByEnter">Enviar usando \'Enter\'</string>
     <string name="Language">Idioma</string>
     <string name="Help">Perguntas frequentes</string>
-    <string name="DeleteLocalization">Apagar localização?</string>
     <string name="Enabled">Ativado</string>
     <string name="Disabled">Desativado</string>
     <string name="NotificationsService">Serviço Manter-Ativo</string>

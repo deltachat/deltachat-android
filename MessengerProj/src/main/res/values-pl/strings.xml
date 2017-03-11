@@ -108,7 +108,6 @@
     <string name="SendByEnter">Wyślij wiadomość naciskając Enter</string>
     <string name="Language">Język</string>
     <string name="Help">Pomoc</string>
-    <string name="DeleteLocalization">Usunąć lokalizację?</string>
     <string name="Enabled">Włączone</string>
     <string name="Disabled">Wyłączony</string>
     <string name="NotificationsService">Podtrzymywanie usługi</string>
