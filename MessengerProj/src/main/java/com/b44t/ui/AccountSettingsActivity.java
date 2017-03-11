@@ -121,15 +121,15 @@ public class AccountSettingsActivity extends BaseFragment implements Notificatio
         rowInfoBelowMailPw2 = rowCount++;
 
         rowSectionMail = rowCount++;
+        rowMailUser = rowCount++; // should be the first additional option, the loginname is the component, that cannot be configured automatically (if not derivable from the address)
         rowMailServer = rowCount++;
-        rowMailUser = rowCount++;
         rowMailPort = rowCount++;
         rowBreak2 = rowCount++;
 
         rowSectionSend = rowCount++;
-        rowSendServer = rowCount++;
         rowSendUser = rowCount++;
         rowSendPw = rowCount++;
+        rowSendServer = rowCount++;
         rowSendPort = rowCount++;
         rowInfoBelowSendPw = rowCount++;
 
