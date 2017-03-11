@@ -176,12 +176,14 @@ public class SettingsActivity extends BaseFragment {
         }
     }
 
-    private String getAbi() // ABI = Application Binary Interface
+    private String getAndroidInfo()
     {
+        String abi = "ErrAbi";
+        int versionCode = 0;
         try {
             PackageInfo pInfo = ApplicationLoader.applicationContext.getPackageManager().getPackageInfo(ApplicationLoader.applicationContext.getPackageName(), 0);
-            String abi = "ErrAbi";
-            switch (pInfo.versionCode % 10) {
+            versionCode = pInfo.versionCode;
+            switch (versionCode % 10) {
                 case 0:
                     abi = "arm";
                     break;
@@ -195,16 +197,11 @@ public class SettingsActivity extends BaseFragment {
                     abi = "universal";
                     break;
             }
-            return abi;
-        } catch (Exception e) {
-            return "ErrAbi";
-        }
-    }
+        } catch (Exception e) {}
 
-    private String getAndroidInfo()
-    {
-        return "Build.VERSION.SDK_INT=" + Build.VERSION.SDK_INT + "\n"
-                + "ABI=" + getAbi();
+        return "Build.VERSION.SDK_INT=" + Build.VERSION.SDK_INT
+                + "\nABI=" + abi // ABI = Application Binary Interface
+                + "\nversionCode=" + versionCode;
     }
 
     private class ListAdapter extends BaseFragmentAdapter {
