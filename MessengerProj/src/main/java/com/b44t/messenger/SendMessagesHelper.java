@@ -31,7 +31,6 @@ import android.media.ThumbnailUtils;
 import android.net.Uri;
 import android.provider.MediaStore;
 import android.webkit.MimeTypeMap;
-import android.widget.Toast;
 
 import com.b44t.messenger.audioinfo.AudioInfo;
 
@@ -511,16 +510,16 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
         }
         document.caption = caption;
 
-        final HashMap<String, String> params = new HashMap<>();
+        /*final HashMap<String, String> params = new HashMap<>();
         if (originalPath != null) {
             params.put("originalPath", originalPath);
-        }
+        }*/
         final TLRPC.TL_document documentFinal = document;
         final String pathFinal = path;
         AndroidUtilities.runOnUIThread(new Runnable() {
             @Override
             public void run() {
-                SendMessagesHelper.getInstance().sendMessageDocument(documentFinal, null, pathFinal, dialog_id, params);
+                SendMessagesHelper.getInstance().sendMessageDocument(documentFinal, null, pathFinal, dialog_id, null);
             }
         });
         return true;
@@ -757,14 +756,14 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
                                 photo.caption = captions.get(a);
                             }
                             final TLRPC.TL_photo photoFinal = photo;
-                            final HashMap<String, String> params = new HashMap<>();
+                            /*final HashMap<String, String> params = new HashMap<>();
                             if (originalPath != null) {
                                 params.put("originalPath", originalPath);
-                            }
+                            }*/
                             AndroidUtilities.runOnUIThread(new Runnable() {
                                 @Override
                                 public void run() {
-                                    SendMessagesHelper.getInstance().sendMessagePhoto(photoFinal, null, dialog_id, params);
+                                    SendMessagesHelper.getInstance().sendMessagePhoto(photoFinal, null, dialog_id, null);
                                 }
                             });
                         }
@@ -789,15 +788,15 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
 
                 if (videoEditedInfo != null || videoPath.endsWith("mp4")) {
                     String path = videoPath;
-                    String originalPath = videoPath;
-                    File temp = new File(originalPath);
-                    originalPath += temp.length() + "_" + temp.lastModified();
+                    //String originalPath = videoPath;
+                    File temp = new File(videoPath);
+                    /*originalPath += temp.length() + "_" + temp.lastModified();
                     if (videoEditedInfo != null) {
                         originalPath += duration + "_" + videoEditedInfo.startTime + "_" + videoEditedInfo.endTime;
                         if (videoEditedInfo.resultWidth == videoEditedInfo.originalWidth) {
                             originalPath += "_" + videoEditedInfo.resultWidth;
                         }
-                    }
+                    }*/
                     TLRPC.TL_document document = null;
                     {
                         document = new TLRPC.TL_document();
@@ -815,10 +814,8 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
                                 attributeVideo.h = height;
                             }
                             document.size = (int) estimatedSize;
-                            String fileName = Integer.MIN_VALUE + "_" + UserConfig.lastLocalId + ".mp4";
-                            UserConfig.lastLocalId--;
-                            File cacheFile = new File(FileLoader.getInstance().getDirectory(FileLoader.MEDIA_DIR_CACHE), fileName);
-                            UserConfig.saveConfig(false);
+                            String fileName = temp.getName(); // we could also all videoEditInformation to the filename and re-use already encoded videos this way. however, for the moment, I have no time to check this out (bp)
+                            File cacheFile = AndroidUtilities.getFineFilename(FileLoader.getInstance().getDirectory(FileLoader.MEDIA_DIR_CACHE), fileName);
                             path = cacheFile.getAbsolutePath();
                         } else {
                             if (temp.exists()) {
@@ -878,14 +875,14 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
                     File tfile = new File(MrMailbox.getBlobdir(), vfile.getName()+"-preview.jpg");
                     ImageLoader.scaleAndSaveImage(tfile, thumb, 90, 90, 55, false);
 
-                    final HashMap<String, String> params = new HashMap<>();
+                    /*final HashMap<String, String> params = new HashMap<>();
                     if (originalPath != null) {
                         params.put("originalPath", originalPath);
-                    }
+                    }*/
                     AndroidUtilities.runOnUIThread(new Runnable() {
                         @Override
                         public void run() {
-                            SendMessagesHelper.getInstance().sendMessageDocument(videoFinal, videoEditedInfo, finalPath, dialog_id, params);
+                            SendMessagesHelper.getInstance().sendMessageDocument(videoFinal, videoEditedInfo, finalPath, dialog_id, null);
                         }
                     });
                 } else {

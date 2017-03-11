@@ -937,7 +937,7 @@ public class AndroidUtilities {
         }
     }
 
-    private static File getFineFilename(File path, String desiredName)
+    public static File getFineFilename(File path, String desiredName)
     {
         // get a fine file name by adding a number to the basename and avoid overwrites
         for( int i = 0; i < 1000; i++ ) {
