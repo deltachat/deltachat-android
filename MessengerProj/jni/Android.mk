@@ -1611,9 +1611,9 @@ LOCAL_SRC_FILES     += \
 ./messenger-backend/src/mre2ee.c \
 ./messenger-backend/src/mrimap.c \
 ./messenger-backend/src/mrjob.c \
-./messenger-backend/src/mrlog.c \
 ./messenger-backend/src/mrloginparam.c \
 ./messenger-backend/src/mrmailbox.c \
+./messenger-backend/src/mrmailbox_log.c \
 ./messenger-backend/src/mrmimeparser.c \
 ./messenger-backend/src/mrmsg.c \
 ./messenger-backend/src/mrosnative.c \

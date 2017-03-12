@@ -428,4 +428,6 @@
     <string name="SelectContact">Kontakt auswählen</string>
     <string name="DoneHint">Fertig.</string>
     <string name="FileNotFound">Datei %1$s nicht gefunden.</string>
+    <string name="Error">Fehler: %1$s</string>
+    <string name="NotConnected">Nicht verbunden.</string>
 </resources>

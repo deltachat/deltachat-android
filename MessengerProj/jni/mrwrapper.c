@@ -74,42 +74,41 @@ static jmethodID s_MrCallback_methodID = NULL;
 static int       s_global_init_done = 0;
 
 
-static void s_log_callback_(int type, const char* msg)
-{
-	int prio;
-
-	switch( type ) {
-		case 'd': prio = ANDROID_LOG_DEBUG; break;
-		case 'i': prio = ANDROID_LOG_INFO;  break;
-		case 'w': prio = ANDROID_LOG_WARN;  break;
-		default:  prio = ANDROID_LOG_ERROR; break; /* 'e'rror or 'p'opup */
-	}
-	__android_log_print(prio, "DeltaChat", "%s\n", msg); /* on problems, add `-llog` to `Android.mk` */
-
-	if( type == 'p' && s_global_init_done && s_jvm && s_MrMailbox_class && s_MrCallback_methodID ) {
-	    JNIEnv* env;
-	    (*s_jvm)->GetEnv(s_jvm, &env, JNI_VERSION_1_6); /* as this function may be called from _any_ thread, we cannot use a static pointer to JNIEnv */
-	    (*env)->CallStaticLongMethod(env, s_MrMailbox_class, s_MrCallback_methodID, MR_EVENT_REPORT, MR_REPORT_POPUP_ERR, (jlong)msg);
-	}
-}
-
-
 static void s_init_globals(JNIEnv *env, jclass MrMailbox_class)
 {
 	/* make sure, the intialisation is done only once */
 	if( s_global_init_done ) { return; }
 	s_global_init_done = 1;
 	
-	/* init global callback */
-	mrlog_set_handler(s_log_callback_);
-
 	/* prepare calling back a Java function */
 	(*env)->GetJavaVM(env, &s_jvm); /* JNIEnv cannot be shared between threads, so we share the JavaVM object */
 	s_MrMailbox_class =  (*env)->NewGlobalRef(env, MrMailbox_class);
 	s_MrCallback_methodID = (*env)->GetStaticMethodID(env, MrMailbox_class, "MrCallback","(IJJ)J" /*signature as "(param)ret" with I=int, J=long*/ );
+}
 
-	/* system-specific backend initialisations */
-	mrosnative_init_android(env); /*this should be called before any other "important" routine is called*/
+
+/* setup threads, only called directly by the backed */
+
+int mrosnative_setup_thread(mrmailbox_t* mailbox)
+{
+	if( s_jvm == NULL ) {
+		mrmailbox_log_error(mailbox, 0, "Not ready, cannot setup thread.");
+		return 0;
+	}
+
+	mrmailbox_log_info(mailbox, 0, "Attaching C-thread to Java VM...");
+		JNIEnv* env = NULL;
+		(*s_jvm)->AttachCurrentThread(s_jvm, &env, NULL);
+	mrmailbox_log_info(mailbox, 0, "Attaching ok.");
+	return 1;
+}
+
+
+void mrosnative_unsetup_thread(mrmailbox_t* mailbox)
+{
+	mrmailbox_log_info(mailbox, 0, "Detaching C-thread from Java VM...");
+		(*s_jvm)->DetachCurrentThread(s_jvm);
+	mrmailbox_log_info(mailbox, 0, "Detaching done.");
 }
 
 
@@ -194,15 +193,22 @@ static uintptr_t s_mailbox_callback_(mrmailbox_t* mailbox, int event, uintptr_t 
 	jlong   l;
 	JNIEnv* env;
 
+	if( event==MR_EVENT_INFO || event==MR_EVENT_WARNING ) {
+	    __android_log_print(event==MR_EVENT_INFO? ANDROID_LOG_INFO : ANDROID_LOG_WARN, "DeltaChat", "%s", (char*)data2); /* on problems, add `-llog` to `Android.mk` */
+		return 0; /* speed up things for info/warning */
+	}
+	else if( event == MR_EVENT_ERROR ) {
+	    __android_log_print(ANDROID_LOG_ERROR, "DeltaChat", "%s", (char*)data2);
+	    /* errors are also forwarded to Java to show them in a bubble or so */
+	}
+
 	if( s_jvm==NULL || s_MrMailbox_class==NULL || s_MrCallback_methodID==NULL ) {
-		s_log_callback_('e', "Callback called but JavaVM not ready.");
-		return 0;
+		return 0; /* may happen on startup */
 	}
 
 	(*s_jvm)->GetEnv(s_jvm, &env, JNI_VERSION_1_6); /* as this function may be called from _any_ thread, we cannot use a static pointer to JNIEnv */
 	if( env==NULL ) {
-		s_log_callback_('e', "Callback called but cannot get JNIEnv.");
-		return 0;
+		return 0; /* may happen on startup */
 	}
 
 	l = (*env)->CallStaticLongMethod(env, s_MrMailbox_class, s_MrCallback_methodID, (jint)event, (jlong)data1, (jlong)data2);
@@ -268,15 +274,6 @@ JNIEXPORT void Java_com_b44t_messenger_MrMailbox_MrMailboxDisconnect(JNIEnv *env
 JNIEXPORT jint Java_com_b44t_messenger_MrMailbox_MrMailboxFetch(JNIEnv *env, jclass c, jlong hMailbox)
 {
 	return mrmailbox_fetch((mrmailbox_t*)hMailbox);
-}
-
-
-JNIEXPORT jstring Java_com_b44t_messenger_MrMailbox_getErrorDescr(JNIEnv *env, jclass cls)
-{
-	char* c = mrmailbox_get_error_descr(get_mrmailbox_t(env, cls));
-		jstring ret = JSTRING_NEW(c);
-	free(c);
-	return ret;
 }
 
 

@@ -58,8 +58,6 @@ public class MrMailbox {
         return MrMailboxFetch(m_hMailbox);
     }
 
-    public native static String getErrorDescr();
-
     public static int setConfig(String key, String value) {
         return MrMailboxSetConfig(m_hMailbox, key, value);
     }
@@ -185,19 +183,24 @@ public class MrMailbox {
     /* receive events
      **********************************************************************************************/
 
+    public final static int MR_EVENT_ERROR                    =  400; // INFO and WARNING are blocked in the mrwrapper.c
+
     public final static int MR_EVENT_MSGS_CHANGED             = 2000;
     public final static int MR_EVENT_INCOMING_MSG             = 2005;
     public final static int MR_EVENT_MSG_DELIVERED            = 2010;
     public final static int MR_EVENT_MSG_READ                 = 2015;
+
     public final static int MR_EVENT_CHAT_MODIFIED            = 2020;
+
     public final static int MR_EVENT_CONTACTS_CHANGED         = 2030;
+
     public final static int MR_EVENT_CONNECTION_STATE_CHANGED = 2040;
-    public final static int MR_EVENT_REPORT                   = 2050;
+
+    public final static int MR_EVENT_IS_ONLINE                = 2080;
     public final static int MR_EVENT_GET_STRING               = 2091;
     public final static int MR_EVENT_GET_QUANTITIY_STRING     = 2092;
 
-    public final static int MR_REPORT_ERR_SELF_NOT_IN_GROUP   = 1;
-    public final static int MR_REPORT_POPUP_ERR               = 2;
+
 
     public static long MrCallback(final int event, final long data1, final long data2) // this function is called from within the C-wrapper
     {
@@ -261,20 +264,13 @@ public class MrMailbox {
                 });
                 return 0;
 
-            case MR_EVENT_REPORT:
+            case MR_EVENT_ERROR:
                 {
                     final String errorText = CPtr2String(data2);
                     AndroidUtilities.runOnUIThread(new Runnable() {
                         @Override
                         public void run() {
-                            if (data1 == MR_REPORT_ERR_SELF_NOT_IN_GROUP) {
-                                NotificationCenter.getInstance().postNotificationName(NotificationCenter.errSelfNotInGroup);
-                            } else if (data1 == MR_REPORT_POPUP_ERR) {
-                                if( ConnectionsManager.isNetworkOnline() ) {
-                                    // report the errors only if we're online - otherwise, it is quite usual that we get lots of connection errors ...
-                                    AndroidUtilities.showHint(ApplicationLoader.applicationContext, errorText);
-                                }
-                            }
+                        AndroidUtilities.showHint(ApplicationLoader.applicationContext, errorText);
                         }
                     });
                 }
@@ -299,6 +295,9 @@ public class MrMailbox {
                     case 17: s = ApplicationLoader.applicationContext.getString(R.string.MsgMemberAddedToGroup); break;
                     case 18: s = ApplicationLoader.applicationContext.getString(R.string.MsgMemberRemovedFromToGroup); break;
                     case 19: s = ApplicationLoader.applicationContext.getString(R.string.MsgGroupLeft); break;
+                    case 20: s = ApplicationLoader.applicationContext.getString(R.string.Error); break;
+                    case 21: s = ApplicationLoader.applicationContext.getString(R.string.ErrSelfNotInGroup); break;
+                    case 22: s = ApplicationLoader.applicationContext.getString(R.string.NotConnected); break;
                 }
                 return String2CPtr(s);
 
@@ -309,6 +308,9 @@ public class MrMailbox {
                     case 6: sp = ApplicationLoader.applicationContext.getResources().getQuantityString(R.plurals.Contacts, (int)data2, (int)data2); break;
                 }
                 return String2CPtr(sp);
+
+            case MR_EVENT_IS_ONLINE:
+                return ConnectionsManager.isNetworkOnline()? 1 : 0;
         }
         return 0;
     }
