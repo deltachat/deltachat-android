@@ -200,7 +200,10 @@ public class MrMailbox {
     public final static int MR_EVENT_GET_STRING               = 2091;
     public final static int MR_EVENT_GET_QUANTITIY_STRING     = 2092;
 
-
+    public static final Object m_lastErrorLock = new Object();
+    public static int          m_lastErrorCode = 0;
+    public static String       m_lastErrorString = "";
+    public static boolean      m_showNextErrorAsToast = true;
 
     public static long MrCallback(final int event, final long data1, final long data2) // this function is called from within the C-wrapper
     {
@@ -265,20 +268,27 @@ public class MrMailbox {
                 return 0;
 
             case MR_EVENT_ERROR:
-                {
-                    final String errorText = CPtr2String(data2);
-                    AndroidUtilities.runOnUIThread(new Runnable() {
-                        @Override
-                        public void run() {
-                        AndroidUtilities.showHint(ApplicationLoader.applicationContext, errorText);
-                        }
-                    });
+                synchronized (m_lastErrorLock) {
+                    m_lastErrorCode   = (int)data1;
+                    m_lastErrorString = CPtr2String(data2);
                 }
+                AndroidUtilities.runOnUIThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        synchronized (m_lastErrorLock) {
+                            if( m_showNextErrorAsToast ) {
+                                AndroidUtilities.showHint(ApplicationLoader.applicationContext, m_lastErrorString);
+                            }
+                            m_showNextErrorAsToast = true;
+                        }
+                    }
+                });
                 return 0;
 
             case MR_EVENT_GET_STRING:
                 String s = "ErrStrBadId";
                 switch( (int)data1 ) {
+                    // the string-IDs are defined in the backend; as this is the only place where they're used, there is no benefit in creating an enum or sth. like that.
                     case  1: s = ApplicationLoader.applicationContext.getString(R.string.NoMessages); break;
                     case  2: s = ApplicationLoader.applicationContext.getString(R.string.FromSelf); break;
                     case  3: s = ApplicationLoader.applicationContext.getString(R.string.Draft); break;
@@ -297,13 +307,14 @@ public class MrMailbox {
                     case 19: s = ApplicationLoader.applicationContext.getString(R.string.MsgGroupLeft); break;
                     case 20: s = ApplicationLoader.applicationContext.getString(R.string.Error); break;
                     case 21: s = ApplicationLoader.applicationContext.getString(R.string.ErrSelfNotInGroup); break;
-                    case 22: s = ApplicationLoader.applicationContext.getString(R.string.NotConnected); break;
+                    case 22: s = ApplicationLoader.applicationContext.getString(R.string.NoNetwork); break;
                 }
                 return String2CPtr(s);
 
             case MR_EVENT_GET_QUANTITIY_STRING:
                 String sp = "ErrQtyStrBadId";
                 switch( (int)data1 ) {
+                    // the string-IDs are defined in the backend; as this is the only place where they're used, there is no benefit in creating an enum or sth. like that.
                     case 4: sp = ApplicationLoader.applicationContext.getResources().getQuantityString(R.plurals.Members, (int)data2, (int)data2); break;
                     case 6: sp = ApplicationLoader.applicationContext.getResources().getQuantityString(R.plurals.Contacts, (int)data2, (int)data2); break;
                 }

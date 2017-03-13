@@ -37,9 +37,9 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.FrameLayout;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.b44t.messenger.AndroidUtilities;
+import com.b44t.messenger.ApplicationLoader;
 import com.b44t.messenger.LocaleController;
 import com.b44t.messenger.MrMailbox;
 import com.b44t.messenger.NotificationCenter;
@@ -278,6 +278,10 @@ public class AccountSettingsActivity extends BaseFragment implements Notificatio
         });
         progressDialog.show();
 
+        synchronized (MrMailbox.m_lastErrorLock) {
+            MrMailbox.m_showNextErrorAsToast = false;
+        }
+
         // try to connect
         // (for the future, we may put all this togehter in a single command, that is executed
         // asynchronously by the backend; then we can skip creating a runnable here)
@@ -293,11 +297,20 @@ public class AccountSettingsActivity extends BaseFragment implements Notificatio
 
     @Override
     public void didReceivedNotification(int id, Object... args) {
-        if (id == NotificationCenter.connectionStateChanged ) {
+        if (id == NotificationCenter.connectionStateChanged )
+        {
+            final String errorString;
+
+            synchronized (MrMailbox.m_lastErrorLock) {
+                MrMailbox.m_showNextErrorAsToast = true;
+                errorString = MrMailbox.m_lastErrorString;
+            }
+
             if( progressDialog!=null ) {
                 progressDialog.dismiss();
                 progressDialog = null;
             }
+
             if( (int)args[0]==1 ) {
                 if( fromIntro ) {
                     presentFragment(new DialogsActivity(null), true);
@@ -310,8 +323,19 @@ public class AccountSettingsActivity extends BaseFragment implements Notificatio
                     finishFragment();
                 }
                 NotificationCenter.getInstance().postNotificationName(NotificationCenter.mainUserInfoChanged);
+                AndroidUtilities.showDoneHint(ApplicationLoader.applicationContext);
             }
-            // else: an error is already logged
+            else {
+                AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
+                builder.setMessage(errorString);
+                builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        ;
+                    }
+                });
+                showDialog(builder.create());
+            }
         }
     }
 

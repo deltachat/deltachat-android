@@ -149,11 +149,10 @@ public class ConnectionsManager {
         try {
             ConnectivityManager cm = (ConnectivityManager) ApplicationLoader.applicationContext.getSystemService(Context.CONNECTIVITY_SERVICE);
             NetworkInfo netInfo = cm.getActiveNetworkInfo();
-            if (netInfo != null && (netInfo.isConnectedOrConnecting() || netInfo.isAvailable())) {
+            if (netInfo != null && netInfo.isConnected()) {
                 return true;
             }
-
-            netInfo = cm.getNetworkInfo(ConnectivityManager.TYPE_MOBILE);
+            /* netInfo = cm.getNetworkInfo(ConnectivityManager.TYPE_MOBILE);
 
             if (netInfo != null && netInfo.isConnectedOrConnecting()) {
                 return true;
@@ -162,10 +161,8 @@ public class ConnectionsManager {
                 if (netInfo != null && netInfo.isConnectedOrConnecting()) {
                     return true;
                 }
-            }
+            } */
         } catch (Exception e) {
-            FileLog.e("messenger", e);
-            return true;
         }
         return false;
     }
