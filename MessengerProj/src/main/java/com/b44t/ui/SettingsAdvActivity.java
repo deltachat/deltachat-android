@@ -85,7 +85,7 @@ public class SettingsAdvActivity extends BaseFragment {
         sendByEnterRow = rowCount++;
         raiseToSpeakRow = rowCount++; // outgoing message
         enableAnimationsRow = -1;//rowCount++; -- for now, we disable this option, maybe we can add it later to a "view" settings, however, in general, this should be more a system-option
-        cacheRow = -1; // for now, the page is still reachable by the "storage settings" in the "android App Settings"
+        cacheRow =rowCount++;
         languageRow = rowCount++;
         finalShadowRow = rowCount++;
 
@@ -264,7 +264,7 @@ public class SettingsAdvActivity extends BaseFragment {
                 } else if (i == languageRow) {
                     textCell.setTextAndValue(LocaleController.getString("Language", R.string.Language), LocaleController.getCurrentLanguageName(), false);
                 } else if (i == cacheRow) {
-                    textCell.setText(LocaleController.getString("CacheSettings", R.string.CacheSettings), false);
+                    textCell.setText(LocaleController.getString("CacheSettings", R.string.CacheSettings), true);
                 } 
             } else if (type == ROWTYPE_CHECK) {
                 if (view == null) {
