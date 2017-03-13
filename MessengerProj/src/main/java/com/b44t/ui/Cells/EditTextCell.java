@@ -49,9 +49,15 @@ public class EditTextCell extends FrameLayout {
     private static Paint paint;
     private boolean needDivider;
     private String originalValue;
+    private boolean useLabel;
 
     public EditTextCell(Context context) {
+        this(context, true);
+    }
+
+    public EditTextCell(Context context, boolean useLabel__) {
         super(context);
+        useLabel = useLabel__;
 
         if (paint == null) {
             paint = new Paint();
@@ -97,14 +103,14 @@ public class EditTextCell extends FrameLayout {
         */
 
         addView(editView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, (LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT) | Gravity.TOP,
-                17, 25, 17, 0));
+                17, useLabel? 25 : 25-17, 17, 0));
 
         setBackgroundColor(0xffffffff);
     }
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        super.onMeasure(widthMeasureSpec, MeasureSpec.makeMeasureSpec(AndroidUtilities.dp(64) + (needDivider ? 1 : 0), MeasureSpec.EXACTLY));
+        super.onMeasure(widthMeasureSpec, MeasureSpec.makeMeasureSpec(AndroidUtilities.dp(useLabel? 64 : 64-15) + (needDivider ? 1 : 0), MeasureSpec.EXACTLY));
     }
 
     public void setValueHintAndLabel(String value, String hint, String label, boolean divider) {

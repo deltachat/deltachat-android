@@ -61,8 +61,9 @@ public class AccountSettingsActivity extends BaseFragment implements Notificatio
     // the list
     private ListAdapter listAdapter;
 
-    private int         rowSectionBasic;
+    private int         rowAddrHeadline;
     private int         rowAddr;
+    private int         rowMailPwHeadline;
     private int         rowMailPw;
     private int         rowOpenAdvOpions;
 
@@ -135,8 +136,9 @@ public class AccountSettingsActivity extends BaseFragment implements Notificatio
     {
         rowCount = 0;
 
-        rowSectionBasic  = rowCount++;
+        rowAddrHeadline  = rowCount++;
         rowAddr          = rowCount++;
+        rowMailPwHeadline= rowCount++;
         rowMailPw        = rowCount++;
         rowOpenAdvOpions = rowCount++;
 
@@ -412,7 +414,7 @@ public class AccountSettingsActivity extends BaseFragment implements Notificatio
 
         @Override
         public boolean isEnabled(int i) {
-            return !(i==rowSectionBasic || i==rowSectionMail || i==rowBreak2 || i==rowSectionSend || i==rowInfoBelowSendPw);
+            return !(i==rowAddrHeadline || i==rowMailPwHeadline || i==rowSectionMail || i==rowBreak2 || i==rowSectionSend || i==rowInfoBelowSendPw);
         }
 
         @Override
@@ -441,18 +443,18 @@ public class AccountSettingsActivity extends BaseFragment implements Notificatio
             if (type == ROWTYPE_TEXT_ENTRY) {
                 if (i == rowAddr) {
                     if( addrCell==null) {
-                        addrCell = new EditTextCell(mContext);
+                        addrCell = new EditTextCell(mContext, false);
                         addrCell.setValueHintAndLabel(MrMailbox.getConfig("addr", ""),
-                                "", LocaleController.getString("MyEmailAddress", R.string.MyEmailAddress), false);
+                                "", "", false);
                         addrCell.getEditTextView().setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS | InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
                     }
                     view = addrCell;
                 }
                 else if (i == rowMailPw) {
                     if( mailPwCell==null) {
-                        mailPwCell = new EditTextCell(mContext);
+                        mailPwCell = new EditTextCell(mContext, false);
                         mailPwCell.setValueHintAndLabel(MrMailbox.getConfig("mail_pw", ""),
-                                "", LocaleController.getString("Password", R.string.Password), false);
+                                "", "", false);
                         mailPwCell.getEditTextView().setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS | InputType.TYPE_TEXT_VARIATION_PASSWORD);
                     }
                     view = mailPwCell;
@@ -520,8 +522,10 @@ public class AccountSettingsActivity extends BaseFragment implements Notificatio
                     view = new HeaderCell(mContext);
                     view.setBackgroundColor(0xffffffff);
                 }
-                if (i == rowSectionBasic) {
-                    ((HeaderCell) view).setText(LocaleController.getString("BasicSettings", R.string.BasicSettings));
+                if (i == rowAddrHeadline) {
+                    ((HeaderCell) view).setText(ApplicationLoader.applicationContext.getString(R.string.EmailAddress));
+                } else if (i == rowMailPwHeadline) {
+                    ((HeaderCell) view).setText(ApplicationLoader.applicationContext.getString(R.string.Password));
                 } else if (i == rowSectionMail) {
                     ((HeaderCell) view).setText(LocaleController.getString("InboxHeadline", R.string.InboxHeadline));
                 } else if (i == rowSectionSend) {
@@ -562,7 +566,7 @@ public class AccountSettingsActivity extends BaseFragment implements Notificatio
                      || i==rowSendServer || i==rowSendPort || i==rowSendUser || i== rowSendPw ) {
                 return ROWTYPE_TEXT_ENTRY;
             }
-            else if( i==rowSectionBasic || i==rowSectionMail || i==rowSectionSend ) {
+            else if( i==rowAddrHeadline || i==rowMailPwHeadline || i==rowSectionMail || i==rowSectionSend ) {
                 return ROWTYPE_HEADLINE;
             }
             else if( i== rowBreak2) {
