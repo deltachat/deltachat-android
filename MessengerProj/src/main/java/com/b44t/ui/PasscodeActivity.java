@@ -69,7 +69,7 @@ import com.b44t.ui.ActionBar.ActionBarMenuItem;
 import com.b44t.ui.ActionBar.BaseFragment;
 import com.b44t.ui.Adapters.BaseFragmentAdapter;
 import com.b44t.ui.Cells.TextCheckCell;
-import com.b44t.ui.Cells.TextInfoPrivacyCell;
+import com.b44t.ui.Cells.TextInfoCell;
 import com.b44t.ui.Cells.TextSettingsCell;
 import com.b44t.ui.Components.LayoutHelper;
 import com.b44t.ui.Components.NumberPicker;
@@ -687,17 +687,17 @@ public class PasscodeActivity extends BaseFragment implements NotificationCenter
                 }
             } else if (viewType == 2) {
                 if (view == null) {
-                    view = new TextInfoPrivacyCell(mContext);
+                    view = new TextInfoCell(mContext);
                 }
                 if (i == passcodeDetailRow) {
-                    ((TextInfoPrivacyCell) view).setText(LocaleController.getString("ChangePasscodeInfo", R.string.ChangePasscodeInfo));
+                    ((TextInfoCell) view).setText(LocaleController.getString("ChangePasscodeInfo", R.string.ChangePasscodeInfo));
                     if (autoLockDetailRow != -1) {
                         view.setBackgroundResource(R.drawable.greydivider);
                     } else {
                         view.setBackgroundResource(R.drawable.greydivider_bottom);
                     }
                 } else if (i == autoLockDetailRow) {
-                    ((TextInfoPrivacyCell) view).setText(LocaleController.getString("AutoLockInfo", R.string.AutoLockInfo));
+                    ((TextInfoCell) view).setText(LocaleController.getString("AutoLockInfo", R.string.AutoLockInfo));
                     view.setBackgroundResource(R.drawable.greydivider_bottom);
                 }
             }

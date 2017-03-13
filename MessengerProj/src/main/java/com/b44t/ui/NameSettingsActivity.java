@@ -47,7 +47,7 @@ import com.b44t.ui.ActionBar.BaseFragment;
 import com.b44t.ui.Adapters.BaseFragmentAdapter;
 import com.b44t.ui.Cells.HeaderCell;
 import com.b44t.ui.Cells.EditTextCell;
-import com.b44t.ui.Cells.TextInfoPrivacyCell;
+import com.b44t.ui.Cells.TextInfoCell;
 import com.b44t.ui.Components.LayoutHelper;
 
 
@@ -238,10 +238,10 @@ public class NameSettingsActivity extends BaseFragment {
                 }
             } else if (type == typeInfo) {
                 if (view == null) {
-                    view = new TextInfoPrivacyCell(mContext);
+                    view = new TextInfoCell(mContext);
                 }
                 if( i==rowDisplaynameInfo) {
-                    ((TextInfoPrivacyCell) view).setText(LocaleController.getString("MyNameExplain", R.string.MyNameExplain));
+                    ((TextInfoCell) view).setText(LocaleController.getString("MyNameExplain", R.string.MyNameExplain));
                 }
                 view.setBackgroundResource(R.drawable.greydivider_bottom);
             }

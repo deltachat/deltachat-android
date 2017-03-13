@@ -68,7 +68,7 @@ public class EditTextCell extends FrameLayout {
         labelTextView.setSingleLine(true);
         labelTextView.setPadding(0, 0, 0, 0);
         addView(labelTextView, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, (LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT) | Gravity.TOP,
-                    17, 10, 17, 0));
+                    17, 8, 17, 0));
 
 
         editView = new EditText(context);

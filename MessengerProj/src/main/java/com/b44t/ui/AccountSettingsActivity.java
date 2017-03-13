@@ -52,7 +52,7 @@ import com.b44t.ui.Adapters.BaseFragmentAdapter;
 import com.b44t.ui.Cells.HeaderCell;
 import com.b44t.ui.Cells.EditTextCell;
 import com.b44t.ui.Cells.ShadowSectionCell;
-import com.b44t.ui.Cells.TextInfoPrivacyCell;
+import com.b44t.ui.Cells.TextInfoCell;
 import com.b44t.ui.Components.LayoutHelper;
 
 
@@ -64,7 +64,7 @@ public class AccountSettingsActivity extends BaseFragment implements Notificatio
     private int         rowSectionBasic;
     private int         rowAddr;
     private int         rowMailPw;
-    private int         rowInfoBelowMailPw2;
+    private int         rowOpenAdvOpions;
 
     private int         rowSectionMail;
     private int         rowMailServer;
@@ -80,26 +80,26 @@ public class AccountSettingsActivity extends BaseFragment implements Notificatio
     private int         rowInfoBelowSendPw;
     private int         rowCount;
 
-    private final int   typeInfo          = 0; // no gaps here!
-    private final int   typeTextEntry     = 1;
-    private final int   typeShadowSection = 2;
-    private final int   typeSection       = 3;
+    private final int ROWTYPE_INFO         = 0; // no gaps here!
+    private final int ROWTYPE_TEXT_ENTRY   = 1;
+    private final int ROWTYPE_SHADOW_BREAK = 2;
+    private final int ROWTYPE_HEADLINE     = 3;
 
-    EditTextCell addrCell;  // warning all these objects may be null!
-    EditTextCell mailPwCell;
-    EditTextCell mailServerCell;
-    EditTextCell mailPortCell;
-    EditTextCell mailUserCell;
-    EditTextCell sendPwCell;
-    EditTextCell sendServerCell;
-    EditTextCell sendPortCell;
-    EditTextCell sendUserCell;
+    private EditTextCell addrCell;  // warning all these objects may be null!
+    private EditTextCell mailPwCell;
+    private EditTextCell mailServerCell;
+    private EditTextCell mailPortCell;
+    private EditTextCell mailUserCell;
+    private EditTextCell sendPwCell;
+    private EditTextCell sendServerCell;
+    private EditTextCell sendPortCell;
+    private EditTextCell sendUserCell;
 
     // misc.
-    private View             doneButton;
-    private final static int done_button = 1;
+    private final int        ID_DONE_BUTTON = 1;
     private ProgressDialog   progressDialog = null;
-    boolean fromIntro;
+    private boolean          fromIntro;
+    private boolean          m_expanded = false;
 
     public AccountSettingsActivity(Bundle args) {
         super();
@@ -114,26 +114,60 @@ public class AccountSettingsActivity extends BaseFragment implements Notificatio
 
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.connectionStateChanged);
 
-        rowCount = 0;
-        rowSectionBasic = rowCount++;
-        rowAddr = rowCount++;
-        rowMailPw = rowCount++;
-        rowInfoBelowMailPw2 = rowCount++;
+        m_expanded = false;
+        if( !MrMailbox.getConfig("mail_user", "").isEmpty()
+         || !MrMailbox.getConfig("mail_server", "").isEmpty()
+         || !MrMailbox.getConfig("mail_port", "").isEmpty()
+         || !MrMailbox.getConfig("send_user", "").isEmpty()
+         || !MrMailbox.getConfig("send_pw", "").isEmpty()
+         || !MrMailbox.getConfig("send_server", "").isEmpty()
+         || !MrMailbox.getConfig("send_port", "").isEmpty() ) {
+            m_expanded = true;
+        }
 
-        rowSectionMail = rowCount++;
-        rowMailUser = rowCount++; // should be the first additional option, the loginname is the component, that cannot be configured automatically (if not derivable from the address)
-        rowMailServer = rowCount++;
-        rowMailPort = rowCount++;
-        rowBreak2 = rowCount++;
 
-        rowSectionSend = rowCount++;
-        rowSendUser = rowCount++;
-        rowSendPw = rowCount++;
-        rowSendServer = rowCount++;
-        rowSendPort = rowCount++;
-        rowInfoBelowSendPw = rowCount++;
+        calculateRows();
 
         return true;
+    }
+
+    private void calculateRows()
+    {
+        rowCount = 0;
+
+        rowSectionBasic  = rowCount++;
+        rowAddr          = rowCount++;
+        rowMailPw        = rowCount++;
+        rowOpenAdvOpions = rowCount++;
+
+        if( m_expanded ) {
+            rowSectionMail = rowCount++;
+            rowMailUser    = rowCount++; // should be the first additional option, the loginname is the component, that cannot be configured automatically (if not derivable from the address)
+            rowMailServer  = rowCount++;
+            rowMailPort    = rowCount++;
+            rowBreak2      = rowCount++;
+
+            rowSectionSend = rowCount++;
+            rowSendUser    = rowCount++;
+            rowSendPw      = rowCount++;
+            rowSendServer  = rowCount++;
+            rowSendPort    = rowCount++;
+        }
+        else {
+            rowSectionMail = -1;
+            rowMailUser    = -1;
+            rowMailServer  = -1;
+            rowMailPort    = -1;
+            rowBreak2      = -1;
+
+            rowSectionSend = -1;
+            rowSendUser    = -1;
+            rowSendPw      = -1;
+            rowSendServer  = -1;
+            rowSendPort    = -1;
+        }
+
+        rowInfoBelowSendPw = rowCount++;
     }
 
     @Override
@@ -171,14 +205,14 @@ public class AccountSettingsActivity extends BaseFragment implements Notificatio
                     else {
                         finishFragment();
                     }
-                } else if (id == done_button) {
+                } else if (id == ID_DONE_BUTTON) {
                     saveData();
                 }
             }
         });
 
         ActionBarMenu menu = actionBar.createMenu();
-        doneButton = menu.addItemWithWidth(done_button, R.drawable.ic_done, AndroidUtilities.dp(56));
+        menu.addItemWithWidth(ID_DONE_BUTTON, R.drawable.ic_done, AndroidUtilities.dp(56));
 
         // create object to hold the whole view
         fragmentView = new FrameLayout(context);
@@ -198,6 +232,11 @@ public class AccountSettingsActivity extends BaseFragment implements Notificatio
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(final AdapterView<?> adapterView, View view, final int i, long l) {
+                if( i==rowOpenAdvOpions ) {
+                    m_expanded = !m_expanded;
+                    calculateRows();
+                    listAdapter.notifyDataSetChanged();
+                }
             }
         });
 
@@ -207,13 +246,6 @@ public class AccountSettingsActivity extends BaseFragment implements Notificatio
     private void saveData() {
         // Warning: the widgets are created as needed and may not be present!
         String v;
-
-        /*
-        if( !isModified() && MrMailbox.MrMailboxIsConfigured(MrMailbox.hMailbox)!=0 ) {
-            finishFragment();
-            return; // nothing to do
-        }
-        */
 
         if( addrCell!=null) {
             v = addrCell.getValue().trim();
@@ -380,8 +412,7 @@ public class AccountSettingsActivity extends BaseFragment implements Notificatio
 
         @Override
         public boolean isEnabled(int i) {
-            return (i == rowAddr || i==rowMailPw || i==rowMailServer || i==rowMailPort|| i==rowMailUser
-                    || i==rowSendServer || i==rowSendPort || i==rowSendUser || i== rowSendPw);
+            return !(i==rowSectionBasic || i==rowSectionMail || i==rowBreak2 || i==rowSectionSend || i==rowInfoBelowSendPw);
         }
 
         @Override
@@ -407,7 +438,7 @@ public class AccountSettingsActivity extends BaseFragment implements Notificatio
         @Override
         public View getView(int i, View view, ViewGroup viewGroup) {
             int type = getItemViewType__(i);
-            if (type == typeTextEntry) {
+            if (type == ROWTYPE_TEXT_ENTRY) {
                 if (i == rowAddr) {
                     if( addrCell==null) {
                         addrCell = new EditTextCell(mContext);
@@ -484,7 +515,7 @@ public class AccountSettingsActivity extends BaseFragment implements Notificatio
                     view = sendPwCell;
                 }
             }
-            else if (type == typeSection) {
+            else if (type == ROWTYPE_HEADLINE) {
                 if (view == null) {
                     view = new HeaderCell(mContext);
                     view.setBackgroundColor(0xffffffff);
@@ -497,22 +528,25 @@ public class AccountSettingsActivity extends BaseFragment implements Notificatio
                     ((HeaderCell) view).setText(LocaleController.getString("OutboxHeadline", R.string.OutboxHeadline));
                 }
             }
-            else if (type == typeShadowSection) {
+            else if (type == ROWTYPE_SHADOW_BREAK) {
                 if (view == null) {
                     view = new ShadowSectionCell(mContext);
                 }
             }
-            else if (type == typeInfo) {
+            else if (type == ROWTYPE_INFO) {
                 if (view == null) {
-                    view = new TextInfoPrivacyCell(mContext);
+                    view = new TextInfoCell(mContext);
                 }
-                if( i==rowInfoBelowMailPw2) {
-                    ((TextInfoPrivacyCell) view).setText(LocaleController.getString("MyAccoutExplain", R.string.MyAccountExplain)+"\n");
-                    view.setBackgroundResource(R.drawable.greydivider); // has shadow top+bottom
+                if( i== rowOpenAdvOpions) {
+                    ((TextInfoCell) view).setText(LocaleController.getString("MyAccoutExplain", R.string.MyAccountExplain),
+                            m_expanded? " \u2212" /*minus-sign*/ : "+", m_expanded /*draw bottom border?*/);
+                    view.setBackgroundResource(m_expanded? R.drawable.greydivider : R.drawable.greydivider_bottom); // has shadow top+bottom
                 }
                 else if( i==rowInfoBelowSendPw) {
-                    ((TextInfoPrivacyCell) view).setText(LocaleController.getString("MyAccountExplain2", R.string.MyAccountExplain2));
-                    view.setBackgroundResource(R.drawable.greydivider_bottom);
+                    ((TextInfoCell) view).setText(LocaleController.getString("MyAccountExplain2", R.string.MyAccountExplain2));
+                    if( m_expanded ) {
+                        view.setBackgroundResource(R.drawable.greydivider_bottom);
+                    }
                 }
             }
             return view;
@@ -526,15 +560,15 @@ public class AccountSettingsActivity extends BaseFragment implements Notificatio
         private int getItemViewType__(int i) {
             if (i == rowAddr || i==rowMailPw || i==rowMailServer || i==rowMailPort|| i==rowMailUser
                      || i==rowSendServer || i==rowSendPort || i==rowSendUser || i== rowSendPw ) {
-                return typeTextEntry;
+                return ROWTYPE_TEXT_ENTRY;
             }
             else if( i==rowSectionBasic || i==rowSectionMail || i==rowSectionSend ) {
-                return typeSection;
+                return ROWTYPE_HEADLINE;
             }
             else if( i== rowBreak2) {
-                return typeShadowSection;
+                return ROWTYPE_SHADOW_BREAK;
             }
-            return typeInfo;
+            return ROWTYPE_INFO;
         }
 
         @Override

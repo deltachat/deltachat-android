@@ -41,7 +41,7 @@ import com.b44t.messenger.R;
 import com.b44t.ui.ActionBar.ActionBar;
 import com.b44t.ui.ActionBar.BaseFragment;
 import com.b44t.ui.Adapters.BaseFragmentAdapter;
-import com.b44t.ui.Cells.TextInfoPrivacyCell;
+import com.b44t.ui.Cells.TextInfoCell;
 import com.b44t.ui.Cells.TextSettingsCell;
 import com.b44t.ui.Components.LayoutHelper;
 
@@ -194,10 +194,10 @@ public class CacheControlActivity extends BaseFragment {
                 }
             } else if (type == ROWTYPE_TEXT_INFO) {
                 if (view == null) {
-                    view = new TextInfoPrivacyCell(mContext);
+                    view = new TextInfoCell(mContext);
                 }
                 if (i == rowKeepMediaInfo) {
-                    ((TextInfoPrivacyCell) view).setText(AndroidUtilities.replaceTags(LocaleController.getString("KeepMediaInfo", R.string.KeepMediaInfo)));
+                    ((TextInfoCell) view).setText(AndroidUtilities.replaceTags(LocaleController.getString("KeepMediaInfo", R.string.KeepMediaInfo)));
                     view.setBackgroundResource(R.drawable.greydivider_bottom);
                 }
             }
@@ -206,9 +206,7 @@ public class CacheControlActivity extends BaseFragment {
 
         @Override
         public int getItemViewType(int i) {
-            if (i == rowKeepMediaSetting) {
-                return ROWTYPE_TEXT_SETTING;
-            } else if (i == rowKeepMediaInfo) {
+            if (i == rowKeepMediaInfo) {
                 return ROWTYPE_TEXT_INFO;
             }
             return ROWTYPE_TEXT_SETTING;

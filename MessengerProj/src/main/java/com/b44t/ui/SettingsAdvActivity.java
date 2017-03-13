@@ -85,7 +85,7 @@ public class SettingsAdvActivity extends BaseFragment {
         sendByEnterRow = rowCount++;
         raiseToSpeakRow = rowCount++; // outgoing message
         enableAnimationsRow = -1;//rowCount++; -- for now, we disable this option, maybe we can add it later to a "view" settings, however, in general, this should be more a system-option
-        cacheRow =rowCount++;
+        cacheRow = -1;// for now, the - non-functional - page is reachable by the "storage settings" in the "android App Settings" only
         languageRow = rowCount++;
         finalShadowRow = rowCount++;
 

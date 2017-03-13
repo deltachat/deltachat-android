@@ -1,7 +1,6 @@
 /*******************************************************************************
  *
  *                          Messenger Android Frontend
- *                        (C) 2013-2016 Nikolai Kudashov
  *                           (C) 2017 Björn Petersen
  *                    Contact: r10s@b44t.com, http://b44t.com
  *
@@ -24,7 +23,6 @@
 package com.b44t.ui.Cells;
 
 import android.content.Context;
-import android.text.method.LinkMovementMethod;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.widget.FrameLayout;
@@ -33,23 +31,29 @@ import android.widget.TextView;
 import com.b44t.messenger.AndroidUtilities;
 import com.b44t.messenger.LocaleController;
 import com.b44t.ui.Components.LayoutHelper;
-import com.b44t.ui.ActionBar.Theme;
 
-public class TextInfoPrivacyCell extends FrameLayout {
+
+public class TextInfoCell extends FrameLayout {
 
     private TextView textView;
+    private TextView iconView;
 
-    public TextInfoPrivacyCell(Context context) {
+    private final int iconDp = 34;
+
+    public TextInfoCell(Context context) {
         super(context);
 
         textView = new TextView(context);
         textView.setTextColor(0xff808080);
-        textView.setLinkTextColor(Theme.MSG_LINK_TEXT_COLOR);
         textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
         textView.setGravity(LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT);
-        textView.setPadding(0, AndroidUtilities.dp(10), 0, AndroidUtilities.dp(17));
-        textView.setMovementMethod(LinkMovementMethod.getInstance());
-        addView(textView, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, (LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT) | Gravity.TOP, 17, 0, 17, 0));
+        addView(textView);
+
+        iconView = new TextView(context);
+        iconView.setTextColor(0xff000000);
+        iconView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, iconDp);
+        iconView.setGravity(LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT);
+        addView(iconView);
     }
 
     @Override
@@ -57,8 +61,43 @@ public class TextInfoPrivacyCell extends FrameLayout {
         super.onMeasure(MeasureSpec.makeMeasureSpec(MeasureSpec.getSize(widthMeasureSpec), MeasureSpec.EXACTLY), MeasureSpec.makeMeasureSpec(0, MeasureSpec.UNSPECIFIED));
     }
 
-    public void setText(CharSequence text) {
+    public void setText(CharSequence text)
+    {
+        setText(text, null, true);
+    }
+
+    public void setText(CharSequence text, CharSequence icon, boolean borderBotton)
+    {
         textView.setText(text);
+
+        FrameLayout.LayoutParams lp = (FrameLayout.LayoutParams) textView.getLayoutParams();
+        lp.width        = LayoutHelper.WRAP_CONTENT;
+        lp.height       = LayoutHelper.WRAP_CONTENT;
+        lp.gravity      = (LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT) | Gravity.TOP;
+        lp.leftMargin   = AndroidUtilities.dp(17);
+        lp.topMargin    = AndroidUtilities.dp(13);
+        lp.rightMargin  = AndroidUtilities.dp(17 + (icon!=null?iconDp:0));
+        lp.bottomMargin = borderBotton? AndroidUtilities.dp(13) : 0;
+        textView.setLayoutParams(lp);
+
+        if( icon != null )
+        {
+            iconView.setText(icon);
+            iconView.setVisibility(VISIBLE);
+
+            lp = (FrameLayout.LayoutParams) iconView.getLayoutParams();
+            lp.width        = LayoutHelper.WRAP_CONTENT;
+            lp.height       = LayoutHelper.WRAP_CONTENT;
+            lp.gravity      = (LocaleController.isRTL ? Gravity.LEFT : Gravity.RIGHT) | Gravity.TOP;
+            lp.leftMargin   = AndroidUtilities.dp(17);
+            lp.topMargin    = AndroidUtilities.dp(3);
+            lp.rightMargin  = AndroidUtilities.dp(20);
+            iconView.setLayoutParams(lp);
+        }
+        else
+        {
+            iconView.setVisibility(GONE);
+        }
     }
 
     public void setTextColor(int color) {

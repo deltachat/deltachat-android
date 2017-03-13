@@ -44,7 +44,7 @@ import com.b44t.ui.ActionBar.BaseFragment;
 import com.b44t.ui.Adapters.BaseFragmentAdapter;
 import com.b44t.ui.Cells.HeaderCell;
 import com.b44t.ui.Cells.TextCheckCell;
-import com.b44t.ui.Cells.TextInfoPrivacyCell;
+import com.b44t.ui.Cells.TextInfoCell;
 import com.b44t.ui.Cells.TextSettingsCell;
 import com.b44t.ui.Components.LayoutHelper;
 
@@ -301,10 +301,10 @@ public class PrivacySettingsActivity extends BaseFragment implements Notificatio
                 }
             } else if (type == TYPE_TEXT_INFO) {
                 if (view == null) {
-                    view = new TextInfoPrivacyCell(mContext);
+                    view = new TextInfoCell(mContext);
                 }
                 if (i == secretDetailRow) {
-                    ((TextInfoPrivacyCell) view).setText("");
+                    ((TextInfoCell) view).setText("");
                     view.setBackgroundResource(R.drawable.greydivider_bottom);
                 }
             } else if (type == TYPE_HEADER) {
