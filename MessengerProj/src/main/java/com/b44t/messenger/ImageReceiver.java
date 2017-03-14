@@ -371,12 +371,10 @@ public class ImageReceiver implements NotificationCenter.NotificationCenterDeleg
             setImageBackup.ext = currentExt;
             setImageBackup.cacheOnly = currentCacheOnly;
         }
-        NotificationCenter.getInstance().removeObserver(this, NotificationCenter.didReplacedPhotoInMemCache);
         clearImage();
     }
 
     public boolean onAttachedToWindow() {
-        NotificationCenter.getInstance().addObserver(this, NotificationCenter.didReplacedPhotoInMemCache);
         if (setImageBackup != null && (setImageBackup.fileLocation != null || setImageBackup.httpUrl != null || setImageBackup.thumbLocation != null || setImageBackup.thumb != null)) {
             setImage(setImageBackup.fileLocation, setImageBackup.httpUrl, setImageBackup.filter, setImageBackup.thumb, setImageBackup.thumbLocation, setImageBackup.thumbFilter, setImageBackup.size, setImageBackup.ext, setImageBackup.cacheOnly);
             return true;
@@ -1056,26 +1054,6 @@ public class ImageReceiver implements NotificationCenter.NotificationCenterDeleg
                     } else {
                         parentView.invalidate(imageX, imageY, imageX + imageW, imageY + imageH);
                     }
-                }
-            }
-        } else if (id == NotificationCenter.didReplacedPhotoInMemCache) {
-            String oldKey = (String) args[0];
-            if (currentKey != null && currentKey.equals(oldKey)) {
-                currentKey = (String) args[1];
-                currentImageLocation = (TLRPC.FileLocation) args[2];
-            }
-            if (currentThumbKey != null && currentThumbKey.equals(oldKey)) {
-                currentThumbKey = (String) args[1];
-                currentThumbLocation = (TLRPC.FileLocation) args[2];
-            }
-            if (setImageBackup != null) {
-                if (currentKey != null && currentKey.equals(oldKey)) {
-                    currentKey = (String) args[1];
-                    currentImageLocation = (TLRPC.FileLocation) args[2];
-                }
-                if (currentThumbKey != null && currentThumbKey.equals(oldKey)) {
-                    currentThumbKey = (String) args[1];
-                    currentThumbLocation = (TLRPC.FileLocation) args[2];
                 }
             }
         }

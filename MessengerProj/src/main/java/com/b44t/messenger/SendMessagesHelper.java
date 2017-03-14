@@ -62,8 +62,6 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.FilePreparingStarted);
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.FileNewChunkAvailable);
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.FilePreparingFailed);
-        NotificationCenter.getInstance().addObserver(this, NotificationCenter.httpFileDidFailedLoad);
-        NotificationCenter.getInstance().addObserver(this, NotificationCenter.httpFileDidLoaded);
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.FileDidLoaded);
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.FileDidFailedLoad);
     }
@@ -92,112 +90,6 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
             MessageObject messageObject = (MessageObject) args[0];
             new File(messageObject.messageOwner.attachPath+".increation").delete();
             NotificationCenter.getInstance().postNotificationName(NotificationCenter.messagesSentOrRead);
-        }
-        else if (id == NotificationCenter.httpFileDidLoaded) {
-            /*
-            String path = (String) args[0];
-            ArrayList<DelayedMessage> arr = delayedMessages.get(path);
-            if (arr != null) {
-                for (int a = 0; a < arr.size(); a++) {
-                    final DelayedMessage message = arr.get(a);
-                    if (message.type == 0) {
-                        String md5 = Utilities.MD5(message.httpLocation) + "." + ImageLoader.getHttpUrlExtension(message.httpLocation, "file");
-                        final File cacheFile = new File(FileLoader.getInstance().getDirectory(FileLoader.MEDIA_DIR_CACHE), md5);
-                        Utilities.globalQueue.postRunnable(new Runnable() {
-                            @Override
-                            public void run() {
-                                final TLRPC.TL_photo photo = SendMessagesHelper.getInstance().generatePhotoSizes(cacheFile.toString(), null);
-                                AndroidUtilities.runOnUIThread(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        if (photo != null) {
-                                            message.httpLocation = null;
-                                            message.obj.messageOwner.media.photo = photo;
-                                            message.obj.messageOwner.attachPath = cacheFile.toString();
-                                            message.location = photo.sizes.get(photo.sizes.size() - 1).location;
-                                            ArrayList<TLRPC.Message> messages = new ArrayList<>();
-                                            messages.add(message.obj.messageOwner);
-                                            //MessagesStorage.getInstance().putMessages(messages, false, true, false, 0);
-                                            performSendDelayedMessage(message);
-                                            NotificationCenter.getInstance().postNotificationName(NotificationCenter.updateMessageMedia, message.obj);
-                                        } else {
-                                            FileLog.e("messenger", "can't load image " + message.httpLocation + " to file " + cacheFile.toString());
-                                            //MessagesStorage.getInstance().markMessageAsSendError(message.obj.messageOwner);
-                                            message.obj.messageOwner.send_state = MessageObject.MESSAGE_SEND_STATE_SEND_ERROR;
-                                            NotificationCenter.getInstance().postNotificationName(NotificationCenter.messageSendError, message.obj.getId());
-                                            processSentMessage(message.obj.getId());
-                                        }
-                                    }
-                                });
-                            }
-                        });
-                    } else if (message.type == 2) {
-                        String md5 = Utilities.MD5(message.httpLocation) + ".gif";
-                        final File cacheFile = new File(FileLoader.getInstance().getDirectory(FileLoader.MEDIA_DIR_CACHE), md5);
-                        Utilities.globalQueue.postRunnable(new Runnable() {
-                            @Override
-                            public void run() {
-                                if (message.documentLocation.thumb.location instanceof TLRPC.TL_fileLocationUnavailable) {
-                                    try {
-                                        Bitmap bitmap = ImageLoader.loadBitmap(cacheFile.getAbsolutePath(), null, 90, 90, true);
-                                        if (bitmap != null) {
-                                            message.documentLocation.thumb = ImageLoader.scaleAndSaveImage(bitmap, 90, 90, 55, message.sendEncryptedRequest != null);
-                                            bitmap.recycle();
-                                        }
-                                    } catch (Exception e) {
-                                        message.documentLocation.thumb = null;
-                                        FileLog.e("messenger", e);
-                                    }
-                                    if (message.documentLocation.thumb == null) {
-                                        message.documentLocation.thumb = new TLRPC.TL_photoSizeEmpty();
-                                        message.documentLocation.thumb.type = "s";
-                                    }
-                                }
-                                AndroidUtilities.runOnUIThread(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        message.httpLocation = null;
-                                        message.obj.messageOwner.attachPath = cacheFile.toString();
-                                        message.location = message.documentLocation.thumb.location;
-                                        ArrayList<TLRPC.Message> messages = new ArrayList<>();
-                                        messages.add(message.obj.messageOwner);
-                                        //MessagesStorage.getInstance().putMessages(messages, false, true, false, 0);
-                                        performSendDelayedMessage(message);
-                                        NotificationCenter.getInstance().postNotificationName(NotificationCenter.updateMessageMedia, message.obj);
-                                    }
-                                });
-                            }
-                        });
-                    }
-                }
-                delayedMessages.remove(path);
-            }
-            */
-        } else if (id == NotificationCenter.FileDidLoaded) {
-            /*
-            String path = (String) args[0];
-            ArrayList<DelayedMessage> arr = delayedMessages.get(path);
-            if (arr != null) {
-                for (int a = 0; a < arr.size(); a++) {
-                    performSendDelayedMessage(arr.get(a));
-                }
-                delayedMessages.remove(path);
-            }
-            */
-        } else if (id == NotificationCenter.httpFileDidFailedLoad || id == NotificationCenter.FileDidFailedLoad) {
-            /*
-            String path = (String) args[0];
-            ArrayList<DelayedMessage> arr = delayedMessages.get(path);
-            if (arr != null) {
-                for (DelayedMessage message : arr) {
-                    //MessagesStorage.getInstance().markMessageAsSendError(message.obj.messageOwner);
-                    message.obj.messageOwner.send_state = MessageObject.MESSAGE_SEND_STATE_SEND_ERROR;
-                    NotificationCenter.getInstance().postNotificationName(NotificationCenter.messageSendError, message.obj.getId());
-                    processSentMessage(message.obj.getId());
-                }
-                delayedMessages.remove(path);
-            }
-            */
         }
     }
 
@@ -540,44 +432,6 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
         prepareSendingDocuments(paths, originalPaths, uris, mine, dialog_id);
     }
 
-    /*public static void prepareSendingAudioDocuments(final ArrayList<MessageObject> messageObjects, final long dialog_id) {
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                int size = messageObjects.size();
-                for (int a = 0; a < size; a++) {
-                    final MessageObject messageObject = messageObjects.get(a);
-                    String originalPath = messageObject.messageOwner.attachPath;
-                    final File f = new File(originalPath);
-
-                    if (originalPath != null) {
-                        originalPath += "audio" + f.length();
-                    }
-
-                    TLRPC.TL_document document = null;
-                    if (!isEncrypted) {
-                        document = null;//(TLRPC.TL_document) MessagesStorage.getInstance().getSentFile(originalPath, !isEncrypted ? 1 : 4);
-                    }
-                    if (document == null) {
-                        document = null;//(TLRPC.TL_document) messageObject.messageOwner.media.document;
-                    }
-
-                    final HashMap<String, String> params = new HashMap<>();
-                    if (originalPath != null) {
-                        params.put("originalPath", originalPath);
-                    }
-                    final TLRPC.TL_document documentFinal = document;
-                    AndroidUtilities.runOnUIThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            SendMessagesHelper.getInstance().sendMessageDocument(documentFinal, null, messageObject.messageOwner.attachPath, dialog_id, params);
-                        }
-                    });
-                }
-            }
-        }).start();
-    }*/
-
     public static void prepareSendingDocuments(final ArrayList<String> paths, final ArrayList<String> originalPaths, final ArrayList<Uri> uris, final String mime, final long dialog_id) {
         if (paths == null && originalPaths == null && uris == null || paths != null && originalPaths != null && paths.size() != originalPaths.size()) {
             return;
@@ -680,7 +534,6 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
         new Thread(new Runnable() {
             @Override
             public void run() {
-                final boolean isEncrypted = false;//(int) dialog_id == 0;
 
                 ArrayList<String> sendAsDocuments = null;
                 ArrayList<String> sendAsDocumentsOriginal = null;

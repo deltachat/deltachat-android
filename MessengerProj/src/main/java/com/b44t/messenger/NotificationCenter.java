@@ -43,9 +43,7 @@ public class NotificationCenter {
     public static final int chatDidCreated = totalEvents++;
     public static final int mediaDidLoaded = totalEvents++;
     public static final int mediaCountDidLoaded = totalEvents++;
-    public static final int dialogPhotosLoaded = totalEvents++;
     public static final int notificationsSettingsUpdated = totalEvents++;
-    //public static final int pushMessagesUpdated = totalEvents++;
     public static final int blockedUsersDidLoaded = totalEvents++;
     public static final int openedChatChanged = totalEvents++;
     public static final int mainUserInfoChanged = totalEvents++;
@@ -54,18 +52,11 @@ public class NotificationCenter {
     public static final int didSetPasscode = totalEvents++;
     //public static final int screenStateChanged = totalEvents++; -- currently not used, but this may get handy
     public static final int stickersDidLoaded = totalEvents++;
-    public static final int didReplacedPhotoInMemCache = totalEvents++;
-    //public static final int musicDidLoaded = totalEvents++;
-    public static final int reloadHints = totalEvents++;
-
-    public static final int httpFileDidLoaded = totalEvents++;
-    public static final int httpFileDidFailedLoad = totalEvents++;
 
     public static final int messageThumbGenerated = totalEvents++;
 
     public static final int wallpapersDidLoaded = totalEvents++;
     public static final int closeOtherAppActivities = totalEvents++;
-    public static final int didUpdatedConnectionState = totalEvents++;
     public static final int emojiDidLoaded = totalEvents++;
 
     public static final int FileLoadProgressChanged = totalEvents++;

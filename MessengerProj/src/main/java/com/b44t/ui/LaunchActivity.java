@@ -367,7 +367,6 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
 
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.mainUserInfoChanged);
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.closeOtherAppActivities);
-        NotificationCenter.getInstance().addObserver(this, NotificationCenter.didUpdatedConnectionState);
 
         if (actionBarLayout.fragmentsStack.isEmpty()) {
             if ( MrMailbox.isConfigured()==0 ) {
@@ -1118,7 +1117,6 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
         }
         NotificationCenter.getInstance().removeObserver(this, NotificationCenter.mainUserInfoChanged);
         NotificationCenter.getInstance().removeObserver(this, NotificationCenter.closeOtherAppActivities);
-        NotificationCenter.getInstance().removeObserver(this, NotificationCenter.didUpdatedConnectionState);
     }
 
     public void presentFragment(BaseFragment fragment) {
@@ -1423,13 +1421,6 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
             if (args[0] != this) {
                 onFinish();
                 finish();
-            }
-        } else if (id == NotificationCenter.didUpdatedConnectionState) {
-            int state = ConnectionsManager.getInstance().getConnectionState();
-            if (currentConnectionState != state) {
-                FileLog.d("messenger", "switch to state " + state);
-                currentConnectionState = state;
-                updateCurrentConnectionState();
             }
         } else if (id == NotificationCenter.mainUserInfoChanged) {
             drawerLayoutAdapter.notifyDataSetChanged();

@@ -736,62 +736,6 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
                     radialProgressViews[a].setProgress(progress, true);
                 }
             }
-        } else if (id == NotificationCenter.dialogPhotosLoaded) {
-            int guid = (Integer) args[4];
-            int did = (Integer) args[0];
-            if (avatarsDialogId == did && classGuid == guid) {
-                //boolean fromCache = (Boolean) args[3];
-
-                int setToImage = -1;
-                ArrayList<TLRPC.Photo> photos = (ArrayList<TLRPC.Photo>) args[5];
-                if (photos.isEmpty()) {
-                    return;
-                }
-                imagesArrLocations.clear();
-                imagesArrLocationsSizes.clear();
-                avatarsArr.clear();
-                for (int a = 0; a < photos.size(); a++) {
-                    TLRPC.Photo photo = photos.get(a);
-                    if (photo == null || photo instanceof TLRPC.TL_photoEmpty || photo.sizes == null) {
-                        continue;
-                    }
-                    TLRPC.PhotoSize sizeFull = FileLoader.getClosestPhotoSizeWithSize(photo.sizes, 640);
-                    if (sizeFull != null) {
-                        if (setToImage == -1 && currentFileLocation != null) {
-                            for (int b = 0; b < photo.sizes.size(); b++) {
-                                TLRPC.PhotoSize size = photo.sizes.get(b);
-                                if (size.location.local_id == currentFileLocation.local_id && size.location.volume_id == currentFileLocation.volume_id) {
-                                    setToImage = imagesArrLocations.size();
-                                    break;
-                                }
-                            }
-                        }
-                        imagesArrLocations.add(sizeFull.location);
-                        imagesArrLocationsSizes.add(sizeFull.size);
-                        avatarsArr.add(photo);
-                    }
-                }
-                /*
-                if (!avatarsArr.isEmpty()) {
-                    menuItem.showSubItem(gallery_menu_delete);
-                } else {
-                    menuItem.hideSubItem(gallery_menu_delete);
-                }
-                */
-                needSearchImageInArr = false;
-                currentIndex = -1;
-                if (setToImage != -1) {
-                    setImageIndex(setToImage, true);
-                } else {
-                    avatarsArr.add(0, new TLRPC.TL_photoEmpty());
-                    imagesArrLocations.add(0, currentFileLocation);
-                    imagesArrLocationsSizes.add(0, 0);
-                    setImageIndex(0, true);
-                }
-                //if (fromCache) {
-                //    MessagesController.getInstance().loadDialogPhotos(avatarsDialogId, 0, 80, 0, false, classGuid);
-                //}
-            }
         } else if (id == NotificationCenter.mediaCountDidLoaded) {
             long uid = (Long) args[0];
             if (uid == currentDialogId || uid == mergeDialogId) {
@@ -3050,7 +2994,6 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.FileLoadProgressChanged);
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.mediaCountDidLoaded);
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.mediaDidLoaded);
-        NotificationCenter.getInstance().addObserver(this, NotificationCenter.dialogPhotosLoaded);
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.emojiDidLoaded);
 
         placeProvider = provider;
@@ -3196,7 +3139,7 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
             AndroidUtilities.runOnUIThread(new Runnable() {
                 @Override
                 public void run() {
-                    NotificationCenter.getInstance().setAllowedNotificationsDutingAnimation(new int[]{NotificationCenter.dialogsNeedReload, NotificationCenter.closeChats, NotificationCenter.mediaCountDidLoaded, NotificationCenter.mediaDidLoaded, NotificationCenter.dialogPhotosLoaded});
+                    NotificationCenter.getInstance().setAllowedNotificationsDutingAnimation(new int[]{NotificationCenter.dialogsNeedReload, NotificationCenter.closeChats, NotificationCenter.mediaCountDidLoaded, NotificationCenter.mediaDidLoaded});
                     NotificationCenter.getInstance().setAnimationInProgress(true);
                     animatorSet.start();
                 }
@@ -3272,7 +3215,6 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
         NotificationCenter.getInstance().removeObserver(this, NotificationCenter.FileLoadProgressChanged);
         NotificationCenter.getInstance().removeObserver(this, NotificationCenter.mediaCountDidLoaded);
         NotificationCenter.getInstance().removeObserver(this, NotificationCenter.mediaDidLoaded);
-        NotificationCenter.getInstance().removeObserver(this, NotificationCenter.dialogPhotosLoaded);
         NotificationCenter.getInstance().removeObserver(this, NotificationCenter.emojiDidLoaded);
         //ConnectionsManager.getInstance().cancelRequestsForGuid(classGuid);
 

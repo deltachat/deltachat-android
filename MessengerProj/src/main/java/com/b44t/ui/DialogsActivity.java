@@ -150,7 +150,6 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.notificationsSettingsUpdated);
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.messageSendError);
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.didSetPasscode);
-        NotificationCenter.getInstance().addObserver(this, NotificationCenter.reloadHints);
 
         if (!dialogsLoaded) {
             NotificationCenter.getInstance().postNotificationName(NotificationCenter.dialogsNeedReload); // this is the rest of the first call to the removed MessagesController.loadDialogs(); not sure, if this is really needed
@@ -171,7 +170,6 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
         NotificationCenter.getInstance().removeObserver(this, NotificationCenter.notificationsSettingsUpdated);
         NotificationCenter.getInstance().removeObserver(this, NotificationCenter.messageSendError);
         NotificationCenter.getInstance().removeObserver(this, NotificationCenter.didSetPasscode);
-        NotificationCenter.getInstance().removeObserver(this, NotificationCenter.reloadHints);
 
         delegate = null;
     }
@@ -656,10 +654,6 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
             updateVisibleRows(MessagesController.UPDATE_MASK_SEND_STATE);
         } else if (id == NotificationCenter.didSetPasscode) {
             updatePasscodeButton();
-        } else if (id == NotificationCenter.reloadHints) {
-            if (dialogsSearchAdapter != null) {
-                dialogsSearchAdapter.notifyDataSetChanged();
-            }
         }
     }
 

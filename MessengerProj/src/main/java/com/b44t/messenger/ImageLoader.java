@@ -84,11 +84,6 @@ public class ImageLoader {
     private static byte[] headerThumb = new byte[12];
     private int currentHttpTasksCount = 0;
 
-    private LinkedList<HttpFileTask> httpFileLoadTasks = new LinkedList<>();
-    private HashMap<String, HttpFileTask> httpFileLoadTasksByKeys = new HashMap<>();
-    private HashMap<String, Runnable> retryHttpsTasks = new HashMap<>();
-    private int currentHttpFileLoadTasksCount = 0;
-
     private String ignoreRemoval = null;
 
     private volatile long lastCacheOutTime = 0;
@@ -99,128 +94,6 @@ public class ImageLoader {
         private int count;
         private TLRPC.FileLocation fileLocation;
         private String filter;
-    }
-
-    private class HttpFileTask extends AsyncTask<Void, Void, Boolean> {
-
-        private String url;
-        private File tempFile;
-        private String ext;
-        private RandomAccessFile fileOutputStream = null;
-        private boolean canRetry = true;
-
-        public HttpFileTask(String url, File tempFile, String ext) {
-            this.url = url;
-            this.tempFile = tempFile;
-            this.ext = ext;
-        }
-
-        protected Boolean doInBackground(Void... voids) {
-            InputStream httpConnectionStream = null;
-            boolean done = false;
-
-            URLConnection httpConnection = null;
-            try {
-                URL downloadUrl = new URL(url);
-                httpConnection = downloadUrl.openConnection();
-                httpConnection.addRequestProperty("User-Agent", "Mozilla/5.0 (Linux; Android 4.4; Nexus 5 Build/_BuildID_) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/30.0.0.0 Mobile Safari/537.36");
-                httpConnection.addRequestProperty("Referer", "google.com");
-                httpConnection.setConnectTimeout(5000);
-                httpConnection.setReadTimeout(5000);
-                if (httpConnection instanceof HttpURLConnection) {
-                    HttpURLConnection httpURLConnection = (HttpURLConnection) httpConnection;
-                    httpURLConnection.setInstanceFollowRedirects(true);
-                    int status = httpURLConnection.getResponseCode();
-                    if (status == HttpURLConnection.HTTP_MOVED_TEMP || status == HttpURLConnection.HTTP_MOVED_PERM || status == HttpURLConnection.HTTP_SEE_OTHER) {
-                        String newUrl = httpURLConnection.getHeaderField("Location");
-                        String cookies = httpURLConnection.getHeaderField("Set-Cookie");
-                        downloadUrl = new URL(newUrl);
-                        httpConnection = downloadUrl.openConnection();
-                        httpConnection.setRequestProperty("Cookie", cookies);
-                        httpConnection.addRequestProperty("User-Agent", "Mozilla/5.0 (Linux; Android 4.4; Nexus 5 Build/_BuildID_) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/30.0.0.0 Mobile Safari/537.36");
-                        httpConnection.addRequestProperty("Referer", "google.com");
-                    }
-                }
-                httpConnection.connect();
-                httpConnectionStream = httpConnection.getInputStream();
-
-                fileOutputStream = new RandomAccessFile(tempFile, "rws");
-            } catch (Throwable e) {
-                if (e instanceof UnknownHostException) {
-                    canRetry = false;
-                }
-                FileLog.e("messenger", e);
-            }
-
-            if (canRetry) {
-                try {
-                    if (httpConnection != null && httpConnection instanceof HttpURLConnection) {
-                        int code = ((HttpURLConnection) httpConnection).getResponseCode();
-                        if (code != HttpURLConnection.HTTP_OK && code != HttpURLConnection.HTTP_ACCEPTED && code != HttpURLConnection.HTTP_NOT_MODIFIED) {
-                            canRetry = false;
-                        }
-                    }
-                } catch (Exception e) {
-                    FileLog.e("messenger", e);
-                }
-
-                if (httpConnectionStream != null) {
-                    try {
-                        byte[] data = new byte[1024 * 4];
-                        while (true) {
-                            if (isCancelled()) {
-                                break;
-                            }
-                            try {
-                                int read = httpConnectionStream.read(data);
-                                if (read > 0) {
-                                    fileOutputStream.write(data, 0, read);
-                                } else if (read == -1) {
-                                    done = true;
-                                    break;
-                                } else {
-                                    break;
-                                }
-                            } catch (Exception e) {
-                                FileLog.e("messenger", e);
-                                break;
-                            }
-                        }
-                    } catch (Throwable e) {
-                        FileLog.e("messenger", e);
-                    }
-                }
-
-                try {
-                    if (fileOutputStream != null) {
-                        fileOutputStream.close();
-                        fileOutputStream = null;
-                    }
-                } catch (Throwable e) {
-                    FileLog.e("messenger", e);
-                }
-
-                try {
-                    if (httpConnectionStream != null) {
-                        httpConnectionStream.close();
-                    }
-                } catch (Throwable e) {
-                    FileLog.e("messenger", e);
-                }
-            }
-
-            return done;
-        }
-
-        @Override
-        protected void onPostExecute(Boolean result) {
-            runHttpFileLoadTasks(this, result ? 2 : 1);
-        }
-
-        @Override
-        protected void onCancelled() {
-            runHttpFileLoadTasks(this, 2);
-        }
     }
 
     private class HttpImageTask extends AsyncTask<Void, Void, Boolean> {
@@ -1701,45 +1574,6 @@ public class ImageLoader {
             task.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, null, null, null);
             currentHttpTasksCount++;
         }
-    }
-
-    private void runHttpFileLoadTasks(final HttpFileTask oldTask, final int reason) {
-        AndroidUtilities.runOnUIThread(new Runnable() {
-            @Override
-            public void run() {
-                if (oldTask != null) {
-                    currentHttpFileLoadTasksCount--;
-                }
-                if (oldTask != null) {
-                    if (reason == 1) {
-                        if (oldTask.canRetry) {
-                            final HttpFileTask newTask = new HttpFileTask(oldTask.url, oldTask.tempFile, oldTask.ext);
-                            Runnable runnable = new Runnable() {
-                                @Override
-                                public void run() {
-                                    httpFileLoadTasks.add(newTask);
-                                    runHttpFileLoadTasks(null, 0);
-                                }
-                            };
-                            retryHttpsTasks.put(oldTask.url, runnable);
-                            AndroidUtilities.runOnUIThread(runnable, 1000);
-                        } else {
-                            NotificationCenter.getInstance().postNotificationName(NotificationCenter.httpFileDidFailedLoad, oldTask.url);
-                        }
-                    } else if (reason == 2) {
-                        httpFileLoadTasksByKeys.remove(oldTask.url);
-                        File file = new File(FileLoader.getInstance().getDirectory(FileLoader.MEDIA_DIR_CACHE), Utilities.MD5(oldTask.url) + "." + oldTask.ext);
-                        String result = oldTask.tempFile.renameTo(file) ? file.toString() : oldTask.tempFile.toString();
-                        NotificationCenter.getInstance().postNotificationName(NotificationCenter.httpFileDidLoaded, oldTask.url, result);
-                    }
-                }
-                while (currentHttpFileLoadTasksCount < 2 && !httpFileLoadTasks.isEmpty()) {
-                    HttpFileTask task = httpFileLoadTasks.poll();
-                    task.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, null, null, null);
-                    currentHttpFileLoadTasksCount++;
-                }
-            }
-        });
     }
 
     public static Bitmap loadBitmap(String path, Uri uri, float maxWidth, float maxHeight, boolean useMaxScale) {
