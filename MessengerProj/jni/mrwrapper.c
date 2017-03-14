@@ -247,33 +247,33 @@ JNIEXPORT jstring Java_com_b44t_messenger_MrMailbox_getBlobdir(JNIEnv *env, jcla
 }
 
 
-JNIEXPORT jint Java_com_b44t_messenger_MrMailbox_MrMailboxConfigure(JNIEnv *env, jclass c, jlong hMailbox)
+JNIEXPORT void Java_com_b44t_messenger_MrMailbox_configureAndConnect(JNIEnv *env, jclass cls)
 {
-	return mrmailbox_configure((mrmailbox_t*)hMailbox);
+	mrmailbox_configure_and_connect(get_mrmailbox_t(env, cls));
 }
 
 
-JNIEXPORT jint Java_com_b44t_messenger_MrMailbox_MrMailboxIsConfigured(JNIEnv *env, jclass c, jlong hMailbox)
+/*JNIEXPORT void Java_com_b44t_messenger_MrMailbox_configureCancel(JNIEnv *env, jclass cls)
 {
-	return (jint)mrmailbox_is_configured((mrmailbox_t*)hMailbox);
+	mrmailbox_configure_cancel(get_mrmailbox_t(env, cls));
+}*/
+
+
+JNIEXPORT jint Java_com_b44t_messenger_MrMailbox_isConfigured(JNIEnv *env, jclass cls)
+{
+	return (jint)mrmailbox_is_configured(get_mrmailbox_t(env, cls));
 }
 
 
-JNIEXPORT jint Java_com_b44t_messenger_MrMailbox_MrMailboxConnect(JNIEnv *env, jclass c, jlong hMailbox)
+JNIEXPORT void Java_com_b44t_messenger_MrMailbox_connect(JNIEnv *env, jclass cls)
 {
-	return mrmailbox_connect((mrmailbox_t*)hMailbox);
+	mrmailbox_connect(get_mrmailbox_t(env, cls));
 }
 
 
-JNIEXPORT void Java_com_b44t_messenger_MrMailbox_MrMailboxDisconnect(JNIEnv *env, jclass c, jlong hMailbox)
+JNIEXPORT void Java_com_b44t_messenger_MrMailbox_disconnect(JNIEnv *env, jclass cls)
 {
-	mrmailbox_disconnect((mrmailbox_t*)hMailbox);
-}
-
-
-JNIEXPORT jint Java_com_b44t_messenger_MrMailbox_MrMailboxFetch(JNIEnv *env, jclass c, jlong hMailbox)
-{
-	return mrmailbox_fetch((mrmailbox_t*)hMailbox);
+	mrmailbox_disconnect(get_mrmailbox_t(env, cls));
 }
 
 
@@ -456,22 +456,22 @@ JNIEXPORT void Java_com_b44t_messenger_MrMailbox_forwardMsgs(JNIEnv *env, jclass
 
 /* MrMailbox - handle config */
 
-JNIEXPORT jint Java_com_b44t_messenger_MrMailbox_MrMailboxSetConfig(JNIEnv *env, jclass c, jlong hMailbox, jstring key, jstring value)
+JNIEXPORT jint Java_com_b44t_messenger_MrMailbox_setConfig(JNIEnv *env, jclass cls, jstring key, jstring value)
 {
 	CHAR_REF(key);
 	CHAR_REF(value);
-		jint ret = (jint)mrmailbox_set_config((mrmailbox_t*)hMailbox, keyPtr, valuePtr);
+		jint ret = (jint)mrmailbox_set_config(get_mrmailbox_t(env, cls), keyPtr, valuePtr);
 	CHAR_UNREF(key);
 	CHAR_UNREF(value);
 	return ret;
 }
 
 
-JNIEXPORT jstring Java_com_b44t_messenger_MrMailbox_MrMailboxGetConfig(JNIEnv *env, jclass c, jlong hMailbox, jstring key, jstring def)
+JNIEXPORT jstring Java_com_b44t_messenger_MrMailbox_getConfig(JNIEnv *env, jclass cls, jstring key, jstring def)
 {
 	CHAR_REF(key);
 	CHAR_REF(def);
-		char* temp = mrmailbox_get_config((mrmailbox_t*)hMailbox, keyPtr, defPtr);
+		char* temp = mrmailbox_get_config(get_mrmailbox_t(env, cls), keyPtr, defPtr);
 			jstring ret = JSTRING_NEW(temp);
 		free(temp);
 	CHAR_UNREF(key);
@@ -480,10 +480,10 @@ JNIEXPORT jstring Java_com_b44t_messenger_MrMailbox_MrMailboxGetConfig(JNIEnv *e
 }
 
 
-JNIEXPORT jint Java_com_b44t_messenger_MrMailbox_MrMailboxGetConfigInt(JNIEnv *env, jclass c, jlong hMailbox, jstring key, jint def)
+JNIEXPORT jint Java_com_b44t_messenger_MrMailbox_getConfigInt(JNIEnv *env, jclass cls, jstring key, jint def)
 {
 	CHAR_REF(key);
-		jint ret = mrmailbox_get_config_int((mrmailbox_t*)hMailbox, keyPtr, def);
+		jint ret = mrmailbox_get_config_int(get_mrmailbox_t(env, cls), keyPtr, def);
 	CHAR_UNREF(key);
 	return ret;
 }

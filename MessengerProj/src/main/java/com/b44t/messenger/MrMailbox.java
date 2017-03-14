@@ -38,51 +38,23 @@ public class MrMailbox {
     public native static void   close();
     public native static String getBlobdir();
 
-    public static int configure() {
-        return MrMailboxConfigure(m_hMailbox);
-    }
+    public native static void configureAndConnect();
+    //public native static void configureCancel();
 
-    public static int isConfigured() {
-        return MrMailboxIsConfigured(m_hMailbox);
-    }
+    public native static int isConfigured();
 
-    public static int connect() {
-        return MrMailboxConnect(m_hMailbox);
-    }
+    public native static void connect();
+    public native static void disconnect();
 
-    public static void disconnect() {
-        MrMailboxDisconnect(m_hMailbox);
-    }
-
-    public static int fetch() {
-        return MrMailboxFetch(m_hMailbox);
-    }
-
-    public static int setConfig(String key, String value) {
-        return MrMailboxSetConfig(m_hMailbox, key, value);
-    }
-
-    public static String getConfig(String key, String def) {
-        return MrMailboxGetConfig(m_hMailbox, key, def);
-    }
-
-    public static int getConfigInt(String key, int def) {
-        return MrMailboxGetConfigInt(m_hMailbox, key, def);
-    }
+    public native static int setConfig(String key, String value);
+    public native static String getConfig(String key, String def);
+    public native static int getConfigInt(String key, int def);
 
     public native static String getInfo();
     public native static String cmdline(String cmd);
 
     private static long           m_hMailbox = 0; // do not rename this, is used in C-part
-    private native static long    MrMailboxNew               (); // returns hMailbox which must be unref'd after usage (Names as mrmailbox_new don't work due to the additional underscore)
-    private native static int     MrMailboxConfigure         (long hMailbox);
-    private native static int     MrMailboxIsConfigured      (long hMailbox);
-    private native static int     MrMailboxConnect           (long hMailbox);
-    private native static void    MrMailboxDisconnect        (long hMailbox);
-    private native static int     MrMailboxFetch             (long hMailbox);
-    private native static int     MrMailboxSetConfig         (long hMailbox, String key, String value); // value may be NULL
-    private native static String  MrMailboxGetConfig         (long hMailbox, String key, String def); // def may be NULL, returns empty string as NULL
-    private native static int     MrMailboxGetConfigInt      (long hMailbox, String key, int def); // def may be NULL, returns empty string as NULL
+    private native static long    MrMailboxNew(); // returns hMailbox which must be unref'd after usage (Names as mrmailbox_new don't work due to the additional underscore)
 
     // contacts
     public native static int[] getKnownContacts(String query);
@@ -194,7 +166,7 @@ public class MrMailbox {
 
     public final static int MR_EVENT_CONTACTS_CHANGED         = 2030;
 
-    public final static int MR_EVENT_CONNECTION_STATE_CHANGED = 2040;
+    public final static int MR_EVENT_CONFIGURE_ENDED          = 2040;
 
     public final static int MR_EVENT_IS_ONLINE                = 2080;
     public final static int MR_EVENT_GET_STRING               = 2091;
@@ -208,11 +180,11 @@ public class MrMailbox {
     public static long MrCallback(final int event, final long data1, final long data2) // this function is called from within the C-wrapper
     {
         switch(event) {
-            case MR_EVENT_CONNECTION_STATE_CHANGED:
+            case MR_EVENT_CONFIGURE_ENDED:
                 AndroidUtilities.runOnUIThread(new Runnable() {
                     @Override
                     public void run() {
-                        NotificationCenter.getInstance().postNotificationName(NotificationCenter.connectionStateChanged, (int)data1);
+                        NotificationCenter.getInstance().postNotificationName(NotificationCenter.configureEnded, (int)data1);
                     }
                 });
                 return 0;

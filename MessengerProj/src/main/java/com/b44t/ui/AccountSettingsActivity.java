@@ -99,6 +99,7 @@ public class AccountSettingsActivity extends BaseFragment implements Notificatio
     // misc.
     private final int        ID_DONE_BUTTON = 1;
     private ProgressDialog   progressDialog = null;
+    private boolean          progressCancelPressed;
     private boolean          fromIntro;
     private boolean          m_expanded = false;
 
@@ -113,7 +114,7 @@ public class AccountSettingsActivity extends BaseFragment implements Notificatio
     public boolean onFragmentCreate() {
         super.onFragmentCreate();
 
-        NotificationCenter.getInstance().addObserver(this, NotificationCenter.connectionStateChanged);
+        NotificationCenter.getInstance().addObserver(this, NotificationCenter.configureEnded);
 
         m_expanded = false;
         if( !MrMailbox.getConfig("mail_user", "").isEmpty()
@@ -175,7 +176,7 @@ public class AccountSettingsActivity extends BaseFragment implements Notificatio
     @Override
     public void onFragmentDestroy() {
         super.onFragmentDestroy();
-        NotificationCenter.getInstance().removeObserver(this, NotificationCenter.connectionStateChanged);
+        NotificationCenter.getInstance().removeObserver(this, NotificationCenter.configureEnded);
     }
 
     @Override
@@ -295,6 +296,7 @@ public class AccountSettingsActivity extends BaseFragment implements Notificatio
         }
 
         // show dialog
+        progressCancelPressed = false;
         if( progressDialog!=null ) {
             progressDialog.dismiss();
             progressDialog = null;
@@ -304,34 +306,26 @@ public class AccountSettingsActivity extends BaseFragment implements Notificatio
         progressDialog.setMessage(ApplicationLoader.applicationContext.getString(R.string.OneMoment));
         progressDialog.setCanceledOnTouchOutside(false);
         progressDialog.setCancelable(false);
-        progressDialog.setButton(DialogInterface.BUTTON_NEGATIVE, LocaleController.getString("Cancel", R.string.Cancel), new DialogInterface.OnClickListener() {
+        /*progressDialog.setButton(DialogInterface.BUTTON_NEGATIVE, LocaleController.getString("Cancel", R.string.Cancel), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                progressDialog = null;
+                progressCancelPressed = true; // force keeping the parent dialog
+                MrMailbox.configureCancel();
             }
-        });
+        });*/
         progressDialog.show();
 
         synchronized (MrMailbox.m_lastErrorLock) {
             MrMailbox.m_showNextErrorAsToast = false;
         }
 
-        // try to connect
-        // (for the future, we may put all this togehter in a single command, that is executed
-        // asynchronously by the backend; then we can skip creating a runnable here)
-        Utilities.searchQueue.postRunnable(new Runnable() {
-            @Override
-            public void run() {
-                MrMailbox.disconnect();
-                MrMailbox.configure();
-                MrMailbox.connect();
-            }
-        });
+        // try to connect, this results in an MR_EVENT_CONFIGURE_ENDED resp. NotificationCenter.configureEnded event
+        MrMailbox.configureAndConnect();
     }
 
     @Override
     public void didReceivedNotification(int id, Object... args) {
-        if (id == NotificationCenter.connectionStateChanged )
+        if (id == NotificationCenter.configureEnded )
         {
             final String errorString;
 
@@ -346,18 +340,20 @@ public class AccountSettingsActivity extends BaseFragment implements Notificatio
             }
 
             if( (int)args[0]==1 ) {
-                if( fromIntro ) {
-                    presentFragment(new DialogsActivity(null), true);
-                    LaunchActivity la = ((LaunchActivity)getParentActivity());
-                    if( la != null ) {
-                        la.drawerLayoutContainer.setAllowOpenDrawer(true, false);
+                if(!progressCancelPressed) {
+                    // close the dialog unless the user hits "cancel"
+                    if (fromIntro) {
+                        presentFragment(new DialogsActivity(null), true);
+                        LaunchActivity la = ((LaunchActivity) getParentActivity());
+                        if (la != null) {
+                            la.drawerLayoutContainer.setAllowOpenDrawer(true, false);
+                        }
+                    } else {
+                        finishFragment();
                     }
-                }
-                else {
-                    finishFragment();
+                    AndroidUtilities.showDoneHint(ApplicationLoader.applicationContext);
                 }
                 NotificationCenter.getInstance().postNotificationName(NotificationCenter.mainUserInfoChanged);
-                AndroidUtilities.showDoneHint(ApplicationLoader.applicationContext);
             }
             else {
                 AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());

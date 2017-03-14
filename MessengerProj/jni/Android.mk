@@ -1613,6 +1613,7 @@ LOCAL_SRC_FILES     += \
 ./messenger-backend/src/mrjob.c \
 ./messenger-backend/src/mrloginparam.c \
 ./messenger-backend/src/mrmailbox.c \
+./messenger-backend/src/mrmailbox_configure.c \
 ./messenger-backend/src/mrmailbox_log.c \
 ./messenger-backend/src/mrmimeparser.c \
 ./messenger-backend/src/mrmsg.c \
