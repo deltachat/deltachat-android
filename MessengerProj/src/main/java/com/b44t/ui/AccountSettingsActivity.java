@@ -301,7 +301,7 @@ public class AccountSettingsActivity extends BaseFragment implements Notificatio
         }
 
         progressDialog = new ProgressDialog(getParentActivity());
-        progressDialog.setMessage(LocaleController.getString("ConfiguringAccount", R.string.ConfiguringAccount));
+        progressDialog.setMessage(ApplicationLoader.applicationContext.getString(R.string.OneMoment));
         progressDialog.setCanceledOnTouchOutside(false);
         progressDialog.setCancelable(false);
         progressDialog.setButton(DialogInterface.BUTTON_NEGATIVE, LocaleController.getString("Cancel", R.string.Cancel), new DialogInterface.OnClickListener() {
