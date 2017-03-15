@@ -50,7 +50,7 @@ public class TextInfoCell extends FrameLayout {
         addView(textView);
 
         iconView = new TextView(context);
-        iconView.setTextColor(0xff000000);
+        iconView.setTextColor(0xff212121);
         iconView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, iconDp);
         iconView.setGravity(LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT);
         addView(iconView);

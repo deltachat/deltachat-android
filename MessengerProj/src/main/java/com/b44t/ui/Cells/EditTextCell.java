@@ -66,7 +66,7 @@ public class EditTextCell extends FrameLayout {
         }
 
         labelTextView = new TextView(context);
-        labelTextView.setTextColor(0xff8a8a8a);
+        labelTextView.setTextColor(0xff212121);
         labelTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13);
         labelTextView.setGravity(LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT);
         labelTextView.setLines(1);
@@ -119,7 +119,7 @@ public class EditTextCell extends FrameLayout {
         editView.setText(value);
         editView.setSelection(value.length());
 
-        editView.setHint(hint.isEmpty()? "" : ("<"+hint+">"));
+        editView.setHint(hint);
 
         if( label.isEmpty()) {
             labelTextView.setVisibility(INVISIBLE);

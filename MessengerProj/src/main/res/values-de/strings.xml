@@ -367,11 +367,11 @@
     <string name="MyEmailAddress">Meine E-Mail-Adresse</string>
     <string name="Password">Passwort</string>
     <string name="SmtpPassword">SMTP-Passwort</string>
-    <string name="FromAbove">wie oben</string>
+    <string name="FromAbove">Wie oben</string>
     <string name="SmtpLoginname">SMTP-Loginname</string>
     <string name="SmtpPort">SMTP-Port</string>
     <string name="SmtpServer">SMTP-Server</string>
-    <string name="Automatic">automatisch</string>
+    <string name="Automatic">Automatisch</string>
     <string name="ImapLoginname">IMAP-Loginname</string>
     <string name="ImapPort">IMAP-Port</string>
     <string name="ImapServer">IMAP-Server</string>

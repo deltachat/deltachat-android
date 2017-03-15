@@ -46,7 +46,8 @@ public class MrMailbox {
     public native static void connect();
     public native static void disconnect();
 
-    public native static int setConfig(String key, String value);
+    public native static void setConfig(String key, String value);
+    public native static void setConfigInt(String key, int value);
     public native static String getConfig(String key, String def);
     public native static int getConfigInt(String key, int def);
 

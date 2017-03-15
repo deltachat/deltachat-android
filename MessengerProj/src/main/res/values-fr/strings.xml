@@ -344,10 +344,10 @@
     <string name="MyEmailAddress">Mon adresse e-mail</string>
     <string name="Password">Mot de passe</string>
     <string name="SmtpPassword">Mot de passe SMTP</string>
-    <string name="FromAbove">de ci-dessus</string>
+    <string name="FromAbove">De ci-dessus</string>
     <string name="SmtpLoginname">Identifiant SMTP</string>
     <string name="SmtpPort">Port SMTP</string>
-    <string name="Automatic">automatique</string>
+    <string name="Automatic">Automatique</string>
     <string name="ImapServer">Serveur IMAP</string>
     <string name="ImapLoginname">Identifiant IMAP</string>
     <string name="SmtpServer">Serveur SMTP</string>

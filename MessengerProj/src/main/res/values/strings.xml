@@ -365,10 +365,10 @@
     <string name="MyEmailAddress">My e-mail address</string>
     <string name="Password">Password</string>
     <string name="SmtpPassword">SMTP password</string>
-    <string name="FromAbove">from above</string>
+    <string name="FromAbove">From above</string>
     <string name="SmtpLoginname">SMTP loginname</string>
     <string name="SmtpPort">SMTP port</string>
-    <string name="Automatic">automatic</string>
+    <string name="Automatic">Automatic</string>
     <string name="ImapServer">IMAP server</string>
     <string name="ImapLoginname">IMAP loginname</string>
     <string name="SmtpServer">SMTP server</string>

@@ -387,10 +387,10 @@
     <string name="MyEmailAddress">Mój adres e-mail</string>
     <string name="Password">Hasło</string>
     <string name="SmtpPassword">SMTP hasło</string>
-    <string name="FromAbove">jak wyżej</string>
+    <string name="FromAbove">Jak wyżej</string>
     <string name="SmtpLoginname">SMTP nazwa użytkownika</string>
     <string name="SmtpPort">SMTP port</string>
-    <string name="Automatic">atomatycznie</string>
+    <string name="Automatic">Atomatycznie</string>
     <string name="ImapServer">IMAP serwer</string>
     <string name="ImapLoginname">IMAP nazwa użytkownika</string>
     <string name="SmtpServer">SMTP serwer</string>

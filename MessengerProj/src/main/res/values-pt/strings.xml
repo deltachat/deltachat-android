@@ -340,10 +340,10 @@
     <string name="MyEmailAddress">Meu endereço de e-mail</string>
     <string name="Password">Senha</string>
     <string name="SmtpPassword">Senha SMPT</string>
-    <string name="FromAbove">de acima</string>
+    <string name="FromAbove">De acima</string>
     <string name="SmtpLoginname">Usuário SMTP</string>
     <string name="SmtpPort">Porta SMTP</string>
-    <string name="Automatic">automático</string>
+    <string name="Automatic">Automático</string>
     <string name="ImapServer">Servidor IMAP</string>
     <string name="ImapLoginname">Usuário IMAP</string>
     <string name="SmtpServer">Servidor SMTP</string>

@@ -456,14 +456,21 @@ JNIEXPORT void Java_com_b44t_messenger_MrMailbox_forwardMsgs(JNIEnv *env, jclass
 
 /* MrMailbox - handle config */
 
-JNIEXPORT jint Java_com_b44t_messenger_MrMailbox_setConfig(JNIEnv *env, jclass cls, jstring key, jstring value)
+JNIEXPORT void Java_com_b44t_messenger_MrMailbox_setConfig(JNIEnv *env, jclass cls, jstring key, jstring value)
 {
 	CHAR_REF(key);
 	CHAR_REF(value);
-		jint ret = (jint)mrmailbox_set_config(get_mrmailbox_t(env, cls), keyPtr, valuePtr);
+		mrmailbox_set_config(get_mrmailbox_t(env, cls), keyPtr, valuePtr);
 	CHAR_UNREF(key);
 	CHAR_UNREF(value);
-	return ret;
+}
+
+
+JNIEXPORT void Java_com_b44t_messenger_MrMailbox_setConfigInt(JNIEnv *env, jclass cls, jstring key, jint value)
+{
+	CHAR_REF(key);
+		mrmailbox_set_config_int(get_mrmailbox_t(env, cls), keyPtr, value);
+	CHAR_UNREF(key);
 }
 
 
