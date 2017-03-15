@@ -28,6 +28,13 @@
 package com.b44t.messenger;
 
 
+import java.io.BufferedInputStream;
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
+
 public class MrMailbox {
 
     public static void init () {
@@ -172,6 +179,8 @@ public class MrMailbox {
     public final static int MR_EVENT_IS_ONLINE                = 2080;
     public final static int MR_EVENT_GET_STRING               = 2091;
     public final static int MR_EVENT_GET_QUANTITIY_STRING     = 2092;
+    public final static int MR_EVENT_HTTP_GET                 = 2100;
+
 
     public static final Object m_lastErrorLock = new Object();
     public static int          m_lastErrorCode = 0;
@@ -295,6 +304,28 @@ public class MrMailbox {
 
             case MR_EVENT_IS_ONLINE:
                 return ConnectionsManager.isNetworkOnline()? 1 : 0;
+
+            case MR_EVENT_HTTP_GET:
+                String httpContent = null;
+                try {
+                    URL url = new URL(CPtr2String(data1));
+                    HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+                    try {
+                        InputStream inputStream = new BufferedInputStream(urlConnection.getInputStream());
+
+                        BufferedReader r = new BufferedReader(new InputStreamReader(inputStream));
+                        StringBuilder total = new StringBuilder();
+                        String line;
+                        while ((line = r.readLine()) != null) {
+                            total.append(line).append('\n');
+                        }
+                        httpContent = total.toString();
+                    } finally {
+                        urlConnection.disconnect();
+                    }
+                }
+                catch(Exception e) {}
+                return String2CPtr(httpContent);
         }
         return 0;
     }
