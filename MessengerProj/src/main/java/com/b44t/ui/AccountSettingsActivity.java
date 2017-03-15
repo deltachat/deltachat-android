@@ -502,6 +502,7 @@ public class AccountSettingsActivity extends BaseFragment implements Notificatio
                         mailServerCell = new EditTextCell(mContext);
                         mailServerCell.setValueHintAndLabel(MrMailbox.getConfig("mail_server", ""),
                                 ApplicationLoader.applicationContext.getString(R.string.Automatic), LocaleController.getString("ImapServer", R.string.ImapServer), false);
+                        mailServerCell.getEditTextView().setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_URI);
                     }
                     view = mailServerCell;
                 }
@@ -510,6 +511,7 @@ public class AccountSettingsActivity extends BaseFragment implements Notificatio
                         mailPortCell = new EditTextCell(mContext);
                         mailPortCell.setValueHintAndLabel(MrMailbox.getConfig("mail_port", ""),
                                 ApplicationLoader.applicationContext.getString(R.string.Automatic), LocaleController.getString("ImapPort", R.string.ImapPort), false);
+                        mailPortCell.getEditTextView().setInputType(InputType.TYPE_CLASS_NUMBER);
                     }
                     view = mailPortCell;
                 }
@@ -526,6 +528,7 @@ public class AccountSettingsActivity extends BaseFragment implements Notificatio
                         sendServerCell = new EditTextCell(mContext);
                         sendServerCell.setValueHintAndLabel(MrMailbox.getConfig("send_server", ""),
                                 ApplicationLoader.applicationContext.getString(R.string.Automatic), LocaleController.getString("SmtpServer", R.string.SmtpServer), false);
+                        sendServerCell.getEditTextView().setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_URI);
                     }
                     view = sendServerCell;
                 }
@@ -534,6 +537,7 @@ public class AccountSettingsActivity extends BaseFragment implements Notificatio
                         sendPortCell = new EditTextCell(mContext);
                         sendPortCell.setValueHintAndLabel(MrMailbox.getConfig("send_port", ""),
                                 ApplicationLoader.applicationContext.getString(R.string.Automatic), LocaleController.getString("SmtpPort", R.string.SmtpPort), false);
+                        sendPortCell.getEditTextView().setInputType(InputType.TYPE_CLASS_NUMBER);
                     }
                     view = sendPortCell;
                 }
