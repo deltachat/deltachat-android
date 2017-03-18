@@ -1620,6 +1620,7 @@ LOCAL_SRC_FILES     += \
 ./messenger-backend/src/mrosnative.c \
 ./messenger-backend/src/mrparam.c \
 ./messenger-backend/src/mrpoortext.c \
+./messenger-backend/src/mrsaxparser.c \
 ./messenger-backend/src/mrsimplify.c \
 ./messenger-backend/src/mrsmtp.c \
 ./messenger-backend/src/mrsqlite3.c \
