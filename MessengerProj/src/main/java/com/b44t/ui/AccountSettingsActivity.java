@@ -26,12 +26,10 @@
 
 package com.b44t.ui;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.InputType;
 import android.view.View;
@@ -103,10 +101,12 @@ public class AccountSettingsActivity extends BaseFragment implements Notificatio
     private EditTextCell sendPortCell;
     private EditTextCell sendUserCell;
 
-    private final int MR_IMAP_STARTTLS =   0x100;
-    private final int MR_IMAP_SSL_TLS  =   0x200;
-    private final int MR_SMTP_STARTTLS = 0x10000;
-    private final int MR_SMTP_SSL_TLS  = 0x20000;
+    private final int MR_IMAP_SOCKET_STARTTLS =   0x100;
+    private final int MR_IMAP_SOCKET_SSL      =   0x200;
+    private final int MR_IMAP_SOCKET_PLAIN    =   0x400;
+    private final int MR_SMTP_SOCKET_STARTTLS = 0x10000;
+    private final int MR_SMTP_SOCKET_SSL      = 0x20000;
+    private final int MR_SMTP_SOCKET_PLAIN    = 0x40000;
     private int m_serverFlags;
 
     // misc.
@@ -266,22 +266,25 @@ public class AccountSettingsActivity extends BaseFragment implements Notificatio
                     builder.setItems(new CharSequence[]{
                             ApplicationLoader.applicationContext.getString(R.string.Automatic),
                             "SSL/TLS", /*1*/
-                            "STARTTLS" /*2*/
+                            "STARTTLS", /*2*/
+                            ApplicationLoader.applicationContext.getString(R.string.Disabled) /*3*/
                     }, new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             if( i==rowMailSecurity ) {
-                                m_serverFlags &= ~(MR_IMAP_SSL_TLS|MR_IMAP_STARTTLS);
+                                m_serverFlags &= ~(MR_IMAP_SOCKET_SSL | MR_IMAP_SOCKET_STARTTLS | MR_IMAP_SOCKET_PLAIN);
                                 switch( which ) {
-                                    case 1: m_serverFlags |= MR_IMAP_SSL_TLS; break;
-                                    case 2: m_serverFlags |= MR_IMAP_STARTTLS; break;
+                                    case 1: m_serverFlags |= MR_IMAP_SOCKET_SSL; break;
+                                    case 2: m_serverFlags |= MR_IMAP_SOCKET_STARTTLS; break;
+                                    case 3: m_serverFlags |= MR_IMAP_SOCKET_PLAIN; break;
                                 }
                             }
                             else if( i==rowSendSecurity ) {
-                                m_serverFlags &= ~(MR_SMTP_SSL_TLS|MR_SMTP_STARTTLS);
+                                m_serverFlags &= ~(MR_SMTP_SOCKET_SSL | MR_SMTP_SOCKET_STARTTLS | MR_SMTP_SOCKET_PLAIN);
                                 switch( which ) {
-                                    case 1: m_serverFlags |= MR_SMTP_SSL_TLS; break;
-                                    case 2: m_serverFlags |= MR_SMTP_STARTTLS; break;
+                                    case 1: m_serverFlags |= MR_SMTP_SOCKET_SSL; break;
+                                    case 2: m_serverFlags |= MR_SMTP_SOCKET_STARTTLS; break;
+                                    case 3: m_serverFlags |= MR_SMTP_SOCKET_PLAIN; break;
                                 }
                             }
                             listView.invalidateViews();
@@ -567,12 +570,14 @@ public class AccountSettingsActivity extends BaseFragment implements Notificatio
                 TextSettingsCell textCell = (TextSettingsCell) view;
                 String value = ApplicationLoader.applicationContext.getString(R.string.Automatic);
                 if( i == rowMailSecurity ) {
-                    if( (m_serverFlags&MR_IMAP_SSL_TLS)!=0  ) { value = "SSL/TLS"; }
-                    if( (m_serverFlags&MR_IMAP_STARTTLS)!=0 ) { value = "STARTTLS"; }
+                    if( (m_serverFlags&MR_IMAP_SOCKET_SSL)!=0  ) { value = "SSL/TLS"; }
+                    if( (m_serverFlags&MR_IMAP_SOCKET_STARTTLS)!=0 ) { value = "STARTTLS"; }
+                    if( (m_serverFlags&MR_IMAP_SOCKET_PLAIN)!=0 ) { value = ApplicationLoader.applicationContext.getString(R.string.Disabled); }
                 }
                 else if( i == rowSendSecurity ) {
-                    if( (m_serverFlags&MR_SMTP_SSL_TLS)!=0  ) { value = "SSL/TLS"; }
-                    if( (m_serverFlags&MR_SMTP_STARTTLS)!=0 ) { value = "STARTTLS"; }
+                    if( (m_serverFlags&MR_SMTP_SOCKET_SSL)!=0  ) { value = "SSL/TLS"; }
+                    if( (m_serverFlags&MR_SMTP_SOCKET_STARTTLS)!=0 ) { value = "STARTTLS"; }
+                    if( (m_serverFlags&MR_SMTP_SOCKET_PLAIN)!=0 ) { value = ApplicationLoader.applicationContext.getString(R.string.Disabled); }
                 }
                 textCell.setTextAndValue(ApplicationLoader.applicationContext.getString(R.string.SecurityTitle), value, false);
             }
@@ -606,7 +611,7 @@ public class AccountSettingsActivity extends BaseFragment implements Notificatio
                     view.setBackgroundResource(m_expanded? R.drawable.greydivider : R.drawable.greydivider_bottom); // has shadow top+bottom
                 }
                 else if( i==rowInfoBelowSendPw) {
-                    ((TextInfoCell) view).setText(LocaleController.getString("MyAccountExplain2", R.string.MyAccountExplain2));
+                    ((TextInfoCell) view).setText(AndroidUtilities.replaceTags(LocaleController.getString("MyAccountExplain2", R.string.MyAccountExplain2)));
                     if( m_expanded ) {
                         view.setBackgroundResource(R.drawable.greydivider_bottom);
                     }
