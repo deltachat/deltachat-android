@@ -55,6 +55,8 @@ import com.b44t.ui.Cells.TextInfoCell;
 import com.b44t.ui.Cells.TextSettingsCell;
 import com.b44t.ui.Components.LayoutHelper;
 
+import static android.app.ProgressDialog.STYLE_HORIZONTAL;
+
 
 public class AccountSettingsActivity extends BaseFragment implements NotificationCenter.NotificationCenterDelegate {
 
@@ -127,6 +129,7 @@ public class AccountSettingsActivity extends BaseFragment implements Notificatio
         super.onFragmentCreate();
 
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.configureEnded);
+        NotificationCenter.getInstance().addObserver(this, NotificationCenter.configureProgress);
 
         m_serverFlags = MrMailbox.getConfigInt("server_flags", 0);
 
@@ -195,6 +198,7 @@ public class AccountSettingsActivity extends BaseFragment implements Notificatio
     public void onFragmentDestroy() {
         super.onFragmentDestroy();
         NotificationCenter.getInstance().removeObserver(this, NotificationCenter.configureEnded);
+        NotificationCenter.getInstance().removeObserver(this, NotificationCenter.configureProgress);
     }
 
     @Override
@@ -210,22 +214,8 @@ public class AccountSettingsActivity extends BaseFragment implements Notificatio
         actionBar.setActionBarMenuOnItemClick(new ActionBar.ActionBarMenuOnItemClick() {
             @Override
             public void onItemClick(int id) {
-                if (id == -1 && !fromIntro ) {
-                    if( isModified() ) { // as we use "close/ok" buttons instead of a "back" button it is more clear what happens, however, an additional question does not disturb here
-                        AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
-                        builder.setMessage(LocaleController.getString("DiscardChanges", R.string.DiscardChanges));
-                        builder.setPositiveButton(LocaleController.getString("Yes", R.string.Yes), new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
-                                finishFragment();
-                            }
-                        });
-                        builder.setNegativeButton(LocaleController.getString("No", R.string.No), null);
-                        showDialog(builder.create());
-                    }
-                    else {
-                        finishFragment();
-                    }
+                if (id == -1 && !fromIntro ) { // no "is modified" check: as we use "close/ok" buttons instead of a "back" button it is more clear what happens. moreover, the user may have done a failed "OK" in between, so a question "discard changes?" would be ambiguously
+                    finishFragment();
                 } else if (id == ID_DONE_BUTTON) {
                     saveData();
                 }
@@ -361,10 +351,17 @@ public class AccountSettingsActivity extends BaseFragment implements Notificatio
         progressDialog.setMessage(ApplicationLoader.applicationContext.getString(R.string.OneMoment));
         progressDialog.setCanceledOnTouchOutside(false);
         progressDialog.setCancelable(false);
+        progressDialog.setButton(DialogInterface.BUTTON_NEGATIVE, LocaleController.getString("Cancel", R.string.Cancel), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        MrMailbox.configureCancel();
+                    }
+	        });
         progressDialog.show();
 
         synchronized (MrMailbox.m_lastErrorLock) {
             MrMailbox.m_showNextErrorAsToast = false;
+            MrMailbox.m_lastErrorString = "";
         }
 
         // try to connect, this results in an MR_EVENT_CONFIGURE_ENDED resp. NotificationCenter.configureEnded event
@@ -373,7 +370,15 @@ public class AccountSettingsActivity extends BaseFragment implements Notificatio
 
     @Override
     public void didReceivedNotification(int id, Object... args) {
-        if (id == NotificationCenter.configureEnded )
+        if( id == NotificationCenter.configureProgress )
+        {
+            if( progressDialog!=null ) {
+                // we want the spinner together with a progress info
+                int percent = (Integer)args[0];
+                progressDialog.setMessage(ApplicationLoader.applicationContext.getString(R.string.OneMoment)+String.format(" %d%%", percent));
+            }
+        }
+        else if (id == NotificationCenter.configureEnded )
         {
             final String errorString;
 
@@ -400,7 +405,7 @@ public class AccountSettingsActivity extends BaseFragment implements Notificatio
                 AndroidUtilities.showDoneHint(ApplicationLoader.applicationContext);
                 NotificationCenter.getInstance().postNotificationName(NotificationCenter.mainUserInfoChanged);
             }
-            else {
+            else if( ! MrMailbox.m_lastErrorString.isEmpty() ){
                 AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
                 builder.setMessage(errorString);
                 builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), new DialogInterface.OnClickListener() {
@@ -412,23 +417,6 @@ public class AccountSettingsActivity extends BaseFragment implements Notificatio
                 showDialog(builder.create());
             }
         }
-    }
-
-    private boolean isModified(){
-        // Warning: the widgets are created as needed and may not be present!
-        if( addrCell!=null && addrCell.isModified()) { return true; }
-        if( mailPwCell!=null && mailPwCell.isModified()) { return true; }
-
-        if( mailServerCell!=null && mailServerCell.isModified()) { return true; }
-        if( mailPortCell!=null && mailPortCell.isModified()) { return true; }
-        if( mailUserCell!=null && mailUserCell.isModified()) { return true; }
-
-        if( sendServerCell!=null && sendServerCell.isModified()) { return true; }
-        if( sendPortCell!=null && sendPortCell.isModified()) { return true; }
-        if( sendUserCell!=null && sendUserCell.isModified()) { return true; }
-        if( sendPwCell!=null && sendPwCell.isModified()) { return true; }
-
-        return false;
     }
 
     @Override

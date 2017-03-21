@@ -48,7 +48,6 @@ public class EditTextCell extends FrameLayout {
     private TextView labelTextView;
     private static Paint paint;
     private boolean needDivider;
-    private String originalValue;
     private boolean useLabel;
 
     public EditTextCell(Context context) {
@@ -114,8 +113,6 @@ public class EditTextCell extends FrameLayout {
     }
 
     public void setValueHintAndLabel(String value, String hint, String label, boolean divider) {
-        originalValue = value;
-
         editView.setText(value);
         editView.setSelection(value.length());
 
@@ -136,11 +133,6 @@ public class EditTextCell extends FrameLayout {
     public String getValue()
     {
         return editView.getText().toString();
-    }
-
-    public boolean isModified()
-    {
-        return !originalValue.equals(getValue());
     }
 
     public EditText getEditTextView()

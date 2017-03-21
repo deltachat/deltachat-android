@@ -161,12 +161,6 @@ public class NameSettingsActivity extends BaseFragment {
         finishFragment();
     }
 
-    private boolean isModified()
-    {
-        if( displaynameCell!=null && displaynameCell.isModified()) { return true; }
-        return false;
-    }
-
     @Override
     public void onTransitionAnimationEnd(boolean isOpen, boolean backward) {
         if (isOpen && displaynameCell!=null) {

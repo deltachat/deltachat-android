@@ -253,10 +253,10 @@ JNIEXPORT void Java_com_b44t_messenger_MrMailbox_configureAndConnect(JNIEnv *env
 }
 
 
-/*JNIEXPORT void Java_com_b44t_messenger_MrMailbox_configureCancel(JNIEnv *env, jclass cls)
+JNIEXPORT void Java_com_b44t_messenger_MrMailbox_configureCancel(JNIEnv *env, jclass cls)
 {
 	mrmailbox_configure_cancel(get_mrmailbox_t(env, cls));
-}*/
+}
 
 
 JNIEXPORT jint Java_com_b44t_messenger_MrMailbox_isConfigured(JNIEnv *env, jclass cls)
