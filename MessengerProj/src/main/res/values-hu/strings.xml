@@ -1,0 +1,434 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="AppName">Delta Chat</string>
+    <string name="LanguageName">Magyar</string>
+    <string name="LanguageNameInEnglish" tools:keep="@string/LanguageNameInEnglish">Hungarian</string>
+    <string name="LanguageCode" tools:keep="@string/LanguageCode">hu</string>
+    <!--chats view-->
+    <string name="Settings">Beállítások</string>
+    <string name="NewGroup">Új csoport</string>
+    <string name="Yesterday">tegnap</string>
+    <string name="NoResult">Nincs találat.</string>
+    <string name="NoChats">Még nincs beszélgetés.</string>
+    <string name="WaitingForNetwork">Várakozás a hálózatra…</string>
+    <string name="Connecting">Kapcsolódás…</string>
+    <string name="Updating">Frissítés…</string>
+    <string name="DeleteChat">Beszélgetés törlése</string>
+    <string name="SelectChat">Beszélgetés választása…</string>
+    <string name="Search">Keresés</string>
+    <string name="MuteNotifications">Értesítések némítása</string>
+    <string name="MuteFor1Hour">Némítás 1 órára</string>
+    <string name="MuteFor8Hours">Némítás 8 órára</string>
+    <string name="MuteFor2Days">Némítás 2 napra</string>
+    <string name="UnmuteNotifications">Némítás kikapcsolása</string>
+    <string name="Draft">Piszkozat</string>
+    <!--audio view-->
+    <string name="NoAudio">Adj fájlokat a zenei könyvtáradhoz, hogy azokat itt láthasd.</string>
+    <string name="AttachMusic">Zene</string>
+    <!--documents view-->
+    <string name="SelectFile">Fájl választása</string>
+    <string name="FreeOfTotal">%1$s / %2$s szabad</string>
+    <string name="ErrorHint">Ismeretlen hiba</string>
+    <string name="AccessError">Hozzáférési hiba</string>
+    <string name="NoFiles">Még nincs fájl…</string>
+    <string name="NotMounted">Nincs csatolt tárhely</string>
+    <string name="UsbActive">USB átvitel aktív</string>
+    <string name="InternalStorage">Belső tárhely</string>
+    <string name="ExternalStorage">Külső tárhely</string>
+    <string name="SystemRoot">Rendszer gyökér</string>
+    <string name="SdCard">SD kártya</string>
+    <string name="Folder">Mappa</string>
+    <string name="GalleryInfo">Fájl küldése tömörítés nélkül</string>
+    <!--chat view-->
+    <string name="ChatGallery">Galéria</string>
+    <string name="ChatCamera">Kamera</string>
+    <string name="NoMessages">Nincs üzenet.</string>
+    <string name="ForwardedMessage">Továbbított üzenet</string>
+    <string name="From">Feladó</string>
+    <string name="NoRecent">Nincs legutóbbi</string>
+    <string name="TypeMessage">Üzenet</string>
+    <string name="SlideToCancel">VISSZAVONÁS CSÚSZTATÁSSAL</string>
+    <string name="SaveToDownloads">Mentés a letöltésekhez</string>
+    <string name="DeleteGif">GIF törlése?</string>
+    <string name="SaveToMusic">Mentés a zenékhez</string>
+    <string name="Share">Megosztás</string>
+    <string name="SendItems">%1$s küldése</string>
+    <string name="ClearRecentEmoji">Legutóbbi emoji törlése?</string>
+    <string name="AddShortcut">Widget hozzáadása a kezdőképernyőhöz</string>
+    <string name="ShortcutAdded">Widget hozzáadva a kezdőképernyőhöz</string>
+    <!--notification-->
+    <string name="Reply">Válasz</string>
+    <string name="ReplyToGroup">Válasz %1$s csoportnak</string>
+    <string name="ReplyToContact">Válasz %1$s partnernek</string>
+    <!--contacts view-->
+    <string name="NoContacts">Még nincs partner.</string>
+    <string name="TodayAt">ekkor:</string>
+    <string name="YesterdayAt">tegnap ekkor:</string>
+    <!--group create view-->
+    <string name="SendMessageTo">Üzenet küldése…</string>
+    <string name="EnterGroupNamePlaceholder">Csoport neve</string>
+    <!--group info view-->
+    <string name="SharedMedia">Megosztott média</string>
+    <string name="AddMember">Tag hozzáadása</string>
+    <string name="Notifications">Értesítések</string>
+    <string name="RemoveMember">Tag eltávolítása</string>
+    <!--contact info view-->
+    <string name="NewContactTitle">Új partner</string>
+    <string name="BlockContact">Partner letiltása</string>
+    <string name="DeleteContact">Partner törlése</string>
+    <string name="Info">Infó</string>
+    <!--stickers view-->
+    <string name="Stickers">Matricák</string>
+    <string name="AddStickers">Matrica hozzáadása</string>
+    <string name="AddToStickers">Hozzáadás a matricákhoz</string>
+    <string name="StickersRemove">Törlés</string>
+    <string name="NoStickers">Még nincs matrica</string>
+    <!--settings view-->
+    <string name="TextSize">Üzenetek betűmérete</string>
+    <string name="EnableAnimations">Áttűnés animációja</string>
+    <string name="UnblockContact">Tiltás feloldása</string>
+    <string name="NoBlocked">Nincs letiltott partner</string>
+    <string name="NormalMessages">Normál üzenetek</string>
+    <string name="Alert">Figyelmeztetés</string>
+    <string name="MessagePreview">Üzenet előnézet</string>
+    <string name="GroupMessages">Csoportüzenetek</string>
+    <string name="Sound">Hang</string>
+    <string name="InAppNotifications">Alkalmazáson belüli értesítések</string>
+    <string name="Vibrate">Rezgés</string>
+    <string name="Reset">Visszaállítás</string>
+    <string name="ResetAllNotifications">Minden értesítés visszaállítása</string>
+    <string name="NotificationsAndSounds">Értesítések és hangok</string>
+    <string name="BlockedContacts">Letiltott partnerek</string>
+    <string name="Default">Alapértelmezett</string>
+    <string name="OnlyIfSilent">Csak ha csendes</string>
+    <string name="ChatBackground">Beszélgetés háttere</string>
+    <string name="SendByEnter">Küldés "enterrel"</string>
+    <string name="Language">Nyelv</string>
+    <string name="Help">Súgó</string>
+    <string name="DeleteLocalization">Fordítás törlése?</string>
+    <string name="Enabled">Be</string>
+    <string name="Disabled">Ki</string>
+    <string name="NotificationsService">Ébrentartási szolgáltatás</string>
+    <string name="NotificationsServiceInfo">Az alkalmazás újraindítása ha a rendszer vagy a felhasználó leállította. Így az alkalmazás mindig meg tudja jeleníteni az értesítéseket.</string>
+    <string name="NotificationsServiceConnection">Háttérkapcsolat</string>
+    <string name="NotificationsServiceConnectionInfo">Tartson fenn nem jelentős háttérkapcsolatot az értesítések fogadásához. Az értesítések megbízható működéséhez érdemes bekapcsolni.</string>
+    <string name="LedColor">LED színe</string>
+    <string name="BadgeNumber">Ha lehetséges, számok megjelenítése az ikonon</string>
+    <string name="Short">Rövid</string>
+    <string name="Long">Hosszú</string>
+    <string name="SystemDefault">Rendszer alapértelmezett</string>
+    <string name="RaiseToSpeak">Felemelés a beszédhez</string>
+    <string name="EditName">Név módosítása</string>
+    <string name="NotificationsPriority">Nézet</string>
+    <string name="NotificationsPriorityDefault">Normál prioritás</string>
+    <string name="NotificationsPriorityHigh">Magas prioritás</string>
+    <string name="NotificationsPriorityMax">Legmagasabb prioritás</string>
+    <string name="RepeatNotifications">Értesítések ismétlése</string>
+    <string name="NotificationsOther">Egyéb</string>
+    <string name="InChatSound">Hangok beszélgetésen belül</string>
+    <string name="SoundDefault">Alapértelmezett</string>
+    <string name="VibrationDefault">Alapértelmezett</string>
+    <string name="SmartNotifications">Értesítések korlátja</string>
+    <string name="SmartNotificationsInfo">%2$s idő alatt legfeljebb %1$s hangjelzés</string>
+    <string name="SmartNotificationsSoundAtMost">Hangjelzés legfeljebb</string>
+    <string name="SmartNotificationsTimes">alkalommal</string>
+    <string name="SmartNotificationsWithin"> </string>
+    <string name="SmartNotificationsMinutes">percen belül</string>
+    <string name="DirectShare">Közvetlen megosztás</string>
+    <string name="DirectShareInfo">A megosztás menüben a legutóbbi beszélgetések mutatása</string>
+    <!--cache view-->
+    <string name="CacheSettings">Tárhely</string>
+    <string name="LocalDatabase">Helyi adatbázis</string>
+    <string name="LocalDatabaseClear">Törlöd a gyorsítótárazott szövegüzeneteket?</string>
+    <string name="LocalDatabaseInfo">A helyi adatbázis tisztítása törli a gyorsítótárazott üzenetek szövegét és tömöríti az adatbázist, hogy belső tárhelyet takarítson meg. Az alkalmazás működéséhez szükség van némi adatra, ezért nem lesz teljesen üres az adatbázis.\n\nEz a művelet pár percig is eltarthat.</string>
+    <string name="ClearMediaCache">Gyorsítótár törlése</string>
+    <string name="CacheClear">Törlés</string>
+    <string name="LocalCache">Egyéb fájlok</string>
+    <string name="CacheEmpty">Üres</string>
+    <string name="KeepMedia">Média megtartása</string>
+    <string name="KeepMediaInfo">Azok a fényképek, videók és a felhős beszélgetések, amelyeket <![CDATA[<b>nem nyitottál meg</b>]]> ez idő alatt, helymegtakarítás végett törlődnek a készülékről.</string>
+    <string name="KeepMediaForever">Örökké</string>
+    <!--passcode view-->
+    <string name="Passcode">Jelszavas védelem</string>
+    <string name="ChangePasscode">Jelszóváltoztatás</string>
+    <string name="ChangePasscodeInfo">Ha jelszót állítasz be, egy lakatikon jelenik meg a beszélgetések oldalán. Rákkatintva lehet lezárni és megnyitni az alkalmazást.\n\nFigyelem: ha elfelejted a jelszavadat, törölnöd és újra telepítened kell az alkalmazást.</string>
+    <string name="PasscodePIN">PIN</string>
+    <string name="PasscodePassword">Jelszó</string>
+    <string name="EnterCurrentPasscode">Add meg a jelenlegi jelszavad</string>
+    <string name="EnterNewFirstPasscode">Adj meg egy jelszót</string>
+    <string name="EnterNewPasscode">Adj meg egy új jelszót</string>
+    <string name="EnterYourPasscode">Add meg a jelszavad</string>
+    <string name="ReEnterYourPasscode">Add meg ismét az új jelszavad</string>
+    <string name="PasscodeDoNotMatch">A jelszavak nem egyeznek</string>
+    <string name="AutoLock">Automatikus lezárás</string>
+    <string name="AutoLockInfo">Megadott időnyi távollét után jelszót kér.</string>
+    <string name="AutoLockInTime">%1$s után</string>
+    <string name="UnlockFingerprint">Feloldás ujjlenyomattal</string>
+    <string name="FingerprintInfo">A feloldáshoz add meg az ujjlenyomatod!</string>
+    <string name="FingerprintNotRecognized">Nem sikerült olvasni az ujjlenyomatot. Próbáld újra!</string>
+    <!--photo gallery view-->
+    <string name="SaveToGallery">Mentés a galériába</string>
+    <string name="Of">%1$d / %2$d</string>
+    <string name="Gallery">Galéria</string>
+    <string name="AllPhotos">Minden fénykép</string>
+    <string name="AllVideo">Minden videó</string>
+    <string name="NoPhotos">Még nincs fénykép</string>
+    <string name="NoVideo">Még nincs videó</string>
+    <string name="CropImage">Kép levágása</string>
+    <string name="EditImage">Kép szerkesztése</string>
+    <string name="Enhance">Javítás</string>
+    <string name="Highlights">Csúcsfény</string>
+    <string name="Contrast">Kontraszt</string>
+    <string name="Exposure">Fényerő</string>
+    <string name="Warmth">Melegség</string>
+    <string name="Saturation">Telítettség</string>
+    <string name="Vignette">Vignette</string>
+    <string name="Shadows">Árnyék</string>
+    <string name="Grain">Zaj</string>
+    <string name="Sharpen">Élesítés</string>
+    <string name="Fade">Fakítás</string>
+    <string name="Tint">Színezés</string>
+    <string name="TintShadows">ÁRNYÉK</string>
+    <string name="TintHighlights">CSÚCSFÉNY</string>
+    <string name="Curves">Görbék</string>
+    <string name="CurvesAll">MIND</string>
+    <string name="CurvesRed">PIROS</string>
+    <string name="CurvesGreen">ZÖLD</string>
+    <string name="CurvesBlue">KÉK</string>
+    <string name="Blur">Elmosás</string>
+    <string name="BlurOff">Ki</string>
+    <string name="BlurLinear">Lineáris</string>
+    <string name="BlurRadial">Sugaras</string>
+    <string name="DiscardChanges">Elveted a módosításokat?</string>
+    <string name="ClearSearch">Törlöd a keresési előzményeket?</string>
+    <string name="ClearButton">Törlés</string>
+    <string name="PickerPhotos">Fényképek</string>
+    <string name="PickerVideo">Videó</string>
+    <string name="AddCaption">Felirat hozzáadása …</string>
+    <string name="PhotoCaption">Felirat fényképhez</string>
+    <string name="VideoCaption">Felirat videóhoz</string>
+    <string name="Caption">Felirat</string>
+    <!--privacy settings-->
+    <string name="PrivacySettings">Adatvédelem és biztonság</string>
+    <string name="PrivacyTitle" tools:keep="@string/PrivacyTitle">Adatvédelem</string>
+    <string name="SecurityTitle">Biztonság</string>
+    <!--edit video view-->
+    <string name="SendVideo">Videó küldése</string>
+    <string name="OriginalVideo">Eredeti videó</string>
+    <string name="EditedVideo">Szerkesztett videó</string>
+    <string name="CompressVideo">Videó tömörítése</string>
+    <!--button titles-->
+    <string name="Next">Következő</string>
+    <string name="Back">Előző</string>
+    <string name="Done">Kész</string>
+    <string name="Open">Megnyitás</string>
+    <string name="Save">Mentés</string>
+    <string name="Cancel">Mégse</string>
+    <string name="Close">Bezárás</string>
+    <string name="Add">Hozzáadás</string>
+    <string name="Edit">Szerkesztés</string>
+    <string name="Send">Küldés</string>
+    <string name="CopyToClipboard">Vágólapra másolás</string>
+    <string name="Delete">Törlés</string>
+    <string name="Forward">Továbbítás</string>
+    <string name="Retry">Újra próbál</string>
+    <string name="FromCamera">Kamerával</string>
+    <string name="FromGalley">Galériából</string>
+    <string name="Set">Beállítás</string>
+    <string name="OK">OK</string>
+    <string name="Crop">VÁGÁS</string>
+    <!--messages-->
+    <string name="AttachPhoto">Fénykép</string>
+    <string name="AttachVideo">Videó</string>
+    <string name="AttachGif">GIF</string>
+    <string name="AttachContact">Névjegy</string>
+    <string name="AttachDocument">Fájl</string>
+    <string name="AttachSticker">Matrica</string>
+    <string name="AttachVoiceMessage">Hangüzenet</string>
+    <string name="FromSelf">Én</string>
+    <!--Alert messages-->
+    <string name="NoHandleAppInstalled">\'%1$s\' fájltípus kezeléséhez nincs alkalmazásod, telepíts egyet!</string>
+    <string name="ContactAlreadyInGroup">Ez a partner már a csoportban van.</string>
+    <string name="ForwardMessagesTo">Továbbítod a kijelölt üzeneteket <![CDATA[<b>]]>%1$s<![CDATA[</b>]]> címére?</string>
+    <string name="SendMessagesTo">Üzenetet küldesz <![CDATA[<b>]]>%1$s<![CDATA[</b>]]> címére?</string>
+    <string name="AreYouSureDeleteThisChat">Törlöd a beszélgetést? Ezután nem fog megjelenni a beszélgetések listáján, de az üzenetek megmaradnak a szerveren.</string>
+    <string name="AreYouSureBlockContact">Biztos le szeretnéd tiltani ezt a partnert?</string>
+    <string name="AreYouSureDeleteContact">Biztos törölni szeretnéd ezt a partnert?</string>
+    <!--permissions-->
+    <string name="PermissionContacts">A Delta Chatnek hozzáférésre van szüksége a névjegyeidhez, hogy összekössön a barátaiddal a készülékeiden.</string>
+    <string name="PermissionStorage">A Delta Chatnek hozzáférésre van szüksége a tárhelyedhez, hogy küldhess és fogadhass fényképeket, videókat, zenét és más médiafájlokat.</string>
+    <string name="PermissionNoAudio">A Delta Chatnek hozzáférésre van szüksége a mikrofonodhoz, hogy küldhess hangüzeneteket.</string>
+    <string name="PermissionOpenSettings">Beállítások</string>
+    <!--Intro view-->
+    <string name="Intro1Headline">Delta Chat</string>
+    <string name="Intro1Message">A világ <![CDATA[<b>legkiterjedtebb</b>]]> üzenetküldője.<![CDATA[<br/><b>Szabad</b>]]> és <![CDATA[<b>ingyenes</b>]]>.</string>
+
+    <string name="Intro2Headline">Független</string>
+    <string name="Intro2Message"><![CDATA[<b>Nem függ</b>]]> más számítógépektől vagy szolgáltatásoktól. Az alkalmazás csak az e-mail szerveredet használja.</string>
+
+    <string name="Intro3Headline">Gyors</string>
+    <string name="Intro3Message"><![CDATA[<b>Azonnali üzenetek</b>]]> másodpercek alatt.<![CDATA[<br/>]]>Villámgyors kezelőfelület.</string>
+
+    <string name="Intro4Headline">Erőteljes</string>
+    <string name="Intro4Message"><![CDATA[<b>Korlátlan</b>]]> beszélgetés, kép, videó, hangüzenet és még sok más. Együttműködik más kliensekkel is.</string>
+
+    <string name="Intro5Headline">Szabad</string>
+    <string name="Intro5Message"><![CDATA[<b>Delta Chat</b>]]> ist free forever.<![CDATA[<br/>]]>OpenSource. No ads. No subscription. No vendor lock-in.</string>
+
+    <string name="Intro6Headline">Biztonságos</string>
+    <string name="Intro6Message"><![CDATA[<b>Titkosítás</b>]]> a legelterjedtebb algoritmusokkal. Az üzenetek a szervereden maradnak.</string>
+
+    <string name="Intro7Headline">Megbízható</string>
+
+    <string name="IntroStartMessaging">Kezdj csevegni!</string>
+    <!--plural-->
+    <plurals name="Members">
+        <item quantity="one">%d tag</item>
+        <item quantity="other">%d tag</item>
+    </plurals>
+    <plurals name="Contacts">
+        <item quantity="one">%d névjegy</item>
+        <item quantity="other">%d névjegy</item>
+    </plurals>
+    <plurals name="MeAndMembers">
+        <item quantity="one">Én és %d tag</item>
+        <item quantity="other">Én és %d tag</item>
+    </plurals>
+    <plurals name="NewMessages">
+        <item quantity="one">%d új üzenet</item>
+        <item quantity="other">%d új üzenet</item>
+    </plurals>
+    <plurals name="messages">
+        <item quantity="one">%d üzenet</item>
+        <item quantity="other">%d üzenet</item>
+    </plurals>
+    <plurals name="AreYouSureDeleteMessages">
+        <item quantity="one">%d üzenet törlése? Az üzenet a szerverről is törlődik.</item>
+        <item quantity="other">%d üzenet törlése? Az üzenetek a szerverről is törlődnek.</item>
+    </plurals>
+    <plurals name="NewMessagesInChats">
+        <!-- Translators: the first string placeholder "%s" gets replaced with the
+        text "%d new messages", so the complete sentence would be e.g.
+        "4 new messages in 2 chats". -->
+        <item quantity="one">%1$s %2$d beszélgetésben</item>
+        <item quantity="other">%1$s %2$d beszélgetésben</item>
+    </plurals>
+    <plurals name="Chats">
+        <item quantity="one">%d beszélgetés</item>
+        <item quantity="other">%d beszélgetés</item>
+    </plurals>
+    <plurals name="Minutes">
+        <item quantity="one">%d perc</item>
+        <item quantity="other">%d perc</item>
+    </plurals>
+    <plurals name="Hours">
+        <item quantity="one">%d óra</item>
+        <item quantity="other">%d óra</item>
+    </plurals>
+    <plurals name="Days">
+        <item quantity="one">%d nap</item>
+        <item quantity="other">%d nap</item>
+    </plurals>
+    <plurals name="Weeks">
+        <item quantity="one">%d hét</item>
+        <item quantity="other">%d hét</item>
+    </plurals>
+    <plurals name="Months">
+        <item quantity="one">%d hónap</item>
+        <item quantity="other">%d hónap</item>
+    </plurals>
+    <plurals name="MaxNotifications">
+        <!-- Translators: the second string placeholder "%s" gets replaced with the
+        text "%d minutes", so the complete sentence would be e.g.
+        "At most 8 notifications within 3 minutes". -->
+        <item quantity="one">Legfeljebb %1$d értesítés %2$s alatt</item>
+        <item quantity="other">Legfeljebb %1$d értesítés %2$s alatt</item>
+    </plurals>
+    <!--date formatters-->
+    <string name="formatterMonthYear">yyyy. MMMM</string>
+    <string name="formatterMonth">MMM. d.</string>
+    <string name="formatterYear">yyyy. M. d.</string>
+    <string name="chatDate">MMMM. d. EEEE</string>
+    <string name="chatFullDate">yyyy. MMMM. d. EEEE</string>
+    <string name="formatterWeek">EEEE</string>
+    <string name="formatterDay24H">HH:mm</string>
+    <string name="formatterDay12H">a h:mm</string>
+    <string name="formatDateAtTime">%1$s %2$s</string>
+    <string name="AccountSettings">Fiókbeállítások</string>
+    <string name="MyAccount">Fiókom</string>
+    <string name="Yes">Igen</string>
+    <string name="No">Nem</string>
+    <string name="MyName">Nevem</string>
+    <string name="MyNameExplain">A címzetteknek megjelenő neved.\n\nHa nem adsz meg nevet, a címzett csak a fiókbeállításoknál megadott e-mail címedet látja.</string>
+    <string name="MyEmailAddress">E-mail címem</string>
+    <string name="Password">Jelszó</string>
+    <string name="SmtpPassword">SMTP jelszó</string>
+    <string name="FromAbove">fentről másolva</string>
+    <string name="SmtpLoginname">SMTP bejelentkezési név</string>
+    <string name="SmtpPort">SMTP port</string>
+    <string name="Automatic">automatikus</string>
+    <string name="ImapServer">IMAP szerver</string>
+    <string name="ImapLoginname">IMAP bejelentkezési név</string>
+    <string name="SmtpServer">SMTP szerver</string>
+    <string name="ImapPort">IMAP port</string>
+    <string name="InboxHeadline">Bejövő</string>
+    <string name="OutboxHeadline">Kimenő</string>
+    <string name="BasicSettings">Alap beállítások</string>
+    <string name="MyAccountExplain">Ismert e-mail szolgáltató esetén az alábbi beállításokat automatikusan meghatározzuk.</string>
+    <string name="MyAccountExplain2" >Előfordulhat, hogy az IMAP/SMTP szolgáltatást az email fiókod webes felületén engedélyezni kell.\n\nHa nem megy, kérj segítséget a szolgáltatótól vagy a barátaidtól.</string>
+    <string name="AccountNotConfigured">A fiók nincs beállítva</string>
+    <string name="AboutThisProgram">Delta Chat névjegye</string>
+    <string name="NotSet">Nincs beállítva</string>
+    <string name="NewChat">Új beszélgetés</string>
+    <string name="Deaddrop">Levelesláda</string>
+    <string name="Media">Média</string>
+    <string name="DeaddropInChatlist">Levelesláda megjelenítése a beszélgetéslistában</string>
+    <string name="MuteAlways">Mindig lenémítva</string>
+    <string name="AskStartChatWith">Beszélgetést indítasz <![CDATA[<b>]]>%1$s<![CDATA[</b>]]> partnerrel?</string>
+    <string name="DeaddropHint">Beszélgetés indításához koppints a válasz-nyílra.</string>
+    <string name="NotYetImplemented">Ez a funkció nem érhető el vagy még nem készült el.</string>
+    <string name="DefaultStatusText">Delta Chat Messengerből küldve</string>
+    <string name="Name" >Név</string>
+    <string name="EmailAddress">E-mail cím</string>
+    <string name="CannotDeleteContact">A használatban lévő névjegyet nem lehet törölni, ehelyett letilthatod a partnert.</string>
+    <string name="BadEmailAddress">Rossz e-mail cím.</string>
+    <string name="ContactCreated">Névjegy létrehozva.</string>
+    <string name="ViewProfile">Profil megtekintése</string>
+    <!-- Translators: please use a very short string here, it should not much longer than
+    the string needed for video time+size (0:00, 12,3 Mib) -->
+    <string name="OneMoment">Egy pillanat…</string>
+    <string name="NoChatsHelp">Kezdj beszélgetni a jobb alsó \"új beszélgetés\" gombbal vagy több lehetőségért nyomd meg a menü gombot.</string>
+    <string name="ConfiguringAccount">Fiók beállítása…</string>
+    <string name="CannotConnect">Nem sikerül csatlakozni, ellenőrizd a beállításokat.</string>
+    <string name="Intro7Message">A <![CDATA[<b>Delta Chat</b>]]> üzleti használatra is biztonságos, kompatibilis és szabványokra épül.</string>
+    <string name="InviteMenuEntry">Meghívó küldése</string>
+    <string name="InviteText">A Delta Chat nevű programmal chatelek - %1$s - írhatsz nekem ezen a címen: %2$s</string>
+    <string name="AdvancedSettings">További beállítások</string>
+    <string name="AskResetNotifications" >Az oldal, a partnereid és csoportjaid minden értesítési és hangbeállítását visszaállítod?</string>
+    <string name="AttachFiles">Fájlok csatolása</string>
+    <string name="ErrGroupNameEmpty">Nevezd el a csoportot.</string>
+    <string name="MsgNewGroupDraftHint">Írj egy kezdőüzenetet, hogy a többiek válaszolhassanak a csoportban.\n\n• Nincs gond, ha nem használja minden tag a Delta Chatet.\n\n• Az első üzenet kézbesítése kicsit lassabb lehet.</string>
+    <string name="MsgNewGroupDraft">Üdv! Indítottam egy \"%1$s\" nevű csoportot magunknak.</string>
+    <string name="MsgGroupNameChanged">\"%1$s\" csoport új neve: \"%2$s\".</string>
+    <string name="MsgGroupImageChanged">A csoport képe megváltozott.</string>
+    <string name="MsgMemberAddedToGroup">%1$s hozzáadva a csoporthoz.</string>
+    <string name="MsgMemberRemovedFromToGroup">%1$s eltávolítva a csoportból.</string>
+    <string name="AskAddMemberToGroup">Hozzáadod a csoporthoz <![CDATA[<b>]]>%1$s<![CDATA[</b>]]> partnert?</string>
+    <string name="AskRemoveMemberFromGroup">Kiveszed a csoportból <![CDATA[<b>]]>%1$s<![CDATA[</b>]]> partnert?</string>
+    <string name="ErrSelfNotInGroup">Csoporttagnak kell lenned, hogy ezt megtehesd.</string>
+    <string name="MsgGroupLeft">Kiléptél a csoportból.</string>
+    <string name="NoMessagesHint">Üzenetküldés <![CDATA[<b>]]>%1$s<![CDATA[</b>]]> partnernek:\n\n• Nincs gond, ha <![CDATA[<b>]]>%2$s<![CDATA[</b>]]> nem használja a Delta Chatet.\n\n• Az első üzenet kézbesítése kicsit lassabb lehet.</string>
+    <string name="SendNRcvReadReceipts">Tértivevények küldése és fogadása</string>
+    <string name="E2EEncryption">Végpontok közötti titkosítás</string>
+    <string name="E2EManagePrivateKeys">Privát kulcsok kezelése</string>
+    <string name="E2ECompareKeys">Kulcsok összehasonlítása</string>
+    <string name="ResetContactsKey">Partner kulcsának visszaállítása</string>
+    <string name="ForwardToTitle">Továbbítás…</string>
+    <string name="SelectContact">Válassz partnert</string>
+    <string name="DoneHint">Kész.</string>
+    <string name="FileNotFound">%1$s fájl nem található.</string>
+
+</resources>
