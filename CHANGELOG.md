@@ -1,11 +1,13 @@
 # Delta Chat Changelog
 
-## UNRELEASED
+## v0.1.22
+2017-03-22
 
 * Show HTML-only messages
 * Show connection errors
 * Add options for SSL/TLS and STARTTLS
 * Automatic account configuration, if possible
+* Recode large videos
 * Add Hungarian translation
 * Add Korean translation
 
