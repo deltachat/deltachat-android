@@ -75,6 +75,7 @@ public class LocaleController {
 
     public static class LocaleInfo {
         public String name;
+        public String nameEnglish;
         public String shortName;
     }
 
@@ -97,47 +98,62 @@ public class LocaleController {
     public LocaleController() {
         LocaleInfo localeInfo = new LocaleInfo();
         localeInfo.name = "English";
+        localeInfo.nameEnglish = "English";
         localeInfo.shortName = "en";
         languagesDict.put(localeInfo.shortName, localeInfo);
 
         localeInfo = new LocaleInfo();
         localeInfo.name = "Italiano";
+        localeInfo.nameEnglish = "Italian";
         localeInfo.shortName = "it";
         languagesDict.put(localeInfo.shortName, localeInfo);
 
         localeInfo = new LocaleInfo();
         localeInfo.name = "Español";
+        localeInfo.nameEnglish = "Spanish";
         localeInfo.shortName = "es";
         languagesDict.put(localeInfo.shortName, localeInfo);
 
         localeInfo = new LocaleInfo();
         localeInfo.name = "Deutsch";
+        localeInfo.nameEnglish = "German";
         localeInfo.shortName = "de";
         languagesDict.put(localeInfo.shortName, localeInfo);
 
         localeInfo = new LocaleInfo();
         localeInfo.name = "Français";
+        localeInfo.nameEnglish = "French";
         localeInfo.shortName = "fr";
         languagesDict.put(localeInfo.shortName, localeInfo);
 
         localeInfo = new LocaleInfo();
         localeInfo.name = "Nederlands";
+        localeInfo.nameEnglish = "Dutch";
         localeInfo.shortName = "nl";
         languagesDict.put(localeInfo.shortName, localeInfo);
 
         localeInfo = new LocaleInfo();
         localeInfo.name = "Polski";
+        localeInfo.nameEnglish = "Polish";
         localeInfo.shortName = "pl";
         languagesDict.put(localeInfo.shortName, localeInfo);
 
         localeInfo = new LocaleInfo();
         localeInfo.name = "Português";
+        localeInfo.nameEnglish = "Portuguese";
         localeInfo.shortName = "pt";
         languagesDict.put(localeInfo.shortName, localeInfo);
 
         localeInfo = new LocaleInfo();
         localeInfo.name = "한국어";
+        localeInfo.nameEnglish = "Korean";
         localeInfo.shortName = "ko";
+        languagesDict.put(localeInfo.shortName, localeInfo);
+
+        localeInfo = new LocaleInfo();
+        localeInfo.name = "Magyar";
+        localeInfo.nameEnglish = "Hungarian";
+        localeInfo.shortName = "hu";
         languagesDict.put(localeInfo.shortName, localeInfo);
 
         systemDefaultLocale = Locale.getDefault(); // we have to remember this as we may switch back to default later

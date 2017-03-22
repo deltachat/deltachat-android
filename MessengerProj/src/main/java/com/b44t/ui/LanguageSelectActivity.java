@@ -43,7 +43,7 @@ import com.b44t.messenger.LocaleController;
 import com.b44t.messenger.R;
 import com.b44t.messenger.Utilities;
 import com.b44t.ui.Adapters.BaseFragmentAdapter;
-import com.b44t.ui.Cells.TextSettingsCell;
+import com.b44t.ui.Cells.TextDetailSettingsCell;
 import com.b44t.ui.ActionBar.ActionBar;
 import com.b44t.ui.ActionBar.ActionBarMenu;
 import com.b44t.ui.ActionBar.ActionBarMenuItem;
@@ -81,6 +81,7 @@ public class LanguageSelectActivity extends BaseFragment {
         });
         LocaleController.LocaleInfo localeInfo = new LocaleController.LocaleInfo();
         localeInfo.name = ApplicationLoader.applicationContext.getString(R.string.Default); // the "Default" option is interesting, because it not only sets the language to default but also clears the "override" flag - further system changes are then followed by Delta Chat again.
+        localeInfo.nameEnglish = "Default";
         localeInfo.shortName = null;
         sortedLanguages.add(0, localeInfo);
 
@@ -270,7 +271,7 @@ public class LanguageSelectActivity extends BaseFragment {
                 ArrayList<LocaleController.LocaleInfo> resultArray = new ArrayList<>();
 
                 for (LocaleController.LocaleInfo c : sortedLanguages) {
-                    if (c.name.toLowerCase().startsWith(query)) {
+                    if (c.name.toLowerCase().startsWith(query) || c.nameEnglish.toLowerCase().startsWith(query)) {
                         resultArray.add(c);
                     }
                 }
@@ -333,11 +334,11 @@ public class LanguageSelectActivity extends BaseFragment {
         @Override
         public View getView(int i, View view, ViewGroup viewGroup) {
             if (view == null) {
-                view = new TextSettingsCell(mContext);
+                view = new TextDetailSettingsCell(mContext);
             }
 
             LocaleController.LocaleInfo c = searchResult.get(i);
-            ((TextSettingsCell) view).setText(c.name, i != searchResult.size() - 1);
+            ((TextDetailSettingsCell) view).setTextAndValue(c.name, c.nameEnglish, i != searchResult.size() - 1);
 
             return view;
         }
@@ -401,11 +402,11 @@ public class LanguageSelectActivity extends BaseFragment {
         @Override
         public View getView(int i, View view, ViewGroup viewGroup) {
             if (view == null) {
-                view = new TextSettingsCell(mContext);
+                view = new TextDetailSettingsCell(mContext);
             }
 
             LocaleController.LocaleInfo localeInfo = sortedLanguages.get(i);
-            ((TextSettingsCell) view).setText(localeInfo.name, i != sortedLanguages.size() - 1);
+            ((TextDetailSettingsCell) view).setTextAndValue(localeInfo.name, localeInfo.nameEnglish, i != sortedLanguages.size() - 1);
 
             return view;
         }
