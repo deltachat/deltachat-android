@@ -1,12 +1,15 @@
 package com.b44t.messenger;
 
+import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.PowerManager;
+import android.util.Log;
 
 public class ConnectionsManager {
 
@@ -17,8 +20,6 @@ public class ConnectionsManager {
     public final static int ConnectionStateConnected = 3;
     public final static int ConnectionStateUpdating = 4;
 
-    private long lastPauseTime = System.currentTimeMillis();
-    private boolean appPaused = true;
     private int lastClassGuid = 1;
     private PowerManager.WakeLock wakeLock = null;
 
@@ -42,6 +43,13 @@ public class ConnectionsManager {
             PowerManager pm = (PowerManager) ApplicationLoader.applicationContext.getSystemService(Context.POWER_SERVICE);
             wakeLock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "lock");
             wakeLock.setReferenceCounted(false);
+
+            SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("Notifications", Activity.MODE_PRIVATE);
+            if (preferences.getBoolean("pushService", true)) {
+                Log.i("DeltaChat", "*** Acquire wakeLock");
+                wakeLock.acquire();
+            }
+
         } catch (Exception e) {
             FileLog.e("messenger", e);
         }
@@ -49,14 +57,6 @@ public class ConnectionsManager {
 
     public int getCurrentTime() {
         return MrMailbox.getCurrentTime();
-    }
-
-    public void cancelRequest(int token, boolean notifyServer) {
-        //native_cancelRequest(token, notifyServer);
-    }
-
-    public void cleanup() {
-        //native_cleanUp();
     }
 
     public int getConnectionState() {
@@ -84,29 +84,6 @@ public class ConnectionsManager {
 
     public void resumeNetworkMaybe() {
         //native_resumeNetwork(true);
-    }
-
-    public void setAppPaused(final boolean value, final boolean byScreenState) {
-        if (!byScreenState) {
-            appPaused = value;
-            FileLog.d("messenger", "app paused = " + value);
-        }
-        if (value) {
-            if (lastPauseTime == 0) {
-                lastPauseTime = System.currentTimeMillis();
-            }
-            //native_pauseNetwork();
-        } else {
-            if (appPaused) {
-                return;
-            }
-            FileLog.e("messenger", "reset app pause time");
-            /*if (lastPauseTime != 0 && System.currentTimeMillis() - lastPauseTime > 5000) {
-                ContactsController.getInstance().checkContacts();
-            }*/
-            lastPauseTime = 0;
-            //native_resumeNetwork(false);
-        }
     }
 
     public int generateClassGuid() {

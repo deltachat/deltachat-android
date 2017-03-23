@@ -523,7 +523,7 @@ public class StickersAlert extends BottomSheet implements NotificationCenter.Not
     public void dismiss() {
         super.dismiss();
         if (reqId != 0) {
-            ConnectionsManager.getInstance().cancelRequest(reqId, true);
+            //ConnectionsManager.getInstance().cancelRequest(reqId, true);
             reqId = 0;
         }
         NotificationCenter.getInstance().removeObserver(this, NotificationCenter.emojiDidLoaded);

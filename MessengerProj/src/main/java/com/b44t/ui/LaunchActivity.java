@@ -27,7 +27,6 @@ import android.Manifest;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.Application;
 import android.content.ContentResolver;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -408,26 +407,6 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                                         group.restoreSelfArgs(savedInstanceState);
                                     }
                                 }
-                                break;
-                            case "channel":
-                                /* EDIT BY MR
-                                if (args != null) {
-                                    ChannelCreateActivity channel = new ChannelCreateActivity(args);
-                                    if (actionBarLayout.addFragmentToStack(channel)) {
-                                        channel.restoreSelfArgs(savedInstanceState);
-                                    }
-                                }
-                                */
-                                break;
-                            case "edit":
-                                /* EDIT BY MR
-                                if (args != null) {
-                                    ChannelEditActivity channel = new ChannelEditActivity(args);
-                                    if (actionBarLayout.addFragmentToStack(channel)) {
-                                        channel.restoreSelfArgs(savedInstanceState);
-                                    }
-                                }
-                                */
                                 break;
                             case "chat_profile":
                                 if (args != null) {
@@ -1329,6 +1308,7 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
 
     @Override
     protected void onPause() {
+        Log.i("DeltaChat", "*** LaunchActivity.onPause()");
         super.onPause();
         ApplicationLoader.mainInterfacePaused = true;
         onPasscodePause();
@@ -1340,7 +1320,6 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
         if (passcodeView != null) {
             passcodeView.onPause();
         }
-        ConnectionsManager.getInstance().setAppPaused(true, false);
         if (PhotoViewer.getInstance().isVisible()) {
             PhotoViewer.getInstance().onPause();
         }
@@ -1348,20 +1327,20 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
 
     @Override
     protected void onStart() {
+        Log.i("DeltaChat", "*** LaunchActivity.onStart()");
         super.onStart();
-        //Browser.bindCustomTabsService(this);
     }
 
     @Override
     protected void onStop() {
+        Log.i("DeltaChat", "*** LaunchActivity.onStop()");
         super.onStop();
-        //Browser.unbindCustomTabsService(this);
     }
 
     @Override
     protected void onDestroy() {
+        Log.i("DeltaChat", "*** LaunchActivity.onDestroy()");
         PhotoViewer.getInstance().destroyPhotoViewer();
-        //SecretPhotoViewer.getInstance().destroyPhotoViewer();
         StickerPreviewViewer.getInstance().destroy();
         try {
             if (visibleDialog != null) {
@@ -1389,6 +1368,7 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
 
     @Override
     protected void onResume() {
+        Log.i("DeltaChat", "*** LaunchActivity.onResume()");
         super.onResume();
         ApplicationLoader.mainInterfacePaused = false;
         onPasscodeResume();
@@ -1401,7 +1381,6 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
         } else {
             passcodeView.onResume();
         }
-        ConnectionsManager.getInstance().setAppPaused(false, false);
         ContactsController.cleanupAvatarCache();
         updateCurrentConnectionState();
         if (PhotoViewer.getInstance().isVisible()) {
@@ -1521,14 +1500,6 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                 } else if (lastFragment instanceof ProfileActivity && ((ProfileActivity) lastFragment).isChat() && args != null) {
                     outState.putBundle("args", args);
                     outState.putString("fragment", "chat_profile");
-                /* EDIT BY MR
-                } else if (lastFragment instanceof ChannelCreateActivity && args != null && args.getInt("step") == 0) {
-                    outState.putBundle("args", args);
-                    outState.putString("fragment", "channel");
-                } else if (lastFragment instanceof ChannelEditActivity && args != null) {
-                    outState.putBundle("args", args);
-                    outState.putString("fragment", "edit");
-                */
                 }
                 lastFragment.saveSelfArgs(outState);
             }

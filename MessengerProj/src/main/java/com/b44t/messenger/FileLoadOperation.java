@@ -313,14 +313,14 @@ public class FileLoadOperation {
                 }
                 state = stateFailed;
                 cleanup();
-                if (requestInfos != null) {
+                /*if (requestInfos != null) {
                     for (int a = 0; a < requestInfos.size(); a++) {
                         RequestInfo requestInfo = requestInfos.get(a);
                         if (requestInfo.requestToken != 0) {
                             ConnectionsManager.getInstance().cancelRequest(requestInfo.requestToken, true);
                         }
                     }
-                }
+                }*/
                 delegate.didFailedLoadingFile(FileLoadOperation.this, 1);
             }
         });

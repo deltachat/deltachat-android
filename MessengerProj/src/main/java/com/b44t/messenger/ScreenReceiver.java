@@ -26,18 +26,17 @@ package com.b44t.messenger;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 
 public class ScreenReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
         if (intent.getAction().equals(Intent.ACTION_SCREEN_OFF)) {
-            FileLog.e("messenger", "screen off");
-            ConnectionsManager.getInstance().setAppPaused(true, true);
+            Log.i("DeltaChat", "*** Screen off");
             ApplicationLoader.isScreenOn = false;
         } else if (intent.getAction().equals(Intent.ACTION_SCREEN_ON)) {
-            FileLog.e("messenger", "screen on");
-            ConnectionsManager.getInstance().setAppPaused(false, true);
+            Log.i("DeltaChat", "*** Screen on");
             ApplicationLoader.isScreenOn = true;
         }
         //NotificationCenter.getInstance().postNotificationName(NotificationCenter.screenStateChanged);
