@@ -326,6 +326,7 @@
     <string name="BasicSettings">기본 설정</string>
     <string name="Deaddrop">사서함</string>
     <string name="NewChat">채팅 시작</string>
+    <string name="Audio">음악</string>
 
 </resources>
 

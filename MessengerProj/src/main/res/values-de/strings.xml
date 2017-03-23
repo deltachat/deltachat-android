@@ -430,4 +430,5 @@
     <string name="FileNotFound">Datei %1$s nicht gefunden.</string>
     <string name="Error">Fehler: %1$s</string>
     <string name="NoNetwork">Kein Netz.</string>
+    <string name="Audio">Audio</string>
 </resources>

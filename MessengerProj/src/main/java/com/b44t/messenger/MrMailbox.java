@@ -288,7 +288,7 @@ public class MrMailbox {
                     case  8: s = ApplicationLoader.applicationContext.getString(R.string.Deaddrop); break;
                     case  9: s = ApplicationLoader.applicationContext.getString(R.string.AttachPhoto); break;
                     case 10: s = ApplicationLoader.applicationContext.getString(R.string.AttachVideo); break;
-                    case 11: s = ApplicationLoader.applicationContext.getString(R.string.AttachMusic); break;
+                    case 11: s = ApplicationLoader.applicationContext.getString(R.string.Audio); break;
                     case 12: s = ApplicationLoader.applicationContext.getString(R.string.AttachDocument); break;
                     case 13: s = ApplicationLoader.applicationContext.getString(R.string.DefaultStatusText); break;
                     case 14: s = ApplicationLoader.applicationContext.getString(R.string.MsgNewGroupDraft); break;
