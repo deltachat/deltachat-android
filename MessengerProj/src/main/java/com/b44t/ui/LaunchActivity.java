@@ -41,6 +41,7 @@ import android.os.Parcelable;
 import android.provider.ContactsContract;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.ActionMode;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
@@ -70,7 +71,6 @@ import com.b44t.messenger.NotificationCenter;
 import com.b44t.messenger.R;
 import com.b44t.messenger.browser.Browser;
 import com.b44t.messenger.ConnectionsManager;
-import com.b44t.messenger.TLRPC;
 import com.b44t.messenger.UserConfig;
 import com.b44t.ui.Adapters.DrawerLayoutAdapter;
 import com.b44t.ui.ActionBar.ActionBarLayout;
@@ -124,6 +124,8 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        Log.i("DeltaChat", "*** Post-init via LaunchActivity.onCreate()");
         ApplicationLoader.postInitApplication();
 
         if( MrMailbox.isConfigured()==0 ) {

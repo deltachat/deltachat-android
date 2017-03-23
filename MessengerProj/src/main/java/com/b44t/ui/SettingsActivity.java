@@ -39,6 +39,7 @@ import android.widget.ListView;
 
 import com.b44t.messenger.AndroidUtilities;
 import com.b44t.messenger.ApplicationLoader;
+import com.b44t.messenger.BuildVars;
 import com.b44t.messenger.LocaleController;
 import com.b44t.messenger.MrMailbox;
 import com.b44t.messenger.R;
@@ -199,9 +200,12 @@ public class SettingsActivity extends BaseFragment {
             }
         } catch (Exception e) {}
 
-        return "Build.VERSION.SDK_INT=" + Build.VERSION.SDK_INT
-                + "\nABI=" + abi // ABI = Application Binary Interface
-                + "\nversionCode=" + versionCode;
+        return      "SDK_INT="       + Build.VERSION.SDK_INT
+                + "\nMANUFACTURER="  + Build.MANUFACTURER
+                + "\nMODEL="         + Build.MODEL
+                + "\nDEBUG_VERSION=" + BuildVars.DEBUG_VERSION
+                + "\nABI="           + abi // ABI = Application Binary Interface
+                + "\nversionCode="   + versionCode;
     }
 
     private class ListAdapter extends BaseFragmentAdapter {

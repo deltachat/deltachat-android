@@ -33,13 +33,12 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.pm.ApplicationInfo;
-import android.content.pm.PackageInfo;
 import android.content.res.Configuration;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
-import android.os.Build;
 import android.os.Handler;
 import android.os.PowerManager;
+import android.util.Log;
 
 import com.b44t.ui.Components.ForegroundDetector;
 
@@ -140,16 +139,16 @@ public class ApplicationLoader extends Application {
         } catch (Exception e) {
             FileLog.e("messenger", e);
         }
-        return new File("/data/data/com.b44t.messenger/files"); // EDIT BY MR
+        return new File("/data/data/com.b44t.messenger/files");
     }
 
     public static void postInitApplication() {
         if (applicationInited) {
+            Log.i("DeltaChat", "*** Already inited."); // this is quite normal as the function is called in different activities and situations
             return;
         }
 
         applicationInited = true;
-        //convertConfig();
 
         try {
             LocaleController.getInstance();
@@ -175,33 +174,9 @@ public class ApplicationLoader extends Application {
         }
 
         UserConfig.loadConfig();
-        String deviceModel;
-        String appVersion;
-        String systemVersion;
-        String configPath = getFilesDirFixed().toString();
-
-        try {
-            deviceModel = Build.MANUFACTURER + Build.MODEL;
-            PackageInfo pInfo = ApplicationLoader.applicationContext.getPackageManager().getPackageInfo(ApplicationLoader.applicationContext.getPackageName(), 0);
-            appVersion = pInfo.versionName + " (" + pInfo.versionCode + ")";
-            systemVersion = "SDK " + Build.VERSION.SDK_INT;
-        } catch (Exception e) {
-            deviceModel = "Android unknown";
-            appVersion = "App version unknown";
-            systemVersion = "SDK " + Build.VERSION.SDK_INT;
-        }
-        if (deviceModel.trim().length() == 0) {
-            deviceModel = "Android unknown";
-        }
-        if (appVersion.trim().length() == 0) {
-            appVersion = "App version unknown";
-        }
-        if (systemVersion.trim().length() == 0) {
-            systemVersion = "SDK Unknown";
-        }
 
         SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("Notifications", Activity.MODE_PRIVATE);
-        boolean enablePushConnection = preferences.getBoolean("pushConnection", true);
+        //boolean enablePushConnection = preferences.getBoolean("pushConnection", true);
 
         if( preferences.getInt("notify2_"+MrChat.MR_CHAT_ID_DEADDROP, 666)==666 ) {
             // make sure, the notifications for the "deaddrop" dialog are muted by default
@@ -236,6 +211,7 @@ public class ApplicationLoader extends Application {
 
         // EDIT BY MR - create a MrMailbox object; as android stops the App by just killing it, we do never call MrMailboxUnref()
         // however, we may want to to have a look at onPause() eg. of activities (eg. for flushing data, if needed)
+        Log.i("DeltaChat", "************ Primary-init ************");
         MrMailbox.MrCallback(0, 0, 0); // do not remove this call; this makes sure, the function is not removed from build or warnings are printed!
         MrMailbox.init();
 

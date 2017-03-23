@@ -28,6 +28,7 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -65,6 +66,8 @@ public class ManageSpaceActivity extends Activity implements ActionBarLayout.Act
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        Log.i("DeltaChat", "*** Post-init via ManageSpaceActivity.onCreate()");
         ApplicationLoader.postInitApplication();
 
         requestWindowFeature(Window.FEATURE_NO_TITLE);

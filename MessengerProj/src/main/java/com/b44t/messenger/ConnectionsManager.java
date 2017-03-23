@@ -69,10 +69,6 @@ public class ConnectionsManager {
         */
     }
 
-    public void setPushConnectionEnabled(boolean value) {
-        //native_setPushConnectionEnabled(value);
-    }
-
     public void init() {
         //native_init(version, layer, apiId, deviceModel, systemVersion, appVersion, langCode, configPath, logPath, userId, enablePushConnection);
         //checkConnection();

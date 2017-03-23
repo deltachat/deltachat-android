@@ -27,13 +27,16 @@ import android.app.Service;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.IBinder;
+import android.util.Log;
 
 public class NotificationsService extends Service {
 
     @Override
     public void onCreate() {
-        FileLog.e("messenger", "service started");
+
+        Log.i("DeltaChat", "*** Post-init via NotificationsService.onCreate()");
         ApplicationLoader.postInitApplication();
+
     }
 
     @Override

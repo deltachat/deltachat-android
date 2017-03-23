@@ -28,12 +28,16 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.RemoteInput;
+import android.util.Log;
 
 public class AutoMessageReplyReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
+
+        Log.i("DeltaChat", "*** Post-init via AutoMessageReplyReceiver.onReceive()");
         ApplicationLoader.postInitApplication();
+
         Bundle remoteInput = RemoteInput.getResultsFromIntent(intent);
         if (remoteInput == null) {
             return;
