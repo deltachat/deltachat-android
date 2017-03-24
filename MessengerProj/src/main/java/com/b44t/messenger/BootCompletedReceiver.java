@@ -1,7 +1,6 @@
 /*******************************************************************************
  *
  *                          Messenger Android Frontend
- *                        (C) 2013-2016 Nikolai Kudashov
  *                           (C) 2017 Björn Petersen
  *                    Contact: r10s@b44t.com, http://b44t.com
  *
@@ -23,39 +22,20 @@
 
 package com.b44t.messenger;
 
-import android.app.Service;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.os.IBinder;
 import android.util.Log;
 
-public class NotificationsService extends Service {
 
-    @Override
-    public void onCreate() {
-
-        Log.i("DeltaChat", "*** Post-init via NotificationsService.onCreate()");
-        ApplicationLoader.postInitApplication();
-
-    }
-
-    @Override
-    public int onStartCommand(Intent intent, int flags, int startId) {
-        return START_STICKY;
-    }
-
-    @Override
-    public IBinder onBind(Intent intent) {
-        return null;
-    }
-
-    public void onDestroy() {
-        FileLog.e("messenger", "service destroyed");
-
-        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("Notifications", MODE_PRIVATE);
-        if (preferences.getBoolean("pushService", true)) {
-            Intent intent = new Intent("com.b44t.start");
-            sendBroadcast(intent);
-        }
+public class BootCompletedReceiver extends BroadcastReceiver {
+    public void onReceive(Context context, Intent intent) {
+        Log.i("DeltaChat", "*** BootCompletedReceiver.onReceive()");
+        AndroidUtilities.runOnUIThread(new Runnable() {
+            @Override
+            public void run() {
+                ApplicationLoader.startKeepAliveService();
+            }
+        });
     }
 }

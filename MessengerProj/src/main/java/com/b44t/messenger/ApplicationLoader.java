@@ -188,7 +188,7 @@ public class ApplicationLoader extends Application {
             PowerManager pm = (PowerManager) ApplicationLoader.applicationContext.getSystemService(Context.POWER_SERVICE);
             wakeLock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "lock");
             wakeLock.setReferenceCounted(false);
-            if (notificationPreferences.getBoolean("pushService", true)) {
+            if (notificationPreferences.getBoolean("keepAlive", true)) {
                 wakeLock.acquire();
             }
 
@@ -233,13 +233,13 @@ public class ApplicationLoader extends Application {
 
         applicationHandler = new Handler(applicationContext.getMainLooper());
 
-        startPushService();
+        startKeepAliveService();
     }
 
-    public static void startPushService() {
+    public static void startKeepAliveService() {
         SharedPreferences preferences = applicationContext.getSharedPreferences("Notifications", MODE_PRIVATE);
 
-        if (preferences.getBoolean("pushService", true)) {
+        if (preferences.getBoolean("keepAlive", true)) {
             AlarmManager am = (AlarmManager) applicationContext.getSystemService(Context.ALARM_SERVICE);
             Intent i = new Intent(applicationContext, ApplicationLoader.class);
             pendingIntent = PendingIntent.getBroadcast(applicationContext, 0, i, 0);
@@ -247,16 +247,16 @@ public class ApplicationLoader extends Application {
             am.cancel(pendingIntent);
             am.setRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis(), 60000, pendingIntent);
 
-            applicationContext.startService(new Intent(applicationContext, NotificationsService.class));
+            applicationContext.startService(new Intent(applicationContext, KeepAliveService.class));
         } else {
-            stopPushService();
+            stopKeepAliveService();
         }
     }
 
-    public static void stopPushService() {
-        applicationContext.stopService(new Intent(applicationContext, NotificationsService.class));
+    public static void stopKeepAliveService() {
+        applicationContext.stopService(new Intent(applicationContext, KeepAliveService.class));
 
-        PendingIntent pintent = PendingIntent.getService(applicationContext, 0, new Intent(applicationContext, NotificationsService.class), 0);
+        PendingIntent pintent = PendingIntent.getService(applicationContext, 0, new Intent(applicationContext, KeepAliveService.class), 0);
         AlarmManager alarm = (AlarmManager)applicationContext.getSystemService(Context.ALARM_SERVICE);
         alarm.cancel(pintent);
         alarm.cancel(pendingIntent);

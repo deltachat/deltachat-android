@@ -191,7 +191,7 @@
             </intent-filter>
         </service> -->
 
-        <service android:name=".NotificationsService" android:enabled="true"/>
+        <service android:name=".KeepAliveService" android:enabled="true"/>
         <service android:name=".NotificationRepeat" android:exported="false"/>
         <service android:name=".MusicPlayerService" android:exported="true" android:enabled="true"/>
         <!-- Do not expose data through MediaBrowserService, this seems unexpected for an messenger.
@@ -214,7 +214,7 @@
             </intent-filter>
         </receiver>
 
-        <receiver android:name=".AppStartReceiver" android:enabled="true">
+        <receiver android:name=".BootCompletedReceiver" android:enabled="true">
             <intent-filter>
                 <action android:name="com.b44t.start" />
                 <action android:name="android.intent.action.BOOT_COMPLETED" />

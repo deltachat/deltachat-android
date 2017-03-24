@@ -298,11 +298,11 @@ public class NotificationsSettingsActivity extends BaseFragment implements Notif
                     // keep-alive service option
                     final SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("Notifications", Activity.MODE_PRIVATE);
                     final SharedPreferences.Editor editor = preferences.edit();
-                    enabled = preferences.getBoolean("pushService", true);
-                    editor.putBoolean("pushService", !enabled);
+                    enabled = preferences.getBoolean("keepAlive", true);
+                    editor.putBoolean("keepAlive", !enabled);
                     editor.apply();
-                    ApplicationLoader.stopPushService();
-                    ApplicationLoader.startPushService();
+                    ApplicationLoader.stopKeepAliveService();
+                    ApplicationLoader.startKeepAliveService();
                 } else if (i == messageLedRow || i == groupLedRow) {
                     if (getParentActivity() == null) {
                         return;
@@ -593,7 +593,7 @@ public class NotificationsSettingsActivity extends BaseFragment implements Notif
                 /*} else if (i == inappPreviewRow) {
                     checkCell.setTextAndCheck(LocaleController.getString("MessagePreview", R.string.MessagePreview), preferences.getBoolean("EnableInAppPreview", true), true);*/
                 } else if (i == notificationsServiceRow) {
-                    checkCell.setTextAndValueAndCheck(LocaleController.getString("NotificationsService", R.string.NotificationsService), LocaleController.getString("NotificationsServiceInfo", R.string.NotificationsServiceInfo), preferences.getBoolean("pushService", true), true, true);
+                    checkCell.setTextAndValueAndCheck(LocaleController.getString("NotificationsService", R.string.NotificationsService), LocaleController.getString("NotificationsServiceInfo", R.string.NotificationsServiceInfo), preferences.getBoolean("keepAlive", true), true, true);
                 /*} else if (i == notificationsServiceConnectionRow) {
                     checkCell.setTextAndValueAndCheck(LocaleController.getString("NotificationsServiceConnection", R.string.NotificationsServiceConnection), LocaleController.getString("NotificationsServiceConnectionInfo", R.string.NotificationsServiceConnectionInfo), preferences.getBoolean("pushConnection", true), true, true);*/
                 } else if (i == badgeNumberRow) {
