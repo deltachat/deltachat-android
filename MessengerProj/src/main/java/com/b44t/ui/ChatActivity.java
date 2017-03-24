@@ -73,11 +73,9 @@ import com.b44t.messenger.browser.Browser;
 import com.b44t.messenger.support.widget.LinearLayoutManager;
 import com.b44t.messenger.support.widget.RecyclerView;
 import com.b44t.messenger.ApplicationLoader;
-import com.b44t.messenger.ConnectionsManager;
 import com.b44t.messenger.TLRPC;
 import com.b44t.messenger.FileLog;
 import com.b44t.messenger.MessageObject;
-import com.b44t.messenger.MessagesController;
 import com.b44t.messenger.NotificationCenter;
 import com.b44t.messenger.R;
 import com.b44t.messenger.UserConfig;
@@ -1056,7 +1054,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
 
             @Override
             public void needSendTyping() {
-                MessagesController.getInstance().sendTyping(dialog_id, 0, classGuid);
+                MrMailbox.sendTyping(dialog_id, 0, classGuid);
             }
 
             @Override
@@ -1363,7 +1361,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
     }
 
     private void toggleMute() {
-        boolean muted = MessagesController.getInstance().isDialogMuted(dialog_id);
+        boolean muted = MrMailbox.isDialogMuted(dialog_id);
         if (!muted) {
             // EDIT BY MR
             AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity()); // was: BottomSheet.Builder
@@ -1377,7 +1375,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
             builder.setItems(items, new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
-                            int untilTime = ConnectionsManager.getInstance().getCurrentTime();
+                            int untilTime = MrMailbox.getCurrentTime();
                                  if (i == 0) { untilTime += 60 * 60; }
                             else if (i == 1) { untilTime += 60 * 60 * 8;  }
                             else if (i == 2) { untilTime += 60 * 60 * 48; }
@@ -1399,7 +1397,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                                 dialog.notify_settings.mute_until = untilTime;
                             }
                             */
-                            NotificationsController.updateServerNotificationsSettings(dialog_id);
+                            NotificationCenter.getInstance().postNotificationName(NotificationCenter.notificationsSettingsUpdated);
                         }
                     }
             );
@@ -1415,7 +1413,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 dialog.notify_settings = new TLRPC.TL_peerNotifySettings();
             }
             */
-            NotificationsController.updateServerNotificationsSettings(dialog_id);
+            NotificationCenter.getInstance().postNotificationName(NotificationCenter.notificationsSettingsUpdated);
         }
     }
 
@@ -1620,7 +1618,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         }
 
         int rightIcon = 0;
-        if( m_canMute && MessagesController.getInstance().isDialogMuted(dialog_id) ) {
+        if( m_canMute && MrMailbox.isDialogMuted(dialog_id) ) {
             rightIcon = R.drawable.mute_fixed;
         }
 
@@ -1879,16 +1877,16 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         else if (id == NotificationCenter.updateInterfaces)
         {
             int updateMask = (Integer) args[0];
-            if ((updateMask & MessagesController.UPDATE_MASK_NAME) != 0 || (updateMask & MessagesController.UPDATE_MASK_CHAT_NAME) != 0) {
+            if ((updateMask & MrMailbox.UPDATE_MASK_NAME) != 0 || (updateMask & MrMailbox.UPDATE_MASK_CHAT_NAME) != 0) {
                 int back_id = m_mrChat.getId();
                 m_mrChat = MrMailbox.getChat(back_id);
                 updateTitle();
             }
             boolean updateSubtitle = false;
-            if ((updateMask & MessagesController.UPDATE_MASK_CHAT_MEMBERS) != 0 || (updateMask & MessagesController.UPDATE_MASK_STATUS) != 0) {
+            if ((updateMask & MrMailbox.UPDATE_MASK_CHAT_MEMBERS) != 0 || (updateMask & MrMailbox.UPDATE_MASK_STATUS) != 0) {
                 updateSubtitle = true;
             }
-            if ((updateMask & MessagesController.UPDATE_MASK_AVATAR) != 0 || (updateMask & MessagesController.UPDATE_MASK_CHAT_AVATAR) != 0 || (updateMask & MessagesController.UPDATE_MASK_NAME) != 0) {
+            if ((updateMask & MrMailbox.UPDATE_MASK_AVATAR) != 0 || (updateMask & MrMailbox.UPDATE_MASK_CHAT_AVATAR) != 0 || (updateMask & MrMailbox.UPDATE_MASK_NAME) != 0) {
                 checkAndUpdateAvatar();
                 updateVisibleRows();
             }
@@ -2252,7 +2250,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         }
         m_mrChat.saveDraft(draftMessage, null);
 
-        MessagesController.getInstance().cancelTyping(0, dialog_id);
+        MrMailbox.cancelTyping(0, dialog_id);
     }
 
     private void applyDraftMaybe() {
@@ -2603,7 +2601,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                             processRowSelect(cell);
                             return;
                         }
-                        if (user != null && user.id != UserConfig.getClientUserId()) {
+                        if (user != null && user.id != MrContact.MR_CONTACT_ID_SELF) {
                             Bundle args = new Bundle();
                             args.putInt("user_id", user.id);
                             ProfileActivity fragment = new ProfileActivity(args);

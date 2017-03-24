@@ -78,7 +78,6 @@ import com.b44t.messenger.LocaleController;
 import com.b44t.messenger.MediaController;
 import com.b44t.messenger.NotificationCenter;
 import com.b44t.messenger.R;
-import com.b44t.messenger.ConnectionsManager;
 import com.b44t.messenger.TLRPC;
 import com.b44t.messenger.MessageObject;
 import com.b44t.messenger.Utilities;
@@ -2327,7 +2326,7 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
     }
 
     private void onPhotoShow(final MessageObject messageObject, final TLRPC.FileLocation fileLocation, final ArrayList<MessageObject> messages, final ArrayList<Object> photos, int index, final PlaceProviderObject object) {
-        classGuid = ConnectionsManager.getInstance().generateClassGuid();
+        classGuid = ApplicationLoader.generateClassGuid();
         currentMessageObject = null;
         currentFileLocation = null;
         currentPathObject = null;
@@ -2577,13 +2576,6 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
         } else if (!imagesArrLocations.isEmpty()) {
             nameTextView.setText("");
             dateTextView.setText("");
-            /*
-            if (avatarsDialogId == UserConfig.getClientUserId() && !avatarsArr.isEmpty()) {
-                menuItem.showSubItem(gallery_menu_delete);
-            } else {
-                menuItem.hideSubItem(gallery_menu_delete);
-            }
-            */
             TLRPC.FileLocation old = currentFileLocation;
             if (index < 0 || index >= imagesArrLocations.size()) {
                 closePhoto(false, false);
@@ -2603,11 +2595,9 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
                 return;
             }
             boolean fromCamera = false;
-            CharSequence caption = null;
             if (object instanceof MediaController.PhotoEntry) {
                 currentPathObject = ((MediaController.PhotoEntry) object).path;
                 fromCamera = ((MediaController.PhotoEntry) object).bucketId == 0 && ((MediaController.PhotoEntry) object).dateTaken == 0 && imagesArrLocals.size() == 1;
-                caption = ((MediaController.PhotoEntry) object).caption;
             } else if (object instanceof MediaController.SearchImage) {
                 MediaController.SearchImage searchImage = (MediaController.SearchImage) object;
                 if (searchImage.document != null) {
@@ -2615,7 +2605,6 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
                 } else {
                     currentPathObject = searchImage.imageUrl;
                 }
-                caption = searchImage.caption;
             }
             if (fromCamera) {
                 actionBar.setTitle(LocaleController.getString("AttachPhoto", R.string.AttachPhoto));

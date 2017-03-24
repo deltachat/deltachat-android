@@ -31,7 +31,6 @@ import android.widget.BaseAdapter;
 import com.b44t.messenger.AndroidUtilities;
 import com.b44t.messenger.LocaleController;
 import com.b44t.messenger.R;
-import com.b44t.messenger.UserConfig;
 import com.b44t.ui.Cells.DrawerActionCell;
 import com.b44t.ui.Cells.DividerCell;
 import com.b44t.ui.Cells.EmptyCell;
@@ -153,6 +152,6 @@ public class DrawerLayoutAdapter extends BaseAdapter {
 
     @Override
     public boolean isEmpty() {
-        return !UserConfig.isClientActivated();
+        return false;
     }
 }

@@ -36,11 +36,14 @@ import android.content.pm.ApplicationInfo;
 import android.content.res.Configuration;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Handler;
 import android.os.PowerManager;
 import android.util.Log;
 
 import com.b44t.ui.Components.ForegroundDetector;
+import com.b44t.ui.SettingsAdvActivity;
 
 import java.io.File;
 
@@ -66,6 +69,10 @@ public class ApplicationLoader extends Application {
     public static int getSelectedColor() {
         return selectedColor;
     }
+
+    private static PowerManager.WakeLock wakeLock = null;
+
+    public static int fontSize;
 
     public static void reloadWallpaper() {
         cachedWallpaper = null;
@@ -174,13 +181,24 @@ public class ApplicationLoader extends Application {
         }
 
         UserConfig.loadConfig();
+        SharedPreferences notificationPreferences = ApplicationLoader.applicationContext.getSharedPreferences("Notifications", Activity.MODE_PRIVATE);
 
-        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("Notifications", Activity.MODE_PRIVATE);
-        //boolean enablePushConnection = preferences.getBoolean("pushConnection", true);
+        // create and acquire wakeLock
+        try {
+            PowerManager pm = (PowerManager) ApplicationLoader.applicationContext.getSystemService(Context.POWER_SERVICE);
+            wakeLock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "lock");
+            wakeLock.setReferenceCounted(false);
+            if (notificationPreferences.getBoolean("pushService", true)) {
+                wakeLock.acquire();
+            }
 
-        if( preferences.getInt("notify2_"+MrChat.MR_CHAT_ID_DEADDROP, 666)==666 ) {
-            // make sure, the notifications for the "deaddrop" dialog are muted by default
-            SharedPreferences.Editor editor = preferences.edit();
+        } catch (Exception e) {
+            Log.e("DeltaChat", "Cannot acquire wakeLock");
+        }
+
+        // make sure, the notifications for the "deaddrop" dialog are muted by default
+        if( notificationPreferences.getInt("notify2_"+MrChat.MR_CHAT_ID_DEADDROP, 666)==666 ) {
+            SharedPreferences.Editor editor = notificationPreferences.edit();
             editor.putInt("notify2_"+MrChat.MR_CHAT_ID_DEADDROP, 2);
             editor.apply();
         }
@@ -192,11 +210,10 @@ public class ApplicationLoader extends Application {
         MrMailbox.connect();
 
         // create other default objects
-        MessagesController.getInstance();
-        ConnectionsManager.getInstance().init();
-        if (UserConfig.getCurrentUser() != null) {
-            SendMessagesHelper.getInstance().checkUnsentMessages();
-        }
+        SharedPreferences mainPreferences = ApplicationLoader.applicationContext.getSharedPreferences("mainconfig", Activity.MODE_PRIVATE);
+        fontSize = mainPreferences.getInt("msg_font_size", SettingsAdvActivity.defMsgFontSize());
+
+        ImageLoader.getInstance();
         MediaController.getInstance();
     }
 
@@ -206,7 +223,6 @@ public class ApplicationLoader extends Application {
 
         applicationContext = getApplicationContext();
         NativeLoader.initNativeLibs(ApplicationLoader.applicationContext);
-        //ConnectionsManager.native_setJava(Build.VERSION.SDK_INT == 14 || Build.VERSION.SDK_INT == 15);
         new ForegroundDetector(this);
 
         // EDIT BY MR - create a MrMailbox object; as android stops the App by just killing it, we do never call MrMailboxUnref()
@@ -256,4 +272,23 @@ public class ApplicationLoader extends Application {
             e.printStackTrace();
         }
     }
+
+    private static int lastClassGuid = 1;
+    public static int generateClassGuid() {
+        return lastClassGuid++;
+    }
+
+    public static boolean isNetworkOnline() {
+        try {
+            ConnectivityManager cm = (ConnectivityManager) ApplicationLoader.applicationContext.getSystemService(Context.CONNECTIVITY_SERVICE);
+            NetworkInfo netInfo = cm.getActiveNetworkInfo();
+            if (netInfo != null && netInfo.isConnected()) {
+                return true;
+            }
+
+        } catch (Exception e) {
+        }
+        return false;
+    }
+
 }

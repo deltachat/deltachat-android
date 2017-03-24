@@ -33,8 +33,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.b44t.messenger.ApplicationLoader;
 import com.b44t.messenger.FileLog;
-import com.b44t.messenger.ConnectionsManager;
 
 public class BaseFragment {
 
@@ -63,12 +63,12 @@ public class BaseFragment {
             RC500_PHOTO_VIEW                   = 500;
 
     public BaseFragment() {
-        classGuid = ConnectionsManager.getInstance().generateClassGuid();
+        classGuid = ApplicationLoader.generateClassGuid();
     }
 
     public BaseFragment(Bundle args) {
         arguments = args;
-        classGuid = ConnectionsManager.getInstance().generateClassGuid();
+        classGuid = ApplicationLoader.generateClassGuid();
     }
 
     public ActionBar getActionBar() {
@@ -179,7 +179,6 @@ public class BaseFragment {
     }
 
     public void onFragmentDestroy() {
-        //ConnectionsManager.getInstance().cancelRequestsForGuid(classGuid);
         isFinished = true;
         if (actionBar != null) {
             actionBar.setEnabled(false);

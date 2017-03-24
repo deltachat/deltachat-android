@@ -28,6 +28,12 @@
 package com.b44t.messenger;
 
 
+import android.app.Activity;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.InputStream;
@@ -253,8 +259,8 @@ public class MrMailbox {
                     public void run() {
                         reloadMainChatlist();
                         NotificationCenter.getInstance().postNotificationName(NotificationCenter.updateInterfaces,
-                                MessagesController.UPDATE_MASK_NAME|MessagesController.UPDATE_MASK_CHAT_NAME|
-                                MessagesController.UPDATE_MASK_CHAT_MEMBERS|MessagesController.UPDATE_MASK_AVATAR);
+                                UPDATE_MASK_NAME|UPDATE_MASK_CHAT_NAME|
+                                UPDATE_MASK_CHAT_MEMBERS|UPDATE_MASK_AVATAR);
                     }
                 });
                 return 0;
@@ -313,7 +319,7 @@ public class MrMailbox {
                 return String2CPtr(sp);
 
             case MR_EVENT_IS_ONLINE:
-                return ConnectionsManager.isNetworkOnline()? 1 : 0;
+                return ApplicationLoader.isNetworkOnline()? 1 : 0;
 
             case MR_EVENT_HTTP_GET:
                 String httpContent = null;
@@ -375,4 +381,44 @@ public class MrMailbox {
         String text = LocaleController.formatString("InviteText", R.string.InviteText, url, email);
         return text;
     }
+
+    public static TLRPC.User getUser(Integer id) {
+        TLRPC.User u = new TLRPC.User(); // legacy function, information should be loaded as needed by the caller
+        u.id = id;
+        return u;
+    }
+
+    public static void cancelTyping(int action, long dialog_id) {
+    }
+
+    public static void sendTyping(final long dialog_id, final int action, int classGuid) {
+    }
+
+    public static void markMessageContentAsRead(final MessageObject messageObject) {
+    }
+
+    public static boolean isDialogMuted(long dialog_id) {
+        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("Notifications", Activity.MODE_PRIVATE);
+        int mute_type = preferences.getInt("notify2_" + dialog_id, 0);
+        if (mute_type == 2) {
+            return true;
+        } else if (mute_type == 3) {
+            int mute_until = preferences.getInt("notifyuntil_" + dialog_id, 0);
+            if (mute_until >= MrMailbox.getCurrentTime()) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    // legacy update masks
+    public static final int UPDATE_MASK_NAME = 1;
+    public static final int UPDATE_MASK_AVATAR = 2;
+    public static final int UPDATE_MASK_STATUS = 4;
+    public static final int UPDATE_MASK_CHAT_AVATAR = 8;
+    public static final int UPDATE_MASK_CHAT_NAME = 16;
+    public static final int UPDATE_MASK_CHAT_MEMBERS = 32;
+    public static final int UPDATE_MASK_SELECT_DIALOG = 512;
+    public static final int UPDATE_MASK_NEW_MESSAGE = 2048;
+    public static final int UPDATE_MASK_SEND_STATE = 4096;
 }

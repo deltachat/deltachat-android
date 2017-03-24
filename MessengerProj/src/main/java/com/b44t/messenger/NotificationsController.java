@@ -94,7 +94,7 @@ public class NotificationsController {
     public static NotificationsController getInstance() {
         NotificationsController localInstance = Instance;
         if (localInstance == null) {
-            synchronized (MessagesController.class) {
+            synchronized (NotificationsController.class) {
                 localInstance = Instance;
                 if (localInstance == null) {
                     Instance = localInstance = new NotificationsController();
@@ -847,7 +847,7 @@ public class NotificationsController {
         int notifyOverride = preferences.getInt("notify2_" + dialog_id, 0);
         if (notifyOverride == 3) {
             int muteUntil = preferences.getInt("notifyuntil_" + dialog_id, 0);
-            if (muteUntil >= ConnectionsManager.getInstance().getCurrentTime()) {
+            if (muteUntil >= MrMailbox.getCurrentTime()) {
                 notifyOverride = 2;
             }
         }
@@ -968,8 +968,6 @@ public class NotificationsController {
         }
 
         try {
-            ConnectionsManager.getInstance().resumeNetworkMaybe();
-
             MessageObject lastMessageObject = pushMessages.get(0);
             SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("Notifications", Context.MODE_PRIVATE);
             int dismissDate = preferences.getInt("dismissDate", 0);
@@ -1321,7 +1319,7 @@ public class NotificationsController {
             TLRPC.User user = null;
             String name;
             if (dialog_id > 0) {
-                user = MessagesController.getInstance().getUser((int)dialog_id);
+                user = MrMailbox.getUser((int)dialog_id);
                 if (user == null) {
                     continue;
                 }
@@ -1506,36 +1504,5 @@ public class NotificationsController {
                 }
             }
         });
-    }
-
-    public static void updateServerNotificationsSettings(long dialog_id) {
-        // the following command is needed to reflect the changes in the GUI
-        NotificationCenter.getInstance().postNotificationName(NotificationCenter.notificationsSettingsUpdated);
-
-        /*
-        if ((int) dialog_id == 0) {
-            return;
-        }
-        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("Notifications", Activity.MODE_PRIVATE);
-        TLRPC.TL_account_updateNotifySettings req = new TLRPC.TL_account_updateNotifySettings();
-        req.settings = new TLRPC.TL_inputPeerNotifySettings();
-        req.settings.sound = "default";
-        int mute_type = preferences.getInt("notify2_" + dialog_id, 0);
-        if (mute_type == 3) {
-            req.settings.mute_until = preferences.getInt("notifyuntil_" + dialog_id, 0);
-        } else {
-            req.settings.mute_until = mute_type != 2 ? 0 : Integer.MAX_VALUE;
-        }
-        req.settings.show_previews = preferences.getBoolean("preview_" + dialog_id, true);
-        req.settings.silent = preferences.getBoolean("silent_" + dialog_id, false);
-        req.peer = new TLRPC.TL_inputNotifyPeer();
-        ((TLRPC.TL_inputNotifyPeer) req.peer).peer = MessagesController.getInputPeer((int) dialog_id);
-        ConnectionsManager.getInstance().sendRequest(req, new RequestDelegate() {
-            @Override
-            public void run(TLObject response, TLRPC.TL_error error) {
-
-            }
-        });
-        */
     }
 }

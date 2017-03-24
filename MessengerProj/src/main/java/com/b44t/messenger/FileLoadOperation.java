@@ -30,8 +30,7 @@ import java.util.ArrayList;
 public class FileLoadOperation {
 
     private static class RequestInfo {
-        private int requestToken;
-        private int offset;
+        private int dummy;
     }
 
     private final static int stateIdle = 0;
@@ -52,11 +51,8 @@ public class FileLoadOperation {
     private int totalBytesCount;
     private int bytesCountPadding;
     private FileLoadOperationDelegate delegate;
-    private byte[] key;
-    private byte[] iv;
     private int currentDownloadChunkSize;
     private int currentMaxDownloadRequests;
-    private int requestsCount;
     private int renameRetryCount;
 
     private int nextDownloadOffset;
@@ -65,7 +61,6 @@ public class FileLoadOperation {
 
     private File cacheFileTemp;
     private File cacheFileFinal;
-    private File cacheIvTemp;
 
     private String ext;
     private RandomAccessFile fileOutputStream;
@@ -81,17 +76,7 @@ public class FileLoadOperation {
     }
 
     public FileLoadOperation(TLRPC.FileLocation photoLocation, String extension, int size) {
-        /*if (photoLocation instanceof TLRPC.TL_fileEncryptedLocation) {
-            location = new TLRPC.TL_inputEncryptedFileLocation();
-            location.id = photoLocation.volume_id;
-            location.volume_id = photoLocation.volume_id;
-            location.access_hash = photoLocation.secret;
-            location.local_id = photoLocation.local_id;
-            iv = new byte[32];
-            System.arraycopy(photoLocation.iv, 0, iv, 0, iv.length);
-            key = photoLocation.key;
-            datacenter_id = photoLocation.dc_id;
-        } else*/ if (photoLocation instanceof TLRPC.TL_fileLocation) {
+        if (photoLocation instanceof TLRPC.TL_fileLocation) {
             location = new TLRPC.TL_inputFileLocation();
             location.volume_id = photoLocation.volume_id;
             location.local_id = photoLocation.local_id;
@@ -103,28 +88,13 @@ public class FileLoadOperation {
 
     public FileLoadOperation(TLRPC.Document documentLocation) {
         try {
-            /*if (documentLocation instanceof TLRPC.TL_documentEncrypted) {
-                location = new TLRPC.TL_inputEncryptedFileLocation();
-                location.id = documentLocation.id;
-                location.access_hash = documentLocation.access_hash;
-                datacenter_id = documentLocation.dc_id;
-                iv = new byte[32];
-                System.arraycopy(documentLocation.iv, 0, iv, 0, iv.length);
-                key = documentLocation.key;
-            } else*/ if (documentLocation instanceof TLRPC.TL_document) {
+            if (documentLocation instanceof TLRPC.TL_document) {
                 location = new TLRPC.TL_inputDocumentFileLocation();
                 location.id = documentLocation.id;
                 location.access_hash = documentLocation.access_hash;
                 datacenter_id = documentLocation.dc_id;
             }
             totalBytesCount = documentLocation.size;
-            if (key != null) {
-                int toAdd = 0;
-                if (totalBytesCount % 16 != 0) {
-                    bytesCountPadding = 16 - totalBytesCount % 16;
-                    totalBytesCount += bytesCountPadding;
-                }
-            }
             ext = FileLoader.getDocumentFileName(documentLocation);
             int idx;
             if (ext == null || (idx = ext.lastIndexOf('.')) == -1) {
@@ -196,13 +166,9 @@ public class FileLoadOperation {
         }
         String fileNameFinal;
         String fileNameTemp;
-        String fileNameIv = null;
         if (location.volume_id != 0 && location.local_id != 0) {
             fileNameTemp = location.volume_id + "_" + location.local_id + ".temp";
             fileNameFinal = location.volume_id + "_" + location.local_id + "." + ext;
-            if (key != null) {
-                fileNameIv = location.volume_id + "_" + location.local_id + ".iv";
-            }
             if (datacenter_id == Integer.MIN_VALUE || location.volume_id == Integer.MIN_VALUE || datacenter_id == 0) {
                 cleanup();
                 Utilities.stageQueue.postRunnable(new Runnable() {
@@ -216,9 +182,6 @@ public class FileLoadOperation {
         } else {
             fileNameTemp = datacenter_id + "_" + location.id + ".temp";
             fileNameFinal = datacenter_id + "_" + location.id + ext;
-            if (key != null) {
-                fileNameIv = datacenter_id + "_" + location.id + ".iv";
-            }
             if (datacenter_id == 0 || location.id == 0) {
                 cleanup();
                 Utilities.stageQueue.postRunnable(new Runnable() {
@@ -248,21 +211,6 @@ public class FileLoadOperation {
                 FileLog.d("messenger", "start loading file to temp = " + cacheFileTemp + " final = " + cacheFileFinal);
             }
 
-            if (fileNameIv != null) {
-                cacheIvTemp = new File(tempPath, fileNameIv);
-                try {
-                    fiv = new RandomAccessFile(cacheIvTemp, "rws");
-                    long len = cacheIvTemp.length();
-                    if (len > 0 && len % 32 == 0) {
-                        fiv.read(iv, 0, 32);
-                    } else {
-                        downloadedBytes = 0;
-                    }
-                } catch (Exception e) {
-                    FileLog.e("messenger", e);
-                    downloadedBytes = 0;
-                }
-            }
             try {
                 fileOutputStream = new RandomAccessFile(cacheFileTemp, "rws");
                 if (downloadedBytes != 0) {
@@ -313,14 +261,6 @@ public class FileLoadOperation {
                 }
                 state = stateFailed;
                 cleanup();
-                /*if (requestInfos != null) {
-                    for (int a = 0; a < requestInfos.size(); a++) {
-                        RequestInfo requestInfo = requestInfos.get(a);
-                        if (requestInfo.requestToken != 0) {
-                            ConnectionsManager.getInstance().cancelRequest(requestInfo.requestToken, true);
-                        }
-                    }
-                }*/
                 delegate.didFailedLoadingFile(FileLoadOperation.this, 1);
             }
         });
@@ -350,13 +290,6 @@ public class FileLoadOperation {
             FileLog.e("messenger", e);
         }
         if (delayedRequestInfos != null) {
-            for (int a = 0; a < delayedRequestInfos.size(); a++) {
-                RequestInfo requestInfo = delayedRequestInfos.get(a);
-                /*if (requestInfo.response != null) {
-                    requestInfo.response.disableFree = false;
-                    requestInfo.response.freeResources();
-                }*/
-            }
             delayedRequestInfos.clear();
         }
     }
@@ -367,10 +300,6 @@ public class FileLoadOperation {
         }
         state = stateFinished;
         cleanup();
-        if (cacheIvTemp != null) {
-            cacheIvTemp.delete();
-            cacheIvTemp = null;
-        }
         if (cacheFileTemp != null) {
             boolean renameResult = cacheFileTemp.renameTo(cacheFileFinal);
             if (!renameResult) {
@@ -416,24 +345,10 @@ public class FileLoadOperation {
             if (totalBytesCount > 0 && nextDownloadOffset >= totalBytesCount) {
                 break;
             }
-            boolean isLast = totalBytesCount <= 0 || a == count - 1 || totalBytesCount > 0 && nextDownloadOffset + currentDownloadChunkSize >= totalBytesCount;
-            //TLRPC.TL_upload_getFile req = new TLRPC.TL_upload_getFile();
-            //req.location = location;
-            //req.offset = nextDownloadOffset;
-            //req.limit = currentDownloadChunkSize;
             nextDownloadOffset += currentDownloadChunkSize;
 
             final RequestInfo requestInfo = new RequestInfo();
             requestInfos.add(requestInfo);
-            requestInfo.offset = nextDownloadOffset;
-            requestInfo.requestToken = 0;/*ConnectionsManager.getInstance().sendRequest(req, new RequestDelegate() {
-                @Override
-                public void run(TLObject response, TLRPC.TL_error error) {
-                    requestInfo.response = (TLRPC.TL_upload_file) response;
-                    processRequestResult(requestInfo, error);
-                }
-            }, null, (isForceRequest ? ConnectionsManager.RequestFlagForceDownload : 0) | ConnectionsManager.RequestFlagFailOnServerErrors, datacenter_id, requestsCount % 2 == 0 ? ConnectionsManager.ConnectionTypeDownload : ConnectionsManager.ConnectionTypeDownload2, isLast);*/
-            requestsCount++;
         }
     }
 

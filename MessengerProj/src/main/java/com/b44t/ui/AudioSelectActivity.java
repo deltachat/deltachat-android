@@ -36,6 +36,7 @@ import com.b44t.messenger.AndroidUtilities;
 import com.b44t.messenger.LocaleController;
 import com.b44t.messenger.MediaController;
 import com.b44t.messenger.MessageObject;
+import com.b44t.messenger.MrContact;
 import com.b44t.messenger.NotificationCenter;
 import com.b44t.messenger.ApplicationLoader;
 import com.b44t.messenger.FileLoader;
@@ -229,7 +230,7 @@ public class AudioSelectActivity extends BaseFragment implements NotificationCen
                         message.out = true;
                         message.id = id;
                         message.to_id = new TLRPC.TL_peerUser();
-                        message.to_id.user_id = message.from_id = UserConfig.getClientUserId();
+                        message.to_id.user_id = message.from_id = MrContact.MR_CONTACT_ID_SELF;
                         message.date = (int) (System.currentTimeMillis() / 1000);
                         message.message = "-1";
                         message.attachPath = audioEntry.path;

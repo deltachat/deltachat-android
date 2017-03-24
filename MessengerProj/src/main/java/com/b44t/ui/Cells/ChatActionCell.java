@@ -35,7 +35,6 @@ import android.view.MotionEvent;
 import com.b44t.messenger.AndroidUtilities;
 import com.b44t.messenger.ApplicationLoader;
 import com.b44t.messenger.MessageObject;
-import com.b44t.messenger.MessagesController;
 import com.b44t.messenger.FileLog;
 import com.b44t.ui.ActionBar.Theme;
 
@@ -68,7 +67,7 @@ public class ChatActionCell extends BaseCell {
         }
         backPaint.setColor(ApplicationLoader.getServiceMessageColor());
 
-        textPaint.setTextSize(AndroidUtilities.dp(MessagesController.getInstance().fontSize - 2));
+        textPaint.setTextSize(AndroidUtilities.dp(ApplicationLoader.fontSize - 2));
     }
 
     public void setMessageObject(MessageObject messageObject) {

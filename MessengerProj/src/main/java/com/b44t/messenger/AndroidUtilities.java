@@ -593,7 +593,7 @@ public class AndroidUtilities {
             ForegroundDetector.getInstance().resetBackgroundVar();
         }
         return UserConfig.passcodeHash.length() > 0 && wasInBackground &&
-                (UserConfig.appLocked || UserConfig.autoLockIn != 0 && UserConfig.lastPauseTime != 0 && !UserConfig.appLocked && (UserConfig.lastPauseTime + UserConfig.autoLockIn) <= ConnectionsManager.getInstance().getCurrentTime());
+                (UserConfig.appLocked || UserConfig.autoLockIn != 0 && UserConfig.lastPauseTime != 0 && !UserConfig.appLocked && (UserConfig.lastPauseTime + UserConfig.autoLockIn) <= MrMailbox.getCurrentTime());
     }
 
     public static void shakeView(final View view, final float x, final int num) {

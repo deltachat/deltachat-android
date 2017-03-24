@@ -40,8 +40,6 @@ import com.b44t.messenger.ApplicationLoader;
 import com.b44t.messenger.LocaleController;
 import com.b44t.messenger.MrContact;
 import com.b44t.messenger.MrMailbox;
-import com.b44t.messenger.TLRPC;
-import com.b44t.messenger.MessagesController;
 import com.b44t.messenger.NotificationCenter;
 import com.b44t.messenger.R;
 import com.b44t.ui.Adapters.BaseFragmentAdapter;
@@ -167,8 +165,8 @@ public class BlockedUsersActivity extends BaseFragment implements NotificationCe
     public void didReceivedNotification(int id, Object... args) {
         if (id == NotificationCenter.updateInterfaces) {
             int mask = (Integer)args[0];
-            if ((mask & MessagesController.UPDATE_MASK_AVATAR) != 0 || (mask & MessagesController.UPDATE_MASK_NAME) != 0) {
-                updateVisibleRows(mask);
+            if ((mask & MrMailbox.UPDATE_MASK_AVATAR) != 0 || (mask & MrMailbox.UPDATE_MASK_NAME) != 0) {
+                updateVisibleRows();
             }
         } else if (id == NotificationCenter.blockedUsersDidLoaded) {
             blockedUserIds = MrMailbox.getBlockedContacts();
@@ -181,7 +179,7 @@ public class BlockedUsersActivity extends BaseFragment implements NotificationCe
         }
     }
 
-    private void updateVisibleRows(int mask) {
+    private void updateVisibleRows() {
         if (listView == null) {
             return;
         }
@@ -189,7 +187,7 @@ public class BlockedUsersActivity extends BaseFragment implements NotificationCe
         for (int a = 0; a < count; a++) {
             View child = listView.getChildAt(a);
             if (child instanceof UserCell) {
-                ((UserCell) child).update(mask);
+                ((UserCell) child).update();
             }
         }
     }

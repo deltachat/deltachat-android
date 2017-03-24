@@ -49,7 +49,6 @@ import com.b44t.messenger.MrMsg;
 import com.b44t.messenger.MrPoortext;
 import com.b44t.messenger.TLRPC;
 import com.b44t.messenger.Emoji;
-import com.b44t.messenger.MessagesController;
 import com.b44t.messenger.R;
 import com.b44t.messenger.ImageReceiver;
 import com.b44t.ui.ActionBar.Theme;
@@ -551,27 +550,27 @@ public class DialogCell extends BaseCell {
 
         if (mask != 0) {
             boolean continueUpdate = false;
-            if (!continueUpdate && (mask & MessagesController.UPDATE_MASK_AVATAR) != 0) {
+            if (!continueUpdate && (mask & MrMailbox.UPDATE_MASK_AVATAR) != 0) {
                 if (chat == null) {
                     continueUpdate = true;
                 }
             }
-            if (!continueUpdate && (mask & MessagesController.UPDATE_MASK_NAME) != 0) {
+            if (!continueUpdate && (mask & MrMailbox.UPDATE_MASK_NAME) != 0) {
                 if (chat == null) {
                     continueUpdate = true;
                 }
             }
-            if (!continueUpdate && (mask & MessagesController.UPDATE_MASK_CHAT_AVATAR) != 0) {
+            if (!continueUpdate && (mask & MrMailbox.UPDATE_MASK_CHAT_AVATAR) != 0) {
                 if (user == null) {
                     continueUpdate = true;
                 }
             }
-            if (!continueUpdate && (mask & MessagesController.UPDATE_MASK_CHAT_NAME) != 0) {
+            if (!continueUpdate && (mask & MrMailbox.UPDATE_MASK_CHAT_NAME) != 0) {
                 if (user == null) {
                     continueUpdate = true;
                 }
             }
-            if (!continueUpdate && (mask & MessagesController.UPDATE_MASK_SEND_STATE) != 0) {
+            if (!continueUpdate && (mask & MrMailbox.UPDATE_MASK_SEND_STATE) != 0) {
                 if (message != null && lastSendState != message.messageOwner.send_state) {
                     lastSendState = message.messageOwner.send_state;
                     continueUpdate = true;
@@ -583,7 +582,7 @@ public class DialogCell extends BaseCell {
             }
         }
 
-        dialogMuted = isDialogCell && MessagesController.getInstance().isDialogMuted(currentDialogId);
+        dialogMuted = isDialogCell && MrMailbox.isDialogMuted(currentDialogId);
         //user = null;
         //chat = null;
 

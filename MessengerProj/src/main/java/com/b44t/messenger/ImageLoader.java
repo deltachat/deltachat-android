@@ -151,7 +151,7 @@ public class ImageLoader {
                     }
                 } catch (Throwable e) {
                     if (e instanceof SocketTimeoutException) {
-                        if (ConnectionsManager.isNetworkOnline()) {
+                        if (ApplicationLoader.isNetworkOnline()) {
                             canRetry = false;
                         }
                     } else if (e instanceof UnknownHostException) {

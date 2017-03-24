@@ -434,7 +434,7 @@ public class PasscodeView extends FrameLayout {
         AnimatorSet.start();
 
         UserConfig.appLocked = false;
-        UserConfig.saveConfig(false);
+        UserConfig.saveConfig();
         NotificationCenter.getInstance().postNotificationName(NotificationCenter.didSetPasscode);
         setOnTouchListener(null);
         if (delegate != null) {

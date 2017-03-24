@@ -62,7 +62,6 @@ import com.b44t.messenger.Utilities;
 import com.b44t.messenger.support.widget.LinearLayoutManager;
 import com.b44t.messenger.support.widget.RecyclerView;
 import com.b44t.messenger.FileLog;
-import com.b44t.messenger.MessagesController;
 import com.b44t.messenger.NotificationCenter;
 import com.b44t.messenger.R;
 import com.b44t.messenger.UserConfig;
@@ -278,7 +277,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
 
                     listView.setVisibility(View.INVISIBLE);
                     UserConfig.appLocked = !UserConfig.appLocked;
-                    UserConfig.saveConfig(false);
+                    UserConfig.saveConfig();
                     if( UserConfig.appLocked )
                     {
                         // hide list as it is visible in the "last app switcher" otherwise, save state
@@ -372,7 +371,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
                         }
                         if (dialogsAdapter != null) {
                             dialogsAdapter.setOpenedDialogId(openedDialogId = dialog_id);
-                            updateVisibleRows(MessagesController.UPDATE_MASK_SELECT_DIALOG);
+                            updateVisibleRows(MrMailbox.UPDATE_MASK_SELECT_DIALOG);
                         }
                     }
 
@@ -596,7 +595,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
                 if (dialogsAdapter.isDataSetChanged()) {
                     dialogsAdapter.notifyDataSetChanged();
                 } else {
-                    updateVisibleRows(MessagesController.UPDATE_MASK_NEW_MESSAGE);
+                    updateVisibleRows(MrMailbox.UPDATE_MASK_NEW_MESSAGE);
                 }
                 */
             }
@@ -646,12 +645,12 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
                 if (dialogsAdapter != null) {
                     dialogsAdapter.setOpenedDialogId(openedDialogId);
                 }
-                updateVisibleRows(MessagesController.UPDATE_MASK_SELECT_DIALOG);
+                updateVisibleRows(MrMailbox.UPDATE_MASK_SELECT_DIALOG);
             }
         } else if (id == NotificationCenter.notificationsSettingsUpdated) {
             updateVisibleRows(0);
         } else if ( id == NotificationCenter.messageSendError) {
-            updateVisibleRows(MessagesController.UPDATE_MASK_SEND_STATE);
+            updateVisibleRows(MrMailbox.UPDATE_MASK_SEND_STATE);
         } else if (id == NotificationCenter.didSetPasscode) {
             updatePasscodeButton();
         }
@@ -694,12 +693,12 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
             if (child instanceof DialogCell) {
                 if (listView.getAdapter() != dialogsSearchAdapter) {
                     DialogCell cell = (DialogCell) child;
-                    if ((mask & MessagesController.UPDATE_MASK_NEW_MESSAGE) != 0) {
+                    if ((mask & MrMailbox.UPDATE_MASK_NEW_MESSAGE) != 0) {
                         cell.checkCurrentDialogIndex();
                         if ( AndroidUtilities.isTablet()) {
                             cell.setDialogSelected(cell.getDialogId() == openedDialogId);
                         }
-                    } else if ((mask & MessagesController.UPDATE_MASK_SELECT_DIALOG) != 0) {
+                    } else if ((mask & MrMailbox.UPDATE_MASK_SELECT_DIALOG) != 0) {
                         if ( AndroidUtilities.isTablet()) {
                             cell.setDialogSelected(cell.getDialogId() == openedDialogId);
                         }
@@ -708,7 +707,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
                     }
                 }
             } else if (child instanceof UserCell) {
-                ((UserCell) child).update(mask);
+                ((UserCell) child).update();
             }
         }
     }

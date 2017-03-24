@@ -331,7 +331,7 @@ public class PasscodeActivity extends BaseFragment implements NotificationCenter
                         if (UserConfig.passcodeHash.length() != 0) {
                             UserConfig.passcodeHash = "";
                             UserConfig.appLocked = false;
-                            UserConfig.saveConfig(false);
+                            UserConfig.saveConfig();
                             int count = listView.getChildCount();
                             for (int a = 0; a < count; a++) {
                                 View child = listView.getChildAt(a);
@@ -401,13 +401,13 @@ public class PasscodeActivity extends BaseFragment implements NotificationCenter
                                     UserConfig.autoLockIn = 60 * 60 * 5;
                                 }
                                 listView.invalidateViews();
-                                UserConfig.saveConfig(false);
+                                UserConfig.saveConfig();
                             }
                         });
                         showDialog(builder.create());
                     } else if (i == fingerprintRow) {
                         UserConfig.useFingerprint = !UserConfig.useFingerprint;
-                        UserConfig.saveConfig(false);
+                        UserConfig.saveConfig();
                         ((TextCheckCell) view).setChecked(UserConfig.useFingerprint);
                     }
                 }
@@ -567,7 +567,7 @@ public class PasscodeActivity extends BaseFragment implements NotificationCenter
             }
 
             UserConfig.passcodeType = currentPasswordType;
-            UserConfig.saveConfig(false);
+            UserConfig.saveConfig();
             finishFragment();
             NotificationCenter.getInstance().postNotificationName(NotificationCenter.didSetPasscode);
             passwordEditText.clearFocus();

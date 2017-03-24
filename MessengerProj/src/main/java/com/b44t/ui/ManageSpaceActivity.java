@@ -41,10 +41,8 @@ import android.widget.RelativeLayout;
 
 import com.b44t.messenger.AndroidUtilities;
 import com.b44t.messenger.ApplicationLoader;
-import com.b44t.messenger.LocaleController;
 import com.b44t.messenger.NotificationCenter;
 import com.b44t.messenger.R;
-import com.b44t.messenger.ConnectionsManager;
 import com.b44t.ui.ActionBar.ActionBarLayout;
 import com.b44t.ui.ActionBar.BaseFragment;
 import com.b44t.ui.ActionBar.DrawerLayoutContainer;
@@ -56,7 +54,6 @@ import java.util.ArrayList;
 public class ManageSpaceActivity extends Activity implements ActionBarLayout.ActionBarLayoutDelegate {
 
     private boolean finished;
-    private int currentConnectionState;
     private static ArrayList<BaseFragment> mainFragmentsStack = new ArrayList<>();
     private static ArrayList<BaseFragment> layerFragmentsStack = new ArrayList<>();
 
@@ -180,7 +177,6 @@ public class ManageSpaceActivity extends Activity implements ActionBarLayout.Act
         actionBarLayout.setDelegate(this);
 
         NotificationCenter.getInstance().postNotificationName(NotificationCenter.closeOtherAppActivities, this);
-        currentConnectionState = ConnectionsManager.getInstance().getConnectionState();
 
         handleIntent(getIntent(), false, savedInstanceState != null, false);
         needLayout();
@@ -316,18 +312,6 @@ public class ManageSpaceActivity extends Activity implements ActionBarLayout.Act
         AndroidUtilities.checkDisplaySize();
         super.onConfigurationChanged(newConfig);
         fixLayout();
-    }
-
-    private void updateCurrentConnectionState() {
-        String text = null;
-        if (currentConnectionState == ConnectionsManager.ConnectionStateWaitingForNetwork) {
-            text = LocaleController.getString("WaitingForNetwork", R.string.WaitingForNetwork);
-        } else if (currentConnectionState == ConnectionsManager.ConnectionStateConnecting) {
-            text = LocaleController.getString("Connecting", R.string.Connecting);
-        } else if (currentConnectionState == ConnectionsManager.ConnectionStateUpdating) {
-            text = LocaleController.getString("Updating", R.string.Updating);
-        }
-        actionBarLayout.setTitleOverlayText(text);
     }
 
     @Override

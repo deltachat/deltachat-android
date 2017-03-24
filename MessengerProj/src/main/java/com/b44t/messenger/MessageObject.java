@@ -95,7 +95,7 @@ public class MessageObject {
             textPaint.linkColor = Theme.MSG_LINK_TEXT_COLOR;
         }
 
-        textPaint.setTextSize(AndroidUtilities.dp(MessagesController.getInstance().fontSize));
+        textPaint.setTextSize(AndroidUtilities.dp(ApplicationLoader.fontSize));
 
         messageOwner = message;
 
@@ -120,7 +120,7 @@ public class MessageObject {
             textPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
             textPaint.setColor(Theme.MSG_TEXT_COLOR);
             textPaint.linkColor = Theme.MSG_LINK_TEXT_COLOR;
-            textPaint.setTextSize(AndroidUtilities.dp(MessagesController.getInstance().fontSize));
+            textPaint.setTextSize(AndroidUtilities.dp(ApplicationLoader.fontSize));
         }
         return textPaint;
     }

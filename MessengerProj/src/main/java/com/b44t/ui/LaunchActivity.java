@@ -69,7 +69,6 @@ import com.b44t.messenger.LocaleController;
 import com.b44t.messenger.NotificationCenter;
 import com.b44t.messenger.R;
 import com.b44t.messenger.browser.Browser;
-import com.b44t.messenger.ConnectionsManager;
 import com.b44t.messenger.UserConfig;
 import com.b44t.ui.Adapters.DrawerLayoutAdapter;
 import com.b44t.ui.ActionBar.ActionBarLayout;
@@ -96,7 +95,6 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
     private String documentsMimeType;
     private ArrayList<String> documentsOriginalPathsArray;
     private ArrayList<Integer> contactsToSend;
-    private int currentConnectionState;
     private static ArrayList<BaseFragment> mainFragmentsStack = new ArrayList<>();
     private static ArrayList<BaseFragment> layerFragmentsStack = new ArrayList<>();
     private static ArrayList<BaseFragment> rightFragmentsStack = new ArrayList<>();
@@ -166,7 +164,7 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
         Theme.loadRecources(this);
 
         if (UserConfig.passcodeHash.length() != 0 && UserConfig.appLocked) {
-            UserConfig.lastPauseTime = ConnectionsManager.getInstance().getCurrentTime();
+            UserConfig.lastPauseTime = MrMailbox.getCurrentTime();
         }
 
         int resourceId = getResources().getIdentifier("status_bar_height", "dimen", "android");
@@ -364,7 +362,6 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
         passcodeView.setLayoutParams(layoutParams1);
 
         NotificationCenter.getInstance().postNotificationName(NotificationCenter.closeOtherAppActivities, this);
-        currentConnectionState = ConnectionsManager.getInstance().getConnectionState();
 
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.mainUserInfoChanged);
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.closeOtherAppActivities);
@@ -499,7 +496,7 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
             passcodeSaveIntent = intent;
             passcodeSaveIntentIsNew = isNew;
             passcodeSaveIntentIsRestore = restore;
-            UserConfig.saveConfig(false);
+            UserConfig.saveConfig();
         } else {
             boolean pushOpened = false;
 
@@ -1215,7 +1212,7 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (UserConfig.passcodeHash.length() != 0 && UserConfig.lastPauseTime != 0) {
             UserConfig.lastPauseTime = 0;
-            UserConfig.saveConfig(false);
+            UserConfig.saveConfig();
         }
         super.onActivityResult(requestCode, resultCode, data);
         if (actionBarLayout.fragmentsStack.size() != 0) {
@@ -1382,7 +1379,6 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
             passcodeView.onResume();
         }
         ContactsController.cleanupAvatarCache();
-        updateCurrentConnectionState();
         if (PhotoViewer.getInstance().isVisible()) {
             PhotoViewer.getInstance().onResume();
         }
@@ -1414,7 +1410,7 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
             lockRunnable = null;
         }
         if (UserConfig.passcodeHash.length() != 0) {
-            UserConfig.lastPauseTime = ConnectionsManager.getInstance().getCurrentTime();
+            UserConfig.lastPauseTime = MrMailbox.getCurrentTime();
             lockRunnable = new Runnable() {
                 @Override
                 public void run() {
@@ -1437,7 +1433,7 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
         } else {
             UserConfig.lastPauseTime = 0;
         }
-        UserConfig.saveConfig(false);
+        UserConfig.saveConfig();
     }
 
     private void onPasscodeResume() {
@@ -1450,20 +1446,8 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
         }
         if (UserConfig.lastPauseTime != 0) {
             UserConfig.lastPauseTime = 0;
-            UserConfig.saveConfig(false);
+            UserConfig.saveConfig();
         }
-    }
-
-    private void updateCurrentConnectionState() {
-        String text = null;
-        if (currentConnectionState == ConnectionsManager.ConnectionStateWaitingForNetwork) {
-            text = LocaleController.getString("WaitingForNetwork", R.string.WaitingForNetwork);
-        } else if (currentConnectionState == ConnectionsManager.ConnectionStateConnecting) {
-            text = LocaleController.getString("Connecting", R.string.Connecting);
-        } else if (currentConnectionState == ConnectionsManager.ConnectionStateUpdating) {
-            text = LocaleController.getString("Updating", R.string.Updating);
-        }
-        actionBarLayout.setTitleOverlayText(text);
     }
 
     @Override

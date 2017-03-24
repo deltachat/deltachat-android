@@ -48,13 +48,11 @@ import android.widget.TextView;
 import com.b44t.messenger.AndroidUtilities;
 import com.b44t.messenger.MrChat;
 import com.b44t.messenger.MrMailbox;
-import com.b44t.messenger.NotificationsController;
 import com.b44t.messenger.ApplicationLoader;
 import com.b44t.messenger.FileLog;
 import com.b44t.messenger.LocaleController;
 import com.b44t.messenger.NotificationCenter;
 import com.b44t.messenger.R;
-import com.b44t.messenger.ConnectionsManager;
 import com.b44t.ui.ActionBar.Theme;
 import com.b44t.ui.Adapters.BaseFragmentAdapter;
 import com.b44t.ui.Cells.HeaderCell;
@@ -219,7 +217,7 @@ public class ProfileNotificationsActivity extends BaseFragment implements Notifi
                             if (listView != null) {
                                 listView.invalidateViews();
                             }
-                            NotificationsController.updateServerNotificationsSettings(dialog_id);
+                            NotificationCenter.getInstance().postNotificationName(NotificationCenter.notificationsSettingsUpdated);
                         }
                     });
                     builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
@@ -576,7 +574,7 @@ public class ProfileNotificationsActivity extends BaseFragment implements Notifi
                     } else if (value == 2) {
                         textCell.setTextAndValue(LocaleController.getString("Notifications", R.string.Notifications), LocaleController.getString("Disabled", R.string.Disabled), true);
                     } else if (value == 3) {
-                        int delta = preferences.getInt("notifyuntil_" + dialog_id, 0) - ConnectionsManager.getInstance().getCurrentTime();
+                        int delta = preferences.getInt("notifyuntil_" + dialog_id, 0) - MrMailbox.getCurrentTime();
                         String val;
                         if (delta <= 0) {
                             val = LocaleController.getString("Enabled", R.string.Enabled);

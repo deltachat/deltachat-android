@@ -211,7 +211,7 @@ public class AvatarUpdater implements PhotoCropActivity.PhotoEditActivityDelegat
                     delegate.didUploadedPhoto(null, smallPhoto, bigPhoto);
                 }
             } else {
-                UserConfig.saveConfig(false);
+                UserConfig.saveConfig();
                 uploadingAvatar = FileLoader.getInstance().getDirectory(FileLoader.MEDIA_DIR_CACHE) + "/" + bigPhoto.location.volume_id + "_" + bigPhoto.location.local_id + ".jpg";
                 //FileLoader.getInstance().uploadFile(uploadingAvatar, false, true);
             }

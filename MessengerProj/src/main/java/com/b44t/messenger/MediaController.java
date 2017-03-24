@@ -27,10 +27,8 @@ import android.Manifest;
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.app.Activity;
-import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.database.ContentObserver;
@@ -50,7 +48,6 @@ import android.media.MediaExtractor;
 import android.media.MediaFormat;
 import android.media.MediaPlayer;
 import android.media.MediaRecorder;
-import android.net.ConnectivityManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
@@ -83,6 +80,7 @@ import java.util.Locale;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.Semaphore;
+
 
 public class MediaController implements AudioManager.OnAudioFocusChangeListener, NotificationCenter.NotificationCenterDelegate, SensorEventListener {
 
@@ -546,17 +544,6 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
             }
         });
 
-        BroadcastReceiver networkStateReceiver = new BroadcastReceiver() {
-            @Override
-            public void onReceive(Context context, Intent intent) {
-                checkAutodownloadSettings();
-            }
-        };
-        IntentFilter filter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
-        ApplicationLoader.applicationContext.registerReceiver(networkStateReceiver, filter);
-
-        checkAutodownloadSettings();
-
         if (Build.VERSION.SDK_INT >= 16) {
             mediaProjections = new String[]{
                     MediaStore.Images.ImageColumns.DATA,
@@ -738,31 +725,6 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
         typingTimes.clear();
         cancelVideoConvert(null);
     }
-
-
-    public void checkAutodownloadSettings() {
-        /* -- leave this for future use
-        int currentMask = getCurrentDownloadMask();
-        if (currentMask == lastCheckMask) {
-            return;
-        }
-        lastCheckMask = currentMask;
-
-        ... maybe tell the backend what can be downloaded ...
-
-        */
-    }
-
-    /* -- leave this for future use
-    private int getCurrentDownloadMask() {
-        if (ConnectionsManager.isConnectedToWiFi()) {
-            return wifiDownloadMask;
-        } else if (ConnectionsManager.isRoaming()) {
-            return roamingDownloadMask;
-        } else {
-            return mobileDataDownloadMask;
-        }
-    } */
 
     public int generateObserverTag() {
         return lastTag++;
@@ -1552,7 +1514,7 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
             return true;
         }
         if (!messageObject.isOut() && messageObject.isContentUnread()) {
-            MessagesController.getInstance().markMessageContentAsRead(messageObject);
+            MrMailbox.markMessageContentAsRead(messageObject);
         }
         boolean notify = !playMusicAgain;
         if (playingMessageObject != null) {
@@ -1843,12 +1805,12 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
                 recordingAudio = new TLRPC.TL_document();
                 recordingAudio.dc_id = Integer.MIN_VALUE;
                 recordingAudio.id = UserConfig.lastLocalId;
-                recordingAudio.user_id = UserConfig.getClientUserId();
+                recordingAudio.user_id = MrContact.MR_CONTACT_ID_SELF;
                 recordingAudio.mime_type = "audio/ogg";
                 recordingAudio.thumb = new TLRPC.TL_photoSizeEmpty();
                 recordingAudio.thumb.type = "s";
                 UserConfig.lastLocalId--;
-                UserConfig.saveConfig(false);
+                UserConfig.saveConfig();
 
                 recordingAudioFile = new File(FileLoader.getInstance().getDirectory(FileLoader.MEDIA_DIR_CACHE), FileLoader.getAttachFileName(recordingAudio));
 
@@ -1976,7 +1938,7 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
                     AndroidUtilities.runOnUIThread(new Runnable() {
                         @Override
                         public void run() {
-                            audioToSend.date = ConnectionsManager.getInstance().getCurrentTime();
+                            audioToSend.date = MrMailbox.getCurrentTime();
                             audioToSend.size = (int) recordingAudioFileToSend.length();
                             TLRPC.TL_documentAttributeAudio attributeAudio = new TLRPC.TL_documentAttributeAudio();
                             attributeAudio.voice = true;
@@ -2139,7 +2101,7 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
             if (name == null) {
                 int id = UserConfig.lastLocalId;
                 UserConfig.lastLocalId--;
-                UserConfig.saveConfig(false);
+                UserConfig.saveConfig();
                 name = String.format(Locale.US, "%d.%s", id, ext);
             }
             inputStream = ApplicationLoader.applicationContext.getContentResolver().openInputStream(uri);

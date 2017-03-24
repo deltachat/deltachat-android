@@ -65,7 +65,8 @@ import com.b44t.messenger.Emoji;
 import com.b44t.messenger.LocaleController;
 import com.b44t.messenger.MediaController;
 import com.b44t.messenger.MessageObject;
-import com.b44t.messenger.MessagesController;
+import com.b44t.messenger.MrContact;
+import com.b44t.messenger.MrMailbox;
 import com.b44t.messenger.SendMessagesHelper;
 import com.b44t.messenger.FileLog;
 import com.b44t.messenger.NotificationCenter;
@@ -1384,7 +1385,7 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
             public void onGifSelected(TLRPC.Document gif) {
                 SendMessagesHelper.getInstance().sendSticker(gif, dialog_id);
                 if ((int) dialog_id == 0) {
-                    MessagesController.getInstance().saveGif(gif);
+                    //MessagesController.getInstance().saveGif(gif);
                 }
                 if (delegate != null) {
                     delegate.onMessageSend(null);
@@ -1632,7 +1633,7 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
             String str = String.format("%02d:%02d.%02d", time / 60, time % 60, ms);
             if (lastTimeString == null || !lastTimeString.equals(str)) {
                 if (time % 5 == 0) {
-                    MessagesController.getInstance().sendTyping(dialog_id, 1, 0);
+                    MrMailbox.sendTyping(dialog_id, 1, 0);
                 }
                 if (recordTimeText != null) {
                     recordTimeText.setText(str);
@@ -1647,7 +1648,7 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
             }
         } else if (id == NotificationCenter.recordStartError || id == NotificationCenter.recordStopped) {
             if (recordingAudio) {
-                MessagesController.getInstance().sendTyping(dialog_id, 2, 0);
+                MrMailbox.sendTyping(dialog_id, 2, 0);
                 recordingAudio = false;
                 updateAudioRecordInterface();
             }
@@ -1668,7 +1669,7 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
                 message.out = true;
                 message.id = 0;
                 message.to_id = new TLRPC.TL_peerUser();
-                message.to_id.user_id = message.from_id = UserConfig.getClientUserId();
+                message.to_id.user_id = message.from_id = MrContact.MR_CONTACT_ID_SELF;
                 message.date = (int) (System.currentTimeMillis() / 1000);
                 message.message = "-1";
                 message.attachPath = audioToSendPath;

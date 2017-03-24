@@ -39,7 +39,6 @@ import com.b44t.messenger.AndroidUtilities;
 import com.b44t.messenger.MediaController;
 import com.b44t.messenger.ApplicationLoader;
 import com.b44t.messenger.LocaleController;
-import com.b44t.messenger.MessagesController;
 import com.b44t.messenger.R;
 import com.b44t.ui.Adapters.BaseFragmentAdapter;
 import com.b44t.ui.Cells.ShadowSectionCell;
@@ -148,7 +147,7 @@ public class SettingsAdvActivity extends BaseFragment {
                     numberPicker.setMaxValue(MAX_VAL);
                     numberPicker.setDisplayedValues(displayValues);
                     numberPicker.setWrapSelectorWheel(false);
-                    numberPicker.setValue(MessagesController.getInstance().fontSize);
+                    numberPicker.setValue(ApplicationLoader.fontSize);
                     builder.setView(numberPicker);
                     builder.setNegativeButton(LocaleController.getString("Done", R.string.Done), new DialogInterface.OnClickListener() {
                         @Override
@@ -156,7 +155,7 @@ public class SettingsAdvActivity extends BaseFragment {
                             SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("mainconfig", Activity.MODE_PRIVATE);
                             SharedPreferences.Editor editor = preferences.edit();
                             editor.putInt("msg_font_size", numberPicker.getValue());
-                            MessagesController.getInstance().fontSize = numberPicker.getValue();
+                            ApplicationLoader.fontSize = numberPicker.getValue();
                             editor.apply();
                             if (listView != null) {
                                 listView.invalidateViews();

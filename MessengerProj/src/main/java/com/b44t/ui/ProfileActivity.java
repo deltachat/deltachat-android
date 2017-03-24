@@ -65,7 +65,6 @@ import com.b44t.messenger.support.widget.RecyclerView;
 import com.b44t.messenger.TLRPC;
 
 import com.b44t.messenger.FileLog;
-import com.b44t.messenger.MessagesController;
 import com.b44t.messenger.NotificationCenter;
 import com.b44t.messenger.R;
 import com.b44t.messenger.MessageObject;
@@ -190,7 +189,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
         if (user_id != 0) {
             dialog_id = arguments.getLong("dialog_id", 0);
 
-            TLRPC.User user = MessagesController.getInstance().getUser(user_id);
+            TLRPC.User user = MrMailbox.getUser(user_id);
             if (user == null) {
                 return false;
             }
@@ -205,7 +204,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                 @Override
                 public void didUploadedPhoto(TLRPC.InputFile file, TLRPC.PhotoSize small, TLRPC.PhotoSize big) {
                     if (chat_id != 0) {
-                        MessagesController.getInstance().changeChatAvatar(chat_id, file);
+                        //MessagesController.getInstance().changeChatAvatar(chat_id, file);
                     }
                 }
             };
@@ -454,7 +453,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                                     @Override
                                     public void onClick(DialogInterface dialogInterface, int i) {
                                         MrMailbox.addContactToChat(chat_id, added_user_id);
-                                        NotificationCenter.getInstance().postNotificationName(NotificationCenter.updateInterfaces, MessagesController.UPDATE_MASK_CHAT_MEMBERS);
+                                        NotificationCenter.getInstance().postNotificationName(NotificationCenter.updateInterfaces, MrMailbox.UPDATE_MASK_CHAT_MEMBERS);
                                     }
                                 });
                                 builder.setNegativeButton(ApplicationLoader.applicationContext.getString(R.string.Cancel), null);
@@ -501,7 +500,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                                     @Override
                                     public void onClick(DialogInterface dialogInterface, int i) {
                                         MrMailbox.removeContactFromChat(chat_id, curr_user_id);
-                                        NotificationCenter.getInstance().postNotificationName(NotificationCenter.updateInterfaces, MessagesController.UPDATE_MASK_CHAT_MEMBERS);
+                                        NotificationCenter.getInstance().postNotificationName(NotificationCenter.updateInterfaces, MrMailbox.UPDATE_MASK_CHAT_MEMBERS);
                                     }
                                 });
                                 builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
@@ -537,7 +536,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
             @Override
             public void onClick(View v) {
                 if (user_id != 0) {
-                    TLRPC.User user = MessagesController.getInstance().getUser(user_id);
+                    TLRPC.User user = MrMailbox.getUser(user_id);
                     if (user.photo != null && user.photo.photo_big != null) {
                         PhotoViewer.getInstance().setParentActivity(getParentActivity());
                         PhotoViewer.getInstance().openPhoto(user.photo.photo_big, ProfileActivity.this);
@@ -821,7 +820,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
         if (id == NotificationCenter.updateInterfaces) {
             int mask = (Integer) args[0];
             if (user_id != 0) {
-                if ((mask & MessagesController.UPDATE_MASK_AVATAR) != 0 || (mask & MessagesController.UPDATE_MASK_NAME) != 0 || (mask & MessagesController.UPDATE_MASK_STATUS) != 0) {
+                if ((mask & MrMailbox.UPDATE_MASK_AVATAR) != 0 || (mask & MrMailbox.UPDATE_MASK_NAME) != 0 || (mask & MrMailbox.UPDATE_MASK_STATUS) != 0) {
                     updateProfileData();
                 }
             } else if (chat_id != 0) {
@@ -830,13 +829,13 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                 updateProfileData();
                 listAdapter.notifyDataSetChanged();
 
-                if ((mask & MessagesController.UPDATE_MASK_AVATAR) != 0 || (mask & MessagesController.UPDATE_MASK_NAME) != 0 || (mask & MessagesController.UPDATE_MASK_STATUS) != 0) {
+                if ((mask & MrMailbox.UPDATE_MASK_AVATAR) != 0 || (mask & MrMailbox.UPDATE_MASK_NAME) != 0 || (mask & MrMailbox.UPDATE_MASK_STATUS) != 0) {
                     if (listView != null) {
                         int count = listView.getChildCount();
                         for (int a = 0; a < count; a++) {
                             View child = listView.getChildAt(a);
                             if (child instanceof UserCell) {
-                                ((UserCell) child).update(mask);
+                                ((UserCell) child).update();
                             }
                         }
                     }
@@ -1039,7 +1038,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
 
         TLRPC.FileLocation photoBig = null;
         if (user_id != 0) {
-            TLRPC.User user = MessagesController.getInstance().getUser(user_id);
+            TLRPC.User user = MrMailbox.getUser(user_id);
             if (user != null && user.photo != null && user.photo.photo_big != null) {
                 photoBig = user.photo.photo_big;
             }
@@ -1184,7 +1183,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
             int leftIcon = 0;//currentEncryptedChat != null ? R.drawable.ic_lock_header : 0;
             int rightIcon = 0;
             if (a == 0) {
-                rightIcon = MessagesController.getInstance().isDialogMuted(dialog_id != 0 ? dialog_id : (long) user_id) ? R.drawable.mute_fixed : 0;
+                rightIcon = MrMailbox.isDialogMuted(dialog_id != 0 ? dialog_id : (long) user_id) ? R.drawable.mute_fixed : 0;
             }
             nameTextView[a].setLeftDrawable(leftIcon);
             nameTextView[a].setRightDrawable(rightIcon);

@@ -96,7 +96,7 @@ public class UserCell extends FrameLayout {
             currentStatus = m_mrContact.getAddr();
         }
         currentResId = resId;
-        update(0);
+        update();
     }
 
     public void setChecked(boolean checked, boolean animated) {
@@ -117,60 +117,10 @@ public class UserCell extends FrameLayout {
         statusColor = color;
     }
 
-    public void update(int mask) {
+    public void update() {
         if (m_mrContact==null) {
             return;
         }
-        TLRPC.FileLocation photo = null;
-        //String newName = null;
-
-        /*
-        if (mask != 0) {
-            boolean continueUpdate = false;
-            if ((mask & MessagesController.UPDATE_MASK_AVATAR) != 0) {
-                if (lastAvatar != null && photo == null || lastAvatar == null && photo != null && lastAvatar != null && photo != null && (lastAvatar.volume_id != photo.volume_id || lastAvatar.local_id != photo.local_id)) {
-                    continueUpdate = true;
-                }
-            }
-
-            if (user_id != 0 && !continueUpdate && (mask & MessagesController.UPDATE_MASK_STATUS) != 0) {
-                int newStatus = 0;
-                if (currentUser.status != null) {
-                    newStatus = currentUser.status.expires;
-                }
-                if (newStatus != lastStatus) {
-                    continueUpdate = true;
-                }
-            }
-
-            if (!continueUpdate && currentName == null && lastName != null && (mask & MessagesController.UPDATE_MASK_NAME) != 0) {
-                if (currentUser != null) {
-                    newName = UserObject.getUserName(currentUser);
-                } else {
-                    newName = currentChat.title;
-                }
-                if (!newName.equals(lastName)) {
-                    continueUpdate = true;
-                }
-            }
-            if (!continueUpdate) {
-                return;
-            }
-        }
-        */
-
-        /*
-        if (currentUser != null) {
-            avatarDrawable.setInfoByUser(currentUser);
-            if (currentUser.status != null) {
-                lastStatus = currentUser.status.expires;
-            } else {
-                lastStatus = 0;
-            }
-        } else {
-            avatarDrawable.setInfoByChat(currentChat);
-        }
-        */
 
         if (currentName != null) {
             nameTextView.setText(currentName);

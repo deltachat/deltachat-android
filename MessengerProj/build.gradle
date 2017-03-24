@@ -115,8 +115,8 @@ android {
     }
 
     defaultConfig {
-        minSdkVersion 14 // 14: Android 4.0 Ice Cream Sandwich 2011 (Telegram default), 21: Android 5.0 Lollipop 2014 (recommended for InstantRun)
-        targetSdkVersion 25
+        minSdkVersion 14     // 14: Android 4.0 Ice Cream Sandwich 2011 (Telegram default), 21: Android 5.0 Lollipop 2014 (recommended for InstantRun)
+        targetSdkVersion 25  // 25: Nougat. CAVE: Do NOT target "Andoid O" without checking the background tasks carefully, see https://developer.android.com/preview/behavior-changes.html#back-all . As long as we target "Nougat", everything works as expected even for "Andoid O" or later
         versionName "0.1.23" // do NOT forget to increase defaultConfig.versionCode!
     }
 }

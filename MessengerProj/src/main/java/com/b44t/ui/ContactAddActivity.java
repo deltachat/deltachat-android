@@ -42,11 +42,9 @@ import android.widget.Toast;
 import com.b44t.messenger.AndroidUtilities;
 import com.b44t.messenger.ContactsController;
 import com.b44t.messenger.LocaleController;
-import com.b44t.messenger.MrChat;
 import com.b44t.messenger.MrContact;
 import com.b44t.messenger.MrMailbox;
 import com.b44t.messenger.TLRPC;
-import com.b44t.messenger.MessagesController;
 import com.b44t.messenger.NotificationCenter;
 import com.b44t.messenger.R;
 import com.b44t.ui.ActionBar.ActionBar;
@@ -160,7 +158,7 @@ public class ContactAddActivity extends BaseFragment implements NotificationCent
                                     args.putInt("chat_id", belonging_chat_id);
                                     presentFragment(new ChatActivity(args), true);
                                     NotificationCenter.getInstance().postNotificationName(NotificationCenter.chatDidCreated, belonging_chat_id); /*this will remove the contact list from stack */
-                                    NotificationCenter.getInstance().postNotificationName(NotificationCenter.updateInterfaces, MessagesController.UPDATE_MASK_NAME);
+                                    NotificationCenter.getInstance().postNotificationName(NotificationCenter.updateInterfaces, MrMailbox.UPDATE_MASK_NAME);
                                     return;
                                 }
                             }
@@ -171,7 +169,7 @@ public class ContactAddActivity extends BaseFragment implements NotificationCent
                     }
 
                     finishFragment();
-                    NotificationCenter.getInstance().postNotificationName(NotificationCenter.updateInterfaces, MessagesController.UPDATE_MASK_NAME);
+                    NotificationCenter.getInstance().postNotificationName(NotificationCenter.updateInterfaces, MrMailbox.UPDATE_MASK_NAME);
                 }
             }
         });
@@ -392,14 +390,5 @@ public class ContactAddActivity extends BaseFragment implements NotificationCent
 
     @Override
     public void didReceivedNotification(int id, final Object... args) {
-        if (id == NotificationCenter.updateInterfaces) {
-            int mask = (Integer)args[0];
-            if ((mask & MessagesController.UPDATE_MASK_AVATAR) != 0 || (mask & MessagesController.UPDATE_MASK_NAME) != 0 || (mask & MessagesController.UPDATE_MASK_STATUS) != 0) {
-                updateVisibleRows(mask);
-            }
-        }
-    }
-
-    private void updateVisibleRows(int mask) {
     }
 }

@@ -53,7 +53,6 @@ import com.b44t.messenger.MediaController;
 import com.b44t.messenger.FileLoader;
 import com.b44t.messenger.FileLog;
 import com.b44t.messenger.MessageObject;
-import com.b44t.messenger.MessagesController;
 import com.b44t.messenger.MrChat;
 import com.b44t.messenger.MrContact;
 import com.b44t.messenger.MrMailbox;
@@ -894,7 +893,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
         TLRPC.User newUser = null;
         final TLRPC.Chat newChat = null;
         if (currentMessageObject.isFromUser()) {
-            newUser = MessagesController.getInstance().getUser(currentMessageObject.messageOwner.from_id);
+            newUser = MrMailbox.getUser(currentMessageObject.messageOwner.from_id);
         } /*else if (currentMessageObject.messageOwner.post) {
             newChat = MessagesController.getInstance().getChat(currentMessageObject.messageOwner.to_id.channel_id);
         }*/
@@ -2120,7 +2119,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
 
     private void measureTime(MessageObject messageObject) {
         boolean hasSign = !messageObject.isOutOwner() && messageObject.messageOwner.from_id > 0 && messageObject.messageOwner.post;
-        TLRPC.User signUser = MessagesController.getInstance().getUser(messageObject.messageOwner.from_id);
+        TLRPC.User signUser = MrMailbox.getUser(messageObject.messageOwner.from_id);
         if (hasSign && signUser == null) {
             hasSign = false;
         }
@@ -2163,7 +2162,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
     private void setMessageObjectInternal(MessageObject messageObject) {
 
         if (currentMessageObject.isFromUser()) {
-            currentUser = MessagesController.getInstance().getUser(currentMessageObject.messageOwner.from_id);
+            currentUser = MrMailbox.getUser(currentMessageObject.messageOwner.from_id);
         } /*else if (currentMessageObject.messageOwner.from_id < 0) {
             currentChat = MessagesController.getInstance().getChat(-currentMessageObject.messageOwner.from_id);
         } else if (currentMessageObject.messageOwner.post) {

@@ -23,9 +23,7 @@
 
 package com.b44t.ui;
 
-import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
@@ -49,7 +47,6 @@ import com.b44t.messenger.LocaleController;
 import com.b44t.messenger.MrContact;
 import com.b44t.messenger.MrMailbox;
 import com.b44t.messenger.TLRPC;
-import com.b44t.messenger.MessagesController;
 import com.b44t.messenger.NotificationCenter;
 import com.b44t.messenger.R;
 import com.b44t.ui.Adapters.BaseFragmentAdapter;
@@ -151,7 +148,7 @@ public class GroupCreateFinalActivity extends BaseFragment implements Notificati
                     args2.putInt("chat_id", chat_id);
                     presentFragment(new ChatActivity(args2), true);
                     if (uploadedAvatar != null) {
-                        MessagesController.getInstance().changeChatAvatar(chat_id, uploadedAvatar);
+                        //MessagesController.getInstance().changeChatAvatar(chat_id, uploadedAvatar);
                     }
                 }
             }
@@ -360,13 +357,13 @@ public class GroupCreateFinalActivity extends BaseFragment implements Notificati
     public void didReceivedNotification(int id, final Object... args) {
         if (id == NotificationCenter.updateInterfaces) {
             int mask = (Integer)args[0];
-            if ((mask & MessagesController.UPDATE_MASK_AVATAR) != 0 || (mask & MessagesController.UPDATE_MASK_NAME) != 0 || (mask & MessagesController.UPDATE_MASK_STATUS) != 0) {
-                updateVisibleRows(mask);
+            if ((mask & MrMailbox.UPDATE_MASK_AVATAR) != 0 || (mask & MrMailbox.UPDATE_MASK_NAME) != 0 || (mask & MrMailbox.UPDATE_MASK_STATUS) != 0) {
+                updateVisibleRows();
             }
         }
     }
 
-    private void updateVisibleRows(int mask) {
+    private void updateVisibleRows() {
         if (listView == null) {
             return;
         }
@@ -374,7 +371,7 @@ public class GroupCreateFinalActivity extends BaseFragment implements Notificati
         for (int a = 0; a < count; a++) {
             View child = listView.getChildAt(a);
             if (child instanceof UserCell) {
-                ((UserCell) child).update(mask);
+                ((UserCell) child).update();
             }
         }
     }

@@ -63,7 +63,6 @@ import com.b44t.messenger.MrMailbox;
 import com.b44t.messenger.Utilities;
 import com.b44t.messenger.TLRPC;
 import com.b44t.messenger.FileLog;
-import com.b44t.messenger.MessagesController;
 import com.b44t.messenger.NotificationCenter;
 import com.b44t.messenger.R;
 import com.b44t.ui.Adapters.ContactsAdapter;
@@ -576,8 +575,8 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
             }
         } else if (id == NotificationCenter.updateInterfaces) {
             int mask = (Integer)args[0];
-            if ((mask & MessagesController.UPDATE_MASK_AVATAR) != 0 || (mask & MessagesController.UPDATE_MASK_NAME) != 0 || (mask & MessagesController.UPDATE_MASK_STATUS) != 0) {
-                updateVisibleRows(mask);
+            if ((mask & MrMailbox.UPDATE_MASK_AVATAR) != 0 || (mask & MrMailbox.UPDATE_MASK_NAME) != 0 || (mask & MrMailbox.UPDATE_MASK_STATUS) != 0) {
+                updateVisibleRows();
             }
         } else if (id == NotificationCenter.closeChats) {
             removeSelfFromStack();
@@ -586,13 +585,13 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
         }
     }
 
-    private void updateVisibleRows(int mask) {
+    private void updateVisibleRows() {
         if (listView != null) {
             int count = listView.getChildCount();
             for (int a = 0; a < count; a++) {
                 View child = listView.getChildAt(a);
                 if (child instanceof UserCell) {
-                    ((UserCell) child).update(mask);
+                    ((UserCell) child).update();
                 }
             }
         }

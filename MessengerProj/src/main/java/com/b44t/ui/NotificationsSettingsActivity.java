@@ -46,7 +46,6 @@ import com.b44t.messenger.LocaleController;
 import com.b44t.messenger.NotificationsController;
 import com.b44t.messenger.NotificationCenter;
 import com.b44t.messenger.ApplicationLoader;
-import com.b44t.messenger.ConnectionsManager;
 import com.b44t.messenger.FileLog;
 import com.b44t.messenger.R;
 import com.b44t.ui.Adapters.BaseFragmentAdapter;
@@ -295,19 +294,6 @@ public class NotificationsSettingsActivity extends BaseFragment implements Notif
                     editor.apply();
                     NotificationsController.getInstance().setBadgeEnabled(!enabled);
                 }
-                /*else if (i == notificationsServiceConnectionRow) {
-                    // background connection option
-                    SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("Notifications", Activity.MODE_PRIVATE);
-                    enabled = preferences.getBoolean("pushConnection", true);
-                    SharedPreferences.Editor editor = preferences.edit();
-                    editor.putBoolean("pushConnection", !enabled);
-                    editor.apply();
-                    if (!enabled) {
-                        ConnectionsManager.getInstance().setPushConnectionEnabled(true);
-                    } else {
-                        ConnectionsManager.getInstance().setPushConnectionEnabled(false);
-                    }
-                }*/
                 else if (i == notificationsServiceRow) {
                     // keep-alive service option
                     final SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("Notifications", Activity.MODE_PRIVATE);

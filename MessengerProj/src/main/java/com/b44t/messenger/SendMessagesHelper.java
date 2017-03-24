@@ -234,10 +234,6 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
         }
     }
 
-    public void checkUnsentMessages() {
-        //MessagesStorage.getInstance().getUnsentMessages(1000);
-    }
-
     public TLRPC.TL_photo generatePhotoSizes(String path, Uri imageUri) {
         Bitmap bitmap = ImageLoader.loadBitmap(path, imageUri, AndroidUtilities.getPhotoSize(), AndroidUtilities.getPhotoSize(), true);
         if (bitmap == null && AndroidUtilities.getPhotoSize() != 800) {
@@ -258,9 +254,9 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
         if (sizes.isEmpty()) {
             return null;
         } else {
-            UserConfig.saveConfig(false);
+            UserConfig.saveConfig();
             TLRPC.TL_photo photo = new TLRPC.TL_photo();
-            photo.date = ConnectionsManager.getInstance().getCurrentTime();
+            photo.date = MrMailbox.getCurrentTime();
             photo.sizes = sizes;
             return photo;
         }
@@ -329,16 +325,10 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
         }
 
         TLRPC.TL_document document = null;
-        /*if (!isEncrypted)*/ {
-            document = null;//(TLRPC.TL_document) MessagesStorage.getInstance().getSentFile(originalPath, !isEncrypted ? 1 : 4);
-            if (document == null && !path.equals(originalPath) /*&& !isEncrypted*/) {
-                document = null;//(TLRPC.TL_document) MessagesStorage.getInstance().getSentFile(path + f.length(), !isEncrypted ? 1 : 4);
-            }
-        }
-        if (document == null) {
+        {
             document = new TLRPC.TL_document();
             document.id = 0;
-            document.date = ConnectionsManager.getInstance().getCurrentTime();
+            document.date = MrMailbox.getCurrentTime();
             TLRPC.TL_documentAttributeFilename fileName = new TLRPC.TL_documentAttributeFilename();
             fileName.file_name = name;
             document.attributes.add(fileName);
@@ -654,7 +644,7 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
                     {
                         document = new TLRPC.TL_document();
                         document.mime_type = "video/mp4";
-                        UserConfig.saveConfig(false);
+                        UserConfig.saveConfig();
                         TLRPC.TL_documentAttributeVideo attributeVideo = new TLRPC.TL_documentAttributeVideo();
                         document.attributes.add(attributeVideo);
                         if (videoEditedInfo != null) {
