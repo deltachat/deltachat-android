@@ -219,15 +219,15 @@ public class ApplicationLoader extends Application {
 
     @Override
     public void onCreate() {
+        Log.i("DeltaChat", "************ Primary-init ************");
         super.onCreate();
 
         applicationContext = getApplicationContext();
-        NativeLoader.initNativeLibs(ApplicationLoader.applicationContext);
+        System.loadLibrary("messenger.1");
         new ForegroundDetector(this);
 
-        // EDIT BY MR - create a MrMailbox object; as android stops the App by just killing it, we do never call MrMailboxUnref()
+        // create a MrMailbox object; as android stops the App by just killing it, we do never call MrMailboxUnref()
         // however, we may want to to have a look at onPause() eg. of activities (eg. for flushing data, if needed)
-        Log.i("DeltaChat", "************ Primary-init ************");
         MrMailbox.MrCallback(0, 0, 0); // do not remove this call; this makes sure, the function is not removed from build or warnings are printed!
         MrMailbox.init();
 
