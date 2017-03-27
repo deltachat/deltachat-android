@@ -24,7 +24,6 @@ package com.b44t.messenger;
 
 import android.app.Service;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.IBinder;
 import android.util.Log;
 
@@ -33,14 +32,17 @@ public class KeepAliveService extends Service {
 
     @Override
     public void onCreate() {
-
-        Log.i("DeltaChat", "*** Post-init via KeepAliveService.onCreate()");
-        ApplicationLoader.postInitApplication();
-
+        Log.i("DeltaChat", "*** KeepAliveService.onCreate()");
+        // there's nothing more to do here as all initialisation stuff is already done in
+        // ApplicationLoader.onCreate() which is called before this broadcast is sended.
     }
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
+        // START_STICKY ensured, the service is recreated as soon it is terminted for any reasons.
+        // as ApplicationLoader.onCreate() is called before a service starts, there is no more to do here,
+        // the app is just running fine.
+        Log.i("DeltaChat", "*** KeepAliveService.onStartCommand()");
         return START_STICKY;
     }
 
@@ -50,13 +52,7 @@ public class KeepAliveService extends Service {
     }
 
     public void onDestroy() {
-        Log.i("DeltaChat", "*** KeepAliveService will be destroyed, restarting");
-
-        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("Notifications", MODE_PRIVATE);
-        if( preferences.getBoolean("keepAlive", true) )
-        {
-            Intent intent = new Intent("com.b44t.start");
-            sendBroadcast(intent);
-        }
+        Log.i("DeltaChat", "*** KeepAliveService.onDestroy()");
+        // the service will be restarted due to START_STICKY automatically, there's nothing more to do.
     }
 }

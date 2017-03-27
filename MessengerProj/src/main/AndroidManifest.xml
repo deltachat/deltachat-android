@@ -216,7 +216,6 @@
 
         <receiver android:name=".BootCompletedReceiver" android:enabled="true">
             <intent-filter>
-                <action android:name="com.b44t.start" />
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
         </receiver>
@@ -227,6 +226,8 @@
         <!-- seems to be unneeded (bp)
         <receiver android:name=".ShareBroadcastReceiver" android:enabled="true"/>
         -->
+
+        <receiver android:name=".TimerReceiver" android:enabled="true"/>
 
         <receiver android:name=".NotificationDismissReceiver" android:exported="false"/>
 

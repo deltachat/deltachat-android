@@ -123,7 +123,7 @@ public class NotificationsController {
 
         try {
             PowerManager pm = (PowerManager) ApplicationLoader.applicationContext.getSystemService(Context.POWER_SERVICE);
-            notificationDelayWakelock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "lock");
+            notificationDelayWakelock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "notificationDelayWakelock" /*any name*/);
             notificationDelayWakelock.setReferenceCounted(false);
         } catch (Exception e) {
             FileLog.e("messenger", e);

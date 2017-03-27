@@ -122,9 +122,6 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        Log.i("DeltaChat", "*** Post-init via LaunchActivity.onCreate()");
-        ApplicationLoader.postInitApplication();
-
         if( MrMailbox.isConfigured()==0 ) {
             Intent intent = getIntent();
             if (intent != null && !intent.getBooleanExtra("fromIntro", false)) {
@@ -1320,9 +1317,10 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
         if (PhotoViewer.getInstance().isVisible()) {
             PhotoViewer.getInstance().onPause();
         }
+        ApplicationLoader.stayAwakeForAMoment();
     }
 
-    @Override
+    /*@Override
     protected void onStart() {
         Log.i("DeltaChat", "*** LaunchActivity.onStart()");
         super.onStart();
@@ -1332,7 +1330,7 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
     protected void onStop() {
         Log.i("DeltaChat", "*** LaunchActivity.onStop()");
         super.onStop();
-    }
+    }*/
 
     @Override
     protected void onDestroy() {

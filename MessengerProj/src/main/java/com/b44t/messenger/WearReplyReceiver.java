@@ -35,9 +35,6 @@ public class WearReplyReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
 
-        Log.i("DeltaChat", "*** Post-init via WearReplyReceiver.onReceive()");
-        ApplicationLoader.postInitApplication();
-
         Bundle remoteInput = RemoteInput.getResultsFromIntent(intent);
         if (remoteInput == null) {
             return;

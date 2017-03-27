@@ -274,9 +274,6 @@ public class SettingsActivity extends BaseFragment {
                 else if (i == advRow) {
                     textCell.setText(ApplicationLoader.applicationContext.getString(R.string.AdvancedSettings), false);
                 }
-                else if (i == aboutRow) {
-                    textCell.setText(ApplicationLoader.applicationContext.getString(R.string.AboutThisProgram), false);
-                }
             }
             else if (type == ROWTYPE_HEADER) {
                 if (view == null) {
@@ -317,6 +314,9 @@ public class SettingsActivity extends BaseFragment {
                     }
                     textCell.setTextAndValue(LocaleController.getString("MyName", R.string.MyName), subtitle, true);
                 }
+                else if (i == aboutRow) {
+                    textCell.setTextAndValue(ApplicationLoader.applicationContext.getString(R.string.AboutThisProgram), "v" + getVersion(), false);
+                }
             }
             return view;
         }
@@ -326,7 +326,7 @@ public class SettingsActivity extends BaseFragment {
             if (i == accountShadowRow || i == settingsShadowRow || i == aboutShadowRow ) {
                 return ROWTYPE_SHADOW;
             }
-            else if ( i == accountSettingsRow || i == usernameRow) {
+            else if ( i == accountSettingsRow || i == usernameRow || i==aboutRow ) {
                 return ROWTYPE_DETAIL_SETTINGS;
             }
             else if (i == settingsHeaderRow || i == aboutHeaderRow || i == accountHeaderRow) {

@@ -64,9 +64,6 @@ public class ManageSpaceActivity extends Activity implements ActionBarLayout.Act
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        Log.i("DeltaChat", "*** Post-init via ManageSpaceActivity.onCreate()");
-        ApplicationLoader.postInitApplication();
-
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setTheme(R.style.Theme_MessengerProj);
         getWindow().setBackgroundDrawableResource(R.drawable.transparent);

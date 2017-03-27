@@ -31,11 +31,7 @@ import android.util.Log;
 public class BootCompletedReceiver extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
         Log.i("DeltaChat", "*** BootCompletedReceiver.onReceive()");
-        AndroidUtilities.runOnUIThread(new Runnable() {
-            @Override
-            public void run() {
-                ApplicationLoader.startKeepAliveService();
-            }
-        });
+        // there's nothing more to do here as all initialisation stuff is already done in
+        // ApplicationLoader.onCreate() which is called before this broadcast is sended.
     }
 }

@@ -64,8 +64,6 @@ public class NotificationsSettingsActivity extends BaseFragment implements Notif
 
     private ListView listView;
 
-    private int notificationsServiceRow;
-    //private int notificationsServiceConnectionRow;
     private int messageSectionRow;
     private int messageAlertRow;
     private int messagePreviewRow;
@@ -134,8 +132,6 @@ public class NotificationsSettingsActivity extends BaseFragment implements Notif
         messagePreviewRow = rowCount++;
         badgeNumberRow = rowCount++;
         repeatRow = rowCount++;
-        notificationsServiceRow = rowCount++;
-        //notificationsServiceConnectionRow = rowCount++;
         resetNotificationsRow = rowCount++;
 
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.notificationsSettingsUpdated);
@@ -293,16 +289,6 @@ public class NotificationsSettingsActivity extends BaseFragment implements Notif
                     editor.putBoolean("badgeNumber", !enabled);
                     editor.apply();
                     NotificationsController.getInstance().setBadgeEnabled(!enabled);
-                }
-                else if (i == notificationsServiceRow) {
-                    // keep-alive service option
-                    final SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("Notifications", Activity.MODE_PRIVATE);
-                    final SharedPreferences.Editor editor = preferences.edit();
-                    enabled = preferences.getBoolean("keepAlive", true);
-                    editor.putBoolean("keepAlive", !enabled);
-                    editor.apply();
-                    ApplicationLoader.stopKeepAliveService();
-                    ApplicationLoader.startKeepAliveService();
                 } else if (i == messageLedRow || i == groupLedRow) {
                     if (getParentActivity() == null) {
                         return;
@@ -592,10 +578,6 @@ public class NotificationsSettingsActivity extends BaseFragment implements Notif
                     checkCell.setTextAndCheck(LocaleController.getString("Vibrate", R.string.Vibrate), preferences.getBoolean("EnableInAppVibrate", true), true);
                 /*} else if (i == inappPreviewRow) {
                     checkCell.setTextAndCheck(LocaleController.getString("MessagePreview", R.string.MessagePreview), preferences.getBoolean("EnableInAppPreview", true), true);*/
-                } else if (i == notificationsServiceRow) {
-                    checkCell.setTextAndValueAndCheck(LocaleController.getString("NotificationsService", R.string.NotificationsService), LocaleController.getString("NotificationsServiceInfo", R.string.NotificationsServiceInfo), preferences.getBoolean("keepAlive", true), true, true);
-                /*} else if (i == notificationsServiceConnectionRow) {
-                    checkCell.setTextAndValueAndCheck(LocaleController.getString("NotificationsServiceConnection", R.string.NotificationsServiceConnection), LocaleController.getString("NotificationsServiceConnectionInfo", R.string.NotificationsServiceConnectionInfo), preferences.getBoolean("pushConnection", true), true, true);*/
                 } else if (i == badgeNumberRow) {
                     checkCell.setTextAndCheck(LocaleController.getString("BadgeNumber", R.string.BadgeNumber), preferences.getBoolean("badgeNumber", true), true);
                 } else if (i == inchatSoundRow) {
@@ -704,8 +686,8 @@ public class NotificationsSettingsActivity extends BaseFragment implements Notif
             } else if (i == messageAlertRow || i == messagePreviewRow || i == groupAlertRow ||
                     /*i == groupPreviewRow ||*/ i == inappSoundRow || i == inappVibrateRow ||
                     /*i == inappPreviewRow ||*/
-                    i == notificationsServiceRow || i == badgeNumberRow ||
-                    i == inchatSoundRow /*|| i == notificationsServiceConnectionRow*/) {
+                    i == badgeNumberRow ||
+                    i == inchatSoundRow ) {
                 return TYPE_CHECK_CELL;
             } else if (i == messageLedRow || i == groupLedRow) {
                 return TYPE_COLOR_CELL;

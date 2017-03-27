@@ -40,6 +40,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Handler;
 import android.os.PowerManager;
+import android.os.SystemClock;
 import android.util.Log;
 
 import com.b44t.ui.Components.ForegroundDetector;
@@ -48,29 +49,21 @@ import com.b44t.ui.SettingsAdvActivity;
 import java.io.File;
 
 public class ApplicationLoader extends Application {
-    private static PendingIntent pendingIntent;
 
     private static Drawable cachedWallpaper;
-    private static int selectedColor;
     private static boolean isCustomTheme;
     private static final Object sync = new Object();
 
     public static volatile Context applicationContext;
     public static volatile Handler applicationHandler;
-    private static volatile boolean applicationInited = false;
 
     public static volatile boolean isScreenOn = false;
     public static volatile boolean mainInterfacePaused = true;
 
-    public static boolean isCustomTheme() {
-        return isCustomTheme;
-    }
+    public static PowerManager.WakeLock backendWakeLock = null;
+    public static PowerManager.WakeLock wakeupWakeLock = null;
+    private static PowerManager.WakeLock stayAwakeWakeLock = null;
 
-    public static int getSelectedColor() {
-        return selectedColor;
-    }
-
-    private static PowerManager.WakeLock wakeLock = null;
 
     public static int fontSize;
 
@@ -149,20 +142,51 @@ public class ApplicationLoader extends Application {
         return new File("/data/data/com.b44t.messenger/files");
     }
 
-    public static void postInitApplication() {
-        if (applicationInited) {
-            Log.i("DeltaChat", "*** Already inited."); // this is quite normal as the function is called in different activities and situations
-            return;
+    @Override
+    public void onCreate() {
+        Log.i("DeltaChat", "*************** ApplicationLoader.onCreate() ***************");
+        super.onCreate();
+
+        applicationContext = getApplicationContext();
+        System.loadLibrary("messenger.1");
+        new ForegroundDetector(this);
+        applicationHandler = new Handler(applicationContext.getMainLooper());
+
+        // create wake locks
+        try {
+            PowerManager pm = (PowerManager) ApplicationLoader.applicationContext.getSystemService(Context.POWER_SERVICE);
+
+            backendWakeLock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "backendWakeLock" /*any name*/);
+            // bakendWakeLock _is_ reference counted by the backend (every acquire() has a release())
+
+            wakeupWakeLock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "wakeupWakeLock" /*any name*/);
+            wakeupWakeLock.setReferenceCounted(false);
+
+            stayAwakeWakeLock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "stayAwakeWakeLock" /*any name*/);
+            stayAwakeWakeLock.setReferenceCounted(false);
+
+        } catch (Exception e) {
+            Log.e("DeltaChat", "Cannot acquire wakeLock");
         }
 
-        applicationInited = true;
+        // create a MrMailbox object; as android stops the App by just killing it, we do never call MrMailboxUnref()
+        // however, we may want to to have a look at onPause() eg. of activities (eg. for flushing data, if needed)
+        MrMailbox.MrCallback(0, 0, 0); // do not remove this call; this makes sure, the function is not removed from build or warnings are printed!
+        MrMailbox.init();
 
+        // start keep-alive service that restarts the app as soon it is terminated
+        // (this is done by just marking the service as START_STICKY which recreates the service as
+        // it goes away which also inititialized the app indirectly by calling this function)
+        applicationContext.startService(new Intent(applicationContext, KeepAliveService.class));
+
+        // init locale
         try {
             LocaleController.getInstance();
         } catch (Exception e) {
             e.printStackTrace();
         }
 
+        // track screen on/ff
         try {
             final IntentFilter filter = new IntentFilter(Intent.ACTION_SCREEN_ON);
             filter.addAction(Intent.ACTION_SCREEN_OFF);
@@ -181,22 +205,25 @@ public class ApplicationLoader extends Application {
         }
 
         UserConfig.loadConfig();
-        SharedPreferences notificationPreferences = ApplicationLoader.applicationContext.getSharedPreferences("Notifications", Activity.MODE_PRIVATE);
 
-        // create and acquire wakeLock
-        try {
-            PowerManager pm = (PowerManager) ApplicationLoader.applicationContext.getSystemService(Context.POWER_SERVICE);
-            wakeLock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "lock");
-            wakeLock.setReferenceCounted(false);
-            if (notificationPreferences.getBoolean("keepAlive", true)) {
-                wakeLock.acquire();
-            }
+        // create a timer that wakes up the CPU from time to time
+        try
+        {
+            Intent intent = new Intent(applicationContext, TimerReceiver.class);
+            PendingIntent alarmIntent = PendingIntent.getBroadcast(applicationContext, 0, intent, 0);
 
-        } catch (Exception e) {
-            Log.e("DeltaChat", "Cannot acquire wakeLock");
+            AlarmManager alarmManager = (AlarmManager)applicationContext.getSystemService(Activity.ALARM_SERVICE);
+            alarmManager.setInexactRepeating(AlarmManager.ELAPSED_REALTIME_WAKEUP,
+                    SystemClock.elapsedRealtime()+60*1000,
+                    60*1000,
+                    alarmIntent);
+        }
+        catch( Exception e) {
+            Log.e("DeltaChat", "Cannot create alarm.");
         }
 
         // make sure, the notifications for the "deaddrop" dialog are muted by default
+        SharedPreferences notificationPreferences = ApplicationLoader.applicationContext.getSharedPreferences("Notifications", Activity.MODE_PRIVATE);
         if( notificationPreferences.getInt("notify2_"+MrChat.MR_CHAT_ID_DEADDROP, 666)==666 ) {
             SharedPreferences.Editor editor = notificationPreferences.edit();
             editor.putInt("notify2_"+MrChat.MR_CHAT_ID_DEADDROP, 2);
@@ -215,51 +242,6 @@ public class ApplicationLoader extends Application {
 
         ImageLoader.getInstance();
         MediaController.getInstance();
-    }
-
-    @Override
-    public void onCreate() {
-        Log.i("DeltaChat", "************ Primary-init ************");
-        super.onCreate();
-
-        applicationContext = getApplicationContext();
-        System.loadLibrary("messenger.1");
-        new ForegroundDetector(this);
-
-        // create a MrMailbox object; as android stops the App by just killing it, we do never call MrMailboxUnref()
-        // however, we may want to to have a look at onPause() eg. of activities (eg. for flushing data, if needed)
-        MrMailbox.MrCallback(0, 0, 0); // do not remove this call; this makes sure, the function is not removed from build or warnings are printed!
-        MrMailbox.init();
-
-        applicationHandler = new Handler(applicationContext.getMainLooper());
-
-        startKeepAliveService();
-    }
-
-    public static void startKeepAliveService() {
-        SharedPreferences preferences = applicationContext.getSharedPreferences("Notifications", MODE_PRIVATE);
-
-        if (preferences.getBoolean("keepAlive", true)) {
-            AlarmManager am = (AlarmManager) applicationContext.getSystemService(Context.ALARM_SERVICE);
-            Intent i = new Intent(applicationContext, ApplicationLoader.class);
-            pendingIntent = PendingIntent.getBroadcast(applicationContext, 0, i, 0);
-
-            am.cancel(pendingIntent);
-            am.setRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis(), 60000, pendingIntent);
-
-            applicationContext.startService(new Intent(applicationContext, KeepAliveService.class));
-        } else {
-            stopKeepAliveService();
-        }
-    }
-
-    public static void stopKeepAliveService() {
-        applicationContext.stopService(new Intent(applicationContext, KeepAliveService.class));
-
-        PendingIntent pintent = PendingIntent.getService(applicationContext, 0, new Intent(applicationContext, KeepAliveService.class), 0);
-        AlarmManager alarm = (AlarmManager)applicationContext.getSystemService(Context.ALARM_SERVICE);
-        alarm.cancel(pintent);
-        alarm.cancel(pendingIntent);
     }
 
     @Override
@@ -291,4 +273,8 @@ public class ApplicationLoader extends Application {
         return false;
     }
 
+    public static void stayAwakeForAMoment()
+    {
+        stayAwakeWakeLock.acquire(2*60*1000); // 1 Minute, TODO: we should use about 10 Minutes here
+    }
 }
