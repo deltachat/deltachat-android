@@ -1,0 +1,39 @@
+/*******************************************************************************
+ *
+ *                          Messenger Android Frontend
+ *                           (C) 2017 Björn Petersen
+ *                    Contact: r10s@b44t.com, http://b44t.com
+ *
+ * This program is free software: you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License as published by the Free Software
+ * Foundation, either version 3 of the License, or (at your option) any later
+ * version.
+ *
+ * This program is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+ * details.
+ *
+ * You should have received a copy of the GNU General Public License along with
+ * this program.  If not, see http://www.gnu.org/licenses/ .
+ *
+ ******************************************************************************/
+
+
+package com.b44t.messenger;
+
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.util.Log;
+
+
+public class TimerReceiver extends BroadcastReceiver {
+    public void onReceive(Context context, Intent intent) {
+        Log.i("DeltaChat", "*** TimerReceiver.onReceive()");
+
+        // acquire for 5 seconds, this should wake un the threads,
+        // _if_ there is more to do, the backend acquires an additional wakelock using MR_EVENT_WAKE_LOCK
+        ApplicationLoader.wakeupWakeLock.acquire(5*1000);
+    }
+}
