@@ -51,7 +51,6 @@ import java.io.File;
 public class ApplicationLoader extends Application {
 
     private static Drawable cachedWallpaper;
-    private static boolean isCustomTheme;
     private static final Object sync = new Object();
 
     public static volatile Context applicationContext;
@@ -275,6 +274,6 @@ public class ApplicationLoader extends Application {
 
     public static void stayAwakeForAMoment()
     {
-        stayAwakeWakeLock.acquire(2*60*1000); // 1 Minute, TODO: we should use about 10 Minutes here
+        stayAwakeWakeLock.acquire(10*60*1000); // 10 Minutes to wait for "after chat" messages, after that, we sleep most time, see wakeupWakeLock
     }
 }
