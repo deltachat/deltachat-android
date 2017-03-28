@@ -1,5 +1,11 @@
 # Delta Chat Changelog
 
+## v0.1.23
+2017-03-28
+
+* Retry connecting to IMAP if there is not network available on the first try
+* Notify about new messages if the app is not active for hours, optimize battery consumption
+
 ## v0.1.22
 2017-03-22
 
