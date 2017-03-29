@@ -604,15 +604,6 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
             }
             if (listView != null) {
                 try {
-                    /* EDIT BY MR
-                    if (MessagesController.getInstance().loadingDialogs && MessagesController.getInstance().dialogs.isEmpty()) {
-                        searchEmptyView.setVisibility(View.GONE);
-                        emptyView.setVisibility(View.GONE);
-                        listView.setEmptyView(progressView);
-                    } else
-                    */
-                    {
-                        //progressView.setVisibility(View.GONE); -- EDIT BY MR
                         if (searching && searchWas) {
                             emptyView.setVisibility(View.GONE);
                             listView.setEmptyView(searchEmptyView);
@@ -620,9 +611,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
                             searchEmptyView.setVisibility(View.GONE);
                             listView.setEmptyView(emptyView);
                         }
-                    }
                 } catch (Exception e) {
-                    FileLog.e("messenger", e); //TODO fix it in other way?
                 }
             }
         } else if (id == NotificationCenter.emojiDidLoaded) {

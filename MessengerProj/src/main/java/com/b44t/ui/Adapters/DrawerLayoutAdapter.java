@@ -40,21 +40,22 @@ public class DrawerLayoutAdapter extends BaseAdapter {
 
     private Context mContext;
 
-    public final static int iProfile           = 0;
-    public final static int iEmptyBelowProfile = 1;
-    public final static int iNewChat           = 2;
-    public final static int iNewGroup          = 3;
-    public final static int iDivider           = 4;
-    public final static int iSettings          = 5;
-    public final static int iInviteMenuEntry   = 6;
-    public final static int iDeaddrop          = 7;
-    public final static int iFaq               = 8;
-    public final static int iCount             = 9;
+    public final static int ROW_PROFILE             = 0;
+    public final static int ROW_EMPTY_BELOW_PROFILE = 1;
+    public final static int ROW_NEW_CHAT            = 2;
+    public final static int ROW_NEW_GROUP           = 3;
+    public final static int ROW_DIVIDER             = 4;
+    public final static int ROW_SETTINGS            = 5;
+    public final static int ROW_INVITE              = 6;
+    public final static int ROW_DEADDROP            = 7;
+    public final static int ROW_FAQ                 = 8;
+    public final static int ROW_COUNT               = 9;
 
-    public final static int typeProfile = 0;
-    public final static int typeEmpty = 1;
-    public final static int typeDivider = 2;
-    public final static int typeButton = 3;
+    private final static int TYPE_PROFILE = 0;
+    private final static int TYPE_EMPTY   = 1;
+    private final static int TYPE_DIVIDER = 2;
+    private final static int TYPE_BUTTON  = 3;
+    private final static int TYPE_COUNT   = 4;
 
     public DrawerLayoutAdapter(Context context) {
         mContext = context;
@@ -67,12 +68,12 @@ public class DrawerLayoutAdapter extends BaseAdapter {
 
     @Override
     public boolean isEnabled(int i) {
-        return !(i == iProfile || i == iEmptyBelowProfile || i == iDivider);
+        return !(i == ROW_PROFILE || i == ROW_EMPTY_BELOW_PROFILE || i == ROW_DIVIDER);
     }
 
     @Override
     public int getCount() {
-        return iCount;
+        return ROW_COUNT;
     }
 
     @Override
@@ -93,39 +94,39 @@ public class DrawerLayoutAdapter extends BaseAdapter {
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
         int type = getItemViewType(i);
-        if (type == typeProfile) {
+        if (type == TYPE_PROFILE) {
             if (view == null) {
                 view = new DrawerProfileCell(mContext);
             }
             ((DrawerProfileCell) view).updateUserName();
-        } else if (type == typeEmpty) {
+        } else if (type == TYPE_EMPTY) {
             if (view == null) {
                 view = new EmptyCell(mContext, AndroidUtilities.dp(8));
             }
-        } else if (type == typeDivider) {
+        } else if (type == TYPE_DIVIDER) {
             if (view == null) {
                 view = new DividerCell(mContext);
             }
-        } else if (type == typeButton) {
+        } else if (type == TYPE_BUTTON) {
             if (view == null) {
                 view = new DrawerActionCell(mContext);
             }
             DrawerActionCell actionCell = (DrawerActionCell) view;
-            if (i == iNewChat) {
+            if (i == ROW_NEW_CHAT) {
                 actionCell.setTextAndIcon(LocaleController.getString("NewChat", R.string.NewChat), R.drawable.menu_newchat);
-            } else if (i == iNewGroup) {
+            } else if (i == ROW_NEW_GROUP) {
                 actionCell.setTextAndIcon(LocaleController.getString("NewGroup", R.string.NewGroup), R.drawable.menu_empty);
-            } else if (i == iInviteMenuEntry) {
+            } else if (i == ROW_INVITE) {
                 actionCell.setTextAndIcon(LocaleController.getString("InviteMenuEntry", R.string.InviteMenuEntry), R.drawable.menu_empty);
-            } else if (i == iDeaddrop) {
+            } else if (i == ROW_DEADDROP) {
                 actionCell.setTextAndIcon(LocaleController.getString("Deaddrop", R.string.Deaddrop), R.drawable.menu_empty);
                 // we do not want an icon beside the mailbox:
                 // 1. We do not want to give it much attention,
                 // 2. If the mailbox is shown in the chatlist, it gets the chat icon (KISS), but we should not use this icon in the drawer for the mailbox.
                 // 3. Simplicity - we have two sections, "Add" and "Tools" - Mailbox belongs to the latter
-            } else if (i == iSettings) {
+            } else if (i == ROW_SETTINGS) {
                 actionCell.setTextAndIcon(LocaleController.getString("Settings", R.string.Settings), R.drawable.menu_settings);
-            } else if (i == iFaq) {
+            } else if (i == ROW_FAQ) {
                 actionCell.setTextAndIcon(LocaleController.getString("Help", R.string.Help), R.drawable.menu_empty);
             }
         }
@@ -135,19 +136,19 @@ public class DrawerLayoutAdapter extends BaseAdapter {
 
     @Override
     public int getItemViewType(int i) {
-        if (i == iProfile) {
-            return typeProfile;
-        } else if (i == iEmptyBelowProfile) {
-            return typeEmpty;
-        } else if (i == iDivider) {
-            return typeDivider;
+        if (i == ROW_PROFILE) {
+            return TYPE_PROFILE;
+        } else if (i == ROW_EMPTY_BELOW_PROFILE) {
+            return TYPE_EMPTY;
+        } else if (i == ROW_DIVIDER) {
+            return TYPE_DIVIDER;
         }
-        return typeButton;
+        return TYPE_BUTTON;
     }
 
     @Override
     public int getViewTypeCount() {
-        return 4;
+        return TYPE_COUNT;
     }
 
     @Override

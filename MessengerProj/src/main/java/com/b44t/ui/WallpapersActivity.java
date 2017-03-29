@@ -22,7 +22,7 @@
 
 
 /*
- * EDIT BY MR: some hints:
+ * some hints:
  * - the default wallpaper has the ID 1000001
  * - the original flow: MessagesStorage..getWallpapers(); -> wallpapersDidLoaded -> loadWallpapers() -> TLRPC.TL_account_getWallPapers()
  */

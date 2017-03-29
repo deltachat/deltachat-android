@@ -1609,7 +1609,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         if (avatarContainer == null) {
             return;
         }
-        avatarContainer.setTitle(m_mrChat.getName()); // EDIT BY MR -- realize the title from m_hChat
+        avatarContainer.setTitle(m_mrChat.getName()); // realize the title from m_hChat
     }
 
     private void updateTitleIcons() {

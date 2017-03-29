@@ -795,11 +795,10 @@ public class MessageObject {
             }
         }
 
-        // EDIT BY MR: we use the attachPath for the normal images
+        // we use the attachPath for the normal images (bp)
         if( (mediaExists || attachPathExists) && messageOwner.created_by_mr ) {
             attachPathExists = true;
             mediaExists = true;
         }
-        // /EDIT BY MR
     }
 }

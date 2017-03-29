@@ -273,7 +273,7 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
         FrameLayout.LayoutParams layoutParams = (FrameLayout.LayoutParams) listView.getLayoutParams();
         Point screenSize = AndroidUtilities.getRealScreenSize();
 
-        /* EDIT BY MR: Set the width of the drawer -- was: dp(320) */
+        // Set the width of the drawer
         layoutParams.width = AndroidUtilities.isTablet() ?
                     AndroidUtilities.dp(285)
                 :   Math.min( AndroidUtilities.dp(285), Math.min(screenSize.x,screenSize.y)-AndroidUtilities.dp(56) );
@@ -284,19 +284,19 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                if (position == DrawerLayoutAdapter.iNewChat) {
+                if (position == DrawerLayoutAdapter.ROW_NEW_CHAT) {
                     Bundle args = new Bundle();
                     args.putInt("do_what", ContactsActivity.SELECT_CONTACT_FOR_NEW_CHAT);
                     presentFragment(new ContactsActivity(args));
                     drawerLayoutContainer.closeDrawer(false);
                 }
-                else if (position == DrawerLayoutAdapter.iNewGroup) {
+                else if (position == DrawerLayoutAdapter.ROW_NEW_GROUP) {
                     Bundle args = new Bundle();
                     args.putInt("do_what", ContactsActivity.SELECT_CONTACTS_FOR_NEW_GROUP);
                     presentFragment(new ContactsActivity(args));
                     drawerLayoutContainer.closeDrawer(false);
                 }
-                else if (position == DrawerLayoutAdapter.iInviteMenuEntry) {
+                else if (position == DrawerLayoutAdapter.ROW_INVITE) {
                     try {
                         Intent intent = new Intent(Intent.ACTION_SEND);
                         intent.setType("text/plain");
@@ -307,17 +307,17 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                     }
                     drawerLayoutContainer.closeDrawer(false);
                 }
-                else if (position == DrawerLayoutAdapter.iDeaddrop) {
+                else if (position == DrawerLayoutAdapter.ROW_DEADDROP) {
                     Bundle args = new Bundle();
                     args.putInt("chat_id", MrChat.MR_CHAT_ID_DEADDROP);
                     presentFragment(new ChatActivity(args));
                     drawerLayoutContainer.closeDrawer(false);
                 }
-                else if (position == DrawerLayoutAdapter.iSettings) {
+                else if (position == DrawerLayoutAdapter.ROW_SETTINGS) {
                     presentFragment(new SettingsActivity());
                     drawerLayoutContainer.closeDrawer(false);
                 }
-                else if (position == DrawerLayoutAdapter.iFaq) {
+                else if (position == DrawerLayoutAdapter.ROW_FAQ) {
                     Browser.openUrl(LaunchActivity.this, "https://getdelta.org/help");
                     drawerLayoutContainer.closeDrawer(false);
                 }
@@ -461,262 +461,123 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
     }
 
     private boolean handleIntent(Intent intent, boolean isNew, boolean restore, boolean fromPassword) {
-        int flags = intent.getFlags();
+
         if (!fromPassword && (AndroidUtilities.needShowPasscode(true) || UserConfig.isWaitingForPasscodeEnter)) {
             showPasscodeActivity();
             passcodeSaveIntent = intent;
             passcodeSaveIntentIsNew = isNew;
             passcodeSaveIntentIsRestore = restore;
             UserConfig.saveConfig();
-        } else {
-            boolean pushOpened = false;
+            return false;
+        }
 
-            Integer push_chat_id = 0;
-            long dialogId = intent != null && intent.getExtras() != null ? intent.getExtras().getLong("dialogId", 0) : 0;
-            boolean showDialogsList = false;
+        int flags = intent.getFlags();
+        boolean pushOpened = false;
 
-            photoPathsArray = null;
-            videoPath = null;
-            sendingText = null;
-            documentsPathsArray = null;
-            documentsOriginalPathsArray = null;
-            documentsMimeType = null;
-            documentsUrisArray = null;
-            contactsToSend = null;
+        Integer push_chat_id = 0;
+        long dialogId = intent != null && intent.getExtras() != null ? intent.getExtras().getLong("dialogId", 0) : 0;
+        boolean showDialogsList = false;
 
-            if ( (flags & Intent.FLAG_ACTIVITY_LAUNCHED_FROM_HISTORY) == 0) {
-                if (intent != null && intent.getAction() != null && !restore) {
-                    if (Intent.ACTION_SEND.equals(intent.getAction())) {
-                        boolean error = false;
-                        String type = intent.getType();
-                        if (type != null && type.equals(ContactsContract.Contacts.CONTENT_VCARD_TYPE)) {
-                            try {
-                                Uri uri = (Uri) intent.getExtras().get(Intent.EXTRA_STREAM);
-                                if (uri != null) {
-                                    ContentResolver cr = getContentResolver();
-                                    InputStream stream = cr.openInputStream(uri);
-                                    ArrayList<VcardData> vcardDatas = new ArrayList<>();
-                                    VcardData currentData = null;
+        photoPathsArray = null;
+        videoPath = null;
+        sendingText = null;
+        documentsPathsArray = null;
+        documentsOriginalPathsArray = null;
+        documentsMimeType = null;
+        documentsUrisArray = null;
+        contactsToSend = null;
 
-                                    BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(stream, "UTF-8"));
-                                    String line;
-                                    while ((line = bufferedReader.readLine()) != null) {
-                                        FileLog.e("messenger", line);
-                                        String[] args = line.split(":");
-                                        if (args.length != 2) {
-                                            continue;
-                                        }
-                                        if (args[0].equals("BEGIN") && args[1].equals("VCARD")) {
-                                            vcardDatas.add(currentData = new VcardData());
-                                        } else if (args[0].equals("END") && args[1].equals("VCARD")) {
-                                            currentData = null;
-                                        }
-                                        if (currentData == null) {
-                                            continue;
-                                        }
-                                        if (args[0].startsWith("FN") || args[0].startsWith("ORG") && TextUtils.isEmpty(currentData.name)) {
-                                            String nameEncoding = null;
-                                            String nameCharset = null;
-                                            String[] params = args[0].split(";");
-                                            for (String param : params) {
-                                                String[] args2 = param.split("=");
-                                                if (args2.length != 2) {
-                                                    continue;
-                                                }
-                                                if (args2[0].equals("CHARSET")) {
-                                                    nameCharset = args2[1];
-                                                } else if (args2[0].equals("ENCODING")) {
-                                                    nameEncoding = args2[1];
-                                                }
-                                            }
-                                            currentData.name = args[1];
-                                            if (nameEncoding != null && nameEncoding.equalsIgnoreCase("QUOTED-PRINTABLE")) {
-                                                while (currentData.name.endsWith("=") && nameEncoding != null) {
-                                                    currentData.name = currentData.name.substring(0, currentData.name.length() - 1);
-                                                    line = bufferedReader.readLine();
-                                                    if (line == null) {
-                                                        break;
-                                                    }
-                                                    currentData.name += line;
-                                                }
-                                                byte[] bytes = AndroidUtilities.decodeQuotedPrintable(currentData.name.getBytes());
-                                                if (bytes != null && bytes.length != 0) {
-                                                    String decodedName = new String(bytes, nameCharset);
-                                                    if (decodedName != null) {
-                                                        currentData.name = decodedName;
-                                                    }
-                                                }
-                                            }
-                                        } else if (args[0].startsWith("EMAIL")) {
-                                            String email = args[1];
-                                            if (email.length() > 0) {
-                                                currentData.emails.add(email);
-                                            }
-                                        }
-                                    }
-                                    try {
-                                        bufferedReader.close();
-                                        stream.close();
-                                    } catch (Exception e) {
-                                        FileLog.e("messenger", e);
-                                    }
-                                    for (int a = 0; a < vcardDatas.size(); a++) {
-                                        VcardData vcardData = vcardDatas.get(a);
-                                        if (vcardData.name != null && !vcardData.emails.isEmpty()) {
-                                            if (contactsToSend == null) {
-                                                contactsToSend = new ArrayList<>();
-                                            }
-
-                                            for (int b = 0; b < vcardData.emails.size(); b++) {
-                                                int contact_to_send_id = MrMailbox.createContact(vcardData.name, vcardData.emails.get(b));
-                                                contactsToSend.add(contact_to_send_id);
-                                            }
-                                        }
-                                    }
-                                    if( contactsToSend==null ) {
-                                        Toast.makeText(this, ApplicationLoader.applicationContext.getString(R.string.BadEmailAddress), Toast.LENGTH_SHORT).show();;
-                                    }
-                                } else {
-                                    error = true;
-                                }
-                            } catch (Exception e) {
-                                FileLog.e("messenger", e);
-                                error = true;
-                            }
-                        } else {
-                            String text = intent.getStringExtra(Intent.EXTRA_TEXT);
-                            if (text == null) {
-                                CharSequence textSequence = intent.getCharSequenceExtra(Intent.EXTRA_TEXT);
-                                if (textSequence != null) {
-                                    text = textSequence.toString();
-                                }
-                            }
-                            if( text == null )
-                            {
-                                // added by MR, the Telegram-FOSS crashes on selecing an image in the gallery - why?
-                                Toast.makeText(this, LocaleController.getString("NotYetImplemented", R.string.NotYetImplemented), Toast.LENGTH_SHORT).show();
-                            }
-                            else {
-                                String subject = intent.getStringExtra(Intent.EXTRA_SUBJECT);
-                                if (text != null && text.length() != 0) {
-                                    if ((text.startsWith("http://") || text.startsWith("https://")) && subject != null && subject.length() != 0) {
-                                        text = subject + "\n" + text;
-                                    }
-                                    sendingText = text;
-                                } else if (subject != null && subject.length() > 0) {
-                                    sendingText = subject;
-                                }
-
-                                Parcelable parcelable = intent.getParcelableExtra(Intent.EXTRA_STREAM);
-                                if (parcelable != null) {
-                                    String path;
-                                    if (!(parcelable instanceof Uri)) {
-                                        parcelable = Uri.parse(parcelable.toString());
-                                    }
-                                    Uri uri = (Uri) parcelable;
-                                    if (uri != null) {
-                                        if (AndroidUtilities.isInternalUri(uri)) {
-                                            error = true;
-                                        }
-                                    }
-                                    if (!error) {
-                                        if (uri != null && (type != null && type.startsWith("image/") || uri.toString().toLowerCase().endsWith(".jpg"))) {
-                                            if (photoPathsArray == null) {
-                                                photoPathsArray = new ArrayList<>();
-                                            }
-                                            photoPathsArray.add(uri);
-                                        } else {
-                                            path = AndroidUtilities.getPath(uri);
-                                            if (path != null) {
-                                                if (path.startsWith("file:")) {
-                                                    path = path.replace("file://", "");
-                                                }
-                                                if (type != null && type.startsWith("video/")) {
-                                                    videoPath = path;
-                                                } else {
-                                                    if (documentsPathsArray == null) {
-                                                        documentsPathsArray = new ArrayList<>();
-                                                        documentsOriginalPathsArray = new ArrayList<>();
-                                                    }
-                                                    documentsPathsArray.add(path);
-                                                    documentsOriginalPathsArray.add(uri.toString());
-                                                }
-                                            } else {
-                                                if (documentsUrisArray == null) {
-                                                    documentsUrisArray = new ArrayList<>();
-                                                }
-                                                documentsUrisArray.add(uri);
-                                                documentsMimeType = type;
-                                            }
-                                        }
-                                    }
-                                } else if (sendingText == null) {
-                                    error = true;
-                                }
-                            }
-                        }
-                        if (error) {
-                            Toast.makeText(this, "Unsupported content", Toast.LENGTH_SHORT).show();
-                        }
-                    } else if (intent.getAction().equals(Intent.ACTION_SEND_MULTIPLE)) {
-                        boolean error = false;
+        if ( (flags & Intent.FLAG_ACTIVITY_LAUNCHED_FROM_HISTORY) == 0) {
+            if (intent != null && intent.getAction() != null && !restore) {
+                if (Intent.ACTION_SEND.equals(intent.getAction())) {
+                    boolean error = false;
+                    String type = intent.getType();
+                    if (type != null && type.equals(ContactsContract.Contacts.CONTENT_VCARD_TYPE)) {
                         try {
-                            ArrayList<Parcelable> uris = intent.getParcelableArrayListExtra(Intent.EXTRA_STREAM);
-                            String type = intent.getType();
-                            if (uris != null) {
-                                for (int a = 0; a < uris.size(); a++) {
-                                    Parcelable parcelable = uris.get(a);
-                                    if (!(parcelable instanceof Uri)) {
-                                        parcelable = Uri.parse(parcelable.toString());
+                            Uri uri = (Uri) intent.getExtras().get(Intent.EXTRA_STREAM);
+                            if (uri != null) {
+                                ContentResolver cr = getContentResolver();
+                                InputStream stream = cr.openInputStream(uri);
+                                ArrayList<VcardData> vcardDatas = new ArrayList<>();
+                                VcardData currentData = null;
+
+                                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(stream, "UTF-8"));
+                                String line;
+                                while ((line = bufferedReader.readLine()) != null) {
+                                    FileLog.e("messenger", line);
+                                    String[] args = line.split(":");
+                                    if (args.length != 2) {
+                                        continue;
                                     }
-                                    Uri uri = (Uri) parcelable;
-                                    if (uri != null) {
-                                        if (AndroidUtilities.isInternalUri(uri)) {
-                                            uris.remove(a);
-                                            a--;
+                                    if (args[0].equals("BEGIN") && args[1].equals("VCARD")) {
+                                        vcardDatas.add(currentData = new VcardData());
+                                    } else if (args[0].equals("END") && args[1].equals("VCARD")) {
+                                        currentData = null;
+                                    }
+                                    if (currentData == null) {
+                                        continue;
+                                    }
+                                    if (args[0].startsWith("FN") || args[0].startsWith("ORG") && TextUtils.isEmpty(currentData.name)) {
+                                        String nameEncoding = null;
+                                        String nameCharset = null;
+                                        String[] params = args[0].split(";");
+                                        for (String param : params) {
+                                            String[] args2 = param.split("=");
+                                            if (args2.length != 2) {
+                                                continue;
+                                            }
+                                            if (args2[0].equals("CHARSET")) {
+                                                nameCharset = args2[1];
+                                            } else if (args2[0].equals("ENCODING")) {
+                                                nameEncoding = args2[1];
+                                            }
+                                        }
+                                        currentData.name = args[1];
+                                        if (nameEncoding != null && nameEncoding.equalsIgnoreCase("QUOTED-PRINTABLE")) {
+                                            while (currentData.name.endsWith("=") && nameEncoding != null) {
+                                                currentData.name = currentData.name.substring(0, currentData.name.length() - 1);
+                                                line = bufferedReader.readLine();
+                                                if (line == null) {
+                                                    break;
+                                                }
+                                                currentData.name += line;
+                                            }
+                                            byte[] bytes = AndroidUtilities.decodeQuotedPrintable(currentData.name.getBytes());
+                                            if (bytes != null && bytes.length != 0) {
+                                                String decodedName = new String(bytes, nameCharset);
+                                                if (decodedName != null) {
+                                                    currentData.name = decodedName;
+                                                }
+                                            }
+                                        }
+                                    } else if (args[0].startsWith("EMAIL")) {
+                                        String email = args[1];
+                                        if (email.length() > 0) {
+                                            currentData.emails.add(email);
                                         }
                                     }
                                 }
-                                if (uris.isEmpty()) {
-                                    uris = null;
+                                try {
+                                    bufferedReader.close();
+                                    stream.close();
+                                } catch (Exception e) {
+                                    FileLog.e("messenger", e);
                                 }
-                            }
-                            if (uris != null) {
-                                if (type != null && type.startsWith("image/")) {
-                                    for (int a = 0; a < uris.size(); a++) {
-                                        Parcelable parcelable = uris.get(a);
-                                        if (!(parcelable instanceof Uri)) {
-                                            parcelable = Uri.parse(parcelable.toString());
+                                for (int a = 0; a < vcardDatas.size(); a++) {
+                                    VcardData vcardData = vcardDatas.get(a);
+                                    if (vcardData.name != null && !vcardData.emails.isEmpty()) {
+                                        if (contactsToSend == null) {
+                                            contactsToSend = new ArrayList<>();
                                         }
-                                        Uri uri = (Uri) parcelable;
-                                        if (photoPathsArray == null) {
-                                            photoPathsArray = new ArrayList<>();
-                                        }
-                                        photoPathsArray.add(uri);
-                                    }
-                                } else {
-                                    for (int a = 0; a < uris.size(); a++) {
-                                        Parcelable parcelable = uris.get(a);
-                                        if (!(parcelable instanceof Uri)) {
-                                            parcelable = Uri.parse(parcelable.toString());
-                                        }
-                                        String path = AndroidUtilities.getPath((Uri) parcelable);
-                                        String originalPath = parcelable.toString();
-                                        if (originalPath == null) {
-                                            originalPath = path;
-                                        }
-                                        if (path != null) {
-                                            if (path.startsWith("file:")) {
-                                                path = path.replace("file://", "");
-                                            }
-                                            if (documentsPathsArray == null) {
-                                                documentsPathsArray = new ArrayList<>();
-                                                documentsOriginalPathsArray = new ArrayList<>();
-                                            }
-                                            documentsPathsArray.add(path);
-                                            documentsOriginalPathsArray.add(originalPath);
+
+                                        for (int b = 0; b < vcardData.emails.size(); b++) {
+                                            int contact_to_send_id = MrMailbox.createContact(vcardData.name, vcardData.emails.get(b));
+                                            contactsToSend.add(contact_to_send_id);
                                         }
                                     }
+                                }
+                                if( contactsToSend==null ) {
+                                    Toast.makeText(this, ApplicationLoader.applicationContext.getString(R.string.BadEmailAddress), Toast.LENGTH_SHORT).show();;
                                 }
                             } else {
                                 error = true;
@@ -725,128 +586,268 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                             FileLog.e("messenger", e);
                             error = true;
                         }
-                        if (error) {
-                            Toast.makeText(this, "Unsupported content", Toast.LENGTH_SHORT).show();
+                    } else {
+                        String text = intent.getStringExtra(Intent.EXTRA_TEXT);
+                        if (text == null) {
+                            CharSequence textSequence = intent.getCharSequenceExtra(Intent.EXTRA_TEXT);
+                            if (textSequence != null) {
+                                text = textSequence.toString();
+                            }
                         }
-                    } else if (Intent.ACTION_VIEW.equals(intent.getAction())) {
-                        Uri data = intent.getData();
-                        if (data != null) {
-                            String scheme = data.getScheme();
-                            if (scheme != null) {
-                                if ((scheme.equals("http") || scheme.equals("https"))) {
-
+                        if( text == null )
+                        {
+                            // added by MR, the Telegram-FOSS crashes on selecing an image in the gallery - why?
+                            Toast.makeText(this, LocaleController.getString("NotYetImplemented", R.string.NotYetImplemented), Toast.LENGTH_SHORT).show();
+                        }
+                        else {
+                            String subject = intent.getStringExtra(Intent.EXTRA_SUBJECT);
+                            if (text != null && text.length() != 0) {
+                                if ((text.startsWith("http://") || text.startsWith("https://")) && subject != null && subject.length() != 0) {
+                                    text = subject + "\n" + text;
                                 }
+                                sendingText = text;
+                            } else if (subject != null && subject.length() > 0) {
+                                sendingText = subject;
+                            }
+
+                            Parcelable parcelable = intent.getParcelableExtra(Intent.EXTRA_STREAM);
+                            if (parcelable != null) {
+                                String path;
+                                if (!(parcelable instanceof Uri)) {
+                                    parcelable = Uri.parse(parcelable.toString());
+                                }
+                                Uri uri = (Uri) parcelable;
+                                if (uri != null) {
+                                    if (AndroidUtilities.isInternalUri(uri)) {
+                                        error = true;
+                                    }
+                                }
+                                if (!error) {
+                                    if (uri != null && (type != null && type.startsWith("image/") || uri.toString().toLowerCase().endsWith(".jpg"))) {
+                                        if (photoPathsArray == null) {
+                                            photoPathsArray = new ArrayList<>();
+                                        }
+                                        photoPathsArray.add(uri);
+                                    } else {
+                                        path = AndroidUtilities.getPath(uri);
+                                        if (path != null) {
+                                            if (path.startsWith("file:")) {
+                                                path = path.replace("file://", "");
+                                            }
+                                            if (type != null && type.startsWith("video/")) {
+                                                videoPath = path;
+                                            } else {
+                                                if (documentsPathsArray == null) {
+                                                    documentsPathsArray = new ArrayList<>();
+                                                    documentsOriginalPathsArray = new ArrayList<>();
+                                                }
+                                                documentsPathsArray.add(path);
+                                                documentsOriginalPathsArray.add(uri.toString());
+                                            }
+                                        } else {
+                                            if (documentsUrisArray == null) {
+                                                documentsUrisArray = new ArrayList<>();
+                                            }
+                                            documentsUrisArray.add(uri);
+                                            documentsMimeType = type;
+                                        }
+                                    }
+                                }
+                            } else if (sendingText == null) {
+                                error = true;
                             }
                         }
                     }
-                    else if (intent.getAction().startsWith("com.b44t.messenger.openchat")) {
-                        String temp = intent.getAction().substring(27);
-                        int chatId = 0;
-                        try {
-                            chatId = Integer.parseInt(temp, 10);
-                        } catch(Exception e) {
+                    if (error) {
+                        Toast.makeText(this, "Unsupported content", Toast.LENGTH_SHORT).show();
+                    }
+                } else if (intent.getAction().equals(Intent.ACTION_SEND_MULTIPLE)) {
+                    boolean error = false;
+                    try {
+                        ArrayList<Parcelable> uris = intent.getParcelableArrayListExtra(Intent.EXTRA_STREAM);
+                        String type = intent.getType();
+                        if (uris != null) {
+                            for (int a = 0; a < uris.size(); a++) {
+                                Parcelable parcelable = uris.get(a);
+                                if (!(parcelable instanceof Uri)) {
+                                    parcelable = Uri.parse(parcelable.toString());
+                                }
+                                Uri uri = (Uri) parcelable;
+                                if (uri != null) {
+                                    if (AndroidUtilities.isInternalUri(uri)) {
+                                        uris.remove(a);
+                                        a--;
+                                    }
+                                }
+                            }
+                            if (uris.isEmpty()) {
+                                uris = null;
+                            }
                         }
-
-                        if (chatId != 0) {
-                            NotificationCenter.getInstance().postNotificationName(NotificationCenter.closeChats);
-                            push_chat_id = chatId;
+                        if (uris != null) {
+                            if (type != null && type.startsWith("image/")) {
+                                for (int a = 0; a < uris.size(); a++) {
+                                    Parcelable parcelable = uris.get(a);
+                                    if (!(parcelable instanceof Uri)) {
+                                        parcelable = Uri.parse(parcelable.toString());
+                                    }
+                                    Uri uri = (Uri) parcelable;
+                                    if (photoPathsArray == null) {
+                                        photoPathsArray = new ArrayList<>();
+                                    }
+                                    photoPathsArray.add(uri);
+                                }
+                            } else {
+                                for (int a = 0; a < uris.size(); a++) {
+                                    Parcelable parcelable = uris.get(a);
+                                    if (!(parcelable instanceof Uri)) {
+                                        parcelable = Uri.parse(parcelable.toString());
+                                    }
+                                    String path = AndroidUtilities.getPath((Uri) parcelable);
+                                    String originalPath = parcelable.toString();
+                                    if (originalPath == null) {
+                                        originalPath = path;
+                                    }
+                                    if (path != null) {
+                                        if (path.startsWith("file:")) {
+                                            path = path.replace("file://", "");
+                                        }
+                                        if (documentsPathsArray == null) {
+                                            documentsPathsArray = new ArrayList<>();
+                                            documentsOriginalPathsArray = new ArrayList<>();
+                                        }
+                                        documentsPathsArray.add(path);
+                                        documentsOriginalPathsArray.add(originalPath);
+                                    }
+                                }
+                            }
                         } else {
-                            showDialogsList = true;
+                            error = true;
                         }
+                    } catch (Exception e) {
+                        FileLog.e("messenger", e);
+                        error = true;
                     }
-                }
-            }
+                    if (error) {
+                        Toast.makeText(this, "Unsupported content", Toast.LENGTH_SHORT).show();
+                    }
+                } else if (Intent.ACTION_VIEW.equals(intent.getAction())) {
+                    Uri data = intent.getData();
+                    if (data != null) {
+                        String scheme = data.getScheme();
+                        if (scheme != null) {
+                            if ((scheme.equals("http") || scheme.equals("https"))) {
 
-            /*if (push_user_id != 0) {
-                Bundle args = new Bundle();
-                args.putInt("user_id", push_user_id);
-                if (mainFragmentsStack.isEmpty() || MessagesController.checkCanOpenChat(args, mainFragmentsStack.get(mainFragmentsStack.size() - 1))) {
-                    ChatActivity fragment = new ChatActivity(args);
-                    if (actionBarLayout.presentFragment(fragment, false, true, true)) {
-                        pushOpened = true;
-                    }
-                }
-            } else*/ if (push_chat_id != 0) {
-                Bundle args = new Bundle();
-                args.putInt("chat_id", push_chat_id);
-                //if (mainFragmentsStack.isEmpty() || MessagesController.checkCanOpenChat(args, mainFragmentsStack.get(mainFragmentsStack.size() - 1))) {
-                    ChatActivity fragment = new ChatActivity(args);
-                    if (actionBarLayout.presentFragment(fragment, false, true, true)) {
-                        pushOpened = true;
-                    }
-                //}
-            } else if (showDialogsList) {
-                if (!AndroidUtilities.isTablet()) {
-                    actionBarLayout.removeAllFragments();
-                } else {
-                    if (!layersActionBarLayout.fragmentsStack.isEmpty()) {
-                        for (int a = 0; a < layersActionBarLayout.fragmentsStack.size() - 1; a++) {
-                            layersActionBarLayout.removeFragmentFromStack(layersActionBarLayout.fragmentsStack.get(0));
-                            a--;
+                            }
                         }
-                        layersActionBarLayout.closeLastFragment(false);
                     }
                 }
-                pushOpened = false;
-                isNew = false;
-            }
-            else if (videoPath != null || photoPathsArray != null || sendingText != null || documentsPathsArray != null || contactsToSend != null || documentsUrisArray != null) {
-                if (!AndroidUtilities.isTablet()) {
-                    NotificationCenter.getInstance().postNotificationName(NotificationCenter.closeChats);
-                }
-                if (dialogId == 0) {
-                    Bundle args = new Bundle();
-                    args.putBoolean("onlySelect", true);
-                    args.putString("selectAlertString", LocaleController.getString("SendMessagesTo", R.string.SendMessagesTo));
-                    DialogsActivity fragment = new DialogsActivity(args);
-                    fragment.setDelegate(this);
-                    boolean removeLast;
-                    if (AndroidUtilities.isTablet()) {
-                        removeLast = layersActionBarLayout.fragmentsStack.size() > 0 && layersActionBarLayout.fragmentsStack.get(layersActionBarLayout.fragmentsStack.size() - 1) instanceof DialogsActivity;
+                else if (intent.getAction().startsWith("com.b44t.messenger.openchat")) {
+                    String temp = intent.getAction().substring(27);
+                    int chatId = 0;
+                    try {
+                        chatId = Integer.parseInt(temp, 10);
+                    } catch(Exception e) {
+                    }
+
+                    if (chatId != 0) {
+                        NotificationCenter.getInstance().postNotificationName(NotificationCenter.closeChats);
+                        push_chat_id = chatId;
                     } else {
-                        removeLast = actionBarLayout.fragmentsStack.size() > 1 && actionBarLayout.fragmentsStack.get(actionBarLayout.fragmentsStack.size() - 1) instanceof DialogsActivity;
+                        showDialogsList = true;
                     }
-                    actionBarLayout.presentFragment(fragment, removeLast, true, true);
+                }
+            }
+        }
+
+        /*if (push_user_id != 0) {
+            Bundle args = new Bundle();
+            args.putInt("user_id", push_user_id);
+            if (mainFragmentsStack.isEmpty() || MessagesController.checkCanOpenChat(args, mainFragmentsStack.get(mainFragmentsStack.size() - 1))) {
+                ChatActivity fragment = new ChatActivity(args);
+                if (actionBarLayout.presentFragment(fragment, false, true, true)) {
                     pushOpened = true;
-                    if (PhotoViewer.getInstance().isVisible()) {
-                        PhotoViewer.getInstance().closePhoto(false, true);
+                }
+            }
+        } else*/ if (push_chat_id != 0) {
+            Bundle args = new Bundle();
+            args.putInt("chat_id", push_chat_id);
+            //if (mainFragmentsStack.isEmpty() || MessagesController.checkCanOpenChat(args, mainFragmentsStack.get(mainFragmentsStack.size() - 1))) {
+                ChatActivity fragment = new ChatActivity(args);
+                if (actionBarLayout.presentFragment(fragment, false, true, true)) {
+                    pushOpened = true;
+                }
+            //}
+        } else if (showDialogsList) {
+            if (!AndroidUtilities.isTablet()) {
+                actionBarLayout.removeAllFragments();
+            } else {
+                if (!layersActionBarLayout.fragmentsStack.isEmpty()) {
+                    for (int a = 0; a < layersActionBarLayout.fragmentsStack.size() - 1; a++) {
+                        layersActionBarLayout.removeFragmentFromStack(layersActionBarLayout.fragmentsStack.get(0));
+                        a--;
                     }
+                    layersActionBarLayout.closeLastFragment(false);
+                }
+            }
+            pushOpened = false;
+            isNew = false;
+        }
+        else if (videoPath != null || photoPathsArray != null || sendingText != null || documentsPathsArray != null || contactsToSend != null || documentsUrisArray != null) {
+            if (!AndroidUtilities.isTablet()) {
+                NotificationCenter.getInstance().postNotificationName(NotificationCenter.closeChats);
+            }
+            if (dialogId == 0) {
+                Bundle args = new Bundle();
+                args.putBoolean("onlySelect", true);
+                args.putString("selectAlertString", LocaleController.getString("SendMessagesTo", R.string.SendMessagesTo));
+                DialogsActivity fragment = new DialogsActivity(args);
+                fragment.setDelegate(this);
+                boolean removeLast;
+                if (AndroidUtilities.isTablet()) {
+                    removeLast = layersActionBarLayout.fragmentsStack.size() > 0 && layersActionBarLayout.fragmentsStack.get(layersActionBarLayout.fragmentsStack.size() - 1) instanceof DialogsActivity;
+                } else {
+                    removeLast = actionBarLayout.fragmentsStack.size() > 1 && actionBarLayout.fragmentsStack.get(actionBarLayout.fragmentsStack.size() - 1) instanceof DialogsActivity;
+                }
+                actionBarLayout.presentFragment(fragment, removeLast, true, true);
+                pushOpened = true;
+                if (PhotoViewer.getInstance().isVisible()) {
+                    PhotoViewer.getInstance().closePhoto(false, true);
+                }
 
-                    drawerLayoutContainer.setAllowOpenDrawer(false, false);
-                    if (AndroidUtilities.isTablet()) {
-                        actionBarLayout.showLastFragment();
-                        rightActionBarLayout.showLastFragment();
-                    } else {
+                drawerLayoutContainer.setAllowOpenDrawer(false, false);
+                if (AndroidUtilities.isTablet()) {
+                    actionBarLayout.showLastFragment();
+                    rightActionBarLayout.showLastFragment();
+                } else {
+                    drawerLayoutContainer.setAllowOpenDrawer(true, false);
+                }
+            } else {
+                didSelectDialog(null, dialogId, false);
+            }
+        }
+
+        if (!pushOpened && !isNew) {
+            if (AndroidUtilities.isTablet()) {
+                    if (actionBarLayout.fragmentsStack.isEmpty()) {
+                        actionBarLayout.addFragmentToStack(new DialogsActivity(null));
                         drawerLayoutContainer.setAllowOpenDrawer(true, false);
                     }
-                } else {
-                    didSelectDialog(null, dialogId, false);
+            } else {
+                if (actionBarLayout.fragmentsStack.isEmpty()) {
+                        actionBarLayout.addFragmentToStack(new DialogsActivity(null));
+                        drawerLayoutContainer.setAllowOpenDrawer(true, false);
                 }
             }
-
-            if (!pushOpened && !isNew) {
-                if (AndroidUtilities.isTablet()) {
-                        if (actionBarLayout.fragmentsStack.isEmpty()) {
-                            actionBarLayout.addFragmentToStack(new DialogsActivity(null));
-                            drawerLayoutContainer.setAllowOpenDrawer(true, false);
-                        }
-                } else {
-                    if (actionBarLayout.fragmentsStack.isEmpty()) {
-                            actionBarLayout.addFragmentToStack(new DialogsActivity(null));
-                            drawerLayoutContainer.setAllowOpenDrawer(true, false);
-                    }
-                }
-                actionBarLayout.showLastFragment();
-                if (AndroidUtilities.isTablet()) {
-                    layersActionBarLayout.showLastFragment();
-                    rightActionBarLayout.showLastFragment();
-                }
+            actionBarLayout.showLastFragment();
+            if (AndroidUtilities.isTablet()) {
+                layersActionBarLayout.showLastFragment();
+                rightActionBarLayout.showLastFragment();
             }
-
-            intent.setAction(null);
-            return pushOpened;
         }
-        return false;
+
+        intent.setAction(null);
+        return pushOpened;
     }
 
     @Override
