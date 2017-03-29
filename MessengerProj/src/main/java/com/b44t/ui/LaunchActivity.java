@@ -133,26 +133,6 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
             }
         }
 
-        /*if (!UserConfig.isClientActivated()) {
-            Intent intent = getIntent();
-            if (intent != null && intent.getAction() != null && (Intent.ACTION_SEND.equals(intent.getAction()) || intent.getAction().equals(Intent.ACTION_SEND_MULTIPLE))) {
-                super.onCreate(savedInstanceState);
-                finish();
-                return;
-            }
-            if (intent != null && !intent.getBooleanExtra("fromIntro", false)) {
-                SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("logininfo2", MODE_PRIVATE);
-                Map<String, ?> state = preferences.getAll();
-                if (state.isEmpty()) {
-                    Intent intent2 = new Intent(this, IntroActivity.class);
-                    startActivity(intent2);
-                    super.onCreate(savedInstanceState);
-                    finish();
-                    return;
-                }
-            }
-        }*/
-
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setTheme(R.style.Theme_MessengerProj);
         getWindow().setBackgroundDrawableResource(R.drawable.transparent);
@@ -426,13 +406,7 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
             boolean allowOpen = true;
             if (AndroidUtilities.isTablet()) {
                 allowOpen = actionBarLayout.fragmentsStack.size() <= 1 && layersActionBarLayout.fragmentsStack.isEmpty();
-                /*if (layersActionBarLayout.fragmentsStack.size() == 1 && layersActionBarLayout.fragmentsStack.get(0) instanceof LoginActivity) {
-                    allowOpen = false;
-                }*/
             }
-            /*if (actionBarLayout.fragmentsStack.size() == 1 && actionBarLayout.fragmentsStack.get(0) instanceof LoginActivity) {
-                allowOpen = false;
-            }*/
             drawerLayoutContainer.setAllowOpenDrawer(allowOpen, false);
         }
 
@@ -498,7 +472,6 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
             boolean pushOpened = false;
 
             Integer push_chat_id = 0;
-            //Integer open_settings = 0;
             long dialogId = intent != null && intent.getExtras() != null ? intent.getExtras().getLong("dialogId", 0) : 0;
             boolean showDialogsList = false;
 
@@ -511,7 +484,7 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
             documentsUrisArray = null;
             contactsToSend = null;
 
-            if (/*UserConfig.isClientActivated() &&*/ (flags & Intent.FLAG_ACTIVITY_LAUNCHED_FROM_HISTORY) == 0) {
+            if ( (flags & Intent.FLAG_ACTIVITY_LAUNCHED_FROM_HISTORY) == 0) {
                 if (intent != null && intent.getAction() != null && !restore) {
                     if (Intent.ACTION_SEND.equals(intent.getAction())) {
                         boolean error = false;
@@ -758,118 +731,14 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                     } else if (Intent.ACTION_VIEW.equals(intent.getAction())) {
                         Uri data = intent.getData();
                         if (data != null) {
-                            /*String username = null;
-                            String group = null;
-                            String sticker = null;
-                            String botUser = null;
-                            String botChat = null;
-                            String message = null;
-                            Integer messageId = null;
-                            boolean hasUrl = false;*/
                             String scheme = data.getScheme();
                             if (scheme != null) {
                                 if ((scheme.equals("http") || scheme.equals("https"))) {
-                                    /*
-                                    String host = data.getHost().toLowerCase();
-                                    if (host.equals("t'gram.me") || host.equals("t'gram.dog")) {
-                                        String path = data.getPath();
-                                        if (path != null && path.length() > 1) {
-                                            path = path.substring(1);
-                                            if (path.startsWith("joinchat/")) {
-                                                group = path.replace("joinchat/", "");
-                                            } else if (path.startsWith("addstickers/")) {
-                                                sticker = path.replace("addstickers/", "");
-                                            } else if (path.startsWith("msg/") || path.startsWith("share/")) {
-                                                message = data.getQueryParameter("url");
-                                                if (message == null) {
-                                                    message = "";
-                                                }
-                                                if (data.getQueryParameter("text") != null) {
-                                                    if (message.length() > 0) {
-                                                        hasUrl = true;
-                                                        message += "\n";
-                                                    }
-                                                    message += data.getQueryParameter("text");
-                                                }
-                                            } else if (path.length() >= 1) {
-                                                List<String> segments = data.getPathSegments();
-                                                if (segments.size() > 0) {
-                                                    username = segments.get(0);
-                                                    if (segments.size() > 1) {
-                                                        messageId = Utilities.parseInt(segments.get(1));
-                                                        if (messageId == 0) {
-                                                            messageId = null;
-                                                        }
-                                                    }
-                                                }
-                                                botUser = data.getQueryParameter("start");
-                                                botChat = data.getQueryParameter("startgroup");
-                                            }
-                                        }
-                                    }
-                                    */
-                                } /* else if (scheme.equals("tg")) {
-                                    String url = data.toString();
-                                    if (url.startsWith("tg:resolve") || url.startsWith("tg://resolve")) {
-                                        url = url.replace("tg:resolve", "tg://telegram.org").replace("tg://resolve", "tg://telegram.org");
-                                        data = Uri.parse(url);
-                                        username = data.getQueryParameter("domain");
-                                        botUser = data.getQueryParameter("start");
-                                        botChat = data.getQueryParameter("startgroup");
-                                        messageId = Utilities.parseInt(data.getQueryParameter("post"));
-                                        if (messageId == 0) {
-                                            messageId = null;
-                                        }
-                                    } else if (url.startsWith("tg:join") || url.startsWith("tg://join")) {
-                                        url = url.replace("tg:join", "tg://telegram.org").replace("tg://join", "tg://telegram.org");
-                                        data = Uri.parse(url);
-                                        group = data.getQueryParameter("invite");
-                                    } else if (url.startsWith("tg:addstickers") || url.startsWith("tg://addstickers")) {
-                                        url = url.replace("tg:addstickers", "tg://telegram.org").replace("tg://addstickers", "tg://telegram.org");
-                                        data = Uri.parse(url);
-                                        sticker = data.getQueryParameter("set");
-                                    } else if (url.startsWith("tg:msg") || url.startsWith("tg://msg") || url.startsWith("tg://share") || url.startsWith("tg:share")) {
-                                        url = url.replace("tg:msg", "tg://telegram.org").replace("tg://msg", "tg://telegram.org").replace("tg://share", "tg://telegram.org").replace("tg:share", "tg://telegram.org");
-                                        data = Uri.parse(url);
-                                        message = data.getQueryParameter("url");
-                                        if (message == null) {
-                                            message = "";
-                                        }
-                                        if (data.getQueryParameter("text") != null) {
-                                            if (message.length() > 0) {
-                                                hasUrl = true;
-                                                message += "\n";
-                                            }
-                                            message += data.getQueryParameter("text");
-                                        }
-                                    }
 
-                                } */
-                            }
-                            /*
-                            if (username != null || group != null || sticker != null || message != null) {
-                                runLinkRequest(username, group, sticker, botUser, botChat, message, hasUrl, messageId, 0);
-                            } else {
-                                try {
-                                    Cursor cursor = getContentResolver().query(intent.getData(), null, null, null, null);
-                                    if (cursor != null) {
-                                        if (cursor.moveToFirst()) {
-                                            int userId = cursor.getInt(cursor.getColumnIndex("DATA4"));
-                                            NotificationCenter.getInstance().postNotificationName(NotificationCenter.closeChats);
-                                            push_user_id = userId;
-                                        }
-                                        cursor.close();
-                                    }
-                                } catch (Exception e) {
-                                    FileLog.e("messenger", e);
                                 }
                             }
-                            */
                         }
                     }
-                    /*else if (intent.getAction().equals("com.b44t.messenger.OPEN_ACCOUNT")) {
-                        open_settings = 1;
-                    } */
                     else if (intent.getAction().startsWith("com.b44t.messenger.openchat")) {
                         String temp = intent.getAction().substring(27);
                         int chatId = 0;
@@ -906,14 +775,7 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                         pushOpened = true;
                     }
                 //}
-            } /*else if (push_enc_id != 0) {
-                Bundle args = new Bundle();
-                args.putInt("enc_id", push_enc_id);
-                ChatActivity fragment = new ChatActivity(args);
-                if (actionBarLayout.presentFragment(fragment, false, true, true)) {
-                    pushOpened = true;
-                }
-            }*/ else if (showDialogsList) {
+            } else if (showDialogsList) {
                 if (!AndroidUtilities.isTablet()) {
                     actionBarLayout.removeAllFragments();
                 } else {
@@ -961,40 +823,17 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                     didSelectDialog(null, dialogId, false);
                 }
             }
-            /*else if (open_settings != 0) {
-                actionBarLayout.presentFragment(new SettingsActivity(), false, true, true);
-                if (AndroidUtilities.isTablet()) {
-                    actionBarLayout.showLastFragment();
-                    rightActionBarLayout.showLastFragment();
-                    drawerLayoutContainer.setAllowOpenDrawer(false, false);
-                } else {
-                    drawerLayoutContainer.setAllowOpenDrawer(true, false);
-                }
-                pushOpened = true;
-            }*/
 
             if (!pushOpened && !isNew) {
                 if (AndroidUtilities.isTablet()) {
-                    /*if (!UserConfig.isClientActivated()) {
-                        if (layersActionBarLayout.fragmentsStack.isEmpty()) {
-                            layersActionBarLayout.addFragmentToStack(new LoginActivity());
-                            drawerLayoutContainer.setAllowOpenDrawer(false, false);
-                        }
-                    } else*/ {
                         if (actionBarLayout.fragmentsStack.isEmpty()) {
                             actionBarLayout.addFragmentToStack(new DialogsActivity(null));
                             drawerLayoutContainer.setAllowOpenDrawer(true, false);
                         }
-                    }
                 } else {
                     if (actionBarLayout.fragmentsStack.isEmpty()) {
-                        /*if (!UserConfig.isClientActivated()) {
-                            actionBarLayout.addFragmentToStack(new LoginActivity());
-                            drawerLayoutContainer.setAllowOpenDrawer(false, false);
-                        } else*/ {
                             actionBarLayout.addFragmentToStack(new DialogsActivity(null));
                             drawerLayoutContainer.setAllowOpenDrawer(true, false);
-                        }
                     }
                 }
                 actionBarLayout.showLastFragment();
@@ -1595,7 +1434,7 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
     @Override
     public boolean needPresentFragment(BaseFragment fragment, boolean removeLast, boolean forceWithoutAnimation, ActionBarLayout layout) {
         if (AndroidUtilities.isTablet()) {
-            drawerLayoutContainer.setAllowOpenDrawer(!(false /*|| fragment instanceof CountrySelectActivity EDIT BY MR*/) && layersActionBarLayout.getVisibility() != View.VISIBLE, true);
+            drawerLayoutContainer.setAllowOpenDrawer(layersActionBarLayout.getVisibility() != View.VISIBLE, true);
             if (fragment instanceof DialogsActivity) {
                 DialogsActivity dialogsActivity = (DialogsActivity)fragment;
                 if (dialogsActivity.isMainDialogList() && layout != actionBarLayout) {
@@ -1664,19 +1503,13 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
             } else if (layout != layersActionBarLayout) {
                 layersActionBarLayout.setVisibility(View.VISIBLE);
                 drawerLayoutContainer.setAllowOpenDrawer(false, true);
-                /*if (fragment instanceof LoginActivity) {
-                    backgroundTablet.setVisibility(View.VISIBLE);
-                    shadowTabletSide.setVisibility(View.GONE);
-                    shadowTablet.setBackgroundColor(0x00000000);
-                } else*/ {
                     shadowTablet.setBackgroundColor(0x7F000000);
-                }
                 layersActionBarLayout.presentFragment(fragment, removeLast, forceWithoutAnimation, false);
                 return false;
             }
             return true;
         } else {
-            drawerLayoutContainer.setAllowOpenDrawer(!(false /*|| fragment instanceof CountrySelectActivity EDIT MY MR*/), false);
+            drawerLayoutContainer.setAllowOpenDrawer(true, false);
             return true;
         }
     }
@@ -1684,7 +1517,7 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
     @Override
     public boolean needAddFragmentToStack(BaseFragment fragment, ActionBarLayout layout) {
         if (AndroidUtilities.isTablet()) {
-            drawerLayoutContainer.setAllowOpenDrawer(!(false /*|| fragment instanceof CountrySelectActivity EDIT BY MR*/) && layersActionBarLayout.getVisibility() != View.VISIBLE, true);
+            drawerLayoutContainer.setAllowOpenDrawer(layersActionBarLayout.getVisibility() != View.VISIBLE, true);
             if (fragment instanceof DialogsActivity) {
                 DialogsActivity dialogsActivity = (DialogsActivity)fragment;
                 if (dialogsActivity.isMainDialogList() && layout != actionBarLayout) {
@@ -1729,19 +1562,13 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
             } else if (layout != layersActionBarLayout) {
                 layersActionBarLayout.setVisibility(View.VISIBLE);
                 drawerLayoutContainer.setAllowOpenDrawer(false, true);
-                /*if (fragment instanceof LoginActivity) {
-                    backgroundTablet.setVisibility(View.VISIBLE);
-                    shadowTabletSide.setVisibility(View.GONE);
-                    shadowTablet.setBackgroundColor(0x00000000);
-                } else*/ {
                     shadowTablet.setBackgroundColor(0x7F000000);
-                }
                 layersActionBarLayout.addFragmentToStack(fragment);
                 return false;
             }
             return true;
         } else {
-            drawerLayoutContainer.setAllowOpenDrawer(!(false /*|| fragment instanceof CountrySelectActivity EDIT BY MR*/), false);
+            drawerLayoutContainer.setAllowOpenDrawer(true, false);
             return true;
         }
     }
