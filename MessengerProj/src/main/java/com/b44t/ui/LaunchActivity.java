@@ -594,68 +594,61 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                                 text = textSequence.toString();
                             }
                         }
-                        if( text == null )
-                        {
-                            // added by MR, the Telegram-FOSS crashes on selecing an image in the gallery - why?
-                            Toast.makeText(this, LocaleController.getString("NotYetImplemented", R.string.NotYetImplemented), Toast.LENGTH_SHORT).show();
+                        String subject = intent.getStringExtra(Intent.EXTRA_SUBJECT);
+                        if (text != null && text.length() != 0) {
+                            if ((text.startsWith("http://") || text.startsWith("https://")) && subject != null && subject.length() != 0) {
+                                text = subject + "\n" + text;
+                            }
+                            sendingText = text;
+                        } else if (subject != null && subject.length() > 0) {
+                            sendingText = subject;
                         }
-                        else {
-                            String subject = intent.getStringExtra(Intent.EXTRA_SUBJECT);
-                            if (text != null && text.length() != 0) {
-                                if ((text.startsWith("http://") || text.startsWith("https://")) && subject != null && subject.length() != 0) {
-                                    text = subject + "\n" + text;
-                                }
-                                sendingText = text;
-                            } else if (subject != null && subject.length() > 0) {
-                                sendingText = subject;
-                            }
 
-                            Parcelable parcelable = intent.getParcelableExtra(Intent.EXTRA_STREAM);
-                            if (parcelable != null) {
-                                String path;
-                                if (!(parcelable instanceof Uri)) {
-                                    parcelable = Uri.parse(parcelable.toString());
-                                }
-                                Uri uri = (Uri) parcelable;
-                                if (uri != null) {
-                                    if (AndroidUtilities.isInternalUri(uri)) {
-                                        error = true;
-                                    }
-                                }
-                                if (!error) {
-                                    if (uri != null && (type != null && type.startsWith("image/") || uri.toString().toLowerCase().endsWith(".jpg"))) {
-                                        if (photoPathsArray == null) {
-                                            photoPathsArray = new ArrayList<>();
-                                        }
-                                        photoPathsArray.add(uri);
-                                    } else {
-                                        path = AndroidUtilities.getPath(uri);
-                                        if (path != null) {
-                                            if (path.startsWith("file:")) {
-                                                path = path.replace("file://", "");
-                                            }
-                                            if (type != null && type.startsWith("video/")) {
-                                                videoPath = path;
-                                            } else {
-                                                if (documentsPathsArray == null) {
-                                                    documentsPathsArray = new ArrayList<>();
-                                                    documentsOriginalPathsArray = new ArrayList<>();
-                                                }
-                                                documentsPathsArray.add(path);
-                                                documentsOriginalPathsArray.add(uri.toString());
-                                            }
-                                        } else {
-                                            if (documentsUrisArray == null) {
-                                                documentsUrisArray = new ArrayList<>();
-                                            }
-                                            documentsUrisArray.add(uri);
-                                            documentsMimeType = type;
-                                        }
-                                    }
-                                }
-                            } else if (sendingText == null) {
-                                error = true;
+                        Parcelable parcelable = intent.getParcelableExtra(Intent.EXTRA_STREAM);
+                        if (parcelable != null) {
+                            String path;
+                            if (!(parcelable instanceof Uri)) {
+                                parcelable = Uri.parse(parcelable.toString());
                             }
+                            Uri uri = (Uri) parcelable;
+                            if (uri != null) {
+                                if (AndroidUtilities.isInternalUri(uri)) {
+                                    error = true;
+                                }
+                            }
+                            if (!error) {
+                                if (uri != null && (type != null && type.startsWith("image/") || uri.toString().toLowerCase().endsWith(".jpg"))) {
+                                    if (photoPathsArray == null) {
+                                        photoPathsArray = new ArrayList<>();
+                                    }
+                                    photoPathsArray.add(uri);
+                                } else {
+                                    path = AndroidUtilities.getPath(uri);
+                                    if (path != null) {
+                                        if (path.startsWith("file:")) {
+                                            path = path.replace("file://", "");
+                                        }
+                                        if (type != null && type.startsWith("video/")) {
+                                            videoPath = path;
+                                        } else {
+                                            if (documentsPathsArray == null) {
+                                                documentsPathsArray = new ArrayList<>();
+                                                documentsOriginalPathsArray = new ArrayList<>();
+                                            }
+                                            documentsPathsArray.add(path);
+                                            documentsOriginalPathsArray.add(uri.toString());
+                                        }
+                                    } else {
+                                        if (documentsUrisArray == null) {
+                                            documentsUrisArray = new ArrayList<>();
+                                        }
+                                        documentsUrisArray.add(uri);
+                                        documentsMimeType = type;
+                                    }
+                                }
+                            }
+                        } else if (sendingText == null) {
+                            error = true;
                         }
                     }
                     if (error) {
