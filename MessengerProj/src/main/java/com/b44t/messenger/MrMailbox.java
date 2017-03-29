@@ -35,6 +35,8 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.util.Log;
 
+import com.b44t.ui.Components.ForegroundDetector;
+
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.InputStream;
@@ -277,7 +279,9 @@ public class MrMailbox {
                     public void run() {
                         synchronized (m_lastErrorLock) {
                             if( m_showNextErrorAsToast ) {
-                                AndroidUtilities.showHint(ApplicationLoader.applicationContext, m_lastErrorString);
+                                if(ForegroundDetector.getInstance().isForeground()) {
+                                    AndroidUtilities.showHint(ApplicationLoader.applicationContext, m_lastErrorString);
+                                }
                             }
                             m_showNextErrorAsToast = true;
                         }
