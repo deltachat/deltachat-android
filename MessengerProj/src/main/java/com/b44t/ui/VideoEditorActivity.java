@@ -38,7 +38,6 @@ import android.view.View;
 import android.view.ViewTreeObserver;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.b44t.messenger.VideoEditedInfo;
 import com.coremedia.iso.IsoFile;
@@ -52,7 +51,6 @@ import com.googlecode.mp4parser.util.Matrix;
 import com.googlecode.mp4parser.util.Path;
 
 import com.b44t.messenger.AndroidUtilities;
-import com.b44t.messenger.LocaleController;
 import com.b44t.messenger.MediaController;
 import com.b44t.messenger.NotificationCenter;
 import com.b44t.messenger.ApplicationLoader;
@@ -75,14 +73,10 @@ public class VideoEditorActivity extends BaseFragment implements TextureView.Sur
     private MediaPlayer videoPlayer = null;
     private VideoTimelineView videoTimelineView = null;
     private View videoContainerView = null;
-    //private TextView originalSizeTextView = null;
-    //private TextView editedSizeTextView = null;
-    //private View textContainerView = null;
     private ImageView playButton = null;
     private VideoSeekBarView videoSeekBarView = null;
     private TextureView textureView = null;
     private View controlView = null;
-    //private CheckBox compressVideo = null;
     private boolean playerPrepared = false;
 
     private String videoPath = null;
@@ -107,7 +101,6 @@ public class VideoEditorActivity extends BaseFragment implements TextureView.Sur
     private long videoFramesSize = 0;
     private int estimatedSize = 0;
     private long esimatedDuration = 0;
-    private long originalSize = 0;
 
     public interface VideoEditorActivityDelegate {
         void didFinishEditVideo(VideoEditedInfo vei, long estimatedSize, long estimatedDuration);
@@ -257,22 +250,18 @@ public class VideoEditorActivity extends BaseFragment implements TextureView.Sur
                         }
                     }
                     if (delegate != null) {
-                        /*if (compressVideo.getVisibility() == View.GONE || compressVideo.getVisibility() == View.VISIBLE && !compressVideo.isChecked()) {
-                            delegate.didFinishEditVideo(videoPath, startTime, endTime, originalWidth, originalHeight, rotationValue, originalWidth, originalHeight, originalBitrate, estimatedSize, esimatedDuration);
-                        } else*/ {
-                            VideoEditedInfo vei = new VideoEditedInfo();
-                            vei.originalPath    = videoPath;
-                            vei.startTime       = startTime;
-                            vei.endTime         = endTime;
-                            vei.rotationValue   = rotationValue;
-                            vei.originalWidth   = originalWidth;
-                            vei.originalHeight  = originalHeight;
-                            vei.originalBitrate = originalBitrate;
-                            vei.resultWidth     = resultWidth;
-                            vei.resultHeight    = resultHeight;
-                            vei.resultBitrate   = resultBitrate;
-                            delegate.didFinishEditVideo(vei, estimatedSize, esimatedDuration);
-                        }
+                        VideoEditedInfo vei = new VideoEditedInfo();
+                        vei.originalPath    = videoPath;
+                        vei.startTime       = startTime;
+                        vei.endTime         = endTime;
+                        vei.rotationValue   = rotationValue;
+                        vei.originalWidth   = originalWidth;
+                        vei.originalHeight  = originalHeight;
+                        vei.originalBitrate = originalBitrate;
+                        vei.resultWidth     = resultWidth;
+                        vei.resultHeight    = resultHeight;
+                        vei.resultBitrate   = resultBitrate;
+                        delegate.didFinishEditVideo(vei, estimatedSize, esimatedDuration);
                     }
                     finishFragment();
                 }
@@ -283,58 +272,8 @@ public class VideoEditorActivity extends BaseFragment implements TextureView.Sur
         menu.addItemWithWidth(1, R.drawable.ic_done, AndroidUtilities.dp(56));
 
         fragmentView = getParentActivity().getLayoutInflater().inflate(R.layout.video_editor_layout, null, false);
-        //originalSizeTextView = (TextView) fragmentView.findViewById(R.id.original_size);
-        //editedSizeTextView = (TextView) fragmentView.findViewById(R.id.edited_size);
         videoContainerView = fragmentView.findViewById(R.id.video_container);
-        //textContainerView = fragmentView.findViewById(R.id.info_container);
         controlView = fragmentView.findViewById(R.id.control_layout);
-        /*compressVideo = (CheckBox) fragmentView.findViewById(R.id.compress_video);
-        compressVideo.setText(LocaleController.getString("CompressVideo", R.string.CompressVideo));
-        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("mainconfig", Activity.MODE_PRIVATE);
-        compressVideo.setVisibility(originalHeight != resultHeight || originalWidth != resultWidth ? View.VISIBLE : View.GONE);
-        compressVideo.setChecked(preferences.getBoolean("compress_video", true));
-        compressVideo.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("mainconfig", Activity.MODE_PRIVATE);
-                SharedPreferences.Editor editor = preferences.edit();
-                editor.putBoolean("compress_video", isChecked);
-                editor.apply();
-                updateVideoEditedInfo();
-            }
-        });*/
-
-        if (Build.VERSION.SDK_INT < 18) {
-            try {
-                MediaCodecInfo codecInfo = MediaController.selectCodec(MediaController.MIME_TYPE);
-                if (codecInfo == null) {
-                    //compressVideo.setVisibility(View.GONE);
-                } else {
-                    String name = codecInfo.getName();
-                    if (name.equals("OMX.google.h264.encoder") ||
-                            name.equals("OMX.ST.VFM.H264Enc") ||
-                            name.equals("OMX.Exynos.avc.enc") ||
-                            name.equals("OMX.MARVELL.VIDEO.HW.CODA7542ENCODER") ||
-                            name.equals("OMX.MARVELL.VIDEO.H264ENCODER") ||
-                            name.equals("OMX.k3.video.encoder.avc") || //fix this later
-                            name.equals("OMX.TI.DUCATI1.VIDEO.H264E")) { //fix this later
-                        //compressVideo.setVisibility(View.GONE);
-                    } else {
-                        if (MediaController.selectColorFormat(codecInfo, MediaController.MIME_TYPE) == 0) {
-                            //compressVideo.setVisibility(View.GONE);
-                        }
-                    }
-                }
-            } catch (Exception e) {
-                //compressVideo.setVisibility(View.GONE);
-                FileLog.e("messenger", e);
-            }
-        }
-
-        /*TextView titleTextView = (TextView) fragmentView.findViewById(R.id.original_title);
-        titleTextView.setText(LocaleController.getString("OriginalVideo", R.string.OriginalVideo));
-        titleTextView = (TextView) fragmentView.findViewById(R.id.edited_title);
-        titleTextView.setText(LocaleController.getString("EditedVideo", R.string.EditedVideo));*/
 
         videoTimelineView = (VideoTimelineView) fragmentView.findViewById(R.id.video_timeline_view);
         videoTimelineView.setVideoPath(videoPath);
@@ -419,7 +358,6 @@ public class VideoEditorActivity extends BaseFragment implements TextureView.Sur
         textureView = (TextureView) fragmentView.findViewById(R.id.video_view);
         textureView.setSurfaceTextureListener(this);
 
-        //updateVideoOriginalInfo();
         updateVideoEditedInfo();
 
         return fragmentView;
@@ -501,57 +439,6 @@ public class VideoEditorActivity extends BaseFragment implements TextureView.Sur
         }
     }
 
-    /*private void updateVideoOriginalInfo() {
-        if (originalSizeTextView == null) {
-            return;
-        }
-        int width = rotationValue == 90 || rotationValue == 270 ? originalHeight : originalWidth;
-        int height = rotationValue == 90 || rotationValue == 270 ? originalWidth : originalHeight;
-        String videoDimension = String.format("%dx%d", width, height);
-        long duration = (long) Math.ceil(videoDuration);
-        int minutes = (int) (duration / 1000 / 60);
-        int seconds = (int) Math.ceil(duration / 1000) - minutes * 60;
-        String videoTimeSize = String.format("%d:%02d, %s", minutes, seconds, AndroidUtilities.formatFileSize(originalSize));
-        originalSizeTextView.setText(String.format("%s, %s", videoDimension, videoTimeSize));
-    }*/
-
-    private void updateVideoEditedInfo() {
-        if (videoTimelineView == null) {
-            return;
-        }
-        esimatedDuration = (long) Math.ceil((videoTimelineView.getRightProgress() - videoTimelineView.getLeftProgress()) * videoDuration);
-
-        /*int width;
-        int height;
-
-        if (compressVideo.getVisibility() == View.GONE || compressVideo.getVisibility() == View.VISIBLE && !compressVideo.isChecked()) {
-            width = rotationValue == 90 || rotationValue == 270 ? originalHeight : originalWidth;
-            height = rotationValue == 90 || rotationValue == 270 ? originalWidth : originalHeight;
-            estimatedSize = (int) (originalSize * ((float) esimatedDuration / videoDuration));
-        } else*/ {
-            //width = rotationValue == 90 || rotationValue == 270 ? resultHeight : resultWidth;
-            //height = rotationValue == 90 || rotationValue == 270 ? resultWidth : resultHeight;
-            estimatedSize = calculateEstimatedSize((float) esimatedDuration / videoDuration);
-        }
-
-        if (videoTimelineView.getLeftProgress() == 0) {
-            startTime = -1;
-        } else {
-            startTime = (long) (videoTimelineView.getLeftProgress() * videoDuration) * 1000;
-        }
-        if (videoTimelineView.getRightProgress() == 1) {
-            endTime = -1;
-        } else {
-            endTime = (long) (videoTimelineView.getRightProgress() * videoDuration) * 1000;
-        }
-
-        //String videoDimension = String.format("%dx%d", width, height);
-        int minutes = (int) (esimatedDuration / 1000 / 60);
-        int seconds = (int) Math.ceil(esimatedDuration / 1000) - minutes * 60;
-        String videoTimeSize = String.format("%d:%02d, ~%s", minutes, seconds, AndroidUtilities.formatFileSize(estimatedSize));
-        actionBar.setSubtitle(videoTimeSize);
-    }
-
     private void fixVideoSize() {
         if (fragmentView == null || getParentActivity() == null) {
             return;
@@ -567,19 +454,17 @@ public class VideoEditorActivity extends BaseFragment implements TextureView.Sur
         int height;
         if (AndroidUtilities.isTablet()) {
             width = AndroidUtilities.dp(490);
-            height = viewHeight - AndroidUtilities.dp(276 + (/*compressVideo.getVisibility() == View.VISIBLE ? 20 :*/ 0));
+            height = viewHeight - AndroidUtilities.dp(276);
         } else {
             if (getParentActivity().getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
                 width = AndroidUtilities.displaySize.x / 3 - AndroidUtilities.dp(24);
                 height = viewHeight - AndroidUtilities.dp(32);
             } else {
                 width = AndroidUtilities.displaySize.x;
-                height = viewHeight - AndroidUtilities.dp(276 + (/*compressVideo.getVisibility() == View.VISIBLE ? 20 :*/ 0));
+                height = viewHeight - AndroidUtilities.dp(276);
             }
         }
 
-        int aWidth = width;
-        int aHeight = height;
         int vwidth = rotationValue == 90 || rotationValue == 270 ? originalHeight : originalWidth;
         int vheight = rotationValue == 90 || rotationValue == 270 ? originalWidth : originalHeight;
         float wr = (float) width / (float) vwidth;
@@ -625,14 +510,14 @@ public class VideoEditorActivity extends BaseFragment implements TextureView.Sur
         } else {
             FrameLayout.LayoutParams layoutParams = (FrameLayout.LayoutParams) videoContainerView.getLayoutParams();
             layoutParams.topMargin = AndroidUtilities.dp(16);
-            layoutParams.bottomMargin = AndroidUtilities.dp(260 + (/*compressVideo.getVisibility() == View.VISIBLE ? 20 :*/ 0));
+            layoutParams.bottomMargin = AndroidUtilities.dp(260);
             layoutParams.width = LayoutHelper.MATCH_PARENT;
             videoContainerView.setLayoutParams(layoutParams);
 
             layoutParams = (FrameLayout.LayoutParams) controlView.getLayoutParams();
             layoutParams.topMargin = 0;
             layoutParams.leftMargin = 0;
-            layoutParams.bottomMargin = AndroidUtilities.dp(150 + (/*compressVideo.getVisibility() == View.VISIBLE ? 20 :*/ 0));
+            layoutParams.bottomMargin = AndroidUtilities.dp(150);
             layoutParams.width = LayoutHelper.MATCH_PARENT;
             layoutParams.gravity = Gravity.BOTTOM;
             controlView.setLayoutParams(layoutParams);
@@ -706,11 +591,45 @@ public class VideoEditorActivity extends BaseFragment implements TextureView.Sur
         this.delegate = delegate;
     }
 
-    private boolean processOpenVideo() {
-        try {
-            File file = new File(videoPath);
-            originalSize = file.length();
+    // open original
+    //==============================================================================================
 
+    private boolean processOpenVideo()
+    {
+        // check, if we can compress videos in common
+        boolean canCompress = true;
+        if (Build.VERSION.SDK_INT < 18 /*=4.3 Jelly Bean*/) {
+            try {
+                MediaCodecInfo codecInfo = MediaController.selectCodec(MediaController.MIME_TYPE);
+                if (codecInfo == null) {
+                    canCompress = false;
+                } else {
+                    String name = codecInfo.getName();
+                    if (name.equals("OMX.google.h264.encoder") ||
+                            name.equals("OMX.ST.VFM.H264Enc") ||
+                            name.equals("OMX.Exynos.avc.enc") ||
+                            name.equals("OMX.MARVELL.VIDEO.HW.CODA7542ENCODER") ||
+                            name.equals("OMX.MARVELL.VIDEO.H264ENCODER") ||
+                            name.equals("OMX.k3.video.encoder.avc") || //fix this later
+                            name.equals("OMX.TI.DUCATI1.VIDEO.H264E")) { //fix this later
+                        canCompress = false;
+                    } else {
+                        if (MediaController.selectColorFormat(codecInfo, MediaController.MIME_TYPE) == 0) {
+                            canCompress = false;
+                        }
+                    }
+                }
+            } catch (Exception e) {
+                canCompress = false;
+            }
+        }
+        if( !canCompress ) {
+            AndroidUtilities.showHint(ApplicationLoader.applicationContext, "Can't compress."); // should not happen
+            return false;
+        }
+
+        // load information for the given video
+        try {
             IsoFile isoFile = new IsoFile(videoPath);
             List<Box> boxes = Path.getPaths(isoFile, "/moov/trak/");
             TrackHeaderBox trackHeaderBox = null;
@@ -796,15 +715,42 @@ public class VideoEditorActivity extends BaseFragment implements TextureView.Sur
 
         videoDuration *= 1000;
 
-        //updateVideoOriginalInfo();
         updateVideoEditedInfo();
 
         return true;
     }
 
+    // calculate result
+    //==============================================================================================
+
     private int calculateEstimatedSize(float timeDelta) {
         int size = (int) ((audioFramesSize + videoFramesSize) * timeDelta);
         size += size / (32 * 1024) * 16;
         return size;
+    }
+
+    private void updateVideoEditedInfo() {
+        if (videoTimelineView == null) {
+            return;
+        }
+        esimatedDuration = (long) Math.ceil((videoTimelineView.getRightProgress() - videoTimelineView.getLeftProgress()) * videoDuration);
+
+        estimatedSize = calculateEstimatedSize((float) esimatedDuration / videoDuration);
+
+        if (videoTimelineView.getLeftProgress() == 0) {
+            startTime = -1;
+        } else {
+            startTime = (long) (videoTimelineView.getLeftProgress() * videoDuration) * 1000;
+        }
+        if (videoTimelineView.getRightProgress() == 1) {
+            endTime = -1;
+        } else {
+            endTime = (long) (videoTimelineView.getRightProgress() * videoDuration) * 1000;
+        }
+
+        int minutes = (int) (esimatedDuration / 1000 / 60);
+        int seconds = (int) Math.ceil(esimatedDuration / 1000) - minutes * 60;
+        String videoTimeSize = String.format("%d:%02d, ~%s", minutes, seconds, AndroidUtilities.formatFileSize(estimatedSize));
+        actionBar.setSubtitle(videoTimeSize);
     }
 }
