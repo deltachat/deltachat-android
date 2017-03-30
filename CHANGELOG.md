@@ -6,6 +6,7 @@
 * Offer to mailto:-link-support to other apps
 * Ignore implausible sending time of incoming messages; use the receive time in these rare cases
 * Show errors only when Delta Chat is in foreground
+* Dynamically adapt video bitrate for longer videos to an attachment-size of max. 25 MB
 
 ## v0.1.23
 2017-03-28

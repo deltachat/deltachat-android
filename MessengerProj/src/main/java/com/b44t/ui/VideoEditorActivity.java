@@ -39,6 +39,7 @@ import android.view.ViewTreeObserver;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 
+import com.b44t.messenger.LocaleController;
 import com.b44t.messenger.VideoEditedInfo;
 import com.coremedia.iso.IsoFile;
 import com.coremedia.iso.boxes.Box;
@@ -101,6 +102,8 @@ public class VideoEditorActivity extends BaseFragment implements TextureView.Sur
     private int resultBitrate = 0;
     private long resultDurationMs = 0;
     private int estimatedBytes = 0;
+
+    final long MAX_BYTES = (24*1024*1024)/4*3; // 25 MB minus 1 MB header-overhead minus base64-overhead
 
     public interface VideoEditorActivityDelegate {
         void didFinishEditVideo(VideoEditedInfo vei, long estimatedSize, long estimatedDuration);
@@ -249,6 +252,12 @@ public class VideoEditorActivity extends BaseFragment implements TextureView.Sur
                             }
                         }
                     }
+
+                    if(estimatedBytes>MAX_BYTES) {
+                        AndroidUtilities.showHint(getParentActivity(), LocaleController.formatString("", R.string.PleaseCutVideoToMaxSize, AndroidUtilities.formatFileSize(MAX_BYTES)));
+                        return;
+                    }
+
                     if (delegate != null) {
                         VideoEditedInfo vei = new VideoEditedInfo();
                         vei.originalPath    = videoPath;
@@ -695,7 +704,6 @@ public class VideoEditorActivity extends BaseFragment implements TextureView.Sur
     private int calculateEstimatedSize(float timeDelta) {
         long videoFramesSize = (long) (resultBitrate / 8 * (originalDurationMs /1000));
         int size = (int) ((originalAudioBytes + videoFramesSize) * timeDelta);
-        size += size / (32 * 1024) * 16;
         return size;
     }
 
@@ -717,27 +725,31 @@ public class VideoEditorActivity extends BaseFragment implements TextureView.Sur
             endTimeMs = (long) (videoTimelineView.getRightProgress() * originalDurationMs) * 1000;
         }
 
+        // calculate video bitrate
+        long maxVideoBytes = MAX_BYTES  -  originalAudioBytes  -  resultDurationMs/*10 kbps codec overhead*/;
+        resultBitrate = (int)(maxVideoBytes/(resultDurationMs/1000)*8);
 
-        resultWidth = originalWidth;
-        resultHeight = originalHeight;
-        resultBitrate = originalVideoBitrate;
-        if (resultWidth > 640 || resultHeight > 640) {
-            float scale = resultWidth > resultHeight ? 640.0f / resultWidth : 640.0f / resultHeight;
-            resultWidth *= scale;
-            resultHeight *= scale;
-            if (resultBitrate != 0) {
-                resultBitrate *= Math.max(0.5f, scale);
-            }
+        if( resultBitrate < 200000) {
+            resultBitrate = 200000;
         }
-
-        if (resultBitrate > 500000) {
+        else if (resultBitrate > 500000) {
             resultBitrate = 500000; // ~ 3.7 MB/minute, plus Audio
         }
 
+        // get video dimensions
+        int maxSide = resultBitrate>400000? 640 : 480;
+        resultWidth = originalWidth;
+        resultHeight = originalHeight;
+        if (resultWidth > maxSide || resultHeight > maxSide) {
+            float scale = resultWidth>resultHeight? (float)maxSide/resultWidth : (float)maxSide/resultHeight;
+            resultWidth *= scale;
+            resultHeight *= scale;
+        }
+
+        // calulate bytes
         estimatedBytes = calculateEstimatedSize((float) resultDurationMs / originalDurationMs);
 
-
-
+        // update title
         int minutes = (int) (resultDurationMs / 1000 / 60);
         int seconds = (int) Math.ceil(resultDurationMs / 1000) - minutes * 60;
         String videoTimeSize = String.format("%d:%02d, ~%s", minutes, seconds, AndroidUtilities.formatFileSize(estimatedBytes));

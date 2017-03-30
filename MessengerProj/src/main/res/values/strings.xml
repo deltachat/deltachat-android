@@ -432,5 +432,6 @@
     <string name="Error">Error: %1$s</string>
     <string name="NoNetwork">Network not available.</string>
     <string name="Audio">Audio</string>
+    <string name="PleaseCutVideoToMaxSize">Please cut video to a size of max. %1$s.</string>
 
 </resources>
