@@ -78,7 +78,6 @@ import com.b44t.messenger.FileLog;
 import com.b44t.messenger.MessageObject;
 import com.b44t.messenger.NotificationCenter;
 import com.b44t.messenger.R;
-import com.b44t.messenger.UserConfig;
 import com.b44t.ui.ActionBar.BackDrawable;
 import com.b44t.ui.ActionBar.SimpleTextView;
 import com.b44t.messenger.AnimatorListenerAdapterProxy;

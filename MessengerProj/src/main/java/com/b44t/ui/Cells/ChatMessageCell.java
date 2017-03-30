@@ -2059,7 +2059,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                     buttonState = BS1_CLICK_TO_PAUSE;
                     invalidate();
                 }
-            } else {
+            } /* else {
                 if (currentMessageObject.type == MessageObject.MO_TYPE1_PHOTO) {
                     photoImage.setImage(currentPhotoObject.location, currentPhotoFilter, currentPhotoObjectThumb != null ? currentPhotoObjectThumb.location : null, currentPhotoFilter, currentPhotoObject.size, null, false);
                 } else if (currentMessageObject.type == MessageObject.MO_TYPE8_GIF) {
@@ -2074,7 +2074,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                 }
                 buttonState = BS1_CLICK_TO_PAUSE;
                 invalidate();
-            }
+            }*/
         } else if (buttonState == BS1_CLICK_TO_PAUSE) {
             if (documentAttachType == DOCUMENT_ATTACH_TYPE_VOICE || documentAttachType == DOCUMENT_ATTACH_TYPE_MUSIC) {
                 MediaController.getInstance().stopAudio(); // a click on message-pause should do the opposite of message-play - including clearing the status bar (a "real" pause can be done via the status bar)
