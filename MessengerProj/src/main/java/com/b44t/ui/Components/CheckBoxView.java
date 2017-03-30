@@ -35,7 +35,7 @@ import android.view.View;
 
 import com.b44t.messenger.AndroidUtilities;
 
-public class CheckBox extends View {
+public class CheckBoxView extends View {
 
     private Drawable checkDrawable;
     private static Paint paint;
@@ -63,7 +63,7 @@ public class CheckBox extends View {
 
     private final static float progressBounceDiff = 0.2f;
 
-    public CheckBox(Context context, int resId) {
+    public CheckBoxView(Context context, int resId) {
         super(context);
         if (paint == null) {
             paint = new Paint(Paint.ANTI_ALIAS_FLAG);

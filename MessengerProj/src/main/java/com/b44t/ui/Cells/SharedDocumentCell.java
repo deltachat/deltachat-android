@@ -24,7 +24,6 @@
 package com.b44t.ui.Cells;
 
 import android.content.Context;
-import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.text.TextUtils;
 import android.util.TypedValue;
@@ -36,10 +35,9 @@ import android.widget.TextView;
 import com.b44t.messenger.AndroidUtilities;
 import com.b44t.messenger.ImageReceiver;
 import com.b44t.messenger.LocaleController;
-import com.b44t.messenger.MediaController;
 import com.b44t.messenger.R;
 import com.b44t.ui.Components.BackupImageView;
-import com.b44t.ui.Components.CheckBox;
+import com.b44t.ui.Components.CheckBoxView;
 import com.b44t.ui.Components.LayoutHelper;
 
 public class SharedDocumentCell extends FrameLayout {
@@ -48,7 +46,7 @@ public class SharedDocumentCell extends FrameLayout {
     private BackupImageView thumbImageView;
     private TextView nameTextView;
     private TextView dateTextView;
-    private CheckBox checkBox;
+    private CheckBoxView checkBox;
 
     private static Paint paint;
 
@@ -93,7 +91,7 @@ public class SharedDocumentCell extends FrameLayout {
         dateTextView.setGravity((LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT) | Gravity.CENTER_VERTICAL);
         addView(dateTextView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, (LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT) | Gravity.TOP, LocaleController.isRTL ? 8 : 72, 30, LocaleController.isRTL ? 72 : 8, 0));
 
-        checkBox = new CheckBox(context, R.drawable.round_check2);
+        checkBox = new CheckBoxView(context, R.drawable.round_check2);
         checkBox.setVisibility(INVISIBLE);
         addView(checkBox, LayoutHelper.createFrame(22, 22, (LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT) | Gravity.TOP, LocaleController.isRTL ? 0 : 34, 30, LocaleController.isRTL ? 34 : 0, 0));
     }

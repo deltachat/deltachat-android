@@ -24,7 +24,6 @@
 package com.b44t.ui.Cells;
 
 import android.content.Context;
-import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.text.TextUtils;
 import android.util.TypedValue;
@@ -39,10 +38,8 @@ import com.b44t.messenger.LocaleController;
 import com.b44t.messenger.MediaController;
 import com.b44t.messenger.MessageObject;
 import com.b44t.messenger.R;
-import com.b44t.ui.Components.CheckBox;
+import com.b44t.ui.Components.CheckBoxView;
 import com.b44t.ui.Components.LayoutHelper;
-
-import java.util.ArrayList;
 
 public class AudioCell extends FrameLayout {
 
@@ -50,7 +47,7 @@ public class AudioCell extends FrameLayout {
     private TextView titleTextView;
     private TextView authorTextView;
     private TextView timeTextView;
-    private CheckBox checkBox;
+    private CheckBoxView checkBox;
 
     private MediaController.AudioEntry audioEntry;
     private static Paint paint;
@@ -122,7 +119,7 @@ public class AudioCell extends FrameLayout {
         timeTextView.setGravity((LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT) | Gravity.TOP);
         addView(timeTextView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, (LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT) | Gravity.TOP, LocaleController.isRTL ? 50 : 72, 44, LocaleController.isRTL ? 72 : 50, 0));
 
-        checkBox = new CheckBox(context, R.drawable.round_check2);
+        checkBox = new CheckBoxView(context, R.drawable.round_check2);
         checkBox.setVisibility(VISIBLE);
         checkBox.setColor(0xff29b6f7);
         addView(checkBox, LayoutHelper.createFrame(

@@ -34,14 +34,14 @@ import com.b44t.messenger.AndroidUtilities;
 import com.b44t.messenger.AnimatorListenerAdapterProxy;
 import com.b44t.messenger.R;
 import com.b44t.ui.Components.BackupImageView;
-import com.b44t.ui.Components.CheckBox;
+import com.b44t.ui.Components.CheckBoxView;
 import com.b44t.ui.Components.LayoutHelper;
 
 public class PhotoPickerPhotoCell extends FrameLayout {
 
     public BackupImageView photoImage;
     public FrameLayout checkFrame;
-    public CheckBox checkBox;
+    public CheckBoxView checkBox;
     private AnimatorSet animator;
     public int itemWidth;
 
@@ -54,7 +54,7 @@ public class PhotoPickerPhotoCell extends FrameLayout {
         checkFrame = new FrameLayout(context);
         addView(checkFrame, LayoutHelper.createFrame(42, 42, Gravity.RIGHT | Gravity.TOP));
 
-        checkBox = new CheckBox(context, R.drawable.checkbig);
+        checkBox = new CheckBoxView(context, R.drawable.checkbig);
         checkBox.setSize(30);
         checkBox.setCheckOffset(AndroidUtilities.dp(1));
         checkBox.setDrawBackground(true);

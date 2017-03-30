@@ -1,5 +1,12 @@
 # Delta Chat Changelog
 
+## UNRELEASED
+
+* Share images and documents from other apps to Delta Chat
+* Offer to mailto:-link-support to other apps
+* Ignore implausible sending time of incoming messages; use the receive time in these rare cases
+* Show errors only when Delta Chat is in foreground
+
 ## v0.1.23
 2017-03-28
 

@@ -33,10 +33,9 @@ import com.b44t.messenger.ContactsController;
 import com.b44t.messenger.LocaleController;
 import com.b44t.messenger.MrContact;
 import com.b44t.messenger.R;
-import com.b44t.messenger.TLRPC;
 import com.b44t.ui.Components.AvatarDrawable;
 import com.b44t.ui.Components.BackupImageView;
-import com.b44t.ui.Components.CheckBox;
+import com.b44t.ui.Components.CheckBoxView;
 import com.b44t.ui.Components.LayoutHelper;
 import com.b44t.ui.ActionBar.SimpleTextView;
 
@@ -46,7 +45,7 @@ public class UserCell extends FrameLayout {
     private SimpleTextView nameTextView;
     private SimpleTextView statusTextView;
     private ImageView imageView;
-    private CheckBox checkBox;
+    private CheckBoxView checkBox;
 
     private AvatarDrawable avatarDrawable;
     private MrContact m_mrContact;
@@ -83,7 +82,7 @@ public class UserCell extends FrameLayout {
         addView(imageView, LayoutHelper.createFrame(LayoutParams.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, (LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT) | Gravity.CENTER_VERTICAL, LocaleController.isRTL ? 0 : 16, 0, LocaleController.isRTL ? 16 : 0, 0));
 
         if( useCheckboxes == 1 ) {
-            checkBox = new CheckBox(context, R.drawable.round_check2);
+            checkBox = new CheckBoxView(context, R.drawable.round_check2);
             checkBox.setVisibility(INVISIBLE);
             addView(checkBox, LayoutHelper.createFrame(22, 22, (LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT) | Gravity.TOP, LocaleController.isRTL ? 0 : 37 + padding, 38, LocaleController.isRTL ? 37 + padding : 0, 0));
         }

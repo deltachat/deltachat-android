@@ -31,17 +31,17 @@ import android.util.TypedValue;
 import android.view.Gravity;
 import android.widget.FrameLayout;
 import android.widget.TextView;
+import android.widget.CheckBox;
 
 import com.b44t.messenger.AndroidUtilities;
 import com.b44t.messenger.LocaleController;
 import com.b44t.ui.Components.LayoutHelper;
-import com.b44t.ui.Components.Switch;
 
 public class TextCheckCell extends FrameLayout {
 
     private TextView textView;
     private TextView valueTextView;
-    private Switch checkBox;
+    private CheckBox checkBox;
     private static Paint paint;
     private boolean needDivider;
     private boolean isMultiline;
@@ -76,7 +76,7 @@ public class TextCheckCell extends FrameLayout {
         valueTextView.setEllipsize(TextUtils.TruncateAt.END);
         addView(valueTextView, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, (LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT) | Gravity.TOP, LocaleController.isRTL ? 64 : 17, 35, LocaleController.isRTL ? 17 : 64, 0));
 
-        checkBox = new Switch(context);
+        checkBox = new CheckBox(context);
         checkBox.setDuplicateParentStateEnabled(false);
         checkBox.setFocusable(false);
         checkBox.setFocusableInTouchMode(false);

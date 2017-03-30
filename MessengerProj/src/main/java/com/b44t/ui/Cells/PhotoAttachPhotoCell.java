@@ -35,7 +35,7 @@ import com.b44t.messenger.AndroidUtilities;
 import com.b44t.messenger.MediaController;
 import com.b44t.messenger.R;
 import com.b44t.ui.Components.BackupImageView;
-import com.b44t.ui.Components.CheckBox;
+import com.b44t.ui.Components.CheckBoxView;
 import com.b44t.ui.Components.LayoutHelper;
 import com.b44t.ui.PhotoViewer;
 
@@ -43,7 +43,7 @@ public class PhotoAttachPhotoCell extends FrameLayout {
 
     private BackupImageView imageView;
     private FrameLayout checkFrame;
-    private CheckBox checkBox;
+    private CheckBoxView checkBox;
     private boolean isLast;
     private boolean pressed;
     private static Rect rect = new Rect();
@@ -63,7 +63,7 @@ public class PhotoAttachPhotoCell extends FrameLayout {
         checkFrame = new FrameLayout(context);
         addView(checkFrame, LayoutHelper.createFrame(42, 42, Gravity.LEFT | Gravity.TOP, 38, 0, 0, 0));
 
-        checkBox = new CheckBox(context, R.drawable.checkbig);
+        checkBox = new CheckBoxView(context, R.drawable.checkbig);
         checkBox.setSize(30);
         checkBox.setCheckOffset(AndroidUtilities.dp(1));
         checkBox.setDrawBackground(true);
@@ -85,7 +85,7 @@ public class PhotoAttachPhotoCell extends FrameLayout {
         return imageView;
     }
 
-    public CheckBox getCheckBox() {
+    public CheckBoxView getCheckBox() {
         return checkBox;
     }
 

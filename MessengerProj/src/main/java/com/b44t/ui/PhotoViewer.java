@@ -88,7 +88,7 @@ import com.b44t.ui.ActionBar.ActionBar;
 import com.b44t.ui.ActionBar.ActionBarMenu;
 import com.b44t.ui.ActionBar.ActionBarMenuItem;
 import com.b44t.ui.Components.AnimatedFileDrawable;
-import com.b44t.ui.Components.CheckBox;
+import com.b44t.ui.Components.CheckBoxView;
 import com.b44t.ui.Components.ClippingImageView;
 import com.b44t.messenger.ImageReceiver;
 import com.b44t.ui.Components.LayoutHelper;
@@ -130,7 +130,7 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
     private TextView dateTextView;
     private ActionBarMenuItem menuItem;
     private BackgroundDrawable backgroundDrawable = new BackgroundDrawable(0xff000000);
-    private CheckBox checkImageView;
+    private CheckBoxView checkImageView;
     private PickerBottomLayout pickerView;
     private PickerBottomLayout editorDoneLayout;
     private RadialProgressView radialProgressViews[] = new RadialProgressView[3];
@@ -1344,7 +1344,7 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
         WindowManager manager = (WindowManager) ApplicationLoader.applicationContext.getSystemService(Activity.WINDOW_SERVICE);
         int rotation = manager.getDefaultDisplay().getRotation();
 
-        checkImageView = new CheckBox(containerView.getContext(), R.drawable.selectphoto_large);
+        checkImageView = new CheckBoxView(containerView.getContext(), R.drawable.selectphoto_large);
         checkImageView.setDrawBackground(true);
         checkImageView.setSize(45);
         checkImageView.setCheckOffset(AndroidUtilities.dp(1));
