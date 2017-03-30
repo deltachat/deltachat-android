@@ -117,13 +117,8 @@ public class MrMailbox {
     public native static int    markseenMsg        (int msg_id);
     public native static int    markseenChat       (int chat_id);
 
-    public static int getChatIdByContactId (int contact_id) {
-        return MrMailboxGetChatIdByContactId(m_hMailbox, contact_id);
-    }
-
-    public static int createChatByContactId(int contact_id) {
-        return MrMailboxCreateChatByContactId(m_hMailbox, contact_id);
-    }
+    public native static int getChatIdByContactId (int contact_id);
+    public native static int createChatByContactId(int contact_id); // returns chat_id
 
     public native static int createGroupChat       (String name);
     public native static int isContactInChat       (int chat_id, int contact_id);
@@ -145,8 +140,6 @@ public class MrMailbox {
 
     private native static long    MrMailboxGetChatlist       (long hMailbox, String query); // returns hChatlist which must be unref'd after usage
     private native static long    MrMailboxGetChat           (long hMailbox, int chat_id); // return hChat which must be unref'd after usage
-    private native static int     MrMailboxGetChatIdByContactId (long hMailbox, int contact_id);
-    private native static int     MrMailboxCreateChatByContactId(long hMailbox, int contact_id); // returns chat_id
 
 
     // msgs

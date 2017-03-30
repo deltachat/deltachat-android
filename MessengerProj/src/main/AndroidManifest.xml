@@ -99,22 +99,13 @@
                 <category android:name="android.intent.category.DEFAULT"/>
                 <data android:mimeType="vnd.android.cursor.item/vnd.com.b44t.messenger.android.profile"/>
             </intent-filter>
-            <!-- <intent-filter>
+            <intent-filter>
                 <action android:name="android.intent.action.VIEW"/>
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
-                <data android:host="t'gram.me" android:scheme="http" />
-                <data android:host="t'gram.me" android:scheme="https" />
-                <data android:host="t'gram.dog" android:scheme="http" />
-                <data android:host="t'gram.dog" android:scheme="https" />
-            </intent-filter> -->
-            <!-- <intent-filter android:icon="@drawable/ic_launcher" android:priority="1">
-                <action android:name="android.intent.action.VIEW" />
-                <category android:name="android.intent.category.BROWSABLE" />
-                <category android:name="android.intent.category.DEFAULT" />
-                <data android:scheme="tg" />
-            </intent-filter> -->
-            <!-- see note below, <meta-data android:name="android.service.chooser.chooser_target_service" android:value=".TgChooserTargetService" /> -->
+                <action android:name="android.intent.action.SENDTO"/> <!-- VIEW seems to be standard, however, SENDTO is also mentioned in some examples -->
+                <data android:scheme="mailto"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+            </intent-filter>
         </activity>
         <activity
             android:name="com.b44t.ui.ManageSpaceActivity"
@@ -181,7 +172,7 @@
 
         <!-- this would implement the "direct share" functionality (the system shows some direct links eg.
         to the most recent chats when calling "share" from another app, see https://developer.android.com/reference/android/service/chooser/ChooserTargetService.html )
-        however, if we want this feature, we have to reimplement TgChooserTargetService or sth. like that.
+        however, if we want this feature, we have to implement  a ChooserTargetService and add <meta-data android:name="android.service.chooser.chooser_target_service" android:value=".OurChooserTargetService" />
         <service
             android:name="com.b44t.messenger.TgChooserTargetService"
             android:label="@string/AppName"

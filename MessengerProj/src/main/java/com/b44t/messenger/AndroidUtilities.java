@@ -560,7 +560,7 @@ public class AndroidUtilities {
                 }
             }
             ArrayList<Integer> colors = new ArrayList<>();
-            if ((flag & FLAG_TAG_COLOR) != 0) {
+            if ((flag & FLAG_TAG_COLOR) != 0) { // used eg. by the message preview when following a mailto:-link
                 while ((start = stringBuilder.indexOf("<c#")) != -1) {
                     stringBuilder.replace(start, start + 2, "");
                     end = stringBuilder.indexOf(">", start);

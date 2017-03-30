@@ -33,6 +33,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.graphics.Point;
+import android.net.MailTo;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -471,11 +472,15 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
             return false;
         }
 
+        if( intent==null ) {
+            return false;
+        }
+
         int flags = intent.getFlags();
         boolean pushOpened = false;
 
         Integer push_chat_id = 0;
-        long dialogId = intent != null && intent.getExtras() != null ? intent.getExtras().getLong("dialogId", 0) : 0;
+        long dialogId = intent.getExtras() != null ? intent.getExtras().getLong("dialogId", 0) : 0;
         boolean showDialogsList = false;
 
         photoPathsArray = null;
@@ -486,10 +491,14 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
         documentsMimeType = null;
         documentsUrisArray = null;
         contactsToSend = null;
+        String createChatWith = null;
 
-        if ( (flags & Intent.FLAG_ACTIVITY_LAUNCHED_FROM_HISTORY) == 0) {
-            if (intent != null && intent.getAction() != null && !restore) {
-                if (Intent.ACTION_SEND.equals(intent.getAction())) {
+        if ( (flags & Intent.FLAG_ACTIVITY_LAUNCHED_FROM_HISTORY) == 0)
+        {
+            if (intent.getAction() != null && !restore)
+            {
+                if (Intent.ACTION_SEND.equals(intent.getAction()))
+                {
                     boolean error = false;
                     String type = intent.getType();
                     if (type != null && type.equals(ContactsContract.Contacts.CONTENT_VCARD_TYPE)) {
@@ -654,7 +663,9 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                     if (error) {
                         Toast.makeText(this, "Unsupported content", Toast.LENGTH_SHORT).show();
                     }
-                } else if (intent.getAction().equals(Intent.ACTION_SEND_MULTIPLE)) {
+                }
+                else if (intent.getAction().equals(Intent.ACTION_SEND_MULTIPLE))
+                {
                     boolean error = false;
                     try {
                         ArrayList<Parcelable> uris = intent.getParcelableArrayListExtra(Intent.EXTRA_STREAM);
@@ -724,18 +735,36 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                     if (error) {
                         Toast.makeText(this, "Unsupported content", Toast.LENGTH_SHORT).show();
                     }
-                } else if (Intent.ACTION_VIEW.equals(intent.getAction())) {
-                    Uri data = intent.getData();
-                    if (data != null) {
-                        String scheme = data.getScheme();
-                        if (scheme != null) {
-                            if ((scheme.equals("http") || scheme.equals("https"))) {
-
+                }
+                else if( Intent.ACTION_VIEW.equals(intent.getAction()) || Intent.ACTION_SENDTO.equals(intent.getAction()) )
+                {
+                    // handle links
+                    try {
+                        Uri uri = intent.getData();
+                        if( uri != null ) {
+                            String scheme = uri.getScheme();
+                            if( scheme != null && scheme.equals("mailto") ) {
+                                // handle mailto:-links
+                                MailTo mailto = MailTo.parse(uri.toString());
+                                String toList = mailto.getTo(); // toList contains comma-separated email addresses
+                                if( toList!=null && !toList.isEmpty() ) {
+                                    String[] toArr = toList.split(",");
+                                    createChatWith = toArr[0];
+                                }
+                                String subject = mailto.getSubject();
+                                String body = mailto.getBody();
+                                if (subject != null || body != null) {
+                                    sendingText = subject + ((subject != null && body != null) ? " \u2013 " : "") + body;
+                                }
                             }
                         }
                     }
+                    catch(Exception e) {
+                        Log.e("DeltaChat", "mailto failed", e);
+                    }
                 }
-                else if (intent.getAction().startsWith("com.b44t.messenger.openchat")) {
+                else if (intent.getAction().startsWith("com.b44t.messenger.openchat"))
+                {
                     String temp = intent.getAction().substring(27);
                     int chatId = 0;
                     try {
@@ -753,25 +782,39 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
             }
         }
 
-        /*if (push_user_id != 0) {
-            Bundle args = new Bundle();
-            args.putInt("user_id", push_user_id);
-            if (mainFragmentsStack.isEmpty() || MessagesController.checkCanOpenChat(args, mainFragmentsStack.get(mainFragmentsStack.size() - 1))) {
-                ChatActivity fragment = new ChatActivity(args);
-                if (actionBarLayout.presentFragment(fragment, false, true, true)) {
-                    pushOpened = true;
+        if( createChatWith!=null /*should be first as it may be combined with sendingText */ )
+        {
+            final String createChatWithFinal = createChatWith;
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    int chatId = MrMailbox.createChatByContactId(MrMailbox.createContact("", createChatWithFinal));
+                    if( chatId != 0 ) {
+                        if( sendingText!=null ) { MrMailbox.getChat(chatId).setDraft(sendingText, 0); }
+                        Bundle args = new Bundle();
+                        args.putInt("chat_id", chatId);
+                        boolean removeLast = actionBarLayout.fragmentsStack.size() > 1 && actionBarLayout.fragmentsStack.get(actionBarLayout.fragmentsStack.size() - 1) instanceof ChatActivity;
+                        actionBarLayout.presentFragment(new ChatActivity(args), removeLast, true, true);
+                    }
+
                 }
-            }
-        } else*/ if (push_chat_id != 0) {
+            });
+            builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
+            builder.setMessage(AndroidUtilities.replaceTags(LocaleController.formatString("AskStartChatWith", R.string.AskStartChatWith, createChatWith)));
+            builder.show();
+        }
+        else if (push_chat_id != 0)
+        {
             Bundle args = new Bundle();
             args.putInt("chat_id", push_chat_id);
-            //if (mainFragmentsStack.isEmpty() || MessagesController.checkCanOpenChat(args, mainFragmentsStack.get(mainFragmentsStack.size() - 1))) {
-                ChatActivity fragment = new ChatActivity(args);
-                if (actionBarLayout.presentFragment(fragment, false, true, true)) {
-                    pushOpened = true;
-                }
-            //}
-        } else if (showDialogsList) {
+            ChatActivity fragment = new ChatActivity(args);
+            if (actionBarLayout.presentFragment(fragment, false, true, true)) {
+                pushOpened = true;
+            }
+        }
+        else if (showDialogsList)
+        {
             if (!AndroidUtilities.isTablet()) {
                 actionBarLayout.removeAllFragments();
             } else {
@@ -786,14 +829,17 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
             pushOpened = false;
             isNew = false;
         }
-        else if (videoPath != null || photoPathsArray != null || sendingText != null || documentsPathsArray != null || contactsToSend != null || documentsUrisArray != null) {
+        else if (videoPath != null || photoPathsArray != null || sendingText != null || documentsPathsArray != null || contactsToSend != null || documentsUrisArray != null)
+        {
             if (!AndroidUtilities.isTablet()) {
                 NotificationCenter.getInstance().postNotificationName(NotificationCenter.closeChats);
             }
             if (dialogId == 0) {
                 Bundle args = new Bundle();
                 args.putBoolean("onlySelect", true);
-                args.putString("selectAlertString", LocaleController.getString("SendMessagesTo", R.string.SendMessagesTo));
+                args.putString("selectAlertString", ApplicationLoader.applicationContext.getString(R.string.SendMessagesTo));
+                args.putString("selectAlertPreviewString", sendingText /*may be NULL*/);
+                args.putString("selectAlertOkButtonString", ApplicationLoader.applicationContext.getString(R.string.Send));
                 DialogsActivity fragment = new DialogsActivity(args);
                 fragment.setDelegate(this);
                 boolean removeLast;
@@ -820,16 +866,18 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
             }
         }
 
-        if (!pushOpened && !isNew) {
+        if (!pushOpened && !isNew)
+        {
             if (AndroidUtilities.isTablet()) {
-                    if (actionBarLayout.fragmentsStack.isEmpty()) {
-                        actionBarLayout.addFragmentToStack(new DialogsActivity(null));
-                        drawerLayoutContainer.setAllowOpenDrawer(true, false);
-                    }
-            } else {
                 if (actionBarLayout.fragmentsStack.isEmpty()) {
-                        actionBarLayout.addFragmentToStack(new DialogsActivity(null));
-                        drawerLayoutContainer.setAllowOpenDrawer(true, false);
+                    actionBarLayout.addFragmentToStack(new DialogsActivity(null));
+                    drawerLayoutContainer.setAllowOpenDrawer(true, false);
+                }
+            }
+            else {
+                if (actionBarLayout.fragmentsStack.isEmpty()) {
+                    actionBarLayout.addFragmentToStack(new DialogsActivity(null));
+                    drawerLayoutContainer.setAllowOpenDrawer(true, false);
                 }
             }
             actionBarLayout.showLastFragment();

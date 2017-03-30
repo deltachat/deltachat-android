@@ -2691,15 +2691,11 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
 
                     private void createChat(String urlFinal)
                     {
-                        int contactId = MrMailbox.createContact("", urlFinal);
-                        int chatId = MrMailbox.createChatByContactId(contactId);
+                        int chatId = MrMailbox.createChatByContactId(MrMailbox.createContact("", urlFinal));
                         if( chatId != 0 ) {
                             Bundle args = new Bundle();
                             args.putInt("chat_id", chatId);
                             presentFragment(new ChatActivity(args), true /*removeLast*/);
-                        }
-                        else {
-                            Toast.makeText(getParentActivity(), "Cannot create chat.", Toast.LENGTH_LONG).show(); // should not happen
                         }
                     }
 

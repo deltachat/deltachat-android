@@ -43,7 +43,6 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewOutlineProvider;
 import android.view.ViewTreeObserver;
-import android.view.WindowManager;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.EditText;
 import android.widget.FrameLayout;
@@ -53,6 +52,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.b44t.messenger.AndroidUtilities;
+import com.b44t.messenger.ApplicationLoader;
 import com.b44t.messenger.ImageLoader;
 import com.b44t.messenger.LocaleController;
 import com.b44t.messenger.MrChat;
@@ -61,7 +61,6 @@ import com.b44t.messenger.MrMsg;
 import com.b44t.messenger.Utilities;
 import com.b44t.messenger.support.widget.LinearLayoutManager;
 import com.b44t.messenger.support.widget.RecyclerView;
-import com.b44t.messenger.FileLog;
 import com.b44t.messenger.NotificationCenter;
 import com.b44t.messenger.R;
 import com.b44t.messenger.UserConfig;
@@ -107,7 +106,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
 
     private boolean checkPermission = true;
 
-    private String selectAlertString;
+    private String selectAlertString, selectAlertPreviewString, selectAlertOkButtonString;
 
     private static boolean dialogsLoaded;
     private boolean searching;
@@ -139,6 +138,8 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
                 onlySelectTitle = LocaleController.getString("SelectChat", R.string.SelectChat);
             }
             selectAlertString = arguments.getString("selectAlertString");
+            selectAlertPreviewString = arguments.getString("selectAlertPreviewString");
+            selectAlertOkButtonString = arguments.getString("selectAlertOkButtonString");
         }
 
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.dialogsNeedReload);
@@ -534,8 +535,6 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
         ArrayList<String> permissons = new ArrayList<>();
         if (activity.checkSelfPermission(Manifest.permission.READ_CONTACTS) != PackageManager.PERMISSION_GRANTED) {
             permissons.add(Manifest.permission.READ_CONTACTS);
-            //permissons.add(Manifest.permission.WRITE_CONTACTS);
-            //permissons.add(Manifest.permission.GET_ACCOUNTS);
         }
         if (activity.checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
             permissons.add(Manifest.permission.READ_EXTERNAL_STORAGE);
@@ -717,10 +716,12 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
             AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
 
             MrChat mrChat = MrMailbox.getChat((int)dialog_id);
-            builder.setMessage(AndroidUtilities.replaceTags(LocaleController.formatStringSimple(selectAlertString,
-                    mrChat.getNameNAddr() /*display addr as there may be contacts with the same name but different addresses*/)));
 
-            builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), new DialogInterface.OnClickListener() {
+            builder.setMessage(AndroidUtilities.replaceTags(
+                    LocaleController.formatStringSimple(selectAlertString, mrChat.getNameNAddr()) // display addr as there may be contacts with the same name but different addresses
+                +   (selectAlertPreviewString==null? "" : ("\n\n<c#808080>"+selectAlertPreviewString+"</c>"))));
+
+            builder.setPositiveButton(selectAlertOkButtonString!=null? selectAlertOkButtonString : ApplicationLoader.applicationContext.getString(R.string.OK), new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialogInterface, int i) {
                     didSelectResult(dialog_id, false, false);
