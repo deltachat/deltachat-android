@@ -1,6 +1,7 @@
 # Delta Chat Changelog
 
-## UNRELEASED
+## v0.1.24
+2017-03-31
 
 * Share images and documents from other apps to Delta Chat
 * Offer to mailto:-link-support to other apps
