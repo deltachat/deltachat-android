@@ -865,9 +865,9 @@ public class ImageLoader {
                 imageReceiverArray.clear();
                 if (location != null) {
                     if (location instanceof TLRPC.FileLocation) {
-                        FileLoader.getInstance().cancelLoadFile((TLRPC.FileLocation) location, ext);
+                        //FileLoader.getInstance().cancelLoadFile((TLRPC.FileLocation) location, ext);
                     } else if (location instanceof TLRPC.Document) {
-                        FileLoader.getInstance().cancelLoadFile((TLRPC.Document) location);
+                        //FileLoader.getInstance().cancelLoadFile((TLRPC.Document) location);
                     }
                 }
                 if (cacheTask != null) {
@@ -1363,9 +1363,9 @@ public class ImageLoader {
                             if (httpLocation == null) {
                                 if (imageLocation instanceof TLRPC.FileLocation) {
                                     TLRPC.FileLocation location = (TLRPC.FileLocation) imageLocation;
-                                    FileLoader.getInstance().loadFile(location, ext, size, size == 0 || location.key != null || cacheOnly);
+                                    //FileLoader.getInstance().loadFile(location, ext, size, size == 0 || location.key != null || cacheOnly);
                                 } else if (imageLocation instanceof TLRPC.Document) {
-                                    FileLoader.getInstance().loadFile((TLRPC.Document) imageLocation, true, cacheOnly);
+                                    //FileLoader.getInstance().loadFile((TLRPC.Document) imageLocation, true, cacheOnly);
                                 }
                             } else {
                                 String file = Utilities.MD5(httpLocation);

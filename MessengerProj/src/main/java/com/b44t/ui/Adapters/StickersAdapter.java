@@ -102,91 +102,10 @@ public class StickersAdapter extends RecyclerView.Adapter implements Notificatio
             File f = FileLoader.getPathToAttach(document.thumb, "webp", true);
             if (!f.exists()) {
                 stickersToLoad.add(FileLoader.getAttachFileName(document.thumb, "webp"));
-                FileLoader.getInstance().loadFile(document.thumb.location, "webp", 0, true);
+                //FileLoader.getInstance().loadFile(document.thumb.location, "webp", 0, true);
             }
         }
         return stickersToLoad.isEmpty();
-    }
-
-    public void loadStikersForEmoji(CharSequence emoji) {
-        boolean search = emoji != null && emoji.length() > 0 && emoji.length() <= 14;
-        if (search) {
-            int length = emoji.length();
-            for (int a = 0; a < length; a++) {
-                if (a < length - 1 && emoji.charAt(a) == 0xD83C && emoji.charAt(a + 1) >= 0xDFFB && emoji.charAt(a + 1) <= 0xDFFF) {
-                    emoji = TextUtils.concat(emoji.subSequence(0, a), emoji.subSequence(a + 2, emoji.length()));
-                    break;
-                } else if (emoji.charAt(a) == 0xfe0f) {
-                    emoji = TextUtils.concat(emoji.subSequence(0, a), emoji.subSequence(a + 1, emoji.length()));
-                    length--;
-                }
-            }
-            lastSticker = emoji.toString();
-            HashMap<String, ArrayList<TLRPC.Document>> allStickers = getAllStickers();
-            if (allStickers != null) {
-                ArrayList<TLRPC.Document> newStickers = allStickers.get(lastSticker);
-                if (stickers != null && newStickers == null) {
-                    if (visible) {
-                        delegate.needChangePanelVisibility(false);
-                        visible = false;
-                    }
-                } else {
-                    stickers = newStickers != null && !newStickers.isEmpty() ? new ArrayList<>(newStickers) : null;
-                    if (stickers != null) {
-                        if (Math.abs(recentLoadDate - System.currentTimeMillis()) > 10 * 1000) {
-                            recentLoadDate = System.currentTimeMillis();
-                            try {
-                                String str = mContext.getSharedPreferences("emoji", Activity.MODE_PRIVATE).getString("stickers2", "");
-                                String[] args = str.split(",");
-                                for (int a = 0; a < args.length; a++) {
-                                    if (args[a].length() == 0) {
-                                        continue;
-                                    }
-                                    long id = Utilities.parseLong(args[a]);
-                                    if (id != 0) {
-                                        newRecentStickers.add(id);
-                                    }
-                                }
-                            } catch (Exception e) {
-                                FileLog.e("messenger", e);
-                            }
-                        }
-                        if (!newRecentStickers.isEmpty()) {
-                            Collections.sort(stickers, new Comparator<TLRPC.Document>() {
-                                @Override
-                                public int compare(TLRPC.Document lhs, TLRPC.Document rhs) {
-                                    int idx1 = newRecentStickers.indexOf(lhs.id);
-                                    int idx2 = newRecentStickers.indexOf(rhs.id);
-                                    if (idx1 > idx2) {
-                                        return -1;
-                                    } else if (idx1 < idx2) {
-                                        return 1;
-                                    }
-                                    return 0;
-                                }
-                            });
-                        }
-                    }
-                    checkStickerFilesExistAndDownload();
-                    delegate.needChangePanelVisibility(stickers != null && !stickers.isEmpty() && stickersToLoad.isEmpty());
-                    notifyDataSetChanged();
-                    visible = true;
-                }
-            }
-        }
-        if (!search) {
-            if (visible && stickers != null) {
-                visible = false;
-                delegate.needChangePanelVisibility(false);
-            }
-        }
-    }
-
-    public void clearStickers() {
-        lastSticker = null;
-        stickers = null;
-        stickersToLoad.clear();
-        notifyDataSetChanged();
     }
 
     @Override

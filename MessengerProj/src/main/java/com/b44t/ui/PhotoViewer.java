@@ -4109,9 +4109,9 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
         if (file == null) {
             if (download) {
                 if (!FileLoader.getInstance().isLoadingFile(currentFileNames[0])) {
-                    FileLoader.getInstance().loadFile(currentMessageObject.getDocument(), true, false);
+                    //FileLoader.getInstance().loadFile(currentMessageObject.getDocument(), true, false);
                 } else {
-                    FileLoader.getInstance().cancelLoadFile(currentMessageObject.getDocument());
+                    //FileLoader.getInstance().cancelLoadFile(currentMessageObject.getDocument());
                 }
             }
         } else {

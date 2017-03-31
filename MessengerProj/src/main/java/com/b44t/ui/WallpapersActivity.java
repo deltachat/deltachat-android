@@ -342,11 +342,11 @@ public class WallpapersActivity extends BaseFragment implements NotificationCent
                 doneButton.setEnabled(false);
                 loadingSize = size;
                 selectedColor = 0;
-                FileLoader.getInstance().loadFile(size, null, true);
+                //FileLoader.getInstance().loadFile(size, null, true);
                 backgroundImage.setBackgroundColor(0);
             } else {
                 if (loadingFile != null) {
-                    FileLoader.getInstance().cancelLoadFile(loadingSize);
+                    //FileLoader.getInstance().cancelLoadFile(loadingSize);
                 }
                 loadingFileObject = null;
                 loadingFile = null;
@@ -362,7 +362,7 @@ public class WallpapersActivity extends BaseFragment implements NotificationCent
             }
         } else {
             if (loadingFile != null) {
-                FileLoader.getInstance().cancelLoadFile(loadingSize);
+                //FileLoader.getInstance().cancelLoadFile(loadingSize);
             }
             if (selectedBackground == 1000001) {
                 backgroundImage.setImageResource(R.drawable.background_hd);
