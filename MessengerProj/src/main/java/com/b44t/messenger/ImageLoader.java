@@ -35,7 +35,6 @@ import android.graphics.drawable.BitmapDrawable;
 import android.media.ExifInterface;
 import android.media.ThumbnailUtils;
 import android.net.Uri;
-import android.os.AsyncTask;
 import android.os.Build;
 import android.provider.MediaStore;
 
@@ -66,19 +65,16 @@ public class ImageLoader {
     private DispatchQueue cacheThumbOutQueue = new DispatchQueue("cacheThumbOutQueue");
     private DispatchQueue thumbGeneratingQueue = new DispatchQueue("thumbGeneratingQueue");
     private DispatchQueue imageLoadQueue = new DispatchQueue("imageLoadQueue");
-    private ConcurrentHashMap<String, Float> fileProgresses = new ConcurrentHashMap<>();
     private HashMap<String, ThumbGenerateTask> thumbGenerateTasks = new HashMap<>();
     private static byte[] bytes;
     private static byte[] bytesThumb;
     private static byte[] header = new byte[12];
     private static byte[] headerThumb = new byte[12];
-    private int currentHttpTasksCount = 0;
 
     private String ignoreRemoval = null;
 
     private volatile long lastCacheOutTime = 0;
     private int lastImageNum = 0;
-    private long lastProgressUpdateTime = 0;
 
     private class ThumbGenerateInfo {
         private int count;
@@ -798,13 +794,6 @@ public class ImageLoader {
         FileLoader.getInstance().setMediaDirs(mediaDirs);
     }
 
-    public Float getFileProgress(String location) {
-        if (location == null) {
-            return null;
-        }
-        return fileProgresses.get(location);
-    }
-
     public void incrementUseCount(String key) {
         Integer count = bitmapUseCounts.get(key);
         if (count == null) {
@@ -1167,64 +1156,6 @@ public class ImageLoader {
             createLoadOperationForImageReceiver(imageReceiver, thumbKey, thumbUrl, ext, thumbLocation, null, thumbFilter, 0, true, thumbSet ? 2 : 1);
             createLoadOperationForImageReceiver(imageReceiver, key, url, ext, imageLocation, null, filter, imageReceiver.getSize(), saveImageToCache || imageReceiver.getCacheOnly(), 0);
         }
-    }
-
-    private void fileDidLoaded(final String location, final File finalFile, final int type) {
-        imageLoadQueue.postRunnable(new Runnable() {
-            @Override
-            public void run() {
-                ThumbGenerateInfo info = waitingForQualityThumb.get(location);
-                if (info != null) {
-                    generateThumb(type, finalFile, info.fileLocation, info.filter);
-                    waitingForQualityThumb.remove(location);
-                }
-                CacheImage img = imageLoadingByUrl.get(location);
-                if (img == null) {
-                    return;
-                }
-                imageLoadingByUrl.remove(location);
-                CacheOutTask task = null;
-                for (int a = 0; a < img.imageReceiverArray.size(); a++) {
-                    ImageReceiver imageReceiver = img.imageReceiverArray.get(a);
-                    CacheImage cacheImage = imageLoadingByKeys.get(img.key);
-                    if (cacheImage == null) {
-                        cacheImage = new CacheImage();
-                        cacheImage.finalFilePath = finalFile;
-                        cacheImage.key = img.key;
-                        cacheImage.httpUrl = img.httpUrl;
-                        cacheImage.thumb = img.thumb;
-                        cacheImage.ext = img.ext;
-                        cacheImage.cacheTask = task = new CacheOutTask(cacheImage);
-                        cacheImage.filter = img.filter;
-                        cacheImage.animatedFile = img.animatedFile;
-                        imageLoadingByKeys.put(cacheImage.key, cacheImage);
-                    }
-                    cacheImage.addImageReceiver(imageReceiver);
-                }
-                if (task != null) {
-                    if (img.thumb) {
-                        cacheThumbOutQueue.postRunnable(task);
-                    } else {
-                        cacheOutQueue.postRunnable(task);
-                    }
-                }
-            }
-        });
-    }
-
-    private void fileDidFailedLoad(final String location, int canceled) {
-        if (canceled == 1) {
-            return;
-        }
-        imageLoadQueue.postRunnable(new Runnable() {
-            @Override
-            public void run() {
-                CacheImage img = imageLoadingByUrl.get(location);
-                if (img != null) {
-                    img.setImageAndClear(null);
-                }
-            }
-        });
     }
 
     public static Bitmap loadBitmap(String path, Uri uri, float maxWidth, float maxHeight, boolean useMaxScale) {

@@ -78,8 +78,6 @@ public class ContextLinkCell extends View implements MediaController.FileDownloa
     private LetterDrawable letterDrawable;
 
     private boolean needDivider;
-    private boolean buttonPressed;
-    private boolean needShadow;
 
     private int linkY;
     private StaticLayout linkLayout;
@@ -269,7 +267,6 @@ public class ContextLinkCell extends View implements MediaController.FileDownloa
 
     public void setGif(TLRPC.Document document, boolean divider) {
         needDivider = divider;
-        needShadow = false;
         documentAttach = document;
         mediaWebpage = true;
         requestLayout();
@@ -414,9 +411,9 @@ public class ContextLinkCell extends View implements MediaController.FileDownloa
             MediaController.getInstance().addLoadingFileObserver(fileName, this);
             boolean progressVisible = true;
             buttonState = 1;
-            Float progress = ImageLoader.getInstance().getFileProgress(fileName);
-            float setProgress = progress != null ? progress : 0;
-            radialProgress.setProgress(setProgress, false);
+            //Float progress = ImageLoader.getInstance().getFileProgress(fileName);
+            //float setProgress = progress != null ? progress : 0;
+            //radialProgress.setProgress(setProgress, false);
             radialProgress.setBackground(getDrawableForCurrentState(), progressVisible, animated);
             invalidate();
         } else {

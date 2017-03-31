@@ -95,8 +95,6 @@ public class WallpapersActivity extends BaseFragment implements NotificationCent
     public boolean onFragmentCreate() {
         super.onFragmentCreate();
 
-        NotificationCenter.getInstance().addObserver(this, NotificationCenter.FileDidFailedLoad);
-        NotificationCenter.getInstance().addObserver(this, NotificationCenter.FileDidLoaded);
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.wallpapersDidLoaded);
 
         SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("mainconfig", Activity.MODE_PRIVATE);
@@ -122,8 +120,6 @@ public class WallpapersActivity extends BaseFragment implements NotificationCent
     @Override
     public void onFragmentDestroy() {
         super.onFragmentDestroy();
-        NotificationCenter.getInstance().removeObserver(this, NotificationCenter.FileDidFailedLoad);
-        NotificationCenter.getInstance().removeObserver(this, NotificationCenter.FileDidLoaded);
         NotificationCenter.getInstance().removeObserver(this, NotificationCenter.wallpapersDidLoaded);
     }
 
@@ -400,25 +396,7 @@ public class WallpapersActivity extends BaseFragment implements NotificationCent
     @SuppressWarnings("unchecked")
     @Override
     public void didReceivedNotification(int id, final Object... args) {
-        if (id == NotificationCenter.FileDidFailedLoad) {
-            String location = (String) args[0];
-            if (loadingFile != null && loadingFile.equals(location)) {
-                loadingFileObject = null;
-                loadingFile = null;
-                loadingSize = null;
-                doneButton.setEnabled(false);
-            }
-        } else if (id == NotificationCenter.FileDidLoaded) {
-            String location = (String) args[0];
-            if (loadingFile != null && loadingFile.equals(location)) {
-                backgroundImage.setImageURI(Uri.fromFile(loadingFileObject));
-                backgroundImage.setBackgroundColor(0);
-                doneButton.setEnabled(true);
-                loadingFileObject = null;
-                loadingFile = null;
-                loadingSize = null;
-            }
-        } else if (id == NotificationCenter.wallpapersDidLoaded) {
+        if (id == NotificationCenter.wallpapersDidLoaded) {
             /* EDIT BY MR
             wallPapers = (ArrayList<TLRPC.WallPaper>) args[0];
             wallpappersByIds.clear();

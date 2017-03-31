@@ -69,43 +69,14 @@ public class StickersAdapter extends RecyclerView.Adapter implements Notificatio
         mContext = context;
         this.delegate = delegate;
         //StickersQuery.checkStickers();
-        NotificationCenter.getInstance().addObserver(this, NotificationCenter.FileDidLoaded);
-        NotificationCenter.getInstance().addObserver(this, NotificationCenter.FileDidFailedLoad);
     }
 
     public void onDestroy() {
-        NotificationCenter.getInstance().removeObserver(this, NotificationCenter.FileDidLoaded);
-        NotificationCenter.getInstance().removeObserver(this, NotificationCenter.FileDidFailedLoad);
     }
 
     @Override
     public void didReceivedNotification(int id, final Object... args) {
-        if (id == NotificationCenter.FileDidLoaded || id == NotificationCenter.FileDidFailedLoad) {
-            if (stickers != null && !stickers.isEmpty() && !stickersToLoad.isEmpty() && visible) {
-                String fileName = (String) args[0];
-                stickersToLoad.remove(fileName);
-                if (stickersToLoad.isEmpty()) {
-                    delegate.needChangePanelVisibility(stickers != null && !stickers.isEmpty() && stickersToLoad.isEmpty());
-                }
-            }
-        }
-    }
 
-    private boolean checkStickerFilesExistAndDownload() {
-        if (stickers == null) {
-            return false;
-        }
-        stickersToLoad.clear();
-        int size = Math.min(10, stickers.size());
-        for (int a = 0; a < size; a++) {
-            TLRPC.Document document = stickers.get(a);
-            File f = FileLoader.getPathToAttach(document.thumb, "webp", true);
-            if (!f.exists()) {
-                stickersToLoad.add(FileLoader.getAttachFileName(document.thumb, "webp"));
-                //FileLoader.getInstance().loadFile(document.thumb.location, "webp", 0, true);
-            }
-        }
-        return stickersToLoad.isEmpty();
     }
 
     @Override
@@ -167,10 +138,6 @@ public class StickersAdapter extends RecyclerView.Adapter implements Notificatio
     }
 
     public static boolean isStickerPackInstalled(long id) {
-        return false;
-    }
-
-    public static boolean isStickerPackInstalled(String name) {
         return false;
     }
 }

@@ -534,13 +534,8 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
         AndroidUtilities.runOnUIThread(new Runnable() {
             @Override
             public void run() {
-                NotificationCenter.getInstance().addObserver(MediaController.this, NotificationCenter.FileDidFailedLoad);
                 NotificationCenter.getInstance().addObserver(MediaController.this, NotificationCenter.didReceivedNewMessages);
                 NotificationCenter.getInstance().addObserver(MediaController.this, NotificationCenter.messagesDeleted);
-                NotificationCenter.getInstance().addObserver(MediaController.this, NotificationCenter.FileDidLoaded);
-                NotificationCenter.getInstance().addObserver(MediaController.this, NotificationCenter.FileLoadProgressChanged);
-                //NotificationCenter.getInstance().addObserver(MediaController.this, NotificationCenter.FileUploadProgressChanged);
-                //NotificationCenter.getInstance().addObserver(MediaController.this, NotificationCenter.musicDidLoaded);
             }
         });
 
@@ -797,103 +792,7 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
     @SuppressWarnings("unchecked")
     @Override
     public void didReceivedNotification(int id, Object... args) {
-        if (id == NotificationCenter.FileDidFailedLoad) {
-            listenerInProgress = true;
-            String fileName = (String) args[0];
-            loadingFileMessagesObservers.get(fileName);
-            ArrayList<WeakReference<FileDownloadProgressListener>> arrayList = loadingFileObservers.get(fileName);
-            if (arrayList != null) {
-                for (int a = 0; a < arrayList.size(); a++) {
-                    WeakReference<FileDownloadProgressListener> reference = arrayList.get(a);
-                    if (reference.get() != null) {
-                        reference.get().onFailedDownload(fileName);
-                        observersByTag.remove(reference.get().getObserverTag());
-                    }
-                }
-                loadingFileObservers.remove(fileName);
-            }
-            listenerInProgress = false;
-            processLaterArrays();
-        } else if (id == NotificationCenter.FileDidLoaded) {
-            listenerInProgress = true;
-            String fileName = (String) args[0];
-            ArrayList<MessageObject> messageObjects = loadingFileMessagesObservers.get(fileName);
-            if (messageObjects != null) {
-                for (int a = 0; a < messageObjects.size(); a++) {
-                    MessageObject messageObject = messageObjects.get(a);
-                    messageObject.mediaExists = true;
-                }
-                loadingFileMessagesObservers.remove(fileName);
-            }
-            ArrayList<WeakReference<FileDownloadProgressListener>> arrayList = loadingFileObservers.get(fileName);
-            if (arrayList != null) {
-                for (int a = 0; a < arrayList.size(); a++) {
-                    WeakReference<FileDownloadProgressListener> reference = arrayList.get(a);
-                    if (reference.get() != null) {
-                        reference.get().onSuccessDownload(fileName);
-                        observersByTag.remove(reference.get().getObserverTag());
-                    }
-                }
-                loadingFileObservers.remove(fileName);
-            }
-            listenerInProgress = false;
-            processLaterArrays();
-        } else if (id == NotificationCenter.FileLoadProgressChanged) {
-            listenerInProgress = true;
-            String fileName = (String) args[0];
-            ArrayList<WeakReference<FileDownloadProgressListener>> arrayList = loadingFileObservers.get(fileName);
-            if (arrayList != null) {
-                Float progress = (Float) args[1];
-                for (WeakReference<FileDownloadProgressListener> reference : arrayList) {
-                    if (reference.get() != null) {
-                        reference.get().onProgressDownload(fileName, progress);
-                    }
-                }
-            }
-            listenerInProgress = false;
-            processLaterArrays();
-        }
-        /*else if (id == NotificationCenter.FileUploadProgressChanged) {
-            listenerInProgress = true;
-            String fileName = (String) args[0];
-            ArrayList<WeakReference<FileDownloadProgressListener>> arrayList = loadingFileObservers.get(fileName);
-            if (arrayList != null) {
-                Float progress = (Float) args[1];
-                Boolean enc = (Boolean) args[2];
-                for (WeakReference<FileDownloadProgressListener> reference : arrayList) {
-                    if (reference.get() != null) {
-                        reference.get().onProgressUpload(fileName, progress, enc);
-                    }
-                }
-            }
-            listenerInProgress = false;
-            processLaterArrays();
-            try {
-                ArrayList<SendMessagesHelper.DelayedMessage> delayedMessages = SendMessagesHelper.getInstance().getDelayedMessages(fileName);
-                if (delayedMessages != null) {
-                    for (int a = 0; a < delayedMessages.size(); a++) {
-                        SendMessagesHelper.DelayedMessage delayedMessage = delayedMessages.get(a);
-                        if (delayedMessage.encryptedChat == null) {
-                            long dialog_id = delayedMessage.obj.getDialogId();
-                            Long lastTime = typingTimes.get(dialog_id);
-                            if (lastTime == null || lastTime + 4000 < System.currentTimeMillis()) {
-                                if (MessageObject.isVideoDocument(delayedMessage.documentLocation)) {
-                                    MessagesController.getInstance().sendTyping(dialog_id, 5, 0);
-                                } else if (delayedMessage.documentLocation != null) {
-                                    MessagesController.getInstance().sendTyping(dialog_id, 3, 0);
-                                } else if (delayedMessage.location != null) {
-                                    MessagesController.getInstance().sendTyping(dialog_id, 4, 0);
-                                }
-                                typingTimes.put(dialog_id, System.currentTimeMillis());
-                            }
-                        }
-                    }
-                }
-            } catch (Exception e) {
-                FileLog.e("messenger", e);
-            }
-        } */
-        else if (id == NotificationCenter.messagesDeleted) {
+        if (id == NotificationCenter.messagesDeleted) {
             ArrayList<Integer> markAsDeletedMessages = (ArrayList<Integer>) args[0];
             if (playingMessageObject != null) {
                 if (markAsDeletedMessages.contains(playingMessageObject.getId())) {
@@ -901,19 +800,6 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
                 }
             }
         }
-        /*else if (id == NotificationCenter.musicDidLoaded) {
-            long did = (Long) args[0];
-            if (playingMessageObject != null && playingMessageObject.isMusic() && playingMessageObject.getDialogId() == did) {
-                ArrayList<MessageObject> arrayList = (ArrayList<MessageObject>) args[1];
-                playlist.addAll(0, arrayList);
-                if (shuffleMusic) {
-                    buildShuffledPlayList();
-                    currentPlaylistNum = 0;
-                } else {
-                    currentPlaylistNum += arrayList.size();
-                }
-            }
-        }*/
     }
 
     private void checkDecoderQueue() {

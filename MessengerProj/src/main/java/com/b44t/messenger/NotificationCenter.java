@@ -60,9 +60,6 @@ public class NotificationCenter {
     public static final int closeOtherAppActivities = totalEvents++;
     public static final int emojiDidLoaded = totalEvents++;
 
-    public static final int FileLoadProgressChanged = totalEvents++;
-    public static final int FileDidLoaded = totalEvents++;
-    public static final int FileDidFailedLoad = totalEvents++;
     public static final int FilePreparingStarted = totalEvents++;
     public static final int FileNewChunkAvailable = totalEvents++;
     public static final int FilePreparingFailed = totalEvents++;

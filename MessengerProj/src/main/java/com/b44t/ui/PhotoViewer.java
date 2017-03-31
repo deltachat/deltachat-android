@@ -706,36 +706,7 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
     @SuppressWarnings("unchecked")
     @Override
     public void didReceivedNotification(int id, Object... args) {
-        if (id == NotificationCenter.FileDidFailedLoad) {
-            String location = (String) args[0];
-            for (int a = 0; a < 3; a++) {
-                if (currentFileNames[a] != null && currentFileNames[a].equals(location)) {
-                    radialProgressViews[a].setProgress(1.0f, true);
-                    checkProgress(a, true);
-                    break;
-                }
-            }
-        } else if (id == NotificationCenter.FileDidLoaded) {
-            String location = (String) args[0];
-            for (int a = 0; a < 3; a++) {
-                if (currentFileNames[a] != null && currentFileNames[a].equals(location)) {
-                    radialProgressViews[a].setProgress(1.0f, true);
-                    checkProgress(a, true);
-                    if (Build.VERSION.SDK_INT >= 16 && a == 0 && currentMessageObject != null && currentMessageObject.isVideo()) {
-                        onActionClick(false);
-                    }
-                    break;
-                }
-            }
-        } else if (id == NotificationCenter.FileLoadProgressChanged) {
-            String location = (String) args[0];
-            for (int a = 0; a < 3; a++) {
-                if (currentFileNames[a] != null && currentFileNames[a].equals(location)) {
-                    Float progress = (Float) args[1];
-                    radialProgressViews[a].setProgress(progress, true);
-                }
-            }
-        } else if (id == NotificationCenter.mediaCountDidLoaded) {
+        if (id == NotificationCenter.mediaCountDidLoaded) {
             long uid = (Long) args[0];
             if (uid == currentDialogId || uid == mergeDialogId) {
                 if (uid == currentDialogId) {
@@ -2784,11 +2755,11 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
                 } else {
                     radialProgressViews[a].setBackgroundState(0, animated);
                 }
-                Float progress = ImageLoader.getInstance().getFileProgress(currentFileNames[a]);
-                if (progress == null) {
-                    progress = 0.0f;
-                }
-                radialProgressViews[a].setProgress(progress, false);
+                //Float progress = ImageLoader.getInstance().getFileProgress(currentFileNames[a]);
+                //if (progress == null) {
+                //    progress = 0.0f;
+                //}
+                //radialProgressViews[a].setProgress(progress, false);
             }
             if (a == 0) {
                 canZoom = !imagesArrLocals.isEmpty() || (currentFileNames[0] != null && !isVideo && radialProgressViews[0].backgroundState != 0);
@@ -2978,9 +2949,6 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
         parentChatActivity = chatActivity;
 
         actionBar.setTitle(LocaleController.formatString("Of", R.string.Of, 1, 1));
-        NotificationCenter.getInstance().addObserver(this, NotificationCenter.FileDidFailedLoad);
-        NotificationCenter.getInstance().addObserver(this, NotificationCenter.FileDidLoaded);
-        NotificationCenter.getInstance().addObserver(this, NotificationCenter.FileLoadProgressChanged);
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.mediaCountDidLoaded);
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.mediaDidLoaded);
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.emojiDidLoaded);
@@ -3199,9 +3167,6 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
         releasePlayer();
         //captionEditText.onDestroy();
         parentChatActivity = null;
-        NotificationCenter.getInstance().removeObserver(this, NotificationCenter.FileDidFailedLoad);
-        NotificationCenter.getInstance().removeObserver(this, NotificationCenter.FileDidLoaded);
-        NotificationCenter.getInstance().removeObserver(this, NotificationCenter.FileLoadProgressChanged);
         NotificationCenter.getInstance().removeObserver(this, NotificationCenter.mediaCountDidLoaded);
         NotificationCenter.getInstance().removeObserver(this, NotificationCenter.mediaDidLoaded);
         NotificationCenter.getInstance().removeObserver(this, NotificationCenter.emojiDidLoaded);
