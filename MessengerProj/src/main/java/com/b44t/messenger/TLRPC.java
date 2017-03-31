@@ -103,21 +103,7 @@ public class TLRPC {
 		public int duration;
 		public String mime_type;
 		public int size;
-		public final int dc_id = 0;
 		public int user_id;
-	}
-
-    public static class InputFileLocation extends TLObject {
-		public long id;
-		public long access_hash;
-		public long volume_id;
-		public int local_id;
-	}
-
-	public static class TL_inputDocumentFileLocation extends InputFileLocation {
-	}
-
-	public static class TL_inputFileLocation extends InputFileLocation {
 	}
 
 	public static class User extends TLObject {
@@ -136,7 +122,6 @@ public class TLRPC {
 		public int duration;
 		public int size;
 		public PhotoSize thumb;
-		public int dc_id;
 		public int w;
 		public int h;
 		public String mime_type;
