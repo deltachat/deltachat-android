@@ -32,15 +32,6 @@ import java.util.concurrent.Semaphore;
 
 public class FileLoader {
 
-    public interface FileLoaderDelegate {
-
-        void fileDidLoaded(String location, File finalFile, int type);
-
-        void fileDidFailedLoad(String location, int state);
-
-        void fileLoadProgressChanged(String location, float progress);
-    }
-
     public static final int MEDIA_DIR_IMAGE = 0;
     public static final int MEDIA_DIR_AUDIO = 1;
     public static final int MEDIA_DIR_VIDEO = 2;
@@ -85,10 +76,6 @@ public class FileLoader {
 
     public boolean isLoadingFile(final String fileName) {
         return false;
-    }
-
-    public void setDelegate(FileLoaderDelegate delegate) {
-
     }
 
     public static String getMessageFileName(TLRPC.Message message) {
