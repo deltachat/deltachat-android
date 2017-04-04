@@ -230,7 +230,9 @@ public class ApplicationLoader extends Application {
         // open() should be called before MessagesController.getInstance() as this also initilizes directories based upon getBlobdir().
         File dbfile = new File(getFilesDirFixed(), "messenger.db");
         MrMailbox.open(dbfile.getAbsolutePath());
-        MrMailbox.connect();
+        if( MrMailbox.isConfigured()!=0 ) {
+            MrMailbox.connect();
+        }
 
         // create other default objects
         SharedPreferences mainPreferences = ApplicationLoader.applicationContext.getSharedPreferences("mainconfig", Activity.MODE_PRIVATE);
