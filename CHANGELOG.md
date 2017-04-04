@@ -1,5 +1,14 @@
 # Delta Chat Changelog
 
+## v0.1.25
+2017-04-04
+
+* Use system or user selected video player.
+* Do not connect if not configured (avoids a warning on the first time startup)
+* Add  vertical scrollbar, eg. to settings activities.
+* Pimp GUI and logo.
+* Update Korean.
+
 ## v0.1.24
 2017-03-31
 
