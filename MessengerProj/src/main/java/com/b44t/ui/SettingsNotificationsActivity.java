@@ -60,7 +60,7 @@ import com.b44t.ui.Cells.TextSettingsCell;
 import com.b44t.ui.Components.ColorPickerView;
 import com.b44t.ui.Components.LayoutHelper;
 
-public class NotificationsSettingsActivity extends BaseFragment implements NotificationCenter.NotificationCenterDelegate {
+public class SettingsNotificationsActivity extends BaseFragment implements NotificationCenter.NotificationCenterDelegate {
 
     private ListView listView;
 
@@ -74,7 +74,6 @@ public class NotificationsSettingsActivity extends BaseFragment implements Notif
     private int groupSectionRow2;
     private int groupSectionRow;
     private int groupAlertRow;
-    //private int groupPreviewRow;
     private int groupVibrateRow;
     private int groupSoundRow;
     private int groupLedRow;
@@ -83,7 +82,6 @@ public class NotificationsSettingsActivity extends BaseFragment implements Notif
     private int inappSectionRow;
     private int inappSoundRow;
     private int inappVibrateRow;
-    //private int inappPreviewRow;
     private int inchatSoundRow;
     private int inappPriorityRow;
     private int otherSectionRow2;
@@ -113,7 +111,6 @@ public class NotificationsSettingsActivity extends BaseFragment implements Notif
         groupSectionRow2 = rowCount++;
         groupSectionRow = rowCount++;
         groupAlertRow = rowCount++;
-        //groupPreviewRow = rowCount++;
         groupSoundRow = rowCount++;
         groupVibrateRow = rowCount++;
         groupLedRow = rowCount++;
@@ -123,7 +120,6 @@ public class NotificationsSettingsActivity extends BaseFragment implements Notif
         inappSectionRow = rowCount++;
         inappSoundRow = rowCount++;
         inappVibrateRow = rowCount++;
-        //inappPreviewRow = rowCount++;
         inappPriorityRow = Build.VERSION.SDK_INT >= 21? rowCount++ : -1;
 
         otherSectionRow2 = rowCount++;
@@ -165,7 +161,7 @@ public class NotificationsSettingsActivity extends BaseFragment implements Notif
         listView = new ListView(context);
         listView.setDivider(null);
         listView.setDividerHeight(0);
-        listView.setVerticalScrollBarEnabled(false);
+        listView.setDrawSelectorOnTop(true);
         frameLayout.addView(listView);
         FrameLayout.LayoutParams layoutParams = (FrameLayout.LayoutParams) listView.getLayoutParams();
         layoutParams.width = LayoutHelper.MATCH_PARENT;
@@ -187,16 +183,11 @@ public class NotificationsSettingsActivity extends BaseFragment implements Notif
                         editor.putBoolean("EnableGroup", !enabled);
                     }
                     editor.apply();
-                } else if (i == messagePreviewRow /*|| i == groupPreviewRow*/) {
+                } else if (i == messagePreviewRow ) {
                     SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("Notifications", Activity.MODE_PRIVATE);
                     SharedPreferences.Editor editor = preferences.edit();
-                    //if (i == messagePreviewRow) {
-                        enabled = preferences.getBoolean("EnablePreviewAll", true);
-                        editor.putBoolean("EnablePreviewAll", !enabled);
-                    //} else if (i == groupPreviewRow) {
-                    //    enabled = preferences.getBoolean("EnablePreviewGroup", true);
-                    //    editor.putBoolean("EnablePreviewGroup", !enabled);
-                    //}
+                    enabled = preferences.getBoolean("EnablePreviewAll", true);
+                    editor.putBoolean("EnablePreviewAll", !enabled);
                     editor.apply();
                 } else if (i == messageSoundRow || i == groupSoundRow) {
                     try {
@@ -269,12 +260,6 @@ public class NotificationsSettingsActivity extends BaseFragment implements Notif
                     enabled = preferences.getBoolean("EnableInAppVibrate", true);
                     editor.putBoolean("EnableInAppVibrate", !enabled);
                     editor.apply();
-                /*} else if (i == inappPreviewRow) {
-                    SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("Notifications", Activity.MODE_PRIVATE);
-                    SharedPreferences.Editor editor = preferences.edit();
-                    enabled = preferences.getBoolean("EnableInAppPreview", true);
-                    editor.putBoolean("EnableInAppPreview", !enabled);
-                    editor.commit();*/
                 } else if (i == inchatSoundRow) {
                     SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("Notifications", Activity.MODE_PRIVATE);
                     SharedPreferences.Editor editor = preferences.edit();
@@ -570,14 +555,10 @@ public class NotificationsSettingsActivity extends BaseFragment implements Notif
                     checkCell.setTextAndCheck(LocaleController.getString("Alert", R.string.Alert), preferences.getBoolean("EnableGroup", true), true);
                 } else if (i == messagePreviewRow) {
                     checkCell.setTextAndCheck(LocaleController.getString("MessagePreview", R.string.MessagePreview), preferences.getBoolean("EnablePreviewAll", true), true);
-                /*} else if (i == groupPreviewRow) {
-                    checkCell.setTextAndCheck(LocaleController.getString("MessagePreview", R.string.MessagePreview), preferences.getBoolean("EnablePreviewGroup", true), true);*/
                 } else if (i == inappSoundRow) {
                     checkCell.setTextAndCheck(LocaleController.getString("Sound", R.string.Sound), preferences.getBoolean("EnableInAppSounds", true), true);
                 } else if (i == inappVibrateRow) {
                     checkCell.setTextAndCheck(LocaleController.getString("Vibrate", R.string.Vibrate), preferences.getBoolean("EnableInAppVibrate", true), true);
-                /*} else if (i == inappPreviewRow) {
-                    checkCell.setTextAndCheck(LocaleController.getString("MessagePreview", R.string.MessagePreview), preferences.getBoolean("EnableInAppPreview", true), true);*/
                 } else if (i == badgeNumberRow) {
                     checkCell.setTextAndCheck(LocaleController.getString("BadgeNumber", R.string.BadgeNumber), preferences.getBoolean("badgeNumber", true), true);
                 } else if (i == inchatSoundRow) {
@@ -684,8 +665,7 @@ public class NotificationsSettingsActivity extends BaseFragment implements Notif
                     i == otherSectionRow ) {
                 return TYPE_HEADER;
             } else if (i == messageAlertRow || i == messagePreviewRow || i == groupAlertRow ||
-                    /*i == groupPreviewRow ||*/ i == inappSoundRow || i == inappVibrateRow ||
-                    /*i == inappPreviewRow ||*/
+                    i == inappSoundRow || i == inappVibrateRow ||
                     i == badgeNumberRow ||
                     i == inchatSoundRow ) {
                 return TYPE_CHECK_CELL;

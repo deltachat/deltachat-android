@@ -221,7 +221,6 @@ public class PhotoAlbumPickerActivity extends BaseFragment implements Notificati
         layoutParams.bottomMargin = AndroidUtilities.dp(48);
         listView.setLayoutParams(layoutParams);
         listView.setAdapter(listAdapter = new ListAdapter(context));
-        AndroidUtilities.setListViewEdgeEffectColor(listView, Theme.ACTION_BAR_COLOR);
 
         emptyView = new TextView(context);
         emptyView.setTextColor(0xff808080);

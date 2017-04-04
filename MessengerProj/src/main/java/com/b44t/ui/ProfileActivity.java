@@ -355,7 +355,6 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
         listView.setTag(6);
         listView.setPadding(0, AndroidUtilities.dp(88), 0, 0);
         listView.setBackgroundColor(0xffffffff);
-        listView.setVerticalScrollBarEnabled(false);
         listView.setItemAnimator(null);
         listView.setLayoutAnimation(null);
         listView.setClipToPadding(false);

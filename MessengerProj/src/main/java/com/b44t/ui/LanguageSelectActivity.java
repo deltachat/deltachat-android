@@ -176,7 +176,7 @@ public class LanguageSelectActivity extends BaseFragment {
 
         listView = new ListView(context);
         listView.setEmptyView(emptyTextLayout);
-        listView.setVerticalScrollBarEnabled(false);
+        listView.setDrawSelectorOnTop(true);
         listView.setDivider(null);
         listView.setDividerHeight(0);
         listView.setAdapter(listAdapter);

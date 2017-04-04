@@ -118,7 +118,6 @@ public class BlockedUsersActivity extends BaseFragment implements NotificationCe
 
         listView = new ListView(context);
         listView.setEmptyView(emptyTextView);
-        listView.setVerticalScrollBarEnabled(false);
         listView.setDivider(null);
         listView.setDividerHeight(0);
         listView.setAdapter(listViewAdapter = new ListAdapter(context));

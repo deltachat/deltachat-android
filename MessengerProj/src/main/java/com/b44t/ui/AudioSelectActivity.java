@@ -118,7 +118,6 @@ public class AudioSelectActivity extends BaseFragment implements NotificationCen
 
         ListView listView = new ListView(context);
         listView.setEmptyView(progressView);
-        listView.setVerticalScrollBarEnabled(false);
         listView.setDivider(null);
         listView.setDividerHeight(0);
         listView.setAdapter(listViewAdapter = new ListAdapter(context));

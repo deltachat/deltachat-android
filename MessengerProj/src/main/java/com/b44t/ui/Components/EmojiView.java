@@ -592,7 +592,6 @@ public class EmojiView extends FrameLayout implements NotificationCenter.Notific
 
             EmojiGridAdapter emojiGridAdapter = new EmojiGridAdapter(i - 1);
             gridView.setAdapter(emojiGridAdapter);
-            AndroidUtilities.setListViewEdgeEffectColor(gridView, 0xfff5f6f7);
             adapters.add(emojiGridAdapter);
         }
 
@@ -648,7 +647,6 @@ public class EmojiView extends FrameLayout implements NotificationCenter.Notific
                 }
             };
             stickersGridView.setOnItemClickListener(stickersOnItemClickListener);
-            AndroidUtilities.setListViewEdgeEffectColor(stickersGridView, 0xfff5f6f7);
 
             stickersWrap = new FrameLayout(context);
             stickersWrap.addView(stickersGridView);

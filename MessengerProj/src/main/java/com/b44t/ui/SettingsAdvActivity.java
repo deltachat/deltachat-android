@@ -118,8 +118,7 @@ public class SettingsAdvActivity extends BaseFragment {
         listView = new ListView(context);
         listView.setDivider(null);
         listView.setDividerHeight(0);
-        listView.setVerticalScrollBarEnabled(false);
-        AndroidUtilities.setListViewEdgeEffectColor(listView, Theme.ACTION_BAR_COLOR);
+        listView.setDrawSelectorOnTop(true);
         frameLayout.addView(listView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.MATCH_PARENT, Gravity.TOP | Gravity.LEFT));
         listView.setAdapter(listAdapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {

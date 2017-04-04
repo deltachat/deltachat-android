@@ -312,7 +312,6 @@ public class PasscodeActivity extends BaseFragment implements NotificationCenter
             listView = new ListView(context);
             listView.setDivider(null);
             listView.setDividerHeight(0);
-            listView.setVerticalScrollBarEnabled(false);
             listView.setDrawSelectorOnTop(true);
             frameLayout.addView(listView);
             FrameLayout.LayoutParams layoutParams = (FrameLayout.LayoutParams) listView.getLayoutParams();

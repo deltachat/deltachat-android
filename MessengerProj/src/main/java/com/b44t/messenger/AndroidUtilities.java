@@ -482,28 +482,6 @@ public class AndroidUtilities {
         return src;
     }
 
-    public static void setListViewEdgeEffectColor(AbsListView listView, int color) {
-        if (Build.VERSION.SDK_INT >= 21) {
-            try {
-                Field field = AbsListView.class.getDeclaredField("mEdgeGlowTop");
-                field.setAccessible(true);
-                EdgeEffect mEdgeGlowTop = (EdgeEffect) field.get(listView);
-                if (mEdgeGlowTop != null) {
-                    mEdgeGlowTop.setColor(color);
-                }
-
-                field = AbsListView.class.getDeclaredField("mEdgeGlowBottom");
-                field.setAccessible(true);
-                EdgeEffect mEdgeGlowBottom = (EdgeEffect) field.get(listView);
-                if (mEdgeGlowBottom != null) {
-                    mEdgeGlowBottom.setColor(color);
-                }
-            } catch (Exception e) {
-                FileLog.e("messenger", e);
-            }
-        }
-    }
-
     @SuppressLint("NewApi")
     public static void clearDrawableAnimation(View view) {
         if (Build.VERSION.SDK_INT < 21 || view == null) {

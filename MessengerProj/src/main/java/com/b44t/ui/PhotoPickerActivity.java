@@ -142,7 +142,6 @@ public class PhotoPickerActivity extends BaseFragment implements NotificationCen
         layoutParams.bottomMargin = singlePhoto ? 0 : AndroidUtilities.dp(48);
         listView.setLayoutParams(layoutParams);
         listView.setAdapter(listAdapter = new ListAdapter(context));
-        AndroidUtilities.setListViewEdgeEffectColor(listView, Theme.ACTION_BAR_COLOR);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {

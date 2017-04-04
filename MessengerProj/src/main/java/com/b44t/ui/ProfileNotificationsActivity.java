@@ -141,8 +141,6 @@ public class ProfileNotificationsActivity extends BaseFragment implements Notifi
         listView = new ListView(context);
         listView.setDivider(null);
         listView.setDividerHeight(0);
-        listView.setVerticalScrollBarEnabled(false);
-        AndroidUtilities.setListViewEdgeEffectColor(listView, Theme.ACTION_BAR_COLOR);
         frameLayout.addView(listView);
         final FrameLayout.LayoutParams layoutParams = (FrameLayout.LayoutParams) listView.getLayoutParams();
         layoutParams.width = LayoutHelper.MATCH_PARENT;

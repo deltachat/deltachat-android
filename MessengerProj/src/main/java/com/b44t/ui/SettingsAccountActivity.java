@@ -58,7 +58,7 @@ import com.b44t.ui.Components.LayoutHelper;
 import static android.app.ProgressDialog.STYLE_HORIZONTAL;
 
 
-public class AccountSettingsActivity extends BaseFragment implements NotificationCenter.NotificationCenterDelegate {
+public class SettingsAccountActivity extends BaseFragment implements NotificationCenter.NotificationCenterDelegate {
 
     // the list
     private ListView    listView;
@@ -117,7 +117,7 @@ public class AccountSettingsActivity extends BaseFragment implements Notificatio
     private boolean          fromIntro;
     private boolean          m_expanded = false;
 
-    public AccountSettingsActivity(Bundle args) {
+    public SettingsAccountActivity(Bundle args) {
         super();
         if( args!=null ) {
             fromIntro = args.getBoolean("fromIntro", false);
@@ -236,7 +236,6 @@ public class AccountSettingsActivity extends BaseFragment implements Notificatio
         listView = new ListView(context);
         listView.setDivider(null);
         listView.setDividerHeight(0);
-        listView.setVerticalScrollBarEnabled(false);
         listView.setDrawSelectorOnTop(true);
         frameLayout.addView(listView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.MATCH_PARENT));
         listView.setAdapter(listAdapter);

@@ -348,7 +348,7 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
             if ( MrMailbox.isConfigured()==0 ) {
                 Bundle args = new Bundle();
                 args.putBoolean("fromIntro", true);
-                actionBarLayout.addFragmentToStack(new AccountSettingsActivity(args));
+                actionBarLayout.addFragmentToStack(new SettingsAccountActivity(args));
                 drawerLayoutContainer.setAllowOpenDrawer(false, false);
             } else {
                 actionBarLayout.addFragmentToStack(new DialogsActivity(null));

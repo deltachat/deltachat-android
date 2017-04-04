@@ -96,7 +96,6 @@ public class CacheControlActivity extends BaseFragment {
         ListView listView = new ListView(context);
         listView.setDivider(null);
         listView.setDividerHeight(0);
-        listView.setVerticalScrollBarEnabled(false);
         listView.setDrawSelectorOnTop(true);
         frameLayout.addView(listView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.MATCH_PARENT));
         listView.setAdapter(listAdapter);

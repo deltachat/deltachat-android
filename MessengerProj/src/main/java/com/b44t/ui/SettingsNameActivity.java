@@ -51,7 +51,7 @@ import com.b44t.ui.Cells.TextInfoCell;
 import com.b44t.ui.Components.LayoutHelper;
 
 
-public class NameSettingsActivity extends BaseFragment {
+public class SettingsNameActivity extends BaseFragment {
 
     // the list
     private ListAdapter listAdapter;
@@ -119,7 +119,6 @@ public class NameSettingsActivity extends BaseFragment {
         ListView listView = new ListView(context);
         listView.setDivider(null);
         listView.setDividerHeight(0);
-        listView.setVerticalScrollBarEnabled(false);
         listView.setDrawSelectorOnTop(true);
         frameLayout.addView(listView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.MATCH_PARENT));
         listView.setAdapter(listAdapter);

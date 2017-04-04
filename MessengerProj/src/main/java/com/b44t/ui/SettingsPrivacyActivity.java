@@ -36,28 +36,24 @@ import com.b44t.messenger.ApplicationLoader;
 import com.b44t.messenger.LocaleController;
 import com.b44t.messenger.MrChat;
 import com.b44t.messenger.MrMailbox;
-import com.b44t.messenger.NotificationCenter;
 import com.b44t.messenger.R;
 import com.b44t.messenger.UserConfig;
 import com.b44t.ui.ActionBar.ActionBar;
 import com.b44t.ui.ActionBar.BaseFragment;
 import com.b44t.ui.Adapters.BaseFragmentAdapter;
-import com.b44t.ui.Cells.HeaderCell;
 import com.b44t.ui.Cells.TextCheckCell;
 import com.b44t.ui.Cells.TextInfoCell;
 import com.b44t.ui.Cells.TextSettingsCell;
 import com.b44t.ui.Components.LayoutHelper;
 
-public class PrivacySettingsActivity extends BaseFragment implements NotificationCenter.NotificationCenterDelegate {
+public class SettingsPrivacyActivity extends BaseFragment {
 
     private ListAdapter listAdapter;
 
-    private int privacySectionRow;
     private int e2eEncryptionRow;
     private int readReceiptsRow;
     private int blockedRow;
     private int showUnknownSendersRow;
-    private int securitySectionRow;
     private int passcodeRow;
     private int secretDetailRow;
     private int manageKeysRow;
@@ -65,36 +61,23 @@ public class PrivacySettingsActivity extends BaseFragment implements Notificatio
 
     private final int TYPE_TEXTSETTING = 0;
     private final int TYPE_TEXT_INFO   = 1;
-    private final int TYPE_HEADER      = 2;
-    private final int TYPE_CHECK_CELL  = 3;
-    private final int TYPE_COUNT       = 4;
+    private final int TYPE_CHECK_CELL  = 2;
+    private final int TYPE_COUNT       = 3;
 
     @Override
     public boolean onFragmentCreate() {
         super.onFragmentCreate();
 
-        //ContactsController.getInstance().loadPrivacySettings();
-
         rowCount = 0;
-        privacySectionRow       = -1;
         passcodeRow             = rowCount++;
         blockedRow              = rowCount++;
         showUnknownSendersRow   = rowCount++;
         readReceiptsRow         = rowCount++;
         e2eEncryptionRow        = rowCount++;
         manageKeysRow           = rowCount++;
-        securitySectionRow      = -1;
         secretDetailRow         = rowCount++;
 
-        //NotificationCenter.getInstance().addObserver(this, NotificationCenter.privacyRulesUpdated);
-
         return true;
-    }
-
-    @Override
-    public void onFragmentDestroy() {
-        super.onFragmentDestroy();
-        //NotificationCenter.getInstance().removeObserver(this, NotificationCenter.privacyRulesUpdated);
     }
 
     @Override
@@ -120,7 +103,6 @@ public class PrivacySettingsActivity extends BaseFragment implements Notificatio
         ListView listView = new ListView(context);
         listView.setDivider(null);
         listView.setDividerHeight(0);
-        listView.setVerticalScrollBarEnabled(false);
         listView.setDrawSelectorOnTop(true);
         frameLayout.addView(listView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.MATCH_PARENT));
         listView.setAdapter(listAdapter);
@@ -174,67 +156,6 @@ public class PrivacySettingsActivity extends BaseFragment implements Notificatio
     }
 
     @Override
-    public void didReceivedNotification(int id, Object... args) {
-        /*if (id == NotificationCenter.privacyRulesUpdated) {
-            if (listAdapter != null) {
-                listAdapter.notifyDataSetChanged();
-            }
-        }*/
-    }
-
-    /*
-    private String formatRulesString(boolean isGroup) {
-        ArrayList<TLRPC.PrivacyRule> privacyRules = ContactsController.getInstance().getPrivacyRules(isGroup);
-        if (privacyRules.size() == 0) {
-            return LocaleController.getString("LastSeenNobody", R.string.LastSeenNobody);
-        }
-        int type = -1;
-        int plus = 0;
-        int minus = 0;
-        for (int a = 0; a < privacyRules.size(); a++) {
-            TLRPC.PrivacyRule rule = privacyRules.get(a);
-            if (rule instanceof TLRPC.TL_privacyValueAllowUsers) {
-                plus += rule.users.size();
-            } else if (rule instanceof TLRPC.TL_privacyValueDisallowUsers) {
-                minus += rule.users.size();
-            } else if (rule instanceof TLRPC.TL_privacyValueAllowAll) {
-                type = 0;
-            } else if (rule instanceof TLRPC.TL_privacyValueDisallowAll) {
-                type = 1;
-            } else {
-                type = 2;
-            }
-        }
-        if (type == 0 || type == -1 && minus > 0) {
-            if (minus == 0) {
-                return LocaleController.getString("LastSeenEverybody", R.string.LastSeenEverybody);
-            } else {
-                return LocaleController.formatString("LastSeenEverybodyMinus", R.string.LastSeenEverybodyMinus, minus);
-            }
-        } else if (type == 2 || type == -1 && minus > 0 && plus > 0) {
-            if (plus == 0 && minus == 0) {
-                return LocaleController.getString("LastSeenContacts", R.string.LastSeenContacts);
-            } else {
-                if (plus != 0 && minus != 0) {
-                    return LocaleController.formatString("LastSeenContactsMinusPlus", R.string.LastSeenContactsMinusPlus, minus, plus);
-                } else if (minus != 0) {
-                    return LocaleController.formatString("LastSeenContactsMinus", R.string.LastSeenContactsMinus, minus);
-                } else {
-                    return LocaleController.formatString("LastSeenContactsPlus", R.string.LastSeenContactsPlus, plus);
-                }
-            }
-        } else if (type == 1 || plus > 0) {
-            if (plus == 0) {
-                return LocaleController.getString("LastSeenNobody", R.string.LastSeenNobody);
-            } else {
-                return LocaleController.formatString("LastSeenNobodyPlus", R.string.LastSeenNobodyPlus, plus);
-            }
-        }
-        return "unknown";
-    }
-    */
-
-    @Override
     public void onResume() {
         super.onResume();
         if (listAdapter != null) {
@@ -257,7 +178,7 @@ public class PrivacySettingsActivity extends BaseFragment implements Notificatio
         @Override
         public boolean isEnabled(int i) {
             int type = getItemViewType(i);
-            return type!=TYPE_HEADER && type!=TYPE_TEXT_INFO;
+            return type!=TYPE_TEXT_INFO;
         }
 
         @Override
@@ -307,16 +228,6 @@ public class PrivacySettingsActivity extends BaseFragment implements Notificatio
                     ((TextInfoCell) view).setText("");
                     view.setBackgroundResource(R.drawable.greydivider_bottom);
                 }
-            } else if (type == TYPE_HEADER) {
-                if (view == null) {
-                    view = new HeaderCell(mContext);
-                    view.setBackgroundColor(0xffffffff);
-                }
-                if (i == privacySectionRow) {
-                    ((HeaderCell) view).setText(LocaleController.getString("Settings", R.string.Settings));
-                } else if (i == securitySectionRow) {
-                    ((HeaderCell) view).setText(LocaleController.getString("SecurityTitle", R.string.SecurityTitle));
-                }
             } else if (type == TYPE_CHECK_CELL ) {
                 if (view == null) {
                     view = new TextCheckCell(mContext);
@@ -343,8 +254,6 @@ public class PrivacySettingsActivity extends BaseFragment implements Notificatio
         public int getItemViewType(int i) {
             if (i == secretDetailRow) {
                 return TYPE_TEXT_INFO;
-            } else if (i == securitySectionRow || i == privacySectionRow ) {
-                return TYPE_HEADER;
             } else if (i==showUnknownSendersRow || i==e2eEncryptionRow || i==readReceiptsRow ) {
                 return TYPE_CHECK_CELL;
             }

@@ -274,7 +274,6 @@ public class GroupCreateFinalActivity extends BaseFragment implements Notificati
         listView = new ListView(context);
         listView.setDivider(null);
         listView.setDividerHeight(0);
-        listView.setVerticalScrollBarEnabled(false);
         listView.setAdapter(listAdapter = new ListAdapter(context));
         linearLayout.addView(listView);
         layoutParams = (LinearLayout.LayoutParams) listView.getLayoutParams();

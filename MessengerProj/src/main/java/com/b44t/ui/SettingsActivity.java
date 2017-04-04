@@ -53,8 +53,6 @@ import com.b44t.ui.Cells.TextDetailSettingsCell;
 import com.b44t.ui.Cells.TextSettingsCell;
 import com.b44t.ui.Components.LayoutHelper;
 
-import java.util.Locale;
-
 
 public class SettingsActivity extends BaseFragment {
 
@@ -123,24 +121,23 @@ public class SettingsActivity extends BaseFragment {
         ListView listView = new ListView(context);
         listView.setDivider(null);
         listView.setDividerHeight(0);
-        listView.setVerticalScrollBarEnabled(false);
-        AndroidUtilities.setListViewEdgeEffectColor(listView, Theme.ACTION_BAR_COLOR);
+        listView.setDrawSelectorOnTop(true);
         frameLayout.addView(listView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.MATCH_PARENT));
         listView.setAdapter(listAdapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(final AdapterView<?> adapterView, View view, final int i, long l) {
                 if (i == usernameRow) {
-                    presentFragment(new NameSettingsActivity());
+                    presentFragment(new SettingsNameActivity());
                 }
                 else if (i == accountSettingsRow) {
-                    presentFragment(new AccountSettingsActivity(null));
+                    presentFragment(new SettingsAccountActivity(null));
                 }
                 else if (i == privacyRow) {
-                    presentFragment(new PrivacySettingsActivity());
+                    presentFragment(new SettingsPrivacyActivity());
                 }
                 else if (i == notificationRow) {
-                    presentFragment(new NotificationsSettingsActivity());
+                    presentFragment(new SettingsNotificationsActivity());
                 }
                 else if (i == backgroundRow) {
                     presentFragment(new WallpapersActivity());
