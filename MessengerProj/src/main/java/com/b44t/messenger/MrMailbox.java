@@ -165,6 +165,8 @@ public class MrMailbox {
     /* receive events
      **********************************************************************************************/
 
+    public final static int MR_EVENT_INFO                     =  100;
+    public final static int MR_EVENT_WARNING                  =  300;
     public final static int MR_EVENT_ERROR                    =  400; // INFO and WARNING are blocked in the mrwrapper.c
 
     public final static int MR_EVENT_MSGS_CHANGED             = 2000;
@@ -262,7 +264,16 @@ public class MrMailbox {
                 });
                 return 0;
 
+            case MR_EVENT_INFO:
+                Log.i("DeltaChat", CPtr2String(data2));
+                break;
+
+            case MR_EVENT_WARNING:
+                Log.w("DeltaChat", CPtr2String(data2));
+                break;
+
             case MR_EVENT_ERROR:
+                Log.e("DeltaChat", CPtr2String(data2));
                 synchronized (m_lastErrorLock) {
                     m_lastErrorCode   = (int)data1;
                     m_lastErrorString = CPtr2String(data2);

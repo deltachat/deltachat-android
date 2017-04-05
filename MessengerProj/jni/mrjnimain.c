@@ -38,7 +38,7 @@ jint JNI_OnLoad(JavaVM *vm, void *reserved) { /* this function is called automat
 	JNIEnv *env = 0;
     srand(time(NULL));
 
-	__android_log_write(ANDROID_LOG_INFO, "DeltaChat", "JNI_OnLoad() ...");
+	__android_log_print(ANDROID_LOG_INFO, "DeltaChat", "JNI_OnLoad() ..."); /* please note, that __android_log_print() may not work (eg. on LG X Cam), however, we don't have an option here. */
     
 	if ((*vm)->GetEnv(vm, (void **) &env, JNI_VERSION_1_6) != JNI_OK) {
 		return -1;
@@ -52,7 +52,7 @@ jint JNI_OnLoad(JavaVM *vm, void *reserved) { /* this function is called automat
         return -1;
     }
 
-	__android_log_write(ANDROID_LOG_INFO, "DeltaChat", "JNI_OnLoad() succeeded.");
+	__android_log_print(ANDROID_LOG_INFO, "DeltaChat", "JNI_OnLoad() succeeded.");
 
 	return JNI_VERSION_1_6;
 }

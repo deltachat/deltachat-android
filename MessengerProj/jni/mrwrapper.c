@@ -81,7 +81,7 @@ static void s_init_globals(JNIEnv *env, jclass MrMailbox_class)
 	s_global_init_done = 1;
 	
 	/* prepare calling back a Java function */
-	__android_log_write(ANDROID_LOG_INFO, "DeltaChat", "JNI: s_init_globals()..."); /* low-level logging, mrmailbox_log_*() may not be yet available */
+	__android_log_print(ANDROID_LOG_INFO, "DeltaChat", "JNI: s_init_globals()..."); /* low-level logging, mrmailbox_log_*() may not be yet available. However, please note that __android_log_print() may not work (eg. on LG X Cam) */
 
 	(*env)->GetJavaVM(env, &s_jvm); /* JNIEnv cannot be shared between threads, so we share the JavaVM object */
 	s_MrMailbox_class =  (*env)->NewGlobalRef(env, MrMailbox_class);
@@ -94,23 +94,23 @@ static void s_init_globals(JNIEnv *env, jclass MrMailbox_class)
 int mrosnative_setup_thread(mrmailbox_t* mailbox)
 {
 	if( s_jvm == NULL ) {
-		__android_log_write(ANDROID_LOG_ERROR, "DeltaChat", "Not ready, cannot setup thread."); /* low-level logging, mrmailbox_log_*() may not be yet available */
+		mrmailbox_log_error(mailbox, 0, "Not ready, cannot setup thread.");
 		return 0;
 	}
 
-	__android_log_write(ANDROID_LOG_INFO, "DeltaChat", "Attaching C-thread to Java VM...");
+	mrmailbox_log_info(mailbox, 0, "Attaching C-thread to Java VM...");
 		JNIEnv* env = NULL;
 		(*s_jvm)->AttachCurrentThread(s_jvm, &env, NULL);
-	__android_log_write(ANDROID_LOG_INFO, "DeltaChat", "Attaching ok.");
+	mrmailbox_log_info(mailbox, 0, "Attaching ok.");
 	return 1;
 }
 
 
 void mrosnative_unsetup_thread(mrmailbox_t* mailbox)
 {
-	__android_log_write(ANDROID_LOG_INFO, "DeltaChat", "Detaching C-thread from Java VM..."); /* low-level logging, mrmailbox_log_*() may not be yet available */
+	mrmailbox_log_info(mailbox, 0, "Detaching C-thread from Java VM...");
 		(*s_jvm)->DetachCurrentThread(s_jvm);
-	__android_log_write(ANDROID_LOG_INFO, "DeltaChat", "Detaching done.");
+	mrmailbox_log_info(mailbox, 0, "DeltaChat", "Detaching done.");
 }
 
 
@@ -195,6 +195,7 @@ static uintptr_t s_mailbox_callback_(mrmailbox_t* mailbox, int event, uintptr_t 
 	jlong   l;
 	JNIEnv* env;
 
+	#if 0 /* -- __android_log_print() does not log eg. on LG X Cam - but Javas Log.i() etc. do. So, we do not optimize these calls and just use the Java logging. */ 
 	if( event==MR_EVENT_INFO || event==MR_EVENT_WARNING ) {
 	    __android_log_print(event==MR_EVENT_INFO? ANDROID_LOG_INFO : ANDROID_LOG_WARN, "DeltaChat", "%s", (char*)data2); /* on problems, add `-llog` to `Android.mk` */
 		return 0; /* speed up things for info/warning */
@@ -203,6 +204,7 @@ static uintptr_t s_mailbox_callback_(mrmailbox_t* mailbox, int event, uintptr_t 
 	    __android_log_print(ANDROID_LOG_ERROR, "DeltaChat", "%s", (char*)data2);
 	    /* errors are also forwarded to Java to show them in a bubble or so */
 	}
+	#endif
 
 	if( s_jvm==NULL || s_MrMailbox_class==NULL || s_MrCallback_methodID==NULL ) {
 		return 0; /* may happen on startup */
