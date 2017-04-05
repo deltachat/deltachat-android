@@ -1,3 +1,26 @@
+/*******************************************************************************
+ *
+ *                          Messenger Android Frontend
+ *                        (C) 2013-2016 Nikolai Kudashov
+ *                           (C) 2017 Björn Petersen
+ *                    Contact: r10s@b44t.com, http://b44t.com
+ *
+ * This program is free software: you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License as published by the Free Software
+ * Foundation, either version 3 of the License, or (at your option) any later
+ * version.
+ *
+ * This program is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+ * details.
+ *
+ * You should have received a copy of the GNU General Public License along with
+ * this program.  If not, see http://www.gnu.org/licenses/ .
+ *
+ ******************************************************************************/
+
+
 #include <jni.h>
 #include <ogg/ogg.h>
 #include <stdio.h>
@@ -6,7 +29,7 @@
 #include <time.h>
 #include <opusfile.h>
 #include <math.h>
-#include "utils.h"
+#include "mrjnimain.h"
 
 typedef struct {
     int version;
@@ -115,7 +138,7 @@ static int read_chars(ROPacket *p, unsigned char *str, int nb_chars)
     return 1;
 }
 
-int opus_header_to_packet(const OpusHeader *h, unsigned char *packet, int len) {
+static int opus_header_to_packet(const OpusHeader *h, unsigned char *packet, int len) {
     int i;
     Packet p;
     unsigned char ch;
@@ -219,34 +242,34 @@ static int writeOggPage(ogg_page *page, FILE *os) {
     return written;
 }
 
-const opus_int32 bitrate = 16000;
-const opus_int32 rate = 16000;
-const opus_int32 frame_size = 960;
-const int with_cvbr = 1;
-const int max_ogg_delay = 0;
-const int comment_padding = 512;
+static const opus_int32 bitrate = 16000;
+static const opus_int32 rate = 16000;
+static const opus_int32 frame_size = 960;
+static const int with_cvbr = 1;
+static const int max_ogg_delay = 0;
+static const int comment_padding = 512;
 
-opus_int32 coding_rate = 16000;
-ogg_int32_t _packetId;
-OpusEncoder *_encoder = 0;
-uint8_t *_packet = 0;
-ogg_stream_state os;
-FILE *_fileOs = 0;
-oe_enc_opt inopt;
-OpusHeader header;
-opus_int32 min_bytes;
-int max_frame_bytes;
-ogg_packet op;
-ogg_page og;
-opus_int64 bytes_written;
-opus_int64 pages_out;
-opus_int64 total_samples;
-ogg_int64_t enc_granulepos;
-ogg_int64_t last_granulepos;
-int size_segments;
-int last_segments;
+static opus_int32 coding_rate = 16000;
+static ogg_int32_t _packetId;
+static OpusEncoder *_encoder = 0;
+static uint8_t *_packet = 0;
+static ogg_stream_state os;
+static FILE *_fileOs = 0;
+static oe_enc_opt inopt;
+static OpusHeader header;
+static opus_int32 min_bytes;
+static int max_frame_bytes;
+static ogg_packet op;
+static ogg_page og;
+static opus_int64 bytes_written;
+static opus_int64 pages_out;
+static opus_int64 total_samples;
+static ogg_int64_t enc_granulepos;
+static ogg_int64_t last_granulepos;
+static int size_segments;
+static int last_segments;
 
-void cleanupRecorder() {
+static void cleanupRecorder() {
     
     ogg_stream_flush(&os, &og);
     
@@ -282,7 +305,7 @@ void cleanupRecorder() {
     memset(&og, 0, sizeof(ogg_page));
 }
 
-int initRecorder(const char *path) {
+static int initRecorder(const char *path) {
     cleanupRecorder();
     
     if (!path) {
@@ -421,7 +444,7 @@ int initRecorder(const char *path) {
     return 1;
 }
 
-int writeFrame(uint8_t *framePcmBytes, unsigned int frameByteCount) {
+static int writeFrame(uint8_t *framePcmBytes, unsigned int frameByteCount) {
     int cur_frame_size = frame_size;
     _packetId++;
     
@@ -527,15 +550,15 @@ JNIEXPORT void Java_com_b44t_messenger_MediaController_stopRecord(JNIEnv *env, j
 }
 
 //player
-OggOpusFile *_opusFile;
-int _isSeekable = 0;
-int64_t _totalPcmDuration = 0;
-int64_t _currentPcmOffset = 0;
-int _finished = 0;
+static OggOpusFile *_opusFile;
+static int _isSeekable = 0;
+static int64_t _totalPcmDuration = 0;
+static int64_t _currentPcmOffset = 0;
+static int _finished = 0;
 static const int playerBuffersCount = 3;
 static const int playerSampleRate = 48000;
 
-void cleanupPlayer() {
+static void cleanupPlayer() {
     if (_opusFile) {
         op_free(_opusFile);
         _opusFile = 0;
@@ -546,7 +569,7 @@ void cleanupPlayer() {
     _finished = 0;
 }
 
-int seekPlayer(float position) {
+static int seekPlayer(float position) {
     if (!_opusFile || !_isSeekable || position < 0) {
         return 0;
     }
@@ -559,7 +582,7 @@ int seekPlayer(float position) {
     return result == OPUS_OK;
 }
 
-int initPlayer(const char *path) {
+static int initPlayer(const char *path) {
     cleanupPlayer();
     
     int openError = OPUS_OK;
@@ -576,7 +599,7 @@ int initPlayer(const char *path) {
     return 1;
 }
 
-void fillBuffer(uint8_t *buffer, int capacity, int *args) {
+static void fillBuffer(uint8_t *buffer, int capacity, int *args) {
     if (_opusFile) {
         args[1] = max(0, op_pcm_tell(_opusFile));
         
@@ -735,7 +758,7 @@ JNIEXPORT jbyteArray Java_com_b44t_messenger_MediaController_getWaveform2(JNIEnv
     return result;
 }
 
-int16_t *sampleBuffer = NULL;
+static int16_t *sampleBuffer = NULL;
 
 
 JNIEXPORT jbyteArray Java_com_b44t_messenger_MediaController_getWaveform(JNIEnv *env, jclass class, jstring path) {
@@ -819,3 +842,4 @@ JNIEXPORT jbyteArray Java_com_b44t_messenger_MediaController_getWaveform(JNIEnv 
     
     return result;
 }
+

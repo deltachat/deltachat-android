@@ -1,5 +1,28 @@
+/*******************************************************************************
+ *
+ *                          Messenger Android Frontend
+ *                        (C) 2013-2016 Nikolai Kudashov
+ *                           (C) 2017 Björn Petersen
+ *                    Contact: r10s@b44t.com, http://b44t.com
+ *
+ * This program is free software: you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License as published by the Free Software
+ * Foundation, either version 3 of the License, or (at your option) any later
+ * version.
+ *
+ * This program is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+ * details.
+ *
+ * You should have received a copy of the GNU General Public License along with
+ * this program.  If not, see http://www.gnu.org/licenses/ .
+ *
+ ******************************************************************************/
+
+
 #include <jni.h>
-#include <utils.h>
+#include "mrjnimain.h"
 #include <libyuv.h>
 #include <android/bitmap.h>
 #include <cstdint>
@@ -53,19 +76,14 @@ typedef struct VideoInfo {
     AVPacket orig_pkt;
 };
 
-jobject makeGlobarRef(JNIEnv *env, jobject object) {
-    if (object) {
-        return env->NewGlobalRef(object);
-    }
-    return 0;
-}
 
-int gifvideoOnJNILoad(JavaVM *vm, JNIEnv *env) {
+int gifvideoOnJNILoad(JavaVM *vm, JNIEnv *env) { /* called from JNI_OnLoad() */
     av_register_all();
     return 0;
 }
 
-int open_codec_context(int *stream_idx, AVFormatContext *fmt_ctx, enum AVMediaType type) {
+
+static int open_codec_context(int *stream_idx, AVFormatContext *fmt_ctx, enum AVMediaType type) {
     int ret;
     AVStream *st;
     AVCodecContext *dec_ctx = NULL;
@@ -97,7 +115,7 @@ int open_codec_context(int *stream_idx, AVFormatContext *fmt_ctx, enum AVMediaTy
     return 0;
 }
     
-int decode_packet(VideoInfo *info, int *got_frame) {
+static int decode_packet(VideoInfo *info, int *got_frame) {
     int ret = 0;
     int decoded = info->pkt.size;
     
@@ -263,4 +281,5 @@ jint Java_com_b44t_ui_Components_AnimatedFileDrawable_getVideoFrame(JNIEnv *env,
     }
     return 0;
 }
-}
+
+} /* extern "C" */

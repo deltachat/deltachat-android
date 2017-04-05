@@ -23,8 +23,8 @@
  * Purpose: The C part of the Java<->C Wrapper, see also MrMailbox.java
  *
  ******************************************************************************/
- 
- 
+
+
 #include <jni.h>
 #include <android/log.h>
 #include "messenger-backend/src/mrmailbox.h"
@@ -81,6 +81,8 @@ static void s_init_globals(JNIEnv *env, jclass MrMailbox_class)
 	s_global_init_done = 1;
 	
 	/* prepare calling back a Java function */
+	__android_log_write(ANDROID_LOG_INFO, "DeltaChat", "JNI: s_init_globals()..."); /* low-level logging, mrmailbox_log_*() may not be yet available */
+
 	(*env)->GetJavaVM(env, &s_jvm); /* JNIEnv cannot be shared between threads, so we share the JavaVM object */
 	s_MrMailbox_class =  (*env)->NewGlobalRef(env, MrMailbox_class);
 	s_MrCallback_methodID = (*env)->GetStaticMethodID(env, MrMailbox_class, "MrCallback","(IJJ)J" /*signature as "(param)ret" with I=int, J=long*/ );
@@ -92,23 +94,23 @@ static void s_init_globals(JNIEnv *env, jclass MrMailbox_class)
 int mrosnative_setup_thread(mrmailbox_t* mailbox)
 {
 	if( s_jvm == NULL ) {
-		mrmailbox_log_error(mailbox, 0, "Not ready, cannot setup thread.");
+		__android_log_write(ANDROID_LOG_ERROR, "DeltaChat", "Not ready, cannot setup thread."); /* low-level logging, mrmailbox_log_*() may not be yet available */
 		return 0;
 	}
 
-	mrmailbox_log_info(mailbox, 0, "Attaching C-thread to Java VM...");
+	__android_log_write(ANDROID_LOG_INFO, "DeltaChat", "Attaching C-thread to Java VM...");
 		JNIEnv* env = NULL;
 		(*s_jvm)->AttachCurrentThread(s_jvm, &env, NULL);
-	mrmailbox_log_info(mailbox, 0, "Attaching ok.");
+	__android_log_write(ANDROID_LOG_INFO, "DeltaChat", "Attaching ok.");
 	return 1;
 }
 
 
 void mrosnative_unsetup_thread(mrmailbox_t* mailbox)
 {
-	mrmailbox_log_info(mailbox, 0, "Detaching C-thread from Java VM...");
+	__android_log_write(ANDROID_LOG_INFO, "DeltaChat", "Detaching C-thread from Java VM..."); /* low-level logging, mrmailbox_log_*() may not be yet available */
 		(*s_jvm)->DetachCurrentThread(s_jvm);
-	mrmailbox_log_info(mailbox, 0, "Detaching done.");
+	__android_log_write(ANDROID_LOG_INFO, "DeltaChat", "Detaching done.");
 }
 
 

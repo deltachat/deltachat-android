@@ -1598,9 +1598,8 @@ ifeq ($(TARGET_ARCH_ABI),armeabi-v7a)
 endif
 
 LOCAL_SRC_FILES     += \
-./jni.c \
+./mrjnimain.c \
 ./audio.c \
-./utils.c \
 ./image.c \
 ./video.c \
 ./gifvideo.cpp \

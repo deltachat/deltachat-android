@@ -21,14 +21,13 @@
  ******************************************************************************/
 
 
-#ifndef __IMAGE_H__
-#define __IMAGE_H__
+#ifndef __GIFVIDEO_H__
+#define __GIFVIDEO_H__
 
 
 #include <jni.h>
 
-jint imageOnJNILoad(JavaVM *vm, void *reserved, JNIEnv *env);
+int gifvideoOnJNILoad(JavaVM *vm, JNIEnv *env);
 
 
-#endif /* __IMAGE_H__ */
-
+#endif /* __GIFVIDEO_H__ */

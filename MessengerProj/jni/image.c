@@ -1,3 +1,26 @@
+/*******************************************************************************
+ *
+ *                          Messenger Android Frontend
+ *                        (C) 2013-2016 Nikolai Kudashov
+ *                           (C) 2017 Björn Petersen
+ *                    Contact: r10s@b44t.com, http://b44t.com
+ *
+ * This program is free software: you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License as published by the Free Software
+ * Foundation, either version 3 of the License, or (at your option) any later
+ * version.
+ *
+ * This program is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+ * details.
+ *
+ * You should have received a copy of the GNU General Public License along with
+ * this program.  If not, see http://www.gnu.org/licenses/ .
+ *
+ ******************************************************************************/
+
+
 #include <jni.h>
 #include <stdio.h>
 #include <setjmp.h>
@@ -5,21 +28,35 @@
 #include <android/bitmap.h>
 #include <libwebp/webp/decode.h>
 #include <libwebp/webp/encode.h>
-#include "utils.h"
+#include "mrjnimain.h"
 #include "image.h"
 
-jclass jclass_NullPointerException;
-jclass jclass_RuntimeException;
 
-jclass jclass_Options;
-jfieldID jclass_Options_inJustDecodeBounds;
-jfieldID jclass_Options_outHeight;
-jfieldID jclass_Options_outWidth;
+static jclass jclass_NullPointerException;
+static jclass jclass_RuntimeException;
 
-const uint32_t PGPhotoEnhanceHistogramBins = 256;
-const uint32_t PGPhotoEnhanceSegments = 4;
+static jclass jclass_Options;
+static jfieldID jclass_Options_inJustDecodeBounds;
+static jfieldID jclass_Options_outHeight;
+static jfieldID jclass_Options_outWidth;
 
-jclass createGlobarRef(JNIEnv *env, jclass class) {
+static const uint32_t PGPhotoEnhanceHistogramBins = 256;
+static const uint32_t PGPhotoEnhanceSegments = 4;
+
+static void throwException(JNIEnv *env, char *format, ...) {
+    jclass exClass = (*env)->FindClass(env, "java/lang/UnsupportedOperationException");
+    if (!exClass) {
+        return;
+	}
+    char dest[256];
+    va_list argptr;
+    va_start(argptr, format);
+    vsprintf(dest, format, argptr);
+    va_end(argptr);
+    (*env)->ThrowNew(env, exClass, dest);
+}
+
+static jclass createGlobalRef(JNIEnv *env, jclass class) {
     if (class) {
         return (*env)->NewGlobalRef(env, class);
     }
@@ -27,16 +64,16 @@ jclass createGlobarRef(JNIEnv *env, jclass class) {
 }
 
 jint imageOnJNILoad(JavaVM *vm, void *reserved, JNIEnv *env) {
-    jclass_NullPointerException = createGlobarRef(env, (*env)->FindClass(env, "java/lang/NullPointerException"));
+    jclass_NullPointerException = createGlobalRef(env, (*env)->FindClass(env, "java/lang/NullPointerException"));
     if (jclass_NullPointerException == 0) {
         return -1;
     }
-    jclass_RuntimeException = createGlobarRef(env, (*env)->FindClass(env, "java/lang/RuntimeException"));
+    jclass_RuntimeException = createGlobalRef(env, (*env)->FindClass(env, "java/lang/RuntimeException"));
     if (jclass_RuntimeException == 0) {
         return -1;
     }
     
-    jclass_Options = createGlobarRef(env, (*env)->FindClass(env, "android/graphics/BitmapFactory$Options"));
+    jclass_Options = createGlobalRef(env, (*env)->FindClass(env, "android/graphics/BitmapFactory$Options"));
     if (jclass_Options == 0) {
         return -1;
     }
@@ -262,7 +299,7 @@ typedef struct my_error_mgr {
 } *my_error_ptr;
 
 
-METHODDEF(void) my_error_exit(j_common_ptr cinfo) {
+METHODDEF(void) my_jpeglib_error_exit(j_common_ptr cinfo) {
     my_error_ptr myerr = (my_error_ptr) cinfo->err;
     (*cinfo->err->output_message) (cinfo);
     longjmp(myerr->setjmp_buffer, 1);
@@ -424,7 +461,7 @@ JNIEXPORT void Java_com_b44t_messenger_Utilities_loadBitmap(JNIEnv *env, jclass 
             struct jpeg_decompress_struct cinfo;
 
             cinfo.err = jpeg_std_error(&jerr.pub);
-            jerr.pub.error_exit = my_error_exit;
+            jerr.pub.error_exit = my_jpeglib_error_exit;
             
             if (!setjmp(jerr.setjmp_buffer)) {
                 jpeg_create_decompress(&cinfo);
