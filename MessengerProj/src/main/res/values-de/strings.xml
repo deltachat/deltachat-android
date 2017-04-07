@@ -260,7 +260,8 @@
     <string name="PermissionContacts">Für eine einfache Kontaktaufnahme, benötigt Delta Chat Zugriff auf die Kontakte. Die Daten werden dabei nur lokal verarbeitet und zu keinem Server oder Dienst übertragen.</string>
     <string name="PermissionStorage">Um Bilder, Videos, Musik und Dateien senden und speichern zu können, benötigt Delta Chat Zugriff auf den Speicher.</string>
     <string name="PermissionNoAudio">Um Sprachnachrichten versenden zu können, benötigt Delta Chat Zugriff auf das Mikrofon.</string>
-    <string name="PermissionOpenSettings">Einstellungen</string>
+    <string name="PermissionBattery">Um Nachrichten von Ihrem Server empfangen zu können, muss Delta Chat im Hintergrund ausgeführt werden.\n\nDiese normale und batteriesparende Vorgehensweise wird von den Akku-Optimierungen unterbunden.\n\nEinstellungen anpassen?</string>
+    <string name="PermissionOpenSettings">Einstellungen anpassen</string>
     <!--Intro view-->
     <string name="Intro1Headline">Delta Chat</string>
     <string name="Intro1Message">Der Messenger mit der <![CDATA[<b>größten Reichweite</b>]]> der Welt.<![CDATA[<br/><b>Kostenlos</b>]]> und <![CDATA[<b>sicher</b>]]>.</string>

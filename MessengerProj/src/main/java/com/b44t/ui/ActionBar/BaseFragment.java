@@ -60,7 +60,8 @@ public class BaseFragment {
             RC13_AVATAR_IMAGE_CAPTURE          = 13,
             RC14_AVATAR_GET_CONTENT            = 14,
             RC21_CHAT_PICK_WO_COMPR            = 21,
-            RC500_PHOTO_VIEW                   = 500;
+            RC500_PHOTO_VIEW                   = 500,
+            RC600_BATTERY_REQUEST_DONE         = 600;
 
     public BaseFragment() {
         classGuid = ApplicationLoader.generateClassGuid();

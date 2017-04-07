@@ -32,11 +32,16 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.graphics.Outline;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.PowerManager;
+import android.provider.Settings;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.MotionEvent;
@@ -53,6 +58,7 @@ import android.widget.TextView;
 
 import com.b44t.messenger.AndroidUtilities;
 import com.b44t.messenger.ApplicationLoader;
+import com.b44t.messenger.FileLog;
 import com.b44t.messenger.ImageLoader;
 import com.b44t.messenger.LocaleController;
 import com.b44t.messenger.MrChat;
@@ -516,30 +522,107 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
             dialogsSearchAdapter.notifyDataSetChanged();
         }
         if (checkPermission && !onlySelect && Build.VERSION.SDK_INT >= 23) {
-            Activity activity = getParentActivity();
-            if (activity != null) {
-                checkPermission = false;
-                if (activity.checkSelfPermission(Manifest.permission.READ_CONTACTS) != PackageManager.PERMISSION_GRANTED || activity.checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-                    askForPermissons();
+            checkPermission = false;
+            askForIgnoreBatteryOptimization(); // after that, requestForOtherPermissions() is called
+        }
+    }
+
+    @TargetApi(Build.VERSION_CODES.M)
+    private void askForIgnoreBatteryOptimization() {
+        boolean requestIgnoreActivityStarted = false;
+
+        try {
+            String packageName = ApplicationLoader.applicationContext.getPackageName();
+            PowerManager pm = (PowerManager) ApplicationLoader.applicationContext.getSystemService(Context.POWER_SERVICE);
+            if (!pm.isIgnoringBatteryOptimizations(packageName)) {
+
+                // As FCM (was: GCM) does not support IMAP servers and there are other server involved,
+                // the only possibility for us to get notified about new messages, is to keep the connection to the server alive.
+                // This is done by ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS.
+                //
+                // This is an "Acceptable Use Cases for Whitelisting", see
+                // https://developer.android.com/training/monitoring-device-state/doze-standby.html#whitelisting-cases
+                // "Instant messaging, chat, or calling app; enterprise VOIP apps |
+                //  No, can't use FCM because of technical dependency on another messaging service or Doze and App Standby break the core function of the app |
+                //  Acceptable"
+                Intent intent = new Intent();
+                intent.setAction(Settings.ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS);
+                intent.setData(Uri.parse("package:" + packageName));
+                getParentActivity().startActivityForResult(intent, BaseFragment.RC600_BATTERY_REQUEST_DONE);
+                requestIgnoreActivityStarted = true;
+            }
+        } catch (Exception e) {
+            Log.e("DeltaChat", "cannot ignore battery optimizations.", e);
+        }
+
+        if( !requestIgnoreActivityStarted ) {
+            askForOtherPermissons(); // otherwise, it gets started on RC600_BATTERY_REQUEST_DONE
+        }
+    }
+
+    @Override
+    public void onActivityResultFragment(int requestCode, int resultCode, Intent data) {
+        if (requestCode == BaseFragment.RC600_BATTERY_REQUEST_DONE) {
+            boolean requestIgnoreActivityMaybeRestarted = false;
+
+            if( Build.VERSION.SDK_INT >= 23 ) {
+                PowerManager pm = (PowerManager) ApplicationLoader.applicationContext.getSystemService(Context.POWER_SERVICE);
+                if (!pm.isIgnoringBatteryOptimizations(ApplicationLoader.applicationContext.getPackageName())) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
+                    builder.setMessage(AndroidUtilities.replaceTags(ApplicationLoader.applicationContext.getString(R.string.PermissionBattery)));
+                    builder.setPositiveButton(ApplicationLoader.applicationContext.getString(R.string.OK), new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            askForIgnoreBatteryOptimization();
+                        }
+                    });
+                    builder.setCancelable(false);
+                    builder.setNegativeButton(ApplicationLoader.applicationContext.getString(R.string.Cancel), new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            askForOtherPermissons();
+                        }
+                    });
+                    builder.show();
+                    requestIgnoreActivityMaybeRestarted  = true;
+
+                    /*-- this is an alternative implementation to the alert above
+                    IF we use this, we should handle the situation, ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS cannot be started due to a missing REQUEST_IGNORE_BATTERY_OPTIMIZATIONS permission
+                    checkPermission = true;
+                    getParentActivity().finish();
+                    return;
+                    */
                 }
+            }
+
+            if( !requestIgnoreActivityMaybeRestarted ) {
+                askForOtherPermissons();
             }
         }
     }
 
     @TargetApi(Build.VERSION_CODES.M)
-    private void askForPermissons() {
+    private void askForOtherPermissons() {
         Activity activity = getParentActivity();
         if (activity == null) {
             return;
         }
+
+        if (activity.checkSelfPermission(Manifest.permission.READ_CONTACTS) == PackageManager.PERMISSION_GRANTED
+         && activity.checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
+            return; // everything is fine
+        }
+
         ArrayList<String> permissons = new ArrayList<>();
         if (activity.checkSelfPermission(Manifest.permission.READ_CONTACTS) != PackageManager.PERMISSION_GRANTED) {
             permissons.add(Manifest.permission.READ_CONTACTS);
         }
+
         if (activity.checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
             permissons.add(Manifest.permission.READ_EXTERNAL_STORAGE);
             permissons.add(Manifest.permission.WRITE_EXTERNAL_STORAGE);
         }
+
         String[] items = permissons.toArray(new String[permissons.size()]);
         activity.requestPermissions(items, LaunchActivity.REQ_CONTACT_N_STORAGE_PERMISON_ID);
     }

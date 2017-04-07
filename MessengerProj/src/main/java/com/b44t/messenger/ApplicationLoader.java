@@ -203,20 +203,7 @@ public class ApplicationLoader extends Application {
         UserConfig.loadConfig();
 
         // create a timer that wakes up the CPU from time to time
-        try
-        {
-            Intent intent = new Intent(applicationContext, TimerReceiver.class);
-            PendingIntent alarmIntent = PendingIntent.getBroadcast(applicationContext, 0, intent, 0);
-
-            AlarmManager alarmManager = (AlarmManager)applicationContext.getSystemService(Activity.ALARM_SERVICE);
-            alarmManager.setInexactRepeating(AlarmManager.ELAPSED_REALTIME_WAKEUP,
-                    SystemClock.elapsedRealtime()+60*1000,
-                    60*1000,
-                    alarmIntent);
-        }
-        catch( Exception e) {
-            Log.e("DeltaChat", "Cannot create alarm.");
-        }
+        TimerReceiver.scheduleNextAlarm();
 
         // make sure, the notifications for the "deaddrop" dialog are muted by default
         SharedPreferences notificationPreferences = ApplicationLoader.applicationContext.getSharedPreferences("Notifications", Activity.MODE_PRIVATE);
@@ -273,6 +260,6 @@ public class ApplicationLoader extends Application {
 
     public static void stayAwakeForAMoment()
     {
-        stayAwakeWakeLock.acquire(10*60*1000); // 10 Minutes to wait for "after chat" messages, after that, we sleep most time, see wakeupWakeLock
+        stayAwakeWakeLock.acquire(1*60*1000); // 1 Minute to wait for "after chat" messages, after that, we sleep most time, see wakeupWakeLock
     }
 }

@@ -31,6 +31,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.pm.PackageInfo;
 import android.os.Build;
+import android.os.PowerManager;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -177,7 +178,7 @@ public class SettingsActivity extends BaseFragment {
     private String getAndroidInfo()
     {
         String abi = "ErrAbi";
-        int versionCode = 0;
+        int versionCode = 0, ignoreBatteryOptimizations = -1;
         try {
             PackageInfo pInfo = ApplicationLoader.applicationContext.getPackageManager().getPackageInfo(ApplicationLoader.applicationContext.getPackageName(), 0);
             versionCode = pInfo.versionCode;
@@ -195,6 +196,10 @@ public class SettingsActivity extends BaseFragment {
                     abi = "universal";
                     break;
             }
+            if( Build.VERSION.SDK_INT >= 23 ) {
+                PowerManager pm = (PowerManager) ApplicationLoader.applicationContext.getSystemService(Context.POWER_SERVICE);
+                ignoreBatteryOptimizations = pm.isIgnoringBatteryOptimizations(ApplicationLoader.applicationContext.getPackageName())? 1 : 0;
+            }
         } catch (Exception e) {}
 
         return      "SDK_INT="       + Build.VERSION.SDK_INT
@@ -202,6 +207,7 @@ public class SettingsActivity extends BaseFragment {
                 + "\nMODEL="         + Build.MODEL
                 + "\nDEBUG_VERSION=" + BuildVars.DEBUG_VERSION
                 + "\nABI="           + abi // ABI = Application Binary Interface
+                + "\nignoreBatteryOptimizations=" + ignoreBatteryOptimizations
                 + "\nversionCode="   + versionCode;
     }
 

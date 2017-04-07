@@ -260,7 +260,13 @@
     <string name="PermissionContacts">Delta Chat needs access to your contacts so that you can connect with your friends across all your devices.</string>
     <string name="PermissionStorage">Delta Chat needs access to your storage so that you can send and save photos, videos, music and other media.</string>
     <string name="PermissionNoAudio">Delta Chat needs access to your microphone so that you can send voice messages.</string>
-    <string name="PermissionOpenSettings">Settings</string>
+
+    <!-- Translators: PermissionBattery should refer to the system dialog
+    "Ignore battery optimizations?
+    Let app Delta Chat stay connected in the backgound? This may use more battery."  -->
+    <string name="PermissionBattery">Delta Chat needs to stay connected in the background for receiving messages from your server.\n\nThis is a normal, battery-saving and very usual behaviour, which, however, is blocked by the battery optimizations.\n\nAdapt settings?</string>
+
+    <string name="PermissionOpenSettings">Adapt settings</string>
     <!--Intro view-->
     <string name="Intro1Headline">Delta Chat</string>
     <string name="Intro1Message">The messenger with the <![CDATA[<b>largest range</b>]]> in the world.<![CDATA[<br/><b>Free</b>]]> and <![CDATA[<b>save</b>]]>.</string>
