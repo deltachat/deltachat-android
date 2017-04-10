@@ -158,7 +158,7 @@ public class ImageLoader {
                 try {
                     stream.close();
                 } catch (Exception e) {
-                    FileLog.e("messenger", e);
+
                 }
                 final BitmapDrawable bitmapDrawable = new BitmapDrawable(originalBitmap);
                 AndroidUtilities.runOnUIThread(new Runnable() {
@@ -175,7 +175,7 @@ public class ImageLoader {
                     }
                 });
             } catch (Throwable e) {
-                FileLog.e("messenger", e);
+
                 removeTask();
             }
         }
@@ -237,13 +237,13 @@ public class ImageLoader {
                         }
                         randomAccessFile.close();
                     } catch (Exception e) {
-                        FileLog.e("messenger", e);
+
                     } finally {
                         if (randomAccessFile != null) {
                             try {
                                 randomAccessFile.close();
                             } catch (Exception e) {
-                                FileLog.e("messenger", e);
+
                             }
                         }
                     }
@@ -328,7 +328,7 @@ public class ImageLoader {
                             }
                         }
                     } catch (Throwable e) {
-                        FileLog.e("messenger", e);
+
                     }
                 } else {
                     try {
@@ -577,7 +577,7 @@ public class ImageLoader {
                 trackAllocation = cl.getMethod("trackExternalAllocation", new Class[]{long.class});
                 trackFree = cl.getMethod("trackExternalFree", new Class[]{long.class});
             } catch (Exception e) {
-                FileLog.e("messenger", e);
+
                 runtime = null;
                 trackAllocation = null;
                 trackFree = null;
@@ -1170,7 +1170,7 @@ public class ImageLoader {
                 try {
                     path = AndroidUtilities.getPath(uri);
                 } catch (Throwable e) {
-                    FileLog.e("messenger", e);
+
                 }
             }
         }
@@ -1184,7 +1184,7 @@ public class ImageLoader {
                 inputStream.close();
                 inputStream = ApplicationLoader.applicationContext.getContentResolver().openInputStream(uri);
             } catch (Throwable e) {
-                FileLog.e("messenger", e);
+
                 return null;
             }
         }
@@ -1225,7 +1225,7 @@ public class ImageLoader {
                         break;
                 }
             } catch (Throwable e) {
-                FileLog.e("messenger", e);
+
             }
         }
 
@@ -1244,7 +1244,7 @@ public class ImageLoader {
                     }
                 }
             } catch (Throwable e) {
-                FileLog.e("messenger", e);
+
                 ImageLoader.getInstance().clearMemory();
                 try {
                     if (b == null) {
@@ -1278,12 +1278,12 @@ public class ImageLoader {
                     }
                 }
             } catch (Throwable e) {
-                FileLog.e("messenger", e);
+
             } finally {
                 try {
                     inputStream.close();
                 } catch (Throwable e) {
-                    FileLog.e("messenger", e);
+
                 }
             }
         }
@@ -1386,7 +1386,7 @@ public class ImageLoader {
         try {
             return scaleAndSaveImageInternal(cacheFile, bitmap, w, h, photoW, photoH, scaleFactor, quality, cache, scaleAnyway);
         } catch (Throwable e) {
-            FileLog.e("messenger", e);
+
             ImageLoader.getInstance().clearMemory();
             System.gc();
             try {
@@ -1450,7 +1450,7 @@ public class ImageLoader {
                     writeFile.write(photoSize.bytes);
                     writeFile.close();
                 } catch (Exception e) {
-                    FileLog.e("messenger", e);
+
                 }
             }
             TLRPC.TL_photoSize newPhotoSize = new TLRPC.TL_photoSize();

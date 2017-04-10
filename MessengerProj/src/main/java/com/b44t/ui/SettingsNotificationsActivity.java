@@ -226,7 +226,7 @@ public class SettingsNotificationsActivity extends BaseFragment implements Notif
                         tmpIntent.putExtra(RingtoneManager.EXTRA_RINGTONE_EXISTING_URI, currentSound);
                         startActivityForResult(tmpIntent, i);
                     } catch (Exception e) {
-                        FileLog.e("messenger", e);
+
                     }
                 } else if (i == resetNotificationsRow) {
 

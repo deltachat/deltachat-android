@@ -55,7 +55,7 @@ public class SizeNotifierFrameLayout extends FrameLayout {
         try {
             backgroundDrawable = getResources().getDrawable(resourceId);
         } catch (Throwable e) {
-            FileLog.e("messenger", e);
+
         }
     }
 

@@ -832,7 +832,7 @@ public class ChatAttachAlert extends BottomSheet implements NotificationCenter.N
             try {
                 animators.add(ViewAnimationUtils.createCircularReveal(containerView, finalRevealX, revealY, open ? 0 : finalRevealRadius, open ? finalRevealRadius : 0));
             } catch (Exception e) {
-                FileLog.e("messenger", e);
+
             }
             animatorSet.setDuration(320);
         } else {
@@ -866,7 +866,7 @@ public class ChatAttachAlert extends BottomSheet implements NotificationCenter.N
                         try {
                             dismissInternal();
                         } catch (Exception e) {
-                            FileLog.e("messenger", e);
+
                         }
                     }
                 }

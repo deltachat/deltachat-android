@@ -56,7 +56,7 @@ public class Utilities {
             sUrandomIn.close();
             random.setSeed(buffer);
         } catch (Exception e) {
-            FileLog.e("messenger", e);
+
         }
     }
 
@@ -81,7 +81,7 @@ public class Utilities {
                 val = Integer.parseInt(num);
             }
         } catch (Exception e) {
-            FileLog.e("messenger", e);
+
         }
         return val;
     }
@@ -98,7 +98,7 @@ public class Utilities {
                 val = Long.parseLong(num);
             }
         } catch (Exception e) {
-            FileLog.e("messenger", e);
+
         }
         return val;
     }
@@ -131,7 +131,7 @@ public class Utilities {
             md.update(convertme, offset, len);
             return md.digest();
         } catch (Exception e) {
-            FileLog.e("messenger", e);
+
         }
         return new byte[20];
     }
@@ -146,7 +146,7 @@ public class Utilities {
             md.update(convertme);
             return md.digest();
         } catch (Exception e) {
-            FileLog.e("messenger", e);
+
         } finally {
             convertme.limit(oldl);
             convertme.position(oldp);
@@ -168,7 +168,7 @@ public class Utilities {
             md.update(convertme, offset, len);
             return md.digest();
         } catch (Exception e) {
-            FileLog.e("messenger", e);
+
         }
         return null;
     }
@@ -191,7 +191,7 @@ public class Utilities {
             }
             return sb.toString();
         } catch (java.security.NoSuchAlgorithmException e) {
-            FileLog.e("messenger", e);
+
         }
         return null;
     }

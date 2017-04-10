@@ -117,7 +117,7 @@ public class Emoji {
                     }
                 }
             } catch (Exception e) {
-                FileLog.e("messenger", e);
+
             }
 
 
@@ -434,7 +434,7 @@ public class Emoji {
 //                }
 //            }
 //        } catch (Exception e) {
-//            FileLog.e("messenger", e);
+//
 //            return cs;
 //        }
         return s;

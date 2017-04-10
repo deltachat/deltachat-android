@@ -142,7 +142,7 @@ public class AnimatedFileDrawable extends BitmapDrawable implements Animatable {
                         try {
                             backgroundBitmap = Bitmap.createBitmap(metaData[0], metaData[1], Bitmap.Config.ARGB_8888);
                         } catch (Throwable e) {
-                            FileLog.e("messenger", e);
+
                         }
                         if (backgroundShader == null && backgroundBitmap != null && roundRadius != 0) {
                             backgroundShader = new BitmapShader(backgroundBitmap, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
@@ -152,7 +152,7 @@ public class AnimatedFileDrawable extends BitmapDrawable implements Animatable {
                         getVideoFrame(nativePtr, backgroundBitmap, metaData);
                     }
                 } catch (Throwable e) {
-                    FileLog.e("messenger", e);
+
                 }
             }
             AndroidUtilities.runOnUIThread(uiRunnable);

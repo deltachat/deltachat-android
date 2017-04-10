@@ -1191,7 +1191,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 }
                 startActivityForResult(takePictureIntent, RC0_CHAT_IMAGE_CAPTURE);
             } catch (Exception e) {
-                FileLog.e("messenger", e);
+
             }
         } else if (which == ChatAttachAlert.ATTACH_BUTTON_IDX_GALLERY ) {
             if (Build.VERSION.SDK_INT >= 23 && getParentActivity().checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
@@ -1222,7 +1222,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
 
                         startActivityForResult(chooserIntent, RC1_CHAT_PICK);
                     } catch (Exception e) {
-                        FileLog.e("messenger", e);
+
                     } */
                 }
 
@@ -1251,7 +1251,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 }
                 startActivityForResult(takeVideoIntent, RC2_CHAT_VIDEO_CAPTURE);
             } catch (Exception e) {
-                FileLog.e("messenger", e);
+
             }
         } else if (which == ChatAttachAlert.ATTACH_BUTTON_IDX_FILE ) {
             if (Build.VERSION.SDK_INT >= 23 && getParentActivity().checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
@@ -1274,7 +1274,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                         photoPickerIntent.setType("*/*");
                         startActivityForResult(photoPickerIntent, RC21_CHAT_PICK_WO_COMPR);
                     } catch (Exception e) {
-                        FileLog.e("messenger", e);
+
                     }
                 }
             });
@@ -1687,7 +1687,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                             break;
                     }
                 } catch (Exception e) {
-                    FileLog.e("messenger", e);
+
                 }
                 arrayList.add(new MediaController.PhotoEntry(0, 0, 0, currentPicturePath, orientation, false));
 
@@ -1711,7 +1711,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     try {
                         videoPath = AndroidUtilities.getPath(uri);
                     } catch (Exception e) {
-                        FileLog.e("messenger", e);
+
                     }
                     if (videoPath == null) {
                         showAttachmentError();
@@ -1787,7 +1787,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                             uri = Uri.parse(secondExtraction);
                         }
                     } catch (Exception e) {
-                        FileLog.e("messenger", e);
+
                     }
                 }
                 String tempPath = AndroidUtilities.getPath(uri);

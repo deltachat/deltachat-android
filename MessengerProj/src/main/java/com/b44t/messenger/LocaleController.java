@@ -182,14 +182,14 @@ public class LocaleController {
             }
             applyLanguage(currentInfo, override);
         } catch (Exception e) {
-            FileLog.e("messenger", e);
+            
         }
 
         try {
             IntentFilter timezoneFilter = new IntentFilter(Intent.ACTION_TIMEZONE_CHANGED);
             ApplicationLoader.applicationContext.registerReceiver(new TimeZoneChangedReceiver(), timezoneFilter);
         } catch (Exception e) {
-            FileLog.e("messenger", e);
+
         }
     }
 
@@ -271,7 +271,7 @@ public class LocaleController {
                 changingConfiguration = false;
             }
         } catch (Exception e) {
-            FileLog.e("messenger", e);
+
             changingConfiguration = false;
         }
         recreateFormatters();
@@ -305,7 +305,7 @@ public class LocaleController {
                 return String.format(value, args);
             }
         } catch (Exception e) {
-            FileLog.e("messenger", e);
+
             return "LOC_ERR: " + key;
         }
     }
@@ -318,7 +318,7 @@ public class LocaleController {
                 return String.format(string, args);
             }
         } catch (Exception e) {
-            FileLog.e("messenger", e);
+
             return "LOC_ERR: " + string;
         }
     }
@@ -359,7 +359,7 @@ public class LocaleController {
             }
             return getInstance().chatFullDate.format(date * 1000);
         } catch (Exception e) {
-            FileLog.e("messenger", e);
+
         }
         return "LOC_ERR: formatDateChat";
     }
@@ -421,7 +421,7 @@ public class LocaleController {
                 }
             }
         } catch (Exception e) {
-            FileLog.e("messenger", e);
+
         }
         return "LOC_ERR";
     }

@@ -264,7 +264,7 @@ public class AudioSelectActivity extends BaseFragment implements NotificationCen
                         id--;
                     }
                 } catch (Exception e) {
-                    FileLog.e("messenger", e);
+
                 } finally {
                     if (cursor != null) {
                         cursor.close();

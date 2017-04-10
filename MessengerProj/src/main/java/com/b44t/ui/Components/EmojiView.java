@@ -386,7 +386,7 @@ public class EmojiView extends FrameLayout implements NotificationCenter.Notific
                 super.showAsDropDown(anchor, xoff, yoff);
                 registerListener(anchor);
             } catch (Exception e) {
-                FileLog.e("messenger", e);
+
             }
         }
 
@@ -801,7 +801,7 @@ public class EmojiView extends FrameLayout implements NotificationCenter.Notific
                                 //don't promt
                             }
                             startedScroll = false;
-                            FileLog.e("messenger", e);
+
                         }
                     }
                     lastX = ev.getX();
@@ -1360,7 +1360,7 @@ public class EmojiView extends FrameLayout implements NotificationCenter.Notific
             sortEmoji();
             adapters.get(0).notifyDataSetChanged();
         } catch (Exception e) {
-            FileLog.e("messenger", e);
+
         }
 
         try {
@@ -1374,7 +1374,7 @@ public class EmojiView extends FrameLayout implements NotificationCenter.Notific
                 }
             }
         } catch (Exception e) {
-            FileLog.e("messenger", e);
+
         }
 
         if (showStickers) {
@@ -1428,7 +1428,7 @@ public class EmojiView extends FrameLayout implements NotificationCenter.Notific
                 sortStickers();
                 updateStickerTabs();
             } catch (Exception e) {
-                FileLog.e("messenger", e);
+
             }
         }
     }

@@ -341,7 +341,7 @@ public class PhotoCropActivity extends BaseFragment {
                     drawable.setBounds(bitmapX, bitmapY, bitmapX + bitmapWidth, bitmapY + bitmapHeight);
                     drawable.draw(canvas);
                 } catch (Throwable e) {
-                    FileLog.e("messenger", e);
+
                 }
             }
             canvas.drawRect(bitmapX, bitmapY, bitmapX + bitmapWidth, rectY, halfPaint);

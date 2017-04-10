@@ -321,7 +321,7 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
                         try {
                             deletedString = changeString.toString().substring(afterChangeIndex, beforeChangeIndex);
                         } catch (Exception e) {
-                            FileLog.e("messenger", e);
+
                         }
                         if (deletedString.length() > 0) {
                             if (searching && searchWas) {
@@ -461,7 +461,7 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
                                 userSelectEditText.setSelection(text.length());
                                 ignoreChange = false;
                             } catch (Exception e) {
-                                FileLog.e("messenger", e);
+
                             }
                         } else {
                             ignoreChange = true;

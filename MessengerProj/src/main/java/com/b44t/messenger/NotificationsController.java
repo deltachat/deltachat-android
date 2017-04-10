@@ -113,12 +113,12 @@ public class NotificationsController {
         try {
             audioManager = (AudioManager) ApplicationLoader.applicationContext.getSystemService(Context.AUDIO_SERVICE);
         } catch (Exception e) {
-            FileLog.e("messenger", e);
+
         }
         try {
             alarmManager = (AlarmManager) ApplicationLoader.applicationContext.getSystemService(Context.ALARM_SERVICE);
         } catch (Exception e) {
-            FileLog.e("messenger", e);
+
         }
 
         try {
@@ -126,7 +126,7 @@ public class NotificationsController {
             notificationDelayWakelock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "notificationDelayWakelock" /*any name*/);
             notificationDelayWakelock.setReferenceCounted(false);
         } catch (Exception e) {
-            FileLog.e("messenger", e);
+
         }
 
         notificationDelayRunnable = new Runnable() {
@@ -142,7 +142,7 @@ public class NotificationsController {
                         notificationDelayWakelock.release();
                     }
                 } catch (Exception e) {
-                    FileLog.e("messenger", e);
+
                 }
             }
         };
@@ -170,7 +170,7 @@ public class NotificationsController {
                         notificationDelayWakelock.release();
                     }
                 } catch (Exception e) {
-                    FileLog.e("messenger", e);
+
                 }
                 setBadge(0);
                 SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("Notifications", Context.MODE_PRIVATE);
@@ -769,12 +769,12 @@ public class NotificationsController {
                                 intent.putExtra("badge_count_class_name", launcherClassName);
                                 ApplicationLoader.applicationContext.sendBroadcast(intent);
                             } catch (Exception e) {
-                                FileLog.e("messenger", e);
+
                             }
                         }
                     });
                 } catch (Throwable e) {
-                    FileLog.e("messenger", e);
+
                 }
             }
         });
@@ -819,7 +819,7 @@ public class NotificationsController {
                 alarmManager.cancel(pintent);
             }
         } catch (Exception e) {
-            FileLog.e("messenger", e);
+
         }
     }
 
@@ -838,7 +838,7 @@ public class NotificationsController {
                 }
             }
         } catch (Throwable e) {
-            FileLog.e("messenger", e);
+
         }
         return null;
     }
@@ -876,7 +876,7 @@ public class NotificationsController {
             total_unread_count = 0;
             setBadge(0);
         } catch (Exception e) {
-            FileLog.e("messenger", e);
+
         }
     }
 
@@ -889,7 +889,7 @@ public class NotificationsController {
                 return;
             }
         } catch (Exception e) {
-            FileLog.e("messenger", e);
+
         }
 
         try {
@@ -925,12 +925,12 @@ public class NotificationsController {
                             soundPool.play(soundIn, 1.0f, 1.0f, 1, 0, 1.0f);
                         }
                     } catch (Exception e) {
-                        FileLog.e("messenger", e);
+
                     }
                 }
             });
         } catch (Exception e) {
-            FileLog.e("messenger", e);
+
         }
     }
 
@@ -941,7 +941,7 @@ public class NotificationsController {
             AndroidUtilities.cancelRunOnUIThread(notificationDelayRunnable);
             AndroidUtilities.runOnUIThread(notificationDelayRunnable, (onlineReason ? 3 * 1000 : 1000));
         } catch (Exception e) {
-            FileLog.e("messenger", e);
+
             showOrUpdateNotification(notifyCheck);
         }
     }*/
@@ -1088,7 +1088,7 @@ public class NotificationsController {
                             needVibrate = 2;
                         }
                     } catch (Exception e) {
-                        FileLog.e("messenger", e);
+
                     }
                 }
             }
@@ -1272,7 +1272,7 @@ public class NotificationsController {
             }
 
         } catch (Exception e) {
-            FileLog.e("messenger", e);
+
         }
 
     }
@@ -1471,7 +1471,7 @@ public class NotificationsController {
                 return;
             }
         } catch (Exception e) {
-            FileLog.e("messenger", e);
+
         }
         notificationsQueue.postRunnable(new Runnable() {
             @Override
@@ -1500,7 +1500,7 @@ public class NotificationsController {
                         soundPool.play(soundOut, 1.0f, 1.0f, 1, 0, 1.0f);
                     }
                 } catch (Exception e) {
-                    FileLog.e("messenger", e);
+
                 }
             }
         });

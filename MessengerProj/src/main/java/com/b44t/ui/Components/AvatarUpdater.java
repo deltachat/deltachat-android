@@ -85,7 +85,7 @@ public class AvatarUpdater implements PhotoCropActivity.PhotoEditActivityDelegat
             }
             parentFragment.startActivityForResult(takePictureIntent, BaseFragment.RC13_AVATAR_IMAGE_CAPTURE);
         } catch (Exception e) {
-            FileLog.e("messenger", e);
+
         }
     }
 
@@ -114,7 +114,7 @@ public class AvatarUpdater implements PhotoCropActivity.PhotoEditActivityDelegat
                     photoPickerIntent.setType("image/*");
                     parentFragment.startActivityForResult(photoPickerIntent, BaseFragment.RC14_AVATAR_GET_CONTENT);
                 } catch (Exception e) {
-                    FileLog.e("messenger", e);
+
                 } */
             }
 
@@ -142,7 +142,7 @@ public class AvatarUpdater implements PhotoCropActivity.PhotoEditActivityDelegat
             photoCropActivity.setDelegate(this);
             activity.presentFragment(photoCropActivity);
         } catch (Exception e) {
-            FileLog.e("messenger", e);
+
             Bitmap bitmap = ImageLoader.loadBitmap(path, uri, 800, 800, true);
             processBitmap(bitmap);
         }
@@ -168,7 +168,7 @@ public class AvatarUpdater implements PhotoCropActivity.PhotoEditActivityDelegat
                             break;
                     }
                 } catch (Exception e) {
-                    FileLog.e("messenger", e);
+
                 }
                 final ArrayList<Object> arrayList = new ArrayList<>();
                 arrayList.add(new MediaController.PhotoEntry(0, 0, 0, currentPicturePath, orientation, false));

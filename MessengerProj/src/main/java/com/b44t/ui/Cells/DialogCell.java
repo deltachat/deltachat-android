@@ -413,7 +413,7 @@ public class DialogCell extends BaseCell {
         try {
             nameLayout = new StaticLayout(nameStringFinal, currentNamePaint, nameWidth, Layout.Alignment.ALIGN_NORMAL, 1.0f, 0.0f, false);
         } catch (Exception e) {
-            FileLog.e("messenger", e);
+
         }
 
         int messageWidth = getMeasuredWidth() - AndroidUtilities.dp(AndroidUtilities.leftBaseline + 16);
@@ -467,7 +467,7 @@ public class DialogCell extends BaseCell {
         try {
             messageLayout = new StaticLayout(messageStringFinal, currentMessagePaint, messageWidth, Layout.Alignment.ALIGN_NORMAL, 1.0f, 0.0f, false);
         } catch (Exception e) {
-            FileLog.e("messenger", e);
+
         }
 
         double widthpx;
@@ -650,7 +650,7 @@ public class DialogCell extends BaseCell {
             try {
                 messageLayout.draw(canvas);
             } catch (Exception e) {
-                FileLog.e("messenger", e);
+
             }
             canvas.restore();
         }

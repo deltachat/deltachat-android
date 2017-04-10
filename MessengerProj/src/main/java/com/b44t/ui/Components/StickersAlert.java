@@ -410,7 +410,7 @@ public class StickersAlert extends BottomSheet implements NotificationCenter.Not
                                                 }
                                             }
                                         } catch (Exception e) {
-                                            FileLog.e("messenger", e);
+
                                         }
                                         StickersQuery.loadStickers(false, true);
                                     }

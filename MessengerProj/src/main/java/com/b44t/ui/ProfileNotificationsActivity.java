@@ -247,7 +247,7 @@ public class ProfileNotificationsActivity extends BaseFragment implements Notifi
                         tmpIntent.putExtra(RingtoneManager.EXTRA_RINGTONE_EXISTING_URI, currentSound);
                         startActivityForResult(tmpIntent, RC12_PROFILE_RINGTONE_PICKER);
                     } catch (Exception e) {
-                        FileLog.e("messenger", e);
+
                     }
                 } else if (i == settingsLedRow) {
                     if (getParentActivity() == null) {

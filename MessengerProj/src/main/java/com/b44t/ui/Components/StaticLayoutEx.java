@@ -85,7 +85,7 @@ public class StaticLayoutEx {
             sConstructorArgs = new Object[signature.length];
             initialized = true;
         } catch (Throwable e) {
-            FileLog.e("messenger", e);
+
         }
     }
 
@@ -112,7 +112,7 @@ public class StaticLayoutEx {
                 sConstructorArgs[12] = maxLines;
                 return sConstructor.newInstance(sConstructorArgs);
             } catch (Exception e) {
-                FileLog.e("messenger", e);
+
             }
         }*/
         try {
@@ -137,7 +137,7 @@ public class StaticLayoutEx {
                 }
             }
         } catch (Exception e) {
-            FileLog.e("messenger", e);
+
         }
         return null;
     }

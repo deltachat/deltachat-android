@@ -1623,7 +1623,7 @@ public class PhotoFilterView extends FrameLayout {
                     buffer = ByteBuffer.allocateDirect(PGPhotoEnhanceSegments * PGPhotoEnhanceSegments * PGPhotoEnhanceHistogramBins * 4);
                     Utilities.calcCDT(hsvBuffer, renderBufferWidth, renderBufferHeight, buffer);
                 } catch (Exception e) {
-                    FileLog.e("messenger", e);
+
                 }
 
                 GLES20.glBindTexture(GL10.GL_TEXTURE_2D, enhanceTextures[1]);
@@ -1883,7 +1883,7 @@ public class PhotoFilterView extends FrameLayout {
                 });
                 semaphore.acquire();
             } catch (Exception e) {
-                FileLog.e("messenger", e);
+
             }
             return object[0];
         }

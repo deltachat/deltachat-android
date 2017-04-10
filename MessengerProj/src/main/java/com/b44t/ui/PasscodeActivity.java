@@ -462,7 +462,7 @@ public class PasscodeActivity extends BaseFragment implements NotificationCenter
                     }
                 }
             } catch (Throwable e) {
-                FileLog.e("messenger", e);
+
             }
             autoLockRow = rowCount++;
             autoLockDetailRow = rowCount++;
@@ -545,7 +545,7 @@ public class PasscodeActivity extends BaseFragment implements NotificationCenter
                 try {
                     Toast.makeText(getParentActivity(), LocaleController.getString("PasscodeDoNotMatch", R.string.PasscodeDoNotMatch), Toast.LENGTH_SHORT).show();
                 } catch (Exception e) {
-                    FileLog.e("messenger", e);
+
                 }
                 AndroidUtilities.shakeView(titleTextView, 2, 0);
                 passwordEditText.setText("");
@@ -562,7 +562,7 @@ public class PasscodeActivity extends BaseFragment implements NotificationCenter
                 System.arraycopy(UserConfig.passcodeSalt, 0, bytes, passcodeBytes.length + 16, 16);
                 UserConfig.passcodeHash = Utilities.bytesToHex(Utilities.computeSHA256(bytes, 0, bytes.length));
             } catch (Exception e) {
-                FileLog.e("messenger", e);
+
             }
 
             UserConfig.passcodeType = currentPasswordType;

@@ -83,7 +83,7 @@ public class ForegroundDetector implements Application.ActivityLifecycleCallback
                 try {
                     listener.onBecameForeground();
                 } catch (Exception e) {
-                    FileLog.e("messenger", e);
+
                 }
             }
         }
@@ -110,7 +110,7 @@ public class ForegroundDetector implements Application.ActivityLifecycleCallback
                 try {
                     listener.onBecameBackground();
                 } catch (Exception e) {
-                    FileLog.e("messenger", e);
+
                 }
             }
         }

@@ -431,7 +431,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                                         }
                                     }
                                 } catch (Exception e) {
-                                    FileLog.e("messenger", e);
+
                                 }
                                 invalidate();
                                 return true;
@@ -445,7 +445,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                         }
                     }
                 } catch (Exception e) {
-                    FileLog.e("messenger", e);
+
                 }
             } else {
                 resetPressedLink(1);
@@ -487,14 +487,14 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                                     path.setCurrentLayout(captionLayout, start, 0);
                                     captionLayout.getSelectionPath(start, buffer.getSpanEnd(pressedLink), path);
                                 } catch (Exception e) {
-                                    FileLog.e("messenger", e);
+
                                 }
                                 invalidate();
                                 return true;
                             }
                         }
                     } catch (Exception e) {
-                        FileLog.e("messenger", e);
+
                     }
                 } else if (pressedLinkType == 3) {
                     delegate.didPressedUrl(currentMessageObject, pressedLink, false);
@@ -1131,7 +1131,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                 }
                 infoLayout = new StaticLayout(str2, infoPaint, infoWidth, Layout.Alignment.ALIGN_NORMAL, 1.0f, 0.0f, false);
             } catch (Exception e) {
-                FileLog.e("messenger", e);
+
             }
 
             if (drawPhotoImage) {
@@ -1206,7 +1206,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                         }
                     }
                 } catch (Exception e) {
-                    FileLog.e("messenger", e);
+
                 }
                 invalidate();
                 break;
@@ -1569,7 +1569,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                                 }
                             }
                         } catch (Exception e) {
-                            FileLog.e("messenger", e);
+
                         }
                     }
 
@@ -1658,7 +1658,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                         }
                     }
                 } catch (Exception e) {
-                    FileLog.e("messenger", e);
+
                 }
             }
 
@@ -1846,7 +1846,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                     try {
                         block.textLayout.draw(canvas);
                     } catch (Exception e) {
-                        FileLog.e("messenger", e);
+
                     }
                     canvas.restore();
                 }
@@ -1939,7 +1939,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
             try {
                 captionLayout.draw(canvas);
             } catch (Exception e) {
-                FileLog.e("messenger", e);
+
             }
             canvas.restore();
         }
@@ -1979,7 +1979,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                     canvas.restore();
                 }
             } catch (Exception e) {
-                FileLog.e("messenger", e);
+
             }
 
             try {
@@ -1990,7 +1990,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                     canvas.restore();
                 }
             } catch (Exception e) {
-                FileLog.e("messenger", e);
+
             }
         }
 
@@ -2217,7 +2217,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                     nameWidth = 0;
                 }
             } catch (Exception e) {
-                FileLog.e("messenger", e);
+
             }
             if (currentNameString.length() == 0) {
                 currentNameString = null;
@@ -2251,7 +2251,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                 forwardNameOffsetX[1] = forwardedNameLayout[1].getLineLeft(0);
                 namesOffset += dp(36);
             } catch (Exception e) {
-                FileLog.e("messenger", e);
+
             }
         }
 

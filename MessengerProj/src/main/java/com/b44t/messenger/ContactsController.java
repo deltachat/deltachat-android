@@ -92,7 +92,7 @@ public class ContactsController {
                 pCur.close();
             }
         } catch (Exception e) {
-            FileLog.e("messenger", e);
+
         }
         return allContacts;
     }

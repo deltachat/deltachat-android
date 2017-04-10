@@ -58,7 +58,7 @@ public class UserConfig {
 
                 editor.apply();
             } catch (Exception e) {
-                FileLog.e("messenger", e);
+
             }
         }
     }
@@ -98,7 +98,7 @@ public class UserConfig {
                     passcodeHash = Utilities.bytesToHex(Utilities.computeSHA256(bytes, 0, bytes.length));
                     saveConfig();
                 } catch (Exception e) {
-                    FileLog.e("messenger", e);
+
                 }
             }
             return result;
@@ -112,7 +112,7 @@ public class UserConfig {
                 String hash = Utilities.bytesToHex(Utilities.computeSHA256(bytes, 0, bytes.length));
                 return passcodeHash.equals(hash);
             } catch (Exception e) {
-                FileLog.e("messenger", e);
+
             }
         }
         return false;

@@ -181,7 +181,7 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
                 super.onMeasure(widthMeasureSpec, heightMeasureSpec);
             } catch (Exception e) {
                 setMeasuredDimension(MeasureSpec.getSize(widthMeasureSpec), AndroidUtilities.dp(51));
-                FileLog.e("messenger", e);
+
             }
         }
 
@@ -219,7 +219,7 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
             try {
                 return super.onTouchEvent(event);
             } catch (Exception e) {
-                FileLog.e("messenger", e);
+
             }
             return false;
         }
@@ -860,7 +860,7 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
                 mWakeLock.release();
                 mWakeLock = null;
             } catch (Exception e) {
-                FileLog.e("messenger", e);
+
             }
         }
         if (sizeNotifierLayout != null) {
@@ -1158,7 +1158,7 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
                     mWakeLock.acquire();
                 }
             } catch (Exception e) {
-                FileLog.e("messenger", e);
+
             }
             AndroidUtilities.lockOrientation(parentActivity);
 
@@ -1200,7 +1200,7 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
                     mWakeLock.release();
                     mWakeLock = null;
                 } catch (Exception e) {
-                    FileLog.e("messenger", e);
+
                 }
             }
             AndroidUtilities.unlockOrientation(parentActivity);
@@ -1274,7 +1274,7 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
             messageEditText.setText(builder);
             messageEditText.setSelection(start + text.length());
         } catch (Exception e) {
-            FileLog.e("messenger", e);
+
         }
     }
 
@@ -1291,7 +1291,7 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
                             try {
                                 messageEditText.requestFocus();
                             } catch (Exception e) {
-                                FileLog.e("messenger", e);
+
                             }
                         }
                     }
@@ -1364,7 +1364,7 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
                     int j = i + localCharSequence.length();
                     messageEditText.setSelection(j, j);
                 } catch (Exception e) {
-                    FileLog.e("messenger", e);
+
                 } finally {
                     innerTextChange = 0;
                 }

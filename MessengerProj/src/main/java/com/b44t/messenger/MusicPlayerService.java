@@ -96,7 +96,7 @@ public class MusicPlayerService extends Service implements NotificationCenter.No
                     remoteControlClient.setTransportControlFlags(RemoteControlClient.FLAG_KEY_MEDIA_PLAY | RemoteControlClient.FLAG_KEY_MEDIA_PAUSE | RemoteControlClient.FLAG_KEY_MEDIA_PLAY_PAUSE |
                             RemoteControlClient.FLAG_KEY_MEDIA_STOP | RemoteControlClient.FLAG_KEY_MEDIA_PREVIOUS | RemoteControlClient.FLAG_KEY_MEDIA_NEXT);
                 } catch (Exception e) {
-                    FileLog.e("messenger", e);
+
                 }
             }
             createNotification(messageObject);
@@ -182,7 +182,7 @@ public class MusicPlayerService extends Service implements NotificationCenter.No
                 try {
                     metadataEditor.putBitmap(RemoteControlClient.MetadataEditor.BITMAP_KEY_ARTWORK, audioInfo.getCover());
                 } catch (Throwable e) {
-                    FileLog.e("messenger", e);
+
                 }
             }
             metadataEditor.apply();

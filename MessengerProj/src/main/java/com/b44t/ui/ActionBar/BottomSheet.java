@@ -768,7 +768,7 @@ public class BottomSheet extends Dialog {
                             try {
                                 BottomSheet.super.dismiss();
                             } catch (Exception e) {
-                                FileLog.e("messenger", e);
+
                             }
                         }
                     });
@@ -818,7 +818,7 @@ public class BottomSheet extends Dialog {
                                 try {
                                     dismissInternal();
                                 } catch (Exception e) {
-                                    FileLog.e("messenger", e);
+
                                 }
                             }
                         });

@@ -358,7 +358,7 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
                         bitmap.recycle();
                     }
                 } catch (Exception e) {
-                    FileLog.e("messenger", e);
+
                 }
             }
             if (document.mime_type.equals("image/webp") && allowSticker) {
@@ -370,7 +370,7 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
                     Utilities.loadWebpImage(null, buffer, buffer.limit(), bmOptions, true);
                     file.close();
                 } catch (Exception e) {
-                    FileLog.e("messenger", e);
+
                 }
                 if (bmOptions.outWidth != 0 && bmOptions.outHeight != 0 && bmOptions.outWidth <= 800 && bmOptions.outHeight <= 800) {
                     TLRPC.TL_documentAttributeSticker attributeSticker = new TLRPC.TL_documentAttributeSticker();
@@ -682,14 +682,14 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
                                 }
                                 infoObtained = true;
                             } catch (Exception e) {
-                                FileLog.e("messenger", e);
+
                             } finally {
                                 try {
                                     if (mediaMetadataRetriever != null) {
                                         mediaMetadataRetriever.release();
                                     }
                                 } catch (Exception e) {
-                                    FileLog.e("messenger", e);
+
                                 }
                             }
                             if (!infoObtained) {
@@ -702,7 +702,7 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
                                         mp.release();
                                     }
                                 } catch (Exception e) {
-                                    FileLog.e("messenger", e);
+
                                 }
                             }
                         }

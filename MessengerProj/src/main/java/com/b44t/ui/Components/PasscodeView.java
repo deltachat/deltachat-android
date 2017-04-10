@@ -493,7 +493,7 @@ public class PasscodeView extends FrameLayout {
                 }
                 fingerprintDialog = null;
             } catch (Exception e) {
-                FileLog.e("messenger", e);
+
             }
         }
         try {
@@ -502,7 +502,7 @@ public class PasscodeView extends FrameLayout {
                 cancellationSignal = null;
             }
         } catch (Exception e) {
-            FileLog.e("messenger", e);
+
         }
     }
 
@@ -514,7 +514,7 @@ public class PasscodeView extends FrameLayout {
                     return;
                 }
             } catch (Exception e) {
-                FileLog.e("messenger", e);
+
             }
             try {
                 FingerprintManagerCompat fingerprintManager = FingerprintManagerCompat.from(ApplicationLoader.applicationContext);
@@ -549,7 +549,7 @@ public class PasscodeView extends FrameLayout {
                                 fingerprintDialog.dismiss();
                             }
                         } catch (Exception e) {
-                            FileLog.e("messenger", e);
+
                         }
                     }
                     fingerprintDialog = builder.show();
@@ -581,7 +581,7 @@ public class PasscodeView extends FrameLayout {
                                     fingerprintDialog.dismiss();
                                 }
                             } catch (Exception e) {
-                                FileLog.e("messenger", e);
+
                             }
                             fingerprintDialog = null;
                             processDone(true);

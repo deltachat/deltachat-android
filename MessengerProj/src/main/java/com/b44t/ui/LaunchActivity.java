@@ -401,7 +401,7 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                     }
                 }
             } catch (Exception e) {
-                FileLog.e("messenger", e);
+
             }
         } else {
             boolean allowOpen = true;
@@ -570,7 +570,7 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                                     bufferedReader.close();
                                     stream.close();
                                 } catch (Exception e) {
-                                    FileLog.e("messenger", e);
+
                                 }
                                 for (int a = 0; a < vcardDatas.size(); a++) {
                                     VcardData vcardData = vcardDatas.get(a);
@@ -592,7 +592,7 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                                 error = true;
                             }
                         } catch (Exception e) {
-                            FileLog.e("messenger", e);
+
                             error = true;
                         }
                     } else {
@@ -729,7 +729,7 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                             error = true;
                         }
                     } catch (Exception e) {
-                        FileLog.e("messenger", e);
+
                         error = true;
                     }
                     if (error) {
@@ -1157,7 +1157,7 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                         intent.setData(Uri.parse("package:" + ApplicationLoader.applicationContext.getPackageName()));
                         startActivity(intent);
                     } catch (Exception e) {
-                        FileLog.e("messenger", e);
+
                     }
                 }
             });
@@ -1224,7 +1224,7 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                 visibleDialog = null;
             }
         } catch (Exception e) {
-            FileLog.e("messenger", e);
+
         }
         try {
             if (onGlobalLayoutListener != null) {
@@ -1236,7 +1236,7 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                 }
             }
         } catch (Exception e) {
-            FileLog.e("messenger", e);
+
         }
         super.onDestroy();
         onFinish();
@@ -1367,7 +1367,7 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                 lastFragment.saveSelfArgs(outState);
             }
         } catch (Exception e) {
-            FileLog.e("messenger", e);
+
         }
     }
 

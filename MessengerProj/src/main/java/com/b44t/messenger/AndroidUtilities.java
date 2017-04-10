@@ -113,7 +113,7 @@ public class AndroidUtilities {
             final String HOST_NAME = "(" + IRI + "\\.)+" + GTLD;
             final Pattern DOMAIN_NAME = Pattern.compile("(" + HOST_NAME + "|" + IP_ADDRESS + ")");
         } catch (Exception e) {
-            FileLog.e("messenger", e);
+
         }
     }
 
@@ -193,7 +193,7 @@ public class AndroidUtilities {
                 }
             }
         } catch (Exception e) {
-            FileLog.e("messenger", e);
+
         }
     }
 
@@ -207,7 +207,7 @@ public class AndroidUtilities {
                 prevOrientation = -10;
             }
         } catch (Exception e) {
-            FileLog.e("messenger", e);
+
         }
     }
 
@@ -219,7 +219,7 @@ public class AndroidUtilities {
             InputMethodManager inputManager = (InputMethodManager)view.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
             inputManager.showSoftInput(view, InputMethodManager.SHOW_IMPLICIT);
         } catch (Exception e) {
-            FileLog.e("messenger", e);
+
         }
     }
 
@@ -234,7 +234,7 @@ public class AndroidUtilities {
             }
             imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
         } catch (Exception e) {
-            FileLog.e("messenger", e);
+
         }
     }
 
@@ -244,7 +244,7 @@ public class AndroidUtilities {
         try {
             state = Environment.getExternalStorageState();
         } catch (Exception e) {
-            FileLog.e("messenger", e);
+
         }
         if (state == null || state.startsWith(Environment.MEDIA_MOUNTED)) {
             try {
@@ -253,7 +253,7 @@ public class AndroidUtilities {
                     return file;
                 }
             } catch (Exception e) {
-                FileLog.e("messenger", e);
+
             }
         }
         try {
@@ -262,7 +262,7 @@ public class AndroidUtilities {
                 return file;
             }
         } catch (Exception e) {
-            FileLog.e("messenger", e);
+
         }
         return new File("");
     }
@@ -305,7 +305,7 @@ public class AndroidUtilities {
                 }
             }
         } catch (Exception e) {
-            FileLog.e("messenger", e);
+
         }
     }
 
@@ -380,7 +380,7 @@ public class AndroidUtilities {
             mCursorDrawableRes.setAccessible(true);
             mCursorDrawableRes.setInt(editText, 0);
         } catch (Exception e) {
-            FileLog.e("messenger", e);
+
         }
     }
 
@@ -410,7 +410,7 @@ public class AndroidUtilities {
             addIntent.setAction("com.android.launcher.action.INSTALL_SHORTCUT");
             ApplicationLoader.applicationContext.sendBroadcast(addIntent);
         } catch (Exception e) {
-            FileLog.e("messenger", e);
+
         }
     }
 
@@ -423,7 +423,7 @@ public class AndroidUtilities {
             addIntent.setAction("com.android.launcher.action.UNINSTALL_SHORTCUT");
             ApplicationLoader.applicationContext.sendBroadcast(addIntent);
         } catch (Exception e) {
-            FileLog.e("messenger", e);
+
         }
     }*/
 
@@ -442,7 +442,7 @@ public class AndroidUtilities {
                 return insets.bottom;
             }
         } catch (Exception e) {
-            FileLog.e("messenger", e);
+
         }
         return 0;
     }
@@ -460,11 +460,11 @@ public class AndroidUtilities {
                     size.set((Integer) mGetRawW.invoke(windowManager.getDefaultDisplay()), (Integer) mGetRawH.invoke(windowManager.getDefaultDisplay()));
                 } catch (Exception e) {
                     size.set(windowManager.getDefaultDisplay().getWidth(), windowManager.getDefaultDisplay().getHeight());
-                    FileLog.e("messenger", e);
+
                 }
             }
         } catch (Exception e) {
-            FileLog.e("messenger", e);
+
         }
         return size;
     }
@@ -560,7 +560,7 @@ public class AndroidUtilities {
             }
             return spannableStringBuilder;
         } catch (Exception e) {
-            FileLog.e("messenger", e);
+
         }
         return new SpannableStringBuilder(str);
     }
@@ -617,7 +617,7 @@ public class AndroidUtilities {
             android.content.ClipData clip = android.content.ClipData.newPlainText("label", str);
             clipboard.setPrimaryClip(clip);
         } catch (Exception e) {
-            FileLog.e("messenger", e);
+
         }
     }
 
@@ -639,7 +639,7 @@ public class AndroidUtilities {
             mediaScanIntent.setData(uri);
             ApplicationLoader.applicationContext.sendBroadcast(mediaScanIntent);
         } catch (Exception e) {
-            FileLog.e("messenger", e);
+
         }
     }
 
@@ -710,7 +710,7 @@ public class AndroidUtilities {
                 return uri.getPath();
             }
         } catch (Exception e) {
-            FileLog.e("messenger", e);
+
         }
         return null;
     }
@@ -734,7 +734,7 @@ public class AndroidUtilities {
                 return value;
             }
         } catch (Exception e) {
-            FileLog.e("messenger", e);
+
         } finally {
             if (cursor != null) {
                 cursor.close();
@@ -761,7 +761,7 @@ public class AndroidUtilities {
             String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.US).format(new Date());
             return new File(storageDir, "IMG_" + timeStamp + ".jpg");
         } catch (Exception e) {
-            FileLog.e("messenger", e);
+
         }
         return null;
     }
@@ -772,7 +772,7 @@ public class AndroidUtilities {
             String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.US).format(new Date());
             return new File(storageDir, "VID_" + timeStamp + ".mp4");
         } catch (Exception e) {
-            FileLog.e("messenger", e);
+
         }
         return null;
     }
@@ -802,7 +802,7 @@ public class AndroidUtilities {
                     final int l = Character.digit((char) bytes[++i], 16);
                     buffer.write((char) ((u << 4) + l));
                 } catch (Exception e) {
-                    FileLog.e("messenger", e);
+
                     return null;
                 }
             } else {
@@ -813,7 +813,7 @@ public class AndroidUtilities {
         try {
             buffer.close();
         } catch (Exception e) {
-            FileLog.e("messenger", e);
+
         }
         return array;
     }
@@ -841,7 +841,7 @@ public class AndroidUtilities {
             destination = new FileOutputStream(destFile);
             destination.getChannel().transferFrom(source.getChannel(), 0, source.getChannel().size());
         } catch (Exception e) {
-            FileLog.e("messenger", e);
+
             return false;
         } finally {
             if (source != null) {

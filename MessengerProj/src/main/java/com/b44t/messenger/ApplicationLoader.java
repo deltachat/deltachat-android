@@ -133,7 +133,7 @@ public class ApplicationLoader extends Application {
             path.mkdirs();
             return path;
         } catch (Exception e) {
-            FileLog.e("messenger", e);
+
         }
         return new File("/data/data/com.b44t.messenger/files");
     }
@@ -197,7 +197,7 @@ public class ApplicationLoader extends Application {
             isScreenOn = pm.isScreenOn();
             FileLog.e("messenger", "screen state = " + isScreenOn);
         } catch (Exception e) {
-            FileLog.e("messenger", e);
+
         }
 
         UserConfig.loadConfig();
