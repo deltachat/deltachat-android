@@ -38,15 +38,13 @@ import android.widget.AdapterView;
 import android.widget.FrameLayout;
 import android.widget.ListView;
 
-import com.b44t.messenger.AndroidUtilities;
 import com.b44t.messenger.ApplicationLoader;
-import com.b44t.messenger.BuildVars;
+import com.b44t.messenger.BuildConfig;
 import com.b44t.messenger.LocaleController;
 import com.b44t.messenger.MrMailbox;
 import com.b44t.messenger.R;
 import com.b44t.ui.ActionBar.ActionBar;
 import com.b44t.ui.ActionBar.BaseFragment;
-import com.b44t.ui.ActionBar.Theme;
 import com.b44t.ui.Adapters.BaseFragmentAdapter;
 import com.b44t.ui.Cells.HeaderCell;
 import com.b44t.ui.Cells.ShadowSectionCell;
@@ -202,13 +200,14 @@ public class SettingsActivity extends BaseFragment {
             }
         } catch (Exception e) {}
 
-        return      "SDK_INT="       + Build.VERSION.SDK_INT
-                + "\nMANUFACTURER="  + Build.MANUFACTURER
-                + "\nMODEL="         + Build.MODEL
-                + "\nDEBUG_VERSION=" + BuildVars.DEBUG_VERSION
-                + "\nABI="           + abi // ABI = Application Binary Interface
+        return      "SDK_INT="                    + Build.VERSION.SDK_INT
+                + "\nMANUFACTURER="               + Build.MANUFACTURER
+                + "\nMODEL="                      + Build.MODEL
+                + "\nAPPLICATION_ID="             + BuildConfig.APPLICATION_ID
+                + "\nBUILD_TYPE="                 + BuildConfig.BUILD_TYPE
+                + "\nABI="                        + abi // ABI = Application Binary Interface
                 + "\nignoreBatteryOptimizations=" + ignoreBatteryOptimizations
-                + "\nversionCode="   + versionCode;
+                + "\nversionCode="                + versionCode;
     }
 
     private class ListAdapter extends BaseFragmentAdapter {

@@ -150,17 +150,18 @@ public class NotificationCenter {
     }
 
     public void postNotificationNameInternal(int id, boolean allowDuringAnimation, Object... args) {
-        if (BuildVars.DEBUG_VERSION) {
+        /*if (BuildConfig.BUILD_TYPE.equals("debug")) {
             if (Thread.currentThread() != ApplicationLoader.applicationHandler.getLooper().getThread()) {
                 throw new RuntimeException("postNotificationName allowed only from MAIN thread");
             }
-        }
+        }*/
+
         if (!allowDuringAnimation && animationInProgress) {
             DelayedPost delayedPost = new DelayedPost(id, args);
             delayedPosts.add(delayedPost);
-            if (BuildVars.DEBUG_VERSION) {
-                //Log.i("DeltaChat", "delay post notification " + id + " with args count = " + args.length);
-            }
+            /*if (BuildConfig.BUILD_TYPE.equals("debug")) {
+                Log.i("DeltaChat", "delay post notification " + id + " with args count = " + args.length);
+            }*/
             return;
         }
         broadcasting++;
@@ -197,11 +198,11 @@ public class NotificationCenter {
     }
 
     public void addObserver(Object observer, int id) {
-        if (BuildVars.DEBUG_VERSION) {
+        /*if (BuildConfig.BUILD_TYPE.equals("debug")) {
             if (Thread.currentThread() != ApplicationLoader.applicationHandler.getLooper().getThread()) {
                 throw new RuntimeException("addObserver allowed only from MAIN thread");
             }
-        }
+        }*/
         if (broadcasting != 0) {
             ArrayList<Object> arrayList = addAfterBroadcast.get(id);
             if (arrayList == null) {
@@ -222,11 +223,11 @@ public class NotificationCenter {
     }
 
     public void removeObserver(Object observer, int id) {
-        if (BuildVars.DEBUG_VERSION) {
+        /*if (BuildConfig.BUILD_TYPE.equals("debug")) {
             if (Thread.currentThread() != ApplicationLoader.applicationHandler.getLooper().getThread()) {
                 throw new RuntimeException("removeObserver allowed only from MAIN thread");
             }
-        }
+        }*/
         if (broadcasting != 0) {
             ArrayList<Object> arrayList = removeAfterBroadcast.get(id);
             if (arrayList == null) {
