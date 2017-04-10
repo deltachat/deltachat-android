@@ -74,7 +74,6 @@ import com.b44t.messenger.support.widget.LinearLayoutManager;
 import com.b44t.messenger.support.widget.RecyclerView;
 import com.b44t.messenger.ApplicationLoader;
 import com.b44t.messenger.TLRPC;
-import com.b44t.messenger.FileLog;
 import com.b44t.messenger.MessageObject;
 import com.b44t.messenger.NotificationCenter;
 import com.b44t.messenger.R;
@@ -1731,7 +1730,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 m_mrChat.cleanDraft(); */
             } else if (requestCode == RC2_CHAT_VIDEO_CAPTURE) {
                 String videoPath = null;
-                FileLog.d("messenger", "pic path " + currentPicturePath);
+                //Log.i("DeltaChat", "pic path " + currentPicturePath);
                 if (data != null && currentPicturePath != null) {
                     if (new File(currentPicturePath).exists()) {
                         data = null;
@@ -1740,9 +1739,9 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 if (data != null) {
                     Uri uri = data.getData();
                     if (uri != null) {
-                        FileLog.d("messenger", "video record uri " + uri.toString());
+                        //Log.i("DeltaChat", "video record uri " + uri.toString());
                         videoPath = AndroidUtilities.getPath(uri);
-                        FileLog.d("messenger", "resolved path = " + videoPath);
+                        //Log.i("DeltaChat", "resolved path = " + videoPath);
                         if (!(new File(videoPath).exists())) {
                             videoPath = currentPicturePath;
                         }

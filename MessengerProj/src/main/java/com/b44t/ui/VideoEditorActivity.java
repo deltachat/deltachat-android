@@ -55,7 +55,6 @@ import com.b44t.messenger.AndroidUtilities;
 import com.b44t.messenger.MediaController;
 import com.b44t.messenger.NotificationCenter;
 import com.b44t.messenger.ApplicationLoader;
-import com.b44t.messenger.FileLog;
 import com.b44t.messenger.R;
 import com.b44t.ui.ActionBar.ActionBar;
 import com.b44t.ui.ActionBar.ActionBarMenu;

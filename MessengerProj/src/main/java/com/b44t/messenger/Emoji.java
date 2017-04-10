@@ -158,7 +158,7 @@ public class Emoji {
                 }
             });
         } catch (Throwable x) {
-            FileLog.e("messenger", "Error loading emoji", x);
+            //Log.i("DeltaChat", "Error loading emoji", x);
         }
     }
 
@@ -209,7 +209,7 @@ public class Emoji {
     public static EmojiDrawable getEmojiDrawable(CharSequence code) {
         DrawableInfo info = rects.get(code);
         if (info == null) {
-            FileLog.e("messenger", "No drawable for emoji " + code);
+            //Log.i("DeltaChat", "No drawable for emoji " + code);
             return null;
         }
         EmojiDrawable ed = new EmojiDrawable(info);

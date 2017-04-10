@@ -32,8 +32,6 @@ import android.text.TextDirectionHeuristics;
 import android.text.TextPaint;
 import android.text.TextUtils;
 
-import com.b44t.messenger.FileLog;
-
 import java.lang.reflect.Constructor;
 
 public class StaticLayoutEx {

@@ -35,7 +35,6 @@ import android.text.StaticLayout;
 import android.text.TextPaint;
 
 import com.b44t.messenger.AndroidUtilities;
-import com.b44t.messenger.FileLog;
 import com.b44t.messenger.R;
 import com.b44t.messenger.TLRPC;
 import com.b44t.messenger.ApplicationLoader;

@@ -35,7 +35,6 @@ import android.view.ViewGroup;
 
 import com.b44t.messenger.AndroidUtilities;
 import com.b44t.messenger.support.widget.RecyclerView;
-import com.b44t.messenger.FileLog;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;

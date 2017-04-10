@@ -29,8 +29,6 @@ import android.app.Application;
 import android.os.Build;
 import android.os.Bundle;
 
-import com.b44t.messenger.FileLog;
-
 import java.util.concurrent.CopyOnWriteArrayList;
 
 @SuppressLint("NewApi")
@@ -78,7 +76,7 @@ public class ForegroundDetector implements Application.ActivityLifecycleCallback
             if (System.currentTimeMillis() - enterBackgroundTime < 200) {
                 wasInBackground = false;
             }
-            FileLog.e("messenger", "switch to foreground");
+            //Log.i("DeltaChat", "switch to foreground");
             for (Listener listener : listeners) {
                 try {
                     listener.onBecameForeground();
@@ -105,7 +103,7 @@ public class ForegroundDetector implements Application.ActivityLifecycleCallback
         if (--refs == 0) {
             enterBackgroundTime = System.currentTimeMillis();
             wasInBackground = true;
-            FileLog.e("messenger", "switch to background");
+            //Log.i("DeltaChat", "switch to background");
             for (Listener listener : listeners) {
                 try {
                     listener.onBecameBackground();

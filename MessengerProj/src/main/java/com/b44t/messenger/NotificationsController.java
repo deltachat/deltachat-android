@@ -132,7 +132,7 @@ public class NotificationsController {
         notificationDelayRunnable = new Runnable() {
             @Override
             public void run() {
-                FileLog.e("messenger", "delay reached");
+                //Log.i("DeltaChat", "delay reached");
                 if (!delayedPushMessages.isEmpty()) {
                     showOrUpdateNotification(true);
                     delayedPushMessages.clear();
@@ -936,7 +936,7 @@ public class NotificationsController {
 
     /*private void scheduleNotificationDelay(boolean onlineReason) {
         try {
-            FileLog.e("messenger", "delay notification start, onlineReason = " + onlineReason);
+            //Log.i("DeltaChat", "delay notification start, onlineReason = " + onlineReason);
             notificationDelayWakelock.acquire(10000);
             AndroidUtilities.cancelRunOnUIThread(notificationDelayRunnable);
             AndroidUtilities.runOnUIThread(notificationDelayRunnable, (onlineReason ? 3 * 1000 : 1000));

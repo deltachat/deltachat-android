@@ -34,7 +34,6 @@ import android.text.StaticLayout;
 import android.text.TextPaint;
 
 import com.b44t.messenger.AndroidUtilities;
-import com.b44t.messenger.FileLog;
 
 public class LetterDrawable extends Drawable {
 

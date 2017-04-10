@@ -33,8 +33,6 @@ import android.graphics.RectF;
 import android.graphics.Shader;
 import android.view.View;
 
-import com.b44t.messenger.FileLog;
-
 public class ClippingImageView extends View {
 
     private int clipBottom;

@@ -32,7 +32,6 @@ import android.view.View;
 import android.widget.FrameLayout;
 
 import com.b44t.messenger.AndroidUtilities;
-import com.b44t.messenger.FileLog;
 
 public class SizeNotifierFrameLayout extends FrameLayout {
 

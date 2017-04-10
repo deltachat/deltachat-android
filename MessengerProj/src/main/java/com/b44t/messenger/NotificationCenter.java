@@ -159,7 +159,7 @@ public class NotificationCenter {
             DelayedPost delayedPost = new DelayedPost(id, args);
             delayedPosts.add(delayedPost);
             if (BuildVars.DEBUG_VERSION) {
-                FileLog.e("messenger", "delay post notification " + id + " with args count = " + args.length);
+                //Log.i("DeltaChat", "delay post notification " + id + " with args count = " + args.length);
             }
             return;
         }

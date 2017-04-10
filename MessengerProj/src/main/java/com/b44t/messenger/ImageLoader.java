@@ -37,6 +37,7 @@ import android.media.ThumbnailUtils;
 import android.net.Uri;
 import android.os.Build;
 import android.provider.MediaStore;
+import android.util.Log;
 
 import com.b44t.ui.Components.AnimatedFileDrawable;
 
@@ -752,7 +753,7 @@ public class ImageLoader {
         BroadcastReceiver receiver = new BroadcastReceiver() {
             @Override
             public void onReceive(Context arg0, Intent intent) {
-                FileLog.e("messenger", "file system changed");
+                Log.i("DeltaChat", "file system changed");
                 Runnable r = new Runnable() {
                     public void run() {
                         checkMediaPaths();
@@ -1261,7 +1262,6 @@ public class ImageLoader {
                         }
                     }
                 } catch (Throwable e2) {
-                    FileLog.e("messenger", e2);
                 }
             }
         } else if (uri != null) {
@@ -1392,7 +1392,6 @@ public class ImageLoader {
             try {
                 return scaleAndSaveImageInternal(cacheFile, bitmap, w, h, photoW, photoH, scaleFactor, quality, cache, scaleAnyway);
             } catch (Throwable e2) {
-                FileLog.e("messenger", e2);
                 return null;
             }
         }

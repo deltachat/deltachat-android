@@ -65,7 +65,6 @@ import com.b44t.messenger.MrChat;
 import com.b44t.messenger.MrMailbox;
 import com.b44t.messenger.SendMessagesHelper;
 import com.b44t.messenger.ApplicationLoader;
-import com.b44t.messenger.FileLog;
 import com.b44t.messenger.LocaleController;
 import com.b44t.messenger.NotificationCenter;
 import com.b44t.messenger.R;
@@ -304,7 +303,6 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                         intent.putExtra(Intent.EXTRA_TEXT, MrMailbox.getInviteText());
                         startActivity(Intent.createChooser(intent, LocaleController.getString("InviteMenuEntry", R.string.InviteMenuEntry)));
                     } catch (Exception e) {
-                        FileLog.e("tmessages", e);
                     }
                     drawerLayoutContainer.closeDrawer(false);
                 }
@@ -421,7 +419,7 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                 int height = view.getMeasuredHeight();
                 if (height > AndroidUtilities.dp(100) && height < AndroidUtilities.displaySize.y && height + AndroidUtilities.dp(100) > AndroidUtilities.displaySize.y) {
                     AndroidUtilities.displaySize.y = height;
-                    FileLog.e("messenger", "fix display size y to " + AndroidUtilities.displaySize.y);
+                    Log.w("DeltaChat", "fix display size y to " + AndroidUtilities.displaySize.y);
                 }
             }
         });
@@ -513,7 +511,6 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                                 BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(stream, "UTF-8"));
                                 String line;
                                 while ((line = bufferedReader.readLine()) != null) {
-                                    FileLog.e("messenger", line);
                                     String[] args = line.split(":");
                                     if (args.length != 2) {
                                         continue;
@@ -1295,10 +1292,10 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                 public void run() {
                     if (lockRunnable == this) {
                         if (AndroidUtilities.needShowPasscode(true)) {
-                            FileLog.e("messenger", "lock app");
+                            //Log.i("DeltaChat", "lock app");
                             showPasscodeActivity();
                         } else {
-                            FileLog.e("messenger", "didn't pass lock check");
+                            //Log.i("DeltaChat", "didn't pass lock check");
                         }
                         lockRunnable = null;
                     }

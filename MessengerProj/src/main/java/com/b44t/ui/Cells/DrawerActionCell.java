@@ -30,7 +30,6 @@ import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import com.b44t.messenger.AndroidUtilities;
-import com.b44t.messenger.FileLog;
 import com.b44t.ui.Components.LayoutHelper;
 
 public class DrawerActionCell extends FrameLayout {

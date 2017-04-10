@@ -504,7 +504,7 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
             linearSensor = sensorManager.getDefaultSensor(Sensor.TYPE_LINEAR_ACCELERATION);
             gravitySensor = sensorManager.getDefaultSensor(Sensor.TYPE_GRAVITY);
             if (linearSensor == null || gravitySensor == null) {
-                FileLog.e("messenger", "gravity or linear sensor not found");
+                //Log.i("DeltaChat", "gravity or linear sensor not found");
                 accelerometerSensor = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
                 linearSensor = null;
                 gravitySensor = null;
@@ -931,7 +931,7 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
             return;
         }
         if (event.sensor == proximitySensor) {
-            FileLog.e("messenger", "proximity changed to " + event.values[0]);
+            //Log.i("DeltaChat", "proximity changed to " + event.values[0]);
             if (lastProximityValue == -100) {
                 lastProximityValue = event.values[0];
             } else if (lastProximityValue != event.values[0]) {
@@ -996,7 +996,7 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
                                 raisedToTop = 0;
                                 countLess = 0;
                                 timeSinceRaise = System.currentTimeMillis();
-                                //FileLog.e("messenger", "motion detected");
+                                //Log.i("DeltaChat", "motion detected");
                             }
                         }
                     } else {
@@ -1013,13 +1013,13 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
             }
             previousAccValue = val;
             accelerometerVertical = gravityFast[1] > 2.5f && Math.abs(gravityFast[2]) < 4.0f && /*Math.abs(gravityFast[0]) < 9.0f &&*/ Math.abs(gravityFast[0]) > 1.5f;
-            //FileLog.e("messenger", accelerometerVertical + "    val = " + val + " acc (" + linearAcceleration[0] + ", " + linearAcceleration[1] + ", " + linearAcceleration[2] + ") grav (" + gravityFast[0] + ", " + gravityFast[1] + ", " + gravityFast[2] + ")");
+            //Log.i("DeltaChat", accelerometerVertical + "    val = " + val + " acc (" + linearAcceleration[0] + ", " + linearAcceleration[1] + ", " + linearAcceleration[2] + ") grav (" + gravityFast[0] + ", " + gravityFast[1] + ", " + gravityFast[2] + ")");
         }
         if (raisedToBack == minCount && accelerometerVertical && proximityTouched && !NotificationsController.getInstance().audioManager.isWiredHeadsetOn()) {
-            FileLog.e("messenger", "sensor values reached");
+            //Log.i("DeltaChat", "sensor values reached");
             if (playingMessageObject == null && recordStartRunnable == null && recordingAudio == null && !PhotoViewer.getInstance().isVisible() && ApplicationLoader.isScreenOn && !inputFieldHasText && allowStartRecord && raiseChat != null && !callInProgress) {
                 if (!raiseToEarRecord) {
-                    FileLog.e("messenger", "start record");
+                    //Log.i("DeltaChat", "start record");
                     useFrontSpeaker = true;
                     if (!raiseChat.playFirstUnreadVoiceMessage() /*if there is nothing to play, the function checks for record permission*/ ) {
                         raiseToEarRecord = true;
@@ -1033,7 +1033,7 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
                 }
             } /*else if (playingMessageObject != null && playingMessageObject.isVoice()) {
                 if (!useFrontSpeaker) {
-                    FileLog.e("messenger", "start listen");
+                    //Log.i("DeltaChat", "start listen");
                     if (proximityHasDifferentValues && proximityWakeLock != null && !proximityWakeLock.isHeld()) {
                         proximityWakeLock.acquire();
                     }
@@ -1048,7 +1048,7 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
         } else if (proximityTouched) {
             /*if (playingMessageObject != null && playingMessageObject.isVoice()) {
                 if (!useFrontSpeaker) {
-                    FileLog.e("messenger", "start listen by proximity only");
+                    //Log.i("DeltaChat", "start listen by proximity only");
                     if (proximityHasDifferentValues && proximityWakeLock != null && !proximityWakeLock.isHeld()) {
                         proximityWakeLock.acquire();
                     }
@@ -1059,7 +1059,7 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
             }*/
         } else if (!proximityTouched) {
             if (raiseToEarRecord) {
-                FileLog.e("messenger", "stop record");
+                //Log.i("DeltaChat", "stop record");
                 stopRecording(2);
                 raiseToEarRecord = false;
                 ignoreOnPause = false;
@@ -1067,7 +1067,7 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
                     proximityWakeLock.release();
                 }
             } else if (useFrontSpeaker) {
-                FileLog.e("messenger", "stop listen");
+                //Log.i("DeltaChat", "stop listen");
                 useFrontSpeaker = false;
                 startAudioAgain(true);
                 ignoreOnPause = false;
@@ -1526,7 +1526,6 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
                 playingMessageObject.audioProgress = 0;
                 playingMessageObject.audioProgressSec = 0;
                 NotificationCenter.getInstance().postNotificationName(NotificationCenter.audioProgressDidChanged, playingMessageObject.getId(), 0);
-                FileLog.e("messenger", e2);
             }
         } else if (audioTrackPlayer != null) {
             if (playingMessageObject.audioProgress == 1) {
@@ -1730,7 +1729,6 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
                         audioRecorder.release();
                         audioRecorder = null;
                     } catch (Exception e2) {
-                        FileLog.e("messenger", e2);
                     }
 
                     AndroidUtilities.runOnUIThread(new Runnable() {
@@ -1921,7 +1919,6 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
                     inputStream.close();
                 }
             } catch (Exception e2) {
-                FileLog.e("messenger", e2);
             }
         }
         return false;
@@ -1946,7 +1943,6 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
                     inputStream.close();
                 }
             } catch (Exception e2) {
-                FileLog.e("messenger", e2);
             }
         }
         return false;
@@ -2007,14 +2003,12 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
                     inputStream.close();
                 }
             } catch (Exception e2) {
-                FileLog.e("messenger", e2);
             }
             try {
                 if (output != null) {
                     output.close();
                 }
             } catch (Exception e2) {
-                FileLog.e("messenger", e2);
             }
         }
         return null;
@@ -2569,11 +2563,11 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
                                 } else if (codecName.equals("OMX.TI.DUCATI1.VIDEO.H264E")) {
                                     processorType = PROCESSOR_TYPE_TI;
                                 }
-                                FileLog.e("messenger", "codec = " + codecInfo.getName() + " manufacturer = " + manufacturer + "device = " + Build.MODEL);
+                                //Log.i("DeltaChat", "codec = " + codecInfo.getName() + " manufacturer = " + manufacturer + "device = " + Build.MODEL);
                             } else {
                                 colorFormat = MediaCodecInfo.CodecCapabilities.COLOR_FormatSurface;
                             }
-                            FileLog.e("messenger", "colorFormat = " + colorFormat);
+                            //Log.i("DeltaChat", "colorFormat = " + colorFormat);
 
                             int resultHeightAligned = resultHeight;
                             int padding = 0;
@@ -2765,7 +2759,7 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
 
                                         } else if (decoderStatus == MediaCodec.INFO_OUTPUT_FORMAT_CHANGED) {
                                             MediaFormat newFormat = decoder.getOutputFormat();
-                                            FileLog.e("messenger", "newFormat = " + newFormat);
+                                            //Log.i("DeltaChat", "newFormat = " + newFormat);
                                         } else if (decoderStatus < 0) {
                                             throw new RuntimeException("unexpected result from decoder.dequeueOutputBuffer: " + decoderStatus);
                                         } else {
@@ -2784,7 +2778,7 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
                                             if (startTime > 0 && videoTime == -1) {
                                                 if (info.presentationTimeUs < startTime) {
                                                     doRender = false;
-                                                    FileLog.e("messenger", "drop frame startTime = " + startTime + " present time = " + info.presentationTimeUs);
+                                                    //Log.i("DeltaChat", "drop frame startTime = " + startTime + " present time = " + info.presentationTimeUs);
                                                 } else {
                                                     videoTime = info.presentationTimeUs;
                                                 }
@@ -2813,14 +2807,14 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
                                                             Utilities.convertVideoFrame(rgbBuf, yuvBuf, colorFormat, resultWidth, resultHeight, padding, swapUV);
                                                             encoder.queueInputBuffer(inputBufIndex, 0, bufferSize, info.presentationTimeUs, 0);
                                                         } else {
-                                                            FileLog.e("messenger", "input buffer not available");
+                                                            //Log.i("DeltaChat", "input buffer not available");
                                                         }
                                                     }
                                                 }
                                             }
                                             if ((info.flags & MediaCodec.BUFFER_FLAG_END_OF_STREAM) != 0) {
                                                 decoderOutputAvailable = false;
-                                                FileLog.e("messenger", "decoder stream end");
+                                                //Log.i("DeltaChat", "decoder stream end");
                                                 if (Build.VERSION.SDK_INT >= 18) {
                                                     encoder.signalEndOfInputStream();
                                                 } else {
@@ -2884,7 +2878,7 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
 
                     }
                 }
-                FileLog.e("messenger", "time = " + (System.currentTimeMillis() - time));
+                //Log.i("DeltaChat", "time = " + (System.currentTimeMillis() - time));
             }
         } else {
             preferences.edit().putBoolean("isPreviousOk", true).apply();

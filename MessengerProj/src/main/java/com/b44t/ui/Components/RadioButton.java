@@ -34,7 +34,6 @@ import android.graphics.PorterDuffXfermode;
 import android.view.View;
 
 import com.b44t.messenger.AndroidUtilities;
-import com.b44t.messenger.FileLog;
 import com.b44t.ui.ActionBar.Theme;
 
 public class RadioButton extends View {

@@ -67,7 +67,6 @@ import com.b44t.messenger.MrContact;
 import com.b44t.messenger.MrMailbox;
 import com.b44t.messenger.ApplicationLoader;
 import com.b44t.messenger.FileLoader;
-import com.b44t.messenger.FileLog;
 import com.b44t.messenger.LocaleController;
 import com.b44t.messenger.MediaController;
 import com.b44t.messenger.NotificationCenter;

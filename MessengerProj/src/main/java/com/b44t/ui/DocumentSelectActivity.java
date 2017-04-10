@@ -45,7 +45,6 @@ import android.widget.TextView;
 
 import com.b44t.messenger.AndroidUtilities;
 import com.b44t.messenger.ApplicationLoader;
-import com.b44t.messenger.FileLog;
 import com.b44t.messenger.LocaleController;
 import com.b44t.messenger.R;
 import com.b44t.ui.ActionBar.BackDrawable;
@@ -529,7 +528,7 @@ public class DocumentSelectActivity extends BaseFragment {
             String line;
             while ((line = bufferedReader.readLine()) != null) {
                 if (line.contains("vfat") || line.contains("/mnt")) {
-                    FileLog.e("messenger", line);
+                    //Log.i("DeltaChat", line);
                     StringTokenizer tokens = new StringTokenizer(line, " ");
                     String unused = tokens.nextToken();
                     String path = tokens.nextToken();

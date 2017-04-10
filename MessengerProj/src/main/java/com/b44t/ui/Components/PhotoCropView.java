@@ -33,7 +33,6 @@ import android.view.MotionEvent;
 import android.widget.FrameLayout;
 
 import com.b44t.messenger.AndroidUtilities;
-import com.b44t.messenger.FileLog;
 
 public class PhotoCropView extends FrameLayout {
 
@@ -560,12 +559,10 @@ public class PhotoCropView extends FrameLayout {
         try {
             return createBitmap(x, y, sizeX, sizeY);
         } catch (Throwable e) {
-            FileLog.e("tmessags", e);
             System.gc();
             try {
                 return createBitmap(x, y, sizeX, sizeY);
             } catch (Throwable e2) {
-                FileLog.e("messenger", e2);
             }
         }
         return null;

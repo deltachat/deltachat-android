@@ -37,7 +37,6 @@ import android.view.MotionEvent;
 import android.view.View;
 
 import com.b44t.messenger.AndroidUtilities;
-import com.b44t.messenger.FileLog;
 import com.b44t.messenger.R;
 
 import java.util.ArrayList;

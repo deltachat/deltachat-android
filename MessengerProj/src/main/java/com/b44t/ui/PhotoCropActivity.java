@@ -37,7 +37,6 @@ import android.widget.FrameLayout;
 import com.b44t.messenger.AndroidUtilities;
 import com.b44t.messenger.Bitmaps;
 import com.b44t.messenger.ImageLoader;
-import com.b44t.messenger.FileLog;
 import com.b44t.messenger.LocaleController;
 import com.b44t.messenger.R;
 import com.b44t.ui.ActionBar.ActionBar;
@@ -323,12 +322,10 @@ public class PhotoCropActivity extends BaseFragment {
             try {
                 return Bitmaps.createBitmap(imageToCrop, x, y, sizeX, sizeY);
             } catch (Throwable e) {
-                FileLog.e("tmessags", e);
                 System.gc();
                 try {
                     return Bitmaps.createBitmap(imageToCrop, x, y, sizeX, sizeY);
                 } catch (Throwable e2) {
-                    FileLog.e("messenger", e2);
                 }
             }
             return null;

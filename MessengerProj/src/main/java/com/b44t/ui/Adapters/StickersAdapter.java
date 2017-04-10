@@ -29,7 +29,6 @@ import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.b44t.messenger.FileLog;
 import com.b44t.messenger.NotificationCenter;
 import com.b44t.messenger.Utilities;
 import com.b44t.messenger.support.widget.RecyclerView;

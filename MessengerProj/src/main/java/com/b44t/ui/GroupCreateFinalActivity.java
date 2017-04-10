@@ -303,7 +303,6 @@ public class GroupCreateFinalActivity extends BaseFragment implements Notificati
                 avatar = small.location;
                 avatarImage.setImage(avatar, "50_50", avatarDrawable);
                 if (createAfterUpload) {
-                    FileLog.e("messenger", "avatar did uploaded");
                     MessagesController.getInstance().createChat(nameTextView.getText().toString(), selectedContacts, null, chatType, GroupCreateFinalActivity.this);
                 }
             }

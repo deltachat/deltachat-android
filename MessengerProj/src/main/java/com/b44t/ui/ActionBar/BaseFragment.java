@@ -34,7 +34,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.b44t.messenger.ApplicationLoader;
-import com.b44t.messenger.FileLog;
 
 public class BaseFragment {
 

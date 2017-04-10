@@ -44,7 +44,6 @@ import com.b44t.messenger.LocaleController;
 import com.b44t.messenger.MessageObject;
 import com.b44t.messenger.MrChat;
 import com.b44t.messenger.MrMailbox;
-import com.b44t.messenger.FileLog;
 import com.b44t.messenger.MrMsg;
 import com.b44t.messenger.MrPoortext;
 import com.b44t.messenger.TLRPC;

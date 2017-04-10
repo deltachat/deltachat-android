@@ -40,7 +40,6 @@ import android.view.View;
 import com.b44t.messenger.AndroidUtilities;
 import com.b44t.messenger.Emoji;
 import com.b44t.messenger.FileLoader;
-import com.b44t.messenger.FileLog;
 import com.b44t.messenger.ImageLoader;
 import com.b44t.messenger.ImageReceiver;
 import com.b44t.messenger.LocaleController;

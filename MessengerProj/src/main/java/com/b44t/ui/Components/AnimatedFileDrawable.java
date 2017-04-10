@@ -39,7 +39,6 @@ import android.os.Looper;
 import android.view.View;
 
 import com.b44t.messenger.AndroidUtilities;
-import com.b44t.messenger.FileLog;
 
 import java.io.File;
 import java.util.concurrent.ScheduledThreadPoolExecutor;

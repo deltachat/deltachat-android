@@ -195,7 +195,7 @@ public class ApplicationLoader extends Application {
         try {
             PowerManager pm = (PowerManager)ApplicationLoader.applicationContext.getSystemService(Context.POWER_SERVICE);
             isScreenOn = pm.isScreenOn();
-            FileLog.e("messenger", "screen state = " + isScreenOn);
+            //Log.i("DeltaChat", "screen state = " + isScreenOn);
         } catch (Exception e) {
 
         }

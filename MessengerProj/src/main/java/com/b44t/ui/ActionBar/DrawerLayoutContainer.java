@@ -44,7 +44,6 @@ import android.widget.FrameLayout;
 import android.widget.ListView;
 
 import com.b44t.messenger.AndroidUtilities;
-import com.b44t.messenger.FileLog;
 import com.b44t.messenger.R;
 import com.b44t.messenger.AnimatorListenerAdapterProxy;
 
@@ -407,7 +406,7 @@ public class DrawerLayoutContainer extends FrameLayout {
         if (!inLayout) {
             /*StackTraceElement[] elements = Thread.currentThread().getStackTrace();
             for (int a = 0; a < elements.length; a++) {
-                FileLog.d("messenger", "on " + elements[a]);
+                Log.d("DeltaChat", "on " + elements[a]);
             }*/
             super.requestLayout();
         }

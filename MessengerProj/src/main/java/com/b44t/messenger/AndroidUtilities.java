@@ -51,6 +51,7 @@ import android.text.SpannableStringBuilder;
 import android.text.Spanned;
 import android.text.style.ForegroundColorSpan;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.util.StateSet;
 import android.view.Display;
 import android.view.Surface;
@@ -301,11 +302,10 @@ public class AndroidUtilities {
                 if (display != null) {
                     display.getMetrics(displayMetrics);
                     display.getSize(displaySize);
-                    FileLog.e("messenger", "display size = " + displaySize.x + " " + displaySize.y + " " + displayMetrics.xdpi + "x" + displayMetrics.ydpi);
+                    Log.i("DeltaChat", "Display size: " + displaySize.x + " x " + displaySize.y + ", DPI: " + displayMetrics.xdpi + " x " + displayMetrics.ydpi);
                 }
             }
         } catch (Exception e) {
-
         }
     }
 
@@ -652,12 +652,12 @@ public class AndroidUtilities {
             storageDir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), "Delta Chat");
             if (!storageDir.mkdirs()) {
                 if (!storageDir.exists()){
-                    FileLog.d("messenger", "failed to create directory");
+                    Log.w("DeltaChat", "failed to create directory");
                     return null;
                 }
             }
         } else {
-            FileLog.d("messenger", "External storage is not mounted READ/WRITE.");
+            Log.w("DeltaChat", "External storage is not mounted READ/WRITE.");
         }
 
         return storageDir;

@@ -39,7 +39,6 @@ import com.b44t.messenger.ImageLoader;
 import com.b44t.messenger.MediaController;
 import com.b44t.messenger.TLRPC;
 import com.b44t.messenger.FileLoader;
-import com.b44t.messenger.FileLog;
 import com.b44t.messenger.UserConfig;
 import com.b44t.ui.LaunchActivity;
 import com.b44t.ui.PhotoAlbumPickerActivity;

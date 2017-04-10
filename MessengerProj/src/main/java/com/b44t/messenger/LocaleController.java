@@ -182,7 +182,7 @@ public class LocaleController {
             }
             applyLanguage(currentInfo, override);
         } catch (Exception e) {
-            
+
         }
 
         try {

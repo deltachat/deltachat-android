@@ -43,7 +43,6 @@ import android.widget.PopupWindow;
 import android.widget.ScrollView;
 
 import com.b44t.messenger.AndroidUtilities;
-import com.b44t.messenger.FileLog;
 import com.b44t.messenger.R;
 import com.b44t.ui.Components.LayoutHelper;
 

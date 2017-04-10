@@ -62,7 +62,6 @@ import com.b44t.messenger.MrContact;
 import com.b44t.messenger.MrMailbox;
 import com.b44t.messenger.Utilities;
 import com.b44t.messenger.TLRPC;
-import com.b44t.messenger.FileLog;
 import com.b44t.messenger.NotificationCenter;
 import com.b44t.messenger.R;
 import com.b44t.ui.Adapters.ContactsAdapter;
