@@ -404,4 +404,5 @@
     <string name="ResetContactsKey">Reinitialiser les clefs de l\'utilisateur</string>
     <string name="ForwardToTitle">Renvoyer à…</string>
     <string name="DoneHint">Fait.</string>
+    <string name="BackgroundConnectionEnabled">Connexion en arrière-plan activée</string>
 </resources>

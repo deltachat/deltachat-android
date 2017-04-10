@@ -140,10 +140,10 @@ public class ApplicationLoader extends Application {
 
     @Override
     public void onCreate() {
-        Log.i("DeltaChat", "*************** ApplicationLoader.onCreate() ***************");
         super.onCreate();
+        applicationContext = getApplicationContext(); // should be set very first as it may be needed eg. for logging
 
-        applicationContext = getApplicationContext();
+        MrMailbox.log_i("DeltaChat", "*************** ApplicationLoader.onCreate() ***************");
         System.loadLibrary("messenger.1");
         new ForegroundDetector(this);
         applicationHandler = new Handler(applicationContext.getMainLooper());

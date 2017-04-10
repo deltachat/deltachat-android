@@ -753,7 +753,6 @@ public class ImageLoader {
         BroadcastReceiver receiver = new BroadcastReceiver() {
             @Override
             public void onReceive(Context arg0, Intent intent) {
-                Log.i("DeltaChat", "file system changed");
                 Runnable r = new Runnable() {
                     public void run() {
                         checkMediaPaths();

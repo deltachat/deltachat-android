@@ -381,6 +381,14 @@ public class MrMailbox {
     /* additional functions that are not 1:1 available in the backend
      **********************************************************************************************/
 
+    public static void log_i(String tag, String msg)
+    {
+        Log.i(tag, msg);
+        if( BuildConfig.BUILD_TYPE.equals("debug") ) {
+            FileLog.i(tag, msg); // TODO: Can be removed as soon as notifications are reliable.
+        }
+    }
+
     public static MrChatlist     m_currChatlist = new MrChatlist(0);
     public native static int     getCurrentTime             ();
     public static void reloadMainChatlist()

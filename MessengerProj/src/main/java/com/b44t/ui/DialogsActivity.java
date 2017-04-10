@@ -530,6 +530,10 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
     private void askForIgnoreBatteryOptimization() {
         boolean requestIgnoreActivityStarted = false;
 
+        /* -- we do not ask for this permission as this would require the permission
+           -- android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS which is ususally
+           -- not permitted in the playstore :-(
+
         try {
             String packageName = ApplicationLoader.applicationContext.getPackageName();
             PowerManager pm = (PowerManager) ApplicationLoader.applicationContext.getSystemService(Context.POWER_SERVICE);
@@ -553,6 +557,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
         } catch (Exception e) {
             Log.e("DeltaChat", "cannot ignore battery optimizations.", e);
         }
+        */
 
         if( !requestIgnoreActivityStarted ) {
             askForOtherPermissons(); // otherwise, it gets started on RC600_BATTERY_REQUEST_DONE
@@ -561,6 +566,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
 
     @Override
     public void onActivityResultFragment(int requestCode, int resultCode, Intent data) {
+        /* -- see comment above
         if (requestCode == BaseFragment.RC600_BATTERY_REQUEST_DONE) {
             boolean requestIgnoreActivityMaybeRestarted = false;
 
@@ -585,12 +591,11 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
                     builder.show();
                     requestIgnoreActivityMaybeRestarted  = true;
 
-                    /*-- this is an alternative implementation to the alert above
-                    IF we use this, we should handle the situation, ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS cannot be started due to a missing REQUEST_IGNORE_BATTERY_OPTIMIZATIONS permission
-                    checkPermission = true;
-                    getParentActivity().finish();
-                    return;
-                    */
+                    // -- this is an alternative implementation to the alert above
+                    // IF we use this, we should handle the situation, ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS cannot be started due to a missing REQUEST_IGNORE_BATTERY_OPTIMIZATIONS permission
+                    // checkPermission = true;
+                    // getParentActivity().finish();
+                    //return;
                 }
             }
 
@@ -598,6 +603,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
                 askForOtherPermissons();
             }
         }
+        */
     }
 
     @TargetApi(Build.VERSION_CODES.M)

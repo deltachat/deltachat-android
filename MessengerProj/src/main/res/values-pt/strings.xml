@@ -399,5 +399,6 @@
     <string name="ResetContactsKey">Apagar chave do usuário</string>
     <string name="ForwardToTitle">Selecione um Chat …</string>
     <string name="DoneHint">Concluído.</string>
+    <string name="BackgroundConnectionEnabled">Conecção de fundo ligada</string>
 </resources>
 

@@ -1180,7 +1180,7 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
 
     @Override
     protected void onPause() {
-        Log.i("DeltaChat", "*** LaunchActivity.onPause()");
+        MrMailbox.log_i("DeltaChat", "*** LaunchActivity.onPause()");
         super.onPause();
         ApplicationLoader.mainInterfacePaused = true;
         onPasscodePause();
@@ -1212,7 +1212,7 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
 
     @Override
     protected void onDestroy() {
-        Log.i("DeltaChat", "*** LaunchActivity.onDestroy()");
+        MrMailbox.log_i("DeltaChat", "*** LaunchActivity.onDestroy()");
         PhotoViewer.getInstance().destroyPhotoViewer();
         StickerPreviewViewer.getInstance().destroy();
         try {
@@ -1241,7 +1241,7 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
 
     @Override
     protected void onResume() {
-        Log.i("DeltaChat", "*** LaunchActivity.onResume()");
+        MrMailbox.log_i("DeltaChat", "*** LaunchActivity.onResume()");
         super.onResume();
         ApplicationLoader.mainInterfacePaused = false;
         onPasscodeResume();

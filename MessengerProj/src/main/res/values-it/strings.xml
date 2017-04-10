@@ -315,4 +315,5 @@
     <string name="InviteMenuEntry">Invita amici</string>
     <string name="ForwardToTitle">Seleziona chat …</string>
     <string name="DoneHint">Fatto.</string>
+    <string name="BackgroundConnectionEnabled">Connessione in background attivata</string>
 </resources>

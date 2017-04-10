@@ -40,7 +40,6 @@
     <uses-permission android:name="android.permission.USE_FINGERPRINT" />
     <uses-permission android:name="android.permission.INSTALL_SHORTCUT" />
     <uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT" />
-    <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" /> <!-- required to start the ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS intent -->
     <!-- <uses-permission android:name="com.android.launcher.permission.UNINSTALL_SHORTCUT" /> - required for AndroidUtilities.uninstallShortcut() -->
     <!-- <uses-permission android:name="android.permission.CAMERA" /> - also disabled in T'gram; we're using the camera via an intent only -->
 

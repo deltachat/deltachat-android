@@ -38,7 +38,7 @@ public class TimerReceiver extends BroadcastReceiver {
         // acquire for 3 seconds, this should wake up the threads,
         // _if_ there is more to do, the backend acquires an additional wakelock using MR_EVENT_WAKE_LOCK
         ApplicationLoader.wakeupWakeLock.acquire(3*1000); // do this first!
-        Log.i("DeltaChat", "*** TimerReceiver.onReceive()");
+        MrMailbox.log_i("DeltaChat", "*** TimerReceiver.onReceive()");
 
         // we assume, the IMAP thread is alive. I cannot imagine, the thread was killed with the App being running.
         // (if the whole App was killed, the IMAP thread is already started by MrMailbox.connect() if we're here)

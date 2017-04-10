@@ -448,4 +448,5 @@
     <string name="ForwardToTitle">Przekaż do…</string>
     <string name="SelectContact">Wybierz kontakt</string>
     <string name="DoneHint">Gotowe.</string>
+    <string name="BackgroundConnectionEnabled">Połączenie w tle jest włączone</string>
 </resources>

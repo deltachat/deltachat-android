@@ -24,7 +24,9 @@ package com.b44t.messenger;
 
 import android.app.Service;
 import android.content.Intent;
+import android.os.Build;
 import android.os.IBinder;
+import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 
 
@@ -32,9 +34,11 @@ public class KeepAliveService extends Service {
 
     @Override
     public void onCreate() {
-        Log.i("DeltaChat", "*** KeepAliveService.onCreate()");
+        MrMailbox.log_i("DeltaChat", "*** KeepAliveService.onCreate()");
         // there's nothing more to do here as all initialisation stuff is already done in
         // ApplicationLoader.onCreate() which is called before this broadcast is sended.
+
+        setSelfAsForeground();
     }
 
     @Override
@@ -42,7 +46,7 @@ public class KeepAliveService extends Service {
         // START_STICKY ensured, the service is recreated as soon it is terminted for any reasons.
         // as ApplicationLoader.onCreate() is called before a service starts, there is no more to do here,
         // the app is just running fine.
-        Log.i("DeltaChat", "*** KeepAliveService.onStartCommand()");
+        MrMailbox.log_i("DeltaChat", "*** KeepAliveService.onStartCommand()");
         return START_STICKY;
     }
 
@@ -52,7 +56,23 @@ public class KeepAliveService extends Service {
     }
 
     public void onDestroy() {
-        Log.i("DeltaChat", "*** KeepAliveService.onDestroy()");
+        MrMailbox.log_i("DeltaChat", "*** KeepAliveService.onDestroy()");
         // the service will be restarted due to START_STICKY automatically, there's nothing more to do.
+    }
+
+    public static final int SERVICE_RUNNING_ID = 4141;
+
+    private void setSelfAsForeground() {
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this);
+        builder.setContentTitle(getString(R.string.AppName));
+        builder.setContentText(getString(R.string.BackgroundConnectionEnabled));
+        if( Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN ) {
+            builder.setPriority(NotificationCompat.PRIORITY_MIN);
+        }
+        builder.setWhen(0);
+        builder.setSmallIcon(R.drawable.notification_permanent);
+
+        stopForeground(true);
+        startForeground(SERVICE_RUNNING_ID, builder.build()); // TODO: if we target Android O, we should use startServiceInForeground()
     }
 }

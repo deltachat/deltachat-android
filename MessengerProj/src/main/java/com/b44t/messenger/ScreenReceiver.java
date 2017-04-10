@@ -33,10 +33,10 @@ public class ScreenReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         if (intent.getAction().equals(Intent.ACTION_SCREEN_OFF)) {
-            Log.i("DeltaChat", "*** Screen off");
+            MrMailbox.log_i("DeltaChat", "*** Screen off");
             ApplicationLoader.isScreenOn = false;
         } else if (intent.getAction().equals(Intent.ACTION_SCREEN_ON)) {
-            Log.i("DeltaChat", "*** Screen on");
+            MrMailbox.log_i("DeltaChat", "*** Screen on");
             ApplicationLoader.isScreenOn = true;
         }
         //NotificationCenter.getInstance().postNotificationName(NotificationCenter.screenStateChanged);
