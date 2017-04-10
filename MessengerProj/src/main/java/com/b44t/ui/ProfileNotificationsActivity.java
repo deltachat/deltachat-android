@@ -259,12 +259,12 @@ public class ProfileNotificationsActivity extends BaseFragment implements Notifi
 
                     SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("Notifications", Activity.MODE_PRIVATE);
                     if (preferences.contains("color_" + dialog_id)) {
-                        colorPickerView.setOldCenterColor(preferences.getInt("color_" + dialog_id, 0xff00ff00));
+                        colorPickerView.setColor(preferences.getInt("color_" + dialog_id, 0xff00ff00));
                     } else {
                         if ((int) dialog_id < 0) {
-                            colorPickerView.setOldCenterColor(preferences.getInt("GroupLed", 0xff00ff00));
+                            colorPickerView.setColor(preferences.getInt("GroupLed", 0xff00ff00));
                         } else {
-                            colorPickerView.setOldCenterColor(preferences.getInt("MessagesLed", 0xff00ff00));
+                            colorPickerView.setColor(preferences.getInt("MessagesLed", 0xff00ff00));
                         }
                     }
 

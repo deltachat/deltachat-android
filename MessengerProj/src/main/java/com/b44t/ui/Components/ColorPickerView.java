@@ -36,7 +36,7 @@ public class ColorPickerView extends View {
     private static final String STATE_PARENT = "parent";
     private static final String STATE_ANGLE = "angle";
     private static final String STATE_OLD_COLOR = "color";
-    private static final String STATE_SHOW_OLD_COLOR = "showColor";
+    //private static final String STATE_SHOW_OLD_COLOR = "showColor";
 
     private static final int[] COLORS = new int[] { 0xFFFF0000, 0xFFFF00FF, 0xFF0000FF, 0xFF00FFFF, 0xFF00FF00, 0xFFFFFFFF, 0xFFFFFF00, 0xFFFF0000 };
 
@@ -56,7 +56,7 @@ public class ColorPickerView extends View {
     private RectF mCenterRectangle = new RectF();
     private boolean mUserIsMovingPointer = false;
     private int mCenterOldColor;
-    private boolean mShowCenterOldColor;
+    private final boolean mShowCenterOldColor = false;
     private int mCenterNewColor;
     private float mTranslationOffset;
     private float mSlopX;
@@ -145,7 +145,7 @@ public class ColorPickerView extends View {
 
         mCenterNewColor = calculateColor(mAngle);
         mCenterOldColor = calculateColor(mAngle);
-        mShowCenterOldColor = true;
+        //mShowCenterOldColor = true;
     }
 
     @Override
@@ -344,14 +344,14 @@ public class ColorPickerView extends View {
         return mCenterOldColor;
     }
 
-    public void setShowOldCenterColor(boolean show) {
+    /*public void setShowOldCenterColor(boolean show) {
         mShowCenterOldColor = show;
         invalidate();
     }
 
     public boolean getShowOldCenterColor() {
         return mShowCenterOldColor;
-    }
+    }*/
 
     @Override
     protected Parcelable onSaveInstanceState() {
@@ -361,7 +361,7 @@ public class ColorPickerView extends View {
         state.putParcelable(STATE_PARENT, superState);
         state.putFloat(STATE_ANGLE, mAngle);
         state.putInt(STATE_OLD_COLOR, mCenterOldColor);
-        state.putBoolean(STATE_SHOW_OLD_COLOR, mShowCenterOldColor);
+        //state.putBoolean(STATE_SHOW_OLD_COLOR, mShowCenterOldColor);
 
         return state;
     }
@@ -375,7 +375,7 @@ public class ColorPickerView extends View {
 
         mAngle = savedState.getFloat(STATE_ANGLE);
         setOldCenterColor(savedState.getInt(STATE_OLD_COLOR));
-        mShowCenterOldColor = savedState.getBoolean(STATE_SHOW_OLD_COLOR);
+        //mShowCenterOldColor = savedState.getBoolean(STATE_SHOW_OLD_COLOR);
         int currentColor = calculateColor(mAngle);
         mPointerColor.setColor(currentColor);
         setNewCenterColor(currentColor);

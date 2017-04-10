@@ -285,9 +285,9 @@ public class SettingsNotificationsActivity extends BaseFragment implements Notif
 
                     SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("Notifications", Activity.MODE_PRIVATE);
                     if (i == messageLedRow) {
-                        colorPickerView.setOldCenterColor(preferences.getInt("MessagesLed", 0xff00ff00));
+                        colorPickerView.setColor(preferences.getInt("MessagesLed", 0xff00ff00));
                     } else if (i == groupLedRow) {
-                        colorPickerView.setOldCenterColor(preferences.getInt("GroupLed", 0xff00ff00));
+                        colorPickerView.setColor(preferences.getInt("GroupLed", 0xff00ff00));
                     }
 
                     AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());

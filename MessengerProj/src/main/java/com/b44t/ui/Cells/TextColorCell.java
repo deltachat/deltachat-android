@@ -26,38 +26,34 @@ package com.b44t.ui.Cells;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
-import android.graphics.PorterDuff;
-import android.graphics.PorterDuffColorFilter;
-import android.graphics.drawable.Drawable;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
-import com.b44t.messenger.AndroidUtilities;
 import com.b44t.messenger.LocaleController;
-import com.b44t.messenger.R;
 import com.b44t.ui.Components.LayoutHelper;
+
+import static com.b44t.messenger.AndroidUtilities.dp;
 
 public class TextColorCell extends FrameLayout {
 
     private TextView textView;
     private boolean needDivider;
-    private int currentColor;
+    private Paint dividerpaint;
+    private Paint circlepaint;
 
-    private Drawable colorDrawable;
-    private static Paint paint;
 
     public TextColorCell(Context context) {
         super(context);
 
-        if (paint == null) {
-            paint = new Paint();
-            paint.setColor(0xffd9d9d9);
-            paint.setStrokeWidth(1);
-        }
+        dividerpaint = new Paint();
+        dividerpaint.setColor(0xffd9d9d9);
+        dividerpaint.setStrokeWidth(1);
+        dividerpaint.setAntiAlias(true);
 
-        colorDrawable = getResources().getDrawable(R.drawable.switch_to_on2);
+        circlepaint = new Paint();
+        circlepaint.setAntiAlias(true);
 
         textView = new TextView(context);
         textView.setTextColor(0xff212121);
@@ -71,33 +67,27 @@ public class TextColorCell extends FrameLayout {
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        super.onMeasure(widthMeasureSpec, MeasureSpec.makeMeasureSpec(AndroidUtilities.dp(48) + (needDivider ? 1 : 0), MeasureSpec.EXACTLY));
+        super.onMeasure(widthMeasureSpec, MeasureSpec.makeMeasureSpec(dp(48) + (needDivider ? 1 : 0), MeasureSpec.EXACTLY));
     }
 
     public void setTextAndColor(String text, int color, boolean divider) {
         textView.setText(text);
         needDivider = divider;
-        currentColor = color;
-        colorDrawable.setColorFilter(new PorterDuffColorFilter(color, PorterDuff.Mode.MULTIPLY));
-        setWillNotDraw(!needDivider && currentColor == 0);
+        circlepaint.setColor(color);
+        setWillNotDraw(false);
         invalidate();
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
         if (needDivider) {
-            canvas.drawLine(getPaddingLeft(), getHeight() - 1, getWidth() - getPaddingRight(), getHeight() - 1, paint);
+            canvas.drawLine(getPaddingLeft(), getHeight() - 1, getWidth() - getPaddingRight(), getHeight() - 1, dividerpaint);
         }
-        if (currentColor != 0 && colorDrawable != null) {
-            int x;
-            int y = (getMeasuredHeight() - colorDrawable.getMinimumHeight()) / 2;
-            if (!LocaleController.isRTL) {
-                x = getMeasuredWidth() - colorDrawable.getIntrinsicWidth() - AndroidUtilities.dp(14.5f);
-            } else {
-                x = AndroidUtilities.dp(14.5f);
-            }
-            colorDrawable.setBounds(x, y, x + colorDrawable.getIntrinsicWidth(), y + colorDrawable.getIntrinsicHeight());
-            colorDrawable.draw(canvas);
-        }
+
+        final int RADIUS = dp(8);
+        int x = getWidth()-getPaddingRight()-dp(17)-RADIUS;
+        int y = getHeight()/2;
+        canvas.drawCircle(x+dp(1), y+dp(1), RADIUS, dividerpaint);
+        canvas.drawCircle(x, y, RADIUS, circlepaint);
     }
 }
