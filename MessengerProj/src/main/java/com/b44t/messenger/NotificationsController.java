@@ -1336,7 +1336,7 @@ public class NotificationsController {
                 if (chat != null) {
                     name = chat.title;
                 } else {
-                    name = UserObject.getUserName(user);
+                    name = "ErrName"; // use MrContact.getName(), if really needed
                 }
                 /*if (chat != null) {
                     if (chat.photo != null && chat.photo.photo_small != null && chat.photo.photo_small.volume_id != 0 && chat.photo.photo_small.local_id != 0) {

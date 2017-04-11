@@ -177,7 +177,6 @@ public class TLRPC {
 
 	public static class Chat extends TLObject {
 		public int flags;
-		public boolean creator;
 		public int id;
 		public String title;
 		public final ChatPhoto photo = null;

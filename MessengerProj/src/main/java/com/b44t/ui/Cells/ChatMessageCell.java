@@ -57,7 +57,6 @@ import com.b44t.messenger.MrContact;
 import com.b44t.messenger.MrMailbox;
 import com.b44t.messenger.MrPoortext;
 import com.b44t.messenger.R;
-import com.b44t.messenger.UserObject;
 import com.b44t.messenger.TLRPC;
 import com.b44t.ui.Components.AvatarDrawable;
 import com.b44t.ui.Components.LinkPath;
@@ -911,7 +910,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
         String newNameString = null;
         if (drawName && isGroupChat && !currentMessageObject.isOutOwner()) {
             if (newUser != null) {
-                newNameString = UserObject.getUserName(newUser);
+                newNameString = "ErrName"; // use MrContact.getName(), if really needed
             } else if (newChat != null) {
                 newNameString = newChat.title;
             }

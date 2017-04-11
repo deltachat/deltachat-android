@@ -103,14 +103,6 @@ public class Utilities {
         return val;
     }
 
-    public static String parseIntToString(String value) {
-        Matcher matcher = pattern.matcher(value);
-        if (matcher.find()) {
-            return matcher.group(0);
-        }
-        return null;
-    }
-
     public static String bytesToHex(byte[] bytes) {
         if (bytes == null) {
             return "";
@@ -125,43 +117,6 @@ public class Utilities {
         return new String(hexChars);
     }
 
-    public static byte[] computeSHA1(byte[] convertme, int offset, int len) {
-        try {
-            MessageDigest md = MessageDigest.getInstance("SHA-1");
-            md.update(convertme, offset, len);
-            return md.digest();
-        } catch (Exception e) {
-
-        }
-        return new byte[20];
-    }
-
-    public static byte[] computeSHA1(ByteBuffer convertme, int offset, int len) {
-        int oldp = convertme.position();
-        int oldl = convertme.limit();
-        try {
-            MessageDigest md = MessageDigest.getInstance("SHA-1");
-            convertme.position(offset);
-            convertme.limit(len);
-            md.update(convertme);
-            return md.digest();
-        } catch (Exception e) {
-
-        } finally {
-            convertme.limit(oldl);
-            convertme.position(oldp);
-        }
-        return new byte[20];
-    }
-
-    public static byte[] computeSHA1(ByteBuffer convertme) {
-        return computeSHA1(convertme, 0, convertme.limit());
-    }
-
-    public static byte[] computeSHA1(byte[] convertme) {
-        return computeSHA1(convertme, 0, convertme.length);
-    }
-
     public static byte[] computeSHA256(byte[] convertme, int offset, int len) {
         try {
             MessageDigest md = MessageDigest.getInstance("SHA-256");
@@ -171,11 +126,6 @@ public class Utilities {
 
         }
         return null;
-    }
-
-    public static long bytesToLong(byte[] bytes) {
-        return ((long) bytes[7] << 56) + (((long) bytes[6] & 0xFF) << 48) + (((long) bytes[5] & 0xFF) << 40) + (((long) bytes[4] & 0xFF) << 32)
-                + (((long) bytes[3] & 0xFF) << 24) + (((long) bytes[2] & 0xFF) << 16) + (((long) bytes[1] & 0xFF) << 8) + ((long) bytes[0] & 0xFF);
     }
 
     public static String MD5(String md5) {
