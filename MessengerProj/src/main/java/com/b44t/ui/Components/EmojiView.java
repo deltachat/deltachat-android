@@ -85,7 +85,7 @@ public class EmojiView extends FrameLayout implements NotificationCenter.Notific
     public interface Listener {
         boolean onBackspace();
         void onEmojiSelected(String emoji);
-        void onStickerSelected(TLRPC.Document sticker);
+        //void onStickerSelected(TLRPC.Document sticker);
         void onStickersSettingsClick();
         void onGifSelected(TLRPC.Document gif);
         void onGifTab(boolean opened);
@@ -640,9 +640,9 @@ public class EmojiView extends FrameLayout implements NotificationCenter.Notific
                     cell.disable();
                     TLRPC.Document document = cell.getSticker();
                     addRecentSticker(document);
-                    if (listener != null) {
+                    /*if (listener != null) {
                         listener.onStickerSelected(document);
-                    }
+                    }*/
                 }
             };
             stickersGridView.setOnItemClickListener(stickersOnItemClickListener);

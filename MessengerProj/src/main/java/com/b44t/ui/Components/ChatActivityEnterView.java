@@ -71,7 +71,6 @@ import com.b44t.messenger.SendMessagesHelper;
 import com.b44t.messenger.NotificationCenter;
 import com.b44t.messenger.R;
 import com.b44t.messenger.TLRPC;
-import com.b44t.messenger.UserConfig;
 import com.b44t.messenger.AnimatorListenerAdapterProxy;
 import com.b44t.messenger.ApplicationLoader;
 import com.b44t.ui.ActionBar.Theme;
@@ -81,7 +80,7 @@ import java.io.File;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 
-public class ChatActivityEnterView extends FrameLayout implements NotificationCenter.NotificationCenterDelegate, SizeNotifierFrameLayout.SizeNotifierFrameLayoutDelegate, StickersAlert.StickersAlertDelegate {
+public class ChatActivityEnterView extends FrameLayout implements NotificationCenter.NotificationCenterDelegate, SizeNotifierFrameLayout.SizeNotifierFrameLayoutDelegate /*, StickersAlert.StickersAlertDelegate*/ {
 
     public interface ChatActivityEnterViewDelegate {
         void onMessageSend(CharSequence message);
@@ -1369,9 +1368,9 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
                 }
             }
 
-            public void onStickerSelected(TLRPC.Document sticker) {
+            /*public void onStickerSelected(TLRPC.Document sticker) {
                 ChatActivityEnterView.this.onStickerSelected(sticker);
-            }
+            }*/
 
             @Override
             public void onStickersSettingsClick() {
@@ -1431,13 +1430,13 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
         sizeNotifierLayout.addView(emojiView);
     }
 
-    @Override
+    /*@Override
     public void onStickerSelected(TLRPC.Document sticker) {
         SendMessagesHelper.getInstance().sendSticker(sticker, dialog_id);
         if (delegate != null) {
             delegate.onMessageSend(null);
         }
-    }
+    }*/
 
     private void showPopup(int show, int contentType /*0=emojiView, 1=botKeyboardView*/ ) {
         if (show == 1) {
