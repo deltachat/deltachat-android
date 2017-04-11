@@ -61,6 +61,7 @@ import android.widget.Toast;
 import com.b44t.messenger.AndroidUtilities;
 import com.b44t.messenger.ContactsController;
 import com.b44t.messenger.ImageLoader;
+import com.b44t.messenger.KeepAliveService;
 import com.b44t.messenger.MrChat;
 import com.b44t.messenger.MrMailbox;
 import com.b44t.messenger.SendMessagesHelper;
@@ -1277,6 +1278,10 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
             }
         } else if (id == NotificationCenter.mainUserInfoChanged) {
             drawerLayoutAdapter.notifyDataSetChanged();
+            KeepAliveService kas = KeepAliveService.getInstance();
+            if( kas != null ) {
+                kas.updateForegroundNotification();
+            }
         }
     }
 

@@ -433,5 +433,6 @@
     <string name="NoNetwork">Kein Netz.</string>
     <string name="Audio">Audio</string>
     <string name="PleaseCutVideoToMaxSize">Video bitte auf eine Größe von max. %1$s zurechtschneiden.</string>
-    <string name="BackgroundConnectionEnabled">Hintergrundverbindung aktiv</string>
+    <string name="PermNotificationTitle">Verbunden mit %1$s</string>
+    <string name="PermNotificationText">Warte auf Nachrichten …</string>
 </resources>

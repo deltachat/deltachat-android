@@ -22,22 +22,29 @@
 
 package com.b44t.messenger;
 
+import android.app.Notification;
+import android.app.NotificationManager;
 import android.app.Service;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.IBinder;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 
+import java.util.Locale;
+
 
 public class KeepAliveService extends Service {
+
+    static KeepAliveService s_this = null;
 
     @Override
     public void onCreate() {
         MrMailbox.log_i("DeltaChat", "*** KeepAliveService.onCreate()");
         // there's nothing more to do here as all initialisation stuff is already done in
         // ApplicationLoader.onCreate() which is called before this broadcast is sended.
-
+        s_this = this;
         setSelfAsForeground();
     }
 
@@ -60,19 +67,48 @@ public class KeepAliveService extends Service {
         // the service will be restarted due to START_STICKY automatically, there's nothing more to do.
     }
 
-    public static final int SERVICE_RUNNING_ID = 4141;
-
     private void setSelfAsForeground() {
+        stopForeground(true);
+        startForeground(FG_NOTIFICATION_ID, createNotification()); // TODO: if we target Android O, we should use startServiceInForeground()
+    }
+
+    static public KeepAliveService getInstance()
+    {
+        return s_this; // may be null
+    }
+
+    /* The notification
+     * A notification is required for a foreground service; and without a foreground service,
+     * Delta Chat won't get new messages reliable
+     **********************************************************************************************/
+
+    public static final int FG_NOTIFICATION_ID = 4142;
+    private Notification createNotification()
+    {
+        // a notification _must_ contain a small icon, a title and a text, see https://developer.android.com/guide/topics/ui/notifiers/notifications.html#Required
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this);
-        builder.setContentTitle(getString(R.string.AppName));
-        builder.setContentText(getString(R.string.BackgroundConnectionEnabled));
+
+        if( MrMailbox.isConfigured()!=0) {
+            builder.setContentTitle(LocaleController.formatString("", R.string.PermNotificationTitle, MrMailbox.getConfig("addr", "")));
+            builder.setContentText(getString(R.string.PermNotificationText));
+        }
+        else {
+            builder.setContentTitle(getString(R.string.AppName));
+            builder.setContentText(getString(R.string.AccountNotConfigured));
+        }
+
         if( Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN ) {
             builder.setPriority(NotificationCompat.PRIORITY_MIN);
         }
         builder.setWhen(0);
         builder.setSmallIcon(R.drawable.notification_permanent);
+        return builder.build();
+    }
 
-        stopForeground(true);
-        startForeground(SERVICE_RUNNING_ID, builder.build()); // TODO: if we target Android O, we should use startServiceInForeground()
+    public void updateForegroundNotification()
+    {
+        // update the notification by simply creating a new notification with the same ID, see https://developer.android.com/training/notify-user/managing.html#Updating
+        NotificationManager nm = (NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);
+        nm.notify(FG_NOTIFICATION_ID, createNotification());
     }
 }

@@ -309,5 +309,6 @@
     <string name="InviteMenuEntry">Invitar a amigos</string>
     <string name="ForwardToTitle">Elige el chat …</string>
     <string name="DoneHint">Hecho.</string>
-    <string name="BackgroundConnectionEnabled">Conexión en segundo plano habilitada</string>
+    <string name="PermNotificationText">Conexión en segundo plano habilitada</string>
+    <string name="PermNotificationTitle">Delta Chat</string>
 </resources>

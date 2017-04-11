@@ -309,5 +309,6 @@
     <string name="InviteMenuEntry">Vrienden uitnodigen</string>
     <string name="ForwardToTitle">Kies een chat …</string>
     <string name="DoneHint">Gereed.</string>
-    <string name="BackgroundConnectionEnabled">Achtergrond verbinding tot stand gebracht</string>
+    <string name="PermNotificationText">Achtergrond verbinding tot stand gebracht</string>
+    <string name="PermNotificationTitle">Delta Chat</string>
 </resources>
