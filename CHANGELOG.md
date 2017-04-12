@@ -1,5 +1,12 @@
 # Delta Chat Changelog
 
+## v0.1.27
+2017-04-12
+
+* Use a permanent foreground service for relieable notifications
+* Monitor the IMAP-IDLE thread and reconnect if IMAP-IDLE seems to hang
+* Various battery and background optimizations
+
 ## v0.1.25
 2017-04-04
 
