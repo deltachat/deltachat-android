@@ -43,6 +43,8 @@ public class TimerReceiver extends BroadcastReceiver {
         // we assume, the IMAP thread is alive. I cannot imagine, the thread was killed with the App being running.
         // (if the whole App was killed, the IMAP thread is already started by MrMailbox.connect() if we're here)
         // (the thread itself will reconnect to the IMAP server as needed)
+        // however, it seems as if the threads sleep longer than ususal, check this by calling heartbeat() manually
+        MrMailbox.heartbeat();
 
         // create the next alarm in about a minute
         scheduleNextAlarm();

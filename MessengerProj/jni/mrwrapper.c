@@ -522,6 +522,12 @@ JNIEXPORT jstring Java_com_b44t_messenger_MrMailbox_cmdline(JNIEnv *env, jclass 
 }
 
 
+JNIEXPORT void Java_com_b44t_messenger_MrMailbox_heartbeat(JNIEnv *env, jclass cls)
+{
+    mrmailbox_heartbeat(get_mrmailbox_t(env, cls));
+}
+
+
 JNIEXPORT jint Java_com_b44t_messenger_MrMailbox_MrMailboxAddAddressBook(JNIEnv *env, jclass c, jlong hMailbox, jstring adrbook)
 {
 	CHAR_REF(adrbook);

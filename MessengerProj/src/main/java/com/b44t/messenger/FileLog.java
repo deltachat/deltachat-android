@@ -82,7 +82,7 @@ public class FileLog {
                 @Override
                 public void run() {
                     try {
-                        getInstance().streamWriter.write(getInstance().dateFormat.format(System.currentTimeMillis()) + " " + what + "/" + tag + "﹕ " + message + "\n");
+                        getInstance().streamWriter.write(getInstance().dateFormat.format(System.currentTimeMillis()) + " " + what + "/" + tag + ": " + message + "\n");
                         getInstance().streamWriter.flush();
                     } catch (Exception e) {
                         e.printStackTrace();
