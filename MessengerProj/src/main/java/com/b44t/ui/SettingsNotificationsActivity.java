@@ -51,7 +51,6 @@ import com.b44t.ui.Adapters.BaseFragmentAdapter;
 import com.b44t.ui.Cells.HeaderCell;
 import com.b44t.ui.Cells.ShadowSectionCell;
 import com.b44t.ui.Cells.TextCheckCell;
-import com.b44t.ui.Cells.TextColorCell;
 import com.b44t.ui.Cells.TextDetailSettingsCell;
 import com.b44t.ui.ActionBar.ActionBar;
 import com.b44t.ui.ActionBar.BaseFragment;
@@ -93,10 +92,9 @@ public class SettingsNotificationsActivity extends BaseFragment implements Notif
     private final int TYPE_HEADER      = 0;
     private final int TYPE_CHECK_CELL  = 1;
     private final int TYPE_TEXTDETAIL  = 2;
-    private final int TYPE_COLOR_CELL  = 3;
-    private final int TYPE_SHADOW      = 4;
-    private final int TYPE_TEXTSETTING = 5;
-    private final int TYPE_COUNT       = 6;
+    private final int TYPE_SHADOW      = 3;
+    private final int TYPE_TEXTSETTING = 4;
+    private final int TYPE_COUNT       = 5;
 
     @Override
     public boolean onFragmentCreate() {
@@ -298,15 +296,13 @@ public class SettingsNotificationsActivity extends BaseFragment implements Notif
                         public void onClick(DialogInterface dialogInterface, int which) {
                             final SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("Notifications", Activity.MODE_PRIVATE);
                             SharedPreferences.Editor editor = preferences.edit();
-                            TextColorCell textCell = (TextColorCell) view;
                             if (i == messageLedRow) {
                                 editor.putInt("MessagesLed", colorPickerView.getColor());
-                                textCell.setTextAndColor(LocaleController.getString("LedColor", R.string.LedColor), colorPickerView.getColor(), true);
                             } else if (i == groupLedRow) {
                                 editor.putInt("GroupLed", colorPickerView.getColor());
-                                textCell.setTextAndColor(LocaleController.getString("LedColor", R.string.LedColor), colorPickerView.getColor(), true);
                             }
                             editor.apply();
+                            listView.invalidateViews();
                         }
                     });
                     builder.setNeutralButton(LocaleController.getString("Disabled", R.string.Disabled), new DialogInterface.OnClickListener() {
@@ -314,13 +310,24 @@ public class SettingsNotificationsActivity extends BaseFragment implements Notif
                         public void onClick(DialogInterface dialog, int which) {
                             final SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("Notifications", Activity.MODE_PRIVATE);
                             SharedPreferences.Editor editor = preferences.edit();
-                            TextColorCell textCell = (TextColorCell) view;
                             if (i == messageLedRow) {
                                 editor.putInt("MessagesLed", 0);
-                                textCell.setTextAndColor(LocaleController.getString("LedColor", R.string.LedColor), 0, true);
                             } else if (i == groupLedRow) {
                                 editor.putInt("GroupLed", 0);
-                                textCell.setTextAndColor(LocaleController.getString("LedColor", R.string.LedColor), 0, true);
+                            }
+                            editor.apply();
+                            listView.invalidateViews();
+                        }
+                    });
+                    builder.setNegativeButton(LocaleController.getString("Default", R.string.Default), new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            final SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("Notifications", Activity.MODE_PRIVATE);
+                            SharedPreferences.Editor editor = preferences.edit();
+                            if (i == messageLedRow) {
+                                editor.remove("MessagesLed");
+                            } else if (i == groupLedRow) {
+                                editor.remove("GroupLed");
                             }
                             editor.apply();
                             listView.invalidateViews();
@@ -533,9 +540,9 @@ public class SettingsNotificationsActivity extends BaseFragment implements Notif
                     view = new HeaderCell(mContext);
                 }
                 if (i == messageSectionRow) {
-                    ((HeaderCell) view).setText(LocaleController.getString("NormalMessagess", R.string.NormalMessages));
+                    ((HeaderCell) view).setText(ApplicationLoader.applicationContext.getString(R.string.DefaultForNormalMessages));
                 } else if (i == groupSectionRow) {
-                    ((HeaderCell) view).setText(LocaleController.getString("GroupMessages", R.string.GroupMessages));
+                    ((HeaderCell) view).setText(ApplicationLoader.applicationContext.getString(R.string.DefaultForGroupMessages));
                 } else if (i == inappSectionRow) {
                     ((HeaderCell) view).setText(LocaleController.getString("InAppNotifications", R.string.InAppNotifications));
                 } else if (i == otherSectionRow) {
@@ -549,9 +556,9 @@ public class SettingsNotificationsActivity extends BaseFragment implements Notif
 
                 SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("Notifications", Activity.MODE_PRIVATE);
                 if (i == messageAlertRow) {
-                    checkCell.setTextAndCheck(LocaleController.getString("Alert", R.string.Alert), preferences.getBoolean("EnableAll", true), true);
+                    checkCell.setTextAndCheck(ApplicationLoader.applicationContext.getString(R.string.Notifications), preferences.getBoolean("EnableAll", true), true);
                 } else if (i == groupAlertRow) {
-                    checkCell.setTextAndCheck(LocaleController.getString("Alert", R.string.Alert), preferences.getBoolean("EnableGroup", true), true);
+                    checkCell.setTextAndCheck(ApplicationLoader.applicationContext.getString(R.string.Notifications), preferences.getBoolean("EnableGroup", true), true);
                 } else if (i == messagePreviewRow) {
                     checkCell.setTextAndCheck(LocaleController.getString("MessagePreview", R.string.MessagePreview), preferences.getBoolean("EnablePreviewAll", true), true);
                 } else if (i == inappSoundRow) {
@@ -637,18 +644,14 @@ public class SettingsNotificationsActivity extends BaseFragment implements Notif
                     }
                     textCell.setTextAndValue(LocaleController.getString("RepeatNotifications", R.string.RepeatNotifications), value, true);
                 }
-            } else if (type == TYPE_COLOR_CELL) {
-                if (view == null) {
-                    view = new TextColorCell(mContext);
-                }
-
-                TextColorCell textCell = (TextColorCell) view;
-
-                SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("Notifications", Activity.MODE_PRIVATE);
-                if (i == messageLedRow) {
-                    textCell.setTextAndColor(LocaleController.getString("LedColor", R.string.LedColor), preferences.getInt("MessagesLed", 0xff00ff00), true);
-                } else if (i == groupLedRow) {
-                    textCell.setTextAndColor(LocaleController.getString("LedColor", R.string.LedColor), preferences.getInt("GroupLed", 0xff00ff00), true);
+                else if (i == messageLedRow || i==groupLedRow ) {
+                    int color = preferences.getInt(i==messageLedRow? "MessagesLed" : "GroupLed", 0xff00ff00);
+                    if( color == 0 ) {
+                        textCell.setTextAndValue(ApplicationLoader.applicationContext.getString(R.string.LedColor), ApplicationLoader.applicationContext.getString(R.string.Disabled), true);
+                    }
+                    else {
+                        textCell.setTextAndColor(ApplicationLoader.applicationContext.getString(R.string.LedColor), color, true);
+                    }
                 }
             } else if (type == TYPE_SHADOW) {
                 if (view == null) {
@@ -668,8 +671,6 @@ public class SettingsNotificationsActivity extends BaseFragment implements Notif
                     i == badgeNumberRow ||
                     i == inchatSoundRow ) {
                 return TYPE_CHECK_CELL;
-            } else if (i == messageLedRow || i == groupLedRow) {
-                return TYPE_COLOR_CELL;
             } else if ( i == groupSectionRow2 ||
                     i == inappSectionRow2 || i == otherSectionRow2 ) {
                 return TYPE_SHADOW;

@@ -91,10 +91,10 @@
     <string name="EnableAnimations">Transition animation</string>
     <string name="UnblockContact">Unblock contact</string>
     <string name="NoBlocked">No blocked contacts yet</string>
-    <string name="NormalMessages">Normal messages</string>
+    <string name="DefaultForNormalMessages">Normal messages default</string>
     <string name="Alert">Alert</string>
     <string name="MessagePreview">Message preview</string>
-    <string name="GroupMessages">Group messages</string>
+    <string name="DefaultForGroupMessages">Group messages default</string>
     <string name="Sound">Sound</string>
     <string name="InAppNotifications">In-app notifications</string>
     <string name="Vibrate">Vibrate</string>
@@ -441,5 +441,6 @@
     <string name="PleaseCutVideoToMaxSize">Please cut video to a size of max. %1$s.</string>
     <string name="PermNotificationTitle">Connected to %1$s</string>
     <string name="PermNotificationText">Waiting for messages …</string>
+    <string name="SettingsFor">Settings for %1$s</string>
 
 </resources>

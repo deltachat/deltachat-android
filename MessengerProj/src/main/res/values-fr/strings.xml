@@ -86,10 +86,10 @@
     <string name="EnableAnimations">Animation des transitions</string>
     <string name="UnblockContact">Débloquer le contact</string>
     <string name="NoBlocked">Aucun contact bloqué</string>
-    <string name="NormalMessages">Messages normaux</string>
+    <string name="DefaultForNormalMessages">Messages normaux</string>
     <string name="Alert">Alerte</string>
     <string name="MessagePreview">Prévisualisation du message</string>
-    <string name="GroupMessages">Message de groupe</string>
+    <string name="DefaultForGroupMessages">Message de groupe</string>
     <string name="Sound">Son</string>
     <string name="InAppNotifications">Notifications dans l\'application</string>
     <string name="Vibrate">Vibrer</string>

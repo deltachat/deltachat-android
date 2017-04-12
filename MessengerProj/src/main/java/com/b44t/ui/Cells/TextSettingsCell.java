@@ -37,22 +37,26 @@ import com.b44t.messenger.AndroidUtilities;
 import com.b44t.messenger.LocaleController;
 import com.b44t.ui.Components.LayoutHelper;
 
+import static com.b44t.messenger.AndroidUtilities.dp;
+
 public class TextSettingsCell extends FrameLayout {
 
     private TextView textView;
     private TextView valueTextView;
-    private ImageView valueImageView;
-    private static Paint paint;
+    private boolean  valueIsColor;
+    private Paint dividerpaint;
+    private Paint circlepaint;
     private boolean needDivider;
 
     public TextSettingsCell(Context context) {
         super(context);
 
-        if (paint == null) {
-            paint = new Paint();
-            paint.setColor(0xffd9d9d9);
-            paint.setStrokeWidth(1);
-        }
+        dividerpaint = new Paint();
+        dividerpaint.setColor(0xffd9d9d9);
+        dividerpaint.setStrokeWidth(1);
+
+        circlepaint = new Paint();
+        circlepaint.setAntiAlias(true);
 
         textView = new TextView(context);
         textView.setTextColor(0xff212121);
@@ -73,12 +77,9 @@ public class TextSettingsCell extends FrameLayout {
         valueTextView.setEllipsize(TextUtils.TruncateAt.END);
         valueTextView.setGravity((LocaleController.isRTL ? Gravity.LEFT : Gravity.RIGHT) | Gravity.CENTER_VERTICAL);
         addView(valueTextView, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.MATCH_PARENT, (LocaleController.isRTL ? Gravity.LEFT : Gravity.RIGHT) | Gravity.TOP, 17, 0, 17, 0));
-
-        valueImageView = new ImageView(context);
-        valueImageView.setScaleType(ImageView.ScaleType.CENTER);
-        valueImageView.setVisibility(INVISIBLE);
-        addView(valueImageView, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, (LocaleController.isRTL ? Gravity.LEFT : Gravity.RIGHT) | Gravity.CENTER_VERTICAL, 17, 0, 17, 0));
     }
+
+    private final int RADIUS = dp(8);
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
@@ -86,14 +87,14 @@ public class TextSettingsCell extends FrameLayout {
 
         int availableWidth = getMeasuredWidth() - getPaddingLeft() - getPaddingRight() - AndroidUtilities.dp(34);
         int width = availableWidth / 2;
-        if (valueImageView.getVisibility() == VISIBLE) {
-            valueImageView.measure(MeasureSpec.makeMeasureSpec(width, MeasureSpec.AT_MOST), MeasureSpec.makeMeasureSpec(getMeasuredHeight(), MeasureSpec.EXACTLY));
-        }
         if (valueTextView.getVisibility() == VISIBLE) {
             valueTextView.measure(MeasureSpec.makeMeasureSpec(width, MeasureSpec.AT_MOST), MeasureSpec.makeMeasureSpec(getMeasuredHeight(), MeasureSpec.EXACTLY));
             width = availableWidth - valueTextView.getMeasuredWidth() - AndroidUtilities.dp(8);
         } else {
             width = availableWidth;
+            if( valueIsColor ) {
+                width -= RADIUS * 3/*2 for the circle, 1 for space*/;
+            }
         }
         textView.measure(MeasureSpec.makeMeasureSpec(width, MeasureSpec.EXACTLY), MeasureSpec.makeMeasureSpec(getMeasuredHeight(), MeasureSpec.EXACTLY));
     }
@@ -102,21 +103,16 @@ public class TextSettingsCell extends FrameLayout {
         textView.setTextColor(color);
     }
 
-    public void setTextValueColor(int color) {
-        valueTextView.setTextColor(color);
-    }
-
     public void setText(String text, boolean divider) {
         textView.setText(text);
         valueTextView.setVisibility(INVISIBLE);
-        valueImageView.setVisibility(INVISIBLE);
         needDivider = divider;
         setWillNotDraw(!divider);
     }
 
     public void setTextAndValue(String text, String value, boolean divider) {
         textView.setText(text);
-        valueImageView.setVisibility(INVISIBLE);
+        valueIsColor = false;
         if (value != null) {
             valueTextView.setText(value);
             valueTextView.setVisibility(VISIBLE);
@@ -124,27 +120,31 @@ public class TextSettingsCell extends FrameLayout {
             valueTextView.setVisibility(INVISIBLE);
         }
         needDivider = divider;
-        setWillNotDraw(!divider);
+        setWillNotDraw(!needDivider);
         requestLayout();
     }
 
-    public void setTextAndIcon(String text, int resId, boolean divider) {
+    public void setTextAndColor(String text, int color, boolean divider) {
         textView.setText(text);
+        valueIsColor = true;
         valueTextView.setVisibility(INVISIBLE);
-        if (resId != 0) {
-            valueImageView.setVisibility(VISIBLE);
-            valueImageView.setImageResource(resId);
-        } else {
-            valueImageView.setVisibility(INVISIBLE);
-        }
         needDivider = divider;
-        setWillNotDraw(!divider);
+        circlepaint.setColor(color);
+        setWillNotDraw(false);
+        requestLayout();
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
         if (needDivider) {
-            canvas.drawLine(getPaddingLeft(), getHeight() - 1, getWidth() - getPaddingRight(), getHeight() - 1, paint);
+            canvas.drawLine(getPaddingLeft(), getHeight() - 1, getWidth() - getPaddingRight(), getHeight() - 1, dividerpaint);
+        }
+
+        if( valueIsColor ) {
+            int x = getWidth()-getPaddingRight()-dp(17)-RADIUS;
+            int y = getHeight()/2;
+            canvas.drawCircle(x+dp(1), y+dp(1), RADIUS, dividerpaint);
+            canvas.drawCircle(x, y, RADIUS, circlepaint);
         }
     }
 }

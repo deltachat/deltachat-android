@@ -91,10 +91,10 @@
     <string name="EnableAnimations">Übergänge animieren</string>
     <string name="UnblockContact">Kontakt nicht mehr blockieren</string>
     <string name="NoBlocked">Keine blockierten Kontakte</string>
-    <string name="NormalMessages">Normale Nachrichten</string>
+    <string name="DefaultForNormalMessages">Standard für normale Nachrichten</string>
     <string name="Alert">Benachrichtigung</string>
     <string name="MessagePreview">Vorschau</string>
-    <string name="GroupMessages">Gruppennachrichten</string>
+    <string name="DefaultForGroupMessages">Standard für Gruppennachrichten</string>
     <string name="Sound">Nachrichtenton</string>
     <string name="InAppNotifications">Bei App im Vordergrund</string>
     <string name="Vibrate">Vibrieren</string>
@@ -435,4 +435,5 @@
     <string name="PleaseCutVideoToMaxSize">Video bitte auf eine Größe von max. %1$s zurechtschneiden.</string>
     <string name="PermNotificationTitle">Verbunden mit %1$s</string>
     <string name="PermNotificationText">Warte auf Nachrichten …</string>
+    <string name="SettingsFor">Einstellungen für %1$s</string>
 </resources>

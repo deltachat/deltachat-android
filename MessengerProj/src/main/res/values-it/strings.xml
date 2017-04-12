@@ -88,10 +88,10 @@
     <string name="EnableAnimations">Abilita animazioni</string>
     <string name="UnblockContact">Sblocca</string>
     <string name="NoBlocked">Ancora nessun utente bloccato</string>
-    <string name="NormalMessages">Notifiche messaggio</string>
+    <string name="DefaultForNormalMessages">Notifiche messaggio</string>
     <string name="Alert">Avviso</string>
     <string name="MessagePreview">Anteprima messaggio</string>
-    <string name="GroupMessages">Notifiche di gruppo</string>
+    <string name="DefaultForGroupMessages">Notifiche di gruppo</string>
     <string name="Sound">Suono</string>
     <string name="InAppNotifications">Notifiche in-app</string>
     <string name="Vibrate">Vibrazione</string>

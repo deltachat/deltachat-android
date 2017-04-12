@@ -54,7 +54,6 @@ import com.b44t.messenger.NotificationCenter;
 import com.b44t.messenger.R;
 import com.b44t.ui.Adapters.BaseFragmentAdapter;
 import com.b44t.ui.Cells.HeaderCell;
-import com.b44t.ui.Cells.TextColorCell;
 import com.b44t.ui.Cells.TextSettingsCell;
 import com.b44t.ui.Cells.TextDetailSettingsCell;
 import com.b44t.ui.ActionBar.ActionBar;
@@ -80,20 +79,20 @@ public class ProfileNotificationsActivity extends BaseFragment implements Notifi
     private final int TYPE_HEADER       = 0;
     private final int TYPE_TEXTSETTINGS = 1;
     private final int TYPE_TEXTDETAILS  = 2;
-    private final int TYPE_COLOR_CELL   = 3;
-    private final int TYPE_COUNT        = 4;
+    private final int TYPE_COUNT        = 3;
 
     private MrChat m_mrChat;
+    private boolean m_isGroupChat;
 
     public ProfileNotificationsActivity(Bundle args) {
         super(args);
         dialog_id = args.getInt("chat_id");
         m_mrChat = MrMailbox.getChat(dialog_id);
+        m_isGroupChat = m_mrChat.getType()== MrChat.MR_CHAT_GROUP;
     }
 
     @Override
     public boolean onFragmentCreate() {
-        boolean isGroupChat = m_mrChat.getType()== MrChat.MR_CHAT_GROUP;
 
         headerRow = rowCount++;
         settingsNotificationsRow = rowCount++;
@@ -102,7 +101,7 @@ public class ProfileNotificationsActivity extends BaseFragment implements Notifi
         settingsLedRow = rowCount++;
         settingsPriorityRow = Build.VERSION.SDK_INT >= 21? rowCount++ : -1;
 
-        if (isGroupChat) {
+        if (m_isGroupChat) {
             smartRow = rowCount++;
         } else {
             smartRow = -1;
@@ -122,8 +121,7 @@ public class ProfileNotificationsActivity extends BaseFragment implements Notifi
     public View createView(Context context) {
         actionBar.setBackButtonImage(R.drawable.ic_ab_back);
         actionBar.setAllowOverlayTitle(true);
-        actionBar.setTitle(m_mrChat.getName());
-        actionBar.setSubtitle(LocaleController.getString("Settings", R.string.Settings));
+        actionBar.setTitle(LocaleController.formatString("", R.string.SettingsFor, m_mrChat.getName()));
         actionBar.setActionBarMenuOnItemClick(new ActionBar.ActionBarMenuOnItemClick() {
             @Override
             public void onItemClick(int id) {
@@ -261,7 +259,7 @@ public class ProfileNotificationsActivity extends BaseFragment implements Notifi
                     if (preferences.contains("color_" + dialog_id)) {
                         colorPickerView.setColor(preferences.getInt("color_" + dialog_id, 0xff00ff00));
                     } else {
-                        if ((int) dialog_id < 0) {
+                        if (m_isGroupChat) {
                             colorPickerView.setColor(preferences.getInt("GroupLed", 0xff00ff00));
                         } else {
                             colorPickerView.setColor(preferences.getInt("MessagesLed", 0xff00ff00));
@@ -547,7 +545,6 @@ public class ProfileNotificationsActivity extends BaseFragment implements Notifi
                 }
                 TextSettingsCell textCell = (TextSettingsCell) view;
                 SharedPreferences preferences = mContext.getSharedPreferences("Notifications", Activity.MODE_PRIVATE);
-
                 if (i == settingsVibrateRow) {
                     int value = preferences.getInt("vibrate_" + dialog_id, 0);
                     if (value == 0) {
@@ -610,6 +607,20 @@ public class ProfileNotificationsActivity extends BaseFragment implements Notifi
                         textCell.setTextAndValue(LocaleController.getString("NotificationsPriority", R.string.NotificationsPriority), LocaleController.getString("Default", R.string.Default), true);
                     }
                 }
+                else if( i== settingsLedRow )
+                {
+                    if (preferences.contains("color_" + dialog_id)) {
+                        int color = preferences.getInt("color_" + dialog_id, 0xff00ff00);
+                        if( color == 0 ) {
+                            textCell.setTextAndValue(ApplicationLoader.applicationContext.getString(R.string.LedColor), ApplicationLoader.applicationContext.getString(R.string.Disabled), true);
+                        }
+                        else {
+                            textCell.setTextAndColor(ApplicationLoader.applicationContext.getString(R.string.LedColor), color, true);
+                        }
+                    } else {
+                        textCell.setTextAndValue(ApplicationLoader.applicationContext.getString(R.string.LedColor), ApplicationLoader.applicationContext.getString(R.string.Default), true);
+                    }
+                }
             } else if (type == TYPE_TEXTDETAILS) {
                 if (view == null) {
                     view = new TextDetailSettingsCell(mContext);
@@ -628,24 +639,6 @@ public class ProfileNotificationsActivity extends BaseFragment implements Notifi
                         textCell.setTextAndValue(LocaleController.getString("SmartNotifications", R.string.SmartNotifications), value, true);
                     }
                 }
-            } else if (type == TYPE_COLOR_CELL) {
-                if (view == null) {
-                    view = new TextColorCell(mContext);
-                }
-
-                TextColorCell textCell = (TextColorCell) view;
-
-                SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("Notifications", Activity.MODE_PRIVATE);
-
-                if (preferences.contains("color_" + dialog_id)) {
-                    textCell.setTextAndColor(LocaleController.getString("LedColor", R.string.LedColor), preferences.getInt("color_" + dialog_id, 0xff00ff00), true);
-                } else {
-                    if ((int)dialog_id < 0) {
-                        textCell.setTextAndColor(LocaleController.getString("LedColor", R.string.LedColor), preferences.getInt("GroupLed", 0xff00ff00), true);
-                    } else {
-                        textCell.setTextAndColor(LocaleController.getString("LedColor", R.string.LedColor), preferences.getInt("MessagesLed", 0xff00ff00), true);
-                    }
-                }
             }
             return view;
         }
@@ -654,9 +647,6 @@ public class ProfileNotificationsActivity extends BaseFragment implements Notifi
         public int getItemViewType(int i) {
             if( i==headerRow ) {
                 return TYPE_HEADER;
-            }
-            else if (i == settingsLedRow) {
-                return TYPE_COLOR_CELL;
             }
             else if( i==smartRow ) {
                 return TYPE_TEXTDETAILS;

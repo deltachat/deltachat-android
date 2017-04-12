@@ -88,10 +88,10 @@
     <string name="EnableAnimations">Animaties</string>
     <string name="UnblockContact">Deblokkeer</string>
     <string name="NoBlocked">Geen geblokkeerde gebruikers</string>
-    <string name="NormalMessages">Berichtmeldingen</string>
+    <string name="DefaultForNormalMessages">Berichtmeldingen</string>
     <string name="Alert">Waarschuwing</string>
     <string name="MessagePreview">Voorvertoning</string>
-    <string name="GroupMessages">Groepsmeldingen</string>
+    <string name="DefaultForGroupMessages">Groepsmeldingen</string>
     <string name="Sound">Geluid</string>
     <string name="InAppNotifications">In-app meldingen</string>
     <string name="Vibrate">Trillen</string>

@@ -91,10 +91,10 @@
     <string name="EnableAnimations">Animacja przejścia</string>
     <string name="UnblockContact">Odblokuj kontakt</string>
     <string name="NoBlocked">Nie ma zablokowanych kontaktów</string>
-    <string name="NormalMessages">Normalne wiadomości</string>
+    <string name="DefaultForNormalMessages">Normalne wiadomości</string>
     <string name="Alert">Alarm</string>
     <string name="MessagePreview">Podgląd wiadomości</string>
-    <string name="GroupMessages">Grupowe wiadomości</string>
+    <string name="DefaultForGroupMessages">Grupowe wiadomości</string>
     <string name="Sound">Dźwięki</string>
     <string name="InAppNotifications">Powiadomienia w aplikacji</string>
     <string name="Vibrate">Wibracje</string>

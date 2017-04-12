@@ -83,10 +83,10 @@
     <string name="EnableAnimations">화면 전환 효과 사용</string>
     <string name="UnblockContact">차단 해제</string>
     <string name="NoBlocked">차단한 친구가 없습니다</string>
-    <string name="NormalMessages">메시지 알림</string>
+    <string name="DefaultForNormalMessages">메시지 알림</string>
     <string name="Alert">알림 사용</string>
     <string name="MessagePreview">메시지 미리보기</string>
-    <string name="GroupMessages">그룹 알림</string>
+    <string name="DefaultForGroupMessages">그룹 알림</string>
     <string name="Sound">>알림음</string>
     <string name="InAppNotifications">앱 내 알림</string>
     <string name="Vibrate">진동</string>

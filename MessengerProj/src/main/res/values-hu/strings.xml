@@ -91,10 +91,10 @@
     <string name="EnableAnimations">Áttűnés animációja</string>
     <string name="UnblockContact">Tiltás feloldása</string>
     <string name="NoBlocked">Nincs letiltott partner</string>
-    <string name="NormalMessages">Normál üzenetek</string>
+    <string name="DefaultForNormalMessages">Normál üzenetek</string>
     <string name="Alert">Figyelmeztetés</string>
     <string name="MessagePreview">Üzenet előnézet</string>
-    <string name="GroupMessages">Csoportüzenetek</string>
+    <string name="DefaultForGroupMessages">Csoportüzenetek</string>
     <string name="Sound">Hang</string>
     <string name="InAppNotifications">Alkalmazáson belüli értesítések</string>
     <string name="Vibrate">Rezgés</string>
