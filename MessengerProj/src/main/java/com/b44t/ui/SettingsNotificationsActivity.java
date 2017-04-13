@@ -282,11 +282,7 @@ public class SettingsNotificationsActivity extends BaseFragment implements Notif
                     linearLayout.addView(colorPickerView, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER));
 
                     SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("Notifications", Activity.MODE_PRIVATE);
-                    if (i == messageLedRow) {
-                        colorPickerView.setColor(preferences.getInt("MessagesLed", 0xff00ff00));
-                    } else if (i == groupLedRow) {
-                        colorPickerView.setColor(preferences.getInt("GroupLed", 0xff00ff00));
-                    }
+                    colorPickerView.setColor(preferences.getInt(i == messageLedRow? "MessagesLed" : "GroupLed", NotificationsController.DEF_LED_COLOR));
 
                     AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
                     builder.setTitle(LocaleController.getString("LedColor", R.string.LedColor));
@@ -311,9 +307,9 @@ public class SettingsNotificationsActivity extends BaseFragment implements Notif
                             final SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("Notifications", Activity.MODE_PRIVATE);
                             SharedPreferences.Editor editor = preferences.edit();
                             if (i == messageLedRow) {
-                                editor.putInt("MessagesLed", 0);
+                                editor.putInt("MessagesLed", 0/*0=off*/);
                             } else if (i == groupLedRow) {
-                                editor.putInt("GroupLed", 0);
+                                editor.putInt("GroupLed", 0/*0=off*/);
                             }
                             editor.apply();
                             listView.invalidateViews();
@@ -645,9 +641,12 @@ public class SettingsNotificationsActivity extends BaseFragment implements Notif
                     textCell.setTextAndValue(LocaleController.getString("RepeatNotifications", R.string.RepeatNotifications), value, true);
                 }
                 else if (i == messageLedRow || i==groupLedRow ) {
-                    int color = preferences.getInt(i==messageLedRow? "MessagesLed" : "GroupLed", 0xff00ff00);
+                    int color = preferences.getInt(i==messageLedRow? "MessagesLed" : "GroupLed", NotificationsController.DEF_LED_COLOR);
                     if( color == 0 ) {
                         textCell.setTextAndValue(ApplicationLoader.applicationContext.getString(R.string.LedColor), ApplicationLoader.applicationContext.getString(R.string.Disabled), true);
+                    }
+                    else if( color == NotificationsController.DEF_LED_COLOR ) {
+                        textCell.setTextAndValue(ApplicationLoader.applicationContext.getString(R.string.LedColor), ApplicationLoader.applicationContext.getString(R.string.Default), true);
                     }
                     else {
                         textCell.setTextAndColor(ApplicationLoader.applicationContext.getString(R.string.LedColor), color, true);

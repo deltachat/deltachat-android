@@ -51,6 +51,7 @@ import com.b44t.messenger.MrMailbox;
 import com.b44t.messenger.ApplicationLoader;
 import com.b44t.messenger.LocaleController;
 import com.b44t.messenger.NotificationCenter;
+import com.b44t.messenger.NotificationsController;
 import com.b44t.messenger.R;
 import com.b44t.ui.Adapters.BaseFragmentAdapter;
 import com.b44t.ui.Cells.HeaderCell;
@@ -257,13 +258,9 @@ public class ProfileNotificationsActivity extends BaseFragment implements Notifi
 
                     SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("Notifications", Activity.MODE_PRIVATE);
                     if (preferences.contains("color_" + dialog_id)) {
-                        colorPickerView.setColor(preferences.getInt("color_" + dialog_id, 0xff00ff00));
+                        colorPickerView.setColor(preferences.getInt("color_" + dialog_id, NotificationsController.DEF_LED_COLOR));
                     } else {
-                        if (m_isGroupChat) {
-                            colorPickerView.setColor(preferences.getInt("GroupLed", 0xff00ff00));
-                        } else {
-                            colorPickerView.setColor(preferences.getInt("MessagesLed", 0xff00ff00));
-                        }
+                        colorPickerView.setColor(preferences.getInt(m_isGroupChat? "GroupLed" : "MessagesLed", NotificationsController.DEF_LED_COLOR));
                     }
 
                     AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
@@ -274,7 +271,7 @@ public class ProfileNotificationsActivity extends BaseFragment implements Notifi
                         public void onClick(DialogInterface dialogInterface, int which) {
                             final SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("Notifications", Activity.MODE_PRIVATE);
                             SharedPreferences.Editor editor = preferences.edit();
-                            editor.putInt("color_" + dialog_id, colorPickerView.getColor());
+                            editor.putInt("color_" + dialog_id, colorPickerView.getColor()); // use selected color
                             editor.apply();
                             listView.invalidateViews();
                         }
@@ -284,7 +281,7 @@ public class ProfileNotificationsActivity extends BaseFragment implements Notifi
                         public void onClick(DialogInterface dialog, int which) {
                             final SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("Notifications", Activity.MODE_PRIVATE);
                             SharedPreferences.Editor editor = preferences.edit();
-                            editor.putInt("color_" + dialog_id, 0);
+                            editor.putInt("color_" + dialog_id, 0/*0=off*/);
                             editor.apply();
                             listView.invalidateViews();
                         }
@@ -294,7 +291,7 @@ public class ProfileNotificationsActivity extends BaseFragment implements Notifi
                         public void onClick(DialogInterface dialog, int which) {
                             final SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("Notifications", Activity.MODE_PRIVATE);
                             SharedPreferences.Editor editor = preferences.edit();
-                            editor.remove("color_" + dialog_id);
+                            editor.remove("color_" + dialog_id); // use delta-chat-default
                             editor.apply();
                             listView.invalidateViews();
                         }
@@ -617,7 +614,7 @@ public class ProfileNotificationsActivity extends BaseFragment implements Notifi
                 else if( i== settingsLedRow )
                 {
                     if (preferences.contains("color_" + dialog_id)) {
-                        int color = preferences.getInt("color_" + dialog_id, 0xff00ff00);
+                        int color = preferences.getInt("color_" + dialog_id, NotificationsController.DEF_LED_COLOR);
                         if( color == 0 ) {
                             textCell.setTextAndValue(ApplicationLoader.applicationContext.getString(R.string.LedColor), ApplicationLoader.applicationContext.getString(R.string.Disabled), true);
                         }

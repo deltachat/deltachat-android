@@ -90,6 +90,8 @@ public class NotificationsController {
     protected AudioManager audioManager;
     private AlarmManager alarmManager;
 
+    public static final int DEF_LED_COLOR = 0xffffffff;
+
     private static volatile NotificationsController Instance = null;
     public static NotificationsController getInstance() {
         NotificationsController localInstance = Instance;
@@ -992,7 +994,7 @@ public class NotificationsController {
             boolean notifyDisabled = false;
             int needVibrate = 0;
             String choosenSoundPath = null;
-            int ledColor = 0xff00ff00;
+            int ledColor = DEF_LED_COLOR;
             boolean inAppSounds;
             boolean inAppVibrate;
             //boolean inAppPreview = false;
@@ -1046,7 +1048,7 @@ public class NotificationsController {
                     }
                     needVibrate = preferences.getInt("vibrate_group", 0);
                     priority = preferences.getInt("priority_group", 1);
-                    ledColor = preferences.getInt("GroupLed", 0xff00ff00);
+                    ledColor = preferences.getInt("GroupLed", DEF_LED_COLOR);
                 } else {
                     if (choosenSoundPath != null && choosenSoundPath.equals(defaultPath)) {
                         choosenSoundPath = null;
@@ -1055,10 +1057,10 @@ public class NotificationsController {
                     }
                     needVibrate = preferences.getInt("vibrate_messages", 0);
                     priority = preferences.getInt("priority_messages", 1);
-                    ledColor = preferences.getInt("MessagesLed", 0xff00ff00);
+                    ledColor = preferences.getInt("MessagesLed", DEF_LED_COLOR);
                 }
                 if (preferences.contains("color_" + dialog_id)) {
-                    ledColor = preferences.getInt("color_" + dialog_id, 0);
+                    ledColor = preferences.getInt("color_" + dialog_id, 0/*0=off*/);
                 }
 
                 if (priorityOverride != 3) {
