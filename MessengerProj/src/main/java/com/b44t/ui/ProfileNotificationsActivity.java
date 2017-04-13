@@ -493,6 +493,19 @@ public class ProfileNotificationsActivity extends BaseFragment implements Notifi
         }
     }
 
+    static String muteForString(int seconds)
+    {
+        String val;
+        if (seconds < 60 * 60) {
+            val = ApplicationLoader.applicationContext.getResources().getQuantityString(R.plurals.Minutes, seconds / 60, seconds / 60);
+        } else if (seconds < 24 * 60 * 60) {
+            val = ApplicationLoader.applicationContext.getResources().getQuantityString(R.plurals.Hours, (int) Math.ceil(seconds / 60.0f / 60), (int) Math.ceil(seconds / 60.0f / 60));
+        } else {
+            val = ApplicationLoader.applicationContext.getResources().getQuantityString(R.plurals.Days, (int) Math.ceil(seconds / 60.0f / 60 / 24), (int) Math.ceil(seconds / 60.0f / 60 / 24));
+        }
+        return LocaleController.formatString("", R.string.MuteFor, val);
+    }
+
     private class ListAdapter extends BaseFragmentAdapter {
         private Context mContext;
 
@@ -571,23 +584,12 @@ public class ProfileNotificationsActivity extends BaseFragment implements Notifi
                         String val;
                         if (delta <= 0) {
                             val = LocaleController.getString("Enabled", R.string.Enabled);
-                        } else if (delta < 60 * 60) {
-                            // @TODO: Maybe this should be reworded a bit.
-                            val = mContext.getResources().getQuantityString(R.plurals.Minutes, delta / 60, delta / 60);
-                        } else if (delta < 60 * 60 * 24) {
-                            // @TODO: Maybe this should be reworded a bit.
-                            val = mContext.getResources().getQuantityString(R.plurals.Hours, (int) Math.ceil(delta / 60.0f / 60), (int) Math.ceil(delta / 60.0f / 60));
                         } else if (delta < 60 * 60 * 24 * 365) {
-                            // @TODO: Maybe this should be reworded a bit.
-                            val = mContext.getResources().getQuantityString(R.plurals.Days, (int) Math.ceil(delta / 60.0f / 60 / 24), (int) Math.ceil(delta / 60.0f / 60 / 24));
+                            val = muteForString(delta);
                         } else {
-                            val = null;
+                            val = ApplicationLoader.applicationContext.getString(R.string.Disabled);
                         }
-                        if (val != null) {
-                            textCell.setTextAndValue(LocaleController.getString("Notifications", R.string.Notifications), val, true);
-                        } else {
-                            textCell.setTextAndValue(LocaleController.getString("Notifications", R.string.Notifications), LocaleController.getString("Disabled", R.string.Disabled), true);
-                        }
+                        textCell.setTextAndValue(ApplicationLoader.applicationContext.getString(R.string.Notifications), val, true);
                     }
                 } else if (i == settingsSoundRow) {
                     String value = preferences.getString("sound_" + dialog_id, LocaleController.getString("SoundDefault", R.string.SoundDefault));

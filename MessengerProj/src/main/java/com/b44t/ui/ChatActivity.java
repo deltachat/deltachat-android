@@ -1365,9 +1365,9 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
             AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity()); // was: BottomSheet.Builder
             //builder.setTitle(LocaleController.getString("Notifications", R.string.Notifications)); -- a title seems more confusing than helping -- the user has clicked "mute" before and there are several options all starting with "mute...", I think, this is very clear
             CharSequence[] items = new CharSequence[]{
-                    ApplicationLoader.applicationContext.getString(R.string.MuteFor1Hour),
-                    ApplicationLoader.applicationContext.getString(R.string.MuteFor8Hours),
-                    ApplicationLoader.applicationContext.getString(R.string.MuteFor2Days),
+                    ProfileNotificationsActivity.muteForString(   60*60),
+                    ProfileNotificationsActivity.muteForString( 8*60*60),
+                    ProfileNotificationsActivity.muteForString(48*60*60),
                     LocaleController.getString("MuteAlways", R.string.MuteAlways)
             };
             builder.setItems(items, new DialogInterface.OnClickListener() {

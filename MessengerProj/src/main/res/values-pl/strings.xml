@@ -20,9 +20,7 @@
     <string name="SelectChat">Wybierz czat…</string>
     <string name="Search">Szukaj</string>
     <string name="MuteNotifications">Wyłącz powiadomienia</string>
-    <string name="MuteFor1Hour">Wyłącz na 1 godzinę</string>
-    <string name="MuteFor8Hours">Wyłącz na 8 godzin</string>
-    <string name="MuteFor2Days">Wyłącz na 2 dni</string>
+    <string name="MuteFor">Wyłącz na %1$s</string>
     <string name="UnmuteNotifications">Włącz powiadomienia</string>
     <string name="Draft">Szkic</string>
     <!--audio view-->

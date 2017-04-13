@@ -20,9 +20,7 @@
     <string name="SelectChat">Beszélgetés választása…</string>
     <string name="Search">Keresés</string>
     <string name="MuteNotifications">Értesítések némítása</string>
-    <string name="MuteFor1Hour">Némítás 1 órára</string>
-    <string name="MuteFor8Hours">Némítás 8 órára</string>
-    <string name="MuteFor2Days">Némítás 2 napra</string>
+    <string name="MuteFor">Némítás %1$s</string>
     <string name="UnmuteNotifications">Némítás kikapcsolása</string>
     <string name="Draft">Piszkozat</string>
     <!--audio view-->
