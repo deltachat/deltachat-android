@@ -55,7 +55,6 @@
     <!--notification-->
     <string name="Reply">답장</string>
     <string name="ReplyToGroup">%1$s 그룹에 답장하기</string>
-    <string name="ReplyToUser">%1$s님에게 답장하기</string>
     <!--contacts view-->
 	<string name="NoContacts">대화상대가 없습니다</string>
     <string name="TodayAt">오늘</string>
@@ -115,7 +114,6 @@
     <string name="EditName">이름 편집</string>
     <string name="NotificationsPriority">우선순위</string>
     <string name="NotificationsPriorityDefault">기본</string>
-    <string name="NotificationsPriorityLow">낮음</string>
     <string name="NotificationsPriorityHigh">높음</string>
     <string name="NotificationsPriorityMax">최우선</string>
     <string name="RepeatNotifications">알림 반복</string>

@@ -106,7 +106,6 @@
     <string name="SendByEnter">Küldés "enterrel"</string>
     <string name="Language">Nyelv</string>
     <string name="Help">Súgó</string>
-    <string name="DeleteLocalization">Fordítás törlése?</string>
     <string name="Enabled">Be</string>
     <string name="Disabled">Ki</string>
     <string name="NotificationsService">Ébrentartási szolgáltatás</string>
