@@ -122,13 +122,13 @@
 #define LIBETPAN_REENTRANT 1
 
 /* Define this to the version of libEtPan */
-#define LIBETPAN_VERSION "1.2-dev-20141203"
+//#define LIBETPAN_VERSION "1.2-dev-20141203"
 
 /* Define this to the major version of libEtPan */
-#define LIBETPAN_VERSION_MAJOR 1
+//#define LIBETPAN_VERSION_MAJOR 1
 
 /* Define this to the minor version of libEtPan */
-#define LIBETPAN_VERSION_MINOR 2
+//#define LIBETPAN_VERSION_MINOR 2
 
 /* Define to the sub-directory in which libtool stores uninstalled libraries.
    */
@@ -144,7 +144,7 @@
 #define PACKAGE_NAME "libetpan"
 
 /* Define to the full name and version of this package. */
-#define PACKAGE_STRING "libetpan 1.2"
+//#define PACKAGE_STRING "libetpan 1.2"
 
 /* Define to the one symbol short name of this package. */
 #define PACKAGE_TARNAME "libetpan"
@@ -153,7 +153,7 @@
 #define PACKAGE_URL ""
 
 /* Define to the version of this package. */
-#define PACKAGE_VERSION "1.2"
+//#define PACKAGE_VERSION "1.2"
 
 /* Define to 1 if you have the ANSI C header files. */
 #define STDC_HEADERS 1
@@ -171,7 +171,7 @@
 #define USE_SSL 1
 
 /* Version number of package */
-#define VERSION "1.2"
+//#define VERSION "1.2"
 
 /* Define to `__inline__' or `__inline' if that's what the C compiler
    calls it, or to nothing if 'inline' is not supported under any name.  */
