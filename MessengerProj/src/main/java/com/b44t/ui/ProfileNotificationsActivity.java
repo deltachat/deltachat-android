@@ -153,7 +153,6 @@ public class ProfileNotificationsActivity extends BaseFragment implements Notifi
                     builder.setItems(new CharSequence[]{
                             LocaleController.getString("Disabled", R.string.Disabled),
                             LocaleController.getString("Default", R.string.Default),
-                            LocaleController.getString("SystemDefault", R.string.SystemDefault),
                             LocaleController.getString("Short", R.string.Short),
                             LocaleController.getString("Long", R.string.Long)
                     }, new DialogInterface.OnClickListener() {
@@ -163,15 +162,13 @@ public class ProfileNotificationsActivity extends BaseFragment implements Notifi
                                 SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("Notifications", Activity.MODE_PRIVATE);
                                 SharedPreferences.Editor editor = preferences.edit();
                                 if (which == 0) {
-                                    editor.putInt("vibrate_" + dialog_id, 2);
+                                    editor.putInt("vibrate_" + dialog_id, 2); // off
                                 } else if (which == 1) {
-                                    editor.putInt("vibrate_" + dialog_id, 0);
+                                    editor.remove("vibrate_" + dialog_id); // delta-chat-default
                                 } else if (which == 2) {
-                                    editor.putInt("vibrate_" + dialog_id, 4);
+                                    editor.putInt("vibrate_" + dialog_id, 1); // short
                                 } else if (which == 3) {
-                                    editor.putInt("vibrate_" + dialog_id, 1);
-                                } else if (which == 4) {
-                                    editor.putInt("vibrate_" + dialog_id, 3);
+                                    editor.putInt("vibrate_" + dialog_id, 3); // long
                                 }
                                 editor.apply();
                             }
@@ -562,16 +559,14 @@ public class ProfileNotificationsActivity extends BaseFragment implements Notifi
                 SharedPreferences preferences = mContext.getSharedPreferences("Notifications", Activity.MODE_PRIVATE);
                 if (i == settingsVibrateRow) {
                     int value = preferences.getInt("vibrate_" + dialog_id, 0);
-                    if (value == 0) {
-                        textCell.setTextAndValue(LocaleController.getString("Vibrate", R.string.Vibrate), LocaleController.getString("Default", R.string.Default), true);
-                    } else if (value == 1) {
+                    if (value == 1) {
                         textCell.setTextAndValue(LocaleController.getString("Vibrate", R.string.Vibrate), LocaleController.getString("Short", R.string.Short), true);
                     } else if (value == 2) {
                         textCell.setTextAndValue(LocaleController.getString("Vibrate", R.string.Vibrate), LocaleController.getString("Disabled", R.string.Disabled), true);
                     } else if (value == 3) {
                         textCell.setTextAndValue(LocaleController.getString("Vibrate", R.string.Vibrate), LocaleController.getString("Long", R.string.Long), true);
-                    } else if (value == 4) {
-                        textCell.setTextAndValue(LocaleController.getString("Vibrate", R.string.Vibrate), LocaleController.getString("SystemDefault", R.string.SystemDefault), true);
+                    } else {
+                        textCell.setTextAndValue(LocaleController.getString("Vibrate", R.string.Vibrate), LocaleController.getString("", R.string.Default), true);
                     }
                 } else if (i == settingsNotificationsRow) {
                     int value = preferences.getInt("notify2_" + dialog_id, 0);
@@ -594,7 +589,7 @@ public class ProfileNotificationsActivity extends BaseFragment implements Notifi
                         textCell.setTextAndValue(ApplicationLoader.applicationContext.getString(R.string.Notifications), val, true);
                     }
                 } else if (i == settingsSoundRow) {
-                    String value = preferences.getString("sound_" + dialog_id, LocaleController.getString("SoundDefault", R.string.SoundDefault));
+                    String value = preferences.getString("sound_" + dialog_id, LocaleController.getString("", R.string.Default));
                     if (value.equals("NoSound")) {
                         value = LocaleController.getString("Disabled", R.string.Disabled);
                     }

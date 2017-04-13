@@ -335,7 +335,7 @@ public class SettingsNotificationsActivity extends BaseFragment implements Notif
                     builder.setTitle(LocaleController.getString("Vibrate", R.string.Vibrate));
                     builder.setItems(new CharSequence[]{
                             LocaleController.getString("Disabled", R.string.Disabled),
-                            LocaleController.getString("VibrationDefault", R.string.VibrationDefault),
+                            LocaleController.getString("", R.string.Default),
                             LocaleController.getString("Short", R.string.Short),
                             LocaleController.getString("Long", R.string.Long),
                             LocaleController.getString("OnlyIfSilent", R.string.OnlyIfSilent)
@@ -448,7 +448,7 @@ public class SettingsNotificationsActivity extends BaseFragment implements Notif
                 Ringtone rng = RingtoneManager.getRingtone(getParentActivity(), ringtone);
                 if (rng != null) {
                     if(ringtone.equals(Settings.System.DEFAULT_NOTIFICATION_URI)) {
-                        name = LocaleController.getString("SoundDefault", R.string.SoundDefault);
+                        name = LocaleController.getString("", R.string.Default);
                     } else {
                         name = rng.getTitle(getParentActivity());
                     }
@@ -586,9 +586,9 @@ public class SettingsNotificationsActivity extends BaseFragment implements Notif
                 if (i == messageSoundRow || i == groupSoundRow) {
                     String value = null;
                     if (i == messageSoundRow) {
-                        value = preferences.getString("GlobalSound", LocaleController.getString("SoundDefault", R.string.SoundDefault));
+                        value = preferences.getString("GlobalSound", LocaleController.getString("", R.string.Default));
                     } else if (i == groupSoundRow) {
-                        value = preferences.getString("GroupSound", LocaleController.getString("SoundDefault", R.string.SoundDefault));
+                        value = preferences.getString("GroupSound", LocaleController.getString("", R.string.Default));
                     }
                     if (value.equals("NoSound")) {
                         value = LocaleController.getString("Disabled", R.string.Disabled);
@@ -602,7 +602,7 @@ public class SettingsNotificationsActivity extends BaseFragment implements Notif
                         value = preferences.getInt("vibrate_group", 0);
                     }
                     if (value == 0) {
-                        textCell.setTextAndValue(LocaleController.getString("Vibrate", R.string.Vibrate), LocaleController.getString("VibrationDefault", R.string.VibrationDefault), true);
+                        textCell.setTextAndValue(LocaleController.getString("Vibrate", R.string.Vibrate), LocaleController.getString("", R.string.Default), true);
                     } else if (value == 1) {
                         textCell.setTextAndValue(LocaleController.getString("Vibrate", R.string.Vibrate), LocaleController.getString("Short", R.string.Short), true);
                     } else if (value == 2) {
@@ -644,9 +644,6 @@ public class SettingsNotificationsActivity extends BaseFragment implements Notif
                     int color = preferences.getInt(i==messageLedRow? "MessagesLed" : "GroupLed", NotificationsController.DEF_LED_COLOR);
                     if( color == 0 ) {
                         textCell.setTextAndValue(ApplicationLoader.applicationContext.getString(R.string.LedColor), ApplicationLoader.applicationContext.getString(R.string.Disabled), true);
-                    }
-                    else if( color == NotificationsController.DEF_LED_COLOR ) {
-                        textCell.setTextAndValue(ApplicationLoader.applicationContext.getString(R.string.LedColor), ApplicationLoader.applicationContext.getString(R.string.Default), true);
                     }
                     else {
                         textCell.setTextAndColor(ApplicationLoader.applicationContext.getString(R.string.LedColor), color, true);

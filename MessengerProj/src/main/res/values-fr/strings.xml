@@ -113,7 +113,6 @@
     <string name="BadgeNumber">Montrer le compte dans l\'icône, si possible</string>
     <string name="Short">Court</string>
     <string name="Long">Long</string>
-    <string name="SystemDefault">Par défaut du système</string>
     <string name="RaiseToSpeak">Lever pour parler</string>
     <string name="EditName">Changer le nom</string>
     <string name="NotificationsPriority">Priorité de la notification</string>
@@ -123,8 +122,6 @@
     <string name="RepeatNotifications">Répéter les notifications</string>
     <string name="NotificationsOther">Autres</string>
     <string name="InChatSound">Sons dans la conversation</string>
-    <string name="SoundDefault">Defaut</string>
-    <string name="VibrationDefault">Defaut</string>
     <string name="SmartNotifications">Limiter les notifications</string>
     <string name="SmartNotificationsInfo">Notifications sonore au maximum %1$s fois toutes les %2$s</string>
     <string name="SmartNotificationsSoundAtMost">Notifier au maximum</string>

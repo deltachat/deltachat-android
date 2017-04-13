@@ -116,7 +116,6 @@
     <string name="BadgeNumber">Pokaż ilość na ikonie, jeśli to możliwe</string>
     <string name="Short">Krótkie</string>
     <string name="Long">Długie</string>
-    <string name="SystemDefault">Domyślny systemu</string>
     <string name="RaiseToSpeak">Odbierz i mów / słuchaj</string>
     <string name="EditName">Edytuj nazwę</string>
     <string name="NotificationsPriority">Priorytet</string>
@@ -126,8 +125,6 @@
     <string name="RepeatNotifications">Powtarzanie powiadomień co</string>
     <string name="NotificationsOther">Inne</string>
     <string name="InChatSound">Dźwięki w czacie</string>
-    <string name="SoundDefault">Domyślne</string>
-    <string name="VibrationDefault">Domyślne</string>
     <string name="SmartNotifications">Limit powiadomień</string>
     <string name="SmartNotificationsInfo">Dźwięk, co najwyżej %1$s w ciągu %2$s</string>
     <string name="SmartNotificationsSoundAtMost">Dźwięk, co najwyżej</string>

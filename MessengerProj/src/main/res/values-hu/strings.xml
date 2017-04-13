@@ -116,7 +116,6 @@
     <string name="BadgeNumber">Ha lehetséges, számok megjelenítése az ikonon</string>
     <string name="Short">Rövid</string>
     <string name="Long">Hosszú</string>
-    <string name="SystemDefault">Rendszer alapértelmezett</string>
     <string name="RaiseToSpeak">Felemelés a beszédhez</string>
     <string name="EditName">Név módosítása</string>
     <string name="NotificationsPriority">Nézet</string>
@@ -126,8 +125,6 @@
     <string name="RepeatNotifications">Értesítések ismétlése</string>
     <string name="NotificationsOther">Egyéb</string>
     <string name="InChatSound">Hangok beszélgetésen belül</string>
-    <string name="SoundDefault">Alapértelmezett</string>
-    <string name="VibrationDefault">Alapértelmezett</string>
     <string name="SmartNotifications">Értesítések korlátja</string>
     <string name="SmartNotificationsInfo">%2$s idő alatt legfeljebb %1$s hangjelzés</string>
     <string name="SmartNotificationsSoundAtMost">Hangjelzés legfeljebb</string>

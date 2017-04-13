@@ -46,6 +46,7 @@ public class TextSettingsCell extends FrameLayout {
     private boolean  valueIsColor;
     private Paint dividerpaint;
     private Paint circlepaint;
+    private Paint circleborderpaint;
     private boolean needDivider;
 
     public TextSettingsCell(Context context) {
@@ -54,6 +55,10 @@ public class TextSettingsCell extends FrameLayout {
         dividerpaint = new Paint();
         dividerpaint.setColor(0xffd9d9d9);
         dividerpaint.setStrokeWidth(1);
+
+        circleborderpaint = new Paint();
+        circleborderpaint.setColor(0xff000000);
+        circleborderpaint.setStrokeWidth(1);
 
         circlepaint = new Paint();
         circlepaint.setAntiAlias(true);
@@ -143,7 +148,7 @@ public class TextSettingsCell extends FrameLayout {
         if( valueIsColor ) {
             int x = getWidth()-getPaddingRight()-dp(17)-RADIUS;
             int y = getHeight()/2;
-            canvas.drawCircle(x+dp(1), y+dp(1), RADIUS, dividerpaint);
+            canvas.drawCircle(x, y, RADIUS+dp(1), circleborderpaint);
             canvas.drawCircle(x, y, RADIUS, circlepaint);
         }
     }

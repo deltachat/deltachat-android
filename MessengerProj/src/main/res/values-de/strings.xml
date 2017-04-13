@@ -116,7 +116,6 @@
     <string name="BadgeNumber">Anzahl auf Icon anzeigen, wenn möglich</string>
     <string name="Short">Kurz</string>
     <string name="Long">Lang</string>
-    <string name="SystemDefault">Systemvorgabe</string>
     <string name="RaiseToSpeak">Ans Ohr für Sprachnachricht</string>
     <string name="EditName">Name bearbeiten</string>
     <string name="NotificationsPriority">Darstellung</string>
@@ -126,8 +125,6 @@
     <string name="RepeatNotifications">Erneut benachrichtigen</string>
     <string name="NotificationsOther">Sonstiges</string>
     <string name="InChatSound">In-Chat-Töne</string>
-    <string name="SoundDefault">Standard</string>
-    <string name="VibrationDefault">Standard</string>
     <string name="SmartNotifications">Benachrichtigungen begrenzen</string>
     <string name="SmartNotificationsInfo">Höchstens %1$s innerhalb von %2$s</string>
     <string name="SmartNotificationsSoundAtMost">Höchstens</string>

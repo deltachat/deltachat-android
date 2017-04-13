@@ -115,7 +115,6 @@
     <string name="BadgeNumber">Globo en el ícono</string>
     <string name="Short">Cortas</string>
     <string name="Long">Largas</string>
-    <string name="SystemDefault">Según el sistema</string>
     <string name="RaiseToSpeak">Elevar para hablar</string>
     <string name="EditName">Editar nombre</string>
     <string name="NotificationsPriority">Prioridad</string>
@@ -125,8 +124,6 @@
     <string name="RepeatNotifications">Repetir notificaciones</string>
     <string name="NotificationsOther">Otras</string>
     <string name="InChatSound">Sonidos en el chat</string>
-    <string name="SoundDefault">Por defecto</string>
-    <string name="VibrationDefault">Por defecto</string>
     <string name="SmartNotifications">Notificaciones inteligentes</string>
     <string name="SmartNotificationsInfo">Sonar como máximo %1$s en %2$s</string>
     <string name="SmartNotificationsSoundAtMost">Sonar como máximo</string>

@@ -115,7 +115,6 @@
     <string name="BadgeNumber">Badgenummer</string>
     <string name="Short">Kort</string>
     <string name="Long">Lang</string>
-    <string name="SystemDefault">Systeeminstelling</string>
     <string name="RaiseToSpeak">Houd bij oor</string>
     <string name="EditName">Naam wijzigen</string>
     <string name="NotificationsPriority">Prioriteit</string>
@@ -125,8 +124,6 @@
     <string name="RepeatNotifications">Meldingen herhalen</string>
     <string name="NotificationsOther">Overig</string>
     <string name="InChatSound">Chatgeluiden</string>
-    <string name="SoundDefault">Standaard</string>
-    <string name="VibrationDefault">Standaard</string>
     <string name="SmartNotifications">Slimme meldingen</string>
     <string name="SmartNotificationsInfo">Geluid maximaal %1$s per %2$s</string>
     <string name="SmartNotificationsSoundAtMost">Geluid maximaal</string>

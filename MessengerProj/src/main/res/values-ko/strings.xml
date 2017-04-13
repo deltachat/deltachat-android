@@ -109,7 +109,6 @@
     <string name="BadgeNumber">앱 아이콘에 알림 개수 표시</string>
     <string name="Short">짧게</string>
     <string name="Long">길게</string>
-    <string name="SystemDefault">시스템 기본값</string>
     <string name="RaiseToSpeak">기기를 들어 말하기</string>
     <string name="EditName">이름 편집</string>
     <string name="NotificationsPriority">우선순위</string>
@@ -119,8 +118,6 @@
     <string name="RepeatNotifications">알림 반복</string>
     <string name="NotificationsOther">기타</string>
     <string name="InChatSound">채팅중 소리 설정</string>
-    <string name="SoundDefault">기본값</string>
-    <string name="VibrationDefault">기본값</string>
     <string name="SmartNotifications">스마트 알림</string>
     <string name="SmartNotificationsInfo">최대 %1$s번, %2$s번 이내 알림</string>
     <string name="SmartNotificationsSoundAtMost">알림 최대치</string>
