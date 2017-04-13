@@ -461,7 +461,7 @@ public class ProfileNotificationsActivity extends BaseFragment implements Notifi
                 Ringtone rng = RingtoneManager.getRingtone(ApplicationLoader.applicationContext, ringtone);
                 if (rng != null) {
                     if(ringtone.equals(Settings.System.DEFAULT_NOTIFICATION_URI)) {
-                        name = LocaleController.getString("SoundDefault", R.string.SoundDefault);
+                        name = "use-delta-chat-default";
                     } else {
                         name = rng.getTitle(getParentActivity());
                     }
@@ -473,12 +473,17 @@ public class ProfileNotificationsActivity extends BaseFragment implements Notifi
             SharedPreferences.Editor editor = preferences.edit();
 
             if (requestCode == RC12_PROFILE_RINGTONE_PICKER) {
-                if (name != null) {
-                    editor.putString("sound_" + dialog_id, name);
-                    editor.putString("sound_path_" + dialog_id, ringtone.toString());
-                } else {
+                if( name==null ) {
                     editor.putString("sound_" + dialog_id, "NoSound");
                     editor.putString("sound_path_" + dialog_id, "NoSound");
+                }
+                else if( name.equals("use-delta-chat-default") ) {
+                    editor.remove("sound_" + dialog_id); // use the Delta Chat standard sound, not the system standard sound!
+                    editor.remove("sound_path_" + dialog_id);
+                }
+                else {
+                    editor.putString("sound_" + dialog_id, name);
+                    editor.putString("sound_path_" + dialog_id, ringtone.toString());
                 }
             }
             editor.apply();
