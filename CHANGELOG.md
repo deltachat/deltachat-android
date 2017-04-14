@@ -1,5 +1,11 @@
 # Delta Chat Changelog
 
+## v0.1.28
+2017-04-14
+
+* Pimp notifications
+* Bug fixes
+
 ## v0.1.27
 2017-04-12
 
