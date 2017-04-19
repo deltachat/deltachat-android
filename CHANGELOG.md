@@ -1,5 +1,9 @@
 # Delta Chat Changelog
 
+## UNRELEASED
+
+* Update Spanish translation
+
 ## v0.1.29
 2017-04-19
 

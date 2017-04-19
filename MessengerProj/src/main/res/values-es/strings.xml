@@ -20,6 +20,7 @@
     <string name="SelectChat">Elige el chat …</string>
     <string name="Search">Buscar</string>
     <string name="MuteNotifications">Silenciar notificaciones</string>
+    <string name="MuteFor">Silenciado durante %1$s</string>
     <string name="UnmuteNotifications">No silenciar</string>
     <string name="Draft">Borrador</string>
     <!--audio view-->
@@ -142,7 +143,7 @@
     <string name="LocalCache">Otros archivos</string>
     <string name="CacheEmpty">Vacío</string>
     <string name="KeepMedia">Conservar multimedia</string>
-    <string name="KeepMediaInfo">Las fotos, los vídeos y los archivos de los chats en la nube a los que <![CDATA[<b>no accedas</b>]]> durante ese periodo de tiempo se eliminarán del dispositivo para liberar espacio.</string>
+    <string name="KeepMediaInfo">Las fotos, los vídeos y los archivos de los chats en la nube a los que <b>no accedas</b> durante ese periodo de tiempo se eliminarán del dispositivo para liberar espacio.</string>
     <string name="KeepMediaForever">Siempre</string>
     <!--passcode view-->
     <string name="Passcode">Código de acceso</string>
@@ -206,7 +207,7 @@
     <string name="Caption">Comentario</string>
     <!--privacy settings-->
     <string name="PrivacySettings">Privacidad y seguridad</string>
-    <string name="PrivacyTitle">Privacidad</string>
+    <string name="PrivacyTitle">Privacy</string>
     <string name="SecurityTitle">Seguridad</string>
     <!--edit video view-->
     <string name="SendVideo">Enviar vídeo</string>
@@ -246,8 +247,8 @@
     <string name="NoHandleAppInstalled">No tienes aplicaciones que puedan manejar el tipo de archivo “%1$s”. Por favor, instala una para continuar.</string>
     <string name="AskAddMemberToGroup">¿Añadir a <![CDATA[<b>]]>%1$s<![CDATA[</b>]]> al grupo?</string>
     <string name="ContactAlreadyInGroup">Este usuario ya está en el grupo</string>
-    <string name="ForwardMessagesTo">¿Reenviar mensajes a <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>?</string>
-    <string name="SendMessagesTo">¿Enviar mensajes a <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>?</string>
+    <string name="ForwardMessagesTo">¿Reenviar mensajes a <b>%1$s</b>?</string>
+    <string name="SendMessagesTo">¿Enviar mensajes a <b>%1$s</b>?</string>
     <string name="AreYouSureDeleteThisChat">¿Quieres eliminar este chat?</string>
     <string name="AreYouSureBlockContact">¿Quieres bloquear este contacto?</string>
     <string name="AreYouSureDeleteContact">¿Quieres eliminar este contacto?</string>
@@ -255,13 +256,47 @@
     <string name="PermissionContacts">Delta Chat necesita el acceso a tus contactos, para que puedas comunicarte con ellos en todos tus dispositivos.</string>
     <string name="PermissionStorage">Delta Chat necesita acceso a tu almacenamiento, para que puedas enviar y guardar fotos, vídeos, música y otros archivos.</string>
     <string name="PermissionNoAudio">Delta Chat necesita acceso a tu micrófono, para que puedas enviar mensajes de voz.</string>
+
+    <!-- Translators: PermissionBattery should refer to the system dialog
+    "Ignore battery optimizations?
+    Let app Delta Chat stay connected in the backgound? This may use more battery."  -->
+    <string name="PermissionBattery">Delta Chat necesita estar conectado al fondo para recibir mensajes desde su servidor.\n\nEsto es un comportamiento normal, sin excesivo consumo batería que, no obstante, suele bloquearse por los optimizadores de batería.\n\n¿Quiere adaptar los ajustes?</string>
+
     <string name="PermissionOpenSettings">Ajustes</string>
     <!--Intro view-->
+    <string name="Intro1Headline">Delta Chat</string>
+    <string name="Intro1Message">La mensajería de <b>mayor alcance</b> del mundo. <b>Libre</b> y <b>segura</b>.</string>
+
+    <string name="Intro2Headline">Independiente</string>
+    <string name="Intro2Message"><b>Sin dependencia</b> de ordenadores o servidores ajenos. Usa solo tu servidor de correo.</string>
+
+    <string name="Intro3Headline">Rápido</string>
+    <string name="Intro3Message"><b>Mensajes automáticos</b> en segundos.<br/>Interfaz rápida.</string>
+
+    <string name="Intro4Headline">Potente</string>
+    <string name="Intro4Message">Conversaciones, imágenes, vídeos, audiomensajes <b>ilimitados</b> y más. Capacidad multicliente</string>
+
+    <string name="Intro5Headline">Libre</string>
+    <string name="Intro5Message"><b>Delta Chat</b> será siempre libre.<br/>Fuente abierta. Sin anuncios. Sin suscripción. Sin atarse a un proveedor.</string>
+
+    <string name="Intro6Headline">Seguro</string>
+    <string name="Intro6Message"><b>Cifrado</b> con algoritmos conocidos. Los mensajes permanecen en tus servidores.</string>
+
+    <string name="Intro7Headline">Confiable</string>
+
     <string name="IntroStartMessaging">Empieza a conversar</string>
     <!--plural-->
     <plurals name="Members">
         <item quantity="one">%d miembro</item>
         <item quantity="other">%d miembros</item>
+    </plurals>
+    <plurals name="Contacts">
+        <item quantity="one">Contacto %d</item>
+        <item quantity="other">Cursos</item>
+    </plurals>
+    <plurals name="MeAndMembers">
+        <item quantity="one">%d miembro y yo</item>
+        <item quantity="other">%d miembros y yo</item>
     </plurals>
     <plurals name="NewMessages">
         <item quantity="one">%d nuevo mensaje</item>
@@ -270,6 +305,21 @@
     <plurals name="messages">
         <item quantity="one">%d mensaje</item>
         <item quantity="other">%d mensajes</item>
+    </plurals>
+    <plurals name="AreYouSureDeleteMessages">
+        <item quantity="one">¿Borrar mensaje %d? El mensaje se borrará también del servidor.</item>
+        <item quantity="other">%</item>
+    </plurals>
+    <plurals name="NewMessagesInChats">
+        <!-- Translators: the first string placeholder "%s" gets replaced with the
+        text "%d new messages", so the complete sentence would be e.g.
+        "4 new messages in 2 chats". -->
+        <item quantity="one">%1$s en%2$s conversación</item>
+        <item quantity="other">%1$s en%2$s conversaciones</item>
+    </plurals>
+    <plurals name="Chats">
+        <item quantity="one">Conversación %d</item>
+        <item quantity="other">Fundaciones %d</item>
     </plurals>
     <plurals name="Minutes">
         <item quantity="one">%d minuto</item>
@@ -291,6 +341,13 @@
         <item quantity="one">%d mes</item>
         <item quantity="other">%d meses</item>
     </plurals>
+    <plurals name="MaxNotifications">
+        <!-- Translators: the second string placeholder "%s" gets replaced with the
+        text "%d minutes", so the complete sentence would be e.g.
+        "At most 8 notifications within 3 minutes". -->
+        <item quantity="one">Máximo %1$d notificación con %2$d</item>
+        <item quantity="other">Máximo %1$d notificaciones con %2$d</item>
+    </plurals>
     <!--date formatters-->
     <string name="formatterMonthYear">MMMM \'de\' yyyy</string>
     <string name="formatterMonth">dd \'de\' MMM</string>
@@ -301,11 +358,85 @@
     <string name="formatterDay24H">HH:mm</string>
     <string name="formatterDay12H">h:mm a</string>
     <string name="formatDateAtTime">%1$s a las %2$s</string>
+    <string name="AccountSettings">Ajustes de cuenta</string>
+    <string name="MyAccount">Mi cuenta</string>
+    <string name="Yes">Sí</string>
+    <string name="No">No</string>
+    <string name="MyName">Mi nombre</string>
+    <string name="MyNameExplain">Su nombre se muestra a los receptores.\n\nSi no introduce un nombre aquí, los receptores solo verán su dirección de correo de los ajustes de cuenta.</string>
+    <string name="MyEmailAddress">Mi dirección de correo</string>
+    <string name="Password">Contraseña</string>
+    <string name="SmtpPassword">Contraseña SMTP</string>
+    <string name="FromAbove">De arriba</string>
+    <string name="SmtpLoginname">Nombre de ingreso SMTP</string>
+    <string name="SmtpPort">Puerto SMTP</string>
+    <string name="Automatic">Automático</string>
+    <string name="ImapServer">Servidor IMAP</string>
+    <string name="ImapLoginname">Nombre de ingreso IMAP</string>
+    <string name="SmtpServer">Servidor SMTP</string>
+    <string name="ImapPort">Puerto IMAP</string>
+    <string name="InboxHeadline">Bandeja de entrada</string>
+    <string name="OutboxHeadline">Bandeja de salida</string>
+    <string name="BasicSettings">Ajustes básicos</string>
+    <string name="MyAccountExplain">Para proveedores conocidos de correo, los ajustes adicionales se determinan automáticamente.</string>
+    <string name="MyAccountExplain2" >Algunas veces, <b>hay que habilitar IMAP</b> en la interfaz web del correo.\n\nEn caso de problemas, consulte a su proveedor de correo o el de sus amigos.</string>
+    <string name="AccountNotConfigured">Cuenta no configurada</string>
+    <string name="AboutThisProgram">Sobre Delta Chat</string>
+    <string name="NotSet">No establecido</string>
     <string name="NewChat">Nuevo chat</string>
+    <string name="Deaddrop">Buzón</string>
     <string name="Media">Multimedia</string>
+    <string name="DeaddropInChatlist">Mostrar buzón en la lista de conversaciones</string>
+    <string name="MuteAlways">Siempre silenciado</string>
+    <string name="AskStartChatWith">¿Iniciar una conversación con <b>%1$s</b>?</string>
+    <string name="DeaddropHint">Haga clic en la flecha de réplica para comenzar una conversación.</string>
+    <string name="NotYetImplemented">Esta función no está disponible o está incompleta.</string>
+    <string name="DefaultStatusText">Enviado desde mi Delta Chat</string>
+    <string name="Name" >Nombre</string>
+    <string name="EmailAddress">Dirección de correo</string>
+    <string name="CannotDeleteContact">No puede borrar contactos en uso. En su lugar, bloquee el contacto.</string>
+    <string name="BadEmailAddress">Dirección de correo errónea.</string>
+    <string name="ContactCreated">Contacto creado.</string>
+    <string name="ViewProfile">Ver perfil</string>
+    <!-- Translators: please use a very short string here, it should not much longer than
+    the string needed for video time+size (0:00, 12,3 Mib) -->
+    <string name="OneMoment">Un momento...</string>
+    <string name="NoChatsHelp">Comience a enviar mensajes pulsando el botón de nueva conversación en la esquina inferior derecha o pulse el botón de menú para más opciones.</string>
+    <string name="ConfiguringAccount">Configurando cuenta...</string>
+    <string name="CannotConnect">No puede conectar. Revise la configuración, por favor.</string>
+    <string name="Intro7Message"><b>Delta Chat</b> es seguro para usar en negocios, consumir y basado en estándares.</string>
     <string name="InviteMenuEntry">Invitar a amigos</string>
+    <string name="InviteText">Estoy usando Delta Chat ahora - %1$s - puede escribirme a %2$s</string>
+    <string name="AdvancedSettings">Ajustes avanzados</string>
+    <string name="AskResetNotifications" >¿Reiniciar los ajustes de notificación y sonido de esta página y de sus contactos y grupos?</string>
+    <string name="AttachFiles">Adjuntar archivos</string>
+    <string name="ErrGroupNameEmpty">Introduzca un nombre para el grupo.</string>
+    <string name="MsgNewGroupDraftHint">Escriba un primer mensaje para permitir a los demás participar en este grupo.\n\n• No importa si los miembros no usan Delta Chat.\n\n• El primer mensaje puede tardar un momento.</string>
+    <string name="MsgNewGroupDraft">Hola, he creado el grupo \"%1$s\" para nosotros.</string>
+    <string name="MsgGroupNameChanged">Nombre de grupo cambiado de \"%1$s\" a \"%2$s\".</string>
+    <string name="MsgGroupImageChanged">Imagen de grupo cambiada.</string>
+    <string name="MsgMemberAddedToGroup">Añadido miembro %1$s.</string>
+    <string name="MsgMemberRemovedFromToGroup">Eliminado miembro %1$s.</string>
+    <string name="AskRemoveMemberFromGroup">¿Eliminar <b>%1$s</b> del grupo?</string>
+    <string name="ErrSelfNotInGroup">Debe ser miembro del grupo para realizar esta acción.</string>
+    <string name="MsgGroupLeft">Grupo abandonado.</string>
+    <string name="NoMessagesHint">Enviar mensaje a <b>%1$s</b>:\n\n• No importa si <b>%2$s</b> no usa Delta Chat.\n\n• El primer mensaje puede tardar un momento.</string>
+    <string name="SendNRcvReadReceipts">Recibir y enviar entradas leídas</string>
+    <string name="E2EEncryption">Cifrado punto a punto</string>
+    <string name="E2EManagePrivateKeys">Gestionar claves privadas</string>
+    <string name="E2ECompareKeys">Comparar claves</string>
+    <string name="ResetContactsKey">Reiniciar claves de contacto</string>
     <string name="ForwardToTitle">Elige el chat …</string>
+    <string name="SelectContact">Elegir un contacto</string>
     <string name="DoneHint">Hecho.</string>
-    <string name="PermNotificationText">Conexión en segundo plano habilitada</string>
+    <string name="FileNotFound">Archivo %1$s no encontrado.</string>
+    <string name="Error">Error %1$s</string>
+    <string name="NoNetwork">Red no disponible.</string>
+    <string name="Audio">Sonido</string>
+    <string name="PleaseCutVideoToMaxSize">Reduzca el tamaño del vídeo hasta un máximo de %1$s, por favor.</string>
     <string name="PermNotificationTitle">Delta Chat</string>
+    <string name="PermNotificationText">Conexión en segundo plano habilitada</string>
+    <string name="SettingsFor">Ajustes para %1$s</string>
+
 </resources>
+
