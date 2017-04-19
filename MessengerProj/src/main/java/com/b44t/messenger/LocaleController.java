@@ -283,6 +283,14 @@ public class LocaleController {
         recreateFormatters();
     }
 
+    public void rebuildUiParts()
+    {
+        KeepAliveService kas = KeepAliveService.getInstance();
+        if( kas != null ) {
+            kas.updateForegroundNotification();
+        }
+    }
+
     public static String getCurrentLanguageName() {
         return getString("LanguageName", R.string.LanguageName);
     }
@@ -350,6 +358,7 @@ public class LocaleController {
                 currentLocale = newLocale;
             }
         }
+        rebuildUiParts();
     }
 
     public static String formatDateChat(long date) {
@@ -384,7 +393,7 @@ public class LocaleController {
         return formatter;
     }
 
-    public void recreateFormatters() {
+    private void recreateFormatters() {
         Locale locale = currentLocale;
         if (locale == null) {
             locale = Locale.getDefault();
