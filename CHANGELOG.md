@@ -2,7 +2,8 @@
 
 ## UNRELEASED
 
-* For outgoing (group-)messages, only use the names the receivers have set themselves.
+* Add Russian translation
+* For outgoing (group-)messages, only use the names the receivers have set themselves
 
 ## v0.1.28
 2017-04-14

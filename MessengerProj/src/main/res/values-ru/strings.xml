@@ -207,7 +207,7 @@
     <string name="Caption">Подпись</string>
     <!--privacy settings-->
     <string name="PrivacySettings">Конфиденциальность и безопасность</string>
-    <string name="PrivacyTitle" инструменты:содержание="@string/PrivacyTitle">Конфиденциальность</string>
+    <string name="PrivacyTitle">Конфиденциальность</string>
     <string name="SecurityTitle">Безопасность</string>
     <!--edit video view-->
     <string name="SendVideo">Отправить Видео</string>
@@ -246,8 +246,8 @@
     <!--Alert messages-->
     <string name="NoHandleAppInstalled">У вас нет приложений, которые могут обрабатывать тип файла \'%1$s\, пожалуйста, установите его, чтобы продолжить</string>
     <string name="ContactAlreadyInGroup">Этот контакт уже находится в этой группе.</string>
-    <string name="ForwardMessagesTo">Переслать выбранные сообщения в <! [CDATA [<b>]]>% 1 $ s <! [CDATA [</ b>]]>?</string>
-    <string name="SendMessagesTo">Отправить сообщения в <! [CDATA [<b>]]>% 1 $ s <! [CDATA [</ b>]]>?</string>
+    <string name="ForwardMessagesTo">Переслать выбранные сообщения в <![CDATA[<b>]]>%1$s<![CDATA[</ b>]]>?</string>
+    <string name="SendMessagesTo">Отправить сообщения в <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>?</string>
     <string name="AreYouSureDeleteThisChat">Удалить этот чат? Чат больше не будет отображаться в списке чата, сообщения останутся на сервере.</string>
     <string name="AreYouSureBlockContact">Вы действительно хотите заблокировать этот контакт?</string>
     <string name="AreYouSureDeleteContact">Вы уверены, что хотите удалить этот контакт?</string>
@@ -264,10 +264,10 @@
     <string name="PermissionOpenSettings">Адаптировать настройки</string>
     <!--Intro view-->
     <string name="Intro1Headline">Delta Chat</string>
-    <string name="Intro1Message">Мессенджер с <! [CDATA [<b> самым большим диапазоном охвата </ b>]]> в мире. <! [CDATA [<br /> <b> Бесплатно </ b>]]> и <![CDATA[<b>безопасно</b>]]>.</string>
+    <string name="Intro1Message">Мессенджер с <![CDATA[<b>самым большим диапазоном охвата</b>]]> в мире. <![CDATA[<br /><b>Бесплатно</b>]]> и <![CDATA[<b>безопасно</b>]]>.</string>
 
     <string name="Intro2Headline">Независимый</string>
-    <string name="Intro2Message"><! [CDATA [<b> Независимость </ b>]]> от иностранных компьютеров или служб. Приложение использует только ваш почтовый сервер.</string>
+    <string name="Intro2Message"><![CDATA[<b>Независимость</b>]]> от иностранных компьютеров или служб. Приложение использует только ваш почтовый сервер.</string>
 
     <string name="Intro3Headline">Быстрый</string>
     <string name="Intro3Message"><![CDATA[<b>Push-сообщения</b>]]> за секунды.<![CDATA[<br/>]]>Быстрый интерфейс.</string>
@@ -348,14 +348,14 @@
         <item quantity="other">Не более %1$d сообщений в течении %2$s</item>
     </plurals>
     <!--date formatters-->
-    <string name="formatterMonthYear">ММММ гггг</string>
-    <string name="formatterMonth">МММ дд</string>
-    <string name="formatterYear">дд.ММ.гггг</string>
-    <string name="chatDate">ГГГ, ММММ д</string>
-    <string name="chatFullDate">ГГГ, ММММ д, гггг</string>
-    <string name="formatterWeek">ГГГ</string>
-    <string name="formatterDay24H">ЧЧ:мм</string>
-    <string name="formatterDay12H">ч:мм a</string>
+    <string name="formatterMonthYear">MMMM yyyy</string>
+    <string name="formatterMonth">MMM dd</string>
+    <string name="formatterYear">dd.MM.yyyy</string>
+    <string name="chatDate">EEE, MMMM d</string>
+    <string name="chatFullDate">EEE, MMMM d, yyyy</string>
+    <string name="formatterWeek">EEE</string>
+    <string name="formatterDay24H">HH:mm</string>
+    <string name="formatterDay12H">h:mm a</string>
     <string name="formatDateAtTime">%1$s в %2$s</string>
     <string name="AccountSettings">Настройки аккаунта</string>
     <string name="MyAccount">Мой аккаунт</string>
@@ -380,7 +380,7 @@
     <string name="MyAccountExplain">Для известных поставщиков электронной почты дополнительные настройки определяются автоматически.</string>
     <string name="MyAccountExplain2" >Иногда, <![CDATA[<b>]]>IMAP должен быть включен<![CDATA[</b>]]> в веб-интерфейсе электронной почты.\n\nВ случае затруднений, обратитесь к своему поставщику электронной почты или компентентным друзьям.</string>
     <string name="AccountNotConfigured">Аккаунт не настроен</string>
-    <string name="AboutThisProgram">О Delta(Дельта) Chat(Чат)</string>
+    <string name="AboutThisProgram">О Delta Chat (Дельта Чат)</string>
     <string name="NotSet">Не задано</string>
     <string name="NewChat">Новый чат</string>
     <string name="Deaddrop">Почтовый ящик</string>

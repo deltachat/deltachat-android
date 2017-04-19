@@ -1,0 +1,441 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="AppName">Delta Chat</string>
+    <string name="LanguageName">English</string>
+    <string name="LanguageNameInEnglish" tools:keep="@string/LanguageNameInEnglish">English</string>
+    <string name="LanguageCode" tools:keep="@string/LanguageCode">en</string>
+    <!--chats view-->
+    <string name="Settings">Settings</string>
+    <string name="NewGroup">New group</string>
+    <string name="Yesterday">yesterday</string>
+    <string name="NoResult">No results.</string>
+    <string name="NoChats">No chats yet.</string>
+    <string name="WaitingForNetwork">Waiting for network …</string>
+    <string name="Connecting">Connecting …</string>
+    <string name="Updating">Updating …</string>
+    <string name="DeleteChat">Delete chat</string>
+    <string name="SelectChat">Select chat …</string>
+    <string name="Search">Search</string>
+    <string name="MuteNotifications">Mute notifications</string>
+    <string name="MuteFor">Mute for %1$s</string>
+    <string name="UnmuteNotifications">Unmute</string>
+    <string name="Draft">Draft</string>
+    <!--audio view-->
+    <string name="NoAudio">Please add files to the music library on your device to see them here.</string>
+    <string name="AttachMusic">Music</string>
+    <!--documents view-->
+    <string name="SelectFile">Select File</string>
+    <string name="FreeOfTotal">Free %1$s of %2$s</string>
+    <string name="ErrorHint">Unknown error</string>
+    <string name="AccessError">Access error</string>
+    <string name="NoFiles">No files yet …</string>
+    <string name="NotMounted">Storage not mounted</string>
+    <string name="UsbActive">USB transfer active</string>
+    <string name="InternalStorage">Internal Storage</string>
+    <string name="ExternalStorage">External Storage</string>
+    <string name="SystemRoot">System Root</string>
+    <string name="SdCard">SD Card</string>
+    <string name="Folder">Folder</string>
+    <string name="GalleryInfo">To send images without compression</string>
+    <!--chat view-->
+    <string name="ChatGallery">Gallery</string>
+    <string name="ChatCamera">Camera</string>
+    <string name="NoMessages">No messages.</string>
+    <string name="ForwardedMessage">Forwarded message</string>
+    <string name="From">From</string>
+    <string name="NoRecent">No recent</string>
+    <string name="TypeMessage">Message</string>
+    <string name="SlideToCancel">SLIDE TO CANCEL</string>
+    <string name="SaveToDownloads">Save to downloads</string>
+    <string name="DeleteGif">Delete GIF?</string>
+    <string name="SaveToMusic">Save to music</string>
+    <string name="Share">Share</string>
+    <string name="SendItems">Send %1$s</string>
+    <string name="ClearRecentEmoji">Clear recent emoji?</string>
+    <string name="AddShortcut">Add widget to home screen</string>
+    <string name="ShortcutAdded">Widget added to home screen</string>
+    <!--notification-->
+    <string name="Reply">Reply</string>
+    <string name="ReplyToGroup">Reply to %1$s</string>
+    <string name="ReplyToContact">Reply to %1$s</string>
+    <!--contacts view-->
+    <string name="NoContacts">No contacts yet.</string>
+    <string name="TodayAt">at</string>
+    <string name="YesterdayAt">yesterday at</string>
+    <!--group create view-->
+    <string name="SendMessageTo">Send message to …</string>
+    <string name="EnterGroupNamePlaceholder">Enter group name</string>
+    <!--group info view-->
+    <string name="SharedMedia">Shared Media</string>
+    <string name="AddMember">Add member</string>
+    <string name="Notifications">Notifications</string>
+    <string name="RemoveMember">Remove member</string>
+    <!--contact info view-->
+    <string name="NewContactTitle">New contact</string>
+    <string name="BlockContact">Block contact</string>
+    <string name="DeleteContact">Delete contact</string>
+    <string name="Info">Info</string>
+    <!--stickers view-->
+    <string name="Stickers">Stickers</string>
+    <string name="AddStickers">Add Stickers</string>
+    <string name="AddToStickers">Add to Stickers</string>
+    <string name="StickersRemove">Remove</string>
+    <string name="NoStickers">No stickers yet</string>
+    <!--settings view-->
+    <string name="TextSize">Messages font size</string>
+    <string name="EnableAnimations">Transition animation</string>
+    <string name="UnblockContact">Unblock contact</string>
+    <string name="NoBlocked">No blocked contacts yet</string>
+    <string name="DefaultForNormalMessages">Normal messages default</string>
+    <string name="Alert">Alert</string>
+    <string name="MessagePreview">Message preview</string>
+    <string name="DefaultForGroupMessages">Group messages default</string>
+    <string name="Sound">Sound</string>
+    <string name="InAppNotifications">In-app notifications</string>
+    <string name="Vibrate">Vibrate</string>
+    <string name="Reset">Reset</string>
+    <string name="ResetAllNotifications">Reset all notifications</string>
+    <string name="NotificationsAndSounds">Notifications and sounds</string>
+    <string name="BlockedContacts">Blocked contacts</string>
+    <string name="Default">Default</string>
+    <string name="OnlyIfSilent">Only if silent</string>
+    <string name="ChatBackground">Chat background</string>
+    <string name="SendByEnter">Send by "enter"</string>
+    <string name="Language">Language</string>
+    <string name="Help">Help</string>
+    <string name="Enabled">On</string>
+    <string name="Disabled">Off</string>
+    <string name="NotificationsService">Keep-alive service</string>
+    <string name="NotificationsServiceInfo">Relaunch app when shut down by user or system. This will ensure app can show notifications.</string>
+    <string name="NotificationsServiceConnection">Background connection</string>
+    <string name="NotificationsServiceConnectionInfo">Keep a low impact background connection to receive notifications. Enable for reliable notifications.</string>
+    <string name="LedColor">LED color</string>
+    <string name="BadgeNumber">Show count on icon if possible</string>
+    <string name="Short">Short</string>
+    <string name="Long">Long</string>
+    <string name="RaiseToSpeak">Raise to speak</string>
+    <string name="EditName">Edit name</string>
+    <string name="NotificationsPriority">View</string>
+    <string name="NotificationsPriorityDefault">Normal priority</string>
+    <string name="NotificationsPriorityHigh">High priority</string>
+    <string name="NotificationsPriorityMax">Highest priority</string>
+    <string name="RepeatNotifications">Repeat notifications</string>
+    <string name="NotificationsOther">Other</string>
+    <string name="InChatSound">In-chat sounds</string>
+    <string name="SmartNotifications">Limit notifications</string>
+    <string name="SmartNotificationsInfo">Sound at most %1$s within %2$s</string>
+    <string name="SmartNotificationsSoundAtMost">Sound at most</string>
+    <string name="SmartNotificationsTimes">times</string>
+    <string name="SmartNotificationsWithin">within</string>
+    <string name="SmartNotificationsMinutes">minutes</string>
+    <string name="DirectShare">Direct share</string>
+    <string name="DirectShareInfo">Show recent chats in share menu</string>
+    <!--cache view-->
+    <string name="CacheSettings">Storage</string>
+    <string name="LocalDatabase">Local Database</string>
+    <string name="LocalDatabaseClear">Clear cached text messages?</string>
+    <string name="LocalDatabaseInfo">Clearing the local database will delete the texts of cached messages and compress the database to save internal disk space. The app needs some data to work, so database size will not reach zero.\n\nThis operation can take a few minutes to complete.</string>
+    <string name="ClearMediaCache">Clear Cache</string>
+    <string name="CacheClear">Clear</string>
+    <string name="LocalCache">Other files</string>
+    <string name="CacheEmpty">Empty</string>
+    <string name="KeepMedia">Keep Media</string>
+    <string name="KeepMediaInfo">Photos, videos and other files from cloud chats that you have <![CDATA[<b>not accessed</b>]]> during this period will be removed from this device to save disk space.</string>
+    <string name="KeepMediaForever">Forever</string>
+    <!--passcode view-->
+    <string name="Passcode">Passcode Lock</string>
+    <string name="ChangePasscode">Change Passcode</string>
+    <string name="ChangePasscodeInfo">When you set up an additional passcode, a lock icon will appear on the chats page. Tap it to lock and unlock the app.\n\nNote: if you forget the passcode, you\'ll need to delete and reinstall the app.</string>
+    <string name="PasscodePIN">PIN</string>
+    <string name="PasscodePassword">Password</string>
+    <string name="EnterCurrentPasscode">Enter your current passcode</string>
+    <string name="EnterNewFirstPasscode">Enter a passcode</string>
+    <string name="EnterNewPasscode">Enter your new passcode</string>
+    <string name="EnterYourPasscode">Enter your passcode</string>
+    <string name="ReEnterYourPasscode">Re-enter your new passcode</string>
+    <string name="PasscodeDoNotMatch">Passcodes do not match</string>
+    <string name="AutoLock">Autolock</string>
+    <string name="AutoLockInfo">Require passcode if away for a time.</string>
+    <string name="AutoLockInTime">in %1$s</string>
+    <string name="UnlockFingerprint">Unlock with Fingerprint</string>
+    <string name="FingerprintInfo">Confirm fingerprint to continue</string>
+    <string name="FingerprintNotRecognized">Fingerprint not recognized. Try again</string>
+    <!--photo gallery view-->
+    <string name="SaveToGallery">Save to gallery</string>
+    <string name="Of">%1$d of %2$d</string>
+    <string name="Gallery">Gallery</string>
+    <string name="AllPhotos">All Photos</string>
+    <string name="AllVideo">All Videos</string>
+    <string name="NoPhotos">No photos yet</string>
+    <string name="NoVideo">No videos yet</string>
+    <string name="CropImage">Crop image</string>
+    <string name="EditImage">Edit image</string>
+    <string name="Enhance">Enhance</string>
+    <string name="Highlights">Highlights</string>
+    <string name="Contrast">Contrast</string>
+    <string name="Exposure">Exposure</string>
+    <string name="Warmth">Warmth</string>
+    <string name="Saturation">Saturation</string>
+    <string name="Vignette">Vignette</string>
+    <string name="Shadows">Shadows</string>
+    <string name="Grain">Grain</string>
+    <string name="Sharpen">Sharpen</string>
+    <string name="Fade">Fade</string>
+    <string name="Tint">Tint</string>
+    <string name="TintShadows">SHADOWS</string>
+    <string name="TintHighlights">HIGHLIGHTS</string>
+    <string name="Curves">Curves</string>
+    <string name="CurvesAll">ALL</string>
+    <string name="CurvesRed">RED</string>
+    <string name="CurvesGreen">GREEN</string>
+    <string name="CurvesBlue">BLUE</string>
+    <string name="Blur">Blur</string>
+    <string name="BlurOff">Off</string>
+    <string name="BlurLinear">Linear</string>
+    <string name="BlurRadial">Radial</string>
+    <string name="DiscardChanges">Discard changes?</string>
+    <string name="ClearSearch">Clear search history?</string>
+    <string name="ClearButton">Clear</string>
+    <string name="PickerPhotos">Photos</string>
+    <string name="PickerVideo">Video</string>
+    <string name="AddCaption">Add a caption …</string>
+    <string name="PhotoCaption">Photo Caption</string>
+    <string name="VideoCaption">Video Caption</string>
+    <string name="Caption">Caption</string>
+    <!--privacy settings-->
+    <string name="PrivacySettings">Privacy and security</string>
+    <string name="PrivacyTitle" tools:keep="@string/PrivacyTitle">Privacy</string>
+    <string name="SecurityTitle">Security</string>
+    <!--edit video view-->
+    <string name="SendVideo">Send Video</string>
+    <string name="OriginalVideo">Original Video</string>
+    <string name="EditedVideo">Edited Video</string>
+    <string name="CompressVideo">Compress Video</string>
+    <!--button titles-->
+    <string name="Next">Next</string>
+    <string name="Back">Back</string>
+    <string name="Done">Done</string>
+    <string name="Open">Open</string>
+    <string name="Save">Save</string>
+    <string name="Cancel">Cancel</string>
+    <string name="Close">Close</string>
+    <string name="Add">Add</string>
+    <string name="Edit">Edit</string>
+    <string name="Send">Send</string>
+    <string name="CopyToClipboard">Copy to clipboard</string>
+    <string name="Delete">Delete</string>
+    <string name="Forward">Forward</string>
+    <string name="Retry">Retry</string>
+    <string name="FromCamera">From camera</string>
+    <string name="FromGalley">From gallery</string>
+    <string name="Set">Set</string>
+    <string name="OK">OK</string>
+    <string name="Crop">CROP</string>
+    <!--messages-->
+    <string name="AttachPhoto">Photo</string>
+    <string name="AttachVideo">Video</string>
+    <string name="AttachGif">GIF</string>
+    <string name="AttachContact">Contact</string>
+    <string name="AttachDocument">File</string>
+    <string name="AttachSticker">Sticker</string>
+    <string name="AttachVoiceMessage">Voice message</string>
+    <string name="FromSelf">Me</string>
+    <!--Alert messages-->
+    <string name="NoHandleAppInstalled">You don\'t have applications that can handle the file type \'%1$s\', please install one to continue</string>
+    <string name="ContactAlreadyInGroup">This contact is already in this group.</string>
+    <string name="ForwardMessagesTo">Forward selected messages to <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>?</string>
+    <string name="SendMessagesTo">Send messages to <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>?</string>
+    <string name="AreYouSureDeleteThisChat">Delete this chat? The chat will no longer be shown in the chat list, the messages will stay on the server.</string>
+    <string name="AreYouSureBlockContact">Are you sure you want to block this contact?</string>
+    <string name="AreYouSureDeleteContact">Are you sure you want to delete this contact?</string>
+    <!--permissions-->
+    <string name="PermissionContacts">Delta Chat needs access to your contacts so that you can connect with your friends across all your devices.</string>
+    <string name="PermissionStorage">Delta Chat needs access to your storage so that you can send and save photos, videos, music and other media.</string>
+    <string name="PermissionNoAudio">Delta Chat needs access to your microphone so that you can send voice messages.</string>
+
+    <!-- Translators: PermissionBattery should refer to the system dialog
+    "Ignore battery optimizations?
+    Let app Delta Chat stay connected in the backgound? This may use more battery."  -->
+    <string name="PermissionBattery">Delta Chat needs to stay connected in the background for receiving messages from your server.\n\nThis is a normal, battery-saving and very usual behaviour, which, however, is blocked by the battery optimizations.\n\nAdapt settings?</string>
+
+    <string name="PermissionOpenSettings">Adapt settings</string>
+    <!--Intro view-->
+    <string name="Intro1Headline">Delta Chat</string>
+    <string name="Intro1Message">The messenger with the <![CDATA[<b>largest range</b>]]> in the world.<![CDATA[<br/><b>Free</b>]]> and <![CDATA[<b>save</b>]]>.</string>
+
+    <string name="Intro2Headline">Independent</string>
+    <string name="Intro2Message"><![CDATA[<b>No dependencies</b>]]> to foreign computers or services. The app only uses your email-server.</string>
+
+    <string name="Intro3Headline">Fast</string>
+    <string name="Intro3Message"><![CDATA[<b>Push-messages</b>]]> in seconds.<![CDATA[<br/>]]>Rapid interface.</string>
+
+    <string name="Intro4Headline">Powerful</string>
+    <string name="Intro4Message"><![CDATA[<b>Unlimited</b>]]> chats, images, videos, audio messages and more. Multi-client capable.</string>
+
+    <string name="Intro5Headline">Free</string>
+    <string name="Intro5Message"><![CDATA[<b>Delta Chat</b>]]> ist free forever.<![CDATA[<br/>]]>OpenSource. No ads. No subscription. No vendor lock-in.</string>
+
+    <string name="Intro6Headline">Safe</string>
+    <string name="Intro6Message"><![CDATA[<b>Encrypted</b>]]> with all common algorithms. Messages stay on your servers.</string>
+
+    <string name="Intro7Headline">Trustworthy</string>
+
+    <string name="IntroStartMessaging">Start Messaging</string>
+    <!--plural-->
+    <plurals name="Members">
+        <item quantity="one">%d member</item>
+        <item quantity="other">%d members</item>
+    </plurals>
+    <plurals name="Contacts">
+        <item quantity="one">%d contact</item>
+        <item quantity="other">%d contacts</item>
+    </plurals>
+    <plurals name="MeAndMembers">
+        <item quantity="one">Me and %d member</item>
+        <item quantity="other">Me and %d members</item>
+    </plurals>
+    <plurals name="NewMessages">
+        <item quantity="one">%d new message</item>
+        <item quantity="other">%d new messages</item>
+    </plurals>
+    <plurals name="messages">
+        <item quantity="one">%d message</item>
+        <item quantity="other">%d messages</item>
+    </plurals>
+    <plurals name="AreYouSureDeleteMessages">
+        <item quantity="one">Delete %d message? The message will also be deleted from the server.</item>
+        <item quantity="other">Delete %d messages? The messages will also be deleted from the server.</item>
+    </plurals>
+    <plurals name="NewMessagesInChats">
+        <!-- Translators: the first string placeholder "%s" gets replaced with the
+        text "%d new messages", so the complete sentence would be e.g.
+        "4 new messages in 2 chats". -->
+        <item quantity="one">%1$s in %2$d chat</item>
+        <item quantity="other">%1$s in %2$d chats</item>
+    </plurals>
+    <plurals name="Chats">
+        <item quantity="one">%d chat</item>
+        <item quantity="other">%d chats</item>
+    </plurals>
+    <plurals name="Minutes">
+        <item quantity="one">%d minute</item>
+        <item quantity="other">%d minutes</item>
+    </plurals>
+    <plurals name="Hours">
+        <item quantity="one">%d hour</item>
+        <item quantity="other">%d hours</item>
+    </plurals>
+    <plurals name="Days">
+        <item quantity="one">%d day</item>
+        <item quantity="other">%d days</item>
+    </plurals>
+    <plurals name="Weeks">
+        <item quantity="one">%d week</item>
+        <item quantity="other">%d weeks</item>
+    </plurals>
+    <plurals name="Months">
+        <item quantity="one">%d month</item>
+        <item quantity="other">%d months</item>
+    </plurals>
+    <plurals name="MaxNotifications">
+        <!-- Translators: the second string placeholder "%s" gets replaced with the
+        text "%d minutes", so the complete sentence would be e.g.
+        "At most 8 notifications within 3 minutes". -->
+        <item quantity="one">At most %1$d notification within %2$s</item>
+        <item quantity="other">At most %1$d notifications within %2$s</item>
+    </plurals>
+    <!--date formatters-->
+    <string name="formatterMonthYear">MMMM yyyy</string>
+    <string name="formatterMonth">MMM dd</string>
+    <string name="formatterYear">dd.MM.yyyy</string>
+    <string name="chatDate">EEE, MMMM d</string>
+    <string name="chatFullDate">EEE, MMMM d, yyyy</string>
+    <string name="formatterWeek">EEE</string>
+    <string name="formatterDay24H">HH:mm</string>
+    <string name="formatterDay12H">h:mm a</string>
+    <string name="formatDateAtTime">%1$s at %2$s</string>
+    <string name="AccountSettings">Account settings</string>
+    <string name="MyAccount">My account</string>
+    <string name="Yes">Yes</string>
+    <string name="No">No</string>
+    <string name="MyName">My name</string>
+    <string name="MyNameExplain">Your name, as shown to the receivers.\n\nIf you do not enter a name here, the receivers will only get your e-mail-address from the account settings.</string>
+    <string name="MyEmailAddress">My e-mail address</string>
+    <string name="Password">Password</string>
+    <string name="SmtpPassword">SMTP password</string>
+    <string name="FromAbove">From above</string>
+    <string name="SmtpLoginname">SMTP loginname</string>
+    <string name="SmtpPort">SMTP port</string>
+    <string name="Automatic">Automatic</string>
+    <string name="ImapServer">IMAP server</string>
+    <string name="ImapLoginname">IMAP loginname</string>
+    <string name="SmtpServer">SMTP server</string>
+    <string name="ImapPort">IMAP port</string>
+    <string name="InboxHeadline">Inbox</string>
+    <string name="OutboxHeadline">Outbox</string>
+    <string name="BasicSettings">Basic settings</string>
+    <string name="MyAccountExplain">For known e-mail providers, additional settings are determinated automatically.</string>
+    <string name="MyAccountExplain2" >Sometimes, <![CDATA[<b>]]>IMAP needs to be enabled<![CDATA[</b>]]> in the e-mail web frontend.\n\nOn problems, ask your e-mail provider or your friends.</string>
+    <string name="AccountNotConfigured">Account not configured</string>
+    <string name="AboutThisProgram">About Delta Chat</string>
+    <string name="NotSet">Not set</string>
+    <string name="NewChat">New chat</string>
+    <string name="Deaddrop">Mailbox</string>
+    <string name="Media">Media</string>
+    <string name="DeaddropInChatlist">Show mailbox in chatlist</string>
+    <string name="MuteAlways">Always muted</string>
+    <string name="AskStartChatWith">Start a chat with <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>?</string>
+    <string name="DeaddropHint">To start a chat, click on the reply-arrows.</string>
+    <string name="NotYetImplemented">This function is not available or incomplete.</string>
+    <string name="DefaultStatusText">Sent with my Delta Chat Messenger</string>
+    <string name="Name" >Name</string>
+    <string name="EmailAddress">E-mail address</string>
+    <string name="CannotDeleteContact">Cannot delete contacts in use, block contact instead.</string>
+    <string name="BadEmailAddress">Bad e-mail address.</string>
+    <string name="ContactCreated">Contact created.</string>
+    <string name="ViewProfile">View profile</string>
+    <!-- Translators: please use a very short string here, it should not much longer than
+    the string needed for video time+size (0:00, 12,3 Mib) -->
+    <string name="OneMoment">One moment …</string>
+    <string name="NoChatsHelp">Start messaging by pressing the new chat button in the bottom right corner or tap the menu button for more options.</string>
+    <string name="ConfiguringAccount">Configuring account …</string>
+    <string name="CannotConnect">Cannot connect, please check the configuration.</string>
+    <string name="Intro7Message"><![CDATA[<b>Delta Chat</b>]]> is safe for business use, compatible and standards-based.</string>
+    <string name="InviteMenuEntry">Send invitations</string>
+    <string name="InviteText">I\'m using Delta Chat messenger now - %1$s - you can text me at %2$s</string>
+    <string name="AdvancedSettings">Advanced settings</string>
+    <string name="AskResetNotifications" >Reset all notification settings and sounds of this page and of your contacts and groups?</string>
+    <string name="AttachFiles">Attach files</string>
+    <string name="ErrGroupNameEmpty">Please enter a name for the group.</string>
+    <string name="MsgNewGroupDraftHint">Write a first message to allow others to reply in this group.\n\n• It is okay if not all members use Delta Chat.\n\n• Delivering the first message may take a moment.</string>
+    <string name="MsgNewGroupDraft">Hello, I\'ve just created the group \"%1$s\" for us.</string>
+    <string name="MsgGroupNameChanged">Group name changed from \"%1$s\" to \"%2$s\".</string>
+    <string name="MsgGroupImageChanged">Group image changed.</string>
+    <string name="MsgMemberAddedToGroup">Member %1$s added.</string>
+    <string name="MsgMemberRemovedFromToGroup">Member %1$s removed.</string>
+    <string name="AskAddMemberToGroup">Add <![CDATA[<b>]]>%1$s<![CDATA[</b>]]> to group?</string>
+    <string name="AskRemoveMemberFromGroup">Remove <![CDATA[<b>]]>%1$s<![CDATA[</b>]]> from group?</string>
+    <string name="ErrSelfNotInGroup">You must be a member of the group to perform this action.</string>
+    <string name="MsgGroupLeft">Group left.</string>
+    <string name="NoMessagesHint">Send message to <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>:\n\n• It is okay if  <![CDATA[<b>]]>%2$s<![CDATA[</b>]]> does not use Delta Chat.\n\n• Delivering the first message may take a moment.</string>
+    <string name="SendNRcvReadReceipts">Receive and send read receipts</string>
+    <string name="E2EEncryption">End-to-end-encryption</string>
+    <string name="E2EManagePrivateKeys">Manage private keys</string>
+    <string name="E2ECompareKeys">Compare keys</string>
+    <string name="ResetContactsKey">Reset contact\'s key</string>
+    <string name="ForwardToTitle">Forward to …</string>
+    <string name="SelectContact">Choose a contact</string>
+    <string name="DoneHint">Done.</string>
+    <string name="FileNotFound">File %1$s not found.</string>
+    <string name="Error">Error: %1$s</string>
+    <string name="NoNetwork">Network not available.</string>
+    <string name="Audio">Audio</string>
+    <string name="PleaseCutVideoToMaxSize">Please cut video to a size of max. %1$s.</string>
+    <string name="PermNotificationTitle">Connected to %1$s</string>
+    <string name="PermNotificationText">Waiting for messages …</string>
+    <string name="SettingsFor">Settings for %1$s</string>
+
+</resources>

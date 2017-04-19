@@ -156,6 +156,12 @@ public class LocaleController {
         localeInfo.shortName = "hu";
         languagesDict.put(localeInfo.shortName, localeInfo);
 
+        localeInfo = new LocaleInfo();
+        localeInfo.name = "Русский";
+        localeInfo.nameEnglish = "Russian";
+        localeInfo.shortName = "ru";
+        languagesDict.put(localeInfo.shortName, localeInfo);
+
         systemDefaultLocale = Locale.getDefault(); // we have to remember this as we may switch back to default later
         is24HourFormat = DateFormat.is24HourFormat(ApplicationLoader.applicationContext);
         LocaleInfo currentInfo = null;
