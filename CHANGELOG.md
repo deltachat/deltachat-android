@@ -1,6 +1,7 @@
 # Delta Chat Changelog
 
-## UNRELEASED
+## v0.1.29
+2017-04-19
 
 * Add Russian translation
 * For outgoing (group-)messages, only use the names the receivers have set themselves
