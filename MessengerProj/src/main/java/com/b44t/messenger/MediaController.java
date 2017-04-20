@@ -2091,7 +2091,7 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
                                 PhotoEntry photoEntry = new PhotoEntry(bucketId, imageId, dateTaken, path, orientation, false);
 
                                 if (allPhotosAlbum == null) {
-                                    allPhotosAlbum = new AlbumEntry(0, LocaleController.getString("AllPhotos", R.string.AllPhotos), photoEntry, false);
+                                    allPhotosAlbum = new AlbumEntry(0, ApplicationLoader.applicationContext.getString(R.string.AllPhotos), photoEntry, false);
                                     albumsSorted.add(0, allPhotosAlbum);
                                 }
                                 if (allPhotosAlbum != null) {
@@ -2152,7 +2152,7 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
                                 PhotoEntry photoEntry = new PhotoEntry(bucketId, imageId, dateTaken, path, 0, true);
 
                                 if (allVideosAlbum == null) {
-                                    allVideosAlbum = new AlbumEntry(0, LocaleController.getString("AllVideo", R.string.AllVideo), photoEntry, true);
+                                    allVideosAlbum = new AlbumEntry(0, ApplicationLoader.applicationContext.getString(R.string.AllVideo), photoEntry, true);
                                     videoAlbumsSorted.add(0, allVideosAlbum);
                                 }
                                 if (allVideosAlbum != null) {
