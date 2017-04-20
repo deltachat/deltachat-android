@@ -29,6 +29,7 @@ package com.b44t.ui;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.os.Build;
 import android.os.PowerManager;
@@ -58,7 +59,7 @@ public class SettingsActivity extends BaseFragment {
     // the list
     private int accountHeaderRow, usernameRow, accountSettingsRow, accountShadowRow;
     private int settingsHeaderRow, privacyRow, notificationRow, backgroundRow, advRow, settingsShadowRow;
-    private int aboutHeaderRow, aboutRow, aboutShadowRow;
+    private int aboutHeaderRow, aboutRow, infoRow, aboutShadowRow;
     private int rowCount;
 
     private static final int ROWTYPE_SHADOW          = 0;
@@ -88,6 +89,7 @@ public class SettingsActivity extends BaseFragment {
 
         aboutHeaderRow     = rowCount++;
         aboutRow           = rowCount++;
+        infoRow            = rowCount++;
         aboutShadowRow     = rowCount++;
 
         return true;
@@ -144,7 +146,12 @@ public class SettingsActivity extends BaseFragment {
                 else if (i == advRow) {
                     presentFragment(new SettingsAdvActivity());
                 }
-                else if (i == aboutRow) {
+                else if (i == aboutRow ) {
+                    Intent intent2 = new Intent(getParentActivity(), IntroActivity.class);
+                    intent2.putExtra("buttonTitle", ApplicationLoader.applicationContext.getString(R.string.OK));
+                    getParentActivity().startActivity(intent2);
+                }
+                else if( i== infoRow ) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
                     builder.setTitle(ApplicationLoader.applicationContext.getString(R.string.AppName) + " v" + getVersion());
                     builder.setMessage(MrMailbox.getInfo() + "\n\n" + getAndroidInfo());
@@ -226,7 +233,7 @@ public class SettingsActivity extends BaseFragment {
         public boolean isEnabled(int i) {
             return i == usernameRow || i == accountSettingsRow ||
                     i == privacyRow || i == notificationRow || i == backgroundRow || i == advRow ||
-                    i == aboutRow;
+                    i == aboutRow || i == infoRow;
         }
 
         @Override
@@ -276,6 +283,9 @@ public class SettingsActivity extends BaseFragment {
                 else if (i == advRow) {
                     textCell.setText(ApplicationLoader.applicationContext.getString(R.string.AdvancedSettings), false);
                 }
+                else if (i == aboutRow) {
+                    textCell.setText(ApplicationLoader.applicationContext.getString(R.string.AboutThisProgram), true);
+                }
             }
             else if (type == ROWTYPE_HEADER) {
                 if (view == null) {
@@ -316,8 +326,8 @@ public class SettingsActivity extends BaseFragment {
                     }
                     textCell.setTextAndValue(LocaleController.getString("MyName", R.string.MyName), subtitle, true);
                 }
-                else if (i == aboutRow) {
-                    textCell.setTextAndValue(ApplicationLoader.applicationContext.getString(R.string.AboutThisProgram), "v" + getVersion(), false);
+                else if (i == infoRow) {
+                    textCell.setTextAndValue(ApplicationLoader.applicationContext.getString(R.string.Info), "v" + getVersion(), false);
                 }
             }
             return view;
@@ -328,7 +338,7 @@ public class SettingsActivity extends BaseFragment {
             if (i == accountShadowRow || i == settingsShadowRow || i == aboutShadowRow ) {
                 return ROWTYPE_SHADOW;
             }
-            else if ( i == accountSettingsRow || i == usernameRow || i==aboutRow ) {
+            else if ( i == accountSettingsRow || i == usernameRow || i==infoRow ) {
                 return ROWTYPE_DETAIL_SETTINGS;
             }
             else if (i == settingsHeaderRow || i == aboutHeaderRow || i == accountHeaderRow) {

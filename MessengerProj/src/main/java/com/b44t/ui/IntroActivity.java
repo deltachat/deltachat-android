@@ -50,6 +50,8 @@ import com.b44t.ui.ActionBar.Theme;
 
 import java.util.Locale;
 
+import static java.lang.Math.min;
+
 public class IntroActivity extends Activity {
 
     private ViewPager viewPager;
@@ -70,12 +72,12 @@ public class IntroActivity extends Activity {
         Theme.loadRecources(this);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
 
-        if (AndroidUtilities.isTablet()) {
-            setContentView(R.layout.intro_layout_tablet);
-        } else {
+        float heightOnLandscape = min(AndroidUtilities.displaySize.x,AndroidUtilities.displaySize.y)/AndroidUtilities.density;
+        if( heightOnLandscape < 450 ) {
             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-            setContentView(R.layout.intro_layout);
         }
+
+        setContentView(R.layout.intro_layout);
 
         if (LocaleController.isRTL) {
             icons = new int[]{
@@ -136,7 +138,14 @@ public class IntroActivity extends Activity {
         }
         viewPager = (ViewPager) findViewById(R.id.intro_view_pager);
         TextView startMessagingButton = (TextView) findViewById(R.id.start_messaging_button);
-        startMessagingButton.setText(ApplicationLoader.applicationContext.getString(R.string.IntroStartMessaging).toUpperCase(Locale.getDefault()));
+
+        String buttonTitle = ApplicationLoader.applicationContext.getString(R.string.IntroStartMessaging);
+        Bundle extras = getIntent().getExtras();
+        if( extras != null && extras.getString("buttonTitle")!=null ) {
+            buttonTitle = extras.getString("buttonTitle");
+        }
+        startMessagingButton.setText(buttonTitle);
+
         if (Build.VERSION.SDK_INT >= 21) {
             StateListAnimator animator = new StateListAnimator();
             animator.addState(new int[]{android.R.attr.state_pressed}, ObjectAnimator.ofFloat(startMessagingButton, "translationZ", AndroidUtilities.dp(2), AndroidUtilities.dp(4)).setDuration(200));
