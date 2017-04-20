@@ -330,15 +330,21 @@ public class AndroidUtilities {
     }
 
     public static boolean isTablet() {
+        /* -- we do not make any special for tablet or not. _If_ sth. like this is desired, check for an appropriate screen size.
         if (isTablet == null) {
             isTablet = ApplicationLoader.applicationContext.getResources().getBoolean(R.bool.isTablet);
         }
         return isTablet;
+        */
+        return false;
     }
 
     public static boolean isSmallTablet() {
+        /*
         float minSide = Math.min(displaySize.x, displaySize.y) / density;
         return minSide <= 700;
+        */
+        return false;
     }
 
     public static int getMinTabletSide() {
