@@ -41,7 +41,6 @@ import android.media.AudioManager;
 import android.os.Build;
 import android.os.PowerManager;
 import android.os.SystemClock;
-import android.support.v7.widget.AppCompatEditText;
 import android.text.Editable;
 import android.text.SpannableStringBuilder;
 import android.text.TextWatcher;
@@ -55,6 +54,7 @@ import android.view.ViewGroup;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.DecelerateInterpolator;
 import android.view.inputmethod.EditorInfo;
+import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -148,7 +148,7 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
         }
     }
 
-    private class EditTextCaption extends AppCompatEditText {
+    private class EditTextCaption extends EditText {
 
         private Object editor;
         private Field editorField;
