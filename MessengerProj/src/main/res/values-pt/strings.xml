@@ -397,6 +397,6 @@
     <string name="ForwardToTitle">Selecione um Chat …</string>
     <string name="DoneHint">Concluído.</string>
     <string name="PermNotificationText">Conecção de fundo ligada</string>
-    <string name="PermNotificationTitle">Delta Chat</string>
+    <string name="PermNotificationTitle"></string>
 </resources>
 
