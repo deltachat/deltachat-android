@@ -100,7 +100,7 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
 
     public void sendMessageContact(int contact_id, int dialog_id) {
         MrContact contact = MrMailbox.getContact(contact_id);
-        String msg = contact.getName();
+        String msg = contact.getAuthName();
         if(msg.isEmpty()) {
             msg = contact.getAddr();
         }

@@ -924,6 +924,20 @@ JNIEXPORT jint Java_com_b44t_messenger_MrMsg_isIncreation(JNIEnv *env, jobject o
  ******************************************************************************/
 
 
+static mrcontact_t* get_mrcontact_t(JNIEnv *env, jobject obj)
+{
+	static jfieldID fid = 0;
+	if( fid == 0 ) {
+		jclass cls = (*env)->GetObjectClass(env, obj);
+		fid = (*env)->GetFieldID(env, cls, "m_hContact", "J" /*Signature, J=long*/);
+	}
+	if( fid ) {
+		return (mrcontact_t*)(*env)->GetLongField(env, obj, fid);
+	}
+	return NULL;
+}
+
+
 JNIEXPORT void Java_com_b44t_messenger_MrContact_MrContactUnref(JNIEnv *env, jclass c, jlong hContact)
 {
 	mrcontact_unref((mrcontact_t*)hContact);
@@ -934,6 +948,13 @@ JNIEXPORT jstring Java_com_b44t_messenger_MrContact_MrContactGetName(JNIEnv *env
 {
 	mrcontact_t* ths = (mrcontact_t*)hContact; if( ths == NULL ) { return JSTRING_NEW(NULL); }
 	return JSTRING_NEW(ths->m_name);
+}
+
+
+JNIEXPORT jstring Java_com_b44t_messenger_MrContact_getAuthName(JNIEnv *env, jclass cls)
+{
+	mrcontact_t* ths = get_mrcontact_t(env, cls); if( ths == NULL ) { return JSTRING_NEW(NULL); }
+	return JSTRING_NEW(ths->m_authname);
 }
 
 
