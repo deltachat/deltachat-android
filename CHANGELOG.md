@@ -3,6 +3,7 @@
 ## UNRELEASED
 
 * Update Spanish translation
+* Update internal sqlite library to version 3.18.0, released on 2017-03-28
 
 ## v0.1.29
 2017-04-19
