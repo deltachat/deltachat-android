@@ -425,6 +425,6 @@
     <string name="DoneHint">Kész.</string>
     <string name="FileNotFound">%1$s fájl nem található.</string>
     <string name="PermNotificationText">Háttérkapcsolat engedélyezve</string>
-    <string name="PermNotificationTitle">Delta Chat</string>
+    <string name="PermNotificationTitle"></string>
 
 </resources>

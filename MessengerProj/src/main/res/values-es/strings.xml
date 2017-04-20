@@ -434,7 +434,7 @@
     <string name="NoNetwork">Red no disponible.</string>
     <string name="Audio">Sonido</string>
     <string name="PleaseCutVideoToMaxSize">Reduzca el tamaño del vídeo hasta un máximo de %1$s, por favor.</string>
-    <string name="PermNotificationTitle">Delta Chat</string>
+    <string name="PermNotificationTitle"></string>
     <string name="PermNotificationText">Conexión en segundo plano habilitada</string>
     <string name="SettingsFor">Ajustes para %1$s</string>
 

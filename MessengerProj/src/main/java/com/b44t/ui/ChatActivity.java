@@ -377,7 +377,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
     }
 
     @Override
-    public View createView(Context context) {
+    public View createView(final Context context) {
 
         selectedMessagesIds.clear();
 
@@ -430,8 +430,8 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 {
                     Bundle args = new Bundle();
                     args.putBoolean("onlySelect", true);
-                    args.putString("onlySelectTitle", LocaleController.getString("ForwardToTitle", R.string.ForwardToTitle));
-                    args.putString("selectAlertString", LocaleController.getString("ForwardMessagesTo", R.string.ForwardMessagesTo));
+                    args.putString("onlySelectTitle", context.getString(R.string.ForwardToTitle));
+                    args.putString("selectAlertString", context.getString(R.string.ForwardMessagesTo));
                     DialogsActivity fragment = new DialogsActivity(args);
                     fragment.setDelegate(ChatActivity.this);
                     presentFragment(fragment); // this results in a call to didSelectDialog()
@@ -445,8 +445,8 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     }
 
                     AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
-                    builder.setMessage(LocaleController.getString("AreYouSureDeleteThisChat", R.string.AreYouSureDeleteThisChat));
-                    builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), new DialogInterface.OnClickListener() {
+                    builder.setMessage(context.getString(R.string.AreYouSureDeleteThisChat));
+                    builder.setPositiveButton(context.getString(R.string.OK), new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
                             if( MrMailbox.deleteChat((int)dialog_id)!=0 ) {
@@ -458,7 +458,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                             }
                         }
                     });
-                    builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
+                    builder.setNegativeButton(context.getString(R.string.Cancel), null);
                     showDialog(builder.create());
                 } else if (id == ID_MUTE) {
                     toggleMute();
@@ -477,7 +477,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     String info_str = MrMailbox.getMsgInfo(getFirstSelectedId());
                     AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
                     builder.setMessage(info_str);
-                    builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), new DialogInterface.OnClickListener() {
+                    builder.setPositiveButton(context.getString(R.string.OK), new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
                             ;
@@ -571,13 +571,13 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 handleSearch(SEARCH_DOWN, null);
             }
         });
-        searchItem.getSearchField().setHint(LocaleController.getString("Search", R.string.Search));
+        searchItem.getSearchField().setHint(context.getString(R.string.Search));
         searchItem.setVisibility(View.GONE);
 
 
         headerItem = menu.addItem(0, R.drawable.ic_ab_other);
         if (searchItem != null) {
-            headerItem.addSubItem(ID_SEARCH, ApplicationLoader.applicationContext.getString(R.string.Search), 0);
+            headerItem.addSubItem(ID_SEARCH, context.getString(R.string.Search), 0);
         }
 
         boolean isChatWithDeaddrop = m_mrChat.getId()==MrChat.MR_CHAT_ID_DEADDROP;
@@ -591,8 +591,8 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         }
 
         if( !isChatWithDeaddrop ) {
-            headerItem.addSubItem(ID_ATTACH, ApplicationLoader.applicationContext.getString(R.string.AttachFiles), 0); // "Attach" means "Attach to chat", not "Attach to message" (which is not possible)
-            headerItem.addSubItem(ID_DELETE_CHAT, ApplicationLoader.applicationContext.getString(R.string.DeleteChat), 0);
+            headerItem.addSubItem(ID_ATTACH, context.getString(R.string.AttachFiles), 0); // "Attach" means "Attach to chat", not "Attach to message" (which is not possible)
+            headerItem.addSubItem(ID_DELETE_CHAT, context.getString(R.string.DeleteChat), 0);
         }
 
         updateTitle();
@@ -665,7 +665,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         actionModeTextView = new SimpleTextView(context);
         actionModeTextView.setTextSize(18);
         actionModeTextView.setTextColor(Theme.ACTION_BAR_ACTION_MODE_TEXT_COLOR);
-        actionModeTextView.setText(LocaleController.getString("Edit", R.string.Edit));
+        actionModeTextView.setText(context.getString(R.string.Edit));
         actionModeTitleContainer.addView(actionModeTextView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.MATCH_PARENT));
 
         actionModeSubTextView = new SimpleTextView(context);
@@ -676,13 +676,13 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         actionModeViews.add(actionMode.addItem(ID_FORWARD, R.drawable.ic_ab_fwd_forward, Theme.ACTION_BAR_MODE_SELECTOR_COLOR, null, AndroidUtilities.dp(54)));
         ActionBarMenuItem submenu = actionMode.addItem(0, R.drawable.ic_ab_other_grey);
             if( isChatWithDeaddrop ) {
-                m_replyMenuItem = submenu.addSubItem(ID_REPLY, ApplicationLoader.applicationContext.getString(R.string.Reply), 0);
+                m_replyMenuItem = submenu.addSubItem(ID_REPLY, context.getString(R.string.Reply), 0);
             }
-            submenu.addSubItem(ID_COPY, ApplicationLoader.applicationContext.getString(R.string.CopyToClipboard), 0);
+            submenu.addSubItem(ID_COPY, context.getString(R.string.CopyToClipboard), 0);
             m_saveToXXMenuItem = submenu.addSubItem(ID_SAVE_TO_XX, "", 0);
-            m_openMenuItem = submenu.addSubItem(ID_OPEN, ApplicationLoader.applicationContext.getString(R.string.Open), 0);
-            m_shareMenuItem = submenu.addSubItem(ID_SHARE, ApplicationLoader.applicationContext.getString(R.string.Share), 0);
-            m_infoMenuItem = submenu.addSubItem(ID_INFO, ApplicationLoader.applicationContext.getString(R.string.Info), 0);
+            m_openMenuItem = submenu.addSubItem(ID_OPEN, context.getString(R.string.Open), 0);
+            m_shareMenuItem = submenu.addSubItem(ID_SHARE, context.getString(R.string.Share), 0);
+            m_infoMenuItem = submenu.addSubItem(ID_INFO, context.getString(R.string.Info), 0);
         actionModeViews.add(submenu);
         checkActionBarMenu();
 
@@ -820,7 +820,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
             TextView emptyView = new TextView(context);
 
             if( m_mrChat.getParamInt(MrChat.MR_CHAT_PARAM_UNPROMOTED, 0)==1 ) {
-                emptyView.setText(LocaleController.getString("MsgNewGroupDraftHint", R.string.MsgNewGroupDraftHint));
+                emptyView.setText(context.getString(R.string.MsgNewGroupDraftHint));
                 emptyView.setGravity(Gravity.LEFT);
             }
             else if( m_mrChat.getType()==MrChat.MR_CHAT_NORMAL ){
@@ -829,7 +829,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 emptyView.setGravity(Gravity.LEFT);
             }
             else {
-                emptyView.setText(LocaleController.getString("NoMessages", R.string.NoMessages));
+                emptyView.setText(context.getString(R.string.NoMessages));
                 emptyView.setGravity(Gravity.CENTER);
             }
 
@@ -1368,7 +1368,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     ProfileNotificationsActivity.muteForString(   60*60),
                     ProfileNotificationsActivity.muteForString( 8*60*60),
                     ProfileNotificationsActivity.muteForString(48*60*60),
-                    LocaleController.getString("MuteAlways", R.string.MuteAlways)
+                    ApplicationLoader.applicationContext.getString(R.string.MuteAlways)
             };
             builder.setItems(items, new DialogInterface.OnClickListener() {
                         @Override
@@ -1434,7 +1434,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
 
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
-        builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), new DialogInterface.OnClickListener() {
+        builder.setPositiveButton(context.getString(R.string.OK), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 int chatId = MrMailbox.createChatByContactId(fromId);
@@ -1448,7 +1448,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 }
             }
         });
-        builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
+        builder.setNegativeButton(context.getString(R.string.Cancel), null);
         builder.setMessage(AndroidUtilities.replaceTags(LocaleController.formatString("AskStartChatWith", R.string.AskStartChatWith, name)));
         showDialog(builder.create());
     }
@@ -1623,9 +1623,9 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         avatarContainer.setTitleIcons(0, rightIcon);
         if( muteMenuEntry != null ) {
             if (rightIcon != 0) {
-                muteMenuEntry.setText(LocaleController.getString("UnmuteNotifications", R.string.UnmuteNotifications));
+                muteMenuEntry.setText(ApplicationLoader.applicationContext.getString(R.string.UnmuteNotifications));
             } else {
-                muteMenuEntry.setText(LocaleController.getString("MuteNotifications", R.string.MuteNotifications));
+                muteMenuEntry.setText(ApplicationLoader.applicationContext.getString(R.string.MuteNotifications));
             }
         }
     }
@@ -2138,9 +2138,9 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
             if (m_mrChat.getId()==MrChat.MR_CHAT_ID_DEADDROP) {
                 if( m_msglist.length==0 ) {
                     // showing the DeaddropHint if there are no messages is confusing (there are no "reply arrows" in this case)
-                    bottomOverlayChatText.setText(LocaleController.getString("NoMessages", R.string.NoMessages));
+                    bottomOverlayChatText.setText(ApplicationLoader.applicationContext.getString(R.string.NoMessages));
                 } else {
-                    bottomOverlayChatText.setText(LocaleController.getString("DeaddropHint", R.string.DeaddropHint));
+                    bottomOverlayChatText.setText(ApplicationLoader.applicationContext.getString(R.string.DeaddropHint));
                 }
                 bottomOverlayChat.setVisibility(View.VISIBLE);
                 chatActivityEnterView.setVisibility(View.INVISIBLE);
@@ -2319,7 +2319,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
     private void createDeleteMessagesAlert() {
         AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
         builder.setMessage(ApplicationLoader.applicationContext.getResources().getQuantityString(R.plurals.AreYouSureDeleteMessages, selectedMessagesIds.size(), selectedMessagesIds.size()));
-        builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), new DialogInterface.OnClickListener() {
+        builder.setPositiveButton(ApplicationLoader.applicationContext.getString(R.string.OK), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
 
@@ -2340,7 +2340,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 NotificationCenter.getInstance().postNotificationName(NotificationCenter.dialogsNeedReload);
             }
         });
-        builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
+        builder.setNegativeButton(ApplicationLoader.applicationContext.getString(R.string.Cancel), null);
         showDialog(builder.create());
     }
 
@@ -2670,13 +2670,13 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                             if( isMailto )
                             {
                                 AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
-                                builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), new DialogInterface.OnClickListener() {
+                                builder.setPositiveButton(mContext.getString(R.string.OK), new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialogInterface, int i) {
                                     createChat(urlFinal);
                                     }
                                 });
-                                builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
+                                builder.setNegativeButton(mContext.getString(R.string.Cancel), null);
                                 builder.setMessage(AndroidUtilities.replaceTags(LocaleController.formatString("AskStartChatWith", R.string.AskStartChatWith, urlTitle)));
                                 showDialog(builder.create());
                             }

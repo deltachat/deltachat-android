@@ -252,45 +252,33 @@
     <string name="IntroStartMessaging">시작하기</string>
     <!--plural-->
     <plurals name="Members">
-        <item quantity="one">대화상대 %1$d명</item>
         <item quantity="other">대화상대 %1$d명</item>
     </plurals>
     <plurals name="Contacts">
-        <item quantity="one">%1$d명의 대화상대</item>
         <item quantity="other">%1$d명의 대화상대</item>
     </plurals>
     <plurals name="MeAndMembers">
-        <item quantity="one">%1$d명의 대화상대</item>
         <item quantity="other">%1$d명의 대화상대</item>
     </plurals>
     <plurals name="NewMessages">
-    	<item quantity="zero">새 메시지 없음</item>
-        <item quantity="one">새 메시지 %1$d건</item>
         <item quantity="other">새 메시지 %1$d건</item>
     </plurals>
     <plurals name="messages">
-        <item quantity="zero">새 메시지 없음</item>
-        <item quantity="one">새 메시지 %1$d건</item>
         <item quantity="other">새 메시지 %1$d건</item>
     </plurals>
     <plurals name="Minutes">
-        <item quantity="one">%1$d분</item>
         <item quantity="other">%1$d분</item>
     </plurals>
     <plurals name="Hours">
-        <item quantity="one">%1$d시간</item>
         <item quantity="other">%1$d시간</item>
     </plurals>
     <plurals name="Days">
-        <item quantity="one">%1$d일</item>
         <item quantity="other">%1$d일</item>
     </plurals>
     <plurals name="Weeks">
-        <item quantity="one">%1$d주</item>
         <item quantity="other">%1$d주</item>
     </plurals>
     <plurals name="Months">
-        <item quantity="one">%1$d개월</item>
         <item quantity="other">%1$d개월</item>
     </plurals>
     <!--date formatters-->
