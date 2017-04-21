@@ -63,11 +63,11 @@ import android.widget.Toast;
 
 import com.b44t.messenger.AndroidUtilities;
 import com.b44t.messenger.ImageLoader;
+import com.b44t.messenger.LocaleController;
 import com.b44t.messenger.MrContact;
 import com.b44t.messenger.MrMailbox;
 import com.b44t.messenger.ApplicationLoader;
 import com.b44t.messenger.FileLoader;
-import com.b44t.messenger.LocaleController;
 import com.b44t.messenger.MediaController;
 import com.b44t.messenger.NotificationCenter;
 import com.b44t.messenger.R;
@@ -941,10 +941,10 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
                     switchToEditMode(2);
                 }
                 else if (id == gallery_menu_forward) {
-                    Toast.makeText(parentActivity, LocaleController.getString("NotYetImplemented", R.string.NotYetImplemented), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(parentActivity, ApplicationLoader.applicationContext.getString(R.string.NotYetImplemented), Toast.LENGTH_SHORT).show();
                 }
                 else if (id == gallery_menu_delete) {
-                    Toast.makeText(parentActivity, LocaleController.getString("NotYetImplemented", R.string.NotYetImplemented), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(parentActivity, ApplicationLoader.applicationContext.getString(R.string.NotYetImplemented), Toast.LENGTH_SHORT).show();
                     /*
                     if (parentActivity == null) {
                         return;
@@ -1916,7 +1916,7 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
                 });
             }
 
-            editorDoneLayout.doneButtonTextView.setText(LocaleController.getString("Crop", R.string.Crop));
+            editorDoneLayout.doneButtonTextView.setText(ApplicationLoader.applicationContext.getString(R.string.Crop));
             changeModeAnimation = new AnimatorSet();
             ArrayList<Animator> arrayList = new ArrayList<>();
             arrayList.add(ObjectAnimator.ofFloat(pickerView, "translationY", 0, AndroidUtilities.dp(96)));
@@ -2011,14 +2011,14 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
                                 return;
                             }
                             AlertDialog.Builder builder = new AlertDialog.Builder(parentActivity);
-                            builder.setMessage(LocaleController.getString("DiscardChanges", R.string.DiscardChanges));
-                            builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), new DialogInterface.OnClickListener() {
+                            builder.setMessage(ApplicationLoader.applicationContext.getString(R.string.DiscardChanges));
+                            builder.setPositiveButton(ApplicationLoader.applicationContext.getString(R.string.OK), new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialogInterface, int i) {
                                     switchToEditMode(0);
                                 }
                             });
-                            builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
+                            builder.setNegativeButton(ApplicationLoader.applicationContext.getString(R.string.Cancel), null);
                             showAlertDialog(builder);
                         } else {
                             switchToEditMode(0);
@@ -2489,7 +2489,7 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
             if (currentAnimation != null) {
                 menuItem.hideSubItem(gallery_menu_save);
                 menuItem.hideSubItem(gallery_menu_share);
-                actionBar.setTitle(LocaleController.getString("AttachGif", R.string.AttachGif));
+                actionBar.setTitle(ApplicationLoader.applicationContext.getString(R.string.AttachGif));
             } else {
                 if (totalImagesCount + totalImagesCountMerge != 0 && !needSearchImageInArr) {
                     if (opennedFromMedia) {
@@ -2562,7 +2562,7 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
                 }
             }
             if (fromCamera) {
-                actionBar.setTitle(LocaleController.getString("AttachPhoto", R.string.AttachPhoto));
+                actionBar.setTitle(ApplicationLoader.applicationContext.getString(R.string.AttachPhoto));
             } else {
                 actionBar.setTitle(LocaleController.formatString("Of", R.string.Of, currentIndex + 1, imagesArrLocals.size()));
             }
@@ -2881,7 +2881,7 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
     public void openPhotoForSelect(final ArrayList<Object> photos, final int index, int type, final PhotoViewerProvider provider, ChatActivity chatActivity) {
         sendPhotoType = type;
         if (pickerView != null) {
-            pickerView.doneButtonTextView.setText(sendPhotoType == 1 ? LocaleController.getString("Set", R.string.Set).toUpperCase() : LocaleController.getString("Send", R.string.Send).toUpperCase());
+            pickerView.doneButtonTextView.setText(sendPhotoType == 1 ? ApplicationLoader.applicationContext.getString(R.string.Set).toUpperCase() : ApplicationLoader.applicationContext.getString(R.string.Send).toUpperCase());
         }
         openPhoto(null, null, null, photos, index, provider, chatActivity, 0);
     }
