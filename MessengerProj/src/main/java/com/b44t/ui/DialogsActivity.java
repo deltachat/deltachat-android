@@ -806,7 +806,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
             MrChat mrChat = MrMailbox.getChat((int)dialog_id);
 
             builder.setMessage(AndroidUtilities.replaceTags(
-                    LocaleController.formatStringSimple(selectAlertString, mrChat.getNameNAddr()) // display addr as there may be contacts with the same name but different addresses
+                    String.format(selectAlertString, mrChat.getNameNAddr()) // display addr as there may be contacts with the same name but different addresses
                 +   (selectAlertPreviewString==null? "" : ("\n\n<c#808080>"+selectAlertPreviewString+"</c>"))));
 
             builder.setPositiveButton(selectAlertOkButtonString!=null? selectAlertOkButtonString : ApplicationLoader.applicationContext.getString(R.string.OK), new DialogInterface.OnClickListener() {
