@@ -90,7 +90,7 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/bottom_pages"
+            android:id="@+id/button_area"
             android:orientation="horizontal"
             android:gravity="center"
             android:layout_gravity="center_horizontal"
