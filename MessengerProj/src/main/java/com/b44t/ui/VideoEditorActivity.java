@@ -231,7 +231,7 @@ public class VideoEditorActivity extends BaseFragment implements TextureView.Sur
     }
 
     @Override
-    public View createView(Context context) {
+    public View createView(final Context context) {
         actionBar.setBackButtonImage(R.drawable.ic_close_white);
         actionBar.setTitle(ApplicationLoader.applicationContext.getString(R.string.SendVideo));
         actionBar.setActionBarMenuOnItemClick(new ActionBar.ActionBarMenuOnItemClick() {
@@ -253,7 +253,7 @@ public class VideoEditorActivity extends BaseFragment implements TextureView.Sur
                     }
 
                     if(estimatedBytes>MAX_BYTES) {
-                        AndroidUtilities.showHint(getParentActivity(), LocaleController.formatString("", R.string.PleaseCutVideoToMaxSize, AndroidUtilities.formatFileSize(MAX_BYTES)));
+                        AndroidUtilities.showHint(getParentActivity(), String.format(context.getString(R.string.PleaseCutVideoToMaxSize), AndroidUtilities.formatFileSize(MAX_BYTES)));
                         return;
                     }
 

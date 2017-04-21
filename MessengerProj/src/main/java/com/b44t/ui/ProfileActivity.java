@@ -430,7 +430,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                         }
                     });
                     builder.setNegativeButton(context.getString(R.string.Cancel), null);
-                    builder.setMessage(AndroidUtilities.replaceTags(LocaleController.formatString("AskStartChatWith", R.string.AskStartChatWith, name)));
+                    builder.setMessage(AndroidUtilities.replaceTags(String.format(context.getString(R.string.AskStartChatWith), name)));
                     showDialog(builder.create());
                 }
                 else if (position == addMemberRow)
@@ -456,7 +456,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                                 });
                                 builder.setNegativeButton(context.getString(R.string.Cancel), null);
                                 String name = MrMailbox.getContact(added_user_id).getDisplayName();
-                                builder.setMessage(AndroidUtilities.replaceTags(LocaleController.formatString("AskAddMemberToGroup", R.string.AskAddMemberToGroup, name)));
+                                builder.setMessage(AndroidUtilities.replaceTags(String.format(context.getString(R.string.AskAddMemberToGroup), name)));
                                 showDialog(builder.create());
                             }
                         }
@@ -503,7 +503,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                                 });
                                 builder.setNegativeButton(context.getString(R.string.Cancel), null);
                                 String name = MrMailbox.getContact(curr_user_id).getDisplayName();
-                                builder.setMessage(AndroidUtilities.replaceTags(LocaleController.formatString("AskRemoveMemberFromGroup", R.string.AskRemoveMemberFromGroup, name)));
+                                builder.setMessage(AndroidUtilities.replaceTags(String.format(context.getString(R.string.AskRemoveMemberFromGroup), name)));
                                 showDialog(builder.create());
                             }
                         });

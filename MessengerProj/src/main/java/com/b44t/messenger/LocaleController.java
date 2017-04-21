@@ -291,20 +291,6 @@ public class LocaleController {
         }
     }
 
-    public static String formatString(String key, int res, Object... args) {
-        try {
-            String value = ApplicationLoader.applicationContext.getString(res);
-            if (getInstance().currentLocale != null) {
-                return String.format(getInstance().currentLocale, value, args);
-            } else {
-                return String.format(value, args);
-            }
-        } catch (Exception e) {
-
-            return "LOC_ERR: " + key;
-        }
-    }
-
     public static String formatStringSimple(String string, Object... args) {
         try {
             if (getInstance().currentLocale != null) {

@@ -442,7 +442,7 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
                             }
                         });
                         builder.setNegativeButton(context.getString(R.string.Cancel), null);
-                        builder.setMessage(AndroidUtilities.replaceTags(LocaleController.formatString("AskStartChatWith", R.string.AskStartChatWith, name)));
+                        builder.setMessage(AndroidUtilities.replaceTags(String.format(context.getString(R.string.AskStartChatWith), name)));
                         showDialog(builder.create());
                     }
                     else if( do_what == SELECT_CONTACTS_FOR_NEW_GROUP ) {

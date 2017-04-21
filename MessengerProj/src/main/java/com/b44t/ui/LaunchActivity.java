@@ -799,7 +799,7 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                 }
             });
             builder.setNegativeButton(ApplicationLoader.applicationContext.getString(R.string.Cancel), null);
-            builder.setMessage(AndroidUtilities.replaceTags(LocaleController.formatString("AskStartChatWith", R.string.AskStartChatWith, createChatWith)));
+            builder.setMessage(AndroidUtilities.replaceTags(String.format(ApplicationLoader.applicationContext.getString(R.string.AskStartChatWith), createChatWith)));
             builder.show();
         }
         else if (push_chat_id != 0)

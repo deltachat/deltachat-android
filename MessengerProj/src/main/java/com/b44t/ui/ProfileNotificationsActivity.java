@@ -122,7 +122,7 @@ public class ProfileNotificationsActivity extends BaseFragment implements Notifi
     public View createView(final Context context) {
         actionBar.setBackButtonImage(R.drawable.ic_ab_back);
         actionBar.setAllowOverlayTitle(true);
-        actionBar.setTitle(LocaleController.formatString("", R.string.SettingsFor, m_mrChat.getName()));
+        actionBar.setTitle(String.format(context.getString(R.string.SettingsFor), m_mrChat.getName()));
         actionBar.setActionBarMenuOnItemClick(new ActionBar.ActionBarMenuOnItemClick() {
             @Override
             public void onItemClick(int id) {
@@ -502,7 +502,7 @@ public class ProfileNotificationsActivity extends BaseFragment implements Notifi
         } else {
             val = ApplicationLoader.applicationContext.getResources().getQuantityString(R.plurals.Days, (int) Math.ceil(seconds / 60.0f / 60 / 24), (int) Math.ceil(seconds / 60.0f / 60 / 24));
         }
-        return LocaleController.formatString("", R.string.MuteFor, val);
+        return String.format(ApplicationLoader.applicationContext.getString(R.string.MuteFor), val);
     }
 
     private class ListAdapter extends BaseFragmentAdapter {

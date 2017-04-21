@@ -617,7 +617,7 @@ public class DocumentSelectActivity extends BaseFragment {
             if (total == 0) {
                 return "";
             }
-            return LocaleController.formatString("FreeOfTotal", R.string.FreeOfTotal, AndroidUtilities.formatFileSize(free), AndroidUtilities.formatFileSize(total));
+            return String.format(ApplicationLoader.applicationContext.getString(R.string.FreeOfTotal), AndroidUtilities.formatFileSize(free), AndroidUtilities.formatFileSize(total));
         } catch (Exception e) {
 
         }

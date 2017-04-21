@@ -672,7 +672,7 @@ public class PasscodeActivity extends BaseFragment implements NotificationCenter
                 } else if (i == autoLockRow) {
                     String val;
                     if (UserConfig.autoLockIn == 0) {
-                        val = LocaleController.formatString("Disabled", R.string.Disabled);
+                        val = mContext.getString(R.string.Disabled);
                     } else if (UserConfig.autoLockIn < 60 * 60) {
                         val = mContext.getResources().getQuantityString(R.plurals.Minutes, UserConfig.autoLockIn / 60, UserConfig.autoLockIn / 60);
                     } else if (UserConfig.autoLockIn < 60 * 60 * 24) {

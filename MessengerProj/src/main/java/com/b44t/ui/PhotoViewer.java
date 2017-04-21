@@ -703,9 +703,9 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
                     //SharedMediaQuery.loadMedia(currentDialogId, 0, 80, 0, SharedMediaQuery.MEDIA_PHOTOVIDEO, true, classGuid);
                 } else if (!imagesArr.isEmpty()) {
                     if (opennedFromMedia) {
-                        actionBar.setTitle(LocaleController.formatString("Of", R.string.Of, currentIndex + 1, totalImagesCount + totalImagesCountMerge));
+                        actionBar.setTitle(String.format(ApplicationLoader.applicationContext.getString(R.string.Of), currentIndex + 1, totalImagesCount + totalImagesCountMerge));
                     } else {
-                        actionBar.setTitle(LocaleController.formatString("Of", R.string.Of, (totalImagesCount + totalImagesCountMerge - imagesArr.size()) + currentIndex + 1, totalImagesCount + totalImagesCountMerge));
+                        actionBar.setTitle(String.format(ApplicationLoader.applicationContext.getString(R.string.Of), (totalImagesCount + totalImagesCountMerge - imagesArr.size()) + currentIndex + 1, totalImagesCount + totalImagesCountMerge));
                     }
                 }
             }
@@ -906,7 +906,7 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
         actionBar.setOccupyStatusBar(false);
         actionBar.setItemsBackgroundColor(Theme.ACTION_BAR_WHITE_SELECTOR_COLOR);
         actionBar.setBackButtonImage(R.drawable.ic_ab_back);
-        actionBar.setTitle(LocaleController.formatString("Of", R.string.Of, 1, 1));
+        actionBar.setTitle(String.format(ApplicationLoader.applicationContext.getString(R.string.Of), 1, 1));
         containerView.addView(actionBar, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT));
 
         actionBar.setActionBarMenuOnItemClick(new ActionBar.ActionBarMenuOnItemClick() {
@@ -2477,7 +2477,7 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
             */
 
             long date = (long) currentMessageObject.messageOwner.date * 1000;
-            String dateString = LocaleController.formatString("formatDateAtTime", R.string.formatDateAtTime, LocaleController.getInstance().formatterYear.format(new Date(date)), LocaleController.getInstance().formatterDay.format(new Date(date)));
+            String dateString = String.format(ApplicationLoader.applicationContext.getString(R.string.formatDateAtTime), LocaleController.getInstance().formatterYear.format(new Date(date)), LocaleController.getInstance().formatterDay.format(new Date(date)));
             if (currentFileNames[0] != null && isVideo) {
                 dateTextView.setText(String.format("%s (%s)", dateString, AndroidUtilities.formatFileSize(currentMessageObject.getDocument().size)));
             } else {
@@ -2506,7 +2506,7 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
                             //SharedMediaQuery.loadMedia(loadIndex == 0 ? currentDialogId : mergeDialogId, 0, 80, loadFromMaxId, SharedMediaQuery.MEDIA_PHOTOVIDEO, true, classGuid);
                             loadingMoreImages = true;
                         }
-                        actionBar.setTitle(LocaleController.formatString("Of", R.string.Of, currentIndex + 1, totalImagesCount + totalImagesCountMerge));
+                        actionBar.setTitle(String.format(ApplicationLoader.applicationContext.getString(R.string.Of), currentIndex + 1, totalImagesCount + totalImagesCountMerge));
                     } else {
                         if (imagesArr.size() < totalImagesCount + totalImagesCountMerge && !loadingMoreImages && currentIndex < 5) {
                             int loadFromMaxId = imagesArr.isEmpty() ? 0 : imagesArr.get(0).getId();
@@ -2521,7 +2521,7 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
                             //SharedMediaQuery.loadMedia(loadIndex == 0 ? currentDialogId : mergeDialogId, 0, 80, loadFromMaxId, SharedMediaQuery.MEDIA_PHOTOVIDEO, true, classGuid);
                             loadingMoreImages = true;
                         }
-                        actionBar.setTitle(LocaleController.formatString("Of", R.string.Of, (totalImagesCount + totalImagesCountMerge - imagesArr.size()) + currentIndex + 1, totalImagesCount + totalImagesCountMerge));
+                        actionBar.setTitle(String.format(ApplicationLoader.applicationContext.getString(R.string.Of), (totalImagesCount + totalImagesCountMerge - imagesArr.size()) + currentIndex + 1, totalImagesCount + totalImagesCountMerge));
                     }
                 }
 
@@ -2540,7 +2540,7 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
             if (old != null && currentFileLocation != null && old.local_id == currentFileLocation.local_id && old.volume_id == currentFileLocation.volume_id) {
                 sameImage = true;
             }
-            actionBar.setTitle(LocaleController.formatString("Of", R.string.Of, currentIndex + 1, imagesArrLocations.size()));
+            actionBar.setTitle(String.format(ApplicationLoader.applicationContext.getString(R.string.Of), currentIndex + 1, imagesArrLocations.size()));
             menuItem.showSubItem(gallery_menu_save);
             menuItem.showSubItem(gallery_menu_share);
         } else if (!imagesArrLocals.isEmpty()) {
@@ -2564,7 +2564,7 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
             if (fromCamera) {
                 actionBar.setTitle(ApplicationLoader.applicationContext.getString(R.string.AttachPhoto));
             } else {
-                actionBar.setTitle(LocaleController.formatString("Of", R.string.Of, currentIndex + 1, imagesArrLocals.size()));
+                actionBar.setTitle(String.format(ApplicationLoader.applicationContext.getString(R.string.Of), currentIndex + 1, imagesArrLocals.size()));
             }
             if (sendPhotoType == 0) {
                 checkImageView.setChecked(placeProvider.isPhotoChecked(currentIndex), false);
@@ -2932,7 +2932,7 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
 
         parentChatActivity = chatActivity;
 
-        actionBar.setTitle(LocaleController.formatString("Of", R.string.Of, 1, 1));
+        actionBar.setTitle(String.format(ApplicationLoader.applicationContext.getString(R.string.Of), 1, 1));
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.mediaCountDidLoaded);
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.mediaDidLoaded);
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.emojiDidLoaded);
