@@ -36,7 +36,6 @@ import android.widget.Toast;
 
 import com.b44t.messenger.AndroidUtilities;
 import com.b44t.messenger.ApplicationLoader;
-import com.b44t.messenger.LocaleController;
 import com.b44t.messenger.R;
 import com.b44t.ui.ActionBar.ActionBar;
 import com.b44t.ui.ActionBar.BaseFragment;
@@ -77,7 +76,7 @@ public class CacheControlActivity extends BaseFragment {
     public View createView(final Context context) {
         actionBar.setBackButtonImage(R.drawable.ic_ab_back);
         actionBar.setAllowOverlayTitle(true);
-        actionBar.setTitle(LocaleController.getString("CacheSettings", R.string.CacheSettings));
+        actionBar.setTitle(context.getString(R.string.CacheSettings));
         actionBar.setActionBarMenuOnItemClick(new ActionBar.ActionBarMenuOnItemClick() {
             @Override
             public void onItemClick(int id) {
@@ -104,7 +103,7 @@ public class CacheControlActivity extends BaseFragment {
             public void onItemClick(final AdapterView<?> adapterView, View view, final int i, long l) {
                 if (i == rowKeepMediaSetting) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
-                    builder.setItems(new CharSequence[]{context.getResources().getQuantityString(R.plurals.Weeks, 1, 1), context.getResources().getQuantityString(R.plurals.Months, 1, 1), LocaleController.getString("KeepMediaForever", R.string.KeepMediaForever)}, new DialogInterface.OnClickListener() {
+                    builder.setItems(new CharSequence[]{context.getResources().getQuantityString(R.plurals.Weeks, 1, 1), context.getResources().getQuantityString(R.plurals.Months, 1, 1), context.getString(R.string.KeepMediaForever)}, new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, final int which) {
                             SharedPreferences.Editor editor = ApplicationLoader.applicationContext.getSharedPreferences("mainconfig", Activity.MODE_PRIVATE).edit();
@@ -112,7 +111,7 @@ public class CacheControlActivity extends BaseFragment {
                             if (listAdapter != null) {
                                 listAdapter.notifyDataSetChanged();
                             }
-                            Toast.makeText(context, LocaleController.getString("NotYetImplemented", R.string.NotYetImplemented), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(context, context.getString(R.string.NotYetImplemented), Toast.LENGTH_SHORT).show();
 
                         }
                     });
@@ -196,7 +195,7 @@ public class CacheControlActivity extends BaseFragment {
                     view = new TextInfoCell(mContext);
                 }
                 if (i == rowKeepMediaInfo) {
-                    ((TextInfoCell) view).setText(AndroidUtilities.replaceTags(LocaleController.getString("KeepMediaInfo", R.string.KeepMediaInfo)));
+                    ((TextInfoCell) view).setText(AndroidUtilities.replaceTags(mContext.getString(R.string.KeepMediaInfo)));
                     view.setBackgroundResource(R.drawable.greydivider_bottom);
                 }
             }

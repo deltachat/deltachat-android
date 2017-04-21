@@ -77,7 +77,7 @@ public class BlockedUsersActivity extends BaseFragment implements NotificationCe
     }
 
     @Override
-    public View createView(Context context) {
+    public View createView(final Context context) {
         actionBar.setBackButtonImage(R.drawable.ic_ab_back);
         actionBar.setAllowOverlayTitle(true);
         actionBar.setTitle(ApplicationLoader.applicationContext.getString(R.string.BlockedContacts));
@@ -107,7 +107,7 @@ public class BlockedUsersActivity extends BaseFragment implements NotificationCe
         emptyTextView.setTextSize(20);
         emptyTextView.setGravity(Gravity.CENTER);
         emptyTextView.setVisibility(View.INVISIBLE);
-        emptyTextView.setText(LocaleController.getString("NoBlocked", R.string.NoBlocked));
+        emptyTextView.setText(context.getString(R.string.NoBlocked));
         frameLayout.addView(emptyTextView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.MATCH_PARENT, Gravity.TOP | Gravity.LEFT));
         emptyTextView.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -144,7 +144,7 @@ public class BlockedUsersActivity extends BaseFragment implements NotificationCe
                 selectedUserId = blockedUserIds[i];
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
-                CharSequence[] items = new CharSequence[]{LocaleController.getString("UnblockContact", R.string.UnblockContact)};
+                CharSequence[] items = new CharSequence[]{context.getString(R.string.UnblockContact)};
                 builder.setItems(items, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {

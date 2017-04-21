@@ -161,7 +161,7 @@ public class DocumentSelectActivity extends BaseFragment {
 
         actionBar.setBackButtonDrawable(new BackDrawable(false));
         actionBar.setAllowOverlayTitle(true);
-        actionBar.setTitle(LocaleController.getString("SelectFile", R.string.SelectFile));
+        actionBar.setTitle(context.getString(R.string.SelectFile));
         actionBar.setActionBarMenuOnItemClick(new ActionBar.ActionBarMenuOnItemClick() {
             @Override
             public void onItemClick(int id) {
