@@ -54,7 +54,7 @@ import com.b44t.ui.ActionBar.Theme;
 public class SettingsAdvActivity extends BaseFragment {
 
     // the list
-    private int enableAnimationsRow, languageRow, directShareRow, textSizeRow, cacheRow, raiseToSpeakRow, sendByEnterRow, finalShadowRow;
+    private int enableAnimationsRow, directShareRow, textSizeRow, cacheRow, raiseToSpeakRow, sendByEnterRow, finalShadowRow;
     private int rowCount;
 
     private static final int ROWTYPE_SHADOW          = 0;
@@ -85,7 +85,6 @@ public class SettingsAdvActivity extends BaseFragment {
         raiseToSpeakRow = rowCount++; // outgoing message
         enableAnimationsRow = -1;//rowCount++; -- for now, we disable this option, maybe we can add it later to a "view" settings, however, in general, this should be more a system-option
         cacheRow = -1;// for now, the - non-functional - page is reachable by the "storage settings" in the "android App Settings" only
-        languageRow = rowCount++;
         finalShadowRow = rowCount++;
 
         return true;
@@ -190,8 +189,6 @@ public class SettingsAdvActivity extends BaseFragment {
                     if (view instanceof TextCheckCell) {
                         ((TextCheckCell) view).setChecked(MediaController.getInstance().canDirectShare());
                     }
-                } else if (i == languageRow) {
-                    presentFragment(new LanguageSelectActivity());
                 } else if (i == cacheRow) {
                     presentFragment(new CacheControlActivity());
                 }
@@ -217,7 +214,6 @@ public class SettingsAdvActivity extends BaseFragment {
         public boolean isEnabled(int i) {
             return i == textSizeRow || i == enableAnimationsRow ||
                     i == sendByEnterRow ||
-                    i == languageRow ||
                     i == cacheRow || i == raiseToSpeakRow || i == directShareRow ;
         }
 
@@ -259,8 +255,6 @@ public class SettingsAdvActivity extends BaseFragment {
                     SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("mainconfig", Activity.MODE_PRIVATE);
                     int size = preferences.getInt("msg_font_size", defMsgFontSize());
                     textCell.setTextAndValue(mContext.getString(R.string.TextSize), String.format("%d", size), true);
-                } else if (i == languageRow) {
-                    textCell.setTextAndValue(mContext.getString(R.string.Language), LocaleController.getCurrentLanguageName(), false);
                 } else if (i == cacheRow) {
                     textCell.setText(mContext.getString(R.string.CacheSettings), true);
                 } 
