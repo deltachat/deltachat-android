@@ -4,6 +4,8 @@
 
 * Update Spanish translation
 * Update internal sqlite library to version 3.18.0, released on 2017-03-28
+* Remove more of the custom language handling, use Android's routines instead
+* General code cleanup
 
 ## v0.1.29
 2017-04-19
