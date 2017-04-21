@@ -10,12 +10,8 @@
     <!--chats view-->
     <string name="Settings">Ajustes</string>
     <string name="NewGroup">Nuevo grupo</string>
-    <string name="Yesterday">ayer</string>
     <string name="NoResult">Sin resultados</string>
     <string name="NoChats">Aún sin chats.</string>
-    <string name="WaitingForNetwork">Esperando red…</string>
-    <string name="Connecting">Conectando…</string>
-    <string name="Updating">Actualizando…</string>
     <string name="DeleteChat">Eliminar chat</string>
     <string name="SelectChat">Elige el chat …</string>
     <string name="Search">Buscar</string>
@@ -63,13 +59,10 @@
     <string name="ReplyToContact">Responder a %1$s</string>
     <!--contacts view-->
     <string name="NoContacts">Aún sin contactos</string>
-    <string name="TodayAt">a las</string>
-    <string name="YesterdayAt">ayer a las</string>
     <!--group create view-->
     <string name="SendMessageTo">Invitar a…</string>
     <string name="EnterGroupNamePlaceholder">Nombre del grupo</string>
     <!--group info view-->
-    <string name="SharedMedia">Multimedia</string>
     <string name="AddMember">Añadir miembro</string>
     <string name="Notifications">Notificaciones</string>
     <string name="RemoveMember">Eliminar del grupo</string>
@@ -78,19 +71,12 @@
     <string name="BlockContact">Bloquear</string>
     <string name="DeleteContact">Eliminar</string>
     <string name="Info">Información</string>
-    <!--stickers view-->
-    <string name="Stickers">Stickers</string>
-    <string name="AddStickers">Añadir stickers</string>
-    <string name="AddToStickers">Añadir a stickers</string>
-    <string name="StickersRemove">Eliminar</string>
-    <string name="NoStickers">Sin stickers aún</string>
     <!--settings view-->
     <string name="TextSize">Tamaño del texto</string>
     <string name="EnableAnimations">Activar animaciones</string>
     <string name="UnblockContact">Desbloquear</string>
     <string name="NoBlocked">Sin usuarios bloqueados</string>
     <string name="DefaultForNormalMessages">Notificación de mensajes</string>
-    <string name="Alert">Alerta</string>
     <string name="MessagePreview">Vista previa del mensaje</string>
     <string name="DefaultForGroupMessages">Notificaciones de grupo</string>
     <string name="Sound">Sonido</string>
@@ -108,10 +94,6 @@
     <string name="Help">Preguntas frecuentes</string>
     <string name="Enabled">Activadas</string>
     <string name="Disabled">Desactivadas</string>
-    <string name="NotificationsService">Servicio keep-alive</string>
-    <string name="NotificationsServiceInfo">Vuelve a abrir la app cuando el usuario o el sistema la cierra. Esto garantiza que la app pueda mostrar notificaciones.</string>
-    <string name="NotificationsServiceConnection">Conexión en segundo plano</string>
-    <string name="NotificationsServiceConnectionInfo">Conexión de bajo impacto, en segundo plano, para recibir notificaciones. Úsala para tener notificaciones fiables.</string>
     <string name="LedColor">Color del LED</string>
     <string name="BadgeNumber">Globo en el ícono</string>
     <string name="Short">Cortas</string>
@@ -126,7 +108,6 @@
     <string name="NotificationsOther">Otras</string>
     <string name="InChatSound">Sonidos en el chat</string>
     <string name="SmartNotifications">Notificaciones inteligentes</string>
-    <string name="SmartNotificationsInfo">Sonar como máximo %1$s en %2$s</string>
     <string name="SmartNotificationsSoundAtMost">Sonar como máximo</string>
     <string name="SmartNotificationsTimes">veces</string>
     <string name="SmartNotificationsWithin">en</string>
@@ -135,13 +116,6 @@
     <string name="DirectShareInfo">Mostrar los chats recientes al compartir</string>
     <!--cache view-->
     <string name="CacheSettings">Ajustes de caché</string>
-    <string name="LocalDatabase">Base de datos local</string>
-    <string name="LocalDatabaseClear">¿Borrar los mensajes en la caché?</string>
-    <string name="LocalDatabaseInfo">Al borrar la base de datos se eliminarán los mensajes en la caché y se comprimirá la base de datos para liberar espacio de almacenamiento. Delta Chat requiere algunos datos para funcionar, así que la base de datos nunca podrá llegar a cero.\n\nEsto puede tardar algunos minutos.</string>
-    <string name="ClearMediaCache">Borrar caché</string>
-    <string name="CacheClear">Borrar</string>
-    <string name="LocalCache">Otros archivos</string>
-    <string name="CacheEmpty">Vacío</string>
     <string name="KeepMedia">Conservar multimedia</string>
     <string name="KeepMediaInfo">Las fotos, los vídeos y los archivos de los chats en la nube a los que <b>no accedas</b> durante ese periodo de tiempo se eliminarán del dispositivo para liberar espacio.</string>
     <string name="KeepMediaForever">Siempre</string>
@@ -159,7 +133,6 @@
     <string name="PasscodeDoNotMatch">Los códigos de acceso no coinciden</string>
     <string name="AutoLock">Bloqueo automático</string>
     <string name="AutoLockInfo">El bloqueo se activará transcurrido este tiempo.</string>
-    <string name="AutoLockInTime">en %1$s</string>
     <string name="UnlockFingerprint">Desbloquear con la huella digital</string>
     <string name="FingerprintInfo">Confirma la huella digital para continuar</string>
     <string name="FingerprintNotRecognized">Huella digital no reconocida. Reinténtalo</string>
@@ -197,38 +170,23 @@
     <string name="BlurLinear">Lineal</string>
     <string name="BlurRadial">Radial</string>
     <string name="DiscardChanges">¿Descartar cambios?</string>
-    <string name="ClearSearch">¿Quieres borrar el historial de búsqueda?</string>
     <string name="ClearButton">Borrar</string>
     <string name="PickerPhotos">Fotos</string>
     <string name="PickerVideo">Vídeo</string>
-    <string name="AddCaption">Añadir un comentario…</string>
-    <string name="PhotoCaption">Comentario de foto</string>
-    <string name="VideoCaption">Comentario de vídeo</string>
-    <string name="Caption">Comentario</string>
     <!--privacy settings-->
     <string name="PrivacySettings">Privacidad y seguridad</string>
-    <string name="PrivacyTitle">Privacy</string>
     <string name="SecurityTitle">Seguridad</string>
     <!--edit video view-->
     <string name="SendVideo">Enviar vídeo</string>
-    <string name="OriginalVideo">Vídeo original</string>
-    <string name="EditedVideo">Vídeo editado</string>
-    <string name="CompressVideo">Comprimir Vídeo</string>
     <!--button titles-->
-    <string name="Next">Siguiente</string>
-    <string name="Back">Atrás</string>
     <string name="Done">Hecho</string>
     <string name="Open">Abrir</string>
-    <string name="Save">Guardar</string>
     <string name="Cancel">Cancelar</string>
-    <string name="Close">Cerrar</string>
-    <string name="Add">Añadir</string>
     <string name="Edit">Editar</string>
     <string name="Send">Enviar</string>
     <string name="CopyToClipboard">Copiar</string>
     <string name="Delete">Eliminar</string>
     <string name="Forward">Reenviar</string>
-    <string name="Retry">Reintentar</string>
     <string name="FromCamera">Desde la cámara</string>
     <string name="FromGalley">Desde la galería</string>
     <string name="Set">OK</string>
@@ -240,7 +198,6 @@
     <string name="AttachGif">GIF</string>
     <string name="AttachContact">Contacto</string>
     <string name="AttachDocument">Archivo</string>
-    <string name="AttachSticker">Sticker</string>
     <string name="AttachVoiceMessage">Mensaje de voz</string>
     <string name="FromSelf">Tú</string>
     <!--Alert messages-->
@@ -256,12 +213,6 @@
     <string name="PermissionContacts">Delta Chat necesita el acceso a tus contactos, para que puedas comunicarte con ellos en todos tus dispositivos.</string>
     <string name="PermissionStorage">Delta Chat necesita acceso a tu almacenamiento, para que puedas enviar y guardar fotos, vídeos, música y otros archivos.</string>
     <string name="PermissionNoAudio">Delta Chat necesita acceso a tu micrófono, para que puedas enviar mensajes de voz.</string>
-
-    <!-- Translators: PermissionBattery should refer to the system dialog
-    "Ignore battery optimizations?
-    Let app Delta Chat stay connected in the backgound? This may use more battery."  -->
-    <string name="PermissionBattery">Delta Chat necesita estar conectado al fondo para recibir mensajes desde su servidor.\n\nEsto es un comportamiento normal, sin excesivo consumo batería que, no obstante, suele bloquearse por los optimizadores de batería.\n\n¿Quiere adaptar los ajustes?</string>
-
     <string name="PermissionOpenSettings">Ajustes</string>
     <!--Intro view-->
     <string name="Intro1Headline">Delta Chat</string>
@@ -360,11 +311,8 @@
     <string name="formatDateAtTime">%1$s a las %2$s</string>
     <string name="AccountSettings">Ajustes de cuenta</string>
     <string name="MyAccount">Mi cuenta</string>
-    <string name="Yes">Sí</string>
-    <string name="No">No</string>
     <string name="MyName">Mi nombre</string>
     <string name="MyNameExplain">Su nombre se muestra a los receptores.\n\nSi no introduce un nombre aquí, los receptores solo verán su dirección de correo de los ajustes de cuenta.</string>
-    <string name="MyEmailAddress">Mi dirección de correo</string>
     <string name="Password">Contraseña</string>
     <string name="SmtpPassword">Contraseña SMTP</string>
     <string name="FromAbove">De arriba</string>
@@ -377,7 +325,6 @@
     <string name="ImapPort">Puerto IMAP</string>
     <string name="InboxHeadline">Bandeja de entrada</string>
     <string name="OutboxHeadline">Bandeja de salida</string>
-    <string name="BasicSettings">Ajustes básicos</string>
     <string name="MyAccountExplain">Para proveedores conocidos de correo, los ajustes adicionales se determinan automáticamente.</string>
     <string name="MyAccountExplain2" >Algunas veces, <b>hay que habilitar IMAP</b> en la interfaz web del correo.\n\nEn caso de problemas, consulte a su proveedor de correo o el de sus amigos.</string>
     <string name="AccountNotConfigured">Cuenta no configurada</string>
@@ -385,7 +332,6 @@
     <string name="NotSet">No establecido</string>
     <string name="NewChat">Nuevo chat</string>
     <string name="Deaddrop">Buzón</string>
-    <string name="Media">Multimedia</string>
     <string name="DeaddropInChatlist">Mostrar buzón en la lista de conversaciones</string>
     <string name="MuteAlways">Siempre silenciado</string>
     <string name="AskStartChatWith">¿Iniciar una conversación con <b>%1$s</b>?</string>
@@ -400,10 +346,8 @@
     <string name="ViewProfile">Ver perfil</string>
     <!-- Translators: please use a very short string here, it should not much longer than
     the string needed for video time+size (0:00, 12,3 Mib) -->
-    <string name="OneMoment">Un momento...</string>
+    <string name="OneMoment">Un momento…</string>
     <string name="NoChatsHelp">Comience a enviar mensajes pulsando el botón de nueva conversación en la esquina inferior derecha o pulse el botón de menú para más opciones.</string>
-    <string name="ConfiguringAccount">Configurando cuenta...</string>
-    <string name="CannotConnect">No puede conectar. Revise la configuración, por favor.</string>
     <string name="Intro7Message"><b>Delta Chat</b> es seguro para usar en negocios, consumir y basado en estándares.</string>
     <string name="InviteMenuEntry">Invitar a amigos</string>
     <string name="InviteText">Estoy usando Delta Chat ahora - %1$s - puede escribirme a %2$s</string>

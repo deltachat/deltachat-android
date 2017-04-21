@@ -10,12 +10,8 @@
     <!--chats view-->
     <string name="Settings">Instellingen</string>
     <string name="NewGroup">Nieuwe groep</string>
-    <string name="Yesterday">gisteren</string>
     <string name="NoResult">Geen resultaten</string>
     <string name="NoChats">Nog geen chats.</string>
-    <string name="WaitingForNetwork">Wachten op netwerk</string>
-    <string name="Connecting">Verbinden</string>
-    <string name="Updating">Bijwerken</string>
     <string name="DeleteChat">Chat verwijderen</string>
     <string name="SelectChat">Kies een chat …</string>
     <string name="Search">Zoeken</string>
@@ -62,13 +58,10 @@
     <string name="ReplyToContact">Antwoord op %1$s</string>
     <!--contacts view-->
     <string name="NoContacts">Nog geen contacten</string>
-    <string name="TodayAt">om</string>
-    <string name="YesterdayAt">gisteren om</string>
     <!--group create view-->
     <string name="SendMessageTo">Bericht versturen naar</string>
     <string name="EnterGroupNamePlaceholder">Groepsnaam</string>
     <!--group info view-->
-    <string name="SharedMedia">Gedeelde media</string>
     <string name="AddMember">Lid toevoegen</string>
     <string name="Notifications">Meldingen</string>
     <string name="RemoveMember">Verwijderen uit groep</string>
@@ -77,19 +70,12 @@
     <string name="BlockContact">Blokkeer</string>
     <string name="DeleteContact">Verwijder</string>
     <string name="Info">Info</string>
-    <!--stickers view-->
-    <string name="Stickers">Stickers</string>
-    <string name="AddStickers">Stickers toevoegen</string>
-    <string name="AddToStickers">Toevoegen aan stickers</string>
-    <string name="StickersRemove">Verwijder</string>
-    <string name="NoStickers">Nog geen stickers</string>
     <!--settings view-->
     <string name="TextSize">Tekstgrootte berichten</string>
     <string name="EnableAnimations">Animaties</string>
     <string name="UnblockContact">Deblokkeer</string>
     <string name="NoBlocked">Geen geblokkeerde gebruikers</string>
     <string name="DefaultForNormalMessages">Berichtmeldingen</string>
-    <string name="Alert">Waarschuwing</string>
     <string name="MessagePreview">Voorvertoning</string>
     <string name="DefaultForGroupMessages">Groepsmeldingen</string>
     <string name="Sound">Geluid</string>
@@ -107,10 +93,6 @@
     <string name="Help">Veelgestelde vragen</string>
     <string name="Enabled">Inschakelen</string>
     <string name="Disabled">Uitgeschakeld</string>
-    <string name="NotificationsService">Meldingenservice</string>
-    <string name="NotificationsServiceInfo">App automatisch herstarten bij afsluiten om meldingen weer te kunnen blijven geven.</string>
-    <string name="NotificationsServiceConnection">Achtergrondverbinding</string>
-    <string name="NotificationsServiceConnectionInfo">Achtergrondverbinding voor meldingen. Inschakelen voor betrouwbare meldingen.</string>
     <string name="LedColor">LED-kleur</string>
     <string name="BadgeNumber">Badgenummer</string>
     <string name="Short">Kort</string>
@@ -125,7 +107,6 @@
     <string name="NotificationsOther">Overig</string>
     <string name="InChatSound">Chatgeluiden</string>
     <string name="SmartNotifications">Slimme meldingen</string>
-    <string name="SmartNotificationsInfo">Geluid maximaal %1$s per %2$s</string>
     <string name="SmartNotificationsSoundAtMost">Geluid maximaal</string>
     <string name="SmartNotificationsTimes">keer</string>
     <string name="SmartNotificationsWithin">binnen</string>
@@ -134,13 +115,6 @@
     <string name="DirectShareInfo">Recente chats in snel delen weergeven</string>
     <!--cache view-->
     <string name="CacheSettings">Cache-instellingen</string>
-    <string name="LocalDatabase">Lokale database</string>
-    <string name="LocalDatabaseClear">Gecachet tekstberichten wissen?</string>
-    <string name="LocalDatabaseInfo">Het opschonen van de lokale database zal de tekst van gecachet berichten verwijderen en de database comprimeren om ruimte te besparen. Delta Chat heeft wat ruimte nodig om te kunnen functioneren, dus de databasegrootte zal nooit nul worden.\n\nDit kan enkele minuten duren.</string>
-    <string name="ClearMediaCache">Cache opschonen</string>
-    <string name="CacheClear">Opschonen</string>
-    <string name="LocalCache">Overige bestanden</string>
-    <string name="CacheEmpty">Leeg</string>
     <string name="KeepMedia">Media bewaren</string>
     <string name="KeepMediaInfo">Foto\'s, video\'s en andere bestanden uit cloudchats die je gedurende deze periode niet hebt  <![CDATA[<b>geopend</b>]]> zullen worden verwijderd van dit apparaat om ruimte te besparen.</string>
     <string name="KeepMediaForever">Voor altijd</string>
@@ -158,7 +132,6 @@
     <string name="PasscodeDoNotMatch">Toegangscodes komen niet overeen</string>
     <string name="AutoLock">Automatisch vergrendelen</string>
     <string name="AutoLockInfo">Vraag om toegangscode indien afwezig</string>
-    <string name="AutoLockInTime">over %1$s</string>
     <string name="UnlockFingerprint">Ontgrendel met vingerafdruk</string>
     <string name="FingerprintInfo">Vingerafdruk bevestigen</string>
     <string name="FingerprintNotRecognized">Vingerafdruk niet herkend,  probeer opnieuw</string>
@@ -196,38 +169,23 @@
     <string name="BlurLinear">Lineair</string>
     <string name="BlurRadial">Radiaal</string>
     <string name="DiscardChanges">Wijzigingen negeren?</string>
-    <string name="ClearSearch">Zoekgeschiedenis wissen?</string>
     <string name="ClearButton">Wissen</string>
     <string name="PickerPhotos">Foto\'s</string>
     <string name="PickerVideo">Video</string>
-    <string name="AddCaption">Onderschrift toevoegen</string>
-    <string name="PhotoCaption">Foto-onderschrift</string>
-    <string name="VideoCaption">Video-onderschrift</string>
-    <string name="Caption">Onderschrift</string>
     <!--privacy settings-->
     <string name="PrivacySettings">Privacy en veiligheid</string>
-    <string name="PrivacyTitle">Privacy</string>
     <string name="SecurityTitle">Veiligheid</string>
     <!--edit video view-->
     <string name="SendVideo">Video versturen</string>
-    <string name="OriginalVideo">Originele video</string>
-    <string name="EditedVideo">Bewerkte video</string>
-    <string name="CompressVideo">Video comprimeren</string>
     <!--button titles-->
-    <string name="Next">Volgende</string>
-    <string name="Back">Vorige</string>
     <string name="Done">Gereed</string>
     <string name="Open">Openen</string>
-    <string name="Save">Opslaan</string>
     <string name="Cancel">Annuleren</string>
-    <string name="Close">Sluit</string>
-    <string name="Add">Toevoegen</string>
     <string name="Edit">Wijzig</string>
     <string name="Send">Stuur</string>
     <string name="CopyToClipboard">Kopieer</string>
     <string name="Delete">Verwijder</string>
     <string name="Forward">Doorsturen</string>
-    <string name="Retry">Opnieuw proberen</string>
     <string name="FromCamera">Van camera</string>
     <string name="FromGalley">Uit galerij</string>
     <string name="Set">Stel in</string>
@@ -239,7 +197,6 @@
     <string name="AttachGif">GIF</string>
     <string name="AttachContact">Contact</string>
     <string name="AttachDocument">Bestand</string>
-    <string name="AttachSticker">Sticker</string>
     <string name="AttachVoiceMessage">Spraakbericht</string>
     <string name="FromSelf">Jij</string>
     <!--Alert messages-->
@@ -302,7 +259,6 @@
     <string name="formatterDay12H">h:mm a</string>
     <string name="formatDateAtTime">%1$s om %2$s</string>
     <string name="NewChat">Nieuwe chat</string>
-    <string name="Media">Media</string>
     <string name="InviteMenuEntry">Vrienden uitnodigen</string>
     <string name="ForwardToTitle">Kies een chat …</string>
     <string name="DoneHint">Gereed.</string>

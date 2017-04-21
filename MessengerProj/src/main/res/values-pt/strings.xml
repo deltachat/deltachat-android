@@ -10,12 +10,8 @@
     <!--chats view-->
     <string name="Settings">Configurações</string>
     <string name="NewGroup">Novo Grupo</string>
-    <string name="Yesterday">ontem</string>
     <string name="NoResult">Nenhum resultado</string>
     <string name="NoChats">Ainda não há chats.</string>
-    <string name="WaitingForNetwork">Aguardando rede…</string>
-    <string name="Connecting">Conectando…</string>
-    <string name="Updating">Atualizando…</string>
     <string name="DeleteChat">Apagar conversa</string>
     <string name="SelectChat">Selecione um Chat …</string>
     <string name="Search">Busca</string>
@@ -62,13 +58,10 @@
     <string name="ReplyToContact">Responder para %1$s</string>
     <!--contacts view-->
     <string name="NoContacts">Ainda não há contatos</string>
-    <string name="TodayAt">às</string>
-    <string name="YesterdayAt">ontem às</string>
     <!--group create view-->
     <string name="SendMessageTo">Enviar mensagem para…</string>
     <string name="EnterGroupNamePlaceholder">Digite o nome do grupo</string>
     <!--group info view-->
-    <string name="SharedMedia">Mídia Compartilhada</string>
     <string name="AddMember">Adicionar membro</string>
     <string name="Notifications">Notificações</string>
     <string name="RemoveMember">Remover do grupo</string>
@@ -77,18 +70,12 @@
     <string name="BlockContact">Bloquear</string>
     <string name="DeleteContact">Apagar</string>
     <string name="Info">Info</string>
-    <!--stickers view-->
-    <string name="Stickers">Stickers</string>
-    <string name="AddStickers">Adicionar Stickers</string>
-    <string name="AddToStickers">Adicionar aos Stickers</string>
-    <string name="NoStickers">Nenhum sticker</string>
     <!--settings view-->
     <string name="TextSize">Tamanho do texto nas mensagens</string>
     <string name="EnableAnimations">Permitir Animações</string>
     <string name="UnblockContact">Desbloquear</string>
     <string name="NoBlocked">Nenhum usuário bloqueado</string>
     <string name="DefaultForNormalMessages">Notificações de mensagens</string>
-    <string name="Alert">Alerta</string>
     <string name="MessagePreview">Visualização de Mensagem</string>
     <string name="DefaultForGroupMessages">Notificações de grupo</string>
     <string name="Sound">Som</string>
@@ -106,10 +93,6 @@
     <string name="Help">Perguntas frequentes</string>
     <string name="Enabled">Ativado</string>
     <string name="Disabled">Desativado</string>
-    <string name="NotificationsService">Serviço Manter-Ativo</string>
-    <string name="NotificationsServiceInfo">Reiniciar o app quando desligado pelo usuário ou pelo sistema. Isso irá garantir que o app mostre as notificações.</string>
-    <string name="NotificationsServiceConnection">Conexão em Segundo Plano</string>
-    <string name="NotificationsServiceConnectionInfo">Manter uma conexão de baixo impacto para receber notificações. Habilite para notificações mais confiáveis.</string>
     <string name="LedColor">Cor do LED</string>
     <string name="BadgeNumber">Contador no Ícone</string>
     <string name="Short">Curta</string>
@@ -124,7 +107,6 @@
     <string name="NotificationsOther">Outro</string>
     <string name="InChatSound">Sons no Chat</string>
     <string name="SmartNotifications">Notificações Inteligentes</string>
-    <string name="SmartNotificationsInfo">Tocar no máximo %1$s a cada %2$s</string>
     <string name="SmartNotificationsSoundAtMost">Tocar no máximo</string>
     <string name="SmartNotificationsTimes">vezes</string>
     <string name="SmartNotificationsWithin">a cada</string>
@@ -133,13 +115,6 @@
     <string name="DirectShareInfo">Mostrar chats recentes no menu compartilhar</string>
     <!--cache view-->
     <string name="CacheSettings">Configurações de Cache</string>
-    <string name="LocalDatabase">Banco de Dados Local</string>
-    <string name="LocalDatabaseClear">Limpar todos os textos em cache?</string>
-    <string name="LocalDatabaseInfo">Limpar o banco de dados local apagará todos os textos das mensagens em cache e compactará o banco de dados para economizar espaço. O Delta Chat precisa de alguns dados para trabalhar, então o tamanho do banco não vai chegar a zero.\n\nEssa operação pode demorar alguns minutos para ser concluída.</string>
-    <string name="ClearMediaCache">Limpar Cache</string>
-    <string name="CacheClear">Limpar</string>
-    <string name="LocalCache">Outros arquivos</string>
-    <string name="CacheEmpty">Vazio</string>
     <string name="KeepMedia">Manter Mídias</string>
     <string name="KeepMediaInfo">Fotos, vídeos e outros arquivos da nuvem que você <![CDATA[<b>não acessou</b>]]> durante esse período serão removidos deste dispositivo para economizar espaço em disco.</string>
     <string name="KeepMediaForever">Permanentemente</string>
@@ -157,7 +132,6 @@
     <string name="PasscodeDoNotMatch">As senhas não são iguais</string>
     <string name="AutoLock">Auto-bloquear</string>
     <string name="AutoLockInfo">Requisitar senha se estiver ausente por muito tempo.</string>
-    <string name="AutoLockInTime">em %1$s</string>
     <string name="UnlockFingerprint">Desbloquear com Impressão Digital</string>
     <string name="FingerprintInfo">Confirme a impressão digital para continuar</string>
     <string name="FingerprintNotRecognized">Impressão digital não reconhecida.</string>
@@ -195,38 +169,23 @@
     <string name="BlurLinear">Linear</string>
     <string name="BlurRadial">Radial</string>
     <string name="DiscardChanges">Descartar mudanças?</string>
-    <string name="ClearSearch">Limpar histórico de busca?</string>
     <string name="ClearButton">Limpar</string>
     <string name="PickerPhotos">Fotos</string>
     <string name="PickerVideo">Vídeo</string>
-    <string name="AddCaption">Adicionar legenda…</string>
-    <string name="PhotoCaption">Legenda da Foto</string>
-    <string name="VideoCaption">Legenda do Vídeo</string>
-    <string name="Caption">Legenda</string>
     <!--privacy settings-->
     <string name="PrivacySettings">Privacidade e Segurança</string>
-    <string name="PrivacyTitle">Privacidade</string>
     <string name="SecurityTitle">Segurança</string>
     <!--edit video view-->
     <string name="SendVideo">Enviar Vídeo</string>
-    <string name="OriginalVideo">Vídeo Original</string>
-    <string name="EditedVideo">Vídeo Editado</string>
-    <string name="CompressVideo">Compactar Vídeo</string>
     <!--button titles-->
-    <string name="Next">Próximo</string>
-    <string name="Back">Voltar</string>
     <string name="Done">Concluído</string>
     <string name="Open">Abrir</string>
-    <string name="Save">Salvar</string>
     <string name="Cancel">Cancelar</string>
-    <string name="Close">Fechar</string>
-    <string name="Add">Adicionar</string>
     <string name="Edit">Editar</string>
     <string name="Send">Enviar</string>
     <string name="CopyToClipboard">Copiar</string>
     <string name="Delete">Apagar</string>
     <string name="Forward">Encaminhar</string>
-    <string name="Retry">Tentar novamente</string>
     <string name="FromCamera">Câmera</string>
     <string name="FromGalley">Galeria</string>
     <string name="Set">Aplicar</string>
@@ -238,7 +197,6 @@
     <string name="AttachGif">GIF</string>
     <string name="AttachContact">Contato</string>
     <string name="AttachDocument">Arquivo</string>
-    <string name="AttachSticker">Sticker</string>
     <string name="AttachVoiceMessage">Mensagem de voz</string>
     <string name="FromSelf">Você</string>
     <!--Alert messages-->
@@ -330,11 +288,8 @@
     <string name="formatDateAtTime">%1$s às %2$s</string>
     <string name="AccountSettings">Configuração de conta</string>
     <string name="MyAccount">Minha conta</string>
-    <string name="Yes">Sim</string>
-    <string name="No">Não</string>
     <string name="MyName">Meu nome</string>
     <string name="MyNameExplain">Assim que seu nome será exibido aos destinatários.\n\nSe não for definido um nome será exibido o seu e-mail aos destinatários.</string>
-    <string name="MyEmailAddress">Meu endereço de e-mail</string>
     <string name="Password">Senha</string>
     <string name="SmtpPassword">Senha SMPT</string>
     <string name="FromAbove">De acima</string>
@@ -347,7 +302,6 @@
     <string name="ImapPort">Porta IMAP</string>
     <string name="InboxHeadline">Caixa de entrada</string>
     <string name="OutboxHeadline">Caixa de saída</string>
-    <string name="BasicSettings">Configurações básicas</string>
     <string name="MyAccountExplain">Para provedores de e-mail mais populares as configurações a seguir são detectadas automaticamente.</string>
     <string name="MyAccountExplain2">Por vezes é necessário habilitar o IMAP/SMTP nas configurações do servidor de e-mail.\n\nSe tiver dificuldades peça ajuda ao servidor ou a algum amigo.</string>
     <string name="AccountNotConfigured">Conta não configurada</string>
@@ -355,7 +309,6 @@
     <string name="NotSet">Não configurado</string>
     <string name="NewChat">Novo Chat</string>
     <string name="Deaddrop">Caixa de entrada</string>
-    <string name="Media">Mídias</string>
     <string name="DeaddropInChatlist">Exibir caixa de entrada na lista de conversas</string>
     <string name="MuteAlways">Sempre mudo</string>
     <string name="AskStartChatWith">Começar um chat com &lt;b&gt;%1$s&lt;/b&gt;?</string>
@@ -370,8 +323,6 @@
     <string name="ViewProfile">Ver perfil</string>
     <string name="OneMoment">Um momento…</string>
     <string name="NoChatsHelp">Comece uma conversa pressionando \"+\" do canto direito inferior. Pressione o menu para mais opções.</string>
-    <string name="ConfiguringAccount">Configurando conta…</string>
-    <string name="CannotConnect">Impossível conectar! Cheque a configuração.</string>
     <string name="Intro7Message">&lt;b&gt;Delta Chat&lt;/b&gt; é seguro para uso comercial e compatível com os padrões de uso.</string>
     <string name="InviteMenuEntry">Convidar Amigos</string>
     <string name="InviteText">Estou usando o Delta Chat messenger - %1$s - meu contato neste app é: %2$s</string>

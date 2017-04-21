@@ -10,12 +10,8 @@
     <!--chats view-->
     <string name="Settings">Settings</string>
     <string name="NewGroup">New group</string>
-    <string name="Yesterday">yesterday</string>
     <string name="NoResult">No results.</string>
     <string name="NoChats">No chats yet.</string>
-    <string name="WaitingForNetwork">Waiting for network …</string>
-    <string name="Connecting">Connecting …</string>
-    <string name="Updating">Updating …</string>
     <string name="DeleteChat">Delete chat</string>
     <string name="SelectChat">Select chat …</string>
     <string name="Search">Search</string>
@@ -63,13 +59,10 @@
     <string name="ReplyToContact">Reply to %1$s</string>
     <!--contacts view-->
     <string name="NoContacts">No contacts yet.</string>
-    <string name="TodayAt">at</string>
-    <string name="YesterdayAt">yesterday at</string>
     <!--group create view-->
     <string name="SendMessageTo">Send message to …</string>
     <string name="EnterGroupNamePlaceholder">Enter group name</string>
     <!--group info view-->
-    <string name="SharedMedia">Shared Media</string>
     <string name="AddMember">Add member</string>
     <string name="Notifications">Notifications</string>
     <string name="RemoveMember">Remove member</string>
@@ -78,19 +71,12 @@
     <string name="BlockContact">Block contact</string>
     <string name="DeleteContact">Delete contact</string>
     <string name="Info">Info</string>
-    <!--stickers view-->
-    <string name="Stickers">Stickers</string>
-    <string name="AddStickers">Add Stickers</string>
-    <string name="AddToStickers">Add to Stickers</string>
-    <string name="StickersRemove">Remove</string>
-    <string name="NoStickers">No stickers yet</string>
     <!--settings view-->
     <string name="TextSize">Messages font size</string>
     <string name="EnableAnimations">Transition animation</string>
     <string name="UnblockContact">Unblock contact</string>
     <string name="NoBlocked">No blocked contacts yet</string>
     <string name="DefaultForNormalMessages">Normal messages default</string>
-    <string name="Alert">Alert</string>
     <string name="MessagePreview">Message preview</string>
     <string name="DefaultForGroupMessages">Group messages default</string>
     <string name="Sound">Sound</string>
@@ -108,10 +94,6 @@
     <string name="Help">Help</string>
     <string name="Enabled">On</string>
     <string name="Disabled">Off</string>
-    <string name="NotificationsService">Keep-alive service</string>
-    <string name="NotificationsServiceInfo">Relaunch app when shut down by user or system. This will ensure app can show notifications.</string>
-    <string name="NotificationsServiceConnection">Background connection</string>
-    <string name="NotificationsServiceConnectionInfo">Keep a low impact background connection to receive notifications. Enable for reliable notifications.</string>
     <string name="LedColor">LED color</string>
     <string name="BadgeNumber">Show count on icon if possible</string>
     <string name="Short">Short</string>
@@ -126,7 +108,6 @@
     <string name="NotificationsOther">Other</string>
     <string name="InChatSound">In-chat sounds</string>
     <string name="SmartNotifications">Limit notifications</string>
-    <string name="SmartNotificationsInfo">Sound at most %1$s within %2$s</string>
     <string name="SmartNotificationsSoundAtMost">Sound at most</string>
     <string name="SmartNotificationsTimes">times</string>
     <string name="SmartNotificationsWithin">within</string>
@@ -135,13 +116,6 @@
     <string name="DirectShareInfo">Show recent chats in share menu</string>
     <!--cache view-->
     <string name="CacheSettings">Storage</string>
-    <string name="LocalDatabase">Local Database</string>
-    <string name="LocalDatabaseClear">Clear cached text messages?</string>
-    <string name="LocalDatabaseInfo">Clearing the local database will delete the texts of cached messages and compress the database to save internal disk space. The app needs some data to work, so database size will not reach zero.\n\nThis operation can take a few minutes to complete.</string>
-    <string name="ClearMediaCache">Clear Cache</string>
-    <string name="CacheClear">Clear</string>
-    <string name="LocalCache">Other files</string>
-    <string name="CacheEmpty">Empty</string>
     <string name="KeepMedia">Keep Media</string>
     <string name="KeepMediaInfo">Photos, videos and other files from cloud chats that you have <![CDATA[<b>not accessed</b>]]> during this period will be removed from this device to save disk space.</string>
     <string name="KeepMediaForever">Forever</string>
@@ -159,7 +133,6 @@
     <string name="PasscodeDoNotMatch">Passcodes do not match</string>
     <string name="AutoLock">Autolock</string>
     <string name="AutoLockInfo">Require passcode if away for a time.</string>
-    <string name="AutoLockInTime">in %1$s</string>
     <string name="UnlockFingerprint">Unlock with Fingerprint</string>
     <string name="FingerprintInfo">Confirm fingerprint to continue</string>
     <string name="FingerprintNotRecognized">Fingerprint not recognized. Try again</string>
@@ -197,38 +170,23 @@
     <string name="BlurLinear">Linear</string>
     <string name="BlurRadial">Radial</string>
     <string name="DiscardChanges">Discard changes?</string>
-    <string name="ClearSearch">Clear search history?</string>
     <string name="ClearButton">Clear</string>
     <string name="PickerPhotos">Photos</string>
     <string name="PickerVideo">Video</string>
-    <string name="AddCaption">Add a caption …</string>
-    <string name="PhotoCaption">Photo Caption</string>
-    <string name="VideoCaption">Video Caption</string>
-    <string name="Caption">Caption</string>
     <!--privacy settings-->
     <string name="PrivacySettings">Privacy and security</string>
-    <string name="PrivacyTitle" tools:keep="@string/PrivacyTitle">Privacy</string>
     <string name="SecurityTitle">Security</string>
     <!--edit video view-->
     <string name="SendVideo">Send Video</string>
-    <string name="OriginalVideo">Original Video</string>
-    <string name="EditedVideo">Edited Video</string>
-    <string name="CompressVideo">Compress Video</string>
     <!--button titles-->
-    <string name="Next">Next</string>
-    <string name="Back">Back</string>
     <string name="Done">Done</string>
     <string name="Open">Open</string>
-    <string name="Save">Save</string>
     <string name="Cancel">Cancel</string>
-    <string name="Close">Close</string>
-    <string name="Add">Add</string>
     <string name="Edit">Edit</string>
     <string name="Send">Send</string>
     <string name="CopyToClipboard">Copy to clipboard</string>
     <string name="Delete">Delete</string>
     <string name="Forward">Forward</string>
-    <string name="Retry">Retry</string>
     <string name="FromCamera">From camera</string>
     <string name="FromGalley">From gallery</string>
     <string name="Set">Set</string>
@@ -240,7 +198,6 @@
     <string name="AttachGif">GIF</string>
     <string name="AttachContact">Contact</string>
     <string name="AttachDocument">File</string>
-    <string name="AttachSticker">Sticker</string>
     <string name="AttachVoiceMessage">Voice message</string>
     <string name="FromSelf">Me</string>
     <!--Alert messages-->
@@ -255,12 +212,6 @@
     <string name="PermissionContacts">Delta Chat needs access to your contacts so that you can connect with your friends across all your devices.</string>
     <string name="PermissionStorage">Delta Chat needs access to your storage so that you can send and save photos, videos, music and other media.</string>
     <string name="PermissionNoAudio">Delta Chat needs access to your microphone so that you can send voice messages.</string>
-
-    <!-- Translators: PermissionBattery should refer to the system dialog
-    "Ignore battery optimizations?
-    Let app Delta Chat stay connected in the backgound? This may use more battery."  -->
-    <string name="PermissionBattery">Delta Chat needs to stay connected in the background for receiving messages from your server.\n\nThis is a normal, battery-saving and very usual behaviour, which, however, is blocked by the battery optimizations.\n\nAdapt settings?</string>
-
     <string name="PermissionOpenSettings">Adapt settings</string>
     <!--Intro view-->
     <string name="Intro1Headline">Delta Chat</string>
@@ -359,11 +310,8 @@
     <string name="formatDateAtTime">%1$s at %2$s</string>
     <string name="AccountSettings">Account settings</string>
     <string name="MyAccount">My account</string>
-    <string name="Yes">Yes</string>
-    <string name="No">No</string>
     <string name="MyName">My name</string>
     <string name="MyNameExplain">Your name, as shown to the receivers.\n\nIf you do not enter a name here, the receivers will only get your e-mail-address from the account settings.</string>
-    <string name="MyEmailAddress">My e-mail address</string>
     <string name="Password">Password</string>
     <string name="SmtpPassword">SMTP password</string>
     <string name="FromAbove">From above</string>
@@ -376,7 +324,6 @@
     <string name="ImapPort">IMAP port</string>
     <string name="InboxHeadline">Inbox</string>
     <string name="OutboxHeadline">Outbox</string>
-    <string name="BasicSettings">Basic settings</string>
     <string name="MyAccountExplain">For known e-mail providers, additional settings are determinated automatically.</string>
     <string name="MyAccountExplain2" >Sometimes, <![CDATA[<b>]]>IMAP needs to be enabled<![CDATA[</b>]]> in the e-mail web frontend.\n\nOn problems, ask your e-mail provider or your friends.</string>
     <string name="AccountNotConfigured">Account not configured</string>
@@ -384,7 +331,6 @@
     <string name="NotSet">Not set</string>
     <string name="NewChat">New chat</string>
     <string name="Deaddrop">Mailbox</string>
-    <string name="Media">Media</string>
     <string name="DeaddropInChatlist">Show mailbox in chatlist</string>
     <string name="MuteAlways">Always muted</string>
     <string name="AskStartChatWith">Start a chat with <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>?</string>
@@ -401,8 +347,6 @@
     the string needed for video time+size (0:00, 12,3 Mib) -->
     <string name="OneMoment">One moment …</string>
     <string name="NoChatsHelp">Start messaging by pressing the new chat button in the bottom right corner or tap the menu button for more options.</string>
-    <string name="ConfiguringAccount">Configuring account …</string>
-    <string name="CannotConnect">Cannot connect, please check the configuration.</string>
     <string name="Intro7Message"><![CDATA[<b>Delta Chat</b>]]> is safe for business use, compatible and standards-based.</string>
     <string name="InviteMenuEntry">Send invitations</string>
     <string name="InviteText">I\'m using Delta Chat messenger now - %1$s - you can text me at %2$s</string>

@@ -10,12 +10,8 @@
     <!--chats view-->
     <string name="Settings">Impostazioni</string>
     <string name="NewGroup">Nuovo gruppo</string>
-    <string name="Yesterday">ieri</string>
     <string name="NoResult">Nessun risultato</string>
     <string name="NoChats">Ancora nessuna chat.</string>
-    <string name="WaitingForNetwork">Attendo la rete…</string>
-    <string name="Connecting">Connetto…</string>
-    <string name="Updating">Aggiorno…</string>
     <string name="DeleteChat">Elimina chat</string>
     <string name="SelectChat">Seleziona chat …</string>
     <string name="Search">Cerca</string>
@@ -62,13 +58,10 @@
     <string name="ReplyToContact">Rispondi a %1$s</string>
     <!--contacts view-->
     <string name="NoContacts">Ancora nessun contatto</string>
-    <string name="TodayAt">alle</string>
-    <string name="YesterdayAt">ieri alle</string>
     <!--group create view-->
     <string name="SendMessageTo">Invia messaggio a…</string>
     <string name="EnterGroupNamePlaceholder">Immetti il nome del gruppo</string>
     <!--group info view-->
-    <string name="SharedMedia">Media condivisi</string>
     <string name="AddMember">Aggiungi membro</string>
     <string name="Notifications">Notifiche</string>
     <string name="RemoveMember">Rimuovi dal gruppo</string>
@@ -77,19 +70,12 @@
     <string name="BlockContact">Blocca</string>
     <string name="DeleteContact">Elimina</string>
     <string name="Info">Info</string>
-    <!--stickers view-->
-    <string name="Stickers">Sticker</string>
-    <string name="AddStickers">Aggiungi sticker</string>
-    <string name="AddToStickers">Aggiungi agli sticker</string>
-    <string name="StickersRemove">Rimuovi</string>
-    <string name="NoStickers">Ancora nessuno sticker</string>
     <!--settings view-->
     <string name="TextSize">Dimensione testo messaggi</string>
     <string name="EnableAnimations">Abilita animazioni</string>
     <string name="UnblockContact">Sblocca</string>
     <string name="NoBlocked">Ancora nessun utente bloccato</string>
     <string name="DefaultForNormalMessages">Notifiche messaggio</string>
-    <string name="Alert">Avviso</string>
     <string name="MessagePreview">Anteprima messaggio</string>
     <string name="DefaultForGroupMessages">Notifiche di gruppo</string>
     <string name="Sound">Suono</string>
@@ -107,10 +93,6 @@
     <string name="Help">Domande frequenti</string>
     <string name="Enabled">Abilitate</string>
     <string name="Disabled">Disabilitata</string>
-    <string name="NotificationsService">Servizio keep-alive</string>
-    <string name="NotificationsServiceInfo">Riavvia l\'app quando terminata dall\'utente o dal sistema. Questo assicura che l\'app possa mostrare le notifiche.</string>
-    <string name="NotificationsServiceConnection">Connessione in background</string>
-    <string name="NotificationsServiceConnectionInfo">Mantiene una connessione a basso impatto per ricevere le notifiche. Attivala per notifiche affidabili.</string>
     <string name="LedColor">Colore LED</string>
     <string name="BadgeNumber">Contatore badge</string>
     <string name="Short">Breve</string>
@@ -125,7 +107,6 @@
     <string name="NotificationsOther">Altro</string>
     <string name="InChatSound">Suoni in-chat</string>
     <string name="SmartNotifications">Notifiche intelligenti</string>
-    <string name="SmartNotificationsInfo">Suona al massimo %1$s in %2$s</string>
     <string name="SmartNotificationsSoundAtMost">Suona al massimo</string>
     <string name="SmartNotificationsTimes">volte</string>
     <string name="SmartNotificationsWithin">in</string>
@@ -134,13 +115,6 @@
     <string name="DirectShareInfo">Mostra le chat recenti nel menu condividi</string>
     <!--cache view-->
     <string name="CacheSettings">Impostazioni cache</string>
-    <string name="LocalDatabase">Database locale</string>
-    <string name="LocalDatabaseClear">Eliminare i messaggi salvati nella cache?</string>
-    <string name="LocalDatabaseInfo">Eliminando il database locale, verranno cancellati i messaggi nella cache e il database verrà compresso per risparmiare spazio. Delta Chat ha bisogno di alcuni dati per funzionare, quindi il database non sarà azzerato.\n\nQuesta operazione può richiedere alcuni minuti.</string>
-    <string name="ClearMediaCache">Svuota cache</string>
-    <string name="CacheClear">Svuota</string>
-    <string name="LocalCache">Altri file</string>
-    <string name="CacheEmpty">Vuota</string>
     <string name="KeepMedia">Mantieni media</string>
     <string name="KeepMediaInfo">Foto, video e altri file dalle chat nel cloud che non hai <![CDATA[<b>aperto</b>]]>  in questo periodo verranno eliminati dal dispositivo per preservare lo spazio sul disco.</string>
     <string name="KeepMediaForever">Per sempre</string>
@@ -158,7 +132,6 @@
     <string name="PasscodeDoNotMatch">I codici non corrispondono</string>
     <string name="AutoLock">Blocco automatico</string>
     <string name="AutoLockInfo">Richiede il codice se lontano per del tempo.</string>
-    <string name="AutoLockInTime">tra %1$s</string>
     <string name="UnlockFingerprint">Sblocca con impronta digitale</string>
     <string name="FingerprintInfo">Conferma impronta digitale per continuare</string>
     <string name="FingerprintNotRecognized">Impronta digitale non riconosciuta. Riprova</string>
@@ -196,38 +169,23 @@
     <string name="BlurLinear">Lineare</string>
     <string name="BlurRadial">Radiale</string>
     <string name="DiscardChanges">Annullare le modifiche?</string>
-    <string name="ClearSearch">Cancellare la cronologia di ricerca?</string>
     <string name="ClearButton">Cancella</string>
     <string name="PickerPhotos">Foto</string>
     <string name="PickerVideo">Video</string>
-    <string name="AddCaption">Aggiungi una didascalia…</string>
-    <string name="PhotoCaption">Didascalia foto</string>
-    <string name="VideoCaption">Didascalia video</string>
-    <string name="Caption">Didascalia</string>
     <!--privacy settings-->
     <string name="PrivacySettings">Privacy e sicurezza</string>
-    <string name="PrivacyTitle">Privacy</string>
     <string name="SecurityTitle">Sicurezza</string>
     <!--edit video view-->
     <string name="SendVideo">Invia video</string>
-    <string name="OriginalVideo">Video originale</string>
-    <string name="EditedVideo">Video modificato</string>
-    <string name="CompressVideo">Comprimi video</string>
     <!--button titles-->
-    <string name="Next">Avanti</string>
-    <string name="Back">Indietro</string>
     <string name="Done">Fatto</string>
     <string name="Open">Apri</string>
-    <string name="Save">Salva</string>
     <string name="Cancel">Annulla</string>
-    <string name="Close">Chiudi</string>
-    <string name="Add">Aggiungi</string>
     <string name="Edit">Modifica</string>
     <string name="Send">Invia</string>
     <string name="CopyToClipboard">Copia</string>
     <string name="Delete">Elimina</string>
     <string name="Forward">Inoltra</string>
-    <string name="Retry">Riprova</string>
     <string name="FromCamera">Dalla fotocamera</string>
     <string name="FromGalley">Dalla galleria</string>
     <string name="Set">Imposta</string>
@@ -239,7 +197,6 @@
     <string name="AttachGif">GIF</string>
     <string name="AttachContact">Contatto</string>
     <string name="AttachDocument">File</string>
-    <string name="AttachSticker">Sticker</string>
     <string name="AttachVoiceMessage">Messaggio vocale</string>
     <string name="FromSelf">Tu</string>
     <!--Alert messages-->
@@ -308,7 +265,6 @@
     <string name="formatterDay12H">h:mm a</string>
     <string name="formatDateAtTime">%1$s alle %2$s</string>
     <string name="NewChat">Nuova chat</string>
-    <string name="Media">Media</string>
     <string name="InviteMenuEntry">Invita amici</string>
     <string name="ForwardToTitle">Seleziona chat …</string>
     <string name="DoneHint">Fatto.</string>

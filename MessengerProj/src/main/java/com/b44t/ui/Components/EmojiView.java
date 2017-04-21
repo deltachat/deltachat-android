@@ -747,7 +747,7 @@ public class EmojiView extends FrameLayout implements NotificationCenter.Notific
             }
 
             stickersEmptyView = new TextView(context);
-            stickersEmptyView.setText(LocaleController.getString("NoStickers", R.string.NoStickers));
+            stickersEmptyView.setText("ErrNoStickers");
             stickersEmptyView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 18);
             stickersEmptyView.setTextColor(0xff888888);
             stickersWrap.addView(stickersEmptyView, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER));

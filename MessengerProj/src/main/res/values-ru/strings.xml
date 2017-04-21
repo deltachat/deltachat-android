@@ -10,12 +10,8 @@
     <!--chats view-->
     <string name="Settings">Настройки</string>
     <string name="NewGroup">Новая группа</string>
-    <string name="Yesterday">Вчера</string>
     <string name="NoResult">Без результата.</string>
     <string name="NoChats">У вас нет чатов.</string>
-    <string name="WaitingForNetwork">Ожидание соединения …</string>
-    <string name="Connecting">Соединение …</string>
-    <string name="Updating">Обновление …</string>
     <string name="DeleteChat">Удалить чат</string>
     <string name="SelectChat">Выбрать чат …</string>
     <string name="Search">Поиск</string>
@@ -63,13 +59,10 @@
     <string name="ReplyToContact">Ответить %1$s</string>
     <!--contacts view-->
     <string name="NoContacts">Пока нет контактов.</string>
-    <string name="TodayAt">в</string>
-    <string name="YesterdayAt">Вчера в</string>
     <!--group create view-->
     <string name="SendMessageTo">Отправить сообщение …</string>
     <string name="EnterGroupNamePlaceholder">Введите название группы</string>
     <!--group info view-->
-    <string name="SharedMedia">Общие медиафайлы</string>
     <string name="AddMember">Добавить участника</string>
     <string name="Notifications">Уведомления</string>
     <string name="RemoveMember">Удалить участника</string>
@@ -78,19 +71,12 @@
     <string name="BlockContact">Блокировать контакт</string>
     <string name="DeleteContact">Удалить контакт</string>
     <string name="Info">Инфо</string>
-    <!--stickers view-->
-    <string name="Stickers">Стикеры</string>
-    <string name="AddStickers">Добавить Стикеры</string>
-    <string name="AddToStickers">Добавить к Стикерам</string>
-    <string name="StickersRemove">Удалить</string>
-    <string name="NoStickers">Пока нет стикеров</string>
     <!--settings view-->
     <string name="TextSize">Размер шрифта сообщений</string>
     <string name="EnableAnimations">Переходная анимация</string>
     <string name="UnblockContact">Разблокировать контакт</string>
     <string name="NoBlocked">Пока нет заблокированных контактов</string>
     <string name="DefaultForNormalMessages">Нормальное сообщение по умолчанию</string>
-    <string name="Alert">Оповещение</string>
     <string name="MessagePreview">Предварительный просмотр сообщения</string>
     <string name="DefaultForGroupMessages">Групповые сообщения по умолчанию</string>
     <string name="Sound">Звук</string>
@@ -108,10 +94,6 @@
     <string name="Help">Помощь</string>
     <string name="Enabled">Вкл</string>
     <string name="Disabled">Выкл</string>
-    <string name="NotificationsService">Поддерживать сервис </string>
-    <string name="NotificationsServiceInfo">Перезапускать приложение при завершении работы пользователем или системой. Это гарантирует, что приложение сможет показывать уведомления.</string>
-    <string name="NotificationsServiceConnection">Соединение в фоне</string>
-    <string name="NotificationsServiceConnectionInfo">Для получения уведомлений сохраняйте фоновое подключение с низким уровнем воздействия. Включить надежные уведомления</string>
     <string name="LedColor">Цвет Светодиода</string>
     <string name="BadgeNumber">Показывать кол-во на иконке, по возможности</string>
     <string name="Short">Коротко</string>
@@ -126,7 +108,6 @@
     <string name="NotificationsOther">Другие</string>
     <string name="InChatSound">Звуки в чате</string>
     <string name="SmartNotifications">Ограничение уведомлений</string>
-    <string name="SmartNotificationsInfo">Звук не более %1$s в пределах %2$s</string>
     <string name="SmartNotificationsSoundAtMost">Звук не более</string>
     <string name="SmartNotificationsTimes">раз</string>
     <string name="SmartNotificationsWithin">в пределах</string>
@@ -135,13 +116,6 @@
     <string name="DirectShareInfo">Показывать последние чаты в меню «Поделиться»</string>
     <!--cache view-->
     <string name="CacheSettings">Место хранения</string>
-    <string name="LocalDatabase">Локальная база данных</string>
-    <string name="LocalDatabaseClear">Очистить кешированные текстовые сообщения?</string>
-    <string name="LocalDatabaseInfo">Очистка локальной базы данных приведет к удалению текстов кэшированных сообщений и сжатию базы данных для сохранения внутреннего дискового пространства. Для работы приложения требуются некоторые данные, поэтому размер базы данных не достигнет нуля. \ N \ nЭта операция может занять несколько минут.</string>
-    <string name="ClearMediaCache">Очистить кэш</string>
-    <string name="CacheClear">Очистить</string>
-    <string name="LocalCache">Другие файлы</string>
-    <string name="CacheEmpty">Пусто</string>
     <string name="KeepMedia">Сохранить медиафайлы</string>
     <string name="KeepMediaInfo">Фотографии, видео и другие файлы из облачных чатов, которые у вас есть <![CDATA[<b>not accessed</b>]]> в течение этого периода, будут удалены с этого устройства, чтобы сэкономить место на диске.</string>
     <string name="KeepMediaForever">Навсегда</string>
@@ -159,7 +133,6 @@
     <string name="PasscodeDoNotMatch">Код блокировки не подходит</string>
     <string name="AutoLock">Автоблокировка</string>
     <string name="AutoLockInfo">Необходим код блокировки если лимит времени превышен.</string>
-    <string name="AutoLockInTime">в %1$s</string>
     <string name="UnlockFingerprint">Раблокировать с помощью отпечатка пальца</string>
     <string name="FingerprintInfo">Подтвердить отпечаток пальца для продолжения</string>
     <string name="FingerprintNotRecognized">Отпечаток пальца не опознан. Повторите снова</string>
@@ -197,38 +170,23 @@
     <string name="BlurLinear">Линейность</string>
     <string name="BlurRadial">Радиальный</string>
     <string name="DiscardChanges">Отменить изменения?</string>
-    <string name="ClearSearch">Очистить историю поиска?</string>
     <string name="ClearButton">Очистить</string>
     <string name="PickerPhotos">Фото</string>
     <string name="PickerVideo">Видео</string>
-    <string name="AddCaption">Добавить подпись …</string>
-    <string name="PhotoCaption">Пподпись под картинкой</string>
-    <string name="VideoCaption">Подпись к видео</string>
-    <string name="Caption">Подпись</string>
     <!--privacy settings-->
     <string name="PrivacySettings">Конфиденциальность и безопасность</string>
-    <string name="PrivacyTitle">Конфиденциальность</string>
     <string name="SecurityTitle">Безопасность</string>
     <!--edit video view-->
     <string name="SendVideo">Отправить Видео</string>
-    <string name="OriginalVideo">Оригинальное Видео</string>
-    <string name="EditedVideo">Редактированное Видео</string>
-    <string name="CompressVideo">Сжать Видео</string>
     <!--button titles-->
-    <string name="Next">Далее</string>
-    <string name="Back">Назад</string>
     <string name="Done">Готово</string>
     <string name="Open">Открыть</string>
-    <string name="Save">Сохранить</string>
     <string name="Cancel">Отменить</string>
-    <string name="Close">Закрыть</string>
-    <string name="Add">Добавить</string>
     <string name="Edit">Редактировать</string>
     <string name="Send">Отправить</string>
     <string name="CopyToClipboard">Копировать в буфер обмена</string>
     <string name="Delete">Удалить</string>
     <string name="Forward">Переслать</string>
-    <string name="Retry">Повторить</string>
     <string name="FromCamera">Из камеры</string>
     <string name="FromGalley">Из галереи</string>
     <string name="Set">Установить</string>
@@ -240,7 +198,6 @@
     <string name="AttachGif">GIF</string>
     <string name="AttachContact">Контакт</string>
     <string name="AttachDocument">Файл</string>
-    <string name="AttachSticker">Стикер</string>
     <string name="AttachVoiceMessage">Голосовое сообщение</string>
     <string name="FromSelf">Мне</string>
     <!--Alert messages-->
@@ -255,16 +212,10 @@
     <string name="PermissionContacts">Delta Chat необходим доступ к вашим контактам, чтобы вы могли общаться со своими друзьями на всех ваших устройствах.</string>
     <string name="PermissionStorage">Delta Chat необходим доступ к вашему хранилищу, чтобы вы могли отправлять и сохранять фотографии, видео, музыку и другие носители.</string>
     <string name="PermissionNoAudio">Delta Chat необходим доступ к вашему микрофону, чтобы вы могли отправлять голосовые сообщения.</string>
-
-    <!-- Translators: PermissionBattery should refer to the system dialog
-    "Ignore battery optimizations?
-    Let app Delta Chat stay connected in the backgound? This may use more battery."  -->
-    <string name="PermissionBattery">Delta Chat должен оставаться подключенным в фоновом режиме для получения сообщений с вашего сервера. \ N \ nЭто нормальное, энергосберегающее и обычное поведение, которое, однако, блокируется оптимизацией батареи. \ N \ nАдаптировать настройки?</string>
-
     <string name="PermissionOpenSettings">Адаптировать настройки</string>
     <!--Intro view-->
     <string name="Intro1Headline">Delta Chat</string>
-    <string name="Intro1Message">Мессенджер с <![CDATA[<b>самым большим диапазоном охвата</b>]]> в мире. <![CDATA[<br /><b>Бесплатно</b>]]> и <![CDATA[<b>безопасно</b>]]>.</string>
+    <string name="Intro1Message">Мессенджер с <![CDATA[<b>самым большим диапазоном охвата</b>]]> в мире. <![CDATA[<br/><b>Бесплатно</b>]]> и <![CDATA[<b>безопасно</b>]]>.</string>
 
     <string name="Intro2Headline">Независимый</string>
     <string name="Intro2Message"><![CDATA[<b>Независимость</b>]]> от иностранных компьютеров или служб. Приложение использует только ваш почтовый сервер.</string>
@@ -359,11 +310,8 @@
     <string name="formatDateAtTime">%1$s в %2$s</string>
     <string name="AccountSettings">Настройки аккаунта</string>
     <string name="MyAccount">Мой аккаунт</string>
-    <string name="Yes">Да</string>
-    <string name="No">Нет</string>
     <string name="MyName">Моё имя</string>
     <string name="MyNameExplain">Ваше имя, при просмотре получателями.\n\nЕсли вы не введёте имя здесь, получатели получат только ваш адрес электронной почты.</string>
-    <string name="MyEmailAddress">Адрес моей электронной почты</string>
     <string name="Password">Пароль</string>
     <string name="SmtpPassword">SMTP пароль</string>
     <string name="FromAbove">Сверху</string>
@@ -376,7 +324,6 @@
     <string name="ImapPort">IMAP порт</string>
     <string name="InboxHeadline">Входящие</string>
     <string name="OutboxHeadline">Исходящие</string>
-    <string name="BasicSettings">Базовые настройки</string>
     <string name="MyAccountExplain">Для известных поставщиков электронной почты дополнительные настройки определяются автоматически.</string>
     <string name="MyAccountExplain2" >Иногда, <![CDATA[<b>]]>IMAP должен быть включен<![CDATA[</b>]]> в веб-интерфейсе электронной почты.\n\nВ случае затруднений, обратитесь к своему поставщику электронной почты или компентентным друзьям.</string>
     <string name="AccountNotConfigured">Аккаунт не настроен</string>
@@ -384,7 +331,6 @@
     <string name="NotSet">Не задано</string>
     <string name="NewChat">Новый чат</string>
     <string name="Deaddrop">Почтовый ящик</string>
-    <string name="Media">Медиа</string>
     <string name="DeaddropInChatlist">Показывать почтовый ящик в чате</string>
     <string name="MuteAlways">Всегда отключено</string>
     <string name="AskStartChatWith">Начать чат с <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>?</string>
@@ -401,8 +347,6 @@
     the string needed for video time+size (0:00, 12,3 Mib) -->
     <string name="OneMoment">Один момент …</string>
     <string name="NoChatsHelp">Начните обмен сообщениями, нажав кнопку нового чата в нижнем правом углу или коснитесь кнопки меню для получения дополнительных параметров.</string>
-    <string name="ConfiguringAccount">Настройка учетной записи …</string>
-    <string name="CannotConnect">Не удается подключиться, проверьте конфигурацию.</string>
     <string name="Intro7Message"><![CDATA[<b>Delta Chat</b>]]> безопасен для использования в бизнесе, основанным на совместимых стандартах.</string>
     <string name="InviteMenuEntry">Отправить приглашения</string>
     <string name="InviteText">Я\ использую Delta Chat messenger сейчас - %1$s - вы можете написать мне тоже %2$s</string>

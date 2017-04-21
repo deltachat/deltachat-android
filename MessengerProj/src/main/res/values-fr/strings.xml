@@ -8,12 +8,8 @@
     <!--chats view-->
     <string name="Settings">Paramètres</string>
     <string name="NewGroup">Nouveau groupe</string>
-    <string name="Yesterday">hier</string>
     <string name="NoResult">Aucun résultat.</string>
     <string name="NoChats">Aucune conversation.</string>
-    <string name="WaitingForNetwork">En attente du réseau…</string>
-    <string name="Connecting">Connexion…</string>
-    <string name="Updating">Mise à jour…</string>
     <string name="DeleteChat">Supprimer la conversation</string>
     <string name="SelectChat">Selectionner la conversation…</string>
     <string name="Search">Rechercher</string>
@@ -47,11 +43,11 @@
     <string name="TypeMessage">Message</string>
     <string name="SlideToCancel">GLISSER POUR ANNULER</string>
     <string name="SaveToDownloads">Enregistrer dans les téléchargements</string>
-    <string name="DeleteGif">Supprimer GIF ?</string>
+    <string name="DeleteGif">Supprimer GIF?</string>
     <string name="SaveToMusic">Enregistrer dans les musiques</string>
     <string name="Share">Partager</string>
     <string name="SendItems">Envoyer %1$s</string>
-    <string name="ClearRecentEmoji">Vider les emokis récent ?</string>
+    <string name="ClearRecentEmoji">Vider les emokis récent?</string>
     <string name="AddShortcut">Ajouter le widget à l\'écran d\'accueil</string>
     <string name="ShortcutAdded">Widget ajouté à l\'écran d\'accueil</string>
     <!--notification-->
@@ -60,13 +56,10 @@
     <string name="ReplyToContact">Répondre à %1$s</string>
     <!--contacts view-->
     <string name="NoContacts">Aucun utilisateur pour le moment.</string>
-    <string name="TodayAt">à</string>
-    <string name="YesterdayAt">hier à</string>
     <!--group create view-->
     <string name="SendMessageTo">Envoyer un message à…</string>
     <string name="EnterGroupNamePlaceholder">Saisissez le nom du groupe</string>
     <!--group info view-->
-    <string name="SharedMedia">Media partagés</string>
     <string name="AddMember">Ajouter un membre</string>
     <string name="Notifications">Notifications</string>
     <string name="RemoveMember">Supprimer un membre</string>
@@ -75,19 +68,12 @@
     <string name="BlockContact">Bloquer le contact</string>
     <string name="DeleteContact">Supprimer le contact</string>
     <string name="Info">Info</string>
-    <!--stickers view-->
-    <string name="Stickers">Autocollants</string>
-    <string name="AddStickers">Ajouter des autocollants</string>
-    <string name="AddToStickers">Ajouter aux autocollants</string>
-    <string name="StickersRemove">Effacer</string>
-    <string name="NoStickers">Aucun autocollant pour le moment</string>
     <!--settings view-->
     <string name="TextSize">Taille de la police des messages</string>
     <string name="EnableAnimations">Animation des transitions</string>
     <string name="UnblockContact">Débloquer le contact</string>
     <string name="NoBlocked">Aucun contact bloqué</string>
     <string name="DefaultForNormalMessages">Messages normaux</string>
-    <string name="Alert">Alerte</string>
     <string name="MessagePreview">Prévisualisation du message</string>
     <string name="DefaultForGroupMessages">Message de groupe</string>
     <string name="Sound">Son</string>
@@ -105,10 +91,6 @@
     <string name="Help">Aide</string>
     <string name="Enabled">Activé</string>
     <string name="Disabled">Désactivé</string>
-    <string name="NotificationsService">Service de continuité</string>
-    <string name="NotificationsServiceInfo">Redémarre l\'application quand elle est arrêtée par le système ou l\'utilisateur. Vous serez assurés de recevoir les notifications.</string>
-    <string name="NotificationsServiceConnection">Connexion en arrière-plan</string>
-    <string name="NotificationsServiceConnectionInfo">Garde une connexion à faible impact en arrière-plan pour recevoir les notifications. Activer pour des notification fiables.</string>
     <string name="LedColor">Couleur de la notification par LED</string>
     <string name="BadgeNumber">Montrer le compte dans l\'icône, si possible</string>
     <string name="Short">Court</string>
@@ -123,7 +105,6 @@
     <string name="NotificationsOther">Autres</string>
     <string name="InChatSound">Sons dans la conversation</string>
     <string name="SmartNotifications">Limiter les notifications</string>
-    <string name="SmartNotificationsInfo">Notifications sonore au maximum %1$s fois toutes les %2$s</string>
     <string name="SmartNotificationsSoundAtMost">Notifier au maximum</string>
     <string name="SmartNotificationsTimes">fois</string>
     <string name="SmartNotificationsWithin">toutes les</string>
@@ -132,13 +113,6 @@
     <string name="DirectShareInfo">Montrer les conversations récentes dans le menu de partage</string>
     <!--cache view-->
     <string name="CacheSettings">Stockage</string>
-    <string name="LocalDatabase">Base de données locale</string>
-    <string name="LocalDatabaseClear">Effacer tous les messages cachés localement ?</string>
-    <string name="LocalDatabaseInfo">Effacer la base de données locale va supprimer les textes des messages cachés et compresser la base de données pour gagner de l\'espace disque sur le stockage interne. L\'application a besoin de certaines données pour fonctionner, donc, la base de données n\'aura pas un taille nulle.\n\nL\'opération peut prendre plusieurs minutes.</string>
-    <string name="ClearMediaCache">Effacer le cache</string>
-    <string name="CacheClear">Effacer</string>
-    <string name="LocalCache">Autres fichiers</string>
-    <string name="CacheEmpty">Vide</string>
     <string name="KeepMedia">Conserver les fichier média</string>
     <string name="KeepMediaInfo">Les photos, vidéos et autres fichiers venant des conversations du cloud que vous n\'avez <![CDATA[<b>pas</b>]]> consultés pendant cette période seront supprimés pour libérer de l\'espace.</string>
     <string name="KeepMediaForever">Toujours</string>
@@ -156,7 +130,6 @@
     <string name="PasscodeDoNotMatch">Les mots de passe ne correspondent pas</string>
     <string name="AutoLock">Verrouillage automatique</string>
     <string name="AutoLockInfo">Redemande le mot de passe en cas d\'inactivité prolongée.</string>
-    <string name="AutoLockInTime">dans %1$s</string>
     <string name="UnlockFingerprint">Déverrouiller avec votre empreinte digitale</string>
     <string name="FingerprintInfo">Confirmer votre empreinte digitale pour continuer</string>
     <string name="FingerprintNotRecognized">Empreinte non reconnue. Essayer encore</string>
@@ -193,39 +166,24 @@
     <string name="BlurOff">Désactiver</string>
     <string name="BlurLinear">Linéaire</string>
     <string name="BlurRadial">Radial</string>
-    <string name="DiscardChanges">Ignorer les changements ?</string>
-    <string name="ClearSearch">Effacer l\'historique de recherche ?</string>
+    <string name="DiscardChanges">Ignorer les changements?</string>
     <string name="ClearButton">Effacer</string>
     <string name="PickerPhotos">Photos</string>
     <string name="PickerVideo">Vidéo</string>
-    <string name="AddCaption">Ajouter une légende…</string>
-    <string name="PhotoCaption">Légende de photo</string>
-    <string name="VideoCaption">Légende de vidéo</string>
-    <string name="Caption">Légende</string>
     <!--privacy settings-->
     <string name="PrivacySettings">Vie privée et sécurité</string>
-    <string name="PrivacyTitle">Vie privée</string>
     <string name="SecurityTitle">Securité</string>
     <!--edit video view-->
     <string name="SendVideo">Envoyer la vidéo</string>
-    <string name="OriginalVideo">Vidéo originale</string>
-    <string name="EditedVideo">Vidéos modifiées</string>
-    <string name="CompressVideo">Compresser la vidéo</string>
     <!--button titles-->
-    <string name="Next">Suivant</string>
-    <string name="Back">Précédent</string>
     <string name="Done">Fait</string>
     <string name="Open">Ouvrir</string>
-    <string name="Save">Enregistrer</string>
     <string name="Cancel">Annuler</string>
-    <string name="Close">Fermer</string>
-    <string name="Add">Ajouter</string>
     <string name="Edit">Modifier</string>
     <string name="Send">Envoyer</string>
     <string name="CopyToClipboard">Copier vers le presse-papier</string>
     <string name="Delete">Supprimer</string>
     <string name="Forward">Renvoyer</string>
-    <string name="Retry">Réessayer</string>
     <string name="FromCamera">Depuis la caméra</string>
     <string name="FromGalley">Depuis la galerie</string>
     <string name="Set">Définir</string>
@@ -237,17 +195,16 @@
     <string name="AttachGif">GIF</string>
     <string name="AttachContact">Contact</string>
     <string name="AttachDocument">Fichier</string>
-    <string name="AttachSticker">Autocollant</string>
     <string name="AttachVoiceMessage">Message vocal</string>
     <string name="FromSelf">Moi</string>
     <!--Alert messages-->
     <string name="NoHandleAppInstalled">Vous n\'avez pas d\'application qui peut gérer le type \'%1$s\', veuillez en installer un pour continuer</string>
     <string name="ContactAlreadyInGroup">Ce contact est déjà dans ce groupe</string>
     <string name="ForwardMessagesTo">Renvoyer les messages sélectionnés à <![CDATA[<b>]]>%1$s<![CDATA[</b>]]> ?</string>
-    <string name="SendMessagesTo">Envoyer les messages à <![CDATA[<b>]]>%1$s<![CDATA[</b>]]> ?</string>
-    <string name="AreYouSureDeleteThisChat">Êtes-vous sûr de vouloir supprimer cette conversation ? La conversation n\'apparaîtra plus dans la liste des conversations, mais les messages resteront sur le serveur.</string>
-    <string name="AreYouSureBlockContact">Êtes-vous sûr de vouloir bloquer cet utilisateur ?</string>
-    <string name="AreYouSureDeleteContact">Êtes-vous sûr de vouloir supprimer cet utilisateur ?</string>
+    <string name="SendMessagesTo">Envoyer les messages à <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>?</string>
+    <string name="AreYouSureDeleteThisChat">Êtes-vous sûr de vouloir supprimer cette conversation? La conversation n\'apparaîtra plus dans la liste des conversations, mais les messages resteront sur le serveur.</string>
+    <string name="AreYouSureBlockContact">Êtes-vous sûr de vouloir bloquer cet utilisateur?</string>
+    <string name="AreYouSureDeleteContact">Êtes-vous sûr de vouloir supprimer cet utilisateur?</string>
     <!--permissions-->
     <string name="PermissionContacts">Delta Chat a besoin d\'accéder aux contacts de façon à pouvoir vous connecter avec vos amis avec tous vos appareils.</string>
     <string name="PermissionStorage">Delta Chat a besoin d\'accéder au stockage pour envoyer vos photos, vidéos, musiques et autres médias.</string>
@@ -334,11 +291,8 @@
     <string name="formatDateAtTime">%1$s à %2$s</string>
     <string name="AccountSettings">Paramètres du compte</string>
     <string name="MyAccount">Mon compte</string>
-    <string name="Yes">Oui</string>
-    <string name="No">Non</string>
     <string name="MyName">Mon nom</string>
     <string name="MyNameExplain">Votre nom, tel que montré par les destinataires.\n\nSi vous ne saisissez pas un nom, les destinataires ne verront que votre adresse e-mail renseignée dans les paramètres de compte.</string>
-    <string name="MyEmailAddress">Mon adresse e-mail</string>
     <string name="Password">Mot de passe</string>
     <string name="SmtpPassword">Mot de passe SMTP</string>
     <string name="FromAbove">De ci-dessus</string>
@@ -351,7 +305,6 @@
     <string name="ImapPort">Port IMAP</string>
     <string name="InboxHeadline">Boîte de reception</string>
     <string name="OutboxHeadline">Boîte d\'envoi</string>
-    <string name="BasicSettings">Paramètres de base</string>
     <string name="MyAccountExplain">Pour les fournisseurs e-mails connus, les paramètres suivants sont déterminés automatiquement.</string>
     <string name="MyAccountExplain2" >Parfois, les protocoles IMAP/SMTP doivent êtres activés depuis l\'interface web.\n\nSi vous rencontrez des problème, demandez à votre fournisseur ou à vos amis.</string>
     <string name="AccountNotConfigured">Compte non configuré</string>
@@ -359,10 +312,9 @@
     <string name="NotSet">Non défini</string>
     <string name="NewChat">Nouvelle conversation</string>
     <string name="Deaddrop">Boîte de reception</string>
-    <string name="Media">Média</string>
     <string name="DeaddropInChatlist">Montrer la boîte de reception dans la liste des conversations</string>
     <string name="MuteAlways">Toujours muet</string>
-    <string name="AskStartChatWith">Lancer une conversation avec <![CDATA[<b>]]>%1$s<![CDATA[</b>]]> ?</string>
+    <string name="AskStartChatWith">Lancer une conversation avec <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>?</string>
     <string name="DeaddropHint">Pour lancer une conversation, cliquez sur le bouton de réponse en forme de flèche.</string>
     <string name="NotYetImplemented">This function is not available or incomplete.</string>
     <string name="DefaultStatusText">Envoyé avec ma messagerie Delta Chat</string>
@@ -374,13 +326,11 @@
     <string name="ViewProfile">Voir le profil</string>
     <string name="OneMoment">Un moment…</string>
     <string name="NoChatsHelp">Lancez une conversation en appuyant sur le bouton dans le coin inférieur droit ou appuyez sur le bouton menu pour plus d\'options.</string>
-    <string name="ConfiguringAccount">Configuration du compte en cours…</string>
-    <string name="CannotConnect">Connexion impossible, veuillez vérifier la configuration.</string>
     <string name="Intro7Message"><![CDATA[<b>Delta Chat</b>]]> est sûr pour une utilisation professionnelle, compatible et basé sur des standards.</string>
     <string name="InviteMenuEntry">Envoyer des invitations</string>
     <string name="InviteText">J\'utilise la messagerie Delta Chat maintenant - %1$s - vous pouvez me contacter à %2$s</string>
     <string name="AdvancedSettings">Paramètres avancés</string>
-    <string name="AskResetNotifications" >Êtes-vous sûr de vouloir réinitialiser toutes les paramètres de notification et les sons de cette page et de vos contacts et groups ?</string>
+    <string name="AskResetNotifications" >Êtes-vous sûr de vouloir réinitialiser toutes les paramètres de notification et les sons de cette page et de vos contacts et groups?</string>
     <string name="AttachFiles">Joindre des fichiers</string>
     <string name="ErrGroupNameEmpty">Merci de saisir un nom pour le groupe.</string>
     <string name="MsgNewGroupDraftHint">Écrivez un premier message pour permettre aux autres de répondre dans ce group.\n\n• C\'est bon si tout les membres n\'utilisent pas Delta Chat.\n\n• La livraison du premier message peut prendre un moment.</string>
@@ -389,8 +339,8 @@
     <string name="MsgGroupImageChanged">L\'image du groupe a changé.</string>
     <string name="MsgMemberAddedToGroup">Le membre %1$s vient d\'être ajouté.</string>
     <string name="MsgMemberRemovedFromToGroup">Le membre %1$s vient d\'être retiré.</string>
-    <string name="AskAddMemberToGroup">Voulez-vous ajouter <![CDATA[<b>]]>%1$s<![CDATA[</b>]]> au groupe ?</string>
-    <string name="AskRemoveMemberFromGroup">Voulez-vous retirer <![CDATA[<b>]]>%1$s<![CDATA[</b>]]> du groupe ?</string>
+    <string name="AskAddMemberToGroup">Voulez-vous ajouter <![CDATA[<b>]]>%1$s<![CDATA[</b>]]> au groupe?</string>
+    <string name="AskRemoveMemberFromGroup">Voulez-vous retirer <![CDATA[<b>]]>%1$s<![CDATA[</b>]]> du groupe?</string>
     <string name="ErrSelfNotInGroup">Vous devez être membre du groupe pour effectuer cette action.</string>
     <string name="MsgGroupLeft">Groupe quitté.</string>
     <string name="NoMessagesHint">Envoyez un message à <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>:\n\n• C\'est bon si <![CDATA[<b>]]>%2$s<![CDATA[</b>]]> .n\'utilise pas Delta Chat\n\n• La livraison du premier message peut prendre un moment.</string>

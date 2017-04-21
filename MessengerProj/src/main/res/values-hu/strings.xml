@@ -10,12 +10,8 @@
     <!--chats view-->
     <string name="Settings">Beállítások</string>
     <string name="NewGroup">Új csoport</string>
-    <string name="Yesterday">tegnap</string>
     <string name="NoResult">Nincs találat.</string>
     <string name="NoChats">Még nincs beszélgetés.</string>
-    <string name="WaitingForNetwork">Várakozás a hálózatra…</string>
-    <string name="Connecting">Kapcsolódás…</string>
-    <string name="Updating">Frissítés…</string>
     <string name="DeleteChat">Beszélgetés törlése</string>
     <string name="SelectChat">Beszélgetés választása…</string>
     <string name="Search">Keresés</string>
@@ -63,13 +59,10 @@
     <string name="ReplyToContact">Válasz %1$s partnernek</string>
     <!--contacts view-->
     <string name="NoContacts">Még nincs partner.</string>
-    <string name="TodayAt">ekkor:</string>
-    <string name="YesterdayAt">tegnap ekkor:</string>
     <!--group create view-->
     <string name="SendMessageTo">Üzenet küldése…</string>
     <string name="EnterGroupNamePlaceholder">Csoport neve</string>
     <!--group info view-->
-    <string name="SharedMedia">Megosztott média</string>
     <string name="AddMember">Tag hozzáadása</string>
     <string name="Notifications">Értesítések</string>
     <string name="RemoveMember">Tag eltávolítása</string>
@@ -78,19 +71,12 @@
     <string name="BlockContact">Partner letiltása</string>
     <string name="DeleteContact">Partner törlése</string>
     <string name="Info">Infó</string>
-    <!--stickers view-->
-    <string name="Stickers">Matricák</string>
-    <string name="AddStickers">Matrica hozzáadása</string>
-    <string name="AddToStickers">Hozzáadás a matricákhoz</string>
-    <string name="StickersRemove">Törlés</string>
-    <string name="NoStickers">Még nincs matrica</string>
     <!--settings view-->
     <string name="TextSize">Üzenetek betűmérete</string>
     <string name="EnableAnimations">Áttűnés animációja</string>
     <string name="UnblockContact">Tiltás feloldása</string>
     <string name="NoBlocked">Nincs letiltott partner</string>
     <string name="DefaultForNormalMessages">Normál üzenetek</string>
-    <string name="Alert">Figyelmeztetés</string>
     <string name="MessagePreview">Üzenet előnézet</string>
     <string name="DefaultForGroupMessages">Csoportüzenetek</string>
     <string name="Sound">Hang</string>
@@ -108,10 +94,6 @@
     <string name="Help">Súgó</string>
     <string name="Enabled">Be</string>
     <string name="Disabled">Ki</string>
-    <string name="NotificationsService">Ébrentartási szolgáltatás</string>
-    <string name="NotificationsServiceInfo">Az alkalmazás újraindítása ha a rendszer vagy a felhasználó leállította. Így az alkalmazás mindig meg tudja jeleníteni az értesítéseket.</string>
-    <string name="NotificationsServiceConnection">Háttérkapcsolat</string>
-    <string name="NotificationsServiceConnectionInfo">Tartson fenn nem jelentős háttérkapcsolatot az értesítések fogadásához. Az értesítések megbízható működéséhez érdemes bekapcsolni.</string>
     <string name="LedColor">LED színe</string>
     <string name="BadgeNumber">Ha lehetséges, számok megjelenítése az ikonon</string>
     <string name="Short">Rövid</string>
@@ -126,7 +108,6 @@
     <string name="NotificationsOther">Egyéb</string>
     <string name="InChatSound">Hangok beszélgetésen belül</string>
     <string name="SmartNotifications">Értesítések korlátja</string>
-    <string name="SmartNotificationsInfo">%2$s idő alatt legfeljebb %1$s hangjelzés</string>
     <string name="SmartNotificationsSoundAtMost">Hangjelzés legfeljebb</string>
     <string name="SmartNotificationsTimes">alkalommal</string>
     <string name="SmartNotificationsWithin"> </string>
@@ -135,13 +116,6 @@
     <string name="DirectShareInfo">A megosztás menüben a legutóbbi beszélgetések mutatása</string>
     <!--cache view-->
     <string name="CacheSettings">Tárhely</string>
-    <string name="LocalDatabase">Helyi adatbázis</string>
-    <string name="LocalDatabaseClear">Törlöd a gyorsítótárazott szövegüzeneteket?</string>
-    <string name="LocalDatabaseInfo">A helyi adatbázis tisztítása törli a gyorsítótárazott üzenetek szövegét és tömöríti az adatbázist, hogy belső tárhelyet takarítson meg. Az alkalmazás működéséhez szükség van némi adatra, ezért nem lesz teljesen üres az adatbázis.\n\nEz a művelet pár percig is eltarthat.</string>
-    <string name="ClearMediaCache">Gyorsítótár törlése</string>
-    <string name="CacheClear">Törlés</string>
-    <string name="LocalCache">Egyéb fájlok</string>
-    <string name="CacheEmpty">Üres</string>
     <string name="KeepMedia">Média megtartása</string>
     <string name="KeepMediaInfo">Azok a fényképek, videók és a felhős beszélgetések, amelyeket <![CDATA[<b>nem nyitottál meg</b>]]> ez idő alatt, helymegtakarítás végett törlődnek a készülékről.</string>
     <string name="KeepMediaForever">Örökké</string>
@@ -159,7 +133,6 @@
     <string name="PasscodeDoNotMatch">A jelszavak nem egyeznek</string>
     <string name="AutoLock">Automatikus lezárás</string>
     <string name="AutoLockInfo">Megadott időnyi távollét után jelszót kér.</string>
-    <string name="AutoLockInTime">%1$s után</string>
     <string name="UnlockFingerprint">Feloldás ujjlenyomattal</string>
     <string name="FingerprintInfo">A feloldáshoz add meg az ujjlenyomatod!</string>
     <string name="FingerprintNotRecognized">Nem sikerült olvasni az ujjlenyomatot. Próbáld újra!</string>
@@ -197,38 +170,23 @@
     <string name="BlurLinear">Lineáris</string>
     <string name="BlurRadial">Sugaras</string>
     <string name="DiscardChanges">Elveted a módosításokat?</string>
-    <string name="ClearSearch">Törlöd a keresési előzményeket?</string>
     <string name="ClearButton">Törlés</string>
     <string name="PickerPhotos">Fényképek</string>
     <string name="PickerVideo">Videó</string>
-    <string name="AddCaption">Felirat hozzáadása …</string>
-    <string name="PhotoCaption">Felirat fényképhez</string>
-    <string name="VideoCaption">Felirat videóhoz</string>
-    <string name="Caption">Felirat</string>
     <!--privacy settings-->
     <string name="PrivacySettings">Adatvédelem és biztonság</string>
-    <string name="PrivacyTitle" tools:keep="@string/PrivacyTitle">Adatvédelem</string>
     <string name="SecurityTitle">Biztonság</string>
     <!--edit video view-->
     <string name="SendVideo">Videó küldése</string>
-    <string name="OriginalVideo">Eredeti videó</string>
-    <string name="EditedVideo">Szerkesztett videó</string>
-    <string name="CompressVideo">Videó tömörítése</string>
     <!--button titles-->
-    <string name="Next">Következő</string>
-    <string name="Back">Előző</string>
     <string name="Done">Kész</string>
     <string name="Open">Megnyitás</string>
-    <string name="Save">Mentés</string>
     <string name="Cancel">Mégse</string>
-    <string name="Close">Bezárás</string>
-    <string name="Add">Hozzáadás</string>
     <string name="Edit">Szerkesztés</string>
     <string name="Send">Küldés</string>
     <string name="CopyToClipboard">Vágólapra másolás</string>
     <string name="Delete">Törlés</string>
     <string name="Forward">Továbbítás</string>
-    <string name="Retry">Újra próbál</string>
     <string name="FromCamera">Kamerával</string>
     <string name="FromGalley">Galériából</string>
     <string name="Set">Beállítás</string>
@@ -240,7 +198,6 @@
     <string name="AttachGif">GIF</string>
     <string name="AttachContact">Névjegy</string>
     <string name="AttachDocument">Fájl</string>
-    <string name="AttachSticker">Matrica</string>
     <string name="AttachVoiceMessage">Hangüzenet</string>
     <string name="FromSelf">Én</string>
     <!--Alert messages-->
@@ -353,11 +310,8 @@
     <string name="formatDateAtTime">%1$s %2$s</string>
     <string name="AccountSettings">Fiókbeállítások</string>
     <string name="MyAccount">Fiókom</string>
-    <string name="Yes">Igen</string>
-    <string name="No">Nem</string>
     <string name="MyName">Nevem</string>
     <string name="MyNameExplain">A címzetteknek megjelenő neved.\n\nHa nem adsz meg nevet, a címzett csak a fiókbeállításoknál megadott e-mail címedet látja.</string>
-    <string name="MyEmailAddress">E-mail címem</string>
     <string name="Password">Jelszó</string>
     <string name="SmtpPassword">SMTP jelszó</string>
     <string name="FromAbove">fentről másolva</string>
@@ -370,7 +324,6 @@
     <string name="ImapPort">IMAP port</string>
     <string name="InboxHeadline">Bejövő</string>
     <string name="OutboxHeadline">Kimenő</string>
-    <string name="BasicSettings">Alap beállítások</string>
     <string name="MyAccountExplain">Ismert e-mail szolgáltató esetén az alábbi beállításokat automatikusan meghatározzuk.</string>
     <string name="MyAccountExplain2" >Előfordulhat, hogy az IMAP/SMTP szolgáltatást az email fiókod webes felületén engedélyezni kell.\n\nHa nem megy, kérj segítséget a szolgáltatótól vagy a barátaidtól.</string>
     <string name="AccountNotConfigured">A fiók nincs beállítva</string>
@@ -378,7 +331,6 @@
     <string name="NotSet">Nincs beállítva</string>
     <string name="NewChat">Új beszélgetés</string>
     <string name="Deaddrop">Levelesláda</string>
-    <string name="Media">Média</string>
     <string name="DeaddropInChatlist">Levelesláda megjelenítése a beszélgetéslistában</string>
     <string name="MuteAlways">Mindig lenémítva</string>
     <string name="AskStartChatWith">Beszélgetést indítasz <![CDATA[<b>]]>%1$s<![CDATA[</b>]]> partnerrel?</string>
@@ -395,8 +347,6 @@
     the string needed for video time+size (0:00, 12,3 Mib) -->
     <string name="OneMoment">Egy pillanat…</string>
     <string name="NoChatsHelp">Kezdj beszélgetni a jobb alsó \"új beszélgetés\" gombbal vagy több lehetőségért nyomd meg a menü gombot.</string>
-    <string name="ConfiguringAccount">Fiók beállítása…</string>
-    <string name="CannotConnect">Nem sikerül csatlakozni, ellenőrizd a beállításokat.</string>
     <string name="Intro7Message">A <![CDATA[<b>Delta Chat</b>]]> üzleti használatra is biztonságos, kompatibilis és szabványokra épül.</string>
     <string name="InviteMenuEntry">Meghívó küldése</string>
     <string name="InviteText">A Delta Chat nevű programmal chatelek - %1$s - írhatsz nekem ezen a címen: %2$s</string>

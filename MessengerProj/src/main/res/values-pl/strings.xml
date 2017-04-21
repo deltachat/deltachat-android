@@ -10,12 +10,8 @@
     <!--chats view-->
     <string name="Settings">Ustawienia</string>
     <string name="NewGroup">Nowa grupa</string>
-    <string name="Yesterday">wczoraj</string>
     <string name="NoResult">Nie ma wyników.</string>
     <string name="NoChats">Nie ma czatów.</string>
-    <string name="WaitingForNetwork">Czekam na sieć…</string>
-    <string name="Connecting">Łączenie…</string>
-    <string name="Updating">Aktualizowanie…</string>
     <string name="DeleteChat">Usuń czat</string>
     <string name="SelectChat">Wybierz czat…</string>
     <string name="Search">Szukaj</string>
@@ -63,13 +59,10 @@
     <string name="ReplyToContact">Odpowiedz kontaktowi %1$s</string>
     <!--contacts view-->
     <string name="NoContacts">Nie ma kontaktów.</string>
-    <string name="TodayAt">o</string>
-    <string name="YesterdayAt">wczoraj o</string>
     <!--group create view-->
     <string name="SendMessageTo">Wyślij wiadomość do…</string>
     <string name="EnterGroupNamePlaceholder">Podaj nazwę grupy</string>
     <!--group info view-->
-    <string name="SharedMedia">Udostępnione media</string>
     <string name="AddMember">Dodaj członka</string>
     <string name="Notifications">Powiadomienia</string>
     <string name="RemoveMember">Usuń członka</string>
@@ -78,19 +71,12 @@
     <string name="BlockContact">Blokuj kontakt</string>
     <string name="DeleteContact">Usuń kontakt</string>
     <string name="Info">Informacje</string>
-    <!--stickers view-->
-    <string name="Stickers">Naklejki</string>
-    <string name="AddStickers">Dodaj naklejki</string>
-    <string name="AddToStickers">Dodaj do naklejek</string>
-    <string name="StickersRemove">Usuń</string>
-    <string name="NoStickers">Nie ma naklejek</string>
     <!--settings view-->
     <string name="TextSize">Rozmiar czcionki w wiadomości</string>
     <string name="EnableAnimations">Animacja przejścia</string>
     <string name="UnblockContact">Odblokuj kontakt</string>
     <string name="NoBlocked">Nie ma zablokowanych kontaktów</string>
     <string name="DefaultForNormalMessages">Normalne wiadomości</string>
-    <string name="Alert">Alarm</string>
     <string name="MessagePreview">Podgląd wiadomości</string>
     <string name="DefaultForGroupMessages">Grupowe wiadomości</string>
     <string name="Sound">Dźwięki</string>
@@ -108,10 +94,6 @@
     <string name="Help">Pomoc</string>
     <string name="Enabled">Włączone</string>
     <string name="Disabled">Wyłączony</string>
-    <string name="NotificationsService">Podtrzymywanie usługi</string>
-    <string name="NotificationsServiceInfo">Uruchom ponownie aplikację, gdy zostanie wyłączona przez użytkownika lub przez system. Zapewni to otrzymywanie powiadomień.</string>
-    <string name="NotificationsServiceConnection">Łączenie w tle</string>
-    <string name="NotificationsServiceConnectionInfo">Utrzymuj niski wpływ połączenia w tle, by odbierać powiadomienia. Włącz dla zaufanych powiadomień.</string>
     <string name="LedColor">Kolor LED-a</string>
     <string name="BadgeNumber">Pokaż ilość na ikonie, jeśli to możliwe</string>
     <string name="Short">Krótkie</string>
@@ -126,7 +108,6 @@
     <string name="NotificationsOther">Inne</string>
     <string name="InChatSound">Dźwięki w czacie</string>
     <string name="SmartNotifications">Limit powiadomień</string>
-    <string name="SmartNotificationsInfo">Dźwięk, co najwyżej %1$s w ciągu %2$s</string>
     <string name="SmartNotificationsSoundAtMost">Dźwięk, co najwyżej</string>
     <string name="SmartNotificationsTimes">razy</string>
     <string name="SmartNotificationsWithin">w ciągu</string>
@@ -135,13 +116,6 @@
     <string name="DirectShareInfo">Pokaż ostatnie czaty w menu udostępniania</string>
     <!--cache view-->
     <string name="CacheSettings">Pamięć</string>
-    <string name="LocalDatabase">Lokalna baza danych</string>
-    <string name="LocalDatabaseClear">Wyczyścić zbuforowane wiadomości?</string>
-    <string name="LocalDatabaseInfo">Wyczyszczenie lokalnej bazy danych spowoduje usunięcie tekstów zbuforowanych wiadomości i skompresowanie bazy, by zaoszczędzić miejsce w pamięci wewnętrznej. Aplikacja do działania potrzebuje niektórych danych, więc rozmiar bazy danych nie osiągnie zero.\n\nOperacja ta może potrwać kilka minut.</string>
-    <string name="ClearMediaCache">Wyczyść pamięć podręczną</string>
-    <string name="CacheClear">Wyczyść</string>
-    <string name="LocalCache">Inne pliki</string>
-    <string name="CacheEmpty">Pusty</string>
     <string name="KeepMedia">Przechowywanie multimediów</string>
     <string name="KeepMediaInfo">Zdjęcia, wideo i inne pliki z czatów w chmurze <![CDATA[<b>nie używane</b>]]> w tym okresie zostaną usunięte z urządzenia, by zaoszczędzić miejsce w pamięci.</string>
     <string name="KeepMediaForever">Na zawsze</string>
@@ -159,7 +133,6 @@
     <string name="PasscodeDoNotMatch">Hasła są niezgodne</string>
     <string name="AutoLock">Automatyczna blokada</string>
     <string name="AutoLockInfo">Wymagaj kodu dostępu po dłuższej nieaktywności.</string>
-    <string name="AutoLockInTime">za %1$s</string>
     <string name="UnlockFingerprint">Odblokuj odciskiem palca</string>
     <string name="FingerprintInfo">Potwierdź odcisk palca, aby kontynuować</string>
     <string name="FingerprintNotRecognized">Odcisk palca nie rozpoznany. Spróbuj ponownie</string>
@@ -197,38 +170,23 @@
     <string name="BlurLinear">Liniowe</string>
     <string name="BlurRadial">Radialne</string>
     <string name="DiscardChanges">Odrzucić zmiany?</string>
-    <string name="ClearSearch">Wyczyścić historię wyszukiwania?</string>
     <string name="ClearButton">Wyczyść</string>
     <string name="PickerPhotos">Zdjęcia</string>
     <string name="PickerVideo">Wideo</string>
-    <string name="AddCaption">Dodaj podpis…</string>
-    <string name="PhotoCaption">Podpis zdjęcia</string>
-    <string name="VideoCaption">Podpis wideo</string>
-    <string name="Caption">Podpis</string>
     <!--privacy settings-->
     <string name="PrivacySettings">Prywatność i bezpieczeństwo</string>
-    <string name="PrivacyTitle">Prywatność</string>
     <string name="SecurityTitle">Bezpieczeństwo</string>
     <!--edit video view-->
     <string name="SendVideo">Wyślij wideo</string>
-    <string name="OriginalVideo">Oryginalne wideo</string>
-    <string name="EditedVideo">Edytowane wideo</string>
-    <string name="CompressVideo">Kompresuj wideo</string>
     <!--button titles-->
-    <string name="Next">Dalej</string>
-    <string name="Back">Wstecz</string>
     <string name="Done">Gotowe</string>
     <string name="Open">Otwórz</string>
-    <string name="Save">Zapisz</string>
     <string name="Cancel">Anuluj</string>
-    <string name="Close">Zamknij</string>
-    <string name="Add">Dodaj</string>
     <string name="Edit">Edytuj</string>
     <string name="Send">Wyślij</string>
     <string name="CopyToClipboard">Kopiuj do schowka</string>
     <string name="Delete">Usuń</string>
     <string name="Forward">Przekaż</string>
-    <string name="Retry">Spróbuj ponownie</string>
     <string name="FromCamera">Z kamery</string>
     <string name="FromGalley">Z galerii</string>
     <string name="Set">Ustaw</string>
@@ -240,7 +198,6 @@
     <string name="AttachGif">GIF</string>
     <string name="AttachContact">Kontakt</string>
     <string name="AttachDocument">Plik</string>
-    <string name="AttachSticker">naklejka</string>
     <string name="AttachVoiceMessage">Wiadomość głosowa</string>
     <string name="FromSelf">Ja</string>
     <!--Alert messages-->
@@ -375,11 +332,8 @@
     <string name="formatDateAtTime">%1$s o %2$s</string>
     <string name="AccountSettings">Ustawienia konta</string>
     <string name="MyAccount">Moje konto</string>
-    <string name="Yes">Tak</string>
-    <string name="No">Nie</string>
     <string name="MyName">Moja nazwa</string>
     <string name="MyNameExplain">Twoja nazwa, pokazywana odbiorcom.\n\nJeśli nie wprowadzisz nazwy, odbiorcy będą widzieć tylko twój adres e-mail z ustawień konta.</string>
-    <string name="MyEmailAddress">Mój adres e-mail</string>
     <string name="Password">Hasło</string>
     <string name="SmtpPassword">SMTP hasło</string>
     <string name="FromAbove">Jak wyżej</string>
@@ -392,7 +346,6 @@
     <string name="ImapPort">IMAP port</string>
     <string name="InboxHeadline">Skrzynka odbiorcza</string>
     <string name="OutboxHeadline">Skrzynka nadawcza</string>
-    <string name="BasicSettings">Ustawienia podstawowe</string>
     <string name="MyAccountExplain">Dla znanych dostawców usług poczty elektronicznej poniższe ustawienia są określane automatycznie.</string>
     <string name="MyAccountExplain2" >Czasami IMAP / SMTP musi być włączony w interfejsie www poczty internetowej.\n\nZ problemami należy zwrócić się do usługodawcy e-mail lub znajomych.</string>
     <string name="AccountNotConfigured">Konto nie jest skonfigurowane</string>
@@ -400,7 +353,6 @@
     <string name="NotSet">Nie ustawiona</string>
     <string name="NewChat">Nowy czat</string>
     <string name="Deaddrop">Skrzynka pocztowa</string>
-    <string name="Media">Multimedia</string>
     <string name="DeaddropInChatlist">Pokaż skrzynkę pocztową na liście czatów</string>
     <string name="MuteAlways">Zawsze wyłączone</string>
     <string name="AskStartChatWith">Rozpocząć czat z <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>?</string>
@@ -415,8 +367,6 @@
     <string name="ViewProfile">Pokaż profil</string>
     <string name="OneMoment">Jedną chwilę…</string>
     <string name="NoChatsHelp">Zacznij przesyłanie wiadomości, naciskając przycisk nowej wiadomości w prawym dolnym rogu lub naciśnij przycisk menu, aby uzyskać więcej opcji.</string>
-    <string name="ConfiguringAccount">Konfigurowanie konta…</string>
-    <string name="CannotConnect">Nie można nawiązać połączenia, sprawdź konfigurację.</string>
     <string name="Intro7Message"><![CDATA[<b>Delta Chat</b>]]> jest bezpieczny dla zastosowań biznesowych, zgodny i oparty na standardach.</string>
     <string name="InviteMenuEntry">Wyślij zaproszenia</string>
     <string name="InviteText">Teraz używam komunikatora Delta Chat - %1$s - możesz pisać do mnie na %2$s</string>
