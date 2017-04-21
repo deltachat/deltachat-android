@@ -127,7 +127,7 @@ public class PasscodeActivity extends BaseFragment implements NotificationCenter
     }
 
     @Override
-    public View createView(Context context) {
+    public View createView(final Context context) {
         actionBar.setBackButtonImage(screen == SCREEN0_SETTINGS? R.drawable.ic_ab_back : R.drawable.ic_close_white);
         actionBar.setAllowOverlayTitle(false);
         actionBar.setActionBarMenuOnItemClick(new ActionBar.ActionBarMenuOnItemClick() {
@@ -162,12 +162,12 @@ public class PasscodeActivity extends BaseFragment implements NotificationCenter
             titleTextView.setTextColor(0xff757575);
             if (screen == SCREEN1_ENTER_CODE1) {
                 if (UserConfig.passcodeHash.length() != 0) {
-                    titleTextView.setText(LocaleController.getString("EnterNewPasscode", R.string.EnterNewPasscode));
+                    titleTextView.setText(context.getString(R.string.EnterNewPasscode));
                 } else {
-                    titleTextView.setText(LocaleController.getString("EnterNewFirstPasscode", R.string.EnterNewFirstPasscode));
+                    titleTextView.setText(context.getString(R.string.EnterNewFirstPasscode));
                 }
             } else {
-                titleTextView.setText(LocaleController.getString("EnterCurrentPasscode", R.string.EnterCurrentPasscode));
+                titleTextView.setText(context.getString(R.string.EnterCurrentPasscode));
             }
             titleTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 18);
             titleTextView.setGravity(Gravity.CENTER_HORIZONTAL);
@@ -265,8 +265,8 @@ public class PasscodeActivity extends BaseFragment implements NotificationCenter
             if (screen == SCREEN1_ENTER_CODE1) {
                 dropDownContainer = new ActionBarMenuItem(context, menu, 0);
                 dropDownContainer.setSubMenuOpenSide(1);
-                dropDownContainer.addSubItem(pin_item, LocaleController.getString("PasscodePIN", R.string.PasscodePIN), 0);
-                dropDownContainer.addSubItem(password_item, LocaleController.getString("PasscodePassword", R.string.PasscodePassword), 0);
+                dropDownContainer.addSubItem(pin_item, context.getString(R.string.PasscodePIN), 0);
+                dropDownContainer.addSubItem(password_item, context.getString(R.string.PasscodePassword), 0);
                 actionBar.addView(dropDownContainer);
                 layoutParams = (FrameLayout.LayoutParams) dropDownContainer.getLayoutParams();
                 layoutParams.height = LayoutHelper.MATCH_PARENT;
@@ -301,12 +301,12 @@ public class PasscodeActivity extends BaseFragment implements NotificationCenter
                 layoutParams.bottomMargin = AndroidUtilities.dp(1);
                 dropDown.setLayoutParams(layoutParams);
             } else {
-                actionBar.setTitle(LocaleController.getString("Passcode", R.string.Passcode));
+                actionBar.setTitle(context.getString(R.string.Passcode));
             }
 
             updateDropDownTextView();
         } else {
-            actionBar.setTitle(LocaleController.getString("Passcode", R.string.Passcode));
+            actionBar.setTitle(context.getString(R.string.Passcode));
             frameLayout.setBackgroundColor(0xfff0f0f0);
             listView = new ListView(context);
             listView.setDivider(null);
@@ -349,7 +349,7 @@ public class PasscodeActivity extends BaseFragment implements NotificationCenter
                             return;
                         }
                         AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
-                        builder.setTitle(LocaleController.getString("AutoLock", R.string.AutoLock));
+                        builder.setTitle(context.getString(R.string.AutoLock));
                         final NumberPicker numberPicker = new NumberPicker(getParentActivity());
                         numberPicker.setMinValue(0);
                         numberPicker.setMaxValue(4);
@@ -368,22 +368,22 @@ public class PasscodeActivity extends BaseFragment implements NotificationCenter
                             @Override
                             public String format(int value) {
                                 if (value == 0) {
-                                    return LocaleController.getString("Disabled", R.string.Disabled);
+                                    return context.getString(R.string.Disabled);
                                 } else if (value == 1) {
-                                    return ApplicationLoader.applicationContext.getResources().getQuantityString(R.plurals.Minutes, 1, 1);
+                                    return context.getResources().getQuantityString(R.plurals.Minutes, 1, 1);
                                 } else if (value == 2) {
-                                    return ApplicationLoader.applicationContext.getResources().getQuantityString(R.plurals.Minutes, 5, 5);
+                                    return context.getResources().getQuantityString(R.plurals.Minutes, 5, 5);
                                 } else if (value == 3) {
-                                    return ApplicationLoader.applicationContext.getResources().getQuantityString(R.plurals.Hours, 1, 1);
+                                    return context.getResources().getQuantityString(R.plurals.Hours, 1, 1);
                                 } else if (value == 4) {
-                                    return ApplicationLoader.applicationContext.getResources().getQuantityString(R.plurals.Hours, 5, 5);
+                                    return context.getResources().getQuantityString(R.plurals.Hours, 5, 5);
                                 }
                                 return "";
                             }
                         });
                         numberPicker.setWrapSelectorWheel(false);
                         builder.setView(numberPicker);
-                        builder.setNegativeButton(LocaleController.getString("Done", R.string.Done), new DialogInterface.OnClickListener() {
+                        builder.setNegativeButton(context.getString(R.string.Done), new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 which = numberPicker.getValue();
@@ -498,9 +498,9 @@ public class PasscodeActivity extends BaseFragment implements NotificationCenter
     private void updateDropDownTextView() {
         if (dropDown != null) {
             if (currentPasswordType == 0) {
-                dropDown.setText(LocaleController.getString("PasscodePIN", R.string.PasscodePIN));
+                dropDown.setText(ApplicationLoader.applicationContext.getString(R.string.PasscodePIN));
             } else if (currentPasswordType == 1) {
-                dropDown.setText(LocaleController.getString("PasscodePassword", R.string.PasscodePassword));
+                dropDown.setText(ApplicationLoader.applicationContext.getString(R.string.PasscodePassword));
             }
         }
         if (screen == SCREEN1_ENTER_CODE1 && currentPasswordType == 0 || screen == SCREEN2_ENTER_CODE2 && UserConfig.passcodeType == 0) {
@@ -523,12 +523,12 @@ public class PasscodeActivity extends BaseFragment implements NotificationCenter
             return;
         }
         if (currentPasswordType == 0) {
-            actionBar.setTitle(LocaleController.getString("PasscodePIN", R.string.PasscodePIN));
+            actionBar.setTitle(ApplicationLoader.applicationContext.getString(R.string.PasscodePIN));
         } else {
-            actionBar.setTitle(LocaleController.getString("PasscodePassword", R.string.PasscodePassword));
+            actionBar.setTitle(ApplicationLoader.applicationContext.getString(R.string.PasscodePassword));
         }
         dropDownContainer.setVisibility(View.GONE);
-        titleTextView.setText(LocaleController.getString("ReEnterYourPasscode", R.string.ReEnterYourPasscode));
+        titleTextView.setText(ApplicationLoader.applicationContext.getString(R.string.ReEnterYourPasscode));
         firstPassword = passwordEditText.getText().toString();
         passwordEditText.setText("");
         passcodeSetStep = 1;
@@ -542,7 +542,7 @@ public class PasscodeActivity extends BaseFragment implements NotificationCenter
         if (screen == SCREEN1_ENTER_CODE1) {
             if (!firstPassword.equals(passwordEditText.getText().toString())) {
                 try {
-                    Toast.makeText(getParentActivity(), LocaleController.getString("PasscodeDoNotMatch", R.string.PasscodeDoNotMatch), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getParentActivity(), ApplicationLoader.applicationContext.getString(R.string.PasscodeDoNotMatch), Toast.LENGTH_SHORT).show();
                 } catch (Exception e) {
 
                 }
@@ -656,9 +656,9 @@ public class PasscodeActivity extends BaseFragment implements NotificationCenter
                 TextCheckCell textCell = (TextCheckCell) view;
 
                 if (i == passcodeOnOffRow) {
-                    textCell.setTextAndCheck(LocaleController.getString("Passcode", R.string.Passcode), UserConfig.passcodeHash.length() > 0, true);
+                    textCell.setTextAndCheck(mContext.getString(R.string.Passcode), UserConfig.passcodeHash.length() > 0, true);
                 } else if (i == fingerprintRow) {
-                    textCell.setTextAndCheck(LocaleController.getString("UnlockFingerprint", R.string.UnlockFingerprint), UserConfig.useFingerprint, true);
+                    textCell.setTextAndCheck(mContext.getString(R.string.UnlockFingerprint), UserConfig.useFingerprint, true);
                 }
             } else if (viewType == 1) {
                 if (view == null) {
@@ -667,20 +667,20 @@ public class PasscodeActivity extends BaseFragment implements NotificationCenter
                 }
                 TextSettingsCell textCell = (TextSettingsCell) view;
                 if (i == changePasscodeRow) {
-                    textCell.setText(LocaleController.getString("ChangePasscode", R.string.ChangePasscode), false);
+                    textCell.setText(mContext.getString(R.string.ChangePasscode), false);
                     textCell.setTextColor(UserConfig.passcodeHash.length() == 0 ? 0xffc6c6c6 : 0xff000000);
                 } else if (i == autoLockRow) {
                     String val;
                     if (UserConfig.autoLockIn == 0) {
                         val = LocaleController.formatString("Disabled", R.string.Disabled);
                     } else if (UserConfig.autoLockIn < 60 * 60) {
-                        val = ApplicationLoader.applicationContext.getResources().getQuantityString(R.plurals.Minutes, UserConfig.autoLockIn / 60, UserConfig.autoLockIn / 60);
+                        val = mContext.getResources().getQuantityString(R.plurals.Minutes, UserConfig.autoLockIn / 60, UserConfig.autoLockIn / 60);
                     } else if (UserConfig.autoLockIn < 60 * 60 * 24) {
-                        val = ApplicationLoader.applicationContext.getResources().getQuantityString(R.plurals.Hours, (int) Math.ceil(UserConfig.autoLockIn / 60.0f / 60), (int) Math.ceil(UserConfig.autoLockIn / 60.0f / 60));
+                        val = mContext.getResources().getQuantityString(R.plurals.Hours, (int) Math.ceil(UserConfig.autoLockIn / 60.0f / 60), (int) Math.ceil(UserConfig.autoLockIn / 60.0f / 60));
                     } else {
-                        val = ApplicationLoader.applicationContext.getResources().getQuantityString(R.plurals.Days, (int) Math.ceil(UserConfig.autoLockIn / 60.0f / 60 / 24), (int) Math.ceil(UserConfig.autoLockIn / 60.0f / 60 / 24));
+                        val = mContext.getResources().getQuantityString(R.plurals.Days, (int) Math.ceil(UserConfig.autoLockIn / 60.0f / 60 / 24), (int) Math.ceil(UserConfig.autoLockIn / 60.0f / 60 / 24));
                     }
-                    textCell.setTextAndValue(LocaleController.getString("AutoLock", R.string.AutoLock), val, true);
+                    textCell.setTextAndValue(mContext.getString(R.string.AutoLock), val, true);
                     textCell.setTextColor(0xff000000);
                 }
             } else if (viewType == 2) {
@@ -688,14 +688,14 @@ public class PasscodeActivity extends BaseFragment implements NotificationCenter
                     view = new TextInfoCell(mContext);
                 }
                 if (i == passcodeDetailRow) {
-                    ((TextInfoCell) view).setText(LocaleController.getString("ChangePasscodeInfo", R.string.ChangePasscodeInfo));
+                    ((TextInfoCell) view).setText(mContext.getString(R.string.ChangePasscodeInfo));
                     if (autoLockDetailRow != -1) {
                         view.setBackgroundResource(R.drawable.greydivider);
                     } else {
                         view.setBackgroundResource(R.drawable.greydivider_bottom);
                     }
                 } else if (i == autoLockDetailRow) {
-                    ((TextInfoCell) view).setText(LocaleController.getString("AutoLockInfo", R.string.AutoLockInfo));
+                    ((TextInfoCell) view).setText(mContext.getString(R.string.AutoLockInfo));
                     view.setBackgroundResource(R.drawable.greydivider_bottom);
                 }
             }
