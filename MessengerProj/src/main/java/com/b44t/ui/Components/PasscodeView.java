@@ -531,7 +531,7 @@ public class PasscodeView extends FrameLayout {
 
                     AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
                     builder.setView(relativeLayout);
-                    builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
+                    builder.setNegativeButton(ApplicationLoader.applicationContext.getString(R.string.Cancel), null);
                     builder.setOnDismissListener(new DialogInterface.OnDismissListener() {
                         @Override
                         public void onDismiss(DialogInterface dialog) {
@@ -570,7 +570,7 @@ public class PasscodeView extends FrameLayout {
 
                         @Override
                         public void onAuthenticationFailed() {
-                            showFingerprintError(LocaleController.getString("FingerprintNotRecognized", R.string.FingerprintNotRecognized));
+                            showFingerprintError(ApplicationLoader.applicationContext.getString(R.string.FingerprintNotRecognized));
                         }
 
                         @Override
@@ -622,7 +622,7 @@ public class PasscodeView extends FrameLayout {
             backgroundFrameLayout.setBackgroundColor(Theme.ACTION_BAR_COLOR);
         }
 
-        passcodeTextView.setText(LocaleController.getString("EnterYourPasscode", R.string.EnterYourPasscode));
+        passcodeTextView.setText(ApplicationLoader.applicationContext.getString(R.string.EnterYourPasscode));
 
         if (UserConfig.passcodeType == 0) {
             numbersFrameLayout.setVisibility(VISIBLE);

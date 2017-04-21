@@ -48,6 +48,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.b44t.messenger.AndroidUtilities;
+import com.b44t.messenger.ApplicationLoader;
 import com.b44t.messenger.LocaleController;
 import com.b44t.messenger.support.widget.LinearLayoutManager;
 import com.b44t.messenger.support.widget.RecyclerView;
@@ -1991,7 +1992,7 @@ public class PhotoFilterView extends FrameLayout {
         }
     }
 
-    public PhotoFilterView(Context context, Bitmap bitmap, int rotation) {
+    public PhotoFilterView(final Context context, Bitmap bitmap, int rotation) {
         super(context);
 
         bitmapToEdit = bitmap;
@@ -2086,7 +2087,7 @@ public class PhotoFilterView extends FrameLayout {
         cancelTextView.setGravity(Gravity.CENTER);
         cancelTextView.setBackgroundDrawable(Theme.createBarSelectorDrawable(Theme.ACTION_BAR_PICKER_SELECTOR_COLOR, false));
         cancelTextView.setPadding(AndroidUtilities.dp(29), 0, AndroidUtilities.dp(29), 0);
-        cancelTextView.setText(LocaleController.getString("Cancel", R.string.Cancel).toUpperCase());
+        cancelTextView.setText(context.getString(R.string.Cancel).toUpperCase());
         frameLayout.addView(cancelTextView, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.MATCH_PARENT, Gravity.TOP | Gravity.LEFT));
 
         doneTextView = new TextView(context);
@@ -2095,7 +2096,7 @@ public class PhotoFilterView extends FrameLayout {
         doneTextView.setGravity(Gravity.CENTER);
         doneTextView.setBackgroundDrawable(Theme.createBarSelectorDrawable(Theme.ACTION_BAR_PICKER_SELECTOR_COLOR, false));
         doneTextView.setPadding(AndroidUtilities.dp(29), 0, AndroidUtilities.dp(29), 0);
-        doneTextView.setText(LocaleController.getString("Done", R.string.Done).toUpperCase());
+        doneTextView.setText(context.getString(R.string.Done).toUpperCase());
         doneTextView.setTypeface(Typeface.DEFAULT_BOLD);
         frameLayout.addView(doneTextView, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.MATCH_PARENT, Gravity.TOP | Gravity.RIGHT));
 
@@ -2115,47 +2116,47 @@ public class PhotoFilterView extends FrameLayout {
                 if (position == enhanceTool) {
                     previousValue = enhanceValue;
                     valueSeekBar.setMinMax(0, 100);
-                    paramTextView.setText(LocaleController.getString("Enhance", R.string.Enhance));
+                    paramTextView.setText(context.getString(R.string.Enhance));
                 } else if (position == highlightsTool) {
                     previousValue = highlightsValue;
                     valueSeekBar.setMinMax(-100, 100);
-                    paramTextView.setText(LocaleController.getString("Highlights", R.string.Highlights));
+                    paramTextView.setText(context.getString(R.string.Highlights));
                 } else if (position == contrastTool) {
                     previousValue = contrastValue;
                     valueSeekBar.setMinMax(-100, 100);
-                    paramTextView.setText(LocaleController.getString("Contrast", R.string.Contrast));
+                    paramTextView.setText(context.getString(R.string.Contrast));
                 } else if (position == exposureTool) {
                     previousValue = exposureValue;
                     valueSeekBar.setMinMax(-100, 100);
-                    paramTextView.setText(LocaleController.getString("Exposure", R.string.Exposure));
+                    paramTextView.setText(context.getString(R.string.Exposure));
                 } else if (position == warmthTool) {
                     previousValue = warmthValue;
                     valueSeekBar.setMinMax(-100, 100);
-                    paramTextView.setText(LocaleController.getString("Warmth", R.string.Warmth));
+                    paramTextView.setText(context.getString(R.string.Warmth));
                 } else if (position == saturationTool) {
                     previousValue = saturationValue;
                     valueSeekBar.setMinMax(-100, 100);
-                    paramTextView.setText(LocaleController.getString("Saturation", R.string.Saturation));
+                    paramTextView.setText(context.getString(R.string.Saturation));
                 } else if (position == vignetteTool) {
                     previousValue = vignetteValue;
                     valueSeekBar.setMinMax(0, 100);
-                    paramTextView.setText(LocaleController.getString("Vignette", R.string.Vignette));
+                    paramTextView.setText(context.getString(R.string.Vignette));
                 } else if (position == shadowsTool) {
                     previousValue = shadowsValue;
                     valueSeekBar.setMinMax(-100, 100);
-                    paramTextView.setText(LocaleController.getString("Shadows", R.string.Shadows));
+                    paramTextView.setText(context.getString(R.string.Shadows));
                 } else if (position == grainTool) {
                     previousValue = grainValue;
                     valueSeekBar.setMinMax(0, 100);
-                    paramTextView.setText(LocaleController.getString("Grain", R.string.Grain));
+                    paramTextView.setText(context.getString(R.string.Grain));
                 } else if (position == fadeTool) {
                     previousValue = fadeValue;
                     valueSeekBar.setMinMax(0, 100);
-                    paramTextView.setText(LocaleController.getString("Fade", R.string.Fade));
+                    paramTextView.setText(context.getString(R.string.Fade));
                 } else if (position == sharpenTool) {
                     previousValue = sharpenValue;
                     valueSeekBar.setMinMax(0, 100);
-                    paramTextView.setText(LocaleController.getString("Sharpen", R.string.Sharpen));
+                    paramTextView.setText(context.getString(R.string.Sharpen));
                 } else if (position == blurTool) {
                     previousValueInt = blurType;
                 } else if (position == tintTool) {
@@ -2306,13 +2307,13 @@ public class PhotoFilterView extends FrameLayout {
             curveTextView[a].setGravity(Gravity.CENTER_VERTICAL);
             curveTextView[a].setTag(a);
             if (a == 0) {
-                curveTextView[a].setText(LocaleController.getString("CurvesAll", R.string.CurvesAll).toUpperCase());
+                curveTextView[a].setText(context.getString(R.string.CurvesAll).toUpperCase());
             } else if (a == 1) {
-                curveTextView[a].setText(LocaleController.getString("CurvesRed", R.string.CurvesRed).toUpperCase());
+                curveTextView[a].setText(context.getString(R.string.CurvesRed).toUpperCase());
             } else if (a == 2) {
-                curveTextView[a].setText(LocaleController.getString("CurvesGreen", R.string.CurvesGreen).toUpperCase());
+                curveTextView[a].setText(context.getString(R.string.CurvesGreen).toUpperCase());
             } else if (a == 3) {
-                curveTextView[a].setText(LocaleController.getString("CurvesBlue", R.string.CurvesBlue).toUpperCase());
+                curveTextView[a].setText(context.getString(R.string.CurvesBlue).toUpperCase());
             }
             curveTextViewContainer.addView(curveTextView[a], LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, 28, a == 0 ? 0 : 30, 0, 0, 0));
             curveTextView[a].setOnClickListener(new OnClickListener() {
@@ -2338,7 +2339,7 @@ public class PhotoFilterView extends FrameLayout {
         tintShadowsButton = new TextView(context);
         tintShadowsButton.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
         tintShadowsButton.setGravity(Gravity.CENTER_VERTICAL);
-        tintShadowsButton.setText(LocaleController.getString("TintShadows", R.string.TintShadows).toUpperCase());
+        tintShadowsButton.setText(context.getString(R.string.TintShadows).toUpperCase());
         tintTextViewContainer.addView(tintShadowsButton, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, 28));
         tintShadowsButton.setOnClickListener(new OnClickListener() {
             @Override
@@ -2351,7 +2352,7 @@ public class PhotoFilterView extends FrameLayout {
         tintHighlightsButton = new TextView(context);
         tintHighlightsButton.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
         tintHighlightsButton.setGravity(Gravity.CENTER_VERTICAL);
-        tintHighlightsButton.setText(LocaleController.getString("TintHighlights", R.string.TintHighlights).toUpperCase());
+        tintHighlightsButton.setText(context.getString(R.string.TintHighlights).toUpperCase());
         tintTextViewContainer.addView(tintHighlightsButton, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, 28, 100, 0, 0, 0));
         tintHighlightsButton.setOnClickListener(new OnClickListener() {
             @Override
@@ -2396,7 +2397,7 @@ public class PhotoFilterView extends FrameLayout {
         blurOffButton.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13);
         blurOffButton.setTextColor(0xff51bdf3);
         blurOffButton.setGravity(Gravity.CENTER_HORIZONTAL);
-        blurOffButton.setText(LocaleController.getString("BlurOff", R.string.BlurOff));
+        blurOffButton.setText(context.getString(R.string.BlurOff));
         blurLayout.addView(blurOffButton, LayoutHelper.createFrame(80, 60));
         blurOffButton.setOnClickListener(new OnClickListener() {
             @Override
@@ -2416,7 +2417,7 @@ public class PhotoFilterView extends FrameLayout {
         blurRadialButton.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13);
         blurRadialButton.setTextColor(0xffffffff);
         blurRadialButton.setGravity(Gravity.CENTER_HORIZONTAL);
-        blurRadialButton.setText(LocaleController.getString("BlurRadial", R.string.BlurRadial));
+        blurRadialButton.setText(context.getString(R.string.BlurRadial));
         blurLayout.addView(blurRadialButton, LayoutHelper.createFrame(80, 80, Gravity.LEFT | Gravity.TOP, 100, 0, 0, 0));
         blurRadialButton.setOnClickListener(new OnClickListener() {
             @Override
@@ -2437,7 +2438,7 @@ public class PhotoFilterView extends FrameLayout {
         blurLinearButton.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13);
         blurLinearButton.setTextColor(0xffffffff);
         blurLinearButton.setGravity(Gravity.CENTER_HORIZONTAL);
-        blurLinearButton.setText(LocaleController.getString("BlurLinear", R.string.BlurLinear));
+        blurLinearButton.setText(context.getString(R.string.BlurLinear));
         blurLayout.addView(blurLinearButton, LayoutHelper.createFrame(80, 80, Gravity.LEFT | Gravity.TOP, 200, 0, 0, 0));
         blurLinearButton.setOnClickListener(new OnClickListener() {
             @Override
@@ -2565,12 +2566,12 @@ public class PhotoFilterView extends FrameLayout {
                 tintLayout.setVisibility(selectedTool == tintTool ? VISIBLE : INVISIBLE);
                 curveLayout.setVisibility(selectedTool == curvesTool ? VISIBLE : INVISIBLE);
                 if (selectedTool == blurTool) {
-                    infoTextView.setText(LocaleController.getString("Blur", R.string.Blur));
+                    infoTextView.setText(ApplicationLoader.applicationContext.getString(R.string.Blur));
                     if (blurType != 0) {
                         blurControl.setVisibility(VISIBLE);
                     }
                 } else if (selectedTool == curvesTool) {
-                    infoTextView.setText(LocaleController.getString("Curves", R.string.Curves));
+                    infoTextView.setText(ApplicationLoader.applicationContext.getString(R.string.Curves));
                     curvesControl.setVisibility(VISIBLE);
                     curvesToolValue.activeType = 0;
                     for (int a = 0; a < 4; a++) {
@@ -2579,7 +2580,7 @@ public class PhotoFilterView extends FrameLayout {
                 } else {
                     selectedTintMode = 0;
                     updateSelectedTintButton(false);
-                    infoTextView.setText(LocaleController.getString("Tint", R.string.Tint));
+                    infoTextView.setText(ApplicationLoader.applicationContext.getString(R.string.Tint));
                 }
                 infoTextView.setVisibility(VISIBLE);
                 valueSeekBar.setVisibility(INVISIBLE);
@@ -2798,7 +2799,7 @@ public class PhotoFilterView extends FrameLayout {
         previousValue = enhanceValue;
         enhanceValue = 50;
         valueSeekBar.setMinMax(0, 100);
-        paramTextView.setText(LocaleController.getString("Enhance", R.string.Enhance));
+        paramTextView.setText(ApplicationLoader.applicationContext.getString(R.string.Enhance));
         editView.setVisibility(VISIBLE);
         toolsView.setVisibility(GONE);
         valueSeekBar.setProgress(50, false);
