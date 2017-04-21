@@ -38,7 +38,6 @@ import android.widget.ListView;
 import com.b44t.messenger.AndroidUtilities;
 import com.b44t.messenger.MediaController;
 import com.b44t.messenger.ApplicationLoader;
-import com.b44t.messenger.LocaleController;
 import com.b44t.messenger.R;
 import com.b44t.ui.Adapters.BaseFragmentAdapter;
 import com.b44t.ui.Cells.ShadowSectionCell;
@@ -48,7 +47,6 @@ import com.b44t.ui.ActionBar.ActionBar;
 import com.b44t.ui.ActionBar.BaseFragment;
 import com.b44t.ui.Components.LayoutHelper;
 import com.b44t.ui.Components.NumberPicker;
-import com.b44t.ui.ActionBar.Theme;
 
 
 public class SettingsAdvActivity extends BaseFragment {
