@@ -97,7 +97,7 @@ public class AudioSelectActivity extends BaseFragment implements NotificationCen
     public View createView(Context context) {
         actionBar.setBackButtonImage(R.drawable.ic_ab_back);
         actionBar.setAllowOverlayTitle(true);
-        actionBar.setTitle(LocaleController.getString("AttachMusic", R.string.AttachMusic));
+        actionBar.setTitle(context.getString(R.string.AttachMusic));
         actionBar.setActionBarMenuOnItemClick(new ActionBar.ActionBarMenuOnItemClick() {
             @Override
             public void onItemClick(int id) {
@@ -111,7 +111,7 @@ public class AudioSelectActivity extends BaseFragment implements NotificationCen
         FrameLayout frameLayout = (FrameLayout) fragmentView;
 
         progressView = new EmptyTextProgressView(context);
-        progressView.setText(LocaleController.getString("NoAudio", R.string.NoAudio));
+        progressView.setText(context.getString(R.string.NoAudio));
         frameLayout.addView(progressView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.MATCH_PARENT));
 
         ListView listView = new ListView(context);

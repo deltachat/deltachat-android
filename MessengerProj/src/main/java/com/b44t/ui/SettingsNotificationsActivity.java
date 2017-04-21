@@ -42,7 +42,6 @@ import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 
-import com.b44t.messenger.LocaleController;
 import com.b44t.messenger.NotificationsController;
 import com.b44t.messenger.NotificationCenter;
 import com.b44t.messenger.ApplicationLoader;
@@ -139,10 +138,10 @@ public class SettingsNotificationsActivity extends BaseFragment implements Notif
     }
 
     @Override
-    public View createView(Context context) {
+    public View createView(final Context context) {
         actionBar.setBackButtonImage(R.drawable.ic_ab_back);
         actionBar.setAllowOverlayTitle(true);
-        actionBar.setTitle(LocaleController.getString("NotificationsAndSounds", R.string.NotificationsAndSounds));
+        actionBar.setTitle(context.getString(R.string.NotificationsAndSounds));
         actionBar.setActionBarMenuOnItemClick(new ActionBar.ActionBarMenuOnItemClick() {
             @Override
             public void onItemClick(int id) {
@@ -228,9 +227,9 @@ public class SettingsNotificationsActivity extends BaseFragment implements Notif
                 } else if (i == resetNotificationsRow) {
 
                     AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
-                    builder.setMessage(LocaleController.formatString("AskResetNotifications", R.string.AskResetNotifications));
-                    builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
-                    builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), new DialogInterface.OnClickListener() {
+                    builder.setMessage(context.getString(R.string.AskResetNotifications));
+                    builder.setNegativeButton(context.getString(R.string.Cancel), null);
+                    builder.setPositiveButton(context.getString(R.string.OK), new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
                             SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("Notifications", Activity.MODE_PRIVATE);
@@ -285,9 +284,9 @@ public class SettingsNotificationsActivity extends BaseFragment implements Notif
                     colorPickerView.setColor(preferences.getInt(i == messageLedRow? "MessagesLed" : "GroupLed", NotificationsController.DEF_LED_COLOR));
 
                     AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
-                    builder.setTitle(LocaleController.getString("LedColor", R.string.LedColor));
+                    builder.setTitle(context.getString(R.string.LedColor));
                     builder.setView(linearLayout);
-                    builder.setPositiveButton(LocaleController.getString("Set", R.string.Set), new DialogInterface.OnClickListener() {
+                    builder.setPositiveButton(context.getString(R.string.Set), new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int which) {
                             final SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("Notifications", Activity.MODE_PRIVATE);
@@ -301,7 +300,7 @@ public class SettingsNotificationsActivity extends BaseFragment implements Notif
                             listView.invalidateViews();
                         }
                     });
-                    builder.setNeutralButton(LocaleController.getString("Disabled", R.string.Disabled), new DialogInterface.OnClickListener() {
+                    builder.setNeutralButton(context.getString(R.string.Disabled), new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             final SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("Notifications", Activity.MODE_PRIVATE);
@@ -315,7 +314,7 @@ public class SettingsNotificationsActivity extends BaseFragment implements Notif
                             listView.invalidateViews();
                         }
                     });
-                    builder.setNegativeButton(LocaleController.getString("Default", R.string.Default), new DialogInterface.OnClickListener() {
+                    builder.setNegativeButton(context.getString(R.string.Default), new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             final SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("Notifications", Activity.MODE_PRIVATE);
@@ -332,13 +331,13 @@ public class SettingsNotificationsActivity extends BaseFragment implements Notif
                     showDialog(builder.create());
                 } else if (i == messageVibrateRow || i == groupVibrateRow) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
-                    builder.setTitle(LocaleController.getString("Vibrate", R.string.Vibrate));
+                    builder.setTitle(context.getString(R.string.Vibrate));
                     builder.setItems(new CharSequence[]{
-                            LocaleController.getString("Disabled", R.string.Disabled),
-                            LocaleController.getString("", R.string.Default),
-                            LocaleController.getString("Short", R.string.Short),
-                            LocaleController.getString("Long", R.string.Long),
-                            LocaleController.getString("OnlyIfSilent", R.string.OnlyIfSilent)
+                            context.getString(R.string.Disabled),
+                            context.getString(R.string.Default),
+                            context.getString(R.string.Short),
+                            context.getString(R.string.Long),
+                            context.getString(R.string.OnlyIfSilent)
                     }, new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
@@ -365,15 +364,15 @@ public class SettingsNotificationsActivity extends BaseFragment implements Notif
                             }
                         }
                     });
-                    builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
+                    builder.setNegativeButton(context.getString(R.string.Cancel), null);
                     showDialog(builder.create());
                 } else if (i == messagePriorityRow || i == groupPriorityRow || i == inappPriorityRow ) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
-                    builder.setTitle(LocaleController.getString("NotificationsPriority", R.string.NotificationsPriority));
+                    builder.setTitle(context.getString(R.string.NotificationsPriority));
                     builder.setItems(new CharSequence[]{
-                            LocaleController.getString("NotificationsPriorityDefault", R.string.NotificationsPriorityDefault),
-                            LocaleController.getString("NotificationsPriorityHigh", R.string.NotificationsPriorityHigh),
-                            LocaleController.getString("NotificationsPriorityMax", R.string.NotificationsPriorityMax)
+                            context.getString(R.string.NotificationsPriorityDefault),
+                            context.getString(R.string.NotificationsPriorityHigh),
+                            context.getString(R.string.NotificationsPriorityMax)
                     }, new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
@@ -390,19 +389,19 @@ public class SettingsNotificationsActivity extends BaseFragment implements Notif
                             }
                         }
                     });
-                    builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
+                    builder.setNegativeButton(context.getString(R.string.Cancel), null);
                     showDialog(builder.create());
                 } else if (i == repeatRow) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
-                    builder.setTitle(LocaleController.getString("RepeatNotifications", R.string.RepeatNotifications));
+                    builder.setTitle(context.getString(R.string.RepeatNotifications));
                     builder.setItems(new CharSequence[]{
-                            LocaleController.getString("Disabled", R.string.Disabled),
-                            ApplicationLoader.applicationContext.getResources().getQuantityString(R.plurals.Minutes, 5, 5),
-                            ApplicationLoader.applicationContext.getResources().getQuantityString(R.plurals.Minutes, 10, 10),
-                            ApplicationLoader.applicationContext.getResources().getQuantityString(R.plurals.Minutes, 30, 30),
-                            ApplicationLoader.applicationContext.getResources().getQuantityString(R.plurals.Hours, 1, 1),
-                            ApplicationLoader.applicationContext.getResources().getQuantityString(R.plurals.Hours, 2, 2),
-                            ApplicationLoader.applicationContext.getResources().getQuantityString(R.plurals.Hours, 4, 4)
+                            context.getString(R.string.Disabled),
+                            context.getResources().getQuantityString(R.plurals.Minutes, 5, 5),
+                            context.getResources().getQuantityString(R.plurals.Minutes, 10, 10),
+                            context.getResources().getQuantityString(R.plurals.Minutes, 30, 30),
+                            context.getResources().getQuantityString(R.plurals.Hours, 1, 1),
+                            context.getResources().getQuantityString(R.plurals.Hours, 2, 2),
+                            context.getResources().getQuantityString(R.plurals.Hours, 4, 4)
                     }, new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
@@ -427,7 +426,7 @@ public class SettingsNotificationsActivity extends BaseFragment implements Notif
                             }
                         }
                     });
-                    builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
+                    builder.setNegativeButton(context.getString(R.string.Cancel), null);
                     showDialog(builder.create());
                 }
                 if (view instanceof TextCheckCell) {
@@ -448,7 +447,7 @@ public class SettingsNotificationsActivity extends BaseFragment implements Notif
                 Ringtone rng = RingtoneManager.getRingtone(getParentActivity(), ringtone);
                 if (rng != null) {
                     if(ringtone.equals(Settings.System.DEFAULT_NOTIFICATION_URI)) {
-                        name = LocaleController.getString("", R.string.Default);
+                        name = ApplicationLoader.applicationContext.getString(R.string.Default);
                     } else {
                         name = rng.getTitle(getParentActivity());
                     }
@@ -536,13 +535,13 @@ public class SettingsNotificationsActivity extends BaseFragment implements Notif
                     view = new HeaderCell(mContext);
                 }
                 if (i == messageSectionRow) {
-                    ((HeaderCell) view).setText(ApplicationLoader.applicationContext.getString(R.string.DefaultForNormalMessages));
+                    ((HeaderCell) view).setText(mContext.getString(R.string.DefaultForNormalMessages));
                 } else if (i == groupSectionRow) {
-                    ((HeaderCell) view).setText(ApplicationLoader.applicationContext.getString(R.string.DefaultForGroupMessages));
+                    ((HeaderCell) view).setText(mContext.getString(R.string.DefaultForGroupMessages));
                 } else if (i == inappSectionRow) {
-                    ((HeaderCell) view).setText(LocaleController.getString("InAppNotifications", R.string.InAppNotifications));
+                    ((HeaderCell) view).setText(mContext.getString(R.string.InAppNotifications));
                 } else if (i == otherSectionRow) {
-                    ((HeaderCell) view).setText(LocaleController.getString("NotificationsOther", R.string.NotificationsOther));
+                    ((HeaderCell) view).setText(mContext.getString(R.string.NotificationsOther));
                 }
             } if (type == TYPE_CHECK_CELL) {
                 if (view == null) {
@@ -550,21 +549,21 @@ public class SettingsNotificationsActivity extends BaseFragment implements Notif
                 }
                 TextCheckCell checkCell = (TextCheckCell) view;
 
-                SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("Notifications", Activity.MODE_PRIVATE);
+                SharedPreferences preferences = mContext.getSharedPreferences("Notifications", Activity.MODE_PRIVATE);
                 if (i == messageAlertRow) {
-                    checkCell.setTextAndCheck(ApplicationLoader.applicationContext.getString(R.string.Notifications), preferences.getBoolean("EnableAll", true), true);
+                    checkCell.setTextAndCheck(mContext.getString(R.string.Notifications), preferences.getBoolean("EnableAll", true), true);
                 } else if (i == groupAlertRow) {
-                    checkCell.setTextAndCheck(ApplicationLoader.applicationContext.getString(R.string.Notifications), preferences.getBoolean("EnableGroup", true), true);
+                    checkCell.setTextAndCheck(mContext.getString(R.string.Notifications), preferences.getBoolean("EnableGroup", true), true);
                 } else if (i == messagePreviewRow) {
-                    checkCell.setTextAndCheck(LocaleController.getString("MessagePreview", R.string.MessagePreview), preferences.getBoolean("EnablePreviewAll", true), true);
+                    checkCell.setTextAndCheck(mContext.getString(R.string.MessagePreview), preferences.getBoolean("EnablePreviewAll", true), true);
                 } else if (i == inappSoundRow) {
-                    checkCell.setTextAndCheck(LocaleController.getString("Sound", R.string.Sound), preferences.getBoolean("EnableInAppSounds", true), true);
+                    checkCell.setTextAndCheck(mContext.getString(R.string.Sound), preferences.getBoolean("EnableInAppSounds", true), true);
                 } else if (i == inappVibrateRow) {
-                    checkCell.setTextAndCheck(LocaleController.getString("Vibrate", R.string.Vibrate), preferences.getBoolean("EnableInAppVibrate", true), true);
+                    checkCell.setTextAndCheck(mContext.getString(R.string.Vibrate), preferences.getBoolean("EnableInAppVibrate", true), true);
                 } else if (i == badgeNumberRow) {
-                    checkCell.setTextAndCheck(LocaleController.getString("BadgeNumber", R.string.BadgeNumber), preferences.getBoolean("badgeNumber", true), true);
+                    checkCell.setTextAndCheck(mContext.getString(R.string.BadgeNumber), preferences.getBoolean("badgeNumber", true), true);
                 } else if (i == inchatSoundRow) {
-                    checkCell.setTextAndCheck(LocaleController.getString("InChatSound", R.string.InChatSound), preferences.getBoolean("EnableInChatSound", true), true);
+                    checkCell.setTextAndCheck(mContext.getString(R.string.InChatSound), preferences.getBoolean("EnableInChatSound", true), true);
                 }
             } else if (type == TYPE_TEXTDETAIL) {
                 if (view == null) {
@@ -574,26 +573,26 @@ public class SettingsNotificationsActivity extends BaseFragment implements Notif
 
                 if (i == resetNotificationsRow) {
                     textCell.setMultilineDetail(true);
-                    textCell.setTextAndValue(LocaleController.getString("Reset", R.string.Reset), LocaleController.getString("ResetAllNotifications", R.string.ResetAllNotifications), false);
+                    textCell.setTextAndValue(mContext.getString(R.string.Reset), mContext.getString(R.string.ResetAllNotifications), false);
                 }
             } else if (type == TYPE_TEXTSETTING) {
                 if (view == null) {
                     view = new TextSettingsCell(mContext);
                 }
                 TextSettingsCell textCell = (TextSettingsCell) view;
-                SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("Notifications", Activity.MODE_PRIVATE);
+                SharedPreferences preferences = mContext.getSharedPreferences("Notifications", Activity.MODE_PRIVATE);
 
                 if (i == messageSoundRow || i == groupSoundRow) {
                     String value = null;
                     if (i == messageSoundRow) {
-                        value = preferences.getString("GlobalSound", LocaleController.getString("", R.string.Default));
+                        value = preferences.getString("GlobalSound", mContext.getString(R.string.Default));
                     } else if (i == groupSoundRow) {
-                        value = preferences.getString("GroupSound", LocaleController.getString("", R.string.Default));
+                        value = preferences.getString("GroupSound", mContext.getString(R.string.Default));
                     }
                     if (value.equals("NoSound")) {
-                        value = LocaleController.getString("Disabled", R.string.Disabled);
+                        value = mContext.getString(R.string.Disabled);
                     }
-                    textCell.setTextAndValue(LocaleController.getString("Sound", R.string.Sound), value, true);
+                    textCell.setTextAndValue(mContext.getString(R.string.Sound), value, true);
                 } else if (i == messageVibrateRow || i == groupVibrateRow) {
                     int value = 0;
                     if (i == messageVibrateRow) {
@@ -602,15 +601,15 @@ public class SettingsNotificationsActivity extends BaseFragment implements Notif
                         value = preferences.getInt("vibrate_group", 0);
                     }
                     if (value == 0) {
-                        textCell.setTextAndValue(LocaleController.getString("Vibrate", R.string.Vibrate), LocaleController.getString("", R.string.Default), true);
+                        textCell.setTextAndValue(mContext.getString(R.string.Vibrate), mContext.getString(R.string.Default), true);
                     } else if (value == 1) {
-                        textCell.setTextAndValue(LocaleController.getString("Vibrate", R.string.Vibrate), LocaleController.getString("Short", R.string.Short), true);
+                        textCell.setTextAndValue(mContext.getString(R.string.Vibrate), mContext.getString(R.string.Short), true);
                     } else if (value == 2) {
-                        textCell.setTextAndValue(LocaleController.getString("Vibrate", R.string.Vibrate), LocaleController.getString("Disabled", R.string.Disabled), true);
+                        textCell.setTextAndValue(mContext.getString(R.string.Vibrate), mContext.getString(R.string.Disabled), true);
                     } else if (value == 3) {
-                        textCell.setTextAndValue(LocaleController.getString("Vibrate", R.string.Vibrate), LocaleController.getString("Long", R.string.Long), true);
+                        textCell.setTextAndValue(mContext.getString(R.string.Vibrate), mContext.getString(R.string.Long), true);
                     } else if (value == 4) {
-                        textCell.setTextAndValue(LocaleController.getString("Vibrate", R.string.Vibrate), LocaleController.getString("OnlyIfSilent", R.string.OnlyIfSilent), true);
+                        textCell.setTextAndValue(mContext.getString(R.string.Vibrate), mContext.getString(R.string.OnlyIfSilent), true);
                     }
                 } else if (i == messagePriorityRow || i == groupPriorityRow  || i == inappPriorityRow ) {
                     int value = 0;
@@ -622,31 +621,31 @@ public class SettingsNotificationsActivity extends BaseFragment implements Notif
                         value = preferences.getInt("priority_inapp", 0);
                     }
                     if (value == 0) {
-                        textCell.setTextAndValue(LocaleController.getString("NotificationsPriority", R.string.NotificationsPriority), LocaleController.getString("NotificationsPriorityDefault", R.string.NotificationsPriorityDefault), false);
+                        textCell.setTextAndValue(mContext.getString(R.string.NotificationsPriority), mContext.getString(R.string.NotificationsPriorityDefault), false);
                     } else if (value == 1) {
-                        textCell.setTextAndValue(LocaleController.getString("NotificationsPriority", R.string.NotificationsPriority), LocaleController.getString("NotificationsPriorityHigh", R.string.NotificationsPriorityHigh), false);
+                        textCell.setTextAndValue(mContext.getString(R.string.NotificationsPriority), mContext.getString(R.string.NotificationsPriorityHigh), false);
                     } else if (value == 2) {
-                        textCell.setTextAndValue(LocaleController.getString("NotificationsPriority", R.string.NotificationsPriority), LocaleController.getString("NotificationsPriorityMax", R.string.NotificationsPriorityMax), false);
+                        textCell.setTextAndValue(mContext.getString(R.string.NotificationsPriority), mContext.getString(R.string.NotificationsPriorityMax), false);
                     }
                 } else if (i == repeatRow) {
                     int minutes = preferences.getInt("repeat_messages", 0);
                     String value;
                     if (minutes == 0) {
-                        value = LocaleController.getString("Disabled", R.string.Disabled);
+                        value = mContext.getString(R.string.Disabled);
                     } else if (minutes < 60) {
-                        value = ApplicationLoader.applicationContext.getResources().getQuantityString(R.plurals.Minutes, minutes, minutes);
+                        value = mContext.getResources().getQuantityString(R.plurals.Minutes, minutes, minutes);
                     } else {
-                        value = ApplicationLoader.applicationContext.getResources().getQuantityString(R.plurals.Hours, minutes / 60, minutes / 60);
+                        value = mContext.getResources().getQuantityString(R.plurals.Hours, minutes / 60, minutes / 60);
                     }
-                    textCell.setTextAndValue(LocaleController.getString("RepeatNotifications", R.string.RepeatNotifications), value, true);
+                    textCell.setTextAndValue(mContext.getString(R.string.RepeatNotifications), value, true);
                 }
                 else if (i == messageLedRow || i==groupLedRow ) {
                     int color = preferences.getInt(i==messageLedRow? "MessagesLed" : "GroupLed", NotificationsController.DEF_LED_COLOR);
                     if( color == 0 ) {
-                        textCell.setTextAndValue(ApplicationLoader.applicationContext.getString(R.string.LedColor), ApplicationLoader.applicationContext.getString(R.string.Disabled), true);
+                        textCell.setTextAndValue(mContext.getString(R.string.LedColor), mContext.getString(R.string.Disabled), true);
                     }
                     else {
-                        textCell.setTextAndColor(ApplicationLoader.applicationContext.getString(R.string.LedColor), color, true);
+                        textCell.setTextAndColor(mContext.getString(R.string.LedColor), color, true);
                     }
                 }
             } else if (type == TYPE_SHADOW) {

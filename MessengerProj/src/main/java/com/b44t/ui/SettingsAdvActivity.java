@@ -38,7 +38,6 @@ import android.widget.ListView;
 import com.b44t.messenger.AndroidUtilities;
 import com.b44t.messenger.MediaController;
 import com.b44t.messenger.ApplicationLoader;
-import com.b44t.messenger.LocaleController;
 import com.b44t.messenger.R;
 import com.b44t.ui.Adapters.BaseFragmentAdapter;
 import com.b44t.ui.Cells.ShadowSectionCell;
@@ -48,13 +47,12 @@ import com.b44t.ui.ActionBar.ActionBar;
 import com.b44t.ui.ActionBar.BaseFragment;
 import com.b44t.ui.Components.LayoutHelper;
 import com.b44t.ui.Components.NumberPicker;
-import com.b44t.ui.ActionBar.Theme;
 
 
 public class SettingsAdvActivity extends BaseFragment {
 
     // the list
-    private int enableAnimationsRow, languageRow, directShareRow, textSizeRow, cacheRow, raiseToSpeakRow, sendByEnterRow, finalShadowRow;
+    private int enableAnimationsRow, directShareRow, textSizeRow, cacheRow, raiseToSpeakRow, sendByEnterRow, finalShadowRow;
     private int rowCount;
 
     private static final int ROWTYPE_SHADOW          = 0;
@@ -85,7 +83,6 @@ public class SettingsAdvActivity extends BaseFragment {
         raiseToSpeakRow = rowCount++; // outgoing message
         enableAnimationsRow = -1;//rowCount++; -- for now, we disable this option, maybe we can add it later to a "view" settings, however, in general, this should be more a system-option
         cacheRow = -1;// for now, the - non-functional - page is reachable by the "storage settings" in the "android App Settings" only
-        languageRow = rowCount++;
         finalShadowRow = rowCount++;
 
         return true;
@@ -129,7 +126,7 @@ public class SettingsAdvActivity extends BaseFragment {
                         return;
                     }
                     AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
-                    builder.setTitle(LocaleController.getString("TextSize", R.string.TextSize));
+                    builder.setTitle(ApplicationLoader.applicationContext.getString(R.string.TextSize));
                     final NumberPicker numberPicker = new NumberPicker(getParentActivity());
                     final int MIN_VAL = 12;
                     final int MAX_VAL = 30;
@@ -138,7 +135,7 @@ public class SettingsAdvActivity extends BaseFragment {
                     for( int v = MIN_VAL; v <= MAX_VAL; v++ ) {
                         String cur = String.format("%d", v);
                         if( v==DEF_VAL ) {
-                            cur += " (" +LocaleController.getString("Default", R.string.Default)+ ")";
+                            cur += " (" +ApplicationLoader.applicationContext.getString(R.string.Default)+ ")";
                         }
                         displayValues[v-MIN_VAL] = cur;
                     }
@@ -148,7 +145,7 @@ public class SettingsAdvActivity extends BaseFragment {
                     numberPicker.setWrapSelectorWheel(false);
                     numberPicker.setValue(ApplicationLoader.fontSize);
                     builder.setView(numberPicker);
-                    builder.setNegativeButton(LocaleController.getString("Done", R.string.Done), new DialogInterface.OnClickListener() {
+                    builder.setNegativeButton(ApplicationLoader.applicationContext.getString(R.string.Done), new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("mainconfig", Activity.MODE_PRIVATE);
@@ -190,8 +187,6 @@ public class SettingsAdvActivity extends BaseFragment {
                     if (view instanceof TextCheckCell) {
                         ((TextCheckCell) view).setChecked(MediaController.getInstance().canDirectShare());
                     }
-                } else if (i == languageRow) {
-                    presentFragment(new LanguageSelectActivity());
                 } else if (i == cacheRow) {
                     presentFragment(new CacheControlActivity());
                 }
@@ -217,7 +212,6 @@ public class SettingsAdvActivity extends BaseFragment {
         public boolean isEnabled(int i) {
             return i == textSizeRow || i == enableAnimationsRow ||
                     i == sendByEnterRow ||
-                    i == languageRow ||
                     i == cacheRow || i == raiseToSpeakRow || i == directShareRow ;
         }
 
@@ -258,11 +252,9 @@ public class SettingsAdvActivity extends BaseFragment {
                 if (i == textSizeRow) {
                     SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("mainconfig", Activity.MODE_PRIVATE);
                     int size = preferences.getInt("msg_font_size", defMsgFontSize());
-                    textCell.setTextAndValue(LocaleController.getString("TextSize", R.string.TextSize), String.format("%d", size), true);
-                } else if (i == languageRow) {
-                    textCell.setTextAndValue(LocaleController.getString("Language", R.string.Language), LocaleController.getCurrentLanguageName(), false);
+                    textCell.setTextAndValue(mContext.getString(R.string.TextSize), String.format("%d", size), true);
                 } else if (i == cacheRow) {
-                    textCell.setText(LocaleController.getString("CacheSettings", R.string.CacheSettings), true);
+                    textCell.setText(mContext.getString(R.string.CacheSettings), true);
                 } 
             } else if (type == ROWTYPE_CHECK) {
                 if (view == null) {
@@ -273,13 +265,13 @@ public class SettingsAdvActivity extends BaseFragment {
 
                 SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("mainconfig", Activity.MODE_PRIVATE);
                 if (i == enableAnimationsRow) {
-                    textCell.setTextAndCheck(LocaleController.getString("EnableAnimations", R.string.EnableAnimations), preferences.getBoolean("view_animations2", true), false);
+                    textCell.setTextAndCheck(mContext.getString(R.string.EnableAnimations), preferences.getBoolean("view_animations2", true), false);
                 } else if (i == sendByEnterRow) {
-                    textCell.setTextAndCheck(LocaleController.getString("SendByEnter", R.string.SendByEnter), preferences.getBoolean("send_by_enter", false), true);
+                    textCell.setTextAndCheck(mContext.getString(R.string.SendByEnter), preferences.getBoolean("send_by_enter", false), true);
                 } else if (i == raiseToSpeakRow) {
-                    textCell.setTextAndCheck(LocaleController.getString("RaiseToSpeak", R.string.RaiseToSpeak), MediaController.getInstance().canRaiseToSpeak(), true);
+                    textCell.setTextAndCheck(mContext.getString(R.string.RaiseToSpeak), MediaController.getInstance().canRaiseToSpeak(), true);
                 } else if (i == directShareRow) {
-                    textCell.setTextAndValueAndCheck(LocaleController.getString("DirectShare", R.string.DirectShare), LocaleController.getString("DirectShareInfo", R.string.DirectShareInfo), MediaController.getInstance().canDirectShare(), false, true);
+                    textCell.setTextAndValueAndCheck(mContext.getString(R.string.DirectShare), mContext.getString(R.string.DirectShareInfo), MediaController.getInstance().canDirectShare(), false, true);
                 }
             }
             return view;

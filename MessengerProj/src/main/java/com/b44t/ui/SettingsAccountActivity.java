@@ -40,7 +40,6 @@ import android.widget.ListView;
 
 import com.b44t.messenger.AndroidUtilities;
 import com.b44t.messenger.ApplicationLoader;
-import com.b44t.messenger.LocaleController;
 import com.b44t.messenger.MrMailbox;
 import com.b44t.messenger.NotificationCenter;
 import com.b44t.messenger.R;
@@ -202,7 +201,7 @@ public class SettingsAccountActivity extends BaseFragment implements Notificatio
     }
 
     @Override
-    public View createView(Context context) {
+    public View createView(final Context context) {
 
         // create action bar
         if( !fromIntro ) {
@@ -210,7 +209,7 @@ public class SettingsAccountActivity extends BaseFragment implements Notificatio
         }
 
         actionBar.setAllowOverlayTitle(true);
-        actionBar.setTitle(LocaleController.getString("AccountSettings", R.string.AccountSettings));
+        actionBar.setTitle(context.getString(R.string.AccountSettings));
         actionBar.setActionBarMenuOnItemClick(new ActionBar.ActionBarMenuOnItemClick() {
             @Override
             public void onItemClick(int id) {
@@ -279,7 +278,7 @@ public class SettingsAccountActivity extends BaseFragment implements Notificatio
                             listView.invalidateViews();
                         }
                     });
-                    builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
+                    builder.setNegativeButton(context.getString(R.string.Cancel), null);
                     showDialog(builder.create());
 
                 }
@@ -350,7 +349,7 @@ public class SettingsAccountActivity extends BaseFragment implements Notificatio
         progressDialog.setMessage(ApplicationLoader.applicationContext.getString(R.string.OneMoment));
         progressDialog.setCanceledOnTouchOutside(false);
         progressDialog.setCancelable(false);
-        progressDialog.setButton(DialogInterface.BUTTON_NEGATIVE, LocaleController.getString("Cancel", R.string.Cancel), new DialogInterface.OnClickListener() {
+        progressDialog.setButton(DialogInterface.BUTTON_NEGATIVE, ApplicationLoader.applicationContext.getString(R.string.Cancel), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         MrMailbox.configureCancel();
@@ -407,7 +406,7 @@ public class SettingsAccountActivity extends BaseFragment implements Notificatio
             else if( ! MrMailbox.m_lastErrorString.isEmpty() ){
                 AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
                 builder.setMessage(errorString);
-                builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), new DialogInterface.OnClickListener() {
+                builder.setPositiveButton(ApplicationLoader.applicationContext.getString(R.string.OK), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         ;
@@ -491,7 +490,7 @@ public class SettingsAccountActivity extends BaseFragment implements Notificatio
                     if( mailServerCell==null) {
                         mailServerCell = new EditTextCell(mContext);
                         mailServerCell.setValueHintAndLabel(MrMailbox.getConfig("mail_server", ""),
-                                ApplicationLoader.applicationContext.getString(R.string.Automatic), LocaleController.getString("ImapServer", R.string.ImapServer), false);
+                                ApplicationLoader.applicationContext.getString(R.string.Automatic), ApplicationLoader.applicationContext.getString(R.string.ImapServer), false);
                         mailServerCell.getEditTextView().setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_URI);
                     }
                     view = mailServerCell;
@@ -500,7 +499,7 @@ public class SettingsAccountActivity extends BaseFragment implements Notificatio
                     if( mailPortCell==null) {
                         mailPortCell = new EditTextCell(mContext);
                         mailPortCell.setValueHintAndLabel(MrMailbox.getConfig("mail_port", ""),
-                                ApplicationLoader.applicationContext.getString(R.string.Automatic), LocaleController.getString("ImapPort", R.string.ImapPort), false);
+                                ApplicationLoader.applicationContext.getString(R.string.Automatic), ApplicationLoader.applicationContext.getString(R.string.ImapPort), false);
                         mailPortCell.getEditTextView().setInputType(InputType.TYPE_CLASS_NUMBER);
                     }
                     view = mailPortCell;
@@ -509,7 +508,7 @@ public class SettingsAccountActivity extends BaseFragment implements Notificatio
                     if( mailUserCell==null) {
                         mailUserCell = new EditTextCell(mContext);
                         mailUserCell.setValueHintAndLabel(MrMailbox.getConfig("mail_user", ""),
-                                ApplicationLoader.applicationContext.getString(R.string.Automatic), LocaleController.getString("ImapLoginname", R.string.ImapLoginname), false);
+                                ApplicationLoader.applicationContext.getString(R.string.Automatic), ApplicationLoader.applicationContext.getString(R.string.ImapLoginname), false);
                     }
                     view = mailUserCell;
                 }
@@ -517,7 +516,7 @@ public class SettingsAccountActivity extends BaseFragment implements Notificatio
                     if( sendServerCell==null) {
                         sendServerCell = new EditTextCell(mContext);
                         sendServerCell.setValueHintAndLabel(MrMailbox.getConfig("send_server", ""),
-                                ApplicationLoader.applicationContext.getString(R.string.Automatic), LocaleController.getString("SmtpServer", R.string.SmtpServer), false);
+                                ApplicationLoader.applicationContext.getString(R.string.Automatic), ApplicationLoader.applicationContext.getString(R.string.SmtpServer), false);
                         sendServerCell.getEditTextView().setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_URI);
                     }
                     view = sendServerCell;
@@ -526,7 +525,7 @@ public class SettingsAccountActivity extends BaseFragment implements Notificatio
                     if( sendPortCell==null) {
                         sendPortCell = new EditTextCell(mContext);
                         sendPortCell.setValueHintAndLabel(MrMailbox.getConfig("send_port", ""),
-                                ApplicationLoader.applicationContext.getString(R.string.Automatic), LocaleController.getString("SmtpPort", R.string.SmtpPort), false);
+                                ApplicationLoader.applicationContext.getString(R.string.Automatic), ApplicationLoader.applicationContext.getString(R.string.SmtpPort), false);
                         sendPortCell.getEditTextView().setInputType(InputType.TYPE_CLASS_NUMBER);
                     }
                     view = sendPortCell;
@@ -535,7 +534,7 @@ public class SettingsAccountActivity extends BaseFragment implements Notificatio
                     if( sendUserCell==null) {
                         sendUserCell = new EditTextCell(mContext);
                         sendUserCell.setValueHintAndLabel(MrMailbox.getConfig("send_user", ""),
-                                ApplicationLoader.applicationContext.getString(R.string.Automatic), LocaleController.getString("SmtpLoginname", R.string.SmtpLoginname), false);
+                                ApplicationLoader.applicationContext.getString(R.string.Automatic), ApplicationLoader.applicationContext.getString(R.string.SmtpLoginname), false);
                     }
                     view = sendUserCell;
                 }
@@ -543,7 +542,7 @@ public class SettingsAccountActivity extends BaseFragment implements Notificatio
                     if( sendPwCell==null) {
                         sendPwCell = new EditTextCell(mContext);
                         sendPwCell.setValueHintAndLabel(MrMailbox.getConfig("send_pw", ""),
-                                LocaleController.getString("FromAbove", R.string.FromAbove), LocaleController.getString("SmtpPassword", R.string.SmtpPassword), false);
+                                ApplicationLoader.applicationContext.getString(R.string.FromAbove), ApplicationLoader.applicationContext.getString(R.string.SmtpPassword), false);
                         sendPwCell.getEditTextView().setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS | InputType.TYPE_TEXT_VARIATION_PASSWORD);
                     }
                     view = sendPwCell;
@@ -578,9 +577,9 @@ public class SettingsAccountActivity extends BaseFragment implements Notificatio
                 } else if (i == rowMailPwHeadline) {
                     ((HeaderCell) view).setText(ApplicationLoader.applicationContext.getString(R.string.Password));
                 } else if (i == rowMailHeadline) {
-                    ((HeaderCell) view).setText(LocaleController.getString("InboxHeadline", R.string.InboxHeadline));
+                    ((HeaderCell) view).setText(ApplicationLoader.applicationContext.getString(R.string.InboxHeadline));
                 } else if (i == rowSendHeadline) {
-                    ((HeaderCell) view).setText(LocaleController.getString("OutboxHeadline", R.string.OutboxHeadline));
+                    ((HeaderCell) view).setText(ApplicationLoader.applicationContext.getString(R.string.OutboxHeadline));
                 }
             }
             else if (type == ROWTYPE_SHADOW_BREAK) {
@@ -593,12 +592,12 @@ public class SettingsAccountActivity extends BaseFragment implements Notificatio
                     view = new TextInfoCell(mContext);
                 }
                 if( i== rowOpenAdvOpions) {
-                    ((TextInfoCell) view).setText(LocaleController.getString("MyAccoutExplain", R.string.MyAccountExplain),
+                    ((TextInfoCell) view).setText(ApplicationLoader.applicationContext.getString(R.string.MyAccountExplain),
                             m_expanded? " \u2212" /*minus-sign*/ : "+", m_expanded /*draw bottom border?*/);
                     view.setBackgroundResource(m_expanded? R.drawable.greydivider : R.drawable.greydivider_bottom); // has shadow top+bottom
                 }
                 else if( i==rowInfoBelowSendPw) {
-                    ((TextInfoCell) view).setText(AndroidUtilities.replaceTags(LocaleController.getString("MyAccountExplain2", R.string.MyAccountExplain2)));
+                    ((TextInfoCell) view).setText(AndroidUtilities.replaceTags(ApplicationLoader.applicationContext.getString(R.string.MyAccountExplain2)));
                     if( m_expanded ) {
                         view.setBackgroundResource(R.drawable.greydivider_bottom);
                     }

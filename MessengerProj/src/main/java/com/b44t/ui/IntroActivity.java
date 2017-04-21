@@ -164,7 +164,7 @@ public class IntroActivity extends Activity {
                     new AlertDialog.Builder(IntroActivity.this)
                         .setTitle(ApplicationLoader.applicationContext.getString(R.string.AppName) + " v" + getVersion())
                         .setMessage(MrMailbox.getInfo() + "\n\n" + getAndroidInfo())
-                        .setPositiveButton(LocaleController.getString("OK", R.string.OK), new DialogInterface.OnClickListener() {
+                        .setPositiveButton(ApplicationLoader.applicationContext.getString(R.string.OK), new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
                                 ;

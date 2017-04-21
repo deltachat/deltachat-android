@@ -418,7 +418,7 @@ public class MrMailbox {
     public static String getInviteText() {
         String url = "https://getdelta.org";
         String email = getConfig("addr", "");
-        String text = LocaleController.formatString("InviteText", R.string.InviteText, url, email);
+        String text = String.format(ApplicationLoader.applicationContext.getString(R.string.InviteText), url, email);
         return text;
     }
 

@@ -161,7 +161,7 @@ public class DocumentSelectActivity extends BaseFragment {
 
         actionBar.setBackButtonDrawable(new BackDrawable(false));
         actionBar.setAllowOverlayTitle(true);
-        actionBar.setTitle(LocaleController.getString("SelectFile", R.string.SelectFile));
+        actionBar.setTitle(context.getString(R.string.SelectFile));
         actionBar.setActionBarMenuOnItemClick(new ActionBar.ActionBarMenuOnItemClick() {
             @Override
             public void onItemClick(int id) {
@@ -406,9 +406,9 @@ public class DocumentSelectActivity extends BaseFragment {
                     items.clear();
                     String state = Environment.getExternalStorageState();
                     if (Environment.MEDIA_SHARED.equals(state)) {
-                        emptyView.setText(LocaleController.getString("UsbActive", R.string.UsbActive));
+                        emptyView.setText(ApplicationLoader.applicationContext.getString(R.string.UsbActive));
                     } else {
-                        emptyView.setText(LocaleController.getString("NotMounted", R.string.NotMounted));
+                        emptyView.setText(ApplicationLoader.applicationContext.getString(R.string.NotMounted));
                     }
                     AndroidUtilities.clearDrawableAnimation(listView);
                     scrolling = true;
@@ -419,7 +419,7 @@ public class DocumentSelectActivity extends BaseFragment {
             showErrorBox(ApplicationLoader.applicationContext.getString(R.string.AccessError));
             return false;
         }
-        emptyView.setText(LocaleController.getString("NoFiles", R.string.NoFiles));
+        emptyView.setText(ApplicationLoader.applicationContext.getString(R.string.NoFiles));
         File[] files;
         try {
             files = dir.listFiles();
@@ -461,7 +461,7 @@ public class DocumentSelectActivity extends BaseFragment {
             item.file = file;
             if (file.isDirectory()) {
                 item.icon = R.drawable.ic_directory;
-                item.subtitle = LocaleController.getString("Folder", R.string.Folder);
+                item.subtitle = ApplicationLoader.applicationContext.getString(R.string.Folder);
             } else {
                 String fname = file.getName();
                 String[] sp = fname.split("\\.");
@@ -479,12 +479,12 @@ public class DocumentSelectActivity extends BaseFragment {
         if (history.size() > 0) {
             HistoryEntry entry = history.get(history.size() - 1);
             if (entry.dir == null) {
-                item.subtitle = LocaleController.getString("Folder", R.string.Folder);
+                item.subtitle = ApplicationLoader.applicationContext.getString(R.string.Folder);
             } else {
                 item.subtitle = entry.dir.toString();
             }
         } else {
-            item.subtitle = LocaleController.getString("Folder", R.string.Folder);
+            item.subtitle = ApplicationLoader.applicationContext.getString(R.string.Folder);
         }
         item.icon = R.drawable.ic_directory;
         item.file = null;
@@ -510,10 +510,10 @@ public class DocumentSelectActivity extends BaseFragment {
         if (defaultPathState.equals(Environment.MEDIA_MOUNTED) || defaultPathState.equals(Environment.MEDIA_MOUNTED_READ_ONLY)) {
             ListItem ext = new ListItem();
             if (Environment.isExternalStorageRemovable()) {
-                ext.title = LocaleController.getString("SdCard", R.string.SdCard);
+                ext.title = ApplicationLoader.applicationContext.getString(R.string.SdCard);
                 ext.icon = R.drawable.ic_external_storage;
             } else {
-                ext.title = LocaleController.getString("InternalStorage", R.string.InternalStorage);
+                ext.title = ApplicationLoader.applicationContext.getString(R.string.InternalStorage);
                 ext.icon = R.drawable.ic_storage;
             }
             ext.subtitle = getRootSubtitle(defaultPath);
@@ -550,9 +550,9 @@ public class DocumentSelectActivity extends BaseFragment {
                             try {
                                 ListItem item = new ListItem();
                                 if (path.toLowerCase().contains("sd")) {
-                                    item.title = LocaleController.getString("SdCard", R.string.SdCard);
+                                    item.title = ApplicationLoader.applicationContext.getString(R.string.SdCard);
                                 } else {
-                                    item.title = LocaleController.getString("ExternalStorage", R.string.ExternalStorage);
+                                    item.title = ApplicationLoader.applicationContext.getString(R.string.ExternalStorage);
                                 }
                                 item.icon = R.drawable.ic_external_storage;
                                 item.subtitle = getRootSubtitle(path);
@@ -578,7 +578,7 @@ public class DocumentSelectActivity extends BaseFragment {
         }
         ListItem fs = new ListItem();
         fs.title = "/";
-        fs.subtitle = LocaleController.getString("SystemRoot", R.string.SystemRoot);
+        fs.subtitle = ApplicationLoader.applicationContext.getString(R.string.SystemRoot);
         fs.icon = R.drawable.ic_directory;
         fs.file = new File("/");
         items.add(fs);
@@ -598,8 +598,8 @@ public class DocumentSelectActivity extends BaseFragment {
         }
 
         fs = new ListItem();
-        fs.title = LocaleController.getString("Gallery", R.string.Gallery);
-        fs.subtitle = LocaleController.getString("GalleryInfo", R.string.GalleryInfo);
+        fs.title = ApplicationLoader.applicationContext.getString(R.string.Gallery);
+        fs.subtitle = ApplicationLoader.applicationContext.getString(R.string.GalleryInfo);
         fs.icon = R.drawable.ic_storage_gallery;
         fs.file = null;
         items.add(fs);
@@ -617,7 +617,7 @@ public class DocumentSelectActivity extends BaseFragment {
             if (total == 0) {
                 return "";
             }
-            return LocaleController.formatString("FreeOfTotal", R.string.FreeOfTotal, AndroidUtilities.formatFileSize(free), AndroidUtilities.formatFileSize(total));
+            return String.format(ApplicationLoader.applicationContext.getString(R.string.FreeOfTotal), AndroidUtilities.formatFileSize(free), AndroidUtilities.formatFileSize(total));
         } catch (Exception e) {
 
         }

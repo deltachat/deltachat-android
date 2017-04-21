@@ -42,6 +42,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.b44t.messenger.AndroidUtilities;
+import com.b44t.messenger.ApplicationLoader;
 import com.b44t.messenger.ContactsController;
 import com.b44t.messenger.LocaleController;
 import com.b44t.messenger.MrContact;
@@ -111,10 +112,10 @@ public class GroupCreateFinalActivity extends BaseFragment implements Notificati
     }
 
     @Override
-    public View createView(Context context) {
+    public View createView(final Context context) {
         actionBar.setBackButtonImage(R.drawable.ic_close_white);
         actionBar.setAllowOverlayTitle(true);
-        actionBar.setTitle(LocaleController.getString("NewGroup", R.string.NewGroup));
+        actionBar.setTitle(context.getString(R.string.NewGroup));
         actionBar.setActionBarMenuOnItemClick(new ActionBar.ActionBarMenuOnItemClick() {
             @Override
             public void onItemClick(int id) {
@@ -123,7 +124,7 @@ public class GroupCreateFinalActivity extends BaseFragment implements Notificati
                 } else if (id == done_button) {
                     String groupName = nameTextView.getText().toString().trim();
                     if (groupName.isEmpty()) {
-                        Toast.makeText(getParentActivity(), LocaleController.getString("ErrGroupNameEmpty", R.string.ErrGroupNameEmpty), Toast.LENGTH_LONG).show();
+                        Toast.makeText(getParentActivity(), context.getString(R.string.ErrGroupNameEmpty), Toast.LENGTH_LONG).show();
                         return;
                     }
                     int chat_id=MrMailbox.createGroupChat(groupName);
@@ -223,7 +224,7 @@ public class GroupCreateFinalActivity extends BaseFragment implements Notificati
         }
 
         nameTextView = new EditText(context);
-        nameTextView.setHint(LocaleController.getString("EnterGroupNamePlaceholder", R.string.EnterGroupNamePlaceholder));
+        nameTextView.setHint(context.getString(R.string.EnterGroupNamePlaceholder));
         if (nameToSet != null) {
             nameTextView.setText(nameToSet);
             nameToSet = null;
@@ -294,7 +295,7 @@ public class GroupCreateFinalActivity extends BaseFragment implements Notificati
 
     @Override
     public void didUploadedPhoto(final TLRPC.InputFile file, final TLRPC.PhotoSize small, final TLRPC.PhotoSize big) {
-        Toast.makeText(getParentActivity(), LocaleController.getString("NotYetImplemented", R.string.NotYetImplemented), Toast.LENGTH_SHORT).show();
+        Toast.makeText(getParentActivity(), ApplicationLoader.applicationContext.getString(R.string.NotYetImplemented), Toast.LENGTH_SHORT).show();
         /*
         AndroidUtilities.runOnUIThread(new Runnable() {
             @Override

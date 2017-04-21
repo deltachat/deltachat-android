@@ -129,21 +129,21 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
 
         if( do_what == SELECT_CONTACT_FOR_NEW_CHAT  )
         {
-            title      = LocaleController.getString("NewChat", R.string.NewChat);
-            subtitle   = LocaleController.getString("SendMessageTo", R.string.SendMessageTo);
+            title      = ApplicationLoader.applicationContext.getString(R.string.NewChat);
+            subtitle   = ApplicationLoader.applicationContext.getString(R.string.SendMessageTo);
         }
         else if( do_what == SELECT_CONTACTS_FOR_NEW_GROUP )
         {
-            title      = LocaleController.getString("NewGroup", R.string.NewGroup);
+            title      = ApplicationLoader.applicationContext.getString(R.string.NewGroup);
             subtitle   = ApplicationLoader.applicationContext.getResources().getQuantityString(R.plurals.MeAndMembers, 0, 0);
         }
         else if( do_what == ADD_CONTACTS_TO_GROUP )
         {
-            title = LocaleController.getString("AddMember", R.string.AddMember);
+            title = ApplicationLoader.applicationContext.getString(R.string.AddMember);
         }
         else if( do_what == SELECT_CONTACT_TO_BLOCK )
         {
-            title = LocaleController.getString("BlockContact", R.string.BlockContact);
+            title = ApplicationLoader.applicationContext.getString(R.string.BlockContact);
         }
         else if( do_what == SELECT_CONTACT_TO_ATTACH )
         {
@@ -259,9 +259,9 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
 
         ActionBarMenuItem item = menu.addItem(10, R.drawable.ic_ab_other);
         if (do_what == SELECT_CONTACT_FOR_NEW_CHAT || do_what == SELECT_CONTACTS_FOR_NEW_GROUP) {
-            item.addSubItem(id_toggle, do_what == SELECT_CONTACT_FOR_NEW_CHAT ? LocaleController.getString("NewGroup", R.string.NewGroup) : LocaleController.getString("NewChat", R.string.NewChat), 0);
+            item.addSubItem(id_toggle, do_what == SELECT_CONTACT_FOR_NEW_CHAT ? context.getString(R.string.NewGroup) : context.getString(R.string.NewChat), 0);
         }
-        item.addSubItem(id_add_contact, LocaleController.getString("NewContactTitle", R.string.NewContactTitle), 0);
+        item.addSubItem(id_add_contact, context.getString(R.string.NewContactTitle), 0);
 
 
         listViewAdapter = new ContactsAdapter(context);
@@ -352,7 +352,7 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
                                 listView.setVerticalScrollBarEnabled(true);
                             }
                             if (emptyTextView != null) {
-                                emptyTextView.setText(LocaleController.getString("NoResult", R.string.NoResult));
+                                emptyTextView.setText(context.getString(R.string.NoResult));
                             }
                             listViewAdapter.search(text);
                             listViewAdapter.notifyDataSetChanged();
@@ -364,7 +364,7 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
                             listView.setFastScrollAlwaysVisible(true);
                             listView.setFastScrollEnabled(true);
                             listView.setVerticalScrollBarEnabled(false);
-                            emptyTextView.setText(LocaleController.getString("NoContacts", R.string.NoContacts));
+                            emptyTextView.setText(context.getString(R.string.NoContacts));
                         }
                     }
                 }
@@ -388,7 +388,7 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
         emptyTextView.setTextColor(0xff808080);
         emptyTextView.setTextSize(20);
         emptyTextView.setGravity(Gravity.CENTER);
-        emptyTextView.setText(LocaleController.getString("NoContacts", R.string.NoContacts));
+        emptyTextView.setText(context.getString(R.string.NoContacts));
         emptyTextLayout.addView(emptyTextView, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.MATCH_PARENT, 0.5f));
 
         FrameLayout frameLayout2 = new FrameLayout(context);
@@ -430,7 +430,7 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
                         }
 
                         AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
-                        builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), new DialogInterface.OnClickListener() {
+                        builder.setPositiveButton(context.getString(R.string.OK), new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
                                 int belonging_chat_id = MrMailbox.createChatByContactId(user.id);
@@ -441,8 +441,8 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
                                 }
                             }
                         });
-                        builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
-                        builder.setMessage(AndroidUtilities.replaceTags(LocaleController.formatString("AskStartChatWith", R.string.AskStartChatWith, name)));
+                        builder.setNegativeButton(context.getString(R.string.Cancel), null);
+                        builder.setMessage(AndroidUtilities.replaceTags(String.format(context.getString(R.string.AskStartChatWith), name)));
                         showDialog(builder.create());
                     }
                     else if( do_what == SELECT_CONTACTS_FOR_NEW_GROUP ) {
@@ -487,7 +487,7 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
                             listView.setFastScrollAlwaysVisible(true);
                             listView.setFastScrollEnabled(true);
                             listView.setVerticalScrollBarEnabled(false);
-                            emptyTextView.setText(LocaleController.getString("NoContacts", R.string.NoContacts));
+                            emptyTextView.setText(context.getString(R.string.NoContacts));
                         } else {
                             if (view instanceof UserCell) {
                                 ((UserCell) view).setChecked(check, true);
@@ -510,7 +510,7 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
                 if (item instanceof TLRPC.User) {
                     final TLRPC.User user = (TLRPC.User) item;
                     AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
-                    CharSequence[] items = new CharSequence[]{LocaleController.getString("ViewProfile", R.string.ViewProfile)};
+                    CharSequence[] items = new CharSequence[]{context.getString(R.string.ViewProfile)};
                     builder.setItems(items, new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {

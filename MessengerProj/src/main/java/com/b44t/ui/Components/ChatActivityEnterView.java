@@ -62,7 +62,6 @@ import android.widget.TextView;
 
 import com.b44t.messenger.AndroidUtilities;
 import com.b44t.messenger.Emoji;
-import com.b44t.messenger.LocaleController;
 import com.b44t.messenger.MediaController;
 import com.b44t.messenger.MessageObject;
 import com.b44t.messenger.MrContact;
@@ -465,7 +464,7 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
         });
 
         messageEditText = new EditTextCaption(context);
-        messageEditText.setHint(LocaleController.getString("TypeMessage", R.string.TypeMessage));
+        messageEditText.setHint(context.getString(R.string.TypeMessage));
 
         int addImeFlag = 0, addInputType = 0;
         if( sendByEnter ) {
@@ -666,7 +665,7 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
         slideText.addView(imageView, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER_VERTICAL, 0, 1, 0, 0));
 
         TextView textView = new TextView(context);
-        textView.setText(LocaleController.getString("SlideToCancel", R.string.SlideToCancel));
+        textView.setText(context.getString(R.string.SlideToCancel));
         textView.setTextColor(0xff999999);
         textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 12);
         slideText.addView(textView, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER_VERTICAL, 6, 0, 0, 0));
@@ -1415,14 +1414,14 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
                     return;
                 }
                 AlertDialog.Builder builder = new AlertDialog.Builder(parentActivity);
-                builder.setMessage(LocaleController.getString("ClearRecentEmoji", R.string.ClearRecentEmoji));
-                builder.setPositiveButton(LocaleController.getString("ClearButton", R.string.ClearButton).toUpperCase(), new DialogInterface.OnClickListener() {
+                builder.setMessage(ApplicationLoader.applicationContext.getString(R.string.ClearRecentEmoji));
+                builder.setPositiveButton(ApplicationLoader.applicationContext.getString(R.string.ClearButton).toUpperCase(), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         emojiView.clearRecentEmoji();
                     }
                 });
-                builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
+                builder.setNegativeButton(ApplicationLoader.applicationContext.getString(R.string.Cancel), null);
                 parentFragment.showDialog(builder.create());
             }
         });

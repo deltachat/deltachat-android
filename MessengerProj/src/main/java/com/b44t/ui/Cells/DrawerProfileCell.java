@@ -124,13 +124,13 @@ public class DrawerProfileCell extends FrameLayout {
     }
 
     public void updateUserName() {
-        String displayname = MrMailbox.getConfig("displayname", LocaleController.getString("MyAccount", R.string.MyAccount));
+        String displayname = MrMailbox.getConfig("displayname", ApplicationLoader.applicationContext.getString(R.string.MyAccount));
         String addr;
         if( MrMailbox.isConfigured()!=0) {
             addr = MrMailbox.getConfig("addr", "");
         }
         else {
-            addr = LocaleController.getString("AccountNotConfigured", R.string.AccountNotConfigured);
+            addr = ApplicationLoader.applicationContext.getString(R.string.AccountNotConfigured);
         }
         nameTextView.setText(displayname);
         subtitleTextView.setText(addr);

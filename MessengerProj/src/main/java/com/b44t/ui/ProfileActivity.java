@@ -249,7 +249,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
     }
 
     @Override
-    public View createView(Context context) {
+    public View createView(final Context context) {
         hasOwnBackground = true;
         extraHeight = AndroidUtilities.dp(88);
         actionBar.setActionBarMenuOnItemClick(new ActionBar.ActionBarMenuOnItemClick() {
@@ -263,7 +263,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                 }
                 else if( id==ID_STOP_ENCRYPTION_FOR_THIS_USER )
                 {
-                    Toast.makeText(getParentActivity(), LocaleController.getString("NotYetImplemented", R.string.NotYetImplemented), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getParentActivity(), context.getString(R.string.NotYetImplemented), Toast.LENGTH_SHORT).show();
                 }
                 else if (id == ID_BLOCK_CONTACT)
                 {
@@ -273,27 +273,27 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                     }
                     else {
                         AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
-                        builder.setMessage(LocaleController.getString("AreYouSureBlockContact", R.string.AreYouSureBlockContact));
-                        builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), new DialogInterface.OnClickListener() {
+                        builder.setMessage(context.getString(R.string.AreYouSureBlockContact));
+                        builder.setPositiveButton(context.getString(R.string.OK), new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
                                 MrMailbox.blockContact(user_id, 1);
                                 finishFragment(); /* got to the parent, this is important eg. when editing blocking in the BlockedUserActivitiy. Moreover, this saves us updating all the states in the profile */
                             }
                         });
-                        builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
+                        builder.setNegativeButton(context.getString(R.string.Cancel), null);
                         showDialog(builder.create());
                     }
                 }
                 else if (id == ID_DELETE_CONTACT)
                 {
                     AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
-                    builder.setMessage(LocaleController.getString("AreYouSureDeleteContact", R.string.AreYouSureDeleteContact));
-                    builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), new DialogInterface.OnClickListener() {
+                    builder.setMessage(context.getString(R.string.AreYouSureDeleteContact));
+                    builder.setPositiveButton(context.getString(R.string.OK), new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
                             if( MrMailbox.deleteContact(user_id)==0 ) {
-                                AndroidUtilities.showHint(getParentActivity(), ApplicationLoader.applicationContext.getString(R.string.CannotDeleteContact));
+                                AndroidUtilities.showHint(getParentActivity(), context.getString(R.string.CannotDeleteContact));
                             }
                             else {
                                 AndroidUtilities.showDoneHint(getParentActivity());
@@ -301,7 +301,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                             }
                         }
                     });
-                    builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
+                    builder.setNegativeButton(context.getString(R.string.Cancel), null);
                     showDialog(builder.create());
                 }
                 else if (id == ID_ADD_SHORTCUT)
@@ -317,7 +317,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                         // add shortcut
                         int install_chat_id = chat_id!=0? chat_id : MrMailbox.getChatIdByContactId(user_id);
                         AndroidUtilities.installShortcut(install_chat_id, bitmap);
-                        Toast.makeText(getParentActivity(), LocaleController.getString("ShortcutAdded", R.string.ShortcutAdded), Toast.LENGTH_LONG).show();
+                        Toast.makeText(getParentActivity(), context.getString(R.string.ShortcutAdded), Toast.LENGTH_LONG).show();
 
                     } catch (Exception e) {
 
@@ -399,7 +399,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                 }
                 else if(position==compareKeysRow)
                 {
-                    Toast.makeText(getParentActivity(), LocaleController.getString("NotYetImplemented", R.string.NotYetImplemented), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getParentActivity(), context.getString(R.string.NotYetImplemented), Toast.LENGTH_SHORT).show();
                 }
                 else if(position==startChatRow)
                 {
@@ -415,7 +415,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
 
                     String name = MrMailbox.getContact(user_id).getNameNAddr();
                     AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
-                    builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), new DialogInterface.OnClickListener() {
+                    builder.setPositiveButton(context.getString(R.string.OK), new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
                             int belonging_chat_id = MrMailbox.createChatByContactId(user_id);
@@ -429,8 +429,8 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                             }
                         }
                     });
-                    builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
-                    builder.setMessage(AndroidUtilities.replaceTags(LocaleController.formatString("AskStartChatWith", R.string.AskStartChatWith, name)));
+                    builder.setNegativeButton(context.getString(R.string.Cancel), null);
+                    builder.setMessage(AndroidUtilities.replaceTags(String.format(context.getString(R.string.AskStartChatWith), name)));
                     showDialog(builder.create());
                 }
                 else if (position == addMemberRow)
@@ -443,20 +443,20 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                         public void didSelectContact(final int added_user_id) {
                             if( MrMailbox.isContactInChat(chat_id, added_user_id)!=0 )
                             {
-                                Toast.makeText(getParentActivity(), ApplicationLoader.applicationContext.getString(R.string.ContactAlreadyInGroup), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getParentActivity(), context.getString(R.string.ContactAlreadyInGroup), Toast.LENGTH_SHORT).show();
                             }
                             else {
                                 AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
-                                builder.setPositiveButton(ApplicationLoader.applicationContext.getString(R.string.OK), new DialogInterface.OnClickListener() {
+                                builder.setPositiveButton(context.getString(R.string.OK), new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialogInterface, int i) {
                                         MrMailbox.addContactToChat(chat_id, added_user_id);
                                         NotificationCenter.getInstance().postNotificationName(NotificationCenter.updateInterfaces, MrMailbox.UPDATE_MASK_CHAT_MEMBERS);
                                     }
                                 });
-                                builder.setNegativeButton(ApplicationLoader.applicationContext.getString(R.string.Cancel), null);
+                                builder.setNegativeButton(context.getString(R.string.Cancel), null);
                                 String name = MrMailbox.getContact(added_user_id).getDisplayName();
-                                builder.setMessage(AndroidUtilities.replaceTags(LocaleController.formatString("AskAddMemberToGroup", R.string.AskAddMemberToGroup, name)));
+                                builder.setMessage(AndroidUtilities.replaceTags(String.format(context.getString(R.string.AskAddMemberToGroup), name)));
                                 showDialog(builder.create());
                             }
                         }
@@ -488,22 +488,22 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                     {
                         final int curr_user_id = sortedUserIds[curr_user_index];
                         AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
-                        CharSequence[] items = new CharSequence[]{LocaleController.getString("RemoveMember", R.string.RemoveMember)};
+                        CharSequence[] items = new CharSequence[]{context.getString(R.string.RemoveMember)};
                         builder.setItems(items, new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
 
                                 AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
-                                builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), new DialogInterface.OnClickListener() {
+                                builder.setPositiveButton(context.getString(R.string.OK), new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialogInterface, int i) {
                                         MrMailbox.removeContactFromChat(chat_id, curr_user_id);
                                         NotificationCenter.getInstance().postNotificationName(NotificationCenter.updateInterfaces, MrMailbox.UPDATE_MASK_CHAT_MEMBERS);
                                     }
                                 });
-                                builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
+                                builder.setNegativeButton(context.getString(R.string.Cancel), null);
                                 String name = MrMailbox.getContact(curr_user_id).getDisplayName();
-                                builder.setMessage(AndroidUtilities.replaceTags(LocaleController.formatString("AskRemoveMemberFromGroup", R.string.AskRemoveMemberFromGroup, name)));
+                                builder.setMessage(AndroidUtilities.replaceTags(String.format(context.getString(R.string.AskRemoveMemberFromGroup), name)));
                                 showDialog(builder.create());
                             }
                         });
@@ -1198,13 +1198,13 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
         ActionBarMenuItem item = menu.addItem(10, R.drawable.ic_ab_other);
 
         if( chat_id!=0 || MrMailbox.getChatIdByContactId(user_id)!=0 ) {
-            item.addSubItem(ID_ADD_SHORTCUT, LocaleController.getString("AddShortcut", R.string.AddShortcut), 0);
+            item.addSubItem(ID_ADD_SHORTCUT, ApplicationLoader.applicationContext.getString(R.string.AddShortcut), 0);
         }
 
         if (user_id != 0) {
             item.addSubItem(ID_STOP_ENCRYPTION_FOR_THIS_USER, ApplicationLoader.applicationContext.getString(R.string.ResetContactsKey), 0);
-            item.addSubItem(ID_BLOCK_CONTACT, userBlocked()? LocaleController.getString("UnblockContact", R.string.UnblockContact) : LocaleController.getString("BlockContact", R.string.BlockContact), 0);
-            item.addSubItem(ID_DELETE_CONTACT, LocaleController.getString("DeleteContact", R.string.DeleteContact), 0);
+            item.addSubItem(ID_BLOCK_CONTACT, userBlocked()? ApplicationLoader.applicationContext.getString(R.string.UnblockContact) : ApplicationLoader.applicationContext.getString(R.string.BlockContact), 0);
+            item.addSubItem(ID_DELETE_CONTACT, ApplicationLoader.applicationContext.getString(R.string.DeleteContact), 0);
         }
 
 
@@ -1307,15 +1307,15 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                     TextCell textCell = (TextCell) holder.itemView;
                     textCell.setTextColor(0xff212121);
                     if (i == changeNameRow) {
-                        textCell.setText(LocaleController.getString("EditName", R.string.EditName));
+                        textCell.setText(mContext.getString(R.string.EditName));
                     } else if (i == compareKeysRow) {
-                        textCell.setText(LocaleController.getString("E2ECompareKeys", R.string.E2ECompareKeys));
+                        textCell.setText(mContext.getString(R.string.E2ECompareKeys));
                     } else if (i == startChatRow) {
-                        textCell.setText(LocaleController.getString("NewChat", R.string.NewChat));
+                        textCell.setText(mContext.getString(R.string.NewChat));
                     } else if (i == settingsNotificationsRow) {
-                        textCell.setTextAndIcon(LocaleController.getString("Settings", R.string.Settings), R.drawable.menu_settings);
+                        textCell.setTextAndIcon(mContext.getString(R.string.Settings), R.drawable.menu_settings);
                     } else if (i == addMemberRow) {
-                        textCell.setText(LocaleController.getString("AddMember", R.string.AddMember));
+                        textCell.setText(mContext.getString(R.string.AddMember));
                     }
                     break;
                 case typeContactCell:

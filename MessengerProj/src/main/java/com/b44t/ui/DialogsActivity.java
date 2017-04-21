@@ -140,7 +140,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
             onlySelect = arguments.getBoolean("onlySelect", false);
             onlySelectTitle = arguments.getString("onlySelectTitle");
             if( onlySelectTitle==null || onlySelectTitle.isEmpty()) {
-                onlySelectTitle = LocaleController.getString("SelectChat", R.string.SelectChat);
+                onlySelectTitle = ApplicationLoader.applicationContext.getString(R.string.SelectChat);
             }
             selectAlertString = arguments.getString("selectAlertString");
             selectAlertPreviewString = arguments.getString("selectAlertPreviewString");
@@ -260,13 +260,13 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
                 }
             }
         });
-        item.getSearchField().setHint(LocaleController.getString("Search", R.string.Search));
+        item.getSearchField().setHint(ApplicationLoader.applicationContext.getString(R.string.Search));
         if (onlySelect) {
             actionBar.setBackButtonImage(R.drawable.ic_ab_back);
             actionBar.setTitle(onlySelectTitle);
         } else {
             actionBar.setBackButtonDrawable(new MenuDrawable());
-            actionBar.setTitle(LocaleController.getString("AppName", R.string.AppName));
+            actionBar.setTitle(ApplicationLoader.applicationContext.getString(R.string.AppName));
         }
         actionBar.setAllowOverlayTitle(true);
 
@@ -389,7 +389,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
         searchEmptyView = new EmptyTextProgressView(context);
         searchEmptyView.setVisibility(View.GONE);
         searchEmptyView.setShowAtCenter(true);
-        searchEmptyView.setText(LocaleController.getString("NoResult", R.string.NoResult));
+        searchEmptyView.setText(context.getString(R.string.NoResult));
         frameLayout.addView(searchEmptyView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.MATCH_PARENT));
 
         emptyView = new LinearLayout(context);
@@ -405,14 +405,14 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
         });
 
         TextView textView = new TextView(context);
-        textView.setText(LocaleController.getString("NoChats", R.string.NoChats));
+        textView.setText(context.getString(R.string.NoChats));
         textView.setTextColor(0xff959595);
         textView.setGravity(Gravity.CENTER);
         textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
         emptyView.addView(textView, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT));
 
         textView = new TextView(context);
-        String help = LocaleController.getString("NoChatsHelp", R.string.NoChatsHelp);
+        String help = context.getString(R.string.NoChatsHelp);
         textView.setText(help);
         textView.setTextColor(0xff959595);
         textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 15);
@@ -806,7 +806,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
             MrChat mrChat = MrMailbox.getChat((int)dialog_id);
 
             builder.setMessage(AndroidUtilities.replaceTags(
-                    LocaleController.formatStringSimple(selectAlertString, mrChat.getNameNAddr()) // display addr as there may be contacts with the same name but different addresses
+                    String.format(selectAlertString, mrChat.getNameNAddr()) // display addr as there may be contacts with the same name but different addresses
                 +   (selectAlertPreviewString==null? "" : ("\n\n<c#808080>"+selectAlertPreviewString+"</c>"))));
 
             builder.setPositiveButton(selectAlertOkButtonString!=null? selectAlertOkButtonString : ApplicationLoader.applicationContext.getString(R.string.OK), new DialogInterface.OnClickListener() {
@@ -815,7 +815,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
                     didSelectResult(dialog_id, false, false);
                 }
             });
-            builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
+            builder.setNegativeButton(ApplicationLoader.applicationContext.getString(R.string.Cancel), null);
             showDialog(builder.create());
         } else {
             if (delegate != null) {

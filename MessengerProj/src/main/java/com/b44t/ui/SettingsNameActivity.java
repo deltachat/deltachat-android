@@ -37,7 +37,7 @@ import android.widget.FrameLayout;
 import android.widget.ListView;
 
 import com.b44t.messenger.AndroidUtilities;
-import com.b44t.messenger.LocaleController;
+import com.b44t.messenger.ApplicationLoader;
 import com.b44t.messenger.MrMailbox;
 import com.b44t.messenger.NotificationCenter;
 import com.b44t.messenger.R;
@@ -93,7 +93,7 @@ public class SettingsNameActivity extends BaseFragment {
         // create action bar
         actionBar.setBackButtonImage(R.drawable.ic_close_white);
         actionBar.setAllowOverlayTitle(true);
-        actionBar.setTitle(LocaleController.getString("MyName", R.string.MyName));
+        actionBar.setTitle(context.getString(R.string.MyName));
         actionBar.setActionBarMenuOnItemClick(new ActionBar.ActionBarMenuOnItemClick() {
             @Override
             public void onItemClick(int id) {
@@ -143,7 +143,7 @@ public class SettingsNameActivity extends BaseFragment {
                 }
                 AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
                 builder.setMessage(execute_result);
-                builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), new DialogInterface.OnClickListener() {
+                builder.setPositiveButton(ApplicationLoader.applicationContext.getString(R.string.OK), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                     }
@@ -216,7 +216,7 @@ public class SettingsNameActivity extends BaseFragment {
                     view.setBackgroundColor(0xffffffff);
                 }
                 if (i == rowNameTitle) {
-                    ((HeaderCell) view).setText(LocaleController.getString("MyName", R.string.MyName));
+                    ((HeaderCell) view).setText(mContext.getString(R.string.MyName));
                 }
             }
             else if (type == typeTextEntry) {
@@ -234,7 +234,7 @@ public class SettingsNameActivity extends BaseFragment {
                     view = new TextInfoCell(mContext);
                 }
                 if( i==rowDisplaynameInfo) {
-                    ((TextInfoCell) view).setText(LocaleController.getString("MyNameExplain", R.string.MyNameExplain));
+                    ((TextInfoCell) view).setText(mContext.getString(R.string.MyNameExplain));
                 }
                 view.setBackgroundResource(R.drawable.greydivider_bottom);
             }

@@ -825,7 +825,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
             }
             else if( m_mrChat.getType()==MrChat.MR_CHAT_NORMAL ){
                 String name = m_mrChat.getName();
-                emptyView.setText(AndroidUtilities.replaceTags(LocaleController.formatString("NoMessagesHint", R.string.NoMessagesHint, name, name)));
+                emptyView.setText(AndroidUtilities.replaceTags(String.format(context.getString(R.string.NoMessagesHint), name, name)));
                 emptyView.setGravity(Gravity.LEFT);
             }
             else {
@@ -1449,7 +1449,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
             }
         });
         builder.setNegativeButton(context.getString(R.string.Cancel), null);
-        builder.setMessage(AndroidUtilities.replaceTags(LocaleController.formatString("AskStartChatWith", R.string.AskStartChatWith, name)));
+        builder.setMessage(AndroidUtilities.replaceTags(String.format(context.getString(R.string.AskStartChatWith), name)));
         showDialog(builder.create());
     }
 
@@ -2677,7 +2677,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                                     }
                                 });
                                 builder.setNegativeButton(mContext.getString(R.string.Cancel), null);
-                                builder.setMessage(AndroidUtilities.replaceTags(LocaleController.formatString("AskStartChatWith", R.string.AskStartChatWith, urlTitle)));
+                                builder.setMessage(AndroidUtilities.replaceTags(String.format(mContext.getString(R.string.AskStartChatWith), urlTitle)));
                                 showDialog(builder.create());
                             }
                             else

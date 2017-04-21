@@ -62,7 +62,7 @@ public class PickerBottomLayout extends FrameLayout {
         cancelButton.setGravity(Gravity.CENTER);
         cancelButton.setBackgroundDrawable(Theme.createBarSelectorDrawable(isDarkTheme ? Theme.ACTION_BAR_PICKER_SELECTOR_COLOR : Theme.ACTION_BAR_AUDIO_SELECTOR_COLOR, false));
         cancelButton.setPadding(AndroidUtilities.dp(29), 0, AndroidUtilities.dp(29), 0);
-        cancelButton.setText(LocaleController.getString("Cancel", R.string.Cancel).toUpperCase());
+        cancelButton.setText(context.getString(R.string.Cancel).toUpperCase());
         addView(cancelButton, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.MATCH_PARENT, Gravity.TOP | Gravity.LEFT));
 
         doneButton = new LinearLayout(context);
@@ -85,7 +85,7 @@ public class PickerBottomLayout extends FrameLayout {
         doneButtonTextView.setTextColor(isDarkTheme ? 0xffffffff : 0xff19a7e8);
         doneButtonTextView.setGravity(Gravity.CENTER);
         doneButtonTextView.setCompoundDrawablePadding(AndroidUtilities.dp(8));
-        doneButtonTextView.setText(LocaleController.getString("Send", R.string.Send).toUpperCase());
+        doneButtonTextView.setText(context.getString(R.string.Send).toUpperCase());
         doneButtonTextView.setTypeface(Typeface.DEFAULT_BOLD);
         doneButton.addView(doneButtonTextView, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER_VERTICAL));
     }

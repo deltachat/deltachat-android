@@ -65,6 +65,7 @@ import com.b44t.ui.PhotoViewer;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Locale;
 
 public class ChatAttachAlert extends BottomSheet implements NotificationCenter.NotificationCenterDelegate, PhotoViewer.PhotoViewerProvider, BottomSheet.BottomSheetDelegateInterface {
 
@@ -322,10 +323,10 @@ public class ChatAttachAlert extends BottomSheet implements NotificationCenter.N
 
         views[9] = progressView = new EmptyTextProgressView(context);
         if (Build.VERSION.SDK_INT >= 23 && getContext().checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-            progressView.setText(LocaleController.getString("PermissionStorage", R.string.PermissionStorage));
+            progressView.setText(context.getString(R.string.PermissionStorage));
             progressView.setTextSize(16);
         } else {
-            progressView.setText(LocaleController.getString("NoPhotos", R.string.NoPhotos));
+            progressView.setText(context.getString(R.string.NoPhotos));
             progressView.setTextSize(20);
         }
         attachView.addView(progressView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, 80));
@@ -424,14 +425,14 @@ public class ChatAttachAlert extends BottomSheet implements NotificationCenter.N
         } else {
             sendPhotosButton.imageView.setPadding(AndroidUtilities.dp(2), 0, 0, 0);
             sendPhotosButton.imageView.setBackgroundResource(R.drawable.attach_send_states);
-            sendPhotosButton.textView.setText(LocaleController.formatString("SendItems", R.string.SendItems, String.format("%d", count)));
+            sendPhotosButton.textView.setText(String.format(ApplicationLoader.applicationContext.getString(R.string.SendItems), String.format(Locale.getDefault(), "%d", count)));
         }
 
         if (Build.VERSION.SDK_INT >= 23 && getContext().checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-            progressView.setText(LocaleController.getString("PermissionStorage", R.string.PermissionStorage));
+            progressView.setText(ApplicationLoader.applicationContext.getString(R.string.PermissionStorage));
             progressView.setTextSize(16);
         } else {
-            progressView.setText(LocaleController.getString("NoPhotos", R.string.NoPhotos));
+            progressView.setText(ApplicationLoader.applicationContext.getString(R.string.NoPhotos));
             progressView.setTextSize(20);
         }
     }

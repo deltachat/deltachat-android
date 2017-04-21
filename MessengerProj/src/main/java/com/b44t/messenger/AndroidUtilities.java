@@ -890,7 +890,7 @@ public class AndroidUtilities {
         try {
             File file = new File(path);
             if( !file.exists() ) {
-                showHint(activity, LocaleController.formatString("FileNotFound", R.string.FileNotFound, path));
+                showHint(activity, String.format(ApplicationLoader.applicationContext.getString(R.string.FileNotFound), path));
                 return;
             }
 
@@ -917,7 +917,7 @@ public class AndroidUtilities {
 
         }
         catch (Exception e) {
-            showHint(activity, LocaleController.formatString("NoHandleAppInstalled", R.string.NoHandleAppInstalled, mimeType));
+            showHint(activity, String.format(ApplicationLoader.applicationContext.getString(R.string.NoHandleAppInstalled), mimeType));
         }
     }
 
@@ -957,11 +957,11 @@ public class AndroidUtilities {
         final String msg_file_name = msg.getFilename();
         final File sourceFile = new File(msg_file_path);
         if( !sourceFile.exists() ) {
-            showHint(context, LocaleController.formatString("FileNotFound", R.string.FileNotFound, msg_file_path));
+            showHint(context, String.format(context.getString(R.string.FileNotFound), msg_file_path));
             return;
         }
 
-        final Toast waitingHint = showHint(context, ApplicationLoader.applicationContext.getString(R.string.OneMoment));
+        final Toast waitingHint = showHint(context, context.getString(R.string.OneMoment));
 
         new Thread(new Runnable() {
             @Override

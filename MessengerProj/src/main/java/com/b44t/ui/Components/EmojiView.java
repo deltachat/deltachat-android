@@ -712,8 +712,8 @@ public class EmojiView extends FrameLayout implements NotificationCenter.Notific
                         }
                         final MediaController.SearchImage searchImage = recentImages.get(position);
                         AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
-                        builder.setMessage(LocaleController.getString("DeleteGif", R.string.DeleteGif));
-                        builder.setPositiveButton(LocaleController.getString("OK", R.string.OK).toUpperCase(), new DialogInterface.OnClickListener() {
+                        builder.setMessage(context.getString(R.string.DeleteGif));
+                        builder.setPositiveButton(context.getString(R.string.OK).toUpperCase(), new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
                                 recentImages.remove(searchImage);
@@ -737,7 +737,7 @@ public class EmojiView extends FrameLayout implements NotificationCenter.Notific
                                 }
                             }
                         });
-                        builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
+                        builder.setNegativeButton(context.getString(R.string.Cancel), null);
                         builder.show().setCanceledOnTouchOutside(true);
                         return true;
                     }
@@ -965,7 +965,7 @@ public class EmojiView extends FrameLayout implements NotificationCenter.Notific
         recentsWrap.addView(views.get(0));
 
         TextView textView = new TextView(context);
-        textView.setText(LocaleController.getString("NoRecent", R.string.NoRecent));
+        textView.setText(context.getString(R.string.NoRecent));
         textView.setTextSize(18);
         textView.setTextColor(0xff888888);
         textView.setGravity(Gravity.CENTER);

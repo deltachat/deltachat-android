@@ -89,7 +89,7 @@ public class KeepAliveService extends Service {
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this);
 
         if( MrMailbox.isConfigured()!=0) {
-            builder.setContentTitle(LocaleController.formatString("", R.string.PermNotificationTitle, MrMailbox.getConfig("addr", "")));
+            builder.setContentTitle(String.format(getString(R.string.PermNotificationTitle), MrMailbox.getConfig("addr", "")));
             builder.setContentText(getString(R.string.PermNotificationText));
         }
         else {
