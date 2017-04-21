@@ -167,7 +167,7 @@ public class PhotoPickerActivity extends BaseFragment implements NotificationCen
         emptyView.setTextSize(20);
         emptyView.setGravity(Gravity.CENTER);
         emptyView.setVisibility(View.GONE);
-        emptyView.setText(LocaleController.getString("NoPhotos", R.string.NoPhotos));
+        emptyView.setText(context.getString(R.string.NoPhotos));
 
         frameLayout.addView(emptyView);
         layoutParams = (FrameLayout.LayoutParams) emptyView.getLayoutParams();

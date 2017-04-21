@@ -33,7 +33,6 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.b44t.messenger.ApplicationLoader;
-import com.b44t.messenger.LocaleController;
 import com.b44t.messenger.MrChat;
 import com.b44t.messenger.MrMailbox;
 import com.b44t.messenger.R;
@@ -81,10 +80,10 @@ public class SettingsPrivacyActivity extends BaseFragment {
     }
 
     @Override
-    public View createView(Context context) {
+    public View createView(final Context context) {
         actionBar.setBackButtonImage(R.drawable.ic_ab_back);
         actionBar.setAllowOverlayTitle(true);
-        actionBar.setTitle(LocaleController.getString("PrivacySettings", R.string.PrivacySettings));
+        actionBar.setTitle(context.getString(R.string.PrivacySettings));
         actionBar.setActionBarMenuOnItemClick(new ActionBar.ActionBarMenuOnItemClick() {
             @Override
             public void onItemClick(int id) {
@@ -120,15 +119,15 @@ public class SettingsPrivacyActivity extends BaseFragment {
                 }
                 else if(i==e2eEncryptionRow )
                 {
-                    Toast.makeText(getParentActivity(), LocaleController.getString("NotYetImplemented", R.string.NotYetImplemented), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getParentActivity(), context.getString(R.string.NotYetImplemented), Toast.LENGTH_SHORT).show();
                 }
                 else if(i==manageKeysRow )
                 {
-                    Toast.makeText(getParentActivity(), LocaleController.getString("NotYetImplemented", R.string.NotYetImplemented), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getParentActivity(), context.getString(R.string.NotYetImplemented), Toast.LENGTH_SHORT).show();
                 }
                 else if(i==readReceiptsRow )
                 {
-                    Toast.makeText(getParentActivity(), LocaleController.getString("NotYetImplemented", R.string.NotYetImplemented), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getParentActivity(), context.getString(R.string.NotYetImplemented), Toast.LENGTH_SHORT).show();
                 }
                 else if( i==showUnknownSendersRow) {
                     int oldval = MrMailbox.getConfigInt("show_deaddrop", 0);
@@ -214,11 +213,11 @@ public class SettingsPrivacyActivity extends BaseFragment {
                     String cntStr = String.format("%d", MrMailbox.getBlockedCount());
                     textCell.setTextAndValue(ApplicationLoader.applicationContext.getString(R.string.BlockedContacts), cntStr, true);
                 } else if (i == passcodeRow) {
-                    String val = UserConfig.passcodeHash.length() > 0? LocaleController.getString("Enabled", R.string.Enabled) : LocaleController.getString("Disabled", R.string.Disabled);
-                    textCell.setTextAndValue(LocaleController.getString("Passcode", R.string.Passcode), val, true);
+                    String val = UserConfig.passcodeHash.length() > 0? mContext.getString(R.string.Enabled) : mContext.getString(R.string.Disabled);
+                    textCell.setTextAndValue(mContext.getString(R.string.Passcode), val, true);
                 }
                 else if( i==manageKeysRow ) {
-                    textCell.setText(LocaleController.getString("E2EManagePrivateKeys", R.string.E2EManagePrivateKeys), true);
+                    textCell.setText(mContext.getString(R.string.E2EManagePrivateKeys), true);
                 }
             } else if (type == TYPE_TEXT_INFO) {
                 if (view == null) {
@@ -235,15 +234,15 @@ public class SettingsPrivacyActivity extends BaseFragment {
                 }
                 TextCheckCell textCell = (TextCheckCell) view;
                 if( i == e2eEncryptionRow ) {
-                    textCell.setTextAndCheck(LocaleController.getString("E2EEncryption", R.string.E2EEncryption),
+                    textCell.setTextAndCheck(mContext.getString(R.string.E2EEncryption),
                             MrMailbox.getConfigInt("e2e_encrypt", 0)!=0, true);
                 }
                 else if( i == readReceiptsRow ) {
-                    textCell.setTextAndCheck(LocaleController.getString("SendNRcvReadReceipts", R.string.SendNRcvReadReceipts),
+                    textCell.setTextAndCheck(mContext.getString(R.string.SendNRcvReadReceipts),
                             MrMailbox.getConfigInt("read_receipts", 0)!=0, true);
                 }
                 else if( i==showUnknownSendersRow) {
-                    textCell.setTextAndCheck(LocaleController.getString("DeaddropInChatlist", R.string.DeaddropInChatlist),
+                    textCell.setTextAndCheck(mContext.getString(R.string.DeaddropInChatlist),
                             MrMailbox.getConfigInt("show_deaddrop", 0)!=0, true);
                 }
             }
