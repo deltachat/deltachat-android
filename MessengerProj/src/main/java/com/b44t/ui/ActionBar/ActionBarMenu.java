@@ -30,6 +30,8 @@ import android.view.View;
 import android.widget.LinearLayout;
 
 import com.b44t.messenger.AndroidUtilities;
+import com.b44t.messenger.ApplicationLoader;
+import com.b44t.messenger.R;
 import com.b44t.ui.Components.LayoutHelper;
 
 public class ActionBarMenu extends LinearLayout {
@@ -82,7 +84,7 @@ public class ActionBarMenu extends LinearLayout {
         return addItem(id, icon, parentActionBar.itemsBackgroundColor, null, width);
     }
 
-    public ActionBarMenuItem addItem(int id, int icon, int backgroundColor, Drawable drawable, int width) {
+    public ActionBarMenuItem addItem(int id, final int icon, int backgroundColor, Drawable drawable, int width) {
         ActionBarMenuItem menuItem = new ActionBarMenuItem(getContext(), this, backgroundColor);
 
         menuItem.setTag(id);
@@ -108,6 +110,25 @@ public class ActionBarMenu extends LinearLayout {
                     parentActionBar.onSearchFieldVisibilityChanged(item.toggleSearch(true));
                 } else {
                     onItemClick((Integer) view.getTag());
+                }
+            }
+        });
+        menuItem.setOnLongClickListener(new OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+                String hint = null;
+                switch(icon) {
+                    case R.drawable.ic_ab_fwd_delete:  hint = ApplicationLoader.applicationContext.getString(R.string.Delete); break;
+                    case R.drawable.ic_ab_fwd_forward: hint = ApplicationLoader.applicationContext.getString(R.string.Forward); break;
+                    case R.drawable.photo_crop:        hint = ApplicationLoader.applicationContext.getString(R.string.CropImage); break;
+                    case R.drawable.photo_tools:       hint = ApplicationLoader.applicationContext.getString(R.string.EditImage); break;
+                }
+                if( hint != null ) {
+                    AndroidUtilities.showHint(ApplicationLoader.applicationContext, hint);
+                    return true;
+                }
+                else {
+                    return false;
                 }
             }
         });
