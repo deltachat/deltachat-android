@@ -59,7 +59,7 @@ public class SettingsActivity extends BaseFragment {
     // the list
     private int accountHeaderRow, usernameRow, accountSettingsRow, accountShadowRow;
     private int settingsHeaderRow, privacyRow, notificationRow, backgroundRow, advRow, settingsShadowRow;
-    private int aboutHeaderRow, aboutRow, infoRow, aboutShadowRow;
+    private int aboutHeaderRow, aboutRow, aboutShadowRow;
     private int rowCount;
 
     private static final int ROWTYPE_SHADOW          = 0;
@@ -89,7 +89,6 @@ public class SettingsActivity extends BaseFragment {
 
         aboutHeaderRow     = rowCount++;
         aboutRow           = rowCount++;
-        infoRow            = rowCount++;
         aboutShadowRow     = rowCount++;
 
         return true;
@@ -148,73 +147,13 @@ public class SettingsActivity extends BaseFragment {
                 }
                 else if (i == aboutRow ) {
                     Intent intent2 = new Intent(getParentActivity(), IntroActivity.class);
-                    intent2.putExtra("buttonTitle", ApplicationLoader.applicationContext.getString(R.string.OK));
+                    intent2.putExtra("com.b44t.ui.IntroActivity.isAbout", true);
                     getParentActivity().startActivity(intent2);
-                }
-                else if( i== infoRow ) {
-                    AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
-                    builder.setTitle(ApplicationLoader.applicationContext.getString(R.string.AppName) + " v" + getVersion());
-                    builder.setMessage(MrMailbox.getInfo() + "\n\n" + getAndroidInfo());
-                    builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            ;
-                        }
-                    });
-                    showDialog(builder.create());
                 }
             }
         });
 
         return fragmentView;
-    }
-
-    private String getVersion()
-    {
-        try {
-            PackageInfo pInfo = ApplicationLoader.applicationContext.getPackageManager().getPackageInfo(ApplicationLoader.applicationContext.getPackageName(), 0);
-            return pInfo.versionName;
-        }
-        catch(Exception e) {
-            return "ErrVersion";
-        }
-    }
-
-    private String getAndroidInfo()
-    {
-        String abi = "ErrAbi";
-        int versionCode = 0, ignoreBatteryOptimizations = -1;
-        try {
-            PackageInfo pInfo = ApplicationLoader.applicationContext.getPackageManager().getPackageInfo(ApplicationLoader.applicationContext.getPackageName(), 0);
-            versionCode = pInfo.versionCode;
-            switch (versionCode % 10) {
-                case 0:
-                    abi = "arm";
-                    break;
-                case 1:
-                    abi = "arm-v7a";
-                    break;
-                case 2:
-                    abi = "x86";
-                    break;
-                case 3:
-                    abi = "universal";
-                    break;
-            }
-            if( Build.VERSION.SDK_INT >= 23 ) {
-                PowerManager pm = (PowerManager) ApplicationLoader.applicationContext.getSystemService(Context.POWER_SERVICE);
-                ignoreBatteryOptimizations = pm.isIgnoringBatteryOptimizations(ApplicationLoader.applicationContext.getPackageName())? 1 : 0;
-            }
-        } catch (Exception e) {}
-
-        return      "SDK_INT="                    + Build.VERSION.SDK_INT
-                + "\nMANUFACTURER="               + Build.MANUFACTURER
-                + "\nMODEL="                      + Build.MODEL
-                + "\nAPPLICATION_ID="             + BuildConfig.APPLICATION_ID
-                + "\nBUILD_TYPE="                 + BuildConfig.BUILD_TYPE
-                + "\nABI="                        + abi // ABI = Application Binary Interface
-                + "\nignoreBatteryOptimizations=" + ignoreBatteryOptimizations
-                + "\nversionCode="                + versionCode;
     }
 
     private class ListAdapter extends BaseFragmentAdapter {
@@ -233,7 +172,7 @@ public class SettingsActivity extends BaseFragment {
         public boolean isEnabled(int i) {
             return i == usernameRow || i == accountSettingsRow ||
                     i == privacyRow || i == notificationRow || i == backgroundRow || i == advRow ||
-                    i == aboutRow || i == infoRow;
+                    i == aboutRow;
         }
 
         @Override
@@ -283,9 +222,6 @@ public class SettingsActivity extends BaseFragment {
                 else if (i == advRow) {
                     textCell.setText(ApplicationLoader.applicationContext.getString(R.string.AdvancedSettings), false);
                 }
-                else if (i == aboutRow) {
-                    textCell.setText(ApplicationLoader.applicationContext.getString(R.string.AboutThisProgram), true);
-                }
             }
             else if (type == ROWTYPE_HEADER) {
                 if (view == null) {
@@ -326,8 +262,8 @@ public class SettingsActivity extends BaseFragment {
                     }
                     textCell.setTextAndValue(LocaleController.getString("MyName", R.string.MyName), subtitle, true);
                 }
-                else if (i == infoRow) {
-                    textCell.setTextAndValue(ApplicationLoader.applicationContext.getString(R.string.Info), "v" + getVersion(), false);
+                else if (i == aboutRow) {
+                    textCell.setTextAndValue(ApplicationLoader.applicationContext.getString(R.string.AboutThisProgram), "v" + IntroActivity.getVersion(), false);
                 }
             }
             return view;
@@ -338,7 +274,7 @@ public class SettingsActivity extends BaseFragment {
             if (i == accountShadowRow || i == settingsShadowRow || i == aboutShadowRow ) {
                 return ROWTYPE_SHADOW;
             }
-            else if ( i == accountSettingsRow || i == usernameRow || i==infoRow ) {
+            else if ( i == accountSettingsRow || i == usernameRow || i==aboutRow ) {
                 return ROWTYPE_DETAIL_SETTINGS;
             }
             else if (i == settingsHeaderRow || i == aboutHeaderRow || i == accountHeaderRow) {

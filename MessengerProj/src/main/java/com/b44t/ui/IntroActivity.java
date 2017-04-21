@@ -26,12 +26,17 @@ package com.b44t.ui;
 import android.animation.ObjectAnimator;
 import android.animation.StateListAnimator;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.content.pm.PackageInfo;
 import android.database.DataSetObserver;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Parcelable;
+import android.os.PowerManager;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.View;
@@ -39,12 +44,15 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.b44t.messenger.AndroidUtilities;
 import com.b44t.messenger.ApplicationLoader;
+import com.b44t.messenger.BuildConfig;
 import com.b44t.messenger.LocaleController;
+import com.b44t.messenger.MrMailbox;
 import com.b44t.messenger.R;
 import com.b44t.ui.ActionBar.Theme;
 
@@ -65,12 +73,19 @@ public class IntroActivity extends Activity {
     private int[] titles;
     private int[] messages;
 
+    private boolean isAbout = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         setTheme(R.style.Theme_MessengerProj);
         super.onCreate(savedInstanceState);
         Theme.loadRecources(this);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
+
+        Bundle extras = getIntent().getExtras();
+        if( extras != null && extras.getBoolean("com.b44t.ui.IntroActivity.isAbout") ) {
+            isAbout = true;
+        }
 
         float heightOnLandscape = min(AndroidUtilities.displaySize.x,AndroidUtilities.displaySize.y)/AndroidUtilities.density;
         if( heightOnLandscape < 450 ) {
@@ -137,21 +152,48 @@ public class IntroActivity extends Activity {
             };
         }
         viewPager = (ViewPager) findViewById(R.id.intro_view_pager);
-        TextView startMessagingButton = (TextView) findViewById(R.id.start_messaging_button);
 
-        String buttonTitle = ApplicationLoader.applicationContext.getString(R.string.IntroStartMessaging);
-        Bundle extras = getIntent().getExtras();
-        if( extras != null && extras.getString("buttonTitle")!=null ) {
-            buttonTitle = extras.getString("buttonTitle");
+        Button startMessagingButton = (Button) findViewById(R.id.start_messaging_button);
+        Button detailsButton = (Button) findViewById(R.id.details_button);
+        if( isAbout ) {
+            startMessagingButton.setText(ApplicationLoader.applicationContext.getString(R.string.OK));
+            detailsButton.setText(ApplicationLoader.applicationContext.getString(R.string.Info));
+            detailsButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    new AlertDialog.Builder(IntroActivity.this)
+                        .setTitle(ApplicationLoader.applicationContext.getString(R.string.AppName) + " v" + getVersion())
+                        .setMessage(MrMailbox.getInfo() + "\n\n" + getAndroidInfo())
+                        .setPositiveButton(LocaleController.getString("OK", R.string.OK), new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                ;
+                            }
+                            })
+                        .show();
+                }
+            });
         }
-        startMessagingButton.setText(buttonTitle);
+        else {
+            startMessagingButton.setText(ApplicationLoader.applicationContext.getString(R.string.IntroStartMessaging));
+            detailsButton.setVisibility(View.GONE);
+        }
+        startMessagingButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(!isAbout) {
+                    if(startPressed) {
+                        return;
+                    }
+                    startPressed = true;
+                    Intent intent2 = new Intent(IntroActivity.this, LaunchActivity.class);
+                    intent2.putExtra("fromIntro", true);
+                    startActivity(intent2);
+                }
+                finish();
+            }
+        });
 
-        if (Build.VERSION.SDK_INT >= 21) {
-            StateListAnimator animator = new StateListAnimator();
-            animator.addState(new int[]{android.R.attr.state_pressed}, ObjectAnimator.ofFloat(startMessagingButton, "translationZ", AndroidUtilities.dp(2), AndroidUtilities.dp(4)).setDuration(200));
-            animator.addState(new int[]{}, ObjectAnimator.ofFloat(startMessagingButton, "translationZ", AndroidUtilities.dp(4), AndroidUtilities.dp(2)).setDuration(200));
-            startMessagingButton.setStateListAnimator(animator);
-        }
         topImage1 = (ImageView) findViewById(R.id.icon_image1);
         topImage2 = (ImageView) findViewById(R.id.icon_image2);
         bottomPages = (ViewGroup) findViewById(R.id.bottom_pages);
@@ -234,21 +276,55 @@ public class IntroActivity extends Activity {
             }
         });
 
-        startMessagingButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (startPressed) {
-                    return;
-                }
-                startPressed = true;
-                Intent intent2 = new Intent(IntroActivity.this, LaunchActivity.class);
-                intent2.putExtra("fromIntro", true);
-                startActivity(intent2);
-                finish();
-            }
-        });
-
         justCreated = true;
+    }
+
+    public static String getVersion()
+    {
+        try {
+            PackageInfo pInfo = ApplicationLoader.applicationContext.getPackageManager().getPackageInfo(ApplicationLoader.applicationContext.getPackageName(), 0);
+            return pInfo.versionName;
+        }
+        catch(Exception e) {
+            return "ErrVersion";
+        }
+    }
+
+    private String getAndroidInfo()
+    {
+        String abi = "ErrAbi";
+        int versionCode = 0, ignoreBatteryOptimizations = -1;
+        try {
+            PackageInfo pInfo = ApplicationLoader.applicationContext.getPackageManager().getPackageInfo(ApplicationLoader.applicationContext.getPackageName(), 0);
+            versionCode = pInfo.versionCode;
+            switch (versionCode % 10) {
+                case 0:
+                    abi = "arm";
+                    break;
+                case 1:
+                    abi = "arm-v7a";
+                    break;
+                case 2:
+                    abi = "x86";
+                    break;
+                case 3:
+                    abi = "universal";
+                    break;
+            }
+            if( Build.VERSION.SDK_INT >= 23 ) {
+                PowerManager pm = (PowerManager) ApplicationLoader.applicationContext.getSystemService(Context.POWER_SERVICE);
+                ignoreBatteryOptimizations = pm.isIgnoringBatteryOptimizations(ApplicationLoader.applicationContext.getPackageName())? 1 : 0;
+            }
+        } catch (Exception e) {}
+
+        return      "SDK_INT="                    + Build.VERSION.SDK_INT
+                + "\nMANUFACTURER="               + Build.MANUFACTURER
+                + "\nMODEL="                      + Build.MODEL
+                + "\nAPPLICATION_ID="             + BuildConfig.APPLICATION_ID
+                + "\nBUILD_TYPE="                 + BuildConfig.BUILD_TYPE
+                + "\nABI="                        + abi // ABI = Application Binary Interface
+                + "\nignoreBatteryOptimizations=" + ignoreBatteryOptimizations
+                + "\nversionCode="                + versionCode;
     }
 
     @Override

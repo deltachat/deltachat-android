@@ -86,20 +86,40 @@
                 android:layout_marginLeft="8dp"/>
 
         </LinearLayout>
-
-        <TextView android:layout_width="wrap_content"
+        
+        <LinearLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/regbtn_states"
-            android:layout_gravity="center_horizontal"
-            android:textSize="16dp"
-            android:textColor="#ffffff"
+            android:id="@+id/bottom_pages"
+            android:orientation="horizontal"
             android:gravity="center"
-            android:paddingLeft="20dp"
-            android:paddingRight="20dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginTop="380dp"
-            android:id="@+id/start_messaging_button"/>
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="380dp">
+		    
+		    <Button android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_gravity="center_horizontal"
+		        android:layout_marginLeft="10dp"
+		        android:layout_marginRight="10dp"
+		        android:paddingLeft="16dp"
+		        android:paddingRight="16dp"
+		        android:background="#bbbbbb"
+		        android:textColor="#ffffff"   
+		        android:id="@+id/details_button"/>
+
+            <Button
+                android:id="@+id/start_messaging_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+		        android:paddingLeft="16dp"
+		        android:paddingRight="16dp"
+                android:background="#2ca5e0"
+                android:textColor="#ffffff"/>
+        
+        </LinearLayout>
 
 
     </FrameLayout>
