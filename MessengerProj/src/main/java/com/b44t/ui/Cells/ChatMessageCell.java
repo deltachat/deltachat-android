@@ -1103,7 +1103,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
             documentAttachType = DOCUMENT_ATTACH_TYPE_DOCUMENT;
             String name = FileLoader.getDocumentFileName(documentAttach);
             if (name == null || name.length() == 0) {
-                name = LocaleController.getString("AttachDocument", R.string.AttachDocument);
+                name = ApplicationLoader.applicationContext.getString(R.string.AttachDocument);
             }
             docTitleLayout = StaticLayoutEx.createStaticLayout(name, docNamePaint, maxWidth, Layout.Alignment.ALIGN_NORMAL, 1.0f, 0.0f, false, TextUtils.TruncateAt.MIDDLE, maxWidth, drawPhotoImage ? 2 : 1);
             docTitleOffsetX = Integer.MIN_VALUE;
@@ -2235,14 +2235,14 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
             currentForwardNameString = messageObject.messageOwner.fwd_from.m_name;
 
             forwardedNameWidth = getMaxNameWidth();
-            int fromWidth = (int) Math.ceil(forwardNamePaint.measureText(LocaleController.getString("From", R.string.From) + " "));
+            int fromWidth = (int) Math.ceil(forwardNamePaint.measureText(ApplicationLoader.applicationContext.getString(R.string.From) + " "));
             CharSequence name = TextUtils.ellipsize(currentForwardNameString.replace('\n', ' '), forward2NamePaint, forwardedNameWidth - fromWidth, TextUtils.TruncateAt.END);
             CharSequence lastLine;
-            lastLine = replaceTags(String.format("%s <b>%s</b>", LocaleController.getString("From", R.string.From), name));
+            lastLine = replaceTags(String.format("%s <b>%s</b>", ApplicationLoader.applicationContext.getString(R.string.From), name));
             lastLine = TextUtils.ellipsize(lastLine, forwardNamePaint, forwardedNameWidth, TextUtils.TruncateAt.END);
             try {
                 forwardedNameLayout[1] = new StaticLayout(lastLine, forwardNamePaint, forwardedNameWidth + dp(2), Layout.Alignment.ALIGN_NORMAL, 1.0f, 0.0f, false);
-                lastLine = TextUtils.ellipsize(replaceTags(LocaleController.getString("ForwardedMessage", R.string.ForwardedMessage)), forwardNamePaint, forwardedNameWidth, TextUtils.TruncateAt.END);
+                lastLine = TextUtils.ellipsize(replaceTags(ApplicationLoader.applicationContext.getString(R.string.ForwardedMessage)), forwardNamePaint, forwardedNameWidth, TextUtils.TruncateAt.END);
                 forwardedNameLayout[0] = new StaticLayout(lastLine, forwardNamePaint, forwardedNameWidth + dp(2), Layout.Alignment.ALIGN_NORMAL, 1.0f, 0.0f, false);
                 forwardedNameWidth = Math.max((int) Math.ceil(forwardedNameLayout[0].getLineWidth(0)), (int) Math.ceil(forwardedNameLayout[1].getLineWidth(0)));
                 forwardNameOffsetX[0] = forwardedNameLayout[0].getLineLeft(0);
