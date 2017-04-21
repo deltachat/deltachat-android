@@ -402,5 +402,4 @@
     <string name="ForwardToTitle">Renvoyer à…</string>
     <string name="DoneHint">Fait.</string>
     <string name="PermNotificationText">Connexion en arrière-plan activée</string>
-    <string name="PermNotificationTitle"></string>
 </resources>
