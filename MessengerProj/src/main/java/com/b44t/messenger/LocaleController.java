@@ -390,13 +390,13 @@ public class LocaleController {
         isRTL = lang.toLowerCase().equals("ar");
         nameDisplayOrder = lang.toLowerCase().equals("ko") ? 2 : 1;
 
-        formatterMonth = createFormatter(locale, getString("formatterMonth", R.string.formatterMonth), "dd MMM");
-        formatterYear = createFormatter(locale, getString("formatterYear", R.string.formatterYear), "dd.MM.yyyy");
-        chatDate = createFormatter(locale, getString("chatDate", R.string.chatDate), "d MMMM");
-        chatFullDate = createFormatter(locale, getString("chatFullDate", R.string.chatFullDate), "d MMMM yyyy");
-        formatterWeek = createFormatter(locale, getString("formatterWeek", R.string.formatterWeek), "EEE");
-        formatterMonthYear = createFormatter(locale, getString("formatterMonthYear", R.string.formatterMonthYear), "MMMM yyyy");
-        formatterDay = createFormatter(lang.toLowerCase().equals("ar") || lang.toLowerCase().equals("ko") ? locale : Locale.US, is24HourFormat ? getString("formatterDay24H", R.string.formatterDay24H) : getString("formatterDay12H", R.string.formatterDay12H), is24HourFormat ? "HH:mm" : "h:mm a");
+        formatterMonth = createFormatter(locale, ApplicationLoader.applicationContext.getString(R.string.formatterMonth), "dd MMM");
+        formatterYear = createFormatter(locale, ApplicationLoader.applicationContext.getString(R.string.formatterYear), "dd.MM.yyyy");
+        chatDate = createFormatter(locale, ApplicationLoader.applicationContext.getString(R.string.chatDate), "d MMMM");
+        chatFullDate = createFormatter(locale, ApplicationLoader.applicationContext.getString(R.string.chatFullDate), "d MMMM yyyy");
+        formatterWeek = createFormatter(locale, ApplicationLoader.applicationContext.getString(R.string.formatterWeek), "EEE");
+        formatterMonthYear = createFormatter(locale, ApplicationLoader.applicationContext.getString(R.string.formatterMonthYear), "MMMM yyyy");
+        formatterDay = createFormatter(lang.toLowerCase().equals("ar") || lang.toLowerCase().equals("ko") ? locale : Locale.US, is24HourFormat ? ApplicationLoader.applicationContext.getString(R.string.formatterDay24H) : ApplicationLoader.applicationContext.getString(R.string.formatterDay12H), is24HourFormat ? "HH:mm" : "h:mm a");
     }
 
     public static String stringForMessageListDate(long date) {
