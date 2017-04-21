@@ -34,7 +34,6 @@ import com.b44t.messenger.time.FastDateFormat;
 
 import java.util.Calendar;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.Locale;
 import java.util.TimeZone;
 
@@ -51,9 +50,7 @@ public class LocaleController {
     public FastDateFormat chatDate;
     public FastDateFormat chatFullDate;
 
-    private Locale currentLocale;
-    private Locale systemDefaultLocale; // this is not Locale.getDefault(); Locale.getDefault() may be changed using Locale.setDefault()
-    private boolean changingConfiguration = false;
+    private String formattersCreatedFor = "";
 
     private class TimeZoneChangedReceiver extends BroadcastReceiver {
         @Override
@@ -68,14 +65,6 @@ public class LocaleController {
             });
         }
     }
-
-    public static class LocaleInfo {
-        public String name;
-        public String nameEnglish;
-        public String shortName;
-    }
-
-    public HashMap<String, LocaleInfo> languagesDict = new HashMap<>();
 
     private static volatile LocaleController Instance = null;
     public static LocaleController getInstance() {
@@ -92,90 +81,10 @@ public class LocaleController {
     }
 
     public LocaleController() {
-        LocaleInfo localeInfo = new LocaleInfo();
-        localeInfo.name = "English";
-        localeInfo.nameEnglish = "English";
-        localeInfo.shortName = "en";
-        languagesDict.put(localeInfo.shortName, localeInfo);
 
-        localeInfo = new LocaleInfo();
-        localeInfo.name = "Italiano";
-        localeInfo.nameEnglish = "Italian";
-        localeInfo.shortName = "it";
-        languagesDict.put(localeInfo.shortName, localeInfo);
-
-        localeInfo = new LocaleInfo();
-        localeInfo.name = "Español";
-        localeInfo.nameEnglish = "Spanish";
-        localeInfo.shortName = "es";
-        languagesDict.put(localeInfo.shortName, localeInfo);
-
-        localeInfo = new LocaleInfo();
-        localeInfo.name = "Deutsch";
-        localeInfo.nameEnglish = "German";
-        localeInfo.shortName = "de";
-        languagesDict.put(localeInfo.shortName, localeInfo);
-
-        localeInfo = new LocaleInfo();
-        localeInfo.name = "Français";
-        localeInfo.nameEnglish = "French";
-        localeInfo.shortName = "fr";
-        languagesDict.put(localeInfo.shortName, localeInfo);
-
-        localeInfo = new LocaleInfo();
-        localeInfo.name = "Nederlands";
-        localeInfo.nameEnglish = "Dutch";
-        localeInfo.shortName = "nl";
-        languagesDict.put(localeInfo.shortName, localeInfo);
-
-        localeInfo = new LocaleInfo();
-        localeInfo.name = "Polski";
-        localeInfo.nameEnglish = "Polish";
-        localeInfo.shortName = "pl";
-        languagesDict.put(localeInfo.shortName, localeInfo);
-
-        localeInfo = new LocaleInfo();
-        localeInfo.name = "Português";
-        localeInfo.nameEnglish = "Portuguese";
-        localeInfo.shortName = "pt";
-        languagesDict.put(localeInfo.shortName, localeInfo);
-
-        localeInfo = new LocaleInfo();
-        localeInfo.name = "한국어";
-        localeInfo.nameEnglish = "Korean";
-        localeInfo.shortName = "ko";
-        languagesDict.put(localeInfo.shortName, localeInfo);
-
-        localeInfo = new LocaleInfo();
-        localeInfo.name = "Magyar";
-        localeInfo.nameEnglish = "Hungarian";
-        localeInfo.shortName = "hu";
-        languagesDict.put(localeInfo.shortName, localeInfo);
-
-        localeInfo = new LocaleInfo();
-        localeInfo.name = "Русский";
-        localeInfo.nameEnglish = "Russian";
-        localeInfo.shortName = "ru";
-        languagesDict.put(localeInfo.shortName, localeInfo);
-
-        systemDefaultLocale = Locale.getDefault(); // we have to remember this as we may switch back to default later
         is24HourFormat = DateFormat.is24HourFormat(ApplicationLoader.applicationContext);
-        LocaleInfo currentInfo = null;
 
-        try {
-            if (systemDefaultLocale.getLanguage() != null) {
-                currentInfo = languagesDict.get(systemDefaultLocale.getLanguage());
-            }
-            if (currentInfo == null) {
-                currentInfo = languagesDict.get(getLocaleString(systemDefaultLocale));
-            }
-            if (currentInfo == null) {
-                currentInfo = languagesDict.get("en");
-            }
-            applyLanguage(currentInfo);
-        } catch (Exception e) {
-
-        }
+        recreateFormatters();
 
         try {
             IntentFilter timezoneFilter = new IntentFilter(Intent.ACTION_TIMEZONE_CHANGED);
@@ -183,73 +92,6 @@ public class LocaleController {
         } catch (Exception e) {
 
         }
-    }
-
-    private String getLocaleString(Locale locale) {
-        if (locale == null) {
-            return "en";
-        }
-        String languageCode = locale.getLanguage();
-        String countryCode = locale.getCountry();
-        String variantCode = locale.getVariant();
-        if (languageCode.length() == 0 && countryCode.length() == 0) {
-            return "en";
-        }
-        StringBuilder result = new StringBuilder(11);
-        result.append(languageCode);
-        if (countryCode.length() > 0 || variantCode.length() > 0) {
-            result.append('_');
-        }
-        result.append(countryCode);
-        if (variantCode.length() > 0) {
-            result.append('_');
-        }
-        result.append(variantCode);
-        return result.toString();
-    }
-
-    private void applyLanguage(LocaleInfo localeInfo) {
-        if (localeInfo == null) {
-            return;
-        }
-        try {
-            Locale newLocale;
-            if (localeInfo.shortName != null) {
-                String[] args = localeInfo.shortName.split("_");
-                if (args.length == 1) {
-                    newLocale = new Locale(localeInfo.shortName);
-                } else {
-                    newLocale = new Locale(args[0], args[1]);
-                }
-            } else {
-                newLocale = systemDefaultLocale; // this is not Locale.getDefault(); Locale.getDefault() may be changed using Locale.setDefault()
-
-                if (newLocale != null) {
-                    LocaleInfo info = null;
-                    if (newLocale.getLanguage() != null) {
-                        info = languagesDict.get(newLocale.getLanguage());
-                    }
-                    if (info == null) {
-                        info = languagesDict.get(getLocaleString(newLocale));
-                    }
-                    if (info == null) {
-                        newLocale = Locale.US;
-                    }
-                }
-            }
-            if (newLocale != null) {
-                currentLocale = newLocale;
-                changingConfiguration = true;
-                Locale.setDefault(currentLocale);
-                android.content.res.Configuration config = new android.content.res.Configuration();
-                config.locale = currentLocale;
-                ApplicationLoader.applicationContext.getResources().updateConfiguration(config, ApplicationLoader.applicationContext.getResources().getDisplayMetrics());
-                changingConfiguration = false;
-            }
-        } catch (Exception e) {
-            changingConfiguration = false;
-        }
-        recreateFormatters();
     }
 
     public void rebuildUiParts()
@@ -261,23 +103,12 @@ public class LocaleController {
     }
 
     public void onDeviceConfigurationChange(Configuration newConfig) {
-        if (changingConfiguration) {
-            return;
+        Locale newLocale = Locale.getDefault();
+        if( newLocale!=null && !newLocale.getDisplayName().equals(formattersCreatedFor) ) { // onDeviceConfigurationChange() is also called on screen orientation changes; do not rebuild the locale stuff in these cases
+            is24HourFormat = DateFormat.is24HourFormat(ApplicationLoader.applicationContext);
+            recreateFormatters();
+            rebuildUiParts();
         }
-        is24HourFormat = DateFormat.is24HourFormat(ApplicationLoader.applicationContext);
-        systemDefaultLocale = newConfig.locale;
-
-        Locale newLocale = newConfig.locale;
-        if (newLocale != null) {
-            String d1 = newLocale.getDisplayName();
-            String d2 = currentLocale.getDisplayName();
-            if (d1 != null && d2 != null && !d1.equals(d2)) {
-                recreateFormatters();
-            }
-            currentLocale = newLocale;
-        }
-
-        rebuildUiParts();
     }
 
     public static String formatDateChat(long date) {
@@ -313,10 +144,7 @@ public class LocaleController {
     }
 
     private void recreateFormatters() {
-        Locale locale = currentLocale;
-        if (locale == null) {
-            locale = Locale.getDefault();
-        }
+        Locale locale = Locale.getDefault();
         String lang = locale.getLanguage();
         if (lang == null) {
             lang = "en";
@@ -331,6 +159,8 @@ public class LocaleController {
         formatterWeek = createFormatter(locale, ApplicationLoader.applicationContext.getString(R.string.formatterWeek), "EEE");
         formatterMonthYear = createFormatter(locale, ApplicationLoader.applicationContext.getString(R.string.formatterMonthYear), "MMMM yyyy");
         formatterDay = createFormatter(lang.toLowerCase().equals("ar") || lang.toLowerCase().equals("ko") ? locale : Locale.US, is24HourFormat ? ApplicationLoader.applicationContext.getString(R.string.formatterDay24H) : ApplicationLoader.applicationContext.getString(R.string.formatterDay12H), is24HourFormat ? "HH:mm" : "h:mm a");
+
+        formattersCreatedFor = locale.getDisplayName();
     }
 
     public static String stringForMessageListDate(long date) {
