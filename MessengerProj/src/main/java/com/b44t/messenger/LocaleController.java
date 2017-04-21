@@ -291,10 +291,6 @@ public class LocaleController {
         }
     }
 
-    public static String getString(String key, int res) {
-        return ApplicationLoader.applicationContext.getString(res);
-    }
-
     public static String formatString(String key, int res, Object... args) {
         try {
             String value = ApplicationLoader.applicationContext.getString(res);

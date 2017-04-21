@@ -2850,31 +2850,31 @@ public class PhotoFilterView extends FrameLayout {
         public void onBindViewHolder(RecyclerView.ViewHolder viewHolder, int i) {
             Holder holder = (Holder) viewHolder;
             if (i == enhanceTool) {
-                ((PhotoEditToolCell) holder.itemView).setIconAndTextAndValue(R.drawable.tool_enhance, LocaleController.getString("Enhance", R.string.Enhance), enhanceValue);
+                ((PhotoEditToolCell) holder.itemView).setIconAndTextAndValue(R.drawable.tool_enhance, mContext.getString(R.string.Enhance), enhanceValue);
             } else if (i == highlightsTool) {
-                ((PhotoEditToolCell) holder.itemView).setIconAndTextAndValue(R.drawable.tool_highlights, LocaleController.getString("Highlights", R.string.Highlights), highlightsValue);
+                ((PhotoEditToolCell) holder.itemView).setIconAndTextAndValue(R.drawable.tool_highlights, mContext.getString(R.string.Highlights), highlightsValue);
             } else if (i == contrastTool) {
-                ((PhotoEditToolCell) holder.itemView).setIconAndTextAndValue(R.drawable.tool_contrast, LocaleController.getString("Contrast", R.string.Contrast), contrastValue);
+                ((PhotoEditToolCell) holder.itemView).setIconAndTextAndValue(R.drawable.tool_contrast, mContext.getString(R.string.Contrast), contrastValue);
             } else if (i == exposureTool) {
-                ((PhotoEditToolCell) holder.itemView).setIconAndTextAndValue(R.drawable.tool_brightness, LocaleController.getString("Exposure", R.string.Exposure), exposureValue);
+                ((PhotoEditToolCell) holder.itemView).setIconAndTextAndValue(R.drawable.tool_brightness, mContext.getString(R.string.Exposure), exposureValue);
             } else if (i == warmthTool) {
-                ((PhotoEditToolCell) holder.itemView).setIconAndTextAndValue(R.drawable.tool_warmth, LocaleController.getString("Warmth", R.string.Warmth), warmthValue);
+                ((PhotoEditToolCell) holder.itemView).setIconAndTextAndValue(R.drawable.tool_warmth, mContext.getString(R.string.Warmth), warmthValue);
             } else if (i == saturationTool) {
-                ((PhotoEditToolCell) holder.itemView).setIconAndTextAndValue(R.drawable.tool_saturation, LocaleController.getString("Saturation", R.string.Saturation), saturationValue);
+                ((PhotoEditToolCell) holder.itemView).setIconAndTextAndValue(R.drawable.tool_saturation, mContext.getString(R.string.Saturation), saturationValue);
             } else if (i == vignetteTool) {
-                ((PhotoEditToolCell) holder.itemView).setIconAndTextAndValue(R.drawable.tool_vignette, LocaleController.getString("Vignette", R.string.Vignette), vignetteValue);
+                ((PhotoEditToolCell) holder.itemView).setIconAndTextAndValue(R.drawable.tool_vignette, mContext.getString(R.string.Vignette), vignetteValue);
             } else if (i == shadowsTool) {
-                ((PhotoEditToolCell) holder.itemView).setIconAndTextAndValue(R.drawable.tool_shadows, LocaleController.getString("Shadows", R.string.Shadows), shadowsValue);
+                ((PhotoEditToolCell) holder.itemView).setIconAndTextAndValue(R.drawable.tool_shadows, mContext.getString(R.string.Shadows), shadowsValue);
             } else if (i == grainTool) {
-                ((PhotoEditToolCell) holder.itemView).setIconAndTextAndValue(R.drawable.tool_grain, LocaleController.getString("Grain", R.string.Grain), grainValue);
+                ((PhotoEditToolCell) holder.itemView).setIconAndTextAndValue(R.drawable.tool_grain, mContext.getString(R.string.Grain), grainValue);
             } else if (i == sharpenTool) {
-                ((PhotoEditToolCell) holder.itemView).setIconAndTextAndValue(R.drawable.tool_details, LocaleController.getString("Sharpen", R.string.Sharpen), sharpenValue);
+                ((PhotoEditToolCell) holder.itemView).setIconAndTextAndValue(R.drawable.tool_details, mContext.getString(R.string.Sharpen), sharpenValue);
             } else if (i == tintTool) {
-                ((PhotoEditToolCell) holder.itemView).setIconAndTextAndValue(R.drawable.tool_tint, LocaleController.getString("Tint", R.string.Tint), tintHighlightsColor != 0 || tintShadowsColor != 0 ? "◆" : "");
+                ((PhotoEditToolCell) holder.itemView).setIconAndTextAndValue(R.drawable.tool_tint, mContext.getString(R.string.Tint), tintHighlightsColor != 0 || tintShadowsColor != 0 ? "◆" : "");
             } else if (i == fadeTool) {
-                ((PhotoEditToolCell) holder.itemView).setIconAndTextAndValue(R.drawable.tool_fade, LocaleController.getString("Fade", R.string.Fade), fadeValue);
+                ((PhotoEditToolCell) holder.itemView).setIconAndTextAndValue(R.drawable.tool_fade, mContext.getString(R.string.Fade), fadeValue);
             } else if (i == curvesTool) {
-                ((PhotoEditToolCell) holder.itemView).setIconAndTextAndValue(R.drawable.tool_curve, LocaleController.getString("Curves", R.string.Curves), curvesToolValue.shouldBeSkipped() ? "" : "◆");
+                ((PhotoEditToolCell) holder.itemView).setIconAndTextAndValue(R.drawable.tool_curve, mContext.getString(R.string.Curves), curvesToolValue.shouldBeSkipped() ? "" : "◆");
             } else if (i == blurTool) {
                 String value = "";
                 if (blurType == 1) {
@@ -2882,7 +2882,7 @@ public class PhotoFilterView extends FrameLayout {
                 } else if (blurType == 2) {
                     value = "L";
                 }
-                ((PhotoEditToolCell) holder.itemView).setIconAndTextAndValue(R.drawable.tool_blur, LocaleController.getString("Blur", R.string.Blur), value);
+                ((PhotoEditToolCell) holder.itemView).setIconAndTextAndValue(R.drawable.tool_blur, mContext.getString(R.string.Blur), value);
             }
         }
     }
