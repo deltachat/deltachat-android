@@ -40,7 +40,6 @@ import android.widget.ListView;
 
 import com.b44t.messenger.AndroidUtilities;
 import com.b44t.messenger.ApplicationLoader;
-import com.b44t.messenger.LocaleController;
 import com.b44t.messenger.MrMailbox;
 import com.b44t.messenger.NotificationCenter;
 import com.b44t.messenger.R;
@@ -509,7 +508,7 @@ public class SettingsAccountActivity extends BaseFragment implements Notificatio
                     if( mailUserCell==null) {
                         mailUserCell = new EditTextCell(mContext);
                         mailUserCell.setValueHintAndLabel(MrMailbox.getConfig("mail_user", ""),
-                                ApplicationLoader.applicationContext.getString(R.string.Automatic), LocaleController.getString("ImapLoginname", R.string.ImapLoginname), false);
+                                ApplicationLoader.applicationContext.getString(R.string.Automatic), ApplicationLoader.applicationContext.getString(R.string.ImapLoginname), false);
                     }
                     view = mailUserCell;
                 }
@@ -517,7 +516,7 @@ public class SettingsAccountActivity extends BaseFragment implements Notificatio
                     if( sendServerCell==null) {
                         sendServerCell = new EditTextCell(mContext);
                         sendServerCell.setValueHintAndLabel(MrMailbox.getConfig("send_server", ""),
-                                ApplicationLoader.applicationContext.getString(R.string.Automatic), LocaleController.getString("SmtpServer", R.string.SmtpServer), false);
+                                ApplicationLoader.applicationContext.getString(R.string.Automatic), ApplicationLoader.applicationContext.getString(R.string.SmtpServer), false);
                         sendServerCell.getEditTextView().setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_URI);
                     }
                     view = sendServerCell;
@@ -526,7 +525,7 @@ public class SettingsAccountActivity extends BaseFragment implements Notificatio
                     if( sendPortCell==null) {
                         sendPortCell = new EditTextCell(mContext);
                         sendPortCell.setValueHintAndLabel(MrMailbox.getConfig("send_port", ""),
-                                ApplicationLoader.applicationContext.getString(R.string.Automatic), LocaleController.getString("SmtpPort", R.string.SmtpPort), false);
+                                ApplicationLoader.applicationContext.getString(R.string.Automatic), ApplicationLoader.applicationContext.getString(R.string.SmtpPort), false);
                         sendPortCell.getEditTextView().setInputType(InputType.TYPE_CLASS_NUMBER);
                     }
                     view = sendPortCell;
@@ -535,7 +534,7 @@ public class SettingsAccountActivity extends BaseFragment implements Notificatio
                     if( sendUserCell==null) {
                         sendUserCell = new EditTextCell(mContext);
                         sendUserCell.setValueHintAndLabel(MrMailbox.getConfig("send_user", ""),
-                                ApplicationLoader.applicationContext.getString(R.string.Automatic), LocaleController.getString("SmtpLoginname", R.string.SmtpLoginname), false);
+                                ApplicationLoader.applicationContext.getString(R.string.Automatic), ApplicationLoader.applicationContext.getString(R.string.SmtpLoginname), false);
                     }
                     view = sendUserCell;
                 }
