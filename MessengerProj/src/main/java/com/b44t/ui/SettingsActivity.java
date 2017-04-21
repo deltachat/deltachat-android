@@ -39,9 +39,6 @@ import android.widget.AdapterView;
 import android.widget.FrameLayout;
 import android.widget.ListView;
 
-import com.b44t.messenger.ApplicationLoader;
-import com.b44t.messenger.BuildConfig;
-import com.b44t.messenger.LocaleController;
 import com.b44t.messenger.MrMailbox;
 import com.b44t.messenger.R;
 import com.b44t.ui.ActionBar.ActionBar;
@@ -100,7 +97,7 @@ public class SettingsActivity extends BaseFragment {
         // create action bar
         actionBar.setBackButtonImage(R.drawable.ic_ab_back);
         actionBar.setAllowOverlayTitle(true);
-        actionBar.setTitle(LocaleController.getString("Settings", R.string.Settings));
+        actionBar.setTitle(context.getString(R.string.Settings));
         actionBar.setActionBarMenuOnItemClick(new ActionBar.ActionBarMenuOnItemClick() {
             @Override
             public void onItemClick(int id) {
@@ -211,16 +208,16 @@ public class SettingsActivity extends BaseFragment {
                 }
                 TextSettingsCell textCell = (TextSettingsCell) view;
                 if (i == privacyRow) {
-                    textCell.setText(LocaleController.getString("PrivacySettings", R.string.PrivacySettings), true);
+                    textCell.setText(mContext.getString(R.string.PrivacySettings), true);
                 }
                 else if (i == notificationRow) {
-                    textCell.setText(LocaleController.getString("NotificationsAndSounds", R.string.NotificationsAndSounds), true);
+                    textCell.setText(mContext.getString(R.string.NotificationsAndSounds), true);
                 }
                 else if (i == backgroundRow) {
-                    textCell.setText(LocaleController.getString("ChatBackground", R.string.ChatBackground), true);
+                    textCell.setText(mContext.getString(R.string.ChatBackground), true);
                 }
                 else if (i == advRow) {
-                    textCell.setText(ApplicationLoader.applicationContext.getString(R.string.AdvancedSettings), false);
+                    textCell.setText(mContext.getString(R.string.AdvancedSettings), false);
                 }
             }
             else if (type == ROWTYPE_HEADER) {
@@ -229,13 +226,13 @@ public class SettingsActivity extends BaseFragment {
                     view.setBackgroundColor(0xffffffff);
                 }
                 if (i == settingsHeaderRow) {
-                    ((HeaderCell) view).setText(ApplicationLoader.applicationContext.getString(R.string.Settings));
+                    ((HeaderCell) view).setText(mContext.getString(R.string.Settings));
                 }
                 else if (i == aboutHeaderRow) {
-                    ((HeaderCell) view).setText(LocaleController.getString("Info", R.string.Info));
+                    ((HeaderCell) view).setText(mContext.getString(R.string.Info));
                 }
                 else if (i == accountHeaderRow) {
-                    ((HeaderCell) view).setText(LocaleController.getString("MyAccount", R.string.MyAccount));
+                    ((HeaderCell) view).setText(mContext.getString(R.string.MyAccount));
                 }
             }
             else if (type == ROWTYPE_DETAIL_SETTINGS) {
@@ -250,20 +247,20 @@ public class SettingsActivity extends BaseFragment {
                         subtitle = MrMailbox.getConfig("addr", "");
                     }
                     else {
-                        subtitle = LocaleController.getString("AccountNotConfigured", R.string.AccountNotConfigured);
+                        subtitle = mContext.getString(R.string.AccountNotConfigured);
                     }
 
-                    textCell.setTextAndValue(LocaleController.getString("AccountSettings", R.string.AccountSettings), subtitle, false);
+                    textCell.setTextAndValue(mContext.getString(R.string.AccountSettings), subtitle, false);
                 }
                 else if (i == usernameRow) {
                     String subtitle = MrMailbox.getConfig("displayname", "");
                     if( subtitle.isEmpty()) {
-                        subtitle = LocaleController.getString("NotSet", R.string.NotSet);
+                        subtitle = mContext.getString(R.string.NotSet);
                     }
-                    textCell.setTextAndValue(LocaleController.getString("MyName", R.string.MyName), subtitle, true);
+                    textCell.setTextAndValue(mContext.getString(R.string.MyName), subtitle, true);
                 }
                 else if (i == aboutRow) {
-                    textCell.setTextAndValue(ApplicationLoader.applicationContext.getString(R.string.AboutThisProgram), "v" + IntroActivity.getVersion(), false);
+                    textCell.setTextAndValue(mContext.getString(R.string.AboutThisProgram), "v" + IntroActivity.getVersion(), false);
                 }
             }
             return view;
