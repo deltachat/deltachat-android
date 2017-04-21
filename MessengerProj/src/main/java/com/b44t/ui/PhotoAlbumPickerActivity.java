@@ -120,7 +120,7 @@ public class PhotoAlbumPickerActivity extends BaseFragment implements Notificati
 
     @SuppressWarnings("unchecked")
     @Override
-    public View createView(Context context) {
+    public View createView(final Context context) {
         actionBar.setBackButtonImage(R.drawable.ic_ab_back);
         actionBar.setActionBarMenuOnItemClick(new ActionBar.ActionBarMenuOnItemClick() {
             @Override
@@ -137,16 +137,16 @@ public class PhotoAlbumPickerActivity extends BaseFragment implements Notificati
                         return;
                     }
                     selectedMode = SELECTMODE0_PHOTOS;
-                    dropDown.setText(LocaleController.getString("PickerPhotos", R.string.PickerPhotos));
-                    emptyView.setText(LocaleController.getString("NoPhotos", R.string.NoPhotos));
+                    dropDown.setText(context.getString(R.string.PickerPhotos));
+                    emptyView.setText(context.getString(R.string.NoPhotos));
                     listAdapter.notifyDataSetChanged();
                 } else if (id == ID_ITEM_VIDEO) {
                     if (selectedMode == SELECTMODE1_VIDEOS) {
                         return;
                     }
                     selectedMode = SELECTMODE1_VIDEOS;
-                    dropDown.setText(LocaleController.getString("PickerVideo", R.string.PickerVideo));
-                    emptyView.setText(LocaleController.getString("NoVideo", R.string.NoVideo));
+                    dropDown.setText(context.getString(R.string.PickerVideo));
+                    emptyView.setText(context.getString(R.string.NoVideo));
                     listAdapter.notifyDataSetChanged();
                 }
             }
@@ -165,8 +165,8 @@ public class PhotoAlbumPickerActivity extends BaseFragment implements Notificati
 
             dropDownContainer = new ActionBarMenuItem(context, menu, 0);
             dropDownContainer.setSubMenuOpenSide(1);
-            dropDownContainer.addSubItem(ID_ITEM_PHOTOS, LocaleController.getString("PickerPhotos", R.string.PickerPhotos), 0);
-            dropDownContainer.addSubItem(ID_ITEM_VIDEO, LocaleController.getString("PickerVideo", R.string.PickerVideo), 0);
+            dropDownContainer.addSubItem(ID_ITEM_PHOTOS, context.getString(R.string.PickerPhotos), 0);
+            dropDownContainer.addSubItem(ID_ITEM_VIDEO, context.getString(R.string.PickerVideo), 0);
             actionBar.addView(dropDownContainer);
             FrameLayout.LayoutParams layoutParams = (FrameLayout.LayoutParams) dropDownContainer.getLayoutParams();
             layoutParams.height = LayoutHelper.MATCH_PARENT;
@@ -192,7 +192,7 @@ public class PhotoAlbumPickerActivity extends BaseFragment implements Notificati
             dropDown.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_arrow_drop_down, 0);
             dropDown.setCompoundDrawablePadding(AndroidUtilities.dp(4));
             dropDown.setPadding(0, 0, AndroidUtilities.dp(10), 0);
-            dropDown.setText(LocaleController.getString("PickerPhotos", R.string.PickerPhotos));
+            dropDown.setText(context.getString(R.string.PickerPhotos));
             dropDownContainer.addView(dropDown);
             layoutParams = (FrameLayout.LayoutParams) dropDown.getLayoutParams();
             layoutParams.width = LayoutHelper.WRAP_CONTENT;
@@ -201,7 +201,7 @@ public class PhotoAlbumPickerActivity extends BaseFragment implements Notificati
             layoutParams.gravity = Gravity.CENTER_VERTICAL;
             dropDown.setLayoutParams(layoutParams);
         } else {
-            actionBar.setTitle(LocaleController.getString("Gallery", R.string.Gallery));
+            actionBar.setTitle(context.getString(R.string.Gallery));
         }
 
         listView = new ListView(context);
@@ -227,7 +227,7 @@ public class PhotoAlbumPickerActivity extends BaseFragment implements Notificati
         emptyView.setTextSize(20);
         emptyView.setGravity(Gravity.CENTER);
         emptyView.setVisibility(View.GONE);
-        emptyView.setText(LocaleController.getString("NoPhotos", R.string.NoPhotos));
+        emptyView.setText(context.getString(R.string.NoPhotos));
         frameLayout.addView(emptyView);
         layoutParams = (FrameLayout.LayoutParams) emptyView.getLayoutParams();
         layoutParams.width = LayoutHelper.MATCH_PARENT;

@@ -123,10 +123,10 @@ public class WallpapersActivity extends BaseFragment implements NotificationCent
     }
 
     @Override
-    public View createView(Context context) {
+    public View createView(final Context context) {
         actionBar.setBackButtonImage(R.drawable.ic_close_white);
         actionBar.setAllowOverlayTitle(true);
-        actionBar.setTitle(LocaleController.getString("ChatBackground", R.string.ChatBackground));
+        actionBar.setTitle(context.getString(R.string.ChatBackground));
         actionBar.setActionBarMenuOnItemClick(new ActionBar.ActionBarMenuOnItemClick() {
             @Override
             public void onItemClick(int id) {
@@ -212,7 +212,7 @@ public class WallpapersActivity extends BaseFragment implements NotificationCent
                     }
                     AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
 
-                    CharSequence[] items = new CharSequence[]{LocaleController.getString("FromCamera", R.string.FromCamera), LocaleController.getString("FromGalley", R.string.FromGalley), LocaleController.getString("Cancel", R.string.Cancel)};
+                    CharSequence[] items = new CharSequence[]{context.getString(R.string.FromCamera), context.getString(R.string.FromGalley), context.getString(R.string.Cancel)};
 
                     builder.setItems(items, new DialogInterface.OnClickListener() {
                         @Override
