@@ -40,6 +40,7 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.b44t.messenger.AndroidUtilities;
+import com.b44t.messenger.ApplicationLoader;
 import com.b44t.messenger.ContactsController;
 import com.b44t.messenger.LocaleController;
 import com.b44t.messenger.MrContact;
@@ -109,14 +110,14 @@ public class ContactAddActivity extends BaseFragment implements NotificationCent
     }
 
     @Override
-    public View createView(Context context) {
+    public View createView(final Context context) {
 
         actionBar.setBackButtonImage(R.drawable.ic_close_white);
         actionBar.setAllowOverlayTitle(true);
         if (do_what==CREATE_CONTACT) {
-            actionBar.setTitle(LocaleController.getString("NewContactTitle", R.string.NewContactTitle));
+            actionBar.setTitle(context.getString(R.string.NewContactTitle));
         } else {
-            actionBar.setTitle(LocaleController.getString("EditName", R.string.EditName));
+            actionBar.setTitle(context.getString(R.string.EditName));
             if( user_id!=0 ) {
                 nameToSet = MrMailbox.getContact(user_id).getDisplayName();
             }
@@ -147,7 +148,7 @@ public class ContactAddActivity extends BaseFragment implements NotificationCent
 
                         int new_user_id;
                         if( (new_user_id=MrMailbox.createContact(name, addr))==0 ) {
-                            Toast.makeText(getParentActivity(), LocaleController.getString("BadEmailAddress", R.string.BadEmailAddress), Toast.LENGTH_LONG).show();
+                            Toast.makeText(getParentActivity(), context.getString(R.string.BadEmailAddress), Toast.LENGTH_LONG).show();
                             return;
                         }
                         else if (do_what==CREATE_CONTACT) {
@@ -163,7 +164,7 @@ public class ContactAddActivity extends BaseFragment implements NotificationCent
                                 }
                             }
                             else {
-                                Toast.makeText(getParentActivity(), LocaleController.getString("ContactCreated", R.string.ContactCreated), Toast.LENGTH_LONG).show();
+                                Toast.makeText(getParentActivity(), context.getString(R.string.ContactCreated), Toast.LENGTH_LONG).show();
                             }
                         }
                     }
@@ -242,7 +243,7 @@ public class ContactAddActivity extends BaseFragment implements NotificationCent
         }
 
         nameTextView = new EditText(context);
-        nameTextView.setHint(LocaleController.getString("Name", R.string.Name));
+        nameTextView.setHint(context.getString(R.string.Name));
         if (nameToSet != null) {
             nameTextView.setText(nameToSet);
         }
@@ -293,7 +294,7 @@ public class ContactAddActivity extends BaseFragment implements NotificationCent
             emailTextView.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS | InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
             emailTextView.setImeOptions(EditorInfo.IME_FLAG_NO_EXTRACT_UI);
             emailTextView.setPadding(0, 0, 0, AndroidUtilities.dp(8));
-            emailTextView.setHint(LocaleController.getString("EmailAddress", R.string.EmailAddress));
+            emailTextView.setHint(context.getString(R.string.EmailAddress));
             emailTextView.addTextChangedListener(new TextWatcher() {
                 @Override
                 public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -344,7 +345,7 @@ public class ContactAddActivity extends BaseFragment implements NotificationCent
 
     @Override
     public void didUploadedPhoto(final TLRPC.InputFile file, final TLRPC.PhotoSize small, final TLRPC.PhotoSize big) {
-        Toast.makeText(getParentActivity(), LocaleController.getString("NotYetImplemented", R.string.NotYetImplemented), Toast.LENGTH_SHORT).show();
+        Toast.makeText(getParentActivity(), ApplicationLoader.applicationContext.getString(R.string.NotYetImplemented), Toast.LENGTH_SHORT).show();
     }
 
     @Override
