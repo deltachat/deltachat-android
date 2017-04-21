@@ -225,7 +225,7 @@
     <string name="Add">Hinzufügen</string>
     <string name="Edit">Bearbeiten</string>
     <string name="Send">Senden</string>
-    <string name="CopyToClipboard">Auf Zwischenablage kopieren</string>
+    <string name="CopyToClipboard">In Zwischenablage kopieren</string>
     <string name="Delete">Löschen</string>
     <string name="Forward">Weiterleiten</string>
     <string name="Retry">Erneut versuchen</string>
