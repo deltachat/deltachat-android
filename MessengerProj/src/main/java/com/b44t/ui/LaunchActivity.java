@@ -302,7 +302,7 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                         Intent intent = new Intent(Intent.ACTION_SEND);
                         intent.setType("text/plain");
                         intent.putExtra(Intent.EXTRA_TEXT, MrMailbox.getInviteText());
-                        startActivity(Intent.createChooser(intent, LocaleController.getString("InviteMenuEntry", R.string.InviteMenuEntry)));
+                        startActivity(Intent.createChooser(intent, ApplicationLoader.applicationContext.getString(R.string.InviteMenuEntry)));
                     } catch (Exception e) {
                     }
                     drawerLayoutContainer.closeDrawer(false);
@@ -784,7 +784,7 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
         {
             final String createChatWithFinal = createChatWith;
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), new DialogInterface.OnClickListener() {
+            builder.setPositiveButton(ApplicationLoader.applicationContext.getString(R.string.OK), new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialogInterface, int i) {
                     int chatId = MrMailbox.createChatByContactId(MrMailbox.createContact("", createChatWithFinal));
@@ -798,7 +798,7 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
 
                 }
             });
-            builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
+            builder.setNegativeButton(ApplicationLoader.applicationContext.getString(R.string.Cancel), null);
             builder.setMessage(AndroidUtilities.replaceTags(LocaleController.formatString("AskStartChatWith", R.string.AskStartChatWith, createChatWith)));
             builder.show();
         }
@@ -1122,13 +1122,13 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                 else {
                     switch (permissions[i]) {
                         case Manifest.permission.READ_CONTACTS:
-                            msg += "- " + LocaleController.getString("PermissionContacts", R.string.PermissionContacts) + "\n\n";
+                            msg += "- " + ApplicationLoader.applicationContext.getString(R.string.PermissionContacts) + "\n\n";
                             break;
                         case Manifest.permission.WRITE_EXTERNAL_STORAGE:
-                            msg += "- " + LocaleController.getString("PermissionStorage", R.string.PermissionStorage) + "\n\n";
+                            msg += "- " + ApplicationLoader.applicationContext.getString(R.string.PermissionStorage) + "\n\n";
                             break;
                         case Manifest.permission.RECORD_AUDIO:
-                            msg += "- " + LocaleController.getString("PermissionNoAudio", R.string.PermissionNoAudio) + "\n\n";
+                            msg += "- " + ApplicationLoader.applicationContext.getString(R.string.PermissionNoAudio) + "\n\n";
                             break;
                     }
                 }
@@ -1144,7 +1144,7 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setMessage(msg.trim());
 
-            builder.setPositiveButton(LocaleController.getString("PermissionOpenSettings", R.string.PermissionOpenSettings), new DialogInterface.OnClickListener() {
+            builder.setPositiveButton(ApplicationLoader.applicationContext.getString(R.string.PermissionOpenSettings), new DialogInterface.OnClickListener() {
                 @TargetApi(Build.VERSION_CODES.GINGERBREAD)
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
@@ -1159,7 +1159,7 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                     }
                 }
             });
-            builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
+            builder.setNegativeButton(ApplicationLoader.applicationContext.getString(R.string.Cancel), null);
             builder.show();
             return;
         }
