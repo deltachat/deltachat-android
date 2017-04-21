@@ -291,10 +291,6 @@ public class LocaleController {
         }
     }
 
-    public static String getCurrentLanguageName() {
-        return getString("LanguageName", R.string.LanguageName);
-    }
-
     public static String getString(String key, int res) {
         return ApplicationLoader.applicationContext.getString(res);
     }
