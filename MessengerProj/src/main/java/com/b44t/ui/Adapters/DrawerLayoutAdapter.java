@@ -29,7 +29,6 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
 import com.b44t.messenger.AndroidUtilities;
-import com.b44t.messenger.LocaleController;
 import com.b44t.messenger.R;
 import com.b44t.ui.Cells.DrawerActionCell;
 import com.b44t.ui.Cells.DividerCell;
@@ -113,21 +112,21 @@ public class DrawerLayoutAdapter extends BaseAdapter {
             }
             DrawerActionCell actionCell = (DrawerActionCell) view;
             if (i == ROW_NEW_CHAT) {
-                actionCell.setTextAndIcon(LocaleController.getString("NewChat", R.string.NewChat), R.drawable.menu_newchat);
+                actionCell.setTextAndIcon(mContext.getString(R.string.NewChat), R.drawable.menu_newchat);
             } else if (i == ROW_NEW_GROUP) {
-                actionCell.setTextAndIcon(LocaleController.getString("NewGroup", R.string.NewGroup), R.drawable.menu_empty);
+                actionCell.setTextAndIcon(mContext.getString(R.string.NewGroup), R.drawable.menu_empty);
             } else if (i == ROW_INVITE) {
-                actionCell.setTextAndIcon(LocaleController.getString("InviteMenuEntry", R.string.InviteMenuEntry), R.drawable.menu_empty);
+                actionCell.setTextAndIcon(mContext.getString(R.string.InviteMenuEntry), R.drawable.menu_empty);
             } else if (i == ROW_DEADDROP) {
-                actionCell.setTextAndIcon(LocaleController.getString("Deaddrop", R.string.Deaddrop), R.drawable.menu_empty);
+                actionCell.setTextAndIcon(mContext.getString(R.string.Deaddrop), R.drawable.menu_empty);
                 // we do not want an icon beside the mailbox:
                 // 1. We do not want to give it much attention,
                 // 2. If the mailbox is shown in the chatlist, it gets the chat icon (KISS), but we should not use this icon in the drawer for the mailbox.
                 // 3. Simplicity - we have two sections, "Add" and "Tools" - Mailbox belongs to the latter
             } else if (i == ROW_SETTINGS) {
-                actionCell.setTextAndIcon(LocaleController.getString("Settings", R.string.Settings), R.drawable.menu_settings);
+                actionCell.setTextAndIcon(mContext.getString(R.string.Settings), R.drawable.menu_settings);
             } else if (i == ROW_FAQ) {
-                actionCell.setTextAndIcon(LocaleController.getString("Help", R.string.Help), R.drawable.menu_empty);
+                actionCell.setTextAndIcon(mContext.getString(R.string.Help), R.drawable.menu_empty);
             }
         }
 
