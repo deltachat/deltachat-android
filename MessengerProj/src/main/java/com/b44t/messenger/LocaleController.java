@@ -23,12 +23,10 @@
 
 package com.b44t.messenger;
 
-import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.text.format.DateFormat;
 
@@ -55,8 +53,6 @@ public class LocaleController {
 
     private Locale currentLocale;
     private Locale systemDefaultLocale; // this is not Locale.getDefault(); Locale.getDefault() may be changed using Locale.setDefault()
-    private LocaleInfo currentLocaleInfo;
-    private String languageOverride;
     private boolean changingConfiguration = false;
 
     private class TimeZoneChangedReceiver extends BroadcastReceiver {
@@ -165,19 +161,9 @@ public class LocaleController {
         systemDefaultLocale = Locale.getDefault(); // we have to remember this as we may switch back to default later
         is24HourFormat = DateFormat.is24HourFormat(ApplicationLoader.applicationContext);
         LocaleInfo currentInfo = null;
-        boolean override = false;
 
         try {
-            SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("mainconfig", Activity.MODE_PRIVATE);
-            String lang = preferences.getString("language", null);
-            if (lang != null) {
-                currentInfo = languagesDict.get(lang);
-                if (currentInfo != null) {
-                    override = true;
-                }
-            }
-
-            if (currentInfo == null && systemDefaultLocale.getLanguage() != null) {
+            if (systemDefaultLocale.getLanguage() != null) {
                 currentInfo = languagesDict.get(systemDefaultLocale.getLanguage());
             }
             if (currentInfo == null) {
@@ -186,7 +172,7 @@ public class LocaleController {
             if (currentInfo == null) {
                 currentInfo = languagesDict.get("en");
             }
-            applyLanguage(currentInfo, override);
+            applyLanguage(currentInfo);
         } catch (Exception e) {
 
         }
@@ -222,7 +208,7 @@ public class LocaleController {
         return result.toString();
     }
 
-    public void applyLanguage(LocaleInfo localeInfo, boolean override) {
+    private void applyLanguage(LocaleInfo localeInfo) {
         if (localeInfo == null) {
             return;
         }
@@ -235,23 +221,8 @@ public class LocaleController {
                 } else {
                     newLocale = new Locale(args[0], args[1]);
                 }
-                if (newLocale != null) {
-                    if (override) {
-                        languageOverride = localeInfo.shortName;
-
-                        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("mainconfig", Activity.MODE_PRIVATE);
-                        SharedPreferences.Editor editor = preferences.edit();
-                        editor.putString("language", localeInfo.shortName);
-                        editor.apply();
-                    }
-                }
             } else {
                 newLocale = systemDefaultLocale; // this is not Locale.getDefault(); Locale.getDefault() may be changed using Locale.setDefault()
-                languageOverride = null;
-                SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("mainconfig", Activity.MODE_PRIVATE);
-                SharedPreferences.Editor editor = preferences.edit();
-                editor.remove("language");
-                editor.apply();
 
                 if (newLocale != null) {
                     LocaleInfo info = null;
@@ -268,7 +239,6 @@ public class LocaleController {
             }
             if (newLocale != null) {
                 currentLocale = newLocale;
-                currentLocaleInfo = localeInfo;
                 changingConfiguration = true;
                 Locale.setDefault(currentLocale);
                 android.content.res.Configuration config = new android.content.res.Configuration();
@@ -277,7 +247,6 @@ public class LocaleController {
                 changingConfiguration = false;
             }
         } catch (Exception e) {
-
             changingConfiguration = false;
         }
         recreateFormatters();
@@ -297,21 +266,17 @@ public class LocaleController {
         }
         is24HourFormat = DateFormat.is24HourFormat(ApplicationLoader.applicationContext);
         systemDefaultLocale = newConfig.locale;
-        if (languageOverride != null) {
-            LocaleInfo toSet = currentLocaleInfo;
-            currentLocaleInfo = null;
-            applyLanguage(toSet, false);
-        } else {
-            Locale newLocale = newConfig.locale;
-            if (newLocale != null) {
-                String d1 = newLocale.getDisplayName();
-                String d2 = currentLocale.getDisplayName();
-                if (d1 != null && d2 != null && !d1.equals(d2)) {
-                    recreateFormatters();
-                }
-                currentLocale = newLocale;
+
+        Locale newLocale = newConfig.locale;
+        if (newLocale != null) {
+            String d1 = newLocale.getDisplayName();
+            String d2 = currentLocale.getDisplayName();
+            if (d1 != null && d2 != null && !d1.equals(d2)) {
+                recreateFormatters();
             }
+            currentLocale = newLocale;
         }
+
         rebuildUiParts();
     }
 
