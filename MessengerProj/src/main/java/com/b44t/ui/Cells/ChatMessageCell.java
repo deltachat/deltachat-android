@@ -836,18 +836,14 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                 didPressedButton();
             }
         } else if (currentMessageObject.type == MessageObject.MO_TYPE8_GIF) {
-            if (buttonState == -1) {
-                if (MediaController.getInstance().canAutoplayGifs()) {
-                    delegate.didPressedImage(this);
-                } else {
-                    buttonState = BS0_CLICK_TO_PLAY;
-                    currentMessageObject.audioProgress = 1;
-                    photoImage.setAllowStartAnimation(false);
-                    photoImage.stopAnimation();
-                    invalidate();
-                }
-            } else if ( buttonState == BS0_CLICK_TO_PLAY) {
-                didPressedButton();
+            if( !photoImage.isAnimationRunning() ) {
+                // start GIF by a single click (if not running as autoplay disabled or stopped by a long click)
+                // the second click will enlage the animation then (long click to stop)
+                photoImage.startAnimation();
+            }
+            else {
+                // enlarge GIF by a single click (if autoplay enabled)
+                delegate.didPressedImage(this);
             }
         } else if (documentAttachType == DOCUMENT_ATTACH_TYPE_VIDEO) {
             if (buttonState == BS0_CLICK_TO_PLAY || buttonState == BS3_NORMAL) {
@@ -955,6 +951,12 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
             buttonPressed = 0;
             invalidate();
         }
+
+        if( photoImage.isAnimationRunning() ) {
+            photoImage.stopAnimation();
+            return; // a second long click may select (alternatively, you can select while running by clicking beside the image)
+        }
+
         if (delegate != null) {
             delegate.didLongPressed(this);
         }
@@ -1454,10 +1456,6 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                         photoImage.setShouldGenerateQualityThumb(true);
                         photoImage.setParentMessageObject(messageObject);
                     } else if (messageObject.type == MessageObject.MO_TYPE8_GIF) {
-                        String str = formatFileSize(messageObject.messageOwner.media.document.size);
-                        infoWidth = (int) Math.ceil(infoPaint.measureText(str));
-                        infoLayout = new StaticLayout(str, infoPaint, infoWidth, Layout.Alignment.ALIGN_NORMAL, 1.0f, 0.0f, false);
-
                         photoImage.setNeedsQualityThumb(true);
                         photoImage.setShouldGenerateQualityThumb(true);
                         photoImage.setParentMessageObject(messageObject);
@@ -1831,7 +1829,9 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
         }
 
         if (documentAttachType == DOCUMENT_ATTACH_TYPE_GIF || currentMessageObject.type == MessageObject.MO_TYPE8_GIF) {
-            ;
+            if( !photoImage.isAnimationRunning() ) {
+                drawIcon = Theme.INLIST_TRANSP_PLAY;
+            }
         } else if (documentAttachType == DOCUMENT_ATTACH_TYPE_MUSIC) {
             drawIcon = buttonState==BS0_CLICK_TO_PLAY? Theme.INLIST_PLAY : Theme.INLIST_PAUSE;
 
