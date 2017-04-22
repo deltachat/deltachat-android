@@ -1,5 +1,10 @@
 # Delta Chat Changelog
 
+## UNRELEASED
+
+* Better support for right-to-left (RTL) languages, taking advantage of
+  Android 4.2 (Jelly Bean MR1, API level 17).
+
 ## v0.1.32
 2017-04-22
 
