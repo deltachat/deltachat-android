@@ -9,7 +9,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="26dp"
-        android:textSize="16dp"
+        android:textSize="16sp"
         android:gravity="center"
         android:textColor="#ff000000"
         android:id="@+id/bubble_text_view"/>

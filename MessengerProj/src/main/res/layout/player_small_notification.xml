@@ -41,7 +41,7 @@
             android:layout_weight="1"
             android:gravity="bottom"
             android:textColor="#ffffffff"
-            android:textSize="16dp"
+            android:textSize="16sp"
             android:ellipsize="end"
             android:maxLines="1" />
 
@@ -52,7 +52,7 @@
             android:layout_weight="1"
             android:gravity="top"
             android:textColor="#ffc7c7c7"
-            android:textSize="13dp"
+            android:textSize="13sp"
             android:ellipsize="end"
             android:maxLines="1" />
 
