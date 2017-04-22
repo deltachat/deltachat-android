@@ -94,23 +94,6 @@ public class LocaleController {
         }
     }
 
-    public void rebuildUiParts()
-    {
-        KeepAliveService kas = KeepAliveService.getInstance();
-        if( kas != null ) {
-            kas.updateForegroundNotification();
-        }
-    }
-
-    public void onDeviceConfigurationChange(Configuration newConfig) {
-        Locale newLocale = Locale.getDefault();
-        if( newLocale!=null && !newLocale.getDisplayName().equals(formattersCreatedFor) ) { // onDeviceConfigurationChange() is also called on screen orientation changes; do not rebuild the locale stuff in these cases
-            is24HourFormat = DateFormat.is24HourFormat(ApplicationLoader.applicationContext);
-            recreateFormatters();
-            rebuildUiParts();
-        }
-    }
-
     public static String formatDateChat(long date) {
         try {
             Calendar rightNow = Calendar.getInstance();
