@@ -396,9 +396,10 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
             public void onItemClick(final int id) {
                 if (id == -1) {
                     if (actionBar.isActionModeShowed()) {
+                        // finish selection mode
                         selectedMessagesIds.clear();
                         actionBar.hideActionMode();
-                        updateVisibleRows();
+                        updateVisibleRowsFast();
                     } else {
                         finishFragment();
                     }
@@ -418,7 +419,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     AndroidUtilities.addToClipboard(str);
                     selectedMessagesIds.clear();
                     actionBar.hideActionMode();
-                    updateVisibleRows();
+                    updateVisibleRowsFast();
                     AndroidUtilities.showDoneHint(getParentActivity());
                 } else if (id == ID_DELETE_MESSAGES) {
                     if (getParentActivity() == null) {
@@ -471,7 +472,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     }
                     else{
                         actionBar.hideActionMode();
-                        updateVisibleRows();
+                        updateVisibleRowsFast();
                     }
                 } else if (id == ID_INFO) {
                     String info_str = MrMailbox.getMsgInfo(getFirstSelectedId());
@@ -485,26 +486,26 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     });
                     showDialog(builder.create());
                     actionBar.hideActionMode();
-                    updateVisibleRows();
+                    updateVisibleRowsFast();
                 }
                 else if( id== ID_SAVE_TO_XX )
                 {
                     AndroidUtilities.saveMessageFileToExt(getParentActivity(), getFirstSelectedId());
                     actionBar.hideActionMode();
-                    updateVisibleRows();
+                    updateVisibleRowsFast();
                 }
                 else if( id == ID_OPEN )
                 {
                     // for files, that cannot be handled internally (documents ...), this is equal to a normal click
                     AndroidUtilities.openForViewOrShare(getParentActivity(), getFirstSelectedId(), Intent.ACTION_VIEW);
                     actionBar.hideActionMode();
-                    updateVisibleRows();
+                    updateVisibleRowsFast();
                 }
                 else if( id== ID_SHARE )
                 {
                     AndroidUtilities.openForViewOrShare(getParentActivity(), getFirstSelectedId(), Intent.ACTION_SEND);
                     actionBar.hideActionMode();
-                    updateVisibleRows();
+                    updateVisibleRowsFast();
                 }
                 else if (id == ID_ATTACH) {
                     if (getParentActivity() == null) {
@@ -537,7 +538,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 searchItem.setVisibility(View.GONE);
                 highlightMessageId = 0;
                 m_searching = false;
-                updateVisibleRows();
+                updateVisibleRowsFast();
                 //scrollToLastMessage(false); -- wo do not scroll down; this does not make sense if the user has just selected a different position by "search"
                 updateBottomOverlay();
             }
@@ -1581,6 +1582,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
     }
 
     private void processRowSelect(View view) {
+        // add/remove a selected messages in selection mode
         MessageObject message = null;
         if (view instanceof ChatMessageCell) {
             message = ((ChatMessageCell) view).getMessageObject();
@@ -1591,7 +1593,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         }
         addToSelectedMessages(message);
         updateActionModeTitle();
-        updateVisibleRows();
+        updateVisibleRowsFast();
     }
 
     private void updateActionModeTitle() {
@@ -2089,7 +2091,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         else {
             highlightMessageId = 0;
         }
-        updateVisibleRows();
+        updateVisibleRowsFast();
 
         if( m_lastSearchQuery.isEmpty() ) {
             searchItem.setExtraSearchInfo("", true, true, true);
@@ -2357,6 +2359,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
             return;
         }
 
+        // long click: start selection mode
         selectedMessagesIds.clear();
         actionBar.hideActionMode();
         actionBar.createActionMode();
@@ -2375,7 +2378,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
 
         addToSelectedMessages(message);
         selectedMessagesCountTextView.setNumber(1, false);
-        updateVisibleRows();
+        updateVisibleRowsFast();
     }
 
     private String getMessageContent(int msg_id, int prev_msg_id)
@@ -2434,9 +2437,10 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
     @Override
     public boolean onBackPressed() {
         if (actionBar.isActionModeShowed()) {
+            // finish selection mode
             selectedMessagesIds.clear();
             actionBar.hideActionMode();
-            updateVisibleRows();
+            updateVisibleRowsFast();
             return false;
         } else if (chatActivityEnterView.isPopupShowing()) {
             chatActivityEnterView.hidePopup(true);
@@ -2446,7 +2450,46 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
     }
 
     private void updateVisibleRows() {
+        // update by reloading all messages cells from disk.
+        // this is slow, but works always, eg. on deletion of messages.
         chatAdapter.notifyDataSetChanged();
+    }
+
+    private void updateVisibleRowsFast()
+    {
+        // faster update, works only for selecting message cells
+        // (we do some stuff normally done in onBindViewHolder() here)
+        int count = chatListView.getChildCount();
+        for (int a = 0; a < count; a++) {
+            View view_ = chatListView.getChildAt(a);
+            if (view_ instanceof ChatMessageCell) {
+                ChatMessageCell messageCell = (ChatMessageCell)view_;
+                boolean selected = false;
+                boolean disableSelection = false;
+                if (actionBar.isActionModeShowed()) {
+                    if ( selectedMessagesIds.containsKey(messageCell.getMessageObject().getId()) ) {
+                        messageCell.setBackgroundColor(Theme.MSG_SELECTED_BACKGROUND_COLOR);
+                        selected = true;
+                    } else {
+                        messageCell.setBackgroundColor(0);
+                    }
+                    disableSelection = true;
+                } else {
+                    messageCell.setBackgroundColor(0);
+                }
+
+                messageCell.setCheckPressed(!disableSelection, disableSelection && selected);
+                messageCell.setHighlighted(highlightMessageId != 0 && messageCell.getMessageObject().getId() == highlightMessageId);
+
+                if (m_searching && !m_lastSearchQuery.isEmpty()) {
+                    messageCell.setHighlightedText(m_lastSearchQuery);
+                } else {
+                    messageCell.setHighlightedText(null);
+                }
+            }
+        }
+
+        chatListView.invalidate();
     }
 
     private void openSearchWithText(String text) {
