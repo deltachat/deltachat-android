@@ -161,18 +161,7 @@ public class MessageObject {
     }
 
     public static boolean isGifDocument(TLRPC.Document document) {
-        return document != null && document.thumb != null && document.mime_type != null && (document.mime_type.equals("image/gif") || isNewGifDocument(document));
-    }
-
-    public static boolean isNewGifDocument(TLRPC.Document document) {
-        if (document != null && document.mime_type != null && document.mime_type.equals("video/mp4")) {
-            for (int a = 0; a < document.attributes.size(); a++) {
-                if (document.attributes.get(a) instanceof TLRPC.TL_documentAttributeAnimated) {
-                    return true;
-                }
-            }
-        }
-        return false;
+        return document != null && document.thumb != null && document.mime_type != null && document.mime_type.equals("image/gif");
     }
 
     private void generateThumbs(boolean update) {
@@ -718,10 +707,6 @@ public class MessageObject {
 
     public boolean isGif() {
         return messageOwner.media instanceof TLRPC.TL_messageMediaDocument && isGifDocument(messageOwner.media.document);
-    }
-
-    public boolean isNewGif() {
-        return messageOwner.media != null && isNewGifDocument(messageOwner.media.document);
     }
 
     public int getDuration() {

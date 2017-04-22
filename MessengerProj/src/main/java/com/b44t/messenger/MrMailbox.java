@@ -326,6 +326,7 @@ public class MrMailbox {
                     case 20: s = ApplicationLoader.applicationContext.getString(R.string.Error); break;
                     case 21: s = ApplicationLoader.applicationContext.getString(R.string.ErrSelfNotInGroup); break;
                     case 22: s = ApplicationLoader.applicationContext.getString(R.string.NoNetwork); break;
+                    case 23: s = ApplicationLoader.applicationContext.getString(R.string.AttachGif); break;
                 }
                 return String2CPtr(s);
 

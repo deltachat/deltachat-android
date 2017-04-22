@@ -2796,7 +2796,7 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
                 if (document != null) {
                     imageReceiver.setImage(document, null, "d", placeHolder != null ? new BitmapDrawable(null, placeHolder) : null, placeHolder == null ? document.thumb.location : null, String.format(Locale.US, "%d_%d", size, size), imageSize, null, false);
                 } else {
-                    imageReceiver.setImage(path, filter, placeHolder != null ? new BitmapDrawable(null, placeHolder) : null, null, imageSize);
+                    imageReceiver.setImageByPath(path, filter, placeHolder != null ? new BitmapDrawable(null, placeHolder) : null, null, imageSize);
                 }
             } else {
                 imageReceiver.setImageBitmap((Bitmap) null);

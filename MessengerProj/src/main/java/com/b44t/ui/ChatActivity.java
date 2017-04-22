@@ -1556,7 +1556,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                             hasAttachment = true;
                             m_saveToXXMenuItem.setText(R.string.SaveToMusic);
                         }
-                        if( type==MrMsg.MR_MSG_IMAGE || type == MrMsg.MR_MSG_VIDEO ) {
+                        if( type==MrMsg.MR_MSG_IMAGE || type==MrMsg.MR_MSG_GIF || type == MrMsg.MR_MSG_VIDEO ) {
                             hasAttachment = true;
                             m_saveToXXMenuItem.setText(R.string.SaveToGallery);
                         }

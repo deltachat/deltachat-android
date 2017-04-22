@@ -697,7 +697,7 @@ JNIEXPORT jint Java_com_b44t_messenger_MrChat_sendMedia(JNIEnv *env, jclass cls,
 		CHAR_REF(file);
 			mrparam_set(msg->m_param, 'f', filePtr);
 		CHAR_UNREF(file);		
-		if( type == MR_MSG_IMAGE || type == MR_MSG_VIDEO ) {
+		if( type == MR_MSG_IMAGE || type == MR_MSG_GIF || type == MR_MSG_VIDEO ) {
 			mrparam_set_int(msg->m_param, 'w', w);
 			mrparam_set_int(msg->m_param, 'h', h);
 		}

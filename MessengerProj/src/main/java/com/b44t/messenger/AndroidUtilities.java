@@ -972,7 +972,7 @@ public class AndroidUtilities {
                     // get destination path
                     File destPath = null;
                     boolean add_to_download_manager = false;
-                    if (msg_type == MrMsg.MR_MSG_IMAGE || msg_type == MrMsg.MR_MSG_VIDEO) {
+                    if (msg_type == MrMsg.MR_MSG_IMAGE || msg_type == MrMsg.MR_MSG_GIF || msg_type == MrMsg.MR_MSG_VIDEO) {
                         destPath = AndroidUtilities.getAlbumDir();
                     } else if (msg_type == MrMsg.MR_MSG_FILE) {
                         destPath = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);

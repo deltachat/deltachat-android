@@ -41,6 +41,7 @@ public class MrMsg {
     public final static int      MR_MSG_UNDEFINED           =  0;
     public final static int      MR_MSG_TEXT                = 10;
     public final static int      MR_MSG_IMAGE               = 20;
+    public final static int      MR_MSG_GIF                 = 21;
     public final static int      MR_MSG_AUDIO               = 40;
     public final static int      MR_MSG_VOICE               = 41;
     public final static int      MR_MSG_VIDEO               = 50;
@@ -195,7 +196,7 @@ public class MrMsg {
                 ret.message = "<cannot load image>";
             }
         }
-        else if( type == MR_MSG_AUDIO || type == MR_MSG_VOICE || type == MR_MSG_VIDEO || type == MR_MSG_FILE ) {
+        else if( type == MR_MSG_GIF || type == MR_MSG_AUDIO || type == MR_MSG_VOICE || type == MR_MSG_VIDEO || type == MR_MSG_FILE ) {
             String path = getParam('f', "");
             if( !path.isEmpty()) {
                 ret.message = "-1"; // may be misused for video editing information
@@ -205,7 +206,18 @@ public class MrMsg {
                 ret.media.document.file_name = getFilename();
                 ret.media.document.mr_path = path;
                 ret.media.document.size = getBytes();
-                if( type == MR_MSG_AUDIO || type == MR_MSG_VOICE ) {
+                if( type == MR_MSG_GIF ) {
+                    ret.media.document.mime_type = getParam('m', "image/gif");
+                    TLRPC.PhotoSize size = new TLRPC.PhotoSize();
+                    size.location = new TLRPC.TL_fileLocation();
+                    size.location.mr_path = path;
+                    size.location.local_id = -ret.id;
+                    size.w = getParamInt('w', 320);
+                    size.h = getParamInt('h', 240);
+                    size.type = "s";
+                    ret.media.document.thumb = size;
+                }
+                else if( type == MR_MSG_AUDIO || type == MR_MSG_VOICE ) {
                     TLRPC.TL_documentAttributeAudio attr = new TLRPC.TL_documentAttributeAudio();
                     attr.voice = type == MR_MSG_VOICE;
                     attr.duration = getParamInt('d', 0) / 1000;

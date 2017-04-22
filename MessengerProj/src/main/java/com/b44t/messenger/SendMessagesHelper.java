@@ -540,7 +540,7 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
                     String originalPath = path;
                     String tempPath = path;
                     if (tempPath == null && uri != null) {
-                        tempPath = AndroidUtilities.getPath(uri);
+                        tempPath = AndroidUtilities.getPath(uri); // convert uri to path, this may fail
                         originalPath = uri.toString();
                     }
 
@@ -553,6 +553,7 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
                         }
                         isDocument = true;
                     } else if (tempPath == null && uri != null) {
+                        // if conversion from uri to path fails above, we have a look at the content of the file
                         if (MediaController.isGif(uri)) {
                             isDocument = true;
                             originalPath = uri.toString();

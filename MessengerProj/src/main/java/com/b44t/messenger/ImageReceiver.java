@@ -140,7 +140,7 @@ public class ImageReceiver implements NotificationCenter.NotificationCenterDeleg
         setImage(path, null, filter, thumb, null, null, size, ext, cacheOnly);
     }
 
-    public void setImage(String httpUrl, String filter, Drawable thumb, String ext, int size) {
+    public void setImageByPath(String httpUrl, String filter, Drawable thumb, String ext, int size) {
         setImage(null, httpUrl, filter, thumb, null, null, size, ext, true);
     }
 

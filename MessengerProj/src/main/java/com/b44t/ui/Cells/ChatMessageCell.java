@@ -66,7 +66,6 @@ import com.b44t.ui.Components.StaticLayoutEx;
 import com.b44t.ui.ActionBar.Theme;
 import com.b44t.ui.PhotoViewer;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.Locale;
 
@@ -137,7 +136,6 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
 
     private int buttonPressed;
     private boolean imagePressed;
-    private boolean photoNotSet;
     private RectF deleteProgressRect = new RectF();
     private RectF rect = new RectF();
     private TLRPC.PhotoSize currentPhotoObject;
@@ -868,11 +866,6 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
         }
         if (currentPhotoObject == null || currentPhotoObject.location instanceof TLRPC.TL_fileLocationUnavailable) {
             return true;
-        } else if (currentMessageObject != null && photoNotSet) {
-            File cacheFile = FileLoader.getPathToMessage(currentMessageObject.messageOwner);
-            if (cacheFile.exists()) { //TODO
-                return true;
-            }
         }
         return false;
     }
@@ -1214,7 +1207,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
 
     public void setMessageObject(MessageObject messageObject) {
         boolean messageChanged = currentMessageObject != messageObject || messageObject.forceUpdate;
-        boolean dataChanged = currentMessageObject == messageObject && (isUserDataChanged() || photoNotSet);
+        boolean dataChanged = currentMessageObject == messageObject && isUserDataChanged();
         if (messageChanged || dataChanged || isPhotoDataChanged(messageObject)) {
             currentMessageObject = messageObject;
             lastSendState = messageObject.messageOwner.send_state;
@@ -1244,7 +1237,6 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
             currentPhotoFilter = null;
             infoLayout = null;
             buttonState = -1;
-            photoNotSet = false;
             drawBackground = true;
             drawName = false;
             useSeekBarWaveform = false;
@@ -1596,7 +1588,6 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                             if (photoExist /*|| MediaController.getInstance().canDownloadMedia(MediaController.AUTODOWNLOAD_MASK_PHOTO) || FileLoader.getInstance().isLoadingFile(fileName)*/) {
                                 photoImage.setImage(currentPhotoObject.location, currentPhotoFilter, currentPhotoObjectThumb != null ? currentPhotoObjectThumb.location : null, currentPhotoFilter, noSize ? 0 : currentPhotoObject.size, null, false);
                             } else {
-                                photoNotSet = true;
                                 if (currentPhotoObjectThumb != null) {
                                     photoImage.setImage(null, null, currentPhotoObjectThumb.location, currentPhotoFilter, 0, null, false);
                                 } else {
@@ -1607,23 +1598,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                             photoImage.setImageBitmap((BitmapDrawable) null);
                         }
                     } else if (messageObject.type == MessageObject.MO_TYPE8_GIF) {
-                        String fileName = FileLoader.getAttachFileName(messageObject.messageOwner.media.document);
-                        int localFile = 0;
-                        if (messageObject.attachPathExists) {
-                            localFile = 1;
-                        } else if (messageObject.mediaExists) {
-                            localFile = 2;
-                        }
-                        if (!messageObject.isSending() && (localFile != 0 /*|| MediaController.getInstance().canDownloadMedia(MediaController.AUTODOWNLOAD_MASK_GIF) && MessageObject.isNewGifDocument(messageObject.messageOwner.media.document)*/ || FileLoader.getInstance().isLoadingFile(fileName))) {
-                            if (localFile == 1) {
-                                photoImage.setImage(null, messageObject.isSendError() ? null : messageObject.messageOwner.attachPath, null, null, currentPhotoObject != null ? currentPhotoObject.location : null, currentPhotoFilter, 0, null, false);
-                            } else {
-                                photoImage.setImage(messageObject.messageOwner.media.document, null, currentPhotoObject != null ? currentPhotoObject.location : null, currentPhotoFilter, messageObject.messageOwner.media.document.size, null, false);
-                            }
-                        } else {
-                            photoNotSet = true;
-                            photoImage.setImage(null, null, currentPhotoObject != null ? currentPhotoObject.location : null, currentPhotoFilter, 0, null, false);
-                        }
+                        photoImage.setImageByPath(currentPhotoObject.location.mr_path, null, null, null, 0);
                     } else {
                         photoImage.setImage(null, null, currentPhotoObject != null ? currentPhotoObject.location : null, currentPhotoFilter, 0, null, false);
                     }
@@ -2041,10 +2016,6 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                 buttonState = BS3_NORMAL;
             } else {
                 buttonState = -1;
-            }
-
-            if (photoNotSet) {
-                setMessageObject(currentMessageObject);
             }
             invalidate();
         }
