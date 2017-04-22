@@ -1,11 +1,16 @@
 # Delta Chat Changelog
 
-## UNRELEASED
+## v0.1.32
+2017-04-22
 
-* Update Spanish translation
+* Update Spanish and Portuguese translations
 * Update internal sqlite library to version 3.18.0, released on 2017-03-28
 * Remove more of the custom language handling, use Android's routines instead
 * General code cleanup
+* Play GIF files
+* Option to disable autoplaying GIF files
+* When sending contacts, only use the names the receivers have set themselves
+* Show some hints when long-pressing icons in the action bar
 
 ## v0.1.29
 2017-04-19
