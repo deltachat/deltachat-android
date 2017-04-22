@@ -175,13 +175,6 @@ public class ApplicationLoader extends Application {
         // it goes away which also inititialized the app indirectly by calling this function)
         applicationContext.startService(new Intent(applicationContext, KeepAliveService.class));
 
-        // init locale
-        try {
-            LocaleController.getInstance();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
         // track screen on/ff
         try {
             final IntentFilter filter = new IntentFilter(Intent.ACTION_SCREEN_ON);
@@ -229,11 +222,11 @@ public class ApplicationLoader extends Application {
         MediaController.getInstance();
     }
 
+    // @TODO: Is this method still needed after the removal of custom Locale handling? I think it can be removed. TQ
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
         try {
-            LocaleController.getInstance().onDeviceConfigurationChange(newConfig);
             AndroidUtilities.checkDisplaySize();
         } catch (Exception e) {
             e.printStackTrace();
