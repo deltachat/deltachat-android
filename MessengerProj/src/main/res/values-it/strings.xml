@@ -4,9 +4,6 @@
 
 <resources>
     <string name="AppName">Delta Chat</string>
-    <string name="LanguageName">Italiano</string>
-    <string name="LanguageNameInEnglish">Italian</string>
-    <string name="LanguageCode">it</string>
     <!--chats view-->
     <string name="Settings">Impostazioni</string>
     <string name="NewGroup">Nuovo gruppo</string>
@@ -268,5 +265,5 @@
     <string name="InviteMenuEntry">Invita amici</string>
     <string name="ForwardToTitle">Seleziona chat …</string>
     <string name="DoneHint">Fatto.</string>
-    <string name="PermNotificationText">Connessione in background attivata</string>
+
 </resources>

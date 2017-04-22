@@ -4,9 +4,6 @@
 
 <resources xmlns:tools="http://schemas.android.com/tools">
     <string name="AppName">Delta Chat</string>
-    <string name="LanguageName">Русский</string>
-    <string name="LanguageNameInEnglish" tools:keep="@string/LanguageNameInEnglish">Russian</string>
-    <string name="LanguageCode" tools:keep="@string/LanguageCode">rus</string>
     <!--chats view-->
     <string name="Settings">Настройки</string>
     <string name="NewGroup">Новая группа</string>

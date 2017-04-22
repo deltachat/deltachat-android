@@ -4,9 +4,6 @@
 
 <resources>
     <string name="AppName">Delta Chat</string>
-    <string name="LanguageName">Polski</string>
-    <string name="LanguageNameInEnglish">Polish</string>
-    <string name="LanguageCode">pl</string>
     <!--chats view-->
     <string name="Settings">Ustawienia</string>
     <string name="NewGroup">Nowa grupa</string>
@@ -393,5 +390,4 @@
     <string name="ForwardToTitle">Przekaż do…</string>
     <string name="SelectContact">Wybierz kontakt</string>
     <string name="DoneHint">Gotowe.</string>
-    <string name="PermNotificationText">Połączenie w tle jest włączone</string>
 </resources>

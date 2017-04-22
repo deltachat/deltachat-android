@@ -4,9 +4,6 @@
 
 <resources>
     <string name="AppName">Delta Chat</string>
-    <string name="LanguageName">Português</string>
-    <string name="LanguageNameInEnglish">Portuguese</string>
-    <string name="LanguageCode">pt</string>
     <!--chats view-->
     <string name="Settings">Configurações</string>
     <string name="NewGroup">Novo Grupo</string>

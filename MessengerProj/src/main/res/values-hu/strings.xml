@@ -4,9 +4,6 @@
 
 <resources xmlns:tools="http://schemas.android.com/tools">
     <string name="AppName">Delta Chat</string>
-    <string name="LanguageName">Magyar</string>
-    <string name="LanguageNameInEnglish" tools:keep="@string/LanguageNameInEnglish">Hungarian</string>
-    <string name="LanguageCode" tools:keep="@string/LanguageCode">hu</string>
     <!--chats view-->
     <string name="Settings">Beállítások</string>
     <string name="NewGroup">Új csoport</string>
@@ -374,6 +371,5 @@
     <string name="SelectContact">Válassz partnert</string>
     <string name="DoneHint">Kész.</string>
     <string name="FileNotFound">%1$s fájl nem található.</string>
-    <string name="PermNotificationText">Háttérkapcsolat engedélyezve</string>
 
 </resources>

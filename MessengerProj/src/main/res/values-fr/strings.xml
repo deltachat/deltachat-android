@@ -2,9 +2,6 @@
 
 <resources>
     <string name="AppName">Delta Chat</string>
-    <string name="LanguageName">Français</string>
-    <string name="LanguageNameInEnglish">French</string>
-    <string name="LanguageCode">fr</string>
     <!--chats view-->
     <string name="Settings">Paramètres</string>
     <string name="NewGroup">Nouveau groupe</string>
@@ -351,5 +348,4 @@
     <string name="ResetContactsKey">Reinitialiser les clefs de l\'utilisateur</string>
     <string name="ForwardToTitle">Renvoyer à…</string>
     <string name="DoneHint">Fait.</string>
-    <string name="PermNotificationText">Connexion en arrière-plan activée</string>
 </resources>
