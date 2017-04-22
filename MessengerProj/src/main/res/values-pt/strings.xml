@@ -68,7 +68,6 @@
     <string name="Info">Info</string>
     <!--settings view-->
     <string name="TextSize">Tamanho do texto nas mensagens</string>
-    <string name="EnableAnimations">Permitir Animações</string>
     <string name="UnblockContact">Desbloquear</string>
     <string name="NoBlocked">Nenhum usuário bloqueado</string>
     <string name="DefaultForNormalMessages">Notificações de mensagens</string>
@@ -343,5 +342,6 @@
     <string name="DoneHint">Concluído.</string>
     <string name="PermNotificationTitle">Conectado em %1$s</string>
     <string name="PermNotificationText">Aguardando mensagens …</string>
+    <string name="AutoplayGifs">Auto-Reproduzir GIFs</string>
 </resources>
 

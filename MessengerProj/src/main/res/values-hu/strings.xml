@@ -69,7 +69,6 @@
     <string name="Info">Infó</string>
     <!--settings view-->
     <string name="TextSize">Üzenetek betűmérete</string>
-    <string name="EnableAnimations">Áttűnés animációja</string>
     <string name="UnblockContact">Tiltás feloldása</string>
     <string name="NoBlocked">Nincs letiltott partner</string>
     <string name="DefaultForNormalMessages">Normál üzenetek</string>

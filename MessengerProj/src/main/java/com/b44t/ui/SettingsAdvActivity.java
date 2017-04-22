@@ -52,7 +52,7 @@ import com.b44t.ui.Components.NumberPicker;
 public class SettingsAdvActivity extends BaseFragment {
 
     // the list
-    private int enableAnimationsRow, directShareRow, textSizeRow, cacheRow, raiseToSpeakRow, sendByEnterRow, finalShadowRow;
+    private int directShareRow, textSizeRow, cacheRow, raiseToSpeakRow, sendByEnterRow, autoplayGifsRow, finalShadowRow;
     private int rowCount;
 
     private static final int ROWTYPE_SHADOW          = 0;
@@ -79,9 +79,9 @@ public class SettingsAdvActivity extends BaseFragment {
             directShareRow = -1;
         }
         textSizeRow = rowCount++;
+        autoplayGifsRow = rowCount++;
         sendByEnterRow = rowCount++;
         raiseToSpeakRow = rowCount++; // outgoing message
-        enableAnimationsRow = -1;//rowCount++; -- for now, we disable this option, maybe we can add it later to a "view" settings, however, in general, this should be more a system-option
         cacheRow = -1;// for now, the - non-functional - page is reachable by the "storage settings" in the "android App Settings" only
         finalShadowRow = rowCount++;
 
@@ -159,15 +159,6 @@ public class SettingsAdvActivity extends BaseFragment {
                         }
                     });
                     showDialog(builder.create());
-                } else if (i == enableAnimationsRow) {
-                    SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("mainconfig", Activity.MODE_PRIVATE);
-                    boolean animations = preferences.getBoolean("view_animations2", true);
-                    SharedPreferences.Editor editor = preferences.edit();
-                    editor.putBoolean("view_animations2", !animations);
-                    editor.apply();
-                    if (view instanceof TextCheckCell) {
-                        ((TextCheckCell) view).setChecked(!animations);
-                    }
                 } else if (i == sendByEnterRow) {
                     SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("mainconfig", Activity.MODE_PRIVATE);
                     boolean send = preferences.getBoolean("send_by_enter", false);
@@ -181,6 +172,11 @@ public class SettingsAdvActivity extends BaseFragment {
                     MediaController.getInstance().toogleRaiseToSpeak();
                     if (view instanceof TextCheckCell) {
                         ((TextCheckCell) view).setChecked(MediaController.getInstance().canRaiseToSpeak());
+                    }
+                } else if (i == autoplayGifsRow) {
+                    MediaController.getInstance().toggleAutoplayGifs();
+                    if (view instanceof TextCheckCell) {
+                        ((TextCheckCell) view).setChecked(MediaController.getInstance().canAutoplayGifs());
                     }
                 } else if(i == directShareRow) {
                     MediaController.getInstance().toggleDirectShare();
@@ -210,9 +206,9 @@ public class SettingsAdvActivity extends BaseFragment {
 
         @Override
         public boolean isEnabled(int i) {
-            return i == textSizeRow || i == enableAnimationsRow ||
+            return i == textSizeRow ||
                     i == sendByEnterRow ||
-                    i == cacheRow || i == raiseToSpeakRow || i == directShareRow ;
+                    i == cacheRow || i == raiseToSpeakRow || i == autoplayGifsRow || i == directShareRow;
         }
 
         @Override
@@ -264,12 +260,12 @@ public class SettingsAdvActivity extends BaseFragment {
                 TextCheckCell textCell = (TextCheckCell) view;
 
                 SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("mainconfig", Activity.MODE_PRIVATE);
-                if (i == enableAnimationsRow) {
-                    textCell.setTextAndCheck(mContext.getString(R.string.EnableAnimations), preferences.getBoolean("view_animations2", true), false);
-                } else if (i == sendByEnterRow) {
+                if (i == sendByEnterRow) {
                     textCell.setTextAndCheck(mContext.getString(R.string.SendByEnter), preferences.getBoolean("send_by_enter", false), true);
                 } else if (i == raiseToSpeakRow) {
-                    textCell.setTextAndCheck(mContext.getString(R.string.RaiseToSpeak), MediaController.getInstance().canRaiseToSpeak(), true);
+                    textCell.setTextAndCheck(mContext.getString(R.string.RaiseToSpeak), MediaController.getInstance().canRaiseToSpeak(), false);
+                } else if (i == autoplayGifsRow) {
+                    textCell.setTextAndCheck(mContext.getString(R.string.AutoplayGifs), MediaController.getInstance().canAutoplayGifs(), true);
                 } else if (i == directShareRow) {
                     textCell.setTextAndValueAndCheck(mContext.getString(R.string.DirectShare), mContext.getString(R.string.DirectShareInfo), MediaController.getInstance().canDirectShare(), false, true);
                 }
@@ -281,7 +277,7 @@ public class SettingsAdvActivity extends BaseFragment {
         public int getItemViewType(int i) {
             if (i == finalShadowRow ) {
                 return ROWTYPE_SHADOW;
-            } else if (i == enableAnimationsRow || i == sendByEnterRow || i == raiseToSpeakRow || i == directShareRow) {
+            } else if ( i == sendByEnterRow || i == raiseToSpeakRow || i == autoplayGifsRow || i == directShareRow) {
                 return ROWTYPE_CHECK;
             } else {
                 return ROWTYPE_TEXT_SETTINGS;

@@ -68,7 +68,6 @@
     <string name="Info">Info</string>
     <!--settings view-->
     <string name="TextSize">Tekstgrootte berichten</string>
-    <string name="EnableAnimations">Animaties</string>
     <string name="UnblockContact">Deblokkeer</string>
     <string name="NoBlocked">Geen geblokkeerde gebruikers</string>
     <string name="DefaultForNormalMessages">Berichtmeldingen</string>
@@ -256,4 +255,5 @@
     <string name="InviteMenuEntry">Vrienden uitnodigen</string>
     <string name="ForwardToTitle">Kies een chat …</string>
     <string name="DoneHint">Gereed.</string>
+    <string name="AutoplayGifs">GIFs automatisch afspelen</string>
 </resources>

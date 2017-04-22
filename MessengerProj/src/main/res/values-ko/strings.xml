@@ -62,7 +62,6 @@
     <string name="Info">정보</string>
     <!--settings view-->
     <string name="TextSize">채팅 글자 크기</string>
-    <string name="EnableAnimations">화면 전환 효과 사용</string>
     <string name="UnblockContact">차단 해제</string>
     <string name="NoBlocked">차단한 친구가 없습니다</string>
     <string name="DefaultForNormalMessages">메시지 알림</string>
@@ -257,6 +256,7 @@
     <string name="Deaddrop">사서함</string>
     <string name="NewChat">채팅 시작</string>
     <string name="Audio">음악</string>
+    <string name="AutoplayGifs">GIF 자동재생</string>
 
 </resources>
 

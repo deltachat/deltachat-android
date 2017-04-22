@@ -68,7 +68,6 @@
     <string name="Info">Info</string>
     <!--settings view-->
     <string name="TextSize">Dimensione testo messaggi</string>
-    <string name="EnableAnimations">Abilita animazioni</string>
     <string name="UnblockContact">Sblocca</string>
     <string name="NoBlocked">Ancora nessun utente bloccato</string>
     <string name="DefaultForNormalMessages">Notifiche messaggio</string>
@@ -262,5 +261,6 @@
     <string name="InviteMenuEntry">Invita amici</string>
     <string name="ForwardToTitle">Seleziona chat …</string>
     <string name="DoneHint">Fatto.</string>
+    <string name="AutoplayGifs">Autoriproduzione GIF</string>
 
 </resources>

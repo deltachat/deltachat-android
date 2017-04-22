@@ -69,7 +69,6 @@
     <string name="Info">Info</string>
     <!--settings view-->
     <string name="TextSize">Messages font size</string>
-    <string name="EnableAnimations">Transition animation</string>
     <string name="UnblockContact">Unblock contact</string>
     <string name="NoBlocked">No blocked contacts yet</string>
     <string name="DefaultForNormalMessages">Normal messages default</string>
@@ -375,5 +374,6 @@
     <string name="PermNotificationTitle">Connected to %1$s</string>
     <string name="PermNotificationText">Waiting for messages …</string>
     <string name="SettingsFor">Settings for %1$s</string>
+    <string name="AutoplayGifs">Autoplay GIFs</string>
 
 </resources>

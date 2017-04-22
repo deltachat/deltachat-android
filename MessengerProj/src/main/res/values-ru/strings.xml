@@ -69,7 +69,6 @@
     <string name="Info">Инфо</string>
     <!--settings view-->
     <string name="TextSize">Размер шрифта сообщений</string>
-    <string name="EnableAnimations">Переходная анимация</string>
     <string name="UnblockContact">Разблокировать контакт</string>
     <string name="NoBlocked">Пока нет заблокированных контактов</string>
     <string name="DefaultForNormalMessages">Нормальное сообщение по умолчанию</string>

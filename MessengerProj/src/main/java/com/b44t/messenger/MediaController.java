@@ -266,7 +266,7 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
     public int wifiDownloadMask = 0;
     public int roamingDownloadMask = 0;
 
-    private final boolean autoplayGifs = true;
+    private boolean autoplayGifs = true;
     private boolean raiseToSpeak = true;
     private boolean directShare = true;
 
@@ -527,7 +527,7 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
         mobileDataDownloadMask = preferences.getInt("mobileDataDownloadMask", AUTODOWNLOAD_MASK_PHOTO | AUTODOWNLOAD_MASK_AUDIO | AUTODOWNLOAD_MASK_MUSIC | AUTODOWNLOAD_MASK_GIF);
         wifiDownloadMask = preferences.getInt("wifiDownloadMask", AUTODOWNLOAD_MASK_PHOTO | AUTODOWNLOAD_MASK_AUDIO | AUTODOWNLOAD_MASK_MUSIC | AUTODOWNLOAD_MASK_GIF);
         roamingDownloadMask = preferences.getInt("roamingDownloadMask", 0);
-        //autoplayGifs = preferences.getBoolean("autoplay_gif", true);
+        autoplayGifs = preferences.getBoolean("autoplay_gif", true);
         raiseToSpeak = preferences.getBoolean("raise_to_speak", true);
         directShare = preferences.getBoolean("direct_share", true);
 
@@ -2014,7 +2014,6 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
         return null;
     }
 
-    /*
     public void toggleAutoplayGifs() {
         autoplayGifs = !autoplayGifs;
         SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("mainconfig", Activity.MODE_PRIVATE);
@@ -2022,7 +2021,6 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
         editor.putBoolean("autoplay_gif", autoplayGifs);
         editor.apply();
     }
-    */
 
     public void toogleRaiseToSpeak() {
         raiseToSpeak = !raiseToSpeak;

@@ -69,7 +69,6 @@
     <string name="Info">Info</string>
     <!--settings view-->
     <string name="TextSize">Schriftgröße für Nachrichten</string>
-    <string name="EnableAnimations">Übergänge animieren</string>
     <string name="UnblockContact">Kontakt nicht mehr blockieren</string>
     <string name="NoBlocked">Keine blockierten Kontakte</string>
     <string name="DefaultForNormalMessages">Standard für normale Nachrichten</string>
@@ -374,4 +373,5 @@
     <string name="PermNotificationTitle">Verbunden mit %1$s</string>
     <string name="PermNotificationText">Warte auf Nachrichten …</string>
     <string name="SettingsFor">Einstellungen für %1$s</string>
+    <string name="AutoplayGifs">GIFs automatisch abspielen</string>
 </resources>

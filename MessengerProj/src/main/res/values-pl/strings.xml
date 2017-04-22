@@ -69,7 +69,6 @@
     <string name="Info">Informacje</string>
     <!--settings view-->
     <string name="TextSize">Rozmiar czcionki w wiadomości</string>
-    <string name="EnableAnimations">Animacja przejścia</string>
     <string name="UnblockContact">Odblokuj kontakt</string>
     <string name="NoBlocked">Nie ma zablokowanych kontaktów</string>
     <string name="DefaultForNormalMessages">Normalne wiadomości</string>

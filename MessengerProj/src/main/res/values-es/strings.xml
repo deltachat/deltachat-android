@@ -69,7 +69,6 @@
     <string name="Info">Información</string>
     <!--settings view-->
     <string name="TextSize">Tamaño del texto</string>
-    <string name="EnableAnimations">Activar animaciones</string>
     <string name="UnblockContact">Desbloquear</string>
     <string name="NoBlocked">Sin usuarios bloqueados</string>
     <string name="DefaultForNormalMessages">Notificación de mensajes</string>
@@ -373,6 +372,7 @@
     <string name="Audio">Sonido</string>
     <string name="PleaseCutVideoToMaxSize">Reduzca el tamaño del vídeo hasta un máximo de %1$s, por favor.</string>
     <string name="SettingsFor">Ajustes para %1$s</string>
+    <string name="AutoplayGifs">Autorreproducción de GIF</string>
 
 </resources>
 
