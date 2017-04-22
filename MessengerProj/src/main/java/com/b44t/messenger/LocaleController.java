@@ -96,6 +96,10 @@ public class LocaleController {
 
     public void rebuildUiParts()
     {
+        // While android makes sure, the activities are re-translated on locale changes, this is
+        // not done for the permanent notification "Connected to foo@bar - Waiting for messages ..."
+        // To re-translate this, it is needed to update the notification (which is a good idea as the
+        // notification is really permanent and would stuck in the wrong language for weeks otherwise ...)
         KeepAliveService kas = KeepAliveService.getInstance();
         if( kas != null ) {
             kas.updateForegroundNotification();
@@ -103,11 +107,14 @@ public class LocaleController {
     }
 
     public void onDeviceConfigurationChange(Configuration newConfig) {
+        // rebuild some UI parts after a language change:
+        // - the permanent notification (Waiting for messages ...) - notfifications are not re-translated after a locale change. This cannot be done without listening to the language-change-envent.
+        // - some formatters and other cached values, maybe this can be done in other ways, however, it's just working.
         Locale newLocale = Locale.getDefault();
         if( newLocale!=null && !newLocale.getDisplayName().equals(formattersCreatedFor) ) { // onDeviceConfigurationChange() is also called on screen orientation changes; do not rebuild the locale stuff in these cases
             is24HourFormat = DateFormat.is24HourFormat(ApplicationLoader.applicationContext);
             recreateFormatters();
-            rebuildUiParts();
+            rebuildUiParts(); // this is really needed, see comment in rebuildUiParts()
         }
     }
 

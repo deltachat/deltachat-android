@@ -177,7 +177,7 @@ public class ApplicationLoader extends Application {
 
         // init locale
         try {
-            LocaleController.getInstance();
+            LocaleController.getInstance(); // this call does _not_ do nothing; in fact, it creates eg. the formatters while creating the static object.
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -231,9 +231,13 @@ public class ApplicationLoader extends Application {
 
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
+        // this function is needed to react to changed system configuration, eg. locale or display size
         super.onConfigurationChanged(newConfig);
         try {
+            // change some locale stuff that is not updated automatically, see comments in onDeviceConfigurationChange() and rebuildUiParts()
             LocaleController.getInstance().onDeviceConfigurationChange(newConfig);
+
+            // re-calculate some things regarding the display (the size may have changed)
             AndroidUtilities.checkDisplaySize();
         } catch (Exception e) {
             e.printStackTrace();
