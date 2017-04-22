@@ -50,7 +50,6 @@ import com.b44t.ui.Adapters.BaseFragmentAdapter;
 import com.b44t.ui.Cells.HeaderCell;
 import com.b44t.ui.Cells.ShadowSectionCell;
 import com.b44t.ui.Cells.TextCheckCell;
-import com.b44t.ui.Cells.TextDetailSettingsCell;
 import com.b44t.ui.ActionBar.ActionBar;
 import com.b44t.ui.ActionBar.BaseFragment;
 import com.b44t.ui.Cells.TextSettingsCell;
@@ -90,10 +89,9 @@ public class SettingsNotificationsActivity extends BaseFragment implements Notif
 
     private final int TYPE_HEADER      = 0;
     private final int TYPE_CHECK_CELL  = 1;
-    private final int TYPE_TEXTDETAIL  = 2;
-    private final int TYPE_SHADOW      = 3;
-    private final int TYPE_TEXTSETTING = 4;
-    private final int TYPE_COUNT       = 5;
+    private final int TYPE_SHADOW      = 2;
+    private final int TYPE_TEXTSETTING = 3;
+    private final int TYPE_COUNT       = 4;
 
     @Override
     public boolean onFragmentCreate() {
@@ -565,16 +563,6 @@ public class SettingsNotificationsActivity extends BaseFragment implements Notif
                 } else if (i == inchatSoundRow) {
                     checkCell.setTextAndCheck(mContext.getString(R.string.InChatSound), preferences.getBoolean("EnableInChatSound", true), true);
                 }
-            } else if (type == TYPE_TEXTDETAIL) {
-                if (view == null) {
-                    view = new TextDetailSettingsCell(mContext);
-                }
-                TextDetailSettingsCell textCell = (TextDetailSettingsCell) view;
-
-                if (i == resetNotificationsRow) {
-                    textCell.setMultilineDetail(true);
-                    textCell.setTextAndValue(mContext.getString(R.string.Reset), mContext.getString(R.string.ResetAllNotifications), false);
-                }
             } else if (type == TYPE_TEXTSETTING) {
                 if (view == null) {
                     view = new TextSettingsCell(mContext);
@@ -648,6 +636,9 @@ public class SettingsNotificationsActivity extends BaseFragment implements Notif
                         textCell.setTextAndColor(mContext.getString(R.string.LedColor), color, true);
                     }
                 }
+                else if (i == resetNotificationsRow) {
+                    textCell.setText(mContext.getString(R.string.ResetAllNotifications), false);
+                }
             } else if (type == TYPE_SHADOW) {
                 if (view == null) {
                     view = new ShadowSectionCell(mContext);
@@ -669,8 +660,6 @@ public class SettingsNotificationsActivity extends BaseFragment implements Notif
             } else if ( i == groupSectionRow2 ||
                     i == inappSectionRow2 || i == otherSectionRow2 ) {
                 return TYPE_SHADOW;
-            } else if( i==resetNotificationsRow ){
-                return TYPE_TEXTDETAIL;
             } else {
                 return TYPE_TEXTSETTING;
             }

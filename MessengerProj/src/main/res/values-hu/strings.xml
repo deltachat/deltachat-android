@@ -78,7 +78,6 @@
     <string name="Sound">Hang</string>
     <string name="InAppNotifications">Alkalmazáson belüli értesítések</string>
     <string name="Vibrate">Rezgés</string>
-    <string name="Reset">Visszaállítás</string>
     <string name="ResetAllNotifications">Minden értesítés visszaállítása</string>
     <string name="NotificationsAndSounds">Értesítések és hangok</string>
     <string name="BlockedContacts">Letiltott partnerek</string>

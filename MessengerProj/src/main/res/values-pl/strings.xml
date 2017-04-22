@@ -78,7 +78,6 @@
     <string name="Sound">Dźwięki</string>
     <string name="InAppNotifications">Powiadomienia w aplikacji</string>
     <string name="Vibrate">Wibracje</string>
-    <string name="Reset">Resetuj</string>
     <string name="ResetAllNotifications">Resetuj wszystkie powiadomienia</string>
     <string name="NotificationsAndSounds">Powiadomienia i dźwięki</string>
     <string name="BlockedContacts">Zablokowane kontakty</string>

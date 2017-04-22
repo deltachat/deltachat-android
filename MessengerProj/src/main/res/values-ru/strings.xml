@@ -78,7 +78,6 @@
     <string name="Sound">Звук</string>
     <string name="InAppNotifications">Уведомления внутри программы</string>
     <string name="Vibrate">Вибрировать</string>
-    <string name="Reset">Сброс</string>
     <string name="ResetAllNotifications">Сбросить все уведомления</string>
     <string name="NotificationsAndSounds">Уведомления и Звуки</string>
     <string name="BlockedContacts">Заблокированные контакты</string>

@@ -78,7 +78,6 @@
     <string name="Sound">Nachrichtenton</string>
     <string name="InAppNotifications">Bei App im Vordergrund</string>
     <string name="Vibrate">Vibrieren</string>
-    <string name="Reset">Zurücksetzen</string>
     <string name="ResetAllNotifications">Mitteilungseinstellungen zurücksetzen</string>
     <string name="NotificationsAndSounds">Mitteilungen und Töne</string>
     <string name="BlockedContacts">Blockierte Kontakte</string>
