@@ -43,7 +43,6 @@
     <string name="TypeMessage">Сообщение</string>
     <string name="SlideToCancel">ОТПУСТИТЕ ДЛЯ ОСТАНОВКИ</string>
     <string name="SaveToDownloads">Сохранить в папку Загрузки</string>
-    <string name="DeleteGif">Удалить GIF?</string>
     <string name="SaveToMusic">Сохранить в Музыку</string>
     <string name="Share">Поделиться</string>
     <string name="SendItems">Отправить %1$s</string>
@@ -87,7 +86,6 @@
     <string name="OnlyIfSilent">Только если тишина</string>
     <string name="ChatBackground">Фоновое изображение чата</string>
     <string name="SendByEnter">Отправить нажав "ввод"</string>
-    <string name="Language">Язык</string>
     <string name="Help">Помощь</string>
     <string name="Enabled">Вкл</string>
     <string name="Disabled">Выкл</string>

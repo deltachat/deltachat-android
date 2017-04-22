@@ -38,7 +38,6 @@
     <string name="TypeMessage">메시지</string>
     <string name="SlideToCancel">밀어서 취소</string>
     <string name="SaveToDownloads">다운로드 폴더에 저장</string>
-    <string name="DeleteGif">GIF파일을 삭제하겠습니까?</string>
     <string name="SaveToMusic">음악으로 저장</string>
     <string name="Share">공유</string>
     <string name="SendItems">%1$s 전송</string>
@@ -80,7 +79,6 @@
     <string name="OnlyIfSilent">음소거일 중에만</string>
     <string name="ChatBackground">채팅방 배경화면</string>
     <string name="SendByEnter">엔터키로 메시지 전송</string>
-    <string name="Language">언어</string>
     <string name="Help">자주 묻는 질문</string>
     <string name="Enabled">켜기</string>
     <string name="Disabled">끄기</string>

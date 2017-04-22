@@ -704,44 +704,6 @@ public class EmojiView extends FrameLayout implements NotificationCenter.Notific
                         listener.onGifSelected(document);
                     }
                 });
-                gifsGridView.setOnItemLongClickListener(new RecyclerListView.OnItemLongClickListener() {
-                    @Override
-                    public boolean onItemClick(View view, int position) {
-                        if (position < 0 || position >= recentImages.size()) {
-                            return false;
-                        }
-                        final MediaController.SearchImage searchImage = recentImages.get(position);
-                        AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
-                        builder.setMessage(context.getString(R.string.DeleteGif));
-                        builder.setPositiveButton(context.getString(R.string.OK).toUpperCase(), new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
-                                recentImages.remove(searchImage);
-                                /*TLRPC.TL_messages_saveGif req = new TLRPC.TL_messages_saveGif();
-                                req.id = new TLRPC.TL_inputDocument();
-                                req.id.id = searchImage.document.id;
-                                req.id.access_hash = searchImage.document.access_hash;
-                                req.unsave = true;
-                                ConnectionsManager.getInstance().sendRequest(req, new RequestDelegate() {
-                                    @Override
-                                    public void run(TLObject response, TLRPC.TL_error error) {
-
-                                    }
-                                });*/
-                                //MessagesStorage.getInstance().removeWebRecent(searchImage);
-                                if (gifsAdapter != null) {
-                                    gifsAdapter.notifyDataSetChanged();
-                                }
-                                if (recentImages.isEmpty()) {
-                                    updateStickerTabs();
-                                }
-                            }
-                        });
-                        builder.setNegativeButton(context.getString(R.string.Cancel), null);
-                        builder.show().setCanceledOnTouchOutside(true);
-                        return true;
-                    }
-                });
                 gifsGridView.setVisibility(GONE);
                 stickersWrap.addView(gifsGridView);
             }

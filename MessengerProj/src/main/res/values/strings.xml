@@ -43,7 +43,6 @@
     <string name="TypeMessage">Message</string>
     <string name="SlideToCancel">SLIDE TO CANCEL</string>
     <string name="SaveToDownloads">Save to downloads</string>
-    <string name="DeleteGif">Delete GIF?</string>
     <string name="SaveToMusic">Save to music</string>
     <string name="Share">Share</string>
     <string name="SendItems">Send %1$s</string>
@@ -87,7 +86,6 @@
     <string name="OnlyIfSilent">Only if silent</string>
     <string name="ChatBackground">Chat background</string>
     <string name="SendByEnter">Send by "enter"</string>
-    <string name="Language">Language</string>
     <string name="Help">Help</string>
     <string name="Enabled">On</string>
     <string name="Disabled">Off</string>

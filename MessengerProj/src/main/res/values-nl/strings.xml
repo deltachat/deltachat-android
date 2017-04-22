@@ -42,7 +42,6 @@
     <string name="TypeMessage">Bericht</string>
     <string name="SlideToCancel">SLEEP OM TE ANNULEREN</string>
     <string name="SaveToDownloads">Opslaan in Downloads</string>
-    <string name="DeleteGif">GIF verwijderen?</string>
     <string name="SaveToMusic">Opslaan in muziek</string>
     <string name="Share">Delen</string>
     <string name="SendItems">%1$s versturen</string>
@@ -86,7 +85,6 @@
     <string name="OnlyIfSilent">Alleen indien stil</string>
     <string name="ChatBackground">Achtergrond kiezen</string>
     <string name="SendByEnter">Versturen met "Enter"</string>
-    <string name="Language">Taal</string>
     <string name="Help">Veelgestelde vragen</string>
     <string name="Enabled">Inschakelen</string>
     <string name="Disabled">Uitgeschakeld</string>

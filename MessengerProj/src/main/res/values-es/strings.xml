@@ -43,7 +43,6 @@
     <string name="TypeMessage">Mensaje</string>
     <string name="SlideToCancel">DESLIZA PARA CANCELAR</string>
     <string name="SaveToDownloads">Guardar en descargas</string>
-    <string name="DeleteGif">¿Eliminar GIF?</string>
     <string name="SaveToMusic">Guardar en música</string>
     <string name="Share">Compartir</string>
     <string name="SendItems">Enviar %1$s</string>
@@ -87,7 +86,6 @@
     <string name="OnlyIfSilent">Sólo si está silenciado</string>
     <string name="ChatBackground">Fondo de chat</string>
     <string name="SendByEnter">Enviar con “Intro”</string>
-    <string name="Language">Idioma</string>
     <string name="Help">Preguntas frecuentes</string>
     <string name="Enabled">Activadas</string>
     <string name="Disabled">Desactivadas</string>

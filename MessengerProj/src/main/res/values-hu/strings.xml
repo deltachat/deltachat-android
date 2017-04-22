@@ -43,7 +43,6 @@
     <string name="TypeMessage">Üzenet</string>
     <string name="SlideToCancel">VISSZAVONÁS CSÚSZTATÁSSAL</string>
     <string name="SaveToDownloads">Mentés a letöltésekhez</string>
-    <string name="DeleteGif">GIF törlése?</string>
     <string name="SaveToMusic">Mentés a zenékhez</string>
     <string name="Share">Megosztás</string>
     <string name="SendItems">%1$s küldése</string>
@@ -87,7 +86,6 @@
     <string name="OnlyIfSilent">Csak ha csendes</string>
     <string name="ChatBackground">Beszélgetés háttere</string>
     <string name="SendByEnter">Küldés "enterrel"</string>
-    <string name="Language">Nyelv</string>
     <string name="Help">Súgó</string>
     <string name="Enabled">Be</string>
     <string name="Disabled">Ki</string>

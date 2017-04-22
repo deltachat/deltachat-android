@@ -4,9 +4,6 @@
 
 <resources>
     <string name="AppName">Delta Chat</string>
-    <string name="LanguageName">Deutsch</string>
-    <string name="LanguageNameInEnglish">German</string>
-    <string name="LanguageCode">de</string>
     <!--chats view-->
     <string name="Settings">Einstellungen</string>
     <string name="NewGroup">Neue Gruppe</string>
@@ -46,7 +43,6 @@
     <string name="TypeMessage">Nachricht</string>
     <string name="SlideToCancel">WISCHEN UM ABZUBRECHEN</string>
     <string name="SaveToDownloads">In Downloads speichern</string>
-    <string name="DeleteGif">GIF löschen?</string>
     <string name="SaveToMusic">In Musik speichern</string>
     <string name="Share">Teilen</string>
     <string name="SendItems">%1$s senden</string>
@@ -90,7 +86,6 @@
     <string name="OnlyIfSilent">Wenn lautlos</string>
     <string name="ChatBackground">Chat-Hintergrundbild</string>
     <string name="SendByEnter">Mit Taste „Enter“ senden</string>
-    <string name="Language">Sprache</string>
     <string name="Help">Hilfe</string>
     <string name="Enabled">An</string>
     <string name="Disabled">Aus</string>
