@@ -404,7 +404,6 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
         listView.setScrollBarStyle(View.SCROLLBARS_OUTSIDE_OVERLAY);
         listView.setAdapter(listViewAdapter);
         listView.setFastScrollAlwaysVisible(true);
-        listView.setVerticalScrollbarPosition(LocaleController.isRTL ? ListView.SCROLLBAR_POSITION_LEFT : ListView.SCROLLBAR_POSITION_RIGHT);
         linearLayout.addView(listView);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
