@@ -2003,7 +2003,7 @@ public class PhotoFilterView extends FrameLayout {
             //setLayerType(LAYER_TYPE_HARDWARE, null);
             //textureView.setLayerType(LAYER_TYPE_HARDWARE, null);
         }
-        addView(textureView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.MATCH_PARENT, Gravity.TOP | Gravity.LEFT));
+        addView(textureView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.MATCH_PARENT, Gravity.TOP | Gravity.START));
         textureView.setVisibility(INVISIBLE);
         textureView.setSurfaceTextureListener(new TextureView.SurfaceTextureListener() {
             @Override
@@ -2048,7 +2048,7 @@ public class PhotoFilterView extends FrameLayout {
 
         blurControl = new PhotoFilterBlurControl(context);
         blurControl.setVisibility(INVISIBLE);
-        addView(blurControl, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.MATCH_PARENT, Gravity.LEFT | Gravity.TOP));
+        addView(blurControl, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.MATCH_PARENT, Gravity.START | Gravity.TOP));
         blurControl.setDelegate(new PhotoFilterBlurControl.PhotoFilterLinearBlurControlDelegate() {
             @Override
             public void valueChanged(Point centerPoint, float falloff, float size, float angle) {
@@ -2072,14 +2072,14 @@ public class PhotoFilterView extends FrameLayout {
             }
         });
         curvesControl.setVisibility(INVISIBLE);
-        addView(curvesControl, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.MATCH_PARENT, Gravity.LEFT | Gravity.TOP));
+        addView(curvesControl, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.MATCH_PARENT, Gravity.START | Gravity.TOP));
 
         toolsView = new FrameLayout(context);
-        addView(toolsView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, 126, Gravity.LEFT | Gravity.BOTTOM));
+        addView(toolsView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, 126, Gravity.START | Gravity.BOTTOM));
 
         FrameLayout frameLayout = new FrameLayout(context);
         frameLayout.setBackgroundColor(0xff1a1a1a);
-        toolsView.addView(frameLayout, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, 48, Gravity.BOTTOM | Gravity.LEFT));
+        toolsView.addView(frameLayout, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, 48, Gravity.BOTTOM | Gravity.START));
 
         cancelTextView = new TextView(context);
         cancelTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
@@ -2088,7 +2088,7 @@ public class PhotoFilterView extends FrameLayout {
         cancelTextView.setBackgroundDrawable(Theme.createBarSelectorDrawable(Theme.ACTION_BAR_PICKER_SELECTOR_COLOR, false));
         cancelTextView.setPadding(AndroidUtilities.dp(29), 0, AndroidUtilities.dp(29), 0);
         cancelTextView.setText(context.getString(R.string.Cancel).toUpperCase());
-        frameLayout.addView(cancelTextView, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.MATCH_PARENT, Gravity.TOP | Gravity.LEFT));
+        frameLayout.addView(cancelTextView, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.MATCH_PARENT, Gravity.TOP | Gravity.START));
 
         doneTextView = new TextView(context);
         doneTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
@@ -2098,7 +2098,7 @@ public class PhotoFilterView extends FrameLayout {
         doneTextView.setPadding(AndroidUtilities.dp(29), 0, AndroidUtilities.dp(29), 0);
         doneTextView.setText(context.getString(R.string.Done).toUpperCase());
         doneTextView.setTypeface(Typeface.DEFAULT_BOLD);
-        frameLayout.addView(doneTextView, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.MATCH_PARENT, Gravity.TOP | Gravity.RIGHT));
+        frameLayout.addView(doneTextView, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.MATCH_PARENT, Gravity.TOP | Gravity.END));
 
         recyclerListView = new RecyclerListView(context);
         LinearLayoutManager layoutManager = new LinearLayoutManager(context);
@@ -2108,7 +2108,7 @@ public class PhotoFilterView extends FrameLayout {
         recyclerListView.setTag(12);
         recyclerListView.setOverScrollMode(RecyclerListView.OVER_SCROLL_NEVER);
         recyclerListView.setAdapter(toolsAdapter = new ToolsAdapter(context));
-        toolsView.addView(recyclerListView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, 60, Gravity.LEFT | Gravity.TOP));
+        toolsView.addView(recyclerListView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, 60, Gravity.START | Gravity.TOP));
         recyclerListView.setOnItemClickListener(new RecyclerListView.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
@@ -2176,17 +2176,17 @@ public class PhotoFilterView extends FrameLayout {
 
         editView = new FrameLayout(context);
         editView.setVisibility(GONE);
-        addView(editView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, 126, Gravity.LEFT | Gravity.BOTTOM));
+        addView(editView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, 126, Gravity.START | Gravity.BOTTOM));
 
         frameLayout = new FrameLayout(context);
         frameLayout.setBackgroundColor(0xff1a1a1a);
-        editView.addView(frameLayout, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, 48, Gravity.BOTTOM | Gravity.LEFT));
+        editView.addView(frameLayout, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, 48, Gravity.BOTTOM | Gravity.START));
 
         ImageView imageView = new ImageView(context);
         imageView.setImageResource(R.drawable.edit_cancel);
         imageView.setBackgroundDrawable(Theme.createBarSelectorDrawable(Theme.ACTION_BAR_PICKER_SELECTOR_COLOR, false));
         imageView.setPadding(AndroidUtilities.dp(22), 0, AndroidUtilities.dp(22), 0);
-        frameLayout.addView(imageView, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.MATCH_PARENT, Gravity.TOP | Gravity.LEFT));
+        frameLayout.addView(imageView, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.MATCH_PARENT, Gravity.TOP | Gravity.START));
         imageView.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -2234,7 +2234,7 @@ public class PhotoFilterView extends FrameLayout {
         imageView.setImageResource(R.drawable.edit_doneblue);
         imageView.setBackgroundDrawable(Theme.createBarSelectorDrawable(Theme.ACTION_BAR_PICKER_SELECTOR_COLOR, false));
         imageView.setPadding(AndroidUtilities.dp(22), AndroidUtilities.dp(1), AndroidUtilities.dp(22), 0);
-        frameLayout.addView(imageView, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.MATCH_PARENT, Gravity.TOP | Gravity.RIGHT));
+        frameLayout.addView(imageView, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.MATCH_PARENT, Gravity.TOP | Gravity.END));
         imageView.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -2292,7 +2292,7 @@ public class PhotoFilterView extends FrameLayout {
                 }
             }
         });
-        editView.addView(valueSeekBar, LayoutHelper.createFrame(AndroidUtilities.isTablet() ? 498 : LayoutHelper.MATCH_PARENT, 60, AndroidUtilities.isTablet() ? Gravity.CENTER_HORIZONTAL | Gravity.TOP : Gravity.LEFT | Gravity.TOP, 14, 10, 14, 0));
+        editView.addView(valueSeekBar, LayoutHelper.createFrame(AndroidUtilities.isTablet() ? 498 : LayoutHelper.MATCH_PARENT, 60, AndroidUtilities.isTablet() ? Gravity.CENTER_HORIZONTAL | Gravity.TOP : Gravity.START | Gravity.TOP, 14, 10, 14, 0));
 
         curveLayout = new FrameLayout(context);
         editView.addView(curveLayout, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, 78, Gravity.CENTER_HORIZONTAL));
@@ -2365,7 +2365,7 @@ public class PhotoFilterView extends FrameLayout {
         tintButtonsContainer = new LinearLayout(context);
         tintButtonsContainer.setOrientation(LinearLayout.HORIZONTAL);
         tintButtonsContainer.setPadding(AndroidUtilities.dp(10), 0, AndroidUtilities.dp(10), 0);
-        tintLayout.addView(tintButtonsContainer, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, 50, Gravity.LEFT | Gravity.TOP, 0, 24, 0, 0));
+        tintLayout.addView(tintButtonsContainer, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, 50, Gravity.START | Gravity.TOP, 0, 24, 0, 0));
         for (int a = 0; a < tintShadowColors.length; a++) {
             RadioButton radioButton = new RadioButton(context);
             radioButton.setSize(AndroidUtilities.dp(20));
@@ -2418,7 +2418,7 @@ public class PhotoFilterView extends FrameLayout {
         blurRadialButton.setTextColor(0xffffffff);
         blurRadialButton.setGravity(Gravity.CENTER_HORIZONTAL);
         blurRadialButton.setText(context.getString(R.string.BlurRadial));
-        blurLayout.addView(blurRadialButton, LayoutHelper.createFrame(80, 80, Gravity.LEFT | Gravity.TOP, 100, 0, 0, 0));
+        blurLayout.addView(blurRadialButton, LayoutHelper.createFrame(80, 80, Gravity.START | Gravity.TOP, 100, 0, 0, 0));
         blurRadialButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -2439,7 +2439,7 @@ public class PhotoFilterView extends FrameLayout {
         blurLinearButton.setTextColor(0xffffffff);
         blurLinearButton.setGravity(Gravity.CENTER_HORIZONTAL);
         blurLinearButton.setText(context.getString(R.string.BlurLinear));
-        blurLayout.addView(blurLinearButton, LayoutHelper.createFrame(80, 80, Gravity.LEFT | Gravity.TOP, 200, 0, 0, 0));
+        blurLayout.addView(blurLinearButton, LayoutHelper.createFrame(80, 80, Gravity.START | Gravity.TOP, 200, 0, 0, 0));
         blurLinearButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {

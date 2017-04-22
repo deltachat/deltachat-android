@@ -173,7 +173,7 @@ public class PhotoAlbumPickerActivity extends BaseFragment implements Notificati
             layoutParams.width = LayoutHelper.WRAP_CONTENT;
             layoutParams.rightMargin = AndroidUtilities.dp(40);
             layoutParams.leftMargin = AndroidUtilities.isTablet() ? AndroidUtilities.dp(64) : AndroidUtilities.dp(56);
-            layoutParams.gravity = Gravity.TOP | Gravity.LEFT;
+            layoutParams.gravity = Gravity.TOP | Gravity.START;
             dropDownContainer.setLayoutParams(layoutParams);
             dropDownContainer.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -183,7 +183,7 @@ public class PhotoAlbumPickerActivity extends BaseFragment implements Notificati
             });
 
             dropDown = new TextView(context);
-            dropDown.setGravity(Gravity.LEFT);
+            dropDown.setGravity(Gravity.START);
             dropDown.setSingleLine(true);
             dropDown.setLines(1);
             dropDown.setMaxLines(1);
@@ -290,7 +290,7 @@ public class PhotoAlbumPickerActivity extends BaseFragment implements Notificati
 
         View shadow = new View(context);
         shadow.setBackgroundResource(R.drawable.header_shadow_reverse);
-        frameLayout.addView(shadow, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, 3, Gravity.LEFT | Gravity.BOTTOM, 0, 0, 0, 48));
+        frameLayout.addView(shadow, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, 3, Gravity.START | Gravity.BOTTOM, 0, 0, 0, 48));
 
         return fragmentView;
     }

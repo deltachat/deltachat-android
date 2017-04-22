@@ -202,7 +202,7 @@ public class WallpapersActivity extends BaseFragment implements NotificationCent
         listView.setDisallowInterceptTouchEvents(true);
         listView.setOverScrollMode(RecyclerListView.OVER_SCROLL_NEVER);
         listView.setAdapter(listAdapter = new ListAdapter(context));
-        frameLayout.addView(listView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, 102, Gravity.LEFT | Gravity.BOTTOM));
+        frameLayout.addView(listView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, 102, Gravity.START | Gravity.BOTTOM));
         listView.setOnItemClickListener(new RecyclerListView.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {

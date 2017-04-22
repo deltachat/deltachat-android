@@ -53,59 +53,68 @@
                 android:layout_width="7dp"
                 android:layout_height="7dp"
                 android:background="#bbbbbb"
-                android:layout_marginLeft="8dp"/>
+                android:layout_marginLeft="8dp"
+                android:layout_marginStart="8dp"/>
 
             <FrameLayout
                 android:layout_width="7dp"
                 android:layout_height="7dp"
                 android:background="#bbbbbb"
-                android:layout_marginLeft="8dp"/>
+                android:layout_marginLeft="8dp"
+                android:layout_marginStart="8dp"/>
 
             <FrameLayout
                 android:layout_width="7dp"
                 android:layout_height="7dp"
                 android:background="#bbbbbb"
-                android:layout_marginLeft="8dp"/>
+                android:layout_marginLeft="8dp"
+                android:layout_marginStart="8dp"/>
 
             <FrameLayout
                 android:layout_width="7dp"
                 android:layout_height="7dp"
                 android:background="#bbbbbb"
-                android:layout_marginLeft="8dp"/>
+                android:layout_marginLeft="8dp"
+                android:layout_marginStart="8dp"/>
 
             <FrameLayout
                 android:layout_width="7dp"
                 android:layout_height="7dp"
                 android:background="#bbbbbb"
-                android:layout_marginLeft="8dp"/>
+                android:layout_marginLeft="8dp"
+                android:layout_marginStart="8dp"/>
 
             <FrameLayout
                 android:layout_width="7dp"
                 android:layout_height="7dp"
                 android:background="#bbbbbb"
-                android:layout_marginLeft="8dp"/>
+                android:layout_marginLeft="8dp"
+                android:layout_marginStart="8dp"/>
 
         </LinearLayout>
-        
+
         <LinearLayout
+            android:id="@+id/button_area"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/button_area"
-            android:orientation="horizontal"
-            android:gravity="center"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="380dp">
-		    
-		    <Button android:layout_width="wrap_content"
-		        android:layout_height="wrap_content"
-		        android:layout_gravity="center_horizontal"
-		        android:layout_marginLeft="10dp"
-		        android:layout_marginRight="10dp"
-		        android:paddingLeft="16dp"
-		        android:paddingRight="16dp"
-		        android:background="#bbbbbb"
-		        android:textColor="#ffffff"   
-		        android:id="@+id/details_button"/>
+            android:layout_marginTop="380dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/details_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:background="#bbbbbb"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:textColor="#ffffff" />
 
             <Button
                 android:id="@+id/start_messaging_button"
@@ -114,11 +123,13 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
-		        android:paddingLeft="16dp"
-		        android:paddingRight="16dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
                 android:background="#2ca5e0"
-                android:textColor="#ffffff"/>
-        
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:textColor="#ffffff" />
+
         </LinearLayout>
 
 

@@ -15,6 +15,8 @@
         android:layout_height="28dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
         android:scaleType="center"
         android:background="@drawable/bar_selector_white"
         android:src="@drawable/ic_close_white" />
@@ -29,6 +31,7 @@
         android:layout_width="48dp"
         android:layout_height="60dp"
         android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
         android:orientation="vertical">
 
         <TextView
@@ -62,6 +65,8 @@
         android:layout_height="32dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
         android:scaleType="center"
         android:background="@drawable/bar_selector_white"
         android:src="@drawable/ic_action_previous" />
@@ -92,6 +97,8 @@
         android:layout_height="32dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
         android:scaleType="center"
         android:background="@drawable/bar_selector_white"
         android:src="@drawable/ic_action_next"/>

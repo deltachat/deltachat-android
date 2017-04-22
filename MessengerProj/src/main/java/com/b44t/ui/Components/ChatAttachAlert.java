@@ -138,7 +138,7 @@ public class ChatAttachAlert extends BottomSheet implements NotificationCenter.N
             textView.setEllipsize(TextUtils.TruncateAt.END);
             textView.setTextColor(Theme.ATTACH_SHEET_TEXT_COLOR);
             textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 12);
-            addView(textView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.LEFT | Gravity.TOP, 0, 64, 0, 0));
+            addView(textView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.START | Gravity.TOP, 0, 64, 0, 0));
         }
 
         @Override
@@ -339,7 +339,7 @@ public class ChatAttachAlert extends BottomSheet implements NotificationCenter.N
             }
         };
         lineView.setBackgroundColor(0xffd2d2d2);
-        attachView.addView(lineView, new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 1, Gravity.TOP | Gravity.LEFT));
+        attachView.addView(lineView, new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 1, Gravity.TOP | Gravity.START));
 
         CharSequence[] labels = new CharSequence[ATTACH_BUTTON_COUNT];
         labels[ATTACH_BUTTON_IDX_CAMERA]      = ApplicationLoader.applicationContext.getString(R.string.ChatCamera);
@@ -354,7 +354,7 @@ public class ChatAttachAlert extends BottomSheet implements NotificationCenter.N
         for (int a = 0; a < ATTACH_BUTTON_COUNT; a++) {
             AttachButton attachButton = new AttachButton(context);
             attachButton.setTextAndIcon(labels[a], Theme.attachButtonDrawables[a]);
-            attachView.addView(attachButton, LayoutHelper.createFrame(85, 90, Gravity.LEFT | Gravity.TOP));
+            attachView.addView(attachButton, LayoutHelper.createFrame(85, 90, Gravity.START | Gravity.TOP));
             attachButton.setTag(a);
             views[a] = attachButton;
             if (a == ATTACH_BUTTON_IDX_SENDSELECTED) {

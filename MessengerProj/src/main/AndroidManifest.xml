@@ -50,6 +50,7 @@
         android:label="@string/AppName"
         android:largeHeap="true"
         android:theme="@style/Theme.MessengerProj.Start"
+        android:supportsRtl="true"
         android:manageSpaceActivity="com.b44t.ui.ManageSpaceActivity">
 
         <activity

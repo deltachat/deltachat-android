@@ -186,7 +186,7 @@ public class ActionBarLayout extends FrameLayout {
         FrameLayout.LayoutParams layoutParams = (FrameLayout.LayoutParams) containerViewBack.getLayoutParams();
         layoutParams.width = LayoutHelper.MATCH_PARENT;
         layoutParams.height = LayoutHelper.MATCH_PARENT;
-        layoutParams.gravity = Gravity.TOP | Gravity.LEFT;
+        layoutParams.gravity = Gravity.TOP | Gravity.START;
         containerViewBack.setLayoutParams(layoutParams);
 
         containerView = new LinearLayoutContainer(parentActivity);
@@ -194,7 +194,7 @@ public class ActionBarLayout extends FrameLayout {
         layoutParams = (FrameLayout.LayoutParams) containerView.getLayoutParams();
         layoutParams.width = LayoutHelper.MATCH_PARENT;
         layoutParams.height = LayoutHelper.MATCH_PARENT;
-        layoutParams.gravity = Gravity.TOP | Gravity.LEFT;
+        layoutParams.gravity = Gravity.TOP | Gravity.START;
         containerView.setLayoutParams(layoutParams);
 
         for (BaseFragment fragment : fragmentsStack) {

@@ -438,7 +438,7 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
         textFieldContainer = new LinearLayout(context);
         //textFieldContainer.setBackgroundColor(0xffffffff);
         textFieldContainer.setOrientation(LinearLayout.HORIZONTAL);
-        addView(textFieldContainer, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.LEFT | Gravity.TOP, 0, 2, 0, 0));
+        addView(textFieldContainer, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.START | Gravity.TOP, 0, 2, 0, 0));
 
         FrameLayout frameLayout = new FrameLayout(context);
         textFieldContainer.addView(frameLayout, LayoutHelper.createLinear(0, LayoutHelper.WRAP_CONTENT, 1.0f));
@@ -450,7 +450,7 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
         if (Build.VERSION.SDK_INT >= 21) {
             emojiButton.setBackgroundDrawable(Theme.createBarSelectorDrawable(Theme.INPUT_FIELD_SELECTOR_COLOR));
         }
-        frameLayout.addView(emojiButton, LayoutHelper.createFrame(48, 48, Gravity.BOTTOM | Gravity.LEFT, 3, 0, 0, 0));
+        frameLayout.addView(emojiButton, LayoutHelper.createFrame(48, 48, Gravity.BOTTOM | Gravity.START, 3, 0, 0, 0));
         emojiButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -588,7 +588,7 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
             attachButton.setOrientation(LinearLayout.HORIZONTAL);
             attachButton.setEnabled(false);
             attachButton.setPivotX(AndroidUtilities.dp(48));
-            frameLayout.addView(attachButton, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, 48, Gravity.BOTTOM | Gravity.RIGHT));
+            frameLayout.addView(attachButton, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, 48, Gravity.BOTTOM | Gravity.END));
         }
 
         recordedAudioPanel = new FrameLayout(context);
@@ -620,15 +620,15 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
 
         View view = new View(context);
         view.setBackgroundResource(R.drawable.recorded);
-        recordedAudioPanel.addView(view, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, 32, Gravity.CENTER_VERTICAL | Gravity.LEFT, 48, 0, 0, 0));
+        recordedAudioPanel.addView(view, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, 32, Gravity.CENTER_VERTICAL | Gravity.START, 48, 0, 0, 0));
 
         recordedAudioSeekBar = new SeekBarWaveformView(context);
-        recordedAudioPanel.addView(recordedAudioSeekBar, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, 32, Gravity.CENTER_VERTICAL | Gravity.LEFT, 48 + 44, 0, 52, 0));
+        recordedAudioPanel.addView(recordedAudioSeekBar, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, 32, Gravity.CENTER_VERTICAL | Gravity.START, 48 + 44, 0, 52, 0));
 
         recordedAudioPlayButton = new ImageView(context);
         recordedAudioPlayButton.setImageResource(R.drawable.s_player_play_states);
         recordedAudioPlayButton.setScaleType(ImageView.ScaleType.CENTER);
-        recordedAudioPanel.addView(recordedAudioPlayButton, LayoutHelper.createFrame(48, 48, Gravity.LEFT | Gravity.BOTTOM, 48, 0, 0, 0));
+        recordedAudioPanel.addView(recordedAudioPlayButton, LayoutHelper.createFrame(48, 48, Gravity.START | Gravity.BOTTOM, 48, 0, 0, 0));
         recordedAudioPlayButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -649,7 +649,7 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
         recordedAudioTimeTextView.setTextColor(0xffffffff);
         recordedAudioTimeTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13);
         recordedAudioTimeTextView.setText("0:13");
-        recordedAudioPanel.addView(recordedAudioTimeTextView, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.RIGHT | Gravity.CENTER_VERTICAL, 0, 0, 13, 0));
+        recordedAudioPanel.addView(recordedAudioTimeTextView, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.END | Gravity.CENTER_VERTICAL, 0, 0, 13, 0));
 
         recordPanel = new FrameLayout(context);
         recordPanel.setVisibility(GONE);
@@ -763,7 +763,7 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
 
         recordCircle = new RecordCircle(context);
         recordCircle.setVisibility(GONE);
-        sizeNotifierLayout.addView(recordCircle, LayoutHelper.createFrame(124, 124, Gravity.BOTTOM | Gravity.RIGHT, 0, 0, -36, -38));
+        sizeNotifierLayout.addView(recordCircle, LayoutHelper.createFrame(124, 124, Gravity.BOTTOM | Gravity.END, 0, 0, -36, -38));
 
         sendButton = new ImageView(context);
         sendButton.setVisibility(INVISIBLE);

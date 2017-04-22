@@ -187,7 +187,7 @@ public class ContactAddActivity extends BaseFragment implements NotificationCent
         LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) frameLayout.getLayoutParams();
         layoutParams.width = LayoutHelper.MATCH_PARENT;
         layoutParams.height = LayoutHelper.WRAP_CONTENT;
-        layoutParams.gravity = Gravity.TOP | Gravity.LEFT;
+        layoutParams.gravity = Gravity.TOP | Gravity.START;
         frameLayout.setLayoutParams(layoutParams);
 
         avatarImage = new BackupImageView(context);

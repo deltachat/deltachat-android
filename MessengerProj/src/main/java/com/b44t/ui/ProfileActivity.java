@@ -366,7 +366,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         listView.setLayoutManager(layoutManager);
         listView.setGlowColor(Theme.ACTION_BAR_COLOR);
-        frameLayout.addView(listView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.MATCH_PARENT, Gravity.TOP | Gravity.LEFT));
+        frameLayout.addView(listView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.MATCH_PARENT, Gravity.TOP | Gravity.START));
 
         listView.setAdapter(listAdapter);
         listView.setOnItemClickListener(new RecyclerListView.OnItemClickListener() {
@@ -529,7 +529,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
         avatarImage.setRoundRadius(AndroidUtilities.dp(21));
         avatarImage.setPivotX(0);
         avatarImage.setPivotY(0);
-        frameLayout.addView(avatarImage, LayoutHelper.createFrame(42, 42, Gravity.TOP | Gravity.LEFT, 64, 0, 0, 0));
+        frameLayout.addView(avatarImage, LayoutHelper.createFrame(42, 42, Gravity.TOP | Gravity.START, 64, 0, 0, 0));
         avatarImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -556,18 +556,18 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
             nameTextView[a] = new SimpleTextView(context);
             nameTextView[a].setTextColor(Theme.ACTION_BAR_TITLE_COLOR);
             nameTextView[a].setTextSize(18);
-            nameTextView[a].setGravity(Gravity.LEFT);
+            nameTextView[a].setGravity(Gravity.START);
             nameTextView[a].setLeftDrawableTopPadding(-AndroidUtilities.dp(1.3f));
             nameTextView[a].setRightDrawableTopPadding(-AndroidUtilities.dp(1.3f));
             nameTextView[a].setPivotX(0);
             nameTextView[a].setPivotY(0);
-            frameLayout.addView(nameTextView[a], LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.LEFT | Gravity.TOP, 118, 0, a == 0 ? 48 : 0, 0));
+            frameLayout.addView(nameTextView[a], LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.START | Gravity.TOP, 118, 0, a == 0 ? 48 : 0, 0));
 
             onlineTextView[a] = new SimpleTextView(context);
             onlineTextView[a].setTextColor(Theme.ACTION_BAR_SUBTITLE_COLOR);
             onlineTextView[a].setTextSize(14);
-            onlineTextView[a].setGravity(Gravity.LEFT);
-            frameLayout.addView(onlineTextView[a], LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.LEFT | Gravity.TOP, 118, 0, a == 0 ? 48 : 8, 0));
+            onlineTextView[a].setGravity(Gravity.START);
+            frameLayout.addView(onlineTextView[a], LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.START | Gravity.TOP, 118, 0, a == 0 ? 48 : 8, 0));
         }
 
         if ( chat_id != 0 && chat_id!= MrChat.MR_CHAT_ID_DEADDROP ) {
@@ -581,7 +581,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
             writeButton.setScaleType(ImageView.ScaleType.CENTER);
             writeButton.setImageResource(R.drawable.floating_camera);
 
-            frameLayout.addView(writeButton, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.RIGHT | Gravity.TOP, 0, 0, 16, 0));
+            frameLayout.addView(writeButton, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.END | Gravity.TOP, 0, 0, 16, 0));
             if (Build.VERSION.SDK_INT >= 21) {
                 StateListAnimator animator = new StateListAnimator();
                 animator.addState(new int[]{android.R.attr.state_pressed}, ObjectAnimator.ofFloat(writeButton, "translationZ", AndroidUtilities.dp(2), AndroidUtilities.dp(4)).setDuration(200));

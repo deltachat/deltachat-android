@@ -167,7 +167,7 @@ public class GroupCreateFinalActivity extends BaseFragment implements Notificati
         LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) frameLayout.getLayoutParams();
         layoutParams.width = LayoutHelper.MATCH_PARENT;
         layoutParams.height = LayoutHelper.WRAP_CONTENT;
-        layoutParams.gravity = Gravity.TOP | Gravity.LEFT;
+        layoutParams.gravity = Gravity.TOP | Gravity.START;
         frameLayout.setLayoutParams(layoutParams);
 
         avatarImage = new BackupImageView(context);

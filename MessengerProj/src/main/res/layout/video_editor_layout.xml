@@ -8,8 +8,10 @@
         android:layout_height="match_parent"
         android:layout_width="match_parent"
         android:layout_marginLeft="16dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginRight="16dp"
+        android:layout_marginEnd="16dp"
         android:layout_marginBottom="160dp"
         android:id="@+id/video_container"
         android:layout_gravity="top">
@@ -41,7 +43,9 @@
             android:id="@+id/video_seekbar"
             android:background="#ffffffff"
             android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"/>
+            android:layout_marginRight="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"/>
 
         <com.b44t.ui.Components.VideoTimelineView
             android:layout_width="match_parent"

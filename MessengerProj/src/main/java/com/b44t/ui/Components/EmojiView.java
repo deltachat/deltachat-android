@@ -780,7 +780,7 @@ public class EmojiView extends FrameLayout implements NotificationCenter.Notific
             scrollSlidingTabStrip.setIndicatorColor(0xffe2e5e7);
             scrollSlidingTabStrip.setUnderlineColor(0xffe2e5e7);
             scrollSlidingTabStrip.setVisibility(INVISIBLE);
-            addView(scrollSlidingTabStrip, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, 48, Gravity.LEFT | Gravity.TOP));
+            addView(scrollSlidingTabStrip, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, 48, Gravity.START | Gravity.TOP));
             scrollSlidingTabStrip.setTranslationX(AndroidUtilities.displaySize.x);
             updateStickerTabs();
             scrollSlidingTabStrip.setDelegate(new ScrollSlidingTabStrip.ScrollSlidingTabStripDelegate() {
@@ -921,7 +921,7 @@ public class EmojiView extends FrameLayout implements NotificationCenter.Notific
 
         View view = new View(context);
         view.setBackgroundColor(0xffe2e5e7);
-        frameLayout.addView(view, LayoutHelper.createFrame(52, 1, Gravity.LEFT | Gravity.BOTTOM));
+        frameLayout.addView(view, LayoutHelper.createFrame(52, 1, Gravity.START | Gravity.BOTTOM));
 
         recentsWrap = new FrameLayout(context);
         recentsWrap.addView(views.get(0));
@@ -934,7 +934,7 @@ public class EmojiView extends FrameLayout implements NotificationCenter.Notific
         recentsWrap.addView(textView);
         views.get(0).setEmptyView(textView);
 
-        addView(pager, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.MATCH_PARENT, Gravity.LEFT | Gravity.TOP, 0, 48, 0, 0));
+        addView(pager, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.MATCH_PARENT, Gravity.START | Gravity.TOP, 0, 48, 0, 0));
 
         emojiSize = AndroidUtilities.dp(AndroidUtilities.isTablet() ? 40 : 32);
         pickerView = new EmojiColorPickerView(context);

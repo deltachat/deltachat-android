@@ -526,7 +526,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         });
 
         avatarContainer = new ChatAvatarContainer(context, this);
-        actionBar.addView(avatarContainer, 0, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.MATCH_PARENT, Gravity.TOP | Gravity.LEFT, 56, 0, 40, 0));
+        actionBar.addView(avatarContainer, 0, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.MATCH_PARENT, Gravity.TOP | Gravity.START, 56, 0, 40, 0));
 
         ActionBarMenu menu = actionBar.createMenu();
 
@@ -670,7 +670,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         actionModeTitleContainer.addView(actionModeTextView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.MATCH_PARENT));
 
         actionModeSubTextView = new SimpleTextView(context);
-        actionModeSubTextView.setGravity(Gravity.LEFT);
+        actionModeSubTextView.setGravity(Gravity.START);
         actionModeSubTextView.setTextColor(Theme.ACTION_BAR_ACTION_MODE_TEXT_COLOR);
         actionModeTitleContainer.addView(actionModeSubTextView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.MATCH_PARENT));
         actionModeViews.add(actionMode.addItem(ID_DELETE_MESSAGES, R.drawable.ic_ab_fwd_delete, Theme.ACTION_BAR_MODE_SELECTOR_COLOR, null, AndroidUtilities.dp(54)));
@@ -753,7 +753,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
 
                     int gravity = lp.gravity;
                     if (gravity == -1) {
-                        gravity = Gravity.TOP | Gravity.LEFT;
+                        gravity = Gravity.TOP | Gravity.START;
                     }
 
                     final int absoluteGravity = gravity & Gravity.HORIZONTAL_GRAVITY_MASK;
@@ -822,12 +822,12 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
 
             if( m_mrChat.getParamInt(MrChat.MR_CHAT_PARAM_UNPROMOTED, 0)==1 ) {
                 emptyView.setText(context.getString(R.string.MsgNewGroupDraftHint));
-                emptyView.setGravity(Gravity.LEFT);
+                emptyView.setGravity(Gravity.START);
             }
             else if( m_mrChat.getType()==MrChat.MR_CHAT_NORMAL ){
                 String name = m_mrChat.getName();
                 emptyView.setText(AndroidUtilities.replaceTags(String.format(context.getString(R.string.NoMessagesHint), name, name)));
-                emptyView.setGravity(Gravity.LEFT);
+                emptyView.setGravity(Gravity.START);
             }
             else {
                 emptyView.setText(context.getString(R.string.NoMessages));
@@ -1004,7 +1004,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
 
         pagedownButton = new FrameLayout(context);
         pagedownButton.setVisibility(View.INVISIBLE);
-        contentView.addView(pagedownButton, LayoutHelper.createFrame(46, 59, Gravity.RIGHT | Gravity.BOTTOM, 0, 0, 7, 5));
+        contentView.addView(pagedownButton, LayoutHelper.createFrame(46, 59, Gravity.END | Gravity.BOTTOM, 0, 0, 7, 5));
         pagedownButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -1018,7 +1018,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
 
         ImageView pagedownButtonImage = new ImageView(context);
         pagedownButtonImage.setImageResource(R.drawable.pagedown);
-        pagedownButton.addView(pagedownButtonImage, LayoutHelper.createFrame(46, 46, Gravity.LEFT | Gravity.BOTTOM));
+        pagedownButton.addView(pagedownButtonImage, LayoutHelper.createFrame(46, 46, Gravity.START | Gravity.BOTTOM));
 
         pagedownButtonCounter = new TextView(context);
         pagedownButtonCounter.setVisibility(View.INVISIBLE);
@@ -1039,7 +1039,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
 
         chatActivityEnterView.setAllowStickersAndGifs(false, false); // for the moment, we have no stickers
 
-        contentView.addView(chatActivityEnterView, contentView.getChildCount() - 1, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.LEFT | Gravity.BOTTOM));
+        contentView.addView(chatActivityEnterView, contentView.getChildCount() - 1, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.START | Gravity.BOTTOM));
         chatActivityEnterView.setDelegate(new ChatActivityEnterView.ChatActivityEnterViewDelegate() {
             @Override
             public void onMessageSend(CharSequence message) {

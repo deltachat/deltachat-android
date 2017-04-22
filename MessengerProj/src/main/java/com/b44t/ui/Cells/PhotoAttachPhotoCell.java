@@ -61,14 +61,14 @@ public class PhotoAttachPhotoCell extends FrameLayout {
         imageView = new BackupImageView(context);
         addView(imageView, LayoutHelper.createFrame(80, 80));
         checkFrame = new FrameLayout(context);
-        addView(checkFrame, LayoutHelper.createFrame(42, 42, Gravity.LEFT | Gravity.TOP, 38, 0, 0, 0));
+        addView(checkFrame, LayoutHelper.createFrame(42, 42, Gravity.START | Gravity.TOP, 38, 0, 0, 0));
 
         checkBox = new CheckBoxView(context, R.drawable.checkbig);
         checkBox.setSize(30);
         checkBox.setCheckOffset(AndroidUtilities.dp(1));
         checkBox.setDrawBackground(true);
         checkBox.setColor(0xff3ccaef);
-        addView(checkBox, LayoutHelper.createFrame(30, 30, Gravity.LEFT | Gravity.TOP, 46, 4, 0, 0));
+        addView(checkBox, LayoutHelper.createFrame(30, 30, Gravity.START | Gravity.TOP, 46, 4, 0, 0));
         checkBox.setVisibility(VISIBLE);
     }
 
