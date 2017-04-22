@@ -248,7 +248,7 @@ public class ContactAddActivity extends BaseFragment implements NotificationCent
             nameTextView.setText(nameToSet);
         }
         nameTextView.setMaxLines(4);
-        nameTextView.setGravity(Gravity.CENTER_VERTICAL | Gravity.START));
+        nameTextView.setGravity(Gravity.CENTER_VERTICAL | Gravity.START);
         nameTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
         nameTextView.setHintTextColor(0xff979797);
         nameTextView.setImeOptions(EditorInfo.IME_FLAG_NO_EXTRACT_UI);

@@ -68,7 +68,7 @@ public class TextCheckCell extends FrameLayout {
         valueTextView = new TextView(context);
         valueTextView.setTextColor(0xff8a8a8a);
         valueTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13);
-        valueTextView.setGravityGravity.START;
+        valueTextView.setGravity(Gravity.START);
         valueTextView.setLines(1);
         valueTextView.setMaxLines(1);
         valueTextView.setSingleLine(true);
