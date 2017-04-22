@@ -603,7 +603,7 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
 
                 int gravity = lp.gravity;
                 if (gravity == -1) {
-                    gravity = Gravity.TOP | Gravity.LEFT;
+                    gravity = Gravity.TOP | Gravity.START;
                 }
 
                 final int absoluteGravity = gravity & Gravity.HORIZONTAL_GRAVITY_MASK;
@@ -891,7 +891,7 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
 
         containerView = new FrameLayoutDrawer(activity);
         containerView.setFocusable(false);
-        windowView.addView(containerView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.MATCH_PARENT, Gravity.TOP | Gravity.LEFT));
+        windowView.addView(containerView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.MATCH_PARENT, Gravity.TOP | Gravity.START));
 
         windowLayoutParams = new WindowManager.LayoutParams();
         windowLayoutParams.height = WindowManager.LayoutParams.MATCH_PARENT;
@@ -1091,7 +1091,7 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
 
         bottomLayout = new FrameLayout(actvityContext);
         bottomLayout.setBackgroundColor(0x7f000000);
-        containerView.addView(bottomLayout, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, 48, Gravity.BOTTOM | Gravity.LEFT));
+        containerView.addView(bottomLayout, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, 48, Gravity.BOTTOM | Gravity.START));
 
         /*
         captionTextViewOld = new TextView(actvityContext);
@@ -1100,10 +1100,10 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
         captionTextViewOld.setPadding(AndroidUtilities.dp(16), AndroidUtilities.dp(8), AndroidUtilities.dp(16), AndroidUtilities.dp(8));
         captionTextViewOld.setLinkTextColor(0xffffffff);
         captionTextViewOld.setTextColor(0xffffffff);
-        captionTextViewOld.setGravity(Gravity.CENTER_VERTICAL | Gravity.LEFT);
+        captionTextViewOld.setGravity(Gravity.CENTER_VERTICAL | Gravity.START);
         captionTextViewOld.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
         captionTextViewOld.setVisibility(View.INVISIBLE);
-        containerView.addView(captionTextViewOld, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.BOTTOM | Gravity.LEFT, 0, 0, 0, 48));
+        containerView.addView(captionTextViewOld, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.BOTTOM | Gravity.START, 0, 0, 0, 48));
 
         captionTextView = captionTextViewNew = new TextView(actvityContext);
         captionTextViewNew.setMaxLines(10);
@@ -1111,10 +1111,10 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
         captionTextViewNew.setPadding(AndroidUtilities.dp(16), AndroidUtilities.dp(8), AndroidUtilities.dp(16), AndroidUtilities.dp(8));
         captionTextViewNew.setLinkTextColor(0xffffffff);
         captionTextViewNew.setTextColor(0xffffffff);
-        captionTextViewNew.setGravity(Gravity.CENTER_VERTICAL | Gravity.LEFT);
+        captionTextViewNew.setGravity(Gravity.CENTER_VERTICAL | Gravity.START);
         captionTextViewNew.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
         captionTextViewNew.setVisibility(View.INVISIBLE);
-        containerView.addView(captionTextViewNew, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.BOTTOM | Gravity.LEFT, 0, 0, 0, 48));
+        containerView.addView(captionTextViewNew, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.BOTTOM | Gravity.START, 0, 0, 0, 48));
         */
 
         radialProgressViews[0] = new RadialProgressView(containerView.getContext(), containerView);
@@ -1130,8 +1130,8 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
         nameTextView.setMaxLines(1);
         nameTextView.setEllipsize(TextUtils.TruncateAt.END);
         nameTextView.setTextColor(0xffffffff);
-        nameTextView.setGravity(Gravity.LEFT);
-        bottomLayout.addView(nameTextView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.TOP | Gravity.LEFT, 16, 5, 60, 0));
+        nameTextView.setGravity(Gravity.START);
+        bottomLayout.addView(nameTextView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.TOP | Gravity.START, 16, 5, 60, 0));
 
         dateTextView = new TextView(containerView.getContext());
         dateTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13);
@@ -1139,8 +1139,8 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
         dateTextView.setMaxLines(1);
         dateTextView.setEllipsize(TextUtils.TruncateAt.END);
         dateTextView.setTextColor(0xffffffff);
-        dateTextView.setGravity(Gravity.LEFT);
-        bottomLayout.addView(dateTextView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.TOP | Gravity.LEFT, 16, 25, 50, 0));
+        dateTextView.setGravity(Gravity.START);
+        bottomLayout.addView(dateTextView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.TOP | Gravity.START, 16, 25, 50, 0));
 
         if (Build.VERSION.SDK_INT >= 16) {
             /*videoPlayerSeekbar = new SeekBar(containerView.getContext());
@@ -1194,12 +1194,12 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
                 }
             };
             videoPlayerControlFrameLayout.setWillNotDraw(false);
-            bottomLayout.addView(videoPlayerControlFrameLayout, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.MATCH_PARENT, Gravity.TOP | Gravity.LEFT));
+            bottomLayout.addView(videoPlayerControlFrameLayout, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.MATCH_PARENT, Gravity.TOP | Gravity.START));
             */
 
             /*videoPlayButton = new ImageView(containerView.getContext());
             videoPlayButton.setScaleType(ImageView.ScaleType.CENTER);
-            videoPlayerControlFrameLayout.addView(videoPlayButton, LayoutHelper.createFrame(48, 48, Gravity.LEFT | Gravity.TOP));
+            videoPlayerControlFrameLayout.addView(videoPlayButton, LayoutHelper.createFrame(48, 48, Gravity.START | Gravity.TOP));
             videoPlayButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -1217,12 +1217,12 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
             videoPlayerTime.setTextColor(0xffffffff);
             videoPlayerTime.setGravity(Gravity.CENTER_VERTICAL);
             videoPlayerTime.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13);
-            videoPlayerControlFrameLayout.addView(videoPlayerTime, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.MATCH_PARENT, Gravity.RIGHT | Gravity.TOP, 0, 0, 8, 0));*/
+            videoPlayerControlFrameLayout.addView(videoPlayerTime, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.MATCH_PARENT, Gravity.END | Gravity.TOP, 0, 0, 8, 0));*/
         }
 
         pickerView = new PickerBottomLayout(actvityContext);
         pickerView.setBackgroundColor(0x7f000000);
-        containerView.addView(pickerView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, 48, Gravity.BOTTOM | Gravity.LEFT));
+        containerView.addView(pickerView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, 48, Gravity.BOTTOM | Gravity.START));
         pickerView.cancelButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -1245,7 +1245,7 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
         editorDoneLayout.setBackgroundColor(0x7f000000);
         editorDoneLayout.updateSelectedCount(0, false);
         editorDoneLayout.setVisibility(View.GONE);
-        containerView.addView(editorDoneLayout, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, 48, Gravity.LEFT | Gravity.BOTTOM));
+        containerView.addView(editorDoneLayout, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, 48, Gravity.START | Gravity.BOTTOM));
         editorDoneLayout.cancelButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -1305,7 +1305,7 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
         checkImageView.setCheckOffset(AndroidUtilities.dp(1));
         checkImageView.setColor(0xff3ccaef);
         checkImageView.setVisibility(View.GONE);
-        containerView.addView(checkImageView, LayoutHelper.createFrame(45, 45, Gravity.RIGHT | Gravity.TOP, 0, rotation == Surface.ROTATION_270 || rotation == Surface.ROTATION_90 ? 58 : 68, 10, 0));
+        containerView.addView(checkImageView, LayoutHelper.createFrame(45, 45, Gravity.END | Gravity.TOP, 0, rotation == Surface.ROTATION_270 || rotation == Surface.ROTATION_90 ? 58 : 68, 10, 0));
         checkImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -1348,7 +1348,7 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
                 }
             }
         });
-        containerView.addView(captionEditText, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.BOTTOM | Gravity.LEFT, 0, 0, 0, -400));
+        containerView.addView(captionEditText, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.BOTTOM | Gravity.START, 0, 0, 0, -400));
         */
 
         /*
@@ -1366,7 +1366,7 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
         mentionListView.setVisibility(View.GONE);
         mentionListView.setClipToPadding(true);
         mentionListView.setOverScrollMode(ListView.OVER_SCROLL_NEVER);
-        containerView.addView(mentionListView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, 110, Gravity.LEFT | Gravity.BOTTOM));
+        containerView.addView(mentionListView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, 110, Gravity.START | Gravity.BOTTOM));
 
         mentionListView.setAdapter(mentionsAdapter = new MentionsAdapter(actvityContext, true, 0, new MentionsAdapter.MentionsAdapterDelegate() {
             @Override
@@ -1895,7 +1895,7 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
             if (photoCropView == null) {
                 photoCropView = new PhotoCropView(actvityContext);
                 photoCropView.setVisibility(View.GONE);
-                containerView.addView(photoCropView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.MATCH_PARENT, Gravity.TOP | Gravity.LEFT, 0, 0, 0, 48));
+                containerView.addView(photoCropView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.MATCH_PARENT, Gravity.TOP | Gravity.START, 0, 0, 0, 48));
                 photoCropView.setDelegate(new PhotoCropView.PhotoCropViewDelegate() {
                     @Override
                     public void needMoveImageTo(float x, float y, float s, boolean animated) {

@@ -506,7 +506,7 @@ public class ActionBarMenuItem extends FrameLayout {
             searchCountText.setTextSize(14);
             searchCountText.setText("1/10");
             searchCountText.setVisibility(View.GONE);
-            searchContainer.addView(searchCountText, LayoutHelper.createLinear(48, LayoutHelper.WRAP_CONTENT, Gravity.LEFT|Gravity.CENTER_VERTICAL));
+            searchContainer.addView(searchCountText, LayoutHelper.createLinear(48, LayoutHelper.WRAP_CONTENT, Gravity.START|Gravity.CENTER_VERTICAL));
 
             searchUpButton = new ImageView(getContext());
             searchUpButton.setImageResource(R.drawable.search_up);

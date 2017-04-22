@@ -46,7 +46,7 @@ public class ChatUnreadCell extends FrameLayout {
 
         FrameLayout frameLayout = new FrameLayout(context);
         frameLayout.setBackgroundResource(R.drawable.newmsg_divider);
-        addView(frameLayout, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, 27, Gravity.LEFT | Gravity.TOP, 0, 7, 0, 0));
+        addView(frameLayout, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, 27, Gravity.START | Gravity.TOP, 0, 7, 0, 0));
 
         textView = new TextView(context);
         textView.setPadding(0, 0, 0, AndroidUtilities.dp(1));

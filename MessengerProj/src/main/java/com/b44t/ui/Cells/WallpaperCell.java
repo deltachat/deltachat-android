@@ -46,12 +46,12 @@ public class WallpaperCell extends FrameLayout {
         super(context);
 
         imageView = new BackupImageView(context);
-        addView(imageView, LayoutHelper.createFrame(100, 100, Gravity.LEFT | Gravity.BOTTOM));
+        addView(imageView, LayoutHelper.createFrame(100, 100, Gravity.START | Gravity.BOTTOM));
 
         imageView2 = new ImageView(context);
         imageView2.setImageResource(R.drawable.ic_gallery_background);
         imageView2.setScaleType(ImageView.ScaleType.CENTER);
-        addView(imageView2, LayoutHelper.createFrame(100, 100, Gravity.LEFT | Gravity.BOTTOM));
+        addView(imageView2, LayoutHelper.createFrame(100, 100, Gravity.START | Gravity.BOTTOM));
 
         selectionView = new View(context);
         selectionView.setBackgroundResource(R.drawable.wall_selection);

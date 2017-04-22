@@ -212,7 +212,7 @@ public class PhotoPickerActivity extends BaseFragment implements NotificationCen
         else {
             View shadow = new View(context);
             shadow.setBackgroundResource(R.drawable.header_shadow_reverse);
-            frameLayout.addView(shadow, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, 3, Gravity.LEFT | Gravity.BOTTOM, 0, 0, 0, 48));
+            frameLayout.addView(shadow, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, 3, Gravity.START | Gravity.BOTTOM, 0, 0, 0, 48));
         }
 
         return fragmentView;

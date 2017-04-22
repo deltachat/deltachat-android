@@ -41,7 +41,7 @@ public class SimpleTextView extends View implements Drawable.Callback {
 
     private Layout layout;
     private TextPaint textPaint;
-    private int gravity = Gravity.LEFT | Gravity.TOP;
+    private int gravity = Gravity.START | Gravity.TOP;
     private CharSequence text;
     //private SpannableStringBuilder spannableStringBuilder;
     private Drawable leftDrawable;

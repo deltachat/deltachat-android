@@ -64,7 +64,7 @@ public class DrawerProfileCell extends FrameLayout {
         ImageView shadowView = new ImageView(context);
         shadowView.setScaleType(ImageView.ScaleType.FIT_XY);
         shadowView.setImageResource(R.drawable.bottom_shadow);
-        addView(shadowView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, 100/*EDIT BY MR, was 70*/, Gravity.LEFT | Gravity.BOTTOM));
+        addView(shadowView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, 100/*EDIT BY MR, was 70*/, Gravity.START | Gravity.BOTTOM));
 
         nameTextView = new TextView(context);
         nameTextView.setTextColor(0xffffffff);
@@ -72,9 +72,9 @@ public class DrawerProfileCell extends FrameLayout {
         nameTextView.setLines(1);
         nameTextView.setMaxLines(1);
         nameTextView.setSingleLine(true);
-        nameTextView.setGravity(Gravity.LEFT);
+        nameTextView.setGravity(Gravity.START);
         nameTextView.setEllipsize(TextUtils.TruncateAt.END);
-        addView(nameTextView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.LEFT | Gravity.BOTTOM, 16, 0, 16, 28));
+        addView(nameTextView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.START | Gravity.BOTTOM, 16, 0, 16, 28));
 
         subtitleTextView = new TextView(context);
         subtitleTextView.setTextColor(0xffc2e5ff);
@@ -82,9 +82,9 @@ public class DrawerProfileCell extends FrameLayout {
         subtitleTextView.setLines(1);
         subtitleTextView.setMaxLines(1);
         subtitleTextView.setSingleLine(true);
-        subtitleTextView.setGravity(Gravity.LEFT);
+        subtitleTextView.setGravity(Gravity.START);
         subtitleTextView.setTextColor(0xffffffff);
-        addView(subtitleTextView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.LEFT | Gravity.BOTTOM, 16, 0, 16, 9));
+        addView(subtitleTextView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.START | Gravity.BOTTOM, 16, 0, 16, 9));
     }
 
     @Override

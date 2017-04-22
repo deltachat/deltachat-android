@@ -45,7 +45,7 @@ public class PhotoEditToolCell extends FrameLayout {
 
         iconImage = new ImageView(context);
         iconImage.setScaleType(ImageView.ScaleType.CENTER);
-        addView(iconImage, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.MATCH_PARENT, Gravity.TOP | Gravity.LEFT, 0, 0, 0, 12));
+        addView(iconImage, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.MATCH_PARENT, Gravity.TOP | Gravity.START, 0, 0, 0, 12));
 
         nameTextView = new TextView(context);
         nameTextView.setGravity(Gravity.CENTER);
@@ -54,12 +54,12 @@ public class PhotoEditToolCell extends FrameLayout {
         nameTextView.setMaxLines(1);
         nameTextView.setSingleLine(true);
         nameTextView.setEllipsize(TextUtils.TruncateAt.END);
-        addView(nameTextView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.LEFT | Gravity.BOTTOM, 4, 0, 4, 0));
+        addView(nameTextView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.START | Gravity.BOTTOM, 4, 0, 4, 0));
 
         valueTextView = new TextView(context);
         valueTextView.setTextColor(0xff6cc3ff);
         valueTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 11);
-        addView(valueTextView, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.LEFT | Gravity.TOP, 57, 3, 0, 0));
+        addView(valueTextView, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.START | Gravity.TOP, 57, 3, 0, 0));
     }
 
     @Override

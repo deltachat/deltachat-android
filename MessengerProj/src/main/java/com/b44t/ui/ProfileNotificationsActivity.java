@@ -349,7 +349,7 @@ public class ProfileNotificationsActivity extends BaseFragment implements Notifi
                     layoutParams1 = (LinearLayout.LayoutParams) textView.getLayoutParams();
                     layoutParams1.width = LayoutHelper.WRAP_CONTENT;
                     layoutParams1.height = LayoutHelper.WRAP_CONTENT;
-                    layoutParams1.gravity = Gravity.CENTER_VERTICAL | Gravity.LEFT;
+                    layoutParams1.gravity = Gravity.CENTER_VERTICAL | Gravity.START;
                     textView.setLayoutParams(layoutParams1);
 
                     final NumberPicker numberPickerTimes = new NumberPicker(getParentActivity());
@@ -369,7 +369,7 @@ public class ProfileNotificationsActivity extends BaseFragment implements Notifi
                     layoutParams1 = (LinearLayout.LayoutParams) textView.getLayoutParams();
                     layoutParams1.width = LayoutHelper.WRAP_CONTENT;
                     layoutParams1.height = LayoutHelper.WRAP_CONTENT;
-                    layoutParams1.gravity = Gravity.CENTER_VERTICAL | Gravity.LEFT;
+                    layoutParams1.gravity = Gravity.CENTER_VERTICAL | Gravity.START;
                     textView.setLayoutParams(layoutParams1);
 
                     linearLayout2 = new LinearLayout(getParentActivity());
@@ -388,7 +388,7 @@ public class ProfileNotificationsActivity extends BaseFragment implements Notifi
                     layoutParams1 = (LinearLayout.LayoutParams) textView.getLayoutParams();
                     layoutParams1.width = LayoutHelper.WRAP_CONTENT;
                     layoutParams1.height = LayoutHelper.WRAP_CONTENT;
-                    layoutParams1.gravity = Gravity.CENTER_VERTICAL | Gravity.LEFT;
+                    layoutParams1.gravity = Gravity.CENTER_VERTICAL | Gravity.START;
                     textView.setLayoutParams(layoutParams1);
 
                     final NumberPicker numberPickerMinutes = new NumberPicker(getParentActivity());
@@ -408,7 +408,7 @@ public class ProfileNotificationsActivity extends BaseFragment implements Notifi
                     layoutParams1 = (LinearLayout.LayoutParams) textView.getLayoutParams();
                     layoutParams1.width = LayoutHelper.WRAP_CONTENT;
                     layoutParams1.height = LayoutHelper.WRAP_CONTENT;
-                    layoutParams1.gravity = Gravity.CENTER_VERTICAL | Gravity.LEFT;
+                    layoutParams1.gravity = Gravity.CENTER_VERTICAL | Gravity.START;
                     textView.setLayoutParams(layoutParams1);
 
                     AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());

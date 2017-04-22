@@ -108,7 +108,7 @@ public class BlockedUsersActivity extends BaseFragment implements NotificationCe
         emptyTextView.setGravity(Gravity.CENTER);
         emptyTextView.setVisibility(View.INVISIBLE);
         emptyTextView.setText(context.getString(R.string.NoBlocked));
-        frameLayout.addView(emptyTextView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.MATCH_PARENT, Gravity.TOP | Gravity.LEFT));
+        frameLayout.addView(emptyTextView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.MATCH_PARENT, Gravity.TOP | Gravity.START));
         emptyTextView.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {

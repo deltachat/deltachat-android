@@ -52,14 +52,14 @@ public class PhotoPickerPhotoCell extends FrameLayout {
         addView(photoImage, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.MATCH_PARENT));
 
         checkFrame = new FrameLayout(context);
-        addView(checkFrame, LayoutHelper.createFrame(42, 42, Gravity.RIGHT | Gravity.TOP));
+        addView(checkFrame, LayoutHelper.createFrame(42, 42, Gravity.END | Gravity.TOP));
 
         checkBox = new CheckBoxView(context, R.drawable.checkbig);
         checkBox.setSize(30);
         checkBox.setCheckOffset(AndroidUtilities.dp(1));
         checkBox.setDrawBackground(true);
         checkBox.setColor(0xff3ccaef);
-        addView(checkBox, LayoutHelper.createFrame(30, 30, Gravity.RIGHT | Gravity.TOP, 0, 4, 4, 0));
+        addView(checkBox, LayoutHelper.createFrame(30, 30, Gravity.END | Gravity.TOP, 0, 4, 4, 0));
     }
 
     @Override

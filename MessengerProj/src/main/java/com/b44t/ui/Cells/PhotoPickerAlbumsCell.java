@@ -67,7 +67,7 @@ public class PhotoPickerAlbumsCell extends FrameLayout {
             LinearLayout linearLayout = new LinearLayout(context);
             linearLayout.setOrientation(LinearLayout.HORIZONTAL);
             linearLayout.setBackgroundColor(0x7f000000);
-            addView(linearLayout, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, 28, Gravity.LEFT | Gravity.BOTTOM));
+            addView(linearLayout, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, 28, Gravity.START | Gravity.BOTTOM));
 
             nameTextView = new TextView(context);
             nameTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 15);
@@ -170,7 +170,7 @@ public class PhotoPickerAlbumsCell extends FrameLayout {
             layoutParams.leftMargin = (itemWidth + AndroidUtilities.dp(4)) * a;
             layoutParams.width = itemWidth;
             layoutParams.height = itemWidth;
-            layoutParams.gravity = Gravity.LEFT | Gravity.TOP;
+            layoutParams.gravity = Gravity.START | Gravity.TOP;
             albumViews[a].setLayoutParams(layoutParams);
         }
 

@@ -356,7 +356,7 @@ public class BottomSheet extends Dialog {
 
                 int gravity = lp.gravity;
                 if (gravity == -1) {
-                    gravity = Gravity.TOP | Gravity.LEFT;
+                    gravity = Gravity.TOP | Gravity.START;
                 }
 
                 final int absoluteGravity = gravity & Gravity.HORIZONTAL_GRAVITY_MASK;
@@ -563,7 +563,7 @@ public class BottomSheet extends Dialog {
                 ViewGroup viewGroup = (ViewGroup) customView.getParent();
                 viewGroup.removeView(customView);
             }
-            containerView.addView(customView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.LEFT | Gravity.TOP));
+            containerView.addView(customView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.START | Gravity.TOP));
         } else {
             int topOffset = 0;
             if (title != null) {
@@ -591,7 +591,7 @@ public class BottomSheet extends Dialog {
                 for (int a = 0; a < items.length; a++) {
                     BottomSheetCell cell = new BottomSheetCell(getContext(), 0);
                     cell.setTextAndIcon(items[a], itemIcons != null ? itemIcons[a] : 0);
-                    containerView.addView(cell, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, 48, Gravity.LEFT | Gravity.TOP, 0, topOffset, 0, 0));
+                    containerView.addView(cell, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, 48, Gravity.START | Gravity.TOP, 0, topOffset, 0, 0));
                     topOffset += 48;
                     cell.setTag(a);
                     cell.setOnClickListener(new View.OnClickListener() {
@@ -607,7 +607,7 @@ public class BottomSheet extends Dialog {
 
         WindowManager.LayoutParams params = window.getAttributes();
         params.width = ViewGroup.LayoutParams.MATCH_PARENT;
-        params.gravity = Gravity.TOP | Gravity.LEFT;
+        params.gravity = Gravity.TOP | Gravity.START;
         params.dimAmount = 0;
         params.flags &= ~WindowManager.LayoutParams.FLAG_DIM_BEHIND;
         if (!focusable) {

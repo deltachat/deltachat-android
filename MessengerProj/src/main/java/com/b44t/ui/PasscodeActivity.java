@@ -201,7 +201,7 @@ public class PasscodeActivity extends BaseFragment implements NotificationCenter
             layoutParams.topMargin = AndroidUtilities.dp(90);
             layoutParams.height = AndroidUtilities.dp(36);
             layoutParams.leftMargin = AndroidUtilities.dp(40);
-            layoutParams.gravity = Gravity.TOP | Gravity.LEFT;
+            layoutParams.gravity = Gravity.TOP | Gravity.START;
             layoutParams.rightMargin = AndroidUtilities.dp(40);
             layoutParams.width = LayoutHelper.MATCH_PARENT;
             passwordEditText.setLayoutParams(layoutParams);
@@ -273,7 +273,7 @@ public class PasscodeActivity extends BaseFragment implements NotificationCenter
                 layoutParams.width = LayoutHelper.WRAP_CONTENT;
                 layoutParams.rightMargin = AndroidUtilities.dp(40);
                 layoutParams.leftMargin = AndroidUtilities.isTablet() ? AndroidUtilities.dp(64) : AndroidUtilities.dp(56);
-                layoutParams.gravity = Gravity.TOP | Gravity.LEFT;
+                layoutParams.gravity = Gravity.TOP | Gravity.START;
                 dropDownContainer.setLayoutParams(layoutParams);
                 dropDownContainer.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -283,7 +283,7 @@ public class PasscodeActivity extends BaseFragment implements NotificationCenter
                 });
 
                 dropDown = new TextView(context);
-                dropDown.setGravity(Gravity.LEFT);
+                dropDown.setGravity(Gravity.START);
                 dropDown.setSingleLine(true);
                 dropDown.setLines(1);
                 dropDown.setMaxLines(1);
