@@ -28,7 +28,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.res.Configuration;
+import android.os.Build;
 import android.text.format.DateFormat;
+import android.view.View;
 
 import com.b44t.messenger.time.FastDateFormat;
 
@@ -147,11 +149,16 @@ public class LocaleController {
 
     private void recreateFormatters() {
         Locale locale = Locale.getDefault();
-        String lang = locale.getLanguage();
-        if (lang == null) {
-            lang = "en";
+
+        isRTL = false;
+        if (Build.VERSION.SDK_INT >= 17) {
+            // ViewCompat.getLayoutDirection() can also be used, however, this function always returns LTR for SDK < 17, too, but requires a additinal view handle
+            Configuration config = ApplicationLoader.applicationContext.getResources().getConfiguration();
+            if(config.getLayoutDirection() == View.LAYOUT_DIRECTION_RTL) {
+                isRTL = true;
+            }
         }
-        isRTL = lang.toLowerCase().equals("ar");
+
         boolean is24HourFormat = DateFormat.is24HourFormat(ApplicationLoader.applicationContext);
 
         formatterMonth = createFormatter(locale, ApplicationLoader.applicationContext.getString(R.string.formatterMonth), "dd MMM");
