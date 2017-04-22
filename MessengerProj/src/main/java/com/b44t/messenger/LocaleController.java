@@ -41,7 +41,6 @@ public class LocaleController {
 
     public static boolean isRTL = false;
     public static int nameDisplayOrder = 1;
-    private static boolean is24HourFormat = false;
     public FastDateFormat formatterDay;
     public FastDateFormat formatterWeek;
     public FastDateFormat formatterMonth;
@@ -82,8 +81,6 @@ public class LocaleController {
 
     public LocaleController() {
 
-        is24HourFormat = DateFormat.is24HourFormat(ApplicationLoader.applicationContext);
-
         recreateFormatters();
 
         try {
@@ -112,7 +109,6 @@ public class LocaleController {
         // - some formatters and other cached values, maybe this can be done in other ways, however, it's just working.
         Locale newLocale = Locale.getDefault();
         if( newLocale!=null && !newLocale.getDisplayName().equals(formattersCreatedFor) ) { // onDeviceConfigurationChange() is also called on screen orientation changes; do not rebuild the locale stuff in these cases
-            is24HourFormat = DateFormat.is24HourFormat(ApplicationLoader.applicationContext);
             recreateFormatters();
             rebuildUiParts(); // this is really needed, see comment in rebuildUiParts()
         }
@@ -158,6 +154,7 @@ public class LocaleController {
         }
         isRTL = lang.toLowerCase().equals("ar");
         nameDisplayOrder = lang.toLowerCase().equals("ko") ? 2 : 1;
+        boolean is24HourFormat = DateFormat.is24HourFormat(ApplicationLoader.applicationContext);
 
         formatterMonth = createFormatter(locale, ApplicationLoader.applicationContext.getString(R.string.formatterMonth), "dd MMM");
         formatterYear = createFormatter(locale, ApplicationLoader.applicationContext.getString(R.string.formatterYear), "dd.MM.yyyy");
