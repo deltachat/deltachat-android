@@ -46,13 +46,13 @@ public class TextCell extends FrameLayout {
         textView = new SimpleTextView(context);
         textView.setTextColor(0xff212121);
         textView.setTextSize(16);
-        textView.setGravity(LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT);
+        textView.setGravity(Gravity.START);
         addView(textView);
 
         valueTextView = new SimpleTextView(context);
         valueTextView.setTextColor(0xff2f8cc9);
         valueTextView.setTextSize(16);
-        valueTextView.setGravity(LocaleController.isRTL ? Gravity.LEFT : Gravity.RIGHT);
+        valueTextView.setGravity(Gravity.END);
         addView(valueTextView);
 
         imageView = new ImageView(context);

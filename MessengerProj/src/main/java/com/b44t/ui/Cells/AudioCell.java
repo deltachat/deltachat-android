@@ -69,7 +69,7 @@ public class AudioCell extends FrameLayout {
 
         playButton = new ImageView(context);
         playButton.setScaleType(ImageView.ScaleType.CENTER);
-        addView(playButton, LayoutHelper.createFrame(46, 46, ((LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT) | Gravity.TOP), LocaleController.isRTL ? 0 : 13, 13, LocaleController.isRTL ? 13 : 0, 0));
+        addView(playButton, LayoutHelper.createFrame(46, 46, (Gravity.START | Gravity.TOP), LocaleController.isRTL ? 0 : 13, 13, LocaleController.isRTL ? 13 : 0, 0));
         playButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -96,8 +96,8 @@ public class AudioCell extends FrameLayout {
         titleTextView.setMaxLines(1);
         titleTextView.setSingleLine(true);
         titleTextView.setEllipsize(TextUtils.TruncateAt.END);
-        titleTextView.setGravity((LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT) | Gravity.TOP);
-        addView(titleTextView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, (LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT) | Gravity.TOP, LocaleController.isRTL ? 50 : 72, 7, LocaleController.isRTL ? 72 : 50, 0));
+        titleTextView.setGravity(Gravity.START | Gravity.TOP);
+        addView(titleTextView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.START | Gravity.TOP, LocaleController.isRTL ? 50 : 72, 7, LocaleController.isRTL ? 72 : 50, 0));
 
         authorTextView = new TextView(context);
         authorTextView.setTextColor(0xff8a8a8a);
@@ -106,8 +106,8 @@ public class AudioCell extends FrameLayout {
         authorTextView.setMaxLines(1);
         authorTextView.setSingleLine(true);
         authorTextView.setEllipsize(TextUtils.TruncateAt.END);
-        authorTextView.setGravity((LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT) | Gravity.TOP);
-        addView(authorTextView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, (LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT) | Gravity.TOP, LocaleController.isRTL ? 50 : 72, 28, LocaleController.isRTL ? 72 : 50, 0));
+        authorTextView.setGravity(Gravity.START | Gravity.TOP);
+        addView(authorTextView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.START | Gravity.TOP, LocaleController.isRTL ? 50 : 72, 28, LocaleController.isRTL ? 72 : 50, 0));
 
         timeTextView = new TextView(context);
         timeTextView.setTextColor(0xff8a8a8a);
@@ -116,8 +116,8 @@ public class AudioCell extends FrameLayout {
         timeTextView.setMaxLines(1);
         timeTextView.setSingleLine(true);
         timeTextView.setEllipsize(TextUtils.TruncateAt.END);
-        timeTextView.setGravity((LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT) | Gravity.TOP);
-        addView(timeTextView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, (LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT) | Gravity.TOP, LocaleController.isRTL ? 50 : 72, 44, LocaleController.isRTL ? 72 : 50, 0));
+        timeTextView.setGravity(Gravity.START | Gravity.TOP);
+        addView(timeTextView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.START | Gravity.TOP, LocaleController.isRTL ? 50 : 72, 44, LocaleController.isRTL ? 72 : 50, 0));
 
         checkBox = new CheckBoxView(context, R.drawable.round_check2);
         checkBox.setVisibility(VISIBLE);
@@ -125,7 +125,7 @@ public class AudioCell extends FrameLayout {
         addView(checkBox, LayoutHelper.createFrame(
                     22, // width
                     22, // height
-                    (LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT) | Gravity.TOP, // gravity
+                    Gravity.START | Gravity.TOP, // gravity
                     LocaleController.isRTL ? 0 : 44, // marginLeft
                     39, // marginTop
                     LocaleController.isRTL ? 44 : 0, // marginRight

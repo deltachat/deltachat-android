@@ -46,13 +46,13 @@ public class TextInfoCell extends FrameLayout {
         textView = new TextView(context);
         textView.setTextColor(0xff808080);
         textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
-        textView.setGravity(LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT);
+        textView.setGravity(Gravity.START);
         addView(textView);
 
         iconView = new TextView(context);
         iconView.setTextColor(0xff212121);
         iconView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, iconDp);
-        iconView.setGravity(LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT);
+        iconView.setGravity(Gravity.START);
         addView(iconView);
     }
 
@@ -73,7 +73,7 @@ public class TextInfoCell extends FrameLayout {
         FrameLayout.LayoutParams lp = (FrameLayout.LayoutParams) textView.getLayoutParams();
         lp.width        = LayoutHelper.WRAP_CONTENT;
         lp.height       = LayoutHelper.WRAP_CONTENT;
-        lp.gravity      = (LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT) | Gravity.TOP;
+        lp.gravity      = Gravity.START | Gravity.TOP;
         lp.leftMargin   = AndroidUtilities.dp(17);
         lp.topMargin    = AndroidUtilities.dp(13);
         lp.rightMargin  = AndroidUtilities.dp(17 + (icon!=null?iconDp:0));
@@ -88,7 +88,7 @@ public class TextInfoCell extends FrameLayout {
             lp = (FrameLayout.LayoutParams) iconView.getLayoutParams();
             lp.width        = LayoutHelper.WRAP_CONTENT;
             lp.height       = LayoutHelper.WRAP_CONTENT;
-            lp.gravity      = (LocaleController.isRTL ? Gravity.LEFT : Gravity.RIGHT) | Gravity.TOP;
+            lp.gravity      = Gravity.END | Gravity.TOP;
             lp.leftMargin   = AndroidUtilities.dp(17);
             lp.topMargin    = AndroidUtilities.dp(3);
             lp.rightMargin  = AndroidUtilities.dp(20);

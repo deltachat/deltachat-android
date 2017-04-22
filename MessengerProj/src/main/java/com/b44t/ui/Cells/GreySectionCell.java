@@ -46,8 +46,8 @@ public class GreySectionCell extends FrameLayout {
         textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13);
         textView.setTypeface(Typeface.DEFAULT_BOLD);
         textView.setTextColor(0xff8a8a8a);
-        textView.setGravity((LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT) | Gravity.CENTER_VERTICAL);
-        addView(textView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.MATCH_PARENT, (LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT) | Gravity.TOP, 16, 0, 16, 0));
+        textView.setGravity(Gravity.START | Gravity.CENTER_VERTICAL);
+        addView(textView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.MATCH_PARENT, Gravity.START | Gravity.TOP, 16, 0, 16, 0));
     }
 
     @Override

@@ -182,7 +182,7 @@ public class GroupCreateFinalActivity extends BaseFragment implements Notificati
         layoutParams1.bottomMargin = AndroidUtilities.dp(12);
         layoutParams1.leftMargin = LocaleController.isRTL ? 0 : AndroidUtilities.dp(16);
         layoutParams1.rightMargin = LocaleController.isRTL ? AndroidUtilities.dp(16) : 0;
-        layoutParams1.gravity = Gravity.TOP | (LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT);
+        layoutParams1.gravity = Gravity.TOP | Gravity.START;
         avatarImage.setLayoutParams(layoutParams1);
         {
             //avatarDrawable.setDrawPhoto(true);
@@ -230,7 +230,7 @@ public class GroupCreateFinalActivity extends BaseFragment implements Notificati
             nameToSet = null;
         }
         nameTextView.setMaxLines(4);
-        nameTextView.setGravity(Gravity.CENTER_VERTICAL | (LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT));
+        nameTextView.setGravity(Gravity.CENTER_VERTICAL | Gravity.START);
         nameTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
         nameTextView.setHintTextColor(0xff979797);
         nameTextView.setImeOptions(EditorInfo.IME_FLAG_NO_EXTRACT_UI);

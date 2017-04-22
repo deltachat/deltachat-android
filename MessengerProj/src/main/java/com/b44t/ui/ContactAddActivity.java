@@ -201,7 +201,7 @@ public class ContactAddActivity extends BaseFragment implements NotificationCent
         layoutParams1.bottomMargin = AndroidUtilities.dp(12);
         layoutParams1.leftMargin = LocaleController.isRTL ? 0 : AndroidUtilities.dp(16);
         layoutParams1.rightMargin = LocaleController.isRTL ? AndroidUtilities.dp(16) : 0;
-        layoutParams1.gravity = Gravity.TOP | (LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT);
+        layoutParams1.gravity = Gravity.TOP | Gravity.START;
         avatarImage.setLayoutParams(layoutParams1);
         {
             //avatarDrawable.setDrawPhoto(true);
@@ -248,7 +248,7 @@ public class ContactAddActivity extends BaseFragment implements NotificationCent
             nameTextView.setText(nameToSet);
         }
         nameTextView.setMaxLines(4);
-        nameTextView.setGravity(Gravity.CENTER_VERTICAL | (LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT));
+        nameTextView.setGravity(Gravity.CENTER_VERTICAL | Gravity.START));
         nameTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
         nameTextView.setHintTextColor(0xff979797);
         nameTextView.setImeOptions(EditorInfo.IME_FLAG_NO_EXTRACT_UI);
@@ -290,7 +290,7 @@ public class ContactAddActivity extends BaseFragment implements NotificationCent
             emailTextView.setHintTextColor(0xff979797);
             emailTextView.setTextColor(0xff212121);
             emailTextView.setMaxLines(4);
-            emailTextView.setGravity(LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT);
+            emailTextView.setGravity(Gravity.START);
             emailTextView.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS | InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
             emailTextView.setImeOptions(EditorInfo.IME_FLAG_NO_EXTRACT_UI);
             emailTextView.setPadding(0, 0, 0, AndroidUtilities.dp(8));

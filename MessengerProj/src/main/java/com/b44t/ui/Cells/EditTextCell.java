@@ -67,12 +67,12 @@ public class EditTextCell extends FrameLayout {
         labelTextView = new TextView(context);
         labelTextView.setTextColor(0xff212121);
         labelTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13);
-        labelTextView.setGravity(LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT);
+        labelTextView.setGravity(Gravity.START);
         labelTextView.setLines(1);
         labelTextView.setMaxLines(1);
         labelTextView.setSingleLine(true);
         labelTextView.setPadding(0, 0, 0, 0);
-        addView(labelTextView, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, (LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT) | Gravity.TOP,
+        addView(labelTextView, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.START | Gravity.TOP,
                     17, 8, 17, 0));
 
 
@@ -83,7 +83,7 @@ public class EditTextCell extends FrameLayout {
         editView.setMaxLines(1);
         editView.setSingleLine(true);
         editView.setHintTextColor(0xffBBBBBB); // was: 0xff979797
-        editView.setGravity(LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT);
+        editView.setGravity(Gravity.START);
         editView.setInputType(InputType.TYPE_CLASS_TEXT|InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
         editView.setImeOptions(EditorInfo.IME_ACTION_DONE); // just close the keyboard, NEXT would not work as the other entries nay not yet loaded
         AndroidUtilities.clearCursorDrawable(editView);
@@ -101,7 +101,7 @@ public class EditTextCell extends FrameLayout {
         });
         */
 
-        addView(editView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, (LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT) | Gravity.TOP,
+        addView(editView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.START | Gravity.TOP,
                 17, useLabel? 25 : 25-17, 17, 0));
 
         setBackgroundColor(0xffffffff);

@@ -246,11 +246,7 @@ public class ActionBarMenuItem extends FrameLayout {
         TextView textView = new TextView(getContext());
         textView.setTextColor(0xff212121);
         textView.setBackgroundResource(R.drawable.list_selector);
-        if (!LocaleController.isRTL) {
-            textView.setGravity(Gravity.CENTER_VERTICAL);
-        } else {
-            textView.setGravity(Gravity.CENTER_VERTICAL | Gravity.RIGHT);
-        }
+        textView.setGravity(Gravity.CENTER_VERTICAL | Gravity.START);
         textView.setPadding(AndroidUtilities.dp(16), 0, AndroidUtilities.dp(16), 0);
         textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 18);
         textView.setMinWidth(AndroidUtilities.dp(196));
@@ -267,9 +263,7 @@ public class ActionBarMenuItem extends FrameLayout {
         //popupLayout.setShowedFromBotton(showFromBottom);
         popupLayout.addView(textView);
         LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) textView.getLayoutParams();
-        if (LocaleController.isRTL) {
-            layoutParams.gravity = Gravity.RIGHT;
-        }
+        layoutParams.gravity = Gravity.START;
         layoutParams.width = LayoutHelper.MATCH_PARENT;
         layoutParams.height = AndroidUtilities.dp(48);
         textView.setLayoutParams(layoutParams);
