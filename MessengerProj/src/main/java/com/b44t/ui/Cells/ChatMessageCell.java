@@ -2087,34 +2087,8 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
     }
 
     private void measureTime(MessageObject messageObject) {
-        boolean hasSign = !messageObject.isOutOwner() && messageObject.messageOwner.from_id > 0 && messageObject.messageOwner.post;
-        TLRPC.User signUser = MrMailbox.getUser(messageObject.messageOwner.from_id);
-        if (hasSign && signUser == null) {
-            hasSign = false;
-        }
-        String timeString = LocaleController.getInstance().formatterDay.format((long) (messageObject.messageOwner.date) * 1000);
-        if (hasSign) {
-            currentTimeString = ", " + timeString;
-        } else {
-            currentTimeString = timeString;
-        }
+        currentTimeString = LocaleController.getInstance().formatterDay.format((long) (messageObject.messageOwner.date) * 1000);
         timeTextWidth = timeWidth = (int) Math.ceil(timePaint.measureText(currentTimeString));
-
-        if (hasSign) {
-            if (availableTimeWidth == 0) {
-                availableTimeWidth = dp(1000);
-            }
-            CharSequence name = ContactsController.formatName(signUser.first_name, signUser.last_name).replace('\n', ' ');
-            int widthForSign = availableTimeWidth - timeWidth;
-            int width = (int) Math.ceil(timePaint.measureText(name, 0, name.length()));
-            if (width > widthForSign) {
-                name = TextUtils.ellipsize(name, timePaint, widthForSign, TextUtils.TruncateAt.END);
-                width = widthForSign;
-            }
-            currentTimeString = name + currentTimeString;
-            timeTextWidth += width;
-            timeWidth += width;
-        }
     }
 
     private boolean isDrawSelectedBackground() {

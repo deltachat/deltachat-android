@@ -40,7 +40,6 @@ import java.util.TimeZone;
 public class LocaleController {
 
     public static boolean isRTL = false;
-    public static int nameDisplayOrder = 1;
     public FastDateFormat formatterDay;
     public FastDateFormat formatterWeek;
     public FastDateFormat formatterMonth;
@@ -153,7 +152,6 @@ public class LocaleController {
             lang = "en";
         }
         isRTL = lang.toLowerCase().equals("ar");
-        nameDisplayOrder = lang.toLowerCase().equals("ko") ? 2 : 1;
         boolean is24HourFormat = DateFormat.is24HourFormat(ApplicationLoader.applicationContext);
 
         formatterMonth = createFormatter(locale, ApplicationLoader.applicationContext.getString(R.string.formatterMonth), "dd MMM");
