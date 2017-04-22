@@ -952,10 +952,11 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
             invalidate();
         }
 
-        if( photoImage.isAnimationRunning() ) {
-            photoImage.stopAnimation();
-            return; // a second long click may select (alternatively, you can select while running by clicking beside the image)
-        }
+        // Stopping running animation here would be unexpected IMHO (bp)
+        // - When eg. long-clicking for forwarding, one may think sth. went wrong if the messages stops playing
+        // - Another idea was to stop on the first long-click and use the second long-click for normal processing. This also seems to be unexpected.
+        // - If the user has disabled AutoplayGifs, he can just scoll out and in for pausing (weired, but as expected)
+        // - All in all, it is not _that_ important to stop GIF playnback :-) (bp)
 
         if (delegate != null) {
             delegate.didLongPressed(this);
