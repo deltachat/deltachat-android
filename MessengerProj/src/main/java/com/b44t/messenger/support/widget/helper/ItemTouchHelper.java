@@ -1391,10 +1391,8 @@ public class ItemTouchHelper extends RecyclerView.ItemDecoration
         static {
             if (Build.VERSION.SDK_INT >= 21) {
                 sUICallback = new ItemTouchUIUtilImpl.Lollipop();
-            } else if (Build.VERSION.SDK_INT >= 11) {
-                sUICallback = new ItemTouchUIUtilImpl.Honeycomb();
             } else {
-                sUICallback = new ItemTouchUIUtilImpl.Gingerbread();
+                sUICallback = new ItemTouchUIUtilImpl.Honeycomb();
             }
         }
 
