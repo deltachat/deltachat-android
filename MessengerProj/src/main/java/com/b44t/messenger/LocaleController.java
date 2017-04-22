@@ -160,7 +160,7 @@ public class LocaleController {
         chatFullDate = createFormatter(locale, ApplicationLoader.applicationContext.getString(R.string.chatFullDate), "d MMMM yyyy");
         formatterWeek = createFormatter(locale, ApplicationLoader.applicationContext.getString(R.string.formatterWeek), "EEE");
         formatterMonthYear = createFormatter(locale, ApplicationLoader.applicationContext.getString(R.string.formatterMonthYear), "MMMM yyyy");
-        formatterDay = createFormatter(lang.toLowerCase().equals("ar") || lang.toLowerCase().equals("ko") ? locale : Locale.US, is24HourFormat ? ApplicationLoader.applicationContext.getString(R.string.formatterDay24H) : ApplicationLoader.applicationContext.getString(R.string.formatterDay12H), is24HourFormat ? "HH:mm" : "h:mm a");
+        formatterDay = createFormatter(locale, is24HourFormat ? ApplicationLoader.applicationContext.getString(R.string.formatterDay24H) : ApplicationLoader.applicationContext.getString(R.string.formatterDay12H), is24HourFormat ? "HH:mm" : "h:mm a");
 
         formattersCreatedFor = locale.getDisplayName();
     }
