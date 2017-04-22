@@ -100,7 +100,8 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="380dp"
             android:gravity="center"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            style="?android:attr/buttonBarStyle">
 
             <Button
                 android:id="@+id/details_button"
@@ -114,7 +115,8 @@
                 android:background="#bbbbbb"
                 android:paddingLeft="16dp"
                 android:paddingRight="16dp"
-                android:textColor="#ffffff" />
+                android:textColor="#ffffff"
+                style="?android:attr/buttonBarButtonStyle" />
 
             <Button
                 android:id="@+id/start_messaging_button"
@@ -128,7 +130,8 @@
                 android:background="#2ca5e0"
                 android:paddingLeft="16dp"
                 android:paddingRight="16dp"
-                android:textColor="#ffffff" />
+                android:textColor="#ffffff"
+                style="?android:attr/buttonBarButtonStyle" />
 
         </LinearLayout>
 
