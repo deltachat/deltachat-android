@@ -4,6 +4,8 @@
 
 * Better support for right-to-left (RTL) languages, taking advantage of
   Android 4.2 (Jelly Bean MR1, API level 17).
+* Send PNG files without resizing and converting to JPEG
+* If JPEG files are send without compression, they still appear as image, not as attached files
 
 ## v0.1.32
 2017-04-22
