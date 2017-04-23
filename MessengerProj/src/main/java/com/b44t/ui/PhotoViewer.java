@@ -2487,8 +2487,6 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
             //setCurrentCaption(caption);
 
             if (currentAnimation != null) {
-                menuItem.hideSubItem(gallery_menu_save);
-                menuItem.hideSubItem(gallery_menu_share);
                 actionBar.setTitle(ApplicationLoader.applicationContext.getString(R.string.AttachGif));
             } else {
                 if (totalImagesCount + totalImagesCountMerge != 0 && !needSearchImageInArr) {
