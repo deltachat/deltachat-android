@@ -25,9 +25,9 @@ package com.b44t.ui.ActionBar;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.b44t.messenger.AndroidUtilities;
 import com.b44t.messenger.ApplicationLoader;
@@ -37,7 +37,7 @@ import com.b44t.ui.Components.LayoutHelper;
 public class ActionBarMenu extends LinearLayout {
 
     protected ActionBar parentActionBar;
-
+    private static Toast s_menuItemHint = null;
     public ActionBarMenu(Context context, ActionBar layer) {
         super(context);
         setOrientation(LinearLayout.HORIZONTAL);
@@ -48,27 +48,7 @@ public class ActionBarMenu extends LinearLayout {
         super(context);
     }
 
-    /*
-    public View addItemResource(int id, int resourceId) {
-        LayoutInflater li = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View view = li.inflate(resourceId, null);
-        view.setTag(id);
-        addView(view);
-        LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) view.getLayoutParams();
-        layoutParams.height = LayoutHelper.MATCH_PARENT;
-        view.setBackgroundDrawable(Theme.createBarSelectorDrawable(parentActionBar.itemsBackgroundColor));
-        view.setLayoutParams(layoutParams);
-        view.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                onItemClick((Integer) view.getTag());
-            }
-        });
-        return view;
-    }
-    */
-
-    public ActionBarMenuItem addItem(int id, Drawable drawable) { /*  */
+    public ActionBarMenuItem addItem(int id, Drawable drawable) {
         return addItem(id, 0, parentActionBar.itemsBackgroundColor, drawable, AndroidUtilities.dp(48));
     }
 
@@ -122,9 +102,15 @@ public class ActionBarMenu extends LinearLayout {
                     case R.drawable.ic_ab_fwd_forward: hint = ApplicationLoader.applicationContext.getString(R.string.Forward); break;
                     case R.drawable.photo_crop:        hint = ApplicationLoader.applicationContext.getString(R.string.CropImage); break;
                     case R.drawable.photo_tools:       hint = ApplicationLoader.applicationContext.getString(R.string.EditImage); break;
+                    case R.drawable.ic_ab_search:      hint = ApplicationLoader.applicationContext.getString(R.string.Search); break;
+                    case R.drawable.lock_close:        hint = ApplicationLoader.applicationContext.getString(R.string.Passcode); break;
                 }
                 if( hint != null ) {
-                    AndroidUtilities.showHint(ApplicationLoader.applicationContext, hint);
+                    if( s_menuItemHint != null ) {
+                        s_menuItemHint.cancel();
+                        s_menuItemHint = null;
+                    }
+                    s_menuItemHint = AndroidUtilities.showHint(ApplicationLoader.applicationContext, hint);
                     return true;
                 }
                 else {
@@ -167,10 +153,7 @@ public class ActionBarMenu extends LinearLayout {
                 if (item.hasSubMenu()) {
                     item.toggleSubMenu();
                     break;
-                } /*else if (item.overrideMenuClick) {
-                    onItemClick((Integer) item.getTag());
-                    break;
-                }*/
+                }
             }
         }
     }

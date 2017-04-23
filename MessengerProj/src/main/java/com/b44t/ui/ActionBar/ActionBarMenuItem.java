@@ -102,7 +102,6 @@ public class ActionBarMenuItem extends FrameLayout {
     private int subMenuOpenSide = 0;
     private ActionBarMenuItemDelegate delegate;
     private boolean allowCloseAnimation = true;
-    //protected boolean overrideMenuClick;
     private boolean processedPopupClick;
 
     public ActionBarMenuItem(Context context, ActionBarMenu menu, int backgroundColor) {
@@ -393,13 +392,6 @@ public class ActionBarMenuItem extends FrameLayout {
     public EditText getSearchField() {
         return searchField;
     }
-
-    /*
-    public ActionBarMenuItem setOverrideMenuClick(boolean value) {
-        overrideMenuClick = value;
-        return this;
-    }
-    */
 
     public ActionBarMenuItem setIsSearchField(boolean value, boolean applyHack) {
         if (parentMenu == null) {
