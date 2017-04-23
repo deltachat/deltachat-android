@@ -163,7 +163,7 @@ public class IntroActivity extends Activity {
                 public void onClick(View view) {
                     new AlertDialog.Builder(IntroActivity.this)
                         .setTitle(ApplicationLoader.applicationContext.getString(R.string.AppName) + " v" + getVersion())
-                        .setMessage(MrMailbox.getInfo() + "\n\n" + getAndroidInfo())
+                        .setMessage("© 2017 Delta Chat contributors" + "\n\n" + MrMailbox.getInfo() + "\n\n" + getAndroidInfo())
                         .setPositiveButton(ApplicationLoader.applicationContext.getString(R.string.OK), new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
