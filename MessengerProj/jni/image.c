@@ -26,8 +26,8 @@
 #include <setjmp.h>
 #include <libjpeg/jpeglib.h>
 #include <android/bitmap.h>
-#include <libwebp/webp/decode.h>
-#include <libwebp/webp/encode.h>
+/*#include <libwebp/webp/decode.h>
+#include <libwebp/webp/encode.h>*/
 #include "mrjnimain.h"
 #include "image.h"
 
@@ -532,7 +532,7 @@ JNIEXPORT void Java_com_b44t_messenger_Utilities_loadBitmap(JNIEnv *env, jclass 
     }
 }
 
-JNIEXPORT jboolean Java_com_b44t_messenger_Utilities_loadWebpImage(JNIEnv *env, jclass class, jobject outputBitmap, jobject buffer, jint len, jobject options, jboolean unpin) {
+/*JNIEXPORT jboolean Java_com_b44t_messenger_Utilities_loadWebpImage(JNIEnv *env, jclass class, jobject outputBitmap, jobject buffer, jint len, jobject options, jboolean unpin) {
     if (!buffer) {
         (*env)->ThrowNew(env, jclass_NullPointerException, "Input buffer can not be null");
         return 0;
@@ -582,4 +582,4 @@ JNIEXPORT jboolean Java_com_b44t_messenger_Utilities_loadWebpImage(JNIEnv *env, 
     }
     
     return 1;
-}
+}*/

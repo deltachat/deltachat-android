@@ -291,7 +291,7 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
         }
 
         final boolean isEncrypted = false;//(int) dialog_id == 0;
-        final boolean allowSticker = !isEncrypted;
+        //final boolean allowSticker = !isEncrypted;
 
         String name = f.getName();
         String ext = "";
@@ -336,9 +336,9 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
                 document.attributes.add(attributeAudio);
             }
             if (ext.length() != 0) {
-                if (ext.toLowerCase().equals("webp")) {
+                /*if (ext.toLowerCase().equals("webp")) {
                     document.mime_type = "image/webp";
-                } else {
+                } else*/ {
                     String mimeType = myMime.getMimeTypeFromExtension(ext.toLowerCase());
                     if (mimeType != null) {
                         document.mime_type = mimeType;
@@ -361,7 +361,7 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
 
                 }
             }
-            if (document.mime_type.equals("image/webp") && allowSticker) {
+            /*if (document.mime_type.equals("image/webp") && allowSticker) {
                 BitmapFactory.Options bmOptions = new BitmapFactory.Options();
                 try {
                     bmOptions.inJustDecodeBounds = true;
@@ -382,7 +382,7 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
                     attributeImageSize.h = bmOptions.outHeight;
                     document.attributes.add(attributeImageSize);
                 }
-            }
+            }*/
             if (document.thumb == null) {
                 document.thumb = new TLRPC.TL_photoSizeEmpty();
                 document.thumb.type = "s";
@@ -545,12 +545,12 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
                     }
 
                     boolean isDocument = false;
-                    if (tempPath != null && (tempPath.endsWith(".gif") || tempPath.endsWith(".webp"))) {
-                        if (tempPath.endsWith(".gif")) {
+                    if (tempPath != null && (tempPath.endsWith(".gif") /*|| tempPath.endsWith(".webp")*/)) {
+                        //if (tempPath.endsWith(".gif")) {
                             extension = "gif";
-                        } else {
-                            extension = "webp";
-                        }
+                        //} else {
+                        //    extension = "webp";
+                        //}
                         isDocument = true;
                     } else if (tempPath == null && uri != null) {
                         // if conversion from uri to path fails above, we have a look at the content of the file
@@ -559,12 +559,12 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
                             originalPath = uri.toString();
                             tempPath = MediaController.copyFileToCache(uri, "gif");
                             extension = "gif";
-                        } else if (MediaController.isWebp(uri)) {
+                        } /*else if (MediaController.isWebp(uri)) {
                             isDocument = true;
                             originalPath = uri.toString();
                             tempPath = MediaController.copyFileToCache(uri, "webp");
                             extension = "webp";
-                        }
+                        }*/
                     }
 
                     if (isDocument) {

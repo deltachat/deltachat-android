@@ -67,8 +67,8 @@ public class ImageLoader {
     private HashMap<String, ThumbGenerateTask> thumbGenerateTasks = new HashMap<>();
     private static byte[] bytes;
     private static byte[] bytesThumb;
-    private static byte[] header = new byte[12];
-    private static byte[] headerThumb = new byte[12];
+    //private static byte[] header = new byte[12];
+    //private static byte[] headerThumb = new byte[12];
 
     private String ignoreRemoval = null;
 
@@ -216,7 +216,7 @@ public class ImageLoader {
                 Bitmap image = null;
                 File cacheFileFinal = cacheImage.finalFilePath;
                 boolean canDeleteFile = true;
-                boolean useNativeWebpLoaded = false;
+                /*boolean useNativeWebpLoaded = false;
 
                 if (Build.VERSION.SDK_INT < 19) {
                     RandomAccessFile randomAccessFile = null;
@@ -246,7 +246,7 @@ public class ImageLoader {
                             }
                         }
                     }
-                }
+                }*/
 
                 if (cacheImage.thumb) {
                     int blurType = 0;
@@ -275,7 +275,7 @@ public class ImageLoader {
                             opts.inPurgeable = true;
                         }
 
-                        if (useNativeWebpLoaded) {
+                        /*if (useNativeWebpLoaded) {
                             RandomAccessFile file = new RandomAccessFile(cacheFileFinal, "r");
                             ByteBuffer buffer = file.getChannel().map(FileChannel.MapMode.READ_ONLY, 0, cacheFileFinal.length());
 
@@ -286,7 +286,7 @@ public class ImageLoader {
 
                             Utilities.loadWebpImage(image, buffer, buffer.limit(), null, !opts.inPurgeable);
                             file.close();
-                        } else {
+                        } else*/ {
                             if (opts.inPurgeable) {
                                 RandomAccessFile f = new RandomAccessFile(cacheFileFinal, "r");
                                 int len = (int) f.length();
@@ -429,7 +429,7 @@ public class ImageLoader {
                             }
                         }
                         if (image == null) {
-                            if (useNativeWebpLoaded) {
+                            /*if (useNativeWebpLoaded) {
                                 RandomAccessFile file = new RandomAccessFile(cacheFileFinal, "r");
                                 ByteBuffer buffer = file.getChannel().map(FileChannel.MapMode.READ_ONLY, 0, cacheFileFinal.length());
 
@@ -440,7 +440,7 @@ public class ImageLoader {
 
                                 Utilities.loadWebpImage(image, buffer, buffer.limit(), null, !opts.inPurgeable);
                                 file.close();
-                            } else {
+                            } else*/ {
                                 if (opts.inPurgeable) {
                                     RandomAccessFile f = new RandomAccessFile(cacheFileFinal, "r");
                                     int len = (int) f.length();

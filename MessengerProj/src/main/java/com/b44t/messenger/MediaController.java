@@ -1897,7 +1897,7 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
     }
 
 
-    public static boolean isWebp(Uri uri) {
+    /*public static boolean isWebp(Uri uri) {
         InputStream inputStream = null;
         try {
             inputStream = ApplicationLoader.applicationContext.getContentResolver().openInputStream(uri);
@@ -1922,7 +1922,7 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
             }
         }
         return false;
-    }
+    }*/
 
     public static boolean isGif(Uri uri) {
         InputStream inputStream = null;

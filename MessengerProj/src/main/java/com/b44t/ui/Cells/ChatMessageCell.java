@@ -1383,7 +1383,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                             }
                         }
                     }
-                } else if (messageObject.type == MessageObject.MO_TYPE13_STICKER) { //webp
+                } else if (messageObject.type == MessageObject.MO_TYPE13_STICKER) {
                     drawBackground = false;
                     for (int a = 0; a < messageObject.messageOwner.media.document.attributes.size(); a++) {
                         TLRPC.DocumentAttribute attribute = messageObject.messageOwner.media.document.attributes.get(a);

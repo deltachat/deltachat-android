@@ -65,7 +65,7 @@ public class Utilities {
     public native static void unpinBitmap(Bitmap bitmap);
     public native static void blurBitmap(Object bitmap, int radius, int unpin, int width, int height, int stride);
     public native static void calcCDT(ByteBuffer hsvBuffer, int width, int height, ByteBuffer buffer);
-    public native static boolean loadWebpImage(Bitmap bitmap, ByteBuffer buffer, int len, BitmapFactory.Options options, boolean unpin);
+    //public native static boolean loadWebpImage(Bitmap bitmap, ByteBuffer buffer, int len, BitmapFactory.Options options, boolean unpin);
     public native static int convertVideoFrame(ByteBuffer src, ByteBuffer dest, int destFormat, int width, int height, int padding, int swap);
     public native static String readlink(String path);
 
