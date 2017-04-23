@@ -552,6 +552,11 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
                         //    extension = "webp";
                         //}
                         isDocument = true;
+                    }
+                    else if( tempPath!=null && tempPath.endsWith(".png")) {
+                        // Do not compress PNG files to JPG. If still some PNG are compressed, we should look for the file content using mr_get_filemeta() (as done for GIF below)
+                        extension = "png";
+                        isDocument = true;
                     } else if (tempPath == null && uri != null) {
                         // if conversion from uri to path fails above, we have a look at the content of the file
                         if (MediaController.isGif(uri)) {
