@@ -267,7 +267,7 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
     public int roamingDownloadMask = 0;
 
     private boolean autoplayGifs = true;
-    private boolean raiseToSpeak = true;
+    private boolean raiseToSpeak = false;
     private boolean directShare = true;
 
     private Runnable refreshGalleryRunnable;
@@ -528,7 +528,7 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
         wifiDownloadMask = preferences.getInt("wifiDownloadMask", AUTODOWNLOAD_MASK_PHOTO | AUTODOWNLOAD_MASK_AUDIO | AUTODOWNLOAD_MASK_MUSIC | AUTODOWNLOAD_MASK_GIF);
         roamingDownloadMask = preferences.getInt("roamingDownloadMask", 0);
         autoplayGifs = preferences.getBoolean("autoplay_gif", true);
-        raiseToSpeak = preferences.getBoolean("raise_to_speak", true);
+        raiseToSpeak = preferences.getBoolean("raise_to_speak", false);
         directShare = preferences.getBoolean("direct_share", true);
 
         AndroidUtilities.runOnUIThread(new Runnable() {
