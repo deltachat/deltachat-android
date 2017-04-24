@@ -24,7 +24,7 @@
 #include <jni.h>
 #include <stdio.h>
 #include <setjmp.h>
-#include <libjpeg/jpeglib.h>
+/*#include <libjpeg/jpeglib.h>*/
 #include <android/bitmap.h>
 /*#include <libwebp/webp/decode.h>
 #include <libwebp/webp/encode.h>*/
@@ -293,7 +293,7 @@ static void fastBlur(int imageWidth, int imageHeight, int imageStride, void *pix
     free(rgb);
 }
 
-typedef struct my_error_mgr {
+/*typedef struct my_error_mgr {
     struct jpeg_error_mgr pub;
     jmp_buf setjmp_buffer;
 } *my_error_ptr;
@@ -303,7 +303,7 @@ METHODDEF(void) my_jpeglib_error_exit(j_common_ptr cinfo) {
     my_error_ptr myerr = (my_error_ptr) cinfo->err;
     (*cinfo->err->output_message) (cinfo);
     longjmp(myerr->setjmp_buffer, 1);
-}
+}*/
 
 JNIEXPORT void Java_com_b44t_messenger_Utilities_blurBitmap(JNIEnv *env, jclass class, jobject bitmap, int radius, int unpin, int width, int height, int stride) {
     if (!bitmap) {
@@ -447,7 +447,7 @@ JNIEXPORT void Java_com_b44t_messenger_Utilities_unpinBitmap(JNIEnv *env, jclass
     AndroidBitmap_unlockPixels(env, bitmap);
 }
 
-JNIEXPORT void Java_com_b44t_messenger_Utilities_loadBitmap(JNIEnv *env, jclass class, jstring path, jobject bitmap, int scale, int width, int height, int stride) {
+/*JNIEXPORT void Java_com_b44t_messenger_Utilities_loadBitmap(JNIEnv *env, jclass class, jstring path, jobject bitmap, int scale, int width, int height, int stride) {
     
     AndroidBitmapInfo info;
     int i;
@@ -530,7 +530,7 @@ JNIEXPORT void Java_com_b44t_messenger_Utilities_loadBitmap(JNIEnv *env, jclass 
     } else {
         throwException(env, "AndroidBitmap_getInfo() failed ! error=%d", i);
     }
-}
+}*/
 
 /*JNIEXPORT jboolean Java_com_b44t_messenger_Utilities_loadWebpImage(JNIEnv *env, jclass class, jobject outputBitmap, jobject buffer, jint len, jobject options, jboolean unpin) {
     if (!buffer) {

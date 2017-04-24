@@ -84,7 +84,7 @@ public class Emoji {
         placeholderPaint.setColor(0x00000000);
     }
 
-    private static void loadEmoji(final int page, final int page2) {
+    /*private static void loadEmoji(final int page, final int page2) {
         try {
             float scale;
             int imageResize = 1;
@@ -160,7 +160,7 @@ public class Emoji {
         } catch (Throwable x) {
             //Log.i("DeltaChat", "Error loading emoji", x);
         }
-    }
+    }*/
 
     /*
     public static void invalidateAll(View view) {
@@ -206,7 +206,7 @@ public class Emoji {
         return emoji;
     }
 
-    public static EmojiDrawable getEmojiDrawable(CharSequence code) {
+    /*public static EmojiDrawable getEmojiDrawable(CharSequence code) {
         DrawableInfo info = rects.get(code);
         if (info == null) {
             //Log.i("DeltaChat", "No drawable for emoji " + code);
@@ -215,7 +215,7 @@ public class Emoji {
         EmojiDrawable ed = new EmojiDrawable(info);
         ed.setBounds(0, 0, drawImgSize, drawImgSize);
         return ed;
-    }
+    }*/
 
     /*
     public static Drawable getEmojiBigDrawable(String code) {
@@ -229,7 +229,7 @@ public class Emoji {
     }
     */
 
-    public static class EmojiDrawable extends Drawable {
+    /*public static class EmojiDrawable extends Drawable {
         private DrawableInfo info;
         private boolean fullSize = false;
         private static Paint paint = new Paint(Paint.FILTER_BITMAP_FLAG);
@@ -239,11 +239,9 @@ public class Emoji {
             info = i;
         }
 
-        /*
         public DrawableInfo getDrawableInfo() {
             return info;
         }
-        */
 
         public Rect getDrawRect() {
             Rect original = getBounds();
@@ -299,7 +297,7 @@ public class Emoji {
         public void setColorFilter(ColorFilter cf) {
 
         }
-    }
+    }*/
 
     private static class DrawableInfo {
         public Rect rect;

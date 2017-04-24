@@ -60,7 +60,7 @@ public class Utilities {
         }
     }
 
-    public native static void loadBitmap(String path, Bitmap bitmap, int scale, int width, int height, int stride);
+    //public native static void loadBitmap(String path, Bitmap bitmap, int scale, int width, int height, int stride);
     public native static int pinBitmap(Bitmap bitmap);
     public native static void unpinBitmap(Bitmap bitmap);
     public native static void blurBitmap(Object bitmap, int radius, int unpin, int width, int height, int stride);
