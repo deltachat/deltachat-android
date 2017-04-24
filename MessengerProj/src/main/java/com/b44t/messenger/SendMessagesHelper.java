@@ -545,15 +545,12 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
                     }
 
                     boolean isDocument = false;
-                    if (tempPath != null && (tempPath.endsWith(".gif") /*|| tempPath.endsWith(".webp")*/)) {
-                        //if (tempPath.endsWith(".gif")) {
-                            extension = "gif";
-                        //} else {
-                        //    extension = "webp";
-                        //}
+                    if (tempPath != null && tempPath.toLowerCase().endsWith(".gif")) {
+                        // Do not compress GIF files to JPG.
+                        extension = "gif";
                         isDocument = true;
                     }
-                    else if( tempPath!=null && tempPath.endsWith(".png")) {
+                    else if( tempPath!=null && tempPath.toLowerCase().endsWith(".png")) {
                         // Do not compress PNG files to JPG. If still some PNG are compressed, we should look for the file content using mr_get_filemeta() (as done for GIF below)
                         extension = "png";
                         isDocument = true;
@@ -564,12 +561,7 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
                             originalPath = uri.toString();
                             tempPath = MediaController.copyFileToCache(uri, "gif");
                             extension = "gif";
-                        } /*else if (MediaController.isWebp(uri)) {
-                            isDocument = true;
-                            originalPath = uri.toString();
-                            tempPath = MediaController.copyFileToCache(uri, "webp");
-                            extension = "webp";
-                        }*/
+                        }
                     }
 
                     if (isDocument) {
