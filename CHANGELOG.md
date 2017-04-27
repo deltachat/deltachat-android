@@ -1,11 +1,14 @@
 # Delta Chat Changelog
 
-## UNRELEASED
+## v0.1.33
+2017-04-27
 
 * Better support for right-to-left (RTL) languages, taking advantage of
   Android 4.2 (Jelly Bean MR1, API level 17).
 * Send PNG files without resizing and converting to JPEG
 * If JPEG files are send without compression, they still appear as image, not as attached files
+* Raise-to-speak defaults to false
+* Unify long click behaviour
 
 ## v0.1.32
 2017-04-22
