@@ -101,10 +101,11 @@ public class ContactsController {
         if (Build.VERSION.SDK_INT >= 23) {
             return ApplicationLoader.applicationContext.checkSelfPermission(android.Manifest.permission.READ_CONTACTS) == PackageManager.PERMISSION_GRANTED;
         }
+        /* -- no need for a fallback chack as the caller uses a try/catch anyway - and if this fails, there's nothing we can do
         Cursor cursor = null;
         try {
             ContentResolver cr = ApplicationLoader.applicationContext.getContentResolver();
-            cursor = cr.query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI, projectionNames, null, null, null);
+            cursor = cr.query(ContactsContract.CommonDataKinds.Email.CONTENT_URI, projectionNames, null, null, null);
             if (cursor == null || cursor.getCount() == 0) {
                 return false;
             }
@@ -119,6 +120,7 @@ public class ContactsController {
                 ;
             }
         }
+        */
         return true;
     }
 
