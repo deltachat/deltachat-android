@@ -439,8 +439,8 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 }
                 else if ( id == ID_DELETE_CHAT)
                 {
-                    // as the history may be a mix of messenger-messages and e-mails, it is not safe to delete it.
-                    // the user can delete explicit messages or use his e-mail programm to delete masses.
+                    // as the history may be a mix of messenger-messages and emails, it is not safe to delete it.
+                    // the user can delete explicit messages or use his email programm to delete masses.
                     if (getParentActivity() == null) {
                         return;
                     }

@@ -145,7 +145,7 @@ public class MrChat {
 
     public String getNameNAddr()
     {
-        // returns name of group chats or name+e-mail-address for normal chats
+        // returns name of group chats or name+email-address for normal chats
         String name = "ErrGrpNameNAddr";
         if( getType()==MR_CHAT_GROUP ) {
             name = getName();

@@ -196,7 +196,7 @@ public class ContactsController {
         final String email = tempEmail;
         final String fallbackName = tempName;
 
-        // bind e-mail+name address to view object to detect overwrites and discard loading old images (may happen on fast scrolling)
+        // bind email+name address to view object to detect overwrites and discard loading old images (may happen on fast scrolling)
         // moreover, check if the avatar is in cache
         AvtCacheEntry cacheEntry;
         synchronized (s_sync) {
