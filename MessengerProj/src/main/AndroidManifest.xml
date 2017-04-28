@@ -50,8 +50,7 @@
         android:label="@string/AppName"
         android:largeHeap="true"
         android:theme="@style/Theme.MessengerProj.Start"
-        android:supportsRtl="true"
-        android:manageSpaceActivity="com.b44t.ui.ManageSpaceActivity">
+        android:supportsRtl="true">
 
         <activity
             android:name="com.b44t.ui.LaunchActivity"
@@ -106,12 +105,13 @@
                 <category android:name="android.intent.category.BROWSABLE"/>
             </intent-filter>
         </activity>
+        <!-- if used, add 'android:manageSpaceActivity="com.b44t.ui.ManageSpaceActivity"' to application-tag
         <activity
             android:name="com.b44t.ui.ManageSpaceActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
             android:launchMode="singleTask"
             android:windowSoftInputMode="adjustPan">
-        </activity>
+        </activity> -->
         <activity
             android:name="com.b44t.ui.IntroActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize">
