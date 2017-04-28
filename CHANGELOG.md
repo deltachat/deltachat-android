@@ -1,7 +1,7 @@
 # Delta Chat Changelog
 
 ## v0.1.33
-2017-04-28
+2017-04-29
 
 * Better support for right-to-left (RTL) languages, taking advantage of
   Android 4.2 (Jelly Bean MR1, API level 17).
@@ -11,6 +11,7 @@
 * Unify long click behaviour
 * Support Android's system function "Delete data"
 * Replies to messages pop up automatically even if send from other email addresses (typical scenario for alias addresses)
+* Fix group-replies from normal email-clients. 
 
 ## v0.1.32
 2017-04-22
