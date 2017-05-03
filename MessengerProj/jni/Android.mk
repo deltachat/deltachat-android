@@ -1181,10 +1181,6 @@ LOCAL_SRC_FILES := \
 	./messenger-backend/libs/libetpan/src/low-level/nntp/newsnntp.c \
 	./messenger-backend/libs/libetpan/src/low-level/nntp/newsnntp_socket.c \
 	./messenger-backend/libs/libetpan/src/low-level/nntp/newsnntp_ssl.c \
-	./messenger-backend/libs/libetpan/src/low-level/pop3/mailpop3.c \
-	./messenger-backend/libs/libetpan/src/low-level/pop3/mailpop3_helper.c \
-	./messenger-backend/libs/libetpan/src/low-level/pop3/mailpop3_socket.c \
-	./messenger-backend/libs/libetpan/src/low-level/pop3/mailpop3_ssl.c \
 	./messenger-backend/libs/libetpan/src/low-level/smtp/mailsmtp.c \
 	./messenger-backend/libs/libetpan/src/low-level/smtp/mailsmtp_helper.c \
 	./messenger-backend/libs/libetpan/src/low-level/smtp/mailsmtp_oauth2.c \
@@ -1210,7 +1206,6 @@ LOCAL_C_INCLUDES = \
 	$(LOCAL_PATH)/messenger-backend/libs/libetpan/src/low-level/imf \
 	$(LOCAL_PATH)/messenger-backend/libs/libetpan/src/low-level/mime \
 	$(LOCAL_PATH)/messenger-backend/libs/libetpan/src/low-level/nntp \
-	$(LOCAL_PATH)/messenger-backend/libs/libetpan/src/low-level/pop3 \
 	$(LOCAL_PATH)/messenger-backend/libs/libetpan/src/low-level/smtp \
 	$(LOCAL_PATH)/messenger-backend/libs/libetpan/src/main \
 	$(LOCAL_PATH)/messenger-backend/libs/libetpan/src/driver/implementation/data-message \
