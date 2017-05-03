@@ -1300,7 +1300,7 @@ LOCAL_CFLAGS 	:= -w -std=c11 -Os -DNULL=0 -DSOCKLEN_T=socklen_t -DLOCALE_NOT_USE
 LOCAL_CFLAGS 	+= -DANDROID_NDK -DDISABLE_IMPORTGL -fno-strict-aliasing -fprefetch-loop-arrays -DAVOID_TABLES -DANDROID_TILE_BASED_DECODE -DANDROID_ARMV6_IDCT -DHAVE_STRCHRNUL=0
 
 LOCAL_SRC_FILES     := \
-./sqlite/sqlite3.c
+./messenger-backend/libs/sqlite/sqlite3.c
 
 include $(BUILD_STATIC_LIBRARY)
 
@@ -1496,7 +1496,7 @@ $(LOCAL_PATH)/breakpad/common/android/include \
 $(LOCAL_PATH)/breakpad \
 $(LOCAL_PATH)/ffmpeg \
 $(LOCAL_PATH)/messenger-backend/libs/libetpan/include \
-$(LOCAL_PATH)/sqlite
+$(LOCAL_PATH)/messenger-backend/libs/sqlite
 
 #LOCAL_SRC_FILES     += \
 #./libjpeg/jcapimin.c \
