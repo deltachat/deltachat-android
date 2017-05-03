@@ -1,5 +1,11 @@
 # Delta Chat Changelog
 
+## v0.1.34
+2017-05-03
+
+* Link to new homepage https://delta.chat
+* Localizable Help-URLs
+
 ## v0.1.33
 2017-04-29
 

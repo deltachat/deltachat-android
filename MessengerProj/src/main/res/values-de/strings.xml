@@ -374,4 +374,5 @@
     <string name="PermNotificationText">Warte auf Nachrichten …</string>
     <string name="SettingsFor">Einstellungen für %1$s</string>
     <string name="AutoplayGifs">GIFs automatisch abspielen</string>
+    <string name="HelpUrl">https://delta.chat/de/help</string>
 </resources>

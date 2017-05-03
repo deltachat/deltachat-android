@@ -318,7 +318,8 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                     drawerLayoutContainer.closeDrawer(false);
                 }
                 else if (position == DrawerLayoutAdapter.ROW_FAQ) {
-                    Browser.openUrl(LaunchActivity.this, "https://getdelta.org/help");
+                    String helpUrl = ApplicationLoader.applicationContext.getString(R.string.HelpUrl);
+                    Browser.openUrl(LaunchActivity.this, helpUrl);
                     drawerLayoutContainer.closeDrawer(false);
                 }
             }

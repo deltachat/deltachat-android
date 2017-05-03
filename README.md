@@ -3,7 +3,7 @@ Delta Chat Android Client
 
 This is the android client for Delta Chat.  For the core library and other common
 information, please refer to https://github.com/r10s/deltachat-core and to
-https://getdelta.org .
+https://delta.chat .
 
 
 Build
@@ -13,7 +13,7 @@ Beside a build in Android Studio, you have to call `ndk-build` in the
 `MessengerProj` directory.  Moreover, place a copy of your keyfile eg. to
 `MessengerProj/config/debug.keystore`.
 
-![Logo](https://getdelta.org/start-img4.png)
+![Logo](https://delta.chat/public/images/features/start-img4.png)
 
 The core library (https://github.com/r10s/deltachat-core), is checked out 
 automatically; there is not need to build the core library itself, the android 

@@ -386,4 +386,5 @@
     <string name="ForwardToTitle">Przekaż do…</string>
     <string name="SelectContact">Wybierz kontakt</string>
     <string name="DoneHint">Gotowe.</string>
+    <string name="HelpUrl">https://jaworski-pawel.github.io/Delta/#help</string>
 </resources>
