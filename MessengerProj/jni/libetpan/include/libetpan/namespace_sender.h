@@ -1,1 +1,0 @@
-../../src/low-level/imap/namespace_sender.h
