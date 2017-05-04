@@ -42,6 +42,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.support.v4.content.FileProvider;
 import android.text.TextUtils;
 import android.text.style.ClickableSpan;
 import android.text.style.URLSpan;
@@ -59,6 +60,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.b44t.messenger.AndroidUtilities;
+import com.b44t.messenger.BuildConfig;
 import com.b44t.messenger.LocaleController;
 import com.b44t.messenger.MediaController;
 import com.b44t.messenger.MrChat;
@@ -1186,12 +1188,21 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                 File image = AndroidUtilities.generatePicturePath();
                 if (image != null) {
-                    takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(image));
+                    if (Build.VERSION.SDK_INT >= 24) {
+                        // a file:-url (Uri.fromFile()) is no longer allowed in Nougat, see https://inthecheesefactory.com/blog/how-to-share-access-to-file-with-fileprovider-on-android-nougat/en
+                        takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, FileProvider.getUriForFile(getParentActivity(), BuildConfig.APPLICATION_ID + ".provider", image));
+                        takePictureIntent.addFlags(Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
+                        takePictureIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                    }
+                    else {
+                        // for eg. Kitkat everything but file:-urls crash
+                        takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(image));
+                    }
                     currentPicturePath = image.getAbsolutePath();
                 }
                 startActivityForResult(takePictureIntent, RC0_CHAT_IMAGE_CAPTURE);
             } catch (Exception e) {
-
+                e.printStackTrace();
             }
         } else if (which == ChatAttachAlert.ATTACH_BUTTON_IDX_GALLERY ) {
             if (Build.VERSION.SDK_INT >= 23 && getParentActivity().checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
@@ -1243,7 +1254,13 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 Intent takeVideoIntent = new Intent(MediaStore.ACTION_VIDEO_CAPTURE);
                 File video = AndroidUtilities.generateVideoPath();
                 if (video != null) {
-                    if (Build.VERSION.SDK_INT >= 18) {
+                    if (Build.VERSION.SDK_INT >= 24) {
+                        // a file:-url is no longer allowed in Nougat, see https://inthecheesefactory.com/blog/how-to-share-access-to-file-with-fileprovider-on-android-nougat/en
+                        takeVideoIntent.putExtra(MediaStore.EXTRA_OUTPUT, FileProvider.getUriForFile(getParentActivity(), BuildConfig.APPLICATION_ID + ".provider", video));
+                        takeVideoIntent.addFlags(Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
+                        takeVideoIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                    }
+                    else if (Build.VERSION.SDK_INT >= 18) {
                         takeVideoIntent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(video));
                     }
                     takeVideoIntent.putExtra(MediaStore.EXTRA_SIZE_LIMIT, (long) (1024 * 1024 * 1536));
@@ -1251,7 +1268,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 }
                 startActivityForResult(takeVideoIntent, RC2_CHAT_VIDEO_CAPTURE);
             } catch (Exception e) {
-
+                e.printStackTrace();
             }
         } else if (which == ChatAttachAlert.ATTACH_BUTTON_IDX_FILE ) {
             if (Build.VERSION.SDK_INT >= 23 && getParentActivity().checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {

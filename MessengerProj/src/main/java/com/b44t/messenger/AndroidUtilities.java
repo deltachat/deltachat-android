@@ -47,6 +47,7 @@ import android.os.Build;
 import android.os.Environment;
 import android.provider.DocumentsContract;
 import android.provider.MediaStore;
+import android.support.v4.content.FileProvider;
 import android.text.SpannableStringBuilder;
 import android.text.Spanned;
 import android.text.style.ForegroundColorSpan;
@@ -898,7 +899,12 @@ public class AndroidUtilities {
             if (path.startsWith(MrMailbox.getBlobdir())) {
                 uri = Uri.parse("content://" + BuildConfig.APPLICATION_ID + ".attachments/" + file.getName());
             } else {
-                uri = Uri.fromFile(file);
+                if (Build.VERSION.SDK_INT >= 24) {
+                    uri = FileProvider.getUriForFile(activity, BuildConfig.APPLICATION_ID + ".provider", file);
+                }
+                else {
+                    uri = Uri.fromFile(file);
+                }
             }
 
             if( cmd == Intent.ACTION_VIEW ) {

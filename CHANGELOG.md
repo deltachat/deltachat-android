@@ -1,5 +1,9 @@
 # Delta Chat Changelog
 
+## UNRELEASED
+
+* Support camera on Android Nougat
+
 ## v0.1.34
 2017-05-03
 
