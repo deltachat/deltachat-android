@@ -58,7 +58,7 @@ public class ActionBar extends FrameLayout {
 
     public static final int TITLE_WITHOUT_BACK_X  = 16; /*original value: 18*/
     public static final int TITLE_AFTER_BACK_X    = 58; /*original value: 72*/
-    public static final int AVATAR_AFTER_BACK_X   = 48; /*original value: 56 - this plays better with the animation, however, the little "snap" effect may also be wanted :-) to fix this, we have to go into ProfileActivity animation details (we should also make the avatar a little larger there) */
+    public static final int AVATAR_AFTER_BACK_X   = 48; /*original value: 56, you have also to adapt the animation, if you change this value (see ProfileActivity.ANIM_OFF) */
 
     private ImageView backButtonImageView;
     private SimpleTextView titleTextView;
