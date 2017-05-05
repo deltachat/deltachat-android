@@ -458,9 +458,9 @@ public class ActionBar extends FrameLayout {
         int textLeft;
         if (backButtonImageView != null && backButtonImageView.getVisibility() != GONE) {
             backButtonImageView.layout(0, additionalTop, backButtonImageView.getMeasuredWidth(), additionalTop + backButtonImageView.getMeasuredHeight());
-            textLeft = AndroidUtilities.dp(AndroidUtilities.isTablet() ? 80 : 72);
+            textLeft = AndroidUtilities.dp(AndroidUtilities.isTablet() ? 80 : 58);
         } else {
-            textLeft = AndroidUtilities.dp(AndroidUtilities.isTablet() ? 26 : 18);
+            textLeft = AndroidUtilities.dp(AndroidUtilities.isTablet() ? 26 : 16);
         }
 
         if (menu != null && menu.getVisibility() != GONE) {

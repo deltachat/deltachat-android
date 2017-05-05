@@ -546,7 +546,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         });
 
         avatarContainer = new ChatAvatarContainer(context, this);
-        actionBar.addView(avatarContainer, 0, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.MATCH_PARENT, Gravity.TOP | Gravity.START, 56, 0, 40, 0));
+        actionBar.addView(avatarContainer, 0, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.MATCH_PARENT, Gravity.TOP | Gravity.START, 48/*original value: 56 - this plays better with the animation, however, the little "snap" effect may also be wanted :-) to fix this, we have to go into ProfileActivity animation details (we should also make the avatar a little larger there) */, 0, 40, 0));
 
         ActionBarMenu menu = actionBar.createMenu();
 
