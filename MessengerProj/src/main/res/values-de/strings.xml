@@ -325,8 +325,8 @@
     <string name="AboutThisProgram">Über Delta Chat</string>
     <string name="NotSet">Nicht gesetzt</string>
     <string name="NewChat">Neuer Chat</string>
-    <string name="Deaddrop">Briefkasten</string>
-    <string name="DeaddropInChatlist">Briefkasten in Chatliste</string>
+    <string name="Deaddrop">Kontaktanfragen</string>
+    <string name="DeaddropInChatlist">Kontaktanfragen in Chatliste</string>
     <string name="MuteAlways">Dauerhaft stumm</string>
     <string name="AskStartChatWith">Chat mit <![CDATA[<b>]]>%1$s<![CDATA[</b>]]> starten?</string>
     <string name="DeaddropHint">Ein Klick auf die Antwort-Pfeile startet einen Chat.</string>

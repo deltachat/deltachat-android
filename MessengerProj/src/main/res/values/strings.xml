@@ -323,8 +323,8 @@
     <string name="AboutThisProgram">About Delta Chat</string>
     <string name="NotSet">Not set</string>
     <string name="NewChat">New chat</string>
-    <string name="Deaddrop">Mailbox</string>
-    <string name="DeaddropInChatlist">Show mailbox in chatlist</string>
+    <string name="Deaddrop">Contact requests</string>
+    <string name="DeaddropInChatlist">Show contact requests in chatlist</string>
     <string name="MuteAlways">Always muted</string>
     <string name="AskStartChatWith">Start a chat with <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>?</string>
     <string name="DeaddropHint">To start a chat, click on the reply-arrows.</string>
