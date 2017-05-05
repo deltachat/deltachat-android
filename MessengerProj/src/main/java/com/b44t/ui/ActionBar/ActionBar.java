@@ -56,6 +56,10 @@ public class ActionBar extends FrameLayout {
         }
     }
 
+    public static final int TITLE_WITHOUT_BACK_X  = 16; /*original value: 18*/
+    public static final int TITLE_AFTER_BACK_X    = 58; /*original value: 72*/
+    public static final int AVATAR_AFTER_BACK_X   = 48; /*original value: 56 - this plays better with the animation, however, the little "snap" effect may also be wanted :-) to fix this, we have to go into ProfileActivity animation details (we should also make the avatar a little larger there) */
+
     private ImageView backButtonImageView;
     private SimpleTextView titleTextView;
     private SimpleTextView subtitleTextView;
@@ -412,15 +416,15 @@ public class ActionBar extends FrameLayout {
         int textLeft;
         if (backButtonImageView != null && backButtonImageView.getVisibility() != GONE) {
             backButtonImageView.measure(MeasureSpec.makeMeasureSpec(AndroidUtilities.dp(54), MeasureSpec.EXACTLY), actionBarHeightSpec);
-            textLeft = AndroidUtilities.dp(AndroidUtilities.isTablet() ? 80 : 72);
+            textLeft = AndroidUtilities.dp(TITLE_AFTER_BACK_X);
         } else {
-            textLeft = AndroidUtilities.dp(AndroidUtilities.isTablet() ? 26 : 18);
+            textLeft = AndroidUtilities.dp(TITLE_WITHOUT_BACK_X);
         }
 
         if (menu != null && menu.getVisibility() != GONE) {
             int menuWidth;
             if (isSearchFieldVisible) {
-                menuWidth = MeasureSpec.makeMeasureSpec(width - AndroidUtilities.dp(AndroidUtilities.isTablet() ? 74 : 66), MeasureSpec.EXACTLY);
+                menuWidth = MeasureSpec.makeMeasureSpec(width - AndroidUtilities.dp(TITLE_AFTER_BACK_X), MeasureSpec.EXACTLY);
             } else {
                 menuWidth = MeasureSpec.makeMeasureSpec(width, MeasureSpec.AT_MOST);
             }
@@ -458,13 +462,13 @@ public class ActionBar extends FrameLayout {
         int textLeft;
         if (backButtonImageView != null && backButtonImageView.getVisibility() != GONE) {
             backButtonImageView.layout(0, additionalTop, backButtonImageView.getMeasuredWidth(), additionalTop + backButtonImageView.getMeasuredHeight());
-            textLeft = AndroidUtilities.dp(AndroidUtilities.isTablet() ? 80 : 58);
+            textLeft = AndroidUtilities.dp(TITLE_AFTER_BACK_X);
         } else {
-            textLeft = AndroidUtilities.dp(AndroidUtilities.isTablet() ? 26 : 16);
+            textLeft = AndroidUtilities.dp(TITLE_WITHOUT_BACK_X);
         }
 
         if (menu != null && menu.getVisibility() != GONE) {
-            int menuLeft = isSearchFieldVisible ? AndroidUtilities.dp(AndroidUtilities.isTablet() ? 74 : 66) : (right - left) - menu.getMeasuredWidth();
+            int menuLeft = isSearchFieldVisible ? AndroidUtilities.dp(TITLE_AFTER_BACK_X) : (right - left) - menu.getMeasuredWidth();
             menu.layout(menuLeft, additionalTop, menuLeft + menu.getMeasuredWidth(), additionalTop + menu.getMeasuredHeight());
         }
 
