@@ -64,13 +64,17 @@ import com.b44t.messenger.MrChat;
 import com.b44t.messenger.MrMailbox;
 import com.b44t.messenger.MrMsg;
 import com.b44t.messenger.Utilities;
+import com.b44t.messenger.browser.Browser;
 import com.b44t.messenger.support.widget.LinearLayoutManager;
 import com.b44t.messenger.support.widget.RecyclerView;
 import com.b44t.messenger.NotificationCenter;
 import com.b44t.messenger.R;
 import com.b44t.messenger.UserConfig;
+import com.b44t.ui.ActionBar.BackDrawable;
+import com.b44t.ui.ActionBar.DrawerLayoutContainer;
 import com.b44t.ui.Adapters.DialogsAdapter;
 import com.b44t.ui.Adapters.DialogsSearchAdapter;
+import com.b44t.ui.Adapters.DrawerLayoutAdapter;
 import com.b44t.ui.Cells.UserCell;
 import com.b44t.ui.Cells.DialogCell;
 import com.b44t.ui.ActionBar.ActionBar;
@@ -121,6 +125,8 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
     private long openedDialogId;
 
     private DialogsActivityDelegate delegate;
+
+    ActionBarMenuItem headerItem;
 
     private static final int ID_LOCK_APP = 1;
 
@@ -199,6 +205,10 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
         final ActionBarMenuItem item = menu.addItem(0, R.drawable.ic_ab_search).setIsSearchField(true, true).setActionBarMenuItemSearchListener(new ActionBarMenuItem.ActionBarMenuItemSearchListener() {
             @Override
             public void onSearchExpand() {
+                if( !DrawerLayoutContainer.USE_DRAWER && headerItem!=null ) {
+                    headerItem.setVisibility(View.GONE);
+                    actionBar.setBackButtonDrawable(new BackDrawable(false));
+                }
                 searching = true;
                 if (listView != null) {
                     if (!onlySelect) {
@@ -215,6 +225,10 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
 
             @Override
             public void onSearchCollapse() {
+                if( !DrawerLayoutContainer.USE_DRAWER && headerItem!=null ) {
+                    headerItem.setVisibility(View.VISIBLE);
+                    actionBar.setBackButtonDrawable(null);
+                }
                 searching = false;
                 searchWas = false;
                 if (listView != null) {
@@ -265,10 +279,23 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
             actionBar.setBackButtonImage(R.drawable.ic_ab_back);
             actionBar.setTitle(onlySelectTitle);
         } else {
-            actionBar.setBackButtonDrawable(new MenuDrawable());
+            if( DrawerLayoutContainer.USE_DRAWER ) {
+                actionBar.setBackButtonDrawable(new MenuDrawable());
+            }
             actionBar.setTitle(ApplicationLoader.applicationContext.getString(R.string.AppName));
         }
         actionBar.setAllowOverlayTitle(true);
+
+        if( !DrawerLayoutContainer.USE_DRAWER ) {
+            headerItem = menu.addItem(0, R.drawable.ic_ab_other);
+            headerItem.addSubItem(DrawerLayoutAdapter.ROW_NEW_CHAT, ApplicationLoader.applicationContext.getString(R.string.NewChat), R.drawable.menu_newchat);
+            headerItem.addSubItem(DrawerLayoutAdapter.ROW_NEW_GROUP, ApplicationLoader.applicationContext.getString(R.string.NewGroup), R.drawable.menu_empty);
+
+            headerItem.addSubItem(DrawerLayoutAdapter.ROW_SETTINGS, ApplicationLoader.applicationContext.getString(R.string.Settings), R.drawable.menu_settings);
+            headerItem.addSubItem(DrawerLayoutAdapter.ROW_INVITE, ApplicationLoader.applicationContext.getString(R.string.InviteMenuEntry), R.drawable.menu_empty);
+            headerItem.addSubItem(DrawerLayoutAdapter.ROW_DEADDROP, ApplicationLoader.applicationContext.getString(R.string.Deaddrop), R.drawable.menu_empty);
+            headerItem.addSubItem(DrawerLayoutAdapter.ROW_FAQ, ApplicationLoader.applicationContext.getString(R.string.Help), R.drawable.menu_empty);
+        }
 
         actionBar.setActionBarMenuOnItemClick(new ActionBar.ActionBarMenuOnItemClick() {
             @Override
@@ -304,6 +331,34 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
                                 });
                             }
                         }, 200);
+                    }
+                }
+                else if( !DrawerLayoutContainer.USE_DRAWER ) {
+                    if (id == DrawerLayoutAdapter.ROW_NEW_CHAT) {
+                        Bundle args = new Bundle();
+                        args.putInt("do_what", ContactsActivity.SELECT_CONTACT_FOR_NEW_CHAT);
+                        presentFragment(new ContactsActivity(args));
+                    } else if (id == DrawerLayoutAdapter.ROW_NEW_GROUP) {
+                        Bundle args = new Bundle();
+                        args.putInt("do_what", ContactsActivity.SELECT_CONTACTS_FOR_NEW_GROUP);
+                        presentFragment(new ContactsActivity(args));
+                    } else if (id == DrawerLayoutAdapter.ROW_INVITE) {
+                        try {
+                            Intent intent = new Intent(Intent.ACTION_SEND);
+                            intent.setType("text/plain");
+                            intent.putExtra(Intent.EXTRA_TEXT, MrMailbox.getInviteText());
+                            getParentActivity().startActivity(Intent.createChooser(intent, ApplicationLoader.applicationContext.getString(R.string.InviteMenuEntry)));
+                        } catch (Exception e) {
+                        }
+                    } else if (id == DrawerLayoutAdapter.ROW_DEADDROP) {
+                        Bundle args = new Bundle();
+                        args.putInt("chat_id", MrChat.MR_CHAT_ID_DEADDROP);
+                        presentFragment(new ChatActivity(args));
+                    } else if (id == DrawerLayoutAdapter.ROW_SETTINGS) {
+                        presentFragment(new SettingsActivity());
+                    } else if (id == DrawerLayoutAdapter.ROW_FAQ) {
+                        String helpUrl = ApplicationLoader.applicationContext.getString(R.string.HelpUrl);
+                        Browser.openUrl(getParentActivity(), helpUrl);
                     }
                 }
             }

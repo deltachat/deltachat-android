@@ -44,10 +44,13 @@ import android.widget.FrameLayout;
 import android.widget.ListView;
 
 import com.b44t.messenger.AndroidUtilities;
+import com.b44t.messenger.MrMailbox;
 import com.b44t.messenger.R;
 import com.b44t.messenger.AnimatorListenerAdapterProxy;
 
 public class DrawerLayoutContainer extends FrameLayout {
+
+    public static boolean USE_DRAWER;
 
     private static final int MIN_DRAWER_MARGIN = 64;
 
@@ -78,6 +81,8 @@ public class DrawerLayoutContainer extends FrameLayout {
 
     public DrawerLayoutContainer(Context context) {
         super(context);
+
+        USE_DRAWER = MrMailbox.getConfigInt("drawer", 0)!=0;
 
         minDrawerMargin = (int) (MIN_DRAWER_MARGIN * AndroidUtilities.density + 0.5f);
         setDescendantFocusability(ViewGroup.FOCUS_AFTER_DESCENDANTS);
@@ -249,6 +254,11 @@ public class DrawerLayoutContainer extends FrameLayout {
     }
 
     public void setAllowOpenDrawer(boolean value, boolean animated) {
+        if( !USE_DRAWER ) {
+            allowOpenDrawer = false;
+            return;
+        }
+
         allowOpenDrawer = value;
         if (!allowOpenDrawer && drawerPosition != 0) {
             if (!animated) {
