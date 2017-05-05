@@ -248,6 +248,8 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
         return actionBar;
     }
 
+    private static final int ANIM_OFF = 8; // a correction value to compensate changes in AVATAR_AFTER_BACK_X
+
     @Override
     public View createView(final Context context) {
         hasOwnBackground = true;
@@ -529,7 +531,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
         avatarImage.setRoundRadius(AndroidUtilities.dp(21));
         avatarImage.setPivotX(0);
         avatarImage.setPivotY(0);
-        frameLayout.addView(avatarImage, LayoutHelper.createFrame(42, 42, Gravity.TOP | Gravity.START, 64, 0, 0, 0));
+        frameLayout.addView(avatarImage, LayoutHelper.createFrame(42, 42, Gravity.TOP | Gravity.START, 64-ANIM_OFF, 0, 0, 0));
         avatarImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -561,13 +563,13 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
             nameTextView[a].setRightDrawableTopPadding(-AndroidUtilities.dp(1.3f));
             nameTextView[a].setPivotX(0);
             nameTextView[a].setPivotY(0);
-            frameLayout.addView(nameTextView[a], LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.START | Gravity.TOP, 118, 0, a == 0 ? 48 : 0, 0));
+            frameLayout.addView(nameTextView[a], LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.START | Gravity.TOP, 118-ANIM_OFF, 0, a == 0 ? 48 : 0, 0));
 
             onlineTextView[a] = new SimpleTextView(context);
             onlineTextView[a].setTextColor(Theme.ACTION_BAR_SUBTITLE_COLOR);
             onlineTextView[a].setTextSize(14);
             onlineTextView[a].setGravity(Gravity.START);
-            frameLayout.addView(onlineTextView[a], LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.START | Gravity.TOP, 118, 0, a == 0 ? 48 : 8, 0));
+            frameLayout.addView(onlineTextView[a], LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.START | Gravity.TOP, 118-ANIM_OFF, 0, a == 0 ? 48 : 8, 0));
         }
 
         if ( chat_id != 0 && chat_id!= MrChat.MR_CHAT_ID_DEADDROP ) {
@@ -749,19 +751,21 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                 }
             }
 
-            float avatarY = (actionBar.getOccupyStatusBar() ? AndroidUtilities.statusBarHeight : 0) + ActionBar.getCurrentActionBarHeight() / 2.0f * (1.0f + diff) - 21 * AndroidUtilities.density + 27 * AndroidUtilities.density * diff;
-            avatarImage.setScaleX((42 + 18 * diff) / 42.0f);
-            avatarImage.setScaleY((42 + 18 * diff) / 42.0f);
-            avatarImage.setTranslationX(-AndroidUtilities.dp(47) * diff);
+            float avatarY = (actionBar.getOccupyStatusBar() ? AndroidUtilities.statusBarHeight : 0)
+                    + ActionBar.getCurrentActionBarHeight() / 2.0f * (1.0f + diff)
+                    - 21 * AndroidUtilities.density + 12 * AndroidUtilities.density * diff;
+            avatarImage.setScaleX((42 + 40 * diff) / 42.0f); // diff is 0 when atop, so "offset + x*0 / offset" is 1
+            avatarImage.setScaleY((42 + 40 * diff) / 42.0f);
+            avatarImage.setTranslationX(-AndroidUtilities.dp(40) * diff);
             avatarImage.setTranslationY((float) Math.ceil(avatarY));
             for (int a = 0; a < 2; a++) {
                 if (nameTextView[a] == null) {
                     continue;
                 }
-                nameTextView[a].setTranslationX(-21 * AndroidUtilities.density * diff);
-                nameTextView[a].setTranslationY((float) Math.floor(avatarY) + AndroidUtilities.dp(1.3f) + AndroidUtilities.dp(7) * diff);
-                onlineTextView[a].setTranslationX(-21 * AndroidUtilities.density * diff);
-                onlineTextView[a].setTranslationY((float) Math.floor(avatarY) + AndroidUtilities.dp(24) + (float) Math.floor(11 * AndroidUtilities.density) * diff);
+                nameTextView[a].setTranslationX(/*-21 * AndroidUtilities.density * diff*/1);
+                nameTextView[a].setTranslationY((float) Math.floor(avatarY) + AndroidUtilities.dp(1.3f) + AndroidUtilities.dp(14) * diff);
+                onlineTextView[a].setTranslationX(/*-21 * AndroidUtilities.density * diff*/1);
+                onlineTextView[a].setTranslationY((float) Math.floor(avatarY) + AndroidUtilities.dp(24) + (float) Math.floor(20 * AndroidUtilities.density) * diff);
                 nameTextView[a].setScaleX(1.0f + 0.12f * diff);
                 nameTextView[a].setScaleY(1.0f + 0.12f * diff);
                 if (a == 1 && !openAnimationInProgress) {
