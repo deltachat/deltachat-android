@@ -374,9 +374,11 @@ public class ActionBar extends FrameLayout {
         if (subtitleTextView != null) {
             subtitleTextView.setVisibility(visible ? INVISIBLE : VISIBLE);
         }
-        Drawable drawable = backButtonImageView.getDrawable();
-        if (drawable != null && drawable instanceof MenuDrawable) {
-            ((MenuDrawable) drawable).setRotation(visible ? 1 : 0, true);
+        if( backButtonImageView != null ) {
+            Drawable drawable = backButtonImageView.getDrawable();
+            if (drawable != null && drawable instanceof MenuDrawable) {
+                ((MenuDrawable) drawable).setRotation(visible ? 1 : 0, true);
+            }
         }
     }
 
