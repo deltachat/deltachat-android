@@ -242,8 +242,9 @@ public class SettingsPrivacyActivity extends BaseFragment {
                             MrMailbox.getConfigInt("read_receipts", 0)!=0, true);
                 }
                 else if( i==showUnknownSendersRow) {
-                    textCell.setTextAndCheck(mContext.getString(R.string.DeaddropInChatlist),
-                            MrMailbox.getConfigInt("show_deaddrop", 0)!=0, true);
+                    textCell.setTextAndValueAndCheck(mContext.getString(R.string.DeaddropInChatlist),
+                            mContext.getString(R.string.DeaddropSubtitle),
+                            MrMailbox.getConfigInt("show_deaddrop", 0)!=0, true, true);
                 }
             }
             return view;
