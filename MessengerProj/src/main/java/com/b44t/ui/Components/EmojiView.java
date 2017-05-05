@@ -1195,7 +1195,7 @@ public class EmojiView extends FrameLayout implements NotificationCenter.Notific
         for (int a = 0; a < stickerSets.size(); a++) {
             scrollSlidingTabStrip.addStickerTab(stickerSets.get(a).documents.get(0));
         }
-        scrollSlidingTabStrip.addIconTab(R.drawable.ic_settings);
+        scrollSlidingTabStrip.addIconTab(R.drawable.menu_settings);
         scrollSlidingTabStrip.updateTabStyles();
         if (lastPosition != 0) {
             scrollSlidingTabStrip.onPageScrolled(lastPosition, lastPosition);

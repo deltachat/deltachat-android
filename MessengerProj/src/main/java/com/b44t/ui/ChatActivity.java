@@ -179,6 +179,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
     private final static int ID_FORWARD = 11;
     private final static int ID_DELETE_MESSAGES = 12;
     private final static int ID_ATTACH = 14;
+    private final static int ID_SHOW_PROFILE = 15;
     private final static int ID_DELETE_CHAT = 16;
     private final static int ID_MUTE = 18;
     private final static int ID_REPLY = 19;
@@ -439,6 +440,23 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     fragment.setDelegate(ChatActivity.this);
                     presentFragment(fragment); // this results in a call to didSelectDialog()
                 }
+                else if( id == ID_SHOW_PROFILE )
+                {
+                    Bundle args = new Bundle();
+                    if( m_mrChat.getType()== MrChat.MR_CHAT_GROUP ) {
+                        args.putInt("chat_id",  m_mrChat.getId());
+                    }
+                    else {
+                        int[] contact_ids = MrMailbox.getChatContacts(m_mrChat.getId());
+                        if( contact_ids.length==0) {
+                            return; // should not happen
+                        }
+                        args.putInt("user_id", contact_ids[0]);
+                    }
+                    ProfileActivity fragment = new ProfileActivity(args);
+                    fragment.setPlayProfileAnimation(true);
+                    presentFragment(fragment);
+                }
                 else if ( id == ID_DELETE_CHAT)
                 {
                     // as the history may be a mix of messenger-messages and emails, it is not safe to delete it.
@@ -595,6 +613,11 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
 
         if( !isChatWithDeaddrop ) {
             headerItem.addSubItem(ID_ATTACH, context.getString(R.string.AttachFiles), 0); // "Attach" means "Attach to chat", not "Attach to message" (which is not possible)
+        }
+
+        headerItem.addSubItem(ID_SHOW_PROFILE, context.getString(R.string.ViewProfile), 0);
+
+        if( !isChatWithDeaddrop ) {
             headerItem.addSubItem(ID_DELETE_CHAT, context.getString(R.string.DeleteChat), 0);
         }
 
