@@ -375,4 +375,5 @@
     <string name="SettingsFor">Einstellungen für %1$s</string>
     <string name="AutoplayGifs">GIFs automatisch abspielen</string>
     <string name="HelpUrl">https://delta.chat/de/help</string>
+    <string name="DeaddropSubtitle">Nachrichten, die zu keinen Chats gehören</string>
 </resources>

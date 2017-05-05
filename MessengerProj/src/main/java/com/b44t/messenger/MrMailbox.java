@@ -327,6 +327,7 @@ public class MrMailbox {
                     case 21: s = ApplicationLoader.applicationContext.getString(R.string.ErrSelfNotInGroup); break;
                     case 22: s = ApplicationLoader.applicationContext.getString(R.string.NoNetwork); break;
                     case 23: s = ApplicationLoader.applicationContext.getString(R.string.AttachGif); break;
+                    case 24: s = ApplicationLoader.applicationContext.getString(R.string.DeaddropSubtitle); break;
                 }
                 return String2CPtr(s);
 
@@ -335,7 +336,6 @@ public class MrMailbox {
                 switch( (int)data1 ) {
                     // the string-IDs are defined in the backend; as this is the only place where they're used, there is no benefit in creating an enum or sth. like that.
                     case 4: sp = ApplicationLoader.applicationContext.getResources().getQuantityString(R.plurals.Members, (int)data2, (int)data2); break;
-                    case 6: sp = ApplicationLoader.applicationContext.getResources().getQuantityString(R.plurals.Contacts, (int)data2, (int)data2); break;
                 }
                 return String2CPtr(sp);
 
