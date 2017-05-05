@@ -39,10 +39,13 @@ import android.widget.AdapterView;
 import android.widget.FrameLayout;
 import android.widget.ListView;
 
+import com.b44t.messenger.ApplicationLoader;
 import com.b44t.messenger.MrMailbox;
 import com.b44t.messenger.R;
+import com.b44t.messenger.browser.Browser;
 import com.b44t.ui.ActionBar.ActionBar;
 import com.b44t.ui.ActionBar.BaseFragment;
+import com.b44t.ui.ActionBar.DrawerLayoutContainer;
 import com.b44t.ui.Adapters.BaseFragmentAdapter;
 import com.b44t.ui.Cells.HeaderCell;
 import com.b44t.ui.Cells.ShadowSectionCell;
@@ -56,7 +59,7 @@ public class SettingsActivity extends BaseFragment {
     // the list
     private int accountHeaderRow, usernameRow, accountSettingsRow, accountShadowRow;
     private int settingsHeaderRow, privacyRow, notificationRow, backgroundRow, advRow, settingsShadowRow;
-    private int aboutHeaderRow, aboutRow, aboutShadowRow;
+    private int aboutHeaderRow, aboutRow, inviteRow, helpRow, aboutShadowRow;
     private int rowCount;
 
     private static final int ROWTYPE_SHADOW          = 0;
@@ -86,6 +89,14 @@ public class SettingsActivity extends BaseFragment {
 
         aboutHeaderRow     = rowCount++;
         aboutRow           = rowCount++;
+        if( DrawerLayoutContainer.USE_DRAWER ) {
+            inviteRow = -1;
+            helpRow = -1;
+        }
+        else {
+            inviteRow = rowCount++;
+            helpRow = rowCount++;
+        }
         aboutShadowRow     = rowCount++;
 
         return true;
@@ -147,6 +158,20 @@ public class SettingsActivity extends BaseFragment {
                     intent2.putExtra("com.b44t.ui.IntroActivity.isAbout", true);
                     getParentActivity().startActivity(intent2);
                 }
+                else if (i == inviteRow ) {
+                    try {
+                        Intent intent = new Intent(Intent.ACTION_SEND);
+                        intent.setType("text/plain");
+                        intent.putExtra(Intent.EXTRA_TEXT, MrMailbox.getInviteText());
+                        getParentActivity().startActivity(Intent.createChooser(intent, ApplicationLoader.applicationContext.getString(R.string.InviteMenuEntry)));
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+                else if (i == helpRow ) {
+                    String helpUrl = ApplicationLoader.applicationContext.getString(R.string.HelpUrl);
+                    Browser.openUrl(getParentActivity(), helpUrl);
+                }
             }
         });
 
@@ -169,7 +194,7 @@ public class SettingsActivity extends BaseFragment {
         public boolean isEnabled(int i) {
             return i == usernameRow || i == accountSettingsRow ||
                     i == privacyRow || i == notificationRow || i == backgroundRow || i == advRow ||
-                    i == aboutRow;
+                    i == aboutRow || i == inviteRow || i == helpRow;
         }
 
         @Override
@@ -219,6 +244,12 @@ public class SettingsActivity extends BaseFragment {
                 else if (i == advRow) {
                     textCell.setText(mContext.getString(R.string.AdvancedSettings), false);
                 }
+                else if(i == inviteRow) {
+                    textCell.setText(mContext.getString(R.string.InviteMenuEntry), true);
+                }
+                else if(i == helpRow) {
+                    textCell.setText(mContext.getString(R.string.Help), false);
+                }
             }
             else if (type == ROWTYPE_HEADER) {
                 if (view == null) {
@@ -260,7 +291,7 @@ public class SettingsActivity extends BaseFragment {
                     textCell.setTextAndValue(mContext.getString(R.string.MyName), subtitle, true);
                 }
                 else if (i == aboutRow) {
-                    textCell.setTextAndValue(mContext.getString(R.string.AboutThisProgram), "v" + IntroActivity.getVersion(), false);
+                    textCell.setTextAndValue(mContext.getString(R.string.AboutThisProgram), "v" + IntroActivity.getVersion(), true);
                 }
             }
             return view;

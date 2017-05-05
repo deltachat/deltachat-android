@@ -288,13 +288,10 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
 
         if( !DrawerLayoutContainer.USE_DRAWER ) {
             headerItem = menu.addItem(0, R.drawable.ic_ab_other);
-            headerItem.addSubItem(DrawerLayoutAdapter.ROW_NEW_CHAT, ApplicationLoader.applicationContext.getString(R.string.NewChat), R.drawable.menu_newchat);
-            headerItem.addSubItem(DrawerLayoutAdapter.ROW_NEW_GROUP, ApplicationLoader.applicationContext.getString(R.string.NewGroup), R.drawable.menu_empty);
-
-            headerItem.addSubItem(DrawerLayoutAdapter.ROW_SETTINGS, ApplicationLoader.applicationContext.getString(R.string.Settings), R.drawable.menu_settings);
-            headerItem.addSubItem(DrawerLayoutAdapter.ROW_INVITE, ApplicationLoader.applicationContext.getString(R.string.InviteMenuEntry), R.drawable.menu_empty);
-            headerItem.addSubItem(DrawerLayoutAdapter.ROW_DEADDROP, ApplicationLoader.applicationContext.getString(R.string.Deaddrop), R.drawable.menu_empty);
-            headerItem.addSubItem(DrawerLayoutAdapter.ROW_FAQ, ApplicationLoader.applicationContext.getString(R.string.Help), R.drawable.menu_empty);
+            headerItem.addSubItem(DrawerLayoutAdapter.ROW_NEW_CHAT, ApplicationLoader.applicationContext.getString(R.string.NewChat), 0);
+            headerItem.addSubItem(DrawerLayoutAdapter.ROW_NEW_GROUP, ApplicationLoader.applicationContext.getString(R.string.NewGroup), 0);
+            headerItem.addSubItem(DrawerLayoutAdapter.ROW_DEADDROP, ApplicationLoader.applicationContext.getString(R.string.Deaddrop), 0);
+            headerItem.addSubItem(DrawerLayoutAdapter.ROW_SETTINGS, ApplicationLoader.applicationContext.getString(R.string.Settings), 0);
         }
 
         actionBar.setActionBarMenuOnItemClick(new ActionBar.ActionBarMenuOnItemClick() {
@@ -342,23 +339,12 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
                         Bundle args = new Bundle();
                         args.putInt("do_what", ContactsActivity.SELECT_CONTACTS_FOR_NEW_GROUP);
                         presentFragment(new ContactsActivity(args));
-                    } else if (id == DrawerLayoutAdapter.ROW_INVITE) {
-                        try {
-                            Intent intent = new Intent(Intent.ACTION_SEND);
-                            intent.setType("text/plain");
-                            intent.putExtra(Intent.EXTRA_TEXT, MrMailbox.getInviteText());
-                            getParentActivity().startActivity(Intent.createChooser(intent, ApplicationLoader.applicationContext.getString(R.string.InviteMenuEntry)));
-                        } catch (Exception e) {
-                        }
                     } else if (id == DrawerLayoutAdapter.ROW_DEADDROP) {
                         Bundle args = new Bundle();
                         args.putInt("chat_id", MrChat.MR_CHAT_ID_DEADDROP);
                         presentFragment(new ChatActivity(args));
                     } else if (id == DrawerLayoutAdapter.ROW_SETTINGS) {
                         presentFragment(new SettingsActivity());
-                    } else if (id == DrawerLayoutAdapter.ROW_FAQ) {
-                        String helpUrl = ApplicationLoader.applicationContext.getString(R.string.HelpUrl);
-                        Browser.openUrl(getParentActivity(), helpUrl);
                     }
                 }
             }
