@@ -128,6 +128,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
     private final static int ID_DELETE_CONTACT = 5;
     private final static int ID_INVITE_TO_GROUP = 9;
     private final static int ID_ADD_SHORTCUT = 14;
+    private final static int ID_COPY_EMAIL_TO_CLIPBOARD = 15;
 
     private int emptyRow = -1;
     private int userSectionRow = -1;
@@ -266,6 +267,10 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                 else if( id==ID_STOP_ENCRYPTION_FOR_THIS_USER )
                 {
                     Toast.makeText(getParentActivity(), context.getString(R.string.NotYetImplemented), Toast.LENGTH_SHORT).show();
+                }
+                else if( id==ID_COPY_EMAIL_TO_CLIPBOARD )
+                {
+                    AndroidUtilities.addToClipboard(MrMailbox.getContact(user_id).getAddr());
                 }
                 else if (id == ID_BLOCK_CONTACT)
                 {
@@ -1199,6 +1204,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
         }
 
         if (user_id != 0) {
+            item.addSubItem(ID_COPY_EMAIL_TO_CLIPBOARD, ApplicationLoader.applicationContext.getString(R.string.CopyToClipboard), 0);
             item.addSubItem(ID_STOP_ENCRYPTION_FOR_THIS_USER, ApplicationLoader.applicationContext.getString(R.string.ResetContactsKey), 0);
             item.addSubItem(ID_BLOCK_CONTACT, userBlocked()? ApplicationLoader.applicationContext.getString(R.string.UnblockContact) : ApplicationLoader.applicationContext.getString(R.string.BlockContact), 0);
             item.addSubItem(ID_DELETE_CONTACT, ApplicationLoader.applicationContext.getString(R.string.DeleteContact), 0);
