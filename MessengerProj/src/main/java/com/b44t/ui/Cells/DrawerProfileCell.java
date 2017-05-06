@@ -46,6 +46,7 @@ import com.b44t.messenger.LocaleController;
 import com.b44t.messenger.MrMailbox;
 import com.b44t.messenger.ApplicationLoader;
 import com.b44t.messenger.R;
+import com.b44t.ui.ActionBar.DrawerLayoutContainer;
 import com.b44t.ui.Components.LayoutHelper;
 import com.b44t.ui.ActionBar.Theme;
 
@@ -68,7 +69,7 @@ public class DrawerProfileCell extends FrameLayout {
 
         nameTextView = new TextView(context);
         nameTextView.setTextColor(0xffffffff);
-        nameTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 23);
+        nameTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, DrawerLayoutContainer.USE_DRAWER? 23 : 26);
         nameTextView.setLines(1);
         nameTextView.setMaxLines(1);
         nameTextView.setSingleLine(true);
@@ -78,7 +79,7 @@ public class DrawerProfileCell extends FrameLayout {
 
         subtitleTextView = new TextView(context);
         subtitleTextView.setTextColor(0xffc2e5ff);
-        subtitleTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13);
+        subtitleTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, DrawerLayoutContainer.USE_DRAWER? 13 : Theme.ACTION_BAR_SUBTITLE_TEXT_SIZE);
         subtitleTextView.setLines(1);
         subtitleTextView.setMaxLines(1);
         subtitleTextView.setSingleLine(true);
@@ -89,7 +90,7 @@ public class DrawerProfileCell extends FrameLayout {
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        int mrHeight = 180;
+        int mrHeight = DrawerLayoutContainer.USE_DRAWER? 180 : 150;
         if (Build.VERSION.SDK_INT >= 21) {
             super.onMeasure(widthMeasureSpec, MeasureSpec.makeMeasureSpec(AndroidUtilities.dp(mrHeight) + AndroidUtilities.statusBarHeight, MeasureSpec.EXACTLY));
         } else {
