@@ -217,7 +217,7 @@ public class SettingsPrivacyActivity extends BaseFragment {
                     textCell.setTextAndValue(mContext.getString(R.string.Passcode), val, true);
                 }
                 else if( i==manageKeysRow ) {
-                    textCell.setText(mContext.getString(R.string.E2EManagePrivateKeys), true);
+                    textCell.setText(mContext.getString(R.string.E2EManagePrivateKeys), false);
                 }
             } else if (type == TYPE_TEXT_INFO) {
                 if (view == null) {

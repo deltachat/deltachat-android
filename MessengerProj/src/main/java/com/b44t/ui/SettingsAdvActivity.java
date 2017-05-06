@@ -238,7 +238,9 @@ public class SettingsAdvActivity extends BaseFragment {
                 if (view == null) {
                     view = new ShadowSectionCell(mContext);
                 }
-                view.setBackgroundResource(i == finalShadowRow? R.drawable.greydivider_bottom : R.drawable.greydivider);
+                if( i==finalShadowRow ) {
+                    view.setBackgroundResource(R.drawable.greydivider_bottom);
+                }
             } else if (type == ROWTYPE_TEXT_SETTINGS) {
                 if (view == null) {
                     view = new TextSettingsCell(mContext);

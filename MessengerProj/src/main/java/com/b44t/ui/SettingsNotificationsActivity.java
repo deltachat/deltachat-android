@@ -85,6 +85,7 @@ public class SettingsNotificationsActivity extends BaseFragment implements Notif
     private int badgeNumberRow;
     private int repeatRow;
     private int resetNotificationsRow;
+    private int finalShadowRow;
     private int rowCount = 0;
 
     private final int TYPE_HEADER      = 0;
@@ -123,6 +124,7 @@ public class SettingsNotificationsActivity extends BaseFragment implements Notif
         badgeNumberRow = rowCount++;
         repeatRow = rowCount++;
         resetNotificationsRow = rowCount++;
+        finalShadowRow = rowCount++;
 
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.notificationsSettingsUpdated);
 
@@ -643,6 +645,9 @@ public class SettingsNotificationsActivity extends BaseFragment implements Notif
                 if (view == null) {
                     view = new ShadowSectionCell(mContext);
                 }
+                if( i== finalShadowRow ) {
+                    view.setBackgroundResource(R.drawable.greydivider_bottom);
+                }
             }
             return view;
         }
@@ -658,7 +663,7 @@ public class SettingsNotificationsActivity extends BaseFragment implements Notif
                     i == inchatSoundRow ) {
                 return TYPE_CHECK_CELL;
             } else if ( i == groupSectionRow2 ||
-                    i == inappSectionRow2 || i == otherSectionRow2 ) {
+                    i == inappSectionRow2 || i == otherSectionRow2 || i == finalShadowRow ) {
                 return TYPE_SHADOW;
             } else {
                 return TYPE_TEXTSETTING;
