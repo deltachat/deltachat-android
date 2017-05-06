@@ -756,7 +756,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                     - 21 * AndroidUtilities.density + 12 * AndroidUtilities.density * diff;
             avatarImage.setScaleX((42 + 40 * diff) / 42.0f); // diff is 0 when atop, so "offset + x*0 / offset" is 1
             avatarImage.setScaleY((42 + 40 * diff) / 42.0f);
-            avatarImage.setTranslationX(-AndroidUtilities.dp(40) * diff);
+            avatarImage.setTranslationX(-AndroidUtilities.dp(42) * diff);
             avatarImage.setTranslationY((float) Math.ceil(avatarY));
             for (int a = 0; a < 2; a++) {
                 if (nameTextView[a] == null) {
@@ -765,9 +765,9 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                 nameTextView[a].setTranslationX(/*-21 * AndroidUtilities.density * diff*/1);
                 nameTextView[a].setTranslationY((float) Math.floor(avatarY) + AndroidUtilities.dp(1.3f) + AndroidUtilities.dp(14) * diff);
                 onlineTextView[a].setTranslationX(/*-21 * AndroidUtilities.density * diff*/1);
-                onlineTextView[a].setTranslationY((float) Math.floor(avatarY) + AndroidUtilities.dp(24) + (float) Math.floor(20 * AndroidUtilities.density) * diff);
-                nameTextView[a].setScaleX(1.0f + 0.12f * diff);
-                nameTextView[a].setScaleY(1.0f + 0.12f * diff);
+                onlineTextView[a].setTranslationY((float) Math.floor(avatarY) + AndroidUtilities.dp(24) + (float) Math.floor(25 * AndroidUtilities.density) * diff);
+                nameTextView[a].setScaleX(1.0f + 0.4f * diff);
+                nameTextView[a].setScaleY(1.0f + 0.4f * diff);
                 if (a == 1 && !openAnimationInProgress) {
                     int width;
                     if (AndroidUtilities.isTablet()) {
@@ -1182,13 +1182,6 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
             if (!onlineTextView[a].getText().equals(newString2)) {
                 onlineTextView[a].setText(newString2);
             }
-            int leftIcon = 0;//currentEncryptedChat != null ? R.drawable.ic_lock_header : 0;
-            int rightIcon = 0;
-            if (a == 0) {
-                rightIcon = MrMailbox.isDialogMuted(dialog_id != 0 ? dialog_id : (long) user_id) ? R.drawable.mute_fixed : 0;
-            }
-            nameTextView[a].setLeftDrawable(leftIcon);
-            nameTextView[a].setRightDrawable(rightIcon);
         }
 
         ContactsController.setupAvatar(avatarImage, avatarImage.imageReceiver, avatarDrawable, mrContact, mrChat);
