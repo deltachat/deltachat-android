@@ -112,6 +112,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
     // data
     private long  dialog_id;
     public MrChat m_mrChat = new MrChat(0);
+    private boolean m_isChatWithDeaddrop, m_isDeaddropInChatlist;
     private int[] m_msglist = {};
 
     // the list view
@@ -203,6 +204,12 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
 
         dialog_id = arguments.getInt("chat_id", 0);
         m_mrChat = MrMailbox.getChat((int)dialog_id);
+        m_isChatWithDeaddrop = m_mrChat.getId()==MrChat.MR_CHAT_ID_DEADDROP;
+
+        m_isDeaddropInChatlist = false;
+        if( m_isChatWithDeaddrop && MrMailbox.getConfigInt("show_deaddrop", 0)!=0 ) {
+            m_isDeaddropInChatlist = true;
+        }
 
         startLoadFromMessageId = arguments.getInt("message_id", 0);
         scrollToTopOnResume = arguments.getBoolean("scrollToTopOnResume", false);
@@ -258,7 +265,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
             }
         });
 
-        if (m_mrChat.getId() == MrChat.MR_CHAT_ID_DEADDROP) {
+        if (m_isChatWithDeaddrop) {
             updateBottomOverlay();
         }
 
@@ -484,7 +491,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 } else if (id == ID_MUTE) {
                     toggleMute();
                 } else if (id == ID_REPLY) {
-                    if( m_mrChat.getId()==MrChat.MR_CHAT_ID_DEADDROP ){
+                    if( m_isChatWithDeaddrop ){
                         if( selectedMessagesIds!=null && selectedMessagesIds.size()==1) {
                             ArrayList<Integer> ids = new ArrayList<>(selectedMessagesIds.keySet());
                             createChatByDeaddropMsgId(ids.get(0));
@@ -545,15 +552,22 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
             }
         });
 
-        avatarContainer = new ChatAvatarContainer(context, this);
-        actionBar.addView(avatarContainer, 0, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.MATCH_PARENT, Gravity.TOP | Gravity.START, ActionBar.AVATAR_AFTER_BACK_X, 0, 40, 0));
+        if( m_isChatWithDeaddrop && !m_isDeaddropInChatlist ) {
+            actionBar.setTitle(context.getString(R.string.Deaddrop));
+        }
+        else {
+            avatarContainer = new ChatAvatarContainer(context, this);
+            actionBar.addView(avatarContainer, 0, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.MATCH_PARENT, Gravity.TOP | Gravity.START, ActionBar.AVATAR_AFTER_BACK_X, 0, 40, 0));
+        }
 
         ActionBarMenu menu = actionBar.createMenu();
 
         searchItem = menu.addItem(0, R.drawable.ic_ab_search).setIsSearchField(true, false).setActionBarMenuItemSearchListener(new ActionBarMenuItem.ActionBarMenuItemSearchListener() {
             @Override
             public void onSearchCollapse() {
-                avatarContainer.setVisibility(View.VISIBLE);
+                if( avatarContainer != null ) {
+                    avatarContainer.setVisibility(View.VISIBLE);
+                }
                 headerItem.setVisibility(View.VISIBLE);
                 searchItem.setVisibility(View.GONE);
                 highlightMessageId = 0;
@@ -597,13 +611,10 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
 
 
         headerItem = menu.addItem(0, R.drawable.ic_ab_other);
-        if (searchItem != null) {
-            headerItem.addSubItem(ID_SEARCH, context.getString(R.string.Search), 0);
-        }
+        headerItem.addSubItem(ID_SEARCH, context.getString(R.string.Search), 0);
 
-        boolean isChatWithDeaddrop = m_mrChat.getId()==MrChat.MR_CHAT_ID_DEADDROP;
         m_canMute = true;
-        if( isChatWithDeaddrop && MrMailbox.getConfigInt("show_deaddrop", 0)==0 ) {
+        if( m_isChatWithDeaddrop && !m_isDeaddropInChatlist ) {
             m_canMute = false;
         }
 
@@ -611,18 +622,22 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
             muteMenuEntry = headerItem.addSubItem(ID_MUTE, null, 0);
         }
 
-        if( !isChatWithDeaddrop ) {
+        if( !m_isChatWithDeaddrop ) {
             headerItem.addSubItem(ID_ATTACH, context.getString(R.string.AttachFiles), 0); // "Attach" means "Attach to chat", not "Attach to message" (which is not possible)
         }
 
-        headerItem.addSubItem(ID_SHOW_PROFILE, context.getString(R.string.ViewProfile), 0);
+        if( !m_isChatWithDeaddrop || m_isDeaddropInChatlist ) {
+            headerItem.addSubItem(ID_SHOW_PROFILE, context.getString(R.string.ViewProfile), 0);
+        }
 
-        if( !isChatWithDeaddrop ) {
+        if( !m_isChatWithDeaddrop ) {
             headerItem.addSubItem(ID_DELETE_CHAT, context.getString(R.string.DeleteChat), 0);
         }
 
         updateTitle();
-        avatarContainer.updateSubtitle();
+        if( avatarContainer!=null ) {
+            avatarContainer.updateSubtitle();
+        }
         updateTitleIcons();
 
         menuItem = menu.addItem(ID_ATTACH, R.drawable.ic_ab_attach).setAllowCloseAnimation(false); // "menuItem" is added to ChatEnterViewActivity
@@ -701,7 +716,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         actionModeViews.add(actionMode.addItem(ID_DELETE_MESSAGES, R.drawable.ic_ab_fwd_delete, Theme.ACTION_BAR_MODE_SELECTOR_COLOR, null, AndroidUtilities.dp(54)));
         actionModeViews.add(actionMode.addItem(ID_FORWARD, R.drawable.ic_ab_fwd_forward, Theme.ACTION_BAR_MODE_SELECTOR_COLOR, null, AndroidUtilities.dp(54)));
         ActionBarMenuItem submenu = actionMode.addItem(0, R.drawable.ic_ab_other_grey);
-            if( isChatWithDeaddrop ) {
+            if( m_isChatWithDeaddrop ) {
                 m_replyMenuItem = submenu.addSubItem(ID_REPLY, context.getString(R.string.Reply), 0);
             }
             submenu.addSubItem(ID_COPY, context.getString(R.string.CopyToClipboard), 0);
@@ -1653,16 +1668,15 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
     }
 
     private void updateTitleIcons() {
-        if (avatarContainer == null) {
-            return;
-        }
-
         int rightIcon = 0;
         if( m_canMute && MrMailbox.isDialogMuted(dialog_id) ) {
             rightIcon = R.drawable.mute_fixed;
         }
 
-        avatarContainer.setTitleIcons(0, rightIcon);
+        if (avatarContainer != null)  {
+            avatarContainer.setTitleIcons(0, rightIcon);
+        }
+
         if( muteMenuEntry != null ) {
             if (rightIcon != 0) {
                 muteMenuEntry.setText(ApplicationLoader.applicationContext.getString(R.string.UnmuteNotifications));
@@ -2177,7 +2191,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
             chatActivityEnterView.setFieldFocused(false);
             chatActivityEnterView.setVisibility(View.INVISIBLE);
         } else {
-            if (m_mrChat.getId()==MrChat.MR_CHAT_ID_DEADDROP) {
+            if (m_isChatWithDeaddrop) {
                 if( m_msglist.length==0 ) {
                     // showing the DeaddropHint if there are no messages is confusing (there are no "reply arrows" in this case)
                     bottomOverlayChatText.setText(ApplicationLoader.applicationContext.getString(R.string.NoMessages));
@@ -2533,7 +2547,9 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
     }
 
     private void openSearchWithText(String text) {
-        avatarContainer.setVisibility(View.GONE);
+        if( avatarContainer!= null ) {
+            avatarContainer.setVisibility(View.GONE);
+        }
         headerItem.setVisibility(View.GONE);
         searchItem.setVisibility(View.VISIBLE);
         updateBottomOverlay();
