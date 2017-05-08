@@ -44,6 +44,8 @@ import com.b44t.messenger.MrMailbox;
 import com.b44t.messenger.R;
 import com.b44t.messenger.browser.Browser;
 import com.b44t.ui.ActionBar.ActionBar;
+import com.b44t.ui.ActionBar.ActionBarMenu;
+import com.b44t.ui.ActionBar.ActionBarMenuItem;
 import com.b44t.ui.ActionBar.BaseFragment;
 import com.b44t.ui.ActionBar.DrawerLayoutContainer;
 import com.b44t.ui.Adapters.BaseFragmentAdapter;
@@ -62,6 +64,8 @@ public class SettingsActivity extends BaseFragment {
     private int settingsHeaderRow, privacyRow, notificationRow, backgroundRow, advRow, settingsShadowRow;
     private int aboutHeaderRow, aboutRow, inviteRow, helpRow, aboutShadowRow;
     private int rowCount;
+
+    private static final int ID_ACCOUNT_SETTINGS = 10;
 
     private static final int ROWTYPE_SHADOW          = 0;
     private static final int ROWTYPE_TEXT_SETTINGS   = 1;
@@ -86,12 +90,13 @@ public class SettingsActivity extends BaseFragment {
         }
 
         usernameRow = rowCount++;
-        accountSettingsRow = rowCount++;
         if (DrawerLayoutContainer.USE_DRAWER) {
+            accountSettingsRow = rowCount++;
             accountShadowRow = rowCount++;
             settingsHeaderRow = rowCount++;
         }
         else {
+            accountSettingsRow = -1;
             accountShadowRow = -1;
             settingsHeaderRow = -1;
         }
@@ -129,8 +134,16 @@ public class SettingsActivity extends BaseFragment {
                 if (id == -1) {
                     finishFragment();
                 }
+                else if( id == ID_ACCOUNT_SETTINGS ) {
+                    presentFragment(new SettingsAccountActivity(null));
+                }
             }
         });
+
+        // create action bar menu (we use it only for the account settings that are not changed frequently)
+        ActionBarMenu menu = actionBar.createMenu();
+        ActionBarMenuItem headerItem = menu.addItem(0, R.drawable.ic_ab_other);
+        headerItem.addSubItem(ID_ACCOUNT_SETTINGS, context.getString(R.string.AccountSettings), 0);
 
         // create object to hold the whole view
         fragmentView = new FrameLayout(context);
