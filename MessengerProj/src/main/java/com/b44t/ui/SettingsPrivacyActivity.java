@@ -69,7 +69,7 @@ public class SettingsPrivacyActivity extends BaseFragment {
         rowCount = 0;
         passcodeRow             = rowCount++;
         blockedRow              = rowCount++;
-        readReceiptsRow         = rowCount++;
+        readReceiptsRow         = -1; // delayed after 1.0
         e2eEncryptionRow        = rowCount++;
         manageKeysRow           = rowCount++;
         secretDetailRow         = rowCount++;
