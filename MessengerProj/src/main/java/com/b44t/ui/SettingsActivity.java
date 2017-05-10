@@ -66,6 +66,7 @@ public class SettingsActivity extends BaseFragment {
     private int rowCount;
 
     private static final int ID_ACCOUNT_SETTINGS = 10;
+    private static final int ID_ADV_SETTINGS = 11;
 
     private static final int ROWTYPE_SHADOW          = 0;
     private static final int ROWTYPE_TEXT_SETTINGS   = 1;
@@ -100,10 +101,19 @@ public class SettingsActivity extends BaseFragment {
             accountShadowRow = -1;
             settingsHeaderRow = -1;
         }
-        privacyRow         = rowCount++;
-        notificationRow    = rowCount++;
-        backgroundRow      = rowCount++;
-        advRow             = rowCount++;
+
+        if (DrawerLayoutContainer.USE_DRAWER) {
+            privacyRow         = rowCount++;
+            notificationRow    = rowCount++;
+            backgroundRow      = rowCount++;
+            advRow = rowCount++;
+        }
+        else {
+            notificationRow    = rowCount++;
+            backgroundRow      = rowCount++;
+            privacyRow         = rowCount++;
+            advRow = -1;
+        }
         settingsShadowRow  = rowCount++;
 
         aboutHeaderRow     = rowCount++;
@@ -137,13 +147,19 @@ public class SettingsActivity extends BaseFragment {
                 else if( id == ID_ACCOUNT_SETTINGS ) {
                     presentFragment(new SettingsAccountActivity(null));
                 }
+                else if( id == ID_ADV_SETTINGS ) {
+                    presentFragment(new SettingsAdvActivity());
+                }
             }
         });
 
         // create action bar menu (we use it only for the account settings that are not changed frequently)
-        ActionBarMenu menu = actionBar.createMenu();
-        ActionBarMenuItem headerItem = menu.addItem(0, R.drawable.ic_ab_other);
-        headerItem.addSubItem(ID_ACCOUNT_SETTINGS, context.getString(R.string.AccountSettings), 0);
+        if(!DrawerLayoutContainer.USE_DRAWER) {
+            ActionBarMenu menu = actionBar.createMenu();
+            ActionBarMenuItem headerItem = menu.addItem(0, R.drawable.ic_ab_other);
+            headerItem.addSubItem(ID_ACCOUNT_SETTINGS, context.getString(R.string.AccountSettings), 0);
+            headerItem.addSubItem(ID_ADV_SETTINGS, context.getString(R.string.AdvancedSettings), 0);
+        }
 
         // create object to hold the whole view
         fragmentView = new FrameLayout(context);
