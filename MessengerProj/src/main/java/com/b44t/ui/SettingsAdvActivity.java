@@ -54,7 +54,7 @@ import com.b44t.ui.Components.NumberPicker;
 public class SettingsAdvActivity extends BaseFragment {
 
     // the list
-    private int directShareRow, textSizeRow, cacheRow, raiseToSpeakRow, sendByEnterRow, autoplayGifsRow, showUnknownSendersRow, finalShadowRow;
+    private int directShareRow, cacheRow, raiseToSpeakRow, sendByEnterRow, autoplayGifsRow, showUnknownSendersRow, finalShadowRow;
     private int rowCount;
 
     private static final int ROWTYPE_SHADOW          = 0;
@@ -80,7 +80,6 @@ public class SettingsAdvActivity extends BaseFragment {
         else {
             directShareRow = -1;
         }
-        textSizeRow = rowCount++;
         autoplayGifsRow = rowCount++;
         showUnknownSendersRow   = rowCount++;
         sendByEnterRow = rowCount++;
@@ -124,45 +123,7 @@ public class SettingsAdvActivity extends BaseFragment {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, final int i, long l) {
-                if (i == textSizeRow) {
-                    if (getParentActivity() == null) {
-                        return;
-                    }
-                    AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
-                    builder.setTitle(ApplicationLoader.applicationContext.getString(R.string.TextSize));
-                    final NumberPicker numberPicker = new NumberPicker(getParentActivity());
-                    final int MIN_VAL = 12;
-                    final int MAX_VAL = 30;
-                    final int DEF_VAL = defMsgFontSize();
-                    String displayValues[] = new String[MAX_VAL-MIN_VAL+1];
-                    for( int v = MIN_VAL; v <= MAX_VAL; v++ ) {
-                        String cur = String.format("%d", v);
-                        if( v==DEF_VAL ) {
-                            cur += " (" +ApplicationLoader.applicationContext.getString(R.string.Default)+ ")";
-                        }
-                        displayValues[v-MIN_VAL] = cur;
-                    }
-                    numberPicker.setMinValue(MIN_VAL);
-                    numberPicker.setMaxValue(MAX_VAL);
-                    numberPicker.setDisplayedValues(displayValues);
-                    numberPicker.setWrapSelectorWheel(false);
-                    numberPicker.setValue(ApplicationLoader.fontSize);
-                    builder.setView(numberPicker);
-                    builder.setNegativeButton(ApplicationLoader.applicationContext.getString(R.string.Done), new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("mainconfig", Activity.MODE_PRIVATE);
-                            SharedPreferences.Editor editor = preferences.edit();
-                            editor.putInt("msg_font_size", numberPicker.getValue());
-                            ApplicationLoader.fontSize = numberPicker.getValue();
-                            editor.apply();
-                            if (listView != null) {
-                                listView.invalidateViews();
-                            }
-                        }
-                    });
-                    showDialog(builder.create());
-                } else if (i == sendByEnterRow) {
+                if (i == sendByEnterRow) {
                     SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("mainconfig", Activity.MODE_PRIVATE);
                     boolean send = preferences.getBoolean("send_by_enter", false);
                     SharedPreferences.Editor editor = preferences.edit();
@@ -228,8 +189,7 @@ public class SettingsAdvActivity extends BaseFragment {
 
         @Override
         public boolean isEnabled(int i) {
-            return i == textSizeRow ||
-                    i == sendByEnterRow ||
+            return i == sendByEnterRow ||
                     i == cacheRow || i == raiseToSpeakRow || i == autoplayGifsRow || i==showUnknownSendersRow || i == directShareRow;
         }
 
@@ -269,11 +229,7 @@ public class SettingsAdvActivity extends BaseFragment {
                     view.setBackgroundColor(0xffffffff);
                 }
                 TextSettingsCell textCell = (TextSettingsCell) view;
-                if (i == textSizeRow) {
-                    SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("mainconfig", Activity.MODE_PRIVATE);
-                    int size = preferences.getInt("msg_font_size", defMsgFontSize());
-                    textCell.setTextAndValue(mContext.getString(R.string.TextSize), String.format("%d", size), true);
-                } else if (i == cacheRow) {
+                if (i == cacheRow) {
                     textCell.setText(mContext.getString(R.string.CacheSettings), true);
                 } 
             } else if (type == ROWTYPE_CHECK) {

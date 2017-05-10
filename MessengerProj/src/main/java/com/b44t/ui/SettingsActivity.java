@@ -26,10 +26,12 @@
 
 package com.b44t.ui;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.os.Build;
 import android.os.PowerManager;
@@ -55,13 +57,14 @@ import com.b44t.ui.Cells.ShadowSectionCell;
 import com.b44t.ui.Cells.TextDetailSettingsCell;
 import com.b44t.ui.Cells.TextSettingsCell;
 import com.b44t.ui.Components.LayoutHelper;
+import com.b44t.ui.Components.NumberPicker;
 
 
 public class SettingsActivity extends BaseFragment {
 
     // the list
     private int profileRow, accountHeaderRow, usernameRow, accountSettingsRow, accountShadowRow;
-    private int settingsHeaderRow, privacyRow, notificationRow, backgroundRow, advRow, settingsShadowRow;
+    private int settingsHeaderRow, privacyRow, notificationRow, backgroundRow, textSizeRow, advRow, settingsShadowRow;
     private int aboutHeaderRow, aboutRow, inviteRow, helpRow, aboutShadowRow;
     private int rowCount;
 
@@ -74,6 +77,8 @@ public class SettingsActivity extends BaseFragment {
     private static final int ROWTYPE_DETAIL_SETTINGS = 3;
     private static final int ROWTYPE_PROFILE         = 4;
     private static final int ROWTYPE_COUNT           = 5;
+
+    private ListView listView;
 
     @Override
     public boolean onFragmentCreate()
@@ -106,11 +111,13 @@ public class SettingsActivity extends BaseFragment {
             privacyRow         = rowCount++;
             notificationRow    = rowCount++;
             backgroundRow      = rowCount++;
+            textSizeRow        = rowCount++;
             advRow = rowCount++;
         }
         else {
             notificationRow    = rowCount++;
             backgroundRow      = rowCount++;
+            textSizeRow        = rowCount++;
             privacyRow         = rowCount++;
             advRow = -1;
         }
@@ -169,7 +176,7 @@ public class SettingsActivity extends BaseFragment {
         // create the main layout list
         ListAdapter listAdapter = new ListAdapter(context);
 
-        ListView listView = new ListView(context);
+        listView = new ListView(context);
         listView.setDivider(null);
         listView.setDividerHeight(0);
         listView.setDrawSelectorOnTop(true);
@@ -192,6 +199,45 @@ public class SettingsActivity extends BaseFragment {
                 }
                 else if (i == backgroundRow) {
                     presentFragment(new WallpapersActivity());
+                }
+                if (i == textSizeRow) {
+                    if (getParentActivity() == null) {
+                        return;
+                    }
+                    AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
+                    builder.setTitle(ApplicationLoader.applicationContext.getString(R.string.TextSize));
+                    final NumberPicker numberPicker = new NumberPicker(getParentActivity());
+                    final int MIN_VAL = 12;
+                    final int MAX_VAL = 30;
+                    final int DEF_VAL = SettingsAdvActivity.defMsgFontSize();
+                    String displayValues[] = new String[MAX_VAL-MIN_VAL+1];
+                    for( int v = MIN_VAL; v <= MAX_VAL; v++ ) {
+                        String cur = String.format("%d", v);
+                        if( v==DEF_VAL ) {
+                            cur += " (" +ApplicationLoader.applicationContext.getString(R.string.Default)+ ")";
+                        }
+                        displayValues[v-MIN_VAL] = cur;
+                    }
+                    numberPicker.setMinValue(MIN_VAL);
+                    numberPicker.setMaxValue(MAX_VAL);
+                    numberPicker.setDisplayedValues(displayValues);
+                    numberPicker.setWrapSelectorWheel(false);
+                    numberPicker.setValue(ApplicationLoader.fontSize);
+                    builder.setView(numberPicker);
+                    builder.setNegativeButton(ApplicationLoader.applicationContext.getString(R.string.Done), new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("mainconfig", Activity.MODE_PRIVATE);
+                            SharedPreferences.Editor editor = preferences.edit();
+                            editor.putInt("msg_font_size", numberPicker.getValue());
+                            ApplicationLoader.fontSize = numberPicker.getValue();
+                            editor.apply();
+                            if (listView != null) {
+                                listView.invalidateViews();
+                            }
+                        }
+                    });
+                    showDialog(builder.create());
                 }
                 else if (i == advRow) {
                     presentFragment(new SettingsAdvActivity());
@@ -235,7 +281,7 @@ public class SettingsActivity extends BaseFragment {
 
         @Override
         public boolean isEnabled(int i) {
-            return i == usernameRow || i == accountSettingsRow ||
+            return i == textSizeRow || i == usernameRow || i == accountSettingsRow ||
                     i == privacyRow || i == notificationRow || i == backgroundRow || i == advRow ||
                     i == aboutRow || i == inviteRow || i == helpRow;
         }
@@ -282,13 +328,18 @@ public class SettingsActivity extends BaseFragment {
                 }
                 TextSettingsCell textCell = (TextSettingsCell) view;
                 if (i == privacyRow) {
-                    textCell.setText(mContext.getString(R.string.PrivacySettings), true);
+                    textCell.setText(mContext.getString(R.string.PrivacySettings), false);
                 }
                 else if (i == notificationRow) {
                     textCell.setText(mContext.getString(R.string.NotificationsAndSounds), true);
                 }
                 else if (i == backgroundRow) {
                     textCell.setText(mContext.getString(R.string.ChatBackground), true);
+                }
+                if (i == textSizeRow) {
+                    SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("mainconfig", Activity.MODE_PRIVATE);
+                    int size = preferences.getInt("msg_font_size", SettingsAdvActivity.defMsgFontSize());
+                    textCell.setTextAndValue(mContext.getString(R.string.TextSize), String.format("%d", size), true);
                 }
                 else if (i == advRow) {
                     textCell.setText(mContext.getString(R.string.AdvancedSettings), false);
