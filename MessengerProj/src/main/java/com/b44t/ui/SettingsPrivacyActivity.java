@@ -52,7 +52,6 @@ public class SettingsPrivacyActivity extends BaseFragment {
     private int e2eEncryptionRow;
     private int readReceiptsRow;
     private int blockedRow;
-    private int showUnknownSendersRow;
     private int passcodeRow;
     private int secretDetailRow;
     private int manageKeysRow;
@@ -70,7 +69,6 @@ public class SettingsPrivacyActivity extends BaseFragment {
         rowCount = 0;
         passcodeRow             = rowCount++;
         blockedRow              = rowCount++;
-        showUnknownSendersRow   = rowCount++;
         readReceiptsRow         = rowCount++;
         e2eEncryptionRow        = rowCount++;
         manageKeysRow           = rowCount++;
@@ -128,25 +126,6 @@ public class SettingsPrivacyActivity extends BaseFragment {
                 else if(i==readReceiptsRow )
                 {
                     Toast.makeText(getParentActivity(), context.getString(R.string.NotYetImplemented), Toast.LENGTH_SHORT).show();
-                }
-                else if( i==showUnknownSendersRow) {
-                    int oldval = MrMailbox.getConfigInt("show_deaddrop", 0);
-                    if( oldval == 1 ) {
-                        MrMailbox.setConfig("show_deaddrop", "0");
-                    }
-                    else {
-                        MrMailbox.setConfig("show_deaddrop", "1");
-                    }
-                    MrMailbox.MrCallback(MrMailbox.MR_EVENT_MSGS_CHANGED, 0, 0);
-                    if (view instanceof TextCheckCell) {
-                        ((TextCheckCell) view).setChecked(oldval == 0);
-                    }
-
-                    // if showing deaddrop is disabled, also disable notifications for this chat (cannot be displayed otherwise)
-                    SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("Notifications", Activity.MODE_PRIVATE);
-                    SharedPreferences.Editor editor = preferences.edit();
-                    editor.putInt("notify2_" + MrChat.MR_CHAT_ID_DEADDROP, oldval==1? 2 /*always muted*/ : 0);
-                    editor.apply();
                 }
             }
         });
@@ -241,10 +220,6 @@ public class SettingsPrivacyActivity extends BaseFragment {
                     textCell.setTextAndCheck(mContext.getString(R.string.SendNRcvReadReceipts),
                             MrMailbox.getConfigInt("read_receipts", 0)!=0, true);
                 }
-                else if( i==showUnknownSendersRow) {
-                    textCell.setTextAndCheck(mContext.getString(R.string.DeaddropInChatlist),
-                            MrMailbox.getConfigInt("show_deaddrop", 0)!=0, true);
-                }
             }
             return view;
         }
@@ -253,7 +228,7 @@ public class SettingsPrivacyActivity extends BaseFragment {
         public int getItemViewType(int i) {
             if (i == secretDetailRow) {
                 return TYPE_TEXT_INFO;
-            } else if (i==showUnknownSendersRow || i==e2eEncryptionRow || i==readReceiptsRow ) {
+            } else if (i==e2eEncryptionRow || i==readReceiptsRow ) {
                 return TYPE_CHECK_CELL;
             }
             return TYPE_TEXTSETTING;

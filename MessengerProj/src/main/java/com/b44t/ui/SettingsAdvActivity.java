@@ -38,6 +38,8 @@ import android.widget.ListView;
 import com.b44t.messenger.AndroidUtilities;
 import com.b44t.messenger.MediaController;
 import com.b44t.messenger.ApplicationLoader;
+import com.b44t.messenger.MrChat;
+import com.b44t.messenger.MrMailbox;
 import com.b44t.messenger.R;
 import com.b44t.ui.Adapters.BaseFragmentAdapter;
 import com.b44t.ui.Cells.ShadowSectionCell;
@@ -52,7 +54,7 @@ import com.b44t.ui.Components.NumberPicker;
 public class SettingsAdvActivity extends BaseFragment {
 
     // the list
-    private int directShareRow, textSizeRow, cacheRow, raiseToSpeakRow, sendByEnterRow, autoplayGifsRow, finalShadowRow;
+    private int directShareRow, textSizeRow, cacheRow, raiseToSpeakRow, sendByEnterRow, autoplayGifsRow, showUnknownSendersRow, finalShadowRow;
     private int rowCount;
 
     private static final int ROWTYPE_SHADOW          = 0;
@@ -80,6 +82,7 @@ public class SettingsAdvActivity extends BaseFragment {
         }
         textSizeRow = rowCount++;
         autoplayGifsRow = rowCount++;
+        showUnknownSendersRow   = rowCount++;
         sendByEnterRow = rowCount++;
         raiseToSpeakRow = rowCount++; // outgoing message
         cacheRow = -1;// for now, the - non-functional - page is reachable by the "storage settings" in the "android App Settings" only
@@ -186,6 +189,25 @@ public class SettingsAdvActivity extends BaseFragment {
                 } else if (i == cacheRow) {
                     presentFragment(new CacheControlActivity());
                 }
+                else if( i==showUnknownSendersRow) {
+                    int oldval = MrMailbox.getConfigInt("show_deaddrop", 0);
+                    if( oldval == 1 ) {
+                        MrMailbox.setConfig("show_deaddrop", "0");
+                    }
+                    else {
+                        MrMailbox.setConfig("show_deaddrop", "1");
+                    }
+                    MrMailbox.MrCallback(MrMailbox.MR_EVENT_MSGS_CHANGED, 0, 0);
+                    if (view instanceof TextCheckCell) {
+                        ((TextCheckCell) view).setChecked(oldval == 0);
+                    }
+
+                    // if showing deaddrop is disabled, also disable notifications for this chat (cannot be displayed otherwise)
+                    SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("Notifications", Activity.MODE_PRIVATE);
+                    SharedPreferences.Editor editor = preferences.edit();
+                    editor.putInt("notify2_" + MrChat.MR_CHAT_ID_DEADDROP, oldval==1? 2 /*always muted*/ : 0);
+                    editor.apply();
+                }
             }
         });
 
@@ -208,7 +230,7 @@ public class SettingsAdvActivity extends BaseFragment {
         public boolean isEnabled(int i) {
             return i == textSizeRow ||
                     i == sendByEnterRow ||
-                    i == cacheRow || i == raiseToSpeakRow || i == autoplayGifsRow || i == directShareRow;
+                    i == cacheRow || i == raiseToSpeakRow || i == autoplayGifsRow || i==showUnknownSendersRow || i == directShareRow;
         }
 
         @Override
@@ -271,6 +293,10 @@ public class SettingsAdvActivity extends BaseFragment {
                 } else if (i == directShareRow) {
                     textCell.setTextAndValueAndCheck(mContext.getString(R.string.DirectShare), mContext.getString(R.string.DirectShareInfo), MediaController.getInstance().canDirectShare(), false, true);
                 }
+                else if( i==showUnknownSendersRow) {
+                    textCell.setTextAndCheck(mContext.getString(R.string.DeaddropInChatlist),
+                            MrMailbox.getConfigInt("show_deaddrop", 0)!=0, true);
+                }
             }
             return view;
         }
@@ -279,7 +305,7 @@ public class SettingsAdvActivity extends BaseFragment {
         public int getItemViewType(int i) {
             if (i == finalShadowRow ) {
                 return ROWTYPE_SHADOW;
-            } else if ( i == sendByEnterRow || i == raiseToSpeakRow || i == autoplayGifsRow || i == directShareRow) {
+            } else if ( i == sendByEnterRow || i == raiseToSpeakRow || i == autoplayGifsRow || i==showUnknownSendersRow || i == directShareRow) {
                 return ROWTYPE_CHECK;
             } else {
                 return ROWTYPE_TEXT_SETTINGS;
