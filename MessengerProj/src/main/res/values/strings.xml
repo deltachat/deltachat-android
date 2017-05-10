@@ -71,9 +71,9 @@
     <string name="TextSize">Messages font size</string>
     <string name="UnblockContact">Unblock contact</string>
     <string name="NoBlocked">No blocked contacts yet</string>
-    <string name="DefaultForNormalMessages">Normal messages default</string>
+    <string name="DefaultForNormalMessages">Normal messages</string>
     <string name="MessagePreview">Message preview</string>
-    <string name="DefaultForGroupMessages">Group messages default</string>
+    <string name="DefaultForGroupMessages">Group messages</string>
     <string name="Sound">Sound</string>
     <string name="InAppNotifications">In-app notifications</string>
     <string name="Vibrate">Vibrate</string>
