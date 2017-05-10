@@ -333,18 +333,12 @@ public class SettingsActivity extends BaseFragment {
                 else if (i == notificationRow) {
                     SharedPreferences preferences = mContext.getSharedPreferences("Notifications", Activity.MODE_PRIVATE);
                     boolean normal = preferences.getBoolean("EnableAll", true), group = preferences.getBoolean("EnableGroup", true);
-                    String value;
+                    String value = "…"; // default, indicates more complicated settings (we do not show "off" as notifications may be enabled eg. per-chat)
                     if( normal && group ) {
                         value = mContext.getString(R.string.Enabled);
                     }
                     else if( normal ) {
                         value = mContext.getString(R.string.Enabled) + "/" + mContext.getString(R.string.Disabled);
-                    }
-                    else if( group ) {
-                        value = mContext.getString(R.string.Disabled) + "/" + mContext.getString(R.string.Enabled);
-                    }
-                    else {
-                        value = mContext.getString(R.string.Profile); // if both, normal and group notifications, are disabled, they may still be enabled in separate profiles. Therefore, we write "Profile", not "Disabled"
                     }
                     textCell.setTextAndValue(mContext.getString(R.string.NotificationsAndSounds), value, true);
                 }
