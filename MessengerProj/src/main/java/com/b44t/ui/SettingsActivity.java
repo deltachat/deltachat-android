@@ -224,7 +224,7 @@ public class SettingsActivity extends BaseFragment {
                     numberPicker.setWrapSelectorWheel(false);
                     numberPicker.setValue(ApplicationLoader.fontSize);
                     builder.setView(numberPicker);
-                    builder.setNegativeButton(ApplicationLoader.applicationContext.getString(R.string.Done), new DialogInterface.OnClickListener() {
+                    builder.setPositiveButton(ApplicationLoader.applicationContext.getString(R.string.OK), new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("mainconfig", Activity.MODE_PRIVATE);
@@ -331,16 +331,12 @@ public class SettingsActivity extends BaseFragment {
                     textCell.setText(mContext.getString(R.string.PrivacySettings), false);
                 }
                 else if (i == notificationRow) {
-                    SharedPreferences preferences = mContext.getSharedPreferences("Notifications", Activity.MODE_PRIVATE);
-                    boolean normal = preferences.getBoolean("EnableAll", true), group = preferences.getBoolean("EnableGroup", true);
-                    String value = "…"; // default, indicates more complicated settings (we do not show "off" as notifications may be enabled eg. per-chat)
-                    if( normal && group ) {
-                        value = mContext.getString(R.string.Enabled);
-                    }
-                    else if( normal ) {
-                        value = mContext.getString(R.string.Enabled) + "/" + mContext.getString(R.string.Disabled);
-                    }
-                    textCell.setTextAndValue(mContext.getString(R.string.NotificationsAndSounds), value, true);
+                    // a preview of the settings here would be rather complicated (all options may be overwritten in the
+                    // chats) and either ambiguous or too long.
+                    // We tried to display "On", "On/Off" (only groups disabled) and "..." (normal and groups disabled),
+                    // but this throws more questions than answers (why do I get notifications for XYZ althoug groupis "off", why don't I get notification although "on", is ... an error)
+                    // the control may look better if there is an preview value displayed, however, if this does not work: **Form follows function!**
+                    textCell.setText(mContext.getString(R.string.NotificationsAndSounds), true);
                 }
                 else if (i == backgroundRow) {
                     textCell.setText(mContext.getString(R.string.ChatBackground), true);
