@@ -354,7 +354,11 @@ public class SettingsActivity extends BaseFragment {
                     textCell.setText(mContext.getString(R.string.AccountSettings), true);
                 }
                 else if (i == usernameRow) {
-                    textCell.setText(mContext.getString(R.string.MyName), true);
+                    String value = MrMailbox.getConfig("displayname", "");
+                    if( value.isEmpty()) {
+                        value = mContext.getString(R.string.NotSet);
+                    }
+                    textCell.setTextAndValue(mContext.getString(R.string.MyName), value, true);
                 }
             }
             else if (type == ROWTYPE_HEADER) {
