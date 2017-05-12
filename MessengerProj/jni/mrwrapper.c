@@ -511,6 +511,15 @@ JNIEXPORT jstring Java_com_b44t_messenger_MrMailbox_getInfo(JNIEnv *env, jclass 
 }
 
 
+JNIEXPORT jstring Java_com_b44t_messenger_MrMailbox_getContactEncrInfo(JNIEnv *env, jclass cls, jint contact_id)
+{
+	char* temp = mrmailbox_get_contact_encrinfo(get_mrmailbox_t(env, cls), contact_id);
+		jstring ret = JSTRING_NEW(temp);
+	free(temp);
+	return ret;
+}
+
+
 JNIEXPORT jstring Java_com_b44t_messenger_MrMailbox_cmdline(JNIEnv *env, jclass cls, jstring cmd)
 {
 	CHAR_REF(cmd);

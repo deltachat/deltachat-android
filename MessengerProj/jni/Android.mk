@@ -1599,11 +1599,14 @@ LOCAL_SRC_FILES     += \
 ./image.c \
 ./video.c \
 ./gifvideo.cpp \
+./messenger-backend/src/mraheader.c \
+./messenger-backend/src/mrapeerstate.c \
 ./messenger-backend/src/mrchat.c \
 ./messenger-backend/src/mrchatlist.c \
 ./messenger-backend/src/mrcmdline.c \
 ./messenger-backend/src/mrcontact.c \
 ./messenger-backend/src/mre2ee.c \
+./messenger-backend/src/mre2ee_driver_bsd.c \
 ./messenger-backend/src/mrimap.c \
 ./messenger-backend/src/mrjob.c \
 ./messenger-backend/src/mrloginparam.c \

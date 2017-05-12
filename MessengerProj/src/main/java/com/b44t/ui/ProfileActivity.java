@@ -406,7 +406,16 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                 }
                 else if(position==compareKeysRow)
                 {
-                    Toast.makeText(getParentActivity(), context.getString(R.string.NotYetImplemented), Toast.LENGTH_SHORT).show();
+                    String info_str = MrMailbox.getContactEncrInfo(user_id);
+                    AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
+                    builder.setMessage(info_str);
+                    builder.setPositiveButton(context.getString(R.string.OK), new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            ;
+                        }
+                    });
+                    showDialog(builder.create());
                 }
                 else if(position==startChatRow)
                 {

@@ -91,6 +91,8 @@ public class MrMailbox {
         return MrMailboxBlockContact(m_hMailbox, id, block);
     }
 
+    public native static String getContactEncrInfo(int contact_id);
+
     public static int deleteContact(int id) {
         return MrMailboxDeleteContact(m_hMailbox, id);
     }
