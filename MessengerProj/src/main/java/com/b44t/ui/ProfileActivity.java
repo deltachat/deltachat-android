@@ -408,6 +408,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                 {
                     String info_str = MrMailbox.getContactEncrInfo(user_id);
                     AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
+                    builder.setTitle(ApplicationLoader.applicationContext.getString(R.string.E2ECompareKeys));
                     builder.setMessage(info_str);
                     builder.setPositiveButton(context.getString(R.string.OK), new DialogInterface.OnClickListener() {
                         @Override
