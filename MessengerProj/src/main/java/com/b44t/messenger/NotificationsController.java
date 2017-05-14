@@ -752,6 +752,7 @@ public class NotificationsController {
                     cv.put("count", count);
                     ApplicationLoader.applicationContext.getContentResolver().insert(Uri.parse("content://com.teslacoilsw.notifier/unread_count"), cv);
                 } catch (Throwable e) {
+                    e.printStackTrace();
                 }
 
                 try {
@@ -771,12 +772,12 @@ public class NotificationsController {
                                 intent.putExtra("badge_count_class_name", launcherClassName);
                                 ApplicationLoader.applicationContext.sendBroadcast(intent);
                             } catch (Exception e) {
-
+                                e.printStackTrace();
                             }
                         }
                     });
                 } catch (Throwable e) {
-
+                    e.printStackTrace();
                 }
             }
         });
