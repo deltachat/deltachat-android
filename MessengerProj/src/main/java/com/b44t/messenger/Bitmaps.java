@@ -1,7 +1,6 @@
 /*******************************************************************************
  *
  *                              Delta Chat Android
- *                              Delta Chat Android
  *                        (C) 2013-2016 Nikolai Kudashov
  *                           (C) 2017 Björn Petersen
  *                    Contact: r10s@b44t.com, http://b44t.com
