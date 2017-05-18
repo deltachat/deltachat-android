@@ -493,6 +493,11 @@ local_src_files := \
 	./openssl/crypto/buffer/buf_err.c \
 	./openssl/crypto/buffer/buf_str.c \
 	./openssl/crypto/buffer/buffer.c \
+	./openssl/crypto/cast/c_cfb64.c \
+	./openssl/crypto/cast/c_ecb.c \
+	./openssl/crypto/cast/c_enc.c \
+	./openssl/crypto/cast/c_ofb64.c \
+	./openssl/crypto/cast/c_skey.c \
 	./openssl/crypto/cmac/cm_ameth.c \
 	./openssl/crypto/cmac/cm_pmeth.c \
 	./openssl/crypto/cmac/cmac.c \
@@ -610,6 +615,7 @@ local_src_files := \
 	./openssl/crypto/evp/e_aes.c \
 	./openssl/crypto/evp/e_aes_cbc_hmac_sha1.c \
 	./openssl/crypto/evp/e_bf.c \
+	./openssl/crypto/evp/e_cast.c \
 	./openssl/crypto/evp/e_des.c \
 	./openssl/crypto/evp/e_des3.c \
 	./openssl/crypto/evp/e_null.c \
@@ -1218,7 +1224,6 @@ LOCAL_C_INCLUDES = \
 	$(LOCAL_PATH)/cyrussasl/include/sasl
 
 include $(BUILD_STATIC_LIBRARY)
-
 
 
 ################################################################################
