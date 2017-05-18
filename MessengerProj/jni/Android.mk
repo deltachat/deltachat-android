@@ -1497,6 +1497,7 @@ $(LOCAL_PATH)/breakpad/common/android/include \
 $(LOCAL_PATH)/breakpad \
 $(LOCAL_PATH)/ffmpeg \
 $(LOCAL_PATH)/messenger-backend/libs/libetpan/include \
+$(LOCAL_PATH)/messenger-backend/libs/netpgp \
 $(LOCAL_PATH)/messenger-backend/libs/sqlite
 
 #LOCAL_SRC_FILES     += \
@@ -1604,6 +1605,24 @@ LOCAL_SRC_FILES     += \
 ./image.c \
 ./video.c \
 ./gifvideo.cpp \
+./messenger-backend/libs/netpgp/bufgap.c \
+./messenger-backend/libs/netpgp/compress.c \
+./messenger-backend/libs/netpgp/create.c \
+./messenger-backend/libs/netpgp/crypto.c \
+./messenger-backend/libs/netpgp/keyring.c \
+./messenger-backend/libs/netpgp/misc.c \
+./messenger-backend/libs/netpgp/mj.c \
+./messenger-backend/libs/netpgp/netpgp.c \
+./messenger-backend/libs/netpgp/openssl_crypto.c \
+./messenger-backend/libs/netpgp/packet-parse.c \
+./messenger-backend/libs/netpgp/packet-print.c \
+./messenger-backend/libs/netpgp/packet-show.c \
+./messenger-backend/libs/netpgp/reader.c \
+./messenger-backend/libs/netpgp/signature.c \
+./messenger-backend/libs/netpgp/ssh2pgp.c \
+./messenger-backend/libs/netpgp/symmetric.c \
+./messenger-backend/libs/netpgp/validate.c \
+./messenger-backend/libs/netpgp/writer.c \
 ./messenger-backend/src/mraheader.c \
 ./messenger-backend/src/mrapeerstate.c \
 ./messenger-backend/src/mrchat.c \
@@ -1611,9 +1630,10 @@ LOCAL_SRC_FILES     += \
 ./messenger-backend/src/mrcmdline.c \
 ./messenger-backend/src/mrcontact.c \
 ./messenger-backend/src/mre2ee.c \
-./messenger-backend/src/mre2ee_driver_bsd.c \
+./messenger-backend/src/mre2ee_driver_openssl.c \
 ./messenger-backend/src/mrimap.c \
 ./messenger-backend/src/mrjob.c \
+./messenger-backend/src/mrkey.c \
 ./messenger-backend/src/mrloginparam.c \
 ./messenger-backend/src/mrmailbox.c \
 ./messenger-backend/src/mrmailbox_configure.c \
