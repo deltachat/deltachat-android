@@ -493,6 +493,14 @@ local_src_files := \
 	./openssl/crypto/buffer/buf_err.c \
 	./openssl/crypto/buffer/buf_str.c \
 	./openssl/crypto/buffer/buffer.c \
+	./openssl/crypto/camellia/camellia.c \
+	./openssl/crypto/camellia/cmll_cbc.c \
+	./openssl/crypto/camellia/cmll_cfb.c \
+	./openssl/crypto/camellia/cmll_ctr.c \
+	./openssl/crypto/camellia/cmll_ecb.c \
+	./openssl/crypto/camellia/cmll_misc.c \
+	./openssl/crypto/camellia/cmll_ofb.c \
+	./openssl/crypto/camellia/cmll_utl.c \
 	./openssl/crypto/cast/c_cfb64.c \
 	./openssl/crypto/cast/c_ecb.c \
 	./openssl/crypto/cast/c_enc.c \
@@ -615,6 +623,7 @@ local_src_files := \
 	./openssl/crypto/evp/e_aes.c \
 	./openssl/crypto/evp/e_aes_cbc_hmac_sha1.c \
 	./openssl/crypto/evp/e_bf.c \
+	./openssl/crypto/evp/e_camellia.c \
 	./openssl/crypto/evp/e_cast.c \
 	./openssl/crypto/evp/e_des.c \
 	./openssl/crypto/evp/e_des3.c \
