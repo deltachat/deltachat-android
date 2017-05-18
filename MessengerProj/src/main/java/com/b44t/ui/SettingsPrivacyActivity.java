@@ -57,6 +57,8 @@ public class SettingsPrivacyActivity extends BaseFragment {
     private int manageKeysRow;
     private int rowCount;
 
+    public final int MR_E2EE_DEFAULT_ENABLED = 0;
+
     private final int TYPE_TEXTSETTING = 0;
     private final int TYPE_TEXT_INFO   = 1;
     private final int TYPE_CHECK_CELL  = 2;
@@ -117,7 +119,16 @@ public class SettingsPrivacyActivity extends BaseFragment {
                 }
                 else if(i==e2eEncryptionRow )
                 {
-                    Toast.makeText(getParentActivity(), context.getString(R.string.NotYetImplemented), Toast.LENGTH_SHORT).show();
+                    int oldval = MrMailbox.getConfigInt("e2ee_enabled", MR_E2EE_DEFAULT_ENABLED);
+                    if( oldval == 1 ) {
+                        MrMailbox.setConfig("e2ee_enabled", "0");
+                    }
+                    else {
+                        MrMailbox.setConfig("e2ee_enabled", "1");
+                    }
+                    if (view instanceof TextCheckCell) {
+                        ((TextCheckCell) view).setChecked(oldval == 0);
+                    }
                 }
                 else if(i==manageKeysRow )
                 {
@@ -214,7 +225,7 @@ public class SettingsPrivacyActivity extends BaseFragment {
                 TextCheckCell textCell = (TextCheckCell) view;
                 if( i == e2eEncryptionRow ) {
                     textCell.setTextAndCheck(mContext.getString(R.string.E2EEncryption),
-                            MrMailbox.getConfigInt("e2e_encrypt", 0)!=0, true);
+                            MrMailbox.getConfigInt("e2ee_enabled", MR_E2EE_DEFAULT_ENABLED)!=0, true);
                 }
                 else if( i == readReceiptsRow ) {
                     textCell.setTextAndCheck(mContext.getString(R.string.SendNRcvReadReceipts),
