@@ -1203,6 +1203,7 @@ LOCAL_SRC_FILES := \
 	./messenger-backend/libs/libetpan/src/low-level/smtp/mailsmtp_ssl.c \
 	./messenger-backend/libs/libetpan/src/main/libetpan_version.c \
 	./messenger-backend/libs/libetpan/src/driver/implementation/data-message/data_message_driver.c \
+	./messenger-backend/libs/libetpan/src/driver/implementation/mime-message/mime_message_driver.c \
 	./messenger-backend/libs/libetpan/src/driver/interface/maildriver.c \
 	./messenger-backend/libs/libetpan/src/driver/interface/maildriver_tools.c \
 	./messenger-backend/libs/libetpan/src/driver/interface/maildriver_types.c \
@@ -1212,7 +1213,9 @@ LOCAL_SRC_FILES := \
 	./messenger-backend/libs/libetpan/src/driver/interface/mailmessage_tools.c \
 	./messenger-backend/libs/libetpan/src/driver/interface/mailmessage_types.c \
 	./messenger-backend/libs/libetpan/src/driver/interface/mailstorage.c \
-	./messenger-backend/libs/libetpan/src/driver/interface/mailstorage_tools.c
+	./messenger-backend/libs/libetpan/src/driver/interface/mailstorage_tools.c \
+	./messenger-backend/libs/libetpan/src/engine/mailprivacy.c \
+	./messenger-backend/libs/libetpan/src/engine/mailprivacy_tools.c
 LOCAL_C_INCLUDES = \
 	$(LOCAL_PATH)/messenger-backend/libs/libetpan/src \
 	$(LOCAL_PATH)/messenger-backend/libs/libetpan/src/data-types \
