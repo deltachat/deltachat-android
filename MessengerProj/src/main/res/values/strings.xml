@@ -376,4 +376,5 @@
     <string name="SettingsFor">Settings for %1$s</string>
     <string name="AutoplayGifs">Autoplay GIFs</string>
     <string name="HelpUrl">https://delta.chat/en/help</string>
+    <string name="EncryptedMessage">Encrypted message</string>
 </resources>
