@@ -57,7 +57,7 @@ public class SettingsPrivacyActivity extends BaseFragment {
     private int manageKeysRow;
     private int rowCount;
 
-    public final int MR_E2EE_DEFAULT_ENABLED = 0;
+    public final int MR_E2EE_DEFAULT_ENABLED = 1; // when changing this constant, also change it in the C-part
 
     private final int TYPE_TEXTSETTING = 0;
     private final int TYPE_TEXT_INFO   = 1;
