@@ -1018,7 +1018,7 @@ public class AndroidUtilities {
                         if (copied) {
                             if ( add_to_download_manager ) {
                                 DownloadManager downloadManager = (DownloadManager) ApplicationLoader.applicationContext.getSystemService(Context.DOWNLOAD_SERVICE);
-                                downloadManager.addCompletedDownload(destPathNFile.getName(), destPathNFile.getName(), false, getMimetype(msg_file_name, msg_mime), destPathNFile.getAbsolutePath(), destPathNFile.length(), true);
+                                downloadManager.addCompletedDownload(destPathNFile.getName(), destPathNFile.getName(), true, getMimetype(msg_file_name, msg_mime), destPathNFile.getAbsolutePath(), destPathNFile.length(), true);
                             } else {
                                 addMediaToGallery(Uri.fromFile(destPathNFile));
                             }
