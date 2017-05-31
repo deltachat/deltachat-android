@@ -29,6 +29,7 @@ package com.b44t.messenger;
 
 
 import android.app.Activity;
+import android.app.DownloadManager;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
@@ -39,6 +40,7 @@ import com.b44t.ui.Components.ForegroundDetector;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
@@ -69,6 +71,12 @@ public class MrMailbox {
 
     public native static String getInfo();
     public native static String cmdline(String cmd);
+
+    public final static int MR_IMEX_SELF_KEYS = 0x01;
+    public final static int MR_EXPORT_BACKUP = 0x02;
+    public native static int importStuff(int what, String dir);
+    public native static void exportStuff(int what, String dir);
+
     public native static void heartbeat();
 
     private static long           m_hMailbox = 0; // do not rename this, is used in C-part
@@ -184,6 +192,8 @@ public class MrMailbox {
     public final static int MR_EVENT_CONFIGURE_ENDED          = 2040;
     public final static int MR_EVENT_CONFIGURE_PROGRESS       = 2041;
 
+    public final static int MR_EVENT_EXPORT_FILE_WRITTEN      = 2052;
+
     public final static int MR_EVENT_IS_ONLINE                = 2080;
     public final static int MR_EVENT_GET_STRING               = 2091;
     public final static int MR_EVENT_GET_QUANTITIY_STRING     = 2092;
@@ -215,6 +225,20 @@ public class MrMailbox {
                         NotificationCenter.getInstance().postNotificationName(NotificationCenter.configureProgress, (int)data1);
                     }
                 });
+                return 0;
+
+            case MR_EVENT_EXPORT_FILE_WRITTEN: {
+                final String file_name = CPtr2String(data1);
+                final String file_mime = CPtr2String(data2);
+                AndroidUtilities.runOnUIThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        File file = new File(file_name);
+                        DownloadManager downloadManager = (DownloadManager) ApplicationLoader.applicationContext.getSystemService(Context.DOWNLOAD_SERVICE);
+                        downloadManager.addCompletedDownload(file.getName(), file.getName(), true, file_mime, file.getAbsolutePath(), file.length(), true);
+                    }
+                });
+                }
                 return 0;
 
             case MR_EVENT_MSGS_CHANGED:

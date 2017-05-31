@@ -22,9 +22,15 @@
 
 package com.b44t.ui;
 
+import android.Manifest;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
+import android.os.Build;
+import android.os.Environment;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -32,6 +38,7 @@ import android.widget.FrameLayout;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.b44t.messenger.AndroidUtilities;
 import com.b44t.messenger.ApplicationLoader;
 import com.b44t.messenger.MrChat;
 import com.b44t.messenger.MrMailbox;
@@ -44,6 +51,8 @@ import com.b44t.ui.Cells.TextCheckCell;
 import com.b44t.ui.Cells.TextInfoCell;
 import com.b44t.ui.Cells.TextSettingsCell;
 import com.b44t.ui.Components.LayoutHelper;
+
+import java.io.File;
 
 public class SettingsPrivacyActivity extends BaseFragment {
 
@@ -132,7 +141,38 @@ public class SettingsPrivacyActivity extends BaseFragment {
                 }
                 else if(i==manageKeysRow )
                 {
-                    Toast.makeText(getParentActivity(), context.getString(R.string.NotYetImplemented), Toast.LENGTH_SHORT).show();
+                    AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity()); // was: BottomSheet.Builder
+                    builder.setTitle(ApplicationLoader.applicationContext.getString(R.string.E2EManagePrivateKeys));
+                    CharSequence[] items = new CharSequence[]{
+                            ApplicationLoader.applicationContext.getString(R.string.ImportPrivateKeys),
+                            ApplicationLoader.applicationContext.getString(R.string.ExportPrivateKeys),
+                    };
+                    builder.setItems(items, new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    if( i== 0 ) {
+                                        if (Build.VERSION.SDK_INT >= 23 && getParentActivity().checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+                                            getParentActivity().requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 4);
+                                            return;
+                                        }
+                                        File downloadsDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
+                                        MrMailbox.importStuff(MrMailbox.MR_IMEX_SELF_KEYS, downloadsDir.getAbsolutePath());
+                                        AndroidUtilities.showDoneHint(context);
+                                    }
+                                    else {
+                                        if (Build.VERSION.SDK_INT >= 23 && getParentActivity().checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+                                            getParentActivity().requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 4);
+                                            return;
+                                        }
+                                        File downloadsDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
+                                        downloadsDir.mkdirs();
+                                        MrMailbox.exportStuff(MrMailbox.MR_IMEX_SELF_KEYS, downloadsDir.getAbsolutePath());
+                                        AndroidUtilities.showDoneHint(context);
+                                    }
+                                }
+                            }
+                    );
+                    showDialog(builder.create());
                 }
                 else if(i==readReceiptsRow )
                 {

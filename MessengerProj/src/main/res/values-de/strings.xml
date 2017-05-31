@@ -376,4 +376,6 @@
     <string name="AutoplayGifs">GIFs automatisch abspielen</string>
     <string name="HelpUrl">https://delta.chat/de/help</string>
     <string name="EncryptedMessage">Verschlüsselte Nachricht</string>
+    <string name="ImportPrivateKeys">Aus \"Downloads\" importieren</string>
+    <string name="ExportPrivateKeys">Nach \"Downloads\" exportieren</string>
 </resources>
