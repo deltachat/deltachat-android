@@ -40,10 +40,12 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.FrameLayout;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.b44t.messenger.ApplicationLoader;
 import com.b44t.messenger.MrMailbox;
 import com.b44t.messenger.R;
+import com.b44t.messenger.UserConfig;
 import com.b44t.messenger.browser.Browser;
 import com.b44t.ui.ActionBar.ActionBar;
 import com.b44t.ui.ActionBar.ActionBarMenu;
@@ -54,6 +56,7 @@ import com.b44t.ui.Adapters.BaseFragmentAdapter;
 import com.b44t.ui.Cells.DrawerProfileCell;
 import com.b44t.ui.Cells.HeaderCell;
 import com.b44t.ui.Cells.ShadowSectionCell;
+import com.b44t.ui.Cells.TextCheckCell;
 import com.b44t.ui.Cells.TextDetailSettingsCell;
 import com.b44t.ui.Cells.TextSettingsCell;
 import com.b44t.ui.Components.LayoutHelper;
@@ -64,7 +67,8 @@ public class SettingsActivity extends BaseFragment {
 
     // the list
     private int profileRow, accountHeaderRow, usernameRow, accountSettingsRow, accountShadowRow;
-    private int settingsHeaderRow, privacyRow, notificationRow, backgroundRow, textSizeRow, advRow, settingsShadowRow;
+    private int settingsHeaderRow, notificationRow, backgroundRow, textSizeRow, advRow, settingsShadowRow;
+    private int readReceiptsRow, blockedRow, passcodeRow;
     private int aboutHeaderRow, aboutRow, inviteRow, helpRow, aboutShadowRow;
     private int rowCount;
 
@@ -76,7 +80,8 @@ public class SettingsActivity extends BaseFragment {
     private static final int ROWTYPE_HEADER          = 2;
     private static final int ROWTYPE_DETAIL_SETTINGS = 3;
     private static final int ROWTYPE_PROFILE         = 4;
-    private static final int ROWTYPE_COUNT           = 5;
+    private static final int ROWTYPE_CHECK           = 5;
+    private static final int ROWTYPE_COUNT           = 6;
 
     private ListView listView;
 
@@ -108,7 +113,6 @@ public class SettingsActivity extends BaseFragment {
         }
 
         if (DrawerLayoutContainer.USE_DRAWER) {
-            privacyRow         = rowCount++;
             notificationRow    = rowCount++;
             backgroundRow      = rowCount++;
             textSizeRow        = rowCount++;
@@ -118,9 +122,11 @@ public class SettingsActivity extends BaseFragment {
             notificationRow    = rowCount++;
             backgroundRow      = rowCount++;
             textSizeRow        = rowCount++;
-            privacyRow         = rowCount++;
             advRow = -1;
         }
+        readReceiptsRow=-1;
+        passcodeRow = rowCount++;
+        blockedRow = rowCount++;
         settingsShadowRow  = rowCount++;
 
         aboutHeaderRow     = rowCount++;
@@ -191,8 +197,19 @@ public class SettingsActivity extends BaseFragment {
                 else if (i == accountSettingsRow) {
                     presentFragment(new SettingsAccountActivity(null));
                 }
-                else if (i == privacyRow) {
-                    presentFragment(new SettingsPrivacyActivity());
+                else if (i == blockedRow) {
+                    presentFragment(new BlockedUsersActivity());
+                }
+                else if (i == passcodeRow) {
+                    if (UserConfig.passcodeHash.length() > 0) {
+                        presentFragment(new PasscodeActivity(PasscodeActivity.SCREEN2_ENTER_CODE2));
+                    } else {
+                        presentFragment(new PasscodeActivity(PasscodeActivity.SCREEN0_SETTINGS));
+                    }
+                }
+                else if(i==readReceiptsRow )
+                {
+                    Toast.makeText(getParentActivity(), ApplicationLoader.applicationContext.getString(R.string.NotYetImplemented), Toast.LENGTH_SHORT).show();
                 }
                 else if (i == notificationRow) {
                     presentFragment(new SettingsNotificationsActivity());
@@ -282,7 +299,7 @@ public class SettingsActivity extends BaseFragment {
         @Override
         public boolean isEnabled(int i) {
             return i == textSizeRow || i == usernameRow || i == accountSettingsRow ||
-                    i == privacyRow || i == notificationRow || i == backgroundRow || i == advRow ||
+                    i == blockedRow || i==passcodeRow || i==readReceiptsRow || i == notificationRow || i == backgroundRow || i == advRow ||
                     i == aboutRow || i == inviteRow || i == helpRow;
         }
 
@@ -327,8 +344,13 @@ public class SettingsActivity extends BaseFragment {
                     view.setBackgroundColor(0xffffffff);
                 }
                 TextSettingsCell textCell = (TextSettingsCell) view;
-                if (i == privacyRow) {
-                    textCell.setText(mContext.getString(R.string.PrivacySettings), false);
+                if (i == blockedRow) {
+                    String cntStr = String.format("%d", MrMailbox.getBlockedCount());
+                    textCell.setTextAndValue(ApplicationLoader.applicationContext.getString(R.string.BlockedContacts), cntStr, false);
+                }
+                else if (i == passcodeRow) {
+                    String val = UserConfig.passcodeHash.length() > 0? mContext.getString(R.string.Enabled) : mContext.getString(R.string.Disabled);
+                    textCell.setTextAndValue(mContext.getString(R.string.Passcode), val, true);
                 }
                 else if (i == notificationRow) {
                     // a preview of the settings here would be rather complicated (all options may be overwritten in the
@@ -341,7 +363,7 @@ public class SettingsActivity extends BaseFragment {
                 else if (i == backgroundRow) {
                     textCell.setText(mContext.getString(R.string.ChatBackground), true);
                 }
-                if (i == textSizeRow) {
+                else if (i == textSizeRow) {
                     SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("mainconfig", Activity.MODE_PRIVATE);
                     int size = preferences.getInt("msg_font_size", SettingsAdvActivity.defMsgFontSize());
                     textCell.setTextAndValue(mContext.getString(R.string.TextSize), String.format("%d", size), true);
@@ -409,6 +431,17 @@ public class SettingsActivity extends BaseFragment {
                     textCell.setTextAndValue(mContext.getString(R.string.AboutThisProgram), "v" + IntroActivity.getVersion(), true);
                 }
             }
+            else if (type == ROWTYPE_CHECK ) {
+                if (view == null) {
+                    view = new TextCheckCell(mContext);
+                    view.setBackgroundColor(0xffffffff);
+                }
+                TextCheckCell textCell = (TextCheckCell) view;
+                if( i == readReceiptsRow ) {
+                    textCell.setTextAndCheck(mContext.getString(R.string.SendNRcvReadReceipts),
+                            MrMailbox.getConfigInt("read_receipts", 0)!=0, true);
+                }
+            }
             return view;
         }
 
@@ -425,6 +458,9 @@ public class SettingsActivity extends BaseFragment {
             }
             else if (i == settingsHeaderRow || i == aboutHeaderRow || i == accountHeaderRow) {
                 return ROWTYPE_HEADER;
+            }
+            else if( i==readReceiptsRow ) {
+                return ROWTYPE_CHECK;
             }
             else {
                 return ROWTYPE_TEXT_SETTINGS;

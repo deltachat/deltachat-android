@@ -22,18 +22,22 @@
 
 package com.b44t.ui;
 
+import android.Manifest;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.os.Build;
+import android.os.Environment;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.FrameLayout;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.b44t.messenger.AndroidUtilities;
 import com.b44t.messenger.MediaController;
@@ -50,11 +54,15 @@ import com.b44t.ui.ActionBar.BaseFragment;
 import com.b44t.ui.Components.LayoutHelper;
 import com.b44t.ui.Components.NumberPicker;
 
+import java.io.File;
+
 
 public class SettingsAdvActivity extends BaseFragment {
 
     // the list
     private int directShareRow, cacheRow, raiseToSpeakRow, sendByEnterRow, autoplayGifsRow, showUnknownSendersRow, finalShadowRow;
+    private int e2eEncryptionRow;
+    private int manageKeysRow;
     private int rowCount;
 
     private static final int ROWTYPE_SHADOW          = 0;
@@ -64,6 +72,7 @@ public class SettingsAdvActivity extends BaseFragment {
 
     private ListView listView;
 
+    public final int MR_E2EE_DEFAULT_ENABLED = 1; // when changing this constant, also change it in the C-part
 
     public static int defMsgFontSize() {
         return AndroidUtilities.isTablet() ? 18 : 16;
@@ -85,6 +94,8 @@ public class SettingsAdvActivity extends BaseFragment {
         sendByEnterRow = rowCount++;
         raiseToSpeakRow = rowCount++; // outgoing message
         cacheRow = -1;// for now, the - non-functional - page is reachable by the "storage settings" in the "android App Settings" only
+        e2eEncryptionRow        = rowCount++;
+        manageKeysRow           = rowCount++;
         finalShadowRow = rowCount++;
 
         return true;
@@ -169,6 +180,54 @@ public class SettingsAdvActivity extends BaseFragment {
                     editor.putInt("notify2_" + MrChat.MR_CHAT_ID_DEADDROP, oldval==1? 2 /*always muted*/ : 0);
                     editor.apply();
                 }
+                else if(i==e2eEncryptionRow )
+                {
+                    int oldval = MrMailbox.getConfigInt("e2ee_enabled", MR_E2EE_DEFAULT_ENABLED);
+                    if( oldval == 1 ) {
+                        MrMailbox.setConfig("e2ee_enabled", "0");
+                    }
+                    else {
+                        MrMailbox.setConfig("e2ee_enabled", "1");
+                    }
+                    if (view instanceof TextCheckCell) {
+                        ((TextCheckCell) view).setChecked(oldval == 0);
+                    }
+                }
+                else if(i==manageKeysRow )
+                {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity()); // was: BottomSheet.Builder
+                    builder.setTitle(ApplicationLoader.applicationContext.getString(R.string.E2EManagePrivateKeys));
+                    CharSequence[] items = new CharSequence[]{
+                            ApplicationLoader.applicationContext.getString(R.string.ImportPrivateKeys),
+                            ApplicationLoader.applicationContext.getString(R.string.ExportPrivateKeys),
+                    };
+                    builder.setItems(items, new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    if( i== 0 ) {
+                                        if (Build.VERSION.SDK_INT >= 23 && getParentActivity().checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+                                            getParentActivity().requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 4);
+                                            return;
+                                        }
+                                        File downloadsDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
+                                        MrMailbox.importStuff(MrMailbox.MR_IMEX_SELF_KEYS, downloadsDir.getAbsolutePath());
+                                        AndroidUtilities.showDoneHint(ApplicationLoader.applicationContext);
+                                    }
+                                    else {
+                                        if (Build.VERSION.SDK_INT >= 23 && getParentActivity().checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+                                            getParentActivity().requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 4);
+                                            return;
+                                        }
+                                        File downloadsDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
+                                        downloadsDir.mkdirs();
+                                        MrMailbox.exportStuff(MrMailbox.MR_IMEX_SELF_KEYS, downloadsDir.getAbsolutePath());
+                                        AndroidUtilities.showDoneHint(ApplicationLoader.applicationContext);
+                                    }
+                                }
+                            }
+                    );
+                    showDialog(builder.create());
+                }
             }
         });
 
@@ -189,8 +248,8 @@ public class SettingsAdvActivity extends BaseFragment {
 
         @Override
         public boolean isEnabled(int i) {
-            return i == sendByEnterRow ||
-                    i == cacheRow || i == raiseToSpeakRow || i == autoplayGifsRow || i==showUnknownSendersRow || i == directShareRow;
+            int type = getItemViewType(i);
+            return type!=ROWTYPE_SHADOW;
         }
 
         @Override
@@ -231,7 +290,10 @@ public class SettingsAdvActivity extends BaseFragment {
                 TextSettingsCell textCell = (TextSettingsCell) view;
                 if (i == cacheRow) {
                     textCell.setText(mContext.getString(R.string.CacheSettings), true);
-                } 
+                }
+                else if( i==manageKeysRow ) {
+                    textCell.setText(mContext.getString(R.string.E2EManagePrivateKeys), false);
+                }
             } else if (type == ROWTYPE_CHECK) {
                 if (view == null) {
                     view = new TextCheckCell(mContext);
@@ -243,7 +305,7 @@ public class SettingsAdvActivity extends BaseFragment {
                 if (i == sendByEnterRow) {
                     textCell.setTextAndCheck(mContext.getString(R.string.SendByEnter), preferences.getBoolean("send_by_enter", false), true);
                 } else if (i == raiseToSpeakRow) {
-                    textCell.setTextAndCheck(mContext.getString(R.string.RaiseToSpeak), MediaController.getInstance().canRaiseToSpeak(), false);
+                    textCell.setTextAndCheck(mContext.getString(R.string.RaiseToSpeak), MediaController.getInstance().canRaiseToSpeak(), true);
                 } else if (i == autoplayGifsRow) {
                     textCell.setTextAndCheck(mContext.getString(R.string.AutoplayGifs), MediaController.getInstance().canAutoplayGifs(), true);
                 } else if (i == directShareRow) {
@@ -253,6 +315,10 @@ public class SettingsAdvActivity extends BaseFragment {
                     textCell.setTextAndCheck(mContext.getString(R.string.DeaddropInChatlist),
                             MrMailbox.getConfigInt("show_deaddrop", 0)!=0, true);
                 }
+                else if( i == e2eEncryptionRow ) {
+                    textCell.setTextAndCheck(mContext.getString(R.string.E2EEncryption),
+                            MrMailbox.getConfigInt("e2ee_enabled", MR_E2EE_DEFAULT_ENABLED)!=0, true);
+                }
             }
             return view;
         }
@@ -261,7 +327,7 @@ public class SettingsAdvActivity extends BaseFragment {
         public int getItemViewType(int i) {
             if (i == finalShadowRow ) {
                 return ROWTYPE_SHADOW;
-            } else if ( i == sendByEnterRow || i == raiseToSpeakRow || i == autoplayGifsRow || i==showUnknownSendersRow || i == directShareRow) {
+            } else if ( i == sendByEnterRow || i == raiseToSpeakRow || i == autoplayGifsRow || i==showUnknownSendersRow || i == directShareRow || i==e2eEncryptionRow) {
                 return ROWTYPE_CHECK;
             } else {
                 return ROWTYPE_TEXT_SETTINGS;
