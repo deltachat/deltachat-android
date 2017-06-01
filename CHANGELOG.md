@@ -1,5 +1,12 @@
 # Delta Chat Changelog
 
+## v0.9.0
+2017-06-01
+
+* Add end-to-end-encrypting following the OpenPGP and Autocrypt standards
+* Add a function to compare keys
+* Pimp GUI
+
 ## v0.1.36
 2017-05-04
 
