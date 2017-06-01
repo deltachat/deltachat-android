@@ -37,7 +37,6 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.FrameLayout;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.b44t.messenger.AndroidUtilities;
 import com.b44t.messenger.MediaController;
@@ -52,7 +51,6 @@ import com.b44t.ui.Cells.TextSettingsCell;
 import com.b44t.ui.ActionBar.ActionBar;
 import com.b44t.ui.ActionBar.BaseFragment;
 import com.b44t.ui.Components.LayoutHelper;
-import com.b44t.ui.Components.NumberPicker;
 
 import java.io.File;
 
@@ -204,16 +202,25 @@ public class SettingsAdvActivity extends BaseFragment {
                     builder.setItems(items, new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialogInterface, int i) {
-                                    if( i== 0 ) {
+                                    if( i== 0/*import*/ ) {
                                         if (Build.VERSION.SDK_INT >= 23 && getParentActivity().checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
                                             getParentActivity().requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 4);
                                             return;
                                         }
-                                        File downloadsDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
-                                        MrMailbox.importStuff(MrMailbox.MR_IMEX_SELF_KEYS, downloadsDir.getAbsolutePath());
-                                        AndroidUtilities.showDoneHint(ApplicationLoader.applicationContext);
+                                        AlertDialog.Builder builder2 = new AlertDialog.Builder(getParentActivity());
+                                        builder2.setPositiveButton(ApplicationLoader.applicationContext.getString(R.string.OK), new DialogInterface.OnClickListener() {
+                                            @Override
+                                            public void onClick(DialogInterface dialogInterface, int i) {
+                                                File downloadsDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
+                                                MrMailbox.importStuff(MrMailbox.MR_IMEX_SELF_KEYS, downloadsDir.getAbsolutePath());
+                                                AndroidUtilities.showDoneHint(ApplicationLoader.applicationContext);
+                                            }
+                                        });
+                                        builder2.setNegativeButton(ApplicationLoader.applicationContext.getString(R.string.Cancel), null);
+                                        builder2.setMessage(ApplicationLoader.applicationContext.getString(R.string.ImportPrivateKeysAsk));
+                                        showDialog(builder2.create());
                                     }
-                                    else {
+                                    else /*export*/ {
                                         if (Build.VERSION.SDK_INT >= 23 && getParentActivity().checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
                                             getParentActivity().requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 4);
                                             return;
