@@ -380,4 +380,8 @@
     <string name="ImportPrivateKeys">Import from \"Downloads\"</string>
     <string name="ExportPrivateKeys">Export to \"Downloads\"</string>
     <string name="ImportPrivateKeysAsk">Import private keys from \"Downloads\"?\n\n• Existing private keys are not deleted\n\n• The last imported key will be used as the new default key\n\nContinue?</string>
+    <plurals name="ImportKeysDone">
+        <item quantity="one">%d key imported</item>
+        <item quantity="other">%d keys imported</item>
+    </plurals>
 </resources>

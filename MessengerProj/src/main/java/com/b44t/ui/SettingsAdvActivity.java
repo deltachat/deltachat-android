@@ -212,8 +212,9 @@ public class SettingsAdvActivity extends BaseFragment {
                                             @Override
                                             public void onClick(DialogInterface dialogInterface, int i) {
                                                 File downloadsDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
-                                                MrMailbox.importStuff(MrMailbox.MR_IMEX_SELF_KEYS, downloadsDir.getAbsolutePath());
-                                                AndroidUtilities.showDoneHint(ApplicationLoader.applicationContext);
+                                                int cnt = MrMailbox.importStuff(MrMailbox.MR_IMEX_SELF_KEYS, downloadsDir.getAbsolutePath());
+                                                String cntStr = ApplicationLoader.applicationContext.getResources().getQuantityString(R.plurals.ImportKeysDone, cnt, cnt);
+                                                AndroidUtilities.showHint(ApplicationLoader.applicationContext, cntStr);
                                             }
                                         });
                                         builder2.setNegativeButton(ApplicationLoader.applicationContext.getString(R.string.Cancel), null);
