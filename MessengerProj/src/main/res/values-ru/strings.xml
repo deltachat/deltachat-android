@@ -83,7 +83,7 @@
     <string name="Default">По умолчанию</string>
     <string name="OnlyIfSilent">Только если тишина</string>
     <string name="ChatBackground">Фоновое изображение чата</string>
-    <string name="SendByEnter">Отправить нажав "ввод"</string>
+    <string name="SendByEnter">Отправить нажав "Ввод"</string>
     <string name="Help">Помощь</string>
     <string name="Enabled">Вкл</string>
     <string name="Disabled">Выкл</string>
@@ -115,7 +115,7 @@
     <!--passcode view-->
     <string name="Passcode">Код блокировки</string>
     <string name="ChangePasscode">Изменить код блокировки</string>
-    <string name="ChangePasscodeInfo">Когда вы установите дополнительный код доступа, на странице чатов появится значок блокировки. Нажмите, чтобы заблокировать и разблокировать приложение. \ N \ nПримечание. Если вы забудете пароль, вам нужно будет удалить и переустановить приложение.</string>
+    <string name="ChangePasscodeInfo">Когда вы установите дополнительный код доступа, на странице чатов появится значок блокировки. Нажмите, чтобы заблокировать и разблокировать приложение.\n\nПримечание: если вы забудете пароль, вам нужно будет удалить и переустановить приложение.</string>
     <string name="PasscodePIN">ПИН</string>
     <string name="PasscodePassword">Пароль</string>
     <string name="EnterCurrentPasscode">Введите текущий код блокировки</string>
@@ -126,7 +126,7 @@
     <string name="PasscodeDoNotMatch">Код блокировки не подходит</string>
     <string name="AutoLock">Автоблокировка</string>
     <string name="AutoLockInfo">Необходим код блокировки если лимит времени превышен.</string>
-    <string name="UnlockFingerprint">Раблокировать с помощью отпечатка пальца</string>
+    <string name="UnlockFingerprint">Разблокировать с помощью отпечатка пальца</string>
     <string name="FingerprintInfo">Подтвердить отпечаток пальца для продолжения</string>
     <string name="FingerprintNotRecognized">Отпечаток пальца не опознан. Повторите снова</string>
     <!--photo gallery view-->
@@ -220,7 +220,7 @@
     <string name="Intro4Message"><![CDATA[<b>Безлимитные</b>]]> чаты, фото, видео, аудио сообщения и многое другое. Поддержка различных платформ и устройств.</string>
 
     <string name="Intro5Headline">Бесплатный</string>
-    <string name="Intro5Message"><![CDATA[<b>Delta Chat</b>]]> бесплатен навсегда.<![CDATA[<br/>]]>Открытое программное обеспечение. Без рекламы. Без навязчивых подписок. Без привязки к поставщику услуг.</string>
+    <string name="Intro5Message"><![CDATA[<b>Delta Chat</b>]]> бесплатен навсегда.<![CDATA[<br/>]]>Открытое ПО. Без рекламы. Без навязчивых подписок. Без привязки к поставщику услуг.</string>
 
     <string name="Intro6Headline">Безопасный</string>
     <string name="Intro6Message"><![CDATA[<b>Шифрование</b>]]> со всеми известными алгоритмами. Сообщения остаются на ваших серверах.</string>
@@ -235,15 +235,15 @@
     </plurals>
     <plurals name="Contacts">
         <item quantity="one">%d контакт</item>
-        <item quantity="other">%d контакты</item>
+        <item quantity="other">%d контактов</item>
     </plurals>
     <plurals name="MeAndMembers">
         <item quantity="one">Я и %d участник</item>
-        <item quantity="other">Я и %d участник</item>
+        <item quantity="other">Я и %d участников</item>
     </plurals>
     <plurals name="NewMessages">
         <item quantity="one">%d новое сообщение</item>
-        <item quantity="other">%d новые сообщения</item>
+        <item quantity="other">%d новых сообщений</item>
     </plurals>
     <plurals name="messages">
         <item quantity="one">%d сообщение</item>
@@ -292,14 +292,14 @@
         <item quantity="other">Не более %1$d сообщений в течении %2$s</item>
     </plurals>
     <!--date formatters-->
-    <string name="formatterMonthYear">MMMM yyyy</string>
-    <string name="formatterMonth">MMM dd</string>
-    <string name="formatterYear">dd.MM.yyyy</string>
-    <string name="chatDate">EEE, MMMM d</string>
-    <string name="chatFullDate">EEE, MMMM d, yyyy</string>
+    <string name="formatterMonthYear">ММММ гггг</string>
+    <string name="formatterMonth">МММ дд</string>
+    <string name="formatterYear">дд.ММ.гггг</string>
+    <string name="chatDate">EEE, ММММ д</string>
+    <string name="chatFullDate">EEE, ММММ д, гггг</string>
     <string name="formatterWeek">EEE</string>
-    <string name="formatterDay24H">HH:mm</string>
-    <string name="formatterDay12H">h:mm a</string>
+    <string name="formatterDay24H">ЧЧ:мм</string>
+    <string name="formatterDay12H">ч:мм a</string>
     <string name="formatDateAtTime">%1$s в %2$s</string>
     <string name="AccountSettings">Настройки аккаунта</string>
     <string name="MyAccount">Мой аккаунт</string>
@@ -320,7 +320,7 @@
     <string name="MyAccountExplain">Для известных поставщиков электронной почты дополнительные настройки определяются автоматически.</string>
     <string name="MyAccountExplain2" >Иногда, <![CDATA[<b>]]>IMAP должен быть включен<![CDATA[</b>]]> в веб-интерфейсе электронной почты.\n\nВ случае затруднений, обратитесь к своему поставщику электронной почты или компентентным друзьям.</string>
     <string name="AccountNotConfigured">Аккаунт не настроен</string>
-    <string name="AboutThisProgram">О Delta Chat (Дельта Чат)</string>
+    <string name="AboutThisProgram">Delta Chat (Дельта Чат)</string>
     <string name="NotSet">Не задано</string>
     <string name="NewChat">Новый чат</string>
     <string name="Deaddrop">Почтовый ящик</string>
@@ -328,7 +328,7 @@
     <string name="MuteAlways">Всегда отключено</string>
     <string name="AskStartChatWith">Начать чат с <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>?</string>
     <string name="DeaddropHint">Чтобы начать чат, нажмите стрелку ответа.</string>
-    <string name="NotYetImplemented">Эта функция недоступна или неполна.</string>
+    <string name="NotYetImplemented">Эта функция недоступна или в разработке.</string>
     <string name="DefaultStatusText">Отправлено из Delta Chat Messenger</string>
     <string name="Name" >Имя</string>
     <string name="EmailAddress" >Адрес электронной почты</string>
@@ -340,15 +340,15 @@
     the string needed for video time+size (0:00, 12,3 Mib) -->
     <string name="OneMoment">Один момент …</string>
     <string name="NoChatsHelp">Начните обмен сообщениями, нажав кнопку нового чата в нижнем правом углу или коснитесь кнопки меню для получения дополнительных параметров.</string>
-    <string name="Intro7Message"><![CDATA[<b>Delta Chat</b>]]> безопасен для использования в бизнесе, основанным на совместимых стандартах.</string>
-    <string name="InviteMenuEntry">Отправить приглашения</string>
-    <string name="InviteText">Я\ использую Delta Chat messenger сейчас - %1$s - вы можете написать мне тоже %2$s</string>
+    <string name="Intro7Message"><![CDATA[<b>Delta Chat</b>]]> безопасен для использования в бизнесе, основан на совместимых стандартах.</string>
+    <string name="InviteMenuEntry">Отправить приглашение</string>
+    <string name="InviteText">Я использую систему мгновенных сообщений Delta Chat - %1$s - вы тоже можете мне написать на %2$s</string>
     <string name="AdvancedSettings">Расширенные настройки</string>
     <string name="AskResetNotifications" >Сбросить все настройки уведомлений и звуки этой страницы, а также ваших контактов и групп?</string>
     <string name="AttachFiles">Прикрепить файлы</string>
     <string name="ErrGroupNameEmpty">Введите название группы.</string>
     <string name="MsgNewGroupDraftHint">Напишите первое сообщение, чтобы другие могли отвечать в этой группе.\n\n• Это нормально, если не все участники используют Delta Chat.\n\n• Доставка первого сообщения может занять некоторое время.</string>
-    <string name="MsgNewGroupDraft">Привет!, Я только что создал группу \"%1$s\" для нас.</string>
+    <string name="MsgNewGroupDraft">Привет! Я только что создал группу \"%1$s\" для нас.</string>
     <string name="MsgGroupNameChanged">Название группы изменено с \"%1$s\" в \"%2$s\".</string>
     <string name="MsgGroupImageChanged">Изображение группы изменено.</string>
     <string name="MsgMemberAddedToGroup">Участник %1$s добавлен.</string>
@@ -371,8 +371,17 @@
     <string name="NoNetwork">Сеть недоступна.</string>
     <string name="Audio">Аудио</string>
     <string name="PleaseCutVideoToMaxSize">Обрежьте видео до максимального размера в %1$s.</string>
-    <string name="PermNotificationTitle">Подключен к %1$s</string>
-    <string name="PermNotificationText">Ожидание сообщений …</string>
+    <string name="PermNotificationTitle">Связан с %1$s</string>
+    <string name="PermNotificationText">Подключён…</string>
     <string name="SettingsFor">Настройки для %1$s</string>
-
-</resources>
+    <string name="AutoplayGifs">Автозапуск GIF</string>
+    <string name="HelpUrl">https://delta.chat/en/help</string>
+    <string name="EncryptedMessage">Зашифрованное сообщение</string>
+    <string name="ImportPrivateKeys">Импортировать из \"Загрузки\"</string>
+    <string name="ExportPrivateKeys">Экспортировать в \"Загрузки\"</string>
+    <string name="ImportPrivateKeysAsk">Импортировать приватный ключи из \"Загрузки\"?\n\n• Существующие ключи не удалены\n\n• Последний ключ будет использован как новый по умолчанию\n\nПродолжить?</string>
+    <plurals name="ImportKeysDone">
+        <item quantity="one">%d ключ импортирован</item>
+        <item quantity="other">%d ключи импортированы</item>
+        </plurals>
+    </resources>
