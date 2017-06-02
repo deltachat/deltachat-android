@@ -371,8 +371,8 @@
     <string name="NoNetwork">Сеть недоступна.</string>
     <string name="Audio">Аудио</string>
     <string name="PleaseCutVideoToMaxSize">Обрежьте видео до максимального размера в %1$s.</string>
-    <string name="PermNotificationTitle">Подключен к %1$s</string>
-    <string name="PermNotificationText">Ожидание сообщений …</string>
+    <string name="PermNotificationTitle">Связан с %1$s</string>
+    <string name="PermNotificationText">Подключён…</string>
     <string name="SettingsFor">Настройки для %1$s</string>
     <string name="AutoplayGifs">Автозапуск GIF</string>
     <string name="HelpUrl">https://delta.chat/en/help</string>
