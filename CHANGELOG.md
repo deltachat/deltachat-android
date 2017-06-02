@@ -1,10 +1,15 @@
 # Delta Chat Changelog
 
+## UNRELEASED
+
+* Update Russian translation
+
 ## v0.9.0
 2017-06-01
 
 * Add end-to-end-encrypting following the OpenPGP and Autocrypt standards
 * Add a function to compare keys
+* Profile: Add option to copy the email address to the clipboard
 * Pimp GUI
 
 ## v0.1.36
