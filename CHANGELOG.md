@@ -2,6 +2,7 @@
 
 ## UNRELEASED
 
+* Profile: Improve encryption state dialog
 * Update Russian translation
 
 ## v0.9.0

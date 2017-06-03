@@ -380,6 +380,13 @@
     <string name="ImportPrivateKeys">Import from \"Downloads\"</string>
     <string name="ExportPrivateKeys">Export to \"Downloads\"</string>
     <string name="ImportPrivateKeysAsk">Import private keys from \"Downloads\"?\n\n• Existing private keys are not deleted\n\n• The last imported key will be used as the new default key\n\nContinue?</string>
+    <string name="Encryption">Encryption</string>
+    <string name="EncrinfoE2E">The connection is end-to-end-encrypted.</string>
+    <string name="EncrinfoE2EExplain">If both fingerprints match on the other device, the connection is safe.</string>
+    <string name="EncrinfoTransport">Transport-encryption at least up to my server.</string>
+    <string name="EncrinfoNone">No encryption to my server.</string>
+    <string name="EncrinfoNoE2EExplain">Encryption will switch to end-to-end automatically as soon as the contact uses Delta Chat or another Autocrypt-enabled app.</string>
+    <string name="EncrinfoFingerprints">Fingerprints</string>
     <plurals name="ImportKeysDone">
         <item quantity="one">%d key imported</item>
         <item quantity="other">%d keys imported</item>

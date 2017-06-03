@@ -354,6 +354,12 @@ public class MrMailbox {
                     case 22: s = ApplicationLoader.applicationContext.getString(R.string.NoNetwork); break;
                     case 23: s = ApplicationLoader.applicationContext.getString(R.string.AttachGif); break;
                     case 24: s = ApplicationLoader.applicationContext.getString(R.string.EncryptedMessage); break;
+                    case 25: s = ApplicationLoader.applicationContext.getString(R.string.EncrinfoE2E); break;
+                    case 26: s = "<c#808080>"+ApplicationLoader.applicationContext.getString(R.string.EncrinfoE2EExplain)+"</c>"; break;
+                    case 27: s = ApplicationLoader.applicationContext.getString(R.string.EncrinfoTransport); break;
+                    case 28: s = ApplicationLoader.applicationContext.getString(R.string.EncrinfoNone); break;
+                    case 29: s = "<c#808080>"+ApplicationLoader.applicationContext.getString(R.string.EncrinfoNoE2EExplain)+"</c>"; break;
+                    case 30: s = ApplicationLoader.applicationContext.getString(R.string.EncrinfoFingerprints); break;
                 }
                 return String2CPtr(s);
 

@@ -408,8 +408,8 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                 {
                     String info_str = MrMailbox.getContactEncrInfo(user_id);
                     AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
-                    builder.setTitle(ApplicationLoader.applicationContext.getString(R.string.E2ECompareKeys));
-                    builder.setMessage(info_str);
+                    builder.setTitle(ApplicationLoader.applicationContext.getString(R.string.Encryption));
+                    builder.setMessage(AndroidUtilities.replaceTags(info_str));
                     builder.setPositiveButton(context.getString(R.string.OK), new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
@@ -1322,7 +1322,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                     if (i == changeNameRow) {
                         textCell.setText(mContext.getString(R.string.EditName));
                     } else if (i == compareKeysRow) {
-                        textCell.setText(mContext.getString(R.string.E2ECompareKeys));
+                        textCell.setText(mContext.getString(R.string.Encryption));
                     } else if (i == startChatRow) {
                         textCell.setText(mContext.getString(R.string.NewChat));
                     } else if (i == settingsNotificationsRow) {

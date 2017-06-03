@@ -376,6 +376,14 @@
     <string name="AutoplayGifs">GIFs automatisch abspielen</string>
     <string name="HelpUrl">https://delta.chat/de/help</string>
     <string name="EncryptedMessage">Verschlüsselte Nachricht</string>
+
+    <string name="EncrinfoE2E">Die Verbindung ist Ende-zu-Ende-Verschlüsselt.</string>
+    <string name="EncrinfoE2EExplain">Wenn die angezeigten Fingerabdrücke auf dem anderen Gerät genauso angezeigt werden, ist die Verbindung sicher.</string>
+    <string name="EncrinfoTransport">Transportverschlüsselung mindestens bis zu meinem Server.</string>
+    <string name="EncrinfoNone">Keine Verschlüsselung bis zu meinem Server.</string>
+    <string name="EncrinfoNoE2EExplain">Die Ende-zu-Ende-Verschlüsselung wird automatisch aktiviert, sobald der Kontakt Delta Chat oder eine andere Autocrypt-kompatible App verwendet.</string>
+    <string name="EncrinfoFingerprints">Fingerabdrücke</string>
+
     <string name="ImportPrivateKeys">Aus \"Downloads\" importieren</string>
     <string name="ExportPrivateKeys">Nach \"Downloads\" exportieren</string>
     <string name="ImportPrivateKeysAsk">Private Schlüssel aus \"Downloads\" importieren?\n\n• Bereits vorhandene private Schlüssel bleiben erhalten\n\n• Der zuletzt importierte private Schlüssel wird der Standardschlüssel\n\n• Fortfahren?</string>
@@ -383,4 +391,5 @@
         <item quantity="one">%d Schlüssel importiert</item>
         <item quantity="other">%d Schlüssel importiert</item>
     </plurals>
+    <string name="Encryption">Verschlüsselung</string>
 </resources>
