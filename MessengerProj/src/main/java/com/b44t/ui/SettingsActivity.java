@@ -74,6 +74,7 @@ public class SettingsActivity extends BaseFragment {
 
     private static final int ID_ACCOUNT_SETTINGS = 10;
     private static final int ID_ADV_SETTINGS = 11;
+    private static final int ID_BACKUP = 12;
 
     private static final int ROWTYPE_SHADOW          = 0;
     private static final int ROWTYPE_TEXT_SETTINGS   = 1;
@@ -163,6 +164,9 @@ public class SettingsActivity extends BaseFragment {
                 else if( id == ID_ADV_SETTINGS ) {
                     presentFragment(new SettingsAdvActivity());
                 }
+                else if( id == ID_BACKUP ) {
+                    Toast.makeText(getParentActivity(), ApplicationLoader.applicationContext.getString(R.string.NotYetImplemented), Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
@@ -172,6 +176,7 @@ public class SettingsActivity extends BaseFragment {
             ActionBarMenuItem headerItem = menu.addItem(0, R.drawable.ic_ab_other);
             headerItem.addSubItem(ID_ACCOUNT_SETTINGS, context.getString(R.string.AccountSettings), 0);
             headerItem.addSubItem(ID_ADV_SETTINGS, context.getString(R.string.AdvancedSettings), 0);
+            headerItem.addSubItem(ID_BACKUP, context.getString(R.string.Backup), 0);
         }
 
         // create object to hold the whole view

@@ -387,6 +387,7 @@
     <string name="EncrinfoNone">No encryption to my server.</string>
     <string name="EncrinfoNoE2EExplain">Encryption will switch to end-to-end automatically as soon as the contact uses Delta Chat or another Autocrypt-enabled app.</string>
     <string name="EncrinfoFingerprints">Fingerprints</string>
+    <string name="Backup">Backup</string>
     <plurals name="ImportKeysDone">
         <item quantity="one">%d key imported</item>
         <item quantity="other">%d keys imported</item>
