@@ -66,15 +66,11 @@ import com.b44t.ui.Components.NumberPicker;
 public class SettingsActivity extends BaseFragment {
 
     // the list
-    private int profileRow, accountHeaderRow, usernameRow, accountSettingsRow, accountShadowRow;
+    private int profileRow, accountHeaderRow, usernameRow, accountShadowRow;
     private int settingsHeaderRow, notificationRow, backgroundRow, textSizeRow, advRow, settingsShadowRow;
     private int readReceiptsRow, blockedRow, passcodeRow;
     private int aboutHeaderRow, aboutRow, inviteRow, helpRow, aboutShadowRow;
     private int rowCount;
-
-    private static final int ID_ACCOUNT_SETTINGS = 10;
-    private static final int ID_ADV_SETTINGS = 11;
-    private static final int ID_BACKUP = 12;
 
     private static final int ROWTYPE_SHADOW          = 0;
     private static final int ROWTYPE_TEXT_SETTINGS   = 1;
@@ -103,12 +99,10 @@ public class SettingsActivity extends BaseFragment {
 
         usernameRow = rowCount++;
         if (DrawerLayoutContainer.USE_DRAWER) {
-            accountSettingsRow = rowCount++;
             accountShadowRow = rowCount++;
             settingsHeaderRow = rowCount++;
         }
         else {
-            accountSettingsRow = -1;
             accountShadowRow = -1;
             settingsHeaderRow = -1;
         }
@@ -117,17 +111,16 @@ public class SettingsActivity extends BaseFragment {
             notificationRow    = rowCount++;
             backgroundRow      = rowCount++;
             textSizeRow        = rowCount++;
-            advRow = rowCount++;
         }
         else {
             notificationRow    = rowCount++;
             backgroundRow      = rowCount++;
             textSizeRow        = rowCount++;
-            advRow = -1;
         }
         readReceiptsRow=-1;
         passcodeRow = rowCount++;
         blockedRow = rowCount++;
+        advRow = rowCount++;
         settingsShadowRow  = rowCount++;
 
         aboutHeaderRow     = rowCount++;
@@ -149,6 +142,8 @@ public class SettingsActivity extends BaseFragment {
     public View createView(Context context)
     {
         // create action bar
+        // (we have also used an action bar menu for less frequently stuff (advanced, backup, account settings) but this needs to be explained -
+        // so, if possible, we will avoid this - form follows function)
         actionBar.setBackButtonImage(R.drawable.ic_ab_back);
         actionBar.setAllowOverlayTitle(true);
         actionBar.setTitle(context.getString(R.string.Settings));
@@ -158,26 +153,8 @@ public class SettingsActivity extends BaseFragment {
                 if (id == -1) {
                     finishFragment();
                 }
-                else if( id == ID_ACCOUNT_SETTINGS ) {
-                    presentFragment(new SettingsAccountActivity(null));
-                }
-                else if( id == ID_ADV_SETTINGS ) {
-                    presentFragment(new SettingsAdvActivity());
-                }
-                else if( id == ID_BACKUP ) {
-                    Toast.makeText(getParentActivity(), ApplicationLoader.applicationContext.getString(R.string.NotYetImplemented), Toast.LENGTH_SHORT).show();
-                }
             }
         });
-
-        // create action bar menu (we use it only for the account settings that are not changed frequently)
-        if(!DrawerLayoutContainer.USE_DRAWER) {
-            ActionBarMenu menu = actionBar.createMenu();
-            ActionBarMenuItem headerItem = menu.addItem(0, R.drawable.ic_ab_other);
-            headerItem.addSubItem(ID_ACCOUNT_SETTINGS, context.getString(R.string.AccountSettings), 0);
-            headerItem.addSubItem(ID_ADV_SETTINGS, context.getString(R.string.AdvancedSettings), 0);
-            headerItem.addSubItem(ID_BACKUP, context.getString(R.string.Backup), 0);
-        }
 
         // create object to hold the whole view
         fragmentView = new FrameLayout(context);
@@ -198,9 +175,6 @@ public class SettingsActivity extends BaseFragment {
             public void onItemClick(final AdapterView<?> adapterView, View view, final int i, long l) {
                 if (i == usernameRow) {
                     presentFragment(new SettingsNameActivity());
-                }
-                else if (i == accountSettingsRow) {
-                    presentFragment(new SettingsAccountActivity(null));
                 }
                 else if (i == blockedRow) {
                     presentFragment(new BlockedUsersActivity());
@@ -303,7 +277,7 @@ public class SettingsActivity extends BaseFragment {
 
         @Override
         public boolean isEnabled(int i) {
-            return i == textSizeRow || i == usernameRow || i == accountSettingsRow ||
+            return i == textSizeRow || i == usernameRow ||
                     i == blockedRow || i==passcodeRow || i==readReceiptsRow || i == notificationRow || i == backgroundRow || i == advRow ||
                     i == aboutRow || i == inviteRow || i == helpRow;
         }
@@ -351,7 +325,7 @@ public class SettingsActivity extends BaseFragment {
                 TextSettingsCell textCell = (TextSettingsCell) view;
                 if (i == blockedRow) {
                     String cntStr = String.format("%d", MrMailbox.getBlockedCount());
-                    textCell.setTextAndValue(ApplicationLoader.applicationContext.getString(R.string.BlockedContacts), cntStr, false);
+                    textCell.setTextAndValue(ApplicationLoader.applicationContext.getString(R.string.BlockedContacts), cntStr, true);
                 }
                 else if (i == passcodeRow) {
                     String val = UserConfig.passcodeHash.length() > 0? mContext.getString(R.string.Enabled) : mContext.getString(R.string.Disabled);
@@ -382,9 +356,6 @@ public class SettingsActivity extends BaseFragment {
                 else if(i == helpRow) {
                     textCell.setText(mContext.getString(R.string.Help), false);
                 }
-                else if (i == accountSettingsRow) {
-                    textCell.setText(mContext.getString(R.string.AccountSettings), true);
-                }
                 else if (i == usernameRow) {
                     String value = MrMailbox.getConfig("displayname", "");
                     if( value.isEmpty()) {
@@ -414,18 +385,7 @@ public class SettingsActivity extends BaseFragment {
                     view.setBackgroundColor(0xffffffff);
                 }
                 TextDetailSettingsCell textCell = (TextDetailSettingsCell) view;
-                if (i == accountSettingsRow) {
-                    String subtitle;
-                    if( MrMailbox.isConfigured()!=0) {
-                        subtitle = MrMailbox.getConfig("addr", "");
-                    }
-                    else {
-                        subtitle = mContext.getString(R.string.AccountNotConfigured);
-                    }
-
-                    textCell.setTextAndValue(mContext.getString(R.string.AccountSettings), subtitle, false);
-                }
-                else if (i == usernameRow) {
+                if (i == usernameRow) {
                     String subtitle = MrMailbox.getConfig("displayname", "");
                     if( subtitle.isEmpty()) {
                         subtitle = mContext.getString(R.string.NotSet);
@@ -458,7 +418,7 @@ public class SettingsActivity extends BaseFragment {
             else if (i == accountShadowRow || i == settingsShadowRow || i == aboutShadowRow ) {
                 return ROWTYPE_SHADOW;
             }
-            else if ( (DrawerLayoutContainer.USE_DRAWER && (i==accountSettingsRow || i==usernameRow)) || i==aboutRow ) {
+            else if ( (DrawerLayoutContainer.USE_DRAWER && (i==usernameRow)) || i==aboutRow ) {
                 return ROWTYPE_DETAIL_SETTINGS;
             }
             else if (i == settingsHeaderRow || i == aboutHeaderRow || i == accountHeaderRow) {

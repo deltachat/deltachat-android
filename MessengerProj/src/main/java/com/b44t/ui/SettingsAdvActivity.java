@@ -37,6 +37,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.FrameLayout;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.b44t.messenger.AndroidUtilities;
 import com.b44t.messenger.MediaController;
@@ -59,8 +60,10 @@ public class SettingsAdvActivity extends BaseFragment {
 
     // the list
     private int directShareRow, cacheRow, raiseToSpeakRow, sendByEnterRow, autoplayGifsRow, showUnknownSendersRow, finalShadowRow;
+    private int accountSettingsRow;
     private int e2eEncryptionRow;
     private int manageKeysRow;
+    private int backupRow;
     private int rowCount;
 
     private static final int ROWTYPE_SHADOW          = 0;
@@ -92,8 +95,10 @@ public class SettingsAdvActivity extends BaseFragment {
         sendByEnterRow = rowCount++;
         raiseToSpeakRow = rowCount++; // outgoing message
         cacheRow = -1;// for now, the - non-functional - page is reachable by the "storage settings" in the "android App Settings" only
+        accountSettingsRow = rowCount++;
         e2eEncryptionRow        = rowCount++;
         manageKeysRow           = rowCount++;
+        backupRow = rowCount++;
         finalShadowRow = rowCount++;
 
         return true;
@@ -191,6 +196,10 @@ public class SettingsAdvActivity extends BaseFragment {
                         ((TextCheckCell) view).setChecked(oldval == 0);
                     }
                 }
+                else if(i==accountSettingsRow)
+                {
+                    presentFragment(new SettingsAccountActivity(null));
+                }
                 else if(i==manageKeysRow )
                 {
                     AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity()); // was: BottomSheet.Builder
@@ -235,6 +244,10 @@ public class SettingsAdvActivity extends BaseFragment {
                             }
                     );
                     showDialog(builder.create());
+                }
+                else if( i == backupRow )
+                {
+                    Toast.makeText(getParentActivity(), ApplicationLoader.applicationContext.getString(R.string.NotYetImplemented), Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -300,7 +313,13 @@ public class SettingsAdvActivity extends BaseFragment {
                     textCell.setText(mContext.getString(R.string.CacheSettings), true);
                 }
                 else if( i==manageKeysRow ) {
-                    textCell.setText(mContext.getString(R.string.E2EManagePrivateKeys), false);
+                    textCell.setText(mContext.getString(R.string.E2EManagePrivateKeys), true);
+                }
+                else if( i==backupRow ) {
+                    textCell.setText(mContext.getString(R.string.Backup), false);
+                }
+                else if( i == accountSettingsRow ) {
+                    textCell.setText(mContext.getString(R.string.AccountSettings), true);
                 }
             } else if (type == ROWTYPE_CHECK) {
                 if (view == null) {
