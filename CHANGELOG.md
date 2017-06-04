@@ -1,5 +1,9 @@
 # Delta Chat Changelog
 
+## UNRELEASED
+
+* Update Polish translation
+
 ## v0.9.1
 2017-06-04
 
