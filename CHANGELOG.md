@@ -1,6 +1,7 @@
 # Delta Chat Changelog
 
-## UNRELEASED
+## v0.9.1
+2017-06-04
 
 * Profile: Improve encryption state dialog
 * Improved video quality of short clips
