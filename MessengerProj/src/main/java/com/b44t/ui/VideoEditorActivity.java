@@ -732,7 +732,15 @@ public class VideoEditorActivity extends BaseFragment implements TextureView.Sur
             resultBitrate = 200000;
         }
         else if (resultBitrate > 500000) {
-            resultBitrate = 500000; // ~ 3.7 MB/minute, plus Audio
+            if( resultDurationMs<30*1000 ) {
+                resultBitrate = 1500000; // ~ 12 MB/minute, plus Audio
+            }
+            else if( resultDurationMs<60*1000 ) {
+                resultBitrate = 1000000; // ~ 8 MB/minute, plus Audio
+            }
+            else {
+                resultBitrate = 500000; // ~ 3.7 MB/minute, plus Audio
+            }
         }
 
         // get video dimensions

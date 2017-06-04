@@ -3,6 +3,7 @@
 ## UNRELEASED
 
 * Profile: Improve encryption state dialog
+* Improved video quality of short clips
 * Update Russian translation
 
 ## v0.9.0
