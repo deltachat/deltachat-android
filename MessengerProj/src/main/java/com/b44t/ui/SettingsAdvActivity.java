@@ -84,6 +84,7 @@ public class SettingsAdvActivity extends BaseFragment {
         super.onFragmentCreate();
 
         rowCount = 0;
+        accountSettingsRow = rowCount++;
         if (Build.VERSION.SDK_INT >= 23) {
             directShareRow = -1; // for now, seems not really to work, however, in T'gram it does
         }
@@ -95,7 +96,6 @@ public class SettingsAdvActivity extends BaseFragment {
         sendByEnterRow = rowCount++;
         raiseToSpeakRow = rowCount++; // outgoing message
         cacheRow = -1;// for now, the - non-functional - page is reachable by the "storage settings" in the "android App Settings" only
-        accountSettingsRow = rowCount++;
         e2eEncryptionRow        = rowCount++;
         manageKeysRow           = rowCount++;
         backupRow = rowCount++;

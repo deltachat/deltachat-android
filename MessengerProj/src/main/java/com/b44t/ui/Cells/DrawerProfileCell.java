@@ -65,7 +65,7 @@ public class DrawerProfileCell extends FrameLayout {
         ImageView shadowView = new ImageView(context);
         shadowView.setScaleType(ImageView.ScaleType.FIT_XY);
         shadowView.setImageResource(R.drawable.bottom_shadow);
-        addView(shadowView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, 100/*EDIT BY MR, was 70*/, Gravity.START | Gravity.BOTTOM));
+        addView(shadowView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, 85/*shadow height*/, Gravity.START | Gravity.BOTTOM));
 
         nameTextView = new TextView(context);
         nameTextView.setTextColor(0xffffffff);
@@ -90,7 +90,7 @@ public class DrawerProfileCell extends FrameLayout {
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        int mrHeight = DrawerLayoutContainer.USE_DRAWER? 180 : 150;
+        int mrHeight = DrawerLayoutContainer.USE_DRAWER? 180 : 100/*see also shadow height above*/;
         if (Build.VERSION.SDK_INT >= 21) {
             super.onMeasure(widthMeasureSpec, MeasureSpec.makeMeasureSpec(AndroidUtilities.dp(mrHeight) + AndroidUtilities.statusBarHeight, MeasureSpec.EXACTLY));
         } else {
