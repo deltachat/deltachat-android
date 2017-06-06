@@ -277,6 +277,12 @@ public class SettingsAdvActivity extends BaseFragment implements NotificationCen
         progressDialog.setMessage(ApplicationLoader.applicationContext.getString(R.string.OneMoment));
         progressDialog.setCanceledOnTouchOutside(false);
         progressDialog.setCancelable(false);
+        progressDialog.setButton(DialogInterface.BUTTON_NEGATIVE, ApplicationLoader.applicationContext.getString(R.string.Cancel), new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                MrMailbox.exportStuff(0, null);
+            }
+        });
         progressDialog.show();
 
         synchronized (MrMailbox.m_lastErrorLock) {
@@ -314,9 +320,9 @@ public class SettingsAdvActivity extends BaseFragment implements NotificationCen
             if( (int)args[0]==1 ) {
                 AndroidUtilities.showDoneHint(ApplicationLoader.applicationContext);
             }
-            else {
+            else if( !errorString.isEmpty() /*usually empty if export is cancelled by the user*/ ) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
-                builder.setMessage(errorString.isEmpty()? "Export error." : errorString);
+                builder.setMessage(errorString);
                 builder.setPositiveButton(ApplicationLoader.applicationContext.getString(R.string.OK), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
