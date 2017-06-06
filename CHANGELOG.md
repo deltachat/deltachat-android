@@ -2,6 +2,7 @@
 
 ## UNRELEASED
 
+* Add a function to create a full backup of all data
 * Update Polish translation
 
 ## v0.9.1

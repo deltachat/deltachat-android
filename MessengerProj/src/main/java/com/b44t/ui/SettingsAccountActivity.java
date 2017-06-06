@@ -54,8 +54,6 @@ import com.b44t.ui.Cells.TextInfoCell;
 import com.b44t.ui.Cells.TextSettingsCell;
 import com.b44t.ui.Components.LayoutHelper;
 
-import static android.app.ProgressDialog.STYLE_HORIZONTAL;
-
 
 public class SettingsAccountActivity extends BaseFragment implements NotificationCenter.NotificationCenterDelegate {
 

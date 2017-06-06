@@ -25,6 +25,7 @@ package com.b44t.ui;
 import android.Manifest;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
@@ -37,13 +38,13 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.FrameLayout;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.b44t.messenger.AndroidUtilities;
 import com.b44t.messenger.MediaController;
 import com.b44t.messenger.ApplicationLoader;
 import com.b44t.messenger.MrChat;
 import com.b44t.messenger.MrMailbox;
+import com.b44t.messenger.NotificationCenter;
 import com.b44t.messenger.R;
 import com.b44t.ui.Adapters.BaseFragmentAdapter;
 import com.b44t.ui.Cells.ShadowSectionCell;
@@ -56,7 +57,7 @@ import com.b44t.ui.Components.LayoutHelper;
 import java.io.File;
 
 
-public class SettingsAdvActivity extends BaseFragment {
+public class SettingsAdvActivity extends BaseFragment implements NotificationCenter.NotificationCenterDelegate {
 
     // the list
     private int directShareRow, cacheRow, raiseToSpeakRow, sendByEnterRow, autoplayGifsRow, showUnknownSendersRow, finalShadowRow;
@@ -83,6 +84,9 @@ public class SettingsAdvActivity extends BaseFragment {
     public boolean onFragmentCreate() {
         super.onFragmentCreate();
 
+        NotificationCenter.getInstance().addObserver(this, NotificationCenter.exportEnded);
+        NotificationCenter.getInstance().addObserver(this, NotificationCenter.exportProgress);
+
         rowCount = 0;
         accountSettingsRow = rowCount++;
         if (Build.VERSION.SDK_INT >= 23) {
@@ -102,6 +106,13 @@ public class SettingsAdvActivity extends BaseFragment {
         finalShadowRow = rowCount++;
 
         return true;
+    }
+
+    @Override
+    public void onFragmentDestroy() {
+        super.onFragmentDestroy();
+        NotificationCenter.getInstance().removeObserver(this, NotificationCenter.exportEnded);
+        NotificationCenter.getInstance().removeObserver(this, NotificationCenter.exportProgress);
     }
 
     @Override
@@ -231,14 +242,7 @@ public class SettingsAdvActivity extends BaseFragment {
                                         showDialog(builder2.create());
                                     }
                                     else /*export*/ {
-                                        if (Build.VERSION.SDK_INT >= 23 && getParentActivity().checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-                                            getParentActivity().requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 4);
-                                            return;
-                                        }
-                                        File downloadsDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
-                                        downloadsDir.mkdirs();
-                                        MrMailbox.exportStuff(MrMailbox.MR_IMEX_SELF_KEYS, downloadsDir.getAbsolutePath());
-                                        AndroidUtilities.showDoneHint(ApplicationLoader.applicationContext);
+                                        startExport(MrMailbox.MR_IMEX_SELF_KEYS);
                                     }
                                 }
                             }
@@ -247,12 +251,81 @@ public class SettingsAdvActivity extends BaseFragment {
                 }
                 else if( i == backupRow )
                 {
-                    Toast.makeText(getParentActivity(), ApplicationLoader.applicationContext.getString(R.string.NotYetImplemented), Toast.LENGTH_SHORT).show();
+                    startExport(MrMailbox.MR_EXPORT_BACKUP);
                 }
             }
         });
 
         return fragmentView;
+    }
+
+    private ProgressDialog progressDialog = null;
+
+    private void startExport(int what)
+    {
+        if (Build.VERSION.SDK_INT >= 23 && getParentActivity().checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+            getParentActivity().requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 4);
+            return;
+        }
+
+        if( progressDialog!=null ) {
+            progressDialog.dismiss();
+            progressDialog = null;
+        }
+
+        progressDialog = new ProgressDialog(getParentActivity());
+        progressDialog.setMessage(ApplicationLoader.applicationContext.getString(R.string.OneMoment));
+        progressDialog.setCanceledOnTouchOutside(false);
+        progressDialog.setCancelable(false);
+        progressDialog.show();
+
+        synchronized (MrMailbox.m_lastErrorLock) {
+            MrMailbox.m_showNextErrorAsToast = false;
+            MrMailbox.m_lastErrorString = "";
+        }
+
+        File downloadsDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
+        downloadsDir.mkdirs();
+        MrMailbox.exportStuff(what, downloadsDir.getAbsolutePath());
+    }
+
+    @Override
+    public void didReceivedNotification(int id, Object... args) {
+        if( id==NotificationCenter.exportProgress ) {
+            if( progressDialog!=null ) {
+                // we want the spinner together with a progress info
+                int percent = (Integer)args[0];
+                progressDialog.setMessage(ApplicationLoader.applicationContext.getString(R.string.OneMoment)+String.format(" %d%%", percent));
+            }
+        }
+        else if( id==NotificationCenter.exportEnded ) {
+            final String errorString;
+
+            synchronized (MrMailbox.m_lastErrorLock) {
+                MrMailbox.m_showNextErrorAsToast = true;
+                errorString = MrMailbox.m_lastErrorString;
+            }
+
+            if( progressDialog!=null ) {
+                progressDialog.dismiss();
+                progressDialog = null;
+            }
+
+            if( (int)args[0]==1 ) {
+                AndroidUtilities.showDoneHint(ApplicationLoader.applicationContext);
+            }
+            else {
+                AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
+                builder.setMessage(errorString.isEmpty()? "Export error." : errorString);
+                builder.setPositiveButton(ApplicationLoader.applicationContext.getString(R.string.OK), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        ;
+                    }
+                });
+                showDialog(builder.create());
+            }
+        }
     }
 
     private class ListAdapter extends BaseFragmentAdapter {

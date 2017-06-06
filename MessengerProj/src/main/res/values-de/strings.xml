@@ -386,7 +386,7 @@
 
     <string name="ImportPrivateKeys">Aus \"Downloads\" importieren</string>
     <string name="ExportPrivateKeys">Nach \"Downloads\" exportieren</string>
-    <string name="ImportPrivateKeysAsk">Private Schlüssel aus \"Downloads\" importieren?\n\n• Bereits vorhandene private Schlüssel bleiben erhalten\n\n• Der zuletzt importierte private Schlüssel wird der Standardschlüssel\n\n• Fortfahren?</string>
+    <string name="ImportPrivateKeysAsk">Private Schlüssel aus \"Downloads\" importieren?\n\n• Bereits vorhandene private Schlüssel bleiben erhalten\n\n• Der zuletzt importierte private Schlüssel wird der Standardschlüssel\n\nFortfahren?</string>
     <plurals name="ImportKeysDone">
         <item quantity="one">%d Schlüssel importiert</item>
         <item quantity="other">%d Schlüssel importiert</item>

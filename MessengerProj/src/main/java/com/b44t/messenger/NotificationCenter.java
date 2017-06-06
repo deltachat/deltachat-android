@@ -33,6 +33,8 @@ public class NotificationCenter {
 
     public static final int configureEnded = totalEvents++;
     public static final int configureProgress = totalEvents++;
+    public static final int exportEnded = totalEvents++;
+    public static final int exportProgress = totalEvents++;
     public static final int didReceivedNewMessages = totalEvents++;
     public static final int updateInterfaces = totalEvents++;
     public static final int dialogsNeedReload = totalEvents++;

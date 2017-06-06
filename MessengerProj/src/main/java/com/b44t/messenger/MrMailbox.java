@@ -192,6 +192,8 @@ public class MrMailbox {
     public final static int MR_EVENT_CONFIGURE_ENDED          = 2040;
     public final static int MR_EVENT_CONFIGURE_PROGRESS       = 2041;
 
+    public final static int MR_EVENT_EXPORT_ENDED             = 2050;
+    public final static int MR_EVENT_EXPORT_PROGRESS          = 2051;
     public final static int MR_EVENT_EXPORT_FILE_WRITTEN      = 2052;
 
     public final static int MR_EVENT_IS_ONLINE                = 2080;
@@ -223,6 +225,24 @@ public class MrMailbox {
                     @Override
                     public void run() {
                         NotificationCenter.getInstance().postNotificationName(NotificationCenter.configureProgress, (int)data1);
+                    }
+                });
+                return 0;
+
+            case MR_EVENT_EXPORT_ENDED:
+                AndroidUtilities.runOnUIThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        NotificationCenter.getInstance().postNotificationName(NotificationCenter.exportEnded, (int)data1);
+                    }
+                });
+                return 0;
+
+            case MR_EVENT_EXPORT_PROGRESS:
+                AndroidUtilities.runOnUIThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        NotificationCenter.getInstance().postNotificationName(NotificationCenter.exportProgress, (int)data1);
                     }
                 });
                 return 0;
