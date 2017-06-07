@@ -380,8 +380,4 @@
     <string name="ImportPrivateKeys">Импортировать из \"Загрузки\"</string>
     <string name="ExportPrivateKeys">Экспортировать в \"Загрузки\"</string>
     <string name="ImportPrivateKeysAsk">Импортировать приватный ключи из \"Загрузки\"?\n\n• Существующие ключи не удалены\n\n• Последний ключ будет использован как новый по умолчанию\n\nПродолжить?</string>
-    <plurals name="ImportKeysDone">
-        <item quantity="one">%d ключ импортирован</item>
-        <item quantity="other">%d ключи импортированы</item>
-        </plurals>
-    </resources>
+ </resources>

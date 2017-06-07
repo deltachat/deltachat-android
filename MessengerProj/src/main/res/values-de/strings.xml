@@ -384,12 +384,10 @@
     <string name="EncrinfoNoE2EExplain">Die Ende-zu-Ende-Verschlüsselung wird automatisch aktiviert, sobald der Kontakt Delta Chat oder eine andere Autocrypt-kompatible App verwendet.</string>
     <string name="EncrinfoFingerprints">Fingerabdrücke</string>
 
-    <string name="ImportPrivateKeys">Aus \"Downloads\" importieren</string>
-    <string name="ExportPrivateKeys">Nach \"Downloads\" exportieren</string>
+    <string name="ImportFromDownloads">Aus \"Downloads\" importieren</string>
+    <string name="ExportToDownloads">Nach \"Downloads\" exportieren</string>
     <string name="ImportPrivateKeysAsk">Private Schlüssel aus \"Downloads\" importieren?\n\n• Bereits vorhandene private Schlüssel bleiben erhalten\n\n• Der zuletzt importierte private Schlüssel wird der Standardschlüssel\n\nFortfahren?</string>
-    <plurals name="ImportKeysDone">
-        <item quantity="one">%d Schlüssel importiert</item>
-        <item quantity="other">%d Schlüssel importiert</item>
-    </plurals>
     <string name="Encryption">Verschlüsselung</string>
+    <string name="ImportBackupExplain">Um ein Backup zu importieren, kopieren Sie es auf dem Zielgerät in das \"Downloads\"-Verzeichnis und installieren die App neu.</string>
+
 </resources>

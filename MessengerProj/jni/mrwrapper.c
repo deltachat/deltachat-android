@@ -531,19 +531,10 @@ JNIEXPORT jstring Java_com_b44t_messenger_MrMailbox_cmdline(JNIEnv *env, jclass 
 }
 
 
-JNIEXPORT jint Java_com_b44t_messenger_MrMailbox_importStuff(JNIEnv *env, jclass cls, jint what, jstring dir)
+JNIEXPORT void Java_com_b44t_messenger_MrMailbox_imex(JNIEnv *env, jclass cls, jint what, jstring dir)
 {
 	CHAR_REF(dir);
-		jint ret = mrmailbox_import(get_mrmailbox_t(env, cls), what, dirPtr);
-	CHAR_UNREF(dir);
-	return ret;
-}
-
-
-JNIEXPORT void Java_com_b44t_messenger_MrMailbox_exportStuff(JNIEnv *env, jclass cls, jint what, jstring dir)
-{
-	CHAR_REF(dir);
-		mrmailbox_export(get_mrmailbox_t(env, cls), what, dirPtr);
+		mrmailbox_imex(get_mrmailbox_t(env, cls), what, dirPtr);
 	CHAR_UNREF(dir);
 }
 

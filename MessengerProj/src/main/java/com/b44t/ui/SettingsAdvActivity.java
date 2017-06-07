@@ -213,45 +213,11 @@ public class SettingsAdvActivity extends BaseFragment implements NotificationCen
                 }
                 else if(i==manageKeysRow )
                 {
-                    AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity()); // was: BottomSheet.Builder
-                    builder.setTitle(ApplicationLoader.applicationContext.getString(R.string.E2EManagePrivateKeys));
-                    CharSequence[] items = new CharSequence[]{
-                            ApplicationLoader.applicationContext.getString(R.string.ImportPrivateKeys),
-                            ApplicationLoader.applicationContext.getString(R.string.ExportPrivateKeys),
-                    };
-                    builder.setItems(items, new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialogInterface, int i) {
-                                    if( i== 0/*import*/ ) {
-                                        if (Build.VERSION.SDK_INT >= 23 && getParentActivity().checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-                                            getParentActivity().requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 4);
-                                            return;
-                                        }
-                                        AlertDialog.Builder builder2 = new AlertDialog.Builder(getParentActivity());
-                                        builder2.setPositiveButton(ApplicationLoader.applicationContext.getString(R.string.OK), new DialogInterface.OnClickListener() {
-                                            @Override
-                                            public void onClick(DialogInterface dialogInterface, int i) {
-                                                File downloadsDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
-                                                int cnt = MrMailbox.importStuff(MrMailbox.MR_IMEX_SELF_KEYS, downloadsDir.getAbsolutePath());
-                                                String cntStr = ApplicationLoader.applicationContext.getResources().getQuantityString(R.plurals.ImportKeysDone, cnt, cnt);
-                                                AndroidUtilities.showHint(ApplicationLoader.applicationContext, cntStr);
-                                            }
-                                        });
-                                        builder2.setNegativeButton(ApplicationLoader.applicationContext.getString(R.string.Cancel), null);
-                                        builder2.setMessage(ApplicationLoader.applicationContext.getString(R.string.ImportPrivateKeysAsk));
-                                        showDialog(builder2.create());
-                                    }
-                                    else /*export*/ {
-                                        startExport(MrMailbox.MR_IMEX_SELF_KEYS);
-                                    }
-                                }
-                            }
-                    );
-                    showDialog(builder.create());
+                    imexShowMenu(ApplicationLoader.applicationContext.getString(R.string.E2EManagePrivateKeys), MrMailbox.MR_IMEX_EXPORT_SELF_KEYS, MrMailbox.MR_IMEX_IMPORT_SELF_KEYS);
                 }
                 else if( i == backupRow )
                 {
-                    startExport(MrMailbox.MR_EXPORT_BACKUP);
+                    imexShowMenu(ApplicationLoader.applicationContext.getString(R.string.Backup), MrMailbox.MR_IMEX_EXPORT_BACKUP, 0);
                 }
             }
         });
@@ -259,15 +225,61 @@ public class SettingsAdvActivity extends BaseFragment implements NotificationCen
         return fragmentView;
     }
 
-    private ProgressDialog progressDialog = null;
-
-    private void startExport(int what)
+    private void imexShowMenu(String title, final int exportCommand, final int importCommand)
     {
-        if (Build.VERSION.SDK_INT >= 23 && getParentActivity().checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-            getParentActivity().requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 4);
-            return;
-        }
+        AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity()); // was: BottomSheet.Builder
+        builder.setTitle(title);
+        CharSequence[] items = new CharSequence[]{
+                ApplicationLoader.applicationContext.getString(R.string.ExportToDownloads),
+                ApplicationLoader.applicationContext.getString(R.string.ImportFromDownloads),
+        };
+        builder.setItems(items, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        if( i==0 ) /*export*/ {
+                            if (Build.VERSION.SDK_INT >= 23 && getParentActivity().checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+                                getParentActivity().requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 4);
+                                return;
+                            }
+                            startImex(exportCommand);
+                        }
+                        else /*import*/ {
+                            if( importCommand ==MrMailbox.MR_IMEX_IMPORT_SELF_KEYS ) {
+                                if (Build.VERSION.SDK_INT >= 23 && getParentActivity().checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+                                    getParentActivity().requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 4);
+                                    return;
+                                }
+                                AlertDialog.Builder builder2 = new AlertDialog.Builder(getParentActivity());
+                                builder2.setPositiveButton(ApplicationLoader.applicationContext.getString(R.string.OK), new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                        startImex(importCommand);
+                                    }
+                                });
+                                builder2.setNegativeButton(ApplicationLoader.applicationContext.getString(R.string.Cancel), null);
+                                builder2.setMessage(ApplicationLoader.applicationContext.getString(R.string.ImportPrivateKeysAsk));
+                                showDialog(builder2.create());
+                            }
+                            else {
+                                AlertDialog.Builder builder2 = new AlertDialog.Builder(getParentActivity());
+                                builder2.setPositiveButton(ApplicationLoader.applicationContext.getString(R.string.OK), new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                    }
+                                });
+                                builder2.setMessage(ApplicationLoader.applicationContext.getString(R.string.ImportBackupExplain));
+                                showDialog(builder2.create());
+                            }
+                        }
+                    }
+                }
+        );
+        showDialog(builder.create());
+    }
 
+    private ProgressDialog progressDialog = null;
+    private void startImex(int what)
+    {
         if( progressDialog!=null ) {
             progressDialog.dismiss();
             progressDialog = null;
@@ -280,7 +292,7 @@ public class SettingsAdvActivity extends BaseFragment implements NotificationCen
         progressDialog.setButton(DialogInterface.BUTTON_NEGATIVE, ApplicationLoader.applicationContext.getString(R.string.Cancel), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                MrMailbox.exportStuff(0, null);
+                MrMailbox.imex(0, null);
             }
         });
         progressDialog.show();
@@ -292,7 +304,7 @@ public class SettingsAdvActivity extends BaseFragment implements NotificationCen
 
         File downloadsDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
         downloadsDir.mkdirs();
-        MrMailbox.exportStuff(what, downloadsDir.getAbsolutePath());
+        MrMailbox.imex(what, downloadsDir.getAbsolutePath());
     }
 
     @Override

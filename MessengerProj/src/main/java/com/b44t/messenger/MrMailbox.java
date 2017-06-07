@@ -32,8 +32,6 @@ import android.app.Activity;
 import android.app.DownloadManager;
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.util.Log;
 
 import com.b44t.ui.Components.ForegroundDetector;
@@ -72,10 +70,10 @@ public class MrMailbox {
     public native static String getInfo();
     public native static String cmdline(String cmd);
 
-    public final static int MR_IMEX_SELF_KEYS = 0x01;
-    public final static int MR_EXPORT_BACKUP = 0x02;
-    public native static int importStuff(int what, String dir);
-    public native static void exportStuff(int what, String dir);
+    public final static int MR_IMEX_EXPORT_SELF_KEYS = 0x01;
+    public final static int MR_IMEX_EXPORT_BACKUP = 0x02;
+    public final static int MR_IMEX_IMPORT_SELF_KEYS = 0x00010000;
+    public native static void imex(int what, String dir);
 
     public native static void heartbeat();
 

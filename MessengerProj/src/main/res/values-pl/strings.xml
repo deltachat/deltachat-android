@@ -399,13 +399,7 @@
     <string name="AutoplayGifs">Automatycznie odtwórz GIFy</string>
     <string name="HelpUrl">https://jaworski-pawel.github.io/Delta/#help</string>
     <string name="EncryptedMessage">Szyfrowana wiadomość</string>
-    <string name="ImportPrivateKeys">Importuj z katalogu „Downloads”</string>
-    <string name="ExportPrivateKeys">Eksportuj do katalogu „Downloads”</string>
+    <string name="ImportFromDownloads">Importuj z katalogu „Downloads”</string>
+    <string name="ExportToDownloads">Eksportuj do katalogu „Downloads”</string>
     <string name="ImportPrivateKeysAsk">Zaimportować prywatne klucze z „Downloads”?\n\n• Istniejące prywatne klucze nie są usuwane\n\n• Ostatni zaimportowany klucz zostanie użyty jako nowy klucz domyślny\n\nKontynuować?</string>
-    <plurals name="ImportKeysDone">
-        <item quantity="one">%d klucz zaimportowany</item>
-        <item quantity="few">Kluczy zaimportowanych - %d</item>
-        <item quantity="many">Kluczy zaimportowanych - %d</item>
-        <item quantity="other">Kluczy zaimportowanych - %d</item>
-    </plurals>
 </resources>
