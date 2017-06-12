@@ -434,7 +434,7 @@ public class SettingsAdvActivity extends BaseFragment implements NotificationCen
                             MrMailbox.getConfigInt("show_deaddrop", 0)!=0, true);
                 }
                 else if( i == e2eEncryptionRow ) {
-                    textCell.setTextAndCheck(mContext.getString(R.string.E2EEncryption),
+                    textCell.setTextAndCheck(mContext.getString(R.string.PreferE2EEncryption),
                             MrMailbox.getConfigInt("e2ee_enabled", MR_E2EE_DEFAULT_ENABLED)!=0, true);
                 }
             }
