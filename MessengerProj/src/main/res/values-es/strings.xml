@@ -373,6 +373,7 @@
     <string name="PleaseCutVideoToMaxSize">Reduzca el tamaño del vídeo hasta un máximo de %1$s, por favor.</string>
     <string name="SettingsFor">Ajustes para %1$s</string>
     <string name="AutoplayGifs">Autorreproducción de GIF</string>
+    <string name="HelpUrl">https://delta.chat/es/help</string>
 
 </resources>
 
