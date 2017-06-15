@@ -3,7 +3,7 @@
 ## UNRELEASED
 
 * Add a function to create a full backup of all data
-* Update Polish translation
+* Update Polish and Portuguese translations
 
 ## v0.9.1
 2017-06-04
