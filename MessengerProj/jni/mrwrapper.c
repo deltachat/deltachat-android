@@ -534,7 +534,7 @@ JNIEXPORT jstring Java_com_b44t_messenger_MrMailbox_cmdline(JNIEnv *env, jclass 
 JNIEXPORT void Java_com_b44t_messenger_MrMailbox_imex(JNIEnv *env, jclass cls, jint what, jstring dir)
 {
 	CHAR_REF(dir);
-		mrmailbox_imex(get_mrmailbox_t(env, cls), what, dirPtr);
+		mrmailbox_imex(get_mrmailbox_t(env, cls), what, dirPtr, "");
 	CHAR_UNREF(dir);
 }
 

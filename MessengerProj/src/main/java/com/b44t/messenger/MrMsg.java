@@ -152,6 +152,7 @@ public class MrMsg {
         ret.flags         = 0; // posible flags: MESSAGE_FLAG_HAS_FROM_ID, however, this seems to be read only
         ret.out           = ret.from_id==MrContact.MR_CONTACT_ID_SELF; // true=outgoing message, read eg. in MessageObject.isOutOwner()
         ret.created_by_mr = true;
+        ret.e2ee          = getParamInt('c', 0)!=0;
 
         if( type == MR_MSG_TEXT ) {
             ret.message       = getText();

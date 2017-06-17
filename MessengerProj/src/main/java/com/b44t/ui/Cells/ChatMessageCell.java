@@ -232,7 +232,6 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
 
     private StaticLayout timeLayout;
     private int timeWidth;
-    private int timeTextWidth;
     private int timeX;
     private String currentTimeString;
     private boolean drawTime = true;
@@ -1655,10 +1654,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
         if (changed || !wasLayout) {
             layoutWidth = getMeasuredWidth();
             layoutHeight = getMeasuredHeight() - substractBackgroundHeight;
-            if (timeTextWidth < 0) {
-                timeTextWidth = dp(10);
-            }
-            timeLayout = new StaticLayout(currentTimeString, timePaint, timeTextWidth + dp(6), Layout.Alignment.ALIGN_NORMAL, 1.0f, 0.0f, false);
+            timeLayout = new StaticLayout(currentTimeString, timePaint, timeWidth + dp(6), Layout.Alignment.ALIGN_NORMAL, 1.0f, 0.0f, false);
             if (!mediaBackground) {
                 if (!currentMessageObject.isOutOwner()) {
                     timeX = backgroundWidth - dp(9) - timeWidth + (isGroupChat && currentMessageObject.isFromUser() ? dp(48) : 0);
@@ -2089,7 +2085,10 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
 
     private void measureTime(MessageObject messageObject) {
         currentTimeString = LocaleController.getInstance().formatterDay.format((long) (messageObject.messageOwner.date) * 1000);
-        timeTextWidth = timeWidth = (int) Math.ceil(timePaint.measureText(currentTimeString));
+        if( messageObject.messageOwner.e2ee ) {
+            currentTimeString = "≡ " + currentTimeString;
+        }
+        timeWidth = (int) Math.ceil(timePaint.measureText(currentTimeString));
     }
 
     private boolean isDrawSelectedBackground() {

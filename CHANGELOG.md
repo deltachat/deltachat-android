@@ -2,7 +2,8 @@
 
 ## UNRELEASED
 
-* Add a function to create a full backup of all data
+* End-to-end-encrypted messages are marked by a sign beside the timestamp
+* If end-to-end-encryption is available on sending time, guarantee the message not be send without end-to-end-encryption later
 * Update Polish and Portuguese translations
 
 ## v0.9.1
