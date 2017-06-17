@@ -2085,7 +2085,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
 
     private void measureTime(MessageObject messageObject) {
         currentTimeString = LocaleController.getInstance().formatterDay.format((long) (messageObject.messageOwner.date) * 1000);
-        if( messageObject.messageOwner.e2ee ) {
+        if( messageObject.messageOwner.e2ee ) { // alternative symbols: ◿ ◢ ◇ ○ ·· ∞ ✓ ↗ ↔ = ≡ Ξ Ε Π 🔒 23:23 - the lock may be confusing as it suggests no encryption at all if missing
             currentTimeString = "≡ " + currentTimeString;
         }
         timeWidth = (int) Math.ceil(timePaint.measureText(currentTimeString));
