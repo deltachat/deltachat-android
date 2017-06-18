@@ -778,11 +778,6 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
         }
         if (UserConfig.passcodeHash.length() != 0 && !searching) {
             passcodeItem.setVisibility(View.VISIBLE);
-            if (UserConfig.appLocked) {
-                passcodeItem.setIcon(R.drawable.lock_close);
-            } else {
-                passcodeItem.setIcon(R.drawable.lock_open);
-            }
         } else {
             passcodeItem.setVisibility(View.GONE);
         }
