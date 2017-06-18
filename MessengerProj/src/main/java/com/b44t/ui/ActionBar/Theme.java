@@ -110,6 +110,9 @@ public class Theme {
     public static Drawable systemDrawable;
     public static Drawable timeBackgroundDrawable;
     public static Drawable timeStickerBackgroundDrawable;
+    public static Drawable encrOutDrawable;
+    public static Drawable encrInDrawable;
+    public static Drawable encrMediaDrawable;
 
     public static Drawable[] cornerOuter = new Drawable[4];
     public static Drawable[] cornerInner = new Drawable[4];
@@ -146,6 +149,10 @@ public class Theme {
             timeBackgroundDrawable = context.getResources().getDrawable(R.drawable.phototime2_b);
             timeStickerBackgroundDrawable = context.getResources().getDrawable(R.drawable.phototime2);
             systemDrawable = context.getResources().getDrawable(R.drawable.system);
+
+            encrInDrawable = context.getResources().getDrawable(R.drawable.msg_encr_in);
+            encrOutDrawable = context.getResources().getDrawable(R.drawable.msg_encr_out);
+            encrMediaDrawable = context.getResources().getDrawable(R.drawable.msg_encr_media);
 
             inlistDrawable[INLIST_FILE]        = context.getResources().getDrawable(R.drawable.attach_file_inlist);
             inlistDrawable[INLIST_PLAY]        = context.getResources().getDrawable(R.drawable.attach_audio_inlist_play);

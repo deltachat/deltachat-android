@@ -231,7 +231,8 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
     private float forwardNameOffsetX[] = new float[2];
 
     private StaticLayout timeLayout;
-    private int timeWidth;
+    private int timeWidth; // includes timeEncrWidth
+    private int timeEncrWidth;
     private int timeX;
     private String currentTimeString;
     private boolean drawTime = true;
@@ -2085,10 +2086,12 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
 
     private void measureTime(MessageObject messageObject) {
         currentTimeString = LocaleController.getInstance().formatterDay.format((long) (messageObject.messageOwner.date) * 1000);
-        if( messageObject.messageOwner.e2ee ) { // alternative symbols: ◿ ◢ ◇ ○ ·· ∞ ✓ ↗ ↔ = ≡ Ξ Ε Π 🔒 23:23 - the lock may be confusing as it suggests no encryption at all if missing
-            currentTimeString = "≡ " + currentTimeString;
-        }
         timeWidth = (int) Math.ceil(timePaint.measureText(currentTimeString));
+        timeEncrWidth = 0;
+        if( messageObject.messageOwner.e2ee ) {
+            timeEncrWidth = Theme.encrOutDrawable.getIntrinsicWidth();
+            timeWidth += timeEncrWidth;
+        }
     }
 
     private boolean isDrawSelectedBackground() {
@@ -2332,19 +2335,36 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                 int additionalX = 0;
 
                 canvas.save();
-                canvas.translate(timeX + additionalX, layoutHeight - dp(11.3f) - timeLayout.getHeight());
+                canvas.translate(timeX + additionalX + timeEncrWidth, layoutHeight - dp(11.3f) - timeLayout.getHeight());
                 timeLayout.draw(canvas);
                 canvas.restore();
             } else {
                 int additionalX = 0;
 
                 canvas.save();
-                canvas.translate(timeX + additionalX, layoutHeight - dp(6.5f) - timeLayout.getHeight());
+                canvas.translate(timeX + additionalX + timeEncrWidth, layoutHeight - dp(6.5f) - timeLayout.getHeight());
                 timeLayout.draw(canvas);
                 canvas.restore();
                 //canvas.drawRect(timeX, layoutHeight - AndroidUtilities.dp(6.5f) - timeLayout.getHeight(), timeX + availableTimeWidth, layoutHeight - AndroidUtilities.dp(4.5f) - timeLayout.getHeight(), timePaint);
             }
 
+            // draw encryption icon left of clock
+            if( timeEncrWidth>0 ) {
+                if (!mediaBackground) {
+                    if (currentMessageObject.isOutOwner()) {
+                        setDrawableBounds(Theme.encrOutDrawable, timeX, layoutHeight - dp(8.5f) - Theme.encrOutDrawable.getIntrinsicHeight());
+                        Theme.encrOutDrawable.draw(canvas);
+                    } else {
+                        setDrawableBounds(Theme.encrInDrawable, timeX, layoutHeight - dp(8.5f) - Theme.encrInDrawable.getIntrinsicHeight());
+                        Theme.encrInDrawable.draw(canvas);
+                    }
+                } else {
+                    setDrawableBounds(Theme.encrMediaDrawable, timeX, layoutHeight - dp(13.2f) - Theme.encrMediaDrawable.getIntrinsicHeight());
+                    Theme.encrMediaDrawable.draw(canvas);
+                }
+            }
+
+            // draw checkmarks right of clock
             if (currentMessageObject.isOutOwner()) {
                 boolean drawCheck1 = false;
                 boolean drawCheck2 = false;
