@@ -18,7 +18,7 @@
     <string name="AttachMusic">Musique</string>
     <!--documents view-->
     <string name="SelectFile">Selectionner le fichier</string>
-    <string name="FreeOfTotal">Free %1$s of %2$s</string>
+    <string name="FreeOfTotal">Libre %1$s sur %2$s</string>
     <string name="ErrorHint">Erreur inconnue</string>
     <string name="AccessError">Erreur d\'accès</string>
     <string name="NoFiles">Aucun fichier pour le moment…</string>
@@ -43,7 +43,7 @@
     <string name="SaveToMusic">Enregistrer dans les musiques</string>
     <string name="Share">Partager</string>
     <string name="SendItems">Envoyer %1$s</string>
-    <string name="ClearRecentEmoji">Vider les emokis récent?</string>
+    <string name="ClearRecentEmoji">Vider les emojis récents ?</string>
     <string name="AddShortcut">Ajouter le widget à l\'écran d\'accueil</string>
     <string name="ShortcutAdded">Widget ajouté à l\'écran d\'accueil</string>
     <!--notification-->
@@ -106,26 +106,26 @@
     <string name="DirectShareInfo">Montrer les conversations récentes dans le menu de partage</string>
     <!--cache view-->
     <string name="CacheSettings">Stockage</string>
-    <string name="KeepMedia">Conserver les fichier média</string>
+    <string name="KeepMedia">Conserver les fichiers média</string>
     <string name="KeepMediaInfo">Les photos, vidéos et autres fichiers venant des conversations du cloud que vous n\'avez <![CDATA[<b>pas</b>]]> consultés pendant cette période seront supprimés pour libérer de l\'espace.</string>
     <string name="KeepMediaForever">Toujours</string>
     <!--passcode view-->
     <string name="Passcode">Verrouiller par mot de passe</string>
     <string name="ChangePasscode">Modifier le mot de passe</string>
-    <string name="ChangePasscodeInfo">Quand vous ajoutez un mot de passe additionnel, une icône de verrouillage apparaîtra sur la page des conversations. Appuyez sur cette icône et déverrouillez l\'application.\n\nNote : si vous oubliez le mot de passe, vous devrez supprimer et réinstaller l\'application.</string>
+    <string name="ChangePasscodeInfo">Quand vous ajoutez un verrouillage par mot de passe, une icône de verrouillage apparaîtra sur la page des conversations. Appuyez sur cette icône et déverrouillez l\'application.\n\nNote : si vous oubliez le mot de passe, vous devrez supprimer et réinstaller l\'application.</string>
     <string name="PasscodePIN">PIN</string>
     <string name="PasscodePassword">Mot de passe</string>
-    <string name="EnterCurrentPasscode">Saississez votre mot de passe actuel</string>
-    <string name="EnterNewFirstPasscode">Saississez un mot de passe</string>
-    <string name="EnterNewPasscode">Saississez un nouveau mot de passe</string>
-    <string name="EnterYourPasscode">Saississez votre mot de passe</string>
-    <string name="ReEnterYourPasscode">Ressaississez votre mot de passe</string>
+    <string name="EnterCurrentPasscode">Saisissez votre mot de passe actuel</string>
+    <string name="EnterNewFirstPasscode">Saisissez un mot de passe</string>
+    <string name="EnterNewPasscode">Saisissez un nouveau mot de passe</string>
+    <string name="EnterYourPasscode">Saisissez votre mot de passe</string>
+    <string name="ReEnterYourPasscode">Ressaisissez votre mot de passe</string>
     <string name="PasscodeDoNotMatch">Les mots de passe ne correspondent pas</string>
     <string name="AutoLock">Verrouillage automatique</string>
     <string name="AutoLockInfo">Redemande le mot de passe en cas d\'inactivité prolongée.</string>
     <string name="UnlockFingerprint">Déverrouiller avec votre empreinte digitale</string>
     <string name="FingerprintInfo">Confirmer votre empreinte digitale pour continuer</string>
-    <string name="FingerprintNotRecognized">Empreinte non reconnue. Essayer encore</string>
+    <string name="FingerprintNotRecognized">Empreinte non reconnue. Essayez encore.</string>
     <!--photo gallery view-->
     <string name="SaveToGallery">Enregistrer dans la galerie</string>
     <string name="Of">%1$d de %2$d</string>
@@ -133,7 +133,7 @@
     <string name="AllPhotos">Toutes les photos</string>
     <string name="AllVideo">Toutes les vidéos</string>
     <string name="NoPhotos">Aucune photo pour le moment</string>
-    <string name="NoVideo">Aucune vidéo pour le moement</string>
+    <string name="NoVideo">Aucune vidéo pour le moment</string>
     <string name="CropImage">Couper les images</string>
     <string name="EditImage">Modifier les images</string>
     <string name="Enhance">Améliorer</string>
@@ -191,13 +191,13 @@
     <string name="AttachVoiceMessage">Message vocal</string>
     <string name="FromSelf">Moi</string>
     <!--Alert messages-->
-    <string name="NoHandleAppInstalled">Vous n\'avez pas d\'application qui peut gérer le type \'%1$s\', veuillez en installer un pour continuer</string>
+    <string name="NoHandleAppInstalled">Vous n\'avez pas d\'application qui peut gérer le type \'%1$s\', veuillez en installer une pour continuer</string>
     <string name="ContactAlreadyInGroup">Ce contact est déjà dans ce groupe</string>
     <string name="ForwardMessagesTo">Renvoyer les messages sélectionnés à <![CDATA[<b>]]>%1$s<![CDATA[</b>]]> ?</string>
-    <string name="SendMessagesTo">Envoyer les messages à <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>?</string>
-    <string name="AreYouSureDeleteThisChat">Êtes-vous sûr de vouloir supprimer cette conversation? La conversation n\'apparaîtra plus dans la liste des conversations, mais les messages resteront sur le serveur.</string>
-    <string name="AreYouSureBlockContact">Êtes-vous sûr de vouloir bloquer cet utilisateur?</string>
-    <string name="AreYouSureDeleteContact">Êtes-vous sûr de vouloir supprimer cet utilisateur?</string>
+    <string name="SendMessagesTo">Envoyer les messages à <![CDATA[<b>]]>%1$s<![CDATA[</b>]]> ?</string>
+    <string name="AreYouSureDeleteThisChat">Êtes-vous sûr de vouloir supprimer cette conversation ? La conversation n\'apparaîtra plus dans la liste des conversations, mais les messages resteront sur le serveur.</string>
+    <string name="AreYouSureBlockContact">Êtes-vous sûr de vouloir bloquer cet utilisateur ?</string>
+    <string name="AreYouSureDeleteContact">Êtes-vous sûr de vouloir supprimer cet utilisateur ?</string>
     <!--permissions-->
     <string name="PermissionContacts">Delta Chat a besoin d\'accéder aux contacts de façon à pouvoir vous connecter avec vos amis avec tous vos appareils.</string>
     <string name="PermissionStorage">Delta Chat a besoin d\'accéder au stockage pour envoyer vos photos, vidéos, musiques et autres médias.</string>
@@ -205,24 +205,25 @@
     <string name="PermissionOpenSettings">Paramètres</string>
     <!--Intro view-->
     <string name="Intro1Headline">Delta Chat</string>
-    <string name="Intro1Message">La messagerie avec <![CDATA[<b>le plus grande portée</b>]]> dans le monde.<![CDATA[<br/><b>Libre</b>]]> et <![CDATA[<b>sécurisé</b>]]>.</string>
+    <string name="Intro1Message">La messagerie <![CDATA[<b>la plus étendue</b>]]> dans le monde.<![CDATA[<br/><b>Libre</b>]]> et <![CDATA[<b>sécurisée</b>]]>.</string>
 
     <string name="Intro2Headline">Indépendent</string>
-    <string name="Intro2Message"><![CDATA[<b>Aucune dépendance</b>]]> à des ordinateurs ou services tiers. L\'application utilise juste votre serveur d\'e-mail.</string>
+    <string name="Intro2Message"><![CDATA[<b>Aucune dépendance</b>]]> à des serveurs ou services tiers. L\'application utilise juste votre serveur d\'e-mail.</string>
 
     <string name="Intro3Headline">Rapide</string>
-    <string name="Intro3Message">Envoyez des messages<![CDATA[<b>en quelques secondes</b>]]>.<![CDATA[<br/>]]>Interface rapide.</string>
+    <string name="Intro3Message">Envoyez des messages <![CDATA[<b>en quelques secondes</b>]]>.<![CDATA[<br/>]]> grâce à son interface rapide.</string>
 
     <string name="Intro4Headline">Puissant</string>
-    <string name="Intro4Message">Envoyer et recevez des messages, des photo, des vidéos, des messages audios et plus <![CDATA[<b>sans limite</b>]]>. Compatible multi-plateforme.</string>
+    <string name="Intro4Message">Envoyer et recevez des messages, des photos, des vidéos, des messages audios et plus <![CDATA[<b>sans limite</b>]]>. Compatible multi-plateforme.</string>
 
     <string name="Intro5Headline">Libre</string>
     <string name="Intro5Message"><![CDATA[<b>Delta Chat</b>]]> sera toujours libre.<![CDATA[<br/>]]>OpenSource. Pas de pub. Pas d\'inscription.</string>
 
     <string name="Intro6Headline">Sûr</string>
-    <string name="Intro6Message"><![CDATA[<b>Chiffré</b>]]> avec des algorithmes communs. Les messages restent sur vos serveurs.</string>
+    <string name="Intro6Message"><![CDATA[<b>Chiffré</b>]]> avec des algorithmes reconnus. Les messages restent sur vos serveurs.</string>
 
     <string name="Intro7Headline">Fiable</string>
+    <string name="Intro7Message"><![CDATA[<b>Delta Chat</b>]]> est sûr pour une utilisation professionnelle, compatible et basé sur des standards.</string>
 
     <string name="IntroStartMessaging">Commencez à converser</string>
     <!--plural-->
@@ -275,7 +276,7 @@
     <!--date formatters-->
     <string name="formatterMonthYear">MMMM yyyy</string>
     <string name="formatterMonth">dd MMM</string>
-    <string name="formatterYear">dd.MM.yyyy</string>
+    <string name="formatterYear">dd/MM/yyyy</string>
     <string name="chatDate">EEE, d MMMM</string>
     <string name="chatFullDate">EEE, d MMMM yyyy</string>
     <string name="formatterWeek">EEE</string>
@@ -285,10 +286,10 @@
     <string name="AccountSettings">Paramètres du compte</string>
     <string name="MyAccount">Mon compte</string>
     <string name="MyName">Mon nom</string>
-    <string name="MyNameExplain">Votre nom, tel que montré par les destinataires.\n\nSi vous ne saisissez pas un nom, les destinataires ne verront que votre adresse e-mail renseignée dans les paramètres de compte.</string>
+    <string name="MyNameExplain">Votre nom, tel que montré aux destinataires.\n\nSi vous ne saisissez pas un nom, les destinataires ne verront que votre adresse e-mail renseignée dans les paramètres de compte.</string>
     <string name="Password">Mot de passe</string>
     <string name="SmtpPassword">Mot de passe SMTP</string>
-    <string name="FromAbove">De ci-dessus</string>
+    <string name="FromAbove">Le même qu'au dessus</string>
     <string name="SmtpLoginname">Identifiant SMTP</string>
     <string name="SmtpPort">Port SMTP</string>
     <string name="Automatic">Automatique</string>
@@ -309,34 +310,33 @@
     <string name="MuteAlways">Toujours muet</string>
     <string name="AskStartChatWith">Lancer une conversation avec <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>?</string>
     <string name="DeaddropHint">Pour lancer une conversation, cliquez sur le bouton de réponse en forme de flèche.</string>
-    <string name="NotYetImplemented">This function is not available or incomplete.</string>
-    <string name="DefaultStatusText">Envoyé avec ma messagerie Delta Chat</string>
+    <string name="NotYetImplemented">Cette fonction n\'est pas disponible ou non supportée complètement.</string>
+    <string name="DefaultStatusText">Envoyé avec Delta Chat</string>
     <string name="Name" >Nom</string>
     <string name="EmailAddress">Adresse e-mail</string>
     <string name="CannotDeleteContact">Impossible de supprimer les contacts en cours d\'utilisation, bloquez-les à la place.</string>
     <string name="BadEmailAddress">Mauvaise adresse e-mail.</string>
     <string name="ContactCreated">Utilisateur créé.</string>
     <string name="ViewProfile">Voir le profil</string>
-    <string name="OneMoment">Un moment…</string>
+    <string name="OneMoment">Veuillez patienter…</string>
     <string name="NoChatsHelp">Lancez une conversation en appuyant sur le bouton dans le coin inférieur droit ou appuyez sur le bouton menu pour plus d\'options.</string>
-    <string name="Intro7Message"><![CDATA[<b>Delta Chat</b>]]> est sûr pour une utilisation professionnelle, compatible et basé sur des standards.</string>
     <string name="InviteMenuEntry">Envoyer des invitations</string>
     <string name="InviteText">J\'utilise la messagerie Delta Chat maintenant - %1$s - vous pouvez me contacter à %2$s</string>
     <string name="AdvancedSettings">Paramètres avancés</string>
-    <string name="AskResetNotifications" >Êtes-vous sûr de vouloir réinitialiser toutes les paramètres de notification et les sons de cette page et de vos contacts et groups?</string>
+    <string name="AskResetNotifications" >Êtes-vous sûr de vouloir réinitialiser toutes les paramètres de notification et les sons de cette page et de vos contacts et groupes?</string>
     <string name="AttachFiles">Joindre des fichiers</string>
     <string name="ErrGroupNameEmpty">Merci de saisir un nom pour le groupe.</string>
-    <string name="MsgNewGroupDraftHint">Écrivez un premier message pour permettre aux autres de répondre dans ce group.\n\n• C\'est bon si tout les membres n\'utilisent pas Delta Chat.\n\n• La livraison du premier message peut prendre un moment.</string>
+    <string name="MsgNewGroupDraftHint">Écrivez un premier message pour permettre aux autres de répondre dans ce groupe.\n\n• Ça ne devrait pas poser de problème si tout les membres du groupe n\'utilisent pas Delta Chat.\n\n• La livraison du premier message peut prendre un moment.</string>
     <string name="MsgNewGroupDraft">Bonjour, je viens juste de créer le groupe \"%1$s\" pour nous.</string>
-    <string name="MsgGroupNameChanged">Le nom du group a changé de \"%1$s\" à \"%2$s\".</string>
+    <string name="MsgGroupNameChanged">Le nom du groupe a changé de \"%1$s\" à \"%2$s\".</string>
     <string name="MsgGroupImageChanged">L\'image du groupe a changé.</string>
     <string name="MsgMemberAddedToGroup">Le membre %1$s vient d\'être ajouté.</string>
     <string name="MsgMemberRemovedFromToGroup">Le membre %1$s vient d\'être retiré.</string>
-    <string name="AskAddMemberToGroup">Voulez-vous ajouter <![CDATA[<b>]]>%1$s<![CDATA[</b>]]> au groupe?</string>
-    <string name="AskRemoveMemberFromGroup">Voulez-vous retirer <![CDATA[<b>]]>%1$s<![CDATA[</b>]]> du groupe?</string>
+    <string name="AskAddMemberToGroup">Voulez-vous ajouter <![CDATA[<b>]]>%1$s<![CDATA[</b>]]> au groupe ?</string>
+    <string name="AskRemoveMemberFromGroup">Voulez-vous retirer <![CDATA[<b>]]>%1$s<![CDATA[</b>]]> du groupe ?</string>
     <string name="ErrSelfNotInGroup">Vous devez être membre du groupe pour effectuer cette action.</string>
     <string name="MsgGroupLeft">Groupe quitté.</string>
-    <string name="NoMessagesHint">Envoyez un message à <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>:\n\n• C\'est bon si <![CDATA[<b>]]>%2$s<![CDATA[</b>]]> .n\'utilise pas Delta Chat\n\n• La livraison du premier message peut prendre un moment.</string>
+    <string name="NoMessagesHint">Envoyez un message à <![CDATA[<b>]]>%1$s<![CDATA[</b>]]> :\n\n• Ça ne devrait pas poser de problème si <![CDATA[<b>]]>%2$s<![CDATA[</b>]]> n\'utilise pas Delta Chat\n\n• La livraison du premier message peut prendre un moment.</string>
     <string name="SendNRcvReadReceipts">Recevoir et envoyer les accusés de lecture</string>
     <string name="E2EEncryption">Chiffrement bout à bout</string>
     <string name="E2EManagePrivateKeys">Gérer les clefs privées</string>
@@ -344,4 +344,27 @@
     <string name="ResetContactsKey">Reinitialiser les clefs de l\'utilisateur</string>
     <string name="ForwardToTitle">Renvoyer à…</string>
     <string name="DoneHint">Fait.</string>
+    <string name="FileNotFound">Fichier %1$s non trouvé.</string>
+    <string name="Error">Erreur: %1$s</string>
+    <string name="NoNetwork">Réseau non disponible.</string>
+    <string name="Audio">Audio</string>
+    <string name="PleaseCutVideoToMaxSize">Veuillez couper la vidéo à une taille max. de %1$s.</string>
+    <string name="PermNotificationTitle">Connecté à %1$s</string>
+    <string name="PermNotificationText">En attente de messages…</string>
+    <string name="SettingsFor">Paramètres pour %1$s</string>
+    <string name="AutoplayGifs">Lecture automatique des GIFs</string>
+    <string name="HelpUrl">https://delta.chat/en/help</string>
+    <string name="EncryptedMessage">Message chiffré</string>
+    <string name="ImportFromDownloads">Importer depuis \"Downloads\"</string>
+    <string name="ExportToDownloads">Exporter vers \"Downloads\"</string>
+    <string name="ImportPrivateKeysAsk">Importer des clefs privées depuis \"Downloads\"?\n\n• Les clefs privées existantes ne sont pas supprimées\n\n• Les dernières clefs importées seront utilisées par défaut\n\nContinuer ?</string>
+    <string name="Encryption">Chiffrement</string>
+    <string name="EncrinfoE2E">La connexion est maintenant chiffré de bout-à-bout.</string>
+    <string name="EncrinfoE2EExplain">Si toutes les empreintes digitales correspondent sur l\'autre appareil, la connexion est sûre.</string>
+    <string name="EncrinfoTransport">Le chiffrement du transport au moins active sur mon serveur.</string>
+    <string name="EncrinfoNone">Aucun chiffrement sur mon serveur.</string>
+    <string name="EncrinfoNoE2EExplain">Le chiffrement de bout-à-bout sera activé automatiquement dès que le contact utilisera Delta Chat ou n'importe quelle autre application de chiffrement automatique.</string>
+    <string name="EncrinfoFingerprints">Empreintes digitales</string>
+    <string name="Backup">Sauvegarde</string>
+    <string name="ImportBackupExplain">Pour importer une sauvegarde, copiez celle-ci vers le répertoire \"Downloads\" et réinstallez l\'application.</string>
 </resources>
