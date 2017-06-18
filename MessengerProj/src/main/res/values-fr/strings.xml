@@ -289,7 +289,7 @@
     <string name="MyNameExplain">Votre nom, tel que montré aux destinataires.\n\nSi vous ne saisissez pas un nom, les destinataires ne verront que votre adresse e-mail renseignée dans les paramètres de compte.</string>
     <string name="Password">Mot de passe</string>
     <string name="SmtpPassword">Mot de passe SMTP</string>
-    <string name="FromAbove">Le même qu'au dessus</string>
+    <string name="FromAbove">Le même qu\'au dessus</string>
     <string name="SmtpLoginname">Identifiant SMTP</string>
     <string name="SmtpPort">Port SMTP</string>
     <string name="Automatic">Automatique</string>
@@ -363,7 +363,7 @@
     <string name="EncrinfoE2EExplain">Si toutes les empreintes digitales correspondent sur l\'autre appareil, la connexion est sûre.</string>
     <string name="EncrinfoTransport">Le chiffrement du transport au moins active sur mon serveur.</string>
     <string name="EncrinfoNone">Aucun chiffrement sur mon serveur.</string>
-    <string name="EncrinfoNoE2EExplain">Le chiffrement de bout-à-bout sera activé automatiquement dès que le contact utilisera Delta Chat ou n'importe quelle autre application de chiffrement automatique.</string>
+    <string name="EncrinfoNoE2EExplain">Le chiffrement de bout-à-bout sera activé automatiquement dès que le contact utilisera Delta Chat ou n\'importe quelle autre application de chiffrement automatique.</string>
     <string name="EncrinfoFingerprints">Empreintes digitales</string>
     <string name="Backup">Sauvegarde</string>
     <string name="ImportBackupExplain">Pour importer une sauvegarde, copiez celle-ci vers le répertoire \"Downloads\" et réinstallez l\'application.</string>
