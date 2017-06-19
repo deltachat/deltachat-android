@@ -2,16 +2,16 @@
 
 ## UNRELEASED
 
-* End-to-end-encrypted messages are marked by a sign beside the timestamp
-* If end-to-end-encryption is available on sending time, guarantee the message not be send without end-to-end-encryption later
-* Update Polish and Portuguese translations
+* Show a little lock beside end-to-end-encrypted messages
+* If end-to-end-encryption is available on sending time, guarantee the message not to be sent without end-to-end-encryption later
+* Update Polish, Portuguese and French translations
 
 ## v0.9.1
 2017-06-04
 
 * Profile: Improve encryption state dialog
 * Improved video quality of short clips
-* Make "Encrytion" dialog localizable
+* Make encryption-dialog localizable
 * Update Russian translation
 
 ## v0.9.0
