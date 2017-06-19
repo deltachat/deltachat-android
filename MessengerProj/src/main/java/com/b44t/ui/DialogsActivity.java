@@ -199,7 +199,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
 
         ActionBarMenu menu = actionBar.createMenu();
         if (!onlySelect ) {
-            passcodeItem = menu.addItem(ID_LOCK_APP, R.drawable.lock_close);
+            passcodeItem = menu.addItem(ID_LOCK_APP, R.drawable.ic_ab_lock_screen);
             updatePasscodeButton();
         }
         final ActionBarMenuItem item = menu.addItem(0, R.drawable.ic_ab_search).setIsSearchField(true, true).setActionBarMenuItemSearchListener(new ActionBarMenuItem.ActionBarMenuItemSearchListener() {
