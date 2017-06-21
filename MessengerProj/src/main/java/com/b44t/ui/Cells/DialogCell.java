@@ -114,7 +114,7 @@ public class DialogCell extends BaseCell {
     private StaticLayout messageLayout;
 
     private boolean drawError;
-    private int errorTop = AndroidUtilities.dp(39);
+    private int errorTop = AndroidUtilities.dp(42);
     private int errorLeft;
 
     private boolean drawCount;
@@ -168,7 +168,7 @@ public class DialogCell extends BaseCell {
             checkDrawable = getResources().getDrawable(R.drawable.dialogs_check);
             halfCheckDrawable = getResources().getDrawable(R.drawable.dialogs_halfcheck);
             clockDrawable = getResources().getDrawable(R.drawable.msg_clock);
-            errorDrawable = getResources().getDrawable(R.drawable.dialogs_warning);
+            errorDrawable = getResources().getDrawable(R.drawable.msg_warning);
             countDrawable = getResources().getDrawable(R.drawable.dialogs_badge);
             countDrawableGrey = getResources().getDrawable(R.drawable.dialogs_badge2);
             groupDrawable = getResources().getDrawable(R.drawable.list_group);
@@ -429,9 +429,9 @@ public class DialogCell extends BaseCell {
             int w = errorDrawable.getIntrinsicWidth() + AndroidUtilities.dp(8);
             messageWidth -= w;
             if (!LocaleController.isRTL) {
-                errorLeft = getMeasuredWidth() - errorDrawable.getIntrinsicWidth() - AndroidUtilities.dp(11);
+                errorLeft = getMeasuredWidth() - errorDrawable.getIntrinsicWidth() - AndroidUtilities.dp(16);
             } else {
-                errorLeft = AndroidUtilities.dp(11);
+                errorLeft = AndroidUtilities.dp(16);
                 messageLeft += w;
             }
         } else if (countString != null) {
