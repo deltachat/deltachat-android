@@ -70,7 +70,6 @@ public class DialogCell extends BaseCell {
     private static Drawable countDrawableGrey;
     private static Drawable groupDrawable;
     private static Drawable muteDrawable;
-    private static Drawable verifiedDrawable;
 
     private static Paint linePaint;
     private static Paint backPaint;
@@ -123,8 +122,6 @@ public class DialogCell extends BaseCell {
     private int countWidth;
     private StaticLayout countLayout;
 
-    private boolean drawVerified;
-
     private int avatarTop = AndroidUtilities.dp(10);
 
     private boolean isSelected;
@@ -173,7 +170,6 @@ public class DialogCell extends BaseCell {
             countDrawableGrey = getResources().getDrawable(R.drawable.dialogs_badge2);
             groupDrawable = getResources().getDrawable(R.drawable.list_group);
             muteDrawable = getResources().getDrawable(R.drawable.mute_grey);
-            verifiedDrawable = getResources().getDrawable(R.drawable.check_list);
         }
 
         setBackgroundResource(R.drawable.list_selector);
@@ -253,10 +249,6 @@ public class DialogCell extends BaseCell {
         boolean checkMessage = true;
 
         drawNameGroup = false;
-        //drawNameBroadcast = false;
-        //drawNameLock = false;
-        //drawNameBot = false;
-        drawVerified = false;
 
         {
             if (m_mrChat.getType()==MrChat.MR_CHAT_GROUP) { // EDIT BY MR
@@ -267,7 +259,6 @@ public class DialogCell extends BaseCell {
                     drawNameGroup = true;
                     nameLockTop = AndroidUtilities.dp(17.5f);
                 //}
-                //drawVerified = chat.verified; -- /EDIT BY MR
 
                 if (!LocaleController.isRTL) {
                     nameLockLeft = AndroidUtilities.dp(AndroidUtilities.leftBaseline);
@@ -328,7 +319,6 @@ public class DialogCell extends BaseCell {
                     case MrMsg.MR_OUT_DELIVERED: drawCheck2 = true; break;
                     case MrMsg.MR_OUT_READ: drawCheck1 = true; drawCheck2 = true; break;
                 }
-                drawVerified = m_mrChat.isEncrypted()!=0; // we use the "verified" check as an icon for "encryted" and "verified"
         }
 
         if (unreadCount != 0) {
@@ -393,14 +383,8 @@ public class DialogCell extends BaseCell {
             }
         }
 
-        if (dialogMuted && !drawVerified) {
+        if (dialogMuted) {
             int w = AndroidUtilities.dp(6) + muteDrawable.getIntrinsicWidth();
-            nameWidth -= w;
-            if (LocaleController.isRTL) {
-                nameLeft += w;
-            }
-        } else if (drawVerified) {
-            int w = AndroidUtilities.dp(6) + verifiedDrawable.getIntrinsicWidth();
             nameWidth -= w;
             if (LocaleController.isRTL) {
                 nameLeft += w;
@@ -475,10 +459,8 @@ public class DialogCell extends BaseCell {
             if (nameLayout != null && nameLayout.getLineCount() > 0) {
                 left = nameLayout.getLineLeft(0);
                 widthpx = Math.ceil(nameLayout.getLineWidth(0));
-                if (dialogMuted && !drawVerified) {
+                if (dialogMuted) {
                     nameMuteLeft = (int) (nameLeft + (nameWidth - widthpx) - AndroidUtilities.dp(6) - muteDrawable.getIntrinsicWidth());
-                } else if (drawVerified) {
-                    nameMuteLeft = (int) (nameLeft + (nameWidth - widthpx) - AndroidUtilities.dp(6) - verifiedDrawable.getIntrinsicWidth());
                 }
                 if (left == 0) {
                     if (widthpx < nameWidth) {
@@ -504,7 +486,7 @@ public class DialogCell extends BaseCell {
                         nameLeft -= (nameWidth - widthpx);
                     }
                 }
-                if (dialogMuted || drawVerified) {
+                if (dialogMuted) {
                     nameMuteLeft = (int) (nameLeft + left + AndroidUtilities.dp(6));
                 }
             }
@@ -669,12 +651,9 @@ public class DialogCell extends BaseCell {
             }
         }
 
-        if (dialogMuted && !drawVerified) { // TODO: if we enable encrypted chats and show the verified logo, we may show both, muted and verivied
+        if (dialogMuted) {
             setDrawableBounds(muteDrawable, nameMuteLeft, AndroidUtilities.dp(16.5f));
             muteDrawable.draw(canvas);
-        } else if (drawVerified) {
-            setDrawableBounds(verifiedDrawable, nameMuteLeft, AndroidUtilities.dp(16.5f));
-            verifiedDrawable.draw(canvas);
         }
 
         if (drawError) {

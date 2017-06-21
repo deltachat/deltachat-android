@@ -93,10 +93,6 @@ public class MrChat {
     /* additional functions that are not 1:1 available in the backend
      **********************************************************************************************/
 
-    public int isEncrypted() {
-        return 0;
-    }
-
     public static TLRPC.Chat chatId2chat(int id)
     {
         TLRPC.Chat ret = new TLRPC.Chat();
