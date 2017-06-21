@@ -1636,8 +1636,6 @@ LOCAL_SRC_FILES     += \
 ./messenger-backend/src/mrchatlist.c \
 ./messenger-backend/src/mrcmdline.c \
 ./messenger-backend/src/mrcontact.c \
-./messenger-backend/src/mre2ee.c \
-./messenger-backend/src/mre2ee_driver_openssl.c \
 ./messenger-backend/src/mrimap.c \
 ./messenger-backend/src/mrjob.c \
 ./messenger-backend/src/mrkey.c \
@@ -1645,12 +1643,14 @@ LOCAL_SRC_FILES     += \
 ./messenger-backend/src/mrloginparam.c \
 ./messenger-backend/src/mrmailbox.c \
 ./messenger-backend/src/mrmailbox_configure.c \
+./messenger-backend/src/mrmailbox_e2ee.c \
 ./messenger-backend/src/mrmailbox_imex.c \
 ./messenger-backend/src/mrmailbox_log.c \
 ./messenger-backend/src/mrmimeparser.c \
 ./messenger-backend/src/mrmsg.c \
 ./messenger-backend/src/mrosnative.c \
 ./messenger-backend/src/mrparam.c \
+./messenger-backend/src/mrpgp.c \
 ./messenger-backend/src/mrpoortext.c \
 ./messenger-backend/src/mrsaxparser.c \
 ./messenger-backend/src/mrsimplify.c \
