@@ -2,6 +2,7 @@
 
 ## UNRELEASED
 
+* Encrypt group chats
 * Show a little lock beside end-to-end-encrypted messages
 * If end-to-end-encryption is available on sending time, guarantee the message not to be sent without end-to-end-encryption later
 * Update Polish, Portuguese and French translations
