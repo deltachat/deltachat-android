@@ -4,7 +4,8 @@
 
 * Encrypt group chats
 * Cryptographically sign messages
-* Show a little lock beside end-to-end-encrypted messages
+* Validate signatures of incoming messages ("Info" shows the state)
+* Show a little lock beside end-to-end-encrypted messages with a validated signature
 * If end-to-end-encryption is available on sending time, guarantee the message not to be sent without end-to-end-encryption later
 * Show special characters in HTML-mails
 * Update Polish, Portuguese and French translations
