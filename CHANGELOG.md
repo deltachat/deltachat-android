@@ -10,6 +10,7 @@
 * If end-to-end-encryption is available on sending time, guarantee the message not to be sent without end-to-end-encryption later
 * Show special characters in HTML-mails
 * Help MUAs on showing chat threads
+* Show attachments from multipart/alternative structures
 * Upgrade from Autocrypt Level 0 to Level 1; as the levels are not compatible, encryption on mixed setups does not happen
 * Update Polish, Portuguese, Spanish and French translations
 
