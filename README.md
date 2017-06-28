@@ -13,14 +13,11 @@ Beside a build in Android Studio, you have to call `ndk-build` in the
 `MessengerProj` directory.  Moreover, place a copy of your keyfile eg. to
 `MessengerProj/config/debug.keystore`.
 
-![Logo](https://delta.chat/public/images/features/start-img4.png)
+![Logo](https://delta.chat/assets/features/start-img4.png)
 
 The core library (https://github.com/deltachat/deltachat-core), is checked out
 automatically; there is no need to build the core library itself, the android
 client just references the needed files.
-
-The Delta Chat Android Frontend is based upon
-[Telegram FOSS](https://github.com/slp/Telegram-FOSS).
 
 ---
 
