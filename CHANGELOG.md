@@ -1,6 +1,7 @@
 # Delta Chat Changelog
 
-## UNRELEASED
+## v0.9.2
+2017-06-28
 
 * Encrypt group chats
 * Cryptographically sign messages
@@ -8,7 +9,9 @@
 * Show a little lock beside end-to-end-encrypted messages with a validated signature
 * If end-to-end-encryption is available on sending time, guarantee the message not to be sent without end-to-end-encryption later
 * Show special characters in HTML-mails
-* Update Polish, Portuguese and French translations
+* Help MUAs on showing chat threads
+* Upgrade from Autocrypt Level 0 to Level 1; as the levels are not compatible, encryption on mixed setups does not happen
+* Update Polish, Portuguese, Spanish and French translations
 
 ## v0.9.1
 2017-06-04
