@@ -231,7 +231,7 @@
     <!--plural-->
     <plurals name="Members">
         <item quantity="one">%d участник</item>
-        <item quantity="few">%d участники</item>
+        <item quantity="few">%d участников</item>
         <item quantity="many">%d участники</item>
         <item quantity="other">%d участники</item>
     </plurals>
@@ -255,13 +255,13 @@
     </plurals>
     <plurals name="messages">
         <item quantity="one">%d сообщение</item>
-        <item quantity="few">%d сообщения</item>
+        <item quantity="few">%d сообщений</item>
         <item quantity="many">%d сообщения</item>
         <item quantity="other">%d сообщения</item>
     </plurals>
     <plurals name="AreYouSureDeleteMessages">
         <item quantity="one">Удалить %d сообщение? Сообщение также будет удалено с сервера.</item>
-        <item quantity="few">Удалить %d сообщения? Сообщения также будут удалены с сервера.</item>
+        <item quantity="few">Удалить %d сообщений? Сообщения также будут удалены с сервера</item>
         <item quantity="many">Удалить %d сообщения? Сообщения также будут удалены с сервера.</item>
         <item quantity="other">Удалить %d сообщения? Сообщения также будут удалены с сервера.</item>
     </plurals>
