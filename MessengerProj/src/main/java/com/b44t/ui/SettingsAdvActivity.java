@@ -102,7 +102,7 @@ public class SettingsAdvActivity extends BaseFragment implements NotificationCen
         cacheRow = -1;// for now, the - non-functional - page is reachable by the "storage settings" in the "android App Settings" only
         e2eEncryptionRow        = rowCount++;
         manageKeysRow           = rowCount++;
-        backupRow = rowCount++;
+        backupRow = -1; //rowCount++; -- disabled for now
         finalShadowRow = rowCount++;
 
         return true;
