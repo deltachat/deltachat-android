@@ -377,7 +377,7 @@
     <string name="HelpUrl">https://delta.chat/de/help</string>
     <string name="EncryptedMessage">Verschlüsselte Nachricht</string>
 
-    <string name="EncrinfoE2E">Die Verbindung ist Ende-zu-Ende-Verschlüsselt.</string>
+    <string name="EncrinfoE2E">Ende-zu-Ende-Verschlüsselung ist aktiv.</string>
     <string name="EncrinfoE2EExplain">Wenn die angezeigten Fingerabdrücke auf dem anderen Gerät genauso angezeigt werden, ist die Verbindung sicher.</string>
     <string name="EncrinfoTransport">Transportverschlüsselung mindestens bis zu meinem Server.</string>
     <string name="EncrinfoNone">Keine Verschlüsselung bis zu meinem Server.</string>
