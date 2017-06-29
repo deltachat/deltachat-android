@@ -75,6 +75,8 @@ public class SettingsActivity extends BaseFragment {
     private static final int ROWTYPE_CHECK           = 5;
     private static final int ROWTYPE_COUNT           = 6;
 
+    public final int MR_READRECEIPTS_DEFAULT = 1;
+
     private ListView listView;
 
     @Override
@@ -112,9 +114,9 @@ public class SettingsActivity extends BaseFragment {
             backgroundRow      = rowCount++;
             textSizeRow        = rowCount++;
         }
-        readReceiptsRow=-1;
         passcodeRow = rowCount++;
         blockedRow = rowCount++;
+        readReceiptsRow = rowCount++;
         advRow = rowCount++;
         settingsShadowRow  = rowCount++;
 
@@ -183,7 +185,16 @@ public class SettingsActivity extends BaseFragment {
                 }
                 else if(i==readReceiptsRow )
                 {
-                    Toast.makeText(getParentActivity(), ApplicationLoader.applicationContext.getString(R.string.NotYetImplemented), Toast.LENGTH_SHORT).show();
+                    int oldval = MrMailbox.getConfigInt("readreceipts", MR_READRECEIPTS_DEFAULT);
+                    if( oldval == 1 ) {
+                        MrMailbox.setConfig("readreceipts", "0");
+                    }
+                    else {
+                        MrMailbox.setConfig("readreceipts", "1");
+                    }
+                    if (view instanceof TextCheckCell) {
+                        ((TextCheckCell) view).setChecked(oldval == 0);
+                    }
                 }
                 else if (i == notificationRow) {
                     presentFragment(new SettingsNotificationsActivity());
@@ -399,7 +410,7 @@ public class SettingsActivity extends BaseFragment {
                 TextCheckCell textCell = (TextCheckCell) view;
                 if( i == readReceiptsRow ) {
                     textCell.setTextAndCheck(mContext.getString(R.string.SendNRcvReadReceipts),
-                            MrMailbox.getConfigInt("read_receipts", 0)!=0, true);
+                            MrMailbox.getConfigInt("readreceipts", MR_READRECEIPTS_DEFAULT)!=0, true);
                 }
             }
             return view;
