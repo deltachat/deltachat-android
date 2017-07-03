@@ -48,10 +48,9 @@ public class MrMsg {
     public final static int      MR_MSG_FILE                = 60;
 
     public final static int      MR_STATE_UNDEFINED         =  0;
-    public final static int      MR_IN_UNREAD               = 10;
-    public final static int      MR_IN_READ                 = 16;
+    public final static int      MR_IN_FRESH                = 10;
+    public final static int      MR_IN_NOTICED              = 13;
     public final static int      MR_OUT_PENDING             = 20;
-    public final static int      MR_OUT_SENDING             = 22;
     public final static int      MR_OUT_ERROR               = 24;
     public final static int      MR_OUT_DELIVERED           = 26;
     public final static int      MR_OUT_READ                = 28;

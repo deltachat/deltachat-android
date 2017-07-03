@@ -68,9 +68,7 @@ public class MrChat {
     public int setDraft(String draft/*NULL=delete*/, long replyToMsgId) {
         return MrChatSetDraft(m_hChat, draft, replyToMsgId);
     }
-    public int getUnseenCount() {
-        return MrChatGetUnseenCount(m_hChat);
-    }
+    public native int getFreshMsgCount();
 
     public int getTotalMsgCount() {
         return MrChatGetTotalMsgCount(m_hChat);
@@ -86,7 +84,6 @@ public class MrChat {
     private native static long    MrChatGetDraftTimestamp    (long hChat); // returns 0 for "no draft"
     private native static int     MrChatGetDraftReplyToMsgId (long hChat); // returns 0 for "no draft"
     private native static int     MrChatSetDraft             (long hChat, String draft/*NULL=delete*/, long replyToMsgId);
-    private native static int     MrChatGetUnseenCount       (long hChat);
     private native static int     MrChatGetTotalMsgCount     (long hChat);
 
 

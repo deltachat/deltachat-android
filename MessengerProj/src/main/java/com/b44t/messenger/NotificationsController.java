@@ -502,7 +502,7 @@ public class NotificationsController {
         }
 
         // get all unread messages as a hash
-        int unseenArr[] = MrMailbox.getUnseenMsgs();
+        int unseenArr[] = MrMailbox.getFreshMsgs();
         int unseenCnt = unseenArr.length;
         HashMap<Integer, Boolean> unseenHash = new HashMap<>();
         for( int i = 0; i < unseenCnt; i++ ) {

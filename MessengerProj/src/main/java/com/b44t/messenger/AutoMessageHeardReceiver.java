@@ -38,7 +38,7 @@ public class AutoMessageHeardReceiver extends BroadcastReceiver {
         if (dialog_id == 0 || max_id == 0) {
             return;
         }
-        MrMailbox.markseenChat((int)dialog_id);
+        MrMailbox.marknoticedChat((int)dialog_id);
         NotificationsController.getInstance().removeSeenMessages();
     }
 }

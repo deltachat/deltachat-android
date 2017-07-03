@@ -526,7 +526,7 @@ public class DialogCell extends BaseCell {
 
     public void update(int mask) {
         if( m_showUnreadCount ) {
-            unreadCount = m_mrChat.getUnseenCount();
+            unreadCount = m_mrChat.getFreshMsgCount();
         }
 
         if (mask != 0) {

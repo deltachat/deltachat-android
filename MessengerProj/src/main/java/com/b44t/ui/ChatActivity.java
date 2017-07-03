@@ -47,6 +47,7 @@ import android.text.TextUtils;
 import android.text.style.ClickableSpan;
 import android.text.style.URLSpan;
 import android.util.Log;
+import android.util.SparseIntArray;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.MotionEvent;
@@ -152,7 +153,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
 
     private boolean paused = true;
     private boolean wasPaused = false;
-    private boolean readWhenResume = false;
+    private SparseIntArray markseenWhenResume = new SparseIntArray();
 
     private boolean scrollToTopOnResume;
     private boolean forceScrollToTop;
@@ -325,7 +326,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
             AndroidUtilities.runOnUIThread(new Runnable() {
                 @Override
                 public void run() {
-                    MrMailbox.markseenChat((int)dialog_id);
+                    MrMailbox.marknoticedChat((int)dialog_id);
                     NotificationsController.getInstance().removeSeenMessages();
                 }
             }, 700);
@@ -1913,9 +1914,11 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
 
                     if (markAsRead) {
                         if (paused) {
-                            readWhenResume = true;
+                            markseenWhenResume.put(evt_msg_id, 1);
                         } else {
-                            MrMailbox.markseenMsg(evt_msg_id);
+                            int msg_ids[] = new int[1];
+                            msg_ids[0] = evt_msg_id;
+                            MrMailbox.markseenMsgs(msg_ids);
                             NotificationsController.getInstance().removeSeenMessages();
                         }
                     }
@@ -2251,9 +2254,15 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
             scrollToMessage = null;
         }
         paused = false;
-        if (readWhenResume ) {
-            readWhenResume = false;
-            MrMailbox.markseenChat((int)dialog_id);
+
+        int markseenWhenResumeCnt = markseenWhenResume.size();
+        if (markseenWhenResumeCnt>0 ) {
+            int msg_ids[] = new int[markseenWhenResumeCnt];
+            for(int i=0; i<markseenWhenResumeCnt; i++) {
+                msg_ids[i] = markseenWhenResume.keyAt(i);
+            }
+            MrMailbox.markseenMsgs(msg_ids);
+            markseenWhenResume.clear();
             NotificationsController.getInstance().removeSeenMessages();
         }
 
@@ -2864,6 +2873,19 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                         messageCell.setHighlightedText(m_lastSearchQuery);
                     } else {
                         messageCell.setHighlightedText(null);
+                    }
+
+                    // mark message as being read
+                    int state = mrMsg.getState();
+                    if( state == MrMsg.MR_IN_FRESH || state==MrMsg.MR_IN_NOTICED ) {
+                        if(paused) {
+                            markseenWhenResume.put(msg_id, 1);
+                        }
+                        else {
+                            int msg_ids[] = new int[1];
+                            msg_ids[0] = msg_id;
+                            MrMailbox.markseenMsgs(msg_ids);
+                        }
                     }
                 }
                 else if( view instanceof ChatActionCell )

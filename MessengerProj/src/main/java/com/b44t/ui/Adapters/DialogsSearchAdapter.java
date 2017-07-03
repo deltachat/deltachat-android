@@ -169,7 +169,7 @@ public class DialogsSearchAdapter extends RecyclerView.Adapter {
                         MrPoortext mrSummary = mrMsg.getSummary(mrChat);
 
                         cell.setDialog(mrChat, mrSummary, -1,
-                                mrMsg.getState()==MrMsg.MR_IN_UNREAD /*show unread count only if the message itself is unread*/ );
+                                mrMsg.getState()==MrMsg.MR_IN_FRESH /*show unread count only if the message itself is unread*/ );
                     }
                 }
                 break;

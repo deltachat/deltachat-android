@@ -1,5 +1,10 @@
 # Delta Chat Changelog
 
+## UNRELEASED
+
+* Improve encryption dialog in profile
+* Update Russian translation
+
 ## v0.9.2
 2017-06-28
 

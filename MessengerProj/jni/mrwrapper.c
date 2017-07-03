@@ -363,15 +363,19 @@ JNIEXPORT jint Java_com_b44t_messenger_MrMailbox_getChatIdByContactId(JNIEnv *en
 }
 
 
-JNIEXPORT jint Java_com_b44t_messenger_MrMailbox_markseenMsg(JNIEnv *env, jclass cls, jint msg_id)
+JNIEXPORT jint Java_com_b44t_messenger_MrMailbox_markseenMsgs(JNIEnv *env, jclass cls, jintArray msg_ids)
 {
-	return (jint)mrmailbox_markseen_msg(get_mrmailbox_t(env, cls), msg_id);
+	int msg_ids_cnt;
+	const uint32_t* msg_ids_ptr = jintArray2uint32Pointer(env, msg_ids, &msg_ids_cnt);
+		jint ret = mrmailbox_markseen_msgs(get_mrmailbox_t(env, cls), msg_ids_ptr, msg_ids_cnt);
+	free(msg_ids_ptr);
+	return ret;
 }
 
 
-JNIEXPORT jint Java_com_b44t_messenger_MrMailbox_markseenChat(JNIEnv *env, jclass cls, jint chat_id)
+JNIEXPORT jint Java_com_b44t_messenger_MrMailbox_marknoticedChat(JNIEnv *env, jclass cls, jint chat_id)
 {
-	return (jlong)mrmailbox_markseen_chat(get_mrmailbox_t(env, cls), chat_id);
+	return (jlong)mrmailbox_marknoticed_chat(get_mrmailbox_t(env, cls), chat_id);
 }
 
 
@@ -676,9 +680,9 @@ JNIEXPORT jint Java_com_b44t_messenger_MrChat_MrChatGetTotalMsgCount(JNIEnv *env
 }
 
 
-JNIEXPORT jint Java_com_b44t_messenger_MrChat_MrChatGetUnseenCount(JNIEnv *env, jclass c, jlong hChat)
+JNIEXPORT jint Java_com_b44t_messenger_MrChat_getFreshMsgCount(JNIEnv *env, jclass cls)
 {
-	return mrchat_get_unseen_count((mrchat_t*)hChat);
+	return mrchat_get_fresh_msg_count(get_mrchat_t(env, cls));
 }
 
 
@@ -764,9 +768,9 @@ JNIEXPORT jintArray Java_com_b44t_messenger_MrMailbox_searchMsgs(JNIEnv *env, jc
 }
 
 
-JNIEXPORT jintArray Java_com_b44t_messenger_MrMailbox_getUnseenMsgs(JNIEnv *env, jclass cls)
+JNIEXPORT jintArray Java_com_b44t_messenger_MrMailbox_getFreshMsgs(JNIEnv *env, jclass cls)
 {
-	carray* ca = mrmailbox_get_unseen_msgs(get_mrmailbox_t(env, cls));
+	carray* ca = mrmailbox_get_fresh_msgs(get_mrmailbox_t(env, cls));
 	return carray2jintArray_n_carray_free(env, ca);
 }
 

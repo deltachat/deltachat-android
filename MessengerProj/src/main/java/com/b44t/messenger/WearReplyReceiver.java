@@ -49,7 +49,7 @@ public class WearReplyReceiver extends BroadcastReceiver {
             return;
         }
         SendMessagesHelper.getInstance().sendMessageText(text.toString(), dialog_id, null);
-        MrMailbox.markseenChat((int)dialog_id);
+        MrMailbox.marknoticedChat((int)dialog_id);
         NotificationsController.getInstance().removeSeenMessages();
     }
 }
