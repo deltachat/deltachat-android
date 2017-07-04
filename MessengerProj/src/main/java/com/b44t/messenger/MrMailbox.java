@@ -378,6 +378,8 @@ public class MrMailbox {
                     case 28: s = ApplicationLoader.applicationContext.getString(R.string.EncrinfoNone); break;
                     case 29: s = "<c#808080>"+ApplicationLoader.applicationContext.getString(R.string.EncrinfoNoE2EExplain)+"</c>"; break;
                     case 30: s = ApplicationLoader.applicationContext.getString(R.string.EncrinfoFingerprints); break;
+                    case 31: s = ApplicationLoader.applicationContext.getString(R.string.ReadReceipt); break;
+                    case 32: s = ApplicationLoader.applicationContext.getString(R.string.ReadReceiptMailBody); break;
                 }
                 return String2CPtr(s);
 

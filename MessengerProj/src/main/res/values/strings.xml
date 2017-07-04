@@ -389,4 +389,6 @@
     <string name="EncrinfoFingerprints">Fingerprints</string>
     <string name="Backup">Backup</string>
     <string name="ImportBackupExplain">To import a backup, copy to the backup to the \"Downloads\" directory and reinstall the app.</string>
+    <string name="ReadReceiptMailBody">This is a return receipt for the message \"%1$s\".\n\nThis return receipt only acknowledges that the message was displayed on the recipient\'s device. There is no guarantee that the recipient has read the message contents.</string>
+    <string name="ReadReceipt">Return receipt</string>
 </resources>

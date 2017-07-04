@@ -389,5 +389,6 @@
     <string name="ImportPrivateKeysAsk">Private Schlüssel aus \"Downloads\" importieren?\n\n• Bereits vorhandene private Schlüssel bleiben erhalten\n\n• Der zuletzt importierte private Schlüssel wird der Standardschlüssel\n\nFortfahren?</string>
     <string name="Encryption">Verschlüsselung</string>
     <string name="ImportBackupExplain">Um ein Backup zu importieren, kopieren Sie es auf dem Zielgerät in das \"Downloads\"-Verzeichnis und installieren die App neu.</string>
-
+    <string name="ReadReceiptMailBody">Dies ist eine Empfangsbestätigung für die Nachricht \"%1$s\".\n\nDiese Empfangsbestätigung sagt nur aus, dass die Nachricht am Gerät des Empfängers angezeigt wurde. Es gibt keine Garantie, dass der Empfänger die Nachricht gelesen hat.</string>
+    <string name="ReadReceipt">Empfangsbestätigung</string>
 </resources>
