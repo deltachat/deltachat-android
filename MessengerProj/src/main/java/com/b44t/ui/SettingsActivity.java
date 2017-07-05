@@ -75,7 +75,7 @@ public class SettingsActivity extends BaseFragment {
     private static final int ROWTYPE_CHECK           = 5;
     private static final int ROWTYPE_COUNT           = 6;
 
-    public final int MR_READRECEIPTS_DEFAULT = 1;
+    public final int MR_MDNS_DEFAULT_ENABLED = 1;
 
     private ListView listView;
 
@@ -185,12 +185,12 @@ public class SettingsActivity extends BaseFragment {
                 }
                 else if(i==readReceiptsRow )
                 {
-                    int oldval = MrMailbox.getConfigInt("readreceipts", MR_READRECEIPTS_DEFAULT);
+                    int oldval = MrMailbox.getConfigInt("mdns_enabled", MR_MDNS_DEFAULT_ENABLED);
                     if( oldval == 1 ) {
-                        MrMailbox.setConfig("readreceipts", "0");
+                        MrMailbox.setConfig("mdns_enabled", "0");
                     }
                     else {
-                        MrMailbox.setConfig("readreceipts", "1");
+                        MrMailbox.setConfig("mdns_enabled", "1");
                     }
                     if (view instanceof TextCheckCell) {
                         ((TextCheckCell) view).setChecked(oldval == 0);
@@ -410,7 +410,7 @@ public class SettingsActivity extends BaseFragment {
                 TextCheckCell textCell = (TextCheckCell) view;
                 if( i == readReceiptsRow ) {
                     textCell.setTextAndCheck(mContext.getString(R.string.SendNRcvReadReceipts),
-                            MrMailbox.getConfigInt("readreceipts", MR_READRECEIPTS_DEFAULT)!=0, true);
+                            MrMailbox.getConfigInt("mdns_enabled", MR_MDNS_DEFAULT_ENABLED)!=0, true);
                 }
             }
             return view;

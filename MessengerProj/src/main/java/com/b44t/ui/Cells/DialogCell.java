@@ -317,7 +317,7 @@ public class DialogCell extends BaseCell {
                     case MrMsg.MR_OUT_ERROR: drawError = true; break;
                     case MrMsg.MR_OUT_PENDING: drawClock = true; break;
                     case MrMsg.MR_OUT_DELIVERED: drawCheck2 = true; break;
-                    case MrMsg.MR_OUT_READ: drawCheck1 = true; drawCheck2 = true; break;
+                    case MrMsg.MR_OUT_MDN_RCVD: drawCheck1 = true; drawCheck2 = true; break;
                 }
         }
 

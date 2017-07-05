@@ -53,7 +53,7 @@ public class MrMsg {
     public final static int      MR_OUT_PENDING             = 20;
     public final static int      MR_OUT_ERROR               = 24;
     public final static int      MR_OUT_DELIVERED           = 26;
-    public final static int      MR_OUT_READ                = 28;
+    public final static int      MR_OUT_MDN_RCVD            = 28;
 
     public final static int      MR_MSG_ID_MARKER1    = 1;
     public final static int      MR_MSG_ID_DAYMARKER  = 9;
@@ -137,7 +137,7 @@ public class MrMsg {
             case MR_OUT_DELIVERED: ret.send_state = MessageObject.MESSAGE_SEND_STATE_SENT; break;
             case MR_OUT_ERROR:     ret.send_state = MessageObject.MESSAGE_SEND_STATE_SEND_ERROR; break;
             case MR_OUT_PENDING:   ret.send_state = MessageObject.MESSAGE_SEND_STATE_SENDING; break;
-            case MR_OUT_READ:      ret.send_state = MessageObject.MESSAGE_SEND_STATE_SENT; break;
+            case MR_OUT_MDN_RCVD:  ret.send_state = MessageObject.MESSAGE_SEND_STATE_SENT; break;
         }
 
         ret.id            = getId();
@@ -146,7 +146,7 @@ public class MrMsg {
         ret.to_id.user_id = getToId();
         ret.date          = (int)getTimestamp();
         ret.dialog_id     = getChatId();
-        ret.unread        = state!=MR_OUT_READ; // the state of outgoing messages
+        ret.unread        = state!=MR_OUT_MDN_RCVD; // the state of outgoing messages
         ret.media_unread  = ret.unread;
         ret.flags         = 0; // posible flags: MESSAGE_FLAG_HAS_FROM_ID, however, this seems to be read only
         ret.out           = ret.from_id==MrContact.MR_CONTACT_ID_SELF; // true=outgoing message, read eg. in MessageObject.isOutOwner()
