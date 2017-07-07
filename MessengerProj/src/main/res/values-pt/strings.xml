@@ -27,8 +27,8 @@
     <string name="NoFiles">Ainda não há arquivos</string>
     <string name="NotMounted">Armazenamento não está montado</string>
     <string name="UsbActive">Transferência USB ativa</string>
-    <string name="InternalStorage">Armazenamento Interno</string>
-    <string name="ExternalStorage">Armazenamento Externo</string>
+    <string name="InternalStorage">Armazenamento interno</string>
+    <string name="ExternalStorage">Armazenamento externo</string>
     <string name="SystemRoot">Administrador do Sistema</string>
     <string name="SdCard">Cartão SD</string>
     <string name="Folder">Pasta</string>
@@ -65,7 +65,7 @@
     <!--contact info view-->
     <string name="NewContactTitle">Adicionar contato</string>
     <string name="BlockContact">Bloquear</string>
-    <string name="DeleteContact">Apagar</string>
+    <string name="DeleteContact">Apagar contato</string>
     <string name="Info">Info</string>
     <!--settings view-->
     <string name="TextSize">Tamanho do texto nas mensagens</string>
@@ -82,13 +82,13 @@
     <string name="BlockedContacts">Usuários bloqueados</string>
     <string name="Default">Padrão</string>
     <string name="OnlyIfSilent">Somente no silencioso</string>
-    <string name="ChatBackground">Papel de Parede</string>
+    <string name="ChatBackground">Papel de parede</string>
     <string name="SendByEnter">Enviar usando \'Enter\'</string>
-    <string name="Help">Perguntas frequentes</string>
+    <string name="Help">Ajuda</string>
     <string name="Enabled">Ativado</string>
     <string name="Disabled">Desativado</string>
     <string name="LedColor">Cor do LED</string>
-    <string name="BadgeNumber">Contador no Ícone</string>
+    <string name="BadgeNumber">Contador no ícone</string>
     <string name="Short">Curta</string>
     <string name="Long">Longa</string>
     <string name="RaiseToSpeak">Levantar para Falar</string>
@@ -105,17 +105,17 @@
     <string name="SmartNotificationsTimes">vezes</string>
     <string name="SmartNotificationsWithin">a cada</string>
     <string name="SmartNotificationsMinutes">minutos</string>
-    <string name="DirectShare">Compartilhamento Direto</string>
+    <string name="DirectShare">Compartilhamento direto</string>
     <string name="DirectShareInfo">Mostrar chats recentes no menu compartilhar</string>
     <!--cache view-->
-    <string name="CacheSettings">Configurações de Cache</string>
+    <string name="CacheSettings">Armazenamento</string>
     <string name="KeepMedia">Manter Mídias</string>
     <string name="KeepMediaInfo">Fotos, vídeos e outros arquivos da nuvem que você <![CDATA[<b>não acessou</b>]]> durante esse período serão removidos deste dispositivo para economizar espaço em disco.</string>
     <string name="KeepMediaForever">Permanentemente</string>
     <!--passcode view-->
     <string name="Passcode">Senha de Bloqueio</string>
     <string name="ChangePasscode">Alterar Senha</string>
-    <string name="ChangePasscodeInfo">Quando você define uma senha adicional, um ícone de cadeado aparece na página de chats. Clique para bloquear e desbloquear o app.\n\nNota: se você esquecer a sua senha, terá de excluir e reinstalar o app.</string>
+    <string name="ChangePasscodeInfo">Quando você define uma senha adicional, um ícone de cadeado aparece na página de chats. Clique nele para bloquear e desbloquear o app.\n\nNota: se você esquecer a sua senha, terá de excluir e reinstalar o app.</string>
     <string name="PasscodePIN">PIN</string>
     <string name="PasscodePassword">Senha</string>
     <string name="EnterCurrentPasscode">Insira sua senha atual</string>
@@ -124,7 +124,7 @@
     <string name="EnterYourPasscode">Insira sua senha</string>
     <string name="ReEnterYourPasscode">Re-insira sua nova senha</string>
     <string name="PasscodeDoNotMatch">As senhas não são iguais</string>
-    <string name="AutoLock">Auto-bloquear</string>
+    <string name="AutoLock">Autobloquear</string>
     <string name="AutoLockInfo">Requisitar senha se estiver ausente por muito tempo.</string>
     <string name="UnlockFingerprint">Desbloquear com Impressão Digital</string>
     <string name="FingerprintInfo">Confirme a impressão digital para continuar</string>
@@ -133,8 +133,8 @@
     <string name="SaveToGallery">Salvar na galeria</string>
     <string name="Of">%1$d de %2$d</string>
     <string name="Gallery">Galeria</string>
-    <string name="AllPhotos">Todas as Fotos</string>
-    <string name="AllVideo">Todos os Vídeos</string>
+    <string name="AllPhotos">Todas as fotos</string>
+    <string name="AllVideo">Todos os vídeos</string>
     <string name="NoPhotos">Ainda não há fotos</string>
     <string name="NoVideo">Nenhum vídeo ainda</string>
     <string name="CropImage">Recortar imagem</string>
@@ -149,7 +149,7 @@
     <string name="Shadows">Sombras</string>
     <string name="Grain">Granulado</string>
     <string name="Sharpen">Nitidez</string>
-    <string name="Fade">Fade</string>
+    <string name="Fade">Desbotar</string>
     <string name="Tint">Matiz</string>
     <string name="TintShadows">SOMBRAS</string>
     <string name="TintHighlights">LUZES</string>
@@ -177,11 +177,11 @@
     <string name="Cancel">Cancelar</string>
     <string name="Edit">Editar</string>
     <string name="Send">Enviar</string>
-    <string name="CopyToClipboard">Copiar</string>
+    <string name="CopyToClipboard">Copiar para a área de transferência</string>
     <string name="Delete">Apagar</string>
     <string name="Forward">Encaminhar</string>
-    <string name="FromCamera">Câmera</string>
-    <string name="FromGalley">Galeria</string>
+    <string name="FromCamera">Da câmera</string>
+    <string name="FromGalley">Da galeria</string>
     <string name="Set">Aplicar</string>
     <string name="OK">OK</string>
     <string name="Crop">CORTAR</string>
@@ -195,7 +195,7 @@
     <string name="FromSelf">Você</string>
     <!--Alert messages-->
     <string name="NoHandleAppInstalled">Você não possui um aplicativo que suporte o tipo de arquivo \'%1$s\', por favor instale um para continuar</string>
-    <string name="ContactAlreadyInGroup">Este usuário já está neste grupo</string>
+    <string name="ContactAlreadyInGroup">Este usuário já está neste grupo.</string>
     <string name="ForwardMessagesTo">Encaminhar mensagem para <![CDATA[<b>%1$s</b>]]>?</string>
     <string name="SendMessagesTo">Enviar mensagens para <![CDATA[<b>%1$s</b>]]>?</string>
     <string name="AreYouSureDeleteThisChat">Você tem certeza que deseja apagar esta conversa?</string>
@@ -323,8 +323,8 @@
     <string name="AboutThisProgram">Sobre Delta Chat</string>
     <string name="NotSet">Não configurado</string>
     <string name="NewChat">Novo Chat</string>
-    <string name="Deaddrop">Caixa de entrada</string>
-    <string name="DeaddropInChatlist">Exibir caixa de entrada na lista de conversas</string>
+    <string name="Deaddrop">Requisições de contato</string>
+    <string name="DeaddropInChatlist">Exibir solicitações de contato na lista de conversas</string>
     <string name="MuteAlways">Sempre mudo</string>
     <string name="AskStartChatWith">Começar um chat com <![CDATA[<b>%1$s</b>]]>?</string>
     <string name="DeaddropHint">Para conversar clique na seta.</string>
@@ -333,7 +333,7 @@
     <string name="Name" >Nome</string>
     <string name="EmailAddress">Endereço de e-mail</string>
     <string name="CannotDeleteContact">Impossível deletar um usuário em uso! Bloqueie-o.</string>
-    <string name="BadEmailAddress">Endereço inválido</string>
+    <string name="BadEmailAddress">Endereço inválido.</string>
     <string name="ContactCreated">Usuário criado.</string>
     <string name="ViewProfile">Ver perfil</string>
     <!-- Translators: please use a very short string here, it should not much longer than
@@ -363,7 +363,7 @@
     <string name="E2EManagePrivateKeys">Gerir chaves privadas</string>
     <string name="E2ECompareKeys">Comparar chaves</string>
     <string name="ResetContactsKey">Apagar chave do usuário</string>
-    <string name="ForwardToTitle">Selecione um Chat …</string>
+    <string name="ForwardToTitle">Encaminhar para …</string>
     <string name="SelectContact">Escolha um contato</string>
     <string name="DoneHint">Concluído.</string>
     <string name="FileNotFound">O arquivo %1$s não foi encontrado.</string>
