@@ -4,6 +4,7 @@
 
 * Introduce "Read receipts" and avoid social pressure to leave it activated
 * Improve encryption dialog in profile
+* Fix marking messages as "seen" when opening the contact requests
 * Update Portuguese and Russian translations
 
 ## v0.9.2
