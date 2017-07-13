@@ -2,7 +2,7 @@
 
 
 
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="AppName">Delta Chat</string>
     <!--chats view-->
     <string name="Settings">Ustawienia</string>
@@ -381,7 +381,7 @@
     <string name="MsgGroupLeft">Grupa opuszczona.</string>
     <string name="NoMessagesHint">Wyślij wiadomość do <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>:\n\n• Nie ma problemu, jeśli <![CDATA[<b>]]>%2$s<![CDATA[</b>]]> nie używa Delta Chat.\n\n• Dostarczenie pierwszej wiadomości może chwilę potrwać.</string>
     <string name="SendNRcvReadReceipts">Odbieraj i wysyłaj potwierdzenia odczytu</string>
-    <string name="E2EEncryption">Pełne szyfrowanie</string>
+    <string name="PreferE2EEncryption">Preferuj pełne szyfrowanie</string>
     <string name="E2EManagePrivateKeys">Zarządzaj prywatnymi kluczami</string>
     <string name="E2ECompareKeys">Porównaj klucze</string>
     <string name="ResetContactsKey">Resetuj klucz kontaktu</string>
@@ -402,4 +402,15 @@
     <string name="ImportFromDownloads">Importuj z katalogu „Downloads”</string>
     <string name="ExportToDownloads">Eksportuj do katalogu „Downloads”</string>
     <string name="ImportPrivateKeysAsk">Zaimportować prywatne klucze z „Downloads”?\n\n• Istniejące prywatne klucze nie są usuwane\n\n• Ostatni zaimportowany klucz zostanie użyty jako nowy klucz domyślny\n\nKontynuować?</string>
+    <string name="Encryption">Szyfrowanie</string>
+    <string name="EncrinfoE2E">Połączenie jest w pełni szyfrowane.</string>
+    <string name="EncrinfoE2EExplain">Jeśli wszystkie odciski palców są zgodne z drugim urządzeniem, połączenie jest bezpieczne.</string>
+    <string name="EncrinfoTransport">Szyfrowanie transportu przynajmniej na moim serwerze.</string>
+    <string name="EncrinfoNone">Brak szyfrowania na moim serwerze.</string>
+    <string name="EncrinfoNoE2EExplain">Szyfrowanie przełączy się automatycznie na PEŁNE, gdy tylko kontakt użyje programu Delta Chat lub innej aplikacji obsługującej funkcję Autocrypt.</string>
+    <string name="EncrinfoFingerprints">Odciski palców</string>
+    <string name="Backup">Backup</string>
+    <string name="ImportBackupExplain">Aby zaimportować kopię zapasową, skopiuj ją do folderu \"Downloads\" i ponownie zainstaluj aplikację.</string>
+    <string name="ReadReceiptMailBody">To jest potwierdzenie odczytu dla wiadomości ”%1$s„.\n\nTo potwierdzenie odczytu tylko informuje, że wiadomość została wyświetlona na urządzeniu odbiorcy. Nie ma gwarancji, że odbiorca przeczytał treść wiadomości.</string>
+    <string name="ReadReceipt">Potwierdzenie odczytu</string>
 </resources>
