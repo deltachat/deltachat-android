@@ -76,7 +76,7 @@ android {
         }
     }
 
-    defaultConfig.versionCode = 42
+    defaultConfig.versionCode = 43
 
     sourceSets.main {
         jniLibs.srcDir 'libs'
@@ -118,6 +118,6 @@ android {
         minSdkVersion 14     // 14: Android 4.0 Ice Cream Sandwich 2011 (Telegram default), 21: Android 5.0 Lollipop 2014 (recommended for InstantRun)
         targetSdkVersion 25  // 25: Nougat. CAVE: Do NOT target "Andoid O" without checking the background tasks carefully, see https://developer.android.com/preview/behavior-changes.html#back-all . As long as we target "Nougat", everything works as expected even for "Andoid O" or later
                              // in general, we should not change the target without reason; eg. after the switch to Nougat, the camera stops working (see https://inthecheesefactory.com/blog/how-to-share-access-to-file-with-fileprovider-on-android-nougat/en )
-        versionName "0.9.3"  // do NOT forget to increase defaultConfig.versionCode!
+        versionName "0.9.4"  // do NOT forget to increase defaultConfig.versionCode!
     }
 }
