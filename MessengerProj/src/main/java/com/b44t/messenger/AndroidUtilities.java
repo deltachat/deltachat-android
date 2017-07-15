@@ -98,7 +98,6 @@ public class AndroidUtilities {
     public static DisplayMetrics displayMetrics = new DisplayMetrics();
     public static int leftBaseline;
     public static boolean usingHardwareInput;
-    private static Boolean isTablet = null;
     private static int adjustOwnerClassGuid = 0;
 
     static {
@@ -121,12 +120,12 @@ public class AndroidUtilities {
 
     static {
         density = ApplicationLoader.applicationContext.getResources().getDisplayMetrics().density;
-        leftBaseline = isTablet() ? 80 : 72;
+        leftBaseline = 72;
         checkDisplaySize();
     }
 
     public static void requestAdjustResize(Activity activity, int classGuid) {
-        if (activity == null || isTablet()) {
+        if (activity == null) {
             return;
         }
         activity.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
@@ -134,7 +133,7 @@ public class AndroidUtilities {
     }
 
     public static void removeAdjustResize(Activity activity, int classGuid) {
-        if (activity == null || isTablet()) {
+        if (activity == null ) {
             return;
         }
         if (adjustOwnerClassGuid == classGuid) {
@@ -328,43 +327,6 @@ public class AndroidUtilities {
 
     public static void cancelRunOnUIThread(Runnable runnable) {
         ApplicationLoader.applicationHandler.removeCallbacks(runnable);
-    }
-
-    public static boolean isTablet() {
-        /* -- we do not make any special for tablet or not. _If_ sth. like this is desired, check for an appropriate screen size.
-        if (isTablet == null) {
-            isTablet = ApplicationLoader.applicationContext.getResources().getBoolean(R.bool.isTablet);
-        }
-        return isTablet;
-        */
-        return false;
-    }
-
-    public static boolean isSmallTablet() {
-        /*
-        float minSide = Math.min(displaySize.x, displaySize.y) / density;
-        return minSide <= 700;
-        */
-        return false;
-    }
-
-    public static int getMinTabletSide() {
-        if (!isSmallTablet()) {
-            int smallSide = Math.min(displaySize.x, displaySize.y);
-            int leftSide = smallSide * 35 / 100;
-            if (leftSide < dp(320)) {
-                leftSide = dp(320);
-            }
-            return smallSide - leftSide;
-        } else {
-            int smallSide = Math.min(displaySize.x, displaySize.y);
-            int maxSide = Math.max(displaySize.x, displaySize.y);
-            int leftSide = maxSide * 35 / 100;
-            if (leftSide < dp(320)) {
-                leftSide = dp(320);
-            }
-            return Math.min(smallSide, maxSide - leftSide);
-        }
     }
 
     public static int getPhotoSize() {

@@ -152,7 +152,6 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.emojiDidLoaded);
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.updateInterfaces);
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.contactsDidLoaded);
-        NotificationCenter.getInstance().addObserver(this, NotificationCenter.openedChatChanged);
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.notificationsSettingsUpdated);
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.messageSendError);
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.didSetPasscode);
@@ -172,7 +171,6 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
         NotificationCenter.getInstance().removeObserver(this, NotificationCenter.emojiDidLoaded);
         NotificationCenter.getInstance().removeObserver(this, NotificationCenter.updateInterfaces);
         NotificationCenter.getInstance().removeObserver(this, NotificationCenter.contactsDidLoaded);
-        NotificationCenter.getInstance().removeObserver(this, NotificationCenter.openedChatChanged);
         NotificationCenter.getInstance().removeObserver(this, NotificationCenter.notificationsSettingsUpdated);
         NotificationCenter.getInstance().removeObserver(this, NotificationCenter.messageSendError);
         NotificationCenter.getInstance().removeObserver(this, NotificationCenter.didSetPasscode);
@@ -399,16 +397,6 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
                         args.putInt("message_id", message_id);
                     }
 
-                    if (AndroidUtilities.isTablet()) {
-                        if (openedDialogId == dialog_id && adapter != dialogsSearchAdapter) {
-                            return;
-                        }
-                        if (dialogsAdapter != null) {
-                            dialogsAdapter.setOpenedDialogId(openedDialogId = dialog_id);
-                            updateVisibleRows(MrMailbox.UPDATE_MASK_SELECT_DIALOG);
-                        }
-                    }
-
                     presentFragment(new ChatActivity(args));
                 }
             }
@@ -527,9 +515,6 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
         });
 
         dialogsAdapter = new DialogsAdapter(context);
-        if (AndroidUtilities.isTablet() && openedDialogId != 0) {
-            dialogsAdapter.setOpenedDialogId(openedDialogId);
-        }
         listView.setAdapter(dialogsAdapter);
         dialogsSearchAdapter = new DialogsSearchAdapter(context);
 
@@ -735,22 +720,6 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
             updateVisibleRows((Integer) args[0]);
         } else if (id == NotificationCenter.contactsDidLoaded) {
             updateVisibleRows(0);
-        } else if (id == NotificationCenter.openedChatChanged) {
-            if ( AndroidUtilities.isTablet()) {
-                boolean close = (Boolean) args[1];
-                long dialog_id = (Long) args[0];
-                if (close) {
-                    if (dialog_id == openedDialogId) {
-                        openedDialogId = 0;
-                    }
-                } else {
-                    openedDialogId = dialog_id;
-                }
-                if (dialogsAdapter != null) {
-                    dialogsAdapter.setOpenedDialogId(openedDialogId);
-                }
-                updateVisibleRows(MrMailbox.UPDATE_MASK_SELECT_DIALOG);
-            }
         } else if (id == NotificationCenter.notificationsSettingsUpdated) {
             updateVisibleRows(0);
         } else if ( id == NotificationCenter.messageSendError) {
@@ -794,13 +763,8 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
                     DialogCell cell = (DialogCell) child;
                     if ((mask & MrMailbox.UPDATE_MASK_NEW_MESSAGE) != 0) {
                         cell.checkCurrentDialogIndex();
-                        if ( AndroidUtilities.isTablet()) {
-                            cell.setDialogSelected(cell.getDialogId() == openedDialogId);
-                        }
                     } else if ((mask & MrMailbox.UPDATE_MASK_SELECT_DIALOG) != 0) {
-                        if ( AndroidUtilities.isTablet()) {
-                            cell.setDialogSelected(cell.getDialogId() == openedDialogId);
-                        }
+                        ;
                     } else {
                         cell.update(mask);
                     }

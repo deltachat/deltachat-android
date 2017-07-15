@@ -666,7 +666,7 @@ public class PasscodeView extends FrameLayout {
 
         LayoutParams layoutParams;
 
-        if (!AndroidUtilities.isTablet() && getContext().getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
+        if (getContext().getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
             layoutParams = (LayoutParams) passwordFrameLayout.getLayoutParams();
             layoutParams.width = UserConfig.passcodeType == 0 ? width / 2 : width;
             layoutParams.height = AndroidUtilities.dp(140);
@@ -682,16 +682,6 @@ public class PasscodeView extends FrameLayout {
         } else {
             int top = 0;
             int left = 0;
-            if (AndroidUtilities.isTablet()) {
-                if (width > AndroidUtilities.dp(498)) {
-                    left = (width - AndroidUtilities.dp(498)) / 2;
-                    width = AndroidUtilities.dp(498);
-                }
-                if (height > AndroidUtilities.dp(528)) {
-                    top = (height - AndroidUtilities.dp(528)) / 2;
-                    height = AndroidUtilities.dp(528);
-                }
-            }
             layoutParams = (LayoutParams) passwordFrameLayout.getLayoutParams();
             layoutParams.height = height / 3;
             layoutParams.width = width;
@@ -759,7 +749,7 @@ public class PasscodeView extends FrameLayout {
         getWindowVisibleDisplayFrame(rect);
         keyboardHeight = usableViewHeight - (rect.bottom - rect.top);
 
-        if (UserConfig.passcodeType == 1 && (AndroidUtilities.isTablet() || getContext().getResources().getConfiguration().orientation != Configuration.ORIENTATION_LANDSCAPE)) {
+        if (UserConfig.passcodeType == 1 && getContext().getResources().getConfiguration().orientation != Configuration.ORIENTATION_LANDSCAPE) {
             int t = 0;
             if (passwordFrameLayout.getTag() != null) {
                 t = (Integer) passwordFrameLayout.getTag();

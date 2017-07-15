@@ -452,25 +452,16 @@ public class VideoEditorActivity extends BaseFragment implements TextureView.Sur
             return;
         }
         int viewHeight;
-        if (AndroidUtilities.isTablet()) {
-            viewHeight = AndroidUtilities.dp(472);
-        } else {
-            viewHeight = AndroidUtilities.displaySize.y - AndroidUtilities.statusBarHeight - ActionBar.getCurrentActionBarHeight();
-        }
+        viewHeight = AndroidUtilities.displaySize.y - AndroidUtilities.statusBarHeight - ActionBar.getCurrentActionBarHeight();
 
         int width;
         int height;
-        if (AndroidUtilities.isTablet()) {
-            width = AndroidUtilities.dp(490);
-            height = viewHeight - AndroidUtilities.dp(276);
+        if (getParentActivity().getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            width = AndroidUtilities.displaySize.x / 3 - AndroidUtilities.dp(24);
+            height = viewHeight - AndroidUtilities.dp(32);
         } else {
-            if (getParentActivity().getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
-                width = AndroidUtilities.displaySize.x / 3 - AndroidUtilities.dp(24);
-                height = viewHeight - AndroidUtilities.dp(32);
-            } else {
-                width = AndroidUtilities.displaySize.x;
-                height = viewHeight - AndroidUtilities.dp(276);
-            }
+            width = AndroidUtilities.displaySize.x;
+            height = viewHeight - AndroidUtilities.dp(276);
         }
 
         int vwidth = originalRotationValue == 90 || originalRotationValue == 270 ? originalHeight : originalWidth;
@@ -499,7 +490,7 @@ public class VideoEditorActivity extends BaseFragment implements TextureView.Sur
         if (getParentActivity() == null) {
             return;
         }
-        if (!AndroidUtilities.isTablet() && getParentActivity().getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
+        if (getParentActivity().getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
             // landscape orientation
             FrameLayout.LayoutParams layoutParams = (FrameLayout.LayoutParams) videoContainerView.getLayoutParams();
             layoutParams.topMargin = AndroidUtilities.dp(16);

@@ -398,11 +398,7 @@ public class PhotoCropActivity extends BaseFragment {
                 }
             }
             int size;
-            if (AndroidUtilities.isTablet()) {
-                size = AndroidUtilities.dp(520);
-            } else {
-                size = Math.max(AndroidUtilities.displaySize.x, AndroidUtilities.displaySize.y);
-            }
+            size = Math.max(AndroidUtilities.displaySize.x, AndroidUtilities.displaySize.y);
             imageToCrop = ImageLoader.loadBitmap(photoPath, photoUri, size, size, true);
             if (imageToCrop == null) {
                 return false;

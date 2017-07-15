@@ -325,18 +325,10 @@ public class MessageObject {
 
         int maxWidth;
         boolean substractAvatar = !isOut() && MrMailbox.getChat((int)messageOwner.dialog_id).getType()==MrChat.MR_CHAT_GROUP;
-        if (AndroidUtilities.isTablet()) {
-            if (substractAvatar) {
-                maxWidth = AndroidUtilities.getMinTabletSide() - AndroidUtilities.dp(122);
-            } else {
-                maxWidth = AndroidUtilities.getMinTabletSide() - AndroidUtilities.dp(80);
-            }
+        if (substractAvatar) {
+            maxWidth = Math.min(AndroidUtilities.displaySize.x, AndroidUtilities.displaySize.y) - AndroidUtilities.dp(122);
         } else {
-            if (substractAvatar) {
-                maxWidth = Math.min(AndroidUtilities.displaySize.x, AndroidUtilities.displaySize.y) - AndroidUtilities.dp(122);
-            } else {
-                maxWidth = Math.min(AndroidUtilities.displaySize.x, AndroidUtilities.displaySize.y) - AndroidUtilities.dp(80);
-            }
+            maxWidth = Math.min(AndroidUtilities.displaySize.x, AndroidUtilities.displaySize.y) - AndroidUtilities.dp(80);
         }
 
         StaticLayout textLayout;
@@ -625,11 +617,7 @@ public class MessageObject {
         } else if (type == MO_TYPE13_STICKER) {
             float maxHeight = AndroidUtilities.displaySize.y * 0.4f;
             float maxWidth;
-            if (AndroidUtilities.isTablet()) {
-                maxWidth = AndroidUtilities.getMinTabletSide() * 0.5f;
-            } else {
-                maxWidth = AndroidUtilities.displaySize.x * 0.5f;
-            }
+            maxWidth = AndroidUtilities.displaySize.x * 0.5f;
             int photoHeight = 0;
             int photoWidth = 0;
             for (TLRPC.DocumentAttribute attribute : messageOwner.media.document.attributes) {
@@ -655,11 +643,7 @@ public class MessageObject {
             int photoHeight;
             int photoWidth;
 
-            if (AndroidUtilities.isTablet()) {
-                photoWidth = (int) (AndroidUtilities.getMinTabletSide() * 0.7f);
-            } else {
-                photoWidth = (int) (Math.min(AndroidUtilities.displaySize.x, AndroidUtilities.displaySize.y) * 0.7f);
-            }
+            photoWidth = (int) (Math.min(AndroidUtilities.displaySize.x, AndroidUtilities.displaySize.y) * 0.7f);
             photoHeight = photoWidth + AndroidUtilities.dp(100);
             if (photoWidth > AndroidUtilities.getPhotoSize()) {
                 photoWidth = AndroidUtilities.getPhotoSize();

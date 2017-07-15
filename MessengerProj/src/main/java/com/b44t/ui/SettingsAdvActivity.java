@@ -77,7 +77,7 @@ public class SettingsAdvActivity extends BaseFragment implements NotificationCen
     public final int MR_E2EE_DEFAULT_ENABLED = 1; // when changing this constant, also change it in the C-part
 
     public static int defMsgFontSize() {
-        return AndroidUtilities.isTablet() ? 18 : 16;
+        return 16;
     }
 
     @Override

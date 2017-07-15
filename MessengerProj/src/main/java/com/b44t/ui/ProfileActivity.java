@@ -245,7 +245,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
         actionBar.setBackButtonDrawable(new BackDrawable(false));
         actionBar.setCastShadows(false);
         actionBar.setAddToContainer(false);
-        actionBar.setOccupyStatusBar(Build.VERSION.SDK_INT >= 21 && !AndroidUtilities.isTablet());
+        actionBar.setOccupyStatusBar(Build.VERSION.SDK_INT >= 21);
         return actionBar;
     }
 
@@ -785,11 +785,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                 nameTextView[a].setScaleY(1.0f + 0.4f * diff);
                 if (a == 1 && !openAnimationInProgress) {
                     int width;
-                    if (AndroidUtilities.isTablet()) {
-                        width = AndroidUtilities.dp(490);
-                    } else {
-                        width = AndroidUtilities.displaySize.x;
-                    }
+                    width = AndroidUtilities.displaySize.x;
                     width = (int) (width - AndroidUtilities.dp(118 + 8 + 40 * (1.0f - diff)) - nameTextView[a].getTranslationX());
                     float width2 = nameTextView[a].getPaint().measureText(nameTextView[a].getText().toString()) * nameTextView[a].getScaleX() + nameTextView[a].getSideDrawablesSize();
                     layoutParams = (FrameLayout.LayoutParams) nameTextView[a].getLayoutParams();
@@ -877,7 +873,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
 
     public void setPlayProfileAnimation(boolean value) {
         SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("mainconfig", Activity.MODE_PRIVATE);
-        if (!AndroidUtilities.isTablet() && preferences.getBoolean("view_animations2", true)) {
+        if (preferences.getBoolean("view_animations2", true)) {
             playProfileAnimation = value;
         }
     }

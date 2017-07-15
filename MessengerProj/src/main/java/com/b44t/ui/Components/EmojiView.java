@@ -159,7 +159,7 @@ public class EmojiView extends FrameLayout implements NotificationCenter.Notific
                             pickerView.setSelection(0);
                         }
                         view.getLocationOnScreen(location);
-                        int x = emojiSize * pickerView.getSelection() + AndroidUtilities.dp(4 * pickerView.getSelection() - (AndroidUtilities.isTablet() ? 5 : 1));
+                        int x = emojiSize * pickerView.getSelection() + AndroidUtilities.dp(4 * pickerView.getSelection() - 1);
                         if (location[0] - x < AndroidUtilities.dp(5)) {
                             x += (location[0] - x) - AndroidUtilities.dp(5);
                         } else if (location[0] - x + popupWidth > AndroidUtilities.displaySize.x - AndroidUtilities.dp(5)) {
@@ -168,7 +168,7 @@ public class EmojiView extends FrameLayout implements NotificationCenter.Notific
                         int xOffset = -x;
                         int yOffset = view.getTop() < 0 ? view.getTop() : 0;
 
-                        pickerView.setEmoji(code, AndroidUtilities.dp(AndroidUtilities.isTablet() ? 30 : 22) - xOffset + (int) AndroidUtilities.dpf2(0.5f));
+                        pickerView.setEmoji(code, AndroidUtilities.dp(22) - xOffset + (int) AndroidUtilities.dpf2(0.5f));
 
                         pickerViewPopup.setFocusable(true);
                         pickerViewPopup.showAsDropDown(view, xOffset, -view.getMeasuredHeight() - popupHeight + (view.getMeasuredHeight() - emojiSize) / 2 - yOffset);
@@ -264,11 +264,7 @@ public class EmojiView extends FrameLayout implements NotificationCenter.Notific
                             }
                             //setImageDrawable(Emoji.getEmojiBigDrawable(code));
                             int bigImgSize;
-                            if (AndroidUtilities.isTablet()) {
-                                bigImgSize = AndroidUtilities.dp(40);
-                            } else {
-                                bigImgSize = AndroidUtilities.dp(32);
-                            }
+                            bigImgSize = AndroidUtilities.dp(32);
                             setImageDrawable(TextDrawable.builder().beginConfig().textColor(Color.BLACK).fontSize(bigImgSize).endConfig().buildRect(code, Color.TRANSPARENT));
                             sendEmoji(null);
                             saveEmojiColors();
@@ -461,10 +457,10 @@ public class EmojiView extends FrameLayout implements NotificationCenter.Notific
 
         @Override
         protected void onDraw(Canvas canvas) {
-            backgroundDrawable.setBounds(0, 0, getMeasuredWidth(), AndroidUtilities.dp(AndroidUtilities.isTablet() ? 60 : 52));
+            backgroundDrawable.setBounds(0, 0, getMeasuredWidth(), AndroidUtilities.dp(52));
             backgroundDrawable.draw(canvas);
 
-            arrowDrawable.setBounds(arrowX - AndroidUtilities.dp(9), AndroidUtilities.dp(AndroidUtilities.isTablet() ? 55.5f : 47.5f), arrowX + AndroidUtilities.dp(9), AndroidUtilities.dp((AndroidUtilities.isTablet() ? 55.5f : 47.5f) + 8));
+            arrowDrawable.setBounds(arrowX - AndroidUtilities.dp(9), AndroidUtilities.dp(47.5f), arrowX + AndroidUtilities.dp(9), AndroidUtilities.dp(47.5f + 8));
             arrowDrawable.draw(canvas);
 
             if (currentEmoji != null) {
@@ -499,11 +495,7 @@ public class EmojiView extends FrameLayout implements NotificationCenter.Notific
                     }
 
                     int bigImgSize;
-                    if (AndroidUtilities.isTablet()) {
-                        bigImgSize = AndroidUtilities.dp(40);
-                    } else {
-                        bigImgSize = AndroidUtilities.dp(32);
-                    }
+                    bigImgSize = AndroidUtilities.dp(32);
                     Drawable drawable = TextDrawable.builder().beginConfig().textColor(Color.BLACK).fontSize(bigImgSize).endConfig().buildRect(code, Color.TRANSPARENT);
 
                     //Drawable drawable = Emoji.getEmojiBigDrawable(code);
@@ -581,11 +573,7 @@ public class EmojiView extends FrameLayout implements NotificationCenter.Notific
 
         for (int i = 0; i < EmojiData.dataColored.length + 1; i++) {
             GridView gridView = new GridView(context);
-            if (AndroidUtilities.isTablet()) {
-                gridView.setColumnWidth(AndroidUtilities.dp(60));
-            } else {
-                gridView.setColumnWidth(AndroidUtilities.dp(45));
-            }
+            gridView.setColumnWidth(AndroidUtilities.dp(45));
             gridView.setNumColumns(-1);
             views.add(gridView);
 
@@ -936,9 +924,9 @@ public class EmojiView extends FrameLayout implements NotificationCenter.Notific
 
         addView(pager, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.MATCH_PARENT, Gravity.START | Gravity.TOP, 0, 48, 0, 0));
 
-        emojiSize = AndroidUtilities.dp(AndroidUtilities.isTablet() ? 40 : 32);
+        emojiSize = AndroidUtilities.dp(32);
         pickerView = new EmojiColorPickerView(context);
-        pickerViewPopup = new EmojiPopupWindow(pickerView, popupWidth = AndroidUtilities.dp((AndroidUtilities.isTablet() ? 40 : 32) * 6 + 10 + 4 * 5), popupHeight = AndroidUtilities.dp(AndroidUtilities.isTablet() ? 64 : 56));
+        pickerViewPopup = new EmojiPopupWindow(pickerView, popupWidth = AndroidUtilities.dp(32 * 6 + 10 + 4 * 5), popupHeight = AndroidUtilities.dp(56));
         pickerViewPopup.setOutsideTouchable(true);
         pickerViewPopup.setClippingEnabled(true);
         pickerViewPopup.setInputMethodMode(EmojiPopupWindow.INPUT_METHOD_NOT_NEEDED);
@@ -1787,11 +1775,7 @@ public class EmojiView extends FrameLayout implements NotificationCenter.Notific
             //imageView.setImageDrawable(Emoji.getEmojiBigDrawable(code));
             imageView.setTag(code);
             int bigImgSize;
-            if (AndroidUtilities.isTablet()) {
-                bigImgSize = AndroidUtilities.dp(40);
-            } else {
-                bigImgSize = AndroidUtilities.dp(32);
-            }
+            bigImgSize = AndroidUtilities.dp(32);
             imageView.setImageDrawable(TextDrawable.builder().beginConfig().textColor(Color.BLACK).fontSize(bigImgSize).endConfig().buildRect(coloredCode, Color.TRANSPARENT));
             return imageView;
         }

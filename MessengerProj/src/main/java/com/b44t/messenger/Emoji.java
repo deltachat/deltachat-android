@@ -68,7 +68,7 @@ public class Emoji {
             emojiFullSize = 64;
         }
         drawImgSize = AndroidUtilities.dp(20);
-        bigImgSize = AndroidUtilities.dp(AndroidUtilities.isTablet() ? 40 : 32);
+        bigImgSize = AndroidUtilities.dp(32);
 
         for (int j = 0; j < EmojiData.data.length; j++) {
             int count2 = (int) Math.ceil(EmojiData.data[j].length / (float) splitCount);

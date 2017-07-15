@@ -48,7 +48,6 @@ public class NotificationCenter {
     public static final int mediaCountDidLoaded = totalEvents++;
     public static final int notificationsSettingsUpdated = totalEvents++;
     public static final int blockedUsersDidLoaded = totalEvents++;
-    public static final int openedChatChanged = totalEvents++;
     public static final int mainUserInfoChanged = totalEvents++;
     public static final int recentImagesDidLoaded = totalEvents++;
     public static final int waveformCalculated = totalEvents++;

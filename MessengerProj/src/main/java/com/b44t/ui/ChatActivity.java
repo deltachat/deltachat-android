@@ -233,10 +233,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.waveformCalculated);
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.notificationsSettingsUpdated);
 
-        if (AndroidUtilities.isTablet()) {
-            NotificationCenter.getInstance().postNotificationName(NotificationCenter.openedChatChanged, dialog_id, false);
-        }
-
         AndroidUtilities.runOnUIThread(new Runnable() {
             @Override
             public void run() {
@@ -362,10 +358,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         NotificationCenter.getInstance().removeObserver(this, NotificationCenter.waveformCalculated);
         NotificationCenter.getInstance().removeObserver(this, NotificationCenter.notificationsSettingsUpdated);
         NotificationCenter.getInstance().removeObserver(this, NotificationCenter.audioPlayStateChanged);
-
-        if (AndroidUtilities.isTablet()) {
-            NotificationCenter.getInstance().postNotificationName(NotificationCenter.openedChatChanged, dialog_id, true);
-        }
 
         /*
         if (currentUser != null) {
@@ -668,11 +660,11 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
 
                 setMeasuredDimension(width, height);
 
-                actionModeTextView.setTextSize(!AndroidUtilities.isTablet() && getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE ? 18 : 20);
+                actionModeTextView.setTextSize(getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE ? 18 : 20);
                 actionModeTextView.measure(MeasureSpec.makeMeasureSpec(width, MeasureSpec.AT_MOST), MeasureSpec.makeMeasureSpec(AndroidUtilities.dp(24), MeasureSpec.AT_MOST));
 
                 if (actionModeSubTextView.getVisibility() != GONE) {
-                    actionModeSubTextView.setTextSize(!AndroidUtilities.isTablet() && getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE ? 14 : 16);
+                    actionModeSubTextView.setTextSize(getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE ? 14 : 16);
                     actionModeSubTextView.measure(MeasureSpec.makeMeasureSpec(width, MeasureSpec.AT_MOST), MeasureSpec.makeMeasureSpec(AndroidUtilities.dp(20), MeasureSpec.AT_MOST));
                 }
             }
@@ -683,14 +675,14 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
 
                 int textTop;
                 if (actionModeSubTextView.getVisibility() != GONE) {
-                    textTop = (height / 2 - actionModeTextView.getTextHeight()) / 2 + AndroidUtilities.dp(!AndroidUtilities.isTablet() && getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE ? 2 : 3);
+                    textTop = (height / 2 - actionModeTextView.getTextHeight()) / 2 + AndroidUtilities.dp(getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE ? 2 : 3);
                 } else {
                     textTop = (height - actionModeTextView.getTextHeight()) / 2;
                 }
                 actionModeTextView.layout(0, textTop, actionModeTextView.getMeasuredWidth(), textTop + actionModeTextView.getTextHeight());
 
                 if (actionModeSubTextView.getVisibility() != GONE) {
-                    textTop = height / 2 + (height / 2 - actionModeSubTextView.getTextHeight()) / 2 - AndroidUtilities.dp(!AndroidUtilities.isTablet() && getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE ? 1 : 1);
+                    textTop = height / 2 + (height / 2 - actionModeSubTextView.getTextHeight()) / 2 - AndroidUtilities.dp(getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE ? 1 : 1);
                     actionModeSubTextView.layout(0, textTop, actionModeSubTextView.getMeasuredWidth(), textTop + actionModeSubTextView.getTextHeight());
                 }
             }
@@ -1144,8 +1136,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         chatListView.setEmptyView(emptyViewContainer);
 
         updateBottomOverlay();
-
-        fixLayoutInternal();
 
         return fragmentView;
     }
@@ -2344,24 +2334,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         }
     }
 
-    private boolean fixLayoutInternal() {
-        /*if (!AndroidUtilities.isTablet() && ApplicationLoader.applicationContext.getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
-            selectedMessagesCountTextView.setTextSize(18);
-        } else {
-            selectedMessagesCountTextView.setTextSize(20);
-        }*/
-
-        if (AndroidUtilities.isTablet()) {
-            if (AndroidUtilities.isSmallTablet() && ApplicationLoader.applicationContext.getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
-                actionBar.setBackButtonDrawable(new BackDrawable(false));
-            } else {
-                actionBar.setBackButtonDrawable(new BackDrawable(parentLayout == null || parentLayout.fragmentsStack.isEmpty() || parentLayout.fragmentsStack.get(0) == ChatActivity.this || parentLayout.fragmentsStack.size() == 1));
-            }
-            return false;
-        }
-        return true;
-    }
-
     private void fixLayout() {
         if (avatarContainer != null) {
             avatarContainer.getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
@@ -2370,7 +2342,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     if (avatarContainer != null) {
                         avatarContainer.getViewTreeObserver().removeOnPreDrawListener(this);
                     }
-                    return fixLayoutInternal();
+                    return true;
                 }
             });
         }
@@ -2487,9 +2459,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
             args.putInt("chat_id", (int)fwd_chat_id);
             ChatActivity fragment = new ChatActivity(args);
             if( presentFragment(fragment, true /*remove last*/) ) {
-                if (!AndroidUtilities.isTablet()) {
-                    removeSelfFromStack();
-                }
+                removeSelfFromStack();
             }
             else {
                 dialogsFragment.finishFragment(false);

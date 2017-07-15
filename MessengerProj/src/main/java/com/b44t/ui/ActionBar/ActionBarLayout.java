@@ -1068,11 +1068,7 @@ public class ActionBarLayout extends FrameLayout {
     }
 
     public void removeFragmentFromStack(BaseFragment fragment) {
-        if (useAlphaAnimations && fragmentsStack.size() == 1 && AndroidUtilities.isTablet()) {
-            closeLastFragment(true);
-        } else {
-            removeFragmentFromStackInternal(fragment);
-        }
+        removeFragmentFromStackInternal(fragment);
     }
 
     public void removeAllFragments() {

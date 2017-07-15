@@ -90,9 +90,6 @@ public class DialogsAdapter extends RecyclerView.Adapter {
             DialogCell cell = (DialogCell) viewHolder.itemView;
             cell.useSeparator = (i != getItemCount() - 1);
             MrChat mrChat = getItem(i);
-            if (AndroidUtilities.isTablet()) {
-                cell.setDialogSelected(mrChat.getId() == openedDialogId);
-            }
 
             MrPoortext mrSummary = MrMailbox.m_currChatlist.getSummaryByIndex(i, mrChat);
             cell.setDialog(mrChat, mrSummary, i, true);

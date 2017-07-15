@@ -2292,7 +2292,7 @@ public class PhotoFilterView extends FrameLayout {
                 }
             }
         });
-        editView.addView(valueSeekBar, LayoutHelper.createFrame(AndroidUtilities.isTablet() ? 498 : LayoutHelper.MATCH_PARENT, 60, AndroidUtilities.isTablet() ? Gravity.CENTER_HORIZONTAL | Gravity.TOP : Gravity.START | Gravity.TOP, 14, 10, 14, 0));
+        editView.addView(valueSeekBar, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, 60, Gravity.START | Gravity.TOP, 14, 10, 14, 0));
 
         curveLayout = new FrameLayout(context);
         editView.addView(curveLayout, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, 78, Gravity.CENTER_HORIZONTAL));
@@ -2699,19 +2699,6 @@ public class PhotoFilterView extends FrameLayout {
         layoutParams = (LayoutParams) curvesControl.getLayoutParams();
         layoutParams.height = viewHeight + AndroidUtilities.dp(28);
         curvesControl.setLayoutParams(layoutParams);
-
-        if (AndroidUtilities.isTablet()) {
-            int total = AndroidUtilities.dp(86) * 10;
-            layoutParams = (FrameLayout.LayoutParams) recyclerListView.getLayoutParams();
-            if (total < viewWidth) {
-                layoutParams.width = total;
-                layoutParams.leftMargin = (viewWidth - total) / 2;
-            } else {
-                layoutParams.width = LayoutHelper.MATCH_PARENT;
-                layoutParams.leftMargin = 0;
-            }
-            recyclerListView.setLayoutParams(layoutParams);
-        }
     }
 
     @Override

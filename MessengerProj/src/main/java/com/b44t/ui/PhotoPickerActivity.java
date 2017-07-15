@@ -430,21 +430,13 @@ public class PhotoPickerActivity extends BaseFragment implements NotificationCen
         int rotation = manager.getDefaultDisplay().getRotation();
 
         int columnsCount;
-        if (AndroidUtilities.isTablet()) {
-            columnsCount = 3;
+        if (rotation == Surface.ROTATION_270 || rotation == Surface.ROTATION_90) {
+            columnsCount = 5;
         } else {
-            if (rotation == Surface.ROTATION_270 || rotation == Surface.ROTATION_90) {
-                columnsCount = 5;
-            } else {
-                columnsCount = 3;
-            }
+            columnsCount = 3;
         }
         listView.setNumColumns(columnsCount);
-        if (AndroidUtilities.isTablet()) {
-            itemWidth = (AndroidUtilities.dp(490) - ((columnsCount + 1) * AndroidUtilities.dp(4))) / columnsCount;
-        } else {
-            itemWidth = (AndroidUtilities.displaySize.x - ((columnsCount + 1) * AndroidUtilities.dp(4))) / columnsCount;
-        }
+        itemWidth = (AndroidUtilities.displaySize.x - ((columnsCount + 1) * AndroidUtilities.dp(4))) / columnsCount;
         listView.setColumnWidth(itemWidth);
 
         listAdapter.notifyDataSetChanged();

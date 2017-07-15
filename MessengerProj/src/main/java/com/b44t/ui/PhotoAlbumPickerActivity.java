@@ -172,7 +172,7 @@ public class PhotoAlbumPickerActivity extends BaseFragment implements Notificati
             layoutParams.height = LayoutHelper.MATCH_PARENT;
             layoutParams.width = LayoutHelper.WRAP_CONTENT;
             layoutParams.rightMargin = AndroidUtilities.dp(40);
-            layoutParams.leftMargin = AndroidUtilities.isTablet() ? AndroidUtilities.dp(64) : AndroidUtilities.dp(56);
+            layoutParams.leftMargin = AndroidUtilities.dp(56);
             layoutParams.gravity = Gravity.TOP | Gravity.START;
             dropDownContainer.setLayoutParams(layoutParams);
             dropDownContainer.setOnClickListener(new View.OnClickListener() {
@@ -391,19 +391,17 @@ public class PhotoAlbumPickerActivity extends BaseFragment implements Notificati
         WindowManager manager = (WindowManager) ApplicationLoader.applicationContext.getSystemService(Activity.WINDOW_SERVICE);
         int rotation = manager.getDefaultDisplay().getRotation();
         columnsCount = 2;
-        if (!AndroidUtilities.isTablet() && (rotation == Surface.ROTATION_270 || rotation == Surface.ROTATION_90)) {
+        if (rotation == Surface.ROTATION_270 || rotation == Surface.ROTATION_90) {
             columnsCount = 4;
         }
         listAdapter.notifyDataSetChanged();
 
         if (dropDownContainer != null) {
-            if (!AndroidUtilities.isTablet()) {
-                FrameLayout.LayoutParams layoutParams = (FrameLayout.LayoutParams) dropDownContainer.getLayoutParams();
-                layoutParams.topMargin = (Build.VERSION.SDK_INT >= 21 ? AndroidUtilities.statusBarHeight : 0);
-                dropDownContainer.setLayoutParams(layoutParams);
-            }
+            FrameLayout.LayoutParams layoutParams = (FrameLayout.LayoutParams) dropDownContainer.getLayoutParams();
+            layoutParams.topMargin = (Build.VERSION.SDK_INT >= 21 ? AndroidUtilities.statusBarHeight : 0);
+            dropDownContainer.setLayoutParams(layoutParams);
 
-            if (!AndroidUtilities.isTablet() && ApplicationLoader.applicationContext.getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            if (ApplicationLoader.applicationContext.getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
                 dropDown.setTextSize(18);
             } else {
                 dropDown.setTextSize(20);

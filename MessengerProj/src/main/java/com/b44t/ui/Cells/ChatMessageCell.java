@@ -1261,22 +1261,12 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                 drawForwardedName = true;
 
                 int maxWidth;
-                if (isTablet()) {
-                    if (isGroupChat && !messageObject.isOutOwner() && messageObject.isFromUser()) {
-                        maxWidth = getMinTabletSide() - dp(122);
-                        drawName = true;
-                    } else {
-                        drawName = false;
-                        maxWidth = getMinTabletSide() - dp(80);
-                    }
+                if (isGroupChat && !messageObject.isOutOwner() && messageObject.isFromUser()) {
+                    maxWidth = Math.min(displaySize.x, displaySize.y) - dp(122);
+                    drawName = true;
                 } else {
-                    if (isGroupChat && !messageObject.isOutOwner() && messageObject.isFromUser()) {
-                        maxWidth = Math.min(displaySize.x, displaySize.y) - dp(122);
-                        drawName = true;
-                    } else {
-                        maxWidth = Math.min(displaySize.x, displaySize.y) - dp(80);
-                        drawName = false;
-                    }
+                    maxWidth = Math.min(displaySize.x, displaySize.y) - dp(80);
+                    drawName = false;
                 }
                 measureTime(messageObject);
                 int timeMore = timeWidth + dp(6);
@@ -1310,11 +1300,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                 calcBackgroundWidth(maxWidth, timeMore, maxChildWidth);
             } else if (messageObject.type == MessageObject.MO_TYPE2_VOICE) {
                 drawForwardedName = true;
-                if (isTablet()) {
-                    backgroundWidth = Math.min(getMinTabletSide() - dp(isGroupChat && messageObject.isFromUser() && !messageObject.isOutOwner() ? 102 : 50), dp(270));
-                } else {
-                    backgroundWidth = Math.min(displaySize.x - dp(isGroupChat && messageObject.isFromUser() && !messageObject.isOutOwner() ? 102 : 50), dp(270));
-                }
+                backgroundWidth = Math.min(displaySize.x - dp(isGroupChat && messageObject.isFromUser() && !messageObject.isOutOwner() ? 102 : 50), dp(270));
                 createDocumentLayout(backgroundWidth, messageObject);
 
                 setMessageObjectInternal(messageObject);
@@ -1323,11 +1309,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
 
                 updateWaveform(true);
             } else if (messageObject.type == MessageObject.MO_TYPE14_MUSIC) {
-                if (isTablet()) {
-                    backgroundWidth = Math.min(getMinTabletSide() - dp(isGroupChat && messageObject.isFromUser() && !messageObject.isOutOwner() ? 102 : 50), dp(270));
-                } else {
-                    backgroundWidth = Math.min(displaySize.x - dp(isGroupChat && messageObject.isFromUser() && !messageObject.isOutOwner() ? 102 : 50), dp(270));
-                }
+                backgroundWidth = Math.min(displaySize.x - dp(isGroupChat && messageObject.isFromUser() && !messageObject.isOutOwner() ? 102 : 50), dp(270));
 
                 createDocumentLayout(backgroundWidth, messageObject);
 
@@ -1352,11 +1334,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
 
                 photoImage.setForcePreview(false);
                 if (messageObject.type == MessageObject.MO_TYPE9_FILE) {
-                    if (isTablet()) {
-                        backgroundWidth = Math.min(getMinTabletSide() - dp(isGroupChat && messageObject.isFromUser() && !messageObject.isOutOwner() ? 102 : 50), dp(270));
-                    } else {
-                        backgroundWidth = Math.min(displaySize.x - dp(isGroupChat && messageObject.isFromUser() && !messageObject.isOutOwner() ? 102 : 50), dp(270));
-                    }
+                    backgroundWidth = Math.min(displaySize.x - dp(isGroupChat && messageObject.isFromUser() && !messageObject.isOutOwner() ? 102 : 50), dp(270));
                     if (checkNeedDrawNewchatButton(messageObject)) {
                         backgroundWidth -= dp(20);
                     }
@@ -1395,11 +1373,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                     }
                     float maxHeight;
                     float maxWidth;
-                    if (isTablet()) {
-                        maxHeight = maxWidth = getMinTabletSide() * 0.4f;
-                    } else {
-                        maxHeight = maxWidth = Math.min(displaySize.x, displaySize.y) * 0.5f;
-                    }
+                    maxHeight = maxWidth = Math.min(displaySize.x, displaySize.y) * 0.5f;
                     if (photoWidth == 0) {
                         photoHeight = (int) maxHeight;
                         photoWidth = photoHeight + dp(100);
@@ -1431,11 +1405,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                     }
                 } else {
                     int maxPhotoWidth;
-                    if (isTablet()) {
-                        maxPhotoWidth = photoWidth = (int) (getMinTabletSide() * 0.7f);
-                    } else {
-                        maxPhotoWidth = photoWidth = (int) (Math.min(displaySize.x, displaySize.y) * 0.7f);
-                    }
+                    maxPhotoWidth = photoWidth = (int) (Math.min(displaySize.x, displaySize.y) * 0.7f);
                     photoHeight = photoWidth + dp(100);
                     if (checkNeedDrawNewchatButton(messageObject)) {
                         maxPhotoWidth -= dp(20);
@@ -1975,18 +1945,10 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
     private int getMaxNameWidth() {
         if (documentAttachType == DOCUMENT_ATTACH_TYPE_STICKER) {
             int maxWidth;
-            if (isTablet()) {
-                if (isGroupChat && !currentMessageObject.isOutOwner() && currentMessageObject.isFromUser()) {
-                    maxWidth = getMinTabletSide() - dp(42);
-                } else {
-                    maxWidth = getMinTabletSide();
-                }
+            if (isGroupChat && !currentMessageObject.isOutOwner() && currentMessageObject.isFromUser()) {
+                maxWidth = Math.min(displaySize.x, displaySize.y) - dp(42);
             } else {
-                if (isGroupChat && !currentMessageObject.isOutOwner() && currentMessageObject.isFromUser()) {
-                    maxWidth = Math.min(displaySize.x, displaySize.y) - dp(42);
-                } else {
-                    maxWidth = Math.min(displaySize.x, displaySize.y);
-                }
+                maxWidth = Math.min(displaySize.x, displaySize.y);
             }
             return maxWidth - backgroundWidth - dp(57);
         }
