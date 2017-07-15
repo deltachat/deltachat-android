@@ -378,12 +378,6 @@ public class ActionBar extends FrameLayout {
         if (subtitleTextView != null) {
             subtitleTextView.setVisibility(visible ? INVISIBLE : VISIBLE);
         }
-        if( backButtonImageView != null ) {
-            Drawable drawable = backButtonImageView.getDrawable();
-            if (drawable != null && drawable instanceof MenuDrawable) {
-                ((MenuDrawable) drawable).setRotation(visible ? 1 : 0, true);
-            }
-        }
     }
 
     public void setInterceptTouches(boolean value) {
@@ -551,22 +545,6 @@ public class ActionBar extends FrameLayout {
 
     public void setAllowOverlayTitle(boolean value) {
         allowOverlayTitle = value;
-    }
-
-    public void setTitleOverlayText(String text) {
-        /* EDIT BY MR
-        if (!allowOverlayTitle || parentFragment.parentLayout == null) {
-            return;
-        }
-        CharSequence textToSet = text != null ? text : lastTitle;
-        if (textToSet != null && titleTextView == null) {
-            createTitleTextView();
-        }
-        if (titleTextView != null) {
-            titleTextView.setVisibility(textToSet != null && !isSearchFieldVisible ? VISIBLE : INVISIBLE);
-            titleTextView.setText(textToSet);
-        }
-        */
     }
 
     public boolean isSearchFieldVisible() {

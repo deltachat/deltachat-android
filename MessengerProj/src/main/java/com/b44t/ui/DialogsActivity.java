@@ -36,12 +36,8 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.graphics.Outline;
-import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.PowerManager;
-import android.provider.Settings;
-import android.util.Log;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.MotionEvent;
@@ -53,7 +49,6 @@ import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import com.b44t.messenger.AndroidUtilities;
@@ -64,24 +59,20 @@ import com.b44t.messenger.MrChat;
 import com.b44t.messenger.MrMailbox;
 import com.b44t.messenger.MrMsg;
 import com.b44t.messenger.Utilities;
-import com.b44t.messenger.browser.Browser;
 import com.b44t.messenger.support.widget.LinearLayoutManager;
 import com.b44t.messenger.support.widget.RecyclerView;
 import com.b44t.messenger.NotificationCenter;
 import com.b44t.messenger.R;
 import com.b44t.messenger.UserConfig;
 import com.b44t.ui.ActionBar.BackDrawable;
-import com.b44t.ui.ActionBar.DrawerLayoutContainer;
 import com.b44t.ui.Adapters.DialogsAdapter;
 import com.b44t.ui.Adapters.DialogsSearchAdapter;
-import com.b44t.ui.Adapters.DrawerLayoutAdapter;
 import com.b44t.ui.Cells.UserCell;
 import com.b44t.ui.Cells.DialogCell;
 import com.b44t.ui.ActionBar.ActionBar;
 import com.b44t.ui.ActionBar.ActionBarMenu;
 import com.b44t.ui.ActionBar.ActionBarMenuItem;
 import com.b44t.ui.ActionBar.BaseFragment;
-import com.b44t.ui.ActionBar.MenuDrawable;
 import com.b44t.ui.Components.EmptyTextProgressView;
 import com.b44t.ui.Components.LayoutHelper;
 import com.b44t.ui.Components.RecyclerListView;
@@ -129,6 +120,10 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
     ActionBarMenuItem headerItem;
 
     private static final int ID_LOCK_APP = 1;
+    private static final int ID_NEW_CHAT = 2;
+    private static final int ID_NEW_GROUP= 3;
+    private static final int ID_SETTINGS = 5;
+    private static final int ID_DEADDROP = 7;
 
     public interface DialogsActivityDelegate {
         void didSelectDialog(DialogsActivity fragment, long dialog_id, boolean param);
@@ -205,7 +200,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
         final ActionBarMenuItem item = menu.addItem(0, R.drawable.ic_ab_search).setIsSearchField(true, true).setActionBarMenuItemSearchListener(new ActionBarMenuItem.ActionBarMenuItemSearchListener() {
             @Override
             public void onSearchExpand() {
-                if( !DrawerLayoutContainer.USE_DRAWER && headerItem!=null ) {
+                if( headerItem!=null ) {
                     headerItem.setVisibility(View.GONE);
                     actionBar.setBackButtonDrawable(new BackDrawable(false));
                 }
@@ -225,7 +220,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
 
             @Override
             public void onSearchCollapse() {
-                if( !DrawerLayoutContainer.USE_DRAWER && headerItem!=null ) {
+                if( headerItem!=null ) {
                     headerItem.setVisibility(View.VISIBLE);
                     actionBar.setBackButtonDrawable(null);
                 }
@@ -279,20 +274,15 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
             actionBar.setBackButtonImage(R.drawable.ic_ab_back);
             actionBar.setTitle(onlySelectTitle);
         } else {
-            if( DrawerLayoutContainer.USE_DRAWER ) {
-                actionBar.setBackButtonDrawable(new MenuDrawable());
-            }
             actionBar.setTitle(ApplicationLoader.applicationContext.getString(R.string.AppName));
         }
         actionBar.setAllowOverlayTitle(true);
 
-        if( !DrawerLayoutContainer.USE_DRAWER ) {
-            headerItem = menu.addItem(0, R.drawable.ic_ab_other);
-            headerItem.addSubItem(DrawerLayoutAdapter.ROW_NEW_CHAT, ApplicationLoader.applicationContext.getString(R.string.NewChat), 0);
-            headerItem.addSubItem(DrawerLayoutAdapter.ROW_NEW_GROUP, ApplicationLoader.applicationContext.getString(R.string.NewGroup), 0);
-            headerItem.addSubItem(DrawerLayoutAdapter.ROW_DEADDROP, ApplicationLoader.applicationContext.getString(R.string.Deaddrop), 0);
-            headerItem.addSubItem(DrawerLayoutAdapter.ROW_SETTINGS, ApplicationLoader.applicationContext.getString(R.string.Settings), 0);
-        }
+        headerItem = menu.addItem(0, R.drawable.ic_ab_other);
+        headerItem.addSubItem(ID_NEW_CHAT, ApplicationLoader.applicationContext.getString(R.string.NewChat), 0);
+        headerItem.addSubItem(ID_NEW_GROUP, ApplicationLoader.applicationContext.getString(R.string.NewGroup), 0);
+        headerItem.addSubItem(ID_DEADDROP, ApplicationLoader.applicationContext.getString(R.string.Deaddrop), 0);
+        headerItem.addSubItem(ID_SETTINGS, ApplicationLoader.applicationContext.getString(R.string.Settings), 0);
 
         actionBar.setActionBarMenuOnItemClick(new ActionBar.ActionBarMenuOnItemClick() {
             @Override
@@ -300,8 +290,6 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
                 if (id == -1) {
                     if (onlySelect) {
                         finishFragment();
-                    } else if (parentLayout != null) {
-                        parentLayout.getDrawerLayoutContainer().openDrawer(false);
                     }
                 } else if (id == ID_LOCK_APP) {
 
@@ -330,20 +318,20 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
                         }, 200);
                     }
                 }
-                else if( !DrawerLayoutContainer.USE_DRAWER ) {
-                    if (id == DrawerLayoutAdapter.ROW_NEW_CHAT) {
+                else {
+                    if (id == ID_NEW_CHAT) {
                         Bundle args = new Bundle();
                         args.putInt("do_what", ContactsActivity.SELECT_CONTACT_FOR_NEW_CHAT);
                         presentFragment(new ContactsActivity(args));
-                    } else if (id == DrawerLayoutAdapter.ROW_NEW_GROUP) {
+                    } else if (id == ID_NEW_GROUP) {
                         Bundle args = new Bundle();
                         args.putInt("do_what", ContactsActivity.SELECT_CONTACTS_FOR_NEW_GROUP);
                         presentFragment(new ContactsActivity(args));
-                    } else if (id == DrawerLayoutAdapter.ROW_DEADDROP) {
+                    } else if (id == ID_DEADDROP) {
                         Bundle args = new Bundle();
                         args.putInt("chat_id", MrChat.MR_CHAT_ID_DEADDROP);
                         presentFragment(new ChatActivity(args));
-                    } else if (id == DrawerLayoutAdapter.ROW_SETTINGS) {
+                    } else if (id == ID_SETTINGS) {
                         presentFragment(new SettingsActivity());
                     }
                 }

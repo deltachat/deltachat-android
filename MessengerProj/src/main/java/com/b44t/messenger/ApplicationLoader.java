@@ -72,7 +72,7 @@ public class ApplicationLoader extends Application {
     }
 
     public static int getServiceMessageColor() {
-        return 0x44000000; // this color is used as a background for date headlines, empty chat hints and in the drawer
+        return 0x44000000; // this color is used as a background for date headlines and empty chat hints
     }
 
     public static void loadWallpaper() {

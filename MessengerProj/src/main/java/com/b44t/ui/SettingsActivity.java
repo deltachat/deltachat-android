@@ -37,7 +37,6 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.FrameLayout;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.b44t.messenger.ApplicationLoader;
 import com.b44t.messenger.MrMailbox;
@@ -46,9 +45,8 @@ import com.b44t.messenger.UserConfig;
 import com.b44t.messenger.browser.Browser;
 import com.b44t.ui.ActionBar.ActionBar;
 import com.b44t.ui.ActionBar.BaseFragment;
-import com.b44t.ui.ActionBar.DrawerLayoutContainer;
 import com.b44t.ui.Adapters.BaseFragmentAdapter;
-import com.b44t.ui.Cells.DrawerProfileCell;
+import com.b44t.ui.Cells.SettingsProfileCell;
 import com.b44t.ui.Cells.HeaderCell;
 import com.b44t.ui.Cells.ShadowSectionCell;
 import com.b44t.ui.Cells.TextCheckCell;
@@ -86,34 +84,18 @@ public class SettingsActivity extends BaseFragment {
 
         rowCount = 0;
 
-        if (DrawerLayoutContainer.USE_DRAWER) {
-            profileRow = -1;
-            accountHeaderRow = rowCount++;
-        } else {
-            profileRow = rowCount++;
-            accountHeaderRow = -1;
-        }
+        profileRow = rowCount++;
+        accountHeaderRow = -1;
 
         usernameRow = rowCount++;
-        if (DrawerLayoutContainer.USE_DRAWER) {
-            accountShadowRow = rowCount++;
-            settingsHeaderRow = rowCount++;
-        }
-        else {
-            accountShadowRow = -1;
-            settingsHeaderRow = -1;
-        }
 
-        if (DrawerLayoutContainer.USE_DRAWER) {
-            notificationRow    = rowCount++;
-            backgroundRow      = rowCount++;
-            textSizeRow        = rowCount++;
-        }
-        else {
-            notificationRow    = rowCount++;
-            backgroundRow      = rowCount++;
-            textSizeRow        = rowCount++;
-        }
+        accountShadowRow = -1;
+        settingsHeaderRow = -1;
+
+        notificationRow    = rowCount++;
+        backgroundRow      = rowCount++;
+        textSizeRow        = rowCount++;
+
         passcodeRow = rowCount++;
         blockedRow = rowCount++;
         readReceiptsRow = rowCount++;
@@ -122,14 +104,10 @@ public class SettingsActivity extends BaseFragment {
 
         aboutHeaderRow     = rowCount++;
         aboutRow           = rowCount++;
-        if( DrawerLayoutContainer.USE_DRAWER ) {
-            inviteRow = -1;
-            helpRow = -1;
-        }
-        else {
-            inviteRow = rowCount++;
-            helpRow = rowCount++;
-        }
+
+        inviteRow = rowCount++;
+        helpRow = rowCount++;
+
         aboutShadowRow     = rowCount++;
 
         return true;
@@ -313,9 +291,9 @@ public class SettingsActivity extends BaseFragment {
             int type = getItemViewType(i);
             if( type == ROWTYPE_PROFILE ) {
                 if (view == null) {
-                    view = new DrawerProfileCell(mContext);
+                    view = new SettingsProfileCell(mContext);
                 }
-                ((DrawerProfileCell) view).updateUserName();
+                ((SettingsProfileCell) view).updateUserName();
             }
             else if (type == ROWTYPE_SHADOW) {
                 if (view == null) {
@@ -391,14 +369,7 @@ public class SettingsActivity extends BaseFragment {
                     view.setBackgroundColor(0xffffffff);
                 }
                 TextDetailSettingsCell textCell = (TextDetailSettingsCell) view;
-                if (i == usernameRow) {
-                    String subtitle = MrMailbox.getConfig("displayname", "");
-                    if( subtitle.isEmpty()) {
-                        subtitle = mContext.getString(R.string.NotSet);
-                    }
-                    textCell.setTextAndValue(mContext.getString(R.string.MyName), subtitle, true);
-                }
-                else if (i == aboutRow) {
+                if (i == aboutRow) {
                     textCell.setTextAndValue(mContext.getString(R.string.AboutThisProgram), "v" + IntroActivity.getVersion(), true);
                 }
             }
@@ -424,7 +395,7 @@ public class SettingsActivity extends BaseFragment {
             else if (i == accountShadowRow || i == settingsShadowRow || i == aboutShadowRow ) {
                 return ROWTYPE_SHADOW;
             }
-            else if ( (DrawerLayoutContainer.USE_DRAWER && (i==usernameRow)) || i==aboutRow ) {
+            else if ( i==aboutRow ) {
                 return ROWTYPE_DETAIL_SETTINGS;
             }
             else if (i == settingsHeaderRow || i == aboutHeaderRow || i == accountHeaderRow) {

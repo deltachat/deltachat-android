@@ -391,10 +391,6 @@ public class SettingsAccountActivity extends BaseFragment implements Notificatio
             if( (int)args[0]==1 ) {
                 if (fromIntro) {
                     presentFragment(new DialogsActivity(null), true);
-                    LaunchActivity la = ((LaunchActivity) getParentActivity());
-                    if (la != null) {
-                        la.drawerLayoutContainer.setAllowOpenDrawer(true, false);
-                    }
                 } else {
                     finishFragment();
                 }

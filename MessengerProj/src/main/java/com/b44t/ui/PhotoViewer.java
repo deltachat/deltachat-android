@@ -280,14 +280,6 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
         }
 
         @Override
-        public void setAlpha(int alpha) {
-            if (parentActivity instanceof LaunchActivity) {
-                ((LaunchActivity) parentActivity).drawerLayoutContainer.setAllowDrawContent(!isVisible || alpha != 255);
-            }
-            super.setAlpha(alpha);
-        }
-
-        @Override
         public void draw(Canvas canvas) {
             super.draw(canvas);
             if (getAlpha() != 0) {

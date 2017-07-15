@@ -131,7 +131,6 @@ public class ActionBarLayout extends FrameLayout {
 
     private LinearLayoutContainer containerView;
     private LinearLayoutContainer containerViewBack;
-    private DrawerLayoutContainer drawerLayoutContainer;
     private ActionBar currentActionBar;
 
     private AnimatorSet currentAnimation;
@@ -160,8 +159,6 @@ public class ActionBarLayout extends FrameLayout {
 
     private float animationProgress = 0.0f;
     private long lastFrameTime;
-
-    private String titleOverlayText;
 
     private ActionBarLayoutDelegate delegate = null;
     protected Activity parentActivity = null;
@@ -385,7 +382,6 @@ public class ActionBarLayout extends FrameLayout {
                 lastFragment.actionBar.setOccupyStatusBar(false);
             }
             containerViewBack.addView(lastFragment.actionBar);
-            lastFragment.actionBar.setTitleOverlayText(titleOverlayText);
         }
         containerViewBack.addView(fragmentView);
         ViewGroup.LayoutParams layoutParams = fragmentView.getLayoutParams();
@@ -678,7 +674,6 @@ public class ActionBarLayout extends FrameLayout {
                 parent.removeView(fragment.actionBar);
             }
             containerViewBack.addView(fragment.actionBar);
-            fragment.actionBar.setTitleOverlayText(titleOverlayText);
         }
 
         containerViewBack.addView(fragmentView);
@@ -895,7 +890,6 @@ public class ActionBarLayout extends FrameLayout {
                     parent.removeView(previousFragment.actionBar);
                 }
                 containerView.addView(previousFragment.actionBar);
-                previousFragment.actionBar.setTitleOverlayText(titleOverlayText);
             }
             containerView.addView(fragmentView);
             ViewGroup.LayoutParams layoutParams = fragmentView.getLayoutParams();
@@ -978,9 +972,6 @@ public class ActionBarLayout extends FrameLayout {
                         if (backgroundView != null) {
                             backgroundView.setVisibility(GONE);
                         }
-                        if (drawerLayoutContainer != null) {
-                            drawerLayoutContainer.setAllowOpenDrawer(true, false);
-                        }
                     }
                 };
 
@@ -1056,7 +1047,6 @@ public class ActionBarLayout extends FrameLayout {
                 parent.removeView(previousFragment.actionBar);
             }
             containerView.addView(previousFragment.actionBar);
-            previousFragment.actionBar.setTitleOverlayText(titleOverlayText);
         }
         containerView.addView(fragmentView);
         ViewGroup.LayoutParams layoutParams = fragmentView.getLayoutParams();
@@ -1192,25 +1182,8 @@ public class ActionBarLayout extends FrameLayout {
         backgroundView = view;
     }
 
-    public void setDrawerLayoutContainer(DrawerLayoutContainer layout) {
-        drawerLayoutContainer = layout;
-    }
-
-    public DrawerLayoutContainer getDrawerLayoutContainer() {
-        return drawerLayoutContainer;
-    }
-
     public void setRemoveActionBarExtraHeight(boolean value) {
         removeActionBarExtraHeight = value;
-    }
-
-    public void setTitleOverlayText(String text) {
-        titleOverlayText = text;
-        for (BaseFragment fragment : fragmentsStack) {
-            if (fragment.actionBar != null) {
-                fragment.actionBar.setTitleOverlayText(titleOverlayText);
-            }
-        }
     }
 
     @Override
