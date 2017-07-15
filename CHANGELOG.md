@@ -1,5 +1,10 @@
 # Delta Chat Changelog
 
+## UNRELEASED
+
+* Show the subject of messages that cannot be decrypted
+* Do not send "Read receipts" when decryption fails
+
 ## v0.9.3
 2017-07-13
 
