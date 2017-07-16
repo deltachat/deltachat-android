@@ -59,8 +59,8 @@ import com.b44t.ui.Components.NumberPicker;
 public class SettingsActivity extends BaseFragment {
 
     // the list
-    private int profileRow, accountHeaderRow, usernameRow, accountShadowRow;
-    private int settingsHeaderRow, notificationRow, backgroundRow, textSizeRow, advRow, settingsShadowRow;
+    private int profileRow, nameAndStatusRow;
+    private int notificationRow, backgroundRow, advRow, settingsShadowRow;
     private int readReceiptsRow, blockedRow, passcodeRow;
     private int aboutHeaderRow, aboutRow, inviteRow, helpRow, aboutShadowRow;
     private int rowCount;
@@ -84,30 +84,20 @@ public class SettingsActivity extends BaseFragment {
 
         rowCount = 0;
 
-        profileRow = rowCount++;
-        accountHeaderRow = -1;
-
-        usernameRow = rowCount++;
-
-        accountShadowRow = -1;
-        settingsHeaderRow = -1;
-
+        profileRow         = rowCount++;
+        nameAndStatusRow   = rowCount++;
         notificationRow    = rowCount++;
         backgroundRow      = rowCount++;
-        textSizeRow        = rowCount++;
-
-        passcodeRow = rowCount++;
-        blockedRow = rowCount++;
-        readReceiptsRow = rowCount++;
-        advRow = rowCount++;
+        passcodeRow        = rowCount++;
+        blockedRow         = rowCount++;
+        readReceiptsRow    = rowCount++;
+        advRow             = rowCount++;
         settingsShadowRow  = rowCount++;
 
         aboutHeaderRow     = rowCount++;
         aboutRow           = rowCount++;
-
-        inviteRow = rowCount++;
-        helpRow = rowCount++;
-
+        inviteRow          = rowCount++;
+        helpRow            = rowCount++;
         aboutShadowRow     = rowCount++;
 
         return true;
@@ -148,7 +138,7 @@ public class SettingsActivity extends BaseFragment {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(final AdapterView<?> adapterView, View view, final int i, long l) {
-                if (i == usernameRow) {
+                if (i == nameAndStatusRow) {
                     presentFragment(new SettingsNameActivity());
                 }
                 else if (i == blockedRow) {
@@ -179,45 +169,6 @@ public class SettingsActivity extends BaseFragment {
                 }
                 else if (i == backgroundRow) {
                     presentFragment(new WallpapersActivity());
-                }
-                if (i == textSizeRow) {
-                    if (getParentActivity() == null) {
-                        return;
-                    }
-                    AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
-                    builder.setTitle(ApplicationLoader.applicationContext.getString(R.string.TextSize));
-                    final NumberPicker numberPicker = new NumberPicker(getParentActivity());
-                    final int MIN_VAL = 12;
-                    final int MAX_VAL = 30;
-                    final int DEF_VAL = SettingsAdvActivity.defMsgFontSize();
-                    String displayValues[] = new String[MAX_VAL-MIN_VAL+1];
-                    for( int v = MIN_VAL; v <= MAX_VAL; v++ ) {
-                        String cur = String.format("%d", v);
-                        if( v==DEF_VAL ) {
-                            cur += " (" +ApplicationLoader.applicationContext.getString(R.string.Default)+ ")";
-                        }
-                        displayValues[v-MIN_VAL] = cur;
-                    }
-                    numberPicker.setMinValue(MIN_VAL);
-                    numberPicker.setMaxValue(MAX_VAL);
-                    numberPicker.setDisplayedValues(displayValues);
-                    numberPicker.setWrapSelectorWheel(false);
-                    numberPicker.setValue(ApplicationLoader.fontSize);
-                    builder.setView(numberPicker);
-                    builder.setPositiveButton(ApplicationLoader.applicationContext.getString(R.string.OK), new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("mainconfig", Activity.MODE_PRIVATE);
-                            SharedPreferences.Editor editor = preferences.edit();
-                            editor.putInt("msg_font_size", numberPicker.getValue());
-                            ApplicationLoader.fontSize = numberPicker.getValue();
-                            editor.apply();
-                            if (listView != null) {
-                                listView.invalidateViews();
-                            }
-                        }
-                    });
-                    showDialog(builder.create());
                 }
                 else if (i == advRow) {
                     presentFragment(new SettingsAdvActivity());
@@ -261,7 +212,7 @@ public class SettingsActivity extends BaseFragment {
 
         @Override
         public boolean isEnabled(int i) {
-            return i == textSizeRow || i == usernameRow ||
+            return  i == nameAndStatusRow ||
                     i == blockedRow || i==passcodeRow || i==readReceiptsRow || i == notificationRow || i == backgroundRow || i == advRow ||
                     i == aboutRow || i == inviteRow || i == helpRow;
         }
@@ -326,11 +277,6 @@ public class SettingsActivity extends BaseFragment {
                 else if (i == backgroundRow) {
                     textCell.setText(mContext.getString(R.string.ChatBackground), true);
                 }
-                else if (i == textSizeRow) {
-                    SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("mainconfig", Activity.MODE_PRIVATE);
-                    int size = preferences.getInt("msg_font_size", SettingsAdvActivity.defMsgFontSize());
-                    textCell.setTextAndValue(mContext.getString(R.string.TextSize), String.format("%d", size), true);
-                }
                 else if (i == advRow) {
                     textCell.setText(mContext.getString(R.string.AdvancedSettings), false);
                 }
@@ -340,12 +286,8 @@ public class SettingsActivity extends BaseFragment {
                 else if(i == helpRow) {
                     textCell.setText(mContext.getString(R.string.Help), false);
                 }
-                else if (i == usernameRow) {
-                    String value = MrMailbox.getConfig("displayname", "");
-                    if( value.isEmpty()) {
-                        value = mContext.getString(R.string.NotSet);
-                    }
-                    textCell.setTextAndValue(mContext.getString(R.string.MyName), value, true);
+                else if (i == nameAndStatusRow) {
+                    textCell.setText(mContext.getString(R.string.NameAndStatus), true);
                 }
             }
             else if (type == ROWTYPE_HEADER) {
@@ -353,14 +295,8 @@ public class SettingsActivity extends BaseFragment {
                     view = new HeaderCell(mContext);
                     view.setBackgroundColor(0xffffffff);
                 }
-                if (i == settingsHeaderRow) {
-                    ((HeaderCell) view).setText(mContext.getString(R.string.Settings));
-                }
-                else if (i == aboutHeaderRow) {
+                if (i == aboutHeaderRow) {
                     ((HeaderCell) view).setText(mContext.getString(R.string.Info));
-                }
-                else if (i == accountHeaderRow) {
-                    ((HeaderCell) view).setText(mContext.getString(R.string.MyAccount));
                 }
             }
             else if (type == ROWTYPE_DETAIL_SETTINGS) {
@@ -392,13 +328,13 @@ public class SettingsActivity extends BaseFragment {
             if( i == profileRow ) {
                 return ROWTYPE_PROFILE;
             }
-            else if (i == accountShadowRow || i == settingsShadowRow || i == aboutShadowRow ) {
+            else if ( i == settingsShadowRow || i == aboutShadowRow ) {
                 return ROWTYPE_SHADOW;
             }
             else if ( i==aboutRow ) {
                 return ROWTYPE_DETAIL_SETTINGS;
             }
-            else if (i == settingsHeaderRow || i == aboutHeaderRow || i == accountHeaderRow) {
+            else if (i == aboutHeaderRow) {
                 return ROWTYPE_HEADER;
             }
             else if( i==readReceiptsRow ) {

@@ -56,16 +56,16 @@ public class SettingsNameActivity extends BaseFragment {
     // the list
     private ListAdapter listAdapter;
 
-    private int         rowNameTitle;
-    private int         rowDisplayname;
-    private int         rowDisplaynameInfo;
+    private int         rowDisplaynameHeadline, rowDisplayname, rowDisplaynameInfo;
+    private int         rowStatusHeadline, rowStatus, rowStatusInfo;
     private int         rowCount;
 
-    private final int   typeInfo      = 0; // no gaps here!
-    private final int   typeTextEntry = 1;
-    private final int   typeSection   = 2;
+    private final int   ROWTYPE_INFO       = 0; // no gaps here!
+    private final int   ROWTYPE_TEXT_ENTRY = 1;
+    private final int   ROWTYPE_HEADLINE   = 2;
 
-    EditTextCell displaynameCell; // warning all these objects may be null!
+    private EditTextCell displaynameCell; // warning all these objects may be null!
+    private EditTextCell statusCell;
 
     // misc.
     private final static int done_button = 1;
@@ -75,9 +75,14 @@ public class SettingsNameActivity extends BaseFragment {
         super.onFragmentCreate();
 
         rowCount = 0;
-        rowNameTitle = -1; // rowCount++;
-        rowDisplayname = rowCount++;
-        rowDisplaynameInfo = rowCount++;
+
+        rowDisplaynameHeadline = rowCount++;
+        rowDisplayname         = rowCount++;
+        rowDisplaynameInfo     = rowCount++;
+
+        rowStatusHeadline      = rowCount++;
+        rowStatus              = rowCount++;
+        rowStatusInfo          = rowCount++;
 
         return true;
     }
@@ -93,7 +98,7 @@ public class SettingsNameActivity extends BaseFragment {
         // create action bar
         actionBar.setBackButtonImage(R.drawable.ic_close_white);
         actionBar.setAllowOverlayTitle(true);
-        actionBar.setTitle(context.getString(R.string.MyName));
+        actionBar.setTitle(context.getString(R.string.NameAndStatus));
         actionBar.setActionBarMenuOnItemClick(new ActionBar.ActionBarMenuOnItemClick() {
             @Override
             public void onItemClick(int id) {
@@ -155,19 +160,14 @@ public class SettingsNameActivity extends BaseFragment {
             MrMailbox.setConfig("displayname", v.isEmpty() ? null : v);
         }
 
+        if( statusCell != null ) {
+            String v = statusCell.getValue().trim();
+            MrMailbox.setConfig("selfstatus", v); // if v is empty, no status is send
+        }
+
         NotificationCenter.getInstance().postNotificationName(NotificationCenter.mainUserInfoChanged);
 
         finishFragment();
-    }
-
-    @Override
-    public void onTransitionAnimationEnd(boolean isOpen, boolean backward) {
-        if (isOpen && displaynameCell!=null) {
-            if(displaynameCell.getValue().isEmpty()) {
-                displaynameCell.getEditTextView().requestFocus();
-                AndroidUtilities.showKeyboard(displaynameCell.getEditTextView());
-            }
-        }
     }
 
     private class ListAdapter extends BaseFragmentAdapter {
@@ -184,7 +184,7 @@ public class SettingsNameActivity extends BaseFragment {
 
         @Override
         public boolean isEnabled(int i) {
-            return (i == rowDisplayname);
+            return (i == rowDisplayname || i==rowStatus);
         }
 
         @Override
@@ -210,33 +210,49 @@ public class SettingsNameActivity extends BaseFragment {
         @Override
         public View getView(int i, View view, ViewGroup viewGroup) {
             int type = getItemViewType__(i);
-            if (type == typeSection) {
+            if (type == ROWTYPE_HEADLINE) {
                 if (view == null) {
                     view = new HeaderCell(mContext);
                     view.setBackgroundColor(0xffffffff);
                 }
-                if (i == rowNameTitle) {
+                if (i == rowDisplaynameHeadline) {
                     ((HeaderCell) view).setText(mContext.getString(R.string.MyName));
                 }
+                else if (i == rowStatusHeadline) {
+                    ((HeaderCell) view).setText(mContext.getString(R.string.MyStatus));
+                }
             }
-            else if (type == typeTextEntry) {
+            else if (type == ROWTYPE_TEXT_ENTRY) {
                 if (i == rowDisplayname) {
                     if(displaynameCell==null) {
-                        displaynameCell = new EditTextCell(mContext);
+                        displaynameCell = new EditTextCell(mContext, false/*useLabel*/);
                         displaynameCell.getEditTextView().setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS | InputType.TYPE_TEXT_FLAG_CAP_WORDS);
                         displaynameCell.setValueHintAndLabel(MrMailbox.getConfig("displayname", ""),
                                 "", "", true);
                     }
                     view = displaynameCell;
                 }
-            } else if (type == typeInfo) {
+                else if (i == rowStatus) {
+                    if(statusCell==null) {
+                        statusCell = new EditTextCell(mContext, false/*useLabel*/, true/*multiLine*/);
+                        statusCell.setValueHintAndLabel(MrMailbox.getConfig("selfstatus", ""),
+                                "", "", true);
+                    }
+                    view = statusCell;
+                }
+            } else if (type == ROWTYPE_INFO) {
                 if (view == null) {
                     view = new TextInfoCell(mContext);
                 }
                 if( i==rowDisplaynameInfo) {
                     ((TextInfoCell) view).setText(mContext.getString(R.string.MyNameExplain));
+                    view.setBackgroundResource(R.drawable.greydivider);
                 }
-                view.setBackgroundResource(R.drawable.greydivider_bottom);
+                else if( i==rowStatusInfo) {
+                    ((TextInfoCell) view).setText(mContext.getString(R.string.MyStatusExplain));
+                    view.setBackgroundResource(R.drawable.greydivider_bottom);
+                }
+
             }
             return view;
         }
@@ -247,13 +263,13 @@ public class SettingsNameActivity extends BaseFragment {
         }
 
         private int getItemViewType__(int i) {
-            if (i == rowDisplayname) {
-                return typeTextEntry;
+            if (i == rowDisplayname|| i==rowStatus ) {
+                return ROWTYPE_TEXT_ENTRY;
             }
-            else if(i==rowNameTitle) {
-                return typeSection;
+            else if(i==rowDisplaynameHeadline || i==rowStatusHeadline) {
+                return ROWTYPE_HEADLINE;
             }
-            return typeInfo;
+            return ROWTYPE_INFO;
         }
 
 

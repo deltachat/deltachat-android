@@ -53,6 +53,7 @@ import com.b44t.ui.Cells.TextSettingsCell;
 import com.b44t.ui.ActionBar.ActionBar;
 import com.b44t.ui.ActionBar.BaseFragment;
 import com.b44t.ui.Components.LayoutHelper;
+import com.b44t.ui.Components.NumberPicker;
 
 import java.io.File;
 
@@ -60,7 +61,7 @@ import java.io.File;
 public class SettingsAdvActivity extends BaseFragment implements NotificationCenter.NotificationCenterDelegate {
 
     // the list
-    private int directShareRow, cacheRow, raiseToSpeakRow, sendByEnterRow, autoplayGifsRow, showUnknownSendersRow, finalShadowRow;
+    private int directShareRow, cacheRow, raiseToSpeakRow, sendByEnterRow, autoplayGifsRow, textSizeRow, showUnknownSendersRow, finalShadowRow;
     private int accountSettingsRow;
     private int e2eEncryptionRow;
     private int manageKeysRow;
@@ -95,15 +96,16 @@ public class SettingsAdvActivity extends BaseFragment implements NotificationCen
         else {
             directShareRow = -1;
         }
-        autoplayGifsRow = rowCount++;
+        autoplayGifsRow         = rowCount++;
+        textSizeRow             = rowCount++; // for now, we have the font size in the advanced settings; this is because the numberical selection is a little bit weird and does only affect the message text. It would be better to use the font size defined by the system with "sp" (Scale-independent Pixels which included the user's font size preference)
         showUnknownSendersRow   = rowCount++;
-        sendByEnterRow = rowCount++;
-        raiseToSpeakRow = rowCount++; // outgoing message
-        cacheRow = -1;// for now, the - non-functional - page is reachable by the "storage settings" in the "android App Settings" only
+        sendByEnterRow          = rowCount++;
+        raiseToSpeakRow         = rowCount++; // outgoing message
+        cacheRow                = -1;// for now, the - non-functional - page is reachable by the "storage settings" in the "android App Settings" only
         e2eEncryptionRow        = rowCount++;
         manageKeysRow           = rowCount++;
-        backupRow = -1; //rowCount++; -- disabled for now
-        finalShadowRow = rowCount++;
+        backupRow               = -1; //rowCount++; -- disabled for now
+        finalShadowRow          = rowCount++;
 
         return true;
     }
@@ -218,6 +220,45 @@ public class SettingsAdvActivity extends BaseFragment implements NotificationCen
                 else if( i == backupRow )
                 {
                     imexShowMenu(ApplicationLoader.applicationContext.getString(R.string.Backup), MrMailbox.MR_IMEX_EXPORT_BACKUP, 0);
+                }
+                else if (i == textSizeRow) {
+                    if (getParentActivity() == null) {
+                        return;
+                    }
+                    AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
+                    builder.setTitle(ApplicationLoader.applicationContext.getString(R.string.TextSize));
+                    final NumberPicker numberPicker = new NumberPicker(getParentActivity());
+                    final int MIN_VAL = 12;
+                    final int MAX_VAL = 30;
+                    final int DEF_VAL = SettingsAdvActivity.defMsgFontSize();
+                    String displayValues[] = new String[MAX_VAL-MIN_VAL+1];
+                    for( int v = MIN_VAL; v <= MAX_VAL; v++ ) {
+                        String cur = String.format("%d", v);
+                        if( v==DEF_VAL ) {
+                            cur += " (" +ApplicationLoader.applicationContext.getString(R.string.Default)+ ")";
+                        }
+                        displayValues[v-MIN_VAL] = cur;
+                    }
+                    numberPicker.setMinValue(MIN_VAL);
+                    numberPicker.setMaxValue(MAX_VAL);
+                    numberPicker.setDisplayedValues(displayValues);
+                    numberPicker.setWrapSelectorWheel(false);
+                    numberPicker.setValue(ApplicationLoader.fontSize);
+                    builder.setView(numberPicker);
+                    builder.setPositiveButton(ApplicationLoader.applicationContext.getString(R.string.OK), new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("mainconfig", Activity.MODE_PRIVATE);
+                            SharedPreferences.Editor editor = preferences.edit();
+                            editor.putInt("msg_font_size", numberPicker.getValue());
+                            ApplicationLoader.fontSize = numberPicker.getValue();
+                            editor.apply();
+                            if (listView != null) {
+                                listView.invalidateViews();
+                            }
+                        }
+                    });
+                    showDialog(builder.create());
                 }
             }
         });
@@ -411,6 +452,11 @@ public class SettingsAdvActivity extends BaseFragment implements NotificationCen
                 }
                 else if( i == accountSettingsRow ) {
                     textCell.setText(mContext.getString(R.string.AccountSettings), true);
+                }
+                else if (i == textSizeRow) {
+                    SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("mainconfig", Activity.MODE_PRIVATE);
+                    int size = preferences.getInt("msg_font_size", SettingsAdvActivity.defMsgFontSize());
+                    textCell.setTextAndValue(mContext.getString(R.string.TextSize), String.format("%d", size), true);
                 }
             } else if (type == ROWTYPE_CHECK) {
                 if (view == null) {

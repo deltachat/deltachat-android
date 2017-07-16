@@ -304,7 +304,7 @@
     <string name="AccountSettings">Account settings</string>
     <string name="MyAccount">My account</string>
     <string name="MyName">My name</string>
-    <string name="MyNameExplain">Your name, as shown to the receivers.\n\nIf you do not enter a name here, the receivers will only get your email-address from the account settings.</string>
+    <string name="MyNameExplain">Your name, as shown to the receivers. If you do not enter a name here, the receivers will only get your email-address.</string>
     <string name="Password">Password</string>
     <string name="SmtpPassword">SMTP password</string>
     <string name="FromAbove">From above</string>
@@ -391,4 +391,7 @@
     <string name="ImportBackupExplain">To import a backup, copy to the backup to the \"Downloads\" directory and reinstall the app.</string>
     <string name="ReadReceiptMailBody">This is a return receipt for the message \"%1$s\".\n\nThis return receipt only acknowledges that the message was displayed on the recipient\'s device. There is no guarantee that the recipient has read the message contents.</string>
     <string name="ReadReceipt">Return receipt</string>
+    <string name="NameAndStatus">Name and status</string>
+    <string name="MyStatus">My status</string>
+    <string name="MyStatusExplain">The status is shown in your profile and in email footers.</string>
 </resources>

@@ -49,14 +49,20 @@ public class EditTextCell extends FrameLayout {
     private static Paint paint;
     private boolean needDivider;
     private boolean useLabel;
+    private boolean multiLine;
 
     public EditTextCell(Context context) {
-        this(context, true);
+        this(context, true, false);
     }
 
-    public EditTextCell(Context context, boolean useLabel__) {
+    public EditTextCell(Context context, boolean useLabel) {
+        this(context, useLabel, false);
+    }
+
+    public EditTextCell(Context context, boolean useLabel__, boolean multiLine__) {
         super(context);
         useLabel = useLabel__;
+        multiLine = multiLine__;
 
         if (paint == null) {
             paint = new Paint();
@@ -75,41 +81,45 @@ public class EditTextCell extends FrameLayout {
         addView(labelTextView, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.START | Gravity.TOP,
                     17, 8, 17, 0));
 
-
         editView = new EditText(context);
-        editView.setTextColor(0xff212121); // ok
-        editView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 18); // ok, normal text is 16
-        editView.setLines(1);
-        editView.setMaxLines(1);
-        editView.setSingleLine(true);
+        editView.setTextColor(0xff212121);
+        editView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 18); // normal text is 16
+        int addImeFlag = 0, addInputType = 0;
+        if( multiLine__ ) {
+            editView.setLines(2);
+            editView.setMaxLines(2);
+            editView.setSingleLine(false);
+            editView.setVerticalScrollBarEnabled(true);
+            editView.setHorizontalScrollBarEnabled(false);
+            editView.setMinimumHeight(AndroidUtilities.dp(100));
+            addInputType = EditorInfo.TYPE_TEXT_FLAG_MULTI_LINE|EditorInfo.TYPE_TEXT_FLAG_CAP_SENTENCES;
+        }
+        else {
+            editView.setLines(1);
+            editView.setMaxLines(1);
+            editView.setSingleLine(true);
+            addInputType = InputType.TYPE_CLASS_TEXT|InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS;
+            addImeFlag = EditorInfo.IME_ACTION_DONE; // just close the keyboard, NEXT would not work as the other entries nay not yet loaded
+        }
         editView.setHintTextColor(0xffBBBBBB); // was: 0xff979797
         editView.setGravity(Gravity.START);
-        editView.setInputType(InputType.TYPE_CLASS_TEXT|InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
-        editView.setImeOptions(EditorInfo.IME_ACTION_DONE); // just close the keyboard, NEXT would not work as the other entries nay not yet loaded
+        editView.setInputType(editView.getInputType()|addInputType);
+        editView.setImeOptions(addImeFlag|EditorInfo.IME_FLAG_NO_EXTRACT_UI);
         AndroidUtilities.clearCursorDrawable(editView);
-        /*
-        e.setPadding(0, 0, 0, 0);
-        e.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-            @Override
-            public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
-                if (i == EditorInfo.IME_ACTION_DONE && doneButton != null) {
-                    doneButton.performClick();
-                    return true;
-                }
-                return false;
-            }
-        });
-        */
 
         addView(editView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.START | Gravity.TOP,
-                17, useLabel? 25 : 25-17, 17, 0));
+                17, useLabel? 25 : 25-17, 17, multiLine?17:0));
 
         setBackgroundColor(0xffffffff);
     }
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        super.onMeasure(widthMeasureSpec, MeasureSpec.makeMeasureSpec(AndroidUtilities.dp(useLabel? 64 : 64-15) + (needDivider ? 1 : 0), MeasureSpec.EXACTLY));
+        int dpheight = multiLine? 49*2 : 49;
+        if( useLabel ) {
+            dpheight += 15;
+        }
+        super.onMeasure(widthMeasureSpec, MeasureSpec.makeMeasureSpec(AndroidUtilities.dp(dpheight)+(needDivider ? 1 : 0), MeasureSpec.EXACTLY));
     }
 
     public void setValueHintAndLabel(String value, String hint, String label, boolean divider) {
