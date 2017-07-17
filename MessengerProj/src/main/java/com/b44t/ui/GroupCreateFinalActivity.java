@@ -42,54 +42,49 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.b44t.messenger.AndroidUtilities;
-import com.b44t.messenger.ApplicationLoader;
-import com.b44t.messenger.ContactsController;
 import com.b44t.messenger.LocaleController;
 import com.b44t.messenger.MrContact;
 import com.b44t.messenger.MrMailbox;
-import com.b44t.messenger.TLRPC;
 import com.b44t.messenger.NotificationCenter;
 import com.b44t.messenger.R;
+import com.b44t.messenger.TLRPC;
 import com.b44t.ui.Adapters.BaseFragmentAdapter;
 import com.b44t.ui.Cells.GreySectionCell;
 import com.b44t.ui.Cells.UserCell;
 import com.b44t.ui.ActionBar.ActionBar;
 import com.b44t.ui.ActionBar.ActionBarMenu;
-import com.b44t.ui.Components.AvatarDrawable;
-import com.b44t.ui.Components.AvatarUpdater;
-import com.b44t.ui.Components.BackupImageView;
 import com.b44t.ui.ActionBar.BaseFragment;
 import com.b44t.ui.Components.LayoutHelper;
 
 import java.util.ArrayList;
 
-public class GroupCreateFinalActivity extends BaseFragment implements NotificationCenter.NotificationCenterDelegate, AvatarUpdater.AvatarUpdaterDelegate {
+public class GroupCreateFinalActivity extends BaseFragment implements NotificationCenter.NotificationCenterDelegate/*, AvatarUpdater.AvatarUpdaterDelegate*/ {
 
     private ListAdapter listAdapter;
     private ListView listView;
     private EditText nameTextView;
-    private TLRPC.FileLocation avatar;
-    private TLRPC.InputFile uploadedAvatar;
+    //private TLRPC.FileLocation avatar;
+    //private TLRPC.InputFile uploadedAvatar;
     private ArrayList<Integer> selectedContacts;
-    private BackupImageView avatarImage;
-    private AvatarDrawable avatarDrawable;
-    private AvatarUpdater avatarUpdater = new AvatarUpdater();
+    //private BackupImageView avatarImage;
+    //private AvatarDrawable avatarDrawable;
+    //private AvatarUpdater avatarUpdater = new AvatarUpdater();
     private String nameToSet = null;
 
     private final static int done_button = 1;
 
     public GroupCreateFinalActivity(Bundle args) {
         super(args);
-        avatarDrawable = new AvatarDrawable();
+        //avatarDrawable = new AvatarDrawable();
     }
 
     @SuppressWarnings("unchecked")
     @Override
     public boolean onFragmentCreate() {
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.updateInterfaces);
-        avatarUpdater.parentFragment = this;
-        avatarUpdater.delegate = this;
-        avatarUpdater.returnOnly = true;
+        //avatarUpdater.parentFragment = this;
+        //avatarUpdater.delegate = this;
+        //avatarUpdater.returnOnly = true;
         selectedContacts = getArguments().getIntegerArrayList("result"); /* may be empty - in this case a group only with SELF is created */
         if( selectedContacts == null ) { selectedContacts = new ArrayList<>(); }
         selectedContacts.add(MrContact.MR_CONTACT_ID_SELF);
@@ -100,7 +95,7 @@ public class GroupCreateFinalActivity extends BaseFragment implements Notificati
     public void onFragmentDestroy() {
         super.onFragmentDestroy();
         NotificationCenter.getInstance().removeObserver(this, NotificationCenter.updateInterfaces);
-        avatarUpdater.clear();
+        //avatarUpdater.clear();
     }
 
     @Override
@@ -148,9 +143,9 @@ public class GroupCreateFinalActivity extends BaseFragment implements Notificati
                     Bundle args2 = new Bundle();
                     args2.putInt("chat_id", chat_id);
                     presentFragment(new ChatActivity(args2), true);
-                    if (uploadedAvatar != null) {
+                    //if (uploadedAvatar != null) {
                         //MessagesController.getInstance().changeChatAvatar(chat_id, uploadedAvatar);
-                    }
+                    //}
                 }
             }
         });
@@ -170,20 +165,20 @@ public class GroupCreateFinalActivity extends BaseFragment implements Notificati
         layoutParams.gravity = Gravity.TOP | Gravity.START;
         frameLayout.setLayoutParams(layoutParams);
 
-        avatarImage = new BackupImageView(context);
-        avatarImage.setRoundRadius(AndroidUtilities.dp(32));
+        //avatarImage = new BackupImageView(context);
+        //avatarImage.setRoundRadius(AndroidUtilities.dp(32));
         //avatarDrawable.setInfoByName("?");
-        avatarImage.setImageDrawable(avatarDrawable);
-        frameLayout.addView(avatarImage);
-        FrameLayout.LayoutParams layoutParams1 = (FrameLayout.LayoutParams) avatarImage.getLayoutParams();
-        layoutParams1.width = AndroidUtilities.dp(64);
-        layoutParams1.height = AndroidUtilities.dp(64);
-        layoutParams1.topMargin = AndroidUtilities.dp(12);
-        layoutParams1.bottomMargin = AndroidUtilities.dp(12);
-        layoutParams1.leftMargin = LocaleController.isRTL ? 0 : AndroidUtilities.dp(16);
-        layoutParams1.rightMargin = LocaleController.isRTL ? AndroidUtilities.dp(16) : 0;
-        layoutParams1.gravity = Gravity.TOP | Gravity.START;
-        avatarImage.setLayoutParams(layoutParams1);
+        //avatarImage.setImageDrawable(avatarDrawable);
+        //frameLayout.addView(avatarImage);
+        //FrameLayout.LayoutParams layoutParams1 = (FrameLayout.LayoutParams) avatarImage.getLayoutParams();
+        //layoutParams1.width = AndroidUtilities.dp(64);
+        //layoutParams1.height = AndroidUtilities.dp(64);
+        //layoutParams1.topMargin = AndroidUtilities.dp(12);
+        //layoutParams1.bottomMargin = AndroidUtilities.dp(12);
+        //layoutParams1.leftMargin = LocaleController.isRTL ? 0 : AndroidUtilities.dp(16);
+        //layoutParams1.rightMargin = LocaleController.isRTL ? AndroidUtilities.dp(16) : 0;
+        //layoutParams1.gravity = Gravity.TOP | Gravity.START;
+        //avatarImage.setLayoutParams(layoutParams1);
         {
             //avatarDrawable.setDrawPhoto(true);
             /* TODO: let the user select a photo for the group
@@ -242,11 +237,13 @@ public class GroupCreateFinalActivity extends BaseFragment implements Notificati
         AndroidUtilities.clearCursorDrawable(nameTextView);
         nameTextView.setTextColor(0xff212121);
         frameLayout.addView(nameTextView);
-        layoutParams1 = (FrameLayout.LayoutParams) nameTextView.getLayoutParams();
+        FrameLayout.LayoutParams layoutParams1 = (FrameLayout.LayoutParams) nameTextView.getLayoutParams();
         layoutParams1.width = LayoutHelper.MATCH_PARENT;
         layoutParams1.height = LayoutHelper.WRAP_CONTENT;
-        layoutParams1.leftMargin = LocaleController.isRTL ? AndroidUtilities.dp(16) : AndroidUtilities.dp(96);
-        layoutParams1.rightMargin = LocaleController.isRTL ? AndroidUtilities.dp(96) : AndroidUtilities.dp(16);
+        layoutParams1.topMargin = AndroidUtilities.dp(16);
+        layoutParams1.bottomMargin = AndroidUtilities.dp(16);
+        layoutParams1.leftMargin = AndroidUtilities.dp(16);
+        layoutParams1.rightMargin = AndroidUtilities.dp(16);
         layoutParams1.gravity = Gravity.CENTER_VERTICAL;
         nameTextView.setLayoutParams(layoutParams1);
         {
@@ -263,7 +260,7 @@ public class GroupCreateFinalActivity extends BaseFragment implements Notificati
 
                 @Override
                 public void afterTextChanged(Editable s) {
-                    updateAvatar();
+                    //updateAvatar();
                 }
             });
         }
@@ -282,21 +279,21 @@ public class GroupCreateFinalActivity extends BaseFragment implements Notificati
         layoutParams.height = LayoutHelper.MATCH_PARENT;
         listView.setLayoutParams(layoutParams);
 
-        updateAvatar();
+        //updateAvatar();
 
         return fragmentView;
     }
 
-    private void updateAvatar()
+    /*private void updateAvatar()
     {
         ContactsController.setupAvatarByStrings(avatarImage, avatarImage.imageReceiver, avatarDrawable, null,
                 nameTextView.length() > 0 ? nameTextView.getText().toString() : "?");
-    }
+    }*/
 
-    @Override
+    /*@Override
     public void didUploadedPhoto(final TLRPC.InputFile file, final TLRPC.PhotoSize small, final TLRPC.PhotoSize big) {
         Toast.makeText(getParentActivity(), ApplicationLoader.applicationContext.getString(R.string.NotYetImplemented), Toast.LENGTH_SHORT).show();
-        /*
+
         AndroidUtilities.runOnUIThread(new Runnable() {
             @Override
             public void run() {
@@ -308,19 +305,19 @@ public class GroupCreateFinalActivity extends BaseFragment implements Notificati
                 }
             }
         });
-        */
-    }
+
+    }*/
 
     @Override
     public void onActivityResultFragment(int requestCode, int resultCode, Intent data) {
-        avatarUpdater.onActivityResult(requestCode, resultCode, data);
+        //avatarUpdater.onActivityResult(requestCode, resultCode, data);
     }
 
     @Override
     public void saveSelfArgs(Bundle args) {
-        if (avatarUpdater != null && avatarUpdater.currentPicturePath != null) {
+        /*if (avatarUpdater != null && avatarUpdater.currentPicturePath != null) {
             args.putString("path", avatarUpdater.currentPicturePath);
-        }
+        }*/
         if (nameTextView != null) {
             String text = nameTextView.getText().toString();
             if (text != null && text.length() != 0) {
@@ -331,9 +328,9 @@ public class GroupCreateFinalActivity extends BaseFragment implements Notificati
 
     @Override
     public void restoreSelfArgs(Bundle args) {
-        if (avatarUpdater != null) {
+        /*if (avatarUpdater != null) {
             avatarUpdater.currentPicturePath = args.getString("path");
-        }
+        }*/
         String text = args.getString("nameTextView");
         if (text != null) {
             if (nameTextView != null) {
