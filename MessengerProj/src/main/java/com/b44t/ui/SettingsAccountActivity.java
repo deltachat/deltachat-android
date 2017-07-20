@@ -413,6 +413,7 @@ public class SettingsAccountActivity extends BaseFragment implements Notificatio
 
     @Override
     public void onTransitionAnimationEnd(boolean isOpen, boolean backward) {
+        // if the address is empty, automatically show the keyboard
         if (isOpen && addrCell!=null) {
             if(addrCell.getValue().isEmpty()) {
                 addrCell.getEditTextView().requestFocus();
