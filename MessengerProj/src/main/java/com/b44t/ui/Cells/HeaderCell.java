@@ -31,21 +31,28 @@ import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import com.b44t.messenger.AndroidUtilities;
-import com.b44t.messenger.LocaleController;
 import com.b44t.ui.Components.LayoutHelper;
 
 public class HeaderCell extends FrameLayout {
 
     private TextView textView;
 
+    static public TextView createTextView(Context context, String text)
+    {
+        TextView ret = new TextView(context);
+        ret.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 15);
+        ret.setTypeface(Typeface.DEFAULT_BOLD);
+        ret.setTextColor(0xff5099c9);
+        ret.setGravity(Gravity.START | Gravity.CENTER_VERTICAL);
+        if( text != null ) {
+            ret.setText(text);
+        }
+        return ret;
+    }
+
     public HeaderCell(Context context) {
         super(context);
-
-        textView = new TextView(getContext());
-        textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 15);
-        textView.setTypeface(Typeface.DEFAULT_BOLD);
-        textView.setTextColor(0xff5099c9);
-        textView.setGravity(Gravity.START | Gravity.CENTER_VERTICAL);
+        textView = createTextView(getContext(), null);
         addView(textView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.MATCH_PARENT, Gravity.START | Gravity.TOP, 17, 15, 17, 0));
     }
 

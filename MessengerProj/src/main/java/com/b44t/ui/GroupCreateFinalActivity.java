@@ -26,10 +26,8 @@ package com.b44t.ui;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.Editable;
 import android.text.InputFilter;
 import android.text.InputType;
-import android.text.TextWatcher;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
@@ -42,12 +40,10 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.b44t.messenger.AndroidUtilities;
-import com.b44t.messenger.LocaleController;
 import com.b44t.messenger.MrContact;
 import com.b44t.messenger.MrMailbox;
 import com.b44t.messenger.NotificationCenter;
 import com.b44t.messenger.R;
-import com.b44t.messenger.TLRPC;
 import com.b44t.ui.Adapters.BaseFragmentAdapter;
 import com.b44t.ui.Cells.GreySectionCell;
 import com.b44t.ui.Cells.UserCell;
@@ -58,33 +54,24 @@ import com.b44t.ui.Components.LayoutHelper;
 
 import java.util.ArrayList;
 
-public class GroupCreateFinalActivity extends BaseFragment implements NotificationCenter.NotificationCenterDelegate/*, AvatarUpdater.AvatarUpdaterDelegate*/ {
+public class GroupCreateFinalActivity extends BaseFragment implements NotificationCenter.NotificationCenterDelegate {
 
     private ListAdapter listAdapter;
     private ListView listView;
     private EditText nameTextView;
-    //private TLRPC.FileLocation avatar;
-    //private TLRPC.InputFile uploadedAvatar;
     private ArrayList<Integer> selectedContacts;
-    //private BackupImageView avatarImage;
-    //private AvatarDrawable avatarDrawable;
-    //private AvatarUpdater avatarUpdater = new AvatarUpdater();
     private String nameToSet = null;
 
     private final static int done_button = 1;
 
     public GroupCreateFinalActivity(Bundle args) {
         super(args);
-        //avatarDrawable = new AvatarDrawable();
     }
 
     @SuppressWarnings("unchecked")
     @Override
     public boolean onFragmentCreate() {
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.updateInterfaces);
-        //avatarUpdater.parentFragment = this;
-        //avatarUpdater.delegate = this;
-        //avatarUpdater.returnOnly = true;
         selectedContacts = getArguments().getIntegerArrayList("result"); /* may be empty - in this case a group only with SELF is created */
         if( selectedContacts == null ) { selectedContacts = new ArrayList<>(); }
         selectedContacts.add(MrContact.MR_CONTACT_ID_SELF);
@@ -95,7 +82,6 @@ public class GroupCreateFinalActivity extends BaseFragment implements Notificati
     public void onFragmentDestroy() {
         super.onFragmentDestroy();
         NotificationCenter.getInstance().removeObserver(this, NotificationCenter.updateInterfaces);
-        //avatarUpdater.clear();
     }
 
     @Override
@@ -143,9 +129,6 @@ public class GroupCreateFinalActivity extends BaseFragment implements Notificati
                     Bundle args2 = new Bundle();
                     args2.putInt("chat_id", chat_id);
                     presentFragment(new ChatActivity(args2), true);
-                    //if (uploadedAvatar != null) {
-                        //MessagesController.getInstance().changeChatAvatar(chat_id, uploadedAvatar);
-                    //}
                 }
             }
         });
@@ -165,59 +148,6 @@ public class GroupCreateFinalActivity extends BaseFragment implements Notificati
         layoutParams.gravity = Gravity.TOP | Gravity.START;
         frameLayout.setLayoutParams(layoutParams);
 
-        //avatarImage = new BackupImageView(context);
-        //avatarImage.setRoundRadius(AndroidUtilities.dp(32));
-        //avatarDrawable.setInfoByName("?");
-        //avatarImage.setImageDrawable(avatarDrawable);
-        //frameLayout.addView(avatarImage);
-        //FrameLayout.LayoutParams layoutParams1 = (FrameLayout.LayoutParams) avatarImage.getLayoutParams();
-        //layoutParams1.width = AndroidUtilities.dp(64);
-        //layoutParams1.height = AndroidUtilities.dp(64);
-        //layoutParams1.topMargin = AndroidUtilities.dp(12);
-        //layoutParams1.bottomMargin = AndroidUtilities.dp(12);
-        //layoutParams1.leftMargin = LocaleController.isRTL ? 0 : AndroidUtilities.dp(16);
-        //layoutParams1.rightMargin = LocaleController.isRTL ? AndroidUtilities.dp(16) : 0;
-        //layoutParams1.gravity = Gravity.TOP | Gravity.START;
-        //avatarImage.setLayoutParams(layoutParams1);
-        {
-            //avatarDrawable.setDrawPhoto(true);
-            /* TODO: let the user select a photo for the group
-            avatarImage.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    if (getParentActivity() == null) {
-                        return;
-                    }
-                    AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
-
-                    CharSequence[] items;
-
-                    if (avatar != null) {
-                        items = new CharSequence[]{LocaleController.getString("FromCamera", R.string.FromCamera), LocaleController.getString("FromGalley", R.string.FromGalley), LocaleController.getString("DeletePhoto", R.string.DeletePhoto)};
-                    } else {
-                        items = new CharSequence[]{LocaleController.getString("FromCamera", R.string.FromCamera), LocaleController.getString("FromGalley", R.string.FromGalley)};
-                    }
-
-                    builder.setItems(items, new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            if (i == 0) {
-                                avatarUpdater.openCamera();
-                            } else if (i == 1) {
-                                avatarUpdater.openGallery();
-                            } else if (i == 2) {
-                                avatar = null;
-                                uploadedAvatar = null;
-                                avatarImage.setImage(avatar, "50_50", avatarDrawable);
-                            }
-                        }
-                    });
-                    showDialog(builder.create());
-                }
-            });
-            */
-        }
-
         nameTextView = new EditText(context);
         nameTextView.setHint(context.getString(R.string.EnterGroupNamePlaceholder));
         if (nameToSet != null) {
@@ -226,7 +156,7 @@ public class GroupCreateFinalActivity extends BaseFragment implements Notificati
         }
         nameTextView.setMaxLines(4);
         nameTextView.setGravity(Gravity.CENTER_VERTICAL | Gravity.START);
-        nameTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
+        nameTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 18);
         nameTextView.setHintTextColor(0xff979797);
         nameTextView.setImeOptions(EditorInfo.IME_FLAG_NO_EXTRACT_UI);
         nameTextView.setInputType(InputType.TYPE_TEXT_FLAG_CAP_WORDS);
@@ -240,30 +170,12 @@ public class GroupCreateFinalActivity extends BaseFragment implements Notificati
         FrameLayout.LayoutParams layoutParams1 = (FrameLayout.LayoutParams) nameTextView.getLayoutParams();
         layoutParams1.width = LayoutHelper.MATCH_PARENT;
         layoutParams1.height = LayoutHelper.WRAP_CONTENT;
-        layoutParams1.topMargin = AndroidUtilities.dp(16);
-        layoutParams1.bottomMargin = AndroidUtilities.dp(16);
-        layoutParams1.leftMargin = AndroidUtilities.dp(16);
-        layoutParams1.rightMargin = AndroidUtilities.dp(16);
+        layoutParams1.topMargin = AndroidUtilities.dp(18);
+        layoutParams1.bottomMargin = AndroidUtilities.dp(18);
+        layoutParams1.leftMargin = AndroidUtilities.dp(18);
+        layoutParams1.rightMargin = AndroidUtilities.dp(18);
         layoutParams1.gravity = Gravity.CENTER_VERTICAL;
         nameTextView.setLayoutParams(layoutParams1);
-        {
-            nameTextView.addTextChangedListener(new TextWatcher() {
-                @Override
-                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-                }
-
-                @Override
-                public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-                }
-
-                @Override
-                public void afterTextChanged(Editable s) {
-                    //updateAvatar();
-                }
-            });
-        }
 
         GreySectionCell sectionCell = new GreySectionCell(context);
         sectionCell.setText(context.getResources().getQuantityString(R.plurals.Members, selectedContacts.size(), selectedContacts.size()));
@@ -279,45 +191,16 @@ public class GroupCreateFinalActivity extends BaseFragment implements Notificati
         layoutParams.height = LayoutHelper.MATCH_PARENT;
         listView.setLayoutParams(layoutParams);
 
-        //updateAvatar();
-
         return fragmentView;
     }
 
-    /*private void updateAvatar()
-    {
-        ContactsController.setupAvatarByStrings(avatarImage, avatarImage.imageReceiver, avatarDrawable, null,
-                nameTextView.length() > 0 ? nameTextView.getText().toString() : "?");
-    }*/
-
-    /*@Override
-    public void didUploadedPhoto(final TLRPC.InputFile file, final TLRPC.PhotoSize small, final TLRPC.PhotoSize big) {
-        Toast.makeText(getParentActivity(), ApplicationLoader.applicationContext.getString(R.string.NotYetImplemented), Toast.LENGTH_SHORT).show();
-
-        AndroidUtilities.runOnUIThread(new Runnable() {
-            @Override
-            public void run() {
-                uploadedAvatar = file;
-                avatar = small.location;
-                avatarImage.setImage(avatar, "50_50", avatarDrawable);
-                if (createAfterUpload) {
-                    MessagesController.getInstance().createChat(nameTextView.getText().toString(), selectedContacts, null, chatType, GroupCreateFinalActivity.this);
-                }
-            }
-        });
-
-    }*/
 
     @Override
     public void onActivityResultFragment(int requestCode, int resultCode, Intent data) {
-        //avatarUpdater.onActivityResult(requestCode, resultCode, data);
     }
 
     @Override
     public void saveSelfArgs(Bundle args) {
-        /*if (avatarUpdater != null && avatarUpdater.currentPicturePath != null) {
-            args.putString("path", avatarUpdater.currentPicturePath);
-        }*/
         if (nameTextView != null) {
             String text = nameTextView.getText().toString();
             if (text != null && text.length() != 0) {
@@ -328,9 +211,6 @@ public class GroupCreateFinalActivity extends BaseFragment implements Notificati
 
     @Override
     public void restoreSelfArgs(Bundle args) {
-        /*if (avatarUpdater != null) {
-            avatarUpdater.currentPicturePath = args.getString("path");
-        }*/
         String text = args.getString("nameTextView");
         if (text != null) {
             if (nameTextView != null) {

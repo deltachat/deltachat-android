@@ -1,7 +1,6 @@
 /*******************************************************************************
  *
  *                              Delta Chat Android
- *                        (C) 2013-2016 Nikolai Kudashov
  *                           (C) 2017 Björn Petersen
  *                    Contact: r10s@b44t.com, http://b44t.com
  *
@@ -26,38 +25,30 @@ package com.b44t.ui;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.Editable;
 import android.text.InputFilter;
 import android.text.InputType;
-import android.text.TextWatcher;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
-import android.widget.FrameLayout;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.b44t.messenger.AndroidUtilities;
-import com.b44t.messenger.ApplicationLoader;
-import com.b44t.messenger.ContactsController;
-import com.b44t.messenger.LocaleController;
 import com.b44t.messenger.MrContact;
 import com.b44t.messenger.MrMailbox;
-import com.b44t.messenger.TLRPC;
 import com.b44t.messenger.NotificationCenter;
 import com.b44t.messenger.R;
 import com.b44t.ui.ActionBar.ActionBar;
 import com.b44t.ui.ActionBar.ActionBarMenu;
-import com.b44t.ui.Components.AvatarDrawable;
-import com.b44t.ui.Components.AvatarUpdater;
-import com.b44t.ui.Components.BackupImageView;
 import com.b44t.ui.ActionBar.BaseFragment;
+import com.b44t.ui.Cells.HeaderCell;
 import com.b44t.ui.Components.LayoutHelper;
 
 
-public class ContactAddActivity extends BaseFragment implements NotificationCenter.NotificationCenterDelegate, AvatarUpdater.AvatarUpdaterDelegate {
+public class ContactAddActivity extends BaseFragment implements NotificationCenter.NotificationCenterDelegate {
 
     private int             do_what = 0;
     public final static int CREATE_CONTACT   = 1;
@@ -65,11 +56,6 @@ public class ContactAddActivity extends BaseFragment implements NotificationCent
 
     private EditText nameTextView;
     private EditText emailTextView;
-    private TLRPC.FileLocation avatar;
-    private TLRPC.InputFile uploadedAvatar;
-    private BackupImageView avatarImage;
-    private AvatarDrawable avatarDrawable;
-    private AvatarUpdater avatarUpdater = new AvatarUpdater();
     private String nameToSet = null;
     private int chat_id; // only used for EDIT_NAME in chats
     private int user_id;
@@ -79,16 +65,12 @@ public class ContactAddActivity extends BaseFragment implements NotificationCent
 
     public ContactAddActivity(Bundle args) {
         super(args);
-        avatarDrawable = new AvatarDrawable();
     }
 
     @SuppressWarnings("unchecked")
     @Override
     public boolean onFragmentCreate() {
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.updateInterfaces);
-        avatarUpdater.parentFragment = this;
-        avatarUpdater.delegate = this;
-        avatarUpdater.returnOnly = true;
         do_what = getArguments().getInt("do_what", 0);
         user_id = getArguments().getInt("user_id", 0);
         chat_id = getArguments().getInt("chat_id", 0);
@@ -100,8 +82,6 @@ public class ContactAddActivity extends BaseFragment implements NotificationCent
     public void onFragmentDestroy() {
         super.onFragmentDestroy();
         NotificationCenter.getInstance().removeObserver(this, NotificationCenter.updateInterfaces);
-
-        avatarUpdater.clear();
     }
 
     @Override
@@ -182,74 +162,22 @@ public class ContactAddActivity extends BaseFragment implements NotificationCent
         LinearLayout linearLayout = (LinearLayout) fragmentView;
         linearLayout.setOrientation(LinearLayout.VERTICAL);
 
-        FrameLayout frameLayout = new FrameLayout(context);
-        linearLayout.addView(frameLayout);
-        LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) frameLayout.getLayoutParams();
-        layoutParams.width = LayoutHelper.MATCH_PARENT;
-        layoutParams.height = LayoutHelper.WRAP_CONTENT;
-        layoutParams.gravity = Gravity.TOP | Gravity.START;
-        frameLayout.setLayoutParams(layoutParams);
+        nameTextView = new EditText(context);
 
-        avatarImage = new BackupImageView(context);
-        avatarImage.setRoundRadius(AndroidUtilities.dp(32));
-        avatarImage.setImageDrawable(avatarDrawable);
-        frameLayout.addView(avatarImage);
-        FrameLayout.LayoutParams layoutParams1 = (FrameLayout.LayoutParams) avatarImage.getLayoutParams();
-        layoutParams1.width = AndroidUtilities.dp(64);
-        layoutParams1.height = AndroidUtilities.dp(64);
-        layoutParams1.topMargin = AndroidUtilities.dp(12);
-        layoutParams1.bottomMargin = AndroidUtilities.dp(12);
-        layoutParams1.leftMargin = LocaleController.isRTL ? 0 : AndroidUtilities.dp(16);
-        layoutParams1.rightMargin = LocaleController.isRTL ? AndroidUtilities.dp(16) : 0;
-        layoutParams1.gravity = Gravity.TOP | Gravity.START;
-        avatarImage.setLayoutParams(layoutParams1);
-        {
-            //avatarDrawable.setDrawPhoto(true);
-            /* TODO: let the user select a photo for groups (contact photos come from the system's address book)
-            avatarImage.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    if (getParentActivity() == null) {
-                        return;
-                    }
-                    AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
-
-                    CharSequence[] items;
-
-                    if (avatar != null) {
-                        items = new CharSequence[]{LocaleController.getString("FromCamera", R.string.FromCamera), LocaleController.getString("FromGalley", R.string.FromGalley), LocaleController.getString("DeletePhoto", R.string.DeletePhoto)};
-                    } else {
-                        items = new CharSequence[]{LocaleController.getString("FromCamera", R.string.FromCamera), LocaleController.getString("FromGalley", R.string.FromGalley)};
-                    }
-
-                    builder.setItems(items, new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            if (i == 0) {
-                                avatarUpdater.openCamera();
-                            } else if (i == 1) {
-                                avatarUpdater.openGallery();
-                            } else if (i == 2) {
-                                avatar = null;
-                                uploadedAvatar = null;
-                                avatarImage.setImage(avatar, "50_50", avatarDrawable);
-                            }
-                        }
-                    });
-                    showDialog(builder.create());
-                }
-            });
-            */
+        if(do_what==CREATE_CONTACT) {
+            TextView label = HeaderCell.createTextView(context, context.getString(R.string.Name));
+            linearLayout.addView(label, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER_VERTICAL, 18, 18, 18, 0));
+        }
+        else {
+            nameTextView.setHint(context.getString(R.string.Name));
         }
 
-        nameTextView = new EditText(context);
-        nameTextView.setHint(context.getString(R.string.Name));
         if (nameToSet != null) {
             nameTextView.setText(nameToSet);
         }
         nameTextView.setMaxLines(4);
         nameTextView.setGravity(Gravity.CENTER_VERTICAL | Gravity.START);
-        nameTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
+        nameTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 18);
         nameTextView.setHintTextColor(0xff979797);
         nameTextView.setImeOptions(EditorInfo.IME_FLAG_NO_EXTRACT_UI);
         nameTextView.setInputType(InputType.TYPE_TEXT_FLAG_CAP_WORDS);
@@ -259,34 +187,14 @@ public class ContactAddActivity extends BaseFragment implements NotificationCent
         nameTextView.setFilters(inputFilters);
         AndroidUtilities.clearCursorDrawable(nameTextView);
         nameTextView.setTextColor(0xff212121);
-        frameLayout.addView(nameTextView);
-        layoutParams1 = (FrameLayout.LayoutParams) nameTextView.getLayoutParams();
-        layoutParams1.width = LayoutHelper.MATCH_PARENT;
-        layoutParams1.height = LayoutHelper.WRAP_CONTENT;
-        layoutParams1.leftMargin = LocaleController.isRTL ? AndroidUtilities.dp(16) : AndroidUtilities.dp(96);
-        layoutParams1.rightMargin = LocaleController.isRTL ? AndroidUtilities.dp(96) : AndroidUtilities.dp(16);
-        layoutParams1.gravity = Gravity.CENTER_VERTICAL;
-        nameTextView.setLayoutParams(layoutParams1);
-        nameTextView.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                updateAvatar();
-            }
-        });
+        linearLayout.addView(nameTextView, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER_VERTICAL, 18, do_what==CREATE_CONTACT? 1:18, 18, 0));
 
         if( do_what==CREATE_CONTACT ) {
+            TextView label = HeaderCell.createTextView(context, context.getString(R.string.EmailAddress));
+            linearLayout.addView(label, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER_VERTICAL, 18, 18, 18, 0));
+
             emailTextView = new EditText(context);
-            emailTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
+            emailTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 18);
             emailTextView.setHintTextColor(0xff979797);
             emailTextView.setTextColor(0xff212121);
             emailTextView.setMaxLines(4);
@@ -294,70 +202,20 @@ public class ContactAddActivity extends BaseFragment implements NotificationCent
             emailTextView.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS | InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
             emailTextView.setImeOptions(EditorInfo.IME_FLAG_NO_EXTRACT_UI);
             emailTextView.setPadding(0, 0, 0, AndroidUtilities.dp(8));
-            emailTextView.setHint(context.getString(R.string.EmailAddress));
-            emailTextView.addTextChangedListener(new TextWatcher() {
-                @Override
-                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-                }
-
-                @Override
-                public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-                }
-
-                @Override
-                public void afterTextChanged(Editable s) {
-                    updateAvatar();
-                }
-            });
             AndroidUtilities.clearCursorDrawable(emailTextView);
-            linearLayout.addView(emailTextView);
-            LinearLayout.LayoutParams layoutParams2 = (LinearLayout.LayoutParams) emailTextView.getLayoutParams();
-            layoutParams2.width = LayoutHelper.MATCH_PARENT;
-            layoutParams2.height = LayoutHelper.WRAP_CONTENT;
-            layoutParams2.topMargin = AndroidUtilities.dp(16);
-            layoutParams2.leftMargin = AndroidUtilities.dp(16);
-            layoutParams2.rightMargin = AndroidUtilities.dp(16);
-            layoutParams2.gravity = Gravity.CENTER_VERTICAL;
-            emailTextView.setLayoutParams(layoutParams2);
+            linearLayout.addView(emailTextView, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER_VERTICAL, 18, 1, 18, 0));
         }
-
-        updateAvatar();
 
         nameToSet = null;
         return fragmentView;
     }
 
-    private void updateAvatar()
-    {
-        String email = null;
-        if( emailTextView != null ) {
-            email = emailTextView.length() > 0? emailTextView.getText().toString() : null;
-        }
-        else if( user_id != 0 ) {
-            email = MrMailbox.getContact(user_id).getAddr();
-        }
-        ContactsController.setupAvatarByStrings(avatarImage, avatarImage.imageReceiver, avatarDrawable,
-                email,
-                nameTextView.length() > 0 ? nameTextView.getText().toString() : "?");
-    }
-
-    @Override
-    public void didUploadedPhoto(final TLRPC.InputFile file, final TLRPC.PhotoSize small, final TLRPC.PhotoSize big) {
-        Toast.makeText(getParentActivity(), ApplicationLoader.applicationContext.getString(R.string.NotYetImplemented), Toast.LENGTH_SHORT).show();
-    }
-
     @Override
     public void onActivityResultFragment(int requestCode, int resultCode, Intent data) {
-        avatarUpdater.onActivityResult(requestCode, resultCode, data);
     }
 
     @Override
     public void saveSelfArgs(Bundle args) {
-        if (avatarUpdater != null && avatarUpdater.currentPicturePath != null) {
-            args.putString("path", avatarUpdater.currentPicturePath);
-        }
         if (nameTextView != null) {
             String text = nameTextView.getText().toString();
             if (text != null && text.length() != 0) {
@@ -368,9 +226,6 @@ public class ContactAddActivity extends BaseFragment implements NotificationCent
 
     @Override
     public void restoreSelfArgs(Bundle args) {
-        if (avatarUpdater != null) {
-            avatarUpdater.currentPicturePath = args.getString("path");
-        }
         String text = args.getString("nameTextView");
         if (text != null) {
             if (nameTextView != null) {

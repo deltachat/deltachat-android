@@ -2,8 +2,10 @@
 
 ## UNRELEASED
 
+* Introduce an editable "Status" field that is shown eg. in email footers
 * Show the subject of messages that cannot be decrypted
 * Do not send "Read receipts" when decryption fails
+* Ignore messages from mailing lists
 
 ## v0.9.3
 2017-07-13
