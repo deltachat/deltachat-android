@@ -238,7 +238,7 @@ public class ContactAddActivity extends BaseFragment implements NotificationCent
 
     @Override
     public void onTransitionAnimationEnd(boolean isOpen, boolean backward) {
-        if (isOpen) {
+        if (isOpen && nameTextView!=null) {
             nameTextView.requestFocus();
             AndroidUtilities.showKeyboard(nameTextView);
         }

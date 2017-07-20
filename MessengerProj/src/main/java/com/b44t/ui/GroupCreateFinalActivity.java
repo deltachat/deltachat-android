@@ -223,7 +223,7 @@ public class GroupCreateFinalActivity extends BaseFragment implements Notificati
 
     @Override
     public void onTransitionAnimationEnd(boolean isOpen, boolean backward) {
-        if (isOpen) {
+        if (isOpen && nameTextView!=null) {
             nameTextView.requestFocus();
             AndroidUtilities.showKeyboard(nameTextView);
         }
