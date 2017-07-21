@@ -24,7 +24,6 @@
 package com.b44t.ui.Components;
 
 import android.content.Context;
-import android.graphics.Typeface;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -35,7 +34,6 @@ import com.b44t.messenger.AndroidUtilities;
 import com.b44t.messenger.ContactsController;
 import com.b44t.messenger.MrChat;
 import com.b44t.messenger.MrMailbox;
-import com.b44t.messenger.TLRPC;
 import com.b44t.ui.ActionBar.ActionBar;
 import com.b44t.ui.ActionBar.SimpleTextView;
 import com.b44t.ui.ActionBar.Theme;

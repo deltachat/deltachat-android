@@ -22,9 +22,6 @@
 
 package com.b44t.ui;
 
-import android.animation.Animator;
-import android.animation.AnimatorSet;
-import android.animation.ObjectAnimator;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
@@ -43,14 +40,10 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
-import android.view.animation.AccelerateInterpolator;
-import android.view.animation.DecelerateInterpolator;
 import android.widget.FrameLayout;
-import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.b44t.messenger.AndroidUtilities;
-import com.b44t.messenger.AnimatorListenerAdapterProxy;
 import com.b44t.messenger.ContactsController;
 import com.b44t.messenger.MrChat;
 import com.b44t.messenger.MrContact;
@@ -68,7 +61,6 @@ import com.b44t.ui.ActionBar.SimpleTextView;
 import com.b44t.ui.Cells.EmptyCell;
 import com.b44t.ui.Cells.ShadowSectionCell;
 import com.b44t.ui.Cells.TextCell;
-import com.b44t.ui.Cells.TextDetailCell;
 import com.b44t.ui.Cells.UserCell;
 import com.b44t.ui.ActionBar.ActionBar;
 import com.b44t.ui.ActionBar.ActionBarMenu;
@@ -88,7 +80,6 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
     private int chat_id;  // show the profile of a group
 
     private final int typeEmpty = 0;
-    private final int typeTextDetailCell = 2;
     private final int typeTextCell = 3;
     private final int typeContactCell = 4;
     private final int typeSection = 5;
@@ -98,19 +89,14 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
     private BackupImageView avatarImage;
     private SimpleTextView nameTextView;
     private SimpleTextView subtitleTextView;
-    private ImageView writeButton;
-    private AnimatorSet writeButtonAnimation;
     private AvatarDrawable avatarDrawable;
     private TopView topView;
-
-    private long dialog_id;
 
     private int extraHeight;
 
     private AvatarUpdater avatarUpdater;
     private int[] sortedUserIds;
 
-    private final static int ID_STOP_ENCRYPTION_FOR_THIS_USER = 2;
     private final static int ID_BLOCK_CONTACT = 3;
     private final static int ID_DELETE_CONTACT = 5;
     private final static int ID_ADD_SHORTCUT = 14;
@@ -171,8 +157,6 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
         user_id = arguments.getInt("user_id", 0);
         chat_id = getArguments().getInt("chat_id", 0);
         if (user_id != 0) {
-            dialog_id = arguments.getLong("dialog_id", 0);
-
             TLRPC.User user = MrMailbox.getUser(user_id);
             if (user == null) {
                 return false;
@@ -184,11 +168,12 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
             sortedUserIds = MrMailbox.getChatContacts(chat_id);
 
             avatarUpdater = new AvatarUpdater();
+            avatarUpdater.returnOnly = true;
             avatarUpdater.delegate = new AvatarUpdater.AvatarUpdaterDelegate() {
                 @Override
                 public void didUploadedPhoto(TLRPC.InputFile file, TLRPC.PhotoSize small, TLRPC.PhotoSize big) {
-                    if (chat_id != 0) {
-                        //MessagesController.getInstance().changeChatAvatar(chat_id, file);
+                    if (user_id==0 && chat_id != 0) {
+                        Toast.makeText(ApplicationLoader.applicationContext, ApplicationLoader.applicationContext.getString(R.string.NotYetImplemented), Toast.LENGTH_SHORT).show();
                     }
                 }
             };
@@ -247,10 +232,6 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                 }
                 if (id == -1) {
                     finishFragment();
-                }
-                else if( id==ID_STOP_ENCRYPTION_FOR_THIS_USER )
-                {
-                    Toast.makeText(getParentActivity(), context.getString(R.string.NotYetImplemented), Toast.LENGTH_SHORT).show();
                 }
                 else if( id==ID_COPY_EMAIL_TO_CLIPBOARD )
                 {
@@ -534,18 +515,32 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
         avatarImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (user_id != 0) {
-                    TLRPC.User user = MrMailbox.getUser(user_id);
-                    if (user.photo != null && user.photo.photo_big != null) {
-                        PhotoViewer.getInstance().setParentActivity(getParentActivity());
-                        PhotoViewer.getInstance().openPhoto(user.photo.photo_big, ProfileActivity.this);
+                if (user_id==0 && chat_id != 0) {
+                    // show menu to change the group image
+                    AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
+                    CharSequence[] items;
+                    boolean hasPhoto = false;
+                    if ( !hasPhoto ) {
+                        items = new CharSequence[]{context.getString(R.string.FromCamera), context.getString(R.string.FromGalley)};
+                    } else {
+                        items = new CharSequence[]{context.getString(R.string.FromCamera), context.getString(R.string.FromGalley), context.getString(R.string.Delete)};
                     }
-                } else if (chat_id != 0) {
-                    TLRPC.Chat chat = MrChat.chatId2chat(chat_id);
-                    if (chat.photo != null && chat.photo.photo_big != null) {
-                        PhotoViewer.getInstance().setParentActivity(getParentActivity());
-                        PhotoViewer.getInstance().openPhoto(chat.photo.photo_big, ProfileActivity.this);
-                    }
+
+                    builder.setTitle(context.getString(R.string.EditImage));
+                    builder.setItems(items, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            if (i == 0) {
+                                avatarUpdater.openCamera(); // results in a call to didUploadedPhoto()
+                            } else if (i == 1) {
+                                avatarUpdater.openGallery(); // results in a call to didUploadedPhoto()
+                            } else if (i == 2) {
+                                // delete avatar
+                                Toast.makeText(context, context.getString(R.string.NotYetImplemented), Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    });
+                    showDialog(builder.create());
                 }
             }
         });
@@ -566,63 +561,6 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
         subtitleTextView.setGravity(Gravity.START);
         frameLayout.addView(subtitleTextView, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.START | Gravity.TOP, 118-ANIM_OFF, 0, 8, 0));
 
-        if ( chat_id != 0 && chat_id!= MrChat.MR_CHAT_ID_DEADDROP ) {
-            /* TODO: let the user select a photo for the group
-            writeButton = new ImageView(context);
-            try {
-                writeButton.setBackgroundResource(R.drawable.floating_user_states);
-            } catch (Throwable e) {
-
-            }
-            writeButton.setScaleType(ImageView.ScaleType.CENTER);
-            writeButton.setImageResource(R.drawable.floating_camera);
-
-            frameLayout.addView(writeButton, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.END | Gravity.TOP, 0, 0, 16, 0));
-            if (Build.VERSION.SDK_INT >= 21) {
-                StateListAnimator animator = new StateListAnimator();
-                animator.addState(new int[]{android.R.attr.state_pressed}, ObjectAnimator.ofFloat(writeButton, "translationZ", AndroidUtilities.dp(2), AndroidUtilities.dp(4)).setDuration(200));
-                animator.addState(new int[]{}, ObjectAnimator.ofFloat(writeButton, "translationZ", AndroidUtilities.dp(4), AndroidUtilities.dp(2)).setDuration(200));
-                writeButton.setStateListAnimator(animator);
-                writeButton.setOutlineProvider(new ViewOutlineProvider() {
-                    @SuppressLint("NewApi")
-                    @Override
-                    public void getOutline(View view, Outline outline) {
-                        outline.setOval(0, 0, AndroidUtilities.dp(56), AndroidUtilities.dp(56));
-                    }
-                });
-            }
-            writeButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if (getParentActivity() == null) {
-                        return;
-                    }
-                    AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
-                    CharSequence[] items;
-                    TLRPC.Chat chat = MrChat.chatId2chat(chat_id);
-                    if (chat.photo == null || chat.photo.photo_big == null ) {
-                        items = new CharSequence[]{LocaleController.getString("FromCamera", R.string.FromCamera), LocaleController.getString("FromGalley", R.string.FromGalley)};
-                    } else {
-                        items = new CharSequence[]{LocaleController.getString("FromCamera", R.string.FromCamera), LocaleController.getString("FromGalley", R.string.FromGalley), LocaleController.getString("DeletePhoto", R.string.DeletePhoto)};
-                    }
-
-                    builder.setItems(items, new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            if (i == 0) {
-                                avatarUpdater.openCamera();
-                            } else if (i == 1) {
-                                avatarUpdater.openGallery();
-                            } else if (i == 2) {
-                                MessagesController.getInstance().changeChatAvatar(chat_id, null);
-                            }
-                        }
-                    });
-                    showDialog(builder.create());
-                }
-            });
-            */
-        }
         needLayout();
 
         listView.setOnScrollListener(new RecyclerView.OnScrollListener() {
@@ -694,53 +632,6 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
         if (avatarImage != null) {
             float diff = extraHeight / (float) AndroidUtilities.dp(88);
             listView.setTopGlowOffset(extraHeight);
-
-            if (writeButton != null) {
-                writeButton.setTranslationY((actionBar.getOccupyStatusBar() ? AndroidUtilities.statusBarHeight : 0) + ActionBar.getCurrentActionBarHeight() + extraHeight - AndroidUtilities.dp(29.5f));
-
-                {
-                    final boolean setVisible = diff > 0.2f;
-                    boolean currentVisible = writeButton.getTag() == null;
-                    if (setVisible != currentVisible) {
-                        if (setVisible) {
-                            writeButton.setTag(null);
-                        } else {
-                            writeButton.setTag(0);
-                        }
-                        if (writeButtonAnimation != null) {
-                            AnimatorSet old = writeButtonAnimation;
-                            writeButtonAnimation = null;
-                            old.cancel();
-                        }
-                        writeButtonAnimation = new AnimatorSet();
-                        if (setVisible) {
-                            writeButtonAnimation.setInterpolator(new DecelerateInterpolator());
-                            writeButtonAnimation.playTogether(
-                                    ObjectAnimator.ofFloat(writeButton, "scaleX", 1.0f),
-                                    ObjectAnimator.ofFloat(writeButton, "scaleY", 1.0f),
-                                    ObjectAnimator.ofFloat(writeButton, "alpha", 1.0f)
-                            );
-                        } else {
-                            writeButtonAnimation.setInterpolator(new AccelerateInterpolator());
-                            writeButtonAnimation.playTogether(
-                                    ObjectAnimator.ofFloat(writeButton, "scaleX", 0.2f),
-                                    ObjectAnimator.ofFloat(writeButton, "scaleY", 0.2f),
-                                    ObjectAnimator.ofFloat(writeButton, "alpha", 0.0f)
-                            );
-                        }
-                        writeButtonAnimation.setDuration(150);
-                        writeButtonAnimation.addListener(new AnimatorListenerAdapterProxy() {
-                            @Override
-                            public void onAnimationEnd(Animator animation) {
-                                if (writeButtonAnimation != null && writeButtonAnimation.equals(animation)) {
-                                    writeButtonAnimation = null;
-                                }
-                            }
-                        });
-                        writeButtonAnimation.start();
-                    }
-                }
-            }
 
             float avatarY = (actionBar.getOccupyStatusBar() ? AndroidUtilities.statusBarHeight : 0)
                     + ActionBar.getCurrentActionBarHeight() / 2.0f * (1.0f + diff)
@@ -1057,19 +948,6 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                 case typeEmpty:
                     view = new EmptyCell(mContext);
                     break;
-                case typeTextDetailCell:
-                    view = new TextDetailCell(mContext) {
-                        @Override
-                        public boolean onTouchEvent(MotionEvent event) {
-                            if (Build.VERSION.SDK_INT >= 21 && getBackground() != null) {
-                                if (event.getAction() == MotionEvent.ACTION_DOWN || event.getAction() == MotionEvent.ACTION_MOVE) {
-                                    getBackground().setHotspot(event.getX(), event.getY());
-                                }
-                            }
-                            return super.onTouchEvent(event);
-                        }
-                    };
-                    break;
                 case typeTextCell:
                     view = new TextCell(mContext) {
                         @Override
@@ -1112,12 +990,9 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                     if (i == emptyRowChat || i == emptyRowChat2) {
                         ((EmptyCell) holder.itemView).setHeight(AndroidUtilities.dp(8));
                     } else {
-                        ((EmptyCell) holder.itemView).setHeight(AndroidUtilities.dp(14)); // was 36 when we used the "writeButton" for taking photos etc.
+                        ((EmptyCell) holder.itemView).setHeight(AndroidUtilities.dp(14));
                     }
                     break;
-                case typeTextDetailCell:
-                   TextDetailCell textDetailCell = (TextDetailCell) holder.itemView;
-                   break;
                 case typeTextCell:
                     TextCell textCell = (TextCell) holder.itemView;
                     textCell.setTextColor(0xff212121);
