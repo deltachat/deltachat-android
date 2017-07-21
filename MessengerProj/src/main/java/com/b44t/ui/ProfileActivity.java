@@ -990,6 +990,9 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
             mrContact = MrMailbox.getContact(user_id);
             newString = mrContact.getDisplayName();
             newString2 = mrContact.getAddr();
+            /*if( !newString.equals(mrContact.getAuthName()) ) { -- not sure if it is really useful to display the auth-name here
+                newString += " (" + mrContact.getAuthName() + ")";
+            }*/
         }
         else {
             mrChat = MrMailbox.getChat(chat_id);
