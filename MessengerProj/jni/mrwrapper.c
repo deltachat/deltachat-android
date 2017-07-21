@@ -464,11 +464,11 @@ JNIEXPORT void Java_com_b44t_messenger_MrMailbox_forwardMsgs(JNIEnv *env, jclass
 
 /* MrMailbox - handle config */
 
-JNIEXPORT void Java_com_b44t_messenger_MrMailbox_setConfig(JNIEnv *env, jclass cls, jstring key, jstring value)
+JNIEXPORT void Java_com_b44t_messenger_MrMailbox_setConfig(JNIEnv *env, jclass cls, jstring key, jstring value /*may be NULL*/)
 {
 	CHAR_REF(key);
 	CHAR_REF(value);
-		mrmailbox_set_config(get_mrmailbox_t(env, cls), keyPtr, valuePtr);
+		mrmailbox_set_config(get_mrmailbox_t(env, cls), keyPtr, valuePtr /*is NULL if value is NULL, CHAR_REF() handles this*/);
 	CHAR_UNREF(key);
 	CHAR_UNREF(value);
 }
@@ -482,16 +482,19 @@ JNIEXPORT void Java_com_b44t_messenger_MrMailbox_setConfigInt(JNIEnv *env, jclas
 }
 
 
-JNIEXPORT jstring Java_com_b44t_messenger_MrMailbox_getConfig(JNIEnv *env, jclass cls, jstring key, jstring def)
+JNIEXPORT jstring Java_com_b44t_messenger_MrMailbox_getConfig(JNIEnv *env, jclass cls, jstring key, jstring def/*may be NULL*/)
 {
 	CHAR_REF(key);
 	CHAR_REF(def);
-		char* temp = mrmailbox_get_config(get_mrmailbox_t(env, cls), keyPtr, defPtr);
-			jstring ret = JSTRING_NEW(temp);
+		char* temp = mrmailbox_get_config(get_mrmailbox_t(env, cls), keyPtr, defPtr /*is NULL if value is NULL, CHAR_REF() handles this*/);
+			jstring ret = NULL;
+			if( temp ) {
+				ret = JSTRING_NEW(temp);
+			}
 		free(temp);
 	CHAR_UNREF(key);
 	CHAR_UNREF(def);
-	return ret;
+	return ret; /* returns NULL only if key is unset and "def" is NULL */
 }
 
 

@@ -161,8 +161,14 @@ public class SettingsNameActivity extends BaseFragment {
         }
 
         if( statusCell != null ) {
-            String v = statusCell.getValue().trim();
-            MrMailbox.setConfig("selfstatus", v); // if v is empty, no status is send
+            String newstatus = statusCell.getValue().trim();
+            String defstatus = ApplicationLoader.applicationContext.getString(R.string.DefaultStatusText);
+            if( newstatus.equals(defstatus))  {
+                MrMailbox.setConfig("selfstatus", null); // use default status
+            }
+            else {
+                MrMailbox.setConfig("selfstatus", newstatus); // if v is empty, no status is send
+            }
         }
 
         NotificationCenter.getInstance().postNotificationName(NotificationCenter.mainUserInfoChanged);
@@ -234,9 +240,12 @@ public class SettingsNameActivity extends BaseFragment {
                 }
                 else if (i == rowStatus) {
                     if(statusCell==null) {
+                        String statusText = MrMailbox.getConfig("selfstatus", null);
+                        if( statusText == null ) {
+                            statusText = mContext.getString(R.string.DefaultStatusText);
+                        }
                         statusCell = new EditTextCell(mContext, false/*useLabel*/, true/*multiLine*/);
-                        statusCell.setValueHintAndLabel(MrMailbox.getConfig("selfstatus", ""),
-                                "", "", true);
+                        statusCell.setValueHintAndLabel(statusText, "", "", true);
                     }
                     view = statusCell;
                 }
