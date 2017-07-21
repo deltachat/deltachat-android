@@ -172,7 +172,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
             avatarUpdater.delegate = new AvatarUpdater.AvatarUpdaterDelegate() {
                 @Override
                 public void didUploadedPhoto(TLRPC.InputFile file, TLRPC.PhotoSize small, TLRPC.PhotoSize big) {
-                    if (user_id==0 && chat_id != 0) {
+                    if (user_id==0 && chat_id > MrChat.MR_CHAT_ID_LAST_SPECIAL) {
                         Toast.makeText(ApplicationLoader.applicationContext, ApplicationLoader.applicationContext.getString(R.string.NotYetImplemented), Toast.LENGTH_SHORT).show();
                     }
                 }
@@ -515,7 +515,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
         avatarImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (user_id==0 && chat_id != 0) {
+                if (user_id==0 && chat_id > MrChat.MR_CHAT_ID_LAST_SPECIAL) {
                     // show menu to change the group image
                     AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
                     CharSequence[] items;
