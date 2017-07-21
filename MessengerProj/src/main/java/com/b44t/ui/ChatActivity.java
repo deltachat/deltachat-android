@@ -454,7 +454,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                         args.putInt("user_id", contact_ids[0]);
                     }
                     ProfileActivity fragment = new ProfileActivity(args);
-                    fragment.setPlayProfileAnimation(true);
                     presentFragment(fragment);
                 }
                 else if ( id == ID_DELETE_CHAT)
@@ -2681,7 +2680,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                             Bundle args = new Bundle();
                             args.putInt("user_id", user.id);
                             ProfileActivity fragment = new ProfileActivity(args);
-                            fragment.setPlayProfileAnimation(false);
                             presentFragment(fragment);
                         }
                     }

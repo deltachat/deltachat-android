@@ -1,7 +1,6 @@
 /*******************************************************************************
  *
  *                              Delta Chat Android
- *                        (C) 2013-2016 Nikolai Kudashov
  *                           (C) 2017 Björn Petersen
  *                    Contact: r10s@b44t.com, http://b44t.com
  *
@@ -26,13 +25,11 @@ package com.b44t.ui;
 import android.animation.Animator;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -84,8 +81,6 @@ import com.b44t.ui.Components.LayoutHelper;
 import com.b44t.ui.Components.RecyclerListView;
 import com.b44t.ui.ActionBar.Theme;
 
-import java.util.ArrayList;
-
 
 public class ProfileActivity extends BaseFragment implements NotificationCenter.NotificationCenterDelegate, PhotoViewer.PhotoViewerProvider {
 
@@ -93,7 +88,6 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
     private int chat_id;  // show the profile of a group
 
     private final int typeEmpty = 0;
-    private final int typeDivider = 1;
     private final int typeTextDetailCell = 2;
     private final int typeTextCell = 3;
     private final int typeContactCell = 4;
@@ -107,16 +101,11 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
     private ImageView writeButton;
     private AnimatorSet writeButtonAnimation;
     private AvatarDrawable avatarDrawable;
-    private ActionBarMenuItem animatingItem;
     private TopView topView;
 
     private long dialog_id;
 
-    private boolean openAnimationInProgress;
-    private boolean playProfileAnimation;
-    private boolean allowProfileAnimation = true;
     private int extraHeight;
-    private int initialAnimationExtraHeight;
 
     private AvatarUpdater avatarUpdater;
     private int[] sortedUserIds;
@@ -562,7 +551,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
         });
 
         for (int a = 0; a < 2; a++) {
-            if (!playProfileAnimation && a == 0) {
+            if (a == 0) {
                 continue;
             }
             nameTextView[a] = new SimpleTextView(context);
@@ -678,7 +667,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
     }
 
     private void checkListViewScroll() {
-        if (listView.getChildCount() <= 0 || openAnimationInProgress) {
+        if (listView.getChildCount() <= 0) {
             return;
         }
 
@@ -692,9 +681,6 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
         if (extraHeight != newOffset) {
             extraHeight = newOffset;
             topView.invalidate();
-            if (playProfileAnimation) {
-                allowProfileAnimation = extraHeight != 0;
-            }
             needLayout();
         }
     }
@@ -702,7 +688,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
     private void needLayout() {
         FrameLayout.LayoutParams layoutParams;
         int newTop = (actionBar.getOccupyStatusBar() ? AndroidUtilities.statusBarHeight : 0) + ActionBar.getCurrentActionBarHeight();
-        if (listView != null && !openAnimationInProgress) {
+        if (listView != null) {
             layoutParams = (FrameLayout.LayoutParams) listView.getLayoutParams();
             if (layoutParams.topMargin != newTop) {
                 layoutParams.topMargin = newTop;
@@ -717,7 +703,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
             if (writeButton != null) {
                 writeButton.setTranslationY((actionBar.getOccupyStatusBar() ? AndroidUtilities.statusBarHeight : 0) + ActionBar.getCurrentActionBarHeight() + extraHeight - AndroidUtilities.dp(29.5f));
 
-                if (!openAnimationInProgress) {
+                {
                     final boolean setVisible = diff > 0.2f;
                     boolean currentVisible = writeButton.getTag() == null;
                     if (setVisible != currentVisible) {
@@ -778,7 +764,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                 onlineTextView[a].setTranslationY((float) Math.floor(avatarY) + AndroidUtilities.dp(24) + (float) Math.floor(25 * AndroidUtilities.density) * diff);
                 nameTextView[a].setScaleX(1.0f + 0.4f * diff);
                 nameTextView[a].setScaleY(1.0f + 0.4f * diff);
-                if (a == 1 && !openAnimationInProgress) {
+                if (a == 1) {
                     int width;
                     width = AndroidUtilities.displaySize.x;
                     width = (int) (width - AndroidUtilities.dp(118 + 8 + 40 * (1.0f - diff)) - nameTextView[a].getTranslationX());
@@ -866,171 +852,15 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
         fixLayout();
     }
 
-    public void setPlayProfileAnimation(boolean value) {
-        SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("mainconfig", Activity.MODE_PRIVATE);
-        if (preferences.getBoolean("view_animations2", true)) {
-            playProfileAnimation = value;
-        }
-    }
-
     @Override
     protected void onTransitionAnimationStart(boolean isOpen, boolean backward) {
-        if (!backward && playProfileAnimation && allowProfileAnimation) {
-            openAnimationInProgress = true;
-        }
         NotificationCenter.getInstance().setAllowedNotificationsDutingAnimation(new int[]{NotificationCenter.dialogsNeedReload, NotificationCenter.closeChats});
         NotificationCenter.getInstance().setAnimationInProgress(true);
     }
 
     @Override
     protected void onTransitionAnimationEnd(boolean isOpen, boolean backward) {
-        if (!backward && playProfileAnimation && allowProfileAnimation) {
-            openAnimationInProgress = false;
-        }
         NotificationCenter.getInstance().setAnimationInProgress(false);
-    }
-
-    public void setAnimationProgress(float progress) {
-        //animationProgress = progress;
-        listView.setAlpha(progress);
-
-        listView.setTranslationX(AndroidUtilities.dp(48) - AndroidUtilities.dp(48) * progress);
-        int color = Theme.ACTION_BAR_COLOR;
-
-        int r = Color.red(Theme.ACTION_BAR_COLOR);
-        int g = Color.green(Theme.ACTION_BAR_COLOR);
-        int b = Color.blue(Theme.ACTION_BAR_COLOR);
-
-        int rD = (int) ((Color.red(color) - r) * progress);
-        int gD = (int) ((Color.green(color) - g) * progress);
-        int bD = (int) ((Color.blue(color) - b) * progress);
-        topView.setBackgroundColor(Color.rgb(r + rD, g + gD, b + bD));
-        color = Theme.ACTION_BAR_SUBTITLE_COLOR;
-
-        r = Color.red(Theme.ACTION_BAR_SUBTITLE_COLOR);
-        g = Color.green(Theme.ACTION_BAR_SUBTITLE_COLOR);
-        b = Color.blue(Theme.ACTION_BAR_SUBTITLE_COLOR);
-
-        rD = (int) ((Color.red(color) - r) * progress);
-        gD = (int) ((Color.green(color) - g) * progress);
-        bD = (int) ((Color.blue(color) - b) * progress);
-        for (int a = 0; a < 2; a++) {
-            if (onlineTextView[a] == null) {
-                continue;
-            }
-            onlineTextView[a].setTextColor(Color.rgb(r + rD, g + gD, b + bD));
-        }
-        extraHeight = (int) (initialAnimationExtraHeight * progress);
-        color = AvatarDrawable.getColorForId(user_id != 0 ? user_id : chat_id);
-        int color2 = AvatarDrawable.getColorForId(user_id != 0 ? user_id : chat_id);
-        if (color != color2) {
-            rD = (int) ((Color.red(color) - Color.red(color2)) * progress);
-            gD = (int) ((Color.green(color) - Color.green(color2)) * progress);
-            bD = (int) ((Color.blue(color) - Color.blue(color2)) * progress);
-            avatarDrawable.setColor_(Color.rgb(Color.red(color2) + rD, Color.green(color2) + gD, Color.blue(color2) + bD));
-            avatarImage.invalidate();
-        }
-
-        needLayout();
-    }
-
-    @Override
-    protected AnimatorSet onCustomTransitionAnimation(final boolean isOpen, final Runnable callback) {
-        if (playProfileAnimation && allowProfileAnimation) {
-            final AnimatorSet animatorSet = new AnimatorSet();
-            animatorSet.setDuration(180);
-            if (Build.VERSION.SDK_INT > 15) {
-                listView.setLayerType(View.LAYER_TYPE_HARDWARE, null);
-            }
-            ActionBarMenu menu = actionBar.createMenu();
-            if (menu.getItem(10) == null) {
-                if (animatingItem == null) {
-                    animatingItem = menu.addItem(10, R.drawable.ic_ab_other);
-                }
-            }
-            if (isOpen) {
-                FrameLayout.LayoutParams layoutParams = (FrameLayout.LayoutParams) onlineTextView[1].getLayoutParams();
-                layoutParams.rightMargin = (int) (-21 * AndroidUtilities.density + AndroidUtilities.dp(8));
-                onlineTextView[1].setLayoutParams(layoutParams);
-
-                int width = (int) Math.ceil(AndroidUtilities.displaySize.x - AndroidUtilities.dp(118 + 8) + 21 * AndroidUtilities.density);
-                float width2 = nameTextView[1].getPaint().measureText(nameTextView[1].getText().toString()) * 1.12f + nameTextView[1].getSideDrawablesSize();
-                layoutParams = (FrameLayout.LayoutParams) nameTextView[1].getLayoutParams();
-                if (width < width2) {
-                    layoutParams.width = (int) Math.ceil(width / 1.12f);
-                } else {
-                    layoutParams.width = LayoutHelper.WRAP_CONTENT;
-                }
-                nameTextView[1].setLayoutParams(layoutParams);
-
-                initialAnimationExtraHeight = AndroidUtilities.dp(88);
-                fragmentView.setBackgroundColor(0);
-                setAnimationProgress(0);
-                ArrayList<Animator> animators = new ArrayList<>();
-                animators.add(ObjectAnimator.ofFloat(this, "animationProgress", 0.0f, 1.0f));
-                if (writeButton != null) {
-                    writeButton.setScaleX(0.2f);
-                    writeButton.setScaleY(0.2f);
-                    writeButton.setAlpha(0.0f);
-                    animators.add(ObjectAnimator.ofFloat(writeButton, "scaleX", 1.0f));
-                    animators.add(ObjectAnimator.ofFloat(writeButton, "scaleY", 1.0f));
-                    animators.add(ObjectAnimator.ofFloat(writeButton, "alpha", 1.0f));
-                }
-                for (int a = 0; a < 2; a++) {
-                    onlineTextView[a].setAlpha(a == 0 ? 1.0f : 0.0f);
-                    nameTextView[a].setAlpha(a == 0 ? 1.0f : 0.0f);
-                    animators.add(ObjectAnimator.ofFloat(onlineTextView[a], "alpha", a == 0 ? 0.0f : 1.0f));
-                    animators.add(ObjectAnimator.ofFloat(nameTextView[a], "alpha", a == 0 ? 0.0f : 1.0f));
-                }
-                if (animatingItem != null) {
-                    animatingItem.setAlpha(1.0f);
-                    animators.add(ObjectAnimator.ofFloat(animatingItem, "alpha", 0.0f));
-                }
-                animatorSet.playTogether(animators);
-            } else {
-                initialAnimationExtraHeight = extraHeight;
-                ArrayList<Animator> animators = new ArrayList<>();
-                animators.add(ObjectAnimator.ofFloat(this, "animationProgress", 1.0f, 0.0f));
-                if (writeButton != null) {
-                    animators.add(ObjectAnimator.ofFloat(writeButton, "scaleX", 0.2f));
-                    animators.add(ObjectAnimator.ofFloat(writeButton, "scaleY", 0.2f));
-                    animators.add(ObjectAnimator.ofFloat(writeButton, "alpha", 0.0f));
-                }
-                for (int a = 0; a < 2; a++) {
-                    animators.add(ObjectAnimator.ofFloat(onlineTextView[a], "alpha", a == 0 ? 1.0f : 0.0f));
-                    animators.add(ObjectAnimator.ofFloat(nameTextView[a], "alpha", a == 0 ? 1.0f : 0.0f));
-                }
-                if (animatingItem != null) {
-                    animatingItem.setAlpha(0.0f);
-                    animators.add(ObjectAnimator.ofFloat(animatingItem, "alpha", 1.0f));
-                }
-                animatorSet.playTogether(animators);
-            }
-            animatorSet.addListener(new AnimatorListenerAdapterProxy() {
-                @Override
-                public void onAnimationEnd(Animator animation) {
-                    if (Build.VERSION.SDK_INT > 15) {
-                        listView.setLayerType(View.LAYER_TYPE_NONE, null);
-                    }
-                    if (animatingItem != null) {
-                        ActionBarMenu menu = actionBar.createMenu();
-                        menu.clearItems();
-                        animatingItem = null;
-                    }
-                    callback.run();
-                }
-            });
-            animatorSet.setInterpolator(new DecelerateInterpolator());
-
-            AndroidUtilities.runOnUIThread(new Runnable() {
-                @Override
-                public void run() {
-                    animatorSet.start();
-                }
-            }, 50);
-            return animatorSet;
-        }
-        return null;
     }
 
     @Override
@@ -1196,7 +1026,6 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
     private void createActionBarMenu() {
         ActionBarMenu menu = actionBar.createMenu();
         menu.clearItems();
-        animatingItem = null;
 
         ActionBarMenuItem item = menu.addItem(10, R.drawable.ic_ab_other);
 

@@ -286,10 +286,6 @@ public class BaseFragment {
 
     }
 
-    protected AnimatorSet onCustomTransitionAnimation(boolean isOpen, final Runnable callback) {
-        return null;
-    }
-
     public void onLowMemory() {
 
     }

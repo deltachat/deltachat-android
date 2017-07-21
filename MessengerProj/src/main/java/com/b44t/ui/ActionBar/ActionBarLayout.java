@@ -751,13 +751,7 @@ public class ActionBarLayout extends FrameLayout {
                     }
                 };
                 fragment.onTransitionAnimationStart(true, false);
-                AnimatorSet animation = fragment.onCustomTransitionAnimation(true, new Runnable() {
-                    @Override
-                    public void run() {
-                        onAnimationEndCheck(false);
-                    }
-                });
-                if (animation == null) {
+                {
                     containerView.setAlpha(0.0f);
                     containerView.setTranslationX(48.0f);
                     if (containerView.isKeyboardVisible || containerViewBack.isKeyboardVisible) {
@@ -786,14 +780,6 @@ public class ActionBarLayout extends FrameLayout {
                     } else {
                         startLayoutAnimation(true, true);
                     }
-                } else {
-                    if (Build.VERSION.SDK_INT > 15) {
-                        //containerView.setLayerType(LAYER_TYPE_HARDWARE, null);
-                        //containerViewBack.setLayerType(LAYER_TYPE_HARDWARE, null);
-                    }
-                    containerView.setAlpha(1.0f);
-                    containerView.setTranslationX(0.0f);
-                    currentAnimation = animation;
                 }
             }
         } else {
@@ -926,13 +912,8 @@ public class ActionBarLayout extends FrameLayout {
                         previousFragmentFinal.onBecomeFullyVisible();
                     }
                 };
-                AnimatorSet animation = currentFragment.onCustomTransitionAnimation(false, new Runnable() {
-                    @Override
-                    public void run() {
-                        onAnimationEndCheck(false);
-                    }
-                });
-                if (animation == null) {
+
+                {
                     if (containerView.isKeyboardVisible || containerViewBack.isKeyboardVisible) {
                         waitingForKeyboardCloseRunnable = new Runnable() {
                             @Override
@@ -947,12 +928,6 @@ public class ActionBarLayout extends FrameLayout {
                     } else {
                         startLayoutAnimation(false, true);
                     }
-                } else {
-                    if (Build.VERSION.SDK_INT > 15) {
-                        //containerView.setLayerType(LAYER_TYPE_HARDWARE, null);
-                        //containerViewBack.setLayerType(LAYER_TYPE_HARDWARE, null);
-                    }
-                    currentAnimation = animation;
                 }
             } else {
                 currentFragment.onTransitionAnimationEnd(false, false);

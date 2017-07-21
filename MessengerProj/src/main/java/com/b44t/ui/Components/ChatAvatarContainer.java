@@ -88,7 +88,6 @@ public class ChatAvatarContainer extends FrameLayout {
                 }
 
                 ProfileActivity fragment = new ProfileActivity(args);
-                fragment.setPlayProfileAnimation(true);
                 parentFragment.presentFragment(fragment);
             }
         });
