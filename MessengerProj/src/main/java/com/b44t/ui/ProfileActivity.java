@@ -96,8 +96,8 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
     private RecyclerListView listView;
     private ListAdapter listAdapter;
     private BackupImageView avatarImage;
-    private SimpleTextView nameTextView[] = new SimpleTextView[2];
-    private SimpleTextView onlineTextView[] = new SimpleTextView[2];
+    private SimpleTextView nameTextView;
+    private SimpleTextView subtitleTextView;
     private ImageView writeButton;
     private AnimatorSet writeButtonAnimation;
     private AvatarDrawable avatarDrawable;
@@ -550,26 +550,21 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
             }
         });
 
-        for (int a = 0; a < 2; a++) {
-            if (a == 0) {
-                continue;
-            }
-            nameTextView[a] = new SimpleTextView(context);
-            nameTextView[a].setTextColor(Theme.ACTION_BAR_TITLE_COLOR);
-            nameTextView[a].setTextSize(18);
-            nameTextView[a].setGravity(Gravity.START);
-            nameTextView[a].setLeftDrawableTopPadding(-AndroidUtilities.dp(1.3f));
-            nameTextView[a].setRightDrawableTopPadding(-AndroidUtilities.dp(1.3f));
-            nameTextView[a].setPivotX(0);
-            nameTextView[a].setPivotY(0);
-            frameLayout.addView(nameTextView[a], LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.START | Gravity.TOP, 118-ANIM_OFF, 0, a == 0 ? 48 : 0, 0));
+        nameTextView = new SimpleTextView(context);
+        nameTextView.setTextColor(Theme.ACTION_BAR_TITLE_COLOR);
+        nameTextView.setTextSize(18);
+        nameTextView.setGravity(Gravity.START);
+        nameTextView.setLeftDrawableTopPadding(-AndroidUtilities.dp(1.3f));
+        nameTextView.setRightDrawableTopPadding(-AndroidUtilities.dp(1.3f));
+        nameTextView.setPivotX(0);
+        nameTextView.setPivotY(0);
+        frameLayout.addView(nameTextView, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.START | Gravity.TOP, 118-ANIM_OFF, 0, 0, 0));
 
-            onlineTextView[a] = new SimpleTextView(context);
-            onlineTextView[a].setTextColor(Theme.ACTION_BAR_SUBTITLE_COLOR);
-            onlineTextView[a].setTextSize(14);
-            onlineTextView[a].setGravity(Gravity.START);
-            frameLayout.addView(onlineTextView[a], LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.START | Gravity.TOP, 118-ANIM_OFF, 0, a == 0 ? 48 : 8, 0));
-        }
+        subtitleTextView = new SimpleTextView(context);
+        subtitleTextView.setTextColor(Theme.ACTION_BAR_SUBTITLE_COLOR);
+        subtitleTextView.setTextSize(14);
+        subtitleTextView.setGravity(Gravity.START);
+        frameLayout.addView(subtitleTextView, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.START | Gravity.TOP, 118-ANIM_OFF, 0, 8, 0));
 
         if ( chat_id != 0 && chat_id!= MrChat.MR_CHAT_ID_DEADDROP ) {
             /* TODO: let the user select a photo for the group
@@ -754,34 +749,28 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
             avatarImage.setScaleY((42 + 40 * diff) / 42.0f);
             avatarImage.setTranslationX(-AndroidUtilities.dp(42) * diff);
             avatarImage.setTranslationY((float) Math.ceil(avatarY));
-            for (int a = 0; a < 2; a++) {
-                if (nameTextView[a] == null) {
-                    continue;
-                }
-                nameTextView[a].setTranslationX(/*-21 * AndroidUtilities.density * diff*/1);
-                nameTextView[a].setTranslationY((float) Math.floor(avatarY) + AndroidUtilities.dp(1.3f) + AndroidUtilities.dp(14) * diff);
-                onlineTextView[a].setTranslationX(/*-21 * AndroidUtilities.density * diff*/1);
-                onlineTextView[a].setTranslationY((float) Math.floor(avatarY) + AndroidUtilities.dp(24) + (float) Math.floor(25 * AndroidUtilities.density) * diff);
-                nameTextView[a].setScaleX(1.0f + 0.4f * diff);
-                nameTextView[a].setScaleY(1.0f + 0.4f * diff);
-                if (a == 1) {
-                    int width;
-                    width = AndroidUtilities.displaySize.x;
-                    width = (int) (width - AndroidUtilities.dp(118 + 8 + 40 * (1.0f - diff)) - nameTextView[a].getTranslationX());
-                    float width2 = nameTextView[a].getPaint().measureText(nameTextView[a].getText().toString()) * nameTextView[a].getScaleX() + nameTextView[a].getSideDrawablesSize();
-                    layoutParams = (FrameLayout.LayoutParams) nameTextView[a].getLayoutParams();
-                    if (width < width2) {
-                        layoutParams.width = (int) Math.ceil(width / nameTextView[a].getScaleX());
-                    } else {
-                        layoutParams.width = LayoutHelper.WRAP_CONTENT;
-                    }
-                    nameTextView[a].setLayoutParams(layoutParams);
 
-                    layoutParams = (FrameLayout.LayoutParams) onlineTextView[a].getLayoutParams();
-                    layoutParams.rightMargin = (int) Math.ceil(onlineTextView[a].getTranslationX() + AndroidUtilities.dp(8) + AndroidUtilities.dp(40) * (1.0f - diff));
-                    onlineTextView[a].setLayoutParams(layoutParams);
-                }
+            nameTextView.setTranslationX(/*-21 * AndroidUtilities.density * diff*/1);
+            nameTextView.setTranslationY((float) Math.floor(avatarY) + AndroidUtilities.dp(1.3f) + AndroidUtilities.dp(14) * diff);
+            subtitleTextView.setTranslationX(/*-21 * AndroidUtilities.density * diff*/1);
+            subtitleTextView.setTranslationY((float) Math.floor(avatarY) + AndroidUtilities.dp(24) + (float) Math.floor(25 * AndroidUtilities.density) * diff);
+            nameTextView.setScaleX(1.0f + 0.4f * diff);
+            nameTextView.setScaleY(1.0f + 0.4f * diff);
+            int width;
+            width = AndroidUtilities.displaySize.x;
+            width = (int) (width - AndroidUtilities.dp(118 + 8 + 40 * (1.0f - diff)) - nameTextView.getTranslationX());
+            float width2 = nameTextView.getPaint().measureText(nameTextView.getText().toString()) * nameTextView.getScaleX() + nameTextView.getSideDrawablesSize();
+            layoutParams = (FrameLayout.LayoutParams) nameTextView.getLayoutParams();
+            if (width < width2) {
+                layoutParams.width = (int) Math.ceil(width / nameTextView.getScaleX());
+            } else {
+                layoutParams.width = LayoutHelper.WRAP_CONTENT;
             }
+            nameTextView.setLayoutParams(layoutParams);
+
+            layoutParams = (FrameLayout.LayoutParams) subtitleTextView.getLayoutParams();
+            layoutParams.rightMargin = (int) Math.ceil(subtitleTextView.getTranslationX() + AndroidUtilities.dp(8) + AndroidUtilities.dp(40) * (1.0f - diff));
+            subtitleTextView.setLayoutParams(layoutParams);
         }
     }
 
@@ -1008,16 +997,11 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
             newString2 = mrChat.getSubtitle();
         }
 
-        for (int a = 0; a < 2; a++) {
-            if (nameTextView[a] == null) {
-                continue;
-            }
-            if (!nameTextView[a].getText().equals(newString)) {
-                nameTextView[a].setText(newString);
-            }
-            if (!onlineTextView[a].getText().equals(newString2)) {
-                onlineTextView[a].setText(newString2);
-            }
+        if (!nameTextView.getText().equals(newString)) {
+            nameTextView.setText(newString);
+        }
+        if (!subtitleTextView.getText().equals(newString2)) {
+            subtitleTextView.setText(newString2);
         }
 
         ContactsController.setupAvatar(avatarImage, avatarImage.imageReceiver, avatarDrawable, mrContact, mrChat);
