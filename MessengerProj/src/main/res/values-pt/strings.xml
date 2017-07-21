@@ -362,7 +362,6 @@
     <string name="PreferE2EEncryption">Preferir criptografia ponta-a-ponta</string>
     <string name="E2EManagePrivateKeys">Gerir chaves privadas</string>
     <string name="E2ECompareKeys">Comparar chaves</string>
-    <string name="ResetContactsKey">Apagar chave do usuário</string>
     <string name="ForwardToTitle">Encaminhar para …</string>
     <string name="SelectContact">Escolha um contato</string>
     <string name="DoneHint">Concluído.</string>

@@ -362,7 +362,6 @@
     <string name="E2EEncryption">Cifrado punto a punto</string>
     <string name="E2EManagePrivateKeys">Gestionar claves privadas</string>
     <string name="E2ECompareKeys">Comparar claves</string>
-    <string name="ResetContactsKey">Reiniciar claves de contacto</string>
     <string name="ForwardToTitle">Elige el chat …</string>
     <string name="SelectContact">Elegir un contacto</string>
     <string name="DoneHint">Hecho.</string>

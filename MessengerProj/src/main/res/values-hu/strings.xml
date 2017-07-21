@@ -362,7 +362,6 @@
     <string name="E2EEncryption">Végpontok közötti titkosítás</string>
     <string name="E2EManagePrivateKeys">Privát kulcsok kezelése</string>
     <string name="E2ECompareKeys">Kulcsok összehasonlítása</string>
-    <string name="ResetContactsKey">Partner kulcsának visszaállítása</string>
     <string name="ForwardToTitle">Továbbítás…</string>
     <string name="SelectContact">Válassz partnert</string>
     <string name="DoneHint">Kész.</string>

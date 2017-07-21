@@ -384,7 +384,6 @@
     <string name="PreferE2EEncryption">Preferuj pełne szyfrowanie</string>
     <string name="E2EManagePrivateKeys">Zarządzaj prywatnymi kluczami</string>
     <string name="E2ECompareKeys">Porównaj klucze</string>
-    <string name="ResetContactsKey">Resetuj klucz kontaktu</string>
     <string name="ForwardToTitle">Przekaż do…</string>
     <string name="SelectContact">Wybierz kontakt</string>
     <string name="DoneHint">Gotowe.</string>

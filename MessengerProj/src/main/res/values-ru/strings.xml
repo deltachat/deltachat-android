@@ -390,7 +390,6 @@
     <string name="E2EEncryption">Сквозное шифрование</string>
     <string name="E2EManagePrivateKeys">Управление закрытыми ключами</string>
     <string name="E2ECompareKeys">Сравнение ключей</string>
-    <string name="ResetContactsKey">Сброс ключа контакта</string>
     <string name="ForwardToTitle">Переслать в …</string>
     <string name="SelectContact">Выберите контакт</string>
     <string name="DoneHint">Готово.</string>

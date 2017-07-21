@@ -1022,7 +1022,6 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
 
         if (user_id != 0) {
             item.addSubItem(ID_COPY_EMAIL_TO_CLIPBOARD, ApplicationLoader.applicationContext.getString(R.string.CopyToClipboard), 0);
-            //item.addSubItem(ID_STOP_ENCRYPTION_FOR_THIS_USER, ApplicationLoader.applicationContext.getString(R.string.ResetContactsKey), 0); -- not needed by Autocrypt (?)
             item.addSubItem(ID_BLOCK_CONTACT, userBlocked()? ApplicationLoader.applicationContext.getString(R.string.UnblockContact) : ApplicationLoader.applicationContext.getString(R.string.BlockContact), 0);
             item.addSubItem(ID_DELETE_CONTACT, ApplicationLoader.applicationContext.getString(R.string.DeleteContact), 0);
         }

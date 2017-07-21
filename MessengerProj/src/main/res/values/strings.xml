@@ -362,7 +362,6 @@
     <string name="PreferE2EEncryption">Prefer end-to-end encryption</string>
     <string name="E2EManagePrivateKeys">Manage private keys</string>
     <string name="E2ECompareKeys">Compare keys</string>
-    <string name="ResetContactsKey">Reset contact\'s key</string>
     <string name="ForwardToTitle">Forward to …</string>
     <string name="SelectContact">Choose a contact</string>
     <string name="DoneHint">Done.</string>

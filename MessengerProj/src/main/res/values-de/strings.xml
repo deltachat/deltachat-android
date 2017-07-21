@@ -361,7 +361,6 @@
     <string name="SendNRcvReadReceipts">Emfangsbestätigungen erhalten/senden</string>
     <string name="E2EManagePrivateKeys">Private Schlüssel verwalten</string>
     <string name="E2ECompareKeys">Schlüssel vergleichen</string>
-    <string name="ResetContactsKey">Schlüssel zurücksetzen</string>
     <string name="ForwardToTitle">Weiterleiten an …</string>
     <string name="SelectContact">Kontakt auswählen</string>
     <string name="DoneHint">Fertig.</string>

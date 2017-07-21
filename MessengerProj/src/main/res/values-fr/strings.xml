@@ -341,7 +341,6 @@
     <string name="E2EEncryption">Chiffrement bout à bout</string>
     <string name="E2EManagePrivateKeys">Gérer les clefs privées</string>
     <string name="E2ECompareKeys">Comparer les clefs</string>
-    <string name="ResetContactsKey">Reinitialiser les clefs de l\'utilisateur</string>
     <string name="ForwardToTitle">Renvoyer à…</string>
     <string name="DoneHint">Fait.</string>
     <string name="FileNotFound">Fichier %1$s non trouvé.</string>
