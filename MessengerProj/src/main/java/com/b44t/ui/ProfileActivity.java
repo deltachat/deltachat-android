@@ -55,7 +55,6 @@ import android.widget.Toast;
 import com.b44t.messenger.AndroidUtilities;
 import com.b44t.messenger.AnimatorListenerAdapterProxy;
 import com.b44t.messenger.ContactsController;
-import com.b44t.messenger.LocaleController;
 import com.b44t.messenger.MrChat;
 import com.b44t.messenger.MrContact;
 import com.b44t.messenger.MrMailbox;
@@ -69,7 +68,6 @@ import com.b44t.messenger.R;
 import com.b44t.messenger.MessageObject;
 import com.b44t.ui.ActionBar.BackDrawable;
 import com.b44t.ui.ActionBar.SimpleTextView;
-import com.b44t.ui.Cells.DividerCell;
 import com.b44t.ui.Cells.EmptyCell;
 import com.b44t.ui.Cells.ShadowSectionCell;
 import com.b44t.ui.Cells.TextCell;
@@ -126,13 +124,10 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
     private final static int ID_STOP_ENCRYPTION_FOR_THIS_USER = 2;
     private final static int ID_BLOCK_CONTACT = 3;
     private final static int ID_DELETE_CONTACT = 5;
-    private final static int ID_INVITE_TO_GROUP = 9;
     private final static int ID_ADD_SHORTCUT = 14;
     private final static int ID_COPY_EMAIL_TO_CLIPBOARD = 15;
 
     private int emptyRow = -1;
-    private int userSectionRow = -1;
-    private int sectionRow = -1;
     private int settingsNotificationsRow = -1;
     private int changeNameRow = -1;
     private int startChatRow = -1;
@@ -1247,10 +1242,6 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                 case typeEmpty:
                     view = new EmptyCell(mContext);
                     break;
-                case typeDivider:
-                    view = new DividerCell(mContext);
-                    view.setPadding(AndroidUtilities.dp(72), 0, 0, 0);
-                    break;
                 case typeTextDetailCell:
                     view = new TextDetailCell(mContext) {
                         @Override
@@ -1375,8 +1366,6 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
         public int getItemViewType(int i) {
             if (i == emptyRow || i == emptyRowChat || i == emptyRowChat2) {
                 return typeEmpty;
-            } else if (i == sectionRow || i == userSectionRow) {
-                return typeDivider;
             } else if ( i == changeNameRow || i==compareKeysRow || i==startChatRow || i == settingsNotificationsRow || i == addMemberRow) {
                 return typeTextCell;
             } else if (i >= firstMemberRow && i <= lastMemberRow) {
