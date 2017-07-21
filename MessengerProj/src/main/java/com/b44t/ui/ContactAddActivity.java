@@ -185,7 +185,6 @@ public class ContactAddActivity extends BaseFragment implements NotificationCent
         InputFilter[] inputFilters = new InputFilter[1];
         inputFilters[0] = new InputFilter.LengthFilter(100);
         nameTextView.setFilters(inputFilters);
-        AndroidUtilities.clearCursorDrawable(nameTextView);
         nameTextView.setTextColor(0xff212121);
         linearLayout.addView(nameTextView, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER_VERTICAL, 18, do_what==CREATE_CONTACT? 1:18, 18, 0));
 
@@ -202,7 +201,6 @@ public class ContactAddActivity extends BaseFragment implements NotificationCent
             emailTextView.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS | InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
             emailTextView.setImeOptions(EditorInfo.IME_FLAG_NO_EXTRACT_UI);
             emailTextView.setPadding(0, 0, 0, AndroidUtilities.dp(8));
-            AndroidUtilities.clearCursorDrawable(emailTextView);
             linearLayout.addView(emailTextView, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER_VERTICAL, 18, 1, 18, 0));
         }
 

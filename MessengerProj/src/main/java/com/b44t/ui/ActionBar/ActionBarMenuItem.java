@@ -466,13 +466,7 @@ public class ActionBarMenuItem extends FrameLayout {
                 }
             });
 
-            try {
-                Field mCursorDrawableRes = TextView.class.getDeclaredField("mCursorDrawableRes");
-                mCursorDrawableRes.setAccessible(true);
-                mCursorDrawableRes.set(searchField, R.drawable.search_carret);
-            } catch (Exception e) {
-                //nothing to do
-            }
+
             searchField.setTextIsSelectable(false);
             if( applyHack ) {
                 searchField.setOnFocusChangeListener(new View.OnFocusChangeListener() {

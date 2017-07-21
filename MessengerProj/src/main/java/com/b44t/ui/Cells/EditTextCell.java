@@ -105,7 +105,6 @@ public class EditTextCell extends FrameLayout {
         editView.setGravity(Gravity.START);
         editView.setInputType(editView.getInputType()|addInputType);
         editView.setImeOptions(addImeFlag|EditorInfo.IME_FLAG_NO_EXTRACT_UI);
-        AndroidUtilities.clearCursorDrawable(editView);
 
         addView(editView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.START | Gravity.TOP,
                 17, useLabel? 25 : 25-17, 17, multiLine?17:0));

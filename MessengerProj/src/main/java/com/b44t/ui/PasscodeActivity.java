@@ -195,7 +195,6 @@ public class PasscodeActivity extends BaseFragment implements NotificationCenter
             }
             passwordEditText.setTransformationMethod(PasswordTransformationMethod.getInstance());
             passwordEditText.setTypeface(Typeface.DEFAULT);
-            AndroidUtilities.clearCursorDrawable(passwordEditText);
             frameLayout.addView(passwordEditText);
             layoutParams = (FrameLayout.LayoutParams) passwordEditText.getLayoutParams();
             layoutParams.topMargin = AndroidUtilities.dp(90);

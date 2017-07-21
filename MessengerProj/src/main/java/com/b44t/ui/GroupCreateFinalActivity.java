@@ -164,7 +164,6 @@ public class GroupCreateFinalActivity extends BaseFragment implements Notificati
         InputFilter[] inputFilters = new InputFilter[1];
         inputFilters[0] = new InputFilter.LengthFilter(100);
         nameTextView.setFilters(inputFilters);
-        AndroidUtilities.clearCursorDrawable(nameTextView);
         nameTextView.setTextColor(0xff212121);
         frameLayout.addView(nameTextView);
         FrameLayout.LayoutParams layoutParams1 = (FrameLayout.LayoutParams) nameTextView.getLayoutParams();

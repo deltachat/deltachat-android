@@ -149,26 +149,26 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
 
     private class EditTextCaption extends EditText {
 
-        private Object editor;
-        private Field editorField;
-        private Drawable[] mCursorDrawable;
-        private Field mCursorDrawableField;
+        //private Object editor;
+        //private Field editorField;
+        //private Drawable[] mCursorDrawable;
+        //private Field mCursorDrawableField;
 
         public EditTextCaption(Context context) {
             super(context);
 
-            try {
-                Field field = TextView.class.getDeclaredField("mEditor");
-                field.setAccessible(true);
-                editor = field.get(this);
-                Class editorClass = Class.forName("android.widget.Editor");
-                editorField = editorClass.getDeclaredField("mShowCursor");
-                editorField.setAccessible(true);
-                mCursorDrawableField = editorClass.getDeclaredField("mCursorDrawable");
-                mCursorDrawableField.setAccessible(true);
-                mCursorDrawable = (Drawable[]) mCursorDrawableField.get(editor);
-            } catch (Throwable e) {
-            }
+            //try {
+                //Field field = TextView.class.getDeclaredField("mEditor");
+                //field.setAccessible(true);
+                //editor = field.get(this);
+                //Class editorClass = Class.forName("android.widget.Editor");
+                //editorField = editorClass.getDeclaredField("mShowCursor");
+                //editorField.setAccessible(true);
+                //mCursorDrawableField = editorClass.getDeclaredField("mCursorDrawable");
+                //mCursorDrawableField.setAccessible(true);
+                //mCursorDrawable = (Drawable[]) mCursorDrawableField.get(editor);
+            //} catch (Throwable e) {
+            //}
         }
 
         @SuppressLint("DrawAllocation")
@@ -189,10 +189,10 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
             } catch (Exception e) {
             }
 
-            try {
+            //try {
                 // the following lines are because otherwise the cursor stops blinking if
                 // the focus was set to another text field in between (eg. search)
-                if (editorField != null && mCursorDrawable != null && mCursorDrawable[0] != null) {
+                /*if (editorField != null && mCursorDrawable != null && mCursorDrawable[0] != null) {
                     long mShowCursor = editorField.getLong(editor);
                     boolean showCursor = (SystemClock.uptimeMillis() - mShowCursor) % (2 * 500) < 500;
                     if (showCursor) {
@@ -201,9 +201,9 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
                         mCursorDrawable[0].draw(canvas);
                         canvas.restore();
                     }
-                }
-            } catch (Throwable e) {
-            }
+                }*/
+            //} catch (Throwable e) {
+            //}
         }
 
         @Override
@@ -575,13 +575,6 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
                 }
             }
         });
-        try {
-            Field mCursorDrawableRes = TextView.class.getDeclaredField("mCursorDrawableRes");
-            mCursorDrawableRes.setAccessible(true);
-            mCursorDrawableRes.set(messageEditText, R.drawable.field_carret);
-        } catch (Exception e) {
-            //nothing to do
-        }
 
         if (isChat) {
             attachButton = new LinearLayout(context);

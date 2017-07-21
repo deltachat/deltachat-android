@@ -340,19 +340,6 @@ public class AndroidUtilities {
         return photoSize;
     }
 
-    public static void clearCursorDrawable(EditText editText) {
-        if (editText == null) {
-            return;
-        }
-        try {
-            Field mCursorDrawableRes = TextView.class.getDeclaredField("mCursorDrawableRes");
-            mCursorDrawableRes.setAccessible(true);
-            mCursorDrawableRes.setInt(editText, 0);
-        } catch (Exception e) {
-
-        }
-    }
-
     private static Intent createShortcutIntent(int did, Bitmap bitmap) {
         Intent shortcutIntent = new Intent(ApplicationLoader.applicationContext, OpenChatReceiver.class);
 

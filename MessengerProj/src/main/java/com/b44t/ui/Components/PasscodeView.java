@@ -159,7 +159,6 @@ public class PasscodeView extends FrameLayout {
         passwordEditText.setImeOptions(EditorInfo.IME_ACTION_DONE);
         passwordEditText.setTypeface(Typeface.DEFAULT);
         passwordEditText.setBackgroundDrawable(null);
-        AndroidUtilities.clearCursorDrawable(passwordEditText);
         passwordFrameLayout.addView(passwordEditText);
         layoutParams = (FrameLayout.LayoutParams) passwordEditText.getLayoutParams();
         layoutParams.height = LayoutHelper.WRAP_CONTENT;
