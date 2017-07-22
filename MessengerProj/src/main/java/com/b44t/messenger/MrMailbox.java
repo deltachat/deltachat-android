@@ -380,6 +380,7 @@ public class MrMailbox {
                     case 30: s = ApplicationLoader.applicationContext.getString(R.string.EncrinfoFingerprints); break;
                     case 31: s = ApplicationLoader.applicationContext.getString(R.string.ReadReceipt); break;
                     case 32: s = ApplicationLoader.applicationContext.getString(R.string.ReadReceiptMailBody); break;
+                    case 33: s = ApplicationLoader.applicationContext.getString(R.string.MsgGroupImageDeleted); break;
                 }
                 return String2CPtr(s);
 

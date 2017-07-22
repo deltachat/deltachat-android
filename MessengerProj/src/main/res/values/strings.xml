@@ -393,4 +393,5 @@
     <string name="NameAndStatus">Name and status</string>
     <string name="MyStatus">My status</string>
     <string name="MyStatusExplain">The status is shown in your profile and in email footers.</string>
+    <string name="MsgGroupImageDeleted">Group image deleted.</string>
 </resources>
