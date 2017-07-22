@@ -292,6 +292,7 @@ public class TLRPC {
         public final int layer = 0; //custom
 		public boolean created_by_mr;
 		public boolean e2ee;
+		public int system_cmd;
     }
 
 	public static class TL_message extends Message {

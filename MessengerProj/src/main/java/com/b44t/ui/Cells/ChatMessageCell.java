@@ -55,6 +55,7 @@ import com.b44t.messenger.MessageObject;
 import com.b44t.messenger.MrChat;
 import com.b44t.messenger.MrContact;
 import com.b44t.messenger.MrMailbox;
+import com.b44t.messenger.MrMsg;
 import com.b44t.messenger.MrPoortext;
 import com.b44t.messenger.R;
 import com.b44t.messenger.TLRPC;
@@ -1077,12 +1078,12 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
             }
             int minutes = duration / 60;
             int seconds = duration - minutes * 60;
-            String str = String.format("%d:%02d, %s", minutes, seconds, formatFileSize(documentAttach.size));
+            String infoString = String.format("%d:%02d, %s", minutes, seconds, formatFileSize(documentAttach.size));
             if( MrMailbox.getMsg(messageObject.getId()).isIncreation()!=0 ) {
-                str = ApplicationLoader.applicationContext.getString(R.string.OneMoment);
+                infoString = ApplicationLoader.applicationContext.getString(R.string.OneMoment);
             }
-            infoWidth = (int) Math.ceil(infoPaint.measureText(str));
-            infoLayout = new StaticLayout(str, infoPaint, infoWidth, Layout.Alignment.ALIGN_NORMAL, 1.0f, 0.0f, false);
+            infoWidth = (int) Math.ceil(infoPaint.measureText(infoString));
+            infoLayout = new StaticLayout(infoString, infoPaint, infoWidth, Layout.Alignment.ALIGN_NORMAL, 1.0f, 0.0f, false);
         }
         else
         {
@@ -1107,17 +1108,14 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                 docTitleOffsetX = 0;
             }
 
-            String str = formatFileSize(documentAttach.size) + " " + FileLoader.getDocumentExtension(documentAttach);
-            infoWidth = Math.min(maxWidth - AndroidUtilities.dp(30), (int) Math.ceil(infoPaint.measureText(str)));
-            CharSequence str2 = TextUtils.ellipsize(str, infoPaint, infoWidth, TextUtils.TruncateAt.END);
-            try {
-                if (infoWidth < 0) {
-                    infoWidth = dp(10);
-                }
-                infoLayout = new StaticLayout(str2, infoPaint, infoWidth, Layout.Alignment.ALIGN_NORMAL, 1.0f, 0.0f, false);
-            } catch (Exception e) {
+            String infoString = formatFileSize(documentAttach.size) + " " + FileLoader.getDocumentExtension(documentAttach);
+            infoWidth = Math.min(maxWidth - AndroidUtilities.dp(30), (int) Math.ceil(infoPaint.measureText(infoString)));
+            CharSequence str2 = TextUtils.ellipsize(infoString, infoPaint, infoWidth, TextUtils.TruncateAt.END);
 
+            if (infoWidth < 0) {
+                infoWidth = dp(10);
             }
+            infoLayout = new StaticLayout(str2, infoPaint, infoWidth, Layout.Alignment.ALIGN_NORMAL, 1.0f, 0.0f, false);
 
             if (drawPhotoImage) {
                 currentPhotoObject = FileLoader.getClosestPhotoSizeWithSize(messageObject.photoThumbs, getPhotoSize());
@@ -1411,6 +1409,12 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
 
                     if (messageObject.type == MessageObject.MO_TYPE1_PHOTO) {
                         currentPhotoObjectThumb = FileLoader.getClosestPhotoSizeWithSize(messageObject.photoThumbs, 80);
+                        if( messageObject.messageOwner.system_cmd == MrMsg.MR_SYSTEM_GROUPIMAGE_CHANGED ) {
+                            String infoString = ApplicationLoader.applicationContext.getString(R.string.MsgGroupImageChanged);
+                            infoWidth = (int) Math.ceil(infoPaint.measureText(infoString));
+                            infoLayout = new StaticLayout(infoString, infoPaint, infoWidth, Layout.Alignment.ALIGN_NORMAL, 1.0f, 0.0f, false);
+
+                        }
                     } else if (messageObject.type == MessageObject.MO_TYPE3_VIDEO) {
                         createDocumentLayout(0, messageObject);
                         photoImage.setNeedsQualityThumb(true);
@@ -1839,7 +1843,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
         }
         else if (currentMessageObject.type == MessageObject.MO_TYPE1_PHOTO || documentAttachType == DOCUMENT_ATTACH_TYPE_VIDEO) {
             if (photoImage.getVisible()) {
-                if (infoLayout != null && (buttonState == BS1_CLICK_TO_PAUSE || buttonState == BS0_CLICK_TO_PLAY || buttonState == BS3_NORMAL)) {
+                if (infoLayout != null /*&& (buttonState == BS1_CLICK_TO_PAUSE || buttonState == BS0_CLICK_TO_PLAY || buttonState == BS3_NORMAL)*/) {
                     infoPaint.setColor(Theme.MSG_MEDIA_INFO_TEXT_COLOR);
                     setDrawableBounds(Theme.timeBackgroundDrawable, photoImage.getImageX() + dp(4), photoImage.getImageY() + dp(4), infoWidth + dp(8), dp(16.5f));
                     Theme.timeBackgroundDrawable.draw(canvas);

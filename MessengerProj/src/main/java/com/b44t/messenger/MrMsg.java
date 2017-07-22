@@ -58,6 +58,8 @@ public class MrMsg {
     public final static int      MR_MSG_ID_MARKER1    = 1;
     public final static int      MR_MSG_ID_DAYMARKER  = 9;
 
+    public final static int      MR_SYSTEM_GROUPIMAGE_CHANGED = 3; // this is very special: all other commands do not need a special handling as the performed action is already explained in the normal text field (which does not exist for images)
+
     public MrMsg(long hMsg) {
         m_hMsg = hMsg;
     }
@@ -152,6 +154,7 @@ public class MrMsg {
         ret.out           = ret.from_id==MrContact.MR_CONTACT_ID_SELF; // true=outgoing message, read eg. in MessageObject.isOutOwner()
         ret.created_by_mr = true;
         ret.e2ee          = getParamInt('c', 0)!=0;
+        ret.system_cmd    = getParamInt('S', 0);
 
         if( type == MR_MSG_TEXT ) {
             ret.message       = getText();
