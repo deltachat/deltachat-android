@@ -167,12 +167,14 @@ public class ContactsController {
         // get email/name to search avatar image for
         String tempEmail = null;
         String tempName = "";
+        String tempPath = "";
         if (mrContact != null) {
             tempEmail = mrContact.getAddr();
             tempName = mrContact.getDisplayName();
         } else if (mrChat != null) {
             tempName = mrChat.getName();
-            if (mrChat.getType() == MrChat.MR_CHAT_NORMAL) {
+            int chatType = mrChat.getType();
+            if (chatType == MrChat.MR_CHAT_NORMAL) {
                 int[] contact_ids = MrMailbox.getChatContacts(mrChat.getId());
                 if (contact_ids.length == 1) {
                     MrContact mrc = MrMailbox.getContact(contact_ids[0]);
@@ -180,16 +182,20 @@ public class ContactsController {
                     tempName = mrc.getDisplayName();
                 }
             }
+            else if( chatType == MrChat.MR_CHAT_GROUP ) {
+                tempPath = mrChat.getParam(MrChat.MRP_PROFILE_IMAGE, "");
+            }
         }
 
-        setupAvatarByStrings(avtView, avtImageReceiver, avtDrawable, tempEmail, tempName);
+        setupAvatarByStrings(avtView, avtImageReceiver, avtDrawable, tempEmail, tempName, tempPath);
     }
 
-    public static void setupAvatarByStrings(final View avtView,
+    private static void setupAvatarByStrings(final View avtView,
                                    final ImageReceiver avtImageReceiver,
                                    final AvatarDrawable avtDrawable,
                                    String tempEmail,
-                                   String tempName)
+                                   String tempName,
+                                   String tempPath)
     {
         if( tempEmail == null ) {
             tempEmail = "fallback:" + tempName;
@@ -197,13 +203,14 @@ public class ContactsController {
 
         final String email = tempEmail;
         final String fallbackName = tempName;
+        final String path = tempPath;
 
         // bind email+name address to view object to detect overwrites and discard loading old images (may happen on fast scrolling)
         // moreover, check if the avatar is in cache
         AvtCacheEntry cacheEntry;
         synchronized (s_sync) {
-            avtImageReceiver.m_userDataUnique = email+fallbackName;
-            cacheEntry = s_avtCache.get(email+fallbackName);
+            avtImageReceiver.m_userDataUnique = email+fallbackName+path;
+            cacheEntry = s_avtCache.get(email+fallbackName+path);
         }
 
         if( cacheEntry != null )
@@ -231,14 +238,27 @@ public class ContactsController {
                 public void run() {
                     // is the avatar still desired?
                     synchronized (s_sync) {
-                        if (!avtImageReceiver.m_userDataUnique.equals(email+fallbackName)) {
+                        if (!avtImageReceiver.m_userDataUnique.equals(email+fallbackName+path)) {
                             return;
                         }
                     }
 
                     // try to get avatar image from the address book
                     Bitmap tempBitmap = null;
-                    if (!email.startsWith("fallback:")) {
+
+                    if( !path.isEmpty() ) {
+                        try {
+                            Bitmap tempBitmap2 = BitmapFactory.decodeFile(path);
+                            if (tempBitmap2 != null) {
+                                tempBitmap = createRoundBitmap(tempBitmap2);
+                            }
+                        }
+                        catch (Exception e) {
+                            ;
+                        }
+                    }
+
+                    if( tempBitmap==null && !email.startsWith("fallback:")) {
                         try {
                             if (s_cr == null) {
                                 s_cr = ApplicationLoader.applicationContext.getContentResolver();
@@ -274,7 +294,7 @@ public class ContactsController {
                         public void run() {
                             // is the avatar still desired?
                             synchronized (s_sync) {
-                                if (!avtImageReceiver.m_userDataUnique.equals(email+fallbackName)) {
+                                if (!avtImageReceiver.m_userDataUnique.equals(email+fallbackName+path)) {
                                     return;
                                 }
                             }
@@ -288,7 +308,7 @@ public class ContactsController {
                             avtView.invalidate();
 
                             synchronized (s_sync) {
-                                s_avtCache.put(email+fallbackName, new AvtCacheEntry(photoBitmap, fallbackName));
+                                s_avtCache.put(email+fallbackName+path, new AvtCacheEntry(photoBitmap, fallbackName));
                             }
                         }
                     });
@@ -334,7 +354,8 @@ public class ContactsController {
     private static RectF bitmapRect;
     private static Bitmap createRoundBitmap(Bitmap bitmap) {
         try {
-            Bitmap result = Bitmap.createBitmap(bitmap.getWidth(), bitmap.getHeight(), Bitmap.Config.ARGB_8888);
+            int wh = Math.min(bitmap.getWidth(), bitmap.getHeight());
+            Bitmap result = Bitmap.createBitmap(wh, wh, Bitmap.Config.ARGB_8888);
             result.eraseColor(Color.TRANSPARENT);
             Canvas canvas = new Canvas(result);
             BitmapShader shader = new BitmapShader(bitmap, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
@@ -343,8 +364,8 @@ public class ContactsController {
                 bitmapRect = new RectF();
             }
             roundPaint.setShader(shader);
-            bitmapRect.set(0, 0, bitmap.getWidth(), bitmap.getHeight());
-            canvas.drawRoundRect(bitmapRect, bitmap.getWidth(), bitmap.getHeight(), roundPaint);
+            bitmapRect.set(0, 0, wh, wh);
+            canvas.drawRoundRect(bitmapRect, wh, wh, roundPaint);
             return result;
         } catch (Throwable e) {
             ;
