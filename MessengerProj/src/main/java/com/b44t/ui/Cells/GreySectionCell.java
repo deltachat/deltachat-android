@@ -31,7 +31,6 @@ import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import com.b44t.messenger.AndroidUtilities;
-import com.b44t.messenger.LocaleController;
 import com.b44t.ui.Components.LayoutHelper;
 
 public class GreySectionCell extends FrameLayout {

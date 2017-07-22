@@ -238,7 +238,6 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
     private boolean drawTime = true;
 
     private TLRPC.User currentUser;
-    private final Object currentChat = null;
     private TLRPC.FileLocation currentPhoto;
     private String currentNameString;
 
@@ -867,7 +866,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
     }
 
     private boolean isUserDataChanged() {
-        if (currentMessageObject == null || currentUser == null && currentChat == null) {
+        if (currentMessageObject == null || currentUser == null) {
             return false;
         }
         if (lastSendState != currentMessageObject.messageOwner.send_state) {
@@ -878,12 +877,9 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
         }
 
         TLRPC.User newUser = null;
-        final TLRPC.Chat newChat = null;
         if (currentMessageObject.isFromUser()) {
             newUser = MrMailbox.getUser(currentMessageObject.messageOwner.from_id);
-        } /*else if (currentMessageObject.messageOwner.post) {
-            newChat = MessagesController.getInstance().getChat(currentMessageObject.messageOwner.to_id.channel_id);
-        }*/
+        }
         TLRPC.FileLocation newPhoto = null;
 
         if (isAvatarVisible) {
@@ -900,8 +896,6 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
         if (drawName && isGroupChat && !currentMessageObject.isOutOwner()) {
             if (newUser != null) {
                 newNameString = "ErrName"; // use MrContact.getName(), if really needed
-            } else if (newChat != null) {
-                newNameString = newChat.title;
             }
         }
 
@@ -1103,16 +1097,13 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
             }
             docTitleLayout = StaticLayoutEx.createStaticLayout(name, docNamePaint, maxWidth, Layout.Alignment.ALIGN_NORMAL, 1.0f, 0.0f, false, TextUtils.TruncateAt.MIDDLE, maxWidth, drawPhotoImage ? 2 : 1);
             docTitleOffsetX = Integer.MIN_VALUE;
-            int width;
             if (docTitleLayout != null && docTitleLayout.getLineCount() > 0) {
                 int maxLineWidth = 0;
                 for (int a = 0; a < docTitleLayout.getLineCount(); a++) {
                     maxLineWidth = Math.max(maxLineWidth, (int) Math.ceil(docTitleLayout.getLineWidth(a)));
                     docTitleOffsetX = Math.max(docTitleOffsetX, (int) Math.ceil(-docTitleLayout.getLineLeft(a)));
                 }
-                width = Math.min(maxWidth, maxLineWidth);
             } else {
-                width = maxWidth;
                 docTitleOffsetX = 0;
             }
 
@@ -1221,7 +1212,6 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
             wasLayout = false;
             drawNewchatButton = checkNeedDrawNewchatButton(messageObject);
             currentUser = null;
-            //currentChat = null;
             drawNameLayout = false;
 
             resetPressedLink(-1);
@@ -2071,11 +2061,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
 
         if (currentMessageObject.isFromUser()) {
             currentUser = MrMailbox.getUser(currentMessageObject.messageOwner.from_id);
-        } /*else if (currentMessageObject.messageOwner.from_id < 0) {
-            currentChat = MessagesController.getInstance().getChat(-currentMessageObject.messageOwner.from_id);
-        } else if (currentMessageObject.messageOwner.post) {
-            currentChat = MessagesController.getInstance().getChat(currentMessageObject.messageOwner.to_id.channel_id);
-        }*/
+        }
 
         MrContact mrContact = null;
         String cname = "";
@@ -2101,21 +2087,15 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                 nameWidth = dp(100);
             }
 
-            if (authorName) {
-                if (currentUser != null) {
-                    currentNameString = cname;
-                } /*else if (currentChat != null) {
-                    currentNameString = currentChat.title;
-                } */ else {
-                    currentNameString = "DELETED";
-                }
+            if (currentUser != null) {
+                currentNameString = cname;
             } else {
-                currentNameString = "";
+                currentNameString = "DELETED";
             }
             CharSequence nameStringFinal = TextUtils.ellipsize(currentNameString.replace('\n', ' '), namePaint, nameWidth, TextUtils.TruncateAt.END);
             try {
                 nameLayout = new StaticLayout(nameStringFinal, namePaint, nameWidth + dp(2), Layout.Alignment.ALIGN_NORMAL, 1.0f, 0.0f, false);
-                if (nameLayout != null && nameLayout.getLineCount() > 0) {
+                if (nameLayout.getLineCount() > 0) {
                     nameWidth = (int) Math.ceil(nameLayout.getLineWidth(0));
                     if (messageObject.type != MessageObject.MO_TYPE13_STICKER) {
                         namesOffset += dp(19);
