@@ -45,6 +45,7 @@ import android.widget.Toast;
 
 import com.b44t.messenger.AndroidUtilities;
 import com.b44t.messenger.ContactsController;
+import com.b44t.messenger.FileLoader;
 import com.b44t.messenger.MrChat;
 import com.b44t.messenger.MrContact;
 import com.b44t.messenger.MrMailbox;
@@ -72,6 +73,8 @@ import com.b44t.ui.ActionBar.BaseFragment;
 import com.b44t.ui.Components.LayoutHelper;
 import com.b44t.ui.Components.RecyclerListView;
 import com.b44t.ui.ActionBar.Theme;
+
+import java.io.File;
 
 
 public class ProfileActivity extends BaseFragment implements NotificationCenter.NotificationCenterDelegate, PhotoViewer.PhotoViewerProvider {
@@ -173,7 +176,10 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                 @Override
                 public void didUploadedPhoto(TLRPC.InputFile file, TLRPC.PhotoSize small, TLRPC.PhotoSize big) {
                     if (user_id==0 && chat_id > MrChat.MR_CHAT_ID_LAST_SPECIAL) {
-                        Toast.makeText(ApplicationLoader.applicationContext, ApplicationLoader.applicationContext.getString(R.string.NotYetImplemented), Toast.LENGTH_SHORT).show();
+                        String nameonly = big.location.volume_id + "_" + big.location.local_id + ".jpg";
+                        File fileobj = new File(FileLoader.getInstance().getDirectory(FileLoader.MEDIA_DIR_CACHE), nameonly);
+                        String fullpath = fileobj.getAbsolutePath();
+                        MrMailbox.setChatImage(chat_id, fullpath);
                     }
                 }
             };
@@ -519,7 +525,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                     // show menu to change the group image
                     AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
                     CharSequence[] items;
-                    boolean hasPhoto = false;
+                    boolean hasPhoto = MrMailbox.getChat(chat_id).getParam(MrChat.MRP_PROFILE_IMAGE, null)!=null;
                     if ( !hasPhoto ) {
                         items = new CharSequence[]{context.getString(R.string.FromCamera), context.getString(R.string.FromGalley)};
                     } else {
@@ -535,8 +541,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                             } else if (i == 1) {
                                 avatarUpdater.openGallery(); // results in a call to didUploadedPhoto()
                             } else if (i == 2) {
-                                // delete avatar
-                                Toast.makeText(context, context.getString(R.string.NotYetImplemented), Toast.LENGTH_SHORT).show();
+                                MrMailbox.setChatImage(chat_id, null);
                             }
                         }
                     });

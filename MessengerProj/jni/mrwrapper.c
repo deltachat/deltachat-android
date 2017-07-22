@@ -421,6 +421,15 @@ JNIEXPORT jint Java_com_b44t_messenger_MrMailbox_setChatName(JNIEnv *env, jclass
 }
 
 
+JNIEXPORT jint Java_com_b44t_messenger_MrMailbox_setChatImage(JNIEnv *env, jclass cls, jint chat_id, jstring image/*NULL=delete*/)
+{
+	CHAR_REF(image);
+	jint ret = (jint)mrmailbox_set_chat_image(get_mrmailbox_t(env, cls), chat_id, imagePtr/*CHAR_REF() preserves NULL*/);
+	CHAR_UNREF(image);
+	return ret;
+}
+
+
 JNIEXPORT void Java_com_b44t_messenger_MrMailbox_deleteChat(JNIEnv *env, jclass cls, jint chat_id)
 {
 	mrmailbox_delete_chat(get_mrmailbox_t(env, cls), chat_id);
@@ -643,6 +652,21 @@ JNIEXPORT jstring Java_com_b44t_messenger_MrChat_getSubtitle(JNIEnv *env, jclass
 		jstring ret = JSTRING_NEW(temp);
 	free(temp);
 	return ret;
+}
+
+
+JNIEXPORT jint Java_com_b44t_messenger_MrChat_getParam(JNIEnv *env, jclass cls, jint key, jstring def)
+{
+    mrchat_t* ths = get_mrchat_t(env, cls);
+    jstring ret = NULL;
+    CHAR_REF(def);
+        char* temp = mrparam_get(ths? ths->m_param:NULL, key, defPtr);
+        if( temp ) {
+            ret = JSTRING_NEW(temp);
+            free(temp);
+        }
+    CHAR_UNREF(def);
+    return ret; /* returns NULL only if key is unset and "def" is NULL */
 }
 
 
@@ -869,10 +893,13 @@ JNIEXPORT jint Java_com_b44t_messenger_MrMsg_MrMsgGetToId(JNIEnv *env, jclass c,
 JNIEXPORT jstring Java_com_b44t_messenger_MrMsg_getParam(JNIEnv *env, jobject obj, jint key, jstring def)
 {
 	mrmsg_t* ths = get_mrmsg_t(env, obj);
+	jstring ret = NULL;
 	CHAR_REF(def);
 		char* temp = mrparam_get(ths? ths->m_param:NULL, key, defPtr);
-			jstring ret = JSTRING_NEW(temp);
-		free(temp);
+        if( temp ) {
+            ret = JSTRING_NEW(temp);
+            free(temp);
+        }
 	CHAR_UNREF(def);
 	return ret;
 }

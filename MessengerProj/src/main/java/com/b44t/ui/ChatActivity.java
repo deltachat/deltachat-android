@@ -852,7 +852,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
 
             TextView emptyView = new TextView(context);
 
-            if( m_mrChat.getParamInt(MrChat.MR_CHAT_PARAM_UNPROMOTED, 0)==1 ) {
+            if( m_mrChat.getParamInt(MrChat.MRP_UNPROMOTED, 0)==1 ) {
                 emptyView.setText(context.getString(R.string.MsgNewGroupDraftHint));
                 emptyView.setGravity(Gravity.START);
             }
