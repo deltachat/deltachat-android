@@ -701,12 +701,6 @@ JNIEXPORT jint Java_com_b44t_messenger_MrChat_MrChatGetDraftReplyToMsgId(JNIEnv 
 }
 
 
-JNIEXPORT jint Java_com_b44t_messenger_MrChat_MrChatGetTotalMsgCount(JNIEnv *env, jclass c, jlong hChat)
-{
-	return mrchat_get_total_msg_count((mrchat_t*)hChat);
-}
-
-
 JNIEXPORT jint Java_com_b44t_messenger_MrChat_getFreshMsgCount(JNIEnv *env, jclass cls)
 {
 	return mrchat_get_fresh_msg_count(get_mrchat_t(env, cls));

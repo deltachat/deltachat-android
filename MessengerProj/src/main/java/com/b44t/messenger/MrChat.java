@@ -73,10 +73,6 @@ public class MrChat {
     }
     public native int getFreshMsgCount();
 
-    public int getTotalMsgCount() {
-        return MrChatGetTotalMsgCount(m_hChat);
-    }
-
     public native int sendText(String text);
 
     public native int sendMedia(int type, String file, String mime, int w, int h, int time_ms, String author, String trackname);
@@ -87,7 +83,6 @@ public class MrChat {
     private native static long    MrChatGetDraftTimestamp    (long hChat); // returns 0 for "no draft"
     private native static int     MrChatGetDraftReplyToMsgId (long hChat); // returns 0 for "no draft"
     private native static int     MrChatSetDraft             (long hChat, String draft/*NULL=delete*/, long replyToMsgId);
-    private native static int     MrChatGetTotalMsgCount     (long hChat);
 
 
     /* additional functions that are not 1:1 available in the backend

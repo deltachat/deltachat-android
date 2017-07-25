@@ -1409,12 +1409,6 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
 
                     if (messageObject.type == MessageObject.MO_TYPE1_PHOTO) {
                         currentPhotoObjectThumb = FileLoader.getClosestPhotoSizeWithSize(messageObject.photoThumbs, 80);
-                        if( messageObject.messageOwner.system_cmd == MrMsg.MR_SYSTEM_GROUPIMAGE_CHANGED ) {
-                            String infoString = ApplicationLoader.applicationContext.getString(R.string.MsgGroupImageChanged);
-                            infoWidth = (int) Math.ceil(infoPaint.measureText(infoString));
-                            infoLayout = new StaticLayout(infoString, infoPaint, infoWidth, Layout.Alignment.ALIGN_NORMAL, 1.0f, 0.0f, false);
-
-                        }
                     } else if (messageObject.type == MessageObject.MO_TYPE3_VIDEO) {
                         createDocumentLayout(0, messageObject);
                         photoImage.setNeedsQualityThumb(true);

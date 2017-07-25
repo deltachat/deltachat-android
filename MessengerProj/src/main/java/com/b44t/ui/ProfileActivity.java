@@ -541,7 +541,20 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                             } else if (i == 1) {
                                 avatarUpdater.openGallery(); // results in a call to didUploadedPhoto()
                             } else if (i == 2) {
-                                MrMailbox.setChatImage(chat_id, null);
+                                AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
+                                builder.setMessage(context.getString(R.string.AskDeleteGroupImage));
+                                builder.setPositiveButton(context.getString(R.string.OK), new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                        if( MrMailbox.setChatImage(chat_id, null)!=0 ) {
+                                            AndroidUtilities.showDoneHint(getParentActivity());
+                                        }
+                                    }
+                                });
+                                builder.setNegativeButton(context.getString(R.string.Cancel), null);
+                                showDialog(builder.create());
+
+
                             }
                         }
                     });
