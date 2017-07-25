@@ -47,6 +47,10 @@ android {
     }
 
     signingConfigs {
+        debug {
+            storeFile file("config/debug.keystore")
+        }
+
         release {
             storeFile file("config/release.keystore")
             storePassword RELEASE_STORE_PASSWORD
