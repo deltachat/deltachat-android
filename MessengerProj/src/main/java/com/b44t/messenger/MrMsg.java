@@ -152,7 +152,6 @@ public class MrMsg {
         ret.out           = ret.from_id==MrContact.MR_CONTACT_ID_SELF; // true=outgoing message, read eg. in MessageObject.isOutOwner()
         ret.created_by_mr = true;
         ret.e2ee          = getParamInt('c', 0)!=0;
-        ret.system_cmd    = getParamInt('S', 0);
 
         if( type == MR_MSG_TEXT ) {
             ret.message       = getText();
