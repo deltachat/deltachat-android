@@ -87,7 +87,7 @@ public class AvatarDrawable extends Drawable {
 
         stringBuilder.setLength(0);
         if (name != null && name.length() > 0) {
-            stringBuilder.append(name.substring(0, 1));
+            stringBuilder.appendCodePoint(name.codePointAt(0));
 
             for (int a = name.length() - 1; a >= 0; a--) {
                 if (name.charAt(a) == ' ') {
@@ -95,7 +95,7 @@ public class AvatarDrawable extends Drawable {
                         if (Build.VERSION.SDK_INT >= 16) {
                             stringBuilder.append("\u200C"); // ZERO WIDTH NON-JOINER - avoids the two letter to melt into a ligature which would be incorrect on the initials
                         }
-                        stringBuilder.append(name.substring(a + 1, a + 2));
+                        stringBuilder.appendCodePoint(name.codePointAt(a + 1));
                         break;
                     }
                 }
