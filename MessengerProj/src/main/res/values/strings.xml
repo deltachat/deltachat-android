@@ -394,5 +394,5 @@
     <string name="MyStatus">My status</string>
     <string name="MyStatusExplain">The status is shown in your profile and in email footers.</string>
     <string name="MsgGroupImageDeleted">Group image deleted.</string>
-    <string name="AskDeleteGroupImage">Are your sure to delete the group image?\n\nThis will affect all devices of all group members.</string>
+    <string name="AskDeleteGroupImage">Are you sure to delete the group image?\n\nThis will affect all devices of all group members.</string>
 </resources>
