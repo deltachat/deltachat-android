@@ -26,12 +26,8 @@
 
 package com.b44t.ui;
 
-import android.app.Activity;
-import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -53,7 +49,6 @@ import com.b44t.ui.Cells.TextCheckCell;
 import com.b44t.ui.Cells.TextDetailSettingsCell;
 import com.b44t.ui.Cells.TextSettingsCell;
 import com.b44t.ui.Components.LayoutHelper;
-import com.b44t.ui.Components.NumberPicker;
 
 
 public class SettingsActivity extends BaseFragment {
@@ -61,7 +56,7 @@ public class SettingsActivity extends BaseFragment {
     // the list
     private int profileRow, nameAndStatusRow;
     private int notificationRow, backgroundRow, advRow, settingsShadowRow;
-    private int readReceiptsRow, blockedRow, passcodeRow;
+    private int readReceiptsRow, passcodeRow;
     private int aboutHeaderRow, aboutRow, inviteRow, helpRow, aboutShadowRow;
     private int rowCount;
 
@@ -89,7 +84,6 @@ public class SettingsActivity extends BaseFragment {
         notificationRow    = rowCount++;
         backgroundRow      = rowCount++;
         passcodeRow        = rowCount++;
-        blockedRow         = rowCount++;
         readReceiptsRow    = rowCount++;
         advRow             = rowCount++;
         settingsShadowRow  = rowCount++;
@@ -140,9 +134,6 @@ public class SettingsActivity extends BaseFragment {
             public void onItemClick(final AdapterView<?> adapterView, View view, final int i, long l) {
                 if (i == nameAndStatusRow) {
                     presentFragment(new SettingsNameActivity());
-                }
-                else if (i == blockedRow) {
-                    presentFragment(new BlockedUsersActivity());
                 }
                 else if (i == passcodeRow) {
                     if (UserConfig.passcodeHash.length() > 0) {
@@ -213,7 +204,7 @@ public class SettingsActivity extends BaseFragment {
         @Override
         public boolean isEnabled(int i) {
             return  i == nameAndStatusRow ||
-                    i == blockedRow || i==passcodeRow || i==readReceiptsRow || i == notificationRow || i == backgroundRow || i == advRow ||
+                    i==passcodeRow || i==readReceiptsRow || i == notificationRow || i == backgroundRow || i == advRow ||
                     i == aboutRow || i == inviteRow || i == helpRow;
         }
 
@@ -258,11 +249,7 @@ public class SettingsActivity extends BaseFragment {
                     view.setBackgroundColor(0xffffffff);
                 }
                 TextSettingsCell textCell = (TextSettingsCell) view;
-                if (i == blockedRow) {
-                    String cntStr = String.format("%d", MrMailbox.getBlockedCount());
-                    textCell.setTextAndValue(ApplicationLoader.applicationContext.getString(R.string.BlockedContacts), cntStr, true);
-                }
-                else if (i == passcodeRow) {
+                if (i == passcodeRow) {
                     String val = UserConfig.passcodeHash.length() > 0? mContext.getString(R.string.Enabled) : mContext.getString(R.string.Disabled);
                     textCell.setTextAndValue(mContext.getString(R.string.Passcode), val, true);
                 }

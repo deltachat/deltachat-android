@@ -62,6 +62,7 @@ public class SettingsAdvActivity extends BaseFragment implements NotificationCen
 
     // the list
     private int directShareRow, cacheRow, raiseToSpeakRow, sendByEnterRow, autoplayGifsRow, textSizeRow, showUnknownSendersRow, finalShadowRow;
+    private int blockedRow;
     private int accountSettingsRow;
     private int e2eEncryptionRow;
     private int manageKeysRow;
@@ -102,6 +103,7 @@ public class SettingsAdvActivity extends BaseFragment implements NotificationCen
         sendByEnterRow          = rowCount++;
         raiseToSpeakRow         = rowCount++; // outgoing message
         cacheRow                = -1;// for now, the - non-functional - page is reachable by the "storage settings" in the "android App Settings" only
+        blockedRow              = rowCount++;
         e2eEncryptionRow        = rowCount++;
         manageKeysRow           = rowCount++;
         backupRow               = -1; //rowCount++; -- disabled for now
@@ -176,6 +178,9 @@ public class SettingsAdvActivity extends BaseFragment implements NotificationCen
                     }
                 } else if (i == cacheRow) {
                     presentFragment(new CacheControlActivity());
+                }
+                else if (i == blockedRow) {
+                    presentFragment(new BlockedUsersActivity());
                 }
                 else if( i==showUnknownSendersRow) {
                     int oldval = MrMailbox.getConfigInt("show_deaddrop", 0);
@@ -443,6 +448,10 @@ public class SettingsAdvActivity extends BaseFragment implements NotificationCen
                 TextSettingsCell textCell = (TextSettingsCell) view;
                 if (i == cacheRow) {
                     textCell.setText(mContext.getString(R.string.CacheSettings), true);
+                }
+                else if (i == blockedRow) {
+                    String cntStr = String.format("%d", MrMailbox.getBlockedCount());
+                    textCell.setTextAndValue(ApplicationLoader.applicationContext.getString(R.string.BlockedContacts), cntStr, true);
                 }
                 else if( i==manageKeysRow ) {
                     textCell.setText(mContext.getString(R.string.E2EManagePrivateKeys), true);
