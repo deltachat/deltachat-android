@@ -48,7 +48,10 @@ android {
 
     signingConfigs {
         debug {
-            storeFile file("config/debug.keystore")  // you have to copy the file from ~/.android/debug.keystore manually, however, this gives you the possibility to create compatible apps from different developer machines
+            def debugKeystore = file("config/debug.keystore")
+            if (debugKeystore.exists()) {
+                storeFile debugKeystore
+            }
         }
 
         release {

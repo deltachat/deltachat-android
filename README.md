@@ -12,10 +12,7 @@ Build
 --------------------------------------------------------------------------------
 
 Beside a build in Android Studio, you have to call `ndk-build` in the
-`MessengerProj` directory.  Moreover, place a copy of your keyfile from 
-`~/.android/debug.keystore` to `MessengerProj/config/debug.keystore`. Using an
-explicit keystore file for debugging gives us the possibility to share
-testing devices between different developer machines and setups.
+`MessengerProj` directory.
 
 The core library (https://github.com/deltachat/deltachat-core), is checked out
 automatically; there is no need to build the core library itself, the android
