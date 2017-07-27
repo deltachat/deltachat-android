@@ -3,9 +3,14 @@
 ## UNRELEASED
 
 * Introduce an editable "Status" field that is shown eg. in email footers
+* Editable and synchronized group images
 * Show the subject of messages that cannot be decrypted
 * Do not send "Read receipts" when decryption fails
+* Deleting a chat always deletes all messages from the device permanently
 * Ignore messages from mailing lists
+* Encrypt mails send to SMTP and to IMAP the same way
+* Improve showing HTML-mails
+* Cleanup Android code
 
 ## v0.9.3
 2017-07-13
