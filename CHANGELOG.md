@@ -8,6 +8,7 @@
 * Do not send "Read receipts" when decryption fails
 * Deleting a chat always deletes all messages from the device permanently
 * Ignore messages from mailing lists
+* Do not spread the original authors name nor address on forwarding
 * Encrypt mails send to SMTP and to IMAP the same way
 * Improve showing HTML-mails
 * Cleanup Android code

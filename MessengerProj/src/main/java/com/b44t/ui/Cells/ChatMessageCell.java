@@ -55,7 +55,6 @@ import com.b44t.messenger.MessageObject;
 import com.b44t.messenger.MrChat;
 import com.b44t.messenger.MrContact;
 import com.b44t.messenger.MrMailbox;
-import com.b44t.messenger.MrMsg;
 import com.b44t.messenger.MrPoortext;
 import com.b44t.messenger.R;
 import com.b44t.messenger.TLRPC;
@@ -198,8 +197,6 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
 
     private static TextPaint timePaint;
     private static TextPaint namePaint;
-    private static TextPaint forwardNamePaint;
-    private static TextPaint forward2NamePaint;
 
     private int backgroundWidth = 100;
 
@@ -209,7 +206,6 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
     private ImageReceiver avatarImage;
     private AvatarDrawable avatarDrawable;
     private boolean avatarPressed;
-    private boolean forwardNamePressed;
 
     private boolean drawNewchatButton;
     private boolean newchatPressed;
@@ -224,12 +220,11 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
     private boolean drawName;
     private boolean drawNameLayout;
 
-    private StaticLayout[] forwardedNameLayout = new StaticLayout[2];
+    private boolean allowForwardedName;
+    private static TextPaint forwardedNamePaint;
+    private StaticLayout forwardedNameLayout;
     private int forwardedNameWidth;
-    private boolean drawForwardedName;
-    private int forwardNameX;
-    private int forwardNameY;
-    private float forwardNameOffsetX[] = new float[2];
+    private float forwardedNameOffsetX;
 
     private StaticLayout timeLayout;
     private int timeWidth; // includes timeEncrWidth
@@ -242,7 +237,6 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
     private TLRPC.FileLocation currentPhoto;
     private String currentNameString;
 
-    private String currentForwardNameString;
 
     private ChatMessageCellDelegate delegate;
 
@@ -287,12 +281,8 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
             namePaint.setTypeface(Typeface.DEFAULT_BOLD);
             namePaint.setTextSize(dp(14));
 
-            forwardNamePaint = new TextPaint(TextPaint.ANTI_ALIAS_FLAG);
-            forwardNamePaint.setTextSize(dp(14));
-
-            forward2NamePaint = new TextPaint(TextPaint.ANTI_ALIAS_FLAG);
-            forward2NamePaint.setTypeface(Typeface.DEFAULT_BOLD);
-            forward2NamePaint.setTextSize(dp(14));
+            forwardedNamePaint = new TextPaint(TextPaint.ANTI_ALIAS_FLAG);
+            forwardedNamePaint.setTextSize(dp(14));
         }
         avatarImage = new ImageReceiver(this);
         avatarImage.setRoundRadius(dp(21));
@@ -664,9 +654,6 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                     if (isAvatarVisible && avatarImage.isInsideImage(x, y)) {
                         avatarPressed = true;
                         result = true;
-                    } else if (drawForwardedName && forwardedNameLayout[0] != null && x >= forwardNameX && x <= forwardNameX + forwardedNameWidth && y >= forwardNameY && y <= forwardNameY + dp(32)) {
-                        forwardNamePressed = true;
-                        result = true;
                     } else if (drawNewchatButton && x >= newchatStartX && x <= newchatStartX + dp(40) && y >= newchatStartY && y <= newchatStartY + dp(32)) {
                         newchatPressed = true;
                         result = true;
@@ -694,16 +681,6 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                     } else if (event.getAction() == MotionEvent.ACTION_MOVE) {
                         if (isAvatarVisible && !avatarImage.isInsideImage(x, y)) {
                             avatarPressed = false;
-                        }
-                    }
-                } else if (forwardNamePressed) {
-                    if (event.getAction() == MotionEvent.ACTION_UP) {
-                        forwardNamePressed = false;
-                    } else if (event.getAction() == MotionEvent.ACTION_CANCEL) {
-                        forwardNamePressed = false;
-                    } else if (event.getAction() == MotionEvent.ACTION_MOVE) {
-                        if (!(x >= forwardNameX && x <= forwardNameX + forwardedNameWidth && y >= forwardNameY && y <= forwardNameY + dp(32))) {
-                            forwardNamePressed = false;
                         }
                     }
                 } else if (newchatPressed) {
@@ -904,10 +881,6 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
             return true;
         }
 
-        if (drawForwardedName) {
-            newNameString = currentMessageObject.getForwardedName();
-            return currentForwardNameString == null && newNameString != null || currentForwardNameString != null && newNameString == null || currentForwardNameString != null && newNameString != null && !currentForwardNameString.equals(newNameString);
-        }
         return false;
     }
 
@@ -1231,7 +1204,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
             drawBackground = true;
             drawName = false;
             useSeekBarWaveform = false;
-            drawForwardedName = false;
+            allowForwardedName = false;
             mediaBackground = false;
             availableTimeWidth = 0;
             photoImage.setNeedsQualityThumb(false);
@@ -1246,7 +1219,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
             }
 
             if (messageObject.type == MessageObject.MO_TYPE0_TEXT) {
-                drawForwardedName = true;
+                allowForwardedName = true;
 
                 int maxWidth;
                 if (isGroupChat && !messageObject.isOutOwner() && messageObject.isFromUser()) {
@@ -1287,7 +1260,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                 photoImage.setImageBitmap((Drawable) null);
                 calcBackgroundWidth(maxWidth, timeMore, maxChildWidth);
             } else if (messageObject.type == MessageObject.MO_TYPE2_VOICE) {
-                drawForwardedName = true;
+                allowForwardedName = true;
                 backgroundWidth = Math.min(displaySize.x - dp(isGroupChat && messageObject.isFromUser() && !messageObject.isOutOwner() ? 102 : 50), dp(270));
                 createDocumentLayout(backgroundWidth, messageObject);
 
@@ -1305,7 +1278,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
 
                 totalHeight = dp(80) + namesOffset;
             } else {
-                drawForwardedName = messageObject.messageOwner.fwd_from != null && messageObject.type != MessageObject.MO_TYPE13_STICKER;
+                allowForwardedName = messageObject.isForwarded() && messageObject.type != MessageObject.MO_TYPE13_STICKER;
                 mediaBackground = messageObject.type != MessageObject.MO_TYPE9_FILE;
                 drawImageButton = false; // we do not want the image button for images
                 drawPhotoImage = true;
@@ -1562,7 +1535,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                 }
                 setMessageObjectInternal(messageObject);
 
-                if (drawForwardedName) {
+                if (allowForwardedName) {
                     namesOffset += dp(5);
                 } else if (drawNameLayout && messageObject.messageOwner.reply_to_msg_id == 0) {
                     namesOffset += dp(7);
@@ -2114,28 +2087,18 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
             nameWidth = 0;
         }
 
-        currentForwardNameString = null;
-        forwardedNameLayout[0] = null;
-        forwardedNameLayout[1] = null;
+        forwardedNameLayout = null;
         forwardedNameWidth = 0;
-        if( drawForwardedName && messageObject.isForwarded() && messageObject.messageOwner.fwd_from!=null )
+        if( allowForwardedName && messageObject.isForwarded() )
         {
-            currentForwardNameString = messageObject.messageOwner.fwd_from.m_name;
-
             forwardedNameWidth = getMaxNameWidth();
-            int fromWidth = (int) Math.ceil(forwardNamePaint.measureText(ApplicationLoader.applicationContext.getString(R.string.From) + " "));
-            CharSequence name = TextUtils.ellipsize(currentForwardNameString.replace('\n', ' '), forward2NamePaint, forwardedNameWidth - fromWidth, TextUtils.TruncateAt.END);
             CharSequence lastLine;
-            lastLine = replaceTags(String.format("%s <b>%s</b>", ApplicationLoader.applicationContext.getString(R.string.From), name));
-            lastLine = TextUtils.ellipsize(lastLine, forwardNamePaint, forwardedNameWidth, TextUtils.TruncateAt.END);
             try {
-                forwardedNameLayout[1] = new StaticLayout(lastLine, forwardNamePaint, forwardedNameWidth + dp(2), Layout.Alignment.ALIGN_NORMAL, 1.0f, 0.0f, false);
-                lastLine = TextUtils.ellipsize(replaceTags(ApplicationLoader.applicationContext.getString(R.string.ForwardedMessage)), forwardNamePaint, forwardedNameWidth, TextUtils.TruncateAt.END);
-                forwardedNameLayout[0] = new StaticLayout(lastLine, forwardNamePaint, forwardedNameWidth + dp(2), Layout.Alignment.ALIGN_NORMAL, 1.0f, 0.0f, false);
-                forwardedNameWidth = Math.max((int) Math.ceil(forwardedNameLayout[0].getLineWidth(0)), (int) Math.ceil(forwardedNameLayout[1].getLineWidth(0)));
-                forwardNameOffsetX[0] = forwardedNameLayout[0].getLineLeft(0);
-                forwardNameOffsetX[1] = forwardedNameLayout[1].getLineLeft(0);
-                namesOffset += dp(36);
+                lastLine = TextUtils.ellipsize(replaceTags(ApplicationLoader.applicationContext.getString(R.string.ForwardedMessage)), forwardedNamePaint, forwardedNameWidth, TextUtils.TruncateAt.END);
+                forwardedNameLayout = new StaticLayout(lastLine, forwardedNamePaint, forwardedNameWidth + dp(2), Layout.Alignment.ALIGN_NORMAL, 1.0f, 0.0f, false);
+                forwardedNameWidth = (int) Math.ceil(forwardedNameLayout.getLineWidth(0));
+                forwardedNameOffsetX = forwardedNameLayout.getLineLeft(0);
+                namesOffset += dp(18);
             } catch (Exception e) {
 
             }
@@ -2241,24 +2204,23 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
             canvas.restore();
         }
 
-        if (drawForwardedName && forwardedNameLayout[0] != null && forwardedNameLayout[1] != null) {
-            forwardNameY = dp(10 + (drawNameLayout ? 19 : 0));
-            forwardNamePaint.setColor(Theme.MSG_IN_TIME_N_FWD_TEXT_COLOR);
+        if (allowForwardedName && forwardedNameLayout != null ) {
+            int forwardedNameX = 0;
+            int forwardedNameY = dp(10 + (drawNameLayout ? 19 : 0));
+            forwardedNamePaint.setColor(Theme.MSG_IN_TIME_N_FWD_TEXT_COLOR);
             if (currentMessageObject.isOutOwner()) {
-                forwardNameX = currentBackgroundDrawable.getBounds().left + dp(11);
+                forwardedNameX = currentBackgroundDrawable.getBounds().left + dp(11);
             } else {
                 if (mediaBackground) {
-                    forwardNameX = currentBackgroundDrawable.getBounds().left + dp(11);
+                    forwardedNameX = currentBackgroundDrawable.getBounds().left + dp(11);
                 } else {
-                    forwardNameX = currentBackgroundDrawable.getBounds().left + dp(17);
+                    forwardedNameX = currentBackgroundDrawable.getBounds().left + dp(17);
                 }
             }
-            for (int a = 0; a < 2; a++) {
-                canvas.save();
-                canvas.translate(forwardNameX - forwardNameOffsetX[a], forwardNameY + dp(16) * a);
-                forwardedNameLayout[a].draw(canvas);
-                canvas.restore();
-            }
+            canvas.save();
+            canvas.translate(forwardedNameX - forwardedNameOffsetX, forwardedNameY);
+            forwardedNameLayout.draw(canvas);
+            canvas.restore();
         }
 
         if (drawTime || !mediaBackground) {

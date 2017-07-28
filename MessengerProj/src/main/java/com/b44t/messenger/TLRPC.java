@@ -200,10 +200,6 @@ public class TLRPC {
 		public int hash;
 	}
 
-	public static class TL_messageFwdHeader extends TLObject {
-		public String m_name;
-	}
-
 	public static class FileLocation extends TLObject {
 		public int dc_id;
 		public long volume_id;
@@ -284,7 +280,6 @@ public class TLRPC {
 		public final int views = 0;
 		public final boolean silent = false;
 		public final boolean post = false;// ? true=avatar wird in gruppen nicht angezeigt, wird aber in isFromUser() auch überprüft...
-		public TL_messageFwdHeader fwd_from;
         public int send_state = 0; //custom
         public String attachPath = ""; //custom
 		public HashMap<String, String> params; //custom

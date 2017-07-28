@@ -710,11 +710,7 @@ public class MessageObject {
     }
 
     public boolean isForwarded() {
-        return isForwardedMessage(messageOwner);
-    }
-
-    private static boolean isForwardedMessage(TLRPC.Message message) {
-        return (message.flags & TLRPC.MESSAGE_FLAG_FWD) != 0;
+        return (messageOwner.flags & TLRPC.MESSAGE_FLAG_FWD) != 0;
     }
 
     private boolean isMediaEmpty() {
@@ -723,13 +719,6 @@ public class MessageObject {
 
     private static boolean isMediaEmpty(TLRPC.Message message) {
         return message == null || message.media == null || message.media instanceof TLRPC.TL_messageMediaEmpty;
-    }
-
-    public String getForwardedName() {
-        if (messageOwner.fwd_from != null) {
-            return messageOwner.fwd_from.m_name;
-        }
-        return null;
     }
 
     private void checkMediaExistance() {
