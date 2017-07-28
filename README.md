@@ -11,6 +11,9 @@ For ready-to-use binaries, please go to https://delta.chat .
 Build
 --------------------------------------------------------------------------------
 
+After checking out the deltachat-android repository, it may be needed to checkout the submodule deltachat-core explicitly;
+type `git submodule update --init --recursive` for this purpose.
+
 Beside a build in Android Studio, you have to call `ndk-build` in the
 `MessengerProj` directory.
 
