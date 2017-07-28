@@ -11,15 +11,15 @@ For ready-to-use binaries, please go to https://delta.chat .
 Build
 --------------------------------------------------------------------------------
 
-After checking out the deltachat-android repository, it may be needed to checkout the submodule deltachat-core explicitly;
-type `git submodule update --init --recursive` for this purpose.
+If the core library (https://github.com/deltachat/deltachat-core) is not checked
+out together with this deltachat-android, you must check out it manually using
+`git submodule update --init --recursive` for this purpose.  There is no need to 
+build the core library itself, deltachat-android just references them.
 
-Beside a build in Android Studio, you have to call `ndk-build` in the
-`MessengerProj` directory.
+After that, call `ndk-build` in the `MessengerProj` directory to build the C-part
+and run the project in Android Atudio.
 
-The core library (https://github.com/deltachat/deltachat-core), is checked out
-automatically; there is no need to build the core library itself, the android
-client just references the needed files.
+With chance, that's it :)
 
 ---
 
