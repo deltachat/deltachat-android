@@ -15,6 +15,7 @@
 * Remove badge counter on app restart
 * Add Ukrainian translation
 * Add Telugu translation
+* Add Catalan translation
 
 ## v0.9.3
 2017-07-13

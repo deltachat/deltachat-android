@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="AppName">Delta Chat</string>
+    <!--chats view-->
+    <string name="Settings">Preferències</string>
+    <string name="NewGroup">Nou grup</string>
+    <string name="NoResult">Sense resultat.</string>
+    <string name="NoChats">Encara no hi ha cap xat.</string>
+    <string name="DeleteChat">Esborra el xat</string>
+    <string name="SelectChat">Selecciona el xat ...</string>
+    <string name="Search">Busca</string>
+    <string name="MuteNotifications">Silencia les notificacions</string>
+    <string name="MuteFor">Silencia durant %1$s</string>
+    <string name="UnmuteNotifications">Torna a notificar</string>
+    <string name="Draft">Esborrany</string>
+    <!--audio view-->
+    <string name="NoAudio">Siusplau, afegeix fitxers a l\'arxiu de música del teu dispositiu per veure\'ls aquí.</string>
+    <string name="AttachMusic">Música</string>
+    <!--documents view-->
+    <string name="SelectFile">Selecciona el fitxer</string>
+    <string name="FreeOfTotal">%1$s de %2$s lliure</string>
+    <string name="ErrorHint">Error desconegut</string>
+    <string name="AccessError">Error d\'accés</string>
+    <string name="NoFiles">Encara sense fitxers...</string>
+    <string name="NotMounted">Magatzem sense muntar</string>
+    <string name="UsbActive">Transferència USB activa</string>
+    <string name="InternalStorage">Magatzem intern</string>
+    <string name="ExternalStorage">Magatzem extern</string>
+    <string name="SystemRoot">Arrel del sistema</string>
+    <string name="SdCard">Targeta SD</string>
+    <string name="Folder">Carpeta</string>
+    <string name="GalleryInfo">Per enviar imatges sense compressió</string>
+    <!--chat view-->
+    <string name="ChatGallery">Galeria</string>
+    <string name="ChatCamera">Càmera</string>
+    <string name="NoMessages">Sense missatges.</string>
+    <string name="ForwardedMessage">Missatge reenviat</string>
+    <string name="From">Des de</string>
+    <string name="NoRecent">Cap recent</string>
+    <string name="TypeMessage">Missatge</string>
+    <string name="SaveToDownloads">Guarda a descàrregues</string>
+    <string name="SaveToMusic">Guarda a música</string>
+    <string name="Share">Comparteix</string>
+    <string name="SendItems">Envia %1$s</string>
+    <string name="ClearRecentEmoji">Vols esborrae les emoticones recents?</string>
+    <!--notification-->
+    <string name="Reply">Respon</string>
+    <string name="ReplyToGroup">Respon a %1$s</string>
+    <string name="ReplyToContact">Respon a %1$s</string>
+    <!--contacts view-->
+    <string name="NoContacts">Encara sense contactes.</string>
+    <!--group create view-->
+    <string name="SendMessageTo">Envia un missatge a ...</string>
+    <string name="EnterGroupNamePlaceholder">Introdueix un nom pel grup</string>
+    <!--group info view-->
+    <string name="AddMember">Afegeix un membre</string>
+    <string name="Notifications">Notificacions</string>
+    <string name="RemoveMember">Esborra un membre</string>
+    <!--contact info view-->
+    <string name="NewContactTitle">Contacte nou</string>
+    <string name="BlockContact">Bloqueja el contacte</string>
+    <string name="DeleteContact">Esborra el contacte</string>
+    <string name="Info">Info</string>
+    <!--settings view-->
+    <string name="TextSize">Mida de la font dels missatges</string>
+    <string name="UnblockContact">Desbloqueja el contacte</string>
+    <string name="NoBlocked">Encara no hi ha contactes bloquejats</string>
+    <string name="DefaultForNormalMessages">Missatges normals</string>
+    <string name="MessagePreview">Previsualització del missatge</string>
+    <string name="DefaultForGroupMessages">Missatges de grup</string>
+    <string name="Sound">So</string>
+    <string name="InAppNotifications">Notificacions dins l\'app</string>
+    <string name="Vibrate">Vibra</string>
+    <string name="ResetAllNotifications">Reinicia totes les notificacions</string>
+    <string name="NotificationsAndSounds">Notificacions i so</string>
+    <string name="BlockedContacts">Contactes bloquejats</string>
+    <string name="Default">Per defecte</string>
+    <string name="OnlyIfSilent">Només en mode silenciós</string>
+    <string name="ChatBackground">Fons del xat</string>
+    <string name="Help">Ajuda</string>
+    <string name="Enabled">Activat</string>
+    <string name="Disabled">Desactivat</string>
+    <string name="LedColor">Color del LED</string>
+    <string name="BadgeNumber">Mostra el comptador a la icona si és possible</string>
+    <string name="Short">Curt</string>
+    <string name="Long">Llarg</string>
+    <string name="EditName">Modifica el nom</string>
+    <string name="NotificationsPriority">Mira</string>
+    <string name="NotificationsPriorityDefault">Prioritat normal</string>
+    <string name="NotificationsPriorityHigh">Prioritat alta</string>
+    <string name="NotificationsPriorityMax">Màxima prioritat</string>
+    <string name="RepeatNotifications">Repeteix notificacions</string>
+    <string name="NotificationsOther">Altres</string>
+    <string name="InChatSound">So dins el xats</string>
+    <string name="SmartNotifications">Limita les notificacions</string>
+    <string name="SmartNotificationsTimes">vegades</string>
+    <string name="SmartNotificationsWithin">en</string>
+    <string name="SmartNotificationsMinutes">minuts</string>
+    <string name="DirectShare">Comparteix directament</string>
+    <string name="DirectShareInfo">Mostra els darrers xats al menú compartit</string>
+    <!--cache view-->
+    <string name="CacheSettings">Magatzem</string>
+    <string name="KeepMediaInfo">Les fotos, vídeos i altres fitxers de xats al núvol als que no hagis <![CDATA[<b>accedit</b>]]> durant aquest període seran esborrats d\'aquest dispositiu per estalviar espai de disc.</string>
+    <string name="KeepMediaForever">Per sempre</string>
+    <string name="PasscodePIN">PIN</string>
+    <string name="PasscodePassword">Contrasenya</string>
+    <!--photo gallery view-->
+    <string name="SaveToGallery">Guarda a la galeria</string>
+    <string name="Of">%1$d de %2$d</string>
+    <string name="Gallery">Galeria</string>
+    <string name="AllPhotos">Totes les fotos</string>
+    <string name="AllVideo">Tots els vídeos</string>
+    <string name="NoPhotos">Encara no hi ha cap foto</string>
+    <string name="NoVideo">Encara no hi ha cap vídeo</string>
+    <string name="CropImage">Talla la imatge</string>
+    <string name="EditImage">Modifica la imatge</string>
+    <string name="Contrast">Contrast</string>
+    <string name="Exposure">Exposició</string>
+    <string name="Saturation">Saturació</string>
+    <string name="Curves">Corbes</string>
+    <string name="CurvesAll">TOTS</string>
+    <string name="CurvesRed">VERMELL</string>
+    <string name="CurvesGreen">VERD</string>
+    <string name="CurvesBlue">BLAU</string>
+    <string name="BlurLinear">Lineal</string>
+    <string name="BlurRadial">Radial</string>
+    <string name="DiscardChanges">Descartes els canvis?</string>
+    <string name="ClearButton">Neteja</string>
+    <string name="PickerPhotos">Fotos</string>
+    <string name="PickerVideo">Vídeo</string>
+    <!--privacy settings-->
+    <string name="PrivacySettings">Privacitat i seguretat</string>
+    <string name="SecurityTitle">Seguretat</string>
+    <!--edit video view-->
+    <string name="SendVideo">Envia vídeos</string>
+    <!--button titles-->
+    <string name="Done">Fet</string>
+    <string name="Open">Obert</string>
+    <string name="Cancel">Cancel·la</string>
+    <string name="Edit">Modifica</string>
+    <string name="Send">Envia</string>
+    <string name="Delete">Esborra</string>
+    <string name="FromCamera">Des de la càmera</string>
+    <string name="FromGalley">Des de la galeria</string>
+    <string name="OK">OK</string>
+    <string name="Crop">TALLA</string>
+    <!--messages-->
+    <string name="AttachPhoto">Foto</string>
+    <string name="AttachVideo">Vídeo</string>
+    <string name="AttachGif">GIF</string>
+    <string name="AttachContact">Contacte</string>
+    <string name="AttachDocument">Fitxer</string>
+    <string name="AttachVoiceMessage">Missatge de veu</string>
+    <string name="FromSelf">Jo</string>
+    </resources>
