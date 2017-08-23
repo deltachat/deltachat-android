@@ -14,6 +14,7 @@
 * Cleanup Android code
 * Remove badge counter on app restart
 * Add Ukrainian translation
+* Add Telugu translation
 
 ## v0.9.3
 2017-07-13

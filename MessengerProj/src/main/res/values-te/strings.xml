@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="AppName">డెల్టా చాట్</string>
+    <!--chats view-->
+    <string name="Settings">సెట్టింగులు</string>
+    <string name="NewGroup">కొత్త సమూహము</string>
+    <string name="NoResult">ఫలితాలు లేవు</string>
+    <string name="NoChats">ఏ చాట్లు లేవు</string>
+    <string name="DeleteChat">చాట్ తొలగించు</string>
+    <string name="SelectChat">చాట్ ను ఎంచుకో</string>
+    <string name="Search">వెతుకు</string>
+    <string name="MuteNotifications">నోటిఫికేషన్ల ను నిలిపివేయి</string>
+    <string name="MuteFor">నిలిపివేయు సమయం %1$s</string>
+    <string name="UnmuteNotifications">తిరిగి నొటిఫికేషన్లను ప్రారంభించు</string>
+    <string name="Draft">డ్రాఫ్ట్</string>
+    <!--audio view-->
+    <string name="NoAudio">ఫైళ్లను ఇక్కడ చూడాలంటే వాటిని మీ పరికరంలోని మ్యూజిక్ ప్లేయర్ కు జతచేయండి.</string>
+    <string name="AttachMusic">సంగీతం</string>
+    <!--documents view-->
+    <string name="SelectFile">ఫైల్ ను ఎంచుకో</string>
+    <string name="FreeOfTotal">మిగులు %1$s యొక్క %2$s</string>
+    <string name="ErrorHint">ఫైల్ ను ఎంచుకో</string>
+    <string name="AccessError">యాక్సెస్ సమస్య</string>
+    <string name="NoFiles">ఇంకా ఏ ఫైళ్ళూ లేవు...</string>
+    <string name="NotMounted">నిల్వ ఇంకా మౌన్ట్ అవ్వలేదు</string>
+    <string name="UsbActive">USB బదిలీ యాక్టివ్</string>
+    <string name="InternalStorage">అంతర్గత నిల్వ</string>
+    <string name="ExternalStorage">బాహ్య నిల్వ</string>
+    <string name="SystemRoot">సిస్టం రూట్</string>
+    <string name="SdCard">SD కార్డు</string>
+    <string name="Folder">ఫోల్డర్</string>
+    <string name="GalleryInfo">చిత్రాలను కుదించకుండా పంపడానికి</string>
+    <!--chat view-->
+    <string name="ChatGallery">గ్యాలరీ</string>
+    <string name="ChatCamera">కెమేరా</string>
+    <string name="NoMessages">సందేశాలు లేవు</string>
+    <string name="ForwardedMessage">ఫార్వర్డ్ చేయబడిన సందేసం </string>
+    <string name="From">నుండీ</string>
+    <string name="NoRecent">ఇటీవల లేవు</string>
+    <string name="TypeMessage">సందేశం</string>
+    <string name="SlideToCancel">రద్దు చేయడానికి స్లైడ్ చేయి</string>
+    <string name="SaveToDownloads">డౌన్లోడ్స్ కు సేవ్ చేయి</string>
+    <string name="SaveToMusic">సంగీతానికి సేవ్ చేయి</string>
+    <string name="Share">పంచుకో</string>
+    <string name="SendItems">పంపు %1$s</string>
+    <string name="ClearRecentEmoji">ఇటీవల ఎమోజిని క్లియర్ చేయాలా?</string>
+    <string name="AddShortcut">హొం స్క్రీన్ కు విడ్జెట్ జత చేయి</string>
+    <string name="ShortcutAdded">హోం స్క్రీన్ కు విడ్జెట్ జత చేయబడింది</string>
+    <!--notification-->
+    <string name="Reply">జవాబు</string>
+    <string name="ReplyToGroup">%1$s కు జవాబు ఇవ్వు</string>
+    <string name="ReplyToContact">%1$s కు జవాబు ఇవ్వు</string>
+    <!--contacts view-->
+    <string name="NoContacts">ఇంకా ఏ పరిచయాలూ లేవు.</string>
+    <!--group create view-->
+    <string name="SendMessageTo">సందేశం పంపు </string>
+    <string name="EnterGroupNamePlaceholder">సమూహం పేరు నమోదు చేయి</string>
+    <!--group info view-->
+    <string name="AddMember">సభ్యుడిని జత చేయి</string>
+    <string name="Notifications">నోటిఫికేషన్లు</string>
+    <string name="RemoveMember">సభ్యుడిని తీసివేయి</string>
+    <!--contact info view-->
+    <string name="NewContactTitle">కొత్త పరిచయం</string>
+    <string name="BlockContact">పరిచయాన్ని నిరోధించు</string>
+    <string name="DeleteContact">పరిచయాన్ని తొలగించు</string>
+    <string name="Info">సమాచారం</string>
+    <!--settings view-->
+    <string name="TextSize">సందేశం పరిమాణం</string>
+    <string name="UnblockContact">పరిచయం నిరోధాన్ని నిలిపివేయి</string>
+    <string name="NoBlocked">undefined</string>
+    <string name="DefaultForNormalMessages">సాధారణ సందేశాలు</string>
+    <string name="MessagePreview">సందేశం ప్రివ్యూ</string>
+    <string name="DefaultForGroupMessages">సమూహ సందేశాలు</string>
+    <string name="Sound">శబ్ధం</string>
+    <string name="InAppNotifications">యాప్-లోపల నోటిఫికేషన్లు</string>
+    <string name="Vibrate">వైబ్రేషన్</string>
+    <string name="ResetAllNotifications">నోటిఫికేషన్లన్నిటినీ రద్దు చేయి</string>
+    <string name="NotificationsAndSounds">undefined</string>
+    <string name="BlockedContacts">నిరోధించిన పరిచయాలు</string>
+    <string name="Default">డీఫాల్ట్</string>
+    <string name="OnlyIfSilent">నిశబ్దంగా ఉంటేనే</string>
+    <string name="ChatBackground">చాట్ నేపధ్యం</string>
+    <string name="SendByEnter">\"\"ఎంటర్\" నొక్కితే పంపు</string>
+    <string name="Help">సహాయం</string>
+    <string name="Enabled">ఆన్</string>
+    <string name="Disabled">ఆఫ్</string>
+    <string name="LedColor">LED రంగు</string>
+    <string name="BadgeNumber">ఐకాన్ పై లెక్క వీలైతే చూపించు</string>
+    <string name="Short">పొట్టి</string>
+    <string name="Long">పొడువు</string>
+    <string name="RaiseToSpeak">మాట్లాడుటకు ఫోన్ ఎత్తు</string>
+    <string name="EditName">పేరును మార్చు</string>
+    <string name="NotificationsPriority">చూడు</string>
+    <string name="NotificationsPriorityDefault">సాధారణ ప్రాఢాన్యం</string>
+    <string name="NotificationsPriorityHigh">ఎక్కువ ప్రాధాన్యం</string>
+    <string name="NotificationsPriorityMax">విశేష ప్రాధాన్యం</string>
+    <string name="RepeatNotifications">నోటిఫికేషన్లను పునరావృతం చేయి</string>
+    <string name="NotificationsOther">ఇతర</string>
+    <string name="InChatSound">చాట్-లో  శబ్ధాలు</string>
+    <string name="SmartNotifications">నోటిఫికేషన్ల పరిమితి</string>
+    <string name="SmartNotificationsSoundAtMost">చాలా శబ్ధం</string>
+    <string name="SmartNotificationsTimes">సమయాలు</string>
+    <string name="SmartNotificationsWithin">లోపల</string>
+    <string name="SmartNotificationsMinutes">నిమిషాలు</string>
+    <string name="DirectShare">నేరుగా పంచుకో</string>
+    <string name="DirectShareInfo">పంచుకొనే పట్టికలో ఇటీవలి చాట్లను చూపించు</string>
+    <!--cache view-->
+    <string name="CacheSettings">నిల్వ</string>
+    <string name="KeepMedia">మీడియా ఉంచు</string>
+    <string name="KeepMediaForever">ఎల్లప్పటికీ</string>
+    <!--passcode view-->
+    <string name="Passcode">పాస్ కోడ్ తాళం</string>
+    <string name="ChangePasscode">పాస్ కోడ్ ను మార్చు</string>
+    <string name="PasscodePIN">పిన్</string>
+    <string name="PasscodePassword">పాస్వర్డ్</string>
+    <string name="EnterCurrentPasscode">మీ ప్రస్తుత పాస్వర్డ్ను నమోదు చేయండి</string>
+    <string name="EnterNewFirstPasscode">ఒక పాస్ కోడ్ ను నమోదు చేయి</string>
+    <string name="EnterNewPasscode">మీ కొత్త పాస్ కోడ్ ను నమోదు చేయి</string>
+    <string name="EnterYourPasscode">మీ పాస్ కోడ్ ను నమోదు చేయండి</string>
+    <string name="ReEnterYourPasscode">మీ పాస్ కోడ్ ను తిరిగి నమోదు చేయండి</string>
+    <string name="PasscodeDoNotMatch">పాస్ కోడ్ లు సరిపోలటంలేదు</string>
+    <string name="AutoLock">స్వియ తాళం</string>
+    <string name="AutoLockInfo">కొంత సమయం గడిస్తే పాస్ కోడ్ అవసరం</string>
+    <string name="UnlockFingerprint">వేలిముద్రతో తాళం తీయి</string>
+    <string name="FingerprintInfo">కొనసాగడానికి వేలిముద్రను నిర్ధారించండి</string>
+    <string name="FingerprintNotRecognized">వేలిముద్ర గుర్తింపబడలేదు. తిరిగి ప్రయత్నించండి</string>
+    <!--photo gallery view-->
+    <string name="SaveToGallery">గ్యాలరీకి భద్రపరచండి</string>
+    <string name="Of">%1$d యొక్క %2$d</string>
+    <string name="Gallery">గ్యాలరీ</string>
+    <string name="AllPhotos">అన్ని చిత్రాలు</string>
+    <string name="AllVideo">అన్ని వీడియోలు</string>
+    <string name="NoPhotos">చిత్రాలు లేవు</string>
+    <string name="NoVideo">వీడియోలు లేవ్</string>
+    <string name="CropImage">చిత్రన్ని కత్తిరించు</string>
+    <string name="EditImage">చిత్రన్ని సవరించు</string>
+    <string name="Enhance">మెరుగుపరుచు</string>
+    <string name="Highlights">ముఖ్యాంశాలు</string>
+    <string name="Contrast">కాంట్రాస్ట్</string>
+    <string name="Exposure">ఎక్స్పోజర్</string>
+    <string name="Warmth">వార్మ్త్</string>
+    <string name="Saturation">స్యాట్యురేషన్</string>
+    <string name="Vignette">విగ్నెట్</string>
+    <string name="Shadows">షాడొస్</string>
+    <string name="Grain">గ్రేయిన్</string>
+    <string name="Sharpen">షార్పెన్</string>
+    <string name="Fade">ఫేడ్</string>
+    <string name="Tint">టింట్</string>
+    <string name="TintShadows">షాడొస్</string>
+    <string name="TintHighlights">హైలైట్స్</string>
+    <string name="Curves">కర్వ్స్</string>
+    <string name="CurvesAll">అన్నీ</string>
+    <string name="CurvesRed">ఎరుపు</string>
+    <string name="CurvesGreen">ఆకుపచ్చ</string>
+    <string name="CurvesBlue">నీలం</string>
+    <string name="Blur">బ్లర్</string>
+    <string name="BlurOff">ఆఫ్</string>
+    <string name="BlurLinear">లినియర్</string>
+    <string name="BlurRadial">రేడియల్</string>
+    <string name="DiscardChanges">మార్పులు తొలగించాలా?</string>
+    <string name="ClearButton">క్లియర్</string>
+    <string name="PickerPhotos">చిత్రాలు</string>
+    <string name="PickerVideo">వీడియో</string>
+    <!--privacy settings-->
+    <string name="PrivacySettings">గోప్యత మరియు భద్రత</string>
+    <string name="SecurityTitle">భద్రత</string>
+    <!--edit video view-->
+    <string name="SendVideo">వీడియో పంపు</string>
+    <!--button titles-->
+    <string name="Done">పూర్తయింది</string>
+    <string name="Open">తెరువు</string>
+    <string name="Cancel">రద్దు</string>
+    <string name="Edit">మార్చు</string>
+    <string name="Send">పంపు</string>
+    <string name="CopyToClipboard">క్లిప్బోర్డ్ కు కాపీ చేయి</string>
+    <string name="Delete">తొలగించు</string>
+    <string name="Forward">ఫార్వర్డ్</string>
+    <string name="FromCamera">కెమెరా నుండి</string>
+    <string name="FromGalley">గ్యాలరీ నుండి</string>
+    <string name="Set">సెట్</string>
+    <string name="OK">సరే</string>
+    <string name="Crop">కత్తెర</string>
+    <!--messages-->
+    <string name="AttachPhoto">చిత్రం</string>
+    <string name="AttachVideo">వీడియో</string>
+    <string name="AttachGif">జిఫ్</string>
+    <string name="AttachContact">పరిచయం</string>
+    <string name="AttachDocument">ఫైల్</string>
+    <string name="AttachVoiceMessage">మాట సందేశం</string>
+    <string name="FromSelf">నేను</string>
+    <!--Alert messages-->
+    <string name="NoHandleAppInstalled">మీ దగ్గర ఈ ఫైల్ \'%1$s\' రకాన్ని గుర్తించే అప్లికేషన్లు లేవు, దయచేసి గుర్తించేదాన్ని ఒకటి ఇంస్టాల్ చేసి కొనసాగండి </string>
+    <string name="ContactAlreadyInGroup">ఈ పరిచయం ఇప్పటికే ఈ సమూహం లో ఉంది.</string>
+    <string name="ForwardMessagesTo">సందేశాలు <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>ఫార్వర్డ్ చేయాలా?</string>
+    <string name="SendMessagesTo">సందేశాలు <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>కు పంపాలా?</string>
+    <string name="AreYouSureDeleteThisChat">ఈ చాట్ ను తొలగించాలా? ఈ చాట్ ఇకమీదట చాట్ లిస్ట్ లో చూపించబడదు, సందేశాలు మాత్రం సర్వర్ లో ఉంటాయి.</string>
+    <string name="AreYouSureBlockContact">మీరు ఈ పరిచయాన్ని రద్దుచేయాలని నిర్ణయించుకున్నారా?</string>
+    <string name="AreYouSureDeleteContact">మీరు ఈ పరిచయాన్ని తొలగించాలని నిర్ణయించుకున్నారా?</string>
+    <!--permissions-->
+    <string name="PermissionContacts">డెల్టా చాట్ మీ స్నేహితులతో ఎల్లప్పుడూ కనెక్ట్ అయి ఉండడానికి మీ పరిచాయాల యాక్సస్ కు అనుమతించాలి. </string>
+    <string name="PermissionStorage">డెల్టా చాట్  లొ మీరు వీడియోలు, చిత్రాలు, సంగీతం, మరియు వేరే మీడియా  పంపడానికి, భద్రపరుచుకోడానికి మీ డివైజ్ స్టొరేజ్ యాక్సస్ కావాలి.</string>
+    </resources>
