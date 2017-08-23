@@ -326,7 +326,7 @@
     <string name="AccountSettings">Ustawienia konta</string>
     <string name="MyAccount">Moje konto</string>
     <string name="MyName">Moja nazwa</string>
-    <string name="MyNameExplain">Twoja nazwa, pokazywana odbiorcom.\n\nJeśli nie wprowadzisz nazwy, odbiorcy będą widzieć tylko twój adres e-mail z ustawień konta.</string>
+    <string name="MyNameExplain">Twoja nazwa, pokazywana odbiorcom. Jeśli nie wprowadzisz nazwy, odbiorcy będą widzieć tylko twój adres e-mail.</string>
     <string name="Password">Hasło</string>
     <string name="SmtpPassword">SMTP hasło</string>
     <string name="FromAbove">Jak wyżej</string>
@@ -351,7 +351,7 @@
     <string name="AskStartChatWith">Rozpocząć czat z <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>?</string>
     <string name="DeaddropHint">Aby rozpocząć czat, naciśnij strzałkę odpowiedzi.</string>
     <string name="NotYetImplemented">Ta funkcja jest niedostępna lub niekompletna.</string>
-    <string name="DefaultStatusText">Wysłane z komunikatora Delta Chat</string>
+    <string name="DefaultStatusText">Wysłano moim komunikatorem Delta Chat. Proszę o wybaczenie mojej lakoniczności.</string>
     <string name="Name" >Nazwa</string>
     <string name="EmailAddress">Adres e-mail</string>
     <string name="CannotDeleteContact">Nie możesz usunąć kontaktu w użyciu, zamiast tego zablokuj kontakt.</string>
@@ -412,4 +412,9 @@
     <string name="ImportBackupExplain">Aby zaimportować kopię zapasową, skopiuj ją do folderu \"Downloads\" i ponownie zainstaluj aplikację.</string>
     <string name="ReadReceiptMailBody">To jest potwierdzenie odczytu dla wiadomości ”%1$s„.\n\nTo potwierdzenie odczytu tylko informuje, że wiadomość została wyświetlona na urządzeniu odbiorcy. Nie ma gwarancji, że odbiorca przeczytał treść wiadomości.</string>
     <string name="ReadReceipt">Potwierdzenie odczytu</string>
+    <string name="NameAndStatus">Nazwa i status</string>
+    <string name="MyStatus">Mój status</string>
+    <string name="MyStatusExplain">Status jest widoczny w twoim profilu i w stopce maili.</string>
+    <string name="MsgGroupImageDeleted">Usunięto obraz grupy.</string>
+    <string name="AskDeleteGroupImage">Czy na pewno usunąć obraz grupy?\n\nTo wpłynie na wszystkie urządzenia, wszystkich członków grupy.</string>
 </resources>

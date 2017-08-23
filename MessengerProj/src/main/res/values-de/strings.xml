@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<!--Translation by iLLogical2007, DanielGroeger and everyone from https://github.com/DrKLO/Telegram/pull/129 whom I didn't notice -->
 
-<resources>
+
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="AppName">Delta Chat</string>
     <!--chats view-->
     <string name="Settings">Einstellungen</string>
@@ -226,7 +226,6 @@
     <string name="Intro6Message"><![CDATA[<b>Verschlüsselung</b>]]> mit allen gängigen Verfahren. Die Nachrichten bleiben auf Ihren Servern.</string>
 
     <string name="Intro7Headline">Vertraulich</string>
-    <string name="Intro7Message"><![CDATA[<b>Delta Chat</b>]]> ist für die sichere geschäftliche Kommunikation geeignet.</string>
 
     <string name="IntroStartMessaging">Jetzt beginnen</string>
     <!--plural-->
@@ -255,9 +254,6 @@
         <item quantity="other">%d Nachrichten löschen? Die Nachrichten werden auch auf dem Server gelöscht.</item>
     </plurals>
     <plurals name="NewMessagesInChats">
-        <!-- Translators: the first string placeholder "%s" gets replaced with the
-        text "%d new messages", so the complete sentence would be e.g.
-        "4 new messages in 2 chats". -->
         <item quantity="one">%1$s in %2$d Chat</item>
         <item quantity="other">%1$s in %2$d Chats</item>
     </plurals>
@@ -265,7 +261,6 @@
         <item quantity="one">%d Chat</item>
         <item quantity="other">%d Chats</item>
     </plurals>
-
     <plurals name="Minutes">
         <item quantity="one">%d Minute</item>
         <item quantity="other">%d Minuten</item>
@@ -287,9 +282,6 @@
         <item quantity="other">%d Monate</item>
     </plurals>
     <plurals name="MaxNotifications">
-        <!-- Translators: the second string placeholder "%s" gets replaced with the
-        text "%d minutes", so the complete sentence would be e.g.
-        "At most 8 notifications within 3 minutes". -->
         <item quantity="one">Höchstens %1$d Benachrichtigung in %2$s</item>
         <item quantity="other">Höchstens %1$d Benachrichtigungen in %2$s</item>
     </plurals>
@@ -306,21 +298,21 @@
     <string name="AccountSettings">Kontoeinstellungen</string>
     <string name="MyAccount">Mein Konto</string>
     <string name="MyName">Mein Name</string>
-    <string name="MyNameExplain">Hier den Namen eingeben, wie er den Empfängern von Nachrichten gezeigt werden soll.\n\nWenn kein Name angegeben wird, erhält der Empfänger nur die E-Mail-Adresse aus den Kontoeinstellungen.</string>
+    <string name="MyNameExplain">Hier den Namen eingeben, wie er den Empfängern von Nachrichten gezeigt werden soll. Wenn kein Name angegeben wird, erhält der Empfänger nur die E-Mail-Adresse.</string>
     <string name="Password">Passwort</string>
     <string name="SmtpPassword">SMTP-Passwort</string>
     <string name="FromAbove">Wie oben</string>
     <string name="SmtpLoginname">SMTP-Loginname</string>
     <string name="SmtpPort">SMTP-Port</string>
-    <string name="SmtpServer">SMTP-Server</string>
     <string name="Automatic">Automatisch</string>
-    <string name="ImapLoginname">IMAP-Loginname</string>
-    <string name="ImapPort">IMAP-Port</string>
     <string name="ImapServer">IMAP-Server</string>
-    <string name="OutboxHeadline">Postausgang</string>
+    <string name="ImapLoginname">IMAP-Loginname</string>
+    <string name="SmtpServer">SMTP-Server</string>
+    <string name="ImapPort">IMAP-Port</string>
     <string name="InboxHeadline">Posteingang</string>
+    <string name="OutboxHeadline">Postausgang</string>
     <string name="MyAccountExplain">Für bekannte E-Mail-Anbieter werden die weiteren Einstellungen automatisch ermittelt.</string>
-    <string name="MyAccountExplain2">Manchmal muss die <![CDATA[<b>]]>IMAP-Funktion<![CDATA[</b>]]> noch in der E-Mail-Weboberfläche <![CDATA[<b>]]>eingeschaltet<![CDATA[</b>]]> werden.\n\nBei Problemen kann der E-Mail-Anbieter oder ein Bekannter weiterhelfen.</string>
+    <string name="MyAccountExplain2" >Manchmal muss die <![CDATA[<b>]]>IMAP-Funktion<![CDATA[</b>]]> noch in der E-Mail-Weboberfläche <![CDATA[<b>]]>eingeschaltet<![CDATA[</b>]]> werden.\n\nBei Problemen kann der E-Mail-Anbieter oder ein Bekannter weiterhelfen.</string>
     <string name="AccountNotConfigured">Konto nicht konfiguriert</string>
     <string name="AboutThisProgram">Über Delta Chat</string>
     <string name="NotSet">Nicht gesetzt</string>
@@ -331,25 +323,28 @@
     <string name="AskStartChatWith">Chat mit <![CDATA[<b>]]>%1$s<![CDATA[</b>]]> starten?</string>
     <string name="DeaddropHint">Ein Klick auf die Antwort-Pfeile startet einen Chat.</string>
     <string name="NotYetImplemented">Diese Funktion ist nicht oder nur unvollständig eingebaut.</string>
-    <string name="DefaultStatusText">Mit meinem Delta Chat Messenger gesendet</string>
-    <string name="Name">Name</string>
+    <string name="DefaultStatusText">Mit meinem Delta Chat Messenger gesendet.</string>
+    <string name="Name" >Name</string>
     <string name="EmailAddress">E-Mail-Adresse</string>
     <string name="CannotDeleteContact">Der Kontakt kann nicht gelöscht werden, da er verwendet wird; er kann aber blockiert werden.</string>
     <string name="BadEmailAddress">Ungültige E-Mail-Adresse.</string>
     <string name="ContactCreated">Kontakt angelegt.</string>
     <string name="ViewProfile">Profil anzeigen</string>
+    <!-- Translators: please use a very short string here, it should not much longer than
+    the string needed for video time+size (0:00, 12,3 Mib) -->
     <string name="OneMoment">Einen Moment …</string>
     <string name="NoChatsHelp">Unten auf das Plussymbol für die erste Chatnachricht tippen; der Menüknopf öffnet die weiteren Optionen.</string>
+    <string name="Intro7Message"><![CDATA[<b>Delta Chat</b>]]> ist für die sichere geschäftliche Kommunikation geeignet.</string>
     <string name="InviteMenuEntry">Einladungen versenden</string>
     <string name="InviteText">Ich verwende nun auch den Delta Chat Messenger - %1$s - und bin dort unter %2$s erreichbar.</string>
     <string name="AdvancedSettings">Fortgeschrittene Einstellungen</string>
-    <string name="AskResetNotifications">Alle Benachrichtigungseinstellungen und Töne dieser Seite und auch der einzelnen Chats zurücksetzen?</string>
+    <string name="AskResetNotifications" >Alle Benachrichtigungseinstellungen und Töne dieser Seite und auch der einzelnen Chats zurücksetzen?</string>
     <string name="AttachFiles">Dateien anhängen</string>
     <string name="ErrGroupNameEmpty">Bitte einen Namen für die Gruppe eingeben.</string>
-    <string name="MsgNewGroupDraft">Hallo, ich habe die Gruppe \"%1$s\" für uns erstellt.</string>
     <string name="MsgNewGroupDraftHint">Eine erste Nachricht schreiben; dann können die anderen in der Gruppe antworten.\n\n• Gruppenmitglieder müssen hierzu Delta Chat nicht installiert haben.\n\n• Die Zustellung der ersten Nachricht kann einen Moment dauern.</string>
-    <string name="MsgGroupImageChanged">Gruppenbild geändert.</string>
+    <string name="MsgNewGroupDraft">Hallo, ich habe die Gruppe \"%1$s\" für uns erstellt.</string>
     <string name="MsgGroupNameChanged">Gruppenname von \"%1$s\" in \"%2$s\" geändert.</string>
+    <string name="MsgGroupImageChanged">Gruppenbild geändert.</string>
     <string name="MsgMemberAddedToGroup">%1$s zur Gruppe hinzugefügt.</string>
     <string name="MsgMemberRemovedFromToGroup">%1$s aus Gruppe entfernt.</string>
     <string name="AskAddMemberToGroup"><![CDATA[<b>]]>%1$s<![CDATA[</b>]]> zur Gruppe hinzufügen?</string>
@@ -357,8 +352,8 @@
     <string name="ErrSelfNotInGroup">Sie müssen ein Gruppenmitglied sein, um diese Aktion ausführen zu können.</string>
     <string name="MsgGroupLeft">Gruppe verlassen.</string>
     <string name="NoMessagesHint">Nachricht an <![CDATA[<b>]]>%1$s<![CDATA[</b>]]> senden:\n\n• <![CDATA[<b>]]>%2$s<![CDATA[</b>]]> muss hierzu Delta Chat nicht installiert haben.\n\n• Die Zustellung der ersten Nachricht kann einen Moment dauern.</string>
-    <string name="PreferE2EEncryption">Ende-zu-Ende-Verschlüsselung bevorzugen</string>
     <string name="SendNRcvReadReceipts">Emfangsbestätigungen erhalten/senden</string>
+    <string name="PreferE2EEncryption">Ende-zu-Ende-Verschlüsselung bevorzugen</string>
     <string name="E2EManagePrivateKeys">Private Schlüssel verwalten</string>
     <string name="E2ECompareKeys">Schlüssel vergleichen</string>
     <string name="ForwardToTitle">Weiterleiten an …</string>
@@ -375,19 +370,23 @@
     <string name="AutoplayGifs">GIFs automatisch abspielen</string>
     <string name="HelpUrl">https://delta.chat/de/help</string>
     <string name="EncryptedMessage">Verschlüsselte Nachricht</string>
-
+    <string name="ImportFromDownloads">Aus \"Downloads\" importieren</string>
+    <string name="ExportToDownloads">Nach \"Downloads\" exportieren</string>
+    <string name="ImportPrivateKeysAsk">Private Schlüssel aus \"Downloads\" importieren?\n\n• Bereits vorhandene private Schlüssel bleiben erhalten\n\n• Der zuletzt importierte private Schlüssel wird der Standardschlüssel\n\nFortfahren?</string>
+    <string name="Encryption">Verschlüsselung</string>
     <string name="EncrinfoE2E">Ende-zu-Ende-Verschlüsselung ist aktiv.</string>
     <string name="EncrinfoE2EExplain">Wenn die angezeigten Fingerabdrücke auf dem anderen Gerät genauso angezeigt werden, ist die Verbindung sicher.</string>
     <string name="EncrinfoTransport">Transportverschlüsselung mindestens bis zu meinem Server.</string>
     <string name="EncrinfoNone">Keine Verschlüsselung bis zu meinem Server.</string>
     <string name="EncrinfoNoE2EExplain">Die Ende-zu-Ende-Verschlüsselung wird automatisch aktiviert, sobald der Kontakt Delta Chat oder eine andere Autocrypt-kompatible App verwendet.</string>
     <string name="EncrinfoFingerprints">Fingerabdrücke</string>
-
-    <string name="ImportFromDownloads">Aus \"Downloads\" importieren</string>
-    <string name="ExportToDownloads">Nach \"Downloads\" exportieren</string>
-    <string name="ImportPrivateKeysAsk">Private Schlüssel aus \"Downloads\" importieren?\n\n• Bereits vorhandene private Schlüssel bleiben erhalten\n\n• Der zuletzt importierte private Schlüssel wird der Standardschlüssel\n\nFortfahren?</string>
-    <string name="Encryption">Verschlüsselung</string>
+    <string name="Backup">Backup</string>
     <string name="ImportBackupExplain">Um ein Backup zu importieren, kopieren Sie es auf dem Zielgerät in das \"Downloads\"-Verzeichnis und installieren die App neu.</string>
     <string name="ReadReceiptMailBody">Dies ist eine Empfangsbestätigung für die Nachricht \"%1$s\".\n\nDiese Empfangsbestätigung sagt nur aus, dass die Nachricht am Gerät des Empfängers angezeigt wurde. Es gibt keine Garantie, dass der Empfänger die Nachricht gelesen hat.</string>
     <string name="ReadReceipt">Empfangsbestätigung</string>
+    <string name="NameAndStatus">Name und Status</string>
+    <string name="MyStatus">Mein Status</string>
+    <string name="MyStatusExplain">Der Status wird im Profil und in der E-Mail-Fußzeile angezeigt</string>
+    <string name="MsgGroupImageDeleted">Gruppenbild gelöscht.</string>
+    <string name="AskDeleteGroupImage">Soll das Gruppenbild für alle Gruppenmitglieder gelöscht werden?</string>
 </resources>

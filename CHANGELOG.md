@@ -16,6 +16,7 @@
 * Add Ukrainian translation
 * Add Telugu translation
 * Add Catalan translation
+* Update German, Spanish, French, Hungarian, Italian, Polish, Portuguese and Russian translations
 
 ## v0.9.3
 2017-07-13

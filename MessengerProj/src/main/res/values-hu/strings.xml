@@ -103,7 +103,6 @@
     <string name="SmartNotifications">Értesítések korlátja</string>
     <string name="SmartNotificationsSoundAtMost">Hangjelzés legfeljebb</string>
     <string name="SmartNotificationsTimes">alkalommal</string>
-    <string name="SmartNotificationsWithin"> </string>
     <string name="SmartNotificationsMinutes">percen belül</string>
     <string name="DirectShare">Közvetlen megosztás</string>
     <string name="DirectShareInfo">A megosztás menüben a legutóbbi beszélgetések mutatása</string>
@@ -254,9 +253,6 @@
         <item quantity="other">%d üzenet törlése? Az üzenetek a szerverről is törlődnek.</item>
     </plurals>
     <plurals name="NewMessagesInChats">
-        <!-- Translators: the first string placeholder "%s" gets replaced with the
-        text "%d new messages", so the complete sentence would be e.g.
-        "4 new messages in 2 chats". -->
         <item quantity="one">%1$s %2$d beszélgetésben</item>
         <item quantity="other">%1$s %2$d beszélgetésben</item>
     </plurals>
@@ -285,9 +281,6 @@
         <item quantity="other">%d hónap</item>
     </plurals>
     <plurals name="MaxNotifications">
-        <!-- Translators: the second string placeholder "%s" gets replaced with the
-        text "%d minutes", so the complete sentence would be e.g.
-        "At most 8 notifications within 3 minutes". -->
         <item quantity="one">Legfeljebb %1$d értesítés %2$s alatt</item>
         <item quantity="other">Legfeljebb %1$d értesítés %2$s alatt</item>
     </plurals>
@@ -304,7 +297,6 @@
     <string name="AccountSettings">Fiókbeállítások</string>
     <string name="MyAccount">Fiókom</string>
     <string name="MyName">Nevem</string>
-    <string name="MyNameExplain">A címzetteknek megjelenő neved.\n\nHa nem adsz meg nevet, a címzett csak a fiókbeállításoknál megadott e-mail címedet látja.</string>
     <string name="Password">Jelszó</string>
     <string name="SmtpPassword">SMTP jelszó</string>
     <string name="FromAbove">fentről másolva</string>
@@ -329,7 +321,6 @@
     <string name="AskStartChatWith">Beszélgetést indítasz <![CDATA[<b>]]>%1$s<![CDATA[</b>]]> partnerrel?</string>
     <string name="DeaddropHint">Beszélgetés indításához koppints a válasz-nyílra.</string>
     <string name="NotYetImplemented">Ez a funkció nem érhető el vagy még nem készült el.</string>
-    <string name="DefaultStatusText">Delta Chat Messengerből küldve</string>
     <string name="Name" >Név</string>
     <string name="EmailAddress">E-mail cím</string>
     <string name="CannotDeleteContact">A használatban lévő névjegyet nem lehet törölni, ehelyett letilthatod a partnert.</string>
@@ -358,13 +349,10 @@
     <string name="ErrSelfNotInGroup">Csoporttagnak kell lenned, hogy ezt megtehesd.</string>
     <string name="MsgGroupLeft">Kiléptél a csoportból.</string>
     <string name="NoMessagesHint">Üzenetküldés <![CDATA[<b>]]>%1$s<![CDATA[</b>]]> partnernek:\n\n• Nincs gond, ha <![CDATA[<b>]]>%2$s<![CDATA[</b>]]> nem használja a Delta Chatet.\n\n• Az első üzenet kézbesítése kicsit lassabb lehet.</string>
-    <string name="SendNRcvReadReceipts">Tértivevények küldése és fogadása</string>
-    <string name="E2EEncryption">Végpontok közötti titkosítás</string>
     <string name="E2EManagePrivateKeys">Privát kulcsok kezelése</string>
     <string name="E2ECompareKeys">Kulcsok összehasonlítása</string>
     <string name="ForwardToTitle">Továbbítás…</string>
     <string name="SelectContact">Válassz partnert</string>
     <string name="DoneHint">Kész.</string>
     <string name="FileNotFound">%1$s fájl nem található.</string>
-
-</resources>
+    </resources>

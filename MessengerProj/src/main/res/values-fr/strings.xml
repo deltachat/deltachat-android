@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<resources>
+
+
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="AppName">Delta Chat</string>
     <!--chats view-->
     <string name="Settings">Paramètres</string>
@@ -223,7 +225,6 @@
     <string name="Intro6Message"><![CDATA[<b>Chiffré</b>]]> avec des algorithmes reconnus. Les messages restent sur vos serveurs.</string>
 
     <string name="Intro7Headline">Fiable</string>
-    <string name="Intro7Message"><![CDATA[<b>Delta Chat</b>]]> est sûr pour une utilisation professionnelle, compatible et basé sur des standards.</string>
 
     <string name="IntroStartMessaging">Commencez à converser</string>
     <!--plural-->
@@ -247,12 +248,10 @@
         <item quantity="one">%d message</item>
         <item quantity="other">%d messages</item>
     </plurals>
-
     <plurals name="Chats">
         <item quantity="one">%d conversation</item>
         <item quantity="other">%d conversations</item>
     </plurals>
-
     <plurals name="Minutes">
         <item quantity="one">%d minute</item>
         <item quantity="other">%d minutes</item>
@@ -286,7 +285,6 @@
     <string name="AccountSettings">Paramètres du compte</string>
     <string name="MyAccount">Mon compte</string>
     <string name="MyName">Mon nom</string>
-    <string name="MyNameExplain">Votre nom, tel que montré aux destinataires.\n\nSi vous ne saisissez pas un nom, les destinataires ne verront que votre adresse e-mail renseignée dans les paramètres de compte.</string>
     <string name="Password">Mot de passe</string>
     <string name="SmtpPassword">Mot de passe SMTP</string>
     <string name="FromAbove">Le même qu\'au dessus</string>
@@ -311,15 +309,17 @@
     <string name="AskStartChatWith">Lancer une conversation avec <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>?</string>
     <string name="DeaddropHint">Pour lancer une conversation, cliquez sur le bouton de réponse en forme de flèche.</string>
     <string name="NotYetImplemented">Cette fonction n\'est pas disponible ou non supportée complètement.</string>
-    <string name="DefaultStatusText">Envoyé avec Delta Chat</string>
     <string name="Name" >Nom</string>
     <string name="EmailAddress">Adresse e-mail</string>
     <string name="CannotDeleteContact">Impossible de supprimer les contacts en cours d\'utilisation, bloquez-les à la place.</string>
     <string name="BadEmailAddress">Mauvaise adresse e-mail.</string>
     <string name="ContactCreated">Utilisateur créé.</string>
     <string name="ViewProfile">Voir le profil</string>
+    <!-- Translators: please use a very short string here, it should not much longer than
+    the string needed for video time+size (0:00, 12,3 Mib) -->
     <string name="OneMoment">Veuillez patienter…</string>
     <string name="NoChatsHelp">Lancez une conversation en appuyant sur le bouton dans le coin inférieur droit ou appuyez sur le bouton menu pour plus d\'options.</string>
+    <string name="Intro7Message"><![CDATA[<b>Delta Chat</b>]]> est sûr pour une utilisation professionnelle, compatible et basé sur des standards.</string>
     <string name="InviteMenuEntry">Envoyer des invitations</string>
     <string name="InviteText">J\'utilise la messagerie Delta Chat maintenant - %1$s - vous pouvez me contacter à %2$s</string>
     <string name="AdvancedSettings">Paramètres avancés</string>
@@ -337,8 +337,6 @@
     <string name="ErrSelfNotInGroup">Vous devez être membre du groupe pour effectuer cette action.</string>
     <string name="MsgGroupLeft">Groupe quitté.</string>
     <string name="NoMessagesHint">Envoyez un message à <![CDATA[<b>]]>%1$s<![CDATA[</b>]]> :\n\n• Ça ne devrait pas poser de problème si <![CDATA[<b>]]>%2$s<![CDATA[</b>]]> n\'utilise pas Delta Chat\n\n• La livraison du premier message peut prendre un moment.</string>
-    <string name="SendNRcvReadReceipts">Recevoir et envoyer les accusés de lecture</string>
-    <string name="E2EEncryption">Chiffrement bout à bout</string>
     <string name="E2EManagePrivateKeys">Gérer les clefs privées</string>
     <string name="E2ECompareKeys">Comparer les clefs</string>
     <string name="ForwardToTitle">Renvoyer à…</string>
@@ -358,7 +356,6 @@
     <string name="ExportToDownloads">Exporter vers \"Downloads\"</string>
     <string name="ImportPrivateKeysAsk">Importer des clefs privées depuis \"Downloads\"?\n\n• Les clefs privées existantes ne sont pas supprimées\n\n• Les dernières clefs importées seront utilisées par défaut\n\nContinuer ?</string>
     <string name="Encryption">Chiffrement</string>
-    <string name="EncrinfoE2E">La connexion est maintenant chiffré de bout-à-bout.</string>
     <string name="EncrinfoE2EExplain">Si toutes les empreintes digitales correspondent sur l\'autre appareil, la connexion est sûre.</string>
     <string name="EncrinfoTransport">Le chiffrement du transport au moins active sur mon serveur.</string>
     <string name="EncrinfoNone">Aucun chiffrement sur mon serveur.</string>
@@ -366,4 +363,4 @@
     <string name="EncrinfoFingerprints">Empreintes digitales</string>
     <string name="Backup">Sauvegarde</string>
     <string name="ImportBackupExplain">Pour importer une sauvegarde, copiez celle-ci vers le répertoire \"Downloads\" et réinstallez l\'application.</string>
-</resources>
+    </resources>
