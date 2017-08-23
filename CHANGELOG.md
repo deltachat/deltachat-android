@@ -1,6 +1,7 @@
 # Delta Chat Changelog
 
-## UNRELEASED
+## v0.9.4
+2017-08-23
 
 * Introduce an editable "Status" field that is shown eg. in email footers
 * Editable and synchronized group images
