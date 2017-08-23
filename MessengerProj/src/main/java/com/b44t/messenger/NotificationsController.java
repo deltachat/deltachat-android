@@ -148,6 +148,8 @@ public class NotificationsController {
                 }
             }
         };
+
+        setBadge(0); // the set badge number survives application restarts, so reset it when creating
     }
 
     /*

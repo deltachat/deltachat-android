@@ -12,6 +12,7 @@
 * Encrypt mails send to SMTP and to IMAP the same way
 * Improve showing HTML-mails
 * Cleanup Android code
+* Remove badge counter on app restart
 
 ## v0.9.3
 2017-07-13

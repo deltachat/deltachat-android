@@ -182,7 +182,7 @@ public class ApplicationLoader extends Application {
             e.printStackTrace();
         }
 
-        // track screen on/ff
+        // track screen on/off
         try {
             final IntentFilter filter = new IntentFilter(Intent.ACTION_SCREEN_ON);
             filter.addAction(Intent.ACTION_SCREEN_OFF);
@@ -227,6 +227,7 @@ public class ApplicationLoader extends Application {
 
         ImageLoader.getInstance();
         MediaController.getInstance();
+        NotificationsController.getInstance(); // force instace creation which also does some init stuff
     }
 
     @Override
