@@ -5,11 +5,10 @@ This is the android client for Delta Chat.  For the core library and other commo
 information, please refer to [Delta Chat Core Library](https://github.com/deltachat/deltachat-core).
 For ready-to-use binaries, please go to https://delta.chat .
 
-<a href="https://f-droid.org/packages/com.b44t.messenger/" target="_blank">
-<img src="https://f-droid.org/badge/get-it-on.png" alt="Get it on F-Droid" height="90"/></a>
-
 ![Logo](https://delta.chat/assets/features/start-img4.png)
 
+<a href="https://f-droid.org/packages/com.b44t.messenger/" target="_blank">
+<img src="https://f-droid.org/badge/get-it-on.png" alt="Get it on F-Droid" height="90"/></a>
 
 Build
 --------------------------------------------------------------------------------
