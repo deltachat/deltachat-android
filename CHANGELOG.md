@@ -7,6 +7,7 @@
 * Editable and synchronized group images
 * Show the subject of messages that cannot be decrypted
 * Do not send "Read receipts" when decryption fails
+* Do not request "Read receipts" from normal MUAs as there are too many MUAs responding with weird, non-standard formats
 * Deleting a chat always deletes all messages from the device permanently
 * Ignore messages from mailing lists
 * Do not spread the original authors name nor address on forwarding
