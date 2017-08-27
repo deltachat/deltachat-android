@@ -329,7 +329,7 @@
     <string name="AskStartChatWith">Start a chat with <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>?</string>
     <string name="DeaddropHint">To start a chat, click on the reply-arrows.</string>
     <string name="NotYetImplemented">This function is not available or incomplete.</string>
-    <string name="DefaultStatusText">Sent with my Delta Chat Messenger. Please excuse my brevity.</string>
+    <string name="DefaultStatusText">Sent with my Delta Chat Messenger: https://delta.chat</string>
     <string name="Name" >Name</string>
     <string name="EmailAddress">Email address</string>
     <string name="CannotDeleteContact">Cannot delete contacts in use, block contact instead.</string>
