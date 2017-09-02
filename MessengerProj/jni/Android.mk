@@ -1311,6 +1311,7 @@ LOCAL_MODULE := sqlite
 LOCAL_CFLAGS 	:= -w -std=c11 -Os -DNULL=0 -DSOCKLEN_T=socklen_t -DLOCALE_NOT_USED -D_LARGEFILE_SOURCE=1 -D_FILE_OFFSET_BITS=64
 LOCAL_CFLAGS 	+= -DANDROID_NDK -DDISABLE_IMPORTGL -fno-strict-aliasing -fprefetch-loop-arrays -DAVOID_TABLES -DANDROID_TILE_BASED_DECODE -DANDROID_ARMV6_IDCT -DHAVE_STRCHRNUL=0
 LOCAL_CFLAGS 	+= -DSQLITE_OMIT_LOAD_EXTENSION
+LOCAL_CFLAGS 	+= -DSQLITE_MAX_MMAP_SIZE=0 -DSQLITE_OMIT_WAL  # HACK: the defines are used to skip the pointer reference to mmap set in aSyscall[] - mmap seems to be a #define that cannot be used this way on Android - otherwise we get the error: 'mmap' undeclared here (not in a function)
 
 LOCAL_SRC_FILES     := \
 ./messenger-backend/libs/sqlite/sqlite3.c
