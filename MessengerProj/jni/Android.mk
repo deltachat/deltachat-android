@@ -1637,6 +1637,7 @@ LOCAL_SRC_FILES     += \
 ./messenger-backend/src/mrchatlist.c \
 ./messenger-backend/src/mrcmdline.c \
 ./messenger-backend/src/mrcontact.c \
+./messenger-backend/src/mrdehtml.c \
 ./messenger-backend/src/mrimap.c \
 ./messenger-backend/src/mrjob.c \
 ./messenger-backend/src/mrkey.c \
