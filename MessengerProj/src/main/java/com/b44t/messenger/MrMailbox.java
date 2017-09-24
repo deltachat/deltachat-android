@@ -425,7 +425,7 @@ public class MrMailbox {
                 }
                 else {
                     if( !ApplicationLoader.wakeupWakeLock.isHeld()) {
-                        ApplicationLoader.wakeupWakeLock.acquire(1 * 1000); /* make sure, subsequent release/acquires do not make the CPU sleep */
+                        ApplicationLoader.wakeupWakeLock.acquire(500); /* make sure, subsequent release/acquires do not make the CPU sleep */
                     }
                     ApplicationLoader.backendWakeLock.release();
                 }

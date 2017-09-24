@@ -35,19 +35,24 @@ import android.util.Log;
 public class TimerReceiver extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
 
-        // acquire for 3 seconds, this should wake up the threads,
-        // _if_ there is more to do, the backend acquires an additional wakelock using MR_EVENT_WAKE_LOCK
-        ApplicationLoader.wakeupWakeLock.acquire(3*1000); // do this first!
-        MrMailbox.log_i("DeltaChat", "*** TimerReceiver.onReceive()");
+        // for a discussion about the different approaches to save batter, see https://github.com/deltachat/deltachat-android/issues/104#issuecomment-331670326
 
-        // we assume, the IMAP thread is alive. I cannot imagine, the thread was killed with the App being running.
-        // (if the whole App was killed, the IMAP thread is already started by MrMailbox.connect() if we're here)
-        // (the thread itself will reconnect to the IMAP server as needed)
-        // however, it seems as if the threads sleep longer than ususal, check this by calling heartbeat() manually
-        MrMailbox.heartbeat();
+        try {
+            ApplicationLoader.wakeupWakeLock.acquire(); // do this first!
+            MrMailbox.log_i("DeltaChat", "*** TimerReceiver.onReceive()");
 
-        // create the next alarm in about a minute
-        scheduleNextAlarm();
+            // we assume, the IMAP thread is alive. I cannot imagine, the thread was killed with the App being running.
+            // (if the whole App was killed, the IMAP thread is already started by MrMailbox.connect() if we're here)
+            // (the thread itself will reconnect to the IMAP server as needed)
+            // however, it seems as if the threads sleep longer than ususal, check this by calling heartbeat() manually
+            MrMailbox.heartbeat();
+
+            // create the next alarm in about a minute
+            scheduleNextAlarm();
+        } finally {
+            // Always release the wakelock, _if_ there is more to do, the backend acquires an additional wakelock using MR_EVENT_WAKE_LOCK
+            ApplicationLoader.wakeupWakeLock.release();
+        }
     }
 
     public static void scheduleNextAlarm()
