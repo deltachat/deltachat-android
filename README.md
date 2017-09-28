@@ -14,10 +14,16 @@ Build
 --------------------------------------------------------------------------------
 
 When checking out _deltachat-android_, make sure also to check out the
-subproject _deltachat-core_.  You can do this initially eg. by
-`$ git clone --recursive https://github.com/deltachat/deltachat-android.git`
-or later by `git submodule update --init --recursive`. There is no need to 
-build the core library itself, deltachat-android just references them.
+subproject _deltachat-core_:
+
+- When using Git, you can can do this initially by
+  `$ git clone --recursive https://github.com/deltachat/deltachat-android.git`
+  or later by `git submodule update --init --recursive`.
+
+- Alternatively, you can download the [deltachat-android zip-file](https://github.com/deltachat/deltachat-android/archive/master.zip); in this case, also download the [deltachat-core zip-file](https://github.com/deltachat/deltachat-core/archive/master.zip) and place its contents to `MessengerProj/jni/messenger-backend` 
+
+There is no need to build the core library itself, deltachat-android just 
+references them.
 
 Then, call `ndk-build` in the `MessengerProj` directory to build the C-part
 and run the project in Android Studio.  The project required API 25.
