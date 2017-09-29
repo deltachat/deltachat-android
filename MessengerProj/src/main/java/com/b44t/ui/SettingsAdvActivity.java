@@ -47,8 +47,10 @@ import com.b44t.messenger.MrMailbox;
 import com.b44t.messenger.NotificationCenter;
 import com.b44t.messenger.R;
 import com.b44t.ui.Adapters.BaseFragmentAdapter;
+import com.b44t.ui.Cells.HeaderCell;
 import com.b44t.ui.Cells.ShadowSectionCell;
 import com.b44t.ui.Cells.TextCheckCell;
+import com.b44t.ui.Cells.TextInfoCell;
 import com.b44t.ui.Cells.TextSettingsCell;
 import com.b44t.ui.ActionBar.ActionBar;
 import com.b44t.ui.ActionBar.BaseFragment;
@@ -61,18 +63,30 @@ import java.io.File;
 public class SettingsAdvActivity extends BaseFragment implements NotificationCenter.NotificationCenterDelegate {
 
     // the list
-    private int directShareRow, cacheRow, raiseToSpeakRow, sendByEnterRow, autoplayGifsRow, textSizeRow, showUnknownSendersRow, finalShadowRow;
-    private int blockedRow;
     private int accountSettingsRow;
+    private int directShareRow;
+    private int cacheRow;
+    private int autoplayGifsRow;
+    private int textSizeRow;
+    private int showUnknownSendersRow;
+    private int sendByEnterRow;
+    private int raiseToSpeakRow;
+    private int blockedRow;
     private int e2eEncryptionRow;
+    private int settingsShadowRow;
+
+    private int imexHeaderRow;
     private int manageKeysRow;
     private int backupRow;
+    private int imexInfoRow;
     private int rowCount;
 
     private static final int ROWTYPE_SHADOW          = 0;
     private static final int ROWTYPE_TEXT_SETTINGS   = 1;
     private static final int ROWTYPE_CHECK           = 2;
-    private static final int ROWTYPE_COUNT           = 3;
+    private static final int ROWTYPE_HEADER          = 3;
+    private static final int ROWTYPE_INFO            = 4;
+    private static final int ROWTYPE_COUNT           = 5;
 
     private ListView listView;
 
@@ -105,9 +119,12 @@ public class SettingsAdvActivity extends BaseFragment implements NotificationCen
         cacheRow                = -1;// for now, the - non-functional - page is reachable by the "storage settings" in the "android App Settings" only
         blockedRow              = rowCount++;
         e2eEncryptionRow        = rowCount++;
+        settingsShadowRow       = rowCount++;
+
+        imexHeaderRow           = rowCount++;
         manageKeysRow           = rowCount++;
-        backupRow               = -1; //rowCount++; -- disabled for now
-        finalShadowRow          = rowCount++;
+        backupRow               = rowCount++;
+        imexInfoRow             = rowCount++;
 
         return true;
     }
@@ -437,9 +454,7 @@ public class SettingsAdvActivity extends BaseFragment implements NotificationCen
                 if (view == null) {
                     view = new ShadowSectionCell(mContext);
                 }
-                if( i==finalShadowRow ) {
-                    view.setBackgroundResource(R.drawable.greydivider_bottom);
-                }
+                view.setBackgroundResource(R.drawable.greydivider);
             } else if (type == ROWTYPE_TEXT_SETTINGS) {
                 if (view == null) {
                     view = new TextSettingsCell(mContext);
@@ -490,18 +505,41 @@ public class SettingsAdvActivity extends BaseFragment implements NotificationCen
                 }
                 else if( i == e2eEncryptionRow ) {
                     textCell.setTextAndCheck(mContext.getString(R.string.PreferE2EEncryption),
-                            MrMailbox.getConfigInt("e2ee_enabled", MR_E2EE_DEFAULT_ENABLED)!=0, true);
+                            MrMailbox.getConfigInt("e2ee_enabled", MR_E2EE_DEFAULT_ENABLED)!=0, false);
                 }
             }
+            else if (type == ROWTYPE_HEADER) {
+                if (view == null) {
+                    view = new HeaderCell(mContext);
+                    view.setBackgroundColor(0xffffffff);
+                }
+                if (i == imexHeaderRow) {
+                    ((HeaderCell) view).setText(mContext.getString(R.string.ExportImportHeader));
+                }
+            }
+            else if (type == ROWTYPE_INFO) {
+                if (view == null) {
+                    view = new TextInfoCell(mContext);
+                }
+                if( i==imexInfoRow) {
+                    ((TextInfoCell) view).setText(mContext.getString(R.string.ImportExportExplain));
+                    view.setBackgroundResource(R.drawable.greydivider_bottom);
+                }
+            }
+
             return view;
         }
 
         @Override
         public int getItemViewType(int i) {
-            if (i == finalShadowRow ) {
+            if (i== settingsShadowRow ) {
                 return ROWTYPE_SHADOW;
+            } else if( i==imexHeaderRow ) {
+                return ROWTYPE_HEADER;
             } else if ( i == sendByEnterRow || i == raiseToSpeakRow || i == autoplayGifsRow || i==showUnknownSendersRow || i == directShareRow || i==e2eEncryptionRow) {
                 return ROWTYPE_CHECK;
+            } else if( i== imexInfoRow ) {
+                return ROWTYPE_INFO;
             } else {
                 return ROWTYPE_TEXT_SETTINGS;
             }

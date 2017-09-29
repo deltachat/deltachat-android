@@ -4,6 +4,7 @@
 
 * Move replies from normal E-Mail-Clients to the "Chats" folder
 * Improve helping MUAs on showing chat threads
+* Backup function
 
 ## v0.9.4
 2017-08-23

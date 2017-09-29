@@ -261,7 +261,6 @@ public class SettingsNameActivity extends BaseFragment {
                     ((TextInfoCell) view).setText(mContext.getString(R.string.MyStatusExplain));
                     view.setBackgroundResource(R.drawable.greydivider_bottom);
                 }
-
             }
             return view;
         }
