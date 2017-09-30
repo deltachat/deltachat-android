@@ -220,7 +220,7 @@
     <string name="Intro4Message"><![CDATA[<b>Unbegrenzte</b>]]> Chats, Bilder, Videos, Sprachnachrichten und mehr. Multi-Client-fähig.</string>
 
     <string name="Intro5Headline">Kostenlos</string>
-    <string name="Intro5Message"><![CDATA[<b>Delta Chat</b>]]> ist für immer kostenlos.<![CDATA[<br/>]]>OpenSource. Keine Werbung. Kein Abo. Kein Lock-In.</string>
+    <string name="Intro5Message"><![CDATA[<b>Delta Chat</b>]]> ist für immer kostenlos.<![CDATA[<br/>]]>OpenSource. Keine Werbung. Kein Abo.</string>
 
     <string name="Intro6Headline">Sicher</string>
     <string name="Intro6Message"><![CDATA[<b>Verschlüsselung</b>]]> mit allen gängigen Verfahren. Die Nachrichten bleiben auf Ihren Servern.</string>
