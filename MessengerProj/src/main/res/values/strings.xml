@@ -397,4 +397,6 @@
     <string name="AskDeleteGroupImage">Are you sure to delete the group image?\n\nThis will affect all devices of all group members.</string>
     <string name="ExportImportHeader">Export and import</string>
     <string name="ImportExportExplain">Exported files may contain private keys! Keep them in a safe place or delete them as soon as possible.</string>
+    <string name="EnterPasswordToContinue">Enter your password to continue:</string>
+    <string name="BadPassword">Bad password.</string>
 </resources>

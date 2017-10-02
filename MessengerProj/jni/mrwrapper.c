@@ -555,6 +555,15 @@ JNIEXPORT void Java_com_b44t_messenger_MrMailbox_imex(JNIEnv *env, jclass cls, j
 }
 
 
+JNIEXPORT jint Java_com_b44t_messenger_MrMailbox_checkPassword(JNIEnv *env, jclass cls, jstring pw)
+{
+	CHAR_REF(pw);
+		jint r = mrmailbox_check_password(get_mrmailbox_t(env, cls),  pwPtr);
+	CHAR_UNREF(pw);
+	return r;
+}
+
+
 JNIEXPORT void Java_com_b44t_messenger_MrMailbox_heartbeat(JNIEnv *env, jclass cls)
 {
     mrmailbox_heartbeat(get_mrmailbox_t(env, cls));

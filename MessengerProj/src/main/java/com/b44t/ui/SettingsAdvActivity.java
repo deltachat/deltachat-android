@@ -32,10 +32,12 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Environment;
+import android.text.InputType;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ListView;
 
@@ -304,7 +306,35 @@ public class SettingsAdvActivity extends BaseFragment implements NotificationCen
                                 getParentActivity().requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 4);
                                 return;
                             }
-                            startImex(exportCommand);
+                            AlertDialog.Builder builder2 = new AlertDialog.Builder(getParentActivity());
+
+                            final EditText input = new EditText(getParentActivity());
+                            input.setSingleLine();
+
+                            FrameLayout container = new FrameLayout(getParentActivity());
+                            FrameLayout.LayoutParams params = new  FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                            params.leftMargin = AndroidUtilities.dp(24);
+                            params.rightMargin = AndroidUtilities.dp(24);
+                            input.setLayoutParams(params);
+                            input.setInputType(InputType.TYPE_CLASS_TEXT|InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS| InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                            container.addView(input);
+
+                            builder2.setView(container);
+                            builder2.setPositiveButton(ApplicationLoader.applicationContext.getString(R.string.OK), new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    String pw = input.getText().toString().trim();
+                                    if( MrMailbox.checkPassword(pw)!=0 ) {
+                                        startImex(exportCommand);
+                                    }
+                                    else {
+                                        AndroidUtilities.showHint(ApplicationLoader.applicationContext, ApplicationLoader.applicationContext.getString(R.string.BadPassword));
+                                    }
+                                }
+                            });
+                            builder2.setNegativeButton(ApplicationLoader.applicationContext.getString(R.string.Cancel), null);
+                            builder2.setMessage(ApplicationLoader.applicationContext.getString(R.string.EnterPasswordToContinue));
+                            showDialog(builder2.create());
                         }
                         else /*import*/ {
                             if( importCommand ==MrMailbox.MR_IMEX_IMPORT_SELF_KEYS ) {

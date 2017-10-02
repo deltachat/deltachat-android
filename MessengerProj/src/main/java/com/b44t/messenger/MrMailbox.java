@@ -74,6 +74,7 @@ public class MrMailbox {
     public final static int MR_IMEX_EXPORT_BACKUP = 0x02;
     public final static int MR_IMEX_IMPORT_SELF_KEYS = 0x00010000;
     public native static void imex(int what, String dir);
+    public native static int  checkPassword(String pw);
 
     public native static void heartbeat();
 
