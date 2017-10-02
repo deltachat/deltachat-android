@@ -23,8 +23,6 @@
 
 package com.b44t.ui;
 
-import android.animation.ObjectAnimator;
-import android.animation.StateListAnimator;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
@@ -56,8 +54,6 @@ import com.b44t.messenger.MrMailbox;
 import com.b44t.messenger.R;
 import com.b44t.ui.ActionBar.Theme;
 
-import java.util.Locale;
-
 import static java.lang.Math.min;
 
 public class IntroActivity extends Activity {
@@ -68,7 +64,6 @@ public class IntroActivity extends Activity {
     private ViewGroup bottomPages;
     private int lastPage = 0;
     private boolean justCreated = false;
-    private boolean startPressed = false;
     private int[] icons;
     private int[] titles;
     private int[] messages;
@@ -182,10 +177,6 @@ public class IntroActivity extends Activity {
             @Override
             public void onClick(View view) {
                 if(!isAbout) {
-                    if(startPressed) {
-                        return;
-                    }
-                    startPressed = true;
                     Intent intent2 = new Intent(IntroActivity.this, LaunchActivity.class);
                     intent2.putExtra("fromIntro", true);
                     startActivity(intent2);
