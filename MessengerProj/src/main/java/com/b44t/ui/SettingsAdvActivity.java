@@ -328,7 +328,7 @@ public class SettingsAdvActivity extends BaseFragment implements NotificationCen
                                         startImex(exportCommand);
                                     }
                                     else {
-                                        AndroidUtilities.showHint(ApplicationLoader.applicationContext, ApplicationLoader.applicationContext.getString(R.string.BadPassword));
+                                        AndroidUtilities.showHint(ApplicationLoader.applicationContext, ApplicationLoader.applicationContext.getString(R.string.IncorrectPassword));
                                     }
                                 }
                             });
