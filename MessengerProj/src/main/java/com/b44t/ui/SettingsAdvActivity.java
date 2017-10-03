@@ -356,6 +356,7 @@ public class SettingsAdvActivity extends BaseFragment implements NotificationCen
 
                                 AlertDialog.Builder builder3 = new AlertDialog.Builder(getParentActivity());
                                 builder3.setMessage(ApplicationLoader.applicationContext.getString(R.string.ImportPrivateKeysAsk));
+                                builder3.setNegativeButton(ApplicationLoader.applicationContext.getString(R.string.Cancel), null);
                                 builder3.setPositiveButton(ApplicationLoader.applicationContext.getString(R.string.OK), new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialogInterface, int i) {
@@ -465,7 +466,7 @@ public class SettingsAdvActivity extends BaseFragment implements NotificationCen
         @Override
         public boolean isEnabled(int i) {
             int type = getItemViewType(i);
-            return type!=ROWTYPE_SHADOW;
+            return (type!=ROWTYPE_SHADOW && type!=ROWTYPE_HEADER && type!=ROWTYPE_INFO);
         }
 
         @Override
