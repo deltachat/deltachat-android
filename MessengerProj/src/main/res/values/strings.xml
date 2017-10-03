@@ -378,7 +378,7 @@
     <string name="EncryptedMessage">Encrypted message</string>
     <string name="ImportFromDownloads">Import from \"Downloads\"</string>
     <string name="ExportToDownloads">Export to \"Downloads\"</string>
-    <string name="ImportPrivateKeysAsk">Import private keys from \"Downloads\"?\n\n• Existing private keys are not deleted\n\n• The last imported key will be used as the new default key\n\nContinue?</string>
+    <string name="ImportPrivateKeysAsk">Import private keys from \"Downloads\"?\n\n• Existing private keys are not deleted\n\n• The last imported key will be used as the new default key</string>
     <string name="Encryption">Encryption</string>
     <string name="EncrinfoE2E">End-to-end encryption enabled.</string>
     <string name="EncrinfoE2EExplain">If all fingerprints match on the other device, the connection is safe.</string>
@@ -397,6 +397,6 @@
     <string name="AskDeleteGroupImage">Are you sure to delete the group image?\n\nThis will affect all devices of all group members.</string>
     <string name="ExportImportHeader">Export and import</string>
     <string name="ImportExportExplain">Exported files may contain private keys! Keep them in a safe place or delete them as soon as possible.</string>
-    <string name="EnterPasswordToContinue">Enter your password to continue:</string>
+    <string name="EnterPasswordToContinue">Enter the password for %1$s to continue:</string>
     <string name="IncorrectPassword">Incorrect password.</string>
 </resources>

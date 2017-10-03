@@ -301,26 +301,33 @@ public class SettingsAdvActivity extends BaseFragment implements NotificationCen
         builder.setItems(items, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
+
+                        /* prepare password query dialog */
+                        AlertDialog.Builder builderPw = new AlertDialog.Builder(getParentActivity());
+
+                        final EditText input = new EditText(getParentActivity());
+                        input.setSingleLine();
+
+                        FrameLayout container = new FrameLayout(getParentActivity());
+                        FrameLayout.LayoutParams params = new  FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                        params.leftMargin = AndroidUtilities.dp(24);
+                        params.rightMargin = AndroidUtilities.dp(24);
+                        input.setLayoutParams(params);
+                        input.setInputType(InputType.TYPE_CLASS_TEXT|InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS| InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                        container.addView(input);
+
+                        builderPw.setView(container);
+                        String enterPwMsg = String.format(ApplicationLoader.applicationContext.getString(R.string.EnterPasswordToContinue), MrMailbox.getConfig("addr", ""));
+                        builderPw.setMessage(enterPwMsg);
+                        builderPw.setNegativeButton(ApplicationLoader.applicationContext.getString(R.string.Cancel), null);
+
+                        /* see what do do */
                         if( i==0 ) /*export*/ {
                             if (Build.VERSION.SDK_INT >= 23 && getParentActivity().checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
                                 getParentActivity().requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 4);
                                 return;
                             }
-                            AlertDialog.Builder builder2 = new AlertDialog.Builder(getParentActivity());
-
-                            final EditText input = new EditText(getParentActivity());
-                            input.setSingleLine();
-
-                            FrameLayout container = new FrameLayout(getParentActivity());
-                            FrameLayout.LayoutParams params = new  FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-                            params.leftMargin = AndroidUtilities.dp(24);
-                            params.rightMargin = AndroidUtilities.dp(24);
-                            input.setLayoutParams(params);
-                            input.setInputType(InputType.TYPE_CLASS_TEXT|InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS| InputType.TYPE_TEXT_VARIATION_PASSWORD);
-                            container.addView(input);
-
-                            builder2.setView(container);
-                            builder2.setPositiveButton(ApplicationLoader.applicationContext.getString(R.string.OK), new DialogInterface.OnClickListener() {
+                            builderPw.setPositiveButton(ApplicationLoader.applicationContext.getString(R.string.OK), new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialogInterface, int i) {
                                     String pw = input.getText().toString().trim();
@@ -332,9 +339,7 @@ public class SettingsAdvActivity extends BaseFragment implements NotificationCen
                                     }
                                 }
                             });
-                            builder2.setNegativeButton(ApplicationLoader.applicationContext.getString(R.string.Cancel), null);
-                            builder2.setMessage(ApplicationLoader.applicationContext.getString(R.string.EnterPasswordToContinue));
-                            showDialog(builder2.create());
+                            showDialog(builderPw.create());
                         }
                         else /*import*/ {
                             if( importCommand ==MrMailbox.MR_IMEX_IMPORT_SELF_KEYS ) {
@@ -342,26 +347,32 @@ public class SettingsAdvActivity extends BaseFragment implements NotificationCen
                                     getParentActivity().requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 4);
                                     return;
                                 }
-                                AlertDialog.Builder builder2 = new AlertDialog.Builder(getParentActivity());
-                                builder2.setPositiveButton(ApplicationLoader.applicationContext.getString(R.string.OK), new DialogInterface.OnClickListener() {
+
+                                builderPw.setMessage(ApplicationLoader.applicationContext.getString(R.string.ImportPrivateKeysAsk)+"\n\n"+enterPwMsg);
+                                builderPw.setPositiveButton(ApplicationLoader.applicationContext.getString(R.string.OK), new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialogInterface, int i) {
-                                        startImex(importCommand);
+                                        String pw = input.getText().toString().trim();
+                                        if( MrMailbox.checkPassword(pw)!=0 ) {
+                                            startImex(importCommand);
+                                        }
+                                        else {
+                                            AndroidUtilities.showHint(ApplicationLoader.applicationContext, ApplicationLoader.applicationContext.getString(R.string.IncorrectPassword));
+                                        }
                                     }
                                 });
-                                builder2.setNegativeButton(ApplicationLoader.applicationContext.getString(R.string.Cancel), null);
-                                builder2.setMessage(ApplicationLoader.applicationContext.getString(R.string.ImportPrivateKeysAsk));
-                                showDialog(builder2.create());
+
+                                showDialog(builderPw.create());
                             }
                             else {
-                                AlertDialog.Builder builder2 = new AlertDialog.Builder(getParentActivity());
-                                builder2.setPositiveButton(ApplicationLoader.applicationContext.getString(R.string.OK), new DialogInterface.OnClickListener() {
+                                AlertDialog.Builder builder3 = new AlertDialog.Builder(getParentActivity());
+                                builder3.setPositiveButton(ApplicationLoader.applicationContext.getString(R.string.OK), new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialogInterface, int i) {
                                     }
                                 });
-                                builder2.setMessage(ApplicationLoader.applicationContext.getString(R.string.ImportBackupExplain));
-                                showDialog(builder2.create());
+                                builder3.setMessage(ApplicationLoader.applicationContext.getString(R.string.ImportBackupExplain));
+                                showDialog(builder3.create());
                             }
                         }
                     }
