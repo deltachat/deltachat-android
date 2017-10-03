@@ -302,31 +302,37 @@ public class SettingsAdvActivity extends BaseFragment implements NotificationCen
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
 
-                        /* prepare password query dialog */
-                        AlertDialog.Builder builderPw = new AlertDialog.Builder(getParentActivity());
+                        /* when and why do we ask for a password on import/export?
+                        - we ask for a password on exporting private keys to prevent them from being stolen
+                          if the user hands out the device for a moment.
+                          this is important as esp. the user won't even recognise keys stolen this way.
+                        - we do _not_ ask for a password on import - of course, this can result in data loss, however,
+                          if the device is under control of an attacker he can also just delete all data.
+                          in difference to export, all these attacks are typically visible to the user.
+                          so, asking for a password here won't increase the security significally. */
 
-                        final EditText input = new EditText(getParentActivity());
-                        input.setSingleLine();
-
-                        FrameLayout container = new FrameLayout(getParentActivity());
-                        FrameLayout.LayoutParams params = new  FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-                        params.leftMargin = AndroidUtilities.dp(24);
-                        params.rightMargin = AndroidUtilities.dp(24);
-                        input.setLayoutParams(params);
-                        input.setInputType(InputType.TYPE_CLASS_TEXT|InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS| InputType.TYPE_TEXT_VARIATION_PASSWORD);
-                        container.addView(input);
-
-                        builderPw.setView(container);
-                        String enterPwMsg = String.format(ApplicationLoader.applicationContext.getString(R.string.EnterPasswordToContinue), MrMailbox.getConfig("addr", ""));
-                        builderPw.setMessage(enterPwMsg);
-                        builderPw.setNegativeButton(ApplicationLoader.applicationContext.getString(R.string.Cancel), null);
-
-                        /* see what do do */
                         if( i==0 ) /*export*/ {
                             if (Build.VERSION.SDK_INT >= 23 && getParentActivity().checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
                                 getParentActivity().requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 4);
                                 return;
                             }
+                            AlertDialog.Builder builderPw = new AlertDialog.Builder(getParentActivity());
+
+                            final EditText input = new EditText(getParentActivity());
+                            input.setSingleLine();
+
+                            FrameLayout container = new FrameLayout(getParentActivity());
+                            FrameLayout.LayoutParams params = new  FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                            params.leftMargin = AndroidUtilities.dp(24);
+                            params.rightMargin = AndroidUtilities.dp(24);
+                            input.setLayoutParams(params);
+                            input.setInputType(InputType.TYPE_CLASS_TEXT|InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS| InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                            container.addView(input);
+
+                            builderPw.setView(container);
+                            String enterPwMsg = String.format(ApplicationLoader.applicationContext.getString(R.string.EnterPasswordToContinue), MrMailbox.getConfig("addr", ""));
+                            builderPw.setMessage(enterPwMsg);
+                            builderPw.setNegativeButton(ApplicationLoader.applicationContext.getString(R.string.Cancel), null);
                             builderPw.setPositiveButton(ApplicationLoader.applicationContext.getString(R.string.OK), new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialogInterface, int i) {
@@ -348,21 +354,15 @@ public class SettingsAdvActivity extends BaseFragment implements NotificationCen
                                     return;
                                 }
 
-                                builderPw.setMessage(ApplicationLoader.applicationContext.getString(R.string.ImportPrivateKeysAsk)+"\n\n"+enterPwMsg);
-                                builderPw.setPositiveButton(ApplicationLoader.applicationContext.getString(R.string.OK), new DialogInterface.OnClickListener() {
+                                AlertDialog.Builder builder3 = new AlertDialog.Builder(getParentActivity());
+                                builder3.setMessage(ApplicationLoader.applicationContext.getString(R.string.ImportPrivateKeysAsk));
+                                builder3.setPositiveButton(ApplicationLoader.applicationContext.getString(R.string.OK), new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialogInterface, int i) {
-                                        String pw = input.getText().toString().trim();
-                                        if( MrMailbox.checkPassword(pw)!=0 ) {
-                                            startImex(importCommand);
-                                        }
-                                        else {
-                                            AndroidUtilities.showHint(ApplicationLoader.applicationContext, ApplicationLoader.applicationContext.getString(R.string.IncorrectPassword));
-                                        }
+                                        startImex(importCommand);
                                     }
                                 });
-
-                                showDialog(builderPw.create());
+                                showDialog(builder3.create());
                             }
                             else {
                                 AlertDialog.Builder builder3 = new AlertDialog.Builder(getParentActivity());

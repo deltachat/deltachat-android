@@ -5,7 +5,7 @@
 * Move replies from normal E-Mail-Clients to the "Chats" folder
 * Improve helping MUAs on showing chat threads
 * Backup function
-* Query password before export/import
+* Query password before export
 
 ## v0.9.4
 2017-08-23
