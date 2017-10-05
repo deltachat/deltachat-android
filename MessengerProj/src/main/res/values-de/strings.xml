@@ -208,7 +208,7 @@
     <string name="PermissionOpenSettings">Einstellungen anpassen</string>
     <!--Intro view-->
     <string name="Intro1Headline">Delta Chat</string>
-    <string name="Intro1Message">Der Messenger mit der <![CDATA[<b>größten Reichweite</b>]]> der Welt.<![CDATA[<br/><b>Kostenlos</b>]]> und <![CDATA[<b>sicher</b>]]>.</string>
+    <string name="Intro1Message">Der Messenger mit der <![CDATA[<b>größten Reichweite</b>]]> der Welt. <![CDATA[<b>Kostenlos</b>]]> und <![CDATA[<b>sicher</b>]]>.</string>
 
     <string name="Intro2Headline">Unabhängig</string>
     <string name="Intro2Message"><![CDATA[<b>Keine Abhängigkeiten</b>]]> von fremden Diensten und Servern. Die App verwendet nur Ihren E-Mail-Server.</string>

@@ -165,7 +165,7 @@ public class SettingsActivity extends BaseFragment {
                     presentFragment(new SettingsAdvActivity());
                 }
                 else if (i == aboutRow ) {
-                    Intent intent2 = new Intent(getParentActivity(), IntroActivity.class);
+                    Intent intent2 = new Intent(getParentActivity(), WelcomeActivity.class);
                     intent2.putExtra("com.b44t.ui.IntroActivity.isAbout", true);
                     getParentActivity().startActivity(intent2);
                 }
@@ -293,7 +293,7 @@ public class SettingsActivity extends BaseFragment {
                 }
                 TextDetailSettingsCell textCell = (TextDetailSettingsCell) view;
                 if (i == aboutRow) {
-                    textCell.setTextAndValue(mContext.getString(R.string.AboutThisProgram), "v" + IntroActivity.getVersion(), true);
+                    textCell.setTextAndValue(mContext.getString(R.string.AboutThisProgram), "v" + WelcomeActivity.getVersion(), true);
                 }
             }
             else if (type == ROWTYPE_CHECK ) {

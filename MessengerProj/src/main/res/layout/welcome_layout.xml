@@ -1,0 +1,106 @@
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:fillViewport="true">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#fafafa">
+
+        <android.support.v4.view.ViewPager
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/welcome_pager"/>
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/bottom_pages"
+            android:orientation="horizontal"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="336dp">
+
+            <FrameLayout
+                android:layout_width="8dp"
+                android:layout_height="8dp"
+                android:background="#cccccc"/>
+
+            <FrameLayout
+                android:layout_width="8dp"
+                android:layout_height="8dp"
+                android:background="#cccccc"
+                android:layout_marginLeft="8dp"
+                android:layout_marginStart="8dp"/>
+
+            <FrameLayout
+                android:layout_width="8dp"
+                android:layout_height="8dp"
+                android:background="#cccccc"
+                android:layout_marginLeft="8dp"
+                android:layout_marginStart="8dp"/>
+
+            <FrameLayout
+                android:layout_width="8dp"
+                android:layout_height="8dp"
+                android:background="#cccccc"
+                android:layout_marginLeft="8dp"
+                android:layout_marginStart="8dp"/>
+
+            <FrameLayout
+                android:layout_width="8dp"
+                android:layout_height="8dp"
+                android:background="#cccccc"
+                android:layout_marginLeft="8dp"
+                android:layout_marginStart="8dp"/>
+
+            <FrameLayout
+                android:layout_width="8dp"
+                android:layout_height="8dp"
+                android:background="#cccccc"
+                android:layout_marginLeft="8dp"
+                android:layout_marginStart="8dp"/>
+
+            <FrameLayout
+                android:layout_width="8dp"
+                android:layout_height="8dp"
+                android:background="#cccccc"
+                android:layout_marginLeft="8dp"
+                android:layout_marginStart="8dp"/>
+
+        </LinearLayout>
+
+        <Button android:id="@+id/welcome_primary_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginTop="380dp"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:textColor="#ffffff"
+                android:gravity="center"
+                android:background="#2ca5e0"
+                style="?android:attr/buttonBarButtonStyle" />
+
+        <TextView android:id="@+id/welcome_secondary_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal|bottom"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginTop="420dp"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:paddingTop="16dp"
+                android:paddingBottom="24dp"
+                android:textColor="#808080"
+                android:gravity="center"
+                android:textSize="15sp" />
+
+    </FrameLayout>
+
+</ScrollView>

@@ -102,7 +102,7 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
         if( MrMailbox.isConfigured()==0 ) {
             Intent intent = getIntent();
             if (intent != null && !intent.getBooleanExtra("fromIntro", false)) {
-                Intent intent2 = new Intent(this, IntroActivity.class);
+                Intent intent2 = new Intent(this, WelcomeActivity.class);
                 startActivity(intent2);
                 super.onCreate(savedInstanceState);
                 finish();
@@ -787,7 +787,6 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
             builder.setMessage(msg.trim());
 
             builder.setPositiveButton(ApplicationLoader.applicationContext.getString(R.string.PermissionOpenSettings), new DialogInterface.OnClickListener() {
-                @TargetApi(Build.VERSION_CODES.GINGERBREAD)
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     try {

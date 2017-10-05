@@ -530,7 +530,7 @@ public class PasscodeView extends FrameLayout {
 
                     AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
                     builder.setView(relativeLayout);
-                    builder.setNegativeButton(ApplicationLoader.applicationContext.getString(R.string.Cancel), null);
+                    builder.setNegativeButton(R.string.Cancel, null);
                     builder.setOnDismissListener(new DialogInterface.OnDismissListener() {
                         @Override
                         public void onDismiss(DialogInterface dialog) {

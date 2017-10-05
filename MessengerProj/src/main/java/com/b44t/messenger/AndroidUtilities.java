@@ -51,6 +51,7 @@ import android.support.v4.content.FileProvider;
 import android.text.SpannableStringBuilder;
 import android.text.Spanned;
 import android.text.style.ForegroundColorSpan;
+import android.text.style.StyleSpan;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.util.StateSet;
@@ -485,6 +486,19 @@ public class AndroidUtilities {
                 bolds.add(end);
             }
 
+            // italics
+            ArrayList<Integer> italics = new ArrayList<>();
+            while ((start = stringBuilder.indexOf("<i>")) != -1) {
+                stringBuilder.replace(start, start + 3, "");
+                end = stringBuilder.indexOf("</i>");
+                if (end == -1) {
+                    end = stringBuilder.indexOf("<i>");
+                }
+                stringBuilder.replace(end, end + 4, "");
+                italics.add(start);
+                italics.add(end);
+            }
+
             // color - used eg. by the message preview when following a mailto:-link
             ArrayList<Integer> colors = new ArrayList<>();
             while ((start = stringBuilder.indexOf("<c#")) != -1) {
@@ -502,6 +516,9 @@ public class AndroidUtilities {
             SpannableStringBuilder spannableStringBuilder = new SpannableStringBuilder(stringBuilder);
             for (int a = 0; a < bolds.size() / 2; a++) {
                 spannableStringBuilder.setSpan(new TypefaceSpan(Typeface.DEFAULT_BOLD), bolds.get(a * 2), bolds.get(a * 2 + 1), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+            }
+            for (int a = 0; a < italics.size() / 2; a++) {
+                spannableStringBuilder.setSpan(new StyleSpan(Typeface.ITALIC), italics.get(a * 2), italics.get(a * 2 + 1), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
             }
             for (int a = 0; a < colors.size() / 3; a++) {
                 spannableStringBuilder.setSpan(new ForegroundColorSpan(colors.get(a * 3 + 2)), colors.get(a * 3), colors.get(a * 3 + 1), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);

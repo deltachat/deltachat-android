@@ -70,10 +70,12 @@ public class MrMailbox {
     public native static String getInfo();
     public native static String cmdline(String cmd);
 
-    public final static int MR_IMEX_EXPORT_SELF_KEYS = 0x01;
-    public final static int MR_IMEX_EXPORT_BACKUP = 0x02;
-    public final static int MR_IMEX_IMPORT_SELF_KEYS = 0x00010000;
+    public final static int MR_IMEX_EXPORT_SELF_KEYS = 1;
+    public final static int MR_IMEX_IMPORT_SELF_KEYS = 2;
+    public final static int MR_IMEX_EXPORT_BACKUP = 11;
+    public final static int MR_IMEX_IMPORT_BACKUP = 12;
     public native static void imex(int what, String dir);
+    public native static String imexHasBackup(String dir);
     public native static int  checkPassword(String pw);
 
     public native static void heartbeat();
@@ -192,9 +194,8 @@ public class MrMailbox {
     public final static int MR_EVENT_CONFIGURE_ENDED          = 2040;
     public final static int MR_EVENT_CONFIGURE_PROGRESS       = 2041;
 
-    public final static int MR_EVENT_EXPORT_ENDED             = 2050;
-    public final static int MR_EVENT_EXPORT_PROGRESS          = 2051;
-    public final static int MR_EVENT_EXPORT_FILE_WRITTEN      = 2052;
+    public final static int MR_EVENT_IMEX_ENDED               = 2050;
+    public final static int MR_EVENT_IMEX_PROGRESS            = 2051;
 
     public final static int MR_EVENT_IS_ONLINE                = 2080;
     public final static int MR_EVENT_GET_STRING               = 2091;
@@ -229,36 +230,22 @@ public class MrMailbox {
                 });
                 return 0;
 
-            case MR_EVENT_EXPORT_ENDED:
+            case MR_EVENT_IMEX_ENDED:
                 AndroidUtilities.runOnUIThread(new Runnable() {
                     @Override
                     public void run() {
-                        NotificationCenter.getInstance().postNotificationName(NotificationCenter.exportEnded, (int)data1);
+                        NotificationCenter.getInstance().postNotificationName(NotificationCenter.imexEnded, (int)data1);
                     }
                 });
                 return 0;
 
-            case MR_EVENT_EXPORT_PROGRESS:
+            case MR_EVENT_IMEX_PROGRESS:
                 AndroidUtilities.runOnUIThread(new Runnable() {
                     @Override
                     public void run() {
-                        NotificationCenter.getInstance().postNotificationName(NotificationCenter.exportProgress, (int)data1);
+                        NotificationCenter.getInstance().postNotificationName(NotificationCenter.imexProgress, (int)data1);
                     }
                 });
-                return 0;
-
-            case MR_EVENT_EXPORT_FILE_WRITTEN: {
-                final String file_name = CPtr2String(data1);
-                final String file_mime = CPtr2String(data2);
-                AndroidUtilities.runOnUIThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        File file = new File(file_name);
-                        DownloadManager downloadManager = (DownloadManager) ApplicationLoader.applicationContext.getSystemService(Context.DOWNLOAD_SERVICE);
-                        downloadManager.addCompletedDownload(file.getName(), file.getName(), true, file_mime, file.getAbsolutePath(), file.length(), true);
-                    }
-                });
-                }
                 return 0;
 
             case MR_EVENT_MSGS_CHANGED:

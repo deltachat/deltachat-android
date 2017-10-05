@@ -564,6 +564,20 @@ JNIEXPORT jint Java_com_b44t_messenger_MrMailbox_checkPassword(JNIEnv *env, jcla
 }
 
 
+JNIEXPORT jstring Java_com_b44t_messenger_MrMailbox_imexHasBackup(JNIEnv *env, jclass cls, jstring dir)
+{
+	CHAR_REF(dir);
+		jstring ret = NULL;
+		char* temp = mrmailbox_imex_has_backup(get_mrmailbox_t(env, cls),  dirPtr);
+		if( temp ) {
+			temp = JSTRING_NEW(temp);
+			free(temp);
+		}
+	CHAR_UNREF(dir);
+	return ret; /* may be NULL! */
+}
+
+
 JNIEXPORT void Java_com_b44t_messenger_MrMailbox_heartbeat(JNIEnv *env, jclass cls)
 {
     mrmailbox_heartbeat(get_mrmailbox_t(env, cls));

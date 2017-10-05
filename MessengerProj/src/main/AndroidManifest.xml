@@ -106,7 +106,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.b44t.ui.IntroActivity"
+            android:name="com.b44t.ui.WelcomeActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize">
         </activity>
         <activity

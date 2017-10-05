@@ -52,7 +52,6 @@ import com.b44t.ui.Adapters.BaseFragmentAdapter;
 import com.b44t.ui.Cells.HeaderCell;
 import com.b44t.ui.Cells.ShadowSectionCell;
 import com.b44t.ui.Cells.TextCheckCell;
-import com.b44t.ui.Cells.TextInfoCell;
 import com.b44t.ui.Cells.TextSettingsCell;
 import com.b44t.ui.ActionBar.ActionBar;
 import com.b44t.ui.ActionBar.BaseFragment;
@@ -80,19 +79,20 @@ public class SettingsAdvActivity extends BaseFragment implements NotificationCen
     private int imexHeaderRow;
     private int manageKeysRow;
     private int backupRow;
-    private int imexInfoRow;
+    private int backupShadowRow;
     private int rowCount;
 
     private static final int ROWTYPE_SHADOW          = 0;
     private static final int ROWTYPE_TEXT_SETTINGS   = 1;
     private static final int ROWTYPE_CHECK           = 2;
     private static final int ROWTYPE_HEADER          = 3;
-    private static final int ROWTYPE_INFO            = 4;
-    private static final int ROWTYPE_COUNT           = 5;
+    private static final int ROWTYPE_COUNT           = 4;
 
     private ListView listView;
 
     public final int MR_E2EE_DEFAULT_ENABLED = 1; // when changing this constant, also change it in the C-part
+
+    private String imexDirString = "";
 
     public static int defMsgFontSize() {
         return 16;
@@ -102,8 +102,8 @@ public class SettingsAdvActivity extends BaseFragment implements NotificationCen
     public boolean onFragmentCreate() {
         super.onFragmentCreate();
 
-        NotificationCenter.getInstance().addObserver(this, NotificationCenter.exportEnded);
-        NotificationCenter.getInstance().addObserver(this, NotificationCenter.exportProgress);
+        NotificationCenter.getInstance().addObserver(this, NotificationCenter.imexEnded);
+        NotificationCenter.getInstance().addObserver(this, NotificationCenter.imexProgress);
 
         rowCount = 0;
         accountSettingsRow = rowCount++;
@@ -126,7 +126,7 @@ public class SettingsAdvActivity extends BaseFragment implements NotificationCen
         imexHeaderRow           = rowCount++;
         manageKeysRow           = rowCount++;
         backupRow               = rowCount++;
-        imexInfoRow             = rowCount++;
+        backupShadowRow         = rowCount++;
 
         return true;
     }
@@ -134,8 +134,8 @@ public class SettingsAdvActivity extends BaseFragment implements NotificationCen
     @Override
     public void onFragmentDestroy() {
         super.onFragmentDestroy();
-        NotificationCenter.getInstance().removeObserver(this, NotificationCenter.exportEnded);
-        NotificationCenter.getInstance().removeObserver(this, NotificationCenter.exportProgress);
+        NotificationCenter.getInstance().removeObserver(this, NotificationCenter.imexEnded);
+        NotificationCenter.getInstance().removeObserver(this, NotificationCenter.imexProgress);
     }
 
     @Override
@@ -239,11 +239,15 @@ public class SettingsAdvActivity extends BaseFragment implements NotificationCen
                 }
                 else if(i==manageKeysRow )
                 {
-                    imexShowMenu(ApplicationLoader.applicationContext.getString(R.string.E2EManagePrivateKeys), MrMailbox.MR_IMEX_EXPORT_SELF_KEYS, MrMailbox.MR_IMEX_IMPORT_SELF_KEYS);
+                    imexShowMenu(ApplicationLoader.applicationContext.getString(R.string.E2EManagePrivateKeys),
+                            MrMailbox.MR_IMEX_EXPORT_SELF_KEYS, ApplicationLoader.applicationContext.getString(R.string.ExportPrivateKeys),
+                            MrMailbox.MR_IMEX_IMPORT_SELF_KEYS, ApplicationLoader.applicationContext.getString(R.string.ImportPrivateKeys));
                 }
                 else if( i == backupRow )
                 {
-                    imexShowMenu(ApplicationLoader.applicationContext.getString(R.string.Backup), MrMailbox.MR_IMEX_EXPORT_BACKUP, 0);
+                    imexShowMenu(ApplicationLoader.applicationContext.getString(R.string.Backup),
+                            MrMailbox.MR_IMEX_EXPORT_BACKUP, ApplicationLoader.applicationContext.getString(R.string.ExportBackup),
+                            0, ApplicationLoader.applicationContext.getString(R.string.ImportBackup));
                 }
                 else if (i == textSizeRow) {
                     if (getParentActivity() == null) {
@@ -290,14 +294,15 @@ public class SettingsAdvActivity extends BaseFragment implements NotificationCen
         return fragmentView;
     }
 
-    private void imexShowMenu(String title, final int exportCommand, final int importCommand)
+    private void imexShowMenu(String title, final int exportCommand, final String exportMenuEntry, final int importCommand, final String importMenuEntry)
     {
+        File downloadsDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
+        downloadsDir.mkdirs();
+        imexDirString = downloadsDir.getAbsolutePath();
+
         AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity()); // was: BottomSheet.Builder
         builder.setTitle(title);
-        CharSequence[] items = new CharSequence[]{
-                ApplicationLoader.applicationContext.getString(R.string.ExportToDownloads),
-                ApplicationLoader.applicationContext.getString(R.string.ImportFromDownloads),
-        };
+        CharSequence[] items = new CharSequence[]{exportMenuEntry, importMenuEntry};
         builder.setItems(items, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
@@ -325,12 +330,14 @@ public class SettingsAdvActivity extends BaseFragment implements NotificationCen
                             FrameLayout.LayoutParams params = new  FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
                             params.leftMargin = AndroidUtilities.dp(24);
                             params.rightMargin = AndroidUtilities.dp(24);
+                            params.topMargin = AndroidUtilities.dp(16);
                             input.setLayoutParams(params);
                             input.setInputType(InputType.TYPE_CLASS_TEXT|InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS| InputType.TYPE_TEXT_VARIATION_PASSWORD);
                             container.addView(input);
 
                             builderPw.setView(container);
-                            String enterPwMsg = String.format(ApplicationLoader.applicationContext.getString(R.string.EnterPasswordToContinue), MrMailbox.getConfig("addr", ""));
+                            builderPw.setTitle(exportMenuEntry);
+                            String enterPwMsg = String.format(ApplicationLoader.applicationContext.getString(R.string.ImportExportExplain)+"\n\n"+ApplicationLoader.applicationContext.getString(R.string.EnterPasswordToContinue), MrMailbox.getConfig("addr", ""));
                             builderPw.setMessage(enterPwMsg);
                             builderPw.setNegativeButton(ApplicationLoader.applicationContext.getString(R.string.Cancel), null);
                             builderPw.setPositiveButton(ApplicationLoader.applicationContext.getString(R.string.OK), new DialogInterface.OnClickListener() {
@@ -355,7 +362,8 @@ public class SettingsAdvActivity extends BaseFragment implements NotificationCen
                                 }
 
                                 AlertDialog.Builder builder3 = new AlertDialog.Builder(getParentActivity());
-                                builder3.setMessage(ApplicationLoader.applicationContext.getString(R.string.ImportPrivateKeysAsk));
+                                builder3.setTitle(importMenuEntry);
+                                builder3.setMessage(AndroidUtilities.replaceTags(String.format(ApplicationLoader.applicationContext.getString(R.string.ImportPrivateKeysAsk2), imexDirString)));
                                 builder3.setNegativeButton(ApplicationLoader.applicationContext.getString(R.string.Cancel), null);
                                 builder3.setPositiveButton(ApplicationLoader.applicationContext.getString(R.string.OK), new DialogInterface.OnClickListener() {
                                     @Override
@@ -367,12 +375,13 @@ public class SettingsAdvActivity extends BaseFragment implements NotificationCen
                             }
                             else {
                                 AlertDialog.Builder builder3 = new AlertDialog.Builder(getParentActivity());
+                                builder3.setTitle(importMenuEntry);
                                 builder3.setPositiveButton(ApplicationLoader.applicationContext.getString(R.string.OK), new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialogInterface, int i) {
                                     }
                                 });
-                                builder3.setMessage(ApplicationLoader.applicationContext.getString(R.string.ImportBackupExplain));
+                                builder3.setMessage(AndroidUtilities.replaceTags(String.format(ApplicationLoader.applicationContext.getString(R.string.ImportBackupExplain2), imexDirString)));
                                 showDialog(builder3.create());
                             }
                         }
@@ -407,21 +416,24 @@ public class SettingsAdvActivity extends BaseFragment implements NotificationCen
             MrMailbox.m_lastErrorString = "";
         }
 
-        File downloadsDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
-        downloadsDir.mkdirs();
-        MrMailbox.imex(what, downloadsDir.getAbsolutePath());
+        MrMailbox.imex(what, imexDirString);
     }
 
     @Override
     public void didReceivedNotification(int id, Object... args) {
-        if( id==NotificationCenter.exportProgress ) {
+        if( id==NotificationCenter.imexProgress ) {
             if( progressDialog!=null ) {
                 // we want the spinner together with a progress info
-                int percent = (Integer)args[0];
+                int percent = (Integer)args[0] / 10;
                 progressDialog.setMessage(ApplicationLoader.applicationContext.getString(R.string.OneMoment)+String.format(" %d%%", percent));
             }
         }
-        else if( id==NotificationCenter.exportEnded ) {
+        else if( id==NotificationCenter.imexEnded ) {
+            /* We do not add the exported files using downloadManager.addCompletedDownload() as
+            they get deleted when the app is uninstalled (since Android 6.0) - this frustrates the usecase export-uninstall-install-import.
+            (see https://stackoverflow.com/questions/35209375/android-6-0-external-storage-files-being-deleted-upon-app-uninstall
+            and https://commonsware.com/blog/2016/02/09/changes-downloadmanager-behavior.html ) */
+
             final String errorString;
 
             synchronized (MrMailbox.m_lastErrorLock) {
@@ -435,7 +447,15 @@ public class SettingsAdvActivity extends BaseFragment implements NotificationCen
             }
 
             if( (int)args[0]==1 ) {
-                AndroidUtilities.showDoneHint(ApplicationLoader.applicationContext);
+                AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
+                builder.setMessage(AndroidUtilities.replaceTags(String.format(ApplicationLoader.applicationContext.getString(R.string.FilesSuccessfullyExported), imexDirString)+"\n\n"+ApplicationLoader.applicationContext.getString(R.string.ImportExportExplain)));
+                builder.setPositiveButton(ApplicationLoader.applicationContext.getString(R.string.OK), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        ;
+                    }
+                });
+                showDialog(builder.create());
             }
             else if( !errorString.isEmpty() /*usually empty if export is cancelled by the user*/ ) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
@@ -466,7 +486,7 @@ public class SettingsAdvActivity extends BaseFragment implements NotificationCen
         @Override
         public boolean isEnabled(int i) {
             int type = getItemViewType(i);
-            return (type!=ROWTYPE_SHADOW && type!=ROWTYPE_HEADER && type!=ROWTYPE_INFO);
+            return (type!=ROWTYPE_SHADOW && type!=ROWTYPE_HEADER);
         }
 
         @Override
@@ -496,7 +516,7 @@ public class SettingsAdvActivity extends BaseFragment implements NotificationCen
                 if (view == null) {
                     view = new ShadowSectionCell(mContext);
                 }
-                view.setBackgroundResource(R.drawable.greydivider);
+                view.setBackgroundResource(i==backupShadowRow? R.drawable.greydivider_bottom : R.drawable.greydivider);
             } else if (type == ROWTYPE_TEXT_SETTINGS) {
                 if (view == null) {
                     view = new TextSettingsCell(mContext);
@@ -559,29 +579,18 @@ public class SettingsAdvActivity extends BaseFragment implements NotificationCen
                     ((HeaderCell) view).setText(mContext.getString(R.string.ExportImportHeader));
                 }
             }
-            else if (type == ROWTYPE_INFO) {
-                if (view == null) {
-                    view = new TextInfoCell(mContext);
-                }
-                if( i==imexInfoRow) {
-                    ((TextInfoCell) view).setText(mContext.getString(R.string.ImportExportExplain));
-                    view.setBackgroundResource(R.drawable.greydivider_bottom);
-                }
-            }
 
             return view;
         }
 
         @Override
         public int getItemViewType(int i) {
-            if (i== settingsShadowRow ) {
+            if (i== settingsShadowRow || i==backupShadowRow ) {
                 return ROWTYPE_SHADOW;
             } else if( i==imexHeaderRow ) {
                 return ROWTYPE_HEADER;
             } else if ( i == sendByEnterRow || i == raiseToSpeakRow || i == autoplayGifsRow || i==showUnknownSendersRow || i == directShareRow || i==e2eEncryptionRow) {
                 return ROWTYPE_CHECK;
-            } else if( i== imexInfoRow ) {
-                return ROWTYPE_INFO;
             } else {
                 return ROWTYPE_TEXT_SETTINGS;
             }

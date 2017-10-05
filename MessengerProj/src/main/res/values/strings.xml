@@ -376,9 +376,6 @@
     <string name="AutoplayGifs">Autoplay GIFs</string>
     <string name="HelpUrl">https://delta.chat/en/help</string>
     <string name="EncryptedMessage">Encrypted message</string>
-    <string name="ImportFromDownloads">Import from \"Downloads\"</string>
-    <string name="ExportToDownloads">Export to \"Downloads\"</string>
-    <string name="ImportPrivateKeysAsk">Import private keys from \"Downloads\"?\n\n• Existing private keys are not deleted\n\n• The last imported key will be used as the new default key</string>
     <string name="Encryption">Encryption</string>
     <string name="EncrinfoE2E">End-to-end encryption enabled.</string>
     <string name="EncrinfoE2EExplain">If all fingerprints match on the other device, the connection is safe.</string>
@@ -387,7 +384,7 @@
     <string name="EncrinfoNoE2EExplain">Encryption will switch to end-to-end automatically as soon as the contact uses Delta Chat or another Autocrypt-enabled app.</string>
     <string name="EncrinfoFingerprints">Fingerprints</string>
     <string name="Backup">Backup</string>
-    <string name="ImportBackupExplain">To import a backup, copy to the backup to the \"Downloads\" directory and reinstall the app.</string>
+    <string name="ImportBackupExplain2">To import a backup, copy a backup to <![CDATA[<i>]]>%1$s<![CDATA[</i>]]> and reinstall the app.</string>
     <string name="ReadReceiptMailBody">This is a return receipt for the message \"%1$s\".\n\nThis return receipt only acknowledges that the message was displayed on the recipient\'s device. There is no guarantee that the recipient has read the message contents.</string>
     <string name="ReadReceipt">Return receipt</string>
     <string name="NameAndStatus">Name and status</string>
@@ -396,7 +393,15 @@
     <string name="MsgGroupImageDeleted">Group image deleted.</string>
     <string name="AskDeleteGroupImage">Are you sure to delete the group image?\n\nThis will affect all devices of all group members.</string>
     <string name="ExportImportHeader">Export and import</string>
-    <string name="ImportExportExplain">Exported files may contain private keys! Keep them in a safe place or delete them as soon as possible.</string>
+    <string name="ImportExportExplain">Exported files will contain private keys! Keep them in a safe place or delete them as soon as possible.</string>
     <string name="EnterPasswordToContinue">Enter the password for %1$s to continue:</string>
     <string name="IncorrectPassword">Incorrect password.</string>
+    <string name="ImportBackupAsk">Delta Chat has found a backup at <![CDATA[<i>]]>%1$s<![CDATA[</i>]]>.\n\nDo you want to import and use all data and settings from this backup?</string>
+    <string name="ImportBackup">Import backup</string>
+    <string name="NoBackupFound">No backup to import found.\n\nCopy the backup to <![CDATA[<i>]]>%1$s<![CDATA[</i>]]> and try again. Alternatively, hit \"Start messaging\" for a normal setup process.</string>
+    <string name="FilesSuccessfullyExported">Files successfully exported to <![CDATA[<i>]]>%1$s<![CDATA[</i>]]>.</string>
+    <string name="ExportBackup">Export backup</string>
+    <string name="ExportPrivateKeys">Export private keys</string>
+    <string name="ImportPrivateKeys">Import private keys</string>
+    <string name="ImportPrivateKeysAsk2">Import private keys from <![CDATA[<i>]]>%1$s<![CDATA[</i>]]>?\n\n• Existing private keys are not deleted\n\n• The last imported key will be used as the new default key</string>
 </resources>

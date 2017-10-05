@@ -108,8 +108,6 @@ public class TLRPC {
 
 	public static class User extends TLObject {
 		public int id;
-		public String first_name;
-		public String last_name;
 		public String username;
 		public UserProfilePhoto photo;
         public int flags;
@@ -150,7 +148,6 @@ public class TLRPC {
 
 	public static class InputStickerSet extends TLObject {
 		public long id;
-		public String short_name;
 	}
 
 	public static class TL_inputStickerSetEmpty extends InputStickerSet {

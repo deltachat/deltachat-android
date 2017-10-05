@@ -33,8 +33,8 @@ public class NotificationCenter {
 
     public static final int configureEnded = totalEvents++;
     public static final int configureProgress = totalEvents++;
-    public static final int exportEnded = totalEvents++;
-    public static final int exportProgress = totalEvents++;
+    public static final int imexEnded = totalEvents++;
+    public static final int imexProgress = totalEvents++;
     public static final int didReceivedNewMessages = totalEvents++;
     public static final int updateInterfaces = totalEvents++;
     public static final int dialogsNeedReload = totalEvents++;
@@ -130,12 +130,6 @@ public class NotificationCenter {
             delayedPosts.clear();
         }
     }
-
-
-    public boolean isAnimationInProgress() {
-        return animationInProgress;
-    }
-
 
     public void postNotificationName(int id, Object... args) {
         boolean allowDuringAnimation = false;
