@@ -570,7 +570,7 @@ JNIEXPORT jstring Java_com_b44t_messenger_MrMailbox_imexHasBackup(JNIEnv *env, j
 		jstring ret = NULL;
 		char* temp = mrmailbox_imex_has_backup(get_mrmailbox_t(env, cls),  dirPtr);
 		if( temp ) {
-			temp = JSTRING_NEW(temp);
+			ret = JSTRING_NEW(temp);
 			free(temp);
 		}
 	CHAR_UNREF(dir);

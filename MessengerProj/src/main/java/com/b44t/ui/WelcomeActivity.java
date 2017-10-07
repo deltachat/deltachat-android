@@ -25,6 +25,7 @@ package com.b44t.ui;
 import android.Manifest;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -51,6 +52,7 @@ import com.b44t.messenger.ApplicationLoader;
 import com.b44t.messenger.BuildConfig;
 import com.b44t.messenger.LocaleController;
 import com.b44t.messenger.MrMailbox;
+import com.b44t.messenger.NotificationCenter;
 import com.b44t.messenger.R;
 import com.b44t.ui.ActionBar.Theme;
 
@@ -58,7 +60,7 @@ import java.io.File;
 
 import static java.lang.Math.min;
 
-public class WelcomeActivity extends Activity {
+public class WelcomeActivity extends Activity implements NotificationCenter.NotificationCenterDelegate {
 
     private boolean isAbout = false;
     private final static int NUM_PAGES = 7;
@@ -72,6 +74,9 @@ public class WelcomeActivity extends Activity {
         super.onCreate(savedInstanceState);
         Theme.loadRecources(this);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
+
+        NotificationCenter.getInstance().addObserver(this, NotificationCenter.imexEnded);
+        NotificationCenter.getInstance().addObserver(this, NotificationCenter.imexProgress);
 
         Bundle extras = getIntent().getExtras();
         if( extras != null && extras.getBoolean("com.b44t.ui.IntroActivity.isAbout") ) {
@@ -138,6 +143,13 @@ public class WelcomeActivity extends Activity {
         viewPager.setAdapter(new IntroAdapter());
         viewPager.setPageMargin(0);
         viewPager.setCurrentItem(LocaleController.isRTL? NUM_PAGES-1 : 0);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        NotificationCenter.getInstance().removeObserver(this, NotificationCenter.imexEnded);
+        NotificationCenter.getInstance().removeObserver(this, NotificationCenter.imexProgress);
     }
 
     private class IntroAdapter extends PagerAdapter {
@@ -286,24 +298,90 @@ public class WelcomeActivity extends Activity {
     private void tryToStartImport() {
         File downloadsDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
         downloadsDir.mkdirs();
-        final String backupStr = MrMailbox.imexHasBackup(downloadsDir.getAbsolutePath());
-        if (backupStr != null) {
+        final String backupFile = MrMailbox.imexHasBackup(downloadsDir.getAbsolutePath());
+        if (backupFile != null) {
             new AlertDialog.Builder(this)
-                    .setMessage(AndroidUtilities.replaceTags(String.format(ApplicationLoader.applicationContext.getString(R.string.ImportBackupAsk), backupStr)))
+                    .setTitle(R.string.ImportBackup)
+                    .setMessage(AndroidUtilities.replaceTags(String.format(ApplicationLoader.applicationContext.getString(R.string.ImportBackupAsk), backupFile)))
                     .setNegativeButton(R.string.Cancel, null)
                     .setPositiveButton(R.string.OK, new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
-                            MrMailbox.imex(MrMailbox.MR_IMEX_IMPORT_BACKUP, backupStr);
+                            startImport(backupFile);
                         }
                     })
                     .show();
         }
         else {
             new AlertDialog.Builder(this)
+                    .setTitle(R.string.ImportBackup)
                     .setMessage(AndroidUtilities.replaceTags(String.format(ApplicationLoader.applicationContext.getString(R.string.NoBackupFound), downloadsDir.getAbsolutePath())))
                     .setPositiveButton(R.string.OK, null)
                     .show();
+        }
+    }
+
+    private ProgressDialog progressDialog = null;
+    private void startImport(String backupFile)
+    {
+        if( progressDialog!=null ) {
+            progressDialog.dismiss();
+            progressDialog = null;
+        }
+
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage(ApplicationLoader.applicationContext.getString(R.string.OneMoment));
+        progressDialog.setCanceledOnTouchOutside(false);
+        progressDialog.setCancelable(false);
+        progressDialog.setButton(DialogInterface.BUTTON_NEGATIVE, ApplicationLoader.applicationContext.getString(R.string.Cancel), new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                MrMailbox.imex(0, null);
+            }
+        });
+        progressDialog.show();
+
+        synchronized (MrMailbox.m_lastErrorLock) {
+            MrMailbox.m_showNextErrorAsToast = false;
+            MrMailbox.m_lastErrorString = "";
+        }
+
+        MrMailbox.imex(MrMailbox.MR_IMEX_IMPORT_BACKUP, backupFile);
+    }
+
+    @Override
+    public void didReceivedNotification(int id, Object... args) {
+        if (id == NotificationCenter.imexProgress) {
+            // we want the spinner together with a progress info
+            int percent = (Integer)args[0] / 10;
+            progressDialog.setMessage(ApplicationLoader.applicationContext.getString(R.string.OneMoment)+String.format(" %d%%", percent));
+        } else if (id == NotificationCenter.imexEnded) {
+
+            final String errorString;
+
+            synchronized (MrMailbox.m_lastErrorLock) {
+                MrMailbox.m_showNextErrorAsToast = true;
+                errorString = MrMailbox.m_lastErrorString;
+            }
+
+            if( progressDialog!=null ) {
+                progressDialog.dismiss();
+                progressDialog = null;
+            }
+
+            if( (int)args[0]==1 ) {
+                startActivity(new Intent(WelcomeActivity.this, LaunchActivity.class));
+                finish();
+                AndroidUtilities.showDoneHint(ApplicationLoader.applicationContext);
+                NotificationCenter.getInstance().postNotificationName(NotificationCenter.mainUserInfoChanged);
+            }
+            else if( !errorString.isEmpty() /*usually empty if export is cancelled by the user*/ ) {
+                new AlertDialog.Builder(this)
+                    .setTitle(R.string.ImportBackup)
+                    .setMessage(errorString)
+                    .setPositiveButton(R.string.OK, null)
+                    .show();
+            }
         }
     }
 }

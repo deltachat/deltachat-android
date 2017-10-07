@@ -254,7 +254,7 @@ public class SettingsAdvActivity extends BaseFragment implements NotificationCen
                         return;
                     }
                     AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
-                    builder.setTitle(ApplicationLoader.applicationContext.getString(R.string.TextSize));
+                    builder.setTitle(R.string.TextSize);
                     final NumberPicker numberPicker = new NumberPicker(getParentActivity());
                     final int MIN_VAL = 12;
                     final int MAX_VAL = 30;
@@ -273,7 +273,7 @@ public class SettingsAdvActivity extends BaseFragment implements NotificationCen
                     numberPicker.setWrapSelectorWheel(false);
                     numberPicker.setValue(ApplicationLoader.fontSize);
                     builder.setView(numberPicker);
-                    builder.setPositiveButton(ApplicationLoader.applicationContext.getString(R.string.OK), new DialogInterface.OnClickListener() {
+                    builder.setPositiveButton(R.string.OK, new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("mainconfig", Activity.MODE_PRIVATE);
@@ -339,8 +339,8 @@ public class SettingsAdvActivity extends BaseFragment implements NotificationCen
                             builderPw.setTitle(exportMenuEntry);
                             String enterPwMsg = String.format(ApplicationLoader.applicationContext.getString(R.string.ImportExportExplain)+"\n\n"+ApplicationLoader.applicationContext.getString(R.string.EnterPasswordToContinue), MrMailbox.getConfig("addr", ""));
                             builderPw.setMessage(enterPwMsg);
-                            builderPw.setNegativeButton(ApplicationLoader.applicationContext.getString(R.string.Cancel), null);
-                            builderPw.setPositiveButton(ApplicationLoader.applicationContext.getString(R.string.OK), new DialogInterface.OnClickListener() {
+                            builderPw.setNegativeButton(R.string.Cancel, null);
+                            builderPw.setPositiveButton(R.string.OK, new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialogInterface, int i) {
                                     String pw = input.getText().toString().trim();
@@ -364,8 +364,8 @@ public class SettingsAdvActivity extends BaseFragment implements NotificationCen
                                 AlertDialog.Builder builder3 = new AlertDialog.Builder(getParentActivity());
                                 builder3.setTitle(importMenuEntry);
                                 builder3.setMessage(AndroidUtilities.replaceTags(String.format(ApplicationLoader.applicationContext.getString(R.string.ImportPrivateKeysAsk2), imexDirString)));
-                                builder3.setNegativeButton(ApplicationLoader.applicationContext.getString(R.string.Cancel), null);
-                                builder3.setPositiveButton(ApplicationLoader.applicationContext.getString(R.string.OK), new DialogInterface.OnClickListener() {
+                                builder3.setNegativeButton(R.string.Cancel, null);
+                                builder3.setPositiveButton(R.string.OK, new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialogInterface, int i) {
                                         startImex(importCommand);
@@ -376,11 +376,7 @@ public class SettingsAdvActivity extends BaseFragment implements NotificationCen
                             else {
                                 AlertDialog.Builder builder3 = new AlertDialog.Builder(getParentActivity());
                                 builder3.setTitle(importMenuEntry);
-                                builder3.setPositiveButton(ApplicationLoader.applicationContext.getString(R.string.OK), new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialogInterface, int i) {
-                                    }
-                                });
+                                builder3.setPositiveButton(R.string.OK, null);
                                 builder3.setMessage(AndroidUtilities.replaceTags(String.format(ApplicationLoader.applicationContext.getString(R.string.ImportBackupExplain2), imexDirString)));
                                 showDialog(builder3.create());
                             }
@@ -449,23 +445,13 @@ public class SettingsAdvActivity extends BaseFragment implements NotificationCen
             if( (int)args[0]==1 ) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
                 builder.setMessage(AndroidUtilities.replaceTags(String.format(ApplicationLoader.applicationContext.getString(R.string.FilesSuccessfullyExported), imexDirString)+"\n\n"+ApplicationLoader.applicationContext.getString(R.string.ImportExportExplain)));
-                builder.setPositiveButton(ApplicationLoader.applicationContext.getString(R.string.OK), new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        ;
-                    }
-                });
+                builder.setPositiveButton(R.string.OK, null);
                 showDialog(builder.create());
             }
             else if( !errorString.isEmpty() /*usually empty if export is cancelled by the user*/ ) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
                 builder.setMessage(errorString);
-                builder.setPositiveButton(ApplicationLoader.applicationContext.getString(R.string.OK), new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        ;
-                    }
-                });
+                builder.setPositiveButton(R.string.OK, null);
                 showDialog(builder.create());
             }
         }
