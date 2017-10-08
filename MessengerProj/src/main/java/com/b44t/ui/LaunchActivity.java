@@ -1052,8 +1052,4 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
         }
         return true;
     }
-
-    @Override
-    public void onRebuildAllFragments(ActionBarLayout layout) {
-    }
 }

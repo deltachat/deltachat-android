@@ -60,7 +60,6 @@ public class ActionBarLayout extends FrameLayout {
         boolean needPresentFragment(BaseFragment fragment, boolean removeLast, boolean forceWithoutAnimation, ActionBarLayout layout);
         boolean needAddFragmentToStack(BaseFragment fragment, ActionBarLayout layout);
         boolean needCloseLastFragment(ActionBarLayout layout);
-        void onRebuildAllFragments(ActionBarLayout layout);
     }
 
     public class LinearLayoutContainer extends LinearLayout {
