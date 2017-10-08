@@ -10,7 +10,7 @@
 * Improve onboarding
 * Add URL to default footer
 * Test a different approach for battery saving in this release
-* Update French, Italien, German, Polish, Portuguese, Russian and Ukrainian translations
+* Update French, Italian, German, Polish, Portuguese, Russian and Ukrainian translations
 
 ## v0.9.4
 2017-08-23
