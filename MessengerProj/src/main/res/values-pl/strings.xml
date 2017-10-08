@@ -351,7 +351,7 @@
     <string name="AskStartChatWith">Rozpocząć czat z <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>?</string>
     <string name="DeaddropHint">Aby rozpocząć czat, naciśnij strzałkę odpowiedzi.</string>
     <string name="NotYetImplemented">Ta funkcja jest niedostępna lub niekompletna.</string>
-    <string name="DefaultStatusText">Wysłano moim komunikatorem Delta Chat. Proszę o wybaczenie mojej lakoniczności.</string>
+    <string name="DefaultStatusText">Wysłane z komunikatora Delta Chat: https://delta.chat</string>
     <string name="Name" >Nazwa</string>
     <string name="EmailAddress">Adres e-mail</string>
     <string name="CannotDeleteContact">Nie możesz usunąć kontaktu w użyciu, zamiast tego zablokuj kontakt.</string>
@@ -398,9 +398,6 @@
     <string name="AutoplayGifs">Automatycznie odtwórz GIFy</string>
     <string name="HelpUrl">https://jaworski-pawel.github.io/Delta/#help</string>
     <string name="EncryptedMessage">Szyfrowana wiadomość</string>
-    <string name="ImportFromDownloads">Importuj z katalogu „Downloads”</string>
-    <string name="ExportToDownloads">Eksportuj do katalogu „Downloads”</string>
-    <string name="ImportPrivateKeysAsk">Zaimportować prywatne klucze z „Downloads”?\n\n• Istniejące prywatne klucze nie są usuwane\n\n• Ostatni zaimportowany klucz zostanie użyty jako nowy klucz domyślny\n\nKontynuować?</string>
     <string name="Encryption">Szyfrowanie</string>
     <string name="EncrinfoE2E">Połączenie jest w pełni szyfrowane.</string>
     <string name="EncrinfoE2EExplain">Jeśli wszystkie odciski palców są zgodne z drugim urządzeniem, połączenie jest bezpieczne.</string>
@@ -409,7 +406,7 @@
     <string name="EncrinfoNoE2EExplain">Szyfrowanie przełączy się automatycznie na PEŁNE, gdy tylko kontakt użyje programu Delta Chat lub innej aplikacji obsługującej funkcję Autocrypt.</string>
     <string name="EncrinfoFingerprints">Odciski palców</string>
     <string name="Backup">Backup</string>
-    <string name="ImportBackupExplain">Aby zaimportować kopię zapasową, skopiuj ją do folderu \"Downloads\" i ponownie zainstaluj aplikację.</string>
+    <string name="ImportBackupExplain2">Aby zaimportować kopię zapasową, skopiuj ją do folderu <![CDATA[<i>]]>%1$s<![CDATA[</i>]]> i ponownie zainstaluj aplikację.</string>
     <string name="ReadReceiptMailBody">To jest potwierdzenie odczytu dla wiadomości ”%1$s„.\n\nTo potwierdzenie odczytu tylko informuje, że wiadomość została wyświetlona na urządzeniu odbiorcy. Nie ma gwarancji, że odbiorca przeczytał treść wiadomości.</string>
     <string name="ReadReceipt">Potwierdzenie odczytu</string>
     <string name="NameAndStatus">Nazwa i status</string>
@@ -417,4 +414,16 @@
     <string name="MyStatusExplain">Status jest widoczny w twoim profilu i w stopce maili.</string>
     <string name="MsgGroupImageDeleted">Usunięto obraz grupy.</string>
     <string name="AskDeleteGroupImage">Czy na pewno usunąć obraz grupy?\n\nTo wpłynie na wszystkie urządzenia, wszystkich członków grupy.</string>
+    <string name="ExportImportHeader">Export i import</string>
+    <string name="ImportExportExplain">Eksportowane pliki mogą zawierać prywatne klucze! Przechowuj je w bezpiecznym miejscu lub usuń jak najszybciej.</string>
+    <string name="EnterPasswordToContinue">Aby kontynuować, wprowadź hasło dla %1$s;</string>
+    <string name="IncorrectPassword">Nieprawidłowe hasło.</string>
+    <string name="ImportBackupAsk">Delta Chat znalazł kopię zapasową w katalogu <![CDATA[<i>]]>%1$s<![CDATA[</i>]]>.\n\nCzy chcesz zaimportować i używać wszystkich danych i ustawień z tej kopii zapasowej?</string>
+    <string name="ImportBackup">Importuj kopię zapasową</string>
+    <string name="NoBackupFound">Nie znaleziono kopii zapasowej.\n\nSkopiuj kopię zapasową do katalogu <! [CDATA [<i>]]>%1$s<! [CDATA [</i>]]> i spróbuj ponownie. Alternatywnie dotknij \"Uruchom komunikator\", aby rozpocząć normalny proces instalacji.</string>
+    <string name="FilesSuccessfullyExported">Plik został pomyślnie wyeksportowany do <![CDATA[<i>]]>%1$s<![CDATA[</i>]]>.</string>
+    <string name="ExportBackup">Eksportuj kopię zapasową</string>
+    <string name="ExportPrivateKeys">Eksportuj prywatne klucze</string>
+    <string name="ImportPrivateKeys">Importuj prywatne klucze</string>
+    <string name="ImportPrivateKeysAsk2">Zaimportować prywatne klucze z <![CDATA[<i>]]>%1$s<![CDATA[]]>?\n\n• Istniejące prywatne klucze nie są usuwane\n\n• Ostatni zaimportowany klucz zostanie użyty jako nowy klucz domyślny</string>
 </resources>
