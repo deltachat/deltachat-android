@@ -296,10 +296,10 @@ public class WelcomeActivity extends Activity implements NotificationCenter.Noti
         }
     }
 
+
     private void tryToStartImport() {
-        File downloadsDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
-        downloadsDir.mkdirs();
-        final String backupFile = MrMailbox.imexHasBackup(downloadsDir.getAbsolutePath());
+        File imexDir = SettingsAdvActivity.getImexDir();
+        final String backupFile = MrMailbox.imexHasBackup(imexDir.getAbsolutePath());
         if (backupFile != null) {
             new AlertDialog.Builder(this)
                     .setTitle(R.string.ImportBackup)
@@ -316,7 +316,7 @@ public class WelcomeActivity extends Activity implements NotificationCenter.Noti
         else {
             new AlertDialog.Builder(this)
                     .setTitle(R.string.ImportBackup)
-                    .setMessage(AndroidUtilities.replaceTags(String.format(ApplicationLoader.applicationContext.getString(R.string.NoBackupFound), downloadsDir.getAbsolutePath())))
+                    .setMessage(AndroidUtilities.replaceTags(String.format(ApplicationLoader.applicationContext.getString(R.string.NoBackupFound), imexDir.getAbsolutePath())))
                     .setPositiveButton(R.string.OK, null)
                     .show();
         }

@@ -196,6 +196,7 @@ public class MrMailbox {
 
     public final static int MR_EVENT_IMEX_ENDED               = 2050;
     public final static int MR_EVENT_IMEX_PROGRESS            = 2051;
+    public final static int MR_EVENT_IMEX_FILE_WRITTEN        = 2052;
 
     public final static int MR_EVENT_IS_ONLINE                = 2080;
     public final static int MR_EVENT_GET_STRING               = 2091;
@@ -246,6 +247,17 @@ public class MrMailbox {
                         NotificationCenter.getInstance().postNotificationName(NotificationCenter.imexProgress, (int)data1);
                     }
                 });
+                return 0;
+
+            case MR_EVENT_IMEX_FILE_WRITTEN: {
+                final String fileName = CPtr2String(data1);
+                AndroidUtilities.runOnUIThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        NotificationCenter.getInstance().postNotificationName(NotificationCenter.imexFileWritten, fileName);
+                    }
+                });
+                }
                 return 0;
 
             case MR_EVENT_MSGS_CHANGED:

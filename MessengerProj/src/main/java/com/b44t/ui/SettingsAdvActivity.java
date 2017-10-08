@@ -28,8 +28,11 @@ import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.media.MediaScannerConnection;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
 import android.text.InputType;
@@ -92,7 +95,7 @@ public class SettingsAdvActivity extends BaseFragment implements NotificationCen
 
     public final int MR_E2EE_DEFAULT_ENABLED = 1; // when changing this constant, also change it in the C-part
 
-    private String imexDirString = "";
+    private File imexDir;
 
     public static int defMsgFontSize() {
         return 16;
@@ -104,6 +107,7 @@ public class SettingsAdvActivity extends BaseFragment implements NotificationCen
 
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.imexEnded);
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.imexProgress);
+        NotificationCenter.getInstance().addObserver(this, NotificationCenter.imexFileWritten);
 
         rowCount = 0;
         accountSettingsRow = rowCount++;
@@ -136,6 +140,7 @@ public class SettingsAdvActivity extends BaseFragment implements NotificationCen
         super.onFragmentDestroy();
         NotificationCenter.getInstance().removeObserver(this, NotificationCenter.imexEnded);
         NotificationCenter.getInstance().removeObserver(this, NotificationCenter.imexProgress);
+        NotificationCenter.getInstance().removeObserver(this, NotificationCenter.imexFileWritten);
     }
 
     @Override
@@ -294,11 +299,22 @@ public class SettingsAdvActivity extends BaseFragment implements NotificationCen
         return fragmentView;
     }
 
+    static public File getImexDir()
+    {
+        // DIRECTORY_DOCUMENTS is only available since KitKat; as we also support Ice Cream Sandwich and Jellybean (2017: 11% in total), this is no option
+        // moreover, DIRECTORY_DOWNLOADS is easier accessible.
+        // CAVE: do not use DownloadManager to add the file as it is deleted on uninstall then ...
+        File imexDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
+        return imexDir;
+    }
+
     private void imexShowMenu(String title, final int exportCommand, final String exportMenuEntry, final int importCommand, final String importMenuEntry)
     {
-        File downloadsDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
-        downloadsDir.mkdirs();
-        imexDirString = downloadsDir.getAbsolutePath();
+        imexDir = getImexDir();
+        imexDir.mkdirs();
+        imexDir.setExecutable(true);
+        imexDir.setReadable(true);
+        imexDir.setWritable(true);
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity()); // was: BottomSheet.Builder
         builder.setTitle(title);
@@ -363,7 +379,7 @@ public class SettingsAdvActivity extends BaseFragment implements NotificationCen
 
                                 AlertDialog.Builder builder3 = new AlertDialog.Builder(getParentActivity());
                                 builder3.setTitle(importMenuEntry);
-                                builder3.setMessage(AndroidUtilities.replaceTags(String.format(ApplicationLoader.applicationContext.getString(R.string.ImportPrivateKeysAsk2), imexDirString)));
+                                builder3.setMessage(AndroidUtilities.replaceTags(String.format(ApplicationLoader.applicationContext.getString(R.string.ImportPrivateKeysAsk2), imexDir.getAbsolutePath())));
                                 builder3.setNegativeButton(R.string.Cancel, null);
                                 builder3.setPositiveButton(R.string.OK, new DialogInterface.OnClickListener() {
                                     @Override
@@ -377,7 +393,7 @@ public class SettingsAdvActivity extends BaseFragment implements NotificationCen
                                 AlertDialog.Builder builder3 = new AlertDialog.Builder(getParentActivity());
                                 builder3.setTitle(importMenuEntry);
                                 builder3.setPositiveButton(R.string.OK, null);
-                                builder3.setMessage(AndroidUtilities.replaceTags(String.format(ApplicationLoader.applicationContext.getString(R.string.ImportBackupExplain2), imexDirString)));
+                                builder3.setMessage(AndroidUtilities.replaceTags(String.format(ApplicationLoader.applicationContext.getString(R.string.ImportBackupExplain2), imexDir.getAbsolutePath())));
                                 showDialog(builder3.create());
                             }
                         }
@@ -412,7 +428,7 @@ public class SettingsAdvActivity extends BaseFragment implements NotificationCen
             MrMailbox.m_lastErrorString = "";
         }
 
-        MrMailbox.imex(what, imexDirString);
+        MrMailbox.imex(what, imexDir.getAbsolutePath());
     }
 
     @Override
@@ -424,12 +440,16 @@ public class SettingsAdvActivity extends BaseFragment implements NotificationCen
                 progressDialog.setMessage(ApplicationLoader.applicationContext.getString(R.string.OneMoment)+String.format(" %d%%", percent));
             }
         }
+        else if( id==NotificationCenter.imexFileWritten ) {
+            // Force media scanner to scan the new file - otherwise, it may not be visible eg. via USB/MTP.
+            // Do _not_ add the file with DownloadManager.addCompletedDownload() as the file would be deleted when the app is uninstalled.  This frustrates the usecase export-uninstall-install-import.
+            Intent mediaScannerIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
+            File permFile = new File((String)args[0]);
+            Uri fileContentUri = Uri.fromFile(permFile);
+            mediaScannerIntent.setData(fileContentUri);
+            getParentActivity().sendBroadcast(mediaScannerIntent);
+        }
         else if( id==NotificationCenter.imexEnded ) {
-            /* We do not add the exported files using downloadManager.addCompletedDownload() as
-            they get deleted when the app is uninstalled (since Android 6.0) - this frustrates the usecase export-uninstall-install-import.
-            (see https://stackoverflow.com/questions/35209375/android-6-0-external-storage-files-being-deleted-upon-app-uninstall
-            and https://commonsware.com/blog/2016/02/09/changes-downloadmanager-behavior.html ) */
-
             final String errorString;
 
             synchronized (MrMailbox.m_lastErrorLock) {
@@ -444,7 +464,7 @@ public class SettingsAdvActivity extends BaseFragment implements NotificationCen
 
             if( (int)args[0]==1 ) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
-                builder.setMessage(AndroidUtilities.replaceTags(String.format(ApplicationLoader.applicationContext.getString(R.string.FilesSuccessfullyExported), imexDirString)+"\n\n"+ApplicationLoader.applicationContext.getString(R.string.ImportExportExplain)));
+                builder.setMessage(AndroidUtilities.replaceTags(String.format(ApplicationLoader.applicationContext.getString(R.string.FilesSuccessfullyExported), imexDir.getAbsoluteFile())+"\n\n"+ApplicationLoader.applicationContext.getString(R.string.ImportExportExplain)));
                 builder.setPositiveButton(R.string.OK, null);
                 showDialog(builder.create());
             }
