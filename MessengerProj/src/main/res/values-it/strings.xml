@@ -323,7 +323,7 @@
     <string name="AskStartChatWith">Iniziare una conversazione con <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>?</string>
     <string name="DeaddropHint">Per iniziare una conversazione toccare le frecce di risposta.</string>
     <string name="NotYetImplemented">Funzione non disponibile o incompleta.</string>
-    <string name="DefaultStatusText">Inviato con la mia app di messaggistica Delta Chat. Perdonate la brevità.</string>
+    <string name="DefaultStatusText">Inviato con l\'app di messaggistica Delta Chat: https://delta.chat</string>
     <string name="Name" >Nome</string>
     <string name="EmailAddress">Indirizzo email</string>
     <string name="CannotDeleteContact">Impossibile cancellare i contatti in uso, provare a bloccarli.</string>
@@ -352,7 +352,7 @@
     <string name="ErrSelfNotInGroup">È necessario essere un membro del gruppo per eseguire questa azione.</string>
     <string name="MsgGroupLeft">Gruppo abbandonato.</string>
     <string name="NoMessagesHint">Invia un messaggio a <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>:\n\n• Va bene anche se <![CDATA[<b>]]>%2$s<![CDATA[</b>]]> non usa Delta Chat.\n\n• L\'invio del primo messaggio può richiedere del tempo.</string>
-    <string name="SendNRcvReadReceipts">Ricevi e invia ricevute di ritorno.</string>
+    <string name="SendNRcvReadReceipts">Ricevi e invia ricevute di ritorno</string>
     <string name="PreferE2EEncryption">Preferisci crittografia end-to-end</string>
     <string name="E2EManagePrivateKeys">Gestione chiavi private</string>
     <string name="E2ECompareKeys">Compara chiavi</string>
@@ -364,15 +364,12 @@
     <string name="NoNetwork">Rete non disponibile.</string>
     <string name="Audio">Audio</string>
     <string name="PleaseCutVideoToMaxSize">Ridurre il video alla dimensione massima di %1$s.</string>
-    <string name="PermNotificationTitle">Connesso a%1$s</string>
+    <string name="PermNotificationTitle">Connesso a %1$s</string>
     <string name="PermNotificationText">In attesa di messaggi...</string>
     <string name="SettingsFor">Impostazioni per %1$s</string>
     <string name="AutoplayGifs">Riproduzione automatica GIF</string>
     <string name="HelpUrl">https://delta.chat/en/help</string>
     <string name="EncryptedMessage">Messaggio cifrato</string>
-    <string name="ImportFromDownloads">Importa da \"Download\"</string>
-    <string name="ExportToDownloads">Esporta in \"Download\"</string>
-    <string name="ImportPrivateKeysAsk">Importare chiavi private da \"Download\"?\n\n• Le chiavi private esistenti non vengono cancellate\n\n• L\'ultima chiave importata sarà usata come predefinita\n\nContinuare?</string>
     <string name="Encryption">Crittografia</string>
     <string name="EncrinfoE2E">Crittografia end-to-end abilitata.</string>
     <string name="EncrinfoE2EExplain">Se tutte le impronte corrispondono sull\'altro dispositivo, la connessione è sicura.</string>
@@ -381,7 +378,6 @@
     <string name="EncrinfoNoE2EExplain">La crittografia end-to-end verrà attivata automaticamente quando il contatto usa Delta Chat o un altra applicazione che utilizza Autocrypt.</string>
     <string name="EncrinfoFingerprints">Impronte digitali</string>
     <string name="Backup">Backup</string>
-    <string name="ImportBackupExplain">Per importare un backup, copiarlo nella cartella \"Download\" e reinstalla l\'app.</string>
     <string name="ReadReceiptMailBody">Questa è una ricevuta di ritorno del messaggio \"%1$s\".\n\nQuesta ricevuta conferma solo che il messaggio è arrivato sul dispositivo del destinatario. Non c\'è alcuna garanzia che il destinatario abbia letto il contenuto del messaggio.</string>
     <string name="ReadReceipt">Ricevuta di ritorno</string>
     <string name="NameAndStatus">Nome e stato</string>
@@ -389,4 +385,5 @@
     <string name="MyStatusExplain">Lo stato viene mostrato nel proprio profilo e nel piè di pagina delle email.</string>
     <string name="MsgGroupImageDeleted">Immagine del gruppo eliminata.</string>
     <string name="AskDeleteGroupImage">Rimuovere veramente l\'immagine del gruppo?\n\nQuesto avrà effetto su tutti i dispositivi di tutti i membri del gruppo.</string>
-</resources>
+    <string name="ExportImportHeader">Esporta e importa</string>
+    </resources>
