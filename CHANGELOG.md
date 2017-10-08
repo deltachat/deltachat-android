@@ -1,6 +1,6 @@
 # Delta Chat Changelog
 
-## UNRELEASED
+## v0.9.5
 
 * Move replies from normal E-Mail-Clients to the "Chats" folder
 * Improve helping MUAs on showing chat threads
