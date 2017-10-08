@@ -152,8 +152,6 @@ public class ActionBarLayout extends FrameLayout {
     private int startedTrackingPointerId;
     private Runnable onCloseAnimationEndRunnable;
     private Runnable onOpenAnimationEndRunnable;
-    private boolean useAlphaAnimations;
-    private View backgroundView;
     private boolean removeActionBarExtraHeight;
     private Runnable animationRunnable;
 
@@ -697,96 +695,56 @@ public class ActionBarLayout extends FrameLayout {
         bringChildToFront(containerView);
         if (!needAnimation) {
             presentFragmentInternalRemoveOld(removeLast, currentFragment);
-            if (backgroundView != null) {
-                backgroundView.setVisibility(VISIBLE);
-            }
         }
 
         if (needAnimation) {
-            if (useAlphaAnimations && fragmentsStack.size() == 1) {
-                presentFragmentInternalRemoveOld(removeLast, currentFragment);
-
-                transitionAnimationStartTime = System.currentTimeMillis();
-                transitionAnimationInProgress = true;
-                onOpenAnimationEndRunnable = new Runnable() {
-                    @Override
-                    public void run() {
-                        fragment.onTransitionAnimationEnd(true, false);
-                        fragment.onBecomeFullyVisible();
+            transitionAnimationStartTime = System.currentTimeMillis();
+            transitionAnimationInProgress = true;
+            onOpenAnimationEndRunnable = new Runnable() {
+                @Override
+                public void run() {
+                    if (Build.VERSION.SDK_INT > 15) {
+                        containerView.setLayerType(LAYER_TYPE_NONE, null);
+                        containerViewBack.setLayerType(LAYER_TYPE_NONE, null);
                     }
-                };
-                ArrayList<Animator> animators = new ArrayList<>();
-                animators.add(ObjectAnimator.ofFloat(this, "alpha", 0.0f, 1.0f));
-                if (backgroundView != null) {
-                    backgroundView.setVisibility(VISIBLE);
-                    animators.add(ObjectAnimator.ofFloat(backgroundView, "alpha", 0.0f, 1.0f));
+                    presentFragmentInternalRemoveOld(removeLast, currentFragment);
+                    fragment.onTransitionAnimationEnd(true, false);
+                    fragment.onBecomeFullyVisible();
+                    containerView.setTranslationX(0);
                 }
-
-                fragment.onTransitionAnimationStart(true, false);
-                currentAnimation = new AnimatorSet();
-                currentAnimation.playTogether(animators);
-                currentAnimation.setInterpolator(accelerateDecelerateInterpolator);
-                currentAnimation.setDuration(200);
-                currentAnimation.addListener(new AnimatorListenerAdapterProxy() {
-                    @Override
-                    public void onAnimationEnd(Animator animation) {
-                        onAnimationEndCheck(false);
-                    }
-                });
-                currentAnimation.start();
-            } else {
-                transitionAnimationStartTime = System.currentTimeMillis();
-                transitionAnimationInProgress = true;
-                onOpenAnimationEndRunnable = new Runnable() {
-                    @Override
-                    public void run() {
-                        if (Build.VERSION.SDK_INT > 15) {
-                            containerView.setLayerType(LAYER_TYPE_NONE, null);
-                            containerViewBack.setLayerType(LAYER_TYPE_NONE, null);
+            };
+            fragment.onTransitionAnimationStart(true, false);
+            {
+                containerView.setAlpha(0.0f);
+                containerView.setTranslationX(48.0f);
+                if (containerView.isKeyboardVisible || containerViewBack.isKeyboardVisible) {
+                    waitingForKeyboardCloseRunnable = new Runnable() {
+                        @Override
+                        public void run() {
+                            if (waitingForKeyboardCloseRunnable != this) {
+                                return;
+                            }
+                            startLayoutAnimation(true, true);
                         }
-                        presentFragmentInternalRemoveOld(removeLast, currentFragment);
-                        fragment.onTransitionAnimationEnd(true, false);
-                        fragment.onBecomeFullyVisible();
-                        containerView.setTranslationX(0);
-                    }
-                };
-                fragment.onTransitionAnimationStart(true, false);
-                {
-                    containerView.setAlpha(0.0f);
-                    containerView.setTranslationX(48.0f);
-                    if (containerView.isKeyboardVisible || containerViewBack.isKeyboardVisible) {
-                        waitingForKeyboardCloseRunnable = new Runnable() {
-                            @Override
-                            public void run() {
-                                if (waitingForKeyboardCloseRunnable != this) {
-                                    return;
-                                }
-                                startLayoutAnimation(true, true);
+                    };
+                    AndroidUtilities.runOnUIThread(waitingForKeyboardCloseRunnable, 200);
+                } else if (fragment.needDelayOpenAnimation()) {
+                    delayedOpenAnimationRunnable = new Runnable() {
+                        @Override
+                        public void run() {
+                            if (delayedOpenAnimationRunnable != this) {
+                                return;
                             }
-                        };
-                        AndroidUtilities.runOnUIThread(waitingForKeyboardCloseRunnable, 200);
-                    } else if (fragment.needDelayOpenAnimation()) {
-                        delayedOpenAnimationRunnable = new Runnable() {
-                            @Override
-                            public void run() {
-                                if (delayedOpenAnimationRunnable != this) {
-                                    return;
-                                }
-                                delayedOpenAnimationRunnable = null;
-                                startLayoutAnimation(true, true);
-                            }
-                        };
-                        AndroidUtilities.runOnUIThread(delayedOpenAnimationRunnable, 200);
-                    } else {
-                        startLayoutAnimation(true, true);
-                    }
+                            delayedOpenAnimationRunnable = null;
+                            startLayoutAnimation(true, true);
+                        }
+                    };
+                    AndroidUtilities.runOnUIThread(delayedOpenAnimationRunnable, 200);
+                } else {
+                    startLayoutAnimation(true, true);
                 }
             }
         } else {
-            if (backgroundView != null) {
-                backgroundView.setAlpha(1.0f);
-                backgroundView.setVisibility(VISIBLE);
-            }
             fragment.onTransitionAnimationStart(true, false);
             fragment.onTransitionAnimationEnd(true, false);
             fragment.onBecomeFullyVisible();
@@ -935,50 +893,8 @@ public class ActionBarLayout extends FrameLayout {
                 previousFragment.onBecomeFullyVisible();
             }
         } else {
-            if (useAlphaAnimations) {
-                transitionAnimationStartTime = System.currentTimeMillis();
-                transitionAnimationInProgress = true;
-
-                onCloseAnimationEndRunnable = new Runnable() {
-                    @Override
-                    public void run() {
-                        removeFragmentFromStackInternal(currentFragment);
-                        setVisibility(GONE);
-                        if (backgroundView != null) {
-                            backgroundView.setVisibility(GONE);
-                        }
-                    }
-                };
-
-                ArrayList<Animator> animators = new ArrayList<>();
-                animators.add(ObjectAnimator.ofFloat(this, "alpha", 1.0f, 0.0f));
-                if (backgroundView != null) {
-                    animators.add(ObjectAnimator.ofFloat(backgroundView, "alpha", 1.0f, 0.0f));
-                }
-
-                currentAnimation = new AnimatorSet();
-                currentAnimation.playTogether(animators);
-                currentAnimation.setInterpolator(accelerateDecelerateInterpolator);
-                currentAnimation.setDuration(200);
-                currentAnimation.addListener(new AnimatorListenerAdapterProxy() {
-                    @Override
-                    public void onAnimationStart(Animator animation) {
-                        transitionAnimationStartTime = System.currentTimeMillis();
-                    }
-
-                    @Override
-                    public void onAnimationEnd(Animator animation) {
-                        onAnimationEndCheck(false);
-                    }
-                });
-                currentAnimation.start();
-            } else {
-                removeFragmentFromStackInternal(currentFragment);
-                setVisibility(GONE);
-                if (backgroundView != null) {
-                    backgroundView.setVisibility(GONE);
-                }
-            }
+            removeFragmentFromStackInternal(currentFragment);
+            setVisibility(GONE);
         }
     }
 
@@ -1050,16 +966,6 @@ public class ActionBarLayout extends FrameLayout {
         for (int a = 0; a < fragmentsStack.size(); a++) {
             removeFragmentFromStackInternal(fragmentsStack.get(a));
             a--;
-        }
-    }
-
-    public void rebuildAllFragmentViews(boolean last) {
-        for (int a = 0; a < fragmentsStack.size() - (last ? 0 : 1); a++) {
-            fragmentsStack.get(a).clearViews();
-            fragmentsStack.get(a).setParentLayout(this);
-        }
-        if (delegate != null) {
-            delegate.onRebuildAllFragments(this);
         }
     }
 
@@ -1143,14 +1049,6 @@ public class ActionBarLayout extends FrameLayout {
                 parentActivity.startActivityForResult(intent, requestCode);
             }
         }
-    }
-
-    public void setUseAlphaAnimations(boolean value) {
-        useAlphaAnimations = value;
-    }
-
-    public void setBackgroundView(View view) {
-        backgroundView = view;
     }
 
     public void setRemoveActionBarExtraHeight(boolean value) {

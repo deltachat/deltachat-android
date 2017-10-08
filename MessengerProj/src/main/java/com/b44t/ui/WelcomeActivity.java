@@ -372,8 +372,6 @@ public class WelcomeActivity extends Activity implements NotificationCenter.Noti
             if( (int)args[0]==1 ) {
                 startActivity(new Intent(WelcomeActivity.this, LaunchActivity.class));
                 finish();
-                AndroidUtilities.showDoneHint(ApplicationLoader.applicationContext);
-                NotificationCenter.getInstance().postNotificationName(NotificationCenter.mainUserInfoChanged);
             }
             else if( !errorString.isEmpty() /*usually empty if export is cancelled by the user*/ ) {
                 new AlertDialog.Builder(this)
