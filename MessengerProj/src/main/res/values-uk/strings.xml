@@ -36,10 +36,10 @@
     <!--chat view-->
     <string name="ChatGallery">Галерея</string>
     <string name="ChatCamera">Камера</string>
-    <string name="NoMessages">Повідомлень не має.</string>
+    <string name="NoMessages">Повідомлень немає.</string>
     <string name="ForwardedMessage">Переслане повідомлення</string>
     <string name="From">Від</string>
-    <string name="NoRecent">Не має нових</string>
+    <string name="NoRecent">Немає нових</string>
     <string name="TypeMessage">Повідомлення</string>
     <string name="SlideToCancel">КОВЗНІТЬ ДЛЯ СКАСУВАННЯ</string>
     <string name="SaveToDownloads">Зберегти до теки звантажень</string>
@@ -51,7 +51,7 @@
     <string name="ShortcutAdded">Віджет був доданий до головного екрану</string>
     <!--notification-->
     <string name="Reply">Відповісти</string>
-    <string name="ReplyToGroup">Відповісти групі %1$s</string>
+    <string name="ReplyToGroup">Відповісти спільноті %1$s</string>
     <string name="ReplyToContact">Відповісти контактові %1$s</string>
     <!--contacts view-->
     <string name="NoContacts">Контакти відсутні</string>
@@ -115,7 +115,7 @@
     <!--passcode view-->
     <string name="Passcode">Блокування кодом доступу</string>
     <string name="ChangePasscode">Змінити код доступу</string>
-    <string name="ChangePasscodeInfo">По встановці додаткового коду доступу на сторінках розмов з\'явиться ікона блокування. Натисніть її, аби заблокувати/розблокувати застосунок.\n\nУвага: якщо ви забудете код доступу, ви муситимете видалити та перевстановити застосунок.</string>
+    <string name="ChangePasscodeInfo">По встановці додаткового коду доступу, на сторінках розмов з\'явиться ікона блокування. Натисніть її, аби заблокувати/розблокувати застосунок.\n\nУвага: якщо ви забудете код доступу, ви муситимете видалити та перевстановити застосунок.</string>
     <string name="PasscodePIN">PIN</string>
     <string name="PasscodePassword">Гасло</string>
     <string name="EnterCurrentPasscode">Упишіть чинний код доступу</string>
@@ -202,13 +202,13 @@
     <string name="AreYouSureBlockContact">Чи ви певні що хочете заблокувати цей контакт?</string>
     <string name="AreYouSureDeleteContact">Чи ви певні що хочете видалити цей контакт?</string>
     <!--permissions-->
-    <string name="PermissionContacts">Аби можна було зв\'язатися з друзями на усіх пристроях, Delta Chat мусить мати доступ списку контактів.</string>
+    <string name="PermissionContacts">Аби можна було зв\'язатися з друзями на усіх пристроях, Delta Chat мусить мати доступ до списку контактів.</string>
     <string name="PermissionStorage">Аби надсилати та зберігати світлини, відео, музику та інші мультимедія, Delta Chat мусить мати доступ до пам\'яті.</string>
     <string name="PermissionNoAudio">Аби надсилати голосові повідомлення, Delta Chat мусить мати доступ до мікрофону.</string>
     <string name="PermissionOpenSettings">Пристосувати налаштування</string>
     <!--Intro view-->
     <string name="Intro1Headline">Delta Chat</string>
-    <string name="Intro1Message">Оповісник з  <![CDATA[<b>найбільшим діапазоном</b>]]> у світі.<![CDATA[<br/><b>Даровий</b>]]> та <![CDATA[<b>безпечний</b>]]>.</string>
+    <string name="Intro1Message">Оповісник з  <![CDATA[<b>найбільшим діяпазоном</b>]]> у світі.<![CDATA[<br/><b>Безкоштовний</b>]]> та <![CDATA[<b>безпечний</b>]]>.</string>
 
     <string name="Intro2Headline">Незалежний</string>
     <string name="Intro2Message"><![CDATA[<b>Незалежний</b>]]> від іноземних комп\'ютерів та послуг. Застосунок тільки використовує ваш email-сервер.</string>
@@ -217,13 +217,13 @@
     <string name="Intro3Message"><![CDATA[<b>Push-повідомлення</b>]]> за секунди.<![CDATA[<br/>]]>Швидкий інтерфейс.</string>
 
     <string name="Intro4Headline">Потужний</string>
-    <string name="Intro4Message"><![CDATA[<b>Безмежні</b>]]> розмови, зображення, відео, звукових повідомлень та багато іншого. Підтримка не багатьох пристроях.</string>
+    <string name="Intro4Message"><![CDATA[<b>Безмежні</b>]]> розмови, зображення, відео, звукові повідомлення та багато іншого. Мається підтримка на багатьох пристроях.</string>
 
-    <string name="Intro5Headline">Даровий</string>
-    <string name="Intro5Message"><![CDATA[<b>Delta Chat</b>]]> даровий назавше.<![CDATA[<br/>]]>Open-source. Без реклам. Без передплат. Без залежності від поставників послуг.</string>
+    <string name="Intro5Headline">Безкоштовний</string>
+    <string name="Intro5Message"><![CDATA[<b>Delta Chat</b>]]> безкоштовний назавше.<![CDATA[<br/>]]>Open-source. Без реклам. Без передплат. Без залежності від сторонніх поставників послуг.</string>
 
     <string name="Intro6Headline">Безпечний</string>
-    <string name="Intro6Message"><![CDATA[<b>Зашифровано</b>]]> всіма відомими алґоритмами. Повідомлення залишаються на ваших серверах.</string>
+    <string name="Intro6Message"><![CDATA[<b>Зашифровано</b>]]> відомими алґоритмами. Повідомлення залишаються на ваших серверах.</string>
 
     <string name="Intro7Headline">Заслуговує на довіру</string>
 
@@ -311,22 +311,22 @@
     <string name="formatDateAtTime">%1$sо%2$s</string>
     <string name="AccountSettings">Налаштування обліківки</string>
     <string name="MyAccount">Моя обліківка</string>
-    <string name="MyName">Моя назва</string>
-    <string name="MyNameExplain">Назва, яка показується отримувачам. Якщо ви не впишете назву, вони отримають лише вашу адресу email.</string>
+    <string name="MyName">Моє псевдо</string>
+    <string name="MyNameExplain">Ваше псевдо, яке показуватиметься отримувачам. Якщо ви не впишете псевдонім, вони отримають лише вашу адресу email.</string>
     <string name="Password">Гасло</string>
     <string name="SmtpPassword">SMTP гасло</string>
     <string name="FromAbove">Згори</string>
-    <string name="SmtpLoginname">SMTP назва користувача</string>
+    <string name="SmtpLoginname">SMTP псевдонім користувача</string>
     <string name="SmtpPort">SMTP порт</string>
     <string name="Automatic">А́втоматично</string>
     <string name="ImapServer">IMAP сервер</string>
-    <string name="ImapLoginname">IMAP назва користувача</string>
+    <string name="ImapLoginname">IMAP псевдонім користувача</string>
     <string name="SmtpServer">SMTP сервер</string>
     <string name="ImapPort">IMAP порт</string>
     <string name="InboxHeadline">Скринька для вхідних</string>
     <string name="OutboxHeadline">Скринька для вихідних</string>
     <string name="MyAccountExplain">Для відомих email-поставників, додаткові налаштування обираються автоматично.</string>
-    <string name="MyAccountExplain2" >Інколи, <![CDATA[<b>]]>IMAP має бути увімкненим<![CDATA[</b>]]> у верстці email.\n\nУ разі виникнення проблем, спитайте поради у вашого email-поставника або друзів.</string>
+    <string name="MyAccountExplain2" >Інколи, <![CDATA[<b>]]>IMAP має бути ввімкненим<![CDATA[</b>]]> у верстці email.\n\nУ разі виникнення проблем, спитайте поради у вашого email-поставника або друзів.</string>
     <string name="AccountNotConfigured">Обліківка не налаштована</string>
     <string name="AboutThisProgram">Про оповісник</string>
     <string name="NotSet">Не встановлено</string>
@@ -337,8 +337,8 @@
     <string name="AskStartChatWith">Почати розмову з <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>?</string>
     <string name="DeaddropHint">Аби почати розмову, клацніть на стрілки відповіді.</string>
     <string name="NotYetImplemented">Ця функція є недоступною або незавершеною.</string>
-    <string name="DefaultStatusText">Надіслано за допомогою оповісника Delta Chat. Прошу вибачення за стислий текст.</string>
-    <string name="Name" >Назва</string>
+    <string name="DefaultStatusText">Надіслано за допомогою оповісника Delta Chat: https://delta.chat</string>
+    <string name="Name" >Псевдо</string>
     <string name="EmailAddress">Адреса e-mail</string>
     <string name="CannotDeleteContact">Не можливо видалити уживані контакти, заблокуйте їх натомість.</string>
     <string name="BadEmailAddress">Хибна адреса e-mail</string>
@@ -348,11 +348,11 @@
     the string needed for video time+size (0:00, 12,3 Mib) -->
     <string name="OneMoment">Зачекайте...</string>
     <string name="NoChatsHelp">Почніть листування за натиском ґудзика нових розмов у верхньому правому кутку. Аби отримати більше можливостей, натисніть на ґудзик меню.</string>
-    <string name="Intro7Message"><![CDATA[<b>Delta Chat]</b>]> безпечний для бізнесових застосувань, підлаштовний та відповідає всім стандартам.</string>
+    <string name="Intro7Message"><![CDATA[<b>Delta Chat</b>]]> безпечний для бізнесових застосувань, підлаштовний та відповідає всім сучасним стандартам.</string>
     <string name="InviteMenuEntry">Надіслати запрошення</string>
     <string name="InviteText">Я користаюся оповісником Delta Chat -%1$s- ви можети написати мені на%2$s</string>
     <string name="AdvancedSettings">Просунуті налаштування</string>
-    <string name="AskResetNotifications" >Скинути всі налаштування оповіщень та звуки на цій сторінці, а також у контактах та групах?</string>
+    <string name="AskResetNotifications" >Скинути всі налаштування оповіщень та звуки на цій сторінці, а також у контактах та спільнотах?</string>
     <string name="AttachFiles">Долучити файли</string>
     <string name="ErrGroupNameEmpty">Упишіть назву спільноти</string>
     <string name="MsgNewGroupDraftHint">Напишіть перше повідомлення аби інші змогли відповідати у спільноті.\n\n• Нічого страшного, якщо не всі учасники користаються Delta Chatом.\n\n• Доставлення першого повідомлення відбере лише мить.</string>
@@ -366,7 +366,7 @@
     <string name="ErrSelfNotInGroup">Щоби виконати дію, ви мусите бути учасником цієї спільноти.</string>
     <string name="MsgGroupLeft">Ви полишили спільноту.</string>
     <string name="NoMessagesHint">Надіслати повідомлення до <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>:\n\n• Нічого страшного, якщо <![CDATA[<b>]]>%2$s<![CDATA[</b>]]> не користується Delta Chatом.\n\n• Доставлення першого повідомлення відбере лише мить.</string>
-    <string name="SendNRcvReadReceipts">Одержуйте та відправляйте звіти про доставлення</string>
+    <string name="SendNRcvReadReceipts">Одержуйте та надсилайте звіти про доставлення</string>
     <string name="PreferE2EEncryption">Надати перевагу повному шифруванню</string>
     <string name="E2EManagePrivateKeys">Управління особистими ключами</string>
     <string name="E2ECompareKeys">Порівняти ключі</string>
@@ -384,9 +384,6 @@
     <string name="AutoplayGifs">А́втопрогравання GIFів</string>
     <string name="HelpUrl">https://delta.chat/en/help</string>
     <string name="EncryptedMessage">Зашифроване повідомлення</string>
-    <string name="ImportFromDownloads">Затягти з теки звантажень.</string>
-    <string name="ExportToDownloads">Витягти з теки звантажень.</string>
-    <string name="ImportPrivateKeysAsk">Затягти особисті ключі з теки завантажень?\n\n• Чинні особисті ключі не були видалені\n\n• Найостатніший затягнений ключ буде використовуватись як типовий\n\nПродовжити?</string>
     <string name="Encryption">Шифрування</string>
     <string name="EncrinfoE2E">Повне шифрування було ввімкнено.</string>
     <string name="EncrinfoE2EExplain">Якщо відбитки пальців збігаються на іншому пристрої, підключення є безпечним.</string>
@@ -395,12 +392,14 @@
     <string name="EncrinfoNoE2EExplain">Шифрування стане повним відразу ж, як контакт почне користуватися Delta Chat або іншим автошифрувальним застосунком.</string>
     <string name="EncrinfoFingerprints">Відбитки пальців</string>
     <string name="Backup">Backup</string>
-    <string name="ImportBackupExplain">Аби імпортувати backup, сколіть backup до теки звантажень та перевстановіть застосунок.</string>
     <string name="ReadReceiptMailBody">Це звіт про доставлення до повідомлення \"%1$s\".\n\nЦей звіт лиш інформує про те, що повідомлення було показано на пристрої отримувача. Не має ніяких гарантій того, що отримувач прочитав уміст.</string>
     <string name="ReadReceipt">Звіт про доставлення.</string>
-    <string name="NameAndStatus">Назва та стан</string>
+    <string name="NameAndStatus">Псевдо та стан</string>
     <string name="MyStatus">Стан</string>
     <string name="MyStatusExplain">Стан висвітлюється у вашому профілю та у стовпці email.</string>
     <string name="MsgGroupImageDeleted">Зображення спільноти було видалено.</string>
     <string name="AskDeleteGroupImage">Чи ви певні, що хочете видалити зображення спільноти?\n\nЦе матиме вплив на пристрої усіх її учасників. </string>
-</resources>
+    <string name="ExportImportHeader">Витягнене та затягнене</string>
+    <string name="EnterPasswordToContinue">Унесіть гасло для%1$sаби продовжити:</string>
+    <string name="IncorrectPassword">Помилкове гасло.</string>
+    </resources>
