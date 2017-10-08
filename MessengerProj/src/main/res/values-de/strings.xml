@@ -386,6 +386,8 @@
     <string name="MsgGroupImageDeleted">Gruppenbild gelöscht.</string>
     <string name="AskDeleteGroupImage">Soll das Gruppenbild für alle Gruppenmitglieder gelöscht werden?</string>
     <string name="ExportImportHeader">Export und Import</string>
+    <string name="IncorrectPassword">Falsches Passwort.</string>
+    <string name="ImportBackup">Backup importieren</string>
     <string name="ExportBackup">Backup exportieren</string>
     <string name="ExportPrivateKeys">Private Schlüssel exportieren</string>
     <string name="ImportPrivateKeys">Private Schlüssel importieren</string>
