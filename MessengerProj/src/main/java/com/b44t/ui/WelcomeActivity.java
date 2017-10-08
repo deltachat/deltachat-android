@@ -75,8 +75,9 @@ public class WelcomeActivity extends Activity implements NotificationCenter.Noti
         Theme.loadRecources(this);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
 
-        NotificationCenter.getInstance().addObserver(this, NotificationCenter.imexEnded);
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.imexProgress);
+        NotificationCenter.getInstance().addObserver(this, NotificationCenter.imexEnded);
+        NotificationCenter.getInstance().addObserver(this, NotificationCenter.configureEnded);
 
         Bundle extras = getIntent().getExtras();
         if( extras != null && extras.getBoolean("com.b44t.ui.IntroActivity.isAbout") ) {
@@ -123,7 +124,6 @@ public class WelcomeActivity extends Activity implements NotificationCenter.Noti
                     Intent intent2 = new Intent(WelcomeActivity.this, LaunchActivity.class);
                     intent2.putExtra("fromIntro", true);
                     startActivity(intent2);
-                    finish();
                 }
             });
 
@@ -148,8 +148,9 @@ public class WelcomeActivity extends Activity implements NotificationCenter.Noti
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        NotificationCenter.getInstance().removeObserver(this, NotificationCenter.imexEnded);
         NotificationCenter.getInstance().removeObserver(this, NotificationCenter.imexProgress);
+        NotificationCenter.getInstance().removeObserver(this, NotificationCenter.imexEnded);
+        NotificationCenter.getInstance().removeObserver(this, NotificationCenter.configureEnded);
     }
 
     private class IntroAdapter extends PagerAdapter {
@@ -262,7 +263,7 @@ public class WelcomeActivity extends Activity implements NotificationCenter.Noti
     }
 
 
-    /* Specials for importing
+    /* Specials for importing and configuration
      **********************************************************************************************/
 
     @Override
@@ -380,6 +381,10 @@ public class WelcomeActivity extends Activity implements NotificationCenter.Noti
                     .setPositiveButton(R.string.OK, null)
                     .show();
             }
+        }
+        else if(id == NotificationCenter.configureEnded ) {
+            // no need to start a new activitiy, this is done in SettingsAccountActivity(), just close self
+            finish();
         }
     }
 }
