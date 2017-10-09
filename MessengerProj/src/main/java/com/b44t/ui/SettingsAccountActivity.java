@@ -248,7 +248,7 @@ public class SettingsAccountActivity extends BaseFragment implements Notificatio
                 else if( i==rowMailSecurity || i==rowSendSecurity )
                 {
                     AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
-                    builder.setTitle(ApplicationLoader.applicationContext.getString(R.string.SecurityTitle));
+                    builder.setTitle(R.string.SecurityTitle);
                     builder.setItems(new CharSequence[]{
                             ApplicationLoader.applicationContext.getString(R.string.Automatic),
                             "SSL/TLS", /*1*/
@@ -276,7 +276,7 @@ public class SettingsAccountActivity extends BaseFragment implements Notificatio
                             listView.invalidateViews();
                         }
                     });
-                    builder.setNegativeButton(context.getString(R.string.Cancel), null);
+                    builder.setNegativeButton(R.string.Cancel, null);
                     showDialog(builder.create());
 
                 }
@@ -400,12 +400,7 @@ public class SettingsAccountActivity extends BaseFragment implements Notificatio
             else if( ! MrMailbox.m_lastErrorString.isEmpty() ){
                 AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
                 builder.setMessage(errorString);
-                builder.setPositiveButton(ApplicationLoader.applicationContext.getString(R.string.OK), new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        ;
-                    }
-                });
+                builder.setPositiveButton(R.string.OK, null);
                 showDialog(builder.create());
             }
         }

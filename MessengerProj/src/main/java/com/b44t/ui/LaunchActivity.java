@@ -577,7 +577,7 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
         {
             final String createChatWithFinal = createChatWith;
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            builder.setPositiveButton(ApplicationLoader.applicationContext.getString(R.string.OK), new DialogInterface.OnClickListener() {
+            builder.setPositiveButton(R.string.OK, new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialogInterface, int i) {
                     int chatId = MrMailbox.createChatByContactId(MrMailbox.createContact("", createChatWithFinal));
@@ -591,7 +591,7 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
 
                 }
             });
-            builder.setNegativeButton(ApplicationLoader.applicationContext.getString(R.string.Cancel), null);
+            builder.setNegativeButton(R.string.Cancel, null);
             builder.setMessage(AndroidUtilities.replaceTags(String.format(ApplicationLoader.applicationContext.getString(R.string.AskStartChatWith), createChatWith)));
             builder.show();
         }
@@ -786,7 +786,7 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setMessage(msg.trim());
 
-            builder.setPositiveButton(ApplicationLoader.applicationContext.getString(R.string.PermissionOpenSettings), new DialogInterface.OnClickListener() {
+            builder.setPositiveButton(R.string.PermissionOpenSettings, new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     try {
@@ -800,7 +800,7 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                     }
                 }
             });
-            builder.setNegativeButton(ApplicationLoader.applicationContext.getString(R.string.Cancel), null);
+            builder.setNegativeButton(R.string.Cancel, null);
             builder.show();
             return;
         }

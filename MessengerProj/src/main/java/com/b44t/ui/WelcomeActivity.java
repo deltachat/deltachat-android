@@ -111,7 +111,7 @@ public class WelcomeActivity extends Activity implements NotificationCenter.Noti
                     new AlertDialog.Builder(WelcomeActivity.this)
                         .setTitle(ApplicationLoader.applicationContext.getString(R.string.AppName) + " v" + getVersion())
                         .setMessage("© 2017 Delta Chat contributors" + "\n\n" + MrMailbox.getInfo() + "\n\n" + getAndroidInfo())
-                        .setPositiveButton(ApplicationLoader.applicationContext.getString(R.string.OK), null)
+                        .setPositiveButton(R.string.OK, null)
                         .show();
                 }
             });
@@ -277,7 +277,7 @@ public class WelcomeActivity extends Activity implements NotificationCenter.Noti
         else {
             new AlertDialog.Builder(this)
                 .setMessage(ApplicationLoader.applicationContext.getString(R.string.PermissionStorage))
-                .setPositiveButton(ApplicationLoader.applicationContext.getString(R.string.PermissionOpenSettings), new DialogInterface.OnClickListener() {
+                .setPositiveButton(R.string.PermissionOpenSettings, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         try {

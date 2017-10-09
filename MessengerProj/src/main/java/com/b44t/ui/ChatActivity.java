@@ -466,7 +466,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
 
                     AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
                     builder.setMessage(context.getString(R.string.AreYouSureDeleteThisChat));
-                    builder.setPositiveButton(context.getString(R.string.OK), new DialogInterface.OnClickListener() {
+                    builder.setPositiveButton(R.string.OK, new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
                             if( MrMailbox.deleteChat((int)dialog_id)!=0 ) {
@@ -478,7 +478,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                             }
                         }
                     });
-                    builder.setNegativeButton(context.getString(R.string.Cancel), null);
+                    builder.setNegativeButton(R.string.Cancel, null);
                     showDialog(builder.create());
                 } else if (id == ID_MUTE) {
                     toggleMute();
@@ -497,12 +497,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     String info_str = MrMailbox.getMsgInfo(getFirstSelectedId());
                     AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
                     builder.setMessage(info_str);
-                    builder.setPositiveButton(context.getString(R.string.OK), new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            ;
-                        }
-                    });
+                    builder.setPositiveButton(R.string.OK, null);
                     showDialog(builder.create());
                     actionBar.hideActionMode();
                     updateVisibleRowsFast();
@@ -1480,7 +1475,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
 
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
-        builder.setPositiveButton(context.getString(R.string.OK), new DialogInterface.OnClickListener() {
+        builder.setPositiveButton(R.string.OK, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 int chatId = MrMailbox.createChatByContactId(fromId);
@@ -1494,7 +1489,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 }
             }
         });
-        builder.setNegativeButton(context.getString(R.string.Cancel), null);
+        builder.setNegativeButton(R.string.Cancel, null);
         builder.setMessage(AndroidUtilities.replaceTags(String.format(context.getString(R.string.AskStartChatWith), name)));
         showDialog(builder.create());
     }
@@ -2355,7 +2350,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
     private void createDeleteMessagesAlert() {
         AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
         builder.setMessage(ApplicationLoader.applicationContext.getResources().getQuantityString(R.plurals.AreYouSureDeleteMessages, selectedMessagesIds.size(), selectedMessagesIds.size()));
-        builder.setPositiveButton(ApplicationLoader.applicationContext.getString(R.string.OK), new DialogInterface.OnClickListener() {
+        builder.setPositiveButton(R.string.OK, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
 
@@ -2376,7 +2371,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 NotificationCenter.getInstance().postNotificationName(NotificationCenter.dialogsNeedReload);
             }
         });
-        builder.setNegativeButton(ApplicationLoader.applicationContext.getString(R.string.Cancel), null);
+        builder.setNegativeButton(R.string.Cancel, null);
         showDialog(builder.create());
     }
 
@@ -2746,13 +2741,13 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                             if( isMailto )
                             {
                                 AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
-                                builder.setPositiveButton(mContext.getString(R.string.OK), new DialogInterface.OnClickListener() {
+                                builder.setPositiveButton(R.string.OK, new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialogInterface, int i) {
-                                    createChat(urlFinal);
+                                        createChat(urlFinal);
                                     }
                                 });
-                                builder.setNegativeButton(mContext.getString(R.string.Cancel), null);
+                                builder.setNegativeButton(R.string.Cancel, null);
                                 builder.setMessage(AndroidUtilities.replaceTags(String.format(mContext.getString(R.string.AskStartChatWith), urlTitle)));
                                 showDialog(builder.create());
                             }

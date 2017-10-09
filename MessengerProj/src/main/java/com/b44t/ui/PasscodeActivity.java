@@ -382,7 +382,7 @@ public class PasscodeActivity extends BaseFragment implements NotificationCenter
                         });
                         numberPicker.setWrapSelectorWheel(false);
                         builder.setView(numberPicker);
-                        builder.setPositiveButton(context.getString(R.string.OK), new DialogInterface.OnClickListener() {
+                        builder.setPositiveButton(R.string.OK, new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 which = numberPicker.getValue();

@@ -252,14 +252,14 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                     else {
                         AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
                         builder.setMessage(context.getString(R.string.AreYouSureBlockContact));
-                        builder.setPositiveButton(context.getString(R.string.OK), new DialogInterface.OnClickListener() {
+                        builder.setPositiveButton(R.string.OK, new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
                                 MrMailbox.blockContact(user_id, 1);
                                 finishFragment(); /* got to the parent, this is important eg. when editing blocking in the BlockedUserActivitiy. Moreover, this saves us updating all the states in the profile */
                             }
                         });
-                        builder.setNegativeButton(context.getString(R.string.Cancel), null);
+                        builder.setNegativeButton(R.string.Cancel, null);
                         showDialog(builder.create());
                     }
                 }
@@ -267,7 +267,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                 {
                     AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
                     builder.setMessage(context.getString(R.string.AreYouSureDeleteContact));
-                    builder.setPositiveButton(context.getString(R.string.OK), new DialogInterface.OnClickListener() {
+                    builder.setPositiveButton(R.string.OK, new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
                             if( MrMailbox.deleteContact(user_id)==0 ) {
@@ -279,7 +279,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                             }
                         }
                     });
-                    builder.setNegativeButton(context.getString(R.string.Cancel), null);
+                    builder.setNegativeButton(R.string.Cancel, null);
                     showDialog(builder.create());
                 }
                 else if (id == ID_ADD_SHORTCUT)
@@ -379,14 +379,9 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                 {
                     String info_str = MrMailbox.getContactEncrInfo(user_id);
                     AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
-                    builder.setTitle(ApplicationLoader.applicationContext.getString(R.string.Encryption));
+                    builder.setTitle(R.string.Encryption);
                     builder.setMessage(AndroidUtilities.replaceTags(info_str));
-                    builder.setPositiveButton(context.getString(R.string.OK), new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            ;
-                        }
-                    });
+                    builder.setPositiveButton(R.string.OK, null);
                     showDialog(builder.create());
                 }
                 else if(position==startChatRow)
@@ -403,7 +398,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
 
                     String name = MrMailbox.getContact(user_id).getNameNAddr();
                     AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
-                    builder.setPositiveButton(context.getString(R.string.OK), new DialogInterface.OnClickListener() {
+                    builder.setPositiveButton(R.string.OK, new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
                             int belonging_chat_id = MrMailbox.createChatByContactId(user_id);
@@ -417,7 +412,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                             }
                         }
                     });
-                    builder.setNegativeButton(context.getString(R.string.Cancel), null);
+                    builder.setNegativeButton(R.string.Cancel, null);
                     builder.setMessage(AndroidUtilities.replaceTags(String.format(context.getString(R.string.AskStartChatWith), name)));
                     showDialog(builder.create());
                 }
@@ -435,14 +430,14 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                             }
                             else {
                                 AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
-                                builder.setPositiveButton(context.getString(R.string.OK), new DialogInterface.OnClickListener() {
+                                builder.setPositiveButton(R.string.OK, new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialogInterface, int i) {
                                         MrMailbox.addContactToChat(chat_id, added_user_id);
                                         NotificationCenter.getInstance().postNotificationName(NotificationCenter.updateInterfaces, MrMailbox.UPDATE_MASK_CHAT_MEMBERS);
                                     }
                                 });
-                                builder.setNegativeButton(context.getString(R.string.Cancel), null);
+                                builder.setNegativeButton(R.string.Cancel, null);
                                 String name = MrMailbox.getContact(added_user_id).getDisplayName();
                                 builder.setMessage(AndroidUtilities.replaceTags(String.format(context.getString(R.string.AskAddMemberToGroup), name)));
                                 showDialog(builder.create());
@@ -482,14 +477,14 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                             public void onClick(DialogInterface dialogInterface, int i) {
 
                                 AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
-                                builder.setPositiveButton(context.getString(R.string.OK), new DialogInterface.OnClickListener() {
+                                builder.setPositiveButton(R.string.OK, new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialogInterface, int i) {
                                         MrMailbox.removeContactFromChat(chat_id, curr_user_id);
                                         NotificationCenter.getInstance().postNotificationName(NotificationCenter.updateInterfaces, MrMailbox.UPDATE_MASK_CHAT_MEMBERS);
                                     }
                                 });
-                                builder.setNegativeButton(context.getString(R.string.Cancel), null);
+                                builder.setNegativeButton(R.string.Cancel, null);
                                 String name = MrMailbox.getContact(curr_user_id).getDisplayName();
                                 builder.setMessage(AndroidUtilities.replaceTags(String.format(context.getString(R.string.AskRemoveMemberFromGroup), name)));
                                 showDialog(builder.create());
@@ -532,7 +527,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                         items = new CharSequence[]{context.getString(R.string.FromCamera), context.getString(R.string.FromGalley), context.getString(R.string.Delete)};
                     }
 
-                    builder.setTitle(context.getString(R.string.EditImage));
+                    builder.setTitle(R.string.EditImage);
                     builder.setItems(items, new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
@@ -543,7 +538,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                             } else if (i == 2) {
                                 AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
                                 builder.setMessage(context.getString(R.string.AskDeleteGroupImage));
-                                builder.setPositiveButton(context.getString(R.string.OK), new DialogInterface.OnClickListener() {
+                                builder.setPositiveButton(R.string.OK, new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialogInterface, int i) {
                                         if( MrMailbox.setChatImage(chat_id, null)!=0 ) {
@@ -551,7 +546,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                                         }
                                     }
                                 });
-                                builder.setNegativeButton(context.getString(R.string.Cancel), null);
+                                builder.setNegativeButton(R.string.Cancel, null);
                                 showDialog(builder.create());
 
 

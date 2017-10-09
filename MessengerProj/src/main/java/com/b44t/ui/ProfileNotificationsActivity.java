@@ -149,7 +149,7 @@ public class ProfileNotificationsActivity extends BaseFragment implements Notifi
             public void onItemClick(AdapterView<?> adapterView, View view, final int i, long l) {
                 if (i == settingsVibrateRow) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
-                    builder.setTitle(context.getString(R.string.Vibrate));
+                    builder.setTitle(R.string.Vibrate);
                     builder.setItems(new CharSequence[]{
                             context.getString(R.string.Disabled),
                             context.getString(R.string.Default),
@@ -177,7 +177,7 @@ public class ProfileNotificationsActivity extends BaseFragment implements Notifi
                             }
                         }
                     });
-                    builder.setNegativeButton(context.getString(R.string.Cancel), null);
+                    builder.setNegativeButton(R.string.Cancel, null);
                     showDialog(builder.create());
                 } else if (i == settingsNotificationsRow) {
                     if (getParentActivity() == null) {
@@ -212,7 +212,7 @@ public class ProfileNotificationsActivity extends BaseFragment implements Notifi
                             NotificationCenter.getInstance().postNotificationName(NotificationCenter.notificationsSettingsUpdated);
                         }
                     });
-                    builder.setNegativeButton(context.getString(R.string.Cancel), null);
+                    builder.setNegativeButton(R.string.Cancel, null);
                     showDialog(builder.create());
                 } else if (i == settingsSoundRow) {
                     try {
@@ -261,9 +261,9 @@ public class ProfileNotificationsActivity extends BaseFragment implements Notifi
                     }
 
                     AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
-                    builder.setTitle(context.getString(R.string.LedColor));
+                    builder.setTitle(R.string.LedColor);
                     builder.setView(linearLayout);
-                    builder.setPositiveButton(context.getString(R.string.Set), new DialogInterface.OnClickListener() {
+                    builder.setPositiveButton(R.string.Set, new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int which) {
                             final SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("Notifications", Activity.MODE_PRIVATE);
@@ -273,7 +273,7 @@ public class ProfileNotificationsActivity extends BaseFragment implements Notifi
                             listView.invalidateViews();
                         }
                     });
-                    builder.setNeutralButton(context.getString(R.string.Disabled), new DialogInterface.OnClickListener() {
+                    builder.setNeutralButton(R.string.Disabled, new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             final SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("Notifications", Activity.MODE_PRIVATE);
@@ -283,7 +283,7 @@ public class ProfileNotificationsActivity extends BaseFragment implements Notifi
                             listView.invalidateViews();
                         }
                     });
-                    builder.setNegativeButton(context.getString(R.string.Default), new DialogInterface.OnClickListener() {
+                    builder.setNegativeButton(R.string.Default, new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             final SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("Notifications", Activity.MODE_PRIVATE);
@@ -296,7 +296,7 @@ public class ProfileNotificationsActivity extends BaseFragment implements Notifi
                     showDialog(builder.create());
                 } else if (i == settingsPriorityRow) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
-                    builder.setTitle(context.getString(R.string.NotificationsPriority));
+                    builder.setTitle(R.string.NotificationsPriority);
                     builder.setItems(new CharSequence[]{
                             context.getString(R.string.Default),
                             context.getString(R.string.NotificationsPriorityDefault),
@@ -317,7 +317,7 @@ public class ProfileNotificationsActivity extends BaseFragment implements Notifi
                             }
                         }
                     });
-                    builder.setNegativeButton(context.getString(R.string.Cancel), null);
+                    builder.setNegativeButton(R.string.Cancel, null);
                     showDialog(builder.create());
                 } else if (i == smartRow) {
                     if (getParentActivity() == null) {
@@ -412,9 +412,9 @@ public class ProfileNotificationsActivity extends BaseFragment implements Notifi
                     textView.setLayoutParams(layoutParams1);
 
                     AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
-                    builder.setTitle(context.getString(R.string.SmartNotifications));
+                    builder.setTitle(R.string.SmartNotifications);
                     builder.setView(linearLayout);
-                    builder.setPositiveButton(context.getString(R.string.OK), new DialogInterface.OnClickListener() {
+                    builder.setPositiveButton(R.string.OK, new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("Notifications", Activity.MODE_PRIVATE);
@@ -425,7 +425,7 @@ public class ProfileNotificationsActivity extends BaseFragment implements Notifi
                             }
                         }
                     });
-                    builder.setNegativeButton(context.getString(R.string.Disabled), new DialogInterface.OnClickListener() {
+                    builder.setNegativeButton(R.string.Disabled, new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("Notifications", Activity.MODE_PRIVATE);

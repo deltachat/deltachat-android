@@ -588,14 +588,14 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
                 if (!pm.isIgnoringBatteryOptimizations(ApplicationLoader.applicationContext.getPackageName())) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
                     builder.setMessage(AndroidUtilities.replaceTags(ApplicationLoader.applicationContext.getString(R.string.PermissionBattery)));
-                    builder.setPositiveButton(ApplicationLoader.applicationContext.getString(R.string.OK), new DialogInterface.OnClickListener() {
+                    builder.setPositiveButton(R.string.OK, new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             askForIgnoreBatteryOptimization();
                         }
                     });
                     builder.setCancelable(false);
-                    builder.setNegativeButton(ApplicationLoader.applicationContext.getString(R.string.Cancel), new DialogInterface.OnClickListener() {
+                    builder.setNegativeButton(R.string.Cancel, new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             askForOtherPermissons();
@@ -802,7 +802,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
                     didSelectResult(dialog_id, false, false);
                 }
             });
-            builder.setNegativeButton(ApplicationLoader.applicationContext.getString(R.string.Cancel), null);
+            builder.setNegativeButton(R.string.Cancel, null);
             showDialog(builder.create());
         } else {
             if (delegate != null) {

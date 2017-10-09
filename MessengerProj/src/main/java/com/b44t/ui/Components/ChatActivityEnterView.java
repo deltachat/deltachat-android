@@ -1408,13 +1408,13 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
                 }
                 AlertDialog.Builder builder = new AlertDialog.Builder(parentActivity);
                 builder.setMessage(ApplicationLoader.applicationContext.getString(R.string.ClearRecentEmoji));
-                builder.setPositiveButton(ApplicationLoader.applicationContext.getString(R.string.ClearButton).toUpperCase(), new DialogInterface.OnClickListener() {
+                builder.setPositiveButton(R.string.ClearButton, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         emojiView.clearRecentEmoji();
                     }
                 });
-                builder.setNegativeButton(ApplicationLoader.applicationContext.getString(R.string.Cancel), null);
+                builder.setNegativeButton(R.string.Cancel, null);
                 parentFragment.showDialog(builder.create());
             }
         });

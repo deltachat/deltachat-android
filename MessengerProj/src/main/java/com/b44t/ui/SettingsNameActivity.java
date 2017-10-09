@@ -148,11 +148,7 @@ public class SettingsNameActivity extends BaseFragment {
                 }
                 AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
                 builder.setMessage(execute_result);
-                builder.setPositiveButton(ApplicationLoader.applicationContext.getString(R.string.OK), new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                    }
-                });
+                builder.setPositiveButton(R.string.OK, null);
                 showDialog(builder.create());
                 return;
             }

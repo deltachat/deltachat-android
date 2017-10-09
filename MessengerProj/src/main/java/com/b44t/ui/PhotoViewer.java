@@ -1018,7 +1018,7 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
                             }
                         }
                     });
-                    builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
+                    builder.setNegativeButton(R.string.Cancel, null);
                     showAlertDialog(builder);
                     */
                 }
@@ -1471,7 +1471,7 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
                             mentionsAdapter.clearRecentHashtags();
                         }
                     });
-                    builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
+                    builder.setNegativeButton(R.string.Cancel, null);
                     showAlertDialog(builder);
                     return true;
                 }
@@ -2004,13 +2004,13 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
                             }
                             AlertDialog.Builder builder = new AlertDialog.Builder(parentActivity);
                             builder.setMessage(ApplicationLoader.applicationContext.getString(R.string.DiscardChanges));
-                            builder.setPositiveButton(ApplicationLoader.applicationContext.getString(R.string.OK), new DialogInterface.OnClickListener() {
+                            builder.setPositiveButton(R.string.OK, new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialogInterface, int i) {
                                     switchToEditMode(0);
                                 }
                             });
-                            builder.setNegativeButton(ApplicationLoader.applicationContext.getString(R.string.Cancel), null);
+                            builder.setNegativeButton(R.string.Cancel, null);
                             showAlertDialog(builder);
                         } else {
                             switchToEditMode(0);

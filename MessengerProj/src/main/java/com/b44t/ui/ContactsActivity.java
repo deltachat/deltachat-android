@@ -428,7 +428,7 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
                         }
 
                         AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
-                        builder.setPositiveButton(context.getString(R.string.OK), new DialogInterface.OnClickListener() {
+                        builder.setPositiveButton(R.string.OK, new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
                                 int belonging_chat_id = MrMailbox.createChatByContactId(user.id);
@@ -439,7 +439,7 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
                                 }
                             }
                         });
-                        builder.setNegativeButton(context.getString(R.string.Cancel), null);
+                        builder.setNegativeButton(R.string.Cancel, null);
                         builder.setMessage(AndroidUtilities.replaceTags(String.format(context.getString(R.string.AskStartChatWith), name)));
                         showDialog(builder.create());
                     }

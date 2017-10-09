@@ -228,8 +228,8 @@ public class SettingsNotificationsActivity extends BaseFragment implements Notif
 
                     AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
                     builder.setMessage(context.getString(R.string.AskResetNotifications));
-                    builder.setNegativeButton(context.getString(R.string.Cancel), null);
-                    builder.setPositiveButton(context.getString(R.string.OK), new DialogInterface.OnClickListener() {
+                    builder.setNegativeButton(R.string.Cancel, null);
+                    builder.setPositiveButton(R.string.OK, new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
                             SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("Notifications", Activity.MODE_PRIVATE);
@@ -284,9 +284,9 @@ public class SettingsNotificationsActivity extends BaseFragment implements Notif
                     colorPickerView.setColor(preferences.getInt(i == messageLedRow? "MessagesLed" : "GroupLed", NotificationsController.DEF_LED_COLOR));
 
                     AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
-                    builder.setTitle(context.getString(R.string.LedColor));
+                    builder.setTitle(R.string.LedColor);
                     builder.setView(linearLayout);
-                    builder.setPositiveButton(context.getString(R.string.Set), new DialogInterface.OnClickListener() {
+                    builder.setPositiveButton(R.string.Set, new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int which) {
                             final SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("Notifications", Activity.MODE_PRIVATE);
@@ -300,7 +300,7 @@ public class SettingsNotificationsActivity extends BaseFragment implements Notif
                             listView.invalidateViews();
                         }
                     });
-                    builder.setNeutralButton(context.getString(R.string.Disabled), new DialogInterface.OnClickListener() {
+                    builder.setNeutralButton(R.string.Disabled, new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             final SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("Notifications", Activity.MODE_PRIVATE);
@@ -314,7 +314,7 @@ public class SettingsNotificationsActivity extends BaseFragment implements Notif
                             listView.invalidateViews();
                         }
                     });
-                    builder.setNegativeButton(context.getString(R.string.Default), new DialogInterface.OnClickListener() {
+                    builder.setNegativeButton(R.string.Default, new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             final SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("Notifications", Activity.MODE_PRIVATE);
@@ -331,7 +331,7 @@ public class SettingsNotificationsActivity extends BaseFragment implements Notif
                     showDialog(builder.create());
                 } else if (i == messageVibrateRow || i == groupVibrateRow) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
-                    builder.setTitle(context.getString(R.string.Vibrate));
+                    builder.setTitle(R.string.Vibrate);
                     builder.setItems(new CharSequence[]{
                             context.getString(R.string.Disabled),
                             context.getString(R.string.Default),
@@ -364,11 +364,11 @@ public class SettingsNotificationsActivity extends BaseFragment implements Notif
                             }
                         }
                     });
-                    builder.setNegativeButton(context.getString(R.string.Cancel), null);
+                    builder.setNegativeButton(R.string.Cancel, null);
                     showDialog(builder.create());
                 } else if (i == messagePriorityRow || i == groupPriorityRow || i == inappPriorityRow ) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
-                    builder.setTitle(context.getString(R.string.NotificationsPriority));
+                    builder.setTitle(R.string.NotificationsPriority);
                     builder.setItems(new CharSequence[]{
                             context.getString(R.string.NotificationsPriorityDefault),
                             context.getString(R.string.NotificationsPriorityHigh),
@@ -389,11 +389,11 @@ public class SettingsNotificationsActivity extends BaseFragment implements Notif
                             }
                         }
                     });
-                    builder.setNegativeButton(context.getString(R.string.Cancel), null);
+                    builder.setNegativeButton(R.string.Cancel, null);
                     showDialog(builder.create());
                 } else if (i == repeatRow) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
-                    builder.setTitle(context.getString(R.string.RepeatNotifications));
+                    builder.setTitle(R.string.RepeatNotifications);
                     builder.setItems(new CharSequence[]{
                             context.getString(R.string.Disabled),
                             context.getResources().getQuantityString(R.plurals.Minutes, 5, 5),
@@ -426,7 +426,7 @@ public class SettingsNotificationsActivity extends BaseFragment implements Notif
                             }
                         }
                     });
-                    builder.setNegativeButton(context.getString(R.string.Cancel), null);
+                    builder.setNegativeButton(R.string.Cancel, null);
                     showDialog(builder.create());
                 }
                 if (view instanceof TextCheckCell) {
