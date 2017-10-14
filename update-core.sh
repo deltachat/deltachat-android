@@ -1,6 +1,7 @@
 
-# this script updates the messenger-backend subfile from github;
-# make sure, messenger-backend is committed successfull before calling this script
+# this script updates the deltachat-core sub-repository from github
+# - make sure, deltachat-core is committed successfull before calling this script
+# - the script assumes, deltachat-core is placed in the same directory as deltachat-android
 
 # remove links to the files
 rm -r MessengerProj/jni/messenger-backend/*
@@ -18,11 +19,13 @@ git pull
 cd ../../..
 git commit -am "Update messenger-backend submodule."
 
-# re-link all files
+# remove files downloaded just  for committing
 rm -r MessengerProj/jni/messenger-backend/*
 rm -r MessengerProj/jni/messenger-backend/.??*
-mkdir MessengerProj/jni/messenger-backend/src
-cp -al ../deltachat-core/src MessengerProj/jni/messenger-backend/ 
-mkdir MessengerProj/jni/messenger-backend/libs
-cp -al ../deltachat-core/libs MessengerProj/jni/messenger-backend/ 
+
+# re-link all files (symbolic links may contain arbitrary text, so no relative paths, please)
+cd ..
+ln --symbolic `pwd`/deltachat-core/src  deltachat-android/MessengerProj/jni/messenger-backend/src
+ln --symbolic `pwd`/deltachat-core/libs deltachat-android/MessengerProj/jni/messenger-backend/libs
+cd deltachat-android
 
