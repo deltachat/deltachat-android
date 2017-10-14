@@ -1,5 +1,9 @@
 # Delta Chat Changelog
 
+## UNRELEASED
+
+* Support keys generated with multiple subkeys eg. from K-9
+
 ## v0.9.5
 2017-10-08
 
