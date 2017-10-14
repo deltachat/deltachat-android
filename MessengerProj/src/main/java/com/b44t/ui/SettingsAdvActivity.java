@@ -404,13 +404,14 @@ public class SettingsAdvActivity extends BaseFragment implements NotificationCen
     }
 
     private ProgressDialog progressDialog = null;
+    private int            progressWhat = 0;
     private void startImex(int what)
     {
         if( progressDialog!=null ) {
             progressDialog.dismiss();
             progressDialog = null;
         }
-
+        progressWhat = what;
         progressDialog = new ProgressDialog(getParentActivity());
         progressDialog.setMessage(ApplicationLoader.applicationContext.getString(R.string.OneMoment));
         progressDialog.setCanceledOnTouchOutside(false);
@@ -463,12 +464,19 @@ public class SettingsAdvActivity extends BaseFragment implements NotificationCen
             }
 
             if( (int)args[0]==1 ) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
-                builder.setMessage(AndroidUtilities.replaceTags(String.format(ApplicationLoader.applicationContext.getString(R.string.FilesSuccessfullyExported), imexDir.getAbsoluteFile())+"\n\n"+ApplicationLoader.applicationContext.getString(R.string.ImportExportExplain)));
-                builder.setPositiveButton(R.string.OK, null);
-                showDialog(builder.create());
+                // success
+                if( progressWhat==MrMailbox.MR_IMEX_EXPORT_SELF_KEYS || progressWhat==MrMailbox.MR_IMEX_EXPORT_BACKUP ) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
+                    builder.setMessage(AndroidUtilities.replaceTags(String.format(ApplicationLoader.applicationContext.getString(R.string.FilesSuccessfullyExported), imexDir.getAbsoluteFile()) + "\n\n" + ApplicationLoader.applicationContext.getString(R.string.ImportExportExplain)));
+                    builder.setPositiveButton(R.string.OK, null);
+                    showDialog(builder.create());
+                }
+                else {
+                    AndroidUtilities.showDoneHint(ApplicationLoader.applicationContext);
+                }
             }
-            else if( !errorString.isEmpty() /*usually empty if export is cancelled by the user*/ ) {
+            else if( !errorString.isEmpty() ) {
+                // error (errorString is empty when the user has cancelled the export manually, don't show a message in this case)
                 AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
                 builder.setMessage(errorString);
                 builder.setPositiveButton(R.string.OK, null);
