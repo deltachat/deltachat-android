@@ -1,8 +1,11 @@
 # Delta Chat Changelog
 
-## UNRELEASED
+## v0.9.6
+2017-10-18
 
 * Support keys generated with multiple subkeys eg. from K-9
+* Show PDFs and other attachments with bad names
+* Bug fixes
 
 ## v0.9.5
 2017-10-08
