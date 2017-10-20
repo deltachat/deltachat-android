@@ -1,5 +1,9 @@
 # Delta Chat Changelog
 
+## UNRELEASED
+
+* Add copy-to-clipboard function for "About / Info"
+
 ## v0.9.6
 2017-10-18
 

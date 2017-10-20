@@ -108,10 +108,18 @@ public class WelcomeActivity extends Activity implements NotificationCenter.Noti
             secondaryButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+                    final String msgtext = "© 2017 Delta Chat contributors" + "\n\n" + MrMailbox.getInfo() + "\n\n" + getAndroidInfo();
                     new AlertDialog.Builder(WelcomeActivity.this)
                         .setTitle(ApplicationLoader.applicationContext.getString(R.string.AppName) + " v" + getVersion())
-                        .setMessage("© 2017 Delta Chat contributors" + "\n\n" + MrMailbox.getInfo() + "\n\n" + getAndroidInfo())
+                        .setMessage(msgtext)
                         .setPositiveButton(R.string.OK, null)
+                        .setNeutralButton(R.string.CopyToClipboard, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                AndroidUtilities.addToClipboard(msgtext);
+                                AndroidUtilities.showDoneHint(WelcomeActivity.this);
+                            }
+                        })
                         .show();
                 }
             });
