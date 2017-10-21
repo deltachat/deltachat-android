@@ -51,7 +51,7 @@ import com.b44t.ui.Cells.TextInfoCell;
 import com.b44t.ui.Components.LayoutHelper;
 
 
-public class SettingsNameActivity extends BaseFragment {
+public class SettingsNameFragment extends BaseFragment {
 
     // the list
     private ListAdapter listAdapter;

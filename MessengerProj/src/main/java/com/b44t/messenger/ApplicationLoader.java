@@ -24,9 +24,7 @@
 package com.b44t.messenger;
 
 import android.app.Activity;
-import android.app.AlarmManager;
 import android.app.Application;
-import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -40,11 +38,10 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Handler;
 import android.os.PowerManager;
-import android.os.SystemClock;
 import android.util.Log;
 
 import com.b44t.ui.Components.ForegroundDetector;
-import com.b44t.ui.SettingsAdvActivity;
+import com.b44t.ui.SettingsAdvFragment;
 
 import java.io.File;
 
@@ -223,7 +220,7 @@ public class ApplicationLoader extends Application {
 
         // create other default objects
         SharedPreferences mainPreferences = ApplicationLoader.applicationContext.getSharedPreferences("mainconfig", Activity.MODE_PRIVATE);
-        fontSize = mainPreferences.getInt("msg_font_size", SettingsAdvActivity.defMsgFontSize());
+        fontSize = mainPreferences.getInt("msg_font_size", SettingsAdvFragment.defMsgFontSize());
 
         ImageLoader.getInstance();
         MediaController.getInstance();

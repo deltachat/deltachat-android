@@ -56,7 +56,7 @@ import com.b44t.ui.Cells.TextSettingsCell;
 import com.b44t.ui.Components.ColorPickerView;
 import com.b44t.ui.Components.LayoutHelper;
 
-public class SettingsNotificationsActivity extends BaseFragment implements NotificationCenter.NotificationCenterDelegate {
+public class SettingsNotificationsFragment extends BaseFragment implements NotificationCenter.NotificationCenterDelegate {
 
     private ListView listView;
 

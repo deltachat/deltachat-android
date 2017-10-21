@@ -24,7 +24,6 @@
 package com.b44t.ui;
 
 import android.Manifest;
-import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.ContentResolver;
@@ -154,7 +153,7 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
             if ( MrMailbox.isConfigured()==0 ) {
                 Bundle args = new Bundle();
                 args.putBoolean("fromIntro", true);
-                actionBarLayout.addFragmentToStack(new SettingsAccountActivity(args));
+                actionBarLayout.addFragmentToStack(new SettingsAccountFragment(args));
             } else {
                 actionBarLayout.addFragmentToStack(new DialogsActivity(null));
             }
@@ -174,7 +173,7 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                                 }
                                 break;
                             case "settings": {
-                                SettingsActivity settings = new SettingsActivity();
+                                SettingsFragment settings = new SettingsFragment();
                                 actionBarLayout.addFragmentToStack(settings);
                                 settings.restoreSelfArgs(savedInstanceState);
                                 break;
@@ -955,7 +954,7 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                 if (lastFragment instanceof ChatActivity && args != null) {
                     outState.putBundle("args", args);
                     outState.putString("fragment", "chat");
-                } else if (lastFragment instanceof SettingsActivity) {
+                } else if (lastFragment instanceof SettingsFragment) {
                     outState.putString("fragment", "settings");
                 } else if (lastFragment instanceof GroupCreateFinalActivity && args != null) {
                     outState.putBundle("args", args);

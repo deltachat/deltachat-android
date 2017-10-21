@@ -51,7 +51,7 @@ import com.b44t.ui.Cells.TextSettingsCell;
 import com.b44t.ui.Components.LayoutHelper;
 
 
-public class SettingsActivity extends BaseFragment {
+public class SettingsFragment extends BaseFragment {
 
     // the list
     private int profileRow, nameAndStatusRow;
@@ -133,7 +133,7 @@ public class SettingsActivity extends BaseFragment {
             @Override
             public void onItemClick(final AdapterView<?> adapterView, View view, final int i, long l) {
                 if (i == nameAndStatusRow) {
-                    presentFragment(new SettingsNameActivity());
+                    presentFragment(new SettingsNameFragment());
                 }
                 else if (i == passcodeRow) {
                     if (UserConfig.passcodeHash.length() > 0) {
@@ -156,13 +156,13 @@ public class SettingsActivity extends BaseFragment {
                     }
                 }
                 else if (i == notificationRow) {
-                    presentFragment(new SettingsNotificationsActivity());
+                    presentFragment(new SettingsNotificationsFragment());
                 }
                 else if (i == backgroundRow) {
                     presentFragment(new WallpapersActivity());
                 }
                 else if (i == advRow) {
-                    presentFragment(new SettingsAdvActivity());
+                    presentFragment(new SettingsAdvFragment());
                 }
                 else if (i == aboutRow ) {
                     Intent intent2 = new Intent(getParentActivity(), WelcomeActivity.class);

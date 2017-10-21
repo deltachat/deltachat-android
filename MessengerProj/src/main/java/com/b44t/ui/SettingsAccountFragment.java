@@ -55,7 +55,7 @@ import com.b44t.ui.Cells.TextSettingsCell;
 import com.b44t.ui.Components.LayoutHelper;
 
 
-public class SettingsAccountActivity extends BaseFragment implements NotificationCenter.NotificationCenterDelegate {
+public class SettingsAccountFragment extends BaseFragment implements NotificationCenter.NotificationCenterDelegate {
 
     // the list
     private ListView    listView;
@@ -114,7 +114,7 @@ public class SettingsAccountActivity extends BaseFragment implements Notificatio
     private boolean          fromIntro;
     private boolean          m_expanded = false;
 
-    public SettingsAccountActivity(Bundle args) {
+    public SettingsAccountFragment(Bundle args) {
         super();
         if( args!=null ) {
             fromIntro = args.getBoolean("fromIntro", false);

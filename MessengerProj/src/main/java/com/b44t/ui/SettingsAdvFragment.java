@@ -31,7 +31,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
-import android.media.MediaScannerConnection;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
@@ -64,7 +63,7 @@ import com.b44t.ui.Components.NumberPicker;
 import java.io.File;
 
 
-public class SettingsAdvActivity extends BaseFragment implements NotificationCenter.NotificationCenterDelegate {
+public class SettingsAdvFragment extends BaseFragment implements NotificationCenter.NotificationCenterDelegate {
 
     // the list
     private int accountSettingsRow;
@@ -240,7 +239,7 @@ public class SettingsAdvActivity extends BaseFragment implements NotificationCen
                 }
                 else if(i==accountSettingsRow)
                 {
-                    presentFragment(new SettingsAccountActivity(null));
+                    presentFragment(new SettingsAccountFragment(null));
                 }
                 else if(i==manageKeysRow )
                 {
@@ -263,7 +262,7 @@ public class SettingsAdvActivity extends BaseFragment implements NotificationCen
                     final NumberPicker numberPicker = new NumberPicker(getParentActivity());
                     final int MIN_VAL = 12;
                     final int MAX_VAL = 30;
-                    final int DEF_VAL = SettingsAdvActivity.defMsgFontSize();
+                    final int DEF_VAL = SettingsAdvFragment.defMsgFontSize();
                     String displayValues[] = new String[MAX_VAL-MIN_VAL+1];
                     for( int v = MIN_VAL; v <= MAX_VAL; v++ ) {
                         String cur = String.format("%d", v);
@@ -555,7 +554,7 @@ public class SettingsAdvActivity extends BaseFragment implements NotificationCen
                 }
                 else if (i == textSizeRow) {
                     SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("mainconfig", Activity.MODE_PRIVATE);
-                    int size = preferences.getInt("msg_font_size", SettingsAdvActivity.defMsgFontSize());
+                    int size = preferences.getInt("msg_font_size", SettingsAdvFragment.defMsgFontSize());
                     textCell.setTextAndValue(mContext.getString(R.string.TextSize), String.format("%d", size), true);
                 }
             } else if (type == ROWTYPE_CHECK) {

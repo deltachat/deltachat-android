@@ -35,7 +35,6 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Environment;
 import android.os.PowerManager;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -306,7 +305,7 @@ public class WelcomeActivity extends Activity implements NotificationCenter.Noti
 
 
     private void tryToStartImport() {
-        File imexDir = SettingsAdvActivity.getImexDir();
+        File imexDir = SettingsAdvFragment.getImexDir();
         final String backupFile = MrMailbox.imexHasBackup(imexDir.getAbsolutePath());
         if (backupFile != null) {
             new AlertDialog.Builder(this)

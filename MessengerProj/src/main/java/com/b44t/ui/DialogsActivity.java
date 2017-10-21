@@ -330,7 +330,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
                         args.putInt("chat_id", MrChat.MR_CHAT_ID_DEADDROP);
                         presentFragment(new ChatActivity(args));
                     } else if (id == ID_SETTINGS) {
-                        presentFragment(new SettingsActivity());
+                        presentFragment(new SettingsFragment());
                     }
                 }
             }
