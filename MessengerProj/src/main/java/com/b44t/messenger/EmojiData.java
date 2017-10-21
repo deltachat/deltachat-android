@@ -344,7 +344,6 @@ public class EmojiData {
 
     public static final HashMap<Character, Boolean> emojiToFE0FMap = new HashMap<>(emojiToFE0F.length);
     public static final HashMap<Character, Boolean> dataCharsMap = new HashMap<>(dataChars.length);
-    public static final HashMap<String, Boolean> emojiColoredMap = new HashMap<>(emojiColored.length);
 
     static {
         for (int a = 0; a < emojiToFE0F.length; a++) {
@@ -352,10 +351,6 @@ public class EmojiData {
         }
         for (int a = 0; a < dataChars.length; a++) {
             dataCharsMap.put(dataChars[a], true);
-        }
-        for (int a = 0; a < emojiColored.length; a++) {
-            //Disable colored emoji.
-            //emojiColoredMap.put(emojiColored[a], true);
         }
         dataColored[1] = data[1];
         dataColored[3] = data[3];

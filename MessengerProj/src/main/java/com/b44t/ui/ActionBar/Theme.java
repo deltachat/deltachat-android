@@ -70,12 +70,6 @@ public class Theme {
     public static final int CHAT_BOTTOM_OVERLAY_TEXT_COLOR = 0xff7f7f7f;
     public static final int CHAT_EMPTY_VIEW_TEXT_COLOR = 0xffffffff;
 
-    public static final int STICKERS_SHEET_TITLE_TEXT_COLOR = 0xff212121;
-    public static final int STICKERS_SHEET_SEND_TEXT_COLOR = 0xff3a8ccf;
-    public static final int STICKERS_SHEET_ADD_TEXT_COLOR = 0xff3a8ccf;
-    public static final int STICKERS_SHEET_CLOSE_TEXT_COLOR = 0xff3a8ccf;
-    public static final int STICKERS_SHEET_REMOVE_TEXT_COLOR = 0xffcd5a5a;
-
     public static final int MSG_SELECTED_BACKGROUND_COLOR = 0x6633b5e5;
     public static final int MSG_STICKER_NAME_TEXT_COLOR = 0xffffffff;
     public static final int MSG_IN_TIME_N_FWD_TEXT_COLOR = 0xff9ea7b0;

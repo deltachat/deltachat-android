@@ -199,8 +199,6 @@ public class SettingsAdvFragment extends BaseFragment implements NotificationCen
                     if (view instanceof TextCheckCell) {
                         ((TextCheckCell) view).setChecked(MediaController.getInstance().canDirectShare());
                     }
-                } else if (i == cacheRow) {
-                    presentFragment(new CacheControlActivity());
                 }
                 else if (i == blockedRow) {
                     presentFragment(new BlockedUsersActivity());

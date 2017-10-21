@@ -49,7 +49,6 @@ public class TLRPC {
 		public int h;
 		public int duration;
 		public String alt;
-		public InputStickerSet stickerset;
 		public boolean voice;
 		public String title;
 		public String performer;
@@ -61,9 +60,6 @@ public class TLRPC {
 	}
 
 	public static class TL_documentAttributeImageSize extends DocumentAttribute {
-	}
-
-	public static class TL_documentAttributeSticker extends DocumentAttribute {
 	}
 
 	public static class TL_documentAttributeVideo extends DocumentAttribute {
@@ -90,11 +86,6 @@ public class TLRPC {
 	}
 
 	public static class TL_messageMediaPhoto extends MessageMedia {
-	}
-
-	public static class TL_messages_stickerSet extends TLObject {
-		public StickerSet set;
-		public ArrayList<Document> documents = new ArrayList<>();
 	}
 
 	public static class Audio extends TLObject {
@@ -146,13 +137,6 @@ public class TLRPC {
 	public static class TL_document extends Document {
 	}
 
-	public static class InputStickerSet extends TLObject {
-		public long id;
-	}
-
-	public static class TL_inputStickerSetEmpty extends InputStickerSet {
-	}
-
 	public static class UserProfilePhoto extends TLObject {
 		public FileLocation photo_small;
 		public FileLocation photo_big;
@@ -184,17 +168,6 @@ public class TLRPC {
 		public final boolean signatures = false;
 		public final boolean min = false;
 		public final String address = null;
-	}
-
-	public static class StickerSet extends TLObject {
-		public long id;
-		public String title;
-		public int flags;
-		public boolean installed;
-		public boolean disabled;
-		public boolean official;
-		public int count;
-		public int hash;
 	}
 
 	public static class FileLocation extends TLObject {

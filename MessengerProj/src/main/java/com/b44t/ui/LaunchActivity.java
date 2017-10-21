@@ -829,7 +829,6 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
     protected void onDestroy() {
         MrMailbox.log_i("DeltaChat", "*** LaunchActivity.onDestroy()");
         PhotoViewer.getInstance().destroyPhotoViewer();
-        StickerPreviewViewer.getInstance().destroy();
         try {
             if (visibleDialog != null) {
                 visibleDialog.dismiss();

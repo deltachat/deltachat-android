@@ -40,7 +40,6 @@ import android.graphics.drawable.Drawable;
 import android.media.AudioManager;
 import android.os.Build;
 import android.os.PowerManager;
-import android.os.SystemClock;
 import android.text.Editable;
 import android.text.SpannableStringBuilder;
 import android.text.TextWatcher;
@@ -76,7 +75,6 @@ import com.b44t.ui.ActionBar.Theme;
 import com.b44t.ui.ChatActivity;
 
 import java.io.File;
-import java.lang.reflect.Field;
 import java.util.ArrayList;
 
 public class ChatActivityEnterView extends FrameLayout implements NotificationCenter.NotificationCenterDelegate, SizeNotifierFrameLayout.SizeNotifierFrameLayoutDelegate /*, StickersAlert.StickersAlertDelegate*/ {
@@ -86,7 +84,6 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
         void needSendTyping();
         void onTextChanged(CharSequence text, boolean bigChange);
         void onWindowSizeChanged(int size);
-        void onStickersTab(boolean opened);
     }
 
     private class SeekBarWaveformView extends View {
@@ -225,7 +222,7 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
     private EditTextCaption messageEditText;
     private ImageView sendButton;
     private ImageView emojiButton;
-    private EmojiView emojiView;
+    private EmojiInputView emojiView;
     private TextView recordTimeText;
     private ImageView audioRecordButton;
     private FrameLayout recordPanel;
@@ -799,24 +796,6 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
         return false;
     }
 
-    public void setAllowStickersAndGifs(boolean value, boolean value2) {
-        if ((allowStickers != value || allowGifs != value2) && emojiView != null) {
-            if (emojiView.getVisibility() == VISIBLE) {
-                hidePopup(false);
-            }
-            sizeNotifierLayout.removeView(emojiView);
-            emojiView = null;
-        }
-        allowStickers = value;
-        allowGifs = value2;
-    }
-
-    public void setOpenGifsTabFirst() {
-        createEmojiView();
-        emojiView.loadGifRecent();
-        emojiView.switchToGifRecent();
-    }
-
     public boolean isTopViewVisible() {
         return false;
     }
@@ -842,9 +821,6 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
         NotificationCenter.getInstance().removeObserver(this, NotificationCenter.audioRouteChanged);
         NotificationCenter.getInstance().removeObserver(this, NotificationCenter.audioDidReset);
         NotificationCenter.getInstance().removeObserver(this, NotificationCenter.audioProgressDidChanged);
-        if (emojiView != null) {
-            emojiView.onDestroy();
-        }
         if (mWakeLock != null) {
             try {
                 mWakeLock.release();
@@ -1331,9 +1307,9 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
         if (emojiView != null) {
             return;
         }
-        emojiView = new EmojiView(allowStickers, allowGifs, parentActivity);
+        emojiView = new EmojiInputView(parentActivity);
         emojiView.setVisibility(GONE);
-        emojiView.setListener(new EmojiView.Listener() {
+        emojiView.setListener(new EmojiInputView.Listener() {
             public boolean onBackspace() {
                 if (messageEditText.length() == 0) {
                     return false;
@@ -1360,47 +1336,6 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
                 }
             }
 
-            /*public void onStickerSelected(TLRPC.Document sticker) {
-                ChatActivityEnterView.this.onStickerSelected(sticker);
-            }*/
-
-            @Override
-            public void onStickersSettingsClick() {
-                if (parentFragment != null) {
-                    //parentFragment.presentFragment(new StickersActivity()); -- EDIT BY MR
-                }
-            }
-
-            @Override
-            public void onGifSelected(TLRPC.Document gif) {
-                SendMessagesHelper.getInstance().sendSticker(gif, dialog_id);
-                if ((int) dialog_id == 0) {
-                    //MessagesController.getInstance().saveGif(gif);
-                }
-                if (delegate != null) {
-                    delegate.onMessageSend(null);
-                }
-            }
-
-            @Override
-            public void onGifTab(boolean opened) {
-                if (!AndroidUtilities.usingHardwareInput) {
-                    if (opened) {
-                        if (messageEditText.length() == 0) {
-                            messageEditText.setText("@gif ");
-                            messageEditText.setSelection(messageEditText.length());
-                        }
-                    } else if (messageEditText.getText().toString().equals("@gif ")) {
-                        messageEditText.setText("");
-                    }
-                }
-            }
-
-            @Override
-            public void onStickersTab(boolean opened) {
-                delegate.onStickersTab(opened);
-            }
-
             @Override
             public void onClearEmojiRecent() {
                 if (parentFragment == null || parentActivity == null) {
@@ -1421,14 +1356,6 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
         emojiView.setVisibility(GONE);
         sizeNotifierLayout.addView(emojiView);
     }
-
-    /*@Override
-    public void onStickerSelected(TLRPC.Document sticker) {
-        SendMessagesHelper.getInstance().sendSticker(sticker, dialog_id);
-        if (delegate != null) {
-            delegate.onMessageSend(null);
-        }
-    }*/
 
     private void showPopup(int show, int contentType /*0=emojiView, 1=botKeyboardView*/ ) {
         if (show == 1) {
@@ -1529,17 +1456,6 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
 
     public boolean isPopupShowing() {
         return emojiView != null && emojiView.getVisibility() == VISIBLE;
-    }
-
-    public boolean isKeyboardVisible() {
-        return keyboardVisible;
-    }
-
-    public void addRecentGif(MediaController.SearchImage searchImage) {
-        if (emojiView == null) {
-            return;
-        }
-        emojiView.addRecentGif(searchImage);
     }
 
     @Override

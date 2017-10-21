@@ -38,8 +38,6 @@ import java.util.ArrayList;
 
 public class MessageObject {
 
-    private Context mContext = ApplicationLoader.applicationContext;
-
     public static final int MESSAGE_SEND_STATE_SENDING = 1;
     public static final int MESSAGE_SEND_STATE_SENT = 0;
     public static final int MESSAGE_SEND_STATE_SEND_ERROR = 2;
@@ -508,18 +506,6 @@ public class MessageObject {
         return messageOwner.send_state == MESSAGE_SEND_STATE_SENT;
     }
 
-    public static boolean isStickerDocument(TLRPC.Document document) {
-        if (document != null) {
-            for (int a = 0; a < document.attributes.size(); a++) {
-                TLRPC.DocumentAttribute attribute = document.attributes.get(a);
-                if (attribute instanceof TLRPC.TL_documentAttributeSticker) {
-                    return true;
-                }
-            }
-        }
-        return false;
-    }
-
     public static boolean isVoiceDocument(TLRPC.Document document) {
         if (document != null) {
             for (int a = 0; a < document.attributes.size(); a++) {
@@ -565,10 +551,6 @@ public class MessageObject {
         return messageOwner.media != null ? messageOwner.media.document : null;
     }
 
-    private static boolean isStickerMessage(TLRPC.Message message) {
-        return message.media != null && message.media.document != null && isStickerDocument(message.media.document);
-    }
-
     private static boolean isMusicMessage(TLRPC.Message message) {
         return message.media != null && message.media.document != null && isMusicDocument(message.media.document);
     }
@@ -579,20 +561,6 @@ public class MessageObject {
 
     private static boolean isVideoMessage(TLRPC.Message message) {
         return message.media != null && message.media.document != null && isVideoDocument(message.media.document);
-    }
-
-    private static TLRPC.InputStickerSet getInputStickerSet(TLRPC.Message message) {
-        if (message.media != null && message.media.document != null) {
-            for (TLRPC.DocumentAttribute attribute : message.media.document.attributes) {
-                if (attribute instanceof TLRPC.TL_documentAttributeSticker) {
-                    if (attribute.stickerset instanceof TLRPC.TL_inputStickerSetEmpty) {
-                        return null;
-                    }
-                    return attribute.stickerset;
-                }
-            }
-        }
-        return null;
     }
 
     public boolean isSelectable() {
@@ -671,10 +639,7 @@ public class MessageObject {
     }
 
     public boolean isSticker() {
-        if (type != MO_TYPE1000_INIT_VAL) {
-            return type == MO_TYPE13_STICKER;
-        }
-        return isStickerMessage(messageOwner);
+        return type == MO_TYPE13_STICKER;
     }
 
     public boolean isMusic() {
@@ -703,10 +668,6 @@ public class MessageObject {
             }
         }
         return 0;
-    }
-
-    public TLRPC.InputStickerSet getInputStickerSet() {
-        return getInputStickerSet(messageOwner);
     }
 
     public boolean isForwarded() {

@@ -514,7 +514,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                         imagePressed = true;
                         result = true;
                     }
-                } else if (currentMessageObject.type != MessageObject.MO_TYPE13_STICKER || currentMessageObject.getInputStickerSet() != null) {
+                } else if (currentMessageObject.type != MessageObject.MO_TYPE13_STICKER ) {
                     if (x >= photoImage.getImageX() && x <= photoImage.getImageX() + backgroundWidth && y >= photoImage.getImageY() && y <= photoImage.getImageY() + photoImage.getImageHeight()) {
                         imagePressed = true;
                         result = true;

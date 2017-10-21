@@ -1064,8 +1064,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         //noinspection ResourceType
         chatActivityEnterView.setId(ID_CHAT_COMPOSE_PANEL);
 
-        chatActivityEnterView.setAllowStickersAndGifs(false, false); // for the moment, we have no stickers
-
         contentView.addView(chatActivityEnterView, contentView.getChildCount() - 1, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.START | Gravity.BOTTOM));
         chatActivityEnterView.setDelegate(new ChatActivityEnterView.ChatActivityEnterViewDelegate() {
             @Override
@@ -1085,10 +1083,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
 
             @Override
             public void onWindowSizeChanged(int size) {
-            }
-
-            @Override
-            public void onStickersTab(boolean opened) {
             }
         });
 
