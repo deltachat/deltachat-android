@@ -32,7 +32,7 @@ import com.b44t.messenger.MrChatlist;
 import com.b44t.messenger.MrMsg;
 import com.b44t.messenger.MrPoortext;
 import com.b44t.messenger.R;
-import com.b44t.messenger.support.widget.RecyclerView;
+import com.b44t.aosp.RecyclerView;
 import com.b44t.messenger.MrMailbox;
 import com.b44t.ui.Cells.DialogCell;
 import com.b44t.ui.Cells.GreySectionCell;

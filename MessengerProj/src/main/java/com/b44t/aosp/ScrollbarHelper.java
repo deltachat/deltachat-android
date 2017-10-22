@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.b44t.messenger.support.widget;
+package com.b44t.aosp;
 
 import android.view.View;
 

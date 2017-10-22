@@ -1,9 +1,9 @@
-package com.b44t.messenger.support.widget;
+package com.b44t.aosp;
 
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import com.b44t.messenger.support.widget.RecyclerView.Adapter;
-import com.b44t.messenger.support.widget.RecyclerView.ViewHolder;
+import com.b44t.aosp.RecyclerView.Adapter;
+import com.b44t.aosp.RecyclerView.ViewHolder;
 import android.util.Log;
 import android.view.View;
 

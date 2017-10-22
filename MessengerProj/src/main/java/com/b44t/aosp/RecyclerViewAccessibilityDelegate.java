@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.b44t.messenger.support.widget;
+package com.b44t.aosp;
 
 import android.os.Bundle;
 import android.support.v4.view.AccessibilityDelegateCompat;

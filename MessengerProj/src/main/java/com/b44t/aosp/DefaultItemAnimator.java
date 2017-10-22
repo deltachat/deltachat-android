@@ -13,14 +13,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.b44t.messenger.support.widget;
+package com.b44t.aosp;
 
 import android.support.annotation.NonNull;
 import android.support.v4.animation.AnimatorCompatHelper;
 import android.support.v4.view.ViewCompat;
 import android.support.v4.view.ViewPropertyAnimatorCompat;
 import android.support.v4.view.ViewPropertyAnimatorListener;
-import com.b44t.messenger.support.widget.RecyclerView.ViewHolder;
+import com.b44t.aosp.RecyclerView.ViewHolder;
 import android.view.View;
 
 import java.util.ArrayList;

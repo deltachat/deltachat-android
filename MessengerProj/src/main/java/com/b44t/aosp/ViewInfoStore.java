@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.b44t.messenger.support.widget;
+package com.b44t.aosp;
 
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -22,16 +22,15 @@ import android.support.v4.util.ArrayMap;
 import android.support.v4.util.LongSparseArray;
 import android.support.v4.util.Pools;
 
-import static com.b44t.messenger.support.widget.RecyclerView.ViewHolder;
-import static com.b44t.messenger.support.widget.RecyclerView.ItemAnimator.ItemHolderInfo;
-
-import static com.b44t.messenger.support.widget.ViewInfoStore.InfoRecord.FLAG_APPEAR_PRE_AND_POST;
-import static com.b44t.messenger.support.widget.ViewInfoStore.InfoRecord.FLAG_APPEAR_AND_DISAPPEAR;
-import static com.b44t.messenger.support.widget.ViewInfoStore.InfoRecord.FLAG_PRE_AND_POST;
-import static com.b44t.messenger.support.widget.ViewInfoStore.InfoRecord.FLAG_DISAPPEARED;
-import static com.b44t.messenger.support.widget.ViewInfoStore.InfoRecord.FLAG_APPEAR;
-import static com.b44t.messenger.support.widget.ViewInfoStore.InfoRecord.FLAG_PRE;
-import static com.b44t.messenger.support.widget.ViewInfoStore.InfoRecord.FLAG_POST;
+import static com.b44t.aosp.RecyclerView.ViewHolder;
+import static com.b44t.aosp.RecyclerView.ItemAnimator.ItemHolderInfo;
+import static com.b44t.aosp.ViewInfoStore.InfoRecord.FLAG_APPEAR_PRE_AND_POST;
+import static com.b44t.aosp.ViewInfoStore.InfoRecord.FLAG_APPEAR_AND_DISAPPEAR;
+import static com.b44t.aosp.ViewInfoStore.InfoRecord.FLAG_PRE_AND_POST;
+import static com.b44t.aosp.ViewInfoStore.InfoRecord.FLAG_DISAPPEARED;
+import static com.b44t.aosp.ViewInfoStore.InfoRecord.FLAG_APPEAR;
+import static com.b44t.aosp.ViewInfoStore.InfoRecord.FLAG_PRE;
+import static com.b44t.aosp.ViewInfoStore.InfoRecord.FLAG_POST;
 /**
  * This class abstracts all tracking for Views to run animations
  *

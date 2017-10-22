@@ -14,11 +14,11 @@
  * limitations under the License.
  */
 
-package com.b44t.messenger.support.widget.helper;
+package com.b44t.aosp;
 
 import android.graphics.Canvas;
 import android.support.v4.view.ViewCompat;
-import com.b44t.messenger.support.widget.RecyclerView;
+import com.b44t.aosp.RecyclerView;
 import android.view.View;
 
 

@@ -163,6 +163,7 @@ public class SettingsFragment extends BaseFragment {
                 }
                 else if (i == advRow) {
                     presentFragment(new SettingsAdvFragment());
+                    //getParentActivity().startActivity(new Intent(getParentActivity(), SettingsAdvActivity.class));
                 }
                 else if (i == aboutRow ) {
                     Intent intent2 = new Intent(getParentActivity(), WelcomeActivity.class);

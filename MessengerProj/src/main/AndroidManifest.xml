@@ -105,10 +105,17 @@
                 <category android:name="android.intent.category.BROWSABLE"/>
             </intent-filter>
         </activity>
+
         <activity
             android:name="com.b44t.ui.WelcomeActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize">
         </activity>
+
+        <activity
+            android:name="com.b44t.ui.SettingsAdvActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenSize">
+        </activity>
+
         <activity
             android:name="com.b44t.messenger.OpenChatReceiver"
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize"

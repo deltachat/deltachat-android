@@ -30,7 +30,7 @@ import android.view.ViewGroup;
 import com.b44t.messenger.AndroidUtilities;
 import com.b44t.messenger.MrChat;
 import com.b44t.messenger.MrPoortext;
-import com.b44t.messenger.support.widget.RecyclerView;
+import com.b44t.aosp.RecyclerView;
 import com.b44t.messenger.MrMailbox;
 import com.b44t.ui.Cells.DialogCell;
 

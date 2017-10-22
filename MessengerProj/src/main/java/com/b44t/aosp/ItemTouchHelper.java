@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.b44t.messenger.support.widget.helper;
+package com.b44t.aosp;
 
 import android.content.res.Resources;
 import android.graphics.Canvas;
@@ -31,10 +31,10 @@ import android.support.v4.view.VelocityTrackerCompat;
 import android.support.v4.view.ViewCompat;
 
 import com.b44t.messenger.AndroidUtilities;
-import com.b44t.messenger.support.widget.LinearLayoutManager;
-import com.b44t.messenger.support.widget.RecyclerView;
-import com.b44t.messenger.support.widget.RecyclerView.OnItemTouchListener;
-import com.b44t.messenger.support.widget.RecyclerView.ViewHolder;
+import com.b44t.aosp.LinearLayoutManager;
+import com.b44t.aosp.RecyclerView;
+import com.b44t.aosp.RecyclerView.OnItemTouchListener;
+import com.b44t.aosp.RecyclerView.ViewHolder;
 import android.util.Log;
 import android.view.GestureDetector;
 import android.view.HapticFeedbackConstants;

@@ -14,15 +14,15 @@
  * limitations under the License.
  */
 
-package com.b44t.messenger.support.widget;
+package com.b44t.aosp;
 
 import java.util.List;
 
-import com.b44t.messenger.support.widget.AdapterHelper.UpdateOp;
-import static com.b44t.messenger.support.widget.AdapterHelper.UpdateOp.ADD;
-import static com.b44t.messenger.support.widget.AdapterHelper.UpdateOp.MOVE;
-import static com.b44t.messenger.support.widget.AdapterHelper.UpdateOp.REMOVE;
-import static com.b44t.messenger.support.widget.AdapterHelper.UpdateOp.UPDATE;
+import com.b44t.aosp.AdapterHelper.UpdateOp;
+import static com.b44t.aosp.AdapterHelper.UpdateOp.ADD;
+import static com.b44t.aosp.AdapterHelper.UpdateOp.MOVE;
+import static com.b44t.aosp.AdapterHelper.UpdateOp.REMOVE;
+import static com.b44t.aosp.AdapterHelper.UpdateOp.UPDATE;
 
 class OpReorderer {
 

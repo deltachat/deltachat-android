@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-package com.b44t.messenger.support.widget;
+package com.b44t.aosp;
 
-import static com.b44t.messenger.support.widget.RecyclerView.NO_POSITION;
+import static com.b44t.aosp.RecyclerView.NO_POSITION;
 
 import android.content.Context;
 import android.graphics.PointF;
@@ -25,8 +25,8 @@ import android.os.Parcelable;
 import android.support.v4.view.ViewCompat;
 import android.support.v4.view.accessibility.AccessibilityEventCompat;
 import android.support.v4.view.accessibility.AccessibilityRecordCompat;
-import com.b44t.messenger.support.widget.RecyclerView.LayoutParams;
-import com.b44t.messenger.support.widget.helper.ItemTouchHelper;
+import com.b44t.aosp.RecyclerView.LayoutParams;
+import com.b44t.aosp.ItemTouchHelper;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;

@@ -50,8 +50,8 @@ import com.b44t.messenger.MrChat;
 import com.b44t.messenger.MrContact;
 import com.b44t.messenger.MrMailbox;
 import com.b44t.messenger.ApplicationLoader;
-import com.b44t.messenger.support.widget.LinearLayoutManager;
-import com.b44t.messenger.support.widget.RecyclerView;
+import com.b44t.aosp.LinearLayoutManager;
+import com.b44t.aosp.RecyclerView;
 import com.b44t.messenger.TLRPC;
 
 import com.b44t.messenger.NotificationCenter;

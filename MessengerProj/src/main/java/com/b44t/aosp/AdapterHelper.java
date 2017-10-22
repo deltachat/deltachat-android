@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.b44t.messenger.support.widget;
+package com.b44t.aosp;
 
 import android.support.v4.util.Pools;
 import android.util.Log;
@@ -23,7 +23,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import static com.b44t.messenger.support.widget.RecyclerView.*;
+import static com.b44t.aosp.RecyclerView.*;
 
 /**
  * Helper class that can enqueue and process adapter update operations.

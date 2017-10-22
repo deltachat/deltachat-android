@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.b44t.messenger.support.widget;
+package com.b44t.aosp;
 
 import android.util.Log;
 import android.view.View;

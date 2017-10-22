@@ -15,7 +15,7 @@
  */
 
 
-package com.b44t.messenger.support.widget;
+package com.b44t.aosp;
 
 import android.content.Context;
 import android.database.Observable;
@@ -47,7 +47,7 @@ import android.support.v4.view.accessibility.AccessibilityRecordCompat;
 import android.support.v4.widget.EdgeEffectCompat;
 import android.support.v4.widget.ScrollerCompat;
 
-import com.b44t.messenger.support.widget.RecyclerView.ItemAnimator.ItemHolderInfo;
+import com.b44t.aosp.RecyclerView.ItemAnimator.ItemHolderInfo;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.util.SparseArray;
@@ -74,8 +74,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import static com.b44t.messenger.support.widget.AdapterHelper.Callback;
-import static com.b44t.messenger.support.widget.AdapterHelper.UpdateOp;
+import static com.b44t.aosp.AdapterHelper.Callback;
+import static com.b44t.aosp.AdapterHelper.UpdateOp;
 
 /**
  * A flexible view for providing a limited window into a large data set.
