@@ -1346,7 +1346,7 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
                 builder.setPositiveButton(R.string.ClearButton, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        emojiView.clearRecentEmoji();
+                        emojiView.clearRecent();
                     }
                 });
                 builder.setNegativeButton(R.string.Cancel, null);

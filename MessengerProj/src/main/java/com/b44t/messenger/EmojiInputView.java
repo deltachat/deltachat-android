@@ -162,8 +162,8 @@ public class EmojiInputView extends FrameLayout {
     };
 
     private ArrayList<EmojiGridAdapter>    adapters = new ArrayList<>();
-    private HashMap<String, Integer>       emojiUseHistory = new HashMap<>();
-    private ArrayList<String>              recentEmoji = new ArrayList<>();
+    private HashMap<String, Integer>       recentUsageCounts = new HashMap<>();
+    private ArrayList<String>              recentChars = new ArrayList<>();
 
     private Listener            listener;
     private ViewPager           pager;
@@ -262,7 +262,7 @@ public class EmojiInputView extends FrameLayout {
         recentsWrap.addView(views.get(0));
 
         TextView textView = new TextView(context);
-        textView.setText(context.getString(R.string.NoRecent));
+        textView.setText(context.getString(R.string.NoRecentEmoji));
         textView.setTextSize(18);
         textView.setTextColor(0xff888888);
         textView.setGravity(Gravity.CENTER);
@@ -271,16 +271,15 @@ public class EmojiInputView extends FrameLayout {
 
         addView(pager, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.MATCH_PARENT, Gravity.START | Gravity.TOP, 0, 48, 0, 0));
 
-        loadRecentEmoji();
-    }
-
-    public void clearRecentEmoji() {
-        SharedPreferences preferences = getContext().getSharedPreferences("emoji", Activity.MODE_PRIVATE);
-        preferences.edit().putBoolean("filled_default", true).apply();
-        emojiUseHistory.clear();
-        recentEmoji.clear();
-        saveRecentEmoji();
+        loadRecentUsageCounts();
+        sortRecentEmoji();
         adapters.get(0).notifyDataSetChanged();
+
+        // normally, we open the emoji-input-keyboard with the most recent page (index 0)
+        // if there are no most recent emojis, open the first page (index 1) which contains smilies then
+        if( recentChars.size() == 0 ) {
+            pager.setCurrentItem(1);
+        }
     }
 
     private void postBackspaceRunnable(final int time) {
@@ -299,10 +298,17 @@ public class EmojiInputView extends FrameLayout {
         }, time);
     }
 
-    private void saveRecentEmoji() {
+    public void clearRecent() {
+        recentUsageCounts.clear();
+        recentChars.clear();
+        saveRecentUsageCounts();
+        adapters.get(0).notifyDataSetChanged();
+    }
+
+    private void saveRecentUsageCounts() {
         SharedPreferences preferences = getContext().getSharedPreferences("emoji", Activity.MODE_PRIVATE);
         StringBuilder stringBuilder = new StringBuilder();
-        for (HashMap.Entry<String, Integer> entry : emojiUseHistory.entrySet()) {
+        for (HashMap.Entry<String, Integer> entry : recentUsageCounts.entrySet()) {
             if (stringBuilder.length() != 0) {
                 stringBuilder.append(",");
             }
@@ -310,19 +316,37 @@ public class EmojiInputView extends FrameLayout {
             stringBuilder.append("=");
             stringBuilder.append(entry.getValue());
         }
-        preferences.edit().putString("emojis2", stringBuilder.toString()).apply();
+        preferences.edit().putString("emojis", stringBuilder.toString()).apply();
+    }
+
+    public void loadRecentUsageCounts() {
+        SharedPreferences preferences = getContext().getSharedPreferences("emoji", Activity.MODE_PRIVATE);
+        String str;
+        try {
+            recentUsageCounts.clear();
+            str = preferences.getString("emojis", "");
+            if (str.length() > 0) {
+                String[] args = str.split(",");
+                for (String arg : args) {
+                    String[] args2 = arg.split("=");
+                    recentUsageCounts.put(args2[0], Utilities.parseInt(args2[1]));
+                }
+            }
+        } catch (Exception e) {
+
+        }
     }
 
     private void sortRecentEmoji() {
-        recentEmoji.clear();
-        for (HashMap.Entry<String, Integer> entry : emojiUseHistory.entrySet()) {
-            recentEmoji.add(entry.getKey());
+        recentChars.clear();
+        for (HashMap.Entry<String, Integer> entry : recentUsageCounts.entrySet()) {
+            recentChars.add(entry.getKey());
         }
-        Collections.sort(recentEmoji, new Comparator<String>() {
+        Collections.sort(recentChars, new Comparator<String>() {
             @Override
             public int compare(String lhs, String rhs) {
-                Integer count1 = emojiUseHistory.get(lhs);
-                Integer count2 = emojiUseHistory.get(rhs);
+                Integer count1 = recentUsageCounts.get(lhs);
+                Integer count2 = recentUsageCounts.get(rhs);
                 if (count1 == null) {
                     count1 = 0;
                 }
@@ -337,70 +361,8 @@ public class EmojiInputView extends FrameLayout {
                 return 0;
             }
         });
-        while (recentEmoji.size() > 50) {
-            recentEmoji.remove(recentEmoji.size() - 1);
-        }
-    }
-
-    public void loadRecentEmoji() {
-        SharedPreferences preferences = getContext().getSharedPreferences("emoji", Activity.MODE_PRIVATE);
-
-        String str;
-        try {
-            emojiUseHistory.clear();
-            if (preferences.contains("emojis")) {
-                str = preferences.getString("emojis", "");
-                if (str.length() > 0) {
-                    String[] args = str.split(",");
-                    for (String arg : args) {
-                        String[] args2 = arg.split("=");
-                        long value = Utilities.parseLong(args2[0]);
-                        String string = "";
-                        for (int a = 0; a < 4; a++) {
-                            char ch = (char) value;
-                            string = String.valueOf(ch) + string;
-                            value >>= 16;
-                            if (value == 0) {
-                                break;
-                            }
-                        }
-                        if (string.length() > 0) {
-                            emojiUseHistory.put(string, Utilities.parseInt(args2[1]));
-                        }
-                    }
-                }
-                preferences.edit().remove("emojis").apply();
-                saveRecentEmoji();
-            } else {
-                str = preferences.getString("emojis2", "");
-                if (str.length() > 0) {
-                    String[] args = str.split(",");
-                    for (String arg : args) {
-                        String[] args2 = arg.split("=");
-                        emojiUseHistory.put(args2[0], Utilities.parseInt(args2[1]));
-                    }
-                }
-            }
-            if (emojiUseHistory.isEmpty()) {
-                if (!preferences.getBoolean("filled_default", false)) {
-                    String[] newRecent = new String[]{
-                            "\uD83D\uDE02", "\uD83D\uDE18", "\u2764", "\uD83D\uDE0D", "\uD83D\uDE0A", "\uD83D\uDE01",
-                            "\uD83D\uDC4D", "\u263A", "\uD83D\uDE14", "\uD83D\uDE04", "\uD83D\uDE2D", "\uD83D\uDC8B",
-                            "\uD83D\uDE12", "\uD83D\uDE33", "\uD83D\uDE1C", "\uD83D\uDE48", "\uD83D\uDE09", "\uD83D\uDE03",
-                            "\uD83D\uDE22", "\uD83D\uDE1D", "\uD83D\uDE31", "\uD83D\uDE21", "\uD83D\uDE0F", "\uD83D\uDE1E",
-                            "\uD83D\uDE05", "\uD83D\uDE1A", "\uD83D\uDE4A", "\uD83D\uDE0C", "\uD83D\uDE00", "\uD83D\uDE0B",
-                            "\uD83D\uDE06", "\uD83D\uDC4C", "\uD83D\uDE10", "\uD83D\uDE15"};
-                    for (int i = 0; i < newRecent.length; i++) {
-                        emojiUseHistory.put(newRecent[i], newRecent.length - i);
-                    }
-                    preferences.edit().putBoolean("filled_default", true).apply();
-                    saveRecentEmoji();
-                }
-            }
-            sortRecentEmoji();
-            adapters.get(0).notifyDataSetChanged();
-        } catch (Exception e) {
-
+        while (recentChars.size() > 50) {
+            recentChars.remove(recentChars.size() - 1);
         }
     }
 
@@ -470,26 +432,27 @@ public class EmojiInputView extends FrameLayout {
         private void sendEmoji() {
             String code = (String) getTag();
 
-            Integer count = emojiUseHistory.get(code);
+            Integer count = recentUsageCounts.get(code);
             if (count == null) {
                 count = 0;
             }
-            if (count == 0 && emojiUseHistory.size() > 50) {
-                for (int a = recentEmoji.size() - 1; a >= 0; a--) {
-                    String emoji = recentEmoji.get(a);
-                    emojiUseHistory.remove(emoji);
-                    recentEmoji.remove(a);
-                    if (emojiUseHistory.size() <= 50) {
+            if (count == 0 && recentUsageCounts.size() > 50) {
+                for (int a = recentChars.size() - 1; a >= 0; a--) {
+                    String emoji = recentChars.get(a);
+                    recentUsageCounts.remove(emoji);
+                    recentChars.remove(a);
+                    if (recentUsageCounts.size() <= 50) {
                         break;
                     }
                 }
             }
-            emojiUseHistory.put(code, ++count);
+            recentUsageCounts.put(code, ++count);
             if (pager.getCurrentItem() != 0) {
                 sortRecentEmoji();
+                adapters.get(0).notifyDataSetChanged();
+                views.get(0).invalidateViews();
             }
-            saveRecentEmoji();
-            adapters.get(0).notifyDataSetChanged();
+            saveRecentUsageCounts();
             if (listener != null) {
                 listener.onEmojiSelected(fixEmoji(code));
             }
@@ -510,10 +473,8 @@ public class EmojiInputView extends FrameLayout {
         }
 
         public int getCount() {
-            if (emojiPage == -1) {
-                return recentEmoji.size();
-            }
-            return predefinedEmojis[emojiPage].length;
+            int ret = emojiPage == -1? recentChars.size() :  predefinedEmojis[emojiPage].length;
+            return ret;
         }
 
         public Object getItem(int i) {
@@ -533,7 +494,7 @@ public class EmojiInputView extends FrameLayout {
             String code;
             String coloredCode;
             if (emojiPage == -1) {
-                coloredCode = code = recentEmoji.get(i);
+                coloredCode = code = recentChars.get(i);
             } else {
                 coloredCode = code = predefinedEmojis[emojiPage][i];
             }
