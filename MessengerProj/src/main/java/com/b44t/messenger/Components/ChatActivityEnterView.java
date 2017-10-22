@@ -567,7 +567,7 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
                     for (int i = 0; i < spans.length; i++) {
                         editable.removeSpan(spans[i]);
                     }
-                    EmojiInputView.replaceEmoji(editable, messageEditText.getPaint().getFontMetricsInt(), AndroidUtilities.dp(20), false);
+                    EmojiInputView.replaceEmoji(editable, false);
                     processChange = false;
                 }
             }
@@ -1325,7 +1325,7 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
                 }
                 try {
                     innerTextChange = 2;
-                    CharSequence localCharSequence = EmojiInputView.replaceEmoji(symbol, messageEditText.getPaint().getFontMetricsInt(), AndroidUtilities.dp(20), false);
+                    CharSequence localCharSequence = EmojiInputView.replaceEmoji(symbol, false);
                     messageEditText.setText(messageEditText.getText().insert(i, localCharSequence));
                     int j = i + localCharSequence.length();
                     messageEditText.setSelection(j, j);

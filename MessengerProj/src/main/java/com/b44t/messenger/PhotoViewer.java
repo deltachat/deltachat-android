@@ -2639,34 +2639,6 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
         }
     }
 
-    /*
-    private void setCurrentCaption(final CharSequence caption) {
-        if (caption != null && caption.length() > 0) {
-            captionTextView = captionTextViewOld;
-            captionTextViewOld = captionTextViewNew;
-            captionTextViewNew = captionTextView;
-
-            captionItem.setIcon(R.drawable.photo_text2);
-            CharSequence str = Emoji.replaceEmoji(new SpannableStringBuilder(caption.toString()), MessageObject.getTextPaint().getFontMetricsInt(), AndroidUtilities.dp(20), false);
-            captionTextView.setTag(str);
-            captionTextView.setText(str);
-            captionTextView.setAlpha(bottomLayout.getVisibility() == View.VISIBLE || pickerView.getVisibility() == View.VISIBLE ? 1.0f : 0.0f);
-            AndroidUtilities.runOnUIThread(new Runnable() {
-                @Override
-                public void run() {
-                    captionTextViewOld.setTag(null);
-                    captionTextViewOld.setVisibility(View.INVISIBLE);
-                    captionTextViewNew.setVisibility(bottomLayout.getVisibility() == View.VISIBLE || pickerView.getVisibility() == View.VISIBLE ? View.VISIBLE : View.INVISIBLE);
-                }
-            });
-        } else {
-            captionItem.setIcon(R.drawable.photo_text);
-            captionTextView.setTag(null);
-            captionTextView.setVisibility(View.INVISIBLE);
-        }
-    }
-    */
-
     private void checkProgress(int a, boolean animated) {
         if (currentFileNames[a] != null) {
             int index = currentIndex;

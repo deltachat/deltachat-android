@@ -293,7 +293,7 @@ public class DialogCell extends BaseCell {
                     }
                     SpannableStringBuilder stringBuilder = SpannableStringBuilder.valueOf(String.format("%s: %s", title, mess));
                     stringBuilder.setSpan(new ForegroundColorSpan(title_color), 0, title.length() + 1, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-                    messageString = EmojiInputView.replaceEmoji(stringBuilder, messagePaint.getFontMetricsInt(), AndroidUtilities.dp(20), false);
+                    messageString = EmojiInputView.replaceEmoji(stringBuilder, false);
                 }
                 else
                 {
@@ -443,7 +443,7 @@ public class DialogCell extends BaseCell {
                 mess = mess.substring(0, 150);
             }
             mess = mess.replace('\n', ' ');
-            messageString = EmojiInputView.replaceEmoji(mess, messagePaint.getFontMetricsInt(), AndroidUtilities.dp(17), false);
+            messageString = EmojiInputView.replaceEmoji(mess, false);
         }
         messageWidth = Math.max(AndroidUtilities.dp(12), messageWidth);
         CharSequence messageStringFinal = TextUtils.ellipsize(messageString, currentMessagePaint, messageWidth - AndroidUtilities.dp(12), TextUtils.TruncateAt.END);
