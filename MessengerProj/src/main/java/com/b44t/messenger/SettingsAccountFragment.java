@@ -385,7 +385,7 @@ public class SettingsAccountFragment extends BaseFragment implements Notificatio
 
             if( (int)args[0]==1 ) {
                 if (fromIntro) {
-                    presentFragment(new DialogsActivity(null), true);
+                    presentFragment(new ChatlistActivity(null), true);
                 } else {
                     finishFragment();
                 }

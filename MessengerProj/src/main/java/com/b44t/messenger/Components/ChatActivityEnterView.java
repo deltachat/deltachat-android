@@ -60,7 +60,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.b44t.messenger.AndroidUtilities;
-import com.b44t.messenger.Emoji;
+import com.b44t.messenger.EmojiInputView;
 import com.b44t.messenger.MediaController;
 import com.b44t.messenger.MessageObject;
 import com.b44t.messenger.MrContact;
@@ -567,7 +567,7 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
                     for (int i = 0; i < spans.length; i++) {
                         editable.removeSpan(spans[i]);
                     }
-                    Emoji.replaceEmoji(editable, messageEditText.getPaint().getFontMetricsInt(), AndroidUtilities.dp(20), false);
+                    EmojiInputView.replaceEmoji(editable, messageEditText.getPaint().getFontMetricsInt(), AndroidUtilities.dp(20), false);
                     processChange = false;
                 }
             }
@@ -1325,7 +1325,7 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
                 }
                 try {
                     innerTextChange = 2;
-                    CharSequence localCharSequence = Emoji.replaceEmoji(symbol, messageEditText.getPaint().getFontMetricsInt(), AndroidUtilities.dp(20), false);
+                    CharSequence localCharSequence = EmojiInputView.replaceEmoji(symbol, messageEditText.getPaint().getFontMetricsInt(), AndroidUtilities.dp(20), false);
                     messageEditText.setText(messageEditText.getText().insert(i, localCharSequence));
                     int j = i + localCharSequence.length();
                     messageEditText.setSelection(j, j);

@@ -87,7 +87,7 @@ import java.util.Collections;
 import java.util.HashMap;
 
 @SuppressWarnings("unchecked")
-public class ChatActivity extends BaseFragment implements NotificationCenter.NotificationCenterDelegate, DialogsActivity.DialogsActivityDelegate,
+public class ChatActivity extends BaseFragment implements NotificationCenter.NotificationCenterDelegate, ChatlistActivity.DialogsActivityDelegate,
         PhotoViewer.PhotoViewerProvider {
 
     // data
@@ -416,7 +416,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     args.putBoolean("onlySelect", true);
                     args.putString("onlySelectTitle", context.getString(R.string.ForwardToTitle));
                     args.putString("selectAlertString", context.getString(R.string.ForwardMessagesTo));
-                    DialogsActivity fragment = new DialogsActivity(args);
+                    ChatlistActivity fragment = new ChatlistActivity(args);
                     fragment.setDelegate(ChatActivity.this);
                     presentFragment(fragment); // this results in a call to didSelectDialog()
                 }
@@ -2407,7 +2407,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
     }
 
     @Override
-    public void didSelectDialog(DialogsActivity dialogsFragment, long fwd_chat_id, boolean param)
+    public void didSelectDialog(ChatlistActivity dialogsFragment, long fwd_chat_id, boolean param)
     {
         if( selectedMessagesIds.size()>0) {
             int ids[] = new int[selectedMessagesIds.size()], i = 0;

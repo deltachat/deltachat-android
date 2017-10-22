@@ -69,7 +69,7 @@ import com.b44t.messenger.ActionBar.Theme;
 
 import java.util.ArrayList;
 
-public class DialogsActivity extends BaseFragment implements NotificationCenter.NotificationCenterDelegate {
+public class ChatlistActivity extends BaseFragment implements NotificationCenter.NotificationCenterDelegate {
     
     private RecyclerListView listView;
     private LinearLayoutManager layoutManager;
@@ -80,7 +80,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
     private ActionBarMenuItem passcodeItem;
     private ImageView floatingButton;
 
-    // Floating hiding action as in Telegram - I think this is not useful:
+    // Floating hiding action as in T'gram - I think this is not useful:
     // - it always takes a moment to check if the button is there or not (ot to let it appear)
     // - if there is nothing to scroll the floting button does not move away -
     //   and covers always a part of the last row. This is not better than without moving away.
@@ -102,7 +102,6 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
     private boolean searchWas;
     private boolean onlySelect;
     private String onlySelectTitle = "";
-    private long openedDialogId;
 
     private DialogsActivityDelegate delegate;
 
@@ -115,10 +114,10 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
     private static final int ID_DEADDROP = 7;
 
     public interface DialogsActivityDelegate {
-        void didSelectDialog(DialogsActivity fragment, long dialog_id, boolean param);
+        void didSelectDialog(ChatlistActivity fragment, long dialog_id, boolean param);
     }
 
-    public DialogsActivity(Bundle args) {
+    public ChatlistActivity(Bundle args) {
         super(args);
     }
 
@@ -768,10 +767,6 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
         delegate = dialogsActivityDelegate;
     }
 
-    public boolean isMainDialogList() {
-        return delegate == null;
-    }
-
     private void didSelectResult(final long dialog_id, boolean useAlert, final boolean param) {
         if (useAlert && (selectAlertString != null )) {
             if (getParentActivity() == null) {
@@ -795,7 +790,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
             showDialog(builder.create());
         } else {
             if (delegate != null) {
-                delegate.didSelectDialog(DialogsActivity.this, dialog_id, param);
+                delegate.didSelectDialog(ChatlistActivity.this, dialog_id, param);
                 delegate = null;
             } else {
                 finishFragment();

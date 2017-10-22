@@ -105,7 +105,7 @@ public class MessageObject {
 
         generateCaption();
         if (generateLayout) {
-            messageText = Emoji.replaceEmoji(messageText, textPaint.getFontMetricsInt(), AndroidUtilities.dp(20), false);
+            messageText = EmojiInputView.replaceEmoji(messageText, textPaint.getFontMetricsInt(), AndroidUtilities.dp(20), false);
             generateLayout();
         }
         generateThumbs(false);
@@ -290,7 +290,7 @@ public class MessageObject {
             return;
         }
         if (messageOwner.media != null && messageOwner.media.caption != null && messageOwner.media.caption.length() > 0) {
-            caption = Emoji.replaceEmoji(messageOwner.media.caption, textPaint.getFontMetricsInt(), AndroidUtilities.dp(20), false);
+            caption = EmojiInputView.replaceEmoji(messageOwner.media.caption, textPaint.getFontMetricsInt(), AndroidUtilities.dp(20), false);
             if (containsUrls(caption)) {
                 try {
                     Linkify.addLinks((Spannable) caption, Linkify.WEB_URLS | Linkify.PHONE_NUMBERS | Linkify.EMAIL_ADDRESSES);

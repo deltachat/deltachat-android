@@ -40,6 +40,7 @@ import android.view.MotionEvent;
 
 import com.b44t.messenger.AndroidUtilities;
 import com.b44t.messenger.ContactsController;
+import com.b44t.messenger.EmojiInputView;
 import com.b44t.messenger.LocaleController;
 import com.b44t.messenger.MessageObject;
 import com.b44t.messenger.MrChat;
@@ -47,7 +48,6 @@ import com.b44t.messenger.MrMailbox;
 import com.b44t.messenger.MrMsg;
 import com.b44t.messenger.MrPoortext;
 import com.b44t.messenger.TLRPC;
-import com.b44t.messenger.Emoji;
 import com.b44t.messenger.R;
 import com.b44t.messenger.ImageReceiver;
 import com.b44t.messenger.ActionBar.Theme;
@@ -293,7 +293,7 @@ public class DialogCell extends BaseCell {
                     }
                     SpannableStringBuilder stringBuilder = SpannableStringBuilder.valueOf(String.format("%s: %s", title, mess));
                     stringBuilder.setSpan(new ForegroundColorSpan(title_color), 0, title.length() + 1, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-                    messageString = Emoji.replaceEmoji(stringBuilder, messagePaint.getFontMetricsInt(), AndroidUtilities.dp(20), false);
+                    messageString = EmojiInputView.replaceEmoji(stringBuilder, messagePaint.getFontMetricsInt(), AndroidUtilities.dp(20), false);
                 }
                 else
                 {
@@ -443,7 +443,7 @@ public class DialogCell extends BaseCell {
                 mess = mess.substring(0, 150);
             }
             mess = mess.replace('\n', ' ');
-            messageString = Emoji.replaceEmoji(mess, messagePaint.getFontMetricsInt(), AndroidUtilities.dp(17), false);
+            messageString = EmojiInputView.replaceEmoji(mess, messagePaint.getFontMetricsInt(), AndroidUtilities.dp(17), false);
         }
         messageWidth = Math.max(AndroidUtilities.dp(12), messageWidth);
         CharSequence messageStringFinal = TextUtils.ellipsize(messageString, currentMessagePaint, messageWidth - AndroidUtilities.dp(12), TextUtils.TruncateAt.END);

@@ -60,7 +60,7 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 
-public class LaunchActivity extends Activity implements ActionBarLayout.ActionBarLayoutDelegate, NotificationCenter.NotificationCenterDelegate, DialogsActivity.DialogsActivityDelegate {
+public class LaunchActivity extends Activity implements ActionBarLayout.ActionBarLayoutDelegate, NotificationCenter.NotificationCenterDelegate, ChatlistActivity.DialogsActivityDelegate {
 
     private boolean finished;
     private String videoPath;
@@ -145,7 +145,7 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                 args.putBoolean("fromIntro", true);
                 actionBarLayout.addFragmentToStack(new SettingsAccountFragment(args));
             } else {
-                actionBarLayout.addFragmentToStack(new DialogsActivity(null));
+                actionBarLayout.addFragmentToStack(new ChatlistActivity(null));
             }
 
             try {
@@ -608,10 +608,10 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                 args.putString("selectAlertString", ApplicationLoader.applicationContext.getString(R.string.SendMessagesTo));
                 args.putString("selectAlertPreviewString", sendingText /*may be NULL*/);
                 args.putString("selectAlertOkButtonString", ApplicationLoader.applicationContext.getString(R.string.Send));
-                DialogsActivity fragment = new DialogsActivity(args);
+                ChatlistActivity fragment = new ChatlistActivity(args);
                 fragment.setDelegate(this);
                 boolean removeLast;
-                removeLast = actionBarLayout.fragmentsStack.size() > 1 && actionBarLayout.fragmentsStack.get(actionBarLayout.fragmentsStack.size() - 1) instanceof DialogsActivity;
+                removeLast = actionBarLayout.fragmentsStack.size() > 1 && actionBarLayout.fragmentsStack.get(actionBarLayout.fragmentsStack.size() - 1) instanceof ChatlistActivity;
                 actionBarLayout.presentFragment(fragment, removeLast, true, true);
                 pushOpened = true;
                 if (PhotoViewer.getInstance().isVisible()) {
@@ -626,7 +626,7 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
         if (!pushOpened && !isNew)
         {
             if (actionBarLayout.fragmentsStack.isEmpty()) {
-                actionBarLayout.addFragmentToStack(new DialogsActivity(null));
+                actionBarLayout.addFragmentToStack(new ChatlistActivity(null));
             }
             actionBarLayout.showLastFragment();
         }
@@ -642,7 +642,7 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
     }
 
     @Override
-    public void didSelectDialog(DialogsActivity dialogsFragment, long dialog_id, boolean param) {
+    public void didSelectDialog(ChatlistActivity dialogsFragment, long dialog_id, boolean param) {
         if (dialog_id != 0) {
             Bundle args = new Bundle();
             args.putBoolean("scrollToTopOnResume", true);
