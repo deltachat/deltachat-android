@@ -27,7 +27,6 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.database.DataSetObserver;
 import android.graphics.Color;
-import android.graphics.Paint;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.text.Spannable;
@@ -54,6 +53,12 @@ import java.util.Comparator;
 import java.util.HashMap;
 
 public class EmojiInputView extends FrameLayout {
+
+    public interface Listener {
+        boolean onBackspace();
+        void onEmojiSelected(String emoji);
+        void onClearEmojiRecent();
+    }
 
     private static final String[][] predefinedEmojis = {
         new String[]{
@@ -156,78 +161,8 @@ public class EmojiInputView extends FrameLayout {
         }
     };
 
-    public interface Listener {
-        boolean onBackspace();
-        void onEmojiSelected(String emoji);
-        void onClearEmojiRecent();
-    }
-
-    private class SingleEmojiView extends ImageView {
-
-        public SingleEmojiView(Context context) {
-            super(context);
-
-            setOnClickListener(new View.OnClickListener() {
-                public void onClick(View view) {
-                    sendEmoji();
-                }
-            });
-            setOnLongClickListener(new OnLongClickListener() {
-                @Override
-                public boolean onLongClick(View view) {
-                    if (pager.getCurrentItem() == 0) {
-                        listener.onClearEmojiRecent();
-                    }
-                    return false;
-                }
-            });
-            setBackgroundResource(R.drawable.list_selector);
-            setScaleType(ImageView.ScaleType.CENTER);
-        }
-
-        private void sendEmoji() {
-            String code = (String) getTag();
-
-            if (pager.getCurrentItem() != 0) {
-                String color = emojiColor.get(code);
-                if (color != null) {
-                    code += color;
-                }
-            }
-            Integer count = emojiUseHistory.get(code);
-            if (count == null) {
-                count = 0;
-            }
-            if (count == 0 && emojiUseHistory.size() > 50) {
-                for (int a = recentEmoji.size() - 1; a >= 0; a--) {
-                    String emoji = recentEmoji.get(a);
-                    emojiUseHistory.remove(emoji);
-                    recentEmoji.remove(a);
-                    if (emojiUseHistory.size() <= 50) {
-                        break;
-                    }
-                }
-            }
-            emojiUseHistory.put(code, ++count);
-            if (pager.getCurrentItem() != 0) {
-                sortRecentEmoji();
-            }
-            saveRecentEmoji();
-            adapters.get(0).notifyDataSetChanged();
-            if (listener != null) {
-                listener.onEmojiSelected(fixEmoji(code));
-            }
-        }
-
-        @Override
-        public void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-            setMeasuredDimension(View.MeasureSpec.getSize(widthMeasureSpec), View.MeasureSpec.getSize(widthMeasureSpec));
-        }
-    }
-
     private ArrayList<EmojiGridAdapter>    adapters = new ArrayList<>();
     private HashMap<String, Integer>       emojiUseHistory = new HashMap<>();
-    private static HashMap<String, String> emojiColor = new HashMap<>();
     private ArrayList<String>              recentEmoji = new ArrayList<>();
 
     private Listener            listener;
@@ -467,20 +402,6 @@ public class EmojiInputView extends FrameLayout {
         } catch (Exception e) {
 
         }
-
-        try {
-            str = preferences.getString("color", "");
-            if (str.length() > 0) {
-                String[] args = str.split(",");
-                for (int a = 0; a < args.length; a++) {
-                    String arg = args[a];
-                    String[] args2 = arg.split("=");
-                    emojiColor.put(args2[0], args2[1]);
-                }
-            }
-        } catch (Exception e) {
-
-        }
     }
 
     @Override
@@ -523,6 +444,63 @@ public class EmojiInputView extends FrameLayout {
         }
     }
 
+    private class SingleEmojiView extends ImageView {
+
+        public SingleEmojiView(Context context) {
+            super(context);
+
+            setOnClickListener(new View.OnClickListener() {
+                public void onClick(View view) {
+                    sendEmoji();
+                }
+            });
+            setOnLongClickListener(new OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View view) {
+                    if (pager.getCurrentItem() == 0) {
+                        listener.onClearEmojiRecent();
+                    }
+                    return false;
+                }
+            });
+            setBackgroundResource(R.drawable.list_selector);
+            setScaleType(ImageView.ScaleType.CENTER);
+        }
+
+        private void sendEmoji() {
+            String code = (String) getTag();
+
+            Integer count = emojiUseHistory.get(code);
+            if (count == null) {
+                count = 0;
+            }
+            if (count == 0 && emojiUseHistory.size() > 50) {
+                for (int a = recentEmoji.size() - 1; a >= 0; a--) {
+                    String emoji = recentEmoji.get(a);
+                    emojiUseHistory.remove(emoji);
+                    recentEmoji.remove(a);
+                    if (emojiUseHistory.size() <= 50) {
+                        break;
+                    }
+                }
+            }
+            emojiUseHistory.put(code, ++count);
+            if (pager.getCurrentItem() != 0) {
+                sortRecentEmoji();
+            }
+            saveRecentEmoji();
+            adapters.get(0).notifyDataSetChanged();
+            if (listener != null) {
+                listener.onEmojiSelected(fixEmoji(code));
+            }
+        }
+
+        @Override
+        public void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+            setMeasuredDimension(View.MeasureSpec.getSize(widthMeasureSpec), View.MeasureSpec.getSize(widthMeasureSpec));
+        }
+    }
+
     private class EmojiGridAdapter extends BaseAdapter {
 
         private int emojiPage; // -1: recent, >= 0: predefined from predefinedEmojis
@@ -558,10 +536,6 @@ public class EmojiInputView extends FrameLayout {
                 coloredCode = code = recentEmoji.get(i);
             } else {
                 coloredCode = code = predefinedEmojis[emojiPage][i];
-                String color = emojiColor.get(code);
-                if (color != null) {
-                    coloredCode += color;
-                }
             }
 
             // Draw native Emojis using TextDrawable, not imageView.setImageDrawable(Emoji.getEmojiBigDrawable(code)). See:
