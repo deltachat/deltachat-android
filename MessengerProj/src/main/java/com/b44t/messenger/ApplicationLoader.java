@@ -40,8 +40,7 @@ import android.os.Handler;
 import android.os.PowerManager;
 import android.util.Log;
 
-import com.b44t.ui.Components.ForegroundDetector;
-import com.b44t.ui.SettingsAdvFragment;
+import com.b44t.messenger.Components.ForegroundDetector;
 
 import java.io.File;
 

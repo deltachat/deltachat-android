@@ -45,8 +45,7 @@ import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.NotificationManagerCompat;
 import android.support.v4.app.RemoteInput;
 
-import com.b44t.ui.ActionBar.Theme;
-import com.b44t.ui.LaunchActivity;
+import com.b44t.messenger.ActionBar.Theme;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -750,7 +749,7 @@ public class NotificationsController {
                 // support icon unread counts of "Nova Launcher", see http://novalauncher.com/teslaunread-api/
                 try {
                     ContentValues cv = new ContentValues();
-                    cv.put("tag", "com.b44t.messenger/com.b44t.ui.LaunchActivity");
+                    cv.put("tag", "com.b44t.messenger/com.b44t.messenger.LaunchActivity");
                     cv.put("count", count);
                     ApplicationLoader.applicationContext.getContentResolver().insert(Uri.parse("content://com.teslacoilsw.notifier/unread_count"), cv);
                 } catch (Throwable e) {

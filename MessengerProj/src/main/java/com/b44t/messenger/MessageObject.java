@@ -23,7 +23,6 @@
 
 package com.b44t.messenger;
 
-import android.content.Context;
 import android.graphics.Paint;
 import android.text.Layout;
 import android.text.Spannable;
@@ -31,7 +30,7 @@ import android.text.StaticLayout;
 import android.text.TextPaint;
 import android.text.util.Linkify;
 
-import com.b44t.ui.ActionBar.Theme;
+import com.b44t.messenger.ActionBar.Theme;
 
 import java.io.File;
 import java.util.ArrayList;

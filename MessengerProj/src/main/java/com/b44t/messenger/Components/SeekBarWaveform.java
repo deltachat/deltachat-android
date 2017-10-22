@@ -1,0 +1,197 @@
+/*******************************************************************************
+ *
+ *                              Delta Chat Android
+ *                        (C) 2013-2016 Nikolai Kudashov
+ *                           (C) 2017 Björn Petersen
+ *                    Contact: r10s@b44t.com, http://b44t.com
+ *
+ * This program is free software: you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License as published by the Free Software
+ * Foundation, either version 3 of the License, or (at your option) any later
+ * version.
+ *
+ * This program is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+ * details.
+ *
+ * You should have received a copy of the GNU General Public License along with
+ * this program.  If not, see http://www.gnu.org/licenses/ .
+ *
+ ******************************************************************************/
+
+
+package com.b44t.messenger.Components;
+
+import android.content.Context;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.view.MotionEvent;
+import android.view.View;
+
+import com.b44t.messenger.AndroidUtilities;
+
+public class SeekBarWaveform {
+
+    private static Paint paintInner;
+    private static Paint paintOuter;
+    private int thumbX = 0;
+    private int thumbDX = 0;
+    private float startX;
+    private boolean startDraging = false;
+    private boolean pressed = false;
+    private int width;
+    private int height;
+    private SeekBar.SeekBarDelegate delegate;
+    private byte[] waveformBytes;
+    private View parentView;
+
+    private int innerColor;
+    private int outerColor;
+
+    public SeekBarWaveform(Context context) {
+        if (paintInner == null) {
+            paintInner = new Paint();
+            paintOuter = new Paint();
+        }
+    }
+
+    public void setDelegate(SeekBar.SeekBarDelegate seekBarDelegate) {
+        delegate = seekBarDelegate;
+    }
+
+    public void setColors(int inner, int outer) {
+        innerColor = inner;
+        outerColor = outer;
+    }
+
+    public void setWaveform(byte[] waveform) {
+        waveformBytes = waveform;
+    }
+
+    public void setParentView(View view) {
+        parentView = view;
+    }
+
+    public boolean isStartDraging() {
+        return startDraging;
+    }
+
+    public boolean onTouch(int action, float x, float y) {
+        if (action == MotionEvent.ACTION_DOWN) {
+            if (0 <= x && x <= width && y >= 0 && y <= height) {
+                startX = x;
+                pressed = true;
+                thumbDX = (int) (x - thumbX);
+                startDraging = false;
+                return true;
+            }
+        } else if (action == MotionEvent.ACTION_UP || action == MotionEvent.ACTION_CANCEL) {
+            if (pressed) {
+                if (action == MotionEvent.ACTION_UP && delegate != null) {
+                    delegate.onSeekBarDrag((float) thumbX / (float) width);
+                }
+                pressed = false;
+                return true;
+            }
+        } else if (action == MotionEvent.ACTION_MOVE) {
+            if (pressed) {
+                if (startDraging) {
+                    thumbX = (int) (x - thumbDX);
+                    if (thumbX < 0) {
+                        thumbX = 0;
+                    } else if (thumbX > width) {
+                        thumbX = width;
+                    }
+                }
+                if (startX != -1 && Math.abs(x - startX) > AndroidUtilities.getPixelsInCM(0.2f, true)) {
+                    if (parentView != null && parentView.getParent() != null) {
+                        parentView.getParent().requestDisallowInterceptTouchEvent(true);
+                    }
+                    startDraging = true;
+                    startX = -1;
+                }
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void setProgress(float progress) {
+        thumbX = (int)Math.ceil(width * progress);
+        if (thumbX < 0) {
+            thumbX = 0;
+        } else if (thumbX > width) {
+            thumbX = width;
+        }
+    }
+
+    public boolean isDragging() {
+        return pressed;
+    }
+
+    public void setSize(int w, int h) {
+        width = w;
+        height = h;
+    }
+
+    public void draw(Canvas canvas) {
+        if (waveformBytes == null || width == 0) {
+            return;
+        }
+        float totalBarsCount = width / AndroidUtilities.dp(3);
+        if (totalBarsCount <= 0.1f) {
+            return;
+        }
+        byte value;
+        int samplesCount = (waveformBytes.length * 8 / 5);
+        float samplesPerBar = samplesCount / totalBarsCount;
+        float barCounter = 0;
+        int nextBarNum = 0;
+
+        paintInner.setColor(innerColor);
+        paintOuter.setColor(outerColor);
+
+        int y = (height - AndroidUtilities.dp(14)) / 2;
+        int barNum = 0;
+        int lastBarNum;
+        int drawBarCount;
+
+        for (int a = 0; a < samplesCount; a++) {
+            if (a != nextBarNum) {
+                continue;
+            }
+            drawBarCount = 0;
+            lastBarNum = nextBarNum;
+            while (lastBarNum == nextBarNum) {
+                barCounter += samplesPerBar;
+                nextBarNum = (int) barCounter;
+                drawBarCount++;
+            }
+
+            int bitPointer = a * 5;
+            int byteNum = bitPointer / 8;
+            int byteBitOffset = bitPointer - byteNum * 8;
+            int currentByteCount = 8 - byteBitOffset;
+            int nextByteRest = 5 - currentByteCount;
+            value = (byte) ((waveformBytes[byteNum] >> byteBitOffset) & ((2 << (Math.min(5, currentByteCount) - 1)) - 1));
+            if (nextByteRest > 0) {
+                value <<= nextByteRest;
+                value |= waveformBytes[byteNum + 1] & ((2 << (nextByteRest - 1)) - 1);
+            }
+
+            for (int b = 0; b < drawBarCount; b++) {
+                int x = barNum * AndroidUtilities.dp(3);
+                if (x < thumbX && x + AndroidUtilities.dp(2) < thumbX) {
+                    canvas.drawRect(x, y + AndroidUtilities.dp(14 - Math.max(1, 14.0f * value / 31.0f)), x + AndroidUtilities.dp(2), y + AndroidUtilities.dp(14), paintOuter);
+                } else {
+                    canvas.drawRect(x, y + AndroidUtilities.dp(14 - Math.max(1, 14.0f * value / 31.0f)), x + AndroidUtilities.dp(2), y + AndroidUtilities.dp(14), paintInner);
+                    if (x < thumbX) {
+                        canvas.drawRect(x, y + AndroidUtilities.dp(14 - Math.max(1, 14.0f * value / 31.0f)), thumbX, y + AndroidUtilities.dp(14), paintOuter);
+                    }
+                }
+                barNum++;
+            }
+        }
+    }
+}

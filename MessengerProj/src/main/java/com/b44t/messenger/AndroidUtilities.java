@@ -61,15 +61,11 @@ import android.view.View;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.webkit.MimeTypeMap;
-import android.widget.AbsListView;
-import android.widget.EdgeEffect;
-import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.b44t.ui.Components.ForegroundDetector;
-import com.b44t.ui.Components.TypefaceSpan;
+import com.b44t.messenger.Components.ForegroundDetector;
+import com.b44t.messenger.Components.TypefaceSpan;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -84,7 +80,6 @@ import java.nio.channels.FileChannel;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Hashtable;
 import java.util.Locale;
 import java.util.regex.Pattern;
 

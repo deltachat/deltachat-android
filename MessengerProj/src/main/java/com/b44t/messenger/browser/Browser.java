@@ -28,7 +28,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 
-import com.b44t.ui.LaunchActivity;
+import com.b44t.messenger.LaunchActivity;
 
 public class Browser {
 

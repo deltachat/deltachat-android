@@ -40,7 +40,6 @@ import android.view.View;
 import android.widget.RemoteViews;
 
 import com.b44t.messenger.audioinfo.AudioInfo;
-import com.b44t.ui.LaunchActivity;
 
 public class MusicPlayerService extends Service implements NotificationCenter.NotificationCenterDelegate {
 

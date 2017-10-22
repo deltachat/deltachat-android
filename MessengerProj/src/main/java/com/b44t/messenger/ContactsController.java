@@ -42,10 +42,9 @@ import android.graphics.Shader;
 import android.net.Uri;
 import android.os.Build;
 import android.provider.ContactsContract;
-import android.util.Log;
 import android.view.View;
 
-import com.b44t.ui.Components.AvatarDrawable;
+import com.b44t.messenger.Components.AvatarDrawable;
 
 import java.io.InputStream;
 import java.util.HashMap;

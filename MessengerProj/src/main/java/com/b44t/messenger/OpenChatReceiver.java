@@ -27,8 +27,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.b44t.ui.LaunchActivity;
-
 public class OpenChatReceiver extends Activity {
 
     @Override

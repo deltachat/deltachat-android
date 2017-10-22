@@ -29,16 +29,13 @@ package com.b44t.messenger;
 
 
 import android.app.Activity;
-import android.app.DownloadManager;
-import android.content.Context;
 import android.content.SharedPreferences;
 import android.util.Log;
 
-import com.b44t.ui.Components.ForegroundDetector;
+import com.b44t.messenger.Components.ForegroundDetector;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;

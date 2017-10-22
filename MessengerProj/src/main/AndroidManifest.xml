@@ -53,7 +53,7 @@
         android:supportsRtl="true">
 
         <activity
-            android:name="com.b44t.ui.LaunchActivity"
+            android:name=".LaunchActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
             android:launchMode="singleTask"
             android:windowSoftInputMode="adjustPan">
@@ -107,12 +107,12 @@
         </activity>
 
         <activity
-            android:name="com.b44t.ui.WelcomeActivity"
+            android:name=".WelcomeActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize">
         </activity>
 
         <activity
-            android:name="com.b44t.ui.SettingsAdvActivity"
+            android:name=".SettingsAdvActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize">
         </activity>
 

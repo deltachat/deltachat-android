@@ -37,7 +37,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/control_layout">
 
-        <com.b44t.ui.Components.VideoSeekBarView
+        <com.b44t.messenger.Components.VideoSeekBarView
             android:layout_height="36dp"
             android:layout_width="match_parent"
             android:id="@+id/video_seekbar"
@@ -47,7 +47,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"/>
 
-        <com.b44t.ui.Components.VideoTimelineView
+        <com.b44t.messenger.Components.VideoTimelineView
             android:layout_width="match_parent"
             android:layout_height="74dp"
             android:layout_marginTop="36dp"
