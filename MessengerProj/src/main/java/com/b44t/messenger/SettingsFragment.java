@@ -34,7 +34,7 @@ import android.widget.AdapterView;
 import android.widget.FrameLayout;
 import android.widget.ListView;
 
-import com.b44t.messenger.browser.Browser;
+import com.b44t.messenger.Components.Browser;
 import com.b44t.messenger.ActionBar.ActionBar;
 import com.b44t.messenger.ActionBar.BaseFragment;
 import com.b44t.messenger.Components.BaseFragmentAdapter;

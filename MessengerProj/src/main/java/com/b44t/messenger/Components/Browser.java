@@ -21,7 +21,7 @@
  ******************************************************************************/
 
 
-package com.b44t.messenger.browser;
+package com.b44t.messenger.Components;
 
 import android.content.ComponentName;
 import android.content.Context;

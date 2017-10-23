@@ -59,7 +59,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.b44t.messenger.browser.Browser;
+import com.b44t.messenger.Components.Browser;
 import com.b44t.messenger.aosp.LinearLayoutManager;
 import com.b44t.messenger.aosp.RecyclerView;
 import com.b44t.messenger.ActionBar.BackDrawable;
