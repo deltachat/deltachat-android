@@ -31,7 +31,7 @@ import com.b44t.messenger.MrChat;
 import com.b44t.messenger.MrPoortext;
 import com.b44t.messenger.aosp.RecyclerView;
 import com.b44t.messenger.MrMailbox;
-import com.b44t.messenger.Cells.DialogCell;
+import com.b44t.messenger.Cells.ChatlistCell;
 
 
 public class DialogsAdapter extends RecyclerView.Adapter {
@@ -66,8 +66,8 @@ public class DialogsAdapter extends RecyclerView.Adapter {
 
     @Override
     public void onViewAttachedToWindow(RecyclerView.ViewHolder holder) {
-        if (holder.itemView instanceof DialogCell) {
-            ((DialogCell) holder.itemView).checkCurrentDialogIndex();
+        if (holder.itemView instanceof ChatlistCell) {
+            ((ChatlistCell) holder.itemView).checkCurrentChatlistIndex();
         }
     }
 
@@ -78,7 +78,7 @@ public class DialogsAdapter extends RecyclerView.Adapter {
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
-        View view = new DialogCell(mContext);
+        View view = new ChatlistCell(mContext);
         view.setLayoutParams(new RecyclerView.LayoutParams(RecyclerView.LayoutParams.MATCH_PARENT, RecyclerView.LayoutParams.WRAP_CONTENT));
         return new Holder(view);
     }
@@ -86,12 +86,12 @@ public class DialogsAdapter extends RecyclerView.Adapter {
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder viewHolder, int i) {
         if (viewHolder.getItemViewType() == 0) {
-            DialogCell cell = (DialogCell) viewHolder.itemView;
+            ChatlistCell cell = (ChatlistCell) viewHolder.itemView;
             cell.useSeparator = (i != getItemCount() - 1);
             MrChat mrChat = getItem(i);
 
             MrPoortext mrSummary = MrMailbox.m_currChatlist.getSummaryByIndex(i, mrChat);
-            cell.setDialog(mrChat, mrSummary, i, true);
+            cell.setChat(mrChat, mrSummary, i, true);
         }
     }
 

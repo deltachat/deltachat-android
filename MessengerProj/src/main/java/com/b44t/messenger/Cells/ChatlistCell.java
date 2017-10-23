@@ -54,11 +54,10 @@ import com.b44t.messenger.ActionBar.Theme;
 import com.b44t.messenger.Components.AvatarDrawable;
 
 
-public class DialogCell extends BaseCell {
+public class ChatlistCell extends BaseCell {
 
     private static TextPaint namePaint;
     private static TextPaint messagePaint;
-    private static TextPaint messagePrintingPaint;
     private static TextPaint timePaint;
     private static TextPaint countPaint;
 
@@ -72,14 +71,10 @@ public class DialogCell extends BaseCell {
     private static Drawable muteDrawable;
 
     private static Paint linePaint;
-    private static Paint backPaint;
 
-    private long currentDialogId;
-    private final boolean isDialogCell = true; // if it is no dialog cell, it is a search cell ...
+    private long currentChatId;
     private int unreadCount;
-    private int lastSendState;
-    private boolean dialogMuted;
-    private final MessageObject message = null;
+    private boolean chatMuted;
     private int index;
 
     private ImageReceiver avatarImage;
@@ -124,34 +119,25 @@ public class DialogCell extends BaseCell {
 
     private int avatarTop = AndroidUtilities.dp(10);
 
-    private boolean isSelected;
-
     private MrChat m_mrChat = new MrChat(0);
     private MrPoortext m_summary = new MrPoortext(0);
     private boolean m_showUnreadCount;
 
-    public DialogCell(Context context) {
+    public ChatlistCell(Context context) {
         super(context);
 
         if (namePaint == null) {
             namePaint = new TextPaint(TextPaint.ANTI_ALIAS_FLAG);
             namePaint.setTextSize(AndroidUtilities.dp(17));
-            namePaint.setColor(Theme.DIALOGS_TITLE_TEXT_COLOR);
+            namePaint.setColor(Theme.CHATLIST_TITLE_TEXT_COLOR);
 
             messagePaint = new TextPaint(TextPaint.ANTI_ALIAS_FLAG);
             messagePaint.setTextSize(AndroidUtilities.dp(16));
-            messagePaint.setColor(Theme.DIALOGS_MESSAGE_TEXT_COLOR);
-            messagePaint.linkColor = Theme.DIALOGS_MESSAGE_TEXT_COLOR;
+            messagePaint.setColor(Theme.CHATLIST_MESSAGE_TEXT_COLOR);
+            messagePaint.linkColor = Theme.CHATLIST_MESSAGE_TEXT_COLOR;
 
             linePaint = new Paint();
             linePaint.setColor(0xffdcdcdc);
-
-            backPaint = new Paint();
-            backPaint.setColor(0x0f000000);
-
-            messagePrintingPaint = new TextPaint(TextPaint.ANTI_ALIAS_FLAG);
-            messagePrintingPaint.setTextSize(AndroidUtilities.dp(16));
-            messagePrintingPaint.setColor(Theme.DIALOGS_PRINTING_TEXT_COLOR);
 
             timePaint = new TextPaint(TextPaint.ANTI_ALIAS_FLAG);
             timePaint.setTextSize(AndroidUtilities.dp(13));
@@ -179,20 +165,16 @@ public class DialogCell extends BaseCell {
         avatarDrawable = new AvatarDrawable();
     }
 
-    public void setDialog(MrChat mrChat, MrPoortext mrSummary, int i, boolean showUnreadCount) { // called for the chats overview
-
+    public void setChat(MrChat mrChat, MrPoortext mrSummary, int i, boolean showUnreadCount) {
+        // called for the chats overview
         m_mrChat  = mrChat;
         m_summary = mrSummary;
         m_showUnreadCount = showUnreadCount;
 
-        currentDialogId = mrChat.getId();
+        currentChatId = mrChat.getId();
         index = i;
 
         update(0);
-    }
-
-    public long getDialogId() {
-        return currentDialogId;
     }
 
     @Override
@@ -214,7 +196,7 @@ public class DialogCell extends BaseCell {
 
     @Override
     protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
-        if (currentDialogId == 0) {
+        if (currentChatId == 0) {
             super.onLayout(changed, left, top, right, bottom);
             return;
         }
@@ -238,87 +220,70 @@ public class DialogCell extends BaseCell {
         String timeString = "";
         String countString = null;
         CharSequence messageString = "";
-        //CharSequence printingString = null;
-        /* EDIT BY MR -- we currently do not support stuff as "ist just typing", "uploads an images" etc.
-        if (isDialogCell) {
-            printingString = MessagesController.getInstance().printingStrings.get(currentDialogId);
-        }
-        */
         TextPaint currentNamePaint = namePaint;
         TextPaint currentMessagePaint = messagePaint;
-        boolean checkMessage = true;
 
         drawNameGroup = false;
 
-        {
-            if (m_mrChat.getType()==MrChat.MR_CHAT_GROUP) { // EDIT BY MR
-                //if (chat.id < 0 || ChatObject.isChannel(chat) && !chat.megagroup) {
-                //    drawNameBroadcast = true;
-                //    nameLockTop = AndroidUtilities.dp(16.5f);
-                //} else {
-                    drawNameGroup = true;
-                    nameLockTop = AndroidUtilities.dp(17.5f);
-                //}
+        if (m_mrChat.getType()==MrChat.MR_CHAT_GROUP) {
+            drawNameGroup = true;
+            nameLockTop = AndroidUtilities.dp(17.5f);
 
-                if (!LocaleController.isRTL) {
-                    nameLockLeft = AndroidUtilities.dp(AndroidUtilities.leftBaseline);
-                    nameLeft = AndroidUtilities.dp(AndroidUtilities.leftBaseline + 4) + (groupDrawable.getIntrinsicWidth());
-                } else {
-                    nameLockLeft = getMeasuredWidth() - AndroidUtilities.dp(AndroidUtilities.leftBaseline) - (groupDrawable.getIntrinsicWidth());
-                    nameLeft = AndroidUtilities.dp(14);
-                }
+            if (!LocaleController.isRTL) {
+                nameLockLeft = AndroidUtilities.dp(AndroidUtilities.leftBaseline);
+                nameLeft = AndroidUtilities.dp(AndroidUtilities.leftBaseline + 4) + (groupDrawable.getIntrinsicWidth());
             } else {
-                if (!LocaleController.isRTL) {
-                    nameLeft = AndroidUtilities.dp(AndroidUtilities.leftBaseline);
-                } else {
-                    nameLeft = AndroidUtilities.dp(14);
-                }
+                nameLockLeft = getMeasuredWidth() - AndroidUtilities.dp(AndroidUtilities.leftBaseline) - (groupDrawable.getIntrinsicWidth());
+                nameLeft = AndroidUtilities.dp(14);
+            }
+        } else {
+            if (!LocaleController.isRTL) {
+                nameLeft = AndroidUtilities.dp(AndroidUtilities.leftBaseline);
+            } else {
+                nameLeft = AndroidUtilities.dp(14);
             }
         }
 
+        String mess = m_summary.getText2();
+        if (mess.length() > 150) {
+            mess = mess.substring(0, 150);
+        }
+        String title = m_summary.getText1();
+        if( !title.isEmpty() )
         {
-                checkMessage = false;
-                String mess = m_summary.getText2();
-                if (mess.length() > 150) {
-                    mess = mess.substring(0, 150);
-                }
-                String title = m_summary.getText1();
-                if( !title.isEmpty() )
-                {
-                    int title_meaning = m_summary.getText1Meaning();
-                    int title_color = Theme.DIALOGS_NAME_TEXT_COLOR;
-                    switch( title_meaning ) {
-                        case MrPoortext.MR_TEXT1_SELF:  title_color = Theme.DIALOGS_SELF_TEXT_COLOR; break;
-                        case MrPoortext.MR_TEXT1_DRAFT: title_color = Theme.DIALOGS_DRAFT_TEXT_COLOR; break;
-                    }
-                    SpannableStringBuilder stringBuilder = SpannableStringBuilder.valueOf(String.format("%s: %s", title, mess));
-                    stringBuilder.setSpan(new ForegroundColorSpan(title_color), 0, title.length() + 1, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-                    messageString = EmojiInputView.replaceEmoji(stringBuilder, false);
-                }
-                else
-                {
-                    messageString = mess;
-                }
+            int title_meaning = m_summary.getText1Meaning();
+            int title_color = Theme.CHATLIST_NAME_TEXT_COLOR;
+            switch( title_meaning ) {
+                case MrPoortext.MR_TEXT1_SELF:  title_color = Theme.CHATLIST_SELF_TEXT_COLOR; break;
+                case MrPoortext.MR_TEXT1_DRAFT: title_color = Theme.CHATLIST_DRAFT_TEXT_COLOR; break;
+            }
+            SpannableStringBuilder stringBuilder = SpannableStringBuilder.valueOf(String.format("%s: %s", title, mess));
+            stringBuilder.setSpan(new ForegroundColorSpan(title_color), 0, title.length() + 1, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+            messageString = EmojiInputView.replaceEmoji(stringBuilder, false);
+        }
+        else
+        {
+            messageString = mess;
+        }
 
-                long timestmp =m_summary.getTimestamp();
-                if( timestmp!=0 ) {
-                    timeString = LocaleController.stringForMessageListDate(timestmp);
-                }
-                else {
-                    timeString = "";
-                }
+        long timestmp =m_summary.getTimestamp();
+        if( timestmp!=0 ) {
+            timeString = LocaleController.stringForMessageListDate(timestmp);
+        }
+        else {
+            timeString = "";
+        }
 
-                drawCheck1 = false;
-                drawCheck2 = false;
-                drawClock = false;
-                drawCount = false;
-                drawError = false;
-                switch( m_summary.getState() ) {
-                    case MrMsg.MR_OUT_ERROR: drawError = true; break;
-                    case MrMsg.MR_OUT_PENDING: drawClock = true; break;
-                    case MrMsg.MR_OUT_DELIVERED: drawCheck2 = true; break;
-                    case MrMsg.MR_OUT_MDN_RCVD: drawCheck1 = true; drawCheck2 = true; break;
-                }
+        drawCheck1 = false;
+        drawCheck2 = false;
+        drawClock = false;
+        drawCount = false;
+        drawError = false;
+        switch( m_summary.getState() ) {
+            case MrMsg.MR_OUT_ERROR: drawError = true; break;
+            case MrMsg.MR_OUT_PENDING: drawClock = true; break;
+            case MrMsg.MR_OUT_DELIVERED: drawCheck2 = true; break;
+            case MrMsg.MR_OUT_MDN_RCVD: drawCheck1 = true; drawCheck2 = true; break;
         }
 
         if (unreadCount != 0) {
@@ -383,7 +348,7 @@ public class DialogCell extends BaseCell {
             }
         }
 
-        if (dialogMuted) {
+        if (chatMuted) {
             int w = AndroidUtilities.dp(6) + muteDrawable.getIntrinsicWidth();
             nameWidth -= w;
             if (LocaleController.isRTL) {
@@ -434,17 +399,6 @@ public class DialogCell extends BaseCell {
             drawCount = false;
         }
 
-        if (checkMessage) {
-            if (messageString == null) {
-                messageString = "";
-            }
-            String mess = messageString.toString();
-            if (mess.length() > 150) {
-                mess = mess.substring(0, 150);
-            }
-            mess = mess.replace('\n', ' ');
-            messageString = EmojiInputView.replaceEmoji(mess, false);
-        }
         messageWidth = Math.max(AndroidUtilities.dp(12), messageWidth);
         CharSequence messageStringFinal = TextUtils.ellipsize(messageString, currentMessagePaint, messageWidth - AndroidUtilities.dp(12), TextUtils.TruncateAt.END);
         try {
@@ -459,7 +413,7 @@ public class DialogCell extends BaseCell {
             if (nameLayout != null && nameLayout.getLineCount() > 0) {
                 left = nameLayout.getLineLeft(0);
                 widthpx = Math.ceil(nameLayout.getLineWidth(0));
-                if (dialogMuted) {
+                if (chatMuted) {
                     nameMuteLeft = (int) (nameLeft + (nameWidth - widthpx) - AndroidUtilities.dp(6) - muteDrawable.getIntrinsicWidth());
                 }
                 if (left == 0) {
@@ -486,7 +440,7 @@ public class DialogCell extends BaseCell {
                         nameLeft -= (nameWidth - widthpx);
                     }
                 }
-                if (dialogMuted) {
+                if (chatMuted) {
                     nameMuteLeft = (int) (nameLeft + left + AndroidUtilities.dp(6));
                 }
             }
@@ -502,23 +456,12 @@ public class DialogCell extends BaseCell {
         }
     }
 
-    public void setDialogSelected(boolean value) {
-        if (isSelected != value) {
-            invalidate();
-        }
-        isSelected = value;
-    }
-
-    public void checkCurrentDialogIndex() {
-        if (index < MrMailbox.m_currChatlist.getCnt()) { // EDIT BY MR - was: index < getDialogsArray().size()
-            TLRPC.TL_dialog dialog = MrMailbox.m_currChatlist.get_TLRPC_TL_dialog(index); // EDIT BY MR - was: getDialogsArray().get(index);
-            final MessageObject newMessageObject = null;
-            if (currentDialogId != dialog.id ||
-                    message != null && message.getId() != dialog.top_message ||
-                    unreadCount != dialog.unread_count ||
-                    message != newMessageObject ||
-                    message == null && newMessageObject != null ) {
-                currentDialogId = dialog.id;
+    public void checkCurrentChatlistIndex() {
+        if (index < MrMailbox.m_currChatlist.getCnt()) {
+            TLRPC.TL_dialog dialog = MrMailbox.m_currChatlist.get_TLRPC_TL_dialog(index);
+            if (currentChatId != dialog.id ||
+                    unreadCount != dialog.unread_count ) {
+                currentChatId = dialog.id;
                 update(0);
             }
         }
@@ -551,35 +494,13 @@ public class DialogCell extends BaseCell {
                     continueUpdate = true;
                 }
             }
-            if (!continueUpdate && (mask & MrMailbox.UPDATE_MASK_SEND_STATE) != 0) {
-                if (message != null && lastSendState != message.messageOwner.send_state) {
-                    lastSendState = message.messageOwner.send_state;
-                    continueUpdate = true;
-                }
-            }
 
             if (!continueUpdate) {
                 return;
             }
         }
 
-        dialogMuted = isDialogCell && MrMailbox.isDialogMuted(currentDialogId);
-        //user = null;
-        //chat = null;
-
-        /*int lower_id = (int)currentDialogId;
-        int high_id = (int)(currentDialogId >> 32);
-        if (lower_id != 0) {
-            if (high_id == 1) {
-                chat = MessagesController.getInstance().getChat(lower_id);
-            } else {
-                if (lower_id < 0) {
-                    chat = MessagesController.getInstance().getChat(-lower_id);
-                } else {
-                    user = MessagesController.getInstance().getUser(lower_id);
-                }
-            }
-        }*/
+        chatMuted = MrMailbox.isDialogMuted(currentChatId);
 
         ContactsController.setupAvatar(this, avatarImage, avatarDrawable, null, m_mrChat);
 
@@ -594,20 +515,10 @@ public class DialogCell extends BaseCell {
 
     @Override
     protected void onDraw(Canvas canvas) {
-        if (currentDialogId == 0) {
+        if (currentChatId == 0) {
             return;
         }
 
-        if (isSelected) {
-            canvas.drawRect(0, 0, getMeasuredWidth(), getMeasuredHeight(), backPaint);
-        }
-
-        /*
-        if (drawNameLock) {
-            setDrawableBounds(lockDrawable, nameLockLeft, nameLockTop);
-            lockDrawable.draw(canvas);
-        } else
-        */
         if (drawNameGroup) {
             setDrawableBounds(groupDrawable, nameLockLeft, nameLockTop);
             groupDrawable.draw(canvas);
@@ -651,7 +562,7 @@ public class DialogCell extends BaseCell {
             }
         }
 
-        if (dialogMuted) {
+        if (chatMuted) {
             setDrawableBounds(muteDrawable, nameMuteLeft, AndroidUtilities.dp(16.5f));
             muteDrawable.draw(canvas);
         }
@@ -660,7 +571,7 @@ public class DialogCell extends BaseCell {
             setDrawableBounds(errorDrawable, errorLeft, errorTop);
             errorDrawable.draw(canvas);
         } else if (drawCount) {
-            if (dialogMuted) {
+            if (chatMuted) {
                 setDrawableBounds(countDrawableGrey, countLeft - AndroidUtilities.dp(5.5f), countTop, countWidth + AndroidUtilities.dp(11), countDrawable.getIntrinsicHeight());
                 countDrawableGrey.draw(canvas);
             } else {

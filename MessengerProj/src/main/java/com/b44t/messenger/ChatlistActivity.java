@@ -42,6 +42,7 @@ import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.ViewOutlineProvider;
 import android.view.ViewTreeObserver;
 import android.view.animation.AccelerateDecelerateInterpolator;
@@ -51,13 +52,13 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.b44t.messenger.Cells.GreySectionCell;
 import com.b44t.messenger.aosp.LinearLayoutManager;
 import com.b44t.messenger.aosp.RecyclerView;
 import com.b44t.messenger.ActionBar.BackDrawable;
 import com.b44t.messenger.Adapters.DialogsAdapter;
-import com.b44t.messenger.Adapters.DialogsSearchAdapter;
 import com.b44t.messenger.Cells.UserCell;
-import com.b44t.messenger.Cells.DialogCell;
+import com.b44t.messenger.Cells.ChatlistCell;
 import com.b44t.messenger.ActionBar.ActionBar;
 import com.b44t.messenger.ActionBar.ActionBarMenu;
 import com.b44t.messenger.ActionBar.ActionBarMenuItem;
@@ -746,11 +747,11 @@ public class ChatlistActivity extends BaseFragment implements NotificationCenter
         int count = listView.getChildCount();
         for (int a = 0; a < count; a++) {
             View child = listView.getChildAt(a);
-            if (child instanceof DialogCell) {
+            if (child instanceof ChatlistCell) {
                 if (listView.getAdapter() != dialogsSearchAdapter) {
-                    DialogCell cell = (DialogCell) child;
+                    ChatlistCell cell = (ChatlistCell) child;
                     if ((mask & MrMailbox.UPDATE_MASK_NEW_MESSAGE) != 0) {
-                        cell.checkCurrentDialogIndex();
+                        cell.checkCurrentChatlistIndex();
                     } else if ((mask & MrMailbox.UPDATE_MASK_SELECT_DIALOG) != 0) {
                         ;
                     } else {
@@ -795,6 +796,166 @@ public class ChatlistActivity extends BaseFragment implements NotificationCenter
             } else {
                 finishFragment();
             }
+        }
+    }
+
+    private class DialogsSearchAdapter extends RecyclerView.Adapter {
+
+        private Context mContext;
+
+        private static final int ROWTYPE_HEADLINE = 0;
+        private static final int ROWTYPE_CHAT     = 1;
+        private static final int ROWTYPE_MSG      = 2;
+
+        int rowChatsHeadline = -1;
+        int rowFirstChat = -1, rowLastChat = -1;
+        int rowMsgsHeadline = -1;
+        int rowFirstMsg = -1, rowLastMsg = -1;
+        int rowCount = 0;
+
+        MrChatlist m_chatlist = new MrChatlist(0);
+        int        m_chatlistCnt = 0;
+        int[]      m_msgIds = {};
+
+        private class Holder extends RecyclerView.ViewHolder {
+            public Holder(View itemView) {
+                super(itemView);
+            }
+        }
+
+        public DialogsSearchAdapter(Context context) {
+            mContext = context;
+        }
+
+        public void searchDialogs(String query) {
+            rowCount = 0;
+
+            m_chatlist = MrMailbox.getChatlist(query);
+            m_chatlistCnt = m_chatlist.getCnt();
+            if( m_chatlistCnt>0 ) {
+                rowChatsHeadline = rowCount++;
+
+                rowFirstChat = rowCount;
+                rowCount += m_chatlistCnt;
+                rowLastChat = rowCount-1;
+            }
+            else {
+                rowChatsHeadline = -1;
+                rowFirstChat = -1;
+                rowLastChat = -1;
+            }
+
+            m_msgIds = MrMailbox.searchMsgs(0, query);
+            if( m_msgIds.length>0 ) {
+                rowMsgsHeadline = rowCount++;
+
+                rowFirstMsg = rowCount;
+                rowCount += m_msgIds.length;
+                rowLastMsg = rowCount-1;
+            }
+            else {
+                rowMsgsHeadline = -1;
+                rowFirstMsg = -1;
+                rowLastMsg = -1;
+            }
+        }
+
+
+        @Override
+        public int getItemCount() {
+            return rowCount;
+        }
+
+        public Object getItem(int i) {
+            if( i>=rowFirstChat && i<=rowLastChat ) {
+                return m_chatlist.getChatByIndex(i-rowFirstChat);
+            }
+            else if( i>=rowFirstMsg && i<=rowLastMsg ) {
+                return MrMailbox.getMsg(m_msgIds[i-rowFirstMsg]);
+            }
+            return null;
+        }
+
+        @Override
+        public long getItemId(int i) {
+            return i;
+        }
+
+        @Override
+        public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
+            View view;
+            switch( viewType ) {
+                case ROWTYPE_CHAT:
+                case ROWTYPE_MSG:
+                    view = new ChatlistCell(mContext);
+                    view.setLayoutParams(new RecyclerView.LayoutParams(RecyclerView.LayoutParams.MATCH_PARENT, RecyclerView.LayoutParams.WRAP_CONTENT));
+                    break;
+
+                default:
+                    view = new GreySectionCell(mContext);
+                    break;
+            }
+
+            return new Holder(view);
+        }
+
+        @Override
+        public void onBindViewHolder(RecyclerView.ViewHolder viewHolder, int i)
+        {
+            switch (viewHolder.getItemViewType() )
+            {
+                case ROWTYPE_CHAT: {
+                    int j = i - rowFirstChat;
+                    if( j >= 0 && j < m_chatlistCnt ) {
+                        ChatlistCell cell = (ChatlistCell) viewHolder.itemView;
+                        cell.useSeparator = (j != m_chatlistCnt - 1);
+
+                        MrChat mrChat = m_chatlist.getChatByIndex(j);
+                        MrPoortext mrSummary = m_chatlist.getSummaryByIndex(j, mrChat);
+
+                        cell.setChat(mrChat, mrSummary, -1,
+                                true /*always show unread count*/);
+                    }
+                }
+                break;
+
+                case ROWTYPE_MSG: {
+                    int j = i - rowFirstMsg;
+                    if( j >= 0 && j < m_msgIds.length ) {
+                        ChatlistCell cell = (ChatlistCell) viewHolder.itemView;
+                        cell.useSeparator = (j != m_msgIds.length - 1);
+
+                        MrMsg mrMsg = MrMailbox.getMsg(m_msgIds[j]);
+                        MrChat mrChat = MrMailbox.getChat(mrMsg.getChatId());
+                        MrPoortext mrSummary = mrMsg.getSummary(mrChat);
+
+                        cell.setChat(mrChat, mrSummary, -1,
+                                mrMsg.getState()==MrMsg.MR_IN_FRESH /*show unread count only if the message itself is unread*/ );
+                    }
+                }
+                break;
+
+                case ROWTYPE_HEADLINE: {
+                    GreySectionCell headlineCell = (GreySectionCell) viewHolder.itemView;
+                    if (i == rowChatsHeadline) {
+                        headlineCell.setText(mContext.getResources().getQuantityString(R.plurals.Chats, m_chatlistCnt, m_chatlistCnt));
+                    } else if (i == rowMsgsHeadline) {
+                        headlineCell.setText(mContext.getResources().getQuantityString(R.plurals.messages, m_msgIds.length, m_msgIds.length));
+                    }
+                }
+                break;
+            }
+        }
+
+        @Override
+        public int getItemViewType(int i) {
+            if( i>=rowFirstChat && i<=rowLastChat ) {
+                return ROWTYPE_CHAT;
+            }
+            else if( i>=rowFirstMsg && i<=rowLastMsg ) {
+                return ROWTYPE_MSG;
+            }
+            return ROWTYPE_HEADLINE;
         }
     }
 }
