@@ -35,15 +35,10 @@ import android.widget.AdapterView;
 import android.widget.FrameLayout;
 import android.widget.ListView;
 
-import com.b44t.messenger.AndroidUtilities;
-import com.b44t.messenger.ApplicationLoader;
-import com.b44t.messenger.MrMailbox;
-import com.b44t.messenger.NotificationCenter;
-import com.b44t.messenger.R;
 import com.b44t.messenger.ActionBar.ActionBar;
 import com.b44t.messenger.ActionBar.ActionBarMenu;
 import com.b44t.messenger.ActionBar.BaseFragment;
-import com.b44t.messenger.Adapters.BaseFragmentAdapter;
+import com.b44t.messenger.Components.BaseFragmentAdapter;
 import com.b44t.messenger.Cells.HeaderCell;
 import com.b44t.messenger.Cells.EditTextCell;
 import com.b44t.messenger.Cells.TextInfoCell;

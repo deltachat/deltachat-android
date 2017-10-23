@@ -37,7 +37,7 @@ import android.widget.ListView;
 import com.b44t.messenger.browser.Browser;
 import com.b44t.messenger.ActionBar.ActionBar;
 import com.b44t.messenger.ActionBar.BaseFragment;
-import com.b44t.messenger.Adapters.BaseFragmentAdapter;
+import com.b44t.messenger.Components.BaseFragmentAdapter;
 import com.b44t.messenger.Cells.SettingsProfileCell;
 import com.b44t.messenger.Cells.HeaderCell;
 import com.b44t.messenger.Cells.ShadowSectionCell;

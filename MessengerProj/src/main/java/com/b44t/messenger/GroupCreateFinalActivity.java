@@ -39,7 +39,7 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.b44t.messenger.Adapters.BaseFragmentAdapter;
+import com.b44t.messenger.Components.BaseFragmentAdapter;
 import com.b44t.messenger.Cells.GreySectionCell;
 import com.b44t.messenger.Cells.UserCell;
 import com.b44t.messenger.ActionBar.ActionBar;

@@ -21,7 +21,7 @@
  ******************************************************************************/
 
 
-package com.b44t.messenger.Adapters;
+package com.b44t.messenger.Components;
 
 import android.database.DataSetObserver;
 import android.view.View;

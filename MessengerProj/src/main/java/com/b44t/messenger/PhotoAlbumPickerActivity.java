@@ -45,7 +45,7 @@ import com.b44t.messenger.ActionBar.ActionBar;
 import com.b44t.messenger.ActionBar.ActionBarMenu;
 import com.b44t.messenger.ActionBar.ActionBarMenuItem;
 import com.b44t.messenger.ActionBar.BaseFragment;
-import com.b44t.messenger.Adapters.BaseFragmentAdapter;
+import com.b44t.messenger.Components.BaseFragmentAdapter;
 import com.b44t.messenger.Cells.PhotoPickerAlbumsCell;
 import com.b44t.messenger.Components.LayoutHelper;
 import com.b44t.messenger.Components.PickerBottomLayout;

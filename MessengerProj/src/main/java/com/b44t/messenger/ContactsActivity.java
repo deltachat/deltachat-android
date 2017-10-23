@@ -45,6 +45,7 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
@@ -54,7 +55,7 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.b44t.messenger.Adapters.ContactsAdapter;
+import com.b44t.messenger.Components.BaseFragmentAdapter;
 import com.b44t.messenger.Cells.UserCell;
 import com.b44t.messenger.ActionBar.ActionBar;
 import com.b44t.messenger.ActionBar.ActionBarMenu;
@@ -628,5 +629,86 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
         userSelectEditText.setText(ssb);
         userSelectEditText.setSelection(ssb.length());
         return span;
+    }
+
+    private class ContactsAdapter extends BaseFragmentAdapter {
+
+        private Context mContext;
+        private HashMap<Integer, ?> checkedMap;
+        private boolean scrolling;
+        private String lastQuery;
+
+        private int[] contactIds;
+
+        public ContactsAdapter(Context context) {
+            mContext = context;
+            contactIds = MrMailbox.getKnownContacts(null);
+        }
+
+        public void setCheckedMap(HashMap<Integer, ?> map) {
+            checkedMap = map;
+        }
+
+        public void setIsScrolling(boolean value) {
+            scrolling = value;
+        }
+
+        public void search(String query) {
+            contactIds = MrMailbox.getKnownContacts(query);
+            lastQuery = query;
+        }
+
+        public void searchAgain() {
+            contactIds = MrMailbox.getKnownContacts(lastQuery);
+        }
+
+        @Override
+        public Object getItem(int curr_user_index) {
+            if(curr_user_index>=0 && curr_user_index<contactIds.length) {
+                TLRPC.User u = new TLRPC.User();
+                u.id = contactIds[curr_user_index];
+                return u;
+            }
+            return null;
+        }
+
+        @Override
+        public boolean isEnabled(int row) {
+            return true;
+        }
+
+        @Override
+        public int getCount() {
+            return contactIds.length;
+        }
+
+        @Override
+        public View getView(int curr_user_index, View convertView, ViewGroup parent) {
+            if (convertView == null) {
+                convertView = new UserCell(mContext, 1, 1);
+                ((UserCell) convertView).setStatusColors(0xffa8a8a8);
+            }
+
+            if(curr_user_index>=0 && curr_user_index<contactIds.length) {
+                int curr_user_id = contactIds[curr_user_index];
+                MrContact mrContact = MrMailbox.getContact(curr_user_id);
+                ((UserCell) convertView).setData(mrContact, 0);
+                if (checkedMap != null) {
+                    ((UserCell) convertView).setChecked(checkedMap.containsKey(curr_user_id), !scrolling);
+                }
+            }
+
+            return convertView;
+        }
+
+        @Override
+        public int getItemViewType(int position) {
+            return 0;
+        }
+
+        @Override
+        public int getViewTypeCount() {
+            return 1;
+        }
     }
 }

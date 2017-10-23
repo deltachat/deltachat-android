@@ -45,7 +45,7 @@ import android.widget.TextView;
 
 import com.b44t.messenger.ActionBar.BackDrawable;
 import com.b44t.messenger.ActionBar.Theme;
-import com.b44t.messenger.Adapters.BaseFragmentAdapter;
+import com.b44t.messenger.Components.BaseFragmentAdapter;
 import com.b44t.messenger.ActionBar.ActionBar;
 import com.b44t.messenger.ActionBar.ActionBarMenu;
 import com.b44t.messenger.ActionBar.BaseFragment;

@@ -43,7 +43,7 @@ import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ListView;
 
-import com.b44t.messenger.Adapters.BaseFragmentAdapter;
+import com.b44t.messenger.Components.BaseFragmentAdapter;
 import com.b44t.messenger.Cells.HeaderCell;
 import com.b44t.messenger.Cells.ShadowSectionCell;
 import com.b44t.messenger.Cells.TextCheckCell;

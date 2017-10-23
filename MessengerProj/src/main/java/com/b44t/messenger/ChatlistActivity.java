@@ -56,7 +56,6 @@ import com.b44t.messenger.Cells.GreySectionCell;
 import com.b44t.messenger.aosp.LinearLayoutManager;
 import com.b44t.messenger.aosp.RecyclerView;
 import com.b44t.messenger.ActionBar.BackDrawable;
-import com.b44t.messenger.Adapters.DialogsAdapter;
 import com.b44t.messenger.Cells.UserCell;
 import com.b44t.messenger.Cells.ChatlistCell;
 import com.b44t.messenger.ActionBar.ActionBar;
@@ -796,6 +795,68 @@ public class ChatlistActivity extends BaseFragment implements NotificationCenter
             } else {
                 finishFragment();
             }
+        }
+    }
+
+    private class DialogsAdapter extends RecyclerView.Adapter {
+
+        private Context mContext;
+
+        private class Holder extends RecyclerView.ViewHolder {
+            public Holder(View itemView) {
+                super(itemView);
+            }
+        }
+
+        public DialogsAdapter(Context context) {
+            mContext = context;
+
+            MrMailbox.reloadMainChatlist();
+        }
+
+        @Override
+        public int getItemCount() {
+            return MrMailbox.m_currChatlist.getCnt();
+        }
+
+        public MrChat getItem(int i) {
+            return MrMailbox.m_currChatlist.getChatByIndex(i);
+        }
+
+        @Override
+        public void onViewAttachedToWindow(RecyclerView.ViewHolder holder) {
+            if (holder.itemView instanceof ChatlistCell) {
+                ((ChatlistCell) holder.itemView).checkCurrentChatlistIndex();
+            }
+        }
+
+        @Override
+        public long getItemId(int i) {
+            return i;
+        }
+
+        @Override
+        public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
+            View view = new ChatlistCell(mContext);
+            view.setLayoutParams(new RecyclerView.LayoutParams(RecyclerView.LayoutParams.MATCH_PARENT, RecyclerView.LayoutParams.WRAP_CONTENT));
+            return new DialogsAdapter.Holder(view);
+        }
+
+        @Override
+        public void onBindViewHolder(RecyclerView.ViewHolder viewHolder, int i) {
+            if (viewHolder.getItemViewType() == 0) {
+                ChatlistCell cell = (ChatlistCell) viewHolder.itemView;
+                cell.useSeparator = (i != getItemCount() - 1);
+                MrChat mrChat = getItem(i);
+
+                MrPoortext mrSummary = MrMailbox.m_currChatlist.getSummaryByIndex(i, mrChat);
+                cell.setChat(mrChat, mrSummary, i, true);
+            }
+        }
+
+        @Override
+        public int getItemViewType(int i) {
+            return 0;
         }
     }
 
