@@ -371,14 +371,16 @@ public class MrMailbox {
                     case 23: s = ApplicationLoader.applicationContext.getString(R.string.AttachGif); break;
                     case 24: s = ApplicationLoader.applicationContext.getString(R.string.EncryptedMessage); break;
                     case 25: s = ApplicationLoader.applicationContext.getString(R.string.EncrinfoE2E); break;
-                    case 26: s = "<c#808080>"+ApplicationLoader.applicationContext.getString(R.string.EncrinfoE2EExplain)+"</c>"; break;
                     case 27: s = ApplicationLoader.applicationContext.getString(R.string.EncrinfoTransport); break;
                     case 28: s = ApplicationLoader.applicationContext.getString(R.string.EncrinfoNone); break;
-                    case 29: s = "<c#808080>"+ApplicationLoader.applicationContext.getString(R.string.EncrinfoNoE2EExplain)+"</c>"; break;
                     case 30: s = ApplicationLoader.applicationContext.getString(R.string.EncrinfoFingerprints); break;
                     case 31: s = ApplicationLoader.applicationContext.getString(R.string.ReadReceipt); break;
                     case 32: s = ApplicationLoader.applicationContext.getString(R.string.ReadReceiptMailBody); break;
                     case 33: s = ApplicationLoader.applicationContext.getString(R.string.MsgGroupImageDeleted); break;
+                    case 34: s = "<c#808080>"+ApplicationLoader.applicationContext.getString(R.string.EncrinfoE2EExplain)+"</c>"; break;
+                    case 35: s = "<c#808080>"+ApplicationLoader.applicationContext.getString(R.string.EncrinfoNoE2EExplain)+"</c>"; break;
+                    case 36: s = "<c#808080>"+ApplicationLoader.applicationContext.getString(R.string.E2eeOffBecauseOfUser)+"</c>"; break;
+                    case 37: s = "<c#808080>"+ApplicationLoader.applicationContext.getString(R.string.E2eeOffBecauseOfRecipient)+"</c>"; break;
                 }
                 return String2CPtr(s);
 
