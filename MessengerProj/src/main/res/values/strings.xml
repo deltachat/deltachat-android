@@ -404,5 +404,5 @@
     <string name="ExportPrivateKeys">Export private keys</string>
     <string name="ImportPrivateKeys">Import private keys</string>
     <string name="ImportPrivateKeysAsk2">Import private keys from <![CDATA[<i>]]>%1$s<![CDATA[</i>]]>?\n\n• Existing private keys are not deleted\n\n• The last imported key will be used as the new default key</string>
-    <string name="NoRecentEmoji">Recently used emoji will be displayed here.</string>
+    <string name="NoRecentEmoji">Recently used emoji will be shown here.</string>
 </resources>
