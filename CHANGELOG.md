@@ -2,6 +2,8 @@
 
 ## UNRELEASED
 
+* Show more detailed reasons about failed end-to-end-encryptions
+* Do not show the padlock if end-to-end-encryption is disabled by the user
 * Add copy-to-clipboard function for "About / Info"
 * Show messages only for explicitly wanted chats
 

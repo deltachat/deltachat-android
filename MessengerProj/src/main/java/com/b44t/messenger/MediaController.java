@@ -81,7 +81,7 @@ import java.util.concurrent.Semaphore;
 
 
 public class MediaController implements AudioManager.OnAudioFocusChangeListener, NotificationCenter.NotificationCenterDelegate, SensorEventListener {
-
+    // CAVE: do not refactor this without adapting the JNI part!
     private native int startRecord(String path);
     private native int writeFrame(ByteBuffer frame, int len);
     private native void stopRecord();

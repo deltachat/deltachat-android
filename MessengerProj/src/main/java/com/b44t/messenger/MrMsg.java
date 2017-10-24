@@ -30,7 +30,6 @@ package com.b44t.messenger;
 import android.graphics.Bitmap;
 import android.media.ThumbnailUtils;
 import android.provider.MediaStore;
-import android.util.Log;
 
 import java.io.File;
 
@@ -105,6 +104,7 @@ public class MrMsg {
     public MrPoortext    getSummary(MrChat chat) { return new MrPoortext(getSummaryCPtr(chat.getCPtr())); }
     private native long  getSummaryCPtr(long hChat);
     public native String getSummarytext(int approx_characters);
+    public native int    showPadlock();
     public MrPoortext    getMediainfo() { return new MrPoortext(getMediainfoCPtr()); }
     private native long  getMediainfoCPtr();
     public native String getFilename();
@@ -151,7 +151,7 @@ public class MrMsg {
         ret.flags         = 0; // posible flags: MESSAGE_FLAG_HAS_FROM_ID, however, this seems to be read only
         ret.out           = ret.from_id==MrContact.MR_CONTACT_ID_SELF; // true=outgoing message, read eg. in MessageObject.isOutOwner()
         ret.created_by_mr = true;
-        ret.e2ee          = getParamInt('c', 0)!=0;
+        ret.show_padlock  = showPadlock()!=0;
 
         if( type == MR_MSG_TEXT ) {
             ret.message       = getText();

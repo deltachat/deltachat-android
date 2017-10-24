@@ -256,7 +256,7 @@ public class TLRPC {
         public long dialog_id; //custom
         public final int layer = 0; //custom
 		public boolean created_by_mr;
-		public boolean e2ee;
+		public boolean show_padlock;
     }
 
 	public static class TL_message extends Message {

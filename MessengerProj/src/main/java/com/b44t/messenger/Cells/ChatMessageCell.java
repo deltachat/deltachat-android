@@ -2011,7 +2011,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
         currentTimeString = LocaleController.getInstance().formatterDay.format((long) (messageObject.messageOwner.date) * 1000);
         timeWidth = (int) Math.ceil(timePaint.measureText(currentTimeString));
         timeEncrWidth = 0;
-        if( messageObject.messageOwner.e2ee ) {
+        if( messageObject.messageOwner.show_padlock) {
             timeEncrWidth = Theme.encrOutDrawable.getIntrinsicWidth();
             timeWidth += timeEncrWidth;
         }
