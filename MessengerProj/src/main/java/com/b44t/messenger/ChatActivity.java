@@ -87,13 +87,13 @@ import java.util.Collections;
 import java.util.HashMap;
 
 @SuppressWarnings("unchecked")
-public class ChatActivity extends BaseFragment implements NotificationCenter.NotificationCenterDelegate, ChatlistActivity.DialogsActivityDelegate,
+public class ChatActivity extends BaseFragment implements NotificationCenter.NotificationCenterDelegate, ChatlistActivity.ChatlistActivityDelegate,
         PhotoViewer.PhotoViewerProvider {
 
     // data
     private long  dialog_id;
     public MrChat m_mrChat = new MrChat(0);
-    private boolean m_isChatWithDeaddrop, m_isDeaddropInChatlist;
+    private boolean m_isChatWithDeaddrop /*, m_isDeaddropInChatlist*/;
     private int[] m_msglist = {};
 
     // the list view
@@ -187,10 +187,10 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         m_mrChat = MrMailbox.getChat((int)dialog_id);
         m_isChatWithDeaddrop = m_mrChat.getId()==MrChat.MR_CHAT_ID_DEADDROP;
 
-        m_isDeaddropInChatlist = false;
+        /*m_isDeaddropInChatlist = false;
         if( m_isChatWithDeaddrop && MrMailbox.getConfigInt("show_deaddrop", 0)!=0 ) {
             m_isDeaddropInChatlist = true;
-        }
+        }*/
 
         startLoadFromMessageId = arguments.getInt("message_id", 0);
         scrollToTopOnResume = arguments.getBoolean("scrollToTopOnResume", false);
@@ -418,7 +418,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     args.putString("selectAlertString", context.getString(R.string.ForwardMessagesTo));
                     ChatlistActivity fragment = new ChatlistActivity(args);
                     fragment.setDelegate(ChatActivity.this);
-                    presentFragment(fragment); // this results in a call to didSelectDialog()
+                    presentFragment(fragment); // this results in a call to didSelectChat()
                 }
                 else if( id == ID_SHOW_PROFILE )
                 {
@@ -519,7 +519,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
             }
         });
 
-        if( m_isChatWithDeaddrop && !m_isDeaddropInChatlist ) {
+        if( m_isChatWithDeaddrop /*&& !m_isDeaddropInChatlist*/ ) {
             actionBar.setTitle(context.getString(R.string.Deaddrop));
         }
         else {
@@ -581,7 +581,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         headerItem.addSubItem(ID_SEARCH, context.getString(R.string.Search), 0);
 
         m_canMute = true;
-        if( m_isChatWithDeaddrop && !m_isDeaddropInChatlist ) {
+        if( m_isChatWithDeaddrop /*&& !m_isDeaddropInChatlist*/ ) {
             m_canMute = false;
         }
 
@@ -593,9 +593,8 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
             headerItem.addSubItem(ID_ATTACH, context.getString(R.string.AttachFiles), 0); // "Attach" means "Attach to chat", not "Attach to message" (which is not possible)
         }
 
-        if( !m_isChatWithDeaddrop || m_isDeaddropInChatlist ) {
-            headerItem.addSubItem(ID_SHOW_PROFILE, context.getString(R.string.ViewProfile), 0);
-        }
+        //if( !m_isChatWithDeaddrop || m_isDeaddropInChatlist ) { -- we can disable this at a later time, for now, it may be handy to have all options
+        headerItem.addSubItem(ID_SHOW_PROFILE, context.getString(R.string.ViewProfile), 0);
 
         if( !m_isChatWithDeaddrop ) {
             headerItem.addSubItem(ID_DELETE_CHAT, context.getString(R.string.DeleteChat), 0);
@@ -2407,7 +2406,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
     }
 
     @Override
-    public void didSelectDialog(ChatlistActivity dialogsFragment, long fwd_chat_id, boolean param)
+    public void didSelectChat(ChatlistActivity dialogsFragment, long fwd_chat_id, boolean param)
     {
         if( selectedMessagesIds.size()>0) {
             int ids[] = new int[selectedMessagesIds.size()], i = 0;

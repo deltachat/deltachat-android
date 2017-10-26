@@ -73,8 +73,8 @@ public class ChatlistActivity extends BaseFragment implements NotificationCenter
     
     private RecyclerListView listView;
     private LinearLayoutManager layoutManager;
-    private DialogsAdapter dialogsAdapter;
-    private DialogsSearchAdapter dialogsSearchAdapter;
+    private ChatlistAdapter chatlistAdapter;
+    private ChatlistSearchAdapter chatlistSearchAdapter;
     private EmptyTextProgressView searchEmptyView;
     private LinearLayout emptyView;
     private ActionBarMenuItem passcodeItem;
@@ -103,7 +103,7 @@ public class ChatlistActivity extends BaseFragment implements NotificationCenter
     private boolean onlySelect;
     private String onlySelectTitle = "";
 
-    private DialogsActivityDelegate delegate;
+    private ChatlistActivityDelegate delegate;
 
     ActionBarMenuItem headerItem;
 
@@ -113,8 +113,8 @@ public class ChatlistActivity extends BaseFragment implements NotificationCenter
     private static final int ID_SETTINGS = 5;
     private static final int ID_DEADDROP = 7;
 
-    public interface DialogsActivityDelegate {
-        void didSelectDialog(ChatlistActivity fragment, long dialog_id, boolean param);
+    public interface ChatlistActivityDelegate {
+        void didSelectChat(ChatlistActivity fragment, long dialog_id, boolean param);
     }
 
     public ChatlistActivity(Bundle args) {
@@ -221,9 +221,9 @@ public class ChatlistActivity extends BaseFragment implements NotificationCenter
                         floatingButton.setTranslationY(AndroidUtilities.dp(100));
                         hideFloatingButton(false);
                     }
-                    if (listView.getAdapter() != dialogsAdapter) {
-                        listView.setAdapter(dialogsAdapter);
-                        dialogsAdapter.notifyDataSetChanged();
+                    if (listView.getAdapter() != chatlistAdapter) {
+                        listView.setAdapter(chatlistAdapter);
+                        chatlistAdapter.notifyDataSetChanged();
                     }
                 }
                 updatePasscodeButton();
@@ -240,18 +240,18 @@ public class ChatlistActivity extends BaseFragment implements NotificationCenter
                         searchEmptyView.showTextView();
                         listView.setEmptyView(searchEmptyView);
                     }
-                    if (dialogsSearchAdapter != null ) {
-                        if( listView.getAdapter() != dialogsSearchAdapter ) {
-                            listView.setAdapter(dialogsSearchAdapter);
+                    if (chatlistSearchAdapter != null ) {
+                        if( listView.getAdapter() != chatlistSearchAdapter) {
+                            listView.setAdapter(chatlistSearchAdapter);
                         }
-                        dialogsSearchAdapter.searchDialogs(text);
-                        dialogsSearchAdapter.notifyDataSetChanged();
+                        chatlistSearchAdapter.doSearch(text);
+                        chatlistSearchAdapter.notifyDataSetChanged();
                     }
                 }
-                else if( listView.getAdapter()==dialogsSearchAdapter ) {
+                else if( listView.getAdapter()== chatlistSearchAdapter) {
                     // empty text
-                    listView.setAdapter(dialogsAdapter);
-                    dialogsAdapter.notifyDataSetChanged();
+                    listView.setAdapter(chatlistAdapter);
+                    chatlistAdapter.notifyDataSetChanged();
                 }
             }
         });
@@ -354,14 +354,14 @@ public class ChatlistActivity extends BaseFragment implements NotificationCenter
                 long dialog_id = 0;
                 int message_id = 0;
                 RecyclerView.Adapter adapter = listView.getAdapter();
-                if (adapter == dialogsAdapter) {
-                    MrChat mrChat = dialogsAdapter.getItem(position);
+                if (adapter == chatlistAdapter) {
+                    MrChat mrChat = chatlistAdapter.getItem(position);
                     if (mrChat == null) {
                         return;
                     }
                     dialog_id = mrChat.getId();
-                } else if (adapter == dialogsSearchAdapter) {
-                    Object obj  = dialogsSearchAdapter.getItem(position);
+                } else if (adapter == chatlistSearchAdapter) {
+                    Object obj  = chatlistSearchAdapter.getItem(position);
                     if( obj instanceof MrChat ) {
                         dialog_id = ((MrChat)obj).getId();
                     }
@@ -502,9 +502,9 @@ public class ChatlistActivity extends BaseFragment implements NotificationCenter
             }
         });
 
-        dialogsAdapter = new DialogsAdapter(context);
-        listView.setAdapter(dialogsAdapter);
-        dialogsSearchAdapter = new DialogsSearchAdapter(context);
+        chatlistAdapter = new ChatlistAdapter(context);
+        listView.setAdapter(chatlistAdapter);
+        chatlistSearchAdapter = new ChatlistSearchAdapter(context);
 
         searchEmptyView.setVisibility(View.GONE);
         listView.setEmptyView(emptyView);
@@ -515,11 +515,11 @@ public class ChatlistActivity extends BaseFragment implements NotificationCenter
     @Override
     public void onResume() {
         super.onResume();
-        if (dialogsAdapter != null) {
-            dialogsAdapter.notifyDataSetChanged();
+        if (chatlistAdapter != null) {
+            chatlistAdapter.notifyDataSetChanged();
         }
-        if (dialogsSearchAdapter != null) {
-            dialogsSearchAdapter.notifyDataSetChanged();
+        if (chatlistSearchAdapter != null) {
+            chatlistSearchAdapter.notifyDataSetChanged();
         }
         if (checkPermission && !onlySelect && Build.VERSION.SDK_INT >= 23) {
             checkPermission = false;
@@ -677,8 +677,8 @@ public class ChatlistActivity extends BaseFragment implements NotificationCenter
     @SuppressWarnings("unchecked")
     public void didReceivedNotification(int id, Object... args) {
         if (id == NotificationCenter.dialogsNeedReload) {
-            if (dialogsAdapter != null) {
-                dialogsAdapter.notifyDataSetChanged();
+            if (chatlistAdapter != null) {
+                chatlistAdapter.notifyDataSetChanged();
                 /* EDIT BY MR
                 if (dialogsAdapter.isDataSetChanged()) {
                     dialogsAdapter.notifyDataSetChanged();
@@ -687,8 +687,8 @@ public class ChatlistActivity extends BaseFragment implements NotificationCenter
                 }
                 */
             }
-            if (dialogsSearchAdapter != null) {
-                dialogsSearchAdapter.notifyDataSetChanged();
+            if (chatlistSearchAdapter != null) {
+                chatlistSearchAdapter.notifyDataSetChanged();
             }
             if (listView != null) {
                 try {
@@ -747,7 +747,7 @@ public class ChatlistActivity extends BaseFragment implements NotificationCenter
         for (int a = 0; a < count; a++) {
             View child = listView.getChildAt(a);
             if (child instanceof ChatlistCell) {
-                if (listView.getAdapter() != dialogsSearchAdapter) {
+                if (listView.getAdapter() != chatlistSearchAdapter) {
                     ChatlistCell cell = (ChatlistCell) child;
                     if ((mask & MrMailbox.UPDATE_MASK_NEW_MESSAGE) != 0) {
                         cell.checkCurrentChatlistIndex();
@@ -763,8 +763,8 @@ public class ChatlistActivity extends BaseFragment implements NotificationCenter
         }
     }
 
-    public void setDelegate(DialogsActivityDelegate dialogsActivityDelegate) {
-        delegate = dialogsActivityDelegate;
+    public void setDelegate(ChatlistActivityDelegate chatlistActivityDelegate) {
+        delegate = chatlistActivityDelegate;
     }
 
     private void didSelectResult(final long dialog_id, boolean useAlert, final boolean param) {
@@ -790,7 +790,7 @@ public class ChatlistActivity extends BaseFragment implements NotificationCenter
             showDialog(builder.create());
         } else {
             if (delegate != null) {
-                delegate.didSelectDialog(ChatlistActivity.this, dialog_id, param);
+                delegate.didSelectChat(ChatlistActivity.this, dialog_id, param);
                 delegate = null;
             } else {
                 finishFragment();
@@ -798,7 +798,7 @@ public class ChatlistActivity extends BaseFragment implements NotificationCenter
         }
     }
 
-    private class DialogsAdapter extends RecyclerView.Adapter {
+    private class ChatlistAdapter extends RecyclerView.Adapter {
 
         private Context mContext;
 
@@ -808,7 +808,7 @@ public class ChatlistActivity extends BaseFragment implements NotificationCenter
             }
         }
 
-        public DialogsAdapter(Context context) {
+        public ChatlistAdapter(Context context) {
             mContext = context;
 
             MrMailbox.reloadMainChatlist();
@@ -839,7 +839,7 @@ public class ChatlistActivity extends BaseFragment implements NotificationCenter
         public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
             View view = new ChatlistCell(mContext);
             view.setLayoutParams(new RecyclerView.LayoutParams(RecyclerView.LayoutParams.MATCH_PARENT, RecyclerView.LayoutParams.WRAP_CONTENT));
-            return new DialogsAdapter.Holder(view);
+            return new ChatlistAdapter.Holder(view);
         }
 
         @Override
@@ -860,7 +860,7 @@ public class ChatlistActivity extends BaseFragment implements NotificationCenter
         }
     }
 
-    private class DialogsSearchAdapter extends RecyclerView.Adapter {
+    private class ChatlistSearchAdapter extends RecyclerView.Adapter {
 
         private Context mContext;
 
@@ -884,11 +884,11 @@ public class ChatlistActivity extends BaseFragment implements NotificationCenter
             }
         }
 
-        public DialogsSearchAdapter(Context context) {
+        public ChatlistSearchAdapter(Context context) {
             mContext = context;
         }
 
-        public void searchDialogs(String query) {
+        public void doSearch(String query) {
             rowCount = 0;
 
             m_chatlist = MrMailbox.getChatlist(query);

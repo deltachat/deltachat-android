@@ -60,7 +60,7 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 
-public class LaunchActivity extends Activity implements ActionBarLayout.ActionBarLayoutDelegate, NotificationCenter.NotificationCenterDelegate, ChatlistActivity.DialogsActivityDelegate {
+public class LaunchActivity extends Activity implements ActionBarLayout.ActionBarLayoutDelegate, NotificationCenter.NotificationCenterDelegate, ChatlistActivity.ChatlistActivityDelegate {
 
     private boolean finished;
     private String videoPath;
@@ -619,7 +619,7 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                 }
 
             } else {
-                didSelectDialog(null, dialogId, false);
+                didSelectChat(null, dialogId, false);
             }
         }
 
@@ -642,7 +642,7 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
     }
 
     @Override
-    public void didSelectDialog(ChatlistActivity dialogsFragment, long dialog_id, boolean param) {
+    public void didSelectChat(ChatlistActivity dialogsFragment, long dialog_id, boolean param) {
         if (dialog_id != 0) {
             Bundle args = new Bundle();
             args.putBoolean("scrollToTopOnResume", true);
