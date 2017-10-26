@@ -591,7 +591,7 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
 
         ImageView imageView = new ImageView(context);
         imageView.setScaleType(ImageView.ScaleType.CENTER);
-        imageView.setImageResource(R.drawable.delete_reply);
+        imageView.setImageResource(R.drawable.dismiss_recording);
         recordedAudioPanel.addView(imageView, LayoutHelper.createFrame(48, 48));
         imageView.setOnClickListener(new OnClickListener() {
             @Override

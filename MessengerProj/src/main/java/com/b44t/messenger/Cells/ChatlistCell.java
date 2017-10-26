@@ -42,7 +42,6 @@ import com.b44t.messenger.AndroidUtilities;
 import com.b44t.messenger.ContactsController;
 import com.b44t.messenger.EmojiInputView;
 import com.b44t.messenger.LocaleController;
-import com.b44t.messenger.MessageObject;
 import com.b44t.messenger.MrChat;
 import com.b44t.messenger.MrMailbox;
 import com.b44t.messenger.MrMsg;
@@ -69,6 +68,7 @@ public class ChatlistCell extends BaseCell {
     private static Drawable countDrawableGrey;
     private static Drawable groupDrawable;
     private static Drawable muteDrawable;
+    private static Drawable closeDrawable;
 
     private static Paint linePaint;
 
@@ -78,7 +78,6 @@ public class ChatlistCell extends BaseCell {
     private int index;
 
     private ImageReceiver avatarImage;
-    private AvatarDrawable avatarDrawable;
 
     private final Object user = null;
     private final Object chat = null;
@@ -87,7 +86,7 @@ public class ChatlistCell extends BaseCell {
 
     private int nameLeft;
     private StaticLayout nameLayout;
-    private boolean drawNameGroup;
+    private boolean drawGroupIcon;
     private int nameMuteLeft;
     private int nameLockLeft;
     private int nameLockTop;
@@ -117,7 +116,9 @@ public class ChatlistCell extends BaseCell {
     private int countWidth;
     private StaticLayout countLayout;
 
+    private int avatarLeft;
     private int avatarTop = AndroidUtilities.dp(10);
+    private int avatarWH = AndroidUtilities.dp(52);
 
     private MrChat m_mrChat = new MrChat(0);
     private MrPoortext m_summary = new MrPoortext(0);
@@ -156,13 +157,11 @@ public class ChatlistCell extends BaseCell {
             countDrawableGrey = getResources().getDrawable(R.drawable.dialogs_badge2);
             groupDrawable = getResources().getDrawable(R.drawable.list_group);
             muteDrawable = getResources().getDrawable(R.drawable.mute_grey);
+            closeDrawable = getResources().getDrawable(R.drawable.ic_dismiss_deaddrop); // TODO: KitKat emulator crashes on first startup - because of the vector graphic?
         }
-
-        setBackgroundResource(R.drawable.list_selector);
 
         avatarImage = new ImageReceiver(this);
         avatarImage.setRoundRadius(AndroidUtilities.dp(26));
-        avatarDrawable = new AvatarDrawable();
     }
 
     public void setChat(MrChat mrChat, MrPoortext mrSummary, int i, boolean showUnreadCount) {
@@ -173,6 +172,8 @@ public class ChatlistCell extends BaseCell {
 
         currentChatId = mrChat.getId();
         index = i;
+
+        setBackgroundColor(currentChatId==MrChat.MR_CHAT_ID_DEADDROP? Theme.CHATLIST_DEADDROP_BACKGROUND_COLOR : Theme.CHATLIST_BACKGROUND_COLOR);
 
         update(0);
     }
@@ -223,10 +224,10 @@ public class ChatlistCell extends BaseCell {
         TextPaint currentNamePaint = namePaint;
         TextPaint currentMessagePaint = messagePaint;
 
-        drawNameGroup = false;
+        drawGroupIcon = false;
 
-        if (m_mrChat.getType()==MrChat.MR_CHAT_GROUP) {
-            drawNameGroup = true;
+        if (m_mrChat.getType()==MrChat.MR_CHAT_GROUP && currentChatId!=MrChat.MR_CHAT_ID_DEADDROP) {
+            drawGroupIcon = true;
             nameLockTop = AndroidUtilities.dp(17.5f);
 
             if (!LocaleController.isRTL) {
@@ -312,7 +313,7 @@ public class ChatlistCell extends BaseCell {
             nameLeft += timeWidth;
         }
 
-        if (drawNameGroup) {
+        if (drawGroupIcon) {
             nameWidth -= AndroidUtilities.dp(4) + groupDrawable.getIntrinsicWidth();
         }
 
@@ -356,6 +357,7 @@ public class ChatlistCell extends BaseCell {
             }
         }
 
+        // build name
         nameWidth = Math.max(AndroidUtilities.dp(12), nameWidth);
         CharSequence nameStringFinal = TextUtils.ellipsize(nameString.replace('\n', ' '), currentNamePaint, nameWidth - AndroidUtilities.dp(12), TextUtils.TruncateAt.END);
         try {
@@ -364,8 +366,8 @@ public class ChatlistCell extends BaseCell {
 
         }
 
+        // build avatar
         int messageWidth = getMeasuredWidth() - AndroidUtilities.dp(AndroidUtilities.leftBaseline + 16);
-        int avatarLeft;
         if (!LocaleController.isRTL) {
             messageLeft = AndroidUtilities.dp(AndroidUtilities.leftBaseline);
             avatarLeft = AndroidUtilities.dp(9);
@@ -373,7 +375,15 @@ public class ChatlistCell extends BaseCell {
             messageLeft = AndroidUtilities.dp(16);
             avatarLeft = getMeasuredWidth() - AndroidUtilities.dp(61);
         }
-        avatarImage.setImageCoords(avatarLeft, avatarTop, AndroidUtilities.dp(52), AndroidUtilities.dp(52));
+
+        if( currentChatId==MrChat.MR_CHAT_ID_DEADDROP ) {
+
+        }
+        else {
+            avatarImage.setImageCoords(avatarLeft, avatarTop, avatarWH, avatarWH);
+        }
+
+        // build counter
         if (drawError) {
             int w = errorDrawable.getIntrinsicWidth() + AndroidUtilities.dp(8);
             messageWidth -= w;
@@ -502,7 +512,12 @@ public class ChatlistCell extends BaseCell {
 
         chatMuted = MrMailbox.isDialogMuted(currentChatId);
 
-        ContactsController.setupAvatar(this, avatarImage, avatarDrawable, null, m_mrChat);
+        if( currentChatId == MrChat.MR_CHAT_ID_DEADDROP ) {
+
+        }
+        else {
+            ContactsController.setupAvatar(this, avatarImage, new AvatarDrawable(), null, m_mrChat);
+        }
 
         if (getMeasuredWidth() != 0 || getMeasuredHeight() != 0) {
             buildLayout();
@@ -519,7 +534,7 @@ public class ChatlistCell extends BaseCell {
             return;
         }
 
-        if (drawNameGroup) {
+        if (drawGroupIcon) {
             setDrawableBounds(groupDrawable, nameLockLeft, nameLockTop);
             groupDrawable.draw(canvas);
         }
@@ -584,6 +599,15 @@ public class ChatlistCell extends BaseCell {
             canvas.restore();
         }
 
+        if( currentChatId==MrChat.MR_CHAT_ID_DEADDROP ) {
+            int shrink = AndroidUtilities.dp(12);
+            setDrawableBounds(closeDrawable, avatarLeft+shrink, avatarTop+shrink, avatarWH-shrink*2, avatarWH-shrink*2);
+            closeDrawable.draw(canvas);
+        }
+        else {
+            avatarImage.draw(canvas);
+        }
+
         if (useSeparator) {
             if (LocaleController.isRTL) {
                 canvas.drawLine(0, getMeasuredHeight() - 1, getMeasuredWidth() - AndroidUtilities.dp(AndroidUtilities.leftBaseline), getMeasuredHeight() - 1, linePaint);
@@ -591,8 +615,6 @@ public class ChatlistCell extends BaseCell {
                 canvas.drawLine(AndroidUtilities.dp(AndroidUtilities.leftBaseline), getMeasuredHeight() - 1, getMeasuredWidth(), getMeasuredHeight() - 1, linePaint);
             }
         }
-
-        avatarImage.draw(canvas);
     }
 
     @Override

@@ -60,6 +60,8 @@ public class Theme {
 
     public static final int ATTACH_SHEET_TEXT_COLOR = 0xff757575;
 
+    public static final int CHATLIST_BACKGROUND_COLOR = 0xffffffff;
+    public static final int CHATLIST_DEADDROP_BACKGROUND_COLOR = 0xffd3d3d3;
     public static final int CHATLIST_TITLE_TEXT_COLOR = 0xff000000;
     public static final int CHATLIST_MESSAGE_TEXT_COLOR = 0xff8f8f8f;
     public static final int CHATLIST_NAME_TEXT_COLOR = 0xff555555;
