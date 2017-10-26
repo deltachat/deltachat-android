@@ -405,13 +405,13 @@
     <string name="EncrinfoNone">Brak szyfrowania na moim serwerze.</string>
     <string name="EncrinfoNoE2EExplain">Szyfrowanie przełączy się automatycznie na PEŁNE, gdy tylko kontakt użyje programu Delta Chat lub innej aplikacji obsługującej funkcję Autocrypt.</string>
     <string name="EncrinfoFingerprints">Odciski palców</string>
-    <string name="Backup">Backup</string>
+    <string name="Backup">Kopia zapasowa</string>
     <string name="ImportBackupExplain2">Aby zaimportować kopię zapasową, skopiuj ją do folderu <![CDATA[<i>]]>%1$s<![CDATA[</i>]]> i ponownie zainstaluj aplikację.</string>
     <string name="ReadReceiptMailBody">To jest potwierdzenie odczytu dla wiadomości ”%1$s„.\n\nTo potwierdzenie odczytu tylko informuje, że wiadomość została wyświetlona na urządzeniu odbiorcy. Nie ma gwarancji, że odbiorca przeczytał treść wiadomości.</string>
     <string name="ReadReceipt">Potwierdzenie odczytu</string>
     <string name="NameAndStatus">Nazwa i status</string>
     <string name="MyStatus">Mój status</string>
-    <string name="MyStatusExplain">Status jest widoczny w twoim profilu i w stopce maili.</string>
+    <string name="MyStatusExplain">Status jest widoczny np. w stopce maili.</string>
     <string name="MsgGroupImageDeleted">Usunięto obraz grupy.</string>
     <string name="AskDeleteGroupImage">Czy na pewno usunąć obraz grupy?\n\nTo wpłynie na wszystkie urządzenia, wszystkich członków grupy.</string>
     <string name="ExportImportHeader">Export i import</string>
@@ -426,4 +426,6 @@
     <string name="ExportPrivateKeys">Eksportuj prywatne klucze</string>
     <string name="ImportPrivateKeys">Importuj prywatne klucze</string>
     <string name="ImportPrivateKeysAsk2">Zaimportować prywatne klucze z <![CDATA[<i>]]>%1$s<![CDATA[]]>?\n\n• Istniejące prywatne klucze nie są usuwane\n\n• Ostatni zaimportowany klucz zostanie użyty jako nowy klucz domyślny</string>
-</resources>
+    <string name="NoRecentEmoji">Tutaj będą pokazane ostatnio używane emoji.</string>
+    <string name="E2eeOffBecauseOfUser">Aby włączyć szyfrowanie typu end-to-end, zaznacz odpowiednią opcję w ustawieniach.</string>
+    </resources>

@@ -1,19 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<!--https://www.transifex.com/projects/p/telegram/language/nl/members/-->
 
-<resources>
+
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="AppName">Delta Chat</string>
     <!--chats view-->
     <string name="Settings">Instellingen</string>
     <string name="NewGroup">Nieuwe groep</string>
-    <string name="NoResult">Geen resultaten</string>
+    <string name="NoResult">Geen resultaten.</string>
     <string name="NoChats">Nog geen chats.</string>
     <string name="DeleteChat">Chat verwijderen</string>
     <string name="SelectChat">Kies een chat …</string>
     <string name="Search">Zoeken</string>
-    <string name="MuteNotifications">Meldingen stil</string>
-    <string name="UnmuteNotifications">Stil uitschakelen</string>
+    <string name="MuteNotifications">Meldingen dempen</string>
+    <string name="MuteFor">Dempen voor %1$s</string>
+    <string name="UnmuteNotifications">Demping uitschakelen</string>
     <string name="Draft">Concept</string>
     <!--audio view-->
     <string name="NoAudio">Voeg bestanden toe aan de muziekbibliotheek op je apparaat om ze hier te zien.</string>
@@ -193,8 +194,7 @@
     <string name="AttachVoiceMessage">Spraakbericht</string>
     <string name="FromSelf">Jij</string>
     <!--Alert messages-->
-    <string name="NoHandleAppInstalled">Je hebt geen apps die bestandstype \'%1$s\' kunnen verwerken, gelieve een compatibele app te installeren</string>
-    <string name="AskAddMemberToGroup"><![CDATA[<b>]]>%1$s<![CDATA[</b>]]> toevoegen aan de groep?</string>
+    <string name="NoHandleAppInstalled">Je hebt geen apps die bestandstype \'%1$s\' kunnen verwerken, installeer alsjeblieft één om verder te gaan</string>
     <string name="ContactAlreadyInGroup">Gebruiker is al een groepslid</string>
     <string name="ForwardMessagesTo">Berichten doorsturen naar <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>?</string>
     <string name="SendMessagesTo">Berichten naar <![CDATA[<b>]]>%1$s<![CDATA[</b>]]> versturen?</string>
@@ -207,11 +207,39 @@
     <string name="PermissionNoAudio">Delta Chat heeft toegang tot je microfoon nodig om spraakberichten te kunnen verzenden.</string>
     <string name="PermissionOpenSettings">Instellingen</string>
     <!--Intro view-->
+    <string name="Intro1Headline">Delta Chat</string>
+    <string name="Intro1Message">De berichtenapp met het <![CDATA[<b>grootste bereik</b>]]> in de hele wereld. <![CDATA[<br/><b>gratis</b>]]> en <![CDATA[<b>veilig</b>]]>.</string>
+
+    <string name="Intro2Headline">Onafhankelijk</string>
+    <string name="Intro2Message"><![CDATA[<b>Geen vereisten</b>]]> van andere computers of diensten. De app gebruikt alleen je mailserver.</string>
+
+    <string name="Intro3Headline">Snel</string>
+    <string name="Intro3Message"><![CDATA[<b>Push-berichten</b>]]> in seconden.<![CDATA[<br/>]]>Snelle interface.</string>
+
+    <string name="Intro4Headline">Krachtig</string>
+    <string name="Intro4Message"><![CDATA[<b>Onbeperkte</b>]]> chats, afbeeldigen, filmpjes, audio berichten en meer. Werkt samen met andere clients.</string>
+
+    <string name="Intro5Headline">Gratis</string>
+    <string name="Intro5Message"><![CDATA[<b>Delta Chat</b>]]> is voor altijd gratis..<![CDATA[<br/>]]>Open source, geen reclame, geen abonnement, geen vendor lock-in.</string>
+
+    <string name="Intro6Headline">Veilig</string>
+    <string name="Intro6Message"><![CDATA[<b>Beveiligd</b>]]> met beproefde algoritmes. Berichten blijven op je server.</string>
+
+    <string name="Intro7Headline">Betrouwbaar</string>
+
     <string name="IntroStartMessaging">Begin met chatten</string>
     <!--plural-->
     <plurals name="Members">
         <item quantity="one">%d leden</item>
         <item quantity="other">%d leden</item>
+    </plurals>
+    <plurals name="Contacts">
+        <item quantity="one">%d contact</item>
+        <item quantity="other">%d contacten</item>
+    </plurals>
+    <plurals name="MeAndMembers">
+        <item quantity="one">Ik en %d lid</item>
+        <item quantity="other">Ik en %d leden</item>
     </plurals>
     <plurals name="NewMessages">
         <item quantity="one">%d nieuw bericht</item>
@@ -220,6 +248,18 @@
     <plurals name="messages">
         <item quantity="one">%d bericht</item>
         <item quantity="other">%d berichten</item>
+    </plurals>
+    <plurals name="AreYouSureDeleteMessages">
+        <item quantity="one">Verwijder %d bericht? Het bericht zal ook van de server worden verwijderd.</item>
+        <item quantity="other">Verwijder %d berichten? De berichten zullen ook van de server worden verwijderd.</item>
+    </plurals>
+    <plurals name="NewMessagesInChats">
+        <item quantity="one">%1$s in %2$d chat</item>
+        <item quantity="other">%1$s in %2$d chats</item>
+    </plurals>
+    <plurals name="Chats">
+        <item quantity="one">%d chat</item>
+        <item quantity="other">%d chats</item>
     </plurals>
     <plurals name="Minutes">
         <item quantity="one">%d minuut</item>
@@ -241,6 +281,10 @@
         <item quantity="one">%d maand</item>
         <item quantity="other">%d maanden</item>
     </plurals>
+    <plurals name="MaxNotifications">
+        <item quantity="one">Hooguit %1$d melding binnen %2$s</item>
+        <item quantity="other">Hooguit %1$d meldingen binnen %2$s</item>
+    </plurals>
     <!--date formatters-->
     <string name="formatterMonthYear">MMMM yyyy</string>
     <string name="formatterMonth">dd MMM</string>
@@ -251,9 +295,77 @@
     <string name="formatterDay24H">HH:mm</string>
     <string name="formatterDay12H">h:mm a</string>
     <string name="formatDateAtTime">%1$s om %2$s</string>
+    <string name="AccountSettings">Accountinstellingen</string>
+    <string name="MyAccount">Mijn account</string>
+    <string name="MyName">Mijn naam</string>
+    <string name="MyNameExplain">Je naam, zoals de ontvangers dit zien. Als je hier geen naam invult zullen de ontvangers alleen je emailadres zien.</string>
+    <string name="Password">Wachtwoord</string>
+    <string name="SmtpPassword">SMTP-wachtwoord</string>
+    <string name="FromAbove">Van hierboven</string>
+    <string name="SmtpLoginname">SMTP-loginnaam</string>
+    <string name="SmtpPort">SMTP-poort</string>
+    <string name="Automatic">Automatisch</string>
+    <string name="ImapServer">IMAP-server</string>
+    <string name="ImapLoginname">IMAP-loginnaam</string>
+    <string name="SmtpServer">SMTP-server</string>
+    <string name="ImapPort">IMAP-poort</string>
+    <string name="InboxHeadline">Inbox</string>
+    <string name="OutboxHeadline">Outbox</string>
+    <string name="MyAccountExplain">Voor bekende email-providers worden instellingen automatisch bepaald.</string>
+    <string name="MyAccountExplain2" >Soms moet <![CDATA[<b>]]>IMAP ingeschakeld worden<![CDATA[</b>]]> in de emailwebsite.\n\nBij problemen, vraag je email-provider of je vrienden om hulp.</string>
+    <string name="AccountNotConfigured">Account niet geconfigureerd</string>
+    <string name="AboutThisProgram">Over Delta Chat</string>
+    <string name="NotSet">Niet ingesteld</string>
     <string name="NewChat">Nieuwe chat</string>
+    <string name="Deaddrop">Contactverzoeken</string>
+    <string name="DeaddropInChatlist">Geef contactverzoeken in chatlijst weer</string>
+    <string name="MuteAlways">Altijd gedempt</string>
+    <string name="AskStartChatWith">Begin een chat met <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>?</string>
+    <string name="DeaddropHint">Klik op het reactiepijltje om een chat te beginnen.</string>
+    <string name="NotYetImplemented">Deze functie is niet beschikbaar of incompleet.</string>
+    <string name="DefaultStatusText">Gestuurd met mijn Delta Chat Messenger: https://delta.chat</string>
+    <string name="Name" >Naam</string>
+    <string name="EmailAddress">Email-adres</string>
+    <string name="CannotDeleteContact">Kan een contact in gebruik niet verwijderen, blokkeer in plaats van dit het contact.</string>
+    <string name="BadEmailAddress">Ongeldig email-adres.</string>
+    <string name="ContactCreated">Contact gemaakt.</string>
+    <string name="ViewProfile">Profiel weergeven</string>
+    <!-- Translators: please use a very short string here, it should not much longer than
+    the string needed for video time+size (0:00, 12,3 Mib) -->
+    <string name="OneMoment">Een moment ...</string>
+    <string name="NoChatsHelp">Stuur berichtjes door op de nieuwe chat knop te drukken rechtsonder op het scherm of druk op de menuknop voor meer opties.</string>
+    <string name="Intro7Message"><![CDATA[<b>Delta Chat</b>]]> is veilig voor het bedrijfsleven, compatibel en gebaseerd op standaarden.</string>
     <string name="InviteMenuEntry">Vrienden uitnodigen</string>
+    <string name="InviteText">Ik gebruik Delta Chat, %1$s, je kan me berichtjes sturen op %2$s</string>
+    <string name="AdvancedSettings">Geavanceerde instellingen</string>
+    <string name="AskResetNotifications" >Herstel alle notificatieinstellingen en geluiden van deze pagina en je contacten en groepen?</string>
+    <string name="AttachFiles">Voeg bestanden toe</string>
+    <string name="ErrGroupNameEmpty">Typ een naam in voor de groep.</string>
+    <string name="MsgNewGroupDraftHint">Schrijf een eerste bericht om anderen te kunnen laten reageren in deze groep.\n\n• Het is oké als niet iedereen Delta Chat gebruikt.\n\n• Het leveren van het eerste bericht kan even duren.</string>
+    <string name="MsgNewGroupDraft">Hallo, ik heb net de groep \"%1$s\" voor ons gemaakt.</string>
+    <string name="MsgGroupNameChanged">Groepsnaam veranderd van \"%1$s\" naar \"%2$s\".</string>
+    <string name="MsgGroupImageChanged">Groepsafbeelding aangepast.</string>
+    <string name="MsgMemberAddedToGroup">Lid %1$s toegevoegd.</string>
+    <string name="MsgMemberRemovedFromToGroup">Lid %1$s verwijderd.</string>
+    <string name="AskAddMemberToGroup"><![CDATA[<b>]]>%1$s<![CDATA[</b>]]> toevoegen aan de groep?</string>
+    <string name="AskRemoveMemberFromGroup"><![CDATA[<b>]]>%1$s<![CDATA[</b>]]> verwijderen uit de groep?</string>
+    <string name="ErrSelfNotInGroup">Je moet een lid van de groep zijn om deze actie uit te voeren.</string>
+    <string name="MsgGroupLeft">Groep verlaten.</string>
+    <string name="NoMessagesHint">Stuur een bericht naar <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>:\n\n• Het is oké als  <![CDATA[<b>]]>%2$s<![CDATA[</b>]]> niet Delta Chat gebruikt.\n\n• Het leveren van het eerste bericht kan even duren.</string>
+    <string name="SendNRcvReadReceipts">Ontvang en stuur retourbevestigingen.</string>
+    <string name="PreferE2EEncryption">Prefereer end-to-end encryptie</string>
+    <string name="E2EManagePrivateKeys">Beheer privésleutels</string>
+    <string name="E2ECompareKeys">Vergelijk sleutels</string>
     <string name="ForwardToTitle">Kies een chat …</string>
+    <string name="SelectContact">Kies een contact</string>
     <string name="DoneHint">Gereed.</string>
+    <string name="FileNotFound">Bestand %1$s niet gevonden.</string>
+    <string name="Error">Fout: %1$s</string>
+    <string name="NoNetwork">Netwerk niet beschikbaar.</string>
+    <string name="Audio">Geluid</string>
+    <string name="PleaseCutVideoToMaxSize">Knip de video af tot een grootte van maximaal %1$s.</string>
+    <string name="PermNotificationTitle">Verbonden met %1$s</string>
+    <string name="PermNotificationText">Wachten op berichten ...</string>
+    <string name="SettingsFor">Instellingen voor %1$s</string>
     <string name="AutoplayGifs">GIFs automatisch afspelen</string>
-</resources>
+    </resources>

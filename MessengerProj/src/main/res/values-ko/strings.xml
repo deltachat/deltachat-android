@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<resources>
+
+
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="AppName">Delta Chat</string>
     <!--chats view-->
     <string name="Settings">설정</string>
     <string name="NewGroup">새 그룹</string>
     <string name="NoResult">결과 없음</string>
     <string name="NoChats">채팅방이 없습니다…</string>
+    <string name="DeleteChat">채팅방 나가기</string>
     <string name="Search">검색</string>
     <string name="MuteNotifications">알림 음소거</string>
     <string name="UnmuteNotifications">음소거 해제</string>
@@ -47,8 +50,9 @@
     <!--notification-->
     <string name="Reply">답장</string>
     <string name="ReplyToGroup">%1$s 그룹에 답장하기</string>
+    <string name="ReplyToContact">%1$s님에게 답장하기</string>
     <!--contacts view-->
-	<string name="NoContacts">대화상대가 없습니다</string>
+    <string name="NoContacts">대화상대가 없습니다</string>
     <!--group create view-->
     <string name="SendMessageTo">메시지 보내기…</string>
     <string name="EnterGroupNamePlaceholder">그룹 이름 입력</string>
@@ -57,6 +61,7 @@
     <string name="Notifications">알림</string>
     <string name="RemoveMember">채널에서 내보내기</string>
     <!--contact info view-->
+    <string name="NewContactTitle">대화상대 추가</string>
     <string name="BlockContact">차단</string>
     <string name="DeleteContact">삭제</string>
     <string name="Info">정보</string>
@@ -162,7 +167,6 @@
     <!--privacy settings-->
     <string name="PrivacySettings">개인정보 및 보안</string>
     <string name="SecurityTitle">보안</string>
-    <!--edit video view-->
     <!--button titles-->
     <string name="Done">완료</string>
     <string name="Open">열기</string>
@@ -199,6 +203,7 @@
     <string name="PermissionNoAudio">Delta Chat이 음성 메시지를 보내기 위하여 마이크에 대한 접근이 필요합니다.</string>
     <string name="PermissionOpenSettings">설정</string>
     <!--Intro view-->
+    <string name="Intro1Headline">Delta Chat</string>
     <string name="IntroStartMessaging">시작하기</string>
     <!--plural-->
     <plurals name="Members">
@@ -241,22 +246,17 @@
     <string name="formatterDay24H">HH:mm</string>
     <string name="formatterDay12H">a h:mm</string>
     <string name="formatDateAtTime">%1$s %2$s</string>
-    <string name="InviteMenuEntry">친구 초대</string>
-    <string name="DeleteChat">채팅방 나가기</string>
-    <string name="DoneHint">성공!</string>
-    <string name="ForwardToTitle">채팅방 선택</string>
-    <string name="AskAddMemberToGroup">%1$s 님을 그룹에 추가할까요?</string>
-    <string name="NewContactTitle">대화상대 추가</string>
-    <string name="ReplyToContact">%1$s님에게 답장하기</string>
-    <string name="AdvancedSettings">고급 설정</string>
+    <string name="AccountSettings">계정 설정</string>
     <string name="MyAccount">계정</string>
     <string name="MyName">내 이름</string>
-    <string name="AccountSettings">계정 설정</string>
     <string name="Password">암호</string>
-    <string name="Deaddrop">사서함</string>
     <string name="NewChat">채팅 시작</string>
+    <string name="Deaddrop">사서함</string>
+    <string name="InviteMenuEntry">친구 초대</string>
+    <string name="AdvancedSettings">고급 설정</string>
+    <string name="AskAddMemberToGroup">%1$s 님을 그룹에 추가할까요?</string>
+    <string name="ForwardToTitle">채팅방 선택</string>
+    <string name="DoneHint">성공!</string>
     <string name="Audio">음악</string>
     <string name="AutoplayGifs">GIF 자동재생</string>
-
-</resources>
-
+    </resources>

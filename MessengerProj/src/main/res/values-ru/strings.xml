@@ -115,7 +115,7 @@
     <!--passcode view-->
     <string name="Passcode">Код доступа</string>
     <string name="ChangePasscode">Изменить код доступа</string>
-    <string name="ChangePasscodeInfo">Когда вы установите дополнительный код доступа, на странице чатов появится значок блокировки. Нажмите на нём, чтобы заблокировать приложение.\n\nПримечание: если вы забудете код доступа, вам нужно будет удалить и переустановить приложение.</string>
+    <string name="ChangePasscodeInfo">Когда вы установите дополнительный код доступа, на странице чатов появится значок блокировки. Нажмите на него, чтобы заблокировать приложение.\n\nПримечание: если вы забудете код доступа, вам нужно будет удалить и переустановить приложение.</string>
     <string name="PasscodePIN">ПИН</string>
     <string name="PasscodePassword">Пароль</string>
     <string name="EnterCurrentPasscode">Введите текущий код доступа</string>
@@ -317,8 +317,8 @@
     <string name="formatterMonthYear">MMMM yyyy</string>
     <string name="formatterMonth">MMM dd</string>
     <string name="formatterYear">dd.MM.yyyy</string>
-    <string name="chatDate">EEE, MMMM d</string>
-    <string name="chatFullDate">EEE, MMMM d, yyyy</string>
+    <string name="chatDate">EEE,  d MMMM</string>
+    <string name="chatFullDate">EEE, d MMMM, yyyy</string>
     <string name="formatterWeek">EEE</string>
     <string name="formatterDay24H">HH:mm</string>
     <string name="formatterDay12H">h:mm a</string>
@@ -411,7 +411,6 @@
     <string name="ReadReceipt">Уведомление о доставке</string>
     <string name="NameAndStatus">Имя и статус</string>
     <string name="MyStatus">Мой статус</string>
-    <string name="MyStatusExplain">Статус указан в вашем профиле и в нижней части письма эл.почты.</string>
     <string name="MsgGroupImageDeleted">Изображение группы удалено.</string>
     <string name="AskDeleteGroupImage">Вы действительно хотите удалить изображение группы?\n\nИзменение вступит в силу на всех устройствах участников группы.</string>
     <string name="ExportImportHeader">Экспорт и импорт</string>
@@ -426,4 +425,4 @@
     <string name="ExportPrivateKeys">Экспорт закрытых ключей</string>
     <string name="ImportPrivateKeys">Импорт закрытых ключей</string>
     <string name="ImportPrivateKeysAsk2">Импорт закрытых ключей из <![CDATA[<i>]]>%1$s<![CDATA[</i>]]>?\n\n• Существующие закрытые ключи удалены не будут\n\n• Последний импортированный ключ будет использован по умолчанию.</string>
-</resources>
+    </resources>

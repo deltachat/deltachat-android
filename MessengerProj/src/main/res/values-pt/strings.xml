@@ -378,6 +378,7 @@
     <string name="EncrinfoNoE2EExplain">A criptografia ponta-a-ponta será ativada automaticamente tão logo o seu contato utilize algum aplicativo que tenha suporte ao Autocrypt, como o Delta Chat.</string>
     <string name="EncrinfoFingerprints">Impressões</string>
     <string name="Backup">Becape</string>
+    <string name="ImportBackupExplain2">Para importar um becape, copie-o na pasta <![CDATA[<i>]]>%1$s<![CDATA[</i>]]> e reinstale o aplicativo.</string>
     <string name="ReadReceiptMailBody">Confirmação de recebimento da mensagem \"%1$s\". \n\n Esta confirmação somente assegura que a mensagem foi exibida no aparelho do destinatário, mas não há garantia de que ele tenha lido o seu conteúdo.</string>
     <string name="ReadReceipt">Confirmação de recebimento</string>
     <string name="NameAndStatus">Nome e status</string>
@@ -385,4 +386,16 @@
     <string name="MyStatusExplain">Seu status será exibido no seu perfil e na assinatura de seus e-mails.</string>
     <string name="MsgGroupImageDeleted">Imagem do grupo apagada.</string>
     <string name="AskDeleteGroupImage">Tem certeza que quer apagar a imagem do grupo?\n\nEsta ação repercutirá nos dispositivos dos outros membros do grupo.</string>
+    <string name="ExportImportHeader">Exportar e importar</string>
+    <string name="ImportExportExplain">Os arquivos exportados contêm sua chave privada! Mantenha-os num local seguro e os apague assim que possível.</string>
+    <string name="EnterPasswordToContinue">Insira a senha para %1$s para prosseguir:</string>
+    <string name="IncorrectPassword">Senha errada.</string>
+    <string name="ImportBackupAsk">O Delta Chat achou um becape em <![CDATA[<i>]]>%1$s<![CDATA[</i>]]>.\n\nQuer importá-lo e usar seus dados e configurações?</string>
+    <string name="ImportBackup">Importar becape</string>
+    <string name="NoBackupFound">Becape para importação não localizado.\n\nCopie o becape para <![CDATA[<i>]]>%1$s<![CDATA[</i>]]> e tente de novo. Você pode tocar em \"Começar a conversar\" para prosseguir normalmente.</string>
+    <string name="FilesSuccessfullyExported">Arquivos exportados para <![CDATA[<i>]]>%1$s<![CDATA[</i>]]>.</string>
+    <string name="ExportBackup">Exportar becape</string>
+    <string name="ExportPrivateKeys">Exportar chaves privadas</string>
+    <string name="ImportPrivateKeys">Importar chaves privadas</string>
+    <string name="ImportPrivateKeysAsk2">Importar chaves privadas de <![CDATA[<i>]]>%1$s<![CDATA[</i>]]>?\n\n• As chaves existentes não serão apagadas\n\n• A última chave importada será usada como padrão</string>
     </resources>

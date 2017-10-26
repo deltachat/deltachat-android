@@ -378,17 +378,26 @@
     <string name="EncrinfoNoE2EExplain">Die Ende-zu-Ende-Verschlüsselung wird automatisch aktiviert, sobald der Kontakt Delta Chat oder eine andere Autocrypt-kompatible App verwendet.</string>
     <string name="EncrinfoFingerprints">Fingerabdrücke</string>
     <string name="Backup">Backup</string>
+    <string name="ImportBackupExplain2">Um ein Backup zu importieren, kopieren Sie es nach <![CDATA[<i>]]>%1$s<![CDATA[</i>]]> und installieren Sie die App neu.</string>
     <string name="ReadReceiptMailBody">Dies ist eine Empfangsbestätigung für die Nachricht \"%1$s\".\n\nDiese Empfangsbestätigung sagt nur aus, dass die Nachricht am Gerät des Empfängers angezeigt wurde. Es gibt keine Garantie, dass der Empfänger die Nachricht gelesen hat.</string>
     <string name="ReadReceipt">Empfangsbestätigung</string>
     <string name="NameAndStatus">Name und Status</string>
     <string name="MyStatus">Mein Status</string>
-    <string name="MyStatusExplain">Der Status wird im Profil und in der E-Mail-Fußzeile angezeigt</string>
+    <string name="MyStatusExplain">Der Status wird z.B. in der E-Mail-Fußzeile angezeigt</string>
     <string name="MsgGroupImageDeleted">Gruppenbild gelöscht.</string>
     <string name="AskDeleteGroupImage">Soll das Gruppenbild für alle Gruppenmitglieder gelöscht werden?</string>
     <string name="ExportImportHeader">Export und Import</string>
+    <string name="ImportExportExplain">Exportierte Dateien enthalten private Schlüssel! Bewahren Sie die Dateien an einem sicheren Ort und oder löschen Sie sie, sobald sie nicht mehr benötigt werden.</string>
+    <string name="EnterPasswordToContinue">Um fortzufahren, geben Sie das Passwort für %1$s ein:</string>
     <string name="IncorrectPassword">Falsches Passwort.</string>
+    <string name="ImportBackupAsk">Delta Chat hat unter <![CDATA[<i>]]>%1$s<![CDATA[</i>]]> ein Backup gefunden.\n\nMöchten Sie das Backup importieren und alle Daten und Einstellungen aus diesem Backup verwenden?</string>
     <string name="ImportBackup">Backup importieren</string>
+    <string name="NoBackupFound">Kein Backup gefunden.\n\nKopieren Sie das Backup nach <![CDATA[<i>]]>%1$s<![CDATA[</i>]]> und versuchen Sie es erneut. Alternativ können Sie auf \"Jetzt beginnen\" klicken um einen normalen Einrichtungsvorgang zu starten.</string>
+    <string name="FilesSuccessfullyExported">Dateien wurden erfolgreich nach <![CDATA[<i>]]>%1$s<![CDATA[</i>]]> exportiert.</string>
     <string name="ExportBackup">Backup exportieren</string>
     <string name="ExportPrivateKeys">Private Schlüssel exportieren</string>
     <string name="ImportPrivateKeys">Private Schlüssel importieren</string>
+    <string name="ImportPrivateKeysAsk2">Private Schlüssel aus <![CDATA[<i>]]>%1$s<![CDATA[</i>]]> importieren?\n\n• Bereits vorhandene private Schlüssel bleiben erhalten\n\n• Der zuletzt importierte private Schlüssel wird der Standardschlüssel\n\nFortfahren?</string>
+    <string name="NoRecentEmoji">Hier werden die zuletzt verwendeten Emoji angezeigt.</string>
+    <string name="E2eeOffBecauseOfUser">Um die Ende-zu-Ende-Verschlüsselung zu aktivieren, aktivieren Sie die entsprechende Option in den Einstellungen. </string>
     </resources>

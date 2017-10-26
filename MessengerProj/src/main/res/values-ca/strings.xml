@@ -41,6 +41,7 @@
     <string name="From">Des de</string>
     <string name="NoRecent">Cap recent</string>
     <string name="TypeMessage">Missatge</string>
+    <string name="SlideToCancel">DESPLAÇA PER CANCEL·LAR</string>
     <string name="SaveToDownloads">Guarda a descàrregues</string>
     <string name="SaveToMusic">Guarda a música</string>
     <string name="Share">Comparteix</string>
@@ -107,6 +108,7 @@
     <string name="KeepMediaForever">Per sempre</string>
     <string name="PasscodePIN">PIN</string>
     <string name="PasscodePassword">Contrasenya</string>
+    <string name="EnterCurrentPasscode">Introdueix la teva contrasenya actual</string>
     <!--photo gallery view-->
     <string name="SaveToGallery">Guarda a la galeria</string>
     <string name="Of">%1$d de %2$d</string>
@@ -117,14 +119,17 @@
     <string name="NoVideo">Encara no hi ha cap vídeo</string>
     <string name="CropImage">Talla la imatge</string>
     <string name="EditImage">Modifica la imatge</string>
+    <string name="Highlights">Destacats</string>
     <string name="Contrast">Contrast</string>
     <string name="Exposure">Exposició</string>
     <string name="Saturation">Saturació</string>
+    <string name="TintHighlights">DESTACATS</string>
     <string name="Curves">Corbes</string>
     <string name="CurvesAll">TOTS</string>
     <string name="CurvesRed">VERMELL</string>
     <string name="CurvesGreen">VERD</string>
     <string name="CurvesBlue">BLAU</string>
+    <string name="BlurOff">Desactivat</string>
     <string name="BlurLinear">Lineal</string>
     <string name="BlurRadial">Radial</string>
     <string name="DiscardChanges">Descartes els canvis?</string>
@@ -142,6 +147,7 @@
     <string name="Cancel">Cancel·la</string>
     <string name="Edit">Modifica</string>
     <string name="Send">Envia</string>
+    <string name="CopyToClipboard">Copia al porta-retalls</string>
     <string name="Delete">Esborra</string>
     <string name="FromCamera">Des de la càmera</string>
     <string name="FromGalley">Des de la galeria</string>
@@ -155,4 +161,48 @@
     <string name="AttachDocument">Fitxer</string>
     <string name="AttachVoiceMessage">Missatge de veu</string>
     <string name="FromSelf">Jo</string>
+    <string name="ContactAlreadyInGroup">Aquesta contacte ja pertany a aquest grup</string>
+    <string name="SendMessagesTo">Envia els missatges a <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>?</string>
+    <string name="AreYouSureDeleteThisChat">Esborres aquest xat? El xat ja no es mostrarà al llistat de xats, però els missatges romandran al servidor.</string>
+    <string name="AreYouSureBlockContact">Estàs segur que vols bloquejar aquest contacte?</string>
+    <string name="AreYouSureDeleteContact">Estàs segur que vols esborrar aquest contacte?</string>
+    <!--permissions-->
+    <string name="PermissionContacts">Delta Chat necessita accedir als teus contactes perquè puguis connectar amb els teus amics de de qualsevol dels teus dispositius.</string>
+    <string name="PermissionStorage">Delta Chat necessita accedir al teu emmagatzematge per poder enviar i guardar fotos, vídeos, música i altres continguts audiovisuals.</string>
+    <!--Intro view-->
+    <string name="Intro1Headline">Delta Chat</string>
+    <string name="Intro2Headline">Independent</string>
+    <string name="Intro3Headline">Ràpid</string>
+    <string name="Intro4Headline">Potent</string>
+    <string name="Intro5Headline">De franc</string>
+    <string name="Intro5Message"><![CDATA[<b>Delta Chat</b>]]> serà de franc sempre.<![CDATA[<br/>]]>Codi obert. Sense publicitat. Sense subscripció. Sense exclusivitat de proveïdor.</string>
+
+    <string name="Intro6Headline">Segur</string>
+    <string name="IntroStartMessaging">Comença a xatejar</string>
+    <!--plural-->
+    <plurals name="Members">
+        <item quantity="one">%d membre</item>
+        <item quantity="other">%d membres</item>
+    </plurals>
+    <plurals name="Contacts">
+        <item quantity="one">%d contacte</item>
+        <item quantity="other">%d contactes</item>
+    </plurals>
+    <plurals name="MeAndMembers">
+        <item quantity="one">Jo i %d membre</item>
+        <item quantity="other">Jo i %d membres</item>
+    </plurals>
+    <plurals name="NewMessages">
+        <item quantity="one">%d missatge nou</item>
+        <item quantity="other">%d missatges nous</item>
+    </plurals>
+    <plurals name="messages">
+        <item quantity="one">%d missatge</item>
+        <item quantity="other">%d missatges</item>
+    </plurals>
+    <plurals name="Months">
+        <item quantity="one">%d mes</item>
+        <item quantity="other">%d mesos</item>
+    </plurals>
+    <string name="Password">Contrasenya</string>
     </resources>

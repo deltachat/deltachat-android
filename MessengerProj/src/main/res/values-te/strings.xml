@@ -202,4 +202,7 @@
     <!--permissions-->
     <string name="PermissionContacts">డెల్టా చాట్ మీ స్నేహితులతో ఎల్లప్పుడూ కనెక్ట్ అయి ఉండడానికి మీ పరిచాయాల యాక్సస్ కు అనుమతించాలి. </string>
     <string name="PermissionStorage">డెల్టా చాట్  లొ మీరు వీడియోలు, చిత్రాలు, సంగీతం, మరియు వేరే మీడియా  పంపడానికి, భద్రపరుచుకోడానికి మీ డివైజ్ స్టొరేజ్ యాక్సస్ కావాలి.</string>
+    <!--Intro view-->
+    <string name="Intro1Headline">డెల్టా చాట్</string>
+    <string name="Password">పాస్వర్డ్</string>
     </resources>

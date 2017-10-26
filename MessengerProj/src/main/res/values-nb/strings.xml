@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!--chats view-->
+    <string name="Settings">Innstillinger</string>
+    <string name="NewGroup">Ny gruppe</string>
+    <string name="NoResult">Ingen resultater.</string>
+    <string name="NoChats">Ingen sludringer enda.</string>
+    <string name="DeleteChat">Slett sludring</string>
+    <string name="SelectChat">Velg sludring…</string>
+    <string name="Search">Søk</string>
+    <string name="Draft">Kladd</string>
+    <!--audio view-->
+    <string name="NoAudio">Legg til filer i musikkbiblioteket på din enhet for å se dem her.</string>
+    <string name="AttachMusic">Musikk</string>
+    <!--documents view-->
+    <string name="SelectFile">Velg fil</string>
+    <string name="ErrorHint">Ukjent feil</string>
+    <string name="AccessError">Tilgangsfeil</string>
+    <string name="NoFiles">Ingen filer enda…</string>
+    <string name="NotMounted">Lagring ikke montert</string>
+    <string name="UsbActive">USB-overføring aktiv</string>
+    <string name="InternalStorage">Intern lagring</string>
+    <string name="ExternalStorage">Ekstern lagring</string>
+    <string name="SdCard">SD-kort</string>
+    <string name="Folder">Mappe</string>
+    <!--chat view-->
+    <string name="ChatGallery">Galleri</string>
+    <string name="ChatCamera">Kamera</string>
+    <string name="NoMessages">Ingen meldinger.</string>
+    <string name="ForwardedMessage">Videresendt melding</string>
+    <string name="From">Fra</string>
+    <string name="NoRecent">Ingen nylige</string>
+    <string name="TypeMessage">Melding</string>
+    <string name="SlideToCancel">DRA FOR Å AVBRYTE</string>
+    <string name="Share">Del</string>
+    <string name="SendItems">Send %1$s</string>
+    <string name="ClearRecentEmoji">Slett nylige emoji-er?</string>
+    <string name="AddShortcut">Legg til miniprogram på hjemmeskjermen?</string>
+    <string name="ShortcutAdded">Miniprogram lagt til på hjemmeskjermen</string>
+    <!--notification-->
+    <string name="Reply">Svar</string>
+    <string name="ReplyToGroup">Svar til %1$s</string>
+    <string name="ReplyToContact">Svar til %1$s</string>
+    <!--contacts view-->
+    <string name="NoContacts">Ingen kontakter enda.</string>
+    <!--group create view-->
+    <string name="SendMessageTo">Send melding til…</string>
+    <string name="EnterGroupNamePlaceholder">Skriv inn gruppenavn</string>
+    <!--group info view-->
+    <string name="AddMember">Legg til medlem</string>
+    <string name="Notifications">Merknader</string>
+    <string name="RemoveMember">Fjern medlem</string>
+    <!--contact info view-->
+    <string name="NewContactTitle">Ny kontakt</string>
+    <string name="BlockContact">Blokker kontakt</string>
+    <string name="DeleteContact">Slett kontakt</string>
+    <string name="Info">Info</string>
+    <string name="UnblockContact">Fjern blokkering av kontakt</string>
+    <string name="NoBlocked">Ingen blokkerte kontakter enda</string>
+    <string name="DefaultForNormalMessages">Normale meldinger</string>
+    <string name="MessagePreview">Meldingsforhåndsvisning</string>
+    <string name="DefaultForGroupMessages">Gruppemeldinger</string>
+    <string name="Sound">Lyd</string>
+    <string name="Vibrate">Vibrer</string>
+    <string name="ResetAllNotifications">Tilbakestill alle merknader</string>
+    <string name="NotificationsAndSounds">Merknader og lyder</string>
+    <string name="BlockedContacts">Blokkerte kontakter</string>
+    <string name="Default">Forvalg</string>
+    <string name="OnlyIfSilent">Bare hvis lydløs</string>
+    <string name="Help">Hjelp</string>
+    <string name="Enabled">På</string>
+    <string name="Disabled">Av</string>
+    <string name="LedColor">LED-farge</string>
+    <string name="BadgeNumber">Vis antall i ikon hvis mulig</string>
+    <string name="Short">Kort</string>
+    <string name="Long">Lang</string>
+    <string name="EditName">Rediger navn</string>
+    <string name="NotificationsPriority">Vis</string>
+    <string name="NotificationsPriorityDefault">Normal prioritet</string>
+    <string name="NotificationsPriorityHigh">Høy prioritet</string>
+    <string name="NotificationsPriorityMax">Høyeste prioritet</string>
+    <string name="RepeatNotifications">Gjenta merknader</string>
+    <string name="SmartNotificationsTimes">tider</string>
+    <string name="SmartNotificationsWithin">innen</string>
+    <string name="SmartNotificationsMinutes">minutter</string>
+    <string name="DirectShare">Direkte deling</string>
+    <string name="DirectShareInfo">Vis nylige sludringer i delingsmeny</string>
+    <!--cache view-->
+    <string name="CacheSettings">Lagring</string>
+    <string name="KeepMedia">Behold media</string>
+    <string name="KeepMediaForever">For alltid</string>
+    <string name="PasscodePIN">PIN</string>
+    <string name="PasscodePassword">Passord</string>
+    <string name="UnlockFingerprint">Lås opp med fingeravtrykk</string>
+    <string name="FingerprintInfo">Bekreft fingeravtrykk for å fortsette</string>
+    <string name="FingerprintNotRecognized">Fingeravtrykket ble ikke gjenkjent. Prøv igjen</string>
+    <string name="Of">%1$d av %2$d</string>
+    <string name="Gallery">Galleri</string>
+    <string name="AllPhotos">Alle bilder</string>
+    <string name="AllVideo">Alle videoer</string>
+    <string name="NoPhotos">Ingen bilder enda</string>
+    <string name="NoVideo">Ingen videoer enda</string>
+    <string name="CropImage">Beskjær bilde</string>
+    <string name="EditImage">Rediger bilde</string>
+    <string name="Enhance">Forbedre</string>
+    <string name="Contrast">Kontrast</string>
+    <string name="CurvesAll">ALLE</string>
+    <string name="CurvesRed">RØD</string>
+    <string name="CurvesGreen">GRØNN</string>
+    <string name="CurvesBlue">BLÅ</string>
+    <string name="BlurOff">Av</string>
+    <string name="DiscardChanges">Forkast endringer?</string>
+    <string name="ClearButton">Tøm</string>
+    <string name="PickerPhotos">Bilder</string>
+    <string name="PickerVideo">Video</string>
+    <!--privacy settings-->
+    <string name="PrivacySettings">Personvern og sikkerhet</string>
+    <string name="SecurityTitle">Sikkerhet</string>
+    <!--edit video view-->
+    <string name="SendVideo">Send video</string>
+    <!--button titles-->
+    <string name="Done">Ferdig</string>
+    <string name="Open">Åpne</string>
+    <string name="Cancel">Avbryt</string>
+    <string name="Edit">Rediger</string>
+    <string name="Send">Send</string>
+    <string name="CopyToClipboard">Kopier til utklippstavle</string>
+    <string name="Delete">Slett</string>
+    <string name="Forward">Videresend</string>
+    <string name="FromCamera">Fra kamera</string>
+    <string name="FromGalley">Fra galleri</string>
+    <string name="OK">OK</string>
+    <string name="Crop">BESKJÆR</string>
+    <!--messages-->
+    <string name="AttachPhoto">Bilde</string>
+    <string name="AttachVideo">Video</string>
+    <string name="AttachGif">GIF</string>
+    <string name="AttachContact">Kontakt</string>
+    <string name="AttachDocument">Fil</string>
+    <!--Alert messages-->
+    <string name="NoHandleAppInstalled">Du har ingen programmer som kan håndtere \'%1$s\', installer et for å fortsette</string>
+    <string name="ContactAlreadyInGroup">Denne kontakten er allerede i denne gruppen.</string>
+    <string name="ForwardMessagesTo">Videresend valgte meldinger til <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>?</string>
+    <string name="SendMessagesTo">Send meldinger til <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>?</string>
+    <string name="AreYouSureBlockContact">Er du sikker på at du vil blokkere denne kontakten?</string>
+    <string name="AreYouSureDeleteContact">Er du sikker på at du ønsker å slette denne kontakten?</string>
+    <string name="PermissionOpenSettings">Tilpass innstillinger</string>
+    <string name="Intro1Message">Meldingstjenesten med <![CDATA[<b>størst rekkevidde</b>]]> i verden.<![CDATA[<br/><b>Gratis</b>]]> og <![CDATA[<b>trygt</b>]]>.</string>
+
+    <string name="Intro2Headline">Uavhengig</string>
+    <string name="Intro3Headline">Rask</string>
+    <string name="Intro4Headline">Kraftig</string>
+    <string name="Intro5Headline">Ledig</string>
+    <string name="Intro6Headline">Trygt</string>
+    <string name="Intro6Message"><![CDATA[<b>Kryptert</b>]]> med alle vanlige alle vanlige algoritmer. Meldingene forblir på tjenerne.</string>
+
+    <string name="Intro7Headline">Pålitelig</string>
+
+    <string name="IntroStartMessaging">Start meldingsutveksling</string>
+    <plurals name="Contacts">
+        <item quantity="one">%d kontakt</item>
+        <item quantity="other">%d kontakter</item>
+    </plurals>
+    <!--date formatters-->
+    <string name="formatterMonthYear">MMMM yyyy</string>
+    <string name="formatterMonth">dd MMM</string>
+    <string name="formatterYear">dd.MM.yyyy</string>
+    <string name="AccountSettings">Kontoinnstillinger</string>
+    <string name="MyAccount">Min konto</string>
+    <string name="MyName">Mitt navn</string>
+    <string name="MyNameExplain">Ditt navn, som vist til mottakere. Hvis du ikke skriver inn noe navn her, vil mottakerne bare få e-postadressen din.</string>
+    <string name="Password">Passord</string>
+    <string name="SmtpPassword">SMTP-passord</string>
+    <string name="FromAbove">Ovenfra</string>
+    <string name="SmtpPort">SMTP-port</string>
+    <string name="Automatic">Automatisk</string>
+    <string name="ImapServer">IMAP-tjener</string>
+    <string name="SmtpServer">SMTP-tjener</string>
+    <string name="ImapPort">IMAP-port</string>
+    <string name="InboxHeadline">Innboks</string>
+    <string name="OutboxHeadline">Utboks</string>
+    <string name="MyAccountExplain">For kjente e-posttilbydere blir ytterligere innstillinger bestemt automatisk.</string>
+    <string name="MyAccountExplain2" >Noen ganger <![CDATA[<b>]]>må IMAP skrus på<![CDATA[</b>]]> i vev-e-postgrenseflaten.\n\nVed problemer, spør din e-posttilbyder eller dine venner.</string>
+    <string name="AccountNotConfigured">Konto ikke satt opp</string>
+    <string name="NewChat">Ny sludring</string>
+    <string name="Deaddrop">Kontaktforespørsler</string>
+    <string name="NotYetImplemented">Denne funksjonen er ikke tilgjengelig eller ufullstendig.</string>
+    <string name="Name" >Navn</string>
+    <string name="EmailAddress">E-postadresse</string>
+    <string name="CannotDeleteContact">Kan ikke slette kontakter i bruk, blokker kontakt istedenfor.</string>
+    <string name="BadEmailAddress">Feilaktig e-postadresse.</string>
+    <string name="ContactCreated">Kontakt opprettet.</string>
+    <string name="ViewProfile">Vis profil</string>
+    <!-- Translators: please use a very short string here, it should not much longer than
+    the string needed for video time+size (0:00, 12,3 Mib) -->
+    <string name="OneMoment">Et øyeblikk…</string>
+    <string name="InviteMenuEntry">Send invitasjoner</string>
+    <string name="AdvancedSettings">Avanserte innstillinger</string>
+    <string name="AttachFiles">Legg ved filer</string>
+    <string name="ErrGroupNameEmpty">Skriv inn et navn for gruppen.</string>
+    <string name="MsgGroupImageChanged">Gruppebilde endret.</string>
+    <string name="AskAddMemberToGroup">Legg til <![CDATA[<b>]]>%1$s<![CDATA[</b>]]> i gruppen?</string>
+    <string name="AskRemoveMemberFromGroup">Fjern <![CDATA[<b>]]>%1$s<![CDATA[</b>]]> fra gruppen?</string>
+    <string name="ErrSelfNotInGroup">Du må være medlem av gruppen for å utføre denne handlingen.</string>
+    <string name="SendNRcvReadReceipts">Motta og send meldingskvitteringer</string>
+    <string name="PreferE2EEncryption">Foretrekk ende-til-ende -kryptering</string>
+    <string name="E2EManagePrivateKeys">Behandle private nøkler</string>
+    <string name="E2ECompareKeys">Sammenlign nøkler</string>
+    <string name="ForwardToTitle">Videresend til…</string>
+    <string name="SelectContact">Velg en kontakt</string>
+    <string name="DoneHint">Ferdig.</string>
+    <string name="FileNotFound">Filen %1$s ble ikke funnet.</string>
+    <string name="Error">Feil: %1$s</string>
+    <string name="NoNetwork">Nettverk utilgjengelig.</string>
+    <string name="Audio">Lyd</string>
+    <string name="PermNotificationTitle">Tilkoblet %1$s</string>
+    <string name="PermNotificationText">Venter på meldinger…</string>
+    <string name="SettingsFor">Innstillinger for %1$s</string>
+    <string name="AutoplayGifs">Spill av GIF-filer automatisk</string>
+    <string name="EncryptedMessage">Kryptert melding</string>
+    <string name="Encryption">Kryptering</string>
+    <string name="EncrinfoE2E">Ende-til-ende -kryptering påskrudd.</string>
+    <string name="EncrinfoE2EExplain">Hvis alle fingeravtrykkene stemmer overens på den andre enheten, er tilkoblingen trygg.</string>
+    <string name="EncrinfoTransport">Transport-kryptering ihvertfall opptil min tjener.</string>
+    <string name="EncrinfoNone">Ingen kryptering på min tjener.</string>
+    <string name="EncrinfoFingerprints">Fingeravtrykk</string>
+    <string name="Backup">Sikkerhetskopi</string>
+    <string name="ImportBackupExplain2">For å importere en sikkerhetskopi, importer den til <![CDATA[<i>]]>%1$s<![CDATA[</i>]]> og reinstaller programmet.</string>
+    <string name="NameAndStatus">Navn og status</string>
+    <string name="MyStatus">Min status</string>
+    <string name="MsgGroupImageDeleted">Gruppebilde slettet.</string>
+    <string name="AskDeleteGroupImage">Er du sikker på at du vil slette dette gruppebildet?\n\nDette vil ha innvirkning på alle enhetene tilhørende gruppemedlemmene.</string>
+    <string name="ExportImportHeader">Eksport og import</string>
+    <string name="EnterPasswordToContinue">Skriv inn passordet for %1$s for å fortsette:</string>
+    <string name="ImportBackup">Importer sikkerhetskopi</string>
+    <string name="FilesSuccessfullyExported">Filer eksporter til <![CDATA[<i>]]>%1$s<![CDATA[</i>]]>.</string>
+    <string name="ExportBackup">Eksporter sikkerhetskopi</string>
+    <string name="ExportPrivateKeys">Eksporter private nøkler</string>
+    <string name="ImportPrivateKeys">Importer private nøkler</string>
+    <string name="ImportPrivateKeysAsk2">Importer private nøkler fra <![CDATA[<i>]]>%1$s<![CDATA[</i>]]>?\n\n• Eksisterende private nøkler blir ikke slettet\n\n• Den sist importerte nøkkelen vil bli brukt som ny forvalgt nøkkel</string>
+    <string name="NoRecentEmoji">Nylig brukte emoji-er vil bli vist her.</string>
+    </resources>

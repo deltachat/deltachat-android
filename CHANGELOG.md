@@ -6,6 +6,9 @@
 * Do not show the padlock if end-to-end-encryption is disabled by the user
 * Add copy-to-clipboard function for "About / Info"
 * Show messages only for explicitly wanted chats
+* Add Norwegian Bokmål translation
+* Add Tamil translation
+* Update Catalan, German, French, Italian, Korean, Dutch, Polish, Portuguese, Russian, Telugu and  Ukrainian translations
 
 ## v0.9.6
 2017-10-18

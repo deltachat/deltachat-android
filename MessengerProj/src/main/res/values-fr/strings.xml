@@ -10,14 +10,14 @@
     <string name="NoResult">Aucun résultat.</string>
     <string name="NoChats">Aucune conversation.</string>
     <string name="DeleteChat">Supprimer la conversation</string>
-    <string name="SelectChat">Selectionner la conversation…</string>
+    <string name="SelectChat">Sélectionner la conversation…</string>
     <string name="Search">Rechercher</string>
     <string name="MuteNotifications">Désactiver les notifications</string>
     <string name="MuteFor">Silencieux pendant %1$s</string>
     <string name="UnmuteNotifications">Activer les notifications</string>
     <string name="Draft">Brouillons</string>
     <!--audio view-->
-    <string name="NoAudio">Veuillez ajouter des fichiers dans votre bibliotèque musicale pour les voir ici.</string>
+    <string name="NoAudio">Veuillez ajouter des fichiers dans votre bibliothèque musicale pour les voir ici.</string>
     <string name="AttachMusic">Musique</string>
     <!--documents view-->
     <string name="SelectFile">Sélectionner le fichier</string>
@@ -34,7 +34,7 @@
     <string name="Folder">Dossier</string>
     <string name="GalleryInfo">Pour envoyer des images sans compression</string>
     <!--chat view-->
-    <string name="ChatGallery">Gallerie</string>
+    <string name="ChatGallery">Galerie</string>
     <string name="ChatCamera">Appareil photo</string>
     <string name="NoMessages">Aucun message.</string>
     <string name="ForwardedMessage">Message transmis</string>
@@ -46,7 +46,7 @@
     <string name="SaveToMusic">Enregistrer dans Musique</string>
     <string name="Share">Partager</string>
     <string name="SendItems">Envoyer %1$s</string>
-    <string name="ClearRecentEmoji">Vider les emojis récents ?</string>
+    <string name="ClearRecentEmoji">Vider les émojis récents ?</string>
     <string name="AddShortcut">Ajouter le widget à l\'écran d\'accueil</string>
     <string name="ShortcutAdded">Widget ajouté à l\'écran d\'accueil</string>
     <!--notification-->
@@ -80,7 +80,7 @@
     <string name="ResetAllNotifications">Réinitialiser les notifications</string>
     <string name="NotificationsAndSounds">Notifications et sons</string>
     <string name="BlockedContacts">Contacts bloqués</string>
-    <string name="Default">Defaut</string>
+    <string name="Default">Défaut</string>
     <string name="OnlyIfSilent">Seulement si silencieux</string>
     <string name="ChatBackground">Arrière-plan des conversations</string>
     <string name="SendByEnter">Envoyer avec "Entrée"</string>
@@ -168,7 +168,7 @@
     <string name="PickerVideo">Vidéo</string>
     <!--privacy settings-->
     <string name="PrivacySettings">Vie privée et sécurité</string>
-    <string name="SecurityTitle">Securité</string>
+    <string name="SecurityTitle">Sécurité</string>
     <!--edit video view-->
     <string name="SendVideo">Envoyer la vidéo</string>
     <!--button titles-->
@@ -301,7 +301,7 @@
     <string name="MyNameExplain">Votre nom présenté aux destinataires. Si vous ne renseignez aucun nom ici, les destinataires verront uniquement votre adresse e-mail.</string>
     <string name="Password">Mot de passe</string>
     <string name="SmtpPassword">Mot de passe SMTP</string>
-    <string name="FromAbove">Le même qu\'au dessus</string>
+    <string name="FromAbove">Le même qu\'au-dessus</string>
     <string name="SmtpLoginname">Identifiant SMTP</string>
     <string name="SmtpPort">Port SMTP</string>
     <string name="Automatic">Automatique</string>
@@ -309,16 +309,16 @@
     <string name="ImapLoginname">Identifiant IMAP</string>
     <string name="SmtpServer">Serveur SMTP</string>
     <string name="ImapPort">Port IMAP</string>
-    <string name="InboxHeadline">Boîte de reception</string>
+    <string name="InboxHeadline">Boîte de réception</string>
     <string name="OutboxHeadline">Boîte d\'envoi</string>
     <string name="MyAccountExplain">Pour les fournisseurs e-mails connus, les paramètres suivants seront déterminés automatiquement.</string>
-    <string name="MyAccountExplain2" >Parfois, les protocoles IMAP/SMTP doivent êtres activés depuis l\'interface web.\n\nSi vous rencontrez des problème, demandez à votre fournisseur ou à vos amis.</string>
+    <string name="MyAccountExplain2" >Parfois, les protocoles IMAP/SMTP doivent être activés depuis l\'interface web.\n\nSi vous rencontrez des problème, demandez à votre fournisseur ou à vos amis.</string>
     <string name="AccountNotConfigured">Compte non configuré</string>
     <string name="AboutThisProgram">À propos Delta Chat</string>
     <string name="NotSet">Non défini</string>
     <string name="NewChat">Nouvelle conversation</string>
     <string name="Deaddrop">Demandes de contact</string>
-    <string name="DeaddropInChatlist">Monter les demandes de contact dans la liste des convesations</string>
+    <string name="DeaddropInChatlist">Monter les demandes de contact dans la liste des conversations</string>
     <string name="MuteAlways">Toujours muet</string>
     <string name="AskStartChatWith">Lancer une conversation avec <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>?</string>
     <string name="DeaddropHint">Pour lancer une conversation, cliquez sur le bouton de réponse en forme de flèche.</string>
@@ -341,7 +341,7 @@
     <string name="AskResetNotifications" >Réinitialiser toutes les paramètres de notification et les sons de cette page ainsi que de vos contacts et groupes?</string>
     <string name="AttachFiles">Joindre des fichiers</string>
     <string name="ErrGroupNameEmpty">Merci de saisir un nom pour le groupe.</string>
-    <string name="MsgNewGroupDraftHint">Écrivez un premier message pour permettre aux autres de répondre dans ce groupe.\n\n• Ça ne devrait pas poser de problème si tout les membres du groupe n\'utilisent pas Delta Chat.\n\n• L\'envoi du premier message peut prendre un moment.</string>
+    <string name="MsgNewGroupDraftHint">Écrivez un premier message pour permettre aux autres de répondre dans ce groupe.\n\n• Ça ne devrait pas poser de problème si tous les membres du groupe n\'utilisent pas Delta Chat.\n\n• L\'envoi du premier message peut prendre un moment.</string>
     <string name="MsgNewGroupDraft">Bonjour, je viens juste de créer le groupe \"%1$s\" pour nous.</string>
     <string name="MsgGroupNameChanged">Le nom du groupe a changé de \"%1$s\" à \"%2$s\".</string>
     <string name="MsgGroupImageChanged">L\'image du groupe a changé.</string>
@@ -354,8 +354,8 @@
     <string name="NoMessagesHint">Envoyez un message à <![CDATA[<b>]]>%1$s<![CDATA[</b>]]> :\n\n• Ça ne devrait pas poser de problème si <![CDATA[<b>]]>%2$s<![CDATA[</b>]]> n\'utilise pas Delta Chat\n\n• L\'envoi du premier message peut prendre un moment.</string>
     <string name="SendNRcvReadReceipts">Recevoir et renvoyer des accusés de réception.</string>
     <string name="PreferE2EEncryption">Préféré le chiffrement de bout-en-bout.</string>
-    <string name="E2EManagePrivateKeys">Gérer les clefs privées</string>
-    <string name="E2ECompareKeys">Comparer les clefs</string>
+    <string name="E2EManagePrivateKeys">Gérer les clés privées</string>
+    <string name="E2ECompareKeys">Comparer les clés</string>
     <string name="ForwardToTitle">Renvoyer à…</string>
     <string name="SelectContact">Sélectionner un contact</string>
     <string name="DoneHint">Fait.</string>
@@ -372,20 +372,30 @@
     <string name="EncryptedMessage">Message chiffré</string>
     <string name="Encryption">Chiffrement</string>
     <string name="EncrinfoE2E">Chiffrement de bout-en-bout activé.</string>
-    <string name="EncrinfoE2EExplain">Si toutes les clefs de chiffrement correspondent sur l\'autre appareil, la connexion est sûre.</string>
+    <string name="EncrinfoE2EExplain">Si toutes les clés de chiffrement correspondent sur l\'autre appareil, la connexion est sûre.</string>
     <string name="EncrinfoTransport">Le chiffrement est active au moins jusqu\'à mon serveur</string>
     <string name="EncrinfoNone">Aucun chiffrement sur mon serveur.</string>
     <string name="EncrinfoNoE2EExplain">Le chiffrement de bout-à-bout sera activé automatiquement dès que le contact utilisera Delta Chat ou n\'importe quelle autre application de chiffrement automatique.</string>
-    <string name="EncrinfoFingerprints">Clefs de chiffrement</string>
+    <string name="EncrinfoFingerprints">Clés de chiffrement</string>
     <string name="Backup">Sauvegarde</string>
+    <string name="ImportBackupExplain2">Pour importer une sauvegarde, copier la sauvegarde dans <![CDATA[<i>]]>%1$s<![CDATA[</i>]]> et réinstaller l\'application.</string>
     <string name="ReadReceiptMailBody">Ceci est un accusé de réception pour le message \"1%1$s\".\n\nCet accusé indique seulement la bonne réception du message sur l\'appareil du destinataire. Il n\'y a pas de garantie que le destinataire a lu le contenu du message.</string>
     <string name="ReadReceipt">Accusé de réception</string>
     <string name="NameAndStatus">Nom et statut</string>
     <string name="MyStatus">Mon statut</string>
-    <string name="MyStatusExplain">Le statut est affiché dans votre profil et dans la signature de votre e-mail.</string>
     <string name="MsgGroupImageDeleted">Image du groupe effacée.</string>
     <string name="AskDeleteGroupImage">Êtes-vous sûr de vouloir effacer l\'image du groupe?\n\nCeci affectera tous les appareils de tous les membres du groupe.</string>
     <string name="ExportImportHeader">Exporter et importer</string>
+    <string name="ImportExportExplain">Les fichiers exportés contiendront des clés privées! Gardez-les dans un endroit sûr ou supprimez-les dès que possible.</string>
     <string name="EnterPasswordToContinue">Entrer le mot de passe pour %1$s pour continuer:</string>
     <string name="IncorrectPassword">Mot de passe incorrect.</string>
+    <string name="ImportBackupAsk">Delta Chat a trouvé une sauvegarde dans <![CDATA[<i>]]>%1$s<![CDATA[</i>]]>.\n\n Voulez-vous importer et utiliser toutes les données et paramètres de cette sauvegarde?</string>
+    <string name="ImportBackup">Importer une sauvegarde</string>
+    <string name="NoBackupFound">Aucune sauvegarde à importer trouvée.\n\nCopier la sauvegarde dans <![CDATA[<i>]]>%1$s<![CDATA[</i>]]> et réessayez. Sinon, appuyez sur \"Démarrer la messagerie\" pour un processus d\'installation normal.</string>
+    <string name="FilesSuccessfullyExported">Fichiers exportés avec succès dans <![CDATA[<i>]]>%1$s<![CDATA[</i>]]>.</string>
+    <string name="ExportBackup">Exporter une sauvegarde</string>
+    <string name="ExportPrivateKeys">Exporter les clés privées</string>
+    <string name="ImportPrivateKeys">Importer les clés privées</string>
+    <string name="ImportPrivateKeysAsk2">Importer des clés privées depuis <![CDATA[<i>]]>%1$s<![CDATA[</i>]]>?\n\n• Les clés privées existantes ne sont pas supprimées\n\n• 
+La dernière clé importée sera utilisée comme nouvelle clé par défaut</string>
     </resources>

@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="AppName">டெல்டா அரட்டை </string>
+    <!--chats view-->
+    <string name="Settings">அமைப்புகள் </string>
+    <string name="NewGroup">புதிய குழு </string>
+    <string name="NoResult">எந்த முடிவுகளும் இல்லை </string>
+    <string name="NoChats">இதுவரையில் எந்த அரட்டைகளும் இல்லை </string>
+    <string name="DeleteChat">அரட்டையை நீக்கு </string>
+    <string name="SelectChat">அரட்டையை தேர்வு செய்க </string>
+    <string name="Search">தேடு </string>
+    <string name="MuteNotifications">அறிவிப்புகளை ஊமையாக்கு </string>
+    <string name="MuteFor">%1$sஇதற்காக ஊமையாக்கு  </string>
+    <string name="UnmuteNotifications">ஊமையாக்குதலை தவிர்க்கவும் </string>
+    <string name="Draft">வரைவு </string>
+    <!--audio view-->
+    <string name="NoAudio">உங்கள் கோப்புகளை இங்கே காண அவைகளை உங்கள் சாதனத்தில் உள்ள இசை நூலகத்தில் சேர்க்கவும் </string>
+    <string name="AttachMusic">இசை </string>
+    <!--documents view-->
+    <string name="SelectFile">கோப்பை தேர்வு செய்யவும் </string>
+    <string name="FreeOfTotal">%2$s லிருந்து  %1$s விடுவி </string>
+    <string name="ErrorHint">தெரியாத பிழை </string>
+    <string name="AccessError">அணுகல் பிழை </string>
+    <string name="NoFiles">இதுவரையில் எந்த கோப்புகளும் இல்லை </string>
+    <string name="NotMounted">சேமிப்பகம் ஏற்றப்படவில்லை </string>
+    <string name="UsbActive">USB பரிமாற்றம் செயலில் உள்ளது </string>
+    <string name="InternalStorage">உட்புற சேமிப்பகம் </string>
+    <string name="ExternalStorage">வெளிப்புற சேமிப்பகம் </string>
+    <string name="SystemRoot">இயக்க மூலம் </string>
+    <string name="SdCard">SD அட்டை </string>
+    <string name="Folder">கோப்புறை </string>
+    <string name="GalleryInfo">படங்களை எந்த வித அழுத்தமும் இல்லாமல் அனுப்ப </string>
+    <!--chat view-->
+    <string name="ChatGallery">காட்சி கூடம் </string>
+    <string name="ChatCamera">புகைப்படக்கருவி </string>
+    <string name="NoMessages">சேதிகள் இல்லை </string>
+    <string name="ForwardedMessage">மேல அனுப்பப்பட்ட சேதி</string>
+    <string name="From">அனுப்புதல் </string>
+    <string name="NoRecent">சமீபமாக ஏதுமில்லை </string>
+    <string name="TypeMessage">சேதி </string>
+    <string name="SlideToCancel">ரத்து செய்ய திரையில் சறுக்கவும் </string>
+    <string name="SaveToDownloads">பதிவிறக்கத்தில் சேமி</string>
+    <string name="SaveToMusic">இசையில் சேமிக்கவும் </string>
+    <string name="Share">பகிர் </string>
+    <string name="SendItems">%1$sஅனுப்பவும்  </string>
+    <string name="ClearRecentEmoji">சமீபத்தைய emoji களை நீக்கவும் </string>
+    <string name="AddShortcut">நிரல் பலகையை தொடக்க திரைக்கு நகர்த்துக </string>
+    <string name="ShortcutAdded">நிரல் பலகையை தொடக்க திரைக்கு நகர்த்தப்பட்டது </string>
+    <!--notification-->
+    <string name="Reply">மறுமொழி </string>
+    <string name="ReplyToGroup">%1$sகு மறுமொழி சொல்லவும்  </string>
+    <string name="ReplyToContact">%1$sகு மறுமொழி சொல்லவும்  </string>
+    <!--contacts view-->
+    <string name="NoContacts">எந்த தொடர்புகளும் இல்லை </string>
+    <!--group create view-->
+    <string name="SendMessageTo">இவர்களுக்கு சேதி அனுப்பவும் </string>
+    <string name="EnterGroupNamePlaceholder">குழுவுக்கு பெயரிடுக </string>
+    <!--group info view-->
+    <string name="AddMember">உறுப்பினர்களை சேர்க்க </string>
+    <string name="Notifications">அறிவிப்புகள் </string>
+    <string name="RemoveMember">உறுப்பினரை நீக்கவும் </string>
+    <!--contact info view-->
+    <string name="NewContactTitle">புதிய தொடர்பு</string>
+    <string name="BlockContact">தொடர்பை தடுக்கவும் </string>
+    <string name="DeleteContact">தொடர்பை நீக்கவும்</string>
+    <string name="Info">தகவல்</string>
+    <!--settings view-->
+    <string name="TextSize">சேதிகளின் எழுத்துரு அளவு</string>
+    <string name="UnblockContact">தொடர்பு தடுப்பினை நீக்கவும்</string>
+    <string name="NoBlocked">இதுவரையில் எந்த தொடர்பும் தடுக்கப்படவில்லை</string>
+    <string name="DefaultForNormalMessages">வழக்கமான சேதிகள்</string>
+    <string name="MessagePreview">சேதி முன்னோட்டம்</string>
+    <string name="DefaultForGroupMessages">குழு சேதிகள்</string>
+    <string name="Sound">ஓசை</string>
+    <string name="InAppNotifications">௨ள்ளார்ந்த செயலி அறிவிப்புகள்</string>
+    <string name="Vibrate">அதிர்வு உண்டாக்கு</string>
+    <string name="ResetAllNotifications">அனைத்து அறிவுப்புக்களையும் மீட்டமைக்கவும்</string>
+    <string name="NotificationsAndSounds">அறிவுப்புகள் மற்றும் ஓசைகள்</string>
+    <string name="BlockedContacts">தடுக்கபட்ட தொடர்புகள்</string>
+    <string name="OnlyIfSilent">அமைதியாக இருந்தால் மட்டும்</string>
+    <string name="ChatBackground">அரட்டை பின்புலம்</string>
+    <string name="SendByEnter">\"enter\" மூலம் அனுப்பவும் </string>
+    <string name="Help">உதவி</string>
+    <string name="Enabled">இயக்கு</string>
+    <string name="Disabled">நிறுத்தவும்</string>
+    <string name="LedColor">LED நிறம்</string>
+    <string name="BadgeNumber">முடிந்தால் எண்ணிக்கையை சின்னதின் மீது காண்பிக்கவும்</string>
+    <string name="Short">சிறிய</string>
+    <string name="Long">பெரிய</string>
+    <string name="RaiseToSpeak">பேசுவதற்கு அதிகப்படுத்தவும் / உயர்த்தவும்</string>
+    <string name="EditName">பெயரை திருத்தவும்</string>
+    <string name="NotificationsPriority">பார்வை </string>
+    <string name="NotificationsPriorityDefault">சாதாரண முன்னுரிமை </string>
+    <string name="NotificationsPriorityHigh">அதிக முன்னுரிமை </string>
+    <string name="NotificationsPriorityMax">உச்சக்கட்ட முன்னுரிமை </string>
+    <string name="RepeatNotifications">அறிவிப்புகளை மீண்டும் உருவாக்கு </string>
+    <string name="NotificationsOther">மற்றவை </string>
+    <string name="InChatSound"> அரட்டை நுழைவு ஓலி </string>
+    <string name="SmartNotifications">அறிவிப்புகளை கட்டுப்படுத்து </string>
+    <string name="SmartNotificationsSoundAtMost">அதிகத்தில் ஒலிக்கவும் </string>
+    <string name="SmartNotificationsTimes">வேளைகள் </string>
+    <string name="Gallery">காட்சி கூடம் </string>
+    <string name="BlurOff">நிறுத்தவும்</string>
+    <!--Intro view-->
+    <string name="Intro1Headline">டெல்டா அரட்டை </string>
+    </resources>

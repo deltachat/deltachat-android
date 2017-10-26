@@ -391,15 +391,25 @@
     <string name="EncrinfoNone">Без шифрування на моєму сервері.</string>
     <string name="EncrinfoNoE2EExplain">Шифрування стане повним відразу ж, як контакт почне користуватися Delta Chat або іншим автошифрувальним застосунком.</string>
     <string name="EncrinfoFingerprints">Відбитки пальців</string>
-    <string name="Backup">Backup</string>
+    <string name="Backup">Бекап</string>
+    <string name="ImportBackupExplain2">Для імпортування бекапу, скопіюйте бекап до  <![CDATA[<i>]]>%1$s<![CDATA[</i>]]> та перевстановіть застосунок.</string>
     <string name="ReadReceiptMailBody">Це звіт про доставлення до повідомлення \"%1$s\".\n\nЦей звіт лиш інформує про те, що повідомлення було показано на пристрої отримувача. Не має ніяких гарантій того, що отримувач прочитав уміст.</string>
     <string name="ReadReceipt">Звіт про доставлення.</string>
     <string name="NameAndStatus">Псевдо та стан</string>
     <string name="MyStatus">Стан</string>
-    <string name="MyStatusExplain">Стан висвітлюється у вашому профілю та у стовпці email.</string>
     <string name="MsgGroupImageDeleted">Зображення спільноти було видалено.</string>
     <string name="AskDeleteGroupImage">Чи ви певні, що хочете видалити зображення спільноти?\n\nЦе матиме вплив на пристрої усіх її учасників. </string>
-    <string name="ExportImportHeader">Витягнене та затягнене</string>
+    <string name="ExportImportHeader">Експорт та імпорт</string>
+    <string name="ImportExportExplain">Експортовані файли міститимуть таємні ключі! Тримайте їх у безпечному місці або видаліть їх якнайшвидше.</string>
     <string name="EnterPasswordToContinue">Унесіть гасло для%1$sаби продовжити:</string>
     <string name="IncorrectPassword">Помилкове гасло.</string>
+    <string name="ImportBackupAsk">Delta Chat знайшов бекап у  <![CDATA[<i>]]>%1$s<![CDATA[</i>]]>.\n\nЧи ви хочете імпортувати та використовувати у майбутньому всі дані та налаштування з цього бекапу?</string>
+    <string name="ImportBackup">Імпортувати бекап</string>
+    <string name="NoBackupFound">Не знайдено бекапу для імпортування.\n\nСкопіюйте бекап до <![CDATA[<i>]]>%1$s<![CDATA[</i>]]> та спробуйте ще. В іншому випадку, натисніть на \"Почати листування\" для звичайного процесу встановлення.</string>
+    <string name="FilesSuccessfullyExported">Файли експортовано до  <![CDATA[<i>]]>%1$s<![CDATA[</i>]]>.</string>
+    <string name="ExportBackup">Експортувати бекап</string>
+    <string name="ExportPrivateKeys">Експортувати таємні ключі</string>
+    <string name="ImportPrivateKeys">Імпортувати таємні ключі</string>
+    <string name="ImportPrivateKeysAsk2">Імпортувати таємні ключі з <![CDATA[<i>]]>%1$s<![CDATA[</i>]]>?\n\n•
+Чинні таємні ключі не видалені\n\n• Найостанніший імпортований ключ буде використано як новий усталений ключ</string>
     </resources>

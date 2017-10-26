@@ -378,12 +378,23 @@
     <string name="EncrinfoNoE2EExplain">La crittografia end-to-end verrà attivata automaticamente quando il contatto usa Delta Chat o un altra applicazione che utilizza Autocrypt.</string>
     <string name="EncrinfoFingerprints">Impronte digitali</string>
     <string name="Backup">Backup</string>
+    <string name="ImportBackupExplain2">Per importare un backup, copiarlo in <![CDATA[<i>]]>%1$s<![CDATA[</i>]]> quindi installare nuovamente l\'app.</string>
     <string name="ReadReceiptMailBody">Questa è una ricevuta di ritorno del messaggio \"%1$s\".\n\nQuesta ricevuta conferma solo che il messaggio è arrivato sul dispositivo del destinatario. Non c\'è alcuna garanzia che il destinatario abbia letto il contenuto del messaggio.</string>
     <string name="ReadReceipt">Ricevuta di ritorno</string>
     <string name="NameAndStatus">Nome e stato</string>
     <string name="MyStatus">Il mio stato</string>
-    <string name="MyStatusExplain">Lo stato viene mostrato nel proprio profilo e nel piè di pagina delle email.</string>
     <string name="MsgGroupImageDeleted">Immagine del gruppo eliminata.</string>
     <string name="AskDeleteGroupImage">Rimuovere veramente l\'immagine del gruppo?\n\nQuesto avrà effetto su tutti i dispositivi di tutti i membri del gruppo.</string>
     <string name="ExportImportHeader">Esporta e importa</string>
+    <string name="ImportExportExplain">I file esportati conterranno le chiavi private! Costodirli in un posto sicuro o eliminarli il prima possibile.</string>
+    <string name="EnterPasswordToContinue">Inserire la password per %1$s per continuare:</string>
+    <string name="IncorrectPassword">Password errata.</string>
+    <string name="ImportBackupAsk">Delta Chat ha trovato un backup in <![CDATA[<i>]]>%1$s<![CDATA[</i>]]>.\n\nImportare e utilizzare da questo backup tutti i dati e le impostazioni?</string>
+    <string name="ImportBackup">Importa backup</string>
+    <string name="NoBackupFound">Non è stato trovato alcun backup da importare.\n\nCopiare il in <![CDATA[<i>]]>%1$s<![CDATA[</i>]]> e riprovare. In alternativa, premere \"Inizia a comunicare\" per la normale procedura di configurazione.</string>
+    <string name="FilesSuccessfullyExported">File esportati con successo in <![CDATA[<i>]]>%1$s<![CDATA[</i>]]>.</string>
+    <string name="ExportBackup">Esporta backup</string>
+    <string name="ExportPrivateKeys">Esporta chiavi private</string>
+    <string name="ImportPrivateKeys">Importa chiavi private</string>
+    <string name="ImportPrivateKeysAsk2">Importare le chiavi private da <![CDATA[<i>]]>%1$s<![CDATA[</i>]]>?\n\n• Le chiavi private esistenti non verranno eliminate.\n\n• L\'ultima chiave importata verrà utilizzata come la nuova chiave predefinita</string>
     </resources>
