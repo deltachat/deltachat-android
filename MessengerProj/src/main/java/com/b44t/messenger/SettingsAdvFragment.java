@@ -42,6 +42,7 @@ import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ListView;
+import android.widget.NumberPicker;
 
 import com.b44t.messenger.Components.BaseFragmentAdapter;
 import com.b44t.messenger.Cells.HeaderCell;
@@ -51,7 +52,6 @@ import com.b44t.messenger.Cells.TextSettingsCell;
 import com.b44t.messenger.ActionBar.ActionBar;
 import com.b44t.messenger.ActionBar.BaseFragment;
 import com.b44t.messenger.Components.LayoutHelper;
-import com.b44t.messenger.Components.NumberPicker;
 
 import java.io.File;
 
@@ -251,6 +251,7 @@ public class SettingsAdvFragment extends BaseFragment implements NotificationCen
                     AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
                     builder.setTitle(R.string.TextSize);
                     final NumberPicker numberPicker = new NumberPicker(getParentActivity());
+                    numberPicker.setDescendantFocusability(NumberPicker.FOCUS_BLOCK_DESCENDANTS); // otherwise the EditText gains the focus
                     final int MIN_VAL = 12;
                     final int MAX_VAL = 30;
                     final int DEF_VAL = SettingsAdvFragment.defMsgFontSize();

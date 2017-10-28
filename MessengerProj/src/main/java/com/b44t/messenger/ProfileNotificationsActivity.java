@@ -43,6 +43,7 @@ import android.widget.AdapterView;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.NumberPicker;
 import android.widget.TextView;
 
 import com.b44t.messenger.Components.BaseFragmentAdapter;
@@ -53,7 +54,6 @@ import com.b44t.messenger.ActionBar.ActionBar;
 import com.b44t.messenger.ActionBar.BaseFragment;
 import com.b44t.messenger.Components.ColorPickerView;
 import com.b44t.messenger.Components.LayoutHelper;
-import com.b44t.messenger.Components.NumberPicker;
 
 public class ProfileNotificationsActivity extends BaseFragment implements NotificationCenter.NotificationCenterDelegate {
 
@@ -345,6 +345,7 @@ public class ProfileNotificationsActivity extends BaseFragment implements Notifi
                     textView.setLayoutParams(layoutParams1);
 
                     final NumberPicker numberPickerTimes = new NumberPicker(getParentActivity());
+                    numberPickerTimes.setDescendantFocusability(NumberPicker.FOCUS_BLOCK_DESCENDANTS); // otherwise the EditText gains the focus
                     numberPickerTimes.setMinValue(1);
                     numberPickerTimes.setMaxValue(10);
                     numberPickerTimes.setValue(notifyMaxCount);
@@ -384,6 +385,7 @@ public class ProfileNotificationsActivity extends BaseFragment implements Notifi
                     textView.setLayoutParams(layoutParams1);
 
                     final NumberPicker numberPickerMinutes = new NumberPicker(getParentActivity());
+                    numberPickerMinutes.setDescendantFocusability(NumberPicker.FOCUS_BLOCK_DESCENDANTS); // otherwise the EditText gains the focus
                     numberPickerMinutes.setMinValue(1);
                     numberPickerMinutes.setMaxValue(10);
                     numberPickerMinutes.setValue(notifyDelay / 60);

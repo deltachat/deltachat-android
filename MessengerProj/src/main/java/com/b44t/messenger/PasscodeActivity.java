@@ -52,6 +52,7 @@ import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ListView;
+import android.widget.NumberPicker;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -64,7 +65,6 @@ import com.b44t.messenger.Cells.TextCheckCell;
 import com.b44t.messenger.Cells.TextInfoCell;
 import com.b44t.messenger.Cells.TextSettingsCell;
 import com.b44t.messenger.Components.LayoutHelper;
-import com.b44t.messenger.Components.NumberPicker;
 
 public class PasscodeActivity extends BaseFragment implements NotificationCenter.NotificationCenterDelegate {
 
@@ -343,36 +343,22 @@ public class PasscodeActivity extends BaseFragment implements NotificationCenter
                         AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
                         builder.setTitle(context.getString(R.string.AutoLock));
                         final NumberPicker numberPicker = new NumberPicker(getParentActivity());
+                        numberPicker.setDescendantFocusability(NumberPicker.FOCUS_BLOCK_DESCENDANTS); // otherwise the EditText gains the focus
                         numberPicker.setMinValue(0);
                         numberPicker.setMaxValue(4);
-                        if (UserConfig.autoLockIn == 0) {
-                            numberPicker.setValue(0);
-                        } else if (UserConfig.autoLockIn == 60) {
-                            numberPicker.setValue(1);
-                        } else if (UserConfig.autoLockIn == 60 * 5) {
-                            numberPicker.setValue(2);
-                        } else if (UserConfig.autoLockIn == 60 * 60) {
-                            numberPicker.setValue(3);
-                        } else if (UserConfig.autoLockIn == 60 * 60 * 5) {
+                        String[] displayedValues = {context.getString(R.string.Disabled), context.getResources().getQuantityString(R.plurals.Minutes, 1, 1), context.getResources().getQuantityString(R.plurals.Minutes, 5, 5), context.getResources().getQuantityString(R.plurals.Hours, 1, 1), context.getResources().getQuantityString(R.plurals.Hours, 5, 5)};
+                        numberPicker.setDisplayedValues(displayedValues);
+                        if (UserConfig.autoLockIn >= 60 * 60 * 5) {
                             numberPicker.setValue(4);
+                        } else if (UserConfig.autoLockIn >= 60 * 60) {
+                            numberPicker.setValue(3);
+                        } else if (UserConfig.autoLockIn >= 60 * 5) {
+                            numberPicker.setValue(2);
+                        } else if (UserConfig.autoLockIn >= 60) {
+                            numberPicker.setValue(1);
+                        } else {
+                            numberPicker.setValue(0);
                         }
-                        numberPicker.setFormatter(new NumberPicker.Formatter() {
-                            @Override
-                            public String format(int value) {
-                                if (value == 0) {
-                                    return context.getString(R.string.Disabled);
-                                } else if (value == 1) {
-                                    return context.getResources().getQuantityString(R.plurals.Minutes, 1, 1);
-                                } else if (value == 2) {
-                                    return context.getResources().getQuantityString(R.plurals.Minutes, 5, 5);
-                                } else if (value == 3) {
-                                    return context.getResources().getQuantityString(R.plurals.Hours, 1, 1);
-                                } else if (value == 4) {
-                                    return context.getResources().getQuantityString(R.plurals.Hours, 5, 5);
-                                }
-                                return "";
-                            }
-                        });
                         numberPicker.setWrapSelectorWheel(false);
                         builder.setView(numberPicker);
                         builder.setPositiveButton(R.string.OK, new DialogInterface.OnClickListener() {
