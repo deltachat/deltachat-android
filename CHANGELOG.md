@@ -8,6 +8,7 @@
 * Show messages only for explicitly wanted chats
 * Add Norwegian Bokmål translation
 * Add Tamil translation
+* Add Turkish translation
 * Update Catalan, German, French, Italian, Korean, Dutch, Polish, Portuguese, Russian, Telugu and  Ukrainian translations
 
 ## v0.9.6

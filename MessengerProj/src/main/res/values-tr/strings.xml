@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="AppName">Delta Chat</string>
+    <!--chats view-->
+    <string name="Settings">Ayarlar</string>
+    <string name="NewGroup">Yeni grup</string>
+    <string name="NoResult">Sonuç yok.</string>
+    <string name="NoChats">Henüz söyleşi yok</string>
+    <string name="DeleteChat">Söyleşiyi sil</string>
+    <string name="SelectChat">Söyleşi seç ...</string>
+    <string name="Search">Arama</string>
+    <string name="MuteNotifications">Bildirimleri sessize al</string>
+    <string name="UnmuteNotifications">Sessizden çıkarma</string>
+    <string name="Draft">Taslak</string>
+    <string name="AttachMusic">Müzik</string>
+    <!--documents view-->
+    <string name="SelectFile">Dosya Seçin</string>
+    <string name="ErrorHint">Bilinmeyen hata</string>
+    <string name="AccessError">Erişim hatası</string>
+    <string name="NoFiles">Henüz dosya yok ...</string>
+    <string name="NotMounted">Depo bellek bağlanmadı</string>
+    <string name="UsbActive">USB aktarımı etkin</string>
+    <string name="InternalStorage">Dahili Depolama</string>
+    <string name="ExternalStorage">Harici Depolama</string>
+    <string name="SdCard">SD Kart</string>
+    <string name="Folder">Klasör</string>
+    <!--chat view-->
+    <string name="ChatGallery">Galeri</string>
+    <string name="ChatCamera">Kamera</string>
+    <string name="NoMessages">İleti yok.</string>
+    <string name="ForwardedMessage">Yönlendirilmiş ileti</string>
+    <string name="TypeMessage">İleti</string>
+    <string name="SlideToCancel">İPTAL ETMEK İÇİN KAYDIR</string>
+    <string name="SaveToDownloads">İndirilenlere kaydet</string>
+    <string name="SaveToMusic">Müziğe kaydet</string>
+    <string name="Share">Paylaş</string>
+    <string name="SendItems">%1$sgönder</string>
+    <!--notification-->
+    <string name="Reply">Yanıtlama</string>
+    <string name="ReplyToGroup">%1$se yanıt ver</string>
+    <string name="ReplyToContact">%1$se yanıt ver</string>
+    <string name="EnterGroupNamePlaceholder">Grup adı girin</string>
+    <!--group info view-->
+    <string name="AddMember">Üye ekle</string>
+    <string name="Notifications">Bildirimler</string>
+    <string name="RemoveMember">Üye sil</string>
+    <!--contact info view-->
+    <string name="NewContactTitle">Yeni kişi</string>
+    <string name="BlockContact">Kişi engelle</string>
+    <string name="DeleteContact">Kişi sil</string>
+    <string name="Info">Bilgi</string>
+    <!--settings view-->
+    <string name="TextSize">İleti yazı tipi boyutu</string>
+    <string name="UnblockContact">Kişi engelini kaldır</string>
+    <string name="NoBlocked">Henüz engellenmiş kişi yok</string>
+    <string name="DefaultForNormalMessages">Normal iletiler</string>
+    <string name="MessagePreview">İleti önizleme</string>
+    <string name="DefaultForGroupMessages">Grup iletileri</string>
+    <string name="Sound">Ses</string>
+    <string name="InAppNotifications">Uygulama içi bildirimler</string>
+    <string name="Vibrate">Titreşim</string>
+    <string name="ResetAllNotifications">Tüm bildirimleri sıfırla</string>
+    <string name="NotificationsAndSounds">Bildirimler ve sesler</string>
+    <string name="BlockedContacts">Engellenmiş kişiler</string>
+    <string name="Default">Öntanımlı</string>
+    <string name="OnlyIfSilent">Sadece sessizse</string>
+    <string name="Help">Yardım</string>
+    <string name="Enabled">Aç</string>
+    <string name="Disabled">Kapat</string>
+    <string name="Short">Kısa</string>
+    <string name="Long">Uzun</string>
+    <string name="EditName">Adı düzenle</string>
+    <string name="NotificationsPriority">Görünüm</string>
+    <string name="NotificationsPriorityDefault">Normal öncelik</string>
+    <string name="NotificationsPriorityHigh">Yüksek öncelik</string>
+    <string name="NotificationsPriorityMax">En yüksek öncelik</string>
+    <string name="RepeatNotifications">Bildirimleri yinele</string>
+    <string name="NotificationsOther">Diğer</string>
+    <string name="DirectShare">Doğrudan paylaşım</string>
+    <!--cache view-->
+    <string name="CacheSettings">Depolama</string>
+    <string name="KeepMedia">Ortamı tut</string>
+    <string name="KeepMediaForever">Her zaman</string>
+    <!--passcode view-->
+    <string name="Passcode">Şifre Kilidi</string>
+    <string name="ChangePasscode">Şifre Değiştir</string>
+    <string name="PasscodePIN">PİN</string>
+    <string name="PasscodePassword">Parola</string>
+    <string name="EnterCurrentPasscode">Güncel şifrenizi girin</string>
+    <string name="EnterNewFirstPasscode">Bir şifre girin</string>
+    <string name="EnterNewPasscode">Yeni şifrenizi girin</string>
+    <string name="EnterYourPasscode">Şifrenizi girin</string>
+    <string name="ReEnterYourPasscode">Yeni şifrenizi tekrar girin</string>
+    <string name="PasscodeDoNotMatch">Şifreleriniz eşleşmiyor</string>
+    <string name="AutoLock">Otomatik kilit</string>
+    <string name="UnlockFingerprint">Parmak izi il şifreyi aç</string>
+    <string name="FingerprintInfo">Devam etmek için parmak izini onayla</string>
+    <string name="FingerprintNotRecognized">Parmak izi tanınmadı. Tekrar deneyin</string>
+    <!--photo gallery view-->
+    <string name="SaveToGallery">Galeriye kaydet</string>
+    <string name="Gallery">Galeri</string>
+    <string name="AllPhotos">Tüm Fotograflar</string>
+    <string name="AllVideo">Tüm Vidyolar</string>
+    <string name="NoPhotos">Henüz fotograf yok</string>
+    <string name="NoVideo">Henüz vidyo yok</string>
+    <string name="CropImage">Görüntüyü kırp</string>
+    <string name="EditImage">Görüntüyü düzenle</string>
+    <string name="Contrast">Keskinlik</string>
+    <string name="Warmth">Sıcaklık</string>
+    <string name="Saturation">Renk doygunluğu</string>
+    <string name="Vignette">Süsleme</string>
+    <string name="Shadows">Gölgeler</string>
+    <string name="Sharpen">Keskinleştirme</string>
+    <string name="Fade">Soldurma</string>
+    <string name="TintShadows">GÖLGELER</string>
+    <string name="Curves">Eğriler</string>
+    <string name="CurvesAll">HEPSİ</string>
+    <string name="CurvesRed">KIRMIZI</string>
+    <string name="CurvesGreen">YEŞİL</string>
+    <string name="CurvesBlue">MAVİ</string>
+    <string name="Blur">Bulanıklık</string>
+    <string name="BlurOff">Kapat</string>
+    <string name="BlurLinear">Çizgisel</string>
+    <string name="BlurRadial">Dairesel</string>
+    <string name="DiscardChanges">Değişiklikler gözardı edilsin mi?</string>
+    <string name="ClearButton">Net</string>
+    <string name="PickerPhotos">Fotograflar</string>
+    <string name="PickerVideo">Vidyo</string>
+    <!--privacy settings-->
+    <string name="PrivacySettings">Gizlilik ve güvenlik</string>
+    <string name="SecurityTitle">Güvenlik</string>
+    <!--edit video view-->
+    <string name="SendVideo">Vidyo Gönder</string>
+    <!--button titles-->
+    <string name="Done">Tamam</string>
+    <string name="Open">Aç</string>
+    <string name="Cancel">İptal et</string>
+    <string name="Edit">Düzenle</string>
+    <string name="Send">Gönder</string>
+    <string name="CopyToClipboard">Panoya kopyala</string>
+    <string name="Delete">Sil</string>
+    <string name="FromCamera">Kameradan</string>
+    <string name="FromGalley">Galeriden</string>
+    <string name="OK">TAMAM</string>
+    <string name="Crop">KIRP</string>
+    <!--messages-->
+    <string name="AttachPhoto">Fotograf</string>
+    <string name="AttachVideo">Vidyo</string>
+    <string name="AttachGif">GİF</string>
+    <string name="AttachDocument">Dosya</string>
+    <string name="AttachVoiceMessage">Sesli ileti</string>
+    <string name="PermissionOpenSettings">Ayarları değiştir</string>
+    <!--Intro view-->
+    <string name="Intro1Headline">Delta Chat</string>
+    <string name="Intro2Headline">Bağımsız</string>
+    <string name="Intro3Headline">Hızlı</string>
+    <string name="Intro4Headline">Muhteşem</string>
+    <string name="Intro6Headline">Güvenli</string>
+    <string name="formatterYear">dd.MM.yyyy</string>
+    <string name="formatterDay24H">HH:mm</string>
+    <string name="AccountSettings">Hesap ayarları</string>
+    <string name="MyAccount">Hesabım</string>
+    <string name="MyName">Adım</string>
+    <string name="Password">Parola</string>
+    <string name="SmtpPassword">STMP parolası</string>
+    <string name="Automatic">Otomatik</string>
+    <string name="InboxHeadline">Gelen kutusu</string>
+    <string name="OutboxHeadline">Gönderilenler</string>
+    <string name="AccountNotConfigured">Hesap düzenlenmedi</string>
+    <string name="Name" >Ad</string>
+    <string name="EmailAddress">E-posta adresi</string>
+    <string name="ViewProfile">Profil görüntüsü</string>
+    <string name="AdvancedSettings">Gelişmiş ayarlar</string>
+    <string name="AttachFiles">Dosyaları iliştir</string>
+    <string name="ErrGroupNameEmpty">Grup için bir ad girin</string>
+    <string name="E2ECompareKeys">Anahtarları karşılaştır</string>
+    <string name="DoneHint">Tamam.</string>
+    <string name="NoNetwork">Ağ kullanılamıyor.</string>
+    <string name="SettingsFor">%1$siçin ayarlar</string>
+    <string name="AutoplayGifs">GİFleri otomatik oynat</string>
+    <string name="HelpUrl">https://delta.chat/en/help</string>
+    <string name="EncrinfoE2E">Uçtan uca şifreleme etkin</string>
+    <string name="EncrinfoFingerprints">Parmak izleri</string>
+    <string name="Backup">Yedekleme</string>
+    <string name="ExportImportHeader">Dışa aktarım ve içe aktarım</string>
+    <string name="IncorrectPassword">Geçersiz parola</string>
+    </resources>
