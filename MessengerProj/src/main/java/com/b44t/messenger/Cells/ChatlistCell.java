@@ -269,7 +269,7 @@ public class ChatlistCell extends BaseCell {
 
         long timestmp =m_summary.getTimestamp();
         if( timestmp!=0 ) {
-            timeString = LocaleController.stringForMessageListDate(timestmp);
+            timeString = LocaleController.dateForChatlist(timestmp);
         }
         else {
             timeString = "";

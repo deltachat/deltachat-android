@@ -2008,7 +2008,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
     }
 
     private void measureTime(MessageObject messageObject) {
-        currentTimeString = LocaleController.getInstance().formatterDay.format((long) (messageObject.messageOwner.date) * 1000);
+        currentTimeString = LocaleController.getInstance().getFormatterDay().format((long) (messageObject.messageOwner.date) * 1000);
         timeWidth = (int) Math.ceil(timePaint.measureText(currentTimeString));
         timeEncrWidth = 0;
         if( messageObject.messageOwner.show_padlock) {

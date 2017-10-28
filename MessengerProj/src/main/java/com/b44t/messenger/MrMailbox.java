@@ -309,23 +309,14 @@ public class MrMailbox {
 
             case MR_EVENT_INFO:
                 Log.i("DeltaChat", CPtr2String(data2));
-                if( BuildConfig.BUILD_TYPE.equals("debug") ) {
-                    FileLog.i("DeltaChat", CPtr2String(data2)); // TODO: Can be removed as soon as notifications are reliable.
-                }
                 break;
 
             case MR_EVENT_WARNING:
                 Log.w("DeltaChat", CPtr2String(data2));
-                if( BuildConfig.BUILD_TYPE.equals("debug") ) {
-                    FileLog.w("DeltaChat", CPtr2String(data2)); // TODO: Can be removed as soon as notifications are reliable.
-                }
                 break;
 
             case MR_EVENT_ERROR:
                 Log.e("DeltaChat", CPtr2String(data2));
-                if( BuildConfig.BUILD_TYPE.equals("debug") ) {
-                    FileLog.e("DeltaChat", CPtr2String(data2)); // TODO: Can be removed as soon as notifications are reliable.
-                }
                 synchronized (m_lastErrorLock) {
                     m_lastErrorCode   = (int)data1;
                     m_lastErrorString = CPtr2String(data2);
@@ -440,9 +431,6 @@ public class MrMailbox {
     public static void log_i(String tag, String msg)
     {
         Log.i(tag, msg);
-        if( BuildConfig.BUILD_TYPE.equals("debug") ) {
-            FileLog.i(tag, msg); // TODO: Can be removed as soon as notifications are reliable.
-        }
     }
 
     public static MrChatlist     m_currChatlist = new MrChatlist(0);

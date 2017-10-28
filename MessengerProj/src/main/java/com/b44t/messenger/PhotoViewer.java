@@ -2454,7 +2454,7 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
             */
 
             long date = (long) currentMessageObject.messageOwner.date * 1000;
-            String dateString = String.format(ApplicationLoader.applicationContext.getString(R.string.formatDateAtTime), LocaleController.getInstance().formatterYear.format(new Date(date)), LocaleController.getInstance().formatterDay.format(new Date(date)));
+            String dateString = String.format(ApplicationLoader.applicationContext.getString(R.string.formatDateAtTime), LocaleController.getInstance().getFormatterYear().format(new Date(date)), LocaleController.getInstance().getFormatterDay().format(new Date(date)));
             if (currentFileNames[0] != null && isVideo) {
                 dateTextView.setText(String.format("%s (%s)", dateString, AndroidUtilities.formatFileSize(currentMessageObject.getDocument().size)));
             } else {

@@ -1,7 +1,6 @@
 /*******************************************************************************
  *
  *                              Delta Chat Android
- *                        (C) 2013-2016 Nikolai Kudashov
  *                           (C) 2017 Björn Petersen
  *                    Contact: r10s@b44t.com, http://b44t.com
  *
@@ -23,47 +22,61 @@
 
 package com.b44t.messenger;
 
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
 import android.content.res.Configuration;
 import android.os.Build;
 import android.text.format.DateFormat;
 import android.view.View;
 
-import com.b44t.messenger.time.FastDateFormat;
-
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
-import java.util.TimeZone;
 
 public class LocaleController {
 
     public static boolean isRTL = false;
-    public FastDateFormat formatterDay;
-    public FastDateFormat formatterWeek;
-    public FastDateFormat formatterMonth;
-    public FastDateFormat formatterYear;
-    public FastDateFormat formatterMonthYear;
-    public FastDateFormat chatDate;
-    public FastDateFormat chatFullDate;
 
-    private String formattersCreatedFor = "";
-
-    private class TimeZoneChangedReceiver extends BroadcastReceiver {
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            ApplicationLoader.applicationHandler.post(new Runnable() {
-                @Override
-                public void run() {
-                    if (!formatterMonth.getTimeZone().equals(TimeZone.getDefault())) {
-                        LocaleController.getInstance().recreateFormatters();
-                    }
-                }
-            });
+    private SimpleDateFormat getFormatter(int resId)
+    {
+        // do not cache the instances as SimpleDateFormat is not thread safe
+        try {
+            return new SimpleDateFormat(ApplicationLoader.applicationContext.getString(resId), Locale.getDefault());
         }
+        catch (Exception e) {
+            // a fallback if the translated resource contains bad data
+            return new SimpleDateFormat("dd/MM/yyyy HH:mm", Locale.US);
+        }
+    }
+
+    private SimpleDateFormat getFormatterChatDate()
+    {
+        return getFormatter(R.string.chatDate);
+    }
+
+    private SimpleDateFormat getFormatterChatFullDate()
+    {
+        return getFormatter(R.string.chatFullDate);
+    }
+
+    private SimpleDateFormat getFormatterWeek()
+    {
+        return getFormatter(R.string.formatterWeek);
+    }
+
+    private SimpleDateFormat getFormatterMonth()
+    {
+        return getFormatter(R.string.formatterMonth);
+    }
+
+    public SimpleDateFormat getFormatterYear()
+    {
+        return getFormatter(R.string.formatterYear);
+    }
+
+    public SimpleDateFormat getFormatterDay()
+    {
+        boolean is24HourFormat = DateFormat.is24HourFormat(ApplicationLoader.applicationContext);
+        return getFormatter(is24HourFormat? R.string.formatterDay24H : R.string.formatterDay12H);
     }
 
     private static volatile LocaleController Instance = null;
@@ -81,15 +94,7 @@ public class LocaleController {
     }
 
     public LocaleController() {
-
-        recreateFormatters();
-
-        try {
-            IntentFilter timezoneFilter = new IntentFilter(Intent.ACTION_TIMEZONE_CHANGED);
-            ApplicationLoader.applicationContext.registerReceiver(new TimeZoneChangedReceiver(), timezoneFilter);
-        } catch (Exception e) {
-
-        }
+        checkRTL();
     }
 
     public void rebuildUiParts()
@@ -109,8 +114,8 @@ public class LocaleController {
         // - the permanent notification (Waiting for messages ...) - notfifications are not re-translated after a locale change. This cannot be done without listening to the language-change-envent.
         // - some formatters and other cached values, maybe this can be done in other ways, however, it's just working.
         Locale newLocale = Locale.getDefault();
-        if( newLocale!=null && !newLocale.getDisplayName().equals(formattersCreatedFor) ) { // onDeviceConfigurationChange() is also called on screen orientation changes; do not rebuild the locale stuff in these cases
-            recreateFormatters();
+        if( newLocale!=null ) { // onDeviceConfigurationChange() is also called on screen orientation changes; do not rebuild the locale stuff in these cases
+            checkRTL();
             rebuildUiParts(); // this is really needed, see comment in rebuildUiParts()
         }
     }
@@ -124,32 +129,16 @@ public class LocaleController {
             int dateYear = rightNow.get(Calendar.YEAR);
 
             if (year == dateYear) {
-                return getInstance().chatDate.format(date * 1000);
+                return getInstance().getFormatterChatDate().format(date * 1000);
             }
-            return getInstance().chatFullDate.format(date * 1000);
+            return getInstance().getFormatterChatFullDate().format(date * 1000);
         } catch (Exception e) {
 
         }
         return "LOC_ERR: formatDateChat";
     }
 
-    private FastDateFormat createFormatter(Locale locale, String format, String defaultFormat) {
-        if (format == null || format.length() == 0) {
-            format = defaultFormat;
-        }
-        FastDateFormat formatter;
-        try {
-            formatter = FastDateFormat.getInstance(format, locale);
-        } catch (Exception e) {
-            format = defaultFormat;
-            formatter = FastDateFormat.getInstance(format, locale);
-        }
-        return formatter;
-    }
-
-    private void recreateFormatters() {
-        Locale locale = Locale.getDefault();
-
+    private void checkRTL() {
         isRTL = false;
         if (Build.VERSION.SDK_INT >= 17) {
             // ViewCompat.getLayoutDirection() can also be used, however, this function always returns LTR for SDK < 17, too, but requires a additinal view handle
@@ -158,21 +147,9 @@ public class LocaleController {
                 isRTL = true;
             }
         }
-
-        boolean is24HourFormat = DateFormat.is24HourFormat(ApplicationLoader.applicationContext);
-
-        formatterMonth = createFormatter(locale, ApplicationLoader.applicationContext.getString(R.string.formatterMonth), "dd MMM");
-        formatterYear = createFormatter(locale, ApplicationLoader.applicationContext.getString(R.string.formatterYear), "dd.MM.yyyy");
-        chatDate = createFormatter(locale, ApplicationLoader.applicationContext.getString(R.string.chatDate), "d MMMM");
-        chatFullDate = createFormatter(locale, ApplicationLoader.applicationContext.getString(R.string.chatFullDate), "d MMMM yyyy");
-        formatterWeek = createFormatter(locale, ApplicationLoader.applicationContext.getString(R.string.formatterWeek), "EEE");
-        formatterMonthYear = createFormatter(locale, ApplicationLoader.applicationContext.getString(R.string.formatterMonthYear), "MMMM yyyy");
-        formatterDay = createFormatter(locale, is24HourFormat ? ApplicationLoader.applicationContext.getString(R.string.formatterDay24H) : ApplicationLoader.applicationContext.getString(R.string.formatterDay12H), is24HourFormat ? "HH:mm" : "h:mm a");
-
-        formattersCreatedFor = locale.getDisplayName();
     }
 
-    public static String stringForMessageListDate(long date) {
+    public static String dateForChatlist(long date) {
         try {
             Calendar rightNow = Calendar.getInstance();
             int day = rightNow.get(Calendar.DAY_OF_YEAR);
@@ -182,15 +159,15 @@ public class LocaleController {
             int dateYear = rightNow.get(Calendar.YEAR);
 
             if (year != dateYear) {
-                return getInstance().formatterYear.format(new Date(date * 1000));
+                return getInstance().getFormatterYear().format(new Date(date * 1000));
             } else {
                 int dayDiff = dateDay - day;
                 if(dayDiff == 0 || dayDiff == -1 && (int)(System.currentTimeMillis() / 1000) - date < 60 * 60 * 8) {
-                    return getInstance().formatterDay.format(new Date(date * 1000));
+                    return getInstance().getFormatterDay().format(new Date(date * 1000));
                 } else if(dayDiff > -7 && dayDiff <= -1) {
-                    return getInstance().formatterWeek.format(new Date(date * 1000));
+                    return getInstance().getFormatterWeek().format(new Date(date * 1000));
                 } else {
-                    return getInstance().formatterMonth.format(new Date(date * 1000));
+                    return getInstance().getFormatterMonth().format(new Date(date * 1000));
                 }
             }
         } catch (Exception e) {
