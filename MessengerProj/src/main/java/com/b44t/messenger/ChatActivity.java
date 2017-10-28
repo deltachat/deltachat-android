@@ -593,8 +593,9 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
             headerItem.addSubItem(ID_ATTACH, context.getString(R.string.AttachFiles), 0); // "Attach" means "Attach to chat", not "Attach to message" (which is not possible)
         }
 
-        //if( !m_isChatWithDeaddrop || m_isDeaddropInChatlist ) { -- we can disable this at a later time, for now, it may be handy to have all options
-        headerItem.addSubItem(ID_SHOW_PROFILE, context.getString(R.string.ViewProfile), 0);
+        if( !m_isChatWithDeaddrop ) {
+            headerItem.addSubItem(ID_SHOW_PROFILE, context.getString(R.string.ViewProfile), 0);
+        }
 
         if( !m_isChatWithDeaddrop ) {
             headerItem.addSubItem(ID_DELETE_CHAT, context.getString(R.string.DeleteChat), 0);

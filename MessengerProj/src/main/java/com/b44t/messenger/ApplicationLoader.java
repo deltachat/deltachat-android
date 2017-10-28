@@ -203,9 +203,10 @@ public class ApplicationLoader extends Application {
 
         // make sure, the notifications for the "deaddrop" dialog are muted by default
         SharedPreferences notificationPreferences = ApplicationLoader.applicationContext.getSharedPreferences("Notifications", Activity.MODE_PRIVATE);
-        if( notificationPreferences.getInt("notify2_"+MrChat.MR_CHAT_ID_DEADDROP, 666)==666 ) {
+        if( notificationPreferences.getInt("deaddrop_initialized", 0)!=1 ) {
             SharedPreferences.Editor editor = notificationPreferences.edit();
             editor.putInt("notify2_"+MrChat.MR_CHAT_ID_DEADDROP, 2);
+            editor.putInt("deaddrop_initialized", 1);
             editor.apply();
         }
 

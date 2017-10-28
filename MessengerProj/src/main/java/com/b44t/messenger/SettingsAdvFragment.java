@@ -111,7 +111,7 @@ public class SettingsAdvFragment extends BaseFragment implements NotificationCen
         }
         autoplayGifsRow         = rowCount++;
         textSizeRow             = rowCount++; // for now, we have the font size in the advanced settings; this is because the numberical selection is a little bit weird and does only affect the message text. It would be better to use the font size defined by the system with "sp" (Scale-independent Pixels which included the user's font size preference)
-        showUnknownSendersRow   = rowCount++;
+        showUnknownSendersRow   = -1;// rowCount++;
         sendByEnterRow          = rowCount++;
         raiseToSpeakRow         = rowCount++; // outgoing message
         cacheRow                = -1;// for now, the - non-functional - page is reachable by the "storage settings" in the "android App Settings" only
@@ -212,7 +212,7 @@ public class SettingsAdvFragment extends BaseFragment implements NotificationCen
                     // if showing deaddrop is disabled, also disable notifications for this chat (cannot be displayed otherwise)
                     SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("Notifications", Activity.MODE_PRIVATE);
                     SharedPreferences.Editor editor = preferences.edit();
-                    editor.putInt("notify2_" + MrChat.MR_CHAT_ID_DEADDROP, oldval==1? 2 /*always muted*/ : 0);
+                    editor.putInt("notify2_" + MrChat.MR_CHAT_ID_DEADDROP, oldval==1? 2 : 0);
                     editor.apply();
                 }
                 else if(i==e2eEncryptionRow )
