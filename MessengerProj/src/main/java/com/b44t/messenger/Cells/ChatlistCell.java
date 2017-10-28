@@ -65,7 +65,6 @@ public class ChatlistCell extends BaseCell {
     private static Drawable clockDrawable;
     private static Drawable errorDrawable;
     private static Drawable countDrawable;
-    private static Drawable countDrawableGrey;
     private static Drawable groupDrawable;
     private static Drawable muteDrawable;
     private static Drawable closeDrawable;
@@ -78,9 +77,6 @@ public class ChatlistCell extends BaseCell {
     private int index;
 
     private ImageReceiver avatarImage;
-
-    private final Object user = null;
-    private final Object chat = null;
 
     public boolean useSeparator = false;
 
@@ -154,7 +150,6 @@ public class ChatlistCell extends BaseCell {
             clockDrawable = getResources().getDrawable(R.drawable.msg_clock);
             errorDrawable = getResources().getDrawable(R.drawable.msg_warning);
             countDrawable = getResources().getDrawable(R.drawable.dialogs_badge);
-            countDrawableGrey = getResources().getDrawable(R.drawable.dialogs_badge2);
             groupDrawable = getResources().getDrawable(R.drawable.list_group);
             muteDrawable = getResources().getDrawable(R.drawable.mute_grey);
             closeDrawable = getResources().getDrawable(R.drawable.ic_dismiss_deaddrop); // TODO: KitKat emulator crashes on first startup - because of the vector graphic?
@@ -173,7 +168,12 @@ public class ChatlistCell extends BaseCell {
         currentChatId = mrChat.getId();
         index = i;
 
-        setBackgroundColor(currentChatId==MrChat.MR_CHAT_ID_DEADDROP? Theme.CHATLIST_DEADDROP_BACKGROUND_COLOR : Theme.CHATLIST_BACKGROUND_COLOR);
+        if(currentChatId==MrChat.MR_CHAT_ID_DEADDROP) {
+            setBackgroundColor(Theme.CHATLIST_DEADDROP_BACKGROUND_COLOR);
+        }
+        else {
+            setBackgroundResource(R.drawable.list_selector);
+        }
 
         update(0);
     }
@@ -485,24 +485,16 @@ public class ChatlistCell extends BaseCell {
         if (mask != 0) {
             boolean continueUpdate = false;
             if (!continueUpdate && (mask & MrMailbox.UPDATE_MASK_AVATAR) != 0) {
-                if (chat == null) {
-                    continueUpdate = true;
-                }
+                continueUpdate = true;
             }
             if (!continueUpdate && (mask & MrMailbox.UPDATE_MASK_NAME) != 0) {
-                if (chat == null) {
-                    continueUpdate = true;
-                }
+                continueUpdate = true;
             }
             if (!continueUpdate && (mask & MrMailbox.UPDATE_MASK_CHAT_AVATAR) != 0) {
-                if (user == null) {
-                    continueUpdate = true;
-                }
+                continueUpdate = true;
             }
             if (!continueUpdate && (mask & MrMailbox.UPDATE_MASK_CHAT_NAME) != 0) {
-                if (user == null) {
-                    continueUpdate = true;
-                }
+                continueUpdate = true;
             }
 
             if (!continueUpdate) {
@@ -510,12 +502,13 @@ public class ChatlistCell extends BaseCell {
             }
         }
 
-        chatMuted = MrMailbox.isDialogMuted(currentChatId);
+
 
         if( currentChatId == MrChat.MR_CHAT_ID_DEADDROP ) {
-
+            chatMuted = false; // never draw mute icon, the deaddrop is always muted
         }
         else {
+            chatMuted = MrMailbox.isDialogMuted(currentChatId);
             ContactsController.setupAvatar(this, avatarImage, new AvatarDrawable(), null, m_mrChat);
         }
 
@@ -586,13 +579,9 @@ public class ChatlistCell extends BaseCell {
             setDrawableBounds(errorDrawable, errorLeft, errorTop);
             errorDrawable.draw(canvas);
         } else if (drawCount) {
-            if (chatMuted) {
-                setDrawableBounds(countDrawableGrey, countLeft - AndroidUtilities.dp(5.5f), countTop, countWidth + AndroidUtilities.dp(11), countDrawable.getIntrinsicHeight());
-                countDrawableGrey.draw(canvas);
-            } else {
-                setDrawableBounds(countDrawable, countLeft - AndroidUtilities.dp(5.5f), countTop, countWidth + AndroidUtilities.dp(11), countDrawable.getIntrinsicHeight());
-                countDrawable.draw(canvas);
-            }
+            setDrawableBounds(countDrawable, countLeft - AndroidUtilities.dp(5.5f), countTop, countWidth + AndroidUtilities.dp(11), countDrawable.getIntrinsicHeight());
+            countDrawable.draw(canvas);
+
             canvas.save();
             canvas.translate(countLeft, countTop + AndroidUtilities.dp(4));
             countLayout.draw(canvas);
