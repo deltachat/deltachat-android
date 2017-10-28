@@ -219,7 +219,6 @@ public class ChatlistCell extends BaseCell {
     public void buildLayout() {
         String nameString = "";
         String timeString = "";
-        String countString = null;
         CharSequence messageString = "";
         TextPaint currentNamePaint = namePaint;
         TextPaint currentMessagePaint = messagePaint;
@@ -285,13 +284,6 @@ public class ChatlistCell extends BaseCell {
             case MrMsg.MR_OUT_PENDING: drawClock = true; break;
             case MrMsg.MR_OUT_DELIVERED: drawCheck2 = true; break;
             case MrMsg.MR_OUT_MDN_RCVD: drawCheck1 = true; drawCheck2 = true; break;
-        }
-
-        if (unreadCount != 0) {
-            drawCount = true;
-            countString = String.format("%d", unreadCount);
-        } else {
-            drawCount = false;
         }
 
         int timeWidth = (int) Math.ceil(timePaint.measureText(timeString));
@@ -393,7 +385,8 @@ public class ChatlistCell extends BaseCell {
                 errorLeft = AndroidUtilities.dp(16);
                 messageLeft += w;
             }
-        } else if (countString != null) {
+        } else if (unreadCount != 0 && currentChatId!=MrChat.MR_CHAT_ID_DEADDROP) {
+            String countString = String.format("%d", unreadCount);
             countWidth = Math.max(AndroidUtilities.dp(12), (int)Math.ceil(countPaint.measureText(countString)));
             countLayout = new StaticLayout(countString, countPaint, countWidth, Layout.Alignment.ALIGN_CENTER, 1.0f, 0.0f, false);
             int w = countWidth + AndroidUtilities.dp(18);
@@ -405,8 +398,6 @@ public class ChatlistCell extends BaseCell {
                 messageLeft += w;
             }
             drawCount = true;
-        } else {
-            drawCount = false;
         }
 
         messageWidth = Math.max(AndroidUtilities.dp(12), messageWidth);
