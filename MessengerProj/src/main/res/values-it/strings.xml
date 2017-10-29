@@ -383,6 +383,7 @@
     <string name="ReadReceipt">Ricevuta di ritorno</string>
     <string name="NameAndStatus">Nome e stato</string>
     <string name="MyStatus">Il mio stato</string>
+    <string name="MyStatusExplain">Lo stato viene mostrato, per esempio, nel piè di pagina delle email.</string>
     <string name="MsgGroupImageDeleted">Immagine del gruppo eliminata.</string>
     <string name="AskDeleteGroupImage">Rimuovere veramente l\'immagine del gruppo?\n\nQuesto avrà effetto su tutti i dispositivi di tutti i membri del gruppo.</string>
     <string name="ExportImportHeader">Esporta e importa</string>
@@ -397,4 +398,7 @@
     <string name="ExportPrivateKeys">Esporta chiavi private</string>
     <string name="ImportPrivateKeys">Importa chiavi private</string>
     <string name="ImportPrivateKeysAsk2">Importare le chiavi private da <![CDATA[<i>]]>%1$s<![CDATA[</i>]]>?\n\n• Le chiavi private esistenti non verranno eliminate.\n\n• L\'ultima chiave importata verrà utilizzata come la nuova chiave predefinita</string>
-    </resources>
+    <string name="NoRecentEmoji">Le emoji utilizzate di recente verranno mostrate qui.</string>
+    <string name="E2eeOffBecauseOfUser">Per abilitare la crittografia end-to-end, selelzionare l\'opzione corrispondente nelle impostazioni.</string>
+    <string name="E2eeOffBecauseOfRecipient">La crittigrafia end-to-end sarà attiva solo se anche chi riceve il messaggio abilita l\'opzione corridpondente.</string>
+</resources>

@@ -400,4 +400,5 @@
     <string name="ImportPrivateKeysAsk2">Private Schlüssel aus <![CDATA[<i>]]>%1$s<![CDATA[</i>]]> importieren?\n\n• Bereits vorhandene private Schlüssel bleiben erhalten\n\n• Der zuletzt importierte private Schlüssel wird der Standardschlüssel\n\nFortfahren?</string>
     <string name="NoRecentEmoji">Hier werden die zuletzt verwendeten Emoji angezeigt.</string>
     <string name="E2eeOffBecauseOfUser">Um die Ende-zu-Ende-Verschlüsselung zu aktivieren, aktivieren Sie die entsprechende Option in den Einstellungen. </string>
-    </resources>
+    <string name="E2eeOffBecauseOfRecipient">Die Ende-zu-Ende-Verschlüsselung wird aktiviert, sobald der Kontakt die entsprechende Einstellung aktiviert.</string>
+</resources>
