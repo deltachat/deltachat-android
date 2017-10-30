@@ -421,7 +421,6 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.recordProgressChanged);
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.closeChats);
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.audioDidSent);
-        NotificationCenter.getInstance().addObserver(this, NotificationCenter.emojiDidLoaded);
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.audioRouteChanged);
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.audioDidReset);
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.audioProgressDidChanged);
@@ -817,7 +816,6 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
         NotificationCenter.getInstance().removeObserver(this, NotificationCenter.recordProgressChanged);
         NotificationCenter.getInstance().removeObserver(this, NotificationCenter.closeChats);
         NotificationCenter.getInstance().removeObserver(this, NotificationCenter.audioDidSent);
-        NotificationCenter.getInstance().removeObserver(this, NotificationCenter.emojiDidLoaded);
         NotificationCenter.getInstance().removeObserver(this, NotificationCenter.audioRouteChanged);
         NotificationCenter.getInstance().removeObserver(this, NotificationCenter.audioDidReset);
         NotificationCenter.getInstance().removeObserver(this, NotificationCenter.audioProgressDidChanged);
@@ -1528,11 +1526,7 @@ public class ChatActivityEnterView extends FrameLayout implements NotificationCe
 
     @Override
     public void didReceivedNotification(int id, Object... args) {
-        if (id == NotificationCenter.emojiDidLoaded) {
-            if (emojiView != null) {
-                emojiView.invalidateViews();
-            }
-        } else if (id == NotificationCenter.recordProgressChanged) {
+        if (id == NotificationCenter.recordProgressChanged) {
             long t = (Long) args[0];
             Long time = t / 1000;
             int ms = (int) (t % 1000L) / 10;

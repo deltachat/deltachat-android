@@ -45,7 +45,6 @@ public class NotificationCenter {
     public static final int messageSendError = totalEvents++;
     public static final int contactsDidLoaded = totalEvents++;
     public static final int chatDidCreated = totalEvents++;
-    public static final int mediaDidLoaded = totalEvents++;
     public static final int mediaCountDidLoaded = totalEvents++;
     public static final int notificationsSettingsUpdated = totalEvents++;
     public static final int blockedUsersDidLoaded = totalEvents++;
@@ -58,7 +57,6 @@ public class NotificationCenter {
 
     public static final int wallpapersDidLoaded = totalEvents++;
     public static final int closeOtherAppActivities = totalEvents++;
-    public static final int emojiDidLoaded = totalEvents++;
 
     public static final int FilePreparingStarted = totalEvents++;
     public static final int FileNewChunkAvailable = totalEvents++;

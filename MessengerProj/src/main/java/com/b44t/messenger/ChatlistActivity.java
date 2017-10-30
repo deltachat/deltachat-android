@@ -137,7 +137,6 @@ public class ChatlistActivity extends BaseFragment implements NotificationCenter
         }
 
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.dialogsNeedReload);
-        NotificationCenter.getInstance().addObserver(this, NotificationCenter.emojiDidLoaded);
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.updateInterfaces);
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.contactsDidLoaded);
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.notificationsSettingsUpdated);
@@ -156,7 +155,6 @@ public class ChatlistActivity extends BaseFragment implements NotificationCenter
         super.onFragmentDestroy();
 
         NotificationCenter.getInstance().removeObserver(this, NotificationCenter.dialogsNeedReload);
-        NotificationCenter.getInstance().removeObserver(this, NotificationCenter.emojiDidLoaded);
         NotificationCenter.getInstance().removeObserver(this, NotificationCenter.updateInterfaces);
         NotificationCenter.getInstance().removeObserver(this, NotificationCenter.contactsDidLoaded);
         NotificationCenter.getInstance().removeObserver(this, NotificationCenter.notificationsSettingsUpdated);
@@ -702,8 +700,6 @@ public class ChatlistActivity extends BaseFragment implements NotificationCenter
                 } catch (Exception e) {
                 }
             }
-        } else if (id == NotificationCenter.emojiDidLoaded) {
-            updateVisibleRows(0);
         } else if (id == NotificationCenter.updateInterfaces) {
             updateVisibleRows((Integer) args[0]);
         } else if (id == NotificationCenter.contactsDidLoaded) {

@@ -195,7 +195,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         startLoadFromMessageId = arguments.getInt("message_id", 0);
         scrollToTopOnResume = arguments.getBoolean("scrollToTopOnResume", false);
 
-        NotificationCenter.getInstance().addObserver(this, NotificationCenter.emojiDidLoaded);
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.dialogsNeedReload);
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.updateInterfaces);
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.didReceivedNewMessages);
@@ -321,7 +320,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
             chatActivityEnterView.onDestroy();
         }
 
-        NotificationCenter.getInstance().removeObserver(this, NotificationCenter.emojiDidLoaded);
         NotificationCenter.getInstance().removeObserver(this, NotificationCenter.dialogsNeedReload);
         NotificationCenter.getInstance().removeObserver(this, NotificationCenter.updateInterfaces);
         NotificationCenter.getInstance().removeObserver(this, NotificationCenter.didReceivedNewMessages);
@@ -1881,12 +1879,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                         }
                     }
                 }
-            }
-        }
-        else if (id == NotificationCenter.emojiDidLoaded)
-        {
-            if (chatListView != null) {
-                chatListView.invalidateViews();
             }
         }
         else if (id == NotificationCenter.updateInterfaces)
