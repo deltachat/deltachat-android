@@ -617,6 +617,12 @@ JNIEXPORT jlong Java_com_b44t_messenger_MrChatlist_MrChatlistGetChatByIndex(JNIE
 }
 
 
+JNIEXPORT jlong Java_com_b44t_messenger_MrChatlist_MrChatlistGetMsgByIndex(JNIEnv *env, jclass c, jlong hChatlist, jint index)
+{
+	return (jlong)mrchatlist_get_msg_by_index((mrchatlist_t*)hChatlist, index);
+}
+
+
 JNIEXPORT jlong Java_com_b44t_messenger_MrChatlist_MrChatlistGetSummaryByIndex(JNIEnv *env, jclass c, jlong hChatlist, jint index, jlong hChat)
 {
 	return (jlong)mrchatlist_get_summary_by_index((mrchatlist_t*)hChatlist, index, (mrchat_t*)hChat);

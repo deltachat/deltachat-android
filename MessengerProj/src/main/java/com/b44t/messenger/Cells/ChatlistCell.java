@@ -206,6 +206,7 @@ public class ChatlistCell extends BaseCell {
         }
     }
 
+    static public boolean deaddropClosePressed;
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         if (Build.VERSION.SDK_INT >= 21 && getBackground() != null) {
@@ -213,6 +214,14 @@ public class ChatlistCell extends BaseCell {
                 getBackground().setHotspot(event.getX(), event.getY());
             }
         }
+
+        if( currentChatId==MrChat.MR_CHAT_ID_DEADDROP ) {
+            if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                float x = event.getX();
+                deaddropClosePressed = (x < avatarLeft + avatarWH);
+            }
+        }
+
         return super.onTouchEvent(event);
     }
 

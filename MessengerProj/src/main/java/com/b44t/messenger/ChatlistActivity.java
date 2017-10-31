@@ -69,6 +69,7 @@ import com.b44t.messenger.ActionBar.Theme;
 
 import java.util.ArrayList;
 
+
 public class ChatlistActivity extends BaseFragment implements NotificationCenter.NotificationCenterDelegate {
     
     private RecyclerListView listView;
@@ -349,7 +350,7 @@ public class ChatlistActivity extends BaseFragment implements NotificationCenter
                 }
 
                 // handle single click
-                long dialog_id = 0;
+                long chat_id = 0;
                 int message_id = 0;
                 RecyclerView.Adapter adapter = listView.getAdapter();
                 if (adapter == chatlistAdapter) {
@@ -357,28 +358,59 @@ public class ChatlistActivity extends BaseFragment implements NotificationCenter
                     if (mrChat == null) {
                         return;
                     }
-                    dialog_id = mrChat.getId();
+                    chat_id = mrChat.getId();
                 } else if (adapter == chatlistSearchAdapter) {
                     Object obj  = chatlistSearchAdapter.getItem(position);
                     if( obj instanceof MrChat ) {
-                        dialog_id = ((MrChat)obj).getId();
+                        chat_id = ((MrChat)obj).getId();
                     }
                     else if( obj instanceof MrMsg) {
                         MrMsg  mrMsg = (MrMsg)obj;
-                        dialog_id = mrMsg.getChatId();
+                        chat_id = mrMsg.getChatId();
                         message_id = mrMsg.getId();
                     }
                 }
 
-                if (dialog_id == 0) {
+                if (chat_id == 0) {
                     return;
                 }
 
                 if (onlySelect) {
-                    didSelectResult(dialog_id, true, false);
+                    /* select a chat */
+                    didSelectResult(chat_id, true, false);
+                } else if( chat_id == MrChat.MR_CHAT_ID_DEADDROP ) {
+                    /* start new chat */
+                    if( ChatlistCell.deaddropClosePressed ) {
+                        // TODO: maybe this should also block the contact or we can ask.
+                        // TODO: it may also make sense to show a little hint that the contact request can also be found via the main menu
+                        MrMailbox.marknoticedChat(MrChat.MR_CHAT_ID_DEADDROP); // TODO: only mark the last message as noticed?
+                        MrMailbox.reloadMainChatlist();
+                        NotificationCenter.getInstance().postNotificationName(NotificationCenter.dialogsNeedReload);
+                        //AndroidUtilities.showDoneHint(ApplicationLoader.applicationContext);
+                    }
+                    else {
+                        final MrMsg msg = MrMailbox.m_currChatlist.getMsgByIndex(position);
+                        MrContact contact = MrMailbox.getContact(msg.getFromId());
+                        AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
+                        builder.setPositiveButton(R.string.OK, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                int belonging_chat_id = MrMailbox.createChatByContactId(msg.getFromId());
+                                if( belonging_chat_id != 0 ) {
+                                    Bundle args = new Bundle();
+                                    args.putInt("chat_id", belonging_chat_id);
+                                    presentFragment(new ChatActivity(args), false);
+                                }
+                            }
+                        });
+                        builder.setNegativeButton(R.string.NotNow, null);
+                        builder.setMessage(AndroidUtilities.replaceTags(String.format(context.getString(R.string.AskStartChatWith), contact.getNameNAddr())));
+                        showDialog(builder.create());
+                    }
                 } else {
+                    /* open exiting chat */
                     Bundle args = new Bundle();
-                    args.putInt("chat_id", (int)dialog_id);
+                    args.putInt("chat_id", (int)chat_id);
                     if (message_id != 0) {
                         args.putInt("message_id", message_id);
                     }

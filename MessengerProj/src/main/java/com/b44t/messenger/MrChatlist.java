@@ -46,6 +46,10 @@ public class MrChatlist {
         return new MrChat(MrChatlistGetChatByIndex(m_hChatlist, index));
     }
 
+    public MrMsg getMsgByIndex(int index) {
+        return new MrMsg(MrChatlistGetMsgByIndex(m_hChatlist, index));
+    }
+
     public MrPoortext getSummaryByIndex(int index, MrChat chat) {
         return new MrPoortext(MrChatlistGetSummaryByIndex(m_hChatlist, index, chat.getCPtr()));
     }
@@ -54,6 +58,7 @@ public class MrChatlist {
     private native static void    MrChatlistUnref            (long hChatlist);
     private native static int     MrChatlistGetCnt           (long hChatlist);
     private native static long    MrChatlistGetChatByIndex   (long hChatlist, int index); // returns hChat which must be unref'd after usage
+    private native static long    MrChatlistGetMsgByIndex    (long hChatlist, int index); // returns hMsg which must be unref'd after usage
     private native static long    MrChatlistGetSummaryByIndex(long hChatlist, int index, long hChat);
 
 
