@@ -125,6 +125,7 @@ public class MrMailbox {
 
     public native static int    markseenMsgs       (int msg_ids[]);
     public native static int    marknoticedChat    (int chat_id);
+    public native static int    archiveChat        (int chat_id, int archive);
 
     public native static int getChatIdByContactId (int contact_id);
     public native static int createChatByContactId(int contact_id); // returns chat_id
@@ -372,6 +373,7 @@ public class MrMailbox {
                     case 35: s = "<c#808080>"+ApplicationLoader.applicationContext.getString(R.string.EncrinfoNoE2EExplain)+"</c>"; break;
                     case 36: s = "<c#808080>"+ApplicationLoader.applicationContext.getString(R.string.E2eeOffBecauseOfUser)+"</c>"; break;
                     case 37: s = "<c#808080>"+ApplicationLoader.applicationContext.getString(R.string.E2eeOffBecauseOfRecipient)+"</c>"; break;
+                    case 40: s = ApplicationLoader.applicationContext.getString(R.string.ArchivedChats); break;
                 }
                 return String2CPtr(s);
 

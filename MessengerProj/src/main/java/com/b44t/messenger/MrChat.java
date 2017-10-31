@@ -48,6 +48,7 @@ public class MrChat {
 
     public native int    getId();
     public native int    getType();
+    public native int    getArchived();
     public native String getName();
     public native String getSubtitle();
 

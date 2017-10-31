@@ -420,6 +420,29 @@ public class ChatlistActivity extends BaseFragment implements NotificationCenter
             }
         });
 
+        listView.setOnItemLongClickListener(new RecyclerListView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemClick(View view, int position) {
+                RecyclerView.Adapter adapter = listView.getAdapter();
+                if (adapter == chatlistAdapter) {
+                    final MrChat mrChat = chatlistAdapter.getItem(position);
+                    if (mrChat != null) {
+                        AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
+                        CharSequence[] items = new CharSequence[]{context.getString(mrChat.getArchived()==0? R.string.ArchiveChat : R.string.UnarchiveChat)};
+                        builder.setItems(items, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                MrMailbox.archiveChat(mrChat.getId(), mrChat.getArchived()==0? 1: 0);
+                                MrMailbox.MrCallback(MrMailbox.MR_EVENT_MSGS_CHANGED, 0, 0);
+                            }
+                        });
+                        showDialog(builder.create());
+                    }
+                }
+                return false;
+            }
+        });
+
         searchEmptyView = new EmptyTextProgressView(context);
         searchEmptyView.setVisibility(View.GONE);
         searchEmptyView.setShowAtCenter(true);

@@ -379,6 +379,12 @@ JNIEXPORT jint Java_com_b44t_messenger_MrMailbox_marknoticedChat(JNIEnv *env, jc
 }
 
 
+JNIEXPORT jint Java_com_b44t_messenger_MrMailbox_archiveChat(JNIEnv *env, jclass cls, jint chat_id, jint archive)
+{
+	return (jlong)mrmailbox_archive_chat(get_mrmailbox_t(env, cls), chat_id, archive);
+}
+
+
 JNIEXPORT jint Java_com_b44t_messenger_MrMailbox_createChatByContactId(JNIEnv *env, jclass cls, jint contact_id)
 {
 	return (jint)mrmailbox_create_chat_by_contact_id(get_mrmailbox_t(env, cls), contact_id);
@@ -665,6 +671,13 @@ JNIEXPORT jint Java_com_b44t_messenger_MrChat_getType(JNIEnv *env, jclass cls)
 {
 	mrchat_t* ths = get_mrchat_t(env, cls); if( ths == NULL ) { return 0; }
 	return ths->m_type;
+}
+
+
+JNIEXPORT jint Java_com_b44t_messenger_MrChat_getArchived(JNIEnv *env, jclass cls)
+{
+	mrchat_t* ths = get_mrchat_t(env, cls); if( ths == NULL ) { return 0; }
+	return ths->m_archived;
 }
 
 

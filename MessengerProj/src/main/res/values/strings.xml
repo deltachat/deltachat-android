@@ -408,4 +408,7 @@
     <string name="E2eeOffBecauseOfUser">To enable end-to-end-encryption, check the corresponding option in your settings.</string>
     <string name="E2eeOffBecauseOfRecipient">Encryption will switch to end-to-end if the contact enables the corresponding option.</string>
     <string name="NotNow">Not now</string>
+    <string name="ArchiveChat">Archive chat</string>
+    <string name="UnarchiveChat">Unarchive chat</string>
+    <string name="ArchivedChats">Archived chats</string>
 </resources>
