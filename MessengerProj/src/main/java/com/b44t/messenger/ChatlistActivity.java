@@ -195,7 +195,7 @@ public class ChatlistActivity extends BaseFragment implements NotificationCenter
                     }
                     searching = true;
                     if (listView != null) {
-                        if (!onlySelect) {
+                        if (floatingButton!=null) {
                             floatingButton.setVisibility(View.GONE);
                         }
                     }
@@ -218,7 +218,7 @@ public class ChatlistActivity extends BaseFragment implements NotificationCenter
                     if (listView != null) {
                         searchEmptyView.setVisibility(View.GONE);
                         listView.setEmptyView(emptyView);
-                        if (!onlySelect) {
+                        if (floatingButton!=null) {
                             floatingButton.setVisibility(View.VISIBLE);
                             floatingHidden = true;
                             floatingButton.setTranslationY(AndroidUtilities.dp(100));
@@ -500,33 +500,35 @@ public class ChatlistActivity extends BaseFragment implements NotificationCenter
         textView.setLineSpacing(AndroidUtilities.dp(2), 1);
         emptyView.addView(textView, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT));
 
-        floatingButton = new ImageView(context);
-        floatingButton.setVisibility(onlySelect ? View.GONE : View.VISIBLE);
-        floatingButton.setScaleType(ImageView.ScaleType.CENTER);
-        floatingButton.setBackgroundResource(R.drawable.floating_states);
-        floatingButton.setImageResource(R.drawable.floating_pencil);
-        if (Build.VERSION.SDK_INT >= 21) {
-            StateListAnimator animator = new StateListAnimator();
-            animator.addState(new int[]{android.R.attr.state_pressed}, ObjectAnimator.ofFloat(floatingButton, "translationZ", AndroidUtilities.dp(2), AndroidUtilities.dp(4)).setDuration(200));
-            animator.addState(new int[]{}, ObjectAnimator.ofFloat(floatingButton, "translationZ", AndroidUtilities.dp(4), AndroidUtilities.dp(2)).setDuration(200));
-            floatingButton.setStateListAnimator(animator);
-            floatingButton.setOutlineProvider(new ViewOutlineProvider() {
-                @SuppressLint("NewApi")
+        if(!onlySelect && !showArchivedOnly) {
+            floatingButton = new ImageView(context);
+            floatingButton.setVisibility(View.VISIBLE);
+            floatingButton.setScaleType(ImageView.ScaleType.CENTER);
+            floatingButton.setBackgroundResource(R.drawable.floating_states);
+            floatingButton.setImageResource(R.drawable.floating_pencil);
+            if (Build.VERSION.SDK_INT >= 21) {
+                StateListAnimator animator = new StateListAnimator();
+                animator.addState(new int[]{android.R.attr.state_pressed}, ObjectAnimator.ofFloat(floatingButton, "translationZ", AndroidUtilities.dp(2), AndroidUtilities.dp(4)).setDuration(200));
+                animator.addState(new int[]{}, ObjectAnimator.ofFloat(floatingButton, "translationZ", AndroidUtilities.dp(4), AndroidUtilities.dp(2)).setDuration(200));
+                floatingButton.setStateListAnimator(animator);
+                floatingButton.setOutlineProvider(new ViewOutlineProvider() {
+                    @SuppressLint("NewApi")
+                    @Override
+                    public void getOutline(View view, Outline outline) {
+                        outline.setOval(0, 0, AndroidUtilities.dp(56), AndroidUtilities.dp(56));
+                    }
+                });
+            }
+            frameLayout.addView(floatingButton, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.END | Gravity.BOTTOM, LocaleController.isRTL ? 14 : 0, 0, LocaleController.isRTL ? 0 : 14, 14));
+            floatingButton.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void getOutline(View view, Outline outline) {
-                    outline.setOval(0, 0, AndroidUtilities.dp(56), AndroidUtilities.dp(56));
+                public void onClick(View v) {
+                    Bundle args = new Bundle();
+                    args.putInt("do_what", ContactsActivity.SELECT_CONTACT_FOR_NEW_CHAT);
+                    presentFragment(new ContactsActivity(args));
                 }
             });
         }
-        frameLayout.addView(floatingButton, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.END | Gravity.BOTTOM, LocaleController.isRTL ? 14 : 0, 0, LocaleController.isRTL ? 0 : 14, 14));
-        floatingButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Bundle args = new Bundle();
-                args.putInt("do_what", ContactsActivity.SELECT_CONTACT_FOR_NEW_CHAT);
-                presentFragment(new ContactsActivity(args));
-            }
-        });
 
         listView.setOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
@@ -719,7 +721,7 @@ public class ChatlistActivity extends BaseFragment implements NotificationCenter
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
-        if (!onlySelect && floatingButton != null) {
+        if (floatingButton != null) {
             floatingButton.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
                 @Override
                 public void onGlobalLayout() {
@@ -804,7 +806,7 @@ public class ChatlistActivity extends BaseFragment implements NotificationCenter
     }
 
     private void hideFloatingButton(boolean hide) {
-        if (floatingHidden == hide) {
+        if (floatingButton == null || floatingHidden == hide) {
             return;
         }
         floatingHidden = hide;
