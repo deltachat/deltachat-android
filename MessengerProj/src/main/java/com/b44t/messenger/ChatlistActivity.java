@@ -104,6 +104,8 @@ public class ChatlistActivity extends BaseFragment implements NotificationCenter
     private boolean onlySelect;
     private String onlySelectTitle = "";
 
+    private boolean showArchivedOnly;
+
     private ChatlistActivityDelegate delegate;
 
     ActionBarMenuItem headerItem;
@@ -135,6 +137,7 @@ public class ChatlistActivity extends BaseFragment implements NotificationCenter
             selectAlertString = arguments.getString("selectAlertString");
             selectAlertPreviewString = arguments.getString("selectAlertPreviewString");
             selectAlertOkButtonString = arguments.getString("selectAlertOkButtonString");
+            showArchivedOnly = arguments.getBoolean("showArchivedOnly");
         }
 
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.dialogsNeedReload);
@@ -177,87 +180,101 @@ public class ChatlistActivity extends BaseFragment implements NotificationCenter
             }
         });
 
-        ActionBarMenu menu = actionBar.createMenu();
-        if (!onlySelect ) {
-            passcodeItem = menu.addItem(ID_LOCK_APP, R.drawable.ic_ab_lock_screen);
-            updatePasscodeButton();
-        }
-        final ActionBarMenuItem item = menu.addItem(0, R.drawable.ic_ab_search).setIsSearchField(true, true).setActionBarMenuItemSearchListener(new ActionBarMenuItem.ActionBarMenuItemSearchListener() {
-            @Override
-            public void onSearchExpand() {
-                if( headerItem!=null ) {
-                    headerItem.setVisibility(View.GONE);
-                    actionBar.setBackButtonDrawable(new BackDrawable(false));
-                }
-                searching = true;
-                if (listView != null) {
-                    if (!onlySelect) {
-                        floatingButton.setVisibility(View.GONE);
-                    }
-                }
+        if( !showArchivedOnly ) {
+            ActionBarMenu menu = actionBar.createMenu();
+            if (!onlySelect) {
+                passcodeItem = menu.addItem(ID_LOCK_APP, R.drawable.ic_ab_lock_screen);
                 updatePasscodeButton();
             }
-
-            @Override
-            public boolean canCollapseSearch() {
-                return true;
-            }
-
-            @Override
-            public void onSearchCollapse() {
-                if( headerItem!=null ) {
-                    headerItem.setVisibility(View.VISIBLE);
-                    actionBar.setBackButtonDrawable(null);
-                }
-                searching = false;
-                searchWas = false;
-                if (listView != null) {
-                    searchEmptyView.setVisibility(View.GONE);
-                    listView.setEmptyView(emptyView);
-                    if (!onlySelect) {
-                        floatingButton.setVisibility(View.VISIBLE);
-                        floatingHidden = true;
-                        floatingButton.setTranslationY(AndroidUtilities.dp(100));
-                        hideFloatingButton(false);
+            final ActionBarMenuItem item = menu.addItem(0, R.drawable.ic_ab_search).setIsSearchField(true, true).setActionBarMenuItemSearchListener(new ActionBarMenuItem.ActionBarMenuItemSearchListener() {
+                @Override
+                public void onSearchExpand() {
+                    if (headerItem != null) {
+                        headerItem.setVisibility(View.GONE);
+                        actionBar.setBackButtonDrawable(new BackDrawable(false));
                     }
-                    if (listView.getAdapter() != chatlistAdapter) {
+                    searching = true;
+                    if (listView != null) {
+                        if (!onlySelect) {
+                            floatingButton.setVisibility(View.GONE);
+                        }
+                    }
+                    updatePasscodeButton();
+                }
+
+                @Override
+                public boolean canCollapseSearch() {
+                    return true;
+                }
+
+                @Override
+                public void onSearchCollapse() {
+                    if (headerItem != null) {
+                        headerItem.setVisibility(View.VISIBLE);
+                        actionBar.setBackButtonDrawable(null);
+                    }
+                    searching = false;
+                    searchWas = false;
+                    if (listView != null) {
+                        searchEmptyView.setVisibility(View.GONE);
+                        listView.setEmptyView(emptyView);
+                        if (!onlySelect) {
+                            floatingButton.setVisibility(View.VISIBLE);
+                            floatingHidden = true;
+                            floatingButton.setTranslationY(AndroidUtilities.dp(100));
+                            hideFloatingButton(false);
+                        }
+                        if (listView.getAdapter() != chatlistAdapter) {
+                            listView.setAdapter(chatlistAdapter);
+                            chatlistAdapter.reloadChatlist();
+                            chatlistAdapter.notifyDataSetChanged();
+                        }
+                    }
+                    updatePasscodeButton();
+                }
+
+                @Override
+                public void onTextChanged(EditText editText) {
+                    String text = editText.getText().toString();
+                    if (text.length() != 0) {
+                        // text entered
+                        searchWas = true;
+                        if (searchEmptyView != null && listView.getEmptyView() != searchEmptyView) {
+                            emptyView.setVisibility(View.GONE);
+                            searchEmptyView.showTextView();
+                            listView.setEmptyView(searchEmptyView);
+                        }
+                        if (chatlistSearchAdapter != null) {
+                            if (listView.getAdapter() != chatlistSearchAdapter) {
+                                listView.setAdapter(chatlistSearchAdapter);
+                            }
+                            chatlistSearchAdapter.doSearch(text);
+                            chatlistSearchAdapter.notifyDataSetChanged();
+                        }
+                    } else if (listView.getAdapter() == chatlistSearchAdapter) {
+                        // empty text
                         listView.setAdapter(chatlistAdapter);
                         chatlistAdapter.reloadChatlist();
                         chatlistAdapter.notifyDataSetChanged();
                     }
                 }
-                updatePasscodeButton();
-            }
+            });
+            item.getSearchField().setHint(ApplicationLoader.applicationContext.getString(R.string.Search));
 
-            @Override
-            public void onTextChanged(EditText editText) {
-                String text = editText.getText().toString();
-                if (text.length() != 0 ) {
-                    // text entered
-                    searchWas = true;
-                    if (searchEmptyView != null && listView.getEmptyView() != searchEmptyView) {
-                        emptyView.setVisibility(View.GONE);
-                        searchEmptyView.showTextView();
-                        listView.setEmptyView(searchEmptyView);
-                    }
-                    if (chatlistSearchAdapter != null ) {
-                        if (listView.getAdapter() != chatlistSearchAdapter) {
-                            listView.setAdapter(chatlistSearchAdapter);
-                        }
-                        chatlistSearchAdapter.doSearch(text);
-                        chatlistSearchAdapter.notifyDataSetChanged();
-                    }
-                } else if( listView.getAdapter()== chatlistSearchAdapter ) {
-                    // empty text
-                    listView.setAdapter(chatlistAdapter);
-                    chatlistAdapter.reloadChatlist();
-                    chatlistAdapter.notifyDataSetChanged();
-                }
+            headerItem = menu.addItem(0, R.drawable.ic_ab_other);
+            headerItem.addSubItem(ID_NEW_CHAT, ApplicationLoader.applicationContext.getString(R.string.NewChat), 0);
+            headerItem.addSubItem(ID_NEW_GROUP, ApplicationLoader.applicationContext.getString(R.string.NewGroup), 0);
+            if(!onlySelect) {
+                headerItem.addSubItem(ID_DEADDROP, ApplicationLoader.applicationContext.getString(R.string.Deaddrop), 0);
+                headerItem.addSubItem(ID_SETTINGS, ApplicationLoader.applicationContext.getString(R.string.Settings), 0);
             }
-        });
-        item.getSearchField().setHint(ApplicationLoader.applicationContext.getString(R.string.Search));
+        }
 
-        if (onlySelect) {
+        if( showArchivedOnly ) {
+            actionBar.setBackButtonImage(R.drawable.ic_ab_back);
+            actionBar.setTitle(ApplicationLoader.applicationContext.getString(R.string.ArchivedChats));
+        }
+        else if (onlySelect) {
             actionBar.setBackButtonImage(R.drawable.ic_ab_back);
             actionBar.setTitle(onlySelectTitle);
         } else {
@@ -265,17 +282,11 @@ public class ChatlistActivity extends BaseFragment implements NotificationCenter
         }
         actionBar.setAllowOverlayTitle(true);
 
-        headerItem = menu.addItem(0, R.drawable.ic_ab_other);
-        headerItem.addSubItem(ID_NEW_CHAT, ApplicationLoader.applicationContext.getString(R.string.NewChat), 0);
-        headerItem.addSubItem(ID_NEW_GROUP, ApplicationLoader.applicationContext.getString(R.string.NewGroup), 0);
-        headerItem.addSubItem(ID_DEADDROP, ApplicationLoader.applicationContext.getString(R.string.Deaddrop), 0);
-        headerItem.addSubItem(ID_SETTINGS, ApplicationLoader.applicationContext.getString(R.string.Settings), 0);
-
         actionBar.setActionBarMenuOnItemClick(new ActionBar.ActionBarMenuOnItemClick() {
             @Override
             public void onItemClick(int id) {
                 if (id == -1) {
-                    if (onlySelect) {
+                    if (onlySelect || showArchivedOnly) {
                         finishFragment();
                     }
                 } else if (id == ID_LOCK_APP) {
@@ -408,6 +419,15 @@ public class ChatlistActivity extends BaseFragment implements NotificationCenter
                         builder.setMessage(AndroidUtilities.replaceTags(String.format(context.getString(R.string.AskStartChatWith), contact.getNameNAddr())));
                         showDialog(builder.create());
                     }
+                } else if( chat_id == MrChat.MR_CHAT_ID_ARCHIVED_LINK ) {
+                    Bundle args = new Bundle();
+                    args.putBoolean("showArchivedOnly", true);
+                    args.putBoolean("onlySelect", onlySelect);
+                    args.putString("onlySelectTitle", onlySelectTitle);
+                    args.putString("selectAlertString", selectAlertString);
+                    args.putString("selectAlertPreviewString", selectAlertPreviewString);
+                    args.putString("selectAlertOkButtonString", selectAlertOkButtonString);
+                    presentFragment(new ChatlistActivity(args));
                 } else {
                     /* open exiting chat */
                     Bundle args = new Bundle();
@@ -557,7 +577,15 @@ public class ChatlistActivity extends BaseFragment implements NotificationCenter
             }
         });
 
-        chatlistAdapter = new ChatlistAdapter(context);
+        int listflags = 0;
+        if( showArchivedOnly ) {
+            listflags = MrMailbox.MR_GCL_ARCHIVED_ONLY;
+        }
+        else if( onlySelect ) {
+            listflags = MrMailbox.MR_GCL_NO_SPECIALS;
+        }
+        chatlistAdapter = new ChatlistAdapter(context, listflags);
+
         listView.setAdapter(chatlistAdapter);
         chatlistSearchAdapter = new ChatlistSearchAdapter(context);
 
@@ -573,7 +601,7 @@ public class ChatlistActivity extends BaseFragment implements NotificationCenter
         if (chatlistAdapter != null) {
             chatlistAdapter.notifyDataSetChanged();
         }
-        if (chatlistSearchAdapter != null ) {
+        if (chatlistSearchAdapter != null) {
             chatlistSearchAdapter.notifyDataSetChanged();
         }
         if (checkPermission && !onlySelect && Build.VERSION.SDK_INT >= 23) {
@@ -736,7 +764,7 @@ public class ChatlistActivity extends BaseFragment implements NotificationCenter
                 chatlistAdapter.reloadChatlist();
                 chatlistAdapter.notifyDataSetChanged();
             }
-            if (chatlistSearchAdapter != null ) {
+            if (chatlistSearchAdapter != null) {
                 chatlistSearchAdapter.notifyDataSetChanged();
             }
             if (listView != null) {
@@ -794,7 +822,7 @@ public class ChatlistActivity extends BaseFragment implements NotificationCenter
         for (int a = 0; a < count; a++) {
             View child = listView.getChildAt(a);
             if (child instanceof ChatlistCell) {
-                if( listView.getAdapter() != chatlistSearchAdapter) {
+                if (listView.getAdapter() != chatlistSearchAdapter) {
                     ChatlistCell cell = (ChatlistCell) child;
                     if ((mask & MrMailbox.UPDATE_MASK_NEW_MESSAGE) != 0) {
                         //cell.checkCurrentChatlistIndex();
@@ -850,7 +878,8 @@ public class ChatlistActivity extends BaseFragment implements NotificationCenter
 
         private Context mContext;
 
-        MrChatlist m_chatlist = new MrChatlist(0);
+        private int m_listflags;
+        private MrChatlist m_chatlist = new MrChatlist(0);
 
         private class Holder extends RecyclerView.ViewHolder {
             public Holder(View itemView) {
@@ -859,10 +888,11 @@ public class ChatlistActivity extends BaseFragment implements NotificationCenter
         }
 
         public void reloadChatlist() {
-            m_chatlist = MrMailbox.getChatlist(0, null);
+            m_chatlist = MrMailbox.getChatlist(m_listflags, null);
         }
-        public ChatlistAdapter(Context context) {
+        public ChatlistAdapter(Context context, int listflags) {
             mContext = context;
+            m_listflags = listflags;
             reloadChatlist();
         }
 
