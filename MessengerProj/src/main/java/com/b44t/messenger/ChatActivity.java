@@ -163,6 +163,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
     private final static int ID_ATTACH = 14;
     private final static int ID_SHOW_PROFILE = 15;
     private final static int ID_DELETE_CHAT = 16;
+    private final static int ID_ARCHIVE_CHAT = 17;
     private final static int ID_MUTE = 18;
     private final static int ID_REPLY = 19;
     private final static int ID_INFO = 20;
@@ -434,6 +435,16 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     ProfileActivity fragment = new ProfileActivity(args);
                     presentFragment(fragment);
                 }
+                else if ( id == ID_ARCHIVE_CHAT)
+                {
+                    int do_archive = m_mrChat.getArchived()==0? 1: 0;
+                    MrMailbox.archiveChat((int)dialog_id, do_archive);
+                    MrMailbox.MrCallback(MrMailbox.MR_EVENT_MSGS_CHANGED, 0, 0);
+                    AndroidUtilities.showDoneHint(context);
+                    if( do_archive == 1 ) {
+                        finishFragment();
+                    }
+                }
                 else if ( id == ID_DELETE_CHAT)
                 {
                     // as the history may be a mix of messenger-messages and emails, it is not safe to delete it.
@@ -587,15 +598,16 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
             muteMenuEntry = headerItem.addSubItem(ID_MUTE, null, 0);
         }
 
-        if( !m_isChatWithDeaddrop ) {
-            headerItem.addSubItem(ID_ATTACH, context.getString(R.string.AttachFiles), 0); // "Attach" means "Attach to chat", not "Attach to message" (which is not possible)
-        }
+        //if( !m_isChatWithDeaddrop ) {
+            //headerItem.addSubItem(ID_ATTACH, context.getString(R.string.AttachFiles), 0); // "Attach" means "Attach to chat", not "Attach to message" (which is not possible)
+        //}
 
         if( !m_isChatWithDeaddrop ) {
             headerItem.addSubItem(ID_SHOW_PROFILE, context.getString(R.string.ViewProfile), 0);
         }
 
         if( !m_isChatWithDeaddrop ) {
+            headerItem.addSubItem(ID_ARCHIVE_CHAT, context.getString(m_mrChat.getArchived()==0? R.string.ArchiveChat : R.string.UnarchiveChat), 0);
             headerItem.addSubItem(ID_DELETE_CHAT, context.getString(R.string.DeleteChat), 0);
         }
 
