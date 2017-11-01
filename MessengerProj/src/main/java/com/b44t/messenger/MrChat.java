@@ -98,13 +98,6 @@ public class MrChat {
         return ret;
     }
 
-    public TLRPC.TL_dialog get_TLRPC_TL_dialog()
-    {
-        TLRPC.TL_dialog ret = new TLRPC.TL_dialog();
-        ret.id = getId();
-        return ret;
-    }
-
     public long getCPtr() {
         return m_hChat;
     }

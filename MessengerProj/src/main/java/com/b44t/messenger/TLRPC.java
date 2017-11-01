@@ -261,13 +261,4 @@ public class TLRPC {
 
 	public static class TL_message extends Message {
 	}
-
-	public static class TL_dialog extends TLObject {
-		final public int flags = 0;
-		public Peer peer;
-		public final int unread_count = 0;
-		public final int pts = 0;
-		public DraftMessage draft;
-		public long id; //custom
-	}
 }
