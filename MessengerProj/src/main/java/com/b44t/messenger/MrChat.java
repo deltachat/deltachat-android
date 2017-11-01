@@ -35,6 +35,8 @@ public class MrChat {
     public final static int      MR_CHAT_GROUP              = 120;
 
     public final static int      MR_CHAT_ID_DEADDROP        = 1;
+    public final static int      MR_CHAT_ID_STARRED         = 5;
+    public final static int      MR_CHAT_ID_ARCHIVED_LINK   = 6;
     public final static int      MR_CHAT_ID_LAST_SPECIAL    = 9;
 
     public MrChat(long hChat) {

@@ -466,17 +466,6 @@ public class ChatlistCell extends BaseCell {
         }
     }
 
-    public void checkCurrentChatlistIndex() {
-        if (index < MrMailbox.m_currChatlist.getCnt()) {
-            TLRPC.TL_dialog dialog = MrMailbox.m_currChatlist.get_TLRPC_TL_dialog(index);
-            if (currentChatId != dialog.id ||
-                    unreadCount != dialog.unread_count ) {
-                currentChatId = dialog.id;
-                update(0);
-            }
-        }
-    }
-
     public void update(int mask) {
         if( m_showUnreadCount ) {
             unreadCount = m_mrChat.getFreshMsgCount();

@@ -222,6 +222,7 @@ public class ChatlistActivity extends BaseFragment implements NotificationCenter
                     }
                     if (listView.getAdapter() != chatlistAdapter) {
                         listView.setAdapter(chatlistAdapter);
+                        chatlistAdapter.reloadChatlist();
                         chatlistAdapter.notifyDataSetChanged();
                     }
                 }
@@ -240,21 +241,22 @@ public class ChatlistActivity extends BaseFragment implements NotificationCenter
                         listView.setEmptyView(searchEmptyView);
                     }
                     if (chatlistSearchAdapter != null ) {
-                        if( listView.getAdapter() != chatlistSearchAdapter) {
+                        if (listView.getAdapter() != chatlistSearchAdapter) {
                             listView.setAdapter(chatlistSearchAdapter);
                         }
                         chatlistSearchAdapter.doSearch(text);
                         chatlistSearchAdapter.notifyDataSetChanged();
                     }
-                }
-                else if( listView.getAdapter()== chatlistSearchAdapter) {
+                } else if( listView.getAdapter()== chatlistSearchAdapter ) {
                     // empty text
                     listView.setAdapter(chatlistAdapter);
+                    chatlistAdapter.reloadChatlist();
                     chatlistAdapter.notifyDataSetChanged();
                 }
             }
         });
         item.getSearchField().setHint(ApplicationLoader.applicationContext.getString(R.string.Search));
+
         if (onlySelect) {
             actionBar.setBackButtonImage(R.drawable.ic_ab_back);
             actionBar.setTitle(onlySelectTitle);
@@ -354,7 +356,7 @@ public class ChatlistActivity extends BaseFragment implements NotificationCenter
                 int message_id = 0;
                 RecyclerView.Adapter adapter = listView.getAdapter();
                 if (adapter == chatlistAdapter) {
-                    MrChat mrChat = chatlistAdapter.getItem(position);
+                    MrChat mrChat = chatlistAdapter.getChatByIndex(position);
                     if (mrChat == null) {
                         return;
                     }
@@ -384,12 +386,11 @@ public class ChatlistActivity extends BaseFragment implements NotificationCenter
                         // TODO: maybe this should also block the contact or we can ask.
                         // TODO: it may also make sense to show a little hint that the contact request can also be found via the main menu
                         MrMailbox.marknoticedChat(MrChat.MR_CHAT_ID_DEADDROP); // TODO: only mark the last message as noticed?
-                        MrMailbox.reloadMainChatlist();
                         NotificationCenter.getInstance().postNotificationName(NotificationCenter.dialogsNeedReload);
                         //AndroidUtilities.showDoneHint(ApplicationLoader.applicationContext);
                     }
                     else {
-                        final MrMsg msg = MrMailbox.m_currChatlist.getMsgByIndex(position);
+                        final MrMsg msg = chatlistAdapter.getMsgByIndex(position);
                         MrContact contact = MrMailbox.getContact(msg.getFromId());
                         AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
                         builder.setPositiveButton(R.string.OK, new DialogInterface.OnClickListener() {
@@ -425,8 +426,8 @@ public class ChatlistActivity extends BaseFragment implements NotificationCenter
             public boolean onItemClick(View view, int position) {
                 RecyclerView.Adapter adapter = listView.getAdapter();
                 if (adapter == chatlistAdapter) {
-                    final MrChat mrChat = chatlistAdapter.getItem(position);
-                    if (mrChat != null) {
+                    final MrChat mrChat = chatlistAdapter.getChatByIndex(position);
+                    if (mrChat != null && mrChat.getId()>MrChat.MR_CHAT_ID_LAST_SPECIAL) {
                         AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
                         CharSequence[] items = new CharSequence[]{context.getString(mrChat.getArchived()==0? R.string.ArchiveChat : R.string.UnarchiveChat)};
                         builder.setItems(items, new DialogInterface.OnClickListener() {
@@ -572,7 +573,7 @@ public class ChatlistActivity extends BaseFragment implements NotificationCenter
         if (chatlistAdapter != null) {
             chatlistAdapter.notifyDataSetChanged();
         }
-        if (chatlistSearchAdapter != null) {
+        if (chatlistSearchAdapter != null ) {
             chatlistSearchAdapter.notifyDataSetChanged();
         }
         if (checkPermission && !onlySelect && Build.VERSION.SDK_INT >= 23) {
@@ -732,16 +733,10 @@ public class ChatlistActivity extends BaseFragment implements NotificationCenter
     public void didReceivedNotification(int id, Object... args) {
         if (id == NotificationCenter.dialogsNeedReload) {
             if (chatlistAdapter != null) {
+                chatlistAdapter.reloadChatlist();
                 chatlistAdapter.notifyDataSetChanged();
-                /* EDIT BY MR
-                if (dialogsAdapter.isDataSetChanged()) {
-                    dialogsAdapter.notifyDataSetChanged();
-                } else {
-                    updateVisibleRows(MrMailbox.UPDATE_MASK_NEW_MESSAGE);
-                }
-                */
             }
-            if (chatlistSearchAdapter != null) {
+            if (chatlistSearchAdapter != null ) {
                 chatlistSearchAdapter.notifyDataSetChanged();
             }
             if (listView != null) {
@@ -799,10 +794,11 @@ public class ChatlistActivity extends BaseFragment implements NotificationCenter
         for (int a = 0; a < count; a++) {
             View child = listView.getChildAt(a);
             if (child instanceof ChatlistCell) {
-                if (listView.getAdapter() != chatlistSearchAdapter) {
+                if( listView.getAdapter() != chatlistSearchAdapter) {
                     ChatlistCell cell = (ChatlistCell) child;
                     if ((mask & MrMailbox.UPDATE_MASK_NEW_MESSAGE) != 0) {
-                        cell.checkCurrentChatlistIndex();
+                        //cell.checkCurrentChatlistIndex();
+                        cell.update(mask);
                     } else if ((mask & MrMailbox.UPDATE_MASK_SELECT_DIALOG) != 0) {
                         ;
                     } else {
@@ -854,32 +850,33 @@ public class ChatlistActivity extends BaseFragment implements NotificationCenter
 
         private Context mContext;
 
+        MrChatlist m_chatlist = new MrChatlist(0);
+
         private class Holder extends RecyclerView.ViewHolder {
             public Holder(View itemView) {
                 super(itemView);
             }
         }
 
+        public void reloadChatlist() {
+            m_chatlist = MrMailbox.getChatlist(0, null);
+        }
         public ChatlistAdapter(Context context) {
             mContext = context;
-
-            MrMailbox.reloadMainChatlist();
+            reloadChatlist();
         }
 
         @Override
         public int getItemCount() {
-            return MrMailbox.m_currChatlist.getCnt();
+            return m_chatlist.getCnt();
         }
 
-        public MrChat getItem(int i) {
-            return MrMailbox.m_currChatlist.getChatByIndex(i);
+        public MrChat getChatByIndex(int i) {
+            return m_chatlist.getChatByIndex(i);
         }
 
-        @Override
-        public void onViewAttachedToWindow(RecyclerView.ViewHolder holder) {
-            if (holder.itemView instanceof ChatlistCell) {
-                ((ChatlistCell) holder.itemView).checkCurrentChatlistIndex();
-            }
+        public MrMsg getMsgByIndex(int i) {
+            return m_chatlist.getMsgByIndex(i);
         }
 
         @Override
@@ -899,9 +896,9 @@ public class ChatlistActivity extends BaseFragment implements NotificationCenter
             if (viewHolder.getItemViewType() == 0) {
                 ChatlistCell cell = (ChatlistCell) viewHolder.itemView;
                 cell.useSeparator = (i != getItemCount() - 1);
-                MrChat mrChat = getItem(i);
+                MrChat mrChat = getChatByIndex(i);
 
-                MrPoortext mrSummary = MrMailbox.m_currChatlist.getSummaryByIndex(i, mrChat);
+                MrPoortext mrSummary = m_chatlist.getSummaryByIndex(i, mrChat);
                 cell.setChat(mrChat, mrSummary, i, true);
             }
         }
@@ -943,7 +940,7 @@ public class ChatlistActivity extends BaseFragment implements NotificationCenter
         public void doSearch(String query) {
             rowCount = 0;
 
-            m_chatlist = MrMailbox.getChatlist(query);
+            m_chatlist = MrMailbox.getChatlist(0, query);
             m_chatlistCnt = m_chatlist.getCnt();
             if( m_chatlistCnt>0 ) {
                 rowChatsHeadline = rowCount++;

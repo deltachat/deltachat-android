@@ -336,16 +336,16 @@ JNIEXPORT jint Java_com_b44t_messenger_MrMailbox_MrMailboxDeleteContact(JNIEnv *
 
 /* MrMailbox - handle chats */
 
-JNIEXPORT jlong Java_com_b44t_messenger_MrMailbox_MrMailboxGetChatlist(JNIEnv *env, jclass c, jlong hMailbox, jstring query)
+JNIEXPORT jlong Java_com_b44t_messenger_MrMailbox_MrMailboxGetChatlist(JNIEnv *env, jclass c, jlong hMailbox, jint listflags, jstring query)
 {
 	jlong ret;
 	if( query ) {
 		CHAR_REF(query);
-			ret = (jlong)mrmailbox_get_chatlist((mrmailbox_t*)hMailbox, queryPtr);
+			ret = (jlong)mrmailbox_get_chatlist((mrmailbox_t*)hMailbox, listflags, queryPtr);
 		CHAR_UNREF(query);
 	}
 	else {
-		ret = (jlong)mrmailbox_get_chatlist((mrmailbox_t*)hMailbox, NULL);
+		ret = (jlong)mrmailbox_get_chatlist((mrmailbox_t*)hMailbox, listflags, NULL);
 	}
 	return ret;
 }

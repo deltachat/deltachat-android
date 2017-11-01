@@ -125,7 +125,6 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
     private void updateInterfaceForNewMessage(int chat_id, boolean success, int msg_id)
     {
         if( msg_id <= 0 ) {success = false;}
-        MrMailbox.reloadMainChatlist();
         if( success ) {
             NotificationsController.getInstance().playOutChatSound();
             NotificationCenter.getInstance().postNotificationName(NotificationCenter.didReceivedNewMessages, chat_id, msg_id);

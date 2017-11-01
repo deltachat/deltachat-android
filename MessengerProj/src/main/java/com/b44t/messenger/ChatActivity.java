@@ -2333,7 +2333,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 actionBar.hideActionMode();
                 updateVisibleRows();
 
-                MrMailbox.reloadMainChatlist();
                 NotificationCenter.getInstance().postNotificationName(NotificationCenter.dialogsNeedReload);
             }
         });

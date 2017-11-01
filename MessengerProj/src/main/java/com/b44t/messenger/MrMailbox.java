@@ -115,8 +115,10 @@ public class MrMailbox {
 
 
     // chats
-    public static MrChatlist getChatlist(String query) {
-        return new MrChatlist(MrMailboxGetChatlist(m_hMailbox, query));
+    public final static int MR_GCL_ARCHIVED_ONLY = 0x01;
+    public final static int MR_GCL_NO_SPECIALS = 0x02;
+    public static MrChatlist getChatlist(int listflags, String query) {
+        return new MrChatlist(MrMailboxGetChatlist(m_hMailbox, listflags, query));
     }
 
     public static MrChat getChat(int chat_id) {
@@ -149,7 +151,7 @@ public class MrMailbox {
     public native static int[] getChatContacts(int chat_id);
     public native static int deleteChat(int chat_id);
 
-    private native static long    MrMailboxGetChatlist       (long hMailbox, String query); // returns hChatlist which must be unref'd after usage
+    private native static long    MrMailboxGetChatlist       (long hMailbox, int listflags, String query); // returns hChatlist which must be unref'd after usage
     private native static long    MrMailboxGetChat           (long hMailbox, int chat_id); // return hChat which must be unref'd after usage
 
 
@@ -263,7 +265,6 @@ public class MrMailbox {
                 AndroidUtilities.runOnUIThread(new Runnable() {
                     @Override
                     public void run() {
-                        reloadMainChatlist();
                         NotificationCenter.getInstance().postNotificationName(NotificationCenter.dialogsNeedReload, event, (int)data1, (int)data2);
                         if( event == MR_EVENT_INCOMING_MSG ) {
                             NotificationsController.getInstance().processNewMessages((int)data1, (int)data2);
@@ -277,7 +278,6 @@ public class MrMailbox {
                 AndroidUtilities.runOnUIThread(new Runnable() {
                     @Override
                     public void run() {
-                        reloadMainChatlist();
                         NotificationCenter.getInstance().postNotificationName(NotificationCenter.messagesSentOrRead, event, (int)data1, (int)data2);
                         NotificationCenter.getInstance().postNotificationName(NotificationCenter.dialogsNeedReload);
                     }
@@ -288,7 +288,6 @@ public class MrMailbox {
                 AndroidUtilities.runOnUIThread(new Runnable() {
                     @Override
                     public void run() {
-                        reloadMainChatlist();
                         NotificationCenter.getInstance().postNotificationName(NotificationCenter.contactsDidLoaded);
                         NotificationCenter.getInstance().postNotificationName(NotificationCenter.blockedUsersDidLoaded);
                         NotificationCenter.getInstance().postNotificationName(NotificationCenter.dialogsNeedReload);
@@ -300,7 +299,7 @@ public class MrMailbox {
                 AndroidUtilities.runOnUIThread(new Runnable() {
                     @Override
                     public void run() {
-                        reloadMainChatlist();
+                        NotificationCenter.getInstance().postNotificationName(NotificationCenter.dialogsNeedReload);
                         NotificationCenter.getInstance().postNotificationName(NotificationCenter.updateInterfaces,
                                 UPDATE_MASK_NAME|UPDATE_MASK_CHAT_NAME|
                                 UPDATE_MASK_CHAT_MEMBERS|UPDATE_MASK_AVATAR);
@@ -435,12 +434,7 @@ public class MrMailbox {
         Log.i(tag, msg);
     }
 
-    public static MrChatlist     m_currChatlist = new MrChatlist(0);
     public native static int     getCurrentTime             ();
-    public static void reloadMainChatlist()
-    {
-        m_currChatlist = getChatlist(null);
-    }
 
     public final static int MEDIA_PHOTOVIDEO = 0;
     public static void getMediaCount(final long uid, final int type, final int classGuid, boolean fromCache) {
