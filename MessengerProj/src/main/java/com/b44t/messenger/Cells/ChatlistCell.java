@@ -111,6 +111,11 @@ public class ChatlistCell extends BaseCell {
     private int countWidth;
     private StaticLayout countLayout;
 
+    private boolean drawFlag; // draw a flag as eg. "Archived" below the time
+    private int flagLeft;
+    private int flagWidth;
+    private StaticLayout flagLayout;
+
     private int avatarLeft;
     private int avatarTop = AndroidUtilities.dp(10);
     private int avatarWH = AndroidUtilities.dp(52);
@@ -284,6 +289,7 @@ public class ChatlistCell extends BaseCell {
         drawCheck2 = false;
         drawClock = false;
         drawCount = false;
+        drawFlag = false;
         drawError = false;
         switch( m_summary.getState() ) {
             case MrMsg.MR_OUT_ERROR: drawError = true; break;
@@ -391,6 +397,18 @@ public class ChatlistCell extends BaseCell {
                 errorLeft = AndroidUtilities.dp(16);
                 messageLeft += w;
             }
+        } else if(m_mrChat.getArchived()!=0 ) {
+            String str = ApplicationLoader.applicationContext.getString(R.string.Archived);
+            flagWidth = Math.max(AndroidUtilities.dp(12), (int)Math.ceil(timePaint.measureText(str)));
+            flagLayout = new StaticLayout(str, timePaint, flagWidth, Layout.Alignment.ALIGN_CENTER, 1.0f, 0.0f, false);
+            int w = flagWidth + AndroidUtilities.dp(15);
+            if (!LocaleController.isRTL) {
+                messageWidth -= w;
+                flagLeft = getMeasuredWidth() - flagWidth - AndroidUtilities.dp(15);
+            } else {
+                flagLeft = AndroidUtilities.dp(15);
+            }
+            drawFlag = true;
         } else if (unreadCount != 0 && currentChatId!=MrChat.MR_CHAT_ID_DEADDROP) {
             String countString = String.format("%d", unreadCount);
             countWidth = Math.max(AndroidUtilities.dp(12), (int)Math.ceil(countPaint.measureText(countString)));
@@ -564,6 +582,11 @@ public class ChatlistCell extends BaseCell {
         if (drawError) {
             setDrawableBounds(errorDrawable, errorLeft, errorTop);
             errorDrawable.draw(canvas);
+        } else if(drawFlag) {
+            canvas.save();
+            canvas.translate(flagLeft, countTop + AndroidUtilities.dp(4));
+            flagLayout.draw(canvas);
+            canvas.restore();
         } else if (drawCount) {
             setDrawableBounds(countDrawable, countLeft - AndroidUtilities.dp(5.5f), countTop, countWidth + AndroidUtilities.dp(11), countDrawable.getIntrinsicHeight());
             countDrawable.draw(canvas);
