@@ -455,6 +455,7 @@ public class ChatlistActivity extends BaseFragment implements NotificationCenter
                             public void onClick(DialogInterface dialogInterface, int i) {
                                 MrMailbox.archiveChat(mrChat.getId(), mrChat.getArchived()==0? 1: 0);
                                 MrMailbox.MrCallback(MrMailbox.MR_EVENT_MSGS_CHANGED, 0, 0);
+                                AndroidUtilities.showDoneHint(context);
                             }
                         });
                         showDialog(builder.create());

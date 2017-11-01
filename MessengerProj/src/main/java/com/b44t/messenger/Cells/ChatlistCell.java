@@ -397,10 +397,20 @@ public class ChatlistCell extends BaseCell {
                 errorLeft = AndroidUtilities.dp(16);
                 messageLeft += w;
             }
-        } else if(m_mrChat.getArchived()!=0 ) {
-            String str = ApplicationLoader.applicationContext.getString(R.string.Archived);
-            flagWidth = Math.max(AndroidUtilities.dp(12), (int)Math.ceil(timePaint.measureText(str)));
-            flagLayout = new StaticLayout(str, timePaint, flagWidth, Layout.Alignment.ALIGN_CENTER, 1.0f, 0.0f, false);
+        } else if(m_mrChat.getArchived()!=0 || currentChatId==MrChat.MR_CHAT_ID_ARCHIVED_LINK ) {
+            String str;
+            TextPaint strPaint;
+            if( currentChatId==MrChat.MR_CHAT_ID_ARCHIVED_LINK ) {
+                str = m_mrChat.getName();
+                strPaint = messagePaint;
+            }
+            else {
+                str = ApplicationLoader.applicationContext.getString(R.string.Archived);
+                strPaint = timePaint;
+            }
+
+            flagWidth = Math.max(AndroidUtilities.dp(12), (int)Math.ceil(strPaint.measureText(str)));
+            flagLayout = new StaticLayout(str, strPaint, flagWidth, Layout.Alignment.ALIGN_CENTER, 1.0f, 0.0f, false);
             int w = flagWidth + AndroidUtilities.dp(15);
             if (!LocaleController.isRTL) {
                 messageWidth -= w;
@@ -527,6 +537,15 @@ public class ChatlistCell extends BaseCell {
 
     @Override
     protected void onDraw(Canvas canvas) {
+        if( currentChatId == MrChat.MR_CHAT_ID_ARCHIVED_LINK ) {
+            canvas.save();
+            canvas.translate(getMeasuredWidth()/2-flagWidth/2, getMeasuredHeight()/2-flagLayout.getHeight()/2);
+            flagLayout.draw(canvas);
+            canvas.restore();
+            return;
+        }
+
+
         if (currentChatId == 0) {
             return;
         }
