@@ -437,6 +437,7 @@ public class ChatlistActivity extends BaseFragment implements NotificationCenter
                             }
                         });
                         showDialog(builder.create());
+                        return true; // do haptical feedback
                     }
                 }
                 return false;
