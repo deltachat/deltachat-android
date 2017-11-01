@@ -411,4 +411,5 @@
     <string name="ArchiveChat">Archive chat</string>
     <string name="UnarchiveChat">Unarchive chat</string>
     <string name="ArchivedChats">Archived chats</string>
+    <string name="Archived">Archived</string>
 </resources>

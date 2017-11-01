@@ -39,6 +39,7 @@ import android.text.style.ForegroundColorSpan;
 import android.view.MotionEvent;
 
 import com.b44t.messenger.AndroidUtilities;
+import com.b44t.messenger.ApplicationLoader;
 import com.b44t.messenger.ContactsController;
 import com.b44t.messenger.EmojiInputView;
 import com.b44t.messenger.LocaleController;
@@ -73,7 +74,6 @@ public class ChatlistCell extends BaseCell {
     private long currentChatId;
     private int unreadCount;
     private boolean chatMuted;
-    private int index;
 
     private ImageReceiver avatarImage;
 
@@ -159,13 +159,11 @@ public class ChatlistCell extends BaseCell {
     }
 
     public void setChat(MrChat mrChat, MrPoortext mrSummary, int i, boolean showUnreadCount) {
-        // called for the chats overview
         m_mrChat  = mrChat;
         m_summary = mrSummary;
         m_showUnreadCount = showUnreadCount;
 
         currentChatId = mrChat.getId();
-        index = i;
 
         if(currentChatId==MrChat.MR_CHAT_ID_DEADDROP) {
             setBackgroundColor(Theme.CHATLIST_DEADDROP_BACKGROUND_COLOR);
