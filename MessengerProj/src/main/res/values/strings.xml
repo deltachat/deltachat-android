@@ -412,4 +412,6 @@
     <string name="UnarchiveChat">Unarchive chat</string>
     <string name="ArchivedChats">Archived chats</string>
     <string name="Archived">Archived</string>
+    <string name="LeaveGroup">Leave group</string>
+    <string name="AskLeaveGroup">Are you sure you want to leave this group?</string>
 </resources>

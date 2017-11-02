@@ -160,6 +160,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
     private final static int ID_COPY = 10;
     private final static int ID_FORWARD = 11;
     private final static int ID_DELETE_MESSAGES = 12;
+    private final static int ID_LEAVE_GROUP = 13;
     private final static int ID_ATTACH = 14;
     private final static int ID_SHOW_PROFILE = 15;
     private final static int ID_DELETE_CHAT = 16;
@@ -435,6 +436,21 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     ProfileActivity fragment = new ProfileActivity(args);
                     presentFragment(fragment);
                 }
+                else if( id == ID_LEAVE_GROUP )
+                {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
+                    builder.setPositiveButton(R.string.OK, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            MrMailbox.removeContactFromChat(m_mrChat.getId(), MrContact.MR_CONTACT_ID_SELF);
+                            NotificationCenter.getInstance().postNotificationName(NotificationCenter.updateInterfaces, MrMailbox.UPDATE_MASK_CHAT_MEMBERS);
+                            AndroidUtilities.showDoneHint(context);
+                        }
+                    });
+                    builder.setNegativeButton(R.string.Cancel, null);
+                    builder.setMessage(AndroidUtilities.replaceTags(context.getString(R.string.AskLeaveGroup)));
+                    showDialog(builder.create());
+                }
                 else if ( id == ID_ARCHIVE_CHAT)
                 {
                     int do_archive = m_mrChat.getArchived()==0? 1: 0;
@@ -604,9 +620,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
 
         if( !m_isChatWithDeaddrop ) {
             headerItem.addSubItem(ID_SHOW_PROFILE, context.getString(R.string.ViewProfile), 0);
-        }
-
-        if( !m_isChatWithDeaddrop ) {
+            headerItem.addSubItem(ID_LEAVE_GROUP, context.getString(R.string.LeaveGroup), 0);
             headerItem.addSubItem(ID_ARCHIVE_CHAT, context.getString(m_mrChat.getArchived()==0? R.string.ArchiveChat : R.string.UnarchiveChat), 0);
             headerItem.addSubItem(ID_DELETE_CHAT, context.getString(R.string.DeleteChat), 0);
         }

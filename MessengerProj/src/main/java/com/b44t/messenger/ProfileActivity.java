@@ -460,7 +460,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                     {
                         final int curr_user_id = sortedUserIds[curr_user_index];
                         AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
-                        CharSequence[] items = new CharSequence[]{context.getString(R.string.RemoveMember)};
+                        CharSequence[] items = new CharSequence[]{context.getString(curr_user_id==MrContact.MR_CONTACT_ID_SELF? R.string.LeaveGroup : R.string.RemoveMember)};
                         builder.setItems(items, new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
@@ -474,8 +474,14 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                                     }
                                 });
                                 builder.setNegativeButton(R.string.Cancel, null);
-                                String name = MrMailbox.getContact(curr_user_id).getDisplayName();
-                                builder.setMessage(AndroidUtilities.replaceTags(String.format(context.getString(R.string.AskRemoveMemberFromGroup), name)));
+                                String msg;
+                                if( curr_user_id==MrContact.MR_CONTACT_ID_SELF ) {
+                                    msg = context.getString(R.string.AskLeaveGroup);
+                                }
+                                else {
+                                    msg = String.format(context.getString(R.string.AskRemoveMemberFromGroup), MrMailbox.getContact(curr_user_id).getDisplayName());
+                                }
+                                builder.setMessage(AndroidUtilities.replaceTags(msg));
                                 showDialog(builder.create());
                             }
                         });
