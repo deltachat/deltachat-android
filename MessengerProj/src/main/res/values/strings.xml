@@ -414,4 +414,5 @@
     <string name="Archived">Archived</string>
     <string name="LeaveGroup">Leave group</string>
     <string name="AskLeaveGroup">Are you sure you want to leave this group?</string>
+    <string name="Never">Never</string>
 </resources>

@@ -394,11 +394,8 @@ public class ChatlistActivity extends BaseFragment implements NotificationCenter
                 } else if( chat_id == MrChat.MR_CHAT_ID_DEADDROP ) {
                     /* start new chat */
                     if( ChatlistCell.deaddropClosePressed ) {
-                        // TODO: maybe this should also block the contact or we can ask.
-                        // TODO: it may also make sense to show a little hint that the contact request can also be found via the main menu
-                        MrMailbox.marknoticedChat(MrChat.MR_CHAT_ID_DEADDROP); // TODO: only mark the last message as noticed?
+                        MrMailbox.marknoticedChat(MrChat.MR_CHAT_ID_DEADDROP); // TODO: only mark message of the contact as noticed, not all
                         NotificationCenter.getInstance().postNotificationName(NotificationCenter.dialogsNeedReload);
-                        //AndroidUtilities.showDoneHint(ApplicationLoader.applicationContext);
                     }
                     else {
                         final MrMsg msg = chatlistAdapter.getMsgByIndex(position);
@@ -416,6 +413,13 @@ public class ChatlistActivity extends BaseFragment implements NotificationCenter
                             }
                         });
                         builder.setNegativeButton(R.string.NotNow, null);
+                        builder.setNeutralButton(R.string.Never, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                MrMailbox.blockContact(msg.getFromId(), 1);
+                                NotificationCenter.getInstance().postNotificationName(NotificationCenter.dialogsNeedReload);
+                            }
+                        });
                         builder.setMessage(AndroidUtilities.replaceTags(String.format(context.getString(R.string.AskStartChatWith), contact.getNameNAddr())));
                         showDialog(builder.create());
                     }
