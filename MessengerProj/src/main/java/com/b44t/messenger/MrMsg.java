@@ -152,6 +152,7 @@ public class MrMsg {
         ret.out           = ret.from_id==MrContact.MR_CONTACT_ID_SELF; // true=outgoing message, read eg. in MessageObject.isOutOwner()
         ret.created_by_mr = true;
         ret.show_padlock  = showPadlock()!=0;
+        ret.is_system_cmd = getParamInt('S', 0)!=0;
 
         if( type == MR_MSG_TEXT ) {
             ret.message       = getText();

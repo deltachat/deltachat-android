@@ -24,6 +24,7 @@
 package com.b44t.messenger;
 
 import android.graphics.Paint;
+import android.graphics.Typeface;
 import android.text.Layout;
 import android.text.Spannable;
 import android.text.StaticLayout;
@@ -33,6 +34,7 @@ import android.text.util.Linkify;
 import com.b44t.messenger.ActionBar.Theme;
 
 import java.io.File;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 
 public class MessageObject {
@@ -69,6 +71,7 @@ public class MessageObject {
     public boolean forceUpdate;
 
     private static TextPaint textPaint;
+    private static TextPaint systemCmdPaint;
     public int lastLineWidth;
     public int textWidth;
     public int textHeight;
@@ -90,11 +93,19 @@ public class MessageObject {
             textPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
             textPaint.setColor(Theme.MSG_TEXT_COLOR);
             textPaint.linkColor = Theme.MSG_LINK_TEXT_COLOR;
+
+            systemCmdPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
+            systemCmdPaint.setColor(Theme.MSG_AUDIO_NAME_COLOR);
         }
 
-        textPaint.setTextSize(AndroidUtilities.dp(ApplicationLoader.fontSize));
-
         messageOwner = message;
+
+        if( !messageOwner.is_system_cmd ) {
+            textPaint.setTextSize(AndroidUtilities.dp(ApplicationLoader.fontSize));
+        }
+        else {
+            systemCmdPaint.setTextSize(AndroidUtilities.dp(ApplicationLoader.fontSize));
+        }
 
         messageText = message.message;
         if (messageText == null) {
@@ -331,7 +342,7 @@ public class MessageObject {
         StaticLayout textLayout;
 
         try {
-            textLayout = new StaticLayout(messageText, textPaint, maxWidth, Layout.Alignment.ALIGN_NORMAL, 1.0f, 0.0f, false);
+            textLayout = new StaticLayout(messageText, messageOwner.is_system_cmd? systemCmdPaint : textPaint, maxWidth, Layout.Alignment.ALIGN_NORMAL, 1.0f, 0.0f, false);
         } catch (Exception e) {
 
             return;
@@ -362,7 +373,7 @@ public class MessageObject {
                 block.charactersOffset = startCharacter;
                 try {
                     CharSequence str = messageText.subSequence(startCharacter, endCharacter);
-                    block.textLayout = new StaticLayout(str, textPaint, maxWidth, Layout.Alignment.ALIGN_NORMAL, 1.0f, 0.0f, false);
+                    block.textLayout = new StaticLayout(str, messageOwner.is_system_cmd? systemCmdPaint : textPaint, maxWidth, Layout.Alignment.ALIGN_NORMAL, 1.0f, 0.0f, false);
                     block.textYOffset = textLayout.getLineTop(linesOffset);
                     if (a != 0) {
                         block.height = (int) (block.textYOffset - prevOffset);
