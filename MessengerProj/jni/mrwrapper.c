@@ -379,6 +379,12 @@ JNIEXPORT jint Java_com_b44t_messenger_MrMailbox_marknoticedChat(JNIEnv *env, jc
 }
 
 
+JNIEXPORT jint Java_com_b44t_messenger_MrMailbox_marknoticedContact(JNIEnv *env, jclass cls, jint contact_id)
+{
+	return (jlong)mrmailbox_marknoticed_contact(get_mrmailbox_t(env, cls), contact_id);
+}
+
+
 JNIEXPORT jint Java_com_b44t_messenger_MrMailbox_archiveChat(JNIEnv *env, jclass cls, jint chat_id, jint archive)
 {
 	return (jlong)mrmailbox_archive_chat(get_mrmailbox_t(env, cls), chat_id, archive);

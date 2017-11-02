@@ -127,6 +127,7 @@ public class MrMailbox {
 
     public native static int    markseenMsgs       (int msg_ids[]);
     public native static int    marknoticedChat    (int chat_id);
+    public native static int    marknoticedContact (int contact_id);
     public native static int    archiveChat        (int chat_id, int archive);
 
     public native static int getChatIdByContactId (int contact_id);

@@ -393,12 +393,12 @@ public class ChatlistActivity extends BaseFragment implements NotificationCenter
                     didSelectResult(chat_id, true, false);
                 } else if( chat_id == MrChat.MR_CHAT_ID_DEADDROP ) {
                     /* start new chat */
+                    final MrMsg msg = chatlistAdapter.getMsgByIndex(position);
                     if( ChatlistCell.deaddropClosePressed ) {
-                        MrMailbox.marknoticedChat(MrChat.MR_CHAT_ID_DEADDROP); // TODO: only mark message of the contact as noticed, not all
+                        MrMailbox.marknoticedContact(msg.getFromId());
                         NotificationCenter.getInstance().postNotificationName(NotificationCenter.dialogsNeedReload);
                     }
                     else {
-                        final MrMsg msg = chatlistAdapter.getMsgByIndex(position);
                         MrContact contact = MrMailbox.getContact(msg.getFromId());
                         AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
                         builder.setPositiveButton(R.string.OK, new DialogInterface.OnClickListener() {
