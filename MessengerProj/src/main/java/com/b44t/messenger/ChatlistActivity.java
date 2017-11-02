@@ -445,17 +445,56 @@ public class ChatlistActivity extends BaseFragment implements NotificationCenter
             @Override
             public boolean onItemClick(View view, int position) {
                 RecyclerView.Adapter adapter = listView.getAdapter();
+                MrChat tempChat  = null;
                 if (adapter == chatlistAdapter) {
-                    final MrChat mrChat = chatlistAdapter.getChatByIndex(position);
+                    tempChat = chatlistAdapter.getChatByIndex(position);
+                }
+                else if( adapter == chatlistSearchAdapter ) {
+                    Object obj  = chatlistSearchAdapter.getItem(position);
+                    if( obj instanceof MrChat ) {
+                        tempChat = ((MrChat)obj);
+                    }
+                    else if( obj instanceof MrMsg ) {
+                        MrMsg mrMsg = (MrMsg) obj;
+                        tempChat = MrMailbox.getChat(mrMsg.getChatId());
+                    }
+                }
+
+                if( tempChat!=null ) {
+                    final MrChat mrChat = tempChat;
                     if (mrChat != null && mrChat.getId()>MrChat.MR_CHAT_ID_LAST_SPECIAL) {
                         AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
-                        CharSequence[] items = new CharSequence[]{context.getString(mrChat.getArchived()==0? R.string.ArchiveChat : R.string.UnarchiveChat)};
+                        CharSequence[] items = new CharSequence[]{
+                                context.getString(mrChat.getArchived()==0? R.string.ArchiveChat : R.string.UnarchiveChat),
+                                context.getString(R.string.DeleteChat)
+                        };
                         builder.setItems(items, new DialogInterface.OnClickListener() {
                             @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
-                                MrMailbox.archiveChat(mrChat.getId(), mrChat.getArchived()==0? 1: 0);
-                                MrMailbox.MrCallback(MrMailbox.MR_EVENT_MSGS_CHANGED, 0, 0);
-                                AndroidUtilities.showDoneHint(context);
+                            public void onClick(DialogInterface dialogInterface, int clickedEntry) {
+                                if( clickedEntry==0 ) {
+                                    MrMailbox.archiveChat(mrChat.getId(), mrChat.getArchived() == 0 ? 1 : 0);
+                                    MrMailbox.MrCallback(MrMailbox.MR_EVENT_MSGS_CHANGED, 0, 0);
+                                    AndroidUtilities.showDoneHint(context);
+                                }
+                                else if( clickedEntry==1 ) {
+                                    AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
+                                    builder.setMessage(context.getString(R.string.AreYouSureDeleteThisChat));
+                                    builder.setPositiveButton(R.string.OK, new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialogInterface, int i) {
+                                            if( MrMailbox.deleteChat(mrChat.getId())!=0 ) {
+                                                MrMailbox.MrCallback(MrMailbox.MR_EVENT_MSGS_CHANGED, 0, 0);
+                                                AndroidUtilities.showDoneHint(context);
+                                            }
+                                            else {
+                                                AndroidUtilities.showErrorHint(context);
+                                            }
+                                        }
+                                    });
+                                    builder.setNegativeButton(R.string.Cancel, null);
+                                    showDialog(builder.create());
+
+                                }
                             }
                         });
                         showDialog(builder.create());
@@ -768,6 +807,7 @@ public class ChatlistActivity extends BaseFragment implements NotificationCenter
                 chatlistAdapter.notifyDataSetChanged();
             }
             if (chatlistSearchAdapter != null) {
+                chatlistSearchAdapter.searchAgain();
                 chatlistSearchAdapter.notifyDataSetChanged();
             }
             if (listView != null) {
@@ -960,6 +1000,8 @@ public class ChatlistActivity extends BaseFragment implements NotificationCenter
         int        m_chatlistCnt = 0;
         int[]      m_msgIds = {};
 
+        public String m_lastQuery;
+
         private class Holder extends RecyclerView.ViewHolder {
             public Holder(View itemView) {
                 super(itemView);
@@ -970,7 +1012,14 @@ public class ChatlistActivity extends BaseFragment implements NotificationCenter
             mContext = context;
         }
 
+        public void searchAgain()
+        {
+            doSearch(m_lastQuery);
+        }
+
         public void doSearch(String query) {
+            m_lastQuery = query;
+
             rowCount = 0;
 
             m_chatlist = MrMailbox.getChatlist(0, query);

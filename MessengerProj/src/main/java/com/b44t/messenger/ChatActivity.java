@@ -479,7 +479,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                                 finishFragment();
                             }
                             else {
-                                AndroidUtilities.showErrorHint(getParentActivity()); // normally, there is no reason for deleteChat to fail() as everything is just local
+                                AndroidUtilities.showErrorHint(getParentActivity());
                             }
                         }
                     });
