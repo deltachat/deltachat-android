@@ -223,7 +223,7 @@ static uintptr_t s_mailbox_callback_(mrmailbox_t* mailbox, int event, uintptr_t 
 JNIEXPORT jlong Java_com_b44t_messenger_MrMailbox_MrMailboxNew(JNIEnv *env, jclass c)
 {
 	s_init_globals(env, c);
-	return (jlong)mrmailbox_new(s_mailbox_callback_, NULL);
+	return (jlong)mrmailbox_new(s_mailbox_callback_, NULL, "Android");
 }
 
 
