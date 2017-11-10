@@ -150,7 +150,7 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
             if (message != null)
             {
                 // SEND TEXT
-                newMsg_id = mrChat.sendText(message);
+                newMsg_id = MrMailbox.sendTextMsg((int)dialog_id, message);
                 mrChat.cleanDraft();
             }
             else if (photo != null)
@@ -160,7 +160,7 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
                 String newMsg_attachPath = FileLoader.getPathToAttach(location1, true).toString();
 
                 TLRPC.PhotoSize size1 = photo.sizes.get(photo.sizes.size() - 1);
-                newMsg_id = mrChat.sendMedia(MrMsg.MR_MSG_IMAGE,
+                newMsg_id = MrMailbox.sendMediaMsg((int)dialog_id, MrMsg.MR_MSG_IMAGE,
                         newMsg_attachPath, null, size1.w, size1.h, 0, null, null);
             }
             else if (document != null && MessageObject.isVideoDocument(document))
@@ -177,7 +177,7 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
                     }
                 }
 
-                newMsg_id = mrChat.sendMedia(MrMsg.MR_MSG_VIDEO,
+                newMsg_id = MrMailbox.sendMediaMsg((int)dialog_id, MrMsg.MR_MSG_VIDEO,
                         path, document.mime_type, videoEditedInfo.resultWidth, videoEditedInfo.resultHeight, time_ms, null, null);
 
                 TLRPC.TL_message mown = new TLRPC.TL_message();
@@ -208,7 +208,7 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
                     time_ms = Integer.parseInt(params.get("mr_time_ms")); // if possible, use a higher resolution
                 }
 
-                newMsg_id = mrChat.sendMedia(
+                newMsg_id = MrMailbox.sendMediaMsg((int)dialog_id,
                         MessageObject.isVoiceDocument(document)? MrMsg.MR_MSG_VOICE : MrMsg.MR_MSG_AUDIO,
                         path, document.mime_type, 0, 0, time_ms, author, trackname);
 
@@ -216,7 +216,7 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
             else if (document != null)
             {
                 // SEND FILE
-                newMsg_id = mrChat.sendMedia(MrMsg.MR_MSG_FILE,
+                newMsg_id = MrMailbox.sendMediaMsg((int)dialog_id, MrMsg.MR_MSG_FILE,
                         path, document.mime_type, 0, 0, 0, null, null);
             }
             else

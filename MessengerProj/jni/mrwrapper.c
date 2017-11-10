@@ -483,6 +483,46 @@ JNIEXPORT void Java_com_b44t_messenger_MrMailbox_forwardMsgs(JNIEnv *env, jclass
 }
 
 
+JNIEXPORT jint Java_com_b44t_messenger_MrMailbox_sendTextMsg(JNIEnv *env, jclass cls, jint chat_id, jstring text)
+{
+	CHAR_REF(text);
+		jint msg_id = mrmailbox_send_text_msg(get_mrmailbox_t(env, cls), chat_id, textPtr);
+	CHAR_UNREF(text);
+	return msg_id;
+}
+
+
+JNIEXPORT jint Java_com_b44t_messenger_MrMailbox_sendMediaMsg(JNIEnv *env, jclass cls, jint chat_id, jint type, jstring file, jstring mime, jint w, jint h, jint ms, jstring author, jstring trackname)
+{
+	mrmsg_t* msg = mrmsg_new();
+		msg->m_type = type;
+		CHAR_REF(mime);
+			mrparam_set(msg->m_param, 'm', mimePtr);
+		CHAR_UNREF(mime);
+		CHAR_REF(file);
+			mrparam_set(msg->m_param, 'f', filePtr);
+		CHAR_UNREF(file);
+		if( type == MR_MSG_IMAGE || type == MR_MSG_GIF || type == MR_MSG_VIDEO ) {
+			mrparam_set_int(msg->m_param, 'w', w);
+			mrparam_set_int(msg->m_param, 'h', h);
+		}
+		if( type == MR_MSG_AUDIO || type == MR_MSG_VOICE || type == MR_MSG_VIDEO ) {
+			mrparam_set_int(msg->m_param, 'd', ms);
+		}
+		if( type == MR_MSG_AUDIO ) {
+			CHAR_REF(author);
+				mrparam_set(msg->m_param, 'N', authorPtr);
+			CHAR_UNREF(author);
+			CHAR_REF(trackname);
+				mrparam_set(msg->m_param, 'n', tracknamePtr);
+			CHAR_UNREF(trackname);
+		}
+		jint msg_id = mrmailbox_send_msg(get_mrmailbox_t(env, cls), chat_id, msg);
+	mrmsg_unref(msg);
+	return msg_id;
+}
+
+
 /* MrMailbox - handle config */
 
 JNIEXPORT void Java_com_b44t_messenger_MrMailbox_setConfig(JNIEnv *env, jclass cls, jstring key, jstring value /*may be NULL*/)
@@ -761,50 +801,6 @@ JNIEXPORT jint Java_com_b44t_messenger_MrChat_MrChatSetDraft(JNIEnv *env, jclass
 		jint ret = (jint)mrchat_set_draft((mrchat_t*)hChat, draftPtr /* NULL=delete */);
 	CHAR_UNREF(draft);
 	return ret;
-}
-
-
-JNIEXPORT jint Java_com_b44t_messenger_MrChat_sendText(JNIEnv *env, jclass cls, jstring text)
-{
-	mrmsg_t* msg = mrmsg_new();
-		msg->m_type = MR_MSG_TEXT;
-		CHAR_REF(text);
-			msg->m_text = textPtr? strdup(textPtr) : NULL;
-		CHAR_UNREF(text);
-		jint msg_id = mrchat_send_msg(get_mrchat_t(env, cls), msg);
-	mrmsg_unref(msg);
-	return msg_id;
-}
-
-
-JNIEXPORT jint Java_com_b44t_messenger_MrChat_sendMedia(JNIEnv *env, jclass cls, jint type, jstring file, jstring mime, jint w, jint h, jint ms, jstring author, jstring trackname)
-{
-	mrmsg_t* msg = mrmsg_new();
-		msg->m_type = type;
-		CHAR_REF(mime);
-			mrparam_set(msg->m_param, 'm', mimePtr);
-		CHAR_UNREF(mime);
-		CHAR_REF(file);
-			mrparam_set(msg->m_param, 'f', filePtr);
-		CHAR_UNREF(file);		
-		if( type == MR_MSG_IMAGE || type == MR_MSG_GIF || type == MR_MSG_VIDEO ) {
-			mrparam_set_int(msg->m_param, 'w', w);
-			mrparam_set_int(msg->m_param, 'h', h);
-		}
-		if( type == MR_MSG_AUDIO || type == MR_MSG_VOICE || type == MR_MSG_VIDEO ) {
-			mrparam_set_int(msg->m_param, 'd', ms);
-		}
-		if( type == MR_MSG_AUDIO ) {
-			CHAR_REF(author);
-				mrparam_set(msg->m_param, 'N', authorPtr);
-			CHAR_UNREF(author);
-			CHAR_REF(trackname);
-				mrparam_set(msg->m_param, 'n', tracknamePtr);
-			CHAR_UNREF(trackname);
-		}
-		jint msg_id = mrchat_send_msg(get_mrchat_t(env, cls), msg);
-	mrmsg_unref(msg);
-	return msg_id;
 }
 
 

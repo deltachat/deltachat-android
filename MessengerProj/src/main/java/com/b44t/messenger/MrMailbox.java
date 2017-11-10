@@ -168,6 +168,9 @@ public class MrMailbox {
     public native static void deleteMsgs(int msg_ids[]);
     public native static void forwardMsgs(int msg_ids[], int chat_ids);
 
+    public native static int sendTextMsg(int chat_id, String text);
+    public native static int sendMediaMsg(int chat_id, int type, String file, String mime, int w, int h, int time_ms, String author, String trackname);
+
     private native static long    MrMailboxGetMsg            (long hMailbox, int id); // return hMsg which must be unref'd after usage
     private native static String  MrMailboxGetMsgInfo        (long hMailbox, int id);
 

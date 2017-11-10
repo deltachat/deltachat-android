@@ -76,10 +76,6 @@ public class MrChat {
     }
     public native int getFreshMsgCount();
 
-    public native int sendText(String text);
-
-    public native int sendMedia(int type, String file, String mime, int w, int h, int time_ms, String author, String trackname);
-
     private long                  m_hChat;  // must not be renamed as referenced by JNI under the name "m_hChat"
     private native static void    MrChatUnref                (long hChat);
     private native static String  MrChatGetDraft             (long hChat); // returns null for "no draft"
