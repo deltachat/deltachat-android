@@ -246,8 +246,10 @@ JNIEXPORT void Java_com_b44t_messenger_MrMailbox_close(JNIEnv *env, jclass cls)
 
 JNIEXPORT jstring Java_com_b44t_messenger_MrMailbox_getBlobdir(JNIEnv *env, jclass cls)
 {
-	mrmailbox_t* ths = get_mrmailbox_t(env, cls);
-	return JSTRING_NEW((ths&&ths->m_blobdir)? ths->m_blobdir : NULL);
+	char* temp = mrmailbox_get_blobdir(get_mrmailbox_t(env, cls));
+		jstring ret =  JSTRING_NEW(temp);
+	free(temp);
+	return ret;
 }
 
 
