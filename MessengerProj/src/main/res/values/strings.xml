@@ -32,7 +32,7 @@
     <string name="SystemRoot">System Root</string>
     <string name="SdCard">SD Card</string>
     <string name="Folder">Folder</string>
-    <string name="GalleryInfo">To send images without compression</string>
+    <string name="GalleryInfo">To send uncompressed images</string>
     <!--chat view-->
     <string name="ChatGallery">Gallery</string>
     <string name="ChatCamera">Camera</string>
@@ -42,8 +42,8 @@
     <string name="NoRecent">No recent</string>
     <string name="TypeMessage">Message</string>
     <string name="SlideToCancel">Slide to cancel</string>
-    <string name="SaveToDownloads">Save to \"Downloads\"</string>
-    <string name="SaveToMusic">Save to "\Music\"</string>
+    <string name="SaveToDownloads">Save to \"Downloads"\</string>
+    <string name="SaveToMusic">Save to "\Music"\</string>
     <string name="Share">Share</string>
     <string name="SendItems">Send %1$s</string>
     <string name="ClearRecentEmoji">Clear recent emoji?</string>
@@ -251,7 +251,7 @@
     </plurals>
     <plurals name="AreYouSureDeleteMessages">
         <item quantity="one">Delete %d message? It will also be deleted from the server.</item>
-        <item quantity="other">Delete %d messages? They will also be deleted from the server.</item>
+        <item quantity="other">Delete %d messages? These will also be deleted from the server.</item>
     </plurals>
     <plurals name="NewMessagesInChats">
         <!-- Translators: The first string placeholder "%s" gets replaced with the
