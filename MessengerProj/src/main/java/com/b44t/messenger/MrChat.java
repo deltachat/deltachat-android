@@ -74,7 +74,6 @@ public class MrChat {
     public int setDraft(String draft/*NULL=delete*/, long replyToMsgId) {
         return MrChatSetDraft(m_hChat, draft, replyToMsgId);
     }
-    public native int getFreshMsgCount();
 
     private long                  m_hChat;  // must not be renamed as referenced by JNI under the name "m_hChat"
     private native static void    MrChatUnref                (long hChat);

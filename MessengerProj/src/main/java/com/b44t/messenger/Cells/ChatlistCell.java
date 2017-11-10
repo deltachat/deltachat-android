@@ -493,7 +493,7 @@ public class ChatlistCell extends BaseCell {
 
     public void update(int mask) {
         if( m_showUnreadCount ) {
-            unreadCount = m_mrChat.getFreshMsgCount();
+            unreadCount = MrMailbox.getFreshMsgCount(m_mrChat.getId());
         }
 
         if (mask != 0) {

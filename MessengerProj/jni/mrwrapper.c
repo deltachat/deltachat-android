@@ -450,6 +450,13 @@ JNIEXPORT void Java_com_b44t_messenger_MrMailbox_deleteChat(JNIEnv *env, jclass 
 
 /* MrMailbox - handle messages */
 
+
+JNIEXPORT jint Java_com_b44t_messenger_MrMailbox_getFreshMsgCount(JNIEnv *env, jclass cls, jint chat_id)
+{
+	return mrmailbox_get_fresh_msg_count(get_mrmailbox_t(env, cls), chat_id);
+}
+
+
 JNIEXPORT jlong Java_com_b44t_messenger_MrMailbox_MrMailboxGetMsg(JNIEnv *env, jclass c, jlong hMailbox, jint id)
 {
 	return (jlong)mrmailbox_get_msg((mrmailbox_t*)hMailbox, id);
@@ -786,12 +793,6 @@ JNIEXPORT jint Java_com_b44t_messenger_MrChat_MrChatGetDraftReplyToMsgId(JNIEnv 
 {
 	mrchat_t* ths = (mrchat_t*)hChat; if( ths == NULL ) { return 0; }
 	return 0;
-}
-
-
-JNIEXPORT jint Java_com_b44t_messenger_MrChat_getFreshMsgCount(JNIEnv *env, jclass cls)
-{
-	return mrchat_get_fresh_msg_count(get_mrchat_t(env, cls));
 }
 
 

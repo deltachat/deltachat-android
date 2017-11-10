@@ -165,6 +165,8 @@ public class MrMailbox {
         return MrMailboxGetMsgInfo(m_hMailbox, id);
     }
 
+    public static native int getFreshMsgCount(int chat_id);
+
     public native static void deleteMsgs(int msg_ids[]);
     public native static void forwardMsgs(int msg_ids[], int chat_ids);
 
