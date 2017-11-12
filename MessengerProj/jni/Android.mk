@@ -1635,7 +1635,6 @@ LOCAL_SRC_FILES     += \
 ./messenger-backend/src/mrapeerstate.c \
 ./messenger-backend/src/mrchat.c \
 ./messenger-backend/src/mrchatlist.c \
-./messenger-backend/src/mrcmdline.c \
 ./messenger-backend/src/mrcontact.c \
 ./messenger-backend/src/mrdehtml.c \
 ./messenger-backend/src/mrimap.c \
@@ -1661,6 +1660,7 @@ LOCAL_SRC_FILES     += \
 ./messenger-backend/src/mrsqlite3.c \
 ./messenger-backend/src/mrstock.c \
 ./messenger-backend/src/mrtools.c \
+./messenger-backend/cmdline/cmdline.c \
 ./mrwrapper.c
 
 include $(BUILD_SHARED_LIBRARY)

@@ -28,6 +28,7 @@
 #include <jni.h>
 #include <android/log.h>
 #include "messenger-backend/src/mrmailbox.h"
+#include "messenger-backend/cmdline/cmdline.h"
 
 
 #define CHAR_REF(a) \
@@ -365,31 +366,30 @@ JNIEXPORT jint Java_com_b44t_messenger_MrMailbox_getChatIdByContactId(JNIEnv *en
 }
 
 
-JNIEXPORT jint Java_com_b44t_messenger_MrMailbox_markseenMsgs(JNIEnv *env, jclass cls, jintArray msg_ids)
+JNIEXPORT void Java_com_b44t_messenger_MrMailbox_markseenMsgs(JNIEnv *env, jclass cls, jintArray msg_ids)
 {
 	int msg_ids_cnt;
 	const uint32_t* msg_ids_ptr = jintArray2uint32Pointer(env, msg_ids, &msg_ids_cnt);
-		jint ret = mrmailbox_markseen_msgs(get_mrmailbox_t(env, cls), msg_ids_ptr, msg_ids_cnt);
+		mrmailbox_markseen_msgs(get_mrmailbox_t(env, cls), msg_ids_ptr, msg_ids_cnt);
 	free(msg_ids_ptr);
-	return ret;
 }
 
 
-JNIEXPORT jint Java_com_b44t_messenger_MrMailbox_marknoticedChat(JNIEnv *env, jclass cls, jint chat_id)
+JNIEXPORT void Java_com_b44t_messenger_MrMailbox_marknoticedChat(JNIEnv *env, jclass cls, jint chat_id)
 {
-	return (jlong)mrmailbox_marknoticed_chat(get_mrmailbox_t(env, cls), chat_id);
+	mrmailbox_marknoticed_chat(get_mrmailbox_t(env, cls), chat_id);
 }
 
 
-JNIEXPORT jint Java_com_b44t_messenger_MrMailbox_marknoticedContact(JNIEnv *env, jclass cls, jint contact_id)
+JNIEXPORT void Java_com_b44t_messenger_MrMailbox_marknoticedContact(JNIEnv *env, jclass cls, jint contact_id)
 {
-	return (jlong)mrmailbox_marknoticed_contact(get_mrmailbox_t(env, cls), contact_id);
+	mrmailbox_marknoticed_contact(get_mrmailbox_t(env, cls), contact_id);
 }
 
 
-JNIEXPORT jint Java_com_b44t_messenger_MrMailbox_archiveChat(JNIEnv *env, jclass cls, jint chat_id, jint archive)
+JNIEXPORT void Java_com_b44t_messenger_MrMailbox_archiveChat(JNIEnv *env, jclass cls, jint chat_id, jint archive)
 {
-	return (jlong)mrmailbox_archive_chat(get_mrmailbox_t(env, cls), chat_id, archive);
+	mrmailbox_archive_chat(get_mrmailbox_t(env, cls), chat_id, archive);
 }
 
 
@@ -686,7 +686,7 @@ JNIEXPORT jlong Java_com_b44t_messenger_MrChatlist_MrChatlistGetMsgByIndex(JNIEn
 
 JNIEXPORT jlong Java_com_b44t_messenger_MrChatlist_MrChatlistGetSummaryByIndex(JNIEnv *env, jclass c, jlong hChatlist, jint index, jlong hChat)
 {
-	return (jlong)mrchatlist_get_summary_by_index((mrchatlist_t*)hChatlist, index, (mrchat_t*)hChat);
+	return (jlong)mrchatlist_get_summary((mrchatlist_t*)hChatlist, index, (mrchat_t*)hChat);
 }
 
 
