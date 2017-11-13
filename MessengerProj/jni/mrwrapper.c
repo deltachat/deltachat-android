@@ -325,9 +325,9 @@ JNIEXPORT jint Java_com_b44t_messenger_MrMailbox_MrMailboxCreateContact(JNIEnv *
 }
 
 
-JNIEXPORT jint Java_com_b44t_messenger_MrMailbox_MrMailboxBlockContact(JNIEnv *env, jclass c, jlong hMailbox, jint contact_id, jint block)
+JNIEXPORT void Java_com_b44t_messenger_MrMailbox_MrMailboxBlockContact(JNIEnv *env, jclass c, jlong hMailbox, jint contact_id, jint block)
 {
-	return (jint)mrmailbox_block_contact((mrmailbox_t*)hMailbox, contact_id, block);
+	mrmailbox_block_contact((mrmailbox_t*)hMailbox, contact_id, block);
 }
 
 

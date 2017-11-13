@@ -93,8 +93,8 @@ public class MrMailbox {
         return MrMailboxCreateContact(m_hMailbox, name, addr);
     }
 
-    public static int blockContact(int id, int block) {
-        return MrMailboxBlockContact(m_hMailbox, id, block);
+    public static void blockContact(int id, int block) {
+        MrMailboxBlockContact(m_hMailbox, id, block);
     }
 
     public native static String getContactEncrInfo(int contact_id);
@@ -109,7 +109,7 @@ public class MrMailbox {
 
     private native static long    MrMailboxGetContact        (long hMailbox, int id);// returns hContact which must be unref'd after usage
     private native static int     MrMailboxCreateContact     (long hMailbox, String name, String addr);
-    private native static int     MrMailboxBlockContact      (long hMailbox, int id, int block);
+    private native static void    MrMailboxBlockContact      (long hMailbox, int id, int block);
     private native static int     MrMailboxDeleteContact     (long hMailbox, int id); // returns 0 if the contact could not be deleted (eg. it is in use, maybe by deaddrop)
     private native static int     MrMailboxAddAddressBook    (long hMailbox, String adrbook);
 
