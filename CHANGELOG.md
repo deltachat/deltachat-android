@@ -3,13 +3,15 @@
 ## v0.9.7
 2017-11-14
 
-* Archive chats by a long press
+* Archive chats or delete chats by a long press
 * Notify the user in the chatlist about contact requests of known users or of other Delta Chat clients
 * Show messages only for explicitly wanted chats
 * Show more detailed reasons about failed end-to-end-encryptions
+* Explicit option to leave a group
 * Do not show the padlock if end-to-end-encryption is disabled by the user
 * Also import images from a backup when using a different device with different paths
 * Add copy-to-clipboard function for "About / Info"
+* Rework Emoji-code
 * Add Norwegian Bokmål translation
 * Add Tamil translation
 * Add Turkish translation
