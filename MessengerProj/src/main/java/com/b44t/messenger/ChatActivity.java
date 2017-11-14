@@ -620,7 +620,9 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
 
         if( !m_isChatWithDeaddrop ) {
             headerItem.addSubItem(ID_SHOW_PROFILE, context.getString(R.string.ViewProfile), 0);
-            headerItem.addSubItem(ID_LEAVE_GROUP, context.getString(R.string.LeaveGroup), 0);
+            if( m_mrChat.getType()== MrChat.MR_CHAT_GROUP ) {
+                headerItem.addSubItem(ID_LEAVE_GROUP, context.getString(R.string.LeaveGroup), 0);
+            }
             headerItem.addSubItem(ID_ARCHIVE_CHAT, context.getString(m_mrChat.getArchived()==0? R.string.ArchiveChat : R.string.UnarchiveChat), 0);
             headerItem.addSubItem(ID_DELETE_CHAT, context.getString(R.string.DeleteChat), 0);
         }
