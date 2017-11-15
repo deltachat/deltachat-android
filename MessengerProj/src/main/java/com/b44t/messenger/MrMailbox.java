@@ -204,7 +204,7 @@ public class MrMailbox {
     public final static int MR_EVENT_IMEX_PROGRESS            = 2051;
     public final static int MR_EVENT_IMEX_FILE_WRITTEN        = 2052;
 
-    public final static int MR_EVENT_IS_ONLINE                = 2080;
+    public final static int MR_EVENT_IS_OFFLINE               = 2081;
     public final static int MR_EVENT_GET_STRING               = 2091;
     public final static int MR_EVENT_GET_QUANTITIY_STRING     = 2092;
     public final static int MR_EVENT_HTTP_GET                 = 2100;
@@ -391,8 +391,8 @@ public class MrMailbox {
                 }
                 return String2CPtr(sp);
 
-            case MR_EVENT_IS_ONLINE:
-                return ApplicationLoader.isNetworkOnline()? 1 : 0;
+            case MR_EVENT_IS_OFFLINE:
+                return ApplicationLoader.isNetworkOnline()? 0 : 1;
 
             case MR_EVENT_HTTP_GET:
                 String httpContent = null;
