@@ -1,5 +1,10 @@
 # Delta Chat Changelog
 
+## v0.9.8
+2017-11-15
+
+* Fix a bug that avoids chat creation under some circumstances (bug introduced in 0.9.7)
+
 ## v0.9.7
 2017-11-14
 
