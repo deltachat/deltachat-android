@@ -252,9 +252,9 @@ JNIEXPORT jstring Java_com_b44t_messenger_MrMailbox_getBlobdir(JNIEnv *env, jcla
 }
 
 
-JNIEXPORT void Java_com_b44t_messenger_MrMailbox_configureAndConnect(JNIEnv *env, jclass cls)
+JNIEXPORT jint Java_com_b44t_messenger_MrMailbox_configureAndConnect(JNIEnv *env, jclass cls)
 {
-	mrmailbox_configure_and_connect(get_mrmailbox_t(env, cls));
+	return (jint)mrmailbox_configure_and_connect(get_mrmailbox_t(env, cls));
 }
 
 

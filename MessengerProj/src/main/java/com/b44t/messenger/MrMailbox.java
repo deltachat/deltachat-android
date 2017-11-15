@@ -51,7 +51,7 @@ public class MrMailbox {
     public native static void   close();
     public native static String getBlobdir();
 
-    public native static void configureAndConnect();
+    public native static int configureAndConnect();
     public native static void configureCancel();
 
     public native static int isConfigured();
@@ -197,7 +197,6 @@ public class MrMailbox {
 
     public final static int MR_EVENT_CONTACTS_CHANGED         = 2030;
 
-    public final static int MR_EVENT_CONFIGURE_ENDED          = 2040;
     public final static int MR_EVENT_CONFIGURE_PROGRESS       = 2041;
 
     public final static int MR_EVENT_IMEX_ENDED               = 2050;
@@ -219,15 +218,6 @@ public class MrMailbox {
     public static long MrCallback(final int event, final long data1, final long data2) // this function is called from within the C-wrapper
     {
         switch(event) {
-            case MR_EVENT_CONFIGURE_ENDED:
-                AndroidUtilities.runOnUIThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        NotificationCenter.getInstance().postNotificationName(NotificationCenter.configureEnded, (int)data1);
-                    }
-                });
-                return 0;
-
             case MR_EVENT_CONFIGURE_PROGRESS:
                 AndroidUtilities.runOnUIThread(new Runnable() {
                     @Override

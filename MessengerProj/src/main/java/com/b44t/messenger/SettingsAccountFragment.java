@@ -356,7 +356,19 @@ public class SettingsAccountFragment extends BaseFragment implements Notificatio
         }
 
         // try to connect, this results in an MR_EVENT_CONFIGURE_ENDED resp. NotificationCenter.configureEnded event
-        MrMailbox.configureAndConnect();
+        Utilities.searchQueue.postRunnable(new Runnable() {
+            @Override
+            public void run() {
+                final int res = MrMailbox.configureAndConnect();
+                AndroidUtilities.runOnUIThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        NotificationCenter.getInstance().postNotificationName(NotificationCenter.configureEnded, (int)res);
+                    }
+                });
+            }
+        });
+
     }
 
     @Override
