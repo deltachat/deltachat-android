@@ -365,7 +365,7 @@ public class SettingsAccountFragment extends BaseFragment implements Notificatio
         {
             if( progressDialog!=null ) {
                 // we want the spinner together with a progress info
-                int percent = (Integer)args[0];
+                int percent = (Integer)args[0] / 10;
                 progressDialog.setMessage(ApplicationLoader.applicationContext.getString(R.string.OneMoment)+String.format(" %d%%", percent));
             }
         }
