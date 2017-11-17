@@ -1,5 +1,5 @@
 
-# this script pulls all local files from transifex and copies them to the correct directories
+# this script pulls all files from transifex and copies them to the correct local directories
 
 # before you can use this script, you have to initialize Transifex in this folder:
 # tx init --user=api --pass=<your api token>
