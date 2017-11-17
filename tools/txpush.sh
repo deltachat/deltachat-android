@@ -8,36 +8,29 @@
 # common information about the Transifex CLI client can be found at:
 # https://docs.transifex.com/client/
 
-cp ../MessengerProj/src/main/res/values-ca/strings.xml  "translations/delta-chat-android.stringsxml/                            ca.xml"    
 
-cp ../MessengerProj/src/main/res/values-de/strings.xml  "translations/delta-chat-android.stringsxml/                            de.xml"    
+read -p "Push all translation files to Transifex? This will OVERWRITE all changes on Transifex since the last txpull!"
 
-cp ../MessengerProj/src/main/res/values-es/strings.xml  "translations/delta-chat-android.stringsxml/                            es.xml"    
+TXPREFIX="translations/delta-chat-android.stringsxml/                            " # yes, there are spaces. don't know why
+SRCPREFIX="../MessengerProj/src/main/res/values"
 
-cp ../MessengerProj/src/main/res/values-fr/strings.xml  "translations/delta-chat-android.stringsxml/                            fr.xml"    
+cp  "${SRCPREFIX}-ca/strings.xml"  "${TXPREFIX}ca.xml"
+cp  "${SRCPREFIX}-de/strings.xml"  "${TXPREFIX}de.xml"
+cp  "${SRCPREFIX}/strings.xml"     "${TXPREFIX}en.xml"  # also copy back the source, this is the only way to update the english strings
+cp  "${SRCPREFIX}-es/strings.xml"  "${TXPREFIX}es.xml"
+cp  "${SRCPREFIX}-fr/strings.xml"  "${TXPREFIX}fr.xml"
+cp  "${SRCPREFIX}-hu/strings.xml"  "${TXPREFIX}hu.xml"
+cp  "${SRCPREFIX}-it/strings.xml"  "${TXPREFIX}it.xml"
+cp  "${SRCPREFIX}-ko/strings.xml"  "${TXPREFIX}ko.xml"
+cp  "${SRCPREFIX}-nb/strings.xml"  "${TXPREFIX}nb_NO.xml"
+cp  "${SRCPREFIX}-nl/strings.xml"  "${TXPREFIX}nl.xml"
+cp  "${SRCPREFIX}-pl/strings.xml"  "${TXPREFIX}pl.xml"
+cp  "${SRCPREFIX}-pt/strings.xml"  "${TXPREFIX}pt.xml"
+cp  "${SRCPREFIX}-ru/strings.xml"  "${TXPREFIX}ru.xml"
+cp  "${SRCPREFIX}-ta/strings.xml"  "${TXPREFIX}ta.xml"
+cp  "${SRCPREFIX}-te/strings.xml"  "${TXPREFIX}te.xml"
+cp  "${SRCPREFIX}-tr/strings.xml"  "${TXPREFIX}tr.xml"
+cp  "${SRCPREFIX}-uk/strings.xml"  "${TXPREFIX}uk.xml"
 
-cp ../MessengerProj/src/main/res/values-hu/strings.xml  "translations/delta-chat-android.stringsxml/                            hu.xml"    
+tx push -s -t    # -s: push source, -t: push translations, -f: ignore timestamps; see https://docs.transifex.com/client/push
 
-cp ../MessengerProj/src/main/res/values-it/strings.xml  "translations/delta-chat-android.stringsxml/                            it.xml"    
-
-cp ../MessengerProj/src/main/res/values-ko/strings.xml  "translations/delta-chat-android.stringsxml/                            ko.xml"    
-
-cp ../MessengerProj/src/main/res/values-nb/strings.xml  "translations/delta-chat-android.stringsxml/                            nb_NO.xml" 
-
-cp ../MessengerProj/src/main/res/values-nl/strings.xml  "translations/delta-chat-android.stringsxml/                            nl.xml"    
-
-cp ../MessengerProj/src/main/res/values-pl/strings.xml  "translations/delta-chat-android.stringsxml/                            pl.xml"    
-
-cp ../MessengerProj/src/main/res/values-pt/strings.xml  "translations/delta-chat-android.stringsxml/                            pt.xml"    
-
-cp ../MessengerProj/src/main/res/values-ru/strings.xml  "translations/delta-chat-android.stringsxml/                            ru.xml"    
-
-cp ../MessengerProj/src/main/res/values-ta/strings.xml  "translations/delta-chat-android.stringsxml/                            ta.xml"    
-
-cp ../MessengerProj/src/main/res/values-te/strings.xml  "translations/delta-chat-android.stringsxml/                            te.xml"    
-
-cp ../MessengerProj/src/main/res/values-tr/strings.xml  "translations/delta-chat-android.stringsxml/                            tr.xml"    
-
-cp ../MessengerProj/src/main/res/values-uk/strings.xml  "translations/delta-chat-android.stringsxml/                            uk.xml"    
-
-tx push -t # should -s if we also push the source, see https://docs.transifex.com/client/push

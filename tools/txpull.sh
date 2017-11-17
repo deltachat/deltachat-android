@@ -9,37 +9,26 @@
 # https://docs.transifex.com/client/
 
 rm -r translations
-tx pull -a    # -s would also fetch the source file, this is not wanted
+tx pull -a -s   # -s fetches the source file, we do not copy it, but we need it for pushing pacj
 
-cp "translations/delta-chat-android.stringsxml/                            ca.xml"    ../MessengerProj/src/main/res/values-ca/strings.xml
+TXPREFIX="translations/delta-chat-android.stringsxml/                            " # yes, there are spaces. don't know why
+SRCPREFIX="../MessengerProj/src/main/res/values"
 
-cp "translations/delta-chat-android.stringsxml/                            de.xml"    ../MessengerProj/src/main/res/values-de/strings.xml
-
-cp "translations/delta-chat-android.stringsxml/                            es.xml"    ../MessengerProj/src/main/res/values-es/strings.xml
-
-cp "translations/delta-chat-android.stringsxml/                            fr.xml"    ../MessengerProj/src/main/res/values-fr/strings.xml
-
-cp "translations/delta-chat-android.stringsxml/                            hu.xml"    ../MessengerProj/src/main/res/values-hu/strings.xml
-
-cp "translations/delta-chat-android.stringsxml/                            it.xml"    ../MessengerProj/src/main/res/values-it/strings.xml
-
-cp "translations/delta-chat-android.stringsxml/                            ko.xml"    ../MessengerProj/src/main/res/values-ko/strings.xml
-
-cp "translations/delta-chat-android.stringsxml/                            nb_NO.xml" ../MessengerProj/src/main/res/values-nb/strings.xml
-
-cp "translations/delta-chat-android.stringsxml/                            nl.xml"    ../MessengerProj/src/main/res/values-nl/strings.xml
-
-cp "translations/delta-chat-android.stringsxml/                            pl.xml"    ../MessengerProj/src/main/res/values-pl/strings.xml
-
-cp "translations/delta-chat-android.stringsxml/                            pt.xml"    ../MessengerProj/src/main/res/values-pt/strings.xml
-
-cp "translations/delta-chat-android.stringsxml/                            ru.xml"    ../MessengerProj/src/main/res/values-ru/strings.xml
-
-cp "translations/delta-chat-android.stringsxml/                            ta.xml"    ../MessengerProj/src/main/res/values-ta/strings.xml
-
-cp "translations/delta-chat-android.stringsxml/                            te.xml"    ../MessengerProj/src/main/res/values-te/strings.xml
-
-cp "translations/delta-chat-android.stringsxml/                            tr.xml"    ../MessengerProj/src/main/res/values-tr/strings.xml
-
-cp "translations/delta-chat-android.stringsxml/                            uk.xml"    ../MessengerProj/src/main/res/values-uk/strings.xml
+cp "${TXPREFIX}ca.xml"    "${SRCPREFIX}-ca/strings.xml"
+cp "${TXPREFIX}de.xml"    "${SRCPREFIX}-de/strings.xml"
+#  "${TXPREFIX}en.xml"    "${SRCPREFIX}/strings.xml"   # we do not copy the source as this cannot be modified at Trasifex
+cp "${TXPREFIX}es.xml"    "${SRCPREFIX}-es/strings.xml"
+cp "${TXPREFIX}fr.xml"    "${SRCPREFIX}-fr/strings.xml"
+cp "${TXPREFIX}hu.xml"    "${SRCPREFIX}-hu/strings.xml"
+cp "${TXPREFIX}it.xml"    "${SRCPREFIX}-it/strings.xml"
+cp "${TXPREFIX}ko.xml"    "${SRCPREFIX}-ko/strings.xml"
+cp "${TXPREFIX}nb_NO.xml" "${SRCPREFIX}-nb/strings.xml"
+cp "${TXPREFIX}nl.xml"    "${SRCPREFIX}-nl/strings.xml"
+cp "${TXPREFIX}pl.xml"    "${SRCPREFIX}-pl/strings.xml"
+cp "${TXPREFIX}pt.xml"    "${SRCPREFIX}-pt/strings.xml"
+cp "${TXPREFIX}ru.xml"    "${SRCPREFIX}-ru/strings.xml"
+cp "${TXPREFIX}ta.xml"    "${SRCPREFIX}-ta/strings.xml"
+cp "${TXPREFIX}te.xml"    "${SRCPREFIX}-te/strings.xml"
+cp "${TXPREFIX}tr.xml"    "${SRCPREFIX}-tr/strings.xml"
+cp "${TXPREFIX}uk.xml"    "${SRCPREFIX}-uk/strings.xml"
 
