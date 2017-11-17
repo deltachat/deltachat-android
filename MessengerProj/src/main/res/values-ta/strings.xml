@@ -105,6 +105,7 @@
     <string name="SmartNotificationsTimes">வேளைகள் </string>
     <string name="Gallery">காட்சி கூடம் </string>
     <string name="BlurOff">நிறுத்தவும்</string>
+    <string name="PermissionOpenSettings">அமைப்புகள் </string>
     <!--Intro view-->
     <string name="Intro1Headline">டெல்டா அரட்டை </string>
     </resources>

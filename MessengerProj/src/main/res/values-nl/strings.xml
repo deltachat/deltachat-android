@@ -338,7 +338,7 @@
     <string name="InviteMenuEntry">Vrienden uitnodigen</string>
     <string name="InviteText">Ik gebruik Delta Chat, %1$s, je kan me berichtjes sturen op %2$s</string>
     <string name="AdvancedSettings">Geavanceerde instellingen</string>
-    <string name="AskResetNotifications" >Herstel alle notificatieinstellingen en geluiden van deze pagina en je contacten en groepen?</string>
+    <string name="AskResetNotifications">Herstel alle notificatieinstellingen en geluiden van deze pagina en je contacten en groepen?</string>
     <string name="AttachFiles">Voeg bestanden toe</string>
     <string name="ErrGroupNameEmpty">Typ een naam in voor de groep.</string>
     <string name="MsgNewGroupDraftHint">Schrijf een eerste bericht om anderen te kunnen laten reageren in deze groep.\n\n• Het is oké als niet iedereen Delta Chat gebruikt.\n\n• Het leveren van het eerste bericht kan even duren.</string>

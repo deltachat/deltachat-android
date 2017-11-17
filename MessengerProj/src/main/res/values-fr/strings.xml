@@ -338,7 +338,7 @@
     <string name="InviteMenuEntry">Envoyer des invitations</string>
     <string name="InviteText">J\'utilise la messagerie Delta Chat maintenant - %1$s - vous pouvez me contacter à %2$s</string>
     <string name="AdvancedSettings">Paramètres avancés</string>
-    <string name="AskResetNotifications" >Réinitialiser toutes les paramètres de notification et les sons de cette page ainsi que de vos contacts et groupes?</string>
+    <string name="AskResetNotifications">Réinitialiser toutes les paramètres de notification et les sons de cette page ainsi que de vos contacts et groupes?</string>
     <string name="AttachFiles">Joindre des fichiers</string>
     <string name="ErrGroupNameEmpty">Merci de saisir un nom pour le groupe.</string>
     <string name="MsgNewGroupDraftHint">Écrivez un premier message pour permettre aux autres de répondre dans ce groupe.\n\n• Ça ne devrait pas poser de problème si tous les membres du groupe n\'utilisent pas Delta Chat.\n\n• L\'envoi du premier message peut prendre un moment.</string>

@@ -336,7 +336,7 @@
     <string name="InviteMenuEntry">Invitar a amigos</string>
     <string name="InviteText">Estoy usando Delta Chat ahora - %1$s - puede escribirme a %2$s</string>
     <string name="AdvancedSettings">Ajustes avanzados</string>
-    <string name="AskResetNotifications" >¿Reiniciar los ajustes de notificación y sonido de esta página y de sus contactos y grupos?</string>
+    <string name="AskResetNotifications">¿Reiniciar los ajustes de notificación y sonido de esta página y de sus contactos y grupos?</string>
     <string name="AttachFiles">Adjuntar archivos</string>
     <string name="ErrGroupNameEmpty">Introduzca un nombre para el grupo.</string>
     <string name="MsgNewGroupDraftHint">Escriba un primer mensaje para permitir a los demás participar en este grupo.\n\n• No importa si los miembros no usan Delta Chat.\n\n• El primer mensaje puede tardar un momento.</string>

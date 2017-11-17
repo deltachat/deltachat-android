@@ -169,6 +169,7 @@
     <!--permissions-->
     <string name="PermissionContacts">Delta Chat necessita accedir als teus contactes perquè puguis connectar amb els teus amics de de qualsevol dels teus dispositius.</string>
     <string name="PermissionStorage">Delta Chat necessita accedir al teu emmagatzematge per poder enviar i guardar fotos, vídeos, música i altres continguts audiovisuals.</string>
+    <string name="PermissionOpenSettings">Preferències</string>
     <!--Intro view-->
     <string name="Intro1Headline">Delta Chat</string>
     <string name="Intro2Headline">Independent</string>

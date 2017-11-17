@@ -352,7 +352,7 @@
     <string name="InviteMenuEntry">Надіслати запрошення</string>
     <string name="InviteText">Я користаюся оповісником Delta Chat -%1$s- ви можети написати мені на%2$s</string>
     <string name="AdvancedSettings">Просунуті налаштування</string>
-    <string name="AskResetNotifications" >Скинути всі налаштування оповіщень та звуки на цій сторінці, а також у контактах та спільнотах?</string>
+    <string name="AskResetNotifications">Скинути всі налаштування оповіщень та звуки на цій сторінці, а також у контактах та спільнотах?</string>
     <string name="AttachFiles">Долучити файли</string>
     <string name="ErrGroupNameEmpty">Упишіть назву спільноти</string>
     <string name="MsgNewGroupDraftHint">Напишіть перше повідомлення аби інші змогли відповідати у спільноті.\n\n• Нічого страшного, якщо не всі учасники користаються Delta Chatом.\n\n• Доставлення першого повідомлення відбере лише мить.</string>

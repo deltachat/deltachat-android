@@ -337,7 +337,7 @@
     <string name="InviteMenuEntry">Meghívó küldése</string>
     <string name="InviteText">A Delta Chat nevű programmal chatelek - %1$s - írhatsz nekem ezen a címen: %2$s</string>
     <string name="AdvancedSettings">További beállítások</string>
-    <string name="AskResetNotifications" >Az oldal, a partnereid és csoportjaid minden értesítési és hangbeállítását visszaállítod?</string>
+    <string name="AskResetNotifications">Az oldal, a partnereid és csoportjaid minden értesítési és hangbeállítását visszaállítod?</string>
     <string name="AttachFiles">Fájlok csatolása</string>
     <string name="ErrGroupNameEmpty">Nevezd el a csoportot.</string>
     <string name="MsgNewGroupDraftHint">Írj egy kezdőüzenetet, hogy a többiek válaszolhassanak a csoportban.\n\n• Nincs gond, ha nem használja minden tag a Delta Chatet.\n\n• Az első üzenet kézbesítése kicsit lassabb lehet.</string>

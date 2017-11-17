@@ -338,7 +338,7 @@
     <string name="InviteMenuEntry">Convidar amigos</string>
     <string name="InviteText">Estou usando o Delta Chat messenger - %1$s - meu contato neste app é: %2$s</string>
     <string name="AdvancedSettings">Configurações avançadas</string>
-    <string name="AskResetNotifications" >Zerar todas as configurações e sons gerais, dos contatos e dos grupos?</string>
+    <string name="AskResetNotifications">Zerar todas as configurações e sons gerais, dos contatos e dos grupos?</string>
     <string name="AttachFiles">Anexar arquivos</string>
     <string name="ErrGroupNameEmpty">Por favor, designar um nome ao grupo.</string>
     <string name="MsgNewGroupDraftHint">Escreva a primeira mensagem, possibilitando assim que os demais participem do grupo.\n\n• Tudo bem se nem todos usarem o Delta Chat.\n\n• A primeira mensagem pode demorar um pouco.</string>

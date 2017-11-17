@@ -366,7 +366,7 @@
     <string name="InviteMenuEntry">Wyślij zaproszenia</string>
     <string name="InviteText">Teraz używam komunikatora Delta Chat - %1$s - możesz pisać do mnie na %2$s</string>
     <string name="AdvancedSettings">Ustawienia zaawansowane</string>
-    <string name="AskResetNotifications" >Zresetować wszystkie ustawienia powiadomień i dźwięków na tej stronie oraz dla swoich kontaktów i grup?</string>
+    <string name="AskResetNotifications">Zresetować wszystkie ustawienia powiadomień i dźwięków na tej stronie oraz dla swoich kontaktów i grup?</string>
     <string name="AttachFiles">Załącz pliki</string>
     <string name="ErrGroupNameEmpty">Podaj nazwę dla grupy</string>
     <string name="MsgNewGroupDraftHint">Napisz pierwszą wiadomość, by inni mogli odpowiedzieć w tej grupie.\n\n• Nie ma problemu, jeśli nie wszyscy członkowie korzystają z Delta Chat.\n\n• Dostarczenie pierwszej wiadomości może chwilę potrwać.</string>
