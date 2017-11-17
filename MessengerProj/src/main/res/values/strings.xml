@@ -208,7 +208,7 @@
     <string name="PermissionOpenSettings">Adapt settings</string>
     <!--Intro view-->
     <string name="Intro1Headline">Delta Chat</string>
-    <string name="Intro1Message">The messenger with the <![CDATA[<b>largest range</b>]]> in the world.<![CDATA[<br/><b>Free</b>]]> and <![CDATA[<b>safe</b>]]>.</string>
+    <string name="Intro1Message">The messenger with the <![CDATA[<b>largest range</b>]]> in the world.<![CDATA[<br/><b>Free</b>]]> and <![CDATA[<b>independent</b>]]>.</string>
 
     <string name="Intro2Headline">Independent</string>
     <string name="Intro2Message"><![CDATA[<b>No dependencies</b>]]> on foreign computers or services. The app only uses your email-server.</string>
@@ -222,7 +222,7 @@
     <string name="Intro5Headline">Free</string>
     <string name="Intro5Message"><![CDATA[<b>Delta Chat</b>]]> is free forever.<![CDATA[<br/>]]>Open-source. No ads. No subscription. No vendor lock-in.</string>
 
-    <string name="Intro6Headline">Safe</string>
+    <string name="Intro6Headline">Encrypted</string>
     <string name="Intro6Message"><![CDATA[<b>Encrypted</b>]]> with all common algorithms. Messages stay on your servers.</string>
 
     <string name="Intro7Headline">Trustworthy</string>
