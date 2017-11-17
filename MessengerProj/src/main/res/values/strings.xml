@@ -318,7 +318,7 @@
     <string name="InboxHeadline">Inbox</string>
     <string name="OutboxHeadline">Outbox</string>
     <string name="MyAccountExplain">For known email providers, additional settings are determinated automatically.</string>
-    <string name="MyAccountExplain2" >Sometimes, <![CDATA[<b>]]>IMAP needs to be enabled<![CDATA[</b>]]> in the email web frontend.\n\nConsult you email provider or friends if you run into problems.</string>
+    <string name="MyAccountExplain2" >Sometimes, <![CDATA[<b>]]>IMAP needs to be enabled<![CDATA[</b>]]> in the email web frontend.\n\nConsult your email provider or friends if you run into problems.</string>
     <string name="AccountNotConfigured">Account not configured</string>
     <string name="AboutThisProgram">About Delta Chat</string>
     <string name="NotSet">Not set</string>
@@ -389,7 +389,7 @@
     <string name="ReadReceipt">Return receipt</string>
     <string name="NameAndStatus">Name and status</string>
     <string name="MyStatus">My status</string>
-    <string name="MyStatusExplain">The status is shown in email footers, among other places..</string>
+    <string name="MyStatusExplain">The status is shown in email footers, among other places.</string>
     <string name="MsgGroupImageDeleted">Group image deleted.</string>
     <string name="AskDeleteGroupImage">Are you sure to delete the group image?\n\nThis will affect all devices of all group members.</string>
     <string name="ExportImportHeader">Export and import</string>
