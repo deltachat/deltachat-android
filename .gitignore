@@ -9,3 +9,7 @@ libs/
 
 # ignore private scripts and directories, eg. local2github.prv.sh
 *.prv*
+
+# transifex temporary files
+tools/.tx/
+tools/translations/
