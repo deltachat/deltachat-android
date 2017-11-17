@@ -13,6 +13,7 @@
     <string name="SelectChat">Söyleşi seç ...</string>
     <string name="Search">Arama</string>
     <string name="MuteNotifications">Bildirimleri sessize al</string>
+    <string name="MuteFor">%1$s için sessiz</string>
     <string name="UnmuteNotifications">Sessizden çıkarma</string>
     <string name="Draft">Taslak</string>
     <string name="AttachMusic">Müzik</string>
@@ -67,9 +68,11 @@
     <string name="BlockedContacts">Engellenmiş kişiler</string>
     <string name="Default">Öntanımlı</string>
     <string name="OnlyIfSilent">Sadece sessizse</string>
+    <string name="ChatBackground">Söyleşi arkaplanı</string>
     <string name="Help">Yardım</string>
     <string name="Enabled">Aç</string>
     <string name="Disabled">Kapat</string>
+    <string name="LedColor">LED rengi</string>
     <string name="Short">Kısa</string>
     <string name="Long">Uzun</string>
     <string name="EditName">Adı düzenle</string>
@@ -79,6 +82,7 @@
     <string name="NotificationsPriorityMax">En yüksek öncelik</string>
     <string name="RepeatNotifications">Bildirimleri yinele</string>
     <string name="NotificationsOther">Diğer</string>
+    <string name="SmartNotifications">Sınır bildirimleri</string>
     <string name="DirectShare">Doğrudan paylaşım</string>
     <!--cache view-->
     <string name="CacheSettings">Depolama</string>
@@ -108,7 +112,10 @@
     <string name="NoVideo">Henüz vidyo yok</string>
     <string name="CropImage">Görüntüyü kırp</string>
     <string name="EditImage">Görüntüyü düzenle</string>
+    <string name="Enhance">Artırma</string>
+    <string name="Highlights">Vurgulama</string>
     <string name="Contrast">Keskinlik</string>
+    <string name="Exposure">Poz</string>
     <string name="Warmth">Sıcaklık</string>
     <string name="Saturation">Renk doygunluğu</string>
     <string name="Vignette">Süsleme</string>
@@ -116,6 +123,7 @@
     <string name="Sharpen">Keskinleştirme</string>
     <string name="Fade">Soldurma</string>
     <string name="TintShadows">GÖLGELER</string>
+    <string name="TintHighlights">VURGULAMALAR</string>
     <string name="Curves">Eğriler</string>
     <string name="CurvesAll">HEPSİ</string>
     <string name="CurvesRed">KIRMIZI</string>
@@ -152,6 +160,8 @@
     <string name="AttachGif">GİF</string>
     <string name="AttachDocument">Dosya</string>
     <string name="AttachVoiceMessage">Sesli ileti</string>
+    <string name="AreYouSureBlockContact">Bu kişiyi engellemek istediğinizden emin misiniz?</string>
+    <string name="AreYouSureDeleteContact">Bu kişiyi silmek istediğizden emin misiniz?</string>
     <string name="PermissionOpenSettings">Ayarları değiştir</string>
     <!--Intro view-->
     <string name="Intro1Headline">Delta Chat</string>
@@ -159,6 +169,26 @@
     <string name="Intro3Headline">Hızlı</string>
     <string name="Intro4Headline">Muhteşem</string>
     <string name="Intro6Headline">Güvenli</string>
+    <plurals name="NewMessages">
+        <item quantity="one">%d yeni ileti</item>
+        <item quantity="other">%dyeni ileti</item>
+    </plurals>
+    <plurals name="messages">
+        <item quantity="one">%dileti</item>
+        <item quantity="other">%dileti</item>
+    </plurals>
+    <plurals name="Chats">
+        <item quantity="one">%d söyleşi</item>
+        <item quantity="other">%dsöyleşi</item>
+    </plurals>
+    <plurals name="Minutes">
+        <item quantity="one">%d dakika</item>
+        <item quantity="other">%d dakika</item>
+    </plurals>
+    <plurals name="Hours">
+        <item quantity="one">%d saat</item>
+        <item quantity="other">%d saat</item>
+    </plurals>
     <string name="formatterYear">dd.MM.yyyy</string>
     <string name="formatterDay24H">HH:mm</string>
     <string name="AccountSettings">Hesap ayarları</string>
@@ -166,25 +196,44 @@
     <string name="MyName">Adım</string>
     <string name="Password">Parola</string>
     <string name="SmtpPassword">STMP parolası</string>
+    <string name="FromAbove">Yukarıdan</string>
+    <string name="SmtpLoginname">STMP giriş adı</string>
+    <string name="SmtpPort">STMP bağlanma noktası</string>
     <string name="Automatic">Otomatik</string>
+    <string name="ImapServer">İMAP sunucusu</string>
+    <string name="ImapLoginname">İMAP giriş adı</string>
+    <string name="SmtpServer">STMP sunucusu</string>
+    <string name="ImapPort">İMAP bağlanma noktası</string>
     <string name="InboxHeadline">Gelen kutusu</string>
     <string name="OutboxHeadline">Gönderilenler</string>
     <string name="AccountNotConfigured">Hesap düzenlenmedi</string>
+    <string name="AboutThisProgram">Delta Chat Hakkında</string>
+    <string name="NewChat">Yeni söyleşi</string>
+    <string name="MuteAlways">Sürekli sessiz</string>
     <string name="Name" >Ad</string>
     <string name="EmailAddress">E-posta adresi</string>
     <string name="ViewProfile">Profil görüntüsü</string>
+    <string name="InviteMenuEntry">Davetiye gönderin</string>
     <string name="AdvancedSettings">Gelişmiş ayarlar</string>
     <string name="AttachFiles">Dosyaları iliştir</string>
     <string name="ErrGroupNameEmpty">Grup için bir ad girin</string>
+    <string name="MsgGroupImageChanged">Grup resmi değişti.</string>
+    <string name="MsgMemberAddedToGroup">%1$s üye eklendi</string>
+    <string name="MsgMemberRemovedFromToGroup">%1$s üye silindi.</string>
     <string name="E2ECompareKeys">Anahtarları karşılaştır</string>
     <string name="DoneHint">Tamam.</string>
     <string name="NoNetwork">Ağ kullanılamıyor.</string>
+    <string name="Audio">Ses</string>
     <string name="SettingsFor">%1$siçin ayarlar</string>
     <string name="AutoplayGifs">GİFleri otomatik oynat</string>
     <string name="HelpUrl">https://delta.chat/en/help</string>
+    <string name="EncryptedMessage">Şifrelenmiş ileti</string>
     <string name="EncrinfoE2E">Uçtan uca şifreleme etkin</string>
     <string name="EncrinfoFingerprints">Parmak izleri</string>
     <string name="Backup">Yedekleme</string>
+    <string name="NameAndStatus">Ad ve durum</string>
+    <string name="MyStatus">Durumum</string>
+    <string name="MsgGroupImageDeleted">Grup resmi silindi</string>
     <string name="ExportImportHeader">Dışa aktarım ve içe aktarım</string>
     <string name="IncorrectPassword">Geçersiz parola</string>
     </resources>

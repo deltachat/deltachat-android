@@ -80,6 +80,7 @@
     <string name="ResetAllNotifications">அனைத்து அறிவுப்புக்களையும் மீட்டமைக்கவும்</string>
     <string name="NotificationsAndSounds">அறிவுப்புகள் மற்றும் ஓசைகள்</string>
     <string name="BlockedContacts">தடுக்கபட்ட தொடர்புகள்</string>
+    <string name="Default">இயல்புநிலை</string>
     <string name="OnlyIfSilent">அமைதியாக இருந்தால் மட்டும்</string>
     <string name="ChatBackground">அரட்டை பின்புலம்</string>
     <string name="SendByEnter">\"enter\" மூலம் அனுப்பவும் </string>

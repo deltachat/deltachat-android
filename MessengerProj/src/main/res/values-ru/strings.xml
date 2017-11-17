@@ -17,7 +17,7 @@
     <string name="UnmuteNotifications">Включить уведомления</string>
     <string name="Draft">Черновик</string>
     <!--audio view-->
-    <string name="NoAudio">Добавьте файлы в музыкальную коллекцию на вашем устройстве для того, чтобы увидеть его здесь.</string>
+    <string name="NoAudio">Добавьте файлы в музыкальную коллекцию на вашем устройстве для того, чтобы увидеть их здесь.</string>
     <string name="AttachMusic">Музыка</string>
     <!--documents view-->
     <string name="SelectFile">Выбрать файл</string>
@@ -78,7 +78,7 @@
     <string name="InAppNotifications">Уведомления программы</string>
     <string name="Vibrate">Вибрация</string>
     <string name="ResetAllNotifications">Сбросить все уведомления</string>
-    <string name="NotificationsAndSounds">Уведомления и Звуки</string>
+    <string name="NotificationsAndSounds">Уведомления и звуки</string>
     <string name="BlockedContacts">Заблокированные контакты</string>
     <string name="Default">По умолчанию</string>
     <string name="OnlyIfSilent">Только если тишина</string>
@@ -396,7 +396,7 @@
     <string name="PermNotificationText">Ожидание сообщений …</string>
     <string name="SettingsFor">Настройки для %1$s</string>
     <string name="AutoplayGifs">Автозапуск GIF</string>
-    <string name="HelpUrl">https://delta.chat/en/help</string>
+    <string name="HelpUrl">https://delta.chat/ru/help</string>
     <string name="EncryptedMessage">Зашифрованное сообщение</string>
     <string name="Encryption">Шифрование</string>
     <string name="EncrinfoE2E">Включено сквозное шифрование.</string>
@@ -411,6 +411,7 @@
     <string name="ReadReceipt">Уведомление о доставке</string>
     <string name="NameAndStatus">Имя и статус</string>
     <string name="MyStatus">Мой статус</string>
+    <string name="MyStatusExplain">Статус может быть показан в подписи.</string>
     <string name="MsgGroupImageDeleted">Изображение группы удалено.</string>
     <string name="AskDeleteGroupImage">Вы действительно хотите удалить изображение группы?\n\nИзменение вступит в силу на всех устройствах участников группы.</string>
     <string name="ExportImportHeader">Экспорт и импорт</string>
@@ -425,4 +426,15 @@
     <string name="ExportPrivateKeys">Экспорт закрытых ключей</string>
     <string name="ImportPrivateKeys">Импорт закрытых ключей</string>
     <string name="ImportPrivateKeysAsk2">Импорт закрытых ключей из <![CDATA[<i>]]>%1$s<![CDATA[</i>]]>?\n\n• Существующие закрытые ключи удалены не будут\n\n• Последний импортированный ключ будет использован по умолчанию.</string>
-    </resources>
+    <string name="NoRecentEmoji">Здесь будут ранее использованные смайлики.</string>
+    <string name="E2eeOffBecauseOfUser">Для включения сквозного шифрования выберите соответствующий пункт в настройках.</string>
+    <string name="E2eeOffBecauseOfRecipient">Шифрование будет переключено в сквозной режим, если со стороны контакта будет выбран соответствующий пункт настроек.</string>
+    <string name="NotNow">Не сейчас</string>
+    <string name="ArchiveChat">Архивировать чат</string>
+    <string name="UnarchiveChat">Разархивировать чат</string>
+    <string name="ArchivedChats">Архивированные чаты</string>
+    <string name="Archived">Помещено в архив</string>
+    <string name="LeaveGroup">Выйти из группы</string>
+    <string name="AskLeaveGroup">Вы уверены, что хотите выйти из группы?</string>
+    <string name="Never">Никогда</string>
+</resources>

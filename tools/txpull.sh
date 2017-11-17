@@ -8,6 +8,7 @@
 # common information about the Transifex CLI client can be found at:
 # https://docs.transifex.com/client/
 
+rm -r translations
 tx pull -a    # -s would also fetch the source file, this is not wanted
 
 cp "translations/delta-chat-android.stringsxml/                            ca.xml"    ../MessengerProj/src/main/res/values-ca/strings.xml

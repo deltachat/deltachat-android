@@ -401,4 +401,12 @@
     <string name="NoRecentEmoji">Le emoji utilizzate di recente verranno mostrate qui.</string>
     <string name="E2eeOffBecauseOfUser">Per abilitare la crittografia end-to-end, selelzionare l\'opzione corrispondente nelle impostazioni.</string>
     <string name="E2eeOffBecauseOfRecipient">La crittigrafia end-to-end sarà attiva solo se anche chi riceve il messaggio abilita l\'opzione corridpondente.</string>
+    <string name="NotNow">Non ora</string>
+    <string name="ArchiveChat">Archivia chat</string>
+    <string name="UnarchiveChat">Ripristina chat</string>
+    <string name="ArchivedChats">Chat archiviate</string>
+    <string name="Archived">Archiviata</string>
+    <string name="LeaveGroup">Abbandona gruppo</string>
+    <string name="AskLeaveGroup">Sei sicuro di voler abbandonare il gruppo?</string>
+    <string name="Never">Mai</string>
 </resources>

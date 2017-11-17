@@ -383,6 +383,7 @@
     <string name="ReadReceipt">Accusé de réception</string>
     <string name="NameAndStatus">Nom et statut</string>
     <string name="MyStatus">Mon statut</string>
+    <string name="MyStatusExplain">Le status est indiqué par ex. dans les pieds de page des emails.</string>
     <string name="MsgGroupImageDeleted">Image du groupe effacée.</string>
     <string name="AskDeleteGroupImage">Êtes-vous sûr de vouloir effacer l\'image du groupe?\n\nCeci affectera tous les appareils de tous les membres du groupe.</string>
     <string name="ExportImportHeader">Exporter et importer</string>
@@ -398,4 +399,15 @@
     <string name="ImportPrivateKeys">Importer les clés privées</string>
     <string name="ImportPrivateKeysAsk2">Importer des clés privées depuis <![CDATA[<i>]]>%1$s<![CDATA[</i>]]>?\n\n• Les clés privées existantes ne sont pas supprimées\n\n• 
 La dernière clé importée sera utilisée comme nouvelle clé par défaut</string>
-    </resources>
+    <string name="NoRecentEmoji">Les emoji récemment utilisés seront affichés ici.</string>
+    <string name="E2eeOffBecauseOfUser">Pour activer le chiffrement bout-à-bout, vérifiez l\'option correspondante dans vos paramètres.</string>
+    <string name="E2eeOffBecauseOfRecipient">Le chiffrement sera bout-à-bout si le contact active l\'option correspondante.</string>
+    <string name="NotNow">Pas maintenant</string>
+    <string name="ArchiveChat">Archive des conversations</string>
+    <string name="UnarchiveChat">Conversation non archivée</string>
+    <string name="ArchivedChats">Conversations archivées</string>
+    <string name="Archived">Archivé</string>
+    <string name="LeaveGroup">Quitter le groupe</string>
+    <string name="AskLeaveGroup">Êtes-vous sûr de vouloir quitter ce groupe?</string>
+    <string name="Never">Jamais</string>
+</resources>

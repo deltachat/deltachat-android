@@ -3,6 +3,7 @@
 
 
 <resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="AppName">Delta Chat</string>
     <!--chats view-->
     <string name="Settings">Innstillinger</string>
     <string name="NewGroup">Ny gruppe</string>
@@ -11,12 +12,16 @@
     <string name="DeleteChat">Slett sludring</string>
     <string name="SelectChat">Velg sludring…</string>
     <string name="Search">Søk</string>
+    <string name="MuteNotifications">Demp merknader</string>
+    <string name="MuteFor">Demp i %1$s</string>
+    <string name="UnmuteNotifications">Fjern demping</string>
     <string name="Draft">Kladd</string>
     <!--audio view-->
     <string name="NoAudio">Legg til filer i musikkbiblioteket på din enhet for å se dem her.</string>
     <string name="AttachMusic">Musikk</string>
     <!--documents view-->
     <string name="SelectFile">Velg fil</string>
+    <string name="FreeOfTotal">Frigjør %1$s av %2$s</string>
     <string name="ErrorHint">Ukjent feil</string>
     <string name="AccessError">Tilgangsfeil</string>
     <string name="NoFiles">Ingen filer enda…</string>
@@ -24,8 +29,10 @@
     <string name="UsbActive">USB-overføring aktiv</string>
     <string name="InternalStorage">Intern lagring</string>
     <string name="ExternalStorage">Ekstern lagring</string>
+    <string name="SystemRoot">Systemrot</string>
     <string name="SdCard">SD-kort</string>
     <string name="Folder">Mappe</string>
+    <string name="GalleryInfo">For å sende ukomprimerte bilder</string>
     <!--chat view-->
     <string name="ChatGallery">Galleri</string>
     <string name="ChatCamera">Kamera</string>
@@ -35,6 +42,8 @@
     <string name="NoRecent">Ingen nylige</string>
     <string name="TypeMessage">Melding</string>
     <string name="SlideToCancel">DRA FOR Å AVBRYTE</string>
+    <string name="SaveToDownloads">Lagre i \"Nedlastinger\"</string>
+    <string name="SaveToMusic">Lagre i \"Musikk\"</string>
     <string name="Share">Del</string>
     <string name="SendItems">Send %1$s</string>
     <string name="ClearRecentEmoji">Slett nylige emoji-er?</string>
@@ -58,18 +67,22 @@
     <string name="BlockContact">Blokker kontakt</string>
     <string name="DeleteContact">Slett kontakt</string>
     <string name="Info">Info</string>
+    <!--settings view-->
+    <string name="TextSize">Skriftstørrelse for meldinger</string>
     <string name="UnblockContact">Fjern blokkering av kontakt</string>
     <string name="NoBlocked">Ingen blokkerte kontakter enda</string>
     <string name="DefaultForNormalMessages">Normale meldinger</string>
     <string name="MessagePreview">Meldingsforhåndsvisning</string>
     <string name="DefaultForGroupMessages">Gruppemeldinger</string>
     <string name="Sound">Lyd</string>
+    <string name="InAppNotifications">Merknader i programmet</string>
     <string name="Vibrate">Vibrer</string>
     <string name="ResetAllNotifications">Tilbakestill alle merknader</string>
     <string name="NotificationsAndSounds">Merknader og lyder</string>
     <string name="BlockedContacts">Blokkerte kontakter</string>
     <string name="Default">Forvalg</string>
     <string name="OnlyIfSilent">Bare hvis lydløs</string>
+    <string name="SendByEnter">Send med "Enter"</string>
     <string name="Help">Hjelp</string>
     <string name="Enabled">På</string>
     <string name="Disabled">Av</string>
@@ -83,6 +96,7 @@
     <string name="NotificationsPriorityHigh">Høy prioritet</string>
     <string name="NotificationsPriorityMax">Høyeste prioritet</string>
     <string name="RepeatNotifications">Gjenta merknader</string>
+    <string name="SmartNotificationsSoundAtMost">Maks.</string>
     <string name="SmartNotificationsTimes">tider</string>
     <string name="SmartNotificationsWithin">innen</string>
     <string name="SmartNotificationsMinutes">minutter</string>
@@ -91,12 +105,18 @@
     <!--cache view-->
     <string name="CacheSettings">Lagring</string>
     <string name="KeepMedia">Behold media</string>
+    <string name="KeepMediaInfo">Bilder, video og andre filer fra skysludringer du <![CDATA[<b>ikke har åpnet</b>]]> i løpet av denne perioden vil bli fjernet fra denne enheten for å spare plass.</string>
     <string name="KeepMediaForever">For alltid</string>
+    <!--passcode view-->
+    <string name="Passcode">Programlås</string>
     <string name="PasscodePIN">PIN</string>
     <string name="PasscodePassword">Passord</string>
+    <string name="AutoLock">Autolås</string>
     <string name="UnlockFingerprint">Lås opp med fingeravtrykk</string>
     <string name="FingerprintInfo">Bekreft fingeravtrykk for å fortsette</string>
     <string name="FingerprintNotRecognized">Fingeravtrykket ble ikke gjenkjent. Prøv igjen</string>
+    <!--photo gallery view-->
+    <string name="SaveToGallery">Lagre i \"Galleri"\</string>
     <string name="Of">%1$d av %2$d</string>
     <string name="Gallery">Galleri</string>
     <string name="AllPhotos">Alle bilder</string>
@@ -107,6 +127,8 @@
     <string name="EditImage">Rediger bilde</string>
     <string name="Enhance">Forbedre</string>
     <string name="Contrast">Kontrast</string>
+    <string name="Shadows">Skygger</string>
+    <string name="TintShadows">Skygger</string>
     <string name="CurvesAll">ALLE</string>
     <string name="CurvesRed">RØD</string>
     <string name="CurvesGreen">GRØNN</string>
@@ -140,19 +162,32 @@
     <string name="AttachGif">GIF</string>
     <string name="AttachContact">Kontakt</string>
     <string name="AttachDocument">Fil</string>
+    <string name="AttachVoiceMessage">Stemmemelding</string>
+    <string name="FromSelf">Meg</string>
     <!--Alert messages-->
     <string name="NoHandleAppInstalled">Du har ingen programmer som kan håndtere \'%1$s\', installer et for å fortsette</string>
     <string name="ContactAlreadyInGroup">Denne kontakten er allerede i denne gruppen.</string>
     <string name="ForwardMessagesTo">Videresend valgte meldinger til <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>?</string>
     <string name="SendMessagesTo">Send meldinger til <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>?</string>
+    <string name="AreYouSureDeleteThisChat">Slett denne sludringen? Den vil ikke lenger bli vist i sludrelisten, men meldingene vil forbli på tjeneren.</string>
     <string name="AreYouSureBlockContact">Er du sikker på at du vil blokkere denne kontakten?</string>
     <string name="AreYouSureDeleteContact">Er du sikker på at du ønsker å slette denne kontakten?</string>
+    <!--permissions-->
+    <string name="PermissionContacts">Delta Chat trenger tilgang til kontaktene dine slik at du kan koble til dine venner på tvers av alle enhetene dine.</string>
+    <string name="PermissionStorage">Delta chat trenger tilgang til lagring, slik at du kan sende og lagre bilder, videoer, musikk og annen media.</string>
+    <string name="PermissionNoAudio">Delta Chat trenger mikrofontilgang slik at du kan sende stemmemeldinger.</string>
     <string name="PermissionOpenSettings">Tilpass innstillinger</string>
+    <!--Intro view-->
+    <string name="Intro1Headline">Delta Chat</string>
     <string name="Intro1Message">Meldingstjenesten med <![CDATA[<b>størst rekkevidde</b>]]> i verden.<![CDATA[<br/><b>Gratis</b>]]> og <![CDATA[<b>trygt</b>]]>.</string>
 
     <string name="Intro2Headline">Uavhengig</string>
+    <string name="Intro2Message"><![CDATA[<b>Ingen avhengigheter</b>]]> på datamaskiner annensteds hen, eller tjenester. Programmet bruker kun e-posttjeneren din.</string>
+
     <string name="Intro3Headline">Rask</string>
     <string name="Intro4Headline">Kraftig</string>
+    <string name="Intro4Message"><![CDATA[<b>Ubegrensede</b>]]> sludringer, bilder, videoer, lydmeldinger med mer. Multiklient-støtte.</string>
+
     <string name="Intro5Headline">Ledig</string>
     <string name="Intro6Headline">Trygt</string>
     <string name="Intro6Message"><![CDATA[<b>Kryptert</b>]]> med alle vanlige alle vanlige algoritmer. Meldingene forblir på tjenerne.</string>
@@ -160,9 +195,62 @@
     <string name="Intro7Headline">Pålitelig</string>
 
     <string name="IntroStartMessaging">Start meldingsutveksling</string>
+    <!--plural-->
+    <plurals name="Members">
+        <item quantity="one">%d medlem</item>
+        <item quantity="other">%d medlemmer</item>
+    </plurals>
     <plurals name="Contacts">
         <item quantity="one">%d kontakt</item>
         <item quantity="other">%d kontakter</item>
+    </plurals>
+    <plurals name="MeAndMembers">
+        <item quantity="one">%d medlem og meg</item>
+        <item quantity="other">%d medlemmer og meg</item>
+    </plurals>
+    <plurals name="NewMessages">
+        <item quantity="one">%d ny melding</item>
+        <item quantity="other">%d nye meldinger</item>
+    </plurals>
+    <plurals name="messages">
+        <item quantity="one">%d melding</item>
+        <item quantity="other">%d meldinger</item>
+    </plurals>
+    <plurals name="AreYouSureDeleteMessages">
+        <item quantity="one">Slett %d melding? Den vil også bli slettet fra tjeneren?</item>
+        <item quantity="other">Slett %d meldinger? De vil også bli slettet fra tjeneren.</item>
+    </plurals>
+    <plurals name="NewMessagesInChats">
+        <item quantity="one">%1$s i %2$d sludring</item>
+        <item quantity="other">%1$s i %2$d sludringer</item>
+    </plurals>
+    <plurals name="Chats">
+        <item quantity="one">%d sludring</item>
+        <item quantity="other">%d sludringer</item>
+    </plurals>
+    <plurals name="Minutes">
+        <item quantity="one">%d minutt</item>
+        <item quantity="other">%d minutter</item>
+    </plurals>
+    <plurals name="Hours">
+        <item quantity="one">%d time</item>
+        <item quantity="other">%d timer</item>
+    </plurals>
+    <plurals name="Days">
+        <item quantity="one">%d dag</item>
+        <item quantity="other">%d dager</item>
+    </plurals>
+    <plurals name="Weeks">
+        <item quantity="one">%d uke</item>
+        <item quantity="other">%d uker</item>
+    </plurals>
+    <plurals name="Months">
+        <item quantity="one">%d måned</item>
+        <item quantity="other">%d måneder</item>
+    </plurals>
+    <plurals name="MaxNotifications">
+        <item quantity="one">Maksimalt %1$d merknad i løpet av %2$s</item>
+        <item quantity="other">Maksimalt %1$d merknader i løpet av %2$s</item>
     </plurals>
     <!--date formatters-->
     <string name="formatterMonthYear">MMMM yyyy</string>
@@ -175,9 +263,11 @@
     <string name="Password">Passord</string>
     <string name="SmtpPassword">SMTP-passord</string>
     <string name="FromAbove">Ovenfra</string>
+    <string name="SmtpLoginname">SMTP-innloggingsnavn</string>
     <string name="SmtpPort">SMTP-port</string>
     <string name="Automatic">Automatisk</string>
     <string name="ImapServer">IMAP-tjener</string>
+    <string name="ImapLoginname">IMAP-innloggingsnavn</string>
     <string name="SmtpServer">SMTP-tjener</string>
     <string name="ImapPort">IMAP-port</string>
     <string name="InboxHeadline">Innboks</string>
@@ -185,9 +275,16 @@
     <string name="MyAccountExplain">For kjente e-posttilbydere blir ytterligere innstillinger bestemt automatisk.</string>
     <string name="MyAccountExplain2" >Noen ganger <![CDATA[<b>]]>må IMAP skrus på<![CDATA[</b>]]> i vev-e-postgrenseflaten.\n\nVed problemer, spør din e-posttilbyder eller dine venner.</string>
     <string name="AccountNotConfigured">Konto ikke satt opp</string>
+    <string name="AboutThisProgram">Om</string>
+    <string name="NotSet">Ikke satt</string>
     <string name="NewChat">Ny sludring</string>
     <string name="Deaddrop">Kontaktforespørsler</string>
+    <string name="DeaddropInChatlist">Vis kontaktforespørsler i sludrelisten</string>
+    <string name="MuteAlways">Alltid dempet</string>
+    <string name="AskStartChatWith">Begynn å sludre med <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>?</string>
+    <string name="DeaddropHint">For å begynne sludring, klikk på svar-pilene.</string>
     <string name="NotYetImplemented">Denne funksjonen er ikke tilgjengelig eller ufullstendig.</string>
+    <string name="DefaultStatusText">Sendt med Delta Chat: https://delta.chat</string>
     <string name="Name" >Navn</string>
     <string name="EmailAddress">E-postadresse</string>
     <string name="CannotDeleteContact">Kan ikke slette kontakter i bruk, blokker kontakt istedenfor.</string>
@@ -197,14 +294,21 @@
     <!-- Translators: please use a very short string here, it should not much longer than
     the string needed for video time+size (0:00, 12,3 Mib) -->
     <string name="OneMoment">Et øyeblikk…</string>
+    <string name="NoChatsHelp">Start forsendelse av meldinger ved å trykke på den nye sludreknappen nederst i høyre hjørne eller trykk menyknappen for flere valg.</string>
+    <string name="Intro7Message"><![CDATA[<b>Delta Chat</b>]]> er trygt for bedriftsbruk, kompatibelt og basert på standarder.</string>
     <string name="InviteMenuEntry">Send invitasjoner</string>
+    <string name="InviteText">Jeg bruker Delta Chat-meldingstjenesten nå - %1$s - du kan tekste meg på %2$s</string>
     <string name="AdvancedSettings">Avanserte innstillinger</string>
     <string name="AttachFiles">Legg ved filer</string>
     <string name="ErrGroupNameEmpty">Skriv inn et navn for gruppen.</string>
+    <string name="MsgNewGroupDraft">Hei, jeg har akkurat opprettet gruppen \"%1$s\" for oss.</string>
     <string name="MsgGroupImageChanged">Gruppebilde endret.</string>
+    <string name="MsgMemberAddedToGroup">Medlem %1$s lagt til.</string>
+    <string name="MsgMemberRemovedFromToGroup">Medlem %1$s fjernet.</string>
     <string name="AskAddMemberToGroup">Legg til <![CDATA[<b>]]>%1$s<![CDATA[</b>]]> i gruppen?</string>
     <string name="AskRemoveMemberFromGroup">Fjern <![CDATA[<b>]]>%1$s<![CDATA[</b>]]> fra gruppen?</string>
     <string name="ErrSelfNotInGroup">Du må være medlem av gruppen for å utføre denne handlingen.</string>
+    <string name="MsgGroupLeft">Gruppe oppløst.</string>
     <string name="SendNRcvReadReceipts">Motta og send meldingskvitteringer</string>
     <string name="PreferE2EEncryption">Foretrekk ende-til-ende -kryptering</string>
     <string name="E2EManagePrivateKeys">Behandle private nøkler</string>
@@ -216,6 +320,7 @@
     <string name="Error">Feil: %1$s</string>
     <string name="NoNetwork">Nettverk utilgjengelig.</string>
     <string name="Audio">Lyd</string>
+    <string name="PleaseCutVideoToMaxSize">Gjør videoen mindre enn %1$s.</string>
     <string name="PermNotificationTitle">Tilkoblet %1$s</string>
     <string name="PermNotificationText">Venter på meldinger…</string>
     <string name="SettingsFor">Innstillinger for %1$s</string>
@@ -235,6 +340,7 @@
     <string name="AskDeleteGroupImage">Er du sikker på at du vil slette dette gruppebildet?\n\nDette vil ha innvirkning på alle enhetene tilhørende gruppemedlemmene.</string>
     <string name="ExportImportHeader">Eksport og import</string>
     <string name="EnterPasswordToContinue">Skriv inn passordet for %1$s for å fortsette:</string>
+    <string name="IncorrectPassword">Uriktig passord.</string>
     <string name="ImportBackup">Importer sikkerhetskopi</string>
     <string name="FilesSuccessfullyExported">Filer eksporter til <![CDATA[<i>]]>%1$s<![CDATA[</i>]]>.</string>
     <string name="ExportBackup">Eksporter sikkerhetskopi</string>
@@ -242,4 +348,14 @@
     <string name="ImportPrivateKeys">Importer private nøkler</string>
     <string name="ImportPrivateKeysAsk2">Importer private nøkler fra <![CDATA[<i>]]>%1$s<![CDATA[</i>]]>?\n\n• Eksisterende private nøkler blir ikke slettet\n\n• Den sist importerte nøkkelen vil bli brukt som ny forvalgt nøkkel</string>
     <string name="NoRecentEmoji">Nylig brukte emoji-er vil bli vist her.</string>
-    </resources>
+    <string name="E2eeOffBecauseOfUser">For å skru på ende-til-ende -kryptering, huk det ut i innstillingene.</string>
+    <string name="E2eeOffBecauseOfRecipient">Ende-til-ende -kryptering vil bli brukt hvis mottakeren også skrur det på.</string>
+    <string name="NotNow">Ikke nå</string>
+    <string name="ArchiveChat">Arkiver sludring</string>
+    <string name="UnarchiveChat">Fjern sludring fra arkiv</string>
+    <string name="ArchivedChats">Arkiverte sludringer</string>
+    <string name="Archived">Arkivert</string>
+    <string name="LeaveGroup">Forlat gruppe</string>
+    <string name="AskLeaveGroup">Er du sikker på at du vil forlate denne gruppen?</string>
+    <string name="Never">Aldri</string>
+</resources>
