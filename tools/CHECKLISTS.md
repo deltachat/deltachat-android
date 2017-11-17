@@ -15,10 +15,13 @@ The following checklists are there not to forget things ... to be continued.
 1. add `MessengerProj/src/main/res/values-<LANG>/strings.xml`
 2. add copy command to `tools/txpull.sh` and `tools/txpush.sh`
 
-# Update source languges
+# Update source languges on Transifex
 
-1. modify `MessengerProj/src/main/res/values/strings.xml` as needed, commit them, but do not push them yet
-2. call `./txpull` from tools-directory
-3. `git push` (after the pull to avoid a source-pull from transifex removing the translations due to unknown source strings)
-4. call `./txpush` from tools-directory
+1. call `./txpull` to overwrite local translation files with the ones from Transifex, the source is not updated
+2. modify source and translations as needed
+3. call `./txpush` to push source and translations back to Transifex.
 
+(the tx-tool uses on the _name-attribute_ to identify strings while the Transifex-UI uses the source _string_.
+So, without pushing back, the translation of modified source would be lost.  
+For the same reason, we do not use the "Auto update resource" function in the Transifex-UI:
+A change to a source string in values/strings.xml would break all translations)
