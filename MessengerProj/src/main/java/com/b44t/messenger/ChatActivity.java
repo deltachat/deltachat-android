@@ -474,13 +474,9 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     builder.setPositiveButton(R.string.OK, new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
-                            if( MrMailbox.deleteChat((int)dialog_id)!=0 ) {
-                                AndroidUtilities.showDoneHint(getParentActivity());
-                                finishFragment();
-                            }
-                            else {
-                                AndroidUtilities.showErrorHint(getParentActivity());
-                            }
+                            MrMailbox.deleteChat((int)dialog_id);
+                            AndroidUtilities.showDoneHint(getParentActivity());
+                            finishFragment();
                         }
                     });
                     builder.setNegativeButton(R.string.Cancel, null);

@@ -150,7 +150,7 @@ public class MrMailbox {
     public native static int[] getChatMedia(int chat_id, int msg_type, int or_msg_type);
     public native static int getNextMedia(int msg_id, int dir);
     public native static int[] getChatContacts(int chat_id);
-    public native static int deleteChat(int chat_id);
+    public native static void deleteChat(int chat_id);
 
     private native static long    MrMailboxGetChatlist       (long hMailbox, int listflags, String query); // returns hChatlist which must be unref'd after usage
     private native static long    MrMailboxGetChat           (long hMailbox, int chat_id); // return hChat which must be unref'd after usage
