@@ -420,7 +420,7 @@
     <string name="IncorrectPassword">Nieprawidłowe hasło.</string>
     <string name="ImportBackupAsk">Delta Chat znalazł kopię zapasową w katalogu <![CDATA[<i>]]>%1$s<![CDATA[</i>]]>.\n\nCzy chcesz zaimportować i używać wszystkich danych i ustawień z tej kopii zapasowej?</string>
     <string name="ImportBackup">Importuj kopię zapasową</string>
-    <string name="NoBackupFound">Nie znaleziono kopii zapasowej.\n\nSkopiuj kopię zapasową do katalogu <! [CDATA [<i>]]>%1$s<! [CDATA [</i>]]> i spróbuj ponownie. Alternatywnie dotknij \"Uruchom komunikator\", aby rozpocząć normalny proces instalacji.</string>
+    <string name="NoBackupFound">Nie znaleziono kopii zapasowej.\n\nSkopiuj kopię zapasową do katalogu <![CDATA[<i>]]>%1$s<![CDATA[</i>]]> i spróbuj ponownie. Alternatywnie dotknij \"Uruchom komunikator\", aby rozpocząć normalny proces instalacji.</string>
     <string name="FilesSuccessfullyExported">Plik został pomyślnie wyeksportowany do <![CDATA[<i>]]>%1$s<![CDATA[</i>]]>.</string>
     <string name="ExportBackup">Eksportuj kopię zapasową</string>
     <string name="ExportPrivateKeys">Eksportuj prywatne klucze</string>

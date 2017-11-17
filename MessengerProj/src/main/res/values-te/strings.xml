@@ -195,7 +195,7 @@
     <string name="NoHandleAppInstalled">మీ దగ్గర ఈ ఫైల్ \'%1$s\' రకాన్ని గుర్తించే అప్లికేషన్లు లేవు, దయచేసి గుర్తించేదాన్ని ఒకటి ఇంస్టాల్ చేసి కొనసాగండి </string>
     <string name="ContactAlreadyInGroup">ఈ పరిచయం ఇప్పటికే ఈ సమూహం లో ఉంది.</string>
     <string name="ForwardMessagesTo">సందేశాలు <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>ఫార్వర్డ్ చేయాలా?</string>
-    <string name="SendMessagesTo">సందేశాలు <![ఛ్డాటా[<b>]]>%1$s<![CDATA[</b>]]>కు పంపాలా?</string>
+    <string name="SendMessagesTo">సందేశాలు <![CDATA[ఛ్డాటా[<b>]]>%1$s<![CDATA[</b>]]>కు పంపాలా?</string>
     <string name="AreYouSureDeleteThisChat">ఈ చాట్ ను తొలగించాలా? ఈ చాట్ ఇకమీదట చాట్ లిస్ట్ లో చూపించబడదు, సందేశాలు మాత్రం సర్వర్ లో ఉంటాయి.</string>
     <string name="AreYouSureBlockContact">మీరు ఈ పరిచయాన్ని రద్దుచేయాలని నిర్ణయించుకున్నారా?</string>
     <string name="AreYouSureDeleteContact">మీరు ఈ పరిచయాన్ని తొలగించాలని నిర్ణయించుకున్నారా?</string>
