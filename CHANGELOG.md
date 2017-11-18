@@ -1,5 +1,10 @@
 # Delta Chat Changelog
 
+## v0.9.9
+2017-11-18
+
+* Add Serbian translation
+
 ## v0.9.8
 2017-11-15
 

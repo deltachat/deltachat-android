@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="AppName">Делта ћаскање</string>
+    <!--chats view-->
+    <string name="Settings">Поставке</string>
+    <string name="NewGroup">Нова група</string>
+    <string name="NoResult">Нема резултата.</string>
+    <string name="NoChats">Још нема ћаскања.</string>
+    <string name="DeleteChat">Обриши ћаскање</string>
+    <string name="SelectChat">Изаберите ћаскање…</string>
+    <string name="Search">Претрага</string>
+    <string name="MuteNotifications">Искључи обавештења</string>
+    <string name="MuteFor">Искључи %1$s</string>
+    <string name="Draft">Нацрт</string>
+    <!--documents view-->
+    <string name="SelectFile">Изабери фајл</string>
+    <string name="ErrorHint">Непозната грешка</string>
+    <string name="AccessError">Грешка приступа</string>
+    <string name="NoFiles">Још нема фајлова…</string>
+    <string name="NotMounted">Складиште није монтирано</string>
+    <string name="InternalStorage">Унутрашње складиште</string>
+    <string name="ExternalStorage">Спољашње складиште</string>
+    <string name="SdCard">СД картица</string>
+    <string name="Folder">Фасцикла</string>
+    <!--chat view-->
+    <string name="ChatGallery">Галерија</string>
+    <string name="ChatCamera">Камера</string>
+    <string name="NoMessages">Нема порука.</string>
+    <string name="ForwardedMessage">Прослеђена порука</string>
+    <string name="From">Од</string>
+    <string name="NoRecent">Нема недавних</string>
+    <string name="TypeMessage">Порука</string>
+    <string name="SlideToCancel">ПРЕВУЦИТЕ ЗА ОТКАЗИВАЊЕ</string>
+    <string name="SaveToDownloads">Сачувај у преузимања</string>
+    <string name="SaveToMusic">Сачувај у музику</string>
+    <string name="Share">Дели</string>
+    <string name="SendItems">Пошаљи %1$s</string>
+    <!--notification-->
+    <string name="Reply">Одговори</string>
+    <!--group info view-->
+    <string name="AddMember">Додај члана</string>
+    <string name="Notifications">Обавештења</string>
+    <string name="RemoveMember">Уклони члана</string>
+    <!--contact info view-->
+    <string name="NewContactTitle">Нови контакт</string>
+    <string name="BlockContact">Блокирај контакт</string>
+    <string name="DeleteContact">Обриши контакт</string>
+    <string name="Gallery">Галерија</string>
+    <string name="PermissionOpenSettings">Поставке</string>
+    <!--Intro view-->
+    <string name="Intro1Headline">Делта ћаскање</string>
+    </resources>
