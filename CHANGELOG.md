@@ -3,7 +3,9 @@
 ## v0.9.9
 2017-11-18
 
+* Alternate include order for F-Droid
 * Add Serbian translation
+* Update Catalan, Dutch, English, French, German, Hungarian, Italian, Polish, Portuguese, Russian, Spanish, Tamil, Telugu and Ukrainian translations
 
 ## v0.9.8
 2017-11-15
