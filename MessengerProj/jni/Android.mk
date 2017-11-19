@@ -1633,6 +1633,7 @@ LOCAL_SRC_FILES     += \
 ./messenger-backend/libs/netpgp/src/writer.c \
 ./messenger-backend/src/mraheader.c \
 ./messenger-backend/src/mrapeerstate.c \
+./messenger-backend/src/mrarray.c \
 ./messenger-backend/src/mrchat.c \
 ./messenger-backend/src/mrchatlist.c \
 ./messenger-backend/src/mrcontact.c \

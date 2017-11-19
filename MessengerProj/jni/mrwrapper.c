@@ -117,15 +117,15 @@ void mrosnative_unsetup_thread(mrmailbox_t* mailbox)
 
 /* tools */
 
-static jintArray carray2jintArray_n_carray_free(JNIEnv *env, const carray* ca)
+static jintArray mrarray2jintArray_n_mrarray_unref(JNIEnv *env, const mrarray_t* ca)
 {
-	int i, icnt = ca? carray_count(ca) : 0;
+	int i, icnt = ca? mrarray_get_cnt(ca) : 0;
 	jintArray ret = (*env)->NewIntArray(env, icnt); if (ret == NULL) { return NULL; }
 	
 	if( ca ) {
 		if( icnt ) {
-			void** ca_data = carray_data(ca);
-			if( sizeof(void*)==sizeof(jint) ) {
+			uintptr_t* ca_data = ca->m_array;
+			if( sizeof(uintptr_t)==sizeof(jint) ) {
 				(*env)->SetIntArrayRegion(env, ret, 0, icnt, (jint*)ca_data);
 			}
 			else {
@@ -137,7 +137,7 @@ static jintArray carray2jintArray_n_carray_free(JNIEnv *env, const carray* ca)
 				free(temp);
 			}
 		}
-		carray_free(ca);
+		mrarray_unref(ca);
 	}
 
 	return ret;
@@ -287,9 +287,9 @@ JNIEXPORT void Java_com_b44t_messenger_MrMailbox_disconnect(JNIEnv *env, jclass 
 JNIEXPORT jintArray Java_com_b44t_messenger_MrMailbox_getKnownContacts(JNIEnv *env, jclass cls, jstring query)
 {
 	CHAR_REF(query);
-	    carray* ca = mrmailbox_get_known_contacts(get_mrmailbox_t(env, cls), queryPtr);
+	    mrarray_t* ca = mrmailbox_get_known_contacts(get_mrmailbox_t(env, cls), queryPtr);
 	CHAR_UNREF(query);
-	return carray2jintArray_n_carray_free(env, ca);
+	return mrarray2jintArray_n_mrarray_unref(env, ca);
 }
 
 
@@ -301,8 +301,8 @@ JNIEXPORT jint Java_com_b44t_messenger_MrMailbox_getBlockedCount(JNIEnv *env, jc
 
 JNIEXPORT jintArray Java_com_b44t_messenger_MrMailbox_getBlockedContacts(JNIEnv *env, jclass cls)
 {
-	carray* ca = mrmailbox_get_blocked_contacts(get_mrmailbox_t(env, cls));
-	return carray2jintArray_n_carray_free(env, ca);
+	mrarray_t* ca = mrmailbox_get_blocked_contacts(get_mrmailbox_t(env, cls));
+	return mrarray2jintArray_n_mrarray_unref(env, ca);
 }
 
 
@@ -672,13 +672,15 @@ JNIEXPORT jint Java_com_b44t_messenger_MrChatlist_MrChatlistGetCnt(JNIEnv *env, 
 
 JNIEXPORT jlong Java_com_b44t_messenger_MrChatlist_MrChatlistGetChatByIndex(JNIEnv *env, jclass c, jlong hChatlist, jint index)
 {
-	return (jlong)mrchatlist_get_chat_by_index((mrchatlist_t*)hChatlist, index);
+	mrchatlist_t* chatlist = (mrchatlist_t*)hChatlist;
+	return (jlong)mrmailbox_get_chat(chatlist->m_mailbox, mrchatlist_get_chat_id(chatlist, index));
 }
 
 
 JNIEXPORT jlong Java_com_b44t_messenger_MrChatlist_MrChatlistGetMsgByIndex(JNIEnv *env, jclass c, jlong hChatlist, jint index)
 {
-	return (jlong)mrchatlist_get_msg_by_index((mrchatlist_t*)hChatlist, index);
+	mrchatlist_t* chatlist = (mrchatlist_t*)hChatlist;
+	return (jlong)mrmailbox_get_msg(chatlist->m_mailbox, mrchatlist_get_msg_id(chatlist, index));
 }
 
 
@@ -807,8 +809,8 @@ JNIEXPORT jint Java_com_b44t_messenger_MrChat_MrChatSetDraft(JNIEnv *env, jclass
 
 JNIEXPORT jintArray Java_com_b44t_messenger_MrMailbox_getChatMedia(JNIEnv *env, jclass cls, jint chat_id, jint msg_type, jint or_msg_type)
 {
-	carray* ca = mrmailbox_get_chat_media(get_mrmailbox_t(env, cls), chat_id, msg_type, or_msg_type);
-	return carray2jintArray_n_carray_free(env, ca);
+	mrarray_t* ca = mrmailbox_get_chat_media(get_mrmailbox_t(env, cls), chat_id, msg_type, or_msg_type);
+	return mrarray2jintArray_n_mrarray_unref(env, ca);
 }
 
 
@@ -820,31 +822,31 @@ JNIEXPORT jint Java_com_b44t_messenger_MrMailbox_getNextMedia(JNIEnv *env, jclas
 
 JNIEXPORT jintArray Java_com_b44t_messenger_MrMailbox_getChatMsgs(JNIEnv *env, jclass cls, jint chat_id, jint flags, jint marker1before)
 {
-	carray* ca = mrmailbox_get_chat_msgs(get_mrmailbox_t(env, cls), chat_id, flags, marker1before);
-	return carray2jintArray_n_carray_free(env, ca);
+	mrarray_t* ca = mrmailbox_get_chat_msgs(get_mrmailbox_t(env, cls), chat_id, flags, marker1before);
+	return mrarray2jintArray_n_mrarray_unref(env, ca);
 }
 
 
 JNIEXPORT jintArray Java_com_b44t_messenger_MrMailbox_searchMsgs(JNIEnv *env, jclass cls, jint chat_id, jstring query)
 {
 	CHAR_REF(query);
-		carray* ca = mrmailbox_search_msgs(get_mrmailbox_t(env, cls), chat_id, queryPtr);
+		mrarray_t* ca = mrmailbox_search_msgs(get_mrmailbox_t(env, cls), chat_id, queryPtr);
 	CHAR_UNREF(query);
-	return carray2jintArray_n_carray_free(env, ca);
+	return mrarray2jintArray_n_mrarray_unref(env, ca);
 }
 
 
 JNIEXPORT jintArray Java_com_b44t_messenger_MrMailbox_getFreshMsgs(JNIEnv *env, jclass cls)
 {
-	carray* ca = mrmailbox_get_fresh_msgs(get_mrmailbox_t(env, cls));
-	return carray2jintArray_n_carray_free(env, ca);
+	mrarray_t* ca = mrmailbox_get_fresh_msgs(get_mrmailbox_t(env, cls));
+	return mrarray2jintArray_n_mrarray_unref(env, ca);
 }
 
 
 JNIEXPORT jintArray Java_com_b44t_messenger_MrMailbox_getChatContacts(JNIEnv *env, jclass cls, jint chat_id)
 {
-	carray* ca = mrmailbox_get_chat_contacts(get_mrmailbox_t(env, cls), chat_id);
-	return carray2jintArray_n_carray_free(env, ca);
+	mrarray_t* ca = mrmailbox_get_chat_contacts(get_mrmailbox_t(env, cls), chat_id);
+	return mrarray2jintArray_n_mrarray_unref(env, ca);
 }
 
 
