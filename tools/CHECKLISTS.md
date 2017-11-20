@@ -5,8 +5,9 @@ The following checklists are there not to forget things ... to be continued.
 
 1. deltachat-core: "draft a new release", if required
 2. deltachat-android: check CHANGES.md against core and android commit list from last release
-3. deltachat-android: `$ ./update-core.sh` followed by a `git push`
-4. deltachat-android: "Draft a new release" using a version number in for Form v1.2.3
+3. deltachat-android/tools: `$ ./update-core.sh` followed by a `git push`
+4. deltachat-android/tools: `$ ./txpull` followed by a `git commit` and a `git push` if there are changes
+5. deltachat-android: "Draft a new release" using a version number in for Form v1.2.3
 
 ... some days later, F-Droid should be updated.
 
