@@ -1,5 +1,9 @@
 # Delta Chat Changelog
 
+## UNRELEASED
+
+* Fix usage of multiple private keys
+
 ## v0.9.9
 2017-11-18
 
