@@ -995,7 +995,7 @@ JNIEXPORT jint Java_com_b44t_messenger_MrMsg_getSummarytext(JNIEnv *env, jobject
 
 JNIEXPORT jint Java_com_b44t_messenger_MrMsg_showPadlock(JNIEnv *env, jobject obj)
 {
-	return mrmsg_show_padlock(get_mrmsg_t(env, obj));
+	return mrmsg_get_showpadlock(get_mrmsg_t(env, obj));
 }
 
 
