@@ -455,7 +455,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 {
                     int do_archive = m_mrChat.getArchived()==0? 1: 0;
                     MrMailbox.archiveChat((int)dialog_id, do_archive);
-                    MrMailbox.MrCallback(MrMailbox.MR_EVENT_MSGS_CHANGED, 0, 0);
                     AndroidUtilities.showDoneHint(context);
                     if( do_archive == 1 ) {
                         finishFragment();
