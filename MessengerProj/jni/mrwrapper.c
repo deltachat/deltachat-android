@@ -761,9 +761,9 @@ JNIEXPORT jstring Java_com_b44t_messenger_MrChat_getProfileImage(JNIEnv *env, jc
 }
 
 
-JNIEXPORT jint Java_com_b44t_messenger_MrChat_getUnpromoted(JNIEnv *env, jclass cls)
+JNIEXPORT jboolean Java_com_b44t_messenger_MrChat_getUnpromoted(JNIEnv *env, jobject obj)
 {
-	return mrchat_get_unpromoted(get_mrchat_t(env, cls));
+	return mrchat_get_unpromoted(get_mrchat_t(env, obj)) != 0;
 }
 
 
@@ -1035,24 +1035,46 @@ JNIEXPORT void Java_com_b44t_messenger_MrContact_MrContactUnref(JNIEnv *env, jcl
 }
 
 
-JNIEXPORT jstring Java_com_b44t_messenger_MrContact_MrContactGetName(JNIEnv *env, jclass c, jlong hContact)
+JNIEXPORT jstring Java_com_b44t_messenger_MrContact_getName(JNIEnv *env, jobject obj)
 {
-	mrcontact_t* ths = (mrcontact_t*)hContact; if( ths == NULL ) { return JSTRING_NEW(NULL); }
-	return JSTRING_NEW(ths->m_name);
+	const char* temp = mrcontact_get_name(get_mrcontact_t(env, obj));
+		jstring ret = JSTRING_NEW(temp);
+	free(temp);
+	return ret;
 }
 
 
-JNIEXPORT jstring Java_com_b44t_messenger_MrContact_getAuthName(JNIEnv *env, jclass cls)
+JNIEXPORT jstring Java_com_b44t_messenger_MrContact_getAuthName(JNIEnv *env, jobject obj)
 {
-	mrcontact_t* ths = get_mrcontact_t(env, cls); if( ths == NULL ) { return JSTRING_NEW(NULL); }
+	mrcontact_t* ths = get_mrcontact_t(env, obj); if( ths == NULL ) { return JSTRING_NEW(NULL); }
 	return JSTRING_NEW(ths->m_authname);
 }
 
 
-JNIEXPORT jstring Java_com_b44t_messenger_MrContact_MrContactGetAddr(JNIEnv *env, jclass c, jlong hContact)
+JNIEXPORT jstring Java_com_b44t_messenger_MrContact_getDisplayName(JNIEnv *env, jobject obj)
 {
-	mrcontact_t* ths = (mrcontact_t*)hContact; if( ths == NULL ) { return JSTRING_NEW(NULL); }
-	return JSTRING_NEW(ths->m_addr);
+	const char* temp = mrcontact_get_display_name(get_mrcontact_t(env, obj));
+		jstring ret = JSTRING_NEW(temp);
+	free(temp);
+	return ret;
+}
+
+
+JNIEXPORT jstring Java_com_b44t_messenger_MrContact_getAddr(JNIEnv *env, jobject obj)
+{
+	const char* temp = mrcontact_get_addr(get_mrcontact_t(env, obj));
+		jstring ret = JSTRING_NEW(temp);
+	free(temp);
+	return ret;
+}
+
+
+JNIEXPORT jstring Java_com_b44t_messenger_MrContact_getNameNAddr(JNIEnv *env, jobject obj)
+{
+	const char* temp = mrcontact_get_name_n_addr(get_mrcontact_t(env, obj));
+		jstring ret = JSTRING_NEW(temp);
+	free(temp);
+	return ret;
 }
 
 

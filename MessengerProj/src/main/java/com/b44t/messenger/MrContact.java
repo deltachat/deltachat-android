@@ -42,14 +42,11 @@ public class MrContact {
         MrContactUnref(m_hContact);
     }
 
-    public String getName() {
-        return MrContactGetName(m_hContact);
-    }
+    public native String getName();
+    public native String getDisplayName();
     public native String getAuthName();
-
-    public String getAddr() {
-        return MrContactGetAddr(m_hContact);
-    }
+    public native String getAddr();
+    public native String getNameNAddr();
 
     public int isBlocked() {
         return MrContactIsBlocked(m_hContact);
@@ -57,37 +54,6 @@ public class MrContact {
 
     private long                  m_hContact;
     private native static void    MrContactUnref             (long hContact);
-    private native static String  MrContactGetName           (long hContact);
-    private native static String  MrContactGetAddr           (long hContact);
     private native static int     MrContactIsBlocked         (long hContact);
 
-
-    /* additional functions that are not 1:1 available in the backend
-     **********************************************************************************************/
-
-    public static TLRPC.User contactId2user(int id)
-    {
-        TLRPC.User ret = new TLRPC.User();
-        ret.id = id;
-        return ret;
-    }
-
-    public String getDisplayName() {
-        String s=MrContactGetName(m_hContact);
-        if(s.isEmpty()) {
-            s=MrContactGetAddr(m_hContact);
-        }
-        return s;
-    }
-
-    public String getNameNAddr() {
-        String s=MrContactGetName(m_hContact);
-        if(s.isEmpty()) {
-            s=MrContactGetAddr(m_hContact);
-        }
-        else {
-            s+=" ("+MrContactGetAddr(m_hContact)+")";
-        }
-        return s;
-    }
 }
