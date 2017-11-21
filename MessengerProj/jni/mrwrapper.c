@@ -721,46 +721,46 @@ JNIEXPORT void Java_com_b44t_messenger_MrChat_MrChatUnref(JNIEnv *env, jclass c,
 }
 
 
-JNIEXPORT jint Java_com_b44t_messenger_MrChat_getId(JNIEnv *env, jclass cls)
+JNIEXPORT jint Java_com_b44t_messenger_MrChat_getId(JNIEnv *env, jobject obj)
 {
-	mrchat_t* ths = get_mrchat_t(env, cls); if( ths == NULL ) { return 0; }
+	mrchat_t* ths = get_mrchat_t(env, obj); if( ths == NULL ) { return 0; }
 	return ths->m_id;
 }
 
 
-JNIEXPORT jint Java_com_b44t_messenger_MrChat_getType(JNIEnv *env, jclass cls)
+JNIEXPORT jint Java_com_b44t_messenger_MrChat_getType(JNIEnv *env, jobject obj)
 {
-	mrchat_t* ths = get_mrchat_t(env, cls); if( ths == NULL ) { return 0; }
+	mrchat_t* ths = get_mrchat_t(env, obj); if( ths == NULL ) { return 0; }
 	return ths->m_type;
 }
 
 
-JNIEXPORT jint Java_com_b44t_messenger_MrChat_getArchived(JNIEnv *env, jclass cls)
+JNIEXPORT jint Java_com_b44t_messenger_MrChat_getArchived(JNIEnv *env, jobject obj)
 {
-	mrchat_t* ths = get_mrchat_t(env, cls); if( ths == NULL ) { return 0; }
+	mrchat_t* ths = get_mrchat_t(env, obj); if( ths == NULL ) { return 0; }
 	return ths->m_archived;
 }
 
 
-JNIEXPORT jstring Java_com_b44t_messenger_MrChat_getName(JNIEnv *env, jclass cls)
+JNIEXPORT jstring Java_com_b44t_messenger_MrChat_getName(JNIEnv *env, jobject obj)
 {
-	mrchat_t* ths = get_mrchat_t(env, cls); if( ths == NULL ) { return JSTRING_NEW(NULL); }
+	mrchat_t* ths = get_mrchat_t(env, obj); if( ths == NULL ) { return JSTRING_NEW(NULL); }
 	return JSTRING_NEW(ths->m_name);
 }
 
 
-JNIEXPORT jstring Java_com_b44t_messenger_MrChat_getSubtitle(JNIEnv *env, jclass cls)
+JNIEXPORT jstring Java_com_b44t_messenger_MrChat_getSubtitle(JNIEnv *env, jobject obj)
 {
-	const char* temp = mrchat_get_subtitle(get_mrchat_t(env, cls));
+	const char* temp = mrchat_get_subtitle(get_mrchat_t(env, obj));
 		jstring ret = JSTRING_NEW(temp);
 	free(temp);
 	return ret;
 }
 
 
-JNIEXPORT jstring Java_com_b44t_messenger_MrChat_getProfileImage(JNIEnv *env, jclass cls)
+JNIEXPORT jstring Java_com_b44t_messenger_MrChat_getProfileImage(JNIEnv *env, jobject obj)
 {
-	const char* temp = mrchat_get_profile_image(get_mrchat_t(env, cls));
+	const char* temp = mrchat_get_profile_image(get_mrchat_t(env, obj));
 		jstring ret = JSTRING_NEW(temp);
 	free(temp);
 	return ret;
