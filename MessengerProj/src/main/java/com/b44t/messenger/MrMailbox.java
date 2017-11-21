@@ -138,7 +138,7 @@ public class MrMailbox {
     public native static int addContactToChat      (int chat_id, int contact_id);
     public native static int removeContactFromChat (int chat_id, int contact_id);
     public native static int setChatName           (int chat_id, String name);
-    public native static int setChatImage          (int chat_id, String name);
+    public native static int setChatProfileImage   (int chat_id, String name);
 
     public final static int MR_GCM_ADDDAYMARKER = 0x01;
     public native static int[] getChatMsgs(int chat_id, int flags, int marker1before);

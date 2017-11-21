@@ -95,10 +95,10 @@ public class MrMsg {
         return MrMsgGetToId(m_hMsg);
     }
 
-    public native String getParam(int key, String def);
-    public native int    getParamInt(int key, int def);
-    public native void   setParamInt(int key, int def);
-    public native void   saveParamToDisk();
+    public native String getMsgParam(int key, String def);
+    public native int    getMsgParamInt(int key, int def);
+    public native void   setMsgParamInt(int key, int def);
+    public native void   saveMsgParamToDisk();
 
     public native int    getBytes();
     public MrPoortext    getSummary(MrChat chat) { return new MrPoortext(getSummaryCPtr(chat.getCPtr())); }
@@ -152,19 +152,19 @@ public class MrMsg {
         ret.out           = ret.from_id==MrContact.MR_CONTACT_ID_SELF; // true=outgoing message, read eg. in MessageObject.isOutOwner()
         ret.created_by_mr = true;
         ret.show_padlock  = showPadlock()!=0;
-        ret.is_system_cmd = getParamInt('S', 0)!=0;
+        ret.is_system_cmd = getMsgParamInt('S', 0)!=0;
 
         if( type == MR_MSG_TEXT ) {
             ret.message       = getText();
         }
         else if( type == MR_MSG_IMAGE ) {
-            String path = getParam('f', "");
+            String path = getMsgParam('f', "");
             TLRPC.TL_photo photo = null;
             if( !path.isEmpty() ) {
                 try {
                     TLRPC.TL_photoSize photoSize = new TLRPC.TL_photoSize();
-                    photoSize.w = getParamInt('w', 800);
-                    photoSize.h = getParamInt('h', 800);
+                    photoSize.w = getMsgParamInt('w', 800);
+                    photoSize.h = getMsgParamInt('h', 800);
                     photoSize.size = 0; // not sure what to use here, maybe `getBytes();`?
                     photoSize.location = new TLRPC.TL_fileLocation();
                     photoSize.location.mr_path = path;
@@ -198,7 +198,7 @@ public class MrMsg {
             }
         }
         else if( type == MR_MSG_GIF || type == MR_MSG_AUDIO || type == MR_MSG_VOICE || type == MR_MSG_VIDEO || type == MR_MSG_FILE ) {
-            String path = getParam('f', "");
+            String path = getMsgParam('f', "");
             if( !path.isEmpty()) {
                 ret.message = "-1"; // may be misused for video editing information
                 ret.media = new TLRPC.TL_messageMediaDocument();
@@ -208,20 +208,20 @@ public class MrMsg {
                 ret.media.document.mr_path = path;
                 ret.media.document.size = getBytes();
                 if( type == MR_MSG_GIF ) {
-                    ret.media.document.mime_type = getParam('m', "image/gif");
+                    ret.media.document.mime_type = getMsgParam('m', "image/gif");
                     TLRPC.PhotoSize size = new TLRPC.PhotoSize();
                     size.location = new TLRPC.TL_fileLocation();
                     size.location.mr_path = path;
                     size.location.local_id = -ret.id;
-                    size.w = getParamInt('w', 320);
-                    size.h = getParamInt('h', 240);
+                    size.w = getMsgParamInt('w', 320);
+                    size.h = getMsgParamInt('h', 240);
                     size.type = "s";
                     ret.media.document.thumb = size;
                 }
                 else if( type == MR_MSG_AUDIO || type == MR_MSG_VOICE ) {
                     TLRPC.TL_documentAttributeAudio attr = new TLRPC.TL_documentAttributeAudio();
                     attr.voice = type == MR_MSG_VOICE;
-                    attr.duration = getParamInt('d', 0) / 1000;
+                    attr.duration = getMsgParamInt('d', 0) / 1000;
                     ret.media.document.attributes.add(attr);
                 }
                 else if( type == MR_MSG_VIDEO ) {
@@ -235,9 +235,9 @@ public class MrMsg {
                             size.type = "s";
                             ret.media.document.thumb = size;
 
-                            setParamInt('w', size.w);
-                            setParamInt('h', size.h);
-                            saveParamToDisk();
+                            setMsgParamInt('w', size.w);
+                            setMsgParamInt('h', size.h);
+                            saveMsgParamToDisk();
                         }
                         catch (Exception e) {}
                     }
@@ -246,20 +246,20 @@ public class MrMsg {
                         size.location = new TLRPC.TL_fileLocation();
                         size.location.mr_path = tfile.getAbsolutePath();
                         size.location.local_id = -ret.id;
-                        size.w = getParamInt('w', 320);
-                        size.h = getParamInt('h', 240);
+                        size.w = getMsgParamInt('w', 320);
+                        size.h = getMsgParamInt('h', 240);
                         size.type = "s";
                         ret.media.document.thumb = size;
                     }
 
                     TLRPC.TL_documentAttributeVideo attr = new TLRPC.TL_documentAttributeVideo();
-                    attr.duration = getParamInt('d', 0) / 1000;
-                    attr.w = getParamInt('w', 320);
-                    attr.h = getParamInt('h', 240);
+                    attr.duration = getMsgParamInt('d', 0) / 1000;
+                    attr.w = getMsgParamInt('w', 320);
+                    attr.h = getMsgParamInt('h', 240);
                     ret.media.document.attributes.add(attr);
                 }
                 else {
-                    ret.media.document.mime_type = getParam('m', "application/octet-stream");
+                    ret.media.document.mime_type = getMsgParam('m', "application/octet-stream");
                 }
 
             }
@@ -271,7 +271,7 @@ public class MrMsg {
             ret.message = String.format("<unsupported message type #%d for id #%d>", type, ret.id);
         }
 
-        if( !getParam('a', "").equals("") ) {
+        if( !getMsgParam('a', "").equals("") ) {
             ret.flags |= TLRPC.MESSAGE_FLAG_FWD;
         }
 

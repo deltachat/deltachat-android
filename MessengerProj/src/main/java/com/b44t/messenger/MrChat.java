@@ -55,9 +55,8 @@ public class MrChat {
     public native String getSubtitle();
 
     public static int MRP_UNPROMOTED = 'U';
-    public static int MRP_PROFILE_IMAGE = 'i';
-    public native String getParam(int key, String def);
-    public native int    getParamInt(int key, int def);
+    public native String getProfileImage();
+    public native int    getChatParamInt(int key, int def);
 
     public String getDraft() {
         return MrChatGetDraft(m_hChat);

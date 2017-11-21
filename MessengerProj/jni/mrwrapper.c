@@ -433,10 +433,10 @@ JNIEXPORT jint Java_com_b44t_messenger_MrMailbox_setChatName(JNIEnv *env, jclass
 }
 
 
-JNIEXPORT jint Java_com_b44t_messenger_MrMailbox_setChatImage(JNIEnv *env, jclass cls, jint chat_id, jstring image/*NULL=delete*/)
+JNIEXPORT jint Java_com_b44t_messenger_MrMailbox_setChatProfileImage(JNIEnv *env, jclass cls, jint chat_id, jstring image/*NULL=delete*/)
 {
 	CHAR_REF(image);
-	jint ret = (jint)mrmailbox_set_chat_image(get_mrmailbox_t(env, cls), chat_id, imagePtr/*CHAR_REF() preserves NULL*/);
+		jint ret = (jint)mrmailbox_set_chat_profile_image(get_mrmailbox_t(env, cls), chat_id, imagePtr/*CHAR_REF() preserves NULL*/);
 	CHAR_UNREF(image);
 	return ret;
 }
@@ -752,22 +752,16 @@ JNIEXPORT jstring Java_com_b44t_messenger_MrChat_getSubtitle(JNIEnv *env, jclass
 }
 
 
-JNIEXPORT jint Java_com_b44t_messenger_MrChat_getParam(JNIEnv *env, jclass cls, jint key, jstring def)
+JNIEXPORT jstring Java_com_b44t_messenger_MrChat_getProfileImage(JNIEnv *env, jclass cls)
 {
-    mrchat_t* ths = get_mrchat_t(env, cls);
-    jstring ret = NULL;
-    CHAR_REF(def);
-        char* temp = mrparam_get(ths? ths->m_param:NULL, key, defPtr);
-        if( temp ) {
-            ret = JSTRING_NEW(temp);
-            free(temp);
-        }
-    CHAR_UNREF(def);
-    return ret; /* returns NULL only if key is unset and "def" is NULL */
+	const char* temp = mrchat_get_profile_image(get_mrchat_t(env, cls));
+		jstring ret = JSTRING_NEW(temp);
+	free(temp);
+	return ret;
 }
 
 
-JNIEXPORT jint Java_com_b44t_messenger_MrChat_getParamInt(JNIEnv *env, jclass cls, jint key, jint def)
+JNIEXPORT jint Java_com_b44t_messenger_MrChat_getChatParamInt(JNIEnv *env, jclass cls, jint key, jint def)
 {
 	mrchat_t* ths = get_mrchat_t(env, cls);
 	return mrparam_get_int(ths? ths->m_param:NULL, key, def);
@@ -931,7 +925,7 @@ JNIEXPORT jint Java_com_b44t_messenger_MrMsg_MrMsgGetToId(JNIEnv *env, jclass c,
 }
 
 
-JNIEXPORT jstring Java_com_b44t_messenger_MrMsg_getParam(JNIEnv *env, jobject obj, jint key, jstring def)
+JNIEXPORT jstring Java_com_b44t_messenger_MrMsg_getMsgParam(JNIEnv *env, jobject obj, jint key, jstring def)
 {
 	mrmsg_t* ths = get_mrmsg_t(env, obj);
 	jstring ret = NULL;
@@ -946,21 +940,21 @@ JNIEXPORT jstring Java_com_b44t_messenger_MrMsg_getParam(JNIEnv *env, jobject ob
 }
 
 
-JNIEXPORT jint Java_com_b44t_messenger_MrMsg_getParamInt(JNIEnv *env, jobject obj, jint key, jint def)
+JNIEXPORT jint Java_com_b44t_messenger_MrMsg_getMsgParamInt(JNIEnv *env, jobject obj, jint key, jint def)
 {
 	mrmsg_t* ths = get_mrmsg_t(env, obj);
 	return mrparam_get_int(ths? ths->m_param:NULL, key, def);
 }
 
 
-JNIEXPORT void Java_com_b44t_messenger_MrMsg_setParamInt(JNIEnv *env, jobject obj, jint key, jint value)
+JNIEXPORT void Java_com_b44t_messenger_MrMsg_setMsgParamInt(JNIEnv *env, jobject obj, jint key, jint value)
 {
 	mrmsg_t* ths = get_mrmsg_t(env, obj);
 	mrparam_set_int(ths? ths->m_param:NULL, key, value);
 }
 
 
-JNIEXPORT void Java_com_b44t_messenger_MrMsg_saveParamToDisk(JNIEnv *env, jobject obj)
+JNIEXPORT void Java_com_b44t_messenger_MrMsg_saveMsgParamToDisk(JNIEnv *env, jobject obj)
 {
 	mrmsg_save_param_to_disk(get_mrmsg_t(env, obj));
 }

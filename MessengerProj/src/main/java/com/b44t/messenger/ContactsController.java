@@ -182,7 +182,7 @@ public class ContactsController {
                 }
             }
             else if( chatType == MrChat.MR_CHAT_GROUP ) {
-                tempPath = mrChat.getParam(MrChat.MRP_PROFILE_IMAGE, "");
+                tempPath = mrChat.getProfileImage();
             }
         }
 

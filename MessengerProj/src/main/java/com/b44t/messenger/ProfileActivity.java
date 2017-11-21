@@ -168,7 +168,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                         String nameonly = big.location.volume_id + "_" + big.location.local_id + ".jpg";
                         File fileobj = new File(FileLoader.getInstance().getDirectory(FileLoader.MEDIA_DIR_CACHE), nameonly);
                         String fullpath = fileobj.getAbsolutePath();
-                        MrMailbox.setChatImage(chat_id, fullpath);
+                        MrMailbox.setChatProfileImage(chat_id, fullpath);
                     }
                 }
             };
@@ -515,7 +515,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                     // show menu to change the group image
                     AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
                     CharSequence[] items;
-                    boolean hasPhoto = MrMailbox.getChat(chat_id).getParam(MrChat.MRP_PROFILE_IMAGE, null)!=null;
+                    boolean hasPhoto = MrMailbox.getChat(chat_id).getProfileImage()!=null;
                     if ( !hasPhoto ) {
                         items = new CharSequence[]{context.getString(R.string.FromCamera), context.getString(R.string.FromGalley)};
                     } else {
@@ -536,7 +536,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                                 builder.setPositiveButton(R.string.OK, new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialogInterface, int i) {
-                                        if( MrMailbox.setChatImage(chat_id, null)!=0 ) {
+                                        if( MrMailbox.setChatProfileImage(chat_id, null)!=0 ) {
                                             AndroidUtilities.showDoneHint(getParentActivity());
                                         }
                                     }
