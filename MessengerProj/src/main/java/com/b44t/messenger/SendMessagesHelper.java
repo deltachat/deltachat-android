@@ -99,15 +99,8 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
     }
 
     public void sendMessageContact(int contact_id, int dialog_id) {
-        MrContact contact = MrMailbox.getContact(contact_id);
-        String msg = contact.getAuthName();
-        if(msg.isEmpty()) {
-            msg = contact.getAddr();
-        }
-        else {
-            msg += ": " + contact.getAddr();
-        }
-        SendMessagesHelper.getInstance().sendMessageText(msg, dialog_id, null);
+        int msg_id = MrMailbox.sendVcardMsg(dialog_id, contact_id);
+        updateInterfaceForNewMessage(dialog_id, true, msg_id);
     }
 
     public void sendMessageDocument(TLRPC.TL_document document, VideoEditedInfo videoEditedInfo, String path, long peer, HashMap<String, String> params) {
@@ -132,7 +125,7 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
         else {
             NotificationCenter.getInstance().postNotificationName(NotificationCenter.messageSendError, msg_id);
         }
-        NotificationCenter.getInstance().postNotificationName(NotificationCenter.dialogsNeedReload);
+        //NotificationCenter.getInstance().postNotificationName(NotificationCenter.dialogsNeedReload); -- already send due to MR_EVENT_MSGS_CHANGED which is send by the core on sending messages
     }
 
     private void sendMessage__(String message,

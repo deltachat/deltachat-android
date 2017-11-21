@@ -44,7 +44,6 @@ public class MrContact {
 
     public native String getName();
     public native String getDisplayName();
-    public native String getAuthName();
     public native String getAddr();
     public native String getNameNAddr();
 

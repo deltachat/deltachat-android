@@ -499,6 +499,12 @@ JNIEXPORT jint Java_com_b44t_messenger_MrMailbox_sendTextMsg(JNIEnv *env, jclass
 }
 
 
+JNIEXPORT jint Java_com_b44t_messenger_MrMailbox_sendVcardMsg(JNIEnv *env, jobject obj, jint chat_id, jint contact_id)
+{
+	return mrmailbox_send_vcard_msg(get_mrmailbox_t(env, obj), chat_id, contact_id);
+}
+
+
 JNIEXPORT jint Java_com_b44t_messenger_MrMailbox_sendMediaMsg(JNIEnv *env, jclass cls, jint chat_id, jint type, jstring file, jstring mime, jint w, jint h, jint ms, jstring author, jstring trackname)
 {
 	mrmsg_t* msg = mrmsg_new();
@@ -1041,13 +1047,6 @@ JNIEXPORT jstring Java_com_b44t_messenger_MrContact_getName(JNIEnv *env, jobject
 		jstring ret = JSTRING_NEW(temp);
 	free(temp);
 	return ret;
-}
-
-
-JNIEXPORT jstring Java_com_b44t_messenger_MrContact_getAuthName(JNIEnv *env, jobject obj)
-{
-	mrcontact_t* ths = get_mrcontact_t(env, obj); if( ths == NULL ) { return JSTRING_NEW(NULL); }
-	return JSTRING_NEW(ths->m_authname);
 }
 
 
