@@ -761,10 +761,9 @@ JNIEXPORT jstring Java_com_b44t_messenger_MrChat_getProfileImage(JNIEnv *env, jc
 }
 
 
-JNIEXPORT jint Java_com_b44t_messenger_MrChat_getChatParamInt(JNIEnv *env, jclass cls, jint key, jint def)
+JNIEXPORT jint Java_com_b44t_messenger_MrChat_getUnpromoted(JNIEnv *env, jclass cls)
 {
-	mrchat_t* ths = get_mrchat_t(env, cls);
-	return mrparam_get_int(ths? ths->m_param:NULL, key, def);
+	return mrchat_get_unpromoted(get_mrchat_t(env, cls));
 }
 
 
