@@ -4,18 +4,18 @@ _Please read the guidelines linked above, especially when you are a first time c
 
 **Feature description**
 
-**Problem description**
-
 **Steps to reproduce the problem**
 
 **Screen snapshots**
 
 **Debug logs**
 
-Debug logs can be copied from within the Delta Chat app:
+Debug logs can be copied from within the Delta Chat app: 
 
-Open the _Settings_ menu -> _About_ -> _version number|Info_. 
+Open the _Settings_ menu -> _About_ -> _version number|Info_.
 
 Alternatively from the Android system log:
 
 ` adb logcat -v time -s DeltaChat `
+
+This log contains private data (e.g. mail address, provider information) which shall be removed or anonymised prior to posting.
