@@ -108,8 +108,9 @@ public class MrMsg {
     public MrPoortext    getMediainfo() { return new MrPoortext(getMediainfoCPtr()); }
     private native long  getMediainfoCPtr();
     public native String getFilename();
-    public native boolean isIncreation();
+    public native boolean isForwarded();
     public native boolean isSystemcmd();
+    public native boolean isIncreation();
 
     private long                  m_hMsg; // must not be renamed as referenced by JNI under the name "m_hMsg"
     private native static void    MrMsgUnref                 (long hMsg);
@@ -272,7 +273,7 @@ public class MrMsg {
             ret.message = String.format("<unsupported message type #%d for id #%d>", type, ret.id);
         }
 
-        if( !getMsgParam('a', "").equals("") ) {
+        if( isForwarded() ) {
             ret.flags |= TLRPC.MESSAGE_FLAG_FWD;
         }
 

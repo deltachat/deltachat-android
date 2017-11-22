@@ -1010,6 +1010,12 @@ JNIEXPORT jlong Java_com_b44t_messenger_MrMsg_getMediainfoCPtr(JNIEnv *env, jobj
 }
 
 
+JNIEXPORT jboolean Java_com_b44t_messenger_MrMsg_isForwarded(JNIEnv *env, jobject obj)
+{
+    return mrmsg_is_forwarded(get_mrmsg_t(env, obj)) != 0;
+}
+
+
 JNIEXPORT jboolean Java_com_b44t_messenger_MrMsg_isIncreation(JNIEnv *env, jobject obj)
 {
     return mrmsg_is_increation(get_mrmsg_t(env, obj)) != 0;
