@@ -767,9 +767,9 @@ JNIEXPORT jstring Java_com_b44t_messenger_MrChat_getProfileImage(JNIEnv *env, jo
 }
 
 
-JNIEXPORT jboolean Java_com_b44t_messenger_MrChat_getUnpromoted(JNIEnv *env, jobject obj)
+JNIEXPORT jboolean Java_com_b44t_messenger_MrChat_isUnpromoted(JNIEnv *env, jobject obj)
 {
-	return mrchat_get_unpromoted(get_mrchat_t(env, obj)) != 0;
+	return mrchat_is_unpromoted(get_mrchat_t(env, obj)) != 0;
 }
 
 
@@ -1010,9 +1010,15 @@ JNIEXPORT jlong Java_com_b44t_messenger_MrMsg_getMediainfoCPtr(JNIEnv *env, jobj
 }
 
 
-JNIEXPORT jint Java_com_b44t_messenger_MrMsg_isIncreation(JNIEnv *env, jobject obj)
+JNIEXPORT jboolean Java_com_b44t_messenger_MrMsg_isIncreation(JNIEnv *env, jobject obj)
 {
-    return (jint)mrmsg_is_increation(get_mrmsg_t(env, obj));
+    return mrmsg_is_increation(get_mrmsg_t(env, obj)) != 0;
+}
+
+
+JNIEXPORT jboolean Java_com_b44t_messenger_MrMsg_isSystemcmd(JNIEnv *env, jobject obj)
+{
+    return mrmsg_is_systemcmd(get_mrmsg_t(env, obj)) != 0;
 }
 
 

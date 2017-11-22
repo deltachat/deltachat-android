@@ -848,7 +848,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
 
             TextView emptyView = new TextView(context);
 
-            if( m_mrChat.getUnpromoted() ) {
+            if( m_mrChat.isUnpromoted() ) {
                 emptyView.setText(context.getString(R.string.MsgNewGroupDraftHint));
                 emptyView.setGravity(Gravity.START);
             }
@@ -2760,7 +2760,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     public void didPressedImage(ChatMessageCell cell) {
                         MessageObject message = cell.getMessageObject();
 
-                        if( message.type == MessageObject.MO_TYPE3_VIDEO && MrMailbox.getMsg(message.getId()).isIncreation()!=0 ) {
+                        if( message.type == MessageObject.MO_TYPE3_VIDEO && MrMailbox.getMsg(message.getId()).isIncreation() ) {
                             return; // we're not ready (still compressing), a hint is already shown in the message itself
                         }
 

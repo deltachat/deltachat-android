@@ -55,7 +55,7 @@ public class MrChat {
     public native String getSubtitle();
 
     public native String getProfileImage();
-    public native boolean getUnpromoted();
+    public native boolean isUnpromoted();
 
     public String getDraft() {
         return MrChatGetDraft(m_hChat);

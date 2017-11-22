@@ -108,7 +108,8 @@ public class MrMsg {
     public MrPoortext    getMediainfo() { return new MrPoortext(getMediainfoCPtr()); }
     private native long  getMediainfoCPtr();
     public native String getFilename();
-    public native int    isIncreation();
+    public native boolean isIncreation();
+    public native boolean isSystemcmd();
 
     private long                  m_hMsg; // must not be renamed as referenced by JNI under the name "m_hMsg"
     private native static void    MrMsgUnref                 (long hMsg);
@@ -152,7 +153,7 @@ public class MrMsg {
         ret.out           = ret.from_id==MrContact.MR_CONTACT_ID_SELF; // true=outgoing message, read eg. in MessageObject.isOutOwner()
         ret.created_by_mr = true;
         ret.show_padlock  = showPadlock()!=0;
-        ret.is_system_cmd = getMsgParamInt('S', 0)!=0;
+        ret.is_system_cmd = isSystemcmd();
 
         if( type == MR_MSG_TEXT ) {
             ret.message       = getText();

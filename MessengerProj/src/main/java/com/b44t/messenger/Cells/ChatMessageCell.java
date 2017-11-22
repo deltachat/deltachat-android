@@ -1052,7 +1052,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
             int minutes = duration / 60;
             int seconds = duration - minutes * 60;
             String infoString = String.format("%d:%02d, %s", minutes, seconds, formatFileSize(documentAttach.size));
-            if( MrMailbox.getMsg(messageObject.getId()).isIncreation()!=0 ) {
+            if( MrMailbox.getMsg(messageObject.getId()).isIncreation() ) {
                 infoString = ApplicationLoader.applicationContext.getString(R.string.OneMoment);
             }
             infoWidth = (int) Math.ceil(infoPaint.measureText(infoString));
