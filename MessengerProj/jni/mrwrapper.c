@@ -973,7 +973,10 @@ JNIEXPORT jlong Java_com_b44t_messenger_MrMsg_getSummaryCPtr(JNIEnv *env, jobjec
 
 JNIEXPORT jstring Java_com_b44t_messenger_MrMsg_getSummarytext(JNIEnv *env, jobject obj, jint approx_characters)
 {
-	return JSTRING_NEW(mrmsg_get_summarytext(get_mrmsg_t(env, obj), approx_characters));
+	char* temp = mrmsg_get_summarytext(get_mrmsg_t(env, obj), approx_characters);
+		jstring ret = JSTRING_NEW(temp);
+	free(temp);
+	return ret;
 }
 
 
@@ -985,19 +988,28 @@ JNIEXPORT jint Java_com_b44t_messenger_MrMsg_showPadlock(JNIEnv *env, jobject ob
 
 JNIEXPORT jstring Java_com_b44t_messenger_MrMsg_getFile(JNIEnv *env, jobject obj)
 {
-	return JSTRING_NEW(mrmsg_get_file(get_mrmsg_t(env, obj)));
+	char* temp = mrmsg_get_file(get_mrmsg_t(env, obj));
+		jstring ret =  JSTRING_NEW(temp);
+	free(temp);
+	return ret;
 }
 
 
 JNIEXPORT jstring Java_com_b44t_messenger_MrMsg_getFilemime(JNIEnv *env, jobject obj)
 {
-	return JSTRING_NEW(mrmsg_get_filemime(get_mrmsg_t(env, obj)));
+	char* temp = mrmsg_get_filemime(get_mrmsg_t(env, obj));
+		jstring ret =  JSTRING_NEW(temp);
+	free(temp);
+	return ret;
 }
 
 
 JNIEXPORT jstring Java_com_b44t_messenger_MrMsg_getFilename(JNIEnv *env, jobject obj)
 {
-	return JSTRING_NEW(mrmsg_get_filename(get_mrmsg_t(env, obj)));
+	char* temp = mrmsg_get_filename(get_mrmsg_t(env, obj));
+		jstring ret =  JSTRING_NEW(temp);
+	free(temp);
+	return ret;
 }
 
 
