@@ -998,6 +998,12 @@ JNIEXPORT jint Java_com_b44t_messenger_MrMsg_showPadlock(JNIEnv *env, jobject ob
 }
 
 
+JNIEXPORT jstring Java_com_b44t_messenger_MrMsg_getFile(JNIEnv *env, jobject obj)
+{
+	return JSTRING_NEW(mrmsg_get_file(get_mrmsg_t(env, obj)));
+}
+
+
 JNIEXPORT jstring Java_com_b44t_messenger_MrMsg_getFilename(JNIEnv *env, jobject obj)
 {
 	return JSTRING_NEW(mrmsg_get_filename(get_mrmsg_t(env, obj)));

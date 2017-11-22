@@ -820,7 +820,7 @@ public class AndroidUtilities {
     public static void openForViewOrShare(Activity activity, int msg_id, String cmd)
     {
         MrMsg msg = MrMailbox.getMsg(msg_id);
-        String path = msg.getMsgParam('f', "");
+        String path = msg.getFile();
         String mimeType = getMimetype(path, msg.getMsgParam('m', "application/octet-stream"));
         try {
             File file = new File(path);
@@ -892,7 +892,7 @@ public class AndroidUtilities {
 
         MrMsg        msg = MrMailbox.getMsg(msg_id);
         final int    msg_type = msg.getType();
-        String       msg_file_path = msg.getMsgParam('f', "");
+        String       msg_file_path = msg.getFile();
         final String msg_mime = msg.getMsgParam('m', "application/octet-stream");
         final String msg_file_name = msg.getFilename();
         final File sourceFile = new File(msg_file_path);

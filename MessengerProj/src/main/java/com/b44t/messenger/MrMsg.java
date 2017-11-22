@@ -107,6 +107,7 @@ public class MrMsg {
     public native int    showPadlock();
     public MrPoortext    getMediainfo() { return new MrPoortext(getMediainfoCPtr()); }
     private native long  getMediainfoCPtr();
+    public native String getFile();
     public native String getFilename();
     public native boolean isForwarded();
     public native boolean isSystemcmd();
@@ -160,7 +161,7 @@ public class MrMsg {
             ret.message       = getText();
         }
         else if( type == MR_MSG_IMAGE ) {
-            String path = getMsgParam('f', "");
+            String path = getFile();
             TLRPC.TL_photo photo = null;
             if( !path.isEmpty() ) {
                 try {
@@ -200,7 +201,7 @@ public class MrMsg {
             }
         }
         else if( type == MR_MSG_GIF || type == MR_MSG_AUDIO || type == MR_MSG_VOICE || type == MR_MSG_VIDEO || type == MR_MSG_FILE ) {
-            String path = getMsgParam('f', "");
+            String path = getFile();
             if( !path.isEmpty()) {
                 ret.message = "-1"; // may be misused for video editing information
                 ret.media = new TLRPC.TL_messageMediaDocument();
