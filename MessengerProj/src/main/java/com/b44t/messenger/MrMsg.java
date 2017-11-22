@@ -95,7 +95,9 @@ public class MrMsg {
         return MrMsgGetToId(m_hMsg);
     }
 
-    public native int    getMsgParamInt(int key, int def);
+    public native int    getWidth(int def);
+    public native int    getHeight(int def);
+    public native int    getDuration();
     public native void   setMsgParamInt(int key, int def);
     public native void   saveMsgParamToDisk();
 
@@ -166,8 +168,8 @@ public class MrMsg {
             if( !path.isEmpty() ) {
                 try {
                     TLRPC.TL_photoSize photoSize = new TLRPC.TL_photoSize();
-                    photoSize.w = getMsgParamInt('w', 800);
-                    photoSize.h = getMsgParamInt('h', 800);
+                    photoSize.w = getWidth(800);
+                    photoSize.h = getHeight(800);
                     photoSize.size = 0; // not sure what to use here, maybe `getBytes();`?
                     photoSize.location = new TLRPC.TL_fileLocation();
                     photoSize.location.mr_path = path;
@@ -216,15 +218,15 @@ public class MrMsg {
                     size.location = new TLRPC.TL_fileLocation();
                     size.location.mr_path = path;
                     size.location.local_id = -ret.id;
-                    size.w = getMsgParamInt('w', 320);
-                    size.h = getMsgParamInt('h', 240);
+                    size.w = getWidth(320);
+                    size.h = getHeight(240);
                     size.type = "s";
                     ret.media.document.thumb = size;
                 }
                 else if( type == MR_MSG_AUDIO || type == MR_MSG_VOICE ) {
                     TLRPC.TL_documentAttributeAudio attr = new TLRPC.TL_documentAttributeAudio();
                     attr.voice = type == MR_MSG_VOICE;
-                    attr.duration = getMsgParamInt('d', 0) / 1000;
+                    attr.duration = getDuration() / 1000;
                     ret.media.document.attributes.add(attr);
                 }
                 else if( type == MR_MSG_VIDEO ) {
@@ -249,16 +251,16 @@ public class MrMsg {
                         size.location = new TLRPC.TL_fileLocation();
                         size.location.mr_path = tfile.getAbsolutePath();
                         size.location.local_id = -ret.id;
-                        size.w = getMsgParamInt('w', 320);
-                        size.h = getMsgParamInt('h', 240);
+                        size.w = getWidth(320);
+                        size.h = getHeight(240);
                         size.type = "s";
                         ret.media.document.thumb = size;
                     }
 
                     TLRPC.TL_documentAttributeVideo attr = new TLRPC.TL_documentAttributeVideo();
-                    attr.duration = getMsgParamInt('d', 0) / 1000;
-                    attr.w = getMsgParamInt('w', 320);
-                    attr.h = getMsgParamInt('h', 240);
+                    attr.duration = getDuration() / 1000;
+                    attr.w = getWidth(320);
+                    attr.h = getHeight(240);
                     ret.media.document.attributes.add(attr);
                 }
                 else {

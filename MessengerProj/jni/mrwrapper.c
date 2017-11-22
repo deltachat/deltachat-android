@@ -930,10 +930,23 @@ JNIEXPORT jint Java_com_b44t_messenger_MrMsg_MrMsgGetToId(JNIEnv *env, jclass c,
 }
 
 
-JNIEXPORT jint Java_com_b44t_messenger_MrMsg_getMsgParamInt(JNIEnv *env, jobject obj, jint key, jint def)
+JNIEXPORT jint Java_com_b44t_messenger_MrMsg_getWidth(JNIEnv *env, jobject obj, jint def)
 {
 	mrmsg_t* ths = get_mrmsg_t(env, obj);
-	return mrparam_get_int(ths? ths->m_param:NULL, key, def);
+	return mrparam_get_int(ths? ths->m_param:NULL, 'w', def);
+}
+
+
+JNIEXPORT jint Java_com_b44t_messenger_MrMsg_getHeight(JNIEnv *env, jobject obj, jint def)
+{
+	mrmsg_t* ths = get_mrmsg_t(env, obj);
+	return mrparam_get_int(ths? ths->m_param:NULL, 'h', def);
+}
+
+
+JNIEXPORT jint Java_com_b44t_messenger_MrMsg_getDuration(JNIEnv *env, jobject obj)
+{
+	return mrmsg_get_duration(get_mrmsg_t(env, obj));
 }
 
 
