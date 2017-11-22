@@ -821,7 +821,7 @@ public class AndroidUtilities {
     {
         MrMsg msg = MrMailbox.getMsg(msg_id);
         String path = msg.getFile();
-        String mimeType = getMimetype(path, msg.getMsgParam('m', "application/octet-stream"));
+        String mimeType = getMimetype(path, msg.getFilemime());
         try {
             File file = new File(path);
             if( !file.exists() ) {
@@ -893,7 +893,7 @@ public class AndroidUtilities {
         MrMsg        msg = MrMailbox.getMsg(msg_id);
         final int    msg_type = msg.getType();
         String       msg_file_path = msg.getFile();
-        final String msg_mime = msg.getMsgParam('m', "application/octet-stream");
+        final String msg_mime = msg.getFilemime();
         final String msg_file_name = msg.getFilename();
         final File sourceFile = new File(msg_file_path);
         if( !sourceFile.exists() ) {

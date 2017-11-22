@@ -95,7 +95,6 @@ public class MrMsg {
         return MrMsgGetToId(m_hMsg);
     }
 
-    public native String getMsgParam(int key, String def);
     public native int    getMsgParamInt(int key, int def);
     public native void   setMsgParamInt(int key, int def);
     public native void   saveMsgParamToDisk();
@@ -108,6 +107,7 @@ public class MrMsg {
     public MrPoortext    getMediainfo() { return new MrPoortext(getMediainfoCPtr()); }
     private native long  getMediainfoCPtr();
     public native String getFile();
+    public native String getFilemime();
     public native String getFilename();
     public native boolean isForwarded();
     public native boolean isSystemcmd();
@@ -211,7 +211,7 @@ public class MrMsg {
                 ret.media.document.mr_path = path;
                 ret.media.document.size = getBytes();
                 if( type == MR_MSG_GIF ) {
-                    ret.media.document.mime_type = getMsgParam('m', "image/gif");
+                    ret.media.document.mime_type = getFilemime();
                     TLRPC.PhotoSize size = new TLRPC.PhotoSize();
                     size.location = new TLRPC.TL_fileLocation();
                     size.location.mr_path = path;
@@ -262,7 +262,7 @@ public class MrMsg {
                     ret.media.document.attributes.add(attr);
                 }
                 else {
-                    ret.media.document.mime_type = getMsgParam('m', "application/octet-stream");
+                    ret.media.document.mime_type = getFilemime();
                 }
 
             }

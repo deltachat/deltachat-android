@@ -930,21 +930,6 @@ JNIEXPORT jint Java_com_b44t_messenger_MrMsg_MrMsgGetToId(JNIEnv *env, jclass c,
 }
 
 
-JNIEXPORT jstring Java_com_b44t_messenger_MrMsg_getMsgParam(JNIEnv *env, jobject obj, jint key, jstring def)
-{
-	mrmsg_t* ths = get_mrmsg_t(env, obj);
-	jstring ret = NULL;
-	CHAR_REF(def);
-		char* temp = mrparam_get(ths? ths->m_param:NULL, key, defPtr);
-        if( temp ) {
-            ret = JSTRING_NEW(temp);
-            free(temp);
-        }
-	CHAR_UNREF(def);
-	return ret;
-}
-
-
 JNIEXPORT jint Java_com_b44t_messenger_MrMsg_getMsgParamInt(JNIEnv *env, jobject obj, jint key, jint def)
 {
 	mrmsg_t* ths = get_mrmsg_t(env, obj);
@@ -1001,6 +986,12 @@ JNIEXPORT jint Java_com_b44t_messenger_MrMsg_showPadlock(JNIEnv *env, jobject ob
 JNIEXPORT jstring Java_com_b44t_messenger_MrMsg_getFile(JNIEnv *env, jobject obj)
 {
 	return JSTRING_NEW(mrmsg_get_file(get_mrmsg_t(env, obj)));
+}
+
+
+JNIEXPORT jstring Java_com_b44t_messenger_MrMsg_getFilemime(JNIEnv *env, jobject obj)
+{
+	return JSTRING_NEW(mrmsg_get_filemime(get_mrmsg_t(env, obj)));
 }
 
 
