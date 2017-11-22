@@ -2,15 +2,28 @@ _Please read the guidelines linked above, especially when you are a first time c
 
 **Delta Chat version**
 
-**Feature description**
+See settings dialog …
+
+**Expected behavior**
+
+What is the expected output?
+
+**Actual behavior**
+
+What do you see instead?
 
 **Steps to reproduce the problem**
 
+1. …
+2. …
+
 **Screen snapshots**
+
+If applicable …
 
 **Debug logs**
 
-Debug logs can be copied from within the Delta Chat app: 
+If applicable, debug logs can be copied from within the Delta Chat app: 
 
 Open the _Settings_ menu -> _About_ -> _version number|Info_.
 
