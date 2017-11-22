@@ -986,7 +986,7 @@ JNIEXPORT jlong Java_com_b44t_messenger_MrMsg_getSummaryCPtr(JNIEnv *env, jobjec
 }
 
 
-JNIEXPORT jint Java_com_b44t_messenger_MrMsg_getSummarytext(JNIEnv *env, jobject obj, jint approx_characters)
+JNIEXPORT jstring Java_com_b44t_messenger_MrMsg_getSummarytext(JNIEnv *env, jobject obj, jint approx_characters)
 {
 	return JSTRING_NEW(mrmsg_get_summarytext(get_mrmsg_t(env, obj), approx_characters));
 }
@@ -998,7 +998,7 @@ JNIEXPORT jint Java_com_b44t_messenger_MrMsg_showPadlock(JNIEnv *env, jobject ob
 }
 
 
-JNIEXPORT jint Java_com_b44t_messenger_MrMsg_getFilename(JNIEnv *env, jobject obj)
+JNIEXPORT jstring Java_com_b44t_messenger_MrMsg_getFilename(JNIEnv *env, jobject obj)
 {
 	return JSTRING_NEW(mrmsg_get_filename(get_mrmsg_t(env, obj)));
 }
