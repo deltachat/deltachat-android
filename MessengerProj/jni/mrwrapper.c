@@ -507,31 +507,22 @@ JNIEXPORT jint Java_com_b44t_messenger_MrMailbox_sendVcardMsg(JNIEnv *env, jobje
 
 JNIEXPORT jint Java_com_b44t_messenger_MrMailbox_sendMediaMsg(JNIEnv *env, jclass cls, jint chat_id, jint type, jstring file, jstring mime, jint w, jint h, jint ms, jstring author, jstring trackname)
 {
-	mrmsg_t* msg = mrmsg_new();
-		msg->m_type = type;
-		CHAR_REF(mime);
-			mrparam_set(msg->m_param, 'm', mimePtr);
-		CHAR_UNREF(mime);
-		CHAR_REF(file);
-			mrparam_set(msg->m_param, 'f', filePtr);
-		CHAR_UNREF(file);
-		if( type == MR_MSG_IMAGE || type == MR_MSG_GIF || type == MR_MSG_VIDEO ) {
-			mrparam_set_int(msg->m_param, 'w', w);
-			mrparam_set_int(msg->m_param, 'h', h);
-		}
-		if( type == MR_MSG_AUDIO || type == MR_MSG_VOICE || type == MR_MSG_VIDEO ) {
-			mrparam_set_int(msg->m_param, 'd', ms);
-		}
-		if( type == MR_MSG_AUDIO ) {
-			CHAR_REF(author);
-				mrparam_set(msg->m_param, 'N', authorPtr);
-			CHAR_UNREF(author);
-			CHAR_REF(trackname);
-				mrparam_set(msg->m_param, 'n', tracknamePtr);
-			CHAR_UNREF(trackname);
-		}
-		jint msg_id = mrmailbox_send_msg(get_mrmailbox_t(env, cls), chat_id, msg);
-	mrmsg_unref(msg);
+	jint msg_id = 0;
+	CHAR_REF(file);
+	CHAR_REF(mime);
+	CHAR_REF(author);
+	CHAR_REF(trackname);
+	switch( type ) {
+		case MR_MSG_IMAGE: msg_id = (jint)mrmailbox_send_image_msg(get_mrmailbox_t(env, cls), chat_id, filePtr, mimePtr, w, h); break;
+		case MR_MSG_VIDEO: msg_id = (jint)mrmailbox_send_video_msg(get_mrmailbox_t(env, cls), chat_id, filePtr, mimePtr, w, h, ms); break;
+		case MR_MSG_VOICE: msg_id = (jint)mrmailbox_send_voice_msg(get_mrmailbox_t(env, cls), chat_id, filePtr, mimePtr, ms); break;
+		case MR_MSG_AUDIO: msg_id = (jint)mrmailbox_send_audio_msg(get_mrmailbox_t(env, cls), chat_id, filePtr, mimePtr, ms, authorPtr, tracknamePtr); break;
+		default:           msg_id = (jint)mrmailbox_send_file_msg (get_mrmailbox_t(env, cls), chat_id, filePtr, mimePtr); break;
+	}
+	CHAR_UNREF(trackname);
+	CHAR_UNREF(author);
+	CHAR_UNREF(mime);
+	CHAR_UNREF(file);
 	return msg_id;
 }
 
