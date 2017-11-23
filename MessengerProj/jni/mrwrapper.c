@@ -950,16 +950,9 @@ JNIEXPORT jint Java_com_b44t_messenger_MrMsg_getDuration(JNIEnv *env, jobject ob
 }
 
 
-JNIEXPORT void Java_com_b44t_messenger_MrMsg_setMsgParamInt(JNIEnv *env, jobject obj, jint key, jint value)
+JNIEXPORT void Java_com_b44t_messenger_MrMsg_lateFilingMediaSize(JNIEnv *env, jobject obj, jint width, jint height, jint duration)
 {
-	mrmsg_t* ths = get_mrmsg_t(env, obj);
-	mrparam_set_int(ths? ths->m_param:NULL, key, value);
-}
-
-
-JNIEXPORT void Java_com_b44t_messenger_MrMsg_saveMsgParamToDisk(JNIEnv *env, jobject obj)
-{
-	mrmsg_save_param_to_disk(get_mrmsg_t(env, obj));
+	mrmsg_latefiling_mediasize(get_mrmsg_t(env, obj), width, height, duration);
 }
 
 

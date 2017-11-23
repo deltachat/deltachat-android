@@ -98,8 +98,7 @@ public class MrMsg {
     public native int    getWidth(int def);
     public native int    getHeight(int def);
     public native int    getDuration();
-    public native void   setMsgParamInt(int key, int def);
-    public native void   saveMsgParamToDisk();
+    public native void   lateFilingMediaSize(int width, int height, int duration);
 
     public native int    getBytes();
     public MrPoortext    getSummary(MrChat chat) { return new MrPoortext(getSummaryCPtr(chat.getCPtr())); }
@@ -240,9 +239,7 @@ public class MrMsg {
                             size.type = "s";
                             ret.media.document.thumb = size;
 
-                            setMsgParamInt('w', size.w);
-                            setMsgParamInt('h', size.h);
-                            saveMsgParamToDisk();
+                            lateFilingMediaSize(size.w, size.h, 0);
                         }
                         catch (Exception e) {}
                     }
