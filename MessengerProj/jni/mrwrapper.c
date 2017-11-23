@@ -932,15 +932,15 @@ JNIEXPORT jint Java_com_b44t_messenger_MrMsg_MrMsgGetToId(JNIEnv *env, jclass c,
 
 JNIEXPORT jint Java_com_b44t_messenger_MrMsg_getWidth(JNIEnv *env, jobject obj, jint def)
 {
-	mrmsg_t* ths = get_mrmsg_t(env, obj);
-	return mrparam_get_int(ths? ths->m_param:NULL, 'w', def);
+	jint ret = (jint)mrmsg_get_width(get_mrmsg_t(env, obj));
+	return ret? ret : def;
 }
 
 
 JNIEXPORT jint Java_com_b44t_messenger_MrMsg_getHeight(JNIEnv *env, jobject obj, jint def)
 {
-	mrmsg_t* ths = get_mrmsg_t(env, obj);
-	return mrparam_get_int(ths? ths->m_param:NULL, 'h', def);
+	jint ret = (jint)mrmsg_get_height(get_mrmsg_t(env, obj));
+	return ret? ret : def;
 }
 
 
@@ -965,16 +965,7 @@ JNIEXPORT void Java_com_b44t_messenger_MrMsg_saveMsgParamToDisk(JNIEnv *env, job
 
 JNIEXPORT jint Java_com_b44t_messenger_MrMsg_getBytes(JNIEnv *env, jobject obj)
 {
-	jint ret = 0;
-	mrmsg_t* ths = get_mrmsg_t(env, obj);
-	if( ths ) {
-		const char* file = mrparam_get(ths->m_param, 'f', NULL);
-		if( file ) {
-			ret = mr_get_filebytes(file);
-			free(file);
-		}
-	}
-	return ret;
+	return (jint)mrmsg_get_filebytes(get_mrmsg_t(env, obj));
 }
 
 
