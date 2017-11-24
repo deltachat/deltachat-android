@@ -46,13 +46,8 @@ public class MrContact {
     public native String getDisplayName();
     public native String getAddr();
     public native String getNameNAddr();
-
-    public int isBlocked() {
-        return MrContactIsBlocked(m_hContact);
-    }
+    public native boolean isBlocked();
 
     private long                  m_hContact;
     private native static void    MrContactUnref             (long hContact);
-    private native static int     MrContactIsBlocked         (long hContact);
-
 }

@@ -55,7 +55,7 @@ import com.b44t.messenger.MessageObject;
 import com.b44t.messenger.MrChat;
 import com.b44t.messenger.MrContact;
 import com.b44t.messenger.MrMailbox;
-import com.b44t.messenger.MrPoortext;
+import com.b44t.messenger.MrLot;
 import com.b44t.messenger.R;
 import com.b44t.messenger.TLRPC;
 import com.b44t.messenger.Components.AvatarDrawable;
@@ -1014,7 +1014,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
 
             maxWidth = maxWidth - dp(86);
 
-            MrPoortext pt = MrMailbox.getMsg(messageObject.getId()).getMediainfo();
+            MrLot pt = MrMailbox.getMsg(messageObject.getId()).getMediainfo();
             CharSequence stringFinal = TextUtils.ellipsize(pt.getText2(), audioTitlePaint, maxWidth, TextUtils.TruncateAt.MIDDLE);
             songLayout = new StaticLayout(stringFinal, audioTitlePaint, maxWidth, Layout.Alignment.ALIGN_NORMAL, 1.0f, 0.0f, false);
             if (songLayout.getLineCount() > 0) {

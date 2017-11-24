@@ -1086,55 +1086,69 @@ JNIEXPORT jstring Java_com_b44t_messenger_MrContact_getNameNAddr(JNIEnv *env, jo
 }
 
 
-JNIEXPORT jint Java_com_b44t_messenger_MrContact_MrContactIsBlocked(JNIEnv *env, jclass c, jlong hContact)
+JNIEXPORT jboolean Java_com_b44t_messenger_MrContact_isBlocked(JNIEnv *env, jobject obj)
 {
-	mrcontact_t* ths = (mrcontact_t*)hContact; if( ths == NULL ) { return 0; }
-	return (jint)ths->m_blocked;
+	mrcontact_t* ths = get_mrcontact_t(env, obj); if( ths == NULL ) { return 0; }
+	return (jboolean)(ths->m_blocked != 0);
 }
 
 
 /*******************************************************************************
- * MrPoortext
+ * MrLot
  ******************************************************************************/
 
 
-JNIEXPORT void Java_com_b44t_messenger_MrPoortext_MrPoortextUnref(JNIEnv *env, jclass c, jlong hPoortext)
+static mrlot_t* get_mrlot_t(JNIEnv *env, jobject obj)
 {
-	mrpoortext_unref((mrpoortext_t*)hPoortext);
+	static jfieldID fid = 0;
+	if( fid == 0 ) {
+		jclass cls = (*env)->GetObjectClass(env, obj);
+		fid = (*env)->GetFieldID(env, cls, "m_hLot", "J" /*Signature, J=long*/);
+	}
+	if( fid ) {
+		return (mrlot_t*)(*env)->GetLongField(env, obj, fid);
+	}
+	return NULL;
 }
 
 
-JNIEXPORT jstring Java_com_b44t_messenger_MrPoortext_MrPoortextGetText1(JNIEnv *env, jclass c, jlong hPoortext)
+JNIEXPORT void Java_com_b44t_messenger_MrLot_unref(JNIEnv *env, jclass cls, jlong hLot)
 {
-	mrpoortext_t* ths = (mrpoortext_t*)hPoortext; if( ths == NULL ) { return JSTRING_NEW(NULL); }
+	mrlot_unref((mrlot_t*)hLot);
+}
+
+
+JNIEXPORT jstring Java_com_b44t_messenger_MrLot_getText1(JNIEnv *env, jobject obj)
+{
+	mrlot_t* ths = get_mrlot_t(env, obj); if( ths == NULL ) { return JSTRING_NEW(NULL); }
 	return JSTRING_NEW(ths->m_text1);
 }
 
 
-JNIEXPORT jint Java_com_b44t_messenger_MrPoortext_MrPoortextGetText1Meaning(JNIEnv *env, jclass c, jlong hPoortext)
+JNIEXPORT jint Java_com_b44t_messenger_MrLot_getText1Meaning(JNIEnv *env, jobject obj)
 {
-	mrpoortext_t* ths = (mrpoortext_t*)hPoortext; if( ths == NULL ) { return 0; }
+	mrlot_t* ths = get_mrlot_t(env, obj); if( ths == NULL ) { return 0; }
 	return ths->m_text1_meaning;
 }
 
 
-JNIEXPORT jstring Java_com_b44t_messenger_MrPoortext_MrPoortextGetText2(JNIEnv *env, jclass c, jlong hPoortext)
+JNIEXPORT jstring Java_com_b44t_messenger_MrLot_getText2(JNIEnv *env, jobject obj)
 {
-	mrpoortext_t* ths = (mrpoortext_t*)hPoortext; if( ths == NULL ) { return JSTRING_NEW(NULL); }
+	mrlot_t* ths = get_mrlot_t(env, obj); if( ths == NULL ) { return JSTRING_NEW(NULL); }
 	return JSTRING_NEW(ths->m_text2);
 }
 
 
-JNIEXPORT jlong Java_com_b44t_messenger_MrPoortext_MrPoortextGetTimestamp(JNIEnv *env, jclass c, jlong hPoortext)
+JNIEXPORT jlong Java_com_b44t_messenger_MrLot_getTimestamp(JNIEnv *env, jobject obj)
 {
-	mrpoortext_t* ths = (mrpoortext_t*)hPoortext; if( ths == NULL ) { return 0; }
+	mrlot_t* ths = get_mrlot_t(env, obj); if( ths == NULL ) { return 0; }
 	return ths->m_timestamp;
 }
 
 
-JNIEXPORT jint Java_com_b44t_messenger_MrPoortext_MrPoortextGetState(JNIEnv *env, jclass c, jlong hPoortext)
+JNIEXPORT jint Java_com_b44t_messenger_MrLot_getState(JNIEnv *env, jobject obj)
 {
-	mrpoortext_t* ths = (mrpoortext_t*)hPoortext; if( ths == NULL ) { return 0; }
+	mrlot_t* ths = get_mrlot_t(env, obj); if( ths == NULL ) { return 0; }
 	return ths->m_state;
 }
 

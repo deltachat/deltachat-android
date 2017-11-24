@@ -870,7 +870,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
         boolean blocked = false;
         if( user_id!=0 ) {
             MrContact mrContact = MrMailbox.getContact(user_id);
-            blocked = mrContact.isBlocked()!=0;
+            blocked = mrContact.isBlocked();
         }
         return blocked;
     }

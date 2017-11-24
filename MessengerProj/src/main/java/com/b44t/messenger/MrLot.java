@@ -19,7 +19,7 @@
  *
  *******************************************************************************
  *
- * File:    MrPoortext.java
+ * File:    MrLot.java
  * Purpose: Wrap around mrpoortext_t
  *
  ******************************************************************************/
@@ -28,47 +28,27 @@
 package com.b44t.messenger;
 
 
-public class MrPoortext {
+public class MrLot {
 
-    public final static int      MR_TEXT1_NORMAL            = 0;
     public final static int      MR_TEXT1_DRAFT             = 1;
     public final static int      MR_TEXT1_USERNAME          = 2;
     public final static int      MR_TEXT1_SELF              = 3;
 
-    public MrPoortext(long hPoortext) {
-        m_hPoortext = hPoortext;
+    public MrLot(long hLot) {
+        m_hLot = hLot;
     }
 
     @Override protected void finalize() throws Throwable {
         super.finalize();
-        MrPoortextUnref(m_hPoortext);
+        MrLotUnref(m_hLot);
     }
 
-    public String getText1() {
-        return MrPoortextGetText1(m_hPoortext);
-    }
+    public native String getText1();
+    public native int    getText1Meaning();
+    public native String getText2();
+    public native long   getTimestamp();
+    public native int    getState();
 
-    public int getText1Meaning() {
-        return MrPoortextGetText1Meaning(m_hPoortext);
-    }
-
-    public String getText2() {
-        return MrPoortextGetText2(m_hPoortext);
-    }
-
-    public long getTimestamp() {
-        return MrPoortextGetTimestamp(m_hPoortext);
-    }
-
-    public int getState() {
-        return MrPoortextGetState(m_hPoortext);
-    }
-
-    private long                  m_hPoortext;
-    private native static void    MrPoortextUnref            (long hPoortext);
-    private native static String  MrPoortextGetText1         (long hPoortext);
-    private native static int     MrPoortextGetText1Meaning  (long hPoortext);
-    private native static String  MrPoortextGetText2         (long hPoortext);
-    private native static long    MrPoortextGetTimestamp     (long hPoortext);
-    private native static int     MrPoortextGetState         (long hPoortext);
+    private long                  m_hLot;
+    private native static void    MrLotUnref(long hLot);
 }

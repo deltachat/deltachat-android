@@ -50,8 +50,8 @@ public class MrChatlist {
         return new MrMsg(MrChatlistGetMsgByIndex(m_hChatlist, index));
     }
 
-    public MrPoortext getSummaryByIndex(int index, MrChat chat) {
-        return new MrPoortext(MrChatlistGetSummaryByIndex(m_hChatlist, index, chat.getCPtr()));
+    public MrLot getSummaryByIndex(int index, MrChat chat) {
+        return new MrLot(MrChatlistGetSummaryByIndex(m_hChatlist, index, chat.getCPtr()));
     }
 
     private long                  m_hChatlist;

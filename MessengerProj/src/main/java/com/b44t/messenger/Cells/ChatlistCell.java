@@ -44,9 +44,9 @@ import com.b44t.messenger.ContactsController;
 import com.b44t.messenger.EmojiInputView;
 import com.b44t.messenger.LocaleController;
 import com.b44t.messenger.MrChat;
+import com.b44t.messenger.MrLot;
 import com.b44t.messenger.MrMailbox;
 import com.b44t.messenger.MrMsg;
-import com.b44t.messenger.MrPoortext;
 import com.b44t.messenger.R;
 import com.b44t.messenger.ImageReceiver;
 import com.b44t.messenger.ActionBar.Theme;
@@ -121,7 +121,7 @@ public class ChatlistCell extends BaseCell {
     private int avatarWH = AndroidUtilities.dp(52);
 
     private MrChat m_mrChat = new MrChat(0);
-    private MrPoortext m_summary = new MrPoortext(0);
+    private MrLot m_summary = new MrLot(0);
     private boolean m_showUnreadCount;
 
     public ChatlistCell(Context context) {
@@ -163,7 +163,7 @@ public class ChatlistCell extends BaseCell {
         avatarImage.setRoundRadius(AndroidUtilities.dp(26));
     }
 
-    public void setChat(MrChat mrChat, MrPoortext mrSummary, int i, boolean showUnreadCount) {
+    public void setChat(MrChat mrChat, MrLot mrSummary, int i, boolean showUnreadCount) {
         m_mrChat  = mrChat;
         m_summary = mrSummary;
         m_showUnreadCount = showUnreadCount;
@@ -265,8 +265,8 @@ public class ChatlistCell extends BaseCell {
             int title_meaning = m_summary.getText1Meaning();
             int title_color = Theme.CHATLIST_NAME_TEXT_COLOR;
             switch( title_meaning ) {
-                case MrPoortext.MR_TEXT1_SELF:  title_color = Theme.CHATLIST_SELF_TEXT_COLOR; break;
-                case MrPoortext.MR_TEXT1_DRAFT: title_color = Theme.CHATLIST_DRAFT_TEXT_COLOR; break;
+                case MrLot.MR_TEXT1_SELF:  title_color = Theme.CHATLIST_SELF_TEXT_COLOR; break;
+                case MrLot.MR_TEXT1_DRAFT: title_color = Theme.CHATLIST_DRAFT_TEXT_COLOR; break;
             }
             SpannableStringBuilder stringBuilder = SpannableStringBuilder.valueOf(String.format("%s: %s", title, mess));
             stringBuilder.setSpan(new ForegroundColorSpan(title_color), 0, title.length() + 1, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);

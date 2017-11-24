@@ -969,7 +969,7 @@ public class ChatlistActivity extends BaseFragment implements NotificationCenter
                 cell.useSeparator = (i != getItemCount() - 1);
                 MrChat mrChat = getChatByIndex(i);
 
-                MrPoortext mrSummary = m_chatlist.getSummaryByIndex(i, mrChat);
+                MrLot mrSummary = m_chatlist.getSummaryByIndex(i, mrChat);
                 cell.setChat(mrChat, mrSummary, i, true);
             }
         }
@@ -1101,7 +1101,7 @@ public class ChatlistActivity extends BaseFragment implements NotificationCenter
                         cell.useSeparator = (j != m_chatlistCnt - 1);
 
                         MrChat mrChat = m_chatlist.getChatByIndex(j);
-                        MrPoortext mrSummary = m_chatlist.getSummaryByIndex(j, mrChat);
+                        MrLot mrSummary = m_chatlist.getSummaryByIndex(j, mrChat);
 
                         cell.setChat(mrChat, mrSummary, -1,
                                 true /*always show unread count*/);
@@ -1117,7 +1117,7 @@ public class ChatlistActivity extends BaseFragment implements NotificationCenter
 
                         MrMsg mrMsg = MrMailbox.getMsg(m_msgIds[j]);
                         MrChat mrChat = MrMailbox.getChat(mrMsg.getChatId());
-                        MrPoortext mrSummary = mrMsg.getSummary(mrChat);
+                        MrLot mrSummary = mrMsg.getSummary(mrChat);
 
                         cell.setChat(mrChat, mrSummary, -1,
                                 mrMsg.getState()==MrMsg.MR_IN_FRESH /*show unread count only if the message itself is unread*/ );

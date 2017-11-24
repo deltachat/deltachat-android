@@ -101,11 +101,11 @@ public class MrMsg {
     public native void   lateFilingMediaSize(int width, int height, int duration);
 
     public native int    getBytes();
-    public MrPoortext    getSummary(MrChat chat) { return new MrPoortext(getSummaryCPtr(chat.getCPtr())); }
+    public MrLot getSummary(MrChat chat) { return new MrLot(getSummaryCPtr(chat.getCPtr())); }
     private native long  getSummaryCPtr(long hChat);
     public native String getSummarytext(int approx_characters);
     public native int    showPadlock();
-    public MrPoortext    getMediainfo() { return new MrPoortext(getMediainfoCPtr()); }
+    public MrLot getMediainfo() { return new MrLot(getMediainfoCPtr()); }
     private native long  getMediainfoCPtr();
     public native String getFile();
     public native String getFilemime();

@@ -110,7 +110,7 @@ public class MusicPlayerService extends Service implements NotificationCenter.No
     {
         AudioInfo audioInfo = MediaController.getInstance().getAudioInfo();
 
-        MrPoortext pt = MrMailbox.getMsg(messageObject.getId()).getMediainfo();
+        MrLot pt = MrMailbox.getMsg(messageObject.getId()).getMediainfo();
         String authorName = pt.getText1();
         String songName = pt.getText2();
         if( songName == null || songName.length()==0 ) {
