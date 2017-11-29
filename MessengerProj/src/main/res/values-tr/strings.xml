@@ -39,10 +39,15 @@
     <string name="SaveToMusic">Müziğe kaydet</string>
     <string name="Share">Paylaş</string>
     <string name="SendItems">%1$sgönder</string>
+    <string name="ClearRecentEmoji">En son duygu simgeleri temizlensin mi?</string>
+    <string name="AddShortcut">Ana ekrana gereç ekleme</string>
+    <string name="ShortcutAdded">Gereç ana ekrana eklendi</string>
     <!--notification-->
     <string name="Reply">Yanıtlama</string>
     <string name="ReplyToGroup">%1$se yanıt ver</string>
     <string name="ReplyToContact">%1$se yanıt ver</string>
+    <!--contacts view-->
+    <string name="NoContacts">Henüz kişi yok.</string>
     <string name="EnterGroupNamePlaceholder">Grup adı girin</string>
     <!--group info view-->
     <string name="AddMember">Üye ekle</string>
@@ -84,6 +89,7 @@
     <string name="NotificationsOther">Diğer</string>
     <string name="SmartNotifications">Sınır bildirimleri</string>
     <string name="DirectShare">Doğrudan paylaşım</string>
+    <string name="DirectShareInfo">Son söyleşileri paylaşma menüsünde göster</string>
     <!--cache view-->
     <string name="CacheSettings">Depolama</string>
     <string name="KeepMedia">Ortamı tut</string>
@@ -122,8 +128,8 @@
     <string name="Shadows">Gölgeler</string>
     <string name="Sharpen">Keskinleştirme</string>
     <string name="Fade">Soldurma</string>
-    <string name="TintShadows">GÖLGELER</string>
-    <string name="TintHighlights">VURGULAMALAR</string>
+    <string name="TintShadows">Gölgeler</string>
+    <string name="TintHighlights">Vurgulamalar</string>
     <string name="Curves">Eğriler</string>
     <string name="CurvesAll">HEPSİ</string>
     <string name="CurvesRed">KIRMIZI</string>
@@ -162,13 +168,26 @@
     <string name="AttachVoiceMessage">Sesli ileti</string>
     <string name="AreYouSureBlockContact">Bu kişiyi engellemek istediğinizden emin misiniz?</string>
     <string name="AreYouSureDeleteContact">Bu kişiyi silmek istediğizden emin misiniz?</string>
-    <string name="PermissionOpenSettings">Ayarları değiştir</string>
+    <string name="PermissionOpenSettings">Ayarlar</string>
     <!--Intro view-->
     <string name="Intro1Headline">Delta Chat</string>
     <string name="Intro2Headline">Bağımsız</string>
     <string name="Intro3Headline">Hızlı</string>
     <string name="Intro4Headline">Muhteşem</string>
     <string name="Intro6Headline">Güvenli</string>
+    <!--plural-->
+    <plurals name="Members">
+        <item quantity="one">%düye</item>
+        <item quantity="other">%d üye</item>
+    </plurals>
+    <plurals name="Contacts">
+        <item quantity="one">%d kişi</item>
+        <item quantity="other">%d kişi</item>
+    </plurals>
+    <plurals name="MeAndMembers">
+        <item quantity="one">%d üye ve ben</item>
+        <item quantity="other">%d üye ve ben</item>
+    </plurals>
     <plurals name="NewMessages">
         <item quantity="one">%d yeni ileti</item>
         <item quantity="other">%dyeni ileti</item>
@@ -189,8 +208,20 @@
         <item quantity="one">%d saat</item>
         <item quantity="other">%d saat</item>
     </plurals>
-    <string name="formatterYear">dd.MM.yyyy</string>
-    <string name="formatterDay24H">HH:mm</string>
+    <plurals name="Days">
+        <item quantity="one">%d gün</item>
+        <item quantity="other">%d gün</item>
+    </plurals>
+    <plurals name="Weeks">
+        <item quantity="one">%d hafta</item>
+        <item quantity="other">%d hafta</item>
+    </plurals>
+    <plurals name="Months">
+        <item quantity="one">%d ay</item>
+        <item quantity="other">%d ay</item>
+    </plurals>
+    <string name="formatterYear">gg.AA.yyyy</string>
+    <string name="formatterDay24H">SS:dd</string>
     <string name="AccountSettings">Hesap ayarları</string>
     <string name="MyAccount">Hesabım</string>
     <string name="MyName">Adım</string>
@@ -221,9 +252,11 @@
     <string name="MsgMemberAddedToGroup">%1$s üye eklendi</string>
     <string name="MsgMemberRemovedFromToGroup">%1$s üye silindi.</string>
     <string name="E2ECompareKeys">Anahtarları karşılaştır</string>
+    <string name="SelectContact">Bir kişi seçin</string>
     <string name="DoneHint">Tamam.</string>
     <string name="NoNetwork">Ağ kullanılamıyor.</string>
     <string name="Audio">Ses</string>
+    <string name="PermNotificationText">İletiler bekliyor ...</string>
     <string name="SettingsFor">%1$siçin ayarlar</string>
     <string name="AutoplayGifs">GİFleri otomatik oynat</string>
     <string name="HelpUrl">https://delta.chat/en/help</string>
@@ -236,4 +269,14 @@
     <string name="MsgGroupImageDeleted">Grup resmi silindi</string>
     <string name="ExportImportHeader">Dışa aktarım ve içe aktarım</string>
     <string name="IncorrectPassword">Geçersiz parola</string>
-    </resources>
+    <string name="ImportBackup">Yedeklemeyi içe aktar</string>
+    <string name="ExportBackup">Yedeklemeyi dışa aktar</string>
+    <string name="ExportPrivateKeys">Özel anahtarları dışa aktar</string>
+    <string name="ImportPrivateKeys">Özel anahtarları içe aktar</string>
+    <string name="NoRecentEmoji">Son kullanılan duygu simgeleri burada gösterilecek.</string>
+    <string name="NotNow">Şimdi değil</string>
+    <string name="ArchivedChats">Arşivlenmiş söyleşiler</string>
+    <string name="Archived">Arşivlenmiş</string>
+    <string name="LeaveGroup">Gruptan ayrıl</string>
+    <string name="Never">Asla</string>
+</resources>

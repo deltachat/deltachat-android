@@ -17,7 +17,7 @@
     <string name="UnmuteNotifications">Restaurar som</string>
     <string name="Draft">Rascunho</string>
     <!--audio view-->
-    <string name="NoAudio">Por favor, adicione músicas à sua biblioteca para vê-las aqui.</string>
+    <string name="NoAudio">Músicas adicionados à biblioteca do dispositivo serão exibidas aqui.</string>
     <string name="AttachMusic">Música</string>
     <!--documents view-->
     <string name="SelectFile">Selecione um arquivo</string>
@@ -41,7 +41,7 @@
     <string name="From">De</string>
     <string name="NoRecent">Nada recente</string>
     <string name="TypeMessage">Mensagem</string>
-    <string name="SlideToCancel">DESLIZE PARA CANCELAR</string>
+    <string name="SlideToCancel">Deslize para cancelar</string>
     <string name="SaveToDownloads">Salvar em downloads</string>
     <string name="SaveToMusic">Salvar em músicas</string>
     <string name="Share">Compartilhar</string>
@@ -205,7 +205,7 @@
     <string name="PermissionContacts">Delta Chat precisa acessar seus contatos para que você possa se conectar aos seus amigos em todos os seus dispositivos.</string>
     <string name="PermissionStorage">Delta Chat precisa acessar seu armazenamento para que você possa enviar e salvar fotos, vídeos, músicas e outras mídias.</string>
     <string name="PermissionNoAudio">Delta Chat precisa acessar seu microfone para que você possa enviar mensagens de voz.</string>
-    <string name="PermissionOpenSettings">Configurações de ajuste</string>
+    <string name="PermissionOpenSettings">Configurações</string>
     <!--Intro view-->
     <string name="Intro1Headline">Delta Chat</string>
     <string name="Intro1Message">O aplicativo com a <![CDATA[<b>maior base de contatos</b>]]> do mundo.<![CDATA[<br/><b>Grátis</b>]]> e <![CDATA[<b>seguro</b>]]>.</string>
@@ -222,7 +222,7 @@
     <string name="Intro5Headline">Grátis</string>
     <string name="Intro5Message"><![CDATA[<b>Delta Chat</b>]]> será sempre grátis, de<![CDATA[<br/>]]>Código livre e sem propagandas.</string>
 
-    <string name="Intro6Headline">Seguro</string>
+    <string name="Intro6Headline">Criptografado</string>
     <string name="Intro6Message"><![CDATA[<b>Criptografia</b>]]> com as tecnologias mais usadas. Suas mensagens ficam no servidor de e-mail.</string>
 
     <string name="Intro7Headline">Confiável</string>
@@ -398,4 +398,15 @@
     <string name="ExportPrivateKeys">Exportar chaves privadas</string>
     <string name="ImportPrivateKeys">Importar chaves privadas</string>
     <string name="ImportPrivateKeysAsk2">Importar chaves privadas de <![CDATA[<i>]]>%1$s<![CDATA[</i>]]>?\n\n• As chaves existentes não serão apagadas\n\n• A última chave importada será usada como padrão</string>
-    </resources>
+    <string name="NoRecentEmoji">Emojis recentemente usados.</string>
+    <string name="E2eeOffBecauseOfUser">Para habilitar a criptografia ponta a ponta revise as configurações do aplicativo.</string>
+    <string name="E2eeOffBecauseOfRecipient">> A criptografia ponta a ponta será empregada se o destinatário habilitá-la também.</string>
+    <string name="NotNow">Agora não</string>
+    <string name="ArchiveChat">Arquivar conversa</string>
+    <string name="UnarchiveChat">Desarquivar conversa</string>
+    <string name="ArchivedChats">Conversas arquivadas</string>
+    <string name="Archived">Arquivado</string>
+    <string name="LeaveGroup">Sair do grupo</string>
+    <string name="AskLeaveGroup">Tem certeza que deseja sair do grupo?</string>
+    <string name="Never">Jamais</string>
+</resources>
