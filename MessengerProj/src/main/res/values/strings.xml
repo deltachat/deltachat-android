@@ -406,7 +406,7 @@
     <string name="ImportPrivateKeysAsk2">Import private keys from <![CDATA[<i>]]>%1$s<![CDATA[</i>]]>?\n\n• Existing private keys will not be deleted\n\n• The last imported key will be used as the new default key</string>
     <string name="NoRecentEmoji">Recently used emoji will be shown here.</string>
     <string name="E2eeOffBecauseOfUser">To enable end-to-end-encryption, check the corresponding option in your settings.</string>
-    <string name="E2eeOffBecauseOfRecipient">>End-to-end encryption will be employed if the other party enables the setting too.</string>
+    <string name="E2eeOffBecauseOfRecipient">End-to-end encryption will be employed if the other party enables the setting too.</string>
     <string name="NotNow">Not now</string>
     <string name="ArchiveChat">Archive chat</string>
     <string name="UnarchiveChat">Unarchive chat</string>
