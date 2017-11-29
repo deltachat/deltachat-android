@@ -1,15 +1,21 @@
 
 The following checklists are there not to forget things ... to be continued.
 
-# Add Release on F-Droid
+# Create Release on F-Droid and as APK-Download
 
-1. deltachat-core: "draft a new release", if required
+1. deltachat-core on Github: "Draft a new release", if required
 2. deltachat-android: check CHANGES.md against core and android commit list from last release
 3. deltachat-android/tools: `$ ./update-core.sh` followed by a `git push`
 4. deltachat-android/tools: `$ ./txpull` followed by a `git commit` and a `git push` if there are changes
-5. deltachat-android: "Draft a new release" using a version number in for Form v1.2.3
+5. deltachat-android on Github: "Draft a new release" using a version number in for Form v1.2.3
 
 ... some days later, F-Droid should be updated.
+
+For an additional APK:
+
+6. in Android Studio select "Build / Build APK"
+7. rename the generated APK to `deltachat-<version>.apk`
+8. upload the APK to the created Github release
 
 # Add language
 
