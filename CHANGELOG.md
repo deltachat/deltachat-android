@@ -1,9 +1,11 @@
 # Delta Chat Changelog
 
-## UNRELEASED
+## v0.10.0
+2017-11-29
 
 * Fix usage of multiple private keys
-* Update Portuguese and Turkish translations
+* Fix various memory leaks
+* Update English, Portuguese and Turkish translations
 
 ## v0.9.9
 2017-11-18
