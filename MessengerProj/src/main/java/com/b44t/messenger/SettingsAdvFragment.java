@@ -410,7 +410,7 @@ public class SettingsAdvFragment extends BaseFragment implements NotificationCen
         progressDialog.setButton(DialogInterface.BUTTON_NEGATIVE, ApplicationLoader.applicationContext.getString(R.string.Cancel), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                MrMailbox.imex(0, null);
+                MrMailbox.imexCancel();
             }
         });
         progressDialog.show();
@@ -420,7 +420,18 @@ public class SettingsAdvFragment extends BaseFragment implements NotificationCen
             MrMailbox.m_lastErrorString = "";
         }
 
-        MrMailbox.imex(what, imexDir.getAbsolutePath());
+        Utilities.searchQueue.postRunnable(new Runnable() {
+            @Override
+            public void run() {
+                final int res = MrMailbox.imex(progressWhat, imexDir.getAbsolutePath());
+                AndroidUtilities.runOnUIThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        NotificationCenter.getInstance().postNotificationName(NotificationCenter.imexEnded, (int)res);
+                    }
+                });
+            }
+        });
     }
 
     @Override

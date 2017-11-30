@@ -323,7 +323,7 @@ public class WelcomeActivity extends Activity implements NotificationCenter.Noti
     }
 
     private ProgressDialog progressDialog = null;
-    private void startImport(String backupFile)
+    private void startImport(final String backupFile)
     {
         if( progressDialog!=null ) {
             progressDialog.dismiss();
@@ -337,7 +337,7 @@ public class WelcomeActivity extends Activity implements NotificationCenter.Noti
         progressDialog.setButton(DialogInterface.BUTTON_NEGATIVE, ApplicationLoader.applicationContext.getString(R.string.Cancel), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                MrMailbox.imex(0, null);
+                MrMailbox.imexCancel();
             }
         });
         progressDialog.show();
@@ -347,7 +347,18 @@ public class WelcomeActivity extends Activity implements NotificationCenter.Noti
             MrMailbox.m_lastErrorString = "";
         }
 
-        MrMailbox.imex(MrMailbox.MR_IMEX_IMPORT_BACKUP, backupFile);
+        Utilities.searchQueue.postRunnable(new Runnable() {
+            @Override
+            public void run() {
+                final int res = MrMailbox.imex(MrMailbox.MR_IMEX_IMPORT_BACKUP, backupFile);
+                AndroidUtilities.runOnUIThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        NotificationCenter.getInstance().postNotificationName(NotificationCenter.imexEnded, (int)res);
+                    }
+                });
+            }
+        });
     }
 
     @Override

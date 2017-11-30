@@ -71,7 +71,8 @@ public class MrMailbox {
     public final static int MR_IMEX_IMPORT_SELF_KEYS = 2;
     public final static int MR_IMEX_EXPORT_BACKUP = 11;
     public final static int MR_IMEX_IMPORT_BACKUP = 12;
-    public native static void imex(int what, String dir);
+    public native static int imex(int what, String dir);
+    public native static void imexCancel();
     public native static String imexHasBackup(String dir);
     public native static int  checkPassword(String pw);
 
@@ -200,7 +201,6 @@ public class MrMailbox {
 
     public final static int MR_EVENT_CONFIGURE_PROGRESS       = 2041;
 
-    public final static int MR_EVENT_IMEX_ENDED               = 2050;
     public final static int MR_EVENT_IMEX_PROGRESS            = 2051;
     public final static int MR_EVENT_IMEX_FILE_WRITTEN        = 2052;
 
@@ -224,15 +224,6 @@ public class MrMailbox {
                     @Override
                     public void run() {
                         NotificationCenter.getInstance().postNotificationName(NotificationCenter.configureProgress, (int)data1);
-                    }
-                });
-                return 0;
-
-            case MR_EVENT_IMEX_ENDED:
-                AndroidUtilities.runOnUIThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        NotificationCenter.getInstance().postNotificationName(NotificationCenter.imexEnded, (int)data1);
                     }
                 });
                 return 0;
