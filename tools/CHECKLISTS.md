@@ -1,13 +1,22 @@
 
 The following checklists are there not to forget things ... to be continued.
 
-# Create Release on F-Droid and as APK-Download
 
-1. deltachat-core on Github: "Draft a new release", if required
-2. deltachat-android: check CHANGES.md against core and android commit list from last release
-3. deltachat-android/tools: `$ ./update-core.sh` followed by a `git push`
-4. deltachat-android/tools: `$ ./txpull` followed by a `git commit` and a `git push` if there are changes
-5. deltachat-android on Github: "Draft a new release" using a version number in for Form v1.2.3
+# Release new Core version
+
+1. deltachat-core: bump version, commit, push
+2. deltachat-core on Github: "Draft a new release" with the version form `v1.2.3`
+
+
+# Release new Andreoid version
+
+Release core, if needed, then:
+
+1. deltachat-android: check CHANGES.md, commit, push
+2. deltachat-android/tools: `$ ./update-core.sh`, push
+3. deltachat-android/tools: `$ ./txpull`, if there are changes: commit, push
+4. deltachat-android: bump version, commit, push
+5. deltachat-android on Github: "Draft a new release" with the version form `v1.2.4`
 
 ... some days later, F-Droid should be updated.
 
@@ -17,10 +26,12 @@ For an additional APK:
 7. rename the generated APK to `deltachat-<version>.apk`
 8. upload the APK to the created Github release
 
+
 # Add language
 
 1. add `MessengerProj/src/main/res/values-<LANG>/strings.xml`
 2. add copy command to `tools/txpull.sh` and `tools/txpush.sh`
+
 
 # Update source languges on Transifex
 
