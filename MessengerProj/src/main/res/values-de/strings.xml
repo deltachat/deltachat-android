@@ -41,9 +41,9 @@
     <string name="From">Von</string>
     <string name="NoRecent">Keine aktuellen</string>
     <string name="TypeMessage">Nachricht</string>
-    <string name="SlideToCancel">WISCHEN UM ABZUBRECHEN</string>
-    <string name="SaveToDownloads">In Downloads speichern</string>
-    <string name="SaveToMusic">In Musik speichern</string>
+    <string name="SlideToCancel">Wischen um abzubrechen</string>
+    <string name="SaveToDownloads">In „Downloads“ speichern</string>
+    <string name="SaveToMusic">In „Musik“ speichern</string>
     <string name="Share">Teilen</string>
     <string name="SendItems">%1$s senden</string>
     <string name="ClearRecentEmoji">Zuletzt benutzte Emoji leeren?</string>
@@ -151,13 +151,13 @@
     <string name="Sharpen">Schärfe</string>
     <string name="Fade">Verblassen</string>
     <string name="Tint">Tönung</string>
-    <string name="TintShadows">TIEFEN</string>
-    <string name="TintHighlights">LICHTER</string>
+    <string name="TintShadows">Tiefen</string>
+    <string name="TintHighlights">Lichter</string>
     <string name="Curves">Kurven</string>
-    <string name="CurvesAll">ALLE</string>
-    <string name="CurvesRed">ROT</string>
-    <string name="CurvesGreen">GRÜN</string>
-    <string name="CurvesBlue">BLAU</string>
+    <string name="CurvesAll">Alle</string>
+    <string name="CurvesRed">Rot</string>
+    <string name="CurvesGreen">Grün</string>
+    <string name="CurvesBlue">Blau</string>
     <string name="Blur">Unschärfe</string>
     <string name="BlurOff">Aus</string>
     <string name="BlurLinear">Linear</string>
@@ -184,7 +184,7 @@
     <string name="FromGalley">Aus der Galerie</string>
     <string name="Set">Wählen</string>
     <string name="OK">OK</string>
-    <string name="Crop">SCHNEIDEN</string>
+    <string name="Crop">Schneiden</string>
     <!--messages-->
     <string name="AttachPhoto">Bild</string>
     <string name="AttachVideo">Video</string>
@@ -239,7 +239,7 @@
     </plurals>
     <plurals name="MeAndMembers">
         <item quantity="one">Ich und %d Mitglied</item>
-        <item quantity="other">Ich und %d Mitglieder</item>
+        <item quantity="other">%d Mitglieder und ich</item>
     </plurals>
     <plurals name="NewMessages">
         <item quantity="one">%d neue Nachricht</item>

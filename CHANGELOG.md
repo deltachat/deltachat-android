@@ -1,5 +1,9 @@
 # Delta Chat Changelog
 
+## UNRELEASED
+
+* Update German translation
+
 ## v0.10.0
 2017-11-29
 

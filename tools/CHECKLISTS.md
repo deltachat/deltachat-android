@@ -8,7 +8,7 @@ The following checklists are there not to forget things ... to be continued.
 2. deltachat-core on Github: "Draft a new release" with the version form `v1.2.3`
 
 
-# Release new Andreoid version
+# Release new Android version
 
 Release core, if needed, then:
 
