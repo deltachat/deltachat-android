@@ -72,6 +72,7 @@ public class SettingsAdvFragment extends BaseFragment implements NotificationCen
     private int settingsShadowRow;
 
     private int imexHeaderRow;
+    private int initiateKeyTransferRow;
     private int manageKeysRow;
     private int backupRow;
     private int backupShadowRow;
@@ -120,6 +121,7 @@ public class SettingsAdvFragment extends BaseFragment implements NotificationCen
         settingsShadowRow       = rowCount++;
 
         imexHeaderRow           = rowCount++;
+        initiateKeyTransferRow  = rowCount++;
         manageKeysRow           = rowCount++;
         backupRow               = rowCount++;
         backupShadowRow         = rowCount++;
@@ -231,6 +233,36 @@ public class SettingsAdvFragment extends BaseFragment implements NotificationCen
                 else if(i==accountSettingsRow)
                 {
                     presentFragment(new SettingsAccountFragment(null));
+                }
+                else if(i==initiateKeyTransferRow )
+                {
+                    AlertDialog.Builder builder1 = new AlertDialog.Builder(getParentActivity());
+                    builder1.setTitle(ApplicationLoader.applicationContext.getString(R.string.AutocryptKeyTransfer));
+                    builder1.setMessage(AndroidUtilities.replaceTags(ApplicationLoader.applicationContext.getString(R.string.AutocryptKeyTransferMsgBefore)));
+                    builder1.setNegativeButton(R.string.Cancel, null);
+                    builder1.setPositiveButton(R.string.OK, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            try {
+                                String sc = MrMailbox.initiateKeyTransfer();
+                                String scFormatted =
+                                        sc.substring( 0,  4) + "  -  " + sc.substring( 5,  9) + "  -  " + sc.substring(10, 14) + "  -\n\n" +
+                                        sc.substring(15, 19) + "  -  " + sc.substring(20, 24) + "  -  " + sc.substring(25, 29) + "  -\n\n" +
+                                        sc.substring(30, 34) + "  -  " + sc.substring(35, 39) + "  -  " + sc.substring(40, 44);
+                                AlertDialog.Builder builder2 = new AlertDialog.Builder(getParentActivity());
+                                builder2.setTitle(ApplicationLoader.applicationContext.getString(R.string.AutocryptKeyTransfer));
+                                builder2.setMessage(AndroidUtilities.replaceTags(String.format(ApplicationLoader.applicationContext.getString(R.string.AutocryptKeyTransferMsgAfter), scFormatted)));
+                                builder2.setPositiveButton(R.string.OK, null);
+                                builder2.setCancelable(false); // prevent the dialog from being dismissed accidentally (when the dialog is closed, the setup code is gone forever and the user has to create a new setup message)
+                                showDialog(builder2.create());
+                            }
+                            catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    });
+                    showDialog(builder1.create());
+
                 }
                 else if(i==manageKeysRow )
                 {
@@ -545,6 +577,9 @@ public class SettingsAdvFragment extends BaseFragment implements NotificationCen
                 else if (i == blockedRow) {
                     String cntStr = String.format("%d", MrMailbox.getBlockedCount());
                     textCell.setTextAndValue(ApplicationLoader.applicationContext.getString(R.string.BlockedContacts), cntStr, true);
+                }
+                else if( i==initiateKeyTransferRow ) {
+                    textCell.setText(mContext.getString(R.string.AutocryptKeyTransferInitiate), true);
                 }
                 else if( i==manageKeysRow ) {
                     textCell.setText(mContext.getString(R.string.E2EManagePrivateKeys), true);

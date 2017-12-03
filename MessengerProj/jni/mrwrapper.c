@@ -603,6 +603,18 @@ JNIEXPORT jstring Java_com_b44t_messenger_MrMailbox_cmdline(JNIEnv *env, jclass 
 }
 
 
+JNIEXPORT jstring Java_com_b44t_messenger_MrMailbox_initiateKeyTransfer(JNIEnv *env, jclass cls)
+{
+	jstring setup_code = NULL;
+	char* temp = mrmailbox_initiate_key_transfer(get_mrmailbox_t(env, cls));
+	if( temp ) {
+		setup_code = JSTRING_NEW(temp);
+		free(temp);
+	}
+	return setup_code;
+}
+
+
 JNIEXPORT int Java_com_b44t_messenger_MrMailbox_imex(JNIEnv *env, jclass cls, jint what, jstring dir)
 {
 	CHAR_REF(dir);

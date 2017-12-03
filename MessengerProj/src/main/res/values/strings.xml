@@ -415,4 +415,8 @@
     <string name="LeaveGroup">Leave group</string>
     <string name="AskLeaveGroup">Are you sure you want to leave this group?</string>
     <string name="Never">Never</string>
+    <string name="AutocryptKeyTransferInitiate">Initiate Autocrypt key transfer</string>
+    <string name="AutocryptKeyTransfer">Autocrypt key transfer</string>
+    <string name="AutocryptKeyTransferMsgBefore">The \"Autocrypt key transfer\" requires that the mail client on the other device is Autocrypt-compliant.\n\nYou can then send the key to yourself. The key will be encrypted by a setup code which is displayed here and must be typed on the other device.</string>
+    <string name="AutocryptKeyTransferMsgAfter">The key has been sent to yourself. Switch to the other device and open the setup message. You should be prompted for a setup code. Type the following digits into the prompt:\n\n%1$s\n\nOnce you\'re done, your other device will be ready to use Autocrypt.</string>
 </resources>

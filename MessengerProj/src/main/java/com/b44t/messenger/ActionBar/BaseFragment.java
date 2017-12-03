@@ -307,7 +307,7 @@ public class BaseFragment {
         }
         try {
             visibleDialog = dialog;
-            visibleDialog.setCanceledOnTouchOutside(true);
+            //visibleDialog.setCanceledOnTouchOutside(true); -- we do overwrite this from time to time manually, eg. for showing the setup code. so, not all dialogs should be cancelled when touching outside!
             visibleDialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
                 @Override
                 public void onDismiss(DialogInterface dialog) {
