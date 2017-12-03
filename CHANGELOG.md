@@ -2,6 +2,7 @@
 
 ## UNRELEASED
 
+* Add Albanian translation
 * Update German translation
 
 ## v0.10.0

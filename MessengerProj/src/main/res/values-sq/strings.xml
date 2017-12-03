@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="AppName">Fjalosje Delta</string>
+    <!--chats view-->
+    <string name="Settings">Rregullime</string>
+    <string name="NewGroup">Grup i ri</string>
+    <string name="NoResult">S’ka përfundime.</string>
+    <string name="NoChats">Ende pa fjalosje.</string>
+    <string name="DeleteChat">Fshije fjalosjen</string>
+    <string name="SelectChat">Përzgjidhni fjalosje…</string>
+    <string name="Search">Kërko</string>
+    <string name="MuteNotifications">Mos shfaq njoftime</string>
+    <string name="MuteFor">Mos i shfaq për %1$s</string>
+    <string name="UnmuteNotifications">Shfaqi</string>
+    <string name="Draft">Skicë</string>
+    <string name="AttachMusic">Muzikë</string>
+    <!--documents view-->
+    <string name="SelectFile">Përzgjidhni Kartelë</string>
+    <string name="FreeOfTotal">%1$s nga %2$s të lira</string>
+    <string name="ErrorHint">Gabim i panjohur</string>
+    <string name="AccessError">Gabim hyrjeje</string>
+    <string name="NoFiles">Ende pa kartela…</string>
+    <string name="NotMounted">S’ka depozitë të montuar</string>
+    <string name="UsbActive">Shpërngulje USB në ecuri e sipër</string>
+    <string name="InternalStorage">Depozitë e Brendshme</string>
+    <string name="ExternalStorage">Depozitë e Jashtme</string>
+    <string name="SystemRoot">Rrënjë e Sistemit</string>
+    <string name="SdCard">Diskth SD</string>
+    <string name="Folder">Dosje</string>
+    <!--chat view-->
+    <string name="ChatGallery">Galeri</string>
+    <string name="ChatCamera">Kamerë</string>
+    <string name="NoMessages">S’ka mesazhe.</string>
+    <string name="ForwardedMessage">Mesazh i përcjellë</string>
+    <string name="From">Nga</string>
+    <string name="TypeMessage">Mesazh</string>
+    <string name="SaveToDownloads">Ruaje te \"Shkarkime"\</string>
+    <string name="SaveToMusic">Ruaje te "\Muzikë"\</string>
+    <!--contacts view-->
+    <string name="NoContacts">Ende pa kontakte.</string>
+    <!--group create view-->
+    <string name="SendMessageTo">Dërgoni mesazh te…</string>
+    <string name="EnterGroupNamePlaceholder">Jepni emër grupi</string>
+    <!--group info view-->
+    <string name="AddMember">Shtoni anëtar</string>
+    <string name="Notifications">Njoftime</string>
+    <string name="RemoveMember">Hiqni anëtar</string>
+    <!--contact info view-->
+    <string name="NewContactTitle">Kontakt i ri</string>
+    <string name="BlockContact">Bllokoje kontaktin</string>
+    <string name="DeleteContact">Fshije kontaktin</string>
+    <string name="Info">Të dhëna</string>
+    <!--settings view-->
+    <string name="TextSize">Madhësi shkronjash mesazhi</string>
+    <string name="UnblockContact">Zhbllokoje kontaktin</string>
+    <string name="NoBlocked">Ende pa kontakte të bllokuar</string>
+    <string name="DefaultForNormalMessages">Mesazhe normale</string>
+    <string name="MessagePreview">Paraparje mesazhesh</string>
+    <string name="Sound">Tingull</string>
+    <string name="Vibrate">Dridhu</string>
+    <string name="NotificationsAndSounds">Njoftime dhe tinguj</string>
+    <string name="BlockedContacts">Kontakte të bllokuar</string>
+    <string name="Default">Parazgjedhje</string>
+    <string name="ChatBackground">Sfond fjalosjeje</string>
+    <string name="Help">Ndihmë</string>
+    <string name="Enabled">On</string>
+    <string name="Disabled">Off</string>
+    <string name="LedColor">Ngjyrë LED</string>
+    <string name="Short">E shkurtër</string>
+    <string name="Long">E gjatë</string>
+    <string name="EditName">Përpunoni emrin</string>
+    <string name="NotificationsPriority">Shiheni</string>
+    <string name="NotificationsPriorityDefault">Përparësi normale</string>
+    <string name="NotificationsPriorityHigh">Përparësi e lartë</string>
+    <string name="NotificationsPriorityMax">Përparësia më  lartë</string>
+    <string name="RepeatNotifications">Ripërsëriti njoftimet</string>
+    <string name="NotificationsOther">Tjetër</string>
+    <string name="SmartNotifications">Kufizo njoftimet</string>
+    <string name="SmartNotificationsSoundAtMost">Maks.</string>
+    <string name="SmartNotificationsTimes">herë</string>
+    <string name="SmartNotificationsWithin">brenda</string>
+    <string name="SmartNotificationsMinutes">minutash</string>
+    <!--cache view-->
+    <string name="CacheSettings">Depozitë</string>
+    <string name="KeepMedia">Mbaje Median</string>
+    <string name="KeepMediaForever">Përgjithmonë</string>
+    <string name="PasscodePIN">PIN</string>
+    <string name="PasscodePassword">Fjalëkalim</string>
+    <string name="Gallery">Galeri</string>
+    <string name="AllPhotos">Krejt Fotot</string>
+    <string name="AllVideo">Krejt Videot</string>
+    <string name="NoPhotos">Ende pa foto</string>
+    <string name="NoVideo">Ende pa video</string>
+    <string name="CropImage">Qetheni figurën</string>
+    <string name="EditImage">Përpunoni figurën</string>
+    <string name="Enhance">Përmirësoje</string>
+    <string name="Highlights">Theksime</string>
+    <string name="Contrast">Kontrast</string>
+    <string name="Exposure">Ekspozim</string>
+    <string name="Warmth">Ngrohtësi</string>
+    <string name="Saturation">Ngopje</string>
+    <string name="Shadows">Hij</string>
+    <string name="Sharpen">Mprehe</string>
+    <string name="Fade">Zbehe</string>
+    <string name="Tint">Ngjyrosje</string>
+    <string name="TintShadows">Hije</string>
+    <string name="TintHighlights">Theksime</string>
+    <string name="Curves">Kurba</string>
+    <string name="CurvesAll">Krejt</string>
+    <string name="CurvesRed">E kuqe</string>
+    <string name="CurvesGreen">E gjelbër</string>
+    <string name="CurvesBlue">Blu</string>
+    <string name="BlurOff">Off</string>
+    <string name="BlurLinear">Lineare</string>
+    <string name="BlurRadial">Radiale</string>
+    <string name="DiscardChanges">Të hidhen tej ndryshimet></string>
+    <string name="ClearButton">Pastroje</string>
+    <string name="PickerPhotos">Foto</string>
+    <string name="PickerVideo">Video</string>
+    <!--privacy settings-->
+    <string name="PrivacySettings">Privatësi dhe siguri</string>
+    <string name="SecurityTitle">Siguri</string>
+    <!--edit video view-->
+    <string name="SendVideo">Dërgoni Video</string>
+    <!--button titles-->
+    <string name="Done">U bë</string>
+    <string name="Open">Hape</string>
+    <string name="Cancel">Anuloje</string>
+    <string name="Edit">Përpunoni</string>
+    <string name="Send">Dërgoje</string>
+    <string name="CopyToClipboard">Kopjoje në të papastër</string>
+    <string name="Delete">Fshije</string>
+    <string name="Forward">Përcille</string>
+    <string name="FromCamera">Prej kamerës</string>
+    <string name="OK">OK</string>
+    <string name="Crop">Qethe</string>
+    <!--messages-->
+    <string name="AttachPhoto">Foto</string>
+    <string name="AttachVideo">Video</string>
+    <string name="AttachGif">GIF</string>
+    <string name="AttachContact">Kontakt</string>
+    <string name="AttachDocument">Kartelë</string>
+    <string name="AttachVoiceMessage">Mesazh zanor</string>
+    <string name="FromSelf">Unë</string>
+    <string name="ContactAlreadyInGroup">Kontakti gjendet tashmë në këtë grup.</string>
+    <string name="PermissionOpenSettings">Rregullime</string>
+    <!--Intro view-->
+    <string name="Intro1Headline">Fjalosje Delta</string>
+    <string name="Intro2Headline">I pavarur</string>
+    <string name="Intro2Message"><![CDATA[<b>I pavarur</b>]]> nga kompjutera apo shërbime të huaja. Aplikacioni përdor vetëm shërbyesin tuaj të email-eve.</string>
+
+    <string name="Intro3Headline">I shpejtë</string>
+    <string name="Intro3Message"><![CDATA[<b>Dërgim mesazhesh</b>]]> brenda pak sekondash.<![CDATA[<br/>]]>Ndërfaqe e shpejtë.</string>
+
+    <string name="Intro4Headline">I fuqishëm</string>
+    <string name="Intro4Message">Fjalosje, figura, video, mesazhe audio, etj <![CDATA[<b>Pa kufi</b>]]>. I aftë për punë me shumë klientë.</string>
+
+    <string name="Intro5Headline">I lirë</string>
+    <string name="Intro5Message"><![CDATA[<b>Delta Chat</b>]]> është i lirë, përgjithmonë.<![CDATA[<br/>]]>Me burim të hapët. Pa reklama. Pa pajtime. Pa kyçje brenda një platforme nga tregtues.</string>
+
+    <string name="Intro6Headline">I fshehtëzuar</string>
+    <string name="Intro6Message"><![CDATA[<b>I fshehtëzuar</b>]]> me krejt algoritmet e zakonshëm. Mesazhet mbeten në shërbyesit tuaj.</string>
+
+    <string name="Intro7Headline">I besueshëm</string>
+
+    <!--plural-->
+    <plurals name="Members">
+        <item quantity="one">%d anëtar</item>
+        <item quantity="other">%d anëtarë</item>
+    </plurals>
+    <plurals name="Contacts">
+        <item quantity="one">%d kontakte</item>
+        <item quantity="other">%d kontakte</item>
+    </plurals>
+    <plurals name="MeAndMembers">
+        <item quantity="one">%d anëtar dhe unë</item>
+        <item quantity="other">%d anëtarë dhe unë</item>
+    </plurals>
+    <string name="Password">Fjalëkalim</string>
+    </resources>
