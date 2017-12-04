@@ -362,8 +362,8 @@ public class MrMailbox {
                     case 36: s = "<c#808080>"+ApplicationLoader.applicationContext.getString(R.string.E2eeOffBecauseOfUser)+"</c>"; break;
                     case 37: s = "<c#808080>"+ApplicationLoader.applicationContext.getString(R.string.E2eeOffBecauseOfRecipient)+"</c>"; break;
                     case 40: s = ApplicationLoader.applicationContext.getString(R.string.ArchivedChats); break;
-                    case 42: s = ApplicationLoader.applicationContext.getString(R.string.AutocryptSetupMessageTitle); break;
-                    case 43: s = ApplicationLoader.applicationContext.getString(R.string.AutocryptSetupMessageBody); break;
+                    case 42: s = ApplicationLoader.applicationContext.getString(R.string.AutocryptSetupMessageSubject); break;
+                    case 43: s = ApplicationLoader.applicationContext.getString(R.string.AutocryptSetupMessageGeneralBody); break;
                     default: s = null; break;
                 }
                 return String2CPtr(s);

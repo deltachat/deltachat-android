@@ -238,9 +238,9 @@ public class SettingsAdvFragment extends BaseFragment implements NotificationCen
                 {
                     AlertDialog.Builder builder1 = new AlertDialog.Builder(getParentActivity());
                     builder1.setTitle(ApplicationLoader.applicationContext.getString(R.string.AutocryptKeyTransfer));
-                    builder1.setMessage(AndroidUtilities.replaceTags(ApplicationLoader.applicationContext.getString(R.string.AutocryptKeyTransferMsgBefore)));
+                    builder1.setMessage(AndroidUtilities.replaceTags(ApplicationLoader.applicationContext.getString(R.string.AutocryptKeyTransferMsgBeforeSend)));
                     builder1.setNegativeButton(R.string.Cancel, null);
-                    builder1.setPositiveButton(R.string.OK, new DialogInterface.OnClickListener() {
+                    builder1.setPositiveButton(R.string.AutocryptKeyTransferInitiate, new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             try {
@@ -251,7 +251,7 @@ public class SettingsAdvFragment extends BaseFragment implements NotificationCen
                                         sc.substring(30, 34) + "  -  " + sc.substring(35, 39) + "  -  " + sc.substring(40, 44);
                                 AlertDialog.Builder builder2 = new AlertDialog.Builder(getParentActivity());
                                 builder2.setTitle(ApplicationLoader.applicationContext.getString(R.string.AutocryptKeyTransfer));
-                                builder2.setMessage(AndroidUtilities.replaceTags(String.format(ApplicationLoader.applicationContext.getString(R.string.AutocryptKeyTransferMsgAfter), scFormatted)));
+                                builder2.setMessage(AndroidUtilities.replaceTags(String.format(ApplicationLoader.applicationContext.getString(R.string.AutocryptKeyTransferMsgAfterSend), scFormatted)));
                                 builder2.setPositiveButton(R.string.OK, null);
                                 builder2.setCancelable(false); // prevent the dialog from being dismissed accidentally (when the dialog is closed, the setup code is gone forever and the user has to create a new setup message)
                                 showDialog(builder2.create());

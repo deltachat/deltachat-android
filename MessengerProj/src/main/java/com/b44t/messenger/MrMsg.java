@@ -112,6 +112,7 @@ public class MrMsg {
     public native String getFilename();
     public native boolean isForwarded();
     public native boolean isSystemcmd();
+    public native boolean isSetupMessage();
     public native boolean isIncreation();
 
     private long                  m_hMsg; // must not be renamed as referenced by JNI under the name "m_hMsg"
@@ -160,6 +161,10 @@ public class MrMsg {
 
         if( type == MR_MSG_TEXT ) {
             ret.message       = getText();
+        }
+        else if( type == MR_MSG_FILE && isSetupMessage() )
+        {
+            ret.message = ApplicationLoader.applicationContext.getString(R.string.AutocryptSetupMessageTapBody);
         }
         else if( type == MR_MSG_IMAGE ) {
             String path = getFile();

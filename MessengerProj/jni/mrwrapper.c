@@ -1044,6 +1044,12 @@ JNIEXPORT jboolean Java_com_b44t_messenger_MrMsg_isSystemcmd(JNIEnv *env, jobjec
 }
 
 
+JNIEXPORT jboolean Java_com_b44t_messenger_MrMsg_isSetupMessage(JNIEnv *env, jobject obj)
+{
+    return mrmsg_is_setupmessage(get_mrmsg_t(env, obj));
+}
+
+
 /*******************************************************************************
  * MrContact
  ******************************************************************************/
