@@ -39,6 +39,10 @@
     <string name="TypeMessage">Mesazh</string>
     <string name="SaveToDownloads">Ruaje te \"Shkarkime"\</string>
     <string name="SaveToMusic">Ruaje te "\Muzikë"\</string>
+    <!--notification-->
+    <string name="Reply">Përgjigjuni</string>
+    <string name="ReplyToGroup">Përgjigjiuni %1$s</string>
+    <string name="ReplyToContact">Përgjigjiuni %1$s</string>
     <!--contacts view-->
     <string name="NoContacts">Ende pa kontakte.</string>
     <!--group create view-->
@@ -65,12 +69,14 @@
     <string name="BlockedContacts">Kontakte të bllokuar</string>
     <string name="Default">Parazgjedhje</string>
     <string name="ChatBackground">Sfond fjalosjeje</string>
+    <string name="SendByEnter">Dërgoje me \"\"</string>
     <string name="Help">Ndihmë</string>
     <string name="Enabled">On</string>
     <string name="Disabled">Off</string>
     <string name="LedColor">Ngjyrë LED</string>
     <string name="Short">E shkurtër</string>
     <string name="Long">E gjatë</string>
+    <string name="RaiseToSpeak">Rriteni që të flisni</string>
     <string name="EditName">Përpunoni emrin</string>
     <string name="NotificationsPriority">Shiheni</string>
     <string name="NotificationsPriorityDefault">Përparësi normale</string>
@@ -86,9 +92,24 @@
     <!--cache view-->
     <string name="CacheSettings">Depozitë</string>
     <string name="KeepMedia">Mbaje Median</string>
+    <string name="KeepMediaInfo">Foto, video dhe kartela të tjera prej bisedash në re, që <![CDATA[<b>nuk i keni hapur</b>]]> gjatë kësaj periudhe, do të hiqen prej pajisjes, për të kursyer hapësirë disku.</string>
     <string name="KeepMediaForever">Përgjithmonë</string>
+    <!--passcode view-->
+    <string name="Passcode">Kyçje Kodkalimi</string>
+    <string name="ChangePasscode">Ndryshoni Kodkalimin</string>
+    <string name="ChangePasscodeInfo">Kur rregulloni një kodkalim shtesë, te faqja e bisedave do të shfaqet një ikonë dryni. Prekeni që të kyçet aplikacioni.\n\nShënim: nëse harroni kodkalimin, do t’ju duhet të fshini dhe ri-instaloni aplikacionin.</string>
     <string name="PasscodePIN">PIN</string>
     <string name="PasscodePassword">Fjalëkalim</string>
+    <string name="EnterCurrentPasscode">Jepni kodkalimin tuaj të tanishëm</string>
+    <string name="EnterNewFirstPasscode">Jepni një kodkalim</string>
+    <string name="EnterNewPasscode">Jepni kodkalimin tuaj të ri</string>
+    <string name="EnterYourPasscode">Jepni kodkalimin tuaj</string>
+    <string name="ReEnterYourPasscode">Rijepeni kodkalimin tuaj të ri</string>
+    <string name="PasscodeDoNotMatch">Kodkalimet nuk përputhen</string>
+    <string name="AutoLock">Vetëkyçe</string>
+    <string name="AutoLockInfo">Kërko kodkalim nëse largohet për njëfarë koe.</string>
+    <!--photo gallery view-->
+    <string name="SaveToGallery">Ruaje te \"Galeri\"</string>
     <string name="Gallery">Galeri</string>
     <string name="AllPhotos">Krejt Fotot</string>
     <string name="AllVideo">Krejt Videot</string>
@@ -135,6 +156,7 @@
     <string name="Delete">Fshije</string>
     <string name="Forward">Përcille</string>
     <string name="FromCamera">Prej kamerës</string>
+    <string name="FromGalley">Nga \"Galeri\"</string>
     <string name="OK">OK</string>
     <string name="Crop">Qethe</string>
     <!--messages-->
@@ -145,10 +167,23 @@
     <string name="AttachDocument">Kartelë</string>
     <string name="AttachVoiceMessage">Mesazh zanor</string>
     <string name="FromSelf">Unë</string>
+    <!--Alert messages-->
+    <string name="NoHandleAppInstalled">Asnjë aplikacion nga të instaluarit s\’e hap dot llojin \'%1$s\' e kartelave, ju lutemi, që të vazhdohet, instaloni një të tillë.</string>
     <string name="ContactAlreadyInGroup">Kontakti gjendet tashmë në këtë grup.</string>
+    <string name="ForwardMessagesTo">Përcillja mesazhet e përzgjedhur <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>?</string>
+    <string name="SendMessagesTo">Të dërgohen mesazhet te <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>?</string>
+    <string name="AreYouSureDeleteThisChat">Të fshihet kjo bisedë? S\’do të shfaqet më te lista e bisedave, mesazhet e saj do të mbeten në shërbyes.</string>
+    <string name="AreYouSureBlockContact">Jeni i sigurt se doni ta bllokoni këtë kontakt?</string>
+    <string name="AreYouSureDeleteContact">Jeni i sigurt se doni ta fshini këtë kontakt?</string>
+    <!--permissions-->
+    <string name="PermissionContacts">Lypset hyrje te kontaktet për t’ju lidhur me shokët tuaj nga cilado pajisje juaj.</string>
+    <string name="PermissionStorage">Për dërgim dhe ruajte fotosh, videosh, muzike dhe media të tjera, lypset hyrje te depozita.</string>
+    <string name="PermissionNoAudio">Për dërgim mesazhesh zanorë, lypset hyrje te mikrofoni.</string>
     <string name="PermissionOpenSettings">Rregullime</string>
     <!--Intro view-->
     <string name="Intro1Headline">Fjalosje Delta</string>
+    <string name="Intro1Message">Lajmëtari me <![CDATA[<b>publikun më të gjerë</b>]]> në botë.<![CDATA[<br/><b>I lirë</b>]]> dhe <![CDATA[<b>i pavarur</b>]]>.</string>
+
     <string name="Intro2Headline">I pavarur</string>
     <string name="Intro2Message"><![CDATA[<b>I pavarur</b>]]> nga kompjutera apo shërbime të huaja. Aplikacioni përdor vetëm shërbyesin tuaj të email-eve.</string>
 
@@ -179,5 +214,153 @@
         <item quantity="one">%d anëtar dhe unë</item>
         <item quantity="other">%d anëtarë dhe unë</item>
     </plurals>
+    <plurals name="NewMessages">
+        <item quantity="one">%d mesazh i ri</item>
+        <item quantity="other">%d  mesazhe të rinj</item>
+    </plurals>
+    <plurals name="messages">
+        <item quantity="one">%d  mesazh</item>
+        <item quantity="other">%d  mesazhe</item>
+    </plurals>
+    <plurals name="AreYouSureDeleteMessages">
+        <item quantity="one">Të fshihen  %d mesazh? Do të fshihet edhe nga shërbyesi.</item>
+        <item quantity="other">Të fshihen %d mesazhe? Këta do të fshihen edhe nga shërbyesi.</item>
+    </plurals>
+    <plurals name="NewMessagesInChats">
+        <item quantity="one">%1$s në %2$d fjalosje</item>
+        <item quantity="other">%1$s në %2$d fjalosje</item>
+    </plurals>
+    <plurals name="Chats">
+        <item quantity="one">%d fjalosje</item>
+        <item quantity="other">%d fjalosje</item>
+    </plurals>
+    <plurals name="Minutes">
+        <item quantity="one">%d minutë</item>
+        <item quantity="other">%d minuta</item>
+    </plurals>
+    <plurals name="Hours">
+        <item quantity="one">%d orë</item>
+        <item quantity="other">%d orë</item>
+    </plurals>
+    <plurals name="Days">
+        <item quantity="one">%d ditë</item>
+        <item quantity="other">%d ditë</item>
+    </plurals>
+    <plurals name="Weeks">
+        <item quantity="one">%d javë</item>
+        <item quantity="other">%d javë</item>
+    </plurals>
+    <plurals name="Months">
+        <item quantity="one">%d muaj</item>
+        <item quantity="other">%d muaj</item>
+    </plurals>
+    <plurals name="MaxNotifications">
+        <item quantity="one">E shumta %1$d njoftime brenda %2$s</item>
+        <item quantity="other">E shumta %1$d njoftime brenda %2$s</item>
+    </plurals>
+    <!--date formatters-->
+    <string name="formatterMonthYear">MMMM yyyy</string>
+    <string name="formatterMonth">dd MMM</string>
+    <string name="formatterYear">dd.MM.yyyy</string>
+    <string name="chatDate">EEE, d MMMM</string>
+    <string name="chatFullDate">EEE, d MMMM, yyyy</string>
+    <string name="formatterWeek">EEE</string>
+    <string name="formatterDay24H">HH:mm</string>
+    <string name="formatterDay12H">h:mm a</string>
+    <string name="AccountSettings">Rregullime llogarie</string>
+    <string name="MyAccount">Llogaria ime</string>
+    <string name="MyName">Emri im</string>
+    <string name="MyNameExplain">Emri juaj, si u shfaqet marrësve. Në u lëntë i zbrazët, do të dërgohet vetëm adresa juaj email.</string>
     <string name="Password">Fjalëkalim</string>
-    </resources>
+    <string name="SmtpPassword">Fjalëkalim SMTP</string>
+    <string name="FromAbove">Nga sipër</string>
+    <string name="SmtpLoginname">Emër hyrjeje për SMTP</string>
+    <string name="SmtpPort">Portë SMTP</string>
+    <string name="Automatic">Automatike</string>
+    <string name="ImapServer">Shërbyes IMAP</string>
+    <string name="ImapLoginname">Emër hyrjeje për IMAP</string>
+    <string name="SmtpServer">Shërbyes SMTP</string>
+    <string name="ImapPort">Portë IMAP</string>
+    <string name="InboxHeadline">Të marrë</string>
+    <string name="OutboxHeadline">Të dërguar</string>
+    <string name="MyAccountExplain">Për furnizues të njohur shërbimesh email, rregullimet shtesë përcaktohen vetvetiu.</string>
+    <string name="MyAccountExplain2" >Ndonjëherë, <![CDATA[<b>]]>IMAP lypset të aktivizohet<![CDATA[</b>]]> te pjesa e dukshme e sistemit email web.\n\nNëse hasni probleme, këshillohuni me furnizuesin e email-it ose me shokë tuajt.</string>
+    <string name="AccountNotConfigured">Llogari e paformësuar</string>
+    <string name="AboutThisProgram">Mbi Delta Chat-in</string>
+    <string name="NotSet">E papërcaktuar</string>
+    <string name="NewChat">Fjalosje e re</string>
+    <string name="Deaddrop">Kërkesa kontakti</string>
+    <string name="DeaddropInChatlist">Shfaq te listë fjalosjesh kërkesa kontakti</string>
+    <string name="AskStartChatWith">Bisedoni me <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>?</string>
+    <string name="NotYetImplemented">Ky funksion s’është i passhëm ose është jo i plotë</string>
+    <string name="DefaultStatusText">Dërguar me Lajmëtarin tim Delta Chat: https://delta.chat</string>
+    <string name="Name" >Emër</string>
+    <string name="EmailAddress">Adresë email</string>
+    <string name="CannotDeleteContact">S’fshihen dot kontakte në përdorim, në vend të kësaj bëni bllokim kontakti.</string>
+    <string name="BadEmailAddress">Adresë email e gabuar</string>
+    <string name="ContactCreated">Kontakti u krijua</string>
+    <string name="ViewProfile">Shihni profilin</string>
+    <!-- Translators: please use a very short string here, it should not much longer than
+    the string needed for video time+size (0:00, 12,3 Mib) -->
+    <string name="OneMoment">Një sekondë…</string>
+    <string name="InviteMenuEntry">Dërgoni ftesa</string>
+    <string name="InviteText">Tani përdor Delta Chat-in - %1$s - mund të dërgoni mesazh te %2$s</string>
+    <string name="AdvancedSettings">Rregullime të mëtejshme</string>
+    <string name="AttachFiles">Bashkëngjitni kartela</string>
+    <string name="ErrGroupNameEmpty">Ju lutemi, jepni një emër për grupin.</string>
+    <string name="MsgGroupNameChanged">Emri i grupit ndryshoi nga \"%1$s\" në \"%2$s\".</string>
+    <string name="MsgGroupImageChanged">Figura e grupit ndryshoi.</string>
+    <string name="MsgMemberAddedToGroup">U shtua anëtari %1$s.</string>
+    <string name="MsgMemberRemovedFromToGroup">U hoq anëtari %1$s.</string>
+    <string name="AskAddMemberToGroup">Të shtohet <![CDATA[<b>]]>%1$s<![CDATA[</b>]]> te grupi?</string>
+    <string name="AskRemoveMemberFromGroup">Të hiqet <![CDATA[<b>]]>%1$s<![CDATA[</b>]]> nga grupi?</string>
+    <string name="ErrSelfNotInGroup">Që të kryeni këtë veprim, duhet të jeni një anëtar i grupit.</string>
+    <string name="MsgGroupLeft">Grupi u la.</string>
+    <string name="SendNRcvReadReceipts">Merrni dhe dërgoni fatura kthimesh</string>
+    <string name="PreferE2EEncryption">Parapëlqe fshehtëzim skaj-më-skaj</string>
+    <string name="E2EManagePrivateKeys">Administroni kyçe privatë</string>
+    <string name="E2ECompareKeys">Krahasoni kyçe</string>
+    <string name="ForwardToTitle">Përcille te…</string>
+    <string name="SelectContact">Zgjidhni një kontakt</string>
+    <string name="DoneHint">U bë.</string>
+    <string name="FileNotFound">S’u gjet dot %1$s.</string>
+    <string name="Error">Gabim: %1$s</string>
+    <string name="NoNetwork">Rrjet i pakapshëm.</string>
+    <string name="Audio">Audio</string>
+    <string name="PleaseCutVideoToMaxSize">Ju lutemi, prijeni videon në një madhësi më të vogël se %1$s.</string>
+    <string name="PermNotificationTitle">I lidhur te %1$s</string>
+    <string name="PermNotificationText">Po pritet për mesazhe…</string>
+    <string name="SettingsFor">Rregullime për %1$s</string>
+    <string name="AutoplayGifs">Vetëluaji GIF-et</string>
+    <string name="HelpUrl">https://delta.chat/en/help</string>
+    <string name="EncryptedMessage">Mesazh i fshehtëzuar</string>
+    <string name="Encryption">Fshehtëzim</string>
+    <string name="EncrinfoE2E">U aktivizua fshehtëzimi skaj-më-skaj.</string>
+    <string name="EncrinfoE2EExplain">Nëse te pajisja tjetër përputhen krejt shenjat e gishtave, lidhja është e parrezik.</string>
+    <string name="EncrinfoTransport">Shpërngulje-fshehtëzim të paktën deri te shërbyesi im.</string>
+    <string name="EncrinfoNone">Pa fshehtëzim te shërbyesi im.</string>
+    <string name="EncrinfoFingerprints">Shenja gishtash</string>
+    <string name="Backup">Kopjeruajtje</string>
+    <string name="ReadReceipt">Faturë kthimi</string>
+    <string name="NameAndStatus">Emër dhe gjendje</string>
+    <string name="MyStatus">Gjendja ime</string>
+    <string name="MyStatusExplain">Veç vendesh të tjera, gjendja tregohet edhe te poshtëshënime email-esh.</string>
+    <string name="MsgGroupImageDeleted">Figura e grupit u fshi.</string>
+    <string name="AskDeleteGroupImage">Jeni të sigurt se doni të fshihet figura e grupit?\n\nKjo do të prekë krejt pajisjet e krejt anëtarëve të grupit.</string>
+    <string name="ExportImportHeader">Eksportim dhe importim</string>
+    <string name="ImportExportExplain">Kartelat e eksportuara do të përmbajnë kyçe private! Mbajini në një vend të parrezik, ose fshijini sa më shpejt të jetë e mundur.</string>
+    <string name="EnterPasswordToContinue">Që të vazhdohet, jepni fjalëkalimin për %1$s:</string>
+    <string name="IncorrectPassword">Fjalëkalim i pasaktë.</string>
+    <string name="ExportBackup">Eksporto kopjeruajtje</string>
+    <string name="ExportPrivateKeys">Eksporto kyçe private</string>
+    <string name="ImportPrivateKeys">Importo kyçe private</string>
+    <string name="NoRecentEmoji">Këtu do të shfaqen emoji-t e përdorura së fundi.</string>
+    <string name="NotNow">Jo tani</string>
+    <string name="ArchiveChat">Arkivoje bisedën</string>
+    <string name="UnarchiveChat">Çarkivoje bisedën</string>
+    <string name="ArchivedChats">Biseda të arkivuara</string>
+    <string name="Archived">E arkivuar</string>
+    <string name="LeaveGroup">Braktiseni grupin</string>
+    <string name="AskLeaveGroup">Jeni i sigurt se doni ta braktisni grupin?</string>
+    <string name="Never">Kurrë</string>
+</resources>
