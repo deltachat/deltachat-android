@@ -16,6 +16,8 @@
     <string name="MuteFor">Mos i shfaq për %1$s</string>
     <string name="UnmuteNotifications">Shfaqi</string>
     <string name="Draft">Skicë</string>
+    <!--audio view-->
+    <string name="NoAudio">Kartelat e shtuara te mediateka e pajisjes suaj do të shfaqen këtu.</string>
     <string name="AttachMusic">Muzikë</string>
     <!--documents view-->
     <string name="SelectFile">Përzgjidhni Kartelë</string>
@@ -30,6 +32,7 @@
     <string name="SystemRoot">Rrënjë e Sistemit</string>
     <string name="SdCard">Diskth SD</string>
     <string name="Folder">Dosje</string>
+    <string name="GalleryInfo">Për dërgim figurash të pangjeshura</string>
     <!--chat view-->
     <string name="ChatGallery">Galeri</string>
     <string name="ChatCamera">Kamerë</string>
@@ -37,8 +40,10 @@
     <string name="ForwardedMessage">Mesazh i përcjellë</string>
     <string name="From">Nga</string>
     <string name="TypeMessage">Mesazh</string>
-    <string name="SaveToDownloads">Ruaje te \"Shkarkime"\</string>
-    <string name="SaveToMusic">Ruaje te "\Muzikë"\</string>
+    <string name="SaveToDownloads">Ruaje te \"Shkarkime\"</string>
+    <string name="SaveToMusic">Ruaje te \"Muzikë\"</string>
+    <string name="AddShortcut">Shtoje widget-in te kreu</string>
+    <string name="ShortcutAdded">Widget-i u shtua tek kreu</string>
     <!--notification-->
     <string name="Reply">Përgjigjuni</string>
     <string name="ReplyToGroup">Përgjigjiuni %1$s</string>
@@ -65,6 +70,7 @@
     <string name="MessagePreview">Paraparje mesazhesh</string>
     <string name="Sound">Tingull</string>
     <string name="Vibrate">Dridhu</string>
+    <string name="ResetAllNotifications">Ktheji krejt njoftimet te parazgjedhjet</string>
     <string name="NotificationsAndSounds">Njoftime dhe tinguj</string>
     <string name="BlockedContacts">Kontakte të bllokuar</string>
     <string name="Default">Parazgjedhje</string>
@@ -108,6 +114,9 @@
     <string name="PasscodeDoNotMatch">Kodkalimet nuk përputhen</string>
     <string name="AutoLock">Vetëkyçe</string>
     <string name="AutoLockInfo">Kërko kodkalim nëse largohet për njëfarë koe.</string>
+    <string name="UnlockFingerprint">Shkyçe me shenja gishtash</string>
+    <string name="FingerprintInfo">Që të vazhdohet, konfirmoni shenja gishtash</string>
+    <string name="FingerprintNotRecognized">Shenja gishtash që nuk njihen. Riprovoni</string>
     <!--photo gallery view-->
     <string name="SaveToGallery">Ruaje te \"Galeri\"</string>
     <string name="Gallery">Galeri</string>
@@ -201,6 +210,7 @@
 
     <string name="Intro7Headline">I besueshëm</string>
 
+    <string name="IntroStartMessaging">Filloni të Shkëmbeni Mesazhe</string>
     <!--plural-->
     <plurals name="Members">
         <item quantity="one">%d anëtar</item>
@@ -292,6 +302,7 @@
     <string name="Deaddrop">Kërkesa kontakti</string>
     <string name="DeaddropInChatlist">Shfaq te listë fjalosjesh kërkesa kontakti</string>
     <string name="AskStartChatWith">Bisedoni me <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>?</string>
+    <string name="DeaddropHint">Prekni shigjetat përgjigje që të nisni të bisedoni.</string>
     <string name="NotYetImplemented">Ky funksion s’është i passhëm ose është jo i plotë</string>
     <string name="DefaultStatusText">Dërguar me Lajmëtarin tim Delta Chat: https://delta.chat</string>
     <string name="Name" >Emër</string>
@@ -303,11 +314,16 @@
     <!-- Translators: please use a very short string here, it should not much longer than
     the string needed for video time+size (0:00, 12,3 Mib) -->
     <string name="OneMoment">Një sekondë…</string>
+    <string name="NoChatsHelp">Nisni të shkëmbeni mesazhe duke shtypur butonin \"Fjalosje e re\" poshtë djathtas, ose prekni butonin \"Menu\" për më tepër mundësi.</string>
+    <string name="Intro7Message"><![CDATA[<b>Delta Chat</b>]]> është i parrezik për përdorim në biznes, i përputhshëm dhe i bazuar në standarde.</string>
     <string name="InviteMenuEntry">Dërgoni ftesa</string>
     <string name="InviteText">Tani përdor Delta Chat-in - %1$s - mund të dërgoni mesazh te %2$s</string>
     <string name="AdvancedSettings">Rregullime të mëtejshme</string>
+    <string name="AskResetNotifications">Të kthehen te parazgjedhjet krejt rregullimet mbi njoftime dhe tinguj për faqen e tanishme, kontaktet dhe grupet?</string>
     <string name="AttachFiles">Bashkëngjitni kartela</string>
     <string name="ErrGroupNameEmpty">Ju lutemi, jepni një emër për grupin.</string>
+    <string name="MsgNewGroupDraftHint">Hartoni mesazhin e parë, duke u lejuar të tjerëve të përgjigjen brenda këtij grupi.\n\n• S\’ka problem që Delta Chat-in s\’e përdorin tërë anëtarët.\n\n• Dërgimi i mesazhit të parë mund të dojë pak kohë.</string>
+    <string name="MsgNewGroupDraft">Tungjatjeta, sapo krijova grupin \"%1$s\" për ne.</string>
     <string name="MsgGroupNameChanged">Emri i grupit ndryshoi nga \"%1$s\" në \"%2$s\".</string>
     <string name="MsgGroupImageChanged">Figura e grupit ndryshoi.</string>
     <string name="MsgMemberAddedToGroup">U shtua anëtari %1$s.</string>
@@ -316,6 +332,7 @@
     <string name="AskRemoveMemberFromGroup">Të hiqet <![CDATA[<b>]]>%1$s<![CDATA[</b>]]> nga grupi?</string>
     <string name="ErrSelfNotInGroup">Që të kryeni këtë veprim, duhet të jeni një anëtar i grupit.</string>
     <string name="MsgGroupLeft">Grupi u la.</string>
+    <string name="NoMessagesHint">Dërgoje mesazhin te <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>:\n\n• S\’ka problem nëse <![CDATA[<b>]]>%2$s<![CDATA[</b>]]> nuk përdor Delta Chat-in.\n\n• Dërgimi i mesazhit të parë mund të dojë pak kohë.</string>
     <string name="SendNRcvReadReceipts">Merrni dhe dërgoni fatura kthimesh</string>
     <string name="PreferE2EEncryption">Parapëlqe fshehtëzim skaj-më-skaj</string>
     <string name="E2EManagePrivateKeys">Administroni kyçe privatë</string>
@@ -339,8 +356,11 @@
     <string name="EncrinfoE2EExplain">Nëse te pajisja tjetër përputhen krejt shenjat e gishtave, lidhja është e parrezik.</string>
     <string name="EncrinfoTransport">Shpërngulje-fshehtëzim të paktën deri te shërbyesi im.</string>
     <string name="EncrinfoNone">Pa fshehtëzim te shërbyesi im.</string>
+    <string name="EncrinfoNoE2EExplain">Fshehtëzimi skaj-më-skaj do të përdoret kur edhe nga marrësi përdoret Delta Chat ose tjetër aplikacion Autocrypt.</string>
     <string name="EncrinfoFingerprints">Shenja gishtash</string>
     <string name="Backup">Kopjeruajtje</string>
+    <string name="ImportBackupExplain2">Që të importohet një kopjeruajtje, kopjojeni kopjeruajtjen te <![CDATA[<i>]]>%1$s<![CDATA[</i>]]> dhe ri-instaloni aplikacionin.</string>
+    <string name="ReadReceiptMailBody">Kjo është një faturë kthimi për mesazhin \"%1$s\".\n\nKjo faturë kthimi dëshmon vetëm se mesazhi u shfaq te pajisja e marrësit. S\’ka garanci që marrësi ta ketë lexuar lëndën e mesazhit.</string>
     <string name="ReadReceipt">Faturë kthimi</string>
     <string name="NameAndStatus">Emër dhe gjendje</string>
     <string name="MyStatus">Gjendja ime</string>
@@ -351,10 +371,17 @@
     <string name="ImportExportExplain">Kartelat e eksportuara do të përmbajnë kyçe private! Mbajini në një vend të parrezik, ose fshijini sa më shpejt të jetë e mundur.</string>
     <string name="EnterPasswordToContinue">Që të vazhdohet, jepni fjalëkalimin për %1$s:</string>
     <string name="IncorrectPassword">Fjalëkalim i pasaktë.</string>
+    <string name="ImportBackupAsk">U gjet kopjeruajtje te <![CDATA[<i>]]>%1$s<![CDATA[</i>]]>.\n\nDoni të importohet dhe të përdoren krejt të dhënat dhe rregullimet prej saj?</string>
+    <string name="ImportBackup">Importoje kopjeruajtjen</string>
+    <string name="NoBackupFound">S\’u gjetën kopjeruajtje.\n\nKopjojeni kopjeruajtjen te <![CDATA[<i>]]>%1$s<![CDATA[</i>]]> dhe riprovoni. Ose, shtypni \"Nisni të shkëmbeni mesazhe\" që të ecni sipas procesit normal të rregullimit.</string>
+    <string name="FilesSuccessfullyExported">Kartelat u eksportuan te <![CDATA[<i>]]>%1$s<![CDATA[</i>]]>.</string>
     <string name="ExportBackup">Eksporto kopjeruajtje</string>
     <string name="ExportPrivateKeys">Eksporto kyçe private</string>
     <string name="ImportPrivateKeys">Importo kyçe private</string>
+    <string name="ImportPrivateKeysAsk2">Të importohen kyçe privatë prej <![CDATA[<i>]]>%1$s<![CDATA[</i>]]>?\n\n• Kyçet private ekzistuese nuk do të fshihen\n\n• Si kyç i ri parazgjedhje do të përdoret kyçi i fundit i importuar</string>
     <string name="NoRecentEmoji">Këtu do të shfaqen emoji-t e përdorura së fundi.</string>
+    <string name="E2eeOffBecauseOfUser">Për aktivizim të fshehtëzimit skaj-më-skaj, i vini shenjë mundësisë përkatëse te rregullimet tuaja.</string>
+    <string name="E2eeOffBecauseOfRecipient">Fshehtëzimi skaj-më-skaj do të përdoret nëse e aktivizon edhe pala tjetër.</string>
     <string name="NotNow">Jo tani</string>
     <string name="ArchiveChat">Arkivoje bisedën</string>
     <string name="UnarchiveChat">Çarkivoje bisedën</string>
