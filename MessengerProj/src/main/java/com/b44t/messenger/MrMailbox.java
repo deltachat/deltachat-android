@@ -52,7 +52,7 @@ public class MrMailbox {
     public native static String getBlobdir();
 
     public native static int configureAndConnect();
-    public native static void configureCancel();
+    public native static void stopOngoingProcess();
 
     public native static int isConfigured();
 
@@ -73,7 +73,6 @@ public class MrMailbox {
     public final static int MR_IMEX_EXPORT_BACKUP = 11;
     public final static int MR_IMEX_IMPORT_BACKUP = 12;
     public native static int imex(int what, String dir);
-    public native static void imexCancel();
     public native static String imexHasBackup(String dir);
     public native static int  checkPassword(String pw);
 

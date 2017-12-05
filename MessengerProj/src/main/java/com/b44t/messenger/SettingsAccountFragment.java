@@ -345,7 +345,7 @@ public class SettingsAccountFragment extends BaseFragment implements Notificatio
         progressDialog.setButton(DialogInterface.BUTTON_NEGATIVE, ApplicationLoader.applicationContext.getString(R.string.Cancel), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        MrMailbox.configureCancel();
+                        MrMailbox.stopOngoingProcess();
                     }
 	        });
         progressDialog.show();

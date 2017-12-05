@@ -258,9 +258,9 @@ JNIEXPORT jint Java_com_b44t_messenger_MrMailbox_configureAndConnect(JNIEnv *env
 }
 
 
-JNIEXPORT void Java_com_b44t_messenger_MrMailbox_configureCancel(JNIEnv *env, jclass cls)
+JNIEXPORT void Java_com_b44t_messenger_MrMailbox_stopOngoingProcess(JNIEnv *env, jclass cls)
 {
-	mrmailbox_configure_cancel(get_mrmailbox_t(env, cls));
+	mrmailbox_stop_ongoing_process(get_mrmailbox_t(env, cls));
 }
 
 
@@ -621,12 +621,6 @@ JNIEXPORT int Java_com_b44t_messenger_MrMailbox_imex(JNIEnv *env, jclass cls, ji
 		jint ret = mrmailbox_imex(get_mrmailbox_t(env, cls), what, dirPtr, "");
 	CHAR_UNREF(dir);
 	return ret;
-}
-
-
-JNIEXPORT void Java_com_b44t_messenger_MrMailbox_imexCancel(JNIEnv *env, jclass cls)
-{
-	mrmailbox_imex_cancel(get_mrmailbox_t(env, cls));
 }
 
 

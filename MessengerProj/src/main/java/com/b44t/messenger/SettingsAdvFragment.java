@@ -243,22 +243,49 @@ public class SettingsAdvFragment extends BaseFragment implements NotificationCen
                     builder1.setPositiveButton(R.string.AutocryptKeyTransferInitiate, new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            try {
-                                String sc = MrMailbox.initiateKeyTransfer();
-                                String scFormatted =
-                                        sc.substring( 0,  4) + "  -  " + sc.substring( 5,  9) + "  -  " + sc.substring(10, 14) + "  -\n\n" +
-                                        sc.substring(15, 19) + "  -  " + sc.substring(20, 24) + "  -  " + sc.substring(25, 29) + "  -\n\n" +
-                                        sc.substring(30, 34) + "  -  " + sc.substring(35, 39) + "  -  " + sc.substring(40, 44);
-                                AlertDialog.Builder builder2 = new AlertDialog.Builder(getParentActivity());
-                                builder2.setTitle(ApplicationLoader.applicationContext.getString(R.string.AutocryptKeyTransfer));
-                                builder2.setMessage(AndroidUtilities.replaceTags(String.format(ApplicationLoader.applicationContext.getString(R.string.AutocryptKeyTransferMsgAfterSend), scFormatted)));
-                                builder2.setPositiveButton(R.string.OK, null);
-                                builder2.setCancelable(false); // prevent the dialog from being dismissed accidentally (when the dialog is closed, the setup code is gone forever and the user has to create a new setup message)
-                                showDialog(builder2.create());
-                            }
-                            catch (Exception e) {
-                                e.printStackTrace();
-                            }
+                            progressDialog = new ProgressDialog(getParentActivity());
+                            progressDialog.setMessage(ApplicationLoader.applicationContext.getString(R.string.OneMoment));
+                            progressDialog.setCanceledOnTouchOutside(false);
+                            progressDialog.setCancelable(false);
+                            progressDialog.setButton(DialogInterface.BUTTON_NEGATIVE, ApplicationLoader.applicationContext.getString(R.string.Cancel), new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    MrMailbox.stopOngoingProcess();
+                                }
+                            });
+                            progressDialog.show();
+                            Utilities.searchQueue.postRunnable(new Runnable() {
+                                @Override
+                                public void run() {
+                                    final String sc = MrMailbox.initiateKeyTransfer();
+                                    AndroidUtilities.runOnUIThread(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            if( progressDialog != null ) {
+                                                progressDialog.dismiss();
+                                                progressDialog = null;
+                                            }
+
+                                            if( sc != null ) {
+                                                String scFormatted = "";
+                                                try {
+                                                    scFormatted = sc.substring(0, 4) + "  -  " + sc.substring(5, 9) + "  -  " + sc.substring(10, 14) + "  -\n\n" +
+                                                            sc.substring(15, 19) + "  -  " + sc.substring(20, 24) + "  -  " + sc.substring(25, 29) + "  -\n\n" +
+                                                            sc.substring(30, 34) + "  -  " + sc.substring(35, 39) + "  -  " + sc.substring(40, 44);
+                                                } catch (Exception e) {
+                                                    e.printStackTrace();
+                                                }
+                                                AlertDialog.Builder builder2 = new AlertDialog.Builder(getParentActivity());
+                                                builder2.setTitle(ApplicationLoader.applicationContext.getString(R.string.AutocryptKeyTransfer));
+                                                builder2.setMessage(AndroidUtilities.replaceTags(String.format(ApplicationLoader.applicationContext.getString(R.string.AutocryptKeyTransferMsgAfterSend), scFormatted)));
+                                                builder2.setPositiveButton(R.string.OK, null);
+                                                builder2.setCancelable(false); // prevent the dialog from being dismissed accidentally (when the dialog is closed, the setup code is gone forever and the user has to create a new setup message)
+                                                showDialog(builder2.create());
+                                            }
+                                        }
+                                    });
+                                }
+                            });
                         }
                     });
                     showDialog(builder1.create());
@@ -442,7 +469,7 @@ public class SettingsAdvFragment extends BaseFragment implements NotificationCen
         progressDialog.setButton(DialogInterface.BUTTON_NEGATIVE, ApplicationLoader.applicationContext.getString(R.string.Cancel), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                MrMailbox.imexCancel();
+                MrMailbox.stopOngoingProcess();
             }
         });
         progressDialog.show();
