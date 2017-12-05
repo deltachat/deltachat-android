@@ -410,4 +410,4 @@ La dernière clé importée sera utilisée comme nouvelle clé par défaut</stri
     <string name="LeaveGroup">Quitter le groupe</string>
     <string name="AskLeaveGroup">Êtes-vous sûr de vouloir quitter ce groupe?</string>
     <string name="Never">Jamais</string>
-</resources>
+    </resources>
