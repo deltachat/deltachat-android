@@ -75,7 +75,7 @@
     <string name="BlockedContacts">Kontakte të bllokuar</string>
     <string name="Default">Parazgjedhje</string>
     <string name="ChatBackground">Sfond fjalosjeje</string>
-    <string name="SendByEnter">Dërgoje me \"\"</string>
+    <string name="SendByEnter">Dërgoje me \"Enter\"</string>
     <string name="Help">Ndihmë</string>
     <string name="Enabled">On</string>
     <string name="Disabled">Off</string>

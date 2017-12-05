@@ -83,7 +83,7 @@
     <string name="Default">Standard</string>
     <string name="OnlyIfSilent">Wenn lautlos</string>
     <string name="ChatBackground">Chat-Hintergrundbild</string>
-    <string name="SendByEnter">Mit Taste „Enter“ senden</string>
+    <string name="SendByEnter">Mit Eingabetaste senden</string>
     <string name="Help">Hilfe</string>
     <string name="Enabled">An</string>
     <string name="Disabled">Aus</string>

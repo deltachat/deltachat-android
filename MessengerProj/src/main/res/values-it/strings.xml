@@ -409,4 +409,11 @@
     <string name="LeaveGroup">Abbandona gruppo</string>
     <string name="AskLeaveGroup">Sei sicuro di voler abbandonare il gruppo?</string>
     <string name="Never">Mai</string>
-    </resources>
+    <string name="AutocryptKeyTransferInitiate">Avviato trasferimento chiavi Autocrypt</string>
+    <string name="AutocryptKeyTransfer">Trasferimento chiavi Autocrypt</string>
+    <string name="AutocryptKeyTransferMsgBeforeSend">Il <![CDATA[<i>]]>trasferimento chiavi Autocrypt<![CDATA[</i>]]> richiede che il client email sull\'altro dispositivo sia compatibile con Autocrypt.\n\nSarà quindi possibile inviare la chiave a se stessi. La chiave verrà cifrata con un codice di configurazione che verrà mostrato qui e dovrà essere digitato sull\'altro dispositivo.</string>
+    <string name="AutocryptKeyTransferMsgAfterSend">La chiave è stata inviata. Passare all\'altro dispositivo e aprire il messaggio di configurazione. Verrà richiesto un codice. Digitare il codice seguente:\n\n%1$s\n\nUna volta terminato, l\'altro dispositivo sarà pronto per usare Autocrypt.</string>
+    <string name="AutocryptSetupMessageSubject">Massaggio di configurazione Autocrypt</string>
+    <string name="AutocryptSetupMessageGeneralBody">Questo è il messaggio di configurazione di Autocrypt usato per trasferire la propria chiave tra più client.\n\nPer decifrare e usare la chiave, aprire il messaggio in un client compatibile con Autocrypt e digitare il codice di configurazione visibile sul dispositivo dal quale si è generata la chiave.</string>
+    <string name="AutocryptSetupMessageTapBody">Questo è il messaggio di configurazione di Autocrypt usato per trasferire la propria chiave tra più client.\n\nPer decifrare e usare la chiave, aprire questo messaggio.</string>
+</resources>
