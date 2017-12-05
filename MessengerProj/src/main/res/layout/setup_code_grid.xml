@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- the FrameLayout is needed as View.inflate() without a root discards all layout_-attributes -->
+
+    <GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="16dp"
+                android:layout_marginLeft="24dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginRight="24dp"
+                android:layout_marginEnd="24dp"
+                android:columnCount="6"
+                android:rowCount="1">
+
+        <!-- 1st row -->
+
+        <EditText
+            android:id="@+id/setupCode0"
+            android:layout_marginBottom="8dp"
+            android:layout_width="wrap_content"
+            android:inputType="numberDecimal"
+            android:maxLength="4"
+            android:minEms="3"/>
+
+        <TextView
+            android:layout_marginBottom="8dp"
+            android:text=" - "
+            android:textAppearance="@style/TextAppearance.AppCompat"/>
+
+        <EditText
+            android:id="@+id/setupCode1"
+            android:layout_marginBottom="8dp"
+            android:layout_width="wrap_content"
+            android:inputType="numberDecimal"
+            android:maxLength="4"
+            android:minEms="3"/>
+
+        <TextView
+            android:text=" - "
+            android:textAppearance="@style/TextAppearance.AppCompat"/>
+
+        <EditText
+            android:id="@+id/setupCode2"
+            android:layout_marginBottom="8dp"
+            android:layout_width="wrap_content"
+            android:inputType="numberDecimal"
+            android:maxLength="4"
+            android:minEms="3"/>
+
+        <TextView
+            android:layout_marginBottom="8dp"
+            android:text=" - "
+            android:textAppearance="@style/TextAppearance.AppCompat"/>
+
+        <!-- 2nd row -->
+
+        <EditText
+            android:id="@+id/setupCode3"
+            android:layout_marginBottom="8dp"
+            android:layout_width="wrap_content"
+            android:inputType="numberDecimal"
+            android:maxLength="4"
+            android:minEms="3"/>
+
+        <TextView
+            android:layout_marginBottom="8dp"
+            android:text=" - "
+            android:textAppearance="@style/TextAppearance.AppCompat"/>
+
+        <EditText
+            android:id="@+id/setupCode4"
+            android:layout_marginBottom="8dp"
+            android:layout_width="wrap_content"
+            android:inputType="numberDecimal"
+            android:maxLength="4"
+            android:minEms="3"/>
+
+        <TextView
+            android:layout_marginBottom="8dp"
+            android:text=" - "
+            android:textAppearance="@style/TextAppearance.AppCompat"/>
+
+        <EditText
+            android:id="@+id/setupCode5"
+            android:layout_marginBottom="8dp"
+            android:layout_width="wrap_content"
+            android:inputType="numberDecimal"
+            android:maxLength="4"
+            android:minEms="3"/>
+
+        <TextView
+            android:text=" - "
+            android:textAppearance="@style/TextAppearance.AppCompat"/>
+
+        <!-- 3rd row -->
+
+        <EditText
+            android:id="@+id/setupCode6"
+            android:layout_width="wrap_content"
+            android:inputType="numberDecimal"
+            android:maxLength="4"
+            android:minEms="3"/>
+
+        <TextView
+            android:text=" - "
+            android:textAppearance="@style/TextAppearance.AppCompat"/>
+
+        <EditText
+            android:id="@+id/setupCode7"
+            android:layout_width="wrap_content"
+            android:inputType="numberDecimal"
+            android:maxLength="4"
+            android:minEms="3"/>
+
+        <TextView
+            android:text=" - "
+            android:textAppearance="@style/TextAppearance.AppCompat"/>
+
+        <EditText
+            android:id="@+id/setupCode8"
+            android:layout_width="wrap_content"
+            android:inputType="numberDecimal"
+            android:maxLength="4"
+            android:minEms="3"/>
+
+        <TextView
+            android:text=" "
+            android:textAppearance="@style/TextAppearance.AppCompat"/>
+
+    </GridLayout>
+
+</FrameLayout>
