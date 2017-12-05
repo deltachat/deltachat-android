@@ -615,6 +615,15 @@ JNIEXPORT jstring Java_com_b44t_messenger_MrMailbox_initiateKeyTransfer(JNIEnv *
 }
 
 
+JNIEXPORT jint Java_com_b44t_messenger_MrMailbox_continueKeyTransfer(JNIEnv *env, jclass cls, jint msg_id, jstring setupCode)
+{
+	CHAR_REF(setupCode);
+		jint ret = mrmailbox_continue_key_transfer(get_mrmailbox_t(env, cls), msg_id, setupCodePtr);
+	CHAR_UNREF(setupCode);
+	return ret;
+}
+
+
 JNIEXPORT int Java_com_b44t_messenger_MrMailbox_imex(JNIEnv *env, jclass cls, jint what, jstring dir)
 {
 	CHAR_REF(dir);
@@ -1042,6 +1051,16 @@ JNIEXPORT jboolean Java_com_b44t_messenger_MrMsg_isSetupMessage(JNIEnv *env, job
 {
     return mrmsg_is_setupmessage(get_mrmsg_t(env, obj));
 }
+
+
+JNIEXPORT jstring Java_com_b44t_messenger_MrMsg_getSetupCodeBegin(JNIEnv *env, jobject obj)
+{
+	char* temp = mrmsg_get_setupcodebegin(get_mrmsg_t(env, obj));
+		jstring ret =  JSTRING_NEW(temp);
+	free(temp);
+	return ret;
+}
+
 
 
 /*******************************************************************************

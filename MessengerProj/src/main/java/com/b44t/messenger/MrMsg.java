@@ -113,6 +113,7 @@ public class MrMsg {
     public native boolean isForwarded();
     public native boolean isSystemcmd();
     public native boolean isSetupMessage();
+    public native String getSetupCodeBegin();
     public native boolean isIncreation();
 
     private long                  m_hMsg; // must not be renamed as referenced by JNI under the name "m_hMsg"

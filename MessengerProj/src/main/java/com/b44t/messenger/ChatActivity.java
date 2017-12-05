@@ -43,7 +43,9 @@ import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v4.content.FileProvider;
+import android.text.Editable;
 import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.text.style.ClickableSpan;
 import android.text.style.URLSpan;
 import android.util.SparseIntArray;
@@ -2669,13 +2671,57 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
 
                     @Override
                     public void didPressedSetupMessage(ChatMessageCell cell) {
+                        final int msg_id = cell.getMessageObject().getId();
+                        if( !MrMailbox.getMsg(msg_id).isSetupMessage()) {
+                            return;
+                        }
+
+                        View gl = View.inflate(getParentActivity(), R.layout.setup_code_grid, null);
+                        final EditText editTexts[] = {
+                            (EditText) gl.findViewById(R.id.setupCode0), (EditText) gl.findViewById(R.id.setupCode1), (EditText) gl.findViewById(R.id.setupCode2),
+                            (EditText) gl.findViewById(R.id.setupCode3), (EditText) gl.findViewById(R.id.setupCode4), (EditText) gl.findViewById(R.id.setupCode5),
+                            (EditText) gl.findViewById(R.id.setupCode6), (EditText) gl.findViewById(R.id.setupCode7), (EditText) gl.findViewById(R.id.setupCode8)
+                        };
                         AlertDialog.Builder builder1 = new AlertDialog.Builder(getParentActivity());
+                        builder1.setView(gl);
+                        editTexts[0].setText(MrMailbox.getMsg(msg_id).getSetupCodeBegin());
+                        editTexts[0].setSelection(editTexts[0].getText().length());
+
+                        for( int i = 0; i < 9; i++ ) {
+                            editTexts[i].addTextChangedListener(new TextWatcher() {
+                                @Override
+                                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                                }
+
+                                @Override
+                                public void onTextChanged(CharSequence s, int start, int before, int count) {
+                                    if( s.length()==4 ) {
+                                        for ( int i = 0; i < 8; i++ ) {
+                                            if( editTexts[i].hasFocus() && editTexts[i+1].getText().length()<4 ) {
+                                                editTexts[i+1].requestFocus();
+                                                break;
+                                            }
+                                        }
+                                    }
+                                }
+
+                                @Override
+                                public void afterTextChanged(Editable s) {
+                                }
+                            });
+                        }
+
                         builder1.setTitle(ApplicationLoader.applicationContext.getString(R.string.AutocryptKeyTransfer));
-                        builder1.setMessage(AndroidUtilities.replaceTags(ApplicationLoader.applicationContext.getString(R.string.AutocryptSetupMessageTapBody)));
+                        builder1.setMessage(AndroidUtilities.replaceTags(ApplicationLoader.applicationContext.getString(R.string.AutocryptKeyTransferPleaseEnterCode)));
                         builder1.setNegativeButton(R.string.Cancel, null);
                         builder1.setPositiveButton(R.string.OK, new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
+                                String setup_code = "";
+                                for ( int i = 0; i < 9; i++ ) {
+                                    setup_code += editTexts[i].getText();
+                                }
+                                MrMailbox.continueKeyTransfer(msg_id, setup_code);
                             }
                         });
                         showDialog(builder1.create());
