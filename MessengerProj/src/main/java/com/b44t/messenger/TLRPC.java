@@ -258,6 +258,7 @@ public class TLRPC {
 		public boolean created_by_mr;
 		public boolean show_padlock;
 		public boolean is_system_cmd;
+		public boolean is_setup_message;
     }
 
 	public static class TL_message extends Message {

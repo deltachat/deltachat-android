@@ -75,6 +75,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
 
     public interface ChatMessageCellDelegate {
         void didPressedUserAvatar(ChatMessageCell cell, TLRPC.User user);
+        void didPressedSetupMessage(ChatMessageCell cell);
         void didLongPressed(ChatMessageCell cell);
         void didPressedUrl(MessageObject messageObject, ClickableSpan url, boolean longPress);
         void didPressedImage(ChatMessageCell cell);
@@ -206,6 +207,8 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
     private ImageReceiver avatarImage;
     private AvatarDrawable avatarDrawable;
     private boolean avatarPressed;
+
+    private boolean setupmessagePressed;
 
     private boolean drawNewchatButton;
     private boolean newchatPressed;
@@ -658,7 +661,11 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                         newchatPressed = true;
                         result = true;
                         invalidate();
+                    } else if( currentMessageObject.messageOwner.is_setup_message && currentBackgroundDrawable.getBounds().contains((int)x, (int)y) ) {
+                        setupmessagePressed = true;
+                        result = true;
                     }
+
                     if (result) {
                         startCheckLongPress();
                     }
@@ -682,6 +689,11 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                         if (isAvatarVisible && !avatarImage.isInsideImage(x, y)) {
                             avatarPressed = false;
                         }
+                    }
+                } else if(setupmessagePressed) {
+                    setupmessagePressed = false;
+                    if (event.getAction() == MotionEvent.ACTION_UP) {
+                        delegate.didPressedSetupMessage(this);
                     }
                 } else if (newchatPressed) {
                     if (event.getAction() == MotionEvent.ACTION_UP) {

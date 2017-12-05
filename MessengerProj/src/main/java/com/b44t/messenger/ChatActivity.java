@@ -2668,6 +2668,20 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     }
 
                     @Override
+                    public void didPressedSetupMessage(ChatMessageCell cell) {
+                        AlertDialog.Builder builder1 = new AlertDialog.Builder(getParentActivity());
+                        builder1.setTitle(ApplicationLoader.applicationContext.getString(R.string.AutocryptKeyTransfer));
+                        builder1.setMessage(AndroidUtilities.replaceTags(ApplicationLoader.applicationContext.getString(R.string.AutocryptSetupMessageTapBody)));
+                        builder1.setNegativeButton(R.string.Cancel, null);
+                        builder1.setPositiveButton(R.string.OK, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                            }
+                        });
+                        showDialog(builder1.create());
+                    }
+
+                    @Override
                     public boolean canPerformActions() {
                         return actionBar != null && !actionBar.isActionModeShowed();
                     }

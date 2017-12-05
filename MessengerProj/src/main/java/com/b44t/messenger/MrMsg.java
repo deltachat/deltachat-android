@@ -158,6 +158,7 @@ public class MrMsg {
         ret.created_by_mr = true;
         ret.show_padlock  = showPadlock()!=0;
         ret.is_system_cmd = isSystemcmd();
+        ret.is_setup_message = isSetupMessage();
 
         if( type == MR_MSG_TEXT ) {
             ret.message       = getText();
