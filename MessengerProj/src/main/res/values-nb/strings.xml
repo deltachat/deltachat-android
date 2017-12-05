@@ -116,7 +116,7 @@
     <string name="FingerprintInfo">Bekreft fingeravtrykk for å fortsette</string>
     <string name="FingerprintNotRecognized">Fingeravtrykket ble ikke gjenkjent. Prøv igjen</string>
     <!--photo gallery view-->
-    <string name="SaveToGallery">Lagre i \"Galleri"\</string>
+    <string name="SaveToGallery">Lagre i \"Galleri\"</string>
     <string name="Of">%1$d av %2$d</string>
     <string name="Gallery">Galleri</string>
     <string name="AllPhotos">Alle bilder</string>

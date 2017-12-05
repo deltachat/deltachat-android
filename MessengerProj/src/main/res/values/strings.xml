@@ -42,8 +42,8 @@
     <string name="NoRecent">No recent</string>
     <string name="TypeMessage">Message</string>
     <string name="SlideToCancel">Slide to cancel</string>
-    <string name="SaveToDownloads">Save to \"Downloads"\</string>
-    <string name="SaveToMusic">Save to "\Music"\</string>
+    <string name="SaveToDownloads">Save to \"Downloads\"</string>
+    <string name="SaveToMusic">Save to \"Music\"</string>
     <string name="Share">Share</string>
     <string name="SendItems">Send %1$s</string>
     <string name="ClearRecentEmoji">Clear recent emoji?</string>
@@ -339,7 +339,7 @@
     <!-- Translators: please use a very short string here, it should not much longer than
     the string needed for video time+size (0:00, 12,3 Mib) -->
     <string name="OneMoment">One moment …</string>
-    <string name="NoChatsHelp">Start messaging by pressing the \"New chat"\ button in the bottom right, or tap the \"Menu"\ button for more options.</string>
+    <string name="NoChatsHelp">Start messaging by pressing the \"New chat\" button in the bottom right, or tap the \"Menu\" button for more options.</string>
     <string name="Intro7Message"><![CDATA[<b>Delta Chat</b>]]> is safe for business use, compatible and standards-based.</string>
     <string name="InviteMenuEntry">Send invitations</string>
     <string name="InviteText">I\'m using Delta Chat messenger now - %1$s - you can text me at %2$s</string>
