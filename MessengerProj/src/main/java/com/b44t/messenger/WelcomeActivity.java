@@ -382,6 +382,7 @@ public class WelcomeActivity extends Activity implements NotificationCenter.Noti
             }
 
             if( (int)args[0]==1 ) {
+                MrMailbox.connect(); // import does not automatically connect
                 startActivity(new Intent(WelcomeActivity.this, LaunchActivity.class));
                 finish();
             }
