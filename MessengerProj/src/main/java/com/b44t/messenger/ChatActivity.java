@@ -2714,6 +2714,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                         builder1.setTitle(ApplicationLoader.applicationContext.getString(R.string.AutocryptKeyTransfer));
                         builder1.setMessage(AndroidUtilities.replaceTags(ApplicationLoader.applicationContext.getString(R.string.AutocryptKeyTransferPleaseEnterCode)));
                         builder1.setNegativeButton(R.string.Cancel, null);
+                        builder1.setCancelable(false); // prevent the dialog from being dismissed accidentally (when the dialog is closed, the setup code is gone forever and the user has to create a new setup message)
                         builder1.setPositiveButton(R.string.OK, new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
@@ -2721,7 +2722,13 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                                 for ( int i = 0; i < 9; i++ ) {
                                     setup_code += editTexts[i].getText();
                                 }
-                                MrMailbox.continueKeyTransfer(msg_id, setup_code);
+                                boolean success = MrMailbox.continueKeyTransfer(msg_id, setup_code);
+
+                                AlertDialog.Builder builder2 = new AlertDialog.Builder(getParentActivity());
+                                builder2.setTitle(ApplicationLoader.applicationContext.getString(R.string.AutocryptKeyTransfer));
+                                builder2.setMessage(AndroidUtilities.replaceTags(ApplicationLoader.applicationContext.getString(success? R.string.AutocryptKeyTransferSucceeded : R.string.AutocryptKeyTransferBadCode)));
+                                builder2.setPositiveButton(R.string.OK, null);
+                                showDialog(builder2.create());
                             }
                         });
                         showDialog(builder1.create());

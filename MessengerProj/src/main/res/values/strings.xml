@@ -423,4 +423,6 @@
     <string name="AutocryptSetupMessageGeneralBody">This is the Autocrypt Setup Message used to transfer your key between clients.\n\nTo decrypt and use your key, open the message in an Autocrypt-compliant client and enter the setup code presented on the generating device.</string>
     <string name="AutocryptSetupMessageTapBody">This is the Autocrypt Setup Message used to transfer your key between clients.\n\nTo decrypt and use your key, tap on this message.</string>
     <string name="AutocryptKeyTransferPleaseEnterCode">Please enter the setup code that is displayed on the other device.</string>
+    <string name="AutocryptKeyTransferBadCode">Bad setup code. Please try again.\n\nIf you do not remember the setup code, just initiate the key transfer on the other device again.</string>
+    <string name="AutocryptKeyTransferSucceeded">Key transferred successfully. This device is now ready to use Autocrypt with the same key as the other device.</string>
 </resources>

@@ -68,7 +68,7 @@ public class MrMailbox {
     public native static String cmdline(String cmd);
 
     public native static String initiateKeyTransfer();
-    public native static int continueKeyTransfer(int msg_id, String setup_code);
+    public native static boolean continueKeyTransfer(int msg_id, String setup_code);
     public final static int MR_IMEX_EXPORT_SELF_KEYS = 1;
     public final static int MR_IMEX_IMPORT_SELF_KEYS = 2;
     public final static int MR_IMEX_EXPORT_BACKUP = 11;

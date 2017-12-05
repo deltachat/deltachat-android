@@ -615,10 +615,10 @@ JNIEXPORT jstring Java_com_b44t_messenger_MrMailbox_initiateKeyTransfer(JNIEnv *
 }
 
 
-JNIEXPORT jint Java_com_b44t_messenger_MrMailbox_continueKeyTransfer(JNIEnv *env, jclass cls, jint msg_id, jstring setupCode)
+JNIEXPORT jboolean Java_com_b44t_messenger_MrMailbox_continueKeyTransfer(JNIEnv *env, jclass cls, jint msg_id, jstring setupCode)
 {
 	CHAR_REF(setupCode);
-		jint ret = mrmailbox_continue_key_transfer(get_mrmailbox_t(env, cls), msg_id, setupCodePtr);
+		jboolean ret = mrmailbox_continue_key_transfer(get_mrmailbox_t(env, cls), msg_id, setupCodePtr);
 	CHAR_UNREF(setupCode);
 	return ret;
 }
