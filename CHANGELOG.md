@@ -2,6 +2,8 @@
 
 ## UNRELEASED
 
+* Add option to initiate Autocrypt Key Transfer
+* Connect after importing a backup
 * Add Albanian translation
 * Update German translation
 
