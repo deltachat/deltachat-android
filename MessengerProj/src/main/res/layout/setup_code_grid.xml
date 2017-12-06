@@ -102,6 +102,7 @@
 
         <EditText
             android:id="@+id/setupCode6"
+            android:layout_marginBottom="8dp"
             android:layout_width="wrap_content"
             android:inputType="numberDecimal"
             android:maxLength="4"
@@ -109,10 +110,12 @@
 
         <TextView
             android:text=" - "
+            android:layout_marginBottom="8dp"
             android:textAppearance="@style/TextAppearance.AppCompat"/>
 
         <EditText
             android:id="@+id/setupCode7"
+            android:layout_marginBottom="8dp"
             android:layout_width="wrap_content"
             android:inputType="numberDecimal"
             android:maxLength="4"
@@ -120,10 +123,12 @@
 
         <TextView
             android:text=" - "
+            android:layout_marginBottom="8dp"
             android:textAppearance="@style/TextAppearance.AppCompat"/>
 
         <EditText
             android:id="@+id/setupCode8"
+            android:layout_marginBottom="8dp"
             android:layout_width="wrap_content"
             android:inputType="numberDecimal"
             android:maxLength="4"
@@ -131,6 +136,7 @@
 
         <TextView
             android:text=" "
+            android:layout_marginBottom="8dp"
             android:textAppearance="@style/TextAppearance.AppCompat"/>
 
     </GridLayout>
