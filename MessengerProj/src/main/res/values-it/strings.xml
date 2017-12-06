@@ -416,4 +416,8 @@
     <string name="AutocryptSetupMessageSubject">Massaggio di configurazione Autocrypt</string>
     <string name="AutocryptSetupMessageGeneralBody">Questo è il messaggio di configurazione di Autocrypt usato per trasferire la propria chiave tra più client.\n\nPer decifrare e usare la chiave, aprire il messaggio in un client compatibile con Autocrypt e digitare il codice di configurazione visibile sul dispositivo dal quale si è generata la chiave.</string>
     <string name="AutocryptSetupMessageTapBody">Questo è il messaggio di configurazione di Autocrypt usato per trasferire la propria chiave tra più client.\n\nPer decifrare e usare la chiave, aprire questo messaggio.</string>
-    </resources>
+    <string name="AutocryptKeyTransferPleaseEnterCode">Inserire il codice di configurazione mostrato sull\'altro dispositivo.</string>
+    <string name="AutocryptKeyTransferBadCode">Codice di configurazione errato.\n\nSe non si ricorda il codice di configurazione, avviare nuovamente il trafserimento chiavi sull\'altro dispositivo.</string>
+    <string name="AutocryptKeyTransferSucceeded">Chiave trasferita con successo. Questo dispositivo è pronto per usare Autocrypt con la stessa chiave dell\'altro dispositivo.</string>
+    <string name="Retry">Riprovare</string>
+</resources>
