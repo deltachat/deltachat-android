@@ -437,4 +437,10 @@
     <string name="LeaveGroup">Выйти из группы</string>
     <string name="AskLeaveGroup">Вы уверены, что хотите выйти из группы?</string>
     <string name="Never">Никогда</string>
+    <string name="AutocryptKeyTransferInitiate">Начать передачу ключа Autocrypt</string>
+    <string name="AutocryptKeyTransfer">Передача ключа Autocrypt</string>
+    <string name="AutocryptKeyTransferMsgBeforeSend">Для <![CDATA[<i>]]>передачи ключа Autocrypt<![CDATA[</i>]]> необходимо, чтобы почтовый клиент на другом устройстве так же поддерживал Autocrypt.\n\nЗатем Вы можете послать ключ себе. Ключ будет зашифрован кодом настройки, который указан здесь, и который нужно будет ввести на другом устройстве.</string>
+    <string name="AutocryptKeyTransferMsgAfterSend">Вы отправили ключ себе. Теперь перейдите к другому устройству и откройте сообщение настройки. Будет предложено ввести код настройки. Введите следующие цифры:\n\n%1$s\n\nКак только Вы это сделаете, другое устройство будет готово использовать Autocrypt.</string>
+    <string name="AutocryptSetupMessageSubject">Сообщение настройки Autocrypt</string>
+    <string name="AutocryptSetupMessageGeneralBody">Это сообщение настройки Autocrypt, используемое для передачи ключа между клиентами.\n\nДля расшифровки и использования Вашего ключа откройте это сообщение в почтовом клиенте, совместимом с Autocrypt, и введите код, показываемый на устройстве, с которого отправлено сообщение.</string>
     </resources>
