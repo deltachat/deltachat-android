@@ -2671,67 +2671,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
 
                     @Override
                     public void didPressedSetupMessage(ChatMessageCell cell) {
-                        final int msg_id = cell.getMessageObject().getId();
-                        if( !MrMailbox.getMsg(msg_id).isSetupMessage()) {
-                            return;
-                        }
-
-                        View gl = View.inflate(getParentActivity(), R.layout.setup_code_grid, null);
-                        final EditText editTexts[] = {
-                            (EditText) gl.findViewById(R.id.setupCode0), (EditText) gl.findViewById(R.id.setupCode1), (EditText) gl.findViewById(R.id.setupCode2),
-                            (EditText) gl.findViewById(R.id.setupCode3), (EditText) gl.findViewById(R.id.setupCode4), (EditText) gl.findViewById(R.id.setupCode5),
-                            (EditText) gl.findViewById(R.id.setupCode6), (EditText) gl.findViewById(R.id.setupCode7), (EditText) gl.findViewById(R.id.setupCode8)
-                        };
-                        AlertDialog.Builder builder1 = new AlertDialog.Builder(getParentActivity());
-                        builder1.setView(gl);
-                        editTexts[0].setText(MrMailbox.getMsg(msg_id).getSetupCodeBegin());
-                        editTexts[0].setSelection(editTexts[0].getText().length());
-
-                        for( int i = 0; i < 9; i++ ) {
-                            editTexts[i].addTextChangedListener(new TextWatcher() {
-                                @Override
-                                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                                }
-
-                                @Override
-                                public void onTextChanged(CharSequence s, int start, int before, int count) {
-                                    if( s.length()==4 ) {
-                                        for ( int i = 0; i < 8; i++ ) {
-                                            if( editTexts[i].hasFocus() && editTexts[i+1].getText().length()<4 ) {
-                                                editTexts[i+1].requestFocus();
-                                                break;
-                                            }
-                                        }
-                                    }
-                                }
-
-                                @Override
-                                public void afterTextChanged(Editable s) {
-                                }
-                            });
-                        }
-
-                        builder1.setTitle(ApplicationLoader.applicationContext.getString(R.string.AutocryptKeyTransfer));
-                        builder1.setMessage(AndroidUtilities.replaceTags(ApplicationLoader.applicationContext.getString(R.string.AutocryptKeyTransferPleaseEnterCode)));
-                        builder1.setNegativeButton(R.string.Cancel, null);
-                        builder1.setCancelable(false); // prevent the dialog from being dismissed accidentally (when the dialog is closed, the setup code is gone forever and the user has to create a new setup message)
-                        builder1.setPositiveButton(R.string.OK, new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                String setup_code = "";
-                                for ( int i = 0; i < 9; i++ ) {
-                                    setup_code += editTexts[i].getText();
-                                }
-                                boolean success = MrMailbox.continueKeyTransfer(msg_id, setup_code);
-
-                                AlertDialog.Builder builder2 = new AlertDialog.Builder(getParentActivity());
-                                builder2.setTitle(ApplicationLoader.applicationContext.getString(R.string.AutocryptKeyTransfer));
-                                builder2.setMessage(AndroidUtilities.replaceTags(ApplicationLoader.applicationContext.getString(success? R.string.AutocryptKeyTransferSucceeded : R.string.AutocryptKeyTransferBadCode)));
-                                builder2.setPositiveButton(R.string.OK, null);
-                                showDialog(builder2.create());
-                            }
-                        });
-                        showDialog(builder1.create());
+                        querySetupCode(cell.getMessageObject().getId(), null);
                     }
 
                     @Override
@@ -2971,5 +2911,81 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 //messageCell.setHighlighted(highlightMessageId != 0 && messageCell.getMessageObject().getId() == highlightMessageId);
             }
         }
+    }
+
+    void querySetupCode(final int msg_id, String[] preload)
+    {
+        if( !MrMailbox.getMsg(msg_id).isSetupMessage()) {
+            return;
+        }
+
+        View gl = View.inflate(getParentActivity(), R.layout.setup_code_grid, null);
+        final EditText[] editTexts = {
+                (EditText) gl.findViewById(R.id.setupCode0), (EditText) gl.findViewById(R.id.setupCode1), (EditText) gl.findViewById(R.id.setupCode2),
+                (EditText) gl.findViewById(R.id.setupCode3), (EditText) gl.findViewById(R.id.setupCode4), (EditText) gl.findViewById(R.id.setupCode5),
+                (EditText) gl.findViewById(R.id.setupCode6), (EditText) gl.findViewById(R.id.setupCode7), (EditText) gl.findViewById(R.id.setupCode8)
+        };
+        AlertDialog.Builder builder1 = new AlertDialog.Builder(getParentActivity());
+        builder1.setView(gl);
+        editTexts[0].setText(MrMailbox.getMsg(msg_id).getSetupCodeBegin());
+        editTexts[0].setSelection(editTexts[0].getText().length());
+
+        for( int i = 0; i < 9; i++ ) {
+            if( preload != null && i < preload.length ) {
+                editTexts[i].setText(preload[i]);
+                editTexts[i].setSelection(editTexts[i].getText().length());
+            }
+            editTexts[i].addTextChangedListener(new TextWatcher() {
+                @Override
+                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                }
+
+                @Override
+                public void onTextChanged(CharSequence s, int start, int before, int count) {
+                    if( s.length()==4 ) {
+                        for ( int i = 0; i < 8; i++ ) {
+                            if( editTexts[i].hasFocus() && editTexts[i+1].getText().length()<4 ) {
+                                editTexts[i+1].requestFocus();
+                                break;
+                            }
+                        }
+                    }
+                }
+
+                @Override
+                public void afterTextChanged(Editable s) {
+                }
+            });
+        }
+
+        builder1.setTitle(ApplicationLoader.applicationContext.getString(R.string.AutocryptKeyTransfer));
+        builder1.setMessage(AndroidUtilities.replaceTags(ApplicationLoader.applicationContext.getString(R.string.AutocryptKeyTransferPleaseEnterCode)));
+        builder1.setNegativeButton(R.string.Cancel, null);
+        builder1.setCancelable(false); // prevent the dialog from being dismissed accidentally (when the dialog is closed, the setup code is gone forever and the user has to create a new setup message)
+        builder1.setPositiveButton(R.string.OK, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                String setup_code = "";
+                final String[] preload = new String[9];
+                for ( int i = 0; i < 9; i++ ) {
+                    preload[i] = editTexts[i].getText().toString();
+                    setup_code += preload[i];
+                }
+                boolean success = MrMailbox.continueKeyTransfer(msg_id, setup_code);
+
+                AlertDialog.Builder builder2 = new AlertDialog.Builder(getParentActivity());
+                builder2.setTitle(ApplicationLoader.applicationContext.getString(R.string.AutocryptKeyTransfer));
+                builder2.setMessage(AndroidUtilities.replaceTags(ApplicationLoader.applicationContext.getString(success? R.string.AutocryptKeyTransferSucceeded : R.string.AutocryptKeyTransferBadCode)));
+                builder2.setNegativeButton(R.string.Cancel, null);
+                builder2.setPositiveButton(R.string.Retry, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        querySetupCode(msg_id, preload);
+                    }
+                });
+                showDialog(builder2.create());
+            }
+        });
+        showDialog(builder1.create());
     }
 }
