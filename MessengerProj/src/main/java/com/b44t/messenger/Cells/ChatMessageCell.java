@@ -691,9 +691,16 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                         }
                     }
                 } else if(setupmessagePressed) {
-                    setupmessagePressed = false;
                     if (event.getAction() == MotionEvent.ACTION_UP) {
+                        setupmessagePressed = false;
                         delegate.didPressedSetupMessage(this);
+                    }
+                    else if(event.getAction() == MotionEvent.ACTION_CANCEL) {
+                        setupmessagePressed = false;
+                    } else if (event.getAction() == MotionEvent.ACTION_MOVE) {
+                        if( !currentBackgroundDrawable.getBounds().contains((int)x, (int)y) ) {
+                            setupmessagePressed = false;
+                        }
                     }
                 } else if (newchatPressed) {
                     if (event.getAction() == MotionEvent.ACTION_UP) {
