@@ -437,4 +437,8 @@
     <string name="LeaveGroup">Opuść grupę</string>
     <string name="AskLeaveGroup">Czy na pewno chcesz opuścić tą grupę?</string>
     <string name="Never">Nigdy</string>
-    </resources>
+    <string name="AutocryptKeyTransferInitiate">Rozpocznij tranfer klucza automatycznego szyfrowania</string>
+    <string name="AutocryptKeyTransfer">Tranfer klucza automatycznego szyfrowania</string>
+    <string name="AutocryptKeyTransferMsgBeforeSend"><![CDATA[<i>]]>Tranfer klucza automatycznego szyfrowania<![CDATA[</i>]]> wymaga, aby klient poczty na drugim urządzeniu był zgodny z automatycznym szyfrowaniem.\n\nMożesz wysłać klucz do siebie. Klucz zostanie zaszyfrowany za pomocą wyświetlonego tutaj kodu konfiguracyjnego, który należy wpisać na drugim urządzeniu.</string>
+    <string name="Retry">Powtórz</string>
+</resources>

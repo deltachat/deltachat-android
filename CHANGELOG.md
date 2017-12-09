@@ -5,7 +5,7 @@
 * Add option to initiate Autocrypt Key Transfer
 * Connect after importing a backup
 * Add Albanian translation
-* Update German, Italian and Russian translation
+* Update German, Italian, Polish and Russian translations
 
 ## v0.10.0
 2017-11-29

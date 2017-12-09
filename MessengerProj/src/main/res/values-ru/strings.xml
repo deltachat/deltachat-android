@@ -446,4 +446,6 @@
     <string name="AutocryptSetupMessageTapBody">Это сообщение настройки Autocrypt, используемое для передачи Вашего ключа между клиентами.\n\nЧтобы расшифровать и начать использовать Ваш ключ, нажмите на это сообщение.</string>
     <string name="AutocryptKeyTransferPleaseEnterCode">Пожалуйста, введите код настройки, показанный на другом устройстве.</string>
     <string name="AutocryptKeyTransferBadCode">Неверный код настройки. Пожалуйста, повторите.\n\nЕсли Вы не помните код настройки, вернитесь к исходному устройству и передайте ключ ещё раз.</string>
-    </resources>
+    <string name="AutocryptKeyTransferSucceeded">Ключ передан успешно. Сейчас это устройство может использовать Autocrypt с тем же ключом, что и на другом устройстве.</string>
+    <string name="Retry">Повторить</string>
+</resources>
