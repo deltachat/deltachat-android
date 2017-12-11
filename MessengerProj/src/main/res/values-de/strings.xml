@@ -409,5 +409,15 @@
     <string name="LeaveGroup">Gruppe verlassen</string>
     <string name="AskLeaveGroup">Diese Gruppe verlassen?</string>
     <string name="Never">Niemals</string>
+    <string name="AutocryptKeyTransferInitiate">Autocrypt-Key-Transfer starten</string>
+    <string name="AutocryptKeyTransfer">Autocrypt-Key-Transfer</string>
+    <string name="AutocryptKeyTransferMsgBeforeSend">Der <![CDATA[<i>]]>Autocrypt-Key-Transfer<![CDATA[</i>]]> erfordert, dass das andere Gerät Autocrypt-kompatibel ist.\n\nSie können dann Ihren privaten Schlüssel an sich selbst schicken. Der Schlüssel wird mit einem <![CDATA[<i>]]>Setup Code<![CDATA[</i>]]> geschützt; dieser wird hier angezeigt und muss auf dem anderen Gerät eingetippt werden.</string>
+    <string name="AutocryptKeyTransferMsgAfterSend">Ihr Schüssel wurde an Sie selbst verschickt. Wechseln sie nun zum anderen Gerät und öffnen die Setup-Nachricht. Sie werden dann aufgefordert einen Setup-Code einzugeben. Tippen Sie dort die folgenden Zahlen ein:\n\n%1$s\n\nWenn Sie fertig sind, ist Autocrypt auf dem anderen Gerät eingerichet.</string>
+    <string name="AutocryptSetupMessageSubject">Autocrypt-Setup-Nachricht</string>
+    <string name="AutocryptSetupMessageGeneralBody">Diese Autocrypt-Setup-Nachricht wird verwendet um Ihren Schlüssel von einem Gerät auf das andere zu übertragen.\n\nUm Ihren Schlüssel zu verwenden, öffnen Sie diese Nachricht in einer Autocrypt-kompatiblen E-Mail-App und geben Sie den Setup-Code ein, der Ihnen auf dem andern Gerät angezeigt wurde.</string>
+    <string name="AutocryptSetupMessageTapBody">Diese Autocrypt-Setup-Nachricht wird verwendet um Ihren Schlüssel von einem Gerät auf das andere zu übertragen.\n\nTippen Sie auf diese Nachricht, um den Schlüssel zu verwenden.</string>
+    <string name="AutocryptKeyTransferPleaseEnterCode">Bitte geben Sie den Setup-Code ein, der auf dem anderen Gerät angezeigt wird.</string>
+    <string name="AutocryptKeyTransferBadCode">Ungültiger Setup-Code. Bitte versuchen Sie es erneut.\n\nWenn Sie den Setup-Code nicht mehr haben, können Sie auch jederzeit einen neue Autocrypt-Setup-Nachricht mit einem neuen Setup-Code erzeugen.</string>
+    <string name="AutocryptKeyTransferSucceeded">Ihr Schlüssel wurde erfolgreich übertragen. Dieses Gerät wird nun Autocrypt mit demselben Schlüssel wie das Andere verwenden.</string>
     <string name="Retry">Wiederholen</string>
 </resources>

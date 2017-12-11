@@ -440,5 +440,12 @@
     <string name="AutocryptKeyTransferInitiate">Rozpocznij tranfer klucza automatycznego szyfrowania</string>
     <string name="AutocryptKeyTransfer">Tranfer klucza automatycznego szyfrowania</string>
     <string name="AutocryptKeyTransferMsgBeforeSend"><![CDATA[<i>]]>Tranfer klucza automatycznego szyfrowania<![CDATA[</i>]]> wymaga, aby klient poczty na drugim urządzeniu był zgodny z automatycznym szyfrowaniem.\n\nMożesz wysłać klucz do siebie. Klucz zostanie zaszyfrowany za pomocą wyświetlonego tutaj kodu konfiguracyjnego, który należy wpisać na drugim urządzeniu.</string>
+    <string name="AutocryptKeyTransferMsgAfterSend">Klucz został wysłany do ciebie. Przejdź do innego urządzenia i otwórz wiadomość konfiguracyjną. Zostanie wyświetlona prośba o podanie kodu konfiguracyjnego. Wpisz następujące cyfry w podpowiedzi:\n\n%1$s\n\nGdy skończysz, drugie urządzenie będzie gotowe do użycia funkcji automatycznego szyfrowania.</string>
+    <string name="AutocryptSetupMessageSubject">Wiadomość konfiguracyjna automatycznego szyfrowania</string>
+    <string name="AutocryptSetupMessageGeneralBody">Jest to wiadomość konfiguracyjna automatycznego szyfrowania służąca do przesyłania klucza między klientami.\n\nAby odszyfrować i użyć klucza, otwórz wiadomość w kliencie zgodnym z automatycznym szyfrowaniem i wprowadź kod konfiguracyjny przedstawiony na urządzeniu generującym.</string>
+    <string name="AutocryptSetupMessageTapBody">Jest to wiadomość konfiguracyjna automatycznego szyfrowania służąca do przesyłania klucza między klientami.\n\nAby odszyfrować i użyć klucza, dotknij tą wiadomość.</string>
+    <string name="AutocryptKeyTransferPleaseEnterCode">Wprowadź kod konfiguracyjny wyświetlany na drugim urządzeniu.</string>
+    <string name="AutocryptKeyTransferBadCode">Zły kod konfiguracyjny. Spróbuj ponownie.\n\nJeśli nie pamiętasz kodu konfiguracji, po prostu uruchom ponownie transfer klucza na drugim urządzeniu.</string>
+    <string name="AutocryptKeyTransferSucceeded">Udany transfer klucza. To urządzenie jest teraz gotowe do użycia automatycznego szyfrowania za pomocą tego samego klucza, co na drugim urządzeniu.</string>
     <string name="Retry">Powtórz</string>
 </resources>
