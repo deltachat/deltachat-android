@@ -3,6 +3,7 @@ apply plugin: 'com.android.application'
 repositories {
     mavenCentral()
     jcenter()
+    google()
 }
 
 task nativeLibsToJar(
