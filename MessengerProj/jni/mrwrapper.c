@@ -786,6 +786,12 @@ JNIEXPORT jboolean Java_com_b44t_messenger_MrChat_isUnpromoted(JNIEnv *env, jobj
 }
 
 
+JNIEXPORT jboolean Java_com_b44t_messenger_MrChat_isSelfTalk(JNIEnv *env, jobject obj)
+{
+	return mrchat_is_self_talk(get_mrchat_t(env, obj)) != 0;
+}
+
+
 JNIEXPORT jstring Java_com_b44t_messenger_MrChat_MrChatGetDraft(JNIEnv *env, jclass c, jlong hChat) /* returns NULL for "no draft" */
 {
 	mrchat_t* ths = (mrchat_t*)hChat;

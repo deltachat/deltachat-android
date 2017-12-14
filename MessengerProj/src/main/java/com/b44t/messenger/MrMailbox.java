@@ -364,6 +364,7 @@ public class MrMailbox {
                     case 40: s = ApplicationLoader.applicationContext.getString(R.string.ArchivedChats); break;
                     case 42: s = ApplicationLoader.applicationContext.getString(R.string.AutocryptSetupMessageSubject); break;
                     case 43: s = ApplicationLoader.applicationContext.getString(R.string.AutocryptSetupMessageGeneralBody); break;
+                    case 50: s = ApplicationLoader.applicationContext.getString(R.string.SelfTalkSubtitle); break;
                     default: s = null; break;
                 }
                 return String2CPtr(s);

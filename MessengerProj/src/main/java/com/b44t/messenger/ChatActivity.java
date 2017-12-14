@@ -854,7 +854,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 emptyView.setText(context.getString(R.string.MsgNewGroupDraftHint));
                 emptyView.setGravity(Gravity.START);
             }
-            else if( m_mrChat.getType()==MrChat.MR_CHAT_NORMAL ){
+            else if( m_mrChat.getType()==MrChat.MR_CHAT_NORMAL && !m_mrChat.isSelfTalk() ){
                 String name = m_mrChat.getName();
                 emptyView.setText(AndroidUtilities.replaceTags(String.format(context.getString(R.string.NoMessagesHint), name, name)));
                 emptyView.setGravity(Gravity.START);

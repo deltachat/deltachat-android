@@ -56,6 +56,7 @@ public class MrChat {
 
     public native String getProfileImage();
     public native boolean isUnpromoted();
+    public native boolean isSelfTalk();
 
     public String getDraft() {
         return MrChatGetDraft(m_hChat);

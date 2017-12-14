@@ -841,7 +841,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
             settingsNotificationsRow = rowCount++;
         }
 
-        if( user_id!=0 || chat_id!=MrChat.MR_CHAT_ID_DEADDROP) {
+        if( (user_id!=0 && user_id!=MrContact.MR_CONTACT_ID_SELF) || (chat_id!=0 && chat_id!=MrChat.MR_CHAT_ID_DEADDROP)) {
             changeNameRow = rowCount++;
         }
 
@@ -918,6 +918,9 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
 
         if (user_id != 0) {
             item.addSubItem(ID_COPY_EMAIL_TO_CLIPBOARD, ApplicationLoader.applicationContext.getString(R.string.CopyToClipboard), 0);
+        }
+
+        if( user_id != 0 && user_id != MrContact.MR_CONTACT_ID_SELF ) {
             item.addSubItem(ID_BLOCK_CONTACT, userBlocked()? ApplicationLoader.applicationContext.getString(R.string.UnblockContact) : ApplicationLoader.applicationContext.getString(R.string.BlockContact), 0);
             item.addSubItem(ID_DELETE_CONTACT, ApplicationLoader.applicationContext.getString(R.string.DeleteContact), 0);
         }

@@ -426,4 +426,5 @@
     <string name="AutocryptKeyTransferBadCode">Bad setup code. Please try again.\n\nIf you do not remember the setup code, just initiate the key transfer on the other device again.</string>
     <string name="AutocryptKeyTransferSucceeded">Key transferred successfully. This device is now ready to use Autocrypt with the same key as the other device.</string>
     <string name="Retry">Retry</string>
+    <string name="SelfTalkSubtitle">Messages I sent to myself</string>
 </resources>
