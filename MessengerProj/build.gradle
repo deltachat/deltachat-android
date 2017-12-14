@@ -32,7 +32,7 @@ dependencies {
 
 android {
     compileSdkVersion 25
-    buildToolsVersion '25.0.2'
+    //buildToolsVersion '25.0.2'
 
     useLibrary 'org.apache.http.legacy'
     defaultConfig.applicationId = "com.b44t.messenger"
@@ -79,13 +79,12 @@ android {
         }
     }
 
-    defaultConfig.versionCode = 50
-
     sourceSets.main {
         jniLibs.srcDir 'libs'
         jni.srcDirs = [] //disable automatic ndk-build call
     }
 
+    flavorDimensions "none"
     productFlavors {
         /*
         x86 {
@@ -108,19 +107,22 @@ android {
         }
         */
         fat {
-            versionCode = 3
+            dimension "none"
+            //versionCode = 3
         }
     }
 
-    applicationVariants.all { variant ->
+    /*applicationVariants.all { variant ->
         def abiVersion = variant.productFlavors.get(0).versionCode
         variant.mergedFlavor.versionCode = defaultConfig.versionCode * 10 + abiVersion;
-    }
+    }*/
 
     defaultConfig {
         minSdkVersion 14     // 14: Android 4.0 Ice Cream Sandwich 2011 (Telegram default), 21: Android 5.0 Lollipop 2014 (recommended for InstantRun)
         targetSdkVersion 25  // 25: Nougat. CAVE: Do NOT target "Andoid O" without checking the background tasks carefully, see https://developer.android.com/preview/behavior-changes.html#back-all . As long as we target "Nougat", everything works as expected even for "Andoid O" or later
                              // in general, we should not change the target without reason; eg. after the switch to Nougat, the camera stops working (see https://inthecheesefactory.com/blog/how-to-share-access-to-file-with-fileprovider-on-android-nougat/en )
+
         versionName "0.10.0" // do NOT forget to increase defaultConfig.versionCode!
+        versionCode 504
     }
 }
