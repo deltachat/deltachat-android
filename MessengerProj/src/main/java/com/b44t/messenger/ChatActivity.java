@@ -2671,7 +2671,8 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
 
                     @Override
                     public void didPressedSetupMessage(ChatMessageCell cell) {
-                        querySetupCode(cell.getMessageObject().getId(), null);
+                        //querySetupCode(cell.getMessageObject().getId(), null);
+                        Toast.makeText(getParentActivity(), ApplicationLoader.applicationContext.getString(R.string.NotYetImplemented), Toast.LENGTH_SHORT).show();
                     }
 
                     @Override
