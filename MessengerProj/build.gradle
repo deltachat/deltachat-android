@@ -25,15 +25,15 @@ tasks.withType(JavaCompile) {
 }
 
 dependencies {
-    compile 'com.android.support:appcompat-v7:25.3.1'
-    compile 'com.googlecode.mp4parser:isoparser:1.0.6'
-    compile 'com.amulyakhare:com.amulyakhare.textdrawable:1.0.1'
-    compile fileTree(dir: "$buildDir/native-libs", include: 'native-libs.jar')
+    implementation 'com.android.support:appcompat-v7:25.3.1'
+    implementation 'com.googlecode.mp4parser:isoparser:1.0.6'
+    implementation 'com.amulyakhare:com.amulyakhare.textdrawable:1.0.1'
+    implementation fileTree(dir: "$buildDir/native-libs", include: 'native-libs.jar')
 }
 
 android {
     compileSdkVersion 25
-    buildToolsVersion '25.0.2'
+    buildToolsVersion '27.0.2'
 
     useLibrary 'org.apache.http.legacy'
     defaultConfig.applicationId = "com.b44t.messenger"
@@ -87,6 +87,7 @@ android {
         jni.srcDirs = [] //disable automatic ndk-build call
     }
 
+    flavorDimensions 'arch'
     productFlavors {
         /*
         x86 {
@@ -109,6 +110,7 @@ android {
         }
         */
         fat {
+            dimension 'arch'
             versionCode = 3
         }
     }
