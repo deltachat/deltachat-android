@@ -1,6 +1,6 @@
 # Delta Chat Changelog
 
-## v0.11.0
+## v0.11.1
 2017-12-14
 
 * Add option to initiate Autocrypt Key Transfer
