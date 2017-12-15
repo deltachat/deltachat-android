@@ -1197,6 +1197,12 @@ JNIEXPORT jint Java_com_b44t_messenger_MrLot_getState(JNIEnv *env, jobject obj)
 }
 
 
+JNIEXPORT void Java_com_b44t_messenger_MrLot_MrLotUnref(JNIEnv *env, jclass c, jlong hLot)
+{
+	mrlot_unref((mrlot_t*)hLot);
+}
+
+
 /*******************************************************************************
  * Tools
  ******************************************************************************/
