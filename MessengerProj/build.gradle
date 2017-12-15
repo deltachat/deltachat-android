@@ -122,7 +122,7 @@ android {
         targetSdkVersion 25  // 25: Nougat. CAVE: Do NOT target "Andoid O" without checking the background tasks carefully, see https://developer.android.com/preview/behavior-changes.html#back-all . As long as we target "Nougat", everything works as expected even for "Andoid O" or later
                              // in general, we should not change the target without reason; eg. after the switch to Nougat, the camera stops working (see https://inthecheesefactory.com/blog/how-to-share-access-to-file-with-fileprovider-on-android-nougat/en )
 
-        versionName "0.11.1" // do NOT forget to increase defaultConfig.versionCode!
-        versionCode 506
+        versionName "0.11.2" // do NOT forget to increase defaultConfig.versionCode!
+        versionCode 507
     }
 }
