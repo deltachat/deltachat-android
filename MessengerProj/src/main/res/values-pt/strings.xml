@@ -151,13 +151,13 @@
     <string name="Sharpen">Nitidez</string>
     <string name="Fade">Desbotar</string>
     <string name="Tint">Matiz</string>
-    <string name="TintShadows">SOMBRAS</string>
-    <string name="TintHighlights">LUZES</string>
+    <string name="TintShadows">Sombras</string>
+    <string name="TintHighlights">Luzes</string>
     <string name="Curves">Curvas</string>
-    <string name="CurvesAll">TUDO</string>
-    <string name="CurvesRed">VERMELHO</string>
-    <string name="CurvesGreen">VERDE</string>
-    <string name="CurvesBlue">AZUL</string>
+    <string name="CurvesAll">Tudo</string>
+    <string name="CurvesRed">Vermelho</string>
+    <string name="CurvesGreen">Verde</string>
+    <string name="CurvesBlue">Azul</string>
     <string name="Blur">Desfoque</string>
     <string name="BlurOff">Desativado</string>
     <string name="BlurLinear">Linear</string>
@@ -184,7 +184,7 @@
     <string name="FromGalley">Da galeria</string>
     <string name="Set">Aplicar</string>
     <string name="OK">OK</string>
-    <string name="Crop">CORTAR</string>
+    <string name="Crop">Cortar</string>
     <!--messages-->
     <string name="AttachPhoto">Foto</string>
     <string name="AttachVideo">Vídeo</string>
@@ -409,4 +409,15 @@
     <string name="LeaveGroup">Sair do grupo</string>
     <string name="AskLeaveGroup">Tem certeza que deseja sair do grupo?</string>
     <string name="Never">Jamais</string>
-    </resources>
+    <string name="AutocryptKeyTransferInitiate">Começar transferência de chaves</string>
+    <string name="AutocryptKeyTransfer">Transferência de chaves</string>
+    <string name="AutocryptKeyTransferMsgBeforeSend">Para funcionar, a <![CDATA[<i>]]>transferência de chaves <![CDATA[</i>]]> é necessário que o cliente de e-mail do outro dispositivo seja compatível com o Autocrypt.\n\nEnvie sua chave secreta para você mesmo. A chave será cifrada com o código exibido aqui, o qual precisará ser digitado no outro dispositivo.</string>
+    <string name="AutocryptKeyTransferMsgAfterSend">Sua chave foi enviada para você mesmo. Abra a mensagem de configuração no seu outro dispositivo. Lá será exibido uma solicitação de código. Digite-o lá:\n\n%1$s\n\nDepois disso, seu dispositivo estará pronto para usar o Autocrypt.</string>
+    <string name="AutocryptSetupMessageSubject">Mensagem de configuração do Autocrypt</string>
+    <string name="AutocryptSetupMessageGeneralBody">Esta é uma mensagem de configuração do Autocrypt que serve para transferir suas chaves entre dispositivos diferentes.\n\nPara descriptografar sua chave abra esta mensagem num cliente de e-mail compatível e digite o código exibido no dispositivo de origem.</string>
+    <string name="AutocryptSetupMessageTapBody">Esta é uma mensagem de configuração do Autocrypt que serve para a transferência de chaves.\n\nPara completá-la toque nesta mensagem.</string>
+    <string name="AutocryptKeyTransferPleaseEnterCode">Por favor, digite o código exibido no outro dispositivo.</string>
+    <string name="AutocryptKeyTransferBadCode">Código errado. Tente novamente.\n\nSe você não se lembra do código recomece a transferência de chaves no dispositivo original.</string>
+    <string name="AutocryptKeyTransferSucceeded">Chaves transferidas. Agora você está pronto para usar o Autocrypt neste dispositivo com as mesmas chaves do outro.</string>
+    <string name="Retry">Repetir</string>
+</resources>

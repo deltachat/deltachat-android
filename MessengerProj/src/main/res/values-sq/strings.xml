@@ -42,6 +42,7 @@
     <string name="TypeMessage">Mesazh</string>
     <string name="SaveToDownloads">Ruaje te \"Shkarkime\"</string>
     <string name="SaveToMusic">Ruaje te \"Muzikë\"</string>
+    <string name="ClearRecentEmoji">Të hiqen emoji-t e përdorur së fundi?</string>
     <string name="AddShortcut">Shtoje widget-in te kreu</string>
     <string name="ShortcutAdded">Widget-i u shtua tek kreu</string>
     <!--notification-->
@@ -69,6 +70,7 @@
     <string name="DefaultForNormalMessages">Mesazhe normale</string>
     <string name="MessagePreview">Paraparje mesazhesh</string>
     <string name="Sound">Tingull</string>
+    <string name="InAppNotifications">Njoftime nga aplikacioni</string>
     <string name="Vibrate">Dridhu</string>
     <string name="ResetAllNotifications">Ktheji krejt njoftimet te parazgjedhjet</string>
     <string name="NotificationsAndSounds">Njoftime dhe tinguj</string>
@@ -90,6 +92,7 @@
     <string name="NotificationsPriorityMax">Përparësia më  lartë</string>
     <string name="RepeatNotifications">Ripërsëriti njoftimet</string>
     <string name="NotificationsOther">Tjetër</string>
+    <string name="InChatSound">Tinguj nga aplikacioni</string>
     <string name="SmartNotifications">Kufizo njoftimet</string>
     <string name="SmartNotificationsSoundAtMost">Maks.</string>
     <string name="SmartNotificationsTimes">herë</string>
@@ -119,6 +122,7 @@
     <string name="FingerprintNotRecognized">Shenja gishtash që nuk njihen. Riprovoni</string>
     <!--photo gallery view-->
     <string name="SaveToGallery">Ruaje te \"Galeri\"</string>
+    <string name="Of">%1$d nga %2$d gjithsej</string>
     <string name="Gallery">Galeri</string>
     <string name="AllPhotos">Krejt Fotot</string>
     <string name="AllVideo">Krejt Videot</string>
@@ -390,4 +394,15 @@
     <string name="LeaveGroup">Braktiseni grupin</string>
     <string name="AskLeaveGroup">Jeni i sigurt se doni ta braktisni grupin?</string>
     <string name="Never">Kurrë</string>
-    </resources>
+    <string name="AutocryptKeyTransferInitiate">Përgatit Transferim Kyçi Autocrypt</string>
+    <string name="AutocryptKeyTransfer">Transferim Kyçi Autocrypt</string>
+    <string name="AutocryptKeyTransferMsgBeforeSend"><![CDATA[<i>]]>Transferimi i Kyçit Autocrypt<![CDATA[</i>]]> lyp që klienti i postës në pajisjen tjetër të mund të përdorë protokolle Autocrypt.\n\nMandej mund t’i dërgoni vetes kyçin tuaj të fshehtë. Kyçi do të fshehtëzohet nga një kod rregullimi që shfaqet këtu dhe duhet të shytpet te pajisja tjetër.</string>
+    <string name="AutocryptKeyTransferMsgAfterSend">Kyçi juaj u dërgua te ju. Kaloni te pajisja tjetër dhe hapni mesazhin e rregullimit. Do t’ju kërkohet një kod rregullimi. Shtypni këto shifra:\n\n%1$s\n\nPasi të keni mbaruar, pajisja tjetër e juaja do të jetë gati të përdorë Autocrypt-in.</string>
+    <string name="AutocryptSetupMessageSubject">Mesazh Rregullimi Autocrypt</string>
+    <string name="AutocryptSetupMessageGeneralBody">Ky është Mesazhi i Rregullimit të Autocrypt-it i përdorur për të transferuar kyçin tuaj nga një klient në tjetrin.\n\nQë të shfshehtëzoni dhe përdorni kyçin tuaj, hapeni mesazhin në një klient qtë aftë për Autocrypt dhe jepni kodin e rregullimit të shfaqur te pajisja që e prodhoi.</string>
+    <string name="AutocryptSetupMessageTapBody">Ky është Mesazhi i Rregullimit të Autocrypt-it i përdorur për të transferuar kyçin tuaj nga një klient në tjetrin.\n\nQë të shfshehtëzoni dhe përdorni kyçin tuaj, prekeni këtë mesazh.</string>
+    <string name="AutocryptKeyTransferPleaseEnterCode">Ju lutemi, jepni kodin e rregullimit që është shfaqur te pajisja tjetër.</string>
+    <string name="AutocryptKeyTransferBadCode">Kod rregullimi i gabuar. Ju lutemi, riprovoni.\n\nNëse s’e mbani mend kodin e rregullimit, thjesht rinisni transferimin e kyçit që nga pajisja tjetër.</string>
+    <string name="AutocryptKeyTransferSucceeded">Kyçi u transferua me sukses. Tani kjo pajisje është gati të përdorë Autocrypt-in me të njëjtin kyç si pajisja tjetër.</string>
+    <string name="Retry">Riprovoni</string>
+</resources>

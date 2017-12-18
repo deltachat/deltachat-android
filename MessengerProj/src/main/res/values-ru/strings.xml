@@ -43,7 +43,7 @@
     <string name="TypeMessage">Сообщение</string>
     <string name="SlideToCancel">СДВИНЬТЕ ДЛЯ ОТМЕНЫ</string>
     <string name="SaveToDownloads">Сохранить в папку Загрузки</string>
-    <string name="SaveToMusic">Сохранить в музыку</string>
+    <string name="SaveToMusic">Сохранить в музыкальную коллекцию</string>
     <string name="Share">Поделиться</string>
     <string name="SendItems">Отправить %1$s</string>
     <string name="ClearRecentEmoji">Очистить недавние смайлики?</string>
@@ -81,7 +81,7 @@
     <string name="NotificationsAndSounds">Уведомления и звуки</string>
     <string name="BlockedContacts">Заблокированные контакты</string>
     <string name="Default">По умолчанию</string>
-    <string name="OnlyIfSilent">Только если тишина</string>
+    <string name="OnlyIfSilent">Только при выключенном звуке</string>
     <string name="ChatBackground">Фон чата</string>
     <string name="SendByEnter">Отправить нажав "Ввод"</string>
     <string name="Help">Помощь</string>
@@ -101,7 +101,7 @@
     <string name="NotificationsOther">Другие</string>
     <string name="InChatSound">Звуки в чате</string>
     <string name="SmartNotifications">Ограничение уведомлений</string>
-    <string name="SmartNotificationsSoundAtMost">Звук не более</string>
+    <string name="SmartNotificationsSoundAtMost">не более</string>
     <string name="SmartNotificationsTimes">раз</string>
     <string name="SmartNotificationsWithin">в пределах</string>
     <string name="SmartNotificationsMinutes">минут</string>
@@ -211,7 +211,7 @@
     <string name="Intro1Message">Мессенджер с <![CDATA[<b>самым большим диапазоном охвата</b>]]> в мире. <![CDATA[<br/><b>Бесплатный</b>]]> и <![CDATA[<b>безопасный</b>]]>.</string>
 
     <string name="Intro2Headline">Независимый</string>
-    <string name="Intro2Message"><![CDATA[<b>Независимость</b>]]> от иностранных компьютеров или сервисов. Приложение использует только ваш почтовый сервер.</string>
+    <string name="Intro2Message"><![CDATA[<b>Независимость</b>]]> от неконтролируемых вами компьютеров или сервисов. Приложение использует только ваш почтовый сервер.</string>
 
     <string name="Intro3Headline">Быстрый</string>
     <string name="Intro3Message"><![CDATA[<b>Push-сообщения</b>]]> за секунды.<![CDATA[<br/>]]>Быстрый интерфейс.</string>
@@ -415,7 +415,7 @@
     <string name="MsgGroupImageDeleted">Изображение группы удалено.</string>
     <string name="AskDeleteGroupImage">Вы действительно хотите удалить изображение группы?\n\nИзменение вступит в силу на всех устройствах участников группы.</string>
     <string name="ExportImportHeader">Экспорт и импорт</string>
-    <string name="ImportExportExplain">Файлы экспорта будут содержать закрытые ключи! Храните их в защищенном месте или удалите их по первой возможности.</string>
+    <string name="ImportExportExplain">Файлы экспорта будут содержать закрытые ключи! Храните их в защищенном месте или удалите их при первой возможности.</string>
     <string name="EnterPasswordToContinue">Введите пароль для %1$s, чтобы продолжить:</string>
     <string name="IncorrectPassword">Неверный пароль.</string>
     <string name="ImportBackupAsk">Delta Chat нашел резервную копию в <![CDATA[<i>]]>%1$s<![CDATA[</i>]]>.\n\nИмпортировать и использовать все данные и настройки из резервной копии?</string>
@@ -430,10 +430,10 @@
     <string name="E2eeOffBecauseOfUser">Для включения сквозного шифрования выберите соответствующий пункт в настройках.</string>
     <string name="E2eeOffBecauseOfRecipient">Шифрование будет переключено в сквозной режим, если со стороны контакта будет выбран соответствующий пункт настроек.</string>
     <string name="NotNow">Не сейчас</string>
-    <string name="ArchiveChat">Архивировать чат</string>
-    <string name="UnarchiveChat">Разархивировать чат</string>
-    <string name="ArchivedChats">Архивированные чаты</string>
-    <string name="Archived">Помещено в архив</string>
+    <string name="ArchiveChat">Переместить чат в архив</string>
+    <string name="UnarchiveChat">Вернуть чат из архива в активный режим</string>
+    <string name="ArchivedChats">Архив чатов</string>
+    <string name="Archived">в архиве</string>
     <string name="LeaveGroup">Выйти из группы</string>
     <string name="AskLeaveGroup">Вы уверены, что хотите выйти из группы?</string>
     <string name="Never">Никогда</string>

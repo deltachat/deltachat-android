@@ -243,7 +243,11 @@
     <string name="MuteAlways">Sürekli sessiz</string>
     <string name="Name" >Ad</string>
     <string name="EmailAddress">E-posta adresi</string>
+    <string name="ContactCreated">Kişi oluşturuldu.</string>
     <string name="ViewProfile">Profil görüntüsü</string>
+    <!-- Translators: please use a very short string here, it should not much longer than
+    the string needed for video time+size (0:00, 12,3 Mib) -->
+    <string name="OneMoment">Bir dakika ...</string>
     <string name="InviteMenuEntry">Davetiye gönderin</string>
     <string name="AdvancedSettings">Gelişmiş ayarlar</string>
     <string name="AttachFiles">Dosyaları iliştir</string>
@@ -251,9 +255,14 @@
     <string name="MsgGroupImageChanged">Grup resmi değişti.</string>
     <string name="MsgMemberAddedToGroup">%1$s üye eklendi</string>
     <string name="MsgMemberRemovedFromToGroup">%1$s üye silindi.</string>
+    <string name="MsgGroupLeft">Grup ayrıldı.</string>
+    <string name="SendNRcvReadReceipts">İletim raporlarını al ve gönder</string>
+    <string name="PreferE2EEncryption">Uçtan uca şifrelemeyi yeğle</string>
+    <string name="E2EManagePrivateKeys">Özel anahtarları yönet</string>
     <string name="E2ECompareKeys">Anahtarları karşılaştır</string>
     <string name="SelectContact">Bir kişi seçin</string>
     <string name="DoneHint">Tamam.</string>
+    <string name="Error">Hata: %1$s</string>
     <string name="NoNetwork">Ağ kullanılamıyor.</string>
     <string name="Audio">Ses</string>
     <string name="PermNotificationText">İletiler bekliyor ...</string>
@@ -261,9 +270,11 @@
     <string name="AutoplayGifs">GİFleri otomatik oynat</string>
     <string name="HelpUrl">https://delta.chat/en/help</string>
     <string name="EncryptedMessage">Şifrelenmiş ileti</string>
+    <string name="Encryption">Şifreleme</string>
     <string name="EncrinfoE2E">Uçtan uca şifreleme etkin</string>
     <string name="EncrinfoFingerprints">Parmak izleri</string>
     <string name="Backup">Yedekleme</string>
+    <string name="ReadReceipt">İletim raporu</string>
     <string name="NameAndStatus">Ad ve durum</string>
     <string name="MyStatus">Durumum</string>
     <string name="MsgGroupImageDeleted">Grup resmi silindi</string>
@@ -278,5 +289,7 @@
     <string name="ArchivedChats">Arşivlenmiş söyleşiler</string>
     <string name="Archived">Arşivlenmiş</string>
     <string name="LeaveGroup">Gruptan ayrıl</string>
+    <string name="AskLeaveGroup">Bu gruptan ayrılmak istediğinize emin misiniz?</string>
     <string name="Never">Asla</string>
-    </resources>
+    <string name="Retry">Yeniden dene</string>
+</resources>

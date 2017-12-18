@@ -1,5 +1,9 @@
 # Delta Chat Changelog
 
+## UNRELEASED
+
+* Update Albanian, Portuguese, Russian, Turkish and Ukrainian translations
+
 ## v0.11.2
 2017-12-15
 

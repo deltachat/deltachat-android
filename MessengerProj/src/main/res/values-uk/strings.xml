@@ -412,4 +412,14 @@
     <string name="ImportPrivateKeys">Імпортувати таємні ключі</string>
     <string name="ImportPrivateKeysAsk2">Імпортувати таємні ключі з <![CDATA[<i>]]>%1$s<![CDATA[</i>]]>?\n\n•
 Чинні таємні ключі не видалені\n\n• Найостанніший імпортований ключ буде використано як новий усталений ключ</string>
-    </resources>
+    <string name="NoRecentEmoji">Емоджі, які використовувались недавно, будуть зображені тут.</string>
+    <string name="NotNow">Не зараз</string>
+    <string name="ArchiveChat">Додати розмову до архіву</string>
+    <string name="UnarchiveChat">Витягти розмову з архіву</string>
+    <string name="ArchivedChats">Розмови, що додані до архіву</string>
+    <string name="Archived">Заархівлено</string>
+    <string name="LeaveGroup">Полишити спільноту</string>
+    <string name="AskLeaveGroup">Чи ви певні, що хочете полишити спільноту?</string>
+    <string name="Never">Ніколи</string>
+    <string name="Retry">Спробувати ще раз</string>
+</resources>
