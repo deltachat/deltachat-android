@@ -41,6 +41,7 @@ public class MrLot {
     @Override protected void finalize() throws Throwable {
         super.finalize();
         MrLotUnref(m_hLot);
+        m_hLot = 0;
     }
 
     public native String getText1();

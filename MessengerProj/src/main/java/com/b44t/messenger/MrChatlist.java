@@ -36,6 +36,7 @@ public class MrChatlist {
     @Override protected void finalize() throws Throwable {
         super.finalize();
         MrChatlistUnref(m_hChatlist);
+        m_hChatlist = 0;
     }
 
     public int getCnt() {

@@ -40,6 +40,7 @@ public class MrContact {
     @Override protected void finalize() throws Throwable {
         super.finalize();
         MrContactUnref(m_hContact);
+        m_hContact = 0;
     }
 
     public native String getName();

@@ -64,6 +64,7 @@ public class MrMsg {
     @Override protected void finalize() throws Throwable {
         super.finalize();
         MrMsgUnref(m_hMsg);
+        m_hMsg = 0;
     }
 
     public int getId() {

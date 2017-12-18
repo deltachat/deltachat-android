@@ -46,6 +46,7 @@ public class MrChat {
     @Override protected void finalize() throws Throwable {
         super.finalize();
         MrChatUnref(m_hChat);
+        m_hChat = 0;
     }
 
     public native int    getId();
