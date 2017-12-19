@@ -117,8 +117,10 @@ void mrosnative_unsetup_thread(mrmailbox_t* mailbox)
 
 /* tools */
 
-static jintArray mrarray2jintArray_n_mrarray_unref(JNIEnv *env, const mrarray_t* ca)
+static jintArray mrarray2jintArray_n_mrarray_unref(JNIEnv *env, mrarray_t* ca)
 {
+	/* takes a C-array of type mrarray_t and converts it it a Java-Array.
+	then the C-array is freed and the Java-Array is returned. */
 	int i, icnt = ca? mrarray_get_cnt(ca) : 0;
 	jintArray ret = (*env)->NewIntArray(env, icnt); if (ret == NULL) { return NULL; }
 	
@@ -146,7 +148,10 @@ static jintArray mrarray2jintArray_n_mrarray_unref(JNIEnv *env, const mrarray_t*
 
 static uint32_t* jintArray2uint32Pointer(JNIEnv* env, jintArray ja, int* ret_icnt)
 {
+	/* takes a Java-Array and converts it to a C-Array. */
 	uint32_t* ret = NULL;
+	if( ret_icnt ) { *ret_icnt = 0; }
+
 	if( env && ja && ret_icnt )
 	{
 		int i, icnt  = (*env)->GetArrayLength(env, ja);
@@ -167,6 +172,7 @@ static uint32_t* jintArray2uint32Pointer(JNIEnv* env, jintArray ja, int* ret_icn
 			}
 		}
 	}
+
 	return ret;
 }
 
@@ -366,7 +372,7 @@ JNIEXPORT jint Java_com_b44t_messenger_MrMailbox_getChatIdByContactId(JNIEnv *en
 
 JNIEXPORT void Java_com_b44t_messenger_MrMailbox_markseenMsgs(JNIEnv *env, jclass cls, jintArray msg_ids)
 {
-	int msg_ids_cnt;
+	int msg_ids_cnt = 0;
 	const uint32_t* msg_ids_ptr = jintArray2uint32Pointer(env, msg_ids, &msg_ids_cnt);
 		mrmailbox_markseen_msgs(get_mrmailbox_t(env, cls), msg_ids_ptr, msg_ids_cnt);
 	free(msg_ids_ptr);
@@ -474,7 +480,7 @@ JNIEXPORT jstring Java_com_b44t_messenger_MrMailbox_MrMailboxGetMsgInfo(JNIEnv *
 
 JNIEXPORT void Java_com_b44t_messenger_MrMailbox_deleteMsgs(JNIEnv *env, jclass cls, jintArray msg_ids)
 {
-	int msg_ids_cnt;
+	int msg_ids_cnt = 0;
 	const uint32_t* msg_ids_ptr = jintArray2uint32Pointer(env, msg_ids, &msg_ids_cnt);
 		mrmailbox_delete_msgs(get_mrmailbox_t(env, cls), msg_ids_ptr, msg_ids_cnt);
 	free(msg_ids_ptr);
@@ -483,7 +489,7 @@ JNIEXPORT void Java_com_b44t_messenger_MrMailbox_deleteMsgs(JNIEnv *env, jclass 
 
 JNIEXPORT void Java_com_b44t_messenger_MrMailbox_forwardMsgs(JNIEnv *env, jclass cls, jintArray msg_ids, jint chat_id)
 {
-	int msg_ids_cnt;
+	int msg_ids_cnt = 0;
 	const uint32_t* msg_ids_ptr = jintArray2uint32Pointer(env, msg_ids, &msg_ids_cnt);
 		mrmailbox_forward_msgs(get_mrmailbox_t(env, cls), msg_ids_ptr, msg_ids_cnt, chat_id); 
 	free(msg_ids_ptr);
