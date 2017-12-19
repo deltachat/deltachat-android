@@ -1,16 +1,12 @@
 # Delta Chat Changelog
 
-## UNRELEASED
-
-* Update Albanian, Portuguese, Russian, Turkish and Ukrainian translations
-
-## v0.11.2
-2017-12-15
+## v0.11.3
+2017-12-17
 
 * Add option to initiate Autocrypt Key Transfer
 * Connect after importing a backup
 * Add Albanian translation
-* Update German, Italian, Polish and Russian translations
+* Update Albanian, German, Italian, Polish, Portuguese, Russian, Turkish and Ukrainian translations
 
 ## v0.10.0
 2017-11-29
