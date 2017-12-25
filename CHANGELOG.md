@@ -5,6 +5,7 @@
 
 * Add option to initiate Autocrypt Key Transfer
 * Connect after importing a backup
+* Reading memory hole headers
 * Add Albanian translation
 * Update Albanian, German, Italian, Polish, Portuguese, Russian, Turkish and Ukrainian translations
 
