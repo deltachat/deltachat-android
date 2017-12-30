@@ -192,7 +192,7 @@
     <string name="AttachContact">Контакт</string>
     <string name="AttachDocument">Файл</string>
     <string name="AttachVoiceMessage">Голосовое сообщение</string>
-    <string name="FromSelf">Мне</string>
+    <string name="FromSelf">Я</string>
     <!--Alert messages-->
     <string name="NoHandleAppInstalled">У вас нет приложений, которые могут обрабатывать тип файла \'%1$s\', пожалуйста, установите такое приложение, чтобы продолжить</string>
     <string name="ContactAlreadyInGroup">Контакт уже находится в этой группе.</string>
@@ -340,7 +340,7 @@
     <string name="InboxHeadline">Входящие</string>
     <string name="OutboxHeadline">Исходящие</string>
     <string name="MyAccountExplain">Для известных поставщиков электронной почты дополнительные настройки определяются автоматически.</string>
-    <string name="MyAccountExplain2" >Иногда, <![CDATA[<b>]]>IMAP должен быть включен<![CDATA[</b>]]> в веб-интерфейсе электронной почты.\n\nВ случае затруднений, обратитесь к своему поставщику электронной почты или компетентным друзьям.</string>
+    <string name="MyAccountExplain2" >Иногда <![CDATA[<b>]]>IMAP необходимо включить<![CDATA[</b>]]> в веб-интерфейсе электронной почты.\n\nВ случае затруднений обратитесь к своему поставщику услуг электронной почты или компетентным друзьям.</string>
     <string name="AccountNotConfigured">Аккаунт не настроен</string>
     <string name="AboutThisProgram">Delta Chat (Дельта Чат)</string>
     <string name="NotSet">Не задано</string>
