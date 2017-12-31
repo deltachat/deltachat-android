@@ -3,11 +3,11 @@
 
 
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <string name="AppName">Fjalosje Delta</string>
+    <string name="AppName">Delta Chat</string>
     <!--chats view-->
     <string name="Settings">Rregullime</string>
     <string name="NewGroup">Grup i ri</string>
-    <string name="NoResult">S’ka përfundime.</string>
+    <string name="NoResult">S\’ka përfundime.</string>
     <string name="NoChats">Ende pa fjalosje.</string>
     <string name="DeleteChat">Fshije fjalosjen</string>
     <string name="SelectChat">Përzgjidhni fjalosje…</string>
@@ -25,7 +25,7 @@
     <string name="ErrorHint">Gabim i panjohur</string>
     <string name="AccessError">Gabim hyrjeje</string>
     <string name="NoFiles">Ende pa kartela…</string>
-    <string name="NotMounted">S’ka depozitë të montuar</string>
+    <string name="NotMounted">S\’ka depozitë të montuar</string>
     <string name="UsbActive">Shpërngulje USB në ecuri e sipër</string>
     <string name="InternalStorage">Depozitë e Brendshme</string>
     <string name="ExternalStorage">Depozitë e Jashtme</string>
@@ -36,7 +36,7 @@
     <!--chat view-->
     <string name="ChatGallery">Galeri</string>
     <string name="ChatCamera">Kamerë</string>
-    <string name="NoMessages">S’ka mesazhe.</string>
+    <string name="NoMessages">S\’ka mesazhe.</string>
     <string name="ForwardedMessage">Mesazh i përcjellë</string>
     <string name="From">Nga</string>
     <string name="TypeMessage">Mesazh</string>
@@ -106,7 +106,7 @@
     <!--passcode view-->
     <string name="Passcode">Kyçje Kodkalimi</string>
     <string name="ChangePasscode">Ndryshoni Kodkalimin</string>
-    <string name="ChangePasscodeInfo">Kur rregulloni një kodkalim shtesë, te faqja e bisedave do të shfaqet një ikonë dryni. Prekeni që të kyçet aplikacioni.\n\nShënim: nëse harroni kodkalimin, do t’ju duhet të fshini dhe ri-instaloni aplikacionin.</string>
+    <string name="ChangePasscodeInfo">Kur rregulloni një kodkalim shtesë, te faqja e bisedave do të shfaqet një ikonë dryni. Prekeni që të kyçet aplikacioni.\n\nShënim: nëse harroni kodkalimin, do t\’ju duhet të fshini dhe ri-instaloni aplikacionin.</string>
     <string name="PasscodePIN">PIN</string>
     <string name="PasscodePassword">Fjalëkalim</string>
     <string name="EnterCurrentPasscode">Jepni kodkalimin tuaj të tanishëm</string>
@@ -189,7 +189,7 @@
     <string name="AreYouSureBlockContact">Jeni i sigurt se doni ta bllokoni këtë kontakt?</string>
     <string name="AreYouSureDeleteContact">Jeni i sigurt se doni ta fshini këtë kontakt?</string>
     <!--permissions-->
-    <string name="PermissionContacts">Lypset hyrje te kontaktet për t’ju lidhur me shokët tuaj nga cilado pajisje juaj.</string>
+    <string name="PermissionContacts">Për t\’ju lidhur me shokët tuaj nga cilado pajisje juaj, lypset hyrje te kontaktet.</string>
     <string name="PermissionStorage">Për dërgim dhe ruajte fotosh, videosh, muzike dhe media të tjera, lypset hyrje te depozita.</string>
     <string name="PermissionNoAudio">Për dërgim mesazhesh zanorë, lypset hyrje te mikrofoni.</string>
     <string name="PermissionOpenSettings">Rregullime</string>

@@ -41,9 +41,9 @@
     <string name="From">De</string>
     <string name="NoRecent">Pas de récents</string>
     <string name="TypeMessage">Message</string>
-    <string name="SlideToCancel">GLISSER POUR ANNULER</string>
-    <string name="SaveToDownloads">Enregistrer dans Téléchargements</string>
-    <string name="SaveToMusic">Enregistrer dans Musique</string>
+    <string name="SlideToCancel">Glisser pour annuler</string>
+    <string name="SaveToDownloads">Enregistrer dans \"Téléchargements\"</string>
+    <string name="SaveToMusic">Enregistrer dans \"Musique\"</string>
     <string name="Share">Partager</string>
     <string name="SendItems">Envoyer %1$s</string>
     <string name="ClearRecentEmoji">Vider les émojis récents ?</string>
@@ -83,7 +83,7 @@
     <string name="Default">Défaut</string>
     <string name="OnlyIfSilent">Seulement si silencieux</string>
     <string name="ChatBackground">Arrière-plan des conversations</string>
-    <string name="SendByEnter">Envoyer avec "Entrée"</string>
+    <string name="SendByEnter">Envoyer avec la touche entrée</string>
     <string name="Help">Aide</string>
     <string name="Enabled">Activé</string>
     <string name="Disabled">Désactivé</string>
@@ -101,7 +101,7 @@
     <string name="NotificationsOther">Autres</string>
     <string name="InChatSound">Sons dans la conversation</string>
     <string name="SmartNotifications">Limiter les notifications</string>
-    <string name="SmartNotificationsSoundAtMost">Son au maximum</string>
+    <string name="SmartNotificationsSoundAtMost">max.</string>
     <string name="SmartNotificationsTimes">fois</string>
     <string name="SmartNotificationsWithin">toutes les</string>
     <string name="SmartNotificationsMinutes">minutes</string>
@@ -151,13 +151,13 @@
     <string name="Sharpen">Netteté</string>
     <string name="Fade">Fondu</string>
     <string name="Tint">Teinte</string>
-    <string name="TintShadows">OMBRES</string>
-    <string name="TintHighlights">HAUTES-LUMIERES</string>
+    <string name="TintShadows">Ombres</string>
+    <string name="TintHighlights">Hautes-lumières</string>
     <string name="Curves">Courbes</string>
-    <string name="CurvesAll">TOUT</string>
-    <string name="CurvesRed">ROUGE</string>
-    <string name="CurvesGreen">VERT</string>
-    <string name="CurvesBlue">BLEU</string>
+    <string name="CurvesAll">Tout</string>
+    <string name="CurvesRed">Rouge</string>
+    <string name="CurvesGreen">Vert</string>
+    <string name="CurvesBlue">Bleu</string>
     <string name="Blur">Flou</string>
     <string name="BlurOff">Désactiver</string>
     <string name="BlurLinear">Linéaire</string>
@@ -184,7 +184,7 @@
     <string name="FromGalley">Depuis la galerie</string>
     <string name="Set">Définir</string>
     <string name="OK">OK</string>
-    <string name="Crop">ROGNER</string>
+    <string name="Crop">Rogner</string>
     <!--messages-->
     <string name="AttachPhoto">Photo</string>
     <string name="AttachVideo">Vidéo</string>
@@ -194,11 +194,11 @@
     <string name="AttachVoiceMessage">Message vocal</string>
     <string name="FromSelf">Moi</string>
     <!--Alert messages-->
-    <string name="NoHandleAppInstalled">Vous n\'avez pas d\'application qui peut gérer des fichiers de type \'%1$s\', veuillez en installer une pour continuer</string>
+    <string name="NoHandleAppInstalled">Vous n\'avez pas d\'application qui peut ouvrir des fichiers de type \'%1$s\', veuillez en installer une pour continuer</string>
     <string name="ContactAlreadyInGroup">Ce contact est déjà dans ce groupe</string>
     <string name="ForwardMessagesTo">Renvoyer les messages sélectionnés à <![CDATA[<b>]]>%1$s<![CDATA[</b>]]> ?</string>
     <string name="SendMessagesTo">Envoyer les messages à <![CDATA[<b>]]>%1$s<![CDATA[</b>]]> ?</string>
-    <string name="AreYouSureDeleteThisChat">Êtes-vous sûr de vouloir supprimer cette conversation ? La conversation n\'apparaîtra plus dans la liste des conversations, mais les messages resteront sur le serveur.</string>
+    <string name="AreYouSureDeleteThisChat">Êtes-vous sûr de vouloir supprimer cette conversation? La conversation n\'apparaîtra plus dans la liste des conversations, mais les messages resteront sur le serveur.</string>
     <string name="AreYouSureBlockContact">Êtes-vous sûr de vouloir bloquer ce contact?</string>
     <string name="AreYouSureDeleteContact">Êtes-vous sûr de vouloir supprimer ce contact?</string>
     <!--permissions-->
@@ -222,7 +222,7 @@
     <string name="Intro5Headline">Libre</string>
     <string name="Intro5Message"><![CDATA[<b>Delta Chat</b>]]> sera toujours libre.<![CDATA[<br/>]]>OpenSource. Pas de pub. Pas d\'inscription. Pas lié a un fournisseur.</string>
 
-    <string name="Intro6Headline">Sûr</string>
+    <string name="Intro6Headline">Chiffré</string>
     <string name="Intro6Message"><![CDATA[<b>Chiffré</b>]]> avec des algorithmes reconnus. Les messages restent sur vos serveurs.</string>
 
     <string name="Intro7Headline">Fiable</string>
@@ -239,7 +239,7 @@
     </plurals>
     <plurals name="MeAndMembers">
         <item quantity="one">Moi et %d membre</item>
-        <item quantity="other">Moi et %d membres</item>
+        <item quantity="other">%d membres et moi</item>
     </plurals>
     <plurals name="NewMessages">
         <item quantity="one">%d nouveau message</item>
@@ -312,7 +312,7 @@
     <string name="InboxHeadline">Boîte de réception</string>
     <string name="OutboxHeadline">Boîte d\'envoi</string>
     <string name="MyAccountExplain">Pour les fournisseurs e-mails connus, les paramètres suivants seront déterminés automatiquement.</string>
-    <string name="MyAccountExplain2" >Parfois, les protocoles IMAP/SMTP doivent être activés depuis l\'interface web.\n\nSi vous rencontrez des problème, demandez à votre fournisseur ou à vos amis.</string>
+    <string name="MyAccountExplain2" >Parfois, <![CDATA[<b>]]>IMAP doit être activé<![CDATA[</b>]]> depuis l\'interface web.\n\nSi vous rencontrez des problème, demandez à votre fournisseur ou à vos amis.</string>
     <string name="AccountNotConfigured">Compte non configuré</string>
     <string name="AboutThisProgram">À propos Delta Chat</string>
     <string name="NotSet">Non défini</string>
@@ -321,7 +321,7 @@
     <string name="DeaddropInChatlist">Monter les demandes de contact dans la liste des conversations</string>
     <string name="MuteAlways">Toujours muet</string>
     <string name="AskStartChatWith">Lancer une conversation avec <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>?</string>
-    <string name="DeaddropHint">Pour lancer une conversation, cliquez sur le bouton de réponse en forme de flèche.</string>
+    <string name="DeaddropHint">Pour commencer une conversation, cliquez sur le bouton de réponse en forme de flèche.</string>
     <string name="NotYetImplemented">Cette fonction n\'est pas disponible ou non supportée complètement.</string>
     <string name="DefaultStatusText">Envoyé avec Delta Chat: https://delta.chat</string>
     <string name="Name" >Nom</string>
@@ -333,12 +333,12 @@
     <!-- Translators: please use a very short string here, it should not much longer than
     the string needed for video time+size (0:00, 12,3 Mib) -->
     <string name="OneMoment">Veuillez patienter…</string>
-    <string name="NoChatsHelp">Lancez une conversation en appuyant sur le bouton dans le coin inférieur droit ou appuyez sur le bouton menu pour plus d\'options.</string>
+    <string name="NoChatsHelp">Lancez une conversation en appuyant sur le bouton \"Nouvelle conversation\" dans le coin inférieur droit ou appuyez sur le bouton \"Menu\" pour plus d\'options.</string>
     <string name="Intro7Message"><![CDATA[<b>Delta Chat</b>]]> est sûr pour une utilisation professionnelle, compatible et basé sur des standards.</string>
     <string name="InviteMenuEntry">Envoyer des invitations</string>
     <string name="InviteText">J\'utilise la messagerie Delta Chat maintenant - %1$s - vous pouvez me contacter à %2$s</string>
     <string name="AdvancedSettings">Paramètres avancés</string>
-    <string name="AskResetNotifications">Réinitialiser toutes les paramètres de notification et les sons de cette page ainsi que de vos contacts et groupes?</string>
+    <string name="AskResetNotifications">Réinitialiser toutes les paramètres de notification et de son de cette page, contacts et groupes?</string>
     <string name="AttachFiles">Joindre des fichiers</string>
     <string name="ErrGroupNameEmpty">Merci de saisir un nom pour le groupe.</string>
     <string name="MsgNewGroupDraftHint">Écrivez un premier message pour permettre aux autres de répondre dans ce groupe.\n\n• Ça ne devrait pas poser de problème si tous les membres du groupe n\'utilisent pas Delta Chat.\n\n• L\'envoi du premier message peut prendre un moment.</string>
@@ -390,9 +390,9 @@
     <string name="ImportExportExplain">Les fichiers exportés contiendront des clés privées! Gardez-les dans un endroit sûr ou supprimez-les dès que possible.</string>
     <string name="EnterPasswordToContinue">Entrer le mot de passe pour %1$s pour continuer:</string>
     <string name="IncorrectPassword">Mot de passe incorrect.</string>
-    <string name="ImportBackupAsk">Delta Chat a trouvé une sauvegarde dans <![CDATA[<i>]]>%1$s<![CDATA[</i>]]>.\n\n Voulez-vous importer et utiliser toutes les données et paramètres de cette sauvegarde?</string>
+    <string name="ImportBackupAsk">Une sauvegarde a été trouvée dans <![CDATA[<i>]]>%1$s<![CDATA[</i>]]>.\n\n Voulez-vous importer et utiliser toutes les données et paramètres de cette sauvegarde?</string>
     <string name="ImportBackup">Importer une sauvegarde</string>
-    <string name="NoBackupFound">Aucune sauvegarde à importer trouvée.\n\nCopier la sauvegarde dans <![CDATA[<i>]]>%1$s<![CDATA[</i>]]> et réessayez. Sinon, appuyez sur \"Démarrer la messagerie\" pour un processus d\'installation normal.</string>
+    <string name="NoBackupFound">Aucune sauvegarde trouvée.\n\nCopier la sauvegarde dans <![CDATA[<i>]]>%1$s<![CDATA[</i>]]> et réessayez. Sinon, appuyez sur \"Démarrer la messagerie\" pour un processus d\'installation normal.</string>
     <string name="FilesSuccessfullyExported">Fichiers exportés avec succès dans <![CDATA[<i>]]>%1$s<![CDATA[</i>]]>.</string>
     <string name="ExportBackup">Exporter une sauvegarde</string>
     <string name="ExportPrivateKeys">Exporter les clés privées</string>
@@ -410,4 +410,15 @@ La dernière clé importée sera utilisée comme nouvelle clé par défaut</stri
     <string name="LeaveGroup">Quitter le groupe</string>
     <string name="AskLeaveGroup">Êtes-vous sûr de vouloir quitter ce groupe?</string>
     <string name="Never">Jamais</string>
-    </resources>
+    <string name="AutocryptKeyTransferInitiate">Lancer le transfert de clé Autocrypt</string>
+    <string name="AutocryptKeyTransfer">Transfert de clé Autocrypt</string>
+    <string name="AutocryptKeyTransferMsgBeforeSend">Le  <![CDATA[<i>]]>transfert de clé Autocrypt<![CDATA[</i>]]> nécessite que le client de messagerie sur l\'autre périphérique soit compatible avec Autocrypt.\n\nVous pouvez alors vous envoyer votre clé secrète. La clé sera cryptée par un code d\'installation qui est affiché ici et doit être tapé sur l\'autre appareil.</string>
+    <string name="AutocryptKeyTransferMsgAfterSend">Votre clé vous a été envoyée. Passez à l\'autre appareil et ouvrez le message d\'installation. Vous devriez être invité à entrer un code d\'installation. Tapez les chiffres suivants dans l\'invite:\n\n%1$s\n\nUne fois que vous avez terminé, votre autre périphérique sera prêt à utiliser Autocrypt.</string>
+    <string name="AutocryptSetupMessageSubject">Message d\'installation d\'Autocrypt</string>
+    <string name="AutocryptSetupMessageGeneralBody">Ceci est le message d\'installation d\'Autocrypt utilisé pour transférer votre clé entre les clients.\n\nPour déchiffrer et utiliser votre clé, ouvrez le message dans un client compatible avec Autocrypt et entrez le code d\'installation présenté sur le périphérique d\'envoi.</string>
+    <string name="AutocryptSetupMessageTapBody">Ceci est le message d\'installation d\'Autocrypt utilisé pour transférer votre clé entre les clients.\n\nPour déchiffrer et utiliser votre clé, appuyez sur ce message.</string>
+    <string name="AutocryptKeyTransferPleaseEnterCode">Veuillez entrer le code d\'installation affiché sur l\'autre appareil.</string>
+    <string name="AutocryptKeyTransferBadCode">Mauvais code d\'installation. Veuillez réessayer.\n\nSi vous ne vous souvenez pas du code d\'installation, lancez à nouveau le transfert de clé depuis l\'autre appareil.</string>
+    <string name="AutocryptKeyTransferSucceeded">Clé transférée avec succès. Cet appareil est maintenant prêt à utiliser Autocrypt avec la même clé que l\'autre appareil.</string>
+    <string name="Retry">Recommencez</string>
+</resources>

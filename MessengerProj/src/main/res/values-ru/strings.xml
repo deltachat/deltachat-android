@@ -361,7 +361,7 @@
     <!-- Translators: please use a very short string here, it should not much longer than
     the string needed for video time+size (0:00, 12,3 Mib) -->
     <string name="OneMoment">Один момент …</string>
-    <string name="NoChatsHelp">Начните обмен сообщениями, нажав кнопку нового чата в нижнем правом углу или коснитесь кнопки меню для получения дополнительных возможностей.</string>
+    <string name="NoChatsHelp">Начните обмен сообщениями, нажав кнопку нового чата в нижнем правом углу, или коснитесь кнопки меню для получения дополнительных возможностей.</string>
     <string name="Intro7Message"><![CDATA[<b>Delta Chat</b>]]> безопасен для использования в бизнесе, основан на совместимых стандартах.</string>
     <string name="InviteMenuEntry">Отправить приглашения</string>
     <string name="InviteText">Я использую систему мгновенных сообщений Delta Chat - %1$s - вы можете написать мне на %2$s</string>

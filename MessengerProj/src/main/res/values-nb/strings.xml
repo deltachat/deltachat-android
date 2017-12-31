@@ -302,6 +302,7 @@
     <string name="AttachFiles">Legg ved filer</string>
     <string name="ErrGroupNameEmpty">Skriv inn et navn for gruppen.</string>
     <string name="MsgNewGroupDraft">Hei, jeg har akkurat opprettet gruppen \"%1$s\" for oss.</string>
+    <string name="MsgGroupNameChanged">Gruppenavn endret fra \"%1$s\" til \"%2$s\".</string>
     <string name="MsgGroupImageChanged">Gruppebilde endret.</string>
     <string name="MsgMemberAddedToGroup">Medlem %1$s lagt til.</string>
     <string name="MsgMemberRemovedFromToGroup">Medlem %1$s fjernet.</string>

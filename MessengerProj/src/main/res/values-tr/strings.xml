@@ -28,6 +28,7 @@
     <string name="ExternalStorage">Harici Depolama</string>
     <string name="SdCard">SD Kart</string>
     <string name="Folder">Klasör</string>
+    <string name="GalleryInfo">Sıkıştırılmamış resimleri göndermek için</string>
     <!--chat view-->
     <string name="ChatGallery">Galeri</string>
     <string name="ChatCamera">Kamera</string>
@@ -43,7 +44,7 @@
     <string name="AddShortcut">Ana ekrana gereç ekleme</string>
     <string name="ShortcutAdded">Gereç ana ekrana eklendi</string>
     <!--notification-->
-    <string name="Reply">Yanıtlama</string>
+    <string name="Reply">Yanıtla</string>
     <string name="ReplyToGroup">%1$se yanıt ver</string>
     <string name="ReplyToContact">%1$se yanıt ver</string>
     <!--contacts view-->
@@ -74,10 +75,12 @@
     <string name="Default">Öntanımlı</string>
     <string name="OnlyIfSilent">Sadece sessizse</string>
     <string name="ChatBackground">Söyleşi arkaplanı</string>
+    <string name="SendByEnter">Enter tuşu ile gönder</string>
     <string name="Help">Yardım</string>
     <string name="Enabled">Aç</string>
     <string name="Disabled">Kapat</string>
     <string name="LedColor">LED rengi</string>
+    <string name="BadgeNumber">Sayıyı akılda tutmak için mümkünse simge kullanın</string>
     <string name="Short">Kısa</string>
     <string name="Long">Uzun</string>
     <string name="EditName">Adı düzenle</string>
@@ -87,7 +90,11 @@
     <string name="NotificationsPriorityMax">En yüksek öncelik</string>
     <string name="RepeatNotifications">Bildirimleri yinele</string>
     <string name="NotificationsOther">Diğer</string>
+    <string name="InChatSound">söyleşi içi sesler</string>
     <string name="SmartNotifications">Sınır bildirimleri</string>
+    <string name="SmartNotificationsSoundAtMost">En çok</string>
+    <string name="SmartNotificationsTimes">kere</string>
+    <string name="SmartNotificationsWithin">içerisinde</string>
     <string name="DirectShare">Doğrudan paylaşım</string>
     <string name="DirectShareInfo">Son söyleşileri paylaşma menüsünde göster</string>
     <!--cache view-->
@@ -97,6 +104,7 @@
     <!--passcode view-->
     <string name="Passcode">Şifre Kilidi</string>
     <string name="ChangePasscode">Şifre Değiştir</string>
+    <string name="ChangePasscodeInfo">Ek bir şifre koyduğunuzda söyleşi sayfasında bir kilit simgesi görünür. Uygulamayı kilitlemek için dokunun.\n\nNote: Eğer şifreyi unutursanız, uygulamayı silip tekrar yüklemeniz gerekir.</string>
     <string name="PasscodePIN">PİN</string>
     <string name="PasscodePassword">Parola</string>
     <string name="EnterCurrentPasscode">Güncel şifrenizi girin</string>
@@ -106,11 +114,13 @@
     <string name="ReEnterYourPasscode">Yeni şifrenizi tekrar girin</string>
     <string name="PasscodeDoNotMatch">Şifreleriniz eşleşmiyor</string>
     <string name="AutoLock">Otomatik kilit</string>
-    <string name="UnlockFingerprint">Parmak izi il şifreyi aç</string>
+    <string name="AutoLockInfo">Bir süre uzak kalınırsa şifre gerekir.</string>
+    <string name="UnlockFingerprint">Parmak izi ile şifreyi aç</string>
     <string name="FingerprintInfo">Devam etmek için parmak izini onayla</string>
     <string name="FingerprintNotRecognized">Parmak izi tanınmadı. Tekrar deneyin</string>
     <!--photo gallery view-->
     <string name="SaveToGallery">Galeriye kaydet</string>
+    <string name="Of">%1$d/%2$d</string>
     <string name="Gallery">Galeri</string>
     <string name="AllPhotos">Tüm Fotograflar</string>
     <string name="AllVideo">Tüm Vidyolar</string>
@@ -128,6 +138,7 @@
     <string name="Shadows">Gölgeler</string>
     <string name="Sharpen">Keskinleştirme</string>
     <string name="Fade">Soldurma</string>
+    <string name="Tint">Renk tonu</string>
     <string name="TintShadows">Gölgeler</string>
     <string name="TintHighlights">Vurgulamalar</string>
     <string name="Curves">Eğriler</string>
@@ -156,6 +167,7 @@
     <string name="Send">Gönder</string>
     <string name="CopyToClipboard">Panoya kopyala</string>
     <string name="Delete">Sil</string>
+    <string name="Forward">İlet</string>
     <string name="FromCamera">Kameradan</string>
     <string name="FromGalley">Galeriden</string>
     <string name="OK">TAMAM</string>
@@ -164,8 +176,11 @@
     <string name="AttachPhoto">Fotograf</string>
     <string name="AttachVideo">Vidyo</string>
     <string name="AttachGif">GİF</string>
+    <string name="AttachContact">Kişiler</string>
     <string name="AttachDocument">Dosya</string>
     <string name="AttachVoiceMessage">Sesli ileti</string>
+    <string name="ContactAlreadyInGroup">Kişi zaten bu grupta.</string>
+    <string name="AreYouSureDeleteThisChat">Bu söyleşiyi silinsin mi? Söyleşi listesinde artık gösterilmeyecek, iletileri sunucuda kalacak.</string>
     <string name="AreYouSureBlockContact">Bu kişiyi engellemek istediğinizden emin misiniz?</string>
     <string name="AreYouSureDeleteContact">Bu kişiyi silmek istediğizden emin misiniz?</string>
     <string name="PermissionOpenSettings">Ayarlar</string>
@@ -174,7 +189,10 @@
     <string name="Intro2Headline">Bağımsız</string>
     <string name="Intro3Headline">Hızlı</string>
     <string name="Intro4Headline">Muhteşem</string>
-    <string name="Intro6Headline">Güvenli</string>
+    <string name="Intro5Headline">Özgür</string>
+    <string name="Intro6Headline">Şifreli</string>
+    <string name="Intro7Headline">Güvenilir</string>
+
     <!--plural-->
     <plurals name="Members">
         <item quantity="one">%düye</item>
@@ -195,6 +213,10 @@
     <plurals name="messages">
         <item quantity="one">%dileti</item>
         <item quantity="other">%dileti</item>
+    </plurals>
+    <plurals name="AreYouSureDeleteMessages">
+        <item quantity="one">%d ileti silinsin mi? Bu sunucudan da silinecek.</item>
+        <item quantity="other">%d iletiler silinsin mi? Bunlar sunucudan da silinecek.</item>
     </plurals>
     <plurals name="Chats">
         <item quantity="one">%d söyleşi</item>
@@ -222,9 +244,11 @@
     </plurals>
     <string name="formatterYear">gg.AA.yyyy</string>
     <string name="formatterDay24H">SS:dd</string>
+    <string name="formatDateAtTime">%1$s de %2$s</string>
     <string name="AccountSettings">Hesap ayarları</string>
     <string name="MyAccount">Hesabım</string>
     <string name="MyName">Adım</string>
+    <string name="MyNameExplain">Adınız karşıya böyle gösterilecek. Boş bırakırsanız, yalnızca eposta adresiniz gönderilecek.</string>
     <string name="Password">Parola</string>
     <string name="SmtpPassword">STMP parolası</string>
     <string name="FromAbove">Yukarıdan</string>
@@ -241,8 +265,13 @@
     <string name="AboutThisProgram">Delta Chat Hakkında</string>
     <string name="NewChat">Yeni söyleşi</string>
     <string name="MuteAlways">Sürekli sessiz</string>
+    <string name="DeaddropHint">Söyleşmeye başlamak için yanıt oklarına dokunun.</string>
+    <string name="NotYetImplemented">Bu işlev mevcut değil veya eksik.</string>
+    <string name="DefaultStatusText">Delta Chat Messengerim ile göderildi: https://delta.chat</string>
     <string name="Name" >Ad</string>
     <string name="EmailAddress">E-posta adresi</string>
+    <string name="CannotDeleteContact">Kullanımdaki kişiler silinemez, bunun yerine kişiyi engelleyin.</string>
+    <string name="BadEmailAddress">Hatalı eposta adresi.</string>
     <string name="ContactCreated">Kişi oluşturuldu.</string>
     <string name="ViewProfile">Profil görüntüsü</string>
     <!-- Translators: please use a very short string here, it should not much longer than
@@ -250,6 +279,7 @@
     <string name="OneMoment">Bir dakika ...</string>
     <string name="InviteMenuEntry">Davetiye gönderin</string>
     <string name="AdvancedSettings">Gelişmiş ayarlar</string>
+    <string name="AskResetNotifications">Geçerli sayfanın grupların ve kişilerin bütün bildirim ayarları ve sesleri sıfırlansın mı?</string>
     <string name="AttachFiles">Dosyaları iliştir</string>
     <string name="ErrGroupNameEmpty">Grup için bir ad girin</string>
     <string name="MsgGroupImageChanged">Grup resmi değişti.</string>
@@ -265,6 +295,7 @@
     <string name="Error">Hata: %1$s</string>
     <string name="NoNetwork">Ağ kullanılamıyor.</string>
     <string name="Audio">Ses</string>
+    <string name="PermNotificationTitle">%1$s\'e bağlandı</string>
     <string name="PermNotificationText">İletiler bekliyor ...</string>
     <string name="SettingsFor">%1$siçin ayarlar</string>
     <string name="AutoplayGifs">GİFleri otomatik oynat</string>
@@ -278,6 +309,7 @@
     <string name="NameAndStatus">Ad ve durum</string>
     <string name="MyStatus">Durumum</string>
     <string name="MsgGroupImageDeleted">Grup resmi silindi</string>
+    <string name="AskDeleteGroupImage">Grup resmini silmek istediğinizden emin misiniz?\n\nBu tüm grup üyelerinin aygıtlarını etkileyecek.</string>
     <string name="ExportImportHeader">Dışa aktarım ve içe aktarım</string>
     <string name="IncorrectPassword">Geçersiz parola</string>
     <string name="ImportBackup">Yedeklemeyi içe aktar</string>
@@ -285,7 +317,10 @@
     <string name="ExportPrivateKeys">Özel anahtarları dışa aktar</string>
     <string name="ImportPrivateKeys">Özel anahtarları içe aktar</string>
     <string name="NoRecentEmoji">Son kullanılan duygu simgeleri burada gösterilecek.</string>
+    <string name="E2eeOffBecauseOfUser">Uçtan uca şifrelemeyi etkinleştirmek için, ayarlarınızdaki ilgili seçeneği işaretleyin.</string>
     <string name="NotNow">Şimdi değil</string>
+    <string name="ArchiveChat">Söyleşiyi arşivle</string>
+    <string name="UnarchiveChat">Söyleşiyi arşivden kaldır</string>
     <string name="ArchivedChats">Arşivlenmiş söyleşiler</string>
     <string name="Archived">Arşivlenmiş</string>
     <string name="LeaveGroup">Gruptan ayrıl</string>
