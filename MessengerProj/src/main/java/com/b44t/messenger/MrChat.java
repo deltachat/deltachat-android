@@ -58,29 +58,15 @@ public class MrChat {
     public native String getProfileImage();
     public native boolean isUnpromoted();
     public native boolean isSelfTalk();
-
-    public String getDraft() {
-        return MrChatGetDraft(m_hChat);
-    }
-
-    public long getDraftTimestamp() {
-        return MrChatGetDraftTimestamp(m_hChat);
-    }
-
+    public native String getDraft();
+    public native long getDraftTimestamp();
     public int getDraftReplyToMsgId() {
-        return MrChatGetDraftReplyToMsgId(m_hChat);
+        return 0;
     }
-
-    public int setDraft(String draft/*NULL=delete*/, long replyToMsgId) {
-        return MrChatSetDraft(m_hChat, draft, replyToMsgId);
-    }
+    public native int setDraft(String draft/*NULL=delete*/, long replyToMsgId);
 
     private long                  m_hChat;  // must not be renamed as referenced by JNI under the name "m_hChat"
     private native static void    MrChatUnref                (long hChat);
-    private native static String  MrChatGetDraft             (long hChat); // returns null for "no draft"
-    private native static long    MrChatGetDraftTimestamp    (long hChat); // returns 0 for "no draft"
-    private native static int     MrChatGetDraftReplyToMsgId (long hChat); // returns 0 for "no draft"
-    private native static int     MrChatSetDraft             (long hChat, String draft/*NULL=delete*/, long replyToMsgId);
 
 
     /* additional functions that are not 1:1 available in the backend

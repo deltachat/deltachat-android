@@ -67,34 +67,13 @@ public class MrMsg {
         m_hMsg = 0;
     }
 
-    public int getId() {
-        return MrMsgGetId(m_hMsg);
-    }
-
-    public String getText() {
-        return MrMsgGetText(m_hMsg);
-    }
-
-    public long getTimestamp() {
-        return MrMsgGetTimestamp(m_hMsg);
-    }
-
-    public int getType() {
-        return MrMsgGetType(m_hMsg);
-    }
-
-    public int getState() {
-        return MrMsgGetState(m_hMsg);
-    }
-    public int getChatId() {
-        return MrMsgGetChatId(m_hMsg);
-    }
-    public int getFromId() {
-        return MrMsgGetFromId(m_hMsg);
-    }
-    public int getToId() {
-        return MrMsgGetToId(m_hMsg);
-    }
+    public native int getId();
+    public native String getText();
+    public native long getTimestamp();
+    public native int getType();
+    public native int getState();
+    public native int getChatId();
+    public native int getFromId();
 
     public native int    getWidth(int def);
     public native int    getHeight(int def);
@@ -119,14 +98,6 @@ public class MrMsg {
 
     private long                  m_hMsg; // must not be renamed as referenced by JNI under the name "m_hMsg"
     private native static void    MrMsgUnref                 (long hMsg);
-    private native static int     MrMsgGetId                 (long hMsg);
-    private native static String  MrMsgGetText               (long hMsg);
-    private native static long    MrMsgGetTimestamp          (long hMsg);
-    private native static int     MrMsgGetType               (long hMsg);
-    private native static int     MrMsgGetState              (long hMsg);
-    private native static int     MrMsgGetChatId             (long hMsg);
-    private native static int     MrMsgGetFromId             (long hMsg);
-    private native static int     MrMsgGetToId               (long hMsg);
 
 
     /* additional functions that are not 1:1 available in the backend
