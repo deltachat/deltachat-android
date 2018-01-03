@@ -149,8 +149,6 @@ public class MrMsg {
 
         ret.id            = getId();
         ret.from_id       = getFromId();
-        ret.to_id         = new TLRPC.TL_peerUser();
-        ret.to_id.user_id = getToId();
         ret.date          = (int)getTimestamp();
         ret.dialog_id     = getChatId();
         ret.unread        = state!=MR_OUT_MDN_RCVD; // the state of outgoing messages

@@ -323,7 +323,7 @@ public class MessageObject {
     }
 
     private void generateLayout() {
-        if (type != MO_TYPE0_TEXT || messageOwner.to_id == null || messageText == null || messageText.length() == 0) {
+        if (type != MO_TYPE0_TEXT || messageText == null || messageText.length() == 0) {
             return;
         }
 

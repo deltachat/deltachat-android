@@ -214,8 +214,7 @@ public class AudioSelectActivity extends BaseFragment implements NotificationCen
                         TLRPC.TL_message message = new TLRPC.TL_message();
                         message.out = true;
                         message.id = id;
-                        message.to_id = new TLRPC.TL_peerUser();
-                        message.to_id.user_id = message.from_id = MrContact.MR_CONTACT_ID_SELF;
+                        message.from_id = MrContact.MR_CONTACT_ID_SELF;
                         message.date = (int) (System.currentTimeMillis() / 1000);
                         message.message = "-1";
                         message.attachPath = audioEntry.path;

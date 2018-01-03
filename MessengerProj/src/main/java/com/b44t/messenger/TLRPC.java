@@ -71,14 +71,6 @@ public class TLRPC {
 	public static class TL_documentAttributeFilename extends DocumentAttribute {
 	}
 
-	public static class Peer extends TLObject {
-		public int user_id;
-		public final int chat_id = 0;
-	}
-
-	public static class TL_peerUser extends Peer {
-	}
-
 	public static class TL_messageMediaEmpty extends MessageMedia {
 	}
 
@@ -238,7 +230,6 @@ public class TLRPC {
     public static class Message extends TLObject {
         public int id;
         public int from_id;
-        public Peer to_id;
         public int date;
         public final int reply_to_msg_id = 0;
         public String message;
