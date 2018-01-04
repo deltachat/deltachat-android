@@ -91,6 +91,8 @@ public class Theme {
     public static final int MSG_AUDIO_SEEKBAR_DARK_COLOR = 0xFFf68751; // same color as in audio-icon, also used for the record-button
     public static final int MSG_AUDIO_SEEKBAR_LITE_COLOR = 0xFFfbc8af;
 
+    public static final int MSG_SYSTEM_CMD_COLOR = MSG_AUDIO_NAME_COLOR; // just the same color, there is no other dependency between system commands and audio messages
+
     public static Drawable backgroundDrawableIn;
     public static Drawable backgroundDrawableInSelected;
     public static Drawable backgroundDrawableOut;

@@ -93,9 +93,12 @@ public class MessageObject {
             textPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
             textPaint.setColor(Theme.MSG_TEXT_COLOR);
             textPaint.linkColor = Theme.MSG_LINK_TEXT_COLOR;
+        }
 
+        if( systemCmdPaint == null ) {
             systemCmdPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
-            systemCmdPaint.setColor(Theme.MSG_AUDIO_NAME_COLOR);
+            systemCmdPaint.setColor(Theme.MSG_SYSTEM_CMD_COLOR);
+            systemCmdPaint.linkColor = Theme.MSG_SYSTEM_CMD_COLOR;
         }
 
         messageOwner = message;
