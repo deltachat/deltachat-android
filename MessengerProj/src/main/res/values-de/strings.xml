@@ -420,4 +420,4 @@
     <string name="AutocryptKeyTransferBadCode">Ungültiger Setup-Code. Bitte versuchen Sie es erneut.\n\nWenn Sie den Setup-Code nicht mehr haben, können Sie auch jederzeit einen neue Autocrypt-Setup-Nachricht mit einem neuen Setup-Code erzeugen.</string>
     <string name="AutocryptKeyTransferSucceeded">Ihr Schlüssel wurde erfolgreich übertragen. Dieses Gerät wird nun Autocrypt mit demselben Schlüssel wie das Andere verwenden.</string>
     <string name="Retry">Wiederholen</string>
-</resources>
+    </resources>

@@ -421,4 +421,4 @@ La dernière clé importée sera utilisée comme nouvelle clé par défaut</stri
     <string name="AutocryptKeyTransferBadCode">Mauvais code d\'installation. Veuillez réessayer.\n\nSi vous ne vous souvenez pas du code d\'installation, lancez à nouveau le transfert de clé depuis l\'autre appareil.</string>
     <string name="AutocryptKeyTransferSucceeded">Clé transférée avec succès. Cet appareil est maintenant prêt à utiliser Autocrypt avec la même clé que l\'autre appareil.</string>
     <string name="Retry">Recommencez</string>
-</resources>
+    </resources>

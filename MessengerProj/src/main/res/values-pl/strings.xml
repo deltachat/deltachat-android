@@ -448,4 +448,5 @@
     <string name="AutocryptKeyTransferBadCode">Zły kod konfiguracyjny. Spróbuj ponownie.\n\nJeśli nie pamiętasz kodu konfiguracji, po prostu uruchom ponownie transfer klucza na drugim urządzeniu.</string>
     <string name="AutocryptKeyTransferSucceeded">Udany transfer klucza. To urządzenie jest teraz gotowe do użycia automatycznego szyfrowania za pomocą tego samego klucza, co na drugim urządzeniu.</string>
     <string name="Retry">Powtórz</string>
+    <string name="SelfTalkSubtitle">Wiadomości wysłane do siebie</string>
 </resources>

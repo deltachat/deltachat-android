@@ -405,4 +405,4 @@
     <string name="AutocryptKeyTransferBadCode">Kod rregullimi i gabuar. Ju lutemi, riprovoni.\n\nNëse s’e mbani mend kodin e rregullimit, thjesht rinisni transferimin e kyçit që nga pajisja tjetër.</string>
     <string name="AutocryptKeyTransferSucceeded">Kyçi u transferua me sukses. Tani kjo pajisje është gati të përdorë Autocrypt-in me të njëjtin kyç si pajisja tjetër.</string>
     <string name="Retry">Riprovoni</string>
-</resources>
+    </resources>

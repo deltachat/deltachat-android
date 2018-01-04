@@ -420,4 +420,5 @@
     <string name="AutocryptKeyTransferBadCode">Codice di configurazione errato.\n\nSe non si ricorda il codice di configurazione, avviare nuovamente il trafserimento chiavi sull\'altro dispositivo.</string>
     <string name="AutocryptKeyTransferSucceeded">Chiave trasferita con successo. Questo dispositivo è pronto per usare Autocrypt con la stessa chiave dell\'altro dispositivo.</string>
     <string name="Retry">Riprovare</string>
+    <string name="SelfTalkSubtitle">Messaggi inviati a se stessi</string>
 </resources>
