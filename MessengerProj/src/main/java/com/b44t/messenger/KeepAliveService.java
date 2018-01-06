@@ -24,6 +24,7 @@ package com.b44t.messenger;
 
 import android.app.Notification;
 import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
@@ -85,6 +86,8 @@ public class KeepAliveService extends Service {
     public static final int FG_NOTIFICATION_ID = 4142;
     private Notification createNotification()
     {
+        Intent intent = new Intent(this, LaunchActivity.class);
+        PendingIntent contentIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
         // a notification _must_ contain a small icon, a title and a text, see https://developer.android.com/guide/topics/ui/notifiers/notifications.html#Required
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this);
 
@@ -101,6 +104,7 @@ public class KeepAliveService extends Service {
             builder.setPriority(NotificationCompat.PRIORITY_MIN);
         }
         builder.setWhen(0);
+        builder.setContentIntent(contentIntent);
         builder.setSmallIcon(R.drawable.notification_permanent);
         return builder.build();
     }
