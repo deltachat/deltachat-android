@@ -208,10 +208,10 @@
     <string name="PermissionOpenSettings">Einstellungen anpassen</string>
     <!--Intro view-->
     <string name="Intro1Headline">Delta Chat</string>
-    <string name="Intro1Message">Der Messenger mit der <![CDATA[<b>größten Reichweite</b>]]> der Welt.<![CDATA[<br/><b>Frei</b>]]> und <![CDATA[<b>sicher</b>]]>.</string>
+    <string name="Intro1Message">Der Messenger mit der <![CDATA[<b>größten Reichweite</b>]]> der Welt. <![CDATA[<b>Frei</b>]]> und <![CDATA[<b>unabhängig</b>]]>.</string>
 
     <string name="Intro2Headline">Unabhängig</string>
-    <string name="Intro2Message"><![CDATA[<b>Keine Abhängigkeiten</b>]]> von fremden Diensten und Servern. Die App verwendet nur Ihren E-Mail-Server.</string>
+    <string name="Intro2Message"><![CDATA[<b>Es gibt keinen Delta-Chat-Server.</b>]]> Die App verwendet nur Ihren E-Mail-Server.</string>
 
     <string name="Intro3Headline">Schnell</string>
     <string name="Intro3Message"><![CDATA[<b>Push-Nachrichten</b>]]> in Sekunden.<![CDATA[<br/>]]>Rasantes Interface.</string>
@@ -222,7 +222,7 @@
     <string name="Intro5Headline">Frei</string>
     <string name="Intro5Message">Open Source. Keine Werbung. Kein Abo.<![CDATA[<br/>]]>Keine Bindung an die Mobilfunknummer.</string>
 
-    <string name="Intro6Headline">Sicher</string>
+    <string name="Intro6Headline">Verschlüsselt</string>
     <string name="Intro6Message"><![CDATA[<b>Verschlüsselung</b>]]> mit allen gängigen Verfahren. Die Nachrichten bleiben auf Ihren Servern.</string>
 
     <string name="Intro7Headline">Vertraulich</string>
@@ -334,7 +334,7 @@
     the string needed for video time+size (0:00, 12,3 Mib) -->
     <string name="OneMoment">Einen Moment …</string>
     <string name="NoChatsHelp">Unten auf das Plussymbol für die erste Chatnachricht tippen; der Menüknopf öffnet die weiteren Optionen.</string>
-    <string name="Intro7Message"><![CDATA[<b>Delta Chat</b>]]> ist für die sichere geschäftliche Kommunikation geeignet.</string>
+    <string name="Intro7Message"><![CDATA[<b>Delta Chat</b>]]> ist für die vertrauliche geschäftliche Kommunikation geeignet.</string>
     <string name="InviteMenuEntry">Einladungen versenden</string>
     <string name="InviteText">Ich verwende nun auch den Delta Chat Messenger - %1$s - und bin dort unter %2$s erreichbar.</string>
     <string name="AdvancedSettings">Fortgeschrittene Einstellungen</string>
@@ -420,4 +420,5 @@
     <string name="AutocryptKeyTransferBadCode">Ungültiger Setup-Code. Bitte versuchen Sie es erneut.\n\nWenn Sie den Setup-Code nicht mehr haben, können Sie auch jederzeit einen neue Autocrypt-Setup-Nachricht mit einem neuen Setup-Code erzeugen.</string>
     <string name="AutocryptKeyTransferSucceeded">Ihr Schlüssel wurde erfolgreich übertragen. Dieses Gerät wird nun Autocrypt mit demselben Schlüssel wie das Andere verwenden.</string>
     <string name="Retry">Wiederholen</string>
-    </resources>
+    <string name="SelfTalkSubtitle">Nachrichten von mir an mich</string>
+</resources>

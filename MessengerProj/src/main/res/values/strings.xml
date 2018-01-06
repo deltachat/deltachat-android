@@ -208,13 +208,13 @@
     <string name="PermissionOpenSettings">Settings</string>
     <!--Intro view-->
     <string name="Intro1Headline">Delta Chat</string>
-    <string name="Intro1Message">The messenger with the <![CDATA[<b>broadest audience</b>]]> in the world.<![CDATA[<br/><b>Free</b>]]> and <![CDATA[<b>independent</b>]]>.</string>
+    <string name="Intro1Message">The messenger with the <![CDATA[<b>broadest audience</b>]]> in the world. <![CDATA[<b>Free</b>]]> and <![CDATA[<b>independent</b>]]>.</string>
 
     <string name="Intro2Headline">Independent</string>
-    <string name="Intro2Message"><![CDATA[<b>Independent</b>]]> of foreign computers or services. The app only uses your email-server.</string>
+    <string name="Intro2Message"><![CDATA[<b>There is no Delta Chat server.</b>]]> The app only uses your email server.</string>
 
     <string name="Intro3Headline">Fast</string>
-    <string name="Intro3Message"><![CDATA[<b>Push-messages</b>]]> in seconds.<![CDATA[<br/>]]>Rapid interface.</string>
+    <string name="Intro3Message"><![CDATA[<b>Push messages</b>]]> in seconds.<![CDATA[<br/>]]>Rapid interface.</string>
 
     <string name="Intro4Headline">Powerful</string>
     <string name="Intro4Message"><![CDATA[<b>Unlimited</b>]]> chats, images, videos, audio messages and more. Multi-client capable.</string>
