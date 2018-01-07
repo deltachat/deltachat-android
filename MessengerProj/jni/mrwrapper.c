@@ -126,7 +126,7 @@ static jintArray mrarray2jintArray_n_mrarray_unref(JNIEnv *env, mrarray_t* ca)
 	
 	if( ca ) {
 		if( icnt ) {
-			uintptr_t* ca_data = mrarray_get_uintptr(ca);
+			uintptr_t* ca_data = mrarray_get_raw(ca);
 			if( sizeof(uintptr_t)==sizeof(jint) ) {
 				(*env)->SetIntArrayRegion(env, ret, 0, icnt, (jint*)ca_data);
 			}
