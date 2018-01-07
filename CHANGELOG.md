@@ -1,5 +1,16 @@
 # Delta Chat Changelog
 
+## v0.12.0
+2018-01-07
+
+* Gossip keys of other group members in the encrypted payload (will also be evaluated in one of the next versions)
+* Use SHA-256 instead of SHA-1 in signatures
+* Make the permanent notification clickable
+* Update permanent notification after import
+* Fix rendering of system messages
+* Various bug fixes
+* Update Albanian, French, Italian, Norwegian, Polish, Russian and Turkish translations
+
 ## v0.11.4
 2017-12-17
 
@@ -7,7 +18,7 @@
 * Connect after importing a backup
 * Reading memory hole headers
 * Add Albanian translation
-* Update Albanian, German, Italian, Polish, Portuguese, Russian, Turkish and Ukrainian translations
+* Update German, Italian, Polish, Portuguese, Russian, Turkish and Ukrainian translations
 
 ## v0.10.0
 2017-11-29
