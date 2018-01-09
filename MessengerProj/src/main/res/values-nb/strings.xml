@@ -82,6 +82,7 @@
     <string name="BlockedContacts">Blokkerte kontakter</string>
     <string name="Default">Forvalg</string>
     <string name="OnlyIfSilent">Bare hvis lydløs</string>
+    <string name="ChatBackground">Sludrebakgrunn</string>
     <string name="SendByEnter">Send med "Enter"</string>
     <string name="Help">Hjelp</string>
     <string name="Enabled">På</string>
@@ -90,12 +91,16 @@
     <string name="BadgeNumber">Vis antall i ikon hvis mulig</string>
     <string name="Short">Kort</string>
     <string name="Long">Lang</string>
+    <string name="RaiseToSpeak">Hev for å snakke</string>
     <string name="EditName">Rediger navn</string>
     <string name="NotificationsPriority">Vis</string>
     <string name="NotificationsPriorityDefault">Normal prioritet</string>
     <string name="NotificationsPriorityHigh">Høy prioritet</string>
     <string name="NotificationsPriorityMax">Høyeste prioritet</string>
     <string name="RepeatNotifications">Gjenta merknader</string>
+    <string name="NotificationsOther">Annet</string>
+    <string name="InChatSound">Lyder i sludring</string>
+    <string name="SmartNotifications">Begrens merknader</string>
     <string name="SmartNotificationsSoundAtMost">Maks.</string>
     <string name="SmartNotificationsTimes">tider</string>
     <string name="SmartNotificationsWithin">innen</string>
@@ -109,9 +114,18 @@
     <string name="KeepMediaForever">For alltid</string>
     <!--passcode view-->
     <string name="Passcode">Programlås</string>
+    <string name="ChangePasscode">Endre passord</string>
+    <string name="ChangePasscodeInfo">Hvis du setter opp et passord til, vil et låseikon vises på sludresiden. Trykk på det for å låse programmet.\n\nMerk: Hvis du glemmer passordet, må du slette og reinstallere programmet.</string>
     <string name="PasscodePIN">PIN</string>
     <string name="PasscodePassword">Passord</string>
+    <string name="EnterCurrentPasscode">Skriv inn ditt nåværende passord</string>
+    <string name="EnterNewFirstPasscode">Skriv inn et passord</string>
+    <string name="EnterNewPasscode">Skriv inn ditt nye passord</string>
+    <string name="EnterYourPasscode">Skriv inn passordet ditt</string>
+    <string name="ReEnterYourPasscode">Skriv inn passordet ditt igjen</string>
+    <string name="PasscodeDoNotMatch">Passordene stemmer ikke overens</string>
     <string name="AutoLock">Autolås</string>
+    <string name="AutoLockInfo">Krev passord etter inaktivitet.</string>
     <string name="UnlockFingerprint">Lås opp med fingeravtrykk</string>
     <string name="FingerprintInfo">Bekreft fingeravtrykk for å fortsette</string>
     <string name="FingerprintNotRecognized">Fingeravtrykket ble ikke gjenkjent. Prøv igjen</string>
@@ -126,14 +140,28 @@
     <string name="CropImage">Beskjær bilde</string>
     <string name="EditImage">Rediger bilde</string>
     <string name="Enhance">Forbedre</string>
+    <string name="Highlights">Framhevinger</string>
     <string name="Contrast">Kontrast</string>
+    <string name="Exposure">Eksponering</string>
+    <string name="Warmth">Varme</string>
+    <string name="Saturation">Metning</string>
+    <string name="Vignette">Vignettering</string>
     <string name="Shadows">Skygger</string>
+    <string name="Grain">Kornethet</string>
+    <string name="Sharpen">Øk skarphet</string>
+    <string name="Fade">Toning</string>
+    <string name="Tint">Missfarging</string>
     <string name="TintShadows">Skygger</string>
+    <string name="TintHighlights">Framhevinger</string>
+    <string name="Curves">Kurver</string>
     <string name="CurvesAll">ALLE</string>
     <string name="CurvesRed">RØD</string>
     <string name="CurvesGreen">GRØNN</string>
     <string name="CurvesBlue">BLÅ</string>
+    <string name="Blur">Tilsmussing</string>
     <string name="BlurOff">Av</string>
+    <string name="BlurLinear">Lineæritet</string>
+    <string name="BlurRadial">Gon</string>
     <string name="DiscardChanges">Forkast endringer?</string>
     <string name="ClearButton">Tøm</string>
     <string name="PickerPhotos">Bilder</string>
@@ -154,6 +182,7 @@
     <string name="Forward">Videresend</string>
     <string name="FromCamera">Fra kamera</string>
     <string name="FromGalley">Fra galleri</string>
+    <string name="Set">Sett</string>
     <string name="OK">OK</string>
     <string name="Crop">BESKJÆR</string>
     <!--messages-->
@@ -185,10 +214,14 @@
     <string name="Intro2Message"><![CDATA[<b>Ingen avhengigheter</b>]]> på datamaskiner annensteds hen, eller tjenester. Programmet bruker kun e-posttjeneren din.</string>
 
     <string name="Intro3Headline">Rask</string>
+    <string name="Intro3Message"><![CDATA[<b>Push-meldinger</b>]]> på kun sekunder.<![CDATA[<br/>]]>Hurtig grensesnitt.</string>
+
     <string name="Intro4Headline">Kraftig</string>
     <string name="Intro4Message"><![CDATA[<b>Ubegrensede</b>]]> sludringer, bilder, videoer, lydmeldinger med mer. Multiklient-støtte.</string>
 
     <string name="Intro5Headline">Ledig</string>
+    <string name="Intro5Message"><![CDATA[<b>Delta Chat</b>]]> er gratis for alltid.<![CDATA[<br/>]]>Friprog. Ingen reklame. Inget abonnement. Inget tvunget tilbyderforhold.</string>
+
     <string name="Intro6Headline">Trygt</string>
     <string name="Intro6Message"><![CDATA[<b>Kryptert</b>]]> med alle vanlige alle vanlige algoritmer. Meldingene forblir på tjenerne.</string>
 
@@ -256,6 +289,12 @@
     <string name="formatterMonthYear">MMMM yyyy</string>
     <string name="formatterMonth">dd MMM</string>
     <string name="formatterYear">dd.MM.yyyy</string>
+    <string name="chatDate">EEE, d, MMMM</string>
+    <string name="chatFullDate">EEE, d. MMMM, yyyy</string>
+    <string name="formatterWeek">EEE</string>
+    <string name="formatterDay24H">HH:mm</string>
+    <string name="formatterDay12H">h:mm a</string>
+    <string name="formatDateAtTime">%1$s klokka %2$s</string>
     <string name="AccountSettings">Kontoinnstillinger</string>
     <string name="MyAccount">Min konto</string>
     <string name="MyName">Mitt navn</string>
@@ -299,8 +338,10 @@
     <string name="InviteMenuEntry">Send invitasjoner</string>
     <string name="InviteText">Jeg bruker Delta Chat-meldingstjenesten nå - %1$s - du kan tekste meg på %2$s</string>
     <string name="AdvancedSettings">Avanserte innstillinger</string>
+    <string name="AskResetNotifications">Tilbakestill alle merknadsinnstillinger og lyder for gjeldende side, kontakter og grupper?</string>
     <string name="AttachFiles">Legg ved filer</string>
     <string name="ErrGroupNameEmpty">Skriv inn et navn for gruppen.</string>
+    <string name="MsgNewGroupDraftHint">Forfatt den første meldingen, noe som lar andre svare i gruppen.\n\n• Det er greit at ikke alle medlemmer bruker Delta Chat.\n\n• Levering av den første meldingen kan ta sin tid.</string>
     <string name="MsgNewGroupDraft">Hei, jeg har akkurat opprettet gruppen \"%1$s\" for oss.</string>
     <string name="MsgGroupNameChanged">Gruppenavn endret fra \"%1$s\" til \"%2$s\".</string>
     <string name="MsgGroupImageChanged">Gruppebilde endret.</string>
@@ -310,6 +351,7 @@
     <string name="AskRemoveMemberFromGroup">Fjern <![CDATA[<b>]]>%1$s<![CDATA[</b>]]> fra gruppen?</string>
     <string name="ErrSelfNotInGroup">Du må være medlem av gruppen for å utføre denne handlingen.</string>
     <string name="MsgGroupLeft">Gruppe oppløst.</string>
+    <string name="NoMessagesHint">Send melding til <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>:\n\n• Det er greit hvis <![CDATA[<b>]]>%2$s<![CDATA[</b>]]> ikke bruker Delta Chat.\n\n• Levering av den første meldingen kan ta sin tid.</string>
     <string name="SendNRcvReadReceipts">Motta og send meldingskvitteringer</string>
     <string name="PreferE2EEncryption">Foretrekk ende-til-ende -kryptering</string>
     <string name="E2EManagePrivateKeys">Behandle private nøkler</string>
@@ -326,23 +368,31 @@
     <string name="PermNotificationText">Venter på meldinger…</string>
     <string name="SettingsFor">Innstillinger for %1$s</string>
     <string name="AutoplayGifs">Spill av GIF-filer automatisk</string>
+    <string name="HelpUrl">https://delta.chat/en/help</string>
     <string name="EncryptedMessage">Kryptert melding</string>
     <string name="Encryption">Kryptering</string>
     <string name="EncrinfoE2E">Ende-til-ende -kryptering påskrudd.</string>
     <string name="EncrinfoE2EExplain">Hvis alle fingeravtrykkene stemmer overens på den andre enheten, er tilkoblingen trygg.</string>
     <string name="EncrinfoTransport">Transport-kryptering ihvertfall opptil min tjener.</string>
     <string name="EncrinfoNone">Ingen kryptering på min tjener.</string>
+    <string name="EncrinfoNoE2EExplain">Ende-til-ende -kryptering vil bli brukt hvis mottakeren også bruker et Autocrypt-program.</string>
     <string name="EncrinfoFingerprints">Fingeravtrykk</string>
     <string name="Backup">Sikkerhetskopi</string>
     <string name="ImportBackupExplain2">For å importere en sikkerhetskopi, importer den til <![CDATA[<i>]]>%1$s<![CDATA[</i>]]> og reinstaller programmet.</string>
+    <string name="ReadReceiptMailBody">Dette er en meldingskvittering for meldingen \"%1$s\".\n\nDenne meldingskvitteringen bekrefter bare at meldingen ble vist på mottakerens enhet. Det finnes ingen garanti for at mottakeren har lest meldingsinnholdet.</string>
+    <string name="ReadReceipt">Meldingskvittering</string>
     <string name="NameAndStatus">Navn og status</string>
     <string name="MyStatus">Min status</string>
+    <string name="MyStatusExplain">Denne statusen viser i bunntekster for e-post, samt andre steder.</string>
     <string name="MsgGroupImageDeleted">Gruppebilde slettet.</string>
     <string name="AskDeleteGroupImage">Er du sikker på at du vil slette dette gruppebildet?\n\nDette vil ha innvirkning på alle enhetene tilhørende gruppemedlemmene.</string>
     <string name="ExportImportHeader">Eksport og import</string>
+    <string name="ImportExportExplain">Eksporterte filer vil inneholde hemmelige nøkler! Ta vare på dem på en trygg plass, eller slett dem så snart som mulig.</string>
     <string name="EnterPasswordToContinue">Skriv inn passordet for %1$s for å fortsette:</string>
     <string name="IncorrectPassword">Uriktig passord.</string>
+    <string name="ImportBackupAsk">Sikkerhetskopi funnet i <![CDATA[<i>]]>%1$s<![CDATA[</i>]]>.\n\nØnsker du å importere og bruke alle data og innstillinger fra den?</string>
     <string name="ImportBackup">Importer sikkerhetskopi</string>
+    <string name="NoBackupFound">Fant ingen sikkerhetskopier.\n\nKopier sikkerhetskopien til <![CDATA[<i>]]>%1$s<![CDATA[</i>]]> og prøv igjen. Alternativt, trykk \"Start meldingsforsendelse\" for normal oppsettsprosess.</string>
     <string name="FilesSuccessfullyExported">Filer eksporter til <![CDATA[<i>]]>%1$s<![CDATA[</i>]]>.</string>
     <string name="ExportBackup">Eksporter sikkerhetskopi</string>
     <string name="ExportPrivateKeys">Eksporter private nøkler</string>
@@ -359,4 +409,16 @@
     <string name="LeaveGroup">Forlat gruppe</string>
     <string name="AskLeaveGroup">Er du sikker på at du vil forlate denne gruppen?</string>
     <string name="Never">Aldri</string>
-    </resources>
+    <string name="AutocryptKeyTransferInitiate">Igangsett Autocrypt-nøkkeloverføring</string>
+    <string name="AutocryptKeyTransfer">Autocrypt-nøkkeloverføring</string>
+    <string name="AutocryptKeyTransferMsgBeforeSend">The <![CDATA[<i>]]>Autocrypt-nøkkeloverføring<![CDATA[</i>]]> krever at e-postklienten på den andre enheten er Autocrypt-kompatibel.\n\nDu kan så sende din hemmelige nøkkel til deg selv. Nøkkelen vil bli kryptert av en oppsettskode som vises her og må skrives inn på den andre enheten.</string>
+    <string name="AutocryptKeyTransferMsgAfterSend">Nøkkelen din har blitt sendt til deg selv. Bytt til den andre enheten og åpne oppsettsmeldingen. Du bør bli forespurt om å oppgi en oppsettskode. Skriv in følgende siffer:\n\n%1$s\n\nNår du er ferdig, vil din andre enhet også kunne bruke Autocrypt.</string>
+    <string name="AutocryptSetupMessageSubject">Autocrypt-oppsettsmelding</string>
+    <string name="AutocryptSetupMessageGeneralBody">Dette er Autocrypt-oppsettsmeldingen brukt til å overføre nøkkelen din mellom klienter.\n\nFor å dekryptere å bruke din nøkkel, åpne meldingen i en Autocrypt-kompatibel klient og skriv inn oppsettskoden som vises på enheten som genererer den.</string>
+    <string name="AutocryptSetupMessageTapBody">Dette er Autocrypt-oppsettsmeldingen brukt til å overføre nøkkelen din mellom klienter.\n\nFor å dekryptere å bruke din nøkkel, trykk på denne meldingen.</string>
+    <string name="AutocryptKeyTransferPleaseEnterCode">Skriv inn oppsettskoden som vises på den andre enheten.</string>
+    <string name="AutocryptKeyTransferBadCode">Feil oppsettskode. Prøv igjen.\n\nHvis du ikke husker den, sett igang nøkkeloverføringen på en andre enheten igjen.</string>
+    <string name="AutocryptKeyTransferSucceeded">Nøkkel overført. Denne enheten er nå klar til å bruke Autocrypt med samme nøkkel som den andre enheten.</string>
+    <string name="Retry">Prøv igjen</string>
+    <string name="SelfTalkSubtitle">Meldinger jeg har sendt til meg selv</string>
+</resources>

@@ -448,4 +448,5 @@
     <string name="AutocryptKeyTransferBadCode">Неверный код настройки. Пожалуйста, повторите.\n\nЕсли Вы не помните код настройки, вернитесь к исходному устройству и передайте ключ ещё раз.</string>
     <string name="AutocryptKeyTransferSucceeded">Ключ передан успешно. Сейчас это устройство может использовать Autocrypt с тем же ключом, что и на другом устройстве.</string>
     <string name="Retry">Повторить</string>
-    </resources>
+    <string name="SelfTalkSubtitle">Сообщения самому себе</string>
+</resources>
