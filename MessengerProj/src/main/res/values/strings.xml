@@ -17,7 +17,7 @@
     <string name="UnmuteNotifications">Unmute</string>
     <string name="Draft">Draft</string>
     <!--audio view-->
-    <string name="NoAudio">Files added to the music library of your device will appear here.</string>
+    <string name="NoAudio">Files from the music library.</string>
     <string name="AttachMusic">Music</string>
     <!--documents view-->
     <string name="SelectFile">Select File</string>
@@ -59,9 +59,9 @@
     <string name="SendMessageTo">Send message to …</string>
     <string name="EnterGroupNamePlaceholder">Enter group name</string>
     <!--group info view-->
-    <string name="AddMember">Add member</string>
+    <string name="AddMember">Grant membership</string>
     <string name="Notifications">Notifications</string>
-    <string name="RemoveMember">Remove member</string>
+    <string name="RemoveMember">Revoke membership</string>
     <!--contact info view-->
     <string name="NewContactTitle">New contact</string>
     <string name="BlockContact">Block contact</string>
@@ -83,7 +83,7 @@
     <string name="Default">Default</string>
     <string name="OnlyIfSilent">Only when silent</string>
     <string name="ChatBackground">Chat background</string>
-    <string name="SendByEnter">Send with Enter key</string>
+    <string name="SendByEnter">Send with \"⏎\"</string>
     <string name="Help">Help</string>
     <string name="Enabled">On</string>
     <string name="Disabled">Off</string>
@@ -115,7 +115,7 @@
     <!--passcode view-->
     <string name="Passcode">Passcode Lock</string>
     <string name="ChangePasscode">Change Passcode</string>
-    <string name="ChangePasscodeInfo">When you set up an additional passcode, a lock icon will appear on the chats page. Tap it to lock the app.\n\nNote: if you forget the passcode, you\'ll need to delete and reinstall the app.</string>
+    <string name="ChangePasscodeInfo">When you set up an additional passcode, a lock icon will appear on the chats page. Tap it to lock the app.\n\nNote: If you forget the passcode, you\'ll need to delete and reinstall the app.</string>
     <string name="PasscodePIN">PIN</string>
     <string name="PasscodePassword">Password</string>
     <string name="EnterCurrentPasscode">Enter your current passcode</string>
@@ -148,7 +148,7 @@
     <string name="Vignette">Vignette</string>
     <string name="Shadows">Shadows</string>
     <string name="Grain">Grain</string>
-    <string name="Sharpen">Sharpen</string>
+    <string name="Sharpen">Sharpness</string>
     <string name="Fade">Fade</string>
     <string name="Tint">Tint</string>
     <string name="TintShadows">Shadows</string>
@@ -204,23 +204,23 @@
     <!--permissions-->
     <string name="PermissionContacts">Access to contacts needed to connect with your friends across all your devices.</string>
     <string name="PermissionStorage">Storage access needed to send and save photos, videos, music, and other media.</string>
-    <string name="PermissionNoAudio">Microphone access needed to send voice messages.</string>
+    <string name="PermissionNoAudio">Mic access needed to send voice messages.</string>
     <string name="PermissionOpenSettings">Settings</string>
     <!--Intro view-->
     <string name="Intro1Headline">Delta Chat</string>
-    <string name="Intro1Message">The messenger with the <![CDATA[<b>broadest audience</b>]]> in the world. <![CDATA[<b>Free</b>]]> and <![CDATA[<b>independent</b>]]>.</string>
+    <string name="Intro1Message">The messenger with the <![CDATA[<b>broadest reach</b>]]> worldwide. <![CDATA[<b>Free</b>]]> and <![CDATA[<b>independent</b>]]>.</string>
 
     <string name="Intro2Headline">Independent</string>
-    <string name="Intro2Message"><![CDATA[<b>There is no Delta Chat server.</b>]]> The app only uses your email server.</string>
+    <string name="Intro2Message"><![CDATA[<b>There is no Delta Chat server.</b>]]> The app only uses your mail server.</string>
 
     <string name="Intro3Headline">Fast</string>
-    <string name="Intro3Message"><![CDATA[<b>Push messages</b>]]> in seconds.<![CDATA[<br/>]]>Rapid interface.</string>
+    <string name="Intro3Message"><![CDATA[<b>Delivery</b>]]> in seconds.<![CDATA[<br/>]]>Rapid interface.</string>
 
     <string name="Intro4Headline">Powerful</string>
     <string name="Intro4Message"><![CDATA[<b>Unlimited</b>]]> chats, images, videos, audio messages and more. Multi-client capable.</string>
 
     <string name="Intro5Headline">Free</string>
-    <string name="Intro5Message"><![CDATA[<b>Delta Chat</b>]]> is free forever.<![CDATA[<br/>]]>Open-source. No ads. No subscription. No vendor lock-in.</string>
+    <string name="Intro5Message"><![CDATA[<b>Delta Chat</b>]]> is forever gratis.<![CDATA[<br/>]]>Libre copyleft. No ads. No subscription. No vendor lock-in.</string>
 
     <string name="Intro6Headline">Encrypted</string>
     <string name="Intro6Message"><![CDATA[<b>Encrypted</b>]]> with all common algorithms. Messages stay on your servers.</string>
@@ -304,7 +304,7 @@
     <string name="AccountSettings">Account settings</string>
     <string name="MyAccount">My account</string>
     <string name="MyName">My name</string>
-    <string name="MyNameExplain">Your name, as shown to the recipients. If left blank, only your email address will be sent.</string>
+    <string name="MyNameExplain">Your name, as shown to the recipients. If left blank, only your e-mail address will be sent.</string>
     <string name="Password">Password</string>
     <string name="SmtpPassword">SMTP password</string>
     <string name="FromAbove">From above</string>
@@ -317,8 +317,8 @@
     <string name="ImapPort">IMAP port</string>
     <string name="InboxHeadline">Inbox</string>
     <string name="OutboxHeadline">Outbox</string>
-    <string name="MyAccountExplain">For known email providers, additional settings are determinated automatically.</string>
-    <string name="MyAccountExplain2" >Sometimes, <![CDATA[<b>]]>IMAP needs to be enabled<![CDATA[</b>]]> in the email web frontend.\n\nConsult your email provider or friends if you run into problems.</string>
+    <string name="MyAccountExplain">For known e-mail providers, additional settings are determined automatically.</string>
+    <string name="MyAccountExplain2" >Sometimes, <![CDATA[<b>]]>IMAP needs to be enabled<![CDATA[</b>]]> in the e-mail web frontend.\n\nConsult your friends or the e-mail provider if problems arise.</string>
     <string name="AccountNotConfigured">Account not configured</string>
     <string name="AboutThisProgram">About Delta Chat</string>
     <string name="NotSet">Not set</string>
@@ -329,11 +329,11 @@
     <string name="AskStartChatWith">Chat with <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>?</string>
     <string name="DeaddropHint">Tap the reply-arrows to start chatting.</string>
     <string name="NotYetImplemented">This function is not available or incomplete.</string>
-    <string name="DefaultStatusText">Sent with my Delta Chat Messenger: https://delta.chat</string>
+    <string name="DefaultStatusText">Corresponded under the aegis of Delta Chat Messenger: https://delta.chat</string>
     <string name="Name" >Name</string>
-    <string name="EmailAddress">Email address</string>
+    <string name="EmailAddress">E-mail address</string>
     <string name="CannotDeleteContact">Cannot delete contacts in use, block the contact instead.</string>
-    <string name="BadEmailAddress">Erroneous email address.</string>
+    <string name="BadEmailAddress">Erroneous e-mail address.</string>
     <string name="ContactCreated">Contact created.</string>
     <string name="ViewProfile">View profile</string>
     <!-- Translators: please use a very short string here, it should not much longer than
@@ -357,7 +357,7 @@
     <string name="AskRemoveMemberFromGroup">Remove <![CDATA[<b>]]>%1$s<![CDATA[</b>]]> from group?</string>
     <string name="ErrSelfNotInGroup">You must be a member of the group to perform this action.</string>
     <string name="MsgGroupLeft">Group left.</string>
-    <string name="NoMessagesHint">Send message to <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>:\n\n• It is okay if <![CDATA[<b>]]>%2$s<![CDATA[</b>]]> does not use Delta Chat.\n\n• Delivering the first message may take a while.</string>
+    <string name="NoMessagesHint">Message <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>:\n\n• <![CDATA[<b>]]>%2$s<![CDATA[</b>]]> doesn\'t have to use Delta Chat.\n\n• Delivering the first message may take a while.</string>
     <string name="SendNRcvReadReceipts">Receive and send return receipts</string>
     <string name="PreferE2EEncryption">Prefer end-to-end encryption</string>
     <string name="E2EManagePrivateKeys">Manage secret keys</string>
@@ -385,11 +385,11 @@
     <string name="EncrinfoFingerprints">Fingerprints</string>
     <string name="Backup">Backup</string>
     <string name="ImportBackupExplain2">To import a backup, copy a backup to <![CDATA[<i>]]>%1$s<![CDATA[</i>]]> and reinstall the app.</string>
-    <string name="ReadReceiptMailBody">This is a return receipt for the message \"%1$s\".\n\nThis return receipt only acknowledges that the message was displayed on the recipient\'s device. There is no guarantee that the recipient has read the message contents.</string>
+    <string name="ReadReceiptMailBody">This is a return receipt for the message \"%1$s\",\n\nacknowledging that the message was displayed on the recipient\'s device. There is no guarantee that the recipient has read it.</string>
     <string name="ReadReceipt">Return receipt</string>
     <string name="NameAndStatus">Name and status</string>
     <string name="MyStatus">My status</string>
-    <string name="MyStatusExplain">The status is shown in email footers, among other places.</string>
+    <string name="MyStatusExplain">The status is shown in e-mail footers, among other places.</string>
     <string name="MsgGroupImageDeleted">Group image deleted.</string>
     <string name="AskDeleteGroupImage">Are you sure to delete the group image?\n\nThis will affect all devices of all group members.</string>
     <string name="ExportImportHeader">Export and import</string>
@@ -417,14 +417,14 @@
     <string name="Never">Never</string>
     <string name="AutocryptKeyTransferInitiate">Initiate Autocrypt Key Transfer</string>
     <string name="AutocryptKeyTransfer">Autocrypt Key Transfer</string>
-    <string name="AutocryptKeyTransferMsgBeforeSend">The <![CDATA[<i>]]>Autocrypt Key Transfer<![CDATA[</i>]]> requires that the mail client on the other device is Autocrypt-compliant.\n\nYou can then send your secret key to yourself. The key will be encrypted by a setup code which is displayed here and must be typed on the other device.</string>
-    <string name="AutocryptKeyTransferMsgAfterSend">Your key has been sent to yourself. Switch to the other device and open the setup message. You should be prompted for a setup code. Type the following digits into the prompt:\n\n%1$s\n\nOnce you\'re done, your other device will be ready to use Autocrypt.</string>
+    <string name="AutocryptKeyTransferMsgBeforeSend">The <![CDATA[<i>]]>Autocrypt Key Transfer<![CDATA[</i>]]> requires the e-mail client on the other device to be Autocrypt-compliant.\n\nYou can then send your secret key to yourself. It will be encrypted by a setup code, displayed here to be typed onto the other device.</string>
+    <string name="AutocryptKeyTransferMsgAfterSend">Your key has been sent to yourself. Open the setup message on the other device and type the following digits:\n\n%1$s\n\nOnce done, your other device will be ready to use Autocrypt.</string>
     <string name="AutocryptSetupMessageSubject">Autocrypt Setup Message</string>
-    <string name="AutocryptSetupMessageGeneralBody">This is the Autocrypt Setup Message used to transfer your key between clients.\n\nTo decrypt and use your key, open the message in an Autocrypt-compliant client and enter the setup code presented on the generating device.</string>
-    <string name="AutocryptSetupMessageTapBody">This is the Autocrypt Setup Message used to transfer your key between clients.\n\nTo decrypt and use your key, tap on this message.</string>
-    <string name="AutocryptKeyTransferPleaseEnterCode">Please enter the setup code that is displayed on the other device.</string>
-    <string name="AutocryptKeyTransferBadCode">Bad setup code. Please try again.\n\nIf you do not remember the setup code, just initiate the key transfer on the other device again.</string>
-    <string name="AutocryptKeyTransferSucceeded">Key transferred successfully. This device is now ready to use Autocrypt with the same key as the other device.</string>
+    <string name="AutocryptSetupMessageGeneralBody">The setup code must be entered on the other device to use your key there.</string>
+    <string name="AutocryptSetupMessageTapBody">Use this Autocrypt setup message to transfer your key between clients.\n\nTo decrypt and use your key, tap this message.</string>
+    <string name="AutocryptKeyTransferPleaseEnterCode">Please enter the setup code displayed on the other device.</string>
+    <string name="AutocryptKeyTransferBadCode">Bad setup code.\n\nUnless you remember the setup code, you must initiate the key transfer on the other device again.</string>
+    <string name="AutocryptKeyTransferSucceeded">This device can now Autocrypt with the transferred key.</string>
     <string name="Retry">Retry</string>
-    <string name="SelfTalkSubtitle">Messages I sent to myself</string>
+    <string name="SelfTalkSubtitle">Messages sent to self</string>
 </resources>
