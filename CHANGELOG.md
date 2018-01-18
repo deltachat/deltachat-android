@@ -3,7 +3,9 @@
 ## v0.13.0
 2018-01-18
 
-* Encrypt if the last message in a chat was also encrypted
+* Reply encrypted if the sender has enabled encryption manually (esp. useful when chatting with clients as K-9 or Enigmail)
+* Update welcome screen graphics
+* Update Norwegian, Russian and Turkish translations
 
 ## v0.12.0
 2018-01-07
