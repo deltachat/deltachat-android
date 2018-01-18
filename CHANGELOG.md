@@ -3,6 +3,8 @@
 ## v0.13.0
 2018-01-18
 
+* Encrypt if the last message in a chat was also encrypted
+
 ## v0.12.0
 2018-01-07
 
