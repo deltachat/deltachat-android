@@ -211,7 +211,7 @@
     <string name="Intro1Message">Мессенджер с <![CDATA[<b>самым большим диапазоном охвата</b>]]> в мире. <![CDATA[<br/><b>Бесплатный</b>]]> и <![CDATA[<b>безопасный</b>]]>.</string>
 
     <string name="Intro2Headline">Независимый</string>
-    <string name="Intro2Message"><![CDATA[<b>Независимость</b>]]> от неконтролируемых вами компьютеров или сервисов. Приложение использует только ваш почтовый сервер.</string>
+    <string name="Intro2Message"><![CDATA[<b>У Delta Chat нет своих серверов.</b>]]> Используется только ваш почтовый сервер.</string>
 
     <string name="Intro3Headline">Быстрый</string>
     <string name="Intro3Message"><![CDATA[<b>Push-сообщения</b>]]> за секунды.<![CDATA[<br/>]]>Быстрый интерфейс.</string>

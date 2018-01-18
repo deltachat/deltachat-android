@@ -16,9 +16,12 @@
     <string name="MuteFor">%1$s için sessiz</string>
     <string name="UnmuteNotifications">Sessizden çıkarma</string>
     <string name="Draft">Taslak</string>
+    <!--audio view-->
+    <string name="NoAudio">Aygıtınızın müzik kitaplığına eklenen dosyalar burada görünecek.</string>
     <string name="AttachMusic">Müzik</string>
     <!--documents view-->
     <string name="SelectFile">Dosya Seçin</string>
+    <string name="FreeOfTotal">%2$sde %1$s boş</string>
     <string name="ErrorHint">Bilinmeyen hata</string>
     <string name="AccessError">Erişim hatası</string>
     <string name="NoFiles">Henüz dosya yok ...</string>
@@ -49,6 +52,8 @@
     <string name="ReplyToContact">%1$se yanıt ver</string>
     <!--contacts view-->
     <string name="NoContacts">Henüz kişi yok.</string>
+    <!--group create view-->
+    <string name="SendMessageTo">...ileti gönder</string>
     <string name="EnterGroupNamePlaceholder">Grup adı girin</string>
     <!--group info view-->
     <string name="AddMember">Üye ekle</string>
@@ -83,6 +88,7 @@
     <string name="BadgeNumber">Sayıyı akılda tutmak için mümkünse simge kullanın</string>
     <string name="Short">Kısa</string>
     <string name="Long">Uzun</string>
+    <string name="RaiseToSpeak">Konuşmayı artır</string>
     <string name="EditName">Adı düzenle</string>
     <string name="NotificationsPriority">Görünüm</string>
     <string name="NotificationsPriorityDefault">Normal öncelik</string>
@@ -136,6 +142,7 @@
     <string name="Saturation">Renk doygunluğu</string>
     <string name="Vignette">Süsleme</string>
     <string name="Shadows">Gölgeler</string>
+    <string name="Grain">Gren</string>
     <string name="Sharpen">Keskinleştirme</string>
     <string name="Fade">Soldurma</string>
     <string name="Tint">Renk tonu</string>
@@ -183,6 +190,8 @@
     <string name="AreYouSureDeleteThisChat">Bu söyleşiyi silinsin mi? Söyleşi listesinde artık gösterilmeyecek, iletileri sunucuda kalacak.</string>
     <string name="AreYouSureBlockContact">Bu kişiyi engellemek istediğinizden emin misiniz?</string>
     <string name="AreYouSureDeleteContact">Bu kişiyi silmek istediğizden emin misiniz?</string>
+    <string name="PermissionStorage">Fotoğraf, video, müzik ve diğer medyayı kaydetmek ve göndermek için depolama erişimi gerekiyor.</string>
+    <string name="PermissionNoAudio">Sesli ileti göndermek için mikrofon erişimi gerekiyor.</string>
     <string name="PermissionOpenSettings">Ayarlar</string>
     <!--Intro view-->
     <string name="Intro1Headline">Delta Chat</string>
@@ -261,10 +270,14 @@
     <string name="ImapPort">İMAP bağlanma noktası</string>
     <string name="InboxHeadline">Gelen kutusu</string>
     <string name="OutboxHeadline">Gönderilenler</string>
+    <string name="MyAccountExplain">Bilinen e-posta sağlayıcıları için ek ayarlar otomatik olarak algılanır.</string>
     <string name="AccountNotConfigured">Hesap düzenlenmedi</string>
     <string name="AboutThisProgram">Delta Chat Hakkında</string>
+    <string name="NotSet">Ayarlanmadı</string>
     <string name="NewChat">Yeni söyleşi</string>
+    <string name="Deaddrop">İletişim istekleri</string>
     <string name="MuteAlways">Sürekli sessiz</string>
+    <string name="AskStartChatWith"><![CDATA[<b>]]>%1$s<![CDATA[</b>]]> ile söyleşi?</string>
     <string name="DeaddropHint">Söyleşmeye başlamak için yanıt oklarına dokunun.</string>
     <string name="NotYetImplemented">Bu işlev mevcut değil veya eksik.</string>
     <string name="DefaultStatusText">Delta Chat Messengerim ile göderildi: https://delta.chat</string>
@@ -277,6 +290,7 @@
     <!-- Translators: please use a very short string here, it should not much longer than
     the string needed for video time+size (0:00, 12,3 Mib) -->
     <string name="OneMoment">Bir dakika ...</string>
+    <string name="NoChatsHelp">Sayfanın sağ altındaki \'\'Yeni söyleşi\'\' düğmesine basarak başlayın ya da daha fazla seçenek için \'\'Menü\'\' düğmesine dokunun.</string>
     <string name="InviteMenuEntry">Davetiye gönderin</string>
     <string name="AdvancedSettings">Gelişmiş ayarlar</string>
     <string name="AskResetNotifications">Geçerli sayfanın grupların ve kişilerin bütün bildirim ayarları ve sesleri sıfırlansın mı?</string>
@@ -285,6 +299,9 @@
     <string name="MsgGroupImageChanged">Grup resmi değişti.</string>
     <string name="MsgMemberAddedToGroup">%1$s üye eklendi</string>
     <string name="MsgMemberRemovedFromToGroup">%1$s üye silindi.</string>
+    <string name="AskAddMemberToGroup">Gruba <![CDATA[<b>]]>%1$s<![CDATA[</b>]]> eklensin mi?</string>
+    <string name="AskRemoveMemberFromGroup">Gruptan <![CDATA[<b>]]>%1$s<![CDATA[</b>]]> kaldırılsın mı?</string>
+    <string name="ErrSelfNotInGroup">Bu işlemi gerçekleştirmek için grubun üyesi olmalısınız.</string>
     <string name="MsgGroupLeft">Grup ayrıldı.</string>
     <string name="SendNRcvReadReceipts">İletim raporlarını al ve gönder</string>
     <string name="PreferE2EEncryption">Uçtan uca şifrelemeyi yeğle</string>
@@ -292,6 +309,7 @@
     <string name="E2ECompareKeys">Anahtarları karşılaştır</string>
     <string name="SelectContact">Bir kişi seçin</string>
     <string name="DoneHint">Tamam.</string>
+    <string name="FileNotFound">%1$sbulunamadı.</string>
     <string name="Error">Hata: %1$s</string>
     <string name="NoNetwork">Ağ kullanılamıyor.</string>
     <string name="Audio">Ses</string>
@@ -303,6 +321,7 @@
     <string name="EncryptedMessage">Şifrelenmiş ileti</string>
     <string name="Encryption">Şifreleme</string>
     <string name="EncrinfoE2E">Uçtan uca şifreleme etkin</string>
+    <string name="EncrinfoNone">Sunucuma şifreleme yok.</string>
     <string name="EncrinfoFingerprints">Parmak izleri</string>
     <string name="Backup">Yedekleme</string>
     <string name="ReadReceipt">İletim raporu</string>
