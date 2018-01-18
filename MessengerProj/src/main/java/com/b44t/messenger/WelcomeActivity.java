@@ -100,7 +100,7 @@ public class WelcomeActivity extends Activity implements NotificationCenter.Noti
             secondaryButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    final String msgtext = "© 2017 Delta Chat contributors" + "\n\n" + MrMailbox.getInfo() + "\n\n" + getAndroidInfo();
+                    final String msgtext = "© 2017, 2018 Delta Chat contributors" + "\n\n" + MrMailbox.getInfo() + "\n\n" + getAndroidInfo();
                     new AlertDialog.Builder(WelcomeActivity.this)
                         .setTitle(ApplicationLoader.applicationContext.getString(R.string.AppName) + " v" + getVersion())
                         .setMessage(msgtext)
