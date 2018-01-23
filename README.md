@@ -25,8 +25,8 @@ subproject _deltachat-core_:
 There is no need to build the core library itself, deltachat-android just 
 references them.
 
-Then, call `ndk-build` in the `MessengerProj` directory to build the C-part
-and run the project in Android Studio.  The project required API 25.
+Then, call `ndk-build` in the `MessengerProj` directory to build the C-part.
+Afterwards run the project in Android Studio.  The project requires API 25.
 
 With chance, that's it :) - if not, read on how to setup a proper development
 environment.
