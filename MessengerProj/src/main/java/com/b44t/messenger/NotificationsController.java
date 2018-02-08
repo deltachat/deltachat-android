@@ -753,7 +753,7 @@ public class NotificationsController {
                     cv.put("count", count);
                     ApplicationLoader.applicationContext.getContentResolver().insert(Uri.parse("content://com.teslacoilsw.notifier/unread_count"), cv);
                 } catch (Throwable e) {
-                    e.printStackTrace();
+                    //e.printStackTrace(); -- do not flood the log with errors about missing teslacoilsw-URIs
                 }
 
                 try {
