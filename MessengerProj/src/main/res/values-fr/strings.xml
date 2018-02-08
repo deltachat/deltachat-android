@@ -208,13 +208,13 @@
     <string name="PermissionOpenSettings">Paramètres</string>
     <!--Intro view-->
     <string name="Intro1Headline">Delta Chat</string>
-    <string name="Intro1Message">La messagerie <![CDATA[<b>la plus étendue</b>]]> dans le monde.<![CDATA[<br/><b>Libre</b>]]> et <![CDATA[<b>sécurisée</b>]]>.</string>
+    <string name="Intro1Message">La messagerie <![CDATA[<b>la plus étendue</b>]]> dans le monde.<![CDATA[<br/><b>Libre</b>]]> et <![CDATA[<b>indépendante</b>]]>.</string>
 
     <string name="Intro2Headline">Indépendant</string>
-    <string name="Intro2Message"><![CDATA[<b>Aucune dépendance</b>]]> à des serveurs ou services tiers. L\'application utilise juste votre serveur d\'e-mail.</string>
+    <string name="Intro2Message"><![CDATA[<b>Il n\'y a pas de serveur Delta Chat.</b>]]> L\'application utilise juste votre serveur d\'e-mail.</string>
 
     <string name="Intro3Headline">Rapide</string>
-    <string name="Intro3Message">Envoyez des messages <![CDATA[<b>en quelques secondes</b>]]>.<![CDATA[<br/>]]> grâce à son interface rapide.</string>
+    <string name="Intro3Message"><![CDATA[<b>Envoyez des messages</b>]]> en quelques secondes.<![CDATA[<br/>]]> Interface rapide.</string>
 
     <string name="Intro4Headline">Puissant</string>
     <string name="Intro4Message">Envoyer et recevez des messages, des photos, des vidéos, des messages audios et plus <![CDATA[<b>sans limite</b>]]>. Compatible multi-plateforme.</string>
@@ -421,4 +421,5 @@ La dernière clé importée sera utilisée comme nouvelle clé par défaut</stri
     <string name="AutocryptKeyTransferBadCode">Mauvais code d\'installation. Veuillez réessayer.\n\nSi vous ne vous souvenez pas du code d\'installation, lancez à nouveau le transfert de clé depuis l\'autre appareil.</string>
     <string name="AutocryptKeyTransferSucceeded">Clé transférée avec succès. Cet appareil est maintenant prêt à utiliser Autocrypt avec la même clé que l\'autre appareil.</string>
     <string name="Retry">Recommencez</string>
-    </resources>
+    <string name="SelfTalkSubtitle">Messages que je me suis envoyé</string>
+</resources>

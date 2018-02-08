@@ -26,9 +26,10 @@
     <string name="AccessError">Erişim hatası</string>
     <string name="NoFiles">Henüz dosya yok ...</string>
     <string name="NotMounted">Depo bellek bağlanmadı</string>
-    <string name="UsbActive">USB aktarımı etkin</string>
+    <string name="UsbActive">USB aktarımı devam ediyor</string>
     <string name="InternalStorage">Dahili Depolama</string>
     <string name="ExternalStorage">Harici Depolama</string>
+    <string name="SystemRoot">Sistem Root</string>
     <string name="SdCard">SD Kart</string>
     <string name="Folder">Klasör</string>
     <string name="GalleryInfo">Sıkıştırılmamış resimleri göndermek için</string>
@@ -37,6 +38,7 @@
     <string name="ChatCamera">Kamera</string>
     <string name="NoMessages">İleti yok.</string>
     <string name="ForwardedMessage">Yönlendirilmiş ileti</string>
+    <string name="NoRecent">son kullanılan yok</string>
     <string name="TypeMessage">İleti</string>
     <string name="SlideToCancel">İPTAL ETMEK İÇİN KAYDIR</string>
     <string name="SaveToDownloads">İndirilenlere kaydet</string>
@@ -186,6 +188,9 @@
     <string name="AttachContact">Kişiler</string>
     <string name="AttachDocument">Dosya</string>
     <string name="AttachVoiceMessage">Sesli ileti</string>
+    <string name="FromSelf">Ben</string>
+    <!--Alert messages-->
+    <string name="NoHandleAppInstalled">\'%1$s\' dosya türünü açacak kurulu bir uygulama yok, bir tane kurun ve devam edin.</string>
     <string name="ContactAlreadyInGroup">Kişi zaten bu grupta.</string>
     <string name="AreYouSureDeleteThisChat">Bu söyleşiyi silinsin mi? Söyleşi listesinde artık gösterilmeyecek, iletileri sunucuda kalacak.</string>
     <string name="AreYouSureBlockContact">Bu kişiyi engellemek istediğinizden emin misiniz?</string>
@@ -196,6 +201,8 @@
     <!--Intro view-->
     <string name="Intro1Headline">Delta Chat</string>
     <string name="Intro2Headline">Bağımsız</string>
+    <string name="Intro2Message"><![CDATA[<b>Delta Chat sunucusu yok.</b>]]> Uygulama yalnızca e-posta sunucunuzu kullanıyor.</string>
+
     <string name="Intro3Headline">Hızlı</string>
     <string name="Intro4Headline">Muhteşem</string>
     <string name="Intro5Headline">Özgür</string>
@@ -276,6 +283,7 @@
     <string name="NotSet">Ayarlanmadı</string>
     <string name="NewChat">Yeni söyleşi</string>
     <string name="Deaddrop">İletişim istekleri</string>
+    <string name="DeaddropInChatlist">Söyleşi listesindeki kişi isteklerini göster</string>
     <string name="MuteAlways">Sürekli sessiz</string>
     <string name="AskStartChatWith"><![CDATA[<b>]]>%1$s<![CDATA[</b>]]> ile söyleşi?</string>
     <string name="DeaddropHint">Söyleşmeye başlamak için yanıt oklarına dokunun.</string>
@@ -292,10 +300,12 @@
     <string name="OneMoment">Bir dakika ...</string>
     <string name="NoChatsHelp">Sayfanın sağ altındaki \'\'Yeni söyleşi\'\' düğmesine basarak başlayın ya da daha fazla seçenek için \'\'Menü\'\' düğmesine dokunun.</string>
     <string name="InviteMenuEntry">Davetiye gönderin</string>
+    <string name="InviteText">Şimdi Delta Chat kullanıyorum - %1$s- bana yazabilirsin%2$s</string>
     <string name="AdvancedSettings">Gelişmiş ayarlar</string>
     <string name="AskResetNotifications">Geçerli sayfanın grupların ve kişilerin bütün bildirim ayarları ve sesleri sıfırlansın mı?</string>
     <string name="AttachFiles">Dosyaları iliştir</string>
     <string name="ErrGroupNameEmpty">Grup için bir ad girin</string>
+    <string name="MsgGroupNameChanged">Grup adı \"%1$s\" den \"%2$s\"ye değişti.</string>
     <string name="MsgGroupImageChanged">Grup resmi değişti.</string>
     <string name="MsgMemberAddedToGroup">%1$s üye eklendi</string>
     <string name="MsgMemberRemovedFromToGroup">%1$s üye silindi.</string>
@@ -307,12 +317,14 @@
     <string name="PreferE2EEncryption">Uçtan uca şifrelemeyi yeğle</string>
     <string name="E2EManagePrivateKeys">Özel anahtarları yönet</string>
     <string name="E2ECompareKeys">Anahtarları karşılaştır</string>
+    <string name="ForwardToTitle">...ya ilet</string>
     <string name="SelectContact">Bir kişi seçin</string>
     <string name="DoneHint">Tamam.</string>
     <string name="FileNotFound">%1$sbulunamadı.</string>
     <string name="Error">Hata: %1$s</string>
     <string name="NoNetwork">Ağ kullanılamıyor.</string>
     <string name="Audio">Ses</string>
+    <string name="PleaseCutVideoToMaxSize">Lütfen vidyoyu %1$s\'den daha küçük boyutta kesin.</string>
     <string name="PermNotificationTitle">%1$s\'e bağlandı</string>
     <string name="PermNotificationText">İletiler bekliyor ...</string>
     <string name="SettingsFor">%1$siçin ayarlar</string>
@@ -321,7 +333,10 @@
     <string name="EncryptedMessage">Şifrelenmiş ileti</string>
     <string name="Encryption">Şifreleme</string>
     <string name="EncrinfoE2E">Uçtan uca şifreleme etkin</string>
+    <string name="EncrinfoE2EExplain">Tüm parmak izleri diğer cihazla eşleşiyorsa, bağlantı güvenlidir.</string>
+    <string name="EncrinfoTransport">En azından sunucuma kadar şifreli taşıma.</string>
     <string name="EncrinfoNone">Sunucuma şifreleme yok.</string>
+    <string name="EncrinfoNoE2EExplain">Alıcı tarafından Delta Chat veya başka bir Otomatik şifreleme uygulaması  kullanıldığında uçtan uca şifreleme uygulanacaktır.</string>
     <string name="EncrinfoFingerprints">Parmak izleri</string>
     <string name="Backup">Yedekleme</string>
     <string name="ReadReceipt">İletim raporu</string>
@@ -330,6 +345,7 @@
     <string name="MsgGroupImageDeleted">Grup resmi silindi</string>
     <string name="AskDeleteGroupImage">Grup resmini silmek istediğinizden emin misiniz?\n\nBu tüm grup üyelerinin aygıtlarını etkileyecek.</string>
     <string name="ExportImportHeader">Dışa aktarım ve içe aktarım</string>
+    <string name="ImportExportExplain">Dışa aktarılan dosyalar gizli anahtarları içerecektir! Onları güvenli bir yerde saklayın veya mümkün olan en kısa sürede silin.</string>
     <string name="IncorrectPassword">Geçersiz parola</string>
     <string name="ImportBackup">Yedeklemeyi içe aktar</string>
     <string name="ExportBackup">Yedeklemeyi dışa aktar</string>
@@ -337,6 +353,7 @@
     <string name="ImportPrivateKeys">Özel anahtarları içe aktar</string>
     <string name="NoRecentEmoji">Son kullanılan duygu simgeleri burada gösterilecek.</string>
     <string name="E2eeOffBecauseOfUser">Uçtan uca şifrelemeyi etkinleştirmek için, ayarlarınızdaki ilgili seçeneği işaretleyin.</string>
+    <string name="E2eeOffBecauseOfRecipient">Karşı tarafın da ayarı etkinleştirmesi durumunda uçtan uca şifreleme uygulanacaktır.</string>
     <string name="NotNow">Şimdi değil</string>
     <string name="ArchiveChat">Söyleşiyi arşivle</string>
     <string name="UnarchiveChat">Söyleşiyi arşivden kaldır</string>
@@ -345,5 +362,8 @@
     <string name="LeaveGroup">Gruptan ayrıl</string>
     <string name="AskLeaveGroup">Bu gruptan ayrılmak istediğinize emin misiniz?</string>
     <string name="Never">Asla</string>
+    <string name="AutocryptKeyTransferInitiate">Autocrypt anahtar aktarımını başlat</string>
+    <string name="AutocryptKeyTransfer">Autocrypt Anahtar Aktarımı</string>
     <string name="Retry">Yeniden dene</string>
-    </resources>
+    <string name="SelfTalkSubtitle">Kendime gönderdiğim iletiler</string>
+</resources>
