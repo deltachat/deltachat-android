@@ -299,7 +299,7 @@ public class DocumentSelectActivity extends BaseFragment {
                 } else {
                     if (!file.canRead()) {
                         showErrorBox(ApplicationLoader.applicationContext.getString(R.string.AccessError));
-                        file = new File("/mnt/sdcard");
+                        return;
                     }
                     if (file.length() == 0) {
                         return;
