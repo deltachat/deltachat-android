@@ -767,8 +767,7 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                             }
                             break;
                         case Manifest.permission.WRITE_EXTERNAL_STORAGE:
-                            // Do not show the StoragePermission dialog as this permission is not needed yet (only for chats)
-                            grantedCount++;
+                            msg += "- " + ApplicationLoader.applicationContext.getString(R.string.PermissionStorage) + "\n\n";
                             break;
                         case Manifest.permission.RECORD_AUDIO:
                             msg += "- " + ApplicationLoader.applicationContext.getString(R.string.PermissionNoAudio) + "\n\n";
