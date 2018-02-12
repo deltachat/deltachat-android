@@ -27,8 +27,10 @@ import android.Manifest;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.ContentResolver;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.net.MailTo;
 import android.net.Uri;
@@ -753,7 +755,16 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                 else {
                     switch (permissions[i]) {
                         case Manifest.permission.READ_CONTACTS:
-                            msg += "- " + ApplicationLoader.applicationContext.getString(R.string.PermissionContacts) + "\n\n";
+                            SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("mainconfig", Context.MODE_PRIVATE);
+                            if (preferences.getBoolean("PermissionContactsDialogShown", false)) {
+                                // The dialog was already shown once
+                                grantedCount++;
+                            } else {
+                                msg += "- " + ApplicationLoader.applicationContext.getString(R.string.PermissionContacts) + "\n\n";
+                                SharedPreferences.Editor editor = preferences.edit();
+                                editor.putBoolean("PermissionContactsDialogShown", true);
+                                editor.apply();
+                            }
                             break;
                         case Manifest.permission.WRITE_EXTERNAL_STORAGE:
                             msg += "- " + ApplicationLoader.applicationContext.getString(R.string.PermissionStorage) + "\n\n";
