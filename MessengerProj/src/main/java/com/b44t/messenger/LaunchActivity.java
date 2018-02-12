@@ -755,7 +755,7 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                 else {
                     switch (permissions[i]) {
                         case Manifest.permission.READ_CONTACTS:
-                            SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("general", Context.MODE_PRIVATE);
+                            SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("mainconfig", Context.MODE_PRIVATE);
                             if (preferences.getBoolean("PermissionContactsDialogShown", false)) {
                                 // The dialog was already shown once
                                 grantedCount++;
