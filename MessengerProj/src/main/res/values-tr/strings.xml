@@ -38,6 +38,7 @@
     <string name="ChatCamera">Kamera</string>
     <string name="NoMessages">İleti yok.</string>
     <string name="ForwardedMessage">Yönlendirilmiş ileti</string>
+    <string name="From">Kimden</string>
     <string name="NoRecent">son kullanılan yok</string>
     <string name="TypeMessage">İleti</string>
     <string name="SlideToCancel">İPTAL ETMEK İÇİN KAYDIR</string>
@@ -192,6 +193,7 @@
     <!--Alert messages-->
     <string name="NoHandleAppInstalled">\'%1$s\' dosya türünü açacak kurulu bir uygulama yok, bir tane kurun ve devam edin.</string>
     <string name="ContactAlreadyInGroup">Kişi zaten bu grupta.</string>
+    <string name="ForwardMessagesTo">Seçili iletiler <![CDATA[<b>]]>%1$s<![CDATA[</b>]]> a iletilsin mi?</string>
     <string name="AreYouSureDeleteThisChat">Bu söyleşiyi silinsin mi? Söyleşi listesinde artık gösterilmeyecek, iletileri sunucuda kalacak.</string>
     <string name="AreYouSureBlockContact">Bu kişiyi engellemek istediğinizden emin misiniz?</string>
     <string name="AreYouSureDeleteContact">Bu kişiyi silmek istediğizden emin misiniz?</string>
@@ -205,10 +207,13 @@
 
     <string name="Intro3Headline">Hızlı</string>
     <string name="Intro4Headline">Muhteşem</string>
+    <string name="Intro4Message"><![CDATA[<b>Sınırsız</b>]]> söyleşiler, görüntüler, vidyolar, sesli iletiler ve daha fazlası. Çoklu istemci kapasiteli. </string>
+
     <string name="Intro5Headline">Özgür</string>
     <string name="Intro6Headline">Şifreli</string>
     <string name="Intro7Headline">Güvenilir</string>
 
+    <string name="IntroStartMessaging">İleti Alışverişini Başlat</string>
     <!--plural-->
     <plurals name="Members">
         <item quantity="one">%düye</item>
@@ -364,6 +369,8 @@
     <string name="Never">Asla</string>
     <string name="AutocryptKeyTransferInitiate">Autocrypt anahtar aktarımını başlat</string>
     <string name="AutocryptKeyTransfer">Autocrypt Anahtar Aktarımı</string>
+    <string name="AutocryptKeyTransferMsgAfterSend">Anahtarınız kendinize gönderildi. Diğer aygıta geçin ve kurulum iletisini açın. Sizden bir kurulum şifresi girmeniz istenecektir. İsteğe aşağıdaki rakamları yazın:\n\n%1$s\n\nİşiniz bittiğinde, diğer aygıtınız Autocrypt\'i kullanmaya hazır hale gelecektir.</string>
+    <string name="AutocryptSetupMessageSubject">Autocrypt Kurulum İletisi</string>
     <string name="Retry">Yeniden dene</string>
     <string name="SelfTalkSubtitle">Kendime gönderdiğim iletiler</string>
 </resources>
