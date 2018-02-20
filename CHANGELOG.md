@@ -1,5 +1,14 @@
 # Delta Chat Changelog
 
+## v0.14.0
+2018-02-20
+
+* Evaluate gossiped keys
+* Option to transfer the Autocrypt Setup to another device or e-mail client
+* Accept Autocrypt Setup transferred from other devices or e-mail client
+* Send any data from device to device using the chat "Me - Messages I sent to myself"
+* Bug fixes
+
 ## v0.13.0
 2018-01-18
 
