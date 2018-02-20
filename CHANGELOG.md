@@ -10,7 +10,7 @@
 * Do not send messages when there is an access error
 * Request for contact permissions only once
 * Bug fixes
-* Update french and Turkish translations
+* Update French and Turkish translations
 
 ## v0.13.0
 2018-01-18
