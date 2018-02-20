@@ -2976,13 +2976,18 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 AlertDialog.Builder builder2 = new AlertDialog.Builder(getParentActivity());
                 builder2.setTitle(ApplicationLoader.applicationContext.getString(R.string.AutocryptKeyTransfer));
                 builder2.setMessage(AndroidUtilities.replaceTags(ApplicationLoader.applicationContext.getString(success? R.string.AutocryptKeyTransferSucceeded : R.string.AutocryptKeyTransferBadCode)));
-                builder2.setNegativeButton(R.string.Cancel, null);
-                builder2.setPositiveButton(R.string.Retry, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        querySetupCode(msg_id, preload);
-                    }
-                });
+                if( success ) {
+                    builder2.setPositiveButton(R.string.OK, null);
+                }
+                else {
+                    builder2.setNegativeButton(R.string.Cancel, null);
+                    builder2.setPositiveButton(R.string.Retry, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            querySetupCode(msg_id, preload);
+                        }
+                    });
+                }
                 showDialog(builder2.create());
             }
         });
