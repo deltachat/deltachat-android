@@ -1,5 +1,10 @@
 # Delta Chat Changelog
 
+## UNRELEASED
+
+* Improve deletion of message that were moved around by another e-mail client
+* Really delete messages on the server, do not only mark them for deletion
+
 ## v0.14.0
 2018-02-20
 
