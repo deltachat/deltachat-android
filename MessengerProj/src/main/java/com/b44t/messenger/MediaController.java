@@ -69,7 +69,6 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.InputStream;
-import java.lang.ref.WeakReference;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.util.ArrayList;
@@ -95,14 +94,6 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
     public native byte[] getWaveform2(short[] array, int length);
 
     public static int[] readArgs = new int[3];
-
-    public interface FileDownloadProgressListener {
-        void onFailedDownload(String fileName);
-        void onSuccessDownload(String fileName);
-        void onProgressDownload(String fileName, float progress);
-        void onProgressUpload(String fileName, float progress, boolean isEncrypted);
-        int getObserverTag();
-    }
 
     private class AudioBuffer {
         public AudioBuffer(int capacity) {
@@ -270,14 +261,6 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
 
     private Runnable refreshGalleryRunnable;
     public static AlbumEntry allPhotosAlbumEntry;
-
-    private HashMap<String, ArrayList<WeakReference<FileDownloadProgressListener>>> loadingFileObservers = new HashMap<>();
-    private HashMap<String, ArrayList<MessageObject>> loadingFileMessagesObservers = new HashMap<>();
-    private HashMap<Integer, String> observersByTag = new HashMap<>();
-    private boolean listenerInProgress = false;
-    private HashMap<String, FileDownloadProgressListener> addLaterArray = new HashMap<>();
-    private ArrayList<FileDownloadProgressListener> deleteLaterArray = new ArrayList<>();
-    private int lastTag = 0;
 
     private boolean isPaused = false;
     private MediaPlayer audioPlayer = null;
@@ -717,74 +700,6 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
         generatingWaveform.clear();
         typingTimes.clear();
         cancelVideoConvert(null);
-    }
-
-    public int generateObserverTag() {
-        return lastTag++;
-    }
-
-    public void addLoadingFileObserver(String fileName, FileDownloadProgressListener observer) {
-        addLoadingFileObserver(fileName, null, observer);
-    }
-
-    public void addLoadingFileObserver(String fileName, MessageObject messageObject, FileDownloadProgressListener observer) {
-        if (listenerInProgress) {
-            addLaterArray.put(fileName, observer);
-            return;
-        }
-        removeLoadingFileObserver(observer);
-
-        ArrayList<WeakReference<FileDownloadProgressListener>> arrayList = loadingFileObservers.get(fileName);
-        if (arrayList == null) {
-            arrayList = new ArrayList<>();
-            loadingFileObservers.put(fileName, arrayList);
-        }
-        arrayList.add(new WeakReference<>(observer));
-        if (messageObject != null) {
-            ArrayList<MessageObject> messageObjects = loadingFileMessagesObservers.get(fileName);
-            if (messageObjects == null) {
-                messageObjects = new ArrayList<>();
-                loadingFileMessagesObservers.put(fileName, messageObjects);
-            }
-            messageObjects.add(messageObject);
-        }
-
-        observersByTag.put(observer.getObserverTag(), fileName);
-    }
-
-    public void removeLoadingFileObserver(FileDownloadProgressListener observer) {
-        if (listenerInProgress) {
-            deleteLaterArray.add(observer);
-            return;
-        }
-        String fileName = observersByTag.get(observer.getObserverTag());
-        if (fileName != null) {
-            ArrayList<WeakReference<FileDownloadProgressListener>> arrayList = loadingFileObservers.get(fileName);
-            if (arrayList != null) {
-                for (int a = 0; a < arrayList.size(); a++) {
-                    WeakReference<FileDownloadProgressListener> reference = arrayList.get(a);
-                    if (reference.get() == null || reference.get() == observer) {
-                        arrayList.remove(a);
-                        a--;
-                    }
-                }
-                if (arrayList.isEmpty()) {
-                    loadingFileObservers.remove(fileName);
-                }
-            }
-            observersByTag.remove(observer.getObserverTag());
-        }
-    }
-
-    private void processLaterArrays() {
-        for (HashMap.Entry<String, FileDownloadProgressListener> listener : addLaterArray.entrySet()) {
-            addLoadingFileObserver(listener.getKey(), listener.getValue()); //TODO
-        }
-        addLaterArray.clear();
-        for (FileDownloadProgressListener listener : deleteLaterArray) {
-            removeLoadingFileObserver(listener);
-        }
-        deleteLaterArray.clear();
     }
 
     @SuppressWarnings("unchecked")
