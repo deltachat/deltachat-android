@@ -1,9 +1,16 @@
 # Delta Chat Changelog
 
-## UNRELEASED
+## v0.15.0
+2018-02-27
 
+* Render the waveform for voice messages
+* Fix problems with voice messages on various devices
 * Improve deletion of message that were moved around by another e-mail client
 * Really delete messages on the server, do not only mark them for deletion
+* Ignore subsequent keys or blocks in OpenPGP files
+* Leave incoming Autocrypt Setup Messages in the inbox so that any number of other e-mail-clients can process them
+* Avoid messages sent to the "Me" chat appearing twice in other e-mail clients
+* Update Albanian translation
 
 ## v0.14.0
 2018-02-20
