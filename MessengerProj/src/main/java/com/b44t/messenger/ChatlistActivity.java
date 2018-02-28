@@ -521,22 +521,24 @@ public class ChatlistActivity extends BaseFragment implements NotificationCenter
             }
         });
 
-        TextView textView = new TextView(context);
-        textView.setText(context.getString(R.string.NoChats));
-        textView.setTextColor(0xff959595);
-        textView.setGravity(Gravity.CENTER);
-        textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
-        emptyView.addView(textView, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT));
+        if( !showArchivedOnly ) {
+            TextView textView = new TextView(context);
+            textView.setText(context.getString(R.string.NoChats));
+            textView.setTextColor(0xff959595);
+            textView.setGravity(Gravity.CENTER);
+            textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
+            emptyView.addView(textView, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT));
 
-        textView = new TextView(context);
-        String help = context.getString(R.string.NoChatsHelp);
-        textView.setText(help);
-        textView.setTextColor(0xff959595);
-        textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 15);
-        textView.setGravity(Gravity.CENTER);
-        textView.setPadding(AndroidUtilities.dp(8), AndroidUtilities.dp(8), AndroidUtilities.dp(8), AndroidUtilities.dp(64) /*move the whole stuff a little bit up*/);
-        textView.setLineSpacing(AndroidUtilities.dp(2), 1);
-        emptyView.addView(textView, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT));
+            textView = new TextView(context);
+            String help = context.getString(R.string.NoChatsHelp);
+            textView.setText(help);
+            textView.setTextColor(0xff959595);
+            textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 15);
+            textView.setGravity(Gravity.CENTER);
+            textView.setPadding(AndroidUtilities.dp(8), AndroidUtilities.dp(8), AndroidUtilities.dp(8), AndroidUtilities.dp(64) /*move the whole stuff a little bit up*/);
+            textView.setLineSpacing(AndroidUtilities.dp(2), 1);
+            emptyView.addView(textView, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT));
+        }
 
         if(!onlySelect && !showArchivedOnly) {
             floatingButton = new ImageView(context);
