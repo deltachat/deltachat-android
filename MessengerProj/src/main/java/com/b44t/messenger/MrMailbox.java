@@ -133,7 +133,8 @@ public class MrMailbox {
     public native static void   archiveChat        (int chat_id, int archive);
 
     public native static int getChatIdByContactId (int contact_id);
-    public native static int createChatByContactId(int contact_id); // returns chat_id
+    public native static int createChatByContactId(int contact_id);
+    public native static int createChatByMsgId    (int msg_id);
 
     public native static int createGroupChat       (String name);
     public native static int isContactInChat       (int chat_id, int contact_id);

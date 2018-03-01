@@ -1453,7 +1453,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         }
     }
 
-    private void createChatByDeaddropMsgId(int messageId)
+    private void createChatByDeaddropMsgId(final int messageId)
     {
         final Context context = getParentActivity();
         if (context == null) {
@@ -1475,7 +1475,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         builder.setPositiveButton(R.string.OK, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                int chatId = MrMailbox.createChatByContactId(fromId);
+                int chatId = MrMailbox.createChatByMsgId(messageId);
                 if( chatId != 0 ) {
                     Bundle args = new Bundle();
                     args.putInt("chat_id", chatId);
