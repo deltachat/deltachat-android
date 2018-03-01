@@ -2823,7 +2823,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
 
                     ChatMessageCell messageCell = (ChatMessageCell) view;
                     messageCell.isGroupChat = m_mrChat.getType()==MrChat.MR_CHAT_GROUP;
-                    messageCell.setMessageObject(msgDrawObj);
+                    messageCell.setMessageObject(msgDrawObj, m_isChatWithDeaddrop);
                     messageCell.setCheckPressed(!disableSelection, disableSelection && selected);
                     messageCell.setHighlighted(highlightMessageId != 0 && msgDrawObj.getId() == highlightMessageId);
 
