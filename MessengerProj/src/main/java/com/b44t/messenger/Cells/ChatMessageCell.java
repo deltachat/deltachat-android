@@ -1189,7 +1189,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
         }
     }
 
-    public void setMessageObject(MessageObject messageObject) {
+    public void setMessageObject(MessageObject messageObject, boolean drawNewchatButton_) {
         boolean messageChanged = currentMessageObject != messageObject || messageObject.forceUpdate;
         boolean dataChanged = currentMessageObject == messageObject && isUserDataChanged();
         if (messageChanged || dataChanged || isPhotoDataChanged(messageObject)) {
@@ -1200,7 +1200,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
             isCheckPressed = true;
             isAvatarVisible = false;
             wasLayout = false;
-            drawNewchatButton = checkNeedDrawNewchatButton(messageObject);
+            drawNewchatButton = drawNewchatButton_;
             currentUser = null;
             drawNameLayout = false;
 
@@ -1315,7 +1315,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                 photoImage.setForcePreview(false);
                 if (messageObject.type == MessageObject.MO_TYPE9_FILE) {
                     backgroundWidth = Math.min(displaySize.x - dp(isGroupChat && messageObject.isFromUser() && !messageObject.isOutOwner() ? 102 : 50), dp(270));
-                    if (checkNeedDrawNewchatButton(messageObject)) {
+                    if (drawNewchatButton) {
                         backgroundWidth -= dp(20);
                     }
                     int maxWidth = backgroundWidth - dp(86 + 52);
@@ -1387,7 +1387,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                     int maxPhotoWidth;
                     maxPhotoWidth = photoWidth = (int) (Math.min(displaySize.x, displaySize.y) * 0.7f);
                     photoHeight = photoWidth + dp(100);
-                    if (checkNeedDrawNewchatButton(messageObject)) {
+                    if (drawNewchatButton) {
                         maxPhotoWidth -= dp(20);
                         photoWidth -= dp(20);
                     }
@@ -2038,13 +2038,6 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
 
     private boolean isDrawSelectedBackground() {
         return isPressed() && isCheckPressed || !isCheckPressed && isPressed || isHighlighted;
-    }
-
-    private boolean checkNeedDrawNewchatButton(MessageObject messageObject) {
-        if( messageObject.getDialogId()== MrChat.MR_CHAT_ID_DEADDROP) {
-            return true;
-        }
-        return false;
     }
 
     private void setMessageObjectInternal(MessageObject messageObject) {

@@ -404,7 +404,7 @@ public class ChatlistActivity extends BaseFragment implements NotificationCenter
                         builder.setPositiveButton(R.string.OK, new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
-                                int belonging_chat_id = MrMailbox.createChatByContactId(msg.getFromId());
+                                int belonging_chat_id = MrMailbox.createChatByMsgId(msg.getId());
                                 if( belonging_chat_id != 0 ) {
                                     Bundle args = new Bundle();
                                     args.putInt("chat_id", belonging_chat_id);

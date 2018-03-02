@@ -405,6 +405,12 @@ JNIEXPORT jint Java_com_b44t_messenger_MrMailbox_createChatByContactId(JNIEnv *e
 }
 
 
+JNIEXPORT jint Java_com_b44t_messenger_MrMailbox_createChatByMsgId(JNIEnv *env, jclass cls, jint msg_id)
+{
+	return (jint)mrmailbox_create_chat_by_msg_id(get_mrmailbox_t(env, cls), msg_id);
+}
+
+
 JNIEXPORT jint Java_com_b44t_messenger_MrMailbox_createGroupChat(JNIEnv *env, jclass cls, jstring name)
 {
 	CHAR_REF(name);
