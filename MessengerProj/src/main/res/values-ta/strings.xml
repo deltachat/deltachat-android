@@ -42,8 +42,8 @@
     <string name="NoRecent">சமீபமாக ஏதுமில்லை </string>
     <string name="TypeMessage">சேதி </string>
     <string name="SlideToCancel">ரத்து செய்ய திரையில் சறுக்கவும் </string>
-    <string name="SaveToDownloads">பதிவிறக்கத்தில் சேமி</string>
-    <string name="SaveToMusic">இசையில் சேமிக்கவும் </string>
+    <string name="SaveToDownloads">\"பதிவிறக்கத்தில்\" சேமி</string>
+    <string name="SaveToMusic">\"இசையில்\" சேமிக்கவும் </string>
     <string name="Share">பகிர் </string>
     <string name="SendItems">%1$sஅனுப்பவும்  </string>
     <string name="ClearRecentEmoji">சமீபத்தைய emoji களை நீக்கவும் </string>
@@ -103,9 +103,240 @@
     <string name="SmartNotifications">அறிவிப்புகளை கட்டுப்படுத்து </string>
     <string name="SmartNotificationsSoundAtMost">அதிகத்தில் ஒலிக்கவும் </string>
     <string name="SmartNotificationsTimes">வேளைகள் </string>
+    <string name="SmartNotificationsMinutes">நிமிடங்கள்</string>
+    <string name="DirectShare">நேரடியான பகிர்வு </string>
+    <string name="DirectShareInfo">சமீபத்திய அரட்டைகளை பகிர் பட்டியலில் காட்டுக </string>
+    <!--cache view-->
+    <string name="CacheSettings">சேமிப்பகம் </string>
+    <string name="KeepMedia">ஊடகத்தை தக்க வைக்கவும் </string>
+    <string name="KeepMediaForever">என்றென்றைக்கும் </string>
+    <!--passcode view-->
+    <string name="Passcode">கடவு குறியீடு மூலம் பூட்டு </string>
+    <string name="ChangePasscode">கடவு குறியீட்டை மாற்றவும் </string>
+    <string name="PasscodePIN">தனிப்பட்ட அடையாள எண் (PIN)</string>
+    <string name="PasscodePassword">கடவுச்சொல் </string>
+    <string name="EnterCurrentPasscode">தற்போதைய கடவு குறியீட்டை உள்ளீடவும் </string>
+    <string name="EnterNewFirstPasscode">கடவு குறியீடை உள்ளிடவும் </string>
+    <string name="EnterNewPasscode">உங்களது புதிய கடவு குறியீட்டை உள்ளீடவும் </string>
+    <string name="EnterYourPasscode">கடவு குறியீடை உள்ளீடவும் </string>
+    <string name="ReEnterYourPasscode">மீண்டும் கடவு குறியீடை உள்ளீடவும் </string>
+    <string name="PasscodeDoNotMatch">கடவு குறியீடுகள் வேறு வேறாக உள்ளது </string>
+    <string name="AutoLock">தானியங்கி பூட்டு </string>
+    <string name="UnlockFingerprint">கைரேகையை கொண்டு திறக்கவும் </string>
+    <string name="FingerprintInfo">மீண்டும் தொடர்வதற்கு உங்களின் கைரேகையை உறுதி செய்யவும் </string>
+    <string name="FingerprintNotRecognized">கைரேகையை ஏற்க முடியவில்லை மீண்டும் முயற்சி செய்யவும் </string>
+    <!--photo gallery view-->
+    <string name="SaveToGallery">காட்சியகத்தில் (Gallery) சேமிக்கவும் </string>
     <string name="Gallery">காட்சி கூடம் </string>
+    <string name="AllPhotos">எல்லா படங்களும் </string>
+    <string name="AllVideo">எல்லா காணொளிகளும் </string>
+    <string name="NoPhotos">எந்த படங்களும் இல்லை </string>
+    <string name="NoVideo">எந்த காணொளியும் இல்லை </string>
+    <string name="CropImage">படத்தை தேவைக்கேற்றபடி நறுக்கு (Crop)</string>
+    <string name="EditImage">படத்தை திருத்தவும் </string>
+    <string name="Enhance">மேம்படுத்து </string>
+    <string name="Exposure">வெளிப்பாடு </string>
+    <string name="Warmth">வெப்பநிலை </string>
+    <string name="Saturation">செறிவூட்டல்</string>
+    <string name="Vignette">விக்னெட்டி</string>
+    <string name="Shadows">நிழல்கள்</string>
+    <string name="Grain">தானிய விளைவு</string>
+    <string name="Sharpen">கூர்மையாக்கு</string>
+    <string name="Fade">மங்கலாக்குதல்</string>
+    <string name="Tint">நிறமேற்றம்</string>
+    <string name="TintShadows">நிழல்கள்</string>
+    <string name="TintHighlights">வெளிப்பாடு </string>
+    <string name="Curves">வளைவுகள் </string>
+    <string name="CurvesAll">எல்லாம் </string>
+    <string name="CurvesRed">சிகப்பு</string>
+    <string name="CurvesGreen">பச்சை</string>
+    <string name="CurvesBlue">நீலம்</string>
+    <string name="Blur">மங்கலாக்கு</string>
     <string name="BlurOff">நிறுத்தவும்</string>
+    <string name="BlurLinear">நேரியல்</string>
+    <string name="BlurRadial">ஆரத்திசையில்</string>
+    <string name="DiscardChanges">மாற்றங்களை நீக்கவா ?</string>
+    <string name="ClearButton">அழிக்கவும் </string>
+    <string name="PickerPhotos">புகைப்படங்கள் </string>
+    <string name="PickerVideo">காணொளி </string>
+    <!--privacy settings-->
+    <string name="PrivacySettings">அந்தரங்கம் மற்றும் பாதுகாப்பு </string>
+    <string name="SecurityTitle">பாதுகாப்பு</string>
+    <!--edit video view-->
+    <string name="SendVideo">காணொளியை அனுப்பு </string>
+    <!--button titles-->
+    <string name="Done">முடிந்தது </string>
+    <string name="Open">திற </string>
+    <string name="Cancel">ரத்து செய் </string>
+    <string name="Edit">திருத்து </string>
+    <string name="Send">அனுப்பு </string>
+    <string name="CopyToClipboard">பிடிப்பு பலகை </string>
+    <string name="Delete">நீக்கவும் </string>
+    <string name="Forward">முன்னோக்கு </string>
+    <string name="FromCamera">புகைப்பட கருவியில் இருந்து </string>
+    <string name="FromGalley">காட்சியகத்தில் இருந்து </string>
+    <string name="Set">அமை </string>
+    <string name="OK">சரி </string>
+    <string name="Crop">நறுக்கு </string>
+    <!--messages-->
+    <string name="AttachPhoto">புகைப்படம் </string>
+    <string name="AttachVideo">காணொளி </string>
+    <string name="AttachGif">GIF </string>
+    <string name="AttachContact">தொடர்பு</string>
+    <string name="AttachDocument">கோப்பு </string>
+    <string name="AttachVoiceMessage">குரல் செய்தி </string>
+    <string name="FromSelf">நான் </string>
+    <!--Alert messages-->
+    <string name="NoHandleAppInstalled">இந்த வகையான ஆவணத்தை திறக்க எந்த செயலியும் உங்கள் சாதனத்தில் நிறுவப்படவில்லை \'%1$s\', இந்த ஆவணத்தை திறக்கக்கூடிய ஏதேனும் ஒரு செயலியை நிறுவவும் </string>
+    <string name="ContactAlreadyInGroup">இந்த தொடர்பு இந்த குழுவில் ஏற்கனவே உள்ளது </string>
+    <string name="ForwardMessagesTo">தேர்வு செய்யப்பட்ட செய்திகளை இவற்றுக்கு <![CDATA[]]>%1$s<![CDATA[]]> முன்னோக்கி அனுப்பவா ? </string>
+    <string name="AreYouSureDeleteThisChat">இந்த அரட்டையை அழிக்கவா ? இதை இனிமேல் அரட்டை பட்டியலில் காணமுடியாது . 
+அனால் இந்த அரட்டையின் செய்திகள் சேவக கணிப்பொறியில் இருக்கும் </string>
+    <string name="AreYouSureBlockContact">இந்த தொடர்பை முடக்கவா ?</string>
+    <string name="AreYouSureDeleteContact">இந்த தொடர்பை நீக்கவா ?</string>
+    <string name="PermissionStorage">புகைப்படங்கள், காணொளிகள், இசை கோப்புகள் மற்றும் ஏனைய கோப்புகளை அனுப்பவும் , சேமிக்கவும் நினைவக அணுகல் தேவைப்படுகிறது </string>
+    <string name="PermissionNoAudio">குரல் செய்திகளை அனுப்ப நுண் ஒலிப்பேசி அணுகல் தேவைப்படுகிறது </string>
     <string name="PermissionOpenSettings">அமைப்புகள் </string>
     <!--Intro view-->
     <string name="Intro1Headline">டெல்டா அரட்டை </string>
-    </resources>
+    <string name="Intro2Headline">சுதந்திரமான </string>
+    <string name="Intro3Headline">வேகமான </string>
+    <string name="Intro4Headline">திறன்மிகு </string>
+    <string name="Intro5Headline">இலவசம் </string>
+    <string name="Intro6Headline">மறைகுறியீடாக்கப்பட்டது </string>
+    <string name="Intro7Headline">நம்பத்தகுந்த </string>
+
+    <string name="IntroStartMessaging">செய்திகளை அனுப்ப தொடங்குங்கள் </string>
+    <!--plural-->
+    <plurals name="Members">
+        <item quantity="one">%d </item>
+        <item quantity="other"> %dஉறுப்பினர்கள் </item>
+    </plurals>
+    <plurals name="Contacts">
+        <item quantity="one">%dதொடர்புகள் </item>
+        <item quantity="other">%dதொடர்புகள்  </item>
+    </plurals>
+    <plurals name="MeAndMembers">
+        <item quantity="one">%dநானும் மற்றும் உறுப்பினர்களும் </item>
+        <item quantity="other">%dநானும் மற்றும் உறுப்பினர்களும் </item>
+    </plurals>
+    <plurals name="NewMessages">
+        <item quantity="one">%d புதிய செய்திகள் </item>
+        <item quantity="other">%d புதிய செய்திகள் </item>
+    </plurals>
+    <plurals name="messages">
+        <item quantity="one">%d செய்திகள் </item>
+        <item quantity="other">%dசெய்திகள் </item>
+    </plurals>
+    <plurals name="Chats">
+        <item quantity="one">%d அரட்டை</item>
+        <item quantity="other">%dஅரட்டைகள் </item>
+    </plurals>
+    <plurals name="Minutes">
+        <item quantity="one">%d நிமிடம்  </item>
+        <item quantity="other">%dநிமிடங்கள் </item>
+    </plurals>
+    <plurals name="Hours">
+        <item quantity="one">%d மணி
+ </item>
+        <item quantity="other">%d மணிகள்  </item>
+    </plurals>
+    <plurals name="Days">
+        <item quantity="one">%d நாள்  </item>
+        <item quantity="other">%d நாட்கள் </item>
+    </plurals>
+    <plurals name="Weeks">
+        <item quantity="one">%dவாரம் </item>
+        <item quantity="other">%dவாரங்கள்  </item>
+    </plurals>
+    <plurals name="Months">
+        <item quantity="one">%dமாதம்  </item>
+        <item quantity="other">%dமாதங்கள்  </item>
+    </plurals>
+    <!--date formatters-->
+    <string name="formatterMonthYear">MMMM yyyy</string>
+    <string name="formatterMonth">MMM dd</string>
+    <string name="formatterYear">dd.MM.yyyy</string>
+    <string name="chatDate">EEE, MMMM d</string>
+    <string name="chatFullDate">EEE, MMMM d, yyyy</string>
+    <string name="formatterWeek">EEE</string>
+    <string name="formatterDay24H">HH:mm</string>
+    <string name="formatterDay12H">h:mm a</string>
+    <string name="AccountSettings">கணக்கு அமைப்புகள் </string>
+    <string name="MyAccount">எனது அமைப்புகள் </string>
+    <string name="MyName">எனது பெயர் </string>
+    <string name="MyNameExplain">உங்கள் அனுப்புநர்களுக்கு காட்டப்படும் தங்களின் பெயர் , இதை வெற்றிடமாக விட்டால் உங்கள் மின் அஞ்சல் முகவரி உங்கள் அனுப்புநர்களுக்கு காட்டப்படும் </string>
+    <string name="Password">கடவுச்சொல் </string>
+    <string name="SmtpPassword">SMTP க்கான கடவுச்சொல் </string>
+    <string name="FromAbove">மேலே இருந்து </string>
+    <string name="SmtpLoginname">SMTP க் கான உள் நுழைவு பெயர் </string>
+    <string name="SmtpPort">SMTP போர்ட் </string>
+    <string name="Automatic">தானியங்கி </string>
+    <string name="ImapServer">IMAP சேவகன் </string>
+    <string name="ImapLoginname">IMAP க் கான உள் நுழைவு பெயர் </string>
+    <string name="SmtpServer">SMTP க்கான சேவகன் </string>
+    <string name="ImapPort">IMAP போர்ட் </string>
+    <string name="InboxHeadline">உட்பெட்டி</string>
+    <string name="OutboxHeadline">வெளிப்பெட்டி </string>
+    <string name="MyAccountExplain">அறியப்பட்ட மின் அஞ்சல் வழங்குநர்களுக்கு மற்ற அமைப்புகள் தானாக தீர்மானிக்கப்படும் </string>
+    <string name="AccountNotConfigured">கணக்கு உள்ளமைக்கப்படவில்லை</string>
+    <string name="AboutThisProgram">டெல்டா அரட்டையை பற்றி </string>
+    <string name="NotSet">இன்னும் அமைக்கப்படவில்லை </string>
+    <string name="NewChat">புது அரட்டை </string>
+    <string name="Deaddrop">தொடர்பு கோரிக்கை </string>
+    <string name="DeaddropInChatlist">அரட்டை பட்டியலில் தொடர்பு கோரிக்கைகளை காட்டவும் </string>
+    <string name="MuteAlways">எப்போதுமே ஊமையாக்கு </string>
+    <string name="DeaddropHint">மறு உத்தரவிற்கான அம்பு குறியை தட்டி அரட்டையை ஆரம்பிக்கவும் </string>
+    <string name="NotYetImplemented">இந்த செயல்பாடு தற்போது இல்லை அல்லது முழுமையடையவில்லை </string>
+    <string name="DefaultStatusText">என்னுடைய டெல்டா அரட்டை செயலியில் இருந்து அனுப்பி உள்ளேன் : https://delta.chat</string>
+    <string name="Name" >பெயர் </string>
+    <string name="EmailAddress">மின் அஞ்சல் முகவரி </string>
+    <string name="CannotDeleteContact">பயன்பாட்டில் உள்ள தொடர்புகளை நீக்க முடியாது , அதற்கு பதில் தொடர்பை முடக்கவும் </string>
+    <string name="BadEmailAddress">தவறான மின் அஞ்சல் முகவரி </string>
+    <string name="ContactCreated">தொடர்பு உருவாக்கப்பட்டது </string>
+    <string name="ViewProfile">சுயவிவரத்தை காண்பி</string>
+    <!-- Translators: please use a very short string here, it should not much longer than
+    the string needed for video time+size (0:00, 12,3 Mib) -->
+    <string name="OneMoment">ஒரு நிமிடம் காத்திருக்கவும் ...</string>
+    <string name="InviteMenuEntry">அழைப்பிதழ்களை அனுப்பு </string>
+    <string name="InviteText">நான் தற்போது டெல்டா அரட்டை செயலியை பயன்படுத்தி வருகிறேன் - %1$s - நீங்கள் இதில் எனக்கு செய்தி அனுப்பலாம் %2$s </string>
+    <string name="AdvancedSettings">மேம்பட்ட அமைப்புகள் </string>
+    <string name="AskResetNotifications">தற்போதைய பக்கம், தொடர்புகள் மற்றும் குழுக்களுக்கு எல்லா நினைவூட்டல் அமைப்புகள் மற்றும் நினைவூட்டல் சத்தங்களை மீட்டமைக்கவா ?</string>
+    <string name="AttachFiles">கோப்புகளை இணைக்கவும் </string>
+    <string name="ErrGroupNameEmpty">குழுவிற்கு ஒரு பெயரை சூட்டவும் </string>
+    <string name="MsgNewGroupDraft">வணக்கம் , நான் நமக்கு \"%1$s\" என்ற பெயரில் குழுவை உருவாக்கி உள்ளேன் </string>
+    <string name="MsgGroupImageChanged">குழு படம் மாற்றப்பட்டது.</string>
+    <string name="MsgMemberAddedToGroup"> %1$s உறுப்பினராக சேர்க்கப்பட்டார் </string>
+    <string name="MsgMemberRemovedFromToGroup">உறுப்பினர் %1$s நீக்கப்பட்டார் </string>
+    <string name="ErrSelfNotInGroup">இந்த செயலை செய்ய நீங்கள் குழு உறுப்பினராக இருக்க வேண்டும் </string>
+    <string name="MsgGroupLeft">குழுவில் இருந்து வெளியேறினது </string>
+    <string name="SelectContact">ஏதேனும் ஒரு தொடர்பை தெரிவு செய்யவும் </string>
+    <string name="DoneHint">முடிந்தது </string>
+    <string name="FileNotFound">%1$sகண்டுபிடிக்க முடியவில்லை. </string>
+    <string name="Error">பிழை: %1$s</string>
+    <string name="NoNetwork">இணைய பிணைப்பு இல்லை </string>
+    <string name="Audio">ஒலி </string>
+    <string name="PermNotificationTitle">%1$s இதனுடன் இணைக்கப்பட்டது </string>
+    <string name="PermNotificationText">செய்திகளுக்காக காத்திருக்கிறது ...</string>
+    <string name="HelpUrl">https://delta.chat/en/help</string>
+    <string name="EncryptedMessage">மறைகுறியாக்கப்பட்ட செய்தி</string>
+    <string name="Encryption">மறைகுறியாக்கம் </string>
+    <string name="EncrinfoE2E">இரண்டு பக்கமும் மறைகுறியாக்கம் செயலாக்கப்பட்டது </string>
+    <string name="EncrinfoFingerprints">கைரேகைகள் </string>
+    <string name="Backup">காப்பு நகல் </string>
+    <string name="NameAndStatus">பெயர் மற்றும் நிலை </string>
+    <string name="MyStatus">என் நிலை </string>
+    <string name="MsgGroupImageDeleted">குழு படம் நீக்கப்பட்டது </string>
+    <string name="AskDeleteGroupImage">குழுவிற்கான படத்தை நீக்கவா ? இந்த செயல் அணைத்து குழு உறுப்பினர்களின் சாதனத்திலும் பாதிக்கும் </string>
+    <string name="ExportImportHeader">ஏற்றுமதி மற்றும் இறக்குமதி </string>
+    <string name="IncorrectPassword">தவறான கடவு சொல் </string>
+    <string name="NoRecentEmoji">கடைசியாக பயன்படுத்த பட்ட எமோஜிகள் இங்கே காண்பிக்கப்படும் </string>
+    <string name="NotNow">இப்போது இல்லை </string>
+    <string name="Archived">ஆவண காக்கப்படுத்தப்பட்டது </string>
+    <string name="LeaveGroup">குழுவில் இருந்து வெளியேறு </string>
+    <string name="AskLeaveGroup">இந்த குழுவில் இருந்து வெளியேறவா ?</string>
+    <string name="Never">எப்போதும் இல்லை </string>
+    <string name="AutocryptKeyTransferPleaseEnterCode">மற்ற சாதனத்தில் காணப்படும் அமைப்பு குறியீடை தயவு செய்து உள்ளீடவும் </string>
+    <string name="Retry">மீண்டும் முயற்சி செய்யவும் </string>
+    <string name="SelfTalkSubtitle">தங்களுக்கே அனுப்பி கொண்ட செய்திகள் </string>
+</resources>

@@ -77,7 +77,7 @@
     <string name="Sound">Звук</string>
     <string name="InAppNotifications">Уведомления программы</string>
     <string name="Vibrate">Вибрация</string>
-    <string name="ResetAllNotifications">Сбросить все уведомления</string>
+    <string name="ResetAllNotifications">Сбросить настройки уведомлений</string>
     <string name="NotificationsAndSounds">Уведомления и звуки</string>
     <string name="BlockedContacts">Заблокированные контакты</string>
     <string name="Default">По умолчанию</string>
@@ -366,7 +366,7 @@
     <string name="InviteMenuEntry">Отправить приглашения</string>
     <string name="InviteText">Я использую систему мгновенных сообщений Delta Chat - %1$s - вы можете написать мне на %2$s</string>
     <string name="AdvancedSettings">Расширенные настройки</string>
-    <string name="AskResetNotifications">Сбросить все настройки уведомлений и звуки этой страницы, а также ваших контактов и групп?</string>
+    <string name="AskResetNotifications">Сбросить все настройки и звуки уведомлений, перечисленных выше, а также у ваших контактов и групп?</string>
     <string name="AttachFiles">Прикрепить файлы</string>
     <string name="ErrGroupNameEmpty">Введите название группы.</string>
     <string name="MsgNewGroupDraftHint">Напишите первое сообщение, чтобы другие могли отвечать в этой группе.\n\n• Группа будет нормально общаться, даже если не все участники используют Delta Chat.\n\n• Доставка первого сообщения может занять некоторое время.</string>

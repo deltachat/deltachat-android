@@ -85,8 +85,8 @@
     <string name="ChatBackground">Söyleşi arkaplanı</string>
     <string name="SendByEnter">Enter tuşu ile gönder</string>
     <string name="Help">Yardım</string>
-    <string name="Enabled">Aç</string>
-    <string name="Disabled">Kapat</string>
+    <string name="Enabled">Açık</string>
+    <string name="Disabled">Kapalı</string>
     <string name="LedColor">LED rengi</string>
     <string name="BadgeNumber">Sayıyı akılda tutmak için mümkünse simge kullanın</string>
     <string name="Short">Kısa</string>
