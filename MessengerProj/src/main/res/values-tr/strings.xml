@@ -194,6 +194,7 @@
     <string name="NoHandleAppInstalled">\'%1$s\' dosya türünü açacak kurulu bir uygulama yok, bir tane kurun ve devam edin.</string>
     <string name="ContactAlreadyInGroup">Kişi zaten bu grupta.</string>
     <string name="ForwardMessagesTo">Seçili iletiler <![CDATA[<b>]]>%1$s<![CDATA[</b>]]> a iletilsin mi?</string>
+    <string name="SendMessagesTo"><![CDATA[<b>]]>%1$s<![CDATA[</b>]]>\'a ileti gönderilsin mi?</string>
     <string name="AreYouSureDeleteThisChat">Bu söyleşiyi silinsin mi? Söyleşi listesinde artık gösterilmeyecek, iletileri sunucuda kalacak.</string>
     <string name="AreYouSureBlockContact">Bu kişiyi engellemek istediğinizden emin misiniz?</string>
     <string name="AreYouSureDeleteContact">Bu kişiyi silmek istediğizden emin misiniz?</string>
@@ -304,12 +305,15 @@
     the string needed for video time+size (0:00, 12,3 Mib) -->
     <string name="OneMoment">Bir dakika ...</string>
     <string name="NoChatsHelp">Sayfanın sağ altındaki \'\'Yeni söyleşi\'\' düğmesine basarak başlayın ya da daha fazla seçenek için \'\'Menü\'\' düğmesine dokunun.</string>
+    <string name="Intro7Message"><![CDATA[<b>Delta Chat</b>]]> uyumlu ve standartlara dayalıdır ve iş kullanımı için güvenlidir.</string>
     <string name="InviteMenuEntry">Davetiye gönderin</string>
     <string name="InviteText">Şimdi Delta Chat kullanıyorum - %1$s- bana yazabilirsin%2$s</string>
     <string name="AdvancedSettings">Gelişmiş ayarlar</string>
     <string name="AskResetNotifications">Geçerli sayfanın grupların ve kişilerin bütün bildirim ayarları ve sesleri sıfırlansın mı?</string>
     <string name="AttachFiles">Dosyaları iliştir</string>
     <string name="ErrGroupNameEmpty">Grup için bir ad girin</string>
+    <string name="MsgNewGroupDraftHint">İlk iletiyi diğerlerinin bu grupta yanıtlamasına izin verin.\n\ n• Tüm üyeler Delta Chat kullanmıyorsa sorun yoktur.\n\n• İlk iletiyi teslim etmek biraz zaman alabilir.</string>
+    <string name="MsgNewGroupDraft">Selam, bizim için \"%1$s\" grubunu oluşturdum. </string>
     <string name="MsgGroupNameChanged">Grup adı \"%1$s\" den \"%2$s\"ye değişti.</string>
     <string name="MsgGroupImageChanged">Grup resmi değişti.</string>
     <string name="MsgMemberAddedToGroup">%1$s üye eklendi</string>
@@ -344,18 +348,24 @@
     <string name="EncrinfoNoE2EExplain">Alıcı tarafından Delta Chat veya başka bir Otomatik şifreleme uygulaması  kullanıldığında uçtan uca şifreleme uygulanacaktır.</string>
     <string name="EncrinfoFingerprints">Parmak izleri</string>
     <string name="Backup">Yedekleme</string>
+    <string name="ImportBackupExplain2"><![CDATA[<i>]]>%1$s<![CDATA[</i>]]>dan bir yedeği içe aktarmak ve yeniden kurmak.</string>
     <string name="ReadReceipt">İletim raporu</string>
     <string name="NameAndStatus">Ad ve durum</string>
     <string name="MyStatus">Durumum</string>
+    <string name="MyStatusExplain">Durum, diğer yerlerin yanı sıra e-posta altbilgisinde gösterilir.</string>
     <string name="MsgGroupImageDeleted">Grup resmi silindi</string>
     <string name="AskDeleteGroupImage">Grup resmini silmek istediğinizden emin misiniz?\n\nBu tüm grup üyelerinin aygıtlarını etkileyecek.</string>
     <string name="ExportImportHeader">Dışa aktarım ve içe aktarım</string>
     <string name="ImportExportExplain">Dışa aktarılan dosyalar gizli anahtarları içerecektir! Onları güvenli bir yerde saklayın veya mümkün olan en kısa sürede silin.</string>
+    <string name="EnterPasswordToContinue">Devam etmek için %1$s parolasını girin:</string>
     <string name="IncorrectPassword">Geçersiz parola</string>
+    <string name="ImportBackupAsk"><![CDATA[<i>]]>%1$s<![CDATA[</i>]]> de yedekleme bulundu.\n\nTüm verileri ve ayarları buradan içe aktarmak ve kullanmak istiyor musunuz?</string>
     <string name="ImportBackup">Yedeklemeyi içe aktar</string>
+    <string name="FilesSuccessfullyExported">Dosyalar <![CDATA[<i>]]>%1$s<![CDATA[</i>]]>\'a dışa aktarıldı.</string>
     <string name="ExportBackup">Yedeklemeyi dışa aktar</string>
     <string name="ExportPrivateKeys">Özel anahtarları dışa aktar</string>
     <string name="ImportPrivateKeys">Özel anahtarları içe aktar</string>
+    <string name="ImportPrivateKeysAsk2">Gizli anahtarlar <![CDATA[<i>]]>%1$s<![CDATA[</i>]]>dan içe aktarılsın mı?\n\n•Var olan gizli anahtarlar silinmeyecek\n\n• Son içe aktarılan anahtar yeni öntanımlı anahtar olarak kullanılacak.</string>
     <string name="NoRecentEmoji">Son kullanılan duygu simgeleri burada gösterilecek.</string>
     <string name="E2eeOffBecauseOfUser">Uçtan uca şifrelemeyi etkinleştirmek için, ayarlarınızdaki ilgili seçeneği işaretleyin.</string>
     <string name="E2eeOffBecauseOfRecipient">Karşı tarafın da ayarı etkinleştirmesi durumunda uçtan uca şifreleme uygulanacaktır.</string>
@@ -371,6 +381,10 @@
     <string name="AutocryptKeyTransfer">Autocrypt Anahtar Aktarımı</string>
     <string name="AutocryptKeyTransferMsgAfterSend">Anahtarınız kendinize gönderildi. Diğer aygıta geçin ve kurulum iletisini açın. Sizden bir kurulum şifresi girmeniz istenecektir. İsteğe aşağıdaki rakamları yazın:\n\n%1$s\n\nİşiniz bittiğinde, diğer aygıtınız Autocrypt\'i kullanmaya hazır hale gelecektir.</string>
     <string name="AutocryptSetupMessageSubject">Autocrypt Kurulum İletisi</string>
+    <string name="AutocryptSetupMessageTapBody">Bu istemciler arasındaki anahtarınızı aktarım için kullanılan Autocrypt Kurulum İletisidir.\n\nBu iletiye dokun, şifreyi kaldır ve anahtarını kullan.</string>
+    <string name="AutocryptKeyTransferPleaseEnterCode">Lütfen diğer aygıtta görüntülenen kurulum kodunu giriniz.</string>
+    <string name="AutocryptKeyTransferBadCode">Kötü kurulum kodu. Lütfen tekrar deneyin.\n\nKurulum kodunu anımsamıyorsanız, diğer aygıttaki anahtar aktarımını yeniden başlatmanız yeterlidir.</string>
+    <string name="AutocryptKeyTransferSucceeded">Anahtar transferi başarılı.Bu aygıt artık Autocrypt\'i diğer aygıtla aynı tuşla kullanmaya hazırdır.</string>
     <string name="Retry">Yeniden dene</string>
     <string name="SelfTalkSubtitle">Kendime gönderdiğim iletiler</string>
 </resources>
