@@ -212,7 +212,7 @@ public class ActionBarMenuItem extends FrameLayout {
         subMenuOpenSide = side;
     }
 
-    public TextView addSubItem(int id, String text, int icon) {
+    public TextView addSubItem(int id, String text) {
         if (popupLayout == null) {
             rect = new Rect();
             location = new int[2];
@@ -249,15 +249,6 @@ public class ActionBarMenuItem extends FrameLayout {
         textView.setMinWidth(AndroidUtilities.dp(196));
         textView.setTag(id);
         textView.setText(text);
-        if (icon != 0) {
-            textView.setCompoundDrawablePadding(AndroidUtilities.dp(12));
-            if (!LocaleController.isRTL) {
-                textView.setCompoundDrawablesWithIntrinsicBounds(getResources().getDrawable(icon), null, null, null);
-            } else {
-                textView.setCompoundDrawablesWithIntrinsicBounds(null, null, getResources().getDrawable(icon), null);
-            }
-        }
-        //popupLayout.setShowedFromBotton(showFromBottom);
         popupLayout.addView(textView);
         LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) textView.getLayoutParams();
         layoutParams.gravity = Gravity.START;

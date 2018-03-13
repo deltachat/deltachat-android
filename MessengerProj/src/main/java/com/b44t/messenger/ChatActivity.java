@@ -600,7 +600,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
 
 
         headerItem = menu.addItem(0, R.drawable.ic_ab_other);
-        headerItem.addSubItem(ID_SEARCH, context.getString(R.string.Search), 0);
+        headerItem.addSubItem(ID_SEARCH, context.getString(R.string.Search));
 
         m_canMute = true;
         if( m_isChatWithDeaddrop /*&& !m_isDeaddropInChatlist*/ ) {
@@ -608,7 +608,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         }
 
         if( m_canMute ) {
-            muteMenuEntry = headerItem.addSubItem(ID_MUTE, null, 0);
+            muteMenuEntry = headerItem.addSubItem(ID_MUTE, null);
         }
 
         //if( !m_isChatWithDeaddrop ) {
@@ -616,12 +616,12 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         //}
 
         if( !m_isChatWithDeaddrop ) {
-            headerItem.addSubItem(ID_SHOW_PROFILE, context.getString(R.string.ViewProfile), 0);
+            headerItem.addSubItem(ID_SHOW_PROFILE, context.getString(R.string.ViewProfile));
             if( m_mrChat.getType()== MrChat.MR_CHAT_GROUP ) {
-                headerItem.addSubItem(ID_LEAVE_GROUP, context.getString(R.string.LeaveGroup), 0);
+                headerItem.addSubItem(ID_LEAVE_GROUP, context.getString(R.string.LeaveGroup));
             }
-            headerItem.addSubItem(ID_ARCHIVE_CHAT, context.getString(m_mrChat.getArchived()==0? R.string.ArchiveChat : R.string.UnarchiveChat), 0);
-            headerItem.addSubItem(ID_DELETE_CHAT, context.getString(R.string.DeleteChat), 0);
+            headerItem.addSubItem(ID_ARCHIVE_CHAT, context.getString(m_mrChat.getArchived()==0? R.string.ArchiveChat : R.string.UnarchiveChat));
+            headerItem.addSubItem(ID_DELETE_CHAT, context.getString(R.string.DeleteChat));
         }
 
         updateTitle();
@@ -707,13 +707,13 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         actionModeViews.add(actionMode.addItem(ID_FORWARD, R.drawable.ic_ab_fwd_forward, Theme.ACTION_BAR_MODE_SELECTOR_COLOR, null, AndroidUtilities.dp(54)));
         ActionBarMenuItem submenu = actionMode.addItem(0, R.drawable.ic_ab_other_grey);
             if( m_isChatWithDeaddrop ) {
-                m_replyMenuItem = submenu.addSubItem(ID_REPLY, context.getString(R.string.Reply), 0);
+                m_replyMenuItem = submenu.addSubItem(ID_REPLY, context.getString(R.string.Reply));
             }
-            submenu.addSubItem(ID_COPY, context.getString(R.string.CopyToClipboard), 0);
-            m_saveToXXMenuItem = submenu.addSubItem(ID_SAVE_TO_XX, "", 0);
-            m_openMenuItem = submenu.addSubItem(ID_OPEN, context.getString(R.string.Open), 0);
-            m_shareMenuItem = submenu.addSubItem(ID_SHARE, context.getString(R.string.Share), 0);
-            m_infoMenuItem = submenu.addSubItem(ID_INFO, context.getString(R.string.Info), 0);
+            submenu.addSubItem(ID_COPY, context.getString(R.string.CopyToClipboard));
+            m_saveToXXMenuItem = submenu.addSubItem(ID_SAVE_TO_XX, "");
+            m_openMenuItem = submenu.addSubItem(ID_OPEN, context.getString(R.string.Open));
+            m_shareMenuItem = submenu.addSubItem(ID_SHARE, context.getString(R.string.Share));
+            m_infoMenuItem = submenu.addSubItem(ID_INFO, context.getString(R.string.Info));
         actionModeViews.add(submenu);
         checkActionBarMenu();
 

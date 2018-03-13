@@ -913,16 +913,16 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
         ActionBarMenuItem item = menu.addItem(10, R.drawable.ic_ab_other);
 
         if( chat_id!=0 || MrMailbox.getChatIdByContactId(user_id)!=0 ) {
-            item.addSubItem(ID_ADD_SHORTCUT, ApplicationLoader.applicationContext.getString(R.string.AddShortcut), 0);
+            item.addSubItem(ID_ADD_SHORTCUT, ApplicationLoader.applicationContext.getString(R.string.AddShortcut));
         }
 
         if (user_id != 0) {
-            item.addSubItem(ID_COPY_EMAIL_TO_CLIPBOARD, ApplicationLoader.applicationContext.getString(R.string.CopyToClipboard), 0);
+            item.addSubItem(ID_COPY_EMAIL_TO_CLIPBOARD, ApplicationLoader.applicationContext.getString(R.string.CopyToClipboard));
         }
 
         if( user_id != 0 && user_id != MrContact.MR_CONTACT_ID_SELF ) {
-            item.addSubItem(ID_BLOCK_CONTACT, userBlocked()? ApplicationLoader.applicationContext.getString(R.string.UnblockContact) : ApplicationLoader.applicationContext.getString(R.string.BlockContact), 0);
-            item.addSubItem(ID_DELETE_CONTACT, ApplicationLoader.applicationContext.getString(R.string.DeleteContact), 0);
+            item.addSubItem(ID_BLOCK_CONTACT, userBlocked()? ApplicationLoader.applicationContext.getString(R.string.UnblockContact) : ApplicationLoader.applicationContext.getString(R.string.BlockContact));
+            item.addSubItem(ID_DELETE_CONTACT, ApplicationLoader.applicationContext.getString(R.string.DeleteContact));
         }
 
 

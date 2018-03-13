@@ -158,8 +158,8 @@ public class PhotoAlbumPickerActivity extends BaseFragment implements Notificati
 
             dropDownContainer = new ActionBarMenuItem(context, menu, 0);
             dropDownContainer.setSubMenuOpenSide(1);
-            dropDownContainer.addSubItem(ID_ITEM_PHOTOS, context.getString(R.string.PickerPhotos), 0);
-            dropDownContainer.addSubItem(ID_ITEM_VIDEO, context.getString(R.string.PickerVideo), 0);
+            dropDownContainer.addSubItem(ID_ITEM_PHOTOS, context.getString(R.string.PickerPhotos));
+            dropDownContainer.addSubItem(ID_ITEM_VIDEO, context.getString(R.string.PickerVideo));
             actionBar.addView(dropDownContainer);
             FrameLayout.LayoutParams layoutParams = (FrameLayout.LayoutParams) dropDownContainer.getLayoutParams();
             layoutParams.height = LayoutHelper.MATCH_PARENT;

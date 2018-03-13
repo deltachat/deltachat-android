@@ -257,8 +257,8 @@ public class PasscodeActivity extends BaseFragment implements NotificationCenter
             if (screen == SCREEN1_ENTER_CODE1) {
                 dropDownContainer = new ActionBarMenuItem(context, menu, 0);
                 dropDownContainer.setSubMenuOpenSide(1);
-                dropDownContainer.addSubItem(pin_item, context.getString(R.string.PasscodePIN), 0);
-                dropDownContainer.addSubItem(password_item, context.getString(R.string.PasscodePassword), 0);
+                dropDownContainer.addSubItem(pin_item, context.getString(R.string.PasscodePIN));
+                dropDownContainer.addSubItem(password_item, context.getString(R.string.PasscodePassword));
                 actionBar.addView(dropDownContainer);
                 layoutParams = (FrameLayout.LayoutParams) dropDownContainer.getLayoutParams();
                 layoutParams.height = LayoutHelper.MATCH_PARENT;

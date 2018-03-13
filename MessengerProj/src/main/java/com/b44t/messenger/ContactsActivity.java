@@ -250,9 +250,9 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
 
         ActionBarMenuItem item = menu.addItem(10, R.drawable.ic_ab_other);
         if (do_what == SELECT_CONTACT_FOR_NEW_CHAT || do_what == SELECT_CONTACTS_FOR_NEW_GROUP) {
-            item.addSubItem(id_toggle, do_what == SELECT_CONTACT_FOR_NEW_CHAT ? context.getString(R.string.NewGroup) : context.getString(R.string.NewChat), 0);
+            item.addSubItem(id_toggle, do_what == SELECT_CONTACT_FOR_NEW_CHAT ? context.getString(R.string.NewGroup) : context.getString(R.string.NewChat));
         }
-        item.addSubItem(id_add_contact, context.getString(R.string.NewContactTitle), 0);
+        item.addSubItem(id_add_contact, context.getString(R.string.NewContactTitle));
 
 
         listViewAdapter = new ContactsAdapter(context);

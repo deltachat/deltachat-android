@@ -936,10 +936,10 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
         ActionBarMenu menu = actionBar.createMenu();
 
         menuItem = menu.addItem(0, R.drawable.ic_ab_other);
-        menuItem.addSubItem(gallery_menu_save, ApplicationLoader.applicationContext.getString(R.string.SaveToGallery), 0);
-        menuItem.addSubItem(gallery_menu_share, ApplicationLoader.applicationContext.getString(R.string.Share), 0);
-        //menuItem.addSubItem(gallery_menu_forward, LocaleController.getString("Forward", R.string.Forward), 0);
-        //menuItem.addSubItem(gallery_menu_delete, LocaleController.getString("Delete", R.string.Delete), 0);
+        menuItem.addSubItem(gallery_menu_save, ApplicationLoader.applicationContext.getString(R.string.SaveToGallery));
+        menuItem.addSubItem(gallery_menu_share, ApplicationLoader.applicationContext.getString(R.string.Share));
+        //menuItem.addSubItem(gallery_menu_forward, LocaleController.getString("Forward", R.string.Forward));
+        //menuItem.addSubItem(gallery_menu_delete, LocaleController.getString("Delete", R.string.Delete));
 
         //captionDoneItem = menu.addItemWithWidth(gallery_menu_caption_done, R.drawable.ic_done, AndroidUtilities.dp(56));
         //captionItem = menu.addItemWithWidth(gallery_menu_caption, R.drawable.photo_text, AndroidUtilities.dp(56));
