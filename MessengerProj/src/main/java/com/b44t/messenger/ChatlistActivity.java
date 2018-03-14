@@ -51,6 +51,10 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.zxing.integration.android.IntentIntegrator;
+import com.google.zxing.integration.android.IntentResult;
 
 import com.b44t.messenger.Cells.GreySectionCell;
 import com.b44t.messenger.aosp.LinearLayoutManager;
@@ -337,7 +341,7 @@ public class ChatlistActivity extends BaseFragment implements NotificationCenter
                         presentFragment(new SettingsFragment());
                     }
                     else if(id == ID_SCAN_QR) {
-
+                        new IntentIntegrator(getParentActivity()).setCaptureActivity(QRscanActivity.class).initiateScan();
                     }
                     else if(id == ID_SHOW_QR) {
                         Intent intent2 = new Intent(getParentActivity(), QRshowActivity.class);
@@ -704,6 +708,18 @@ public class ChatlistActivity extends BaseFragment implements NotificationCenter
 
     @Override
     public void onActivityResultFragment(int requestCode, int resultCode, Intent data) {
+
+        if (requestCode == IntentIntegrator.REQUEST_CODE) {
+            IntentResult scanResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
+
+            if (scanResult == null || scanResult.getFormatName() == null) {
+                return; // Should not happen!
+            }
+
+            MrMailbox.checkScannedQr(scanResult.getContents());
+            AndroidUtilities.showDoneHint(getParentActivity());
+        }
+
         /* -- see comment above
         if (requestCode == BaseFragment.RC600_BATTERY_REQUEST_DONE) {
             boolean requestIgnoreActivityMaybeRestarted = false;

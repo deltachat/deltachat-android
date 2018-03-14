@@ -597,6 +597,15 @@ JNIEXPORT jstring Java_com_b44t_messenger_MrMailbox_getQr(JNIEnv *env, jclass cl
 }
 
 
+JNIEXPORT jlong Java_com_b44t_messenger_MrMailbox_checkScannedQrCPtr(JNIEnv *env, jclass cls, jstring qr)
+{
+	CHAR_REF(qr);
+		jlong ret = (jlong)mrmailbox_check_scanned_qr(get_mrmailbox_t(env, cls), qrPtr);
+	CHAR_UNREF(qr);
+	return ret;
+}
+
+
 /* MrMailbox - misc. */
 
 JNIEXPORT jstring Java_com_b44t_messenger_MrMailbox_getInfo(JNIEnv *env, jclass cls)

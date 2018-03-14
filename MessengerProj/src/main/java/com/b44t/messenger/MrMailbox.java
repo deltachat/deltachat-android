@@ -182,6 +182,8 @@ public class MrMailbox {
 
     // out-of-band verification
     public native static String getQr();
+    public static MrLot checkScannedQr(String qr) { return new MrLot(checkScannedQrCPtr(qr)); }
+    public native static int checkScannedQrCPtr(String qr);
 
     // static
     public native static String   MrGetVersionStr            ();
