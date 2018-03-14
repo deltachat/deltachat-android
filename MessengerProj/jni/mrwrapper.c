@@ -586,6 +586,17 @@ JNIEXPORT jint Java_com_b44t_messenger_MrMailbox_getConfigInt(JNIEnv *env, jclas
 }
 
 
+/* MrMailbox - out-of-band verification */
+
+JNIEXPORT jstring Java_com_b44t_messenger_MrMailbox_getQr(JNIEnv *env, jclass cls)
+{
+	char* temp = mrmailbox_get_qr(get_mrmailbox_t(env, cls));
+		jstring ret = JSTRING_NEW(temp);
+	free(temp);
+	return ret;
+}
+
+
 /* MrMailbox - misc. */
 
 JNIEXPORT jstring Java_com_b44t_messenger_MrMailbox_getInfo(JNIEnv *env, jclass cls)

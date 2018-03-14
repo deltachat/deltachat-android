@@ -427,4 +427,6 @@
     <string name="AutocryptKeyTransferSucceeded">Key transferred successfully. This device is now ready to use Autocrypt with the same key as the other device.</string>
     <string name="Retry">Retry</string>
     <string name="SelfTalkSubtitle">Messages I sent to myself</string>
+    <string name="ScanQR">Scan QR code</string>
+    <string name="ShowQR">Show QR code</string>
 </resources>

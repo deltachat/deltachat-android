@@ -1650,6 +1650,7 @@ LOCAL_SRC_FILES     += \
 ./messenger-backend/src/mrmailbox_e2ee.c \
 ./messenger-backend/src/mrmailbox_imex.c \
 ./messenger-backend/src/mrmailbox_log.c \
+./messenger-backend/src/mrmailbox_oob.c \
 ./messenger-backend/src/mrmailbox_receive_imf.c \
 ./messenger-backend/src/mrmimefactory.c \
 ./messenger-backend/src/mrmimeparser.c \

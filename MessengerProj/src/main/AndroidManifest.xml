@@ -112,7 +112,7 @@
         </activity>
 
         <activity
-            android:name=".SettingsAdvActivity"
+            android:name=".QRshowActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize">
         </activity>
 

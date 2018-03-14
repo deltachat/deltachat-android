@@ -115,6 +115,8 @@ public class ChatlistActivity extends BaseFragment implements NotificationCenter
     private static final int ID_NEW_GROUP= 3;
     private static final int ID_SETTINGS = 5;
     private static final int ID_DEADDROP = 7;
+    private static final int ID_SCAN_QR  = 8;
+    private static final int ID_SHOW_QR  = 9;
 
     public interface ChatlistActivityDelegate {
         void didSelectChat(ChatlistActivity fragment, long dialog_id, boolean param);
@@ -265,6 +267,8 @@ public class ChatlistActivity extends BaseFragment implements NotificationCenter
             headerItem.addSubItem(ID_NEW_CHAT, ApplicationLoader.applicationContext.getString(R.string.NewChat));
             headerItem.addSubItem(ID_NEW_GROUP, ApplicationLoader.applicationContext.getString(R.string.NewGroup));
             if(!onlySelect) {
+                headerItem.addSubItem(ID_SCAN_QR, ApplicationLoader.applicationContext.getString(R.string.ScanQR));
+                headerItem.addSubItem(ID_SHOW_QR, ApplicationLoader.applicationContext.getString(R.string.ShowQR));
                 headerItem.addSubItem(ID_DEADDROP, ApplicationLoader.applicationContext.getString(R.string.Deaddrop));
                 headerItem.addSubItem(ID_SETTINGS, ApplicationLoader.applicationContext.getString(R.string.Settings));
             }
@@ -332,6 +336,14 @@ public class ChatlistActivity extends BaseFragment implements NotificationCenter
                     } else if (id == ID_SETTINGS) {
                         presentFragment(new SettingsFragment());
                     }
+                    else if(id == ID_SCAN_QR) {
+
+                    }
+                    else if(id == ID_SHOW_QR) {
+                        Intent intent2 = new Intent(getParentActivity(), QRshowActivity.class);
+                        getParentActivity().startActivity(intent2);
+                    }
+
                 }
             }
         });

@@ -180,6 +180,9 @@ public class MrMailbox {
     private native static long    MrMailboxGetMsg            (long hMailbox, int id); // return hMsg which must be unref'd after usage
     private native static String  MrMailboxGetMsgInfo        (long hMailbox, int id);
 
+    // out-of-band verification
+    public native static String getQr();
+
     // static
     public native static String   MrGetVersionStr            ();
     public native static String   CPtr2String                (long hString); // get strings eg. from data1 from the callback
