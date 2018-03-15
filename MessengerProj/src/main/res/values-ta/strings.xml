@@ -103,6 +103,7 @@
     <string name="SmartNotifications">அறிவிப்புகளை கட்டுப்படுத்து </string>
     <string name="SmartNotificationsSoundAtMost">அதிகத்தில் ஒலிக்கவும் </string>
     <string name="SmartNotificationsTimes">வேளைகள் </string>
+    <string name="SmartNotificationsWithin">இதற்குள்</string>
     <string name="SmartNotificationsMinutes">நிமிடங்கள்</string>
     <string name="DirectShare">நேரடியான பகிர்வு </string>
     <string name="DirectShareInfo">சமீபத்திய அரட்டைகளை பகிர் பட்டியலில் காட்டுக </string>
