@@ -720,12 +720,17 @@ public class ChatlistActivity extends BaseFragment implements NotificationCenter
             String qrRawString = scanResult.getContents();
             final MrLot  qrParsed = MrMailbox.checkScannedQr(qrRawString);
             switch( qrParsed.getState() ) {
-                case MrMailbox.MR_QR_ERROR_LOGGED:
-                    return; // error already logged
 
                 case MrMailbox.MR_QR_FINGERPRINT_WITHOUT_ADDR:
-                    builder.setMessage(AndroidUtilities.replaceTags(ApplicationLoader.applicationContext.getString(R.string.OobFingerprintWithoutAddr)));
+                    builder.setMessage(AndroidUtilities.replaceTags(ApplicationLoader.applicationContext.getString(R.string.OobFingerprintWithoutAddr)+"\n\n<c#808080>"+ApplicationLoader.applicationContext.getString(R.string.OobFingerprint)+":\n"+qrParsed.getText2()+"</c>"));
                     builder.setPositiveButton(R.string.OK, null);
+                    builder.setNeutralButton(R.string.CopyToClipboard, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            AndroidUtilities.addToClipboard(qrParsed.getText2());
+                            AndroidUtilities.showDoneHint(getParentActivity());
+                        }
+                    });
                     break;
 
                 case MrMailbox.MR_QR_ASK_CMP_FINGERPRINT:
@@ -743,21 +748,23 @@ public class ChatlistActivity extends BaseFragment implements NotificationCenter
                     builder.setNegativeButton(R.string.Cancel, null);
                     break;
 
-                case MrMailbox.MR_QR_TEXT:
-                    builder.setMessage(AndroidUtilities.replaceTags(String.format(ApplicationLoader.applicationContext.getString(R.string.QrScanContainsText), qrParsed.getText1())));
+                default:
+                    String msg;
+                    final String scannedText;
+                    switch( qrParsed.getState() ) {
+                        case MrMailbox.MR_QR_ERROR:scannedText = qrRawString;         msg = qrParsed.getText1()+"\n\n<c#808080>"+String.format(ApplicationLoader.applicationContext.getString(R.string.QrScanContainsText), scannedText)+"</c>"; break;
+                        case MrMailbox.MR_QR_TEXT: scannedText = qrParsed.getText1(); msg = String.format(ApplicationLoader.applicationContext.getString(R.string.QrScanContainsText), scannedText); break;
+                        default:                   scannedText = qrRawString;         msg = String.format(ApplicationLoader.applicationContext.getString(R.string.QrScanContainsText), scannedText); break;
+                    }
+                    builder.setMessage(AndroidUtilities.replaceTags(msg));
                     builder.setPositiveButton(R.string.OK, null);
                     builder.setNeutralButton(R.string.CopyToClipboard, new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            AndroidUtilities.addToClipboard(qrParsed.getText1());
+                            AndroidUtilities.addToClipboard(scannedText);
                             AndroidUtilities.showDoneHint(getParentActivity());
                         }
                     });
-                    break;
-
-                default: // unknown code, just display the qr code
-                    builder.setMessage(qrRawString);
-                    builder.setPositiveButton(R.string.OK, null);
                     break;
             }
 

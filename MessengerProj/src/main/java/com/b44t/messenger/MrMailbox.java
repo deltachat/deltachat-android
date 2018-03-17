@@ -187,7 +187,7 @@ public class MrMailbox {
     public final static int MR_QR_FINGERPRINT_WITHOUT_ADDR = 210;
     public final static int MR_QR_ADDR                     = 220;
     public final static int MR_QR_TEXT                     = 230;
-    public final static int MR_QR_ERROR_LOGGED             = 400;
+    public final static int MR_QR_ERROR                    = 400;
     public static MrLot checkScannedQr(String qr) { return new MrLot(checkScannedQrCPtr(qr)); }
     public native static int checkScannedQrCPtr(String qr);
 
