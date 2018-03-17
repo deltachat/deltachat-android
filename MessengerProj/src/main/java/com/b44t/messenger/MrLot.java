@@ -49,6 +49,7 @@ public class MrLot {
     public native String getText2();
     public native long   getTimestamp();
     public native int    getState();
+    public native int    getId();
 
     private long                  m_hLot;
     private native static void    MrLotUnref(long hLot);

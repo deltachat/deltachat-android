@@ -29,7 +29,7 @@ public class QRscanActivity extends Activity {
         setContentView(R.layout.activity_qrscan);
 
         barcodeScannerView = (CompoundBarcodeView)findViewById(R.id.zxing_barcode_scanner);
-        barcodeScannerView.setStatusText(getString(R.string.ScanQR));
+        barcodeScannerView.setStatusText(getString(R.string.QrScan));
 
         if (savedInstanceState != null) {
             init(barcodeScannerView, getIntent(), savedInstanceState);

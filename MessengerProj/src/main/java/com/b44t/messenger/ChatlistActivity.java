@@ -271,8 +271,8 @@ public class ChatlistActivity extends BaseFragment implements NotificationCenter
             headerItem.addSubItem(ID_NEW_CHAT, ApplicationLoader.applicationContext.getString(R.string.NewChat));
             headerItem.addSubItem(ID_NEW_GROUP, ApplicationLoader.applicationContext.getString(R.string.NewGroup));
             if(!onlySelect) {
-                headerItem.addSubItem(ID_SCAN_QR, ApplicationLoader.applicationContext.getString(R.string.ScanQR));
-                headerItem.addSubItem(ID_SHOW_QR, ApplicationLoader.applicationContext.getString(R.string.ShowQR));
+                headerItem.addSubItem(ID_SCAN_QR, ApplicationLoader.applicationContext.getString(R.string.QrScan));
+                headerItem.addSubItem(ID_SHOW_QR, ApplicationLoader.applicationContext.getString(R.string.QrShow));
                 headerItem.addSubItem(ID_DEADDROP, ApplicationLoader.applicationContext.getString(R.string.Deaddrop));
                 headerItem.addSubItem(ID_SETTINGS, ApplicationLoader.applicationContext.getString(R.string.Settings));
             }
@@ -716,8 +716,52 @@ public class ChatlistActivity extends BaseFragment implements NotificationCenter
                 return; // Should not happen!
             }
 
-            MrMailbox.checkScannedQr(scanResult.getContents());
-            AndroidUtilities.showDoneHint(getParentActivity());
+            AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
+            String qrRawString = scanResult.getContents();
+            final MrLot  qrParsed = MrMailbox.checkScannedQr(qrRawString);
+            switch( qrParsed.getState() ) {
+                case MrMailbox.MR_QR_ERROR_LOGGED:
+                    return; // error already logged
+
+                case MrMailbox.MR_QR_FINGERPRINT_WITHOUT_ADDR:
+                    builder.setMessage(AndroidUtilities.replaceTags(ApplicationLoader.applicationContext.getString(R.string.OobFingerprintWithoutAddr)));
+                    builder.setPositiveButton(R.string.OK, null);
+                    break;
+
+                case MrMailbox.MR_QR_ASK_CMP_FINGERPRINT:
+                case MrMailbox.MR_QR_ADDR:
+                    String name = MrMailbox.getContact(qrParsed.getId()).getNameNAddr();
+                    builder.setMessage(AndroidUtilities.replaceTags(String.format(ApplicationLoader.applicationContext.getString(R.string.AskStartChatWith), name)));
+                    builder.setPositiveButton(R.string.OK, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            Bundle args = new Bundle();
+                            args.putInt("chat_id", MrMailbox.createChatByContactId(qrParsed.getId()));
+                            presentFragment(new ChatActivity(args), false /*removeLast*/);
+                        }
+                    });
+                    builder.setNegativeButton(R.string.Cancel, null);
+                    break;
+
+                case MrMailbox.MR_QR_TEXT:
+                    builder.setMessage(AndroidUtilities.replaceTags(String.format(ApplicationLoader.applicationContext.getString(R.string.QrScanContainsText), qrParsed.getText1())));
+                    builder.setPositiveButton(R.string.OK, null);
+                    builder.setNeutralButton(R.string.CopyToClipboard, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            AndroidUtilities.addToClipboard(qrParsed.getText1());
+                            AndroidUtilities.showDoneHint(getParentActivity());
+                        }
+                    });
+                    break;
+
+                default: // unknown code, just display the qr code
+                    builder.setMessage(qrRawString);
+                    builder.setPositiveButton(R.string.OK, null);
+                    break;
+            }
+
+            showDialog(builder.create());
         }
 
         /* -- see comment above
