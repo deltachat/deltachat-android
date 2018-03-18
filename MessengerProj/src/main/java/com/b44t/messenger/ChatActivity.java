@@ -498,7 +498,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 } else if (id == ID_INFO) {
                     String info_str = MrMailbox.getMsgInfo(getFirstSelectedId());
                     AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
-                    builder.setMessage(info_str);
+                    builder.setMessage(AndroidUtilities.replaceTags(info_str));
                     builder.setPositiveButton(R.string.OK, null);
                     showDialog(builder.create());
                     actionBar.hideActionMode();
