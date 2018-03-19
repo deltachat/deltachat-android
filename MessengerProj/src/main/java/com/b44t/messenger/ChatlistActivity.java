@@ -271,8 +271,10 @@ public class ChatlistActivity extends BaseFragment implements NotificationCenter
             headerItem.addSubItem(ID_NEW_CHAT, ApplicationLoader.applicationContext.getString(R.string.NewChat));
             headerItem.addSubItem(ID_NEW_GROUP, ApplicationLoader.applicationContext.getString(R.string.NewGroup));
             if(!onlySelect) {
-                headerItem.addSubItem(ID_SCAN_QR, ApplicationLoader.applicationContext.getString(R.string.QrScan));
-                headerItem.addSubItem(ID_SHOW_QR, ApplicationLoader.applicationContext.getString(R.string.QrShow));
+                if( MrMailbox.getConfigInt("qr_enabled", 0) != 0 ) {
+                    headerItem.addSubItem(ID_SCAN_QR, ApplicationLoader.applicationContext.getString(R.string.QrScan));
+                    headerItem.addSubItem(ID_SHOW_QR, ApplicationLoader.applicationContext.getString(R.string.QrShow));
+                }
                 headerItem.addSubItem(ID_DEADDROP, ApplicationLoader.applicationContext.getString(R.string.Deaddrop));
                 headerItem.addSubItem(ID_SETTINGS, ApplicationLoader.applicationContext.getString(R.string.Settings));
             }
