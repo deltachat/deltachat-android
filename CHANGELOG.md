@@ -7,8 +7,8 @@
   "ad-hoc group"
 * Allow group creation though contact requests
 * Always display the _sending_ time in the chat list; the list itself is sorted
-  by _reveiving_ time and "Message info" shows both times now
-* If parts but the footnote are cutted from mails, this is indicated "...";
+  by _receiving_ time and "Message info" shows both times now
+* If parts but the footnote are cut from mails, this is indicated "...";
   use "Message info" to get the full text
 * Autoconfigure prefers 'https' over 'http'
 * Bug fixes, eg. avoid freezes if the connection is lost
