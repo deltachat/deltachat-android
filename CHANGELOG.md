@@ -10,6 +10,7 @@
   by _receiving_ time and "Message info" shows both times now
 * If parts but the footnote are cut from mails, this is indicated "...";
   use "Message info" to get the full text
+* Highlight the subject in the "Message info"
 * Autoconfigure prefers 'https' over 'http'
 * Bug fixes, eg. avoid freezes if the connection is lost
 * Update Russian, Tamil and Turkish translations
