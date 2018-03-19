@@ -3,13 +3,10 @@
 ## v0.16.0
 2018-03-19
 
-* Messages from normal clients to more than one recipient create an implicit
-  "ad-hoc group"
+* Messages from normal clients to more than one recipient create an implicit "ad-hoc group"
 * Allow group creation though contact requests
-* Always display the _sending_ time in the chat list; the list itself is sorted
-  by _receiving_ time and "Message info" shows both times now
-* If parts but the footnote are cut from mails, this is indicated "...";
-  use "Message info" to get the full text
+* Always display the _sending_ time in the chat list; the list itself is sorted by _receiving_ time and "Message info" shows both times now
+* If parts but the footnote are cut from mails, this is indicated "..."; use "Message info" to get the full text
 * Highlight the subject in the "Message info"
 * Autoconfigure prefers 'https' over 'http'
 * Bug fixes, eg. avoid freezes if the connection is lost
