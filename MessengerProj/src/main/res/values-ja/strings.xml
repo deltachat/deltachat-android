@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="AppName">Delta Chat</string>
+    <!--chats view-->
+    <string name="Settings">設定</string>
+    <string name="NewGroup">新規ｸﾞﾙｰﾌﾟ</string>
+    <string name="NoResult">該当無し</string>
+    <string name="NoChats">履歴が有りません</string>
+    <string name="DeleteChat">Delete chat</string>
+    <string name="Search">検索</string>
+    <string name="AttachMusic">音楽</string>
+    <string name="NoFiles">未だﾌｧｲﾙが有りません</string>
+    <string name="InternalStorage">内部記録領域</string>
+    <string name="ExternalStorage">外部記録領域</string>
+    <string name="Folder">ﾌｫﾙﾀﾞｰ</string>
+    <string name="ChatCamera">ｶﾒﾗ</string>
+    <string name="TypeMessage">ﾒｯｾｰｼﾞ</string>
+    <string name="SaveToDownloads">Downloadsﾌｫﾙﾀﾞｰへ保存</string>
+    <string name="SaveToMusic">Musicﾌｫﾙﾀﾞｰへ保存</string>
+    <string name="Share">共有</string>
+    <string name="Sound">音声</string>
+    <string name="SendByEnter">確定ｷｰで送信</string>
+    <string name="LedColor">LED色</string>
+    <string name="PasscodePassword">ﾊﾟｽﾜｰﾄﾞ</string>
+    <string name="CurvesRed">赤</string>
+    <string name="CurvesGreen">緑</string>
+    <string name="CurvesBlue">青</string>
+    <string name="PickerPhotos">写真</string>
+    <string name="PickerVideo">動画</string>
+    <!--button titles-->
+    <string name="Done">完了</string>
+    <string name="Open">開く</string>
+    <string name="Cancel">取消</string>
+    <string name="Send">送信</string>
+    <string name="Delete">削除</string>
+    <!--messages-->
+    <string name="AttachPhoto">写真</string>
+    <string name="AttachVideo">動画</string>
+    <string name="AttachGif">GIF</string>
+    <string name="AttachDocument">ﾌｧｲﾙ</string>
+    <string name="AttachVoiceMessage">音声ﾒｯｾｰｼﾞ</string>
+    <string name="PermissionNoAudio">録音機能は音声ﾒｯｾｰｼﾞの送信に必要です</string>
+    <string name="PermissionOpenSettings">設定</string>
+    <!--Intro view-->
+    <string name="Intro1Headline">Delta Chat</string>
+    <string name="Intro2Headline">独立</string>
+    <string name="Intro2Message"><![CDATA[<b>Delta Chatにはｻｰﾊﾞｰが有りません｡</b>]]> ご自分のﾒｰﾙｻｰﾊﾞｰをのみ用います｡</string>
+
+    <string name="Intro3Headline">軽快</string>
+    <string name="Intro3Message"><![CDATA[<b>ﾒｯｾｰｼﾞ送信</b>]]>は瞬時に｡<![CDATA[<br/>]]>動作も快適です｡</string>
+
+    <string name="Intro4Headline">多機能</string>
+    <string name="Intro5Headline">無料</string>
+    <string name="Intro5Message"><![CDATA[<b>Delta Chat</b>]]>は永遠に無料です｡<![CDATA[<br/>]]>ｵｰﾌﾟﾝｿｰｽで広告や縛り､課金も不要です｡</string>
+
+    <string name="Intro6Headline">秘匿</string>
+    <string name="Intro6Message">共通規格によって<![CDATA[<b>暗号化</b>]]>されています｡ﾒｯｾｰｼﾞはあなたのｻｰﾊﾞｰ内に留まります｡</string>
+
+    <string name="IntroStartMessaging">開始する</string>
+    <plurals name="Minutes">
+        <item quantity="other">%d分</item>
+    </plurals>
+    <plurals name="Hours">
+        <item quantity="other">%d時間</item>
+    </plurals>
+    <plurals name="Days">
+        <item quantity="other">%d日</item>
+    </plurals>
+    <plurals name="Weeks">
+        <item quantity="other">%d週</item>
+    </plurals>
+    <plurals name="Months">
+        <item quantity="other">%d月</item>
+    </plurals>
+    <string name="AccountSettings">ｱｶｳﾝﾄ設定</string>
+    <string name="Password">ﾊﾟｽﾜｰﾄﾞ</string>
+    <string name="SmtpPassword">SMTPﾊﾟｽﾜｰﾄﾞ</string>
+    <string name="FromAbove">同上</string>
+    <string name="SmtpLoginname">SMTPﾛｸﾞｲﾝ名</string>
+    <string name="SmtpPort">SMTPﾎﾟｰﾄ番号</string>
+    <string name="Automatic">自動</string>
+    <string name="ImapServer">IMAPｻｰﾊﾞｰ</string>
+    <string name="ImapLoginname">IMAPﾛｸﾞｲﾝ名</string>
+    <string name="SmtpServer">SMTPｻｰﾊﾞｰ</string>
+    <string name="ImapPort">IMAPﾎﾟｰﾄ番号</string>
+    <string name="InboxHeadline">受信</string>
+    <string name="OutboxHeadline">送信</string>
+    <string name="AboutThisProgram">Delta Chatについて</string>
+    <string name="DefaultStatusText">Delta Chatメッセンジャーより送信: https://delta.chat</string>
+    <string name="EmailAddress">ﾒｰﾙｱﾄﾞﾚｽ</string>
+    <string name="AdvancedSettings">追加設定</string>
+    <string name="Retry">やり直す</string>
+    </resources>

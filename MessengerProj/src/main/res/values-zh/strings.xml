@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="AppName">Delta Chat</string>
+    <!--chats view-->
+    <string name="Settings">设置</string>
+    <string name="NewGroup">新建群组</string>
+    <string name="NoResult">无结果</string>
+    <string name="NoChats">暂无消息</string>
+    <string name="DeleteChat">删除会话</string>
+    <string name="SelectChat">选择会话</string>
+    <string name="Search">搜索</string>
+    <!--audio view-->
+    <string name="NoAudio">添加至你的设备音乐库中的文件将会在这里出现</string>
+    <string name="AttachMusic">音乐</string>
+    <!--documents view-->
+    <string name="SelectFile">选择文件</string>
+    <string name="ErrorHint">未知错误</string>
+    <string name="AttachVoiceMessage">语音消息</string>
+    <string name="PermissionOpenSettings">设置</string>
+    <!--Intro view-->
+    <string name="Intro1Headline">Delta Chat</string>
+    </resources>

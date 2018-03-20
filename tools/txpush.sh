@@ -21,6 +21,7 @@ cp  "${SRCPREFIX}-es/strings.xml"  "${TXPREFIX}es.xml"
 cp  "${SRCPREFIX}-fr/strings.xml"  "${TXPREFIX}fr.xml"
 cp  "${SRCPREFIX}-hu/strings.xml"  "${TXPREFIX}hu.xml"
 cp  "${SRCPREFIX}-it/strings.xml"  "${TXPREFIX}it.xml"
+cp  "${SRCPREFIX}-ja/strings.xml"  "${TXPREFIX}ja_JP.xml"
 cp  "${SRCPREFIX}-ko/strings.xml"  "${TXPREFIX}ko.xml"
 cp  "${SRCPREFIX}-nb/strings.xml"  "${TXPREFIX}nb_NO.xml"
 cp  "${SRCPREFIX}-nl/strings.xml"  "${TXPREFIX}nl.xml"
@@ -33,6 +34,7 @@ cp  "${SRCPREFIX}-ta/strings.xml"  "${TXPREFIX}ta.xml"
 cp  "${SRCPREFIX}-te/strings.xml"  "${TXPREFIX}te.xml"
 cp  "${SRCPREFIX}-tr/strings.xml"  "${TXPREFIX}tr.xml"
 cp  "${SRCPREFIX}-uk/strings.xml"  "${TXPREFIX}uk.xml"
+cp  "${SRCPREFIX}-zh/strings.xml"  "${TXPREFIX}zh_CN.xml"
 
 tx push -s -t    # -s: push source, -t: push translations, -f: ignore timestamps; see https://docs.transifex.com/client/push
 

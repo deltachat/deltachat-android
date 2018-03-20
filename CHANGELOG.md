@@ -1,5 +1,10 @@
 # Delta Chat Changelog
 
+## UNRELEASED
+
+* Add Chinese translation
+* Add Japanese translation
+
 ## v0.16.0
 2018-03-19
 
