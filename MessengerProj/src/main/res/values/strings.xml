@@ -254,7 +254,7 @@
         <item quantity="other">Delete %d messages? These will also be deleted from the server.</item>
     </plurals>
     <plurals name="NewMessagesInChats">
-        <!-- Translators: The first string placeholder "%s" gets replaced with the
+        <!-- Translators: The first string placeholder gets replaced with the
         text "%d new messages", so the complete sentence would be e.g.
         "4 new messages in 2 chats". -->
         <item quantity="one">%1$s in %2$d chat</item>
@@ -285,7 +285,7 @@
         <item quantity="other">%d months</item>
     </plurals>
     <plurals name="MaxNotifications">
-        <!-- Translators: The second string placeholder "%s" gets replaced with the
+        <!-- Translators: The second string placeholder gets replaced with the
         text "%d minutes", so the complete sentence would be e.g.
         "At most 8 notifications within 3 minutes". -->
         <item quantity="one">At most %1$d notification within %2$s</item>
@@ -429,7 +429,8 @@
     <string name="SelfTalkSubtitle">Messages I sent to myself</string>
     <string name="QrScan">Scan QR code</string>
     <string name="QrShow">Show QR code</string>
-    <string name="QrScanContainsText">The scanned QR code contains the following text:\n\n%s</string>
+    <string name="QrScanContainsText">The scanned QR code contains the following text:\n\n%1$s</string>
     <string name="OobFingerprint">Fingerprint</string>
     <string name="OobFingerprintWithoutAddr">This QR code contains a fingerprint but no e-mail address.\n\nFor an out-of-band-verification, please first establish an encrpyted connection to the recipient.</string>
+    <string name="OobFingerprintMismatch">The scanned fingerprint does <![CDATA[<b>]]>not match<![CDATA[</b>]]> the fingerprint last seen for <![CDATA[<i>]]>%1$s<![CDATA[</i>]]>.</string>
 </resources>

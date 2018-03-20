@@ -735,7 +735,7 @@ public class ChatlistActivity extends BaseFragment implements NotificationCenter
                     });
                     break;
 
-                case MrMailbox.MR_QR_ASK_CMP_FINGERPRINT:
+                case MrMailbox.MR_QR_FINGERPRINT_ASK_CMP:
                 case MrMailbox.MR_QR_ADDR:
                     String name = MrMailbox.getContact(qrParsed.getId()).getNameNAddr();
                     builder.setMessage(AndroidUtilities.replaceTags(String.format(ApplicationLoader.applicationContext.getString(R.string.AskStartChatWith), name)));
@@ -748,6 +748,13 @@ public class ChatlistActivity extends BaseFragment implements NotificationCenter
                         }
                     });
                     builder.setNegativeButton(R.string.Cancel, null);
+                    break;
+
+                case MrMailbox.MR_QR_FINGERPRINT_MISMATCH: {
+                        String addr = MrMailbox.getContact(qrParsed.getId()).getAddr();
+                        builder.setMessage(AndroidUtilities.replaceTags(String.format(ApplicationLoader.applicationContext.getString(R.string.OobFingerprintMismatch), addr)));
+                        builder.setPositiveButton(R.string.OK, null);
+                    }
                     break;
 
                 default:

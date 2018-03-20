@@ -183,7 +183,8 @@ public class MrMailbox {
     // out-of-band verification
     public native static String getQr();
 
-    public final static int MR_QR_ASK_CMP_FINGERPRINT      = 200;
+    public final static int MR_QR_FINGERPRINT_ASK_CMP      = 200;
+    public final static int MR_QR_FINGERPRINT_MISMATCH     = 205;
     public final static int MR_QR_FINGERPRINT_WITHOUT_ADDR = 210;
     public final static int MR_QR_ADDR                     = 220;
     public final static int MR_QR_TEXT                     = 230;
