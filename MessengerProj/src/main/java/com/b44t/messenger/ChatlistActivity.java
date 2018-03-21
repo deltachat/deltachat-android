@@ -727,7 +727,7 @@ public class ChatlistActivity extends BaseFragment implements NotificationCenter
             }
 
             AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
-            String qrRawString = scanResult.getContents();
+            final String qrRawString = scanResult.getContents();
             final MrLot  qrParsed = MrMailbox.checkQr(qrRawString);
             String nameNAddr = MrMailbox.getContact(qrParsed.getId()).getNameNAddr();
             switch( qrParsed.getState() ) {
@@ -751,7 +751,7 @@ public class ChatlistActivity extends BaseFragment implements NotificationCenter
                             Utilities.searchQueue.postRunnable(new Runnable() {
                                 @Override
                                 public void run() {
-                                    final int oobDone = MrMailbox.oobJoin(qrParsed.getId(), qrParsed.getText2()); // oobJoin() runs until all needed messages are sent+received!
+                                    final int oobDone = MrMailbox.oobJoin(qrRawString); // oobJoin() runs until all needed messages are sent+received!
                                     AndroidUtilities.runOnUIThread(new Runnable() {
                                         @Override
                                         public void run() {

@@ -192,7 +192,7 @@ public class MrMailbox {
     public static MrLot checkQr(String qr) { return new MrLot(checkQrCPtr(qr)); }
 
     public native static String oobGetQr();
-    public native static int oobJoin(int contact_id, String returnTag);
+    public native static int oobJoin(String qr);
 
     // static
     public native static String   MrGetVersionStr            ();
