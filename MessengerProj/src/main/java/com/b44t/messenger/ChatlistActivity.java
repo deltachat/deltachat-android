@@ -751,7 +751,7 @@ public class ChatlistActivity extends BaseFragment implements NotificationCenter
                             Utilities.searchQueue.postRunnable(new Runnable() {
                                 @Override
                                 public void run() {
-                                    final int oobDone = MrMailbox.oobJoin(qrParsed.getId()); // oobJoin() runs until all needed messages are sent+received!
+                                    final int oobDone = MrMailbox.oobJoin(qrParsed.getId(), qrParsed.getText2()); // oobJoin() runs until all needed messages are sent+received!
                                     AndroidUtilities.runOnUIThread(new Runnable() {
                                         @Override
                                         public void run() {
@@ -775,12 +775,12 @@ public class ChatlistActivity extends BaseFragment implements NotificationCenter
 
 
                 case MrMailbox.MR_QR_FINGERPRINT_WITHOUT_ADDR:
-                    builder.setMessage(AndroidUtilities.replaceTags(ApplicationLoader.applicationContext.getString(R.string.OobFingerprintWithoutAddr)+"\n\n<c#808080>"+ApplicationLoader.applicationContext.getString(R.string.OobFingerprint)+":\n"+qrParsed.getText2()+"</c>"));
+                    builder.setMessage(AndroidUtilities.replaceTags(ApplicationLoader.applicationContext.getString(R.string.OobFingerprintWithoutAddr)+"\n\n<c#808080>"+ApplicationLoader.applicationContext.getString(R.string.OobFingerprint)+":\n"+qrParsed.getText1()+"</c>"));
                     builder.setPositiveButton(R.string.OK, null);
                     builder.setNeutralButton(R.string.CopyToClipboard, new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            AndroidUtilities.addToClipboard(qrParsed.getText2());
+                            AndroidUtilities.addToClipboard(qrParsed.getText1());
                             AndroidUtilities.showDoneHint(getParentActivity());
                         }
                     });

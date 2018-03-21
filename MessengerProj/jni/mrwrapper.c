@@ -604,9 +604,12 @@ JNIEXPORT jstring Java_com_b44t_messenger_MrMailbox_oobGetQr(JNIEnv *env, jclass
 	return ret;
 }
 
-JNIEXPORT jint Java_com_b44t_messenger_MrMailbox_oobJoin(JNIEnv *env, jclass cls, jint contact_id)
+JNIEXPORT jint Java_com_b44t_messenger_MrMailbox_oobJoin(JNIEnv *env, jclass cls, jint contact_id, jstring returnTag)
 {
-	return (jint)mrmailbox_oob_join(get_mrmailbox_t(env, cls), contact_id);
+	CHAR_REF(returnTag);
+		jint ret = (jint)mrmailbox_oob_join(get_mrmailbox_t(env, cls), contact_id, returnTagPtr);
+	CHAR_UNREF(returnTag);
+	return ret;
 }
 
 
