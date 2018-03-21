@@ -588,27 +588,25 @@ JNIEXPORT jint Java_com_b44t_messenger_MrMailbox_getConfigInt(JNIEnv *env, jclas
 
 /* MrMailbox - out-of-band verification */
 
-JNIEXPORT jstring Java_com_b44t_messenger_MrMailbox_getQr(JNIEnv *env, jclass cls)
+JNIEXPORT jlong Java_com_b44t_messenger_MrMailbox_checkQrCPtr(JNIEnv *env, jclass cls, jstring qr)
 {
-	char* temp = mrmailbox_get_qr(get_mrmailbox_t(env, cls));
+	CHAR_REF(qr);
+		jlong ret = (jlong)mrmailbox_check_qr(get_mrmailbox_t(env, cls), qrPtr);
+	CHAR_UNREF(qr);
+	return ret;
+}
+
+JNIEXPORT jstring Java_com_b44t_messenger_MrMailbox_oobGetQr(JNIEnv *env, jclass cls)
+{
+	char* temp = mrmailbox_oob_get_qr(get_mrmailbox_t(env, cls));
 		jstring ret = JSTRING_NEW(temp);
 	free(temp);
 	return ret;
 }
 
-
-JNIEXPORT jlong Java_com_b44t_messenger_MrMailbox_checkScannedQrCPtr(JNIEnv *env, jclass cls, jstring qr)
+JNIEXPORT jint Java_com_b44t_messenger_MrMailbox_oobJoin(JNIEnv *env, jclass cls, jint contact_id)
 {
-	CHAR_REF(qr);
-		jlong ret = (jlong)mrmailbox_check_scanned_qr(get_mrmailbox_t(env, cls), qrPtr);
-	CHAR_UNREF(qr);
-	return ret;
-}
-
-
-JNIEXPORT void Java_com_b44t_messenger_MrMailbox_joinOob(JNIEnv *env, jclass cls, jint contact_id)
-{
-	mrmailbox_join_oob(get_mrmailbox_t(env, cls), contact_id);
+	return (jint)mrmailbox_oob_join(get_mrmailbox_t(env, cls), contact_id);
 }
 
 

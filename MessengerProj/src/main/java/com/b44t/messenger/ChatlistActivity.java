@@ -30,6 +30,7 @@ import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -709,6 +710,7 @@ public class ChatlistActivity extends BaseFragment implements NotificationCenter
         }
     }
 
+    private ProgressDialog progressDialog = null;
     @Override
     public void onActivityResultFragment(int requestCode, int resultCode, Intent data) {
 
@@ -719,9 +721,14 @@ public class ChatlistActivity extends BaseFragment implements NotificationCenter
                 return; // Should not happen!
             }
 
+            if( progressDialog!=null ) {
+                progressDialog.dismiss();
+                progressDialog = null;
+            }
+
             AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
             String qrRawString = scanResult.getContents();
-            final MrLot  qrParsed = MrMailbox.checkScannedQr(qrRawString);
+            final MrLot  qrParsed = MrMailbox.checkQr(qrRawString);
             String nameNAddr = MrMailbox.getContact(qrParsed.getId()).getNameNAddr();
             switch( qrParsed.getState() ) {
 
@@ -730,7 +737,37 @@ public class ChatlistActivity extends BaseFragment implements NotificationCenter
                     builder.setPositiveButton(R.string.OK, new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
-                            MrMailbox.joinOob(qrParsed.getId());
+                            progressDialog = new ProgressDialog(getParentActivity());
+                            progressDialog.setMessage(ApplicationLoader.applicationContext.getString(R.string.OneMoment));
+                            progressDialog.setCanceledOnTouchOutside(false);
+                            progressDialog.setCancelable(false);
+                            progressDialog.setButton(DialogInterface.BUTTON_NEGATIVE, ApplicationLoader.applicationContext.getString(R.string.Cancel), new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    MrMailbox.stopOngoingProcess();
+                                }
+                            });
+                            progressDialog.show();
+                            Utilities.searchQueue.postRunnable(new Runnable() {
+                                @Override
+                                public void run() {
+                                    final int oobDone = MrMailbox.oobJoin(qrParsed.getId()); // oobJoin() runs until all needed messages are sent+received!
+                                    AndroidUtilities.runOnUIThread(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            if( progressDialog != null ) {
+                                                progressDialog.dismiss();
+                                                progressDialog = null;
+                                            }
+                                            if( oobDone != 0 ) {
+                                                Bundle args = new Bundle();
+                                                args.putInt("chat_id", MrMailbox.createChatByContactId(qrParsed.getId()));
+                                                presentFragment(new ChatActivity(args), false /*removeLast*/);
+                                            }
+                                        }
+                                    });
+                                }
+                            });
                         }
                     });
                     builder.setNegativeButton(R.string.Cancel, null);

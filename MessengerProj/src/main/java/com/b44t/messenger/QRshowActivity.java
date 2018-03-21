@@ -24,7 +24,7 @@ public class QRshowActivity extends Activity {
 
         ImageView imageView = (ImageView) findViewById(R.id.myImage);
         try {
-            Bitmap bitmap = encodeAsBitmap(MrMailbox.getQr());
+            Bitmap bitmap = encodeAsBitmap(MrMailbox.oobGetQr());
             imageView.setImageBitmap(bitmap);
         } catch (WriterException e) {
             e.printStackTrace();

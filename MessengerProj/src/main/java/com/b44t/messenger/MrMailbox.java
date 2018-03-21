@@ -181,8 +181,6 @@ public class MrMailbox {
     private native static String  MrMailboxGetMsgInfo        (long hMailbox, int id);
 
     // out-of-band verification
-    public native static String getQr();
-
     public final static int MR_QR_FINGERPRINT_ASK_OOB      = 200;
     public final static int MR_QR_FINGERPRINT_OK           = 210;
     public final static int MR_QR_FINGERPRINT_MISMATCH     = 220;
@@ -190,9 +188,11 @@ public class MrMailbox {
     public final static int MR_QR_ADDR                     = 320;
     public final static int MR_QR_TEXT                     = 330;
     public final static int MR_QR_ERROR                    = 400;
-    public static MrLot checkScannedQr(String qr) { return new MrLot(checkScannedQrCPtr(qr)); }
-    public native static int checkScannedQrCPtr(String qr);
-    public native static void joinOob(int contact_id);
+    public native static int checkQrCPtr(String qr);
+    public static MrLot checkQr(String qr) { return new MrLot(checkQrCPtr(qr)); }
+
+    public native static String oobGetQr();
+    public native static int oobJoin(int contact_id);
 
     // static
     public native static String   MrGetVersionStr            ();
