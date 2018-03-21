@@ -606,6 +606,12 @@ JNIEXPORT jlong Java_com_b44t_messenger_MrMailbox_checkScannedQrCPtr(JNIEnv *env
 }
 
 
+JNIEXPORT void Java_com_b44t_messenger_MrMailbox_joinOob(JNIEnv *env, jclass cls, jint contact_id)
+{
+	mrmailbox_join_oob(get_mrmailbox_t(env, cls), contact_id);
+}
+
+
 /* MrMailbox - misc. */
 
 JNIEXPORT jstring Java_com_b44t_messenger_MrMailbox_getInfo(JNIEnv *env, jclass cls)

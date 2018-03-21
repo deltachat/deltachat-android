@@ -38,6 +38,7 @@ import android.content.res.Configuration;
 import android.graphics.Outline;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.StringRes;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.MotionEvent;
@@ -721,7 +722,20 @@ public class ChatlistActivity extends BaseFragment implements NotificationCenter
             AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
             String qrRawString = scanResult.getContents();
             final MrLot  qrParsed = MrMailbox.checkScannedQr(qrRawString);
+            String nameNAddr = MrMailbox.getContact(qrParsed.getId()).getNameNAddr();
             switch( qrParsed.getState() ) {
+
+                case MrMailbox.MR_QR_FINGERPRINT_ASK_OOB:
+                    builder.setMessage(AndroidUtilities.replaceTags(String.format(ApplicationLoader.applicationContext.getString(R.string.OobFingerprintAskOob), nameNAddr)));
+                    builder.setPositiveButton(R.string.OK, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            MrMailbox.joinOob(qrParsed.getId());
+                        }
+                    });
+                    builder.setNegativeButton(R.string.Cancel, null);
+                    break;
+
 
                 case MrMailbox.MR_QR_FINGERPRINT_WITHOUT_ADDR:
                     builder.setMessage(AndroidUtilities.replaceTags(ApplicationLoader.applicationContext.getString(R.string.OobFingerprintWithoutAddr)+"\n\n<c#808080>"+ApplicationLoader.applicationContext.getString(R.string.OobFingerprint)+":\n"+qrParsed.getText2()+"</c>"));
@@ -735,10 +749,15 @@ public class ChatlistActivity extends BaseFragment implements NotificationCenter
                     });
                     break;
 
-                case MrMailbox.MR_QR_FINGERPRINT_ASK_CMP:
+                case MrMailbox.MR_QR_FINGERPRINT_MISMATCH:
+                    builder.setMessage(AndroidUtilities.replaceTags(String.format(ApplicationLoader.applicationContext.getString(R.string.OobFingerprintMismatch), nameNAddr)));
+                    builder.setPositiveButton(R.string.OK, null);
+                    break;
+
+                case MrMailbox.MR_QR_FINGERPRINT_OK:
                 case MrMailbox.MR_QR_ADDR:
-                    String name = MrMailbox.getContact(qrParsed.getId()).getNameNAddr();
-                    builder.setMessage(AndroidUtilities.replaceTags(String.format(ApplicationLoader.applicationContext.getString(R.string.AskStartChatWith), name)));
+                    @StringRes int resId = qrParsed.getState()==MrMailbox.MR_QR_ADDR? R.string.AskStartChatWith : R.string.OobFingerprintOk;
+                    builder.setMessage(AndroidUtilities.replaceTags(String.format(ApplicationLoader.applicationContext.getString(resId, nameNAddr))));
                     builder.setPositiveButton(R.string.OK, new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
@@ -748,13 +767,6 @@ public class ChatlistActivity extends BaseFragment implements NotificationCenter
                         }
                     });
                     builder.setNegativeButton(R.string.Cancel, null);
-                    break;
-
-                case MrMailbox.MR_QR_FINGERPRINT_MISMATCH: {
-                        String addr = MrMailbox.getContact(qrParsed.getId()).getAddr();
-                        builder.setMessage(AndroidUtilities.replaceTags(String.format(ApplicationLoader.applicationContext.getString(R.string.OobFingerprintMismatch), addr)));
-                        builder.setPositiveButton(R.string.OK, null);
-                    }
                     break;
 
                 default:

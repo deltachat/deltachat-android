@@ -431,6 +431,8 @@
     <string name="QrShow">Show QR code</string>
     <string name="QrScanContainsText">The scanned QR code contains the following text:\n\n%1$s</string>
     <string name="OobFingerprint">Fingerprint</string>
-    <string name="OobFingerprintWithoutAddr">This QR code contains a fingerprint but no e-mail address.\n\nFor an out-of-band-verification, please first establish an encrpyted connection to the recipient.</string>
+    <string name="OobFingerprintAskOob">Verify contact and start chatting with <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>?</string>
+    <string name="OobFingerprintOk">Contact <![CDATA[<i>]]>%1$s<![CDATA[</i>]]> verified successfully. Start chatting now?</string>
     <string name="OobFingerprintMismatch">The scanned fingerprint does <![CDATA[<b>]]>not match<![CDATA[</b>]]> the fingerprint last seen for <![CDATA[<i>]]>%1$s<![CDATA[</i>]]>.</string>
+    <string name="OobFingerprintWithoutAddr">This QR code contains a fingerprint but no e-mail address.\n\nFor an out-of-band-verification, please first establish an encrpyted connection to the recipient.</string>
 </resources>
