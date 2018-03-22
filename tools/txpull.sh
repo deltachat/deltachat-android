@@ -1,11 +1,18 @@
 
-# after pulling with txpull, this script pushes all local files back to transifex 
-# this is esp. useful as you can modifiy the english source strings in between - without breaking all translations afterwards.
+# this script pulls all files from transifex and copies them to the correct local directories
+
+# before you can use this script, you have to initialize Transifex in this folder:
+# tx init --user=api --pass=<your api token>
+# tx set --auto-remote https://www.transifex.com/projects/p/delta-chat-android/
+
+# common information about the Transifex CLI client can be found at:
+# https://docs.transifex.com/client/
+
 
 rm -r translations
 tx pull -a -s   # -s fetches the source file, we do not copy it, but we need it for pushing back
 
-TXPREFIX="translations/delta-chat-android.stringsxml/                            " # yes, there are spaces. don't know why
+TXPREFIX="translations/delta-chat-android.stringsxml/"
 SRCPREFIX="../MessengerProj/src/main/res/values"
 
 cp "${TXPREFIX}ca.xml"    "${SRCPREFIX}-ca/strings.xml"
