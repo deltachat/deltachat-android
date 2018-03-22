@@ -1,0 +1,8 @@
+[main]
+host = https://www.transifex.com
+
+[delta-chat-android.stringsxml]
+file_filter = translations/delta-chat-android.stringsxml/<lang>.xml
+source_lang = en
+type = ANDROID
+

@@ -11,5 +11,4 @@ libs/
 *.prv*
 
 # transifex temporary files
-tools/.tx/
 tools/translations/
