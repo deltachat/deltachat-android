@@ -3,6 +3,7 @@
 ## UNRELEASED
 
 * Update Catalan, Dutch, Norwegian, Polish and Spanish translations
+* Add Basque translation
 * Add Chinese translation
 * Add Japanese translation
 

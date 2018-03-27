@@ -1,0 +1,376 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="AppName">Delta Chat</string>
+    <!--chats view-->
+    <string name="Settings">Ezarpenak</string>
+    <string name="NewGroup">Talde berria</string>
+    <string name="NoResult">Emaitzarik ez.</string>
+    <string name="NoChats">Txatik ez oraindik.</string>
+    <string name="DeleteChat">Ezabatu txata</string>
+    <string name="SelectChat">Hautatu txata ...</string>
+    <string name="Search">Bilatu</string>
+    <string name="MuteNotifications">Mututu jakinarazpenak</string>
+    <string name="MuteFor">Mututu %1$s</string>
+    <string name="UnmuteNotifications">Desmututu</string>
+    <string name="Draft">Zirriborroa</string>
+    <!--audio view-->
+    <string name="NoAudio">Zure gailuko musika galeriara gehitutako fitxategiak hemen agertuko dira.</string>
+    <string name="AttachMusic">Musika</string>
+    <!--documents view-->
+    <string name="SelectFile">Hautatu fitxategia</string>
+    <string name="FreeOfTotal">%1$s / %2$s libre</string>
+    <string name="ErrorHint">Errore ezezaguna</string>
+    <string name="AccessError">Sarbide errorea</string>
+    <string name="NoFiles">Fitxategirik ez oraindik ...</string>
+    <string name="NotMounted">Biltegiratze muntatu gabea</string>
+    <string name="UsbActive">USB transferentzia abian</string>
+    <string name="InternalStorage">Barne biltegiratzea</string>
+    <string name="ExternalStorage">Kanpo biltegiratzea</string>
+    <string name="SystemRoot">Sistemako erroa</string>
+    <string name="SdCard">SD txartela</string>
+    <string name="Folder">Karpeta</string>
+    <string name="GalleryInfo">Konprimitu gabeko irudiak bidaltzeko</string>
+    <!--chat view-->
+    <string name="ChatGallery">Galeria</string>
+    <string name="ChatCamera">Kamera</string>
+    <string name="NoMessages">Mezurik ez.</string>
+    <string name="ForwardedMessage">Birbidalitako mezua</string>
+    <string name="From">Nork</string>
+    <string name="NoRecent">Azkenik ez</string>
+    <string name="TypeMessage">Mezua</string>
+    <string name="SlideToCancel">Alboratu uzteko</string>
+    <string name="SaveToDownloads">Gorde \"Deskargak\" karpetan</string>
+    <string name="SaveToMusic">Gorde \"Musika\" karpetan</string>
+    <string name="Share">Partekatu</string>
+    <string name="SendItems">Bidali %1$s</string>
+    <string name="ClearRecentEmoji">Garbitu azken emojiak?</string>
+    <string name="AddShortcut">Gehitu trepeta hasiera pantailan</string>
+    <string name="ShortcutAdded">Trepeta gehitu da hasiera pantailan</string>
+    <!--notification-->
+    <string name="Reply">Erantzun</string>
+    <string name="ReplyToGroup">Erantzun %1$s taldeari</string>
+    <string name="ReplyToContact">Erantzun %1$s erabiltzaileari</string>
+    <!--contacts view-->
+    <string name="NoContacts">Kontakturik ez oraindik.</string>
+    <!--group create view-->
+    <string name="SendMessageTo">Bidali mezuak hona ...</string>
+    <string name="EnterGroupNamePlaceholder">Sartu taldearen izena</string>
+    <!--group info view-->
+    <string name="AddMember">Gehitu kidea</string>
+    <string name="Notifications">Jakinarazpenak</string>
+    <string name="RemoveMember">Kendu kidea</string>
+    <!--contact info view-->
+    <string name="NewContactTitle">Kontaktu berria</string>
+    <string name="BlockContact">Blokeatu kontaktua</string>
+    <string name="DeleteContact">Ezabatu kontaktua</string>
+    <string name="Info">Informazioa</string>
+    <!--settings view-->
+    <string name="TextSize">Mezuen letra-tamaina</string>
+    <string name="UnblockContact">Desblokeatu kontaktua</string>
+    <string name="NoBlocked">Blokeatutako kontakturik ez</string>
+    <string name="DefaultForNormalMessages">Mezu arruntak</string>
+    <string name="MessagePreview">Aurreikusi mezua</string>
+    <string name="DefaultForGroupMessages">Talde mezuak</string>
+    <string name="Sound">Soinua</string>
+    <string name="InAppNotifications">Aplikazio barneko jakinarazpenak</string>
+    <string name="Vibrate">Bibratu</string>
+    <string name="ResetAllNotifications">Leheneratu jakinarazpen guztiak</string>
+    <string name="NotificationsAndSounds">Jakinarazpenak eta soinuak</string>
+    <string name="BlockedContacts">Blokeatutako kontaktuak</string>
+    <string name="Default">Lehenetsia</string>
+    <string name="OnlyIfSilent">Modu isilean besterik ez</string>
+    <string name="ChatBackground">Txataren atzealdea</string>
+    <string name="SendByEnter">Bidali \'sartu\' teklarekin</string>
+    <string name="Help">Laguntza</string>
+    <string name="Enabled">Bai</string>
+    <string name="Disabled">Ez</string>
+    <string name="LedColor">LED-aren kolorea</string>
+    <string name="BadgeNumber">Erabili ikonoa kopurua adierazteko ahal bada</string>
+    <string name="Short">Laburra</string>
+    <string name="Long">Luzea</string>
+    <string name="RaiseToSpeak">Goratu hitz egiteko</string>
+    <string name="EditName">Editatu izena</string>
+    <string name="NotificationsPriority">Ikusi</string>
+    <string name="NotificationsPriorityDefault">Lehentasun arrunta</string>
+    <string name="NotificationsPriorityHigh">Goi lehentasuna</string>
+    <string name="NotificationsPriorityMax">Lehentasun gorena</string>
+    <string name="RepeatNotifications">Errepikatu jakinarazpenak</string>
+    <string name="NotificationsOther">Bestelakoak</string>
+    <string name="InChatSound">Txat bitarteko soinuak</string>
+    <string name="SmartNotifications">Mugatu jakinarazpenak</string>
+    <string name="SmartNotificationsSoundAtMost">Max.</string>
+    <string name="SmartNotificationsTimes">aldiz</string>
+    <string name="SmartNotificationsWithin">tartean</string>
+    <string name="SmartNotificationsMinutes">minutu</string>
+    <string name="DirectShare">Partekatze zuzena</string>
+    <string name="DirectShareInfo">Erakutsi azken txatak partekatu menuan</string>
+    <!--cache view-->
+    <string name="CacheSettings">Biltegiratzea</string>
+    <string name="KeepMedia">Gorde multimedia</string>
+    <string name="KeepMediaInfo">Denbora honetan <![CDATA[atzitu ez]]> dituzun argazki, bideo eta hodeiko txatetako bestelako fitxategiak gailu honetatik kenduko dira espazioa aurrezteko.</string>
+    <string name="KeepMediaForever">Betirako</string>
+    <!--passcode view-->
+    <string name="Passcode">Pasakode blokeoa</string>
+    <string name="ChangePasscode">Aldatu pasakodea</string>
+    <string name="ChangePasscodeInfo">Pasakode gehigarria ezartzen duzunean giltzarrapoaren ikonoa agertuko da txaten orrian. Sakatu aplikazioa blokeatzeko.\n\nOharra: Pasakodea ahazten baduzu, aplikazioa desinstalatu eta berriro instalatu beharko duzu.</string>
+    <string name="PasscodePIN">PIN</string>
+    <string name="PasscodePassword">Pasahitza</string>
+    <string name="EnterCurrentPasscode">Sartu zure oraingo pasakodea</string>
+    <string name="EnterNewFirstPasscode">Sartu pasakodea</string>
+    <string name="EnterNewPasscode">Sartu zure pasakode berria</string>
+    <string name="EnterYourPasscode">Sartu zure pasakodea</string>
+    <string name="ReEnterYourPasscode">Sartu berriro zure pasakode berria</string>
+    <string name="PasscodeDoNotMatch">Pasakodeak ez datoz bat</string>
+    <string name="AutoLock">Blokeo automatikoa</string>
+    <string name="AutoLockInfo">Eskatu pasakodea aplikazioa denbora batez erabili ez bada.</string>
+    <string name="UnlockFingerprint">Desblokeatu hatz-markarekin</string>
+    <string name="FingerprintInfo">Berretsi hatz-marka jarraitzeko</string>
+    <string name="FingerprintNotRecognized">Eza da hatz-marka ezagutu. Saiatu berriro</string>
+    <!--photo gallery view-->
+    <string name="SaveToGallery">Gorde \"Galeria\"-n</string>
+    <string name="Of">%1$d / %2$d</string>
+    <string name="Gallery">Galeria</string>
+    <string name="AllPhotos">Argazki guztiak</string>
+    <string name="AllVideo">Bideo guztiak</string>
+    <string name="NoPhotos">Argazkirik ez oraindik</string>
+    <string name="NoVideo">Bideorik ez oraindik</string>
+    <string name="EditImage">Editatu irudia</string>
+    <string name="Enhance">Hobetu</string>
+    <string name="Highlights">Distirak</string>
+    <string name="Contrast">Kontrastea</string>
+    <string name="Exposure">Esposizioa</string>
+    <string name="Warmth">Berotasuna</string>
+    <string name="Saturation">Saturazioa</string>
+    <string name="Shadows">Gerizak</string>
+    <string name="Grain">Garaua</string>
+    <string name="Sharpen">Fokatu</string>
+    <string name="Fade">Desagertu</string>
+    <string name="Tint">Tindatu</string>
+    <string name="TintShadows">Gerizak</string>
+    <string name="TintHighlights">Distirak</string>
+    <string name="Curves">Kurbak</string>
+    <string name="CurvesAll">Dena</string>
+    <string name="CurvesRed">Gorria</string>
+    <string name="CurvesGreen">Berdea</string>
+    <string name="CurvesBlue">Urdina</string>
+    <string name="Blur">Lausotu</string>
+    <string name="BlurOff">Ez</string>
+    <string name="BlurLinear">Lineala</string>
+    <string name="BlurRadial">Erradiala</string>
+    <string name="DiscardChanges">Baztertu aldaketak?</string>
+    <string name="ClearButton">Garbitu</string>
+    <string name="PickerPhotos">Argazkiak</string>
+    <string name="PickerVideo">Bideoa</string>
+    <!--privacy settings-->
+    <string name="PrivacySettings">Pribatutasuna eta segurtasuna</string>
+    <string name="SecurityTitle">Segurtasuna</string>
+    <!--edit video view-->
+    <string name="SendVideo">Bidali bideoa</string>
+    <!--button titles-->
+    <string name="Done">Egina</string>
+    <string name="Open">Ireki</string>
+    <string name="Cancel">Utzi</string>
+    <string name="Edit">Editatu</string>
+    <string name="Send">Bidali</string>
+    <string name="CopyToClipboard">Kopiatu arbelera</string>
+    <string name="Delete">Ezabatu</string>
+    <string name="Forward">Birbidali</string>
+    <string name="FromCamera">Kameratik</string>
+    <string name="FromGalley">Galeriatik</string>
+    <string name="Set">Ezarrita</string>
+    <string name="OK">Ados</string>
+    <!--messages-->
+    <string name="AttachPhoto">Argazkia</string>
+    <string name="AttachVideo">Bideoa</string>
+    <string name="AttachGif">GIF</string>
+    <string name="AttachContact">Kontaktua</string>
+    <string name="AttachDocument">Fitxategia</string>
+    <string name="AttachVoiceMessage">Ahots mezua</string>
+    <string name="FromSelf">Nik</string>
+    <!--Alert messages-->
+    <string name="NoHandleAppInstalled">Ez dago \'%1$s\' ireki dezakeen aplikaziorik instalatuta, instalatu bat aurrera jarraitzeko.</string>
+    <string name="ContactAlreadyInGroup">Kontaktua badago talde honetan.</string>
+    <string name="ForwardMessagesTo">Birbidali hautatutako mezuak hona: <![CDATA[]]>%1$s<![CDATA[]]>?</string>
+    <string name="SendMessagesTo">Bidali mezuak hona: <![CDATA[]]>%1$s<![CDATA[]]>?</string>
+    <string name="AreYouSureDeleteThisChat">Ezabatu txat hau? Ez da txaten zerrendan berriro erakutsiko, mezuak zerbitzarian mantenduko dira.</string>
+    <string name="AreYouSureBlockContact">Ziur kontaktu hau blokeatu nahi duzula?</string>
+    <string name="AreYouSureDeleteContact">Ziur kontaktu hau ezabatu nahi duzula?</string>
+    <string name="PermissionNoAudio">Mikrofonoa atzitzeko baimena behar da ahots mezuak bidali ahal izateko.</string>
+    <string name="PermissionOpenSettings">Ezarpenak</string>
+    <!--Intro view-->
+    <string name="Intro1Headline">Delta Chat</string>
+    <string name="Intro2Headline">Independientea</string>
+    <string name="Intro3Headline">Azkarra</string>
+    <string name="Intro4Headline">Ahaltsua</string>
+    <string name="Intro5Headline">Librea</string>
+    <string name="Intro6Headline">Zifratua</string>
+    <string name="Intro7Headline">Fidagarria</string>
+
+    <string name="IntroStartMessaging">Hasi txateatzen</string>
+    <!--plural-->
+    <plurals name="Members">
+        <item quantity="one">kide %d</item>
+        <item quantity="other">%d kide</item>
+    </plurals>
+    <plurals name="Contacts">
+        <item quantity="one">kontaktu %d</item>
+        <item quantity="other">%d kontaktu</item>
+    </plurals>
+    <plurals name="MeAndMembers">
+        <item quantity="one">kide %d eta ni</item>
+        <item quantity="other">%d kide eta ni</item>
+    </plurals>
+    <plurals name="NewMessages">
+        <item quantity="one">Mezu berri %d</item>
+        <item quantity="other">%d mezu berri</item>
+    </plurals>
+    <plurals name="messages">
+        <item quantity="one">Mezu %d</item>
+        <item quantity="other">%d mezu</item>
+    </plurals>
+    <plurals name="NewMessagesInChats">
+        <item quantity="one">%1$s txat %2$dean</item>
+        <item quantity="other">%1$s %2$d txatetan</item>
+    </plurals>
+    <plurals name="Chats">
+        <item quantity="one">Txat %d</item>
+        <item quantity="other">%d txat</item>
+    </plurals>
+    <plurals name="Minutes">
+        <item quantity="one">minutu %d</item>
+        <item quantity="other">%d minutu</item>
+    </plurals>
+    <plurals name="Hours">
+        <item quantity="one">ordu %d</item>
+        <item quantity="other">%d ordu</item>
+    </plurals>
+    <plurals name="Days">
+        <item quantity="one">egun %d</item>
+        <item quantity="other">%d egun</item>
+    </plurals>
+    <plurals name="Weeks">
+        <item quantity="one">aste %d</item>
+        <item quantity="other">%d aste</item>
+    </plurals>
+    <plurals name="Months">
+        <item quantity="one">hilabete %d</item>
+        <item quantity="other">%d hilabete</item>
+    </plurals>
+    <plurals name="MaxNotifications">
+        <item quantity="one">Gehienez jakinarazpen %1$d %2$sko tartean</item>
+        <item quantity="other">Gehienez %1$d jakinarazpen %2$sko tartean</item>
+    </plurals>
+    <string name="formatDateAtTime">%1$s - %2$s</string>
+    <string name="AccountSettings">Kontuaren ezarpenak</string>
+    <string name="MyAccount">Nire kontua</string>
+    <string name="MyName">Nire izena</string>
+    <string name="MyNameExplain">Zure izena, hartzaileen ikusiko dutena. Hutsik lagaz gero, zure e-mail helbidea bidaliko da bakarrik.</string>
+    <string name="Password">Pasahitza</string>
+    <string name="SmtpPassword">SMTP pasahitza</string>
+    <string name="FromAbove">Goitik</string>
+    <string name="SmtpLoginname">SMTP erabiltzaile-izena</string>
+    <string name="SmtpPort">SMTP ataka</string>
+    <string name="Automatic">Automatikoa</string>
+    <string name="ImapServer">IMAP zerbitzaria</string>
+    <string name="ImapLoginname">IMAP erabiltzaile-izena</string>
+    <string name="SmtpServer">SMTP zerbitzaria</string>
+    <string name="ImapPort">IMAP ataka</string>
+    <string name="InboxHeadline">Sarrera ontzia</string>
+    <string name="OutboxHeadline">Irteera ontzia</string>
+    <string name="MyAccountExplain">E-mail hornitzaile ezagunentzat, ezarpen gehigarriak automatikoki zehaztuko dira.</string>
+    <string name="AccountNotConfigured">Kontua konfiguratu gabe</string>
+    <string name="AboutThisProgram">Delta Chat-i buruz</string>
+    <string name="NotSet">Ezarri gabe</string>
+    <string name="NewChat">Txat berria</string>
+    <string name="Deaddrop">Kontaktu eskaera</string>
+    <string name="DeaddropInChatlist">Erakutsi kontaktu eskaerak txat zerrendan</string>
+    <string name="MuteAlways">Beti mutututa</string>
+    <string name="DeaddropHint">Sakatu erantzun geziak txateatzen hasteko.</string>
+    <string name="NotYetImplemented">Funtzio hau ez dago eskuragarri edo osorik.</string>
+    <string name="DefaultStatusText">Delta Chat mezulariarekin bidalita: https://delta.chat</string>
+    <string name="Name" >Izena</string>
+    <string name="EmailAddress">E-mail helbidea</string>
+    <string name="CannotDeleteContact">Ezin dira erabiltzen dituzun kontaktuak ezabatu, baina blokeatu dezakezu.</string>
+    <string name="BadEmailAddress">E-mail helbide okerra.</string>
+    <string name="ContactCreated">Kontaktua sortuta.</string>
+    <string name="ViewProfile">Ikusi profila</string>
+    <!-- Translators: please use a very short string here, it should not much longer than
+    the string needed for video time+size (0:00, 12,3 Mib) -->
+    <string name="OneMoment">Une bat mesedez ...</string>
+    <string name="NoChatsHelp">Hasi txateatzen \"Txat berria\" botoia sakatuz behean eskuinean, edo sakatu \"Menua\" botoia aukera gehiagorako.</string>
+    <string name="Intro7Message"><![CDATA[<b>Delta Chat</b>]]> lantokirako segurua da, bateragarria eta estandarretan oinarritua.</string>
+    <string name="InviteMenuEntry">Bidali gonbidapenak</string>
+    <string name="InviteText">Delta Chat mezularia erabiltzen du orain - %1$s - hona idatzi nazakezu%2$s</string>
+    <string name="AdvancedSettings">Ezarpen aurreratuak</string>
+    <string name="AskResetNotifications">Leheneratu jakinarazpen eta soinuen ezarpen guztiak uneko orria, kontaktuak eta taldeetan?</string>
+    <string name="AttachFiles">Erantsi fitxategiak</string>
+    <string name="ErrGroupNameEmpty">Sartu izen bat taldearentzat.</string>
+    <string name="MsgNewGroupDraft">Kaixo, \"%1$s\" taldea sortu dut guretzat.</string>
+    <string name="MsgGroupNameChanged">Taldearen izena aldatuta \"%1$s\"-tik \"%2$s\"-ra</string>
+    <string name="MsgGroupImageChanged">Taldeko irudia aldatu da.</string>
+    <string name="MsgMemberAddedToGroup">%1$s kidea gehituta.</string>
+    <string name="MsgMemberRemovedFromToGroup">%1$s kidea kenduta.</string>
+    <string name="AskAddMemberToGroup">Gehitu <![CDATA[<b>]]>%1$s<![CDATA[</b>]]> taldera?</string>
+    <string name="AskRemoveMemberFromGroup">Kendu <![CDATA[<b>]]>%1$s<![CDATA[</b>]]> taldetik?</string>
+    <string name="ErrSelfNotInGroup">Taldeko kidea izan behar zara ekintza hau burutzeko.</string>
+    <string name="MsgGroupLeft">Taldetik aterata.</string>
+    <string name="SendNRcvReadReceipts">Jaso eta bidali irakurragiriak</string>
+    <string name="PreferE2EEncryption">Hobetsi muturretik muturrerako zifratzea</string>
+    <string name="E2EManagePrivateKeys">Kudeatu gako sekretuak</string>
+    <string name="E2ECompareKeys">Konparatu gakoak</string>
+    <string name="ForwardToTitle">Birbidali hona ...</string>
+    <string name="SelectContact">Hautatu kontaktua</string>
+    <string name="DoneHint">Egina.</string>
+    <string name="FileNotFound">Ezin izan da %1$s aurkitu</string>
+    <string name="Error">Errorea: %1$s</string>
+    <string name="NoNetwork">Sarea ez dago eskuragarri.</string>
+    <string name="Audio">Audioa</string>
+    <string name="PleaseCutVideoToMaxSize">Moztu bideoa %1$s edo txikiagoa den tamaina batera.</string>
+    <string name="PermNotificationTitle">%1$s zerbitzarira konektatuta</string>
+    <string name="PermNotificationText">Mezuen zain ...</string>
+    <string name="SettingsFor">%1$s zerbitzariko ezarpenak</string>
+    <string name="AutoplayGifs">Abiatu GIF-ak automatikoki</string>
+    <string name="EncryptedMessage">Zifratutako mezua</string>
+    <string name="Encryption">Zifratzea</string>
+    <string name="EncrinfoE2E">Muturretik muturrerako zifratzea gaitu da.</string>
+    <string name="EncrinfoE2EExplain">Hatz-marka guztiak beste gailuan berdinak badira, konexioa segurua da.</string>
+    <string name="EncrinfoTransport">Garraio-zifratzea nire zerbitzarira arte gutxienez.</string>
+    <string name="EncrinfoNone">Zifratzerik ez nire zerbitzarira.</string>
+    <string name="EncrinfoNoE2EExplain">Muturretik muturrerako zifratzea erabiliko da hartzaileak Delta Chat edo AutoCrypt onartzen duen beste aplikazio bat badarabil.</string>
+    <string name="EncrinfoFingerprints">Hatz-markak</string>
+    <string name="Backup">Babeskopia</string>
+    <string name="ImportBackupExplain2">Babeskopia bat inportatzeko, kopiatu babeskopia hemen <![CDATA[<i>]]>%1$s<![CDATA[</i>]]> eta berriro instalatu aplikazioa.</string>
+    <string name="ReadReceipt">Itzuli irakurragiria</string>
+    <string name="NameAndStatus">Izena eta leloa</string>
+    <string name="MyStatus">Nire leloa</string>
+    <string name="MyStatusExplain">Leloa e-mailen oinean eta beste toki batzuetan ikusten da.</string>
+    <string name="MsgGroupImageDeleted">Taldearen irudia ezabatuta.</string>
+    <string name="ExportImportHeader">Esportatu eta inportatu</string>
+    <string name="IncorrectPassword">Pasahitz okerra.</string>
+    <string name="ImportBackup">Inportatu babeskopia</string>
+    <string name="ExportBackup">Esportatu babeskopia</string>
+    <string name="ExportPrivateKeys">Esportatu gako pribatuak</string>
+    <string name="ImportPrivateKeys">Inportatu gako pribatuak</string>
+    <string name="NoRecentEmoji">Erabilitako azken emojiak hemen agertuko dira.</string>
+    <string name="NotNow">Orain ez</string>
+    <string name="ArchiveChat">Artxibatu txata</string>
+    <string name="UnarchiveChat">Desartxibatu txata</string>
+    <string name="ArchivedChats">Artxibatutako txatak</string>
+    <string name="Archived">Artxibatuta</string>
+    <string name="LeaveGroup">Atera taldetik</string>
+    <string name="AskLeaveGroup">Ziur talde honetatik atera nahi duzula?</string>
+    <string name="Never">Inoiz ez</string>
+    <string name="AutocryptKeyTransferInitiate">Hasi Autocrypt gakoen transferentzia</string>
+    <string name="AutocryptKeyTransfer">Autocrypt gakoen transferentzia</string>
+    <string name="AutocryptSetupMessageSubject">Autocrypt ezarpen mezua</string>
+    <string name="AutocryptSetupMessageGeneralBody">Hau zure gakoa bezeroen artean transferitzeko erabilitako Autocrypt ezarpen mezua da.\n\nDeszifratu eta zure gakoa erabiltzeko, ireki mezua Autocrypt onartzen duen bezero batean eta sartu gailu sortzailean erakutsitako ezarpen kodea.</string>
+    <string name="AutocryptSetupMessageTapBody">Hau zure gakoa bezeroen artean transferitzeko erabilitako Autocrypt ezarpen mezua da.\n\nDeszifratu eta zure gakoa erabiltzeko, sakatu mezu hau.</string>
+    <string name="AutocryptKeyTransferPleaseEnterCode">Sartu beste gailuan agertzen den ezarpen kodea.</string>
+    <string name="AutocryptKeyTransferBadCode">Ezarpen kode okerrra. Saiatu berriro.\n\nEzarpen kodea ahaztu baduzu, abiatu berriro gakoen transferentzia beste gailuan.</string>
+    <string name="AutocryptKeyTransferSucceeded">Gakoa ongi transferitu da. Gailu hau orain Autocrypt erabili dezake beste gailuko gako berarekin.</string>
+    <string name="Retry">Saiatu berriro</string>
+    <string name="SelfTalkSubtitle">Nire buruari bidalitako mezuak</string>
+    </resources>
