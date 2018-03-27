@@ -751,18 +751,36 @@ public class ChatlistActivity extends BaseFragment implements NotificationCenter
                             Utilities.searchQueue.postRunnable(new Runnable() {
                                 @Override
                                 public void run() {
-                                    final int oobDone = MrMailbox.oobJoin(qrRawString); // oobJoin() runs until all needed messages are sent+received!
+
+                                    synchronized (MrMailbox.m_lastErrorLock) {
+                                        MrMailbox.m_showNextErrorAsToast = false;
+                                        MrMailbox.m_lastErrorString = "";
+                                    }
+
+                                    final boolean oobDone = MrMailbox.oobJoin(qrRawString); // oobJoin() runs until all needed messages are sent+received!
                                     AndroidUtilities.runOnUIThread(new Runnable() {
                                         @Override
                                         public void run() {
+                                            String errorString;
+                                            synchronized (MrMailbox.m_lastErrorLock) {
+                                                MrMailbox.m_showNextErrorAsToast = true;
+                                                errorString = MrMailbox.m_lastErrorString;
+                                            }
+
                                             if( progressDialog != null ) {
                                                 progressDialog.dismiss();
                                                 progressDialog = null;
                                             }
-                                            if( oobDone != 0 ) {
+                                            if( oobDone  ) {
                                                 Bundle args = new Bundle();
                                                 args.putInt("chat_id", MrMailbox.createChatByContactId(qrParsed.getId()));
                                                 presentFragment(new ChatActivity(args), false /*removeLast*/);
+                                            }
+                                            else if( !errorString.isEmpty() ) {
+                                                AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
+                                                builder.setMessage(errorString);
+                                                builder.setPositiveButton(R.string.OK, null);
+                                                showDialog(builder.create());
                                             }
                                         }
                                     });
