@@ -333,7 +333,7 @@
     <!-- Translators: please use a very short string here, it should not much longer than
     the string needed for video time+size (0:00, 12,3 Mib) -->
     <string name="OneMoment">Een moment ...</string>
-    <string name="NoChatsHelp">Stuur berichtjes door op de nieuwe chat knop te drukken rechtsonder op het scherm of druk op de menuknop voor meer opties.</string>
+    <string name="NoChatsHelp">Stuur berichten door op de \"nieuwe chat\" knop te drukken rechtsonder of druk op de menuknop voor meer opties.</string>
     <string name="Intro7Message"><![CDATA[<b>Delta Chat</b>]]> is veilig voor het bedrijfsleven, compatibel en gebaseerd op standaarden.</string>
     <string name="InviteMenuEntry">Vrienden uitnodigen</string>
     <string name="InviteText">Ik gebruik Delta Chat, %1$s, je kan me berichtjes sturen op %2$s</string>
@@ -368,4 +368,38 @@
     <string name="PermNotificationText">Wachten op berichten ...</string>
     <string name="SettingsFor">Instellingen voor %1$s</string>
     <string name="AutoplayGifs">GIFs automatisch afspelen</string>
+    <string name="HelpUrl">https://delta.chat/nl/help</string>
+    <string name="EncryptedMessage">Versleuteld bericht</string>
+    <string name="Encryption">Versleuteling</string>
+    <string name="EncrinfoE2EExplain">Als alle vingerafdrukken overeenkomen op het andere apparaat, is de verbinding veilig.</string>
+    <string name="EncrinfoTransport">Transportversleuteling op zijn minst tot mijn server.</string>
+    <string name="EncrinfoNone">Geen versleuteling naar mijn server</string>
+    <string name="EncrinfoNoE2EExplain">End-to-end-versleuteling wordt toegepast wanneer Delta Chat of een andere Autocrypt-app ook door de ontvanger wordt gebruikt.</string>
+    <string name="EncrinfoFingerprints">Vingerafdruk</string>
+    <string name="Backup">Archief</string>
+    <string name="ImportBackupExplain2">Om een archief te importeren, kopieert een archief naar <![CDATA[<i>]]>%1$s<![CDATA[</i>]]> en herinstalleer de app.</string>
+    <string name="ReadReceipt">Ontvangstbewijs</string>
+    <string name="NameAndStatus">Naam en positie</string>
+    <string name="MyStatus">Mijn status</string>
+    <string name="MyStatusExplain">De status wordt onder in e-mailvoetteksten weergegeven.</string>
+    <string name="MsgGroupImageDeleted">Groepsafbeelding verwijderd.</string>
+    <string name="ExportImportHeader">Exporteren en importeren</string>
+    <string name="ImportExportExplain">Geëxporteerde bestanden bevatten geheime sleutels! Bewaar ze op een veilige plaats of verwijder ze zo snel mogelijk.</string>
+    <string name="IncorrectPassword">Incorrect wachtwoord.</string>
+    <string name="ImportBackup">Archief importeren</string>
+    <string name="NoBackupFound">Geen archief gevonden.\n\nKopieer het archief naar <![CDATA[<i>]]>%1$s<![CDATA[</i>]]> en probeer het opnieuw. Je kan ook bij \"Beginnen met chatten\" aanvangen om met het normale instellingsproces te doorlopen.</string>
+    <string name="FilesSuccessfullyExported">Bestand geëxporteerd naar <![CDATA[<i>]]>%1$s<![CDATA[</i>]]>.</string>
+    <string name="ExportBackup">Archief exporteren</string>
+    <string name="ExportPrivateKeys">Exporteer privésleutels</string>
+    <string name="ImportPrivateKeys">Beheer privésleutels</string>
+    <string name="E2eeOffBecauseOfRecipient">End-to-end-versleuteling wordt toegepast als de andere partij de instelling ook inschakelt.</string>
+    <string name="NotNow">Niet nu</string>
+    <string name="ArchiveChat">Chat archiveren</string>
+    <string name="UnarchiveChat">Chat uit archief halen</string>
+    <string name="ArchivedChats">Chats gearchiveerd</string>
+    <string name="Archived">Gearchiveerd</string>
+    <string name="LeaveGroup">Groep verlaten</string>
+    <string name="AutocryptKeyTransfer">Autocrypt sleutel overdracht</string>
+    <string name="OobFingerprintAskOob">Verifieer contact en begin met chat met <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>?</string>
+    <string name="OobFingerprintOk">Contact <![CDATA[<i>]]>%1$s<![CDATA[</i>]]> geverifieerd. Begin met chatten?</string>
     </resources>

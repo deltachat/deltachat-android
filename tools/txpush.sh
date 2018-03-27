@@ -11,6 +11,7 @@ cp  "${SRCPREFIX}-ca/strings.xml"  "${TXPREFIX}ca.xml"
 cp  "${SRCPREFIX}-de/strings.xml"  "${TXPREFIX}de.xml"
 cp  "${SRCPREFIX}/strings.xml"     "${TXPREFIX}en.xml"  # also copy back the source, this is the only way to update the english strings
 cp  "${SRCPREFIX}-es/strings.xml"  "${TXPREFIX}es.xml"
+cp  "${SRCPREFIX}-eu/strings.xml"  "${TXPREFIX}eu.xml"
 cp  "${SRCPREFIX}-fr/strings.xml"  "${TXPREFIX}fr.xml"
 cp  "${SRCPREFIX}-hu/strings.xml"  "${TXPREFIX}hu.xml"
 cp  "${SRCPREFIX}-it/strings.xml"  "${TXPREFIX}it.xml"

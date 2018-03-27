@@ -19,6 +19,7 @@ cp "${TXPREFIX}ca.xml"    "${SRCPREFIX}-ca/strings.xml"
 cp "${TXPREFIX}de.xml"    "${SRCPREFIX}-de/strings.xml"
 #  "${TXPREFIX}en.xml"    "${SRCPREFIX}/strings.xml"   # we do not copy the source as the source cannot be modified at Trasifex
 cp "${TXPREFIX}es.xml"    "${SRCPREFIX}-es/strings.xml"
+cp "${TXPREFIX}eu.xml"    "${SRCPREFIX}-eu/strings.xml"
 cp "${TXPREFIX}fr.xml"    "${SRCPREFIX}-fr/strings.xml"
 cp "${TXPREFIX}hu.xml"    "${SRCPREFIX}-hu/strings.xml"
 cp "${TXPREFIX}it.xml"    "${SRCPREFIX}-it/strings.xml"

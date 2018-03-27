@@ -421,4 +421,4 @@
     <string name="AutocryptKeyTransferSucceeded">Ihr Schlüssel wurde erfolgreich übertragen. Dieses Gerät wird nun Autocrypt mit demselben Schlüssel wie das Andere verwenden.</string>
     <string name="Retry">Wiederholen</string>
     <string name="SelfTalkSubtitle">Nachrichten von mir an mich</string>
-</resources>
+    </resources>

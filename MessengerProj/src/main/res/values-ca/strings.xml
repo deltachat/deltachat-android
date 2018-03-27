@@ -47,6 +47,8 @@
     <string name="Share">Comparteix</string>
     <string name="SendItems">Envia %1$s</string>
     <string name="ClearRecentEmoji">Vols esborrae les emoticones recents?</string>
+    <string name="AddShortcut">Afegeix el complement a la pantalla d\'inici</string>
+    <string name="ShortcutAdded">El complement ha sigut afegit a la pantalla d\'inici</string>
     <!--notification-->
     <string name="Reply">Respon</string>
     <string name="ReplyToGroup">Respon a %1$s</string>
@@ -81,6 +83,7 @@
     <string name="Default">Per defecte</string>
     <string name="OnlyIfSilent">Només en mode silenciós</string>
     <string name="ChatBackground">Fons del xat</string>
+    <string name="SendByEnter">Envia amb la tecla Intro</string>
     <string name="Help">Ajuda</string>
     <string name="Enabled">Activat</string>
     <string name="Disabled">Desactivat</string>
@@ -97,6 +100,7 @@
     <string name="NotificationsOther">Altres</string>
     <string name="InChatSound">So dins el xats</string>
     <string name="SmartNotifications">Limita les notificacions</string>
+    <string name="SmartNotificationsSoundAtMost">Màx.</string>
     <string name="SmartNotificationsTimes">vegades</string>
     <string name="SmartNotificationsWithin">en</string>
     <string name="SmartNotificationsMinutes">minuts</string>
@@ -104,11 +108,25 @@
     <string name="DirectShareInfo">Mostra els darrers xats al menú compartit</string>
     <!--cache view-->
     <string name="CacheSettings">Magatzem</string>
+    <string name="KeepMedia">Conservar Media</string>
     <string name="KeepMediaInfo">Les fotos, vídeos i altres fitxers de xats al núvol als que no hagis <![CDATA[<b>accedit</b>]]> durant aquest període seran esborrats d\'aquest dispositiu per estalviar espai de disc.</string>
     <string name="KeepMediaForever">Per sempre</string>
+    <!--passcode view-->
+    <string name="Passcode">Bloqueig per codi</string>
+    <string name="ChangePasscode">Canvia el codi d\'accés</string>
+    <string name="ChangePasscodeInfo">Quan afegeixis un codi d\'accés addicional, a la pàgina de xats apareixerà una icona de bloqueig. Toca-la per bloquejar l\'app.\n\nNota: si oblides el codi d\'accés, hauràs de esborrar i reinstal·lar l\'app.</string>
     <string name="PasscodePIN">PIN</string>
     <string name="PasscodePassword">Contrasenya</string>
     <string name="EnterCurrentPasscode">Introdueix la teva contrasenya actual</string>
+    <string name="EnterNewFirstPasscode">Introdueix el codi d\'accés</string>
+    <string name="EnterNewPasscode">Introdueix un nou codi d\'accés</string>
+    <string name="EnterYourPasscode">Introdueix el teu codi d\'accés</string>
+    <string name="ReEnterYourPasscode">Torna a posar el teu nou codi d\'accés</string>
+    <string name="PasscodeDoNotMatch">Els codis d\'accés no coincideixen</string>
+    <string name="AutoLock">Bloqueig automàtic</string>
+    <string name="UnlockFingerprint">Desbloqueja amb l\'empremta dactilar</string>
+    <string name="FingerprintInfo">Confirma l\'empremta dactilar per continuar</string>
+    <string name="FingerprintNotRecognized">Petjada dactilar no reconeguda. Torna-ho a provar</string>
     <!--photo gallery view-->
     <string name="SaveToGallery">Guarda a la galeria</string>
     <string name="Of">%1$d de %2$d</string>
@@ -119,16 +137,26 @@
     <string name="NoVideo">Encara no hi ha cap vídeo</string>
     <string name="CropImage">Talla la imatge</string>
     <string name="EditImage">Modifica la imatge</string>
+    <string name="Enhance">Enhance</string>
     <string name="Highlights">Destacats</string>
     <string name="Contrast">Contrast</string>
     <string name="Exposure">Exposició</string>
+    <string name="Warmth">Warmth</string>
     <string name="Saturation">Saturació</string>
+    <string name="Vignette">Vignette</string>
+    <string name="Shadows">Shadows</string>
+    <string name="Grain">Grain</string>
+    <string name="Sharpen">Sharpen</string>
+    <string name="Fade">Fade</string>
+    <string name="Tint">Tint</string>
+    <string name="TintShadows">Shadows</string>
     <string name="TintHighlights">DESTACATS</string>
     <string name="Curves">Corbes</string>
     <string name="CurvesAll">TOTS</string>
     <string name="CurvesRed">VERMELL</string>
     <string name="CurvesGreen">VERD</string>
     <string name="CurvesBlue">BLAU</string>
+    <string name="Blur">Blur</string>
     <string name="BlurOff">Desactivat</string>
     <string name="BlurLinear">Lineal</string>
     <string name="BlurRadial">Radial</string>
@@ -149,6 +177,7 @@
     <string name="Send">Envia</string>
     <string name="CopyToClipboard">Copia al porta-retalls</string>
     <string name="Delete">Esborra</string>
+    <string name="Forward">Reenvia</string>
     <string name="FromCamera">Des de la càmera</string>
     <string name="FromGalley">Des de la galeria</string>
     <string name="OK">OK</string>
@@ -161,7 +190,10 @@
     <string name="AttachDocument">Fitxer</string>
     <string name="AttachVoiceMessage">Missatge de veu</string>
     <string name="FromSelf">Jo</string>
+    <!--Alert messages-->
+    <string name="NoHandleAppInstalled">No hi ha cap app instal·lada que pugui obrir el tipus de fitxer \'%1$s\', si us plau, instal·la\'n una per continuar.</string>
     <string name="ContactAlreadyInGroup">Aquesta contacte ja pertany a aquest grup</string>
+    <string name="ForwardMessagesTo">Vols reenviar els missatges seleccionats a <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>?</string>
     <string name="SendMessagesTo">Envia els missatges a <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>?</string>
     <string name="AreYouSureDeleteThisChat">Esborres aquest xat? El xat ja no es mostrarà al llistat de xats, però els missatges romandran al servidor.</string>
     <string name="AreYouSureBlockContact">Estàs segur que vols bloquejar aquest contacte?</string>
@@ -169,16 +201,27 @@
     <!--permissions-->
     <string name="PermissionContacts">Delta Chat necessita accedir als teus contactes perquè puguis connectar amb els teus amics de de qualsevol dels teus dispositius.</string>
     <string name="PermissionStorage">Delta Chat necessita accedir al teu emmagatzematge per poder enviar i guardar fotos, vídeos, música i altres continguts audiovisuals.</string>
+    <string name="PermissionNoAudio">Per enviar missatges de veu cal accés al micròfon.</string>
     <string name="PermissionOpenSettings">Preferències</string>
     <!--Intro view-->
     <string name="Intro1Headline">Delta Chat</string>
+    <string name="Intro1Message">L\'app de missatgeria  <![CDATA[<b> de més abast</b>]]> al món. <![CDATA[<b>lliure</b>]]> i <![CDATA[<b>independent</b>]]>.</string>
+
     <string name="Intro2Headline">Independent</string>
+    <string name="Intro2Message"><![CDATA[<b>No hi ha un servidor Delta Chat.</b>]]> L\'app només fa servir el teu servidor de correu electrònic.</string>
+
     <string name="Intro3Headline">Ràpid</string>
+    <string name="Intro3Message"><![CDATA[<b>Envia missatges</b>]]> en segons.<![CDATA[<br/>]]>Interfície ràpida.</string>
+
     <string name="Intro4Headline">Potent</string>
+    <string name="Intro4Message"><![CDATA[<b>Il·limitats</b>]]> xats, imatges, vídeos, àudios missatges i més. Capacitat multi-client.</string>
+
     <string name="Intro5Headline">De franc</string>
     <string name="Intro5Message"><![CDATA[<b>Delta Chat</b>]]> serà de franc sempre.<![CDATA[<br/>]]>Codi obert. Sense publicitat. Sense subscripció. Sense exclusivitat de proveïdor.</string>
 
     <string name="Intro6Headline">Segur</string>
+    <string name="Intro6Message"><![CDATA[<b>Encriptat</b>]]> amb tots els algoritmes habituals. Els missatges romanen als teus servidors.</string>
+
     <string name="IntroStartMessaging">Comença a xatejar</string>
     <!--plural-->
     <plurals name="Members">
@@ -201,9 +244,72 @@
         <item quantity="one">%d missatge</item>
         <item quantity="other">%d missatges</item>
     </plurals>
+    <plurals name="AreYouSureDeleteMessages">
+        <item quantity="one">Vols esborrar %d missatge? També serà esborrat al servidor.</item>
+        <item quantity="other">Vols esborrar %d missatges? També seran esborrats al servidor.</item>
+    </plurals>
+    <plurals name="NewMessagesInChats">
+        <item quantity="one">%1$s a %2$d xat</item>
+        <item quantity="other">%1$s a %2$d xats</item>
+    </plurals>
+    <plurals name="Chats">
+        <item quantity="one">%d xat</item>
+        <item quantity="other">%d xats</item>
+    </plurals>
+    <plurals name="Minutes">
+        <item quantity="one">%d minut</item>
+        <item quantity="other">%d minuts</item>
+    </plurals>
+    <plurals name="Hours">
+        <item quantity="one">%d hora</item>
+        <item quantity="other">%d hores</item>
+    </plurals>
+    <plurals name="Days">
+        <item quantity="one">%d dia</item>
+        <item quantity="other">%d dies</item>
+    </plurals>
+    <plurals name="Weeks">
+        <item quantity="one">%d setmana</item>
+        <item quantity="other">%d setmanes</item>
+    </plurals>
     <plurals name="Months">
         <item quantity="one">%d mes</item>
         <item quantity="other">%d mesos</item>
     </plurals>
+    <plurals name="MaxNotifications">
+        <item quantity="one">Com a molt %1$d notificació en %2$s</item>
+        <item quantity="other">Com a molt %1$d notificacions en %2$s</item>
+    </plurals>
+    <!--date formatters-->
+    <string name="formatterMonthYear">MMMM yyyy</string>
+    <string name="formatterMonth">MMM dd</string>
+    <string name="formatterYear">dd.MM.yyyy</string>
+    <string name="chatDate">EEE, MMMM d</string>
+    <string name="chatFullDate">EEE, MMMM d, yyyy</string>
+    <string name="formatterWeek">EEE</string>
+    <string name="formatterDay24H">HH:mm</string>
+    <string name="formatterDay12H">h:mm a</string>
+    <string name="formatDateAtTime">%1$s a %2$s</string>
+    <string name="AccountSettings">Preferències del compte</string>
+    <string name="MyAccount">El meu compte</string>
+    <string name="MyName">El meu nom</string>
+    <string name="MyNameExplain">El teu nom, com serà mostrat als destinataris. Si el deixes en blanc, només es mostrarà la teva adreça de correu electrònic.</string>
     <string name="Password">Contrasenya</string>
+    <string name="SmtpPassword">Contrasenya SMTP</string>
+    <string name="FromAbove">La de dalt</string>
+    <string name="SmtpLoginname">Login-nom SMTP</string>
+    <string name="SmtpPort">Port SMTP</string>
+    <string name="Automatic">Automàtic</string>
+    <string name="ImapServer">Servidor IMAP</string>
+    <string name="AboutThisProgram">Sobre Delta Chat</string>
+    <string name="NotSet">No definit</string>
+    <string name="NewChat">Nou xat</string>
+    <string name="MuteAlways">Sempre silenciat</string>
+    <string name="Name" >Nom</string>
+    <string name="EmailAddress">Adreça de correu electrònic</string>
+    <string name="ContactCreated">Contacte creat.</string>
+    <string name="ViewProfile">Mira el perfil</string>
+    <!-- Translators: please use a very short string here, it should not much longer than
+    the string needed for video time+size (0:00, 12,3 Mib) -->
+    <string name="OneMoment">Un moment ...</string>
     </resources>

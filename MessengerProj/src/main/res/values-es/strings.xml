@@ -421,4 +421,4 @@
     <string name="AutocryptKeyTransferSucceeded">Transferencia de llave exitosa. Este dispositivo esta listo para usar Autocrypt con la misma llave que el otro.</string>
     <string name="Retry">Volver a intentar</string>
     <string name="SelfTalkSubtitle">Mensaje enviado a mi mismo</string>
-</resources>
+    </resources>

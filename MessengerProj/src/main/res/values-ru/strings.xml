@@ -449,4 +449,4 @@
     <string name="AutocryptKeyTransferSucceeded">Ключ передан успешно. Сейчас это устройство может использовать Autocrypt с тем же ключом, что и на другом устройстве.</string>
     <string name="Retry">Повторить</string>
     <string name="SelfTalkSubtitle">Сообщения самому себе</string>
-</resources>
+    </resources>

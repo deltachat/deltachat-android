@@ -387,4 +387,4 @@
     <string name="AutocryptKeyTransferSucceeded">Anahtar transferi başarılı.Bu aygıt artık Autocrypt\'i diğer aygıtla aynı tuşla kullanmaya hazırdır.</string>
     <string name="Retry">Yeniden dene</string>
     <string name="SelfTalkSubtitle">Kendime gönderdiğim iletiler</string>
-</resources>
+    </resources>

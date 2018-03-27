@@ -41,7 +41,7 @@
     <string name="From">Fra</string>
     <string name="NoRecent">Ingen nylige</string>
     <string name="TypeMessage">Melding</string>
-    <string name="SlideToCancel">DRA FOR Å AVBRYTE</string>
+    <string name="SlideToCancel">Dra for å avbryte</string>
     <string name="SaveToDownloads">Lagre i \"Nedlastinger\"</string>
     <string name="SaveToMusic">Lagre i \"Musikk\"</string>
     <string name="Share">Del</string>
@@ -154,10 +154,10 @@
     <string name="TintShadows">Skygger</string>
     <string name="TintHighlights">Framhevinger</string>
     <string name="Curves">Kurver</string>
-    <string name="CurvesAll">ALLE</string>
-    <string name="CurvesRed">RØD</string>
-    <string name="CurvesGreen">GRØNN</string>
-    <string name="CurvesBlue">BLÅ</string>
+    <string name="CurvesAll">Alle</string>
+    <string name="CurvesRed">Rød</string>
+    <string name="CurvesGreen">Grønn</string>
+    <string name="CurvesBlue">Blå</string>
     <string name="Blur">Tilsmussing</string>
     <string name="BlurOff">Av</string>
     <string name="BlurLinear">Lineæritet</string>
@@ -184,7 +184,7 @@
     <string name="FromGalley">Fra galleri</string>
     <string name="Set">Sett</string>
     <string name="OK">OK</string>
-    <string name="Crop">BESKJÆR</string>
+    <string name="Crop">Beskjær</string>
     <!--messages-->
     <string name="AttachPhoto">Bilde</string>
     <string name="AttachVideo">Video</string>
@@ -204,7 +204,7 @@
     <!--permissions-->
     <string name="PermissionContacts">Delta Chat trenger tilgang til kontaktene dine slik at du kan koble til dine venner på tvers av alle enhetene dine.</string>
     <string name="PermissionStorage">Delta chat trenger tilgang til lagring, slik at du kan sende og lagre bilder, videoer, musikk og annen media.</string>
-    <string name="PermissionNoAudio">Delta Chat trenger mikrofontilgang slik at du kan sende stemmemeldinger.</string>
+    <string name="PermissionNoAudio">Delta Chat trenger mikrofontilgang slik at du kan sende lydmeldinger.</string>
     <string name="PermissionOpenSettings">Tilpass innstillinger</string>
     <!--Intro view-->
     <string name="Intro1Headline">Delta Chat</string>
@@ -312,7 +312,7 @@
     <string name="InboxHeadline">Innboks</string>
     <string name="OutboxHeadline">Utboks</string>
     <string name="MyAccountExplain">For kjente e-posttilbydere blir ytterligere innstillinger bestemt automatisk.</string>
-    <string name="MyAccountExplain2" >Noen ganger <![CDATA[<b>]]>må IMAP skrus på<![CDATA[</b>]]> i vev-e-postgrenseflaten.\n\nVed problemer, spør din e-posttilbyder eller dine venner.</string>
+    <string name="MyAccountExplain2" >Noen ganger må  <![CDATA[<b>]]>IMAP<![CDATA[</b>]]> skrus på i vev-e-postgrenseflaten.\n\nVed problemer, spør din e-posttilbyder eller dine venner.</string>
     <string name="AccountNotConfigured">Konto ikke satt opp</string>
     <string name="AboutThisProgram">Om</string>
     <string name="NotSet">Ikke satt</string>
@@ -368,7 +368,7 @@
     <string name="PermNotificationText">Venter på meldinger…</string>
     <string name="SettingsFor">Innstillinger for %1$s</string>
     <string name="AutoplayGifs">Spill av GIF-filer automatisk</string>
-    <string name="HelpUrl">https://delta.chat/en/help</string>
+    <string name="HelpUrl">https://delta.chat/nb/help</string>
     <string name="EncryptedMessage">Kryptert melding</string>
     <string name="Encryption">Kryptering</string>
     <string name="EncrinfoE2E">Ende-til-ende -kryptering påskrudd.</string>
@@ -421,4 +421,4 @@
     <string name="AutocryptKeyTransferSucceeded">Nøkkel overført. Denne enheten er nå klar til å bruke Autocrypt med samme nøkkel som den andre enheten.</string>
     <string name="Retry">Prøv igjen</string>
     <string name="SelfTalkSubtitle">Meldinger jeg har sendt til meg selv</string>
-</resources>
+    </resources>
