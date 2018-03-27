@@ -83,7 +83,7 @@
     <string name="Default">Default</string>
     <string name="OnlyIfSilent">Only when silent</string>
     <string name="ChatBackground">Chat background</string>
-    <string name="SendByEnter">Send with Enter key</string>
+    <string name="SendByEnter">Send with ⏎</string>
     <string name="Help">Help</string>
     <string name="Enabled">On</string>
     <string name="Disabled">Off</string>
@@ -115,7 +115,7 @@
     <!--passcode view-->
     <string name="Passcode">Passcode Lock</string>
     <string name="ChangePasscode">Change Passcode</string>
-    <string name="ChangePasscodeInfo">When you set up an additional passcode, a lock icon will appear on the chats page. Tap it to lock the app.\n\nNote: if you forget the passcode, you\'ll need to delete and reinstall the app.</string>
+    <string name="ChangePasscodeInfo">When you set up an additional passcode, a lock icon will appear on the chats page. Tap it to lock the app.\n\nNote: If you forget the passcode, you\'ll need to delete and reinstall the app.</string>
     <string name="PasscodePIN">PIN</string>
     <string name="PasscodePassword">Password</string>
     <string name="EnterCurrentPasscode">Enter your current passcode</string>
@@ -204,14 +204,14 @@
     <!--permissions-->
     <string name="PermissionContacts">Access to contacts needed to connect with your friends across all your devices.</string>
     <string name="PermissionStorage">Storage access needed to send and save photos, videos, music, and other media.</string>
-    <string name="PermissionNoAudio">Microphone access needed to send voice messages.</string>
+    <string name="PermissionNoAudio">Microphone access needed to record voice messages.</string>
     <string name="PermissionOpenSettings">Settings</string>
     <!--Intro view-->
     <string name="Intro1Headline">Delta Chat</string>
     <string name="Intro1Message">The messenger with the <![CDATA[<b>broadest audience</b>]]> in the world. <![CDATA[<b>Free</b>]]> and <![CDATA[<b>independent</b>]]>.</string>
 
     <string name="Intro2Headline">Independent</string>
-    <string name="Intro2Message"><![CDATA[<b>There is no Delta Chat server.</b>]]> The app only uses your email server.</string>
+    <string name="Intro2Message"><![CDATA[<b>There is no Delta Chat server.</b>]]> The app only uses your mail server.</string>
 
     <string name="Intro3Headline">Fast</string>
     <string name="Intro3Message"><![CDATA[<b>Push messages</b>]]> in seconds.<![CDATA[<br/>]]>Rapid interface.</string>
@@ -369,7 +369,7 @@
     <string name="Error">Error: %1$s</string>
     <string name="NoNetwork">Network unavailable.</string>
     <string name="Audio">Audio</string>
-    <string name="PleaseCutVideoToMaxSize">Please cut video to a size less than %1$s.</string>
+    <string name="PleaseCutVideoToMaxSize">Please cut the video size down to less than %1$s.</string>
     <string name="PermNotificationTitle">Connected to %1$s</string>
     <string name="PermNotificationText">Waiting for messages …</string>
     <string name="SettingsFor">Settings for %1$s</string>
@@ -385,7 +385,7 @@
     <string name="EncrinfoFingerprints">Fingerprints</string>
     <string name="Backup">Backup</string>
     <string name="ImportBackupExplain2">To import a backup, copy a backup to <![CDATA[<i>]]>%1$s<![CDATA[</i>]]> and reinstall the app.</string>
-    <string name="ReadReceiptMailBody">This is a return receipt for the message \"%1$s\".\n\nThis return receipt only acknowledges that the message was displayed on the recipient\'s device. There is no guarantee that the recipient has read the message contents.</string>
+    <string name="ReadReceiptMailBody">This is a return receipt for the message \"%1$s\".\n\nIt means that message was displayed on the recipient\'s device, not necessarily that the content was read.</string>
     <string name="ReadReceipt">Return receipt</string>
     <string name="NameAndStatus">Name and status</string>
     <string name="MyStatus">My status</string>
@@ -417,14 +417,14 @@
     <string name="Never">Never</string>
     <string name="AutocryptKeyTransferInitiate">Initiate Autocrypt Key Transfer</string>
     <string name="AutocryptKeyTransfer">Autocrypt Key Transfer</string>
-    <string name="AutocryptKeyTransferMsgBeforeSend">The <![CDATA[<i>]]>Autocrypt Key Transfer<![CDATA[</i>]]> requires that the mail client on the other device is Autocrypt-compliant.\n\nYou can then send your secret key to yourself. The key will be encrypted by a setup code which is displayed here and must be typed on the other device.</string>
+    <string name="AutocryptKeyTransferMsgBeforeSend">The <![CDATA[<i>]]>Autocrypt Key Transfer<![CDATA[</i>]]> requires that the e-mail client on the other device is Autocrypt-compliant.\n\nYou can then send your secret key to yourself. The key will be encrypted by a setup code which is displayed here and must be typed on the other device.</string>
     <string name="AutocryptKeyTransferMsgAfterSend">Your key has been sent to yourself. Switch to the other device and open the setup message. You should be prompted for a setup code. Type the following digits into the prompt:\n\n%1$s\n\nOnce you\'re done, your other device will be ready to use Autocrypt.</string>
     <string name="AutocryptSetupMessageSubject">Autocrypt Setup Message</string>
     <string name="AutocryptSetupMessageGeneralBody">This is the Autocrypt Setup Message used to transfer your key between clients.\n\nTo decrypt and use your key, open the message in an Autocrypt-compliant client and enter the setup code presented on the generating device.</string>
     <string name="AutocryptSetupMessageTapBody">This is the Autocrypt Setup Message used to transfer your key between clients.\n\nTo decrypt and use your key, tap on this message.</string>
     <string name="AutocryptKeyTransferPleaseEnterCode">Please enter the setup code that is displayed on the other device.</string>
     <string name="AutocryptKeyTransferBadCode">Bad setup code. Please try again.\n\nIf you do not remember the setup code, just initiate the key transfer on the other device again.</string>
-    <string name="AutocryptKeyTransferSucceeded">Key transferred successfully. This device is now ready to use Autocrypt with the same key as the other device.</string>
+    <string name="AutocryptKeyTransferSucceeded">Key transferred. This device is now ready to use Autocrypt with the same key as the other device.</string>
     <string name="Retry">Retry</string>
     <string name="SelfTalkSubtitle">Messages I sent to myself</string>
     <string name="QrScan">Scan QR code</string>
@@ -432,7 +432,7 @@
     <string name="QrScanContainsText">The scanned QR code contains the following text:\n\n%1$s</string>
     <string name="OobFingerprint">Fingerprint</string>
     <string name="OobFingerprintAskOob">Verify contact and start chatting with <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>?</string>
-    <string name="OobFingerprintOk">Contact <![CDATA[<i>]]>%1$s<![CDATA[</i>]]> verified successfully. Start chatting now?</string>
+    <string name="OobFingerprintOk">Contact <![CDATA[<i>]]>%1$s<![CDATA[</i>]]> verified. Start chatting?</string>
     <string name="OobFingerprintMismatch">The scanned fingerprint does <![CDATA[<b>]]>not match<![CDATA[</b>]]> the fingerprint last seen for <![CDATA[<i>]]>%1$s<![CDATA[</i>]]>.</string>
-    <string name="OobFingerprintWithoutAddr">This QR code contains a fingerprint but no e-mail address.\n\nFor an out-of-band-verification, please first establish an encrpyted connection to the recipient.</string>
+    <string name="OobFingerprintWithoutAddr">This QR code contains a fingerprint but no e-mail address.\n\nFor an out-of-band-verification, please establish an encrpyted connection to the recipient first.</string>
 </resources>
