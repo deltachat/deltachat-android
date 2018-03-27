@@ -72,6 +72,10 @@ Install Development Environment
 The last two steps may be omitted by using the new Android Studio NDK options,
 however, thus far, we have not found the time to do so.
 
----
 
-Copyright © 2017 Delta Chat contributors
+License
+--------------------------------------------------------------------------------
+
+Licensed under the GPLv3, see LICENSE file for details.
+
+Copyright © 2017, 2018 Delta Chat contributors
