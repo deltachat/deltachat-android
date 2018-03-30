@@ -19,7 +19,8 @@
 * Bug fixes, eg. avoid freezes if the connection is lost
 * Update Russian, Tamil and Turkish translations
 
-This version requires access to the camera for upcoming qr code scanning options which can be tested already in this version, see commit 74ffbf4.
+This version requires access to the camera for upcoming qr code scanning options which can be tested already in this version, see commit
+[74ffbf4](https://github.com/deltachat/deltachat-android/commit/74ffbf48befbb0416337673d73d9f2482728cac6).
 
 ## v0.15.0
 2018-02-27
