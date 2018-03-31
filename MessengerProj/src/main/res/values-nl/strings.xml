@@ -378,13 +378,16 @@
     <string name="EncrinfoFingerprints">Vingerafdruk</string>
     <string name="Backup">Archief</string>
     <string name="ImportBackupExplain2">Om een archief te importeren, kopieert een archief naar <![CDATA[<i>]]>%1$s<![CDATA[</i>]]> en herinstalleer de app.</string>
+    <string name="ReadReceiptMailBody">Dit is een ontvangstbewijs voor het bericht \"%1$s\".\n\nHet betekent dat het bericht op het apparaat van de ontvanger is weergegeven, niet noodzakelijk dat de inhoud is gelezen.</string>
     <string name="ReadReceipt">Ontvangstbewijs</string>
     <string name="NameAndStatus">Naam en positie</string>
     <string name="MyStatus">Mijn status</string>
     <string name="MyStatusExplain">De status wordt onder in e-mailvoetteksten weergegeven.</string>
     <string name="MsgGroupImageDeleted">Groepsafbeelding verwijderd.</string>
+    <string name="AskDeleteGroupImage">Weet je zeker dat je de groepsafbeelding wilt verwijderen? \ N \ nDit beïnvloed alle groepsleden.</string>
     <string name="ExportImportHeader">Exporteren en importeren</string>
     <string name="ImportExportExplain">Geëxporteerde bestanden bevatten geheime sleutels! Bewaar ze op een veilige plaats of verwijder ze zo snel mogelijk.</string>
+    <string name="EnterPasswordToContinue">Voeg een wachtwoord in om %1$s door te gaan:</string>
     <string name="IncorrectPassword">Incorrect wachtwoord.</string>
     <string name="ImportBackup">Archief importeren</string>
     <string name="NoBackupFound">Geen archief gevonden.\n\nKopieer het archief naar <![CDATA[<i>]]>%1$s<![CDATA[</i>]]> en probeer het opnieuw. Je kan ook bij \"Beginnen met chatten\" aanvangen om met het normale instellingsproces te doorlopen.</string>
@@ -392,6 +395,7 @@
     <string name="ExportBackup">Archief exporteren</string>
     <string name="ExportPrivateKeys">Exporteer privésleutels</string>
     <string name="ImportPrivateKeys">Beheer privésleutels</string>
+    <string name="NoRecentEmoji">Recent gebruikte emoji wordt hier getoond.</string>
     <string name="E2eeOffBecauseOfRecipient">End-to-end-versleuteling wordt toegepast als de andere partij de instelling ook inschakelt.</string>
     <string name="NotNow">Niet nu</string>
     <string name="ArchiveChat">Chat archiveren</string>
@@ -399,7 +403,9 @@
     <string name="ArchivedChats">Chats gearchiveerd</string>
     <string name="Archived">Gearchiveerd</string>
     <string name="LeaveGroup">Groep verlaten</string>
+    <string name="Never">nooit</string>
     <string name="AutocryptKeyTransfer">Autocrypt sleutel overdracht</string>
+    <string name="AutocryptKeyTransferPleaseEnterCode">Voer de instellingscode in die wordt weergegeven op het andere apparaat.</string>
     <string name="OobFingerprintAskOob">Verifieer contact en begin met chat met <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>?</string>
     <string name="OobFingerprintOk">Contact <![CDATA[<i>]]>%1$s<![CDATA[</i>]]> geverifieerd. Begin met chatten?</string>
     </resources>

@@ -322,7 +322,7 @@
     <string name="AskStartChatWith">Bisedoni me <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>?</string>
     <string name="DeaddropHint">Prekni shigjetat përgjigje që të nisni të bisedoni.</string>
     <string name="NotYetImplemented">Ky funksion s’është i passhëm ose është jo i plotë</string>
-    <string name="DefaultStatusText">Dërguar me Lajmëtarin tim Delta Chat: https://delta.chat</string>
+    <string name="DefaultStatusText">Dërguar me Lajmëtarin tim Delta Chat: https://delta.chat/sq/</string>
     <string name="Name" >Emër</string>
     <string name="EmailAddress">Adresë email</string>
     <string name="CannotDeleteContact">S’fshihen dot kontaktet në përdorim, në vend të kësaj bëni bllokim kontakti.</string>
@@ -367,7 +367,7 @@
     <string name="PermNotificationText">Po pritet për mesazhe…</string>
     <string name="SettingsFor">Rregullime për %1$s</string>
     <string name="AutoplayGifs">Vetëluaji GIF-et</string>
-    <string name="HelpUrl">https://delta.chat/en/help</string>
+    <string name="HelpUrl">https://delta.chat/sq/help</string>
     <string name="EncryptedMessage">Mesazh i fshehtëzuar</string>
     <string name="Encryption">Fshehtëzim</string>
     <string name="EncrinfoE2E">U aktivizua fshehtëzimi skaj-më-skaj.</string>

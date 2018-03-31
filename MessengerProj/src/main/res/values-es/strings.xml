@@ -323,7 +323,7 @@
     <string name="AskStartChatWith">¿Iniciar una conversación con <b>%1$s</b>?</string>
     <string name="DeaddropHint">Haga clic en la flecha de réplica para comenzar una conversación.</string>
     <string name="NotYetImplemented">Esta función no está disponible o está incompleta.</string>
-    <string name="DefaultStatusText">Enviado desde mi aplicación de mensajería Delta Chat: https://delta.chat</string>
+    <string name="DefaultStatusText">Enviado desde mi aplicación de mensajería Delta Chat: https://delta.chat/es</string>
     <string name="Name" >Nombre</string>
     <string name="EmailAddress">Dirección de correo</string>
     <string name="CannotDeleteContact">No puede borrar contactos en uso. En su lugar, bloquee el contacto.</string>

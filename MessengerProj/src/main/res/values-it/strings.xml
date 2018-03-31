@@ -323,7 +323,7 @@
     <string name="AskStartChatWith">Iniziare una conversazione con <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>?</string>
     <string name="DeaddropHint">Per iniziare una conversazione toccare le frecce di risposta.</string>
     <string name="NotYetImplemented">Funzione non disponibile o incompleta.</string>
-    <string name="DefaultStatusText">Inviato con l\'app di messaggistica Delta Chat: https://delta.chat</string>
+    <string name="DefaultStatusText">Inviato con l\'app di messaggistica Delta Chat: https://delta.chat/it</string>
     <string name="Name" >Nome</string>
     <string name="EmailAddress">Indirizzo email</string>
     <string name="CannotDeleteContact">Impossibile cancellare i contatti in uso, provare a bloccarli.</string>
@@ -368,7 +368,7 @@
     <string name="PermNotificationText">In attesa di messaggi...</string>
     <string name="SettingsFor">Impostazioni per %1$s</string>
     <string name="AutoplayGifs">Riproduzione automatica GIF</string>
-    <string name="HelpUrl">https://delta.chat/en/help</string>
+    <string name="HelpUrl">https://delta.chat/it/help</string>
     <string name="EncryptedMessage">Messaggio cifrato</string>
     <string name="Encryption">Crittografia</string>
     <string name="EncrinfoE2E">Crittografia end-to-end abilitata.</string>

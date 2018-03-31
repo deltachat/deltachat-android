@@ -323,7 +323,7 @@
     <string name="AskStartChatWith">Chat mit <![CDATA[<b>]]>%1$s<![CDATA[</b>]]> starten?</string>
     <string name="DeaddropHint">Ein Klick auf die Antwort-Pfeile startet einen Chat.</string>
     <string name="NotYetImplemented">Diese Funktion ist nicht oder nur unvollständig eingebaut.</string>
-    <string name="DefaultStatusText">Mit meinem Delta Chat Messenger gesendet: https://delta.chat</string>
+    <string name="DefaultStatusText">Mit meinem Delta Chat Messenger gesendet: https://delta.chat/de/</string>
     <string name="Name" >Name</string>
     <string name="EmailAddress">E-Mail-Adresse</string>
     <string name="CannotDeleteContact">Der Kontakt kann nicht gelöscht werden, da er verwendet wird; er kann aber blockiert werden.</string>
@@ -421,4 +421,10 @@
     <string name="AutocryptKeyTransferSucceeded">Ihr Schlüssel wurde erfolgreich übertragen. Dieses Gerät wird nun Autocrypt mit demselben Schlüssel wie das Andere verwenden.</string>
     <string name="Retry">Wiederholen</string>
     <string name="SelfTalkSubtitle">Nachrichten von mir an mich</string>
+    <string name="QrScan">QR-Code scannen</string>
+    <string name="QrShow">QR-Code anzeigen</string>
+    <string name="QrScanContainsText">Der gescannte QR-Code enthält folgenden Text:\n\n%1$s</string>
+    <string name="OobFingerprint">Fingerabdruck</string>
+    <string name="OobFingerprintAskOob">Kontakt überprüfen und den Chat mit <![CDATA[<b>]]>%1$s<![CDATA[</b>]]> starten?</string>
+    <string name="OobFingerprintOk">Kontakt  <![CDATA[<i>]]>%1$s<![CDATA[</i>]]> wurde überprüft. Chat starten?</string>
     </resources>

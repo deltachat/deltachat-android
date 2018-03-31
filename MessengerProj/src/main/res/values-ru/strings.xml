@@ -351,7 +351,7 @@
     <string name="AskStartChatWith">Начать чат с <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>?</string>
     <string name="DeaddropHint">Чтобы начать чат, нажмите стрелку ответа.</string>
     <string name="NotYetImplemented">Эта функция недоступна или в разработке.</string>
-    <string name="DefaultStatusText">Отправлено с помощью Delta Chat Messenger: https://delta.chat</string>
+    <string name="DefaultStatusText">Отправлено с помощью Delta Chat Messenger: https://delta.chat/ru</string>
     <string name="Name" >Имя</string>
     <string name="EmailAddress">Адрес электронной почты</string>
     <string name="CannotDeleteContact">Невозможно удалить контакты во время их использования, вместо этого заблокируйте контакт.</string>
@@ -449,4 +449,12 @@
     <string name="AutocryptKeyTransferSucceeded">Ключ передан успешно. Сейчас это устройство может использовать Autocrypt с тем же ключом, что и на другом устройстве.</string>
     <string name="Retry">Повторить</string>
     <string name="SelfTalkSubtitle">Сообщения самому себе</string>
-    </resources>
+    <string name="QrScan">Сканировать QR-код</string>
+    <string name="QrShow">Показать QR-код</string>
+    <string name="QrScanContainsText">Отсканированный QR-код содержит текст:\n\n%1$s</string>
+    <string name="OobFingerprint">Отпечаток</string>
+    <string name="OobFingerprintAskOob">Верифицировать контакт и начать общение с <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>?</string>
+    <string name="OobFingerprintOk">Контакт <![CDATA[<i>]]>%1$s<![CDATA[</i>]]> верифицирован. Начать общение?</string>
+    <string name="OobFingerprintMismatch">Отсканированный отпечаток <![CDATA[<b>]]>не соответствует<![CDATA[</b>]]> отпечатку, который ранее был у <![CDATA[<i>]]>%1$s<![CDATA[</i>]]>.</string>
+    <string name="OobFingerprintWithoutAddr">Этот QR-код содержит отпечаток, но адрес e-mail отсутствует.\n\nЧтобы выполнить  верификацию по внешнему каналу, прежде всего установите с получателем защищённое соединение.</string>
+</resources>

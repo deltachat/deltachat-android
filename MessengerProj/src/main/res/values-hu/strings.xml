@@ -360,6 +360,7 @@
     <string name="FileNotFound">%1$s fájl nem található.</string>
     <string name="Error">Hiba: %1$s</string>
     <string name="NoNetwork">Nincs hálózat.</string>
+    <string name="Audio">Hang</string>
     <string name="PermNotificationTitle">%1$s csatlakozva</string>
     <string name="AutoplayGifs">GIF-ek automatikus lejátszása</string>
     <string name="EncryptedMessage">Titkosított üzenet</string>
@@ -380,7 +381,18 @@
     <string name="ExportBackup">Biztonsági mentés exportálása</string>
     <string name="ExportPrivateKeys">Privát kulcsok exportálása</string>
     <string name="ImportPrivateKeys">Privát kulcsok importálása</string>
+    <string name="NoRecentEmoji">A legutóbb használt emoji látszik itt.</string>
     <string name="NotNow">Most nem</string>
     <string name="ArchiveChat">Beszélgetés archiválása</string>
+    <string name="UnarchiveChat">Archiválás visszavonása</string>
     <string name="ArchivedChats">Archivált beszélgetések</string>
+    <string name="Archived">Archivált</string>
+    <string name="LeaveGroup">Csoport elhagyása</string>
+    <string name="AskLeaveGroup">Biztosan el szeretnéd hagyni a csoportot?</string>
+    <string name="Never">Soha</string>
+    <string name="Retry">Újra</string>
+    <string name="SelfTalkSubtitle">Magamnak küldött üzenetek</string>
+    <string name="QrScan">QR-kód olvasása</string>
+    <string name="QrShow">QR-kód megjelenítése</string>
+    <string name="OobFingerprint">Ujjlenyomat</string>
     </resources>

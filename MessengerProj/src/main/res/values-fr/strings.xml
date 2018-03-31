@@ -323,7 +323,7 @@
     <string name="AskStartChatWith">Lancer une conversation avec <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>?</string>
     <string name="DeaddropHint">Pour commencer une conversation, cliquez sur le bouton de réponse en forme de flèche.</string>
     <string name="NotYetImplemented">Cette fonction n\'est pas disponible ou non supportée complètement.</string>
-    <string name="DefaultStatusText">Envoyé avec Delta Chat: https://delta.chat</string>
+    <string name="DefaultStatusText">Envoyé avec Delta Chat: https://delta.chat/fr/</string>
     <string name="Name" >Nom</string>
     <string name="EmailAddress">Adresse e-mail</string>
     <string name="CannotDeleteContact">Impossible de supprimer les contacts en cours d\'utilisation, bloquez-les à la place.</string>
@@ -368,7 +368,7 @@
     <string name="PermNotificationText">En attente de messages…</string>
     <string name="SettingsFor">Paramètres pour %1$s</string>
     <string name="AutoplayGifs">Lecture automatique des GIFs</string>
-    <string name="HelpUrl">https://delta.chat/en/help</string>
+    <string name="HelpUrl">https://delta.chat/fr/help</string>
     <string name="EncryptedMessage">Message chiffré</string>
     <string name="Encryption">Chiffrement</string>
     <string name="EncrinfoE2E">Chiffrement de bout-en-bout activé.</string>
