@@ -2848,8 +2848,8 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 }
                 else if( view instanceof ChatActionCell )
                 {
-                    // show a date headline (the date comes from the _next_ message)
                     if( msg_id == MrMsg.MR_MSG_ID_DAYMARKER && i+1 < m_msglist.length ) {
+                        // show a date headline (the date comes from the _next_ message)
                         MrMsg mrMsg = MrMailbox.getMsg(m_msglist[i+1]);
 
                         TLRPC.Message dateMsg = new TLRPC.Message();
@@ -2858,6 +2858,20 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                         dateMsg.message = LocaleController.formatDateChat(dateMsg.date);
                         MessageObject msgDrawObj = new MessageObject(dateMsg, false);
                         msgDrawObj.type = MessageObject.MO_TYPE10_DATE_HEADLINE;
+                        msgDrawObj.contentType = ROWTYPE_DATE_HEADLINE;
+
+                        ChatActionCell actionCell = (ChatActionCell) view;
+                        actionCell.setMessageObject(msgDrawObj);
+                    }
+                    else {
+                        MrMsg mrMsg = MrMailbox.getMsg(msg_id);
+
+                        TLRPC.Message dateMsg = new TLRPC.Message();
+                        dateMsg.id = 0;
+                        dateMsg.date = (int)mrMsg.getTimestamp();
+                        dateMsg.message = mrMsg.getText();
+                        MessageObject msgDrawObj = new MessageObject(dateMsg, false);
+                        msgDrawObj.type = MessageObject.MO_TYPE100_SYSTEM_MSG;
                         msgDrawObj.contentType = ROWTYPE_DATE_HEADLINE;
 
                         ChatActionCell actionCell = (ChatActionCell) view;
@@ -2881,6 +2895,11 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 else if( m_msglist[i]==MrMsg.MR_MSG_ID_MARKER1 ) {
                     return ROWTYPE_UNREAD_HEADLINE;
                 }
+
+                if( MrMailbox.getMsg(m_msglist[i]).isSystemcmd() ) {
+                    return ROWTYPE_DATE_HEADLINE;
+                }
+
             }
             return ROWTYPE_MESSAGE_CELL;
         }

@@ -57,6 +57,7 @@ public class MessageObject {
     public final static int MO_TYPE10_DATE_HEADLINE = 10;
     public final static int MO_TYPE13_STICKER       = 13;
     public final static int MO_TYPE14_MUSIC         = 14;
+    public final static int MO_TYPE100_SYSTEM_MSG   = 100;
     public final static int MO_TYPE1000_INIT_VAL    = 1000; // unsused types: 4=LOCATION, 12=CONTACT
     public int type = MO_TYPE1000_INIT_VAL;
 
@@ -577,7 +578,7 @@ public class MessageObject {
     }
 
     public boolean isSelectable() {
-        if( type == MO_TYPE10_DATE_HEADLINE ) {
+        if( type == MO_TYPE10_DATE_HEADLINE || type == MO_TYPE100_SYSTEM_MSG ) {
             return false;
         }
         return true;
@@ -593,7 +594,7 @@ public class MessageObject {
             return AndroidUtilities.dp(100);
         } else if (type == MO_TYPE14_MUSIC) {
             return AndroidUtilities.dp(82);
-        } else if (type == MO_TYPE10_DATE_HEADLINE) {
+        } else if (type == MO_TYPE10_DATE_HEADLINE||type == MO_TYPE100_SYSTEM_MSG) {
             return AndroidUtilities.dp(30);
         } else if (type == MO_TYPE13_STICKER) {
             float maxHeight = AndroidUtilities.displaySize.y * 0.4f;
