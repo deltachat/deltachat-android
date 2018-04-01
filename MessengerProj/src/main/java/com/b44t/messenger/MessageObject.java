@@ -104,7 +104,7 @@ public class MessageObject {
 
         messageOwner = message;
 
-        if( !messageOwner.is_system_cmd ) {
+        if( !messageOwner.colored_text ) {
             textPaint.setTextSize(AndroidUtilities.dp(ApplicationLoader.fontSize));
         }
         else {
@@ -346,7 +346,7 @@ public class MessageObject {
         StaticLayout textLayout;
 
         try {
-            textLayout = new StaticLayout(messageText, messageOwner.is_system_cmd? systemCmdPaint : textPaint, maxWidth, Layout.Alignment.ALIGN_NORMAL, 1.0f, 0.0f, false);
+            textLayout = new StaticLayout(messageText, messageOwner.colored_text? systemCmdPaint : textPaint, maxWidth, Layout.Alignment.ALIGN_NORMAL, 1.0f, 0.0f, false);
         } catch (Exception e) {
 
             return;
@@ -377,7 +377,7 @@ public class MessageObject {
                 block.charactersOffset = startCharacter;
                 try {
                     CharSequence str = messageText.subSequence(startCharacter, endCharacter);
-                    block.textLayout = new StaticLayout(str, messageOwner.is_system_cmd? systemCmdPaint : textPaint, maxWidth, Layout.Alignment.ALIGN_NORMAL, 1.0f, 0.0f, false);
+                    block.textLayout = new StaticLayout(str, messageOwner.colored_text? systemCmdPaint : textPaint, maxWidth, Layout.Alignment.ALIGN_NORMAL, 1.0f, 0.0f, false);
                     block.textYOffset = textLayout.getLineTop(linesOffset);
                     if (a != 0) {
                         block.height = (int) (block.textYOffset - prevOffset);

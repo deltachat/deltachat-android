@@ -248,7 +248,7 @@ public class TLRPC {
         public final int layer = 0; //custom
 		public boolean created_by_mr;
 		public boolean show_padlock;
-		public boolean is_system_cmd;
+		public boolean colored_text;
 		public boolean is_setup_message;
     }
 
