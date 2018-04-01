@@ -91,7 +91,7 @@ public class MrMsg {
     public native String getFilemime();
     public native String getFilename();
     public native boolean isForwarded();
-    public native boolean isSystemcmd();
+    public native boolean isInfo();
     public native boolean isSetupMessage();
     public native String getSetupCodeBegin();
     public native boolean isIncreation();

@@ -1067,9 +1067,9 @@ JNIEXPORT jboolean Java_com_b44t_messenger_MrMsg_isIncreation(JNIEnv *env, jobje
 }
 
 
-JNIEXPORT jboolean Java_com_b44t_messenger_MrMsg_isSystemcmd(JNIEnv *env, jobject obj)
+JNIEXPORT jboolean Java_com_b44t_messenger_MrMsg_isInfo(JNIEnv *env, jobject obj)
 {
-    return mrmsg_is_systemcmd(get_mrmsg_t(env, obj)) != 0;
+    return mrmsg_is_info(get_mrmsg_t(env, obj)) != 0;
 }
 
 
