@@ -2896,7 +2896,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     return ROWTYPE_UNREAD_HEADLINE;
                 }
 
-                if( MrMailbox.getMsg(m_msglist[i]).isSystemcmd() ) {
+                if( MrMailbox.getMsg(m_msglist[i]).isInfo() ) {
                     return ROWTYPE_DATE_HEADLINE;
                 }
 
