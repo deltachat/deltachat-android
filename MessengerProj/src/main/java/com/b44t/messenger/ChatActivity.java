@@ -1624,6 +1624,9 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         if (view instanceof ChatMessageCell) {
             message = ((ChatMessageCell) view).getMessageObject();
         }
+        else if( view instanceof ChatActionCell) {
+            message = ((ChatActionCell) view).getMessageObject();
+        }
 
         if (message==null || !message.isSelectable()) {
             return;
@@ -2504,6 +2507,18 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     messageCell.setHighlightedText(null);
                 }
             }
+            else if( view_ instanceof ChatActionCell ) {
+                ChatActionCell actionCell = (ChatActionCell)view_;
+                if (actionBar.isActionModeShowed()) {
+                    if ( selectedMessagesIds.containsKey(actionCell.getMessageObject().getId()) ) {
+                        actionCell.setBackgroundColor(Theme.MSG_SELECTED_BACKGROUND_COLOR);
+                    } else {
+                        actionCell.setBackgroundColor(0);
+                    }
+                } else {
+                    actionCell.setBackgroundColor(0);
+                }
+            }
         }
 
         chatListView.invalidate();
@@ -2866,13 +2881,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     else {
                         MrMsg mrMsg = MrMailbox.getMsg(msg_id);
 
-                        TLRPC.Message dateMsg = new TLRPC.Message();
-                        dateMsg.id = 0;
-                        dateMsg.date = (int)mrMsg.getTimestamp();
-                        dateMsg.message = mrMsg.getText();
-                        MessageObject msgDrawObj = new MessageObject(dateMsg, false);
-                        msgDrawObj.type = MessageObject.MO_TYPE100_SYSTEM_MSG;
-                        msgDrawObj.contentType = ROWTYPE_DATE_HEADLINE;
+                        MessageObject msgDrawObj = new MessageObject(mrMsg.get_TLRPC_Message(), false);
 
                         ChatActionCell actionCell = (ChatActionCell) view;
                         actionCell.setMessageObject(msgDrawObj);

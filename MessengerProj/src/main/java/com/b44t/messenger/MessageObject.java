@@ -578,7 +578,7 @@ public class MessageObject {
     }
 
     public boolean isSelectable() {
-        if( type == MO_TYPE10_DATE_HEADLINE || type == MO_TYPE100_SYSTEM_MSG ) {
+        if( type == MO_TYPE10_DATE_HEADLINE ) {
             return false;
         }
         return true;
