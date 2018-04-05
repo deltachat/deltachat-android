@@ -596,18 +596,18 @@ JNIEXPORT jlong Java_com_b44t_messenger_MrMailbox_checkQrCPtr(JNIEnv *env, jclas
 	return ret;
 }
 
-JNIEXPORT jstring Java_com_b44t_messenger_MrMailbox_oobGetQr(JNIEnv *env, jclass cls)
+JNIEXPORT jstring Java_com_b44t_messenger_MrMailbox_getSecurejoinQr(JNIEnv *env, jclass cls, jint chat_id)
 {
-	char* temp = mrmailbox_oob_get_qr(get_mrmailbox_t(env, cls));
+	char* temp = mrmailbox_get_securejoin_qr(get_mrmailbox_t(env, cls), chat_id);
 		jstring ret = JSTRING_NEW(temp);
 	free(temp);
 	return ret;
 }
 
-JNIEXPORT jboolean Java_com_b44t_messenger_MrMailbox_oobJoin(JNIEnv *env, jclass cls, jstring qr)
+JNIEXPORT jboolean Java_com_b44t_messenger_MrMailbox_joinSecurejoin(JNIEnv *env, jclass cls, jstring qr)
 {
 	CHAR_REF(qr);
-		jint ret = (jint)mrmailbox_oob_join(get_mrmailbox_t(env, cls), qrPtr);
+		jint ret = (jint)mrmailbox_join_securejoin(get_mrmailbox_t(env, cls), qrPtr);
 	CHAR_UNREF(qr);
 	return (ret != 0);
 }

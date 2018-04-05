@@ -25,7 +25,7 @@ public class QRshowActivity extends Activity implements NotificationCenter.Notif
 
         ImageView imageView = (ImageView) findViewById(R.id.myImage);
         try {
-            Bitmap bitmap = encodeAsBitmap(MrMailbox.oobGetQr());
+            Bitmap bitmap = encodeAsBitmap(MrMailbox.getSecurejoinQr(0));
             imageView.setImageBitmap(bitmap);
         } catch (WriterException e) {
             e.printStackTrace();

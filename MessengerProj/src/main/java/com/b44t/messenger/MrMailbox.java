@@ -192,8 +192,8 @@ public class MrMailbox {
     public native static int checkQrCPtr(String qr);
     public static MrLot checkQr(String qr) { return new MrLot(checkQrCPtr(qr)); }
 
-    public native static String oobGetQr();
-    public native static boolean oobJoin(String qr);
+    public native static String getSecurejoinQr(int chat_id);
+    public native static boolean joinSecurejoin(String qr);
 
     // static
     public native static String   MrGetVersionStr            ();

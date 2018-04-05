@@ -757,7 +757,7 @@ public class ChatlistActivity extends BaseFragment implements NotificationCenter
                                         MrMailbox.m_lastErrorString = "";
                                     }
 
-                                    final boolean oobDone = MrMailbox.oobJoin(qrRawString); // oobJoin() runs until all needed messages are sent+received!
+                                    final boolean oobDone = MrMailbox.joinSecurejoin(qrRawString); // oobJoin() runs until all needed messages are sent+received!
                                     AndroidUtilities.runOnUIThread(new Runnable() {
                                         @Override
                                         public void run() {
