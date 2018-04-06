@@ -832,6 +832,12 @@ JNIEXPORT jboolean Java_com_b44t_messenger_MrChat_isSelfTalk(JNIEnv *env, jobjec
 }
 
 
+JNIEXPORT jboolean Java_com_b44t_messenger_MrChat_isVerified(JNIEnv *env, jobject obj)
+{
+	return mrchat_is_verified(get_mrchat_t(env, obj)) != 0;
+}
+
+
 JNIEXPORT jstring Java_com_b44t_messenger_MrChat_getDraft(JNIEnv *env, jobject obj) /* returns NULL for "no draft" */
 {
 	const char* temp = mrchat_get_draft(get_mrchat_t(env, obj));
@@ -1153,6 +1159,12 @@ JNIEXPORT jstring Java_com_b44t_messenger_MrContact_getNameNAddr(JNIEnv *env, jo
 JNIEXPORT jboolean Java_com_b44t_messenger_MrContact_isBlocked(JNIEnv *env, jobject obj)
 {
 	return (jboolean)( mrcontact_is_blocked(get_mrcontact_t(env, obj)) != 0 );
+}
+
+
+JNIEXPORT jboolean Java_com_b44t_messenger_MrContact_isVerified(JNIEnv *env, jobject obj)
+{
+	return mrcontact_is_verified(get_mrcontact_t(env, obj)) != 0;
 }
 
 

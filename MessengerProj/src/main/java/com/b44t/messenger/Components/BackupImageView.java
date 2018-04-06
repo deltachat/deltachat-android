@@ -32,6 +32,7 @@ import android.util.AttributeSet;
 import android.view.View;
 
 import com.b44t.messenger.ImageReceiver;
+import com.b44t.messenger.R;
 import com.b44t.messenger.TLObject;
 import com.b44t.messenger.TLRPC;
 
@@ -40,6 +41,8 @@ public class BackupImageView extends View {
     public ImageReceiver imageReceiver;
     private int width = -1;
     private int height = -1;
+    private static Drawable verifiedDrawable = null;
+    private boolean drawVerifiedDrawable = false;
 
     public BackupImageView(Context context) {
         super(context);
@@ -119,6 +122,14 @@ public class BackupImageView extends View {
         imageReceiver.setAspectFit(value);
     }
 
+    public void setVerifiedDrawable(boolean enable)
+    {
+        if( enable && verifiedDrawable == null ) {
+            verifiedDrawable = getResources().getDrawable(R.drawable.check_list);
+        }
+        drawVerifiedDrawable = enable;
+    }
+
     public ImageReceiver getImageReceiver() {
         return imageReceiver;
     }
@@ -142,11 +153,26 @@ public class BackupImageView extends View {
 
     @Override
     protected void onDraw(Canvas canvas) {
+        int x, y, w, h;
         if (width != -1 && height != -1) {
-            imageReceiver.setImageCoords((getWidth() - width) / 2, (getHeight() - height) / 2, width, height);
+            x = (getWidth() - width) / 2;
+            y = (getHeight() - height) / 2;
+            w = width;
+            h = height;
         } else {
-            imageReceiver.setImageCoords(0, 0, getWidth(), getHeight());
+            x = 0;
+            y = 0;
+            w = getWidth();
+            h = getHeight();
         }
+        imageReceiver.setImageCoords(x, y, w, h);
         imageReceiver.draw(canvas);
+
+        if( drawVerifiedDrawable ) {
+            int verifiedWH = (int)((float)w * 0.4f);
+            verifiedDrawable.setBounds(x+w-verifiedWH, y+h-verifiedWH, x+w, y+h);
+            verifiedDrawable.draw(canvas);
+        }
+
     }
 }

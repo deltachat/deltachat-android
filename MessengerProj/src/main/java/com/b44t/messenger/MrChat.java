@@ -58,6 +58,7 @@ public class MrChat {
     public native String getProfileImage();
     public native boolean isUnpromoted();
     public native boolean isSelfTalk();
+    public native boolean isVerified();
     public native String getDraft();
     public native long getDraftTimestamp();
     public int getDraftReplyToMsgId() {

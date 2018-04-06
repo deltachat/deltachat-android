@@ -136,6 +136,7 @@ public class UserCell extends FrameLayout {
         }
 
         ContactsController.setupAvatar(avatarImageView, avatarImageView.imageReceiver, avatarDrawable, m_mrContact, null);
+        avatarImageView.setVerifiedDrawable(m_mrContact.isVerified());
     }
 
     @Override

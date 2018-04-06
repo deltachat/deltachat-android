@@ -67,6 +67,7 @@ public class ChatlistCell extends BaseCell {
     private static Drawable countDrawable;
     private static Drawable groupDrawable;
     private static Drawable muteDrawable;
+    private static Drawable verifiedDrawable;
     private static Drawable closeDrawable;
 
     private static Paint linePaint;
@@ -74,6 +75,7 @@ public class ChatlistCell extends BaseCell {
     private long currentChatId;
     private int unreadCount;
     private boolean chatMuted;
+    private boolean chatVerified;
 
     private ImageReceiver avatarImage;
 
@@ -156,6 +158,7 @@ public class ChatlistCell extends BaseCell {
             countDrawable = getResources().getDrawable(R.drawable.dialogs_badge);
             groupDrawable = getResources().getDrawable(R.drawable.list_group);
             muteDrawable = getResources().getDrawable(R.drawable.mute_grey);
+            verifiedDrawable = getResources().getDrawable(R.drawable.check_list);
             closeDrawable = getResources().getDrawable(R.drawable.ic_dismiss_deaddrop);
         }
 
@@ -520,10 +523,12 @@ public class ChatlistCell extends BaseCell {
 
         if( currentChatId == MrChat.MR_CHAT_ID_DEADDROP ) {
             chatMuted = false; // never draw mute icon, the deaddrop is always muted
+            chatVerified = false;
         }
         else {
             chatMuted = MrMailbox.isDialogMuted(currentChatId);
             ContactsController.setupAvatar(this, avatarImage, new AvatarDrawable(), null, m_mrChat);
+            chatVerified = m_mrChat.isVerified();
         }
 
         if (getMeasuredWidth() != 0 || getMeasuredHeight() != 0) {
@@ -623,6 +628,12 @@ public class ChatlistCell extends BaseCell {
         }
         else {
             avatarImage.draw(canvas);
+        }
+
+        if (chatVerified) {
+            int verifiedWH = (int)((float)avatarWH * 0.4f);
+            setDrawableBounds(verifiedDrawable, avatarLeft+avatarWH-verifiedWH, avatarTop+avatarWH-verifiedWH, verifiedWH, verifiedWH);
+            verifiedDrawable.draw(canvas);
         }
 
         if (useSeparator) {

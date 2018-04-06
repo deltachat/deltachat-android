@@ -904,6 +904,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
         }
 
         ContactsController.setupAvatar(avatarImage, avatarImage.imageReceiver, avatarDrawable, mrContact, mrChat);
+        avatarImage.setVerifiedDrawable(mrChat!=null? mrChat.isVerified() : mrContact.isVerified());
     }
 
     private void createActionBarMenu() {

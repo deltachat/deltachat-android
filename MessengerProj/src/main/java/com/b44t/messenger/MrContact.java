@@ -48,6 +48,7 @@ public class MrContact {
     public native String getAddr();
     public native String getNameNAddr();
     public native boolean isBlocked();
+    public native boolean isVerified();
 
     private long                  m_hContact;
     private native static void    MrContactUnref             (long hContact);
