@@ -529,6 +529,12 @@ public class ChatlistCell extends BaseCell {
             chatMuted = MrMailbox.isDialogMuted(currentChatId);
             ContactsController.setupAvatar(this, avatarImage, new AvatarDrawable(), null, m_mrChat);
             chatVerified = m_mrChat.isVerified();
+
+            // can be deleted if this gets out-of-labs
+            if( chatVerified && MrMailbox.getConfigInt("qr_enabled", 0)==0 ) {
+                chatVerified = false;
+            }
+            // /can be deleted if this gets out-of-labs
         }
 
         if (getMeasuredWidth() != 0 || getMeasuredHeight() != 0) {

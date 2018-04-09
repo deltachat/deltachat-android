@@ -44,6 +44,8 @@ import android.widget.FrameLayout;
 import android.widget.ListView;
 import android.widget.NumberPicker;
 
+import com.b44t.messenger.ActionBar.ActionBarMenu;
+import com.b44t.messenger.ActionBar.ActionBarMenuItem;
 import com.b44t.messenger.Components.BaseFragmentAdapter;
 import com.b44t.messenger.Cells.HeaderCell;
 import com.b44t.messenger.Cells.ShadowSectionCell;
@@ -83,6 +85,8 @@ public class SettingsAdvFragment extends BaseFragment implements NotificationCen
     private static final int ROWTYPE_CHECK           = 2;
     private static final int ROWTYPE_HEADER          = 3;
     private static final int ROWTYPE_COUNT           = 4;
+
+    private static final int ID_MENU_ENABLE_QR = 20;
 
     private ListView listView;
 
@@ -150,8 +154,21 @@ public class SettingsAdvFragment extends BaseFragment implements NotificationCen
                 if (id == -1) {
                     finishFragment();
                 }
+                else if( id == ID_MENU_ENABLE_QR ) {
+                    MrMailbox.setConfigInt("qr_enabled", MrMailbox.getConfigInt("qr_enabled", 0)!=0? 0 : 1);
+
+                    // restart activity, this includes the chatlist
+                    Intent intent = getParentActivity().getIntent();
+                    getParentActivity().finish();
+                    getParentActivity().startActivity(intent);
+                }
             }
         });
+
+        // action bar menu
+        ActionBarMenu menu = actionBar.createMenu();
+        ActionBarMenuItem headerItem = menu.addItem(0, R.drawable.ic_ab_other);
+        headerItem.addSubItem(ID_MENU_ENABLE_QR, MrMailbox.getConfigInt("qr_enabled", 0)!=0? "Labs: Disable QR code options" : "Labs: Enable QR code options");
 
         // create object to hold the whole view
         fragmentView = new FrameLayout(context) {};

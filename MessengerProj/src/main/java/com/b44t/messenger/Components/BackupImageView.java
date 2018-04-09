@@ -32,6 +32,7 @@ import android.util.AttributeSet;
 import android.view.View;
 
 import com.b44t.messenger.ImageReceiver;
+import com.b44t.messenger.MrMailbox;
 import com.b44t.messenger.R;
 import com.b44t.messenger.TLObject;
 import com.b44t.messenger.TLRPC;
@@ -128,6 +129,12 @@ public class BackupImageView extends View {
             verifiedDrawable = getResources().getDrawable(R.drawable.check_list);
         }
         drawVerifiedDrawable = enable;
+
+        // can be deleted if this gets out-of-labs
+        if( drawVerifiedDrawable && MrMailbox.getConfigInt("qr_enabled", 0)==0 ) {
+            drawVerifiedDrawable = false;
+        }
+        // /can be deleted if this gets out-of-labs
     }
 
     public ImageReceiver getImageReceiver() {
