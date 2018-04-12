@@ -56,7 +56,7 @@
     <!--contacts view-->
     <string name="NoContacts">Nog geen contacten</string>
     <!--group create view-->
-    <string name="SendMessageTo">Bericht versturen naar</string>
+    <string name="SendMessageTo">Bericht versturen naar ...</string>
     <string name="EnterGroupNamePlaceholder">Groepsnaam</string>
     <!--group info view-->
     <string name="AddMember">Lid toevoegen</string>
@@ -64,14 +64,14 @@
     <string name="RemoveMember">Verwijderen uit groep</string>
     <!--contact info view-->
     <string name="NewContactTitle">Contact toevoegen</string>
-    <string name="BlockContact">Blokkeer</string>
+    <string name="BlockContact">Contact blokkeren</string>
     <string name="DeleteContact">Verwijder</string>
     <string name="Info">Info</string>
     <!--settings view-->
-    <string name="TextSize">Tekstgrootte berichten</string>
-    <string name="UnblockContact">Deblokkeer</string>
-    <string name="NoBlocked">Geen geblokkeerde gebruikers</string>
-    <string name="DefaultForNormalMessages">Berichtmeldingen</string>
+    <string name="TextSize">Tekstgrootte van berichten</string>
+    <string name="UnblockContact">Contact deblokkeren</string>
+    <string name="NoBlocked">Er zijn nog geen geblokkeerde contacten</string>
+    <string name="DefaultForNormalMessages">Normale berichten</string>
     <string name="MessagePreview">Voorvertoning</string>
     <string name="DefaultForGroupMessages">Groepsmeldingen</string>
     <string name="Sound">Geluid</string>
@@ -79,11 +79,11 @@
     <string name="Vibrate">Trillen</string>
     <string name="ResetAllNotifications">Meldingen resetten</string>
     <string name="NotificationsAndSounds">Meldingen en geluiden</string>
-    <string name="BlockedContacts">Geblokkeerd</string>
+    <string name="BlockedContacts">Geblokkeerde contacten</string>
     <string name="Default">Standaard</string>
     <string name="OnlyIfSilent">Alleen indien stil</string>
     <string name="ChatBackground">Achtergrond kiezen</string>
-    <string name="SendByEnter">Versturen met "Enter"</string>
+    <string name="SendByEnter">Versturen met \"enter\"</string>
     <string name="Help">Veelgestelde vragen</string>
     <string name="Enabled">Inschakelen</string>
     <string name="Disabled">Uitgeschakeld</string>
@@ -204,7 +204,7 @@
     <!--permissions-->
     <string name="PermissionContacts">Delta Chat heeft toegang tot je contacten nodig zodat je kan chatten met je vrienden vanaf al je apparaten.</string>
     <string name="PermissionStorage">Delta Chat heeft toegang tot je opslaggeheugen nodig zodat je foto\'s, video\'s, muziek en andere media kunt opslaan en versturen.</string>
-    <string name="PermissionNoAudio">Delta Chat heeft toegang tot je microfoon nodig om spraakberichten te kunnen verzenden.</string>
+    <string name="PermissionNoAudio">Microfoon toegang nodig om spraakberichten op te nemen.</string>
     <string name="PermissionOpenSettings">Instellingen</string>
     <!--Intro view-->
     <string name="Intro1Headline">Delta Chat</string>
@@ -326,7 +326,7 @@
     <string name="DefaultStatusText">Gestuurd met mijn Delta Chat Messenger: https://delta.chat</string>
     <string name="Name" >Naam</string>
     <string name="EmailAddress">Email-adres</string>
-    <string name="CannotDeleteContact">Kan een contact in gebruik niet verwijderen, blokkeer in plaats van dit het contact.</string>
+    <string name="CannotDeleteContact">Kan gebruikte contacten niet verwijderen, blokkeer de contact.</string>
     <string name="BadEmailAddress">Ongeldig email-adres.</string>
     <string name="ContactCreated">Contact gemaakt.</string>
     <string name="ViewProfile">Profiel weergeven</string>
@@ -353,7 +353,7 @@
     <string name="MsgGroupLeft">Groep verlaten.</string>
     <string name="NoMessagesHint">Stuur een bericht naar <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>:\n\n• Het is oké als  <![CDATA[<b>]]>%2$s<![CDATA[</b>]]> niet Delta Chat gebruikt.\n\n• Het leveren van het eerste bericht kan even duren.</string>
     <string name="SendNRcvReadReceipts">Ontvang en stuur retourbevestigingen.</string>
-    <string name="PreferE2EEncryption">Prefereer end-to-end encryptie</string>
+    <string name="PreferE2EEncryption">End-to-end encryptie preferen</string>
     <string name="E2EManagePrivateKeys">Beheer privésleutels</string>
     <string name="E2ECompareKeys">Vergelijk sleutels</string>
     <string name="ForwardToTitle">Kies een chat …</string>
@@ -371,6 +371,7 @@
     <string name="HelpUrl">https://delta.chat/nl/help</string>
     <string name="EncryptedMessage">Versleuteld bericht</string>
     <string name="Encryption">Versleuteling</string>
+    <string name="EncrinfoE2E">End-to-end versleuteling ingeschakeld.</string>
     <string name="EncrinfoE2EExplain">Als alle vingerafdrukken overeenkomen op het andere apparaat, is de verbinding veilig.</string>
     <string name="EncrinfoTransport">Transportversleuteling op zijn minst tot mijn server.</string>
     <string name="EncrinfoNone">Geen versleuteling naar mijn server</string>
@@ -389,13 +390,16 @@
     <string name="ImportExportExplain">Geëxporteerde bestanden bevatten geheime sleutels! Bewaar ze op een veilige plaats of verwijder ze zo snel mogelijk.</string>
     <string name="EnterPasswordToContinue">Voeg een wachtwoord in om %1$s door te gaan:</string>
     <string name="IncorrectPassword">Incorrect wachtwoord.</string>
+    <string name="ImportBackupAsk">Achtergrond gevonden bij <![CDATA[<i>]]>%1$s<![CDATA[</i>]]>.\n\nWilt je alle gegevens en instellingen ervan importeren en gebruiken?</string>
     <string name="ImportBackup">Archief importeren</string>
     <string name="NoBackupFound">Geen archief gevonden.\n\nKopieer het archief naar <![CDATA[<i>]]>%1$s<![CDATA[</i>]]> en probeer het opnieuw. Je kan ook bij \"Beginnen met chatten\" aanvangen om met het normale instellingsproces te doorlopen.</string>
     <string name="FilesSuccessfullyExported">Bestand geëxporteerd naar <![CDATA[<i>]]>%1$s<![CDATA[</i>]]>.</string>
     <string name="ExportBackup">Archief exporteren</string>
     <string name="ExportPrivateKeys">Exporteer privésleutels</string>
     <string name="ImportPrivateKeys">Beheer privésleutels</string>
+    <string name="ImportPrivateKeysAsk2">Importeer de sleutel van <![CDATA[<i>]]>%1$s<![CDATA[</i>]]>?\n\n• Bestaande sleutels worden niet verwijderd\n\n• De laatst geïmporteerde sleutel wordt gebruikt als de nieuwe standaardsleutel.</string>
     <string name="NoRecentEmoji">Recent gebruikte emoji wordt hier getoond.</string>
+    <string name="E2eeOffBecauseOfUser">Om end-to-end versleuteling in te schakelen, controleer je overeenkomstige optie bij de instellingen.</string>
     <string name="E2eeOffBecauseOfRecipient">End-to-end-versleuteling wordt toegepast als de andere partij de instelling ook inschakelt.</string>
     <string name="NotNow">Niet nu</string>
     <string name="ArchiveChat">Chat archiveren</string>
@@ -403,9 +407,26 @@
     <string name="ArchivedChats">Chats gearchiveerd</string>
     <string name="Archived">Gearchiveerd</string>
     <string name="LeaveGroup">Groep verlaten</string>
+    <string name="AskLeaveGroup">Weet je zeker dat je deze groep wilt verlaten?</string>
     <string name="Never">nooit</string>
+    <string name="AutocryptKeyTransferInitiate">Autocrypt Sleutel Overdracht aanvangen</string>
     <string name="AutocryptKeyTransfer">Autocrypt sleutel overdracht</string>
-    <string name="AutocryptKeyTransferPleaseEnterCode">Voer de instellingscode in die wordt weergegeven op het andere apparaat.</string>
+    <string name="AutocryptKeyTransferMsgBeforeSend">De <![CDATA[<i>]]>Autocrypt Sleutel Overdracht<![CDATA[</i>]]> vereist dat bij de emailclient op het andere apparaat Autocrypt beschikbaar is. \n\nJe kan je sleutel naar jezelf sturen. De sleutel zal versleuteld zijn met een weergegeven code en dient te worden gebruikt bij het andere apparaat.</string>
+    <string name="AutocryptKeyTransferMsgAfterSend">Je sleutel is naar jezelf gestuurd. Schakel over naar het andere apparaat en open het opstartbericht. je zou om een opstellingscode moeten worden gevraagd. Typ de volgende cijfers in het menu:\n\n%1$s\n\nAls je klaar bent is je andere apparaat klaar om Autocrypt te gebruiken.</string>
+    <string name="AutocryptSetupMessageSubject">Autocrypt Opstart Bericht</string>
+    <string name="AutocryptSetupMessageGeneralBody">Dit is het Autocrypt Opstart Bericht dat gebruikt wordt om je sleutel tussen clients over te brengen. \n\nOm je sleutel te ontsleutelen en te gebruiken open het bericht in een client met Autocrypt functionaliteit en voer de code in die op wordt weergegeven.</string>
+    <string name="AutocryptSetupMessageTapBody">Dit is het Autocrypt Opstart Bericht gebruikt om je sleutel tussen clients over te brengen.\n\nOpen het bericht en ontsleutel je sleutel om hem te gebruiken.</string>
+    <string name="AutocryptKeyTransferPleaseEnterCode">Voer de opstartcode in die wordt weergegeven op het andere apparaat.</string>
+    <string name="AutocryptKeyTransferBadCode">Slechte opstart code. Probeer het opnieuw. \n\nAls je de opstart code niet meer weet, start je de sleuteloverdracht op het andere apparaat opnieuw.</string>
+    <string name="AutocryptKeyTransferSucceeded">Sleutel is overgedragen. Dit apparaat is nu klaar om Autocrypt te gebruiken met dezelfde sleutel als het andere apparaat.</string>
+    <string name="Retry">Opnieuw</string>
+    <string name="SelfTalkSubtitle">Aan mezelf verzonden bercihten</string>
+    <string name="QrScan">QR code scannen</string>
+    <string name="QrShow">QR code weergeven</string>
+    <string name="QrScanContainsText">De gescande QR code bevat de volgende tekst:\n\n%1$s</string>
+    <string name="OobFingerprint">Vingerafdruk</string>
     <string name="OobFingerprintAskOob">Verifieer contact en begin met chat met <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>?</string>
     <string name="OobFingerprintOk">Contact <![CDATA[<i>]]>%1$s<![CDATA[</i>]]> geverifieerd. Begin met chatten?</string>
-    </resources>
+    <string name="OobFingerprintMismatch">De gescande vingerafdruk <![CDATA[<b>]]>komt niet overeen<![CDATA[</b>]]> de vingerafdruk laast gebruikt voor <![CDATA[<i>]]>%1$s<![CDATA[</i>]]>.</string>
+    <string name="OobFingerprintWithoutAddr">Deze QR code bevat een vingerafdruk, maar geen emailadres.\n\nmaak eerst een versleutelde verbinding met de ontvanger voor een out-of-band verificatie.</string>
+</resources>
