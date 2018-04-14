@@ -403,7 +403,7 @@
 /* #undef STATIC_LDAPDB */
 
 /* Link LOGIN Staticly */
-/* #undef STATIC_LOGIN */
+#define STATIC_LOGIN
 
 /* Link NTLM Staticly */
 /* #undef STATIC_NTLM */
