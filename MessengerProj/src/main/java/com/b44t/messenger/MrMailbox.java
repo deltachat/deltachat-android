@@ -380,6 +380,7 @@ public class MrMailbox {
                     case 25: s = ApplicationLoader.applicationContext.getString(R.string.EncrinfoE2E); break;
                     case 27: s = ApplicationLoader.applicationContext.getString(R.string.EncrinfoTransport); break;
                     case 28: s = ApplicationLoader.applicationContext.getString(R.string.EncrinfoNone); break;
+                    case 29: s = ApplicationLoader.applicationContext.getString(R.string.CannotDecryptBody); break;
                     case 30: s = ApplicationLoader.applicationContext.getString(R.string.EncrinfoFingerprints); break;
                     case 31: s = ApplicationLoader.applicationContext.getString(R.string.ReadReceipt); break;
                     case 32: s = ApplicationLoader.applicationContext.getString(R.string.ReadReceiptMailBody); break;
