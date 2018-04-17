@@ -70,11 +70,14 @@ public class SettingsAdvFragment extends BaseFragment implements NotificationCen
     private int sendByEnterRow;
     private int raiseToSpeakRow;
     private int blockedRow;
-    private int e2eEncryptionRow;
     private int settingsShadowRow;
 
-    private int imexHeaderRow;
+    private int e2eHeaderRow;
+    private int e2eEncryptionRow;
     private int initiateKeyTransferRow;
+    private int e2eShadowRow;
+
+    private int imexHeaderRow;
     private int manageKeysRow;
     private int backupRow;
     private int backupShadowRow;
@@ -121,13 +124,16 @@ public class SettingsAdvFragment extends BaseFragment implements NotificationCen
         raiseToSpeakRow         = rowCount++; // outgoing message
         cacheRow                = -1;// for now, the - non-functional - page is reachable by the "storage settings" in the "android App Settings" only
         blockedRow              = rowCount++;
-        e2eEncryptionRow        = rowCount++;
         settingsShadowRow       = rowCount++;
 
-        imexHeaderRow           = rowCount++;
+        e2eHeaderRow            = rowCount++;
         initiateKeyTransferRow  = rowCount++;
-        manageKeysRow           = rowCount++;
+        e2eEncryptionRow        = rowCount++;
+        e2eShadowRow            = rowCount++;
+
+        imexHeaderRow           = rowCount++;
         backupRow               = rowCount++;
+        manageKeysRow           = rowCount++;
         backupShadowRow         = rowCount++;
 
         return true;
@@ -626,10 +632,10 @@ public class SettingsAdvFragment extends BaseFragment implements NotificationCen
                     textCell.setText(mContext.getString(R.string.AutocryptKeyTransferInitiate), true);
                 }
                 else if( i==manageKeysRow ) {
-                    textCell.setText(mContext.getString(R.string.E2EManagePrivateKeys), true);
+                    textCell.setText(mContext.getString(R.string.E2EManagePrivateKeys), false);
                 }
                 else if( i==backupRow ) {
-                    textCell.setText(mContext.getString(R.string.Backup), false);
+                    textCell.setText(mContext.getString(R.string.Backup), true);
                 }
                 else if( i == accountSettingsRow ) {
                     textCell.setText(mContext.getString(R.string.AccountSettings), true);
@@ -670,7 +676,11 @@ public class SettingsAdvFragment extends BaseFragment implements NotificationCen
                     view = new HeaderCell(mContext);
                     view.setBackgroundColor(0xffffffff);
                 }
-                if (i == imexHeaderRow) {
+
+                if (i == e2eHeaderRow) {
+                    ((HeaderCell) view).setText(mContext.getString(R.string.Autocrypt));
+                }
+                else if (i == imexHeaderRow) {
                     ((HeaderCell) view).setText(mContext.getString(R.string.ExportImportHeader));
                 }
             }
@@ -680,9 +690,9 @@ public class SettingsAdvFragment extends BaseFragment implements NotificationCen
 
         @Override
         public int getItemViewType(int i) {
-            if (i== settingsShadowRow || i==backupShadowRow ) {
+            if (i== settingsShadowRow || i==e2eShadowRow || i==backupShadowRow ) {
                 return ROWTYPE_SHADOW;
-            } else if( i==imexHeaderRow ) {
+            } else if( i==imexHeaderRow || i==e2eHeaderRow ) {
                 return ROWTYPE_HEADER;
             } else if ( i == sendByEnterRow || i == raiseToSpeakRow || i == autoplayGifsRow || i==showUnknownSendersRow || i == directShareRow || i==e2eEncryptionRow) {
                 return ROWTYPE_CHECK;
