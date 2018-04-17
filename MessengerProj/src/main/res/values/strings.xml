@@ -436,5 +436,5 @@
     <string name="OobFingerprintMismatch">The scanned fingerprint does <![CDATA[<b>]]>not match<![CDATA[</b>]]> the fingerprint last seen for <![CDATA[<i>]]>%1$s<![CDATA[</i>]]>.</string>
     <string name="OobFingerprintWithoutAddr">This QR code contains a fingerprint but no e-mail address.\n\nFor an out-of-band-verification, please establish an encrpyted connection to the recipient first.</string>
     <string name="OobSecureJoinRequested">%1$s joins.</string>
-    <string name="CannotDecryptBody">This message was encrypted for another setup.\n\n• If you made a new installation: You can import your preexisting setup, eg. by sending an Autocrypt Setup Message from your first device.\n\n• Otherwise, the sender may have mistakenly not encrypted for your setup: To keep using your current setup, just reply and ask the sender to send the message again.</string>
+    <string name="CannotDecryptBody">This message cannot be decrypted.\n\n• It might already help to simply reply to this message and ask the sender to send the message again.\n\n• In case you re-installed Delta Chat or another E-Mail-program on this or another device you may want to send an Autocrypt Setup Message from there.</string>
 </resources>
