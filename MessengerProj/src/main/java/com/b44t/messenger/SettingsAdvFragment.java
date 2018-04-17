@@ -46,6 +46,7 @@ import android.widget.NumberPicker;
 
 import com.b44t.messenger.ActionBar.ActionBarMenu;
 import com.b44t.messenger.ActionBar.ActionBarMenuItem;
+import com.b44t.messenger.Cells.TextInfoCell;
 import com.b44t.messenger.Components.BaseFragmentAdapter;
 import com.b44t.messenger.Cells.HeaderCell;
 import com.b44t.messenger.Cells.ShadowSectionCell;
@@ -75,7 +76,7 @@ public class SettingsAdvFragment extends BaseFragment implements NotificationCen
     private int e2eHeaderRow;
     private int e2eEncryptionRow;
     private int initiateKeyTransferRow;
-    private int e2eShadowRow;
+    private int e2eInfoRow;
 
     private int imexHeaderRow;
     private int manageKeysRow;
@@ -87,7 +88,8 @@ public class SettingsAdvFragment extends BaseFragment implements NotificationCen
     private static final int ROWTYPE_TEXT_SETTINGS   = 1;
     private static final int ROWTYPE_CHECK           = 2;
     private static final int ROWTYPE_HEADER          = 3;
-    private static final int ROWTYPE_COUNT           = 4;
+    private static final int ROWTYPE_INFO            = 4;
+    private static final int ROWTYPE_COUNT           = 5;
 
     private static final int ID_MENU_ENABLE_QR = 20;
 
@@ -129,7 +131,7 @@ public class SettingsAdvFragment extends BaseFragment implements NotificationCen
         e2eHeaderRow            = rowCount++;
         initiateKeyTransferRow  = rowCount++;
         e2eEncryptionRow        = rowCount++;
-        e2eShadowRow            = rowCount++;
+        e2eInfoRow              = rowCount++;
 
         imexHeaderRow           = rowCount++;
         backupRow               = rowCount++;
@@ -584,7 +586,7 @@ public class SettingsAdvFragment extends BaseFragment implements NotificationCen
         @Override
         public boolean isEnabled(int i) {
             int type = getItemViewType(i);
-            return (type!=ROWTYPE_SHADOW && type!=ROWTYPE_HEADER);
+            return (type!=ROWTYPE_SHADOW && type!=ROWTYPE_HEADER && type!=ROWTYPE_INFO);
         }
 
         @Override
@@ -615,6 +617,12 @@ public class SettingsAdvFragment extends BaseFragment implements NotificationCen
                     view = new ShadowSectionCell(mContext);
                 }
                 view.setBackgroundResource(i==backupShadowRow? R.drawable.greydivider_bottom : R.drawable.greydivider);
+            } else if (type == ROWTYPE_INFO) {
+                if (view == null) {
+                    view = new TextInfoCell(mContext);
+                }
+                ((TextInfoCell) view).setText(AndroidUtilities.replaceTags(mContext.getString(R.string.AutocryptExplain)));
+                view.setBackgroundResource(R.drawable.greydivider);
             } else if (type == ROWTYPE_TEXT_SETTINGS) {
                 if (view == null) {
                     view = new TextSettingsCell(mContext);
@@ -690,8 +698,10 @@ public class SettingsAdvFragment extends BaseFragment implements NotificationCen
 
         @Override
         public int getItemViewType(int i) {
-            if (i== settingsShadowRow || i==e2eShadowRow || i==backupShadowRow ) {
+            if (i== settingsShadowRow || i==backupShadowRow ) {
                 return ROWTYPE_SHADOW;
+            }  else if( i==e2eInfoRow ) {
+                return ROWTYPE_INFO;
             } else if( i==imexHeaderRow || i==e2eHeaderRow ) {
                 return ROWTYPE_HEADER;
             } else if ( i == sendByEnterRow || i == raiseToSpeakRow || i == autoplayGifsRow || i==showUnknownSendersRow || i == directShareRow || i==e2eEncryptionRow) {
