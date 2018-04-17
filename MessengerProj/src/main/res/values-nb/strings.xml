@@ -429,4 +429,4 @@
     <string name="OobFingerprintOk">Kontakt <![CDATA[<i>]]>%1$s<![CDATA[</i>]]> bekreftet. Start sludring?</string>
     <string name="OobFingerprintMismatch">Det skannede fingeravtrykket <![CDATA[<b>]]>stemmer ikke overens<![CDATA[</b>]]> med sist sette fingeravtrukk for <![CDATA[<i>]]>%1$s<![CDATA[</i>]]>.</string>
     <string name="OobFingerprintWithoutAddr">QR-koden inneholder et fingeravtrykk, men ingen e-postadresse.\n\nFor bekreftelse utenfor programmet, etabler en kryptert tilkobling til mottakeren først.</string>
-</resources>
+    </resources>

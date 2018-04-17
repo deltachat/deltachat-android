@@ -457,4 +457,5 @@
     <string name="OobFingerprintOk">Контакт <![CDATA[<i>]]>%1$s<![CDATA[</i>]]> верифицирован. Начать общение?</string>
     <string name="OobFingerprintMismatch">Отсканированный отпечаток <![CDATA[<b>]]>не соответствует<![CDATA[</b>]]> отпечатку, который ранее был у <![CDATA[<i>]]>%1$s<![CDATA[</i>]]>.</string>
     <string name="OobFingerprintWithoutAddr">Этот QR-код содержит отпечаток, но адрес e-mail отсутствует.\n\nЧтобы выполнить  верификацию по внешнему каналу, прежде всего установите с получателем защищённое соединение.</string>
+    <string name="Autocrypt">Autocrypt</string>
 </resources>
