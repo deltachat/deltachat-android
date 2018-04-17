@@ -3,7 +3,7 @@
 ## UNRELEASED
 
 * Fix problems with Office 365 and similar services
-* Update Catalan, Dutch, Norwegian, Polish and Spanish translations
+* Update Albanian, Catalan, Dutch, Norwegian, Polish and Spanish translations
 * Add Basque translation
 * Add Chinese translation
 * Add Japanese translation

@@ -420,4 +420,12 @@
     <string name="AutocryptKeyTransferSucceeded">Kyçi u transferua me sukses. Tani kjo pajisje është gati të përdorë Autocrypt-in me të njëjtin kyç si pajisja tjetër.</string>
     <string name="Retry">Riprovo</string>
     <string name="SelfTalkSubtitle">Mesazhe që i kam dërguar vetes</string>
-    </resources>
+    <string name="QrScan">Skanoni kod QR</string>
+    <string name="QrShow">Shfaq kod QR</string>
+    <string name="QrScanContainsText">Kodi QR i skanuar përmban tekstin vijues:\n\n%1$s</string>
+    <string name="OobFingerprint">Shenja gishtash</string>
+    <string name="OobFingerprintAskOob">Verifikoni kontaktin dhe filloni të bisedoni me <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>?</string>
+    <string name="OobFingerprintOk">Kontakti <![CDATA[<i>]]>%1$s<![CDATA[</i>]]> u verifikua. Të fillohet bisedë?</string>
+    <string name="OobFingerprintMismatch">Shenjat e gishtave të skanuara <![CDATA[<b>]]>nuk përputhen<![CDATA[</b>]]> me shenjat e gishtave parë së fundi për <![CDATA[<i>]]>%1$s<![CDATA[</i>]]>.</string>
+    <string name="OobFingerprintWithoutAddr">Ky kod QR përmban shenja gishtash, por jo adresë email.\n\nPër një verifikim out-of-band-verification, ju lutemi, së pari vendosni një lidhje të fshehtëzuar.</string>
+</resources>
