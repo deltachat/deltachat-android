@@ -348,11 +348,6 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
                         if (text.length() != 0) {
                             searching = true;
                             searchWas = true;
-                            if (listView != null) {
-                                listView.setFastScrollAlwaysVisible(false);
-                                listView.setFastScrollEnabled(false);
-                                listView.setVerticalScrollBarEnabled(true);
-                            }
                             if (emptyTextView != null) {
                                 emptyTextView.setText(context.getString(R.string.NoResult));
                             }
@@ -363,9 +358,6 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
                             searching = false;
                             searchWas = false;
                             listViewAdapter.notifyDataSetChanged();
-                            listView.setFastScrollAlwaysVisible(true);
-                            listView.setFastScrollEnabled(true);
-                            listView.setVerticalScrollBarEnabled(false);
                             emptyTextView.setText(context.getString(R.string.NoContacts));
                         }
                     }
@@ -405,7 +397,7 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
         listView.setFastScrollEnabled(true);
         listView.setScrollBarStyle(View.SCROLLBARS_OUTSIDE_OVERLAY);
         listView.setAdapter(listViewAdapter);
-        listView.setFastScrollAlwaysVisible(true);
+        listView.setFastScrollAlwaysVisible(false);
         linearLayout.addView(listView);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -485,9 +477,6 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
                             searching = false;
                             searchWas = false;
                             listViewAdapter.notifyDataSetChanged();
-                            listView.setFastScrollAlwaysVisible(true);
-                            listView.setFastScrollEnabled(true);
-                            listView.setVerticalScrollBarEnabled(false);
                             emptyTextView.setText(context.getString(R.string.NoContacts));
                         } else {
                             if (view instanceof UserCell) {
