@@ -83,21 +83,21 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
     private HashMap<Integer, ChipSpan> selectedContacts = new HashMap<>();
     private ArrayList<ChipSpan> allSpans = new ArrayList<>();
 
-    private int             do_what = 0;
-    public final static int SELECT_CONTACT_FOR_NEW_CHAT   = 1;
-    public final static int SELECT_CONTACTS_FOR_NEW_GROUP = 2;
-    public final static int ADD_CONTACTS_TO_GROUP         = 3;
-    public final static int SELECT_CONTACT_TO_BLOCK       = 4;
-    public final static int SELECT_CONTACT_TO_ATTACH      = 5;
+    private int              do_what = 0;
+    public final static int  SELECT_CONTACT_FOR_NEW_CHAT   = 1;
+    public final static int  SELECT_CONTACTS_FOR_NEW_GROUP = 2;
+    public final static int  SELECT_CONTACTS_FOR_NEW_VERIFIED_GROUP = 3;
+    public final static int  ADD_CONTACTS_TO_GROUP         = 4;
+    public final static int  SELECT_CONTACT_TO_BLOCK       = 5;
+    public final static int  SELECT_CONTACT_TO_ATTACH      = 6;
+    private final static int id_add_contact                = 20; // do_what is also used as internal IDs
+    private final static int id_done_button                = 30;
 
     private ContactsActivityDelegate delegate;
 
     private String title;
     private String subtitle;
 
-    private final static int id_add_contact = 2;
-    private final static int id_done_button = 3;
-    private final static int id_toggle      = 4;
 
     public interface ContactsActivityDelegate {
         void didSelectContact(int user_id);
@@ -126,6 +126,11 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
         else if( do_what == SELECT_CONTACTS_FOR_NEW_GROUP )
         {
             title      = ApplicationLoader.applicationContext.getString(R.string.NewGroup);
+            subtitle   = ApplicationLoader.applicationContext.getResources().getQuantityString(R.plurals.MeAndMembers, 0, 0);
+        }
+        else if( do_what == SELECT_CONTACTS_FOR_NEW_VERIFIED_GROUP )
+        {
+            title      = ApplicationLoader.applicationContext.getString(R.string.NewVerifiedGroup);
             subtitle   = ApplicationLoader.applicationContext.getResources().getQuantityString(R.plurals.MeAndMembers, 0, 0);
         }
         else if( do_what == ADD_CONTACTS_TO_GROUP )
@@ -169,7 +174,7 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
         }
 
         // initialize action
-        actionBar.setBackButtonImage(do_what == SELECT_CONTACTS_FOR_NEW_GROUP? R.drawable.ic_close_white : R.drawable.ic_ab_back);
+        actionBar.setBackButtonImage((do_what == SELECT_CONTACTS_FOR_NEW_GROUP||do_what == SELECT_CONTACTS_FOR_NEW_VERIFIED_GROUP)? R.drawable.ic_close_white : R.drawable.ic_ab_back);
         actionBar.setAllowOverlayTitle(true);
         if( title != null ) {
             actionBar.setTitle(title);
@@ -217,10 +222,10 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
                 {
                     finishFragment();
                 }
-                else if( id == id_toggle )
+                else if( id == SELECT_CONTACT_FOR_NEW_CHAT || id == SELECT_CONTACTS_FOR_NEW_GROUP || id == SELECT_CONTACTS_FOR_NEW_VERIFIED_GROUP )
                 {
                     Bundle args = new Bundle();
-                    args.putInt("do_what", do_what==SELECT_CONTACTS_FOR_NEW_GROUP? SELECT_CONTACT_FOR_NEW_CHAT : SELECT_CONTACTS_FOR_NEW_GROUP);
+                    args.putInt("do_what", id);
                     presentFragment(new ContactsActivity(args), true /*removeLast*/, true /*forceWithoutAnimation*/);
                 }
                 else if( id == id_add_contact )
@@ -244,18 +249,25 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
 
         ActionBarMenu menu = actionBar.createMenu();
 
-        if( do_what == SELECT_CONTACTS_FOR_NEW_GROUP ) {
+        if( do_what == SELECT_CONTACTS_FOR_NEW_GROUP || do_what == SELECT_CONTACTS_FOR_NEW_VERIFIED_GROUP ) {
             menu.addItem(id_done_button, R.drawable.ic_done); // should the "done" button be right or left of other buttons?  Esp. for the "more" button, it looks better if it is right left of it - beside the title describing the action and nearer to "cancel"; the other buttons has not so much to do with the group but switches to other types.  In other situations, the icon-oder-decision may be different.
         }
 
         ActionBarMenuItem item = menu.addItem(10, R.drawable.ic_ab_other);
-        if (do_what == SELECT_CONTACT_FOR_NEW_CHAT || do_what == SELECT_CONTACTS_FOR_NEW_GROUP) {
-            item.addSubItem(id_toggle, do_what == SELECT_CONTACT_FOR_NEW_CHAT ? context.getString(R.string.NewGroup) : context.getString(R.string.NewChat));
+        if (do_what == SELECT_CONTACT_FOR_NEW_CHAT || do_what == SELECT_CONTACTS_FOR_NEW_GROUP || do_what == SELECT_CONTACTS_FOR_NEW_VERIFIED_GROUP) {
+            if( do_what!=SELECT_CONTACT_FOR_NEW_CHAT ) { item.addSubItem(SELECT_CONTACT_FOR_NEW_CHAT, context.getString(R.string.NewChat)); }
+            if( do_what!=SELECT_CONTACTS_FOR_NEW_GROUP ) { item.addSubItem(SELECT_CONTACTS_FOR_NEW_GROUP, context.getString(R.string.NewGroup)); }
+
+            if( MrMailbox.getConfigInt("qr_enabled", 0) != 0 ) {
+                if (do_what != SELECT_CONTACTS_FOR_NEW_VERIFIED_GROUP) {
+                    item.addSubItem(SELECT_CONTACTS_FOR_NEW_VERIFIED_GROUP, context.getString(R.string.NewVerifiedGroup));
+                }
+            }
         }
         item.addSubItem(id_add_contact, context.getString(R.string.NewContactTitle));
 
 
-        listViewAdapter = new ContactsAdapter(context);
+        listViewAdapter = new ContactsAdapter(context, do_what==SELECT_CONTACTS_FOR_NEW_VERIFIED_GROUP? MrMailbox.MR_GCL_VERIFIED_ONLY : 0);
         listViewAdapter.setCheckedMap(selectedContacts);
 
 
@@ -434,7 +446,7 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
                         builder.setMessage(AndroidUtilities.replaceTags(String.format(context.getString(R.string.AskStartChatWith), name)));
                         showDialog(builder.create());
                     }
-                    else if( do_what == SELECT_CONTACTS_FOR_NEW_GROUP ) {
+                    else if( do_what == SELECT_CONTACTS_FOR_NEW_GROUP || do_what == SELECT_CONTACTS_FOR_NEW_VERIFIED_GROUP ) {
                         boolean check = true;
                         if (selectedContacts.containsKey(user.id)) {
                             check = false;
@@ -640,9 +652,12 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
 
         private int[] contactIds;
 
-        public ContactsAdapter(Context context) {
+        private int mListflags = 0;
+
+        public ContactsAdapter(Context context, int listflags) {
             mContext = context;
-            contactIds = MrMailbox.getKnownContacts(null);
+            mListflags = listflags;
+            contactIds = MrMailbox.getContacts(mListflags, null);
         }
 
         public void setCheckedMap(HashMap<Integer, ?> map) {
@@ -654,12 +669,12 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
         }
 
         public void search(String query) {
-            contactIds = MrMailbox.getKnownContacts(query);
+            contactIds = MrMailbox.getContacts(mListflags, query);
             lastQuery = query;
         }
 
         public void searchAgain() {
-            contactIds = MrMailbox.getKnownContacts(lastQuery);
+            contactIds = MrMailbox.getContacts(mListflags, lastQuery);
         }
 
         @Override

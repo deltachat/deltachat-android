@@ -84,7 +84,8 @@ public class MrMailbox {
     private native static long    MrMailboxNew(); // returns hMailbox which must be unref'd after usage (Names as mrmailbox_new don't work due to the additional underscore)
 
     // contacts
-    public native static int[] getKnownContacts(String query);
+    public final static int MR_GCL_VERIFIED_ONLY = 1;
+    public native static int[] getContacts(int flags, String query);
     public native static int   getBlockedCount();
     public native static int[] getBlockedContacts();
 

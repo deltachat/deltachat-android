@@ -292,10 +292,10 @@ JNIEXPORT void Java_com_b44t_messenger_MrMailbox_disconnect(JNIEnv *env, jclass 
 
 /* MrMailbox - handle contacts */
 
-JNIEXPORT jintArray Java_com_b44t_messenger_MrMailbox_getKnownContacts(JNIEnv *env, jclass cls, jstring query)
+JNIEXPORT jintArray Java_com_b44t_messenger_MrMailbox_getContacts(JNIEnv *env, jclass cls, jint flags, jstring query)
 {
 	CHAR_REF(query);
-	    mrarray_t* ca = mrmailbox_get_known_contacts(get_mrmailbox_t(env, cls), queryPtr);
+	    mrarray_t* ca = mrmailbox_get_contacts(get_mrmailbox_t(env, cls), flags, queryPtr);
 	CHAR_UNREF(query);
 	return mrarray2jintArray_n_mrarray_unref(env, ca);
 }
@@ -1164,7 +1164,7 @@ JNIEXPORT jboolean Java_com_b44t_messenger_MrContact_isBlocked(JNIEnv *env, jobj
 
 JNIEXPORT jboolean Java_com_b44t_messenger_MrContact_isVerified(JNIEnv *env, jobject obj)
 {
-	return mrcontact_is_verified(get_mrcontact_t(env, obj)) != 0;
+	return mrcontact_is_verified(get_mrcontact_t(env, obj)) == 2;
 }
 
 

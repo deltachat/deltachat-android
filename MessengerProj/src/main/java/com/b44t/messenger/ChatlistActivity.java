@@ -119,6 +119,7 @@ public class ChatlistActivity extends BaseFragment implements NotificationCenter
     private static final int ID_LOCK_APP = 1;
     private static final int ID_NEW_CHAT = 2;
     private static final int ID_NEW_GROUP= 3;
+    private static final int ID_NEW_VERIFIED_GROUP = 4;
     private static final int ID_SETTINGS = 5;
     private static final int ID_DEADDROP = 7;
     private static final int ID_SCAN_QR  = 8;
@@ -274,6 +275,7 @@ public class ChatlistActivity extends BaseFragment implements NotificationCenter
             headerItem.addSubItem(ID_NEW_GROUP, ApplicationLoader.applicationContext.getString(R.string.NewGroup));
             if(!onlySelect) {
                 if( MrMailbox.getConfigInt("qr_enabled", 0) != 0 ) {
+                    headerItem.addSubItem(ID_NEW_VERIFIED_GROUP, ApplicationLoader.applicationContext.getString(R.string.NewVerifiedGroup));
                     headerItem.addSubItem(ID_SCAN_QR, ApplicationLoader.applicationContext.getString(R.string.QrScan));
                     headerItem.addSubItem(ID_SHOW_QR, ApplicationLoader.applicationContext.getString(R.string.QrShow));
                 }
@@ -336,6 +338,10 @@ public class ChatlistActivity extends BaseFragment implements NotificationCenter
                     } else if (id == ID_NEW_GROUP) {
                         Bundle args = new Bundle();
                         args.putInt("do_what", ContactsActivity.SELECT_CONTACTS_FOR_NEW_GROUP);
+                        presentFragment(new ContactsActivity(args));
+                    } else if (id == ID_NEW_VERIFIED_GROUP) {
+                        Bundle args = new Bundle();
+                        args.putInt("do_what", ContactsActivity.SELECT_CONTACTS_FOR_NEW_VERIFIED_GROUP);
                         presentFragment(new ContactsActivity(args));
                     } else if (id == ID_DEADDROP) {
                         Bundle args = new Bundle();
