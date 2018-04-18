@@ -343,7 +343,7 @@
     <string name="Intro7Message"><![CDATA[<b>Delta Chat</b>]]> is safe for business use, compatible and standards-based.</string>
     <string name="InviteMenuEntry">Send invitations</string>
     <string name="InviteText">I\'m using Delta Chat messenger now - %1$s - you can text me at %2$s</string>
-    <string name="AdvancedSettings">Advanced settings</string>
+    <string name="AdvancedSettings">Advanced</string>
     <string name="AskResetNotifications">Reset all notification settings and sounds of current page, contacts and groups?</string>
     <string name="AttachFiles">Attach files</string>
     <string name="ErrGroupNameEmpty">Please enter a name for the group.</string>
@@ -358,7 +358,7 @@
     <string name="ErrSelfNotInGroup">You must be a member of the group to perform this action.</string>
     <string name="MsgGroupLeft">Group left.</string>
     <string name="NoMessagesHint">Send message to <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>:\n\n• It is okay if <![CDATA[<b>]]>%2$s<![CDATA[</b>]]> does not use Delta Chat.\n\n• Delivering the first message may take a while.</string>
-    <string name="SendNRcvReadReceipts">Receive and send return receipts</string>
+    <string name="SendNRcvReadReceipts">Receive and send read receipts</string>
     <string name="PreferE2EEncryption">Prefer end-to-end encryption</string>
     <string name="E2EManagePrivateKeys">Manage secret keys</string>
     <string name="E2ECompareKeys">Compare keys</string>
@@ -385,8 +385,8 @@
     <string name="EncrinfoFingerprints">Fingerprints</string>
     <string name="Backup">Backup</string>
     <string name="ImportBackupExplain2">To import a backup, copy a backup to <![CDATA[<i>]]>%1$s<![CDATA[</i>]]> and reinstall the app.</string>
-    <string name="ReadReceiptMailBody">This is a return receipt for the message \"%1$s\".\n\nIt means that message was displayed on the recipient\'s device, not necessarily that the content was read.</string>
-    <string name="ReadReceipt">Return receipt</string>
+    <string name="ReadReceiptMailBody">This is a read receipt for the message \"%1$s\".\n\nIt means that message was displayed on the recipient\'s device, not necessarily that the content was read.</string>
+    <string name="ReadReceipt">Read receipt</string>
     <string name="NameAndStatus">Name and status</string>
     <string name="MyStatus">My status</string>
     <string name="MyStatusExplain">The status is shown in email footers, among other places.</string>
