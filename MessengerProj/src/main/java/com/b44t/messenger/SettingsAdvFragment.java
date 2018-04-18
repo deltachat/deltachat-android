@@ -79,7 +79,6 @@ public class SettingsAdvFragment extends BaseFragment implements NotificationCen
     private int e2eInfoRow;
 
     private int imexHeaderRow;
-    private int manageKeysRow;
     private int backupRow;
     private int backupShadowRow;
     private int rowCount;
@@ -91,7 +90,8 @@ public class SettingsAdvFragment extends BaseFragment implements NotificationCen
     private static final int ROWTYPE_INFO            = 4;
     private static final int ROWTYPE_COUNT           = 5;
 
-    private static final int ID_MENU_ENABLE_QR = 20;
+    private static final int ID_MENU_ENABLE_QR   = 20;
+    private static final int ID_MENU_MANAGE_KEYS = 21;
 
     private ListView listView;
 
@@ -126,6 +126,7 @@ public class SettingsAdvFragment extends BaseFragment implements NotificationCen
         raiseToSpeakRow         = rowCount++; // outgoing message
         cacheRow                = -1;// for now, the - non-functional - page is reachable by the "storage settings" in the "android App Settings" only
         blockedRow              = rowCount++;
+        backupRow               = rowCount++;
         settingsShadowRow       = rowCount++;
 
         e2eHeaderRow            = rowCount++;
@@ -133,10 +134,8 @@ public class SettingsAdvFragment extends BaseFragment implements NotificationCen
         e2eEncryptionRow        = rowCount++;
         e2eInfoRow              = rowCount++;
 
-        imexHeaderRow           = rowCount++;
-        backupRow               = rowCount++;
-        manageKeysRow           = rowCount++;
-        backupShadowRow         = rowCount++;
+        imexHeaderRow           = -1;
+        backupShadowRow         = -1;
 
         return true;
     }
@@ -170,12 +169,18 @@ public class SettingsAdvFragment extends BaseFragment implements NotificationCen
                     getParentActivity().finish();
                     getParentActivity().startActivity(intent);
                 }
+                else if( id == ID_MENU_MANAGE_KEYS ) {
+                    imexShowMenu(ApplicationLoader.applicationContext.getString(R.string.E2EManagePrivateKeys),
+                            MrMailbox.MR_IMEX_EXPORT_SELF_KEYS, ApplicationLoader.applicationContext.getString(R.string.ExportPrivateKeys),
+                            MrMailbox.MR_IMEX_IMPORT_SELF_KEYS, ApplicationLoader.applicationContext.getString(R.string.ImportPrivateKeys));
+                }
             }
         });
 
         // action bar menu
         ActionBarMenu menu = actionBar.createMenu();
         ActionBarMenuItem headerItem = menu.addItem(0, R.drawable.ic_ab_other);
+        headerItem.addSubItem(ID_MENU_MANAGE_KEYS, ApplicationLoader.applicationContext.getString(R.string.E2EManagePrivateKeys));
         headerItem.addSubItem(ID_MENU_ENABLE_QR, MrMailbox.getConfigInt("qr_enabled", 0)!=0? "Labs: Disable QR code options" : "Labs: Enable QR code options");
 
         // create object to hold the whole view
@@ -315,12 +320,6 @@ public class SettingsAdvFragment extends BaseFragment implements NotificationCen
                     });
                     showDialog(builder1.create());
 
-                }
-                else if(i==manageKeysRow )
-                {
-                    imexShowMenu(ApplicationLoader.applicationContext.getString(R.string.E2EManagePrivateKeys),
-                            MrMailbox.MR_IMEX_EXPORT_SELF_KEYS, ApplicationLoader.applicationContext.getString(R.string.ExportPrivateKeys),
-                            MrMailbox.MR_IMEX_IMPORT_SELF_KEYS, ApplicationLoader.applicationContext.getString(R.string.ImportPrivateKeys));
                 }
                 else if( i == backupRow )
                 {
@@ -639,11 +638,8 @@ public class SettingsAdvFragment extends BaseFragment implements NotificationCen
                 else if( i==initiateKeyTransferRow ) {
                     textCell.setText(mContext.getString(R.string.AutocryptKeyTransferInitiate), true);
                 }
-                else if( i==manageKeysRow ) {
-                    textCell.setText(mContext.getString(R.string.E2EManagePrivateKeys), false);
-                }
                 else if( i==backupRow ) {
-                    textCell.setText(mContext.getString(R.string.Backup), true);
+                    textCell.setText(mContext.getString(R.string.Backup), false);
                 }
                 else if( i == accountSettingsRow ) {
                     textCell.setText(mContext.getString(R.string.AccountSettings), true);
