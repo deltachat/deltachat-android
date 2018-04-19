@@ -43,6 +43,9 @@ import android.view.ViewTreeObserver;
 import android.widget.FrameLayout;
 import android.widget.Toast;
 
+import com.b44t.messenger.Cells.ChatlistCell;
+import com.b44t.messenger.Cells.HeaderCell;
+import com.b44t.messenger.Cells.TextInfoCell;
 import com.b44t.messenger.Cells.TextSettingsCell;
 import com.b44t.messenger.aosp.LinearLayoutManager;
 import com.b44t.messenger.aosp.RecyclerView;
@@ -70,9 +73,12 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
     private int user_id;  // show the profile of a single user
     private int chat_id;  // show the profile of a group
 
-    private final int ROWTYPE_TEXT_SETTINGS = 3;
-    private final int ROWTYPE_CONTACT = 4;
+    private final int ROWTYPE_TEXT_SETTINGS = 2;
+    private final int ROWTYPE_CONTACT = 3;
+    private final int ROWTYPE_CHAT = 4;
     private final int ROWTYPE_SHADOW = 5;
+    private final int ROWTYPE_INFO = 6;
+    private final int ROWTYPE_HEADER = 7;
 
     private RecyclerListView listView;
     private ListAdapter listAdapter;
@@ -85,7 +91,6 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
     private int extraHeight;
 
     private AvatarUpdater avatarUpdater;
-    private int[] sortedUserIds;
 
     private final static int ID_BLOCK_CONTACT = 3;
     private final static int ID_DELETE_CONTACT = 5;
@@ -98,11 +103,15 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
     private int compareKeysRow = -1;
     private int addMemberRow = -1;
 
-    private int membersSectionRow = -1;
+    private int[] memberlistUserIds;
+    private int memberlistHeaderRow = -1;
+    private int memberlistFirstRow = -1;
+    private int memberlistLastRow = -1;
 
-    private int firstMemberRow = -1;
-    private int lastMemberRow = -1;
-
+    private MrChatlist chatlist = new MrChatlist(0);
+    private int chatlistHeaderRow = -1;
+    private int chatlistFirstRow = -1;
+    private int chatlistLastRow = -1;
 
     private int rowCount = 0;
 
@@ -144,6 +153,8 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
         user_id = arguments.getInt("user_id", 0);
         chat_id = getArguments().getInt("chat_id", 0);
         if (user_id != 0) {
+            chatlist = MrMailbox.getChatlist(0, null, user_id);
+
             TLRPC.User user = MrMailbox.getUser(user_id);
             if (user == null) {
                 return false;
@@ -152,7 +163,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
             NotificationCenter.getInstance().addObserver(this, NotificationCenter.contactsDidLoaded);
 
         } else if (chat_id != 0) {
-            sortedUserIds = MrMailbox.getChatContacts(chat_id);
+            memberlistUserIds = MrMailbox.getChatContacts(chat_id);
 
             avatarUpdater = new AvatarUpdater();
             avatarUpdater.returnOnly = true;
@@ -430,11 +441,11 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                     });
                     presentFragment(fragment);
                 }
-                else if (position >= firstMemberRow && position <= lastMemberRow)
+                else if (position >= memberlistFirstRow && position <= memberlistLastRow)
                 {
-                    int curr_user_index = position - firstMemberRow;
-                    if(curr_user_index>=0 && curr_user_index<sortedUserIds.length) {
-                        int curr_user_id = sortedUserIds[curr_user_index];
+                    int curr_user_index = position - memberlistFirstRow;
+                    if(curr_user_index>=0 && curr_user_index< memberlistUserIds.length) {
+                        int curr_user_id = memberlistUserIds[curr_user_index];
                         if( curr_user_id > MrContact.MR_CONTACT_ID_LAST_SPECIAL ) {
                             Bundle args = new Bundle();
                             args.putInt("user_id", curr_user_id);
@@ -448,12 +459,12 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
         listView.setOnItemLongClickListener(new RecyclerListView.OnItemLongClickListener() {
             @Override
             public boolean onItemClick(View view, int position) {
-                if (position >= firstMemberRow && position <= lastMemberRow)
+                if (position >= memberlistFirstRow && position <= memberlistLastRow)
                 {
-                    int curr_user_index = position - firstMemberRow;
-                    if(curr_user_index>=0 && curr_user_index<sortedUserIds.length)
+                    int curr_user_index = position - memberlistFirstRow;
+                    if(curr_user_index>=0 && curr_user_index< memberlistUserIds.length)
                     {
-                        final int curr_user_id = sortedUserIds[curr_user_index];
+                        final int curr_user_id = memberlistUserIds[curr_user_index];
                         AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
                         CharSequence[] items = new CharSequence[]{context.getString(curr_user_id==MrContact.MR_CONTACT_ID_SELF? R.string.LeaveGroup : R.string.RemoveMember)};
                         builder.setItems(items, new DialogInterface.OnClickListener() {
@@ -701,7 +712,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                     updateProfileData();
                 }
             } else if (chat_id != 0) {
-                sortedUserIds = MrMailbox.getChatContacts(chat_id);
+                memberlistUserIds = MrMailbox.getChatContacts(chat_id);
                 updateRowsIds();
                 updateProfileData();
                 listAdapter.notifyDataSetChanged();
@@ -829,13 +840,13 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
 
         rowCount = 0;
 
+        if( (user_id!=0 && user_id!=MrContact.MR_CONTACT_ID_SELF) || (chat_id!=0 && chat_id!=MrChat.MR_CHAT_ID_DEADDROP)) {
+            changeNameRow = rowCount++;
+        }
+
         if( (chat_id!=0 /*&& (chat_id!=MrChat.MR_CHAT_ID_DEADDROP || MrMailbox.getConfigInt("show_deaddrop", 0)!=0)*/)
          || MrMailbox.getChatIdByContactId(user_id)!=0 ) {
             settingsNotificationsRow = rowCount++;
-        }
-
-        if( (user_id!=0 && user_id!=MrContact.MR_CONTACT_ID_SELF) || (chat_id!=0 && chat_id!=MrChat.MR_CHAT_ID_DEADDROP)) {
-            changeNameRow = rowCount++;
         }
 
         if (user_id != 0) {
@@ -847,12 +858,19 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
 
         if( chat_id != 0 ) {
             if( rowCount > 1/*first empty row is always added*/ ) {
-                membersSectionRow = rowCount++;
+                memberlistHeaderRow = rowCount++;
             }
+            memberlistFirstRow = rowCount;
+            rowCount += memberlistUserIds.length;
+            memberlistLastRow = rowCount-1;
+        }
+        else if( user_id != 0 && chatlist.getCnt()>0 ) {
+            memberlistHeaderRow = rowCount++;
+            chatlistHeaderRow = rowCount++;
 
-            firstMemberRow = rowCount;
-            rowCount += sortedUserIds.length;
-            lastMemberRow = rowCount-1;
+            chatlistFirstRow = rowCount;
+            rowCount += chatlist.getCnt();
+            chatlistLastRow = rowCount-1;
         }
     }
 
@@ -950,33 +968,28 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
             View view = null;
             switch (viewType) {
                 case ROWTYPE_TEXT_SETTINGS:
-                    view = new TextSettingsCell(mContext) {
-                        @Override
-                        public boolean onTouchEvent(MotionEvent event) {
-                            if (Build.VERSION.SDK_INT >= 21 && getBackground() != null) {
-                                if (event.getAction() == MotionEvent.ACTION_DOWN || event.getAction() == MotionEvent.ACTION_MOVE) {
-                                    getBackground().setHotspot(event.getX(), event.getY());
-                                }
-                            }
-                            return super.onTouchEvent(event);
-                        }
-                    };
+                    view = new TextSettingsCell(mContext);
                     break;
+
                 case ROWTYPE_CONTACT:
-                    view = new UserCell(mContext, 0) {
-                        @Override
-                        public boolean onTouchEvent(MotionEvent event) {
-                            if (Build.VERSION.SDK_INT >= 21 && getBackground() != null) {
-                                if (event.getAction() == MotionEvent.ACTION_DOWN || event.getAction() == MotionEvent.ACTION_MOVE) {
-                                    getBackground().setHotspot(event.getX(), event.getY());
-                                }
-                            }
-                            return super.onTouchEvent(event);
-                        }
-                    };
+                    view = new UserCell(mContext, 0);
                     break;
+
+                case ROWTYPE_CHAT:
+                    view = new ChatlistCell(mContext);
+                    break;
+
                 case ROWTYPE_SHADOW:
                     view = new ShadowSectionCell(mContext);
+                    break;
+
+                case ROWTYPE_INFO:
+                    view = new TextInfoCell(mContext);
+                    break;
+
+                case ROWTYPE_HEADER:
+                    view = new HeaderCell(mContext);
+                    view.setBackgroundColor(0xffffffff);
                     break;
             }
             view.setLayoutParams(new RecyclerView.LayoutParams(RecyclerView.LayoutParams.MATCH_PARENT, RecyclerView.LayoutParams.WRAP_CONTENT));
@@ -1002,19 +1015,49 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                         textCell.setText(mContext.getString(R.string.AddMember), false);
                     }
                     break;
+
                 case ROWTYPE_CONTACT:
                     UserCell userCell = ((UserCell) holder.itemView);
-                    int curr_user_index = i - firstMemberRow;
-                    if(curr_user_index>=0 && curr_user_index<sortedUserIds.length) {
-                        int curr_user_id = sortedUserIds[curr_user_index];
+                    int curr_user_index = i - memberlistFirstRow;
+                    if(curr_user_index>=0 && curr_user_index< memberlistUserIds.length) {
+                        int curr_user_id = memberlistUserIds[curr_user_index];
                         MrContact mrContact = MrMailbox.getContact(curr_user_id);
                             userCell.setData(mrContact);
                     }
                     break;
 
+                case ROWTYPE_CHAT:
+                    ChatlistCell chatlistCell = ((ChatlistCell) holder.itemView);
+                    int curr_chatlist_index = i - chatlistFirstRow;
+                    if(curr_chatlist_index>=0 && curr_chatlist_index< chatlist.getCnt()) {
+                        chatlistCell.useSeparator = (curr_chatlist_index != chatlist.getCnt() - 1);
+                        MrChat mrChat = chatlist.getChatByIndex(curr_chatlist_index);
+                        MrLot mrSummary = chatlist.getSummaryByIndex(curr_chatlist_index, mrChat);
+
+                        chatlistCell.setChat(mrChat, mrSummary, -1,
+                                true /*always show unread count*/);
+                    }
+                    break;
+
+                case ROWTYPE_INFO:
+                    TextInfoCell infoCell = ((TextInfoCell) holder.itemView);
+                    infoCell.setText("foo");
+                    infoCell.setBackgroundResource(R.drawable.greydivider);
+                    checkBackground = false;
+                    break;
+
+                case ROWTYPE_HEADER:
+                    HeaderCell headerCell = ((HeaderCell) holder.itemView);
+                    if( i ==chatlistHeaderRow ) {
+                        headerCell.setText(mContext.getString(R.string.SharedChats));
+                    }
+                    break;
+
                 default:
                     checkBackground = false;
+                    break;
             }
+
             if (checkBackground) {
                 boolean enabled = false;
                 if (user_id != 0) {
@@ -1027,7 +1070,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                             || i == changeNameRow
                             || i== compareKeysRow
                             || i == addMemberRow
-                            || (i >= firstMemberRow && i <= lastMemberRow);
+                            || (i >= memberlistFirstRow && i <= memberlistLastRow);
                 }
                 if (enabled) {
                     if (holder.itemView.getBackground() == null) {
@@ -1050,10 +1093,15 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
         public int getItemViewType(int i) {
             if ( i == changeNameRow || i==compareKeysRow || i==startChatRow || i == settingsNotificationsRow || i == addMemberRow) {
                 return ROWTYPE_TEXT_SETTINGS;
-            } else if (i >= firstMemberRow && i <= lastMemberRow) {
+            } else if (i >= memberlistFirstRow && i <= memberlistLastRow) {
                 return ROWTYPE_CONTACT;
-            } else if(i==membersSectionRow) {
+            } else if (i >= chatlistFirstRow && i <= chatlistLastRow) {
+                return ROWTYPE_CHAT;
+            } else if(i== memberlistHeaderRow) {
                 return ROWTYPE_SHADOW;
+            }
+            else if(i==chatlistHeaderRow) {
+                return ROWTYPE_HEADER;
             }
             return 0;
         }

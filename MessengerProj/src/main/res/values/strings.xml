@@ -440,4 +440,5 @@
     <string name="Autocrypt">Autocrypt</string>
     <string name="AutocryptExplain"><![CDATA[<i>]]>Autocrypt<![CDATA[</i>]]> is a new and open specification for e-mail end-to-end encryption.\n\nYour end-to-end setup is created automatically as needed and you can transfer it between devices with <![CDATA[<i>]]>Autocrypt Setup Messages.<![CDATA[</i>]]></string>
     <string name="NewVerifiedGroup">New verified group</string>
+    <string name="SharedChats">Shared chats</string>
 </resources>

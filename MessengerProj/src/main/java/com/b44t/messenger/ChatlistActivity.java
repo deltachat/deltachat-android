@@ -1092,7 +1092,7 @@ public class ChatlistActivity extends BaseFragment implements NotificationCenter
         }
 
         public void reloadChatlist() {
-            m_chatlist = MrMailbox.getChatlist(m_listflags, null);
+            m_chatlist = MrMailbox.getChatlist(m_listflags, null, 0);
         }
         public ChatlistAdapter(Context context, int listflags) {
             mContext = context;
@@ -1183,7 +1183,7 @@ public class ChatlistActivity extends BaseFragment implements NotificationCenter
 
             rowCount = 0;
 
-            m_chatlist = MrMailbox.getChatlist(0, query);
+            m_chatlist = MrMailbox.getChatlist(0, query, 0);
             m_chatlistCnt = m_chatlist.getCnt();
             if( m_chatlistCnt>0 ) {
                 rowChatsHeadline = rowCount++;

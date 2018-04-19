@@ -121,8 +121,8 @@ public class MrMailbox {
     // chats
     public final static int MR_GCL_ARCHIVED_ONLY = 0x01;
     public final static int MR_GCL_NO_SPECIALS = 0x02;
-    public static MrChatlist getChatlist(int listflags, String query) {
-        return new MrChatlist(MrMailboxGetChatlist(m_hMailbox, listflags, query));
+    public static MrChatlist getChatlist(int listflags, String query, int queryId) {
+        return new MrChatlist(MrMailboxGetChatlist(m_hMailbox, listflags, query, queryId));
     }
 
     public static MrChat getChat(int chat_id) {
@@ -157,7 +157,7 @@ public class MrMailbox {
     public native static int[] getChatContacts(int chat_id);
     public native static void deleteChat(int chat_id);
 
-    private native static long    MrMailboxGetChatlist       (long hMailbox, int listflags, String query); // returns hChatlist which must be unref'd after usage
+    private native static long    MrMailboxGetChatlist       (long hMailbox, int listflags, String query, int queryId); // returns hChatlist which must be unref'd after usage
     private native static long    MrMailboxGetChat           (long hMailbox, int chat_id); // return hChat which must be unref'd after usage
 
 
