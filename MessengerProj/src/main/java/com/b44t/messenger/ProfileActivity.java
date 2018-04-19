@@ -552,8 +552,8 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
         nameTextView.setTextColor(Theme.ACTION_BAR_TITLE_COLOR);
         nameTextView.setTextSize(18);
         nameTextView.setGravity(Gravity.START);
-        nameTextView.setLeftDrawableTopPadding(-AndroidUtilities.dp(1.3f));
-        nameTextView.setRightDrawableTopPadding(-AndroidUtilities.dp(1.3f));
+        nameTextView.setLeftDrawableTopPadding(-AndroidUtilities.dp(1.0f));
+        nameTextView.setRightDrawableTopPadding(-AndroidUtilities.dp(1.0f));
         nameTextView.setPivotX(0);
         nameTextView.setPivotY(0);
         frameLayout.addView(nameTextView, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.START | Gravity.TOP, 118-ANIM_OFF, 0, 0, 0));
@@ -890,12 +890,16 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
         if (!nameTextView.getText().equals(newString)) {
             nameTextView.setText(newString);
         }
+
+        if( (mrChat!=null? mrChat.isVerified() : mrContact.isVerified()) ) {
+            nameTextView.setRightDrawable(R.drawable.verified);
+        }
+
         if (!subtitleTextView.getText().equals(newString2)) {
             subtitleTextView.setText(newString2);
         }
 
         ContactsController.setupAvatar(avatarImage, avatarImage.imageReceiver, avatarDrawable, mrContact, mrChat);
-        avatarImage.setVerifiedDrawable(mrChat!=null? mrChat.isVerified() : mrContact.isVerified());
     }
 
     private void createActionBarMenu() {
