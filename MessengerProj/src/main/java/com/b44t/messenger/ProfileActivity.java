@@ -70,9 +70,9 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
     private int user_id;  // show the profile of a single user
     private int chat_id;  // show the profile of a group
 
-    private final int typeTextCell = 3;
-    private final int typeContactCell = 4;
-    private final int typeSection = 5;
+    private final int ROWTYPE_TEXT_SETTINGS = 3;
+    private final int ROWTYPE_CONTACT = 4;
+    private final int ROWTYPE_SHADOW = 5;
 
     private RecyclerListView listView;
     private ListAdapter listAdapter;
@@ -949,7 +949,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
         public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             View view = null;
             switch (viewType) {
-                case typeTextCell:
+                case ROWTYPE_TEXT_SETTINGS:
                     view = new TextSettingsCell(mContext) {
                         @Override
                         public boolean onTouchEvent(MotionEvent event) {
@@ -962,7 +962,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                         }
                     };
                     break;
-                case typeContactCell:
+                case ROWTYPE_CONTACT:
                     view = new UserCell(mContext, 0) {
                         @Override
                         public boolean onTouchEvent(MotionEvent event) {
@@ -975,7 +975,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                         }
                     };
                     break;
-                case typeSection:
+                case ROWTYPE_SHADOW:
                     view = new ShadowSectionCell(mContext);
                     break;
             }
@@ -987,7 +987,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
         public void onBindViewHolder(RecyclerView.ViewHolder holder, int i) {
             boolean checkBackground = true;
             switch (holder.getItemViewType()) {
-                case typeTextCell:
+                case ROWTYPE_TEXT_SETTINGS:
                     TextSettingsCell textCell = (TextSettingsCell) holder.itemView;
                     textCell.setTextColor(0xff212121);
                     if (i == changeNameRow) {
@@ -1002,7 +1002,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                         textCell.setText(mContext.getString(R.string.AddMember), false);
                     }
                     break;
-                case typeContactCell:
+                case ROWTYPE_CONTACT:
                     UserCell userCell = ((UserCell) holder.itemView);
                     int curr_user_index = i - firstMemberRow;
                     if(curr_user_index>=0 && curr_user_index<sortedUserIds.length) {
@@ -1049,11 +1049,11 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
         @Override
         public int getItemViewType(int i) {
             if ( i == changeNameRow || i==compareKeysRow || i==startChatRow || i == settingsNotificationsRow || i == addMemberRow) {
-                return typeTextCell;
+                return ROWTYPE_TEXT_SETTINGS;
             } else if (i >= firstMemberRow && i <= lastMemberRow) {
-                return typeContactCell;
+                return ROWTYPE_CONTACT;
             } else if(i==membersSectionRow) {
-                return typeSection;
+                return ROWTYPE_SHADOW;
             }
             return 0;
         }
