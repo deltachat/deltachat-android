@@ -60,7 +60,6 @@ public class ChatAvatarContainer extends FrameLayout {
         titleTextView.setTextColor(Theme.ACTION_BAR_TITLE_COLOR);
         titleTextView.setTextSize(18);
         titleTextView.setGravity(Gravity.START);
-        titleTextView.setLeftDrawableTopPadding(-AndroidUtilities.dp(1.3f));
         titleTextView.setRightDrawableTopPadding(-AndroidUtilities.dp(1.3f));
         addView(titleTextView);
 
@@ -111,7 +110,7 @@ public class ChatAvatarContainer extends FrameLayout {
     }
 
     public void setTitleIcons(int leftIcon, int rightIcon) {
-        titleTextView.setLeftDrawable(leftIcon);
+        subtitleTextView.setLeftDrawable(leftIcon);
         titleTextView.setRightDrawable(rightIcon);
     }
 
