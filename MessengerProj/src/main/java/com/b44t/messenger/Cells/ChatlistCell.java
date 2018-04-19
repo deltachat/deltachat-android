@@ -84,9 +84,10 @@ public class ChatlistCell extends BaseCell {
     private int nameLeft;
     private StaticLayout nameLayout;
     private boolean drawGroupIcon;
-    private int nameMuteLeft;
+    private int nameVerifiedLeft;
     private int nameLockLeft;
     private int nameLockTop;
+    private int muteLeft;
 
     private int timeLeft;
     private int timeTop = AndroidUtilities.dp(17);
@@ -356,8 +357,8 @@ public class ChatlistCell extends BaseCell {
             }
         }
 
-        if (chatMuted) {
-            int w = AndroidUtilities.dp(6) + muteDrawable.getIntrinsicWidth();
+        if (chatVerified) {
+            int w = AndroidUtilities.dp(6) + verifiedDrawable.getIntrinsicWidth();
             nameWidth -= w;
             if (LocaleController.isRTL) {
                 nameLeft += w;
@@ -437,6 +438,15 @@ public class ChatlistCell extends BaseCell {
             drawCount = true;
         }
 
+        if (chatMuted) {
+            muteLeft = messageLeft;
+            int w = AndroidUtilities.dp(6) + muteDrawable.getIntrinsicWidth();
+            messageWidth -= w;
+            if (!LocaleController.isRTL) {
+                messageLeft += w;
+            }
+        }
+
         messageWidth = Math.max(AndroidUtilities.dp(12), messageWidth);
         CharSequence messageStringFinal = TextUtils.ellipsize(messageString, currentMessagePaint, messageWidth - AndroidUtilities.dp(12), TextUtils.TruncateAt.END);
         try {
@@ -451,8 +461,8 @@ public class ChatlistCell extends BaseCell {
             if (nameLayout != null && nameLayout.getLineCount() > 0) {
                 left = nameLayout.getLineLeft(0);
                 widthpx = Math.ceil(nameLayout.getLineWidth(0));
-                if (chatMuted) {
-                    nameMuteLeft = (int) (nameLeft + (nameWidth - widthpx) - AndroidUtilities.dp(6) - muteDrawable.getIntrinsicWidth());
+                if (chatVerified) {
+                    nameVerifiedLeft = (int) (nameLeft + (nameWidth - widthpx) - AndroidUtilities.dp(6) - muteDrawable.getIntrinsicWidth());
                 }
                 if (left == 0) {
                     if (widthpx < nameWidth) {
@@ -478,8 +488,8 @@ public class ChatlistCell extends BaseCell {
                         nameLeft -= (nameWidth - widthpx);
                     }
                 }
-                if (chatMuted) {
-                    nameMuteLeft = (int) (nameLeft + left + AndroidUtilities.dp(6));
+                if (chatVerified) {
+                    nameVerifiedLeft = (int) (nameLeft + left + AndroidUtilities.dp(6));
                 }
             }
             if (messageLayout != null && messageLayout.getLineCount() > 0) {
@@ -604,8 +614,13 @@ public class ChatlistCell extends BaseCell {
             }
         }
 
+        if (chatVerified) {
+            setDrawableBounds(verifiedDrawable, nameVerifiedLeft, AndroidUtilities.dp(16.5f));
+            verifiedDrawable.draw(canvas);
+        }
+
         if (chatMuted) {
-            setDrawableBounds(muteDrawable, nameMuteLeft, AndroidUtilities.dp(16.5f));
+            setDrawableBounds(muteDrawable, muteLeft, AndroidUtilities.dp(44));
             muteDrawable.draw(canvas);
         }
 
@@ -634,12 +649,6 @@ public class ChatlistCell extends BaseCell {
         }
         else {
             avatarImage.draw(canvas);
-        }
-
-        if (chatVerified) {
-            int verifiedWH = (int)((float)avatarWH * 0.4f);
-            setDrawableBounds(verifiedDrawable, avatarLeft+avatarWH-verifiedWH, avatarTop+avatarWH-verifiedWH, verifiedWH, verifiedWH);
-            verifiedDrawable.draw(canvas);
         }
 
         if (useSeparator) {
