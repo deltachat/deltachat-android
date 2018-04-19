@@ -1653,13 +1653,17 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
     }
 
     private void updateTitleIcons() {
-        int rightIcon = 0;
+        int leftIcon = 0, rightIcon = 0;
         if( m_canMute && MrMailbox.isDialogMuted(dialog_id) ) {
-            rightIcon = R.drawable.mute_fixed;
+            leftIcon = R.drawable.mute_fixed;
+        }
+
+        if( m_mrChat!=null && m_mrChat.isVerified() ) {
+            rightIcon = R.drawable.verified;
         }
 
         if (avatarContainer != null)  {
-            avatarContainer.setTitleIcons(0, rightIcon);
+            avatarContainer.setTitleIcons(leftIcon, rightIcon);
         }
 
         if( muteMenuEntry != null ) {

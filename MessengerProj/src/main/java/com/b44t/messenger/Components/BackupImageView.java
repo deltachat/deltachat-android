@@ -42,8 +42,6 @@ public class BackupImageView extends View {
     public ImageReceiver imageReceiver;
     private int width = -1;
     private int height = -1;
-    private static Drawable verifiedDrawable = null;
-    private boolean drawVerifiedDrawable = false;
 
     public BackupImageView(Context context) {
         super(context);
@@ -123,20 +121,6 @@ public class BackupImageView extends View {
         imageReceiver.setAspectFit(value);
     }
 
-    public void setVerifiedDrawable(boolean enable)
-    {
-        if( enable && verifiedDrawable == null ) {
-            verifiedDrawable = getResources().getDrawable(R.drawable.verified);
-        }
-        drawVerifiedDrawable = enable;
-
-        // can be deleted if this gets out-of-labs
-        if( drawVerifiedDrawable && MrMailbox.getConfigInt("qr_enabled", 0)==0 ) {
-            drawVerifiedDrawable = false;
-        }
-        // /can be deleted if this gets out-of-labs
-    }
-
     public ImageReceiver getImageReceiver() {
         return imageReceiver;
     }
@@ -174,12 +158,5 @@ public class BackupImageView extends View {
         }
         imageReceiver.setImageCoords(x, y, w, h);
         imageReceiver.draw(canvas);
-
-        if( drawVerifiedDrawable ) {
-            int verifiedWH = (int)((float)w * 0.4f);
-            verifiedDrawable.setBounds(x+w-verifiedWH, y+h-verifiedWH, x+w, y+h);
-            verifiedDrawable.draw(canvas);
-        }
-
     }
 }
