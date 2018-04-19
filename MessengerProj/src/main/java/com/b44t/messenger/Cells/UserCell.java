@@ -24,6 +24,7 @@
 package com.b44t.messenger.Cells;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.view.Gravity;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -32,6 +33,7 @@ import com.b44t.messenger.AndroidUtilities;
 import com.b44t.messenger.ContactsController;
 import com.b44t.messenger.LocaleController;
 import com.b44t.messenger.MrContact;
+import com.b44t.messenger.MrMailbox;
 import com.b44t.messenger.R;
 import com.b44t.messenger.Components.AvatarDrawable;
 import com.b44t.messenger.Components.BackupImageView;
@@ -44,17 +46,10 @@ public class UserCell extends FrameLayout {
     private BackupImageView avatarImageView;
     private SimpleTextView nameTextView;
     private SimpleTextView statusTextView;
-    private ImageView imageView;
     private CheckBoxView checkBox;
 
     private AvatarDrawable avatarDrawable;
     private MrContact m_mrContact;
-
-    private CharSequence currentName;
-    private CharSequence currentStatus;
-    private int          currentResId;
-
-    private int statusColor = 0xffa8a8a8;
 
     public UserCell(Context context, int useCheckboxes) {
         super(context);
@@ -75,13 +70,9 @@ public class UserCell extends FrameLayout {
 
         statusTextView = new SimpleTextView(context);
         statusTextView.setTextSize(14);
+        statusTextView.setTextColor(0xffa8a8a8);
         statusTextView.setGravity(Gravity.START | Gravity.TOP);
         addView(statusTextView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, 20, Gravity.START | Gravity.TOP, LocaleController.isRTL ? 28 : (68 + padding), 34.5f, LocaleController.isRTL ? (68 + padding) : 28, 0));
-
-        imageView = new ImageView(context);
-        imageView.setScaleType(ImageView.ScaleType.CENTER);
-        imageView.setVisibility(GONE);
-        addView(imageView, LayoutHelper.createFrame(LayoutParams.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, Gravity.START | Gravity.CENTER_VERTICAL, LocaleController.isRTL ? 0 : 16, 0, LocaleController.isRTL ? 16 : 0, 0));
 
         if( useCheckboxes == 1 ) {
             checkBox = new CheckBoxView(context, R.drawable.round_check2);
@@ -92,11 +83,6 @@ public class UserCell extends FrameLayout {
 
     public void setData(MrContact mrContact) {
         m_mrContact = mrContact;
-        if( m_mrContact != null ) {
-            currentName = m_mrContact.getDisplayName();
-            currentStatus = m_mrContact.getAddr();
-        }
-        currentResId = 0;
         update();
     }
 
@@ -114,31 +100,25 @@ public class UserCell extends FrameLayout {
         super.onMeasure(MeasureSpec.makeMeasureSpec(MeasureSpec.getSize(widthMeasureSpec), MeasureSpec.EXACTLY), MeasureSpec.makeMeasureSpec(AndroidUtilities.dp(64), MeasureSpec.EXACTLY));
     }
 
-    public void setStatusColors(int color) {
-        statusColor = color;
-    }
-
     public void update() {
         if (m_mrContact==null) {
             return;
         }
 
-        if (currentName != null) {
-            nameTextView.setText(currentName);
-        }
+        nameTextView.setText(m_mrContact.getDisplayName());
 
-        if (currentStatus != null) {
-            statusTextView.setTextColor(statusColor);
-            statusTextView.setText(currentStatus);
-        }
+        statusTextView.setText(m_mrContact.getAddr());
 
-        if (imageView.getVisibility() == VISIBLE && currentResId == 0 || imageView.getVisibility() == GONE && currentResId != 0) {
-            imageView.setVisibility(currentResId == 0 ? GONE : VISIBLE);
-            imageView.setImageResource(currentResId);
+        if( m_mrContact.isVerified() ) {
+            if( MrMailbox.getConfigInt("qr_enabled", 0) != 0 ) {
+                nameTextView.setRightDrawable(R.drawable.check_list);
+            }
+        }
+        else {
+            nameTextView.setRightDrawable(0);
         }
 
         ContactsController.setupAvatar(avatarImageView, avatarImageView.imageReceiver, avatarDrawable, m_mrContact, null);
-        avatarImageView.setVerifiedDrawable(m_mrContact.isVerified());
     }
 
     @Override

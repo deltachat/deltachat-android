@@ -690,7 +690,6 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
         public View getView(int curr_user_index, View convertView, ViewGroup parent) {
             if (convertView == null) {
                 convertView = new UserCell(mContext,1);
-                ((UserCell) convertView).setStatusColors(0xffa8a8a8);
             }
 
             if(curr_user_index>=0 && curr_user_index<contactIds.length) {
