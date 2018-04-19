@@ -158,7 +158,7 @@ public class ChatlistCell extends BaseCell {
             countDrawable = getResources().getDrawable(R.drawable.dialogs_badge);
             groupDrawable = getResources().getDrawable(R.drawable.list_group);
             muteDrawable = getResources().getDrawable(R.drawable.mute_grey);
-            verifiedDrawable = getResources().getDrawable(R.drawable.check_list);
+            verifiedDrawable = getResources().getDrawable(R.drawable.verified);
             closeDrawable = getResources().getDrawable(R.drawable.ic_dismiss_deaddrop);
         }
 

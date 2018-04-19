@@ -126,7 +126,7 @@ public class BackupImageView extends View {
     public void setVerifiedDrawable(boolean enable)
     {
         if( enable && verifiedDrawable == null ) {
-            verifiedDrawable = getResources().getDrawable(R.drawable.check_list);
+            verifiedDrawable = getResources().getDrawable(R.drawable.verified);
         }
         drawVerifiedDrawable = enable;
 

@@ -111,7 +111,7 @@ public class UserCell extends FrameLayout {
 
         if( m_mrContact.isVerified() ) {
             if( MrMailbox.getConfigInt("qr_enabled", 0) != 0 ) {
-                nameTextView.setRightDrawable(R.drawable.check_list);
+                nameTextView.setRightDrawable(R.drawable.verified);
             }
         }
         else {
