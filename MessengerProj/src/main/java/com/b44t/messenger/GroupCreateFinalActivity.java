@@ -266,14 +266,14 @@ public class GroupCreateFinalActivity extends BaseFragment implements Notificati
         @Override
         public View getView(int i, View view, ViewGroup viewGroup) {
             if (view == null) {
-                view = new UserCell(mContext, 1, 0);
+                view = new UserCell(mContext,0);
             }
 
             int curr_user_id = selectedContacts.get(i);
 
             MrContact mrContact = MrMailbox.getContact(curr_user_id);
 
-            ((UserCell) view).setData(mrContact, 0);
+            ((UserCell) view).setData(mrContact);
 
             return view;
         }

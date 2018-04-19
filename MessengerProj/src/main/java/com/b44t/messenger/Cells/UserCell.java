@@ -56,8 +56,10 @@ public class UserCell extends FrameLayout {
 
     private int statusColor = 0xffa8a8a8;
 
-    public UserCell(Context context, int padding, int useCheckboxes) {
+    public UserCell(Context context, int useCheckboxes) {
         super(context);
+
+        int padding = 1;
 
         avatarDrawable = new AvatarDrawable();
 
@@ -88,13 +90,13 @@ public class UserCell extends FrameLayout {
         }
     }
 
-    public void setData(MrContact mrContact, int resId) {
+    public void setData(MrContact mrContact) {
         m_mrContact = mrContact;
         if( m_mrContact != null ) {
             currentName = m_mrContact.getDisplayName();
             currentStatus = m_mrContact.getAddr();
         }
-        currentResId = resId;
+        currentResId = 0;
         update();
     }
 

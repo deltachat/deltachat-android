@@ -237,11 +237,11 @@ public class BlockedUsersActivity extends BaseFragment implements NotificationCe
         @Override
         public View getView(int i, View view, ViewGroup viewGroup) {
             if (view == null) {
-                view = new UserCell(mContext, 1, 0);
+                view = new UserCell(mContext,0);
             }
             if (i>=0 && i<blockedUserIds.length) {
                 MrContact mrContact = MrMailbox.getContact(blockedUserIds[i]);
-                    ((UserCell) view).setData(mrContact, 0);
+                    ((UserCell) view).setData(mrContact);
             }
             return view;
         }

@@ -971,7 +971,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                     };
                     break;
                 case typeContactCell:
-                    view = new UserCell(mContext, 61, 0) {
+                    view = new UserCell(mContext, 0) {
                         @Override
                         public boolean onTouchEvent(MotionEvent event) {
                             if (Build.VERSION.SDK_INT >= 21 && getBackground() != null) {
@@ -1012,7 +1012,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                     } else if (i == startChatRow) {
                         textCell.setText(mContext.getString(R.string.NewChat));
                     } else if (i == settingsNotificationsRow) {
-                        textCell.setTextAndIcon(mContext.getString(R.string.Settings), R.drawable.menu_settings);
+                        textCell.setText(mContext.getString(R.string.Settings));
                     } else if (i == addMemberRow) {
                         textCell.setText(mContext.getString(R.string.AddMember));
                     }
@@ -1023,7 +1023,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                     if(curr_user_index>=0 && curr_user_index<sortedUserIds.length) {
                         int curr_user_id = sortedUserIds[curr_user_index];
                         MrContact mrContact = MrMailbox.getContact(curr_user_id);
-                            userCell.setData(mrContact, curr_user_index==0? R.drawable.menu_newgroup : 0);
+                            userCell.setData(mrContact);
                     }
                     break;
 
