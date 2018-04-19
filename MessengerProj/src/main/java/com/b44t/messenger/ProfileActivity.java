@@ -43,14 +43,13 @@ import android.view.ViewTreeObserver;
 import android.widget.FrameLayout;
 import android.widget.Toast;
 
+import com.b44t.messenger.Cells.TextSettingsCell;
 import com.b44t.messenger.aosp.LinearLayoutManager;
 import com.b44t.messenger.aosp.RecyclerView;
 
 import com.b44t.messenger.ActionBar.BackDrawable;
 import com.b44t.messenger.ActionBar.SimpleTextView;
-import com.b44t.messenger.Cells.EmptyCell;
 import com.b44t.messenger.Cells.ShadowSectionCell;
-import com.b44t.messenger.Cells.TextCell;
 import com.b44t.messenger.Cells.UserCell;
 import com.b44t.messenger.ActionBar.ActionBar;
 import com.b44t.messenger.ActionBar.ActionBarMenu;
@@ -71,7 +70,6 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
     private int user_id;  // show the profile of a single user
     private int chat_id;  // show the profile of a group
 
-    private final int typeEmpty = 0;
     private final int typeTextCell = 3;
     private final int typeContactCell = 4;
     private final int typeSection = 5;
@@ -94,16 +92,13 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
     private final static int ID_ADD_SHORTCUT = 14;
     private final static int ID_COPY_EMAIL_TO_CLIPBOARD = 15;
 
-    private int emptyRow = -1;
     private int settingsNotificationsRow = -1;
     private int changeNameRow = -1;
     private int startChatRow = -1;
     private int compareKeysRow = -1;
     private int addMemberRow = -1;
 
-    private int emptyRowChat = -1;
     private int membersSectionRow = -1;
-    private int emptyRowChat2 = -1;
 
     private int firstMemberRow = -1;
     private int lastMemberRow = -1;
@@ -834,8 +829,6 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
 
         rowCount = 0;
 
-        emptyRow = rowCount++;
-
         if( (chat_id!=0 /*&& (chat_id!=MrChat.MR_CHAT_ID_DEADDROP || MrMailbox.getConfigInt("show_deaddrop", 0)!=0)*/)
          || MrMailbox.getChatIdByContactId(user_id)!=0 ) {
             settingsNotificationsRow = rowCount++;
@@ -854,9 +847,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
 
         if( chat_id != 0 ) {
             if( rowCount > 1/*first empty row is always added*/ ) {
-                emptyRowChat = rowCount++;
                 membersSectionRow = rowCount++;
-                emptyRowChat2 = rowCount++;
             }
 
             firstMemberRow = rowCount;
@@ -954,11 +945,8 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
         public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             View view = null;
             switch (viewType) {
-                case typeEmpty:
-                    view = new EmptyCell(mContext);
-                    break;
                 case typeTextCell:
-                    view = new TextCell(mContext) {
+                    view = new TextSettingsCell(mContext) {
                         @Override
                         public boolean onTouchEvent(MotionEvent event) {
                             if (Build.VERSION.SDK_INT >= 21 && getBackground() != null) {
@@ -995,26 +983,19 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
         public void onBindViewHolder(RecyclerView.ViewHolder holder, int i) {
             boolean checkBackground = true;
             switch (holder.getItemViewType()) {
-                case typeEmpty:
-                    if (i == emptyRowChat || i == emptyRowChat2) {
-                        ((EmptyCell) holder.itemView).setHeight(AndroidUtilities.dp(8));
-                    } else {
-                        ((EmptyCell) holder.itemView).setHeight(AndroidUtilities.dp(14));
-                    }
-                    break;
                 case typeTextCell:
-                    TextCell textCell = (TextCell) holder.itemView;
+                    TextSettingsCell textCell = (TextSettingsCell) holder.itemView;
                     textCell.setTextColor(0xff212121);
                     if (i == changeNameRow) {
-                        textCell.setText(mContext.getString(R.string.EditName));
+                        textCell.setText(mContext.getString(R.string.EditName), true);
                     } else if (i == compareKeysRow) {
-                        textCell.setText(mContext.getString(R.string.Encryption));
+                        textCell.setText(mContext.getString(R.string.Encryption), true);
                     } else if (i == startChatRow) {
-                        textCell.setText(mContext.getString(R.string.NewChat));
+                        textCell.setText(mContext.getString(R.string.NewChat), true);
                     } else if (i == settingsNotificationsRow) {
-                        textCell.setText(mContext.getString(R.string.Settings));
+                        textCell.setText(mContext.getString(R.string.Settings), true);
                     } else if (i == addMemberRow) {
-                        textCell.setText(mContext.getString(R.string.AddMember));
+                        textCell.setText(mContext.getString(R.string.AddMember), false);
                     }
                     break;
                 case typeContactCell:
@@ -1063,9 +1044,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
 
         @Override
         public int getItemViewType(int i) {
-            if (i == emptyRow || i == emptyRowChat || i == emptyRowChat2) {
-                return typeEmpty;
-            } else if ( i == changeNameRow || i==compareKeysRow || i==startChatRow || i == settingsNotificationsRow || i == addMemberRow) {
+            if ( i == changeNameRow || i==compareKeysRow || i==startChatRow || i == settingsNotificationsRow || i == addMemberRow) {
                 return typeTextCell;
             } else if (i >= firstMemberRow && i <= lastMemberRow) {
                 return typeContactCell;

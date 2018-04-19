@@ -69,7 +69,7 @@ public class UserCell extends FrameLayout {
 
         nameTextView = new SimpleTextView(context);
         nameTextView.setTextColor(0xff212121);
-        nameTextView.setTextSize(16); /*same size as in TextCell */
+        nameTextView.setTextSize(16);
         nameTextView.setGravity(Gravity.START | Gravity.TOP);
         addView(nameTextView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, 20, Gravity.START | Gravity.TOP, LocaleController.isRTL ? 28 + (useCheckboxes == 2 ? 18 : 0) : (68 + padding), 11.5f, LocaleController.isRTL ? (68 + padding) : 28 + (useCheckboxes == 2 ? 18 : 0), 0));
 
