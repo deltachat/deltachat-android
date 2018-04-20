@@ -101,12 +101,14 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
     private int changeNameRow = -1;
     private int startChatRow = -1;
     private int compareKeysRow = -1;
-    private int addMemberRow = -1;
+
+    private int listShadowRow = -1;
 
     private int[] memberlistUserIds;
     private int memberlistHeaderRow = -1;
     private int memberlistFirstRow = -1;
     private int memberlistLastRow = -1;
+    private int addMemberRow = -1;
 
     private MrChatlist chatlist = new MrChatlist(0);
     private int chatlistHeaderRow = -1;
@@ -851,22 +853,29 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
 
         if (user_id != 0) {
             compareKeysRow = rowCount++;
-            startChatRow = rowCount++;
-        } else if (chat_id != 0 && chat_id!=MrChat.MR_CHAT_ID_DEADDROP ) {
-            addMemberRow = rowCount++;
         }
 
-        if( chat_id != 0 ) {
-            if( rowCount > 1/*first empty row is always added*/ ) {
-                memberlistHeaderRow = rowCount++;
+        if( chat_id != 0 )
+        {
+            // chat profile
+            if( rowCount > 1 ) { listShadowRow = rowCount++; }
+            memberlistHeaderRow = rowCount++;
+
+            if( chat_id!=MrChat.MR_CHAT_ID_DEADDROP ) {
+                addMemberRow = rowCount++;
             }
+
             memberlistFirstRow = rowCount;
             rowCount += memberlistUserIds.length;
             memberlistLastRow = rowCount-1;
         }
-        else if( user_id != 0 && chatlist.getCnt()>0 ) {
-            memberlistHeaderRow = rowCount++;
+        else if( user_id != 0 )
+        {
+            // user profile
+            if( rowCount > 1 ) { listShadowRow = rowCount++; }
             chatlistHeaderRow = rowCount++;
+
+            startChatRow = rowCount++;
 
             chatlistFirstRow = rowCount;
             rowCount += chatlist.getCnt();
@@ -1008,7 +1017,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                     } else if (i == compareKeysRow) {
                         textCell.setText(mContext.getString(R.string.Encryption), true);
                     } else if (i == startChatRow) {
-                        textCell.setText(mContext.getString(R.string.NewChat), true);
+                        textCell.setText(mContext.getString(R.string.NewChat), false);
                     } else if (i == settingsNotificationsRow) {
                         textCell.setText(mContext.getString(R.string.Settings), true);
                     } else if (i == addMemberRow) {
@@ -1050,6 +1059,9 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                     HeaderCell headerCell = ((HeaderCell) holder.itemView);
                     if( i ==chatlistHeaderRow ) {
                         headerCell.setText(mContext.getString(R.string.SharedChats));
+                    }
+                    else if( i==memberlistHeaderRow) {
+                        headerCell.setText(MrMailbox.getChat(chat_id).getSubtitle());
                     }
                     break;
 
@@ -1093,10 +1105,10 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                 return ROWTYPE_CONTACT;
             } else if (i >= chatlistFirstRow && i <= chatlistLastRow) {
                 return ROWTYPE_CHAT;
-            } else if(i== memberlistHeaderRow) {
+            } else if(i== listShadowRow) {
                 return ROWTYPE_SHADOW;
             }
-            else if(i==chatlistHeaderRow) {
+            else if(i==chatlistHeaderRow || i==memberlistHeaderRow) {
                 return ROWTYPE_HEADER;
             }
             return 0;
