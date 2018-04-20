@@ -99,7 +99,6 @@ public class GroupCreateFinalActivity extends BaseFragment implements Notificati
     @Override
     public View createView(final Context context) {
         actionBar.setBackButtonImage(R.drawable.ic_close_white);
-        actionBar.setAllowOverlayTitle(true);
         actionBar.setTitle(context.getString(R.string.NewGroup));
         actionBar.setActionBarMenuOnItemClick(new ActionBar.ActionBarMenuOnItemClick() {
             @Override

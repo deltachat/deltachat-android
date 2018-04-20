@@ -294,7 +294,6 @@ public class ChatlistActivity extends BaseFragment implements NotificationCenter
         } else {
             actionBar.setTitle(ApplicationLoader.applicationContext.getString(R.string.AppName));
         }
-        actionBar.setAllowOverlayTitle(true);
 
         actionBar.setActionBarMenuOnItemClick(new ActionBar.ActionBarMenuOnItemClick() {
             @Override

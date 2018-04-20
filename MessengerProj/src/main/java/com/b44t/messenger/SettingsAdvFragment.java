@@ -153,7 +153,6 @@ public class SettingsAdvFragment extends BaseFragment implements NotificationCen
     {
         // create action bar
         actionBar.setBackButtonImage(R.drawable.ic_ab_back);
-        actionBar.setAllowOverlayTitle(true);
         actionBar.setTitle(ApplicationLoader.applicationContext.getString(R.string.AdvancedSettings));
         actionBar.setActionBarMenuOnItemClick(new ActionBar.ActionBarMenuOnItemClick() {
             @Override

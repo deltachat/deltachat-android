@@ -201,7 +201,6 @@ public class SettingsAccountFragment extends BaseFragment implements Notificatio
             actionBar.setBackButtonImage(R.drawable.ic_close_white);
         }
 
-        actionBar.setAllowOverlayTitle(true);
         actionBar.setTitle(context.getString(R.string.AccountSettings));
         actionBar.setActionBarMenuOnItemClick(new ActionBar.ActionBarMenuOnItemClick() {
             @Override

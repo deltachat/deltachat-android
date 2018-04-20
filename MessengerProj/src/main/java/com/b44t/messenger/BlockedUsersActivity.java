@@ -73,7 +73,6 @@ public class BlockedUsersActivity extends BaseFragment implements NotificationCe
     @Override
     public View createView(final Context context) {
         actionBar.setBackButtonImage(R.drawable.ic_ab_back);
-        actionBar.setAllowOverlayTitle(true);
         actionBar.setTitle(ApplicationLoader.applicationContext.getString(R.string.BlockedContacts));
         actionBar.setActionBarMenuOnItemClick(new ActionBar.ActionBarMenuOnItemClick() {
             @Override

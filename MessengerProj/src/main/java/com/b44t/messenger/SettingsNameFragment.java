@@ -91,7 +91,6 @@ public class SettingsNameFragment extends BaseFragment {
 
         // create action bar
         actionBar.setBackButtonImage(R.drawable.ic_close_white);
-        actionBar.setAllowOverlayTitle(true);
         actionBar.setTitle(context.getString(R.string.NameAndStatus));
         actionBar.setActionBarMenuOnItemClick(new ActionBar.ActionBarMenuOnItemClick() {
             @Override

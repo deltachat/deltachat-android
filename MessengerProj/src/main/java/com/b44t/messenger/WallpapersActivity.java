@@ -124,7 +124,6 @@ public class WallpapersActivity extends BaseFragment implements NotificationCent
     @Override
     public View createView(final Context context) {
         actionBar.setBackButtonImage(R.drawable.ic_close_white);
-        actionBar.setAllowOverlayTitle(true);
         actionBar.setTitle(context.getString(R.string.ChatBackground));
         actionBar.setActionBarMenuOnItemClick(new ActionBar.ActionBarMenuOnItemClick() {
             @Override

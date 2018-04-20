@@ -175,7 +175,6 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
 
         // initialize action
         actionBar.setBackButtonImage((do_what == SELECT_CONTACTS_FOR_NEW_GROUP||do_what == SELECT_CONTACTS_FOR_NEW_VERIFIED_GROUP)? R.drawable.ic_close_white : R.drawable.ic_ab_back);
-        actionBar.setAllowOverlayTitle(true);
         if( title != null ) {
             actionBar.setTitle(title);
             if( subtitle != null ) {

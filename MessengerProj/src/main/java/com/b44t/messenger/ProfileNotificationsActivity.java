@@ -113,7 +113,6 @@ public class ProfileNotificationsActivity extends BaseFragment implements Notifi
     @Override
     public View createView(final Context context) {
         actionBar.setBackButtonImage(R.drawable.ic_ab_back);
-        actionBar.setAllowOverlayTitle(true);
         actionBar.setTitle(String.format(context.getString(R.string.SettingsFor), m_mrChat.getName()));
         actionBar.setActionBarMenuOnItemClick(new ActionBar.ActionBarMenuOnItemClick() {
             @Override

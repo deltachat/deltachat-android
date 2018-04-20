@@ -100,7 +100,6 @@ public class SettingsFragment extends BaseFragment {
         // (we have also used an action bar menu for less frequently stuff (advanced, backup, account settings) but this needs to be explained -
         // so, if possible, we will avoid this - form follows function)
         actionBar.setBackButtonImage(R.drawable.ic_ab_back);
-        actionBar.setAllowOverlayTitle(true);
         actionBar.setTitle(context.getString(R.string.Settings));
         actionBar.setActionBarMenuOnItemClick(new ActionBar.ActionBarMenuOnItemClick() {
             @Override

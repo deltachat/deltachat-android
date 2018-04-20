@@ -85,7 +85,6 @@ public class AudioSelectActivity extends BaseFragment implements NotificationCen
     @Override
     public View createView(Context context) {
         actionBar.setBackButtonImage(R.drawable.ic_ab_back);
-        actionBar.setAllowOverlayTitle(true);
         actionBar.setTitle(context.getString(R.string.AttachMusic));
         actionBar.setActionBarMenuOnItemClick(new ActionBar.ActionBarMenuOnItemClick() {
             @Override

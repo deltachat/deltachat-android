@@ -71,7 +71,6 @@ public class ActionBar extends FrameLayout {
     private boolean interceptTouches = true;
     private AnimatorSet actionModeAnimation;
 
-    private boolean allowOverlayTitle;
     private CharSequence lastTitle;
     private boolean castShadows = true;
 
@@ -539,10 +538,6 @@ public class ActionBar extends FrameLayout {
         if (menu != null) {
             menu.hideAllPopupMenus();
         }
-    }
-
-    public void setAllowOverlayTitle(boolean value) {
-        allowOverlayTitle = value;
     }
 
     public boolean isSearchFieldVisible() {

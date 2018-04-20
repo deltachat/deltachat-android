@@ -136,7 +136,6 @@ public class SettingsNotificationsFragment extends BaseFragment implements Notif
     @Override
     public View createView(final Context context) {
         actionBar.setBackButtonImage(R.drawable.ic_ab_back);
-        actionBar.setAllowOverlayTitle(true);
         actionBar.setTitle(context.getString(R.string.NotificationsAndSounds));
         actionBar.setActionBarMenuOnItemClick(new ActionBar.ActionBarMenuOnItemClick() {
             @Override
