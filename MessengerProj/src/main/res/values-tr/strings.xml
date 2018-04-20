@@ -387,4 +387,8 @@
     <string name="AutocryptKeyTransferSucceeded">Anahtar transferi başarılı.Bu aygıt artık Autocrypt\'i diğer aygıtla aynı tuşla kullanmaya hazırdır.</string>
     <string name="Retry">Yeniden dene</string>
     <string name="SelfTalkSubtitle">Kendime gönderdiğim iletiler</string>
+    <string name="QrScan">QR kod tara</string>
+    <string name="QrShow">QR kodu göster</string>
+    <string name="OobFingerprint">Parmak izi</string>
+    <string name="Autocrypt">Autocrypt</string>
     </resources>
