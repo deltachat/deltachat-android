@@ -3,6 +3,7 @@
 ## UNRELEASED
 
 * Show shared chats in user profiles
+* Add read timestampts to message info
 * Fix problems with Office 365 and similar services
 * Update Albanian, Catalan, Dutch, German, Norwegian, Polish, Spanish and Turkish translations
 * Add Basque translation
