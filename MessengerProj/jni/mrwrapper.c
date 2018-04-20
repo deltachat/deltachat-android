@@ -411,10 +411,10 @@ JNIEXPORT jint Java_com_b44t_messenger_MrMailbox_createChatByMsgId(JNIEnv *env, 
 }
 
 
-JNIEXPORT jint Java_com_b44t_messenger_MrMailbox_createGroupChat(JNIEnv *env, jclass cls, jstring name)
+JNIEXPORT jint Java_com_b44t_messenger_MrMailbox_createGroupChat(JNIEnv *env, jclass cls, jboolean verified, jstring name)
 {
 	CHAR_REF(name);
-		jint ret = (jint)mrmailbox_create_group_chat(get_mrmailbox_t(env, cls), namePtr);
+		jint ret = (jint)mrmailbox_create_group_chat(get_mrmailbox_t(env, cls), verified, namePtr);
 	CHAR_UNREF(name);
 	return ret;
 }

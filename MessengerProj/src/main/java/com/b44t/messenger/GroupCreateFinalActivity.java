@@ -99,7 +99,7 @@ public class GroupCreateFinalActivity extends BaseFragment implements Notificati
     @Override
     public View createView(final Context context) {
         actionBar.setBackButtonImage(R.drawable.ic_close_white);
-        actionBar.setTitle(context.getString(R.string.NewGroup));
+        actionBar.setTitle(do_what==ContactsActivity.SELECT_CONTACTS_FOR_NEW_VERIFIED_GROUP? context.getString(R.string.NewVerifiedGroup) : context.getString(R.string.NewGroup));
         actionBar.setActionBarMenuOnItemClick(new ActionBar.ActionBarMenuOnItemClick() {
             @Override
             public void onItemClick(int id) {
@@ -111,7 +111,7 @@ public class GroupCreateFinalActivity extends BaseFragment implements Notificati
                         Toast.makeText(getParentActivity(), context.getString(R.string.ErrGroupNameEmpty), Toast.LENGTH_LONG).show();
                         return;
                     }
-                    int chat_id=MrMailbox.createGroupChat(groupName);
+                    int chat_id=MrMailbox.createGroupChat(do_what==ContactsActivity.SELECT_CONTACTS_FOR_NEW_VERIFIED_GROUP, groupName);
                     if( chat_id<=0 ) {
                         /* this should never happen, the group is created locally, there is no reason to fail here */
                         Toast.makeText(getParentActivity(), "ErrCreateGroup", Toast.LENGTH_LONG).show();

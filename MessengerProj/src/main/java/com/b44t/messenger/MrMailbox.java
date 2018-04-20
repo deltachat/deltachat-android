@@ -138,7 +138,7 @@ public class MrMailbox {
     public native static int createChatByContactId(int contact_id);
     public native static int createChatByMsgId    (int msg_id);
 
-    public native static int createGroupChat       (String name);
+    public native static int createGroupChat       (boolean verified, String name);
     public native static int isContactInChat       (int chat_id, int contact_id);
     public native static int addContactToChat      (int chat_id, int contact_id);
     public native static int removeContactFromChat (int chat_id, int contact_id);
