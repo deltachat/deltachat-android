@@ -1059,19 +1059,15 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
             }
 
             if (checkBackground) {
-                boolean enabled = false;
-                if (user_id != 0) {
-                    enabled =  i == settingsNotificationsRow
-                            || i == changeNameRow
-                            || i == compareKeysRow
-                            || i == startChatRow;
-                } else if (chat_id != 0) {
-                    enabled =  i == settingsNotificationsRow
-                            || i == changeNameRow
-                            || i== compareKeysRow
-                            || i == addMemberRow
-                            || (i >= memberlistFirstRow && i <= memberlistLastRow);
-                }
+                boolean enabled =
+                           i == settingsNotificationsRow
+                        || i == changeNameRow
+                        || i == compareKeysRow
+                        || i == startChatRow
+                        || i == addMemberRow
+                        || (i >= chatlistFirstRow && i <= chatlistLastRow)
+                        || (i >= memberlistFirstRow && i <= memberlistLastRow);
+
                 if (enabled) {
                     if (holder.itemView.getBackground() == null) {
                         holder.itemView.setBackgroundResource(R.drawable.list_selector);
