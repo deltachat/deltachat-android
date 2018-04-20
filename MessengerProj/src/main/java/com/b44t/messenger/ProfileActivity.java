@@ -161,9 +161,10 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
             if (user == null) {
                 return false;
             }
-            NotificationCenter.getInstance().addObserver(this, NotificationCenter.updateInterfaces);
             NotificationCenter.getInstance().addObserver(this, NotificationCenter.contactsDidLoaded);
-
+            NotificationCenter.getInstance().addObserver(this, NotificationCenter.dialogsNeedReload);
+            NotificationCenter.getInstance().addObserver(this, NotificationCenter.notificationsSettingsUpdated);
+            NotificationCenter.getInstance().addObserver(this, NotificationCenter.messageSendError);
         } else if (chat_id != 0) {
             memberlistUserIds = MrMailbox.getChatContacts(chat_id);
 
@@ -199,9 +200,10 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
         NotificationCenter.getInstance().removeObserver(this, NotificationCenter.closeChats);
         if (user_id != 0) {
             NotificationCenter.getInstance().removeObserver(this, NotificationCenter.contactsDidLoaded);
-            //MessagesController.getInstance().cancelLoadFullUser(user_id);
+            NotificationCenter.getInstance().removeObserver(this, NotificationCenter.dialogsNeedReload);
+            NotificationCenter.getInstance().removeObserver(this, NotificationCenter.notificationsSettingsUpdated);
+            NotificationCenter.getInstance().removeObserver(this, NotificationCenter.messageSendError);
         } else if (chat_id != 0) {
-            //NotificationCenter.getInstance().removeObserver(this, NotificationCenter.chatInfoDidLoaded);
             avatarUpdater.clear();
         }
     }
@@ -715,7 +717,10 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
     @SuppressWarnings("unchecked")
     @Override
     public void didReceivedNotification(int id, final Object... args) {
+        boolean reloadChatlist = false, updateList = false;
+
         if (id == NotificationCenter.updateInterfaces) {
+            reloadChatlist = true;
             int mask = (Integer) args[0];
             if (user_id != 0) {
                 if ((mask & MrMailbox.UPDATE_MASK_AVATAR) != 0 || (mask & MrMailbox.UPDATE_MASK_NAME) != 0 || (mask & MrMailbox.UPDATE_MASK_STATUS) != 0) {
@@ -728,21 +733,34 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                 listAdapter.notifyDataSetChanged();
 
                 if ((mask & MrMailbox.UPDATE_MASK_AVATAR) != 0 || (mask & MrMailbox.UPDATE_MASK_NAME) != 0 || (mask & MrMailbox.UPDATE_MASK_STATUS) != 0) {
-                    if (listView != null) {
-                        int count = listView.getChildCount();
-                        for (int a = 0; a < count; a++) {
-                            View child = listView.getChildAt(a);
-                            if (child instanceof UserCell) {
-                                ((UserCell) child).update();
-                            }
-                        }
-                    }
+                    updateList = true;
                 }
             }
-        } else if (id == NotificationCenter.contactsDidLoaded) {
+        }
+        else if( id == NotificationCenter.dialogsNeedReload||id==NotificationCenter.notificationsSettingsUpdated||id==NotificationCenter.messageSendError ) {
+            reloadChatlist = true;
+        }
+        else if (id == NotificationCenter.contactsDidLoaded) {
             createActionBarMenu();
         } else if (id == NotificationCenter.closeChats) {
             removeSelfFromStack();
+        }
+
+        if( reloadChatlist && user_id != 0 ) {
+            chatlist = MrMailbox.getChatlist(0, null, user_id);
+            updateRowsIds();
+            listAdapter.notifyDataSetChanged();
+            updateList = true;
+        }
+
+        if( updateList && listView != null ) {
+            int count = listView.getChildCount();
+            for (int a = 0; a < count; a++) {
+                View child = listView.getChildAt(a);
+                if (child instanceof UserCell) {
+                    ((UserCell) child).update();
+                }
+            }
         }
     }
 

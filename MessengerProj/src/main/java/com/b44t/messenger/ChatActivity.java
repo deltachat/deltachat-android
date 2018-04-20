@@ -341,11 +341,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         NotificationCenter.getInstance().removeObserver(this, NotificationCenter.notificationsSettingsUpdated);
         NotificationCenter.getInstance().removeObserver(this, NotificationCenter.audioPlayStateChanged);
 
-        /*
-        if (currentUser != null) {
-            MessagesController.getInstance().cancelLoadFullUser(currentUser.id);
-        }
-        */
         AndroidUtilities.removeAdjustResize(getParentActivity(), classGuid);
 
         if (chatAttachAlert != null) {
