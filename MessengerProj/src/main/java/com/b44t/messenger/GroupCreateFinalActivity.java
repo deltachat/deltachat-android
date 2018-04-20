@@ -59,17 +59,26 @@ public class GroupCreateFinalActivity extends BaseFragment implements Notificati
 
     private final static int done_button = 1;
 
+    int do_what; // values from ContactsActivity
+
     public GroupCreateFinalActivity(Bundle args) {
+
         super(args);
+        if( args != null ) {
+            do_what = args.getInt("do_what", 0);
+            selectedContacts = args.getIntegerArrayList("result"); /* may be empty - in this case a group only with SELF is created */
+        }
+        if( selectedContacts == null ) { selectedContacts = new ArrayList<>(); }
+        if( !selectedContacts.contains(MrContact.MR_CONTACT_ID_SELF) ) {
+            selectedContacts.add(MrContact.MR_CONTACT_ID_SELF);
+        }
     }
 
     @SuppressWarnings("unchecked")
     @Override
     public boolean onFragmentCreate() {
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.updateInterfaces);
-        selectedContacts = getArguments().getIntegerArrayList("result"); /* may be empty - in this case a group only with SELF is created */
-        if( selectedContacts == null ) { selectedContacts = new ArrayList<>(); }
-        selectedContacts.add(MrContact.MR_CONTACT_ID_SELF);
+
         return super.onFragmentCreate();
     }
 

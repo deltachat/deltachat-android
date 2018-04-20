@@ -242,6 +242,7 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
                     result.addAll(selectedContacts.keySet());
                     Bundle args = new Bundle();
                     args.putIntegerArrayList("result", result);
+                    args.putInt("do_what", do_what);
                     presentFragment(new GroupCreateFinalActivity(args));
                 }
             }
@@ -268,8 +269,10 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
 
 
         listViewAdapter = new ContactsAdapter(context, do_what==SELECT_CONTACTS_FOR_NEW_VERIFIED_GROUP? MrMailbox.MR_GCL_VERIFIED_ONLY : 0);
-        listViewAdapter.setCheckedMap(selectedContacts);
 
+        if( do_what == SELECT_CONTACTS_FOR_NEW_GROUP || do_what == SELECT_CONTACTS_FOR_NEW_VERIFIED_GROUP ) {
+            listViewAdapter.setCheckedMap(selectedContacts);
+        }
 
         fragmentView = new LinearLayout(context);
 
@@ -461,7 +464,14 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
                             span.uid = user.id;
                             ignoreChange = false;
                         }
-                        actionBar.setSubtitle(context.getResources().getQuantityString(R.plurals.MeAndMembers, selectedContacts.size(), selectedContacts.size()));
+
+                        int selectedContactsButMe = selectedContacts.size();
+                        if( selectedContacts.containsKey(MrContact.MR_CONTACT_ID_SELF) ) {
+                            selectedContactsButMe--;
+                        }
+
+                        actionBar.setSubtitle(context.getResources().getQuantityString(R.plurals.MeAndMembers, selectedContactsButMe, selectedContactsButMe));
+
                         if (searching || searchWas) {
                             ignoreChange = true;
                             SpannableStringBuilder ssb = new SpannableStringBuilder("");
@@ -697,7 +707,8 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
                 MrContact mrContact = MrMailbox.getContact(curr_user_id);
                 ((UserCell) convertView).setData(mrContact);
                 if (checkedMap != null) {
-                    ((UserCell) convertView).setChecked(checkedMap.containsKey(curr_user_id), !scrolling);
+                    boolean checked = curr_user_id==MrContact.MR_CONTACT_ID_SELF || checkedMap.containsKey(curr_user_id);
+                    ((UserCell) convertView).setChecked(checked, !scrolling);
                 }
             }
 
