@@ -455,6 +455,14 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                         }
                     }
                 }
+                else if( position >= chatlistFirstRow && position<=chatlistLastRow) {
+                    int curr_chatlist_index = position - chatlistFirstRow;
+                    if(curr_chatlist_index>=0 && curr_chatlist_index< chatlist.getCnt()) {
+                        Bundle args = new Bundle();
+                        args.putInt("chat_id", chatlist.getChatByIndex(curr_chatlist_index).getId());
+                        presentFragment(new ChatActivity(args));
+                    }
+                }
             }
         });
 
