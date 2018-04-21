@@ -435,7 +435,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                 else if (position == addMemberRow)
                 {
                     Bundle args = new Bundle();
-                    args.putInt("do_what", ContactsActivity.ADD_CONTACTS_TO_GROUP);
+                    args.putInt("do_what", MrMailbox.getChat(chat_id).isVerified()? ContactsActivity.ADD_CONTACTS_TO_VERIFIED_GROUP : ContactsActivity.ADD_CONTACTS_TO_GROUP);
                     ContactsActivity fragment = new ContactsActivity(args);
                     fragment.setDelegate(new ContactsActivity.ContactsActivityDelegate() {
                         @Override

@@ -88,8 +88,9 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
     public final static int  SELECT_CONTACTS_FOR_NEW_GROUP = 2;
     public final static int  SELECT_CONTACTS_FOR_NEW_VERIFIED_GROUP = 3;
     public final static int  ADD_CONTACTS_TO_GROUP         = 4;
-    public final static int  SELECT_CONTACT_TO_BLOCK       = 5;
-    public final static int  SELECT_CONTACT_TO_ATTACH      = 6;
+    public final static int  ADD_CONTACTS_TO_VERIFIED_GROUP = 5;
+    public final static int  SELECT_CONTACT_TO_BLOCK       = 6;
+    public final static int  SELECT_CONTACT_TO_ATTACH      = 7;
     private final static int id_add_contact                = 20; // do_what is also used as internal IDs
     private final static int id_done_button                = 30;
 
@@ -133,7 +134,7 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
             title      = ApplicationLoader.applicationContext.getString(R.string.NewVerifiedGroup);
             subtitle   = ApplicationLoader.applicationContext.getResources().getQuantityString(R.plurals.MeAndMembers, 0, 0);
         }
-        else if( do_what == ADD_CONTACTS_TO_GROUP )
+        else if( do_what == ADD_CONTACTS_TO_GROUP || do_what == ADD_CONTACTS_TO_VERIFIED_GROUP )
         {
             title = ApplicationLoader.applicationContext.getString(R.string.AddMember);
         }
@@ -267,7 +268,8 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
         item.addSubItem(id_add_contact, context.getString(R.string.NewContactTitle));
 
 
-        listViewAdapter = new ContactsAdapter(context, do_what==SELECT_CONTACTS_FOR_NEW_VERIFIED_GROUP? MrMailbox.MR_GCL_VERIFIED_ONLY : 0);
+        listViewAdapter = new ContactsAdapter(context,
+                (do_what==SELECT_CONTACTS_FOR_NEW_VERIFIED_GROUP||do_what==ADD_CONTACTS_TO_VERIFIED_GROUP)? MrMailbox.MR_GCL_VERIFIED_ONLY : 0);
 
         if( do_what == SELECT_CONTACTS_FOR_NEW_GROUP || do_what == SELECT_CONTACTS_FOR_NEW_VERIFIED_GROUP ) {
             listViewAdapter.setCheckedMap(selectedContacts);
