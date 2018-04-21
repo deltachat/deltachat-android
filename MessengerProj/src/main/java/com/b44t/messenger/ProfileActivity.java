@@ -351,6 +351,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                 {
                     return;
                 }
+
                 if (position == settingsRow)
                 {
                     Bundle args = new Bundle();
@@ -466,7 +467,8 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                     int curr_user_index = position - memberlistFirstRow;
                     if(curr_user_index>=0 && curr_user_index< memberlistUserIds.length) {
                         int curr_user_id = memberlistUserIds[curr_user_index];
-                        if( curr_user_id > MrContact.MR_CONTACT_ID_LAST_SPECIAL ) {
+                        if( curr_user_id == MrContact.MR_CONTACT_ID_SELF
+                         || curr_user_id > MrContact.MR_CONTACT_ID_LAST_SPECIAL ) {
                             Bundle args = new Bundle();
                             args.putInt("user_id", curr_user_id);
                             presentFragment(new ProfileActivity(args));
@@ -888,13 +890,13 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
             changeNameRow = rowCount++;
         }
 
-        if( (chat_id!=0 /*&& (chat_id!=MrChat.MR_CHAT_ID_DEADDROP || MrMailbox.getConfigInt("show_deaddrop", 0)!=0)*/)
-         || MrMailbox.getChatIdByContactId(user_id)!=0 ) {
+        if( (chat_id!=0)
+         || MrMailbox.getChatIdByContactId(user_id)!=0 ) { // no settings if there is no chat yet
             settingsRow = rowCount++;
         }
 
         if (user_id != 0) {
-            if( rowCount > 1 ) { settingsShadowRow = rowCount++; }
+            if( rowCount >= 1 ) { settingsShadowRow = rowCount++; }
             emailHeaderRow = rowCount++;
             emailRow = rowCount++;
             compareKeysRow = rowCount++;
@@ -903,7 +905,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
         if( chat_id != 0 )
         {
             // chat profile
-            if( rowCount > 1 ) { listShadowRow = rowCount++; }
+            if( rowCount >= 1 ) { listShadowRow = rowCount++; }
             memberlistHeaderRow = rowCount++;
 
             if( chat_id!=MrChat.MR_CHAT_ID_DEADDROP ) {
@@ -917,7 +919,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
         else if( user_id != 0 )
         {
             // user profile
-            if( rowCount > 1 ) { listShadowRow = rowCount++; }
+            if( rowCount >= 1 ) { listShadowRow = rowCount++; }
             chatlistHeaderRow = rowCount++;
 
             startChatRow = rowCount++;
