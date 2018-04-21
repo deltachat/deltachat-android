@@ -422,4 +422,5 @@ La dernière clé importée sera utilisée comme nouvelle clé par défaut</stri
     <string name="AutocryptKeyTransferSucceeded">Clé transférée avec succès. Cet appareil est maintenant prêt à utiliser Autocrypt avec la même clé que l\'autre appareil.</string>
     <string name="Retry">Recommencez</string>
     <string name="SelfTalkSubtitle">Messages que je me suis envoyé</string>
+    <string name="Contact">Contact</string>
     </resources>

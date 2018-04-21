@@ -395,4 +395,5 @@
     <string name="QrScan">QR-kód olvasása</string>
     <string name="QrShow">QR-kód megjelenítése</string>
     <string name="OobFingerprint">Ujjlenyomat</string>
+    <string name="Contact">Névjegy</string>
     </resources>

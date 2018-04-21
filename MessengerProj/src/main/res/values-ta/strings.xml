@@ -340,4 +340,5 @@
     <string name="AutocryptKeyTransferPleaseEnterCode">மற்ற சாதனத்தில் காணப்படும் அமைப்பு குறியீடை தயவு செய்து உள்ளீடவும் </string>
     <string name="Retry">மீண்டும் முயற்சி செய்யவும் </string>
     <string name="SelfTalkSubtitle">தங்களுக்கே அனுப்பி கொண்ட செய்திகள் </string>
+    <string name="Contact">தொடர்பு</string>
     </resources>

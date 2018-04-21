@@ -273,4 +273,5 @@
     <string name="DoneHint">성공!</string>
     <string name="Audio">음악</string>
     <string name="AutoplayGifs">GIF 자동재생</string>
+    <string name="Contact">연락처</string>
     </resources>

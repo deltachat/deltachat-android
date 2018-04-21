@@ -429,4 +429,14 @@
     <string name="OobFingerprintOk">Kontakt <![CDATA[<i>]]>%1$s<![CDATA[</i>]]> bekreftet. Start sludring?</string>
     <string name="OobFingerprintMismatch">Det skannede fingeravtrykket <![CDATA[<b>]]>stemmer ikke overens<![CDATA[</b>]]> med sist sette fingeravtrukk for <![CDATA[<i>]]>%1$s<![CDATA[</i>]]>.</string>
     <string name="OobFingerprintWithoutAddr">QR-koden inneholder et fingeravtrykk, men ingen e-postadresse.\n\nFor bekreftelse utenfor programmet, etabler en kryptert tilkobling til mottakeren først.</string>
-    </resources>
+    <string name="OobSecureJoinRequested">%1$s tar del.</string>
+    <string name="CannotDecryptBody">Denne meldingen kan ikke dekrypteres.\n\n• Det kan hjelpe å svare på denne meldingen og spørre avsenderen om å sende den igjen.\n\n• I fall du har reinstallert Delta Chat eller et annet e-postprogram på denne eller en annen enhet, kan du sende en Autocrypt-oppsettsmelding derfra.</string>
+    <string name="Autocrypt">Autocrypt</string>
+    <string name="AutocryptExplain"><![CDATA[<i>]]>Autocrypt<![CDATA[</i>]]> er en ny og åpen spesifikasjon for ende-til-ende-kryptert e-post.\n\nDitt ende-til-ende -oppsett blir opprettet automatisk ved bruk, og du kan overføre det mellom enheter med <![CDATA[<i>]]>Autocrypt-oppsettsmeldinger.<![CDATA[</i>]]></string>
+    <string name="NewVerifiedGroup">Ny bekreftet gruppe</string>
+    <string name="SharedChats">Delte sludringer</string>
+    <string name="VerifiedContact">Bekreftet kontakt</string>
+    <string name="Contact">Kontakt</string>
+    <string name="VerifiedGroup">Bekreftet gruppe</string>
+    <string name="Group">Gruppe</string>
+</resources>

@@ -312,4 +312,5 @@
     <!-- Translators: please use a very short string here, it should not much longer than
     the string needed for video time+size (0:00, 12,3 Mib) -->
     <string name="OneMoment">Un moment ...</string>
+    <string name="Contact">Contacte</string>
     </resources>

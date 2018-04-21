@@ -432,4 +432,10 @@
     <string name="CannotDecryptBody">Ky mesazh s\'mund të fshehtëzohet.\n\n• Mundet të bëjë punë thjesht t\’i përgjigjeni këtij mesazhi dhe t\’i kërkonit dërguesit t\’jua ridërgojë mesazhin.\n\n• Në rast se e ri-instaluat Delta Chat-in ose tjetër program email-esh në këtë ose në një tjetër pajisje, mund të donit të dërgonit një Mesazh Rregullimi Autocrypt-i që këtej.</string>
     <string name="Autocrypt">Autocrypt</string>
     <string name="AutocryptExplain"><![CDATA[<i>]]>Autocrypt<![CDATA[</i>]]> është një protokoll i ri dhe i hapur që fshehtëzim skaj-më-skaj email-esh.\n\nRregullimi juaj për këtë krijohet vetvetiu kur duhet dhe mund ta shpërngulni mes pajisjesh përmes <![CDATA[<i>]]>Mesazhesh Rregullimi Autocrypt-i.<![CDATA[</i>]]></string>
+    <string name="NewVerifiedGroup">Grup i ri i verifikuar</string>
+    <string name="SharedChats">Fjalosje të ndara me të tjerët</string>
+    <string name="VerifiedContact">Kontakt i verifikuar</string>
+    <string name="Contact">Kontakt</string>
+    <string name="VerifiedGroup">Grup i verifikuar</string>
+    <string name="Group">Grup</string>
 </resources>

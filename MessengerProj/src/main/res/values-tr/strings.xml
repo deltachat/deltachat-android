@@ -391,4 +391,5 @@
     <string name="QrShow">QR kodu göster</string>
     <string name="OobFingerprint">Parmak izi</string>
     <string name="Autocrypt">Autocrypt</string>
+    <string name="Contact">Kişiler</string>
     </resources>

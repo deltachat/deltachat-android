@@ -420,4 +420,5 @@
     <string name="AutocryptKeyTransferBadCode">Código errado. Tente novamente.\n\nSe você não se lembra do código recomece a transferência de chaves no dispositivo original.</string>
     <string name="AutocryptKeyTransferSucceeded">Chaves transferidas. Agora você está pronto para usar o Autocrypt neste dispositivo com as mesmas chaves do outro.</string>
     <string name="Retry">Repetir</string>
+    <string name="Contact">Contato</string>
     </resources>

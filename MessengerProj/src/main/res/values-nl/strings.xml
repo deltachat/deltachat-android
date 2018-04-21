@@ -429,4 +429,5 @@
     <string name="OobFingerprintOk">Contact <![CDATA[<i>]]>%1$s<![CDATA[</i>]]> geverifieerd. Begin met chatten?</string>
     <string name="OobFingerprintMismatch">De gescande vingerafdruk <![CDATA[<b>]]>komt niet overeen<![CDATA[</b>]]> de vingerafdruk laast gebruikt voor <![CDATA[<i>]]>%1$s<![CDATA[</i>]]>.</string>
     <string name="OobFingerprintWithoutAddr">Deze QR code bevat een vingerafdruk, maar geen emailadres.\n\nmaak eerst een versleutelde verbinding met de ontvanger voor een out-of-band verificatie.</string>
+    <string name="Contact">Contact</string>
     </resources>

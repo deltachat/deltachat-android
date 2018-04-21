@@ -428,4 +428,5 @@
     <string name="OobFingerprintAskOob">Kontakt überprüfen und den Chat mit <![CDATA[<b>]]>%1$s<![CDATA[</b>]]> starten?</string>
     <string name="OobFingerprintOk">Kontakt  <![CDATA[<i>]]>%1$s<![CDATA[</i>]]> wurde überprüft. Chat starten?</string>
     <string name="Autocrypt">Autocrypt</string>
+    <string name="Contact">Kontakt</string>
     </resources>
