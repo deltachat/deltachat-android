@@ -39,13 +39,18 @@ public class TextInfoCell extends FrameLayout {
 
     private final int iconDp = 34;
 
+    static public TextView createTextView(Context context) {
+        TextView ret = new TextView(context);
+        ret.setTextColor(0xff808080);
+        ret.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
+        ret.setGravity(Gravity.START);
+        return ret;
+    }
+
     public TextInfoCell(Context context) {
         super(context);
 
-        textView = new TextView(context);
-        textView.setTextColor(0xff808080);
-        textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
-        textView.setGravity(Gravity.START);
+        textView = createTextView(context);
         addView(textView);
 
         iconView = new TextView(context);

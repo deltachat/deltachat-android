@@ -40,6 +40,7 @@ import com.b44t.messenger.ActionBar.ActionBar;
 import com.b44t.messenger.ActionBar.ActionBarMenu;
 import com.b44t.messenger.ActionBar.BaseFragment;
 import com.b44t.messenger.Cells.HeaderCell;
+import com.b44t.messenger.Cells.TextInfoCell;
 import com.b44t.messenger.Components.LayoutHelper;
 
 
@@ -198,7 +199,16 @@ public class ContactAddActivity extends BaseFragment implements NotificationCent
             linearLayout.addView(emailTextView, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER_VERTICAL, 18, 1, 18, 0));
         }
 
-        nameToSet = null;
+        if( do_what == EDIT_NAME && chat_id != 0 ) {
+            TextView textView = TextInfoCell.createTextView(context);
+            textView.setText(R.string.EditedNameWillBeShared);
+            linearLayout.addView(textView, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER_VERTICAL, 18, 18, 18, 0));
+        }
+
+        if( nameToSet != null ) {
+            nameTextView.setSelection(nameToSet.length());
+            nameToSet = null;
+        }
         return fragmentView;
     }
 
@@ -222,6 +232,7 @@ public class ContactAddActivity extends BaseFragment implements NotificationCent
         if (text != null) {
             if (nameTextView != null) {
                 nameTextView.setText(text);
+                nameTextView.setSelection(text.length());
             } else {
                 nameToSet = text;
             }

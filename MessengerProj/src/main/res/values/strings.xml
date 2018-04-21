@@ -445,4 +445,5 @@
     <string name="Contact">Contact</string>
     <string name="VerifiedGroup">Verified group</string>
     <string name="Group">Group</string>
+    <string name="EditedNameWillBeShared">The edited name will be shared with all group members.</string>
 </resources>
