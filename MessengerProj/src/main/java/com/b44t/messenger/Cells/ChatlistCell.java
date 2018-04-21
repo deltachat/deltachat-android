@@ -240,7 +240,7 @@ public class ChatlistCell extends BaseCell {
 
         drawGroupIcon = false;
 
-        if (m_mrChat.getType()==MrChat.MR_CHAT_GROUP && currentChatId!=MrChat.MR_CHAT_ID_DEADDROP) {
+        if (m_mrChat.isGroup() && currentChatId!=MrChat.MR_CHAT_ID_DEADDROP) {
             drawGroupIcon = true;
             nameLockTop = AndroidUtilities.dp(17.5f);
 

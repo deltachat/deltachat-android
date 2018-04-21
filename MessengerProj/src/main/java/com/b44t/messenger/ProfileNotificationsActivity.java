@@ -81,7 +81,7 @@ public class ProfileNotificationsActivity extends BaseFragment implements Notifi
         super(args);
         dialog_id = args.getInt("chat_id");
         m_mrChat = MrMailbox.getChat(dialog_id);
-        m_isGroupChat = m_mrChat.getType()== MrChat.MR_CHAT_GROUP;
+        m_isGroupChat = m_mrChat.isGroup();
     }
 
     @Override

@@ -401,7 +401,7 @@ public class NotificationsController {
                 if (mrChat.getId() == 0) {
                     return;
                 }
-                boolean isGroupChat = mrChat.getType() == MrChat.MR_CHAT_GROUP;
+                boolean isGroupChat = mrChat.isGroup();
                 boolean value = !((!preferences.getBoolean("EnableAll", true) || isGroupChat && !preferences.getBoolean("EnableGroup", true)) && notifyOverride == 0);
 
                 if (value) {
@@ -793,7 +793,7 @@ public class NotificationsController {
         MrChat mrChat = MrMailbox.getChat((int)dialog_id);
         MrContact mrContact = MrMailbox.getContact(from_id);
         String name = mrContact.getDisplayName();
-        boolean is_group = mrChat.getType()==MrChat.MR_CHAT_GROUP;
+        boolean is_group = mrChat.isGroup();
 
         MrMsg  mrMsg = MrMailbox.getMsg(messageObject.getId());
         String msg = mrMsg.getSummarytext(160);
@@ -988,7 +988,7 @@ public class NotificationsController {
             //TLRPC.User user = MessagesController.getInstance().getUser(user_id);
 
             MrChat mrChat = MrMailbox.getChat((int)dialog_id);
-            boolean isGroupChat = mrChat.getType() == MrChat.MR_CHAT_GROUP;
+            boolean isGroupChat = mrChat.isGroup();
 
 
             //TLRPC.FileLocation photoPath = null;

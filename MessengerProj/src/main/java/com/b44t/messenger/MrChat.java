@@ -30,10 +30,6 @@ import android.text.TextUtils;
 
 public class MrChat {
 
-    public final static int      MR_CHAT_UNDEFINED          =   0;
-    public final static int      MR_CHAT_NORMAL             = 100;
-    public final static int      MR_CHAT_GROUP              = 120;
-
     public final static int      MR_CHAT_ID_DEADDROP        = 1;
     public final static int      MR_CHAT_ID_STARRED         = 5;
     public final static int      MR_CHAT_ID_ARCHIVED_LINK   = 6;
@@ -50,7 +46,7 @@ public class MrChat {
     }
 
     public native int    getId();
-    public native int    getType();
+    public native boolean isGroup();
     public native int    getArchived();
     public native String getName();
     public native String getSubtitle();
@@ -116,7 +112,7 @@ public class MrChat {
     {
         // returns name of group chats or name+email-address for normal chats
         String name = "ErrGrpNameNAddr";
-        if( getType()==MR_CHAT_GROUP ) {
+        if( isGroup() ) {
             name = getName();
         }
         else {

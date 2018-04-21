@@ -172,8 +172,7 @@ public class ContactsController {
             tempName = mrContact.getDisplayName();
         } else if (mrChat != null) {
             tempName = mrChat.getName();
-            int chatType = mrChat.getType();
-            if (chatType == MrChat.MR_CHAT_NORMAL) {
+            if (!mrChat.isGroup()) {
                 int[] contact_ids = MrMailbox.getChatContacts(mrChat.getId());
                 if (contact_ids.length == 1) {
                     MrContact mrc = MrMailbox.getContact(contact_ids[0]);
@@ -181,7 +180,7 @@ public class ContactsController {
                     tempName = mrc.getDisplayName();
                 }
             }
-            else if( chatType == MrChat.MR_CHAT_GROUP ) {
+            else {
                 tempPath = mrChat.getProfileImage();
             }
         }

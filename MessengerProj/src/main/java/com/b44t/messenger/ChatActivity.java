@@ -420,7 +420,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 else if( id == ID_SHOW_PROFILE )
                 {
                     Bundle args = new Bundle();
-                    if( m_mrChat.getType()== MrChat.MR_CHAT_GROUP ) {
+                    if( m_mrChat.isGroup() ) {
                         args.putInt("chat_id",  m_mrChat.getId());
                     }
                     else {
@@ -612,7 +612,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
 
         if( !m_isChatWithDeaddrop ) {
             headerItem.addSubItem(ID_SHOW_PROFILE, context.getString(R.string.ViewProfile));
-            if( m_mrChat.getType()== MrChat.MR_CHAT_GROUP ) {
+            if( m_mrChat.isGroup() ) {
                 headerItem.addSubItem(ID_LEAVE_GROUP, context.getString(R.string.LeaveGroup));
             }
             headerItem.addSubItem(ID_ARCHIVE_CHAT, context.getString(m_mrChat.getArchived()==0? R.string.ArchiveChat : R.string.UnarchiveChat));
@@ -849,7 +849,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 emptyView.setText(context.getString(R.string.MsgNewGroupDraftHint));
                 emptyView.setGravity(Gravity.START);
             }
-            else if( m_mrChat.getType()==MrChat.MR_CHAT_NORMAL && !m_mrChat.isSelfTalk() ){
+            else if( !m_mrChat.isGroup() && !m_mrChat.isSelfTalk() ){
                 String name = m_mrChat.getName();
                 emptyView.setText(AndroidUtilities.replaceTags(String.format(context.getString(R.string.NoMessagesHint), name, name)));
                 emptyView.setGravity(Gravity.START);
@@ -2836,7 +2836,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                     MessageObject msgDrawObj = new MessageObject(msg, true);
 
                     ChatMessageCell messageCell = (ChatMessageCell) view;
-                    messageCell.isGroupChat = m_mrChat.getType()==MrChat.MR_CHAT_GROUP;
+                    messageCell.isGroupChat = m_mrChat.isGroup();
                     messageCell.setMessageObject(msgDrawObj, m_isChatWithDeaddrop);
                     messageCell.setCheckPressed(!disableSelection, disableSelection && selected);
                     messageCell.setHighlighted(highlightMessageId != 0 && msgDrawObj.getId() == highlightMessageId);

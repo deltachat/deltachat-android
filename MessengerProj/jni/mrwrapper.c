@@ -781,9 +781,10 @@ JNIEXPORT jint Java_com_b44t_messenger_MrChat_getId(JNIEnv *env, jobject obj)
 }
 
 
-JNIEXPORT jint Java_com_b44t_messenger_MrChat_getType(JNIEnv *env, jobject obj)
+JNIEXPORT jboolean Java_com_b44t_messenger_MrChat_isGroup(JNIEnv *env, jobject obj)
 {
-	return mrchat_get_type(get_mrchat_t(env, obj));
+	int chat_type = mrchat_get_type(get_mrchat_t(env, obj));
+	return (chat_type==MR_CHAT_TYPE_GROUP || chat_type==MR_CHAT_TYPE_VERIFIED_GROUP);
 }
 
 

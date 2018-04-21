@@ -336,7 +336,7 @@ public class MessageObject {
         addLinks(messageText);
 
         int maxWidth;
-        boolean substractAvatar = !isOut() && MrMailbox.getChat((int)messageOwner.dialog_id).getType()==MrChat.MR_CHAT_GROUP;
+        boolean substractAvatar = !isOut() && MrMailbox.getChat((int)messageOwner.dialog_id).isGroup();
         if (substractAvatar) {
             maxWidth = Math.min(AndroidUtilities.displaySize.x, AndroidUtilities.displaySize.y) - AndroidUtilities.dp(122);
         } else {

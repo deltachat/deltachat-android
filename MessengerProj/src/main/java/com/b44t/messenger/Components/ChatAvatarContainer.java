@@ -73,7 +73,7 @@ public class ChatAvatarContainer extends FrameLayout {
             @Override
             public void onClick(View v) {
                 Bundle args = new Bundle();
-                if( parentFragment.m_mrChat.getType()== MrChat.MR_CHAT_GROUP ) {
+                if( parentFragment.m_mrChat.isGroup() ) {
                     args.putInt("chat_id",  parentFragment.m_mrChat.getId());
                 }
                 else {
