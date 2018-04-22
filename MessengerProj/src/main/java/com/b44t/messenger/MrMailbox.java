@@ -85,6 +85,7 @@ public class MrMailbox {
 
     // contacts
     public final static int MR_GCL_VERIFIED_ONLY = 1;
+    public final static int MR_GCL_ADD_SELF = 2;
     public native static int[] getContacts(int flags, String query);
     public native static int   getBlockedCount();
     public native static int[] getBlockedContacts();

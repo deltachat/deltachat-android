@@ -267,9 +267,16 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
         }
         item.addSubItem(id_add_contact, context.getString(R.string.NewContactTitle));
 
+        int listflags = 0;
+        if( do_what==SELECT_CONTACTS_FOR_NEW_VERIFIED_GROUP||do_what==ADD_CONTACTS_TO_VERIFIED_GROUP) {
+            listflags |= MrMailbox.MR_GCL_VERIFIED_ONLY;
+        }
 
-        listViewAdapter = new ContactsAdapter(context,
-                (do_what==SELECT_CONTACTS_FOR_NEW_VERIFIED_GROUP||do_what==ADD_CONTACTS_TO_VERIFIED_GROUP)? MrMailbox.MR_GCL_VERIFIED_ONLY : 0);
+        if( do_what==SELECT_CONTACT_FOR_NEW_CHAT || do_what==SELECT_CONTACT_TO_ATTACH ) {
+            listflags |= MrMailbox.MR_GCL_ADD_SELF;
+        }
+
+        listViewAdapter = new ContactsAdapter(context, listflags);
 
         if( do_what == SELECT_CONTACTS_FOR_NEW_GROUP || do_what == SELECT_CONTACTS_FOR_NEW_VERIFIED_GROUP ) {
             listViewAdapter.setCheckedMap(selectedContacts);
