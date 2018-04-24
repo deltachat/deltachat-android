@@ -439,4 +439,5 @@
     <string name="Contact">Kontakt</string>
     <string name="VerifiedGroup">Bekreftet gruppe</string>
     <string name="Group">Gruppe</string>
+    <string name="EditedNameWillBeShared">Det redigerte gruppenavnet vil bli delt med alle dens medlemmer.</string>
 </resources>

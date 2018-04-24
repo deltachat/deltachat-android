@@ -83,7 +83,7 @@
     <string name="Default">Défaut</string>
     <string name="OnlyIfSilent">Seulement si silencieux</string>
     <string name="ChatBackground">Arrière-plan des conversations</string>
-    <string name="SendByEnter">Envoyer avec la touche entrée</string>
+    <string name="SendByEnter">Envoyer avec</string>
     <string name="Help">Aide</string>
     <string name="Enabled">Activé</string>
     <string name="Disabled">Désactivé</string>
@@ -198,7 +198,7 @@
     <string name="ContactAlreadyInGroup">Ce contact est déjà dans ce groupe</string>
     <string name="ForwardMessagesTo">Renvoyer les messages sélectionnés à <![CDATA[<b>]]>%1$s<![CDATA[</b>]]> ?</string>
     <string name="SendMessagesTo">Envoyer les messages à <![CDATA[<b>]]>%1$s<![CDATA[</b>]]> ?</string>
-    <string name="AreYouSureDeleteThisChat">Êtes-vous sûr de vouloir supprimer cette conversation? La conversation n\'apparaîtra plus dans la liste des conversations, mais les messages resteront sur le serveur.</string>
+    <string name="AreYouSureDeleteThisChat">Supprimer cette conversation? La conversation n\'apparaîtra plus dans la liste des conversations, mais les messages resteront sur le serveur.</string>
     <string name="AreYouSureBlockContact">Êtes-vous sûr de vouloir bloquer ce contact?</string>
     <string name="AreYouSureDeleteContact">Êtes-vous sûr de vouloir supprimer ce contact?</string>
     <!--permissions-->
@@ -352,8 +352,8 @@
     <string name="ErrSelfNotInGroup">Vous devez être membre du groupe pour effectuer cette action.</string>
     <string name="MsgGroupLeft">Groupe quitté.</string>
     <string name="NoMessagesHint">Envoyez un message à <![CDATA[<b>]]>%1$s<![CDATA[</b>]]> :\n\n• Ça ne devrait pas poser de problème si <![CDATA[<b>]]>%2$s<![CDATA[</b>]]> n\'utilise pas Delta Chat\n\n• L\'envoi du premier message peut prendre un moment.</string>
-    <string name="SendNRcvReadReceipts">Recevoir et renvoyer des accusés de réception.</string>
-    <string name="PreferE2EEncryption">Préféré le chiffrement de bout-en-bout.</string>
+    <string name="SendNRcvReadReceipts">Recevoir et envoyer des accusés de lecture.</string>
+    <string name="PreferE2EEncryption">Préférer le chiffrement de bout-en-bout.</string>
     <string name="E2EManagePrivateKeys">Gérer les clés privées</string>
     <string name="E2ECompareKeys">Comparer les clés</string>
     <string name="ForwardToTitle">Renvoyer à…</string>
@@ -379,8 +379,8 @@
     <string name="EncrinfoFingerprints">Clés de chiffrement</string>
     <string name="Backup">Sauvegarde</string>
     <string name="ImportBackupExplain2">Pour importer une sauvegarde, copier la sauvegarde dans <![CDATA[<i>]]>%1$s<![CDATA[</i>]]> et réinstaller l\'application.</string>
-    <string name="ReadReceiptMailBody">Ceci est un accusé de réception pour le message \"1%1$s\".\n\nCet accusé indique seulement la bonne réception du message sur l\'appareil du destinataire. Il n\'y a pas de garantie que le destinataire a lu le contenu du message.</string>
-    <string name="ReadReceipt">Accusé de réception</string>
+    <string name="ReadReceiptMailBody">Ceci est un accusé de lecture pour le message \"1%1$s\".\n\nCet accusé indique seulement que le message a été affiché sur l\'appareil du destinataire, et pas forcément que le contenu du message a été lu.</string>
+    <string name="ReadReceipt">Accusé de lecture</string>
     <string name="NameAndStatus">Nom et statut</string>
     <string name="MyStatus">Mon statut</string>
     <string name="MyStatusExplain">Le status est indiqué par ex. dans les pieds de page des emails.</string>
@@ -422,5 +422,23 @@ La dernière clé importée sera utilisée comme nouvelle clé par défaut</stri
     <string name="AutocryptKeyTransferSucceeded">Clé transférée avec succès. Cet appareil est maintenant prêt à utiliser Autocrypt avec la même clé que l\'autre appareil.</string>
     <string name="Retry">Recommencez</string>
     <string name="SelfTalkSubtitle">Messages que je me suis envoyé</string>
+    <string name="QrScan">Scanner un code 2D</string>
+    <string name="QrShow">Montrer le code 2D</string>
+    <string name="QrScanContainsText">Le code 2D scanné contient le texte suivant:\n\n%1$s</string>
+    <string name="OobFingerprint">Empreinte digitale</string>
+    <string name="OobFingerprintAskOob">Vérifier le contact et commencer à dialoguer avec <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>?</string>
+    <string name="OobFingerprintOk">Contact <![CDATA[<i>]]>%1$s<![CDATA[</i>]]> vérifié. Commencer le dialogue?</string>
+    <string name="OobFingerprintMismatch">L\'empreinte digitale scannée <![CDATA[<b>]]>ne correspond pas<![CDATA[</b>]]> à l\'empreinte vue auparavant pour <![CDATA[<i>]]>%1$s<![CDATA[</i>]]>.</string>
+    <string name="OobFingerprintWithoutAddr">Le code 2D contient une empreinte mais pas d\'adresse courriel.\n\nPour une vérification hors-bande, établissez d\'abord une connexion chiffrée avec le contact.</string>
+    <string name="OobSecureJoinRequested">%1$s entre.</string>
+    <string name="CannotDecryptBody">Ce message ne peut pas être déchiffré.\n\n• Il peut suffire de répondre à ce message et de demander à l\'envoyeur de renvoyer son message.\n\n• Si jamais vous avez réinstaller Delta Chat ou un autre programme courriel sur cet appareil ou sur un autre, vous devriez envoyer un message d\'échange de clé Autocrypt à partir de là.</string>
+    <string name="Autocrypt">Autocrypt</string>
+    <string name="AutocryptExplain"><![CDATA[<i>]]>Autocrypt<![CDATA[</i>]]> est une nouvelle spécification libre pour le chiffrage des courriels de bout en bout.\n\nLes paramètres bout en bout sont créés automatiquement dès que besoin et vous pouvez les transférer entre appareils avec un <![CDATA[<i>]]>message d\'échange de clé Autocrypt.<![CDATA[</i>]]></string>
+    <string name="NewVerifiedGroup">Nouveau groupe vérifié</string>
+    <string name="SharedChats">Conversations partagés</string>
+    <string name="VerifiedContact">Contact vérifié</string>
     <string name="Contact">Contact</string>
-    </resources>
+    <string name="VerifiedGroup">Groupe vérifié</string>
+    <string name="Group">Groupe</string>
+    <string name="EditedNameWillBeShared">Le nom modifié sera partagé avec tous les membres du groupe.</string>
+</resources>

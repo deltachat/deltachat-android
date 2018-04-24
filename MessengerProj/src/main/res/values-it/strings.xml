@@ -9,8 +9,8 @@
     <string name="NewGroup">Nuovo gruppo</string>
     <string name="NoResult">Nessun risultato</string>
     <string name="NoChats">Ancora nessuna conversazione.</string>
-    <string name="DeleteChat">Elimina chat</string>
-    <string name="SelectChat">Seleziona chat …</string>
+    <string name="DeleteChat">Elimina conversazione</string>
+    <string name="SelectChat">Seleziona conversazione …</string>
     <string name="Search">Cerca</string>
     <string name="MuteNotifications">Silenzia notifiche</string>
     <string name="MuteFor">Silenzia per %1$s</string>
@@ -82,7 +82,7 @@
     <string name="BlockedContacts">Contatti bloccati</string>
     <string name="Default">Predefinite</string>
     <string name="OnlyIfSilent">Solo se silenzioso</string>
-    <string name="ChatBackground">Sfondo chat</string>
+    <string name="ChatBackground">Sfondo conversazione</string>
     <string name="SendByEnter">Invia con tasto \"Invio\"</string>
     <string name="Help">Domande frequenti</string>
     <string name="Enabled">Abilitate</string>
@@ -106,16 +106,16 @@
     <string name="SmartNotificationsWithin">in</string>
     <string name="SmartNotificationsMinutes">minuti</string>
     <string name="DirectShare">Condivisione diretta</string>
-    <string name="DirectShareInfo">Mostra le chat recenti nel menù di condivisione</string>
+    <string name="DirectShareInfo">Mostra le conversazioni recenti nel menù di condivisione</string>
     <!--cache view-->
     <string name="CacheSettings">Archivio</string>
     <string name="KeepMedia">Mantieni file</string>
-    <string name="KeepMediaInfo">Foto, video e altri file dalle chat nel cloud che <![CDATA[<b>non sono stati visualizzati</b>]]> in questo periodo verranno eliminati dal dispositivo per preservare lo spazio sul disco.</string>
+    <string name="KeepMediaInfo">Foto, video e altri file dalle conversazioni nel cloud che <![CDATA[<b>non sono stati visualizzati</b>]]> in questo periodo verranno eliminati dal dispositivo per preservare lo spazio sul disco.</string>
     <string name="KeepMediaForever">Per sempre</string>
     <!--passcode view-->
     <string name="Passcode">Blocco con codice</string>
     <string name="ChangePasscode">Cambia il codice</string>
-    <string name="ChangePasscodeInfo">Quando viene impostato un codice, un\'icona con un lucchetto apparirà nella pagina delle chat. Premere su di essa per bloccare e sbloccare l\'applicazione.\n\nNota: se il codice viene dimenticato, si dovrà disinstallare e installare nuovamente l\'app.</string>
+    <string name="ChangePasscodeInfo">Quando viene impostato un codice, un\'icona con un lucchetto apparirà nella pagina delle conversazioni. Premere su di essa per bloccare e sbloccare l\'applicazione.\n\nNota: se il codice viene dimenticato, si dovrà disinstallare e installare nuovamente l\'applicazione.</string>
     <string name="PasscodePIN">PIN</string>
     <string name="PasscodePassword">Password</string>
     <string name="EnterCurrentPasscode">Inserire il codice corrente</string>
@@ -198,7 +198,7 @@
     <string name="ContactAlreadyInGroup">Questo utente è già membro del gruppo.</string>
     <string name="ForwardMessagesTo">Inoltrare i messaggi selezionati a <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>?</string>
     <string name="SendMessagesTo">Inviare i messaggi a <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>?</string>
-    <string name="AreYouSureDeleteThisChat">Eliminare veramente questa conversazione? In questo modo non verrà più mostrata nell\'elenco delle chat, i messaggi rimarranno sul server.</string>
+    <string name="AreYouSureDeleteThisChat">Eliminare veramente questa conversazione? In questo modo non verrà più mostrata nell\'elenco, i messaggi rimarranno comunque sul server.</string>
     <string name="AreYouSureBlockContact">Bloccare veramente questo contatto?</string>
     <string name="AreYouSureDeleteContact">Eliminare veramente questo contatto?</string>
     <!--permissions-->
@@ -217,10 +217,10 @@
     <string name="Intro3Message"><![CDATA[<b>Messaggi push</b>]]> in pochi secondi.<![CDATA[<br/>]]>Interfaccia semplice.</string>
 
     <string name="Intro4Headline">Potente</string>
-    <string name="Intro4Message"><![CDATA[<b>Invio illimitato</b>]]> di chat, immagini, video, messaggi audio a altro. Anche multi-client.</string>
+    <string name="Intro4Message"><![CDATA[<b>Conversazioni illimitate</b>]]> immagini, video, messaggi audio e altro ancora. Possibilità di utilizzo con più client.</string>
 
     <string name="Intro5Headline">Libera</string>
-    <string name="Intro5Message"><![CDATA[<b>Delta Chat</b>]]> è libero per sempre.<![CDATA[<br/>]]>Open-source. No ads. No iscrizioni. No restrizioni del fornitore.</string>
+    <string name="Intro5Message"><![CDATA[<b>Delta Chat</b>]]> sarà libera per sempre.<![CDATA[<br/>]]>Open source. Senza annunci. Nessuna registrazione. Senza alcun blocco dai fornitori.</string>
 
     <string name="Intro6Headline">Sicura</string>
     <string name="Intro6Message"><![CDATA[<b>Crittografato</b>]]> con tutti gli algoritmi più diffusi. I messaggi rimangono sul tuo server.</string>
@@ -316,14 +316,14 @@
     <string name="AccountNotConfigured">Account non configurato</string>
     <string name="AboutThisProgram">Informazioni su Delta Chat</string>
     <string name="NotSet">Non impostato</string>
-    <string name="NewChat">Nuova chat</string>
+    <string name="NewChat">Nuova conversazione</string>
     <string name="Deaddrop">Richieste di contatto</string>
-    <string name="DeaddropInChatlist">Mostra le richieste di contatto nell\'elenco delle chat</string>
+    <string name="DeaddropInChatlist">Mostra le richieste di contatto nell\'elenco delle conversazioni</string>
     <string name="MuteAlways">Sempre silenziato</string>
     <string name="AskStartChatWith">Iniziare una conversazione con <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>?</string>
     <string name="DeaddropHint">Per iniziare una conversazione toccare le frecce di risposta.</string>
     <string name="NotYetImplemented">Funzione non disponibile o incompleta.</string>
-    <string name="DefaultStatusText">Inviato con l\'app di messaggistica Delta Chat: https://delta.chat/it</string>
+    <string name="DefaultStatusText">Inviato con l\'applicazione di messaggistica Delta Chat: https://delta.chat/it</string>
     <string name="Name" >Nome</string>
     <string name="EmailAddress">Indirizzo email</string>
     <string name="CannotDeleteContact">Impossibile cancellare i contatti in uso, provare a bloccarli.</string>
@@ -333,8 +333,8 @@
     <!-- Translators: please use a very short string here, it should not much longer than
     the string needed for video time+size (0:00, 12,3 Mib) -->
     <string name="OneMoment">Un momento...</string>
-    <string name="NoChatsHelp">Inizia a conversare toccando il tasto \"Nuova Chat \"nell\'angolo in basso a destra o premere il pulsante menù per altre opzioni.</string>
-    <string name="Intro7Message"><![CDATA[<b>Delta Chat</b>]]> è sicura per l\'uso professionale, compatibile e basata sugli standard.</string>
+    <string name="NoChatsHelp">Inizia a conversare toccando il tasto \"Nuova conversazione\" nell\'angolo in basso a destra o premere il pulsante menù per altre opzioni.</string>
+    <string name="Intro7Message"><![CDATA[<b>Delta Chat</b>]]> è sicura anche per uso in ambito professionale, compatibile e basata sugli standard.</string>
     <string name="InviteMenuEntry">Invita amici</string>
     <string name="InviteText">Ora sto usando l\'applicazione di messaggistica Delta Chat - %1$s - puoi scrivermi all\'indirizzo %2$s</string>
     <string name="AdvancedSettings">Impostazioni avanzate</string>
@@ -351,12 +351,12 @@
     <string name="AskRemoveMemberFromGroup">Rimuovere <![CDATA[<b>]]>%1$s<![CDATA[</b>]]> dal gruppo?</string>
     <string name="ErrSelfNotInGroup">È necessario essere un membro del gruppo per eseguire questa azione.</string>
     <string name="MsgGroupLeft">Gruppo abbandonato.</string>
-    <string name="NoMessagesHint">Invia un messaggio a <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>:\n\n• Va bene anche se <![CDATA[<b>]]>%2$s<![CDATA[</b>]]> non usa Delta Chat.\n\n• L\'invio del primo messaggio può richiedere del tempo.</string>
+    <string name="NoMessagesHint">Invia un messaggio a <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>:\n\n• Va bene anche se <![CDATA[<b>]]>%2$s<![CDATA[</b>]]> non usa Delta Chat.\n\n• L\'invio del primo messaggio può richiedere qualche secondo.</string>
     <string name="SendNRcvReadReceipts">Ricevi e invia ricevute di ritorno</string>
     <string name="PreferE2EEncryption">Preferisci crittografia end-to-end</string>
     <string name="E2EManagePrivateKeys">Gestione chiavi private</string>
     <string name="E2ECompareKeys">Compara chiavi</string>
-    <string name="ForwardToTitle">Seleziona chat …</string>
+    <string name="ForwardToTitle">Inoltra a …</string>
     <string name="SelectContact">Scegli un contatto</string>
     <string name="DoneHint">Fatto.</string>
     <string name="FileNotFound">File %1$s non trovato.</string>
@@ -375,7 +375,7 @@
     <string name="EncrinfoE2EExplain">Se tutte le impronte corrispondono sull\'altro dispositivo, la connessione è sicura.</string>
     <string name="EncrinfoTransport">Crittografa il trasferimento almeno al mio server.</string>
     <string name="EncrinfoNone">Non crittografare sul mio server.</string>
-    <string name="EncrinfoNoE2EExplain">La crittografia end-to-end verrà attivata automaticamente quando il contatto usa Delta Chat o un altra applicazione che utilizza Autocrypt.</string>
+    <string name="EncrinfoNoE2EExplain">La crittografia end-to-end verrà utilizzata quando il contatto userà Delta Chat o un\'altra applicazione compatibile con Autocrypt.</string>
     <string name="EncrinfoFingerprints">Impronte digitali</string>
     <string name="Backup">Backup</string>
     <string name="ImportBackupExplain2">Per importare un backup, copiarlo in <![CDATA[<i>]]>%1$s<![CDATA[</i>]]> quindi installare nuovamente l\'app.</string>
@@ -390,36 +390,54 @@
     <string name="ImportExportExplain">I file esportati conterranno le chiavi private! Costodirli in un posto sicuro o eliminarli il prima possibile.</string>
     <string name="EnterPasswordToContinue">Inserire la password per %1$s per continuare:</string>
     <string name="IncorrectPassword">Password errata.</string>
-    <string name="ImportBackupAsk">Delta Chat ha trovato un backup in <![CDATA[<i>]]>%1$s<![CDATA[</i>]]>.\n\nImportare e utilizzare da questo backup tutti i dati e le impostazioni?</string>
+    <string name="ImportBackupAsk">Delta Chat ha trovato un backup in <![CDATA[<i>]]>%1$s<![CDATA[</i>]]>.\n\nImportare e utilizzare tutti i dati e le impostazioni da questo backup?</string>
     <string name="ImportBackup">Importa backup</string>
     <string name="NoBackupFound">Non è stato trovato alcun backup da importare.\n\nCopiare il in <![CDATA[<i>]]>%1$s<![CDATA[</i>]]> e riprovare. In alternativa, premere \"Inizia a comunicare\" per la normale procedura di configurazione.</string>
     <string name="FilesSuccessfullyExported">File esportati con successo in <![CDATA[<i>]]>%1$s<![CDATA[</i>]]>.</string>
     <string name="ExportBackup">Esporta backup</string>
     <string name="ExportPrivateKeys">Esporta chiavi private</string>
     <string name="ImportPrivateKeys">Importa chiavi private</string>
-    <string name="ImportPrivateKeysAsk2">Importare le chiavi private da <![CDATA[<i>]]>%1$s<![CDATA[</i>]]>?\n\n• Le chiavi private esistenti non verranno eliminate.\n\n• L\'ultima chiave importata verrà utilizzata come la nuova chiave predefinita</string>
+    <string name="ImportPrivateKeysAsk2">Importare le chiavi private da <![CDATA[<i>]]>%1$s<![CDATA[</i>]]>?\n\n• Le chiavi private esistenti non verranno eliminate.\n\n• L\'ultima chiave importata verrà utilizzata come nuova chiave predefinita</string>
     <string name="NoRecentEmoji">Le emoji utilizzate di recente verranno mostrate qui.</string>
     <string name="E2eeOffBecauseOfUser">Per abilitare la crittografia end-to-end, selelzionare l\'opzione corrispondente nelle impostazioni.</string>
     <string name="E2eeOffBecauseOfRecipient">La crittigrafia end-to-end sarà attiva solo se anche chi riceve il messaggio abilita l\'opzione corridpondente.</string>
     <string name="NotNow">Non ora</string>
-    <string name="ArchiveChat">Archivia chat</string>
-    <string name="UnarchiveChat">Ripristina chat</string>
-    <string name="ArchivedChats">Chat archiviate</string>
+    <string name="ArchiveChat">Archivia conversazione</string>
+    <string name="UnarchiveChat">Ripristina conversazione</string>
+    <string name="ArchivedChats">Conversazioni archiviate</string>
     <string name="Archived">Archiviata</string>
     <string name="LeaveGroup">Abbandona gruppo</string>
     <string name="AskLeaveGroup">Sei sicuro di voler abbandonare il gruppo?</string>
     <string name="Never">Mai</string>
-    <string name="AutocryptKeyTransferInitiate">Avviato trasferimento chiavi Autocrypt</string>
-    <string name="AutocryptKeyTransfer">Trasferimento chiavi Autocrypt</string>
-    <string name="AutocryptKeyTransferMsgBeforeSend">Il <![CDATA[<i>]]>trasferimento chiavi Autocrypt<![CDATA[</i>]]> richiede che il client email sull\'altro dispositivo sia compatibile con Autocrypt.\n\nSarà quindi possibile inviare la chiave a se stessi. La chiave verrà cifrata con un codice di configurazione che verrà mostrato qui e dovrà essere digitato sull\'altro dispositivo.</string>
-    <string name="AutocryptKeyTransferMsgAfterSend">La chiave è stata inviata. Passare all\'altro dispositivo e aprire il messaggio di configurazione. Verrà richiesto un codice. Digitare il codice seguente:\n\n%1$s\n\nUna volta terminato, l\'altro dispositivo sarà pronto per usare Autocrypt.</string>
-    <string name="AutocryptSetupMessageSubject">Massaggio di configurazione Autocrypt</string>
-    <string name="AutocryptSetupMessageGeneralBody">Questo è il messaggio di configurazione di Autocrypt usato per trasferire la propria chiave tra più client.\n\nPer decifrare e usare la chiave, aprire il messaggio in un client compatibile con Autocrypt e digitare il codice di configurazione visibile sul dispositivo dal quale si è generata la chiave.</string>
-    <string name="AutocryptSetupMessageTapBody">Questo è il messaggio di configurazione di Autocrypt usato per trasferire la propria chiave tra più client.\n\nPer decifrare e usare la chiave, aprire questo messaggio.</string>
+    <string name="AutocryptKeyTransferInitiate">Invia messaggio di configurazione Autocrypt</string>
+    <string name="AutocryptKeyTransfer">Messaggio di configurazione Autocrypt</string>
+    <string name="AutocryptKeyTransferMsgBeforeSend">Il <![CDATA[<i>]]>messaggio di configurazione Autocrypt<![CDATA[</i>]]> condivide in modo sicuro la propria configurazione con altri dispositivi compatibili con Autocrypt.\n\nLa configurazione verrà cifrata con un codice che verrà mostrato qui e dovrà essere digitato sull\'altro dispositivo.</string>
+    <string name="AutocryptKeyTransferMsgAfterSend">La confugurazione è stata inviata. Passare all\'altro dispositivo e aprire il messaggio. Verrà richiesto un codice. Digitare il codice seguente:\n\n%1$s\n\nUna volta terminato, l\'altro dispositivo sarà pronto per usare Autocrypt.</string>
+    <string name="AutocryptSetupMessageSubject">Messaggio di configurazione Autocrypt</string>
+    <string name="AutocryptSetupMessageGeneralBody">Questo è il messaggio usato per trasferire la propria configurazione di Autocrypt tra più client.\n\nPer decifrare e usare la configurazione, aprire il messaggio in un client compatibile con Autocrypt e digitare il codice di configurazione visibile sul dispositivo dal quale si è generata la chiave.</string>
+    <string name="AutocryptSetupMessageTapBody">Questo è il messaggio usato per trasferire la propria configurazione di Autocrypt tra più client.\n\nPer decifrare e usare la configurazione, toccare questo messaggio.</string>
     <string name="AutocryptKeyTransferPleaseEnterCode">Inserire il codice di configurazione mostrato sull\'altro dispositivo.</string>
-    <string name="AutocryptKeyTransferBadCode">Codice di configurazione errato.\n\nSe non si ricorda il codice di configurazione, avviare nuovamente il trafserimento chiavi sull\'altro dispositivo.</string>
-    <string name="AutocryptKeyTransferSucceeded">Chiave trasferita con successo. Questo dispositivo è pronto per usare Autocrypt con la stessa chiave dell\'altro dispositivo.</string>
+    <string name="AutocryptKeyTransferBadCode">Codice di configurazione errato, riprovare.\n\nSe non si ricorda il codice di configurazione, inviare un altro messaggio di configurazione Autocrypt dall\'altro dispositivo.</string>
+    <string name="AutocryptKeyTransferSucceeded">Configurazione trasferita con successo. Questo dispositivo è pronto per usare Autocrypt con la stessa chiave dell\'altro dispositivo.</string>
     <string name="Retry">Riprovare</string>
     <string name="SelfTalkSubtitle">Messaggi inviati a se stessi</string>
+    <string name="QrScan">Leggi codice QR</string>
+    <string name="QrShow">Mostra codice QR</string>
+    <string name="QrScanContainsText">Il codice QR acquisito contiene il seguente testo:\n\n%1$s</string>
+    <string name="OobFingerprint">Impronta digitale</string>
+    <string name="OobFingerprintAskOob">Verificare il contatto e iniziare una conversazione con <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>?</string>
+    <string name="OobFingerprintOk">Contatto <![CDATA[<i>]]>%1$s<![CDATA[</i>]]> verificato. Iniziare una conversazione?</string>
+    <string name="OobFingerprintMismatch">L\'impronta digitale acquisita <![CDATA[<b>]]>non corrisponde<![CDATA[</b>]]> a quella vista l\'ultima volta per <![CDATA[<i>]]>%1$s<![CDATA[</i>]]>.</string>
+    <string name="OobFingerprintWithoutAddr">Questo codice QR contiene una impronta digitale ma non un indirizzo email.\n\nPer una verifica \"out-of-band\", stabilire prima una connessione cifrata con il contatto.</string>
+    <string name="OobSecureJoinRequested">%1$s entra.</string>
+    <string name="CannotDecryptBody">Questo messaggio non può essere decifrato.\n\n• Potrebbe essere utile rispondere semplicemente a questo messaggio e chiedere al contatto di inviarlo nuovamente.\n\n• Nel caso Delta Chat o un\'altra applicazione per le email sia stata reinstallata su questo o su un altro dispositivo, si divrebbe inviare da lì un messaggio di configurazione Autocrypt.</string>
+    <string name="Autocrypt">Autocrypt</string>
+    <string name="AutocryptExplain"><![CDATA[<i>]]>Autocrypt<![CDATA[</i>]]> è una nuova specifica aperta per la cifratura end-to-end delle email.\n\nLa configurazione della cifratura viene creata automaticamente in base alle esigenze e può essere trasferita tra diversi dispositivi con i <![CDATA[<i>]]>Messaggi di configurazione Autocrypt.<![CDATA[</i>]]></string>
+    <string name="NewVerifiedGroup">Nuovo gruppo verificato</string>
+    <string name="SharedChats">Conversazioni condivise</string>
+    <string name="VerifiedContact">Contatto verificato</string>
     <string name="Contact">Contatto</string>
-    </resources>
+    <string name="VerifiedGroup">Gruppo verificato</string>
+    <string name="Group">Gruppo</string>
+    <string name="EditedNameWillBeShared">Il nome modificato verrà condiviso con tutti i membri del gruppo.</string>
+</resources>

@@ -322,7 +322,7 @@
     <string name="AskStartChatWith">Bisedoni me <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>?</string>
     <string name="DeaddropHint">Prekni shigjetat përgjigje që të nisni të bisedoni.</string>
     <string name="NotYetImplemented">Ky funksion s’është i passhëm ose është jo i plotë</string>
-    <string name="DefaultStatusText">Dërguar me Lajmëtarin tim Delta Chat: https://delta.chat/sq/</string>
+    <string name="DefaultStatusText">Dërguar me Delta Chat Messenger-in tim: https://delta.chat</string>
     <string name="Name" >Emër</string>
     <string name="EmailAddress">Adresë email</string>
     <string name="CannotDeleteContact">S’fshihen dot kontaktet në përdorim, në vend të kësaj bëni bllokim kontakti.</string>
@@ -438,4 +438,5 @@
     <string name="Contact">Kontakt</string>
     <string name="VerifiedGroup">Grup i verifikuar</string>
     <string name="Group">Grup</string>
+    <string name="EditedNameWillBeShared">Emri i përpunuar do të ndahet me krejt anëtarët e grupit.</string>
 </resources>

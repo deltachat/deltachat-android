@@ -427,6 +427,17 @@
     <string name="OobFingerprint">Fingerabdruck</string>
     <string name="OobFingerprintAskOob">Kontakt überprüfen und den Chat mit <![CDATA[<b>]]>%1$s<![CDATA[</b>]]> starten?</string>
     <string name="OobFingerprintOk">Kontakt  <![CDATA[<i>]]>%1$s<![CDATA[</i>]]> wurde überprüft. Chat starten?</string>
+    <string name="OobFingerprintMismatch">Der gescannte Fingerabdruck stimmt <![CDATA[<b>]]>nicht<![CDATA[</b>]]> mit dem für <![CDATA[<i>]]>%1$s<![CDATA[</i>]]> gespeicherten Fingerabdruck überein.</string>
+    <string name="OobFingerprintWithoutAddr">Dieser QR-Code enthält einen Fingerabdruck aber keine E-Mail-Adresse.\n\nUm diesen Fingerabdruck zu verifizieren, stellen Sie zunächst eine Verbindung zu dem Kontakt auf normalen Wege her.</string>
+    <string name="OobSecureJoinRequested">%1$s tritt bei.</string>
+    <string name="CannotDecryptBody">Diese Nachricht kann nicht entschlüsselt werden.\n\n• Das Problem kann möglicherweie einfach gelöst werden, indem Sie dem Absender eine Nachricht schicken und ihn bitten seine Nachricht erneut zu senden.\n\n• Wenn Sie Delta Chat oder ein anderes E-Mail-Programm auf diesem oder einem anderen Gerät neu eingerichtet haben, wollen Sie vll. das Ende-zu-Ende-Setup mit einer Autocrypt-Setup-Nachricht von dort übertragen.</string>
     <string name="Autocrypt">Autocrypt</string>
+    <string name="AutocryptExplain"><![CDATA[<i>]]>Autocrypt<![CDATA[</i>]]> ist eine neue und offene Spezifikation zur Ende-zu-Ende-Verschlüsselung von E-Mails.\n\nIhr Ende-zu-Ende-Setup wird dabei automatisch eingerichtet uns Sie können es mit  <![CDATA[<i>]]>Autocrypt-Setup-Nachrichten<![CDATA[</i>]]> zwischen Geräten übertragen.</string>
+    <string name="NewVerifiedGroup">Neue verifizierte Gruppe</string>
+    <string name="SharedChats">Gemeinsame Chats</string>
+    <string name="VerifiedContact">Verifizierter Kontakt</string>
     <string name="Contact">Kontakt</string>
-    </resources>
+    <string name="VerifiedGroup">Verifizierte Gruppe</string>
+    <string name="Group">Gruppe</string>
+    <string name="EditedNameWillBeShared">Der neue Name wird an alle Gruppenteilnehmern gesendet.</string>
+</resources>
