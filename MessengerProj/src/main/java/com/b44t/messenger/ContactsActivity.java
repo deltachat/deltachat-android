@@ -518,14 +518,34 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
                 if (item instanceof TLRPC.User) {
                     final TLRPC.User user = (TLRPC.User) item;
                     AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
-                    CharSequence[] items = new CharSequence[]{context.getString(R.string.ViewProfile)};
+                    CharSequence[] items = new CharSequence[]{context.getString(R.string.ViewProfile),context.getString(R.string.DeleteContact)};
                     builder.setItems(items, new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
-                            Bundle args = new Bundle();
-                            args.putInt("user_id", user.id);
-                            ProfileActivity fragment = new ProfileActivity(args);
-                            presentFragment(fragment);
+                            if( i == 0 ) {
+                                Bundle args = new Bundle();
+                                args.putInt("user_id", user.id);
+                                ProfileActivity fragment = new ProfileActivity(args);
+                                presentFragment(fragment);
+                            }
+                            else if( i == 1 ) {
+                                AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
+                                builder.setMessage(context.getString(R.string.AreYouSureDeleteContact));
+                                builder.setPositiveButton(R.string.OK, new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                        if( MrMailbox.deleteContact(user.id)==0 ) {
+                                            AndroidUtilities.showHint(getParentActivity(), context.getString(R.string.CannotDeleteContact));
+                                        }
+                                        else {
+                                            AndroidUtilities.showDoneHint(getParentActivity());
+                                            listViewAdapter.searchAgain();
+                                            listViewAdapter.notifyDataSetChanged();                                        }
+                                    }
+                                });
+                                builder.setNegativeButton(R.string.Cancel, null);
+                                showDialog(builder.create());
+                            }
                         }
                     });
                     showDialog(builder.create());

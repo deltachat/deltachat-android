@@ -113,9 +113,8 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
     private int otherShadowRow = -1;
     private int otherHeaderRow = -1;
     private int addShortcutRow = -1;
-    private int blockContactRow = -1;
-    private int deleteContactRow = -1;
-
+    private int blockContactRow = -1; // only block, no deletion here: contacts shown here are typically in use; we cannot easily delete them and mrmailbox_delete_contact() will typically fail.
+                                      // a delete function is available in the contact list, however, where the chance a contact can be deleted is larger
     private int rowCount = 0;
 
     private class TopView extends View {
@@ -421,25 +420,6 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                         builder.setNegativeButton(R.string.Cancel, null);
                         showDialog(builder.create());
                     }
-                }
-                else if (position == deleteContactRow)
-                {
-                    AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
-                    builder.setMessage(context.getString(R.string.AreYouSureDeleteContact));
-                    builder.setPositiveButton(R.string.OK, new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            if( MrMailbox.deleteContact(user_id)==0 ) {
-                                AndroidUtilities.showHint(getParentActivity(), context.getString(R.string.CannotDeleteContact));
-                            }
-                            else {
-                                AndroidUtilities.showDoneHint(getParentActivity());
-                                finishFragment();
-                            }
-                        }
-                    });
-                    builder.setNegativeButton(R.string.Cancel, null);
-                    showDialog(builder.create());
                 }
                 else if (position == addShortcutRow)
                 {
@@ -906,7 +886,6 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
         otherHeaderRow = -1;
         addShortcutRow = -1;
         blockContactRow = -1;
-        deleteContactRow = -1;
 
         if( (user_id!=0 && user_id!=MrContact.MR_CONTACT_ID_SELF) || (chat_id!=0 && chat_id!=MrChat.MR_CHAT_ID_DEADDROP)) {
             changeNameRow = rowCount++;
@@ -960,7 +939,6 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
 
         if( user_id != 0 && user_id != MrContact.MR_CONTACT_ID_SELF ) {
             blockContactRow = rowCount++;
-            deleteContactRow = rowCount++;
         }
     }
 
@@ -1099,9 +1077,6 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                     else if( i == blockContactRow ) {
                         textCell.setText(userBlocked()? mContext.getString(R.string.UnblockContact) : mContext.getString(R.string.BlockContact), true);
                     }
-                    else if( i == deleteContactRow ) {
-                        textCell.setText(mContext.getString(R.string.DeleteContact), true);
-                    }
                     break;
 
                 case ROWTYPE_CONTACT:
@@ -1185,7 +1160,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
         @Override
         public int getItemViewType(int i) {
             if ( i == changeNameRow || i==startChatRow || i == settingsRow || i == addMemberRow || i==emailRow
-                    || i==addShortcutRow || i==blockContactRow || i==deleteContactRow ) {
+                    || i==addShortcutRow || i==blockContactRow ) {
                 return ROWTYPE_TEXT_SETTINGS;
             } else if (i >= memberlistFirstRow && i <= memberlistLastRow) {
                 return ROWTYPE_CONTACT;
