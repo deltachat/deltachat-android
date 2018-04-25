@@ -55,8 +55,6 @@ import com.b44t.messenger.ActionBar.SimpleTextView;
 import com.b44t.messenger.Cells.ShadowSectionCell;
 import com.b44t.messenger.Cells.UserCell;
 import com.b44t.messenger.ActionBar.ActionBar;
-import com.b44t.messenger.ActionBar.ActionBarMenu;
-import com.b44t.messenger.ActionBar.ActionBarMenuItem;
 import com.b44t.messenger.Components.AvatarDrawable;
 import com.b44t.messenger.Components.AvatarUpdater;
 import com.b44t.messenger.Components.BackupImageView;
@@ -92,10 +90,6 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
 
     private AvatarUpdater avatarUpdater;
 
-    private final static int ID_BLOCK_CONTACT = 3;
-    private final static int ID_DELETE_CONTACT = 5;
-    private final static int ID_ADD_SHORTCUT = 14;
-
     private int changeNameRow = -1;
     private int settingsRow = -1;
     private int settingsShadowRow = -1;
@@ -116,6 +110,12 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
     private int chatlistFirstRow = -1;
     private int chatlistLastRow = -1;
     private int startChatRow = -1;
+
+    private int otherShadowRow = -1;
+    private int otherHeaderRow = -1;
+    private int addShortcutRow = -1;
+    private int blockContactRow = -1;
+    private int deleteContactRow = -1;
 
     private int rowCount = 0;
 
@@ -240,68 +240,8 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                 if (id == -1) {
                     finishFragment();
                 }
-                else if (id == ID_BLOCK_CONTACT)
-                {
-                    if( userBlocked() ) {
-                        MrMailbox.blockContact(user_id, 0);
-                        finishFragment(); /* got to the parent, this is important eg. when editing blocking in the BlockedUserActivitiy. Moreover, this saves us updating all the states in the profile */
-                    }
-                    else {
-                        AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
-                        builder.setMessage(context.getString(R.string.AreYouSureBlockContact));
-                        builder.setPositiveButton(R.string.OK, new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
-                                MrMailbox.blockContact(user_id, 1);
-                                finishFragment(); /* got to the parent, this is important eg. when editing blocking in the BlockedUserActivitiy. Moreover, this saves us updating all the states in the profile */
-                            }
-                        });
-                        builder.setNegativeButton(R.string.Cancel, null);
-                        showDialog(builder.create());
-                    }
-                }
-                else if (id == ID_DELETE_CONTACT)
-                {
-                    AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
-                    builder.setMessage(context.getString(R.string.AreYouSureDeleteContact));
-                    builder.setPositiveButton(R.string.OK, new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            if( MrMailbox.deleteContact(user_id)==0 ) {
-                                AndroidUtilities.showHint(getParentActivity(), context.getString(R.string.CannotDeleteContact));
-                            }
-                            else {
-                                AndroidUtilities.showDoneHint(getParentActivity());
-                                finishFragment();
-                            }
-                        }
-                    });
-                    builder.setNegativeButton(R.string.Cancel, null);
-                    showDialog(builder.create());
-                }
-                else if (id == ID_ADD_SHORTCUT)
-                {
-                    try {
-                        // draw avatar into a bitmap
-                        int wh = avatarImage.imageReceiver.getImageWidth();
-                        Bitmap bitmap = Bitmap.createBitmap(wh, wh, Bitmap.Config.ARGB_8888);
-                        bitmap.eraseColor(Color.TRANSPARENT);
-                        Canvas canvas = new Canvas(bitmap);
-                        avatarImage.imageReceiver.draw(canvas);
-
-                        // add shortcut
-                        int install_chat_id = chat_id!=0? chat_id : MrMailbox.getChatIdByContactId(user_id);
-                        AndroidUtilities.installShortcut(install_chat_id, bitmap);
-                        Toast.makeText(getParentActivity(), context.getString(R.string.ShortcutAdded), Toast.LENGTH_LONG).show();
-
-                    } catch (Exception e) {
-
-                    }
-                }
             }
         });
-
-        createActionBarMenu();
 
         listAdapter = new ListAdapter(context);
         avatarDrawable = new AvatarDrawable();
@@ -461,6 +401,64 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                         }
                     });
                     presentFragment(fragment);
+                }
+                else if (position == blockContactRow)
+                {
+                    if( userBlocked() ) {
+                        MrMailbox.blockContact(user_id, 0);
+                        finishFragment(); /* got to the parent, this is important eg. when editing blocking in the BlockedUserActivitiy. Moreover, this saves us updating all the states in the profile */
+                    }
+                    else {
+                        AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
+                        builder.setMessage(context.getString(R.string.AreYouSureBlockContact));
+                        builder.setPositiveButton(R.string.OK, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                MrMailbox.blockContact(user_id, 1);
+                                finishFragment(); /* got to the parent, this is important eg. when editing blocking in the BlockedUserActivitiy. Moreover, this saves us updating all the states in the profile */
+                            }
+                        });
+                        builder.setNegativeButton(R.string.Cancel, null);
+                        showDialog(builder.create());
+                    }
+                }
+                else if (position == deleteContactRow)
+                {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
+                    builder.setMessage(context.getString(R.string.AreYouSureDeleteContact));
+                    builder.setPositiveButton(R.string.OK, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            if( MrMailbox.deleteContact(user_id)==0 ) {
+                                AndroidUtilities.showHint(getParentActivity(), context.getString(R.string.CannotDeleteContact));
+                            }
+                            else {
+                                AndroidUtilities.showDoneHint(getParentActivity());
+                                finishFragment();
+                            }
+                        }
+                    });
+                    builder.setNegativeButton(R.string.Cancel, null);
+                    showDialog(builder.create());
+                }
+                else if (position == addShortcutRow)
+                {
+                    try {
+                        // draw avatar into a bitmap
+                        int wh = avatarImage.imageReceiver.getImageWidth();
+                        Bitmap bitmap = Bitmap.createBitmap(wh, wh, Bitmap.Config.ARGB_8888);
+                        bitmap.eraseColor(Color.TRANSPARENT);
+                        Canvas canvas = new Canvas(bitmap);
+                        avatarImage.imageReceiver.draw(canvas);
+
+                        // add shortcut
+                        int install_chat_id = chat_id!=0? chat_id : MrMailbox.getChatIdByContactId(user_id);
+                        AndroidUtilities.installShortcut(install_chat_id, bitmap);
+                        Toast.makeText(getParentActivity(), context.getString(R.string.ShortcutAdded), Toast.LENGTH_LONG).show();
+
+                    } catch (Exception e) {
+
+                    }
                 }
                 else if (position >= memberlistFirstRow && position <= memberlistLastRow)
                 {
@@ -759,7 +757,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
             reloadChatlist = true;
         }
         else if (id == NotificationCenter.contactsDidLoaded) {
-            createActionBarMenu();
+
         } else if (id == NotificationCenter.closeChats) {
             removeSelfFromStack();
         }
@@ -886,6 +884,31 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
 
         rowCount = 0;
 
+        changeNameRow = -1;
+        settingsRow = -1;
+        settingsShadowRow = -1;
+
+        emailHeaderRow = -1;
+        emailRow = -1;
+        compareKeysRow = -1;
+        listShadowRow = -1;
+
+        memberlistHeaderRow = -1;
+        memberlistFirstRow = -1;
+        memberlistLastRow = -1;
+        addMemberRow = -1;
+
+        chatlistHeaderRow = -1;
+        chatlistFirstRow = -1;
+        chatlistLastRow = -1;
+        startChatRow = -1;
+
+        otherShadowRow = -1;
+        otherHeaderRow = -1;
+        addShortcutRow = -1;
+        blockContactRow = -1;
+        deleteContactRow = -1;
+
         if( (user_id!=0 && user_id!=MrContact.MR_CONTACT_ID_SELF) || (chat_id!=0 && chat_id!=MrChat.MR_CHAT_ID_DEADDROP)) {
             changeNameRow = rowCount++;
         }
@@ -927,6 +950,19 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
             chatlistFirstRow = rowCount;
             rowCount += chatlist.getCnt();
             chatlistLastRow = rowCount-1;
+        }
+
+        otherShadowRow = rowCount++;
+        otherHeaderRow = rowCount++;
+
+        if( chat_id!=0 || MrMailbox.getChatIdByContactId(user_id)!=0 ) {
+
+            addShortcutRow = rowCount++;
+        }
+
+        if( user_id != 0 && user_id != MrContact.MR_CONTACT_ID_SELF ) {
+            blockContactRow = rowCount++;
+            deleteContactRow = rowCount++;
         }
     }
 
@@ -984,24 +1020,6 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
         }
 
         ContactsController.setupAvatar(avatarImage, avatarImage.imageReceiver, avatarDrawable, mrContact, mrChat);
-    }
-
-    private void createActionBarMenu() {
-        ActionBarMenu menu = actionBar.createMenu();
-        menu.clearItems();
-
-        ActionBarMenuItem item = menu.addItem(10, R.drawable.ic_ab_other);
-
-        if( chat_id!=0 || MrMailbox.getChatIdByContactId(user_id)!=0 ) {
-            item.addSubItem(ID_ADD_SHORTCUT, ApplicationLoader.applicationContext.getString(R.string.AddShortcut));
-        }
-
-        if( user_id != 0 && user_id != MrContact.MR_CONTACT_ID_SELF ) {
-            item.addSubItem(ID_BLOCK_CONTACT, userBlocked()? ApplicationLoader.applicationContext.getString(R.string.UnblockContact) : ApplicationLoader.applicationContext.getString(R.string.BlockContact));
-            item.addSubItem(ID_DELETE_CONTACT, ApplicationLoader.applicationContext.getString(R.string.DeleteContact));
-        }
-
-
     }
 
     @Override
@@ -1079,6 +1097,15 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                     else if( i==emailRow ) {
                         textCell.setText(MrMailbox.getContact(user_id).getAddr(), false);
                     }
+                    else if( i == addShortcutRow ) {
+                        textCell.setText(mContext.getString(R.string.AddShortcut), true);
+                    }
+                    else if( i == blockContactRow ) {
+                        textCell.setText(userBlocked()? mContext.getString(R.string.UnblockContact) : mContext.getString(R.string.BlockContact), true);
+                    }
+                    else if( i == deleteContactRow ) {
+                        textCell.setText(mContext.getString(R.string.DeleteContact), true);
+                    }
                     break;
 
                 case ROWTYPE_CONTACT:
@@ -1122,6 +1149,9 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                     else if( i==memberlistHeaderRow) {
                         headerCell.setText(MrMailbox.getChat(chat_id).getSubtitle());
                     }
+                    else if( i ==otherHeaderRow ) {
+                        headerCell.setText(mContext.getString(R.string.NotificationsOther));
+                    }
                     break;
 
                 default:
@@ -1159,16 +1189,17 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
 
         @Override
         public int getItemViewType(int i) {
-            if ( i == changeNameRow || i==compareKeysRow || i==startChatRow || i == settingsRow || i == addMemberRow || i==emailRow) {
+            if ( i == changeNameRow || i==compareKeysRow || i==startChatRow || i == settingsRow || i == addMemberRow || i==emailRow
+                    || i==addShortcutRow || i==blockContactRow || i==deleteContactRow ) {
                 return ROWTYPE_TEXT_SETTINGS;
             } else if (i >= memberlistFirstRow && i <= memberlistLastRow) {
                 return ROWTYPE_CONTACT;
             } else if (i >= chatlistFirstRow && i <= chatlistLastRow) {
                 return ROWTYPE_CHAT;
-            } else if(i== listShadowRow || i==settingsShadowRow) {
+            } else if(i== listShadowRow || i==settingsShadowRow || i==otherShadowRow ) {
                 return ROWTYPE_SHADOW;
             }
-            else if(i==chatlistHeaderRow || i==memberlistHeaderRow || i==emailHeaderRow) {
+            else if(i==chatlistHeaderRow || i==memberlistHeaderRow || i==emailHeaderRow|| i==otherHeaderRow ) {
                 return ROWTYPE_HEADER;
             }
             return 0;
