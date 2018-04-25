@@ -96,7 +96,6 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
 
     private int emailHeaderRow = -1;
     private int emailRow = -1;
-    private int compareKeysRow = -1;
     private int listShadowRow = -1;
 
     private int[] memberlistUserIds;
@@ -318,26 +317,27 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                     final String addr = MrMailbox.getContact(user_id).getAddr();
                     AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity()); // was: BottomSheet.Builder
                     builder.setTitle(addr);
-                    CharSequence[] items = new CharSequence[]{ApplicationLoader.applicationContext.getString(R.string.CopyToClipboard)};
+                    CharSequence[] items = new CharSequence[]{
+                            ApplicationLoader.applicationContext.getString(R.string.Info),
+                            ApplicationLoader.applicationContext.getString(R.string.CopyToClipboard)};
                     builder.setItems(items, new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialogInterface, int i) {
                                     if( i==0 ) {
+                                        String info_str = MrMailbox.getContactEncrInfo(user_id);
+                                        AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
+                                        builder.setTitle(R.string.Info);
+                                        builder.setMessage(AndroidUtilities.replaceTags(info_str));
+                                        builder.setPositiveButton(R.string.OK, null);
+                                        showDialog(builder.create());
+                                    }
+                                    else if( i==1 ) {
                                         AndroidUtilities.addToClipboard(addr);
                                         AndroidUtilities.showDoneHint(ApplicationLoader.applicationContext);
                                     }
                                 }
                             }
                     );
-                    showDialog(builder.create());
-                }
-                else if(position==compareKeysRow)
-                {
-                    String info_str = MrMailbox.getContactEncrInfo(user_id);
-                    AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
-                    builder.setTitle(R.string.Encryption);
-                    builder.setMessage(AndroidUtilities.replaceTags(info_str));
-                    builder.setPositiveButton(R.string.OK, null);
                     showDialog(builder.create());
                 }
                 else if(position==startChatRow)
@@ -890,7 +890,6 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
 
         emailHeaderRow = -1;
         emailRow = -1;
-        compareKeysRow = -1;
         listShadowRow = -1;
 
         memberlistHeaderRow = -1;
@@ -922,7 +921,6 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
             if( rowCount >= 1 ) { settingsShadowRow = rowCount++; }
             emailHeaderRow = rowCount++;
             emailRow = rowCount++;
-            compareKeysRow = rowCount++;
         }
 
         if( chat_id != 0 )
@@ -1085,8 +1083,6 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                     textCell.setTextColor(0xff212121);
                     if (i == changeNameRow) {
                         textCell.setText(mContext.getString(R.string.EditName), true);
-                    } else if (i == compareKeysRow) {
-                        textCell.setText(mContext.getString(R.string.Encryption), true);
                     } else if (i == startChatRow) {
                         textCell.setText(mContext.getString(R.string.NewChat), false);
                     } else if (i == settingsRow) {
@@ -1164,7 +1160,6 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                            i == settingsRow
                         || i == changeNameRow
                         || i == emailRow
-                        || i == compareKeysRow
                         || i == startChatRow
                         || i == addMemberRow
                         || (i >= chatlistFirstRow && i <= chatlistLastRow)
@@ -1189,7 +1184,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
 
         @Override
         public int getItemViewType(int i) {
-            if ( i == changeNameRow || i==compareKeysRow || i==startChatRow || i == settingsRow || i == addMemberRow || i==emailRow
+            if ( i == changeNameRow || i==startChatRow || i == settingsRow || i == addMemberRow || i==emailRow
                     || i==addShortcutRow || i==blockContactRow || i==deleteContactRow ) {
                 return ROWTYPE_TEXT_SETTINGS;
             } else if (i >= memberlistFirstRow && i <= memberlistLastRow) {
