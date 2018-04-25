@@ -52,7 +52,7 @@ public class SettingsFragment extends BaseFragment {
     // the list
     private int profileRow, nameAndStatusRow;
     private int notificationRow, backgroundRow, advRow, settingsShadowRow;
-    private int readReceiptsRow, passcodeRow;
+    private int readReceiptsRow;
     private int aboutHeaderRow, aboutRow, inviteRow, helpRow, aboutShadowRow;
     private int rowCount;
 
@@ -79,7 +79,6 @@ public class SettingsFragment extends BaseFragment {
         nameAndStatusRow   = rowCount++;
         notificationRow    = rowCount++;
         backgroundRow      = rowCount++;
-        passcodeRow        = rowCount++;
         readReceiptsRow    = rowCount++;
         advRow             = rowCount++;
         settingsShadowRow  = rowCount++;
@@ -129,13 +128,6 @@ public class SettingsFragment extends BaseFragment {
             public void onItemClick(final AdapterView<?> adapterView, View view, final int i, long l) {
                 if (i == nameAndStatusRow) {
                     presentFragment(new SettingsNameFragment());
-                }
-                else if (i == passcodeRow) {
-                    if (UserConfig.passcodeHash.length() > 0) {
-                        presentFragment(new PasscodeActivity(PasscodeActivity.SCREEN2_ENTER_CODE2));
-                    } else {
-                        presentFragment(new PasscodeActivity(PasscodeActivity.SCREEN0_SETTINGS));
-                    }
                 }
                 else if(i==readReceiptsRow )
                 {
@@ -200,7 +192,7 @@ public class SettingsFragment extends BaseFragment {
         @Override
         public boolean isEnabled(int i) {
             return  i == nameAndStatusRow ||
-                    i==passcodeRow || i==readReceiptsRow || i == notificationRow || i == backgroundRow || i == advRow ||
+                    i==readReceiptsRow || i == notificationRow || i == backgroundRow || i == advRow ||
                     i == aboutRow || i == inviteRow || i == helpRow;
         }
 
@@ -245,11 +237,7 @@ public class SettingsFragment extends BaseFragment {
                     view.setBackgroundColor(0xffffffff);
                 }
                 TextSettingsCell textCell = (TextSettingsCell) view;
-                if (i == passcodeRow) {
-                    String val = UserConfig.passcodeHash.length() > 0? mContext.getString(R.string.Enabled) : mContext.getString(R.string.Disabled);
-                    textCell.setTextAndValue(mContext.getString(R.string.Passcode), val, true);
-                }
-                else if (i == notificationRow) {
+                if (i == notificationRow) {
                     // a preview of the settings here would be rather complicated (all options may be overwritten in the
                     // chats) and either ambiguous or too long.
                     // We tried to display "On", "On/Off" (only groups disabled) and "..." (normal and groups disabled),

@@ -80,6 +80,7 @@ public class SettingsAdvFragment extends BaseFragment implements NotificationCen
     private int e2eInfoRow;
 
     private int otherHeaderRow;
+    private int passcodeRow;
     private int backupRow;
     private int backupShadowRow;
     private int rowCount;
@@ -125,6 +126,7 @@ public class SettingsAdvFragment extends BaseFragment implements NotificationCen
         e2eInfoRow              = rowCount++;
 
         otherHeaderRow          = rowCount++;
+        passcodeRow             = rowCount++;
         autoplayGifsRow         = rowCount++;
         textSizeRow             = rowCount++; // for now, we have the font size in the advanced settings; this is because the numberical selection is a little bit weird and does only affect the message text. It would be better to use the font size defined by the system with "sp" (Scale-independent Pixels which included the user's font size preference)
         sendByEnterRow          = rowCount++;
@@ -368,6 +370,14 @@ public class SettingsAdvFragment extends BaseFragment implements NotificationCen
                     });
                     showDialog(builder.create());
                 }
+                else if (i == passcodeRow) {
+                    if (UserConfig.passcodeHash.length() > 0) {
+                        presentFragment(new PasscodeActivity(PasscodeActivity.SCREEN2_ENTER_CODE2));
+                    } else {
+                        presentFragment(new PasscodeActivity(PasscodeActivity.SCREEN0_SETTINGS));
+                    }
+                }
+
             }
         });
 
@@ -649,6 +659,10 @@ public class SettingsAdvFragment extends BaseFragment implements NotificationCen
                     SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("mainconfig", Activity.MODE_PRIVATE);
                     int size = preferences.getInt("msg_font_size", SettingsAdvFragment.defMsgFontSize());
                     textCell.setTextAndValue(mContext.getString(R.string.TextSize), String.format("%d", size), true);
+                }
+                else    if (i == passcodeRow) {
+                    String val = UserConfig.passcodeHash.length() > 0? mContext.getString(R.string.Enabled) : mContext.getString(R.string.Disabled);
+                    textCell.setTextAndValue(mContext.getString(R.string.Passcode), val, true);
                 }
             } else if (type == ROWTYPE_CHECK) {
                 if (view == null) {
