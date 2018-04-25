@@ -53,7 +53,6 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
@@ -85,6 +84,7 @@ public class ChatlistActivity extends BaseFragment implements NotificationCenter
     private EmptyTextProgressView searchEmptyView;
     private LinearLayout emptyView;
     private ActionBarMenuItem passcodeItem;
+    private ActionBarMenuItem qrScanItem;
     private ImageView floatingButton;
 
     // Floating hiding action as in T'gram - I think this is not useful:
@@ -192,8 +192,9 @@ public class ChatlistActivity extends BaseFragment implements NotificationCenter
         if( !showArchivedOnly ) {
             ActionBarMenu menu = actionBar.createMenu();
             if (!onlySelect) {
+                qrScanItem = menu.addItem(ID_SCAN_QR, R.drawable.ic_ab_qr);
                 passcodeItem = menu.addItem(ID_LOCK_APP, R.drawable.ic_ab_lock_screen);
-                updatePasscodeButton();
+                updateButtons();
             }
             final ActionBarMenuItem item = menu.addItem(0, R.drawable.ic_ab_search).setIsSearchField(true, true).setActionBarMenuItemSearchListener(new ActionBarMenuItem.ActionBarMenuItemSearchListener() {
                 @Override
@@ -208,7 +209,7 @@ public class ChatlistActivity extends BaseFragment implements NotificationCenter
                             floatingButton.setVisibility(View.GONE);
                         }
                     }
-                    updatePasscodeButton();
+                    updateButtons();
                 }
 
                 @Override
@@ -239,7 +240,7 @@ public class ChatlistActivity extends BaseFragment implements NotificationCenter
                             chatlistAdapter.notifyDataSetChanged();
                         }
                     }
-                    updatePasscodeButton();
+                    updateButtons();
                 }
 
                 @Override
@@ -276,8 +277,7 @@ public class ChatlistActivity extends BaseFragment implements NotificationCenter
             if(!onlySelect) {
                 if( MrMailbox.getConfigInt("qr_enabled", 0) != 0 ) {
                     headerItem.addSubItem(ID_NEW_VERIFIED_GROUP, ApplicationLoader.applicationContext.getString(R.string.NewVerifiedGroup));
-                    headerItem.addSubItem(ID_SCAN_QR, ApplicationLoader.applicationContext.getString(R.string.QrScan));
-                    headerItem.addSubItem(ID_SHOW_QR, ApplicationLoader.applicationContext.getString(R.string.QrShow));
+                    headerItem.addSubItem(ID_SHOW_QR, ApplicationLoader.applicationContext.getString(R.string.QrShowVerifyCode));
                 }
                 headerItem.addSubItem(ID_DEADDROP, ApplicationLoader.applicationContext.getString(R.string.Deaddrop));
                 headerItem.addSubItem(ID_SETTINGS, ApplicationLoader.applicationContext.getString(R.string.Settings));
@@ -310,7 +310,7 @@ public class ChatlistActivity extends BaseFragment implements NotificationCenter
                     if( UserConfig.appLocked )
                     {
                         // hide list as it is visible in the "last app switcher" otherwise, save state
-                        updatePasscodeButton();
+                        updateButtons();
 
                         // finish the activity after a little delay; 200 ms shoud be enough to
                         // let the system update its screenshots for the "last app switcher".
@@ -991,11 +991,11 @@ public class ChatlistActivity extends BaseFragment implements NotificationCenter
         } else if ( id == NotificationCenter.messageSendError) {
             updateVisibleRows(MrMailbox.UPDATE_MASK_SEND_STATE);
         } else if (id == NotificationCenter.didSetPasscode) {
-            updatePasscodeButton();
+            updateButtons();
         }
     }
 
-    private void updatePasscodeButton() {
+    private void updateButtons() {
         if (passcodeItem == null) {
             return;
         }
@@ -1004,6 +1004,8 @@ public class ChatlistActivity extends BaseFragment implements NotificationCenter
         } else {
             passcodeItem.setVisibility(View.GONE);
         }
+
+        qrScanItem.setVisibility(!searching? View.VISIBLE : View.GONE);
     }
 
     private void hideFloatingButton(boolean hide) {

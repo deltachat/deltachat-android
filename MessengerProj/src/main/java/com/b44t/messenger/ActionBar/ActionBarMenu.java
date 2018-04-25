@@ -104,6 +104,7 @@ public class ActionBarMenu extends LinearLayout {
                     case R.drawable.photo_tools:       hint = ApplicationLoader.applicationContext.getString(R.string.EditImage); break;
                     case R.drawable.ic_ab_search:      hint = ApplicationLoader.applicationContext.getString(R.string.Search); break;
                     case R.drawable.ic_ab_lock_screen: hint = ApplicationLoader.applicationContext.getString(R.string.Passcode); break;
+                    case R.drawable.ic_ab_qr:          hint = ApplicationLoader.applicationContext.getString(R.string.QrScan); break;
                 }
                 if( hint != null ) {
                     if( s_menuItemHint != null ) {
