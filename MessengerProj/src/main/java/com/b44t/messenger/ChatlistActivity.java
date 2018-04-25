@@ -189,10 +189,14 @@ public class ChatlistActivity extends BaseFragment implements NotificationCenter
             }
         });
 
+        boolean qr_enabled = MrMailbox.getConfigInt("qr_enabled", 0) != 0;
+
         if( !showArchivedOnly ) {
             ActionBarMenu menu = actionBar.createMenu();
             if (!onlySelect) {
-                qrScanItem = menu.addItem(ID_SCAN_QR, R.drawable.ic_ab_qr);
+                if( qr_enabled ) {
+                    qrScanItem = menu.addItem(ID_SCAN_QR, R.drawable.ic_ab_qr);
+                }
                 passcodeItem = menu.addItem(ID_LOCK_APP, R.drawable.ic_ab_lock_screen);
                 updateButtons();
             }
@@ -275,7 +279,7 @@ public class ChatlistActivity extends BaseFragment implements NotificationCenter
             headerItem.addSubItem(ID_NEW_CHAT, ApplicationLoader.applicationContext.getString(R.string.NewChat));
             headerItem.addSubItem(ID_NEW_GROUP, ApplicationLoader.applicationContext.getString(R.string.NewGroup));
             if(!onlySelect) {
-                if( MrMailbox.getConfigInt("qr_enabled", 0) != 0 ) {
+                if( qr_enabled ) {
                     headerItem.addSubItem(ID_NEW_VERIFIED_GROUP, ApplicationLoader.applicationContext.getString(R.string.NewVerifiedGroup));
                     headerItem.addSubItem(ID_SHOW_QR, ApplicationLoader.applicationContext.getString(R.string.QrShowVerifyCode));
                 }
