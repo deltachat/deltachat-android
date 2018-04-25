@@ -62,6 +62,7 @@ import java.io.File;
 public class SettingsAdvFragment extends BaseFragment implements NotificationCenter.NotificationCenterDelegate {
 
     // the list
+    private int mainHeaderRow;
     private int accountSettingsRow;
     private int directShareRow;
     private int cacheRow;
@@ -78,7 +79,7 @@ public class SettingsAdvFragment extends BaseFragment implements NotificationCen
     private int initiateKeyTransferRow;
     private int e2eInfoRow;
 
-    private int imexHeaderRow;
+    private int otherHeaderRow;
     private int backupRow;
     private int backupShadowRow;
     private int rowCount;
@@ -112,21 +113,10 @@ public class SettingsAdvFragment extends BaseFragment implements NotificationCen
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.imexFileWritten);
 
         rowCount = 0;
-        accountSettingsRow = rowCount++;
-        if (Build.VERSION.SDK_INT >= 23) {
-            directShareRow = -1; // for now, seems not really to work, however, in T'gram it does
-        }
-        else {
-            directShareRow = -1;
-        }
-        autoplayGifsRow         = rowCount++;
-        textSizeRow             = rowCount++; // for now, we have the font size in the advanced settings; this is because the numberical selection is a little bit weird and does only affect the message text. It would be better to use the font size defined by the system with "sp" (Scale-independent Pixels which included the user's font size preference)
+        mainHeaderRow           = -1;
+        accountSettingsRow      = rowCount++;
         showUnknownSendersRow   = -1;// rowCount++;
-        sendByEnterRow          = rowCount++;
-        raiseToSpeakRow         = rowCount++; // outgoing message
-        cacheRow                = -1;// for now, the - non-functional - page is reachable by the "storage settings" in the "android App Settings" only
         blockedRow              = rowCount++;
-        backupRow               = rowCount++;
         settingsShadowRow       = rowCount++;
 
         e2eHeaderRow            = rowCount++;
@@ -134,8 +124,20 @@ public class SettingsAdvFragment extends BaseFragment implements NotificationCen
         e2eEncryptionRow        = rowCount++;
         e2eInfoRow              = rowCount++;
 
-        imexHeaderRow           = -1;
-        backupShadowRow         = -1;
+        otherHeaderRow          = rowCount++;
+        autoplayGifsRow         = rowCount++;
+        textSizeRow             = rowCount++; // for now, we have the font size in the advanced settings; this is because the numberical selection is a little bit weird and does only affect the message text. It would be better to use the font size defined by the system with "sp" (Scale-independent Pixels which included the user's font size preference)
+        sendByEnterRow          = rowCount++;
+        raiseToSpeakRow         = rowCount++; // outgoing message
+        if (Build.VERSION.SDK_INT >= 23) {
+            directShareRow = -1; // for now, seems not really to work, however, in T'gram it does
+        }
+        else {
+            directShareRow = -1;
+        }
+        cacheRow                = -1;// for now, the - non-functional - page is reachable by the "storage settings" in the "android App Settings" only
+        backupRow               = rowCount++;
+        backupShadowRow         = rowCount++;
 
         return true;
     }
@@ -680,11 +682,14 @@ public class SettingsAdvFragment extends BaseFragment implements NotificationCen
                     view.setBackgroundColor(0xffffffff);
                 }
 
-                if (i == e2eHeaderRow) {
+                if (i == mainHeaderRow) {
+                    ((HeaderCell) view).setText(mContext.getString(R.string.AdvancedSettings));
+                }
+                else if (i == e2eHeaderRow) {
                     ((HeaderCell) view).setText(mContext.getString(R.string.Autocrypt));
                 }
-                else if (i == imexHeaderRow) {
-                    ((HeaderCell) view).setText(mContext.getString(R.string.ExportImportHeader));
+                else if (i == otherHeaderRow) {
+                    ((HeaderCell) view).setText(mContext.getString(R.string.NotificationsOther));
                 }
             }
 
@@ -697,7 +702,7 @@ public class SettingsAdvFragment extends BaseFragment implements NotificationCen
                 return ROWTYPE_SHADOW;
             }  else if( i==e2eInfoRow ) {
                 return ROWTYPE_INFO;
-            } else if( i==imexHeaderRow || i==e2eHeaderRow ) {
+            } else if( i==mainHeaderRow || i==otherHeaderRow || i==e2eHeaderRow ) {
                 return ROWTYPE_HEADER;
             } else if ( i == sendByEnterRow || i == raiseToSpeakRow || i == autoplayGifsRow || i==showUnknownSendersRow || i == directShareRow || i==e2eEncryptionRow) {
                 return ROWTYPE_CHECK;
