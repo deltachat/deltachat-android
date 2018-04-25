@@ -642,7 +642,7 @@ public class SettingsAdvFragment extends BaseFragment implements NotificationCen
                 }
                 else if (i == blockedRow) {
                     String cntStr = String.format("%d", MrMailbox.getBlockedCount());
-                    textCell.setTextAndValue(ApplicationLoader.applicationContext.getString(R.string.BlockedContacts), cntStr, true);
+                    textCell.setTextAndValue(ApplicationLoader.applicationContext.getString(R.string.BlockedContacts), cntStr, false);
                 }
                 else if( i==initiateKeyTransferRow ) {
                     textCell.setText(mContext.getString(R.string.AutocryptKeyTransferInitiate), true);
