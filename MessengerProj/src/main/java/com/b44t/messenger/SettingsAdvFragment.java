@@ -62,7 +62,6 @@ import java.io.File;
 public class SettingsAdvFragment extends BaseFragment implements NotificationCenter.NotificationCenterDelegate {
 
     // the list
-    private int mainHeaderRow;
     private int accountSettingsRow;
     private int directShareRow;
     private int cacheRow;
@@ -81,6 +80,8 @@ public class SettingsAdvFragment extends BaseFragment implements NotificationCen
 
     private int otherHeaderRow;
     private int passcodeRow;
+    private int manageKeysRow;
+    private int labsEnableQrRow;
     private int backupRow;
     private int backupShadowRow;
     private int rowCount;
@@ -91,9 +92,6 @@ public class SettingsAdvFragment extends BaseFragment implements NotificationCen
     private static final int ROWTYPE_HEADER          = 3;
     private static final int ROWTYPE_INFO            = 4;
     private static final int ROWTYPE_COUNT           = 5;
-
-    private static final int ID_MENU_ENABLE_QR   = 20;
-    private static final int ID_MENU_MANAGE_KEYS = 21;
 
     private ListView listView;
 
@@ -113,24 +111,28 @@ public class SettingsAdvFragment extends BaseFragment implements NotificationCen
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.imexProgress);
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.imexFileWritten);
 
+        // important advances options that are typically used
         rowCount = 0;
-        mainHeaderRow           = -1;
         accountSettingsRow      = rowCount++;
-        showUnknownSendersRow   = -1;// rowCount++;
         blockedRow              = rowCount++;
         settingsShadowRow       = rowCount++;
 
+        // autocrypt options
         e2eHeaderRow            = rowCount++;
         initiateKeyTransferRow  = rowCount++;
         e2eEncryptionRow        = rowCount++;
         e2eInfoRow              = rowCount++;
 
+        // all misc., labs and other infrequently used options should go to the "other" area;
+        // this area may get as long as needed, all garbage options go here.
+        // for simplicity, we do not hide discouraged/supported options anywhere else.
         otherHeaderRow          = rowCount++;
         passcodeRow             = rowCount++;
         autoplayGifsRow         = rowCount++;
         textSizeRow             = rowCount++; // for now, we have the font size in the advanced settings; this is because the numberical selection is a little bit weird and does only affect the message text. It would be better to use the font size defined by the system with "sp" (Scale-independent Pixels which included the user's font size preference)
         sendByEnterRow          = rowCount++;
         raiseToSpeakRow         = rowCount++; // outgoing message
+        showUnknownSendersRow   = -1;// rowCount++;
         if (Build.VERSION.SDK_INT >= 23) {
             directShareRow = -1; // for now, seems not really to work, however, in T'gram it does
         }
@@ -138,6 +140,8 @@ public class SettingsAdvFragment extends BaseFragment implements NotificationCen
             directShareRow = -1;
         }
         cacheRow                = -1;// for now, the - non-functional - page is reachable by the "storage settings" in the "android App Settings" only
+        manageKeysRow           = rowCount++;
+        labsEnableQrRow         = rowCount++;
         backupRow               = rowCount++;
         backupShadowRow         = rowCount++;
 
@@ -164,27 +168,8 @@ public class SettingsAdvFragment extends BaseFragment implements NotificationCen
                 if (id == -1) {
                     finishFragment();
                 }
-                else if( id == ID_MENU_ENABLE_QR ) {
-                    MrMailbox.setConfigInt("qr_enabled", MrMailbox.getConfigInt("qr_enabled", 0)!=0? 0 : 1);
-
-                    // restart activity, this includes the chatlist
-                    Intent intent = getParentActivity().getIntent();
-                    getParentActivity().finish();
-                    getParentActivity().startActivity(intent);
-                }
-                else if( id == ID_MENU_MANAGE_KEYS ) {
-                    imexShowMenu(ApplicationLoader.applicationContext.getString(R.string.E2EManagePrivateKeys),
-                            MrMailbox.MR_IMEX_EXPORT_SELF_KEYS, ApplicationLoader.applicationContext.getString(R.string.ExportPrivateKeys),
-                            MrMailbox.MR_IMEX_IMPORT_SELF_KEYS, ApplicationLoader.applicationContext.getString(R.string.ImportPrivateKeys));
-                }
             }
         });
-
-        // action bar menu
-        ActionBarMenu menu = actionBar.createMenu();
-        ActionBarMenuItem headerItem = menu.addItem(0, R.drawable.ic_ab_other);
-        headerItem.addSubItem(ID_MENU_MANAGE_KEYS, ApplicationLoader.applicationContext.getString(R.string.E2EManagePrivateKeys));
-        headerItem.addSubItem(ID_MENU_ENABLE_QR, MrMailbox.getConfigInt("qr_enabled", 0)!=0? "Labs: Disable QR code options" : "Labs: Enable QR code options");
 
         // create object to hold the whole view
         fragmentView = new FrameLayout(context) {};
@@ -227,6 +212,13 @@ public class SettingsAdvFragment extends BaseFragment implements NotificationCen
                     if (view instanceof TextCheckCell) {
                         ((TextCheckCell) view).setChecked(MediaController.getInstance().canDirectShare());
                     }
+                } else if(i == labsEnableQrRow) {
+                    MrMailbox.setConfigInt("qr_enabled", MrMailbox.getConfigInt("qr_enabled", 0)!=0? 0 : 1);
+
+                    // restart activity, this includes the chatlist
+                    Intent intent = getParentActivity().getIntent();
+                    getParentActivity().finish();
+                    getParentActivity().startActivity(intent);
                 }
                 else if (i == blockedRow) {
                     presentFragment(new BlockedUsersActivity());
@@ -323,6 +315,12 @@ public class SettingsAdvFragment extends BaseFragment implements NotificationCen
                     });
                     showDialog(builder1.create());
 
+                }
+                else if( i == manageKeysRow )
+                {
+                    imexShowMenu(ApplicationLoader.applicationContext.getString(R.string.E2EManagePrivateKeys),
+                            MrMailbox.MR_IMEX_EXPORT_SELF_KEYS, ApplicationLoader.applicationContext.getString(R.string.ExportPrivateKeys),
+                            MrMailbox.MR_IMEX_IMPORT_SELF_KEYS, ApplicationLoader.applicationContext.getString(R.string.ImportPrivateKeys));
                 }
                 else if( i == backupRow )
                 {
@@ -649,6 +647,9 @@ public class SettingsAdvFragment extends BaseFragment implements NotificationCen
                 else if( i==initiateKeyTransferRow ) {
                     textCell.setText(mContext.getString(R.string.AutocryptKeyTransferInitiate), true);
                 }
+                else if( i==manageKeysRow ) {
+                    textCell.setText(mContext.getString(R.string.E2EManagePrivateKeys), true);
+                }
                 else if( i==backupRow ) {
                     textCell.setText(mContext.getString(R.string.Backup), false);
                 }
@@ -688,6 +689,9 @@ public class SettingsAdvFragment extends BaseFragment implements NotificationCen
                 else if( i == e2eEncryptionRow ) {
                     textCell.setTextAndCheck(mContext.getString(R.string.PreferE2EEncryption),
                             MrMailbox.getConfigInt("e2ee_enabled", MR_E2EE_DEFAULT_ENABLED)!=0, false);
+                } else if (i == labsEnableQrRow) {
+                    boolean qr_enabled = MrMailbox.getConfigInt("qr_enabled", 0)!=0;
+                    textCell.setTextAndCheck("Labs: QR code options", qr_enabled, true);
                 }
             }
             else if (type == ROWTYPE_HEADER) {
@@ -696,10 +700,7 @@ public class SettingsAdvFragment extends BaseFragment implements NotificationCen
                     view.setBackgroundColor(0xffffffff);
                 }
 
-                if (i == mainHeaderRow) {
-                    ((HeaderCell) view).setText(mContext.getString(R.string.AdvancedSettings));
-                }
-                else if (i == e2eHeaderRow) {
+                if (i == e2eHeaderRow) {
                     ((HeaderCell) view).setText(mContext.getString(R.string.Autocrypt));
                 }
                 else if (i == otherHeaderRow) {
@@ -716,9 +717,11 @@ public class SettingsAdvFragment extends BaseFragment implements NotificationCen
                 return ROWTYPE_SHADOW;
             }  else if( i==e2eInfoRow ) {
                 return ROWTYPE_INFO;
-            } else if( i==mainHeaderRow || i==otherHeaderRow || i==e2eHeaderRow ) {
+            } else if( i==otherHeaderRow || i==e2eHeaderRow ) {
                 return ROWTYPE_HEADER;
-            } else if ( i == sendByEnterRow || i == raiseToSpeakRow || i == autoplayGifsRow || i==showUnknownSendersRow || i == directShareRow || i==e2eEncryptionRow) {
+            } else if ( i == sendByEnterRow || i == raiseToSpeakRow || i == autoplayGifsRow
+                    || i==showUnknownSendersRow || i == directShareRow || i==e2eEncryptionRow
+                    || i==labsEnableQrRow) {
                 return ROWTYPE_CHECK;
             } else {
                 return ROWTYPE_TEXT_SETTINGS;

@@ -360,7 +360,7 @@
     <string name="NoMessagesHint">Send message to <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>:\n\n• It is okay if <![CDATA[<b>]]>%2$s<![CDATA[</b>]]> does not use Delta Chat.\n\n• Delivering the first message may take a while.</string>
     <string name="SendNRcvReadReceipts">Receive and send read receipts</string>
     <string name="PreferE2EEncryption">Prefer end-to-end encryption</string>
-    <string name="E2EManagePrivateKeys">Manage secret keys</string>
+    <string name="E2EManagePrivateKeys">Manage keys</string>
     <string name="E2ECompareKeys">Compare keys</string>
     <string name="ForwardToTitle">Forward to …</string>
     <string name="SelectContact">Choose a contact</string>
