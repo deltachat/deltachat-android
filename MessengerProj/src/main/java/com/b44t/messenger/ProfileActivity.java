@@ -1064,7 +1064,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                     } else if (i == startChatRow) {
                         textCell.setText(mContext.getString(R.string.NewChat), false);
                     } else if (i == settingsRow) {
-                        textCell.setText(mContext.getString(R.string.Settings), true);
+                        textCell.setText(mContext.getString(R.string.NotificationsAndSounds), true);
                     } else if (i == addMemberRow) {
                         textCell.setText(mContext.getString(R.string.AddMember), false);
                     }

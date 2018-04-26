@@ -113,7 +113,7 @@ public class ProfileNotificationsActivity extends BaseFragment implements Notifi
     @Override
     public View createView(final Context context) {
         actionBar.setBackButtonImage(R.drawable.ic_ab_back);
-        actionBar.setTitle(String.format(context.getString(R.string.SettingsFor), m_mrChat.getName()));
+        actionBar.setTitle(context.getString(R.string.NotificationsAndSounds));
         actionBar.setActionBarMenuOnItemClick(new ActionBar.ActionBarMenuOnItemClick() {
             @Override
             public void onItemClick(int id) {
@@ -542,7 +542,7 @@ public class ProfileNotificationsActivity extends BaseFragment implements Notifi
                 if (view == null) {
                     view = new HeaderCell(mContext);
                 }
-                ((HeaderCell) view).setText(mContext.getString(R.string.NotificationsAndSounds));
+                ((HeaderCell) view).setText(String.format(mContext.getString(R.string.SettingsFor), m_mrChat.getName()));
             }
             else if (type == TYPE_TEXTSETTINGS) {
                 if (view == null) {
