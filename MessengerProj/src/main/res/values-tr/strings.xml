@@ -390,6 +390,13 @@
     <string name="QrScan">QR kod tara</string>
     <string name="QrShow">QR kodu göster</string>
     <string name="OobFingerprint">Parmak izi</string>
+    <string name="OobSecureJoinRequested">%1$s katılıyor.</string>
     <string name="Autocrypt">Autocrypt</string>
+    <string name="NewVerifiedGroup">Yeni doğrulanmış grup</string>
+    <string name="SharedChats">Paylaşılmış söyleşiler</string>
+    <string name="VerifiedContact">Doğrulanmış kişi</string>
     <string name="Contact">Kişiler</string>
-    </resources>
+    <string name="VerifiedGroup">Doğrulanmış grup</string>
+    <string name="Group">Grup</string>
+    <string name="EditedNameWillBeShared">Düzenlenen ad tüm grup üyeleriyle paylaşılacaktır.</string>
+</resources>
