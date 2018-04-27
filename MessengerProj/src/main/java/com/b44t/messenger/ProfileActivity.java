@@ -103,6 +103,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
     private int memberlistFirstRow = -1;
     private int memberlistLastRow = -1;
     private int addMemberRow = -1;
+    private int showQrRow = -1;
 
     private MrChatlist chatlist = new MrChatlist(0);
     private int chatlistHeaderRow = -1;
@@ -400,6 +401,11 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                         }
                     });
                     presentFragment(fragment);
+                }
+                else if( position == showQrRow )
+                {
+                    Intent intent2 = new Intent(getParentActivity(), QRshowActivity.class);
+                    getParentActivity().startActivity(intent2);
                 }
                 else if (position == blockContactRow)
                 {
@@ -876,6 +882,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
         memberlistFirstRow = -1;
         memberlistLastRow = -1;
         addMemberRow = -1;
+        showQrRow = -1;
 
         chatlistHeaderRow = -1;
         chatlistFirstRow = -1;
@@ -886,15 +893,6 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
         otherHeaderRow = -1;
         addShortcutRow = -1;
         blockContactRow = -1;
-
-        if( (user_id!=0 && user_id!=MrContact.MR_CONTACT_ID_SELF) || (chat_id!=0 && chat_id!=MrChat.MR_CHAT_ID_DEADDROP)) {
-            changeNameRow = rowCount++;
-        }
-
-        if( (chat_id!=0)
-         || MrMailbox.getChatIdByContactId(user_id)!=0 ) { // no settings if there is no chat yet
-            settingsRow = rowCount++;
-        }
 
         if (user_id != 0) {
             if( rowCount >= 1 ) { settingsShadowRow = rowCount++; }
@@ -910,6 +908,10 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
 
             if( chat_id!=MrChat.MR_CHAT_ID_DEADDROP ) {
                 addMemberRow = rowCount++;
+            }
+
+            if( MrMailbox.getChat(chat_id).isVerified() ) {
+                showQrRow = rowCount++;
             }
 
             memberlistFirstRow = rowCount;
@@ -929,15 +931,26 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
             chatlistLastRow = rowCount-1;
         }
 
-        otherShadowRow = rowCount++;
-        otherHeaderRow = rowCount++;
+        boolean addHeader = true;
+
+        if( (user_id!=0 && user_id!=MrContact.MR_CONTACT_ID_SELF) || (chat_id!=0 && chat_id!=MrChat.MR_CHAT_ID_DEADDROP)) {
+            if(addHeader) {otherShadowRow = rowCount++; otherHeaderRow = rowCount++; addHeader=false; }
+            changeNameRow = rowCount++;
+        }
+
+        if( (chat_id!=0)
+         || MrMailbox.getChatIdByContactId(user_id)!=0 ) { // no settings if there is no chat yet
+            if(addHeader) {otherShadowRow = rowCount++; otherHeaderRow = rowCount++; addHeader=false; }
+            settingsRow = rowCount++;
+        }
 
         if( chat_id!=0 || MrMailbox.getChatIdByContactId(user_id)!=0 ) {
-
+            if(addHeader) {otherShadowRow = rowCount++; otherHeaderRow = rowCount++; addHeader=false; }
             addShortcutRow = rowCount++;
         }
 
         if( user_id != 0 && user_id != MrContact.MR_CONTACT_ID_SELF ) {
+            if(addHeader) {otherShadowRow = rowCount++; otherHeaderRow = rowCount++; addHeader=false; }
             blockContactRow = rowCount++;
         }
     }
@@ -1066,7 +1079,10 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                     } else if (i == settingsRow) {
                         textCell.setText(mContext.getString(R.string.NotificationsAndSounds), true);
                     } else if (i == addMemberRow) {
-                        textCell.setText(mContext.getString(R.string.AddMember), false);
+                        textCell.setText(mContext.getString(R.string.AddMember), showQrRow!=-1);
+                    }
+                    else if( i == showQrRow ) {
+                        textCell.setText(mContext.getString(R.string.QrShowInviteCode), false);
                     }
                     else if( i==emailRow ) {
                         textCell.setText(MrMailbox.getContact(user_id).getAddr(), false);
@@ -1121,7 +1137,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                         headerCell.setText(MrMailbox.getChat(chat_id).getSubtitle());
                     }
                     else if( i ==otherHeaderRow ) {
-                        headerCell.setText(mContext.getString(R.string.NotificationsOther));
+                        headerCell.setText(mContext.getString(R.string.Settings));
                     }
                     break;
 
@@ -1137,6 +1153,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                         || i == emailRow
                         || i == startChatRow
                         || i == addMemberRow
+                        || i == showQrRow
                         || (i >= chatlistFirstRow && i <= chatlistLastRow)
                         || (i >= memberlistFirstRow && i <= memberlistLastRow);
 
@@ -1159,7 +1176,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
 
         @Override
         public int getItemViewType(int i) {
-            if ( i == changeNameRow || i==startChatRow || i == settingsRow || i == addMemberRow || i==emailRow
+            if ( i == changeNameRow || i==startChatRow || i == settingsRow || i == addMemberRow || i == showQrRow || i==emailRow
                     || i==addShortcutRow || i==blockContactRow ) {
                 return ROWTYPE_TEXT_SETTINGS;
             } else if (i >= memberlistFirstRow && i <= memberlistLastRow) {
