@@ -174,6 +174,7 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
     private final static int ID_SHARE = 22;
     private final static int ID_OPEN = 23;
     private final static int ID_SEARCH = 40;
+    private final static int ID_SHOW_QR = 50;
     private final static int ID_CHAT_COMPOSE_PANEL = 1000;
     private TextView m_replyMenuItem, m_infoMenuItem, m_saveToXXMenuItem, m_openMenuItem, m_shareMenuItem;
 
@@ -533,6 +534,13 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                 } else if (id == ID_SEARCH) {
                     openSearchWithText("");
                 }
+                else if( id == ID_SHOW_QR ) {
+                    Intent intent2 = new Intent(getParentActivity(), QRshowActivity.class);
+                    Bundle b = new Bundle();
+                    b.putInt("chat_id", (int)dialog_id);
+                    intent2.putExtras(b);
+                    getParentActivity().startActivity(intent2);
+                }
             }
         });
 
@@ -613,6 +621,9 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
         if( !m_isChatWithDeaddrop ) {
             headerItem.addSubItem(ID_SHOW_PROFILE, context.getString(R.string.ViewProfile));
             if( m_mrChat.isGroup() ) {
+                if ( m_mrChat.isVerified() ) {
+                    headerItem.addSubItem(ID_SHOW_QR, context.getString(R.string.QrShowInviteCode));
+                }
                 headerItem.addSubItem(ID_LEAVE_GROUP, context.getString(R.string.LeaveGroup));
             }
             headerItem.addSubItem(ID_ARCHIVE_CHAT, context.getString(m_mrChat.getArchived()==0? R.string.ArchiveChat : R.string.UnarchiveChat));
