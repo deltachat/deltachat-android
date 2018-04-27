@@ -387,10 +387,9 @@ public class MrMailbox {
                     case 31: s = ApplicationLoader.applicationContext.getString(R.string.ReadReceipt); break;
                     case 32: s = ApplicationLoader.applicationContext.getString(R.string.ReadReceiptMailBody); break;
                     case 33: s = ApplicationLoader.applicationContext.getString(R.string.MsgGroupImageDeleted); break;
-                    case 34: s = "<c#808080>"+ApplicationLoader.applicationContext.getString(R.string.EncrinfoE2EExplain)+"</c>"; break;
-                    case 35: s = "<c#808080>"+ApplicationLoader.applicationContext.getString(R.string.EncrinfoNoE2EExplain)+"</c>"; break;
-                    case 36: s = "<c#808080>"+ApplicationLoader.applicationContext.getString(R.string.E2eeOffBecauseOfUser)+"</c>"; break;
-                    case 37: s = "<c#808080>"+ApplicationLoader.applicationContext.getString(R.string.E2eeOffBecauseOfRecipient)+"</c>"; break;
+                    case 35: s = ApplicationLoader.applicationContext.getString(R.string.EncrinfoNoE2EExplain); break;
+                    case 36: s = ApplicationLoader.applicationContext.getString(R.string.E2eeOffBecauseOfUser); break;
+                    case 37: s = ApplicationLoader.applicationContext.getString(R.string.E2eeOffBecauseOfRecipient); break;
                     case 40: s = ApplicationLoader.applicationContext.getString(R.string.ArchivedChats); break;
                     case 42: s = ApplicationLoader.applicationContext.getString(R.string.AutocryptSetupMessageSubject); break;
                     case 43: s = ApplicationLoader.applicationContext.getString(R.string.AutocryptSetupMessageGeneralBody); break;

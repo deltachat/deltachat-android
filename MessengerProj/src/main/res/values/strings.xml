@@ -378,7 +378,6 @@
     <string name="EncryptedMessage">Encrypted message</string>
     <string name="Encryption">Encryption</string>
     <string name="EncrinfoE2E">End-to-end encryption enabled.</string>
-    <string name="EncrinfoE2EExplain">If all fingerprints match on the other device, the connection is safe.</string>
     <string name="EncrinfoTransport">Transport-encryption at least up to my server.</string>
     <string name="EncrinfoNone">No encryption to my server.</string>
     <string name="EncrinfoNoE2EExplain">End-to-end encryption will be employed when Delta Chat or another Autocrypt app is also used by the recipient.</string>
