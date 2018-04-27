@@ -402,6 +402,9 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                 else if( position == showQrRow )
                 {
                     Intent intent2 = new Intent(getParentActivity(), QRshowActivity.class);
+                    Bundle b = new Bundle();
+                    b.putInt("chat_id", chat_id);
+                    intent2.putExtras(b);
                     getParentActivity().startActivity(intent2);
                 }
                 else if (position == blockContactRow)

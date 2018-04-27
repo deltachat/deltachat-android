@@ -23,9 +23,15 @@ public class QRshowActivity extends Activity implements NotificationCenter.Notif
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_qrshow);
 
+        Bundle b = getIntent().getExtras();
+        int chat_id = 0;
+        if(b != null) {
+            chat_id = b.getInt("chat_id");
+        }
+
         ImageView imageView = (ImageView) findViewById(R.id.myImage);
         try {
-            Bitmap bitmap = encodeAsBitmap(MrMailbox.getSecurejoinQr(0));
+            Bitmap bitmap = encodeAsBitmap(MrMailbox.getSecurejoinQr(chat_id));
             imageView.setImageBitmap(bitmap);
         } catch (WriterException e) {
             e.printStackTrace();
