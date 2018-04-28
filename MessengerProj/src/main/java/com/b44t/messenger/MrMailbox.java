@@ -379,7 +379,7 @@ public class MrMailbox {
                     case 22: s = ApplicationLoader.applicationContext.getString(R.string.NoNetwork); break;
                     case 23: s = ApplicationLoader.applicationContext.getString(R.string.AttachGif); break;
                     case 24: s = ApplicationLoader.applicationContext.getString(R.string.EncryptedMessage); break;
-                    case 25: s = ApplicationLoader.applicationContext.getString(R.string.EncrinfoE2E); break;
+                    case 25: s = ApplicationLoader.applicationContext.getString(R.string.EncrinfoE2EAvailable); break;
                     case 27: s = ApplicationLoader.applicationContext.getString(R.string.EncrinfoTransport); break;
                     case 28: s = ApplicationLoader.applicationContext.getString(R.string.EncrinfoNone); break;
                     case 29: s = ApplicationLoader.applicationContext.getString(R.string.CannotDecryptBody); break;
@@ -387,9 +387,7 @@ public class MrMailbox {
                     case 31: s = ApplicationLoader.applicationContext.getString(R.string.ReadReceipt); break;
                     case 32: s = ApplicationLoader.applicationContext.getString(R.string.ReadReceiptMailBody); break;
                     case 33: s = ApplicationLoader.applicationContext.getString(R.string.MsgGroupImageDeleted); break;
-                    case 35: s = ApplicationLoader.applicationContext.getString(R.string.EncrinfoNoE2EExplain); break;
-                    case 36: s = ApplicationLoader.applicationContext.getString(R.string.E2eeOffBecauseOfUser); break;
-                    case 37: s = ApplicationLoader.applicationContext.getString(R.string.E2eeOffBecauseOfRecipient); break;
+                    case 34: s = ApplicationLoader.applicationContext.getString(R.string.E2EEncryptionPreferred); break;
                     case 40: s = ApplicationLoader.applicationContext.getString(R.string.ArchivedChats); break;
                     case 42: s = ApplicationLoader.applicationContext.getString(R.string.AutocryptSetupMessageSubject); break;
                     case 43: s = ApplicationLoader.applicationContext.getString(R.string.AutocryptSetupMessageGeneralBody); break;

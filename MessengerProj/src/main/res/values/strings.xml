@@ -377,10 +377,9 @@
     <string name="HelpUrl">https://delta.chat/en/help</string>
     <string name="EncryptedMessage">Encrypted message</string>
     <string name="Encryption">Encryption</string>
-    <string name="EncrinfoE2E">End-to-end encryption enabled.</string>
+    <string name="EncrinfoE2EAvailable">End-to-end encryption available.</string>
     <string name="EncrinfoTransport">Transport-encryption at least up to my server.</string>
     <string name="EncrinfoNone">No encryption to my server.</string>
-    <string name="EncrinfoNoE2EExplain">End-to-end encryption will be employed when Delta Chat or another Autocrypt app is also used by the recipient.</string>
     <string name="EncrinfoFingerprints">Fingerprints</string>
     <string name="Backup">Backup</string>
     <string name="ImportBackupExplain2">To import a backup, copy a backup to <![CDATA[<i>]]>%1$s<![CDATA[</i>]]> and reinstall the app.</string>
@@ -404,8 +403,6 @@
     <string name="ImportPrivateKeys">Import secret keys</string>
     <string name="ImportPrivateKeysAsk2">Import secret keys from <![CDATA[<i>]]>%1$s<![CDATA[</i>]]>?\n\n• Existing secret keys will not be deleted\n\n• The last imported key will be used as the new default key</string>
     <string name="NoRecentEmoji">Recently used emoji will be shown here.</string>
-    <string name="E2eeOffBecauseOfUser">To enable end-to-end-encryption, check the corresponding option in your settings.</string>
-    <string name="E2eeOffBecauseOfRecipient">End-to-end encryption will be employed if the other party enables the setting too.</string>
     <string name="NotNow">Not now</string>
     <string name="ArchiveChat">Archive chat</string>
     <string name="UnarchiveChat">Unarchive chat</string>
@@ -446,4 +443,5 @@
     <string name="Group">Group</string>
     <string name="EditedNameWillBeShared">The edited name will be shared with all group members.</string>
     <string name="QrShowInviteCode">Show QR invite code</string>
+    <string name="E2EEncryptionPreferred">End-to-end encryption preferred.</string>
 </resources>
