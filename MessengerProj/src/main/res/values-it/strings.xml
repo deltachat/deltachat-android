@@ -440,4 +440,5 @@
     <string name="VerifiedGroup">Gruppo verificato</string>
     <string name="Group">Gruppo</string>
     <string name="EditedNameWillBeShared">Il nome modificato verrà condiviso con tutti i membri del gruppo.</string>
+    <string name="QrShowInviteCode">Mostra codice QR di invito</string>
 </resources>
