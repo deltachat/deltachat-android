@@ -444,4 +444,5 @@
     <string name="EditedNameWillBeShared">The edited name will be shared with all group members.</string>
     <string name="QrShowInviteCode">Show QR invite code</string>
     <string name="E2EEncryptionPreferred">End-to-end encryption preferred.</string>
+    <string name="OobSecureJoinConfirmed">%1$s confirmed.</string>
 </resources>

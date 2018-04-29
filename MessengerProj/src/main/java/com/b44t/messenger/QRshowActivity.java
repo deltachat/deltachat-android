@@ -4,7 +4,6 @@ import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.app.Activity;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.MultiFormatWriter;
@@ -37,13 +36,13 @@ public class QRshowActivity extends Activity implements NotificationCenter.Notif
             e.printStackTrace();
         }
 
-        NotificationCenter.getInstance().addObserver(this, NotificationCenter.secureJoinRequested);
+        NotificationCenter.getInstance().addObserver(this, NotificationCenter.secureJoinProgress);
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        NotificationCenter.getInstance().removeObserver(this, NotificationCenter.secureJoinRequested);
+        NotificationCenter.getInstance().removeObserver(this, NotificationCenter.secureJoinProgress);
     }
 
     Bitmap encodeAsBitmap(String str) throws WriterException {
@@ -73,10 +72,20 @@ public class QRshowActivity extends Activity implements NotificationCenter.Notif
 
     @Override
     public void didReceivedNotification(int id, Object... args) {
-        if( id==NotificationCenter.secureJoinRequested ) {
+        if( id==NotificationCenter.secureJoinProgress) {
             int contact_id = (Integer)args[0];
-            String msg = String.format(ApplicationLoader.applicationContext.getString(R.string.OobSecureJoinRequested), MrMailbox.getContact(contact_id).getNameNAddr());
-            AndroidUtilities.showHint(ApplicationLoader.applicationContext, msg);
+            int step = (Integer)args[1];
+            String msg;
+            if( step == 3) {
+                msg = String.format(ApplicationLoader.applicationContext.getString(R.string.OobSecureJoinRequested), MrMailbox.getContact(contact_id).getNameNAddr());
+            }
+            else {
+                msg = String.format(ApplicationLoader.applicationContext.getString(R.string.OobSecureJoinConfirmed), MrMailbox.getContact(contact_id).getNameNAddr());
+            }
+
+            if( msg != null ) {
+                AndroidUtilities.showHint(ApplicationLoader.applicationContext, msg);
+            }
         }
     }
 

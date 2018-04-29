@@ -36,7 +36,7 @@ public class NotificationCenter {
     public static final int imexEnded = totalEvents++;
     public static final int imexProgress = totalEvents++;
     public static final int imexFileWritten = totalEvents++;
-    public static final int secureJoinRequested = totalEvents++;
+    public static final int secureJoinProgress = totalEvents++;
     public static final int didReceivedNewMessages = totalEvents++;
     public static final int updateInterfaces = totalEvents++;
     public static final int dialogsNeedReload = totalEvents++;

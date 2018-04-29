@@ -31,7 +31,6 @@ package com.b44t.messenger;
 import android.app.Activity;
 import android.content.SharedPreferences;
 import android.util.Log;
-import android.widget.Toast;
 
 import com.b44t.messenger.Components.ForegroundDetector;
 
@@ -223,7 +222,7 @@ public class MrMailbox {
     public final static int MR_EVENT_IMEX_PROGRESS            = 2051;
     public final static int MR_EVENT_IMEX_FILE_WRITTEN        = 2052;
 
-    public final static int MR_EVENT_SECURE_JOIN_REQUESTED    = 2060;
+    public final static int MR_EVENT_SECUREJOIN_PROGRESS      = 2060;
 
     public final static int MR_EVENT_IS_OFFLINE               = 2081;
     public final static int MR_EVENT_GET_STRING               = 2091;
@@ -269,11 +268,11 @@ public class MrMailbox {
                 }
                 return 0;
 
-            case MR_EVENT_SECURE_JOIN_REQUESTED:
+            case MR_EVENT_SECUREJOIN_PROGRESS:
                 AndroidUtilities.runOnUIThread(new Runnable() {
                     @Override
                     public void run() {
-                        NotificationCenter.getInstance().postNotificationName(NotificationCenter.secureJoinRequested, (int)data1);
+                        NotificationCenter.getInstance().postNotificationName(NotificationCenter.secureJoinProgress, (int)data1, (int)data2);
                     }
                 });
                 return 0;
