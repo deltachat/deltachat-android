@@ -223,6 +223,7 @@ public class MrMailbox {
     public final static int MR_EVENT_IMEX_FILE_WRITTEN        = 2052;
 
     public final static int MR_EVENT_SECUREJOIN_INVITER_PROGRESS = 2060;
+    public final static int MR_EVENT_SECUREJOIN_JOINER_PROGRESS  = 2061;
 
     public final static int MR_EVENT_IS_OFFLINE               = 2081;
     public final static int MR_EVENT_GET_STRING               = 2091;
@@ -273,6 +274,15 @@ public class MrMailbox {
                     @Override
                     public void run() {
                         NotificationCenter.getInstance().postNotificationName(NotificationCenter.secureJoinInviterProgress, (int)data1, (int)data2);
+                    }
+                });
+                return 0;
+
+            case MR_EVENT_SECUREJOIN_JOINER_PROGRESS:
+                AndroidUtilities.runOnUIThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        NotificationCenter.getInstance().postNotificationName(NotificationCenter.secureJoinJoinerProgress, (int)data1, (int)data2);
                     }
                 });
                 return 0;

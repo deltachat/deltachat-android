@@ -155,6 +155,7 @@ public class ChatlistActivity extends BaseFragment implements NotificationCenter
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.notificationsSettingsUpdated);
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.messageSendError);
         NotificationCenter.getInstance().addObserver(this, NotificationCenter.didSetPasscode);
+        NotificationCenter.getInstance().addObserver(this, NotificationCenter.secureJoinJoinerProgress);
 
         if (!dialogsLoaded) {
             NotificationCenter.getInstance().postNotificationName(NotificationCenter.dialogsNeedReload); // this is the rest of the first call to the removed MessagesController.loadDialogs(); not sure, if this is really needed
@@ -173,6 +174,7 @@ public class ChatlistActivity extends BaseFragment implements NotificationCenter
         NotificationCenter.getInstance().removeObserver(this, NotificationCenter.notificationsSettingsUpdated);
         NotificationCenter.getInstance().removeObserver(this, NotificationCenter.messageSendError);
         NotificationCenter.getInstance().removeObserver(this, NotificationCenter.didSetPasscode);
+        NotificationCenter.getInstance().removeObserver(this, NotificationCenter.secureJoinJoinerProgress);
 
         delegate = null;
     }
@@ -997,6 +999,18 @@ public class ChatlistActivity extends BaseFragment implements NotificationCenter
             updateVisibleRows(MrMailbox.UPDATE_MASK_SEND_STATE);
         } else if (id == NotificationCenter.didSetPasscode) {
             updateButtons();
+        }
+        else if( id == NotificationCenter.secureJoinJoinerProgress ) {
+            int contact_id = (Integer)args[0];
+            int step = (Integer)args[1];
+            String msg = null;
+            if( step == 4) {
+                msg = String.format(ApplicationLoader.applicationContext.getString(R.string.OobAddrVerifiedIntroduceMyself), MrMailbox.getContact(contact_id).getNameNAddr());
+            }
+
+            if( progressDialog != null && msg != null ) {
+                progressDialog.setMessage(msg);
+            }
         }
     }
 

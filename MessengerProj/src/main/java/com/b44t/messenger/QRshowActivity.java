@@ -75,12 +75,12 @@ public class QRshowActivity extends Activity implements NotificationCenter.Notif
         if( id==NotificationCenter.secureJoinInviterProgress) {
             int contact_id = (Integer)args[0];
             int step = (Integer)args[1];
-            String msg;
+            String msg = null;
             if( step == 3) {
                 msg = String.format(ApplicationLoader.applicationContext.getString(R.string.OobSecureJoinRequested), MrMailbox.getContact(contact_id).getNameNAddr());
             }
-            else {
-                msg = String.format(ApplicationLoader.applicationContext.getString(R.string.OobSecureJoinConfirmed), MrMailbox.getContact(contact_id).getNameNAddr());
+            else if( step == 6 ){
+                msg = String.format(ApplicationLoader.applicationContext.getString(R.string.OobAddrVerified), MrMailbox.getContact(contact_id).getNameNAddr());
             }
 
             if( msg != null ) {
