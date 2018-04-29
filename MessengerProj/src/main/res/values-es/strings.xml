@@ -371,11 +371,8 @@
     <string name="HelpUrl">https://delta.chat/es/help</string>
     <string name="EncryptedMessage">Mensaje cifrado</string>
     <string name="Encryption">Encriptación</string>
-    <string name="EncrinfoE2E">Cifrado punto a punto habilitado.</string>
-    <string name="EncrinfoE2EExplain">Si todas las huellas criptográficas concuerdan en el otro dispositivo, entonces la conexión es segura.</string>
     <string name="EncrinfoTransport">Capa te transporte cifrada al menos hasta mi servidor.</string>
     <string name="EncrinfoNone">No hay cifrado hasta mi servidor.</string>
-    <string name="EncrinfoNoE2EExplain">Se utilizara cifrado punto a punto cuando el receptor utilice Delta Chat o alguna otra aplicación compatible con Autocrypt.</string>
     <string name="EncrinfoFingerprints">Huellas criptográficas</string>
     <string name="Backup">Cópia de seguridad</string>
     <string name="ImportBackupExplain2">Para importar un respaldo, copie el respaldo a <![CDATA[<i>]]>%1$s<![CDATA[</i>]]> y reinstale la aplicación.</string>
@@ -399,8 +396,6 @@
     <string name="ImportPrivateKeys">Importar llaves secretas</string>
     <string name="ImportPrivateKeysAsk2">¿Deseas importar las llaves secretas desde <![CDATA[<i>]]>%1$s<![CDATA[</i>]]>?\n\n• Las llaves secretas que ya existen no seran eliminadas?\n\n• Las ultimas llaves que se importen serán usadas como las llaves por defecto</string>
     <string name="NoRecentEmoji">Los emojis que se hayan usado últimamente serán mostrados aquí.</string>
-    <string name="E2eeOffBecauseOfUser">Para habilitar el cifrado punto a punto, habilite la opción correspondiente en su configuración.</string>
-    <string name="E2eeOffBecauseOfRecipient">El cifrado punto a punto sera utilizado siempre y cuando la otra parte lo tenga habilitado también.</string>
     <string name="NotNow">No ahora.</string>
     <string name="ArchiveChat">Archivar conversación </string>
     <string name="UnarchiveChat">Desarchivar conversacion</string>

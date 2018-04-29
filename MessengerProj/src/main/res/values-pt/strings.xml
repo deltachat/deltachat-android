@@ -371,11 +371,8 @@
     <string name="HelpUrl">https://delta.chat/pt/help</string>
     <string name="EncryptedMessage">Mensagem criptografada</string>
     <string name="Encryption">Criptografia</string>
-    <string name="EncrinfoE2E">Criptografia ponta-a-ponta habilitada.</string>
-    <string name="EncrinfoE2EExplain">Se ambas impressões combinam no outro dispositivo, a conexão é segura.</string>
     <string name="EncrinfoTransport">Tráfego criptografado ao menos até o meu servidor.</string>
     <string name="EncrinfoNone">Sem encriptação para meu servidor.</string>
-    <string name="EncrinfoNoE2EExplain">A criptografia ponta-a-ponta será ativada automaticamente tão logo o seu contato utilize algum aplicativo que tenha suporte ao Autocrypt, como o Delta Chat.</string>
     <string name="EncrinfoFingerprints">Impressões</string>
     <string name="Backup">Becape</string>
     <string name="ImportBackupExplain2">Para importar um becape, copie-o na pasta <![CDATA[<i>]]>%1$s<![CDATA[</i>]]> e reinstale o aplicativo.</string>
@@ -399,8 +396,6 @@
     <string name="ImportPrivateKeys">Importar chaves privadas</string>
     <string name="ImportPrivateKeysAsk2">Importar chaves privadas de <![CDATA[<i>]]>%1$s<![CDATA[</i>]]>?\n\n• As chaves existentes não serão apagadas\n\n• A última chave importada será usada como padrão</string>
     <string name="NoRecentEmoji">Emojis recentemente usados.</string>
-    <string name="E2eeOffBecauseOfUser">Para habilitar a criptografia ponta a ponta revise as configurações do aplicativo.</string>
-    <string name="E2eeOffBecauseOfRecipient">> A criptografia ponta a ponta será empregada se o destinatário habilitá-la também.</string>
     <string name="NotNow">Agora não</string>
     <string name="ArchiveChat">Arquivar conversa</string>
     <string name="UnarchiveChat">Desarquivar conversa</string>

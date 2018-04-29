@@ -341,11 +341,8 @@
     <string name="HelpUrl">https://delta.chat/en/help</string>
     <string name="EncryptedMessage">Şifrelenmiş ileti</string>
     <string name="Encryption">Şifreleme</string>
-    <string name="EncrinfoE2E">Uçtan uca şifreleme etkin</string>
-    <string name="EncrinfoE2EExplain">Tüm parmak izleri diğer cihazla eşleşiyorsa, bağlantı güvenlidir.</string>
     <string name="EncrinfoTransport">En azından sunucuma kadar şifreli taşıma.</string>
     <string name="EncrinfoNone">Sunucuma şifreleme yok.</string>
-    <string name="EncrinfoNoE2EExplain">Alıcı tarafından Delta Chat veya başka bir Otomatik şifreleme uygulaması  kullanıldığında uçtan uca şifreleme uygulanacaktır.</string>
     <string name="EncrinfoFingerprints">Parmak izleri</string>
     <string name="Backup">Yedekleme</string>
     <string name="ImportBackupExplain2"><![CDATA[<i>]]>%1$s<![CDATA[</i>]]>dan bir yedeği içe aktarmak ve yeniden kurmak.</string>
@@ -367,8 +364,6 @@
     <string name="ImportPrivateKeys">Özel anahtarları içe aktar</string>
     <string name="ImportPrivateKeysAsk2">Gizli anahtarlar <![CDATA[<i>]]>%1$s<![CDATA[</i>]]>dan içe aktarılsın mı?\n\n•Var olan gizli anahtarlar silinmeyecek\n\n• Son içe aktarılan anahtar yeni öntanımlı anahtar olarak kullanılacak.</string>
     <string name="NoRecentEmoji">Son kullanılan duygu simgeleri burada gösterilecek.</string>
-    <string name="E2eeOffBecauseOfUser">Uçtan uca şifrelemeyi etkinleştirmek için, ayarlarınızdaki ilgili seçeneği işaretleyin.</string>
-    <string name="E2eeOffBecauseOfRecipient">Karşı tarafın da ayarı etkinleştirmesi durumunda uçtan uca şifreleme uygulanacaktır.</string>
     <string name="NotNow">Şimdi değil</string>
     <string name="ArchiveChat">Söyleşiyi arşivle</string>
     <string name="UnarchiveChat">Söyleşiyi arşivden kaldır</string>

@@ -322,7 +322,6 @@
     <string name="HelpUrl">https://delta.chat/en/help</string>
     <string name="EncryptedMessage">மறைகுறியாக்கப்பட்ட செய்தி</string>
     <string name="Encryption">மறைகுறியாக்கம் </string>
-    <string name="EncrinfoE2E">இரண்டு பக்கமும் மறைகுறியாக்கம் செயலாக்கப்பட்டது </string>
     <string name="EncrinfoFingerprints">கைரேகைகள் </string>
     <string name="Backup">காப்பு நகல் </string>
     <string name="NameAndStatus">பெயர் மற்றும் நிலை </string>

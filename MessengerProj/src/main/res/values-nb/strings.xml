@@ -371,11 +371,9 @@
     <string name="HelpUrl">https://delta.chat/nb/help</string>
     <string name="EncryptedMessage">Kryptert melding</string>
     <string name="Encryption">Kryptering</string>
-    <string name="EncrinfoE2E">Ende-til-ende -kryptering påskrudd.</string>
-    <string name="EncrinfoE2EExplain">Hvis alle fingeravtrykkene stemmer overens på den andre enheten, er tilkoblingen trygg.</string>
+    <string name="EncrinfoE2EAvailable">Ende-til-ende -kryptering tilgjengelig.</string>
     <string name="EncrinfoTransport">Transport-kryptering ihvertfall opptil min tjener.</string>
     <string name="EncrinfoNone">Ingen kryptering på min tjener.</string>
-    <string name="EncrinfoNoE2EExplain">Ende-til-ende -kryptering vil bli brukt hvis mottakeren også bruker et Autocrypt-program.</string>
     <string name="EncrinfoFingerprints">Fingeravtrykk</string>
     <string name="Backup">Sikkerhetskopi</string>
     <string name="ImportBackupExplain2">For å importere en sikkerhetskopi, importer den til <![CDATA[<i>]]>%1$s<![CDATA[</i>]]> og reinstaller programmet.</string>
@@ -399,8 +397,6 @@
     <string name="ImportPrivateKeys">Importer private nøkler</string>
     <string name="ImportPrivateKeysAsk2">Importer private nøkler fra <![CDATA[<i>]]>%1$s<![CDATA[</i>]]>?\n\n• Eksisterende private nøkler blir ikke slettet\n\n• Den sist importerte nøkkelen vil bli brukt som ny forvalgt nøkkel</string>
     <string name="NoRecentEmoji">Nylig brukte emoji-er vil bli vist her.</string>
-    <string name="E2eeOffBecauseOfUser">For å skru på ende-til-ende -kryptering, huk det ut i innstillingene.</string>
-    <string name="E2eeOffBecauseOfRecipient">Ende-til-ende -kryptering vil bli brukt hvis mottakeren også skrur det på.</string>
     <string name="NotNow">Ikke nå</string>
     <string name="ArchiveChat">Arkiver sludring</string>
     <string name="UnarchiveChat">Fjern sludring fra arkiv</string>
@@ -441,4 +437,5 @@
     <string name="Group">Gruppe</string>
     <string name="EditedNameWillBeShared">Det redigerte gruppenavnet vil bli delt med alle dens medlemmer.</string>
     <string name="QrShowInviteCode">Vis QR-invitasjonskode</string>
+    <string name="E2EEncryptionPreferred">Ende-til-ende -kryptering foretrukket.</string>
 </resources>

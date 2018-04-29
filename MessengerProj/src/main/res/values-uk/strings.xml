@@ -385,11 +385,8 @@
     <string name="HelpUrl">https://delta.chat/en/help</string>
     <string name="EncryptedMessage">Зашифроване повідомлення</string>
     <string name="Encryption">Шифрування</string>
-    <string name="EncrinfoE2E">Повне шифрування було ввімкнено.</string>
-    <string name="EncrinfoE2EExplain">Якщо відбитки пальців збігаються на іншому пристрої, підключення є безпечним.</string>
     <string name="EncrinfoTransport">Супроводжувати шифрування даних принаймні до мого серверу.</string>
     <string name="EncrinfoNone">Без шифрування на моєму сервері.</string>
-    <string name="EncrinfoNoE2EExplain">Шифрування стане повним відразу ж, як контакт почне користуватися Delta Chat або іншим автошифрувальним застосунком.</string>
     <string name="EncrinfoFingerprints">Відбитки пальців</string>
     <string name="Backup">Бекап</string>
     <string name="ImportBackupExplain2">Для імпортування бекапу, скопіюйте бекап до  <![CDATA[<i>]]>%1$s<![CDATA[</i>]]> та перевстановіть застосунок.</string>

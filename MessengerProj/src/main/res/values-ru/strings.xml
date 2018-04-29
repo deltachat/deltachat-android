@@ -203,7 +203,7 @@
     <string name="AreYouSureDeleteContact">Вы уверены, что хотите удалить этот контакт?</string>
     <!--permissions-->
     <string name="PermissionContacts">Доступ к вашим контактам необходим для того, чтобы вы могли общаться со своими друзьями на всех ваших устройствах.</string>
-    <string name="PermissionStorage">Доступ к памяти вашего устройства для отправки и хранения фотографий, видео, музыки и других файлов.</string>
+    <string name="PermissionStorage">Необходим доступ к памяти вашего устройства для отправки и хранения фотографий, видео, музыки и других файлов.</string>
     <string name="PermissionNoAudio">Доступ к микрофону для записи голосовых сообщений.</string>
     <string name="PermissionOpenSettings">Настройки</string>
     <!--Intro view-->
@@ -399,12 +399,10 @@
     <string name="HelpUrl">https://delta.chat/ru/help</string>
     <string name="EncryptedMessage">Зашифрованное сообщение</string>
     <string name="Encryption">Шифрование</string>
-    <string name="EncrinfoE2E">Включено сквозное шифрование.</string>
-    <string name="EncrinfoE2EExplain">Если все отпечатки пальцев совпадают на другом устройстве, соединение безопасно.</string>
+    <string name="EncrinfoE2EAvailable">Доступно сквозное шифрование.</string>
     <string name="EncrinfoTransport">Соединение защищено, по крайней мере до моего сервера.</string>
     <string name="EncrinfoNone">Соединение к моему серверу незащищено.</string>
-    <string name="EncrinfoNoE2EExplain">Сквозное шифрование включится автоматически, как только контакт начнет использовать Delta Chat или другое приложение с поддержкой Autocrypt.</string>
-    <string name="EncrinfoFingerprints">Отпечатки пальцев</string>
+    <string name="EncrinfoFingerprints">Ключи шифрования</string>
     <string name="Backup">Резервное копирование</string>
     <string name="ImportBackupExplain2">Для восстановления из резервной копии скопируйте резервную копию в <![CDATA[<i>]]>%1$s<![CDATA[</i>]]> и переустановите приложение.</string>
     <string name="ReadReceiptMailBody">Это уведомление о доставке сообщения \"%1$s\".\n\nОно подтверждает, что сообщение было отображено на устройстве адресата. Однако это не означает, что получатель прочитал его содержимое.</string>
@@ -427,8 +425,6 @@
     <string name="ImportPrivateKeys">Импорт закрытых ключей</string>
     <string name="ImportPrivateKeysAsk2">Импорт закрытых ключей из <![CDATA[<i>]]>%1$s<![CDATA[</i>]]>?\n\n• Существующие закрытые ключи не будут удалены\n\n• Последний импортированный ключ будет использован по умолчанию.</string>
     <string name="NoRecentEmoji">Здесь будут показаны часто употребляемые эмодзи.</string>
-    <string name="E2eeOffBecauseOfUser">Для включения сквозного шифрования выберите соответствующий пункт в настройках.</string>
-    <string name="E2eeOffBecauseOfRecipient">Сквозное шифрование будет применено, если собеседник тоже включит соответствующий пункт в настройках.</string>
     <string name="NotNow">Не сейчас</string>
     <string name="ArchiveChat">Архивировать чат</string>
     <string name="UnarchiveChat">Разархивировать чат</string>
@@ -452,11 +448,11 @@
     <string name="QrScan">Сканировать QR код</string>
     <string name="QrShow">Показать QR код</string>
     <string name="QrScanContainsText">Отсканированный QR код содержит текст:\n\n%1$s</string>
-    <string name="OobFingerprint">Отпечаток</string>
+    <string name="OobFingerprint">Ключ</string>
     <string name="OobFingerprintAskOob">Верифицировать контакт и начать общение с <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>?</string>
     <string name="OobFingerprintOk">Контакт <![CDATA[<i>]]>%1$s<![CDATA[</i>]]> верифицирован. Начать общение?</string>
-    <string name="OobFingerprintMismatch">Отсканированный отпечаток <![CDATA[<b>]]>не соответствует<![CDATA[</b>]]> отпечатку, который ранее был у <![CDATA[<i>]]>%1$s<![CDATA[</i>]]>.</string>
-    <string name="OobFingerprintWithoutAddr">Этот QR код содержит отпечаток, но адрес эл.почты отсутствует.\n\nЧтобы выполнить  верификацию по внешнему каналу, прежде всего установите с получателем защищённое соединение.</string>
+    <string name="OobFingerprintMismatch">Отсканированный ключ шифрования <![CDATA[<b>]]>не соответствует<![CDATA[</b>]]> ключу, который ранее был у <![CDATA[<i>]]>%1$s<![CDATA[</i>]]>.</string>
+    <string name="OobFingerprintWithoutAddr">Этот QR код содержит ключ шифрования, не  адрес эл.почты.\n\nЧтобы выполнить  верификацию по внешнему каналу, прежде всего установите с получателем защищённое соединение.</string>
     <string name="OobSecureJoinRequested">%1$s соединений.</string>
     <string name="CannotDecryptBody">Это сообщение не может быть расшифровано.\n\n• Возможно вам надо, просто попросить отправителя направить вам сообщение ещё раз.\n\n• В случае переустановки программы Дельта Чат или любой другой почтовой программы на этом или другом устройствах вам будет необходимо отправить от них Сообщение Настроек Autocrypt.</string>
     <string name="Autocrypt">Autocrypt</string>
@@ -469,4 +465,5 @@
     <string name="Group">Группа</string>
     <string name="EditedNameWillBeShared">Отредактированное имя будет разослано всем участникам группы.</string>
     <string name="QrShowInviteCode">Показать QR код приглашения</string>
+    <string name="E2EEncryptionPreferred">Предпочтено сквозное шифрование.</string>
 </resources>

@@ -371,11 +371,8 @@
     <string name="HelpUrl">https://delta.chat/fr/help</string>
     <string name="EncryptedMessage">Message chiffré</string>
     <string name="Encryption">Chiffrement</string>
-    <string name="EncrinfoE2E">Chiffrement de bout-en-bout activé.</string>
-    <string name="EncrinfoE2EExplain">Si toutes les clés de chiffrement correspondent sur l\'autre appareil, la connexion est sûre.</string>
     <string name="EncrinfoTransport">Le chiffrement est active au moins jusqu\'à mon serveur</string>
     <string name="EncrinfoNone">Aucun chiffrement sur mon serveur.</string>
-    <string name="EncrinfoNoE2EExplain">Le chiffrement de bout-à-bout sera activé automatiquement dès que le contact utilisera Delta Chat ou n\'importe quelle autre application de chiffrement automatique.</string>
     <string name="EncrinfoFingerprints">Clés de chiffrement</string>
     <string name="Backup">Sauvegarde</string>
     <string name="ImportBackupExplain2">Pour importer une sauvegarde, copier la sauvegarde dans <![CDATA[<i>]]>%1$s<![CDATA[</i>]]> et réinstaller l\'application.</string>
@@ -400,8 +397,6 @@
     <string name="ImportPrivateKeysAsk2">Importer des clés privées depuis <![CDATA[<i>]]>%1$s<![CDATA[</i>]]>?\n\n• Les clés privées existantes ne sont pas supprimées\n\n• 
 La dernière clé importée sera utilisée comme nouvelle clé par défaut</string>
     <string name="NoRecentEmoji">Les emoji récemment utilisés seront affichés ici.</string>
-    <string name="E2eeOffBecauseOfUser">Pour activer le chiffrement bout-à-bout, vérifiez l\'option correspondante dans vos paramètres.</string>
-    <string name="E2eeOffBecauseOfRecipient">Le chiffrement sera bout-à-bout si le contact active l\'option correspondante.</string>
     <string name="NotNow">Pas maintenant</string>
     <string name="ArchiveChat">Archive des conversations</string>
     <string name="UnarchiveChat">Conversation non archivée</string>

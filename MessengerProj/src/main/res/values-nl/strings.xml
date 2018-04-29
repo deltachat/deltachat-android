@@ -371,11 +371,9 @@
     <string name="HelpUrl">https://delta.chat/nl/help</string>
     <string name="EncryptedMessage">Versleuteld bericht</string>
     <string name="Encryption">Versleuteling</string>
-    <string name="EncrinfoE2E">End-to-end-versleuteling ingeschakeld.</string>
-    <string name="EncrinfoE2EExplain">Als alle vingerafdrukken overeenkomen op het andere apparaat, dan is de verbinding veilig.</string>
+    <string name="EncrinfoE2EAvailable">End-to-end-versleuteling beschikbaar.</string>
     <string name="EncrinfoTransport">Transportversleuteling op zijn minst tot aan mijn server.</string>
     <string name="EncrinfoNone">Geen versleuteling naar mijn server.</string>
-    <string name="EncrinfoNoE2EExplain">End-to-end-versleuteling wordt toegepast als Delta Chat of een andere Autocrypt-app ook door de ontvanger wordt gebruikt.</string>
     <string name="EncrinfoFingerprints">Vingerafdrukken</string>
     <string name="Backup">Archief</string>
     <string name="ImportBackupExplain2">Om een archief te importeren, kopieer een archief naar <![CDATA[<i>]]>%1$s<![CDATA[</i>]]> en herinstalleer de app.</string>
@@ -399,8 +397,6 @@
     <string name="ImportPrivateKeys">Privésleutels importeren</string>
     <string name="ImportPrivateKeysAsk2">Sleutels importeren uit <![CDATA[<i>]]>%1$s<![CDATA[</i>]]>?\n\n• Bestaande sleutels worden niet verwijderd\n\n• De laatst geïmporteerde sleutel wordt gebruikt als de nieuwe standaardsleutel.</string>
     <string name="NoRecentEmoji">Recent gebruikte emoji\'s worden hier weergegeven.</string>
-    <string name="E2eeOffBecauseOfUser">Ga naar de instellingen om end-to-end-versleuteling in te schakelen.</string>
-    <string name="E2eeOffBecauseOfRecipient">End-to-end-versleuteling wordt toegepast als de andere partij de instelling ook inschakelt.</string>
     <string name="NotNow">Niet nu</string>
     <string name="ArchiveChat">Chat archiveren</string>
     <string name="UnarchiveChat">Chat uit archief halen</string>
@@ -441,4 +437,5 @@
     <string name="Group">Groep</string>
     <string name="EditedNameWillBeShared">De nieuwe naam zal worden gedeeld met alle groepsleden.</string>
     <string name="QrShowInviteCode">QR-code voor uitnodigingen weergeven</string>
+    <string name="E2EEncryptionPreferred">Voorkeur voor end-to-end-versleuteling.</string>
 </resources>

@@ -335,11 +335,8 @@
     <string name="AutoplayGifs">Abiatu GIF-ak automatikoki</string>
     <string name="EncryptedMessage">Zifratutako mezua</string>
     <string name="Encryption">Zifratzea</string>
-    <string name="EncrinfoE2E">Muturretik muturrerako zifratzea gaitu da.</string>
-    <string name="EncrinfoE2EExplain">Hatz-marka guztiak beste gailuan berdinak badira, konexioa segurua da.</string>
     <string name="EncrinfoTransport">Garraio-zifratzea nire zerbitzarira arte gutxienez.</string>
     <string name="EncrinfoNone">Zifratzerik ez nire zerbitzarira.</string>
-    <string name="EncrinfoNoE2EExplain">Muturretik muturrerako zifratzea erabiliko da hartzaileak Delta Chat edo AutoCrypt onartzen duen beste aplikazio bat badarabil.</string>
     <string name="EncrinfoFingerprints">Hatz-markak</string>
     <string name="Backup">Babeskopia</string>
     <string name="ImportBackupExplain2">Babeskopia bat inportatzeko, kopiatu babeskopia hemen <![CDATA[<i>]]>%1$s<![CDATA[</i>]]> eta berriro instalatu aplikazioa.</string>

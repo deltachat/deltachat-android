@@ -371,11 +371,9 @@
     <string name="HelpUrl">https://delta.chat/de/help</string>
     <string name="EncryptedMessage">Verschlüsselte Nachricht</string>
     <string name="Encryption">Verschlüsselung</string>
-    <string name="EncrinfoE2E">Ende-zu-Ende-Verschlüsselung ist aktiv.</string>
-    <string name="EncrinfoE2EExplain">Wenn die angezeigten Fingerabdrücke auf dem anderen Gerät genauso angezeigt werden, ist die Verbindung sicher.</string>
+    <string name="EncrinfoE2EAvailable">Ende-zu-Ende-Verschlüsselung verfügbar.</string>
     <string name="EncrinfoTransport">Transportverschlüsselung mindestens bis zu meinem Server.</string>
     <string name="EncrinfoNone">Keine Verschlüsselung bis zu meinem Server.</string>
-    <string name="EncrinfoNoE2EExplain">Die Ende-zu-Ende-Verschlüsselung wird automatisch aktiviert, sobald der Kontakt Delta Chat oder eine andere Autocrypt-kompatible App verwendet.</string>
     <string name="EncrinfoFingerprints">Fingerabdrücke</string>
     <string name="Backup">Backup</string>
     <string name="ImportBackupExplain2">Um ein Backup zu importieren, kopieren Sie es nach <![CDATA[<i>]]>%1$s<![CDATA[</i>]]> und installieren Sie die App neu.</string>
@@ -399,8 +397,6 @@
     <string name="ImportPrivateKeys">Private Schlüssel importieren</string>
     <string name="ImportPrivateKeysAsk2">Private Schlüssel aus <![CDATA[<i>]]>%1$s<![CDATA[</i>]]> importieren?\n\n• Bereits vorhandene private Schlüssel bleiben erhalten\n\n• Der zuletzt importierte private Schlüssel wird der Standardschlüssel\n\nFortfahren?</string>
     <string name="NoRecentEmoji">Hier werden die zuletzt verwendeten Emoji angezeigt.</string>
-    <string name="E2eeOffBecauseOfUser">Um die Ende-zu-Ende-Verschlüsselung zu aktivieren, aktivieren Sie die entsprechende Option in den Einstellungen. </string>
-    <string name="E2eeOffBecauseOfRecipient">Die Ende-zu-Ende-Verschlüsselung wird aktiviert, sobald der Kontakt die entsprechende Einstellung aktiviert.</string>
     <string name="NotNow">Nicht jetzt</string>
     <string name="ArchiveChat">Chat archivieren</string>
     <string name="UnarchiveChat">Archivieren rückgängig</string>
@@ -441,4 +437,5 @@
     <string name="Group">Gruppe</string>
     <string name="EditedNameWillBeShared">Der neue Name wird an alle Gruppenteilnehmern gesendet.</string>
     <string name="QrShowInviteCode">QR-Einladungscode zeigen</string>
+    <string name="E2EEncryptionPreferred">Ende-zu-Ende-Verschlüsselung bevorzugt.</string>
 </resources>

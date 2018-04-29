@@ -371,11 +371,9 @@
     <string name="HelpUrl">https://delta.chat/it/help</string>
     <string name="EncryptedMessage">Messaggio cifrato</string>
     <string name="Encryption">Crittografia</string>
-    <string name="EncrinfoE2E">Crittografia end-to-end abilitata.</string>
-    <string name="EncrinfoE2EExplain">Se tutte le impronte corrispondono sull\'altro dispositivo, la connessione è sicura.</string>
+    <string name="EncrinfoE2EAvailable">Cifratura end-to-end disponibile.</string>
     <string name="EncrinfoTransport">Crittografa il trasferimento almeno al mio server.</string>
     <string name="EncrinfoNone">Non crittografare sul mio server.</string>
-    <string name="EncrinfoNoE2EExplain">La crittografia end-to-end verrà utilizzata quando il contatto userà Delta Chat o un\'altra applicazione compatibile con Autocrypt.</string>
     <string name="EncrinfoFingerprints">Impronte digitali</string>
     <string name="Backup">Backup</string>
     <string name="ImportBackupExplain2">Per importare un backup, copiarlo in <![CDATA[<i>]]>%1$s<![CDATA[</i>]]> quindi installare nuovamente l\'app.</string>
@@ -399,8 +397,6 @@
     <string name="ImportPrivateKeys">Importa chiavi private</string>
     <string name="ImportPrivateKeysAsk2">Importare le chiavi private da <![CDATA[<i>]]>%1$s<![CDATA[</i>]]>?\n\n• Le chiavi private esistenti non verranno eliminate.\n\n• L\'ultima chiave importata verrà utilizzata come nuova chiave predefinita</string>
     <string name="NoRecentEmoji">Le emoji utilizzate di recente verranno mostrate qui.</string>
-    <string name="E2eeOffBecauseOfUser">Per abilitare la crittografia end-to-end, selelzionare l\'opzione corrispondente nelle impostazioni.</string>
-    <string name="E2eeOffBecauseOfRecipient">La crittigrafia end-to-end sarà attiva solo se anche chi riceve il messaggio abilita l\'opzione corridpondente.</string>
     <string name="NotNow">Non ora</string>
     <string name="ArchiveChat">Archivia conversazione</string>
     <string name="UnarchiveChat">Ripristina conversazione</string>
@@ -441,4 +437,5 @@
     <string name="Group">Gruppo</string>
     <string name="EditedNameWillBeShared">Il nome modificato verrà condiviso con tutti i membri del gruppo.</string>
     <string name="QrShowInviteCode">Mostra codice QR di invito</string>
+    <string name="E2EEncryptionPreferred">Cifratura end-to-end preferita.</string>
 </resources>

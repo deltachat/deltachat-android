@@ -370,11 +370,9 @@
     <string name="HelpUrl">https://delta.chat/sq/help</string>
     <string name="EncryptedMessage">Mesazh i fshehtëzuar</string>
     <string name="Encryption">Fshehtëzim</string>
-    <string name="EncrinfoE2E">U aktivizua fshehtëzimi skaj-më-skaj.</string>
-    <string name="EncrinfoE2EExplain">Nëse te pajisja tjetër përputhen krejt shenjat e gishtave, lidhja është e parrezik.</string>
+    <string name="EncrinfoE2EAvailable">Është i mundshëm fshehtëzim skaj-më-skaj.</string>
     <string name="EncrinfoTransport">Fshehtëzim transporti të paktën deri te shërbyesi im.</string>
     <string name="EncrinfoNone">Pa fshehtëzim te shërbyesi im.</string>
-    <string name="EncrinfoNoE2EExplain">Fshehtëzimi skaj-më-skaj do të përdoret kur edhe nga marrësi përdoret Delta Chat ose tjetër aplikacion Autocrypt.</string>
     <string name="EncrinfoFingerprints">Shenja gishtash</string>
     <string name="Backup">Kopjeruajtje</string>
     <string name="ImportBackupExplain2">Që të importohet një kopjeruajtje, kopjojeni kopjeruajtjen te <![CDATA[<i>]]>%1$s<![CDATA[</i>]]> dhe ri-instaloni aplikacionin.</string>
@@ -398,8 +396,6 @@
     <string name="ImportPrivateKeys">Importo kyçe private</string>
     <string name="ImportPrivateKeysAsk2">Të importohen kyçe privatë prej <![CDATA[<i>]]>%1$s<![CDATA[</i>]]>?\n\n• Kyçet private ekzistuese nuk do të fshihen\n\n• Si kyç i ri parazgjedhje do të përdoret kyçi i fundit i importuar</string>
     <string name="NoRecentEmoji">Këtu do të shfaqen emoji-t e përdorur së fundi.</string>
-    <string name="E2eeOffBecauseOfUser">Për aktivizim të fshehtëzimit skaj-më-skaj, i vini shenjë mundësisë përkatëse te rregullimet tuaja.</string>
-    <string name="E2eeOffBecauseOfRecipient">Fshehtëzimi skaj-më-skaj do të përdoret nëse e aktivizon edhe pala tjetër.</string>
     <string name="NotNow">Jo tani</string>
     <string name="ArchiveChat">Arkivoje bisedën</string>
     <string name="UnarchiveChat">Çarkivoje bisedën</string>
@@ -439,4 +435,6 @@
     <string name="VerifiedGroup">Grup i verifikuar</string>
     <string name="Group">Grup</string>
     <string name="EditedNameWillBeShared">Emri i përpunuar do të ndahet me krejt anëtarët e grupit.</string>
-    </resources>
+    <string name="QrShowInviteCode">Shfaq kod QR ftese</string>
+    <string name="E2EEncryptionPreferred">Parapëlqehet fshehtëzim skaj-më-skaj.</string>
+</resources>
