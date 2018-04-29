@@ -1009,7 +1009,9 @@ public class ChatlistActivity extends BaseFragment implements NotificationCenter
             passcodeItem.setVisibility(View.GONE);
         }
 
-        qrScanItem.setVisibility(!searching? View.VISIBLE : View.GONE);
+        if( qrScanItem != null ) {
+            qrScanItem.setVisibility(!searching ? View.VISIBLE : View.GONE);
+        }
     }
 
     private void hideFloatingButton(boolean hide) {
