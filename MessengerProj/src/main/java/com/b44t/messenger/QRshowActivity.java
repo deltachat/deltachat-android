@@ -36,13 +36,13 @@ public class QRshowActivity extends Activity implements NotificationCenter.Notif
             e.printStackTrace();
         }
 
-        NotificationCenter.getInstance().addObserver(this, NotificationCenter.secureJoinProgress);
+        NotificationCenter.getInstance().addObserver(this, NotificationCenter.secureJoinInviterProgress);
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        NotificationCenter.getInstance().removeObserver(this, NotificationCenter.secureJoinProgress);
+        NotificationCenter.getInstance().removeObserver(this, NotificationCenter.secureJoinInviterProgress);
     }
 
     Bitmap encodeAsBitmap(String str) throws WriterException {
@@ -72,7 +72,7 @@ public class QRshowActivity extends Activity implements NotificationCenter.Notif
 
     @Override
     public void didReceivedNotification(int id, Object... args) {
-        if( id==NotificationCenter.secureJoinProgress) {
+        if( id==NotificationCenter.secureJoinInviterProgress) {
             int contact_id = (Integer)args[0];
             int step = (Integer)args[1];
             String msg;

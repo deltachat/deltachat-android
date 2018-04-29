@@ -355,6 +355,7 @@ public class ChatlistActivity extends BaseFragment implements NotificationCenter
                     }
                     else if(id == ID_SCAN_QR) {
                         new IntentIntegrator(getParentActivity()).setCaptureActivity(QRscanActivity.class).initiateScan();
+                        // the resulting QR code is processed in ChatlistActivity.onActivityResultFragment()
                     }
                     else if(id == ID_SHOW_QR) {
                         Intent intent2 = new Intent(getParentActivity(), QRshowActivity.class);
