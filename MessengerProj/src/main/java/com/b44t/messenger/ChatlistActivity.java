@@ -744,7 +744,7 @@ public class ChatlistActivity extends BaseFragment implements NotificationCenter
             String nameNAddr = MrMailbox.getContact(qrParsed.getId()).getNameNAddr();
             switch( qrParsed.getState() ) {
 
-                case MrMailbox.MR_QR_FINGERPRINT_ASK_OOB:
+                case MrMailbox.MR_QR_ASK_VERIFYCONTACT:
                     builder.setMessage(AndroidUtilities.replaceTags(String.format(ApplicationLoader.applicationContext.getString(R.string.OobFingerprintAskOob), nameNAddr)));
                     builder.setPositiveButton(R.string.OK, new DialogInterface.OnClickListener() {
                         @Override
@@ -804,7 +804,7 @@ public class ChatlistActivity extends BaseFragment implements NotificationCenter
                     break;
 
 
-                case MrMailbox.MR_QR_FINGERPRINT_WITHOUT_ADDR:
+                case MrMailbox.MR_QR_FPR_WITHOUT_ADDR:
                     builder.setMessage(AndroidUtilities.replaceTags(ApplicationLoader.applicationContext.getString(R.string.OobFingerprintWithoutAddr)+"\n\n<c#808080>"+ApplicationLoader.applicationContext.getString(R.string.OobFingerprint)+":\n"+qrParsed.getText1()+"</c>"));
                     builder.setPositiveButton(R.string.OK, null);
                     builder.setNeutralButton(R.string.CopyToClipboard, new DialogInterface.OnClickListener() {
@@ -816,12 +816,12 @@ public class ChatlistActivity extends BaseFragment implements NotificationCenter
                     });
                     break;
 
-                case MrMailbox.MR_QR_FINGERPRINT_MISMATCH:
+                case MrMailbox.MR_QR_FPR_MISMATCH:
                     builder.setMessage(AndroidUtilities.replaceTags(String.format(ApplicationLoader.applicationContext.getString(R.string.OobFingerprintMismatch), nameNAddr)));
                     builder.setPositiveButton(R.string.OK, null);
                     break;
 
-                case MrMailbox.MR_QR_FINGERPRINT_OK:
+                case MrMailbox.MR_QR_FPR_OK:
                 case MrMailbox.MR_QR_ADDR:
                     @StringRes int resId = qrParsed.getState()==MrMailbox.MR_QR_ADDR? R.string.AskStartChatWith : R.string.OobFingerprintOk;
                     builder.setMessage(AndroidUtilities.replaceTags(String.format(ApplicationLoader.applicationContext.getString(resId, nameNAddr))));
