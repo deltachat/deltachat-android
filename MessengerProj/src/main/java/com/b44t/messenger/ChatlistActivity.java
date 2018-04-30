@@ -746,62 +746,68 @@ public class ChatlistActivity extends BaseFragment implements NotificationCenter
             switch( qrParsed.getState() ) {
 
                 case MrMailbox.MR_QR_ASK_VERIFYCONTACT:
-                    builder.setMessage(AndroidUtilities.replaceTags(String.format(ApplicationLoader.applicationContext.getString(R.string.OobFingerprintAskOob), nameNAddr)));
-                    builder.setPositiveButton(R.string.OK, new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            progressDialog = new ProgressDialog(getParentActivity());
-                            progressDialog.setMessage(ApplicationLoader.applicationContext.getString(R.string.OneMoment));
-                            progressDialog.setCanceledOnTouchOutside(false);
-                            progressDialog.setCancelable(false);
-                            progressDialog.setButton(DialogInterface.BUTTON_NEGATIVE, ApplicationLoader.applicationContext.getString(R.string.Cancel), new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialog, int which) {
-                                    MrMailbox.stopOngoingProcess();
-                                }
-                            });
-                            progressDialog.show();
-                            Utilities.searchQueue.postRunnable(new Runnable() {
-                                @Override
-                                public void run() {
-
-                                    synchronized (MrMailbox.m_lastErrorLock) {
-                                        MrMailbox.m_showNextErrorAsToast = false;
-                                        MrMailbox.m_lastErrorString = "";
-                                    }
-
-                                    final boolean oobDone = MrMailbox.joinSecurejoin(qrRawString); // oobJoin() runs until all needed messages are sent+received!
-                                    AndroidUtilities.runOnUIThread(new Runnable() {
-                                        @Override
-                                        public void run() {
-                                            String errorString;
-                                            synchronized (MrMailbox.m_lastErrorLock) {
-                                                MrMailbox.m_showNextErrorAsToast = true;
-                                                errorString = MrMailbox.m_lastErrorString;
-                                            }
-
-                                            if( progressDialog != null ) {
-                                                progressDialog.dismiss();
-                                                progressDialog = null;
-                                            }
-                                            if( oobDone  ) {
-                                                Bundle args = new Bundle();
-                                                args.putInt("chat_id", MrMailbox.createChatByContactId(qrParsed.getId()));
-                                                presentFragment(new ChatActivity(args), false /*removeLast*/);
-                                            }
-                                            else if( !errorString.isEmpty() ) {
-                                                AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
-                                                builder.setMessage(errorString);
-                                                builder.setPositiveButton(R.string.OK, null);
-                                                showDialog(builder.create());
-                                            }
-                                        }
-                                    });
-                                }
-                            });
+                case MrMailbox.MR_QR_ASK_VERIFYGROUP: {
+                        String msg;
+                        switch( qrParsed.getState() ) {
+                            case MrMailbox.MR_QR_ASK_VERIFYGROUP: msg = String.format(ApplicationLoader.applicationContext.getString(R.string.OobAskJoinVerifiedGroup), qrParsed.getText1()); break;
+                            default: msg = String.format(ApplicationLoader.applicationContext.getString(R.string.OobFingerprintAskOob), nameNAddr); break;
                         }
-                    });
-                    builder.setNegativeButton(R.string.Cancel, null);
+                        builder.setMessage(AndroidUtilities.replaceTags(msg));
+                        builder.setPositiveButton(R.string.OK, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                progressDialog = new ProgressDialog(getParentActivity());
+                                progressDialog.setMessage(ApplicationLoader.applicationContext.getString(R.string.OneMoment));
+                                progressDialog.setCanceledOnTouchOutside(false);
+                                progressDialog.setCancelable(false);
+                                progressDialog.setButton(DialogInterface.BUTTON_NEGATIVE, ApplicationLoader.applicationContext.getString(R.string.Cancel), new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        MrMailbox.stopOngoingProcess();
+                                    }
+                                });
+                                progressDialog.show();
+                                Utilities.searchQueue.postRunnable(new Runnable() {
+                                    @Override
+                                    public void run() {
+
+                                        synchronized (MrMailbox.m_lastErrorLock) {
+                                            MrMailbox.m_showNextErrorAsToast = false;
+                                            MrMailbox.m_lastErrorString = "";
+                                        }
+
+                                        final boolean oobDone = MrMailbox.joinSecurejoin(qrRawString); // oobJoin() runs until all needed messages are sent+received!
+                                        AndroidUtilities.runOnUIThread(new Runnable() {
+                                            @Override
+                                            public void run() {
+                                                String errorString;
+                                                synchronized (MrMailbox.m_lastErrorLock) {
+                                                    MrMailbox.m_showNextErrorAsToast = true;
+                                                    errorString = MrMailbox.m_lastErrorString;
+                                                }
+
+                                                if (progressDialog != null) {
+                                                    progressDialog.dismiss();
+                                                    progressDialog = null;
+                                                }
+                                                if (oobDone) {
+                                                    Bundle args = new Bundle();
+                                                    args.putInt("chat_id", MrMailbox.createChatByContactId(qrParsed.getId()));
+                                                    presentFragment(new ChatActivity(args), false /*removeLast*/);
+                                                } else if (!errorString.isEmpty()) {
+                                                    AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
+                                                    builder.setMessage(errorString);
+                                                    builder.setPositiveButton(R.string.OK, null);
+                                                    showDialog(builder.create());
+                                                }
+                                            }
+                                        });
+                                    }
+                                });
+                            }
+                        });
+                        builder.setNegativeButton(R.string.Cancel, null);
+                    }
                     break;
 
 

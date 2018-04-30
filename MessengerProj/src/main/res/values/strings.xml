@@ -447,4 +447,5 @@
     <string name="E2EEncryptionPreferred">End-to-end encryption preferred.</string>
     <string name="OobAddrVerified">%1$s verified.</string>
     <string name="OobAddrVerifiedIntroduceMyself">%1$s verified, introduce myself …</string>
+    <string name="OobAskJoinVerifiedGroup">Do you want to join the verified group <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>?</string>
 </resources>
