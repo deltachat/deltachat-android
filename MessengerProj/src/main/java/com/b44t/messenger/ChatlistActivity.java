@@ -776,7 +776,7 @@ public class ChatlistActivity extends BaseFragment implements NotificationCenter
                                             MrMailbox.m_lastErrorString = "";
                                         }
 
-                                        final boolean oobDone = MrMailbox.joinSecurejoin(qrRawString); // oobJoin() runs until all needed messages are sent+received!
+                                        final int oobDone = MrMailbox.joinSecurejoin(qrRawString); // oobJoin() runs until all needed messages are sent+received!
                                         AndroidUtilities.runOnUIThread(new Runnable() {
                                             @Override
                                             public void run() {
@@ -790,9 +790,9 @@ public class ChatlistActivity extends BaseFragment implements NotificationCenter
                                                     progressDialog.dismiss();
                                                     progressDialog = null;
                                                 }
-                                                if (oobDone) {
+                                                if (oobDone!=0) {
                                                     Bundle args = new Bundle();
-                                                    args.putInt("chat_id", MrMailbox.createChatByContactId(qrParsed.getId()));
+                                                    args.putInt("chat_id", oobDone);
                                                     presentFragment(new ChatActivity(args), false /*removeLast*/);
                                                 } else if (!errorString.isEmpty()) {
                                                     AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());

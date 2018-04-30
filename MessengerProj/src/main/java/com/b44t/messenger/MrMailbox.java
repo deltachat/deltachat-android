@@ -196,7 +196,7 @@ public class MrMailbox {
     public static MrLot checkQr(String qr) { return new MrLot(checkQrCPtr(qr)); }
 
     public native static String getSecurejoinQr(int chat_id);
-    public native static boolean joinSecurejoin(String qr);
+    public native static int joinSecurejoin(String qr);
 
     // static
     public native static String   MrGetVersionStr            ();

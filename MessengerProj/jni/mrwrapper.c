@@ -604,12 +604,12 @@ JNIEXPORT jstring Java_com_b44t_messenger_MrMailbox_getSecurejoinQr(JNIEnv *env,
 	return ret;
 }
 
-JNIEXPORT jboolean Java_com_b44t_messenger_MrMailbox_joinSecurejoin(JNIEnv *env, jclass cls, jstring qr)
+JNIEXPORT jint Java_com_b44t_messenger_MrMailbox_joinSecurejoin(JNIEnv *env, jclass cls, jstring qr)
 {
 	CHAR_REF(qr);
-		jint ret = (jint)mrmailbox_join_securejoin(get_mrmailbox_t(env, cls), qrPtr);
+		jint ret = mrmailbox_join_securejoin(get_mrmailbox_t(env, cls), qrPtr);
 	CHAR_UNREF(qr);
-	return (ret != 0);
+	return ret;
 }
 
 
