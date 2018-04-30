@@ -54,6 +54,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.b44t.messenger.Components.Browser;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
@@ -836,23 +837,54 @@ public class ChatlistActivity extends BaseFragment implements NotificationCenter
                     builder.setNegativeButton(R.string.Cancel, null);
                     break;
 
-                default:
-                    String msg;
-                    final String scannedText;
-                    switch( qrParsed.getState() ) {
-                        case MrMailbox.MR_QR_ERROR:scannedText = qrRawString;         msg = qrParsed.getText1()+"\n\n<c#808080>"+String.format(ApplicationLoader.applicationContext.getString(R.string.QrScanContainsText), scannedText)+"</c>"; break;
-                        case MrMailbox.MR_QR_TEXT: scannedText = qrParsed.getText1(); msg = String.format(ApplicationLoader.applicationContext.getString(R.string.QrScanContainsText), scannedText); break;
-                        default:                   scannedText = qrRawString;         msg = String.format(ApplicationLoader.applicationContext.getString(R.string.QrScanContainsText), scannedText); break;
+                case MrMailbox.MR_QR_URL: {
+                        final String url = qrParsed.getText1();
+                        String msg = String.format(ApplicationLoader.applicationContext.getString(R.string.QrScanContainsUrl), url);
+                        builder.setMessage(msg);
+                        builder.setPositiveButton(R.string.Open, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Browser.openUrl(getParentActivity(), url);
+                            }
+                        });
+                        builder.setNegativeButton(R.string.Cancel, null);
+                        builder.setNeutralButton(R.string.CopyToClipboard, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                AndroidUtilities.addToClipboard(url);
+                                AndroidUtilities.showDoneHint(getParentActivity());
+                            }
+                        });
                     }
-                    builder.setMessage(AndroidUtilities.replaceTags(msg));
-                    builder.setPositiveButton(R.string.OK, null);
-                    builder.setNeutralButton(R.string.CopyToClipboard, new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            AndroidUtilities.addToClipboard(scannedText);
-                            AndroidUtilities.showDoneHint(getParentActivity());
+                    break;
+
+                default: {
+                        String msg;
+                        final String scannedText;
+                        switch (qrParsed.getState()) {
+                            case MrMailbox.MR_QR_ERROR:
+                                scannedText = qrRawString;
+                                msg = qrParsed.getText1() + "\n\n<c#808080>" + String.format(ApplicationLoader.applicationContext.getString(R.string.QrScanContainsText), scannedText) + "</c>";
+                                break;
+                            case MrMailbox.MR_QR_TEXT:
+                                scannedText = qrParsed.getText1();
+                                msg = String.format(ApplicationLoader.applicationContext.getString(R.string.QrScanContainsText), scannedText);
+                                break;
+                            default:
+                                scannedText = qrRawString;
+                                msg = String.format(ApplicationLoader.applicationContext.getString(R.string.QrScanContainsText), scannedText);
+                                break;
                         }
-                    });
+                        builder.setMessage(AndroidUtilities.replaceTags(msg));
+                        builder.setPositiveButton(R.string.OK, null);
+                        builder.setNeutralButton(R.string.CopyToClipboard, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                AndroidUtilities.addToClipboard(scannedText);
+                                AndroidUtilities.showDoneHint(getParentActivity());
+                            }
+                        });
+                    }
                     break;
             }
 
