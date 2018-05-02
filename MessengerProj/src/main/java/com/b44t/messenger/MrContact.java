@@ -31,6 +31,7 @@ package com.b44t.messenger;
 public class MrContact {
 
     public final static int MR_CONTACT_ID_SELF = 1;
+    public final static int MR_CONTACT_ID_DEVICE = 2;
     public final static int MR_CONTACT_ID_LAST_SPECIAL = 9;
 
     public MrContact(long hContact) {
@@ -45,6 +46,7 @@ public class MrContact {
 
     public native String getName();
     public native String getDisplayName();
+    public native String getFirstName();
     public native String getAddr();
     public native String getNameNAddr();
     public native boolean isBlocked();

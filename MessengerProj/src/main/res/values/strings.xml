@@ -448,4 +448,7 @@
     <string name="OobAddrVerified">%1$s verified.</string>
     <string name="OobAddrVerifiedIntroduceMyself">%1$s verified, introduce myself …</string>
     <string name="OobAskJoinVerifiedGroup">Do you want to join the verified group <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>?</string>
+    <!-- Translators: First variables is replaced by an action, eg. MsgMemberAddedToGroup;
+    Second variable is replaced by a Name. -->
+    <string name="ActionBy">%1$s by %2$s.</string>
 </resources>

@@ -1139,6 +1139,15 @@ JNIEXPORT jstring Java_com_b44t_messenger_MrContact_getDisplayName(JNIEnv *env, 
 }
 
 
+JNIEXPORT jstring Java_com_b44t_messenger_MrContact_getFirstName(JNIEnv *env, jobject obj)
+{
+	const char* temp = mrcontact_get_first_name(get_mrcontact_t(env, obj));
+		jstring ret = JSTRING_NEW(temp);
+	free(temp);
+	return ret;
+}
+
+
 JNIEXPORT jstring Java_com_b44t_messenger_MrContact_getAddr(JNIEnv *env, jobject obj)
 {
 	const char* temp = mrcontact_get_addr(get_mrcontact_t(env, obj));
