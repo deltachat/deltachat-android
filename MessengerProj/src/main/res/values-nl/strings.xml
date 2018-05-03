@@ -440,4 +440,4 @@
     <string name="E2EEncryptionPreferred">Voorkeur voor end-to-end-versleuteling.</string>
     <string name="OobAddrVerified">%1$s is geverifieerd.</string>
     <string name="OobAddrVerifiedIntroduceMyself">%1$sis geverifieerd; introduceer me...</string>
-</resources>
+    </resources>

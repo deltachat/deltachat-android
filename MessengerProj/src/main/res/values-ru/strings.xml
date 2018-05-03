@@ -468,4 +468,4 @@
     <string name="E2EEncryptionPreferred">Предпочтено сквозное шифрование.</string>
     <string name="OobAddrVerified">%1$s верифицирован.</string>
     <string name="OobAddrVerifiedIntroduceMyself">%1$s верифицирован, представьтесь …</string>
-</resources>
+    </resources>

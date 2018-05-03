@@ -440,4 +440,4 @@
     <string name="E2EEncryptionPreferred">Ende-til-ende -kryptering foretrukket.</string>
     <string name="OobAddrVerified">%1$s bekreftet.</string>
     <string name="OobAddrVerifiedIntroduceMyself">%1$s bekreftet, sender introduksjonstekst …</string>
-</resources>
+    </resources>

@@ -420,6 +420,7 @@
     <string name="QrScan">QR-Code scannen</string>
     <string name="QrShow">QR-Code anzeigen</string>
     <string name="QrScanContainsText">Der gescannte QR-Code enthält folgenden Text:\n\n%1$s</string>
+    <string name="QrScanContainsUrl">Der gescannte QR-Code enthält folgende URL:\n\n%1$s</string>
     <string name="OobFingerprint">Fingerabdruck</string>
     <string name="OobFingerprintAskOob">Kontakt überprüfen und den Chat mit <![CDATA[<b>]]>%1$s<![CDATA[</b>]]> starten?</string>
     <string name="OobFingerprintOk">Kontakt  <![CDATA[<i>]]>%1$s<![CDATA[</i>]]> wurde überprüft. Chat starten?</string>
@@ -438,4 +439,16 @@
     <string name="EditedNameWillBeShared">Der neue Name wird an alle Gruppenteilnehmern gesendet.</string>
     <string name="QrShowInviteCode">QR-Einladungscode zeigen</string>
     <string name="E2EEncryptionPreferred">Ende-zu-Ende-Verschlüsselung bevorzugt.</string>
-    </resources>
+    <string name="OobAddrVerified">%1$s verifiziert.</string>
+    <string name="OobAddrVerifiedIntroduceMyself">%1$s verifiziert, warte auf Bestätigung …</string>
+    <string name="OobAskJoinVerifiedGroup">Der verifizierten Gruppe <![CDATA[<b>]]>%1$s<![CDATA[</b>]]> beitreten?</string>
+    <!-- Translators: %1$s is replaced by an action, eg. MsgMemberAddedToGroup, MsgMemberRemovedFromToGroup, MsgGroupNameChanged or MsgGroupImageChanged. If the action ends with a full stop, this is removed.
+    %2$s is replaced by a the name of the user that made this action.
+    Resulting strings might be "Member Alice added by Bob." or 'Group name changed from "Foo" to "Bar" by Claire.
+     If you do not find a correct grammar for your language you can just use "%1$s (by %2$s)" or "%2$s: %1$s" -->
+    <string name="ActionByUser">%1$s von %2$s.</string>
+    <!-- Translators: %1$s is replaced by an action, eg. MsgMemberAddedToGroup, MsgMemberRemovedFromToGroup, MsgGroupNameChanged or MsgGroupImageChanged. If the action ends with a full stop, this is removed.
+    Resulting strings might be "Member Alice added by me." or 'Group name changed from "Foo" to "Bar" by me.
+    If you do not find a correct grammar for your language you can just use "%1$s (by me)" or "Me: %1$s" -->
+    <string name="ActionBySelf">%1$s von mir.</string>
+</resources>
