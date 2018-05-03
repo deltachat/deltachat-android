@@ -466,4 +466,6 @@
     <string name="EditedNameWillBeShared">Отредактированное имя будет разослано всем участникам группы.</string>
     <string name="QrShowInviteCode">Показать QR код приглашения</string>
     <string name="E2EEncryptionPreferred">Предпочтено сквозное шифрование.</string>
+    <string name="OobAddrVerified">%1$s верифицирован.</string>
+    <string name="OobAddrVerifiedIntroduceMyself">%1$s верифицирован, представьтесь …</string>
 </resources>

@@ -437,4 +437,6 @@
     <string name="EditedNameWillBeShared">Emri i përpunuar do të ndahet me krejt anëtarët e grupit.</string>
     <string name="QrShowInviteCode">Shfaq kod QR ftese</string>
     <string name="E2EEncryptionPreferred">Parapëlqehet fshehtëzim skaj-më-skaj.</string>
+    <string name="OobAddrVerified">%1$s u verifikua.</string>
+    <string name="OobAddrVerifiedIntroduceMyself">%1$s u verifikua, prezantomë …</string>
 </resources>

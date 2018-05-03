@@ -438,4 +438,6 @@
     <string name="EditedNameWillBeShared">Det redigerte gruppenavnet vil bli delt med alle dens medlemmer.</string>
     <string name="QrShowInviteCode">Vis QR-invitasjonskode</string>
     <string name="E2EEncryptionPreferred">Ende-til-ende -kryptering foretrukket.</string>
+    <string name="OobAddrVerified">%1$s bekreftet.</string>
+    <string name="OobAddrVerifiedIntroduceMyself">%1$s bekreftet, sender introduksjonstekst …</string>
 </resources>

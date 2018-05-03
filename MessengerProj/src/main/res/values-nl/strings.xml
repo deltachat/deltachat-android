@@ -438,4 +438,6 @@
     <string name="EditedNameWillBeShared">De nieuwe naam zal worden gedeeld met alle groepsleden.</string>
     <string name="QrShowInviteCode">QR-code voor uitnodigingen weergeven</string>
     <string name="E2EEncryptionPreferred">Voorkeur voor end-to-end-versleuteling.</string>
+    <string name="OobAddrVerified">%1$s is geverifieerd.</string>
+    <string name="OobAddrVerifiedIntroduceMyself">%1$sis geverifieerd; introduceer me...</string>
 </resources>

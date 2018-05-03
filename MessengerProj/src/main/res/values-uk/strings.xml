@@ -419,5 +419,14 @@
     <string name="AskLeaveGroup">Чи ви певні, що хочете полишити спільноту?</string>
     <string name="Never">Ніколи</string>
     <string name="Retry">Спробувати ще раз</string>
+    <string name="SelfTalkSubtitle">Надіслані собі повідомлення</string>
+    <string name="QrScan">Відсканувати QR-код</string>
+    <string name="QrShow">Показати QR-код</string>
+    <string name="OobFingerprint">Відбиток пальця</string>
     <string name="Contact">Контакт</string>
-    </resources>
+    <string name="Group">Спільнота</string>
+    <string name="EditedNameWillBeShared">Кориговане ім\'я пошириться серед усіх членів спільноти.</string>
+    <string name="QrShowInviteCode">Показати QR-код запрошення</string>
+    <string name="OobAddrVerified">%1$sпідтверджено.</string>
+    <string name="OobAddrVerifiedIntroduceMyself">%1$sпідтверджено, привітайтеся ...</string>
+</resources>
