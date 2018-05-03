@@ -448,7 +448,13 @@
     <string name="OobAddrVerified">%1$s verified.</string>
     <string name="OobAddrVerifiedIntroduceMyself">%1$s verified, introduce myself …</string>
     <string name="OobAskJoinVerifiedGroup">Do you want to join the verified group <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>?</string>
-    <!-- Translators: First variables is replaced by an action, eg. MsgMemberAddedToGroup;
-    Second variable is replaced by a Name. -->
-    <string name="ActionBy">%1$s by %2$s.</string>
+    <!-- Translators: %1$s is replaced by an action, eg. MsgMemberAddedToGroup, MsgMemberRemovedFromToGroup, MsgGroupNameChanged or MsgGroupImageChanged. If the action ends with a full stop, this is removed.
+    %2$s is replaced by a the name of the user that made this action.
+    Resulting strings might be "Member Alice added by Bob." or 'Group name changed from "Foo" to "Bar" by Claire.
+     If you do not find a correct grammar for your language you can just use "%1$s (by %2$s)" or "%2$s: %1$s" -->
+    <string name="ActionByUser">%1$s by %2$s.</string>
+    <!-- Translators: %1$s is replaced by an action, eg. MsgMemberAddedToGroup, MsgMemberRemovedFromToGroup, MsgGroupNameChanged or MsgGroupImageChanged. If the action ends with a full stop, this is removed.
+    Resulting strings might be "Member Alice added by me." or 'Group name changed from "Foo" to "Bar" by me.
+    If you do not find a correct grammar for your language you can just use "%1$s (by me)" or "Me: %1$s" -->
+    <string name="ActionBySelf">%1$s by me.</string>
 </resources>

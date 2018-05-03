@@ -2893,17 +2893,18 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
 
                         MessageObject msgDrawObj = new MessageObject(mrMsg.get_TLRPC_Message(), false);
 
-                        // Add the suffix " by ..." to the action, eg.
-                        // from the string "Member X added" we create "Member X added by Y".
-                        // we do not add this to the raw string as we want to differ between "Me" and the user name
-                        // and as the string is also added to the mail - and strings as by my look weired there.
-                        // finally, we may also decide to change the layout at all (eg. show an avatar about the message)
-                        // so we do not want to stuck with the strings.
-                        if( mrMsg.getFromId() != MrContact.MR_CONTACT_ID_DEVICE ) {
+                        // Add the suffix " (by ...)" to the action, see strings.xml for details.
+                        int fromId = mrMsg.getFromId();
+                        if( fromId != MrContact.MR_CONTACT_ID_DEVICE ) {
                             String actionStr = msgDrawObj.messageText.toString();
                             if(actionStr.endsWith(".")) { actionStr = actionStr.substring(0, actionStr.length() - 1); }
-                            String fromStr = MrMailbox.getContact(mrMsg.getFromId()).getFirstName();
-                            msgDrawObj.messageText = String.format(ApplicationLoader.applicationContext.getString(R.string.ActionBy), actionStr, fromStr);
+                            if( fromId == MrContact.MR_CONTACT_ID_SELF ) {
+                                msgDrawObj.messageText = String.format(ApplicationLoader.applicationContext.getString(R.string.ActionBySelf), actionStr);
+                            }
+                            else {
+                                String fromStr = MrMailbox.getContact(mrMsg.getFromId()).getFirstName();
+                                msgDrawObj.messageText = String.format(ApplicationLoader.applicationContext.getString(R.string.ActionByUser), actionStr, fromStr);
+                            }
                         }
 
                         ChatActionCell actionCell = (ChatActionCell) view;
