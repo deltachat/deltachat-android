@@ -253,10 +253,10 @@
         <item quantity="one">Delete %d message? It will also be deleted from the server.</item>
         <item quantity="other">Delete %d messages? These will also be deleted from the server.</item>
     </plurals>
+    <!-- Translators: The first string placeholder gets replaced with the
+    text "%d new messages", so the complete sentence would be e.g.
+    "4 new messages in 2 chats". -->
     <plurals name="NewMessagesInChats">
-        <!-- Translators: The first string placeholder gets replaced with the
-        text "%d new messages", so the complete sentence would be e.g.
-        "4 new messages in 2 chats". -->
         <item quantity="one">%1$s in %2$d chat</item>
         <item quantity="other">%1$s in %2$d chats</item>
     </plurals>
@@ -284,10 +284,10 @@
         <item quantity="one">%d month</item>
         <item quantity="other">%d months</item>
     </plurals>
+    <!-- Translators: The second string placeholder gets replaced with the
+    text "%d minutes", so the complete sentence would be e.g.
+    "At most 8 notifications within 3 minutes". -->
     <plurals name="MaxNotifications">
-        <!-- Translators: The second string placeholder gets replaced with the
-        text "%d minutes", so the complete sentence would be e.g.
-        "At most 8 notifications within 3 minutes". -->
         <item quantity="one">At most %1$d notification within %2$s</item>
         <item quantity="other">At most %1$d notifications within %2$s</item>
     </plurals>
