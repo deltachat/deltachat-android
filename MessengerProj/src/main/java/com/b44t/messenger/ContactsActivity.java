@@ -29,6 +29,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.drawable.BitmapDrawable;
@@ -87,6 +88,7 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
     private int rowNewGroup = -1;
     private int rowNewVerifiedGroup = -1;
     private int rowAddContact = -1;
+    private int rowInviteViaQr = -1;
     private int rowContactFirst = -1;
     private int rowContactLast = -1;
     private int rowCount = 0;
@@ -443,6 +445,13 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
 
                     presentFragment(new ContactAddActivity(args));
                 }
+                else if( i == rowInviteViaQr ) {
+                    Intent intent2 = new Intent(getParentActivity(), QRshowActivity.class);
+                    Bundle b = new Bundle();
+                    b.putInt("chat_id", 0);
+                    intent2.putExtras(b);
+                    getParentActivity().startActivity(intent2);
+                }
                 else {
                     Object item = listViewAdapter.getItem(i);
                     if (item instanceof TLRPC.User) {
@@ -728,6 +737,7 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
             rowNewGroup = -1;
             rowNewVerifiedGroup = -1;
             rowAddContact = -1;
+            rowInviteViaQr = -1;
             rowContactFirst = -1;
             rowContactLast = -1;
 
@@ -739,7 +749,13 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
                     }
                 }
             }
-            rowAddContact = rowCount++;
+
+            if( (mListflags & MrMailbox.MR_GCL_VERIFIED_ONLY)!=0 ) {
+                rowInviteViaQr = rowCount++;
+            }
+            else {
+                rowAddContact = rowCount++;
+            }
 
             if( contactIds.length > 0 ) {
                 rowContactFirst = rowCount;
@@ -810,6 +826,9 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
                 }
                 else if( i == rowAddContact) {
                     textCell.setText(mContext.getString(R.string.NewContactTitle), false);
+                }
+                else if( i == rowInviteViaQr) {
+                    textCell.setText(mContext.getString(R.string.QrShowInviteCode), false);
                 }
             }
             else if( type == ROWTYPE_CONTACT ) {
