@@ -252,6 +252,9 @@
         <item quantity="one">%d üzenet törlése? Az üzenet a szerverről is törlődik.</item>
         <item quantity="other">%d üzenet törlése? Az üzenetek a szerverről is törlődnek.</item>
     </plurals>
+    <!-- Translators: The first string placeholder gets replaced with the
+    text "%d new messages", so the complete sentence would be e.g.
+    "4 new messages in 2 chats". -->
     <plurals name="NewMessagesInChats">
         <item quantity="one">%1$s %2$d beszélgetésben</item>
         <item quantity="other">%1$s %2$d beszélgetésben</item>
@@ -280,6 +283,9 @@
         <item quantity="one">%d hónap</item>
         <item quantity="other">%d hónap</item>
     </plurals>
+    <!-- Translators: The second string placeholder gets replaced with the
+    text "%d minutes", so the complete sentence would be e.g.
+    "At most 8 notifications within 3 minutes". -->
     <plurals name="MaxNotifications">
         <item quantity="one">Legfeljebb %1$d értesítés %2$s alatt</item>
         <item quantity="other">Legfeljebb %1$d értesítés %2$s alatt</item>

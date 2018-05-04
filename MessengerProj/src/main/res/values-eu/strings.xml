@@ -231,6 +231,9 @@
         <item quantity="one">Mezu %d</item>
         <item quantity="other">%d mezu</item>
     </plurals>
+    <!-- Translators: The first string placeholder gets replaced with the
+    text "%d new messages", so the complete sentence would be e.g.
+    "4 new messages in 2 chats". -->
     <plurals name="NewMessagesInChats">
         <item quantity="one">%1$s txat %2$dean</item>
         <item quantity="other">%1$s %2$d txatetan</item>
@@ -259,6 +262,9 @@
         <item quantity="one">hilabete %d</item>
         <item quantity="other">%d hilabete</item>
     </plurals>
+    <!-- Translators: The second string placeholder gets replaced with the
+    text "%d minutes", so the complete sentence would be e.g.
+    "At most 8 notifications within 3 minutes". -->
     <plurals name="MaxNotifications">
         <item quantity="one">Gehienez jakinarazpen %1$d %2$sko tartean</item>
         <item quantity="other">Gehienez %1$d jakinarazpen %2$sko tartean</item>

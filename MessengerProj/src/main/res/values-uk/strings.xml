@@ -259,6 +259,9 @@
         <item quantity="few">Видалити%dповідомлення? Повідомлення видаляться з серверу також.</item>
         <item quantity="other">Видалити%dповідомлень? Повідомлення видаляться з серверу також.</item>
     </plurals>
+    <!-- Translators: The first string placeholder gets replaced with the
+    text "%d new messages", so the complete sentence would be e.g.
+    "4 new messages in 2 chats". -->
     <plurals name="NewMessagesInChats">
         <item quantity="one">%1$sв%2$dрозмові</item>
         <item quantity="few">%1$sу %2$dрозмовах</item>
@@ -294,6 +297,9 @@
         <item quantity="few">%dмісяці</item>
         <item quantity="other">%dмісяців</item>
     </plurals>
+    <!-- Translators: The second string placeholder gets replaced with the
+    text "%d minutes", so the complete sentence would be e.g.
+    "At most 8 notifications within 3 minutes". -->
     <plurals name="MaxNotifications">
         <item quantity="one">Щобільш%1$dсповіщення за%2$s</item>
         <item quantity="few">Щобільш%1$dсповіщення за%2$s</item>

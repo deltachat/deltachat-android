@@ -253,6 +253,9 @@
         <item quantity="one">Effacer %d message? Ce message sera aussi effacé du serveur.</item>
         <item quantity="other">Effacer %d messages? Ces messages seront aussi effacés du serveur.</item>
     </plurals>
+    <!-- Translators: The first string placeholder gets replaced with the
+    text "%d new messages", so the complete sentence would be e.g.
+    "4 new messages in 2 chats". -->
     <plurals name="NewMessagesInChats">
         <item quantity="one">1%1$s dans 2%2$d conversation</item>
         <item quantity="other">%1$s dans %2$d conversations</item>
@@ -281,6 +284,9 @@
         <item quantity="one">%d mois</item>
         <item quantity="other">%d mois</item>
     </plurals>
+    <!-- Translators: The second string placeholder gets replaced with the
+    text "%d minutes", so the complete sentence would be e.g.
+    "At most 8 notifications within 3 minutes". -->
     <plurals name="MaxNotifications">
         <item quantity="one">Maximum %1$d notification dans 2%2$s</item>
         <item quantity="other">Maximum %1$d notifications dans %2$s</item>

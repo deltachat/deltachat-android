@@ -252,6 +252,9 @@
         <item quantity="one">Të fshihen  %d mesazh? Do të fshihet edhe nga shërbyesi.</item>
         <item quantity="other">Të fshihen %d mesazhe? Këta do të fshihen edhe nga shërbyesi.</item>
     </plurals>
+    <!-- Translators: The first string placeholder gets replaced with the
+    text "%d new messages", so the complete sentence would be e.g.
+    "4 new messages in 2 chats". -->
     <plurals name="NewMessagesInChats">
         <item quantity="one">%1$s në %2$d fjalosje</item>
         <item quantity="other">%1$s në %2$d biseda</item>
@@ -280,6 +283,9 @@
         <item quantity="one">%d muaj</item>
         <item quantity="other">%d muaj</item>
     </plurals>
+    <!-- Translators: The second string placeholder gets replaced with the
+    text "%d minutes", so the complete sentence would be e.g.
+    "At most 8 notifications within 3 minutes". -->
     <plurals name="MaxNotifications">
         <item quantity="one">E shumta %1$d njoftime brenda %2$s</item>
         <item quantity="other">E shumta %1$d njoftime brenda %2$s</item>
@@ -419,6 +425,7 @@
     <string name="QrScan">Skanoni kod QR</string>
     <string name="QrShow">Shfaq kod QR</string>
     <string name="QrScanContainsText">Kodi QR i skanuar përmban tekstin vijues:\n\n%1$s</string>
+    <string name="QrScanContainsUrl">Kodi QR i skanuar përmban URL-në vijuese:\n\n%1$s</string>
     <string name="OobFingerprint">Shenja gishtash</string>
     <string name="OobFingerprintAskOob">Verifikoni kontaktin dhe filloni të bisedoni me <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>?</string>
     <string name="OobFingerprintOk">Kontakti <![CDATA[<i>]]>%1$s<![CDATA[</i>]]> u verifikua. Të fillohet bisedë?</string>
@@ -439,4 +446,14 @@
     <string name="E2EEncryptionPreferred">Parapëlqehet fshehtëzim skaj-më-skaj.</string>
     <string name="OobAddrVerified">%1$s u verifikua.</string>
     <string name="OobAddrVerifiedIntroduceMyself">%1$s u verifikua, prezantomë …</string>
-    </resources>
+    <string name="OobAskJoinVerifiedGroup">Doni të bëheni pjesë e grupit të verifikuar <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>?</string>
+    <!-- Translators: %1$s is replaced by an action, eg. MsgMemberAddedToGroup, MsgMemberRemovedFromToGroup, MsgGroupNameChanged or MsgGroupImageChanged. If the action ends with a full stop, this is removed.
+    %2$s is replaced by a the name of the user that made this action.
+    Resulting strings might be "Member Alice added by Bob." or 'Group name changed from "Foo" to "Bar" by Claire.
+     If you do not find a correct grammar for your language you can just use "%1$s (by %2$s)" or "%2$s: %1$s" -->
+    <string name="ActionByUser">%1$s nga %2$s.</string>
+    <!-- Translators: %1$s is replaced by an action, eg. MsgMemberAddedToGroup, MsgMemberRemovedFromToGroup, MsgGroupNameChanged or MsgGroupImageChanged. If the action ends with a full stop, this is removed.
+    Resulting strings might be "Member Alice added by me." or 'Group name changed from "Foo" to "Bar" by me.
+    If you do not find a correct grammar for your language you can just use "%1$s (by me)" or "Me: %1$s" -->
+    <string name="ActionBySelf">%1$s nga unë.</string>
+</resources>

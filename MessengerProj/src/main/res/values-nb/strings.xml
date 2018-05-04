@@ -253,6 +253,9 @@
         <item quantity="one">Slett %d melding? Den vil også bli slettet fra tjeneren?</item>
         <item quantity="other">Slett %d meldinger? De vil også bli slettet fra tjeneren.</item>
     </plurals>
+    <!-- Translators: The first string placeholder gets replaced with the
+    text "%d new messages", so the complete sentence would be e.g.
+    "4 new messages in 2 chats". -->
     <plurals name="NewMessagesInChats">
         <item quantity="one">%1$s i %2$d sludring</item>
         <item quantity="other">%1$s i %2$d sludringer</item>
@@ -281,6 +284,9 @@
         <item quantity="one">%d måned</item>
         <item quantity="other">%d måneder</item>
     </plurals>
+    <!-- Translators: The second string placeholder gets replaced with the
+    text "%d minutes", so the complete sentence would be e.g.
+    "At most 8 notifications within 3 minutes". -->
     <plurals name="MaxNotifications">
         <item quantity="one">Maksimalt %1$d merknad i løpet av %2$s</item>
         <item quantity="other">Maksimalt %1$d merknader i løpet av %2$s</item>
@@ -420,6 +426,7 @@
     <string name="QrScan">Skann QR-kode</string>
     <string name="QrShow">Vis QR-kode</string>
     <string name="QrScanContainsText">Den skannede QR-koden inneholder følgende tekst:\n\n%1$s</string>
+    <string name="QrScanContainsUrl">Den skannede QR-koden inneholder følgende lenke:\n\n%1$s</string>
     <string name="OobFingerprint">Fingeravtrykk</string>
     <string name="OobFingerprintAskOob">Bekreft kontakt og start sludring med <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>?</string>
     <string name="OobFingerprintOk">Kontakt <![CDATA[<i>]]>%1$s<![CDATA[</i>]]> bekreftet. Start sludring?</string>
@@ -440,4 +447,14 @@
     <string name="E2EEncryptionPreferred">Ende-til-ende -kryptering foretrukket.</string>
     <string name="OobAddrVerified">%1$s bekreftet.</string>
     <string name="OobAddrVerifiedIntroduceMyself">%1$s bekreftet, sender introduksjonstekst …</string>
-    </resources>
+    <string name="OobAskJoinVerifiedGroup">Ønsker du å ta del i den bekreftede gruppen <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>?</string>
+    <!-- Translators: %1$s is replaced by an action, eg. MsgMemberAddedToGroup, MsgMemberRemovedFromToGroup, MsgGroupNameChanged or MsgGroupImageChanged. If the action ends with a full stop, this is removed.
+    %2$s is replaced by a the name of the user that made this action.
+    Resulting strings might be "Member Alice added by Bob." or 'Group name changed from "Foo" to "Bar" by Claire.
+     If you do not find a correct grammar for your language you can just use "%1$s (by %2$s)" or "%2$s: %1$s" -->
+    <string name="ActionByUser">%1$s av %2$s.</string>
+    <!-- Translators: %1$s is replaced by an action, eg. MsgMemberAddedToGroup, MsgMemberRemovedFromToGroup, MsgGroupNameChanged or MsgGroupImageChanged. If the action ends with a full stop, this is removed.
+    Resulting strings might be "Member Alice added by me." or 'Group name changed from "Foo" to "Bar" by me.
+    If you do not find a correct grammar for your language you can just use "%1$s (by me)" or "Me: %1$s" -->
+    <string name="ActionBySelf">%1$s av meg.</string>
+</resources>
