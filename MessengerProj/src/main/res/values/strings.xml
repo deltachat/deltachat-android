@@ -63,7 +63,7 @@
     <string name="Notifications">Notifications</string>
     <string name="RemoveMember">Remove member</string>
     <!--contact info view-->
-    <string name="NewContactTitle">New contact</string>
+    <string name="NewContactTitle">Add contact</string>
     <string name="BlockContact">Block contact</string>
     <string name="DeleteContact">Delete contact</string>
     <string name="Info">Info</string>

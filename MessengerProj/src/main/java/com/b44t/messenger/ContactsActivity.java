@@ -55,6 +55,7 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.b44t.messenger.Cells.TextSettingsCell;
 import com.b44t.messenger.Components.BaseFragmentAdapter;
 import com.b44t.messenger.Cells.UserCell;
 import com.b44t.messenger.ActionBar.ActionBar;
@@ -82,6 +83,13 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
     private boolean searching;
     private HashMap<Integer, ChipSpan> selectedContacts = new HashMap<>();
     private ArrayList<ChipSpan> allSpans = new ArrayList<>();
+
+    private int rowNewGroup = -1;
+    private int rowNewVerifiedGroup = -1;
+    private int rowAddContact = -1;
+    private int rowContactFirst = -1;
+    private int rowContactLast = -1;
+    private int rowCount = 0;
 
     private int              do_what = 0;
     public final static int  SELECT_CONTACT_FOR_NEW_CHAT   = 1;
@@ -226,7 +234,7 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
                 {
                     Bundle args = new Bundle();
                     args.putInt("do_what", id);
-                    presentFragment(new ContactsActivity(args), true /*removeLast*/, true /*forceWithoutAnimation*/);
+                    presentFragment(new ContactsActivity(args), true , true );
                 }
                 else if( id == id_add_contact )
                 {
@@ -254,6 +262,8 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
             menu.addItem(id_done_button, R.drawable.ic_done); // should the "done" button be right or left of other buttons?  Esp. for the "more" button, it looks better if it is right left of it - beside the title describing the action and nearer to "cancel"; the other buttons has not so much to do with the group but switches to other types.  In other situations, the icon-oder-decision may be different.
         }
 
+        /* -- instead of a menu we're testing buttons in the list
+
         ActionBarMenuItem item = menu.addItem(10, R.drawable.ic_ab_other);
         if (do_what == SELECT_CONTACT_FOR_NEW_CHAT || do_what == SELECT_CONTACTS_FOR_NEW_GROUP || do_what == SELECT_CONTACTS_FOR_NEW_VERIFIED_GROUP) {
             if( do_what!=SELECT_CONTACT_FOR_NEW_CHAT ) { item.addSubItem(SELECT_CONTACT_FOR_NEW_CHAT, context.getString(R.string.NewChat)); }
@@ -266,6 +276,7 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
             }
         }
         item.addSubItem(id_add_contact, context.getString(R.string.NewContactTitle));
+        */
 
         int listflags = 0;
         if( do_what==SELECT_CONTACTS_FOR_NEW_VERIFIED_GROUP||do_what==ADD_CONTACTS_TO_VERIFIED_GROUP) {
@@ -276,7 +287,7 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
             listflags |= MrMailbox.MR_GCL_ADD_SELF;
         }
 
-        listViewAdapter = new ContactsAdapter(context, listflags);
+        listViewAdapter = new ContactsAdapter(context, listflags, do_what==SELECT_CONTACT_FOR_NEW_CHAT);
 
         if( do_what == SELECT_CONTACTS_FOR_NEW_GROUP || do_what == SELECT_CONTACTS_FOR_NEW_VERIFIED_GROUP ) {
             listViewAdapter.setCheckedMap(selectedContacts);
@@ -415,97 +426,108 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 // a single click on an contact item
-                Object item = listViewAdapter.getItem(i);
-                if (item instanceof TLRPC.User) {
-                    final TLRPC.User user = (TLRPC.User) item;
-                    if( do_what == SELECT_CONTACT_FOR_NEW_CHAT ) {
-                        int belonging_chat_id = MrMailbox.getChatIdByContactId(user.id);
-                        if( belonging_chat_id!=0 ) {
-                            Bundle args = new Bundle();
-                            args.putInt("chat_id", belonging_chat_id);
-                            presentFragment(new ChatActivity(args), true);
-                            return;
-                        }
+                if( i == rowNewGroup || i == rowNewVerifiedGroup ) {
+                    Bundle args = new Bundle();
+                    args.putInt("do_what", i==rowNewGroup? SELECT_CONTACTS_FOR_NEW_GROUP : SELECT_CONTACTS_FOR_NEW_VERIFIED_GROUP);
+                    presentFragment(new ContactsActivity(args), true /*removeLast*/, true /*forceWithoutAnimation*/);
+                }
+                else if( i == rowAddContact) {
+                    Bundle args = new Bundle();
+                    args.putInt("do_what", ContactAddActivity.CREATE_CONTACT);
+                    args.putBoolean("create_chat_when_done", do_what==SELECT_CONTACT_FOR_NEW_CHAT);
+                    presentFragment(new ContactAddActivity(args));
+                }
+                else {
+                    Object item = listViewAdapter.getItem(i);
+                    if (item instanceof TLRPC.User) {
+                        final TLRPC.User user = (TLRPC.User) item;
+                        if (do_what == SELECT_CONTACT_FOR_NEW_CHAT) {
+                            int belonging_chat_id = MrMailbox.getChatIdByContactId(user.id);
+                            if (belonging_chat_id != 0) {
+                                Bundle args = new Bundle();
+                                args.putInt("chat_id", belonging_chat_id);
+                                presentFragment(new ChatActivity(args), true);
+                                return;
+                            }
 
-                        String name = "";
-                        {
-                            MrContact mrContact = MrMailbox.getContact(user.id);
-                            name = mrContact.getNameNAddr();
-                        }
+                            String name = "";
+                            {
+                                MrContact mrContact = MrMailbox.getContact(user.id);
+                                name = mrContact.getNameNAddr();
+                            }
 
-                        AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
-                        builder.setPositiveButton(R.string.OK, new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
-                                int belonging_chat_id = MrMailbox.createChatByContactId(user.id);
-                                if( belonging_chat_id != 0 ) {
-                                    Bundle args = new Bundle();
-                                    args.putInt("chat_id", belonging_chat_id);
-                                    presentFragment(new ChatActivity(args), true);
+                            AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
+                            builder.setPositiveButton(R.string.OK, new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    int belonging_chat_id = MrMailbox.createChatByContactId(user.id);
+                                    if (belonging_chat_id != 0) {
+                                        Bundle args = new Bundle();
+                                        args.putInt("chat_id", belonging_chat_id);
+                                        presentFragment(new ChatActivity(args), true);
+                                    }
+                                }
+                            });
+                            builder.setNegativeButton(R.string.Cancel, null);
+                            builder.setMessage(AndroidUtilities.replaceTags(String.format(context.getString(R.string.AskStartChatWith), name)));
+                            showDialog(builder.create());
+                        } else if (do_what == SELECT_CONTACTS_FOR_NEW_GROUP || do_what == SELECT_CONTACTS_FOR_NEW_VERIFIED_GROUP) {
+                            boolean check = true;
+                            if (selectedContacts.containsKey(user.id)) {
+                                check = false;
+                                try {
+                                    ChipSpan span = selectedContacts.get(user.id);
+                                    selectedContacts.remove(user.id);
+                                    SpannableStringBuilder text = new SpannableStringBuilder(userSelectEditText.getText());
+                                    text.delete(text.getSpanStart(span), text.getSpanEnd(span));
+                                    allSpans.remove(span);
+                                    ignoreChange = true;
+                                    userSelectEditText.setText(text);
+                                    userSelectEditText.setSelection(text.length());
+                                    ignoreChange = false;
+                                } catch (Exception e) {
+
+                                }
+                            } else {
+                                ignoreChange = true;
+                                ChipSpan span = createAndPutChipForUser(user);
+                                span.uid = user.id;
+                                ignoreChange = false;
+                            }
+
+                            int selectedContactsButMe = selectedContacts.size();
+                            if (selectedContacts.containsKey(MrContact.MR_CONTACT_ID_SELF)) {
+                                selectedContactsButMe--;
+                            }
+
+                            actionBar.setSubtitle(context.getResources().getQuantityString(R.plurals.MeAndMembers, selectedContactsButMe, selectedContactsButMe));
+
+                            if (searching || searchWas) {
+                                ignoreChange = true;
+                                SpannableStringBuilder ssb = new SpannableStringBuilder("");
+                                for (ImageSpan sp : allSpans) {
+                                    ssb.append("<<");
+                                    ssb.setSpan(sp, ssb.length() - 2, ssb.length(), SpannableStringBuilder.SPAN_EXCLUSIVE_EXCLUSIVE);
+                                }
+                                userSelectEditText.setText(ssb);
+                                userSelectEditText.setSelection(ssb.length());
+                                ignoreChange = false;
+
+                                listViewAdapter.search(null);
+                                searching = false;
+                                searchWas = false;
+                                listViewAdapter.notifyDataSetChanged();
+                                emptyTextView.setText(context.getString(R.string.NoContacts));
+                            } else {
+                                if (view instanceof UserCell) {
+                                    ((UserCell) view).setChecked(check, true);
                                 }
                             }
-                        });
-                        builder.setNegativeButton(R.string.Cancel, null);
-                        builder.setMessage(AndroidUtilities.replaceTags(String.format(context.getString(R.string.AskStartChatWith), name)));
-                        showDialog(builder.create());
-                    }
-                    else if( do_what == SELECT_CONTACTS_FOR_NEW_GROUP || do_what == SELECT_CONTACTS_FOR_NEW_VERIFIED_GROUP ) {
-                        boolean check = true;
-                        if (selectedContacts.containsKey(user.id)) {
-                            check = false;
-                            try {
-                                ChipSpan span = selectedContacts.get(user.id);
-                                selectedContacts.remove(user.id);
-                                SpannableStringBuilder text = new SpannableStringBuilder(userSelectEditText.getText());
-                                text.delete(text.getSpanStart(span), text.getSpanEnd(span));
-                                allSpans.remove(span);
-                                ignoreChange = true;
-                                userSelectEditText.setText(text);
-                                userSelectEditText.setSelection(text.length());
-                                ignoreChange = false;
-                            } catch (Exception e) {
-
-                            }
-                        } else {
-                            ignoreChange = true;
-                            ChipSpan span = createAndPutChipForUser(user);
-                            span.uid = user.id;
-                            ignoreChange = false;
+                        } else if (delegate != null) {
+                            delegate.didSelectContact(user.id);
+                            delegate = null;
+                            finishFragment();
                         }
-
-                        int selectedContactsButMe = selectedContacts.size();
-                        if( selectedContacts.containsKey(MrContact.MR_CONTACT_ID_SELF) ) {
-                            selectedContactsButMe--;
-                        }
-
-                        actionBar.setSubtitle(context.getResources().getQuantityString(R.plurals.MeAndMembers, selectedContactsButMe, selectedContactsButMe));
-
-                        if (searching || searchWas) {
-                            ignoreChange = true;
-                            SpannableStringBuilder ssb = new SpannableStringBuilder("");
-                            for (ImageSpan sp : allSpans) {
-                                ssb.append("<<");
-                                ssb.setSpan(sp, ssb.length() - 2, ssb.length(), SpannableStringBuilder.SPAN_EXCLUSIVE_EXCLUSIVE);
-                            }
-                            userSelectEditText.setText(ssb);
-                            userSelectEditText.setSelection(ssb.length());
-                            ignoreChange = false;
-
-                            listViewAdapter.search(null);
-                            searching = false;
-                            searchWas = false;
-                            listViewAdapter.notifyDataSetChanged();
-                            emptyTextView.setText(context.getString(R.string.NoContacts));
-                        } else {
-                            if (view instanceof UserCell) {
-                                ((UserCell) view).setChecked(check, true);
-                            }
-                        }
-                    }
-                    else if (delegate != null) {
-                        delegate.didSelectContact(user.id);
-                        delegate = null;
-                        finishFragment();
                     }
                 }
             }
@@ -680,11 +702,44 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
         private int[] contactIds;
 
         private int mListflags = 0;
+        private boolean mAddNewGroupRows;
 
-        public ContactsAdapter(Context context, int listflags) {
+        private final int ROWTYPE_TEXT_SETTINGS = 0;
+        private final int ROWTYPE_CONTACT = 1;
+        private final int ROWTYPE_COUNT = 2;
+
+        public ContactsAdapter(Context context, int listflags, boolean addNewGroupRows) {
             mContext = context;
             mListflags = listflags;
+            mAddNewGroupRows = addNewGroupRows;
             contactIds = MrMailbox.getContacts(mListflags, null);
+            updateRowIds();
+        }
+
+        public void updateRowIds()
+        {
+            rowCount = 0;
+            rowNewGroup = -1;
+            rowNewVerifiedGroup = -1;
+            rowAddContact = -1;
+            rowContactFirst = -1;
+            rowContactLast = -1;
+
+            if( lastQuery == null || lastQuery.isEmpty() ) {
+                if (mAddNewGroupRows) {
+                    rowNewGroup = rowCount++;
+                    if( MrMailbox.getConfigInt("qr_enabled", 0) != 0 ) {
+                        rowNewVerifiedGroup = rowCount++;
+                    }
+                }
+            }
+            rowAddContact = rowCount++;
+
+            if( contactIds.length > 0 ) {
+                rowContactFirst = rowCount;
+                rowCount += contactIds.length;
+                rowContactLast = rowCount - 1;
+            }
         }
 
         public void setCheckedMap(HashMap<Integer, ?> map) {
@@ -698,14 +753,17 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
         public void search(String query) {
             contactIds = MrMailbox.getContacts(mListflags, query);
             lastQuery = query;
+            updateRowIds();
         }
 
         public void searchAgain() {
             contactIds = MrMailbox.getContacts(mListflags, lastQuery);
+            updateRowIds();
         }
 
         @Override
-        public Object getItem(int curr_user_index) {
+        public Object getItem(int i) {
+            int curr_user_index = i - rowContactFirst;
             if(curr_user_index>=0 && curr_user_index<contactIds.length) {
                 TLRPC.User u = new TLRPC.User();
                 u.id = contactIds[curr_user_index];
@@ -715,42 +773,66 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
         }
 
         @Override
-        public boolean isEnabled(int row) {
-            return true;
+        public boolean isEnabled(int i) {
+            int type = getItemViewType(i);
+            return (type == ROWTYPE_CONTACT || type == ROWTYPE_TEXT_SETTINGS);
         }
 
         @Override
         public int getCount() {
-            return contactIds.length;
+            return rowCount;
         }
 
         @Override
-        public View getView(int curr_user_index, View convertView, ViewGroup parent) {
-            if (convertView == null) {
-                convertView = new UserCell(mContext,1);
+        public View getView(int i, View view, ViewGroup parent) {
+            int type = getItemViewType(i);
+            if( type == ROWTYPE_TEXT_SETTINGS ) {
+                if (view == null) {
+                    view = new TextSettingsCell(mContext);
+                    view.setBackgroundColor(0xffffffff);
+                }
+                TextSettingsCell textCell = (TextSettingsCell) view;
+                if( i == rowNewGroup ) {
+                    textCell.setText(mContext.getString(R.string.NewGroup), true);
+                }
+                else if( i == rowNewVerifiedGroup ) {
+                    textCell.setText(mContext.getString(R.string.NewVerifiedGroup), true);
+                }
+                else if( i == rowAddContact) {
+                    textCell.setText(mContext.getString(R.string.NewContactTitle), false);
+                }
             }
+            else if( type == ROWTYPE_CONTACT ) {
+                if (view == null) {
+                    view = new UserCell(mContext, 1);
+                }
 
-            if(curr_user_index>=0 && curr_user_index<contactIds.length) {
-                int curr_user_id = contactIds[curr_user_index];
-                MrContact mrContact = MrMailbox.getContact(curr_user_id);
-                ((UserCell) convertView).setData(mrContact);
-                if (checkedMap != null) {
-                    boolean checked = curr_user_id==MrContact.MR_CONTACT_ID_SELF || checkedMap.containsKey(curr_user_id);
-                    ((UserCell) convertView).setChecked(checked, !scrolling);
+                int curr_user_index = i - rowContactFirst;
+                if (curr_user_index >= 0 && curr_user_index < contactIds.length) {
+                    int curr_user_id = contactIds[curr_user_index];
+                    MrContact mrContact = MrMailbox.getContact(curr_user_id);
+                    ((UserCell) view).setData(mrContact);
+                    if (checkedMap != null) {
+                        boolean checked = curr_user_id == MrContact.MR_CONTACT_ID_SELF || checkedMap.containsKey(curr_user_id);
+                        ((UserCell) view).setChecked(checked, !scrolling);
+                    }
                 }
             }
 
-            return convertView;
+            return view;
         }
 
         @Override
-        public int getItemViewType(int position) {
-            return 0;
+        public int getItemViewType(int i) {
+            if(i>=rowContactFirst && i<=rowContactLast ) {
+                return ROWTYPE_CONTACT;
+            }
+            return ROWTYPE_TEXT_SETTINGS;
         }
 
         @Override
         public int getViewTypeCount() {
-            return 1;
+            return ROWTYPE_COUNT;
         }
     }
 }

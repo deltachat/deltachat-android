@@ -280,10 +280,10 @@ public class ChatlistActivity extends BaseFragment implements NotificationCenter
 
             headerItem = menu.addItem(0, R.drawable.ic_ab_other);
             headerItem.addSubItem(ID_NEW_CHAT, ApplicationLoader.applicationContext.getString(R.string.NewChat));
-            headerItem.addSubItem(ID_NEW_GROUP, ApplicationLoader.applicationContext.getString(R.string.NewGroup));
+            //headerItem.addSubItem(ID_NEW_GROUP, ApplicationLoader.applicationContext.getString(R.string.NewGroup));
             if(!onlySelect) {
                 if( qr_enabled ) {
-                    headerItem.addSubItem(ID_NEW_VERIFIED_GROUP, ApplicationLoader.applicationContext.getString(R.string.NewVerifiedGroup));
+                    //headerItem.addSubItem(ID_NEW_VERIFIED_GROUP, ApplicationLoader.applicationContext.getString(R.string.NewVerifiedGroup));
                     headerItem.addSubItem(ID_SHOW_QR, ApplicationLoader.applicationContext.getString(R.string.QrShowInviteCode));
                 }
                 headerItem.addSubItem(ID_DEADDROP, ApplicationLoader.applicationContext.getString(R.string.Deaddrop));
