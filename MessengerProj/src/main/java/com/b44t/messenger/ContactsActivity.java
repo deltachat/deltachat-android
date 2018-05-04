@@ -435,6 +435,12 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
                     Bundle args = new Bundle();
                     args.putInt("do_what", ContactAddActivity.CREATE_CONTACT);
                     args.putBoolean("create_chat_when_done", do_what==SELECT_CONTACT_FOR_NEW_CHAT);
+
+                    String lastSearch = listViewAdapter.getSearch();
+                    if( lastSearch != null ) {
+                        args.putString("prefill", lastSearch);
+                    }
+
                     presentFragment(new ContactAddActivity(args));
                 }
                 else {
@@ -759,6 +765,10 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
         public void searchAgain() {
             contactIds = MrMailbox.getContacts(mListflags, lastQuery);
             updateRowIds();
+        }
+
+        public String getSearch(){
+            return lastQuery;
         }
 
         @Override

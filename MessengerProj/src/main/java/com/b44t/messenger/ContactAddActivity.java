@@ -52,7 +52,7 @@ public class ContactAddActivity extends BaseFragment implements NotificationCent
 
     private EditText nameTextView;
     private EditText emailTextView;
-    private String nameToSet = null;
+    private String prefill;
     private int chat_id; // only used for EDIT_NAME in chats
     private int user_id;
     private boolean create_chat_when_done;
@@ -71,6 +71,7 @@ public class ContactAddActivity extends BaseFragment implements NotificationCent
         user_id = getArguments().getInt("user_id", 0);
         chat_id = getArguments().getInt("chat_id", 0);
         create_chat_when_done = getArguments().getBoolean("create_chat_when_done", false);
+        prefill = getArguments().getString("prefill", "");
         return super.onFragmentCreate();
     }
 
@@ -88,9 +89,22 @@ public class ContactAddActivity extends BaseFragment implements NotificationCent
     @Override
     public View createView(final Context context) {
 
+        String nameToSet = null;
+        String emailToSet = null;
+
         actionBar.setBackButtonImage(R.drawable.ic_close_white);
         if (do_what==CREATE_CONTACT) {
             actionBar.setTitle(context.getString(R.string.NewContactTitle));
+
+            if( prefill!=null && !prefill.isEmpty()) {
+                if( prefill.contains("@") ) {
+                    emailToSet = prefill;
+                }
+                else {
+                    nameToSet = prefill;
+                }
+            }
+
         } else {
             actionBar.setTitle(context.getString(R.string.EditName));
             if( user_id!=0 ) {
@@ -188,6 +202,9 @@ public class ContactAddActivity extends BaseFragment implements NotificationCent
             linearLayout.addView(label, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER_VERTICAL, 18, 18, 18, 0));
 
             emailTextView = new EditText(context);
+            if (emailToSet != null) {
+                emailTextView.setText(emailToSet);
+            }
             emailTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 18);
             emailTextView.setHintTextColor(0xff979797);
             emailTextView.setTextColor(0xff212121);
@@ -207,36 +224,16 @@ public class ContactAddActivity extends BaseFragment implements NotificationCent
 
         if( nameToSet != null ) {
             nameTextView.setSelection(nameToSet.length());
-            nameToSet = null;
         }
+        if( emailToSet != null ) {
+            emailTextView.setSelection(emailToSet.length());
+        }
+
         return fragmentView;
     }
 
     @Override
     public void onActivityResultFragment(int requestCode, int resultCode, Intent data) {
-    }
-
-    @Override
-    public void saveSelfArgs(Bundle args) {
-        if (nameTextView != null) {
-            String text = nameTextView.getText().toString();
-            if (text != null && text.length() != 0) {
-                args.putString("nameTextView", text);
-            }
-        }
-    }
-
-    @Override
-    public void restoreSelfArgs(Bundle args) {
-        String text = args.getString("nameTextView");
-        if (text != null) {
-            if (nameTextView != null) {
-                nameTextView.setText(text);
-                nameTextView.setSelection(text.length());
-            } else {
-                nameToSet = text;
-            }
-        }
     }
 
     @Override
