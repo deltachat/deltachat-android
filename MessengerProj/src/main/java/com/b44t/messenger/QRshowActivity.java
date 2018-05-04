@@ -17,10 +17,14 @@ public class QRshowActivity extends Activity implements NotificationCenter.Notif
     public final static int WIDTH = 400;
     public final static int HEIGHT = 400;
 
+    public int num_joiners;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_qrshow);
+
+        num_joiners = 0;
 
         Bundle b = getIntent().getExtras();
         int chat_id = 0;
@@ -78,13 +82,19 @@ public class QRshowActivity extends Activity implements NotificationCenter.Notif
             String msg = null;
             if( step == 3) {
                 msg = String.format(ApplicationLoader.applicationContext.getString(R.string.OobSecureJoinRequested), MrMailbox.getContact(contact_id).getNameNAddr());
+                num_joiners++;
             }
             else if( step == 6 ){
                 msg = String.format(ApplicationLoader.applicationContext.getString(R.string.OobAddrVerified), MrMailbox.getContact(contact_id).getNameNAddr());
+                num_joiners--;
             }
 
             if( msg != null ) {
                 AndroidUtilities.showHint(ApplicationLoader.applicationContext, msg);
+            }
+
+            if( step == 6 && num_joiners <= 0 ) {
+                finish();
             }
         }
     }
