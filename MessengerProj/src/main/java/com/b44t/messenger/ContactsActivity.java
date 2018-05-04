@@ -429,7 +429,7 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
                 if( i == rowNewGroup || i == rowNewVerifiedGroup ) {
                     Bundle args = new Bundle();
                     args.putInt("do_what", i==rowNewGroup? SELECT_CONTACTS_FOR_NEW_GROUP : SELECT_CONTACTS_FOR_NEW_VERIFIED_GROUP);
-                    presentFragment(new ContactsActivity(args), true /*removeLast*/, true /*forceWithoutAnimation*/);
+                    presentFragment(new ContactsActivity(args), false /*removeLast*/, false /*forceWithoutAnimation*/);
                 }
                 else if( i == rowAddContact) {
                     Bundle args = new Bundle();
