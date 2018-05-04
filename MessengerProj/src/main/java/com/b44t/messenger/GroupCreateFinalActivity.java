@@ -145,13 +145,8 @@ public class GroupCreateFinalActivity extends BaseFragment implements Notificati
         LinearLayout linearLayout = (LinearLayout) fragmentView;
         linearLayout.setOrientation(LinearLayout.VERTICAL);
 
-        FrameLayout frameLayout = new FrameLayout(context);
-        linearLayout.addView(frameLayout);
-        LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) frameLayout.getLayoutParams();
-        layoutParams.width = LayoutHelper.MATCH_PARENT;
-        layoutParams.height = LayoutHelper.WRAP_CONTENT;
-        layoutParams.gravity = Gravity.TOP | Gravity.START;
-        frameLayout.setLayoutParams(layoutParams);
+        TextView label = HeaderCell.createTextView(context, context.getString(R.string.Name));
+        linearLayout.addView(label, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER_VERTICAL, 18, 18, 18, 0));
 
         nameTextView = new EditText(context);
         nameTextView.setHint(context.getString(R.string.EnterGroupNamePlaceholder));
@@ -170,26 +165,17 @@ public class GroupCreateFinalActivity extends BaseFragment implements Notificati
         inputFilters[0] = new InputFilter.LengthFilter(100);
         nameTextView.setFilters(inputFilters);
         nameTextView.setTextColor(0xff212121);
-        frameLayout.addView(nameTextView);
-        FrameLayout.LayoutParams layoutParams1 = (FrameLayout.LayoutParams) nameTextView.getLayoutParams();
-        layoutParams1.width = LayoutHelper.MATCH_PARENT;
-        layoutParams1.height = LayoutHelper.WRAP_CONTENT;
-        layoutParams1.topMargin = AndroidUtilities.dp(18);
-        layoutParams1.bottomMargin = AndroidUtilities.dp(18);
-        layoutParams1.leftMargin = AndroidUtilities.dp(18);
-        layoutParams1.rightMargin = AndroidUtilities.dp(18);
-        layoutParams1.gravity = Gravity.CENTER_VERTICAL;
-        nameTextView.setLayoutParams(layoutParams1);
+        linearLayout.addView(nameTextView, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER_VERTICAL, 18, 1, 18, 18));
 
-        TextView label = HeaderCell.createTextView(context, context.getResources().getQuantityString(R.plurals.Members, selectedContacts.size(), selectedContacts.size()));
-        linearLayout.addView(label, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER_VERTICAL, 18, 0, 18, 4));
+        label = HeaderCell.createTextView(context, context.getResources().getQuantityString(R.plurals.Members, selectedContacts.size(), selectedContacts.size()));
+        linearLayout.addView(label, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER_VERTICAL, 18, 9, 18, 4));
 
         listView = new ListView(context);
         listView.setDivider(null);
         listView.setDividerHeight(0);
         listView.setAdapter(listAdapter = new ListAdapter(context));
         linearLayout.addView(listView);
-        layoutParams = (LinearLayout.LayoutParams) listView.getLayoutParams();
+        LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) listView.getLayoutParams();
         layoutParams.width = LayoutHelper.MATCH_PARENT;
         layoutParams.height = LayoutHelper.MATCH_PARENT;
         listView.setLayoutParams(layoutParams);
