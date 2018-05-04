@@ -318,7 +318,7 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
         userSelectEditText.setPadding(0, 0, 0, 0);
         userSelectEditText.setImeOptions(EditorInfo.IME_ACTION_DONE | EditorInfo.IME_FLAG_NO_EXTRACT_UI);
         userSelectEditText.setGravity(Gravity.START | Gravity.CENTER_VERTICAL);
-        frameLayout.addView(userSelectEditText, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.TOP | Gravity.START, 10, 0, 10, 0));
+        frameLayout.addView(userSelectEditText, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.TOP | Gravity.START, 18, 0, 18, 0));
 
         userSelectEditText.setHint(ApplicationLoader.applicationContext.getString(R.string.Search));
         userSelectEditText.setTextIsSelectable(false);
