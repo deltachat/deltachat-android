@@ -306,7 +306,7 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
         // START SEARCH FIELD
         userSelectEditText = new EditText(context);
         userSelectEditText.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
-        userSelectEditText.setHintTextColor(0xff979797);
+        userSelectEditText.setHintTextColor(0xffBBBBBB);
         userSelectEditText.setTextColor(0xff212121);
         userSelectEditText.setInputType(InputType.TYPE_TEXT_VARIATION_FILTER | InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS | InputType.TYPE_TEXT_FLAG_MULTI_LINE);
         userSelectEditText.setMinimumHeight(AndroidUtilities.dp(54));

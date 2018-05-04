@@ -37,8 +37,10 @@ import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.b44t.messenger.Cells.HeaderCell;
 import com.b44t.messenger.Components.BaseFragmentAdapter;
 import com.b44t.messenger.Cells.GreySectionCell;
 import com.b44t.messenger.Cells.UserCell;
@@ -160,7 +162,7 @@ public class GroupCreateFinalActivity extends BaseFragment implements Notificati
         nameTextView.setMaxLines(4);
         nameTextView.setGravity(Gravity.CENTER_VERTICAL | Gravity.START);
         nameTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 18);
-        nameTextView.setHintTextColor(0xff979797);
+        nameTextView.setHintTextColor(0xffBBBBBB);
         nameTextView.setImeOptions(EditorInfo.IME_FLAG_NO_EXTRACT_UI);
         nameTextView.setInputType(InputType.TYPE_TEXT_FLAG_CAP_WORDS);
         nameTextView.setPadding(0, 0, 0, AndroidUtilities.dp(8));
@@ -179,9 +181,8 @@ public class GroupCreateFinalActivity extends BaseFragment implements Notificati
         layoutParams1.gravity = Gravity.CENTER_VERTICAL;
         nameTextView.setLayoutParams(layoutParams1);
 
-        GreySectionCell sectionCell = new GreySectionCell(context);
-        sectionCell.setText(context.getResources().getQuantityString(R.plurals.Members, selectedContacts.size(), selectedContacts.size()));
-        linearLayout.addView(sectionCell);
+        TextView label = HeaderCell.createTextView(context, context.getResources().getQuantityString(R.plurals.Members, selectedContacts.size(), selectedContacts.size()));
+        linearLayout.addView(label, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER_VERTICAL, 18, 0, 18, 4));
 
         listView = new ListView(context);
         listView.setDivider(null);

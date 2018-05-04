@@ -177,9 +177,7 @@ public class ContactAddActivity extends BaseFragment implements NotificationCent
             TextView label = HeaderCell.createTextView(context, context.getString(R.string.Name));
             linearLayout.addView(label, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER_VERTICAL, 18, 18, 18, 0));
         }
-        else {
-            nameTextView.setHint(context.getString(R.string.Name));
-        }
+        nameTextView.setHint(context.getString(R.string.Name));
 
         if (nameToSet != null) {
             nameTextView.setText(nameToSet);
@@ -187,7 +185,7 @@ public class ContactAddActivity extends BaseFragment implements NotificationCent
         nameTextView.setMaxLines(4);
         nameTextView.setGravity(Gravity.CENTER_VERTICAL | Gravity.START);
         nameTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 18);
-        nameTextView.setHintTextColor(0xff979797);
+        nameTextView.setHintTextColor(0xffBBBBBB);
         nameTextView.setImeOptions(EditorInfo.IME_FLAG_NO_EXTRACT_UI);
         nameTextView.setInputType(InputType.TYPE_TEXT_FLAG_CAP_WORDS);
         nameTextView.setPadding(0, 0, 0, AndroidUtilities.dp(8));
@@ -206,7 +204,8 @@ public class ContactAddActivity extends BaseFragment implements NotificationCent
                 emailTextView.setText(emailToSet);
             }
             emailTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 18);
-            emailTextView.setHintTextColor(0xff979797);
+            emailTextView.setHint(R.string.ExampleEmailAddr);
+            emailTextView.setHintTextColor(0xffBBBBBB);
             emailTextView.setTextColor(0xff212121);
             emailTextView.setMaxLines(4);
             emailTextView.setGravity(Gravity.START);
