@@ -317,7 +317,7 @@ public class MrMailbox {
                 AndroidUtilities.runOnUIThread(new Runnable() {
                     @Override
                     public void run() {
-                        NotificationCenter.getInstance().postNotificationName(NotificationCenter.contactsDidLoaded);
+                        NotificationCenter.getInstance().postNotificationName(NotificationCenter.contactsDidLoaded, (int)data1);
                         NotificationCenter.getInstance().postNotificationName(NotificationCenter.blockedUsersDidLoaded);
                         NotificationCenter.getInstance().postNotificationName(NotificationCenter.dialogsNeedReload);
                     }

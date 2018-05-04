@@ -205,7 +205,7 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
                             AndroidUtilities.runOnUIThread(new Runnable() {
                                 @Override
                                 public void run() {
-                                    NotificationCenter.getInstance().postNotificationName(NotificationCenter.contactsDidLoaded);
+                                    NotificationCenter.getInstance().postNotificationName(NotificationCenter.contactsDidLoaded, 0);
                                 }
                             });
                         }
@@ -505,17 +505,12 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
                                 }
                             } else {
                                 ignoreChange = true;
-                                ChipSpan span = createAndPutChipForUser(user);
+                                ChipSpan span = createAndPutChipForUser(user.id);
                                 span.uid = user.id;
                                 ignoreChange = false;
                             }
 
-                            int selectedContactsButMe = selectedContacts.size();
-                            if (selectedContacts.containsKey(MrContact.MR_CONTACT_ID_SELF)) {
-                                selectedContactsButMe--;
-                            }
-
-                            actionBar.setSubtitle(context.getResources().getQuantityString(R.plurals.MeAndMembers, selectedContactsButMe, selectedContactsButMe));
+                            updateSubtitle();
 
                             if (searching || searchWas) {
                                 ignoreChange = true;
@@ -613,6 +608,16 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
         return fragmentView;
     }
 
+    public void updateSubtitle()
+    {
+        int selectedContactsButMe = selectedContacts.size();
+        if (selectedContacts.containsKey(MrContact.MR_CONTACT_ID_SELF)) {
+            selectedContactsButMe--;
+        }
+        actionBar.setSubtitle(ApplicationLoader.applicationContext.getResources().getQuantityString(R.plurals.MeAndMembers, selectedContactsButMe, selectedContactsButMe));
+
+    }
+
     @Override
     public void onResume() {
         super.onResume();
@@ -636,6 +641,11 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
             if (listViewAdapter != null) {
                 listViewAdapter.searchAgain();
                 listViewAdapter.notifyDataSetChanged();
+                int sel_contact_id = (int) args[0];
+                if( sel_contact_id != 0 )  {
+                    createAndPutChipForUser(sel_contact_id);
+                    updateSubtitle();
+                }
             }
         } else if (id == NotificationCenter.updateInterfaces) {
             int mask = (Integer)args[0];
@@ -665,14 +675,14 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
         this.delegate = delegate;
     }
 
-    private ChipSpan createAndPutChipForUser(TLRPC.User user) {
+    private ChipSpan createAndPutChipForUser(int contact_id) {
         LayoutInflater lf = (LayoutInflater) ApplicationLoader.applicationContext.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
         View textView = lf.inflate(R.layout.group_create_bubble, null);
         TextView text = (TextView)textView.findViewById(R.id.bubble_text_view);
 
         String name ="";
         {
-            MrContact mrContact = MrMailbox.getContact(user.id);
+            MrContact mrContact = MrMailbox.getContact(contact_id);
             name = mrContact.getDisplayName();
         }
 
@@ -697,7 +707,7 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
         SpannableStringBuilder ssb = new SpannableStringBuilder("");
         ChipSpan span = new ChipSpan(bmpDrawable, ImageSpan.ALIGN_BASELINE);
         allSpans.add(span);
-        selectedContacts.put(user.id, span);
+        selectedContacts.put(contact_id, span);
         for (ImageSpan sp : allSpans) {
             ssb.append("<<");
             ssb.setSpan(sp, ssb.length() - 2, ssb.length(), SpannableStringBuilder.SPAN_EXCLUSIVE_EXCLUSIVE);
