@@ -213,12 +213,30 @@ public class SettingsAdvFragment extends BaseFragment implements NotificationCen
                         ((TextCheckCell) view).setChecked(MediaController.getInstance().canDirectShare());
                     }
                 } else if(i == labsEnableQrRow) {
-                    MrMailbox.setConfigInt("qr_enabled", MrMailbox.getConfigInt("qr_enabled", 0)!=0? 0 : 1);
-
-                    // restart activity, this includes the chatlist
-                    Intent intent = getParentActivity().getIntent();
-                    getParentActivity().finish();
-                    getParentActivity().startActivity(intent);
+                    if( MrMailbox.getConfigInt("qr_enabled", 0)!=0 ) {
+                        MrMailbox.setConfigInt("qr_enabled", 0);
+                        // restart activity, this includes the chatlist
+                        Intent intent = getParentActivity().getIntent();
+                        getParentActivity().finish();
+                        getParentActivity().startActivity(intent);
+                    }
+                    else {
+                        AlertDialog.Builder builder1 = new AlertDialog.Builder(getParentActivity());
+                        builder1.setTitle("Labs: QR code options");
+                        builder1.setMessage("With the QR code options you can easily connect to other Delta Chat users by just scanning a QR code. Moverover, this securely transfers the encryption keys in both directions and allows the creation of verified groups.\n\nStay tuned for more information about this on the mailing ist :)\n\nDo you want to enable this experimental feature that may still contain issues?");
+                        builder1.setNegativeButton(R.string.Cancel, null);
+                        builder1.setPositiveButton(R.string.OK, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                MrMailbox.setConfigInt("qr_enabled", 1);
+                                // restart activity, this includes the chatlist
+                                Intent intent = getParentActivity().getIntent();
+                                getParentActivity().finish();
+                                getParentActivity().startActivity(intent);
+                            }
+                        });
+                        showDialog(builder1.create());
+                    }
                 }
                 else if (i == blockedRow) {
                     presentFragment(new BlockedUsersActivity());
