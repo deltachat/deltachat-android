@@ -4,8 +4,17 @@
 2018-05-07
 
 * Show shared chats in user profiles
-* Add read timestampts to message info
+* If a contact has changed his encryption setups, this is shown as a system messages in the middle of the chat view
+* Show added group members, changed group titles etc. as system messages
+* Show direct buttons to create a new group or contact in the "New Chat" dialog
+* Improve "Add contact" dialog
+* Move subject and most chat metadata to the encrypted part following the "Memoryhole" proposal
+* Show read-timestampts in message info
+* Do not add contacts from Bcc to group-memberlist to avoid privacy leaks and to get a unique memberlist for all group-members
+* In a mail contains plaintext and encrypted parts, the whole mail is treated as not being encrypted correctly
+* Restructure settings and advanced settings
 * Fix problems with Office 365 and similar services
+* Fix a problem where incoming messages are shown as being sent by oneself
 * Experimental QR code scanning options can be enabled in the advanced settings
 * Update Albanian, Catalan, Dutch, French, German, Italian, Norwegian, Polish, Russian, Spanish, Turkish and Ukrainian translations
 * Add Basque translation
