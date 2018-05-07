@@ -10,7 +10,7 @@
     <string name="NoResult">எந்த முடிவுகளும் இல்லை </string>
     <string name="NoChats">இதுவரையில் எந்த அரட்டைகளும் இல்லை </string>
     <string name="DeleteChat">அரட்டையை நீக்கு </string>
-    <string name="SelectChat">அரட்டையை தேர்வு செய்க </string>
+    <string name="SelectChat">அரட்டையை தேர்வு செய்க ...</string>
     <string name="Search">தேடு </string>
     <string name="MuteNotifications">அறிவிப்புகளை ஊமையாக்கு </string>
     <string name="MuteFor">%1$sஇதற்காக ஊமையாக்கு  </string>
