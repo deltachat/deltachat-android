@@ -9,7 +9,7 @@
 * Show direct buttons to create a new group or contact in the "New Chat" dialog
 * Improve "Add contact" dialog
 * Move subject and most chat metadata to the encrypted part following the "Memoryhole" proposal
-* Show read-timestampts in message info
+* Show read-timestamps in message info
 * Do not add contacts from Bcc to group-memberlist to avoid privacy leaks and to get a unique memberlist for all group-members
 * In a mail contains plaintext and encrypted parts, the whole mail is treated as not being encrypted correctly
 * Restructure settings and advanced settings
