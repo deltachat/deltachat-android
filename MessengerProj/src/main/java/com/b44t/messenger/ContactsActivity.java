@@ -838,7 +838,7 @@ public class ContactsActivity extends BaseFragment implements NotificationCenter
                     textCell.setText(mContext.getString(R.string.NewContactTitle), false);
                 }
                 else if( i == rowInviteViaQr) {
-                    textCell.setText(mContext.getString(R.string.QrShowInviteCode), false);
+                    textCell.setText(mContext.getString(R.string.QrShowVerifyCode), false);
                 }
             }
             else if( type == ROWTYPE_CONTACT ) {

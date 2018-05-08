@@ -196,13 +196,6 @@ public class ChatlistActivity extends BaseFragment implements NotificationCenter
 
         if( !showArchivedOnly ) {
             ActionBarMenu menu = actionBar.createMenu();
-            if (!onlySelect) {
-                if( qr_enabled ) {
-                    qrScanItem = menu.addItem(ID_SCAN_QR, R.drawable.ic_ab_qr);
-                }
-                passcodeItem = menu.addItem(ID_LOCK_APP, R.drawable.ic_ab_lock_screen);
-                updateButtons();
-            }
             final ActionBarMenuItem item = menu.addItem(0, R.drawable.ic_ab_search).setIsSearchField(true, true).setActionBarMenuItemSearchListener(new ActionBarMenuItem.ActionBarMenuItemSearchListener() {
                 @Override
                 public void onSearchExpand() {
@@ -277,6 +270,13 @@ public class ChatlistActivity extends BaseFragment implements NotificationCenter
                 }
             });
             item.getSearchField().setHint(ApplicationLoader.applicationContext.getString(R.string.Search));
+            if (!onlySelect) {
+                passcodeItem = menu.addItem(ID_LOCK_APP, R.drawable.ic_ab_lock_screen);
+                if( qr_enabled ) {
+                    qrScanItem = menu.addItem(ID_SCAN_QR, R.drawable.ic_ab_qr);
+                }
+                updateButtons();
+            }
 
             headerItem = menu.addItem(0, R.drawable.ic_ab_other);
             headerItem.addSubItem(ID_NEW_CHAT, ApplicationLoader.applicationContext.getString(R.string.NewChat));
@@ -284,7 +284,7 @@ public class ChatlistActivity extends BaseFragment implements NotificationCenter
             if(!onlySelect) {
                 if( qr_enabled ) {
                     //headerItem.addSubItem(ID_NEW_VERIFIED_GROUP, ApplicationLoader.applicationContext.getString(R.string.NewVerifiedGroup));
-                    headerItem.addSubItem(ID_SHOW_QR, ApplicationLoader.applicationContext.getString(R.string.QrShowInviteCode));
+                    headerItem.addSubItem(ID_SHOW_QR, ApplicationLoader.applicationContext.getString(R.string.QrShowVerifyCode));
                 }
                 headerItem.addSubItem(ID_DEADDROP, ApplicationLoader.applicationContext.getString(R.string.Deaddrop));
                 headerItem.addSubItem(ID_SETTINGS, ApplicationLoader.applicationContext.getString(R.string.Settings));

@@ -1,16 +1,23 @@
 package com.b44t.messenger;
 
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Rect;
 import android.os.Bundle;
-import android.app.Activity;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.google.zxing.BarcodeFormat;
+import com.google.zxing.EncodeHintType;
 import com.google.zxing.MultiFormatWriter;
 import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
+
+import java.util.Hashtable;
 
 public class QRshowActivity extends AppCompatActivity implements NotificationCenter.NotificationCenterDelegate {
 
@@ -26,19 +33,29 @@ public class QRshowActivity extends AppCompatActivity implements NotificationCen
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_qrshow);
 
-        assert getSupportActionBar() != null;
-        getSupportActionBar().setTitle(R.string.QrInviteCodeTitle);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-        num_joiners = 0;
-
         Bundle b = getIntent().getExtras();
         int chat_id = 0;
         if(b != null) {
             chat_id = b.getInt("chat_id");
         }
 
-        ImageView imageView = (ImageView) findViewById(R.id.myImage);
+        assert getSupportActionBar() != null;
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        TextView hintBelowQr = (TextView) findViewById(R.id.qrShowHint);
+        if( chat_id != 0 ) {
+            getSupportActionBar().setTitle(R.string.QrShowInviteCode);
+            String groupName = MrMailbox.getChat(chat_id).getName();
+            hintBelowQr.setText(AndroidUtilities.replaceTags(String.format(ApplicationLoader.applicationContext.getString(R.string.QrJoinVerifiedGroupHint), groupName)));
+        }
+        else {
+            getSupportActionBar().setTitle(R.string.QrShowVerifyCode);
+            String self = MrMailbox.getContact(MrContact.MR_CONTACT_ID_SELF).getAddr();
+            hintBelowQr.setText(AndroidUtilities.replaceTags(String.format(ApplicationLoader.applicationContext.getString(R.string.QrVerifyContactHint), self)));
+        }
+        num_joiners = 0;
+
+        ImageView imageView = (ImageView) findViewById(R.id.qrImage);
         try {
             Bitmap bitmap = encodeAsBitmap(MrMailbox.getSecurejoinQr(chat_id));
             imageView.setImageBitmap(bitmap);
@@ -69,6 +86,8 @@ public class QRshowActivity extends AppCompatActivity implements NotificationCen
     Bitmap encodeAsBitmap(String str) throws WriterException {
         BitMatrix result;
         try {
+            Hashtable<EncodeHintType, String> hints = new Hashtable<EncodeHintType, String>();
+            hints.put(EncodeHintType.ERROR_CORRECTION, "8");
             result = new MultiFormatWriter().encode(str,
                     BarcodeFormat.QR_CODE, WIDTH, HEIGHT, null);
         } catch (IllegalArgumentException iae) {
@@ -88,7 +107,22 @@ public class QRshowActivity extends AppCompatActivity implements NotificationCen
 
         Bitmap bitmap = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888);
         bitmap.setPixels(pixels, 0, w, 0, 0, w, h);
+
+        Bitmap overlay = BitmapFactory.decodeResource(ApplicationLoader.applicationContext.getResources(), R.drawable.qr_overlay);
+        putOverlay(bitmap, overlay);
+
         return bitmap;
+    }
+
+    public void putOverlay(Bitmap bitmap, Bitmap overlay) {
+        int bw = bitmap.getWidth();
+        int bh = bitmap.getHeight();
+        int ow = bw/5;
+        int oh = bh/5;
+
+        Canvas canvas = new Canvas(bitmap);
+        Paint paint = new Paint(Paint.FILTER_BITMAP_FLAG);
+        canvas.drawBitmap(overlay, null, new Rect(bw/2-ow/2, bh/2-oh/2, bw/2+ow/2, bh/2+oh/2), paint);
     }
 
     @Override

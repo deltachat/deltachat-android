@@ -443,7 +443,6 @@
     <string name="VerifiedGroup">Verified group</string>
     <string name="Group">Group</string>
     <string name="EditedNameWillBeShared">The edited name will be shared with all group members.</string>
-    <string name="QrShowInviteCode">Show QR invite code</string>
     <string name="E2EEncryptionPreferred">End-to-end encryption preferred.</string>
     <string name="OobAddrVerified">%1$s verified.</string>
     <string name="OobAddrVerifiedIntroduceMyself">%1$s verified, introduce myself …</string>
@@ -459,5 +458,10 @@
     <string name="ActionBySelf">%1$s by me.</string>
     <string name="ExampleEmailAddr">user@example.org</string>
     <string name="QrScanHint">Place your camera over the QR code</string>
-    <string name="QrInviteCodeTitle">QR invite code</string>
+
+    <string name="QrShowVerifyCode">Show QR verify code</string>
+    <string name="QrVerifyContactHint">Scan this code with another device to <![CDATA[<b>]]>verify the contact<![CDATA[</b>]]> <![CDATA[<i>]]>%1$s<![CDATA[</i>]]></string>
+
+    <string name="QrShowInviteCode">Show QR invite code</string>
+    <string name="QrJoinVerifiedGroupHint">Scan this code with another device to <![CDATA[<b>]]>join the verified group<![CDATA[</b>]]> <![CDATA[<i>]]>%1$s<![CDATA[</i>]]></string>
 </resources>
