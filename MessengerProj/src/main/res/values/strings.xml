@@ -458,4 +458,6 @@
     If you do not find a correct grammar for your language you can just use "%1$s (by me)" or "Me: %1$s" -->
     <string name="ActionBySelf">%1$s by me.</string>
     <string name="ExampleEmailAddr">user@example.org</string>
+    <string name="QrScanHint">Place your camera over the QR code</string>
+    <string name="QrInviteCodeTitle">QR invite code</string>
 </resources>

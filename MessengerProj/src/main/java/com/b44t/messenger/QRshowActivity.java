@@ -3,6 +3,8 @@ package com.b44t.messenger;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.app.Activity;
+import android.support.v7.app.AppCompatActivity;
+import android.view.MenuItem;
 import android.widget.ImageView;
 
 import com.google.zxing.BarcodeFormat;
@@ -10,7 +12,7 @@ import com.google.zxing.MultiFormatWriter;
 import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
 
-public class QRshowActivity extends Activity implements NotificationCenter.NotificationCenterDelegate {
+public class QRshowActivity extends AppCompatActivity implements NotificationCenter.NotificationCenterDelegate {
 
     public final static int WHITE = 0xFFFFFFFF;
     public final static int BLACK = 0xFF000000;
@@ -23,6 +25,10 @@ public class QRshowActivity extends Activity implements NotificationCenter.Notif
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_qrshow);
+
+        assert getSupportActionBar() != null;
+        getSupportActionBar().setTitle(R.string.QrInviteCodeTitle);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         num_joiners = 0;
 
@@ -47,6 +53,17 @@ public class QRshowActivity extends Activity implements NotificationCenter.Notif
     protected void onDestroy() {
         super.onDestroy();
         NotificationCenter.getInstance().removeObserver(this, NotificationCenter.secureJoinInviterProgress);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        super.onOptionsItemSelected(item);
+
+        switch (item.getItemId()) {
+            case android.R.id.home: finish(); return true;
+        }
+
+        return false;
     }
 
     Bitmap encodeAsBitmap(String str) throws WriterException {

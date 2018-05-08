@@ -10,6 +10,11 @@
         <item name="android:windowContentOverlay">@null</item>
     </style>
 
+    <style name="Theme.MessengerProj.AppCompat" parent="@style/Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimary">#415e6b</item>
+        <item name="colorPrimaryDark">#364e59</item>
+    </style>
+
     <style name="Theme.MessengerProj" parent="@android:style/Theme.Holo.Light">
         <item name="android:windowActionBar">false</item>
         <item name="android:windowNoTitle">true</item>

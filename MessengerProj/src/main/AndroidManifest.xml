@@ -113,11 +113,13 @@
 
         <activity
             android:name=".QRshowActivity"
+            android:theme="@style/Theme.MessengerProj.AppCompat"
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize">
         </activity>
 
         <activity
             android:name=".QRscanActivity"
+            android:theme="@style/Theme.MessengerProj.AppCompat"
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize">
         </activity>
 
