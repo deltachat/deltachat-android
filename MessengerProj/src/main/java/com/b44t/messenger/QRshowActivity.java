@@ -42,17 +42,33 @@ public class QRshowActivity extends AppCompatActivity implements NotificationCen
         assert getSupportActionBar() != null;
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        TextView hintBelowQr = (TextView) findViewById(R.id.qrShowHint);
+        String hint = "";
         if( chat_id != 0 ) {
-            getSupportActionBar().setTitle(R.string.QrShowInviteCode);
+            // verified-group
             String groupName = MrMailbox.getChat(chat_id).getName();
-            hintBelowQr.setText(AndroidUtilities.replaceTags(String.format(ApplicationLoader.applicationContext.getString(R.string.QrJoinVerifiedGroupHint), groupName)));
+            hint = String.format(ApplicationLoader.applicationContext.getString(R.string.QrJoinVerifiedGroupHint), groupName);
+            getSupportActionBar().setTitle(groupName);
+            getSupportActionBar().setSubtitle(R.string.QrJoinVerifiedGroupTitle);
         }
         else {
-            getSupportActionBar().setTitle(R.string.QrShowVerifyCode);
-            String self = MrMailbox.getContact(MrContact.MR_CONTACT_ID_SELF).getAddr();
-            hintBelowQr.setText(AndroidUtilities.replaceTags(String.format(ApplicationLoader.applicationContext.getString(R.string.QrVerifyContactHint), self)));
+            // verify-contact
+            String selfName = MrMailbox.getConfig("displayname", ""); // we cannot use MrContact.getDisplayName() as this would result in "Me" instead of
+            String nameNaddr = "";
+            if( selfName.isEmpty() ) {
+                selfName = MrMailbox.getConfig("addr", "unknown");
+                nameNaddr = selfName;
+            }
+            else {
+                nameNaddr = String.format("%s (%s)", selfName, MrMailbox.getConfig("addr", ""));
+            }
+            hint = String.format(ApplicationLoader.applicationContext.getString(R.string.QrVerifyContactHint), nameNaddr);
+            getSupportActionBar().setTitle(selfName);
+            getSupportActionBar().setSubtitle(R.string.QrVerifyContactTitle);
         }
+        TextView hintBelowQr = (TextView) findViewById(R.id.qrShowHint);
+        hintBelowQr.setText(AndroidUtilities.replaceTags(hint));
+
+
         num_joiners = 0;
 
         ImageView imageView = (ImageView) findViewById(R.id.qrImage);
@@ -117,8 +133,8 @@ public class QRshowActivity extends AppCompatActivity implements NotificationCen
     public void putOverlay(Bitmap bitmap, Bitmap overlay) {
         int bw = bitmap.getWidth();
         int bh = bitmap.getHeight();
-        int ow = bw/5;
-        int oh = bh/5;
+        int ow = bw/6;
+        int oh = bh/6;
 
         Canvas canvas = new Canvas(bitmap);
         Paint paint = new Paint(Paint.FILTER_BITMAP_FLAG);

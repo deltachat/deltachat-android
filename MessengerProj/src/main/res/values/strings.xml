@@ -460,8 +460,10 @@
     <string name="QrScanHint">Place your camera over the QR code</string>
 
     <string name="QrShowVerifyCode">Show QR verify code</string>
-    <string name="QrVerifyContactHint">Scan this code with another device to <![CDATA[<b>]]>verify the contact<![CDATA[</b>]]> <![CDATA[<i>]]>%1$s<![CDATA[</i>]]></string>
+    <string name="QrVerifyContactTitle">QR verify code</string>
+    <string name="QrVerifyContactHint"><![CDATA[<b>]]>%1$s<![CDATA[</b>]]>\nScan this to setup a verified contact.</string>
 
     <string name="QrShowInviteCode">Show QR invite code</string>
-    <string name="QrJoinVerifiedGroupHint">Scan this code with another device to <![CDATA[<b>]]>join the verified group<![CDATA[</b>]]> <![CDATA[<i>]]>%1$s<![CDATA[</i>]]></string>
+    <string name="QrJoinVerifiedGroupTitle">QR invite code</string>
+    <string name="QrJoinVerifiedGroupHint">Scan this to join the verified group <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>.</string>
 </resources>
