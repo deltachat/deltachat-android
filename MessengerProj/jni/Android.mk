@@ -1664,6 +1664,7 @@ LOCAL_SRC_FILES     += \
 ./messenger-backend/src/mrsmtp.c \
 ./messenger-backend/src/mrsqlite3.c \
 ./messenger-backend/src/mrstock.c \
+./messenger-backend/src/mrtoken.c \
 ./messenger-backend/src/mrtools.c \
 ./messenger-backend/src/mruudecode.c \
 ./messenger-backend/cmdline/cmdline.c \

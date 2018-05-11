@@ -124,8 +124,10 @@ public class QRshowActivity extends AppCompatActivity implements NotificationCen
         Bitmap bitmap = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888);
         bitmap.setPixels(pixels, 0, w, 0, 0, w, h);
 
-        Bitmap overlay = BitmapFactory.decodeResource(ApplicationLoader.applicationContext.getResources(), R.drawable.qr_overlay);
-        putOverlay(bitmap, overlay);
+        if( MrMailbox.getConfigInt("qr_overlay_logo", 1)!=0 ) {
+            Bitmap overlay = BitmapFactory.decodeResource(ApplicationLoader.applicationContext.getResources(), R.drawable.qr_overlay);
+            putOverlay(bitmap, overlay);
+        }
 
         return bitmap;
     }

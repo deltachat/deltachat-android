@@ -82,6 +82,7 @@ public class SettingsAdvFragment extends BaseFragment implements NotificationCen
     private int passcodeRow;
     private int manageKeysRow;
     private int labsEnableQrRow;
+    private int labsQrOverlayLogoRow;
     private int backupRow;
     private int backupShadowRow;
     private int rowCount;
@@ -142,6 +143,14 @@ public class SettingsAdvFragment extends BaseFragment implements NotificationCen
         cacheRow                = -1;// for now, the - non-functional - page is reachable by the "storage settings" in the "android App Settings" only
         manageKeysRow           = rowCount++;
         labsEnableQrRow         = rowCount++;
+
+        if( MrMailbox.getConfigInt("qr_enabled", 0) != 0 ) {
+            labsQrOverlayLogoRow    = rowCount++;
+        }
+        else {
+            labsQrOverlayLogoRow = -1;
+        }
+
         backupRow               = rowCount++;
         backupShadowRow         = rowCount++;
 
@@ -237,6 +246,9 @@ public class SettingsAdvFragment extends BaseFragment implements NotificationCen
                         });
                         showDialog(builder1.create());
                     }
+                }
+                else if( i == labsQrOverlayLogoRow ) {
+                    MrMailbox.setConfigInt("qr_overlay_logo", MrMailbox.getConfigInt("qr_overlay_logo", 1)!=0? 0 : 1);
                 }
                 else if (i == blockedRow) {
                     presentFragment(new BlockedUsersActivity());
@@ -710,6 +722,9 @@ public class SettingsAdvFragment extends BaseFragment implements NotificationCen
                 } else if (i == labsEnableQrRow) {
                     boolean qr_enabled = MrMailbox.getConfigInt("qr_enabled", 0)!=0;
                     textCell.setTextAndCheck("Labs: QR code options", qr_enabled, true);
+                } else if (i == labsQrOverlayLogoRow) {
+                    boolean qr_overlay_logo = MrMailbox.getConfigInt("qr_overlay_logo", 1)!=0;
+                    textCell.setTextAndCheck("Labs: QR logo overlay", qr_overlay_logo, true);
                 }
             }
             else if (type == ROWTYPE_HEADER) {
@@ -739,7 +754,7 @@ public class SettingsAdvFragment extends BaseFragment implements NotificationCen
                 return ROWTYPE_HEADER;
             } else if ( i == sendByEnterRow || i == raiseToSpeakRow || i == autoplayGifsRow
                     || i==showUnknownSendersRow || i == directShareRow || i==e2eEncryptionRow
-                    || i==labsEnableQrRow) {
+                    || i==labsEnableQrRow || i==labsQrOverlayLogoRow ) {
                 return ROWTYPE_CHECK;
             } else {
                 return ROWTYPE_TEXT_SETTINGS;
