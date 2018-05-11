@@ -1,5 +1,12 @@
 # Delta Chat Changelog
 
+## v0.17.1
+2018-05-11
+
+* Improve QR code scanning screens
+* Add a labs-option to disabled the new QR logo overlay
+* Update Russian translations
+
 ## v0.17.0
 2018-05-07
 

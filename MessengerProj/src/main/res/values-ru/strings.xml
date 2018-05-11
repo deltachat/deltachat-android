@@ -63,7 +63,7 @@
     <string name="Notifications">Уведомления</string>
     <string name="RemoveMember">Удалить участника</string>
     <!--contact info view-->
-    <string name="NewContactTitle">Новый контакт</string>
+    <string name="NewContactTitle">Добавить контакт</string>
     <string name="BlockContact">Заблокировать контакт</string>
     <string name="DeleteContact">Удалить контакт</string>
     <string name="Info">Инфо</string>
@@ -385,7 +385,7 @@
     <string name="AskRemoveMemberFromGroup">Удалить <![CDATA[<b>]]>%1$s<![CDATA[</b>]]> из группы?</string>
     <string name="ErrSelfNotInGroup">Чтобы выполнить это действие, вы должны быть участником группы.</string>
     <string name="MsgGroupLeft">Группа оставлена.</string>
-    <string name="NoMessagesHint">Отправить сообщение <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>:\n\n• Общение будет возможным, даже если <![CDATA[<b>]]>%2$s<![CDATA[</b>]]> не используют Delta Chat.\n\n• Доставка первого сообщения может занять некоторое время.</string>
+    <string name="NoMessagesHint">Отправить сообщение <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>:\n\n• Общение будет возможным, даже если <![CDATA[<b>]]>%2$s<![CDATA[</b>]]> не использует Delta Chat.\n\n• Доставка первого сообщения может занять некоторое время.</string>
     <string name="SendNRcvReadReceipts">Получать и отправлять уведомления о доставке</string>
     <string name="PreferE2EEncryption">Предпочитать сквозное шифрование</string>
     <string name="E2EManagePrivateKeys">Управление закрытыми ключами</string>
@@ -454,6 +454,7 @@
     <string name="QrScan">Сканировать QR код</string>
     <string name="QrShow">Показать QR код</string>
     <string name="QrScanContainsText">Отсканированный QR код содержит текст:\n\n%1$s</string>
+    <string name="QrScanContainsUrl">QR код для перехода по ссылке URL:\n\n%1$s</string>
     <string name="OobFingerprint">Ключ</string>
     <string name="OobFingerprintAskOob">Верифицировать контакт и начать общение с <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>?</string>
     <string name="OobFingerprintOk">Контакт <![CDATA[<i>]]>%1$s<![CDATA[</i>]]> верифицирован. Начать общение?</string>
@@ -474,4 +475,14 @@
     <string name="E2EEncryptionPreferred">Предпочтено сквозное шифрование.</string>
     <string name="OobAddrVerified">%1$s верифицирован.</string>
     <string name="OobAddrVerifiedIntroduceMyself">%1$s верифицирован, представьтесь …</string>
-    </resources>
+    <string name="OobAskJoinVerifiedGroup">Вы хотите присоединиться к верифицированной группе <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>?</string>
+    <!-- Translators: %1$s is replaced by an action, eg. MsgMemberAddedToGroup, MsgMemberRemovedFromToGroup, MsgGroupNameChanged or MsgGroupImageChanged. If the action ends with a full stop, this is removed.
+    %2$s is replaced by a the name of the user that made this action.
+    Resulting strings might be "Member Alice added by Bob." or 'Group name changed from "Foo" to "Bar" by Claire.
+     If you do not find a correct grammar for your language you can just use "%1$s (by %2$s)" or "%2$s: %1$s" -->
+    <string name="ActionByUser">%1$s от %2$s.</string>
+    <!-- Translators: %1$s is replaced by an action, eg. MsgMemberAddedToGroup, MsgMemberRemovedFromToGroup, MsgGroupNameChanged or MsgGroupImageChanged. If the action ends with a full stop, this is removed.
+    Resulting strings might be "Member Alice added by me." or 'Group name changed from "Foo" to "Bar" by me.
+    If you do not find a correct grammar for your language you can just use "%1$s (by me)" or "Me: %1$s" -->
+    <string name="ActionBySelf">%1$s от меня.</string>
+</resources>
