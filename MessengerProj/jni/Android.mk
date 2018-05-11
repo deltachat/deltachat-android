@@ -1647,6 +1647,7 @@ LOCAL_SRC_FILES     += \
 ./messenger-backend/src/mrlot.c \
 ./messenger-backend/src/mrmailbox.c \
 ./messenger-backend/src/mrmailbox_configure.c \
+./messenger-backend/src/mrmailbox_connect.c \
 ./messenger-backend/src/mrmailbox_e2ee.c \
 ./messenger-backend/src/mrmailbox_imex.c \
 ./messenger-backend/src/mrmailbox_keyhistory.c \
