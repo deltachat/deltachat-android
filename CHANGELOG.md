@@ -1,5 +1,11 @@
 # Delta Chat Changelog
 
+## v0.17.2
+2018-05-15
+
+* Fix problem with adding formerly uncontacted members to groups
+* Unblock manually blocked members when they are created manually as contact again
+
 ## v0.17.1
 2018-05-11
 
