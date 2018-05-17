@@ -385,7 +385,7 @@
     <string name="AskRemoveMemberFromGroup">Удалить <![CDATA[<b>]]>%1$s<![CDATA[</b>]]> из группы?</string>
     <string name="ErrSelfNotInGroup">Чтобы выполнить это действие, вы должны быть участником группы.</string>
     <string name="MsgGroupLeft">Группа оставлена.</string>
-    <string name="NoMessagesHint">Отправить сообщение <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>:\n\n• Общение будет возможным, даже если <![CDATA[<b>]]>%2$s<![CDATA[</b>]]> не использует Delta Chat.\n\n• Доставка первого сообщения может занять некоторое время.</string>
+    <string name="NoMessagesHint">Отправка сообщения <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>:\n\n• Общение будет возможным, даже если <![CDATA[<b>]]>%2$s<![CDATA[</b>]]> не использует Delta Chat.\n\n• Доставка первого сообщения может занять некоторое время.</string>
     <string name="SendNRcvReadReceipts">Получать и отправлять уведомления о доставке</string>
     <string name="PreferE2EEncryption">Предпочитать сквозное шифрование</string>
     <string name="E2EManagePrivateKeys">Управление закрытыми ключами</string>

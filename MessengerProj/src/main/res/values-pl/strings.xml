@@ -405,6 +405,7 @@
     <string name="HelpUrl">https://jaworski-pawel.github.io/Delta/#help</string>
     <string name="EncryptedMessage">Szyfrowana wiadomość</string>
     <string name="Encryption">Szyfrowanie</string>
+    <string name="EncrinfoE2EAvailable">Pełne szyfrowanie jest dostępne.</string>
     <string name="EncrinfoTransport">Szyfrowanie transportu przynajmniej na moim serwerze.</string>
     <string name="EncrinfoNone">Brak szyfrowania na moim serwerze.</string>
     <string name="EncrinfoFingerprints">Odciski palców</string>
@@ -450,5 +451,38 @@
     <string name="AutocryptKeyTransferSucceeded">Udany transfer klucza. To urządzenie jest teraz gotowe do użycia automatycznego szyfrowania za pomocą tego samego klucza, co na drugim urządzeniu.</string>
     <string name="Retry">Powtórz</string>
     <string name="SelfTalkSubtitle">Wiadomości wysłane do siebie</string>
+    <string name="QrScan">Skanuj kod QR</string>
+    <string name="QrShow">Pokaż kod QR</string>
+    <string name="QrScanContainsText">Zeskanowany kod QR zawiera następujący tekst:\n\n%1$s</string>
+    <string name="QrScanContainsUrl">Zeskanowany kod QR zawiera następujący adres:\n\n%1$s</string>
+    <string name="OobFingerprint">Odciski palca</string>
+    <string name="OobFingerprintAskOob">Zweryfikować kontakt i rozpocząć rozmowę z <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>?</string>
+    <string name="OobFingerprintOk">Kontakt <![CDATA[<i>]]>%1$s<![CDATA[</i>]]> zweryfikowany. Rozpocząć rozmowę?</string>
+    <string name="OobFingerprintMismatch">Zeskanowany odcisk palca <![CDATA[<b>]]>nie pasuje<![CDATA[</b>]]> do odcisku palca ostatnio widzianego u <![CDATA[<i>]]>%1$s<![CDATA[</i>]]>.</string>
+    <string name="OobFingerprintWithoutAddr">Ten kod QR zawiera odcisk palca, ale nie zawiera adresu e-mail.\n\nW celu weryfikacji poza zasadniczym pasmem należy najpierw nawiązać szyfrowane połączenie z odbiorcą.</string>
+    <string name="OobSecureJoinRequested">%1$s dołącza.</string>
+    <string name="CannotDecryptBody">Tej wiadomości nie można odszyfrować.\n\n• Możesz teraz pomóc odpowiadając po prostu na tą wiadomość i poprosić nadawcę o ponowne wysłanie wiadomości.\n\n• W przypadku ponownego zainstalowania Delta Chat lub innego programu mailowego na tym lub innym urządzeniu, może być konieczne wysłanie stąd klucza automatycznego szyfrowania.</string>
+    <string name="Autocrypt">Autocrypt</string>
+    <string name="AutocryptExplain"><![CDATA[<i>]]>Autocrypt<![CDATA[</i>]]> to nowa i otwarta specyfikacja szyfrowania e-maili typu end-to-end.\n\nTwoja konfiguracja end-to-end w razie potrzeby jest tworzona automatycznie i można ją przesłać między urządzeniami za pomocą <![CDATA[<i>]]>Wiadomości konfiguracyjnej automatycznego szyfrowania.<![CDATA[</i>]]></string>
+    <string name="NewVerifiedGroup">Nowa zweryfikowana grupa</string>
+    <string name="SharedChats">Udostępnione czaty</string>
+    <string name="VerifiedContact">Zweryfikowany czat</string>
     <string name="Contact">Kontakt</string>
-    </resources>
+    <string name="VerifiedGroup">Zweryfikowania grupa</string>
+    <string name="Group">Grupa</string>
+    <string name="EditedNameWillBeShared">Edytowana nazwa zostanie udostępniona wszystkim członkom grupy.</string>
+    <string name="QrShowInviteCode">Pokaż kod QR zaproszenia</string>
+    <string name="E2EEncryptionPreferred">Preferowane pełne szyfrowanie.</string>
+    <string name="OobAddrVerified">Zweryfikowano %1$s</string>
+    <string name="OobAddrVerifiedIntroduceMyself">Zweryfikowano %1$s, przedstaw się…</string>
+    <string name="OobAskJoinVerifiedGroup">Czy chcesz dołączyć do zweryfikowanej grupy <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>?</string>
+    <!-- Translators: %1$s is replaced by an action, eg. MsgMemberAddedToGroup, MsgMemberRemovedFromToGroup, MsgGroupNameChanged or MsgGroupImageChanged. If the action ends with a full stop, this is removed.
+    %2$s is replaced by a the name of the user that made this action.
+    Resulting strings might be "Member Alice added by Bob." or 'Group name changed from "Foo" to "Bar" by Claire.
+     If you do not find a correct grammar for your language you can just use "%1$s (by %2$s)" or "%2$s: %1$s" -->
+    <string name="ActionByUser">%1$s przez %2$s.</string>
+    <!-- Translators: %1$s is replaced by an action, eg. MsgMemberAddedToGroup, MsgMemberRemovedFromToGroup, MsgGroupNameChanged or MsgGroupImageChanged. If the action ends with a full stop, this is removed.
+    Resulting strings might be "Member Alice added by me." or 'Group name changed from "Foo" to "Bar" by me.
+    If you do not find a correct grammar for your language you can just use "%1$s (by me)" or "Me: %1$s" -->
+    <string name="ActionBySelf">%1$s przez mnie.</string>
+</resources>

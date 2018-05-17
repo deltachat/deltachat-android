@@ -232,31 +232,37 @@
     <plurals name="Members">
         <item quantity="one">%dучасник</item>
         <item quantity="few">%dучасники</item>
+        <item quantity="many">%dучасників</item>
         <item quantity="other">%dучасників</item>
     </plurals>
     <plurals name="Contacts">
         <item quantity="one">%dконтакт</item>
         <item quantity="few">%dконтакти</item>
+        <item quantity="many">%dконтактів</item>
         <item quantity="other">%dконтактів</item>
     </plurals>
     <plurals name="MeAndMembers">
         <item quantity="one">Я та %dучасник</item>
         <item quantity="few">Я та %dучасники</item>
+        <item quantity="many">Я та %dучасників</item>
         <item quantity="other">Я та %dучасників</item>
     </plurals>
     <plurals name="NewMessages">
         <item quantity="one">%dнове повідомлення</item>
         <item quantity="few">%dнових повідомення</item>
+        <item quantity="many">%dнових повідомлень</item>
         <item quantity="other">%dнових повідомлень</item>
     </plurals>
     <plurals name="messages">
         <item quantity="one">%dповідомлення</item>
         <item quantity="few">%dповідомлення</item>
+        <item quantity="many">%dповідомлень</item>
         <item quantity="other">%dповідомлень</item>
     </plurals>
     <plurals name="AreYouSureDeleteMessages">
         <item quantity="one">Видалити%dповідомлення? Повідомлення видалиться з серверу також.</item>
         <item quantity="few">Видалити%dповідомлення? Повідомлення видаляться з серверу також.</item>
+        <item quantity="many">Видалити%dповідомлень? Повідомлення видаляться з серверу також.</item>
         <item quantity="other">Видалити%dповідомлень? Повідомлення видаляться з серверу також.</item>
     </plurals>
     <!-- Translators: The first string placeholder gets replaced with the
@@ -265,36 +271,43 @@
     <plurals name="NewMessagesInChats">
         <item quantity="one">%1$sв%2$dрозмові</item>
         <item quantity="few">%1$sу %2$dрозмовах</item>
+        <item quantity="many">%1$sу%2$dрозмовах</item>
         <item quantity="other">%1$sу%2$dрозмовах</item>
     </plurals>
     <plurals name="Chats">
         <item quantity="one">%dрозмова</item>
         <item quantity="few">%dрозмови</item>
+        <item quantity="many">%dрозмов</item>
         <item quantity="other">%dрозмов</item>
     </plurals>
     <plurals name="Minutes">
         <item quantity="one">%dхвилина</item>
         <item quantity="few">%dхвилини</item>
+        <item quantity="many">%dхвилин</item>
         <item quantity="other">%dхвилин</item>
     </plurals>
     <plurals name="Hours">
         <item quantity="one">%dгодина</item>
         <item quantity="few">%dгодини</item>
+        <item quantity="many">%dгодин</item>
         <item quantity="other">%dгодин</item>
     </plurals>
     <plurals name="Days">
         <item quantity="one">%dдень</item>
         <item quantity="few">%dдні</item>
+        <item quantity="many">%dднів</item>
         <item quantity="other">%dднів</item>
     </plurals>
     <plurals name="Weeks">
         <item quantity="one">%dтиждень</item>
         <item quantity="few">%dтижні</item>
+        <item quantity="many">%dтижнів</item>
         <item quantity="other">%dтижнів</item>
     </plurals>
     <plurals name="Months">
         <item quantity="one">%dмісяць</item>
         <item quantity="few">%dмісяці</item>
+        <item quantity="many">%dмісяців</item>
         <item quantity="other">%dмісяців</item>
     </plurals>
     <!-- Translators: The second string placeholder gets replaced with the
@@ -303,6 +316,7 @@
     <plurals name="MaxNotifications">
         <item quantity="one">Щобільш%1$dсповіщення за%2$s</item>
         <item quantity="few">Щобільш%1$dсповіщення за%2$s</item>
+        <item quantity="many">Щобільш%1$dсповіщень за%2$s</item>
         <item quantity="other">Щобільш%1$dсповіщень за%2$s</item>
     </plurals>
     <!--date formatters-->

@@ -137,6 +137,7 @@
     <string name="AllVideo">Bideo guztiak</string>
     <string name="NoPhotos">Argazkirik ez oraindik</string>
     <string name="NoVideo">Bideorik ez oraindik</string>
+    <string name="CropImage">Moztu irudia</string>
     <string name="EditImage">Editatu irudia</string>
     <string name="Enhance">Hobetu</string>
     <string name="Highlights">Distirak</string>
@@ -144,6 +145,7 @@
     <string name="Exposure">Esposizioa</string>
     <string name="Warmth">Berotasuna</string>
     <string name="Saturation">Saturazioa</string>
+    <string name="Vignette">Bineta</string>
     <string name="Shadows">Gerizak</string>
     <string name="Grain">Garaua</string>
     <string name="Sharpen">Fokatu</string>
@@ -182,6 +184,7 @@
     <string name="FromGalley">Galeriatik</string>
     <string name="Set">Ezarrita</string>
     <string name="OK">Ados</string>
+    <string name="Crop">Moztu</string>
     <!--messages-->
     <string name="AttachPhoto">Argazkia</string>
     <string name="AttachVideo">Bideoa</string>
@@ -198,6 +201,8 @@
     <string name="AreYouSureDeleteThisChat">Ezabatu txat hau? Ez da txaten zerrendan berriro erakutsiko, mezuak zerbitzarian mantenduko dira.</string>
     <string name="AreYouSureBlockContact">Ziur kontaktu hau blokeatu nahi duzula?</string>
     <string name="AreYouSureDeleteContact">Ziur kontaktu hau ezabatu nahi duzula?</string>
+    <!--permissions-->
+    <string name="PermissionContacts">Kontaktuak atzitzeko baimena behar da zure lagunekin gailu guztietan konektatu ahal izateko.</string>
     <string name="PermissionNoAudio">Mikrofonoa atzitzeko baimena behar da ahots mezuak bidali ahal izateko.</string>
     <string name="PermissionOpenSettings">Ezarpenak</string>
     <!--Intro view-->
@@ -230,6 +235,10 @@
     <plurals name="messages">
         <item quantity="one">Mezu %d</item>
         <item quantity="other">%d mezu</item>
+    </plurals>
+    <plurals name="AreYouSureDeleteMessages">
+        <item quantity="one">Ezabatu mezu %d? Zerbitzaritik ere ezabatuko da.</item>
+        <item quantity="other">Ezabatu %d mezu ? Zerbitzaritik ere ezabatuko dira.</item>
     </plurals>
     <!-- Translators: The first string placeholder gets replaced with the
     text "%d new messages", so the complete sentence would be e.g.
@@ -269,6 +278,15 @@
         <item quantity="one">Gehienez jakinarazpen %1$d %2$sko tartean</item>
         <item quantity="other">Gehienez %1$d jakinarazpen %2$sko tartean</item>
     </plurals>
+    <!--date formatters-->
+    <string name="formatterMonthYear">MMMM yyyy</string>
+    <string name="formatterMonth">MMM dd</string>
+    <string name="formatterYear">dd.MM.yyyy</string>
+    <string name="chatDate">EEE, MMMM d</string>
+    <string name="chatFullDate">EEE, MMMM d, yyyy</string>
+    <string name="formatterWeek">EEE</string>
+    <string name="formatterDay24H">HH:mm</string>
+    <string name="formatterDay12H">h:mm a</string>
     <string name="formatDateAtTime">%1$s - %2$s</string>
     <string name="AccountSettings">Kontuaren ezarpenak</string>
     <string name="MyAccount">Nire kontua</string>
@@ -376,5 +394,30 @@
     <string name="AutocryptKeyTransferSucceeded">Gakoa ongi transferitu da. Gailu hau orain Autocrypt erabili dezake beste gailuko gako berarekin.</string>
     <string name="Retry">Saiatu berriro</string>
     <string name="SelfTalkSubtitle">Nire buruari bidalitako mezuak</string>
+    <string name="QrScan">Irakurri QR kodea</string>
+    <string name="QrShow">Erakutsi QR kodea</string>
+    <string name="OobFingerprint">Hatz-marka</string>
+    <string name="OobSecureJoinRequested">%1$s elkartu da.</string>
+    <string name="Autocrypt">Autocrypt</string>
+    <string name="NewVerifiedGroup">Egiaztatutako talde berria</string>
+    <string name="SharedChats">Partekatutako txat-ak</string>
+    <string name="VerifiedContact">Egiaztatutako kontaktua</string>
     <string name="Contact">Kontaktua</string>
-    </resources>
+    <string name="VerifiedGroup">Egiaztatutako taldea</string>
+    <string name="Group">Taldea</string>
+    <string name="EditedNameWillBeShared">Taldeko kide guztiek izango dute izen aldaketaren berri.</string>
+    <string name="QrShowInviteCode">Erakutsi QR gonbidapen-kodea</string>
+    <string name="E2EEncryptionPreferred">Muturretik muturrerako zifratzea hobetsia.</string>
+    <string name="OobAddrVerified">%1$s egiaztatuta.</string>
+    <string name="OobAddrVerifiedIntroduceMyself">%1$s egiaztatuta, egin aurkezpena …</string>
+    <string name="OobAskJoinVerifiedGroup"><![CDATA[<b>]]>%1$s<![CDATA[</b>]]> egiaztatutako taldera elkartu nahi duzu?</string>
+    <!-- Translators: %1$s is replaced by an action, eg. MsgMemberAddedToGroup, MsgMemberRemovedFromToGroup, MsgGroupNameChanged or MsgGroupImageChanged. If the action ends with a full stop, this is removed.
+    %2$s is replaced by a the name of the user that made this action.
+    Resulting strings might be "Member Alice added by Bob." or 'Group name changed from "Foo" to "Bar" by Claire.
+     If you do not find a correct grammar for your language you can just use "%1$s (by %2$s)" or "%2$s: %1$s" -->
+    <string name="ActionByUser">%1$s %2$s(e)k.</string>
+    <!-- Translators: %1$s is replaced by an action, eg. MsgMemberAddedToGroup, MsgMemberRemovedFromToGroup, MsgGroupNameChanged or MsgGroupImageChanged. If the action ends with a full stop, this is removed.
+    Resulting strings might be "Member Alice added by me." or 'Group name changed from "Foo" to "Bar" by me.
+    If you do not find a correct grammar for your language you can just use "%1$s (by me)" or "Me: %1$s" -->
+    <string name="ActionBySelf">%1$s nik.</string>
+</resources>
