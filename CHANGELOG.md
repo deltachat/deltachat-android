@@ -1,5 +1,12 @@
 # Delta Chat Changelog
 
+## v0.17.3
+2018-05-17
+
+* Fix appearing system messages appearing twice
+* Fix: Use all gossipped verifications in verified groups
+* Update Basque, Polish, Russian and Ukrainian translations
+
 ## v0.17.2
 2018-05-15
 
