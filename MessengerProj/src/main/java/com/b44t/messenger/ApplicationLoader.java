@@ -169,7 +169,8 @@ public class ApplicationLoader extends Application {
         // start keep-alive service that restarts the app as soon it is terminated
         // (this is done by just marking the service as START_STICKY which recreates the service as
         // it goes away which also inititialized the app indirectly by calling this function)
-        applicationContext.startService(new Intent(applicationContext, KeepAliveService.class));
+
+        //applicationContext.startService(new Intent(applicationContext, KeepAliveService.class));
 
         // init locale
         try {
