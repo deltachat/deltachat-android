@@ -17,7 +17,7 @@
     <string name="UnmuteNotifications">Unmute</string>
     <string name="Draft">Draft</string>
     <!--audio view-->
-    <string name="NoAudio">Files added to the music library of your device will appear here.</string>
+    <string name="NoAudio">Files from your music library.</string>
     <string name="AttachMusic">Music</string>
     <!--documents view-->
     <string name="SelectFile">Select File</string>
@@ -83,7 +83,7 @@
     <string name="Default">Default</string>
     <string name="OnlyIfSilent">Only when silent</string>
     <string name="ChatBackground">Chat background</string>
-    <string name="SendByEnter">Send with ⏎</string>
+    <string name="SendByEnter">Send with ↵</string>
     <string name="Help">Help</string>
     <string name="Enabled">On</string>
     <string name="Disabled">Off</string>
@@ -115,7 +115,7 @@
     <!--passcode view-->
     <string name="Passcode">Passcode Lock</string>
     <string name="ChangePasscode">Change Passcode</string>
-    <string name="ChangePasscodeInfo">When you set up an additional passcode, a lock icon will appear on the chats page. Tap it to lock the app.\n\nNote: If you forget the passcode, you\'ll need to delete and reinstall the app.</string>
+    <string name="ChangePasscodeInfo">When you set up an additional passcode, a lock icon will appear atop the chat list. Tap it to lock the app.\n\nNote: If you forget the passcode, you\'ll need to delete and reinstall the app.</string>
     <string name="PasscodePIN">PIN</string>
     <string name="PasscodePassword">Password</string>
     <string name="EnterCurrentPasscode">Enter your current passcode</string>
@@ -128,7 +128,7 @@
     <string name="AutoLockInfo">Require passcode if away for a time.</string>
     <string name="UnlockFingerprint">Unlock with fingerprint</string>
     <string name="FingerprintInfo">Confirm fingerprint to continue</string>
-    <string name="FingerprintNotRecognized">Fingerprint not recognized. Try again</string>
+    <string name="FingerprintNotRecognized">Fingerprint not recognized. Try again.</string>
     <!--photo gallery view-->
     <string name="SaveToGallery">Save to \"Gallery\"</string>
     <string name="Of">%1$d of %2$d</string>
@@ -194,7 +194,7 @@
     <string name="AttachVoiceMessage">Voice message</string>
     <string name="FromSelf">Me</string>
     <!--Alert messages-->
-    <string name="NoHandleAppInstalled">No installed app could open the filetype \'%1$s\', please install one to continue.</string>
+    <string name="NoHandleAppInstalled">Please install an app that can handle \'%1$s\' files to continue.</string>
     <string name="ContactAlreadyInGroup">The contact is already in this group.</string>
     <string name="ForwardMessagesTo">Forward selected messages to <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>?</string>
     <string name="SendMessagesTo">Send messages to <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>?</string>
@@ -204,11 +204,11 @@
     <!--permissions-->
     <string name="PermissionContacts">Access to contacts needed to connect with your friends across all your devices.</string>
     <string name="PermissionStorage">Storage access needed to send and save photos, videos, music, and other media.</string>
-    <string name="PermissionNoAudio">Microphone access needed to record voice messages.</string>
+    <string name="PermissionNoAudio">Mic access needed to record voice messages.</string>
     <string name="PermissionOpenSettings">Settings</string>
     <!--Intro view-->
     <string name="Intro1Headline">Delta Chat</string>
-    <string name="Intro1Message">The messenger with the <![CDATA[<b>broadest audience</b>]]> in the world. <![CDATA[<b>Free</b>]]> and <![CDATA[<b>independent</b>]]>.</string>
+    <string name="Intro1Message">The messenger with the <![CDATA[<b>broadest audience</b>]]> in the world. <![CDATA[<b>Libre</b>]]> and <![CDATA[<b>independent</b>]]>.</string>
 
     <string name="Intro2Headline">Independent</string>
     <string name="Intro2Message"><![CDATA[<b>There is no Delta Chat server.</b>]]> The app only uses your mail server.</string>
@@ -220,7 +220,7 @@
     <string name="Intro4Message"><![CDATA[<b>Unlimited</b>]]> chats, images, videos, audio messages and more. Multi-client capable.</string>
 
     <string name="Intro5Headline">Free</string>
-    <string name="Intro5Message"><![CDATA[<b>Delta Chat</b>]]> is free forever.<![CDATA[<br/>]]>Open-source. No ads. No subscription. No vendor lock-in.</string>
+    <string name="Intro5Message"><![CDATA[<b>Delta Chat</b>]]> is forever gratis.<![CDATA[<br/>]]>Copylefted libre software. No ads. No subscription. No vendor lock-in.</string>
 
     <string name="Intro6Headline">Encrypted</string>
     <string name="Intro6Message"><![CDATA[<b>Encrypted</b>]]> with all common algorithms. Messages stay on your servers.</string>
@@ -250,8 +250,8 @@
         <item quantity="other">%d messages</item>
     </plurals>
     <plurals name="AreYouSureDeleteMessages">
-        <item quantity="one">Delete %d message? It will also be deleted from the server.</item>
-        <item quantity="other">Delete %d messages? These will also be deleted from the server.</item>
+        <item quantity="one">Delete %d messagehere and from the server.</item>
+        <item quantity="other">Delete %d messages here and from the server.</item>
     </plurals>
     <!-- Translators: The first string placeholder gets replaced with the
     text "%d new messages", so the complete sentence would be e.g.
@@ -304,7 +304,7 @@
     <string name="AccountSettings">Account settings</string>
     <string name="MyAccount">My account</string>
     <string name="MyName">My name</string>
-    <string name="MyNameExplain">Your name, as shown to the recipients. If left blank, only your email address will be sent.</string>
+    <string name="MyNameExplain">Your name, as shown to recipients. If left blank, only your email address will be sent.</string>
     <string name="Password">Password</string>
     <string name="SmtpPassword">SMTP password</string>
     <string name="FromAbove">From above</string>
@@ -413,7 +413,7 @@
     <string name="Never">Never</string>
     <string name="AutocryptKeyTransferInitiate">Send Autocrypt Setup Message</string>
     <string name="AutocryptKeyTransfer">Autocrypt Setup Message</string>
-    <string name="AutocryptKeyTransferMsgBeforeSend">An <![CDATA[<i>]]>Autocrypt Setup Message<![CDATA[</i>]]> securely shares your end-to-end setup with other Autocrypt-compliant devices.\n\nThe setup will be encrypted by a setup code which is displayed here and must be typed on the other device.</string>
+    <string name="AutocryptKeyTransferMsgBeforeSend">An <![CDATA[<i>]]>Autocrypt Setup Message<![CDATA[</i>]]> securely shares your end-to-end setup with other Autocrypt-compliant apps.\n\nThe setup will be encrypted by a setup code which is displayed here and must be typed on the other device.</string>
     <string name="AutocryptKeyTransferMsgAfterSend">Your setup has been sent to yourself. Switch to the other device and open the setup message. You should be prompted for a setup code. Type the following digits into the prompt:\n\n%1$s\n\nOnce you\'re done, your other device will be ready to use Autocrypt.</string>
     <string name="AutocryptSetupMessageSubject">Autocrypt Setup Message</string>
     <string name="AutocryptSetupMessageGeneralBody">This is the Autocrypt Setup Message used to transfer your end-to-end setup between clients.\n\nTo decrypt and use your setup, open the message in an Autocrypt-compliant client and enter the setup code presented on the generating device.</string>
@@ -431,11 +431,11 @@
     <string name="OobFingerprintAskOob">Verify contact and start chatting with <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>?</string>
     <string name="OobFingerprintOk">Contact <![CDATA[<i>]]>%1$s<![CDATA[</i>]]> verified. Start chatting?</string>
     <string name="OobFingerprintMismatch">The scanned fingerprint does <![CDATA[<b>]]>not match<![CDATA[</b>]]> the fingerprint last seen for <![CDATA[<i>]]>%1$s<![CDATA[</i>]]>.</string>
-    <string name="OobFingerprintWithoutAddr">This QR code contains a fingerprint but no e-mail address.\n\nFor an out-of-band-verification, please establish an encrpyted connection to the recipient first.</string>
+    <string name="OobFingerprintWithoutAddr">This QR code contains a fingerprint but no email address.\n\nFor an out-of-band-verification, please establish an encrpyted connection to the recipient first.</string>
     <string name="OobSecureJoinRequested">%1$s joins.</string>
-    <string name="CannotDecryptBody">This message cannot be decrypted.\n\n• It might already help to simply reply to this message and ask the sender to send the message again.\n\n• In case you re-installed Delta Chat or another E-Mail-program on this or another device you may want to send an Autocrypt Setup Message from there.</string>
+    <string name="CannotDecryptBody">This message cannot be decrypted.\n\n• It might already help to simply reply to this message and ask the sender to send the message again.\n\n• In case you re-installed Delta Chat or another email program on this or another device you may want to send an Autocrypt Setup Message from there.</string>
     <string name="Autocrypt">Autocrypt</string>
-    <string name="AutocryptExplain"><![CDATA[<i>]]>Autocrypt<![CDATA[</i>]]> is a new and open specification for e-mail end-to-end encryption.\n\nYour end-to-end setup is created automatically as needed and you can transfer it between devices with <![CDATA[<i>]]>Autocrypt Setup Messages.<![CDATA[</i>]]></string>
+    <string name="AutocryptExplain"><![CDATA[<i>]]>Autocrypt<![CDATA[</i>]]> is a new and open specification for end-to-end email encryption.\n\nYour end-to-end setup is created automatically as needed and you can transfer it between devices with <![CDATA[<i>]]>Autocrypt Setup Messages.<![CDATA[</i>]]></string>
     <string name="NewVerifiedGroup">New verified group</string>
     <string name="SharedChats">Shared chats</string>
     <string name="VerifiedContact">Verified contact</string>
