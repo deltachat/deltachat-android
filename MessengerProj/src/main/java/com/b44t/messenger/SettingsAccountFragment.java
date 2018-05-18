@@ -358,7 +358,10 @@ public class SettingsAccountFragment extends BaseFragment implements Notificatio
         Utilities.searchQueue.postRunnable(new Runnable() {
             @Override
             public void run() {
-                final int res = MrMailbox.configureAndConnect();
+                final int res = MrMailbox.configure();
+                if( res != 0 ) {
+                    MrMailbox.connect();
+                }
                 AndroidUtilities.runOnUIThread(new Runnable() {
                     @Override
                     public void run() {

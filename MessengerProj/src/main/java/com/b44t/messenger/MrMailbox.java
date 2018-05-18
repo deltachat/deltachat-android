@@ -51,13 +51,14 @@ public class MrMailbox {
     public native static void   close();
     public native static String getBlobdir();
 
-    public native static int configureAndConnect();
+    public native static int configure();
     public native static void stopOngoingProcess();
 
     public native static int isConfigured();
 
     public native static void connect();
     public native static void disconnect();
+    public native static int poll();
 
     public native static void setConfig(String key, String value);
     public native static void setConfigInt(String key, int value);
