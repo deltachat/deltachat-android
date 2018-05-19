@@ -446,6 +446,7 @@
     <string name="QrShowInviteCode">Mostra codice QR di invito</string>
     <string name="E2EEncryptionPreferred">Cifratura end-to-end preferita.</string>
     <string name="OobAddrVerified">%1$s verificato.</string>
+    <string name="OobAddrVerifiedIntroduceMyself">%1$s verificato, mi presento…</string>
     <string name="OobAskJoinVerifiedGroup">Entrare nel gruppo verificato <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>?</string>
     <!-- Translators: %1$s is replaced by an action, eg. MsgMemberAddedToGroup, MsgMemberRemovedFromToGroup, MsgGroupNameChanged or MsgGroupImageChanged. If the action ends with a full stop, this is removed.
     %2$s is replaced by a the name of the user that made this action.
