@@ -116,12 +116,8 @@ public class ForegroundDetector implements Application.ActivityLifecycleCallback
 
                 }
             }
-            Utilities.searchQueue.postRunnable(new Runnable() {
-                @Override
-                public void run() {
-                    MrMailbox.disconnect();
-                }
-            });
+
+            MrMailbox.disconnect();
         }
     }
 
