@@ -29,6 +29,10 @@ import android.app.Application;
 import android.os.Build;
 import android.os.Bundle;
 
+import com.b44t.messenger.ApplicationLoader;
+import com.b44t.messenger.MrMailbox;
+import com.b44t.messenger.Utilities;
+
 import java.util.concurrent.CopyOnWriteArrayList;
 
 @SuppressLint("NewApi")
@@ -85,6 +89,10 @@ public class ForegroundDetector implements Application.ActivityLifecycleCallback
                 }
             }
         }
+
+        if( !ApplicationLoader.getPermanentPush() ) {
+            MrMailbox.connect();
+        }
     }
 
     public boolean isWasInBackground(boolean reset) {
@@ -110,6 +118,10 @@ public class ForegroundDetector implements Application.ActivityLifecycleCallback
                 } catch (Exception e) {
 
                 }
+            }
+
+            if( !ApplicationLoader.getPermanentPush() ) {
+                MrMailbox.disconnect();
             }
         }
     }

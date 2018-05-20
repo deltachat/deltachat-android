@@ -169,7 +169,10 @@ public class ApplicationLoader extends Application {
         // start keep-alive service that restarts the app as soon it is terminated
         // (this is done by just marking the service as START_STICKY which recreates the service as
         // it goes away which also inititialized the app indirectly by calling this function)
-        applicationContext.startService(new Intent(applicationContext, KeepAliveService.class));
+
+        if( getPermanentPush() ) {
+            applicationContext.startService(new Intent(applicationContext, KeepAliveService.class));
+        }
 
         // init locale
         try {
@@ -263,5 +266,32 @@ public class ApplicationLoader extends Application {
     public static void stayAwakeForAMoment()
     {
         stayAwakeWakeLock.acquire(1*60*1000); // 1 Minute to wait for "after chat" messages, after that, we sleep most time, see wakeupWakeLock
+    }
+
+    static private int permanentPush = -1;
+
+    public static boolean getPermanentPush()
+    {
+        if( permanentPush == -1 ) {
+            SharedPreferences preferences = applicationContext.getSharedPreferences("mainconfig", Activity.MODE_PRIVATE);
+            permanentPush = preferences.getInt("permanent_push", 0);
+        }
+        return permanentPush!=0;
+    }
+
+    public static void setPermanentPush(boolean newVal)
+    {
+        permanentPush = newVal? 1 : 0;
+        SharedPreferences preferences = applicationContext.getSharedPreferences("mainconfig", Activity.MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putInt("permanent_push", permanentPush);
+        editor.apply();
+
+        if( newVal ) {
+            applicationContext.startService(new Intent(applicationContext, KeepAliveService.class));
+        }
+        else {
+            applicationContext.stopService(new Intent(applicationContext, KeepAliveService.class));
+        }
     }
 }

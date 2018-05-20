@@ -67,6 +67,7 @@ public class SettingsAdvFragment extends BaseFragment implements NotificationCen
     private int cacheRow;
     private int autoplayGifsRow;
     private int textSizeRow;
+    private int backgroupModeRow;
     private int showUnknownSendersRow;
     private int sendByEnterRow;
     private int raiseToSpeakRow;
@@ -129,6 +130,7 @@ public class SettingsAdvFragment extends BaseFragment implements NotificationCen
         // for simplicity, we do not hide discouraged/supported options anywhere else.
         otherHeaderRow          = rowCount++;
         passcodeRow             = rowCount++;
+        backgroupModeRow        = rowCount++;
         autoplayGifsRow         = rowCount++;
         textSizeRow             = rowCount++; // for now, we have the font size in the advanced settings; this is because the numberical selection is a little bit weird and does only affect the message text. It would be better to use the font size defined by the system with "sp" (Scale-independent Pixels which included the user's font size preference)
         sendByEnterRow          = rowCount++;
@@ -164,6 +166,8 @@ public class SettingsAdvFragment extends BaseFragment implements NotificationCen
         NotificationCenter.getInstance().removeObserver(this, NotificationCenter.imexProgress);
         NotificationCenter.getInstance().removeObserver(this, NotificationCenter.imexFileWritten);
     }
+
+    int mSelection;
 
     @Override
     public View createView(Context context)
@@ -391,6 +395,33 @@ public class SettingsAdvFragment extends BaseFragment implements NotificationCen
                             editor.putInt("msg_font_size", numberPicker.getValue());
                             ApplicationLoader.fontSize = numberPicker.getValue();
                             editor.apply();
+                            if (listView != null) {
+                                listView.invalidateViews();
+                            }
+                        }
+                    });
+                    showDialog(builder.create());
+                }
+                else if( i == backgroupModeRow ) {
+                    mSelection = ApplicationLoader.getPermanentPush()? 1 : 0;
+                    AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
+                    builder.setTitle(R.string.BackgroundModeExplain);
+                    builder.setSingleChoiceItems(new CharSequence[]{
+                            ApplicationLoader.applicationContext.getString(R.string.BackgroundModeSaveBatteryExplain),
+                            ApplicationLoader.applicationContext.getString(R.string.BackgroundModeFastFetchExplain),
+                    },
+                    mSelection,
+                    new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            mSelection = which;
+                        }
+                    });
+                    builder.setNegativeButton(R.string.Cancel, null);
+                    builder.setPositiveButton(R.string.OK, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            ApplicationLoader.setPermanentPush(mSelection==1);
                             if (listView != null) {
                                 listView.invalidateViews();
                             }
@@ -690,6 +721,10 @@ public class SettingsAdvFragment extends BaseFragment implements NotificationCen
                     SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("mainconfig", Activity.MODE_PRIVATE);
                     int size = preferences.getInt("msg_font_size", SettingsAdvFragment.defMsgFontSize());
                     textCell.setTextAndValue(mContext.getString(R.string.TextSize), String.format("%d", size), true);
+                }
+                else if( i == backgroupModeRow ) {
+                    boolean permanentPush = ApplicationLoader.getPermanentPush();
+                    textCell.setTextAndValue(mContext.getString(R.string.BackgroundMode), permanentPush? mContext.getString(R.string.BackgroundModeFastFetch) : mContext.getString(R.string.BackgroundModeSaveBattery), true);
                 }
                 else    if (i == passcodeRow) {
                     String val = UserConfig.passcodeHash.length() > 0? mContext.getString(R.string.Enabled) : mContext.getString(R.string.Disabled);
