@@ -466,4 +466,7 @@
     <string name="QrShowInviteCode">Show QR invite code</string>
     <string name="QrJoinVerifiedGroupTitle">QR invite code</string>
     <string name="QrJoinVerifiedGroupHint">Scan this to join the verified group <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>.</string>
+    <string name="BackgroundMode">Background mode</string>
+    <string name="BackgroundModeFastFetch">Fast fetch</string>
+    <string name="BackgroundModeSaveBattery">Save battery</string>
 </resources>

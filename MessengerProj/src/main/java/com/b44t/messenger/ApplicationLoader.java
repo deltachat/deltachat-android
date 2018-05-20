@@ -265,4 +265,25 @@ public class ApplicationLoader extends Application {
     {
         stayAwakeWakeLock.acquire(1*60*1000); // 1 Minute to wait for "after chat" messages, after that, we sleep most time, see wakeupWakeLock
     }
+
+    static private int permanentPush = -1;
+
+    public static boolean getPermanentPush()
+    {
+        if( permanentPush == -1 ) {
+            SharedPreferences preferences = applicationContext.getSharedPreferences("mainconfig", Activity.MODE_PRIVATE);
+            permanentPush = preferences.getInt("permanent_push", 0);
+        }
+        return permanentPush!=0;
+    }
+
+    public static void setPermanentPush(boolean newVal)
+    {
+        permanentPush = newVal? 1 : 0;
+        SharedPreferences preferences = applicationContext.getSharedPreferences("mainconfig", Activity.MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putInt("permanent_push", permanentPush);
+
+        // TODO: reflect changes
+    }
 }
