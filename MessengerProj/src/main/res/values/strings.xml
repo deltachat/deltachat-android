@@ -467,9 +467,6 @@
     <string name="QrJoinVerifiedGroupTitle">QR invite code</string>
     <string name="QrJoinVerifiedGroupHint">Scan this to join the verified group <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>.</string>
     <string name="BackgroundMode">Background mode</string>
-    <string name="BackgroundModeExplain">Background fetch mode (foreground is always instant)</string>
     <string name="BackgroundModeSaveBattery">Save battery</string>
-    <string name="BackgroundModeSaveBatteryExplain">Save battery - fetch about once per minute, recommended</string>
-    <string name="BackgroundModeFastFetch">Instant</string>
-    <string name="BackgroundModeFastFetchExplain">Try instant fetch - needs more battery</string>
+    <string name="BackgroundModeFastFetch">Fast fetch</string>
 </resources>

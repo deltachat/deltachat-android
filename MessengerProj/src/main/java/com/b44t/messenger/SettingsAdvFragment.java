@@ -167,8 +167,6 @@ public class SettingsAdvFragment extends BaseFragment implements NotificationCen
         NotificationCenter.getInstance().removeObserver(this, NotificationCenter.imexFileWritten);
     }
 
-    int mSelection;
-
     @Override
     public View createView(Context context)
     {
@@ -403,30 +401,25 @@ public class SettingsAdvFragment extends BaseFragment implements NotificationCen
                     showDialog(builder.create());
                 }
                 else if( i == backgroupModeRow ) {
-                    mSelection = ApplicationLoader.getPermanentPush()? 1 : 0;
+                    int selection = ApplicationLoader.getPermanentPush()? 1 : 0;
                     AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
-                    builder.setTitle(R.string.BackgroundModeExplain);
+                    builder.setTitle(R.string.BackgroundMode);
                     builder.setSingleChoiceItems(new CharSequence[]{
-                            ApplicationLoader.applicationContext.getString(R.string.BackgroundModeSaveBatteryExplain),
-                            ApplicationLoader.applicationContext.getString(R.string.BackgroundModeFastFetchExplain),
+                            ApplicationLoader.applicationContext.getString(R.string.BackgroundModeSaveBattery),
+                            ApplicationLoader.applicationContext.getString(R.string.BackgroundModeFastFetch),
                     },
-                    mSelection,
+                    selection,
                     new DialogInterface.OnClickListener() {
                         @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            mSelection = which;
-                        }
-                    });
-                    builder.setNegativeButton(R.string.Cancel, null);
-                    builder.setPositiveButton(R.string.OK, new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            ApplicationLoader.setPermanentPush(mSelection==1);
+                        public void onClick(DialogInterface dialog, int selection) {
+                            ApplicationLoader.setPermanentPush(selection==1);
                             if (listView != null) {
                                 listView.invalidateViews();
                             }
+                            dialog.dismiss();
                         }
                     });
+                    builder.setNegativeButton(R.string.Cancel, null);
                     showDialog(builder.create());
                 }
                 else if (i == passcodeRow) {
