@@ -170,7 +170,9 @@ public class ApplicationLoader extends Application {
         // (this is done by just marking the service as START_STICKY which recreates the service as
         // it goes away which also inititialized the app indirectly by calling this function)
 
-        //applicationContext.startService(new Intent(applicationContext, KeepAliveService.class));
+        if( getPermanentPush() ) {
+            applicationContext.startService(new Intent(applicationContext, KeepAliveService.class));
+        }
 
         // init locale
         try {
@@ -283,7 +285,13 @@ public class ApplicationLoader extends Application {
         SharedPreferences preferences = applicationContext.getSharedPreferences("mainconfig", Activity.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
         editor.putInt("permanent_push", permanentPush);
+        editor.apply();
 
-        // TODO: reflect changes
+        if( newVal ) {
+            applicationContext.startService(new Intent(applicationContext, KeepAliveService.class));
+        }
+        else {
+            applicationContext.stopService(new Intent(applicationContext, KeepAliveService.class));
+        }
     }
 }

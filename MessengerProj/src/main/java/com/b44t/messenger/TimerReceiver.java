@@ -51,7 +51,12 @@ public class TimerReceiver extends BroadcastReceiver {
             Utilities.searchQueue.postRunnable(new Runnable() {
                 @Override
                 public void run() {
-                    MrMailbox.poll();
+                    if( ApplicationLoader.getPermanentPush() ) {
+                        MrMailbox.heartbeat();
+                    }
+                    else {
+                        MrMailbox.poll();
+                    }
                 }
             });
 
