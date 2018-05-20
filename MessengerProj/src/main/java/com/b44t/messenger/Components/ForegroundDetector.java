@@ -29,6 +29,7 @@ import android.app.Application;
 import android.os.Build;
 import android.os.Bundle;
 
+import com.b44t.messenger.ApplicationLoader;
 import com.b44t.messenger.MrMailbox;
 import com.b44t.messenger.Utilities;
 
@@ -89,7 +90,9 @@ public class ForegroundDetector implements Application.ActivityLifecycleCallback
             }
         }
 
-        MrMailbox.connect();
+        if( !ApplicationLoader.getPermanentPush() ) {
+            MrMailbox.connect();
+        }
     }
 
     public boolean isWasInBackground(boolean reset) {
@@ -117,7 +120,9 @@ public class ForegroundDetector implements Application.ActivityLifecycleCallback
                 }
             }
 
-            MrMailbox.disconnect();
+            if( !ApplicationLoader.getPermanentPush() ) {
+                MrMailbox.disconnect();
+            }
         }
     }
 
