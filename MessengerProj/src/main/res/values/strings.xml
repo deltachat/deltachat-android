@@ -360,8 +360,8 @@
     <string name="NoMessagesHint">Message <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>:\n\n• <![CDATA[<b>]]>%2$s<![CDATA[</b>]]> doesn\'t have to use Delta Chat.\n\n• Delivering the first message may take a while.</string>
     <string name="SendNRcvReadReceipts">Receive and send return receipts</string>
     <string name="PreferE2EEncryption">Prefer end-to-end encryption</string>
-    <string name="E2EManagePrivateKeys">Manage secret keys</string>
-    <string name="E2ECompareKeys">Compare keys</string>
+    <string name="E2EManagePrivateKeys">Manage secret setup</string>
+    <string name="E2ECompareKeys">Compare setup</string>
     <string name="ForwardToTitle">Forward to …</string>
     <string name="SelectContact">Choose a contact</string>
     <string name="DoneHint">Done.</string>
@@ -393,7 +393,7 @@
     <string name="MsgGroupImageDeleted">Group image deleted.</string>
     <string name="AskDeleteGroupImage">Are you sure to delete the group image?\n\nThis will affect all devices of all group members.</string>
     <string name="ExportImportHeader">Export and import</string>
-    <string name="ImportExportExplain">Exported files will contain secret keys! Keep them in a safe place or delete them as soon as possible.</string>
+    <string name="ImportExportExplain">Exported files will contain secret setup! Keep them in a safe place or delete them as soon as possible.</string>
     <string name="EnterPasswordToContinue">Enter the password for %1$s to continue:</string>
     <string name="IncorrectPassword">Incorrect password.</string>
     <string name="ImportBackupAsk">Backup found at <![CDATA[<i>]]>%1$s<![CDATA[</i>]]>.\n\nDo you want to import and use all data and settings from it?</string>
@@ -401,9 +401,9 @@
     <string name="NoBackupFound">No backups found.\n\nCopy the backup to <![CDATA[<i>]]>%1$s<![CDATA[</i>]]> and try again. Alternatively, press \"Start messaging\" to go with the normal setup process.</string>
     <string name="FilesSuccessfullyExported">Files exported to <![CDATA[<i>]]>%1$s<![CDATA[</i>]]>.</string>
     <string name="ExportBackup">Export backup</string>
-    <string name="ExportPrivateKeys">Export secret keys</string>
-    <string name="ImportPrivateKeys">Import secret keys</string>
-    <string name="ImportPrivateKeysAsk2">Import secret keys from <![CDATA[<i>]]>%1$s<![CDATA[</i>]]>?\n\n• Existing secret keys will not be deleted\n\n• The last imported key will be used as the new default key</string>
+    <string name="ExportPrivateKeys">Export secret setup</string>
+    <string name="ImportPrivateKeys">Import secret setup</string>
+    <string name="ImportPrivateKeysAsk2">Import secret setup from <![CDATA[<i>]]>%1$s<![CDATA[</i>]]>?\n\n• Existing secret setup will not be deleted\n\n• The last imported key will be used as the new default key</string>
     <string name="NoRecentEmoji">Recently used emoji will be shown here.</string>
     <string name="E2eeOffBecauseOfUser">To enable end-to-end-encryption, check the corresponding option in your settings.</string>
     <string name="E2eeOffBecauseOfRecipient">End-to-end encryption will be employed if the other party enables the setting too.</string>
@@ -415,16 +415,16 @@
     <string name="LeaveGroup">Leave group</string>
     <string name="AskLeaveGroup">Are you sure you want to leave this group?</string>
     <string name="Never">Never</string>
-    <string name="AutocryptKeyTransferInitiate">Initiate Autocrypt Key Transfer</string>
+    <string name="AutocryptKeyTransferInitiate">Initiate Autocrypt Setup Transfer</string>
     <string name="AutocryptKeyTransfer">Autocrypt Key Transfer</string>
-    <string name="AutocryptKeyTransferMsgBeforeSend">The <![CDATA[<i>]]>Autocrypt Key Transfer<![CDATA[</i>]]> requires the e-mail client on the other device to be Autocrypt-compliant.\n\nYou can then send your secret key to yourself. It will be encrypted by a setup code, displayed here to be typed onto the other device.</string>
-    <string name="AutocryptKeyTransferMsgAfterSend">Your key has been sent to yourself. Open the setup message on the other device and type the following digits:\n\n%1$s\n\nOnce done, your other device will be ready to use Autocrypt.</string>
+    <string name="AutocryptKeyTransferMsgBeforeSend">The <![CDATA[<i>]]>Autocrypt Setup Transfer<![CDATA[</i>]]> requires the e-mail client on the other device to be Autocrypt-compliant.\n\nYou can then send your secret key to yourself. It will be encrypted by a setup code, displayed here to be typed onto the other device.</string>
+    <string name="AutocryptKeyTransferMsgAfterSend">Your setup has been sent to yourself. Open the setup message on the other device and type the following digits:\n\n%1$s\n\nOnce done, your other device will be ready to use Autocrypt.</string>
     <string name="AutocryptSetupMessageSubject">Autocrypt Setup Message</string>
-    <string name="AutocryptSetupMessageGeneralBody">The setup code must be entered on the other device to use your key there.</string>
-    <string name="AutocryptSetupMessageTapBody">Tap this Autocrypt setup message to decrypt your key, transferring it between programs.</string>
+    <string name="AutocryptSetupMessageGeneralBody">The Autocrypt setup code must be entered on the other Autocrypt device to Autocrypt from it.</string>
+    <string name="AutocryptSetupMessageTapBody">Tap this Autocrypt setup message to decrypt your setup, transferring it between programs.</string>
     <string name="AutocryptKeyTransferPleaseEnterCode">Please enter the setup code displayed on the other device.</string>
-    <string name="AutocryptKeyTransferBadCode">Bad setup code.\n\nUnless you remember the setup code, you must initiate the key transfer on the other device again.</string>
-    <string name="AutocryptKeyTransferSucceeded">This device can now Autocrypt with the transferred key.</string>
+    <string name="AutocryptKeyTransferBadCode">Bad setup code.\n\nUnless you remember the setup code, you must initiate the Autocrypt setup transfer on the other device again.</string>
+    <string name="AutocryptKeyTransferSucceeded">This device can now Autocrypt with the transferred setup.</string>
     <string name="Retry">Retry</string>
     <string name="SelfTalkSubtitle">Messages sent to self</string>
 </resources>
