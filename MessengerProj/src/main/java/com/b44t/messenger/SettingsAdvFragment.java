@@ -401,25 +401,28 @@ public class SettingsAdvFragment extends BaseFragment implements NotificationCen
                     showDialog(builder.create());
                 }
                 else if( i == backgroupModeRow ) {
-                    int selection = ApplicationLoader.getPermanentPush()? 1 : 0;
                     AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
-                    builder.setTitle(R.string.BackgroundMode);
-                    builder.setSingleChoiceItems(new CharSequence[]{
-                            ApplicationLoader.applicationContext.getString(R.string.BackgroundModeSaveBattery),
-                            ApplicationLoader.applicationContext.getString(R.string.BackgroundModeFastFetch),
-                    },
-                    selection,
-                    new DialogInterface.OnClickListener() {
+                    builder.setTitle(R.string.FetchMode);
+                    builder.setMessage(AndroidUtilities.replaceTags(ApplicationLoader.applicationContext.getString(R.string.FetchModeExplain)));
+                    builder.setPositiveButton(R.string.FetchModeSaveBattery, new DialogInterface.OnClickListener() {
                         @Override
-                        public void onClick(DialogInterface dialog, int selection) {
-                            ApplicationLoader.setPermanentPush(selection==1);
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            ApplicationLoader.setPermanentPush(false);
                             if (listView != null) {
                                 listView.invalidateViews();
                             }
-                            dialog.dismiss();
                         }
                     });
-                    builder.setNegativeButton(R.string.Cancel, null);
+                    builder.setNegativeButton(R.string.FetchModePersistentConnection, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            ApplicationLoader.setPermanentPush(true);
+                            if (listView != null) {
+                                listView.invalidateViews();
+                            }
+                        }
+                    });
+                    builder.setNeutralButton(R.string.Cancel, null);
                     showDialog(builder.create());
                 }
                 else if (i == passcodeRow) {
@@ -717,7 +720,7 @@ public class SettingsAdvFragment extends BaseFragment implements NotificationCen
                 }
                 else if( i == backgroupModeRow ) {
                     boolean permanentPush = ApplicationLoader.getPermanentPush();
-                    textCell.setTextAndValue(mContext.getString(R.string.BackgroundMode), permanentPush? mContext.getString(R.string.BackgroundModeFastFetch) : mContext.getString(R.string.BackgroundModeSaveBattery), true);
+                    textCell.setTextAndValue(mContext.getString(R.string.FetchMode), permanentPush? mContext.getString(R.string.FetchModePersistentConnection) : mContext.getString(R.string.FetchModeSaveBattery), true);
                 }
                 else    if (i == passcodeRow) {
                     String val = UserConfig.passcodeHash.length() > 0? mContext.getString(R.string.Enabled) : mContext.getString(R.string.Disabled);

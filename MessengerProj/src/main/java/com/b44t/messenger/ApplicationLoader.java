@@ -268,26 +268,26 @@ public class ApplicationLoader extends Application {
         stayAwakeWakeLock.acquire(1*60*1000); // 1 Minute to wait for "after chat" messages, after that, we sleep most time, see wakeupWakeLock
     }
 
-    static private int permanentPush = -1;
+    static private int fetchMode = -1; // 0: push, 1: poll once per minute
 
     public static boolean getPermanentPush()
     {
-        if( permanentPush == -1 ) {
+        if( fetchMode == -1 ) {
             SharedPreferences preferences = applicationContext.getSharedPreferences("mainconfig", Activity.MODE_PRIVATE);
-            permanentPush = preferences.getInt("permanent_push", 0);
+            fetchMode = preferences.getInt("fetch_mode", 1);
         }
-        return permanentPush!=0;
+        return fetchMode==0;
     }
 
-    public static void setPermanentPush(boolean newVal)
+    public static void setPermanentPush(boolean permanentPush)
     {
-        permanentPush = newVal? 1 : 0;
+        fetchMode = permanentPush? 0 : 1;
         SharedPreferences preferences = applicationContext.getSharedPreferences("mainconfig", Activity.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
-        editor.putInt("permanent_push", permanentPush);
+        editor.putInt("fetch_mode", fetchMode);
         editor.apply();
 
-        if( newVal ) {
+        if( permanentPush ) {
             applicationContext.startService(new Intent(applicationContext, KeepAliveService.class));
         }
         else {
