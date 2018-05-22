@@ -83,7 +83,7 @@
     <string name="Default">Default</string>
     <string name="OnlyIfSilent">Only when silent</string>
     <string name="ChatBackground">Chat background</string>
-    <string name="SendByEnter">Send with \"⏎\"</string>
+    <string name="SendByEnter">Send with \"↵\"</string>
     <string name="Help">Help</string>
     <string name="Enabled">On</string>
     <string name="Disabled">Off</string>
@@ -421,7 +421,7 @@
     <string name="AutocryptKeyTransferMsgAfterSend">Your key has been sent to yourself. Open the setup message on the other device and type the following digits:\n\n%1$s\n\nOnce done, your other device will be ready to use Autocrypt.</string>
     <string name="AutocryptSetupMessageSubject">Autocrypt Setup Message</string>
     <string name="AutocryptSetupMessageGeneralBody">The setup code must be entered on the other device to use your key there.</string>
-    <string name="AutocryptSetupMessageTapBody">Use this Autocrypt setup message to transfer your key between clients.\n\nTo decrypt and use your key, tap this message.</string>
+    <string name="AutocryptSetupMessageTapBody">Tap this Autocrypt setup message to decrypt your key, transferring it between programs.</string>
     <string name="AutocryptKeyTransferPleaseEnterCode">Please enter the setup code displayed on the other device.</string>
     <string name="AutocryptKeyTransferBadCode">Bad setup code.\n\nUnless you remember the setup code, you must initiate the key transfer on the other device again.</string>
     <string name="AutocryptKeyTransferSucceeded">This device can now Autocrypt with the transferred key.</string>
