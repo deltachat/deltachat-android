@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="AppName">Delta Chat</string>
+    <!--chats view-->
+    <string name="Settings">Opsætning</string>
+    <string name="NewGroup">Ny gruppe</string>
+    <string name="NoResult">Resultatløst.</string>
+    <string name="DeleteChat">Slette samtale</string>
+    <string name="SelectChat">Vælge samtale…</string>
+    <string name="Search">Søg</string>
+    <string name="Draft">Kladde</string>
+    <string name="AttachMusic">Musik</string>
+    <string name="ErrorHint">Ukendt fejl</string>
+    <string name="SdCard">SD-kort</string>
+    <string name="Folder">Mappe</string>
+    <!--chat view-->
+    <string name="ChatGallery">Galleri</string>
+    <string name="ChatCamera">Kamera</string>
+    <string name="NoMessages">Ingen meldinger.</string>
+    <string name="ForwardedMessage">Videresendt melding</string>
+    <string name="From">Fra</string>
+    <string name="NoRecent">Ingen nylige</string>
+    <string name="TypeMessage">Melding</string>
+    <string name="Share">Del</string>
+    <string name="SendItems">Send %1$s</string>
+    <!--notification-->
+    <string name="Reply">Svar</string>
+    <string name="ReplyToGroup">Svar %1$s</string>
+    <string name="ReplyToContact">Svar %1$s</string>
+    <string name="RemoveMember">Fjern medlem</string>
+    <string name="BlockContact">Blokker kontakt</string>
+    <string name="DeleteContact">Slet kontakt</string>
+    <string name="Info">Info</string>
+    <!--settings view-->
+    <string name="TextSize">Skriftstørrelse for meldinger</string>
+    <string name="DefaultForNormalMessages">Normale meldinger</string>
+    <string name="MessagePreview">Forhåndsvis melding</string>
+    <string name="DefaultForGroupMessages">Gruppemeldinger</string>
+    <string name="Sound">Lyd</string>
+    <string name="Default">Forvalg</string>
+    <string name="OnlyIfSilent">Kun når stille</string>
+    <string name="SendByEnter">Send med ↵</string>
+    <string name="Short">Kort</string>
+    <string name="Long">Lang</string>
+    <string name="RaiseToSpeak">Hev for at snakke</string>
+    <string name="EditName">Rediger navn</string>
+    <string name="NotificationsPriority">Vis</string>
+    <string name="NotificationsPriorityDefault">Normal prioritet</string>
+    <string name="SmartNotificationsTimes">tider</string>
+    <string name="SmartNotificationsWithin">indenfor</string>
+    <string name="SmartNotificationsMinutes">minutter</string>
+    <string name="Gallery">Galleri</string>
+    <string name="AllPhotos">Alle bilder</string>
+    <string name="AllVideo">Alle videoer</string>
+    <string name="Shadows">Skygger</string>
+    <string name="TintShadows">Skygger</string>
+    <string name="CurvesRed">Rød</string>
+    <string name="CurvesGreen">Grøn</string>
+    <string name="CurvesBlue">Blå</string>
+    <string name="PickerPhotos">Bilder</string>
+    <string name="PickerVideo">Video</string>
+    <string name="Cancel">Afbryd</string>
+    <string name="Edit">Rediger</string>
+    <string name="Send">Send</string>
+    <string name="Forward">Videresend</string>
+    <string name="FromCamera">Fra kamera</string>
+    <string name="FromGalley">Fra \"Galleri\"</string>
+    <string name="OK">OK</string>
+    <!--messages-->
+    <string name="AttachPhoto">Bilde</string>
+    <string name="AttachVideo">Video</string>
+    <string name="AttachGif">GIF</string>
+    <string name="AttachContact">Kontakt</string>
+    <string name="AttachDocument">Fil</string>
+    <string name="PermissionOpenSettings">Opsætning</string>
+    <!--Intro view-->
+    <string name="Intro1Headline">Delta Chat</string>
+    <string name="Audio">Lyd</string>
+    <string name="LeaveGroup">Forlad gruppe</string>
+    <string name="AskLeaveGroup">Er du sikker på at du vil forlade denne gruppe?</string>
+    <string name="Never">Aldrig</string>
+    <string name="QrScan">Skan QR-kode</string>
+    <string name="QrShow">Vis QR-kode</string>
+    <string name="OobFingerprint">Fingeraftryk</string>
+    <string name="Contact">Kontakt</string>
+    <string name="VerifiedGroup">Bekræftet gruppe</string>
+    <string name="Group">Gruppe</string>
+    </resources>

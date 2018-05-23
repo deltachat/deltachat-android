@@ -16,6 +16,7 @@ TXPREFIX="translations/delta-chat-android.stringsxml/"
 SRCPREFIX="../MessengerProj/src/main/res/values"
 
 cp "${TXPREFIX}ca.xml"    "${SRCPREFIX}-ca/strings.xml"
+cp "${TXPREFIX}da.xml"    "${SRCPREFIX}-da/strings.xml"
 cp "${TXPREFIX}de.xml"    "${SRCPREFIX}-de/strings.xml"
 #  "${TXPREFIX}en.xml"    "${SRCPREFIX}/strings.xml"   # we do not copy the source as the source cannot be modified at Trasifex
 cp "${TXPREFIX}es.xml"    "${SRCPREFIX}-es/strings.xml"

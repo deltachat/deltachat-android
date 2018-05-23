@@ -1,5 +1,9 @@
 # Delta Chat Changelog
 
+## UNRELEASED
+
+* Add Danish translation
+
 ## v0.17.3
 2018-05-17
 

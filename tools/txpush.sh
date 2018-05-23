@@ -8,6 +8,7 @@ TXPREFIX="translations/delta-chat-android.stringsxml/"
 SRCPREFIX="../MessengerProj/src/main/res/values"
 
 cp  "${SRCPREFIX}-ca/strings.xml"  "${TXPREFIX}ca.xml"
+cp  "${SRCPREFIX}-da/strings.xml"  "${TXPREFIX}da.xml"
 cp  "${SRCPREFIX}-de/strings.xml"  "${TXPREFIX}de.xml"
 cp  "${SRCPREFIX}/strings.xml"     "${TXPREFIX}en.xml"  # also copy back the source, this is the only way to update the english strings
 cp  "${SRCPREFIX}-es/strings.xml"  "${TXPREFIX}es.xml"
