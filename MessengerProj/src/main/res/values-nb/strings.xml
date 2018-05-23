@@ -443,7 +443,6 @@
     <string name="VerifiedGroup">Bekreftet gruppe</string>
     <string name="Group">Gruppe</string>
     <string name="EditedNameWillBeShared">Det redigerte gruppenavnet vil bli delt med alle dens medlemmer.</string>
-    <string name="QrShowInviteCode">Vis QR-invitasjonskode</string>
     <string name="E2EEncryptionPreferred">Ende-til-ende -kryptering foretrukket.</string>
     <string name="OobAddrVerified">%1$s bekreftet.</string>
     <string name="OobAddrVerifiedIntroduceMyself">%1$s bekreftet, sender introduksjonstekst …</string>
@@ -457,4 +456,14 @@
     Resulting strings might be "Member Alice added by me." or 'Group name changed from "Foo" to "Bar" by me.
     If you do not find a correct grammar for your language you can just use "%1$s (by me)" or "Me: %1$s" -->
     <string name="ActionBySelf">%1$s av meg.</string>
+    <string name="ExampleEmailAddr">bruker@eksempel.no</string>
+    <string name="QrScanHint">Beveg kameraet over QR-koden</string>
+
+    <string name="QrShowVerifyCode">Vis ELLER bekreft kode</string>
+    <string name="QrVerifyContactTitle">ELLER bekreft kode</string>
+    <string name="QrVerifyContactHint"><![CDATA[<b>]]>%1$s<![CDATA[</b>]]>\nSkan dette for å bekrefte en kontakt.</string>
+
+    <string name="QrShowInviteCode">Vis QR-invitasjonskode</string>
+    <string name="QrJoinVerifiedGroupTitle">QR-invitasjonskode</string>
+    <string name="QrJoinVerifiedGroupHint">Skann denne for å ta del i den bekreftede gruppen <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>.</string>
 </resources>

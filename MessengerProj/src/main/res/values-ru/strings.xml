@@ -17,7 +17,7 @@
     <string name="UnmuteNotifications">Включить уведомления</string>
     <string name="Draft">Черновик</string>
     <!--audio view-->
-    <string name="NoAudio">Добавьте файлы в музыкальную коллекцию на вашем устройстве для того, чтобы увидеть их здесь.</string>
+    <string name="NoAudio">Файлы из вашей музыкальной галереи.</string>
     <string name="AttachMusic">Музыка</string>
     <!--documents view-->
     <string name="SelectFile">Выбрать файл</string>
@@ -83,7 +83,7 @@
     <string name="Default">По умолчанию</string>
     <string name="OnlyIfSilent">Только при выключенном звуке</string>
     <string name="ChatBackground">Фон чата</string>
-    <string name="SendByEnter">Отправлять нажав «Ввод»</string>
+    <string name="SendByEnter">Оправлять нажав ↵</string>
     <string name="Help">Помощь</string>
     <string name="Enabled">Вкл</string>
     <string name="Disabled">Выкл</string>
@@ -128,7 +128,7 @@
     <string name="AutoLockInfo">Запрашивать код доступа, если превышено время ожидания.</string>
     <string name="UnlockFingerprint">Разблокировать с помощью отпечатка пальца</string>
     <string name="FingerprintInfo">Подтвердите отпечаток пальца для продолжения</string>
-    <string name="FingerprintNotRecognized">Отпечаток пальца не опознан. Повторите снова</string>
+    <string name="FingerprintNotRecognized">Отпечаток пальца не опознан. Повторите снова.</string>
     <!--photo gallery view-->
     <string name="SaveToGallery">Сохранить в «Галерее»</string>
     <string name="Of">%1$d до %2$d</string>
@@ -194,7 +194,7 @@
     <string name="AttachVoiceMessage">Голосовое сообщение</string>
     <string name="FromSelf">Я</string>
     <!--Alert messages-->
-    <string name="NoHandleAppInstalled">Нет приложений, которые могут обрабатывать тип файла \'%1$s\', пожалуйста, установите такое приложение, чтобы продолжить.</string>
+    <string name="NoHandleAppInstalled">Установите приложение для открытия данного вида \'%1$s\', файлов для продолжения.</string>
     <string name="ContactAlreadyInGroup">Контакт уже находится в этой группе.</string>
     <string name="ForwardMessagesTo">Переслать выбранные сообщения пользователю <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>?</string>
     <string name="SendMessagesTo">Отправить сообщения пользователю <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>?</string>
@@ -204,7 +204,7 @@
     <!--permissions-->
     <string name="PermissionContacts">Доступ к вашим контактам необходим для того, чтобы вы могли общаться со своими друзьями на всех ваших устройствах.</string>
     <string name="PermissionStorage">Необходим доступ к памяти вашего устройства для отправки и хранения фотографий, видео, музыки и других файлов.</string>
-    <string name="PermissionNoAudio">Доступ к микрофону для записи голосовых сообщений.</string>
+    <string name="PermissionNoAudio">Предоставьте доступ к микрофону для записи голосовых сообщений.</string>
     <string name="PermissionOpenSettings">Настройки</string>
     <!--Intro view-->
     <string name="Intro1Headline">Delta Chat</string>
@@ -263,7 +263,7 @@
         <item quantity="one">Удалить %d сообщение? Сообщение также будет удалено с сервера.</item>
         <item quantity="few">Удалить %d сообщения? Сообщения также будут удалены с сервера.</item>
         <item quantity="many">Удалить %d сообщения? Сообщения также будут удалены с сервера.</item>
-        <item quantity="other">Удалить %d сообщения? Они также будут удалены с вашего сервера.</item>
+        <item quantity="other">Удалить %d сообщения здесь и на сервере.</item>
     </plurals>
     <!-- Translators: The first string placeholder gets replaced with the
     text "%d new messages", so the complete sentence would be e.g.
@@ -332,7 +332,7 @@
     <string name="AccountSettings">Настройки аккаунта</string>
     <string name="MyAccount">Мой аккаунт</string>
     <string name="MyName">Моё имя</string>
-    <string name="MyNameExplain">Ваше имя будет видно всем участникам переписки. Если оставить поле пустым, участники переписки увидят только адрес вашей эл.почты.</string>
+    <string name="MyNameExplain">Ваше имя для показа всем участникам переписки. Если оставить поле пустым, участники переписки увидят только адрес вашей эл.почты.</string>
     <string name="Password">Пароль</string>
     <string name="SmtpPassword">SMTP пароль</string>
     <string name="FromAbove">Как указан выше</string>
@@ -441,7 +441,7 @@
     <string name="Never">Никогда</string>
     <string name="AutocryptKeyTransferInitiate">Начать передачу Сообщения Настройки Autocrypt</string>
     <string name="AutocryptKeyTransfer">Сообщение Настойки Autocrypt</string>
-    <string name="AutocryptKeyTransferMsgBeforeSend">Для <![CDATA[<i>]]>передачи Сообщения Настройки Autocrypt<![CDATA[</i>]]> необходимо, чтобы почтовый клиент на другом устройстве так же поддерживал Autocrypt.\n\nЗатем Вы можете послать ключ себе. Ключ будет зашифрован кодом настройки, который указан здесь, и который нужно будет ввести на другом устройстве.</string>
+    <string name="AutocryptKeyTransferMsgBeforeSend">Это <![CDATA[<i>]]>Сообщение Настройки Autocrypt<![CDATA[</i>]]> для безопасной передачи настроек вашего сквозного шифрования другим совместимым устройствам.\n\nЭта настройка будет зашифрована установочным кодом который указан здесь и который необходимо ввести на другом устройстве.</string>
     <string name="AutocryptKeyTransferMsgAfterSend">Вы отправили ключ себе. Теперь перейдите к другому устройству и откройте сообщение настройки. Будет предложено ввести код настройки. Введите следующие цифры:\n\n%1$s\n\nКак только Вы это сделаете, другое устройство будет готово использовать Autocrypt.</string>
     <string name="AutocryptSetupMessageSubject">Сообщение Настройки Autocrypt</string>
     <string name="AutocryptSetupMessageGeneralBody">Это Сообщение Настройки Autocrypt, используемое для передачи ключа между клиентами.\n\nДля расшифровки и использования вашего ключа откройте это сообщение в почтовом клиенте, совместимом с Autocrypt, и введите код, отображаемый на устройстве с которого отправлено сообщение.</string>
@@ -471,7 +471,6 @@
     <string name="VerifiedGroup">Проверенная группа</string>
     <string name="Group">Группа</string>
     <string name="EditedNameWillBeShared">Отредактированное имя будет разослано всем участникам группы.</string>
-    <string name="QrShowInviteCode">Показать QR код приглашения</string>
     <string name="E2EEncryptionPreferred">Предпочтено сквозное шифрование.</string>
     <string name="OobAddrVerified">%1$s верифицирован.</string>
     <string name="OobAddrVerifiedIntroduceMyself">%1$s верифицирован, представьтесь …</string>
@@ -485,4 +484,14 @@
     Resulting strings might be "Member Alice added by me." or 'Group name changed from "Foo" to "Bar" by me.
     If you do not find a correct grammar for your language you can just use "%1$s (by me)" or "Me: %1$s" -->
     <string name="ActionBySelf">%1$s от меня.</string>
+    <string name="ExampleEmailAddr">user@example.org</string>
+    <string name="QrScanHint">Направьте камеру на QR код</string>
+
+    <string name="QrShowVerifyCode">Показать доверенный QR код</string>
+    <string name="QrVerifyContactTitle">QR код верификации</string>
+    <string name="QrVerifyContactHint"><![CDATA[<b>]]>%1$s<![CDATA[</b>]]>\nСканируйте эту настройку доверенного контакта.</string>
+
+    <string name="QrShowInviteCode">Показать QR код приглашения</string>
+    <string name="QrJoinVerifiedGroupTitle">Пригласительный QR код</string>
+    <string name="QrJoinVerifiedGroupHint">Сканируйте этот код для вступления в доверенную группу <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>.</string>
 </resources>

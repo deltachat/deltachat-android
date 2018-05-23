@@ -443,7 +443,6 @@
     <string name="VerifiedGroup">Geverifieerde groep</string>
     <string name="Group">Groep</string>
     <string name="EditedNameWillBeShared">De nieuwe naam zal worden gedeeld met alle groepsleden.</string>
-    <string name="QrShowInviteCode">QR-code voor uitnodigingen weergeven</string>
     <string name="E2EEncryptionPreferred">Voorkeur voor end-to-end-versleuteling.</string>
     <string name="OobAddrVerified">%1$s is geverifieerd.</string>
     <string name="OobAddrVerifiedIntroduceMyself">%1$sis geverifieerd; introduceer me...</string>
@@ -457,4 +456,14 @@
     Resulting strings might be "Member Alice added by me." or 'Group name changed from "Foo" to "Bar" by me.
     If you do not find a correct grammar for your language you can just use "%1$s (by me)" or "Me: %1$s" -->
     <string name="ActionBySelf">%1$s door mij.</string>
+    <string name="ExampleEmailAddr">gebruiker@voorbeeld.org</string>
+    <string name="QrScanHint">Houdt je camera boven de QR-code</string>
+
+    <string name="QrShowVerifyCode">QR-verificatiecode tonen</string>
+    <string name="QrVerifyContactTitle">QR-verificatiecode</string>
+    <string name="QrVerifyContactHint"><![CDATA[<b>]]>%1$s<![CDATA[</b>]]>\nScan dit om een geverifieerde contactpersoon in te stellen.</string>
+
+    <string name="QrShowInviteCode">QR-code voor uitnodigingen weergeven</string>
+    <string name="QrJoinVerifiedGroupTitle">QR-uitnodigingscode</string>
+    <string name="QrJoinVerifiedGroupHint">Scan dit om lid te worden van een geverifieerde groep <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>.</string>
 </resources>

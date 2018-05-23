@@ -446,7 +446,7 @@
     <string name="Contact">Контакт</string>
     <string name="Group">Спільнота</string>
     <string name="EditedNameWillBeShared">Кориговане ім\'я пошириться серед усіх членів спільноти.</string>
-    <string name="QrShowInviteCode">Показати QR-код запрошення</string>
     <string name="OobAddrVerified">%1$sпідтверджено.</string>
     <string name="OobAddrVerifiedIntroduceMyself">%1$sпідтверджено, привітайтеся ...</string>
+    <string name="QrShowInviteCode">Показати QR-код запрошення</string>
     </resources>

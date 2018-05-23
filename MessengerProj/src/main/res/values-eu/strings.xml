@@ -406,7 +406,6 @@
     <string name="VerifiedGroup">Egiaztatutako taldea</string>
     <string name="Group">Taldea</string>
     <string name="EditedNameWillBeShared">Taldeko kide guztiek izango dute izen aldaketaren berri.</string>
-    <string name="QrShowInviteCode">Erakutsi QR gonbidapen-kodea</string>
     <string name="E2EEncryptionPreferred">Muturretik muturrerako zifratzea hobetsia.</string>
     <string name="OobAddrVerified">%1$s egiaztatuta.</string>
     <string name="OobAddrVerifiedIntroduceMyself">%1$s egiaztatuta, egin aurkezpena …</string>
@@ -420,4 +419,5 @@
     Resulting strings might be "Member Alice added by me." or 'Group name changed from "Foo" to "Bar" by me.
     If you do not find a correct grammar for your language you can just use "%1$s (by me)" or "Me: %1$s" -->
     <string name="ActionBySelf">%1$s nik.</string>
-</resources>
+    <string name="QrShowInviteCode">Erakutsi QR gonbidapen-kodea</string>
+    </resources>

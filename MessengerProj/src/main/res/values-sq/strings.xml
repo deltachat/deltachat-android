@@ -442,7 +442,6 @@
     <string name="VerifiedGroup">Grup i verifikuar</string>
     <string name="Group">Grup</string>
     <string name="EditedNameWillBeShared">Emri i përpunuar do të ndahet me krejt anëtarët e grupit.</string>
-    <string name="QrShowInviteCode">Shfaq kod QR ftese</string>
     <string name="E2EEncryptionPreferred">Parapëlqehet fshehtëzim skaj-më-skaj.</string>
     <string name="OobAddrVerified">%1$s u verifikua.</string>
     <string name="OobAddrVerifiedIntroduceMyself">%1$s u verifikua, prezantomë …</string>
@@ -456,4 +455,14 @@
     Resulting strings might be "Member Alice added by me." or 'Group name changed from "Foo" to "Bar" by me.
     If you do not find a correct grammar for your language you can just use "%1$s (by me)" or "Me: %1$s" -->
     <string name="ActionBySelf">%1$s nga unë.</string>
+    <string name="ExampleEmailAddr">user@example.org</string>
+    <string name="QrScanHint">Vendoseni kamerën tuaj mbi kodin QR</string>
+
+    <string name="QrShowVerifyCode">Shfaq kod verifikimi QR</string>
+    <string name="QrVerifyContactTitle">Kod verifikimi QR</string>
+    <string name="QrVerifyContactHint"><![CDATA[<b>]]>%1$s<![CDATA[</b>]]>\nSkanojeni këtë që të rregullohet një kontakt i verifikuar.</string>
+
+    <string name="QrShowInviteCode">Shfaq kod QR ftese</string>
+    <string name="QrJoinVerifiedGroupTitle">Kod ftese QR</string>
+    <string name="QrJoinVerifiedGroupHint">Skanoje këtë që të bëheni pjesë e një grupi të verifikuar <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>.</string>
 </resources>
