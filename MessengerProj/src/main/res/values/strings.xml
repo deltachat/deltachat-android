@@ -391,7 +391,7 @@
     <string name="MsgGroupImageDeleted">Group image deleted.</string>
     <string name="AskDeleteGroupImage">Are you sure to delete the group image?\n\nThis will affect all devices of all group members.</string>
     <string name="ExportImportHeader">Export and import</string>
-    <string name="ImportExportExplain">Exported files will contain your end-to-end autocrypt setup! Keep them in a safe place or delete them as soon as possible.</string>
+    <string name="ImportExportExplain">Exported files will contain your end-to-end Autocrypt setup! Keep them in a safe place or delete them as soon as possible.</string>
     <string name="EnterPasswordToContinue">Enter the password for %1$s to continue:</string>
     <string name="IncorrectPassword">Incorrect password.</string>
     <string name="ImportBackupAsk">Backup found at <![CDATA[<i>]]>%1$s<![CDATA[</i>]]>.\n\nDo you want to import and use all data and settings from it?</string>
