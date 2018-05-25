@@ -466,4 +466,6 @@
     <string name="QrShowInviteCode">Mostra codice QR di invito</string>
     <string name="QrJoinVerifiedGroupTitle">Codice QR di invito</string>
     <string name="QrJoinVerifiedGroupHint">Scansiona questo per entrare nel gruppo verificato <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>.</string>
-</resources>
+    <string name="FetchModeSaveBattery">Risparmia batteria</string>
+    <string name="FetchModePersistentConnection">Connessione persistente</string>
+    </resources>

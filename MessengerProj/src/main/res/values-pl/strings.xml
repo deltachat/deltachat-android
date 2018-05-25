@@ -494,4 +494,8 @@
     <string name="QrShowInviteCode">Pokaż kod QR zaproszenia</string>
     <string name="QrJoinVerifiedGroupTitle">Kod QR zaproszenia</string>
     <string name="QrJoinVerifiedGroupHint">Zeskanuj to, aby dołączyć do zweryfikowanej grupy <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>.</string>
+    <string name="FetchMode">Tryb pobierania</string>
+    <string name="FetchModeSaveBattery">Oszczędzaj baterię</string>
+    <string name="FetchModePersistentConnection">Stałe połączenie</string>
+    <string name="FetchModeExplain">Podczas korzystania z trybu pobierania <![CDATA[<i>]]>Oszczędzaj baterię<![CDATA[</i>]]> nowe wiadomości pojawiają się od razu, jeśli aplikacja jest na pierwszym planie oraz ze średnim opóźnieniem 30 sekund, jeśli aplikacja nie jest używana. Gdy urządzenie znajduje się w trybie drzemki, opóźnienie może być dłuższe. Jest to tryb domyślny.\n\n<![CDATA[<i>]]>Stałe połączenie<![CDATA[</i>]]> jest zazwyczaj szybsze, ale może wymagać umieszczenia aplikacji na białej liście w ustawieniach systemu w celu zwiększenia zużycia baterii.\n\nKtórego trybu pobierania chcesz używać?</string>
 </resources>

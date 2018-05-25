@@ -421,5 +421,16 @@
     <string name="AutocryptKeyTransferBadCode">Código errado. Tente novamente.\n\nSe você não se lembra do código recomece a transferência de chaves no dispositivo original.</string>
     <string name="AutocryptKeyTransferSucceeded">Chaves transferidas. Agora você está pronto para usar o Autocrypt neste dispositivo com as mesmas chaves do outro.</string>
     <string name="Retry">Repetir</string>
+    <string name="SelfTalkSubtitle">Mensagens que enviei para mim</string>
+    <string name="QrScan">Escanear código QR</string>
+    <string name="QrShow">Mostrar código QR</string>
+    <string name="QrScanContainsText">O código QR escaneado contém o seguinte texto:
+
+%1$s</string>
+    <string name="QrScanContainsUrl">O código QR escaneado contém a seguinte URL:
+
+%1$s</string>
+    <string name="OobSecureJoinRequested">%1$s entrou.</string>
+    <string name="Autocrypt">Autocrypt</string>
     <string name="Contact">Contato</string>
     </resources>

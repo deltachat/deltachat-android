@@ -465,4 +465,8 @@
     <string name="QrShowInviteCode">Shfaq kod QR ftese</string>
     <string name="QrJoinVerifiedGroupTitle">Kod ftese QR</string>
     <string name="QrJoinVerifiedGroupHint">Skanoje këtë që të bëheni pjesë e një grupi të verifikuar <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>.</string>
+    <string name="FetchMode">Mënyrë prurjesh</string>
+    <string name="FetchModeSaveBattery">Kurseni bateri</string>
+    <string name="FetchModePersistentConnection">Lidhje e qëndrueshme</string>
+    <string name="FetchModeExplain">Kur përdoret mënyra sjellje <![CDATA[<i>]]>Kurseni bateri<![CDATA[</i>]]>, mesazhet e rinj shfaqen menjëherë, nëse aplikacioni gjendet në prapaskenë dhe me një vonesë mesatarisht 30 sekondash, nëse aplikacioni nuk është në përdorim. Kur pajisja gjendet nën mënyrën <em>doze</em>, vonesa mund të jetë më e madhe. Kjo është mënyra parazgjedhje.\n\n<![CDATA[<i>]]>Lidhja e qëndrueshme<![CDATA[</i>]]> është përgjithësisht më e shpejtë, por mund të kërkojë që aplikacioni të lejohet nga sistemi të harxhojë më tepër bateri.\n\nCilën mënyrë prurjesh doni të përdoret?</string>
 </resources>

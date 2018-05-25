@@ -7,83 +7,268 @@
     <!--chats view-->
     <string name="Settings">Opsætning</string>
     <string name="NewGroup">Ny gruppe</string>
-    <string name="NoResult">Resultatløst.</string>
+    <string name="NoResult">Ingen resultat.</string>
+    <string name="NoChats">Ingen samtaler endnu</string>
     <string name="DeleteChat">Slette samtale</string>
     <string name="SelectChat">Vælge samtale…</string>
-    <string name="Search">Søg</string>
+    <string name="Search">Søge</string>
+    <string name="MuteNotifications">Ingen lyd påmindelser</string>
+    <string name="MuteFor">Ingen lyd i %1$s</string>
+    <string name="UnmuteNotifications">Lyd</string>
     <string name="Draft">Kladde</string>
+    <!--audio view-->
+    <string name="NoAudio">Filer fra musik bibliotek.</string>
     <string name="AttachMusic">Musik</string>
+    <!--documents view-->
+    <string name="SelectFile">Vælge fil</string>
+    <string name="FreeOfTotal">%1$s af %2$s fri</string>
     <string name="ErrorHint">Ukendt fejl</string>
-    <string name="SdCard">SD-kort</string>
+    <string name="AccessError">Adgangsfejl</string>
+    <string name="NoFiles">Ingen files endnu...</string>
+    <string name="NotMounted">Lager ikke monteret</string>
+    <string name="UsbActive">USB overførsel i fremgang</string>
+    <string name="InternalStorage">Internt lager</string>
+    <string name="ExternalStorage">Eksternt lager</string>
+    <string name="SystemRoot">System root</string>
+    <string name="SdCard">SD kort</string>
     <string name="Folder">Mappe</string>
+    <string name="GalleryInfo">Sende dekomprimerede billeder</string>
     <!--chat view-->
     <string name="ChatGallery">Galleri</string>
     <string name="ChatCamera">Kamera</string>
-    <string name="NoMessages">Ingen meldinger.</string>
-    <string name="ForwardedMessage">Videresendt melding</string>
+    <string name="NoMessages">Ingen beskeder</string>
+    <string name="ForwardedMessage">Videresendt besked</string>
     <string name="From">Fra</string>
     <string name="NoRecent">Ingen nylige</string>
-    <string name="TypeMessage">Melding</string>
-    <string name="Share">Del</string>
+    <string name="TypeMessage">Besked</string>
+    <string name="SlideToCancel">Glide for at annullere</string>
+    <string name="SaveToDownloads">Gemme i \"Downloads\"</string>
+    <string name="SaveToMusic">Gemme i \"Music\"</string>
+    <string name="Share">Dele</string>
     <string name="SendItems">Send %1$s</string>
+    <string name="ClearRecentEmoji">Rydde nylige emoji?</string>
+    <string name="AddShortcut">Tilføje kontrol til hjemmeskærm</string>
+    <string name="ShortcutAdded">Køntrol tilføjet hjemmeskærm</string>
     <!--notification-->
-    <string name="Reply">Svar</string>
-    <string name="ReplyToGroup">Svar %1$s</string>
-    <string name="ReplyToContact">Svar %1$s</string>
-    <string name="RemoveMember">Fjern medlem</string>
-    <string name="BlockContact">Blokker kontakt</string>
-    <string name="DeleteContact">Slet kontakt</string>
-    <string name="Info">Info</string>
+    <string name="Reply">Svare</string>
+    <string name="ReplyToGroup">Svare %1$s</string>
+    <string name="ReplyToContact">Svare %1$s</string>
+    <!--contacts view-->
+    <string name="NoContacts">Ingen kontakter endnu</string>
+    <!--group create view-->
+    <string name="SendMessageTo">Sende besked til...</string>
+    <string name="EnterGroupNamePlaceholder">Indtaste gruppenavn</string>
+    <!--group info view-->
+    <string name="AddMember">Tilføje medlem</string>
+    <string name="Notifications">Påmindelser</string>
+    <string name="RemoveMember">Fjerne medlem</string>
+    <!--contact info view-->
+    <string name="NewContactTitle">Tilføje kontakt</string>
+    <string name="BlockContact">Blokere kontakt</string>
+    <string name="DeleteContact">Slette kontakt</string>
+    <string name="Info">Oplysning</string>
     <!--settings view-->
-    <string name="TextSize">Skriftstørrelse for meldinger</string>
-    <string name="DefaultForNormalMessages">Normale meldinger</string>
-    <string name="MessagePreview">Forhåndsvis melding</string>
-    <string name="DefaultForGroupMessages">Gruppemeldinger</string>
+    <string name="TextSize">Skriftstørrelse for beskeder</string>
+    <string name="UnblockContact">Fjerne kontakt blokering</string>
+    <string name="NoBlocked">Ingen blokerede kontaker endnu</string>
+    <string name="DefaultForNormalMessages">Normale beskeder</string>
+    <string name="MessagePreview">Forhåndsvis besked</string>
+    <string name="DefaultForGroupMessages">Gruppe beskeder</string>
     <string name="Sound">Lyd</string>
-    <string name="Default">Forvalg</string>
+    <string name="InAppNotifications">I program påmindelse</string>
+    <string name="Vibrate">Vibrere</string>
+    <string name="ResetAllNotifications">Nulstille alle påmindelser</string>
+    <string name="NotificationsAndSounds">Påmindelser og lyde</string>
+    <string name="BlockedContacts">Blokerede kontakter</string>
+    <string name="Default">Standard</string>
     <string name="OnlyIfSilent">Kun når stille</string>
+    <string name="ChatBackground">Samtale baggrund</string>
     <string name="SendByEnter">Send med ↵</string>
+    <string name="Help">Hjælp</string>
+    <string name="Enabled">Til</string>
+    <string name="Disabled">Fra</string>
+    <string name="LedColor">LED farve</string>
+    <string name="BadgeNumber">Bruge ikon for at holde antal hvis muligt</string>
     <string name="Short">Kort</string>
     <string name="Long">Lang</string>
-    <string name="RaiseToSpeak">Hev for at snakke</string>
-    <string name="EditName">Rediger navn</string>
-    <string name="NotificationsPriority">Vis</string>
+    <string name="RaiseToSpeak">Hæve for at tale</string>
+    <string name="EditName">Redigere navn</string>
+    <string name="NotificationsPriority">Vise</string>
     <string name="NotificationsPriorityDefault">Normal prioritet</string>
-    <string name="SmartNotificationsTimes">tider</string>
-    <string name="SmartNotificationsWithin">indenfor</string>
+    <string name="NotificationsPriorityHigh">Høj prioritet</string>
+    <string name="NotificationsPriorityMax">Højeste prioritet</string>
+    <string name="RepeatNotifications">Gentage påmindelser</string>
+    <string name="NotificationsOther">Andre</string>
+    <string name="InChatSound">I samtale lyde</string>
+    <string name="SmartNotifications">Begrænse påmindelser</string>
+    <string name="SmartNotificationsSoundAtMost">Maks.</string>
+    <string name="SmartNotificationsTimes">gange</string>
+    <string name="SmartNotificationsWithin">inden for</string>
     <string name="SmartNotificationsMinutes">minutter</string>
+    <string name="DirectShare">Direkte deling</string>
+    <string name="DirectShareInfo">Vise nylige samtaler i dele menu</string>
+    <!--cache view-->
+    <string name="CacheSettings">Lager</string>
+    <string name="KeepMedia">Beholde medie</string>
+    <!--passcode view-->
+    <string name="Passcode">Adgangskode lås</string>
+    <string name="ChangePasscode">Ændre adgangskode</string>
+    <string name="PasscodePassword">Adgangskode</string>
+    <string name="EnterCurrentPasscode">Indtaste nuværende adgangskode</string>
+    <string name="EnterNewFirstPasscode">Indtaste adgangskode</string>
+    <string name="EnterNewPasscode">Indtaste ny adgangskode</string>
+    <string name="EnterYourPasscode">Indtaste adgangskode</string>
+    <string name="ReEnterYourPasscode">Genindtaste ny adgangskode</string>
+    <string name="PasscodeDoNotMatch">Adgangskode passer ikke</string>
+    <string name="AutoLock">Automatisk låse</string>
+    <string name="AutoLockInfo">Påkræve adgangskode hvis væk i en tid.</string>
+    <string name="UnlockFingerprint">Låse op med fingeraftryk</string>
+    <string name="FingerprintInfo">Bekræfte fingeraftryk for at fortsætte</string>
+    <string name="FingerprintNotRecognized">Kan ikke genkende fingeraftryk. Prøv igen.</string>
+    <!--photo gallery view-->
+    <string name="SaveToGallery">Gemme til \"Gallery\"</string>
+    <string name="Of">%1$d af %2$d</string>
     <string name="Gallery">Galleri</string>
-    <string name="AllPhotos">Alle bilder</string>
+    <string name="AllPhotos">Alle billeder</string>
     <string name="AllVideo">Alle videoer</string>
+    <string name="NoPhotos">Ingen billeder endnu</string>
+    <string name="NoVideo">Ingen videoer endnu</string>
+    <string name="CropImage">Beskære billede</string>
+    <string name="EditImage">Redigere billede</string>
+    <string name="Enhance">Forbedre</string>
+    <string name="Contrast">Kontrast</string>
+    <string name="Warmth">Varme</string>
     <string name="Shadows">Skygger</string>
     <string name="TintShadows">Skygger</string>
+    <string name="Curves">Kurver</string>
+    <string name="CurvesAll">Alle</string>
     <string name="CurvesRed">Rød</string>
     <string name="CurvesGreen">Grøn</string>
     <string name="CurvesBlue">Blå</string>
-    <string name="PickerPhotos">Bilder</string>
+    <string name="BlurOff">Fra</string>
+    <string name="BlurLinear">Lineær</string>
+    <string name="ClearButton">Rydde</string>
+    <string name="PickerPhotos">Billeder</string>
     <string name="PickerVideo">Video</string>
-    <string name="Cancel">Afbryd</string>
-    <string name="Edit">Rediger</string>
-    <string name="Send">Send</string>
-    <string name="Forward">Videresend</string>
+    <!--privacy settings-->
+    <string name="PrivacySettings">Privatliv og sikkerhed</string>
+    <string name="SecurityTitle">Sikkerhed</string>
+    <!--edit video view-->
+    <string name="SendVideo">Sende video</string>
+    <string name="Cancel">Afbryde</string>
+    <string name="Edit">Redigere</string>
+    <string name="Send">Sende</string>
+    <string name="Delete">Slette</string>
+    <string name="Forward">Videresende</string>
     <string name="FromCamera">Fra kamera</string>
-    <string name="FromGalley">Fra \"Galleri\"</string>
-    <string name="OK">OK</string>
+    <string name="FromGalley">Fra \"Gallery\"</string>
+    <string name="Set">Sætte</string>
+    <string name="OK">O.k.</string>
+    <string name="Crop">Beskære</string>
     <!--messages-->
-    <string name="AttachPhoto">Bilde</string>
+    <string name="AttachPhoto">Billede</string>
     <string name="AttachVideo">Video</string>
     <string name="AttachGif">GIF</string>
     <string name="AttachContact">Kontakt</string>
     <string name="AttachDocument">Fil</string>
+    <string name="AttachVoiceMessage">Tale besked</string>
     <string name="PermissionOpenSettings">Opsætning</string>
     <!--Intro view-->
     <string name="Intro1Headline">Delta Chat</string>
+    <string name="Intro2Headline">Uafhængig</string>
+    <string name="Intro4Headline">Kraftfuld</string>
+    <string name="Intro5Headline">Fri</string>
+    <string name="Intro6Headline">Krypteret</string>
+    <string name="Intro7Headline">Troværdig</string>
+
+    <string name="IntroStartMessaging">Starte besked</string>
+    <!--plural-->
+    <plurals name="Members">
+        <item quantity="one">%d medlem</item>
+        <item quantity="other">%d medlemmer</item>
+    </plurals>
+    <plurals name="Contacts">
+        <item quantity="one">%d kontakt</item>
+        <item quantity="other">%d kontakter</item>
+    </plurals>
+    <plurals name="messages">
+        <item quantity="one">%d besked</item>
+        <item quantity="other">%d beskeder</item>
+    </plurals>
+    <!-- Translators: The first string placeholder gets replaced with the
+    text "%d new messages", so the complete sentence would be e.g.
+    "4 new messages in 2 chats". -->
+    <plurals name="NewMessagesInChats">
+        <item quantity="one">%1$s i %2$d samtale</item>
+        <item quantity="other">%1$s i %2$d samtaler</item>
+    </plurals>
+    <plurals name="Chats">
+        <item quantity="one">%d samtale</item>
+        <item quantity="other">%d samtaler</item>
+    </plurals>
+    <plurals name="Minutes">
+        <item quantity="one">%d minut</item>
+        <item quantity="other">%d minutter</item>
+    </plurals>
+    <plurals name="Hours">
+        <item quantity="one">%d time</item>
+        <item quantity="other">%d timer</item>
+    </plurals>
+    <plurals name="Days">
+        <item quantity="one">%d dag</item>
+        <item quantity="other">%d dage</item>
+    </plurals>
+    <plurals name="Weeks">
+        <item quantity="one">%d uge</item>
+        <item quantity="other">%d uger</item>
+    </plurals>
+    <plurals name="Months">
+        <item quantity="one">%d månede</item>
+        <item quantity="other">%d måneder</item>
+    </plurals>
+    <string name="AccountSettings">Konto opsætning</string>
+    <string name="MyAccount">Konto</string>
+    <string name="MyName">Navn</string>
+    <string name="Password">Adgangskode</string>
+    <string name="SmtpPassword">SMTP adgangskode</string>
+    <string name="FromAbove">Fra ovenfor</string>
+    <string name="SmtpLoginname">SMTP log ind navn</string>
+    <string name="SmtpPort">SMTP port</string>
+    <string name="Automatic">Automatisk</string>
+    <string name="ImapServer">IMAP server</string>
+    <string name="ImapLoginname">IMAP log ind navn</string>
+    <string name="ImapPort">IMAP port</string>
+    <string name="InboxHeadline">Indbakke</string>
+    <string name="OutboxHeadline">Udbakke</string>
+    <string name="AccountNotConfigured">Konto ikke opsat</string>
+    <string name="AboutThisProgram">Om Delta Chat</string>
+    <string name="NewChat">Ny samtale</string>
+    <string name="Deaddrop">Kontakt forespørgsel</string>
+    <string name="MuteAlways">Altid afbrudt</string>
+    <string name="Name" >Navn</string>
+    <string name="EmailAddress">E-post adresse</string>
+    <string name="ContactCreated">Kontakt oprettet</string>
+    <string name="ViewProfile">Vise profil</string>
+    <!-- Translators: please use a very short string here, it should not much longer than
+    the string needed for video time+size (0:00, 12,3 Mib) -->
+    <string name="OneMoment">Øjeblik…</string>
+    <string name="InviteMenuEntry">Sende invitationer</string>
+    <string name="AdvancedSettings">Advanceret</string>
+    <string name="AttachFiles">Vedhæfte filer</string>
+    <string name="MsgGroupImageChanged">Gruppe billede ændret</string>
+    <string name="MsgMemberAddedToGroup">Medlem %1$s tilføjet.</string>
+    <string name="MsgMemberRemovedFromToGroup">Medlem %1$s fjernet.</string>
+    <string name="MsgGroupLeft">Forladt gruppe</string>
+    <string name="E2EManagePrivateKeys">Håndtere nøgler</string>
+    <string name="E2ECompareKeys">Sammenligne nøgler</string>
+    <string name="ForwardToTitle">Videresende til...</string>
+    <string name="SelectContact">Vælge kontakt</string>
     <string name="Audio">Lyd</string>
-    <string name="LeaveGroup">Forlad gruppe</string>
-    <string name="AskLeaveGroup">Er du sikker på at du vil forlade denne gruppe?</string>
+    <string name="LeaveGroup">Forlade gruppe</string>
+    <string name="AskLeaveGroup">Forlade denne gruppe?</string>
     <string name="Never">Aldrig</string>
-    <string name="QrScan">Skan QR-kode</string>
-    <string name="QrShow">Vis QR-kode</string>
+    <string name="QrScan">Skanne QR-kode</string>
+    <string name="QrShow">Vise QR-kode</string>
     <string name="OobFingerprint">Fingeraftryk</string>
     <string name="Contact">Kontakt</string>
     <string name="VerifiedGroup">Bekræftet gruppe</string>

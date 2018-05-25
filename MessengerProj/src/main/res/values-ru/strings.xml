@@ -71,7 +71,7 @@
     <string name="TextSize">Размер шрифта сообщений</string>
     <string name="UnblockContact">Разблокировать контакт</string>
     <string name="NoBlocked">Пока нет заблокированных контактов</string>
-    <string name="DefaultForNormalMessages">Обычное сообщение</string>
+    <string name="DefaultForNormalMessages">Обычные сообщение</string>
     <string name="MessagePreview">Предпросмотр сообщения</string>
     <string name="DefaultForGroupMessages">Сообщения группы</string>
     <string name="Sound">Звук</string>
@@ -86,13 +86,13 @@
     <string name="SendByEnter">Оправлять нажав ↵</string>
     <string name="Help">Помощь</string>
     <string name="Enabled">Вкл</string>
-    <string name="Disabled">Выкл</string>
+    <string name="Disabled">Выкл.</string>
     <string name="LedColor">Цвет LED</string>
     <string name="BadgeNumber">Задействовать иконку для ведения счёта, по возможности</string>
     <string name="Short">Короткая</string>
     <string name="Long">Длинная</string>
     <string name="RaiseToSpeak">Открыть для разговора</string>
-    <string name="EditName">Правка имени</string>
+    <string name="EditName">Изменить название</string>
     <string name="NotificationsPriority">Просмотр</string>
     <string name="NotificationsPriorityDefault">Нормальный приоритет</string>
     <string name="NotificationsPriorityHigh">Высокий приоритет</string>
@@ -159,7 +159,7 @@
     <string name="CurvesGreen">Зелёный</string>
     <string name="CurvesBlue">Синий</string>
     <string name="Blur">Размытие</string>
-    <string name="BlurOff">Выкл</string>
+    <string name="BlurOff">Выкл.</string>
     <string name="BlurLinear">Линейность</string>
     <string name="BlurRadial">Радиальный</string>
     <string name="DiscardChanges">Отменить изменения?</string>
@@ -357,7 +357,7 @@
     <string name="AskStartChatWith">Начать чат с <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>?</string>
     <string name="DeaddropHint">Чтобы начать чат, нажмите стрелку ответа.</string>
     <string name="NotYetImplemented">Эта функция недоступна или в разработке.</string>
-    <string name="DefaultStatusText">Отправлено с помощью мессенджера Delta Chat: https://delta.chat/ru</string>
+    <string name="DefaultStatusText">Отправлено с помощью мессенджера Delta Chat: https://delta.chat</string>
     <string name="Name" >Имя</string>
     <string name="EmailAddress">Адрес электронной почты</string>
     <string name="CannotDeleteContact">Невозможно удалить контакты во время их использования, вместо этого заблокируйте контакт.</string>
@@ -369,8 +369,8 @@
     <string name="OneMoment">Один момент …</string>
     <string name="NoChatsHelp">Начните обмен сообщениями, нажав кнопку нового чата в нижнем правом углу, или коснитесь кнопки меню для получения дополнительных возможностей.</string>
     <string name="Intro7Message"><![CDATA[<b>Delta Chat</b>]]> безопасен для использования в бизнесе, основан на совместимых стандартах.</string>
-    <string name="InviteMenuEntry">Отправить приглашения</string>
-    <string name="InviteText">Я использую мессенджер Delta Chat - %1$s - вы можете написать мне на %2$s</string>
+    <string name="InviteMenuEntry">Отправить приглашение</string>
+    <string name="InviteText">Сейчас я использую мессенджер Delta Chat - %1$s - вы можете написать мне на %2$s</string>
     <string name="AdvancedSettings">Расширенные настройки</string>
     <string name="AskResetNotifications">Сбросить все настройки звуков и уведомлений для контактов и групп на этой странице?</string>
     <string name="AttachFiles">Прикрепить файлы</string>
@@ -419,7 +419,7 @@
     <string name="MsgGroupImageDeleted">Изображение группы удалено.</string>
     <string name="AskDeleteGroupImage">Вы действительно хотите удалить изображение группы?\n\nИзменение вступит в силу на всех устройствах участников группы.</string>
     <string name="ExportImportHeader">Экспорт и импорт</string>
-    <string name="ImportExportExplain">Файлы экспорта будут содержать закрытые ключи! Храните их в защищенном месте или удалите при первой возможности.</string>
+    <string name="ImportExportExplain">Файлы экспорта будут содержать закрытые ключи шифрования настройки Autocrypt! Храните их в защищенном месте или удалите при первой возможности.</string>
     <string name="EnterPasswordToContinue">Введите пароль для %1$s, чтобы продолжить:</string>
     <string name="IncorrectPassword">Неверный пароль.</string>
     <string name="ImportBackupAsk">Delta Chat нашел резервную копию в <![CDATA[<i>]]>%1$s<![CDATA[</i>]]>.\n\nИмпортировать и использовать все данные и настройки из резервной копии?</string>
@@ -451,7 +451,7 @@
     <string name="AutocryptKeyTransferSucceeded">Ключ передан успешно. Сейчас это устройство может использовать Autocrypt с тем же ключом, что и на другом устройстве.</string>
     <string name="Retry">Повторить</string>
     <string name="SelfTalkSubtitle">Сообщения отправленные самому себе</string>
-    <string name="QrScan">Сканировать QR код</string>
+    <string name="QrScan">Сканирование QR кода</string>
     <string name="QrShow">Показать QR код</string>
     <string name="QrScanContainsText">Отсканированный QR код содержит текст:\n\n%1$s</string>
     <string name="QrScanContainsUrl">QR код для перехода по ссылке URL:\n\n%1$s</string>
@@ -485,13 +485,17 @@
     If you do not find a correct grammar for your language you can just use "%1$s (by me)" or "Me: %1$s" -->
     <string name="ActionBySelf">%1$s от меня.</string>
     <string name="ExampleEmailAddr">user@example.org</string>
-    <string name="QrScanHint">Направьте камеру на QR код</string>
+    <string name="QrScanHint">Наведите камеру на QR код</string>
 
-    <string name="QrShowVerifyCode">Показать доверенный QR код</string>
-    <string name="QrVerifyContactTitle">QR код верификации</string>
+    <string name="QrShowVerifyCode">Показать проверочный QR код</string>
+    <string name="QrVerifyContactTitle">Проверочный QR код</string>
     <string name="QrVerifyContactHint"><![CDATA[<b>]]>%1$s<![CDATA[</b>]]>\nСканируйте эту настройку доверенного контакта.</string>
 
     <string name="QrShowInviteCode">Показать QR код приглашения</string>
     <string name="QrJoinVerifiedGroupTitle">Пригласительный QR код</string>
     <string name="QrJoinVerifiedGroupHint">Сканируйте этот код для вступления в доверенную группу <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>.</string>
+    <string name="FetchMode">Режим выборки</string>
+    <string name="FetchModeSaveBattery">Сохранять баратею</string>
+    <string name="FetchModePersistentConnection">Постоянное соединение</string>
+    <string name="FetchModeExplain">Когда используется режим выборки <![CDATA[<i>]]>Сохранять батарею<![CDATA[</i>]]>, новые сообщения появляются сразу, если приложение находится в фоне, если приложение не используется, с задержкой в 30 секунд. Когда устройство находится в «Спящем режиме» задержка может быть дольше. Это режим по умолчанию.\n\n<![CDATA[<i>]]>Постоянное соединение<![CDATA[</i>]]> обычно сообщения приходят быстрее, но в таком случае расход батареи может быть значительным.\n\nКакой режим выборки вы желаете использовать?</string>
 </resources>

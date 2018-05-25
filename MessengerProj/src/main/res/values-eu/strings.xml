@@ -203,15 +203,28 @@
     <string name="AreYouSureDeleteContact">Ziur kontaktu hau ezabatu nahi duzula?</string>
     <!--permissions-->
     <string name="PermissionContacts">Kontaktuak atzitzeko baimena behar da zure lagunekin gailu guztietan konektatu ahal izateko.</string>
+    <string name="PermissionStorage">Biltegiratzera sarbidea behar da argazkiak, bideoak, musika eta bestelako multimedia bidali eta gordetzeko.</string>
     <string name="PermissionNoAudio">Mikrofonoa atzitzeko baimena behar da ahots mezuak bidali ahal izateko.</string>
     <string name="PermissionOpenSettings">Ezarpenak</string>
     <!--Intro view-->
     <string name="Intro1Headline">Delta Chat</string>
+    <string name="Intro1Message">Munduan <![CDATA[<b>erabiltzaile gehien dituen</b>]]> mezularia. <![CDATA[<b>Librea</b>]]> eta <![CDATA[<b>independientea</b>]]>.</string>
+
     <string name="Intro2Headline">Independientea</string>
+    <string name="Intro2Message"><![CDATA[<b>Ez dago Delta Chat zerbitzaririk.</b>]]> Aplikazioak zure e-mail zerbitzaria besterik ez du erabiltzen.</string>
+
     <string name="Intro3Headline">Azkarra</string>
+    <string name="Intro3Message"><![CDATA[<b>Bidali mezuak</b>]]> segundotan.<![CDATA[<br/>]]>Interfaze azkarra.</string>
+
     <string name="Intro4Headline">Ahaltsua</string>
+    <string name="Intro4Message"><![CDATA[<b>Muga gabeko</b>]]> txat, irudi, bideo, eta audio mezuak eta askoz gehiago. Bezero anitzetarako prest.</string>
+
     <string name="Intro5Headline">Librea</string>
+    <string name="Intro5Message"><![CDATA[<b>Delta Chat</b>]]> betirako doan da.<![CDATA[<br/>]]>Kode irekikoa. Iragarkirik gabe. Harpidetzarik gabe. Hornitzaile bati lotu gabe.</string>
+
     <string name="Intro6Headline">Zifratua</string>
+    <string name="Intro6Message"><![CDATA[<b>Zifratua</b>]]> algoritm,o ezagunen bidez. Mezuak zure zerbitzarian mantentzen dira.</string>
+
     <string name="Intro7Headline">Fidagarria</string>
 
     <string name="IntroStartMessaging">Hasi txateatzen</string>
@@ -305,6 +318,7 @@
     <string name="InboxHeadline">Sarrera ontzia</string>
     <string name="OutboxHeadline">Irteera ontzia</string>
     <string name="MyAccountExplain">E-mail hornitzaile ezagunentzat, ezarpen gehigarriak automatikoki zehaztuko dira.</string>
+    <string name="MyAccountExplain2" >Batzuetan, <![CDATA[<b>]]>IMAP gaitu behar da<![CDATA[</b>]]> e-mail zerbitzuaren web interfazean.\n\nGaldetu zure e-mail hornitzaileari edo lagunei arazoak badituzu.</string>
     <string name="AccountNotConfigured">Kontua konfiguratu gabe</string>
     <string name="AboutThisProgram">Delta Chat-i buruz</string>
     <string name="NotSet">Ezarri gabe</string>
@@ -312,6 +326,7 @@
     <string name="Deaddrop">Kontaktu eskaera</string>
     <string name="DeaddropInChatlist">Erakutsi kontaktu eskaerak txat zerrendan</string>
     <string name="MuteAlways">Beti mutututa</string>
+    <string name="AskStartChatWith">Txateatu <![CDATA[<b>]]>%1$s<![CDATA[</b>]]> erabiltzailearekin?</string>
     <string name="DeaddropHint">Sakatu erantzun geziak txateatzen hasteko.</string>
     <string name="NotYetImplemented">Funtzio hau ez dago eskuragarri edo osorik.</string>
     <string name="DefaultStatusText">Delta Chat mezulariarekin bidalita: https://delta.chat</string>
@@ -332,6 +347,7 @@
     <string name="AskResetNotifications">Leheneratu jakinarazpen eta soinuen ezarpen guztiak uneko orria, kontaktuak eta taldeetan?</string>
     <string name="AttachFiles">Erantsi fitxategiak</string>
     <string name="ErrGroupNameEmpty">Sartu izen bat taldearentzat.</string>
+    <string name="MsgNewGroupDraftHint">Idatzi lehen mezua, besteei taldean erantzutea ahalbidetuz,\n\n• Ez dute zertan denek Delta Chat erabili behar\n\n• Lehen mezua bidaltzeko denboratxo bat behar daiteke.</string>
     <string name="MsgNewGroupDraft">Kaixo, \"%1$s\" taldea sortu dut guretzat.</string>
     <string name="MsgGroupNameChanged">Taldearen izena aldatuta \"%1$s\"-tik \"%2$s\"-ra</string>
     <string name="MsgGroupImageChanged">Taldeko irudia aldatu da.</string>
@@ -341,6 +357,7 @@
     <string name="AskRemoveMemberFromGroup">Kendu <![CDATA[<b>]]>%1$s<![CDATA[</b>]]> taldetik?</string>
     <string name="ErrSelfNotInGroup">Taldeko kidea izan behar zara ekintza hau burutzeko.</string>
     <string name="MsgGroupLeft">Taldetik aterata.</string>
+    <string name="NoMessagesHint">Bidali mezua <![CDATA[<b>]]>%1$s<![CDATA[</b>]]> erabiltzaileari:\n\n• Ongi dago <![CDATA[<b>]]>%2$s<![CDATA[</b>]]> erabiltzaileak ez badu Delta Chat erabiltzen.\n\n• Lehen mezua bidaltzeko denbora bat beharko da.</string>
     <string name="SendNRcvReadReceipts">Jaso eta bidali irakurragiriak</string>
     <string name="PreferE2EEncryption">Hobetsi muturretik muturrerako zifratzea</string>
     <string name="E2EManagePrivateKeys">Kudeatu gako sekretuak</string>
@@ -357,24 +374,34 @@
     <string name="PermNotificationText">Mezuen zain ...</string>
     <string name="SettingsFor">%1$s zerbitzariko ezarpenak</string>
     <string name="AutoplayGifs">Abiatu GIF-ak automatikoki</string>
+    <string name="HelpUrl">https://delta.chat/en/help</string>
     <string name="EncryptedMessage">Zifratutako mezua</string>
     <string name="Encryption">Zifratzea</string>
+    <string name="EncrinfoE2EAvailable">Muturretik muturrerako zifratzea eskuragarri.</string>
     <string name="EncrinfoTransport">Garraio-zifratzea nire zerbitzarira arte gutxienez.</string>
     <string name="EncrinfoNone">Zifratzerik ez nire zerbitzarira.</string>
     <string name="EncrinfoFingerprints">Hatz-markak</string>
     <string name="Backup">Babeskopia</string>
     <string name="ImportBackupExplain2">Babeskopia bat inportatzeko, kopiatu babeskopia hemen <![CDATA[<i>]]>%1$s<![CDATA[</i>]]> eta berriro instalatu aplikazioa.</string>
+    <string name="ReadReceiptMailBody">Hau \"%1$s\" mezuaren irakurragiri bat da.\n\nMezua hartzailearen gailuan bistaratu dela esan nahi du, baina ez du zertan esan nahi irakurri dela.</string>
     <string name="ReadReceipt">Itzuli irakurragiria</string>
     <string name="NameAndStatus">Izena eta leloa</string>
     <string name="MyStatus">Nire leloa</string>
     <string name="MyStatusExplain">Leloa e-mailen oinean eta beste toki batzuetan ikusten da.</string>
     <string name="MsgGroupImageDeleted">Taldearen irudia ezabatuta.</string>
+    <string name="AskDeleteGroupImage">Ziur taldearen irudia ezabatu nahi duzula??\n\nHonek taldeko kideen gailu guztietan izango du eragina.</string>
     <string name="ExportImportHeader">Esportatu eta inportatu</string>
+    <string name="ImportExportExplain">Esportatutako fitxategiek zure muturretik muturrerako zifratzerako Autocrypt ezarpenak izango dituzte! Gorde toki seguruan edo ezabatu ahalik eta lasterren.</string>
+    <string name="EnterPasswordToContinue">Sartu %1$s pasahitza jarraitzeko</string>
     <string name="IncorrectPassword">Pasahitz okerra.</string>
+    <string name="ImportBackupAsk">Babes-kopia aurkitu da hemen: <![CDATA[<i>]]>%1$s<![CDATA[</i>]]>.\n\nInportatu nahi duzu eta bertako datu eta ezarpenak erabili?</string>
     <string name="ImportBackup">Inportatu babeskopia</string>
+    <string name="NoBackupFound">Ez da babes-kopiarik aurkitu.\n\nKopiatu babes-kopia <![CDATA[<i>]]>%1$s<![CDATA[</i>]]> helbidera eta saiatu berriro. Bestela, sakatu \"Hazi txateatzen\" ezarpen prozesu arrunta jarraitzeko.</string>
+    <string name="FilesSuccessfullyExported">Fitxategiak hona esportatu dira: <![CDATA[<i>]]>%1$s<![CDATA[</i>]]>.</string>
     <string name="ExportBackup">Esportatu babeskopia</string>
     <string name="ExportPrivateKeys">Esportatu gako pribatuak</string>
     <string name="ImportPrivateKeys">Inportatu gako pribatuak</string>
+    <string name="ImportPrivateKeysAsk2">Inportatu gako sekretuak <![CDATA[<i>]]>%1$s<![CDATA[</i>]]> helbidetik?\n\n• Sauden gako sekretuak ez dira ezabatuko\n\n• Inportatutako azken gakoa lehenetsitako gako berria izango da</string>
     <string name="NoRecentEmoji">Erabilitako azken emojiak hemen agertuko dira.</string>
     <string name="NotNow">Orain ez</string>
     <string name="ArchiveChat">Artxibatu txata</string>
@@ -386,6 +413,8 @@
     <string name="Never">Inoiz ez</string>
     <string name="AutocryptKeyTransferInitiate">Hasi Autocrypt gakoen transferentzia</string>
     <string name="AutocryptKeyTransfer">Autocrypt gakoen transferentzia</string>
+    <string name="AutocryptKeyTransferMsgBeforeSend"><![CDATA[<i>]]>Autocrypt ezarpen mezu<![CDATA[</i>]]> batek modu seguruan partekatzen du zure muturretik muturrerako zifratzerako ezarpena Autocrypt onartzen duten beste aplikazioekin.\n\nEzarpena hemen erakutsitako ezarpen-kode honekin zifratuko da, eta kode hau beste gailuan idatzi behar da.</string>
+    <string name="AutocryptKeyTransferMsgAfterSend">Zure ezarpena zure buruari bidali diozu. Zoaz beste gailura eta ireki ezarpen mezua. Ezarpen-kodea eskatuko zaizu. Idatzi honako zenbaki hauek eskatutako tokian:\n\n%1$s\n\nBehin eginda, zure beste gailua Autocrypt erabiltzeko prest egongo da.</string>
     <string name="AutocryptSetupMessageSubject">Autocrypt ezarpen mezua</string>
     <string name="AutocryptSetupMessageGeneralBody">Hau zure gakoa bezeroen artean transferitzeko erabilitako Autocrypt ezarpen mezua da.\n\nDeszifratu eta zure gakoa erabiltzeko, ireki mezua Autocrypt onartzen duen bezero batean eta sartu gailu sortzailean erakutsitako ezarpen kodea.</string>
     <string name="AutocryptSetupMessageTapBody">Hau zure gakoa bezeroen artean transferitzeko erabilitako Autocrypt ezarpen mezua da.\n\nDeszifratu eta zure gakoa erabiltzeko, sakatu mezu hau.</string>
@@ -396,9 +425,17 @@
     <string name="SelfTalkSubtitle">Nire buruari bidalitako mezuak</string>
     <string name="QrScan">Irakurri QR kodea</string>
     <string name="QrShow">Erakutsi QR kodea</string>
+    <string name="QrScanContainsText">Irakurritako QR kodeak honako testu hau du::\n\n%1$s</string>
+    <string name="QrScanContainsUrl">Irakurritako QR kodeak honako URL hau du:\n\n%1$s</string>
     <string name="OobFingerprint">Hatz-marka</string>
+    <string name="OobFingerprintAskOob">Egiaztatu kontaktua eta <![CDATA[<b>]]>%1$s<![CDATA[</b>]]> erabiltzailearekin txateatzen hasi?</string>
+    <string name="OobFingerprintOk"><![CDATA[<i>]]>%1$s<![CDATA[</i>]]> kontaktua egiaztatuta. Txateatzen hasi?</string>
+    <string name="OobFingerprintMismatch">Irakurritako hatz-marka <![CDATA[<b>]]>ez dator bat<![CDATA[</b>]]> azkenekoz ikusitako <![CDATA[<i>]]>%1$s<![CDATA[</i>]]> hatz-markarekin.</string>
+    <string name="OobFingerprintWithoutAddr">QR kodeak hatz-marka du, baina ez e-mail helbide bat.\n\nBanda kanpoko egiaztaketa baterako, ezarri zifratutako konexio bat hartzailearekin aurretik.</string>
     <string name="OobSecureJoinRequested">%1$s elkartu da.</string>
+    <string name="CannotDecryptBody">Ezin da mezu hau deszifratu.\n\n• Agian igorleari erantzun eta mezua birbidaltzea eskatzearekin konpondu daiteke.\n\n• Delta Chat berrinstalatu baduzu edo beste e-mail bezero bat erabiltzen baduzu gailu honetan edo beste batean Autocrypt ezarpen mezua bidali dezakezu hortik.</string>
     <string name="Autocrypt">Autocrypt</string>
+    <string name="AutocryptExplain"><![CDATA[<i>]]>Autocrypt<![CDATA[</i>]]> muturretik muturrerako zifratzerako espezifikazio berri eta ireki bat da.\n\nZure muturretik muturrerako ezarpena automatikoki sortzen da behar ahala eta gailutik gailura bidali dezakezui <![CDATA[<i>]]>Autocrypt ezarpen mezuekin.<![CDATA[</i>]]></string>
     <string name="NewVerifiedGroup">Egiaztatutako talde berria</string>
     <string name="SharedChats">Partekatutako txat-ak</string>
     <string name="VerifiedContact">Egiaztatutako kontaktua</string>
@@ -419,5 +456,18 @@
     Resulting strings might be "Member Alice added by me." or 'Group name changed from "Foo" to "Bar" by me.
     If you do not find a correct grammar for your language you can just use "%1$s (by me)" or "Me: %1$s" -->
     <string name="ActionBySelf">%1$s nik.</string>
+    <string name="ExampleEmailAddr">erabiltzailea@adibidea.eus</string>
+    <string name="QrScanHint">Kokatu kamara QR kodearen aurrean</string>
+
+    <string name="QrShowVerifyCode">Erakutsi QR egiaztaketa kodea</string>
+    <string name="QrVerifyContactTitle">QR egiaztaketa kodea</string>
+    <string name="QrVerifyContactHint"><![CDATA[<b>]]>%1$s<![CDATA[</b>]]>\nEskaneatu hau egiaztatutako kontaktu bat ezartzeko.</string>
+
     <string name="QrShowInviteCode">Erakutsi QR gonbidapen-kodea</string>
-    </resources>
+    <string name="QrJoinVerifiedGroupTitle">QR gonbidapen kodea</string>
+    <string name="QrJoinVerifiedGroupHint">Eskaneatu hau egiaztatutako taldera elkartzeko <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>.</string>
+    <string name="FetchMode">Eskuratze modua</string>
+    <string name="FetchModeSaveBattery">Aurreztu bateria</string>
+    <string name="FetchModePersistentConnection">Konexio iraunkorra</string>
+    <string name="FetchModeExplain"><![CDATA[<i>]]>Aurreztu bateria<![CDATA[</i>]]> eskuratze modua erabiltzean, mezu berriak berehala agertuko dira aplikazioa irekita dagoenean eta batez beste 30 segunduko atzerapenarekin aplikazioa bigarren planoan badago. Gailua lo dagoenean atzerapena luzeagoa izan daiteke. Hau da lehenetsitako modua.\n\n<![CDATA[<i>]]>Konexio iraunkorra<![CDATA[</i>]]> azkarragoa izan ohi da baina agian aplikazioari bateria gehiago kontsumitzea baimendu behar zaio sistemaren ezarpenetan.\n\nZein eskuratze modu erabili nahi duzu?</string>
+</resources>

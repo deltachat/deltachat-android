@@ -202,7 +202,7 @@
     <string name="AreYouSureBlockContact">Er du sikker på at du vil blokkere denne kontakten?</string>
     <string name="AreYouSureDeleteContact">Er du sikker på at du ønsker å slette denne kontakten?</string>
     <!--permissions-->
-    <string name="PermissionContacts">Delta Chat trenger tilgang til kontaktene dine slik at du kan koble til dine venner på tvers av alle enhetene dine.</string>
+    <string name="PermissionContacts">Delta Chat trenger tilgang til kontaktene dine slik at du kan koble til vennene dine på tvers av alle enhetene dine.</string>
     <string name="PermissionStorage">Delta chat trenger tilgang til lagring, slik at du kan sende og lagre bilder, videoer, musikk og annen media.</string>
     <string name="PermissionNoAudio">Delta Chat trenger mikrofontilgang slik at du kan sende lydmeldinger.</string>
     <string name="PermissionOpenSettings">Tilpass innstillinger</string>
@@ -318,7 +318,7 @@
     <string name="InboxHeadline">Innboks</string>
     <string name="OutboxHeadline">Utboks</string>
     <string name="MyAccountExplain">For kjente e-posttilbydere blir ytterligere innstillinger bestemt automatisk.</string>
-    <string name="MyAccountExplain2" >Noen ganger må  <![CDATA[<b>]]>IMAP<![CDATA[</b>]]> skrus på i vev-e-postgrenseflaten.\n\nVed problemer, spør din e-posttilbyder eller dine venner.</string>
+    <string name="MyAccountExplain2" >Noen ganger må  <![CDATA[<b>]]>IMAP<![CDATA[</b>]]> skrus på i vev-e-postgrenseflaten.\n\nVed problemer, spør din e-posttilbyder eller vennene dine.</string>
     <string name="AccountNotConfigured">Konto ikke satt opp</string>
     <string name="AboutThisProgram">Om</string>
     <string name="NotSet">Ikke satt</string>
@@ -466,4 +466,8 @@
     <string name="QrShowInviteCode">Vis QR-invitasjonskode</string>
     <string name="QrJoinVerifiedGroupTitle">QR-invitasjonskode</string>
     <string name="QrJoinVerifiedGroupHint">Skann denne for å ta del i den bekreftede gruppen <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>.</string>
+    <string name="FetchMode">Hentingsmodus</string>
+    <string name="FetchModeSaveBattery">Spar batteri</string>
+    <string name="FetchModePersistentConnection">Vedvarende tilkobling</string>
+    <string name="FetchModeExplain">Når hentingsmodus brukes <![CDATA[<i>]]>Batterisparing<![CDATA[</i>]]>, nye meldinger vises én gang hvis programmet er i forgrunnen, med gjennomsnittlig 30 sekunders forsinkelse hvis programmet ikke brukes. Når enheten er i sovemodus, vil forsinkelsen øke. Dette er forvalgt modus.\n\n<![CDATA[</i>]]> Vedvarende tilkobling<![CDATA[</i>]]> er typisk raskere, men kan krevet at programmet hvitlistes i systeminnstillingene for å bruke mer batteri.\n\n.Hvilket innhentingsmodus ønsker du å bruke?</string>
 </resources>

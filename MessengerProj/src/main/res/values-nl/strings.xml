@@ -466,4 +466,7 @@
     <string name="QrShowInviteCode">QR-code voor uitnodigingen weergeven</string>
     <string name="QrJoinVerifiedGroupTitle">QR-uitnodigingscode</string>
     <string name="QrJoinVerifiedGroupHint">Scan dit om lid te worden van een geverifieerde groep <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>.</string>
-</resources>
+    <string name="FetchMode">Ophaalmodus</string>
+    <string name="FetchModeSaveBattery">Batterijbesparing</string>
+    <string name="FetchModePersistentConnection">Aanhoudende verbinding</string>
+    </resources>
