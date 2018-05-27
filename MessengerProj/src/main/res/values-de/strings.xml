@@ -435,7 +435,7 @@
     <string name="OobSecureJoinRequested">%1$s tritt bei.</string>
     <string name="CannotDecryptBody">Diese Nachricht kann nicht entschlüsselt werden.\n\n• Das Problem kann möglicherweie einfach gelöst werden, indem Sie dem Absender eine Nachricht schicken und ihn bitten seine Nachricht erneut zu senden.\n\n• Wenn Sie Delta Chat oder ein anderes E-Mail-Programm auf diesem oder einem anderen Gerät neu eingerichtet haben, wollen Sie vll. das Ende-zu-Ende-Setup mit einer Autocrypt-Setup-Nachricht von dort übertragen.</string>
     <string name="Autocrypt">Autocrypt</string>
-    <string name="AutocryptExplain"><![CDATA[<i>]]>Autocrypt<![CDATA[</i>]]> ist eine neue und offene Spezifikation zur Ende-zu-Ende-Verschlüsselung von E-Mails.\n\nIhr Ende-zu-Ende-Setup wird dabei automatisch eingerichtet uns Sie können es mit  <![CDATA[<i>]]>Autocrypt-Setup-Nachrichten<![CDATA[</i>]]> zwischen Geräten übertragen.</string>
+    <string name="AutocryptExplain"><![CDATA[<i>]]>Autocrypt<![CDATA[</i>]]> ist eine neue und offene Spezifikation zur Ende-zu-Ende-Verschlüsselung von E-Mails.\n\nIhr Ende-zu-Ende-Setup wird dabei automatisch eingerichtet und Sie können es mit <![CDATA[<i>]]>Autocrypt-Setup-Nachrichten<![CDATA[</i>]]> zwischen Geräten übertragen.</string>
     <string name="NewVerifiedGroup">Neue verifizierte Gruppe</string>
     <string name="SharedChats">Gemeinsame Chats</string>
     <string name="VerifiedContact">Verifizierter Kontakt</string>
