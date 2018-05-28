@@ -1193,9 +1193,6 @@ LOCAL_SRC_FILES := \
 	./messenger-backend/libs/libetpan/src/low-level/mime/mailmime_write_file.c \
 	./messenger-backend/libs/libetpan/src/low-level/mime/mailmime_write_generic.c \
 	./messenger-backend/libs/libetpan/src/low-level/mime/mailmime_write_mem.c \
-	./messenger-backend/libs/libetpan/src/low-level/nntp/newsnntp.c \
-	./messenger-backend/libs/libetpan/src/low-level/nntp/newsnntp_socket.c \
-	./messenger-backend/libs/libetpan/src/low-level/nntp/newsnntp_ssl.c \
 	./messenger-backend/libs/libetpan/src/low-level/smtp/mailsmtp.c \
 	./messenger-backend/libs/libetpan/src/low-level/smtp/mailsmtp_helper.c \
 	./messenger-backend/libs/libetpan/src/low-level/smtp/mailsmtp_oauth2.c \
