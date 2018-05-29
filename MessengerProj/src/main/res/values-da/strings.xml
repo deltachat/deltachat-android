@@ -110,9 +110,11 @@
     <!--cache view-->
     <string name="CacheSettings">Lager</string>
     <string name="KeepMedia">Beholde medie</string>
+    <string name="KeepMediaForever">For altid</string>
     <!--passcode view-->
     <string name="Passcode">Adgangskode lås</string>
     <string name="ChangePasscode">Ændre adgangskode</string>
+    <string name="PasscodePIN">PIN</string>
     <string name="PasscodePassword">Adgangskode</string>
     <string name="EnterCurrentPasscode">Indtaste nuværende adgangskode</string>
     <string name="EnterNewFirstPasscode">Indtaste adgangskode</string>
@@ -136,17 +138,29 @@
     <string name="CropImage">Beskære billede</string>
     <string name="EditImage">Redigere billede</string>
     <string name="Enhance">Forbedre</string>
+    <string name="Highlights">Fremhæve</string>
     <string name="Contrast">Kontrast</string>
+    <string name="Exposure">Eksponering</string>
     <string name="Warmth">Varme</string>
+    <string name="Saturation">Mætning</string>
+    <string name="Vignette">Vignet</string>
     <string name="Shadows">Skygger</string>
+    <string name="Grain">Korn</string>
+    <string name="Sharpen">Skærpe</string>
+    <string name="Fade">Falme</string>
+    <string name="Tint">Toning</string>
     <string name="TintShadows">Skygger</string>
+    <string name="TintHighlights">Fremhæve</string>
     <string name="Curves">Kurver</string>
     <string name="CurvesAll">Alle</string>
     <string name="CurvesRed">Rød</string>
     <string name="CurvesGreen">Grøn</string>
     <string name="CurvesBlue">Blå</string>
+    <string name="Blur">Sløring</string>
     <string name="BlurOff">Fra</string>
     <string name="BlurLinear">Lineær</string>
+    <string name="BlurRadial">Radial</string>
+    <string name="DiscardChanges">Kassere ændringer?</string>
     <string name="ClearButton">Rydde</string>
     <string name="PickerPhotos">Billeder</string>
     <string name="PickerVideo">Video</string>
@@ -155,9 +169,13 @@
     <string name="SecurityTitle">Sikkerhed</string>
     <!--edit video view-->
     <string name="SendVideo">Sende video</string>
+    <!--button titles-->
+    <string name="Done">Færdig</string>
+    <string name="Open">Åbne</string>
     <string name="Cancel">Afbryde</string>
     <string name="Edit">Redigere</string>
     <string name="Send">Sende</string>
+    <string name="CopyToClipboard">Kopiere til klippebord</string>
     <string name="Delete">Slette</string>
     <string name="Forward">Videresende</string>
     <string name="FromCamera">Fra kamera</string>
@@ -172,10 +190,13 @@
     <string name="AttachContact">Kontakt</string>
     <string name="AttachDocument">Fil</string>
     <string name="AttachVoiceMessage">Tale besked</string>
+    <string name="ContactAlreadyInGroup">Kontakt er allerede i gruppen.</string>
+    <string name="PermissionNoAudio">Tildele mikrofon adgang for at optage tale beskeder.</string>
     <string name="PermissionOpenSettings">Opsætning</string>
     <!--Intro view-->
     <string name="Intro1Headline">Delta Chat</string>
     <string name="Intro2Headline">Uafhængig</string>
+    <string name="Intro3Headline">Hurtig</string>
     <string name="Intro4Headline">Kraftfuld</string>
     <string name="Intro5Headline">Fri</string>
     <string name="Intro6Headline">Krypteret</string>
@@ -191,9 +212,17 @@
         <item quantity="one">%d kontakt</item>
         <item quantity="other">%d kontakter</item>
     </plurals>
+    <plurals name="NewMessages">
+        <item quantity="one">%d ny besked</item>
+        <item quantity="other">%d nye beskeder</item>
+    </plurals>
     <plurals name="messages">
         <item quantity="one">%d besked</item>
         <item quantity="other">%d beskeder</item>
+    </plurals>
+    <plurals name="AreYouSureDeleteMessages">
+        <item quantity="one">Slette %d besked her og på server.</item>
+        <item quantity="other">Slette %d beskeder her og på server.</item>
     </plurals>
     <!-- Translators: The first string placeholder gets replaced with the
     text "%d new messages", so the complete sentence would be e.g.
@@ -226,6 +255,14 @@
         <item quantity="one">%d månede</item>
         <item quantity="other">%d måneder</item>
     </plurals>
+    <!-- Translators: The second string placeholder gets replaced with the
+    text "%d minutes", so the complete sentence would be e.g.
+    "At most 8 notifications within 3 minutes". -->
+    <plurals name="MaxNotifications">
+        <item quantity="one">Højst %1$d påmindelse inden for %2$s</item>
+        <item quantity="other">Højst %1$d påmindelser inde for %2$s</item>
+    </plurals>
+    <string name="formatDateAtTime">%1$s hos %2$s</string>
     <string name="AccountSettings">Konto opsætning</string>
     <string name="MyAccount">Konto</string>
     <string name="MyName">Navn</string>
@@ -237,16 +274,24 @@
     <string name="Automatic">Automatisk</string>
     <string name="ImapServer">IMAP server</string>
     <string name="ImapLoginname">IMAP log ind navn</string>
+    <string name="SmtpServer">SMTP server</string>
     <string name="ImapPort">IMAP port</string>
     <string name="InboxHeadline">Indbakke</string>
     <string name="OutboxHeadline">Udbakke</string>
     <string name="AccountNotConfigured">Konto ikke opsat</string>
     <string name="AboutThisProgram">Om Delta Chat</string>
+    <string name="NotSet">Ikke angivet</string>
     <string name="NewChat">Ny samtale</string>
     <string name="Deaddrop">Kontakt forespørgsel</string>
+    <string name="DeaddropInChatlist">Vise kontakt forespørgsleri samtale liste</string>
     <string name="MuteAlways">Altid afbrudt</string>
+    <string name="DeaddropHint">Tryk svar-pilen for at starte samtale.</string>
+    <string name="NotYetImplemented">Funktion ikke tilgængelig eller ufuldstændig.</string>
+    <string name="DefaultStatusText">Sendt med Delta Chat Messenger: https://delta.chat</string>
     <string name="Name" >Navn</string>
     <string name="EmailAddress">E-post adresse</string>
+    <string name="CannotDeleteContact">Kan ikke slette aktiv bruger, blokere kontakt i stedet. </string>
+    <string name="BadEmailAddress">Fejlagtig e-post adresse.</string>
     <string name="ContactCreated">Kontakt oprettet</string>
     <string name="ViewProfile">Vise profil</string>
     <!-- Translators: please use a very short string here, it should not much longer than
@@ -255,22 +300,84 @@
     <string name="InviteMenuEntry">Sende invitationer</string>
     <string name="AdvancedSettings">Advanceret</string>
     <string name="AttachFiles">Vedhæfte filer</string>
+    <string name="ErrGroupNameEmpty">Indtaste gruppenavn.</string>
     <string name="MsgGroupImageChanged">Gruppe billede ændret</string>
     <string name="MsgMemberAddedToGroup">Medlem %1$s tilføjet.</string>
     <string name="MsgMemberRemovedFromToGroup">Medlem %1$s fjernet.</string>
     <string name="MsgGroupLeft">Forladt gruppe</string>
+    <string name="SendNRcvReadReceipts">Modtage og sende læse kvitteringer</string>
+    <string name="PreferE2EEncryption">Foretærkke ende til ende-kryptering</string>
     <string name="E2EManagePrivateKeys">Håndtere nøgler</string>
     <string name="E2ECompareKeys">Sammenligne nøgler</string>
     <string name="ForwardToTitle">Videresende til...</string>
     <string name="SelectContact">Vælge kontakt</string>
+    <string name="DoneHint">Færdig.</string>
+    <string name="FileNotFound">Kan ikke finde %1$s.</string>
+    <string name="Error">Fejl: %1$s</string>
+    <string name="NoNetwork">Netværk ikke tilgængelig.</string>
     <string name="Audio">Lyd</string>
+    <string name="PleaseCutVideoToMaxSize">Komprimere video størrelse til mindre end %1$s.</string>
+    <string name="PermNotificationTitle">Forbundet til %1$s</string>
+    <string name="PermNotificationText">Venter på beskeder...</string>
+    <string name="SettingsFor">Opsætninger til %1$s</string>
+    <string name="AutoplayGifs">Automatisk afspille GIF</string>
+    <string name="HelpUrl">https://delta.chat/en/help</string>
+    <string name="EncryptedMessage">Krypteret besked</string>
+    <string name="Encryption">Kryptering</string>
+    <string name="EncrinfoE2EAvailable">Ende til ende-kryptering tilgængelig.</string>
+    <string name="EncrinfoFingerprints">Fingeraftryk</string>
+    <string name="Backup">Sikkerhedskopi</string>
+    <string name="ReadReceipt">Læse kvittering</string>
+    <string name="NameAndStatus">Navn og status</string>
+    <string name="MsgGroupImageDeleted">Gruppe billede slettet.</string>
+    <string name="ExportImportHeader">Eksportere og importere</string>
+    <string name="EnterPasswordToContinue">Indtaste adgangskode til %1$s for at fortsætte:</string>
+    <string name="IncorrectPassword">Forkert adgangskode.</string>
+    <string name="ImportBackup">Importere sikkerhedskopi</string>
+    <string name="ExportBackup">Eksportere sikkerhedskopi</string>
+    <string name="ExportPrivateKeys">Eksportere hemmelige nøgler</string>
+    <string name="ImportPrivateKeys">Importere hemmelige nøgler</string>
+    <string name="NoRecentEmoji">Nylig brugte emoji vises her.</string>
+    <string name="NotNow">Ikke nu</string>
+    <string name="ArchiveChat">Arkivere samtale</string>
+    <string name="UnarchiveChat">Dearkivere samtale</string>
+    <string name="ArchivedChats">Arkivere samtaler</string>
+    <string name="Archived">Arkiveret</string>
     <string name="LeaveGroup">Forlade gruppe</string>
     <string name="AskLeaveGroup">Forlade denne gruppe?</string>
     <string name="Never">Aldrig</string>
+    <string name="AutocryptKeyTransferInitiate">Sende automatisk kryptere opsætningsbesked</string>
+    <string name="AutocryptKeyTransfer">Automatisk kryptere opsætningsbesked</string>
+    <string name="AutocryptSetupMessageSubject">Automatisk kryptere opsætningsbesked</string>
+    <string name="Retry">Prøv igen</string>
     <string name="QrScan">Skanne QR-kode</string>
     <string name="QrShow">Vise QR-kode</string>
     <string name="OobFingerprint">Fingeraftryk</string>
+    <string name="OobSecureJoinRequested">%1$s tilslutter.</string>
+    <string name="Autocrypt">Automatisk kryptering</string>
+    <string name="NewVerifiedGroup">Ny efterprøvet gruppe</string>
+    <string name="SharedChats">Delte samtaler</string>
+    <string name="VerifiedContact">Efterprøvet kontakt</string>
     <string name="Contact">Kontakt</string>
     <string name="VerifiedGroup">Bekræftet gruppe</string>
     <string name="Group">Gruppe</string>
+    <string name="EditedNameWillBeShared">Redigeret navn vil blive delt med alle gruppe medlemmer.</string>
+    <string name="E2EEncryptionPreferred">Ende til ende-kryptering foretrukken.</string>
+    <string name="OobAddrVerified">%1$s efterprøvet.</string>
+    <string name="OobAddrVerifiedIntroduceMyself">%1$s efterprøvet, præsentere…</string>
+    <!-- Translators: %1$s is replaced by an action, eg. MsgMemberAddedToGroup, MsgMemberRemovedFromToGroup, MsgGroupNameChanged or MsgGroupImageChanged. If the action ends with a full stop, this is removed.
+    %2$s is replaced by a the name of the user that made this action.
+    Resulting strings might be "Member Alice added by Bob." or 'Group name changed from "Foo" to "Bar" by Claire.
+     If you do not find a correct grammar for your language you can just use "%1$s (by %2$s)" or "%2$s: %1$s" -->
+    <string name="ActionByUser">%1$s af %2$s.</string>
+    <string name="ExampleEmailAddr">user@example.org</string>
+    <string name="QrScanHint">Placere kamera over QR koden</string>
+
+    <string name="QrShowVerifyCode">Vise QR efterprøve kode</string>
+    <string name="QrVerifyContactTitle">QR efterprøve kode</string>
+    <string name="QrShowInviteCode">Vise QR invitationskode</string>
+    <string name="QrJoinVerifiedGroupTitle">QR invitationskode</string>
+    <string name="FetchMode">Hente tilstand</string>
+    <string name="FetchModeSaveBattery">Spare batteri</string>
+    <string name="FetchModePersistentConnection">Vedvarende forbindelse</string>
     </resources>

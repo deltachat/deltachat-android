@@ -433,4 +433,8 @@
     <string name="OobSecureJoinRequested">%1$s entrou.</string>
     <string name="Autocrypt">Autocrypt</string>
     <string name="Contact">Contato</string>
+    <string name="QrShowVerifyCode">Mostrar código QR de verificação</string>
+    <string name="QrVerifyContactTitle">Código QR de verificação</string>
+    <string name="FetchModeSaveBattery">Economizar bateria</string>
+    <string name="FetchModePersistentConnection">Conexão persistente</string>
     </resources>
