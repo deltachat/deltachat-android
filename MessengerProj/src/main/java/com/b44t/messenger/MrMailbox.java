@@ -232,8 +232,6 @@ public class MrMailbox {
     public final static int MR_EVENT_GET_STRING               = 2091;
     public final static int MR_EVENT_GET_QUANTITIY_STRING     = 2092;
     public final static int MR_EVENT_HTTP_GET                 = 2100;
-    public final static int MR_EVENT_WAKE_LOCK                = 2110;
-
 
     public static final Object m_lastErrorLock = new Object();
     public static int          m_lastErrorCode = 0;
@@ -441,18 +439,6 @@ public class MrMailbox {
                 }
                 catch(Exception e) {}
                 return String2CPtr(httpContent);
-
-            case MR_EVENT_WAKE_LOCK:
-                if( data1 != 0 ) {
-                    ApplicationLoader.backendWakeLock.acquire();
-                }
-                else {
-                    if( !ApplicationLoader.wakeupWakeLock.isHeld()) {
-                        ApplicationLoader.wakeupWakeLock.acquire(500); /* make sure, subsequent release/acquires do not make the CPU sleep */
-                    }
-                    ApplicationLoader.backendWakeLock.release();
-                }
-                return 0;
         }
         return 0;
     }

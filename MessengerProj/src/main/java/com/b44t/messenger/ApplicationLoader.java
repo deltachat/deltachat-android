@@ -55,7 +55,6 @@ public class ApplicationLoader extends Application {
     public static volatile boolean isScreenOn = false;
     public static volatile boolean mainInterfacePaused = true;
 
-    public static PowerManager.WakeLock backendWakeLock = null;
     public static PowerManager.WakeLock wakeupWakeLock = null;
     private static PowerManager.WakeLock stayAwakeWakeLock = null;
 
@@ -147,9 +146,6 @@ public class ApplicationLoader extends Application {
         // create wake locks
         try {
             PowerManager pm = (PowerManager) ApplicationLoader.applicationContext.getSystemService(Context.POWER_SERVICE);
-
-            backendWakeLock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "backendWakeLock" /*any name*/);
-            // bakendWakeLock _is_ reference counted by the backend (every acquire() has a release())
 
             wakeupWakeLock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "wakeupWakeLock" /*any name*/);
             wakeupWakeLock.setReferenceCounted(false);
