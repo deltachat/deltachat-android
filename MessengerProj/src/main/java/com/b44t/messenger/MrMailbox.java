@@ -56,8 +56,8 @@ public class MrMailbox {
 
     public native static int isConfigured();
 
-    public native static void connect();
-    public native static void disconnect();
+    public native static int idle();
+    public native static int interruptIdle();
     public native static int poll();
 
     public native static void setConfig(String key, String value);

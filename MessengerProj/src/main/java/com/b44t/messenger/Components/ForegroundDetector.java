@@ -90,9 +90,7 @@ public class ForegroundDetector implements Application.ActivityLifecycleCallback
             }
         }
 
-        if( !ApplicationLoader.getPermanentPush() ) {
-            MrMailbox.connect();
-        }
+        ApplicationLoader.startIdleThread(); // we call this without checking getPermanentPush() to have a simple guarantee that push is always active when the app is in foregroud (startIdleThread makes sure the thread is not started twice)
     }
 
     public boolean isWasInBackground(boolean reset) {
@@ -121,7 +119,7 @@ public class ForegroundDetector implements Application.ActivityLifecycleCallback
             }
 
             if( !ApplicationLoader.getPermanentPush() ) {
-                MrMailbox.disconnect();
+                ApplicationLoader.stopIdleThread();
             }
         }
     }

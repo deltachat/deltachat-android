@@ -213,8 +213,8 @@ public class ApplicationLoader extends Application {
         // open() should be called before MessagesController.getInstance() as this also initilizes directories based upon getBlobdir().
         File dbfile = new File(getFilesDirFixed(), "messenger.db");
         MrMailbox.open(dbfile.getAbsolutePath());
-        if( MrMailbox.isConfigured()!=0 ) {
-            MrMailbox.connect();
+        if( MrMailbox.isConfigured()!=0 && ApplicationLoader.getPermanentPush() ) {
+            ApplicationLoader.startIdleThread();
         }
 
         // create other default objects
@@ -285,9 +285,62 @@ public class ApplicationLoader extends Application {
 
         if( permanentPush ) {
             applicationContext.startService(new Intent(applicationContext, KeepAliveService.class));
+            stopIdleThread();
+            startIdleThread(); // restart the idleThread to ensure we set a wake lock
         }
         else {
             applicationContext.stopService(new Intent(applicationContext, KeepAliveService.class));
+        }
+    }
+
+    private static final Object s_idleLock = new Object();
+    private static Thread s_idleThread = null;
+    public static PowerManager.WakeLock s_idleWakeLock = null;
+
+    public static void startIdleThread()
+    {
+        synchronized (s_idleLock) {
+            if (s_idleThread == null) {
+                s_idleThread = new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            boolean permanentPush = getPermanentPush();
+                            if( permanentPush ) {
+                                if (s_idleWakeLock == null) {
+                                    PowerManager pm = (PowerManager) ApplicationLoader.applicationContext.getSystemService(Context.POWER_SERVICE);
+                                    s_idleWakeLock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "idleWakeLock");
+                                }
+                                s_idleWakeLock.acquire();
+                            }
+
+                            MrMailbox.idle(); // this may run hours ...
+                            s_idleThread = null;
+
+                            if( permanentPush ) {
+                                s_idleWakeLock.release();
+                            }
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }, "idleThread");
+                s_idleThread.run();
+            }
+        }
+    }
+
+    public synchronized static void stopIdleThread()
+    {
+        synchronized (s_idleLock) {
+            if (s_idleThread != null) {
+                try {
+                    MrMailbox.interruptIdle();
+                    s_idleThread.join(1000);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
         }
     }
 }

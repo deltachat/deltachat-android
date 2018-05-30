@@ -278,15 +278,15 @@ JNIEXPORT jint Java_com_b44t_messenger_MrMailbox_isConfigured(JNIEnv *env, jclas
 }
 
 
-JNIEXPORT void Java_com_b44t_messenger_MrMailbox_connect(JNIEnv *env, jclass cls)
+JNIEXPORT jint Java_com_b44t_messenger_MrMailbox_idle(JNIEnv *env, jclass cls)
 {
-	mrmailbox_connect(get_mrmailbox_t(env, cls));
+	return (jint)mrmailbox_idle(get_mrmailbox_t(env, cls));
 }
 
 
-JNIEXPORT void Java_com_b44t_messenger_MrMailbox_disconnect(JNIEnv *env, jclass cls)
+JNIEXPORT jint Java_com_b44t_messenger_MrMailbox_interruptIdle(JNIEnv *env, jclass cls)
 {
-	mrmailbox_disconnect(get_mrmailbox_t(env, cls));
+	return (jint)mrmailbox_interrupt_idle(get_mrmailbox_t(env, cls));
 }
 
 
