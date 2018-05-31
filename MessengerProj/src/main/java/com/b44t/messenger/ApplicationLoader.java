@@ -293,53 +293,50 @@ public class ApplicationLoader extends Application {
         }
     }
 
-    private static final Object s_idleLock = new Object();
     private static Thread s_idleThread = null;
     public static PowerManager.WakeLock s_idleWakeLock = null;
 
     public static void startIdleThread()
     {
-        synchronized (s_idleLock) {
-            if (s_idleThread == null) {
-                s_idleThread = new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-                        try {
-                            boolean permanentPush = getPermanentPush();
-                            if( permanentPush ) {
-                                if (s_idleWakeLock == null) {
-                                    PowerManager pm = (PowerManager) ApplicationLoader.applicationContext.getSystemService(Context.POWER_SERVICE);
-                                    s_idleWakeLock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "idleWakeLock");
-                                }
-                                s_idleWakeLock.acquire();
+        if (s_idleThread == null) {
+            s_idleThread = new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    try {
+                        boolean permanentPush = getPermanentPush();
+                        if( permanentPush ) {
+                            if (s_idleWakeLock == null) {
+                                PowerManager pm = (PowerManager) ApplicationLoader.applicationContext.getSystemService(Context.POWER_SERVICE);
+                                s_idleWakeLock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "idleWakeLock");
                             }
-
-                            MrMailbox.idle(); // this may run hours ...
-                            s_idleThread = null;
-
-                            if( permanentPush ) {
-                                s_idleWakeLock.release();
-                            }
-                        } catch (Exception e) {
-                            e.printStackTrace();
+                            s_idleWakeLock.acquire();
                         }
+
+                        MrMailbox.idle(); // this may run hours ...
+
+                        s_idleThread = null;
+
+                        if( permanentPush ) {
+                            s_idleWakeLock.release();
+                        }
+                    } catch (Exception e) {
+                        e.printStackTrace();
                     }
-                }, "idleThread");
-                s_idleThread.run();
-            }
+                }
+            }, "idleThread");
+
+            s_idleThread.start();
         }
     }
 
     public synchronized static void stopIdleThread()
     {
-        synchronized (s_idleLock) {
-            if (s_idleThread != null) {
-                try {
-                    MrMailbox.interruptIdle();
-                    s_idleThread.join(1000);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
+        if (s_idleThread != null) {
+            try {
+                MrMailbox.interruptIdle();
+                s_idleThread.join(1000);
+            } catch (Exception e) {
+                e.printStackTrace();
             }
         }
     }
