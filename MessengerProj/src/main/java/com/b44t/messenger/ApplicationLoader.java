@@ -147,6 +147,8 @@ public class ApplicationLoader extends Application {
         try {
             PowerManager pm = (PowerManager) ApplicationLoader.applicationContext.getSystemService(Context.POWER_SERVICE);
 
+            s_idleWakeLock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "idleWakeLock");
+
             wakeupWakeLock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "wakeupWakeLock" /*any name*/);
             wakeupWakeLock.setReferenceCounted(false);
 
@@ -293,28 +295,25 @@ public class ApplicationLoader extends Application {
         }
     }
 
+    private static boolean s_idleThreadStarted = false;
     private static Thread s_idleThread = null;
     public static PowerManager.WakeLock s_idleWakeLock = null;
 
     public static void startIdleThread()
     {
-        if (s_idleThread == null) {
+        if (!s_idleThreadStarted ) {
+            s_idleThreadStarted = true;
             s_idleThread = new Thread(new Runnable() {
                 @Override
                 public void run() {
                     try {
                         boolean permanentPush = getPermanentPush();
                         if( permanentPush ) {
-                            if (s_idleWakeLock == null) {
-                                PowerManager pm = (PowerManager) ApplicationLoader.applicationContext.getSystemService(Context.POWER_SERVICE);
-                                s_idleWakeLock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "idleWakeLock");
-                            }
                             s_idleWakeLock.acquire();
                         }
 
                         MrMailbox.idle(); // this may run hours ...
-
-                        s_idleThread = null;
+                        s_idleThreadStarted = false;
 
                         if( permanentPush ) {
                             s_idleWakeLock.release();
@@ -331,10 +330,12 @@ public class ApplicationLoader extends Application {
 
     public synchronized static void stopIdleThread()
     {
-        if (s_idleThread != null) {
+        if (s_idleThreadStarted) {
+            s_idleThreadStarted = false;
             try {
                 MrMailbox.interruptIdle();
                 s_idleThread.join(1000);
+                s_idleThread = null;
             } catch (Exception e) {
                 e.printStackTrace();
             }
