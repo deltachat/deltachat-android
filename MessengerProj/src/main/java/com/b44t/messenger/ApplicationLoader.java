@@ -328,7 +328,7 @@ public class ApplicationLoader extends Application {
         }
     }
 
-    public synchronized static void stopIdleThread()
+    public static void stopIdleThread()
     {
         if (s_idleThreadStarted) {
             s_idleThreadStarted = false;
