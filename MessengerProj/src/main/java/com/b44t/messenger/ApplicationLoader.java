@@ -295,14 +295,18 @@ public class ApplicationLoader extends Application {
         }
     }
 
-    private static boolean s_idleThreadStarted = false;
+    private static final Object s_idleThreadCritical = new Object();
     private static Thread s_idleThread = null;
     public static PowerManager.WakeLock s_idleWakeLock = null;
 
     public static void startIdleThread()
     {
-        if (!s_idleThreadStarted ) {
-            s_idleThreadStarted = true;
+        synchronized (s_idleThreadCritical) {
+            if (s_idleThread != null) {
+                Log.i("DeltaChat", "Idle thread already started.");
+                return;
+            }
+
             s_idleThread = new Thread(new Runnable() {
                 @Override
                 public void run() {
@@ -313,7 +317,6 @@ public class ApplicationLoader extends Application {
                         }
 
                         MrMailbox.idle(); // this may run hours ...
-                        s_idleThreadStarted = false;
 
                         if( permanentPush ) {
                             s_idleWakeLock.release();
@@ -323,22 +326,25 @@ public class ApplicationLoader extends Application {
                     }
                 }
             }, "idleThread");
-
             s_idleThread.start();
         }
     }
 
     public static void stopIdleThread()
     {
-        if (s_idleThreadStarted) {
-            s_idleThreadStarted = false;
+        synchronized (s_idleThreadCritical) {
+            if( s_idleThread==null) {
+                Log.i("DeltaChat", "No idle thread to stop.");
+                return;
+            }
+
             try {
                 MrMailbox.interruptIdle();
                 s_idleThread.join(1000);
-                s_idleThread = null;
             } catch (Exception e) {
                 e.printStackTrace();
             }
+            s_idleThread = null;
         }
     }
 }
