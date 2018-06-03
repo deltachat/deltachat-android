@@ -220,7 +220,7 @@ public class WallpapersActivity extends BaseFragment implements NotificationCent
                             try {
                                 if (i == 0) {
                                     if (Build.VERSION.SDK_INT >= 23 && getParentActivity().checkSelfPermission(Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
-                                        getParentActivity().requestPermissions(new String[]{Manifest.permission.CAMERA}, 4);
+                                        getParentActivity().requestPermissions(new String[]{Manifest.permission.CAMERA}, LaunchActivity.REQ_CAMERA_PERMISSION_ID);
                                         return;
                                     }
                                     Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);

@@ -741,11 +741,13 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
     }
 
     public static final int REQ_CONTACT_N_STORAGE_PERMISON_ID = 1;
+    public static final int REQ_CAMERA_PERMISSION_ID = 50;
 
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        if (requestCode == REQ_CONTACT_N_STORAGE_PERMISON_ID || requestCode == 3 || requestCode == 4 || requestCode == 5) {
+        if (requestCode == REQ_CONTACT_N_STORAGE_PERMISON_ID || requestCode == 3 || requestCode == 4 || requestCode == 5
+         || requestCode == REQ_CAMERA_PERMISSION_ID) {
             int grantedCount = 0;
             String msg = "";
             for (int i = 0; i < permissions.length; i++) {
