@@ -774,6 +774,9 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                         case Manifest.permission.RECORD_AUDIO:
                             msg += "- " + ApplicationLoader.applicationContext.getString(R.string.PermissionNoAudio) + "\n\n";
                             break;
+                        case Manifest.permission.CAMERA:
+                            msg += "- " + ApplicationLoader.applicationContext.getString(R.string.PermissionCamera) + "\n\n";
+                            break;
                     }
                 }
             }
