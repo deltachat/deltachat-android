@@ -310,19 +310,19 @@ public class ApplicationLoader extends Application {
             s_idleThread = new Thread(new Runnable() {
                 @Override
                 public void run() {
+                    boolean permanentPush = getPermanentPush();
+                    if( permanentPush ) {
+                        s_idleWakeLock.acquire();
+                    }
+
                     try {
-                        boolean permanentPush = getPermanentPush();
-                        if( permanentPush ) {
-                            s_idleWakeLock.acquire();
-                        }
-
                         MrMailbox.idle(); // this may run hours ...
-
-                        if( permanentPush ) {
-                            s_idleWakeLock.release();
-                        }
                     } catch (Exception e) {
                         e.printStackTrace();
+                    }
+
+                    if( permanentPush ) {
+                        s_idleWakeLock.release();
                     }
                 }
             }, "idleThread");
