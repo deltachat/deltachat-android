@@ -35,6 +35,11 @@ public class ScreenReceiver extends BroadcastReceiver {
         if (intent.getAction().equals(Intent.ACTION_SCREEN_OFF)) {
             MrMailbox.log_i("DeltaChat", "*** Screen off");
             ApplicationLoader.isScreenOn = false;
+
+            // also stop the idle-thread when the screen goes off, this is not always in sync with the ForegroundDetector
+            if( !ApplicationLoader.getPermanentPush() ) {
+                ApplicationLoader.stopIdleThread();
+            }
         } else if (intent.getAction().equals(Intent.ACTION_SCREEN_ON)) {
             MrMailbox.log_i("DeltaChat", "*** Screen on");
             ApplicationLoader.isScreenOn = true;
