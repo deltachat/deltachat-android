@@ -75,6 +75,12 @@ public class AvatarUpdater implements PhotoCropActivity.PhotoEditActivityDelegat
     }
 
     public void openCamera() {
+        if (Build.VERSION.SDK_INT >= 23 && parentFragment != null && parentFragment.getParentActivity() != null) {
+            if (parentFragment.getParentActivity().checkSelfPermission(Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+                parentFragment.getParentActivity().requestPermissions(new String[]{Manifest.permission.CAMERA}, LaunchActivity.REQ_CAMERA_PERMISSION_ID);
+                return;
+            }
+        }
         try {
             Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
             File image = AndroidUtilities.generatePicturePath();

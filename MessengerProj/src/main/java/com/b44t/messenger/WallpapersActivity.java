@@ -29,12 +29,14 @@
 
 package com.b44t.messenger;
 
+import android.Manifest;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.Point;
 import android.graphics.drawable.Drawable;
@@ -217,6 +219,10 @@ public class WallpapersActivity extends BaseFragment implements NotificationCent
                         public void onClick(DialogInterface dialogInterface, int i) {
                             try {
                                 if (i == 0) {
+                                    if (Build.VERSION.SDK_INT >= 23 && getParentActivity().checkSelfPermission(Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+                                        getParentActivity().requestPermissions(new String[]{Manifest.permission.CAMERA}, LaunchActivity.REQ_CAMERA_PERMISSION_ID);
+                                        return;
+                                    }
                                     Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                                     File image = AndroidUtilities.generatePicturePath();
                                     if (image != null) {

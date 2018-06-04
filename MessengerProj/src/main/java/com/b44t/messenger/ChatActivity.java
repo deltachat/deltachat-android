@@ -1210,6 +1210,10 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
 
     private void processSelectedAttach(int which) {
         if (which == ChatAttachAlert.ATTACH_BUTTON_IDX_CAMERA ) {
+            if (Build.VERSION.SDK_INT >= 23 && getParentActivity().checkSelfPermission(Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+                getParentActivity().requestPermissions(new String[]{Manifest.permission.CAMERA}, LaunchActivity.REQ_CAMERA_PERMISSION_ID);
+                return;
+            }
             try {
                 Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                 File image = AndroidUtilities.generatePicturePath();
@@ -1277,6 +1281,10 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
             presentFragment(fragment);
         } else if (which == ChatAttachAlert.ATTACH_BUTTON_IDX_VIDEO) {
             try {
+                if (Build.VERSION.SDK_INT >= 23 && getParentActivity().checkSelfPermission(Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+                    getParentActivity().requestPermissions(new String[]{Manifest.permission.CAMERA}, LaunchActivity.REQ_CAMERA_PERMISSION_ID);
+                    return;
+                }
                 Intent takeVideoIntent = new Intent(MediaStore.ACTION_VIDEO_CAPTURE);
                 File video = AndroidUtilities.generateVideoPath();
                 if (video != null) {
