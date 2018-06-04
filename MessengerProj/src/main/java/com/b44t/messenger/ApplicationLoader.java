@@ -302,7 +302,7 @@ public class ApplicationLoader extends Application {
     public static void startIdleThread()
     {
         synchronized (s_idleThreadCritical) {
-            if (s_idleThread != null) {
+            if (s_idleThread != null && s_idleThread.isAlive()) {
                 Log.i("DeltaChat", "Idle thread already started.");
                 return;
             }
