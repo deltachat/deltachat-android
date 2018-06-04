@@ -55,7 +55,6 @@ public class ApplicationLoader extends Application {
     public static volatile boolean isScreenOn = false;
     public static volatile boolean mainInterfacePaused = true;
 
-    public static PowerManager.WakeLock backendWakeLock = null;
     public static PowerManager.WakeLock wakeupWakeLock = null;
     private static PowerManager.WakeLock stayAwakeWakeLock = null;
 
@@ -148,8 +147,7 @@ public class ApplicationLoader extends Application {
         try {
             PowerManager pm = (PowerManager) ApplicationLoader.applicationContext.getSystemService(Context.POWER_SERVICE);
 
-            backendWakeLock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "backendWakeLock" /*any name*/);
-            // bakendWakeLock _is_ reference counted by the backend (every acquire() has a release())
+            s_idleWakeLock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "idleWakeLock");
 
             wakeupWakeLock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "wakeupWakeLock" /*any name*/);
             wakeupWakeLock.setReferenceCounted(false);
@@ -217,8 +215,8 @@ public class ApplicationLoader extends Application {
         // open() should be called before MessagesController.getInstance() as this also initilizes directories based upon getBlobdir().
         File dbfile = new File(getFilesDirFixed(), "messenger.db");
         MrMailbox.open(dbfile.getAbsolutePath());
-        if( MrMailbox.isConfigured()!=0 ) {
-            MrMailbox.connect();
+        if( MrMailbox.isConfigured()!=0 && ApplicationLoader.getPermanentPush() ) {
+            ApplicationLoader.startIdleThread();
         }
 
         // create other default objects
@@ -289,9 +287,64 @@ public class ApplicationLoader extends Application {
 
         if( permanentPush ) {
             applicationContext.startService(new Intent(applicationContext, KeepAliveService.class));
+            stopIdleThread();
+            startIdleThread(); // restart the idleThread to ensure we set a wake lock
         }
         else {
             applicationContext.stopService(new Intent(applicationContext, KeepAliveService.class));
+        }
+    }
+
+    private static final Object s_idleThreadCritical = new Object();
+    private static Thread s_idleThread = null;
+    public static PowerManager.WakeLock s_idleWakeLock = null;
+
+    public static void startIdleThread()
+    {
+        synchronized (s_idleThreadCritical) {
+            if (s_idleThread != null && s_idleThread.isAlive()) {
+                Log.i("DeltaChat", "Idle thread already started.");
+                return;
+            }
+
+            s_idleThread = new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    boolean permanentPush = getPermanentPush();
+                    if( permanentPush ) {
+                        s_idleWakeLock.acquire();
+                    }
+
+                    try {
+                        MrMailbox.idle(); // this may run hours ...
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+
+                    if( permanentPush ) {
+                        s_idleWakeLock.release();
+                    }
+                }
+            }, "idleThread");
+            s_idleThread.start();
+        }
+    }
+
+    public static void stopIdleThread()
+    {
+        synchronized (s_idleThreadCritical) {
+            if( s_idleThread==null) {
+                Log.i("DeltaChat", "No idle thread to stop.");
+                return;
+            }
+
+            try {
+                MrMailbox.interruptIdle();
+                s_idleThread.join(1000);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            s_idleThread = null;
         }
     }
 }

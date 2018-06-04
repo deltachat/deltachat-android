@@ -28,25 +28,16 @@ import android.app.Activity;
 import android.app.Application;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 
 import com.b44t.messenger.ApplicationLoader;
-import com.b44t.messenger.MrMailbox;
-import com.b44t.messenger.Utilities;
-
-import java.util.concurrent.CopyOnWriteArrayList;
 
 @SuppressLint("NewApi")
 public class ForegroundDetector implements Application.ActivityLifecycleCallbacks {
 
-    public interface Listener {
-        void onBecameForeground();
-        void onBecameBackground();
-    }
-
-    private int refs;
+    private int refs = 0;
     private boolean wasInBackground = true;
     private long enterBackgroundTime = 0;
-    private CopyOnWriteArrayList<Listener> listeners = new CopyOnWriteArrayList<>();
     private static ForegroundDetector Instance = null;
 
     public static ForegroundDetector getInstance() {
@@ -66,33 +57,19 @@ public class ForegroundDetector implements Application.ActivityLifecycleCallback
         return refs == 0;
     }
 
-    public void addListener(Listener listener) {
-        listeners.add(listener);
-    }
-
-    public void removeListener(Listener listener) {
-        listeners.remove(listener);
-    }
 
     @Override
     public void onActivityStarted(Activity activity) {
-        if (++refs == 1) {
+        refs++;
+        Log.i("DeltaChat", String.format(">>> Activity started, activityCount=%d", refs));
+
+        if (refs == 1) {
             if (System.currentTimeMillis() - enterBackgroundTime < 200) {
                 wasInBackground = false;
             }
-            //Log.i("DeltaChat", "switch to foreground");
-            for (Listener listener : listeners) {
-                try {
-                    listener.onBecameForeground();
-                } catch (Exception e) {
-
-                }
-            }
         }
 
-        if( !ApplicationLoader.getPermanentPush() ) {
-            MrMailbox.connect();
-        }
+        ApplicationLoader.startIdleThread(); // we call this without checking getPermanentPush() to have a simple guarantee that push is always active when the app is in foregroud (startIdleThread makes sure the thread is not started twice)
     }
 
     public boolean isWasInBackground(boolean reset) {
@@ -108,21 +85,28 @@ public class ForegroundDetector implements Application.ActivityLifecycleCallback
 
     @Override
     public void onActivityStopped(Activity activity) {
-        if (--refs == 0) {
+        if( refs <= 0 ) {
+            Log.i("DeltaChat", String.format("Bad activity count: activityCount=%d", refs));
+            return;
+        }
+
+        refs--;
+        Log.i("DeltaChat", String.format("<<< Activity stopped, activityCount=%d", refs));
+
+        if (refs == 0) {
             enterBackgroundTime = System.currentTimeMillis();
             wasInBackground = true;
-            //Log.i("DeltaChat", "switch to background");
-            for (Listener listener : listeners) {
-                try {
-                    listener.onBecameBackground();
-                } catch (Exception e) {
-
-                }
-            }
 
             if( !ApplicationLoader.getPermanentPush() ) {
-                MrMailbox.disconnect();
+                Log.i("DeltaChat", "Stopping idle thread ...");
+                ApplicationLoader.stopIdleThread();
             }
+            else {
+                Log.i("DeltaChat", "Permanent push; stopping idle thread not needed.");
+            }
+        }
+        else {
+            Log.i("DeltaChat", String.format("Not yet switched to background, %d activities left", refs));
         }
     }
 
@@ -136,6 +120,7 @@ public class ForegroundDetector implements Application.ActivityLifecycleCallback
 
     @Override
     public void onActivityPaused(Activity activity) {
+        // pause/resume will also be called when the app is partially covered by a dialog
     }
 
     @Override

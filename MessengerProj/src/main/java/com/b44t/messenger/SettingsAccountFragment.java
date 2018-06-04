@@ -360,7 +360,7 @@ public class SettingsAccountFragment extends BaseFragment implements Notificatio
             public void run() {
                 final int res = MrMailbox.configure();
                 if( res != 0 ) {
-                    MrMailbox.connect();
+                    ApplicationLoader.startIdleThread();
                 }
                 AndroidUtilities.runOnUIThread(new Runnable() {
                     @Override
