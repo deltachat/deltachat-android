@@ -98,11 +98,7 @@ public class ForegroundDetector implements Application.ActivityLifecycleCallback
             wasInBackground = true;
 
             if( !ApplicationLoader.getPermanentPush() ) {
-                Log.i("DeltaChat", "Stopping idle thread ...");
-                ApplicationLoader.stopIdleThread();
-            }
-            else {
-                Log.i("DeltaChat", "Permanent push; stopping idle thread not needed.");
+                ApplicationLoader.scheduleStopIdleThread();;
             }
         }
         else {

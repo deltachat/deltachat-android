@@ -288,7 +288,7 @@ public class ApplicationLoader extends Application {
 
         if( permanentPush ) {
             applicationContext.startService(new Intent(applicationContext, KeepAliveService.class));
-            stopIdleThread();
+            stopIdleThreadPhysically();
             startIdleThread(); // restart the idleThread to ensure we set a wake lock
         }
         else {
@@ -298,14 +298,28 @@ public class ApplicationLoader extends Application {
 
     private static final Object s_idleThreadCritical = new Object();
     private static Thread s_idleThread = null;
-    public static PowerManager.WakeLock s_idleWakeLock = null;
+    private static PowerManager.WakeLock s_idleWakeLock = null;
+    private static boolean s_switchFromIdleToPoll = false;
 
     public static void startIdleThread()
     {
         synchronized (s_idleThreadCritical) {
-            if (s_idleThread != null && s_idleThread.isAlive()) {
+            s_switchFromIdleToPoll = false;
+
+            if (s_idleThread != null && s_idleThread.isAlive() && MrMailbox.isIdle()) {
                 Log.i("DeltaChat", "Idle thread already started.");
                 return;
+            }
+
+            if( s_idleThread != null ) {
+                try {
+                    MrMailbox.interruptIdle();
+                    s_idleThread.join(1000);
+                    s_idleThread.interrupt();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                s_idleThread = null;
             }
 
             s_idleThread = new Thread(new Runnable() {
@@ -331,9 +345,21 @@ public class ApplicationLoader extends Application {
         }
     }
 
-    public static void stopIdleThread()
+    public static void scheduleStopIdleThread()
     {
         synchronized (s_idleThreadCritical) {
+            if (MrMailbox.isIdle()) {
+                s_switchFromIdleToPoll = true;
+                Log.i("DeltaChat", "Will switch from idle to poll on next timer event.");
+            }
+        }
+    }
+
+    public static void stopIdleThreadPhysically()
+    {
+        synchronized (s_idleThreadCritical) {
+            s_switchFromIdleToPoll = false;
+
             if( s_idleThread==null) {
                 Log.i("DeltaChat", "No idle thread to stop.");
                 return;
@@ -342,10 +368,23 @@ public class ApplicationLoader extends Application {
             try {
                 MrMailbox.interruptIdle();
                 s_idleThread.join(1000);
+                s_idleThread.interrupt();
             } catch (Exception e) {
                 e.printStackTrace();
             }
             s_idleThread = null;
         }
+    }
+
+    public static boolean doSwitchFromIdlePoll()
+    {
+        boolean doSwitch = false;
+        synchronized (s_idleThreadCritical) {
+            if (s_switchFromIdleToPoll && MrMailbox.isIdle()) {
+                doSwitch = true;
+            }
+            s_switchFromIdleToPoll = false;
+        }
+        return doSwitch;
     }
 }

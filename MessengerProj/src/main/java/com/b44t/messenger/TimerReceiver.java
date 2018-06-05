@@ -55,7 +55,12 @@ public class TimerReceiver extends BroadcastReceiver {
                         MrMailbox.heartbeat();
                     }
                     else {
-                        MrMailbox.poll();
+                        if( ApplicationLoader.doSwitchFromIdlePoll() ) {
+                            ApplicationLoader.stopIdleThreadPhysically();
+                        }
+                        else {
+                            MrMailbox.poll();
+                        }
                     }
                 }
             });
