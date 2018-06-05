@@ -278,21 +278,27 @@ JNIEXPORT jint Java_com_b44t_messenger_MrMailbox_isConfigured(JNIEnv *env, jclas
 }
 
 
-JNIEXPORT jint Java_com_b44t_messenger_MrMailbox_idle(JNIEnv *env, jclass cls)
+JNIEXPORT jboolean Java_com_b44t_messenger_MrMailbox_idle(JNIEnv *env, jclass cls)
 {
-	return (jint)mrmailbox_idle(get_mrmailbox_t(env, cls));
+	return (jboolean)mrmailbox_idle(get_mrmailbox_t(env, cls));
 }
 
 
-JNIEXPORT jint Java_com_b44t_messenger_MrMailbox_interruptIdle(JNIEnv *env, jclass cls)
+JNIEXPORT jboolean Java_com_b44t_messenger_MrMailbox_isIdle(JNIEnv *env, jclass cls)
 {
-	return (jint)mrmailbox_interrupt_idle(get_mrmailbox_t(env, cls));
+	return (jboolean)mrmailbox_is_idle(get_mrmailbox_t(env, cls));
 }
 
 
-JNIEXPORT jint Java_com_b44t_messenger_MrMailbox_poll(JNIEnv *env, jclass cls)
+JNIEXPORT jboolean Java_com_b44t_messenger_MrMailbox_interruptIdle(JNIEnv *env, jclass cls)
 {
-	return (jint)mrmailbox_poll(get_mrmailbox_t(env, cls));
+	return (jboolean)mrmailbox_interrupt_idle(get_mrmailbox_t(env, cls));
+}
+
+
+JNIEXPORT jboolean Java_com_b44t_messenger_MrMailbox_poll(JNIEnv *env, jclass cls)
+{
+	return (jboolean)mrmailbox_poll(get_mrmailbox_t(env, cls));
 }
 
 
