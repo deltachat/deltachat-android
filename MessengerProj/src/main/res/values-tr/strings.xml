@@ -104,6 +104,7 @@
     <string name="SmartNotificationsSoundAtMost">En çok</string>
     <string name="SmartNotificationsTimes">kere</string>
     <string name="SmartNotificationsWithin">içerisinde</string>
+    <string name="SmartNotificationsMinutes">dakikalar</string>
     <string name="DirectShare">Doğrudan paylaşım</string>
     <string name="DirectShareInfo">Son söyleşileri paylaşma menüsünde göster</string>
     <!--cache view-->
@@ -341,6 +342,7 @@
     <string name="HelpUrl">https://delta.chat/en/help</string>
     <string name="EncryptedMessage">Şifrelenmiş ileti</string>
     <string name="Encryption">Şifreleme</string>
+    <string name="EncrinfoE2EAvailable">Uçtan uca şifreleme kullanılabilir.</string>
     <string name="EncrinfoTransport">En azından sunucuma kadar şifreli taşıma.</string>
     <string name="EncrinfoNone">Sunucuma şifreleme yok.</string>
     <string name="EncrinfoFingerprints">Parmak izleri</string>
@@ -394,4 +396,16 @@
     <string name="VerifiedGroup">Doğrulanmış grup</string>
     <string name="Group">Grup</string>
     <string name="EditedNameWillBeShared">Düzenlenen ad tüm grup üyeleriyle paylaşılacaktır.</string>
+    <string name="E2EEncryptionPreferred">Uçtan uca şifreleme yeğlendi.</string>
+    <string name="OobAddrVerified">%1$s doğrulanmış.</string>
+    <string name="ExampleEmailAddr">user@example.org</string>
+    <string name="QrScanHint">Kameranızı QR kodunun üzerine getirin</string>
+
+    <string name="QrShowVerifyCode">QR doğrulama kodunu göster</string>
+    <string name="QrVerifyContactTitle">QR doğrulama kodu</string>
+    <string name="QrShowInviteCode">QR çağrı kodunu göster</string>
+    <string name="QrJoinVerifiedGroupTitle">QR çağrı kodu</string>
+    <string name="FetchMode">Getirme kipi</string>
+    <string name="FetchModeSaveBattery">Pil tasarrufu</string>
+    <string name="FetchModePersistentConnection">Kalıcı bağlantı</string>
     </resources>

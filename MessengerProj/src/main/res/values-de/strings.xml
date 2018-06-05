@@ -456,5 +456,18 @@
     Resulting strings might be "Member Alice added by me." or 'Group name changed from "Foo" to "Bar" by me.
     If you do not find a correct grammar for your language you can just use "%1$s (by me)" or "Me: %1$s" -->
     <string name="ActionBySelf">%1$s von mir.</string>
+    <string name="ExampleEmailAddr">max@mustermann.de</string>
+    <string name="QrScanHint">Halten Sie Ihre Kamera über den QR Code</string>
+
+    <string name="QrShowVerifyCode">Zeige Bestätigungs QR-Code</string>
+    <string name="QrVerifyContactTitle">Bestätigungs QR-Code</string>
+    <string name="QrVerifyContactHint"><![CDATA[<b>]]>%1$s<![CDATA[</b>]]>\nScannen Sie dies um einen verifizierten Kontakt zu erstellen.</string>
+
     <string name="QrShowInviteCode">QR-Einladungscode zeigen</string>
-    </resources>
+    <string name="QrJoinVerifiedGroupTitle">Einladungs QR-Code</string>
+    <string name="QrJoinVerifiedGroupHint">Scannen Sie folgenden Code um der verifizierten Gruppe beizutreten <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>.</string>
+    <string name="FetchMode">Empfangsmodus</string>
+    <string name="FetchModeSaveBattery">Batterie sparen</string>
+    <string name="FetchModePersistentConnection">Dauerhafte Verbindung</string>
+    <string name="FetchModeExplain">Wenn Sie den Modus <![CDATA[<i>]]>Batterie sparen<![CDATA[</i>]]> verwenden, kommen neue Nachrichten sofort an, während die App geöffnet ist und mit einer Verzögerung von ca 30 Sekunden, wenn die App nicht benutzt wird. Wenn das Gerät in den Schlafmodus umschaltet, kann die Verzögerung größer sein. Das ist die Standard-Einstellung.\n\n<![CDATA[<i>]]>Dauerhafte Verbindung<![CDATA[</i>]]> ist üblicherweise schneller, aber kann es erforden, dass die App in den Systemeinstellungen freigeschaltet werden muss um mehr Batterieverbrauch zu erlauben..\n\nWelchen Empfangsmodus möchten Sie verwenden?</string>
+</resources>
