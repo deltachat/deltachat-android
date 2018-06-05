@@ -376,7 +376,7 @@ public class ApplicationLoader extends Application {
         }
     }
 
-    public static boolean doSwitchFromIdlePoll()
+    public static boolean getAndResetSwitchFromIdleToPoll()
     {
         boolean doSwitch = false;
         synchronized (s_idleThreadCritical) {
