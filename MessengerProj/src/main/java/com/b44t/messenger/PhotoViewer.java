@@ -2693,8 +2693,8 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
         return isVisible && !disableShowCheck && object != null && currentPathObject != null && object.equals(currentPathObject);
     }
 
-    public void openPhoto(final MessageObject messageObject, long dialogId, final PhotoViewerProvider provider) {
-        openPhoto(messageObject, null, null, null, 0, provider, null, dialogId);
+    public void openPhoto(final MessageObject messageObject, long dialogId, final PhotoViewerProvider provider, ArrayList<Object> photos, int index) {
+        openPhoto(messageObject, null, null, photos, index, provider, null, dialogId);
     }
 
     public void openPhoto(final TLRPC.FileLocation fileLocation, final PhotoViewerProvider provider) {
