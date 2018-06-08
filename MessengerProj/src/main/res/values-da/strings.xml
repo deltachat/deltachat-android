@@ -7,13 +7,13 @@
     <!--chats view-->
     <string name="Settings">Opsætning</string>
     <string name="NewGroup">Ny gruppe</string>
-    <string name="NoResult">Ingen resultat.</string>
+    <string name="NoResult">Intet resultat.</string>
     <string name="NoChats">Ingen samtaler endnu</string>
     <string name="DeleteChat">Slette samtale</string>
     <string name="SelectChat">Vælge samtale…</string>
     <string name="Search">Søge</string>
     <string name="MuteNotifications">Ingen lyd påmindelser</string>
-    <string name="MuteFor">Ingen lyd i %1$s</string>
+    <string name="MuteFor">Ingen lyd til %1$s</string>
     <string name="UnmuteNotifications">Lyd</string>
     <string name="Draft">Kladde</string>
     <!--audio view-->
@@ -45,7 +45,7 @@
     <string name="SaveToDownloads">Gemme i \"Downloads\"</string>
     <string name="SaveToMusic">Gemme i \"Music\"</string>
     <string name="Share">Dele</string>
-    <string name="SendItems">Send %1$s</string>
+    <string name="SendItems">Sende %1$s</string>
     <string name="ClearRecentEmoji">Rydde nylige emoji?</string>
     <string name="AddShortcut">Tilføje kontrol til hjemmeskærm</string>
     <string name="ShortcutAdded">Køntrol tilføjet hjemmeskærm</string>
@@ -114,6 +114,7 @@
     <!--passcode view-->
     <string name="Passcode">Adgangskode lås</string>
     <string name="ChangePasscode">Ændre adgangskode</string>
+    <string name="ChangePasscodeInfo">Ved opsætning af flere adgangskoder vil et låse ikon vises ved toppen af samtale listen. Tryk på den for at låse programmet.\n\nBemærk: Hvis adgangskoden glemmes skal programmet slettes og geninstalleres.</string>
     <string name="PasscodePIN">PIN</string>
     <string name="PasscodePassword">Adgangskode</string>
     <string name="EnterCurrentPasscode">Indtaste nuværende adgangskode</string>
@@ -190,11 +191,13 @@
     <string name="AttachContact">Kontakt</string>
     <string name="AttachDocument">Fil</string>
     <string name="AttachVoiceMessage">Tale besked</string>
+    <string name="FromSelf">Undertegnet</string>
     <!--Alert messages-->
     <string name="NoHandleAppInstalled">For at fortsætte installere et program som kan håndtere  \'%1$s\' filer.</string>
     <string name="ContactAlreadyInGroup">Kontakt er allerede i gruppen.</string>
     <string name="ForwardMessagesTo">Videresende valgte beskeder til <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>?</string>
     <string name="SendMessagesTo">Sende beskeder til <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>?</string>
+    <string name="AreYouSureDeleteThisChat">Slette samtale? Den vil ikke længere blive vist i samtale listen, dets bekseder vil forblive på serveren.</string>
     <string name="AreYouSureBlockContact">Blokere kontakt?</string>
     <string name="AreYouSureDeleteContact">Slette kontakt?</string>
     <!--permissions-->
@@ -232,6 +235,10 @@
     <plurals name="Contacts">
         <item quantity="one">%d kontakt</item>
         <item quantity="other">%d kontakter</item>
+    </plurals>
+    <plurals name="MeAndMembers">
+        <item quantity="one">%d medlem og undertegnet</item>
+        <item quantity="other">%d medlemmer og undertegnet</item>
     </plurals>
     <plurals name="NewMessages">
         <item quantity="one">%d ny besked</item>
@@ -283,6 +290,15 @@
         <item quantity="one">Højst %1$d påmindelse inden for %2$s</item>
         <item quantity="other">Højst %1$d påmindelser inde for %2$s</item>
     </plurals>
+    <!--date formatters-->
+    <string name="formatterMonthYear">MMMM åååå</string>
+    <string name="formatterMonth">MMM dd</string>
+    <string name="formatterYear">dd.MM.åååå</string>
+    <string name="chatDate">EEE, MMMM d</string>
+    <string name="chatFullDate">EEE, MMMM d, åååå</string>
+    <string name="formatterWeek">EEE</string>
+    <string name="formatterDay24H">TT:mm</string>
+    <string name="formatterDay12H">t:mm a</string>
     <string name="formatDateAtTime">%1$s hos %2$s</string>
     <string name="AccountSettings">Konto opsætning</string>
     <string name="MyAccount">Konto</string>
@@ -301,6 +317,7 @@
     <string name="InboxHeadline">Indbakke</string>
     <string name="OutboxHeadline">Udbakke</string>
     <string name="MyAccountExplain">For kendte e-post udbyder bliver ekstra opsætninger bestemt automatisk.</string>
+    <string name="MyAccountExplain2" >Nogle gange, <![CDATA[<b>]]>skal IMAP aktiveres<![CDATA[</b>]]> i e-post web grænseflade.\n\nKontakt e-post udbyder eller venner ved problemer.</string>
     <string name="AccountNotConfigured">Konto ikke opsat</string>
     <string name="AboutThisProgram">Om Delta Chat</string>
     <string name="NotSet">Ikke angivet</string>
@@ -321,6 +338,7 @@
     <!-- Translators: please use a very short string here, it should not much longer than
     the string needed for video time+size (0:00, 12,3 Mib) -->
     <string name="OneMoment">Øjeblik…</string>
+    <string name="NoChatsHelp">Start bekseder ved at trykke på \"Ny samtale\" knappen i bunden til højre eller tryk på \"Menu\" knappen for flere valgmuligheder.</string>
     <string name="Intro7Message"><![CDATA[<b>Delta Chat</b>]]> er sikker for firma brug, kompatibel og og baseret på standarder.</string>
     <string name="InviteMenuEntry">Sende invitationer</string>
     <string name="InviteText"> Jeg bruger Delta Chat - %1$s - du kan skrive til mig hos %2$s</string>
@@ -335,6 +353,7 @@
     <string name="MsgMemberRemovedFromToGroup">Medlem %1$s fjernet.</string>
     <string name="AskAddMemberToGroup">Tilføje <![CDATA[<b>]]>%1$s<![CDATA[</b>]]> til gruppe?</string>
     <string name="AskRemoveMemberFromGroup">Fjerne <![CDATA[<b>]]>%1$s<![CDATA[</b>]]> fra gruppe?</string>
+    <string name="ErrSelfNotInGroup">Mans skal være medlem af gruppen for at kunne udføre denne handling.</string>
     <string name="MsgGroupLeft">Forladt gruppe</string>
     <string name="NoMessagesHint">Sende besked til <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>:\n\n• Det er o.k.hvis <![CDATA[<b>]]>%2$s<![CDATA[</b>]]> ikke bruger Delta Chat.\n\n• Levering af første besked kan tage nogen tid.</string>
     <string name="SendNRcvReadReceipts">Modtage og sende læse kvitteringer</string>
@@ -371,7 +390,9 @@
     <string name="ExportImportHeader">Eksportere og importere</string>
     <string name="EnterPasswordToContinue">Indtaste adgangskode til %1$s for at fortsætte:</string>
     <string name="IncorrectPassword">Forkert adgangskode.</string>
+    <string name="ImportBackupAsk">Sikkerhedskopi fundet på <![CDATA[<i>]]>%1$s<![CDATA[</i>]]>.\n\nSkal den importeres og bruge al data og opsætninger fra den?</string>
     <string name="ImportBackup">Importere sikkerhedskopi</string>
+    <string name="FilesSuccessfullyExported">Filer eksporteret til <![CDATA[<i>]]>%1$s<![CDATA[</i>]]>.</string>
     <string name="ExportBackup">Eksportere sikkerhedskopi</string>
     <string name="ExportPrivateKeys">Eksportere hemmelige nøgler</string>
     <string name="ImportPrivateKeys">Importere hemmelige nøgler</string>
@@ -387,11 +408,19 @@
     <string name="AutocryptKeyTransferInitiate">Sende automatisk kryptere opsætningsbesked</string>
     <string name="AutocryptKeyTransfer">Automatisk kryptere opsætningsbesked</string>
     <string name="AutocryptSetupMessageSubject">Automatisk kryptere opsætningsbesked</string>
+    <string name="AutocryptKeyTransferPleaseEnterCode">Indtast opsætningskode vist på den anden enhed.</string>
+    <string name="AutocryptKeyTransferSucceeded">Ende-til-ende opsætning overført. Denne enhed er nu klar til at bruge autokryptering med samme opsætning som anden enhed.</string>
     <string name="Retry">Prøv igen</string>
+    <string name="SelfTalkSubtitle">Beskeder sendt af undertegnet til undertegnet</string>
     <string name="QrScan">Skanne QR-kode</string>
     <string name="QrShow">Vise QR-kode</string>
+    <string name="QrScanContainsText">Skannet QR kode indeholder følgende tekst:\n\n%1$s</string>
     <string name="QrScanContainsUrl">Skannet QR kode indeholder følgende URL:\n\n%1$s</string>
     <string name="OobFingerprint">Fingeraftryk</string>
+    <string name="OobFingerprintAskOob">Efterprøv kontakt og start samtale med <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>?</string>
+    <string name="OobFingerprintOk">Kontact <![CDATA[<i>]]>%1$s<![CDATA[</i>]]> efterprøvet. Start samtale?</string>
+    <string name="OobFingerprintMismatch">Skannet fingeraftryk <![CDATA[<b>]]>passer ikke<![CDATA[</b>]]> det sidst sete fingeraftryk for <![CDATA[<i>]]>%1$s<![CDATA[</i>]]>.</string>
+    <string name="OobFingerprintWithoutAddr">QR kode indeholder fingeraftryk men ingen e-post adresse.\n \nFor en uden for bånd efterprøvning, skal en krypteret forbindelse til modtageren først oprettes.</string>
     <string name="OobSecureJoinRequested">%1$s tilslutter.</string>
     <string name="Autocrypt">Automatisk kryptering</string>
     <string name="NewVerifiedGroup">Ny efterprøvet gruppe</string>
@@ -404,18 +433,26 @@
     <string name="E2EEncryptionPreferred">Ende til ende-kryptering foretrukken.</string>
     <string name="OobAddrVerified">%1$s efterprøvet.</string>
     <string name="OobAddrVerifiedIntroduceMyself">%1$s efterprøvet, præsentere…</string>
+    <string name="OobAskJoinVerifiedGroup">Tilslutte efterprøvet gruppe <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>?</string>
     <!-- Translators: %1$s is replaced by an action, eg. MsgMemberAddedToGroup, MsgMemberRemovedFromToGroup, MsgGroupNameChanged or MsgGroupImageChanged. If the action ends with a full stop, this is removed.
     %2$s is replaced by a the name of the user that made this action.
     Resulting strings might be "Member Alice added by Bob." or 'Group name changed from "Foo" to "Bar" by Claire.
      If you do not find a correct grammar for your language you can just use "%1$s (by %2$s)" or "%2$s: %1$s" -->
     <string name="ActionByUser">%1$s af %2$s.</string>
+    <!-- Translators: %1$s is replaced by an action, eg. MsgMemberAddedToGroup, MsgMemberRemovedFromToGroup, MsgGroupNameChanged or MsgGroupImageChanged. If the action ends with a full stop, this is removed.
+    Resulting strings might be "Member Alice added by me." or 'Group name changed from "Foo" to "Bar" by me.
+    If you do not find a correct grammar for your language you can just use "%1$s (by me)" or "Me: %1$s" -->
+    <string name="ActionBySelf">%1$s af undertegnet.</string>
     <string name="ExampleEmailAddr">user@example.org</string>
     <string name="QrScanHint">Placere kamera over QR koden</string>
 
     <string name="QrShowVerifyCode">Vise QR efterprøve kode</string>
     <string name="QrVerifyContactTitle">QR efterprøve kode</string>
+    <string name="QrVerifyContactHint"><![CDATA[<b>]]>%1$s<![CDATA[</b>]]>\nSkan dette for at opsætte efterprøvet kontakt.</string>
+
     <string name="QrShowInviteCode">Vise QR invitationskode</string>
     <string name="QrJoinVerifiedGroupTitle">QR invitationskode</string>
+    <string name="QrJoinVerifiedGroupHint">Skan dette for at tilslutte efterprøvet gruppe <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>.</string>
     <string name="FetchMode">Hente tilstand</string>
     <string name="FetchModeSaveBattery">Spare batteri</string>
     <string name="FetchModePersistentConnection">Vedvarende forbindelse</string>

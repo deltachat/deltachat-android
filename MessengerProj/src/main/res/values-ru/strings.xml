@@ -71,7 +71,7 @@
     <string name="TextSize">Размер шрифта сообщений</string>
     <string name="UnblockContact">Разблокировать контакт</string>
     <string name="NoBlocked">Пока нет заблокированных контактов</string>
-    <string name="DefaultForNormalMessages">Обычные сообщение</string>
+    <string name="DefaultForNormalMessages">Обычные сообщения</string>
     <string name="MessagePreview">Предпросмотр сообщения</string>
     <string name="DefaultForGroupMessages">Сообщения группы</string>
     <string name="Sound">Звук</string>
@@ -91,7 +91,7 @@
     <string name="BadgeNumber">Задействовать иконку для ведения счёта, по возможности</string>
     <string name="Short">Короткая</string>
     <string name="Long">Длинная</string>
-    <string name="RaiseToSpeak">Открыть для разговора</string>
+    <string name="RaiseToSpeak">Режим \"бери-и-говори\"</string>
     <string name="EditName">Изменить название</string>
     <string name="NotificationsPriority">Просмотр</string>
     <string name="NotificationsPriorityDefault">Нормальный приоритет</string>
@@ -377,7 +377,7 @@
     <string name="ErrGroupNameEmpty">Введите название группы.</string>
     <string name="MsgNewGroupDraftHint">Напишите первое сообщение, чтобы другие могли отвечать в этой группе.\n\n• Группа будет нормально общаться, даже если не все участники используют Delta Chat.\n\n• Доставка первого сообщения может занять некоторое время.</string>
     <string name="MsgNewGroupDraft">Привет! Я только что создал группу \"%1$s\" для нас.</string>
-    <string name="MsgGroupNameChanged">Название группы изменено с \"%1$s\" в \"%2$s\".</string>
+    <string name="MsgGroupNameChanged">Название группы изменено с \"%1$s\" на \"%2$s\".</string>
     <string name="MsgGroupImageChanged">Изображение группы изменено.</string>
     <string name="MsgMemberAddedToGroup">Участник %1$s добавлен.</string>
     <string name="MsgMemberRemovedFromToGroup">Участник %1$s удалён.</string>
@@ -440,7 +440,7 @@
     <string name="AskLeaveGroup">Вы уверены, что хотите выйти из группы?</string>
     <string name="Never">Никогда</string>
     <string name="AutocryptKeyTransferInitiate">Начать передачу Сообщения Настройки Autocrypt</string>
-    <string name="AutocryptKeyTransfer">Сообщение Настойки Autocrypt</string>
+    <string name="AutocryptKeyTransfer">Сообщение Настройки Autocrypt</string>
     <string name="AutocryptKeyTransferMsgBeforeSend">Это <![CDATA[<i>]]>Сообщение Настройки Autocrypt<![CDATA[</i>]]> для безопасной передачи настроек вашего сквозного шифрования другим совместимым устройствам.\n\nЭта настройка будет зашифрована установочным кодом который указан здесь и который необходимо ввести на другом устройстве.</string>
     <string name="AutocryptKeyTransferMsgAfterSend">Вы отправили ключ себе. Теперь перейдите к другому устройству и откройте сообщение настройки. Будет предложено ввести код настройки. Введите следующие цифры:\n\n%1$s\n\nКак только Вы это сделаете, другое устройство будет готово использовать Autocrypt.</string>
     <string name="AutocryptSetupMessageSubject">Сообщение Настройки Autocrypt</string>

@@ -357,7 +357,7 @@
     <string name="AskStartChatWith">Rozpocząć czat z <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>?</string>
     <string name="DeaddropHint">Aby rozpocząć czat, naciśnij strzałkę odpowiedzi.</string>
     <string name="NotYetImplemented">Ta funkcja jest niedostępna lub niekompletna.</string>
-    <string name="DefaultStatusText">Wysłane z komunikatora Delta Chat: https://delta.chat/pl</string>
+    <string name="DefaultStatusText">Wysłane z komunikatora Delta Chat: https://delta.chat</string>
     <string name="Name" >Nazwa</string>
     <string name="EmailAddress">Adres e-mail</string>
     <string name="CannotDeleteContact">Nie możesz usunąć kontaktu w użyciu, zamiast tego zablokuj kontakt.</string>
