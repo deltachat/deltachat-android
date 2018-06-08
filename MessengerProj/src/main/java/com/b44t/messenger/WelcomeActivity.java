@@ -382,7 +382,8 @@ public class WelcomeActivity extends Activity implements NotificationCenter.Noti
             }
 
             if( (int)args[0]==1 ) {
-                ApplicationLoader.startIdleThread(); // import does not automatically connect
+                ApplicationLoader.imapForeground = true;
+                ApplicationLoader.startImapThread(); // import does not automatically connect
                 KeepAliveService kas = KeepAliveService.getInstance();
                 if( kas != null ) {
                     kas.updateForegroundNotification();

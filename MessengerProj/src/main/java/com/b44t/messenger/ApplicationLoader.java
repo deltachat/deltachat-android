@@ -147,8 +147,8 @@ public class ApplicationLoader extends Application {
         try {
             PowerManager pm = (PowerManager) ApplicationLoader.applicationContext.getSystemService(Context.POWER_SERVICE);
 
-            s_idleWakeLock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "idleWakeLock");
-            s_idleWakeLock.setReferenceCounted(false); // if the idle-thread is killed for any reasons, it is better not to rely on reference counting
+            imapWakeLock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "idleWakeLock");
+            imapWakeLock.setReferenceCounted(false); // if the idle-thread is killed for any reasons, it is better not to rely on reference counting
 
             wakeupWakeLock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "wakeupWakeLock" /*any name*/);
             wakeupWakeLock.setReferenceCounted(false);
@@ -217,7 +217,8 @@ public class ApplicationLoader extends Application {
         File dbfile = new File(getFilesDirFixed(), "messenger.db");
         MrMailbox.open(dbfile.getAbsolutePath());
         if( MrMailbox.isConfigured()!=0 && ApplicationLoader.getPermanentPush() ) {
-            ApplicationLoader.startIdleThread();
+            ApplicationLoader.imapForeground = true;
+            ApplicationLoader.startImapThread();
         }
 
         // create other default objects
@@ -288,103 +289,64 @@ public class ApplicationLoader extends Application {
 
         if( permanentPush ) {
             applicationContext.startService(new Intent(applicationContext, KeepAliveService.class));
-            stopIdleThreadPhysically();
-            startIdleThread(); // restart the idleThread to ensure we set a wake lock
         }
         else {
             applicationContext.stopService(new Intent(applicationContext, KeepAliveService.class));
         }
     }
 
-    private static final Object s_idleThreadCritical = new Object();
-    private static Thread s_idleThread = null;
-    private static PowerManager.WakeLock s_idleWakeLock = null;
-    private static boolean s_switchFromIdleToPoll = false;
+    private static final Object imapThreadCritical = new Object();
+    public static Thread imapThread = null;
+    private static PowerManager.WakeLock imapWakeLock = null;
+    public static boolean imapForeground = false;
+    public static boolean imapSwitchToBackground = false;
 
-    public static void startIdleThread()
+    public static void startImapThread()
     {
-        synchronized (s_idleThreadCritical) {
-            s_switchFromIdleToPoll = false;
+        imapSwitchToBackground = false;
 
-            if (s_idleThread != null && s_idleThread.isAlive() && MrMailbox.isIdle()) {
-                Log.i("DeltaChat", "Idle thread already started.");
+        synchronized(imapThreadCritical) {
+
+            if( imapThread != null && imapThread.isAlive() ) {
+                Log.i("DeltaChat", "*** IMAP-Thread is already active, doing nothing.");
                 return;
             }
 
-            if( s_idleThread != null ) {
-                try {
-                    MrMailbox.interruptIdle();
-                    s_idleThread.join(1000);
-                    s_idleThread.interrupt();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-                s_idleThread = null;
-            }
-
-            s_idleThread = new Thread(new Runnable() {
+            imapThread = new Thread(new Runnable() {
                 @Override
                 public void run() {
-                    boolean permanentPush = getPermanentPush();
-                    if( permanentPush ) {
-                        s_idleWakeLock.acquire();
+
+                    Log.i("DeltaChat", "*** IMAP-Thread started.");
+
+
+                    while( true ) {
+                        imapWakeLock.acquire();
+                        MrMailbox.performJobs();
+                        imapWakeLock.release();
+
+                        if( imapForeground ) {
+                            MrMailbox.performIdle();
+                        }
+                        else {
+                            imapWakeLock.acquire();
+                            MrMailbox.performPoll();
+                            imapWakeLock.release();
+                            break;
+                        }
                     }
 
-                    try {
-                        MrMailbox.idle(); // this may run hours ...
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
 
-                    if( permanentPush ) {
-                        s_idleWakeLock.release();
-                    }
+                    Log.i("DeltaChat", "*** IMAP-Thread stopped.");
                 }
-            }, "idleThread");
-            s_idleThread.start();
+            }, "imapThread");
+            imapThread.start();
         }
     }
 
-    public static void scheduleStopIdleThread()
+    public static void scheduleStopImapThread()
     {
-        synchronized (s_idleThreadCritical) {
-            if (MrMailbox.isIdle()) {
-                s_switchFromIdleToPoll = true;
-                Log.i("DeltaChat", "Will switch from idle to poll on next timer event.");
-            }
-        }
-    }
+        Log.i("DeltaChat", "*** IMAP-thread scheduled to stop.");
 
-    public static void stopIdleThreadPhysically()
-    {
-        synchronized (s_idleThreadCritical) {
-            s_switchFromIdleToPoll = false;
-
-            if( s_idleThread==null) {
-                Log.i("DeltaChat", "No idle thread to stop.");
-                return;
-            }
-
-            try {
-                MrMailbox.interruptIdle();
-                s_idleThread.join(1000);
-                s_idleThread.interrupt();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            s_idleThread = null;
-        }
-    }
-
-    public static boolean getAndResetSwitchFromIdleToPoll()
-    {
-        boolean doSwitch = false;
-        synchronized (s_idleThreadCritical) {
-            if (s_switchFromIdleToPoll && MrMailbox.isIdle()) {
-                doSwitch = true;
-            }
-            s_switchFromIdleToPoll = false;
-        }
-        return doSwitch;
+        imapSwitchToBackground = true;
     }
 }

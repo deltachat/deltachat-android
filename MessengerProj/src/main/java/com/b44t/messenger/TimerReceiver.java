@@ -31,46 +31,27 @@ import android.content.Intent;
 import android.os.Build;
 import android.util.Log;
 
+import com.coremedia.iso.boxes.apple.AppleItemListBox;
+
 
 public class TimerReceiver extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
 
-        // for a discussion about the different approaches to save batter, see https://github.com/deltachat/deltachat-android/issues/104#issuecomment-331670326
+        if( ApplicationLoader.imapSwitchToBackground ) {
 
-        try {
-            ApplicationLoader.wakeupWakeLock.acquire(); // do this first!
-            MrMailbox.log_i("DeltaChat", "*** TimerReceiver.onReceive()");
+            Log.i("DeltaChat", "IMAP-Thread set to background mode.");
 
-            // we assume, the IMAP thread is alive. I cannot imagine, the thread was killed with the App being running.
-            // (if the whole App was killed, the IMAP thread is already started by MrMailbox.connect() if we're here)
-            // (the thread itself will reconnect to the IMAP server as needed)
-            // however, it seems as if the threads sleep longer than ususal, check this by calling heartbeat() manually
-            //
-            // CAVE: MrMailbox.heartbeat() must not be called from the mainthread - otherwise eg. when the network hangs,
-            // this function returns only after the network timeout and the ui thread may hang for minutes ...
-            new Thread(new Runnable() {
-                @Override
-                public void run() {
-                    if( ApplicationLoader.getPermanentPush() ) {
-                        MrMailbox.heartbeat();
-                    }
-                    else {
-                        if( ApplicationLoader.getAndResetSwitchFromIdleToPoll() ) {
-                            ApplicationLoader.stopIdleThreadPhysically();
-                        }
-                        else {
-                            MrMailbox.poll();
-                        }
-                    }
-                }
-            }).start();
-
-            // create the next alarm in about a minute
-            scheduleNextAlarm();
-        } finally {
-            // Always release the wakelock, _if_ there is more to do, the backend acquires an additional wakelock using MR_EVENT_WAKE_LOCK
-            ApplicationLoader.wakeupWakeLock.release();
+            ApplicationLoader.imapForeground = false;
+            MrMailbox.interruptIdle();
         }
+        else {
+            Log.i("DeltaChat", "IMAP-Thread starting from timer.");
+
+            ApplicationLoader.startImapThread(); // do not change imapForeground before; may or may not be in foreground
+        }
+
+
+        scheduleNextAlarm();
     }
 
     public static void scheduleNextAlarm()
