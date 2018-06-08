@@ -425,9 +425,11 @@ public class MrMailbox {
                     URL url = new URL(CPtr2String(data1));
                     HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
                     try {
+                        urlConnection.setConnectTimeout(10*1000);
                         InputStream inputStream = new BufferedInputStream(urlConnection.getInputStream());
 
                         BufferedReader r = new BufferedReader(new InputStreamReader(inputStream));
+
                         StringBuilder total = new StringBuilder();
                         String line;
                         while ((line = r.readLine()) != null) {
@@ -438,7 +440,9 @@ public class MrMailbox {
                         urlConnection.disconnect();
                     }
                 }
-                catch(Exception e) {}
+                catch(Exception e) {
+                    e.printStackTrace();
+                }
                 return String2CPtr(httpContent);
         }
         return 0;
