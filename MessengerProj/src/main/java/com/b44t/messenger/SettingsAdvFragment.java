@@ -311,7 +311,7 @@ public class SettingsAdvFragment extends BaseFragment implements NotificationCen
                                 }
                             });
                             progressDialog.show();
-                            Utilities.searchQueue.postRunnable(new Runnable() {
+                            new Thread(new Runnable() {
                                 @Override
                                 public void run() {
                                     final String sc = MrMailbox.initiateKeyTransfer();
@@ -342,7 +342,7 @@ public class SettingsAdvFragment extends BaseFragment implements NotificationCen
                                         }
                                     });
                                 }
-                            });
+                            }).start();
                         }
                     });
                     showDialog(builder1.create());
@@ -569,7 +569,7 @@ public class SettingsAdvFragment extends BaseFragment implements NotificationCen
             MrMailbox.m_lastErrorString = "";
         }
 
-        Utilities.searchQueue.postRunnable(new Runnable() {
+        new Thread(new Runnable() {
             @Override
             public void run() {
                 final int res = MrMailbox.imex(progressWhat, imexDir.getAbsolutePath());
@@ -580,7 +580,7 @@ public class SettingsAdvFragment extends BaseFragment implements NotificationCen
                     }
                 });
             }
-        });
+        }).start();
     }
 
     @Override

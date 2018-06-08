@@ -355,7 +355,7 @@ public class SettingsAccountFragment extends BaseFragment implements Notificatio
         }
 
         // try to connect, this results in an MR_EVENT_CONFIGURE_ENDED resp. NotificationCenter.configureEnded event
-        Utilities.searchQueue.postRunnable(new Runnable() {
+        new Thread(new Runnable() {
             @Override
             public void run() {
                 final int res = MrMailbox.configure();
@@ -369,7 +369,7 @@ public class SettingsAccountFragment extends BaseFragment implements Notificatio
                     }
                 });
             }
-        });
+        }).start();
 
     }
 

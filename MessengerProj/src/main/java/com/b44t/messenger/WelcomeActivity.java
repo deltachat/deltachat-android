@@ -347,7 +347,7 @@ public class WelcomeActivity extends Activity implements NotificationCenter.Noti
             MrMailbox.m_lastErrorString = "";
         }
 
-        Utilities.searchQueue.postRunnable(new Runnable() {
+        new Thread(new Runnable() {
             @Override
             public void run() {
                 final int res = MrMailbox.imex(MrMailbox.MR_IMEX_IMPORT_BACKUP, backupFile);
@@ -358,7 +358,7 @@ public class WelcomeActivity extends Activity implements NotificationCenter.Noti
                     }
                 });
             }
-        });
+        }).start();
     }
 
     @Override

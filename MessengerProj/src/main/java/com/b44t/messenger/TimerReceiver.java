@@ -48,7 +48,7 @@ public class TimerReceiver extends BroadcastReceiver {
             //
             // CAVE: MrMailbox.heartbeat() must not be called from the mainthread - otherwise eg. when the network hangs,
             // this function returns only after the network timeout and the ui thread may hang for minutes ...
-            Utilities.searchQueue.postRunnable(new Runnable() {
+            new Thread(new Runnable() {
                 @Override
                 public void run() {
                     if( ApplicationLoader.getPermanentPush() ) {
@@ -63,7 +63,7 @@ public class TimerReceiver extends BroadcastReceiver {
                         }
                     }
                 }
-            });
+            }).start();
 
             // create the next alarm in about a minute
             scheduleNextAlarm();
