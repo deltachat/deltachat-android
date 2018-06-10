@@ -69,7 +69,7 @@ public class ForegroundDetector implements Application.ActivityLifecycleCallback
             }
         }
 
-        ApplicationLoader.imapForeground = true;
+        //ApplicationLoader.imapForeground = true;
         ApplicationLoader.startImapThread(); // we call this without checking getPermanentPush() to have a simple guarantee that push is always active when the app is in foregroud (startIdleThread makes sure the thread is not started twice)
     }
 

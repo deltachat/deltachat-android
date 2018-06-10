@@ -213,7 +213,7 @@ public class ApplicationLoader extends Application {
         File dbfile = new File(getFilesDirFixed(), "messenger.db");
         MrMailbox.open(dbfile.getAbsolutePath());
         if( MrMailbox.isConfigured()!=0 && ApplicationLoader.getPermanentPush() ) {
-            ApplicationLoader.imapForeground = true;
+            //ApplicationLoader.imapForeground = true;
             ApplicationLoader.startImapThread();
         }
 
@@ -289,7 +289,7 @@ public class ApplicationLoader extends Application {
     private static final Object imapThreadCritical = new Object();
     public static Thread imapThread = null;
     private static PowerManager.WakeLock imapWakeLock = null;
-    public static boolean imapForeground = false;
+    //public static boolean imapForeground = false;
 
     public static void startImapThread()
     {
@@ -312,17 +312,17 @@ public class ApplicationLoader extends Application {
                         MrMailbox.performJobs();
                         imapWakeLock.release();
 
-                        if( imapForeground ) {
+                        //if( imapForeground ) {
                             MrMailbox.performIdle();
-                        }
+                        /*}
                         else {
                             MrMailbox.performPoll();
                             break;
-                        }
+                        }*/
                     }
 
 
-                    Log.i("DeltaChat", "IMAP-Thread stopped.");
+                    //Log.i("DeltaChat", "IMAP-Thread stopped.");
                 }
             }, "imapThread");
             imapThread.start();
@@ -333,8 +333,8 @@ public class ApplicationLoader extends Application {
     {
         Log.i("DeltaChat", "IMAP-thread scheduled to stop.");
 
-        imapForeground = false;
-        MrMailbox.interruptIdle();
+        //imapForeground = false;
+        //MrMailbox.interruptIdle();
 
     }
 }

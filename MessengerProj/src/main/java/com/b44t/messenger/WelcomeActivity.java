@@ -382,7 +382,7 @@ public class WelcomeActivity extends Activity implements NotificationCenter.Noti
             }
 
             if( (int)args[0]==1 ) {
-                ApplicationLoader.imapForeground = true;
+                //ApplicationLoader.imapForeground = true;
                 ApplicationLoader.startImapThread(); // import does not automatically connect
                 KeepAliveService kas = KeepAliveService.getInstance();
                 if( kas != null ) {
