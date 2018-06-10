@@ -304,7 +304,7 @@ public class ApplicationLoader extends Application {
                 @Override
                 public void run() {
 
-                    Log.i("DeltaChat", "IMAP-Thread started.");
+                    Log.i("DeltaChat", "###################### IMAP-Thread started. ######################");
 
 
                     while( true ) {
@@ -331,7 +331,7 @@ public class ApplicationLoader extends Application {
 
     public static void scheduleStopImapThread()
     {
-        Log.i("DeltaChat", "IMAP-thread scheduled to stop.");
+        //Log.i("DeltaChat", "IMAP-thread scheduled to stop.");
 
         //imapForeground = false;
         //MrMailbox.interruptIdle();
