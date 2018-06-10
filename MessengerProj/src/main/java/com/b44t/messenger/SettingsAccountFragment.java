@@ -360,6 +360,7 @@ public class SettingsAccountFragment extends BaseFragment implements Notificatio
             public void run() {
                 final int res = MrMailbox.configure();
                 if( res != 0 ) {
+                    ApplicationLoader.imapForeground = true;
                     ApplicationLoader.startImapThread();
                 }
                 AndroidUtilities.runOnUIThread(new Runnable() {

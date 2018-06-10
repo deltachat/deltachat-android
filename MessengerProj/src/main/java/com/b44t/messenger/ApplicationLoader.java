@@ -299,16 +299,13 @@ public class ApplicationLoader extends Application {
     public static Thread imapThread = null;
     private static PowerManager.WakeLock imapWakeLock = null;
     public static boolean imapForeground = false;
-    public static boolean imapSwitchToBackground = false;
 
     public static void startImapThread()
     {
-        imapSwitchToBackground = false;
-
         synchronized(imapThreadCritical) {
 
             if( imapThread != null && imapThread.isAlive() ) {
-                Log.i("DeltaChat", "*** IMAP-Thread is already active, doing nothing.");
+                Log.i("DeltaChat", "IMAP-Thread is already active, doing nothing.");
                 return;
             }
 
@@ -316,7 +313,7 @@ public class ApplicationLoader extends Application {
                 @Override
                 public void run() {
 
-                    Log.i("DeltaChat", "*** IMAP-Thread started.");
+                    Log.i("DeltaChat", "IMAP-Thread started.");
 
 
                     while( true ) {
@@ -336,7 +333,7 @@ public class ApplicationLoader extends Application {
                     }
 
 
-                    Log.i("DeltaChat", "*** IMAP-Thread stopped.");
+                    Log.i("DeltaChat", "IMAP-Thread stopped.");
                 }
             }, "imapThread");
             imapThread.start();
@@ -345,8 +342,10 @@ public class ApplicationLoader extends Application {
 
     public static void scheduleStopImapThread()
     {
-        Log.i("DeltaChat", "*** IMAP-thread scheduled to stop.");
+        Log.i("DeltaChat", "IMAP-thread scheduled to stop.");
 
-        imapSwitchToBackground = true;
+        imapForeground = false;
+        MrMailbox.interruptIdle();
+
     }
 }

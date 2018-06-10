@@ -37,19 +37,9 @@ import com.coremedia.iso.boxes.apple.AppleItemListBox;
 public class TimerReceiver extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
 
-        if( ApplicationLoader.imapSwitchToBackground ) {
+        Log.i("DeltaChat", "-------------------- on receive timer --------------------");
 
-            Log.i("DeltaChat", "IMAP-Thread set to background mode.");
-
-            ApplicationLoader.imapForeground = false;
-            MrMailbox.interruptIdle();
-        }
-        else {
-            Log.i("DeltaChat", "IMAP-Thread starting from timer.");
-
-            ApplicationLoader.startImapThread(); // do not change imapForeground before; may or may not be in foreground
-        }
-
+        ApplicationLoader.startImapThread(); // do not change imapForeground before; may or may not be in foreground
 
         scheduleNextAlarm();
     }
