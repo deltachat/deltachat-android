@@ -325,9 +325,7 @@ public class ApplicationLoader extends Application {
                             MrMailbox.performIdle();
                         }
                         else {
-                            imapWakeLock.acquire();
                             MrMailbox.performPoll();
-                            imapWakeLock.release();
                             break;
                         }
                     }
