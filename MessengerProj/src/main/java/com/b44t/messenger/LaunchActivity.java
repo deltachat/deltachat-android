@@ -828,7 +828,6 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
         if (PhotoViewer.getInstance().isVisible()) {
             PhotoViewer.getInstance().onPause();
         }
-        ApplicationLoader.stayAwakeForAMoment();
     }
 
     @Override

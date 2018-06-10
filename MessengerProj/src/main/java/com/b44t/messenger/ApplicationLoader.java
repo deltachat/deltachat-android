@@ -55,8 +55,7 @@ public class ApplicationLoader extends Application {
     public static volatile boolean isScreenOn = false;
     public static volatile boolean mainInterfacePaused = true;
 
-    public static PowerManager.WakeLock wakeupWakeLock = null;
-    private static PowerManager.WakeLock stayAwakeWakeLock = null;
+    public static PowerManager.WakeLock convertVideoWakeLock = null;
 
 
     public static int fontSize;
@@ -147,17 +146,14 @@ public class ApplicationLoader extends Application {
         try {
             PowerManager pm = (PowerManager) ApplicationLoader.applicationContext.getSystemService(Context.POWER_SERVICE);
 
-            imapWakeLock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "idleWakeLock");
+            imapWakeLock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "imapWakeLock");
             imapWakeLock.setReferenceCounted(false); // if the idle-thread is killed for any reasons, it is better not to rely on reference counting
 
-            wakeupWakeLock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "wakeupWakeLock" /*any name*/);
-            wakeupWakeLock.setReferenceCounted(false);
-
-            stayAwakeWakeLock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "stayAwakeWakeLock" /*any name*/);
-            stayAwakeWakeLock.setReferenceCounted(false);
+            convertVideoWakeLock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "convertVideoWakeLock" /*any name*/);
+            convertVideoWakeLock.setReferenceCounted(false);
 
         } catch (Exception e) {
-            Log.e("DeltaChat", "Cannot acquire wakeLock");
+            Log.e("DeltaChat", "Cannot create wakeLocks");
         }
 
         // create a MrMailbox object; as android stops the App by just killing it, we do never call MrMailboxUnref()
@@ -261,11 +257,6 @@ public class ApplicationLoader extends Application {
         } catch (Exception e) {
         }
         return false;
-    }
-
-    public static void stayAwakeForAMoment()
-    {
-        stayAwakeWakeLock.acquire(1*60*1000); // 1 Minute to wait for "after chat" messages, after that, we sleep most time, see wakeupWakeLock
     }
 
     static private int fetchMode = -1; // 0: push, 1: poll once per minute
