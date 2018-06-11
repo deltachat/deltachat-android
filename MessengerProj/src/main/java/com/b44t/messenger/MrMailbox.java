@@ -56,10 +56,10 @@ public class MrMailbox {
 
     public native static int isConfigured();
 
-    public native static boolean idle();
-    public native static boolean isIdle();
-    public native static boolean interruptIdle();
-    public native static boolean poll();
+    public native static void performJobs();
+    public native static void fetch();
+    public native static void idle();
+    public native static void interruptIdle();
 
     public native static void setConfig(String key, String value);
     public native static void setConfigInt(String key, int value);

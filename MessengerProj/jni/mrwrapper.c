@@ -90,31 +90,6 @@ static void s_init_globals(JNIEnv *env, jclass MrMailbox_class)
 }
 
 
-/* setup threads, only called directly by the backed */
-
-int mrosnative_setup_thread(mrmailbox_t* mailbox)
-{
-	if( s_jvm == NULL ) {
-		mrmailbox_log_error(mailbox, 0, "Not ready, cannot setup thread.");
-		return 0;
-	}
-
-	mrmailbox_log_info(mailbox, 0, "Attaching C-thread to Java VM...");
-		JNIEnv* env = NULL;
-		(*s_jvm)->AttachCurrentThread(s_jvm, &env, NULL);
-	mrmailbox_log_info(mailbox, 0, "Attaching ok.");
-	return 1;
-}
-
-
-void mrosnative_unsetup_thread(mrmailbox_t* mailbox)
-{
-	mrmailbox_log_info(mailbox, 0, "Detaching C-thread from Java VM...");
-		(*s_jvm)->DetachCurrentThread(s_jvm);
-	mrmailbox_log_info(mailbox, 0, "DeltaChat", "Detaching done.");
-}
-
-
 /* tools */
 
 static jintArray mrarray2jintArray_n_mrarray_unref(JNIEnv *env, mrarray_t* ca)
@@ -278,27 +253,27 @@ JNIEXPORT jint Java_com_b44t_messenger_MrMailbox_isConfigured(JNIEnv *env, jclas
 }
 
 
-JNIEXPORT jboolean Java_com_b44t_messenger_MrMailbox_idle(JNIEnv *env, jclass cls)
+JNIEXPORT void Java_com_b44t_messenger_MrMailbox_performJobs(JNIEnv *env, jclass cls)
 {
-	return (jboolean)mrmailbox_idle(get_mrmailbox_t(env, cls));
+	mrmailbox_perform_jobs(get_mrmailbox_t(env, cls));
 }
 
 
-JNIEXPORT jboolean Java_com_b44t_messenger_MrMailbox_isIdle(JNIEnv *env, jclass cls)
+JNIEXPORT void Java_com_b44t_messenger_MrMailbox_idle(JNIEnv *env, jclass cls)
 {
-	return (jboolean)mrmailbox_is_idle(get_mrmailbox_t(env, cls));
+	mrmailbox_idle(get_mrmailbox_t(env, cls));
 }
 
 
-JNIEXPORT jboolean Java_com_b44t_messenger_MrMailbox_interruptIdle(JNIEnv *env, jclass cls)
+JNIEXPORT void Java_com_b44t_messenger_MrMailbox_interruptIdle(JNIEnv *env, jclass cls)
 {
-	return (jboolean)mrmailbox_interrupt_idle(get_mrmailbox_t(env, cls));
+	mrmailbox_interrupt_idle(get_mrmailbox_t(env, cls));
 }
 
 
-JNIEXPORT jboolean Java_com_b44t_messenger_MrMailbox_poll(JNIEnv *env, jclass cls)
+JNIEXPORT void Java_com_b44t_messenger_MrMailbox_fetch(JNIEnv *env, jclass cls)
 {
-	return (jboolean)mrmailbox_poll(get_mrmailbox_t(env, cls));
+	mrmailbox_fetch(get_mrmailbox_t(env, cls));
 }
 
 

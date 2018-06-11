@@ -55,8 +55,7 @@ public class ApplicationLoader extends Application {
     public static volatile boolean isScreenOn = false;
     public static volatile boolean mainInterfacePaused = true;
 
-    public static PowerManager.WakeLock wakeupWakeLock = null;
-    private static PowerManager.WakeLock stayAwakeWakeLock = null;
+    public static PowerManager.WakeLock convertVideoWakeLock = null;
 
 
     public static int fontSize;
@@ -147,17 +146,14 @@ public class ApplicationLoader extends Application {
         try {
             PowerManager pm = (PowerManager) ApplicationLoader.applicationContext.getSystemService(Context.POWER_SERVICE);
 
-            s_idleWakeLock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "idleWakeLock");
-            s_idleWakeLock.setReferenceCounted(false); // if the idle-thread is killed for any reasons, it is better not to rely on reference counting
+            imapWakeLock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "imapWakeLock");
+            imapWakeLock.setReferenceCounted(false); // if the idle-thread is killed for any reasons, it is better not to rely on reference counting
 
-            wakeupWakeLock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "wakeupWakeLock" /*any name*/);
-            wakeupWakeLock.setReferenceCounted(false);
-
-            stayAwakeWakeLock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "stayAwakeWakeLock" /*any name*/);
-            stayAwakeWakeLock.setReferenceCounted(false);
+            convertVideoWakeLock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "convertVideoWakeLock" /*any name*/);
+            convertVideoWakeLock.setReferenceCounted(false);
 
         } catch (Exception e) {
-            Log.e("DeltaChat", "Cannot acquire wakeLock");
+            Log.e("DeltaChat", "Cannot create wakeLocks");
         }
 
         // create a MrMailbox object; as android stops the App by just killing it, we do never call MrMailboxUnref()
@@ -217,7 +213,8 @@ public class ApplicationLoader extends Application {
         File dbfile = new File(getFilesDirFixed(), "messenger.db");
         MrMailbox.open(dbfile.getAbsolutePath());
         if( MrMailbox.isConfigured()!=0 && ApplicationLoader.getPermanentPush() ) {
-            ApplicationLoader.startIdleThread();
+            //ApplicationLoader.imapForeground = true;
+            ApplicationLoader.startImapThread();
         }
 
         // create other default objects
@@ -262,11 +259,6 @@ public class ApplicationLoader extends Application {
         return false;
     }
 
-    public static void stayAwakeForAMoment()
-    {
-        stayAwakeWakeLock.acquire(1*60*1000); // 1 Minute to wait for "after chat" messages, after that, we sleep most time, see wakeupWakeLock
-    }
-
     static private int fetchMode = -1; // 0: push, 1: poll once per minute
 
     public static boolean getPermanentPush()
@@ -288,103 +280,93 @@ public class ApplicationLoader extends Application {
 
         if( permanentPush ) {
             applicationContext.startService(new Intent(applicationContext, KeepAliveService.class));
-            stopIdleThreadPhysically();
-            startIdleThread(); // restart the idleThread to ensure we set a wake lock
         }
         else {
             applicationContext.stopService(new Intent(applicationContext, KeepAliveService.class));
         }
     }
 
-    private static final Object s_idleThreadCritical = new Object();
-    private static Thread s_idleThread = null;
-    private static PowerManager.WakeLock s_idleWakeLock = null;
-    private static boolean s_switchFromIdleToPoll = false;
+    private static final Object imapThreadCritical = new Object();
 
-    public static void startIdleThread()
+    private static boolean imapThreadStartedVal;
+    private static final Object imapThreadStartedCond = new Object();
+
+    public static Thread imapThread = null;
+    private static PowerManager.WakeLock imapWakeLock = null;
+    //public static boolean imapForeground = false;
+
+    public static void startImapThread()
     {
-        synchronized (s_idleThreadCritical) {
-            s_switchFromIdleToPoll = false;
+        synchronized(imapThreadCritical) {
 
-            if (s_idleThread != null && s_idleThread.isAlive() && MrMailbox.isIdle()) {
-                Log.i("DeltaChat", "Idle thread already started.");
+            if( imapThread != null && imapThread.isAlive() ) {
+                Log.i("DeltaChat", "IMAP-Thread is already active, doing nothing.");
                 return;
             }
 
-            if( s_idleThread != null ) {
-                try {
-                    MrMailbox.interruptIdle();
-                    s_idleThread.join(1000);
-                    s_idleThread.interrupt();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-                s_idleThread = null;
+            synchronized (imapThreadStartedCond) {
+                imapThreadStartedVal = false;
             }
 
-            s_idleThread = new Thread(new Runnable() {
+            imapThread = new Thread(new Runnable() {
                 @Override
                 public void run() {
-                    boolean permanentPush = getPermanentPush();
-                    if( permanentPush ) {
-                        s_idleWakeLock.acquire();
+
+                    // raise the starting condition
+                    // after acquiring a wakelock so that the process is not terminated.
+                    // as imapWakeLock is not reference counted that would result in a wakelock-gap is not needed here.
+                    imapWakeLock.acquire();
+                    synchronized (imapThreadStartedCond) {
+                        imapThreadStartedVal = true;
+                        imapThreadStartedCond.notifyAll();
                     }
 
-                    try {
-                        MrMailbox.idle(); // this may run hours ...
-                    } catch (Exception e) {
-                        e.printStackTrace();
+                    Log.i("DeltaChat", "###################### IMAP-Thread started. ######################");
+
+
+                    while( true ) {
+                        imapWakeLock.acquire();
+                            MrMailbox.performJobs();
+                            MrMailbox.fetch();
+                        imapWakeLock.release();
+
+                        //if( imapForeground ) {
+                            MrMailbox.idle();
+                        /*}
+                        else {
+                            break;
+                        }*/
                     }
 
-                    if( permanentPush ) {
-                        s_idleWakeLock.release();
-                    }
+
+                    //Log.i("DeltaChat", "IMAP-Thread stopped.");
                 }
-            }, "idleThread");
-            s_idleThread.start();
+            }, "imapThread");
+
+            imapThread.start();
         }
     }
 
-    public static void scheduleStopIdleThread()
+    public static void waitForImapThreadRunning()
     {
-        synchronized (s_idleThreadCritical) {
-            if (MrMailbox.isIdle()) {
-                s_switchFromIdleToPoll = true;
-                Log.i("DeltaChat", "Will switch from idle to poll on next timer event.");
+        try {
+            synchronized( imapThreadStartedCond ) { // `synchronized` locks the object
+                while( !imapThreadStartedVal ) {    // the doc says, spurious wakeups are possible, wait() should always be used in a loop
+                    imapThreadStartedCond.wait();   // `wait()` unlocks the object, waits and locks again
+                }
             }
+        }
+        catch( Exception e ) {
+            e.printStackTrace();
         }
     }
 
-    public static void stopIdleThreadPhysically()
+    public static void scheduleStopImapThread()
     {
-        synchronized (s_idleThreadCritical) {
-            s_switchFromIdleToPoll = false;
+        //Log.i("DeltaChat", "IMAP-thread scheduled to stop.");
 
-            if( s_idleThread==null) {
-                Log.i("DeltaChat", "No idle thread to stop.");
-                return;
-            }
+        //imapForeground = false;
+        //MrMailbox.interruptIdle();
 
-            try {
-                MrMailbox.interruptIdle();
-                s_idleThread.join(1000);
-                s_idleThread.interrupt();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            s_idleThread = null;
-        }
-    }
-
-    public static boolean getAndResetSwitchFromIdleToPoll()
-    {
-        boolean doSwitch = false;
-        synchronized (s_idleThreadCritical) {
-            if (s_switchFromIdleToPoll && MrMailbox.isIdle()) {
-                doSwitch = true;
-            }
-            s_switchFromIdleToPoll = false;
-        }
-        return doSwitch;
     }
 }

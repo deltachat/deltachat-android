@@ -60,16 +60,17 @@ public class ForegroundDetector implements Application.ActivityLifecycleCallback
 
     @Override
     public void onActivityStarted(Activity activity) {
-        refs++;
-        Log.i("DeltaChat", String.format(">>> Activity started, activityCount=%d", refs));
+        Log.i("DeltaChat", "++++++++++++++++++ Activity started ++++++++++++++++++");
 
+        refs++;
         if (refs == 1) {
             if (System.currentTimeMillis() - enterBackgroundTime < 200) {
                 wasInBackground = false;
             }
         }
 
-        ApplicationLoader.startIdleThread(); // we call this without checking getPermanentPush() to have a simple guarantee that push is always active when the app is in foregroud (startIdleThread makes sure the thread is not started twice)
+        //ApplicationLoader.imapForeground = true;
+        ApplicationLoader.startImapThread(); // we call this without checking getPermanentPush() to have a simple guarantee that push is always active when the app is in foregroud (startIdleThread makes sure the thread is not started twice)
     }
 
     public boolean isWasInBackground(boolean reset) {
@@ -85,20 +86,21 @@ public class ForegroundDetector implements Application.ActivityLifecycleCallback
 
     @Override
     public void onActivityStopped(Activity activity) {
+
+        Log.i("DeltaChat", "++++++++++++++++++ Activity stopped ++++++++++++++++++");
+
         if( refs <= 0 ) {
             Log.i("DeltaChat", String.format("Bad activity count: activityCount=%d", refs));
             return;
         }
 
         refs--;
-        Log.i("DeltaChat", String.format("<<< Activity stopped, activityCount=%d", refs));
-
         if (refs == 0) {
             enterBackgroundTime = System.currentTimeMillis();
             wasInBackground = true;
 
             if( !ApplicationLoader.getPermanentPush() ) {
-                ApplicationLoader.scheduleStopIdleThread();;
+                ApplicationLoader.scheduleStopImapThread();;
             }
         }
         else {

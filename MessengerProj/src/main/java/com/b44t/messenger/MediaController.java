@@ -2359,6 +2359,9 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
 
     @TargetApi(16)
     private boolean convertVideo(final MessageObject messageObject) {
+
+        ApplicationLoader.convertVideoWakeLock.acquire(10*60*1000);
+
         String videoPath = messageObject.videoEditedInfo.originalPath;
         long startTime = messageObject.videoEditedInfo.startTime;
         long endTime = messageObject.videoEditedInfo.endTime;
@@ -2405,6 +2408,7 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
         if (!inputFile.canRead() || !isPreviousOk) {
             didWriteData(messageObject, cacheFile, true, true);
             preferences.edit().putBoolean("isPreviousOk", true).apply();
+            ApplicationLoader.convertVideoWakeLock.release();
             return false;
         }
 
@@ -2794,10 +2798,12 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
         } else {
             preferences.edit().putBoolean("isPreviousOk", true).apply();
             didWriteData(messageObject, cacheFile, true, true);
+            ApplicationLoader.convertVideoWakeLock.release();
             return false;
         }
         preferences.edit().putBoolean("isPreviousOk", true).apply();
         didWriteData(messageObject, cacheFile, true, error);
+        ApplicationLoader.convertVideoWakeLock.release();
         return true;
     }
 }
