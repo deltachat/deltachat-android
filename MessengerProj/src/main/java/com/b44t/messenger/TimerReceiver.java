@@ -55,7 +55,7 @@ public class TimerReceiver extends BroadcastReceiver {
             AlarmManager alarmManager = (AlarmManager) ApplicationLoader.applicationContext.getSystemService(Activity.ALARM_SERVICE);
             if( Build.VERSION.SDK_INT >= 23 ) {
                 // a simple AlarmManager.set() is no longer send in the new DOZE mode
-                alarmManager.setAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, triggerAtMillis, alarmIntent);
+                alarmManager.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, triggerAtMillis, alarmIntent);
             }
             else {
                 alarmManager.set(AlarmManager.RTC_WAKEUP, triggerAtMillis, alarmIntent);
