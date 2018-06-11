@@ -259,9 +259,9 @@ JNIEXPORT void Java_com_b44t_messenger_MrMailbox_performJobs(JNIEnv *env, jclass
 }
 
 
-JNIEXPORT void Java_com_b44t_messenger_MrMailbox_performIdle(JNIEnv *env, jclass cls)
+JNIEXPORT void Java_com_b44t_messenger_MrMailbox_idle(JNIEnv *env, jclass cls)
 {
-	mrmailbox_perform_idle(get_mrmailbox_t(env, cls));
+	mrmailbox_idle(get_mrmailbox_t(env, cls));
 }
 
 
@@ -271,9 +271,9 @@ JNIEXPORT void Java_com_b44t_messenger_MrMailbox_interruptIdle(JNIEnv *env, jcla
 }
 
 
-JNIEXPORT void Java_com_b44t_messenger_MrMailbox_performPoll(JNIEnv *env, jclass cls)
+JNIEXPORT void Java_com_b44t_messenger_MrMailbox_fetch(JNIEnv *env, jclass cls)
 {
-	mrmailbox_perform_poll(get_mrmailbox_t(env, cls));
+	mrmailbox_fetch(get_mrmailbox_t(env, cls));
 }
 
 

@@ -309,14 +309,14 @@ public class ApplicationLoader extends Application {
 
                     while( true ) {
                         imapWakeLock.acquire();
-                        MrMailbox.performJobs();
+                            MrMailbox.performJobs();
+                            MrMailbox.fetch();
                         imapWakeLock.release();
 
                         //if( imapForeground ) {
-                            MrMailbox.performIdle();
+                            MrMailbox.idle();
                         /*}
                         else {
-                            MrMailbox.performPoll();
                             break;
                         }*/
                     }

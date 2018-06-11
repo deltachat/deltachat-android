@@ -57,9 +57,9 @@ public class MrMailbox {
     public native static int isConfigured();
 
     public native static void performJobs();
-    public native static void performIdle();
+    public native static void fetch();
+    public native static void idle();
     public native static void interruptIdle();
-    public native static void performPoll();
 
     public native static void setConfig(String key, String value);
     public native static void setConfigInt(String key, int value);
