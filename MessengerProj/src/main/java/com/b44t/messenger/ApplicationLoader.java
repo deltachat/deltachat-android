@@ -287,6 +287,10 @@ public class ApplicationLoader extends Application {
     }
 
     private static final Object imapThreadCritical = new Object();
+
+    private static boolean imapThreadStartedVal;
+    private static final Object imapThreadStartedCond = new Object();
+
     public static Thread imapThread = null;
     private static PowerManager.WakeLock imapWakeLock = null;
     //public static boolean imapForeground = false;
@@ -300,9 +304,22 @@ public class ApplicationLoader extends Application {
                 return;
             }
 
+            synchronized (imapThreadStartedCond) {
+                imapThreadStartedVal = false;
+            }
+
             imapThread = new Thread(new Runnable() {
                 @Override
                 public void run() {
+
+                    // raise the starting condition
+                    // after acquiring a wakelock so that the process is not terminated.
+                    // as imapWakeLock is not reference counted that would result in a wakelock-gap is not needed here.
+                    imapWakeLock.acquire();
+                    synchronized (imapThreadStartedCond) {
+                        imapThreadStartedVal = true;
+                        imapThreadStartedCond.notifyAll();
+                    }
 
                     Log.i("DeltaChat", "###################### IMAP-Thread started. ######################");
 
@@ -325,7 +342,22 @@ public class ApplicationLoader extends Application {
                     //Log.i("DeltaChat", "IMAP-Thread stopped.");
                 }
             }, "imapThread");
+
             imapThread.start();
+        }
+    }
+
+    public static void waitForImapThreadRunning()
+    {
+        try {
+            synchronized( imapThreadStartedCond ) { // `synchronized` locks the object
+                while( !imapThreadStartedVal ) {    // the doc says, spurious wakeups are possible, wait() should always be used in a loop
+                    imapThreadStartedCond.wait();   // `wait()` unlocks the object, waits and locks again
+                }
+            }
+        }
+        catch( Exception e ) {
+            e.printStackTrace();
         }
     }
 

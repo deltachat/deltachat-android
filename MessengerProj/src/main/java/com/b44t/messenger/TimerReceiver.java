@@ -39,9 +39,10 @@ public class TimerReceiver extends BroadcastReceiver {
 
         Log.i("DeltaChat", "-------------------- on receive timer --------------------");
 
-        ApplicationLoader.startImapThread(); // do not change imapForeground before; may or may not be in foreground
-
         scheduleNextAlarm();
+
+        ApplicationLoader.startImapThread();
+        ApplicationLoader.waitForImapThreadRunning();
     }
 
     public static void scheduleNextAlarm()
