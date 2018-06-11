@@ -355,23 +355,8 @@ public class SettingsAccountFragment extends BaseFragment implements Notificatio
         }
 
         // try to connect, this results in an MR_EVENT_CONFIGURE_ENDED resp. NotificationCenter.configureEnded event
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                final int res = MrMailbox.configure();
-                if( res != 0 ) {
-                    //ApplicationLoader.imapForeground = true;
-                    ApplicationLoader.startImapThread();
-                }
-                AndroidUtilities.runOnUIThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        NotificationCenter.getInstance().postNotificationName(NotificationCenter.configureEnded, (int)res);
-                    }
-                });
-            }
-        }).start();
-
+        ApplicationLoader.startImapThread();
+        MrMailbox.configure();
     }
 
     @Override
@@ -398,7 +383,7 @@ public class SettingsAccountFragment extends BaseFragment implements Notificatio
                 progressDialog = null;
             }
 
-            if( (int)args[0]==1 ) {
+            if( (int)args[0]!=0 ) {
                 if (fromIntro) {
                     presentFragment(new ChatlistActivity(null), true);
                 } else {

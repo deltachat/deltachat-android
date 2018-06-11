@@ -51,7 +51,7 @@ public class MrMailbox {
     public native static void   close();
     public native static String getBlobdir();
 
-    public native static int configure();
+    public native static void configure();
     public native static void stopOngoingProcess();
 
     public native static int isConfigured();
@@ -246,7 +246,12 @@ public class MrMailbox {
                 AndroidUtilities.runOnUIThread(new Runnable() {
                     @Override
                     public void run() {
-                        NotificationCenter.getInstance().postNotificationName(NotificationCenter.configureProgress, (int)data1);
+                        if( data1 == 0 || data1 == 1000 ) {
+                            NotificationCenter.getInstance().postNotificationName(NotificationCenter.configureEnded, (int)data1);
+                        }
+                        else {
+                            NotificationCenter.getInstance().postNotificationName(NotificationCenter.configureProgress, (int)data1);
+                        }
                     }
                 });
                 return 0;
