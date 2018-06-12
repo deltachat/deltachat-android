@@ -277,6 +277,24 @@ JNIEXPORT void Java_com_b44t_messenger_MrMailbox_fetch(JNIEnv *env, jclass cls)
 }
 
 
+JNIEXPORT void Java_com_b44t_messenger_MrMailbox_performSmtpJobs(JNIEnv *env, jclass cls)
+{
+	mrmailbox_perform_smtp_jobs(get_mrmailbox_t(env, cls));
+}
+
+
+JNIEXPORT void Java_com_b44t_messenger_MrMailbox_performSmtpIdle(JNIEnv *env, jclass cls)
+{
+	mrmailbox_perform_smtp_idle(get_mrmailbox_t(env, cls));
+}
+
+
+JNIEXPORT void Java_com_b44t_messenger_MrMailbox_interruptSmtpIdle(JNIEnv *env, jclass cls)
+{
+	mrmailbox_interrupt_smtp_idle(get_mrmailbox_t(env, cls));
+}
+
+
 /* MrMailbox - handle contacts */
 
 JNIEXPORT jintArray Java_com_b44t_messenger_MrMailbox_getContacts(JNIEnv *env, jclass cls, jint flags, jstring query)

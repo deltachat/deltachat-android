@@ -61,6 +61,10 @@ public class MrMailbox {
     public native static void idle();
     public native static void interruptIdle();
 
+    public native static void performSmtpJobs();
+    public native static void performSmtpIdle();
+    public native static void interruptSmtpIdle();
+
     public native static void setConfig(String key, String value);
     public native static void setConfigInt(String key, int value);
     public native static String getConfig(String key, String def);

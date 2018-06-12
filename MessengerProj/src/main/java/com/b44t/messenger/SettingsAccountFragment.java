@@ -355,7 +355,7 @@ public class SettingsAccountFragment extends BaseFragment implements Notificatio
         }
 
         // try to connect, this results in an MR_EVENT_CONFIGURE_ENDED resp. NotificationCenter.configureEnded event
-        ApplicationLoader.startImapThread();
+        ApplicationLoader.startThreads();
         MrMailbox.configure();
     }
 

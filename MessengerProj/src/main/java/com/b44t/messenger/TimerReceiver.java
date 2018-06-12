@@ -31,8 +31,6 @@ import android.content.Intent;
 import android.os.Build;
 import android.util.Log;
 
-import com.coremedia.iso.boxes.apple.AppleItemListBox;
-
 
 public class TimerReceiver extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
@@ -41,8 +39,8 @@ public class TimerReceiver extends BroadcastReceiver {
 
         scheduleNextAlarm();
 
-        ApplicationLoader.startImapThread();
-        ApplicationLoader.waitForImapThreadRunning();
+        ApplicationLoader.startThreads();
+        ApplicationLoader.waitForThreadsRunning();
     }
 
     public static void scheduleNextAlarm()
