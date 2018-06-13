@@ -2,7 +2,10 @@
 
 ## UNRELEASED
 
-* Add Danish translation
+* Paging through images made available by Angelo Fuchs
+* Several connection issues with different configurations were fixed by Thomas Oster
+* Improve background and foreground message fetching reliablility
+* Add Danish translation from Ole Carlsen
 * Update Albania, Basque, Danish, Italian, Norwegian, Dutch, Polish, Portuguese, Russian and Telugu translations
 
 ## v0.17.3
