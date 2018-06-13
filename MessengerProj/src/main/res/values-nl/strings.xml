@@ -329,6 +329,7 @@
     <string name="AskStartChatWith">Chat beginnen met <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>?</string>
     <string name="DeaddropHint">Klik op het reactiepijltje om een chat te beginnen.</string>
     <string name="NotYetImplemented">Deze functie is niet beschikbaar of incompleet.</string>
+    <!-- Translators: The URL should not be localized, it is not clear which languuage the receiver prefers and the language will be detected on the server -->
     <string name="DefaultStatusText">Verstuurd met mijn Delta Chat Messenger: https://delta.chat</string>
     <string name="Name" >Naam</string>
     <string name="EmailAddress">E-mailadres</string>
@@ -469,4 +470,5 @@
     <string name="FetchMode">Ophaalmodus</string>
     <string name="FetchModeSaveBattery">Batterijbesparing</string>
     <string name="FetchModePersistentConnection">Aanhoudende verbinding</string>
-    </resources>
+    <string name="PermissionCamera">Cameratoegang is nodig als je foto\'s wilt maken of QR-codes wilt scannen.</string>
+</resources>

@@ -357,6 +357,7 @@
     <string name="AskStartChatWith">Начать чат с <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>?</string>
     <string name="DeaddropHint">Чтобы начать чат, нажмите стрелку ответа.</string>
     <string name="NotYetImplemented">Эта функция недоступна или в разработке.</string>
+    <!-- Translators: The URL should not be localized, it is not clear which languuage the receiver prefers and the language will be detected on the server -->
     <string name="DefaultStatusText">Отправлено с помощью мессенджера Delta Chat: https://delta.chat</string>
     <string name="Name" >Имя</string>
     <string name="EmailAddress">Адрес электронной почты</string>
@@ -498,4 +499,5 @@
     <string name="FetchModeSaveBattery">Сохранять баратею</string>
     <string name="FetchModePersistentConnection">Постоянное соединение</string>
     <string name="FetchModeExplain">Когда используется режим выборки <![CDATA[<i>]]>Сохранять батарею<![CDATA[</i>]]>, новые сообщения появляются сразу, если приложение находится в фоне, если приложение не используется, с задержкой в 30 секунд. Когда устройство находится в «Спящем режиме» задержка может быть дольше. Это режим по умолчанию.\n\n<![CDATA[<i>]]>Постоянное соединение<![CDATA[</i>]]> обычно сообщения приходят быстрее, но в таком случае расход батареи может быть значительным.\n\nКакой режим выборки вы желаете использовать?</string>
+    <string name="PermissionCamera">Необходим допуск к камере если вы хотите сделать фотоснимок или сканировать QR коды.</string>
 </resources>

@@ -295,6 +295,7 @@
     <string name="AskStartChatWith"><![CDATA[<b>]]>%1$s<![CDATA[</b>]]> ile söyleşi?</string>
     <string name="DeaddropHint">Söyleşmeye başlamak için yanıt oklarına dokunun.</string>
     <string name="NotYetImplemented">Bu işlev mevcut değil veya eksik.</string>
+    <!-- Translators: The URL should not be localized, it is not clear which languuage the receiver prefers and the language will be detected on the server -->
     <string name="DefaultStatusText">Delta Chat Messengerim ile göderildi: https://delta.chat</string>
     <string name="Name" >Ad</string>
     <string name="EmailAddress">E-posta adresi</string>

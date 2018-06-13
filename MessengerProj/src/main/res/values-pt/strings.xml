@@ -329,6 +329,7 @@
     <string name="AskStartChatWith">Começar uma conversa com <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>?</string>
     <string name="DeaddropHint">Para conversar toque na seta.</string>
     <string name="NotYetImplemented">Esta função ainda não está disponível ou ainda não está completamente desenvolvida.</string>
+    <!-- Translators: The URL should not be localized, it is not clear which languuage the receiver prefers and the language will be detected on the server -->
     <string name="DefaultStatusText">Enviado pelo meu Delta Chat Messenger: https://delta.chat</string>
     <string name="Name" >Nome</string>
     <string name="EmailAddress">Endereço de e-mail</string>

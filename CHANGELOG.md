@@ -3,7 +3,7 @@
 ## UNRELEASED
 
 * Add Danish translation
-* Update Albania, Basque, Italian, Norwegian, Dutch, Polish, Portuguese and Russian translations
+* Update Albania, Basque, Danish, Italian, Norwegian, Dutch, Polish, Portuguese, Russian and Telugu translations
 
 ## v0.17.3
 2018-05-17

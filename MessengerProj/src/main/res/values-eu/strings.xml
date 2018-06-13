@@ -329,6 +329,7 @@
     <string name="AskStartChatWith">Txateatu <![CDATA[<b>]]>%1$s<![CDATA[</b>]]> erabiltzailearekin?</string>
     <string name="DeaddropHint">Sakatu erantzun geziak txateatzen hasteko.</string>
     <string name="NotYetImplemented">Funtzio hau ez dago eskuragarri edo osorik.</string>
+    <!-- Translators: The URL should not be localized, it is not clear which languuage the receiver prefers and the language will be detected on the server -->
     <string name="DefaultStatusText">Delta Chat mezulariarekin bidalita: https://delta.chat</string>
     <string name="Name" >Izena</string>
     <string name="EmailAddress">E-mail helbidea</string>
@@ -470,4 +471,5 @@
     <string name="FetchModeSaveBattery">Aurreztu bateria</string>
     <string name="FetchModePersistentConnection">Konexio iraunkorra</string>
     <string name="FetchModeExplain"><![CDATA[<i>]]>Aurreztu bateria<![CDATA[</i>]]> eskuratze modua erabiltzean, mezu berriak berehala agertuko dira aplikazioa irekita dagoenean eta batez beste 30 segunduko atzerapenarekin aplikazioa bigarren planoan badago. Gailua lo dagoenean atzerapena luzeagoa izan daiteke. Hau da lehenetsitako modua.\n\n<![CDATA[<i>]]>Konexio iraunkorra<![CDATA[</i>]]> azkarragoa izan ohi da baina agian aplikazioari bateria gehiago kontsumitzea baimendu behar zaio sistemaren ezarpenetan.\n\nZein eskuratze modu erabili nahi duzu?</string>
+    <string name="PermissionCamera">Kamera atzitzeko baimena behar da argazkiak atera nahi badituzu edo QR kodeak eskaneatu nahi badituzu.</string>
 </resources>

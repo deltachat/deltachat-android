@@ -8,7 +8,7 @@
     <string name="Settings">Opsætning</string>
     <string name="NewGroup">Ny gruppe</string>
     <string name="NoResult">Intet resultat.</string>
-    <string name="NoChats">Ingen samtaler endnu</string>
+    <string name="NoChats">Ingen samtaler endnu.</string>
     <string name="DeleteChat">Slette samtale</string>
     <string name="SelectChat">Vælge samtale…</string>
     <string name="Search">Søge</string>
@@ -24,7 +24,7 @@
     <string name="FreeOfTotal">%1$s af %2$s fri</string>
     <string name="ErrorHint">Ukendt fejl</string>
     <string name="AccessError">Adgangsfejl</string>
-    <string name="NoFiles">Ingen files endnu...</string>
+    <string name="NoFiles">Ingen filer endnu...</string>
     <string name="NotMounted">Lager ikke monteret</string>
     <string name="UsbActive">USB overførsel i fremgang</string>
     <string name="InternalStorage">Internt lager</string>
@@ -54,7 +54,7 @@
     <string name="ReplyToGroup">Svare %1$s</string>
     <string name="ReplyToContact">Svare %1$s</string>
     <!--contacts view-->
-    <string name="NoContacts">Ingen kontakter endnu</string>
+    <string name="NoContacts">Ingen kontakter endnu.</string>
     <!--group create view-->
     <string name="SendMessageTo">Sende besked til...</string>
     <string name="EnterGroupNamePlaceholder">Indtaste gruppenavn</string>
@@ -72,10 +72,10 @@
     <string name="UnblockContact">Fjerne kontakt blokering</string>
     <string name="NoBlocked">Ingen blokerede kontaker endnu</string>
     <string name="DefaultForNormalMessages">Normale beskeder</string>
-    <string name="MessagePreview">Forhåndsvis besked</string>
+    <string name="MessagePreview">Forhåndsvise besked</string>
     <string name="DefaultForGroupMessages">Gruppe beskeder</string>
     <string name="Sound">Lyd</string>
-    <string name="InAppNotifications">I program påmindelse</string>
+    <string name="InAppNotifications">I program påmindelser</string>
     <string name="Vibrate">Vibrere</string>
     <string name="ResetAllNotifications">Nulstille alle påmindelser</string>
     <string name="NotificationsAndSounds">Påmindelser og lyde</string>
@@ -83,7 +83,7 @@
     <string name="Default">Standard</string>
     <string name="OnlyIfSilent">Kun når stille</string>
     <string name="ChatBackground">Samtale baggrund</string>
-    <string name="SendByEnter">Send med ↵</string>
+    <string name="SendByEnter">Sende med ↵</string>
     <string name="Help">Hjælp</string>
     <string name="Enabled">Til</string>
     <string name="Disabled">Fra</string>
@@ -110,21 +110,22 @@
     <!--cache view-->
     <string name="CacheSettings">Lager</string>
     <string name="KeepMedia">Beholde medie</string>
+    <string name="KeepMediaInfo">Billeder, videor og andre filer fra sky samtaler som <![CDATA[<b>ikke er tilgået</b>]]> i enne periode vil blive fjernet fra denne enhed for at spare lager plads.</string>
     <string name="KeepMediaForever">For altid</string>
     <!--passcode view-->
-    <string name="Passcode">Adgangskode lås</string>
-    <string name="ChangePasscode">Ændre adgangskode</string>
-    <string name="ChangePasscodeInfo">Ved opsætning af flere adgangskoder vil et låse ikon vises ved toppen af samtale listen. Tryk på den for at låse programmet.\n\nBemærk: Hvis adgangskoden glemmes skal programmet slettes og geninstalleres.</string>
+    <string name="Passcode">Kodeordslås</string>
+    <string name="ChangePasscode">Ændre kodeord</string>
+    <string name="ChangePasscodeInfo">Ved opsætning af flere kodeord vil et låse ikon vises ved toppen af samtale listen. Tryk på den for at låse programmet.\n\nBemærk: Hvis kodeordet glemmes skal programmet slettes og geninstalleres.</string>
     <string name="PasscodePIN">PIN</string>
     <string name="PasscodePassword">Adgangskode</string>
-    <string name="EnterCurrentPasscode">Indtaste nuværende adgangskode</string>
-    <string name="EnterNewFirstPasscode">Indtaste adgangskode</string>
-    <string name="EnterNewPasscode">Indtaste ny adgangskode</string>
-    <string name="EnterYourPasscode">Indtaste adgangskode</string>
-    <string name="ReEnterYourPasscode">Genindtaste ny adgangskode</string>
-    <string name="PasscodeDoNotMatch">Adgangskode passer ikke</string>
+    <string name="EnterCurrentPasscode">Indtaste nuværende kodeord</string>
+    <string name="EnterNewFirstPasscode">Indtaste kodeord</string>
+    <string name="EnterNewPasscode">Indtaste nyt kodeord</string>
+    <string name="EnterYourPasscode">Indtaste kodeord</string>
+    <string name="ReEnterYourPasscode">Genindtaste nyt kodeord</string>
+    <string name="PasscodeDoNotMatch">Kodeord passer ikke</string>
     <string name="AutoLock">Automatisk låse</string>
-    <string name="AutoLockInfo">Påkræve adgangskode hvis væk i en tid.</string>
+    <string name="AutoLockInfo">Påkræve kodeord hvis væk i en tid.</string>
     <string name="UnlockFingerprint">Låse op med fingeraftryk</string>
     <string name="FingerprintInfo">Bekræfte fingeraftryk for at fortsætte</string>
     <string name="FingerprintNotRecognized">Kan ikke genkende fingeraftryk. Prøv igen.</string>
@@ -328,6 +329,7 @@
     <string name="AskStartChatWith">Samtale med <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>?</string>
     <string name="DeaddropHint">Tryk svar-pilen for at starte samtale.</string>
     <string name="NotYetImplemented">Funktion ikke tilgængelig eller ufuldstændig.</string>
+    <!-- Translators: The URL should not be localized, it is not clear which languuage the receiver prefers and the language will be detected on the server -->
     <string name="DefaultStatusText">Sendt med Delta Chat Messenger: https://delta.chat</string>
     <string name="Name" >Navn</string>
     <string name="EmailAddress">E-post adresse</string>
@@ -346,6 +348,7 @@
     <string name="AskResetNotifications">Nulstille alle påmindelse opsætning og lyde på nuværende side, kontakter og grupper?</string>
     <string name="AttachFiles">Vedhæfte filer</string>
     <string name="ErrGroupNameEmpty">Indtaste gruppenavn.</string>
+    <string name="MsgNewGroupDraftHint">Skriv den første besked som tillader andre at svare inden for denne gruppe.\n\n• Det er o.k. hvis ikke alle medlemmer bruger Delta Chat.\n\n• Aflevering af første besked kan tage nogen tid.</string>
     <string name="MsgNewGroupDraft">Hej, jeg har lige oprettet gruppen \"%1$s\" til os.</string>
     <string name="MsgGroupNameChanged">Gruppe navn ændret fra \"%1$s\" til \"%2$s\".</string>
     <string name="MsgGroupImageChanged">Gruppe billede ændret</string>
@@ -381,6 +384,7 @@
     <string name="EncrinfoFingerprints">Fingeraftryk</string>
     <string name="Backup">Sikkerhedskopi</string>
     <string name="ImportBackupExplain2">For at importere sikkerhedskopi, kopiere en sikkerhedskopi til <![CDATA[<i>]]>%1$s<![CDATA[</i>]]> og geninstallere programmet.</string>
+    <string name="ReadReceiptMailBody">Dette er en kvittering for læst besked \"%1$s\".\n\nDet betyder at beskeden blev vist på modtagerens enhed ikke nødvendigvis at indholdet blev læst.</string>
     <string name="ReadReceipt">Læse kvittering</string>
     <string name="NameAndStatus">Navn og status</string>
     <string name="MyStatus">Status</string>
@@ -388,14 +392,17 @@
     <string name="MsgGroupImageDeleted">Gruppe billede slettet.</string>
     <string name="AskDeleteGroupImage">Slette gruppe billede?\n\nDette vil have indflydelse på alle enheder for alle gruppe medlemmer.</string>
     <string name="ExportImportHeader">Eksportere og importere</string>
+    <string name="ImportExportExplain">Eksporterede filer indeholder ende-til-ende Autocrypt opsætning! Gem dem på et sikkert sted eller slet dem så hurtigt som muligt.</string>
     <string name="EnterPasswordToContinue">Indtaste adgangskode til %1$s for at fortsætte:</string>
     <string name="IncorrectPassword">Forkert adgangskode.</string>
     <string name="ImportBackupAsk">Sikkerhedskopi fundet på <![CDATA[<i>]]>%1$s<![CDATA[</i>]]>.\n\nSkal den importeres og bruge al data og opsætninger fra den?</string>
     <string name="ImportBackup">Importere sikkerhedskopi</string>
+    <string name="NoBackupFound">Ingen sikkerhedskopier fundet.\n\nKopiere sikkerhedskopien til <![CDATA[<i>]]>%1$s<![CDATA[</i>]]> og prøv igen. Alternativt tryk  \"Start besked\" for at køre den normale opsætning.</string>
     <string name="FilesSuccessfullyExported">Filer eksporteret til <![CDATA[<i>]]>%1$s<![CDATA[</i>]]>.</string>
     <string name="ExportBackup">Eksportere sikkerhedskopi</string>
     <string name="ExportPrivateKeys">Eksportere hemmelige nøgler</string>
     <string name="ImportPrivateKeys">Importere hemmelige nøgler</string>
+    <string name="ImportPrivateKeysAsk2">Importere hemmelige nøgler fra <![CDATA[<i>]]>%1$s<![CDATA[</i>]]>?\n\n• Eksisterende nøgler bliver ikke slettet\n\n• Seneste importeret nøgle bruges som standard nøgle</string>
     <string name="NoRecentEmoji">Nylig brugte emoji vises her.</string>
     <string name="NotNow">Ikke nu</string>
     <string name="ArchiveChat">Arkivere samtale</string>
@@ -405,11 +412,16 @@
     <string name="LeaveGroup">Forlade gruppe</string>
     <string name="AskLeaveGroup">Forlade denne gruppe?</string>
     <string name="Never">Aldrig</string>
-    <string name="AutocryptKeyTransferInitiate">Sende automatisk kryptere opsætningsbesked</string>
-    <string name="AutocryptKeyTransfer">Automatisk kryptere opsætningsbesked</string>
-    <string name="AutocryptSetupMessageSubject">Automatisk kryptere opsætningsbesked</string>
+    <string name="AutocryptKeyTransferInitiate">Sende Autocrypt opsætningsbesked</string>
+    <string name="AutocryptKeyTransfer">Autocrypt opsætningsbesked</string>
+    <string name="AutocryptKeyTransferMsgBeforeSend">En <![CDATA[<i>]]>Autocrypt opsætningsbesked<![CDATA[</i>]]> sikkert dele ende-til-ende opsætning med andre Autocrypt kompatible programmer.\n\nOpsætningen er krypteret med en opsætningskode som vises her og skal indtastes på den anden enhed.</string>
+    <string name="AutocryptKeyTransferMsgAfterSend">Opsætning er sendt til undertegnede. Skift til den anden enhedog åben opstningsbekeden. Der vil blive forespurgt til en opsætningskode. Indtast følgende cifre i forespørgselen:\n\n%1$s\n\nNår dette er gjortvil den anden enhed være klar til Autocrypt.</string>
+    <string name="AutocryptSetupMessageSubject">Autocrypt opsætningsbesked</string>
+    <string name="AutocryptSetupMessageGeneralBody">Dette er Autocrypt opsætningsbesked brugt til at overføre ende-til-ende opsætning mellem klienter.\n\nFor at dekryptere og bruge opsætning åben beskeden i en Autocrypt kompatibel klient og indtast opsætningskoden vist på kilde enheden.</string>
+    <string name="AutocryptSetupMessageTapBody">Dette er en Autocrypt besked brugt til at overføre ende-til-ende opsætning mellem klienter.\n\nFor at dekryptere og bruge opsætning, tryk på denne besked.</string>
     <string name="AutocryptKeyTransferPleaseEnterCode">Indtast opsætningskode vist på den anden enhed.</string>
-    <string name="AutocryptKeyTransferSucceeded">Ende-til-ende opsætning overført. Denne enhed er nu klar til at bruge autokryptering med samme opsætning som anden enhed.</string>
+    <string name="AutocryptKeyTransferBadCode">Opsætningskode er ikke god. Prøv igen.\n\nHvis opsætningskode er glemt send blot en ny Autocrypt besked fra en anden enhed..</string>
+    <string name="AutocryptKeyTransferSucceeded">Ende-til-ende opsætning overført. Denne enhed er nu klar til at bruge Autocrypt med samme opsætning som anden enhed.</string>
     <string name="Retry">Prøv igen</string>
     <string name="SelfTalkSubtitle">Beskeder sendt af undertegnet til undertegnet</string>
     <string name="QrScan">Skanne QR-kode</string>
@@ -422,7 +434,9 @@
     <string name="OobFingerprintMismatch">Skannet fingeraftryk <![CDATA[<b>]]>passer ikke<![CDATA[</b>]]> det sidst sete fingeraftryk for <![CDATA[<i>]]>%1$s<![CDATA[</i>]]>.</string>
     <string name="OobFingerprintWithoutAddr">QR kode indeholder fingeraftryk men ingen e-post adresse.\n \nFor en uden for bånd efterprøvning, skal en krypteret forbindelse til modtageren først oprettes.</string>
     <string name="OobSecureJoinRequested">%1$s tilslutter.</string>
+    <string name="CannotDecryptBody">Denne besked kan ikke dekrypteres.\n\n• Det kan måske hjælpe at svare på beskeden og bede afsender gensende beskeden.\n\n• I tilfælde Delta Chat er blevet geninstalleret eller et andet e-post program på denne eller en anden enhed bør der sendes en Autocrypt opsætningsbeked fra dem.</string>
     <string name="Autocrypt">Automatisk kryptering</string>
+    <string name="AutocryptExplain"><![CDATA[<i>]]>Autocrypt<![CDATA[</i>]]> er en ny og åben specifikation til ende-til-ende e-post kryptering.\n\nEnde-til-ende opsætning oprettes automatisk efter behov og kan overføres mellem enheder med <![CDATA[<i>]]>Autocrypt opsætningsbeskeder.<![CDATA[</i>]]></string>
     <string name="NewVerifiedGroup">Ny efterprøvet gruppe</string>
     <string name="SharedChats">Delte samtaler</string>
     <string name="VerifiedContact">Efterprøvet kontakt</string>
@@ -456,4 +470,6 @@
     <string name="FetchMode">Hente tilstand</string>
     <string name="FetchModeSaveBattery">Spare batteri</string>
     <string name="FetchModePersistentConnection">Vedvarende forbindelse</string>
-    </resources>
+    <string name="FetchModeExplain">Når hente tilstand bruges <![CDATA[<i>]]>Spar batteri<![CDATA[</i>]]>, nye beskeder vises hvis ikke programmet kører i forgunden og med en gennemsnitsforsinkelse på 30 sekunder hvis programmet ikke bruges. Når enheden er i hvile tilstand kan forsinkelse være længere. Dette er standard tilstand.\n\n<![CDATA[<i>]]>Vedvarende forbindelse<![CDATA[</i>]]> er typisk hurtiger men kan kræve at programmet er hvidlisteti system opsætning for at kunne forbruge mere batteri.\n\nHvilken hente tilstand ønskes at bruge?</string>
+    <string name="PermissionCamera">Adgang til kamera er nødvendig for at tage billeder eller skanne QR koder.</string>
+</resources>

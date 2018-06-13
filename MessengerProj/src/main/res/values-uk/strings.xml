@@ -357,6 +357,7 @@
     <string name="AskStartChatWith">Почати розмову з <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>?</string>
     <string name="DeaddropHint">Аби почати розмову, клацніть на стрілки відповіді.</string>
     <string name="NotYetImplemented">Ця функція є недоступною або незавершеною.</string>
+    <!-- Translators: The URL should not be localized, it is not clear which languuage the receiver prefers and the language will be detected on the server -->
     <string name="DefaultStatusText">Надіслано за допомогою оповісника Delta Chat: https://delta.chat</string>
     <string name="Name" >Псевдо</string>
     <string name="EmailAddress">Адреса e-mail</string>

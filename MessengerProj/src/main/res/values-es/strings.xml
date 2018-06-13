@@ -329,6 +329,7 @@
     <string name="AskStartChatWith">¿Iniciar una conversación con <b>%1$s</b>?</string>
     <string name="DeaddropHint">Haga clic en la flecha de réplica para comenzar una conversación.</string>
     <string name="NotYetImplemented">Esta función no está disponible o está incompleta.</string>
+    <!-- Translators: The URL should not be localized, it is not clear which languuage the receiver prefers and the language will be detected on the server -->
     <string name="DefaultStatusText">Enviado desde mi aplicación de mensajería Delta Chat: https://delta.chat</string>
     <string name="Name" >Nombre</string>
     <string name="EmailAddress">Dirección de correo</string>

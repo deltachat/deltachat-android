@@ -328,6 +328,7 @@
     <string name="AskStartChatWith">Bisedoni me <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>?</string>
     <string name="DeaddropHint">Prekni shigjetat përgjigje që të nisni të bisedoni.</string>
     <string name="NotYetImplemented">Ky funksion s’është i passhëm ose është jo i plotë</string>
+    <!-- Translators: The URL should not be localized, it is not clear which languuage the receiver prefers and the language will be detected on the server -->
     <string name="DefaultStatusText">Dërguar me Delta Chat Messenger-in tim: https://delta.chat</string>
     <string name="Name" >Emër</string>
     <string name="EmailAddress">Adresë email</string>
@@ -469,4 +470,5 @@
     <string name="FetchModeSaveBattery">Kurseni bateri</string>
     <string name="FetchModePersistentConnection">Lidhje e qëndrueshme</string>
     <string name="FetchModeExplain">Kur përdoret mënyra sjellje <![CDATA[<i>]]>Kurseni bateri<![CDATA[</i>]]>, mesazhet e rinj shfaqen menjëherë, nëse aplikacioni gjendet në prapaskenë dhe me një vonesë mesatarisht 30 sekondash, nëse aplikacioni nuk është në përdorim. Kur pajisja gjendet nën mënyrën <em>doze</em>, vonesa mund të jetë më e madhe. Kjo është mënyra parazgjedhje.\n\n<![CDATA[<i>]]>Lidhja e qëndrueshme<![CDATA[</i>]]> është përgjithësisht më e shpejtë, por mund të kërkojë që aplikacioni të lejohet nga sistemi të harxhojë më tepër bateri.\n\nCilën mënyrë prurjesh doni të përdoret?</string>
+    <string name="PermissionCamera">Nëse doni të bëni foto apo doni të skanoni kode QR, lypset hyrje te kamera.</string>
 </resources>

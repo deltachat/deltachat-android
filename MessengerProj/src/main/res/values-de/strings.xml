@@ -329,6 +329,7 @@
     <string name="AskStartChatWith">Chat mit <![CDATA[<b>]]>%1$s<![CDATA[</b>]]> starten?</string>
     <string name="DeaddropHint">Ein Klick auf die Antwort-Pfeile startet einen Chat.</string>
     <string name="NotYetImplemented">Diese Funktion ist nicht oder nur unvollständig eingebaut.</string>
+    <!-- Translators: The URL should not be localized, it is not clear which languuage the receiver prefers and the language will be detected on the server -->
     <string name="DefaultStatusText">Mit meinem Delta Chat Messenger gesendet: https://delta.chat</string>
     <string name="Name" >Name</string>
     <string name="EmailAddress">E-Mail-Adresse</string>
@@ -470,4 +471,4 @@
     <string name="FetchModeSaveBattery">Batterie sparen</string>
     <string name="FetchModePersistentConnection">Dauerhafte Verbindung</string>
     <string name="FetchModeExplain">Wenn Sie den Modus <![CDATA[<i>]]>Batterie sparen<![CDATA[</i>]]> verwenden, kommen neue Nachrichten sofort an, während die App geöffnet ist und mit einer Verzögerung von ca 30 Sekunden, wenn die App nicht benutzt wird. Wenn das Gerät in den Schlafmodus umschaltet, kann die Verzögerung größer sein. Das ist die Standard-Einstellung.\n\n<![CDATA[<i>]]>Dauerhafte Verbindung<![CDATA[</i>]]> ist üblicherweise schneller, aber kann es erforden, dass die App in den Systemeinstellungen freigeschaltet werden muss um mehr Batterieverbrauch zu erlauben..\n\nWelchen Empfangsmodus möchten Sie verwenden?</string>
-</resources>
+    </resources>

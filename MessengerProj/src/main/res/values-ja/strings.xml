@@ -89,6 +89,7 @@
     <string name="InboxHeadline">受信</string>
     <string name="OutboxHeadline">送信</string>
     <string name="AboutThisProgram">Delta Chatについて</string>
+    <!-- Translators: The URL should not be localized, it is not clear which languuage the receiver prefers and the language will be detected on the server -->
     <string name="DefaultStatusText">Delta Chatメッセンジャーより送信: https://delta.chat</string>
     <string name="EmailAddress">ﾒｰﾙｱﾄﾞﾚｽ</string>
     <string name="AdvancedSettings">追加設定</string>

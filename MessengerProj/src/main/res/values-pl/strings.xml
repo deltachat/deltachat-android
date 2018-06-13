@@ -357,6 +357,7 @@
     <string name="AskStartChatWith">Rozpocząć czat z <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>?</string>
     <string name="DeaddropHint">Aby rozpocząć czat, naciśnij strzałkę odpowiedzi.</string>
     <string name="NotYetImplemented">Ta funkcja jest niedostępna lub niekompletna.</string>
+    <!-- Translators: The URL should not be localized, it is not clear which languuage the receiver prefers and the language will be detected on the server -->
     <string name="DefaultStatusText">Wysłane z komunikatora Delta Chat: https://delta.chat</string>
     <string name="Name" >Nazwa</string>
     <string name="EmailAddress">Adres e-mail</string>
@@ -498,4 +499,5 @@
     <string name="FetchModeSaveBattery">Oszczędzaj baterię</string>
     <string name="FetchModePersistentConnection">Stałe połączenie</string>
     <string name="FetchModeExplain">Podczas korzystania z trybu pobierania <![CDATA[<i>]]>Oszczędzaj baterię<![CDATA[</i>]]> nowe wiadomości pojawiają się od razu, jeśli aplikacja jest na pierwszym planie oraz ze średnim opóźnieniem 30 sekund, jeśli aplikacja nie jest używana. Gdy urządzenie znajduje się w trybie drzemki, opóźnienie może być dłuższe. Jest to tryb domyślny.\n\n<![CDATA[<i>]]>Stałe połączenie<![CDATA[</i>]]> jest zazwyczaj szybsze, ale może wymagać umieszczenia aplikacji na białej liście w ustawieniach systemu w celu zwiększenia zużycia baterii.\n\nKtórego trybu pobierania chcesz używać?</string>
+    <string name="PermissionCamera">Dostęp do aparatu jest niezbędny, jeśli chcesz robić zdjęcia lub skanować kody QR.</string>
 </resources>

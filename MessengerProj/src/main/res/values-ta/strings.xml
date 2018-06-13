@@ -289,6 +289,7 @@
     <string name="MuteAlways">எப்போதுமே ஊமையாக்கு </string>
     <string name="DeaddropHint">மறு உத்தரவிற்கான அம்பு குறியை தட்டி அரட்டையை ஆரம்பிக்கவும் </string>
     <string name="NotYetImplemented">இந்த செயல்பாடு தற்போது இல்லை அல்லது முழுமையடையவில்லை </string>
+    <!-- Translators: The URL should not be localized, it is not clear which languuage the receiver prefers and the language will be detected on the server -->
     <string name="DefaultStatusText">என்னுடைய டெல்டா அரட்டை செயலியில் இருந்து அனுப்பி உள்ளேன் : https://delta.chat</string>
     <string name="Name" >பெயர் </string>
     <string name="EmailAddress">மின் அஞ்சல் முகவரி </string>

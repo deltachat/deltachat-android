@@ -328,6 +328,7 @@
     <string name="AskStartChatWith">Beszélgetést indítasz <![CDATA[<b>]]>%1$s<![CDATA[</b>]]> partnerrel?</string>
     <string name="DeaddropHint">Beszélgetés indításához koppints a válasz-nyílra.</string>
     <string name="NotYetImplemented">Ez a funkció nem érhető el vagy még nem készült el.</string>
+    <!-- Translators: The URL should not be localized, it is not clear which languuage the receiver prefers and the language will be detected on the server -->
     <string name="DefaultStatusText">A Delta Chat Messengeremmel küldtem: https://delta.chat</string>
     <string name="Name" >Név</string>
     <string name="EmailAddress">E-mail cím</string>

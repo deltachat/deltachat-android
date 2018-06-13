@@ -329,6 +329,7 @@
     <string name="AskStartChatWith">Begynn å sludre med <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>?</string>
     <string name="DeaddropHint">For å begynne sludring, klikk på svar-pilene.</string>
     <string name="NotYetImplemented">Denne funksjonen er ikke tilgjengelig eller ufullstendig.</string>
+    <!-- Translators: The URL should not be localized, it is not clear which languuage the receiver prefers and the language will be detected on the server -->
     <string name="DefaultStatusText">Sendt med Delta Chat: https://delta.chat</string>
     <string name="Name" >Navn</string>
     <string name="EmailAddress">E-postadresse</string>
@@ -470,4 +471,4 @@
     <string name="FetchModeSaveBattery">Spar batteri</string>
     <string name="FetchModePersistentConnection">Vedvarende tilkobling</string>
     <string name="FetchModeExplain">Når hentingsmodus brukes <![CDATA[<i>]]>Batterisparing<![CDATA[</i>]]>, nye meldinger vises én gang hvis programmet er i forgrunnen, med gjennomsnittlig 30 sekunders forsinkelse hvis programmet ikke brukes. Når enheten er i sovemodus, vil forsinkelsen øke. Dette er forvalgt modus.\n\n<![CDATA[</i>]]> Vedvarende tilkobling<![CDATA[</i>]]> er typisk raskere, men kan krevet at programmet hvitlistes i systeminnstillingene for å bruke mer batteri.\n\n.Hvilket innhentingsmodus ønsker du å bruke?</string>
-</resources>
+    </resources>

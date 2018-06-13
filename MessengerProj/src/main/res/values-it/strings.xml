@@ -329,6 +329,7 @@
     <string name="AskStartChatWith">Iniziare una conversazione con <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>?</string>
     <string name="DeaddropHint">Per iniziare una conversazione toccare le frecce di risposta.</string>
     <string name="NotYetImplemented">Funzione non disponibile o incompleta.</string>
+    <!-- Translators: The URL should not be localized, it is not clear which languuage the receiver prefers and the language will be detected on the server -->
     <string name="DefaultStatusText">Inviato con l\'applicazione di messaggistica Delta Chat: https://delta.chat</string>
     <string name="Name" >Nome</string>
     <string name="EmailAddress">Indirizzo email</string>
@@ -468,4 +469,5 @@
     <string name="QrJoinVerifiedGroupHint">Scansiona questo per entrare nel gruppo verificato <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>.</string>
     <string name="FetchModeSaveBattery">Risparmia batteria</string>
     <string name="FetchModePersistentConnection">Connessione persistente</string>
-    </resources>
+    <string name="PermissionCamera">L\'accesso alla fotocamera è necessario se si vogliono acquisire immagini o per eseguire la scansione dei codici QR.</string>
+</resources>
