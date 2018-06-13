@@ -48,6 +48,7 @@ import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.text.style.ClickableSpan;
 import android.text.style.URLSpan;
+import android.util.Log;
 import android.util.SparseIntArray;
 import android.util.TypedValue;
 import android.view.Gravity;
@@ -82,6 +83,7 @@ import com.b44t.messenger.Components.RecyclerListView;
 import com.b44t.messenger.Components.SizeNotifierFrameLayout;
 import com.b44t.messenger.ActionBar.Theme;
 
+import java.io.Console;
 import java.io.File;
 import java.net.URLDecoder;
 import java.util.ArrayList;
@@ -2806,7 +2808,15 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
 
                         if( /*(Build.VERSION.SDK_INT >= 16 && message.isVideo()) ||*/ message.type == MessageObject.MO_TYPE1_PHOTO || message.isGif()) {
                             PhotoViewer.getInstance().setParentActivity(getParentActivity());
-                            PhotoViewer.getInstance().openPhoto(message, message.type != MessageObject.MO_TYPE0_TEXT ? dialog_id : 0, ChatActivity.this);
+                            //PhotoViewer.getInstance().openPhoto(message, message.type != MessageObject.MO_TYPE0_TEXT ? dialog_id : 0,
+                            //        ChatActivity.this, getPhotosInChat());
+                            //ArrayList<Object> photos = getPhotosInChat();
+                            int index = getIndexOfCellPhoto(cell);
+                            //PhotoViewer.getInstance().openPhoto(null, 0, ChatActivity.this, photos, index);
+
+                            ArrayList<MessageObject> photoMessages = getPhotoMessages();
+                            PhotoViewer.getInstance().openPhotoList(message, message.type != MessageObject.MO_TYPE0_TEXT ? dialog_id : 0,
+                                    ChatActivity.this, photoMessages, index);
                         } else if (message.type == MessageObject.MO_TYPE9_FILE || message.type == MessageObject.MO_TYPE3_VIDEO ) {
                             AndroidUtilities.openForViewOrShare(getParentActivity(), message.getId(), Intent.ACTION_VIEW);
                         }
@@ -2826,7 +2836,45 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
             return new Holder(view);
         }
 
-        @Override
+        private ArrayList<MessageObject> getPhotoMessages() {
+            ArrayList<MessageObject> photos = new ArrayList<>();
+
+            for(int msg_index = 0; msg_index < m_msglist.length; msg_index ++) {
+                MrMsg mrMsg = MrMailbox.getMsg(m_msglist[msg_index]);
+                switch (mrMsg.getType()) {
+                    case MrMsg.MR_MSG_IMAGE:
+                    case MrMsg.MR_MSG_GIF:
+                    {
+
+                        TLRPC.Message msg = mrMsg.get_TLRPC_Message();
+                        // generateLayout replaces emojis in text and other text rendering actions.
+                        MessageObject photoMsg = new MessageObject(msg, false);
+
+                        photos.add(photoMsg);
+                    }
+                }
+            }
+            return photos;
+        }
+
+        private int getIndexOfCellPhoto(ChatMessageCell callingCell) {
+            int photoCount = 0;
+            for(int msg_index = 0; msg_index < m_msglist.length; msg_index ++) {
+                MrMsg msg = MrMailbox.getMsg(m_msglist[msg_index]);
+                switch (msg.getType()) {
+                    case MrMsg.MR_MSG_IMAGE:
+                    case MrMsg.MR_MSG_GIF:
+                    {
+                        if(callingCell.getMessageObject().getId() == msg.getId())
+                            return photoCount; // count up until now.
+                        photoCount ++;
+                    }
+                }
+            }
+            return 0; // didn't find the matching photo.
+        }
+
+                @Override
         public void onBindViewHolder(RecyclerView.ViewHolder holder, int i) {
             if (i >= 0 && i < m_msglist.length) {
                 View view = holder.itemView;

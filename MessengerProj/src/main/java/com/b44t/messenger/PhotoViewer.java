@@ -2137,7 +2137,7 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
         pickerView.updateSelectedCount(placeProvider.getSelectedCount(), false);
     }
 
-    private void onPhotoShow(final MessageObject messageObject, final TLRPC.FileLocation fileLocation, final ArrayList<MessageObject> messages, final ArrayList<Object> photos, int index, final PlaceProviderObject object) {
+    private void setupPhotoShow() {
         classGuid = ApplicationLoader.generateClassGuid();
         currentMessageObject = null;
         currentFileLocation = null;
@@ -2170,7 +2170,6 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
         imagesArrTemp.clear();
         //currentUserAvatarLocation = null;
         containerView.setPadding(0, 0, 0, 0);
-        currentThumb = object != null ? object.thumb : null;
         menuItem.setVisibility(View.VISIBLE);
         bottomLayout.setVisibility(View.VISIBLE);
         //menuItem.hideSubItem(gallery_menu_showall);
@@ -2201,8 +2200,15 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
                 radialProgressViews[a].setBackgroundState(-1, false);
             }
         }
+    }
 
-        if (messageObject != null && messages == null) {
+    private void onPhotoShow(final MessageObject messageObject, final TLRPC.FileLocation fileLocation,
+                             final ArrayList<MessageObject> messages, final ArrayList<Object> photos,
+                             int index, final PlaceProviderObject object) {
+        currentThumb = object != null ? object.thumb : null;
+        setupPhotoShow();
+
+        if (messageObject != null && messages == null) { // display a single image from a message.
             imagesArr.add(messageObject);
             if (currentAnimation != null) {
                 needSearchImageInArr = false;
@@ -2212,18 +2218,18 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
                 //menuItem.showSubItem(gallery_menu_showall);
             }
             setImageIndex(0, true);
-        } else if (fileLocation != null) {
+        } else if (fileLocation != null) { // display a single file from a known resource
             avatarsDialogId = object.dialogId;
             imagesArrLocations.add(fileLocation);
             imagesArrLocationsSizes.add(object.size);
             avatarsArr.add(new TLRPC.TL_photoEmpty());
             setImageIndex(0, true);
             //currentUserAvatarLocation = fileLocation;
-        } else if (messages != null) {
+        } else if (messages != null) { // display a list of files from messages
             //menuItem.showSubItem(gallery_menu_showall);
             opennedFromMedia = true;
             imagesArr.addAll(messages);
-            if (!opennedFromMedia) {
+            if (!opennedFromMedia) { // TODO: check this line, reads like: Must never happen
                 Collections.reverse(imagesArr);
                 index = imagesArr.size() - index - 1;
             }
@@ -2232,7 +2238,7 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
                 imagesByIds[message.getDialogId() == currentDialogId ? 0 : 1].put(message.getId(), message);
             }
             setImageIndex(index, true);
-        } else if (photos != null) {
+        } else if (photos != null) { // display a list of files from gallery, to be able to select one of them
             if (sendPhotoType == 0) {
                 checkImageView.setVisibility(View.VISIBLE);
             }
@@ -2666,8 +2672,12 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
                     if (size[0] == 0) {
                         size[0] = -1;
                     }
-                    TLRPC.PhotoSize thumbLocation = messageObject != null ? FileLoader.getClosestPhotoSizeWithSize(messageObject.photoThumbs, 100) : null;
-                    imageReceiver.setImage(fileLocation, null, null, placeHolder != null ? new BitmapDrawable(null, placeHolder) : null, thumbLocation != null ? thumbLocation.location : null, "b", size[0], null, avatarsDialogId != 0);
+                    TLRPC.PhotoSize thumbLocation = messageObject != null ?
+                            FileLoader.getClosestPhotoSizeWithSize(messageObject.photoThumbs, 100) : null;
+                    imageReceiver.setImage(fileLocation, null, null,
+                            placeHolder != null ? new BitmapDrawable(null, placeHolder) : null,
+                            thumbLocation != null ? thumbLocation.location : null, null,
+                            size[0], null, avatarsDialogId != 0);
                 }
             } else {
                 imageReceiver.setNeedsQualityThumb(false);
@@ -2693,17 +2703,19 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
         return isVisible && !disableShowCheck && object != null && currentPathObject != null && object.equals(currentPathObject);
     }
 
-    public void openPhoto(final MessageObject messageObject, long dialogId, final PhotoViewerProvider provider) {
-        openPhoto(messageObject, null, null, null, 0, provider, null, dialogId);
+    public void openPhoto(final MessageObject messageObject, long dialogId, final PhotoViewerProvider provider, ArrayList<Object> photos, int index) {
+        openPhoto(messageObject, null, null, photos, index, provider, null, dialogId);
     }
 
     public void openPhoto(final TLRPC.FileLocation fileLocation, final PhotoViewerProvider provider) {
         openPhoto(null, fileLocation, null, null, 0, provider, null, 0);
     }
 
-    /*public void openPhoto(final ArrayList<MessageObject> messages, final int index, long dialogId, final PhotoViewerProvider provider) {
-        openPhoto(messages.get(index), null, messages, null, index, provider, null, dialogId);
-    }*/
+    public void openPhotoList(final MessageObject messageObject, final long dialogId,
+                              final PhotoViewerProvider provider, final ArrayList<MessageObject> photoMessages,
+                              final int index) {
+        openPhoto(messageObject, null, photoMessages, null, index, provider, null, dialogId);
+    }
 
     public void openPhotoForSelect(final ArrayList<Object> photos, final int index, int type, final PhotoViewerProvider provider, ChatActivity chatActivity) {
         sendPhotoType = type;
@@ -2726,8 +2738,13 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
         return animationInProgress != 0;
     }
 
-    public void openPhoto(final MessageObject messageObject, final TLRPC.FileLocation fileLocation, final ArrayList<MessageObject> messages, final ArrayList<Object> photos, final int index, final PhotoViewerProvider provider, ChatActivity chatActivity, long dialogId) {
-        if (parentActivity == null || isVisible || provider == null && checkAnimation() || messageObject == null && fileLocation == null && messages == null && photos == null) {
+    private void openPhoto(final MessageObject messageObject, final TLRPC.FileLocation fileLocation,
+                          final ArrayList<MessageObject> messages, final ArrayList<Object> photos,
+                          final int index, final PhotoViewerProvider provider,
+                          final ChatActivity chatActivity, final long dialogId) {
+        // TODO: the next line wants some parenthesis to clear the intent.
+        if (parentActivity == null || isVisible || provider == null && checkAnimation() ||
+                messageObject == null && fileLocation == null && messages == null && photos == null) {
             return;
         }
 
@@ -2921,7 +2938,7 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
                 }
             };
         } else {
-            if (photos != null) {
+            if (photos != null) { // is always true, if object==null && photos==null we return at the beginning of the method.
                 windowLayoutParams.flags = 0;
                 windowLayoutParams.softInputMode = WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN;
                 wm.updateViewLayout(windowView, windowLayoutParams);
