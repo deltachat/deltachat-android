@@ -2810,9 +2810,13 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                             PhotoViewer.getInstance().setParentActivity(getParentActivity());
                             //PhotoViewer.getInstance().openPhoto(message, message.type != MessageObject.MO_TYPE0_TEXT ? dialog_id : 0,
                             //        ChatActivity.this, getPhotosInChat());
-                            ArrayList<Object> photos = getPhotosInChat();
+                            //ArrayList<Object> photos = getPhotosInChat();
                             int index = getIndexOfCellPhoto(cell);
-                            PhotoViewer.getInstance().openPhoto(null, 0, ChatActivity.this, photos, index);
+                            //PhotoViewer.getInstance().openPhoto(null, 0, ChatActivity.this, photos, index);
+
+                            ArrayList<MessageObject> photoMessages = getPhotoMessages();
+                            PhotoViewer.getInstance().openPhotoList(message, message.type != MessageObject.MO_TYPE0_TEXT ? dialog_id : 0,
+                                    ChatActivity.this, photoMessages, index);
                         } else if (message.type == MessageObject.MO_TYPE9_FILE || message.type == MessageObject.MO_TYPE3_VIDEO ) {
                             AndroidUtilities.openForViewOrShare(getParentActivity(), message.getId(), Intent.ACTION_VIEW);
                         }
@@ -2832,24 +2836,23 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
             return new Holder(view);
         }
 
-        private ArrayList<Object> getPhotosInChat() {
-            ArrayList<Object> photos = new ArrayList<>();
+        private ArrayList<MessageObject> getPhotoMessages() {
+            ArrayList<MessageObject> photos = new ArrayList<>();
 
             for(int msg_index = 0; msg_index < m_msglist.length; msg_index ++) {
-                MrMsg msg = MrMailbox.getMsg(m_msglist[msg_index]);
-                switch (msg.getType()) {
+                MrMsg mrMsg = MrMailbox.getMsg(m_msglist[msg_index]);
+                switch (mrMsg.getType()) {
                     case MrMsg.MR_MSG_IMAGE:
                     case MrMsg.MR_MSG_GIF:
                     {
-                        TLRPC.Message tlrpcMsg = msg.get_TLRPC_Message();
-                        MediaController.PhotoEntry entry = new MediaController.PhotoEntry(0, tlrpcMsg.id,
-                                msg.getTimestamp(), tlrpcMsg.attachPath, 0, false);
-                        photos.add(entry);
+
+                        TLRPC.Message msg = mrMsg.get_TLRPC_Message();
+                        // generateLayout replaces emojis in text and other text rendering actions.
+                        MessageObject photoMsg = new MessageObject(msg, false);
+
+                        photos.add(photoMsg);
                     }
-                    case MrMsg.MR_MSG_TEXT:
-                        Log.d(TAG, "getPhotosInChat: a message: " + msg.getText());
                 }
-                msg.get_TLRPC_Message();
             }
             return photos;
         }
@@ -2867,7 +2870,6 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                         photoCount ++;
                     }
                 }
-                msg.get_TLRPC_Message();
             }
             return 0; // didn't find the matching photo.
         }
