@@ -89,6 +89,11 @@ public class MessageObject {
 
     public ArrayList<TextLayoutBlock> textLayoutBlocks;
 
+    /**
+     *
+     * @param message The outer message.
+     * @param generateLayout Set to true for raw text messages, so emojis and other graphical elements get rendered.
+     */
     public MessageObject(TLRPC.Message message, boolean generateLayout) {
         if (textPaint == null) {
             textPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
@@ -167,6 +172,7 @@ public class MessageObject {
                 }
             }
         }
+        // TODO: change 1000 here to MO_TYPE1000_INIT_VAL
         if (oldType != 1000 && oldType != type) {
             generateThumbs(false);
         }
