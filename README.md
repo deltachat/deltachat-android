@@ -59,7 +59,7 @@ Install Development Environment
    Now the build should succeed - but the app still misses the native part.
 
 6. Download Android NDK Revision 14b from
-   [NDK Archives](https://developer.android.com/ndk/downloads/older_releases.html)
+   [NDK Archives](https://developer.android.com/ndk/downloads/older_releases)
    (Newer releases shall not be used currently, they are not compatible,
    see issues #197, #220, #248) and unzip the archive which contains a single folder
    called `android-ndk-r...`; move this folder eg. to `~/android-ndk-r...`
