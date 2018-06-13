@@ -149,6 +149,9 @@ public class ApplicationLoader extends Application {
             imapWakeLock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "imapWakeLock");
             imapWakeLock.setReferenceCounted(false); // if the idle-thread is killed for any reasons, it is better not to rely on reference counting
 
+            smtpWakeLock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "smtpWakeLock");
+            smtpWakeLock.setReferenceCounted(false); // if the idle-thread is killed for any reasons, it is better not to rely on reference counting
+
             convertVideoWakeLock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "convertVideoWakeLock" /*any name*/);
             convertVideoWakeLock.setReferenceCounted(false);
 
@@ -214,7 +217,7 @@ public class ApplicationLoader extends Application {
         MrMailbox.open(dbfile.getAbsolutePath());
         if( MrMailbox.isConfigured()!=0 && ApplicationLoader.getPermanentPush() ) {
             //ApplicationLoader.imapForeground = true;
-            ApplicationLoader.startImapThread();
+            ApplicationLoader.startThreads();
         }
 
         // create other default objects
@@ -286,73 +289,100 @@ public class ApplicationLoader extends Application {
         }
     }
 
-    private static final Object imapThreadCritical = new Object();
+    private static final Object threadsCritical = new Object();
 
     private static boolean imapThreadStartedVal;
     private static final Object imapThreadStartedCond = new Object();
-
     public static Thread imapThread = null;
     private static PowerManager.WakeLock imapWakeLock = null;
+
+    private static boolean smtpThreadStartedVal;
+    private static final Object smtpThreadStartedCond = new Object();
+    public static Thread smtpThread = null;
+    private static PowerManager.WakeLock smtpWakeLock = null;
+
     //public static boolean imapForeground = false;
 
-    public static void startImapThread()
+    public static void startThreads()
     {
-        synchronized(imapThreadCritical) {
+        synchronized(threadsCritical) {
 
-            if( imapThread != null && imapThread.isAlive() ) {
-                Log.i("DeltaChat", "IMAP-Thread is already active, doing nothing.");
-                return;
-            }
+            if (imapThread == null || !imapThread.isAlive()) {
 
-            synchronized (imapThreadStartedCond) {
-                imapThreadStartedVal = false;
-            }
-
-            imapThread = new Thread(new Runnable() {
-                @Override
-                public void run() {
-
-                    // raise the starting condition
-                    // after acquiring a wakelock so that the process is not terminated.
-                    // as imapWakeLock is not reference counted that would result in a wakelock-gap is not needed here.
-                    imapWakeLock.acquire();
-                    synchronized (imapThreadStartedCond) {
-                        imapThreadStartedVal = true;
-                        imapThreadStartedCond.notifyAll();
-                    }
-
-                    Log.i("DeltaChat", "###################### IMAP-Thread started. ######################");
-
-
-                    while( true ) {
-                        imapWakeLock.acquire();
-                            MrMailbox.performJobs();
-                            MrMailbox.fetch();
-                        imapWakeLock.release();
-
-                        //if( imapForeground ) {
-                            MrMailbox.idle();
-                        /*}
-                        else {
-                            break;
-                        }*/
-                    }
-
-
-                    //Log.i("DeltaChat", "IMAP-Thread stopped.");
+                synchronized (imapThreadStartedCond) {
+                    imapThreadStartedVal = false;
                 }
-            }, "imapThread");
 
-            imapThread.start();
+                imapThread = new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        // raise the starting condition
+                        // after acquiring a wakelock so that the process is not terminated.
+                        // as imapWakeLock is not reference counted that would result in a wakelock-gap is not needed here.
+                        imapWakeLock.acquire();
+                        synchronized (imapThreadStartedCond) {
+                            imapThreadStartedVal = true;
+                            imapThreadStartedCond.notifyAll();
+                        }
+
+                        Log.i("DeltaChat", "###################### IMAP-Thread started. ######################");
+
+
+                        while (true) {
+                            imapWakeLock.acquire();
+                                MrMailbox.performJobs();
+                                MrMailbox.fetch();
+                            imapWakeLock.release();
+                            MrMailbox.idle();
+                        }
+                    }
+                }, "imapThread");
+                imapThread.start();
+            }
+
+            if (smtpThread == null || !smtpThread.isAlive()) {
+
+                synchronized (smtpThreadStartedCond) {
+                    smtpThreadStartedVal = false;
+                }
+
+                smtpThread = new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        smtpWakeLock.acquire();
+                        synchronized (smtpThreadStartedCond) {
+                            smtpThreadStartedVal = true;
+                            smtpThreadStartedCond.notifyAll();
+                        }
+
+                        Log.i("DeltaChat", "###################### SMTP-Thread started. ######################");
+
+
+                        while (true) {
+                            smtpWakeLock.acquire();
+                                MrMailbox.performSmtpJobs();
+                            smtpWakeLock.release();
+                            MrMailbox.performSmtpIdle();
+                        }
+                    }
+                }, "smtpThread");
+                smtpThread.start();
+            }
         }
     }
 
-    public static void waitForImapThreadRunning()
+    public static void waitForThreadsRunning()
     {
         try {
-            synchronized( imapThreadStartedCond ) { // `synchronized` locks the object
-                while( !imapThreadStartedVal ) {    // the doc says, spurious wakeups are possible, wait() should always be used in a loop
-                    imapThreadStartedCond.wait();   // `wait()` unlocks the object, waits and locks again
+            synchronized( imapThreadStartedCond ) {
+                while( !imapThreadStartedVal ) {
+                    imapThreadStartedCond.wait();
+                }
+            }
+
+            synchronized( smtpThreadStartedCond ) {
+                while( !smtpThreadStartedVal ) {
+                    smtpThreadStartedCond.wait();
                 }
             }
         }
