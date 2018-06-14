@@ -79,6 +79,9 @@ public class SendMessagesHelper implements NotificationCenter.NotificationCenter
             {
                 // encoding done
                 new File(messageObject.messageOwner.attachPath+".increation").delete();
+                ApplicationLoader.startThreads();
+                ApplicationLoader.waitForThreadsRunning();
+                MrMailbox.interruptSmtpIdle();
                 NotificationCenter.getInstance().postNotificationName(NotificationCenter.messagesSentOrRead);
             }
         }

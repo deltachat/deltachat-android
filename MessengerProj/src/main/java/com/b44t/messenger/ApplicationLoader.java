@@ -179,12 +179,16 @@ public class ApplicationLoader extends Application {
             e.printStackTrace();
         }
 
-        // track screen on/off
+        // track screen and network states
         try {
             final IntentFilter filter = new IntentFilter(Intent.ACTION_SCREEN_ON);
             filter.addAction(Intent.ACTION_SCREEN_OFF);
             final BroadcastReceiver mReceiver = new ScreenReceiver();
             applicationContext.registerReceiver(mReceiver, filter);
+
+            final BroadcastReceiver mNetworkStateReceiver = new NetworkStateReceiver();
+            applicationContext.registerReceiver(mNetworkStateReceiver, new IntentFilter(android.net.ConnectivityManager.CONNECTIVITY_ACTION));
+
         } catch (Exception e) {
             e.printStackTrace();
         }
