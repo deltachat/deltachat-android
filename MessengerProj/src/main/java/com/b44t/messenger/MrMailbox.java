@@ -469,19 +469,20 @@ public class MrMailbox {
     public native static int     getCurrentTime             ();
 
     public final static int MEDIA_PHOTOVIDEO = 0;
-    public static void getMediaCount(final long uid, final int type, final int classGuid, boolean fromCache) {
+    public static void getMediaCount(final long uid, final int type) {
         Utilities.globalQueue.postRunnable(new Runnable() {
             @Override
             public void run() {
-                int[] media = new int[0];
                 if( type == MEDIA_PHOTOVIDEO ) {
-                    media = MrMailbox.getChatMedia((int)uid, MrMsg.MR_MSG_IMAGE, MrMsg.MR_MSG_VIDEO);
+                    final int[] media = MrMailbox.getChatMedia((int)uid, MrMsg.MR_MSG_IMAGE, MrMsg.MR_MSG_VIDEO);
+                    AndroidUtilities.runOnUIThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            NotificationCenter.getInstance().postNotificationName(NotificationCenter.mediaCountDidLoaded,
+                                    uid, media.length, false /*not from cache*/, type, media);
+                        }
+                    });
                 }
-
-                NotificationCenter.getInstance().postNotificationName(NotificationCenter.mediaCountDidLoaded,
-                        uid, media.length, false /*not from cache*/, type, media);
-
-
             }
         });
     }

@@ -84,7 +84,6 @@ import java.util.Locale;
 @SuppressWarnings("unchecked")
 public class PhotoViewer implements NotificationCenter.NotificationCenterDelegate, GestureDetector.OnGestureListener, GestureDetector.OnDoubleTapListener {
 
-    private int classGuid;
     private PhotoViewerProvider placeProvider;
     private boolean isVisible;
 
@@ -2138,7 +2137,6 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
     }
 
     private void setupPhotoShow() {
-        classGuid = ApplicationLoader.generateClassGuid();
         currentMessageObject = null;
         currentFileLocation = null;
         currentPathObject = null;
@@ -2268,9 +2266,9 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
 
         if (currentAnimation == null) {
             if (currentDialogId != 0 && totalImagesCount == 0) {
-                MrMailbox.getMediaCount(currentDialogId, MrMailbox.MEDIA_PHOTOVIDEO, classGuid, true);
+                MrMailbox.getMediaCount(currentDialogId, MrMailbox.MEDIA_PHOTOVIDEO);
                 if (mergeDialogId != 0) {
-                    MrMailbox.getMediaCount(mergeDialogId, MrMailbox.MEDIA_PHOTOVIDEO, classGuid, true);
+                    MrMailbox.getMediaCount(mergeDialogId, MrMailbox.MEDIA_PHOTOVIDEO);
                 }
             } else if (avatarsDialogId != 0) {
                 //MessagesController.getInstance().loadDialogPhotos(avatarsDialogId, 0, 80, 0, true, classGuid);
