@@ -50,12 +50,13 @@ public class NetworkStateReceiver extends BroadcastReceiver {
             connected = false;
         }
 
-        if( connected ) {
-            ApplicationLoader.startThreads();
-            ApplicationLoader.waitForThreadsRunning();
-            MrMailbox.interruptSmtpIdle();
-            MrMailbox.interruptIdle();
-        }
+        // we interrupt idle also when going disconnected - otherwise the core will recognize the disconnected change
+        // only after a timeout of typically 30 seconds; during this time a _reconnect_ will not be possible as the imap-thread
+        // still hangs somewhere and waiting for response
+        ApplicationLoader.startThreads();
+        ApplicationLoader.waitForThreadsRunning();
+        MrMailbox.interruptSmtpIdle();
+        MrMailbox.interruptIdle();
     }
 
 

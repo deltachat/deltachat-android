@@ -33,7 +33,7 @@ public class ScreenReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         if (intent.getAction().equals(Intent.ACTION_SCREEN_OFF)) {
-            MrMailbox.log_i("DeltaChat", "++++++++++++++++++ Screen off ++++++++++++++++++");
+            MrMailbox.log_i("DeltaChat", "-------------------- Screen off --------------------");
             ApplicationLoader.isScreenOn = false;
 
             // also stop the idle-thread when the screen goes off, this is not always in sync with the ForegroundDetector
@@ -41,7 +41,7 @@ public class ScreenReceiver extends BroadcastReceiver {
                 ApplicationLoader.scheduleStopImapThread();
             }
         } else if (intent.getAction().equals(Intent.ACTION_SCREEN_ON)) {
-            MrMailbox.log_i("DeltaChat", "++++++++++++++++++ Screen on ++++++++++++++++++");
+            MrMailbox.log_i("DeltaChat", "-------------------- Screen on --------------------");
             ApplicationLoader.isScreenOn = true;
         }
         //NotificationCenter.getInstance().postNotificationName(NotificationCenter.screenStateChanged);

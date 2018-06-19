@@ -60,7 +60,7 @@ public class ForegroundDetector implements Application.ActivityLifecycleCallback
 
     @Override
     public void onActivityStarted(Activity activity) {
-        Log.i("DeltaChat", "++++++++++++++++++ Activity started ++++++++++++++++++");
+        Log.i("DeltaChat", "-------------------- Activity started --------------------");
 
         refs++;
         if (refs == 1) {
@@ -87,7 +87,7 @@ public class ForegroundDetector implements Application.ActivityLifecycleCallback
     @Override
     public void onActivityStopped(Activity activity) {
 
-        Log.i("DeltaChat", "++++++++++++++++++ Activity stopped ++++++++++++++++++");
+        Log.i("DeltaChat", "-------------------- Activity stopped --------------------");
 
         if( refs <= 0 ) {
             Log.i("DeltaChat", String.format("Bad activity count: activityCount=%d", refs));
