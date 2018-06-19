@@ -99,9 +99,9 @@ public class ForegroundDetector implements Application.ActivityLifecycleCallback
             enterBackgroundTime = System.currentTimeMillis();
             wasInBackground = true;
 
-            if( !ApplicationLoader.getPermanentPush() ) {
+            /*if( !ApplicationLoader.getPermanentPush() ) {
                 ApplicationLoader.scheduleStopImapThread();;
-            }
+            }*/
         }
         else {
             Log.i("DeltaChat", String.format("Not yet switched to background, %d activities left", refs));

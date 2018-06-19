@@ -219,7 +219,7 @@ public class ApplicationLoader extends Application {
         // open() should be called before MessagesController.getInstance() as this also initilizes directories based upon getBlobdir().
         File dbfile = new File(getFilesDirFixed(), "messenger.db");
         MrMailbox.open(dbfile.getAbsolutePath());
-        if( MrMailbox.isConfigured()!=0 && ApplicationLoader.getPermanentPush() ) {
+        if( MrMailbox.isConfigured()!=0 /*&& ApplicationLoader.getPermanentPush()*/ ) {
             //ApplicationLoader.imapForeground = true;
             ApplicationLoader.startThreads();
         }
@@ -395,12 +395,12 @@ public class ApplicationLoader extends Application {
         }
     }
 
-    public static void scheduleStopImapThread()
+    /*public static void scheduleStopImapThread()
     {
         //Log.i("DeltaChat", "IMAP-thread scheduled to stop.");
 
         //imapForeground = false;
         //MrMailbox.interruptIdle();
 
-    }
+    }*/
 }
