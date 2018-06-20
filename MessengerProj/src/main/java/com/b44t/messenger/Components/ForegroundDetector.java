@@ -105,6 +105,8 @@ public class ForegroundDetector implements Application.ActivityLifecycleCallback
             enterBackgroundTime = System.currentTimeMillis();
             wasInBackground = true;
 
+            ApplicationLoader.afterForgroundWakeLock.acquire(60*1000);
+
             /*if( !ApplicationLoader.getPermanentPush() ) {
                 ApplicationLoader.scheduleStopImapThread();;
             }*/

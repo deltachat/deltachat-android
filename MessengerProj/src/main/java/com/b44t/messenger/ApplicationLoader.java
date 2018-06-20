@@ -155,6 +155,9 @@ public class ApplicationLoader extends Application {
             convertVideoWakeLock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "convertVideoWakeLock" /*any name*/);
             convertVideoWakeLock.setReferenceCounted(false);
 
+            afterForgroundWakeLock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "afterForegroundWakeLock");
+            afterForgroundWakeLock.setReferenceCounted(false);
+
         } catch (Exception e) {
             Log.e("DeltaChat", "Cannot create wakeLocks");
         }
@@ -311,6 +314,8 @@ public class ApplicationLoader extends Application {
     private static final Object smtpThreadStartedCond = new Object();
     public static Thread smtpThread = null;
     private static PowerManager.WakeLock smtpWakeLock = null;
+
+    public static PowerManager.WakeLock afterForgroundWakeLock = null;
 
     //public static boolean imapForeground = false;
 
