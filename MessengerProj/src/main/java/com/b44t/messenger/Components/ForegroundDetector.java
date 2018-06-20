@@ -73,7 +73,7 @@ public class ForegroundDetector implements Application.ActivityLifecycleCallback
             }
         }
 
-        applicationContext.startService(new Intent(applicationContext, KeepAliveService.class));
+        applicationContext.stopService(new Intent(applicationContext, KeepAliveService.class));
 
         //ApplicationLoader.imapForeground = true;
         ApplicationLoader.startThreads(); // we call this without checking getPermanentPush() to have a simple guarantee that push is always active when the app is in foregroud (startIdleThread makes sure the thread is not started twice)
