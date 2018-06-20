@@ -72,12 +72,12 @@ public class NotificationsController {
     private long opened_dialog_id = 0;
     private int total_unread_count = 0;
     private int personal_count = 0;
-    private boolean notifyCheck = false;
+    //private boolean notifyCheck = false;
     private boolean inChatSoundEnabled = true;
     private String launcherClassName;
 
-    private Runnable notificationDelayRunnable;
-    private PowerManager.WakeLock notificationDelayWakelock;
+    //private Runnable notificationDelayRunnable;
+    //private PowerManager.WakeLock notificationDelayWakelock;
 
     private long lastSoundPlay;
     private long lastSoundOutPlay;
@@ -124,13 +124,13 @@ public class NotificationsController {
 
         try {
             PowerManager pm = (PowerManager) ApplicationLoader.applicationContext.getSystemService(Context.POWER_SERVICE);
-            notificationDelayWakelock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "notificationDelayWakelock" /*any name*/);
-            notificationDelayWakelock.setReferenceCounted(false);
+            //notificationDelayWakelock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "notificationDelayWakelock" /*any name*/);
+            //notificationDelayWakelock.setReferenceCounted(false);
         } catch (Exception e) {
 
         }
 
-        notificationDelayRunnable = new Runnable() {
+        /*notificationDelayRunnable = new Runnable() {
             @Override
             public void run() {
                 //Log.i("DeltaChat", "delay reached");
@@ -139,14 +139,14 @@ public class NotificationsController {
                     delayedPushMessages.clear();
                 }
                 try {
-                    if (notificationDelayWakelock.isHeld()) {
-                        notificationDelayWakelock.release();
-                    }
+                    //if (notificationDelayWakelock.isHeld()) {
+                    //    notificationDelayWakelock.release();
+                    //}
                 } catch (Exception e) {
 
                 }
             }
-        };
+        };*/
 
         setBadge(0); // the set badge number survives application restarts, so reset it when creating
     }
