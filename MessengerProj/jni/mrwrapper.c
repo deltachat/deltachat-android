@@ -255,43 +255,43 @@ JNIEXPORT jint Java_com_b44t_messenger_MrMailbox_isConfigured(JNIEnv *env, jclas
 
 JNIEXPORT void Java_com_b44t_messenger_MrMailbox_performJobs(JNIEnv *env, jclass cls)
 {
-	mrmailbox_perform_jobs(get_mrmailbox_t(env, cls));
+	dc_perform_imap_jobs(get_mrmailbox_t(env, cls));
 }
 
 
 JNIEXPORT void Java_com_b44t_messenger_MrMailbox_idle(JNIEnv *env, jclass cls)
 {
-	mrmailbox_idle(get_mrmailbox_t(env, cls));
+	dc_perform_imap_idle(get_mrmailbox_t(env, cls));
 }
 
 
 JNIEXPORT void Java_com_b44t_messenger_MrMailbox_interruptIdle(JNIEnv *env, jclass cls)
 {
-	mrmailbox_interrupt_idle(get_mrmailbox_t(env, cls));
+	dc_interrupt_imap_idle(get_mrmailbox_t(env, cls));
 }
 
 
 JNIEXPORT void Java_com_b44t_messenger_MrMailbox_fetch(JNIEnv *env, jclass cls)
 {
-	mrmailbox_fetch(get_mrmailbox_t(env, cls));
+	dc_perform_imap_fetch(get_mrmailbox_t(env, cls));
 }
 
 
 JNIEXPORT void Java_com_b44t_messenger_MrMailbox_performSmtpJobs(JNIEnv *env, jclass cls)
 {
-	mrmailbox_perform_smtp_jobs(get_mrmailbox_t(env, cls));
+	dc_perform_smtp_jobs(get_mrmailbox_t(env, cls));
 }
 
 
 JNIEXPORT void Java_com_b44t_messenger_MrMailbox_performSmtpIdle(JNIEnv *env, jclass cls)
 {
-	mrmailbox_perform_smtp_idle(get_mrmailbox_t(env, cls));
+	dc_perform_smtp_idle(get_mrmailbox_t(env, cls));
 }
 
 
 JNIEXPORT void Java_com_b44t_messenger_MrMailbox_interruptSmtpIdle(JNIEnv *env, jclass cls)
 {
-	mrmailbox_interrupt_smtp_idle(get_mrmailbox_t(env, cls));
+	dc_interrupt_smtp_idle(get_mrmailbox_t(env, cls));
 }
 
 
