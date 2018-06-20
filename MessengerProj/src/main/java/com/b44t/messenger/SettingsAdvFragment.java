@@ -130,7 +130,7 @@ public class SettingsAdvFragment extends BaseFragment implements NotificationCen
         // for simplicity, we do not hide discouraged/supported options anywhere else.
         otherHeaderRow          = rowCount++;
         passcodeRow             = rowCount++;
-        backgroupModeRow        = rowCount++;
+        backgroupModeRow        = -1;//rowCount++;
         autoplayGifsRow         = rowCount++;
         textSizeRow             = rowCount++; // for now, we have the font size in the advanced settings; this is because the numberical selection is a little bit weird and does only affect the message text. It would be better to use the font size defined by the system with "sp" (Scale-independent Pixels which included the user's font size preference)
         sendByEnterRow          = rowCount++;

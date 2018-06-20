@@ -26,11 +26,15 @@ package com.b44t.messenger.Components;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Application;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 
 import com.b44t.messenger.ApplicationLoader;
+import com.b44t.messenger.KeepAliveService;
+
+import static com.b44t.messenger.ApplicationLoader.applicationContext;
 
 @SuppressLint("NewApi")
 public class ForegroundDetector implements Application.ActivityLifecycleCallbacks {
@@ -68,6 +72,8 @@ public class ForegroundDetector implements Application.ActivityLifecycleCallback
                 wasInBackground = false;
             }
         }
+
+        applicationContext.startService(new Intent(applicationContext, KeepAliveService.class));
 
         //ApplicationLoader.imapForeground = true;
         ApplicationLoader.startThreads(); // we call this without checking getPermanentPush() to have a simple guarantee that push is always active when the app is in foregroud (startIdleThread makes sure the thread is not started twice)

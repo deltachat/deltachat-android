@@ -40,9 +40,14 @@ public class ScreenReceiver extends BroadcastReceiver {
             /*if( !ApplicationLoader.getPermanentPush() ) {
                 ApplicationLoader.scheduleStopImapThread();
             }*/
+
+            ApplicationLoader.applicationContext.startService(new Intent(ApplicationLoader.applicationContext, KeepAliveService.class));
+
         } else if (intent.getAction().equals(Intent.ACTION_SCREEN_ON)) {
             MrMailbox.log_i("DeltaChat", "-------------------- Screen on --------------------");
             ApplicationLoader.isScreenOn = true;
+
+            ApplicationLoader.applicationContext.stopService(new Intent(ApplicationLoader.applicationContext, KeepAliveService.class));
         }
         //NotificationCenter.getInstance().postNotificationName(NotificationCenter.screenStateChanged);
     }
