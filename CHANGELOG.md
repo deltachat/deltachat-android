@@ -1,12 +1,21 @@
 # Delta Chat Changelog
 
-## UNRELEASED
+## v0.18.0
+2018-06-21
 
+* Speed up message sending/receiving
+* Retry failed sending/receiving jobs just in the moment the networks becomes available again
+* Make message sending/receiving more reliable
+* Handle attachment file names with non-ASCII characters correctly
 * Paging through images made available by Angelo Fuchs
 * Several connection issues with different configurations were fixed by Thomas Oster
+* Improve chat-folder creation by Thomas Oster
 * Request permissions before using the camera; added by Thomas Oster
 * Key import improved by Thomas Oster
 * Improve background and foreground message fetching reliablility
+* Try to use the permanent notification only when really needed
+* Update internal sqlite library from 3.22.0 to 3.23.1
+* Update internal libEtPan library from 1.7 to 1.8
 * Add Danish translation from Ole Carlsen
 * Update Albania, Basque, Danish, Italian, Norwegian, Dutch, Polish, Portuguese, Russian and Telugu translations
 
