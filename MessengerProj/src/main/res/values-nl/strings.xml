@@ -470,5 +470,6 @@
     <string name="FetchMode">Ophaalmodus</string>
     <string name="FetchModeSaveBattery">Batterijbesparing</string>
     <string name="FetchModePersistentConnection">Aanhoudende verbinding</string>
+    <string name="FetchModeExplain">Bij gebruik van de ophaalmodus <![CDATA[<i>]>Batterij sparen<![CDATA[</i>]]>, verschijnen nieuwe berichten meteen wanneer de app op de voorgrond staat en met een gemiddelde vertraging van 30 seconden als de app niet wordt gebruikt. Wanneer het apparaat in sluimerstand (doze mode) is, kan de vertraging langer zijn. Dit is de standaardmodus.\n\n<![CDATA[<i>]]>Continue connectie<![CDATA[</i>]]> is meestal sneller maar vereist mogelijk dat de app in de systeeminstellingen op de witte lijst wordt geplaatst om meer batterij te mogen verbruiken.\n\nWelke ophaalmodus wilt u gebruiken?</string>
     <string name="PermissionCamera">Cameratoegang is nodig als je foto\'s wilt maken of QR-codes wilt scannen.</string>
 </resources>

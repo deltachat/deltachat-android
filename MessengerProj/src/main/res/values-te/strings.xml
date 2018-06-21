@@ -205,31 +205,15 @@
     <string name="PermissionOpenSettings">సెట్టింగులు</string>
     <!--Intro view-->
     <string name="Intro1Headline">డెల్టా చాట్</string>
-
-
-
-
-
-
-
-    <!--plural-->
-    <!-- Translators: The first string placeholder gets replaced with the
-    text "%d new messages", so the complete sentence would be e.g.
-    "4 new messages in 2 chats". -->
-    <!-- Translators: The second string placeholder gets replaced with the
-    text "%d minutes", so the complete sentence would be e.g.
-    "At most 8 notifications within 3 minutes". -->
-    <!--date formatters-->
     <string name="AccountSettings">ఖాతా సెట్టింగులు</string>
     <string name="Password">పాస్వర్డ్</string>
     <string name="AboutThisProgram">డెల్టా చాట్ గురించి</string>
     <string name="Deaddrop">పరిచయ అభ్యర్ధనలు</string>
     <string name="DeaddropInChatlist">చాట్ జాబితాలో పరిచయ అభ్యర్ధనలు చూపించు</string>
+    <!-- Translators: The URL should not be localized, it is not clear which languuage the receiver prefers and the language will be detected on the server -->
     <string name="DefaultStatusText">నా డెల్టా చాట్ మెసెంజర్ ద్వారా పంపబడినది: https://delta.chat</string>
     <string name="EmailAddress">ఈమెయిల్ చిరునామా</string>
     <string name="ContactCreated">పరిచయం సృష్టించబడింది</string>
-    <!-- Translators: please use a very short string here, it should not much longer than
-    the string needed for video time+size (0:00, 12,3 Mib) -->
     <string name="AttachFiles">జతచెసిన‌ ఫైళ్ళు</string>
     <string name="ErrGroupNameEmpty">సమూహానికి పేరు పెట్టు</string>
     <string name="E2ECompareKeys">కీలను పోల్చు</string>
@@ -258,8 +242,6 @@
     If you do not find a correct grammar for your language you can just use "%1$s (by me)" or "Me: %1$s" -->
     <string name="ActionBySelf">%1$s నా‌ ద్వరా</string>
     <string name="ExampleEmailAddr">user@example.org</string>
-
-
     <string name="FetchMode">వెతికే మోడ్</string>
     <string name="FetchModeSaveBattery">బ్యాటరి ఆదా</string>
-</resources>
+    </resources>
