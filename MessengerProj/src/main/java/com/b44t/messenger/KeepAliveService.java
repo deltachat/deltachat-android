@@ -51,7 +51,7 @@ public class KeepAliveService extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        // START_STICKY ensured, the service is recreated as soon it is terminted for any reasons.
+        // START_STICKY ensured, the service is recreated as soon it is terminated for any reasons.
         // as ApplicationLoader.onCreate() is called before a service starts, there is no more to do here,
         // the app is just running fine.
         MrMailbox.log_i("DeltaChat", "*** KeepAliveService.onStartCommand()");
