@@ -12,7 +12,7 @@
 * Improve chat-folder creation by Thomas Oster
 * Request permissions before using the camera; added by Thomas Oster
 * Key import improved by Thomas Oster
-* Improve background and foreground message fetching reliablility
+* Improve background and foreground message fetching reliability
 * Try to use the permanent notification only when really needed
 * Update internal sqlite library from 3.22.0 to 3.23.1
 * Update internal libEtPan library from 1.7 to 1.8
