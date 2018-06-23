@@ -1,6 +1,6 @@
 # Delta Chat Changelog
 
-## v0.18.1
+## v0.18.2
 2018-06-23
 
 * Fix initial configure process to hang at 95% under some circumstances
