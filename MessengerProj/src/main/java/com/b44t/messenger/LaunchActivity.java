@@ -573,7 +573,7 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                 public void onClick(DialogInterface dialogInterface, int i) {
                     int chatId = MrMailbox.createChatByContactId(MrMailbox.createContact("", createChatWithFinal));
                     if( chatId != 0 ) {
-                        if( sendingText!=null ) { MrMailbox.getChat(chatId).setDraft(sendingText, 0); }
+                        if( sendingText!=null ) { MrMailbox.setDraft(chatId, sendingText); }
                         Bundle args = new Bundle();
                         args.putInt("chat_id", chatId);
                         boolean removeLast = actionBarLayout.fragmentsStack.size() > 1 && actionBarLayout.fragmentsStack.get(actionBarLayout.fragmentsStack.size() - 1) instanceof ChatActivity;

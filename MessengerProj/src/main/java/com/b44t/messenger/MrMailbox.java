@@ -148,6 +148,7 @@ public class MrMailbox {
     public native static int isContactInChat       (int chat_id, int contact_id);
     public native static int addContactToChat      (int chat_id, int contact_id);
     public native static int removeContactFromChat (int chat_id, int contact_id);
+    public native static void setDraft              (int chat_id, String draft/*NULL=delete*/);
     public native static int setChatName           (int chat_id, String name);
     public native static int setChatProfileImage   (int chat_id, String name);
 

@@ -443,6 +443,14 @@ JNIEXPORT jint Java_com_b44t_messenger_MrMailbox_removeContactFromChat(JNIEnv *e
 }
 
 
+JNIEXPORT void Java_com_b44t_messenger_MrMailbox_setDraft(JNIEnv *env, jclass cls, jint chat_id, jstring draft /* NULL=delete */)
+{
+	CHAR_REF(draft);
+		dc_set_draft(get_mrmailbox_t(env, cls), chat_id, draftPtr /* NULL=delete */);
+	CHAR_UNREF(draft);
+}
+
+
 JNIEXPORT jint Java_com_b44t_messenger_MrMailbox_setChatName(JNIEnv *env, jclass cls, jint chat_id, jstring name)
 {
 	CHAR_REF(name);
@@ -856,15 +864,6 @@ JNIEXPORT jstring Java_com_b44t_messenger_MrChat_getDraft(JNIEnv *env, jobject o
 JNIEXPORT jlong Java_com_b44t_messenger_MrChat_getDraftTimestamp(JNIEnv *env, jobject obj)
 {
 	return (jlong)mrchat_get_draft_timestamp(get_mrchat_t(env, obj));
-}
-
-
-JNIEXPORT jint Java_com_b44t_messenger_MrChat_setDraft(JNIEnv *env, jobject obj, jstring draft /* NULL=delete */, jint replyToMsgId)
-{
-	CHAR_REF(draft);
-		jint ret = (jint)mrchat_set_draft(get_mrchat_t(env, obj), draftPtr /* NULL=delete */);
-	CHAR_UNREF(draft);
-	return ret;
 }
 
 

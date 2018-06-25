@@ -57,10 +57,6 @@ public class MrChat {
     public native boolean isVerified();
     public native String getDraft();
     public native long getDraftTimestamp();
-    public int getDraftReplyToMsgId() {
-        return 0;
-    }
-    public native int setDraft(String draft/*NULL=delete*/, long replyToMsgId);
 
     private long                  m_hChat;  // must not be renamed as referenced by JNI under the name "m_hChat"
     private native static void    MrChatUnref                (long hChat);
@@ -90,22 +86,22 @@ public class MrChat {
             return null;
         }
         ret.date = (int)getDraftTimestamp();
-        ret.reply_to_msg_id = getDraftReplyToMsgId();
+        ret.reply_to_msg_id = 0;
         return ret;
     }
 
     public void saveDraft(CharSequence message, TLRPC.Message replyToMessage) {
         if( message == null || TextUtils.isEmpty(message) ) {
-            setDraft(null, 0);
+            MrMailbox.setDraft(getId(), null);
         }
         else {
-            setDraft(message.toString(), 0);
+            MrMailbox.setDraft(getId(), message.toString());
         }
     }
 
     public void cleanDraft()
     {
-        setDraft(null, 0);
+        MrMailbox.setDraft(getId(), null);
     }
 
     public String getNameNAddr()
