@@ -31,14 +31,11 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.text.Editable;
 import android.text.Html;
 import android.text.InputType;
-import android.text.TextWatcher;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ListView;
 
@@ -64,6 +61,7 @@ public class SettingsAccountFragment extends BaseFragment implements Notificatio
     private int         rowAddr;
     private int         rowMailPwHeadline;
     private int         rowMailPw;
+    private int         rowInfoExplain;
     private int         rowOpenAdvOpions;
 
     private int         rowMailHeadline;
@@ -79,8 +77,8 @@ public class SettingsAccountFragment extends BaseFragment implements Notificatio
     private int         rowSendUser;
     private int         rowSendPw;
     private int         rowSendSecurity;
+    private int         rowBreak2;
 
-    private int         rowInfoBelowSendPw;
     private int         rowCount;
 
     private final int ROWTYPE_INFO         = 0; // no gaps here!
@@ -88,6 +86,7 @@ public class SettingsAccountFragment extends BaseFragment implements Notificatio
     private final int ROWTYPE_SHADOW_BREAK = 2;
     private final int ROWTYPE_HEADLINE     = 3;
     private final int ROWTYPE_TEXT_FLAGS   = 4;
+    private final int ROWTYPE_TEXT_SETTINGS= 5;
 
     private EditTextCell addrCell;  // warning all these objects may be null!
     private EditTextCell mailPwCell;
@@ -154,7 +153,7 @@ public class SettingsAccountFragment extends BaseFragment implements Notificatio
         rowAddr          = rowCount++;
         rowMailPwHeadline= rowCount++;
         rowMailPw        = rowCount++;
-        rowInfoBelowSendPw = rowCount++;
+        rowInfoExplain = rowCount++;
         rowOpenAdvOpions = rowCount++;
 
         if( m_expanded ) {
@@ -188,6 +187,7 @@ public class SettingsAccountFragment extends BaseFragment implements Notificatio
             rowSendSecurity  = -1;
         }
 
+        rowBreak2        = rowCount++;
     }
 
     @Override
@@ -271,6 +271,11 @@ public class SettingsAccountFragment extends BaseFragment implements Notificatio
                     builder.setNegativeButton(R.string.Cancel, null);
                     showDialog(builder.create());
 
+                }
+                else if( i == rowOpenAdvOpions ) {
+                    m_expanded = !m_expanded;
+                    calculateRows();
+                    listAdapter.notifyDataSetChanged();
                 }
             }
         });
@@ -433,7 +438,7 @@ public class SettingsAccountFragment extends BaseFragment implements Notificatio
 
         @Override
         public boolean isEnabled(int i) {
-            return !(i==rowAddrHeadline || i==rowMailPwHeadline || i== rowMailHeadline || i== rowBreak1 || i== rowSendHeadline || i==rowInfoBelowSendPw);
+            return !(i==rowAddrHeadline || i==rowMailPwHeadline || i== rowMailHeadline || i== rowBreak1 || i== rowBreak2 || i== rowSendHeadline || i== rowInfoExplain);
         }
 
         @Override
@@ -592,24 +597,22 @@ public class SettingsAccountFragment extends BaseFragment implements Notificatio
                 if (view == null) {
                     view = new ShadowSectionCell(mContext);
                 }
+                if( i == rowBreak2 ) {
+                    view.setBackgroundResource(R.drawable.greydivider_bottom);
+                }
+            }
+            else if( type == ROWTYPE_TEXT_SETTINGS ) {
+                if (view == null) {
+                    view = new TextSettingsCell(mContext);
+                    view.setBackgroundColor(0xffffffff);
+                }
+                TextSettingsCell textCell = (TextSettingsCell) view;
+                if( i == rowOpenAdvOpions ) {
+                    textCell.setText((m_expanded?"▼ ":"▶ ")+mContext.getString(R.string.AdvancedSettings), false);
+                }
             }
             else if (type == ROWTYPE_INFO) {
-                if( i== rowOpenAdvOpions) {
-                    if (view == null) {
-                        view = new Button(mContext);
-                        ((Button) view).setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View view) {
-                                m_expanded = !m_expanded;
-                                calculateRows();
-                                listAdapter.notifyDataSetChanged();
-                            }
-                        });
-                    }
-                    ((Button) view).setText(ApplicationLoader.applicationContext.getString(R.string.AdvancedOptions));
-                    view.setBackgroundResource(m_expanded? R.drawable.greydivider : R.drawable.greydivider_bottom); // has shadow top+bottom
-                }
-                else if( i==rowInfoBelowSendPw) {
+                if( i== rowInfoExplain) {
                     if (view == null) {
                         view = new TextInfoCell(mContext);
                     }
@@ -620,9 +623,7 @@ public class SettingsAccountFragment extends BaseFragment implements Notificatio
                             )
                         ), null, true, true
                     );
-                    if( m_expanded ) {
-                        view.setBackgroundResource(R.drawable.greydivider_bottom);
-                    }
+                    view.setBackgroundResource(R.drawable.greydivider);
                 }
             }
             return view;
@@ -641,11 +642,14 @@ public class SettingsAccountFragment extends BaseFragment implements Notificatio
             else if( i==rowAddrHeadline || i==rowMailPwHeadline || i== rowMailHeadline || i== rowSendHeadline ) {
                 return ROWTYPE_HEADLINE;
             }
-            else if( i== rowBreak1 ) {
+            else if( i== rowBreak1 || i== rowBreak2 ) {
                 return ROWTYPE_SHADOW_BREAK;
             }
             else if( i==rowMailSecurity || i==rowSendSecurity) {
                 return ROWTYPE_TEXT_FLAGS;
+            }
+            else if( i == rowOpenAdvOpions ) {
+                return ROWTYPE_TEXT_SETTINGS;
             }
             return ROWTYPE_INFO;
         }
