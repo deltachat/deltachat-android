@@ -317,8 +317,7 @@
     <string name="ImapPort">IMAP port</string>
     <string name="InboxHeadline">Indbakke</string>
     <string name="OutboxHeadline">Udbakke</string>
-    <string name="MyAccountExplain">For kendte e-post udbyder bliver ekstra opsætninger bestemt automatisk.</string>
-    <string name="MyAccountExplain2" >Nogle gange, <![CDATA[<b>]]>skal IMAP aktiveres<![CDATA[</b>]]> i e-post web grænseflade.\n\nKontakt e-post udbyder eller venner ved problemer.</string>
+    <string name="MyAccountExplain">For kendte e-post udbyder bliver ekstra opsætninger bestemt automatisk.<![CDATA[<br/>]]><![CDATA[<br/>]]>Nogle gange, <![CDATA[<b>]]>skal IMAP aktiveres<![CDATA[</b>]]> i e-post web grænseflade.\n\nKontakt e-post udbyder eller venner ved problemer.</string>
     <string name="AccountNotConfigured">Konto ikke opsat</string>
     <string name="AboutThisProgram">Om Delta Chat</string>
     <string name="NotSet">Ikke angivet</string>

@@ -317,8 +317,15 @@
     <string name="ImapPort">IMAP port</string>
     <string name="InboxHeadline">Inbox</string>
     <string name="OutboxHeadline">Outbox</string>
-    <string name="MyAccountExplain">For known email providers, additional settings are determinated automatically.</string>
-    <string name="MyAccountExplain2" >Sometimes, <![CDATA[<b>]]>IMAP needs to be enabled<![CDATA[</b>]]> in the email web frontend.\n\nConsult your email provider or friends if you run into problems.</string>
+    <string name="AdvancedOptions">Advanced Options...</string>
+    <string name="MyAccountExplain">For known email providers, additional settings are determinated automatically.
+        <![CDATA[<br/>]]>
+        <![CDATA[<br/>]]>
+        Sometimes, <![CDATA[<b>]]>IMAP needs to be enabled<![CDATA[</b>]]> in the email web frontend.\n\nConsult your email provider or friends if you run into problems.</string>
+    <string name="MyAccountExplainGmail">For <![CDATA[<b>]]>GMail<![CDATA[</b>]]> Accounts you either need to create an
+        <![CDATA[<a href="https://security.google.com/settings/security/apppasswords">]]>App-Password<![CDATA[</a>]]> if you have 2FA enabled.
+        <![CDATA[<br/>]]>If this settings is not available, you need to enable <![CDATA[<a href="https://myaccount.google.com/lesssecureapps">]]>Less Secure Apps<![CDATA[</a>]]>
+    </string>
     <string name="AccountNotConfigured">Account not configured</string>
     <string name="AboutThisProgram">About Delta Chat</string>
     <string name="NotSet">Not set</string>

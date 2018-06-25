@@ -31,10 +31,14 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.Html;
 import android.text.InputType;
+import android.text.TextWatcher;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ListView;
 
@@ -150,6 +154,7 @@ public class SettingsAccountFragment extends BaseFragment implements Notificatio
         rowAddr          = rowCount++;
         rowMailPwHeadline= rowCount++;
         rowMailPw        = rowCount++;
+        rowInfoBelowSendPw = rowCount++;
         rowOpenAdvOpions = rowCount++;
 
         if( m_expanded ) {
@@ -183,7 +188,6 @@ public class SettingsAccountFragment extends BaseFragment implements Notificatio
             rowSendSecurity  = -1;
         }
 
-        rowInfoBelowSendPw = rowCount++;
     }
 
     @Override
@@ -233,13 +237,7 @@ public class SettingsAccountFragment extends BaseFragment implements Notificatio
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(final AdapterView<?> adapterView, View view, final int i, long l) {
-                if( i==rowOpenAdvOpions )
-                {
-                    m_expanded = !m_expanded;
-                    calculateRows();
-                    listAdapter.notifyDataSetChanged();
-                }
-                else if( i==rowMailSecurity || i==rowSendSecurity )
+                if( i==rowMailSecurity || i==rowSendSecurity )
                 {
                     AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
                     builder.setTitle(R.string.SecurityTitle);
@@ -278,6 +276,15 @@ public class SettingsAccountFragment extends BaseFragment implements Notificatio
         });
 
         return fragmentView;
+    }
+
+    /**
+     * Returns true if the selected E-Mail Address belongs to GMAIL
+     * @return true if E-Mail is Gmail address
+     */
+    private boolean isGmail() {
+        String addr = addrCell != null ? addrCell.getValue() : MrMailbox.getConfig("addr", "");
+        return addr != null && (addr.contains("@gmail.") || addr.contains("@googlemail."));
     }
 
     private void saveData() {
@@ -459,6 +466,20 @@ public class SettingsAccountFragment extends BaseFragment implements Notificatio
                         addrCell.setValueHintAndLabel(MrMailbox.getConfig("addr", ""),
                                 "", "", false);
                         addrCell.getEditTextView().setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS | InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
+                        //show or hide Gmail specific messages depending on mail address
+                        addrCell.getEditTextView().setOnFocusChangeListener(new View.OnFocusChangeListener() {
+                            boolean wasGmail = false;
+                            @Override
+                            public void onFocusChange(View view, boolean b) {
+                                if (b) {
+                                    wasGmail = isGmail();
+                                }
+                                else if (wasGmail != isGmail()) {
+                                    calculateRows();
+                                    listAdapter.notifyDataSetChanged();
+                                }
+                            }
+                        });
                     }
                     view = addrCell;
                 }
@@ -573,16 +594,32 @@ public class SettingsAccountFragment extends BaseFragment implements Notificatio
                 }
             }
             else if (type == ROWTYPE_INFO) {
-                if (view == null) {
-                    view = new TextInfoCell(mContext);
-                }
                 if( i== rowOpenAdvOpions) {
-                    ((TextInfoCell) view).setText(ApplicationLoader.applicationContext.getString(R.string.MyAccountExplain),
-                            m_expanded? " \u2212" /*minus-sign*/ : "+", m_expanded /*draw bottom border?*/);
+                    if (view == null) {
+                        view = new Button(mContext);
+                        ((Button) view).setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                m_expanded = !m_expanded;
+                                calculateRows();
+                                listAdapter.notifyDataSetChanged();
+                            }
+                        });
+                    }
+                    ((Button) view).setText(ApplicationLoader.applicationContext.getString(R.string.AdvancedOptions));
                     view.setBackgroundResource(m_expanded? R.drawable.greydivider : R.drawable.greydivider_bottom); // has shadow top+bottom
                 }
                 else if( i==rowInfoBelowSendPw) {
-                    ((TextInfoCell) view).setText(AndroidUtilities.replaceTags(ApplicationLoader.applicationContext.getString(R.string.MyAccountExplain2)));
+                    if (view == null) {
+                        view = new TextInfoCell(mContext);
+                    }
+                    ((TextInfoCell) view).setText(
+                        Html.fromHtml(
+                            ApplicationLoader.applicationContext.getString(
+                                    isGmail() ? R.string.MyAccountExplainGmail : R.string.MyAccountExplain
+                            )
+                        ), null, true, true
+                    );
                     if( m_expanded ) {
                         view.setBackgroundResource(R.drawable.greydivider_bottom);
                     }

@@ -316,8 +316,7 @@
     <string name="ImapPort">IMAP port</string>
     <string name="InboxHeadline">Bejövő</string>
     <string name="OutboxHeadline">Kimenő</string>
-    <string name="MyAccountExplain">Ismert e-mail szolgáltató esetén az alábbi beállításokat automatikusan meghatározzuk.</string>
-    <string name="MyAccountExplain2" >Előfordulhat, hogy az IMAP/SMTP szolgáltatást az email fiókod webes felületén engedélyezni kell.\n\nHa nem megy, kérj segítséget a szolgáltatótól vagy a barátaidtól.</string>
+    <string name="MyAccountExplain">Ismert e-mail szolgáltató esetén az alábbi beállításokat automatikusan meghatározzuk.<![CDATA[<br/>]]><![CDATA[<br/>]]>Előfordulhat, hogy az IMAP/SMTP szolgáltatást az email fiókod webes felületén engedélyezni kell.\n\nHa nem megy, kérj segítséget a szolgáltatótól vagy a barátaidtól.</string>
     <string name="AccountNotConfigured">A fiók nincs beállítva</string>
     <string name="AboutThisProgram">Delta Chat névjegye</string>
     <string name="NotSet">Nincs beállítva</string>

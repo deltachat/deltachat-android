@@ -316,8 +316,7 @@
     <string name="ImapPort">Portë IMAP</string>
     <string name="InboxHeadline">Të marrë</string>
     <string name="OutboxHeadline">Të dërguar</string>
-    <string name="MyAccountExplain">Për furnizues të njohur shërbimesh email, rregullimet shtesë përcaktohen vetvetiu.</string>
-    <string name="MyAccountExplain2" >Ndonjëherë, <![CDATA[<b>]]>IMAP lypset të aktivizohet<![CDATA[</b>]]> te pjesa e dukshme e sistemit email web.\n\nNëse hasni probleme, këshillohuni me furnizuesin e email-it ose me shokë tuajt.</string>
+    <string name="MyAccountExplain">Për furnizues të njohur shërbimesh email, rregullimet shtesë përcaktohen vetvetiu.<![CDATA[<br/>]]><![CDATA[<br/>]]>Ndonjëherë, <![CDATA[<b>]]>IMAP lypset të aktivizohet<![CDATA[</b>]]> te pjesa e dukshme e sistemit email web.\n\nNëse hasni probleme, këshillohuni me furnizuesin e email-it ose me shokë tuajt.</string>
     <string name="AccountNotConfigured">Llogari e paformësuar</string>
     <string name="AboutThisProgram">Mbi Delta Chat-in</string>
     <string name="NotSet">E papërcaktuar</string>

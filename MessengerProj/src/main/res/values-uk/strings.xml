@@ -345,8 +345,7 @@
     <string name="ImapPort">IMAP порт</string>
     <string name="InboxHeadline">Скринька для вхідних</string>
     <string name="OutboxHeadline">Скринька для вихідних</string>
-    <string name="MyAccountExplain">Для відомих email-поставників, додаткові налаштування обираються автоматично.</string>
-    <string name="MyAccountExplain2" >Інколи, <![CDATA[<b>]]>IMAP має бути ввімкненим<![CDATA[</b>]]> у верстці email.\n\nУ разі виникнення проблем, спитайте поради у вашого email-поставника або друзів.</string>
+    <string name="MyAccountExplain">Для відомих email-поставників, додаткові налаштування обираються автоматично.<![CDATA[<br/>]]><![CDATA[<br/>]]>Інколи, <![CDATA[<b>]]>IMAP має бути ввімкненим<![CDATA[</b>]]> у верстці email.\n\nУ разі виникнення проблем, спитайте поради у вашого email-поставника або друзів.</string>
     <string name="AccountNotConfigured">Обліківка не налаштована</string>
     <string name="AboutThisProgram">Про оповісник</string>
     <string name="NotSet">Не встановлено</string>

@@ -345,8 +345,7 @@
     <string name="ImapPort">IMAP port</string>
     <string name="InboxHeadline">Skrzynka odbiorcza</string>
     <string name="OutboxHeadline">Skrzynka nadawcza</string>
-    <string name="MyAccountExplain">Dla znanych dostawców usług poczty elektronicznej poniższe ustawienia są określane automatycznie.</string>
-    <string name="MyAccountExplain2" >Czasami <![CDATA[<b>]]>IMAP musi być włączony<![CDATA[</b>]]> w interfejsie www poczty internetowej.\n\nZ problemami należy zwrócić się do usługodawcy e-mail lub znajomych.</string>
+    <string name="MyAccountExplain">Dla znanych dostawców usług poczty elektronicznej poniższe ustawienia są określane automatycznie.<![CDATA[<br/>]]><![CDATA[<br/>]]>Czasami <![CDATA[<b>]]>IMAP musi być włączony<![CDATA[</b>]]> w interfejsie www poczty internetowej.\n\nZ problemami należy zwrócić się do usługodawcy e-mail lub znajomych.</string>
     <string name="AccountNotConfigured">Konto nie jest skonfigurowane</string>
     <string name="AboutThisProgram">O Delta Chat</string>
     <string name="NotSet">Nie ustawiona</string>
