@@ -12,8 +12,8 @@
     <string name="DeleteChat">Slette samtale</string>
     <string name="SelectChat">Vælge samtale…</string>
     <string name="Search">Søge</string>
-    <string name="MuteNotifications">Ingen lyd påmindelser</string>
-    <string name="MuteFor">Ingen lyd til %1$s</string>
+    <string name="MuteNotifications">Lydløse påmindelser</string>
+    <string name="MuteFor">Lydløs til %1$s</string>
     <string name="UnmuteNotifications">Lyd</string>
     <string name="Draft">Kladde</string>
     <!--audio view-->
@@ -32,7 +32,7 @@
     <string name="SystemRoot">System root</string>
     <string name="SdCard">SD kort</string>
     <string name="Folder">Mappe</string>
-    <string name="GalleryInfo">Sende dekomprimerede billeder</string>
+    <string name="GalleryInfo">Sende de-komprimerede billeder</string>
     <!--chat view-->
     <string name="ChatGallery">Galleri</string>
     <string name="ChatCamera">Kamera</string>
@@ -57,7 +57,7 @@
     <string name="NoContacts">Ingen kontakter endnu.</string>
     <!--group create view-->
     <string name="SendMessageTo">Sende besked til...</string>
-    <string name="EnterGroupNamePlaceholder">Indtaste gruppenavn</string>
+    <string name="EnterGroupNamePlaceholder">Indtaste gruppe navn</string>
     <!--group info view-->
     <string name="AddMember">Tilføje medlem</string>
     <string name="Notifications">Påmindelser</string>
@@ -88,7 +88,7 @@
     <string name="Enabled">Til</string>
     <string name="Disabled">Fra</string>
     <string name="LedColor">LED farve</string>
-    <string name="BadgeNumber">Bruge ikon for at holde antal hvis muligt</string>
+    <string name="BadgeNumber">Brug ikon for at holde antal hvis muligt</string>
     <string name="Short">Kort</string>
     <string name="Long">Lang</string>
     <string name="RaiseToSpeak">Hæve for at tale</string>
@@ -98,7 +98,7 @@
     <string name="NotificationsPriorityHigh">Høj prioritet</string>
     <string name="NotificationsPriorityMax">Højeste prioritet</string>
     <string name="RepeatNotifications">Gentage påmindelser</string>
-    <string name="NotificationsOther">Andre</string>
+    <string name="NotificationsOther">Andet</string>
     <string name="InChatSound">I samtale lyde</string>
     <string name="SmartNotifications">Begrænse påmindelser</string>
     <string name="SmartNotificationsSoundAtMost">Maks.</string>
@@ -124,8 +124,8 @@
     <string name="EnterYourPasscode">Indtaste kodeord</string>
     <string name="ReEnterYourPasscode">Genindtaste nyt kodeord</string>
     <string name="PasscodeDoNotMatch">Kodeord passer ikke</string>
-    <string name="AutoLock">Automatisk låse</string>
-    <string name="AutoLockInfo">Påkræve kodeord hvis væk i en tid.</string>
+    <string name="AutoLock">Autolåse</string>
+    <string name="AutoLockInfo">Kræve kodeord hvis væk i en tid.</string>
     <string name="UnlockFingerprint">Låse op med fingeraftryk</string>
     <string name="FingerprintInfo">Bekræfte fingeraftryk for at fortsætte</string>
     <string name="FingerprintNotRecognized">Kan ikke genkende fingeraftryk. Prøv igen.</string>
@@ -158,7 +158,7 @@
     <string name="CurvesRed">Rød</string>
     <string name="CurvesGreen">Grøn</string>
     <string name="CurvesBlue">Blå</string>
-    <string name="Blur">Sløring</string>
+    <string name="Blur">Sløre</string>
     <string name="BlurOff">Fra</string>
     <string name="BlurLinear">Lineær</string>
     <string name="BlurRadial">Radial</string>
@@ -174,7 +174,7 @@
     <!--button titles-->
     <string name="Done">Færdig</string>
     <string name="Open">Åbne</string>
-    <string name="Cancel">Afbryde</string>
+    <string name="Cancel">Annullere</string>
     <string name="Edit">Redigere</string>
     <string name="Send">Sende</string>
     <string name="CopyToClipboard">Kopiere til klippebord</string>
@@ -195,7 +195,7 @@
     <string name="FromSelf">Undertegnet</string>
     <!--Alert messages-->
     <string name="NoHandleAppInstalled">For at fortsætte installere et program som kan håndtere  \'%1$s\' filer.</string>
-    <string name="ContactAlreadyInGroup">Kontakt er allerede i gruppen.</string>
+    <string name="ContactAlreadyInGroup">Kontakt allerede i gruppen.</string>
     <string name="ForwardMessagesTo">Videresende valgte beskeder til <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>?</string>
     <string name="SendMessagesTo">Sende beskeder til <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>?</string>
     <string name="AreYouSureDeleteThisChat">Slette samtale? Den vil ikke længere blive vist i samtale listen, dets bekseder vil forblive på serveren.</string>
@@ -216,7 +216,7 @@
     <string name="Intro3Headline">Hurtig</string>
     <string name="Intro3Message"><![CDATA[<b>Skubbe beskeder</b>]]> på sekunder.<![CDATA[<br/>]]>Hurtig grænseflade.</string>
 
-    <string name="Intro4Headline">Kraftfuld</string>
+    <string name="Intro4Headline">Stærk</string>
     <string name="Intro4Message"><![CDATA[<b>Ubegrænsede</b>]]> samtaler, billeder, videoer, lyd beskeder og mere. Kan håndteres af flere klienter.</string>
 
     <string name="Intro5Headline">Fri</string>
@@ -288,8 +288,8 @@
     text "%d minutes", so the complete sentence would be e.g.
     "At most 8 notifications within 3 minutes". -->
     <plurals name="MaxNotifications">
-        <item quantity="one">Højst %1$d påmindelse inden for %2$s</item>
-        <item quantity="other">Højst %1$d påmindelser inde for %2$s</item>
+        <item quantity="one">Højest %1$d påmindelse inden for %2$s</item>
+        <item quantity="other">Højest %1$d påmindelser inden for %2$s</item>
     </plurals>
     <!--date formatters-->
     <string name="formatterMonthYear">MMMM åååå</string>
@@ -307,24 +307,24 @@
     <string name="MyNameExplain">Navn, vist for modtagere. Hvis tom vil kun e-post adresse blive sendt.</string>
     <string name="Password">Adgangskode</string>
     <string name="SmtpPassword">SMTP adgangskode</string>
-    <string name="FromAbove">Fra ovenfor</string>
-    <string name="SmtpLoginname">SMTP log ind navn</string>
+    <string name="FromAbove">Ovenfra</string>
+    <string name="SmtpLoginname">SMTP logind navn</string>
     <string name="SmtpPort">SMTP port</string>
     <string name="Automatic">Automatisk</string>
     <string name="ImapServer">IMAP server</string>
-    <string name="ImapLoginname">IMAP log ind navn</string>
+    <string name="ImapLoginname">IMAP logind navn</string>
     <string name="SmtpServer">SMTP server</string>
     <string name="ImapPort">IMAP port</string>
     <string name="InboxHeadline">Indbakke</string>
     <string name="OutboxHeadline">Udbakke</string>
     <string name="MyAccountExplain">For kendte e-post udbyder bliver ekstra opsætninger bestemt automatisk.<![CDATA[<br/>]]><![CDATA[<br/>]]>Nogle gange, <![CDATA[<b>]]>skal IMAP aktiveres<![CDATA[</b>]]> i e-post web grænseflade.\n\nKontakt e-post udbyder eller venner ved problemer.</string>
-    <string name="AccountNotConfigured">Konto ikke opsat</string>
+    <string name="AccountNotConfigured">Konto ikke indstillet</string>
     <string name="AboutThisProgram">Om Delta Chat</string>
     <string name="NotSet">Ikke angivet</string>
     <string name="NewChat">Ny samtale</string>
     <string name="Deaddrop">Kontakt forespørgsel</string>
-    <string name="DeaddropInChatlist">Vise kontakt forespørgsleri samtale liste</string>
-    <string name="MuteAlways">Altid afbrudt</string>
+    <string name="DeaddropInChatlist">Vise kontakt forespørgsler i samtale liste</string>
+    <string name="MuteAlways">Altid lydløs</string>
     <string name="AskStartChatWith">Samtale med <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>?</string>
     <string name="DeaddropHint">Tryk svar-pilen for at starte samtale.</string>
     <string name="NotYetImplemented">Funktion ikke tilgængelig eller ufuldstændig.</string>
@@ -333,7 +333,7 @@
     <string name="Name" >Navn</string>
     <string name="EmailAddress">E-post adresse</string>
     <string name="CannotDeleteContact">Kan ikke slette aktiv bruger, blokere kontakt i stedet. </string>
-    <string name="BadEmailAddress">Fejlagtig e-post adresse.</string>
+    <string name="BadEmailAddress">Forkert e-post adresse.</string>
     <string name="ContactCreated">Kontakt oprettet</string>
     <string name="ViewProfile">Vise profil</string>
     <!-- Translators: please use a very short string here, it should not much longer than
@@ -343,10 +343,10 @@
     <string name="Intro7Message"><![CDATA[<b>Delta Chat</b>]]> er sikker for firma brug, kompatibel og og baseret på standarder.</string>
     <string name="InviteMenuEntry">Sende invitationer</string>
     <string name="InviteText"> Jeg bruger Delta Chat - %1$s - du kan skrive til mig hos %2$s</string>
-    <string name="AdvancedSettings">Advanceret</string>
+    <string name="AdvancedSettings">Avanceret</string>
     <string name="AskResetNotifications">Nulstille alle påmindelse opsætning og lyde på nuværende side, kontakter og grupper?</string>
     <string name="AttachFiles">Vedhæfte filer</string>
-    <string name="ErrGroupNameEmpty">Indtaste gruppenavn.</string>
+    <string name="ErrGroupNameEmpty">Indtaste gruppe navn.</string>
     <string name="MsgNewGroupDraftHint">Skriv den første besked som tillader andre at svare inden for denne gruppe.\n\n• Det er o.k. hvis ikke alle medlemmer bruger Delta Chat.\n\n• Aflevering af første besked kan tage nogen tid.</string>
     <string name="MsgNewGroupDraft">Hej, jeg har lige oprettet gruppen \"%1$s\" til os.</string>
     <string name="MsgGroupNameChanged">Gruppe navn ændret fra \"%1$s\" til \"%2$s\".</string>
@@ -359,7 +359,7 @@
     <string name="MsgGroupLeft">Forladt gruppe</string>
     <string name="NoMessagesHint">Sende besked til <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>:\n\n• Det er o.k.hvis <![CDATA[<b>]]>%2$s<![CDATA[</b>]]> ikke bruger Delta Chat.\n\n• Levering af første besked kan tage nogen tid.</string>
     <string name="SendNRcvReadReceipts">Modtage og sende læse kvitteringer</string>
-    <string name="PreferE2EEncryption">Foretærkke ende til ende-kryptering</string>
+    <string name="PreferE2EEncryption">Foretrække ende-til-ende kryptering</string>
     <string name="E2EManagePrivateKeys">Håndtere nøgler</string>
     <string name="E2ECompareKeys">Sammenligne nøgler</string>
     <string name="ForwardToTitle">Videresende til...</string>
@@ -377,8 +377,8 @@
     <string name="HelpUrl">https://delta.chat/en/help</string>
     <string name="EncryptedMessage">Krypteret besked</string>
     <string name="Encryption">Kryptering</string>
-    <string name="EncrinfoE2EAvailable">Ende til ende-kryptering tilgængelig.</string>
-    <string name="EncrinfoTransport">Mindst overførsel kryptering til server.</string>
+    <string name="EncrinfoE2EAvailable">Ende-til-ende kryptering tilgængelig.</string>
+    <string name="EncrinfoTransport">Overførsel kryptering mindst til server.</string>
     <string name="EncrinfoNone">Ingen kryptering til server.</string>
     <string name="EncrinfoFingerprints">Fingeraftryk</string>
     <string name="Backup">Sikkerhedskopi</string>
@@ -402,14 +402,14 @@
     <string name="ExportPrivateKeys">Eksportere hemmelige nøgler</string>
     <string name="ImportPrivateKeys">Importere hemmelige nøgler</string>
     <string name="ImportPrivateKeysAsk2">Importere hemmelige nøgler fra <![CDATA[<i>]]>%1$s<![CDATA[</i>]]>?\n\n• Eksisterende nøgler bliver ikke slettet\n\n• Seneste importeret nøgle bruges som standard nøgle</string>
-    <string name="NoRecentEmoji">Nylig brugte emoji vises her.</string>
+    <string name="NoRecentEmoji">Nylige brugte emoji vises her.</string>
     <string name="NotNow">Ikke nu</string>
     <string name="ArchiveChat">Arkivere samtale</string>
-    <string name="UnarchiveChat">Dearkivere samtale</string>
+    <string name="UnarchiveChat">De-arkivere samtale</string>
     <string name="ArchivedChats">Arkivere samtaler</string>
     <string name="Archived">Arkiveret</string>
     <string name="LeaveGroup">Forlade gruppe</string>
-    <string name="AskLeaveGroup">Forlade denne gruppe?</string>
+    <string name="AskLeaveGroup">Forlade gruppe?</string>
     <string name="Never">Aldrig</string>
     <string name="AutocryptKeyTransferInitiate">Sende Autocrypt opsætningsbesked</string>
     <string name="AutocryptKeyTransfer">Autocrypt opsætningsbesked</string>
@@ -418,13 +418,13 @@
     <string name="AutocryptSetupMessageSubject">Autocrypt opsætningsbesked</string>
     <string name="AutocryptSetupMessageGeneralBody">Dette er Autocrypt opsætningsbesked brugt til at overføre ende-til-ende opsætning mellem klienter.\n\nFor at dekryptere og bruge opsætning åben beskeden i en Autocrypt kompatibel klient og indtast opsætningskoden vist på kilde enheden.</string>
     <string name="AutocryptSetupMessageTapBody">Dette er en Autocrypt besked brugt til at overføre ende-til-ende opsætning mellem klienter.\n\nFor at dekryptere og bruge opsætning, tryk på denne besked.</string>
-    <string name="AutocryptKeyTransferPleaseEnterCode">Indtast opsætningskode vist på den anden enhed.</string>
+    <string name="AutocryptKeyTransferPleaseEnterCode">Indtaste opsætningskode vist på anden enhed.</string>
     <string name="AutocryptKeyTransferBadCode">Opsætningskode er ikke god. Prøv igen.\n\nHvis opsætningskode er glemt send blot en ny Autocrypt besked fra en anden enhed..</string>
     <string name="AutocryptKeyTransferSucceeded">Ende-til-ende opsætning overført. Denne enhed er nu klar til at bruge Autocrypt med samme opsætning som anden enhed.</string>
     <string name="Retry">Prøv igen</string>
     <string name="SelfTalkSubtitle">Beskeder sendt af undertegnet til undertegnet</string>
-    <string name="QrScan">Skanne QR-kode</string>
-    <string name="QrShow">Vise QR-kode</string>
+    <string name="QrScan">Skanne QR kode</string>
+    <string name="QrShow">Vise QR kode</string>
     <string name="QrScanContainsText">Skannet QR kode indeholder følgende tekst:\n\n%1$s</string>
     <string name="QrScanContainsUrl">Skannet QR kode indeholder følgende URL:\n\n%1$s</string>
     <string name="OobFingerprint">Fingeraftryk</string>
@@ -434,7 +434,7 @@
     <string name="OobFingerprintWithoutAddr">QR kode indeholder fingeraftryk men ingen e-post adresse.\n \nFor en uden for bånd efterprøvning, skal en krypteret forbindelse til modtageren først oprettes.</string>
     <string name="OobSecureJoinRequested">%1$s tilslutter.</string>
     <string name="CannotDecryptBody">Denne besked kan ikke dekrypteres.\n\n• Det kan måske hjælpe at svare på beskeden og bede afsender gensende beskeden.\n\n• I tilfælde Delta Chat er blevet geninstalleret eller et andet e-post program på denne eller en anden enhed bør der sendes en Autocrypt opsætningsbeked fra dem.</string>
-    <string name="Autocrypt">Automatisk kryptering</string>
+    <string name="Autocrypt">Autocrypt</string>
     <string name="AutocryptExplain"><![CDATA[<i>]]>Autocrypt<![CDATA[</i>]]> er en ny og åben specifikation til ende-til-ende e-post kryptering.\n\nEnde-til-ende opsætning oprettes automatisk efter behov og kan overføres mellem enheder med <![CDATA[<i>]]>Autocrypt opsætningsbeskeder.<![CDATA[</i>]]></string>
     <string name="NewVerifiedGroup">Ny efterprøvet gruppe</string>
     <string name="SharedChats">Delte samtaler</string>
@@ -443,7 +443,7 @@
     <string name="VerifiedGroup">Bekræftet gruppe</string>
     <string name="Group">Gruppe</string>
     <string name="EditedNameWillBeShared">Redigeret navn vil blive delt med alle gruppe medlemmer.</string>
-    <string name="E2EEncryptionPreferred">Ende til ende-kryptering foretrukken.</string>
+    <string name="E2EEncryptionPreferred">Ende-til-ende kryptering foretrukken.</string>
     <string name="OobAddrVerified">%1$s efterprøvet.</string>
     <string name="OobAddrVerifiedIntroduceMyself">%1$s efterprøvet, præsentere…</string>
     <string name="OobAskJoinVerifiedGroup">Tilslutte efterprøvet gruppe <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>?</string>
@@ -456,8 +456,8 @@
     Resulting strings might be "Member Alice added by me." or 'Group name changed from "Foo" to "Bar" by me.
     If you do not find a correct grammar for your language you can just use "%1$s (by me)" or "Me: %1$s" -->
     <string name="ActionBySelf">%1$s af undertegnet.</string>
-    <string name="ExampleEmailAddr">user@example.org</string>
-    <string name="QrScanHint">Placere kamera over QR koden</string>
+    <string name="ExampleEmailAddr">bruger@eksempel.dk</string>
+    <string name="QrScanHint">Placere kamera over QR kode</string>
 
     <string name="QrShowVerifyCode">Vise QR efterprøve kode</string>
     <string name="QrVerifyContactTitle">QR efterprøve kode</string>
@@ -470,5 +470,5 @@
     <string name="FetchModeSaveBattery">Spare batteri</string>
     <string name="FetchModePersistentConnection">Vedvarende forbindelse</string>
     <string name="FetchModeExplain">Når hente tilstand bruges <![CDATA[<i>]]>Spar batteri<![CDATA[</i>]]>, nye beskeder vises hvis ikke programmet kører i forgunden og med en gennemsnitsforsinkelse på 30 sekunder hvis programmet ikke bruges. Når enheden er i hvile tilstand kan forsinkelse være længere. Dette er standard tilstand.\n\n<![CDATA[<i>]]>Vedvarende forbindelse<![CDATA[</i>]]> er typisk hurtiger men kan kræve at programmet er hvidlisteti system opsætning for at kunne forbruge mere batteri.\n\nHvilken hente tilstand ønskes at bruge?</string>
-    <string name="PermissionCamera">Adgang til kamera er nødvendig for at tage billeder eller skanne QR koder.</string>
+    <string name="PermissionCamera">Kamera adgang nødvendig for at tage billeder eller skanne QR koder.</string>
 </resources>

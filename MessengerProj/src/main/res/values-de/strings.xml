@@ -477,4 +477,5 @@
     <string name="FetchModeSaveBattery">Batterie sparen</string>
     <string name="FetchModePersistentConnection">Dauerhafte Verbindung</string>
     <string name="FetchModeExplain">Wenn Sie den Modus <![CDATA[<i>]]>Batterie sparen<![CDATA[</i>]]> verwenden, kommen neue Nachrichten sofort an, während die App geöffnet ist und mit einer Verzögerung von ca 30 Sekunden, wenn die App nicht benutzt wird. Wenn das Gerät in den Schlafmodus umschaltet, kann die Verzögerung größer sein. Das ist die Standard-Einstellung.\n\n<![CDATA[<i>]]>Dauerhafte Verbindung<![CDATA[</i>]]> ist üblicherweise schneller, aber kann es erforden, dass die App in den Systemeinstellungen freigeschaltet werden muss um mehr Batterieverbrauch zu erlauben..\n\nWelchen Empfangsmodus möchten Sie verwenden?</string>
-    </resources>
+    <string name="PermissionCamera">Für die Aufnahme von Fotos oder das Scannen von QR Codes wird Zugriff auf die Kamera benötigt.</string>
+</resources>
