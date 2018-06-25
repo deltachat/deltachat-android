@@ -83,8 +83,6 @@ public class MrMailbox {
     public native static String imexHasBackup(String dir);
     public native static int  checkPassword(String pw);
 
-    public native static void heartbeat();
-
     private static long           m_hMailbox = 0; // do not rename this, is used in C-part
     private native static long    MrMailboxNew(); // returns hMailbox which must be unref'd after usage (Names as mrmailbox_new don't work due to the additional underscore)
 
