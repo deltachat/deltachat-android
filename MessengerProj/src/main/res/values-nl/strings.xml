@@ -317,8 +317,7 @@
     <string name="ImapPort">IMAP-poort</string>
     <string name="InboxHeadline">Postvak IN</string>
     <string name="OutboxHeadline">Postvak UIT</string>
-    <string name="MyAccountExplain">Bij bekende e-maildiensten worden de instellingen automatisch bepaald.</string>
-    <string name="MyAccountExplain2" >Soms moet <![CDATA[<b>]]>IMAP ingeschakeld worden<![CDATA[</b>]]> op de e-mailwebsite.\n\nAls je problemen hebt, vraag dan je e-maildienst of vrienden om hulp.</string>
+    <string name="MyAccountExplain">Bij bekende e-maildiensten worden de instellingen automatisch bepaald.<![CDATA[<br/>]]><![CDATA[<br/>]]>Soms moet <![CDATA[<b>]]>IMAP ingeschakeld worden<![CDATA[</b>]]> op de e-mailwebsite.\n\nAls je problemen hebt, vraag dan je e-maildienst of vrienden om hulp.</string>
     <string name="AccountNotConfigured">Account niet ingesteld</string>
     <string name="AboutThisProgram">Over Delta Chat</string>
     <string name="NotSet">Niet ingesteld</string>

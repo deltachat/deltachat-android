@@ -317,8 +317,14 @@
     <string name="ImapPort">IMAP-Port</string>
     <string name="InboxHeadline">Posteingang</string>
     <string name="OutboxHeadline">Postausgang</string>
-    <string name="MyAccountExplain">Für bekannte E-Mail-Anbieter werden die weiteren Einstellungen automatisch ermittelt.</string>
-    <string name="MyAccountExplain2" >Manchmal muss die <![CDATA[<b>]]>IMAP-Funktion<![CDATA[</b>]]> noch in der E-Mail-Weboberfläche <![CDATA[<b>]]>eingeschaltet<![CDATA[</b>]]> werden.\n\nBei Problemen kann der E-Mail-Anbieter oder ein Bekannter weiterhelfen.</string>
+    <string name="AdvancedOptions">Erweiterte Einstellungen...</string>
+    <string name="MyAccountExplain">Für bekannte E-Mail-Anbieter werden die weiteren Einstellungen automatisch ermittelt.
+        <![CDATA[<br/>]]><![CDATA[<br/>]]>
+        Manchmal muss die <![CDATA[<b>]]>IMAP-Funktion<![CDATA[</b>]]> noch in der E-Mail-Weboberfläche <![CDATA[<b>]]>eingeschaltet<![CDATA[</b>]]> werden.\n\nBei Problemen kann der E-Mail-Anbieter oder ein Bekannter weiterhelfen.</string>
+    <string name="MyAccountExplainGmail">Für <![CDATA[<b>]]>GMail<![CDATA[</b>]]> Accounts muss ein
+        <![CDATA[<a href="https://security.google.com/settings/security/apppasswords">]]>App-Passwort<![CDATA[</a>]]> erstellt werden, wenn 2FA aktiv ist.
+        <![CDATA[<br/>]]>Falls diese Einstellung nicht vorhanden ist, müssen Sie Zugriff für <![CDATA[<a href="https://myaccount.google.com/lesssecureapps">]]>weniger sichere Apps<![CDATA[</a>]]> zulassen.
+    </string>
     <string name="AccountNotConfigured">Konto nicht konfiguriert</string>
     <string name="AboutThisProgram">Über Delta Chat</string>
     <string name="NotSet">Nicht gesetzt</string>

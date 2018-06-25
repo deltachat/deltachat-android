@@ -317,8 +317,7 @@
     <string name="ImapPort">IMAP-port</string>
     <string name="InboxHeadline">Innboks</string>
     <string name="OutboxHeadline">Utboks</string>
-    <string name="MyAccountExplain">For kjente e-posttilbydere blir ytterligere innstillinger bestemt automatisk.</string>
-    <string name="MyAccountExplain2" >Noen ganger må  <![CDATA[<b>]]>IMAP<![CDATA[</b>]]> skrus på i vev-e-postgrenseflaten.\n\nVed problemer, spør din e-posttilbyder eller vennene dine.</string>
+    <string name="MyAccountExplain">For kjente e-posttilbydere blir ytterligere innstillinger bestemt automatisk.<![CDATA[<br/>]]><![CDATA[<br/>]]>Noen ganger må  <![CDATA[<b>]]>IMAP<![CDATA[</b>]]> skrus på i vev-e-postgrenseflaten.\n\nVed problemer, spør din e-posttilbyder eller vennene dine.</string>
     <string name="AccountNotConfigured">Konto ikke satt opp</string>
     <string name="AboutThisProgram">Om</string>
     <string name="NotSet">Ikke satt</string>

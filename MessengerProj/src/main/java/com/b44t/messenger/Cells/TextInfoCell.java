@@ -23,6 +23,7 @@
 package com.b44t.messenger.Cells;
 
 import android.content.Context;
+import android.text.method.LinkMovementMethod;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.widget.FrameLayout;
@@ -67,12 +68,25 @@ public class TextInfoCell extends FrameLayout {
 
     public void setText(CharSequence text)
     {
-        setText(text, null, true);
+        setText(text, null, true, false);
     }
 
     public void setText(CharSequence text, CharSequence icon, boolean borderBotton)
     {
+        setText(text, icon, borderBotton, false);
+    }
+
+    public void setText(CharSequence text, CharSequence icon, boolean borderBotton, boolean clickableHtml)
+    {
         textView.setText(text);
+
+        if( clickableHtml ) {
+            //allow for clickable Links in TextViews
+            //https://stackoverflow.com/questions/2734270/how-do-i-make-links-in-a-textview-clickable
+            //as this avoids the onClickListener to be called (used at least for the "expand" icon in the AccountSettings)
+            //we do this only explicitly
+            textView.setMovementMethod(LinkMovementMethod.getInstance());
+        }
 
         FrameLayout.LayoutParams lp = (FrameLayout.LayoutParams) textView.getLayoutParams();
         lp.width        = LayoutHelper.WRAP_CONTENT;

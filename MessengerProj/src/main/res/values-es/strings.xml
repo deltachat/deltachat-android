@@ -317,8 +317,7 @@
     <string name="ImapPort">Puerto IMAP</string>
     <string name="InboxHeadline">Bandeja de entrada</string>
     <string name="OutboxHeadline">Bandeja de salida</string>
-    <string name="MyAccountExplain">Para proveedores conocidos de correo, los ajustes adicionales se determinan automáticamente.</string>
-    <string name="MyAccountExplain2" >Algunas veces, <b>hay que habilitar IMAP</b> en la interfaz web del correo.\n\nEn caso de problemas, consulte a su proveedor de correo o el de sus amigos.</string>
+    <string name="MyAccountExplain">Para proveedores conocidos de correo, los ajustes adicionales se determinan automáticamente.<![CDATA[<br/>]]><![CDATA[<br/>]]>Algunas veces, <b>hay que habilitar IMAP</b> en la interfaz web del correo.\n\nEn caso de problemas, consulte a su proveedor de correo o el de sus amigos.</string>
     <string name="AccountNotConfigured">Cuenta no configurada</string>
     <string name="AboutThisProgram">Sobre Delta Chat</string>
     <string name="NotSet">No establecido</string>
