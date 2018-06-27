@@ -40,6 +40,7 @@ import android.text.TextPaint;
 import android.text.TextUtils;
 import android.text.style.ClickableSpan;
 import android.text.style.URLSpan;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.SoundEffectConstants;
 import android.view.ViewStructure;
@@ -182,7 +183,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
 
     //private int TAG;
 
-    public boolean isGroupChat;
+    private boolean isGroupChat;
     private boolean isPressed;
     private boolean isHighlighted;
     private boolean mediaBackground;
@@ -223,6 +224,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
     private boolean drawName;
     private boolean drawNameLayout;
 
+    // TODO: figure out when this is false and why it is that way
     private boolean allowForwardedName;
     private static TextPaint forwardedNamePaint;
     private StaticLayout forwardedNameLayout;
@@ -1189,116 +1191,35 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
         }
     }
 
-    public void setMessageObject(MessageObject messageObject, boolean drawNewchatButton_) {
+    // this is the setup method that gets called exactly once when the cell is created first, during onBindViewHolder in ChatActivity.
+    public void setMessageObject(boolean isGroupChat, MessageObject messageObject, boolean drawNewchatButton_) {
+        this.isGroupChat = isGroupChat;
         boolean messageChanged = currentMessageObject != messageObject || messageObject.forceUpdate;
         boolean dataChanged = currentMessageObject == messageObject && isUserDataChanged();
-        if (messageChanged || dataChanged || isPhotoDataChanged(messageObject)) {
-            currentMessageObject = messageObject;
-            lastSendState = messageObject.messageOwner.send_state;
-            lastViewsCount = messageObject.messageOwner.views;
-            isPressed = false;
-            isCheckPressed = true;
-            isAvatarVisible = false;
-            wasLayout = false;
-            drawNewchatButton = drawNewchatButton_;
-            currentUser = null;
-            drawNameLayout = false;
-
-            resetPressedLink(-1);
-            messageObject.forceUpdate = false;
-            drawPhotoImage = false;
-            linkPreviewPressed = false;
-            buttonPressed = 0;
-            mediaOffsetY = 0;
-            documentAttachType = DOCUMENT_ATTACH_TYPE_NONE;
-            documentAttach = null;
-            captionLayout = null;
-            docTitleLayout = null;
-            drawImageButton = false;
-            currentPhotoObject = null;
-            currentPhotoObjectThumb = null;
-            currentPhotoFilter = null;
-            infoLayout = null;
-            buttonState = -1;
-            drawBackground = true;
-            drawName = false;
-            useSeekBarWaveform = false;
-            allowForwardedName = false;
-            mediaBackground = false;
-            availableTimeWidth = 0;
-            photoImage.setNeedsQualityThumb(false);
-            photoImage.setShouldGenerateQualityThumb(false);
-            photoImage.setParentMessageObject(null);
-            photoImage.setRoundRadius(dp(3));
-
+        if (messageChanged || dataChanged || isPhotoDataChanged(messageObject)) {;
+            this.drawNewchatButton = drawNewchatButton_;
             if (messageChanged) {
                 firstVisibleBlockNum = 0;
                 lastVisibleBlockNum = 0;
                 needNewVisiblePart = true;
             }
+            currentMessageObject = messageObject;
+            lastSendState = messageObject.messageOwner.send_state;
+            lastViewsCount = messageObject.messageOwner.views;
+            messageObject.forceUpdate = false;
+            setupMessageCell();
 
             if (messageObject.type == MessageObject.MO_TYPE0_TEXT) {
-                allowForwardedName = true;
-
-                int maxWidth;
-                if (isGroupChat && !messageObject.isOutOwner() && messageObject.isFromUser()) {
-                    maxWidth = Math.min(displaySize.x, displaySize.y) - dp(122);
-                    drawName = true;
-                } else {
-                    maxWidth = Math.min(displaySize.x, displaySize.y) - dp(80);
-                    drawName = false;
-                }
-                measureTime(messageObject);
-                int timeMore = timeWidth + dp(6);
-                if (messageObject.isOutOwner()) {
-                    timeMore += dp(20.5f);
-                }
-
-                backgroundWidth = maxWidth;
-                if (maxWidth - messageObject.lastLineWidth < timeMore) {
-                    backgroundWidth = Math.max(backgroundWidth, messageObject.lastLineWidth) + dp(31);
-                    backgroundWidth = Math.max(backgroundWidth, timeWidth + dp(31));
-                } else {
-                    int diff = backgroundWidth - messageObject.lastLineWidth;
-                    if (diff >= 0 && diff <= timeMore) {
-                        backgroundWidth = backgroundWidth + timeMore - diff + dp(31);
-                    } else {
-                        backgroundWidth = Math.max(backgroundWidth, messageObject.lastLineWidth + timeMore) + dp(31);
-                    }
-                }
-                availableTimeWidth = backgroundWidth - dp(31);
-
-                setMessageObjectInternal(messageObject);
-
-                backgroundWidth = messageObject.textWidth;
-                totalHeight = messageObject.textHeight + dp(19.5f) + namesOffset;
-
-                int maxChildWidth = Math.max(backgroundWidth, nameWidth);
-                maxChildWidth = Math.max(maxChildWidth, forwardedNameWidth);
-
-                photoImage.setImageBitmap((Drawable) null);
-                calcBackgroundWidth(maxWidth, timeMore, maxChildWidth);
+                setupTextMessage(messageObject);
             } else if (messageObject.type == MessageObject.MO_TYPE2_VOICE) {
                 allowForwardedName = true;
-                backgroundWidth = Math.min(displaySize.x - dp(isGroupChat && messageObject.isFromUser() && !messageObject.isOutOwner() ? 102 : 50), dp(270));
-                createDocumentLayout(backgroundWidth, messageObject);
-
-                setMessageObjectInternal(messageObject);
-
-                totalHeight = dp(70) + namesOffset;
-
+                setupMusicMessage(messageObject);
                 updateWaveform(true);
             } else if (messageObject.type == MessageObject.MO_TYPE14_MUSIC) {
-                backgroundWidth = Math.min(displaySize.x - dp(isGroupChat && messageObject.isFromUser() && !messageObject.isOutOwner() ? 102 : 50), dp(270));
-
-                createDocumentLayout(backgroundWidth, messageObject);
-
-                setMessageObjectInternal(messageObject);
-
-                totalHeight = dp(80) + namesOffset;
+                setupMusicMessage(messageObject);
             } else {
                 allowForwardedName = messageObject.isForwarded() && messageObject.type != MessageObject.MO_TYPE13_STICKER;
-                mediaBackground = messageObject.type != MessageObject.MO_TYPE9_FILE;
+                mediaBackground = true; // we set it to false for files there.
                 drawImageButton = false; // we do not want the image button for images
                 drawPhotoImage = true;
 
@@ -1314,6 +1235,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
 
                 photoImage.setForcePreview(false);
                 if (messageObject.type == MessageObject.MO_TYPE9_FILE) {
+                    mediaBackground = false; // this is the only media type without background.
                     backgroundWidth = Math.min(displaySize.x - dp(isGroupChat && messageObject.isFromUser() && !messageObject.isOutOwner() ? 102 : 50), dp(270));
                     if (drawNewchatButton) {
                         backgroundWidth -= dp(20);
@@ -1403,10 +1325,11 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                         currentPhotoObjectThumb = FileLoader.getClosestPhotoSizeWithSize(messageObject.photoThumbs, 80);
                     } else if (messageObject.type == MessageObject.MO_TYPE3_VIDEO) {
                         createDocumentLayout(0, messageObject);
-                        photoImage.setNeedsQualityThumb(true);
-                        photoImage.setShouldGenerateQualityThumb(true);
-                        photoImage.setParentMessageObject(messageObject);
-                    } else if (messageObject.type == MessageObject.MO_TYPE8_GIF) {
+                    }
+
+                    if (messageObject.type == MessageObject.MO_TYPE8_GIF ||
+                            messageObject.type == MessageObject.MO_TYPE3_VIDEO ||
+                            messageObject.type == MessageObject.MO_TYPE1_PHOTO) {
                         photoImage.setNeedsQualityThumb(true);
                         photoImage.setShouldGenerateQualityThumb(true);
                         photoImage.setParentMessageObject(messageObject);
@@ -1567,7 +1490,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
             }
             if (captionLayout == null && messageObject.caption != null && messageObject.type != MessageObject.MO_TYPE13_STICKER) {
                 try {
-                    int width = backgroundWidth - AndroidUtilities.dp(31);
+                    int width = backgroundWidth - dp(31);
                     captionLayout = new StaticLayout(messageObject.caption, MessageObject.getTextPaint(), width - dp(10), Layout.Alignment.ALIGN_NORMAL, 1.0f, 0.0f, false);
                     if (captionLayout.getLineCount() > 0) {
                         int timeWidthTotal = timeWidth + (messageObject.isOutOwner() ? dp(20) : 0);
@@ -1580,13 +1503,105 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                         }
                     }
                 } catch (Exception e) {
-
+                    Log.d("ChatMessageCell","trouble during calculation of height and width", e);
                 }
             }
 
             substractBackgroundHeight = 0;
         }
         updateButtonState();
+    }
+
+    private void setupMusicMessage(MessageObject messageObject) {
+        backgroundWidth = Math.min(displaySize.x - dp(isGroupChat && messageObject.isFromUser() && !messageObject.isOutOwner() ? 102 : 50), dp(270));
+
+        createDocumentLayout(backgroundWidth, messageObject);
+
+        setMessageObjectInternal(messageObject);
+
+        totalHeight = dp(80) + namesOffset;
+    }
+
+    /**
+     * This sets all the params to their initial value.
+     */
+    private void setupMessageCell() {
+        isPressed = false;
+        isCheckPressed = true;
+        isAvatarVisible = false;
+        wasLayout = false;
+        currentUser = null;
+        drawNameLayout = false;
+
+        resetPressedLink(-1);
+        drawPhotoImage = false;
+        linkPreviewPressed = false;
+        buttonPressed = 0;
+        mediaOffsetY = 0;
+        documentAttachType = DOCUMENT_ATTACH_TYPE_NONE;
+        documentAttach = null;
+        captionLayout = null;
+        docTitleLayout = null;
+        drawImageButton = false;
+        currentPhotoObject = null;
+        currentPhotoObjectThumb = null;
+        currentPhotoFilter = null;
+        infoLayout = null;
+        buttonState = -1;
+        drawBackground = true;
+        drawName = false;
+        useSeekBarWaveform = false;
+        allowForwardedName = false;
+        mediaBackground = false;
+        availableTimeWidth = 0;
+        photoImage.setNeedsQualityThumb(false);
+        photoImage.setShouldGenerateQualityThumb(false);
+        photoImage.setParentMessageObject(null);
+        photoImage.setRoundRadius(dp(3));
+    }
+
+    // this changes the elements that are specific to text messages.
+    private void setupTextMessage(MessageObject messageObject) {
+        allowForwardedName = true;
+
+        int maxWidth;
+        if (isGroupChat && !messageObject.isOutOwner() && messageObject.isFromUser()) {
+            maxWidth = Math.min(displaySize.x, displaySize.y) - dp(122);
+            drawName = true;
+        } else {
+            maxWidth = Math.min(displaySize.x, displaySize.y) - dp(80);
+            drawName = false;
+        }
+        measureTime(messageObject);
+        int timeMore = timeWidth + dp(6);
+        if (messageObject.isOutOwner()) {
+            timeMore += dp(20.5f);
+        }
+
+        backgroundWidth = maxWidth;
+        if (maxWidth - messageObject.lastLineWidth < timeMore) {
+            backgroundWidth = Math.max(backgroundWidth, messageObject.lastLineWidth) + dp(31);
+            backgroundWidth = Math.max(backgroundWidth, timeWidth + dp(31));
+        } else {
+            int diff = backgroundWidth - messageObject.lastLineWidth;
+            if (diff >= 0 && diff <= timeMore) {
+                backgroundWidth = backgroundWidth + timeMore - diff + dp(31);
+            } else {
+                backgroundWidth = Math.max(backgroundWidth, messageObject.lastLineWidth + timeMore) + dp(31);
+            }
+        }
+        availableTimeWidth = backgroundWidth - dp(31);
+
+        setMessageObjectInternal(messageObject);
+
+        backgroundWidth = messageObject.textWidth;
+        totalHeight = messageObject.textHeight + dp(19.5f) + namesOffset;
+
+        int maxChildWidth = Math.max(backgroundWidth, nameWidth);
+        maxChildWidth = Math.max(maxChildWidth, forwardedNameWidth);
+
+        photoImage.setImageBitmap((Drawable) null);
+        calcBackgroundWidth(maxWidth, timeMore, maxChildWidth);
     }
 
     @Override
