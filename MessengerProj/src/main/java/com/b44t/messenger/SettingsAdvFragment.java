@@ -569,18 +569,7 @@ public class SettingsAdvFragment extends BaseFragment implements NotificationCen
             MrMailbox.m_lastErrorString = "";
         }
 
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                final int res = MrMailbox.imex(progressWhat, imexDir.getAbsolutePath());
-                AndroidUtilities.runOnUIThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        NotificationCenter.getInstance().postNotificationName(NotificationCenter.imexEnded, (int)res);
-                    }
-                });
-            }
-        }).start();
+        MrMailbox.imex(progressWhat, imexDir.getAbsolutePath());
     }
 
     @Override
@@ -614,7 +603,7 @@ public class SettingsAdvFragment extends BaseFragment implements NotificationCen
                 progressDialog = null;
             }
 
-            if( (int)args[0]==1 ) {
+            if( (int)args[0]!=0 ) {
                 // success
                 if( progressWhat==MrMailbox.MR_IMEX_EXPORT_SELF_KEYS || progressWhat==MrMailbox.MR_IMEX_EXPORT_BACKUP ) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());

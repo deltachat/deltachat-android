@@ -678,12 +678,11 @@ JNIEXPORT jboolean Java_com_b44t_messenger_MrMailbox_continueKeyTransfer(JNIEnv 
 }
 
 
-JNIEXPORT int Java_com_b44t_messenger_MrMailbox_imex(JNIEnv *env, jclass cls, jint what, jstring dir)
+JNIEXPORT void Java_com_b44t_messenger_MrMailbox_imex(JNIEnv *env, jclass cls, jint what, jstring dir)
 {
 	CHAR_REF(dir);
-		jint ret = dc_imex(get_dc_context(env, cls), what, dirPtr, "");
+		dc_imex(get_dc_context(env, cls), what, dirPtr, "");
 	CHAR_UNREF(dir);
-	return ret;
 }
 
 

@@ -79,7 +79,7 @@ public class MrMailbox {
     public final static int MR_IMEX_IMPORT_SELF_KEYS = 2;
     public final static int MR_IMEX_EXPORT_BACKUP = 11;
     public final static int MR_IMEX_IMPORT_BACKUP = 12;
-    public native static int imex(int what, String dir);
+    public native static void imex(int what, String dir);
     public native static String imexHasBackup(String dir);
     public native static int  checkPassword(String pw);
 
@@ -263,7 +263,12 @@ public class MrMailbox {
                 AndroidUtilities.runOnUIThread(new Runnable() {
                     @Override
                     public void run() {
-                        NotificationCenter.getInstance().postNotificationName(NotificationCenter.imexProgress, (int)data1);
+                        if (data1==0 || data1==1000) {
+                            NotificationCenter.getInstance().postNotificationName(NotificationCenter.imexEnded, (int) data1);
+                        }
+                        else {
+                            NotificationCenter.getInstance().postNotificationName(NotificationCenter.imexProgress, (int) data1);
+                        }
                     }
                 });
                 return 0;
