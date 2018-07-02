@@ -1,5 +1,12 @@
 # Delta Chat Changelog
 
+## UNRELEASED
+
+* Refactor internal database usage
+* Update English translation
+
+The changes have been done by Allan Nordhøy, Björn Petersen, Holger Krekel
+
 ## v0.18.2
 2018-06-23
 

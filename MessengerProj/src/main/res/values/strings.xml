@@ -83,7 +83,7 @@
     <string name="Default">Default</string>
     <string name="OnlyIfSilent">Only when silent</string>
     <string name="ChatBackground">Chat background</string>
-    <string name="SendByEnter">Send with ↵</string>
+    <string name="SendByEnter">Send with Enter key</string>
     <string name="Help">Help</string>
     <string name="Enabled">On</string>
     <string name="Disabled">Off</string>
@@ -115,7 +115,7 @@
     <!--passcode view-->
     <string name="Passcode">Passcode Lock</string>
     <string name="ChangePasscode">Change Passcode</string>
-    <string name="ChangePasscodeInfo">When you set up an additional passcode, a lock icon will appear atop the chat list. Tap it to lock the app.\n\nNote: If you forget the passcode, you\'ll need to delete and reinstall the app.</string>
+    <string name="ChangePasscodeInfo">If you set up an additional passcode, a lock icon will appear atop the chat list. Tap it to lock the app.\n\nNote: If you forget the passcode, you\'ll need to delete and reinstall the app.</string>
     <string name="PasscodePIN">PIN</string>
     <string name="PasscodePassword">Password</string>
     <string name="EnterCurrentPasscode">Enter your current passcode</string>
@@ -202,8 +202,8 @@
     <string name="AreYouSureBlockContact">Are you sure you want to block this contact?</string>
     <string name="AreYouSureDeleteContact">Are you sure you want to delete this contact?</string>
     <!--permissions-->
-    <string name="PermissionContacts">Access to contacts needed to connect with your friends across all your devices.</string>
-    <string name="PermissionStorage">Storage access needed to send and save photos, videos, music, and other media.</string>
+    <string name="PermissionContacts">Grant access to contacts if you want to sync friends across all your devices.</string>
+    <string name="PermissionStorage">Grant storage access if you want to send and save photos, videos, music, and other media.</string>
     <string name="PermissionNoAudio">Grant microphone access to record voice messages.</string>
     <string name="PermissionOpenSettings">Settings</string>
     <!--Intro view-->
@@ -250,7 +250,7 @@
         <item quantity="other">%d messages</item>
     </plurals>
     <plurals name="AreYouSureDeleteMessages">
-        <item quantity="one">Delete %d messagehere and from the server.</item>
+        <item quantity="one">Delete %d message here and from the server.</item>
         <item quantity="other">Delete %d messages here and from the server.</item>
     </plurals>
     <!-- Translators: The first string placeholder gets replaced with the
@@ -390,7 +390,7 @@
     <string name="EncrinfoNone">No encryption to my server.</string>
     <string name="EncrinfoFingerprints">Fingerprints</string>
     <string name="Backup">Backup</string>
-    <string name="ImportBackupExplain2">To import a backup, copy a backup to <![CDATA[<i>]]>%1$s<![CDATA[</i>]]> and reinstall the app.</string>
+    <string name="ImportBackupExplain2">To import a backup, copy it to <![CDATA[<i>]]>%1$s<![CDATA[</i>]]> and reinstall the app.</string>
     <string name="ReadReceiptMailBody">This is a read receipt for the message \"%1$s\".\n\nIt means that message was displayed on the recipient\'s device, not necessarily that the content was read.</string>
     <string name="ReadReceipt">Read receipt</string>
     <string name="NameAndStatus">Name and status</string>
@@ -433,8 +433,8 @@
     <string name="SelfTalkSubtitle">Messages I sent to myself</string>
     <string name="QrScan">Scan QR code</string>
     <string name="QrShow">Show QR code</string>
-    <string name="QrScanContainsText">The scanned QR code contains the following text:\n\n%1$s</string>
-    <string name="QrScanContainsUrl">The scanned QR code contains the following URL:\n\n%1$s</string>
+    <string name="QrScanContainsText">Scanned QR code text:\n\n%1$s</string>
+    <string name="QrScanContainsUrl">Scanned QR code URL:\n\n%1$s</string>
     <string name="OobFingerprint">Fingerprint</string>
     <string name="OobFingerprintAskOob">Verify contact and start chatting with <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>?</string>
     <string name="OobFingerprintOk">Contact <![CDATA[<i>]]>%1$s<![CDATA[</i>]]> verified. Start chatting?</string>
@@ -443,7 +443,7 @@
     <string name="OobSecureJoinRequested">%1$s joins.</string>
     <string name="CannotDecryptBody">This message cannot be decrypted.\n\n• It might already help to simply reply to this message and ask the sender to send the message again.\n\n• In case you re-installed Delta Chat or another email program on this or another device you may want to send an Autocrypt Setup Message from there.</string>
     <string name="Autocrypt">Autocrypt</string>
-    <string name="AutocryptExplain"><![CDATA[<i>]]>Autocrypt<![CDATA[</i>]]> is a new and open specification for end-to-end email encryption.\n\nYour end-to-end setup is created automatically as needed and you can transfer it between devices with <![CDATA[<i>]]>Autocrypt Setup Messages.<![CDATA[</i>]]></string>
+    <string name="AutocryptExplain"><![CDATA[<i>]]>Autocrypt<![CDATA[</i>]]> is a new and open specification for automatic end-to-end email encryption.\n\nYour end-to-end setup is created automatically as needed and you can transfer it between devices with <![CDATA[<i>]]>Autocrypt Setup Messages.<![CDATA[</i>]]></string>
     <string name="NewVerifiedGroup">New verified group</string>
     <string name="SharedChats">Shared chats</string>
     <string name="VerifiedContact">Verified contact</string>
@@ -469,7 +469,7 @@
 
     <string name="QrShowVerifyCode">Show QR verify code</string>
     <string name="QrVerifyContactTitle">QR verify code</string>
-    <string name="QrVerifyContactHint"><![CDATA[<b>]]>%1$s<![CDATA[</b>]]>\nScan this to setup a verified contact.</string>
+    <string name="QrVerifyContactHint"><![CDATA[<b>]]>%1$s<![CDATA[</b>]]>\nScan this to set up a verified contact.</string>
 
     <string name="QrShowInviteCode">Show QR invite code</string>
     <string name="QrJoinVerifiedGroupTitle">QR invite code</string>
