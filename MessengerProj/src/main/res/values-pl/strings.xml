@@ -345,7 +345,11 @@
     <string name="ImapPort">IMAP port</string>
     <string name="InboxHeadline">Skrzynka odbiorcza</string>
     <string name="OutboxHeadline">Skrzynka nadawcza</string>
+    <string name="AdvancedOptions">Opcje zaawansowane…</string>
     <string name="MyAccountExplain">Dla znanych dostawców usług poczty elektronicznej poniższe ustawienia są określane automatycznie.<![CDATA[<br/>]]><![CDATA[<br/>]]>Czasami <![CDATA[<b>]]>IMAP musi być włączony<![CDATA[</b>]]> w interfejsie www poczty internetowej.\n\nZ problemami należy zwrócić się do usługodawcy e-mail lub znajomych.</string>
+    <string name="MyAccountExplainGmail">W przypadku kont <![CDATA[<b>]]>GMail<![CDATA[</b>]]>musisz utworzyć
+        <![CDATA[<a href=\"https://security.google.com/settings/security/apppasswords\">]]>hasło aplikacji<![CDATA[</a>]]> , jeśli masz włączone 2FA (weryfikację dwustopniową).
+        <![CDATA[<br/>]]>Jeśli te ustawienia nie są dostępne, musisz włączyć <![CDATA[<a href=\"https://myaccount.google.com/lesssecureapps\">]]>mniej bezpieczne aplikacje<![CDATA[</a>]]>.</string>
     <string name="AccountNotConfigured">Konto nie jest skonfigurowane</string>
     <string name="AboutThisProgram">O Delta Chat</string>
     <string name="NotSet">Nie ustawiona</string>

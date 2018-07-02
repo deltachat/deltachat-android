@@ -317,7 +317,12 @@
     <string name="ImapPort">IMAP ataka</string>
     <string name="InboxHeadline">Sarrera ontzia</string>
     <string name="OutboxHeadline">Irteera ontzia</string>
+    <string name="AdvancedOptions">Aukera aurreratuak...</string>
     <string name="MyAccountExplain">E-mail hornitzaile ezagunentzat, ezarpen gehigarriak automatikoki zehaztuko dira.<![CDATA[<br/>]]><![CDATA[<br/>]]>Batzuetan, <![CDATA[<b>]]>IMAP gaitu behar da<![CDATA[</b>]]> e-mail zerbitzuaren web interfazean.\n\nGaldetu zure e-mail hornitzaileari edo lagunei arazoak badituzu.</string>
+    <string name="MyAccountExplainGmail"><![CDATA[<b>]]>GMail<![CDATA[</b>]]> kontuetarako bietako bat
+        <![CDATA[<a href=\"https://security.google.com/settings/security/apppasswords\">]]>Aplikazio-pasahitz<![CDATA[</a>]]> bat sortu dezakezu 2FA gaituta izanez gero.
+        <![CDATA[<br/>]]>eEzarpen hau erabilgarri ez badago, <![CDATA[<a href=\"https://myaccount.google.com/lesssecureapps\">]]>Aplikazio ez seguruak<![CDATA[</a>]]> gaitu behar duzu
+    </string>
     <string name="AccountNotConfigured">Kontua konfiguratu gabe</string>
     <string name="AboutThisProgram">Delta Chat-i buruz</string>
     <string name="NotSet">Ezarri gabe</string>

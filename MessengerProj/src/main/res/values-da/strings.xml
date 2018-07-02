@@ -13,7 +13,7 @@
     <string name="SelectChat">Vælge samtale…</string>
     <string name="Search">Søge</string>
     <string name="MuteNotifications">Lydløse påmindelser</string>
-    <string name="MuteFor">Lydløs til %1$s</string>
+    <string name="MuteFor">Lydløs i %1$s</string>
     <string name="UnmuteNotifications">Lyd</string>
     <string name="Draft">Kladde</string>
     <!--audio view-->
@@ -43,7 +43,7 @@
     <string name="TypeMessage">Besked</string>
     <string name="SlideToCancel">Glide for at annullere</string>
     <string name="SaveToDownloads">Gemme i \"Downloads\"</string>
-    <string name="SaveToMusic">Gemme i \"Music\"</string>
+    <string name="SaveToMusic">Gemme i \"Musik\"</string>
     <string name="Share">Dele</string>
     <string name="SendItems">Sende %1$s</string>
     <string name="ClearRecentEmoji">Rydde nylige emoji?</string>
@@ -130,7 +130,7 @@
     <string name="FingerprintInfo">Bekræfte fingeraftryk for at fortsætte</string>
     <string name="FingerprintNotRecognized">Kan ikke genkende fingeraftryk. Prøv igen.</string>
     <!--photo gallery view-->
-    <string name="SaveToGallery">Gemme til \"Gallery\"</string>
+    <string name="SaveToGallery">Gemme i \"Galleri\"</string>
     <string name="Of">%1$d af %2$d</string>
     <string name="Gallery">Galleri</string>
     <string name="AllPhotos">Alle billeder</string>
@@ -181,7 +181,7 @@
     <string name="Delete">Slette</string>
     <string name="Forward">Videresende</string>
     <string name="FromCamera">Fra kamera</string>
-    <string name="FromGalley">Fra \"Gallery\"</string>
+    <string name="FromGalley">Fra \"Galleri\"</string>
     <string name="Set">Sætte</string>
     <string name="OK">O.k.</string>
     <string name="Crop">Beskære</string>
@@ -220,7 +220,7 @@
     <string name="Intro4Message"><![CDATA[<b>Ubegrænsede</b>]]> samtaler, billeder, videoer, lyd beskeder og mere. Kan håndteres af flere klienter.</string>
 
     <string name="Intro5Headline">Fri</string>
-    <string name="Intro5Message"><![CDATA[<b>Delta Chat</b>]]> er gratis for altid.<![CDATA[<br/>]]>Open-source. Ingen reklamer. Ingen Intet abonnement.. Ingen låsning til leverandør.</string>
+    <string name="Intro5Message"><![CDATA[<b>Delta Chat</b>]]> er fri for altid.<![CDATA[<br/>]]>Åben kildetekst. Ingen reklamer. Intet abonnement.. Ingen leverandør låsning.</string>
 
     <string name="Intro6Headline">Krypteret</string>
     <string name="Intro6Message"><![CDATA[<b>Krypteret</b>]]> med kun almindelige algoritmer. Meddelelser bliver på servere.</string>
@@ -317,7 +317,12 @@
     <string name="ImapPort">IMAP port</string>
     <string name="InboxHeadline">Indbakke</string>
     <string name="OutboxHeadline">Udbakke</string>
+    <string name="AdvancedOptions">Avancerede indstillinger...</string>
     <string name="MyAccountExplain">For kendte e-post udbyder bliver ekstra opsætninger bestemt automatisk.<![CDATA[<br/>]]><![CDATA[<br/>]]>Nogle gange, <![CDATA[<b>]]>skal IMAP aktiveres<![CDATA[</b>]]> i e-post web grænseflade.\n\nKontakt e-post udbyder eller venner ved problemer.</string>
+    <string name="MyAccountExplainGmail">For <![CDATA[<b>]]>GMail<![CDATA[</b>]]> konti skal der enten oprettes en
+        <![CDATA[<a href=\"https://security.google.com/settings/security/apppasswords\">]]>program-adgangskode<![CDATA[</a>]]> hvis 2FA er aktiveret.
+        <![CDATA[<br/>]]>Hvis opsætningen ikke er tilgængelig, skal <![CDATA[<a href=\"https://myaccount.google.com/lesssecureapps\">]]>mindre sikre programmer<![CDATA[</a>]]> aktiveres.
+    </string>
     <string name="AccountNotConfigured">Konto ikke indstillet</string>
     <string name="AboutThisProgram">Om Delta Chat</string>
     <string name="NotSet">Ikke angivet</string>
@@ -325,8 +330,8 @@
     <string name="Deaddrop">Kontakt forespørgsel</string>
     <string name="DeaddropInChatlist">Vise kontakt forespørgsler i samtale liste</string>
     <string name="MuteAlways">Altid lydløs</string>
-    <string name="AskStartChatWith">Samtale med <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>?</string>
-    <string name="DeaddropHint">Tryk svar-pilen for at starte samtale.</string>
+    <string name="AskStartChatWith">Snakke med <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>?</string>
+    <string name="DeaddropHint">Tryk på svar-pile for at starte samtale.</string>
     <string name="NotYetImplemented">Funktion ikke tilgængelig eller ufuldstændig.</string>
     <!-- Translators: The URL should not be localized, it is not clear which languuage the receiver prefers and the language will be detected on the server -->
     <string name="DefaultStatusText">Sendt med Delta Chat Messenger: https://delta.chat</string>
@@ -339,8 +344,8 @@
     <!-- Translators: please use a very short string here, it should not much longer than
     the string needed for video time+size (0:00, 12,3 Mib) -->
     <string name="OneMoment">Øjeblik…</string>
-    <string name="NoChatsHelp">Start bekseder ved at trykke på \"Ny samtale\" knappen i bunden til højre eller tryk på \"Menu\" knappen for flere valgmuligheder.</string>
-    <string name="Intro7Message"><![CDATA[<b>Delta Chat</b>]]> er sikker for firma brug, kompatibel og og baseret på standarder.</string>
+    <string name="NoChatsHelp">Start beskeder ved at trykke på \"Ny samtale\" knappen i bunden til højre eller på \"Menu\" knappen for flere valgmuligheder.</string>
+    <string name="Intro7Message"><![CDATA[<b>Delta Chat</b>]]> er sikker til erhvervslivet, kompatibel og standardbaseret.</string>
     <string name="InviteMenuEntry">Sende invitationer</string>
     <string name="InviteText"> Jeg bruger Delta Chat - %1$s - du kan skrive til mig hos %2$s</string>
     <string name="AdvancedSettings">Avanceret</string>
@@ -356,7 +361,7 @@
     <string name="AskAddMemberToGroup">Tilføje <![CDATA[<b>]]>%1$s<![CDATA[</b>]]> til gruppe?</string>
     <string name="AskRemoveMemberFromGroup">Fjerne <![CDATA[<b>]]>%1$s<![CDATA[</b>]]> fra gruppe?</string>
     <string name="ErrSelfNotInGroup">Mans skal være medlem af gruppen for at kunne udføre denne handling.</string>
-    <string name="MsgGroupLeft">Forladt gruppe</string>
+    <string name="MsgGroupLeft">Forladt gruppe.</string>
     <string name="NoMessagesHint">Sende besked til <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>:\n\n• Det er o.k.hvis <![CDATA[<b>]]>%2$s<![CDATA[</b>]]> ikke bruger Delta Chat.\n\n• Levering af første besked kan tage nogen tid.</string>
     <string name="SendNRcvReadReceipts">Modtage og sende læse kvitteringer</string>
     <string name="PreferE2EEncryption">Foretrække ende-til-ende kryptering</string>

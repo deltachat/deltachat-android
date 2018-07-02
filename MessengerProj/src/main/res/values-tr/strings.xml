@@ -284,6 +284,7 @@
     <string name="ImapPort">İMAP bağlanma noktası</string>
     <string name="InboxHeadline">Gelen kutusu</string>
     <string name="OutboxHeadline">Gönderilenler</string>
+    <string name="AdvancedOptions">Gelişmiş Seçenekler...</string>
     <string name="MyAccountExplain">Bilinen e-posta sağlayıcıları için ek ayarlar otomatik olarak algılanır.</string>
     <string name="AccountNotConfigured">Hesap düzenlenmedi</string>
     <string name="AboutThisProgram">Delta Chat Hakkında</string>
@@ -387,6 +388,8 @@
     <string name="SelfTalkSubtitle">Kendime gönderdiğim iletiler</string>
     <string name="QrScan">QR kod tara</string>
     <string name="QrShow">QR kodu göster</string>
+    <string name="QrScanContainsText">Taranan QR kodu aşağıdaki metni içeriyor:\n\n%1$s</string>
+    <string name="QrScanContainsUrl">Taranan QR kodu aşağıdaki internet adresini içeriyor:\n\n%1$s</string>
     <string name="OobFingerprint">Parmak izi</string>
     <string name="OobSecureJoinRequested">%1$s katılıyor.</string>
     <string name="Autocrypt">Autocrypt</string>

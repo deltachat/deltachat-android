@@ -2,10 +2,11 @@
 
 ## UNRELEASED
 
+* Give advices for Google users
 * Refactor internal database usage
-* Update English translation
+* Update Basque, Danish, Dutch, English, Italian, Polish, Russian, Turkish translation
 
-The changes have been done by Allan Nordhøy, Björn Petersen, Holger Krekel
+The changes have been done by Allan Nordhøy, Angelo Fuchs, Björn Petersen, Claudio Arseni, guland2000, Heimen Stoffels, Holger Krekel, Mahmut Özcan, Ole Carlsen, Osoitz, sebek, Thomas Oster
 
 ## v0.18.2
 2018-06-23
