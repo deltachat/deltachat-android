@@ -347,18 +347,7 @@ public class WelcomeActivity extends Activity implements NotificationCenter.Noti
             MrMailbox.m_lastErrorString = "";
         }
 
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                final int res = MrMailbox.imex(MrMailbox.MR_IMEX_IMPORT_BACKUP, backupFile);
-                AndroidUtilities.runOnUIThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        NotificationCenter.getInstance().postNotificationName(NotificationCenter.imexEnded, (int)res);
-                    }
-                });
-            }
-        }).start();
+        MrMailbox.imex(MrMailbox.MR_IMEX_IMPORT_BACKUP, backupFile);
     }
 
     @Override
@@ -381,7 +370,7 @@ public class WelcomeActivity extends Activity implements NotificationCenter.Noti
                 progressDialog = null;
             }
 
-            if( (int)args[0]==1 ) {
+            if( (int)args[0]!=0 ) {
                 //ApplicationLoader.imapForeground = true;
                 ApplicationLoader.startThreads(); // import does not automatically connect
                 KeepAliveService kas = KeepAliveService.getInstance();
