@@ -406,7 +406,7 @@ public class SettingsAccountFragment extends BaseFragment implements Notificatio
             }
             else if( ! MrMailbox.m_lastErrorString.isEmpty() ){
                 AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
-                builder.setMessage(errorString);
+                builder.setMessage(AndroidUtilities.replaceTags(errorString));
                 builder.setPositiveButton(R.string.OK, null);
                 showDialog(builder.create());
             }

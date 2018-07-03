@@ -479,4 +479,6 @@
     <string name="FetchModePersistentConnection">Persistent connection</string>
     <string name="FetchModeExplain">When using the fetch mode <![CDATA[<i>]]>Save battery<![CDATA[</i>]]>, new messages appear at once if the app is in foreground and with an average delay of 30 seconds if the app is not used. When the device is in doze mode, the delay may be longer. This is the default mode.\n\n<![CDATA[<i>]]>Persistent connection<![CDATA[</i>]]> is typically faster but may require the app to be whitelisted in the system settings to consume more battery.\n\nWhich fetch mode do you want to use?</string>
     <string name="PermissionCamera">Access to the camera is needed if you want to take photos or if you want to scan QR codes.</string>
+    <string name="ErrCannotLogin">Cannot not login as <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>. Please check if the email-address and the password are correct.</string>
+    <string name="ErrSeverResponse">Response from %1$s: %2$s\n\nSome providers place additional information in your inbox; you can check them it eg. in the web frontend. Consult your provider or friends if you run into problems.</string>
 </resources>

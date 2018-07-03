@@ -416,6 +416,8 @@ public class MrMailbox {
                     case 42: s = ApplicationLoader.applicationContext.getString(R.string.AutocryptSetupMessageSubject); break;
                     case 43: s = ApplicationLoader.applicationContext.getString(R.string.AutocryptSetupMessageGeneralBody); break;
                     case 50: s = ApplicationLoader.applicationContext.getString(R.string.SelfTalkSubtitle); break;
+                    case 60: s = ApplicationLoader.applicationContext.getString(R.string.ErrCannotLogin); break;
+                    case 61: s = "<c#808080>" + ApplicationLoader.applicationContext.getString(R.string.ErrSeverResponse) + "</c>"; break;
                     default: s = null; break;
                 }
                 return String2CPtr(s);
