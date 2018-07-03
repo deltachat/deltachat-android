@@ -1648,6 +1648,7 @@ LOCAL_SRC_FILES     += \
 ./messenger-backend/src/dc_imex.c \
 ./messenger-backend/src/dc_keyhistory.c \
 ./messenger-backend/src/dc_log.c \
+./messenger-backend/src/dc_openssl.c \
 ./messenger-backend/src/dc_qr.c \
 ./messenger-backend/src/dc_receive_imf.c \
 ./messenger-backend/src/dc_securejoin.c \
