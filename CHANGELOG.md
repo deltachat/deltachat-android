@@ -5,8 +5,12 @@
 * Give advices for Google users
 * Refactor internal database usage
 * Update Basque, Danish, Dutch, English, Italian, Polish, Russian, Turkish translation
+* Update website
 
-The changes have been done by Allan Nordhøy, Angelo Fuchs, Björn Petersen, Claudio Arseni, guland2000, Heimen Stoffels, Holger Krekel, Mahmut Özcan, Ole Carlsen, Osoitz, sebek, Thomas Oster
+The changes have been done by Allan Nordhøy, Angelo Fuchs, Björn Petersen,
+Claudio Arseni, guland2000, Heimen Stoffels, Holger Krekel, Luis Fernando Stürmer da Rosa,
+Mahmut Özcan, Ole Carlsen, Osoitz, sebek, Thomas Oster
+
 
 ## v0.18.2
 2018-06-23
