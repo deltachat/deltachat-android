@@ -149,23 +149,28 @@ public class QRshowActivity extends AppCompatActivity implements NotificationCen
     public void didReceivedNotification(int id, Object... args) {
         if( id==NotificationCenter.secureJoinInviterProgress) {
             int contact_id = (Integer)args[0];
-            int step = (Integer)args[1];
+            int progress = (Integer)args[1];
             String msg = null;
-            if( step == 3) {
+            if (progress == 300) {
                 msg = String.format(ApplicationLoader.applicationContext.getString(R.string.OobSecureJoinRequested), MrMailbox.getContact(contact_id).getNameNAddr());
                 num_joiners++;
             }
-            else if( step == 6 ){
+            else if (progress == 600){
                 msg = String.format(ApplicationLoader.applicationContext.getString(R.string.OobAddrVerified), MrMailbox.getContact(contact_id).getNameNAddr());
-                num_joiners--;
+            }
+            else if (progress == 800) {
+                msg = String.format(ApplicationLoader.applicationContext.getString(R.string.OobGroupJoined), MrMailbox.getContact(contact_id).getNameNAddr());
             }
 
-            if( msg != null ) {
+            if (msg != null) {
                 AndroidUtilities.showHint(ApplicationLoader.applicationContext, msg);
             }
 
-            if( step == 6 && num_joiners <= 0 ) {
-                finish();
+            if (progress == 1000) {
+                num_joiners--;
+                if (num_joiners <= 0) {
+                    finish();
+                }
             }
         }
     }

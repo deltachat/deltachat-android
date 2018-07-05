@@ -1040,9 +1040,9 @@ public class ChatlistActivity extends BaseFragment implements NotificationCenter
         }
         else if( id == NotificationCenter.secureJoinJoinerProgress ) {
             int contact_id = (Integer)args[0];
-            int step = (Integer)args[1];
+            int progress = (Integer)args[1];
             String msg = null;
-            if( step == 4) {
+            if( progress == 400) {
                 msg = String.format(ApplicationLoader.applicationContext.getString(R.string.OobAddrVerifiedIntroduceMyself), MrMailbox.getContact(contact_id).getNameNAddr());
             }
 
