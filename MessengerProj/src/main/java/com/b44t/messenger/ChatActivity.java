@@ -1927,6 +1927,10 @@ public class ChatActivity extends BaseFragment implements NotificationCenter.Not
                         }
                     }
                 }
+                else if(evt_chat_id == dialog_id) {
+                    // needed to update eg. the draft
+                    m_mrChat = MrMailbox.getChat(evt_chat_id);
+                }
             }
         }
         else if (id == NotificationCenter.updateInterfaces)
