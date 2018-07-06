@@ -308,7 +308,7 @@ JNIEXPORT jintArray Java_com_b44t_messenger_MrMailbox_getContacts(JNIEnv *env, j
 
 JNIEXPORT jint Java_com_b44t_messenger_MrMailbox_getBlockedCount(JNIEnv *env, jclass cls)
 {
-	return dc_get_blocked_count(get_dc_context(env, cls));
+	return dc_get_blocked_cnt(get_dc_context(env, cls));
 }
 
 
@@ -480,7 +480,7 @@ JNIEXPORT void Java_com_b44t_messenger_MrMailbox_deleteChat(JNIEnv *env, jclass 
 
 JNIEXPORT jint Java_com_b44t_messenger_MrMailbox_getFreshMsgCount(JNIEnv *env, jclass cls, jint chat_id)
 {
-	return dc_get_fresh_msg_count(get_dc_context(env, cls), chat_id);
+	return dc_get_fresh_msg_cnt(get_dc_context(env, cls), chat_id);
 }
 
 
