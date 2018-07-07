@@ -4,10 +4,10 @@
 
 * Give advices for Google users
 * Refactor internal database usage
-* Update Basque, Danish, Dutch, English, Italian, Polish, Russian, Turkish translation
+* Update Basque, Catalan, Danish, Dutch, English, Italian, Polish, Russian, and Turkish translations
 * Update website
 
-The changes have been done by Allan Nordhøy, Angelo Fuchs, Björn Petersen,
+The changes have been done by Allan Nordhøy, Angelo Fuchs, Björn Petersen, Calbasi,
 Claudio Arseni, guland2000, Heimen Stoffels, Holger Krekel, Luis Fernando Stürmer da Rosa,
 Mahmut Özcan, Ole Carlsen, Osoitz, sebek, Thomas Oster
 
