@@ -476,4 +476,8 @@
     <string name="FetchModePersistentConnection">Vedvarende forbindelse</string>
     <string name="FetchModeExplain">Når hente tilstand bruges <![CDATA[<i>]]>Spar batteri<![CDATA[</i>]]>, nye beskeder vises hvis ikke programmet kører i forgunden og med en gennemsnitsforsinkelse på 30 sekunder hvis programmet ikke bruges. Når enheden er i hvile tilstand kan forsinkelse være længere. Dette er standard tilstand.\n\n<![CDATA[<i>]]>Vedvarende forbindelse<![CDATA[</i>]]> er typisk hurtiger men kan kræve at programmet er hvidlisteti system opsætning for at kunne forbruge mere batteri.\n\nHvilken hente tilstand ønskes at bruge?</string>
     <string name="PermissionCamera">Kamera adgang nødvendig for at tage billeder eller skanne QR koder.</string>
+    <!-- Translators: %1$s will be replaced by the email address -->
+    <string name="ErrCannotLogin">Kan ikke logge ind som <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>. Kontrollere at e-post adresse og adgangskode er korrekt.</string>
+    <!-- Translators: %1$s will be replaced by the server name (eg. imap.somewhere.org) and %2$s will be replaced by the human-readable response from the server. this response may be a single word or some sentences and may or may not be localized. -->
+    <string name="ErrSeverResponse">Svar fra %1$s: %2$s\n\nNogle udbydere placerer yderligere oplysninger i indbakken; tjek dem f.eks. via frontenden. Kontakt udbyder eller venner ved problemer.</string>
 </resources>

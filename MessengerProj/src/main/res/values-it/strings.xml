@@ -474,4 +474,4 @@
     <string name="FetchModeSaveBattery">Risparmia batteria</string>
     <string name="FetchModePersistentConnection">Connessione persistente</string>
     <string name="PermissionCamera">L\'accesso alla fotocamera è necessario se si vogliono acquisire immagini o per eseguire la scansione dei codici QR.</string>
-</resources>
+    </resources>

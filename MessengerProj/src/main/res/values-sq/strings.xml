@@ -316,7 +316,11 @@
     <string name="ImapPort">Portë IMAP</string>
     <string name="InboxHeadline">Të marrë</string>
     <string name="OutboxHeadline">Të dërguar</string>
+    <string name="AdvancedOptions">Mundësi të Thelluara…</string>
     <string name="MyAccountExplain">Për furnizues të njohur shërbimesh email, rregullimet shtesë përcaktohen vetvetiu.<![CDATA[<br/>]]><![CDATA[<br/>]]>Ndonjëherë, <![CDATA[<b>]]>IMAP lypset të aktivizohet<![CDATA[</b>]]> te pjesa e dukshme e sistemit email web.\n\nNëse hasni probleme, këshillohuni me furnizuesin e email-it ose me shokë tuajt.</string>
+    <string name="MyAccountExplainGmail">Për Llogari <![CDATA[<b>]]>GMail<![CDATA[</b>]]> lypset të krijoni një
+ <![CDATA[<a href="https://security.google.com/settings/security/apppasswords">]]>App-Password<![CDATA[</a>]]>, nëse keni të aktivizuar 2FA.
+ <![CDATA[<br/>]]>Nëse ky rregullim s\’është i mundshëm, lypset të aktivizoni <![CDATA[<a href="https://myaccount.google.com/lesssecureapps">]]>Less Secure Apps<![CDATA[</a>]]></string>
     <string name="AccountNotConfigured">Llogari e paformësuar</string>
     <string name="AboutThisProgram">Mbi Delta Chat-in</string>
     <string name="NotSet">E papërcaktuar</string>
@@ -444,6 +448,7 @@
     <string name="EditedNameWillBeShared">Emri i përpunuar do të ndahet me krejt anëtarët e grupit.</string>
     <string name="E2EEncryptionPreferred">Parapëlqehet fshehtëzim skaj-më-skaj.</string>
     <string name="OobAddrVerified">%1$s u verifikua.</string>
+    <string name="OobGroupJoined">%1$s u bë pjesë e grupit në mënyrë të sigurt.</string>
     <string name="OobAddrVerifiedIntroduceMyself">%1$s u verifikua, prezantomë …</string>
     <string name="OobAskJoinVerifiedGroup">Doni të bëheni pjesë e grupit të verifikuar <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>?</string>
     <!-- Translators: %1$s is replaced by an action, eg. MsgMemberAddedToGroup, MsgMemberRemovedFromToGroup, MsgGroupNameChanged or MsgGroupImageChanged. If the action ends with a full stop, this is removed.
@@ -470,4 +475,8 @@
     <string name="FetchModePersistentConnection">Lidhje e qëndrueshme</string>
     <string name="FetchModeExplain">Kur përdoret mënyra sjellje <![CDATA[<i>]]>Kurseni bateri<![CDATA[</i>]]>, mesazhet e rinj shfaqen menjëherë, nëse aplikacioni gjendet në prapaskenë dhe me një vonesë mesatarisht 30 sekondash, nëse aplikacioni nuk është në përdorim. Kur pajisja gjendet nën mënyrën <em>doze</em>, vonesa mund të jetë më e madhe. Kjo është mënyra parazgjedhje.\n\n<![CDATA[<i>]]>Lidhja e qëndrueshme<![CDATA[</i>]]> është përgjithësisht më e shpejtë, por mund të kërkojë që aplikacioni të lejohet nga sistemi të harxhojë më tepër bateri.\n\nCilën mënyrë prurjesh doni të përdoret?</string>
     <string name="PermissionCamera">Nëse doni të bëni foto apo doni të skanoni kode QR, lypset hyrje te kamera.</string>
+    <!-- Translators: %1$s will be replaced by the email address -->
+    <string name="ErrCannotLogin">S’bëhet dot hyrje si <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>. Ju lutemi, kontrolloni nëse adresa email dhe fjalëkalimi janë të saktë.</string>
+    <!-- Translators: %1$s will be replaced by the server name (eg. imap.somewhere.org) and %2$s will be replaced by the human-readable response from the server. this response may be a single word or some sentences and may or may not be localized. -->
+    <string name="ErrSeverResponse">Përgjigje nga %1$s: %2$s\n\nDisa shërbime vendosin të dhëna shtesë te kutia juaj postare; ato mund t’i shihni, për shembull, që nga ndërfaqja web. Nëse hasni probleme, konsultohuni me shërbimin tuaj ose me ndonjë shok.</string>
 </resources>

@@ -83,7 +83,7 @@
     <string name="Default">По умолчанию</string>
     <string name="OnlyIfSilent">Только при выключенном звуке</string>
     <string name="ChatBackground">Фон чата</string>
-    <string name="SendByEnter">Оправлять нажав ↵</string>
+    <string name="SendByEnter">Оправлять нажав Ввод</string>
     <string name="Help">Помощь</string>
     <string name="Enabled">Вкл</string>
     <string name="Disabled">Выкл.</string>
@@ -115,7 +115,7 @@
     <!--passcode view-->
     <string name="Passcode">Код доступа</string>
     <string name="ChangePasscode">Изменить код доступа</string>
-    <string name="ChangePasscodeInfo">Когда вы установите дополнительный код доступа, на странице чатов появится значок блокировки. Нажмите на него, чтобы заблокировать приложение.\n\nПримечание: если вы забудете код доступа, вам нужно будет удалить и переустановить приложение.</string>
+    <string name="ChangePasscodeInfo">Если вы установите дополнительный код доступа, значок блокировки будет отображён в верхней части списка чата. Нажмите на него, чтобы заблокировать приложение.\n\nПримечание: Если вы забудете код доступа, вам будет необходимо удалить и переустановить приложение.</string>
     <string name="PasscodePIN">ПИН</string>
     <string name="PasscodePassword">Пароль</string>
     <string name="EnterCurrentPasscode">Введите текущий код доступа</string>
@@ -202,8 +202,8 @@
     <string name="AreYouSureBlockContact">Вы действительно хотите заблокировать этот контакт?</string>
     <string name="AreYouSureDeleteContact">Вы уверены, что хотите удалить этот контакт?</string>
     <!--permissions-->
-    <string name="PermissionContacts">Доступ к вашим контактам необходим для того, чтобы вы могли общаться со своими друзьями на всех ваших устройствах.</string>
-    <string name="PermissionStorage">Необходим доступ к памяти вашего устройства для отправки и хранения фотографий, видео, музыки и других файлов.</string>
+    <string name="PermissionContacts">Предоставьте доступ к вашим контактам если вы хотите синхронизировать друзей на всех ваших устройствах.</string>
+    <string name="PermissionStorage">Предоставьте доступ к памяти вашего устройства если вы хотите отправлять и хранить фотографии, видео, музыку и другие файлы.</string>
     <string name="PermissionNoAudio">Предоставьте доступ к микрофону для записи голосовых сообщений.</string>
     <string name="PermissionOpenSettings">Настройки</string>
     <!--Intro view-->
@@ -347,9 +347,9 @@
     <string name="OutboxHeadline">Исходящие</string>
     <string name="AdvancedOptions">Расширенные настройки...</string>
     <string name="MyAccountExplain">Для известных поставщиков электронной почты дополнительные настройки определяются автоматически.<![CDATA[<br/>]]><![CDATA[<br/>]]>Иногда, <![CDATA[<b>]]>IMAP должен быть включён<![CDATA[</b>]]> в веб-интерфейсе электронной почты.\n\nВ случае затруднений, обратитесь к своему поставщику услуги электронной почты или компетентным друзьям.</string>
-    <string name="MyAccountExplainGmail">Для аккаунтов <![CDATA[<b>]]>GMail<![CDATA[</b>]]> может понадобиться создать
-        <![CDATA[<a href=\"https://security.google.com/settings/security/apppasswords\">]]>пароль приложения<![CDATA[</a>]]> , если включена двухфакторная аутентификация.
-        <![CDATA[<br/>]]>Если это невозможно, разрешите использование <![CDATA[<a href=\"https://myaccount.google.com/lesssecureapps\">]]>небезопасных приложений<![CDATA[</a>]]></string>
+    <string name="MyAccountExplainGmail">Для <![CDATA[<b>]]>GMail<![CDATA[</b>]]> Аккаунтов, вам возможно, понадобиться или создать
+        <![CDATA[<a href=\"https://security.google.com/settings/security/apppasswords\">]]>Пароль на приложение<![CDATA[</a>]]> если у вас включена аутентификация 2FA.
+        <![CDATA[<br/>]]>Если эти настройки не доступны, вам будет необходимо разрешить <![CDATA[<a href=\"https://myaccount.google.com/lesssecureapps\">]]>Доступ Небезопасных Приложений<![CDATA[</a>]]></string>
     <string name="AccountNotConfigured">Аккаунт не настроен</string>
     <string name="AboutThisProgram">Delta Chat (Дельта Чат)</string>
     <string name="NotSet">Не задано</string>
@@ -414,7 +414,7 @@
     <string name="EncrinfoNone">Соединение к моему серверу незащищено.</string>
     <string name="EncrinfoFingerprints">Ключи шифрования</string>
     <string name="Backup">Резервное копирование</string>
-    <string name="ImportBackupExplain2">Для восстановления из резервной копии скопируйте резервную копию в <![CDATA[<i>]]>%1$s<![CDATA[</i>]]> и переустановите приложение.</string>
+    <string name="ImportBackupExplain2">Для восстановления из резервной копии, скопируйте её в <![CDATA[<i>]]>%1$s<![CDATA[</i>]]> и переустановите приложение.</string>
     <string name="ReadReceiptMailBody">Это уведомление о доставке сообщения \"%1$s\".\n\nОно подтверждает, что сообщение было отображено на устройстве адресата. Однако это не означает, что получатель прочитал его содержимое.</string>
     <string name="ReadReceipt">Уведомление о доставке</string>
     <string name="NameAndStatus">Имя и подпись</string>
@@ -457,17 +457,17 @@
     <string name="SelfTalkSubtitle">Сообщения отправленные самому себе</string>
     <string name="QrScan">Сканирование QR кода</string>
     <string name="QrShow">Показать QR код</string>
-    <string name="QrScanContainsText">Отсканированный QR код содержит текст:\n\n%1$s</string>
-    <string name="QrScanContainsUrl">QR код для перехода по ссылке URL:\n\n%1$s</string>
+    <string name="QrScanContainsText">Текст сканированного QR кода:\n\n%1$s</string>
+    <string name="QrScanContainsUrl">QR код для перехода по URL:\n\n%1$s</string>
     <string name="OobFingerprint">Ключ</string>
     <string name="OobFingerprintAskOob">Верифицировать контакт и начать общение с <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>?</string>
     <string name="OobFingerprintOk">Контакт <![CDATA[<i>]]>%1$s<![CDATA[</i>]]> верифицирован. Начать общение?</string>
     <string name="OobFingerprintMismatch">Отсканированный ключ шифрования <![CDATA[<b>]]>не соответствует<![CDATA[</b>]]> ключу, который ранее был у <![CDATA[<i>]]>%1$s<![CDATA[</i>]]>.</string>
-    <string name="OobFingerprintWithoutAddr">Этот QR код содержит ключ шифрования, не  адрес эл.почты.\n\nЧтобы выполнить  верификацию по внешнему каналу, прежде всего установите с получателем защищённое соединение.</string>
+    <string name="OobFingerprintWithoutAddr">Этот QR код содержит отпечаток ключа, не  адрес эл.почты.\n\nЧтобы выполнить  верификацию по внешнему каналу, прежде всего установите с получателем защищённое соединение.</string>
     <string name="OobSecureJoinRequested">%1$s соединений.</string>
     <string name="CannotDecryptBody">Это сообщение не может быть расшифровано.\n\n• Возможно вам надо, просто попросить отправителя направить вам сообщение ещё раз.\n\n• В случае переустановки программы Дельта Чат или любой другой почтовой программы на этом или другом устройствах вам будет необходимо отправить от них Сообщение Настроек Autocrypt.</string>
     <string name="Autocrypt">Autocrypt</string>
-    <string name="AutocryptExplain"><![CDATA[<i>]]>Autocrypt<![CDATA[</i>]]> это новая и открытая спецификация сквозного шифрования для эл. почты.\n\nНастройки вашего сквозного шифрования создаются при необходимости автоматически и вы можете передавать их между устройствами посредством <![CDATA[<i>]]>Сообщения Настроек Autocrypt.<![CDATA[</i>]]></string>
+    <string name="AutocryptExplain"><![CDATA[<i>]]>Autocrypt<![CDATA[</i>]]> это новая и открытая спецификация для автоматического сквозного шифрования эл.почты.\n\nНастройки вашего сквозного шифрования создаются при необходимости автоматически и вы можете передавать их между устройствами через <![CDATA[<i>]]>Сообщения Настройки Autocrypt.<![CDATA[</i>]]></string>
     <string name="NewVerifiedGroup">Новая проверенная группа</string>
     <string name="SharedChats">Коллективный чат</string>
     <string name="VerifiedContact">Проверенный контакт</string>
@@ -493,7 +493,7 @@
 
     <string name="QrShowVerifyCode">Показать проверочный QR код</string>
     <string name="QrVerifyContactTitle">Проверочный QR код</string>
-    <string name="QrVerifyContactHint"><![CDATA[<b>]]>%1$s<![CDATA[</b>]]>\nСканируйте эту настройку доверенного контакта.</string>
+    <string name="QrVerifyContactHint"><![CDATA[<b>]]>%1$s<![CDATA[</b>]]>\nСканируйте это для настройки доверенного контакта.</string>
 
     <string name="QrShowInviteCode">Показать QR код приглашения</string>
     <string name="QrJoinVerifiedGroupTitle">Пригласительный QR код</string>
@@ -503,4 +503,8 @@
     <string name="FetchModePersistentConnection">Постоянное соединение</string>
     <string name="FetchModeExplain">Когда используется режим выборки <![CDATA[<i>]]>Сохранять батарею<![CDATA[</i>]]>, новые сообщения появляются сразу, если приложение находится в фоне, если приложение не используется, с задержкой в 30 секунд. Когда устройство находится в «Спящем режиме» задержка может быть дольше. Это режим по умолчанию.\n\n<![CDATA[<i>]]>Постоянное соединение<![CDATA[</i>]]> обычно сообщения приходят быстрее, но в таком случае расход батареи может быть значительным.\n\nКакой режим выборки вы желаете использовать?</string>
     <string name="PermissionCamera">Необходим допуск к камере если вы хотите сделать фотоснимок или сканировать QR коды.</string>
+    <!-- Translators: %1$s will be replaced by the email address -->
+    <string name="ErrCannotLogin">Невозможно войти как <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>. Пожалуйста, убедитесь в том, что вы правильно вводите адрес адрес эл.почты и пароль.</string>
+    <!-- Translators: %1$s will be replaced by the server name (eg. imap.somewhere.org) and %2$s will be replaced by the human-readable response from the server. this response may be a single word or some sentences and may or may not be localized. -->
+    <string name="ErrSeverResponse">Ответ от %1$s: %2$s\n\nНекоторые поставщики эл.почты помещают дополнительную информацию в папку входящие; проверьте её, например через веб интерфейс. Проконсультируйтесь у поставщика услуги или друзей, в случае если проблема по-прежнему не разрешилась.</string>
 </resources>

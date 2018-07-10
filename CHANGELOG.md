@@ -1,13 +1,15 @@
 # Delta Chat Changelog
 
-## UNRELEASED
+## v0.19.0
+2018-07-10
 
 * Give advices for Google users
-* Refactor internal database usage
-* Update Basque, Catalan, Danish, Dutch, English, Italian, Polish, Russian, and Turkish translations
+* Speed up by making database-locks unneccessary
+* Fix drafts appearing twice
+* Update Albanian, Basque, Catalan, Danish, Dutch, English, Italian, Polish, Russian, and Turkish translations
 * Update website
 
-The changes have been done by Allan Nordhøy, Angelo Fuchs, Björn Petersen, Calbasi,
+The changes have been done by Allan Nordhøy, Angelo Fuchs, Besnik, Björn Petersen, Calbasi,
 Claudio Arseni, guland2000, Heimen Stoffels, Holger Krekel, Luis Fernando Stürmer da Rosa,
 Mahmut Özcan, Ole Carlsen, Osoitz, sebek, Thomas Oster
 
@@ -34,7 +36,7 @@ Mahmut Özcan, Ole Carlsen, Osoitz, sebek, Thomas Oster
 * Update internal sqlite library from 3.22.0 to 3.23.1
 * Update internal libEtPan library from 1.7 to 1.8
 * Add Danish translation from Ole Carlsen
-* Update Albania, Basque, Danish, Italian, Norwegian, Dutch, Polish, Portuguese, Russian and Telugu translations
+* Update Albanian, Basque, Danish, Italian, Norwegian, Dutch, Polish, Portuguese, Russian and Telugu translations
 
 ## v0.17.3
 2018-05-17

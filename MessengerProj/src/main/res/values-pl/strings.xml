@@ -477,6 +477,7 @@
     <string name="EditedNameWillBeShared">Edytowana nazwa zostanie udostępniona wszystkim członkom grupy.</string>
     <string name="E2EEncryptionPreferred">Preferowane pełne szyfrowanie.</string>
     <string name="OobAddrVerified">Zweryfikowano %1$s</string>
+    <string name="OobGroupJoined">Użytkownik %1$s bezpiecznie dołączył do grupy. </string>
     <string name="OobAddrVerifiedIntroduceMyself">Zweryfikowano %1$s, przedstaw się…</string>
     <string name="OobAskJoinVerifiedGroup">Czy chcesz dołączyć do zweryfikowanej grupy <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>?</string>
     <!-- Translators: %1$s is replaced by an action, eg. MsgMemberAddedToGroup, MsgMemberRemovedFromToGroup, MsgGroupNameChanged or MsgGroupImageChanged. If the action ends with a full stop, this is removed.
@@ -503,4 +504,8 @@
     <string name="FetchModePersistentConnection">Stałe połączenie</string>
     <string name="FetchModeExplain">Podczas korzystania z trybu pobierania <![CDATA[<i>]]>Oszczędzaj baterię<![CDATA[</i>]]> nowe wiadomości pojawiają się od razu, jeśli aplikacja jest na pierwszym planie oraz ze średnim opóźnieniem 30 sekund, jeśli aplikacja nie jest używana. Gdy urządzenie znajduje się w trybie drzemki, opóźnienie może być dłuższe. Jest to tryb domyślny.\n\n<![CDATA[<i>]]>Stałe połączenie<![CDATA[</i>]]> jest zazwyczaj szybsze, ale może wymagać umieszczenia aplikacji na białej liście w ustawieniach systemu w celu zwiększenia zużycia baterii.\n\nKtórego trybu pobierania chcesz używać?</string>
     <string name="PermissionCamera">Dostęp do aparatu jest niezbędny, jeśli chcesz robić zdjęcia lub skanować kody QR.</string>
+    <!-- Translators: %1$s will be replaced by the email address -->
+    <string name="ErrCannotLogin">Nie można się zalogować jako <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>. Sprawdź, czy adres e-mail i hasło są poprawne.</string>
+    <!-- Translators: %1$s will be replaced by the server name (eg. imap.somewhere.org) and %2$s will be replaced by the human-readable response from the server. this response may be a single word or some sentences and may or may not be localized. -->
+    <string name="ErrSeverResponse">Odpowiedź od %1$s: %2$s\n\nNiektórzy dostawcy umieszczają w skrzynce odbiorczej dodatkowe informacje, które można sprawdzić np. na stronie internetowej. W przypadku wystąpienia problemów należy skonsultować się z dostawcą lub znajomymi.</string>
 </resources>

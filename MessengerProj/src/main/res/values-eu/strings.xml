@@ -450,6 +450,7 @@
     <string name="EditedNameWillBeShared">Taldeko kide guztiek izango dute izen aldaketaren berri.</string>
     <string name="E2EEncryptionPreferred">Muturretik muturrerako zifratzea hobetsia.</string>
     <string name="OobAddrVerified">%1$s egiaztatuta.</string>
+    <string name="OobGroupJoined">%1$s taldera modu seguruan elkartu da</string>
     <string name="OobAddrVerifiedIntroduceMyself">%1$s egiaztatuta, egin aurkezpena …</string>
     <string name="OobAskJoinVerifiedGroup"><![CDATA[<b>]]>%1$s<![CDATA[</b>]]> egiaztatutako taldera elkartu nahi duzu?</string>
     <!-- Translators: %1$s is replaced by an action, eg. MsgMemberAddedToGroup, MsgMemberRemovedFromToGroup, MsgGroupNameChanged or MsgGroupImageChanged. If the action ends with a full stop, this is removed.
@@ -476,4 +477,8 @@
     <string name="FetchModePersistentConnection">Konexio iraunkorra</string>
     <string name="FetchModeExplain"><![CDATA[<i>]]>Aurreztu bateria<![CDATA[</i>]]> eskuratze modua erabiltzean, mezu berriak berehala agertuko dira aplikazioa irekita dagoenean eta batez beste 30 segunduko atzerapenarekin aplikazioa bigarren planoan badago. Gailua lo dagoenean atzerapena luzeagoa izan daiteke. Hau da lehenetsitako modua.\n\n<![CDATA[<i>]]>Konexio iraunkorra<![CDATA[</i>]]> azkarragoa izan ohi da baina agian aplikazioari bateria gehiago kontsumitzea baimendu behar zaio sistemaren ezarpenetan.\n\nZein eskuratze modu erabili nahi duzu?</string>
     <string name="PermissionCamera">Kamera atzitzeko baimena behar da argazkiak atera nahi badituzu edo QR kodeak eskaneatu nahi badituzu.</string>
+    <!-- Translators: %1$s will be replaced by the email address -->
+    <string name="ErrCannotLogin">Ezin izan da <![CDATA[<b>]]>%1$s<![CDATA[</b>]]> saioa hasi. Egiaztatu e-mail helbidea eta pasahitza zuzenak diren.</string>
+    <!-- Translators: %1$s will be replaced by the server name (eg. imap.somewhere.org) and %2$s will be replaced by the human-readable response from the server. this response may be a single word or some sentences and may or may not be localized. -->
+    <string name="ErrSeverResponse">%1$s(r)en erantzuna: %2$s\n\n Hornitzaile batzuk informazio gehigarria kokatzen dute zure sarrera ontzian; Hau adibidez web interfazea erabiliz egiaztatu dezakezu. Arazorik baduzu galdetu hornitzaileari edo zure lagunei.</string>
 </resources>
