@@ -218,6 +218,7 @@ public class MrMailbox {
     public final static int MR_EVENT_MSGS_CHANGED             = 2000;
     public final static int MR_EVENT_INCOMING_MSG             = 2005;
     public final static int MR_EVENT_MSG_DELIVERED            = 2010;
+    public final static int DC_EVENT_MSG_FAILED               = 2012;
     public final static int MR_EVENT_MSG_READ                 = 2015;
 
     public final static int MR_EVENT_CHAT_MODIFIED            = 2020;
@@ -317,6 +318,7 @@ public class MrMailbox {
 
             case MR_EVENT_MSG_DELIVERED:
             case MR_EVENT_MSG_READ:
+            case DC_EVENT_MSG_FAILED:
                 AndroidUtilities.runOnUIThread(new Runnable() {
                     @Override
                     public void run() {
