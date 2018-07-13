@@ -101,7 +101,7 @@ public class VideoEditorActivity extends BaseFragment implements TextureView.Sur
     private long resultDurationMs = 0;
     private int estimatedBytes = 0;
 
-    final long MAX_BYTES = (24*1024*1024)/4*3; // 25 MB minus 1 MB header-overhead minus base64-overhead
+    private long MAX_BYTES;
 
     public interface VideoEditorActivityDelegate {
         void didFinishEditVideo(VideoEditedInfo vei, long estimatedSize, long estimatedDuration);
@@ -166,6 +166,7 @@ public class VideoEditorActivity extends BaseFragment implements TextureView.Sur
     public VideoEditorActivity(Bundle args) {
         super(args);
         videoPath = args.getString("videoPath");
+        MAX_BYTES = MrMailbox.getConfigInt("sys.msgsize_max_recommended", 10*1024*1024);
     }
 
     @Override
