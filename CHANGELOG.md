@@ -1,5 +1,13 @@
 # Delta Chat Changelog
 
+## UNRELEASED
+
+* Check size before sending videos, files and other attachments
+* On sending problems, try over an appropriate number of times; then give up
+* Detect sending problems related to the message size, show an error and do not try over
+* Show message errors in the message info
+
+
 ## v0.19.0
 2018-07-10
 
