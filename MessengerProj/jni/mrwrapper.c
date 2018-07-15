@@ -32,7 +32,7 @@
 
 
 #define CHAR_REF(a) \
-	const char* a##Ptr = (a)? (*env)->GetStringUTFChars(env, (a), 0) : NULL; /* passing a NULL-jstring results in a NULL-ptr - this is needed eg. for dc_set_draft() and many others */
+	const char* a##Ptr = (a)? (*env)->GetStringUTFChars(env, (a), 0) : NULL; // passing a NULL-jstring results in a NULL-ptr - this is needed by functions using eg. NULL for "delete"
 
 #define CHAR_UNREF(a) \
 	if(a) { (*env)->ReleaseStringUTFChars(env, (a), a##Ptr); }
@@ -446,7 +446,7 @@ JNIEXPORT jint Java_com_b44t_messenger_MrMailbox_removeContactFromChat(JNIEnv *e
 JNIEXPORT void Java_com_b44t_messenger_MrMailbox_setDraft(JNIEnv *env, jclass cls, jint chat_id, jstring draft /* NULL=delete */)
 {
 	CHAR_REF(draft);
-		dc_set_draft(get_dc_context(env, cls), chat_id, draftPtr /* NULL=delete */);
+		dc_set_text_draft(get_dc_context(env, cls), chat_id, draftPtr /* NULL=delete */);
 	CHAR_UNREF(draft);
 }
 
@@ -847,7 +847,7 @@ JNIEXPORT jboolean Java_com_b44t_messenger_MrChat_isVerified(JNIEnv *env, jobjec
 
 JNIEXPORT jstring Java_com_b44t_messenger_MrChat_getDraft(JNIEnv *env, jobject obj) /* returns NULL for "no draft" */
 {
-	const char* temp = dc_chat_get_draft(get_dc_chat(env, obj));
+	const char* temp = dc_chat_get_text_draft(get_dc_chat(env, obj));
 		jstring ret = temp? JSTRING_NEW(temp) : NULL;
 	free(temp);
 	return ret;
