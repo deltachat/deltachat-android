@@ -234,7 +234,7 @@ public class SettingsAdvFragment extends BaseFragment implements NotificationCen
                     else {
                         AlertDialog.Builder builder1 = new AlertDialog.Builder(getParentActivity());
                         builder1.setTitle("Labs: QR code options");
-                        builder1.setMessage("With the QR code options you can easily connect to other Delta Chat users by scanning a QR code. Moreover, this securely transfers the encryption keys in both directions and allows the creation of verified groups.\n\nStay tuned for more information about this on the mailing ist :)\n\nDo you want to enable this experimental feature that may still contain issues?");
+                        builder1.setMessage("With the QR code options you can easily connect to other Delta Chat users by scanning a QR code. Moreover, this securely transfers the encryption keys in both directions and allows the creation of verified groups.\n\nStay tuned for more information about this on the mailing list :)\n\nDo you want to enable this experimental feature that may still contain issues?");
                         builder1.setNegativeButton(R.string.Cancel, null);
                         builder1.setPositiveButton(R.string.OK, new DialogInterface.OnClickListener() {
                             @Override
