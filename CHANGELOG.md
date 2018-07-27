@@ -9,7 +9,7 @@
 * Add user forum to website
 * Update Danish and Russian Translations
 
-The changes habe been done by Andrei Guliaikin, Björn Petersen, compl4xx, Janka, Ole Carlsen
+The changes have been done by Andrei Guliaikin, Björn Petersen, compl4xx, Janka, Ole Carlsen
 
 
 ## v0.19.0
