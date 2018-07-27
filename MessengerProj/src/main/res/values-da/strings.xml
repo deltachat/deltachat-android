@@ -203,7 +203,7 @@
     <string name="AreYouSureDeleteContact">Slette kontakt?</string>
     <!--permissions-->
     <string name="PermissionContacts">Adgang til kontakter nødvendig for at forbinde med venner på alle enheder.</string>
-    <string name="PermissionStorage">Lager adgang nødvendig for at sende og gemme billeder, video, musik og andre medier.</string>
+    <string name="PermissionStorage">Lager adgang nødvendigt for at sende og gemme billeder, video, musik og andre medier.</string>
     <string name="PermissionNoAudio">Tildele mikrofon adgang for at optage tale beskeder.</string>
     <string name="PermissionOpenSettings">Opsætning</string>
     <!--Intro view-->
@@ -450,6 +450,7 @@
     <string name="EditedNameWillBeShared">Redigeret navn vil blive delt med alle gruppe medlemmer.</string>
     <string name="E2EEncryptionPreferred">Ende-til-ende kryptering foretrukken.</string>
     <string name="OobAddrVerified">%1$s efterprøvet.</string>
+    <string name="OobGroupJoined">%1$s sikkert tilsluttet gruppe.</string>
     <string name="OobAddrVerifiedIntroduceMyself">%1$s efterprøvet, præsentere…</string>
     <string name="OobAskJoinVerifiedGroup">Tilslutte efterprøvet gruppe <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>?</string>
     <!-- Translators: %1$s is replaced by an action, eg. MsgMemberAddedToGroup, MsgMemberRemovedFromToGroup, MsgGroupNameChanged or MsgGroupImageChanged. If the action ends with a full stop, this is removed.

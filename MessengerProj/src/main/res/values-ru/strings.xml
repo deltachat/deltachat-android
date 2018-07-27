@@ -477,6 +477,7 @@
     <string name="EditedNameWillBeShared">Отредактированное имя будет разослано всем участникам группы.</string>
     <string name="E2EEncryptionPreferred">Предпочтено сквозное шифрование.</string>
     <string name="OobAddrVerified">%1$s верифицирован.</string>
+    <string name="OobGroupJoined">%1$s безопасно присоединился к группе.</string>
     <string name="OobAddrVerifiedIntroduceMyself">%1$s верифицирован, представьтесь …</string>
     <string name="OobAskJoinVerifiedGroup">Вы хотите присоединиться к верифицированной группе <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>?</string>
     <!-- Translators: %1$s is replaced by an action, eg. MsgMemberAddedToGroup, MsgMemberRemovedFromToGroup, MsgGroupNameChanged or MsgGroupImageChanged. If the action ends with a full stop, this is removed.
