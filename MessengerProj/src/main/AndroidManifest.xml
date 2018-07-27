@@ -227,7 +227,12 @@
 
         <receiver android:name=".NotificationDismissReceiver" android:exported="false"/>
 
-        <provider android:name=".AttachmentsContentProvider" android:authorities="${applicationId}.attachments" android:exported="true" />
+        <provider
+            android:name=".AttachmentsContentProvider"
+            android:authorities="${applicationId}.attachments"
+            android:grantUriPermissions="true"
+            android:exported="false">
+        </provider>
 
         <provider
             android:name="android.support.v4.content.FileProvider"

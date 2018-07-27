@@ -80,6 +80,7 @@ import java.nio.channels.FileChannel;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Locale;
 
 public class AndroidUtilities {
@@ -817,6 +818,8 @@ public class AndroidUtilities {
         return mimeType;
     }
 
+    public static HashMap<String, Integer> sharedFiles = new HashMap<>();
+
     public static void openForViewOrShare(Activity activity, int msg_id, String cmd)
     {
         MrMsg msg = MrMailbox.getMsg(msg_id);
@@ -832,6 +835,7 @@ public class AndroidUtilities {
             Uri uri;
             if (path.startsWith(MrMailbox.getBlobdir())) {
                 uri = Uri.parse("content://" + BuildConfig.APPLICATION_ID + ".attachments/" + file.getName());
+                sharedFiles.put("/"+file.getName(), 1); // as different Android version handle uris in putExtra differently, we also check them on our own
             } else {
                 if (Build.VERSION.SDK_INT >= 24) {
                     uri = FileProvider.getUriForFile(activity, BuildConfig.APPLICATION_ID + ".provider", file);

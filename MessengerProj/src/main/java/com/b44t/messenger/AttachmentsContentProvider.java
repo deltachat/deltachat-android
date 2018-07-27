@@ -48,7 +48,12 @@ public class AttachmentsContentProvider extends ContentProvider {
 
     @Override
     public ParcelFileDescriptor openFile(Uri uri, String mode) throws FileNotFoundException {
-        File privateFile = new File(MrMailbox.getBlobdir(), uri.getPath());
+        String path = uri.getPath();
+        if (!AndroidUtilities.sharedFiles.containsKey(path)) {
+            throw new FileNotFoundException("File was not shared before.");
+        }
+
+        File privateFile = new File(MrMailbox.getBlobdir(), path);
         return ParcelFileDescriptor.open(privateFile, ParcelFileDescriptor.MODE_READ_ONLY);
     }
 
