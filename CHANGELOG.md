@@ -6,6 +6,10 @@
 * On sending problems, try over an appropriate number of times; then give up
 * Detect sending problems related to the message size, show an error and do not try over
 * Show message errors in the message info
+* Add user forum to website
+* Update Danish and Russian Translations
+
+The changes habe been done by Andrei Guliaikin, Björn Petersen, compl4xx, Janka, Ole Carlsen
 
 
 ## v0.19.0
