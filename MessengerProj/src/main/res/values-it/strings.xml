@@ -450,6 +450,7 @@
     <string name="EditedNameWillBeShared">Il nome modificato verrà condiviso con tutti i membri del gruppo.</string>
     <string name="E2EEncryptionPreferred">Cifratura end-to-end preferita.</string>
     <string name="OobAddrVerified">%1$s verificato.</string>
+    <string name="OobGroupJoined">%1$s è entrato nel gruppo sicuro.</string>
     <string name="OobAddrVerifiedIntroduceMyself">%1$s verificato, mi presento…</string>
     <string name="OobAskJoinVerifiedGroup">Entrare nel gruppo verificato <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>?</string>
     <!-- Translators: %1$s is replaced by an action, eg. MsgMemberAddedToGroup, MsgMemberRemovedFromToGroup, MsgGroupNameChanged or MsgGroupImageChanged. If the action ends with a full stop, this is removed.
@@ -471,7 +472,13 @@
     <string name="QrShowInviteCode">Mostra codice QR di invito</string>
     <string name="QrJoinVerifiedGroupTitle">Codice QR di invito</string>
     <string name="QrJoinVerifiedGroupHint">Scansiona questo per entrare nel gruppo verificato <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>.</string>
+    <string name="FetchMode">Modalità di recupero</string>
     <string name="FetchModeSaveBattery">Risparmia batteria</string>
     <string name="FetchModePersistentConnection">Connessione persistente</string>
+    <string name="FetchModeExplain">Quando viene usata la modalità di recupero <![CDATA[<i>]]>Risparmia batteria<![CDATA[</i>]]>, i nuovi messaggi appaiono una volta che l\'app è in primo  piano e con un ritardo di 30 secondi se l\'app non viene usata. Quando il dispositivo è in stanby il ritardo potrebbe essere maggiore. Questa è la modalità predefinita.\n\n<![CDATA[<i>]]>Connessione persistente<![CDATA[</i>]]> di solito è più veloce, ma potrebbe richiedere che l\'app venga inserita nella lista bianca del sistema tramite le impostazioni per permetterle di consumare più batteria.\n\nQuale modalità di recupero vuoi usare?</string>
     <string name="PermissionCamera">L\'accesso alla fotocamera è necessario se si vogliono acquisire immagini o per eseguire la scansione dei codici QR.</string>
-    </resources>
+    <!-- Translators: %1$s will be replaced by the email address -->
+    <string name="ErrCannotLogin">Impossibile accedere come <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>. Per favore, controlla la correttezza di indirizzo email e password.</string>
+    <!-- Translators: %1$s will be replaced by the server name (eg. imap.somewhere.org) and %2$s will be replaced by the human-readable response from the server. this response may be a single word or some sentences and may or may not be localized. -->
+    <string name="ErrSeverResponse">Risposta da %1$s: %2$s\n\nAlcuni provider potrebbero inserire altre informazioni nella casella di posta, controlla ad es. nell\'interfaccia web. Chiedi al provider o ai tuoi amici se riscontri problemi.</string>
+</resources>

@@ -88,7 +88,7 @@
     <string name="Enabled">Til</string>
     <string name="Disabled">Fra</string>
     <string name="LedColor">LED farve</string>
-    <string name="BadgeNumber">Brug ikon for at holde antal hvis muligt</string>
+    <string name="BadgeNumber">Brug ikon for at holde optælling hvis muligt</string>
     <string name="Short">Kort</string>
     <string name="Long">Lang</string>
     <string name="RaiseToSpeak">Hæve for at tale</string>
@@ -110,7 +110,7 @@
     <!--cache view-->
     <string name="CacheSettings">Lager</string>
     <string name="KeepMedia">Beholde medie</string>
-    <string name="KeepMediaInfo">Billeder, videor og andre filer fra sky samtaler som <![CDATA[<b>ikke er tilgået</b>]]> i enne periode vil blive fjernet fra denne enhed for at spare lager plads.</string>
+    <string name="KeepMediaInfo">Billeder, videor og andre filer fra sky samtaler som <![CDATA[<b>ikke er tilgået</b>]]> i denne periode fjernes fra denne enhed for at spare lager plads.</string>
     <string name="KeepMediaForever">For altid</string>
     <!--passcode view-->
     <string name="Passcode">Kodeordslås</string>
@@ -198,7 +198,7 @@
     <string name="ContactAlreadyInGroup">Kontakt allerede i gruppen.</string>
     <string name="ForwardMessagesTo">Videresende valgte beskeder til <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>?</string>
     <string name="SendMessagesTo">Sende beskeder til <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>?</string>
-    <string name="AreYouSureDeleteThisChat">Slette samtale? Den vil ikke længere blive vist i samtale listen, dets bekseder vil forblive på serveren.</string>
+    <string name="AreYouSureDeleteThisChat">Slette samtale? Den vil ikke længere blive vist i samtale listen, dens beskeder vil forblive på serveren.</string>
     <string name="AreYouSureBlockContact">Blokere kontakt?</string>
     <string name="AreYouSureDeleteContact">Slette kontakt?</string>
     <!--permissions-->
@@ -211,7 +211,7 @@
     <string name="Intro1Message">Budbringeren med det <![CDATA[<b>største publikum</b>]]> i verden. <![CDATA[<b>Fri</b>]]> og <![CDATA[<b>uafhængig</b>]]>.</string>
 
     <string name="Intro2Headline">Uafhængig</string>
-    <string name="Intro2Message"><![CDATA[<b>Der er ingen Delta Chat server.</b>]]> Programmet bruger e-post server.</string>
+    <string name="Intro2Message"><![CDATA[<b>Der er ingen Delta Chat server.</b>]]> Programmet bruger kun e-post server.</string>
 
     <string name="Intro3Headline">Hurtig</string>
     <string name="Intro3Message"><![CDATA[<b>Skubbe beskeder</b>]]> på sekunder.<![CDATA[<br/>]]>Hurtig grænseflade.</string>
@@ -349,7 +349,7 @@
     <string name="InviteMenuEntry">Sende invitationer</string>
     <string name="InviteText"> Jeg bruger Delta Chat - %1$s - du kan skrive til mig hos %2$s</string>
     <string name="AdvancedSettings">Avanceret</string>
-    <string name="AskResetNotifications">Nulstille alle påmindelse opsætning og lyde på nuværende side, kontakter og grupper?</string>
+    <string name="AskResetNotifications">Nulstille alle påmindelse opsætninger og lyde på nuværende side, kontakter og grupper?</string>
     <string name="AttachFiles">Vedhæfte filer</string>
     <string name="ErrGroupNameEmpty">Indtaste gruppe navn.</string>
     <string name="MsgNewGroupDraftHint">Skriv den første besked som tillader andre at svare inden for denne gruppe.\n\n• Det er o.k. hvis ikke alle medlemmer bruger Delta Chat.\n\n• Aflevering af første besked kan tage nogen tid.</string>
@@ -430,8 +430,8 @@
     <string name="SelfTalkSubtitle">Beskeder sendt af undertegnet til undertegnet</string>
     <string name="QrScan">Skanne QR kode</string>
     <string name="QrShow">Vise QR kode</string>
-    <string name="QrScanContainsText">Skannet QR kode indeholder følgende tekst:\n\n%1$s</string>
-    <string name="QrScanContainsUrl">Skannet QR kode indeholder følgende URL:\n\n%1$s</string>
+    <string name="QrScanContainsText">Skannet QR kode tekst:\n\n%1$s</string>
+    <string name="QrScanContainsUrl">Skannet QR kode URL:\n\n%1$s</string>
     <string name="OobFingerprint">Fingeraftryk</string>
     <string name="OobFingerprintAskOob">Efterprøv kontakt og start samtale med <![CDATA[<b>]]>%1$s<![CDATA[</b>]]>?</string>
     <string name="OobFingerprintOk">Kontact <![CDATA[<i>]]>%1$s<![CDATA[</i>]]> efterprøvet. Start samtale?</string>
