@@ -1,15 +1,21 @@
 # Delta Chat Changelog
 
-## UNRELEASED
+## v0.20.0
+2018-08-14
 
 * Check size before sending videos, files and other attachments
 * On sending problems, try over an appropriate number of times; then give up
 * Detect sending problems related to the message size, show an error and do not try over
 * Show message errors in the message info
 * Add user forum to website
-* Update Danish and Russian Translations
+* Update python bindings
+* Seed node.js bindings and a CLI version based on this
+* Prepare Android bindings update
+* Update Danish, Italian and Russian translations
 
-The changes have been done by Andrei Guliaikin, Björn Petersen, compl4xx, Janka, Ole Carlsen
+The changes have been done by Andrei Guliaikin, Angelo Fuchs, Björn Petersen,
+compl4xx, Boehrsi, Enrico B., Floris Bruynooghe, Holger Krekel, Janka, Jikstra,
+Karissa McKelvey, Lars-Magnus Skog, Ole Carlsen
 
 
 ## v0.19.0
