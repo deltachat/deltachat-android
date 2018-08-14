@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".WelcomeActivity">
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/welcome_viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/welcome_page_tab_layout"/>
+
+    <android.support.design.widget.TabLayout
+        android:id="@+id/welcome_page_tab_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@id/skip_button_top_spacer"
+        app:tabBackground="@drawable/paging_indicator"
+        app:tabGravity="center"
+        app:tabIndicatorHeight="0dp"/>
+
+    <android.support.v4.widget.Space
+        android:id="@+id/skip_button_top_spacer"
+        android:layout_width="match_parent"
+        android:layout_height="32dp"
+        app:layout_constraintBottom_toTopOf="@id/skip_button"/>
+
+    <com.dd.CircularProgressButton
+        android:id="@+id/skip_button"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:background="@color/signal_primary"
+        android:paddingEnd="8dp"
+        android:paddingStart="8dp"
+        android:textColor="@color/white"
+        app:cpb_colorIndicator="@color/white"
+        app:cpb_colorProgress="@color/textsecure_primary"
+        app:cpb_cornerRadius="20dp"
+        app:cpb_selectorIdle="@drawable/progress_button_state"
+        app:cpb_textIdle="Start Messaging"
+        app:layout_constraintBottom_toTopOf="@id/skip_button_bottom_spacer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <android.support.v4.widget.Space
+        android:id="@+id/skip_button_bottom_spacer"
+        android:layout_width="match_parent"
+        android:layout_height="32dp"
+        app:layout_constraintBottom_toTopOf="@id/backup_text"/>
+
+    <TextView
+        android:id="@+id/backup_text"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:gravity="center"
+        android:text="Import backup"
+        android:textColor="@color/blue_400"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/backup_icon"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <ImageView
+        android:id="@+id/backup_icon"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:padding="8dp"
+        android:src="@drawable/ic_folder_white_48dp"
+        android:tint="@color/blue_400"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toEndOf="@id/backup_text"
+        app:layout_constraintTop_toBottomOf="@id/skip_button_bottom_spacer"/>
+
+</android.support.constraint.ConstraintLayout>
+

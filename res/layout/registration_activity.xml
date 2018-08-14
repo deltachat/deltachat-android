@@ -1,0 +1,358 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:fillViewport="true"
+    tools:context=".RegistrationActivity">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:animateLayoutChanges="true">
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guideline_root_start"
+            android:layout_width="wrap_content"
+            android:layout_height="16dp"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="16dp" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guideline_root_end"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="16dp" />
+
+        <TextView
+            android:id="@+id/header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/signal_primary"
+            android:gravity="center"
+            android:padding="16dp"
+            android:text="Login to Delta Chat"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/sub_header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/signal_primary"
+            android:gravity="center"
+            android:paddingBottom="48dp"
+            android:text="For known email providers additional settings are setup automatically.
+Sometimes IMAP needs to be enabled in the web frontend. Consult your email provider or friends for help."
+            android:textColor="@color/white"
+            app:layout_constraintTop_toBottomOf="@id/header" />
+
+        <android.support.v4.widget.Space
+            android:id="@+id/fab_spacer"
+            android:layout_width="wrap_content"
+            android:layout_height="28dp"
+            app:layout_constraintTop_toBottomOf="@id/sub_header" />
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_forum_white_24dp"
+            android:tint="@color/grey_700"
+            app:backgroundTint="@color/white"
+            app:elevation="1dp"
+            app:fabSize="normal"
+            app:layout_constraintBottom_toBottomOf="@id/fab_spacer"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/email"
+            android:layout_width="0dp"
+            android:layout_height="58dp"
+            app:errorEnabled="true"
+            app:layout_constraintEnd_toEndOf="@id/guideline_root_end"
+            app:layout_constraintStart_toStartOf="@id/guideline_root_start"
+            app:layout_constraintTop_toBottomOf="@id/fab">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/email_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Email address"
+                android:inputType="textEmailAddress" />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/password"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="@id/guideline_root_end"
+            app:layout_constraintStart_toStartOf="@id/guideline_root_start"
+            app:layout_constraintTop_toBottomOf="@id/email"
+            app:passwordToggleEnabled="true">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/password_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Password"
+                android:inputType="textPassword" />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.constraint.Group
+            android:id="@+id/advanced_group"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:constraint_referenced_ids="inbox, imap_login, imap_server, imap_port, imap_security_label, imap_security, outbox_view_spacer_top,
+            outbox, smtp_login, smtp_password, smtp_server, smtp_port, smtp_security_label, smtp_security, register_button_spacer_top" />
+
+        <TextView
+            android:id="@+id/advanced_text"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:gravity="center"
+            android:text="Advanced"
+            android:textColor="@color/blue_400"
+            app:layout_constraintEnd_toStartOf="@+id/advanced_icon"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="@id/guideline_root_start"
+            app:layout_constraintTop_toBottomOf="@id/password" />
+
+        <ImageView
+            android:id="@+id/advanced_icon"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:padding="8dp"
+            android:src="@drawable/ic_menu_remove_holo_light"
+            android:tint="@color/blue_400"
+            app:layout_constraintBottom_toTopOf="@+id/inbox"
+            app:layout_constraintEnd_toStartOf="@+id/guideline_root_end"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toEndOf="@id/advanced_text"
+            app:layout_constraintTop_toBottomOf="@id/password" />
+
+        <TextView
+            android:id="@+id/inbox"
+            android:layout_width="wrap_content"
+            android:layout_height="24dp"
+            android:gravity="center"
+            android:text="Inbox"
+            app:layout_constraintStart_toStartOf="@id/guideline_root_start"
+            app:layout_constraintTop_toBottomOf="@id/advanced_text" />
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/imap_login"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="@id/guideline_root_end"
+            app:layout_constraintStart_toStartOf="@id/guideline_root_start"
+            app:layout_constraintTop_toBottomOf="@id/inbox">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/imap_login_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="IMAP login-name"
+                android:inputType="text" />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/imap_server"
+            android:layout_width="0dp"
+            android:layout_height="58dp"
+            app:errorEnabled="true"
+            app:layout_constraintEnd_toEndOf="@id/guideline_root_end"
+            app:layout_constraintStart_toStartOf="@id/guideline_root_start"
+            app:layout_constraintTop_toBottomOf="@id/imap_login">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/imap_server_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="IMAP server"
+                android:inputType="number" />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/imap_port"
+            android:layout_width="0dp"
+            android:layout_height="58dp"
+            app:errorEnabled="true"
+            app:layout_constraintEnd_toEndOf="@id/guideline_root_end"
+            app:layout_constraintStart_toStartOf="@id/guideline_root_start"
+            app:layout_constraintTop_toBottomOf="@id/imap_server">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/imap_port_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="IMAP port"
+                android:inputType="number" />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <TextView
+            android:id="@+id/imap_security_label"
+            style="@style/TextAppearance.AppCompat.Caption"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="IMAP Security"
+            app:layout_constraintEnd_toEndOf="@id/guideline_root_end"
+            app:layout_constraintStart_toStartOf="@id/guideline_root_start"
+            app:layout_constraintTop_toBottomOf="@id/imap_port" />
+
+        <Spinner
+            android:id="@+id/imap_security"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:entries="@array/server_security"
+            app:layout_constraintEnd_toEndOf="@id/guideline_root_end"
+            app:layout_constraintStart_toStartOf="@id/guideline_root_start"
+            app:layout_constraintTop_toBottomOf="@id/imap_security_label" />
+
+        <android.support.v4.widget.Space
+            android:id="@+id/outbox_view_spacer_top"
+            android:layout_width="wrap_content"
+            android:layout_height="16dp"
+            app:layout_constraintTop_toBottomOf="@id/imap_security" />
+
+        <TextView
+            android:id="@+id/outbox"
+            android:layout_width="wrap_content"
+            android:layout_height="24dp"
+            android:gravity="center"
+            android:text="Outbox"
+            app:layout_constraintStart_toStartOf="@id/guideline_root_start"
+            app:layout_constraintTop_toBottomOf="@id/outbox_view_spacer_top" />
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/smtp_login"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="@id/guideline_root_end"
+            app:layout_constraintStart_toStartOf="@id/guideline_root_start"
+            app:layout_constraintTop_toBottomOf="@id/outbox">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/smtp_login_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="SMTP login-name"
+                android:inputType="textPassword" />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/smtp_password"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="@id/guideline_root_end"
+            app:layout_constraintStart_toStartOf="@id/guideline_root_start"
+            app:layout_constraintTop_toBottomOf="@id/smtp_login"
+            app:passwordToggleEnabled="true">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/smtp_password_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="SMTP Password"
+                android:inputType="textPassword" />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/smtp_server"
+            android:layout_width="0dp"
+            android:layout_height="58dp"
+            app:errorEnabled="true"
+            app:layout_constraintEnd_toEndOf="@id/guideline_root_end"
+            app:layout_constraintStart_toStartOf="@id/guideline_root_start"
+            app:layout_constraintTop_toBottomOf="@id/smtp_password">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/smtp_server_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="SMTP server"
+                android:inputType="text" />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/smtp_port"
+            android:layout_width="0dp"
+            android:layout_height="58dp"
+            app:errorEnabled="true"
+            app:layout_constraintEnd_toEndOf="@id/guideline_root_end"
+            app:layout_constraintStart_toStartOf="@id/guideline_root_start"
+            app:layout_constraintTop_toBottomOf="@id/smtp_server">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/smtp_port_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="SMTP port"
+                android:inputType="number" />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <TextView
+            android:id="@+id/smtp_security_label"
+            style="@style/TextAppearance.AppCompat.Caption"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="SMTP Security"
+            app:layout_constraintEnd_toEndOf="@id/guideline_root_end"
+            app:layout_constraintStart_toStartOf="@id/guideline_root_start"
+            app:layout_constraintTop_toBottomOf="@id/smtp_port" />
+
+        <Spinner
+            android:id="@+id/smtp_security"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:entries="@array/server_security"
+            app:layout_constraintEnd_toEndOf="@id/guideline_root_end"
+            app:layout_constraintStart_toStartOf="@id/guideline_root_start"
+            app:layout_constraintTop_toBottomOf="@id/smtp_security_label" />
+
+        <android.support.v4.widget.Space
+            android:id="@+id/register_button_spacer_top"
+            android:layout_width="wrap_content"
+            android:layout_height="16dp"
+            app:layout_constraintTop_toBottomOf="@id/smtp_security" />
+
+        <com.dd.CircularProgressButton
+            android:id="@+id/register_button"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
+            android:background="@color/signal_primary"
+            android:textColor="@color/white"
+            app:cpb_colorIndicator="@color/white"
+            app:cpb_colorProgress="@color/textsecure_primary"
+            app:cpb_cornerRadius="50dp"
+            app:cpb_selectorIdle="@drawable/progress_button_state"
+            app:cpb_textIdle="@string/registration_activity__register"
+            app:layout_constraintEnd_toEndOf="@id/guideline_root_end"
+            app:layout_constraintStart_toStartOf="@id/guideline_root_start"
+            app:layout_constraintTop_toBottomOf="@id/register_button_spacer_top" />
+
+        <android.support.v4.widget.Space
+            android:layout_width="wrap_content"
+            android:layout_height="16dp"
+            app:layout_constraintTop_toBottomOf="@id/register_button" />
+
+    </android.support.constraint.ConstraintLayout>
+
+</ScrollView>
