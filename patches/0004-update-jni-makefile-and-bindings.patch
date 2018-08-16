@@ -1,0 +1,2411 @@
+From 5a0e6e5eadd8fdcf9ac75f3d2f25b44a650b7fcc Mon Sep 17 00:00:00 2001
+Message-Id: <5a0e6e5eadd8fdcf9ac75f3d2f25b44a650b7fcc.1534410135.git.daniel.boehrs@open-xchange.com>
+In-Reply-To: <371694c11a8b1192ef5230b98af3a5719add98ef.1534410134.git.daniel.boehrs@open-xchange.com>
+References: <371694c11a8b1192ef5230b98af3a5719add98ef.1534410134.git.daniel.boehrs@open-xchange.com>
+From: "B. Petersen" <r10s@b44t.com>
+Date: Fri, 27 Jul 2018 15:02:53 +0200
+Subject: [PATCH 4/6] update jni makefile and bindings
+
+---
+ jni/Android.mk  |  932 ++++++++++++++++++++++++++++++++++++++-
+ jni/mrjnimain.c |   77 ++++
+ jni/mrjnimain.h |   54 +++
+ jni/mrwrapper.c | 1299 +++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 4 files changed, 2358 insertions(+), 4 deletions(-)
+
+diff --git a/jni/Android.mk b/jni/Android.mk
+index cac4c9c..d085d06 100644
+--- a/jni/Android.mk
++++ b/jni/Android.mk
+@@ -1,11 +1,935 @@
+ JNI_DIR := $(call my-dir)
++LOCAL_PATH := $(call my-dir)
++
++################################################################################
++# openssl - libcrypto
++################################################################################
++
++include $(CLEAR_VARS)
++
++
++CRYPTO_PATH:= ./openssl/crypto
++
++arm_cflags := -DOPENSSL_BN_ASM_MONT -DAES_ASM -DSHA1_ASM -DSHA256_ASM -DSHA512_ASM
++
++local_src_files := \
++	./openssl/crypto/cryptlib.c \
++	./openssl/crypto/mem.c \
++	./openssl/crypto/mem_clr.c \
++	./openssl/crypto/mem_dbg.c \
++	./openssl/crypto/cversion.c \
++	./openssl/crypto/ex_data.c \
++	./openssl/crypto/cpt_err.c \
++	./openssl/crypto/ebcdic.c \
++	./openssl/crypto/uid.c \
++	./openssl/crypto/o_time.c \
++	./openssl/crypto/o_str.c \
++	./openssl/crypto/o_dir.c \
++	./openssl/crypto/o_init.c \
++	./openssl/crypto/aes/aes_cbc.c \
++	./openssl/crypto/aes/aes_core.c \
++	./openssl/crypto/aes/aes_cfb.c \
++	./openssl/crypto/aes/aes_ctr.c \
++	./openssl/crypto/aes/aes_ecb.c \
++	./openssl/crypto/aes/aes_ige.c \
++	./openssl/crypto/aes/aes_misc.c \
++	./openssl/crypto/aes/aes_ofb.c \
++	./openssl/crypto/aes/aes_wrap.c \
++	./openssl/crypto/asn1/a_bitstr.c \
++	./openssl/crypto/asn1/a_bool.c \
++	./openssl/crypto/asn1/a_bytes.c \
++	./openssl/crypto/asn1/a_d2i_fp.c \
++	./openssl/crypto/asn1/a_digest.c \
++	./openssl/crypto/asn1/a_dup.c \
++	./openssl/crypto/asn1/a_enum.c \
++	./openssl/crypto/asn1/a_gentm.c \
++	./openssl/crypto/asn1/a_i2d_fp.c \
++	./openssl/crypto/asn1/a_int.c \
++	./openssl/crypto/asn1/a_mbstr.c \
++	./openssl/crypto/asn1/a_object.c \
++	./openssl/crypto/asn1/a_octet.c \
++	./openssl/crypto/asn1/a_print.c \
++	./openssl/crypto/asn1/a_set.c \
++	./openssl/crypto/asn1/a_sign.c \
++	./openssl/crypto/asn1/a_strex.c \
++	./openssl/crypto/asn1/a_strnid.c \
++	./openssl/crypto/asn1/a_time.c \
++	./openssl/crypto/asn1/a_type.c \
++	./openssl/crypto/asn1/a_utctm.c \
++	./openssl/crypto/asn1/a_utf8.c \
++	./openssl/crypto/asn1/a_verify.c \
++	./openssl/crypto/asn1/ameth_lib.c \
++	./openssl/crypto/asn1/asn1_err.c \
++	./openssl/crypto/asn1/asn1_gen.c \
++	./openssl/crypto/asn1/asn1_lib.c \
++	./openssl/crypto/asn1/asn1_par.c \
++	./openssl/crypto/asn1/asn_mime.c \
++	./openssl/crypto/asn1/asn_moid.c \
++	./openssl/crypto/asn1/asn_pack.c \
++	./openssl/crypto/asn1/bio_asn1.c \
++	./openssl/crypto/asn1/bio_ndef.c \
++	./openssl/crypto/asn1/d2i_pr.c \
++	./openssl/crypto/asn1/d2i_pu.c \
++	./openssl/crypto/asn1/evp_asn1.c \
++	./openssl/crypto/asn1/f_enum.c \
++	./openssl/crypto/asn1/f_int.c \
++	./openssl/crypto/asn1/f_string.c \
++	./openssl/crypto/asn1/i2d_pr.c \
++	./openssl/crypto/asn1/i2d_pu.c \
++	./openssl/crypto/asn1/n_pkey.c \
++	./openssl/crypto/asn1/nsseq.c \
++	./openssl/crypto/asn1/p5_pbe.c \
++	./openssl/crypto/asn1/p5_pbev2.c \
++	./openssl/crypto/asn1/p8_pkey.c \
++	./openssl/crypto/asn1/t_bitst.c \
++	./openssl/crypto/asn1/t_crl.c \
++	./openssl/crypto/asn1/t_pkey.c \
++	./openssl/crypto/asn1/t_req.c \
++	./openssl/crypto/asn1/t_spki.c \
++	./openssl/crypto/asn1/t_x509.c \
++	./openssl/crypto/asn1/t_x509a.c \
++	./openssl/crypto/asn1/tasn_dec.c \
++	./openssl/crypto/asn1/tasn_enc.c \
++	./openssl/crypto/asn1/tasn_fre.c \
++	./openssl/crypto/asn1/tasn_new.c \
++	./openssl/crypto/asn1/tasn_prn.c \
++	./openssl/crypto/asn1/tasn_typ.c \
++	./openssl/crypto/asn1/tasn_utl.c \
++	./openssl/crypto/asn1/x_algor.c \
++	./openssl/crypto/asn1/x_attrib.c \
++	./openssl/crypto/asn1/x_bignum.c \
++	./openssl/crypto/asn1/x_crl.c \
++	./openssl/crypto/asn1/x_exten.c \
++	./openssl/crypto/asn1/x_info.c \
++	./openssl/crypto/asn1/x_long.c \
++	./openssl/crypto/asn1/x_name.c \
++	./openssl/crypto/asn1/x_nx509.c \
++	./openssl/crypto/asn1/x_pkey.c \
++	./openssl/crypto/asn1/x_pubkey.c \
++	./openssl/crypto/asn1/x_req.c \
++	./openssl/crypto/asn1/x_sig.c \
++	./openssl/crypto/asn1/x_spki.c \
++	./openssl/crypto/asn1/x_val.c \
++	./openssl/crypto/asn1/x_x509.c \
++	./openssl/crypto/asn1/x_x509a.c \
++	./openssl/crypto/bf/bf_cfb64.c \
++	./openssl/crypto/bf/bf_ecb.c \
++	./openssl/crypto/bf/bf_enc.c \
++	./openssl/crypto/bf/bf_ofb64.c \
++	./openssl/crypto/bf/bf_skey.c \
++	./openssl/crypto/bio/b_dump.c \
++	./openssl/crypto/bio/b_print.c \
++	./openssl/crypto/bio/b_sock.c \
++	./openssl/crypto/bio/bf_buff.c \
++	./openssl/crypto/bio/bf_nbio.c \
++	./openssl/crypto/bio/bf_null.c \
++	./openssl/crypto/bio/bio_cb.c \
++	./openssl/crypto/bio/bio_err.c \
++	./openssl/crypto/bio/bio_lib.c \
++	./openssl/crypto/bio/bss_acpt.c \
++	./openssl/crypto/bio/bss_bio.c \
++	./openssl/crypto/bio/bss_conn.c \
++	./openssl/crypto/bio/bss_dgram.c \
++	./openssl/crypto/bio/bss_fd.c \
++	./openssl/crypto/bio/bss_file.c \
++	./openssl/crypto/bio/bss_log.c \
++	./openssl/crypto/bio/bss_mem.c \
++	./openssl/crypto/bio/bss_null.c \
++	./openssl/crypto/bio/bss_sock.c \
++	./openssl/crypto/bn/bn_add.c \
++	./openssl/crypto/bn/bn_asm.c \
++	./openssl/crypto/bn/bn_blind.c \
++	./openssl/crypto/bn/bn_ctx.c \
++	./openssl/crypto/bn/bn_div.c \
++	./openssl/crypto/bn/bn_err.c \
++	./openssl/crypto/bn/bn_exp.c \
++	./openssl/crypto/bn/bn_exp2.c \
++	./openssl/crypto/bn/bn_gcd.c \
++	./openssl/crypto/bn/bn_gf2m.c \
++	./openssl/crypto/bn/bn_kron.c \
++	./openssl/crypto/bn/bn_lib.c \
++	./openssl/crypto/bn/bn_mod.c \
++	./openssl/crypto/bn/bn_mont.c \
++	./openssl/crypto/bn/bn_mpi.c \
++	./openssl/crypto/bn/bn_mul.c \
++	./openssl/crypto/bn/bn_nist.c \
++	./openssl/crypto/bn/bn_prime.c \
++	./openssl/crypto/bn/bn_print.c \
++	./openssl/crypto/bn/bn_rand.c \
++	./openssl/crypto/bn/bn_recp.c \
++	./openssl/crypto/bn/bn_shift.c \
++	./openssl/crypto/bn/bn_sqr.c \
++	./openssl/crypto/bn/bn_sqrt.c \
++	./openssl/crypto/bn/bn_word.c \
++	./openssl/crypto/buffer/buf_err.c \
++	./openssl/crypto/buffer/buf_str.c \
++	./openssl/crypto/buffer/buffer.c \
++	./openssl/crypto/camellia/camellia.c \
++	./openssl/crypto/camellia/cmll_cbc.c \
++	./openssl/crypto/camellia/cmll_cfb.c \
++	./openssl/crypto/camellia/cmll_ctr.c \
++	./openssl/crypto/camellia/cmll_ecb.c \
++	./openssl/crypto/camellia/cmll_misc.c \
++	./openssl/crypto/camellia/cmll_ofb.c \
++	./openssl/crypto/camellia/cmll_utl.c \
++	./openssl/crypto/cast/c_cfb64.c \
++	./openssl/crypto/cast/c_ecb.c \
++	./openssl/crypto/cast/c_enc.c \
++	./openssl/crypto/cast/c_ofb64.c \
++	./openssl/crypto/cast/c_skey.c \
++	./openssl/crypto/cmac/cm_ameth.c \
++	./openssl/crypto/cmac/cm_pmeth.c \
++	./openssl/crypto/cmac/cmac.c \
++	./openssl/crypto/comp/c_rle.c \
++	./openssl/crypto/comp/c_zlib.c \
++	./openssl/crypto/comp/comp_err.c \
++	./openssl/crypto/comp/comp_lib.c \
++	./openssl/crypto/conf/conf_api.c \
++	./openssl/crypto/conf/conf_def.c \
++	./openssl/crypto/conf/conf_err.c \
++	./openssl/crypto/conf/conf_lib.c \
++	./openssl/crypto/conf/conf_mall.c \
++	./openssl/crypto/conf/conf_mod.c \
++	./openssl/crypto/conf/conf_sap.c \
++	./openssl/crypto/des/cbc_cksm.c \
++	./openssl/crypto/des/cbc_enc.c \
++	./openssl/crypto/des/cfb64ede.c \
++	./openssl/crypto/des/cfb64enc.c \
++	./openssl/crypto/des/cfb_enc.c \
++	./openssl/crypto/des/des_enc.c \
++	./openssl/crypto/des/des_old.c \
++	./openssl/crypto/des/des_old2.c \
++	./openssl/crypto/des/ecb3_enc.c \
++	./openssl/crypto/des/ecb_enc.c \
++	./openssl/crypto/des/ede_cbcm_enc.c \
++	./openssl/crypto/des/enc_read.c \
++	./openssl/crypto/des/enc_writ.c \
++	./openssl/crypto/des/fcrypt.c \
++	./openssl/crypto/des/fcrypt_b.c \
++	./openssl/crypto/des/ofb64ede.c \
++	./openssl/crypto/des/ofb64enc.c \
++	./openssl/crypto/des/ofb_enc.c \
++	./openssl/crypto/des/pcbc_enc.c \
++	./openssl/crypto/des/qud_cksm.c \
++	./openssl/crypto/des/rand_key.c \
++	./openssl/crypto/des/read2pwd.c \
++	./openssl/crypto/des/rpc_enc.c \
++	./openssl/crypto/des/set_key.c \
++	./openssl/crypto/des/str2key.c \
++	./openssl/crypto/des/xcbc_enc.c \
++	./openssl/crypto/dh/dh_ameth.c \
++	./openssl/crypto/dh/dh_asn1.c \
++	./openssl/crypto/dh/dh_check.c \
++	./openssl/crypto/dh/dh_depr.c \
++	./openssl/crypto/dh/dh_err.c \
++	./openssl/crypto/dh/dh_gen.c \
++	./openssl/crypto/dh/dh_key.c \
++	./openssl/crypto/dh/dh_lib.c \
++	./openssl/crypto/dh/dh_pmeth.c \
++	./openssl/crypto/dsa/dsa_ameth.c \
++	./openssl/crypto/dsa/dsa_asn1.c \
++	./openssl/crypto/dsa/dsa_depr.c \
++	./openssl/crypto/dsa/dsa_err.c \
++	./openssl/crypto/dsa/dsa_gen.c \
++	./openssl/crypto/dsa/dsa_key.c \
++	./openssl/crypto/dsa/dsa_lib.c \
++	./openssl/crypto/dsa/dsa_ossl.c \
++	./openssl/crypto/dsa/dsa_pmeth.c \
++	./openssl/crypto/dsa/dsa_prn.c \
++	./openssl/crypto/dsa/dsa_sign.c \
++	./openssl/crypto/dsa/dsa_vrf.c \
++	./openssl/crypto/dso/dso_dl.c \
++	./openssl/crypto/dso/dso_dlfcn.c \
++	./openssl/crypto/dso/dso_err.c \
++	./openssl/crypto/dso/dso_lib.c \
++	./openssl/crypto/dso/dso_null.c \
++	./openssl/crypto/dso/dso_openssl.c \
++	./openssl/crypto/dso/dso_vms.c \
++	./openssl/crypto/dso/dso_win32.c \
++	./openssl/crypto/ec/ec2_mult.c \
++	./openssl/crypto/ec/ec2_oct.c \
++	./openssl/crypto/ec/ec2_smpl.c \
++	./openssl/crypto/ec/ec_ameth.c \
++	./openssl/crypto/ec/ec_asn1.c \
++	./openssl/crypto/ec/ec_check.c \
++	./openssl/crypto/ec/ec_curve.c \
++	./openssl/crypto/ec/ec_cvt.c \
++	./openssl/crypto/ec/ec_err.c \
++	./openssl/crypto/ec/ec_key.c \
++	./openssl/crypto/ec/ec_lib.c \
++	./openssl/crypto/ec/ec_mult.c \
++	./openssl/crypto/ec/ec_oct.c \
++	./openssl/crypto/ec/ec_pmeth.c \
++	./openssl/crypto/ec/ec_print.c \
++	./openssl/crypto/ec/eck_prn.c \
++	./openssl/crypto/ec/ecp_mont.c \
++	./openssl/crypto/ec/ecp_nist.c \
++	./openssl/crypto/ec/ecp_nistp224.c \
++	./openssl/crypto/ec/ecp_nistp256.c \
++	./openssl/crypto/ec/ecp_nistp521.c \
++	./openssl/crypto/ec/ecp_nistputil.c \
++	./openssl/crypto/ec/ecp_oct.c \
++	./openssl/crypto/ec/ecp_smpl.c \
++	./openssl/crypto/ecdh/ech_err.c \
++	./openssl/crypto/ecdh/ech_key.c \
++	./openssl/crypto/ecdh/ech_lib.c \
++	./openssl/crypto/ecdh/ech_ossl.c \
++	./openssl/crypto/ecdsa/ecs_asn1.c \
++	./openssl/crypto/ecdsa/ecs_err.c \
++	./openssl/crypto/ecdsa/ecs_lib.c \
++	./openssl/crypto/ecdsa/ecs_ossl.c \
++	./openssl/crypto/ecdsa/ecs_sign.c \
++	./openssl/crypto/ecdsa/ecs_vrf.c \
++	./openssl/crypto/err/err.c \
++	./openssl/crypto/err/err_all.c \
++	./openssl/crypto/err/err_prn.c \
++	./openssl/crypto/evp/bio_b64.c \
++	./openssl/crypto/evp/bio_enc.c \
++	./openssl/crypto/evp/bio_md.c \
++	./openssl/crypto/evp/bio_ok.c \
++	./openssl/crypto/evp/c_all.c \
++	./openssl/crypto/evp/c_allc.c \
++	./openssl/crypto/evp/c_alld.c \
++	./openssl/crypto/evp/digest.c \
++	./openssl/crypto/evp/e_aes.c \
++	./openssl/crypto/evp/e_aes_cbc_hmac_sha1.c \
++	./openssl/crypto/evp/e_bf.c \
++	./openssl/crypto/evp/e_camellia.c \
++	./openssl/crypto/evp/e_cast.c \
++	./openssl/crypto/evp/e_des.c \
++	./openssl/crypto/evp/e_des3.c \
++	./openssl/crypto/evp/e_null.c \
++	./openssl/crypto/evp/e_old.c \
++	./openssl/crypto/evp/e_rc2.c \
++	./openssl/crypto/evp/e_rc4.c \
++	./openssl/crypto/evp/e_rc4_hmac_md5.c \
++	./openssl/crypto/evp/e_rc5.c \
++	./openssl/crypto/evp/e_xcbc_d.c \
++	./openssl/crypto/evp/encode.c \
++	./openssl/crypto/evp/evp_acnf.c \
++	./openssl/crypto/evp/evp_enc.c \
++	./openssl/crypto/evp/evp_err.c \
++	./openssl/crypto/evp/evp_key.c \
++	./openssl/crypto/evp/evp_lib.c \
++	./openssl/crypto/evp/evp_pbe.c \
++	./openssl/crypto/evp/evp_pkey.c \
++	./openssl/crypto/evp/m_dss.c \
++	./openssl/crypto/evp/m_dss1.c \
++	./openssl/crypto/evp/m_ecdsa.c \
++	./openssl/crypto/evp/m_md4.c \
++	./openssl/crypto/evp/m_md5.c \
++	./openssl/crypto/evp/m_mdc2.c \
++	./openssl/crypto/evp/m_null.c \
++	./openssl/crypto/evp/m_ripemd.c \
++	./openssl/crypto/evp/m_sha1.c \
++	./openssl/crypto/evp/m_sigver.c \
++	./openssl/crypto/evp/m_wp.c \
++	./openssl/crypto/evp/names.c \
++	./openssl/crypto/evp/p5_crpt.c \
++	./openssl/crypto/evp/p5_crpt2.c \
++	./openssl/crypto/evp/p_dec.c \
++	./openssl/crypto/evp/p_enc.c \
++	./openssl/crypto/evp/p_lib.c \
++	./openssl/crypto/evp/p_open.c \
++	./openssl/crypto/evp/p_seal.c \
++	./openssl/crypto/evp/p_sign.c \
++	./openssl/crypto/evp/p_verify.c \
++	./openssl/crypto/evp/pmeth_fn.c \
++	./openssl/crypto/evp/pmeth_gn.c \
++	./openssl/crypto/evp/pmeth_lib.c \
++	./openssl/crypto/hmac/hm_ameth.c \
++	./openssl/crypto/hmac/hm_pmeth.c \
++	./openssl/crypto/hmac/hmac.c \
++	./openssl/crypto/krb5/krb5_asn.c \
++	./openssl/crypto/lhash/lh_stats.c \
++	./openssl/crypto/lhash/lhash.c \
++	./openssl/crypto/md4/md4_dgst.c \
++	./openssl/crypto/md4/md4_one.c \
++	./openssl/crypto/md5/md5_dgst.c \
++	./openssl/crypto/md5/md5_one.c \
++	./openssl/crypto/modes/cbc128.c \
++	./openssl/crypto/modes/ccm128.c \
++	./openssl/crypto/modes/cfb128.c \
++	./openssl/crypto/modes/ctr128.c \
++	./openssl/crypto/modes/cts128.c \
++	./openssl/crypto/modes/gcm128.c \
++	./openssl/crypto/modes/ofb128.c \
++	./openssl/crypto/modes/xts128.c \
++	./openssl/crypto/objects/o_names.c \
++	./openssl/crypto/objects/obj_dat.c \
++	./openssl/crypto/objects/obj_err.c \
++	./openssl/crypto/objects/obj_lib.c \
++	./openssl/crypto/objects/obj_xref.c \
++	./openssl/crypto/ocsp/ocsp_asn.c \
++	./openssl/crypto/ocsp/ocsp_cl.c \
++	./openssl/crypto/ocsp/ocsp_err.c \
++	./openssl/crypto/ocsp/ocsp_ext.c \
++	./openssl/crypto/ocsp/ocsp_ht.c \
++	./openssl/crypto/ocsp/ocsp_lib.c \
++	./openssl/crypto/ocsp/ocsp_prn.c \
++	./openssl/crypto/ocsp/ocsp_srv.c \
++	./openssl/crypto/ocsp/ocsp_vfy.c \
++	./openssl/crypto/pem/pem_all.c \
++	./openssl/crypto/pem/pem_err.c \
++	./openssl/crypto/pem/pem_info.c \
++	./openssl/crypto/pem/pem_lib.c \
++	./openssl/crypto/pem/pem_oth.c \
++	./openssl/crypto/pem/pem_pk8.c \
++	./openssl/crypto/pem/pem_pkey.c \
++	./openssl/crypto/pem/pem_seal.c \
++	./openssl/crypto/pem/pem_sign.c \
++	./openssl/crypto/pem/pem_x509.c \
++	./openssl/crypto/pem/pem_xaux.c \
++	./openssl/crypto/pem/pvkfmt.c \
++	./openssl/crypto/pkcs12/p12_add.c \
++	./openssl/crypto/pkcs12/p12_asn.c \
++	./openssl/crypto/pkcs12/p12_attr.c \
++	./openssl/crypto/pkcs12/p12_crpt.c \
++	./openssl/crypto/pkcs12/p12_crt.c \
++	./openssl/crypto/pkcs12/p12_decr.c \
++	./openssl/crypto/pkcs12/p12_init.c \
++	./openssl/crypto/pkcs12/p12_key.c \
++	./openssl/crypto/pkcs12/p12_kiss.c \
++	./openssl/crypto/pkcs12/p12_mutl.c \
++	./openssl/crypto/pkcs12/p12_npas.c \
++	./openssl/crypto/pkcs12/p12_p8d.c \
++	./openssl/crypto/pkcs12/p12_p8e.c \
++	./openssl/crypto/pkcs12/p12_utl.c \
++	./openssl/crypto/pkcs12/pk12err.c \
++	./openssl/crypto/pkcs7/pk7_asn1.c \
++	./openssl/crypto/pkcs7/pk7_attr.c \
++	./openssl/crypto/pkcs7/pk7_doit.c \
++	./openssl/crypto/pkcs7/pk7_lib.c \
++	./openssl/crypto/pkcs7/pk7_mime.c \
++	./openssl/crypto/pkcs7/pk7_smime.c \
++	./openssl/crypto/pkcs7/pkcs7err.c \
++	./openssl/crypto/pqueue/pqueue.c \
++	./openssl/crypto/rand/md_rand.c \
++	./openssl/crypto/rand/rand_egd.c \
++	./openssl/crypto/rand/rand_err.c \
++	./openssl/crypto/rand/rand_lib.c \
++	./openssl/crypto/rand/rand_unix.c \
++	./openssl/crypto/rand/randfile.c \
++	./openssl/crypto/rc2/rc2_cbc.c \
++	./openssl/crypto/rc2/rc2_ecb.c \
++	./openssl/crypto/rc2/rc2_skey.c \
++	./openssl/crypto/rc2/rc2cfb64.c \
++	./openssl/crypto/rc2/rc2ofb64.c \
++	./openssl/crypto/rc4/rc4_enc.c \
++	./openssl/crypto/rc4/rc4_skey.c \
++	./openssl/crypto/rc4/rc4_utl.c \
++	./openssl/crypto/ripemd/rmd_dgst.c \
++	./openssl/crypto/ripemd/rmd_one.c \
++	./openssl/crypto/rsa/rsa_ameth.c \
++	./openssl/crypto/rsa/rsa_asn1.c \
++	./openssl/crypto/rsa/rsa_chk.c \
++	./openssl/crypto/rsa/rsa_crpt.c \
++	./openssl/crypto/rsa/rsa_depr.c \
++	./openssl/crypto/rsa/rsa_eay.c \
++	./openssl/crypto/rsa/rsa_err.c \
++	./openssl/crypto/rsa/rsa_gen.c \
++	./openssl/crypto/rsa/rsa_lib.c \
++	./openssl/crypto/rsa/rsa_none.c \
++	./openssl/crypto/rsa/rsa_null.c \
++	./openssl/crypto/rsa/rsa_oaep.c \
++	./openssl/crypto/rsa/rsa_pk1.c \
++	./openssl/crypto/rsa/rsa_pmeth.c \
++	./openssl/crypto/rsa/rsa_prn.c \
++	./openssl/crypto/rsa/rsa_pss.c \
++	./openssl/crypto/rsa/rsa_saos.c \
++	./openssl/crypto/rsa/rsa_sign.c \
++	./openssl/crypto/rsa/rsa_ssl.c \
++	./openssl/crypto/rsa/rsa_x931.c \
++	./openssl/crypto/sha/sha1_one.c \
++	./openssl/crypto/sha/sha1dgst.c \
++	./openssl/crypto/sha/sha256.c \
++	./openssl/crypto/sha/sha512.c \
++	./openssl/crypto/sha/sha_dgst.c \
++	./openssl/crypto/srp/srp_lib.c \
++	./openssl/crypto/srp/srp_vfy.c \
++	./openssl/crypto/stack/stack.c \
++	./openssl/crypto/ts/ts_err.c \
++	./openssl/crypto/txt_db/txt_db.c \
++	./openssl/crypto/ui/ui_compat.c \
++	./openssl/crypto/ui/ui_err.c \
++	./openssl/crypto/ui/ui_lib.c \
++	./openssl/crypto/ui/ui_openssl.c \
++	./openssl/crypto/ui/ui_util.c \
++	./openssl/crypto/x509/by_dir.c \
++	./openssl/crypto/x509/by_file.c \
++	./openssl/crypto/x509/x509_att.c \
++	./openssl/crypto/x509/x509_cmp.c \
++	./openssl/crypto/x509/x509_d2.c \
++	./openssl/crypto/x509/x509_def.c \
++	./openssl/crypto/x509/x509_err.c \
++	./openssl/crypto/x509/x509_ext.c \
++	./openssl/crypto/x509/x509_lu.c \
++	./openssl/crypto/x509/x509_obj.c \
++	./openssl/crypto/x509/x509_r2x.c \
++	./openssl/crypto/x509/x509_req.c \
++	./openssl/crypto/x509/x509_set.c \
++	./openssl/crypto/x509/x509_trs.c \
++	./openssl/crypto/x509/x509_txt.c \
++	./openssl/crypto/x509/x509_v3.c \
++	./openssl/crypto/x509/x509_vfy.c \
++	./openssl/crypto/x509/x509_vpm.c \
++	./openssl/crypto/x509/x509cset.c \
++	./openssl/crypto/x509/x509name.c \
++	./openssl/crypto/x509/x509rset.c \
++	./openssl/crypto/x509/x509spki.c \
++	./openssl/crypto/x509/x509type.c \
++	./openssl/crypto/x509/x_all.c \
++	./openssl/crypto/x509v3/pcy_cache.c \
++	./openssl/crypto/x509v3/pcy_data.c \
++	./openssl/crypto/x509v3/pcy_lib.c \
++	./openssl/crypto/x509v3/pcy_map.c \
++	./openssl/crypto/x509v3/pcy_node.c \
++	./openssl/crypto/x509v3/pcy_tree.c \
++	./openssl/crypto/x509v3/v3_akey.c \
++	./openssl/crypto/x509v3/v3_akeya.c \
++	./openssl/crypto/x509v3/v3_alt.c \
++	./openssl/crypto/x509v3/v3_bcons.c \
++	./openssl/crypto/x509v3/v3_bitst.c \
++	./openssl/crypto/x509v3/v3_conf.c \
++	./openssl/crypto/x509v3/v3_cpols.c \
++	./openssl/crypto/x509v3/v3_crld.c \
++	./openssl/crypto/x509v3/v3_enum.c \
++	./openssl/crypto/x509v3/v3_extku.c \
++	./openssl/crypto/x509v3/v3_genn.c \
++	./openssl/crypto/x509v3/v3_ia5.c \
++	./openssl/crypto/x509v3/v3_info.c \
++	./openssl/crypto/x509v3/v3_int.c \
++	./openssl/crypto/x509v3/v3_lib.c \
++	./openssl/crypto/x509v3/v3_ncons.c \
++	./openssl/crypto/x509v3/v3_ocsp.c \
++	./openssl/crypto/x509v3/v3_pci.c \
++	./openssl/crypto/x509v3/v3_pcia.c \
++	./openssl/crypto/x509v3/v3_pcons.c \
++	./openssl/crypto/x509v3/v3_pku.c \
++	./openssl/crypto/x509v3/v3_pmaps.c \
++	./openssl/crypto/x509v3/v3_prn.c \
++	./openssl/crypto/x509v3/v3_purp.c \
++	./openssl/crypto/x509v3/v3_skey.c \
++	./openssl/crypto/x509v3/v3_sxnet.c \
++	./openssl/crypto/x509v3/v3_utl.c \
++	./openssl/crypto/x509v3/v3err.c \
++	./openssl/ssl/bio_ssl.c   \
++	./openssl/ssl/s2_meth.c  \
++	./openssl/ssl/ssl_algs.c  \
++	./openssl/ssl/kssl.c      \
++	./openssl/ssl/s2_pkt.c   \
++	./openssl/ssl/ssl_asn1.c  \
++	./openssl/ssl/d1_both.c   \
++	./openssl/ssl/s2_srvr.c  \
++	./openssl/ssl/ssl_cert.c  \
++	./openssl/ssl/ssl_txt.c \
++	./openssl/ssl/d1_clnt.c   \
++	./openssl/ssl/s23_clnt.c  \
++	./openssl/ssl/s3_both.c  \
++	./openssl/ssl/ssl_ciph.c  \
++	./openssl/ssl/ssl_utst.c \
++	./openssl/ssl/d1_enc.c    \
++	./openssl/ssl/s23_lib.c   \
++	./openssl/ssl/s3_cbc.c   \
++	./openssl/ssl/ssl_err2.c  \
++	./openssl/ssl/t1_clnt.c \
++	./openssl/ssl/d1_lib.c    \
++	./openssl/ssl/s23_meth.c  \
++	./openssl/ssl/s3_clnt.c  \
++	./openssl/ssl/ssl_err.c   \
++	./openssl/ssl/t1_enc.c \
++	./openssl/ssl/d1_meth.c   \
++	./openssl/ssl/s23_pkt.c   \
++	./openssl/ssl/s3_enc.c   \
++	./openssl/ssl/ssl_lib.c   \
++	./openssl/ssl/t1_lib.c \
++	./openssl/ssl/d1_pkt.c    \
++	./openssl/ssl/s23_srvr.c  \
++	./openssl/ssl/s3_lib.c   \
++	./openssl/ssl/t1_meth.c \
++	./openssl/ssl/d1_srtp.c   \
++	./openssl/ssl/s2_clnt.c   \
++	./openssl/ssl/s3_meth.c  \
++	./openssl/ssl/ssl_rsa.c   \
++	./openssl/ssl/t1_reneg.c \
++	./openssl/ssl/d1_srvr.c   \
++	./openssl/ssl/s2_enc.c    \
++	./openssl/ssl/s3_pkt.c   \
++	./openssl/ssl/ssl_sess.c  \
++	./openssl/ssl/t1_srvr.c \
++	./openssl/ssl/s2_lib.c    \
++	./openssl/ssl/s3_srvr.c  \
++	./openssl/ssl/ssl_stat.c  \
++	./openssl/ssl/tls_srp.c
++
++local_c_includes := \
++	$(LOCAL_PATH)/openssl \
++	$(LOCAL_PATH)/openssl/crypto \
++	$(LOCAL_PATH)/openssl/crypto/asn1 \
++	$(LOCAL_PATH)/openssl/crypto/evp \
++	$(LOCAL_PATH)/openssl/crypto/modes \
++	$(LOCAL_PATH)/openssl/include \
++	$(LOCAL_PATH)/openssl/include/openssl
++
++local_c_flags := -DNO_WINDOWS_BRAINDEATH
++
++
++include $(LOCAL_PATH)/openssl/android-config.mk
++LOCAL_SRC_FILES += $(local_src_files)
++LOCAL_CFLAGS += $(local_c_flags) -DPURIFY
++LOCAL_C_INCLUDES += $(local_c_includes)
++LOCAL_MODULE_TAGS := optional
++LOCAL_MODULE:= libcrypto
++include $(BUILD_STATIC_LIBRARY)
++
++#include $(CLEAR_VARS)
++#LOCAL_MODULE    := crypto
++#
++#ifeq ($(TARGET_ARCH_ABI),armeabi-v7a)
++#    LOCAL_SRC_FILES := ./openssl/obj/local/armeabi-v7a/libcrypto.a
++#else
++#    ifeq ($(TARGET_ARCH_ABI),armeabi)
++#       LOCAL_SRC_FILES := ./openssl/obj/local/armeabi/libcrypto.a
++#    else
++#        ifeq ($(TARGET_ARCH_ABI),x86)
++#           LOCAL_SRC_FILES := ./openssl/obj/local/x86/libcrypto.a
++#        endif
++#    endif
++#endif
++
++#include $(PREBUILT_STATIC_LIBRARY)
++
++################################################################################
++# libiconv
++################################################################################
++
++
++# rough howto
++# - run the normal ./configure to create iconv.h
++# - copy the needed files
++# - in localchatset.c, avoid including langinfo.h
++
++include $(CLEAR_VARS)
++LOCAL_MODULE    := libiconv
++LOCAL_CFLAGS    := \
++    -Wno-multichar \
++    -D_ANDROID \
++    -DLIBDIR="\"c\"" \
++    -DBUILDING_LIBICONV \
++    -DIN_LIBRARY
++LOCAL_C_INCLUDES := \
++	$(LOCAL_PATH)/libiconv/ \
++    $(LOCAL_PATH)/libiconv/include \
++    $(LOCAL_PATH)/libiconv/lib \
++    $(LOCAL_PATH)/libiconv/libcharset/include
++LOCAL_SRC_FILES := \
++    ./libiconv/lib/iconv.c \
++    ./libiconv/lib/relocatable.c  \
++    ./libiconv/libcharset/lib/localcharset.c
++
++include $(BUILD_STATIC_LIBRARY)
++
++
++################################################################################
++# libetpan
++################################################################################
++
++
++# rough howto:
++# - copy files from original source
++# - create include file links using "./autogen.sh; cd include; make" (or so)
++# - use config.h from libetpan/build-android/include
++# - use libetpan-config.h from local installation 
++
++
++include $(CLEAR_VARS)
++
++LOCAL_MODULE := etpan
++LOCAL_CFLAGS += -DHAVE_CONFIG_H=1 -DHAVE_ICONV=1
++LOCAL_SRC_FILES := \
++	./messenger-backend/libs/libetpan/src/data-types/base64.c \
++	./messenger-backend/libs/libetpan/src/data-types/carray.c \
++	./messenger-backend/libs/libetpan/src/data-types/charconv.c \
++	./messenger-backend/libs/libetpan/src/data-types/chash.c \
++	./messenger-backend/libs/libetpan/src/data-types/clist.c \
++	./messenger-backend/libs/libetpan/src/data-types/connect.c \
++	./messenger-backend/libs/libetpan/src/data-types/mail_cache_db.c \
++	./messenger-backend/libs/libetpan/src/data-types/maillock.c \
++	./messenger-backend/libs/libetpan/src/data-types/mailsasl.c \
++	./messenger-backend/libs/libetpan/src/data-types/mailsem.c \
++	./messenger-backend/libs/libetpan/src/data-types/mailstream.c \
++	./messenger-backend/libs/libetpan/src/data-types/mailstream_cancel.c \
++	./messenger-backend/libs/libetpan/src/data-types/mailstream_cfstream.c \
++	./messenger-backend/libs/libetpan/src/data-types/mailstream_compress.c \
++	./messenger-backend/libs/libetpan/src/data-types/mailstream_helper.c \
++	./messenger-backend/libs/libetpan/src/data-types/mailstream_low.c \
++	./messenger-backend/libs/libetpan/src/data-types/mailstream_socket.c \
++	./messenger-backend/libs/libetpan/src/data-types/mailstream_ssl.c \
++	./messenger-backend/libs/libetpan/src/data-types/md5.c \
++	./messenger-backend/libs/libetpan/src/data-types/mmapstring.c \
++	./messenger-backend/libs/libetpan/src/data-types/timeutils.c \
++	./messenger-backend/libs/libetpan/src/low-level/imap/acl.c \
++	./messenger-backend/libs/libetpan/src/low-level/imap/acl_parser.c \
++	./messenger-backend/libs/libetpan/src/low-level/imap/acl_sender.c \
++	./messenger-backend/libs/libetpan/src/low-level/imap/acl_types.c \
++	./messenger-backend/libs/libetpan/src/low-level/imap/annotatemore.c \
++	./messenger-backend/libs/libetpan/src/low-level/imap/annotatemore_parser.c \
++	./messenger-backend/libs/libetpan/src/low-level/imap/annotatemore_sender.c \
++	./messenger-backend/libs/libetpan/src/low-level/imap/annotatemore_types.c \
++	./messenger-backend/libs/libetpan/src/low-level/imap/condstore.c \
++	./messenger-backend/libs/libetpan/src/low-level/imap/condstore_types.c \
++	./messenger-backend/libs/libetpan/src/low-level/imap/enable.c \
++	./messenger-backend/libs/libetpan/src/low-level/imap/idle.c \
++	./messenger-backend/libs/libetpan/src/low-level/imap/mailimap.c \
++	./messenger-backend/libs/libetpan/src/low-level/imap/mailimap_compress.c \
++	./messenger-backend/libs/libetpan/src/low-level/imap/mailimap_extension.c \
++	./messenger-backend/libs/libetpan/src/low-level/imap/mailimap_helper.c \
++	./messenger-backend/libs/libetpan/src/low-level/imap/mailimap_id.c \
++	./messenger-backend/libs/libetpan/src/low-level/imap/mailimap_id_parser.c \
++	./messenger-backend/libs/libetpan/src/low-level/imap/mailimap_id_sender.c \
++	./messenger-backend/libs/libetpan/src/low-level/imap/mailimap_id_types.c \
++	./messenger-backend/libs/libetpan/src/low-level/imap/mailimap_keywords.c \
++	./messenger-backend/libs/libetpan/src/low-level/imap/mailimap_oauth2.c \
++	./messenger-backend/libs/libetpan/src/low-level/imap/mailimap_parser.c \
++	./messenger-backend/libs/libetpan/src/low-level/imap/mailimap_print.c \
++	./messenger-backend/libs/libetpan/src/low-level/imap/mailimap_sender.c \
++	./messenger-backend/libs/libetpan/src/low-level/imap/mailimap_socket.c \
++	./messenger-backend/libs/libetpan/src/low-level/imap/mailimap_sort.c \
++	./messenger-backend/libs/libetpan/src/low-level/imap/mailimap_sort_types.c \
++	./messenger-backend/libs/libetpan/src/low-level/imap/mailimap_ssl.c \
++	./messenger-backend/libs/libetpan/src/low-level/imap/mailimap_types.c \
++	./messenger-backend/libs/libetpan/src/low-level/imap/mailimap_types_helper.c \
++	./messenger-backend/libs/libetpan/src/low-level/imap/namespace.c \
++	./messenger-backend/libs/libetpan/src/low-level/imap/namespace_parser.c \
++	./messenger-backend/libs/libetpan/src/low-level/imap/namespace_sender.c \
++	./messenger-backend/libs/libetpan/src/low-level/imap/namespace_types.c \
++	./messenger-backend/libs/libetpan/src/low-level/imap/qresync.c \
++	./messenger-backend/libs/libetpan/src/low-level/imap/qresync_types.c \
++	./messenger-backend/libs/libetpan/src/low-level/imap/quota.c \
++	./messenger-backend/libs/libetpan/src/low-level/imap/quota_parser.c \
++	./messenger-backend/libs/libetpan/src/low-level/imap/quota_sender.c \
++	./messenger-backend/libs/libetpan/src/low-level/imap/quota_types.c \
++	./messenger-backend/libs/libetpan/src/low-level/imap/uidplus.c \
++	./messenger-backend/libs/libetpan/src/low-level/imap/uidplus_parser.c \
++	./messenger-backend/libs/libetpan/src/low-level/imap/uidplus_sender.c \
++	./messenger-backend/libs/libetpan/src/low-level/imap/uidplus_types.c \
++	./messenger-backend/libs/libetpan/src/low-level/imap/xgmlabels.c \
++	./messenger-backend/libs/libetpan/src/low-level/imap/xgmmsgid.c \
++	./messenger-backend/libs/libetpan/src/low-level/imap/xgmthrid.c \
++	./messenger-backend/libs/libetpan/src/low-level/imap/xlist.c \
++	./messenger-backend/libs/libetpan/src/low-level/imf/mailimf.c \
++	./messenger-backend/libs/libetpan/src/low-level/imf/mailimf_types.c \
++	./messenger-backend/libs/libetpan/src/low-level/imf/mailimf_types_helper.c \
++	./messenger-backend/libs/libetpan/src/low-level/imf/mailimf_write_file.c \
++	./messenger-backend/libs/libetpan/src/low-level/imf/mailimf_write_generic.c \
++	./messenger-backend/libs/libetpan/src/low-level/imf/mailimf_write_mem.c \
++	./messenger-backend/libs/libetpan/src/low-level/mime/mailmime.c \
++	./messenger-backend/libs/libetpan/src/low-level/mime/mailmime_content.c \
++	./messenger-backend/libs/libetpan/src/low-level/mime/mailmime_decode.c \
++	./messenger-backend/libs/libetpan/src/low-level/mime/mailmime_disposition.c \
++	./messenger-backend/libs/libetpan/src/low-level/mime/mailmime_types.c \
++	./messenger-backend/libs/libetpan/src/low-level/mime/mailmime_types_helper.c \
++	./messenger-backend/libs/libetpan/src/low-level/mime/mailmime_write_file.c \
++	./messenger-backend/libs/libetpan/src/low-level/mime/mailmime_write_generic.c \
++	./messenger-backend/libs/libetpan/src/low-level/mime/mailmime_write_mem.c \
++	./messenger-backend/libs/libetpan/src/low-level/smtp/mailsmtp.c \
++	./messenger-backend/libs/libetpan/src/low-level/smtp/mailsmtp_helper.c \
++	./messenger-backend/libs/libetpan/src/low-level/smtp/mailsmtp_oauth2.c \
++	./messenger-backend/libs/libetpan/src/low-level/smtp/mailsmtp_socket.c \
++	./messenger-backend/libs/libetpan/src/low-level/smtp/mailsmtp_ssl.c \
++	./messenger-backend/libs/libetpan/src/main/libetpan_version.c \
++	./messenger-backend/libs/libetpan/src/driver/implementation/data-message/data_message_driver.c \
++	./messenger-backend/libs/libetpan/src/driver/implementation/mime-message/mime_message_driver.c \
++	./messenger-backend/libs/libetpan/src/driver/interface/maildriver.c \
++	./messenger-backend/libs/libetpan/src/driver/interface/maildriver_tools.c \
++	./messenger-backend/libs/libetpan/src/driver/interface/maildriver_types.c \
++	./messenger-backend/libs/libetpan/src/driver/interface/maildriver_types_helper.c \
++	./messenger-backend/libs/libetpan/src/driver/interface/mailfolder.c \
++	./messenger-backend/libs/libetpan/src/driver/interface/mailmessage.c \
++	./messenger-backend/libs/libetpan/src/driver/interface/mailmessage_tools.c \
++	./messenger-backend/libs/libetpan/src/driver/interface/mailmessage_types.c \
++	./messenger-backend/libs/libetpan/src/driver/interface/mailstorage.c \
++	./messenger-backend/libs/libetpan/src/driver/interface/mailstorage_tools.c \
++	./messenger-backend/libs/libetpan/src/engine/mailprivacy.c \
++	./messenger-backend/libs/libetpan/src/engine/mailprivacy_tools.c
++LOCAL_C_INCLUDES = \
++	$(LOCAL_PATH)/messenger-backend/libs/libetpan/src \
++	$(LOCAL_PATH)/messenger-backend/libs/libetpan/src/data-types \
++	$(LOCAL_PATH)/messenger-backend/libs/libetpan/src/low-level \
++	$(LOCAL_PATH)/messenger-backend/libs/libetpan/src/low-level/imap \
++	$(LOCAL_PATH)/messenger-backend/libs/libetpan/src/low-level/imf \
++	$(LOCAL_PATH)/messenger-backend/libs/libetpan/src/low-level/mime \
++	$(LOCAL_PATH)/messenger-backend/libs/libetpan/src/low-level/nntp \
++	$(LOCAL_PATH)/messenger-backend/libs/libetpan/src/low-level/smtp \
++	$(LOCAL_PATH)/messenger-backend/libs/libetpan/src/main \
++	$(LOCAL_PATH)/messenger-backend/libs/libetpan/src/driver/implementation/data-message \
++	$(LOCAL_PATH)/messenger-backend/libs/libetpan/src/driver/interface \
++	$(LOCAL_PATH)/messenger-backend/libs/libetpan/include \
++	$(LOCAL_PATH)/messenger-backend/libs/libetpan/include/libetpan \
++	$(LOCAL_PATH)/openssl/include \
++	$(LOCAL_PATH)/libiconv/include \
++	$(LOCAL_PATH)/cyrussasl/include \
++	$(LOCAL_PATH)/cyrussasl/include/sasl
++
++include $(BUILD_STATIC_LIBRARY)
++
++
++################################################################################
++# cyrus sasl
++################################################################################
++
++
++# rough howto:
++# - copy files from original source
++# - use config.h from libetpan/build-android/dependencies/cyrus-sasl/build-android/include
++
++include $(CLEAR_VARS)
++
++LOCAL_MODULE := sasl2
++
++LOCAL_C_INCLUDES += \
++	$(LOCAL_PATH)/cyrussasl/include \
++	$(LOCAL_PATH)/cyrussasl/include/sasl \
++	$(LOCAL_PATH)/cyrussasl/plugins \
++	$(LOCAL_PATH)/openssl/include
++LOCAL_SRC_FILES := \
++	./cyrussasl/lib/auxprop.c \
++	./cyrussasl/lib/canonusr.c \
++	./cyrussasl/lib/checkpw.c \
++	./cyrussasl/lib/client.c \
++	./cyrussasl/lib/common.c \
++	./cyrussasl/lib/config.c \
++	./cyrussasl/lib/dlopen.c \
++	./cyrussasl/lib/external.c \
++	./cyrussasl/lib/getsubopt.c \
++	./cyrussasl/lib/md5.c \
++	./cyrussasl/lib/saslutil.c \
++	./cyrussasl/lib/server.c \
++	./cyrussasl/lib/seterror.c \
++	./cyrussasl/lib/snprintf.c \
++	./cyrussasl/plugins/anonymous.c \
++	./cyrussasl/plugins/anonymous_init.c \
++	./cyrussasl/plugins/cram.c \
++	./cyrussasl/plugins/crammd5_init.c \
++	./cyrussasl/plugins/digestmd5.c \
++	./cyrussasl/plugins/digestmd5_init.c \
++	./cyrussasl/plugins/login.c \
++	./cyrussasl/plugins/login_init.c \
++	./cyrussasl/plugins/ntlm.c \
++	./cyrussasl/plugins/ntlm_init.c \
++	./cyrussasl/plugins/otp.c \
++	./cyrussasl/plugins/otp_init.c \
++	./cyrussasl/plugins/passdss.c \
++	./cyrussasl/plugins/passdss_init.c \
++	./cyrussasl/plugins/plain.c \
++	./cyrussasl/plugins/plain_init.c \
++	./cyrussasl/plugins/plugin_common.c \
++	./cyrussasl/plugins/scram.c \
++	./cyrussasl/plugins/scram_init.c \
++	./cyrussasl/plugins/srp.c \
++	./cyrussasl/plugins/srp_init.c
++
++include $(BUILD_STATIC_LIBRARY)
++
++################################################################################
++# sqlite
++################################################################################
++
++include $(CLEAR_VARS)
++ifeq ($(TARGET_ARCH_ABI),armeabi)
++	LOCAL_ARM_MODE  := thumb
++else
++	LOCAL_ARM_MODE  := arm
++endif
++LOCAL_MODULE := sqlite
++LOCAL_CFLAGS 	:= -w -std=c11 -Os -DNULL=0 -DSOCKLEN_T=socklen_t -DLOCALE_NOT_USED -D_LARGEFILE_SOURCE=1 -D_FILE_OFFSET_BITS=64
++LOCAL_CFLAGS 	+= -DANDROID_NDK -DDISABLE_IMPORTGL -fno-strict-aliasing -fprefetch-loop-arrays -DAVOID_TABLES -DANDROID_TILE_BASED_DECODE -DANDROID_ARMV6_IDCT -DHAVE_STRCHRNUL=0
++LOCAL_CFLAGS 	+= -DSQLITE_OMIT_LOAD_EXTENSION
++LOCAL_CFLAGS 	+= -DSQLITE_MAX_MMAP_SIZE=0 -DSQLITE_OMIT_WAL  # HACK: the defines are used to skip the pointer reference to mmap set in aSyscall[] - mmap seems to be a #define that cannot be used this way on Android - otherwise we get the error: 'mmap' undeclared here (not in a function)
++
++LOCAL_SRC_FILES     := \
++./messenger-backend/libs/sqlite/sqlite3.c
++
++include $(BUILD_STATIC_LIBRARY)
++
++################################################################################
++# main shared library as used from Java (includes the static ones)
++################################################################################
+ 
+ include $(CLEAR_VARS)
+ 
+ LOCAL_MODULE     := native-utils
+-LOCAL_C_INCLUDES := $(JNI_DIR)/utils/
+-LOCAL_CFLAGS     += -Wall
+ 
+-LOCAL_SRC_FILES := $(JNI_DIR)/utils/org_thoughtcrime_securesms_util_FileUtils.cpp
++LOCAL_C_INCLUDES := $(JNI_DIR)/utils/ \
++$(JNI_DIR)/openssl/include \
++$(JNI_DIR)/messenger-backend/libs/libetpan/include \
++$(JNI_DIR)/messenger-backend/libs/netpgp/include \
++$(JNI_DIR)/messenger-backend/libs/sqlite
++
++LOCAL_LDLIBS 	:= -ljnigraphics -llog -lz -latomic
++LOCAL_STATIC_LIBRARIES :=  etpan sasl2 sqlite crypto libiconv
++# if you get "undefined reference" errors, the reason for this may be the _order_! Eg. libiconv as the first library does not work!
++# "breakpad" was placed after "crypto", NativeLoader.cpp after mrwrapper.c
++
++LOCAL_CFLAGS 	:= -w -Os -DNULL=0 -DSOCKLEN_T=socklen_t -DLOCALE_NOT_USED -D_LARGEFILE_SOURCE=1 -D_FILE_OFFSET_BITS=64
++LOCAL_CFLAGS 	+= -Drestrict='' -D__EMX__ -DOPUS_BUILD -DFIXED_POINT -DUSE_ALLOCA -DHAVE_LRINT -DHAVE_LRINTF -fno-math-errno
++LOCAL_CFLAGS 	+= -DANDROID_NDK -DDISABLE_IMPORTGL -fno-strict-aliasing -fprefetch-loop-arrays -DAVOID_TABLES -DANDROID_TILE_BASED_DECODE -DANDROID_ARMV6_IDCT -ffast-math -D__STDC_CONSTANT_MACROS
++
++LOCAL_SRC_FILES := \
++$(JNI_DIR)/utils/org_thoughtcrime_securesms_util_FileUtils.cpp \
++$(JNI_DIR)/messenger-backend/libs/netpgp/src/compress.c \
++$(JNI_DIR)/messenger-backend/libs/netpgp/src/create.c \
++$(JNI_DIR)/messenger-backend/libs/netpgp/src/crypto.c \
++$(JNI_DIR)/messenger-backend/libs/netpgp/src/keyring.c \
++$(JNI_DIR)/messenger-backend/libs/netpgp/src/misc.c \
++$(JNI_DIR)/messenger-backend/libs/netpgp/src/openssl_crypto.c \
++$(JNI_DIR)/messenger-backend/libs/netpgp/src/packet-parse.c \
++$(JNI_DIR)/messenger-backend/libs/netpgp/src/packet-show.c \
++$(JNI_DIR)/messenger-backend/libs/netpgp/src/reader.c \
++$(JNI_DIR)/messenger-backend/libs/netpgp/src/signature.c \
++$(JNI_DIR)/messenger-backend/libs/netpgp/src/symmetric.c \
++$(JNI_DIR)/messenger-backend/libs/netpgp/src/validate.c \
++$(JNI_DIR)/messenger-backend/libs/netpgp/src/writer.c \
++$(JNI_DIR)/messenger-backend/src/dc_aheader.c \
++$(JNI_DIR)/messenger-backend/src/dc_apeerstate.c \
++$(JNI_DIR)/messenger-backend/src/dc_array.c \
++$(JNI_DIR)/messenger-backend/src/dc_chat.c \
++$(JNI_DIR)/messenger-backend/src/dc_chatlist.c \
++$(JNI_DIR)/messenger-backend/src/dc_contact.c \
++$(JNI_DIR)/messenger-backend/src/dc_dehtml.c \
++$(JNI_DIR)/messenger-backend/src/dc_hash.c \
++$(JNI_DIR)/messenger-backend/src/dc_imap.c \
++$(JNI_DIR)/messenger-backend/src/dc_job.c \
++$(JNI_DIR)/messenger-backend/src/dc_key.c \
++$(JNI_DIR)/messenger-backend/src/dc_keyring.c \
++$(JNI_DIR)/messenger-backend/src/dc_loginparam.c \
++$(JNI_DIR)/messenger-backend/src/dc_lot.c \
++$(JNI_DIR)/messenger-backend/src/dc_context.c \
++$(JNI_DIR)/messenger-backend/src/dc_configure.c \
++$(JNI_DIR)/messenger-backend/src/dc_e2ee.c \
++$(JNI_DIR)/messenger-backend/src/dc_imex.c \
++$(JNI_DIR)/messenger-backend/src/dc_keyhistory.c \
++$(JNI_DIR)/messenger-backend/src/dc_log.c \
++$(JNI_DIR)/messenger-backend/src/dc_openssl.c \
++$(JNI_DIR)/messenger-backend/src/dc_qr.c \
++$(JNI_DIR)/messenger-backend/src/dc_receive_imf.c \
++$(JNI_DIR)/messenger-backend/src/dc_securejoin.c \
++$(JNI_DIR)/messenger-backend/src/dc_mimefactory.c \
++$(JNI_DIR)/messenger-backend/src/dc_mimeparser.c \
++$(JNI_DIR)/messenger-backend/src/dc_msg.c \
++$(JNI_DIR)/messenger-backend/src/dc_param.c \
++$(JNI_DIR)/messenger-backend/src/dc_pgp.c \
++$(JNI_DIR)/messenger-backend/src/dc_saxparser.c \
++$(JNI_DIR)/messenger-backend/src/dc_simplify.c \
++$(JNI_DIR)/messenger-backend/src/dc_smtp.c \
++$(JNI_DIR)/messenger-backend/src/dc_sqlite3.c \
++$(JNI_DIR)/messenger-backend/src/dc_stock.c \
++$(JNI_DIR)/messenger-backend/src/dc_strbuilder.c \
++$(JNI_DIR)/messenger-backend/src/dc_strencode.c \
++$(JNI_DIR)/messenger-backend/src/dc_token.c \
++$(JNI_DIR)/messenger-backend/src/dc_tools.c \
++$(JNI_DIR)/messenger-backend/src/dc_uudecode.c \
++$(JNI_DIR)/messenger-backend/cmdline/cmdline.c \
++$(JNI_DIR)/mrwrapper.c
+ 
+-include $(BUILD_SHARED_LIBRARY)
+\ No newline at end of file
++include $(BUILD_SHARED_LIBRARY)
+diff --git a/jni/mrjnimain.c b/jni/mrjnimain.c
+new file mode 100644
+index 0000000..354dbab
+--- /dev/null
++++ b/jni/mrjnimain.c
+@@ -0,0 +1,77 @@
++/*******************************************************************************
++ *
++ *                              Delta Chat Android
++ *                        (C) 2013-2016 Nikolai Kudashov
++ *                           (C) 2017 Björn Petersen
++ *                    Contact: r10s@b44t.com, http://b44t.com
++ *
++ * This program is free software: you can redistribute it and/or modify it under
++ * the terms of the GNU General Public License as published by the Free Software
++ * Foundation, either version 3 of the License, or (at your option) any later
++ * version.
++ *
++ * This program is distributed in the hope that it will be useful, but WITHOUT
++ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
++ * FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
++ * details.
++ *
++ * You should have received a copy of the GNU General Public License along with
++ * this program.  If not, see http://www.gnu.org/licenses/ .
++ *
++ ******************************************************************************/
++
++
++#include <stdio.h>
++#include <string.h>
++#include <jni.h>
++#include <sys/types.h>
++#include <inttypes.h>
++#include <stdlib.h>
++#include <openssl/aes.h>
++#include <unistd.h>
++#include "mrjnimain.h"
++#include "image.h"
++#include "gifvideo.h"
++
++
++jint JNI_OnLoad(JavaVM *vm, void *reserved) { /* this function is called automatically by the JNI when the library gets loaded */
++	JNIEnv *env = 0;
++    srand(time(NULL));
++
++	__android_log_print(ANDROID_LOG_INFO, "DeltaChat", "JNI_OnLoad() ..."); /* please note, that __android_log_print() may not work (eg. on LG X Cam), however, we don't have an option here. */
++    
++	if ((*vm)->GetEnv(vm, (void **) &env, JNI_VERSION_1_6) != JNI_OK) {
++		return -1;
++	}
++    
++    /*if (imageOnJNILoad(vm, reserved, env) == -1) {
++        return -1;
++    }
++    
++    if (gifvideoOnJNILoad(vm, env) == -1) {
++        return -1;
++    }*/
++
++	__android_log_print(ANDROID_LOG_INFO, "DeltaChat", "JNI_OnLoad() succeeded.");
++
++	return JNI_VERSION_1_6;
++}
++
++
++void JNI_OnUnload(JavaVM *vm, void *reserved) {
++}
++
++
++/*JNIEXPORT jstring Java_com_b44t_messenger_Utilities_readlink(JNIEnv *env, jclass class, jstring path) {
++    static char buf[1000];
++    char *fileName = (*env)->GetStringUTFChars(env, path, NULL);
++    int result = readlink(fileName, buf, 999);
++    jstring value = 0;
++    if (result != -1) {
++        buf[result] = '\0';
++        value = (*env)->NewStringUTF(env, buf);
++    }
++    (*env)->ReleaseStringUTFChars(env, path, fileName);
++    return value;
++}
++*/
+diff --git a/jni/mrjnimain.h b/jni/mrjnimain.h
+new file mode 100644
+index 0000000..331f30a
+--- /dev/null
++++ b/jni/mrjnimain.h
+@@ -0,0 +1,54 @@
++/*******************************************************************************
++ *
++ *                              Delta Chat Android
++ *                        (C) 2013-2016 Nikolai Kudashov
++ *                           (C) 2017 Björn Petersen
++ *                    Contact: r10s@b44t.com, http://b44t.com
++ *
++ * This program is free software: you can redistribute it and/or modify it under
++ * the terms of the GNU General Public License as published by the Free Software
++ * Foundation, either version 3 of the License, or (at your option) any later
++ * version.
++ *
++ * This program is distributed in the hope that it will be useful, but WITHOUT
++ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
++ * FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
++ * details.
++ *
++ * You should have received a copy of the GNU General Public License along with
++ * this program.  If not, see http://www.gnu.org/licenses/ .
++ *
++ ******************************************************************************/
++
++
++#ifndef __MRJNIMAIN_H__
++#define __MRJNIMAIN_H__
++
++
++#include <android/log.h>
++#include <jni.h>
++
++
++#define LOG_TAG "DeltaChat"
++#ifndef LOG_DISABLED
++#define LOGI(...) __android_log_print(ANDROID_LOG_INFO, LOG_TAG, __VA_ARGS__)
++#define LOGD(...) __android_log_print(ANDROID_LOG_DEBUG, LOG_TAG, __VA_ARGS__)
++#define LOGE(...) __android_log_print(ANDROID_LOG_ERROR, LOG_TAG, __VA_ARGS__)
++#define LOGV(...) __android_log_print(ANDROID_LOG_VERBOSE, LOG_TAG, __VA_ARGS__)
++#else
++#define LOGI(...)
++#define LOGD(...)
++#define LOGE(...)
++#define LOGV(...)
++#endif
++
++#ifndef max
++#define max(x, y) ((x) > (y)) ? (x) : (y)
++#endif
++#ifndef min
++#define min(x, y) ((x) < (y)) ? (x) : (y)
++#endif
++
++
++#endif /* __MRJNIMAIN_H__*/
++
+diff --git a/jni/mrwrapper.c b/jni/mrwrapper.c
+new file mode 100644
+index 0000000..cfa2ac9
+--- /dev/null
++++ b/jni/mrwrapper.c
+@@ -0,0 +1,1299 @@
++/*******************************************************************************
++ *
++ *                              Delta Chat Android
++ *                           (C) 2017 Björn Petersen
++ *                    Contact: r10s@b44t.com, http://b44t.com
++ *
++ * This program is free software: you can redistribute it and/or modify it under
++ * the terms of the GNU General Public License as published by the Free Software
++ * Foundation, either version 3 of the License, or (at your option) any later
++ * version.
++ *
++ * This program is distributed in the hope that it will be useful, but WITHOUT
++ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
++ * FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
++ * details.
++ *
++ * You should have received a copy of the GNU General Public License along with
++ * this program.  If not, see http://www.gnu.org/licenses/ .
++ *
++ *******************************************************************************
++ *
++ * File:    mrwrapper.c
++ * Purpose: The C part of the Java<->C Wrapper, see also MrMailbox.java
++ *
++ ******************************************************************************/
++
++
++#include <jni.h>
++#include <android/log.h>
++#include "messenger-backend/src/deltachat.h"
++#include "messenger-backend/cmdline/cmdline.h"
++
++
++#define CHAR_REF(a) \
++	const char* a##Ptr = (a)? (*env)->GetStringUTFChars(env, (a), 0) : NULL; // passing a NULL-jstring results in a NULL-ptr - this is needed by functions using eg. NULL for "delete"
++
++#define CHAR_UNREF(a) \
++	if(a) { (*env)->ReleaseStringUTFChars(env, (a), a##Ptr); }
++
++#define JSTRING_NEW(a) jstring_new__(env, (a))
++static jstring jstring_new__(JNIEnv* env, const char* a)
++{
++	if( a==NULL || a[0]==0 ) {
++		return (*env)->NewStringUTF(env, "");
++	}
++
++	/* for non-empty strings, do not use NewStringUTF() as this is buggy on some Android versions.
++	Instead, create the string using `new String(ByteArray, "UTF-8);` which seems to be programmed more properly.
++	(eg. on KitKat a simple "SMILING FACE WITH SMILING EYES" (U+1F60A, UTF-8 F0 9F 98 8A) will let the app crash, reporting 0xF0 is a bad UTF-8 start,
++	see http://stackoverflow.com/questions/12127817/android-ics-4-0-ndk-newstringutf-is-crashing-down-the-app ) */
++	static jclass    s_strCls    = NULL;
++	static jmethodID s_strCtor   = NULL;
++	static jclass    s_strEncode = NULL;
++	if( s_strCls==NULL ) {
++		s_strCls    = (*env)->NewGlobalRef(env, (*env)->FindClass(env, "java/lang/String"));
++		s_strCtor   = (*env)->GetMethodID(env, s_strCls, "<init>", "([BLjava/lang/String;)V");
++		s_strEncode = (*env)->NewGlobalRef(env, (*env)->NewStringUTF(env, "UTF-8"));
++	}
++
++	int a_bytes = strlen(a);
++	jbyteArray array = (*env)->NewByteArray(env, a_bytes);
++		(*env)->SetByteArrayRegion(env, array, 0, a_bytes, a);
++		jstring ret = (jstring) (*env)->NewObject(env, s_strCls, s_strCtor, array, s_strEncode);
++	(*env)->DeleteLocalRef(env, array); /* we have to delete the reference as it is not returned to Java, AFAIK */
++
++	return ret;
++}
++
++
++/* global stuff */
++
++static JavaVM*   s_jvm = NULL;
++static jclass    s_MrMailbox_class = NULL;
++static jmethodID s_MrCallback_methodID = NULL;
++static int       s_global_init_done = 0;
++
++
++static void s_init_globals(JNIEnv *env, jclass MrMailbox_class)
++{
++	/* make sure, the intialisation is done only once */
++	if( s_global_init_done ) { return; }
++	s_global_init_done = 1;
++
++	/* prepare calling back a Java function */
++	__android_log_print(ANDROID_LOG_INFO, "DeltaChat", "JNI: s_init_globals()..."); /* low-level logging, dc_log_*() may not be yet available. However, please note that __android_log_print() may not work (eg. on LG X Cam) */
++
++	(*env)->GetJavaVM(env, &s_jvm); /* JNIEnv cannot be shared between threads, so we share the JavaVM object */
++	s_MrMailbox_class =  (*env)->NewGlobalRef(env, MrMailbox_class);
++	s_MrCallback_methodID = (*env)->GetStaticMethodID(env, MrMailbox_class, "MrCallback","(IJJ)J" /*signature as "(param)ret" with I=int, J=long*/ );
++}
++
++
++/* tools */
++
++static jintArray dc_array2jintArray_n_unref(JNIEnv *env, dc_array_t* ca)
++{
++	/* takes a C-array of type dc_array_t and converts it it a Java-Array.
++	then the C-array is freed and the Java-Array is returned. */
++	int i, icnt = ca? dc_array_get_cnt(ca) : 0;
++	jintArray ret = (*env)->NewIntArray(env, icnt); if (ret == NULL) { return NULL; }
++
++	if( ca ) {
++		if( icnt ) {
++			uintptr_t* ca_data = dc_array_get_raw(ca);
++			if( sizeof(uintptr_t)==sizeof(jint) ) {
++				(*env)->SetIntArrayRegion(env, ret, 0, icnt, (jint*)ca_data);
++			}
++			else {
++				jint* temp = calloc(icnt, sizeof(jint));
++					for( i = 0; i < icnt; i++ ) {
++						temp[i] = (jint)ca_data[i];
++					}
++					(*env)->SetIntArrayRegion(env, ret, 0, icnt, temp);
++				free(temp);
++			}
++		}
++		dc_array_unref(ca);
++	}
++
++	return ret;
++}
++
++
++static uint32_t* jintArray2uint32Pointer(JNIEnv* env, jintArray ja, int* ret_icnt)
++{
++	/* takes a Java-Array and converts it to a C-Array. */
++	uint32_t* ret = NULL;
++	if( ret_icnt ) { *ret_icnt = 0; }
++
++	if( env && ja && ret_icnt )
++	{
++		int i, icnt  = (*env)->GetArrayLength(env, ja);
++		if( icnt > 0 )
++		{
++			const jint* temp = (*env)->GetIntArrayElements(env, ja, NULL);
++			if( temp )
++			{
++				ret = calloc(icnt, sizeof(uint32_t));
++				if( ret )
++				{
++					for( i = 0; i < icnt; i++ ) {
++						ret[i] = (uint32_t)temp[i];
++					}
++					*ret_icnt = icnt;
++				}
++				(*env)->ReleaseIntArrayElements(env, ja, temp, 0);
++			}
++		}
++	}
++
++	return ret;
++}
++
++
++/*******************************************************************************
++ * MrMailbox
++ ******************************************************************************/
++
++
++static dc_context_t* get_dc_context(JNIEnv *env, jclass cls)
++{
++	static jfieldID fid = 0;
++	if( fid == 0 ) {
++		fid = (*env)->GetStaticFieldID(env, cls, "m_hMailbox", "J" /*Signature, J=long*/);
++	}
++	if( fid ) {
++		return (dc_context_t*)(*env)->GetStaticLongField(env, cls, fid);
++	}
++	return NULL;
++}
++
++
++/* MrMailbox - new/delete */
++
++static uintptr_t s_context_callback_(dc_context_t* context, int event, uintptr_t data1, uintptr_t data2)
++{
++	jlong   l;
++	JNIEnv* env;
++
++	#if 0 /* -- __android_log_print() does not log eg. on LG X Cam - but Javas Log.i() etc. do. So, we do not optimize these calls and just use the Java logging. */
++	if( event==DC_EVENT_INFO || event==DC_EVENT_WARNING ) {
++	    __android_log_print(event==DC_EVENT_INFO? ANDROID_LOG_INFO : ANDROID_LOG_WARN, "DeltaChat", "%s", (char*)data2); /* on problems, add `-llog` to `Android.mk` */
++		return 0; /* speed up things for info/warning */
++	}
++	else if( event == DC_EVENT_ERROR ) {
++	    __android_log_print(ANDROID_LOG_ERROR, "DeltaChat", "%s", (char*)data2);
++	    /* errors are also forwarded to Java to show them in a bubble or so */
++	}
++	#endif
++
++	if( s_jvm==NULL || s_MrMailbox_class==NULL || s_MrCallback_methodID==NULL ) {
++		return 0; /* may happen on startup */
++	}
++
++	(*s_jvm)->GetEnv(s_jvm, &env, JNI_VERSION_1_6); /* as this function may be called from _any_ thread, we cannot use a static pointer to JNIEnv */
++	if( env==NULL ) {
++		return 0; /* may happen on startup */
++	}
++
++	l = (*env)->CallStaticLongMethod(env, s_MrMailbox_class, s_MrCallback_methodID, (jint)event, (jlong)data1, (jlong)data2);
++	return (uintptr_t)l;
++}
++
++
++JNIEXPORT jlong Java_com_b44t_messenger_MrMailbox_MrMailboxNew(JNIEnv *env, jclass c)
++{
++	s_init_globals(env, c);
++	return (jlong)dc_context_new(s_context_callback_, NULL, "Android");
++}
++
++
++/* MrMailbox - open/configure/connect/fetch */
++
++JNIEXPORT jint Java_com_b44t_messenger_MrMailbox_open(JNIEnv *env, jclass cls, jstring dbfile)
++{
++	CHAR_REF(dbfile);
++		jint ret = dc_open(get_dc_context(env, cls), dbfilePtr, NULL);
++	CHAR_UNREF(dbfile)
++	return ret;
++}
++
++
++JNIEXPORT void Java_com_b44t_messenger_MrMailbox_close(JNIEnv *env, jclass cls)
++{
++	dc_close(get_dc_context(env, cls));
++}
++
++
++JNIEXPORT jstring Java_com_b44t_messenger_MrMailbox_getBlobdir(JNIEnv *env, jclass cls)
++{
++	char* temp = dc_get_blobdir(get_dc_context(env, cls));
++		jstring ret = JSTRING_NEW(temp);
++	free(temp);
++	return ret;
++}
++
++
++JNIEXPORT void Java_com_b44t_messenger_MrMailbox_configure(JNIEnv *env, jclass cls)
++{
++	dc_configure(get_dc_context(env, cls));
++}
++
++
++JNIEXPORT void Java_com_b44t_messenger_MrMailbox_stopOngoingProcess(JNIEnv *env, jclass cls)
++{
++	dc_stop_ongoing_process(get_dc_context(env, cls));
++}
++
++
++JNIEXPORT jint Java_com_b44t_messenger_MrMailbox_isConfigured(JNIEnv *env, jclass cls)
++{
++	return (jint)dc_is_configured(get_dc_context(env, cls));
++}
++
++
++JNIEXPORT void Java_com_b44t_messenger_MrMailbox_performJobs(JNIEnv *env, jclass cls)
++{
++	dc_perform_imap_jobs(get_dc_context(env, cls));
++}
++
++
++JNIEXPORT void Java_com_b44t_messenger_MrMailbox_idle(JNIEnv *env, jclass cls)
++{
++	dc_perform_imap_idle(get_dc_context(env, cls));
++}
++
++
++JNIEXPORT void Java_com_b44t_messenger_MrMailbox_interruptIdle(JNIEnv *env, jclass cls)
++{
++	dc_interrupt_imap_idle(get_dc_context(env, cls));
++}
++
++
++JNIEXPORT void Java_com_b44t_messenger_MrMailbox_fetch(JNIEnv *env, jclass cls)
++{
++	dc_perform_imap_fetch(get_dc_context(env, cls));
++}
++
++
++JNIEXPORT void Java_com_b44t_messenger_MrMailbox_performSmtpJobs(JNIEnv *env, jclass cls)
++{
++	dc_perform_smtp_jobs(get_dc_context(env, cls));
++}
++
++
++JNIEXPORT void Java_com_b44t_messenger_MrMailbox_performSmtpIdle(JNIEnv *env, jclass cls)
++{
++	dc_perform_smtp_idle(get_dc_context(env, cls));
++}
++
++
++JNIEXPORT void Java_com_b44t_messenger_MrMailbox_interruptSmtpIdle(JNIEnv *env, jclass cls)
++{
++	dc_interrupt_smtp_idle(get_dc_context(env, cls));
++}
++
++
++/* MrMailbox - handle contacts */
++
++JNIEXPORT jintArray Java_com_b44t_messenger_MrMailbox_getContacts(JNIEnv *env, jclass cls, jint flags, jstring query)
++{
++	CHAR_REF(query);
++	    dc_array_t* ca = dc_get_contacts(get_dc_context(env, cls), flags, queryPtr);
++	CHAR_UNREF(query);
++	return dc_array2jintArray_n_unref(env, ca);
++}
++
++
++JNIEXPORT jint Java_com_b44t_messenger_MrMailbox_getBlockedCount(JNIEnv *env, jclass cls)
++{
++	return dc_get_blocked_cnt(get_dc_context(env, cls));
++}
++
++
++JNIEXPORT jintArray Java_com_b44t_messenger_MrMailbox_getBlockedContacts(JNIEnv *env, jclass cls)
++{
++	dc_array_t* ca = dc_get_blocked_contacts(get_dc_context(env, cls));
++	return dc_array2jintArray_n_unref(env, ca);
++}
++
++
++JNIEXPORT jlong Java_com_b44t_messenger_MrMailbox_MrMailboxGetContact(JNIEnv *env, jclass c, jlong hMailbox, jint contact_id)
++{
++	return (jlong)dc_get_contact((dc_context_t*)hMailbox, contact_id);
++}
++
++
++JNIEXPORT jint Java_com_b44t_messenger_MrMailbox_MrMailboxCreateContact(JNIEnv *env, jclass c, jlong hMailbox, jstring name, jstring addr)
++{
++	CHAR_REF(name);
++	CHAR_REF(addr);
++		jint ret = (jint)dc_create_contact((dc_context_t*)hMailbox, namePtr, addrPtr);
++	CHAR_UNREF(addr);
++	CHAR_UNREF(name);
++	return ret;
++}
++
++
++JNIEXPORT void Java_com_b44t_messenger_MrMailbox_MrMailboxBlockContact(JNIEnv *env, jclass c, jlong hMailbox, jint contact_id, jint block)
++{
++	dc_block_contact((dc_context_t*)hMailbox, contact_id, block);
++}
++
++
++JNIEXPORT jint Java_com_b44t_messenger_MrMailbox_MrMailboxDeleteContact(JNIEnv *env, jclass c, jlong hMailbox, jint contact_id)
++{
++	return (jint)dc_delete_contact((dc_context_t*)hMailbox, contact_id);
++}
++
++
++/* MrMailbox - handle chats */
++
++JNIEXPORT jlong Java_com_b44t_messenger_MrMailbox_MrMailboxGetChatlist(JNIEnv *env, jclass c, jlong hMailbox, jint listflags, jstring query, jint queryId)
++{
++	jlong ret;
++	if( query ) {
++		CHAR_REF(query);
++			ret = (jlong)dc_get_chatlist((dc_context_t*)hMailbox, listflags, queryPtr, queryId);
++		CHAR_UNREF(query);
++	}
++	else {
++		ret = (jlong)dc_get_chatlist((dc_context_t*)hMailbox, listflags, NULL, queryId);
++	}
++	return ret;
++}
++
++
++JNIEXPORT jlong Java_com_b44t_messenger_MrMailbox_MrMailboxGetChat(JNIEnv *env, jclass c, jlong hMailbox, jint chat_id)
++{
++	return (jlong)dc_get_chat((dc_context_t*)hMailbox, chat_id);
++}
++
++
++JNIEXPORT jint Java_com_b44t_messenger_MrMailbox_getChatIdByContactId(JNIEnv *env, jclass cls, jint contact_id)
++{
++	return (jint)dc_get_chat_id_by_contact_id(get_dc_context(env, cls), contact_id);
++}
++
++
++JNIEXPORT void Java_com_b44t_messenger_MrMailbox_markseenMsgs(JNIEnv *env, jclass cls, jintArray msg_ids)
++{
++	int msg_ids_cnt = 0;
++	const uint32_t* msg_ids_ptr = jintArray2uint32Pointer(env, msg_ids, &msg_ids_cnt);
++		dc_markseen_msgs(get_dc_context(env, cls), msg_ids_ptr, msg_ids_cnt);
++	free(msg_ids_ptr);
++}
++
++
++JNIEXPORT void Java_com_b44t_messenger_MrMailbox_marknoticedChat(JNIEnv *env, jclass cls, jint chat_id)
++{
++	dc_marknoticed_chat(get_dc_context(env, cls), chat_id);
++}
++
++
++JNIEXPORT void Java_com_b44t_messenger_MrMailbox_marknoticedContact(JNIEnv *env, jclass cls, jint contact_id)
++{
++	dc_marknoticed_contact(get_dc_context(env, cls), contact_id);
++}
++
++
++JNIEXPORT void Java_com_b44t_messenger_MrMailbox_archiveChat(JNIEnv *env, jclass cls, jint chat_id, jint archive)
++{
++	dc_archive_chat(get_dc_context(env, cls), chat_id, archive);
++}
++
++
++JNIEXPORT jint Java_com_b44t_messenger_MrMailbox_createChatByContactId(JNIEnv *env, jclass cls, jint contact_id)
++{
++	return (jint)dc_create_chat_by_contact_id(get_dc_context(env, cls), contact_id);
++}
++
++
++JNIEXPORT jint Java_com_b44t_messenger_MrMailbox_createChatByMsgId(JNIEnv *env, jclass cls, jint msg_id)
++{
++	return (jint)dc_create_chat_by_msg_id(get_dc_context(env, cls), msg_id);
++}
++
++
++JNIEXPORT jint Java_com_b44t_messenger_MrMailbox_createGroupChat(JNIEnv *env, jclass cls, jboolean verified, jstring name)
++{
++	CHAR_REF(name);
++		jint ret = (jint)dc_create_group_chat(get_dc_context(env, cls), verified, namePtr);
++	CHAR_UNREF(name);
++	return ret;
++}
++
++
++JNIEXPORT jint Java_com_b44t_messenger_MrMailbox_isContactInChat(JNIEnv *env, jclass cls, jint chat_id, jint contact_id)
++{
++	return (jint)dc_is_contact_in_chat(get_dc_context(env, cls), chat_id, contact_id);
++}
++
++
++JNIEXPORT jint Java_com_b44t_messenger_MrMailbox_addContactToChat(JNIEnv *env, jclass cls, jint chat_id, jint contact_id)
++{
++	return (jint)dc_add_contact_to_chat(get_dc_context(env, cls), chat_id, contact_id);
++}
++
++
++JNIEXPORT jint Java_com_b44t_messenger_MrMailbox_removeContactFromChat(JNIEnv *env, jclass cls, jint chat_id, jint contact_id)
++{
++	return (jint)dc_remove_contact_from_chat(get_dc_context(env, cls), chat_id, contact_id);
++}
++
++
++JNIEXPORT void Java_com_b44t_messenger_MrMailbox_setDraft(JNIEnv *env, jclass cls, jint chat_id, jstring draft /* NULL=delete */)
++{
++	CHAR_REF(draft);
++		dc_set_text_draft(get_dc_context(env, cls), chat_id, draftPtr /* NULL=delete */);
++	CHAR_UNREF(draft);
++}
++
++
++JNIEXPORT jint Java_com_b44t_messenger_MrMailbox_setChatName(JNIEnv *env, jclass cls, jint chat_id, jstring name)
++{
++	CHAR_REF(name);
++		jint ret = (jint)dc_set_chat_name(get_dc_context(env, cls), chat_id, namePtr);
++	CHAR_UNREF(name);
++	return ret;
++}
++
++
++JNIEXPORT jint Java_com_b44t_messenger_MrMailbox_setChatProfileImage(JNIEnv *env, jclass cls, jint chat_id, jstring image/*NULL=delete*/)
++{
++	CHAR_REF(image);
++		jint ret = (jint)dc_set_chat_profile_image(get_dc_context(env, cls), chat_id, imagePtr/*CHAR_REF() preserves NULL*/);
++	CHAR_UNREF(image);
++	return ret;
++}
++
++
++JNIEXPORT void Java_com_b44t_messenger_MrMailbox_deleteChat(JNIEnv *env, jclass cls, jint chat_id)
++{
++	dc_delete_chat(get_dc_context(env, cls), chat_id);
++}
++
++
++/* MrMailbox - handle messages */
++
++
++JNIEXPORT jint Java_com_b44t_messenger_MrMailbox_getFreshMsgCount(JNIEnv *env, jclass cls, jint chat_id)
++{
++	return dc_get_fresh_msg_cnt(get_dc_context(env, cls), chat_id);
++}
++
++
++JNIEXPORT jlong Java_com_b44t_messenger_MrMailbox_MrMailboxGetMsg(JNIEnv *env, jclass c, jlong hMailbox, jint id)
++{
++	return (jlong)dc_get_msg((dc_context_t*)hMailbox, id);
++}
++
++
++JNIEXPORT jstring Java_com_b44t_messenger_MrMailbox_MrMailboxGetMsgInfo(JNIEnv *env, jclass c, jlong hMailbox, jint msg_id)
++{
++	char* temp = dc_get_msg_info((dc_context_t*)hMailbox, msg_id);
++		jstring ret = JSTRING_NEW(temp);
++	free(temp);
++	return ret;
++}
++
++
++JNIEXPORT void Java_com_b44t_messenger_MrMailbox_deleteMsgs(JNIEnv *env, jclass cls, jintArray msg_ids)
++{
++	int msg_ids_cnt = 0;
++	const uint32_t* msg_ids_ptr = jintArray2uint32Pointer(env, msg_ids, &msg_ids_cnt);
++		dc_delete_msgs(get_dc_context(env, cls), msg_ids_ptr, msg_ids_cnt);
++	free(msg_ids_ptr);
++}
++
++
++JNIEXPORT void Java_com_b44t_messenger_MrMailbox_forwardMsgs(JNIEnv *env, jclass cls, jintArray msg_ids, jint chat_id)
++{
++	int msg_ids_cnt = 0;
++	const uint32_t* msg_ids_ptr = jintArray2uint32Pointer(env, msg_ids, &msg_ids_cnt);
++		dc_forward_msgs(get_dc_context(env, cls), msg_ids_ptr, msg_ids_cnt, chat_id);
++	free(msg_ids_ptr);
++}
++
++
++JNIEXPORT jint Java_com_b44t_messenger_MrMailbox_sendTextMsg(JNIEnv *env, jclass cls, jint chat_id, jstring text)
++{
++	CHAR_REF(text);
++		jint msg_id = dc_send_text_msg(get_dc_context(env, cls), chat_id, textPtr);
++	CHAR_UNREF(text);
++	return msg_id;
++}
++
++
++JNIEXPORT jint Java_com_b44t_messenger_MrMailbox_sendVcardMsg(JNIEnv *env, jobject obj, jint chat_id, jint contact_id)
++{
++	return dc_send_vcard_msg(get_dc_context(env, obj), chat_id, contact_id);
++}
++
++
++JNIEXPORT jint Java_com_b44t_messenger_MrMailbox_sendMediaMsg(JNIEnv *env, jclass cls, jint chat_id, jint type, jstring file, jstring mime, jint w, jint h, jint ms, jstring author, jstring trackname)
++{
++	jint msg_id = 0;
++	CHAR_REF(file);
++	CHAR_REF(mime);
++	CHAR_REF(author);
++	CHAR_REF(trackname);
++	switch( type ) {
++		case DC_MSG_IMAGE: msg_id = (jint)dc_send_image_msg(get_dc_context(env, cls), chat_id, filePtr, mimePtr, w, h); break;
++		case DC_MSG_VIDEO: msg_id = (jint)dc_send_video_msg(get_dc_context(env, cls), chat_id, filePtr, mimePtr, w, h, ms); break;
++		case DC_MSG_VOICE: msg_id = (jint)dc_send_voice_msg(get_dc_context(env, cls), chat_id, filePtr, mimePtr, ms); break;
++		case DC_MSG_AUDIO: msg_id = (jint)dc_send_audio_msg(get_dc_context(env, cls), chat_id, filePtr, mimePtr, ms, authorPtr, tracknamePtr); break;
++		default:           msg_id = (jint)dc_send_file_msg (get_dc_context(env, cls), chat_id, filePtr, mimePtr); break;
++	}
++	CHAR_UNREF(trackname);
++	CHAR_UNREF(author);
++	CHAR_UNREF(mime);
++	CHAR_UNREF(file);
++	return msg_id;
++}
++
++
++/* MrMailbox - handle config */
++
++JNIEXPORT void Java_com_b44t_messenger_MrMailbox_setConfig(JNIEnv *env, jclass cls, jstring key, jstring value /*may be NULL*/)
++{
++	CHAR_REF(key);
++	CHAR_REF(value);
++		dc_set_config(get_dc_context(env, cls), keyPtr, valuePtr /*is NULL if value is NULL, CHAR_REF() handles this*/);
++	CHAR_UNREF(key);
++	CHAR_UNREF(value);
++}
++
++
++JNIEXPORT void Java_com_b44t_messenger_MrMailbox_setConfigInt(JNIEnv *env, jclass cls, jstring key, jint value)
++{
++	CHAR_REF(key);
++		dc_set_config_int(get_dc_context(env, cls), keyPtr, value);
++	CHAR_UNREF(key);
++}
++
++
++JNIEXPORT jstring Java_com_b44t_messenger_MrMailbox_getConfig(JNIEnv *env, jclass cls, jstring key, jstring def/*may be NULL*/)
++{
++	CHAR_REF(key);
++	CHAR_REF(def);
++		char* temp = dc_get_config(get_dc_context(env, cls), keyPtr, defPtr /*is NULL if value is NULL, CHAR_REF() handles this*/);
++			jstring ret = NULL;
++			if( temp ) {
++				ret = JSTRING_NEW(temp);
++			}
++		free(temp);
++	CHAR_UNREF(key);
++	CHAR_UNREF(def);
++	return ret; /* returns NULL only if key is unset and "def" is NULL */
++}
++
++
++JNIEXPORT jint Java_com_b44t_messenger_MrMailbox_getConfigInt(JNIEnv *env, jclass cls, jstring key, jint def)
++{
++	CHAR_REF(key);
++		jint ret = dc_get_config_int(get_dc_context(env, cls), keyPtr, def);
++	CHAR_UNREF(key);
++	return ret;
++}
++
++
++/* MrMailbox - out-of-band verification */
++
++JNIEXPORT jlong Java_com_b44t_messenger_MrMailbox_checkQrCPtr(JNIEnv *env, jclass cls, jstring qr)
++{
++	CHAR_REF(qr);
++		jlong ret = (jlong)dc_check_qr(get_dc_context(env, cls), qrPtr);
++	CHAR_UNREF(qr);
++	return ret;
++}
++
++JNIEXPORT jstring Java_com_b44t_messenger_MrMailbox_getSecurejoinQr(JNIEnv *env, jclass cls, jint chat_id)
++{
++	char* temp = dc_get_securejoin_qr(get_dc_context(env, cls), chat_id);
++		jstring ret = JSTRING_NEW(temp);
++	free(temp);
++	return ret;
++}
++
++JNIEXPORT jint Java_com_b44t_messenger_MrMailbox_joinSecurejoin(JNIEnv *env, jclass cls, jstring qr)
++{
++	CHAR_REF(qr);
++		jint ret = dc_join_securejoin(get_dc_context(env, cls), qrPtr);
++	CHAR_UNREF(qr);
++	return ret;
++}
++
++
++/* MrMailbox - misc. */
++
++JNIEXPORT jstring Java_com_b44t_messenger_MrMailbox_getInfo(JNIEnv *env, jclass cls)
++{
++	char* temp = dc_get_info(get_dc_context(env, cls));
++		jstring ret = JSTRING_NEW(temp);
++	free(temp);
++	return ret;
++}
++
++
++JNIEXPORT jstring Java_com_b44t_messenger_MrMailbox_getContactEncrInfo(JNIEnv *env, jclass cls, jint contact_id)
++{
++	char* temp = dc_get_contact_encrinfo(get_dc_context(env, cls), contact_id);
++		jstring ret = JSTRING_NEW(temp);
++	free(temp);
++	return ret;
++}
++
++
++JNIEXPORT jstring Java_com_b44t_messenger_MrMailbox_cmdline(JNIEnv *env, jclass cls, jstring cmd)
++{
++	CHAR_REF(cmd);
++		char* temp = dc_cmdline(get_dc_context(env, cls), cmdPtr);
++			jstring ret = JSTRING_NEW(temp);
++		free(temp);
++	CHAR_UNREF(cmd);
++	return ret;
++}
++
++
++JNIEXPORT jstring Java_com_b44t_messenger_MrMailbox_initiateKeyTransfer(JNIEnv *env, jclass cls)
++{
++	jstring setup_code = NULL;
++	char* temp = dc_initiate_key_transfer(get_dc_context(env, cls));
++	if( temp ) {
++		setup_code = JSTRING_NEW(temp);
++		free(temp);
++	}
++	return setup_code;
++}
++
++
++JNIEXPORT jboolean Java_com_b44t_messenger_MrMailbox_continueKeyTransfer(JNIEnv *env, jclass cls, jint msg_id, jstring setupCode)
++{
++	CHAR_REF(setupCode);
++		jboolean ret = dc_continue_key_transfer(get_dc_context(env, cls), msg_id, setupCodePtr);
++	CHAR_UNREF(setupCode);
++	return ret;
++}
++
++
++JNIEXPORT void Java_com_b44t_messenger_MrMailbox_imex(JNIEnv *env, jclass cls, jint what, jstring dir)
++{
++	CHAR_REF(dir);
++		dc_imex(get_dc_context(env, cls), what, dirPtr, "");
++	CHAR_UNREF(dir);
++}
++
++
++JNIEXPORT jint Java_com_b44t_messenger_MrMailbox_checkPassword(JNIEnv *env, jclass cls, jstring pw)
++{
++	CHAR_REF(pw);
++		jint r = dc_check_password(get_dc_context(env, cls),  pwPtr);
++	CHAR_UNREF(pw);
++	return r;
++}
++
++
++JNIEXPORT jstring Java_com_b44t_messenger_MrMailbox_imexHasBackup(JNIEnv *env, jclass cls, jstring dir)
++{
++	CHAR_REF(dir);
++		jstring ret = NULL;
++		char* temp = dc_imex_has_backup(get_dc_context(env, cls),  dirPtr);
++		if( temp ) {
++			ret = JSTRING_NEW(temp);
++			free(temp);
++		}
++	CHAR_UNREF(dir);
++	return ret; /* may be NULL! */
++}
++
++
++JNIEXPORT jint Java_com_b44t_messenger_MrMailbox_MrMailboxAddAddressBook(JNIEnv *env, jclass c, jlong hMailbox, jstring adrbook)
++{
++	CHAR_REF(adrbook);
++		int modify_count = dc_add_address_book((dc_context_t*)hMailbox, adrbookPtr);
++	CHAR_UNREF(adrbook);
++	return modify_count;
++}
++
++
++
++/*******************************************************************************
++ * MrChatlist
++ ******************************************************************************/
++
++
++JNIEXPORT void Java_com_b44t_messenger_MrChatlist_MrChatlistUnref(JNIEnv *env, jclass c, jlong hChatlist)
++{
++	dc_chatlist_unref((dc_chatlist_t*)hChatlist);
++}
++
++
++JNIEXPORT jint Java_com_b44t_messenger_MrChatlist_MrChatlistGetCnt(JNIEnv *env, jclass c, jlong hChatlist)
++{
++	return dc_chatlist_get_cnt((dc_chatlist_t*)hChatlist);
++}
++
++
++JNIEXPORT jlong Java_com_b44t_messenger_MrChatlist_MrChatlistGetChatByIndex(JNIEnv *env, jclass c, jlong hChatlist, jint index)
++{
++	dc_chatlist_t* chatlist = (dc_chatlist_t*)hChatlist;
++	return (jlong)dc_get_chat(dc_chatlist_get_context(chatlist), dc_chatlist_get_chat_id(chatlist, index));
++}
++
++
++JNIEXPORT jlong Java_com_b44t_messenger_MrChatlist_MrChatlistGetMsgByIndex(JNIEnv *env, jclass c, jlong hChatlist, jint index)
++{
++	dc_chatlist_t* chatlist = (dc_chatlist_t*)hChatlist;
++	return (jlong)dc_get_msg(dc_chatlist_get_context(chatlist), dc_chatlist_get_msg_id(chatlist, index));
++}
++
++
++JNIEXPORT jlong Java_com_b44t_messenger_MrChatlist_MrChatlistGetSummaryByIndex(JNIEnv *env, jclass c, jlong hChatlist, jint index, jlong hChat)
++{
++	return (jlong)dc_chatlist_get_summary((dc_chatlist_t*)hChatlist, index, (dc_chat_t*)hChat);
++}
++
++
++/*******************************************************************************
++ * MrChat
++ ******************************************************************************/
++
++
++static dc_chat_t* get_dc_chat(JNIEnv *env, jobject obj)
++{
++	static jfieldID fid = 0;
++	if( fid == 0 ) {
++		jclass cls = (*env)->GetObjectClass(env, obj);
++		fid = (*env)->GetFieldID(env, cls, "m_hChat", "J" /*Signature, J=long*/);
++	}
++	if( fid ) {
++		return (dc_chat_t*)(*env)->GetLongField(env, obj, fid);
++	}
++	return NULL;
++}
++
++
++JNIEXPORT void Java_com_b44t_messenger_MrChat_MrChatUnref(JNIEnv *env, jclass c, jlong hChat)
++{
++	dc_chat_unref((dc_chat_t*)hChat);
++}
++
++
++JNIEXPORT jint Java_com_b44t_messenger_MrChat_getId(JNIEnv *env, jobject obj)
++{
++	return dc_chat_get_id(get_dc_chat(env, obj));
++}
++
++
++JNIEXPORT jboolean Java_com_b44t_messenger_MrChat_isGroup(JNIEnv *env, jobject obj)
++{
++	int chat_type = dc_chat_get_type(get_dc_chat(env, obj));
++	return (chat_type==DC_CHAT_TYPE_GROUP || chat_type==DC_CHAT_TYPE_VERIFIED_GROUP);
++}
++
++
++JNIEXPORT jint Java_com_b44t_messenger_MrChat_getArchived(JNIEnv *env, jobject obj)
++{
++	return dc_chat_get_archived(get_dc_chat(env, obj));
++}
++
++
++JNIEXPORT jstring Java_com_b44t_messenger_MrChat_getName(JNIEnv *env, jobject obj)
++{
++	const char* temp = dc_chat_get_name(get_dc_chat(env, obj));
++		jstring ret = JSTRING_NEW(temp);
++	free(temp);
++	return ret;
++}
++
++
++JNIEXPORT jstring Java_com_b44t_messenger_MrChat_getSubtitle(JNIEnv *env, jobject obj)
++{
++	const char* temp = dc_chat_get_subtitle(get_dc_chat(env, obj));
++		jstring ret = JSTRING_NEW(temp);
++	free(temp);
++	return ret;
++}
++
++
++JNIEXPORT jstring Java_com_b44t_messenger_MrChat_getProfileImage(JNIEnv *env, jobject obj)
++{
++	const char* temp = dc_chat_get_profile_image(get_dc_chat(env, obj));
++		jstring ret = JSTRING_NEW(temp);
++	free(temp);
++	return ret;
++}
++
++
++JNIEXPORT jboolean Java_com_b44t_messenger_MrChat_isUnpromoted(JNIEnv *env, jobject obj)
++{
++	return dc_chat_is_unpromoted(get_dc_chat(env, obj)) != 0;
++}
++
++
++JNIEXPORT jboolean Java_com_b44t_messenger_MrChat_isSelfTalk(JNIEnv *env, jobject obj)
++{
++	return dc_chat_is_self_talk(get_dc_chat(env, obj)) != 0;
++}
++
++
++JNIEXPORT jboolean Java_com_b44t_messenger_MrChat_isVerified(JNIEnv *env, jobject obj)
++{
++	return dc_chat_is_verified(get_dc_chat(env, obj)) != 0;
++}
++
++
++JNIEXPORT jstring Java_com_b44t_messenger_MrChat_getDraft(JNIEnv *env, jobject obj) /* returns NULL for "no draft" */
++{
++	const char* temp = dc_chat_get_text_draft(get_dc_chat(env, obj));
++		jstring ret = temp? JSTRING_NEW(temp) : NULL;
++	free(temp);
++	return ret;
++}
++
++
++JNIEXPORT jlong Java_com_b44t_messenger_MrChat_getDraftTimestamp(JNIEnv *env, jobject obj)
++{
++	return (jlong)dc_chat_get_draft_timestamp(get_dc_chat(env, obj));
++}
++
++
++JNIEXPORT jintArray Java_com_b44t_messenger_MrMailbox_getChatMedia(JNIEnv *env, jclass cls, jint chat_id, jint msg_type, jint or_msg_type)
++{
++	dc_array_t* ca = dc_get_chat_media(get_dc_context(env, cls), chat_id, msg_type, or_msg_type);
++	return dc_array2jintArray_n_unref(env, ca);
++}
++
++
++JNIEXPORT jint Java_com_b44t_messenger_MrMailbox_getNextMedia(JNIEnv *env, jclass cls, jint msg_id, jint dir)
++{
++	return dc_get_next_media(get_dc_context(env, cls), msg_id, dir);
++}
++
++
++JNIEXPORT jintArray Java_com_b44t_messenger_MrMailbox_getChatMsgs(JNIEnv *env, jclass cls, jint chat_id, jint flags, jint marker1before)
++{
++	dc_array_t* ca = dc_get_chat_msgs(get_dc_context(env, cls), chat_id, flags, marker1before);
++	return dc_array2jintArray_n_unref(env, ca);
++}
++
++
++JNIEXPORT jintArray Java_com_b44t_messenger_MrMailbox_searchMsgs(JNIEnv *env, jclass cls, jint chat_id, jstring query)
++{
++	CHAR_REF(query);
++		dc_array_t* ca = dc_search_msgs(get_dc_context(env, cls), chat_id, queryPtr);
++	CHAR_UNREF(query);
++	return dc_array2jintArray_n_unref(env, ca);
++}
++
++
++JNIEXPORT jintArray Java_com_b44t_messenger_MrMailbox_getFreshMsgs(JNIEnv *env, jclass cls)
++{
++	dc_array_t* ca = dc_get_fresh_msgs(get_dc_context(env, cls));
++	return dc_array2jintArray_n_unref(env, ca);
++}
++
++
++JNIEXPORT jintArray Java_com_b44t_messenger_MrMailbox_getChatContacts(JNIEnv *env, jclass cls, jint chat_id)
++{
++	dc_array_t* ca = dc_get_chat_contacts(get_dc_context(env, cls), chat_id);
++	return dc_array2jintArray_n_unref(env, ca);
++}
++
++
++/*******************************************************************************
++ * MrMsg
++ ******************************************************************************/
++
++
++static dc_msg_t* get_dc_msg(JNIEnv *env, jobject obj)
++{
++	static jfieldID fid = 0;
++	if( fid == 0 ) {
++		jclass cls = (*env)->GetObjectClass(env, obj);
++		fid = (*env)->GetFieldID(env, cls, "m_hMsg", "J" /*Signature, J=long*/);
++	}
++	if( fid ) {
++		return (dc_msg_t*)(*env)->GetLongField(env, obj, fid);
++	}
++	return NULL;
++}
++
++
++JNIEXPORT void Java_com_b44t_messenger_MrMsg_MrMsgUnref(JNIEnv *env, jclass c, jlong hMsg)
++{
++	dc_msg_unref((dc_msg_t*)hMsg);
++}
++
++
++JNIEXPORT jint Java_com_b44t_messenger_MrMsg_getId(JNIEnv *env, jobject obj)
++{
++	return dc_msg_get_id(get_dc_msg(env, obj));
++}
++
++
++JNIEXPORT jstring Java_com_b44t_messenger_MrMsg_getText(JNIEnv *env, jobject obj)
++{
++	char* temp = dc_msg_get_text(get_dc_msg(env, obj));
++		jstring ret = JSTRING_NEW(temp);
++	free(temp);
++	return ret;
++}
++
++
++JNIEXPORT jlong Java_com_b44t_messenger_MrMsg_getTimestamp(JNIEnv *env, jobject obj)
++{
++	return (jlong)dc_msg_get_timestamp(get_dc_msg(env, obj));
++}
++
++
++JNIEXPORT jint Java_com_b44t_messenger_MrMsg_getType(JNIEnv *env, jobject obj)
++{
++	return dc_msg_get_type(get_dc_msg(env, obj));
++}
++
++
++JNIEXPORT jint Java_com_b44t_messenger_MrMsg_getState(JNIEnv *env, jobject obj)
++{
++	return dc_msg_get_state(get_dc_msg(env, obj));
++}
++
++
++JNIEXPORT jint Java_com_b44t_messenger_MrMsg_getChatId(JNIEnv *env, jobject obj)
++{
++	return dc_msg_get_chat_id(get_dc_msg(env, obj));
++}
++
++
++JNIEXPORT jint Java_com_b44t_messenger_MrMsg_getFromId(JNIEnv *env, jobject obj)
++{
++	return dc_msg_get_from_id(get_dc_msg(env, obj));
++}
++
++
++JNIEXPORT jint Java_com_b44t_messenger_MrMsg_getWidth(JNIEnv *env, jobject obj, jint def)
++{
++	jint ret = (jint)dc_msg_get_width(get_dc_msg(env, obj));
++	return ret? ret : def;
++}
++
++
++JNIEXPORT jint Java_com_b44t_messenger_MrMsg_getHeight(JNIEnv *env, jobject obj, jint def)
++{
++	jint ret = (jint)dc_msg_get_height(get_dc_msg(env, obj));
++	return ret? ret : def;
++}
++
++
++JNIEXPORT jint Java_com_b44t_messenger_MrMsg_getDuration(JNIEnv *env, jobject obj)
++{
++	return dc_msg_get_duration(get_dc_msg(env, obj));
++}
++
++
++JNIEXPORT void Java_com_b44t_messenger_MrMsg_lateFilingMediaSize(JNIEnv *env, jobject obj, jint width, jint height, jint duration)
++{
++	dc_msg_latefiling_mediasize(get_dc_msg(env, obj), width, height, duration);
++}
++
++
++JNIEXPORT jint Java_com_b44t_messenger_MrMsg_getBytes(JNIEnv *env, jobject obj)
++{
++	return (jint)dc_msg_get_filebytes(get_dc_msg(env, obj));
++}
++
++
++JNIEXPORT jlong Java_com_b44t_messenger_MrMsg_getSummaryCPtr(JNIEnv *env, jobject obj, jlong hChat)
++{
++	return (jlong)dc_msg_get_summary(get_dc_msg(env, obj), (dc_chat_t*)hChat);
++}
++
++
++JNIEXPORT jstring Java_com_b44t_messenger_MrMsg_getSummarytext(JNIEnv *env, jobject obj, jint approx_characters)
++{
++	char* temp = dc_msg_get_summarytext(get_dc_msg(env, obj), approx_characters);
++		jstring ret = JSTRING_NEW(temp);
++	free(temp);
++	return ret;
++}
++
++
++JNIEXPORT jint Java_com_b44t_messenger_MrMsg_showPadlock(JNIEnv *env, jobject obj)
++{
++	return dc_msg_get_showpadlock(get_dc_msg(env, obj));
++}
++
++
++JNIEXPORT jstring Java_com_b44t_messenger_MrMsg_getFile(JNIEnv *env, jobject obj)
++{
++	char* temp = dc_msg_get_file(get_dc_msg(env, obj));
++		jstring ret =  JSTRING_NEW(temp);
++	free(temp);
++	return ret;
++}
++
++
++JNIEXPORT jstring Java_com_b44t_messenger_MrMsg_getFilemime(JNIEnv *env, jobject obj)
++{
++	char* temp = dc_msg_get_filemime(get_dc_msg(env, obj));
++		jstring ret =  JSTRING_NEW(temp);
++	free(temp);
++	return ret;
++}
++
++
++JNIEXPORT jstring Java_com_b44t_messenger_MrMsg_getFilename(JNIEnv *env, jobject obj)
++{
++	char* temp = dc_msg_get_filename(get_dc_msg(env, obj));
++		jstring ret =  JSTRING_NEW(temp);
++	free(temp);
++	return ret;
++}
++
++
++JNIEXPORT jlong Java_com_b44t_messenger_MrMsg_getMediainfoCPtr(JNIEnv *env, jobject obj)
++{
++	return (jlong)dc_msg_get_mediainfo(get_dc_msg(env, obj));
++}
++
++
++JNIEXPORT jboolean Java_com_b44t_messenger_MrMsg_isForwarded(JNIEnv *env, jobject obj)
++{
++    return dc_msg_is_forwarded(get_dc_msg(env, obj)) != 0;
++}
++
++
++JNIEXPORT jboolean Java_com_b44t_messenger_MrMsg_isIncreation(JNIEnv *env, jobject obj)
++{
++    return dc_msg_is_increation(get_dc_msg(env, obj)) != 0;
++}
++
++
++JNIEXPORT jboolean Java_com_b44t_messenger_MrMsg_isInfo(JNIEnv *env, jobject obj)
++{
++    return dc_msg_is_info(get_dc_msg(env, obj)) != 0;
++}
++
++
++JNIEXPORT jboolean Java_com_b44t_messenger_MrMsg_isSetupMessage(JNIEnv *env, jobject obj)
++{
++    return dc_msg_is_setupmessage(get_dc_msg(env, obj));
++}
++
++
++JNIEXPORT jstring Java_com_b44t_messenger_MrMsg_getSetupCodeBegin(JNIEnv *env, jobject obj)
++{
++	char* temp = dc_msg_get_setupcodebegin(get_dc_msg(env, obj));
++		jstring ret =  JSTRING_NEW(temp);
++	free(temp);
++	return ret;
++}
++
++
++
++/*******************************************************************************
++ * MrContact
++ ******************************************************************************/
++
++
++static dc_contact_t* get_dc_contact(JNIEnv *env, jobject obj)
++{
++	static jfieldID fid = 0;
++	if( fid == 0 ) {
++		jclass cls = (*env)->GetObjectClass(env, obj);
++		fid = (*env)->GetFieldID(env, cls, "m_hContact", "J" /*Signature, J=long*/);
++	}
++	if( fid ) {
++		return (dc_contact_t*)(*env)->GetLongField(env, obj, fid);
++	}
++	return NULL;
++}
++
++
++JNIEXPORT void Java_com_b44t_messenger_MrContact_MrContactUnref(JNIEnv *env, jclass c, jlong hContact)
++{
++	dc_contact_unref((dc_contact_t*)hContact);
++}
++
++
++JNIEXPORT jstring Java_com_b44t_messenger_MrContact_getName(JNIEnv *env, jobject obj)
++{
++	const char* temp = dc_contact_get_name(get_dc_contact(env, obj));
++		jstring ret = JSTRING_NEW(temp);
++	free(temp);
++	return ret;
++}
++
++
++JNIEXPORT jstring Java_com_b44t_messenger_MrContact_getDisplayName(JNIEnv *env, jobject obj)
++{
++	const char* temp = dc_contact_get_display_name(get_dc_contact(env, obj));
++		jstring ret = JSTRING_NEW(temp);
++	free(temp);
++	return ret;
++}
++
++
++JNIEXPORT jstring Java_com_b44t_messenger_MrContact_getFirstName(JNIEnv *env, jobject obj)
++{
++	const char* temp = dc_contact_get_first_name(get_dc_contact(env, obj));
++		jstring ret = JSTRING_NEW(temp);
++	free(temp);
++	return ret;
++}
++
++
++JNIEXPORT jstring Java_com_b44t_messenger_MrContact_getAddr(JNIEnv *env, jobject obj)
++{
++	const char* temp = dc_contact_get_addr(get_dc_contact(env, obj));
++		jstring ret = JSTRING_NEW(temp);
++	free(temp);
++	return ret;
++}
++
++
++JNIEXPORT jstring Java_com_b44t_messenger_MrContact_getNameNAddr(JNIEnv *env, jobject obj)
++{
++	const char* temp = dc_contact_get_name_n_addr(get_dc_contact(env, obj));
++		jstring ret = JSTRING_NEW(temp);
++	free(temp);
++	return ret;
++}
++
++
++JNIEXPORT jboolean Java_com_b44t_messenger_MrContact_isBlocked(JNIEnv *env, jobject obj)
++{
++	return (jboolean)( dc_contact_is_blocked(get_dc_contact(env, obj)) != 0 );
++}
++
++
++JNIEXPORT jboolean Java_com_b44t_messenger_MrContact_isVerified(JNIEnv *env, jobject obj)
++{
++	return dc_contact_is_verified(get_dc_contact(env, obj)) == 2;
++}
++
++
++/*******************************************************************************
++ * MrLot
++ ******************************************************************************/
++
++
++static dc_lot_t* get_dc_lot(JNIEnv *env, jobject obj)
++{
++	static jfieldID fid = 0;
++	if( fid == 0 ) {
++		jclass cls = (*env)->GetObjectClass(env, obj);
++		fid = (*env)->GetFieldID(env, cls, "m_hLot", "J" /*Signature, J=long*/);
++	}
++	if( fid ) {
++		return (dc_lot_t*)(*env)->GetLongField(env, obj, fid);
++	}
++	return NULL;
++}
++
++
++JNIEXPORT void Java_com_b44t_messenger_MrLot_unref(JNIEnv *env, jclass cls, jlong hLot)
++{
++	dc_lot_unref((dc_lot_t*)hLot);
++}
++
++
++JNIEXPORT jstring Java_com_b44t_messenger_MrLot_getText1(JNIEnv *env, jobject obj)
++{
++	char* temp = dc_lot_get_text1(get_dc_lot(env, obj));
++		jstring ret = JSTRING_NEW(temp);
++	free(temp);
++	return ret;
++}
++
++
++JNIEXPORT jint Java_com_b44t_messenger_MrLot_getText1Meaning(JNIEnv *env, jobject obj)
++{
++	return dc_lot_get_text1_meaning(get_dc_lot(env, obj));
++}
++
++
++JNIEXPORT jstring Java_com_b44t_messenger_MrLot_getText2(JNIEnv *env, jobject obj)
++{
++	char* temp = dc_lot_get_text2(get_dc_lot(env, obj));
++		jstring ret = JSTRING_NEW(temp);
++	free(temp);
++	return ret;
++}
++
++
++JNIEXPORT jlong Java_com_b44t_messenger_MrLot_getTimestamp(JNIEnv *env, jobject obj)
++{
++	return dc_lot_get_timestamp(get_dc_lot(env, obj));
++}
++
++
++JNIEXPORT jint Java_com_b44t_messenger_MrLot_getState(JNIEnv *env, jobject obj)
++{
++	return dc_lot_get_state(get_dc_lot(env, obj));
++}
++
++
++JNIEXPORT jint Java_com_b44t_messenger_MrLot_getId(JNIEnv *env, jobject obj)
++{
++	return dc_lot_get_id(get_dc_lot(env, obj));
++}
++
++
++JNIEXPORT void Java_com_b44t_messenger_MrLot_MrLotUnref(JNIEnv *env, jclass c, jlong hLot)
++{
++	dc_lot_unref((dc_lot_t*)hLot);
++}
++
++
++/*******************************************************************************
++ * Tools
++ ******************************************************************************/
++
++
++JNIEXPORT jstring Java_com_b44t_messenger_MrMailbox_CPtr2String(JNIEnv *env, jclass c, jlong hStr)
++{
++	/* the callback may return a long that represents a pointer to a C-String; this function creates a Java-string from such values. */
++	if( hStr == 0 ) {
++		return NULL;
++	}
++	const char* ptr = (const char*)hStr;
++	return JSTRING_NEW(ptr);
++}
++
++
++JNIEXPORT jlong Java_com_b44t_messenger_MrMailbox_String2CPtr(JNIEnv *env, jclass c, jstring str)
++{
++    char* hStr = NULL;
++    if( str ) {
++        CHAR_REF(str);
++            hStr = strdup(strPtr);
++        CHAR_UNREF(str);
++    }
++    return (jlong)hStr;
++}
++
++
++JNIEXPORT jstring Java_com_b44t_messenger_MrMailbox_MrGetVersionStr(JNIEnv *env, jclass c)
++{
++	s_init_globals(env, c);
++	const char* temp = dc_get_version_str();
++		jstring ret = JSTRING_NEW(temp);
++	free(temp);
++	return ret;
++}
++
++
++#include <time.h>
++JNIEXPORT jlong Java_com_b44t_messenger_MrMailbox_getCurrentTimeMillis(JNIEnv *env, jclass c) {
++	struct timespec ts;
++    clock_gettime(CLOCK_REALTIME, &ts);
++    return (jlong) ts.tv_sec * 1000 + (int64_t) ts.tv_nsec / 1000000;
++}
++JNIEXPORT jint Java_com_b44t_messenger_MrMailbox_getCurrentTime(JNIEnv *env, jclass c) {
++    return (jint) (Java_com_b44t_messenger_MrMailbox_getCurrentTimeMillis(env, c) / 1000);
++}
++
++
+-- 
+2.8.2
+

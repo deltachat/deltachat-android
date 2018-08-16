@@ -9,10 +9,6 @@ import java.security.NoSuchAlgorithmException;
 
 public class FileUtils {
 
-  static {
-    System.loadLibrary("native-utils");
-  }
-
   public static native int getFileDescriptorOwner(FileDescriptor fileDescriptor);
 
   public static byte[] getFileDigest(FileInputStream fin) throws IOException {

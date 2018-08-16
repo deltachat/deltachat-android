@@ -27,6 +27,7 @@ import android.support.annotation.NonNull;
 import android.support.multidex.MultiDexApplication;
 import android.util.Log;
 
+import com.b44t.messenger.MrMailbox;
 import com.google.android.gms.security.ProviderInstaller;
 
 import org.thoughtcrime.securesms.crypto.PRNGFixes;
@@ -88,6 +89,11 @@ public class ApplicationContext extends MultiDexApplication implements Dependenc
   @Override
   public void onCreate() {
     super.onCreate();
+
+    System.loadLibrary("native-utils");
+    MrMailbox.MrCallback(0, 0, 0); // do not remove this call; this makes sure, the function is not removed from build or warnings are printed!
+    MrMailbox.init();
+
     initializeRandomNumberFix();
     initializeLogging();
     initializeDependencyInjection();
