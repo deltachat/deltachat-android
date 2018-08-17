@@ -6,6 +6,7 @@ bin/
 gen/
 .idea/
 *.iml
+*.so
 out
 tests
 lint.xml
