@@ -23,4 +23,6 @@ ffpr
 test/androidTestEspresso/res/values/arrays.xml
 obj/
 jni/libspeex/.deps/
-*.sh
+
+# ignore private scripts and directories, eg. local2github.prv.sh
+*.prv*
