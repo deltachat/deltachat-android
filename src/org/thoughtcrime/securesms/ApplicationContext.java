@@ -93,8 +93,7 @@ public class ApplicationContext extends MultiDexApplication implements Dependenc
     super.onCreate();
 
     System.loadLibrary("native-utils");
-    dcContext = new ApplicationDcContext();
-    dcContext.open("foo");
+    dcContext = new ApplicationDcContext(this);
 
     initializeRandomNumberFix();
     initializeLogging();

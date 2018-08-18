@@ -146,6 +146,10 @@ public class DcContext {
         return 0;
     }
 
+    // helper to get/return strings from/to handleEvent()
+    public native static String dataToString(long hString);
+    public native static long stringToData(String str);
+
     // working with raw c-data
     private long m_hContext = 0; // must not be renamed as referenced by JNI
     private native long DcContextNew(String osName);
@@ -153,6 +157,4 @@ public class DcContext {
     private native static long DcContextGetChat(long hContext, int chat_id);
     private native static long DcContextGetMsg(long hMailbox, int id);
     private native static long DcContextGetContact(long hContext, int id);
-    public native static String CPtr2String(long hString);
-    public native static long String2CPtr(String str);
 }

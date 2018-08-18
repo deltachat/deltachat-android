@@ -1244,7 +1244,7 @@ JNIEXPORT void Java_com_b44t_messenger_DcLot_DcLotUnref(JNIEnv *env, jclass cls,
  ******************************************************************************/
 
 
-JNIEXPORT jstring Java_com_b44t_messenger_DcContext_CPtr2String(JNIEnv *env, jclass cls, jlong hStr)
+JNIEXPORT jstring Java_com_b44t_messenger_DcContext_dataToString(JNIEnv *env, jclass cls, jlong hStr)
 {
 	/* the callback may return a long that represents a pointer to a C-String; this function creates a Java-string from such values. */
 	if( hStr == 0 ) {
@@ -1255,7 +1255,7 @@ JNIEXPORT jstring Java_com_b44t_messenger_DcContext_CPtr2String(JNIEnv *env, jcl
 }
 
 
-JNIEXPORT jlong Java_com_b44t_messenger_DcContext_String2CPtr(JNIEnv *env, jclass cls, jstring str)
+JNIEXPORT jlong Java_com_b44t_messenger_DcContext_stringToData(JNIEnv *env, jclass cls, jstring str)
 {
     char* hStr = NULL;
     if( str ) {
