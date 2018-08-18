@@ -24,6 +24,7 @@ package com.b44t.messenger;
 
 
 public class DcChatlist {
+
     public DcChatlist(long hChatlist) {
         m_hChatlist = hChatlist;
     }

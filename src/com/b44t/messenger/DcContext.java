@@ -68,7 +68,7 @@ public class DcContext {
     public final static int DC_QR_ERROR = 400;
 
     public DcContext(String osName) {
-        handleEvent(0,0,0);
+        handleEvent(0,0,0); // call handleEvent() to make sure it is not optimized away and JNI won't find it
         m_hContext = DcContextNew(osName);
     }
 
@@ -141,9 +141,8 @@ public class DcContext {
     public native String getSecurejoinQr(int chat_id);
     public native int joinSecurejoin(String qr);
 
-    // event handling
-    public static long handleEvent(final int event, final long data1, final long data2) // this function is called from within the C-wrapper
-    {
+    // event handling - you should @Override this function in derived classes
+    public long handleEvent(final int event, final long data1, final long data2) {
         return 0;
     }
 

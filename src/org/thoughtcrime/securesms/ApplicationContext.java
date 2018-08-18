@@ -82,7 +82,7 @@ public class ApplicationContext extends MultiDexApplication implements Dependenc
 
   private volatile boolean isAppVisible;
 
-  public DcContext dcContext;
+  public ApplicationDcContext dcContext;
 
   public static ApplicationContext getInstance(Context context) {
     return (ApplicationContext)context.getApplicationContext();
@@ -93,7 +93,8 @@ public class ApplicationContext extends MultiDexApplication implements Dependenc
     super.onCreate();
 
     System.loadLibrary("native-utils");
-    dcContext = new DcContext("Android");
+    dcContext = new ApplicationDcContext();
+    dcContext.open("foo");
 
     initializeRandomNumberFix();
     initializeLogging();

@@ -22,9 +22,8 @@
 
 package com.b44t.messenger;
 
-public class DcMsg {
 
-    private static final String TAG = "DcMsg";
+public class DcMsg {
 
     public final static int DC_MSG_UNDEFINED = 0;
     public final static int DC_MSG_TEXT = 10;
