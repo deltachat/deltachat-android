@@ -17,40 +17,37 @@
  * You should have received a copy of the GNU General Public License along with
  * this program.  If not, see http://www.gnu.org/licenses/ .
  *
- *******************************************************************************
- *
- * File:    MrLot.java
- * Purpose: Wrap around mrpoortext_t
- *
  ******************************************************************************/
 
 
 package com.b44t.messenger;
 
 
-public class MrLot {
+public class DcContact {
 
-    public final static int      MR_TEXT1_DRAFT             = 1;
-    public final static int      MR_TEXT1_USERNAME          = 2;
-    public final static int      MR_TEXT1_SELF              = 3;
+    public final static int DC_CONTACT_ID_SELF = 1;
+    public final static int DC_CONTACT_ID_DEVICE = 2;
+    public final static int DC_CONTACT_ID_LAST_SPECIAL = 9;
 
-    public MrLot(long hLot) {
-        m_hLot = hLot;
+    public DcContact(long hContact) {
+        m_hContact = hContact;
     }
 
     @Override protected void finalize() throws Throwable {
         super.finalize();
-        MrLotUnref(m_hLot);
-        m_hLot = 0;
+        DcContactUnref(m_hContact);
+        m_hContact = 0;
     }
 
-    public native String getText1();
-    public native int    getText1Meaning();
-    public native String getText2();
-    public native long   getTimestamp();
-    public native int    getState();
-    public native int    getId();
+    public native String getName();
+    public native String getDisplayName();
+    public native String getFirstName();
+    public native String getAddr();
+    public native String getNameNAddr();
+    public native boolean isBlocked();
+    public native boolean isVerified();
 
-    private long                  m_hLot;
-    private native static void    MrLotUnref(long hLot);
+    // working with raw c-data
+    private long m_hContact; // must not be renamed as referenced by JNI
+    private native static void DcContactUnref(long hContact);
 }

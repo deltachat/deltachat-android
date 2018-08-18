@@ -17,37 +17,30 @@
  * You should have received a copy of the GNU General Public License along with
  * this program.  If not, see http://www.gnu.org/licenses/ .
  *
- *******************************************************************************
- *
- * File:    MrChat.java
- * Purpose: Wrap around mrchat_t
- *
  ******************************************************************************/
 
 package com.b44t.messenger;
 
-import android.text.TextUtils;
+public class DcChat {
 
-public class MrChat {
+    public final static int DC_CHAT_ID_DEADDROP = 1;
+    public final static int DC_CHAT_ID_STARRED = 5;
+    public final static int DC_CHAT_ID_ARCHIVED_LINK = 6;
+    public final static int DC_CHAT_ID_LAST_SPECIAL = 9;
 
-    public final static int      MR_CHAT_ID_DEADDROP        = 1;
-    public final static int      MR_CHAT_ID_STARRED         = 5;
-    public final static int      MR_CHAT_ID_ARCHIVED_LINK   = 6;
-    public final static int      MR_CHAT_ID_LAST_SPECIAL    = 9;
-
-    public MrChat(long hChat) {
+    public DcChat(long hChat) {
         m_hChat = hChat;
     }
 
     @Override protected void finalize() throws Throwable {
         super.finalize();
-        MrChatUnref(m_hChat);
+        DcChatUnref(m_hChat);
         m_hChat = 0;
     }
 
-    public native int    getId();
+    public native int getId();
     public native boolean isGroup();
-    public native int    getArchived();
+    public native int getArchived();
     public native String getName();
     public native String getSubtitle();
 
@@ -58,30 +51,10 @@ public class MrChat {
     public native String getDraft();
     public native long getDraftTimestamp();
 
-    private long                  m_hChat;  // must not be renamed as referenced by JNI under the name "m_hChat"
-    private native static void    MrChatUnref                (long hChat);
-
-
-    /* additional functions that are not 1:1 available in the backend
-     **********************************************************************************************/
-
+    // working with raw c-data
+    private long m_hChat; // must not be renamed as referenced by JNI
+    private native static void DcChatUnref(long hChat);
     public long getCPtr() {
         return m_hChat;
-    }
-
-    public String getNameNAddr()
-    {
-        // returns name of group chats or name+email-address for normal chats
-        String name = "ErrGrpNameNAddr";
-        if( isGroup() ) {
-            name = getName();
-        }
-        else {
-            int contacts[] = MrMailbox.getChatContacts(getId());
-            if( contacts.length==1 ) {
-                name = MrMailbox.getContact(contacts[0]).getNameNAddr();
-            }
-        }
-        return name;
     }
 }

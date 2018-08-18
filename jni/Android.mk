@@ -867,7 +867,7 @@ $(JNI_DIR)/messenger-backend/libs/sqlite
 LOCAL_LDLIBS 	:= -ljnigraphics -llog -lz -latomic
 LOCAL_STATIC_LIBRARIES :=  etpan sasl2 sqlite crypto libiconv
 # if you get "undefined reference" errors, the reason for this may be the _order_! Eg. libiconv as the first library does not work!
-# "breakpad" was placed after "crypto", NativeLoader.cpp after mrwrapper.c
+# "breakpad" was placed after "crypto", NativeLoader.cpp after dc_wrapper.c
 
 LOCAL_CFLAGS 	:= -w -Os -DNULL=0 -DSOCKLEN_T=socklen_t -DLOCALE_NOT_USED -D_LARGEFILE_SOURCE=1 -D_FILE_OFFSET_BITS=64
 LOCAL_CFLAGS 	+= -Drestrict='' -D__EMX__ -DOPUS_BUILD -DFIXED_POINT -DUSE_ALLOCA -DHAVE_LRINT -DHAVE_LRINTF -fno-math-errno
@@ -928,6 +928,6 @@ messenger-backend/src/dc_token.c \
 messenger-backend/src/dc_tools.c \
 messenger-backend/src/dc_uudecode.c \
 messenger-backend/cmdline/cmdline.c \
-mrwrapper.c
+dc_wrapper.c
 
 include $(BUILD_SHARED_LIBRARY)

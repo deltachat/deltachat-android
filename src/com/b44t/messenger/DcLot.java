@@ -1,7 +1,6 @@
 /*******************************************************************************
  *
  *                              Delta Chat Android
- *                        (C) 2013-2016 Nikolai Kudashov
  *                           (C) 2017 Björn Petersen
  *                    Contact: r10s@b44t.com, http://b44t.com
  *
@@ -21,34 +20,33 @@
  ******************************************************************************/
 
 
-#ifndef __MRJNIMAIN_H__
-#define __MRJNIMAIN_H__
+package com.b44t.messenger;
 
 
-#include <android/log.h>
-#include <jni.h>
+public class DcLot {
 
+    public final static int DC_TEXT1_DRAFT = 1;
+    public final static int DC_TEXT1_USERNAME = 2;
+    public final static int DC_TEXT1_SELF = 3;
 
-#define LOG_TAG "DeltaChat"
-#ifndef LOG_DISABLED
-#define LOGI(...) __android_log_print(ANDROID_LOG_INFO, LOG_TAG, __VA_ARGS__)
-#define LOGD(...) __android_log_print(ANDROID_LOG_DEBUG, LOG_TAG, __VA_ARGS__)
-#define LOGE(...) __android_log_print(ANDROID_LOG_ERROR, LOG_TAG, __VA_ARGS__)
-#define LOGV(...) __android_log_print(ANDROID_LOG_VERBOSE, LOG_TAG, __VA_ARGS__)
-#else
-#define LOGI(...)
-#define LOGD(...)
-#define LOGE(...)
-#define LOGV(...)
-#endif
+    public DcLot(long hLot) {
+        m_hLot = hLot;
+    }
 
-#ifndef max
-#define max(x, y) ((x) > (y)) ? (x) : (y)
-#endif
-#ifndef min
-#define min(x, y) ((x) < (y)) ? (x) : (y)
-#endif
+    @Override protected void finalize() throws Throwable {
+        super.finalize();
+        DcLotUnref(m_hLot);
+        m_hLot = 0;
+    }
 
+    public native String getText1();
+    public native int getText1Meaning();
+    public native String getText2();
+    public native long getTimestamp();
+    public native int getState();
+    public native int getId();
 
-#endif /* __MRJNIMAIN_H__*/
-
+    // working with raw c-data
+    private long m_hLot; // must not be renamed as referenced by JNI
+    private native static void DcLotUnref(long hLot);
+}
