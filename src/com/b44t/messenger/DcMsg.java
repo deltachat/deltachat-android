@@ -1,6 +1,6 @@
 /*******************************************************************************
  *
- *                              Delta Chat Android
+ *                           Delta Chat Java Adapter
  *                           (C) 2017 Björn Petersen
  *                    Contact: r10s@b44t.com, http://b44t.com
  *
@@ -71,11 +71,9 @@ public class DcMsg {
 
     public native int getBytes();
     public DcLot getSummary(DcChat chat) { return new DcLot(getSummaryCPtr(chat.getCPtr())); }
-    private native long getSummaryCPtr(long hChat);
     public native String getSummarytext(int approx_characters);
     public native int showPadlock();
     public DcLot getMediainfo() { return new DcLot(getMediainfoCPtr()); }
-    private native long  getMediainfoCPtr();
     public native String getFile();
     public native String getFilemime();
     public native String getFilename();
@@ -88,5 +86,6 @@ public class DcMsg {
     // working with raw c-data
     private long m_hMsg; // must not be renamed as referenced by JNI
     private native static void DcMsgUnref(long hMsg);
-
+    private native long getSummaryCPtr(long hChat);
+    private native long getMediainfoCPtr();
 };
