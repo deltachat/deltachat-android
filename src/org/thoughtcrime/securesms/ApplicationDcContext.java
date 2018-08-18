@@ -17,6 +17,7 @@
 package org.thoughtcrime.securesms;
 
 import android.content.Context;
+import android.os.PowerManager;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -34,17 +35,151 @@ import java.net.URL;
 
 public class ApplicationDcContext extends DcContext {
 
-    public static final Object lastErrorLock = new Object();
-    public static int lastErrorCode = 0;
-    public static String lastErrorString = "";
-    public static boolean showNextErrorAsToast = true;
     public Context context;
 
     public ApplicationDcContext(Context context) {
         super("Android");
         this.context = context;
+
+        // create wake locks
+        try {
+            PowerManager pm = (PowerManager) context.getSystemService(Context.POWER_SERVICE);
+
+            imapWakeLock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "imapWakeLock");
+            imapWakeLock.setReferenceCounted(false); // if the idle-thread is killed for any reasons, it is better not to rely on reference counting
+
+            smtpWakeLock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "smtpWakeLock");
+            smtpWakeLock.setReferenceCounted(false); // if the idle-thread is killed for any reasons, it is better not to rely on reference counting
+
+            afterForgroundWakeLock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "afterForegroundWakeLock");
+            afterForgroundWakeLock.setReferenceCounted(false);
+
+        } catch (Exception e) {
+            Log.e("DeltaChat", "Cannot create wakeLocks");
+        }
+
         new ForegroundDetector(ApplicationContext.getInstance(context));
+        startThreads();
     }
+
+
+    /***********************************************************************************************
+     * Working Threads
+     **********************************************************************************************/
+
+
+    private final Object threadsCritical = new Object();
+
+    private boolean imapThreadStartedVal;
+    private final Object imapThreadStartedCond = new Object();
+    public Thread imapThread = null;
+    private PowerManager.WakeLock imapWakeLock = null;
+
+    private boolean smtpThreadStartedVal;
+    private final Object smtpThreadStartedCond = new Object();
+    public Thread smtpThread = null;
+    private PowerManager.WakeLock smtpWakeLock = null;
+
+    public PowerManager.WakeLock afterForgroundWakeLock = null;
+
+    public void startThreads()
+    {
+        synchronized(threadsCritical) {
+
+            if (imapThread == null || !imapThread.isAlive()) {
+
+                synchronized (imapThreadStartedCond) {
+                    imapThreadStartedVal = false;
+                }
+
+                imapThread = new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        // raise the starting condition
+                        // after acquiring a wakelock so that the process is not terminated.
+                        // as imapWakeLock is not reference counted that would result in a wakelock-gap is not needed here.
+                        imapWakeLock.acquire();
+                        synchronized (imapThreadStartedCond) {
+                            imapThreadStartedVal = true;
+                            imapThreadStartedCond.notifyAll();
+                        }
+
+                        Log.i("DeltaChat", "###################### IMAP-Thread started. ######################");
+
+
+                        while (true) {
+                            imapWakeLock.acquire();
+                            performJobs();
+                            fetch();
+                            imapWakeLock.release();
+                            idle();
+                        }
+                    }
+                }, "imapThread");
+                imapThread.start();
+            }
+
+            if (smtpThread == null || !smtpThread.isAlive()) {
+
+                synchronized (smtpThreadStartedCond) {
+                    smtpThreadStartedVal = false;
+                }
+
+                smtpThread = new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        smtpWakeLock.acquire();
+                        synchronized (smtpThreadStartedCond) {
+                            smtpThreadStartedVal = true;
+                            smtpThreadStartedCond.notifyAll();
+                        }
+
+                        Log.i("DeltaChat", "###################### SMTP-Thread started. ######################");
+
+
+                        while (true) {
+                            smtpWakeLock.acquire();
+                            performSmtpJobs();
+                            smtpWakeLock.release();
+                            performSmtpIdle();
+                        }
+                    }
+                }, "smtpThread");
+                smtpThread.start();
+            }
+        }
+    }
+
+    public void waitForThreadsRunning()
+    {
+        try {
+            synchronized( imapThreadStartedCond ) {
+                while( !imapThreadStartedVal ) {
+                    imapThreadStartedCond.wait();
+                }
+            }
+
+            synchronized( smtpThreadStartedCond ) {
+                while( !smtpThreadStartedVal ) {
+                    smtpThreadStartedCond.wait();
+                }
+            }
+        }
+        catch( Exception e ) {
+            e.printStackTrace();
+        }
+    }
+
+
+    /***********************************************************************************************
+     * Event Handling
+     **********************************************************************************************/
+
+
+    public final Object lastErrorLock = new Object();
+    public int lastErrorCode = 0;
+    public String lastErrorString = "";
+    public boolean showNextErrorAsToast = true;
 
     @Override public long handleEvent(final int event, final long data1, final long data2) {
         switch(event) {

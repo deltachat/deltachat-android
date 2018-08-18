@@ -27,13 +27,15 @@ public class ForegroundDetector implements Application.ActivityLifecycleCallback
 
     private int refs = 0;
     private static ForegroundDetector Instance = null;
+    ApplicationContext application;
 
     public static ForegroundDetector getInstance() {
         return Instance;
     }
 
-    public ForegroundDetector(Application application) {
+    public ForegroundDetector(ApplicationContext application) {
         Instance = this;
+        this.application = application;
         application.registerActivityLifecycleCallbacks(this);
     }
 
@@ -50,7 +52,7 @@ public class ForegroundDetector implements Application.ActivityLifecycleCallback
         refs++;
 
         //applicationContext.stopService(new Intent(applicationContext, KeepAliveService.class));
-        //ApplicationLoader.startThreads(); // we call this without checking getPermanentPush() to have a simple guarantee that push is always active when the app is in foregroud (startIdleThread makes sure the thread is not started twice)
+        application.dcContext.startThreads(); // we call this without checking getPermanentPush() to have a simple guarantee that push is always active when the app is in foregroud (startIdleThread makes sure the thread is not started twice)
     }
 
 
@@ -62,7 +64,7 @@ public class ForegroundDetector implements Application.ActivityLifecycleCallback
 
         refs--;
         if (refs == 0) {
-            //ApplicationLoader.afterForgroundWakeLock.acquire(60*1000);
+            application.dcContext.afterForgroundWakeLock.acquire(60*1000);
         }
     }
 
