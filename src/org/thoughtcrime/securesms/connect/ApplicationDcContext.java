@@ -216,6 +216,18 @@ public class ApplicationDcContext extends DcContext {
                 });
                 break;
 
+            case DC_EVENT_CONFIGURE_PROGRESS:
+                if (data1==0/*error/aborted*/) {
+                    // TODO: send this event to RegistrationActivity, take care, we're not in the main thread!
+                }
+                else if (data1<1000/*progress in permille*/) {
+                    // TODO: send this event to RegistrationActivity, take care, we're not in the main thread!
+                }
+                else if (data1==1000/*done*/) {
+                    // TODO: send this event to RegistrationActivity, take care, we're not in the main thread!
+                }
+                break;
+
             case DC_EVENT_HTTP_GET:
                 String httpContent = null;
                 try {

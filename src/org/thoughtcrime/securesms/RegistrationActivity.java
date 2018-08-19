@@ -209,18 +209,22 @@ public class RegistrationActivity extends BaseActionBarActivity {
         setConfig(R.id.smtp_port_text, "send_port");
         setConfig(R.id.smtp_login_text, "send_user");
         setConfig(R.id.smtp_password_text, "send_pw");
+
+        // calling configure() results in ApplicationDcContext.handleEvent()
+        // receiving multiple DC_EVENT_CONFIGURE_PROGRESS events from different threads
+        ApplicationContext.getInstance(getApplicationContext()).dcContext.configure();
     }
 
     private void setConfig(@IdRes int viewId, String configTarget) {
         TextInputEditText view = findViewById(viewId);
         String value = view.getText().toString().trim();
         if (!value.isEmpty()) {
-            //JavaBindings.setConfig(configTarget, value); TODO set configuration value via bindings
+            ApplicationContext.getInstance(getApplicationContext()).dcContext.setConfig(configTarget, value);
         }
     }
 
     private void stopLoginProcess() {
-        //JavaBindings.stopLoginProcess(); TODO stop configuration process via bindings
+        ApplicationContext.getInstance(getApplicationContext()).dcContext.stopOngoingProcess();
     }
 
     //@Override
