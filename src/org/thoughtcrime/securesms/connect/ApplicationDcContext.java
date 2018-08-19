@@ -28,6 +28,7 @@ import org.thoughtcrime.securesms.util.Util;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
@@ -42,7 +43,9 @@ public class ApplicationDcContext extends DcContext {
         super("Android");
         this.context = context;
 
-        // create wake locks
+        File dbfile = new File(context.getFilesDir(), "messenger.db");
+        open(dbfile.getAbsolutePath());
+
         try {
             PowerManager pm = (PowerManager) context.getSystemService(Context.POWER_SERVICE);
 
