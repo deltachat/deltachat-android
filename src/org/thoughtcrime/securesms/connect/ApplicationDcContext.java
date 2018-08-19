@@ -14,7 +14,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.thoughtcrime.securesms;
+package org.thoughtcrime.securesms.connect;
 
 import android.content.Context;
 import android.os.PowerManager;
@@ -23,6 +23,7 @@ import android.widget.Toast;
 
 import com.b44t.messenger.DcContext;
 
+import org.thoughtcrime.securesms.ApplicationContext;
 import org.thoughtcrime.securesms.util.Util;
 
 import java.io.BufferedInputStream;
