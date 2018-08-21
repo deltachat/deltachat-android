@@ -19,6 +19,7 @@ import android.widget.Toast;
 import com.dd.CircularProgressButton;
 
 import org.thoughtcrime.securesms.permissions.Permissions;
+import org.thoughtcrime.securesms.util.Dialogs;
 
 /**
  * The register account activity.  Prompts ths user for their registration information
@@ -46,7 +47,8 @@ public class RegistrationActivity extends BaseActionBarActivity {
     private Group advancedGroup;
     private ImageView advancedIcon;
     private ProgressDialog progressDialog;
-    private TextView subHeaderText;
+    private boolean gmailDialogShown;
+
 
     @Override
     public void onCreate(Bundle bundle) {
@@ -67,7 +69,6 @@ public class RegistrationActivity extends BaseActionBarActivity {
         passwordInput = findViewById(R.id.password_text);
         advancedGroup = findViewById(R.id.advanced_group);
         advancedIcon = findViewById(R.id.advanced_icon);
-        subHeaderText = findViewById(R.id.sub_header);
         CircularProgressButton loginButton = findViewById(R.id.register_button);
         TextView advancedTextView = findViewById(R.id.advanced_text);
         TextInputEditText imapServerInput = findViewById(R.id.imap_server_text);
@@ -104,15 +105,14 @@ public class RegistrationActivity extends BaseActionBarActivity {
     }
 
     private void verifyEmail(TextInputEditText view) {
-        String error = "Please enter a valid email address";
+        String error = getString(R.string.RegistrationActivity_error_mail);
         String email = view.getText().toString();
         if (!matchesEmailPattern(email)) {
             view.setError(error);
         }
-        if (!TextUtils.isEmpty(email) && isGmail(email)) {
-            subHeaderText.setText("For GMail Accounts you need to create an App-Password if you have 2FA enabled. If this setting is not available, you need to enable Less Secure Apps");
-        } else {
-            subHeaderText.setText("For known email providers additional settings are setup automatically. Sometimes IMAP needs to be enabled in the web frontend. Consult your email provider or friends for help.");
+        if (!TextUtils.isEmpty(email) && isGmail(email) && !gmailDialogShown) {
+            gmailDialogShown = true;
+            Dialogs.showInfoDialog(this, getString(R.string.RegistrationActivity_dialog_gmail_title), getString(R.string.RegistrationActivity_dialog_gmail_text));
         }
     }
 
@@ -121,11 +121,11 @@ public class RegistrationActivity extends BaseActionBarActivity {
     }
 
     private boolean isGmail(String email) {
-        return email != null && (email.contains("@gmail.") || email.contains("@googlemail."));
+        return email != null && (email.toLowerCase().contains("@gmail.") || email.toLowerCase().contains("@googlemail."));
     }
 
     private void verifyServer(TextInputEditText view) {
-        String error = "Please enter a valid server / IP address";
+        String error = getString(R.string.RegistrationActivity_error_server);
         String server = view.getText().toString();
         if (!TextUtils.isEmpty(server) && !Patterns.DOMAIN_NAME.matcher(server).matches()
                 && !Patterns.IP_ADDRESS.matcher(server).matches()
@@ -135,7 +135,7 @@ public class RegistrationActivity extends BaseActionBarActivity {
     }
 
     private void verifyPort(TextInputEditText view) {
-        String error = "Please enter a valid port (1-65535)";
+        String error = getString(R.string.RegistrationActivity_error_port);
         String portString = view.getText().toString();
         if (!portString.isEmpty()) {
             try {
@@ -166,14 +166,14 @@ public class RegistrationActivity extends BaseActionBarActivity {
                 .request(Manifest.permission.WRITE_CONTACTS, Manifest.permission.READ_CONTACTS,
                         Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE)
                 .ifNecessary()
-                .withRationaleDialog("Delta Chat needs access to your contacts and media in order to connect with friends and send files",
+                .withRationaleDialog(getString(R.string.RegistrationActivity_dialog_permission_text),
                         R.drawable.ic_contacts_white_48dp, R.drawable.ic_folder_white_48dp)
                 .execute();
     }
 
     private void onLogin() {
         if (!verifyRequiredFields()) {
-            Toast.makeText(this, "Please enter a valid email address and a password", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, R.string.RegistrationActivity_error_required_fields, Toast.LENGTH_LONG).show();
             return;
         }
         setupConfig();
@@ -184,13 +184,11 @@ public class RegistrationActivity extends BaseActionBarActivity {
         }
 
         progressDialog = new ProgressDialog(this);
-        progressDialog.setMessage("Loading ...");
+        progressDialog.setMessage(getString(R.string.loading));
         progressDialog.setCanceledOnTouchOutside(false);
         progressDialog.setCancelable(false);
-        progressDialog.setButton(DialogInterface.BUTTON_NEGATIVE, "Cancel", (dialog, which) -> stopLoginProcess());
+        progressDialog.setButton(DialogInterface.BUTTON_NEGATIVE, getString(android.R.string.cancel), (dialog, which) -> stopLoginProcess());
         progressDialog.show();
-
-        // TODO start configuration process via bindings
     }
 
     private boolean verifyRequiredFields() {

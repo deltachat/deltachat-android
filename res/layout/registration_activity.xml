@@ -34,20 +34,21 @@
             android:background="@color/signal_primary"
             android:gravity="center"
             android:padding="16dp"
-            android:text="Login to Delta Chat"
+            android:text="@string/RegistrationActivity_header"
             android:textColor="@color/white"
             android:textSize="20sp"
             android:textStyle="bold" />
 
         <TextView
             android:id="@+id/sub_header"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:background="@color/signal_primary"
             android:gravity="center"
             android:paddingBottom="48dp"
-            android:text="For known email providers additional settings are setup automatically.
-Sometimes IMAP needs to be enabled in the web frontend. Consult your email provider or friends for help."
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:text="@string/RegistrationActivity_subheader"
             android:textColor="@color/white"
             app:layout_constraintTop_toBottomOf="@id/header" />
 
@@ -83,7 +84,7 @@ Sometimes IMAP needs to be enabled in the web frontend. Consult your email provi
                 android:id="@+id/email_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Email address"
+                android:hint="@string/email_address"
                 android:inputType="textEmailAddress" />
 
         </android.support.design.widget.TextInputLayout>
@@ -101,7 +102,7 @@ Sometimes IMAP needs to be enabled in the web frontend. Consult your email provi
                 android:id="@+id/password_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Password"
+                android:hint="@string/password"
                 android:inputType="textPassword" />
 
         </android.support.design.widget.TextInputLayout>
@@ -119,7 +120,7 @@ Sometimes IMAP needs to be enabled in the web frontend. Consult your email provi
             android:layout_width="wrap_content"
             android:layout_height="48dp"
             android:gravity="center"
-            android:text="Advanced"
+            android:text="@string/advanced"
             android:textColor="@color/blue_400"
             app:layout_constraintEnd_toStartOf="@+id/advanced_icon"
             app:layout_constraintHorizontal_chainStyle="packed"
@@ -130,6 +131,7 @@ Sometimes IMAP needs to be enabled in the web frontend. Consult your email provi
             android:id="@+id/advanced_icon"
             android:layout_width="40dp"
             android:layout_height="40dp"
+            android:contentDescription="@string/icon"
             android:padding="8dp"
             android:src="@drawable/ic_menu_remove_holo_light"
             android:tint="@color/blue_400"
@@ -144,7 +146,7 @@ Sometimes IMAP needs to be enabled in the web frontend. Consult your email provi
             android:layout_width="wrap_content"
             android:layout_height="24dp"
             android:gravity="center"
-            android:text="Inbox"
+            android:text="@string/RegistrationActivity_inbox"
             app:layout_constraintStart_toStartOf="@id/guideline_root_start"
             app:layout_constraintTop_toBottomOf="@id/advanced_text" />
 
@@ -160,7 +162,7 @@ Sometimes IMAP needs to be enabled in the web frontend. Consult your email provi
                 android:id="@+id/imap_login_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="IMAP login-name"
+                android:hint="@string/RegistrationActivity_imap_login"
                 android:inputType="text" />
 
         </android.support.design.widget.TextInputLayout>
@@ -178,7 +180,7 @@ Sometimes IMAP needs to be enabled in the web frontend. Consult your email provi
                 android:id="@+id/imap_server_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="IMAP server"
+                android:hint="@string/RegistrationActivity_imap_server"
                 android:inputType="number" />
 
         </android.support.design.widget.TextInputLayout>
@@ -196,7 +198,7 @@ Sometimes IMAP needs to be enabled in the web frontend. Consult your email provi
                 android:id="@+id/imap_port_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="IMAP port"
+                android:hint="@string/RegistrationActivity_imap_port"
                 android:inputType="number" />
 
         </android.support.design.widget.TextInputLayout>
@@ -206,7 +208,7 @@ Sometimes IMAP needs to be enabled in the web frontend. Consult your email provi
             style="@style/TextAppearance.AppCompat.Caption"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="IMAP Security"
+            android:text="@string/RegistrationActivity_imap_security"
             app:layout_constraintEnd_toEndOf="@id/guideline_root_end"
             app:layout_constraintStart_toStartOf="@id/guideline_root_start"
             app:layout_constraintTop_toBottomOf="@id/imap_port" />
@@ -231,7 +233,7 @@ Sometimes IMAP needs to be enabled in the web frontend. Consult your email provi
             android:layout_width="wrap_content"
             android:layout_height="24dp"
             android:gravity="center"
-            android:text="Outbox"
+            android:text="@string/RegistrationActivity_outbox"
             app:layout_constraintStart_toStartOf="@id/guideline_root_start"
             app:layout_constraintTop_toBottomOf="@id/outbox_view_spacer_top" />
 
@@ -247,7 +249,7 @@ Sometimes IMAP needs to be enabled in the web frontend. Consult your email provi
                 android:id="@+id/smtp_login_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="SMTP login-name"
+                android:hint="@string/RegistrationActivity_smtp_login"
                 android:inputType="textPassword" />
 
         </android.support.design.widget.TextInputLayout>
@@ -265,7 +267,7 @@ Sometimes IMAP needs to be enabled in the web frontend. Consult your email provi
                 android:id="@+id/smtp_password_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="SMTP Password"
+                android:hint="@string/RegistrationActivity_smtp_password"
                 android:inputType="textPassword" />
 
         </android.support.design.widget.TextInputLayout>
@@ -283,7 +285,7 @@ Sometimes IMAP needs to be enabled in the web frontend. Consult your email provi
                 android:id="@+id/smtp_server_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="SMTP server"
+                android:hint="@string/RegistrationActivity_smtp_server"
                 android:inputType="text" />
 
         </android.support.design.widget.TextInputLayout>
@@ -301,7 +303,7 @@ Sometimes IMAP needs to be enabled in the web frontend. Consult your email provi
                 android:id="@+id/smtp_port_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="SMTP port"
+                android:hint="@string/RegistrationActivity_smtp_port"
                 android:inputType="number" />
 
         </android.support.design.widget.TextInputLayout>
@@ -311,7 +313,7 @@ Sometimes IMAP needs to be enabled in the web frontend. Consult your email provi
             style="@style/TextAppearance.AppCompat.Caption"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="SMTP Security"
+            android:text="@string/RegistrationActivity_smtp_security"
             app:layout_constraintEnd_toEndOf="@id/guideline_root_end"
             app:layout_constraintStart_toStartOf="@id/guideline_root_start"
             app:layout_constraintTop_toBottomOf="@id/smtp_port" />

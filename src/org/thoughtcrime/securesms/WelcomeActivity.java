@@ -34,9 +34,9 @@ public class WelcomeActivity extends BaseActionBarActivity {
 
         private int icons[] = new int[]{R.drawable.intro1, R.drawable.intro2, R.drawable.intro3, R.drawable.intro4, R.drawable.intro5, R.drawable.intro6, R.drawable.intro7};
 
-        private int titles[] = new int[]{R.string.Intro1Headline, R.string.Intro2Headline, R.string.Intro3Headline, R.string.Intro4Headline, R.string.Intro5Headline, R.string.Intro6Headline, R.string.Intro7Headline};
+        private int titles[] = new int[]{R.string.WelcomeActivity_intro1_headline, R.string.WelcomeActivity_intro2_headline, R.string.WelcomeActivity_intro3_headline, R.string.WelcomeActivity_intro4_headline, R.string.WelcomeActivity_intro5_headline, R.string.WelcomeActivity_intro6_headline, R.string.WelcomeActivity_intro7_headline};
 
-        private int messages[] = new int[]{R.string.Intro1Message, R.string.Intro2Message, R.string.Intro3Message, R.string.Intro4Message, R.string.Intro5Message, R.string.Intro6Message, R.string.Intro7Message};
+        private int messages[] = new int[]{R.string.WelcomeActivity_intro1_message, R.string.WelcomeActivity_intro2_message, R.string.WelcomeActivity_intro3_message, R.string.WelcomeActivity_intro4_message, R.string.WelcomeActivity_intro5_message, R.string.WelcomeActivity_intro6_message, R.string.WelcomeActivity_intro7_message};
 
         WelcomePagerAdapter(Context context) {
             this.context = context;
