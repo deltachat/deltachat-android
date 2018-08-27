@@ -1,45 +1,47 @@
-<!-- This is a bug report template. By following the instructions below and filling out the sections with your information, you will help the developers get all the necessary data to fix your issue.
-You can also preview your report before submitting it. You may remove sections that aren't relevant to your particular case.
+<!--
+Please read the guidelines linked above, especially when you are a first time contributor. Remove this text and provide some basic informations below, if applicable. Remove template content which is not applicable.
 
-Before we begin, please note that this tracker is only for issues. It is not for questions, comments, or feature requests.
+This is a bug report forum, if you like to discuss a new feature or submit suggestions, please use the community forum at https://support.delta.chat
+-->
 
-If you would like to discuss a new feature or submit suggestions, please visit the community forum:
-https://community.signalusers.org
+**Delta Chat version**
 
-If you are looking for support, please visit our support center:
-https://support.signal.org/
-or email support@signal.org
+<!-- See settings dialog … -->
 
-Let's begin with a checklist: Replace the empty checkboxes [ ] below with checked ones [x] accordingly. -->
+**Expected behavior**
 
-- [ ] I have searched open and closed issues for duplicates
-- [ ] I am submitting a bug report for existing functionality that does not work as intended
-- [ ] I have read https://github.com/signalapp/Signal-Android/wiki/Submitting-useful-bug-reports
-- [ ] This isn't a feature request or a discussion topic
+<!-- What is the expected output? -->
 
-----------------------------------------
+**Actual behavior**
 
-### Bug description
-Describe here the issue that you are experiencing.
+<!-- What do you see instead? -->
 
-### Steps to reproduce
-- using hyphens as bullet points
-- list the steps
-- that reproduce the bug
+**Steps to reproduce the problem**
 
-**Actual result:** Describe here what happens after you run the steps above (i.e. the buggy behaviour)
-**Expected result:** Describe here what should happen after you run the steps above (i.e. what would be the correct behaviour)
+1. …
+2. …
 
-### Screenshots
-<!-- you can drag and drop images below -->
+**Screen snapshots**
 
+<!-- If applicable … -->
 
-### Device info
-<!-- replace the examples with your info -->
-**Device:** Manufacturer Model XVI
-**Android version:** 0.0.0
-**Signal version:** 0.0.0
+**Debug logs**
+<details>
+<summary>Logs</summary>
+```
 
-### Link to debug log
-<!-- immediately after the bug has happened capture a debug log via Signal's advanced settings and paste the link below -->
+<!--
+If applicable, debug logs can be copied from within the Delta Chat app: 
+
+Open the _Settings_ menu -> _About_ -> _version number|Info_.
+
+Alternatively from the Android system log:
+
+` adb logcat -v time -s DeltaChat `
+
+This log contains private data (e.g. mail address, provider information) which shall be removed or anonymised prior to posting.
+-->
+
+```
+</details>
 
