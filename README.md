@@ -1,69 +1,81 @@
-# Signal Android 
+Delta Chat Android Client
+================================================================================
 
-Signal is a messaging app for simple private communication with friends.
+This is the android client for Delta Chat.  For the core library and other common
+information, please refer to [Delta Chat Core Library](https://github.com/deltachat/deltachat-core).
+For ready-to-use binaries, please go to https://delta.chat .
 
-Signal uses your phone's data connection (WiFi/3G/4G) to communicate securely, optionally supports plain SMS/MMS to function as a unified messenger, and can also encrypt the stored messages on your phone.
+![Logo](https://delta.chat/assets/features/start-img4.png)
 
-Currently available on the Play store.
+[<img src="https://f-droid.org/badge/get-it-on.png" alt="Get it on F-Droid" height="75"/>](https://f-droid.org/packages/com.b44t.messenger)
 
-<a href='https://play.google.com/store/apps/details?id=org.thoughtcrime.securesms&pcampaignid=MKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'><img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png' height='80px'/></a>
 
-## Contributing Bug reports
-We use GitHub for bug tracking. Please search the existing issues for your bug and create a new one if the issue is not yet tracked!
+Build
+--------------------------------------------------------------------------------
 
-https://github.com/signalapp/Signal-Android/issues
+When checking out _deltachat-android-ii_, make sure also to check out the
+subproject _deltachat-core_:
 
-## Joining the Beta
-Want to live life on the bleeding edge and help out with testing?
+- When using Git, you can can do this initially by
+  `$ git clone --recursive https://github.com/deltachat/deltachat-android-ii.git`
+  or later by `git submodule update --init --recursive`. If you do this in your
+  home directory, this results in the folder `~/deltachat-android-ii` which is just fine.
 
-You can subscribe to Signal Android Beta releases here:
-https://play.google.com/apps/testing/org.thoughtcrime.securesms
- 
-If you're interested in a life of peace and tranquility, stick with the standard releases.
+- Alternatively, you can download the [deltachat-android zip-file](https://github.com/deltachat/deltachat-android-ii/archive/master.zip); in this case, also download the [deltachat-core zip-file](https://github.com/deltachat/deltachat-core/archive/master.zip) and place its contents to `MessengerProj/jni/messenger-backend` 
 
-## Contributing Translations
-Interested in helping to translate Signal? Contribute here:
+Then, call `ndk-build` in the root directory to build the C-part; 
+this also builds deltachat-core.  Afterwards run the project in Android Studio.
+The project requires API 25.
 
-https://www.transifex.com/projects/p/signal-android/
+With chance, that's it :) - if not, read on how to setup a proper development
+environment.
 
-## Contributing Code
-Instructions on how to setup your development environment and build Signal can be found in  [BUILDING.md](https://github.com/signalapp/Signal-Android/blob/master/BUILDING.md).
 
-If you're new to the Signal codebase, we recommend going through our issues and picking out a simple bug to fix (check the "easy" label in our issues) in order to get yourself familiar. Also please have a look at the [CONTRIBUTING.md](https://github.com/signalapp/Signal-Android/blob/master/CONTRIBUTING.md), that might answer some of your questions.
+Install Development Environment
+--------------------------------------------------------------------------------
 
-For larger changes and feature ideas, we ask that you propose it on the [unofficial Community Forum](https://whispersystems.discoursehosting.net) for a high-level discussion with the wider community before implementation.
+1. Some libs required by Android Studio may be missing on 64 bit Linux machines 
+   [[Source](https://developer.android.com/studio/install.html)], so for Ubuntu execute  
+   `$ sudo apt-get install libc6:i386 libncurses5:i386 libstdc++6:i386 lib32z1 libbz2-1.0:i386`  
+   and for Fedora execute  
+   `$ sudo yum install zlib.i686 ncurses-libs.i686 bzip2-libs.i686`
+  
+2. Download Android Studio from <https://developer.android.com> (android-studio-ide-...-linux.zip)
+   and unpack the archive which contains a single folder called `android-studio`; 
+   move this folder eg. to `~/android-studio` 
 
-## Contributing Ideas
-Have something you want to say about Open Whisper Systems projects or want to be part of the conversation? Get involved in the [community forum](https://whispersystems.discoursehosting.net).
+3. To launch Android Studio for the first time, open a terminal, navigate to 
+   `~/android-studio/bin`, execute `./studio.sh` and use all standard values
+   from the wizard.
+   
+4. Android Studio now ask you if you want to download an existing project; 
+   choose `~/deltachat-android` as created in the "Build" chapter (Android Studio starts to
+   build the project, however, there are some steps missing before this will
+   succeed).
+   
+5. As Delta Chat uses API 25 for some reasons, click on the corresponding error
+   message and install "Nougat 7.1.1 (API 25)" and the "Build-Tools" (you should
+   also find the option at "Tools / Android / SDK Manager / SDK Platforms").
+   Now the build should succeed - but the app still misses the native part.
 
-Help
-====
-## Support
-For troubleshooting and questions, please visit our support center!
+6. Download Android NDK Revision 14b from
+   [NDK Archives](https://developer.android.com/ndk/downloads/older_releases)
+   (Newer releases shall not be used currently, they are not compatible,
+   see issues #197, #220, #248) and unzip the archive which contains a single folder
+   called `android-ndk-r...`; move this folder eg. to `~/android-ndk-r...`
+   
+7. Export the folder path to your environment as ANDROID_NDK and add it to PATH.
+   You can archive this eg. by adding the following lines to `.bashrc`  
+   `export ANDROID_NDK=/home/bpetersen/android-ndk-r...`  
+   `export PATH=$PATH:$ANDROID_NDK`
+   
+The last two steps may be omitted by using the new Android Studio NDK options,
+however, thus far, we have not found the time to do so.
 
-https://support.signal.org/
 
-## Documentation
-Looking for documentation? Check out the wiki!
+License
+--------------------------------------------------------------------------------
 
-https://github.com/signalapp/Signal-Android/wiki
+Licensed under the GPLv3, see LICENSE file for details.
 
-# Legal things
-## Cryptography Notice
-
-This distribution includes cryptographic software. The country in which you currently reside may have restrictions on the import, possession, use, and/or re-export to another country, of encryption software.
-BEFORE using any encryption software, please check your country's laws, regulations and policies concerning the import, possession, or use, and re-export of encryption software, to see if this is permitted.
-See <http://www.wassenaar.org/> for more information.
-
-The U.S. Government Department of Commerce, Bureau of Industry and Security (BIS), has classified this software as Export Commodity Control Number (ECCN) 5D002.C.1, which includes information security software using or performing cryptographic functions with asymmetric algorithms.
-The form and manner of this distribution makes it eligible for export under the License Exception ENC Technology Software Unrestricted (TSU) exception (see the BIS Export Administration Regulations, Section 740.13) for both object code and source code.
-
-## License
-
-Copyright 2011 Whisper Systems
-
-Copyright 2013-2017 Open Whisper Systems
-
-Licensed under the GPLv3: http://www.gnu.org/licenses/gpl-3.0.html
-
-Google Play and the Google Play logo are trademarks of Google Inc.
+Copyright © 2017, 2018 Delta Chat contributors
