@@ -28,6 +28,7 @@ This is a bug report forum, if you like to discuss a new feature or submit sugge
 **Debug logs**
 <details>
 <summary>Logs</summary>
+
 ```
 
 <!--
