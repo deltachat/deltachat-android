@@ -4,6 +4,7 @@ import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.support.annotation.NonNull;
@@ -241,13 +242,15 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
             long progress = (Long)data1;
             Log.i("DeltaChat", String.format("configure-progress=%d", (int)progress));
             if (progress==0/*error/aborted*/) {
-
+                progressDialog.dismiss();
             }
             else if (progress<1000/*progress in permille*/) {
-
+                progressDialog.setMessage("Loading ... " + progress);
             }
             else if (progress==1000/*done*/) {
-
+                progressDialog.dismiss();
+                Intent conversationList = new Intent(getApplicationContext(), ConversationListActivity.class);
+                startActivity(conversationList);
             }
         }
     }
