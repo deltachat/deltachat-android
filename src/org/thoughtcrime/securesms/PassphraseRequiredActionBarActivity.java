@@ -11,7 +11,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 
-import org.thoughtcrime.securesms.crypto.MasterSecretUtil;
+import org.thoughtcrime.securesms.connect.DcContextHelper;
 import org.thoughtcrime.securesms.jobs.PushNotificationReceiveJob;
 import org.thoughtcrime.securesms.push.SignalServiceNetworkAccess;
 import org.thoughtcrime.securesms.service.KeyCachingService;
@@ -26,11 +26,9 @@ public abstract class PassphraseRequiredActionBarActivity extends BaseActionBarA
   public static final String LOCALE_EXTRA = "locale_extra";
 
   private static final int STATE_NORMAL                   = 0;
-  private static final int STATE_CREATE_PASSPHRASE        = 1;
-  private static final int STATE_PROMPT_PASSPHRASE        = 2;
-  private static final int STATE_UPGRADE_DATABASE         = 3;
-  private static final int STATE_PROMPT_PUSH_REGISTRATION = 4;
-  private static final int STATE_EXPERIENCE_UPGRADE       = 5;
+  private static final int STATE_NEEDS_REGISTER           = 1;
+  private static final int STATE_UPGRADE_DATABASE         = 2;
+  private static final int STATE_EXPERIENCE_UPGRADE       = 3;
 
   private SignalServiceNetworkAccess networkAccess;
   private BroadcastReceiver          clearKeyReceiver;
@@ -137,26 +135,17 @@ public abstract class PassphraseRequiredActionBarActivity extends BaseActionBarA
     Log.w(TAG, "routeApplicationState(), state: " + state);
 
     switch (state) {
-    case STATE_CREATE_PASSPHRASE:        return getCreatePassphraseIntent();
-    case STATE_PROMPT_PASSPHRASE:        return getPromptPassphraseIntent();
-    case STATE_UPGRADE_DATABASE:         return getUpgradeDatabaseIntent();
-    case STATE_PROMPT_PUSH_REGISTRATION: return getPushRegistrationIntent();
-    case STATE_EXPERIENCE_UPGRADE:       return getExperienceUpgradeIntent();
+      case STATE_UPGRADE_DATABASE:         return getUpgradeDatabaseIntent();
+      case STATE_NEEDS_REGISTER:           return getWelcomeIntent();
+      case STATE_EXPERIENCE_UPGRADE:       return getExperienceUpgradeIntent();
     default:                             return null;
     }
   }
 
   private int getApplicationState(boolean locked) {
-    if (!MasterSecretUtil.isPassphraseInitialized(this)) {
-      return STATE_CREATE_PASSPHRASE;
-    } else if (locked) {
-      return STATE_PROMPT_PASSPHRASE;
-    } else if (DatabaseUpgradeActivity.isUpdate(this)) {
-      return STATE_UPGRADE_DATABASE;
-    } else if (!TextSecurePreferences.hasPromptedPushRegistration(this)) {
-      return STATE_PROMPT_PUSH_REGISTRATION;
-    } else if (ExperienceUpgradeActivity.isUpdate(this)) {
-      return STATE_EXPERIENCE_UPGRADE;
+    boolean isConfigured = DcContextHelper.isConfigured(getApplicationContext());
+    if (!isConfigured) {
+      return STATE_NEEDS_REGISTER;
     } else {
       return STATE_NORMAL;
     }
@@ -174,15 +163,19 @@ public abstract class PassphraseRequiredActionBarActivity extends BaseActionBarA
     return getRoutedIntent(DatabaseUpgradeActivity.class,
                            TextSecurePreferences.hasPromptedPushRegistration(this)
                                ? getConversationListIntent()
-                               : getPushRegistrationIntent());
+                               : getLoginIntent());
   }
 
   private Intent getExperienceUpgradeIntent() {
     return getRoutedIntent(ExperienceUpgradeActivity.class, getIntent());
   }
 
-  private Intent getPushRegistrationIntent() {
+  private Intent getWelcomeIntent() {
     return getRoutedIntent(WelcomeActivity.class, null);
+  }
+
+  private Intent getLoginIntent() {
+    return getRoutedIntent(RegistrationActivity.class, null);
   }
 
   private Intent getCreateProfileIntent() {

@@ -249,8 +249,7 @@
                 android:id="@+id/smtp_login_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/RegistrationActivity_smtp_login"
-                android:inputType="textPassword" />
+                android:hint="@string/RegistrationActivity_smtp_login" />
 
         </android.support.design.widget.TextInputLayout>
 
