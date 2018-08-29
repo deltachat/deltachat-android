@@ -162,8 +162,7 @@
                 android:id="@+id/imap_login_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/RegistrationActivity_imap_login"
-                android:inputType="text" />
+                android:hint="@string/RegistrationActivity_imap_login" />
 
         </android.support.design.widget.TextInputLayout>
 
@@ -180,8 +179,7 @@
                 android:id="@+id/imap_server_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/RegistrationActivity_imap_server"
-                android:inputType="number" />
+                android:hint="@string/RegistrationActivity_imap_server" />
 
         </android.support.design.widget.TextInputLayout>
 
@@ -284,8 +282,7 @@
                 android:id="@+id/smtp_server_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/RegistrationActivity_smtp_server"
-                android:inputType="text" />
+                android:hint="@string/RegistrationActivity_smtp_server" />
 
         </android.support.design.widget.TextInputLayout>
 
