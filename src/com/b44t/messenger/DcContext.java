@@ -142,11 +142,13 @@ public class DcContext {
     public native int joinSecurejoin(String qr);
 
     // event handling - you should @Override this function in derived classes
-    public long handleEvent(final int event, final long data1, final long data2) {
+    public long handleEvent(int event, long data1, long data2) {
         return 0;
     }
 
     // helper to get/return strings from/to handleEvent()
+    public native static boolean data1IsString(int event);
+    public native static boolean data2IsString(int event);
     public native static String dataToString(long hString);
     public native static long stringToData(String str);
 

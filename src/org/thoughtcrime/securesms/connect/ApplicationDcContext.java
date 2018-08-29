@@ -22,6 +22,7 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.b44t.messenger.DcContext;
+import com.b44t.messenger.DcEventCenter;
 
 import org.thoughtcrime.securesms.ApplicationContext;
 import org.thoughtcrime.securesms.util.Util;
@@ -179,13 +180,14 @@ public class ApplicationDcContext extends DcContext {
      * Event Handling
      **********************************************************************************************/
 
+    public DcEventCenter eventCenter = new DcEventCenter();
 
     public final Object lastErrorLock = new Object();
     public int lastErrorCode = 0;
     public String lastErrorString = "";
     public boolean showNextErrorAsToast = true;
 
-    @Override public long handleEvent(final int event, final long data1, final long data2) {
+    @Override public long handleEvent(final int event, long data1, long data2) {
         switch(event) {
             case DC_EVENT_INFO:
                 Log.i("DeltaChat", dataToString(data2));
@@ -216,18 +218,6 @@ public class ApplicationDcContext extends DcContext {
                 });
                 break;
 
-            case DC_EVENT_CONFIGURE_PROGRESS:
-                if (data1==0/*error/aborted*/) {
-                    // TODO: send this event to RegistrationActivity, take care, we're not in the main thread!
-                }
-                else if (data1<1000/*progress in permille*/) {
-                    // TODO: send this event to RegistrationActivity, take care, we're not in the main thread!
-                }
-                else if (data1==1000/*done*/) {
-                    // TODO: send this event to RegistrationActivity, take care, we're not in the main thread!
-                }
-                break;
-
             case DC_EVENT_HTTP_GET:
                 String httpContent = null;
                 try {
@@ -253,6 +243,22 @@ public class ApplicationDcContext extends DcContext {
                     e.printStackTrace();
                 }
                 return stringToData(httpContent);
+
+            default:
+                {
+                    final Object data1obj = data1IsString(event)? dataToString(data1) : data1;
+                    final Object data2obj = data2IsString(event)? dataToString(data2) : data2;
+                    Util.runOnMain(new Runnable() {
+                        @Override
+                        public void run() {
+                            if(eventCenter!=null) {
+                                eventCenter.sendToObservers(event, data1obj, data2obj);
+                            }
+                        }
+                    });
+
+                }
+                break;
         }
         return 0;
     }

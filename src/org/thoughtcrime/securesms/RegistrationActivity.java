@@ -10,12 +10,15 @@ import android.support.annotation.NonNull;
 import android.support.constraint.Group;
 import android.support.design.widget.TextInputEditText;
 import android.text.TextUtils;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.b44t.messenger.DcContext;
+import com.b44t.messenger.DcEventCenter;
 import com.dd.CircularProgressButton;
 
 import org.thoughtcrime.securesms.permissions.Permissions;
@@ -28,7 +31,7 @@ import org.thoughtcrime.securesms.util.Dialogs;
  * @author Moxie Marlinspike
  * @author Daniel Böhrs
  */
-public class RegistrationActivity extends BaseActionBarActivity {
+public class RegistrationActivity extends BaseActionBarActivity implements DcEventCenter.DcEventDelegate {
 
     private enum VerificationType {
         EMAIL,
@@ -57,6 +60,13 @@ public class RegistrationActivity extends BaseActionBarActivity {
 
         initializeResources();
         initializePermissions();
+        ApplicationContext.getInstance(getApplicationContext()).dcContext.eventCenter.addObserver(this, DcContext.DC_EVENT_CONFIGURE_PROGRESS);
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        ApplicationContext.getInstance(getApplicationContext()).dcContext.eventCenter.removeObservers(this);
     }
 
     @Override
@@ -225,9 +235,21 @@ public class RegistrationActivity extends BaseActionBarActivity {
         ApplicationContext.getInstance(getApplicationContext()).dcContext.stopOngoingProcess();
     }
 
-    //@Override
-    public void didReceivedNotification(int id, Object... args) {
-        // TODO react to notifications sent via NotificationCenter
+    @Override
+    public void handleEvent(int eventId, Object data1, Object data2) {
+        if (eventId==DcContext.DC_EVENT_CONFIGURE_PROGRESS) {
+            long progress = (Long)data1;
+            Log.i("DeltaChat", String.format("configure-progress=%d", (int)progress));
+            if (progress==0/*error/aborted*/) {
+
+            }
+            else if (progress<1000/*progress in permille*/) {
+
+            }
+            else if (progress==1000/*done*/) {
+
+            }
+        }
     }
 
 
