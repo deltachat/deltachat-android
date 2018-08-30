@@ -22,7 +22,7 @@ public class DcHelper {
     private static final String CONFIG_SELF_STATUS = "selfstatus";
     private static final String CONFIG_E2EE_ENABLED = "e2ee_enabled";
 
-    public static DcContext getContext(Context context) {
+    public static ApplicationDcContext getContext(Context context) {
         return ApplicationContext.getInstance(context).dcContext;
     }
 
