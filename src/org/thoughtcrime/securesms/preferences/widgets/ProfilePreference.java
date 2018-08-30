@@ -2,6 +2,7 @@ package org.thoughtcrime.securesms.preferences.widgets;
 
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.support.v7.preference.Preference;
@@ -14,17 +15,15 @@ import android.widget.TextView;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
 import org.thoughtcrime.securesms.R;
-import org.thoughtcrime.securesms.contacts.avatars.ProfileContactPhoto;
+import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.contacts.avatars.ResourceContactPhoto;
-import org.thoughtcrime.securesms.database.Address;
 import org.thoughtcrime.securesms.mms.GlideApp;
-import org.thoughtcrime.securesms.util.TextSecurePreferences;
 
 public class ProfilePreference extends Preference {
 
   private ImageView avatarView;
   private TextView  profileNameView;
-  private TextView  profileNumberView;
+  private TextView profileAddressView;
 
   @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
   public ProfilePreference(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
@@ -56,19 +55,20 @@ public class ProfilePreference extends Preference {
     super.onBindViewHolder(viewHolder);
     avatarView        = (ImageView)viewHolder.findViewById(R.id.avatar);
     profileNameView   = (TextView)viewHolder.findViewById(R.id.profile_name);
-    profileNumberView = (TextView)viewHolder.findViewById(R.id.number);
+    profileAddressView = (TextView)viewHolder.findViewById(R.id.number);
 
     refresh();
   }
 
   public void refresh() {
-    if (profileNumberView == null) return;
+    if (profileAddressView == null) return;
 
-    final Address localAddress = Address.fromSerialized(TextSecurePreferences.getLocalNumber(getContext()));
-    final String  profileName  = TextSecurePreferences.getProfileName(getContext());
+    final String address = DcHelper.getAccountAddress(getContext());
+    final String profileName  = DcHelper.getAccountName(getContext());
+    final Bitmap profileImage = null;
 
     GlideApp.with(getContext().getApplicationContext())
-            .load(new ProfileContactPhoto(localAddress, String.valueOf(TextSecurePreferences.getProfileAvatarId(getContext()))))
+            .load(profileImage)
             .error(new ResourceContactPhoto(R.drawable.ic_camera_alt_white_24dp).asDrawable(getContext(), getContext().getResources().getColor(R.color.grey_400)))
             .circleCrop()
             .diskCacheStrategy(DiskCacheStrategy.ALL)
@@ -78,6 +78,6 @@ public class ProfilePreference extends Preference {
       profileNameView.setText(profileName);
     }
 
-    profileNumberView.setText(localAddress.toPhoneString());
+    profileAddressView.setText(address);
   }
 }

@@ -11,7 +11,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 
-import org.thoughtcrime.securesms.connect.DcContextHelper;
+import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.jobs.PushNotificationReceiveJob;
 import org.thoughtcrime.securesms.push.SignalServiceNetworkAccess;
 import org.thoughtcrime.securesms.service.KeyCachingService;
@@ -143,7 +143,7 @@ public abstract class PassphraseRequiredActionBarActivity extends BaseActionBarA
   }
 
   private int getApplicationState(boolean locked) {
-    boolean isConfigured = DcContextHelper.isConfigured(getApplicationContext());
+    boolean isConfigured = DcHelper.isConfigured(getApplicationContext());
     if (!isConfigured) {
       return STATE_NEEDS_REGISTER;
     } else {

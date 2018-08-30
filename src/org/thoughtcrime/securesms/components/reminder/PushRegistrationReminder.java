@@ -6,7 +6,7 @@ import android.view.View.OnClickListener;
 
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.RegistrationActivity;
-import org.thoughtcrime.securesms.connect.DcContextHelper;
+import org.thoughtcrime.securesms.connect.DcHelper;
 
 public class PushRegistrationReminder extends Reminder {
 
@@ -29,6 +29,6 @@ public class PushRegistrationReminder extends Reminder {
     }
 
     public static boolean isEligible(Context context) {
-        return !DcContextHelper.isConfigured(context);
+        return !DcHelper.isConfigured(context);
     }
 }
