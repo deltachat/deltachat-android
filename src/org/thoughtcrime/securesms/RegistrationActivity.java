@@ -22,6 +22,7 @@ import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEventCenter;
 import com.dd.CircularProgressButton;
 
+import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.permissions.Permissions;
 import org.thoughtcrime.securesms.util.Dialogs;
 
@@ -61,13 +62,13 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
 
         initializeResources();
         initializePermissions();
-        ApplicationContext.getInstance(getApplicationContext()).dcContext.eventCenter.addObserver(this, DcContext.DC_EVENT_CONFIGURE_PROGRESS);
+        DcHelper.getContext(this).eventCenter.addObserver(this, DcContext.DC_EVENT_CONFIGURE_PROGRESS);
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
-        ApplicationContext.getInstance(getApplicationContext()).dcContext.eventCenter.removeObservers(this);
+        DcHelper.getContext(this).eventCenter.removeObservers(this);
     }
 
     @Override
@@ -219,21 +220,21 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
         setConfig(R.id.smtp_login_text, "send_user");
         setConfig(R.id.smtp_password_text, "send_pw");
 
-        // calling configure() results in ApplicationDcContext.handleEvent()
-        // receiving multiple DC_EVENT_CONFIGURE_PROGRESS events from different threads
-        ApplicationContext.getInstance(getApplicationContext()).dcContext.configure();
+        // calling configure() results in
+        // receiving multiple DC_EVENT_CONFIGURE_PROGRESS events
+        DcHelper.getContext(this).configure();
     }
 
     private void setConfig(@IdRes int viewId, String configTarget) {
         TextInputEditText view = findViewById(viewId);
         String value = view.getText().toString().trim();
         if (!value.isEmpty()) {
-            ApplicationContext.getInstance(getApplicationContext()).dcContext.setConfig(configTarget, value);
+            DcHelper.getContext(this).setConfig(configTarget, value);
         }
     }
 
     private void stopLoginProcess() {
-        ApplicationContext.getInstance(getApplicationContext()).dcContext.stopOngoingProcess();
+        DcHelper.getContext(this).stopOngoingProcess();
     }
 
     @Override
