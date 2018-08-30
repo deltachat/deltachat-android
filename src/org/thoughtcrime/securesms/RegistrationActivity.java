@@ -241,7 +241,6 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
     public void handleEvent(int eventId, Object data1, Object data2) {
         if (eventId==DcContext.DC_EVENT_CONFIGURE_PROGRESS) {
             long progress = (Long)data1;
-            Log.i("DeltaChat", String.format("configure-progress=%d", (int)progress));
             if (progress==0/*error/aborted*/) {
                 progressDialog.dismiss();
             }
@@ -252,6 +251,7 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
                 progressDialog.dismiss();
                 Intent conversationList = new Intent(getApplicationContext(), ConversationListActivity.class);
                 startActivity(conversationList);
+                finish();
             }
         }
     }

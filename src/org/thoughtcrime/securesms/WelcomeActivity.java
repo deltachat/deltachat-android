@@ -16,6 +16,10 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.b44t.messenger.DcContext;
+import com.b44t.messenger.DcEventCenter;
+
+import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.permissions.Permissions;
 
 /**
@@ -24,7 +28,7 @@ import org.thoughtcrime.securesms.permissions.Permissions;
  *
  * @author Daniel Böhrs
  */
-public class WelcomeActivity extends BaseActionBarActivity {
+public class WelcomeActivity extends BaseActionBarActivity implements DcEventCenter.DcEventDelegate {
 
     private class WelcomePagerAdapter extends PagerAdapter {
 
@@ -81,6 +85,13 @@ public class WelcomeActivity extends BaseActionBarActivity {
         setContentView(R.layout.welcome_activity);
 
         initializeResources();
+        DcHelper.getContext(this).eventCenter.addObserver(this, DcContext.DC_EVENT_CONFIGURE_PROGRESS);
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        DcHelper.getContext(this).eventCenter.removeObservers(this);
     }
 
     @Override
@@ -104,7 +115,7 @@ public class WelcomeActivity extends BaseActionBarActivity {
     private void startRegistrationActivity() {
         Intent intent = new Intent(this, RegistrationActivity.class);
         startActivity(intent);
-        finish();
+        // no finish() here, the back key should take the user back from RegistrationActivity to WelcomeActivity
     }
 
     @SuppressLint("InlinedApi")
@@ -120,4 +131,12 @@ public class WelcomeActivity extends BaseActionBarActivity {
                 .execute();
     }
 
+    public void handleEvent(int eventId, Object data1, Object data2) {
+        if (eventId== DcContext.DC_EVENT_CONFIGURE_PROGRESS) {
+            long progress = (Long)data1;
+            if (progress==1000/*done*/) {
+                finish(); // remove ourself from the activity stack (finishAffinity is available in API 16, we're targeting API 14)
+            }
+        }
+    }
 }
