@@ -14,6 +14,9 @@ import org.thoughtcrime.securesms.util.Util;
 
 public class DefaultSmsReminder extends Reminder {
 
+  @SuppressWarnings("FieldCanBeLocal")
+  private static final boolean SUPPORTED = false;
+
   @TargetApi(VERSION_CODES.KITKAT)
   public DefaultSmsReminder(final Context context) {
     super(context.getString(R.string.reminder_header_sms_default_title),
@@ -44,6 +47,6 @@ public class DefaultSmsReminder extends Reminder {
       TextSecurePreferences.setPromptedDefaultSmsProvider(context, false);
     }
 
-    return !isDefault && !TextSecurePreferences.hasPromptedDefaultSmsProvider(context);
+    return SUPPORTED && !isDefault && !TextSecurePreferences.hasPromptedDefaultSmsProvider(context);
   }
 }
