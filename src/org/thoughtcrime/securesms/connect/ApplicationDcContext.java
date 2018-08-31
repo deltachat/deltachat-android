@@ -17,6 +17,7 @@
 package org.thoughtcrime.securesms.connect;
 
 import android.content.Context;
+import android.os.Environment;
 import android.os.PowerManager;
 import android.util.Log;
 import android.widget.Toast;
@@ -67,6 +68,15 @@ public class ApplicationDcContext extends DcContext {
         startThreads();
     }
 
+    public File getImexDir()
+    {
+        // DIRECTORY_DOCUMENTS is only available since KitKat;
+        // as we also support Ice Cream Sandwich and Jellybean (2017: 11% in total), this is no option.
+        // Moreover, DIRECTORY_DOWNLOADS seems to be easier accessible by the user,
+        // eg. "Download Managers" are nearly always installed.
+        // CAVE: do not use DownloadManager to add the file as it is deleted on uninstall then ...
+        return Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
+    }
 
     /***********************************************************************************************
      * Working Threads
@@ -182,10 +192,34 @@ public class ApplicationDcContext extends DcContext {
 
     public DcEventCenter eventCenter = new DcEventCenter();
 
-    public final Object lastErrorLock = new Object();
-    public int lastErrorCode = 0;
-    public String lastErrorString = "";
-    public boolean showNextErrorAsToast = true;
+    private final Object lastErrorLock = new Object();
+    private String lastErrorString = "";
+    private boolean showNextErrorAsToast = true;
+
+    public void captureNextError() {
+        synchronized (lastErrorLock) {
+            showNextErrorAsToast = false;
+            lastErrorString = "";
+        }
+    }
+
+    public boolean hasCapturedError() {
+        synchronized (lastErrorLock) {
+            return !lastErrorString.isEmpty();
+        }
+    }
+
+    public String getCapturedError() {
+        synchronized (lastErrorLock) {
+            return lastErrorString;
+        }
+    }
+
+    public void endCaptureNextError() {
+        synchronized (lastErrorLock) {
+            showNextErrorAsToast = true;
+        }
+    }
 
     @Override public long handleEvent(final int event, long data1, long data2) {
         switch(event) {
@@ -200,7 +234,6 @@ public class ApplicationDcContext extends DcContext {
             case DC_EVENT_ERROR:
                 Log.e("DeltaChat", dataToString(data2));
                 synchronized (lastErrorLock) {
-                    lastErrorCode = (int)data1;
                     lastErrorString = dataToString(data2);
                 }
                 Util.runOnMain(new Runnable() {

@@ -1368,7 +1368,6 @@
     <string name="prompt_passphrase_activity__tap_to_unlock">TAP TO UNLOCK</string>
     <string name="RegistrationLockDialog_reminder">Reminder:</string>
     <string name="recipient_preferences__about">About</string>
-    <!-- EOF -->
 
     <string name="WelcomeActivity_intro1_headline">Delta Chat</string>
     <string name="WelcomeActivity_intro1_message">The messenger with the <b>broadest audience</b> in the world. <b>Free</b> and <b>independent</b>.</string>
@@ -1406,11 +1405,16 @@
     <string name="RegistrationActivity_dialog_permission_text">Delta Chat needs access to your contacts and media in order to connect with friends and send files</string>
     <string name="RegistrationActivity_error_required_fields">Please enter a valid email address and a password</string>
 
+    <string name="import_backup_title">Import backup</string>
+    <string name="import_backup_ask">Backup found at \"%1$s\".\n\nDo you want to import and use all data and settings from it?</string>
+    <string name="import_backup_no_backup_found">No backups found.\n\nCopy the backup to \"%1$s\" and try again. Alternatively, press \"Start messaging\" to go with the normal setup process.</string>
+
     <!-- Generic and reusable strings -->
     <string name="email_address">Email address</string>
     <string name="password">Password</string>
     <string name="advanced">Advanced</string>
     <string name="icon">icon</string>
     <string name="loading">Loading …</string>
+    <string name="one_moment">One moment …</string>
 
 </resources>

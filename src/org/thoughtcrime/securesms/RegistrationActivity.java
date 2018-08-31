@@ -2,6 +2,7 @@ package org.thoughtcrime.securesms;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -22,6 +23,7 @@ import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEventCenter;
 import com.dd.CircularProgressButton;
 
+import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.permissions.Permissions;
 import org.thoughtcrime.securesms.util.Dialogs;
@@ -222,6 +224,7 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
 
         // calling configure() results in
         // receiving multiple DC_EVENT_CONFIGURE_PROGRESS events
+        DcHelper.getContext(this).captureNextError();
         DcHelper.getContext(this).configure();
     }
 
@@ -240,14 +243,24 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
     @Override
     public void handleEvent(int eventId, Object data1, Object data2) {
         if (eventId==DcContext.DC_EVENT_CONFIGURE_PROGRESS) {
+            ApplicationDcContext dcContext = DcHelper.getContext(this);
             long progress = (Long)data1;
             if (progress==0/*error/aborted*/) {
+                dcContext.endCaptureNextError();
                 progressDialog.dismiss();
+                if (dcContext.hasCapturedError()) {
+                    new AlertDialog.Builder(this)
+                            .setMessage(dcContext.getCapturedError())
+                            .setPositiveButton(android.R.string.ok, null)
+                            .show();
+                }
             }
             else if (progress<1000/*progress in permille*/) {
-                progressDialog.setMessage("Loading ... " + progress);
+                int percent = (int)progress / 10;
+                progressDialog.setMessage(getResources().getString(R.string.one_moment)+String.format(" %d%%", percent));
             }
             else if (progress==1000/*done*/) {
+                dcContext.endCaptureNextError();
                 progressDialog.dismiss();
                 Intent conversationList = new Intent(getApplicationContext(), ConversationListActivity.class);
                 startActivity(conversationList);
