@@ -16,7 +16,7 @@ Release core, if needed, then:
 3. deltachat-android/tools: `$ ./txpull`, if there are changes: commit, push
 4. deltachat-android: bump version, commit, push
 5. deltachat-android on Github: "Draft a new release" with the version form `v1.2.3`
-6. update the high-lebel changelog deltachat-pages/en/changelog.md
+6. update the high-level changelog deltachat-pages/en/changelog.md
 
 ... some days later, F-Droid should be updated.
 
