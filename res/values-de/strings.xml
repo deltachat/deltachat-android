@@ -612,7 +612,7 @@ Schlüsselaustausch-Nachricht für eine ungültige Protokollversion empfangen</s
   <string name="change_passphrase_activity__new_passphrase">Neue Passphrase</string>
   <string name="change_passphrase_activity__repeat_new_passphrase">Neue Passphrase wiederholen</string>
   <!--contact_selection_activity-->
-  <string name="contact_selection_activity__enter_name_or_number">Name/Nummer eingeben</string>
+  <string name="contact_selection_activity__enter_name_or_number">Name/E-Mail eingeben</string>
   <!--contact_selection_group_activity-->
   <string name="contact_selection_group_activity__no_contacts">Keine Kontakte.</string>
   <string name="contact_selection_group_activity__finding_contacts">Kontakte werden geladen …</string>
