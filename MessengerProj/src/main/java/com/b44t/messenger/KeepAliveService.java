@@ -111,8 +111,10 @@ public class KeepAliveService extends Service {
 
     public void updateForegroundNotification()
     {
-        // update the notification by simply creating a new notification with the same ID, see https://developer.android.com/training/notify-user/managing.html#Updating
-        NotificationManager nm = (NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);
-        nm.notify(FG_NOTIFICATION_ID, createNotification());
+        if ( !ApplicationLoader.isScreenOn ) {
+            // update the notification by simply creating a new notification with the same ID, see https://developer.android.com/training/notify-user/managing.html#Updating
+            NotificationManager nm = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+            nm.notify(FG_NOTIFICATION_ID, createNotification());
+        }
     }
 }
