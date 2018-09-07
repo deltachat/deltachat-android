@@ -727,9 +727,15 @@ JNIEXPORT void Java_com_b44t_messenger_DcChatlist_DcChatlistUnref(JNIEnv *env, j
 }
 
 
-JNIEXPORT jint Java_com_b44t_messenger_DcChatlist_getCnt(JNIEnv *env, jobject obj, jlong hChatlist)
+JNIEXPORT jint Java_com_b44t_messenger_DcChatlist_getCnt(JNIEnv *env, jobject obj)
 {
 	return dc_chatlist_get_cnt(get_dc_chatlist(env, obj));
+}
+
+
+JNIEXPORT jint Java_com_b44t_messenger_DcChatlist_getChatId(JNIEnv *env, jobject obj, jint index)
+{
+	return dc_chatlist_get_chat_id(get_dc_chatlist(env, obj), index);
 }
 
 

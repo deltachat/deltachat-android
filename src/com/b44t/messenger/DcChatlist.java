@@ -36,9 +36,10 @@ public class DcChatlist {
     }
 
     public native int getCnt();
-    public DcChat getChatByIndex(int index) { return new DcChat(DcChatlistGetChatByIndex(m_hChatlist, index)); }
-    public DcMsg getMsgByIndex(int index) { return new DcMsg(DcChatlistGetMsgByIndex(m_hChatlist, index)); }
-    public DcLot getSummaryByIndex(int index, DcChat chat) { return new DcLot(DcChatlistGetSummaryByIndex(m_hChatlist, index, chat==null? null : chat.getCPtr())); }
+    public native int getChatId(int index);
+    public DcChat getChat(int index) { return new DcChat(DcChatlistGetChatByIndex(m_hChatlist, index)); }
+    public DcMsg getMsg(int index) { return new DcMsg(DcChatlistGetMsgByIndex(m_hChatlist, index)); }
+    public DcLot getSummary(int index, DcChat chat) { return new DcLot(DcChatlistGetSummaryByIndex(m_hChatlist, index, chat==null? null : chat.getCPtr())); }
 
     // working with raw c-data
     private long m_hChatlist; // must not be renamed as referenced by JNI
