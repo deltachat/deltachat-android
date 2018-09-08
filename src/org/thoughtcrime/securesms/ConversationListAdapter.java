@@ -138,7 +138,7 @@ class ConversationListAdapter extends RecyclerView.Adapter {
 
     if (chatId == DcChat.DC_CHAT_ID_ARCHIVED_LINK) {
       return MESSAGE_TYPE_SWITCH_ARCHIVE;
-    } else if(false) {
+    } else if(chatId == DcChat.DC_CHAT_ID_ALLDONE_HINT) {
       return MESSAGE_TYPE_INBOX_ZERO;
     } else {
       return MESSAGE_TYPE_THREAD;
