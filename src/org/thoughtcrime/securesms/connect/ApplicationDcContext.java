@@ -17,16 +17,28 @@
 package org.thoughtcrime.securesms.connect;
 
 import android.content.Context;
+import android.net.Uri;
 import android.os.Environment;
 import android.os.PowerManager;
+import android.support.annotation.NonNull;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEventCenter;
 
 import org.thoughtcrime.securesms.ApplicationContext;
+import org.thoughtcrime.securesms.database.Address;
+import org.thoughtcrime.securesms.database.DatabaseFactory;
+import org.thoughtcrime.securesms.database.GroupDatabase;
+import org.thoughtcrime.securesms.database.RecipientDatabase;
+import org.thoughtcrime.securesms.database.ThreadDatabase;
+import org.thoughtcrime.securesms.database.model.ThreadRecord;
+import org.thoughtcrime.securesms.recipients.Recipient;
+import org.thoughtcrime.securesms.util.TextSecurePreferences;
 import org.thoughtcrime.securesms.util.Util;
+import org.whispersystems.libsignal.util.guava.Optional;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
@@ -76,6 +88,50 @@ public class ApplicationDcContext extends DcContext {
         // eg. "Download Managers" are nearly always installed.
         // CAVE: do not use DownloadManager to add the file as it is deleted on uninstall then ...
         return Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
+    }
+
+
+    /***********************************************************************************************
+     * create objects compatible to the database model of Signal
+     **********************************************************************************************/
+
+    @NonNull
+    public ThreadRecord getThreadRecord(int chatId) { // adapted from ThreadDatabase.getCurrent()
+        DcChat  chat             = getChat(chatId);
+        int     distributionType = chatId==DcChat.DC_CHAT_ID_ARCHIVED_LINK? ThreadDatabase.DistributionTypes.ARCHIVE : ThreadDatabase.DistributionTypes.CONVERSATION;
+        Address address          = Address.UNKNOWN;//Address.fromSerialized(cursor.getString(cursor.getColumnIndexOrThrow(ThreadDatabase.ADDRESS)));
+
+        Optional<RecipientDatabase.RecipientSettings> settings;
+        Optional<GroupDatabase.GroupRecord>       groupRecord;
+
+        if (distributionType != ThreadDatabase.DistributionTypes.ARCHIVE && distributionType != ThreadDatabase.DistributionTypes.INBOX_ZERO) {
+            settings    = Optional.absent();//DatabaseFactory.getRecipientDatabase(context).getRecipientSettings(cursor);
+            groupRecord = Optional.absent();//DatabaseFactory.getGroupDatabase(context).getGroup(cursor);
+        } else {
+            settings    = Optional.absent();
+            groupRecord = Optional.absent();
+        }
+
+        Recipient          recipient            = Recipient.from(context, address, settings, groupRecord, true);
+        String             body                 = "body";
+        long               date                 = 0;
+        long               count                = 1;
+        int                unreadCount          = 1;
+        long               type                 = 0;//cursor.getLong(cursor.getColumnIndexOrThrow(ThreadDatabase.SNIPPET_TYPE));
+        boolean            archived             = chat.getArchived()!=0;
+        int                status               = 0;
+        int                deliveryReceiptCount = 0;
+        int                readReceiptCount     = 0;
+        long               expiresIn            = 0;
+        long               lastSeen             = 0;
+
+        if (!TextSecurePreferences.isReadReceiptsEnabled(context)) {
+            readReceiptCount = 0;
+        }
+
+        return new ThreadRecord(context, body, null, recipient, date, count,
+                unreadCount, chatId, deliveryReceiptCount, status, type,
+                distributionType, archived, expiresIn, lastSeen, readReceiptCount);
     }
 
     /***********************************************************************************************

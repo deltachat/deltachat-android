@@ -53,6 +53,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.b44t.messenger.DcChatlist;
+
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
@@ -70,6 +72,7 @@ import org.thoughtcrime.securesms.components.reminder.ServiceOutageReminder;
 import org.thoughtcrime.securesms.components.reminder.ShareReminder;
 import org.thoughtcrime.securesms.components.reminder.SystemSmsImportReminder;
 import org.thoughtcrime.securesms.components.reminder.UnauthorizedReminder;
+import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.database.DatabaseFactory;
 import org.thoughtcrime.securesms.database.MessagingDatabase.MarkedMessageInfo;
 import org.thoughtcrime.securesms.database.loaders.ConversationListLoader;
@@ -339,12 +342,15 @@ public class ConversationListFragment extends Fragment
 
   @Override
   public void onLoadFinished(Loader<Cursor> arg0, Cursor cursor) {
-    if ((cursor == null || cursor.getCount() <= 0) && TextUtils.isEmpty(queryFilter) && !archive) {
+    // TODO: loading should obviously not be done when loading is finished, however, it is fast enough, for now
+    DcChatlist chatlist = DcHelper.getContext(getContext()).getChatlist(0, null, 0);
+
+    if (chatlist.getCnt() <= 0 && TextUtils.isEmpty(queryFilter) && !archive) {
       list.setVisibility(View.INVISIBLE);
       emptyState.setVisibility(View.VISIBLE);
       emptySearch.setVisibility(View.INVISIBLE);
       fab.startPulse(3 * 1000);
-    } else if ((cursor == null || cursor.getCount() <= 0) && !TextUtils.isEmpty(queryFilter)) {
+    } else if (chatlist.getCnt() <= 0 && !TextUtils.isEmpty(queryFilter)) {
       list.setVisibility(View.INVISIBLE);
       emptyState.setVisibility(View.GONE);
       emptySearch.setVisibility(View.VISIBLE);
@@ -356,7 +362,7 @@ public class ConversationListFragment extends Fragment
       fab.stopPulse();
     }
 
-    getListAdapter().changeCursor(cursor);
+    getListAdapter().changeCursor(chatlist);
   }
 
   @Override

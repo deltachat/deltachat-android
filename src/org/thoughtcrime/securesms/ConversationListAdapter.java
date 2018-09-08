@@ -25,15 +25,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import org.thoughtcrime.securesms.database.CursorRecyclerViewAdapter;
-import org.thoughtcrime.securesms.database.DatabaseFactory;
-import org.thoughtcrime.securesms.database.ThreadDatabase;
-import org.thoughtcrime.securesms.database.model.ThreadRecord;
-import org.thoughtcrime.securesms.mms.GlideRequests;
-import org.thoughtcrime.securesms.util.Conversions;
+import com.b44t.messenger.DcChat;
+import com.b44t.messenger.DcChatlist;
 
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
+import org.thoughtcrime.securesms.connect.ApplicationDcContext;
+import org.thoughtcrime.securesms.connect.DcHelper;
+import org.thoughtcrime.securesms.mms.GlideRequests;
+
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Locale;
@@ -44,18 +42,18 @@ import java.util.Set;
  *
  * @author Moxie Marlinspike
  */
-class ConversationListAdapter extends CursorRecyclerViewAdapter<ConversationListAdapter.ViewHolder> {
+class ConversationListAdapter extends RecyclerView.Adapter {
 
   private static final int MESSAGE_TYPE_SWITCH_ARCHIVE = 1;
   private static final int MESSAGE_TYPE_THREAD         = 2;
   private static final int MESSAGE_TYPE_INBOX_ZERO     = 3;
 
-  private final @NonNull  ThreadDatabase    threadDatabase;
-  private final @NonNull  GlideRequests     glideRequests;
-  private final @NonNull  Locale            locale;
-  private final @NonNull  LayoutInflater    inflater;
-  private final @Nullable ItemClickListener clickListener;
-  private final @NonNull  MessageDigest     digest;
+  private final @NonNull  ApplicationDcContext dcContext;
+  private @NonNull        DcChatlist           dcChatlist;
+  private final @NonNull  GlideRequests        glideRequests;
+  private final @NonNull  Locale               locale;
+  private final @NonNull  LayoutInflater       inflater;
+  private final @Nullable ItemClickListener    clickListener;
 
   private final Set<Long> batchSet  = Collections.synchronizedSet(new HashSet<Long>());
   private       boolean   batchMode = false;
@@ -72,10 +70,13 @@ class ConversationListAdapter extends CursorRecyclerViewAdapter<ConversationList
   }
 
   @Override
-  public long getItemId(@NonNull Cursor cursor) {
-    ThreadRecord  record  = getThreadRecord(cursor);
+  public int getItemCount() {
+    return dcChatlist.getCnt();
+  }
 
-    return Conversions.byteArrayToLong(digest.digest(record.getRecipient().getAddress().serialize().getBytes()));
+  @Override
+  public long getItemId(int i) {
+    return dcChatlist.getChatId(i);
   }
 
   ConversationListAdapter(@NonNull Context context,
@@ -84,22 +85,18 @@ class ConversationListAdapter extends CursorRecyclerViewAdapter<ConversationList
                           @Nullable Cursor cursor,
                           @Nullable ItemClickListener clickListener)
   {
-    super(context, cursor);
-    try {
-      this.glideRequests  = glideRequests;
-      this.threadDatabase = DatabaseFactory.getThreadDatabase(context);
-      this.locale         = locale;
-      this.inflater       = LayoutInflater.from(context);
-      this.clickListener  = clickListener;
-      this.digest         = MessageDigest.getInstance("SHA1");
-      setHasStableIds(true);
-    } catch (NoSuchAlgorithmException nsae) {
-      throw new AssertionError("SHA-1 missing");
-    }
+    super();
+    this.glideRequests  = glideRequests;
+    this.dcContext      = DcHelper.getContext(context);
+    this.dcChatlist     = new DcChatlist(0);
+    this.locale         = locale;
+    this.inflater       = LayoutInflater.from(context);
+    this.clickListener  = clickListener;
+    setHasStableIds(true);
   }
 
   @Override
-  public ViewHolder onCreateItemViewHolder(ViewGroup parent, int viewType) {
+  public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
     if (viewType == MESSAGE_TYPE_SWITCH_ARCHIVE) {
       ConversationListItemAction action = (ConversationListItemAction) inflater.inflate(R.layout.conversation_list_item_action,
                                                                                         parent, false);
@@ -129,30 +126,23 @@ class ConversationListAdapter extends CursorRecyclerViewAdapter<ConversationList
   }
 
   @Override
-  public void onItemViewRecycled(ViewHolder holder) {
-    holder.getItem().unbind();
+  public void onBindViewHolder(RecyclerView.ViewHolder viewHolder, int i) {
+    ViewHolder holder = (ViewHolder)viewHolder;
+    int chatId = dcChatlist.getChatId(i);
+    holder.getItem().bind(dcContext.getThreadRecord(chatId), glideRequests, locale, batchSet, batchMode);
   }
 
   @Override
-  public void onBindItemViewHolder(ViewHolder viewHolder, @NonNull Cursor cursor) {
-    viewHolder.getItem().bind(getThreadRecord(cursor), glideRequests, locale, batchSet, batchMode);
-  }
+  public int getItemViewType(int i) {
+    int chatId = dcChatlist.getChatId(i);
 
-  @Override
-  public int getItemViewType(@NonNull Cursor cursor) {
-    ThreadRecord threadRecord = getThreadRecord(cursor);
-
-    if (threadRecord.getDistributionType() == ThreadDatabase.DistributionTypes.ARCHIVE) {
+    if (chatId == DcChat.DC_CHAT_ID_ARCHIVED_LINK) {
       return MESSAGE_TYPE_SWITCH_ARCHIVE;
-    } else if (threadRecord.getDistributionType() == ThreadDatabase.DistributionTypes.INBOX_ZERO) {
+    } else if(false) {
       return MESSAGE_TYPE_INBOX_ZERO;
     } else {
       return MESSAGE_TYPE_THREAD;
     }
-  }
-
-  private ThreadRecord getThreadRecord(@NonNull Cursor cursor) {
-    return threadDatabase.readerFor(cursor).getCurrent();
   }
 
   void toggleThreadInBatchSet(long threadId) {
@@ -178,9 +168,11 @@ class ConversationListAdapter extends CursorRecyclerViewAdapter<ConversationList
   }
 
   void selectAllThreads() {
-    for (int i = 0; i < getItemCount(); i++) {
-      long threadId = getThreadRecord(getCursorAtPositionOrThrow(i)).getThreadId();
-      if (threadId != -1) batchSet.add(threadId);
+    for (int i = 0; i < dcChatlist.getCnt(); i++) {
+      long threadId = dcChatlist.getChatId(i);
+      if (threadId > DcChat.DC_CHAT_ID_LAST_SPECIAL) {
+        batchSet.add(threadId);
+      }
     }
     this.notifyDataSetChanged();
   }
@@ -189,5 +181,10 @@ class ConversationListAdapter extends CursorRecyclerViewAdapter<ConversationList
     void onItemClick(ConversationListItem item);
     void onItemLongClick(ConversationListItem item);
     void onSwitchToArchive();
+  }
+
+  void changeCursor(DcChatlist chatlist) {
+    dcChatlist = chatlist;
+    notifyDataSetChanged();
   }
 }
