@@ -54,6 +54,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.b44t.messenger.DcChatlist;
+import com.b44t.messenger.DcContext;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -72,6 +73,7 @@ import org.thoughtcrime.securesms.components.reminder.ServiceOutageReminder;
 import org.thoughtcrime.securesms.components.reminder.ShareReminder;
 import org.thoughtcrime.securesms.components.reminder.SystemSmsImportReminder;
 import org.thoughtcrime.securesms.components.reminder.UnauthorizedReminder;
+import org.thoughtcrime.securesms.connect.DcChatlistLoader;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.database.DatabaseFactory;
 import org.thoughtcrime.securesms.database.MessagingDatabase.MarkedMessageInfo;
@@ -94,7 +96,7 @@ import java.util.Set;
 
 
 public class ConversationListFragment extends Fragment
-  implements LoaderManager.LoaderCallbacks<Cursor>, ActionMode.Callback, ItemClickListener
+  implements LoaderManager.LoaderCallbacks<DcChatlist>, ActionMode.Callback, ItemClickListener
 {
   public static final String ARCHIVE = "archive";
 
@@ -336,15 +338,12 @@ public class ConversationListFragment extends Fragment
   }
 
   @Override
-  public Loader<Cursor> onCreateLoader(int arg0, Bundle arg1) {
-    return new ConversationListLoader(getActivity(), queryFilter, archive);
+  public Loader<DcChatlist> onCreateLoader(int arg0, Bundle arg1) {
+    return new DcChatlistLoader(getActivity(), DcContext.DC_GCL_ADD_ALLDONE_HINT, null, 0);
   }
 
   @Override
-  public void onLoadFinished(Loader<Cursor> arg0, Cursor cursor) {
-    // TODO: loading should obviously not be done when loading is finished, however, it is fast enough, for now
-    DcChatlist chatlist = DcHelper.getContext(getContext()).getChatlist(0, null, 0);
-
+  public void onLoadFinished(Loader<DcChatlist> arg0, DcChatlist chatlist) {
     if (chatlist.getCnt() <= 0 && TextUtils.isEmpty(queryFilter) && !archive) {
       list.setVisibility(View.INVISIBLE);
       emptyState.setVisibility(View.VISIBLE);
@@ -366,7 +365,7 @@ public class ConversationListFragment extends Fragment
   }
 
   @Override
-  public void onLoaderReset(Loader<Cursor> arg0) {
+  public void onLoaderReset(Loader<DcChatlist> arg0) {
     getListAdapter().changeCursor(null);
   }
 
