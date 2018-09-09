@@ -25,8 +25,10 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.b44t.messenger.DcChat;
+import com.b44t.messenger.DcChatlist;
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEventCenter;
+import com.b44t.messenger.DcLot;
 
 import org.thoughtcrime.securesms.ApplicationContext;
 import org.thoughtcrime.securesms.database.Address;
@@ -96,8 +98,10 @@ public class ApplicationDcContext extends DcContext {
      **********************************************************************************************/
 
     @NonNull
-    public ThreadRecord getThreadRecord(int chatId) { // adapted from ThreadDatabase.getCurrent()
-        DcChat  chat             = getChat(chatId);
+    public ThreadRecord getThreadRecord(DcChatlist chatlist, int i) { // adapted from ThreadDatabase.getCurrent()
+        int     chatId           = chatlist.getChatId(i);
+        DcChat  chat             = chatlist.getChat(i);
+        DcLot   summary          = chatlist.getSummary(i, chat);
         int     distributionType = chatId==DcChat.DC_CHAT_ID_ARCHIVED_LINK? ThreadDatabase.DistributionTypes.ARCHIVE : ThreadDatabase.DistributionTypes.CONVERSATION;
         Address address          = Address.UNKNOWN;//Address.fromSerialized(cursor.getString(cursor.getColumnIndexOrThrow(ThreadDatabase.ADDRESS)));
 
@@ -112,32 +116,29 @@ public class ApplicationDcContext extends DcContext {
             groupRecord = Optional.absent();
         }
 
+        String body = summary.getText1();
+        if(!body.isEmpty()) { body += ": "; }
+        body += summary.getText2();
+
         Recipient          recipient            = Recipient.from(context, address, settings, groupRecord, true);
-        String             body                 = "body";
-        long               date                 = 0;
+        long               date                 = summary.getTimestamp()*1000;
         long               count                = 1;
-        int                unreadCount          = 1;
+        int                unreadCount          = getFreshMsgCount(chatId);
         long               type                 = 0;//cursor.getLong(cursor.getColumnIndexOrThrow(ThreadDatabase.SNIPPET_TYPE));
         boolean            archived             = chat.getArchived()!=0;
         int                status               = 0;
-        int                deliveryReceiptCount = 0;
-        int                readReceiptCount     = 0;
         long               expiresIn            = 0;
         long               lastSeen             = 0;
 
-        if (!TextSecurePreferences.isReadReceiptsEnabled(context)) {
-            readReceiptCount = 0;
-        }
-
         return new ThreadRecord(context, body, null, recipient, date, count,
-                unreadCount, chatId, deliveryReceiptCount, status, type,
-                distributionType, archived, expiresIn, lastSeen, readReceiptCount);
+                unreadCount, chatId, 0, status, type,
+                distributionType, archived, expiresIn, lastSeen, 0);
     }
+
 
     /***********************************************************************************************
      * Working Threads
      **********************************************************************************************/
-
 
     private final Object threadsCritical = new Object();
 
