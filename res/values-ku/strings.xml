@@ -52,10 +52,10 @@
   <string name="DraftDatabase_Draft_quote_snippet">(bersiv)</string>
   <!--AttchmentManager-->
   <string name="AttachmentManager_cant_open_media_selection">Bername ji bo bijartina medya hat peyda nakir</string>
-  <string name="AttachmentManager_signal_requires_the_external_storage_permission_in_order_to_attach_photos_videos_or_audio">Ji bo zêdekirina wêne, vidyo yan dengê, Signal destûra Embarê dixwaze, lê ew hat herdemî rakirin. Li \'Şikil\' &gt; \'Destûr\' &gt; \'Embar\' destûr bide.</string>
-  <string name="AttachmentManager_signal_requires_contacts_permission_in_order_to_attach_contact_information">Ji bo zêdekirina agahiya têkilî, Signal destûra Têkilî dixwaze, lê ew hat herdemî rakirin. Li \'Şikil\' &gt; \'Destûr\' &gt; \'Têkilî\' destûr bide.</string>
-  <string name="AttachmentManager_signal_requires_location_information_in_order_to_attach_a_location">Ji bo zşdekirina cihek, Signal destûra Cih dixwazeî lê ew hat herdemî rakirin. Li \'Şikil\' &gt; \'Destûr\' &gt; \'Cih\' destûr bide.</string>
-  <string name="AttachmentManager_signal_requires_the_camera_permission_in_order_to_take_photos_but_it_has_been_permanently_denied">Ji bo kişandina wêneyan, Signal destûra Kamera dixwaze, lê ew hat herdemî rakirin. Li \'Şikil\' &gt; \'Destûr\' &gt; \'Kamera\' destûr bide.</string>
+  <string name="AttachmentManager_signal_requires_the_external_storage_permission_in_order_to_attach_photos_videos_or_audio">Ji bo zêdekirina wêne, vidyo yan dengê, Delta Chat destûra Embarê dixwaze, lê ew hat herdemî rakirin. Li \'Şikil\' &gt; \'Destûr\' &gt; \'Embar\' destûr bide.</string>
+  <string name="AttachmentManager_signal_requires_contacts_permission_in_order_to_attach_contact_information">Ji bo zêdekirina agahiya têkilî, Delta Chat destûra Têkilî dixwaze, lê ew hat herdemî rakirin. Li \'Şikil\' &gt; \'Destûr\' &gt; \'Têkilî\' destûr bide.</string>
+  <string name="AttachmentManager_signal_requires_location_information_in_order_to_attach_a_location">Ji bo zşdekirina cihek, Delta Chat destûra Cih dixwazeî lê ew hat herdemî rakirin. Li \'Şikil\' &gt; \'Destûr\' &gt; \'Cih\' destûr bide.</string>
+  <string name="AttachmentManager_signal_requires_the_camera_permission_in_order_to_take_photos_but_it_has_been_permanently_denied">Ji bo kişandina wêneyan, Delta Chat destûra Kamera dixwaze, lê ew hat herdemî rakirin. Li \'Şikil\' &gt; \'Destûr\' &gt; \'Kamera\' destûr bide.</string>
   <!--AudioSlidePlayer-->
   <string name="AudioSlidePlayer_error_playing_audio">Lêxistina dengê çênebû!</string>
   <!--BlockedContactsActivity-->
@@ -80,7 +80,7 @@
   <string name="ContactsCursorLoader_groups">Kom</string>
   <!--ContactsDatabase-->
   <string name="ContactsDatabase_message_s">Peyama %s</string>
-  <string name="ContactsDatabase_signal_call_s">Gaziya Signal a %s</string>
+  <string name="ContactsDatabase_signal_call_s">Gaziya Delta Chat a %s</string>
   <!--ContactNameEditActivity-->
   <string name="ContactNameEditActivity_given_name">Nav</string>
   <string name="ContactNameEditActivity_family_name">Paşnav</string>
@@ -98,7 +98,7 @@
   <string name="ConversationItem_group_action_left">%1$s ji kom derket.</string>
   <string name="ConversationItem_click_to_approve_unencrypted_sms_dialog_title">Vegere SMS a neveşartî?</string>
   <string name="ConversationItem_click_to_approve_unencrypted_mms_dialog_title">Vegere MMS a neveşartî?</string>
-  <string name="ConversationItem_click_to_approve_unencrypted_dialog_message">Ev peyam <b>ne</b> veşartî be jiber ku pêrgînvan ji Signal derket.\n\nPeyam bê ewlerî bişînin?</string>
+  <string name="ConversationItem_click_to_approve_unencrypted_dialog_message">Ev peyam <b>ne</b> veşartî be jiber ku pêrgînvan ji Delta Chat derket.\n\nPeyam bê ewlerî bişînin?</string>
   <string name="ConversationItem_unable_to_open_media">Bername ku dikare vê medya veke peyda nakim.</string>
   <string name="ConversationItem_copied_text">%s kopî bû</string>
   <string name="ConversationItem_from_s">ji %s</string>
@@ -121,8 +121,8 @@
   <string name="ConversationActivity_are_you_sure_you_want_to_leave_this_group">Bêguman dixwazî ji kom derkevin?</string>
   <string name="ConversationActivity_transport_insecure_sms">SMS ne ewle</string>
   <string name="ConversationActivity_transport_insecure_mms">MMS ne ewle</string>
-  <string name="ConversationActivity_transport_signal">Signal</string>
-  <string name="ConversationActivity_lets_switch_to_signal">Signal bikarbînin %1$s</string>
+  <string name="ConversationActivity_transport_signal">Delta Chat</string>
+  <string name="ConversationActivity_lets_switch_to_signal">Delta Chat bikarbînin %1$s</string>
   <string name="ConversationActivity_lets_use_this_to_chat">Ji bo axaftin em vê bikarbînin: %1$s</string>
   <string name="ConversationActivity_error_leaving_group">Derketin ji kom çênebû</string>
   <string name="ConversationActivity_specify_recipient">Danûstendinek bijeribîne</string>
@@ -134,12 +134,12 @@
   <string name="ConversationActivity_unable_to_record_audio">Nikarim deng qeydbikim!</string>
   <string name="ConversationActivity_there_is_no_app_available_to_handle_this_link_on_your_device">Bername ji bo vê lînk bişopînin nahat peydakirin.</string>
   <string name="ConversationActivity_to_send_audio_messages_allow_signal_access_to_your_microphone">Ji bo şandina peyamên dengê, rêya mîqrofon bide Signalê</string>
-  <string name="ConversationActivity_signal_requires_the_microphone_permission_in_order_to_send_audio_messages">Ji bo peyamên dengê bişînin Signal destûra mîkrofon dixwaze, lê destûr hat herdemî rakirin. Li \'Settings\' &gt; \'Destûr\' &gt; \'Mikrofon\' dîsa destûr bide.</string>
-  <string name="ConversationActivity_to_call_s_signal_needs_access_to_your_microphone_and_camera">Ji bo gaziya %s, Signal rêya mîqrofon û kamera dixwaze.</string>
-  <string name="ConversationActivity_signal_needs_the_microphone_and_camera_permissions_in_order_to_call_s">Ji bo %s re gazî bikin, Signal destûra Mîkrofon û Kamera dixwaze, lê ew hatin herdemî rakirin. Li \'Settings\' &gt; \'Destûr\' &gt; \'Mikrofon\" û \'Kamera\' dîsa destûr bide.</string>
+  <string name="ConversationActivity_signal_requires_the_microphone_permission_in_order_to_send_audio_messages">Ji bo peyamên dengê bişînin Delta Chat destûra mîkrofon dixwaze, lê destûr hat herdemî rakirin. Li \'Settings\' &gt; \'Destûr\' &gt; \'Mikrofon\' dîsa destûr bide.</string>
+  <string name="ConversationActivity_to_call_s_signal_needs_access_to_your_microphone_and_camera">Ji bo gaziya %s, Delta Chat rêya mîqrofon û kamera dixwaze.</string>
+  <string name="ConversationActivity_signal_needs_the_microphone_and_camera_permissions_in_order_to_call_s">Ji bo %s re gazî bikin, Delta Chat destûra Mîkrofon û Kamera dixwaze, lê ew hatin herdemî rakirin. Li \'Settings\' &gt; \'Destûr\' &gt; \'Mikrofon\" û \'Kamera\' dîsa destûr bide.</string>
   <string name="ConversationActivity_to_capture_photos_and_video_allow_signal_access_to_the_camera">Ji bo kişandina wêne û vidyo, rêya kamera bide Signalê</string>
-  <string name="ConversationActivity_signal_needs_the_camera_permission_to_take_photos_or_video">Ji bo wêne û vidyo bikişînin, Signal destûra kamera dixwaze, lê ew hat herdemî rakirin. Li \'Settings\' &gt; \'Destûr\' &gt; \'Kamera\' dîsa destûr bide.</string>
-  <string name="ConversationActivity_signal_needs_camera_permissions_to_take_photos_or_video">Ji bo kişandina wêne û vidyo, Signal destûra kamera dixwaze</string>
+  <string name="ConversationActivity_signal_needs_the_camera_permission_to_take_photos_or_video">Ji bo wêne û vidyo bikişînin, Delta Chat destûra kamera dixwaze, lê ew hat herdemî rakirin. Li \'Settings\' &gt; \'Destûr\' &gt; \'Kamera\' dîsa destûr bide.</string>
+  <string name="ConversationActivity_signal_needs_camera_permissions_to_take_photos_or_video">Ji bo kişandina wêne û vidyo, Delta Chat destûra kamera dixwaze</string>
   <string name="ConversationActivity_quoted_contact_message">%1$s %2$s</string>
   <!--ConversationAdapter-->
   <plurals name="ConversationAdapter_n_unread_messages">
@@ -174,7 +174,7 @@
     <item quantity="other">%1$d servehî tên tomarkirin embarê...</item>
   </plurals>
   <string name="ConversationFragment_pending">Ne niha...</string>
-  <string name="ConversationFragment_push">Dane (Signal)</string>
+  <string name="ConversationFragment_push">Dane (Delta Chat)</string>
   <string name="ConversationFragment_mms">MMS</string>
   <string name="ConversationFragment_sms">SMS</string>
   <string name="ConversationFragment_deleting">Radikim</string>
@@ -241,15 +241,15 @@
   <string name="DocumentView_unknown_file">Dosya nenas e</string>
   <!--DozeReminder-->
   <string name="DozeReminder_optimize_for_missing_play_services">Ji bo xizmetên Play ên kêm tamîr bikin</string>
-  <string name="DozeReminder_this_device_does_not_support_play_services_tap_to_disable_system_battery">Pê cihaz xizmetên Play çênabin ji ber ku pergal ji bo mesrefa batarya kêmbikin nahêle ku Signal peyam bistîne dema neçalak e. Ji bo girtina pergala batarya lêxe.</string>
+  <string name="DozeReminder_this_device_does_not_support_play_services_tap_to_disable_system_battery">Pê cihaz xizmetên Play çênabin ji ber ku pergal ji bo mesrefa batarya kêmbikin nahêle ku Delta Chat peyam bistîne dema neçalak e. Ji bo girtina pergala batarya lêxe.</string>
   <!--ShareActivity-->
   <string name="ShareActivity_share_with">Bi ... re parve bikin</string>
   <!--ExperienceUpgradeActivity-->
   <string name="ExperienceUpgradeActivity_welcome_to_signal_dgaf">Li Signalê bixêr hatî</string>
-  <string name="ExperienceUpgradeActivity_textsecure_is_now_called_signal">TextSecure û RedPhone niha yek bernameya peyam a kesîn, ji bo her rewş e: Signal e.</string>
+  <string name="ExperienceUpgradeActivity_textsecure_is_now_called_signal">TextSecure û RedPhone niha yek bernameya peyam a kesîn, ji bo her rewş e: Delta Chat e.</string>
   <string name="ExperienceUpgradeActivity_welcome_to_signal_excited">Li Signalê bixêr hatî!</string>
-  <string name="ExperienceUpgradeActivity_textsecure_is_now_signal">TextSecure niha Signal e.</string>
-  <string name="ExperienceUpgradeActivity_textsecure_is_now_signal_long">TextSecure û RedPhone niha yek bername ne: Signal e. Ji bo naskirin lêxe.</string>
+  <string name="ExperienceUpgradeActivity_textsecure_is_now_signal">TextSecure niha Delta Chat e.</string>
+  <string name="ExperienceUpgradeActivity_textsecure_is_now_signal_long">TextSecure û RedPhone niha yek bername ne: Delta Chat e. Ji bo naskirin lêxe.</string>
   <string name="ExperienceUpgradeActivity_say_hello_to_video_calls">Ji gaziyên vidyo yên ewle re silav bide.</string>
   <string name="ExperienceUpgradeActivity_signal_now_supports_secure_video_calls">Bi Signalê niha gaziya vidyio ya parastî dibe. Tenê gazî wek normal destpêke, li bişkoka vidyo bixe û silav bide.</string>
   <string name="ExperienceUpgradeActivity_signal_now_supports_secure_video_calling">Bi Signalê gaziya vidyo ya ewle niha dibe.</string>
@@ -259,7 +259,7 @@
   <string name="ExperienceUpgradeActivity_signal_profiles_are_here">Profîlên Signalê viderê ne</string>
   <!--GcmRefreshJob-->
   <string name="GcmRefreshJob_Permanent_Signal_communication_failure">Ragihandina Signalê çênabe!</string>
-  <string name="GcmRefreshJob_Signal_was_unable_to_register_with_Google_Play_Services">Li Google Play Services Signal nikaribû qeydbike. Peyam û gaziyên Signalê hatin seqetkirin, ka li Şikil &gt; Taybet biceribîne dîsa qeydbikin.</string>
+  <string name="GcmRefreshJob_Signal_was_unable_to_register_with_Google_Play_Services">Li Google Play Services Delta Chat nikaribû qeydbike. Peyam û gaziyên Signalê hatin seqetkirin, ka li Şikil &gt; Taybet biceribîne dîsa qeydbikin.</string>
   <!--GiphyActivity-->
   <string name="GiphyActivity_error_while_retrieving_full_resolution_gif">GIF bi kalîteya bilid nehat vekirin</string>
   <!--GiphyFragmentPageAdapter-->
@@ -278,7 +278,7 @@
   <string name="GroupCreateActivity_menu_apply_button">Pêk bîne</string>
   <string name="GroupCreateActivity_creating_group">%1$s diafirînim...</string>
   <string name="GroupCreateActivity_updating_group">Tê rojanekirin %1$s...</string>
-  <string name="GroupCreateActivity_cannot_add_non_push_to_existing_group">Nikaribûm %1$s bînim jiber ku ew Signal bikar nîne.</string>
+  <string name="GroupCreateActivity_cannot_add_non_push_to_existing_group">Nikaribûm %1$s bînim jiber ku ew Delta Chat bikar nîne.</string>
   <string name="GroupCreateActivity_loading_group_details">Agahiya komê bardikim...</string>
   <string name="GroupCreateActivity_youre_already_in_the_group">Hîn di koma de yî</string>
   <!--GroupShareProfileView-->
@@ -312,7 +312,7 @@
   <string name="MessageDetailsRecipient_failed_to_send">Nikaribûm bişînim</string>
   <string name="MessageDetailsRecipient_new_safety_number">Hejmara ewlehiya nû</string>
   <!--MessageRetrievalService-->
-  <string name="MessageRetrievalService_signal">Signal</string>
+  <string name="MessageRetrievalService_signal">Delta Chat</string>
   <string name="MessageRetrievalService_background_connection_enabled">Giredayê binerdê dibe</string>
   <!--MmsDownloader-->
   <string name="MmsDownloader_error_reading_mms_settings">\'Settings\' a MMS ji şirketa bêtêl nahat xwendin</string>
@@ -380,7 +380,7 @@
   <string name="DeviceActivity_sorry_this_is_not_a_valid_device_link_qr_code">Bibore, ev koda QR ne lînka cihazê rewa ye.</string>
   <string name="DeviceProvisioningActivity_link_a_signal_device">Cihazekî Signalê bilînk bikin?</string>
   <string name="DeviceProvisioningActivity_it_looks_like_youre_trying_to_link_a_signal_device_using_a_3rd_party_scanner">Belkî tu diceribînî, cihazê Signalê bi sehker ji şirketa din bilînk bikî. Ji bo ewleriya xwe, dîsa di Signalê de sehbike.</string>
-  <string name="DeviceActivity_signal_needs_the_camera_permission_in_order_to_scan_a_qr_code">Ji bo sehkirina koda QR Signal destûra Kamera dixwaze, lê ew hat herdemî rakirin. Li \'Settings\' &gt; \'Destûr\' &gt; \'Kamera\' destûr bide.</string>
+  <string name="DeviceActivity_signal_needs_the_camera_permission_in_order_to_scan_a_qr_code">Ji bo sehkirina koda QR Delta Chat destûra Kamera dixwaze, lê ew hat herdemî rakirin. Li \'Settings\' &gt; \'Destûr\' &gt; \'Kamera\' destûr bide.</string>
   <string name="DeviceActivity_unable_to_scan_a_qr_code_without_the_camera_permission">Bê destûra Kamera sehkirina koda QR nabe</string>
   <!--ExpirationDialog-->
   <string name="ExpirationDialog_disappearing_messages">Peyam ku tunedibin</string>
@@ -442,9 +442,9 @@
   <string name="RegistrationActivity_google_play_services_is_updating_or_unavailable">Xizmetên Google Play rojane dibe an bi dema kurt ne amade ye. Dîsa hewl bide.</string>
   <string name="RegistrationActivity_more_information">Agahiya zêdetir</string>
   <string name="RegistrationActivity_less_information">Agahiya kêmtir</string>
-  <string name="RegistrationActivity_signal_needs_access_to_your_contacts_and_media_in_order_to_connect_with_friends">Ji bo heval re tekilî bikin, guherandina peyam û gaziyên ewle bikin, Signal rêya têkiliyên te û medya te dixwaze</string>
+  <string name="RegistrationActivity_signal_needs_access_to_your_contacts_and_media_in_order_to_connect_with_friends">Ji bo heval re tekilî bikin, guherandina peyam û gaziyên ewle bikin, Delta Chat rêya têkiliyên te û medya te dixwaze</string>
   <string name="RegistrationActivity_unable_to_connect_to_service">Giredayê xizmet çênebû. Giredayê tor kontrol bike û dîsa biceribîne.</string>
-  <string name="RegistrationActivity_to_easily_verify_your_phone_number_signal_can_automatically_detect_your_verification_code">Ji bo zû rastandina hejmara telefona te, Signal dikare otomatîkî koda rastandina te peyda bike heger tu rê bidî Signal ji bo dîtina peyamên SMS.</string>
+  <string name="RegistrationActivity_to_easily_verify_your_phone_number_signal_can_automatically_detect_your_verification_code">Ji bo zû rastandina hejmara telefona te, Delta Chat dikare otomatîkî koda rastandina te peyda bike heger tu rê bidî Delta Chat ji bo dîtina peyamên SMS.</string>
   <!--ScribbleActivity-->
   <!--Search-->
   <string name="SearchFragment_no_results">Li ser \'%s\' tiştek peyda nakir</string>
@@ -507,14 +507,14 @@
   <string name="UnverifiedSendDialog_send_message">Peyam bişînin?</string>
   <string name="UnverifiedSendDialog_send">Bişînin</string>
   <!--VerifyIdentityActivity-->
-  <string name="VerifyIdentityActivity_your_contact_is_running_an_old_version_of_signal">Versyona Signal a têkiliya te kevin e. Jê re bêje, Signal rojane bike bere rastandina hejmara ewlerî.</string>
-  <string name="VerifyIdentityActivity_your_contact_is_running_a_newer_version_of_Signal">Versyiona Signal a têkiliya te ji versyona te nûtir e, û formata koda QR wê cuda ye. Ji bo ber hev dan rojane bike.</string>
+  <string name="VerifyIdentityActivity_your_contact_is_running_an_old_version_of_signal">Versyona Delta Chat a têkiliya te kevin e. Jê re bêje, Delta Chat rojane bike bere rastandina hejmara ewlerî.</string>
+  <string name="VerifyIdentityActivity_your_contact_is_running_a_newer_version_of_Signal">Versyiona Delta Chat a têkiliya te ji versyona te nûtir e, û formata koda QR wê cuda ye. Ji bo ber hev dan rojane bike.</string>
   <string name="VerifyIdentityActivity_the_scanned_qr_code_is_not_a_correctly_formatted_safety_number">Koda QR ku hat sehkirin dibe koda piştraskirina hejmara ewletî bi formata şaş. Dîsa koda QR seh bike.</string>
   <string name="VerifyIdentityActivity_share_safety_number_via">Hejmar ewletî parve bikin, bi...</string>
   <string name="VerifyIdentityActivity_our_signal_safety_number">Hejmara ewletiya Signalê me:</string>
   <string name="VerifyIdentityActivity_no_app_to_share_to">Belkî bername ji bo parvekirin cem te nîne.</string>
   <string name="VerifyIdentityActivity_no_safety_number_to_compare_was_found_in_the_clipboard">Hejmara ewletî nahat kopîkirin</string>
-  <string name="VerifyIdentityActivity_signal_needs_the_camera_permission_in_order_to_scan_a_qr_code_but_it_has_been_permanently_denied">Ji bo sehkirina koda QR Signal destûra Kamera dixwaze, lê ew hat herdemî rakirin. Li \'Settings\' &gt; \'Destûr\' &gt; \'Kamera\' destûr bide.</string>
+  <string name="VerifyIdentityActivity_signal_needs_the_camera_permission_in_order_to_scan_a_qr_code_but_it_has_been_permanently_denied">Ji bo sehkirina koda QR Delta Chat destûra Kamera dixwaze, lê ew hat herdemî rakirin. Li \'Settings\' &gt; \'Destûr\' &gt; \'Kamera\' destûr bide.</string>
   <string name="VerifyIdentityActivity_unable_to_scan_qr_code_without_camera_permission">Bê destûra kamera nikarim koda QR sehbikim</string>
   <!--MessageDisplayHelper-->
   <string name="MessageDisplayHelper_bad_encrypted_message">Peyam bişifre nebaş e</string>
@@ -534,13 +534,13 @@
   <!--KeyCachingService-->
   <string name="KeyCachingService_signal_passphrase_cached">Ji bo vekirin lêxe.</string>
   <string name="KeyCachingService_signal_passphrase_cached_with_lock">Ji bo vekirin lêxe, an ji bo girtin li qilf bixe.</string>
-  <string name="KeyCachingService_passphrase_cached">Signal vekirî ye</string>
+  <string name="KeyCachingService_passphrase_cached">Delta Chat vekirî ye</string>
   <string name="KeyCachingService_lock">Signalê bi kîlit bigirin</string>
   <!--MediaPreviewActivity-->
   <string name="MediaPreviewActivity_you">Tu</string>
   <string name="MediaPreviewActivity_unssuported_media_type">Curê medya bêpişt e</string>
   <string name="MediaPreviewActivity_draft">Reşnivîs</string>
-  <string name="MediaPreviewActivity_signal_needs_the_storage_permission_in_order_to_write_to_external_storage_but_it_has_been_permanently_denied">Ji bo tomarbikin embara derveyê, Signal destûra Embar dixwaze, lê ew hat herdemî rakirin. Li \'Settings\' &gt; \'Destûr\' &gt; \'Embar\' destûr bide.</string>
+  <string name="MediaPreviewActivity_signal_needs_the_storage_permission_in_order_to_write_to_external_storage_but_it_has_been_permanently_denied">Ji bo tomarbikin embara derveyê, Delta Chat destûra Embar dixwaze, lê ew hat herdemî rakirin. Li \'Settings\' &gt; \'Destûr\' &gt; \'Embar\' destûr bide.</string>
   <string name="MediaPreviewActivity_unable_to_write_to_external_storage_without_permission">Bê destûr, tomarkirin embara derveyê çênabe</string>
   <string name="MediaPreviewActivity_media_delete_confirmation_title">Peyam rakin?</string>
   <string name="MediaPreviewActivity_media_delete_confirmation_message">Ev ê herdemî peyam rake.</string>
@@ -561,14 +561,14 @@
   <string name="MessageNotifier_contact_message">%1$s %2$s</string>
   <string name="MessageNotifier_unknown_contact_message">Tekilî</string>
   <!--QuickResponseService-->
-  <string name="QuickResponseService_quick_response_unavailable_when_Signal_is_locked">Bersiva zû nabe dema Signal biqilf e!</string>
+  <string name="QuickResponseService_quick_response_unavailable_when_Signal_is_locked">Bersiva zû nabe dema Delta Chat biqilf e!</string>
   <string name="QuickResponseService_problem_sending_message">Dema şandina peyamê pirsgirêk hebû!</string>
   <!--SaveAttachmentTask-->
   <string name="SaveAttachmentTask_saved_to">Hat li %s tomarkirin</string>
   <!--SearchToolbar-->
   <string name="SearchToolbar_search">Lêgerrîn</string>
   <!--SingleRecipientNotificationBuilder-->
-  <string name="SingleRecipientNotificationBuilder_signal">Signal</string>
+  <string name="SingleRecipientNotificationBuilder_signal">Delta Chat</string>
   <string name="SingleRecipientNotificationBuilder_new_message">Peyama nû</string>
   <!--UnauthorizedReminder-->
   <string name="UnauthorizedReminder_device_no_longer_registered">Cihaz hat qeydnekirî</string>
@@ -577,7 +577,7 @@
   <string name="VideoPlayer_error_playing_video">Lêxistina vidyo çênebû</string>
   <!--WebRtcCallActivity-->
   <string name="WebRtcCallActivity_to_answer_the_call_from_s_give_signal_access_to_your_microphone">Ji bo bersivdana gazî ji %s, destûra mîkrofon bide Signalê.</string>
-  <string name="WebRtcCallActivity_signal_requires_microphone_and_camera_permissions_in_order_to_make_or_receive_calls">Ji bo gazî bikin an bistînin, Signal destûra Mîkrofon û Kamera dixwaze, lê ew hatin herdemî rakirin. Li \'Settings\' &gt; \'Destûr\' &gt; \'Mîkrofon\' û \'Kamera\' re destûr bide.</string>
+  <string name="WebRtcCallActivity_signal_requires_microphone_and_camera_permissions_in_order_to_make_or_receive_calls">Ji bo gazî bikin an bistînin, Delta Chat destûra Mîkrofon û Kamera dixwaze, lê ew hatin herdemî rakirin. Li \'Settings\' &gt; \'Destûr\' &gt; \'Mîkrofon\' û \'Kamera\' re destûr bide.</string>
   <!--WebRtcCallScreen-->
   <string name="WebRtcCallScreen_new_safety_numbers">Hejmara ewlehiya te ji bo axaftina te bi %1$s re hat guhartin. Belkî kesek dixwaze rêya we birîn, an belkî %2$s tenê Signalê xwe dîsa saz kir.</string>
   <string name="WebRtcCallScreen_you_may_wish_to_verify_this_contact">Belkî tu dixwazî hejmara ewletî pê têkilî piştrastbikî.</string>
@@ -614,12 +614,12 @@
   <!--single_contact_selection_activity-->
   <string name="SingleContactSelectionActivity_contact_photo">Wêneya Tekilî</string>
   <!--ContactSelectionListFragment-->
-  <string name="ContactSelectionListFragment_signal_requires_the_contacts_permission_in_order_to_display_your_contacts">Ji bo nîşankirina tekilî, Signal destûra Tekilî dixwaze, lê ew hat herdemî rakirin. Li \'Settings\' &gt; \'Destûr\' &gt; \'Tekilî\' re destûr bide.</string>
+  <string name="ContactSelectionListFragment_signal_requires_the_contacts_permission_in_order_to_display_your_contacts">Ji bo nîşankirina tekilî, Delta Chat destûra Tekilî dixwaze, lê ew hat herdemî rakirin. Li \'Settings\' &gt; \'Destûr\' &gt; \'Tekilî\' re destûr bide.</string>
   <string name="ContactSelectionListFragment_error_retrieving_contacts_check_your_network_connection">Standina tekilî çênebû, girêdayê torrê kontrol bike</string>
   <!--blocked_contacts_fragment-->
   <string name="blocked_contacts_fragment__no_blocked_contacts">Tekiliyên biblok nîne</string>
   <!--contact_selection_list_fragment-->
-  <string name="contact_selection_list_fragment__signal_needs_access_to_your_contacts_in_order_to_display_them">Ji bo nîşankirina tekiliyên te Signal destûra Tekilî dixwaze.</string>
+  <string name="contact_selection_list_fragment__signal_needs_access_to_your_contacts_in_order_to_display_them">Ji bo nîşankirina tekiliyên te Delta Chat destûra Tekilî dixwaze.</string>
   <string name="contact_selection_list_fragment__show_contacts">Tekilî nîşanbidin</string>
   <!--conversation_activity-->
   <string name="conversation_activity__type_message_push">Peyama Signalê</string>
@@ -755,7 +755,7 @@
   <!--prompt_passphrase_activity-->
   <string name="prompt_passphrase_activity__unlock">Rakirina qilfê</string>
   <!--prompt_mms_activity-->
-  <string name="prompt_mms_activity__signal_requires_mms_settings_to_deliver_media_and_group_messages">Ji bo şandina medya û peyamên komê ser WiFi, Signal şikila MMS dixwaze. Vê agahî ser cihazê te bêfêde ye, belkî amûr biqif e, an şikil gelek astengker e.</string>
+  <string name="prompt_mms_activity__signal_requires_mms_settings_to_deliver_media_and_group_messages">Ji bo şandina medya û peyamên komê ser WiFi, Delta Chat şikila MMS dixwaze. Vê agahî ser cihazê te bêfêde ye, belkî amûr biqif e, an şikil gelek astengker e.</string>
   <string name="prompt_mms_activity__to_send_media_and_group_messages_tap_ok">Ji bo şandina medya û peyamên komê, \'OK\' lêxe û şikila pêwîst xelas bike. Şikila MMS ji bo şirketa torrê di normal de dikare bê peydakirin bi lêgerrina \'your carrier APN\'. Pêwîst ku tu tenê carek wisa bikî.</string>
   <!--profile_create_activity-->
   <string name="profile_create_activity__set_later">Piştre dayîn</string>
@@ -1062,10 +1062,10 @@
   <string name="ConversationListFragment_loading">Tê barkirin...</string>
   <string name="CallNotificationBuilder_connecting">Girêdidin...</string>
   <string name="Permissions_permission_required">Destûr pêwîst e</string>
-  <string name="ConversationActivity_signal_needs_sms_permission_in_order_to_send_an_sms">Ji no şandina SMS Signal destûra SMS dixwaze, lê ew hat herdemî rakirin. Li \'Şikil\' &gt; \'Destûr\' &gt; \'SMS\' destûr bide.</string>
+  <string name="ConversationActivity_signal_needs_sms_permission_in_order_to_send_an_sms">Ji no şandina SMS Delta Chat destûra SMS dixwaze, lê ew hat herdemî rakirin. Li \'Şikil\' &gt; \'Destûr\' &gt; \'SMS\' destûr bide.</string>
   <string name="Permissions_continue">Bidomînin</string>
   <string name="Permissions_not_now">Ne niha</string>
-  <string name="ConversationListActivity_signal_needs_contacts_permission_in_order_to_search_your_contacts_but_it_has_been_permanently_denied">Ji bo têkilî lêgerrîn Signal destûra Têkilî dixwaze, lê ew hat herdemî rakirin. Li \'Şikil\' &gt; \'Destûr\' &gt; \'Têkilî\' destûr bide.</string>
+  <string name="ConversationListActivity_signal_needs_contacts_permission_in_order_to_search_your_contacts_but_it_has_been_permanently_denied">Ji bo têkilî lêgerrîn Delta Chat destûra Têkilî dixwaze, lê ew hat herdemî rakirin. Li \'Şikil\' &gt; \'Destûr\' &gt; \'Têkilî\' destûr bide.</string>
   <string name="conversation_activity__enable_signal_messages">RÊ BIDE PEYAMÊN SIGNALÊ</string>
   <string name="SQLCipherMigrationHelper_migrating_signal_database">Databanka Signalê derbasdikin</string>
   <string name="PushDecryptJob_new_locked_message">Peyama nû ya qilfkirin</string>
@@ -1097,7 +1097,7 @@
   <string name="BackupDialog_disable_and_delete_all_local_backups">Rakirin û seqetkirina hemû kopiyên ewlerî yên heremî?</string>
   <string name="BackupDialog_delete_backups_statement">Rakirina kopiyên ewlerî?</string>
   <string name="BackupDialog_copied_to_clipboard">Hat kopîkirin</string>
-  <string name="ChatsPreferenceFragment_signal_requires_external_storage_permission_in_order_to_create_backups">Ji bo avakirina kopiyên ewlerî, Signal destûra embar dixwaze, lê ew hat herdemî rakirin. Li \'Şikil\' &gt; \'Destûr\' &gt; \'Embar\' destûr bide.</string>
+  <string name="ChatsPreferenceFragment_signal_requires_external_storage_permission_in_order_to_create_backups">Ji bo avakirina kopiyên ewlerî, Delta Chat destûra embar dixwaze, lê ew hat herdemî rakirin. Li \'Şikil\' &gt; \'Destûr\' &gt; \'Embar\' destûr bide.</string>
   <string name="ChatsPreferenceFragment_last_backup_s">Kopiya ewleriya herî nû: %s</string>
   <string name="ChatsPreferenceFragment_in_progress">Tê kirin</string>
   <string name="LocalBackupJob_creating_backup">Kopiya ewlerî tê afirandin...</string>
@@ -1133,7 +1133,7 @@
   <string name="RegistrationActivity_registration_of_this_phone_number_will_be_possible_without_your_registration_lock_pin_after_seven_days_have_passed">Piştî 7 roj ji carê dawî ku vê hejmara telefon di Signalê de çalak bû ve, tu bê PIN a Qilfê Qeyd dikarî qeyd bikî. %d roj ma(n).</string>
   <string name="RegistrationActivity_registration_lock_pin">PIN a qilfê qeyd</string>
   <string name="RegistrationActivity_this_phone_number_has_registration_lock_enabled_please_enter_the_registration_lock_pin">Tê hejmara telefon de qilfê qeyd heye. Ka PIN a Qilfê Qeyd binivîse.</string>
-  <string name="RegistrationLockDialog_registration_lock_is_enabled_for_your_phone_number">Ji bo vê hejmara telefon, Qilfê Qeyd heye. Signal ê car caran PIN ji te re bipirse, da ku tu jibîr nakî.</string>
+  <string name="RegistrationLockDialog_registration_lock_is_enabled_for_your_phone_number">Ji bo vê hejmara telefon, Qilfê Qeyd heye. Delta Chat ê car caran PIN ji te re bipirse, da ku tu jibîr nakî.</string>
   <string name="RegistrationLockDialog_i_forgot_my_pin">Min PIN a xwe ji bîr kir</string>
   <string name="RegistrationLockDialog_forgotten_pin">Te PIN a xwe ji bîr kir?</string>
   <string name="RegistrationLockDialog_registration_lock_helps_protect_your_phone_number_from_unauthorized_registration_attempts">Qilfê Qeyd telefona te ji hewldana qeydên bêdestûr diparêze. Vê taybetmendî hertim dikare li \'Şikil\' &gt; \'Veşaritî\' bê seqetkirin.</string>
@@ -1146,7 +1146,7 @@
   <string name="RegistrationLockDialog_disable">Seqet bikin</string>
   <string name="RegistrationActivity_continue">Berdewam</string>
   <string name="preferences_chats__backups">Kopî</string>
-  <string name="prompt_passphrase_activity__signal_is_locked">Signal bi kilît e</string>
+  <string name="prompt_passphrase_activity__signal_is_locked">Delta Chat bi kilît e</string>
   <string name="prompt_passphrase_activity__tap_to_unlock">JI BO RAKIRINA KILÎIT LÊXE</string>
   <string name="RegistrationLockDialog_reminder">Bîne bîra xwe:</string>
   <string name="recipient_preferences__about">Li ser</string>

@@ -31,7 +31,7 @@
   <string name="ApplicationPreferencesActivity_sms_enabled">SMS lubatud</string>
   <string name="ApplicationPreferencesActivity_touch_to_change_your_default_sms_app">Klõpsa, et vahetada SMSi vaikerakendust</string>
   <string name="ApplicationPreferencesActivity_sms_disabled">SMS keelatud</string>
-  <string name="ApplicationPreferencesActivity_touch_to_make_signal_your_default_sms_app">Puuduta, et teha Signal SMSi vaikerakenduseks.</string>
+  <string name="ApplicationPreferencesActivity_touch_to_make_signal_your_default_sms_app">Puuduta, et teha Delta Chat SMSi vaikerakenduseks.</string>
   <string name="ApplicationPreferencesActivity_on">sees</string>
   <string name="ApplicationPreferencesActivity_On">Sees</string>
   <string name="ApplicationPreferencesActivity_off">väljas</string>
@@ -52,10 +52,10 @@
   <string name="DraftDatabase_Draft_quote_snippet">(vastus)</string>
   <!--AttchmentManager-->
   <string name="AttachmentManager_cant_open_media_selection">Ei leia rakendust meediafaili valimiseks.</string>
-  <string name="AttachmentManager_signal_requires_the_external_storage_permission_in_order_to_attach_photos_videos_or_audio">Signal vajab fotode, videote või audiofailide manustamiseks ligipääsu salvestusmeediale, kuid see on püsivalt keelatud. Palun ava rakenduse sätete menüü, vali \"Õigused\" ja luba \"Salvestusmeedia\".</string>
-  <string name="AttachmentManager_signal_requires_contacts_permission_in_order_to_attach_contact_information">Signal vajab kontaktide manustamiseks ligipääsu kontaktidele, kuid see on püsivalt keelatud. Palun ava rakenduse sätete menüü, vali \"Õigused\" ja luba \"Kontaktid\".</string>
-  <string name="AttachmentManager_signal_requires_location_information_in_order_to_attach_a_location">Signal vajab asukoha manustamiseks ligipääsu seadme asukohale, kuid see on püsivalt keelatud. Palun ava rakenduse sätete menüü, vali \"Õigused\" ja luba \"Asukoht\".</string>
-  <string name="AttachmentManager_signal_requires_the_camera_permission_in_order_to_take_photos_but_it_has_been_permanently_denied">Signal vajab fotode tegemiseks ligipääsu seadme kaamerale, kuid see on püsivalt keelatud. Palun ava rakenduse sätete menüü, vali \"Õigused\" ja luba \"Kaamera\".</string>
+  <string name="AttachmentManager_signal_requires_the_external_storage_permission_in_order_to_attach_photos_videos_or_audio">Delta Chat vajab fotode, videote või audiofailide manustamiseks ligipääsu salvestusmeediale, kuid see on püsivalt keelatud. Palun ava rakenduse sätete menüü, vali \"Õigused\" ja luba \"Salvestusmeedia\".</string>
+  <string name="AttachmentManager_signal_requires_contacts_permission_in_order_to_attach_contact_information">Delta Chat vajab kontaktide manustamiseks ligipääsu kontaktidele, kuid see on püsivalt keelatud. Palun ava rakenduse sätete menüü, vali \"Õigused\" ja luba \"Kontaktid\".</string>
+  <string name="AttachmentManager_signal_requires_location_information_in_order_to_attach_a_location">Delta Chat vajab asukoha manustamiseks ligipääsu seadme asukohale, kuid see on püsivalt keelatud. Palun ava rakenduse sätete menüü, vali \"Õigused\" ja luba \"Asukoht\".</string>
+  <string name="AttachmentManager_signal_requires_the_camera_permission_in_order_to_take_photos_but_it_has_been_permanently_denied">Delta Chat vajab fotode tegemiseks ligipääsu seadme kaamerale, kuid see on püsivalt keelatud. Palun ava rakenduse sätete menüü, vali \"Õigused\" ja luba \"Kaamera\".</string>
   <!--AudioSlidePlayer-->
   <string name="AudioSlidePlayer_error_playing_audio">Heli esitamisel tekkis viga!</string>
   <!--BlockedContactsActivity-->
@@ -123,7 +123,7 @@
   <string name="ConversationActivity_are_you_sure_you_want_to_leave_this_group">Kas soovid kindlasti sellest grupist lahkuda?</string>
   <string name="ConversationActivity_transport_insecure_sms">Ebaturvaline SMS</string>
   <string name="ConversationActivity_transport_insecure_mms">Ebaturvaline MMS</string>
-  <string name="ConversationActivity_transport_signal">Signal</string>
+  <string name="ConversationActivity_transport_signal">Delta Chat</string>
   <string name="ConversationActivity_lets_switch_to_signal">Lähme Signalile üle %1$s</string>
   <string name="ConversationActivity_lets_use_this_to_chat">Kasutame seda vestlemiseks: %1$s</string>
   <string name="ConversationActivity_error_leaving_group">Grupist lahkumisel tekkis viga</string>
@@ -136,12 +136,12 @@
   <string name="ConversationActivity_unable_to_record_audio">Ei saa heli salvestada!</string>
   <string name="ConversationActivity_there_is_no_app_available_to_handle_this_link_on_your_device">Sinu seadmes pole rakendust, mis oleks võimeline seda linki käsitlema.</string>
   <string name="ConversationActivity_to_send_audio_messages_allow_signal_access_to_your_microphone">Audiosõnumite saatmiseks luba Signalile juurdepääs seadme mikrofonile.</string>
-  <string name="ConversationActivity_signal_requires_the_microphone_permission_in_order_to_send_audio_messages">Signal vajab audiosõnumite saatmiseks ligipääsu seadme mikrofonile, kuid see on püsivalt keelatud. Palun ava rakenduse sätete menüü, vali \"Õigused\" ja luba \"Mikrofon\".</string>
-  <string name="ConversationActivity_to_call_s_signal_needs_access_to_your_microphone_and_camera">Signal vajab kasutajale %s helistamiseks ligipääsu seadme kaamerale ja mikrofonile.</string>
-  <string name="ConversationActivity_signal_needs_the_microphone_and_camera_permissions_in_order_to_call_s">Signal vajab kasutajale %s helistamiseks ligipääsu kaamerale ja mikrofonile, kuid need on püsivalt keelatud. Palun ava rakenduse sätete menüü, vali \"Õigused\" ja luba \"Mikrofon\" ning \"Kaamera\".</string>
+  <string name="ConversationActivity_signal_requires_the_microphone_permission_in_order_to_send_audio_messages">Delta Chat vajab audiosõnumite saatmiseks ligipääsu seadme mikrofonile, kuid see on püsivalt keelatud. Palun ava rakenduse sätete menüü, vali \"Õigused\" ja luba \"Mikrofon\".</string>
+  <string name="ConversationActivity_to_call_s_signal_needs_access_to_your_microphone_and_camera">Delta Chat vajab kasutajale %s helistamiseks ligipääsu seadme kaamerale ja mikrofonile.</string>
+  <string name="ConversationActivity_signal_needs_the_microphone_and_camera_permissions_in_order_to_call_s">Delta Chat vajab kasutajale %s helistamiseks ligipääsu kaamerale ja mikrofonile, kuid need on püsivalt keelatud. Palun ava rakenduse sätete menüü, vali \"Õigused\" ja luba \"Mikrofon\" ning \"Kaamera\".</string>
   <string name="ConversationActivity_to_capture_photos_and_video_allow_signal_access_to_the_camera">Luba Signalile ligipääs kaamerale fotode ja videote salvestamiseks.</string>
-  <string name="ConversationActivity_signal_needs_the_camera_permission_to_take_photos_or_video">Signal vajab ligipääsu kaamerale, et salvestada fotosid ja videosid, kuid see on püsivalt keelatud. Palun ava rakenduse sätete menüü, vali \"Õigused\" ja luba \"Kaamera\".</string>
-  <string name="ConversationActivity_signal_needs_camera_permissions_to_take_photos_or_video">Signal vajab fotode ja videote salvestamiseks ligipääsu kaamerale</string>
+  <string name="ConversationActivity_signal_needs_the_camera_permission_to_take_photos_or_video">Delta Chat vajab ligipääsu kaamerale, et salvestada fotosid ja videosid, kuid see on püsivalt keelatud. Palun ava rakenduse sätete menüü, vali \"Õigused\" ja luba \"Kaamera\".</string>
+  <string name="ConversationActivity_signal_needs_camera_permissions_to_take_photos_or_video">Delta Chat vajab fotode ja videote salvestamiseks ligipääsu kaamerale</string>
   <string name="ConversationActivity_quoted_contact_message">%1$s %2$s</string>
   <!--ConversationAdapter-->
   <plurals name="ConversationAdapter_n_unread_messages">
@@ -176,7 +176,7 @@
     <item quantity="other">Salvestan %1$d manust sisemällu...</item>
   </plurals>
   <string name="ConversationFragment_pending">Ootel...</string>
-  <string name="ConversationFragment_push">Andmeside (Signal)</string>
+  <string name="ConversationFragment_push">Andmeside (Delta Chat)</string>
   <string name="ConversationFragment_mms">MMS</string>
   <string name="ConversationFragment_sms">SMS</string>
   <string name="ConversationFragment_deleting">Kustutan</string>
@@ -251,20 +251,20 @@
   <string name="ShareActivity_share_with">Jaga inimesega</string>
   <!--ExperienceUpgradeActivity-->
   <string name="ExperienceUpgradeActivity_welcome_to_signal_dgaf">Tere tulemast Signalisse.</string>
-  <string name="ExperienceUpgradeActivity_textsecure_is_now_called_signal">TextSecure ja RedPhone on nüüd ühise sõnumirakenduse all, igaks olukorraks: Signal.</string>
+  <string name="ExperienceUpgradeActivity_textsecure_is_now_called_signal">TextSecure ja RedPhone on nüüd ühise sõnumirakenduse all, igaks olukorraks: Delta Chat.</string>
   <string name="ExperienceUpgradeActivity_welcome_to_signal_excited">Tere tulemast Signalisse!</string>
-  <string name="ExperienceUpgradeActivity_textsecure_is_now_signal">TextSecure on nüüd Signal.</string>
-  <string name="ExperienceUpgradeActivity_textsecure_is_now_signal_long">TextSecure ja RedPhone on nüüd ühe rakenduse all: Signal. Koputa avastamiseks.</string>
+  <string name="ExperienceUpgradeActivity_textsecure_is_now_signal">TextSecure on nüüd Delta Chat.</string>
+  <string name="ExperienceUpgradeActivity_textsecure_is_now_signal_long">TextSecure ja RedPhone on nüüd ühe rakenduse all: Delta Chat. Koputa avastamiseks.</string>
   <string name="ExperienceUpgradeActivity_say_hello_to_video_calls">Tervita turvalisi videokõnesid.</string>
-  <string name="ExperienceUpgradeActivity_signal_now_supports_secure_video_calls">Signal toetab nüüd turvalisi videokõnesid. Lihtsalt alusta Signali kõnet nagu tavaliselt, koputa videonuppu ja lehvita kontaktile.</string>
-  <string name="ExperienceUpgradeActivity_signal_now_supports_secure_video_calling">Signal toetab nüüd turvalisi videokõnesid.</string>
-  <string name="ExperienceUpgradeActivity_signal_now_supports_secure_video_calling_long">Signal toetab nüüd turvalisi videokõnesid. Koputa avastamiseks.</string>
+  <string name="ExperienceUpgradeActivity_signal_now_supports_secure_video_calls">Delta Chat toetab nüüd turvalisi videokõnesid. Lihtsalt alusta Signali kõnet nagu tavaliselt, koputa videonuppu ja lehvita kontaktile.</string>
+  <string name="ExperienceUpgradeActivity_signal_now_supports_secure_video_calling">Delta Chat toetab nüüd turvalisi videokõnesid.</string>
+  <string name="ExperienceUpgradeActivity_signal_now_supports_secure_video_calling_long">Delta Chat toetab nüüd turvalisi videokõnesid. Koputa avastamiseks.</string>
   <string name="ExperienceUpgradeActivity_ready_for_your_closeup">Oled valmis oma lähivõtteks?</string>
   <string name="ExperienceUpgradeActivity_now_you_can_share_a_profile_photo_and_name_with_friends_on_signal">Nüüd sa saad Signalis sõpradega jagada profiilipilti ja -nime</string>
   <string name="ExperienceUpgradeActivity_signal_profiles_are_here">Signali profiilid on kohal</string>
   <!--GcmRefreshJob-->
   <string name="GcmRefreshJob_Permanent_Signal_communication_failure">Püsiv Signali ühendusviga!</string>
-  <string name="GcmRefreshJob_Signal_was_unable_to_register_with_Google_Play_Services">Signal ei saanud registreerida teenusega Google Play Services. Signali sõnumid ja kõned on keelatud, palun proovi taas-registreerida menüüs Seaded &gt; Täpsem.</string>
+  <string name="GcmRefreshJob_Signal_was_unable_to_register_with_Google_Play_Services">Delta Chat ei saanud registreerida teenusega Google Play Services. Signali sõnumid ja kõned on keelatud, palun proovi taas-registreerida menüüs Seaded &gt; Täpsem.</string>
   <!--GiphyActivity-->
   <string name="GiphyActivity_error_while_retrieving_full_resolution_gif">Täisresolutsiooniga GIFi vastuvõtmisel esines viga</string>
   <!--GiphyFragmentPageAdapter-->
@@ -317,7 +317,7 @@
   <string name="MessageDetailsRecipient_failed_to_send">Saatmine ebaõnnestus</string>
   <string name="MessageDetailsRecipient_new_safety_number">Uus turvanumber</string>
   <!--MessageRetrievalService-->
-  <string name="MessageRetrievalService_signal">Signal</string>
+  <string name="MessageRetrievalService_signal">Delta Chat</string>
   <string name="MessageRetrievalService_background_connection_enabled">Taustaühendus lubatud</string>
   <!--MmsDownloader-->
   <string name="MmsDownloader_error_reading_mms_settings">Võrgupakkuja MMS-seadete lugemisel esines viga</string>
@@ -390,7 +390,7 @@
   <string name="DeviceActivity_sorry_this_is_not_a_valid_device_link_qr_code">Vabandust, see ei ole sobiv seadme linkimise QR-kood.</string>
   <string name="DeviceProvisioningActivity_link_a_signal_device">Lingid Signali seadme?</string>
   <string name="DeviceProvisioningActivity_it_looks_like_youre_trying_to_link_a_signal_device_using_a_3rd_party_scanner">Tundub, et proovid linkida Signali seadet, kasutades 3. osapoole skannerit. Sinu kaitseks, palun skanneeri kood uuesti Signali siseselt.</string>
-  <string name="DeviceActivity_signal_needs_the_camera_permission_in_order_to_scan_a_qr_code">Signal vajab kaamera luba, et skanneerida QR-koodi, ent see on püsivalt keelatud. Palun jätka rakenduse seadetes, vali \"Load\" ja luba \"Kaamera\".</string>
+  <string name="DeviceActivity_signal_needs_the_camera_permission_in_order_to_scan_a_qr_code">Delta Chat vajab kaamera luba, et skanneerida QR-koodi, ent see on püsivalt keelatud. Palun jätka rakenduse seadetes, vali \"Load\" ja luba \"Kaamera\".</string>
   <string name="DeviceActivity_unable_to_scan_a_qr_code_without_the_camera_permission">QR-koodi ei saa skanneerida ilma kaamera loata</string>
   <!--ExpirationDialog-->
   <string name="ExpirationDialog_disappearing_messages">Hävinevad sõnumid</string>
@@ -455,9 +455,9 @@
   <string name="RegistrationActivity_no_browser">Seda linki ei saanud avada. Veebibrauserit ei leitud.</string>
   <string name="RegistrationActivity_more_information">Rohkem infot</string>
   <string name="RegistrationActivity_less_information">Vähem infot</string>
-  <string name="RegistrationActivity_signal_needs_access_to_your_contacts_and_media_in_order_to_connect_with_friends">Signal vajab sinu kontaktidele ja meediale ligipääsu, et ühenduda sõpradega, vahetada sõnumeid ja teha turvalisi kõnesid</string>
+  <string name="RegistrationActivity_signal_needs_access_to_your_contacts_and_media_in_order_to_connect_with_friends">Delta Chat vajab sinu kontaktidele ja meediale ligipääsu, et ühenduda sõpradega, vahetada sõnumeid ja teha turvalisi kõnesid</string>
   <string name="RegistrationActivity_unable_to_connect_to_service">Teenusega ei saanud ühendust. Palun kontrolli võrguühendust ja proovi uuesti.</string>
-  <string name="RegistrationActivity_to_easily_verify_your_phone_number_signal_can_automatically_detect_your_verification_code">Et sinu telefoninumbrit lihtsalt kinnitada, võib Signal automaatselt tuvastada sinu kinnituskoodi, kui lubad sellel vaadata SMS-sõnumeid.</string>
+  <string name="RegistrationActivity_to_easily_verify_your_phone_number_signal_can_automatically_detect_your_verification_code">Et sinu telefoninumbrit lihtsalt kinnitada, võib Delta Chat automaatselt tuvastada sinu kinnituskoodi, kui lubad sellel vaadata SMS-sõnumeid.</string>
   <!--ScribbleActivity-->
   <string name="ScribbleActivity_save_failure">Pildi muutuste salvestamine ebaõnnestus</string>
   <!--Search-->
@@ -529,7 +529,7 @@
   <string name="VerifyIdentityActivity_our_signal_safety_number">Meie Signali turvanumber:</string>
   <string name="VerifyIdentityActivity_no_app_to_share_to">Tundub, et sul pole ühtegi rakendust, kuhu jagada.</string>
   <string name="VerifyIdentityActivity_no_safety_number_to_compare_was_found_in_the_clipboard">Lõikelaualt ei leitud turvanumbrit, millega võrrelda</string>
-  <string name="VerifyIdentityActivity_signal_needs_the_camera_permission_in_order_to_scan_a_qr_code_but_it_has_been_permanently_denied">Signal vajab kaamera luba, et skanneerida QR-koodi, ent see on püsivalt keelatud. Palun jätka rakenduse seadetes, vali \"Load\" ja luba \"Kaamera\".</string>
+  <string name="VerifyIdentityActivity_signal_needs_the_camera_permission_in_order_to_scan_a_qr_code_but_it_has_been_permanently_denied">Delta Chat vajab kaamera luba, et skanneerida QR-koodi, ent see on püsivalt keelatud. Palun jätka rakenduse seadetes, vali \"Load\" ja luba \"Kaamera\".</string>
   <string name="VerifyIdentityActivity_unable_to_scan_qr_code_without_camera_permission">QR-koodi ei saa skanneerida ilma kaamera loata</string>
   <!--MessageDisplayHelper-->
   <string name="MessageDisplayHelper_bad_encrypted_message">Halb krüptitud sõnum</string>
@@ -549,13 +549,13 @@
   <!--KeyCachingService-->
   <string name="KeyCachingService_signal_passphrase_cached">Koputa avamiseks.</string>
   <string name="KeyCachingService_signal_passphrase_cached_with_lock">Koputa avamiseks või koputa lukku sulgemiseks</string>
-  <string name="KeyCachingService_passphrase_cached">Signal on avatud</string>
-  <string name="KeyCachingService_lock">Lukusta Signal</string>
+  <string name="KeyCachingService_passphrase_cached">Delta Chat on avatud</string>
+  <string name="KeyCachingService_lock">Lukusta Delta Chat</string>
   <!--MediaPreviewActivity-->
   <string name="MediaPreviewActivity_you">Sina</string>
   <string name="MediaPreviewActivity_unssuported_media_type">Mittetoetatud meediatüüp</string>
   <string name="MediaPreviewActivity_draft">Mustand</string>
-  <string name="MediaPreviewActivity_signal_needs_the_storage_permission_in_order_to_write_to_external_storage_but_it_has_been_permanently_denied">Signal vajab mäluruumi luba, et salvestada välismällu, ent see on püsivalt keelatud. Palun jätka rakenduse seadetes, vali \"Load\" ja luba \"Mäluruum\".</string>
+  <string name="MediaPreviewActivity_signal_needs_the_storage_permission_in_order_to_write_to_external_storage_but_it_has_been_permanently_denied">Delta Chat vajab mäluruumi luba, et salvestada välismällu, ent see on püsivalt keelatud. Palun jätka rakenduse seadetes, vali \"Load\" ja luba \"Mäluruum\".</string>
   <string name="MediaPreviewActivity_unable_to_write_to_external_storage_without_permission">Õiguste puudumise tõttu pole võimalik välisele andmekandjale salvestada.</string>
   <string name="MediaPreviewActivity_media_delete_confirmation_title">Kustutad sõnumi?</string>
   <string name="MediaPreviewActivity_media_delete_confirmation_message">See kustutab püsivalt valitud sõnumi.</string>
@@ -576,7 +576,7 @@
   <string name="MessageNotifier_contact_message">%1$s %2$s</string>
   <string name="MessageNotifier_unknown_contact_message">Kontakt</string>
   <!--QuickResponseService-->
-  <string name="QuickResponseService_quick_response_unavailable_when_Signal_is_locked">Kiirvastus pole saadaval, kui Signal on lukustatud!</string>
+  <string name="QuickResponseService_quick_response_unavailable_when_Signal_is_locked">Kiirvastus pole saadaval, kui Delta Chat on lukustatud!</string>
   <string name="QuickResponseService_problem_sending_message">Sõnumi saatmisel esines probleem!</string>
   <!--SaveAttachmentTask-->
   <string name="SaveAttachmentTask_saved_to">Salvestatud kohta %s</string>
@@ -584,7 +584,7 @@
   <string name="SearchToolbar_search">Otsi</string>
   <string name="SearchToolbar_search_for_conversations_contacts_and_messages">Otsi vestlusi, kontakte ja sõnumeid</string>
   <!--SingleRecipientNotificationBuilder-->
-  <string name="SingleRecipientNotificationBuilder_signal">Signal</string>
+  <string name="SingleRecipientNotificationBuilder_signal">Delta Chat</string>
   <string name="SingleRecipientNotificationBuilder_new_message">Uus sõnum</string>
   <!--UnauthorizedReminder-->
   <string name="UnauthorizedReminder_device_no_longer_registered">Seade ei ole enam registreeritud</string>
@@ -593,7 +593,7 @@
   <string name="VideoPlayer_error_playing_video">Video esitamisel tekkis viga</string>
   <!--WebRtcCallActivity-->
   <string name="WebRtcCallActivity_to_answer_the_call_from_s_give_signal_access_to_your_microphone">Et vastata %s kõnele, anna Signalile juurdepääs oma mikrofonile.</string>
-  <string name="WebRtcCallActivity_signal_requires_microphone_and_camera_permissions_in_order_to_make_or_receive_calls">Signal vajab mikrofoni ja kaamera lubasid, et teha ja vastu võtta kõnesid, ent need on püsivalt keelatud. Palun jätka rakenduse seadetes, vali \"Load\" ja luba \"Mikrofon\" ning \"Kaamera\".</string>
+  <string name="WebRtcCallActivity_signal_requires_microphone_and_camera_permissions_in_order_to_make_or_receive_calls">Delta Chat vajab mikrofoni ja kaamera lubasid, et teha ja vastu võtta kõnesid, ent need on püsivalt keelatud. Palun jätka rakenduse seadetes, vali \"Load\" ja luba \"Mikrofon\" ning \"Kaamera\".</string>
   <!--WebRtcCallScreen-->
   <string name="WebRtcCallScreen_new_safety_numbers">Turvanumber sinu vestluses kontaktiga %1$s on muutunud. See võib tähendada, et keegi üritab su vestlusesse sekkuda või et %2$s lihtsalt taasinstallis Signali.</string>
   <string name="WebRtcCallScreen_you_may_wish_to_verify_this_contact">Sa võid tahta kinnitada oma turvanumbrit selle kontaktiga.</string>
@@ -630,12 +630,12 @@
   <!--single_contact_selection_activity-->
   <string name="SingleContactSelectionActivity_contact_photo">Kontakti pilt</string>
   <!--ContactSelectionListFragment-->
-  <string name="ContactSelectionListFragment_signal_requires_the_contacts_permission_in_order_to_display_your_contacts">Signal vajab kontaktide kuvamiseks neile ligipääsu, kuid see on püsivalt keelatud. Palun ava rakenduse sätete menüü, vali \"Õigused\" ja luba \"Kontaktid\".</string>
+  <string name="ContactSelectionListFragment_signal_requires_the_contacts_permission_in_order_to_display_your_contacts">Delta Chat vajab kontaktide kuvamiseks neile ligipääsu, kuid see on püsivalt keelatud. Palun ava rakenduse sätete menüü, vali \"Õigused\" ja luba \"Kontaktid\".</string>
   <string name="ContactSelectionListFragment_error_retrieving_contacts_check_your_network_connection">Kontaktide laadimisel tekkis tõrge. Kontrolli võrguühendust.</string>
   <!--blocked_contacts_fragment-->
   <string name="blocked_contacts_fragment__no_blocked_contacts">Blokeeritud kontakte pole</string>
   <!--contact_selection_list_fragment-->
-  <string name="contact_selection_list_fragment__signal_needs_access_to_your_contacts_in_order_to_display_them">Signal vajab kontaktide kuvamiseks nendele ligipääsu.</string>
+  <string name="contact_selection_list_fragment__signal_needs_access_to_your_contacts_in_order_to_display_them">Delta Chat vajab kontaktide kuvamiseks nendele ligipääsu.</string>
   <string name="contact_selection_list_fragment__show_contacts">Näita kontakte</string>
   <!--conversation_activity-->
   <string name="conversation_activity__type_message_push">Signali sõnum</string>
@@ -648,7 +648,7 @@
   <string name="conversation_activity__attachment_thumbnail">Manuse pisipilt</string>
   <string name="conversation_activity__quick_attachment_drawer_toggle_camera_description">Lülita kiire kaamera manuse sahtel sisse või välja</string>
   <string name="conversation_activity__quick_attachment_drawer_record_and_send_audio_description">Salvesta ja saada helimanus</string>
-  <string name="conversation_activity__enable_signal_for_sms">Luba Signal SMSide jaoks</string>
+  <string name="conversation_activity__enable_signal_for_sms">Luba Delta Chat SMSide jaoks</string>
   <!--conversation_input_panel-->
   <string name="conversation_input_panel__slide_to_cancel">LIBISTA TÜHISTAMISEKS</string>
   <!--conversation_item-->
@@ -771,7 +771,7 @@
   <!--prompt_passphrase_activity-->
   <string name="prompt_passphrase_activity__unlock">Eemalda blokeering</string>
   <!--prompt_mms_activity-->
-  <string name="prompt_mms_activity__signal_requires_mms_settings_to_deliver_media_and_group_messages">Signal vajab MMS-seadeid, et edastada meediat ja grupisõnumeid läbi sinu võrguteenuse pakkuja. Sinu seade ei tee seda informatsiooni saadavaks, mis esineb mõnikord lukustatud seadmete ja piiravate konfiguratsioonide puhul.</string>
+  <string name="prompt_mms_activity__signal_requires_mms_settings_to_deliver_media_and_group_messages">Delta Chat vajab MMS-seadeid, et edastada meediat ja grupisõnumeid läbi sinu võrguteenuse pakkuja. Sinu seade ei tee seda informatsiooni saadavaks, mis esineb mõnikord lukustatud seadmete ja piiravate konfiguratsioonide puhul.</string>
   <string name="prompt_mms_activity__to_send_media_and_group_messages_tap_ok">Et saata meedia- ja grupisõnumeid, koputa nupul \"OK\" ja lõpeta soovitud seaded. MMS-seaded sinu teenusepakkuja jaoks võib tavaliselt leida, otsides \"sinu teenusepakkuja APN\". Sa pead seda tegema ainult ühe korra.</string>
   <!--profile_create_activity-->
   <string name="profile_create_activity__set_later">Määra hiljem</string>
@@ -797,7 +797,7 @@
   <string name="redphone_call_controls__flip_camera_rear">Vaheta kaameraid</string>
   <!--registration_activity-->
   <string name="registration_activity__phone_number">TELEFONINUMBER</string>
-  <string name="registration_activity__registration_will_transmit_some_contact_information_to_the_server_temporariliy">Signal teeb suhtlemise lihtsaks, kasutades olemasolevat telefoninumbrit ja aadressiraamatut. Sõbrad ja kontaktid, kes juba saavad sinuga telefoni teel ühendust, saavad ka Signali kaudu seda teha.\n\nRegistreerimine saadab osalist kontaktinfot serverile, seda ei salvestata.</string>
+  <string name="registration_activity__registration_will_transmit_some_contact_information_to_the_server_temporariliy">Delta Chat teeb suhtlemise lihtsaks, kasutades olemasolevat telefoninumbrit ja aadressiraamatut. Sõbrad ja kontaktid, kes juba saavad sinuga telefoni teel ühendust, saavad ka Signali kaudu seda teha.\n\nRegistreerimine saadab osalist kontaktinfot serverile, seda ei salvestata.</string>
   <string name="registration_activity__verify_your_number">Kinnita oma number</string>
   <string name="registration_activity__please_enter_your_mobile_number_to_receive_a_verification_code_carrier_rates_may_apply">Palun sisesta enda mobiilinumber kinnituskoodi saamiseks. Lisanduvad teenustasud.</string>
   <!--recipients_panel-->
@@ -886,7 +886,7 @@
   <string name="preferences__lock_signal_and_message_notifications_with_a_passphrase">Lukusta ekraan ja teated salaväljendiga</string>
   <string name="preferences__screen_security">Kuva turvamine</string>
   <string name="preferences__disable_screen_security_to_allow_screen_shots">Blokeeri kuvatõmmised viimatiste nimekirjas ja rakenduse sees</string>
-  <string name="preferences__auto_lock_signal_after_a_specified_time_interval_of_inactivity">Lukusta Signal automaatselt pärast määratud ebaaktiivsuse ajaintervalli</string>
+  <string name="preferences__auto_lock_signal_after_a_specified_time_interval_of_inactivity">Lukusta Delta Chat automaatselt pärast määratud ebaaktiivsuse ajaintervalli</string>
   <string name="preferences__inactivity_timeout_passphrase">Salaväljend ebaaktiivsuse ajalõpus</string>
   <string name="preferences__inactivity_timeout_interval">Ebaaktiivsuse ajalõpu pikkus</string>
   <string name="preferences__notifications">Teated</string>
@@ -1050,7 +1050,7 @@
   <string name="reminder_header_expired_build">Sinu Signali versioon on aegunud!</string>
   <string name="reminder_header_expired_build_details">Sõnumeid ei saadeta enam edukalt. Koputa, et uuendada uusimale versioonile.</string>
   <string name="reminder_header_sms_default_title">Kasuta vaikimisi SMS-rakendusena</string>
-  <string name="reminder_header_sms_default_text">Koputa, et teha Signal SMSi vaikerakenduseks.</string>
+  <string name="reminder_header_sms_default_text">Koputa, et teha Delta Chat SMSi vaikerakenduseks.</string>
   <string name="reminder_header_sms_import_title">Impordi süsteemi SMSid</string>
   <string name="reminder_header_sms_import_text">Koputa, et kopeerida oma telefoni SMS-sõnumid Signali krüptitud andmebaasi.</string>
   <string name="reminder_header_push_title">Luba Signali sõnumid ja kõned</string>
@@ -1080,16 +1080,16 @@
   <string name="ConversationListFragment_loading">Laadimine...</string>
   <string name="CallNotificationBuilder_connecting">Ühendan...</string>
   <string name="Permissions_permission_required">Luba on vajalik</string>
-  <string name="ConversationActivity_signal_needs_sms_permission_in_order_to_send_an_sms">Signal vajab SMS-uba, et saata SMSi, ent see on püsivalt keelatud. Palun jätka rakenduse seadetes, vali \"Load\" ja luba \"SMS\".</string>
+  <string name="ConversationActivity_signal_needs_sms_permission_in_order_to_send_an_sms">Delta Chat vajab SMS-uba, et saata SMSi, ent see on püsivalt keelatud. Palun jätka rakenduse seadetes, vali \"Load\" ja luba \"SMS\".</string>
   <string name="Permissions_continue">Jätka</string>
   <string name="Permissions_not_now">Mitte praegu</string>
-  <string name="ConversationListActivity_signal_needs_contacts_permission_in_order_to_search_your_contacts_but_it_has_been_permanently_denied">Signal vajab kontaktide luba, et otsida su kontakte, ent see on püsivalt keelatud. Palun jätka rakenduse seadetes, vali \"Load\" ja luba \"Kontaktid\".</string>
+  <string name="ConversationListActivity_signal_needs_contacts_permission_in_order_to_search_your_contacts_but_it_has_been_permanently_denied">Delta Chat vajab kontaktide luba, et otsida su kontakte, ent see on püsivalt keelatud. Palun jätka rakenduse seadetes, vali \"Load\" ja luba \"Kontaktid\".</string>
   <string name="conversation_activity__enable_signal_messages">LUBA SIGNALI SÕNUMID</string>
   <string name="SQLCipherMigrationHelper_migrating_signal_database">Migreerin Signali andmebaasi</string>
   <string name="PushDecryptJob_new_locked_message">Uus lukustatud sõnum</string>
   <string name="PushDecryptJob_unlock_to_view_pending_messages">Ava lukk ootel sõnumite vaatamiseks</string>
   <string name="ExperienceUpgradeActivity_unlock_to_complete_update">Ava lukk uuenduse lõpuleviimiseks</string>
-  <string name="ExperienceUpgradeActivity_please_unlock_signal_to_complete_update">Palun lukusta Signal lahti uuenduse lõpuleviimiseks</string>
+  <string name="ExperienceUpgradeActivity_please_unlock_signal_to_complete_update">Palun lukusta Delta Chat lahti uuenduse lõpuleviimiseks</string>
   <string name="enter_backup_passphrase_dialog__backup_passphrase">Varunduse salaväljend</string>
   <string name="backup_enable_dialog__backups_will_be_saved_to_external_storage_and_encrypted_with_the_passphrase_below_you_must_have_this_passphrase_in_order_to_restore_a_backup">Varundused salvestatakse välismällu ja krüptitakse valitud salaväljendiga. Sul peab see salaväljend olemas olema, et taastada antud varundust.</string>
   <string name="backup_enable_dialog__i_have_written_down_this_passphrase">Ma olen salaväljendi üles kirjutanud. Ilma selleta ei saa ma varundust taastada.</string>
@@ -1115,7 +1115,7 @@
   <string name="BackupDialog_disable_and_delete_all_local_backups">Kustuta ja keela kõik kohalikud varundused?</string>
   <string name="BackupDialog_delete_backups_statement">Kustuta varundused</string>
   <string name="BackupDialog_copied_to_clipboard">Lõikelauale kopeeritud</string>
-  <string name="ChatsPreferenceFragment_signal_requires_external_storage_permission_in_order_to_create_backups">Signal vajab välismälu õigust, et luua varundusi, ent see on püsivalt keelatud. Palun jätka rakenduse seadetes, vali \"Load\" ning luba \"Mäluruum\".</string>
+  <string name="ChatsPreferenceFragment_signal_requires_external_storage_permission_in_order_to_create_backups">Delta Chat vajab välismälu õigust, et luua varundusi, ent see on püsivalt keelatud. Palun jätka rakenduse seadetes, vali \"Load\" ning luba \"Mäluruum\".</string>
   <string name="ChatsPreferenceFragment_last_backup_s">Viimane varundus: %s</string>
   <string name="ChatsPreferenceFragment_in_progress">Töötamisel</string>
   <string name="LocalBackupJob_creating_backup">Varunduse loomine...</string>
@@ -1151,7 +1151,7 @@
   <string name="RegistrationActivity_registration_of_this_phone_number_will_be_possible_without_your_registration_lock_pin_after_seven_days_have_passed">Selle telefoninumbri registreerimine ilma registreerimisluku PINita on võimalik 7 päeva möödudes ajast, mil number oli viimati Signalis aktiivne. Sul on %d päeva veel jäänud.</string>
   <string name="RegistrationActivity_registration_lock_pin">Registreerimisluku PIN</string>
   <string name="RegistrationActivity_this_phone_number_has_registration_lock_enabled_please_enter_the_registration_lock_pin">Sellel telefoninumbril on registreerimislukk peal. Palun sisesta registreerimisluku PIN.</string>
-  <string name="RegistrationLockDialog_registration_lock_is_enabled_for_your_phone_number">Registreerimislukk on sinu telefoninumbrile lubatud. Et aidata sul seda meelde jätta, küsib Signal perioodiliselt selle kinnitust.</string>
+  <string name="RegistrationLockDialog_registration_lock_is_enabled_for_your_phone_number">Registreerimislukk on sinu telefoninumbrile lubatud. Et aidata sul seda meelde jätta, küsib Delta Chat perioodiliselt selle kinnitust.</string>
   <string name="RegistrationLockDialog_i_forgot_my_pin">Ma unustasin oma PINi.</string>
   <string name="RegistrationLockDialog_forgotten_pin">Unustasid PINi?</string>
   <string name="RegistrationLockDialog_registration_lock_helps_protect_your_phone_number_from_unauthorized_registration_attempts">Registreerimislukk aitab kaitsta sinu telefoninumbrit soovimatute registreerimiskatsete eest. Seda funktsiooni saab igal ajal keelata sinu Signali privaatsusseadetest.</string>
@@ -1164,7 +1164,7 @@
   <string name="RegistrationLockDialog_disable">Keela</string>
   <string name="RegistrationActivity_continue">Jätka</string>
   <string name="preferences_chats__backups">Varundused</string>
-  <string name="prompt_passphrase_activity__signal_is_locked">Signal on lukus</string>
+  <string name="prompt_passphrase_activity__signal_is_locked">Delta Chat on lukus</string>
   <string name="prompt_passphrase_activity__tap_to_unlock">KOPUTA AVAMISEKS</string>
   <string name="RegistrationLockDialog_reminder">Meeldetuletus:</string>
   <string name="recipient_preferences__about">Teave</string>

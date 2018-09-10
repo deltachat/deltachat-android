@@ -312,7 +312,7 @@
   <string name="ExperienceUpgradeActivity_textsecure_is_now_signal_long">تم دمج تيكست سيكيور وريدفون في تطبيق واحد الآن: سيجنال</string>
   <string name="ExperienceUpgradeActivity_say_hello_to_video_calls">أهلاً بالاتصالات الفيديوية الآمنة.</string>
   <string name="ExperienceUpgradeActivity_signal_now_supports_secure_video_calls">الآن، يدعم سيجنال مكالمات الفيديو الآمنة. فقط ابدأ مكالمة سيجنال بالطريقة الاعتيادية، بالضغط على زر الفيديو ، وقُل أهلا.</string>
-  <string name="ExperienceUpgradeActivity_signal_now_supports_secure_video_calling">تدعم Signal حالياً الاتصالات الفيديوية الآمنة.</string>
+  <string name="ExperienceUpgradeActivity_signal_now_supports_secure_video_calling">تدعم Delta Chat حالياً الاتصالات الفيديوية الآمنة.</string>
   <string name="ExperienceUpgradeActivity_signal_now_supports_secure_video_calling_long">سيجنال يدعم حالياً الإتصالات الآمنة عبر الفيديو. انقر لمعرفة المزيد.</string>
   <string name="ExperienceUpgradeActivity_ready_for_your_closeup">هل أنت جاهز للإغلاق ؟</string>
   <string name="ExperienceUpgradeActivity_now_you_can_share_a_profile_photo_and_name_with_friends_on_signal">بإمكانكم الآن مشاركة صورة ملفكم الشخصي و اسمكم مع أصدقائكم على سيجنال</string>
@@ -554,7 +554,7 @@
   <string name="ThreadRecord_you_marked_unverified">لقد قمت بإلغاء التحقق</string>
   <!--UpdateApkReadyListener-->
   <string name="UpdateApkReadyListener_Signal_update">تحديث سيجنال</string>
-  <string name="UpdateApkReadyListener_a_new_version_of_signal_is_available_tap_to_update">إصدار جديد لـ Signal متوفر، أنقر لتحديثه</string>
+  <string name="UpdateApkReadyListener_a_new_version_of_signal_is_available_tap_to_update">إصدار جديد لـ Delta Chat متوفر، أنقر لتحديثه</string>
   <!--UnknownSenderView-->
   <string name="UnknownSenderView_block_s">هل تود حظر %s ؟</string>
   <string name="UnknownSenderView_blocked_contacts_will_no_longer_be_able_to_send_you_messages_or_call_you">لن يقدر المراسلون المحظورون مراسلتك أو الإتصال بك.</string>
@@ -1035,9 +1035,9 @@
   <string name="preferences_notifications__calls">المُكالمات</string>
   <string name="preferences_notifications__ringtone">نغمة الرنين</string>
   <string name="preferences_chats__show_invitation_prompts">اظهر رسالة الدعوة</string>
-  <string name="preferences_chats__display_invitation_prompts_for_contacts_without_signal">عرض رسائل الدعوات من جهات الاتصال التي لا تستخدم Signal</string>
+  <string name="preferences_chats__display_invitation_prompts_for_contacts_without_signal">عرض رسائل الدعوات من جهات الاتصال التي لا تستخدم Delta Chat</string>
   <string name="preferences_chats__message_text_size">حجم الخط في الرسائل</string>
-  <string name="preferences_events__contact_joined_signal">انضم إلى Signal</string>
+  <string name="preferences_events__contact_joined_signal">انضم إلى Delta Chat</string>
   <string name="preferences_notifications__priority">أولوية</string>
   <!--****************************************-->
   <!--menus-->

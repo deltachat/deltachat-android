@@ -21,17 +21,17 @@
   </plurals>
   <string name="ApplicationPreferencesActivity_delete">Eliminar</string>
   <string name="ApplicationPreferencesActivity_disable_passphrase">¿Deshabilitar clave de acceso?</string>
-  <string name="ApplicationPreferencesActivity_this_will_permanently_unlock_signal_and_message_notifications">Esto desbloqueará permanentemente Signal y las notificaciones de mensaje.</string>
+  <string name="ApplicationPreferencesActivity_this_will_permanently_unlock_signal_and_message_notifications">Esto desbloqueará permanentemente Delta Chat y las notificaciones de mensaje.</string>
   <string name="ApplicationPreferencesActivity_disable">Desactivar</string>
   <string name="ApplicationPreferencesActivity_unregistering">Desregistrándose</string>
-  <string name="ApplicationPreferencesActivity_unregistering_from_signal_messages_and_calls">Borrando cuenta Signal...</string>
-  <string name="ApplicationPreferencesActivity_disable_signal_messages_and_calls">¿Deshabilitar mensajes y llamadas de Signal?</string>
-  <string name="ApplicationPreferencesActivity_disable_signal_messages_and_calls_by_unregistering">Esto deshabilitará los mensajes de Signal eliminándole del servidor. Necesitará volver a registrar su número de teléfono para usar mensajes de Signal de nuevo en el futuro.</string>
+  <string name="ApplicationPreferencesActivity_unregistering_from_signal_messages_and_calls">Borrando cuenta Delta Chat...</string>
+  <string name="ApplicationPreferencesActivity_disable_signal_messages_and_calls">¿Deshabilitar mensajes y llamadas de Delta Chat?</string>
+  <string name="ApplicationPreferencesActivity_disable_signal_messages_and_calls_by_unregistering">Esto deshabilitará los mensajes de Delta Chat eliminándole del servidor. Necesitará volver a registrar su número de teléfono para usar mensajes de Delta Chat de nuevo en el futuro.</string>
   <string name="ApplicationPreferencesActivity_error_connecting_to_server">¡Error conectando al servidor!</string>
   <string name="ApplicationPreferencesActivity_sms_enabled">SMS habilitados</string>
   <string name="ApplicationPreferencesActivity_touch_to_change_your_default_sms_app">Pulse para cambiar la aplicación de SMS predeterminada</string>
   <string name="ApplicationPreferencesActivity_sms_disabled">SMS deshabilitados</string>
-  <string name="ApplicationPreferencesActivity_touch_to_make_signal_your_default_sms_app">Pulse para hacer de Signal su aplicación de SMS predeterminada</string>
+  <string name="ApplicationPreferencesActivity_touch_to_make_signal_your_default_sms_app">Pulse para hacer de Delta Chat su aplicación de SMS predeterminada</string>
   <string name="ApplicationPreferencesActivity_on">activo</string>
   <string name="ApplicationPreferencesActivity_On">Activo</string>
   <string name="ApplicationPreferencesActivity_off">inactivo</string>
@@ -52,10 +52,10 @@
   <string name="DraftDatabase_Draft_quote_snippet">(responder)</string>
   <!--AttchmentManager-->
   <string name="AttachmentManager_cant_open_media_selection">No se pudo encontrar una aplicación para el contenido seleccionado.</string>
-  <string name="AttachmentManager_signal_requires_the_external_storage_permission_in_order_to_attach_photos_videos_or_audio">Signal requiere el permiso Almacenamiento para adjuntar fotos, vídeos, o audio, pero ha sido denegado permanentemente. Por favor, continúe hacia el menú de configuración de la aplicación, seleccione \"Permisos\", y habilite \"Almacenamiento\".</string>
-  <string name="AttachmentManager_signal_requires_contacts_permission_in_order_to_attach_contact_information">Signal requiere el permiso Contactos para adjuntar información de contacto. pero ha sido denegado permanentemente. Por favor, continúe hacia el menú de configuración de la aplicación, seleccione \"Permisos\", y habilite \"Contactos\".</string>
-  <string name="AttachmentManager_signal_requires_location_information_in_order_to_attach_a_location">Signal requiere el permiso Ubicación para adjuntar una ubicación, pero ha sido denegado permanentemente. Por favor, continúe hacia el menú de configuración de la aplicación, seleccione \"Permisos\", y habilite \"Ubicación\".</string>
-  <string name="AttachmentManager_signal_requires_the_camera_permission_in_order_to_take_photos_but_it_has_been_permanently_denied">Signal requiere el permiso Cámara para tomar fotos, pero ha sido denegado permanentemente. Por favor, continúe hacia el menú de configuración de la aplicación, seleccione \"Permisos\", y habilite \"Cámara\".</string>
+  <string name="AttachmentManager_signal_requires_the_external_storage_permission_in_order_to_attach_photos_videos_or_audio">Delta Chat requiere el permiso Almacenamiento para adjuntar fotos, vídeos, o audio, pero ha sido denegado permanentemente. Por favor, continúe hacia el menú de configuración de la aplicación, seleccione \"Permisos\", y habilite \"Almacenamiento\".</string>
+  <string name="AttachmentManager_signal_requires_contacts_permission_in_order_to_attach_contact_information">Delta Chat requiere el permiso Contactos para adjuntar información de contacto. pero ha sido denegado permanentemente. Por favor, continúe hacia el menú de configuración de la aplicación, seleccione \"Permisos\", y habilite \"Contactos\".</string>
+  <string name="AttachmentManager_signal_requires_location_information_in_order_to_attach_a_location">Delta Chat requiere el permiso Ubicación para adjuntar una ubicación, pero ha sido denegado permanentemente. Por favor, continúe hacia el menú de configuración de la aplicación, seleccione \"Permisos\", y habilite \"Ubicación\".</string>
+  <string name="AttachmentManager_signal_requires_the_camera_permission_in_order_to_take_photos_but_it_has_been_permanently_denied">Delta Chat requiere el permiso Cámara para tomar fotos, pero ha sido denegado permanentemente. Por favor, continúe hacia el menú de configuración de la aplicación, seleccione \"Permisos\", y habilite \"Cámara\".</string>
   <!--AttachmentTypeSelectorAdapter-->
   <!--AudioSlidePlayer-->
   <string name="AudioSlidePlayer_error_playing_audio">¡Error al reproducir el audio!</string>
@@ -72,7 +72,7 @@
   <string name="ClearProfileActivity_remove">Eliminar</string>
   <string name="ClearProfileActivity_remove_profile_photo">¿Eliminar foto del perfil?</string>
   <!--ConfirmIdentityDialog-->
-  <string name="ConfirmIdentityDialog_your_safety_number_with_s_has_changed">Su número de seguridad con %1$s ha cambiado. Esto podría significar que o bien alguien está tratando de interceptar su comunicación, o que %2$s simplemente ha reinstalado Signal.</string>
+  <string name="ConfirmIdentityDialog_your_safety_number_with_s_has_changed">Su número de seguridad con %1$s ha cambiado. Esto podría significar que o bien alguien está tratando de interceptar su comunicación, o que %2$s simplemente ha reinstalado Delta Chat.</string>
   <string name="ConfirmIdentityDialog_you_may_wish_to_verify_your_safety_number_with_this_contact">Puede que desee verificar su número de seguridad con este contacto.</string>
   <string name="ConfirmIdentityDialog_accept">Aceptar</string>
   <!--ContactsCursorLoader-->
@@ -81,7 +81,7 @@
   <string name="ContactsCursorLoader_groups">Grupos</string>
   <!--ContactsDatabase-->
   <string name="ContactsDatabase_message_s">Mensaje %s</string>
-  <string name="ContactsDatabase_signal_call_s">Llamar a %s con Signal</string>
+  <string name="ContactsDatabase_signal_call_s">Llamar a %s con Delta Chat</string>
   <!--ContactNameEditActivity-->
   <string name="ContactNameEditActivity_given_name">Nombre dado</string>
   <string name="ContactNameEditActivity_family_name">Nombre de familia</string>
@@ -102,7 +102,7 @@
   <string name="ConversationItem_click_to_approve_unencrypted">Pulse para cambiar a no cifrado</string>
   <string name="ConversationItem_click_to_approve_unencrypted_sms_dialog_title">¿Recurrir a SMS no cifrado?</string>
   <string name="ConversationItem_click_to_approve_unencrypted_mms_dialog_title">¿Recurrir a MMS cifrado?</string>
-  <string name="ConversationItem_click_to_approve_unencrypted_dialog_message">Este mensaje <b>no</b> se cifrará porque el destinatario ya no es un usuario de Signal.\n\n¿Enviar mensaje no asegurado?</string>
+  <string name="ConversationItem_click_to_approve_unencrypted_dialog_message">Este mensaje <b>no</b> se cifrará porque el destinatario ya no es un usuario de Delta Chat.\n\n¿Enviar mensaje no asegurado?</string>
   <string name="ConversationItem_unable_to_open_media">No se pudo encontrar una aplicación capaz de abrir este contenido.</string>
   <string name="ConversationItem_copied_text">Se copió %s</string>
   <string name="ConversationItem_from_s">de %s</string>
@@ -125,8 +125,8 @@
   <string name="ConversationActivity_are_you_sure_you_want_to_leave_this_group">¿Está seguro de que quiere dejar este grupo?</string>
   <string name="ConversationActivity_transport_insecure_sms">SMS no seguro</string>
   <string name="ConversationActivity_transport_insecure_mms">MMS no seguro</string>
-  <string name="ConversationActivity_transport_signal">Signal</string>
-  <string name="ConversationActivity_lets_switch_to_signal">Pasémonos a Signal: %1$s</string>
+  <string name="ConversationActivity_transport_signal">Delta Chat</string>
+  <string name="ConversationActivity_lets_switch_to_signal">Pasémonos a Delta Chat: %1$s</string>
   <string name="ConversationActivity_lets_use_this_to_chat">Usemos esto para hablar: %1$s</string>
   <string name="ConversationActivity_error_leaving_group">Error al dejar el grupo</string>
   <string name="ConversationActivity_specify_recipient">Por favor, elija un contacto</string>
@@ -138,13 +138,13 @@
   <string name="ConversationActivity_unable_to_record_audio">¡No se ha podido grabar el audio!</string>
   <string name="ConversationActivity_error_sending_voice_message">Error al enviar mensaje de voz</string>
   <string name="ConversationActivity_there_is_no_app_available_to_handle_this_link_on_your_device">No hay ninguna aplicación disponible para usar este enlace en su dispositivo.</string>
-  <string name="ConversationActivity_to_send_audio_messages_allow_signal_access_to_your_microphone">Para enviar mensajes de audio, permita a Signal acceder a su micrófono.</string>
-  <string name="ConversationActivity_signal_requires_the_microphone_permission_in_order_to_send_audio_messages">Signal requiere el permiso Micrófono para enviar mensajes de audio, pero ha sido denegado permanentemente. Por favor, continúe hacia el menú de configuración de la aplicación, seleccione \"Permisos\", y habilite \"Micrófono\".</string>
-  <string name="ConversationActivity_to_call_s_signal_needs_access_to_your_microphone_and_camera">Para llamar a %s, Signal necesita acceder a su micrófono y cámara.</string>
-  <string name="ConversationActivity_signal_needs_the_microphone_and_camera_permissions_in_order_to_call_s">Signal necesita los permisos Micrófono y Cámara para llamar a 1%s, pero han sido denegados permanentemente. Por favor, continúe hacia el menú de configuración de la aplicación, seleccione \"Permisos\", y habilite \"Micrófono\" y \"Cámara\".</string>
-  <string name="ConversationActivity_to_capture_photos_and_video_allow_signal_access_to_the_camera">Para capturar fotos y vídeo, permita el acceso de Signal a la cámara.</string>
-  <string name="ConversationActivity_signal_needs_the_camera_permission_to_take_photos_or_video">Signal necesita el permiso Cámara para tomar fotos o vídeo, pero ha sido denegado permanentemente. Por favor, continúe hacia el menú de configuración de la aplicación, seleccione \"Permisos\", y habilite \"Cámara\".</string>
-  <string name="ConversationActivity_signal_needs_camera_permissions_to_take_photos_or_video">Signal necesita los permisos Cámara para tomar fotos o vídeo.</string>
+  <string name="ConversationActivity_to_send_audio_messages_allow_signal_access_to_your_microphone">Para enviar mensajes de audio, permita a Delta Chat acceder a su micrófono.</string>
+  <string name="ConversationActivity_signal_requires_the_microphone_permission_in_order_to_send_audio_messages">Delta Chat requiere el permiso Micrófono para enviar mensajes de audio, pero ha sido denegado permanentemente. Por favor, continúe hacia el menú de configuración de la aplicación, seleccione \"Permisos\", y habilite \"Micrófono\".</string>
+  <string name="ConversationActivity_to_call_s_signal_needs_access_to_your_microphone_and_camera">Para llamar a %s, Delta Chat necesita acceder a su micrófono y cámara.</string>
+  <string name="ConversationActivity_signal_needs_the_microphone_and_camera_permissions_in_order_to_call_s">Delta Chat necesita los permisos Micrófono y Cámara para llamar a 1%s, pero han sido denegados permanentemente. Por favor, continúe hacia el menú de configuración de la aplicación, seleccione \"Permisos\", y habilite \"Micrófono\" y \"Cámara\".</string>
+  <string name="ConversationActivity_to_capture_photos_and_video_allow_signal_access_to_the_camera">Para capturar fotos y vídeo, permita el acceso de Delta Chat a la cámara.</string>
+  <string name="ConversationActivity_signal_needs_the_camera_permission_to_take_photos_or_video">Delta Chat necesita el permiso Cámara para tomar fotos o vídeo, pero ha sido denegado permanentemente. Por favor, continúe hacia el menú de configuración de la aplicación, seleccione \"Permisos\", y habilite \"Cámara\".</string>
+  <string name="ConversationActivity_signal_needs_camera_permissions_to_take_photos_or_video">Delta Chat necesita los permisos Cámara para tomar fotos o vídeo.</string>
   <string name="ConversationActivity_quoted_contact_message">%1$s %2$s</string>
   <!--ConversationAdapter-->
   <plurals name="ConversationAdapter_n_unread_messages">
@@ -183,7 +183,7 @@
     <item quantity="other">Guardando %1$d adjuntos en el almacenamiento...</item>
   </plurals>
   <string name="ConversationFragment_pending">Pendiente...</string>
-  <string name="ConversationFragment_push">Datos (Signal)</string>
+  <string name="ConversationFragment_push">Datos (Delta Chat)</string>
   <string name="ConversationFragment_mms">MMS</string>
   <string name="ConversationFragment_sms">SMS</string>
   <string name="ConversationFragment_deleting">Eliminando</string>
@@ -248,26 +248,26 @@
   <string name="DocumentView_unknown_file">Fichero desconocido</string>
   <!--DozeReminder-->
   <string name="DozeReminder_optimize_for_missing_play_services">Optimizar por falta de servicios de Google Play</string>
-  <string name="DozeReminder_this_device_does_not_support_play_services_tap_to_disable_system_battery">Este dispositivo no soporta los servicios de Google Play. Pulse para inhabilitar las optimizaciones de batería del sistema que impiden a Signal obtener mensajes mientras está inactivo.</string>
+  <string name="DozeReminder_this_device_does_not_support_play_services_tap_to_disable_system_battery">Este dispositivo no soporta los servicios de Google Play. Pulse para inhabilitar las optimizaciones de batería del sistema que impiden a Delta Chat obtener mensajes mientras está inactivo.</string>
   <!--ShareActivity-->
   <string name="ShareActivity_share_with">Compartir con</string>
   <!--ExperienceUpgradeActivity-->
-  <string name="ExperienceUpgradeActivity_welcome_to_signal_dgaf">Bienvenido a Signal.</string>
-  <string name="ExperienceUpgradeActivity_textsecure_is_now_called_signal">TextSecure y RedPhone son ahora una sola aplicación de mensajería privada, para cualquier situación: Signal.</string>
-  <string name="ExperienceUpgradeActivity_welcome_to_signal_excited">¡Bienvenido a Signal!</string>
-  <string name="ExperienceUpgradeActivity_textsecure_is_now_signal">TextSecure es ahora Signal.</string>
-  <string name="ExperienceUpgradeActivity_textsecure_is_now_signal_long">TextSecure y RedPhone son ahora una sola aplicación: Signal. Pulse para explorar.</string>
+  <string name="ExperienceUpgradeActivity_welcome_to_signal_dgaf">Bienvenido a Delta Chat.</string>
+  <string name="ExperienceUpgradeActivity_textsecure_is_now_called_signal">TextSecure y RedPhone son ahora una sola aplicación de mensajería privada, para cualquier situación: Delta Chat.</string>
+  <string name="ExperienceUpgradeActivity_welcome_to_signal_excited">¡Bienvenido a Delta Chat!</string>
+  <string name="ExperienceUpgradeActivity_textsecure_is_now_signal">TextSecure es ahora Delta Chat.</string>
+  <string name="ExperienceUpgradeActivity_textsecure_is_now_signal_long">TextSecure y RedPhone son ahora una sola aplicación: Delta Chat. Pulse para explorar.</string>
   <string name="ExperienceUpgradeActivity_say_hello_to_video_calls">Diga hola a las llamadas de vídeo seguras.</string>
-  <string name="ExperienceUpgradeActivity_signal_now_supports_secure_video_calls">Signal ahora admite videoconferencias seguras. Simplemente inicie una llamada de Signal con normalidad, pulse el botón de vídeo, y salude con la mano.</string>
-  <string name="ExperienceUpgradeActivity_signal_now_supports_secure_video_calling">Signal ahora admite videoconferencias seguras.</string>
-  <string name="ExperienceUpgradeActivity_signal_now_supports_secure_video_calling_long">Signal ahora admite videoconferencias seguras. Pulse para explorar.</string>
+  <string name="ExperienceUpgradeActivity_signal_now_supports_secure_video_calls">Delta Chat ahora admite videoconferencias seguras. Simplemente inicie una llamada de Delta Chat con normalidad, pulse el botón de vídeo, y salude con la mano.</string>
+  <string name="ExperienceUpgradeActivity_signal_now_supports_secure_video_calling">Delta Chat ahora admite videoconferencias seguras.</string>
+  <string name="ExperienceUpgradeActivity_signal_now_supports_secure_video_calling_long">Delta Chat ahora admite videoconferencias seguras. Pulse para explorar.</string>
   <string name="ExperienceUpgradeActivity_ready_for_your_closeup">¿Listo para su retrato?</string>
-  <string name="ExperienceUpgradeActivity_now_you_can_share_a_profile_photo_and_name_with_friends_on_signal">Ahora puede compartir la foto y nombre de un perfil con amigos en Signal</string>
-  <string name="ExperienceUpgradeActivity_signal_profiles_are_here">Los perfiles de Signal están aquí</string>
+  <string name="ExperienceUpgradeActivity_now_you_can_share_a_profile_photo_and_name_with_friends_on_signal">Ahora puede compartir la foto y nombre de un perfil con amigos en Delta Chat</string>
+  <string name="ExperienceUpgradeActivity_signal_profiles_are_here">Los perfiles de Delta Chat están aquí</string>
   <!--ExportFragment-->
   <string name="ExportFragment_export">Exportar</string>
   <string name="ExportFragment_export_plaintext_to_storage">¿Exportar texto plano al almacenamiento?</string>
-  <string name="ExportFragment_warning_this_will_export_the_plaintext_contents">Atención, esto exportará el contenido en texto plano de sus mensajes de Signal a almacenamiento.</string>
+  <string name="ExportFragment_warning_this_will_export_the_plaintext_contents">Atención, esto exportará el contenido en texto plano de sus mensajes de Delta Chat a almacenamiento.</string>
   <string name="ExportFragment_cancel">Cancelar</string>
   <string name="ExportFragment_exporting">Exportando</string>
   <string name="ExportFragment_exporting_plaintext_to_storage">Exportando texto plano a almacenamiento...</string>
@@ -275,8 +275,8 @@
   <string name="ExportFragment_error_while_writing_to_storage">Error al escribir en almacenamiento.</string>
   <string name="ExportFragment_export_successful">Exportación satisfactoria.</string>
   <!--GcmRefreshJob-->
-  <string name="GcmRefreshJob_Permanent_Signal_communication_failure">¡Fallo permanente de comunicación de Signal!</string>
-  <string name="GcmRefreshJob_Signal_was_unable_to_register_with_Google_Play_Services">Signal fué incapaz de registrarse con Google Play Services. Los mensajes y llamadas de Signal han sido desactivados, por favor, intenta registrarte otra vez en Configuración &gt; Avanzado.</string>
+  <string name="GcmRefreshJob_Permanent_Signal_communication_failure">¡Fallo permanente de comunicación de Delta Chat!</string>
+  <string name="GcmRefreshJob_Signal_was_unable_to_register_with_Google_Play_Services">Delta Chat fué incapaz de registrarse con Google Play Services. Los mensajes y llamadas de Delta Chat han sido desactivados, por favor, intenta registrarte otra vez en Configuración &gt; Avanzado.</string>
   <!--GiphyActivity-->
   <string name="GiphyActivity_error_while_retrieving_full_resolution_gif">Error al obtener un GIF a resolución completa</string>
   <!--GiphyFragmentPageAdapter-->
@@ -287,15 +287,15 @@
   <string name="GroupCreateActivity_actionbar_edit_title">Editar grupo</string>
   <string name="GroupCreateActivity_group_name_hint">Nombre del grupo</string>
   <string name="GroupCreateActivity_actionbar_mms_title">Nuevo grupo de MMS</string>
-  <string name="GroupCreateActivity_contacts_dont_support_push">Ha seleccionado un contacto que no soporta grupos de Signal, así que este grupo será de MMS.</string>
-  <string name="GroupCreateActivity_youre_not_registered_for_signal">No estás registrado para los mensajes y llamadas de Signal, así que los grupos de Signal están desactivados, por favor, intenta registrarte otra vez en Configuración &gt; Avanzado.</string>
+  <string name="GroupCreateActivity_contacts_dont_support_push">Ha seleccionado un contacto que no soporta grupos de Delta Chat, así que este grupo será de MMS.</string>
+  <string name="GroupCreateActivity_youre_not_registered_for_signal">No estás registrado para los mensajes y llamadas de Delta Chat, así que los grupos de Delta Chat están desactivados, por favor, intenta registrarte otra vez en Configuración &gt; Avanzado.</string>
   <string name="GroupCreateActivity_contacts_no_members">¡Necesita al menos una persona en su grupo!</string>
   <string name="GroupCreateActivity_contacts_invalid_number">Uno de los miembros de su grupo tiene un número que no puede ser leído correctamente. Por favor arréglelo o elimine ese contacto, e inténtelo de nuevo.</string>
   <string name="GroupCreateActivity_avatar_content_description">Avatar del grupo</string>
   <string name="GroupCreateActivity_menu_apply_button">Aplicar</string>
   <string name="GroupCreateActivity_creating_group">Creando %1$s…</string>
   <string name="GroupCreateActivity_updating_group">Actualizando %1$s...</string>
-  <string name="GroupCreateActivity_cannot_add_non_push_to_existing_group">No se ha podido agregar a %1$s porque no es usuario de Signal.</string>
+  <string name="GroupCreateActivity_cannot_add_non_push_to_existing_group">No se ha podido agregar a %1$s porque no es usuario de Delta Chat.</string>
   <string name="GroupCreateActivity_loading_group_details">Cargando detalles del grupo...</string>
   <string name="GroupCreateActivity_youre_already_in_the_group">Ya está en el grupo.</string>
   <!--GroupShareProfileView-->
@@ -310,7 +310,7 @@
   <!--ImportFragment-->
   <string name="ImportFragment_import_system_sms_database">¿Importar base de datos de SMS del sistema?</string>
   <string name="ImportFragment_this_will_import_messages_from_the_system">Esto importará
-mensajes desde la base de datos de SMS predeterminada del sistema hacia Signal. Si previamente ha
+mensajes desde la base de datos de SMS predeterminada del sistema hacia Delta Chat. Si previamente ha
 importado la base de datos de SMS del sistema, importarla de nuevo resultará en mensajes duplicados.</string>
   <string name="ImportFragment_import">Importar</string>
   <string name="ImportFragment_cancel">Cancelar</string>
@@ -323,12 +323,12 @@ importarla de nuevo dará como resultado mensajes duplicados.</string>
   <string name="ImportFragment_no_plaintext_backup_found">¡No se encontró una copia de seguridad de los mensajes en claro!</string>
   <string name="ImportFragment_error_importing_backup">¡Error importando copia de seguridad!</string>
   <string name="ImportFragment_import_complete">¡Se ha importado correctamente!</string>
-  <string name="ImportExportFragment_signal_needs_the_sms_permission_in_order_to_import_sms_messages">Signal necesita el permiso SMS para importar mensajes SMS, pero ha sido denegado permanentemente. Por favor, continúe hacia el menú de configuración de la aplicación, seleccione \"Permisos\", y habilite \"SMS\".</string>
-  <string name="ImportExportFragment_signal_needs_the_sms_permission_in_order_to_import_sms_messages_toast">Signal necesita el permiso SMS para importar mensajes SMS.</string>
-  <string name="ImportExportFragment_signal_needs_the_storage_permission_in_order_to_read_from_external_storage_but_it_has_been_permanently_denied">Signal necesita el permiso Almacenamiento para leer desde almacenamiento externo, pero ha sido denegado permanentemente. Por favor, continúe hacia el menú de configuración de la aplicación, y habilite \"Almacenamiento\".</string>
-  <string name="ImportExportFragment_signal_needs_the_storage_permission_in_order_to_read_from_external_storage">Signal necesita el permiso Almacenamiento para leer desde almacenamiento externo.</string>
-  <string name="ImportExportFragment_signal_needs_the_storage_permission_in_order_to_write_to_external_storage_but_it_has_been_permanently_denied">Signal necesita el permiso Almacenamiento para escribir hacia almacenamiento externo, pero ha sido denegado permanentemente. Por favor, continúe hacia el menú de configuración de la aplicación, seleccione \"Permisos\", y habilte \"Almacenamiento\".</string>
-  <string name="ImportExportFragment_signal_needs_the_storage_permission_in_order_to_write_to_external_storage">Signal necesita el permiso Almacenamiento para escribir hacia almacenamiento externo.</string>
+  <string name="ImportExportFragment_signal_needs_the_sms_permission_in_order_to_import_sms_messages">Delta Chat necesita el permiso SMS para importar mensajes SMS, pero ha sido denegado permanentemente. Por favor, continúe hacia el menú de configuración de la aplicación, seleccione \"Permisos\", y habilite \"SMS\".</string>
+  <string name="ImportExportFragment_signal_needs_the_sms_permission_in_order_to_import_sms_messages_toast">Delta Chat necesita el permiso SMS para importar mensajes SMS.</string>
+  <string name="ImportExportFragment_signal_needs_the_storage_permission_in_order_to_read_from_external_storage_but_it_has_been_permanently_denied">Delta Chat necesita el permiso Almacenamiento para leer desde almacenamiento externo, pero ha sido denegado permanentemente. Por favor, continúe hacia el menú de configuración de la aplicación, y habilite \"Almacenamiento\".</string>
+  <string name="ImportExportFragment_signal_needs_the_storage_permission_in_order_to_read_from_external_storage">Delta Chat necesita el permiso Almacenamiento para leer desde almacenamiento externo.</string>
+  <string name="ImportExportFragment_signal_needs_the_storage_permission_in_order_to_write_to_external_storage_but_it_has_been_permanently_denied">Delta Chat necesita el permiso Almacenamiento para escribir hacia almacenamiento externo, pero ha sido denegado permanentemente. Por favor, continúe hacia el menú de configuración de la aplicación, seleccione \"Permisos\", y habilte \"Almacenamiento\".</string>
+  <string name="ImportExportFragment_signal_needs_the_storage_permission_in_order_to_write_to_external_storage">Delta Chat necesita el permiso Almacenamiento para escribir hacia almacenamiento externo.</string>
   <!--InputPanel-->
   <string name="InputPanel_tap_and_hold_to_record_a_voice_message_release_to_send">Pulse y mantenga pulsado para grabar un mensaje de voz, suelte para enviar</string>
   <!--InviteActivity-->
@@ -338,7 +338,7 @@ importarla de nuevo dará como resultado mensajes duplicados.</string>
   <string name="InviteActivity_sending">Enviando...</string>
   <string name="InviteActivity_heart_content_description">Corazón</string>
   <string name="InviteActivity_invitations_sent">¡Invitaciones enviadas!</string>
-  <string name="InviteActivity_invite_to_signal">Invitar a Signal</string>
+  <string name="InviteActivity_invite_to_signal">Invitar a Delta Chat</string>
   <plurals name="InviteActivity_send_sms_to_friends">
     <item quantity="one">ENVIAR SMS A %d AMIGO</item>
     <item quantity="other">ENVIAR SMS A %d AMIGOS</item>
@@ -347,7 +347,7 @@ importarla de nuevo dará como resultado mensajes duplicados.</string>
     <item quantity="one">¿Enviar %d invitación SMS?</item>
     <item quantity="other">¿Enviar %d invitaciones SMS?</item>
   </plurals>
-  <string name="InviteActivity_lets_switch_to_signal">Pasémonos a Signal: %1$s</string>
+  <string name="InviteActivity_lets_switch_to_signal">Pasémonos a Delta Chat: %1$s</string>
   <string name="InviteActivity_no_app_to_share_to">Parece que no tiene ninguna aplicación con qué compartir.</string>
   <string name="InviteActivity_friends_dont_let_friends_text_unencrypted">Los verdaderos amigos no dejan que sus amigos hablen sin cifrar</string>
   <!--KeyScanningActivity-->
@@ -355,7 +355,7 @@ importarla de nuevo dará como resultado mensajes duplicados.</string>
   <string name="MessageDetailsRecipient_failed_to_send">Fallo al enviar</string>
   <string name="MessageDetailsRecipient_new_safety_number">Nuevo número de seguridad</string>
   <!--MessageRetrievalService-->
-  <string name="MessageRetrievalService_signal">Signal</string>
+  <string name="MessageRetrievalService_signal">Delta Chat</string>
   <string name="MessageRetrievalService_background_connection_enabled">Conexión en segundo plano habilitada</string>
   <!--MmsDownloader-->
   <string name="MmsDownloader_error_reading_mms_settings">Error al leer la configuración MMS del proveedor inalámbrico</string>
@@ -373,9 +373,9 @@ importarla de nuevo dará como resultado mensajes duplicados.</string>
   <string name="MediaOverviewActivity_Media_delete_progress_message">Eliminando mensajes...</string>
   <string name="MediaOverviewActivity_Documents">Documentos</string>
   <!--- NotificationBarManager-->
-  <string name="NotificationBarManager_signal_call_in_progress">Llamada de Signal en curso</string>
-  <string name="NotificationBarManager__establishing_signal_call">Estableciendo llamada de Signal</string>
-  <string name="NotificationBarManager__incoming_signal_call">Llamada de Signal entrante</string>
+  <string name="NotificationBarManager_signal_call_in_progress">Llamada de Delta Chat en curso</string>
+  <string name="NotificationBarManager__establishing_signal_call">Estableciendo llamada de Delta Chat</string>
+  <string name="NotificationBarManager__incoming_signal_call">Llamada de Delta Chat entrante</string>
   <string name="NotificationBarManager__deny_call">Denegar llamada</string>
   <string name="NotificationBarManager__answer_call">Contestar llamada</string>
   <string name="NotificationBarManager__end_call">Finalizar llamada</string>
@@ -385,14 +385,14 @@ importarla de nuevo dará como resultado mensajes duplicados.</string>
   <string name="NotificationMmsMessageRecord_downloading_mms_message">Descargando mensaje MMS</string>
   <string name="NotificationMmsMessageRecord_error_downloading_mms_message">Error al descargar mensaje MMS, pulse para reintentar</string>
   <!--MessageRecord-->
-  <string name="MessageRecord_message_encrypted_with_a_legacy_protocol_version_that_is_no_longer_supported">Se ha recibido un mensaje encriptado usando una versión de Signal antigua que ya no está soportada. Por favor, avisa al quien te lo ha enviado para que actualice a la versión más reciente y reenvíe el mensaje.</string>
+  <string name="MessageRecord_message_encrypted_with_a_legacy_protocol_version_that_is_no_longer_supported">Se ha recibido un mensaje encriptado usando una versión de Delta Chat antigua que ya no está soportada. Por favor, avisa al quien te lo ha enviado para que actualice a la versión más reciente y reenvíe el mensaje.</string>
   <string name="MessageRecord_left_group">Ha dejado el grupo.</string>
   <string name="MessageRecord_you_updated_group">Has actualizado el grupo.</string>
   <string name="MessageRecord_s_updated_group">%s ha actualizado el grupo.</string>
   <string name="MessageRecord_s_called_you">%s le llamó</string>
   <string name="MessageRecord_called_s">Llamó a %s</string>
   <string name="MessageRecord_missed_call_from">Llamada perdida de %s</string>
-  <string name="MessageRecord_s_joined_signal">¡%s está en Signal!</string>
+  <string name="MessageRecord_s_joined_signal">¡%s está en Delta Chat!</string>
   <string name="MessageRecord_you_set_disappearing_message_time_to_s">Ha establecido la hora desaparición del mensaje a las %1$s.</string>
   <string name="MessageRecord_s_set_disappearing_message_time_to_s">%1$s estableció la hora de desaparición del mensaje a las %2$s.</string>
   <string name="MessageRecord_your_safety_number_with_s_has_changed">Su número de seguridad con %s ha cambiado.</string>
@@ -421,9 +421,9 @@ importarla de nuevo dará como resultado mensajes duplicados.</string>
   <string name="DeviceProvisioningActivity_content_progress_key_error">Código QR no válido.</string>
   <string name="DeviceProvisioningActivity_sorry_you_have_too_many_devices_linked_already">Lo sentimos, ya tiene demasiados dispositivos vinculados, trate de eliminar alguno</string>
   <string name="DeviceActivity_sorry_this_is_not_a_valid_device_link_qr_code">Lo sentimos , este código QR no es ​​válido .</string>
-  <string name="DeviceProvisioningActivity_link_a_signal_device">¿Enlazar un dispositivo Signal?</string>
-  <string name="DeviceProvisioningActivity_it_looks_like_youre_trying_to_link_a_signal_device_using_a_3rd_party_scanner">Parece que estás intentando enlazar un dispositivo Signal usando un escáner de terceros. Para tu protección, por favor, escanea el código otra vez desde Signal.</string>
-  <string name="DeviceActivity_signal_needs_the_camera_permission_in_order_to_scan_a_qr_code">Signal necesita el permiso Cámara para escanear un código QR, pero ha sido denegado permanentemente. Por favor, continúe hacia el menú de configuración de la aplicación, seleccione \"Permisos\", y habilite \"Cámara\".</string>
+  <string name="DeviceProvisioningActivity_link_a_signal_device">¿Enlazar un dispositivo Delta Chat?</string>
+  <string name="DeviceProvisioningActivity_it_looks_like_youre_trying_to_link_a_signal_device_using_a_3rd_party_scanner">Parece que estás intentando enlazar un dispositivo Delta Chat usando un escáner de terceros. Para tu protección, por favor, escanea el código otra vez desde Delta Chat.</string>
+  <string name="DeviceActivity_signal_needs_the_camera_permission_in_order_to_scan_a_qr_code">Delta Chat necesita el permiso Cámara para escanear un código QR, pero ha sido denegado permanentemente. Por favor, continúe hacia el menú de configuración de la aplicación, seleccione \"Permisos\", y habilite \"Cámara\".</string>
   <string name="DeviceActivity_unable_to_scan_a_qr_code_without_the_camera_permission">No se puede escanear un código QR sin el permiso Cámara.</string>
   <!--ExpirationDialog-->
   <string name="ExpirationDialog_disappearing_messages">Mensajes desvanecentes</string>
@@ -431,7 +431,7 @@ importarla de nuevo dará como resultado mensajes duplicados.</string>
   <string name="ExpirationDialog_your_messages_will_disappear_s_after_they_have_been_seen">Los mensajes enviados y recibidos en esta conversación desaparecerán %s después de que se hayan enviado.</string>
   <!--PassphrasePromptActivity-->
   <string name="PassphrasePromptActivity_enter_passphrase">Introduzca clave de acceso</string>
-  <string name="PassphrasePromptActivity_watermark_content_description">Icono de Signal</string>
+  <string name="PassphrasePromptActivity_watermark_content_description">Icono de Delta Chat</string>
   <string name="PassphrasePromptActivity_ok_button_content_description">Enviar clave de acceso</string>
   <string name="PassphrasePromptActivity_invalid_passphrase_exclamation">¡Clave de acceso no válida!</string>
   <!--PlayServicesProblemFragment-->
@@ -480,7 +480,7 @@ número de teléfono
 (%s) no es válido.
 </string>
   <string name="RegistrationActivity_missing_google_play_services">Servicios de Google Play ausentes</string>
-  <string name="RegistrationActivity_this_device_is_missing_google_play_services">Este dispositivo no encuentra los Servicios de Google Play. Todavía puede usar Signal, pero esta configuración puede resultar en una fiabilidad y rendimiento reducidos.\n\nSi no es un usuario avanzado, no está ejecutando una ROM modificada de Android, o cree que está viendo esto indebidamente por favor, contacte con support@signal.org para obtener ayuda para la resolución de problemas.</string>
+  <string name="RegistrationActivity_this_device_is_missing_google_play_services">Este dispositivo no encuentra los Servicios de Google Play. Todavía puede usar Delta Chat, pero esta configuración puede resultar en una fiabilidad y rendimiento reducidos.\n\nSi no es un usuario avanzado, no está ejecutando una ROM modificada de Android, o cree que está viendo esto indebidamente por favor, contacte con support@signal.org para obtener ayuda para la resolución de problemas.</string>
   <string name="RegistrationActivity_i_understand">Entiendo</string>
   <string name="RegistrationActivity_play_services_error">Error en \"Play Services\"</string>
   <string name="RegistrationActivity_google_play_services_is_updating_or_unavailable">Google Play Services se está actualizando o está temporalmente suspendido. Por favor intente de nuevo.</string>
@@ -488,16 +488,16 @@ número de teléfono
   <string name="RegistrationActivity_no_browser">No se ha podido abrir este enlace. No se ha encontrado un navegador web.</string>
   <string name="RegistrationActivity_more_information">Más información</string>
   <string name="RegistrationActivity_less_information">Menos información</string>
-  <string name="RegistrationActivity_signal_needs_access_to_your_contacts_and_media_in_order_to_connect_with_friends">Signal necesita acceder a sus contactos y medios para conectar con amigos, intercambiar mensajes, y establecer llamadas seguras.</string>
+  <string name="RegistrationActivity_signal_needs_access_to_your_contacts_and_media_in_order_to_connect_with_friends">Delta Chat necesita acceder a sus contactos y medios para conectar con amigos, intercambiar mensajes, y establecer llamadas seguras.</string>
   <string name="RegistrationActivity_unable_to_connect_to_service">No se puede conectar al servicio. Por favor, compruebe la conexión de red e inténtelo de nuevo.</string>
-  <string name="RegistrationActivity_to_easily_verify_your_phone_number_signal_can_automatically_detect_your_verification_code">Para verificar fácilmente su número de teléfono, Signal podrá detectar automáticamente su código de verificación si le permite ver mensajes SMS.</string>
+  <string name="RegistrationActivity_to_easily_verify_your_phone_number_signal_can_automatically_detect_your_verification_code">Para verificar fácilmente su número de teléfono, Delta Chat podrá detectar automáticamente su código de verificación si le permite ver mensajes SMS.</string>
   <!--RegistrationProblemsActivity-->
   <!--RegistrationProgressActivity-->
   <!--RegistrationService-->
   <string name="RegistrationService_registration_complete">Registro completado</string>
-  <string name="RegistrationService_signal_registration_has_successfully_completed">El registro en Signal se ha completado con éxito.</string>
+  <string name="RegistrationService_signal_registration_has_successfully_completed">El registro en Delta Chat se ha completado con éxito.</string>
   <string name="RegistrationService_registration_error">Error al registrarse</string>
-  <string name="RegistrationService_signal_registration_has_encountered_a_problem">El registro en Signal se ha encontrado con un problema.</string>
+  <string name="RegistrationService_signal_registration_has_encountered_a_problem">El registro en Delta Chat se ha encontrado con un problema.</string>
   <!--RingtonePreference-->
   <string name="RingtonePreference_ringtone_default">Tono de llamada predeterminado</string>
   <string name="RingtonePreference_ringtone_silent">Ninguno</string>
@@ -514,8 +514,8 @@ número de teléfono
   <string name="SearchFragment_header_messages">Mensajes</string>
   <!--SharedContactDetailsActivity-->
   <string name="SharedContactDetailsActivity_add_to_contacts">Añadir a Contactos</string>
-  <string name="SharedContactDetailsActivity_invite_to_signal">Invitar a Signal</string>
-  <string name="SharedContactDetailsActivity_invite_message">Pasémonos a Signal: %1$s</string>
+  <string name="SharedContactDetailsActivity_invite_to_signal">Invitar a Delta Chat</string>
+  <string name="SharedContactDetailsActivity_invite_message">Pasémonos a Delta Chat: %1$s</string>
   <string name="SharedContactDetailsActivity_new_contact_success">Contacto añadido.</string>
   <string name="SharedContactDetailsActivity_new_contact_failure">Fallo al recuperar el contacto</string>
   <string name="SharedContactDetailsActivity_updated_contact_success">Contacto actualizado.</string>
@@ -525,8 +525,8 @@ número de teléfono
   <string name="SharedContactDetailsActivity_add_to_existing_contact">Añadir a un contacto existente</string>
   <!--SharedContactView-->
   <string name="SharedContactView_add_to_contacts">Añadir a Contactos</string>
-  <string name="SharedContactView_invite_to_signal">Invitar a Signal</string>
-  <string name="SharedContactView_message">Mensaje de Signal</string>
+  <string name="SharedContactView_invite_to_signal">Invitar a Delta Chat</string>
+  <string name="SharedContactView_message">Mensaje de Delta Chat</string>
   <!--Slide-->
   <string name="Slide_image">Imagen</string>
   <string name="Slide_audio">Audio</string>
@@ -551,15 +551,15 @@ Se recibió un mensaje de intercambio de claves para una versión no válida del
   <string name="ThreadRecord_called_you">Le llamaron</string>
   <string name="ThreadRecord_missed_call">Llamada perdida</string>
   <string name="ThreadRecord_media_message">Mensaje multimedia</string>
-  <string name="ThreadRecord_s_is_on_signal">¡%s está en Signal!</string>
+  <string name="ThreadRecord_s_is_on_signal">¡%s está en Delta Chat!</string>
   <string name="ThreadRecord_disappearing_message_time_updated_to_s">El plazo del mensaje desvanecente se estableció a %s</string>
   <string name="ThreadRecord_safety_number_changed">El número de seguridad ha cambiado</string>
   <string name="ThreadRecord_your_safety_number_with_s_has_changed">Su número de seguridad con %s ha cambiado.</string>
   <string name="ThreadRecord_you_marked_verified">Ha marcado verificado</string>
   <string name="ThreadRecord_you_marked_unverified">Ha marcado no verificado</string>
   <!--UpdateApkReadyListener-->
-  <string name="UpdateApkReadyListener_Signal_update">Actualización de Signal</string>
-  <string name="UpdateApkReadyListener_a_new_version_of_signal_is_available_tap_to_update">Está disponible una nueva versión de Signal, pulse para actualizar.</string>
+  <string name="UpdateApkReadyListener_Signal_update">Actualización de Delta Chat</string>
+  <string name="UpdateApkReadyListener_a_new_version_of_signal_is_available_tap_to_update">Está disponible una nueva versión de Delta Chat, pulse para actualizar.</string>
   <!--UnknownSenderView-->
   <string name="UnknownSenderView_block_s">¿Bloquear %s?</string>
   <string name="UnknownSenderView_blocked_contacts_will_no_longer_be_able_to_send_you_messages_or_call_you">Los contactos bloqueados ya no podrán enviarle mensajes o llamarle.</string>
@@ -574,14 +574,14 @@ Se recibió un mensaje de intercambio de claves para una versión no válida del
   <string name="UnverifiedSendDialog_send_message">¿Enviar mensaje?</string>
   <string name="UnverifiedSendDialog_send">Enviar</string>
   <!--VerifyIdentityActivity-->
-  <string name="VerifyIdentityActivity_your_contact_is_running_an_old_version_of_signal">Su contacto está ejecutando una versión antigua de Signal. Por favor, pídale que actualice antes de que verifique el número de seguridad de usted.</string>
-  <string name="VerifyIdentityActivity_your_contact_is_running_a_newer_version_of_Signal">Su contacto está ejecutando una versión de Signal con un formato de código QR incompatible. Por favor, actualice para comparar.</string>
+  <string name="VerifyIdentityActivity_your_contact_is_running_an_old_version_of_signal">Su contacto está ejecutando una versión antigua de Delta Chat. Por favor, pídale que actualice antes de que verifique el número de seguridad de usted.</string>
+  <string name="VerifyIdentityActivity_your_contact_is_running_a_newer_version_of_Signal">Su contacto está ejecutando una versión de Delta Chat con un formato de código QR incompatible. Por favor, actualice para comparar.</string>
   <string name="VerifyIdentityActivity_the_scanned_qr_code_is_not_a_correctly_formatted_safety_number">El código QR escaneado no es un código de verificación de número de seguridad con un formato correcto. Por favor, pruebe a escanearlo de nuevo.</string>
   <string name="VerifyIdentityActivity_share_safety_number_via">Compartir número de seguridad vía...</string>
-  <string name="VerifyIdentityActivity_our_signal_safety_number">Nuestro número de seguridad de Signal:</string>
+  <string name="VerifyIdentityActivity_our_signal_safety_number">Nuestro número de seguridad de Delta Chat:</string>
   <string name="VerifyIdentityActivity_no_app_to_share_to">Parece que no tiene ninguna aplicación con qué compartir.</string>
   <string name="VerifyIdentityActivity_no_safety_number_to_compare_was_found_in_the_clipboard">No se encontró número de seguridad para comparar en el portapapeles</string>
-  <string name="VerifyIdentityActivity_signal_needs_the_camera_permission_in_order_to_scan_a_qr_code_but_it_has_been_permanently_denied">Signal necesita el permiso Cámara para escanear un código QR, pero ha sido denegado permanentemente. Por favor, continúe hacia el menú de configuración de la aplicación, seleccione \"Permisos\", y habilite \"Cámara\".</string>
+  <string name="VerifyIdentityActivity_signal_needs_the_camera_permission_in_order_to_scan_a_qr_code_but_it_has_been_permanently_denied">Delta Chat necesita el permiso Cámara para escanear un código QR, pero ha sido denegado permanentemente. Por favor, continúe hacia el menú de configuración de la aplicación, seleccione \"Permisos\", y habilite \"Cámara\".</string>
   <string name="VerifyIdentityActivity_unable_to_scan_qr_code_without_camera_permission">No se puede escanear un código QR sin el permiso Cámara</string>
   <!--KeyExchangeInitiator-->
   <!--MessageDisplayHelper-->
@@ -610,13 +610,13 @@ Se recibió un mensaje de intercambio de claves para una versión no válida del
   <!--KeyCachingService-->
   <string name="KeyCachingService_signal_passphrase_cached">Pulse para abrir.</string>
   <string name="KeyCachingService_signal_passphrase_cached_with_lock">Pulse para abrir, o pulse el candado para cerrar.</string>
-  <string name="KeyCachingService_passphrase_cached">Signal está desbloqueado</string>
-  <string name="KeyCachingService_lock">Bloquear Signal</string>
+  <string name="KeyCachingService_passphrase_cached">Delta Chat está desbloqueado</string>
+  <string name="KeyCachingService_lock">Bloquear Delta Chat</string>
   <!--MediaPreviewActivity-->
   <string name="MediaPreviewActivity_you">Usted</string>
   <string name="MediaPreviewActivity_unssuported_media_type">Formato de contenido no compatible</string>
   <string name="MediaPreviewActivity_draft">Borrador</string>
-  <string name="MediaPreviewActivity_signal_needs_the_storage_permission_in_order_to_write_to_external_storage_but_it_has_been_permanently_denied">Signal necesita el permiso Almacenamiento para guardar a un almacenamiento externo, pero ha sido denegado permanentemente. Por favor, continúe hacia el menú de configuración de la aplicación, seleccione \"Permisos\", y habilite \"Almacenamiento\".</string>
+  <string name="MediaPreviewActivity_signal_needs_the_storage_permission_in_order_to_write_to_external_storage_but_it_has_been_permanently_denied">Delta Chat necesita el permiso Almacenamiento para guardar a un almacenamiento externo, pero ha sido denegado permanentemente. Por favor, continúe hacia el menú de configuración de la aplicación, seleccione \"Permisos\", y habilite \"Almacenamiento\".</string>
   <string name="MediaPreviewActivity_unable_to_write_to_external_storage_without_permission">No se puede guardar a un almacenamiento externo sin permisos</string>
   <string name="MediaPreviewActivity_media_delete_confirmation_title">¿Eliminar mensaje?</string>
   <string name="MediaPreviewActivity_media_delete_confirmation_message">Esto eliminará permanentemente este mensaje.</string>
@@ -632,13 +632,13 @@ Se recibió un mensaje de intercambio de claves para una versión no válida del
   <string name="MessageNotifier_mark_read">Marcar como leído</string>
   <string name="MessageNotifier_media_message">Mensaje multimedia</string>
   <string name="MessageNotifier_reply">Responder</string>
-  <string name="MessageNotifier_pending_signal_messages">Mensajes de Signal pendientes</string>
-  <string name="MessageNotifier_you_have_pending_signal_messages">Tiene mensajes de Signal pendientes, pulse para abrir y descargar</string>
+  <string name="MessageNotifier_pending_signal_messages">Mensajes de Delta Chat pendientes</string>
+  <string name="MessageNotifier_you_have_pending_signal_messages">Tiene mensajes de Delta Chat pendientes, pulse para abrir y descargar</string>
   <string name="MessageNotifier_contact_message">%1$s %2$s</string>
   <string name="MessageNotifier_unknown_contact_message">Contacto</string>
   <!--MmsPreferencesFragment-->
   <!--QuickResponseService-->
-  <string name="QuickResponseService_quick_response_unavailable_when_Signal_is_locked">¡La respuesta rápida no está disponible cuando Signal está bloqueado!</string>
+  <string name="QuickResponseService_quick_response_unavailable_when_Signal_is_locked">¡La respuesta rápida no está disponible cuando Delta Chat está bloqueado!</string>
   <string name="QuickResponseService_problem_sending_message">¡Hubo un problema al enviar el mensaje!</string>
   <!--SaveAttachmentTask-->
   <string name="SaveAttachmentTask_open_directory">Abrir directorio</string>
@@ -646,18 +646,18 @@ Se recibió un mensaje de intercambio de claves para una versión no válida del
   <!--SearchToolbar-->
   <string name="SearchToolbar_search">Buscar</string>
   <!--SingleRecipientNotificationBuilder-->
-  <string name="SingleRecipientNotificationBuilder_signal">Signal</string>
+  <string name="SingleRecipientNotificationBuilder_signal">Delta Chat</string>
   <string name="SingleRecipientNotificationBuilder_new_message">Nuevo mensaje</string>
   <!--UnauthorizedReminder-->
   <string name="UnauthorizedReminder_device_no_longer_registered">El dispositivo ya no está registrado</string>
-  <string name="UnauthorizedReminder_this_is_likely_because_you_registered_your_phone_number_with_Signal_on_a_different_device">Probablemente esto es a causa de que registró en Signal su número de teléfono con un dispositivo distinto. Pulse para volver a registrar.</string>
+  <string name="UnauthorizedReminder_this_is_likely_because_you_registered_your_phone_number_with_Signal_on_a_different_device">Probablemente esto es a causa de que registró en Delta Chat su número de teléfono con un dispositivo distinto. Pulse para volver a registrar.</string>
   <!--VideoPlayer-->
   <string name="VideoPlayer_error_playing_video">Error al reproducir el vídeo</string>
   <!--WebRtcCallActivity-->
-  <string name="WebRtcCallActivity_to_answer_the_call_from_s_give_signal_access_to_your_microphone">Para responder una llamada de %s, dé a Signal acceso a su micrófono.</string>
-  <string name="WebRtcCallActivity_signal_requires_microphone_and_camera_permissions_in_order_to_make_or_receive_calls">Signal requiere los permisos Micrófono y Cámara para efectuar o recibir llamadas, pero han sido denegados permanentemente. Por favor, continúe hacia el menú de configuración de la aplicación, seleccione \"Permisos\", y habilite \"Micrófono\" y \"Cámara\".</string>
+  <string name="WebRtcCallActivity_to_answer_the_call_from_s_give_signal_access_to_your_microphone">Para responder una llamada de %s, dé a Delta Chat acceso a su micrófono.</string>
+  <string name="WebRtcCallActivity_signal_requires_microphone_and_camera_permissions_in_order_to_make_or_receive_calls">Delta Chat requiere los permisos Micrófono y Cámara para efectuar o recibir llamadas, pero han sido denegados permanentemente. Por favor, continúe hacia el menú de configuración de la aplicación, seleccione \"Permisos\", y habilite \"Micrófono\" y \"Cámara\".</string>
   <!--WebRtcCallScreen-->
-  <string name="WebRtcCallScreen_new_safety_numbers">El número de seguridad para tu conversación con %1$s ha cambiado. Esto podría significar que alguien está tratando de interceptar su comunicación, o bien que %2$s simplemente ha reinstalado Signal.</string>
+  <string name="WebRtcCallScreen_new_safety_numbers">El número de seguridad para tu conversación con %1$s ha cambiado. Esto podría significar que alguien está tratando de interceptar su comunicación, o bien que %2$s simplemente ha reinstalado Delta Chat.</string>
   <string name="WebRtcCallScreen_you_may_wish_to_verify_this_contact">Puede que desee verificar su número de seguridad con este contacto.</string>
   <string name="WebRtcCallScreen_new_safety_number_title">Nuevo número de seguridad</string>
   <string name="WebRtcCallScreen_accept">Aceptar</string>
@@ -693,17 +693,17 @@ Se recibió un mensaje de intercambio de claves para una versión no válida del
   <!--single_contact_selection_activity-->
   <string name="SingleContactSelectionActivity_contact_photo">Foto del contacto</string>
   <!--ContactSelectionListFragment-->
-  <string name="ContactSelectionListFragment_signal_requires_the_contacts_permission_in_order_to_display_your_contacts">Signal requiere el permiso Contactos para mostrar sus contactos, pero ha sido denegado permanentemente. Por favor, continúe hacia el menú de configuración de la aplicación, seleccione \"Permisos\", y habilite, \"Contactos\".</string>
+  <string name="ContactSelectionListFragment_signal_requires_the_contacts_permission_in_order_to_display_your_contacts">Delta Chat requiere el permiso Contactos para mostrar sus contactos, pero ha sido denegado permanentemente. Por favor, continúe hacia el menú de configuración de la aplicación, seleccione \"Permisos\", y habilite, \"Contactos\".</string>
   <string name="ContactSelectionListFragment_error_retrieving_contacts_check_your_network_connection">Error al descargar contactos, compruebe su conexión a la red.</string>
   <!--blocked_contacts_fragment-->
   <string name="blocked_contacts_fragment__no_blocked_contacts">No hay contactos bloqueados</string>
   <!--contact_selection_recent_activity-->
   <!--contact_selection_list_fragment-->
-  <string name="contact_selection_list_fragment__signal_needs_access_to_your_contacts_in_order_to_display_them">Signal necesita acceso a sus contactos para mostrarlos.</string>
+  <string name="contact_selection_list_fragment__signal_needs_access_to_your_contacts_in_order_to_display_them">Delta Chat necesita acceso a sus contactos para mostrarlos.</string>
   <string name="contact_selection_list_fragment__show_contacts">Mostrar contactos</string>
   <!--conversation_title_view-->
   <!--conversation_activity-->
-  <string name="conversation_activity__type_message_push">Mensaje de Signal</string>
+  <string name="conversation_activity__type_message_push">Mensaje de Delta Chat</string>
   <string name="conversation_activity__type_message_sms_insecure">SMS sin seguridad</string>
   <string name="conversation_activity__type_message_mms_insecure">MMS sin seguridad</string>
   <string name="conversation_activity__from_sim_name">De %1$s</string>
@@ -713,7 +713,7 @@ Se recibió un mensaje de intercambio de claves para una versión no válida del
   <string name="conversation_activity__attachment_thumbnail">Miniatura del adjunto</string>
   <string name="conversation_activity__quick_attachment_drawer_toggle_camera_description">Accionar panel rápido de adjuntos de cámara</string>
   <string name="conversation_activity__quick_attachment_drawer_record_and_send_audio_description">Grabar y enviar adjunto de audio</string>
-  <string name="conversation_activity__enable_signal_for_sms">Habilitar Signal para SMS</string>
+  <string name="conversation_activity__enable_signal_for_sms">Habilitar Delta Chat para SMS</string>
   <!--conversation_input_panel-->
   <string name="conversation_input_panel__slide_to_cancel">DESLICE PARA CANCELAR</string>
   <!--conversation_item-->
@@ -787,9 +787,9 @@ Se recibió un mensaje de intercambio de claves para una versión no válida del
   <string name="IdentityUtil_unverified_banner_one">Tu número de seguridad con %s ha cambiado y ya no está verificado</string>
   <string name="IdentityUtil_unverified_banner_two">Tus números de seguridad con %1$s y %2$s ya no están verificados</string>
   <string name="IdentityUtil_unverified_banner_many">Tus números de seguridad con %1$s, %2$s, y %3$s ya no están verificados</string>
-  <string name="IdentityUtil_unverified_dialog_one">Tu número de seguridad con %1$s ha cambiado y ya no está verificado. Esto podría significar que alguien está tratando de interceptar su comunicación, o simplemente que %1$s ha reinstalado Signal.</string>
-  <string name="IdentityUtil_unverified_dialog_two">Tus números de seguridad con%1$s y %2$s ya no están verificados. Esto podría significar que alguien está tratando de interceptar tu comunicación, o simplemente que han reinstalado Signal.</string>
-  <string name="IdentityUtil_unverified_dialog_many">Tus números de seguridad con %1$s, %2$s, y %3$s ya no están verificados. Esto poddría significar que alguien está tratando de interceptar tu comunicación, o simplemente que han reinstalado Signal.</string>
+  <string name="IdentityUtil_unverified_dialog_one">Tu número de seguridad con %1$s ha cambiado y ya no está verificado. Esto podría significar que alguien está tratando de interceptar su comunicación, o simplemente que %1$s ha reinstalado Delta Chat.</string>
+  <string name="IdentityUtil_unverified_dialog_two">Tus números de seguridad con%1$s y %2$s ya no están verificados. Esto podría significar que alguien está tratando de interceptar tu comunicación, o simplemente que han reinstalado Delta Chat.</string>
+  <string name="IdentityUtil_unverified_dialog_many">Tus números de seguridad con %1$s, %2$s, y %3$s ya no están verificados. Esto poddría significar que alguien está tratando de interceptar tu comunicación, o simplemente que han reinstalado Delta Chat.</string>
   <string name="IdentityUtil_untrusted_dialog_one">Tu número de seguridad con %s acaba de cambiar.</string>
   <string name="IdentityUtil_untrusted_dialog_two">Tus números de seguridad con %1$s y %2$s acaban de cambiar.</string>
   <string name="IdentityUtil_untrusted_dialog_many">Tus números de seguridad con %1$s, %2$s, y %3$s acaban de cambiar.</string>
@@ -808,7 +808,7 @@ Se recibió un mensaje de intercambio de claves para una versión no válida del
   <string name="log_submit_activity__submitting">Enviando</string>
   <string name="log_submit_activity__no_browser_installed">No hay ningún navegador instalado</string>
   <!--database_migration_activity-->
-  <string name="database_migration_activity__would_you_like_to_import_your_existing_text_messages">¿Desea importar sus mensajes de texto existentes a la base de datos cifrada de Signal?</string>
+  <string name="database_migration_activity__would_you_like_to_import_your_existing_text_messages">¿Desea importar sus mensajes de texto existentes a la base de datos cifrada de Delta Chat?</string>
   <string name="database_migration_activity__the_default_system_database_will_not_be_modified">La base de datos de sistema por defecto no será modificada o alterada de ningún modo.</string>
   <string name="database_migration_activity__skip">Saltar</string>
   <string name="database_migration_activity__import">Importar</string>
@@ -842,7 +842,7 @@ Se recibió un mensaje de intercambio de claves para una versión no válida del
   <!--prompt_passphrase_activity-->
   <string name="prompt_passphrase_activity__unlock">Desbloquear</string>
   <!--prompt_mms_activity-->
-  <string name="prompt_mms_activity__signal_requires_mms_settings_to_deliver_media_and_group_messages">Signal requiere que la configuración de MMS envíe los mensajes audiovisuales y de grupo a través de su proveedor móvil. Su dispositivo no proporciona esta información, algo que ocasionalmente ocurre con dispositivos bloqueados y otras configuraciones restrictivas.</string>
+  <string name="prompt_mms_activity__signal_requires_mms_settings_to_deliver_media_and_group_messages">Delta Chat requiere que la configuración de MMS envíe los mensajes audiovisuales y de grupo a través de su proveedor móvil. Su dispositivo no proporciona esta información, algo que ocasionalmente ocurre con dispositivos bloqueados y otras configuraciones restrictivas.</string>
   <string name="prompt_mms_activity__to_send_media_and_group_messages_tap_ok">Para enviar mensajes audiovisuales y de grupo, pulse \'Aceptar\' y complete las configuraciones solicitadas. Las configuraciones de MMS para su proveedor generalmente se pueden localizar buscando por \'el APN de su proveedor\'. Sólo necesitará hacer esto una vez.</string>
   <!--profile_create_activity-->
   <string name="profile_create_activity__set_later">Establecer más tarde</string>
@@ -863,13 +863,13 @@ Se recibió un mensaje de intercambio de claves para una versión no válida del
   <string name="recipient_preferences__call_settings">Configuración de llamada</string>
   <string name="recipient_preferences__ringtone">Tono de llamada</string>
   <!--- redphone_call_controls-->
-  <string name="redphone_call_card__signal_call">Llamada de Signal</string>
+  <string name="redphone_call_card__signal_call">Llamada de Delta Chat</string>
   <string name="redphone_call_controls__mute">Silenciar</string>
   <string name="redphone_call_controls__flip_camera_rear">Cambiar de Camaras</string>
-  <string name="redphone_call_controls__signal_call">Llamada de Signal</string>
+  <string name="redphone_call_controls__signal_call">Llamada de Delta Chat</string>
   <!--registration_activity-->
   <string name="registration_activity__phone_number">NÚMERO DE TELÉFONO</string>
-  <string name="registration_activity__registration_will_transmit_some_contact_information_to_the_server_temporariliy">Signal facilita comunicarse usando tu número de teléfono y libreta de direcciones existentes. Los amigos y contactos que ya saben como contactar contigo por teléfono podrán ponerse en contacto contigo a través de Signal.\n\nEl proceso de registro transmite alguna información acerca de tus contactos al servidor pero no se almacena.</string>
+  <string name="registration_activity__registration_will_transmit_some_contact_information_to_the_server_temporariliy">Delta Chat facilita comunicarse usando tu número de teléfono y libreta de direcciones existentes. Los amigos y contactos que ya saben como contactar contigo por teléfono podrán ponerse en contacto contigo a través de Delta Chat.\n\nEl proceso de registro transmite alguna información acerca de tus contactos al servidor pero no se almacena.</string>
   <string name="registration_activity__verify_your_number">Verifique su número</string>
   <string name="registration_activity__please_enter_your_mobile_number_to_receive_a_verification_code_carrier_rates_may_apply">Por favor, introduzca su número de móvil para reicibir un código de verificación. Puede que se apliquen tasas por parte de su compañía.</string>
   <!--registration_problems-->
@@ -949,8 +949,8 @@ Se recibió un mensaje de intercambio de claves para una versión no válida del
   <string name="preferences__sms_mms">SMS y MMS</string>
   <string name="preferences__pref_all_sms_title">Recibir todos los SMS</string>
   <string name="preferences__pref_all_mms_title">Recibir todos los MMS</string>
-  <string name="preferences__use_signal_for_viewing_and_storing_all_incoming_text_messages">Usar Signal para todos los mensajes de texto entrantes</string>
-  <string name="preferences__use_signal_for_viewing_and_storing_all_incoming_multimedia_messages">Usar Signal para todos los mensajes multimedia entrantes</string>
+  <string name="preferences__use_signal_for_viewing_and_storing_all_incoming_text_messages">Usar Delta Chat para todos los mensajes de texto entrantes</string>
+  <string name="preferences__use_signal_for_viewing_and_storing_all_incoming_multimedia_messages">Usar Delta Chat para todos los mensajes multimedia entrantes</string>
   <string name="preferences__pref_enter_sends_title">Enviar con Intro</string>
   <string name="preferences__pressing_the_enter_key_will_send_text_messages">Los mensajes se enviarán al pulsar la tecla Intro.</string>
   <string name="preferences__choose_identity">Elegir identidad</string>
@@ -961,7 +961,7 @@ Se recibió un mensaje de intercambio de claves para una versión no válida del
   <string name="preferences__lock_signal_and_message_notifications_with_a_passphrase">Bloquear pantalla y notificaciones con una frase-contraseña</string>
   <string name="preferences__screen_security">Seguridad de la pantalla</string>
   <string name="preferences__disable_screen_security_to_allow_screen_shots">Bloquear capturas de pantalla en la lista de aplicaciones recientes y dentro de la aplicación</string>
-  <string name="preferences__auto_lock_signal_after_a_specified_time_interval_of_inactivity">Bloquear automáticamente Signal tras un intervalo de inactividad específicado</string>
+  <string name="preferences__auto_lock_signal_after_a_specified_time_interval_of_inactivity">Bloquear automáticamente Delta Chat tras un intervalo de inactividad específicado</string>
   <string name="preferences__inactivity_timeout_passphrase">Frase-contraseña para suspensión por inactividad</string>
   <string name="preferences__inactivity_timeout_interval">Intervalo para suspensión por inactividad</string>
   <string name="preferences__notifications">Notificaciones</string>
@@ -1013,8 +1013,8 @@ Se recibió un mensaje de intercambio de claves para una versión no válida del
   <string name="preferences__theme">Tema</string>
   <string name="preferences__default">Por defecto</string>
   <string name="preferences__language">Idioma</string>
-  <string name="preferences__signal_messages_and_calls">Signal mensajes y llamadas</string>
-  <string name="preferences__free_private_messages_and_calls">Llamadas y mensajes privados gratuitos para los usuarios de Signal</string>
+  <string name="preferences__signal_messages_and_calls">Delta Chat mensajes y llamadas</string>
+  <string name="preferences__free_private_messages_and_calls">Llamadas y mensajes privados gratuitos para los usuarios de Delta Chat</string>
   <string name="preferences__submit_debug_log">Enviar registro de depuración</string>
   <string name="preferences__support_wifi_calling">Modo de compatibilidad \'Llamada por WiFi\'</string>
   <string name="preferences__enable_if_your_device_supports_sms_mms_delivery_over_wifi">Habilítelo si su dispositivo utiliza entrega de SMS/MMS vía WiFi (actívelo sólo cuando \'Llamada por WiFi\' esté activada en su dispositivo)</string>
@@ -1029,8 +1029,8 @@ Se recibió un mensaje de intercambio de claves para una versión no válida del
   <string name="preferences_chats__media_auto_download">Auto-descarga de audiovisuales</string>
   <string name="preferences_chats__message_trimming">Recortado de mensaje</string>
   <string name="preferences_advanced__use_system_emoji">Usar emoji del sistema</string>
-  <string name="preferences_advanced__disable_signal_built_in_emoji_support">Deshabilitar soporte de emoji integrado de Signal</string>
-  <string name="preferences_advanced__relay_all_calls_through_the_signal_server_to_avoid_revealing_your_ip_address">Hacer que el servidor de Signal repita todas las llamadas para evitar revelar su dirección IP a su contacto. Habilitando esto reducirá la calidad de la llamada.</string>
+  <string name="preferences_advanced__disable_signal_built_in_emoji_support">Deshabilitar soporte de emoji integrado de Delta Chat</string>
+  <string name="preferences_advanced__relay_all_calls_through_the_signal_server_to_avoid_revealing_your_ip_address">Hacer que el servidor de Delta Chat repita todas las llamadas para evitar revelar su dirección IP a su contacto. Habilitando esto reducirá la calidad de la llamada.</string>
   <string name="preferences_advanced__always_relay_calls">Pasar siempre las llamadas por repetidor</string>
   <string name="preferences_app_protection__app_access">Acceso a la aplicación</string>
   <string name="preferences_app_protection__communication">Comunicación</string>
@@ -1042,9 +1042,9 @@ Se recibió un mensaje de intercambio de claves para una versión no válida del
   <string name="preferences_notifications__calls">Llamadas</string>
   <string name="preferences_notifications__ringtone">Tono de llamada</string>
   <string name="preferences_chats__show_invitation_prompts">Mostrar ofrecimientos de invitación</string>
-  <string name="preferences_chats__display_invitation_prompts_for_contacts_without_signal">Muestra ofrecimientos de invitación para contactos sin Signal</string>
+  <string name="preferences_chats__display_invitation_prompts_for_contacts_without_signal">Muestra ofrecimientos de invitación para contactos sin Delta Chat</string>
   <string name="preferences_chats__message_text_size">Tamaño de fuente del mensaje</string>
-  <string name="preferences_events__contact_joined_signal">Un contacto se ha unido a Signal</string>
+  <string name="preferences_events__contact_joined_signal">Un contacto se ha unido a Delta Chat</string>
   <string name="preferences_notifications__priority">Prioridad</string>
   <!--****************************************-->
   <!--menus-->
@@ -1056,7 +1056,7 @@ Se recibió un mensaje de intercambio de claves para una versión no válida del
   <!--conversation_callable_insecure-->
   <string name="conversation_callable_insecure__menu_call">Llamar</string>
   <!--conversation_callable_secure-->
-  <string name="conversation_callable_secure__menu_call">Llamada de Signal</string>
+  <string name="conversation_callable_secure__menu_call">Llamada de Delta Chat</string>
   <!--conversation_context-->
   <string name="conversation_context__menu_message_details">Detalles del mensaje</string>
   <string name="conversation_context__menu_copy_text">Copiar texto</string>
@@ -1122,25 +1122,25 @@ Se recibió un mensaje de intercambio de claves para una versión no válida del
   <string name="verify_display_fragment_context_menu__copy_to_clipboard">Copiar al portapapeles</string>
   <string name="verify_display_fragment_context_menu__compare_with_clipboard">Comparar con el portapapeles</string>
   <!--reminder_header-->
-  <string name="reminder_header_outdated_build">Su versión de Signal está anticuada</string>
+  <string name="reminder_header_outdated_build">Su versión de Delta Chat está anticuada</string>
   <plurals name="reminder_header_outdated_build_details">
-    <item quantity="one">Su versión de Signal caducará en %d day. Pulse para actualizar a la versión más reciente.</item>
-    <item quantity="other">Su versión de Signal caducará en %d días. Pulse para actualizar a la versión más reciente.</item>
+    <item quantity="one">Su versión de Delta Chat caducará en %d day. Pulse para actualizar a la versión más reciente.</item>
+    <item quantity="other">Su versión de Delta Chat caducará en %d días. Pulse para actualizar a la versión más reciente.</item>
   </plurals>
-  <string name="reminder_header_outdated_build_details_today">Su versión de Signal caduca hoy. Pulse para actualizarla a la versión más reciente.</string>
-  <string name="reminder_header_expired_build">¡Su versión de Signal ha caducado!</string>
+  <string name="reminder_header_outdated_build_details_today">Su versión de Delta Chat caduca hoy. Pulse para actualizarla a la versión más reciente.</string>
+  <string name="reminder_header_expired_build">¡Su versión de Delta Chat ha caducado!</string>
   <string name="reminder_header_expired_build_details">Los mensajes ya no se mandarán exitosamente. Pulse para actualizar a la versión más reciente.</string>
   <string name="reminder_header_sms_default_title">Usar como aplicación de SMS predeterminada</string>
-  <string name="reminder_header_sms_default_text">Pulse para hacer de Signal su aplicación de SMS predeterminada.</string>
+  <string name="reminder_header_sms_default_text">Pulse para hacer de Delta Chat su aplicación de SMS predeterminada.</string>
   <string name="reminder_header_sms_import_title">Importar SMS del sistema</string>
-  <string name="reminder_header_sms_import_text">Pulse para copiar los mensajes SMS de su teléfono a la base de datos cifrada de Signal.</string>
-  <string name="reminder_header_push_title">Activar Signal mensajes y llamadas</string>
+  <string name="reminder_header_sms_import_text">Pulse para copiar los mensajes SMS de su teléfono a la base de datos cifrada de Delta Chat.</string>
+  <string name="reminder_header_push_title">Activar Delta Chat mensajes y llamadas</string>
   <string name="reminder_header_push_text">Actualiza tu experiencia comunicativa</string>
-  <string name="reminder_header_invite_title">Invitar a Signal</string>
+  <string name="reminder_header_invite_title">Invitar a Delta Chat</string>
   <string name="reminder_header_invite_text">Lleva su conversación con %1$s al siguiente nivel.</string>
   <string name="reminder_header_share_title">¡Invite a sus amigos!</string>
-  <string name="reminder_header_share_text">Cuantos amigos más usen Signal, mejor será.</string>
-  <string name="reminder_header_service_outage_text">Signal está experimentando dificultades técnicas. Estamos trabajando duro para restablecer el servicio lo antes posible.</string>
+  <string name="reminder_header_share_text">Cuantos amigos más usen Delta Chat, mejor será.</string>
+  <string name="reminder_header_service_outage_text">Delta Chat está experimentando dificultades técnicas. Estamos trabajando duro para restablecer el servicio lo antes posible.</string>
   <!--media_preview-->
   <string name="media_preview__save_title">Guardar</string>
   <string name="media_preview__forward_title">Avanzar</string>
@@ -1161,16 +1161,16 @@ Se recibió un mensaje de intercambio de claves para una versión no válida del
   <string name="ConversationListFragment_loading">Cargando...</string>
   <string name="CallNotificationBuilder_connecting">Conectando...</string>
   <string name="Permissions_permission_required">Se requiere permiso</string>
-  <string name="ConversationActivity_signal_needs_sms_permission_in_order_to_send_an_sms">Signal necesita el permiso SMS para enviar un SMS, pero ha sido denegado permanentemente. Por favor, continúe hacia el menú de configuración de la aplicación, seleccione \"Permisos\", y habilite \"SMS\".</string>
+  <string name="ConversationActivity_signal_needs_sms_permission_in_order_to_send_an_sms">Delta Chat necesita el permiso SMS para enviar un SMS, pero ha sido denegado permanentemente. Por favor, continúe hacia el menú de configuración de la aplicación, seleccione \"Permisos\", y habilite \"SMS\".</string>
   <string name="Permissions_continue">Continuar</string>
   <string name="Permissions_not_now">Ahora no</string>
-  <string name="ConversationListActivity_signal_needs_contacts_permission_in_order_to_search_your_contacts_but_it_has_been_permanently_denied">Signal necesita el permiso Contactos para buscar sus contactos, pero ha sido denegado permanentemente. Por favor, continúe hacia el menú de configuración de la aplicación, seleccione \"Permisos\", y habilite \"Contactos\".</string>
+  <string name="ConversationListActivity_signal_needs_contacts_permission_in_order_to_search_your_contacts_but_it_has_been_permanently_denied">Delta Chat necesita el permiso Contactos para buscar sus contactos, pero ha sido denegado permanentemente. Por favor, continúe hacia el menú de configuración de la aplicación, seleccione \"Permisos\", y habilite \"Contactos\".</string>
   <string name="conversation_activity__enable_signal_messages">HABILITAR MENSAJES DE SIGNAL</string>
-  <string name="SQLCipherMigrationHelper_migrating_signal_database">Migrar base de datos de Signal</string>
+  <string name="SQLCipherMigrationHelper_migrating_signal_database">Migrar base de datos de Delta Chat</string>
   <string name="PushDecryptJob_new_locked_message">Nuevo mensaje bloqueado</string>
   <string name="PushDecryptJob_unlock_to_view_pending_messages">Desbloquear para ver mensajes pendientes</string>
   <string name="ExperienceUpgradeActivity_unlock_to_complete_update">Desbloquear para completar actualización</string>
-  <string name="ExperienceUpgradeActivity_please_unlock_signal_to_complete_update">Por favor, desbloquee Signal para completar la actualización</string>
+  <string name="ExperienceUpgradeActivity_please_unlock_signal_to_complete_update">Por favor, desbloquee Delta Chat para completar la actualización</string>
   <string name="enter_backup_passphrase_dialog__backup_passphrase">Frase-contraseña de la copia de seguridad</string>
   <string name="backup_enable_dialog__backups_will_be_saved_to_external_storage_and_encrypted_with_the_passphrase_below_you_must_have_this_passphrase_in_order_to_restore_a_backup">Las copias de seguridad se guardarán en un almacenamiento externo y se cifrarán con la frase-contraseña de debajo. Ha de tener esta frase-contraseña para restaurar una copia de seguridad.</string>
   <string name="backup_enable_dialog__i_have_written_down_this_passphrase">He anotado esta frase-contraseña. Sin ella, no podría restaurar una copia de seguridad.</string>
@@ -1196,7 +1196,7 @@ Se recibió un mensaje de intercambio de claves para una versión no válida del
   <string name="BackupDialog_disable_and_delete_all_local_backups">¿Deshabilitar y eliminar todas las copias de seguridad locales?</string>
   <string name="BackupDialog_delete_backups_statement">Eliminar copias de seguridad</string>
   <string name="BackupDialog_copied_to_clipboard">Copiado al portapapeles</string>
-  <string name="ChatsPreferenceFragment_signal_requires_external_storage_permission_in_order_to_create_backups">Signal requiere permiso de almacenamiento externo para crear copias de seguridad, pero ha sido denegado permanentemente. Por favor, continúe hacia la configuración de la aplicación, seleccione \"Permisos\" y habilite \"Almacenamiento\".</string>
+  <string name="ChatsPreferenceFragment_signal_requires_external_storage_permission_in_order_to_create_backups">Delta Chat requiere permiso de almacenamiento externo para crear copias de seguridad, pero ha sido denegado permanentemente. Por favor, continúe hacia la configuración de la aplicación, seleccione \"Permisos\" y habilite \"Almacenamiento\".</string>
   <string name="ChatsPreferenceFragment_last_backup_s">Última copia de seguridad: %s</string>
   <string name="ChatsPreferenceFragment_in_progress">En curso</string>
   <string name="LocalBackupJob_creating_backup">Creando copia de seguridad</string>
@@ -1208,9 +1208,9 @@ Se recibió un mensaje de intercambio de claves para una versión no válida del
   <string name="RegistrationActivity_available_in">Disponible en:\u0020</string>
   <string name="BackupUtil_never">Nunca</string>
   <string name="BackupUtil_unknown">Desconocido</string>
-  <string name="prompt_passphrase_activity__unlock_signal">Desbloquear Signal</string>
+  <string name="prompt_passphrase_activity__unlock_signal">Desbloquear Delta Chat</string>
   <string name="preferences_app_protection__screen_lock">Bloqueo de pantalla</string>
-  <string name="preferences_app_protection__lock_signal_access_with_android_screen_lock_or_fingerprint">Bloquear el acceso a Signal con el bloqueo de pantalla de Android o huella dactilar.</string>
+  <string name="preferences_app_protection__lock_signal_access_with_android_screen_lock_or_fingerprint">Bloquear el acceso a Delta Chat con el bloqueo de pantalla de Android o huella dactilar.</string>
   <string name="preferences_app_protection__screen_lock_inactivity_timeout">Tiempo de inactividad para el bloqueo de pantalla</string>
   <string name="AppProtectionPreferenceFragment_none">Ninguno</string>
   <string name="registration_activity__the_registration_lock_pin_is_not_the_same_as_the_sms_verification_code_you_just_received_please_enter_the_pin_you_previously_configured_in_the_application">El PIN de bloqueo de registro es distinto del código de verificación SMS que acaba de recibir. Por favor, introduzca el PIN que ha configurado previamente en la aplicación.</string>
@@ -1221,7 +1221,7 @@ Se recibió un mensaje de intercambio de claves para una versión no válida del
   <string name="registration_lock_dialog_view__confirm_pin">Confirme el PIN</string>
   <string name="registration_lock_reminder_view__enter_your_registration_lock_pin">Introduzca su PIN de bloqueo de registro</string>
   <string name="registration_lock_reminder_view__enter_pin">Introduzca el PIN</string>
-  <string name="preferences_app_protection__enable_a_registration_lock_pin_that_will_be_required">Habilitar un \'PIN de bloqueo de registro\' que se le pedirá para registrar de nuevo este número de teléfono con Signal.</string>
+  <string name="preferences_app_protection__enable_a_registration_lock_pin_that_will_be_required">Habilitar un \'PIN de bloqueo de registro\' que se le pedirá para registrar de nuevo este número de teléfono con Delta Chat.</string>
   <string name="preferences_app_protection__registration_lock_pin">PIN de bloqueo de registro</string>
   <string name="preferences_app_protection__registration_lock">Bloqueo de registro</string>
   <string name="RegistrationActivity_you_must_enter_your_registration_lock_PIN">Tiene que introducir su PIN de bloqueo de registro</string>
@@ -1230,13 +1230,13 @@ Se recibió un mensaje de intercambio de claves para una versión no válida del
   <string name="RegistrationActivity_you_have_made_too_many_incorrect_registration_lock_pin_attempts_please_try_again_in_a_day">Ha realizado demasiados intentos incorrectos de PIN de bloqueo de registro. Por favor, inténtelo de nuevo pasado un día.</string>
   <string name="RegistrationActivity_error_connecting_to_service">Error al conectar al servicio</string>
   <string name="RegistrationActivity_oh_no">¡Oh no!</string>
-  <string name="RegistrationActivity_registration_of_this_phone_number_will_be_possible_without_your_registration_lock_pin_after_seven_days_have_passed">El registro de este número de teléfono será posible sin PIN de bloqueo de registro pasados 7 días desde que este número fuera activado en Signal. Aún le quedan %d días.</string>
+  <string name="RegistrationActivity_registration_of_this_phone_number_will_be_possible_without_your_registration_lock_pin_after_seven_days_have_passed">El registro de este número de teléfono será posible sin PIN de bloqueo de registro pasados 7 días desde que este número fuera activado en Delta Chat. Aún le quedan %d días.</string>
   <string name="RegistrationActivity_registration_lock_pin">PIN de bloqueo de registro</string>
   <string name="RegistrationActivity_this_phone_number_has_registration_lock_enabled_please_enter_the_registration_lock_pin">Este número de teléfono tiene el bloqueo de registro habilitado. Por favor, introduzca el PIN de bloqueo de registro.</string>
-  <string name="RegistrationLockDialog_registration_lock_is_enabled_for_your_phone_number">El bloqueo de registro está habilitado para su número de teléfono. Para ayudarle a memorizar su PIN de bloqueo de registro, Signal le pedirá periódicamente que lo confirme.</string>
+  <string name="RegistrationLockDialog_registration_lock_is_enabled_for_your_phone_number">El bloqueo de registro está habilitado para su número de teléfono. Para ayudarle a memorizar su PIN de bloqueo de registro, Delta Chat le pedirá periódicamente que lo confirme.</string>
   <string name="RegistrationLockDialog_i_forgot_my_pin">Olvidé mi PIN.</string>
   <string name="RegistrationLockDialog_forgotten_pin">¿Ha olvidado el PIN?</string>
-  <string name="RegistrationLockDialog_registration_lock_helps_protect_your_phone_number_from_unauthorized_registration_attempts">El bloqueo de registro ayuda a proteger su número de teléfono de intentos de registro no autorizados. Esta característica se puede deshabilitar en cualquier momento en su configuración de privacidad de Signal.</string>
+  <string name="RegistrationLockDialog_registration_lock_helps_protect_your_phone_number_from_unauthorized_registration_attempts">El bloqueo de registro ayuda a proteger su número de teléfono de intentos de registro no autorizados. Esta característica se puede deshabilitar en cualquier momento en su configuración de privacidad de Delta Chat.</string>
   <string name="RegistrationLockDialog_registration_lock">Bloqueo de registro</string>
   <string name="RegistrationLockDialog_enable">Habilitar</string>
   <string name="RegistrationLockDialog_the_registration_lock_pin_must_be_at_least_four_digits">El PIN de bloqueo de registro debe tener al menos 4 dígitos.</string>
@@ -1246,7 +1246,7 @@ Se recibió un mensaje de intercambio de claves para una versión no válida del
   <string name="RegistrationLockDialog_disable">Deshabilitar</string>
   <string name="RegistrationActivity_continue">Continuar</string>
   <string name="preferences_chats__backups">Copias de seguridad</string>
-  <string name="prompt_passphrase_activity__signal_is_locked">Signal está desbloqueado</string>
+  <string name="prompt_passphrase_activity__signal_is_locked">Delta Chat está desbloqueado</string>
   <string name="prompt_passphrase_activity__tap_to_unlock">PULSE PARA DESBLOQUEAR</string>
   <string name="RegistrationLockDialog_reminder">Recordatorio:</string>
   <string name="recipient_preferences__about">Info</string>

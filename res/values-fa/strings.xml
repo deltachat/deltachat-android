@@ -233,7 +233,7 @@
   <string name="ShareActivity_share_with">به اشتراک گذاشتن با</string>
   <!--ExperienceUpgradeActivity-->
   <string name="ExperienceUpgradeActivity_welcome_to_signal_dgaf">به سیگنال خوش آمدید.</string>
-  <string name="ExperienceUpgradeActivity_textsecure_is_now_called_signal">TextSecure و RedPhone هم اکنون به هم ملحق شده اند ، برای همه کاربردها در : Signal</string>
+  <string name="ExperienceUpgradeActivity_textsecure_is_now_called_signal">TextSecure و RedPhone هم اکنون به هم ملحق شده اند ، برای همه کاربردها در : Delta Chat</string>
   <string name="ExperienceUpgradeActivity_welcome_to_signal_excited">به سیگنال خوش آمدید!</string>
   <string name="ExperienceUpgradeActivity_textsecure_is_now_signal">تکست سکیور حالا هست سیگنال.</string>
   <string name="ExperienceUpgradeActivity_textsecure_is_now_signal_long">تکست سکیور و ردفون ادغام شدند: سیگنال. اطلاعات بیشتر</string>
@@ -851,7 +851,7 @@
   <string name="preferences_notifications__show">نمایش</string>
   <string name="preferences_notifications__ringtone">آهنگ های زنگ</string>
   <string name="preferences_chats__show_invitation_prompts">نمایش دعوتنامه ها</string>
-  <string name="preferences_chats__display_invitation_prompts_for_contacts_without_signal">نمایش دعوتنامه ها برای مخاطبین بدون Signal</string>
+  <string name="preferences_chats__display_invitation_prompts_for_contacts_without_signal">نمایش دعوتنامه ها برای مخاطبین بدون Delta Chat</string>
   <string name="preferences_chats__message_text_size">سایز فونت پیام</string>
   <string name="preferences_events__contact_joined_signal">مخاطب به سیگنال پیوست</string>
   <string name="preferences_notifications__priority">اولویت</string>

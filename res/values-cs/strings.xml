@@ -25,17 +25,17 @@
   </plurals>
   <string name="ApplicationPreferencesActivity_delete">Smazat</string>
   <string name="ApplicationPreferencesActivity_disable_passphrase">Zakázat heslo?</string>
-  <string name="ApplicationPreferencesActivity_this_will_permanently_unlock_signal_and_message_notifications">Tímto trvale odemknete Signal a upozornění na zprávy.</string>
+  <string name="ApplicationPreferencesActivity_this_will_permanently_unlock_signal_and_message_notifications">Tímto trvale odemknete Delta Chat a upozornění na zprávy.</string>
   <string name="ApplicationPreferencesActivity_disable">Deaktivovat</string>
   <string name="ApplicationPreferencesActivity_unregistering">Rušení registrace</string>
-  <string name="ApplicationPreferencesActivity_unregistering_from_signal_messages_and_calls">Odregistrace Signal zpráv a volání</string>
-  <string name="ApplicationPreferencesActivity_disable_signal_messages_and_calls">Zakázat Signal zprávy a volání?</string>
-  <string name="ApplicationPreferencesActivity_disable_signal_messages_and_calls_by_unregistering">Tímto zakážete Signal zprávy a volání odregistrací ze serveru. Abyste mohli používat Signal zprávy v budoucnosti, budete muset znovu registrovat svoje telefonní číslo.</string>
+  <string name="ApplicationPreferencesActivity_unregistering_from_signal_messages_and_calls">Odregistrace Delta Chat zpráv a volání</string>
+  <string name="ApplicationPreferencesActivity_disable_signal_messages_and_calls">Zakázat Delta Chat zprávy a volání?</string>
+  <string name="ApplicationPreferencesActivity_disable_signal_messages_and_calls_by_unregistering">Tímto zakážete Delta Chat zprávy a volání odregistrací ze serveru. Abyste mohli používat Delta Chat zprávy v budoucnosti, budete muset znovu registrovat svoje telefonní číslo.</string>
   <string name="ApplicationPreferencesActivity_error_connecting_to_server">Chyba při připojování k serveru!</string>
   <string name="ApplicationPreferencesActivity_sms_enabled">SMS povoleny</string>
   <string name="ApplicationPreferencesActivity_touch_to_change_your_default_sms_app">Dotykem nastavte výchozí aplikaci pro SMS</string>
   <string name="ApplicationPreferencesActivity_sms_disabled">SMS zakázány</string>
-  <string name="ApplicationPreferencesActivity_touch_to_make_signal_your_default_sms_app">Dotykem nastavíte Signal jako výchozí SMS aplikaci</string>
+  <string name="ApplicationPreferencesActivity_touch_to_make_signal_your_default_sms_app">Dotykem nastavíte Delta Chat jako výchozí SMS aplikaci</string>
   <string name="ApplicationPreferencesActivity_on">zap.</string>
   <string name="ApplicationPreferencesActivity_On">Zap.</string>
   <string name="ApplicationPreferencesActivity_off">vyp.</string>
@@ -77,7 +77,7 @@
   <string name="ClearProfileActivity_remove">Odebrat</string>
   <string name="ClearProfileActivity_remove_profile_photo">Odebrat profilovou fotografii?</string>
   <!--ConfirmIdentityDialog-->
-  <string name="ConfirmIdentityDialog_your_safety_number_with_s_has_changed">Vaše bezpečnostní kódy pro %1$s se změnily. To může znamenat, že se někdo pokouší zachytit vaši konverzaci, nebo jen že si %2$s přeinstaloval Signal a má teď nový identifikační klíč.</string>
+  <string name="ConfirmIdentityDialog_your_safety_number_with_s_has_changed">Vaše bezpečnostní kódy pro %1$s se změnily. To může znamenat, že se někdo pokouší zachytit vaši konverzaci, nebo jen že si %2$s přeinstaloval Delta Chat a má teď nový identifikační klíč.</string>
   <string name="ConfirmIdentityDialog_you_may_wish_to_verify_your_safety_number_with_this_contact">Možná budete chtít zkontrolovat vaše bezpečnostní kódy pro tento kontakt.</string>
   <string name="ConfirmIdentityDialog_accept">Přijmout</string>
   <!--ContactsCursorLoader-->
@@ -86,7 +86,7 @@
   <string name="ContactsCursorLoader_groups">Skupiny</string>
   <!--ContactsDatabase-->
   <string name="ContactsDatabase_message_s">Zpráva %s</string>
-  <string name="ContactsDatabase_signal_call_s">Signal volání %s</string>
+  <string name="ContactsDatabase_signal_call_s">Delta Chat volání %s</string>
   <!--ContactNameEditActivity-->
   <string name="ContactNameEditActivity_given_name">Křestní jméno</string>
   <string name="ContactNameEditActivity_family_name">Příjmení</string>
@@ -106,7 +106,7 @@
   <string name="ConversationItem_click_to_approve_unencrypted">Odeslání se nezdařilo, klikněte pro odeslání nezabepečeným způsobem</string>
   <string name="ConversationItem_click_to_approve_unencrypted_sms_dialog_title">Použít záložní způsob přes nešifrovanou SMS?</string>
   <string name="ConversationItem_click_to_approve_unencrypted_mms_dialog_title">Použít záložní způsob přes nešifrovanou MMS?</string>
-  <string name="ConversationItem_click_to_approve_unencrypted_dialog_message">Tato zpráva <b>není</b> šifrována, protože příjemce již není uživatelem Signal.\n\nOdeslat nešifrovanou zprávu?</string>
+  <string name="ConversationItem_click_to_approve_unencrypted_dialog_message">Tato zpráva <b>není</b> šifrována, protože příjemce již není uživatelem Delta Chat.\n\nOdeslat nešifrovanou zprávu?</string>
   <string name="ConversationItem_unable_to_open_media">Nemohu nalézt aplikaci pro otevření tohoto typu dat.</string>
   <string name="ConversationItem_copied_text">Zkopírováno %s</string>
   <string name="ConversationItem_from_s">od %s</string>
@@ -129,8 +129,8 @@
   <string name="ConversationActivity_are_you_sure_you_want_to_leave_this_group">Jsi si jistý, že chceš opustit tuto skupinu?</string>
   <string name="ConversationActivity_transport_insecure_sms">Nezabezpečená SMS</string>
   <string name="ConversationActivity_transport_insecure_mms">Nezabezpečená MMS</string>
-  <string name="ConversationActivity_transport_signal">Signal</string>
-  <string name="ConversationActivity_lets_switch_to_signal">Pojďme přepnout na Signal: %1$s</string>
+  <string name="ConversationActivity_transport_signal">Delta Chat</string>
+  <string name="ConversationActivity_lets_switch_to_signal">Pojďme přepnout na Delta Chat: %1$s</string>
   <string name="ConversationActivity_lets_use_this_to_chat">Pojďme použít na chat: %1$s</string>
   <string name="ConversationActivity_error_leaving_group">Chyba při opouštění skupiny</string>
   <string name="ConversationActivity_specify_recipient">Vyberte prosím kontakt</string>
@@ -196,7 +196,7 @@
     <item quantity="other">Uloženo %1$d příloh do úložiště</item>
   </plurals>
   <string name="ConversationFragment_pending">Probíhající:</string>
-  <string name="ConversationFragment_push">Data (Signal)</string>
+  <string name="ConversationFragment_push">Data (Delta Chat)</string>
   <string name="ConversationFragment_mms">MMS</string>
   <string name="ConversationFragment_sms">SMS</string>
   <string name="ConversationFragment_deleting">Mažu</string>
@@ -278,21 +278,21 @@
   <!--ShareActivity-->
   <string name="ShareActivity_share_with">Sdílet s</string>
   <!--ExperienceUpgradeActivity-->
-  <string name="ExperienceUpgradeActivity_welcome_to_signal_dgaf">Vítejte v systému Signal</string>
-  <string name="ExperienceUpgradeActivity_textsecure_is_now_called_signal">TextSecure a RedPhone jsou nyní jednou platformou pro důvěrnou komunikaci: Signal.</string>
-  <string name="ExperienceUpgradeActivity_welcome_to_signal_excited">Vítejte v systému Signal!</string>
-  <string name="ExperienceUpgradeActivity_textsecure_is_now_signal">TextSecure je nyní Signal.</string>
-  <string name="ExperienceUpgradeActivity_textsecure_is_now_signal_long">TextSecure a RedPhone jsou nyní jednou aplikací: Signal. Dotkněte se a prozkoumejte.</string>
+  <string name="ExperienceUpgradeActivity_welcome_to_signal_dgaf">Vítejte v systému Delta Chat</string>
+  <string name="ExperienceUpgradeActivity_textsecure_is_now_called_signal">TextSecure a RedPhone jsou nyní jednou platformou pro důvěrnou komunikaci: Delta Chat.</string>
+  <string name="ExperienceUpgradeActivity_welcome_to_signal_excited">Vítejte v systému Delta Chat!</string>
+  <string name="ExperienceUpgradeActivity_textsecure_is_now_signal">TextSecure je nyní Delta Chat.</string>
+  <string name="ExperienceUpgradeActivity_textsecure_is_now_signal_long">TextSecure a RedPhone jsou nyní jednou aplikací: Delta Chat. Dotkněte se a prozkoumejte.</string>
   <string name="ExperienceUpgradeActivity_say_hello_to_video_calls">Přivítejte šifrované video hovory.</string>
-  <string name="ExperienceUpgradeActivity_signal_now_supports_secure_video_calls">Signal nyní podporuje šifrované video hovory. Začněte volat přes Signal jako obvykle, klikněte na video tlačítko a zamávejte na pozdrav.</string>
-  <string name="ExperienceUpgradeActivity_signal_now_supports_secure_video_calling">Signal nyní podporuje šifrované video hovory.</string>
-  <string name="ExperienceUpgradeActivity_signal_now_supports_secure_video_calling_long">Signal nyní podporuje šifrované video hovory. Klikněte pro prozkoumání.</string>
+  <string name="ExperienceUpgradeActivity_signal_now_supports_secure_video_calls">Delta Chat nyní podporuje šifrované video hovory. Začněte volat přes Delta Chat jako obvykle, klikněte na video tlačítko a zamávejte na pozdrav.</string>
+  <string name="ExperienceUpgradeActivity_signal_now_supports_secure_video_calling">Delta Chat nyní podporuje šifrované video hovory.</string>
+  <string name="ExperienceUpgradeActivity_signal_now_supports_secure_video_calling_long">Delta Chat nyní podporuje šifrované video hovory. Klikněte pro prozkoumání.</string>
   <string name="ExperienceUpgradeActivity_ready_for_your_closeup">Připraven na portrét?</string>
   <string name="ExperienceUpgradeActivity_now_you_can_share_a_profile_photo_and_name_with_friends_on_signal">Teď můžete sdílet vaši profilovou fotografii a jméno s vašimi přáteli na Signalu.</string>
   <string name="ExperienceUpgradeActivity_signal_profiles_are_here">Profily jsou tady</string>
   <!--GcmRefreshJob-->
-  <string name="GcmRefreshJob_Permanent_Signal_communication_failure">Trvalá chyba komunikace Signal!</string>
-  <string name="GcmRefreshJob_Signal_was_unable_to_register_with_Google_Play_Services">Signal se nemůže registrovat k službě Google Play. Zprávy a volání jsou proto zakázány: Prosím zkuste se znovu registrovat v menu Nastavení &gt; Rozšířené.</string>
+  <string name="GcmRefreshJob_Permanent_Signal_communication_failure">Trvalá chyba komunikace Delta Chat!</string>
+  <string name="GcmRefreshJob_Signal_was_unable_to_register_with_Google_Play_Services">Delta Chat se nemůže registrovat k službě Google Play. Zprávy a volání jsou proto zakázány: Prosím zkuste se znovu registrovat v menu Nastavení &gt; Rozšířené.</string>
   <!--GiphyActivity-->
   <string name="GiphyActivity_error_while_retrieving_full_resolution_gif">Chyba při získávání GIF v plném rozlišení</string>
   <!--GiphyFragmentPageAdapter-->
@@ -304,14 +304,14 @@
   <string name="GroupCreateActivity_group_name_hint">Název skupiny</string>
   <string name="GroupCreateActivity_actionbar_mms_title">Nová MMS skupina</string>
   <string name="GroupCreateActivity_contacts_dont_support_push">Vybrali jste kontakt</string>
-  <string name="GroupCreateActivity_youre_not_registered_for_signal">Nejste zaregistrován k použití Signalu pro zprávy a volání, takže jsou skupiny Signal zakázány. Prosím registrujte se v Nastavení &gt; Rozšířené</string>
+  <string name="GroupCreateActivity_youre_not_registered_for_signal">Nejste zaregistrován k použití Signalu pro zprávy a volání, takže jsou skupiny Delta Chat zakázány. Prosím registrujte se v Nastavení &gt; Rozšířené</string>
   <string name="GroupCreateActivity_contacts_no_members">Ve vaší skupině musí být alespoň jeden kontakt.</string>
   <string name="GroupCreateActivity_contacts_invalid_number">Jeden z členů Vaší skupiny má číslo, které se nedaří správně zpracovat. Prosím opravte jej nebo odstraňte a zkuste znovu.</string>
   <string name="GroupCreateActivity_avatar_content_description">Obrázek skupiny</string>
   <string name="GroupCreateActivity_menu_apply_button">Použít</string>
   <string name="GroupCreateActivity_creating_group">Vytvářím %1$s…</string>
   <string name="GroupCreateActivity_updating_group">Aktualizuji %1$s...</string>
-  <string name="GroupCreateActivity_cannot_add_non_push_to_existing_group">Nemohu přidat %1$s protože není uživatelem Signal.</string>
+  <string name="GroupCreateActivity_cannot_add_non_push_to_existing_group">Nemohu přidat %1$s protože není uživatelem Delta Chat.</string>
   <string name="GroupCreateActivity_loading_group_details">Načítám podrobnosti skupiny…</string>
   <string name="GroupCreateActivity_youre_already_in_the_group">Již jste ve skupině.</string>
   <!--GroupShareProfileView-->
@@ -342,14 +342,14 @@
     <item quantity="many">Poslat %d SMS pozvánek?</item>
     <item quantity="other">Poslat %d SMS pozvánek?</item>
   </plurals>
-  <string name="InviteActivity_lets_switch_to_signal">Pojďme přepnout na Signal: %1$s</string>
+  <string name="InviteActivity_lets_switch_to_signal">Pojďme přepnout na Delta Chat: %1$s</string>
   <string name="InviteActivity_no_app_to_share_to">Zdá se, že nemáte žádnou aplikaci pro sdílení.</string>
   <string name="InviteActivity_friends_dont_let_friends_text_unencrypted">Přátelé nenechávají přátele komunikovat nešifrovaně.</string>
   <!--MessageDetailsRecipient-->
   <string name="MessageDetailsRecipient_failed_to_send">Nepodařilo se odeslat</string>
   <string name="MessageDetailsRecipient_new_safety_number">Nové bezpečnostní kódy</string>
   <!--MessageRetrievalService-->
-  <string name="MessageRetrievalService_signal">Signal</string>
+  <string name="MessageRetrievalService_signal">Delta Chat</string>
   <string name="MessageRetrievalService_background_connection_enabled">Komunikace na pozadí povolena</string>
   <!--MmsDownloader-->
   <string name="MmsDownloader_error_reading_mms_settings">Chyba při čtení nastavení MMS</string>
@@ -371,9 +371,9 @@
   <string name="MediaOverviewActivity_Media_delete_progress_message">Mažu zprávy...</string>
   <string name="MediaOverviewActivity_Documents">Dokumenty</string>
   <!--- NotificationBarManager-->
-  <string name="NotificationBarManager_signal_call_in_progress">Probíhá Signal volání</string>
-  <string name="NotificationBarManager__establishing_signal_call">Navazuji Signal hovor</string>
-  <string name="NotificationBarManager__incoming_signal_call">Příchozí Signal hovor</string>
+  <string name="NotificationBarManager_signal_call_in_progress">Probíhá Delta Chat volání</string>
+  <string name="NotificationBarManager__establishing_signal_call">Navazuji Delta Chat hovor</string>
+  <string name="NotificationBarManager__incoming_signal_call">Příchozí Delta Chat hovor</string>
   <string name="NotificationBarManager__deny_call">Zakázat volání</string>
   <string name="NotificationBarManager__answer_call">Přijmout hovor</string>
   <string name="NotificationBarManager__end_call">Ukončit hovor</string>
@@ -383,7 +383,7 @@
   <string name="NotificationMmsMessageRecord_downloading_mms_message">Stahuji MMS zprávu</string>
   <string name="NotificationMmsMessageRecord_error_downloading_mms_message">Chyba při stahování MMS zprávy, ťukněte pro opakování</string>
   <!--MessageRecord-->
-  <string name="MessageRecord_message_encrypted_with_a_legacy_protocol_version_that_is_no_longer_supported">Přijata zpráva šifrovaná starou verzí Signal, která již není podporována. Prosím požádejte odesílatele, aby si zaktualizoval aplikaci na nejnovější verzi a poté poslal zprávu znovu.</string>
+  <string name="MessageRecord_message_encrypted_with_a_legacy_protocol_version_that_is_no_longer_supported">Přijata zpráva šifrovaná starou verzí Delta Chat, která již není podporována. Prosím požádejte odesílatele, aby si zaktualizoval aplikaci na nejnovější verzi a poté poslal zprávu znovu.</string>
   <string name="MessageRecord_left_group">Opustil(a) jste skupinu</string>
   <string name="MessageRecord_you_updated_group">Upravil(a) jste skupinu.</string>
   <string name="MessageRecord_you_called">Vy jste volal</string>
@@ -393,7 +393,7 @@
   <string name="MessageRecord_s_called_you">%s vám volal</string>
   <string name="MessageRecord_called_s">Volán %s</string>
   <string name="MessageRecord_missed_call_from">Zmeškaný hovor od %s</string>
-  <string name="MessageRecord_s_joined_signal">%s má Signal!</string>
+  <string name="MessageRecord_s_joined_signal">%s má Delta Chat!</string>
   <string name="MessageRecord_you_disabled_disappearing_messages">Zakázali jste mizení zpráv.</string>
   <string name="MessageRecord_s_disabled_disappearing_messages">%1$szakázal mizení zpráv</string>
   <string name="MessageRecord_you_set_disappearing_message_time_to_s">Nastavili jste časovač pro zmizení zprávy na %1$s.</string>
@@ -423,8 +423,8 @@
   <string name="DeviceProvisioningActivity_content_progress_key_error">Neplatný QR kód.</string>
   <string name="DeviceProvisioningActivity_sorry_you_have_too_many_devices_linked_already">Omlouváme se, ale máte provázáno příliš mnoho zařízení, pokuste se některé odpojit</string>
   <string name="DeviceActivity_sorry_this_is_not_a_valid_device_link_qr_code">Omlouváme se, ale toto není platný QR kód pro provázání zařízení</string>
-  <string name="DeviceProvisioningActivity_link_a_signal_device">Provázat zařízení Signal?</string>
-  <string name="DeviceProvisioningActivity_it_looks_like_youre_trying_to_link_a_signal_device_using_a_3rd_party_scanner">Zdá se, že se snažíte propojit zařízení Signal použitím jiné skenovací aplikace. Pro vaši ochranu, prosím oskenujete kód ještě jednou z aplikace Signal.</string>
+  <string name="DeviceProvisioningActivity_link_a_signal_device">Provázat zařízení Delta Chat?</string>
+  <string name="DeviceProvisioningActivity_it_looks_like_youre_trying_to_link_a_signal_device_using_a_3rd_party_scanner">Zdá se, že se snažíte propojit zařízení Delta Chat použitím jiné skenovací aplikace. Pro vaši ochranu, prosím oskenujete kód ještě jednou z aplikace Delta Chat.</string>
   <string name="DeviceActivity_signal_needs_the_camera_permission_in_order_to_scan_a_qr_code">Signál potřebuje oprávnění pro přístup k fotoaparátu aby skenovat QR kódy, ale toto oprávnění je nyní zakázáno. Prosím pokračujte do menu nastavení aplikací, vyberte \"Oprávnění\" a povolte \"Fotoaparát\".</string>
   <string name="DeviceActivity_unable_to_scan_a_qr_code_without_the_camera_permission">Nelze skenovat QR kód bez přístupu k fotoaparátu.</string>
   <!--ExpirationDialog-->
@@ -433,7 +433,7 @@
   <string name="ExpirationDialog_your_messages_will_disappear_s_after_they_have_been_seen">Zprávy odeslané a přijaté v této konverzaci zmizí za %s po jejich shlédnutí.</string>
   <!--PassphrasePromptActivity-->
   <string name="PassphrasePromptActivity_enter_passphrase">Zadat heslo</string>
-  <string name="PassphrasePromptActivity_watermark_content_description">Ikona Signal</string>
+  <string name="PassphrasePromptActivity_watermark_content_description">Ikona Delta Chat</string>
   <string name="PassphrasePromptActivity_ok_button_content_description">Zadejte heslo</string>
   <string name="PassphrasePromptActivity_invalid_passphrase_exclamation">Chybné heslo!</string>
   <!--PlayServicesProblemFragment-->
@@ -478,7 +478,7 @@ telefonní číslo</string>
   <string name="RegistrationActivity_invalid_number">Neplatné číslo</string>
   <string name="RegistrationActivity_the_number_you_specified_s_is_invalid">Zadané číslo (%s) je neplatné</string>
   <string name="RegistrationActivity_missing_google_play_services">Chybí Google Play služba</string>
-  <string name="RegistrationActivity_this_device_is_missing_google_play_services">Toto zařízení nepodporuje službu Google Play. Můžete stále používat Signal, ale tato konfigurace může mít za náísledek snížení spolehlivosti nebo výkonu.\n\n Jestli nejste zkušený uživatel, nepoužíváte alternativní Android ROM nebo si myslíte, že je to chyba, kontaktujte support@signal.org aby vám pomohli vyřešit tento problém.</string>
+  <string name="RegistrationActivity_this_device_is_missing_google_play_services">Toto zařízení nepodporuje službu Google Play. Můžete stále používat Delta Chat, ale tato konfigurace může mít za náísledek snížení spolehlivosti nebo výkonu.\n\n Jestli nejste zkušený uživatel, nepoužíváte alternativní Android ROM nebo si myslíte, že je to chyba, kontaktujte support@signal.org aby vám pomohli vyřešit tento problém.</string>
   <string name="RegistrationActivity_i_understand">Rozumím</string>
   <string name="RegistrationActivity_play_services_error">Chyba Google Play </string>
   <string name="RegistrationActivity_google_play_services_is_updating_or_unavailable">Služba Google Play se aktulizuje nebo je dočasně nedostupná. Zkuste to prosím znovu.</string>
@@ -499,12 +499,12 @@ telefonní číslo</string>
   <!--SharedContactDetailsActivity-->
   <string name="SharedContactDetailsActivity_add_to_contacts">Přidat do kontaktů</string>
   <string name="SharedContactDetailsActivity_invite_to_signal">Pozvat do Signalu</string>
-  <string name="SharedContactDetailsActivity_signal_message">Zpráva Signal</string>
-  <string name="SharedContactDetailsActivity_signal_call">Signal volání</string>
+  <string name="SharedContactDetailsActivity_signal_message">Zpráva Delta Chat</string>
+  <string name="SharedContactDetailsActivity_signal_call">Delta Chat volání</string>
   <!--SharedContactView-->
   <string name="SharedContactView_add_to_contacts">Přidat do kontaktů</string>
   <string name="SharedContactView_invite_to_signal">Pozvat do Signalu</string>
-  <string name="SharedContactView_message">Zpráva Signal</string>
+  <string name="SharedContactView_message">Zpráva Delta Chat</string>
   <!--Slide-->
   <string name="Slide_image">Obrázek</string>
   <string name="Slide_audio">Audio</string>
@@ -526,7 +526,7 @@ Obdržen požadavek na výměnu klíčů pro neplatnou verzi protokolu.</string>
   <string name="ThreadRecord_called_you">Volal vás</string>
   <string name="ThreadRecord_missed_call">Zmeškaný hovor</string>
   <string name="ThreadRecord_media_message">Multimediální zpráva</string>
-  <string name="ThreadRecord_s_is_on_signal">%s má Signal!</string>
+  <string name="ThreadRecord_s_is_on_signal">%s má Delta Chat!</string>
   <string name="ThreadRecord_disappearing_messages_disabled">Mizení zpráv je zakázáno</string>
   <string name="ThreadRecord_disappearing_message_time_updated_to_s">Čas zmizení zprávy nastaven na %s</string>
   <string name="ThreadRecord_safety_number_changed">Bezpečnostní kód se změnil</string>
@@ -534,8 +534,8 @@ Obdržen požadavek na výměnu klíčů pro neplatnou verzi protokolu.</string>
   <string name="ThreadRecord_you_marked_verified">Označen jako ověřený</string>
   <string name="ThreadRecord_you_marked_unverified">Označen jako neověřený</string>
   <!--UpdateApkReadyListener-->
-  <string name="UpdateApkReadyListener_Signal_update">Aktualizace Signal</string>
-  <string name="UpdateApkReadyListener_a_new_version_of_signal_is_available_tap_to_update">Je k dispozici nová verze Signal, klikněte pro aktualizaci</string>
+  <string name="UpdateApkReadyListener_Signal_update">Aktualizace Delta Chat</string>
+  <string name="UpdateApkReadyListener_a_new_version_of_signal_is_available_tap_to_update">Je k dispozici nová verze Delta Chat, klikněte pro aktualizaci</string>
   <!--UnknownSenderView-->
   <string name="UnknownSenderView_block_s">Blokovat %s?</string>
   <string name="UnknownSenderView_blocked_contacts_will_no_longer_be_able_to_send_you_messages_or_call_you">Blokované kontakty vám už nebudou smět posílat zprávy ani volat.</string>
@@ -550,11 +550,11 @@ Obdržen požadavek na výměnu klíčů pro neplatnou verzi protokolu.</string>
   <string name="UnverifiedSendDialog_send_message">Odeslat zprávu?</string>
   <string name="UnverifiedSendDialog_send">Odeslat</string>
   <!--VerifyIdentityActivity-->
-  <string name="VerifyIdentityActivity_your_contact_is_running_an_old_version_of_signal">Váš kontakt používá starou verzi aplikace Signal. Před kontrolou bezpečnostních kódů jej prosím požádejte, aby si aplikaci aktualizoval.</string>
-  <string name="VerifyIdentityActivity_your_contact_is_running_a_newer_version_of_Signal">Váš kontakt používá novější verzi Signal s nekompatibilním formátem QR kódu. Prosím, aktualizujte svou verzi, abyste mohli QR kódy porovnat.</string>
+  <string name="VerifyIdentityActivity_your_contact_is_running_an_old_version_of_signal">Váš kontakt používá starou verzi aplikace Delta Chat. Před kontrolou bezpečnostních kódů jej prosím požádejte, aby si aplikaci aktualizoval.</string>
+  <string name="VerifyIdentityActivity_your_contact_is_running_a_newer_version_of_Signal">Váš kontakt používá novější verzi Delta Chat s nekompatibilním formátem QR kódu. Prosím, aktualizujte svou verzi, abyste mohli QR kódy porovnat.</string>
   <string name="VerifyIdentityActivity_the_scanned_qr_code_is_not_a_correctly_formatted_safety_number">Naskenovaný QR kód nemá správný formát bezpečnostního kódu. Prosím naskenujte QR kód znovu.</string>
   <string name="VerifyIdentityActivity_share_safety_number_via">Sdílet bezpečnostní kód prostřednictvím ...</string>
-  <string name="VerifyIdentityActivity_our_signal_safety_number">Vaš Signal bezpečnostní kód:</string>
+  <string name="VerifyIdentityActivity_our_signal_safety_number">Vaš Delta Chat bezpečnostní kód:</string>
   <string name="VerifyIdentityActivity_no_app_to_share_to">Zdá se, že nemáte žádnou aplikaci pro sdílení.</string>
   <string name="VerifyIdentityActivity_no_safety_number_to_compare_was_found_in_the_clipboard">Ve schránce nebyl nalezen žádný bezpečnostní kód pro porovnání.</string>
   <string name="VerifyIdentityActivity_signal_needs_the_camera_permission_in_order_to_scan_a_qr_code_but_it_has_been_permanently_denied">Signál potřebuje oprávnění pro přístup k fotoaparátu aby skenovat QR kódy, ale toto oprávnění je nyní zakázáno. Prosím pokračujte do menu nastavení aplikací, vyberte \"Oprávnění\" a povolte \"Fotoaparát\".</string>
@@ -577,8 +577,8 @@ Obdržen požadavek na výměnu klíčů pro neplatnou verzi protokolu.</string>
   <!--KeyCachingService-->
   <string name="KeyCachingService_signal_passphrase_cached">Stisknutím otevřete.</string>
   <string name="KeyCachingService_signal_passphrase_cached_with_lock">Dotykem otevřete nebo stisknutím zámku uzamkněte.</string>
-  <string name="KeyCachingService_passphrase_cached">Signal je odemčen</string>
-  <string name="KeyCachingService_lock">Zamknout Signal</string>
+  <string name="KeyCachingService_passphrase_cached">Delta Chat je odemčen</string>
+  <string name="KeyCachingService_lock">Zamknout Delta Chat</string>
   <!--MediaPreviewActivity-->
   <string name="MediaPreviewActivity_you">Vy</string>
   <string name="MediaPreviewActivity_unssuported_media_type">Nepodporovaný typ dat.</string>
@@ -599,12 +599,12 @@ Obdržen požadavek na výměnu klíčů pro neplatnou verzi protokolu.</string>
   <string name="MessageNotifier_mark_read">Označit jako přečtené</string>
   <string name="MessageNotifier_media_message">Multimediální zpráva</string>
   <string name="MessageNotifier_reply">Odpověď</string>
-  <string name="MessageNotifier_pending_signal_messages">Nevyřízené zprávy Signal</string>
-  <string name="MessageNotifier_you_have_pending_signal_messages">Máte nevyřízené zprávy Signal, klepnutím je otevřete a načtete.</string>
+  <string name="MessageNotifier_pending_signal_messages">Nevyřízené zprávy Delta Chat</string>
+  <string name="MessageNotifier_you_have_pending_signal_messages">Máte nevyřízené zprávy Delta Chat, klepnutím je otevřete a načtete.</string>
   <string name="MessageNotifier_contact_message">%1$s %2$s</string>
   <string name="MessageNotifier_unknown_contact_message">Kontakt</string>
   <!--QuickResponseService-->
-  <string name="QuickResponseService_quick_response_unavailable_when_Signal_is_locked">Rychlá odpověď není dostupná, pokud je Signal uzamčen!</string>
+  <string name="QuickResponseService_quick_response_unavailable_when_Signal_is_locked">Rychlá odpověď není dostupná, pokud je Delta Chat uzamčen!</string>
   <string name="QuickResponseService_problem_sending_message">Problém při odesílání zprávy!</string>
   <!--SaveAttachmentTask-->
   <string name="SaveAttachmentTask_saved_to">Uložit do %s</string>
@@ -612,7 +612,7 @@ Obdržen požadavek na výměnu klíčů pro neplatnou verzi protokolu.</string>
   <string name="SearchToolbar_search">Hledat</string>
   <string name="SearchToolbar_search_for_conversations_contacts_and_messages">Hledání konverzací, kontaktů a zpráv</string>
   <!--SingleRecipientNotificationBuilder-->
-  <string name="SingleRecipientNotificationBuilder_signal">Signal</string>
+  <string name="SingleRecipientNotificationBuilder_signal">Delta Chat</string>
   <string name="SingleRecipientNotificationBuilder_new_message">Nová zpráva</string>
   <!--UnauthorizedReminder-->
   <string name="UnauthorizedReminder_device_no_longer_registered">Zařízení již není reigstrováno</string>
@@ -623,7 +623,7 @@ Obdržen požadavek na výměnu klíčů pro neplatnou verzi protokolu.</string>
   <string name="WebRtcCallActivity_to_answer_the_call_from_s_give_signal_access_to_your_microphone">Chcete-li přijmout hovor od %s povolete Signálu přístup k mikrofonu.</string>
   <string name="WebRtcCallActivity_signal_requires_microphone_and_camera_permissions_in_order_to_make_or_receive_calls">Signál potřebuje oprávnění pro přístup k fotoaparátu a mikrofonu abyste mohli volat nebo přijímat hovory, ale tato oprávnění jsou nyní zakázána. Prosím pokračujte do menu nastavení aplikací, vyberte \"Oprávnění\" a povolte \"Fotoaparát\" a \"Mikrofon\".</string>
   <!--WebRtcCallScreen-->
-  <string name="WebRtcCallScreen_new_safety_numbers">Bezpečnostní kódy pro konverzaci s %1$s se změnily. To může znamenat, že se někdo pokouší zachytit vaši konverzaci, nebo že %2$s si jednoduše jen přeinstaloval Signal.</string>
+  <string name="WebRtcCallScreen_new_safety_numbers">Bezpečnostní kódy pro konverzaci s %1$s se změnily. To může znamenat, že se někdo pokouší zachytit vaši konverzaci, nebo že %2$s si jednoduše jen přeinstaloval Delta Chat.</string>
   <string name="WebRtcCallScreen_you_may_wish_to_verify_this_contact">Možná budete chtít zkontrolovat vaše bezpečnostní kódy pro tento kontakt.</string>
   <string name="WebRtcCallScreen_new_safety_number_title">Nové bezpečnostní kódy</string>
   <string name="WebRtcCallScreen_accept">Přijmout</string>
@@ -666,7 +666,7 @@ Obdržen požadavek na výměnu klíčů pro neplatnou verzi protokolu.</string>
   <string name="contact_selection_list_fragment__signal_needs_access_to_your_contacts_in_order_to_display_them">Signál potřebuje přístup k vašim kontaktům aby je mohl zobrazit.</string>
   <string name="contact_selection_list_fragment__show_contacts">Zobrazit kontakty</string>
   <!--conversation_activity-->
-  <string name="conversation_activity__type_message_push">Zpráva Signal</string>
+  <string name="conversation_activity__type_message_push">Zpráva Delta Chat</string>
   <string name="conversation_activity__type_message_sms_insecure">Nezabezpečená SMS</string>
   <string name="conversation_activity__type_message_mms_insecure">Nezabezpečená MMS</string>
   <string name="conversation_activity__from_sim_name">Od %1$s</string>
@@ -676,7 +676,7 @@ Obdržen požadavek na výměnu klíčů pro neplatnou verzi protokolu.</string>
   <string name="conversation_activity__attachment_thumbnail">Připojený náhled</string>
   <string name="conversation_activity__quick_attachment_drawer_toggle_camera_description">Vytvořit rychlou přílohu kamerou</string>
   <string name="conversation_activity__quick_attachment_drawer_record_and_send_audio_description">Nahrát a poslat zvukovou přílohu</string>
-  <string name="conversation_activity__enable_signal_for_sms">Povolit aplikaci Signal pro SMS</string>
+  <string name="conversation_activity__enable_signal_for_sms">Povolit aplikaci Delta Chat pro SMS</string>
   <!--conversation_input_panel-->
   <string name="conversation_input_panel__slide_to_cancel">PŘESUŇTE PRO ZRUŠENÍ</string>
   <!--conversation_item-->
@@ -757,9 +757,9 @@ Obdržen požadavek na výměnu klíčů pro neplatnou verzi protokolu.</string>
   <string name="IdentityUtil_unverified_banner_one">Vaše bezpečnostní kódy pro komunikaci s %s již nejsou ověřené.</string>
   <string name="IdentityUtil_unverified_banner_two">Vaše bezpečnostní kódy pro komunikaci s %1$s a %2$s již nejsou ověřené.</string>
   <string name="IdentityUtil_unverified_banner_many">Vaše bezpečnostní kódy pro komunikaci s %1$s, %2$s a %3$s již nejsou ověřené.</string>
-  <string name="IdentityUtil_unverified_dialog_one">Vaše bezpečnostní kódy pro komunikaci s %1$s již nejsou ověřené. To může znamenat, že se někdo pokouší zachytit vaši konverzaci, nebo že si jen %1$s přeinstaloval Signal.</string>
-  <string name="IdentityUtil_unverified_dialog_two">Vaše bezpečnostní kódy pro komunikaci s %1$s a %2$s již nejsou ověřené. To může znamenat, že se někdo pokouší zachytit vaši konverzaci, nebo jen že si přeinstalovali Signal.</string>
-  <string name="IdentityUtil_unverified_dialog_many">Vaše bezpečnostní kódy pro komunikaci s %1$s, %2$s a %3$s již nejsou ověřené. To může znamenat, že se někdo pokouší zachytit vaši konverzaci, nebo že si jen přeinstalovali Signal.</string>
+  <string name="IdentityUtil_unverified_dialog_one">Vaše bezpečnostní kódy pro komunikaci s %1$s již nejsou ověřené. To může znamenat, že se někdo pokouší zachytit vaši konverzaci, nebo že si jen %1$s přeinstaloval Delta Chat.</string>
+  <string name="IdentityUtil_unverified_dialog_two">Vaše bezpečnostní kódy pro komunikaci s %1$s a %2$s již nejsou ověřené. To může znamenat, že se někdo pokouší zachytit vaši konverzaci, nebo jen že si přeinstalovali Delta Chat.</string>
+  <string name="IdentityUtil_unverified_dialog_many">Vaše bezpečnostní kódy pro komunikaci s %1$s, %2$s a %3$s již nejsou ověřené. To může znamenat, že se někdo pokouší zachytit vaši konverzaci, nebo že si jen přeinstalovali Delta Chat.</string>
   <string name="IdentityUtil_untrusted_dialog_one">Váš bezpečnostní kód s %s se právě změnil</string>
   <string name="IdentityUtil_untrusted_dialog_two">Váš bezpečnostní kódy pro komunikaci s %1$s a %2$s se právě změnily</string>
   <string name="IdentityUtil_untrusted_dialog_many">Váš bezpečnostní kódy pro komunikaci s %1$s, %2$s a %3$s se právě změnily</string>
@@ -779,7 +779,7 @@ Obdržen požadavek na výměnu klíčů pro neplatnou verzi protokolu.</string>
   <string name="log_submit_activity__submitting">Odesílání</string>
   <string name="log_submit_activity__no_browser_installed">Žádný prohlížeč není nainstalován</string>
   <!--database_migration_activity-->
-  <string name="database_migration_activity__would_you_like_to_import_your_existing_text_messages">Chcete importovat vaše existující textové zprávy do zašifrované databáze Signal?</string>
+  <string name="database_migration_activity__would_you_like_to_import_your_existing_text_messages">Chcete importovat vaše existující textové zprávy do zašifrované databáze Delta Chat?</string>
   <string name="database_migration_activity__the_default_system_database_will_not_be_modified">Původní systémová databáze tím nebude dotčena, ani žádným způsobem modifikována.</string>
   <string name="database_migration_activity__skip">Přeskočit</string>
   <string name="database_migration_activity__import">Import</string>
@@ -813,7 +813,7 @@ Obdržen požadavek na výměnu klíčů pro neplatnou verzi protokolu.</string>
   <!--prompt_passphrase_activity-->
   <string name="prompt_passphrase_activity__unlock">Odemknout</string>
   <!--prompt_mms_activity-->
-  <string name="prompt_mms_activity__signal_requires_mms_settings_to_deliver_media_and_group_messages">Signal vyžaduje informace o nastavení MMS, aby mohly být média a skupinové zprávy doručovány. Váš přístroj tyto informace neposkytuje, což se stává u zamknutých nebo jinak upravených přístrojů.</string>
+  <string name="prompt_mms_activity__signal_requires_mms_settings_to_deliver_media_and_group_messages">Delta Chat vyžaduje informace o nastavení MMS, aby mohly být média a skupinové zprávy doručovány. Váš přístroj tyto informace neposkytuje, což se stává u zamknutých nebo jinak upravených přístrojů.</string>
   <string name="prompt_mms_activity__to_send_media_and_group_messages_tap_ok">Pro odesílání médií a skupinových zpráv klepněte na OK a vyplňte požadované informace. Nastavení MMS pro vašeho operátora lze většinou zjistit hledáním \"*váš operátor* APN\". Toto stačí udělat pouze jednou.</string>
   <!--profile_create_activity-->
   <string name="profile_create_activity__set_later">Nastavit později</string>
@@ -834,12 +834,12 @@ Obdržen požadavek na výměnu klíčů pro neplatnou verzi protokolu.</string>
   <string name="recipient_preferences__call_settings">Nastavení volání</string>
   <string name="recipient_preferences__ringtone">Vyzvánění</string>
   <!--- redphone_call_controls-->
-  <string name="redphone_call_card__signal_call">Signal volání</string>
+  <string name="redphone_call_card__signal_call">Delta Chat volání</string>
   <string name="redphone_call_controls__mute">Ztlumit</string>
   <string name="redphone_call_controls__flip_camera_rear">Přepnout foťák</string>
   <!--registration_activity-->
   <string name="registration_activity__phone_number">Telefonní číslo</string>
-  <string name="registration_activity__registration_will_transmit_some_contact_information_to_the_server_temporariliy">Signal umožňuje snadnou komunikaci použitím vašeho telefonního čísla a kontaktů. Přátelé a ostatní, kteří vědí, jak vás kontaktovat prostřednictvím telefonu, Vás budou moci snadno kontaktovat i pomocí aplikace Signal.\n\nRegistrace odesílá některé kontaktní údaje na server, kde ale nejsou uloženy.</string>
+  <string name="registration_activity__registration_will_transmit_some_contact_information_to_the_server_temporariliy">Delta Chat umožňuje snadnou komunikaci použitím vašeho telefonního čísla a kontaktů. Přátelé a ostatní, kteří vědí, jak vás kontaktovat prostřednictvím telefonu, Vás budou moci snadno kontaktovat i pomocí aplikace Delta Chat.\n\nRegistrace odesílá některé kontaktní údaje na server, kde ale nejsou uloženy.</string>
   <string name="registration_activity__verify_your_number">Zkontrolujte vaše číslo</string>
   <string name="registration_activity__please_enter_your_mobile_number_to_receive_a_verification_code_carrier_rates_may_apply">Zadejte své mobilní číslo a obdržíte ověřovací kód. Může být zpoplatněno.</string>
   <!--recipients_panel-->
@@ -918,8 +918,8 @@ Obdržen požadavek na výměnu klíčů pro neplatnou verzi protokolu.</string>
   <string name="preferences__sms_mms">SMS a MMS</string>
   <string name="preferences__pref_all_sms_title">Přijímat všechny SMS</string>
   <string name="preferences__pref_all_mms_title">Přijímat všechny MMS</string>
-  <string name="preferences__use_signal_for_viewing_and_storing_all_incoming_text_messages">Použít Signal pro všechny příchozí textové zprávy</string>
-  <string name="preferences__use_signal_for_viewing_and_storing_all_incoming_multimedia_messages">Použít Signal pro všechny příchozí multimediální zprávy</string>
+  <string name="preferences__use_signal_for_viewing_and_storing_all_incoming_text_messages">Použít Delta Chat pro všechny příchozí textové zprávy</string>
+  <string name="preferences__use_signal_for_viewing_and_storing_all_incoming_multimedia_messages">Použít Delta Chat pro všechny příchozí multimediální zprávy</string>
   <string name="preferences__pref_enter_sends_title">Klávesa Enter odesílá</string>
   <string name="preferences__pressing_the_enter_key_will_send_text_messages">Stisk tlačítka \'enter\' na klávesnici odešle zprávu</string>
   <string name="preferences__choose_identity">Zvolit identitu</string>
@@ -930,7 +930,7 @@ Obdržen požadavek na výměnu klíčů pro neplatnou verzi protokolu.</string>
   <string name="preferences__lock_signal_and_message_notifications_with_a_passphrase">Zamknout obrazovky a upozornění heslem</string>
   <string name="preferences__screen_security">Zabezpečení obrazovky</string>
   <string name="preferences__disable_screen_security_to_allow_screen_shots">Zablokovat náhled v seznamu aplikací</string>
-  <string name="preferences__auto_lock_signal_after_a_specified_time_interval_of_inactivity">Automaticky zamknout Signal po určité době neaktivity</string>
+  <string name="preferences__auto_lock_signal_after_a_specified_time_interval_of_inactivity">Automaticky zamknout Delta Chat po určité době neaktivity</string>
   <string name="preferences__inactivity_timeout_passphrase">Heslo po době neaktivity</string>
   <string name="preferences__inactivity_timeout_interval">Interval neaktivity</string>
   <string name="preferences__notifications">Upozornění</string>
@@ -982,8 +982,8 @@ Obdržen požadavek na výměnu klíčů pro neplatnou verzi protokolu.</string>
   <string name="preferences__theme">Motiv</string>
   <string name="preferences__default">Výchozí</string>
   <string name="preferences__language">Jazyk</string>
-  <string name="preferences__signal_messages_and_calls">Signal zprávy a volání</string>
-  <string name="preferences__free_private_messages_and_calls">Svobodné šifrované zprávy a volání uživatelům Signal</string>
+  <string name="preferences__signal_messages_and_calls">Delta Chat zprávy a volání</string>
+  <string name="preferences__free_private_messages_and_calls">Svobodné šifrované zprávy a volání uživatelům Delta Chat</string>
   <string name="preferences__submit_debug_log">Odeslat ladicí log</string>
   <string name="preferences__support_wifi_calling">\'Wifi volání\' kompatibilní mód</string>
   <string name="preferences__enable_if_your_device_supports_sms_mms_delivery_over_wifi">Povolit pokud vaše zařízení používá doručování SMS/MMS přes Wifi (povoleno pouze když je na zařízení povoleno \'Wifi volání\')</string>
@@ -998,8 +998,8 @@ Obdržen požadavek na výměnu klíčů pro neplatnou verzi protokolu.</string>
   <string name="preferences_chats__media_auto_download">Automatické stahování multimédií</string>
   <string name="preferences_chats__message_trimming">Ořezávání práv</string>
   <string name="preferences_advanced__use_system_emoji">Použít systémové smajlíky</string>
-  <string name="preferences_advanced__disable_signal_built_in_emoji_support">Zakázat použití interních smajlíků aplikace Signal </string>
-  <string name="preferences_advanced__relay_all_calls_through_the_signal_server_to_avoid_revealing_your_ip_address">Přenášet všechna volání přes servery Signal, aby nedošlo k odhalení vaší IP adresy volanému. Povolením dojde ke zhoršení kvality hovoru.</string>
+  <string name="preferences_advanced__disable_signal_built_in_emoji_support">Zakázat použití interních smajlíků aplikace Delta Chat </string>
+  <string name="preferences_advanced__relay_all_calls_through_the_signal_server_to_avoid_revealing_your_ip_address">Přenášet všechna volání přes servery Delta Chat, aby nedošlo k odhalení vaší IP adresy volanému. Povolením dojde ke zhoršení kvality hovoru.</string>
   <string name="preferences_advanced__always_relay_calls">Vždy předávat hovory</string>
   <string name="preferences_app_protection__app_access">Přístup aplikace</string>
   <string name="preferences_app_protection__communication">Komunikace</string>
@@ -1011,7 +1011,7 @@ Obdržen požadavek na výměnu klíčů pro neplatnou verzi protokolu.</string>
   <string name="preferences_notifications__calls">Volání</string>
   <string name="preferences_notifications__ringtone">Vyzvánění</string>
   <string name="preferences_chats__show_invitation_prompts">Zobrazovat pozvánky</string>
-  <string name="preferences_chats__display_invitation_prompts_for_contacts_without_signal">Zobrazovat pozvánky pro kontakty bez aplikace Signal</string>
+  <string name="preferences_chats__display_invitation_prompts_for_contacts_without_signal">Zobrazovat pozvánky pro kontakty bez aplikace Delta Chat</string>
   <string name="preferences_chats__message_text_size">Velikost písma zprávy</string>
   <string name="preferences_events__contact_joined_signal">Kontakt se připojil k Signalu</string>
   <string name="preferences_notifications__priority">Priorita</string>
@@ -1023,7 +1023,7 @@ Obdržen požadavek na výměnu klíčů pro neplatnou verzi protokolu.</string>
   <!--conversation_callable_insecure-->
   <string name="conversation_callable_insecure__menu_call">Volat</string>
   <!--conversation_callable_secure-->
-  <string name="conversation_callable_secure__menu_call">Signal volání</string>
+  <string name="conversation_callable_secure__menu_call">Delta Chat volání</string>
   <!--conversation_context-->
   <string name="conversation_context__menu_message_details">Podrobnosti zprávy</string>
   <string name="conversation_context__menu_copy_text">Kopírovat text</string>
@@ -1085,26 +1085,26 @@ Obdržen požadavek na výměnu klíčů pro neplatnou verzi protokolu.</string>
   <string name="verify_display_fragment_context_menu__copy_to_clipboard">Zkopírovat do schránky</string>
   <string name="verify_display_fragment_context_menu__compare_with_clipboard">Porovnat se schránkou</string>
   <!--reminder_header-->
-  <string name="reminder_header_outdated_build">Vaše verze aplikace Signal je zastaralá</string>
+  <string name="reminder_header_outdated_build">Vaše verze aplikace Delta Chat je zastaralá</string>
   <plurals name="reminder_header_outdated_build_details">
-    <item quantity="one">Platnost vaší verze aplikace Signal skončí za %d den. Dotykem aktualizujte na nejnovější verzi.</item>
-    <item quantity="few">Platnost vaší verze aplikace Signal skončí za %d dny. Dotykem aktualizujte na nejnovější verzi.</item>
-    <item quantity="many">Platnost vaší verze aplikace Signal skončí za %d dnů. Dotykem aktualizujte na nejnovější verzi.</item>
-    <item quantity="other">Platnost vaší verze aplikace Signal skončí za %d dnů. Dotykem aktualizujte na nejnovější verzi.</item>
+    <item quantity="one">Platnost vaší verze aplikace Delta Chat skončí za %d den. Dotykem aktualizujte na nejnovější verzi.</item>
+    <item quantity="few">Platnost vaší verze aplikace Delta Chat skončí za %d dny. Dotykem aktualizujte na nejnovější verzi.</item>
+    <item quantity="many">Platnost vaší verze aplikace Delta Chat skončí za %d dnů. Dotykem aktualizujte na nejnovější verzi.</item>
+    <item quantity="other">Platnost vaší verze aplikace Delta Chat skončí za %d dnů. Dotykem aktualizujte na nejnovější verzi.</item>
   </plurals>
-  <string name="reminder_header_outdated_build_details_today">Platnost vaší verze aplikace Signal skončí dnes. Dotykem aktualizujte na nejnovější verzi.</string>
-  <string name="reminder_header_expired_build">Platnost vaší verze aplikace Signal vypršela!</string>
+  <string name="reminder_header_outdated_build_details_today">Platnost vaší verze aplikace Delta Chat skončí dnes. Dotykem aktualizujte na nejnovější verzi.</string>
+  <string name="reminder_header_expired_build">Platnost vaší verze aplikace Delta Chat vypršela!</string>
   <string name="reminder_header_expired_build_details">Zprávy nemohou být úspěšně odesílány. Dotykem aktualizujte na nejnovější verzi.</string>
   <string name="reminder_header_sms_default_title">Nastavit jako výchozí aplikaci pro SMS</string>
-  <string name="reminder_header_sms_default_text">Dotykem nastavíte Signal jako výchozí SMS aplikaci</string>
+  <string name="reminder_header_sms_default_text">Dotykem nastavíte Delta Chat jako výchozí SMS aplikaci</string>
   <string name="reminder_header_sms_import_title">Importovat SMS ze systému</string>
-  <string name="reminder_header_sms_import_text">Klikněte pro zkopírování SMS z telefonu do šifrované databáze Signal.</string>
-  <string name="reminder_header_push_title">Povolit Signal zprávy a volání</string>
+  <string name="reminder_header_sms_import_text">Klikněte pro zkopírování SMS z telefonu do šifrované databáze Delta Chat.</string>
+  <string name="reminder_header_push_title">Povolit Delta Chat zprávy a volání</string>
   <string name="reminder_header_push_text">Lepší zážitky z komunikace.</string>
   <string name="reminder_header_invite_title">Pozvat do Signalu</string>
   <string name="reminder_header_invite_text">Posuňte vaši konverzaci s %1$s na vyšší úroveň.</string>
   <string name="reminder_header_share_title">Pozvěte vaše přátele!</string>
-  <string name="reminder_header_share_text">Čím víc bude uživatelů Signal, tím bude lepší.</string>
+  <string name="reminder_header_share_text">Čím víc bude uživatelů Delta Chat, tím bude lepší.</string>
   <string name="reminder_header_service_outage_text">Signál zaznamenal technické potíže. Pracujeme tvrdě na co nejrychlejší obnově služby.</string>
   <!--media_preview-->
   <string name="media_preview__save_title">Uložit</string>
@@ -1132,11 +1132,11 @@ Obdržen požadavek na výměnu klíčů pro neplatnou verzi protokolu.</string>
   <string name="Permissions_not_now">Teď ne</string>
   <string name="ConversationListActivity_signal_needs_contacts_permission_in_order_to_search_your_contacts_but_it_has_been_permanently_denied">Signál potřebuje oprávnění pro přístup ke kontaktům aby je mohl  vyhledávat, ale toto oprávnění je nyní zakázáno. Prosím pokračujte do menu nastavení aplikací, vyberte \"Oprávnění\" a povolte \"Kontakty\", </string>
   <string name="conversation_activity__enable_signal_messages">POVOLIT ZPRÁVY</string>
-  <string name="SQLCipherMigrationHelper_migrating_signal_database">Přesouvám Signal databázi</string>
+  <string name="SQLCipherMigrationHelper_migrating_signal_database">Přesouvám Delta Chat databázi</string>
   <string name="PushDecryptJob_new_locked_message">Nová uzamčená zpráva</string>
   <string name="PushDecryptJob_unlock_to_view_pending_messages">Pro zobrazení čekajících zpráv odemkněte</string>
-  <string name="ExperienceUpgradeActivity_unlock_to_complete_update">Odemknout Signal, aby se dokončila akualizace</string>
-  <string name="ExperienceUpgradeActivity_please_unlock_signal_to_complete_update">Prosím odemkněte Signal, aby se dokončila aktualizace.</string>
+  <string name="ExperienceUpgradeActivity_unlock_to_complete_update">Odemknout Delta Chat, aby se dokončila akualizace</string>
+  <string name="ExperienceUpgradeActivity_please_unlock_signal_to_complete_update">Prosím odemkněte Delta Chat, aby se dokončila aktualizace.</string>
   <string name="enter_backup_passphrase_dialog__backup_passphrase">Heslo pro zálohy</string>
   <string name="backup_enable_dialog__backups_will_be_saved_to_external_storage_and_encrypted_with_the_passphrase_below_you_must_have_this_passphrase_in_order_to_restore_a_backup">Zálohy budou uloženy na externí úložiště a zašifrovány níže uvedeným heslem. Toto heslo musíte znát abyste mohli zálohy obnovit.</string>
   <string name="backup_enable_dialog__i_have_written_down_this_passphrase">Heslo jsem si zapsal. Bez něj nebudu schopen obnovit data ze zálohy.</string>
@@ -1211,7 +1211,7 @@ Obdržen požadavek na výměnu klíčů pro neplatnou verzi protokolu.</string>
   <string name="RegistrationLockDialog_disable">Deaktivovat</string>
   <string name="RegistrationActivity_continue">Pokračovat</string>
   <string name="preferences_chats__backups">Zálohy</string>
-  <string name="prompt_passphrase_activity__signal_is_locked">Signal je zamčen</string>
+  <string name="prompt_passphrase_activity__signal_is_locked">Delta Chat je zamčen</string>
   <string name="prompt_passphrase_activity__tap_to_unlock">Klepnutím odemkněte</string>
   <string name="RegistrationLockDialog_reminder">Připomínka:</string>
   <string name="recipient_preferences__about">Info o</string>
