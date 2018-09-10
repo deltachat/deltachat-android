@@ -1,5 +1,4 @@
-Delta Chat Android Client
-================================================================================
+## Delta Chat Android Client
 
 This is the android client for Delta Chat.  For the core library and other common
 information, please refer to [Delta Chat Core Library](https://github.com/deltachat/deltachat-core).
@@ -10,8 +9,7 @@ For ready-to-use binaries, please go to https://delta.chat .
 [<img src="https://f-droid.org/badge/get-it-on.png" alt="Get it on F-Droid" height="75"/>](https://f-droid.org/packages/com.b44t.messenger)
 
 
-Build
---------------------------------------------------------------------------------
+# Build
 
 When checking out _deltachat-android-ii_, make sure also to check out the
 subproject _deltachat-core_:
@@ -31,8 +29,7 @@ With chance, that's it :) - if not, read on how to setup a proper development
 environment.
 
 
-Install Development Environment
---------------------------------------------------------------------------------
+# Install Development Environment
 
 1. Some libs required by Android Studio may be missing on 64 bit Linux machines 
    [[Source](https://developer.android.com/studio/install.html)], so for Ubuntu execute  
@@ -73,8 +70,12 @@ The last two steps may be omitted by using the new Android Studio NDK options,
 however, thus far, we have not found the time to do so.
 
 
-License
---------------------------------------------------------------------------------
+# Credits
+
+The user interface classes are based on the Signal messenger.
+
+
+# License
 
 Licensed under the GPLv3, see LICENSE file for details.
 
