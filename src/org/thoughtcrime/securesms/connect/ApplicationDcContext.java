@@ -38,6 +38,7 @@ import org.thoughtcrime.securesms.database.RecipientDatabase;
 import org.thoughtcrime.securesms.database.ThreadDatabase;
 import org.thoughtcrime.securesms.database.model.ThreadRecord;
 import org.thoughtcrime.securesms.recipients.Recipient;
+import org.thoughtcrime.securesms.recipients.RecipientProvider;
 import org.thoughtcrime.securesms.util.TextSecurePreferences;
 import org.thoughtcrime.securesms.util.Util;
 import org.whispersystems.libsignal.util.guava.Optional;
@@ -103,24 +104,14 @@ public class ApplicationDcContext extends DcContext {
         DcChat  chat             = chatlist.getChat(i);
         DcLot   summary          = chatlist.getSummary(i, chat);
         int     distributionType = chatId==DcChat.DC_CHAT_ID_ARCHIVED_LINK? ThreadDatabase.DistributionTypes.ARCHIVE : ThreadDatabase.DistributionTypes.CONVERSATION;
-        Address address          = Address.UNKNOWN;//Address.fromSerialized(cursor.getString(cursor.getColumnIndexOrThrow(ThreadDatabase.ADDRESS)));
-
-        Optional<RecipientDatabase.RecipientSettings> settings;
-        Optional<GroupDatabase.GroupRecord>       groupRecord;
-
-        if (distributionType != ThreadDatabase.DistributionTypes.ARCHIVE && distributionType != ThreadDatabase.DistributionTypes.INBOX_ZERO) {
-            settings    = Optional.absent();//DatabaseFactory.getRecipientDatabase(context).getRecipientSettings(cursor);
-            groupRecord = Optional.absent();//DatabaseFactory.getGroupDatabase(context).getGroup(cursor);
-        } else {
-            settings    = Optional.absent();
-            groupRecord = Optional.absent();
-        }
 
         String body = summary.getText1();
         if(!body.isEmpty()) { body += ": "; }
         body += summary.getText2();
 
-        Recipient          recipient            = Recipient.from(context, address, settings, groupRecord, true);
+        RecipientProvider.RecipientDetails recipientDetails = new RecipientProvider.RecipientDetails(chat.getName(), null, false, null, null);
+
+        Recipient          recipient            = new Recipient(Address.UNKNOWN, recipientDetails);
         long               date                 = summary.getTimestamp()*1000;
         long               count                = 1;
         int                unreadCount          = getFreshMsgCount(chatId);

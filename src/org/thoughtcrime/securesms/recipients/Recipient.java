@@ -215,7 +215,7 @@ public class Recipient implements RecipientModifiedListener {
     });
   }
 
-  Recipient(@NonNull Address address, @NonNull RecipientDetails details) {
+  public Recipient(@NonNull Address address, @NonNull RecipientDetails details) {
     this.address               = address;
     this.contactUri            = details.contactUri;
     this.name                  = details.name;

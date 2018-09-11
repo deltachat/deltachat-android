@@ -42,7 +42,7 @@ import java.util.Map;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
 
-class RecipientProvider {
+public class RecipientProvider {
 
   @SuppressWarnings("unused")
   private static final String TAG = RecipientProvider.class.getSimpleName();
@@ -151,7 +151,7 @@ class RecipientProvider {
     return new RecipientDetails(context.getString(R.string.RecipientProvider_unnamed_group), null, false, settings.orNull(), null);
   }
 
-  static class RecipientDetails {
+  public static class RecipientDetails {
     @Nullable final String               name;
     @Nullable final String               customLabel;
     @Nullable final Uri                  systemContactPhoto;
@@ -175,9 +175,9 @@ class RecipientProvider {
               final boolean              profileSharing;
               final boolean              systemContact;
 
-    RecipientDetails(@Nullable String name, @Nullable Long groupAvatarId,
-                     boolean systemContact, @Nullable RecipientSettings settings,
-                     @Nullable List<Recipient> participants)
+    public RecipientDetails(@Nullable String name, @Nullable Long groupAvatarId,
+                            boolean systemContact, @Nullable RecipientSettings settings,
+                            @Nullable List<Recipient> participants)
     {
       this.groupAvatarId         = groupAvatarId;
       this.systemContactPhoto    = settings     != null ? Util.uri(settings.getSystemContactPhotoUri()) : null;
