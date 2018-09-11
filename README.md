@@ -15,11 +15,11 @@ When checking out _deltachat-android-ii_, make sure also to check out the
 subproject _deltachat-core_:
 
 - When using Git, you can can do this initially by
-  `$ git clone --recursive https://github.com/deltachat/deltachat-android-ii.git`
+  `$ git clone --recursive https://github.com/deltachat/deltachat-android-ii`
   or later by `git submodule update --init --recursive`. If you do this in your
   home directory, this results in the folder `~/deltachat-android-ii` which is just fine.
 
-- Alternatively, you can download the [deltachat-android zip-file](https://github.com/deltachat/deltachat-android-ii/archive/master.zip); in this case, also download the [deltachat-core zip-file](https://github.com/deltachat/deltachat-core/archive/master.zip) and place its contents to `MessengerProj/jni/messenger-backend` 
+- Alternatively, you can download the [deltachat-android zip-file](https://github.com/deltachat/deltachat-android-ii/archive/master.zip); in this case, also download the [deltachat-core zip-file](https://github.com/deltachat/deltachat-core/archive/master.zip) and place its contents to `jni/messenger-backend` 
 
 Then, call `ndk-build` in the root directory to build the C-part; 
 this also builds deltachat-core.  Afterwards run the project in Android Studio.
