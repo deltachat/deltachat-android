@@ -339,7 +339,10 @@ public class ConversationListFragment extends Fragment
 
   @Override
   public Loader<DcChatlist> onCreateLoader(int arg0, Bundle arg1) {
-    return new DcChatlistLoader(getActivity(), DcContext.DC_GCL_ADD_ALLDONE_HINT, null, 0);
+    int listflags = 0;
+    if(archive) { listflags |= DcContext.DC_GCL_ARCHIVED_ONLY; }
+    else        { listflags |= DcContext.DC_GCL_ADD_ALLDONE_HINT; }
+    return new DcChatlistLoader(getActivity(), listflags, null, 0);
   }
 
   @Override
@@ -491,7 +494,7 @@ public class ConversationListFragment extends Fragment
     public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
       if (viewHolder.itemView instanceof ConversationListItemInboxZero) return;
       final long threadId    = ((ConversationListItem)viewHolder.itemView).getThreadId();
-      final int  unreadCount = ((ConversationListItem)viewHolder.itemView).getUnreadCount();
+      final DcContext dcContext = DcHelper.getContext(getActivity());
 
       if (archive) {
         new SnackbarAsyncTask<Long>(getView(),
@@ -502,12 +505,12 @@ public class ConversationListFragment extends Fragment
         {
           @Override
           protected void executeAction(@Nullable Long parameter) {
-            DatabaseFactory.getThreadDatabase(getActivity()).unarchiveConversation(threadId);
+            dcContext.archiveChat((int)threadId, 0);
           }
 
           @Override
           protected void reverseAction(@Nullable Long parameter) {
-            DatabaseFactory.getThreadDatabase(getActivity()).archiveConversation(threadId);
+            dcContext.archiveChat((int)threadId, 1);
           }
         }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, threadId);
       } else {
@@ -519,23 +522,12 @@ public class ConversationListFragment extends Fragment
         {
           @Override
           protected void executeAction(@Nullable Long parameter) {
-            DatabaseFactory.getThreadDatabase(getActivity()).archiveConversation(threadId);
-
-            if (unreadCount > 0) {
-              List<MarkedMessageInfo> messageIds = DatabaseFactory.getThreadDatabase(getActivity()).setRead(threadId, false);
-              MessageNotifier.updateNotification(getActivity());
-              MarkReadReceiver.process(getActivity(), messageIds);
-            }
+            dcContext.archiveChat((int)threadId, 1);
           }
 
           @Override
           protected void reverseAction(@Nullable Long parameter) {
-            DatabaseFactory.getThreadDatabase(getActivity()).unarchiveConversation(threadId);
-
-            if (unreadCount > 0) {
-              DatabaseFactory.getThreadDatabase(getActivity()).incrementUnread(threadId, unreadCount);
-              MessageNotifier.updateNotification(getActivity());
-            }
+            dcContext.archiveChat((int)threadId, 0);
           }
         }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, threadId);
       }
