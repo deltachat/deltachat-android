@@ -363,7 +363,7 @@ public class ConversationListFragment extends Fragment
     else {
       listflags |= DcContext.DC_GCL_ADD_ALLDONE_HINT;
     }
-    return new DcChatlistLoader(getActivity(), listflags, null, 0);
+    return new DcChatlistLoader(getActivity(), listflags, queryFilter.isEmpty()? null : queryFilter, 0);
   }
 
   @Override
