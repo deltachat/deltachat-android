@@ -340,8 +340,12 @@ public class ConversationListFragment extends Fragment
   @Override
   public Loader<DcChatlist> onCreateLoader(int arg0, Bundle arg1) {
     int listflags = 0;
-    if(archive) { listflags |= DcContext.DC_GCL_ARCHIVED_ONLY; }
-    else        { listflags |= DcContext.DC_GCL_ADD_ALLDONE_HINT; }
+    if(archive) {
+      listflags |= DcContext.DC_GCL_ARCHIVED_ONLY;
+    }
+    else {
+      listflags |= DcContext.DC_GCL_ADD_ALLDONE_HINT;
+    }
     return new DcChatlistLoader(getActivity(), listflags, null, 0);
   }
 
