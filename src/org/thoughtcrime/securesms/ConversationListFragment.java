@@ -249,6 +249,7 @@ public class ConversationListFragment extends Fragment
 
   @SuppressLint("StaticFieldLeak")
   private void handleArchiveAllSelected() {
+    final DcContext dcContext             = DcHelper.getContext(getActivity());
     final Set<Long> selectedConversations = new HashSet<>(getListAdapter().getBatchSelections());
     final boolean   archive               = this.archive;
 
@@ -279,16 +280,14 @@ public class ConversationListFragment extends Fragment
       @Override
       protected void executeAction(@Nullable Void parameter) {
         for (long threadId : selectedConversations) {
-          if (!archive) DatabaseFactory.getThreadDatabase(getActivity()).archiveConversation(threadId);
-          else          DatabaseFactory.getThreadDatabase(getActivity()).unarchiveConversation(threadId);
+          dcContext.archiveChat((int)threadId, !archive? 1 : 0);
         }
       }
 
       @Override
       protected void reverseAction(@Nullable Void parameter) {
         for (long threadId : selectedConversations) {
-          if (!archive) DatabaseFactory.getThreadDatabase(getActivity()).unarchiveConversation(threadId);
-          else          DatabaseFactory.getThreadDatabase(getActivity()).archiveConversation(threadId);
+          dcContext.archiveChat((int)threadId, !archive? 0 : 1);
         }
       }
     }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
@@ -296,6 +295,7 @@ public class ConversationListFragment extends Fragment
 
   @SuppressLint("StaticFieldLeak")
   private void handleDeleteAllSelected() {
+    final DcContext     dcContext          = DcHelper.getContext(getActivity());
     int                 conversationsCount = getListAdapter().getBatchSelections().size();
     AlertDialog.Builder alert              = new AlertDialog.Builder(getActivity());
     alert.setIconAttribute(R.attr.dialog_alert_icon);
@@ -323,8 +323,9 @@ public class ConversationListFragment extends Fragment
 
           @Override
           protected Void doInBackground(Void... params) {
-            DatabaseFactory.getThreadDatabase(getActivity()).deleteConversations(selectedConversations);
-            MessageNotifier.updateNotification(getActivity());
+            for (long threadId : selectedConversations) {
+              dcContext.deleteChat((int)threadId);
+            }
             return null;
           }
 
