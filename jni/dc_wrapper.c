@@ -28,6 +28,8 @@
 #include "messenger-backend/cmdline/cmdline.h"
 
 
+static dc_msg_t* get_dc_msg(JNIEnv *env, jobject obj);
+
 #define CHAR_REF(a) \
 	const char* a##Ptr = (a)? (*env)->GetStringUTFChars(env, (a), 0) : NULL; // passing a NULL-jstring results in a NULL-ptr - this is needed by functions using eg. NULL for "delete"
 
@@ -473,6 +475,12 @@ JNIEXPORT jlong Java_com_b44t_messenger_DcContext_DcContextGetMsg(JNIEnv *env, j
 }
 
 
+JNIEXPORT jlong Java_com_b44t_messenger_DcContext_createMsgCPtr(JNIEnv *env, jobject obj)
+{
+	return (jlong)dc_msg_new(get_dc_context(env, obj));
+}
+
+
 JNIEXPORT jstring Java_com_b44t_messenger_DcContext_getMsgInfo(JNIEnv *env, jobject obj, jint msg_id)
 {
 	char* temp = dc_get_msg_info(get_dc_context(env, obj), msg_id);
@@ -497,6 +505,12 @@ JNIEXPORT void Java_com_b44t_messenger_DcContext_forwardMsgs(JNIEnv *env, jobjec
 	const uint32_t* msg_ids_ptr = jintArray2uint32Pointer(env, msg_ids, &msg_ids_cnt);
 		dc_forward_msgs(get_dc_context(env, obj), msg_ids_ptr, msg_ids_cnt, chat_id);
 	free(msg_ids_ptr);
+}
+
+
+JNIEXPORT jint Java_com_b44t_messenger_DcContext_sendMsg(JNIEnv *env, jobject obj, jint chat_id, jobject msg)
+{
+	return dc_send_msg(get_dc_context(env, obj), chat_id, get_dc_msg(env, msg));
 }
 
 
@@ -1094,6 +1108,51 @@ JNIEXPORT jstring Java_com_b44t_messenger_DcMsg_getSetupCodeBegin(JNIEnv *env, j
 	return ret;
 }
 
+
+JNIEXPORT void Java_com_b44t_messenger_DcMsg_setType(JNIEnv *env, jobject obj, int type)
+{
+    dc_msg_set_type(get_dc_msg(env, obj), type);
+}
+
+
+JNIEXPORT void Java_com_b44t_messenger_DcMsg_setText(JNIEnv *env, jobject obj, jstring text)
+{
+	CHAR_REF(text);
+		dc_msg_set_text(get_dc_msg(env, obj), textPtr);
+	CHAR_UNREF(text);
+}
+
+
+JNIEXPORT void Java_com_b44t_messenger_DcMsg_setFile(JNIEnv *env, jobject obj, jstring file, jstring filemime)
+{
+	CHAR_REF(file);
+	CHAR_REF(filemime);
+		dc_msg_set_file(get_dc_msg(env, obj), filePtr, filemimePtr);
+	CHAR_UNREF(filemime);
+	CHAR_UNREF(file);
+}
+
+
+JNIEXPORT void Java_com_b44t_messenger_DcMsg_setDimension(JNIEnv *env, jobject obj, int width, int height)
+{
+    dc_msg_set_dimension(get_dc_msg(env, obj), width, height);
+}
+
+
+JNIEXPORT void Java_com_b44t_messenger_DcMsg_setDuration(JNIEnv *env, jobject obj, int duration)
+{
+    dc_msg_set_duration(get_dc_msg(env, obj), duration);
+}
+
+
+JNIEXPORT void Java_com_b44t_messenger_DcMsg_setMediainfo(JNIEnv *env, jobject obj, jstring author, jstring trackname)
+{
+	CHAR_REF(author);
+	CHAR_REF(trackname);
+		dc_msg_set_mediainfo(get_dc_msg(env, obj), authorPtr, tracknamePtr);
+	CHAR_UNREF(trackname);
+	CHAR_UNREF(author);
+}
 
 
 /*******************************************************************************

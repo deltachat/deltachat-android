@@ -45,6 +45,10 @@ public class DcMsg {
     public final static int DC_MSG_ID_MARKER1 = 1;
     public final static int DC_MSG_ID_DAYMARKER = 9;
 
+    public DcMsg(DcContext context) {
+        m_hMsg = context.createMsgCPtr();
+    }
+
     public DcMsg(long hMsg) {
         m_hMsg = hMsg;
     }
@@ -81,6 +85,13 @@ public class DcMsg {
     public native boolean isSetupMessage();
     public native String getSetupCodeBegin();
     public native boolean isIncreation();
+
+    public native void setType(int type);
+    public native void setText(String text);
+    public native void setFile(String file, String filemime);
+    public native void setDimension(int width, int height);
+    public native void setDuration(int duration);
+    public native void setMediainfo(String author, String trackname);
 
     // working with raw c-data
     private long m_hMsg; // must not be renamed as referenced by JNI

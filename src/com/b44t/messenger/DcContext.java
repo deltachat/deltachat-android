@@ -134,6 +134,7 @@ public class DcContext {
     public native int getFreshMsgCount(int chat_id);
     public native void deleteMsgs(int msg_ids[]);
     public native void forwardMsgs(int msg_ids[], int chat_ids);
+    public native int sendMsg(int chat_id, DcMsg msg);
     public native int sendTextMsg(int chat_id, String text);
     public native int sendVcardMsg(int chat_id, int contact_id);
     public native int sendMediaMsg(int chat_id, int type, String file, String mime, int w, int h, int time_ms, String author, String trackname);
@@ -156,6 +157,7 @@ public class DcContext {
     // working with raw c-data
     private long m_hContext = 0; // must not be renamed as referenced by JNI
     private native long DcContextNew(String osName);
+    public native long createMsgCPtr();
     private native static long DcContextGetChatlist(long hContext, int listflags, String query, int queryId);
     private native static long DcContextGetChat(long hContext, int chat_id);
     private native static long DcContextGetMsg(long hMailbox, int id);
