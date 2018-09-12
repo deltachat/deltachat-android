@@ -65,6 +65,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.b44t.messenger.DcChat;
+import com.b44t.messenger.DcContext;
 import com.google.android.gms.location.places.ui.PlacePicker;
 import com.google.protobuf.ByteString;
 
@@ -96,6 +98,7 @@ import org.thoughtcrime.securesms.components.reminder.InviteReminder;
 import org.thoughtcrime.securesms.components.reminder.ReminderView;
 import org.thoughtcrime.securesms.components.reminder.ServiceOutageReminder;
 import org.thoughtcrime.securesms.components.reminder.UnauthorizedReminder;
+import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.contacts.ContactAccessor;
 import org.thoughtcrime.securesms.contacts.ContactAccessor.ContactData;
 import org.thoughtcrime.securesms.contactshare.Contact;
@@ -256,6 +259,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   private   InputPanel             inputPanel;
 
   private Recipient  recipient;
+  private DcContext  dcContext;
   private long       threadId;
   private int        distributionType;
   private boolean    archived;
@@ -277,6 +281,9 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   @Override
   protected void onCreate(Bundle state, boolean ready) {
     Log.w(TAG, "onCreate()");
+
+    final Context context = getApplicationContext();
+    this.dcContext      = DcHelper.getContext(context);
 
     supportRequestWindowFeature(WindowCompat.FEATURE_ACTION_BAR_OVERLAY);
     setContentView(R.layout.conversation_activity);
@@ -1808,13 +1815,16 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
     OutgoingTextMessage message;
 
-    if (isSecureText && !forceSms) {
-      message = new OutgoingEncryptedMessage(recipient, messageBody, expiresIn);
+    if(recipient.getAddress().isDcChat()) {
+      dcContext.sendTextMsg(recipient.getAddress().getDcChatId(), messageBody);
     } else {
-      message = new OutgoingTextMessage(recipient, messageBody, expiresIn, subscriptionId);
-    }
+      if (isSecureText && !forceSms) {
+        message = new OutgoingEncryptedMessage(recipient, messageBody, expiresIn);
+      } else {
+        message = new OutgoingTextMessage(recipient, messageBody, expiresIn, subscriptionId);
+      }
 
-    Permissions.with(this)
+      Permissions.with(this)
                .request(Manifest.permission.SEND_SMS)
                .ifNecessary(forceSms || !isSecureText)
                .withPermanentDenialDialog(getString(R.string.ConversationActivity_signal_needs_sms_permission_in_order_to_send_an_sms))
@@ -1840,6 +1850,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
                })
                .execute();
+    }
   }
 
   private void updateToggleButtonState() {
