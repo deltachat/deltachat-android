@@ -55,6 +55,7 @@ import android.widget.TextView;
 
 import com.b44t.messenger.DcChatlist;
 import com.b44t.messenger.DcContext;
+import com.b44t.messenger.DcEventCenter;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -73,6 +74,7 @@ import org.thoughtcrime.securesms.components.reminder.ServiceOutageReminder;
 import org.thoughtcrime.securesms.components.reminder.ShareReminder;
 import org.thoughtcrime.securesms.components.reminder.SystemSmsImportReminder;
 import org.thoughtcrime.securesms.components.reminder.UnauthorizedReminder;
+import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcChatlistLoader;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.database.DatabaseFactory;
@@ -96,7 +98,7 @@ import java.util.Set;
 
 
 public class ConversationListFragment extends Fragment
-  implements LoaderManager.LoaderCallbacks<DcChatlist>, ActionMode.Callback, ItemClickListener
+  implements LoaderManager.LoaderCallbacks<DcChatlist>, ActionMode.Callback, ItemClickListener, DcEventCenter.DcEventDelegate
 {
   public static final String ARCHIVE = "archive";
 
@@ -118,6 +120,20 @@ public class ConversationListFragment extends Fragment
     super.onCreate(icicle);
     locale  = (Locale) getArguments().getSerializable(PassphraseRequiredActionBarActivity.LOCALE_EXTRA);
     archive = getArguments().getBoolean(ARCHIVE, false);
+
+    ApplicationDcContext dcContext = DcHelper.getContext(getActivity());
+    dcContext.eventCenter.addObserver(this, DcContext.DC_EVENT_CHAT_MODIFIED);
+    dcContext.eventCenter.addObserver(this, DcContext.DC_EVENT_INCOMING_MSG);
+    dcContext.eventCenter.addObserver(this, DcContext.DC_EVENT_MSGS_CHANGED);
+    dcContext.eventCenter.addObserver(this, DcContext.DC_EVENT_MSG_DELIVERED);
+    dcContext.eventCenter.addObserver(this, DcContext.DC_EVENT_MSG_FAILED);
+    dcContext.eventCenter.addObserver(this, DcContext.DC_EVENT_MSG_READ);
+  }
+
+  @Override
+  public void onDestroy() {
+    super.onDestroy();
+    DcHelper.getContext(getActivity()).eventCenter.removeObservers(this);
   }
 
   @Override
@@ -573,6 +589,10 @@ public class ConversationListFragment extends Fragment
         super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive);
       }
     }
+  }
+
+  public void handleEvent(int eventId, Object data1, Object data2) {
+    getLoaderManager().restartLoader(0,null,this);
   }
 }
 
