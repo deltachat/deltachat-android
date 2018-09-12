@@ -144,7 +144,7 @@ static dc_context_t* get_dc_context(JNIEnv *env, jobject obj)
 	static jfieldID fid = 0;
 	if (fid==0) {
 		jclass cls = (*env)->GetObjectClass(env, obj);
-		fid = (*env)->GetFieldID(env, cls, "m_hContext", "J" /*Signature, J=long*/);
+		fid = (*env)->GetFieldID(env, cls, "contextCPtr", "J" /*Signature, J=long*/);
 	}
 	if (fid) {
 		return (dc_chat_t*)(*env)->GetLongField(env, obj, fid);
@@ -173,7 +173,7 @@ static uintptr_t s_context_callback_(dc_context_t* context, int event, uintptr_t
 }
 
 
-JNIEXPORT jlong Java_com_b44t_messenger_DcContext_DcContextNew(JNIEnv *env, jobject obj, jstring osname)
+JNIEXPORT jlong Java_com_b44t_messenger_DcContext_createContextCPtr(JNIEnv *env, jobject obj, jstring osname)
 {
 	jclass cls = (*env)->GetObjectClass(env, obj);
 
@@ -188,9 +188,9 @@ JNIEXPORT jlong Java_com_b44t_messenger_DcContext_DcContextNew(JNIEnv *env, jobj
 	jnicontext->methodId = (*env)->GetMethodID(env, jnicontext->cls, "handleEvent","(IJJ)J" /*signature as "(param)ret" with I=int, J=long*/);
 
 	CHAR_REF(osname);
-		jlong hContext = (jlong)dc_context_new(s_context_callback_, jnicontext, osnamePtr);
+		jlong contextCPtr = (jlong)dc_context_new(s_context_callback_, jnicontext, osnamePtr);
 	CHAR_UNREF(osname);
-	return hContext;
+	return contextCPtr;
 }
 
 
@@ -304,9 +304,9 @@ JNIEXPORT jintArray Java_com_b44t_messenger_DcContext_getBlockedContacts(JNIEnv 
 }
 
 
-JNIEXPORT jlong Java_com_b44t_messenger_DcContext_DcContextGetContact(JNIEnv *env, jclass cls, jlong hContext, jint contact_id)
+JNIEXPORT jlong Java_com_b44t_messenger_DcContext_getContactCPtr(JNIEnv *env, jobject obj, jint contact_id)
 {
-	return (jlong)dc_get_contact((dc_context_t*)hContext, contact_id);
+	return (jlong)dc_get_contact(get_dc_context(env, obj), contact_id);
 }
 
 
@@ -335,24 +335,24 @@ JNIEXPORT jint Java_com_b44t_messenger_DcContext_deleteContact(JNIEnv *env, jobj
 
 /* DcContext - handle chats */
 
-JNIEXPORT jlong Java_com_b44t_messenger_DcContext_DcContextGetChatlist(JNIEnv *env, jclass cls, jlong hContext, jint listflags, jstring query, jint queryId)
+JNIEXPORT jlong Java_com_b44t_messenger_DcContext_getChatlistCPtr(JNIEnv *env, jobject obj, jint listflags, jstring query, jint queryId)
 {
 	jlong ret;
 	if (query) {
 		CHAR_REF(query);
-			ret = (jlong)dc_get_chatlist((dc_context_t*)hContext, listflags, queryPtr, queryId);
+			ret = (jlong)dc_get_chatlist(get_dc_context(env, obj), listflags, queryPtr, queryId);
 		CHAR_UNREF(query);
 	}
 	else {
-		ret = (jlong)dc_get_chatlist((dc_context_t*)hContext, listflags, NULL, queryId);
+		ret = (jlong)dc_get_chatlist(get_dc_context(env, obj), listflags, NULL, queryId);
 	}
 	return ret;
 }
 
 
-JNIEXPORT jlong Java_com_b44t_messenger_DcContext_DcContextGetChat(JNIEnv *env, jclass cls, jlong hContext, jint chat_id)
+JNIEXPORT jlong Java_com_b44t_messenger_DcContext_getChatCPtr(JNIEnv *env, jobject obj, jint chat_id)
 {
-	return (jlong)dc_get_chat((dc_context_t*)hContext, chat_id);
+	return (jlong)dc_get_chat(get_dc_context(env, obj), chat_id);
 }
 
 
@@ -469,9 +469,9 @@ JNIEXPORT jint Java_com_b44t_messenger_DcContext_getFreshMsgCount(JNIEnv *env, j
 }
 
 
-JNIEXPORT jlong Java_com_b44t_messenger_DcContext_DcContextGetMsg(JNIEnv *env, jobject obj, jlong hContext, jint id)
+JNIEXPORT jlong Java_com_b44t_messenger_DcContext_getMsgCPtr(JNIEnv *env, jobject obj, jint id)
 {
-	return (jlong)dc_get_msg((dc_context_t*)hContext, id);
+	return (jlong)dc_get_msg(get_dc_context(env, obj), id);
 }
 
 
@@ -726,7 +726,7 @@ static dc_chatlist_t* get_dc_chatlist(JNIEnv *env, jobject obj)
 	static jfieldID fid = 0;
 	if (fid==0) {
 		jclass cls = (*env)->GetObjectClass(env, obj);
-		fid = (*env)->GetFieldID(env, cls, "m_hChatlist", "J" /*Signature, J=long*/);
+		fid = (*env)->GetFieldID(env, cls, "chatlistCPtr", "J" /*Signature, J=long*/);
 	}
 	if (fid) {
 		return (dc_chatlist_t*)(*env)->GetLongField(env, obj, fid);
@@ -735,9 +735,9 @@ static dc_chatlist_t* get_dc_chatlist(JNIEnv *env, jobject obj)
 }
 
 
-JNIEXPORT void Java_com_b44t_messenger_DcChatlist_DcChatlistUnref(JNIEnv *env, jclass c, jlong hChatlist)
+JNIEXPORT void Java_com_b44t_messenger_DcChatlist_unrefChatlistCPtr(JNIEnv *env, jobject obj)
 {
-	dc_chatlist_unref((dc_chatlist_t*)hChatlist);
+	dc_chatlist_unref(get_dc_chatlist(env, obj));
 }
 
 
@@ -753,23 +753,23 @@ JNIEXPORT jint Java_com_b44t_messenger_DcChatlist_getChatId(JNIEnv *env, jobject
 }
 
 
-JNIEXPORT jlong Java_com_b44t_messenger_DcChatlist_DcChatlistGetChatByIndex(JNIEnv *env, jclass c, jlong hChatlist, jint index)
+JNIEXPORT jlong Java_com_b44t_messenger_DcChatlist_getChatCPtr(JNIEnv *env, jobject obj, jint index)
 {
-	dc_chatlist_t* chatlist = (dc_chatlist_t*)hChatlist;
+	dc_chatlist_t* chatlist = get_dc_chatlist(env, obj);
 	return (jlong)dc_get_chat(dc_chatlist_get_context(chatlist), dc_chatlist_get_chat_id(chatlist, index));
 }
 
 
-JNIEXPORT jlong Java_com_b44t_messenger_DcChatlist_DcChatlistGetMsgByIndex(JNIEnv *env, jclass c, jlong hChatlist, jint index)
+JNIEXPORT jlong Java_com_b44t_messenger_DcChatlist_getMsgCPtr(JNIEnv *env, jobject obj, jint index)
 {
-	dc_chatlist_t* chatlist = (dc_chatlist_t*)hChatlist;
+	dc_chatlist_t* chatlist = get_dc_chatlist(env, obj);
 	return (jlong)dc_get_msg(dc_chatlist_get_context(chatlist), dc_chatlist_get_msg_id(chatlist, index));
 }
 
 
-JNIEXPORT jlong Java_com_b44t_messenger_DcChatlist_DcChatlistGetSummaryByIndex(JNIEnv *env, jclass c, jlong hChatlist, jint index, jlong hChat)
+JNIEXPORT jlong Java_com_b44t_messenger_DcChatlist_getSummaryCPtr(JNIEnv *env, jobject obj, jint index, jlong chatCPtr)
 {
-	return (jlong)dc_chatlist_get_summary((dc_chatlist_t*)hChatlist, index, (dc_chat_t*)hChat);
+	return (jlong)dc_chatlist_get_summary(get_dc_chatlist(env, obj), index, (dc_chat_t*)chatCPtr);
 }
 
 
@@ -783,7 +783,7 @@ static dc_chat_t* get_dc_chat(JNIEnv *env, jobject obj)
 	static jfieldID fid = 0;
 	if (fid==0) {
 		jclass cls = (*env)->GetObjectClass(env, obj);
-		fid = (*env)->GetFieldID(env, cls, "m_hChat", "J" /*Signature, J=long*/);
+		fid = (*env)->GetFieldID(env, cls, "chatCPtr", "J" /*Signature, J=long*/);
 	}
 	if (fid) {
 		return (dc_chat_t*)(*env)->GetLongField(env, obj, fid);
@@ -792,9 +792,9 @@ static dc_chat_t* get_dc_chat(JNIEnv *env, jobject obj)
 }
 
 
-JNIEXPORT void Java_com_b44t_messenger_DcChat_DcChatUnref(JNIEnv *env, jclass cls, jlong hChat)
+JNIEXPORT void Java_com_b44t_messenger_DcChat_unrefChatCPtr(JNIEnv *env, jobject obj)
 {
-	dc_chat_unref((dc_chat_t*)hChat);
+	dc_chat_unref(get_dc_chat(env, obj));
 }
 
 
@@ -930,7 +930,7 @@ static dc_msg_t* get_dc_msg(JNIEnv *env, jobject obj)
 	static jfieldID fid = 0;
 	if (fid==0) {
 		jclass cls = (*env)->GetObjectClass(env, obj);
-		fid = (*env)->GetFieldID(env, cls, "m_hMsg", "J" /*Signature, J=long*/);
+		fid = (*env)->GetFieldID(env, cls, "msgCPtr", "J" /*Signature, J=long*/);
 	}
 	if (fid) {
 		return (dc_msg_t*)(*env)->GetLongField(env, obj, fid);
@@ -939,9 +939,9 @@ static dc_msg_t* get_dc_msg(JNIEnv *env, jobject obj)
 }
 
 
-JNIEXPORT void Java_com_b44t_messenger_DcMsg_DcMsgUnref(JNIEnv *env, jclass cls, jlong hMsg)
+JNIEXPORT void Java_com_b44t_messenger_DcMsg_unrefMsgCPtr(JNIEnv *env, jobject obj)
 {
-	dc_msg_unref((dc_msg_t*)hMsg);
+	dc_msg_unref(get_dc_msg(env, obj));
 }
 
 
@@ -1022,9 +1022,9 @@ JNIEXPORT jint Java_com_b44t_messenger_DcMsg_getBytes(JNIEnv *env, jobject obj)
 }
 
 
-JNIEXPORT jlong Java_com_b44t_messenger_DcMsg_getSummaryCPtr(JNIEnv *env, jobject obj, jlong hChat)
+JNIEXPORT jlong Java_com_b44t_messenger_DcMsg_getSummaryCPtr(JNIEnv *env, jobject obj, jlong chatCPtr)
 {
-	return (jlong)dc_msg_get_summary(get_dc_msg(env, obj), (dc_chat_t*)hChat);
+	return (jlong)dc_msg_get_summary(get_dc_msg(env, obj), (dc_chat_t*)chatCPtr);
 }
 
 
@@ -1165,7 +1165,7 @@ static dc_contact_t* get_dc_contact(JNIEnv *env, jobject obj)
 	static jfieldID fid = 0;
 	if (fid==0) {
 		jclass cls = (*env)->GetObjectClass(env, obj);
-		fid = (*env)->GetFieldID(env, cls, "m_hContact", "J" /*Signature, J=long*/);
+		fid = (*env)->GetFieldID(env, cls, "contactCPtr", "J" /*Signature, J=long*/);
 	}
 	if (fid) {
 		return (dc_contact_t*)(*env)->GetLongField(env, obj, fid);
@@ -1174,9 +1174,9 @@ static dc_contact_t* get_dc_contact(JNIEnv *env, jobject obj)
 }
 
 
-JNIEXPORT void Java_com_b44t_messenger_DcContact_DcContactUnref(JNIEnv *env, jclass cls, jlong hContact)
+JNIEXPORT void Java_com_b44t_messenger_DcContact_unrefContactCPtr(JNIEnv *env, jobject obj)
 {
-	dc_contact_unref((dc_contact_t*)hContact);
+	dc_contact_unref(get_dc_contact(env, obj));
 }
 
 
@@ -1247,7 +1247,7 @@ static dc_lot_t* get_dc_lot(JNIEnv *env, jobject obj)
 	static jfieldID fid = 0;
 	if (fid==0) {
 		jclass cls = (*env)->GetObjectClass(env, obj);
-		fid = (*env)->GetFieldID(env, cls, "m_hLot", "J" /*Signature, J=long*/);
+		fid = (*env)->GetFieldID(env, cls, "lotCPtr", "J" /*Signature, J=long*/);
 	}
 	if (fid) {
 		return (dc_lot_t*)(*env)->GetLongField(env, obj, fid);
@@ -1298,9 +1298,9 @@ JNIEXPORT jint Java_com_b44t_messenger_DcLot_getId(JNIEnv *env, jobject obj)
 }
 
 
-JNIEXPORT void Java_com_b44t_messenger_DcLot_DcLotUnref(JNIEnv *env, jclass cls, jlong hLot)
+JNIEXPORT void Java_com_b44t_messenger_DcLot_unrefLotCPtr(JNIEnv *env, jobject obj)
 {
-	dc_lot_unref((dc_lot_t*)hLot);
+	dc_lot_unref(get_dc_lot(env, obj));
 }
 
 
@@ -1321,26 +1321,26 @@ JNIEXPORT jboolean Java_com_b44t_messenger_DcContext_data2IsString(JNIEnv *env, 
 }
 
 
-JNIEXPORT jstring Java_com_b44t_messenger_DcContext_dataToString(JNIEnv *env, jclass cls, jlong hStr)
+JNIEXPORT jstring Java_com_b44t_messenger_DcContext_dataToString(JNIEnv *env, jclass cls, jlong data)
 {
 	/* the callback may return a long that represents a pointer to a C-String; this function creates a Java-string from such values. */
-	if (hStr==0) {
+	if (data==0) {
 		return NULL;
 	}
-	const char* ptr = (const char*)hStr;
-	return JSTRING_NEW(ptr);
+	const char* cstring = (const char*)data;
+	return JSTRING_NEW(cstring);
 }
 
 
-JNIEXPORT jlong Java_com_b44t_messenger_DcContext_stringToData(JNIEnv *env, jclass cls, jstring str)
+JNIEXPORT jlong Java_com_b44t_messenger_DcContext_stringToData(JNIEnv *env, jclass cls, jstring javaString)
 {
-    char* hStr = NULL;
-    if (str) {
-        CHAR_REF(str);
-            hStr = strdup(strPtr);
-        CHAR_UNREF(str);
+    char* cstring = NULL;
+    if (javaString) {
+        CHAR_REF(javaString);
+            cstring = strdup(javaStringPtr);
+        CHAR_UNREF(javaString);
     }
-    return (jlong)hStr;
+    return (jlong)cstring; // the return value of stringToData() will be passed to c-land and free()'d there
 }
 
 

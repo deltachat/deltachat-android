@@ -29,14 +29,14 @@ public class DcLot {
     public final static int DC_TEXT1_USERNAME = 2;
     public final static int DC_TEXT1_SELF = 3;
 
-    public DcLot(long hLot) {
-        m_hLot = hLot;
+    public DcLot(long lotCPtr) {
+        this.lotCPtr = lotCPtr;
     }
 
     @Override protected void finalize() throws Throwable {
         super.finalize();
-        DcLotUnref(m_hLot);
-        m_hLot = 0;
+        unrefLotCPtr();
+        lotCPtr = 0;
     }
 
     public native String getText1();
@@ -47,6 +47,6 @@ public class DcLot {
     public native int getId();
 
     // working with raw c-data
-    private long m_hLot; // must not be renamed as referenced by JNI
-    private native static void DcLotUnref(long hLot);
+    private long lotCPtr; // CAVE: the name is referenced in the JNI
+    private native void unrefLotCPtr();
 }

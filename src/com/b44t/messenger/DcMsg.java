@@ -46,17 +46,17 @@ public class DcMsg {
     public final static int DC_MSG_ID_DAYMARKER = 9;
 
     public DcMsg(DcContext context) {
-        m_hMsg = context.createMsgCPtr();
+        msgCPtr = context.createMsgCPtr();
     }
 
-    public DcMsg(long hMsg) {
-        m_hMsg = hMsg;
+    public DcMsg(long msgCPtr) {
+        this.msgCPtr = msgCPtr;
     }
 
     @Override protected void finalize() throws Throwable {
         super.finalize();
-        DcMsgUnref(m_hMsg);
-        m_hMsg = 0;
+        unrefMsgCPtr();
+        msgCPtr = 0;
     }
 
     public native int getId();
@@ -73,7 +73,7 @@ public class DcMsg {
     public native void lateFilingMediaSize(int width, int height, int duration);
 
     public native int getBytes();
-    public DcLot getSummary(DcChat chat) { return new DcLot(getSummaryCPtr(chat.getCPtr())); }
+    public DcLot getSummary(DcChat chat) { return new DcLot(getSummaryCPtr(chat.getChatCPtr())); }
     public native String getSummarytext(int approx_characters);
     public native int showPadlock();
     public DcLot getMediainfo() { return new DcLot(getMediainfoCPtr()); }
@@ -94,8 +94,8 @@ public class DcMsg {
     public native void setMediainfo(String author, String trackname);
 
     // working with raw c-data
-    private long m_hMsg; // must not be renamed as referenced by JNI
-    private native static void DcMsgUnref(long hMsg);
-    private native long getSummaryCPtr(long hChat);
+    private long msgCPtr; // CAVE: the name is referenced in the JNI
+    private native void unrefMsgCPtr();
+    private native long getSummaryCPtr(long chatCPtr);
     private native long getMediainfoCPtr();
 };

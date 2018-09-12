@@ -70,7 +70,7 @@ public class DcContext {
 
     public DcContext(String osName) {
         handleEvent(0,0,0); // call handleEvent() to make sure it is not optimized away and JNI won't find it
-        m_hContext = DcContextNew(osName);
+        contextCPtr = createContextCPtr(osName);
     }
 
     public native int open(String dbfile);
@@ -100,14 +100,14 @@ public class DcContext {
     public native int[] getContacts(int flags, String query);
     public native int   getBlockedCount();
     public native int[] getBlockedContacts();
-    public DcContact getContact(int contact_id) { return new DcContact(DcContextGetContact(m_hContext, contact_id)); }
+    public DcContact getContact(int contact_id) { return new DcContact(getContactCPtr(contact_id)); }
     public native int createContact(String name, String addr);
     public native void blockContact(int id, int block);
     public native String getContactEncrInfo(int contact_id);
     public native int deleteContact(int id);
     public native int addAddressBook(String adrbook);
-    public DcChatlist getChatlist(int listflags, String query, int queryId) { return new DcChatlist(DcContextGetChatlist(m_hContext, listflags, query, queryId)); }
-    public DcChat getChat(int chat_id) { return new DcChat(DcContextGetChat(m_hContext, chat_id)); }
+    public DcChatlist getChatlist(int listflags, String query, int queryId) { return new DcChatlist(getChatlistCPtr(listflags, query, queryId)); }
+    public DcChat getChat(int chat_id) { return new DcChat(getChatCPtr(chat_id)); }
     public native void markseenMsgs(int msg_ids[]);
     public native void marknoticedChat(int chat_id);
     public native void marknoticedContact(int contact_id);
@@ -129,7 +129,7 @@ public class DcContext {
     public native int getNextMedia(int msg_id, int dir);
     public native int[] getChatContacts(int chat_id);
     public native void deleteChat(int chat_id);
-    public DcMsg getMsg(int msg_id) { return new DcMsg(DcContextGetMsg(m_hContext, msg_id)); }
+    public DcMsg getMsg(int msg_id) { return new DcMsg(getMsgCPtr(msg_id)); }
     public native String getMsgInfo(int id);
     public native int getFreshMsgCount(int chat_id);
     public native void deleteMsgs(int msg_ids[]);
@@ -151,15 +151,15 @@ public class DcContext {
     // helper to get/return strings from/to handleEvent()
     public native static boolean data1IsString(int event);
     public native static boolean data2IsString(int event);
-    public native static String dataToString(long hString);
+    public native static String dataToString(long data);
     public native static long stringToData(String str);
 
     // working with raw c-data
-    private long m_hContext = 0; // must not be renamed as referenced by JNI
-    private native long DcContextNew(String osName);
+    private long contextCPtr; // CAVE: the name is referenced in the JNI
+    private native long createContextCPtr(String osName);
     public native long createMsgCPtr();
-    private native static long DcContextGetChatlist(long hContext, int listflags, String query, int queryId);
-    private native static long DcContextGetChat(long hContext, int chat_id);
-    private native static long DcContextGetMsg(long hMailbox, int id);
-    private native static long DcContextGetContact(long hContext, int id);
+    private native long getChatlistCPtr(int listflags, String query, int queryId);
+    private native long getChatCPtr(int chat_id);
+    private native long getMsgCPtr(int id);
+    private native long getContactCPtr(int id);
 }

@@ -25,26 +25,26 @@ package com.b44t.messenger;
 
 public class DcChatlist {
 
-    public DcChatlist(long hChatlist) {
-        m_hChatlist = hChatlist;
+    public DcChatlist(long chatlistCPtr) {
+        this.chatlistCPtr = chatlistCPtr;
     }
 
     @Override protected void finalize() throws Throwable {
         super.finalize();
-        DcChatlistUnref(m_hChatlist);
-        m_hChatlist = 0;
+        unrefChatlistCPtr();
+        chatlistCPtr = 0;
     }
 
     public native int getCnt();
     public native int getChatId(int index);
-    public DcChat getChat(int index) { return new DcChat(DcChatlistGetChatByIndex(m_hChatlist, index)); }
-    public DcMsg getMsg(int index) { return new DcMsg(DcChatlistGetMsgByIndex(m_hChatlist, index)); }
-    public DcLot getSummary(int index, DcChat chat) { return new DcLot(DcChatlistGetSummaryByIndex(m_hChatlist, index, chat==null? null : chat.getCPtr())); }
+    public DcChat getChat(int index) { return new DcChat(getChatCPtr(index)); }
+    public DcMsg getMsg(int index) { return new DcMsg(getMsgCPtr(index)); }
+    public DcLot getSummary(int index, DcChat chat) { return new DcLot(getSummaryCPtr(index, chat==null? null : chat.getChatCPtr())); }
 
     // working with raw c-data
-    private long m_hChatlist; // must not be renamed as referenced by JNI
-    private native static void DcChatlistUnref(long hChatlist);
-    private native static long DcChatlistGetChatByIndex(long hChatlist, int index); // returns hChat which must be unref'd after usage
-    private native static long DcChatlistGetMsgByIndex(long hChatlist, int index); // returns hMsg which must be unref'd after usage
-    private native static long DcChatlistGetSummaryByIndex(long hChatlist, int index, long hChat);
+    private long chatlistCPtr; // CAVE: the name is referenced in the JNI
+    private native void unrefChatlistCPtr();
+    private native long getChatCPtr(int index);
+    private native long getMsgCPtr(int index);
+    private native long getSummaryCPtr(int index, long chatCPtr);
 }

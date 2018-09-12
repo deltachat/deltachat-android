@@ -29,14 +29,14 @@ public class DcContact {
     public final static int DC_CONTACT_ID_DEVICE = 2;
     public final static int DC_CONTACT_ID_LAST_SPECIAL = 9;
 
-    public DcContact(long hContact) {
-        m_hContact = hContact;
+    public DcContact(long contactCPtr) {
+        this.contactCPtr = contactCPtr;
     }
 
     @Override protected void finalize() throws Throwable {
         super.finalize();
-        DcContactUnref(m_hContact);
-        m_hContact = 0;
+        unrefContactCPtr();
+        contactCPtr = 0;
     }
 
     public native String getName();
@@ -48,6 +48,6 @@ public class DcContact {
     public native boolean isVerified();
 
     // working with raw c-data
-    private long m_hContact; // must not be renamed as referenced by JNI
-    private native static void DcContactUnref(long hContact);
+    private long contactCPtr; // CAVE: the name is referenced in the JNI
+    private native void unrefContactCPtr();
 }

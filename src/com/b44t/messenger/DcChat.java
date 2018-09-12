@@ -29,14 +29,14 @@ public class DcChat {
     public final static int DC_CHAT_ID_ALLDONE_HINT = 7;
     public final static int DC_CHAT_ID_LAST_SPECIAL = 9;
 
-    public DcChat(long hChat) {
-        m_hChat = hChat;
+    public DcChat(long chatCPtr) {
+        this.chatCPtr = chatCPtr;
     }
 
     @Override protected void finalize() throws Throwable {
         super.finalize();
-        DcChatUnref(m_hChat);
-        m_hChat = 0;
+        unrefChatCPtr();
+        chatCPtr = 0;
     }
 
     public native int getId();
@@ -53,9 +53,9 @@ public class DcChat {
     public native long getDraftTimestamp();
 
     // working with raw c-data
-    private long m_hChat; // must not be renamed as referenced by JNI
-    private native static void DcChatUnref(long hChat);
-    public long getCPtr() {
-        return m_hChat;
+    private long chatCPtr; // CAVE: the name is referenced in the JNI
+    private native void unrefChatCPtr();
+    public long getChatCPtr() {
+        return chatCPtr;
     }
 }
