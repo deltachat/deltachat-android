@@ -111,7 +111,7 @@ public class ApplicationDcContext extends DcContext {
 
         RecipientProvider.RecipientDetails recipientDetails = new RecipientProvider.RecipientDetails(chat.getName(), null, false, null, null);
 
-        Recipient          recipient            = new Recipient(Address.UNKNOWN, recipientDetails);
+        Recipient          recipient            = new Recipient(Address.fromChat(chat), recipientDetails);
         long               date                 = summary.getTimestamp()*1000;
         long               count                = 1;
         int                unreadCount          = getFreshMsgCount(chatId);

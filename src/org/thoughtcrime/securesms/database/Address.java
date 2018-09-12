@@ -11,6 +11,8 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.util.Pair;
 
+import com.b44t.messenger.DcChat;
+import com.b44t.messenger.DcContext;
 import com.google.i18n.phonenumbers.NumberParseException;
 import com.google.i18n.phonenumbers.PhoneNumberUtil;
 import com.google.i18n.phonenumbers.Phonenumber;
@@ -49,6 +51,10 @@ public class Address implements Parcelable, Comparable<Address> {
   private static final AtomicReference<Pair<String, ExternalAddressFormatter>> cachedFormatter = new AtomicReference<>();
 
   private final String address;
+
+  public static Address fromChat(DcChat chat) {
+    return new Address("dc:" + chat.getId());
+  }
 
   private Address(@NonNull String address) {
     if (address == null) throw new AssertionError(address);
@@ -123,6 +129,8 @@ public class Address implements Parcelable, Comparable<Address> {
     return !isGroup() && !isEmail();
   }
 
+  public boolean isDcChat() { return address.startsWith("dc:"); };
+
   public @NonNull String toGroupString() {
     if (!isGroup()) throw new AssertionError("Not group: " + address);
     return address;
@@ -136,6 +144,11 @@ public class Address implements Parcelable, Comparable<Address> {
   public @NonNull String toEmailString() {
     if (!isEmail()) throw new AssertionError("Not email: " + address);
     return address;
+  }
+
+  public int getDcChatId() {
+    if(!isDcChat()) throw new AssertionError("Not dc chat: " + address);
+    return Integer.valueOf(address.substring("dc:".length()));
   }
 
   @Override
