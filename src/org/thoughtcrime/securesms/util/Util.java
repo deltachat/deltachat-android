@@ -203,8 +203,11 @@ public class Util {
   public static boolean isOwnNumber(Context context, Address address) {
     if (address.isGroup()) return false;
     if (address.isEmail()) return false;
+    if (address.isDcChat()) return false;
+    String localNumber = TextSecurePreferences.getLocalNumber(context);
+    if (TextUtils.isEmpty(localNumber)) return false;
 
-    return TextSecurePreferences.getLocalNumber(context).equals(address.toPhoneString());
+    return localNumber.equals(address.toPhoneString());
   }
 
   public static void readFully(InputStream in, byte[] buffer) throws IOException {

@@ -49,6 +49,7 @@ import org.thoughtcrime.securesms.util.ListenableFutureTask;
 import org.thoughtcrime.securesms.util.Util;
 import org.whispersystems.libsignal.util.guava.Optional;
 
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.LinkedList;
@@ -627,6 +628,36 @@ public class Recipient implements RecipientModifiedListener {
 
     for (RecipientModifiedListener listener : localListeners)
       listener.onModified(this);
+  }
+
+  @Override
+  public String toString() {
+    return "Recipient{" +
+        "listeners=" + listeners +
+        ", address=" + address +
+        ", participants=" + participants +
+        ", name='" + name + '\'' +
+        ", customLabel='" + customLabel + '\'' +
+        ", resolving=" + resolving +
+        ", systemContactPhoto=" + systemContactPhoto +
+        ", groupAvatarId=" + groupAvatarId +
+        ", contactUri=" + contactUri +
+        ", messageRingtone=" + messageRingtone +
+        ", callRingtone=" + callRingtone +
+        ", mutedUntil=" + mutedUntil +
+        ", blocked=" + blocked +
+        ", messageVibrate=" + messageVibrate +
+        ", callVibrate=" + callVibrate +
+        ", expireMessages=" + expireMessages +
+        ", defaultSubscriptionId=" + defaultSubscriptionId +
+        ", registered=" + registered +
+        ", color=" + color +
+        ", seenInviteReminder=" + seenInviteReminder +
+        ", profileKey=" + Arrays.toString(profileKey) +
+        ", profileName='" + profileName + '\'' +
+        ", profileAvatar='" + profileAvatar + '\'' +
+        ", profileSharing=" + profileSharing +
+        '}';
   }
 
   @Override
