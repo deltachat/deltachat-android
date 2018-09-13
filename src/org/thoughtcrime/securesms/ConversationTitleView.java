@@ -1,27 +1,20 @@
 package org.thoughtcrime.securesms;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.text.TextUtils;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.annimon.stream.Collectors;
-import com.annimon.stream.Stream;
+import com.b44t.messenger.DcChat;
 
 import org.thoughtcrime.securesms.components.AvatarImageView;
+import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.mms.GlideRequests;
-import org.thoughtcrime.securesms.recipients.Recipient;
-import org.thoughtcrime.securesms.util.TextSecurePreferences;
 import org.thoughtcrime.securesms.util.ViewUtil;
-
-import java.lang.ref.WeakReference;
 
 public class ConversationTitleView extends RelativeLayout {
 
@@ -59,20 +52,20 @@ public class ConversationTitleView extends RelativeLayout {
     ViewUtil.setTextViewGravityStart(this.subtitle, getContext());
   }
 
-  public void setTitle(@NonNull GlideRequests glideRequests, @Nullable Recipient recipient) {
-    if      (recipient == null) setComposeTitle();
-    else                        setRecipientTitle(recipient);
+  public void setTitle(@NonNull GlideRequests glideRequests, @Nullable DcChat dcChat) {
+    if      (dcChat == null) setComposeTitle();
+    else                     setRecipientTitle(dcChat);
 
-    if (recipient != null && recipient.isBlocked()) {
+    /*if (dcChat != null && recipient.isBlocked()) { TODO: dc: show icons when blocked or muted
       title.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_block_white_18dp, 0, 0, 0);
     } else if (recipient != null && recipient.isMuted()) {
       title.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_volume_off_white_18dp, 0, 0, 0);
-    } else {
+    } else*/ {
       title.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
     }
 
-    if (recipient != null) {
-      this.avatar.setAvatar(glideRequests, recipient, false);
+    if (dcChat != null) {
+      this.avatar.setAvatar(glideRequests, DcHelper.getContext(getContext()).getRecipient(dcChat), false);
     }
   }
 
@@ -102,43 +95,9 @@ public class ConversationTitleView extends RelativeLayout {
     this.subtitle.setVisibility(View.GONE);
   }
 
-  private void setRecipientTitle(Recipient recipient) {
-    if      (recipient.isGroupRecipient())           setGroupRecipientTitle(recipient);
-    else if (TextUtils.isEmpty(recipient.getName())) setNonContactRecipientTitle(recipient);
-    else                                             setContactRecipientTitle(recipient);
-  }
-
-  private void setGroupRecipientTitle(Recipient recipient) {
-    String localNumber = TextSecurePreferences.getLocalNumber(getContext());
-
-    this.title.setText(recipient.getName());
-    this.subtitle.setText(Stream.of(recipient.getParticipants())
-                                .filter(r -> !r.getAddress().serialize().equals(localNumber))
-                                .map(Recipient::toShortString)
-                                .collect(Collectors.joining(", ")));
-
-    this.subtitle.setVisibility(View.VISIBLE);
-  }
-
-  @SuppressLint("SetTextI18n")
-  private void setNonContactRecipientTitle(Recipient recipient) {
-    this.title.setText(recipient.getAddress().serialize());
-
-    if (TextUtils.isEmpty(recipient.getProfileName())) {
-      this.subtitle.setText(null);
-      this.subtitle.setVisibility(View.GONE);
-    } else {
-      this.subtitle.setText("~" + recipient.getProfileName());
-      this.subtitle.setVisibility(View.VISIBLE);
-    }
-  }
-
-  private void setContactRecipientTitle(Recipient recipient) {
-    this.title.setText(recipient.getName());
-
-    if (recipient.getCustomLabel() != null) this.subtitle.setText(recipient.getCustomLabel());
-    else                                    this.subtitle.setText(recipient.getAddress().serialize());
-
+  private void setRecipientTitle(DcChat dcChat) {
+    this.title.setText(dcChat.getName());
+    this.subtitle.setText(dcChat.getSubtitle());
     this.subtitle.setVisibility(View.VISIBLE);
   }
 }

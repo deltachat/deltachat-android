@@ -18,7 +18,6 @@ package org.thoughtcrime.securesms;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
-import android.annotation.TargetApi;
 import android.content.ActivityNotFoundException;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -27,7 +26,6 @@ import android.content.IntentFilter;
 import android.content.res.Configuration;
 import android.content.res.TypedArray;
 import android.graphics.Color;
-import android.graphics.PorterDuff;
 import android.graphics.PorterDuff.Mode;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
@@ -37,7 +35,6 @@ import android.os.Bundle;
 import android.os.Vibrator;
 import android.provider.Browser;
 import android.provider.ContactsContract;
-import android.provider.Telephony;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.view.MenuItemCompat;
@@ -66,7 +63,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.b44t.messenger.DcChat;
-import com.b44t.messenger.DcContext;
 import com.google.android.gms.location.places.ui.PlacePicker;
 import com.google.protobuf.ByteString;
 
@@ -89,36 +85,28 @@ import org.thoughtcrime.securesms.components.camera.QuickAttachmentDrawer.Attach
 import org.thoughtcrime.securesms.components.camera.QuickAttachmentDrawer.DrawerState;
 import org.thoughtcrime.securesms.components.emoji.EmojiDrawer;
 import org.thoughtcrime.securesms.components.emoji.EmojiStrings;
-import org.thoughtcrime.securesms.components.identity.UntrustedSendDialog;
-import org.thoughtcrime.securesms.components.identity.UnverifiedBannerView;
-import org.thoughtcrime.securesms.components.identity.UnverifiedSendDialog;
 import org.thoughtcrime.securesms.components.location.SignalPlace;
 import org.thoughtcrime.securesms.components.reminder.ExpiredBuildReminder;
-import org.thoughtcrime.securesms.components.reminder.InviteReminder;
 import org.thoughtcrime.securesms.components.reminder.ReminderView;
 import org.thoughtcrime.securesms.components.reminder.ServiceOutageReminder;
 import org.thoughtcrime.securesms.components.reminder.UnauthorizedReminder;
+import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.contacts.ContactAccessor;
 import org.thoughtcrime.securesms.contacts.ContactAccessor.ContactData;
 import org.thoughtcrime.securesms.contactshare.Contact;
 import org.thoughtcrime.securesms.contactshare.ContactShareEditActivity;
 import org.thoughtcrime.securesms.contactshare.ContactUtil;
-import org.thoughtcrime.securesms.crypto.IdentityKeyParcelable;
 import org.thoughtcrime.securesms.crypto.SecurityEvent;
 import org.thoughtcrime.securesms.database.Address;
 import org.thoughtcrime.securesms.database.DatabaseFactory;
 import org.thoughtcrime.securesms.database.DraftDatabase;
 import org.thoughtcrime.securesms.database.DraftDatabase.Draft;
 import org.thoughtcrime.securesms.database.DraftDatabase.Drafts;
-import org.thoughtcrime.securesms.database.IdentityDatabase;
-import org.thoughtcrime.securesms.database.IdentityDatabase.IdentityRecord;
-import org.thoughtcrime.securesms.database.IdentityDatabase.VerifiedStatus;
 import org.thoughtcrime.securesms.database.MessagingDatabase.MarkedMessageInfo;
 import org.thoughtcrime.securesms.database.MmsSmsColumns.Types;
 import org.thoughtcrime.securesms.database.RecipientDatabase.RegisteredState;
 import org.thoughtcrime.securesms.database.ThreadDatabase;
-import org.thoughtcrime.securesms.database.identity.IdentityRecordList;
 import org.thoughtcrime.securesms.database.model.MessageRecord;
 import org.thoughtcrime.securesms.database.model.MmsMessageRecord;
 import org.thoughtcrime.securesms.events.ReminderUpdateEvent;
@@ -163,7 +151,6 @@ import org.thoughtcrime.securesms.util.DynamicLanguage;
 import org.thoughtcrime.securesms.util.DynamicTheme;
 import org.thoughtcrime.securesms.util.ExpirationUtil;
 import org.thoughtcrime.securesms.util.GroupUtil;
-import org.thoughtcrime.securesms.util.IdentityUtil;
 import org.thoughtcrime.securesms.util.MediaUtil;
 import org.thoughtcrime.securesms.util.ServiceUtil;
 import org.thoughtcrime.securesms.util.TextSecurePreferences;
@@ -177,19 +164,14 @@ import org.whispersystems.libsignal.InvalidMessageException;
 import org.whispersystems.libsignal.util.guava.Optional;
 
 import java.io.IOException;
-import java.security.NoSuchAlgorithmException;
-import java.security.SecureRandom;
 import java.util.Collections;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
-import java.util.concurrent.Future;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import static org.thoughtcrime.securesms.TransportOption.Type;
-import static org.thoughtcrime.securesms.database.GroupDatabase.GroupRecord;
-import static org.whispersystems.libsignal.SessionCipher.SESSION_LOCK;
+
 import static org.whispersystems.signalservice.internal.push.SignalServiceProtos.GroupContext;
 
 /**
@@ -241,12 +223,9 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   private   TextView                    charactersLeft;
   private   ConversationFragment        fragment;
   private   Button                      unblockButton;
-  private   Button                      makeDefaultSmsButton;
-  private   Button                      registerButton;
   private   InputAwareLayout            container;
   private   View                        composePanel;
   protected Stub<ReminderView>          reminderView;
-  private   Stub<UnverifiedBannerView>  unverifiedBannerView;
   private   Stub<GroupShareProfileView> groupShareProfileView;
 
   private   AttachmentTypeSelector attachmentTypeSelector;
@@ -259,16 +238,17 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   private   InputPanel             inputPanel;
 
   private Recipient  recipient;
-  private DcContext  dcContext;
+  private ApplicationDcContext dcContext;
+  private DcChat     dcChat                = new DcChat(0);
   private long       threadId;
   private int        distributionType;
   private boolean    archived;
-  private boolean    isSecureText;
+  private final boolean isSecureText = true;
   private boolean    isDefaultSms          = true;
   private boolean    isMmsEnabled          = true;
   private boolean    isSecurityInitialized = false;
 
-  private final IdentityRecordList identityRecords = new IdentityRecordList();
+
   private final DynamicTheme       dynamicTheme    = new DynamicTheme();
   private final DynamicLanguage    dynamicLanguage = new DynamicLanguage();
 
@@ -283,7 +263,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     Log.w(TAG, "onCreate()");
 
     final Context context = getApplicationContext();
-    this.dcContext      = DcHelper.getContext(context);
+    this.dcContext = DcHelper.getContext(context);
 
     supportRequestWindowFeature(WindowCompat.FEATURE_ACTION_BAR_OVERLAY);
     setContentView(R.layout.conversation_activity);
@@ -367,10 +347,10 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
     initializeEnabledCheck();
     initializeMmsEnabledCheck();
-    initializeIdentityRecords();
     composeText.setTransport(sendButton.getSelectedTransport());
 
-    titleView.setTitle(glideRequests, recipient);
+    titleView.setTitle(glideRequests, dcChat);
+    titleView.setVerified(dcChat.isVerified());
     setActionBarColor(recipient.getColor());
     setBlockedUserState(recipient, isSecureText, isDefaultSms);
     setGroupShareProfileReminder(recipient);
@@ -465,7 +445,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     case GROUP_EDIT:
       recipient = Recipient.from(this, data.getParcelableExtra(GroupCreateActivity.GROUP_ADDRESS_EXTRA), true);
       recipient.addListener(this);
-      titleView.setTitle(glideRequests, recipient);
+      titleView.setTitle(glideRequests, dcChat);
       setBlockedUserState(recipient, isSecureText, isDefaultSms);
       supportInvalidateOptionsMenu();
       break;
@@ -584,7 +564,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     case R.id.menu_distribution_conversation: handleDistributionConversationEnabled(item);       return true;
     case R.id.menu_edit_group:                handleEditPushGroup();                             return true;
     case R.id.menu_leave:                     handleLeavePushGroup();                            return true;
-    case R.id.menu_invite:                    handleInviteLink();                                return true;
     case R.id.menu_mute_notifications:        handleMuteNotifications();                         return true;
     case R.id.menu_unmute_notifications:      handleUnmuteNotifications();                       return true;
     case R.id.menu_conversation_settings:     handleConversationSettings();                      return true;
@@ -610,7 +589,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
   @Subscribe(threadMode = ThreadMode.MAIN)
   public void onEvent(ReminderUpdateEvent event) {
-    updateReminders(recipient.hasSeenInviteReminder());
+    updateReminders();
   }
 
   @Override
@@ -713,41 +692,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
             }
           }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
         }).show();
-  }
-
-  @TargetApi(Build.VERSION_CODES.KITKAT)
-  private void handleMakeDefaultSms() {
-    Intent intent = new Intent(Telephony.Sms.Intents.ACTION_CHANGE_DEFAULT);
-    intent.putExtra(Telephony.Sms.Intents.EXTRA_PACKAGE_NAME, getPackageName());
-    startActivityForResult(intent, SMS_DEFAULT);
-  }
-
-  private void handleRegisterForSignal() {
-    Intent intent = new Intent(this, RegistrationActivity.class);
-    intent.putExtra(RegistrationActivity.RE_REGISTRATION_EXTRA, true);
-    startActivity(intent);
-  }
-
-  private void handleInviteLink() {
-    try {
-      String inviteText;
-
-      boolean a = SecureRandom.getInstance("SHA1PRNG").nextBoolean();
-      if (a) inviteText = getString(R.string.ConversationActivity_lets_switch_to_signal, "https://sgnl.link/1LoIMUl");
-      else   inviteText = getString(R.string.ConversationActivity_lets_use_this_to_chat, "https://sgnl.link/1MF56H1");
-
-      if (isDefaultSms) {
-        composeText.appendInvite(inviteText);
-      } else {
-        Intent intent = new Intent(Intent.ACTION_SENDTO);
-        intent.setData(Uri.parse("smsto:" + recipient.getAddress().serialize()));
-        intent.putExtra("sms_body", inviteText);
-        intent.putExtra(Intent.EXTRA_TEXT, inviteText);
-        startActivity(intent);
-      }
-    } catch (NoSuchAlgorithmException e) {
-      throw new AssertionError(e);
-    }
   }
 
   private void handleResetSecureSession() {
@@ -934,59 +878,12 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     startActivity(intent);
   }
 
-  private void handleUnverifiedRecipients() {
-    List<Recipient>      unverifiedRecipients = identityRecords.getUnverifiedRecipients(this);
-    List<IdentityRecord> unverifiedRecords    = identityRecords.getUnverifiedRecords();
-    String               message              = IdentityUtil.getUnverifiedSendDialogDescription(this, unverifiedRecipients);
-
-    if (message == null) return;
-
-    //noinspection CodeBlock2Expr
-    new UnverifiedSendDialog(this, message, unverifiedRecords, () -> {
-      initializeIdentityRecords().addListener(new ListenableFuture.Listener<Boolean>() {
-        @Override
-        public void onSuccess(Boolean result) {
-          sendMessage();
-        }
-
-        @Override
-        public void onFailure(ExecutionException e) {
-          throw new AssertionError(e);
-        }
-      });
-    }).show();
-  }
-
-  private void handleUntrustedRecipients() {
-    List<Recipient>      untrustedRecipients = identityRecords.getUntrustedRecipients(this);
-    List<IdentityRecord> untrustedRecords    = identityRecords.getUntrustedRecords();
-    String               untrustedMessage    = IdentityUtil.getUntrustedSendDialogDescription(this, untrustedRecipients);
-
-    if (untrustedMessage == null) return;
-
-    //noinspection CodeBlock2Expr
-    new UntrustedSendDialog(this, untrustedMessage, untrustedRecords, () -> {
-      initializeIdentityRecords().addListener(new ListenableFuture.Listener<Boolean>() {
-        @Override
-        public void onSuccess(Boolean result) {
-          sendMessage();
-        }
-
-        @Override
-        public void onFailure(ExecutionException e) {
-          throw new AssertionError(e);
-        }
-      });
-    }).show();
-  }
-
   private void handleSecurityChange(boolean isSecureText, boolean isDefaultSms) {
     Log.w(TAG, "handleSecurityChange(" + isSecureText + ", " + isDefaultSms + ")");
     if (isSecurityInitialized && isSecureText == this.isSecureText && isDefaultSms == this.isDefaultSms) {
       return;
     }
 
-    this.isSecureText          = isSecureText;
     this.isDefaultSms          = isDefaultSms;
     this.isSecurityInitialized = true;
 
@@ -1145,7 +1042,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
         Log.w(TAG, "Returning registered state...");
         return new boolean[] {registeredState == RegisteredState.REGISTERED && signalEnabled,
-                              Util.isDefaultSmsProvider(context)};
+                              false};
       }
 
       @Override
@@ -1164,13 +1061,11 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
   private void onSecurityUpdated() {
     Log.w(TAG, "onSecurityUpdated()");
-    updateReminders(recipient.hasSeenInviteReminder());
+    updateReminders();
     updateDefaultSubscriptionId(recipient.getDefaultSubscriptionId());
   }
 
-  protected void updateReminders(boolean seenInvite) {
-    Log.w(TAG, "updateReminders(" + seenInvite + ")");
-
+  protected void updateReminders() {
     if (UnauthorizedReminder.isEligible(this)) {
       reminderView.get().showReminder(new UnauthorizedReminder(this));
     } else if (ExpiredBuildReminder.isEligible()) {
@@ -1178,18 +1073,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     } else if (ServiceOutageReminder.isEligible(this)) {
       ApplicationContext.getInstance(this).getJobManager().add(new ServiceOutageDetectionJob(this));
       reminderView.get().showReminder(new ServiceOutageReminder(this));
-    } else if (TextSecurePreferences.isPushRegistered(this)      &&
-               TextSecurePreferences.isShowInviteReminders(this) &&
-               !isSecureText                                            &&
-               !seenInvite                                              &&
-               !recipient.isGroupRecipient())
-    {
-      InviteReminder reminder = new InviteReminder(this, recipient);
-      reminder.setOkListener(v -> {
-        handleInviteLink();
-        reminderView.get().requestDismiss();
-      });
-      reminderView.get().showReminder(reminder);
     } else if (reminderView.resolved()) {
       reminderView.get().hide();
     }
@@ -1214,62 +1097,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
   }
 
-  private ListenableFuture<Boolean> initializeIdentityRecords() {
-    final SettableFuture<Boolean> future = new SettableFuture<>();
-
-    new AsyncTask<Recipient, Void, Pair<IdentityRecordList, String>>() {
-      @Override
-      protected @NonNull Pair<IdentityRecordList, String> doInBackground(Recipient... params) {
-        IdentityDatabase   identityDatabase   = DatabaseFactory.getIdentityDatabase(ConversationActivity.this);
-        IdentityRecordList identityRecordList = new IdentityRecordList();
-        List<Recipient>    recipients         = new LinkedList<>();
-
-        if (params[0].isGroupRecipient()) {
-          recipients.addAll(DatabaseFactory.getGroupDatabase(ConversationActivity.this)
-                                           .getGroupMembers(params[0].getAddress().toGroupString(), false));
-        } else {
-          recipients.add(params[0]);
-        }
-
-        for (Recipient recipient : recipients) {
-          Log.w(TAG, "Loading identity for: " + recipient.getAddress());
-          identityRecordList.add(identityDatabase.getIdentity(recipient.getAddress()));
-        }
-
-        String message = null;
-
-        if (identityRecordList.isUnverified()) {
-          message = IdentityUtil.getUnverifiedBannerDescription(ConversationActivity.this, identityRecordList.getUnverifiedRecipients(ConversationActivity.this));
-        }
-
-        return new Pair<>(identityRecordList, message);
-      }
-
-      @Override
-      protected void onPostExecute(@NonNull Pair<IdentityRecordList, String> result) {
-        Log.w(TAG, "Got identity records: " + result.first.isUnverified());
-        identityRecords.replaceWith(result.first);
-
-        if (result.second != null) {
-          Log.w(TAG, "Replacing banner...");
-          unverifiedBannerView.get().display(result.second, result.first.getUnverifiedRecords(),
-                                             new UnverifiedClickedListener(),
-                                             new UnverifiedDismissedListener());
-        } else if (unverifiedBannerView.resolved()) {
-          Log.w(TAG, "Clearing banner...");
-          unverifiedBannerView.get().hide();
-        }
-
-        titleView.setVerified(isSecureText && identityRecords.isVerified());
-
-        future.set(true);
-      }
-
-    }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, recipient);
-
-    return future;
-  }
-
   private void initializeViews() {
     ActionBar supportActionBar = getSupportActionBar();
     if (supportActionBar == null) throw new AssertionError();
@@ -1282,12 +1109,9 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     charactersLeft        = ViewUtil.findById(this, R.id.space_left);
     emojiDrawerStub       = ViewUtil.findStubById(this, R.id.emoji_drawer_stub);
     unblockButton         = ViewUtil.findById(this, R.id.unblock_button);
-    makeDefaultSmsButton  = ViewUtil.findById(this, R.id.make_default_sms_button);
-    registerButton        = ViewUtil.findById(this, R.id.register_button);
     composePanel          = ViewUtil.findById(this, R.id.bottom_panel);
     container             = ViewUtil.findById(this, R.id.layout_container);
     reminderView          = ViewUtil.findStubById(this, R.id.reminder_stub);
-    unverifiedBannerView  = ViewUtil.findStubById(this, R.id.unverified_banner_stub);
     groupShareProfileView = ViewUtil.findStubById(this, R.id.group_share_profile_view_stub);
     quickAttachmentDrawer = ViewUtil.findById(this, R.id.quick_attachment_drawer);
     quickAttachmentToggle = ViewUtil.findById(this, R.id.quick_attachment_toggle);
@@ -1323,8 +1147,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     titleView.setOnLongClickListener(v -> handleDisplayQuickContact());
     titleView.setOnBackClickedListener(view -> super.onBackPressed());
     unblockButton.setOnClickListener(v -> handleUnblock());
-    makeDefaultSmsButton.setOnClickListener(v -> handleMakeDefaultSms());
-    registerButton.setOnClickListener(v -> handleRegisterForSignal());
 
     composeText.setOnKeyListener(composeKeyPressedListener);
     composeText.addTextChangedListener(composeKeyPressedListener);
@@ -1354,11 +1176,13 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   private void initializeResources() {
     if (recipient != null) recipient.removeListener(this);
 
-    recipient        = Recipient.from(this, getIntent().getParcelableExtra(ADDRESS_EXTRA), true);
     threadId         = getIntent().getLongExtra(THREAD_ID_EXTRA, -1);
+    dcChat           = dcContext.getChat((int)threadId);
+    recipient        = dcContext.getRecipient(dcChat);
     archived         = getIntent().getBooleanExtra(IS_ARCHIVED_EXTRA, false);
     distributionType = getIntent().getIntExtra(DISTRIBUTION_TYPE_EXTRA, ThreadDatabase.DistributionTypes.DEFAULT);
     glideRequests    = GlideApp.with(this);
+
 
     if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN) {
       LinearLayout conversationContainer = ViewUtil.findById(this, R.id.conversation_container);
@@ -1385,21 +1209,15 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     Log.w(TAG, "onModified(" + recipient.getAddress().serialize() + ")");
     Util.runOnMain(() -> {
       Log.w(TAG, "onModifiedRun(): " + recipient.getRegistered());
-      titleView.setTitle(glideRequests, recipient);
-      titleView.setVerified(identityRecords.isVerified());
+      titleView.setTitle(glideRequests, dcChat);
       setBlockedUserState(recipient, isSecureText, isDefaultSms);
       setActionBarColor(recipient.getColor());
       setGroupShareProfileReminder(recipient);
-      updateReminders(recipient.hasSeenInviteReminder());
+      updateReminders();
       updateDefaultSubscriptionId(recipient.getDefaultSubscriptionId());
       initializeSecurity(isSecureText, isDefaultSms);
       invalidateOptionsMenu();
     });
-  }
-
-  @Subscribe(threadMode = ThreadMode.MAIN)
-  public void onIdentityRecordUpdate(final IdentityRecord event) {
-    initializeIdentityRecords();
   }
 
   private void initializeReceivers() {
@@ -1567,26 +1385,12 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   }
 
   private void setBlockedUserState(Recipient recipient, boolean isSecureText, boolean isDefaultSms) {
-    if (recipient.isBlocked()) {
+    if (false) {
       unblockButton.setVisibility(View.VISIBLE);
       composePanel.setVisibility(View.GONE);
-      makeDefaultSmsButton.setVisibility(View.GONE);
-      registerButton.setVisibility(View.GONE);
-    } else if (!isSecureText && isPushGroupConversation()) {
-      unblockButton.setVisibility(View.GONE);
-      composePanel.setVisibility(View.GONE);
-      makeDefaultSmsButton.setVisibility(View.GONE);
-      registerButton.setVisibility(View.VISIBLE);
-    } else if (!isSecureText && !isDefaultSms) {
-      unblockButton.setVisibility(View.GONE);
-      composePanel.setVisibility(View.GONE);
-      makeDefaultSmsButton.setVisibility(View.VISIBLE);
-      registerButton.setVisibility(View.GONE);
     } else {
       composePanel.setVisibility(View.VISIBLE);
       unblockButton.setVisibility(View.GONE);
-      makeDefaultSmsButton.setVisibility(View.GONE);
-      registerButton.setVisibility(View.GONE);
     }
   }
 
@@ -1617,30 +1421,23 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   }
 
   private boolean isSingleConversation() {
-    return getRecipient() != null && !getRecipient().isGroupRecipient();
+    return !dcChat.isGroup();
   }
 
   private boolean isActiveGroup() {
-    if (!isGroupConversation()) return false;
-
-    Optional<GroupRecord> record = DatabaseFactory.getGroupDatabase(this).getGroup(getRecipient().getAddress().toGroupString());
-    return record.isPresent() && record.get().isActive();
+    return dcChat.isGroup();
   }
 
-  @SuppressWarnings("SimplifiableIfStatement")
   private boolean isSelfConversation() {
-    if (!TextSecurePreferences.isPushRegistered(this)) return false;
-    if (recipient.isGroupRecipient())                         return false;
-
-    return Util.isOwnNumber(this, recipient.getAddress());
+    return dcChat.isSelfTalk();
   }
 
   private boolean isGroupConversation() {
-    return getRecipient() != null && getRecipient().isGroupRecipient();
+    return dcChat.isGroup();
   }
 
   private boolean isPushGroupConversation() {
-    return getRecipient() != null && getRecipient().isPushGroupRecipient();
+    return isGroupConversation(); // push groups are non-sms groups, so in delta, these are all groups
   }
 
   private boolean isSmsForced() {
@@ -1732,10 +1529,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
       if ((recipient.isMmsGroupRecipient() || recipient.getAddress().isEmail()) && !isMmsEnabled) {
         handleManualMmsRequired();
-      } else if (!forceSms && identityRecords.isUnverified()) {
-        handleUnverifiedRecipients();
-      } else if (!forceSms && identityRecords.isUntrusted()) {
-        handleUntrustedRecipients();
       } else if (attachmentManager.isAttachmentPresent() || recipient.isGroupRecipient() || recipient.getAddress().isEmail() || inputPanel.getQuote().isPresent()) {
         sendMediaMessage(forceSms, expiresIn, subscriptionId, initiating);
       } else {
@@ -2179,67 +1972,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   public void onAttachmentChanged() {
     handleSecurityChange(isSecureText, isDefaultSms);
     updateToggleButtonState();
-  }
-
-  private class UnverifiedDismissedListener implements UnverifiedBannerView.DismissListener {
-    @Override
-    public void onDismissed(final List<IdentityRecord> unverifiedIdentities) {
-      final IdentityDatabase identityDatabase = DatabaseFactory.getIdentityDatabase(ConversationActivity.this);
-
-      new AsyncTask<Void, Void, Void>() {
-        @Override
-        protected Void doInBackground(Void... params) {
-          synchronized (SESSION_LOCK) {
-            for (IdentityRecord identityRecord : unverifiedIdentities) {
-              identityDatabase.setVerified(identityRecord.getAddress(),
-                                           identityRecord.getIdentityKey(),
-                                           VerifiedStatus.DEFAULT);
-            }
-          }
-
-          return null;
-        }
-
-        @Override
-        protected void onPostExecute(Void result) {
-          initializeIdentityRecords();
-        }
-      }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
-    }
-  }
-
-  private class UnverifiedClickedListener implements UnverifiedBannerView.ClickListener {
-    @Override
-    public void onClicked(final List<IdentityRecord> unverifiedIdentities) {
-      Log.w(TAG, "onClicked: " + unverifiedIdentities.size());
-      if (unverifiedIdentities.size() == 1) {
-        Intent intent = new Intent(ConversationActivity.this, VerifyIdentityActivity.class);
-        intent.putExtra(VerifyIdentityActivity.ADDRESS_EXTRA, unverifiedIdentities.get(0).getAddress());
-        intent.putExtra(VerifyIdentityActivity.IDENTITY_EXTRA, new IdentityKeyParcelable(unverifiedIdentities.get(0).getIdentityKey()));
-        intent.putExtra(VerifyIdentityActivity.VERIFIED_EXTRA, false);
-
-        startActivity(intent);
-      } else {
-        String[] unverifiedNames = new String[unverifiedIdentities.size()];
-
-        for (int i=0;i<unverifiedIdentities.size();i++) {
-          unverifiedNames[i] = Recipient.from(ConversationActivity.this, unverifiedIdentities.get(i).getAddress(), false).toShortString();
-        }
-
-        AlertDialog.Builder builder = new AlertDialog.Builder(ConversationActivity.this);
-        builder.setIconAttribute(R.attr.dialog_alert_icon);
-        builder.setTitle("No longer verified");
-        builder.setItems(unverifiedNames, (dialog, which) -> {
-          Intent intent = new Intent(ConversationActivity.this, VerifyIdentityActivity.class);
-          intent.putExtra(VerifyIdentityActivity.ADDRESS_EXTRA, unverifiedIdentities.get(which).getAddress());
-          intent.putExtra(VerifyIdentityActivity.IDENTITY_EXTRA, new IdentityKeyParcelable(unverifiedIdentities.get(which).getIdentityKey()));
-          intent.putExtra(VerifyIdentityActivity.VERIFIED_EXTRA, false);
-
-          startActivity(intent);
-        });
-        builder.show();
-      }
-    }
   }
 
   private class QuoteRestorationTask extends AsyncTask<Void, Void, MessageRecord> {
