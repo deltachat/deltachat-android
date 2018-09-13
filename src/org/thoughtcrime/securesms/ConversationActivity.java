@@ -826,7 +826,8 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   }
 
   private void handleDisplayGroupRecipients() {
-    new GroupMembersDialog(this, getRecipient()).display();
+    //TODO: i think this button is not needed and the group options just go to the profile
+    //new GroupMembersDialog(this, getRecipient()).display();
   }
 
   private void handleAddToContacts() {
@@ -1385,7 +1386,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   }
 
   private void setBlockedUserState(Recipient recipient, boolean isSecureText, boolean isDefaultSms) {
-    if (false) {
+    if (false) { // TODO: do we need a unblock button here? typically, the chatlist is closed when blocked
       unblockButton.setVisibility(View.VISIBLE);
       composePanel.setVisibility(View.GONE);
     } else {
