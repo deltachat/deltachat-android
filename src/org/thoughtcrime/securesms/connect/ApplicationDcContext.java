@@ -99,6 +99,12 @@ public class ApplicationDcContext extends DcContext {
      **********************************************************************************************/
 
     @NonNull
+    public Recipient getRecipient(DcChat chat) {
+        RecipientProvider.RecipientDetails recipientDetails = new RecipientProvider.RecipientDetails(chat.getName(), null, false, null, null);
+        return new Recipient(Address.fromChat(chat), recipientDetails);
+    }
+
+    @NonNull
     public ThreadRecord getThreadRecord(DcChatlist chatlist, int i) { // adapted from ThreadDatabase.getCurrent()
         int     chatId           = chatlist.getChatId(i);
         DcChat  chat             = chatlist.getChat(i);
@@ -109,9 +115,7 @@ public class ApplicationDcContext extends DcContext {
         if(!body.isEmpty()) { body += ": "; }
         body += summary.getText2();
 
-        RecipientProvider.RecipientDetails recipientDetails = new RecipientProvider.RecipientDetails(chat.getName(), null, false, null, null);
-
-        Recipient          recipient            = new Recipient(Address.fromChat(chat), recipientDetails);
+        Recipient          recipient            = getRecipient(chat);
         long               date                 = summary.getTimestamp()*1000;
         long               count                = 1;
         int                unreadCount          = getFreshMsgCount(chatId);
