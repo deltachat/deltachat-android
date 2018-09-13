@@ -33,8 +33,11 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.b44t.messenger.DcContext;
+
 import org.thoughtcrime.securesms.components.RatingManager;
 import org.thoughtcrime.securesms.components.SearchToolbar;
+import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.database.DatabaseFactory;
 import org.thoughtcrime.securesms.database.MessagingDatabase.MarkedMessageInfo;
 import org.thoughtcrime.securesms.lock.RegistrationLockDialog;
@@ -230,12 +233,8 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
     new AsyncTask<Void, Void, Void>() {
       @Override
       protected Void doInBackground(Void... params) {
-        Context                 context    = ConversationListActivity.this;
-        List<MarkedMessageInfo> messageIds = DatabaseFactory.getThreadDatabase(context).setAllThreadsRead();
-
-        MessageNotifier.updateNotification(context);
-        MarkReadReceiver.process(context, messageIds);
-
+        Context context = ConversationListActivity.this;
+        DcHelper.getContext(context).marknoticedAllChats();
         return null;
       }
     }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);

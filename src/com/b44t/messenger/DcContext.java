@@ -110,6 +110,7 @@ public class DcContext {
     public DcChat getChat(int chat_id) { return new DcChat(getChatCPtr(chat_id)); }
     public native void markseenMsgs(int msg_ids[]);
     public native void marknoticedChat(int chat_id);
+    public native void marknoticedAllChats();
     public native void marknoticedContact(int contact_id);
     public native void archiveChat(int chat_id, int archive);
     public native int getChatIdByContactId(int contact_id);

@@ -377,6 +377,12 @@ JNIEXPORT void Java_com_b44t_messenger_DcContext_marknoticedChat(JNIEnv *env, jo
 }
 
 
+JNIEXPORT void Java_com_b44t_messenger_DcContext_marknoticedAllChats(JNIEnv *env, jobject obj)
+{
+	dc_marknoticed_all_chats(get_dc_context(env, obj));
+}
+
+
 JNIEXPORT void Java_com_b44t_messenger_DcContext_marknoticedContact(JNIEnv *env, jobject obj, jint contact_id)
 {
 	dc_marknoticed_contact(get_dc_context(env, obj), contact_id);
