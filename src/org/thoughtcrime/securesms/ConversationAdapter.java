@@ -33,6 +33,8 @@ import com.annimon.stream.Stream;
 
 import org.thoughtcrime.securesms.ConversationAdapter.HeaderViewHolder;
 import org.thoughtcrime.securesms.attachments.DatabaseAttachment;
+import org.thoughtcrime.securesms.connect.ApplicationDcContext;
+import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.database.DatabaseFactory;
 import org.thoughtcrime.securesms.database.FastCursorRecyclerViewAdapter;
 import org.thoughtcrime.securesms.database.MmsSmsColumns;
@@ -71,7 +73,7 @@ import java.util.Set;
  *
  */
 public class ConversationAdapter <V extends View & BindableConversationItem>
-    extends FastCursorRecyclerViewAdapter<ConversationAdapter.ViewHolder, MessageRecord>
+    extends FastCursorRecyclerViewAdapter<ConversationAdapter.ViewHolder, MessageRecord> // TODO: base this on RecyclerView.Adapter (see ConversationListAdapter)
   implements StickyHeaderDecoration.StickyHeaderAdapter<HeaderViewHolder>
 {
 
@@ -102,6 +104,9 @@ public class ConversationAdapter <V extends View & BindableConversationItem>
   private final @NonNull  MessageDigest     digest;
 
   private MessageRecord recordToPulseHighlight;
+
+  private ApplicationDcContext dcContext;
+  private int[]                dcMsgList = new int[0];
 
   protected static class ViewHolder extends RecyclerView.ViewHolder {
     public <V extends View & BindableConversationItem> ViewHolder(final @NonNull V itemView) {
@@ -152,6 +157,7 @@ public class ConversationAdapter <V extends View & BindableConversationItem>
       this.db            = null;
       this.calendar      = null;
       this.digest        = MessageDigest.getInstance("SHA1");
+      this.dcContext     = DcHelper.getContext(context);
     } catch (NoSuchAlgorithmException nsae) {
       throw new AssertionError("SHA1 isn't supported!");
     }
@@ -183,7 +189,7 @@ public class ConversationAdapter <V extends View & BindableConversationItem>
   }
 
   @Override
-  public void changeCursor(Cursor cursor) {
+  public void changeCursor(Cursor cursor) { // TOOD: this should take a int[] instead of a cursor; the int[] is saved in dcMsgList then
     messageRecordCache.clear();
     super.cleanFastRecords();
     super.changeCursor(cursor);
