@@ -100,6 +100,11 @@ public class ApplicationDcContext extends DcContext {
      **********************************************************************************************/
 
     @NonNull
+    public Recipient getRecipient(int chatId) {
+        return getRecipient(getChat(chatId));
+    }
+
+    @NonNull
     public Recipient getRecipient(DcChat chat) {
         RecipientProvider.RecipientDetails recipientDetails = new RecipientProvider.RecipientDetails(chat.getName(), null, false, null, null);
         return new Recipient(Address.fromChat(chat.getId()), recipientDetails);

@@ -59,6 +59,10 @@ public class DcMsg {
         msgCPtr = 0;
     }
 
+    public boolean isOutgoing() {
+        return getFromId() != DcContact.DC_CONTACT_ID_SELF;
+    }
+
     public native int getId();
     public native String getText();
     public native long getTimestamp();
