@@ -48,6 +48,7 @@ public class ContactFilterToolbar extends Toolbar {
       @Override
       public void onClick(View v) {
         searchText.setText("");
+        displayTogglingView(null);
       }
     });
 
@@ -64,14 +65,24 @@ public class ContactFilterToolbar extends Toolbar {
 
       @Override
       public void afterTextChanged(Editable s) {
-        if (!SearchUtil.isEmpty(searchText)) displayTogglingView(clearToggle);
+        if (!SearchUtil.isEmpty(searchText)) {
+          displayTogglingView(clearToggle);
+        }
+        else {
+          displayTogglingView(null);
+        }
         notifyListener();
       }
     });
 
     setLogo(null);
     setContentInsetStartWithNavigation(0);
-    expandTapArea(toggleContainer, clearToggle);
+
+    // avoid flickering by setting button_toggle to INVISIBLE in contact_filter_toolbar.xml
+    // and set it to VISIBLE _after_ choosing to display nothing
+    // (AnimatingToggle displays the first what will flash shortly otherwise)
+    toggle.displayQuick(null);
+    toggle.setVisibility(View.VISIBLE);
   }
 
   public void clear() {
@@ -89,7 +100,9 @@ public class ContactFilterToolbar extends Toolbar {
 
   private void displayTogglingView(View view) {
     toggle.display(view);
-    expandTapArea(toggleContainer, view);
+    if (view!=null) {
+      expandTapArea(toggleContainer, view);
+    }
   }
 
   private void expandTapArea(final View container, final View child) {

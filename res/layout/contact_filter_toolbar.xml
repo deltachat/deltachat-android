@@ -33,7 +33,8 @@
                 android:layout_gravity="center"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
-                android:gravity="center">
+                android:gravity="center"
+                android:visibility="invisible">
 
                 <ImageView android:id="@+id/search_clear"
                            android:layout_width="wrap_content"
