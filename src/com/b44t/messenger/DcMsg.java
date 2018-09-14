@@ -23,6 +23,11 @@
 package com.b44t.messenger;
 
 
+import org.thoughtcrime.securesms.database.documents.IdentityKeyMismatch;
+
+import java.util.Collections;
+import java.util.List;
+
 public class DcMsg {
 
     public final static int DC_MSG_UNDEFINED = 0;
@@ -61,6 +66,37 @@ public class DcMsg {
 
     public boolean isOutgoing() {
         return getFromId() != DcContact.DC_CONTACT_ID_SELF;
+    }
+
+    public boolean isFailed() {
+        return getState() == DC_STATE_OUT_ERROR;
+    }
+
+    public long getExpiresIn() {
+        return -1; // never.
+    }
+
+    public boolean isSecure() {
+        return false; // unsecure until proven otherwise.
+    }
+
+    public boolean isPending() {
+        return getState() == DC_STATE_OUT_PENDING;
+    }
+
+    public boolean isUpdate() {
+        // I'm uncertain as what is meant by 'update' here, compare MessageRecord
+        return false;
+    }
+
+    public List<IdentityKeyMismatch> getIdentityKeyMismatches() {
+        // TODO: needs to come from the core, or deleted.
+        return Collections.EMPTY_LIST;
+    }
+
+    public boolean isIdentityMismatchFailure() {
+        // TODO: needs to come from the core, or deleted.
+        return false;
     }
 
     public native int getId();

@@ -11,6 +11,8 @@ import android.text.Spanned;
 import android.text.method.LinkMovementMethod;
 import android.widget.TextView;
 
+import com.b44t.messenger.DcMsg;
+
 import org.thoughtcrime.securesms.crypto.storage.TextSecureIdentityKeyStore;
 import org.thoughtcrime.securesms.database.Address;
 import org.thoughtcrime.securesms.database.DatabaseFactory;
@@ -41,7 +43,7 @@ public class ConfirmIdentityDialog extends AlertDialog {
   private OnClickListener callback;
 
   public ConfirmIdentityDialog(Context context,
-                               MessageRecord messageRecord,
+                               DcMsg messageRecord,
                                IdentityKeyMismatch mismatch)
   {
     super(context);
@@ -76,11 +78,11 @@ public class ConfirmIdentityDialog extends AlertDialog {
 
   private class AcceptListener implements OnClickListener {
 
-    private final MessageRecord       messageRecord;
+    private final DcMsg               messageRecord;
     private final IdentityKeyMismatch mismatch;
     private final Address             address;
 
-    private AcceptListener(MessageRecord messageRecord, IdentityKeyMismatch mismatch, Address address) {
+    private AcceptListener(DcMsg messageRecord, IdentityKeyMismatch mismatch, Address address) {
       this.messageRecord = messageRecord;
       this.mismatch      = mismatch;
       this.address       = address;
@@ -106,7 +108,7 @@ public class ConfirmIdentityDialog extends AlertDialog {
           return null;
         }
 
-        private void processMessageRecord(MessageRecord messageRecord) {
+        private void processMessageRecord(DcMsg messageRecord) {
           if (messageRecord.isOutgoing()) processOutgoingMessageRecord(messageRecord);
           else                            processIncomingMessageRecord(messageRecord);
         }

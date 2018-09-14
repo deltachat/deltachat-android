@@ -13,6 +13,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.b44t.messenger.DcMsg;
+
 import org.thoughtcrime.securesms.ApplicationContext;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.database.DatabaseFactory;
@@ -72,7 +74,7 @@ public class ConversationItemFooter extends LinearLayout {
     timerView.stopAnimation();
   }
 
-  public void setMessageRecord(@NonNull MessageRecord messageRecord, @NonNull Locale locale) {
+  public void setMessageRecord(@NonNull DcMsg messageRecord, @NonNull Locale locale) {
     presentDate(messageRecord, locale);
     presentSimInfo(messageRecord);
     presentTimer(messageRecord);
