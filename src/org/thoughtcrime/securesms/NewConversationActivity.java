@@ -16,13 +16,21 @@
  */
 package org.thoughtcrime.securesms;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
+import com.b44t.messenger.DcChat;
+import com.b44t.messenger.DcContact;
+import com.b44t.messenger.DcContext;
+
+import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.database.Address;
 import org.thoughtcrime.securesms.database.DatabaseFactory;
 import org.thoughtcrime.securesms.database.ThreadDatabase;
@@ -47,17 +55,43 @@ public class NewConversationActivity extends ContactSelectionActivity {
   }
 
   @Override
-  public void onContactSelected(String number) {
-    Recipient recipient = Recipient.from(this, Address.fromExternal(this, number), true);
+  public void onContactSelected(String addr) {
+    final DcContext dcContext = DcHelper.getContext(this);
+    final int contactId = dcContext.createContact(null, addr);
+    if (contactId == 0) {
+      Toast.makeText(this, R.string.bad_email_address, Toast.LENGTH_LONG).show();
+      return;
+    }
+    DcContact dcContact = dcContext.getContact(contactId);
+
+    int chatId = dcContext.getChatIdByContactId(contactId);
+    if (chatId == 0) {
+      new AlertDialog.Builder(this)
+              .setMessage(getString(R.string.new_conversation_activity__ask_start_chat_with, dcContact.getNameNAddr()))
+              .setCancelable(true)
+              .setNegativeButton(android.R.string.cancel, null)
+              .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                  openConversation(dcContext.createChatByContactId(contactId));
+                }
+              }).show();
+    }
+    else {
+      openConversation(chatId);
+    }
+  }
+
+  private void openConversation(int chatId) {
+    final DcContext dcContext = DcHelper.getContext(this);
+    DcChat dcChat = dcContext.getChat(chatId);
 
     Intent intent = new Intent(this, ConversationActivity.class);
-    intent.putExtra(ConversationActivity.ADDRESS_EXTRA, recipient.getAddress());
+    intent.putExtra(ConversationActivity.ADDRESS_EXTRA, Address.fromChat(dcChat));
     intent.putExtra(ConversationActivity.TEXT_EXTRA, getIntent().getStringExtra(ConversationActivity.TEXT_EXTRA));
     intent.setDataAndType(getIntent().getData(), getIntent().getType());
 
-    long existingThread = DatabaseFactory.getThreadDatabase(this).getThreadIdIfExistsFor(recipient);
-
-    intent.putExtra(ConversationActivity.THREAD_ID_EXTRA, existingThread);
+    intent.putExtra(ConversationActivity.THREAD_ID_EXTRA, (long)chatId);
     intent.putExtra(ConversationActivity.DISTRIBUTION_TYPE_EXTRA, ThreadDatabase.DistributionTypes.DEFAULT);
     startActivity(intent);
     finish();
@@ -69,7 +103,7 @@ public class NewConversationActivity extends ContactSelectionActivity {
 
     switch (item.getItemId()) {
     case android.R.id.home:   super.onBackPressed(); return true;
-    case R.id.menu_refresh:   handleManualRefresh(); return true;
+    //case R.id.menu_refresh:   handleManualRefresh(); return true; -- seems unneeded for delta
     case R.id.menu_new_group: handleCreateGroup();   return true;
     case R.id.menu_invite:    handleInvite();        return true;
     }
@@ -77,10 +111,12 @@ public class NewConversationActivity extends ContactSelectionActivity {
     return false;
   }
 
+  /* seems unneeded for delta
   private void handleManualRefresh() {
     contactsFragment.setRefreshing(true);
     onRefresh();
   }
+  */
 
   private void handleCreateGroup() {
     startActivity(new Intent(this, GroupCreateActivity.class));

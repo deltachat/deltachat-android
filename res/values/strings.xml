@@ -1414,10 +1414,12 @@
 
     <!-- Generic and reusable strings -->
     <string name="email_address">Email address</string>
+    <string name="bad_email_address">Bad email address.</string>
     <string name="password">Password</string>
     <string name="advanced">Advanced</string>
     <string name="icon">icon</string>
     <string name="loading">Loading …</string>
     <string name="one_moment">One moment …</string>
+    <string name="new_conversation_activity__ask_start_chat_with">Chat with %1$s?</string>
 
 </resources>
