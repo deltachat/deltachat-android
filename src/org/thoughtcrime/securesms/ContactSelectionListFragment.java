@@ -19,7 +19,6 @@ package org.thoughtcrime.securesms;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
-import android.database.Cursor;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
@@ -42,11 +41,9 @@ import android.widget.Toast;
 import com.pnikosis.materialishprogress.ProgressWheel;
 
 import org.thoughtcrime.securesms.components.RecyclerViewFastScroller;
+import org.thoughtcrime.securesms.connect.DcContactsLoader;
 import org.thoughtcrime.securesms.contacts.ContactSelectionListAdapter;
 import org.thoughtcrime.securesms.contacts.ContactSelectionListItem;
-import org.thoughtcrime.securesms.contacts.ContactsCursorLoader;
-import org.thoughtcrime.securesms.contacts.ContactsCursorLoader.DisplayMode;
-import org.thoughtcrime.securesms.database.CursorRecyclerViewAdapter;
 import org.thoughtcrime.securesms.mms.GlideApp;
 import org.thoughtcrime.securesms.permissions.Permissions;
 import org.thoughtcrime.securesms.util.DirectoryHelper;
@@ -66,7 +63,7 @@ import java.util.Set;
  *
  */
 public class ContactSelectionListFragment extends    Fragment
-                                          implements LoaderManager.LoaderCallbacks<Cursor>
+                                          implements LoaderManager.LoaderCallbacks<int[]>
 {
   @SuppressWarnings("unused")
   private static final String TAG = ContactSelectionListFragment.class.getSimpleName();
@@ -215,18 +212,17 @@ public class ContactSelectionListFragment extends    Fragment
   }
 
   @Override
-  public Loader<Cursor> onCreateLoader(int id, Bundle args) {
-    return new ContactsCursorLoader(getActivity(),
-                                    getActivity().getIntent().getIntExtra(DISPLAY_MODE, DisplayMode.FLAG_ALL),
-                                    cursorFilter, getActivity().getIntent().getBooleanExtra(RECENTS, false));
+  public Loader<int[]> onCreateLoader(int id, Bundle args) {
+    String query = (cursorFilter==null||cursorFilter.isEmpty())? null : cursorFilter;
+    return new DcContactsLoader(getActivity(), 0, query);
   }
 
   @Override
-  public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
+  public void onLoadFinished(Loader<int[]> loader, int[] data) {
     swipeRefresh.setVisibility(View.VISIBLE);
     showContactsLayout.setVisibility(View.GONE);
 
-    ((CursorRecyclerViewAdapter) recyclerView.getAdapter()).changeCursor(data);
+    ((ContactSelectionListAdapter) recyclerView.getAdapter()).changeData(data);
     emptyText.setText(R.string.contact_selection_group_activity__no_contacts);
     boolean useFastScroller = (recyclerView.getAdapter().getItemCount() > 20);
     recyclerView.setVerticalScrollBarEnabled(!useFastScroller);
@@ -237,8 +233,8 @@ public class ContactSelectionListFragment extends    Fragment
   }
 
   @Override
-  public void onLoaderReset(Loader<Cursor> loader) {
-    ((CursorRecyclerViewAdapter) recyclerView.getAdapter()).changeCursor(null);
+  public void onLoaderReset(Loader<int[]> loader) {
+    ((ContactSelectionListAdapter) recyclerView.getAdapter()).changeData(null);
     fastScroller.setVisibility(View.GONE);
   }
 
