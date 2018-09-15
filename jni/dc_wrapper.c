@@ -282,6 +282,24 @@ JNIEXPORT void Java_com_b44t_messenger_DcContext_interruptSmtpIdle(JNIEnv *env, 
 
 /* DcContext - handle contacts */
 
+JNIEXPORT jboolean Java_com_b44t_messenger_DcContext_mayBeValidAddr(JNIEnv *env, jobject obj, jstring addr)
+{
+	CHAR_REF(addr);
+		jboolean ret = dc_may_be_valid_addr(addrPtr);
+	CHAR_UNREF(addr);
+	return ret;
+}
+
+
+JNIEXPORT jint Java_com_b44t_messenger_DcContext_lookupContactIdByAddr(JNIEnv *env, jobject obj, jstring addr)
+{
+	CHAR_REF(addr);
+		jint ret = dc_lookup_contact_id_by_addr(get_dc_context(env, obj), addrPtr);
+	CHAR_UNREF(addr);
+	return ret;
+}
+
+
 JNIEXPORT jintArray Java_com_b44t_messenger_DcContext_getContacts(JNIEnv *env, jobject obj, jint flags, jstring query)
 {
 	CHAR_REF(query);

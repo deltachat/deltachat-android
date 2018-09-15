@@ -97,6 +97,8 @@ public class DcContext {
     public native void imex(int what, String dir);
     public native String imexHasBackup(String dir);
     public native int checkPassword(String pw);
+    public native boolean mayBeValidAddr(String addr);
+    public native int lookupContactIdByAddr(String addr);
     public native int[] getContacts(int flags, String query);
     public native int   getBlockedCount();
     public native int[] getBlockedContacts();
