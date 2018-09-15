@@ -359,8 +359,10 @@
         <item quantity="other">Send %d SMS invites?</item>
     </plurals>
     <string name="InviteActivity_lets_switch_to_signal">Let\'s switch to Delta Chat: %1$s</string>
+    <string name="InviteActivity_lets_switch_to_delta_chat">Let\'s switch to Delta Chat - %1$s - you can text me at %2$s</string>
     <string name="InviteActivity_no_app_to_share_to">It looks like you don\'t have any apps to share to.</string>
     <string name="InviteActivity_friends_dont_let_friends_text_unencrypted">Friends don\'t let friends chat unencrypted.</string>
+    <string name="InviteActivity_friends_dont_let_friends">Friends don\'t let friends locked in messaging silos.</string>
 
     <!-- MessageDetailsRecipient -->
     <string name="MessageDetailsRecipient_failed_to_send">Failed to send</string>
@@ -724,6 +726,7 @@
 
     <!-- contact_selection_activity -->
     <string name="contact_selection_activity__enter_name_or_number">Enter name or number</string>
+    <string name="contact_selection_activity__enter_name_or_email">Enter name or email address</string>
 
     <!-- contact_selection_group_activity -->
     <string name="contact_selection_group_activity__no_contacts">No contacts.</string>

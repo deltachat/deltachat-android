@@ -27,7 +27,7 @@
                       android:layout_height="wrap_content"
                       android:textColor="@color/white"
                       android:textSize="20sp"
-                      android:text="@string/InviteActivity_friends_dont_let_friends_text_unencrypted"
+                      android:text="@string/InviteActivity_friends_dont_let_friends"
                       android:gravity="center_horizontal"
                       android:layout_marginBottom="30dp"
                       android:layout_marginTop="18dp"
@@ -64,62 +64,8 @@
                         android:layout_height="wrap_content"
                         tools:ignore="ButtonStyle" />
 
-                <Button android:id="@+id/sms_button"
-                        android:drawableLeft="@drawable/ic_message_black_18dp"
-                        android:drawableStart="@drawable/ic_message_black_18dp"
-                        android:drawablePadding="10dp"
-                        android:text="@string/InviteActivity_choose_contacts"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        tools:ignore="ButtonStyle" />
-
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
 
-    <LinearLayout android:id="@+id/sms_send_frame"
-                  android:layout_width="match_parent"
-                  android:layout_height="match_parent"
-                  android:background="@color/white"
-                  android:orientation="vertical"
-                  android:visibility="gone">
-
-        <org.thoughtcrime.securesms.components.ContactFilterToolbar
-            android:id="@+id/contact_filter"
-            android:layout_height="?attr/actionBarSize"
-            android:layout_width="match_parent"
-            android:minHeight="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            android:elevation="4dp"
-            android:theme="@style/TextSecure.LightActionBar" />
-
-        <fragment android:id="@+id/contact_selection_list_fragment"
-                  android:layout_width="match_parent"
-                  android:layout_height="0dp"
-                  android:layout_weight="1"
-                  android:name="org.thoughtcrime.securesms.ContactSelectionListFragment"
-                  tools:layout="@layout/contact_selection_list_fragment"/>
-
-        <LinearLayout android:layout_width="match_parent"
-                      android:layout_height="wrap_content"
-                      android:gravity="end"
-                      android:padding="10dp"
-                      android:orientation="horizontal">
-
-            <Button android:id="@+id/cancel_sms_button"
-                    style="@style/Widget.AppCompat.Button.Borderless"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/InviteActivity_cancel" />
-
-            <Button android:id="@+id/send_sms_button"
-                    style="@style/Widget.AppCompat.Button.Borderless"
-                    android:textColor="@color/signal_primary"
-                    android:enabled="false"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    tools:text="Send to 0 friends"/>
-
-        </LinearLayout>
-    </LinearLayout>
 </FrameLayout>
